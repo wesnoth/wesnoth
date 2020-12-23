@@ -27,6 +27,8 @@
 
 #pragma once
 
+#include "config_attribute_value.hpp"
+#include "exceptions.hpp"
 #include "global.hpp"
 
 #include <climits>
@@ -35,27 +37,17 @@
 #include <iosfwd>
 #include <iterator>
 #include <map>
+#include <memory>
 #include <string>
+#include <type_traits>
 #include <utility>
 #include <vector>
-#include <type_traits>
-#include <memory>
 
 #include <boost/exception/exception.hpp>
-#include <boost/variant/apply_visitor.hpp>
-#include <boost/variant/variant.hpp>
 #include <boost/range/iterator_range.hpp>
-
-#include "config_attribute_value.hpp"
-#include "exceptions.hpp"
-
-#if BOOST_VERSION > 106100
 #include <boost/utility/string_view.hpp>
+
 using config_key_type = boost::string_view;
-#else
-#include <boost/utility/string_ref.hpp>
-using config_key_type = boost::string_ref;
-#endif
 
 class config;
 class enum_tag;

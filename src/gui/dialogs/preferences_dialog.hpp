@@ -20,12 +20,11 @@
 #include "gui/widgets/group.hpp"
 #include "gui/widgets/text_box.hpp"
 #include "hotkey/hotkey_command.hpp"
+#include "preferences/advanced.hpp"
 #include "preferences/game.hpp"
-#include "utils/make_enum.hpp"
 
 #include <boost/dynamic_bitset.hpp>
 
-class game_config_view;
 // This file is not named preferences.hpp in order -I conflicts with
 // src/preferences.hpp.
 
@@ -72,13 +71,10 @@ namespace dialogs
 class preferences_dialog : public modal_dialog
 {
 public:
-	preferences_dialog(const game_config_view& game_cfg, const preferences::PREFERENCE_VIEW& initial_view);
+	preferences_dialog(const preferences::PREFERENCE_VIEW initial_view = preferences::VIEW_DEFAULT);
 
 	/** The display function -- see @ref modal_dialog for more information. */
-	static void display(const game_config_view& game_cfg, const preferences::PREFERENCE_VIEW initial_view = preferences::VIEW_DEFAULT)
-	{
-		preferences_dialog(game_cfg, initial_view).show();
-	}
+	DEFINE_SIMPLE_DISPLAY_WRAPPER(preferences_dialog)
 
 	typedef std::vector<const hotkey::hotkey_command*> visible_hotkeys_t;
 
@@ -124,15 +120,9 @@ private:
 
 	group<preferences::LOBBY_JOINS> lobby_joins_group;
 
-	MAKE_ENUM(ADVANCED_PREF_TYPE,
-		(TOGGLE,  "boolean")
-		(SLIDER,  "int")
-		(COMBO,   "combo")
-		(SPECIAL, "custom")
-	)
+	const preferences::advanced_pref_list& adv_preferences_;
 
 	std::vector<point> resolutions_;
-	std::vector<config> adv_preferences_cfg_;
 
 	int last_selected_item_;
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-lib\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2020-11-21 01:40-0300\n"
+"POT-Creation-Date: 2020-12-18 22:26-0300\n"
 "PO-Revision-Date: 2020-08-05 03:34+0300\n"
 "Last-Translator: Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>\n"
 "Language-Team: Turkish\n"
@@ -2180,7 +2180,7 @@ msgstr ""
 msgid " (Press '$hotkey' for more information)"
 msgstr "(Daha fazla bilgi için '$hotkey' tuşuna basın)"
 
-#: data/gui/macros/_initial.cfg:338
+#: data/gui/macros/_initial.cfg:336
 msgid "Search"
 msgstr "Ara"
 
@@ -2275,7 +2275,7 @@ msgstr "Eklentiyi Yayımla"
 #. [button]: id=single_uninstall
 #. [button]: id=uninstall
 #: data/gui/widget/addon_list.cfg:435 data/gui/window/addon_manager.cfg:244
-#: src/gui/dialogs/addon/manager.cpp:864
+#: src/gui/dialogs/addon/manager.cpp:840
 msgid "Uninstall add-on"
 msgstr "Eklentiyi Kaldır"
 
@@ -2292,16 +2292,16 @@ msgstr "Bekleyen iletiler"
 #: data/gui/window/attack_predictions.cfg:304 data/gui/window/chat_log.cfg:200
 #: data/gui/window/end_credits.cfg:145
 #: data/gui/window/game_cache_options.cfg:247
-#: data/gui/window/game_stats.cfg:843 data/gui/window/game_version.cfg:645
+#: data/gui/window/game_stats.cfg:843 data/gui/window/game_version.cfg:652
 #: data/gui/window/gamestate_inspector.cfg:397
 #: data/gui/window/generator_settings.cfg:190
 #: data/gui/window/help_browser.cfg:188
-#: data/gui/window/lobby_player_info.cfg:294
+#: data/gui/window/lobby_player_info.cfg:292
 #: data/gui/window/lua_interpreter.cfg:130 data/gui/window/message.cfg:135
 #: data/gui/window/mp_alerts_options.cfg:242
 #: data/gui/window/preferences.cfg:429
-#: data/gui/window/screenshot_notification.cfg:216
-#: data/gui/window/server_info.cfg:252
+#: data/gui/window/screenshot_notification.cfg:214
+#: data/gui/window/server_info.cfg:253
 #: data/gui/window/statistics_dialog.cfg:615
 #: data/gui/window/terrain_layers.cfg:434 data/gui/window/unit_list.cfg:447
 msgid "Close"
@@ -2347,8 +2347,9 @@ msgstr "Bağlan"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=cancel
 #: data/gui/window/addon_connect.cfg:211
+#: data/gui/window/addon_license_prompt.cfg:115
 #: data/gui/window/addon_uninstall_list.cfg:174
-#: data/gui/window/campaign_dialog.cfg:457
+#: data/gui/window/campaign_dialog.cfg:458
 #: data/gui/window/campaign_difficulty.cfg:234
 #: data/gui/window/core_dialog.cfg:240 data/gui/window/custom_tod.cfg:444
 #: data/gui/window/depcheck_select_new.cfg:165
@@ -2384,6 +2385,25 @@ msgstr "Bağlan"
 msgid "Cancel"
 msgstr "İptal"
 
+#. [label]
+#: data/gui/window/addon_license_prompt.cfg:39
+#, fuzzy
+#| msgid "addons_order^Type ($order)"
+msgid "addons_server^Terms"
+msgstr "Tür ($order)"
+
+#. [label]: id=message
+#: data/gui/window/addon_license_prompt.cfg:54
+msgid ""
+"Before uploading content to this server, you must accept the following "
+"distribution terms by choosing “I Agree”."
+msgstr ""
+
+#. [button]: id=ok
+#: data/gui/window/addon_license_prompt.cfg:104
+msgid "I Agree"
+msgstr ""
+
 #. [label]: id=byline
 #: data/gui/window/addon_manager.cfg:84
 msgid "By:"
@@ -2404,7 +2424,7 @@ msgstr "Sunucudan eklentiyi sil"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [scroll_label]: id=description
 #: data/gui/window/addon_manager.cfg:157
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:583
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:582
 msgid "No description available."
 msgstr "Açıklama mevcut değil."
 
@@ -2414,7 +2434,7 @@ msgid "Delete add-on"
 msgstr "Eklentiyi Sil"
 
 #. [label]
-#: data/gui/window/addon_manager.cfg:315 data/gui/window/addon_manager.cfg:730
+#: data/gui/window/addon_manager.cfg:315 data/gui/window/addon_manager.cfg:662
 msgid "Type:"
 msgstr "Tür:"
 
@@ -2452,7 +2472,7 @@ msgstr "Gereksinimler:"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=dependencies
-#: data/gui/window/addon_manager.cfg:520 src/gui/dialogs/addon/manager.cpp:949
+#: data/gui/window/addon_manager.cfg:520 src/gui/dialogs/addon/manager.cpp:914
 msgid "addon_dependencies^None"
 msgstr "Yok"
 
@@ -2463,7 +2483,7 @@ msgstr "Çeviriler:"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=translations
-#: data/gui/window/addon_manager.cfg:554 src/gui/dialogs/addon/manager.cpp:963
+#: data/gui/window/addon_manager.cfg:554 src/gui/dialogs/addon/manager.cpp:928
 msgid "translations^None"
 msgstr "Yok"
 
@@ -2472,65 +2492,40 @@ msgstr "Yok"
 msgid "Website:"
 msgstr "Site:"
 
-#. [label]: id=url_none
-#: data/gui/window/addon_manager.cfg:595
-msgid "url^None"
-msgstr "Yok"
-
-#. [button]: id=url_copy
-#: data/gui/window/addon_manager.cfg:630
-msgid "url^Copy"
-msgstr "Kopyala"
-
-#. [button]: id=url_copy
-#: data/gui/window/addon_manager.cfg:631
-msgid "Copy this URL to clipboard"
-msgstr "Bu URL'yi panoya kopyala"
-
-#. [button]: id=url_go
-#: data/gui/window/addon_manager.cfg:644
-msgid "url^Go"
-msgstr "Git"
-
-#. [button]: id=url_go
-#: data/gui/window/addon_manager.cfg:645
-msgid "Visit this URL with a web browser"
-msgstr "Bu URL'yi bir tarayıcıda aç"
-
 #. [text_box]: id=filter
-#: data/gui/window/addon_manager.cfg:691
+#: data/gui/window/addon_manager.cfg:623
 msgid "Filters on addon description, version, type or author."
 msgstr "Eklenti açıklaması, sürümü, türü veya yazarı ile ilgili süzgeçler."
 
 #. [label]
-#: data/gui/window/addon_manager.cfg:704
+#: data/gui/window/addon_manager.cfg:636
 msgid "State:"
 msgstr "Durum:"
 
 #. [label]
-#: data/gui/window/addon_manager.cfg:757
+#: data/gui/window/addon_manager.cfg:689
 msgid "Order:"
 msgstr "Düzen:"
 
 #. [label]
-#: data/gui/window/addon_manager.cfg:843 data/gui/window/addon_manager.cfg:1018
+#: data/gui/window/addon_manager.cfg:775 data/gui/window/addon_manager.cfg:950
 msgid "Add-ons Manager"
 msgstr "Eklenti Yöneticisi"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=details_toggle
-#: data/gui/window/addon_manager.cfg:943 src/gui/dialogs/addon/manager.cpp:496
-#: src/gui/dialogs/addon/manager.cpp:687
+#: data/gui/window/addon_manager.cfg:875 src/gui/dialogs/addon/manager.cpp:472
+#: src/gui/dialogs/addon/manager.cpp:663
 msgid "Addon Details"
 msgstr "Eklenti Ayrıntıları"
 
 #. [button]: id=update_all
-#: data/gui/window/addon_manager.cfg:957 data/gui/window/addon_manager.cfg:1121
+#: data/gui/window/addon_manager.cfg:889 data/gui/window/addon_manager.cfg:1053
 msgid "Update All"
 msgstr "Hepsini Güncelle"
 
 #. [button]: id=cancel
-#: data/gui/window/addon_manager.cfg:971 data/gui/window/addon_manager.cfg:1135
+#: data/gui/window/addon_manager.cfg:903 data/gui/window/addon_manager.cfg:1067
 msgid "Exit"
 msgstr "Çık"
 
@@ -2629,12 +2624,12 @@ msgid "Modifications"
 msgstr "Değişiklikler"
 
 #. [toggle_button]: id=checkbox_deterministic
-#: data/gui/window/campaign_dialog.cfg:426
+#: data/gui/window/campaign_dialog.cfg:427
 msgid "Save random seed"
 msgstr "Rastgele dizesini kaydet"
 
 #. [toggle_button]: id=checkbox_deterministic
-#: data/gui/window/campaign_dialog.cfg:428
+#: data/gui/window/campaign_dialog.cfg:429
 msgid ""
 "Makes the random number generator yield the same results even after "
 "reloading a game"
@@ -2642,7 +2637,7 @@ msgstr ""
 "Rastgele sayı üreticisi oyun tekrar yüklense bile aynı sonuçları üretsin"
 
 #. [button]: id=ok
-#: data/gui/window/campaign_dialog.cfg:443
+#: data/gui/window/campaign_dialog.cfg:444
 #: data/gui/window/campaign_difficulty.cfg:221
 msgid "game^Play"
 msgstr ""
@@ -2839,8 +2834,8 @@ msgstr "Gün Vaktini sil"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/depcheck_confirm_change.cfg:40
-#: src/gui/dialogs/addon/manager.cpp:837 src/gui/dialogs/file_dialog.cpp:305
-#: src/gui/dialogs/file_dialog.cpp:731
+#: src/gui/dialogs/addon/manager.cpp:813 src/gui/dialogs/file_dialog.cpp:304
+#: src/gui/dialogs/file_dialog.cpp:730
 msgid "Confirm"
 msgstr "Onayla"
 
@@ -3063,7 +3058,7 @@ msgstr "Kimse"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/window/editor_generate_map.cfg:43 src/hotkey/hotkey_command.cpp:240
+#: data/gui/window/editor_generate_map.cfg:43 src/hotkey/hotkey_command.cpp:239
 msgid "Generate Map"
 msgstr "Harita Üret"
 
@@ -3118,7 +3113,7 @@ msgstr "Oluştur"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/window/editor_resize_map.cfg:35 src/hotkey/hotkey_command.cpp:239
+#: data/gui/window/editor_resize_map.cfg:35 src/hotkey/hotkey_command.cpp:238
 msgid "Resize Map"
 msgstr "Haritayı Boyutlandır"
 
@@ -3412,7 +3407,7 @@ msgstr "Oyunu Kaydet"
 #. [button]: id=ok
 #. [button]: id=save
 #: data/gui/window/game_save.cfg:120
-#: data/gui/window/screenshot_notification.cfg:203
+#: data/gui/window/screenshot_notification.cfg:201
 #: src/gui/dialogs/file_dialog.cpp:183
 msgid "Save"
 msgstr "Kaydet"
@@ -3452,7 +3447,7 @@ msgstr "Takım"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [toggle_button]: id=sort_2
 #: data/gui/window/game_stats.cfg:63
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:431
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:432
 msgid "Gold"
 msgstr "Altın"
 
@@ -3479,7 +3474,7 @@ msgstr "Bakım"
 #. [toggle_button]: id=sort_6
 #: data/gui/window/game_stats.cfg:118 data/gui/window/mp_join_game.cfg:273
 #: data/gui/window/mp_join_game.cfg:286
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:437
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:438
 msgid "Income"
 msgstr "Gelir"
 
@@ -3588,53 +3583,53 @@ msgid "Opens the log file, which may contain useful debug information"
 msgstr "Önemli hata ayıklama bilgileri içerebilecek kayıt dosyasını açar"
 
 #. [label]
-#: data/gui/window/game_version.cfg:195
+#: data/gui/window/game_version.cfg:196
 msgid "library^Name"
 msgstr "İsim"
 
 #. [label]
-#: data/gui/window/game_version.cfg:205
+#: data/gui/window/game_version.cfg:207
 msgid "library^Build version"
 msgstr "Derleme Sürümü"
 
 #. [label]
-#: data/gui/window/game_version.cfg:215
+#: data/gui/window/game_version.cfg:219
 msgid "library^Runtime version"
 msgstr "Çalışma zamanı sürümü"
 
 #. [label]
-#: data/gui/window/game_version.cfg:293
+#: data/gui/window/game_version.cfg:300
 msgid ""
 "The following features were selected when building this version of Wesnoth:"
 msgstr "Aşağıdaki özellikler Vesnot Savaşı'nın şu sürümü derlenirken seçildi:"
 
 #. [label]
-#: data/gui/window/game_version.cfg:447
+#: data/gui/window/game_version.cfg:454
 msgid "The Battle for Wesnoth"
 msgstr "Vesnot Savaşı"
 
 #. [widget]: id=tab_label
-#: data/gui/window/game_version.cfg:528
+#: data/gui/window/game_version.cfg:535
 msgid "Paths"
 msgstr "Yollar"
 
 #. [widget]: id=tab_label
-#: data/gui/window/game_version.cfg:541
+#: data/gui/window/game_version.cfg:548
 msgid "Libraries"
 msgstr "Kütüphaneler"
 
 #. [widget]: id=tab_label
-#: data/gui/window/game_version.cfg:554
+#: data/gui/window/game_version.cfg:561
 msgid "Features"
 msgstr "Özellikler"
 
 #. [button]: id=copy_all
-#: data/gui/window/game_version.cfg:629
+#: data/gui/window/game_version.cfg:636
 msgid "page^Copy"
 msgstr "Kopyala"
 
 #. [button]: id=copy_all
-#: data/gui/window/game_version.cfg:630
+#: data/gui/window/game_version.cfg:637
 msgid "Copy the full report to clipboard"
 msgstr "Tam raporu panoya kopyala"
 
@@ -3850,60 +3845,60 @@ msgstr "Oyuncu Bilgisi — "
 
 #. [button]: id=add_friend
 #. [button]: id=add_to_friends
-#: data/gui/window/lobby_player_info.cfg:94
+#: data/gui/window/lobby_player_info.cfg:88
 #: data/gui/window/preferences/05_multiplayer.cfg:263
 msgid "Add Friend"
 msgstr "Arkadaş Ekle"
 
 #. [button]: id=add_ignored
 #. [button]: id=add_to_ignores
-#: data/gui/window/lobby_player_info.cfg:105
+#: data/gui/window/lobby_player_info.cfg:99
 #: data/gui/window/preferences/05_multiplayer.cfg:276
 msgid "Block"
 msgstr "Engelle"
 
 #. [button]: id=remove_from_list
-#: data/gui/window/lobby_player_info.cfg:118
+#: data/gui/window/lobby_player_info.cfg:112
 msgid "Remove from List"
 msgstr "Listeden kaldır"
 
 #. [button]: id=start_whisper
-#: data/gui/window/lobby_player_info.cfg:129
+#: data/gui/window/lobby_player_info.cfg:123
 msgid "Send Private Message"
 msgstr "Özel ileti gönder"
 
 #. [label]
-#: data/gui/window/lobby_player_info.cfg:153
+#: data/gui/window/lobby_player_info.cfg:149
 msgid "Moderator Controls"
 msgstr "Yönetici kontrolleri"
 
 #. [label]
-#: data/gui/window/lobby_player_info.cfg:173
+#: data/gui/window/lobby_player_info.cfg:169
 msgid "Reason:"
 msgstr "Sebep:"
 
 #. [label]
-#: data/gui/window/lobby_player_info.cfg:198
+#: data/gui/window/lobby_player_info.cfg:195
 msgid "Ban time:"
 msgstr "Yasaklama zamanı:"
 
 #. [button]: id=check_status
-#: data/gui/window/lobby_player_info.cfg:238
+#: data/gui/window/lobby_player_info.cfg:236
 msgid "Check Status"
 msgstr "Duruma Bak"
 
 #. [button]: id=kick
-#: data/gui/window/lobby_player_info.cfg:250
+#: data/gui/window/lobby_player_info.cfg:248
 msgid "Kick"
 msgstr "At"
 
 #. [button]: id=kick_ban
-#: data/gui/window/lobby_player_info.cfg:262
+#: data/gui/window/lobby_player_info.cfg:260
 msgid "Kick + Ban"
 msgstr "At + Yasakla"
 
 #. [button]: id=stopgame
-#: data/gui/window/lobby_player_info.cfg:274
+#: data/gui/window/lobby_player_info.cfg:272
 msgid "Stop Game"
 msgstr "Oyunu Durdur"
 
@@ -4323,7 +4318,7 @@ msgstr "Her saldırı, askere alım ve ele geçirme için süre"
 #. [widget]: id=label
 #: data/gui/window/mp_create_game.cfg:533 data/gui/window/preferences.cfg:291
 #: data/gui/window/preferences/05_multiplayer.cfg:402
-#: data/gui/window/server_info.cfg:180 src/hotkey/hotkey_command.cpp:38
+#: data/gui/window/server_info.cfg:181 src/hotkey/hotkey_command.cpp:38
 msgid "General"
 msgstr "Genel"
 
@@ -4427,7 +4422,7 @@ msgstr "Cinsiyet:"
 #. [row]
 #: data/gui/window/mp_faction_select.cfg:176
 #: src/gui/dialogs/multiplayer/faction_select.cpp:141
-#: src/gui/dialogs/multiplayer/mp_staging.cpp:467
+#: src/gui/dialogs/multiplayer/mp_staging.cpp:468
 msgid "Random"
 msgstr "Rastgele"
 
@@ -4508,7 +4503,7 @@ msgstr "Oyun Odası"
 #. [label]: id=status_label
 #: data/gui/window/mp_join_game.cfg:491 data/gui/window/mp_staging.cfg:614
 #: data/gui/window/mp_staging.cfg:806
-#: src/gui/dialogs/multiplayer/mp_staging.cpp:483
+#: src/gui/dialogs/multiplayer/mp_staging.cpp:484
 msgid "Waiting for players to join..."
 msgstr "Oyuncuların katılması bekleniyor..."
 
@@ -4549,7 +4544,7 @@ msgstr "Parolayı yerel olarak kaydet (şifreli)"
 #. [widget]: id=label
 #: data/gui/window/mp_method_selection.cfg:46
 #: data/gui/window/preferences.cfg:364 data/gui/window/title_screen.cfg:252
-#: src/gui/dialogs/game_load.cpp:431
+#: src/gui/dialogs/game_load.cpp:429
 msgid "Multiplayer"
 msgstr "Çok Oyunculu"
 
@@ -4816,7 +4811,7 @@ msgstr "Klavye kısayolu"
 #. [toggle_button]: id=sort_2
 #. Translate G as the initial letter for Game
 #: data/gui/window/preferences/02_hotkeys.cfg:135
-#: src/gui/dialogs/preferences_dialog.cpp:817
+#: src/gui/dialogs/preferences_dialog.cpp:791
 msgid "game_hotkeys^G"
 msgstr "G"
 
@@ -4829,7 +4824,7 @@ msgstr "Oyunda müsait"
 #. [toggle_button]: id=sort_3
 #. Translate E as the initial letter for Editor
 #: data/gui/window/preferences/02_hotkeys.cfg:148
-#: src/gui/dialogs/preferences_dialog.cpp:818
+#: src/gui/dialogs/preferences_dialog.cpp:792
 msgid "editor_hotkeys^E"
 msgstr "E"
 
@@ -4842,7 +4837,7 @@ msgstr "Düzenleyicide müsait"
 #. [toggle_button]: id=sort_4
 #. Translate T as the initial letter for Title Screen
 #: data/gui/window/preferences/02_hotkeys.cfg:161
-#: src/gui/dialogs/preferences_dialog.cpp:819
+#: src/gui/dialogs/preferences_dialog.cpp:793
 msgid "titlescreen_hotkeys^T"
 msgstr "T"
 
@@ -5195,11 +5190,6 @@ msgstr "Bu dosyayı bir dış uygulamada aç"
 
 #. [button]: id=browse_dir
 #: data/gui/window/screenshot_notification.cfg:187
-msgid "Screenshots..."
-msgstr "Ekran görüntüleri..."
-
-#. [button]: id=browse_dir
-#: data/gui/window/screenshot_notification.cfg:189
 msgid "Browse the screenshots folder using a file manager"
 msgstr "Ekran görüntüsü dizinini dosya yöneticisi kullanarak gez"
 
@@ -5234,14 +5224,14 @@ msgid "Show enemy orb"
 msgstr "'Düşman' küresini göster"
 
 #. [label]: id=asdf
-#: data/gui/window/server_info.cfg:78
+#: data/gui/window/server_info.cfg:79
 #, fuzzy
 #| msgid "Map Information"
 msgid "Server Information"
 msgstr "Harita Bilgileri"
 
 #. [widget]: id=tab_label
-#: data/gui/window/server_info.cfg:167
+#: data/gui/window/server_info.cfg:168
 #, fuzzy
 #| msgid "Advancements"
 msgid "Announcements"
@@ -5397,7 +5387,7 @@ msgstr "Tema Seç"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=help
-#: data/gui/window/title_screen.cfg:174 src/hotkey/hotkey_command.cpp:274
+#: data/gui/window/title_screen.cfg:174 src/hotkey/hotkey_command.cpp:273
 msgid "Help"
 msgstr "Yardım"
 
@@ -5604,7 +5594,7 @@ msgstr "Asker al"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/wml_error.cfg:40 src/gui/dialogs/message.cpp:210
-#: src/gui/dialogs/preferences_dialog.cpp:264
+#: src/gui/dialogs/preferences_dialog.cpp:251
 #: src/gui/dialogs/transient_message.cpp:78
 msgid "Error"
 msgstr "Hata"
@@ -5612,31 +5602,27 @@ msgstr "Hata"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=details_heading
 #: data/gui/window/wml_error.cfg:112 src/gui/dialogs/multiplayer/lobby.cpp:222
-#: src/gui/dialogs/multiplayer/lobby.cpp:238 src/gui/dialogs/wml_error.cpp:197
+#: src/gui/dialogs/multiplayer/lobby.cpp:238 src/gui/dialogs/wml_error.cpp:195
 msgid "Details:"
 msgstr "Ayrıntılar:"
 
-#: src/build_info.cpp:275
-msgid "feature^JPEG screenshots"
-msgstr "JPEG ekran görüntüleri"
-
-#: src/build_info.cpp:282
+#: src/build_info.cpp:276
 msgid "feature^Lua console completion"
 msgstr "Lua konsol tamlanması"
 
-#: src/build_info.cpp:287
+#: src/build_info.cpp:281
 msgid "feature^Legacy bidirectional rendering"
 msgstr "Eski çift yönlü işleme"
 
-#: src/build_info.cpp:294
+#: src/build_info.cpp:288
 msgid "feature^D-Bus notifications back end"
 msgstr "D-veri yolu bildirimleri geri uç"
 
-#: src/build_info.cpp:303
+#: src/build_info.cpp:297
 msgid "feature^Win32 notifications back end"
 msgstr "Win32 bildirimleri geri uç"
 
-#: src/build_info.cpp:309
+#: src/build_info.cpp:303
 msgid "feature^Cocoa notifications back end"
 msgstr "Cocoa bildirimleri geri uç"
 
@@ -5673,22 +5659,22 @@ msgid "operating_system^<unknown>"
 msgstr "<bilinmeyen>"
 
 #. TRANSLATORS: translate the part inside <...> only
-#: src/filesystem.cpp:641
+#: src/filesystem.cpp:642
 msgid "--userdata-dir=<relative path that doesn't start with a period>"
 msgstr ""
 
-#: src/filesystem.cpp:644
+#: src/filesystem.cpp:645
 msgid ""
 "Use an absolute path, or a relative path that starts with a period and a "
 "backslash"
 msgstr ""
 
 #. TRANSLATORS: translate the part inside <...> only
-#: src/filesystem.cpp:709 src/filesystem.cpp:730
+#: src/filesystem.cpp:710 src/filesystem.cpp:731
 msgid "--userdata-dir=<relative path>"
 msgstr ""
 
-#: src/filesystem.cpp:712 src/filesystem.cpp:733
+#: src/filesystem.cpp:713 src/filesystem.cpp:734
 msgid ""
 "Use absolute paths. Relative paths are deprecated because they are "
 "interpreted relative to $HOME"
@@ -5704,7 +5690,7 @@ msgstr ""
 #. other's resources rather than duplicating them. For example,
 #. Swedish (sv) and Danish (da) are such, so Swedish translator could
 #. translate this message as "sv,da", while Danish as "da,sv".
-#: src/filesystem.cpp:1639
+#: src/filesystem.cpp:1640
 msgid "language code for localized resources^en_US"
 msgstr "tr"
 
@@ -5858,228 +5844,222 @@ msgid "Linked '$id' group has multiple definitions."
 msgstr "Bağlantılı '$id' grubunun birden fazla tanımı var."
 
 #: src/gui/core/window_builder.cpp:317 src/gui/widgets/addon_list.cpp:430
-#: src/gui/widgets/chatbox.cpp:815 src/gui/widgets/listbox.cpp:811
+#: src/gui/widgets/chatbox.cpp:815 src/gui/widgets/listbox.cpp:810
 #: src/gui/widgets/multi_page.cpp:199 src/gui/widgets/panel.cpp:194
-#: src/gui/widgets/scroll_label.cpp:220 src/gui/widgets/scrollbar_panel.cpp:98
-#: src/gui/widgets/size_lock.cpp:125 src/gui/widgets/stacked_widget.cpp:241
+#: src/gui/widgets/scroll_label.cpp:224 src/gui/widgets/scrollbar_panel.cpp:98
+#: src/gui/widgets/size_lock.cpp:125 src/gui/widgets/stacked_widget.cpp:240
 #: src/gui/widgets/toggle_panel.cpp:402 src/gui/widgets/tree_view.cpp:304
 #: src/gui/widgets/unit_preview_pane.cpp:607
 msgid "No grid defined."
 msgstr "Tanımlı bir ızgara yok."
 
-#: src/gui/core/window_builder.cpp:436
-msgid "A row must have a column."
+#: src/gui/core/window_builder.cpp:433
+#, fuzzy
+#| msgid "A row must have a column."
+msgid "Grid '$grid' row $row must have at least one column."
 msgstr "Her satırın bir sütunu olmalı."
 
-#: src/gui/core/window_builder.cpp:437
-msgid "Number of columns differ."
-msgstr "Sütun sayıları farklı."
+#: src/gui/core/window_builder.cpp:445
+msgid ""
+"Grid '$grid' row $row has a differing number of columns ($found found, "
+"$expected expected)"
+msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:193
+#: src/gui/dialogs/addon/manager.cpp:194
 msgid "addons_view^All Add-ons"
 msgstr "Bütün Eklentiler"
 
-#: src/gui/dialogs/addon/manager.cpp:194
+#: src/gui/dialogs/addon/manager.cpp:195
 msgid "addons_view^Installed"
 msgstr "Kurulu"
 
-#: src/gui/dialogs/addon/manager.cpp:195
+#: src/gui/dialogs/addon/manager.cpp:196
 msgid "addons_view^Upgradable"
 msgstr "Yükseltilebilir"
 
-#: src/gui/dialogs/addon/manager.cpp:196
+#: src/gui/dialogs/addon/manager.cpp:197
 msgid "addons_view^Publishable"
 msgstr "Yayımlanabilir"
 
-#: src/gui/dialogs/addon/manager.cpp:197
+#: src/gui/dialogs/addon/manager.cpp:198
 msgid "addons_view^Not Installed"
 msgstr "Kurulmamış"
 
-#: src/gui/dialogs/addon/manager.cpp:201
+#: src/gui/dialogs/addon/manager.cpp:202
 msgid "addons_of_type^Campaigns"
 msgstr "Seferberlikler"
 
-#: src/gui/dialogs/addon/manager.cpp:202
+#: src/gui/dialogs/addon/manager.cpp:203
 msgid "addons_of_type^Scenarios"
 msgstr "Senaryolar"
 
-#: src/gui/dialogs/addon/manager.cpp:203
+#: src/gui/dialogs/addon/manager.cpp:204
 msgid "addons_of_type^SP/MP campaigns"
 msgstr "TO/ÇO seferberlikler"
 
-#: src/gui/dialogs/addon/manager.cpp:204
+#: src/gui/dialogs/addon/manager.cpp:205
 msgid "addons_of_type^MP campaigns"
 msgstr "ÇO seferberlikler"
 
-#: src/gui/dialogs/addon/manager.cpp:205
+#: src/gui/dialogs/addon/manager.cpp:206
 msgid "addons_of_type^MP scenarios"
 msgstr "ÇO senaryolar"
 
-#: src/gui/dialogs/addon/manager.cpp:206
+#: src/gui/dialogs/addon/manager.cpp:207
 msgid "addons_of_type^MP map-packs"
 msgstr "ÇO harita paketleri"
 
-#: src/gui/dialogs/addon/manager.cpp:207
+#: src/gui/dialogs/addon/manager.cpp:208
 msgid "addons_of_type^MP eras"
 msgstr "ÇO çağlar"
 
-#: src/gui/dialogs/addon/manager.cpp:208
+#: src/gui/dialogs/addon/manager.cpp:209
 msgid "addons_of_type^MP factions"
 msgstr "ÇO birlikleri"
 
-#: src/gui/dialogs/addon/manager.cpp:209
+#: src/gui/dialogs/addon/manager.cpp:210
 msgid "addons_of_type^Modifications"
 msgstr "Değişiklikler"
 
-#: src/gui/dialogs/addon/manager.cpp:210
+#: src/gui/dialogs/addon/manager.cpp:211
 msgid "addons_of_type^Cores"
 msgstr "Çekirdekler"
 
-#: src/gui/dialogs/addon/manager.cpp:211
+#: src/gui/dialogs/addon/manager.cpp:212
 msgid "addons_of_type^Resources"
 msgstr "Kaynaklar"
 
-#: src/gui/dialogs/addon/manager.cpp:213
+#: src/gui/dialogs/addon/manager.cpp:214
 msgid "addons_of_type^Other"
 msgstr "Diğer"
 
-#: src/gui/dialogs/addon/manager.cpp:214
+#: src/gui/dialogs/addon/manager.cpp:215
 msgid "addons_of_type^Unknown"
 msgstr "Bilinmeyen"
 
-#: src/gui/dialogs/addon/manager.cpp:218
+#: src/gui/dialogs/addon/manager.cpp:219
 msgid "addons_order^Name ($order)"
 msgstr "İsim ($order)"
 
-#: src/gui/dialogs/addon/manager.cpp:221
+#: src/gui/dialogs/addon/manager.cpp:222
 msgid "addons_order^Author ($order)"
 msgstr "Yazar ($order)"
 
-#: src/gui/dialogs/addon/manager.cpp:224
+#: src/gui/dialogs/addon/manager.cpp:225
 msgid "addons_order^Size ($order)"
 msgstr "Boyut ($order)"
 
-#: src/gui/dialogs/addon/manager.cpp:227
+#: src/gui/dialogs/addon/manager.cpp:228
 msgid "addons_order^Downloads ($order)"
 msgstr "İndirmeler ($order)"
 
-#: src/gui/dialogs/addon/manager.cpp:230
+#: src/gui/dialogs/addon/manager.cpp:231
 msgid "addons_order^Type ($order)"
 msgstr "Tür ($order)"
 
-#: src/gui/dialogs/addon/manager.cpp:233
+#: src/gui/dialogs/addon/manager.cpp:234
 msgid "addons_order^Last updated ($datelike_order)"
 msgstr "Son güncellenme ($datelike_order)"
 
-#: src/gui/dialogs/addon/manager.cpp:236
+#: src/gui/dialogs/addon/manager.cpp:237
 msgid "addons_order^First uploaded ($datelike_order)"
 msgstr "İlk yayımlanma ($datelike_order)"
 
-#: src/gui/dialogs/addon/manager.cpp:265 src/gui/widgets/addon_list.cpp:103
+#: src/gui/dialogs/addon/manager.cpp:261 src/gui/widgets/addon_list.cpp:103
 msgid "addon_state^Not installed"
 msgstr "Kurulu değil"
 
-#: src/gui/dialogs/addon/manager.cpp:266 src/gui/widgets/addon_list.cpp:103
+#: src/gui/dialogs/addon/manager.cpp:262 src/gui/widgets/addon_list.cpp:103
 msgid "addon_state^Published, not installed"
 msgstr "Yayımlanmış, kurulmamış"
 
-#: src/gui/dialogs/addon/manager.cpp:270 src/gui/widgets/addon_list.cpp:111
+#: src/gui/dialogs/addon/manager.cpp:266 src/gui/widgets/addon_list.cpp:111
 msgid "addon_state^Installed"
 msgstr "Kurulu"
 
-#: src/gui/dialogs/addon/manager.cpp:271 src/gui/widgets/addon_list.cpp:111
+#: src/gui/dialogs/addon/manager.cpp:267 src/gui/widgets/addon_list.cpp:111
 msgid "addon_state^Published"
 msgstr "Yayımlanmış"
 
-#: src/gui/dialogs/addon/manager.cpp:275
+#: src/gui/dialogs/addon/manager.cpp:271
 msgid "addon_state^Installed, not tracking local version"
 msgstr "Kurulu, yerel sürüm takip edilmiyor"
 
-#: src/gui/dialogs/addon/manager.cpp:278
+#: src/gui/dialogs/addon/manager.cpp:274
 msgid "addon_state^Published, not tracking local version"
 msgstr "Yayımlanmış, yerel sürüm takip edilmiyor"
 
-#: src/gui/dialogs/addon/manager.cpp:282
+#: src/gui/dialogs/addon/manager.cpp:278
 msgid "addon_state^Installed ($local_version|), upgradable"
 msgstr "Kurulu ($local_version|), yükseltilebilir"
 
-#: src/gui/dialogs/addon/manager.cpp:283
+#: src/gui/dialogs/addon/manager.cpp:279
 msgid "addon_state^Published ($local_version| installed), upgradable"
 msgstr "Yayımlanmış ($local_version| kurulu), yükseltilebilir"
 
-#: src/gui/dialogs/addon/manager.cpp:289
+#: src/gui/dialogs/addon/manager.cpp:285
 msgid "addon_state^Installed ($local_version|), outdated on server"
 msgstr "Kurulu ($local_version|), sunucuda eski sürüm"
 
-#: src/gui/dialogs/addon/manager.cpp:290
+#: src/gui/dialogs/addon/manager.cpp:286
 msgid "addon_state^Published ($local_version| installed), outdated on server"
 msgstr "Yayımlanmış ($local_version| kurulu), sunucuda eski sürüm"
 
-#: src/gui/dialogs/addon/manager.cpp:296 src/gui/widgets/addon_list.cpp:114
+#: src/gui/dialogs/addon/manager.cpp:292 src/gui/widgets/addon_list.cpp:114
 msgid "addon_state^Installed, not ready to publish"
 msgstr "Kurulu, yayımlamaya hazır değil"
 
-#: src/gui/dialogs/addon/manager.cpp:297 src/gui/widgets/addon_list.cpp:114
+#: src/gui/dialogs/addon/manager.cpp:293 src/gui/widgets/addon_list.cpp:114
 msgid "addon_state^Ready to publish"
 msgstr "Yayımlamaya hazır"
 
-#: src/gui/dialogs/addon/manager.cpp:301 src/gui/widgets/addon_list.cpp:126
+#: src/gui/dialogs/addon/manager.cpp:297 src/gui/widgets/addon_list.cpp:126
 msgid "addon_state^Installed, broken"
 msgstr "Kurulu, bozuk"
 
-#: src/gui/dialogs/addon/manager.cpp:302 src/gui/widgets/addon_list.cpp:126
+#: src/gui/dialogs/addon/manager.cpp:298 src/gui/widgets/addon_list.cpp:126
 msgid "addon_state^Published, broken"
 msgstr "Yayımlanmış, bozuk"
 
-#: src/gui/dialogs/addon/manager.cpp:305 src/gui/widgets/addon_list.cpp:130
+#: src/gui/dialogs/addon/manager.cpp:301 src/gui/widgets/addon_list.cpp:130
 msgid "addon_state^Unknown"
 msgstr "Bilinmiyor"
 
-#: src/gui/dialogs/addon/manager.cpp:367
+#: src/gui/dialogs/addon/manager.cpp:363
 msgid "ascending"
 msgstr "artan"
 
 #. TRANSLATORS: Sorting order of dates, oldest first
-#: src/gui/dialogs/addon/manager.cpp:369
+#: src/gui/dialogs/addon/manager.cpp:365
 msgid "oldest to newest"
 msgstr "eskiden yeniye"
 
-#: src/gui/dialogs/addon/manager.cpp:372
+#: src/gui/dialogs/addon/manager.cpp:368
 msgid "descending"
 msgstr "azalan"
 
 #. TRANSLATORS: Sorting order of dates, newest first
-#: src/gui/dialogs/addon/manager.cpp:374
+#: src/gui/dialogs/addon/manager.cpp:370
 msgid "newest to oldest"
 msgstr "yeniden eskiye"
 
-#: src/gui/dialogs/addon/manager.cpp:416 src/gui/dialogs/chat_log.cpp:416
-#: src/gui/dialogs/game_cache_options.cpp:105
-#: src/gui/dialogs/game_version_dialog.cpp:182
-#: src/gui/dialogs/gamestate_inspector.cpp:429
-#: src/gui/dialogs/lua_interpreter.cpp:491
-#: src/gui/dialogs/screenshot_notification.cpp:102
-#: src/gui/dialogs/wml_error.cpp:229
-msgid "Clipboard support not found, contact your packager"
-msgstr "Pano desteği bulunamadı, paketçiniz ile iletişime geçin"
-
-#: src/gui/dialogs/addon/manager.cpp:493
+#: src/gui/dialogs/addon/manager.cpp:469
 msgid "addons^Back to List"
 msgstr "Listeye dön"
 
-#: src/gui/dialogs/addon/manager.cpp:505
+#: src/gui/dialogs/addon/manager.cpp:481
 msgid "An error occurred while downloading the add-ons list from the server."
 msgstr "Sunucudan eklenti listesini indirirken bir sorun çıktı"
 
-#: src/gui/dialogs/addon/manager.cpp:541
+#: src/gui/dialogs/addon/manager.cpp:517
 msgid "No Add-ons Available"
 msgstr "Eklenti yok"
 
-#: src/gui/dialogs/addon/manager.cpp:541
+#: src/gui/dialogs/addon/manager.cpp:517
 msgid "There are no add-ons available for download from this server."
 msgstr "Bu sunucudan indirmeye uygun eklenti yok"
 
-#: src/gui/dialogs/addon/manager.cpp:729
+#: src/gui/dialogs/addon/manager.cpp:705
 msgid ""
 "The following add-on appears to have publishing or version control "
 "information stored locally, and will not be removed:"
@@ -6087,15 +6067,15 @@ msgstr ""
 "Aşağıdaki eklentinin yayım veya sürüm denetim bilgisi yerel olarak "
 "saklandığı için kaldırılmayacaktır:"
 
-#: src/gui/dialogs/addon/manager.cpp:737
+#: src/gui/dialogs/addon/manager.cpp:713
 msgid "The following add-on could not be deleted properly:"
 msgstr "Aşağıdaki eklenti düzgün silinemedi:"
 
-#: src/gui/dialogs/addon/manager.cpp:790
+#: src/gui/dialogs/addon/manager.cpp:766
 msgid "Warning"
 msgstr "Uyarı"
 
-#: src/gui/dialogs/addon/manager.cpp:791
+#: src/gui/dialogs/addon/manager.cpp:767
 msgid ""
 "The remote version of this add-on is greater or equal to the version being "
 "uploaded. Do you really wish to continue?"
@@ -6103,29 +6083,25 @@ msgstr ""
 "Bu eklentinin uzak sürümü sunucuya yüklenen sürümden büyük veya eşit, devam "
 "etmek istediğinize emin misiniz?"
 
-#: src/gui/dialogs/addon/manager.cpp:800
+#: src/gui/dialogs/addon/manager.cpp:776
 msgid "Invalid icon path. Make sure the path points to a valid image."
 msgstr ""
 "Geçersiz simge yolu. yolun geçerli bir resme işaret ettiğine emin olun."
 
-#: src/gui/dialogs/addon/manager.cpp:803 src/gui/dialogs/addon/manager.cpp:845
+#: src/gui/dialogs/addon/manager.cpp:779 src/gui/dialogs/addon/manager.cpp:821
 msgid "The server responded with an error:"
 msgstr "Sunucu bir hata verdi:"
 
-#: src/gui/dialogs/addon/manager.cpp:804
-msgid "Terms"
-msgstr "Şartlar"
-
-#: src/gui/dialogs/addon/manager.cpp:806
+#: src/gui/dialogs/addon/manager.cpp:782
 msgid "The add-on was rejected by the server:"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:821 src/gui/dialogs/addon/manager.cpp:848
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:506
+#: src/gui/dialogs/addon/manager.cpp:797 src/gui/dialogs/addon/manager.cpp:824
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:507
 msgid "Response"
 msgstr "Yanıt"
 
-#: src/gui/dialogs/addon/manager.cpp:833
+#: src/gui/dialogs/addon/manager.cpp:809
 msgid ""
 "Deleting '$addon|' will permanently erase its download and upload counts on "
 "the add-ons server. Do you really wish to continue?"
@@ -6133,9 +6109,13 @@ msgstr ""
 "'$addon|' eklentisini silmek eklenti sunucusundaki indirme ve yükleme "
 "sayılarını kalıcı olarak siler, Devam etmek istediğinize emin misiniz?"
 
-#: src/gui/dialogs/addon/manager.cpp:865
+#: src/gui/dialogs/addon/manager.cpp:841
 msgid "Do you want to uninstall '$addon|'?"
 msgstr "'$addon|' eklentisini silmek ister misiniz?"
+
+#: src/gui/dialogs/addon/manager.cpp:931
+msgid "url^None"
+msgstr "Yok"
 
 #: src/gui/dialogs/attack_predictions.cpp:116
 msgid "No usable weapon"
@@ -6157,10 +6137,19 @@ msgstr "Saldıranın direnci vs"
 msgid "Attacker vulnerability vs"
 msgstr "Saldıranın yaralanabilirliği vs"
 
-#: src/gui/dialogs/campaign_selection.cpp:324
+#: src/gui/dialogs/campaign_selection.cpp:323
 #: src/gui/dialogs/multiplayer/lobby.cpp:473
 msgid "active_modifications^None"
 msgstr "Yok"
+
+#: src/gui/dialogs/chat_log.cpp:416 src/gui/dialogs/game_cache_options.cpp:105
+#: src/gui/dialogs/game_version_dialog.cpp:182
+#: src/gui/dialogs/gamestate_inspector.cpp:429
+#: src/gui/dialogs/lua_interpreter.cpp:491
+#: src/gui/dialogs/screenshot_notification.cpp:99
+#: src/gui/dialogs/wml_error.cpp:227
+msgid "Clipboard support not found, contact your packager"
+msgstr "Pano desteği bulunamadı, paketçiniz ile iletişime geçin"
 
 #: src/gui/dialogs/depcheck_confirm_change.cpp:66
 msgid "$requester requires the following modifications to be enabled:"
@@ -6218,19 +6207,19 @@ msgstr "Dosya Bul"
 msgid "Open"
 msgstr "Aç"
 
-#: src/gui/dialogs/file_dialog.cpp:304
+#: src/gui/dialogs/file_dialog.cpp:303
 msgid "The file already exists. Do you wish to overwrite it?"
 msgstr "Bu dosya zaten var. Üzerine yazmak ister misiniz?"
 
-#: src/gui/dialogs/file_dialog.cpp:328
+#: src/gui/dialogs/file_dialog.cpp:327
 msgid "The file or folder $path cannot be created."
 msgstr "$path dizini/dosyası oluşturulamıyor."
 
-#: src/gui/dialogs/file_dialog.cpp:334
+#: src/gui/dialogs/file_dialog.cpp:333
 msgid "The file or folder $path does not exist."
 msgstr "$path dizini/dosyası yok."
 
-#: src/gui/dialogs/file_dialog.cpp:709
+#: src/gui/dialogs/file_dialog.cpp:708
 msgid ""
 "Could not create a new folder at $path|. Make sure you have the appropriate "
 "permissions to write to this location."
@@ -6238,19 +6227,19 @@ msgstr ""
 "$path| üzerinde yeni dizin oluşturulamadı. Bu konuma yazmak için gerekli "
 "izinlerin olduğundan emin olun."
 
-#: src/gui/dialogs/file_dialog.cpp:727
+#: src/gui/dialogs/file_dialog.cpp:726
 msgid "The following folder and its contents will be permanently deleted:"
 msgstr "Aşağıdaki dizin ve içerikleri kalıcı olarak silinecektir:"
 
-#: src/gui/dialogs/file_dialog.cpp:728
+#: src/gui/dialogs/file_dialog.cpp:727
 msgid "The following file will be permanently deleted:"
 msgstr "Aşağıdaki dosya kalıcı olarak silinecektir:"
 
-#: src/gui/dialogs/file_dialog.cpp:729
+#: src/gui/dialogs/file_dialog.cpp:728
 msgid "Do you wish to continue?"
 msgstr "Devam etmek ister misiniz?"
 
-#: src/gui/dialogs/file_dialog.cpp:741
+#: src/gui/dialogs/file_dialog.cpp:740
 msgid ""
 "Could not delete $path|. Make sure you have the appropriate permissions to "
 "write to this location."
@@ -6267,9 +6256,9 @@ msgid "dir_size^Unknown"
 msgstr "Bilinmeyen"
 
 #: src/gui/dialogs/game_cache_options.cpp:139
-#: src/gui/dialogs/network_transmission.cpp:81
-#: src/gui/dialogs/network_transmission.cpp:82
-#: src/gui/dialogs/screenshot_notification.cpp:148
+#: src/gui/dialogs/network_transmission.cpp:87
+#: src/gui/dialogs/network_transmission.cpp:88
+#: src/gui/dialogs/screenshot_notification.cpp:146
 msgid "unit_byte^B"
 msgstr "B"
 
@@ -6311,43 +6300,43 @@ msgstr "Sürüm $version"
 msgid "The selected file is corrupt: "
 msgstr "seçili dosya bozuk: "
 
-#: src/gui/dialogs/game_load.cpp:385
+#: src/gui/dialogs/game_load.cpp:383
 msgid "(Invalid)"
 msgstr "(Geçersiz)"
 
-#: src/gui/dialogs/game_load.cpp:422
+#: src/gui/dialogs/game_load.cpp:420
 msgid "Campaign: $campaign_name"
 msgstr "Seferberlik: $campaign_name"
 
-#: src/gui/dialogs/game_load.cpp:434
+#: src/gui/dialogs/game_load.cpp:432
 msgid "Tutorial"
 msgstr "Öğretici"
 
-#: src/gui/dialogs/game_load.cpp:437
+#: src/gui/dialogs/game_load.cpp:435
 msgid "Test scenario"
 msgstr "Deneme senaryosu"
 
-#: src/gui/dialogs/game_load.cpp:447
+#: src/gui/dialogs/game_load.cpp:445
 msgid "Replay"
 msgstr "Tekrar"
 
-#: src/gui/dialogs/game_load.cpp:449
+#: src/gui/dialogs/game_load.cpp:447
 msgid "Turn"
 msgstr "El"
 
-#: src/gui/dialogs/game_load.cpp:451
+#: src/gui/dialogs/game_load.cpp:449
 msgid "Scenario start"
 msgstr "Senaryo başlangıcı"
 
-#: src/gui/dialogs/game_load.cpp:454
+#: src/gui/dialogs/game_load.cpp:452
 msgid "Difficulty: "
 msgstr "Zorluk: "
 
-#: src/gui/dialogs/game_load.cpp:458
+#: src/gui/dialogs/game_load.cpp:456
 msgid "Version: "
 msgstr "Sürüm: "
 
-#: src/gui/dialogs/game_load.cpp:463
+#: src/gui/dialogs/game_load.cpp:461
 msgid "Modifications: "
 msgstr "Değişiklikler: "
 
@@ -6381,10 +6370,6 @@ msgstr "Sürüm $version"
 #: src/gui/dialogs/game_version_dialog.cpp:137
 msgid "Running on $os"
 msgstr "$os ile yürütülüyor"
-
-#: src/gui/dialogs/game_version_dialog.cpp:222
-msgid "version^N/A"
-msgstr "M/D"
 
 #: src/gui/dialogs/label_settings.cpp:54
 msgid "Team Labels"
@@ -6595,11 +6580,11 @@ msgstr "Seyirciler kabul edilir"
 msgid "Observers not allowed"
 msgstr "Seyirciler yasak"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:811
+#: src/gui/dialogs/multiplayer/lobby.cpp:809
 msgid "lobby"
 msgstr "salon"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:979
+#: src/gui/dialogs/multiplayer/lobby.cpp:977
 msgid ""
 "Something is wrong with the addon version check database supporting the "
 "multiplayer lobby. Please report this at https://bugs.wesnoth.org."
@@ -6626,113 +6611,113 @@ msgstr "$side tarafı"
 msgid "Add Server"
 msgstr "Sunucu:"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:102
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:101
 msgid "Scenarios"
 msgstr "Senaryolar"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:103
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:102
 msgid "Multiplayer Campaigns"
 msgstr "Çok oyuncu Seferberlikler"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:104
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:103
 msgid "Singleplayer Campaigns"
 msgstr "Tek oyunculu Seferberlikler"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:105
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:104
 msgid "Custom Maps"
 msgstr "Özel Haritalar"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:106
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:105
 msgid "Custom Scenarios"
 msgstr "Özel Senaryolar"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:107
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:106
 msgid "Random Maps"
 msgstr "Rastgele Haritalar"
 
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:180
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:181
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:182
 msgid "No games found."
 msgstr "Oyun bulunamadı."
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:249
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:248
 msgid "No eras found."
 msgstr "Hiç çağ bulunamadı."
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:250
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:249
 msgid "No eras found"
 msgstr "Hiç çağ bulunamadı"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:278
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:277
 msgid "Independent: Random factions assigned independently"
 msgstr "Bağımsız: Bağımsız atanmış rastgele birlikler"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:279
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:278
 msgid "No Mirror: No two players will get the same faction"
 msgstr "Aksetme olmasın: Hiçbir oyuncu aynı birliği alamaz"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:280
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:279
 msgid "No Ally Mirror: No two allied players will get the same faction"
 msgstr "Müttefik aksetmesi olnasın: Hiçbir müttefik oyuncu aynı birliği alamaz"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:529
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:528
 msgid "No eras available for this game."
 msgstr "Bu oyun için hiç çağ mevcut değil."
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:731
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:730
 msgid "number of players^$min to $max"
 msgstr "$min ile $max"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:828
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:827
 msgid "The selected game has no sides!"
 msgstr "Seçili oyunda hiç taraf yok!"
 
 #. TRANSLATORS: This sentence will be followed by some details of the error, most likely the "Map could not be loaded" message from create_engine.cpp
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:835
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:834
 #, fuzzy
 #| msgid "The selected game can not be created."
 msgid "The selected game cannot be created."
 msgstr "Seçili oyun oluşturulamadı."
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:904
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:906
 msgid "Choose Starting Scenario"
 msgstr "Başlangıç Senaryosunu Seçin"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:904
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:906
 msgid "Select at which point to begin this campaign."
 msgstr "Bu seferberliğe nerden başlayacağınızı seçin."
 
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:217
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:218
 msgid "Computer Player"
 msgstr "Bilgisayar Oyuncu"
 
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:219
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:220
 msgid "Empty slot"
 msgstr "boş yer"
 
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:221
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:222
 msgid "Reserved for $playername"
 msgstr "$playername için ayrılmış"
 
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:223
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:224
 msgid "Vacant slot"
 msgstr "Açık yer"
 
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:227
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:228
 msgid "empty"
 msgstr "boş"
 
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:254
-#: src/gui/dialogs/multiplayer/mp_staging.cpp:124
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:255
+#: src/gui/dialogs/multiplayer/mp_staging.cpp:125
 msgid "this game"
 msgstr "bu oyun"
 
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:364
-#: src/gui/dialogs/multiplayer/mp_staging.cpp:96
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:365
+#: src/gui/dialogs/multiplayer/mp_staging.cpp:97
 msgid "Team:"
 msgstr "Takım:"
 
-#: src/gui/dialogs/multiplayer/mp_staging.cpp:484
+#: src/gui/dialogs/multiplayer/mp_staging.cpp:485
 msgid "Waiting for players to choose factions..."
 msgstr "Oyuncuların birlikleri seçmesi bekleniyor..."
 
@@ -6740,33 +6725,33 @@ msgstr "Oyuncuların birlikleri seçmesi bekleniyor..."
 msgid "The End"
 msgstr "Son"
 
-#: src/gui/dialogs/preferences_dialog.cpp:187
+#: src/gui/dialogs/preferences_dialog.cpp:174
 msgid "friend"
 msgstr "arkadaş"
 
-#: src/gui/dialogs/preferences_dialog.cpp:192
+#: src/gui/dialogs/preferences_dialog.cpp:179
 msgid "ignored"
 msgstr "gözardı"
 
-#: src/gui/dialogs/preferences_dialog.cpp:246
-#: src/gui/dialogs/preferences_dialog.cpp:306
+#: src/gui/dialogs/preferences_dialog.cpp:233
+#: src/gui/dialogs/preferences_dialog.cpp:293
 msgid "No username specified"
 msgstr "kullanıcı adı belirtilmemiş"
 
-#: src/gui/dialogs/preferences_dialog.cpp:264
+#: src/gui/dialogs/preferences_dialog.cpp:251
 msgid "Invalid username"
 msgstr "Geçersiz kullanıcı adı"
 
-#: src/gui/dialogs/preferences_dialog.cpp:311
+#: src/gui/dialogs/preferences_dialog.cpp:298
 msgid "Not on friends or ignore lists"
 msgstr "Arkadaşlar veya gözardı edilenler listenizde değil"
 
-#: src/gui/dialogs/preferences_dialog.cpp:853
-#: src/gui/dialogs/preferences_dialog.cpp:923
+#: src/gui/dialogs/preferences_dialog.cpp:827
+#: src/gui/dialogs/preferences_dialog.cpp:897
 msgid "No hotkey selected"
 msgstr "Hiç kısayol seçilmedi."
 
-#: src/gui/dialogs/preferences_dialog.cpp:884
+#: src/gui/dialogs/preferences_dialog.cpp:858
 msgid ""
 "“<b>$hotkey_sequence|</b>” is in use by “<b>$old_hotkey_action|</b>”.\n"
 "Do you wish to reassign it to “<b>$new_hotkey_action|</b>”?"
@@ -6775,23 +6760,23 @@ msgstr ""
 "kullanılıyor.\n"
 "“<b>$new_hotkey_action|</b>” ile değiştirilsin mi?"
 
-#: src/gui/dialogs/preferences_dialog.cpp:890
+#: src/gui/dialogs/preferences_dialog.cpp:864
 msgid "Reassign Hotkey"
 msgstr "Klavye Kısayollarını tekrar ata"
 
-#: src/gui/dialogs/preferences_dialog.cpp:907
+#: src/gui/dialogs/preferences_dialog.cpp:881
 msgid "All hotkeys have been reset to their default values."
 msgstr "Bütün kısayollar ilk değerlerine sıfırlandı."
 
-#: src/gui/dialogs/preferences_dialog.cpp:907
+#: src/gui/dialogs/preferences_dialog.cpp:881
 msgid "Hotkeys Reset"
 msgstr "Kısayolları Sıfırla"
 
-#: src/gui/dialogs/preferences_dialog.cpp:1041
+#: src/gui/dialogs/preferences_dialog.cpp:1011
 msgid "∞"
 msgstr "∞"
 
-#: src/gui/dialogs/screenshot_notification.cpp:130
+#: src/gui/dialogs/screenshot_notification.cpp:128
 msgid ""
 "Unsupported image format.\n"
 "\n"
@@ -6805,20 +6790,20 @@ msgstr ""
 msgid "All Scenarios"
 msgstr "Bütün Senaryolar"
 
-#: src/gui/dialogs/statistics_dialog.cpp:181
-#: src/gui/dialogs/statistics_dialog.cpp:341
+#: src/gui/dialogs/statistics_dialog.cpp:180
+#: src/gui/dialogs/statistics_dialog.cpp:339
 msgid "This Turn"
 msgstr "Bu El"
 
-#: src/gui/dialogs/statistics_dialog.cpp:217
+#: src/gui/dialogs/statistics_dialog.cpp:216
 msgid "Actual hit rates, by chance to hit:"
 msgstr ""
 
-#: src/gui/dialogs/statistics_dialog.cpp:219
+#: src/gui/dialogs/statistics_dialog.cpp:218
 msgid "(no attacks have taken place yet)"
 msgstr ""
 
-#: src/gui/dialogs/statistics_dialog.cpp:328
+#: src/gui/dialogs/statistics_dialog.cpp:326
 msgid ""
 "stats dialog^Difference of actual outcome to expected outcome, as a "
 "percentage.\n"
@@ -6828,37 +6813,37 @@ msgid ""
 "number of hits inflicted/taken."
 msgstr ""
 
-#: src/gui/dialogs/statistics_dialog.cpp:372
+#: src/gui/dialogs/statistics_dialog.cpp:370
 msgid "Recruits"
 msgstr "Asker alımlar"
 
-#: src/gui/dialogs/statistics_dialog.cpp:373
+#: src/gui/dialogs/statistics_dialog.cpp:371
 msgid "Recalls"
 msgstr "Çağrılanlar"
 
-#: src/gui/dialogs/statistics_dialog.cpp:374
+#: src/gui/dialogs/statistics_dialog.cpp:372
 msgid "Advancements"
 msgstr "Terfiler"
 
-#: src/gui/dialogs/statistics_dialog.cpp:375
+#: src/gui/dialogs/statistics_dialog.cpp:373
 msgid "Losses"
 msgstr "Kayıplar"
 
-#: src/gui/dialogs/statistics_dialog.cpp:376
+#: src/gui/dialogs/statistics_dialog.cpp:374
 msgid "Kills"
 msgstr "Öldürülen"
 
-#: src/gui/dialogs/statistics_dialog.cpp:398
-#: src/gui/dialogs/statistics_dialog.cpp:405
+#: src/gui/dialogs/statistics_dialog.cpp:396
+#: src/gui/dialogs/statistics_dialog.cpp:403
 msgid "Inflicted"
 msgstr "Verilen"
 
-#: src/gui/dialogs/statistics_dialog.cpp:411
-#: src/gui/dialogs/statistics_dialog.cpp:418
+#: src/gui/dialogs/statistics_dialog.cpp:409
+#: src/gui/dialogs/statistics_dialog.cpp:416
 msgid "Taken"
 msgstr "Alınan"
 
-#: src/gui/dialogs/statistics_dialog.cpp:459
+#: src/gui/dialogs/statistics_dialog.cpp:457
 msgid "$count|× $name"
 msgstr "$count|× $name"
 
@@ -6971,30 +6956,30 @@ msgstr "$player odadan çıktı"
 msgid "Mandatory widget '$id' hasn't been defined."
 msgstr "Zorunlu pencere gereci '$id' tanımlı değil."
 
-#: src/gui/widgets/label.cpp:153
+#: src/gui/widgets/label.cpp:125
 msgid "Opening links is not supported, contact your packager"
 msgstr "Bağlantı açma desteklenmiyor, paketçiniz ile irtibata geçin"
 
-#: src/gui/widgets/label.cpp:172
+#: src/gui/widgets/label.cpp:143
 msgid "Do you want to open this link?"
 msgstr "Bağlantıyı açmak istiyor musunuz?"
 
-#: src/gui/widgets/label.cpp:203
+#: src/gui/widgets/label.cpp:174
 msgid "Copied link!"
 msgstr "Bağlantı kopyalandı!"
 
-#: src/gui/widgets/listbox.cpp:921 src/gui/widgets/multi_page.cpp:285
+#: src/gui/widgets/listbox.cpp:920 src/gui/widgets/multi_page.cpp:285
 msgid ""
 "'list_data' must have the same number of columns as the 'list_definition'."
 msgstr "'list_data', 'list_definition' ile aynı sütun sayısında olmalı."
 
-#: src/gui/widgets/listbox.cpp:965 src/gui/widgets/listbox.cpp:1070
-#: src/gui/widgets/listbox.cpp:1175 src/gui/widgets/scrollbar_panel.cpp:147
+#: src/gui/widgets/listbox.cpp:964 src/gui/widgets/listbox.cpp:1069
+#: src/gui/widgets/listbox.cpp:1174 src/gui/widgets/scrollbar_panel.cpp:147
 msgid "No list defined."
 msgstr "Tanımlı bir liste yok."
 
-#: src/gui/widgets/listbox.cpp:970 src/gui/widgets/listbox.cpp:1075
-#: src/gui/widgets/listbox.cpp:1180
+#: src/gui/widgets/listbox.cpp:969 src/gui/widgets/listbox.cpp:1074
+#: src/gui/widgets/listbox.cpp:1179
 msgid "A 'list_definition' should contain one row."
 msgstr "Bir 'list_definition' tek bir satır içermelidir."
 
@@ -7002,22 +6987,22 @@ msgstr "Bir 'list_definition' tek bir satır içermelidir."
 msgid "No page defined."
 msgstr "Tanımlı bir sayfa yok."
 
-#: src/gui/widgets/multimenu_button.cpp:167
+#: src/gui/widgets/multimenu_button.cpp:171
 msgid "multimenu^All Selected"
 msgstr "Hepsi Seçili"
 
-#: src/gui/widgets/multimenu_button.cpp:172
+#: src/gui/widgets/multimenu_button.cpp:176
 msgid "multimenu^$excess other"
 msgid_plural "$excess others"
 msgstr[0] "$excess diğer"
 msgstr[1] "$excess diğerleri"
 
-#: src/gui/widgets/multimenu_button.cpp:174
-#: src/gui/widgets/multimenu_button.cpp:231
+#: src/gui/widgets/multimenu_button.cpp:178
+#: src/gui/widgets/multimenu_button.cpp:234
 msgid "multimenu^None Selected"
 msgstr "Seçili Yok"
 
-#: src/gui/widgets/pane.cpp:429
+#: src/gui/widgets/pane.cpp:416
 msgid "Need at least 1 parallel item."
 msgstr "En az 1 paralel öğe lazım."
 
@@ -7033,11 +7018,11 @@ msgstr "Tanımlı bir gereç yok."
 msgid "The number of value_labels and values don't match."
 msgstr "Değer etiketleri ile değerlerin sayısı aynı değil."
 
-#: src/gui/widgets/stacked_widget.cpp:278
+#: src/gui/widgets/stacked_widget.cpp:277
 msgid "No stack layers defined."
 msgstr "Tanımlı yığın katmanları yok."
 
-#: src/gui/widgets/styled_widget.cpp:676
+#: src/gui/widgets/styled_widget.cpp:685
 msgid "Found a widget with a helptip and without a tooltip."
 msgstr "Yardım ipucu olan ama küçük ipucu olmayan bir gereç bulundu."
 
@@ -7114,7 +7099,7 @@ msgid "Click dismiss needs a 'click_dismiss' or 'ok' button."
 msgstr "Tıklayarak kapatmak için 'kapama-tıkı' veya 'tamam' tuşu lazım."
 
 #: src/gui/widgets/window.cpp:959 src/gui/widgets/window.cpp:996
-#: src/tests/gui/test_gui2.cpp:563
+#: src/tests/gui/test_gui2.cpp:565
 msgid "Failed to show a dialog, which doesn't fit on the screen."
 msgstr "Ekrana sığmadığı için diyalog gösterilemiyor."
 
@@ -7630,320 +7615,312 @@ msgstr "Yeniden Adlandırılabilir"
 msgid "Toggle the unit being renameable."
 msgstr "Birimin yeniden adlandırılabilirliğini aç/kapar"
 
-#: src/hotkey/hotkey_command.cpp:203
-msgid "Assign Recruit List"
-msgstr "Askere alım listesini ata"
-
-#: src/hotkey/hotkey_command.cpp:203
-msgid "Assign the selected unit set as recruit list to the unit."
-msgstr "Seçili birim kümesini askere alım listesi olarak ata."
-
-#: src/hotkey/hotkey_command.cpp:205
+#: src/hotkey/hotkey_command.cpp:204
 msgid "Change Unit ID"
 msgstr "Birim Kimliğini Değiştir"
 
-#: src/hotkey/hotkey_command.cpp:206
+#: src/hotkey/hotkey_command.cpp:205
 msgid "Loyal"
 msgstr "Sadık"
 
-#: src/hotkey/hotkey_command.cpp:209
+#: src/hotkey/hotkey_command.cpp:208
 msgid "Toggle Minimap Unit Coding"
 msgstr "Küçük Harita Birim Kodlaması Aç/Kapa"
 
-#: src/hotkey/hotkey_command.cpp:210
+#: src/hotkey/hotkey_command.cpp:209
 msgid "Toggle Minimap Terrain Coding"
 msgstr "Küçük Harita Arazi Kodlaması Aç/Kapa"
 
-#: src/hotkey/hotkey_command.cpp:212
+#: src/hotkey/hotkey_command.cpp:211
 msgid "Toggle Minimap Unit Drawing"
 msgstr "Küçük Harita Birim Çizimi Aç/Kapa"
 
-#: src/hotkey/hotkey_command.cpp:213
+#: src/hotkey/hotkey_command.cpp:212
 msgid "Toggle Minimap Village Drawing"
 msgstr "Küçük Harita Köy Çizimi Aç/Kapa"
 
-#: src/hotkey/hotkey_command.cpp:214
+#: src/hotkey/hotkey_command.cpp:213
 msgid "Toggle Minimap Terrain Drawing"
 msgstr "Küçük Harita Arazi Çizimi Aç/Kapa"
 
-#: src/hotkey/hotkey_command.cpp:216
+#: src/hotkey/hotkey_command.cpp:215
 msgid "Next Brush"
 msgstr "Sonraki Fırça"
 
-#: src/hotkey/hotkey_command.cpp:217
+#: src/hotkey/hotkey_command.cpp:216
 msgid "Default Brush"
 msgstr "Öntanımlı Fırça"
 
-#: src/hotkey/hotkey_command.cpp:218
+#: src/hotkey/hotkey_command.cpp:217
 msgid "Single Tile"
 msgstr "Tek Altıgen"
 
-#: src/hotkey/hotkey_command.cpp:219
+#: src/hotkey/hotkey_command.cpp:218
 msgid "Radius One"
 msgstr "Bir Yarıçap"
 
-#: src/hotkey/hotkey_command.cpp:220
+#: src/hotkey/hotkey_command.cpp:219
 msgid "Radius Two"
 msgstr "İki Yarıçap"
 
-#: src/hotkey/hotkey_command.cpp:221
+#: src/hotkey/hotkey_command.cpp:220
 msgid "Brush NW-SE"
 msgstr "KB-GD Fırçala"
 
-#: src/hotkey/hotkey_command.cpp:222
+#: src/hotkey/hotkey_command.cpp:221
 msgid "Brush SW-NE"
 msgstr "GB-KD Fırçala"
 
-#: src/hotkey/hotkey_command.cpp:224
+#: src/hotkey/hotkey_command.cpp:223
 msgid "Cut"
 msgstr "Kes"
 
-#: src/hotkey/hotkey_command.cpp:225
+#: src/hotkey/hotkey_command.cpp:224
 msgid "Copy"
 msgstr "Kopyala"
 
-#: src/hotkey/hotkey_command.cpp:226
+#: src/hotkey/hotkey_command.cpp:225
 msgid ""
 "Left mouse button pastes from the clipboard, right brings up a context menu."
 msgstr "Sol fare tuşu panodan yapıştırır, sağ tuş içerik menüsünü açar."
 
-#: src/hotkey/hotkey_command.cpp:226
+#: src/hotkey/hotkey_command.cpp:225
 msgid "Paste"
 msgstr "Yapıştır"
 
-#: src/hotkey/hotkey_command.cpp:227
+#: src/hotkey/hotkey_command.cpp:226
 msgid "Export Selected Coordinates to System Clipboard"
 msgstr "Seçilen koordinatları sistem panosuna gönderir"
 
-#: src/hotkey/hotkey_command.cpp:228
+#: src/hotkey/hotkey_command.cpp:227
 msgid "Select All"
 msgstr "Tümünü Seç"
 
-#: src/hotkey/hotkey_command.cpp:229
+#: src/hotkey/hotkey_command.cpp:228
 msgid "Select Inverse"
 msgstr "Tersini Seç"
 
-#: src/hotkey/hotkey_command.cpp:230
+#: src/hotkey/hotkey_command.cpp:229
 msgid "Select None"
 msgstr "Hiçbir şey Seçme"
 
-#: src/hotkey/hotkey_command.cpp:231
+#: src/hotkey/hotkey_command.cpp:230
 msgid "Rotate Clipboard Clockwise"
 msgstr "Panoyu Saat Yönünde Döndür"
 
-#: src/hotkey/hotkey_command.cpp:232
+#: src/hotkey/hotkey_command.cpp:231
 msgid "Rotate Clipboard Counter-Clockwise"
 msgstr "Panoyu Saat Yönünün Tersine Döndür"
 
-#: src/hotkey/hotkey_command.cpp:233
+#: src/hotkey/hotkey_command.cpp:232
 msgid "Flip Clipboard Horizontally"
 msgstr "Panoyu Yatayda Katla"
 
-#: src/hotkey/hotkey_command.cpp:234
+#: src/hotkey/hotkey_command.cpp:233
 msgid "Flip Clipboard Vertically"
 msgstr "Panoyu Düşeyde Katla"
 
-#: src/hotkey/hotkey_command.cpp:235
+#: src/hotkey/hotkey_command.cpp:234
 msgid "Rotate Selection"
 msgstr "Seçimi Döndür"
 
-#: src/hotkey/hotkey_command.cpp:236
+#: src/hotkey/hotkey_command.cpp:235
 msgid "Flip Selection"
 msgstr "Seçimi Katla"
 
-#: src/hotkey/hotkey_command.cpp:237
+#: src/hotkey/hotkey_command.cpp:236
 msgid "Fill Selection"
 msgstr "Seçimi Doldur"
 
-#: src/hotkey/hotkey_command.cpp:238
+#: src/hotkey/hotkey_command.cpp:237
 msgid "Randomize Tiles in Selection"
 msgstr "Seçimde Rastgele Döşe"
 
-#: src/hotkey/hotkey_command.cpp:241
+#: src/hotkey/hotkey_command.cpp:240
 msgid "Apply a Mask"
 msgstr "Bir Örüntü Uygula"
 
-#: src/hotkey/hotkey_command.cpp:242
+#: src/hotkey/hotkey_command.cpp:241
 msgid "Create Mask"
 msgstr "Örüntü Üret"
 
-#: src/hotkey/hotkey_command.cpp:243
+#: src/hotkey/hotkey_command.cpp:242
 msgid "Refresh Display"
 msgstr "Görüntüyü Tazele"
 
-#: src/hotkey/hotkey_command.cpp:245
+#: src/hotkey/hotkey_command.cpp:244
 msgid "Update Terrain Transitions"
 msgstr "Arazi Geçişlerini Güncelle"
 
-#: src/hotkey/hotkey_command.cpp:248
+#: src/hotkey/hotkey_command.cpp:247
 msgid "Toggle Terrain Transition Update"
 msgstr "Arazi Geçişlerini Güncellemeyi Aç/Kapa"
 
-#: src/hotkey/hotkey_command.cpp:250
+#: src/hotkey/hotkey_command.cpp:249
 msgid "Auto-update Terrain Transitions"
 msgstr "Arazi Geçişlerini Sürekli Güncelle"
 
-#: src/hotkey/hotkey_command.cpp:251
+#: src/hotkey/hotkey_command.cpp:250
 msgid "Auto-update Terrain Transitions: No"
 msgstr "Arazi Geçişlerini Sürekli Güncelle: Hayır"
 
-#: src/hotkey/hotkey_command.cpp:252
+#: src/hotkey/hotkey_command.cpp:251
 msgid "Auto-update Terrain Transitions: Partial"
 msgstr "Arazi Geçişlerini Sürekli Güncelle: Kısmen"
 
-#: src/hotkey/hotkey_command.cpp:254
+#: src/hotkey/hotkey_command.cpp:253
 msgid "Refresh Image Cache"
 msgstr "Resim Belleğini Tazele"
 
-#: src/hotkey/hotkey_command.cpp:255
+#: src/hotkey/hotkey_command.cpp:254
 msgid "Draw Hex Coordinates"
 msgstr "Altıgen Koordinatlarını Göster"
 
-#: src/hotkey/hotkey_command.cpp:256
+#: src/hotkey/hotkey_command.cpp:255
 msgid "Draw Terrain Codes"
 msgstr "Arazi Kodlarını Göster"
 
-#: src/hotkey/hotkey_command.cpp:257
+#: src/hotkey/hotkey_command.cpp:256
 msgid "Draw Number of Bitmaps"
 msgstr "Biteşlem Sayısını Göster"
 
-#: src/hotkey/hotkey_command.cpp:259
+#: src/hotkey/hotkey_command.cpp:258
 msgid "Save Selection to Area"
 msgstr "Seçimi Bölgeye Kaydet"
 
-#: src/hotkey/hotkey_command.cpp:260
+#: src/hotkey/hotkey_command.cpp:259
 msgid "Rename Selected Area"
 msgstr "Seçili bölgeyi Yeniden Adlandır"
 
-#: src/hotkey/hotkey_command.cpp:261
+#: src/hotkey/hotkey_command.cpp:260
 msgid "Remove Selected Area"
 msgstr "Seçili Bölgeyi Kaldır"
 
-#: src/hotkey/hotkey_command.cpp:262
+#: src/hotkey/hotkey_command.cpp:261
 msgid "Add New Area"
 msgstr "Yeni Bölge Ekle"
 
-#: src/hotkey/hotkey_command.cpp:264
+#: src/hotkey/hotkey_command.cpp:263
 msgid "Edit Scenario"
 msgstr "Senaryoyu Düzenle"
 
-#: src/hotkey/hotkey_command.cpp:265
+#: src/hotkey/hotkey_command.cpp:264
 msgid "Edit Side"
 msgstr "Tarafı Düzenle"
 
-#: src/hotkey/hotkey_command.cpp:266
+#: src/hotkey/hotkey_command.cpp:265
 msgid "Remove Side"
 msgstr "Tarafı Kaldır"
 
-#: src/hotkey/hotkey_command.cpp:268
+#: src/hotkey/hotkey_command.cpp:267
 msgid "Delay Shroud Updates"
 msgstr "Örtü Güncellemeleri Geciktir"
 
-#: src/hotkey/hotkey_command.cpp:269
+#: src/hotkey/hotkey_command.cpp:268
 msgid "Update Shroud Now"
 msgstr "Örtüyü Şimdi Güncelle"
 
-#: src/hotkey/hotkey_command.cpp:270
+#: src/hotkey/hotkey_command.cpp:269
 msgid "Continue Move"
 msgstr "Harekete Devam Et"
 
-#: src/hotkey/hotkey_command.cpp:271
+#: src/hotkey/hotkey_command.cpp:270
 msgid "Find Label or Unit"
 msgstr "Etiket veya Birim Bul"
 
-#: src/hotkey/hotkey_command.cpp:272
+#: src/hotkey/hotkey_command.cpp:271
 msgid "Speak to Ally"
 msgstr "Müttefikle Konuş"
 
-#: src/hotkey/hotkey_command.cpp:273
+#: src/hotkey/hotkey_command.cpp:272
 msgid "Speak to All"
 msgstr "Herkesle konuş"
 
-#: src/hotkey/hotkey_command.cpp:275
+#: src/hotkey/hotkey_command.cpp:274
 msgid "Help about save-loading"
 msgstr ""
 
-#: src/hotkey/hotkey_command.cpp:275
+#: src/hotkey/hotkey_command.cpp:274
 msgid "Hint: save-loading is unnecessary"
 msgstr ""
 
-#: src/hotkey/hotkey_command.cpp:276
+#: src/hotkey/hotkey_command.cpp:275
 msgid "View Chat Log"
 msgstr "Sohbet Kaydını Göster"
 
-#: src/hotkey/hotkey_command.cpp:277
+#: src/hotkey/hotkey_command.cpp:276
 msgid "Enter User Command"
 msgstr "Kullanıcı komutu gir"
 
-#: src/hotkey/hotkey_command.cpp:278
+#: src/hotkey/hotkey_command.cpp:277
 msgid "Custom Command"
 msgstr "Kullanıcı komutu"
 
-#: src/hotkey/hotkey_command.cpp:279
+#: src/hotkey/hotkey_command.cpp:278
 msgid "Run Formula"
 msgstr "Formül çalıştır"
 
-#: src/hotkey/hotkey_command.cpp:280
+#: src/hotkey/hotkey_command.cpp:279
 msgid "Clear Messages"
 msgstr "İletileri Temizle"
 
-#: src/hotkey/hotkey_command.cpp:282
+#: src/hotkey/hotkey_command.cpp:281
 msgid "Change Language"
 msgstr "Dili Değiştir"
 
-#: src/hotkey/hotkey_command.cpp:283
+#: src/hotkey/hotkey_command.cpp:282
 msgid "Refresh WML"
 msgstr "WML Tazele"
 
-#: src/hotkey/hotkey_command.cpp:284
+#: src/hotkey/hotkey_command.cpp:283
 msgid "Next Tip of the Day"
 msgstr "Günün Sonraki Saati"
 
-#: src/hotkey/hotkey_command.cpp:285
+#: src/hotkey/hotkey_command.cpp:284
 msgid "Previous Tip of the Day"
 msgstr "Günün Önceki Saati"
 
-#: src/hotkey/hotkey_command.cpp:286
+#: src/hotkey/hotkey_command.cpp:285
 msgid "Start Tutorial"
 msgstr "Öğreticiyi Başlat"
 
-#: src/hotkey/hotkey_command.cpp:287
+#: src/hotkey/hotkey_command.cpp:286
 msgid "Start Campaign"
 msgstr "Seferberlik Başlat"
 
-#: src/hotkey/hotkey_command.cpp:288
+#: src/hotkey/hotkey_command.cpp:287
 msgid "Start Multiplayer Game"
 msgstr "Çok Oyunculu Oyun Başlat"
 
-#: src/hotkey/hotkey_command.cpp:289
+#: src/hotkey/hotkey_command.cpp:288
 msgid "Manage Add-ons"
 msgstr "Eklentileri Yönet"
 
-#: src/hotkey/hotkey_command.cpp:290
+#: src/hotkey/hotkey_command.cpp:289
 msgid "Manage Cores"
 msgstr "Çekirdekleri Yönet"
 
-#: src/hotkey/hotkey_command.cpp:291
+#: src/hotkey/hotkey_command.cpp:290
 msgid "Start Editor"
 msgstr "Düzenleyiciyi Başlat"
 
-#: src/hotkey/hotkey_command.cpp:292
+#: src/hotkey/hotkey_command.cpp:291
 msgid "Show Credits"
 msgstr "Jeneriği Göster"
 
-#: src/hotkey/hotkey_command.cpp:293
+#: src/hotkey/hotkey_command.cpp:292
 msgid "Start Test Scenario"
 msgstr "Deneme Senaryosunu Başlat"
 
-#: src/hotkey/hotkey_command.cpp:295
+#: src/hotkey/hotkey_command.cpp:294
 msgid "Show Helptip"
 msgstr "Yardım İpucunu Göster"
 
-#: src/hotkey/hotkey_command.cpp:297
+#: src/hotkey/hotkey_command.cpp:296
 msgid "Show Lua Console"
 msgstr "Lua Konsolunu Göster"
 
-#: src/hotkey/hotkey_command.cpp:300
+#: src/hotkey/hotkey_command.cpp:299
 msgid "Unrecognized Command"
 msgstr "Bilinmeyen Komut"
 
@@ -7969,11 +7946,11 @@ msgstr "Sunucu Uygulamasını Bul"
 msgid "Select"
 msgstr "Seçiniz"
 
-#: src/preferences/game.cpp:898
+#: src/preferences/game.cpp:903
 msgid "[%H:%M]"
 msgstr "[%H:%M]"
 
-#: src/preferences/game.cpp:901
+#: src/preferences/game.cpp:906
 msgid "[%I:%M %p]"
 msgstr "[%I:%M %p]"
 
@@ -8028,6 +8005,39 @@ msgid ""
 msgstr ""
 "'$deprecated_key' ismi '$key' diye yeniden adlandırıldı. '$deprecated_key' "
 "için destek $removal_version sürümünde kaldırılacaktır."
+
+#~ msgid "url^Copy"
+#~ msgstr "Kopyala"
+
+#~ msgid "Copy this URL to clipboard"
+#~ msgstr "Bu URL'yi panoya kopyala"
+
+#~ msgid "url^Go"
+#~ msgstr "Git"
+
+#~ msgid "Visit this URL with a web browser"
+#~ msgstr "Bu URL'yi bir tarayıcıda aç"
+
+#~ msgid "Screenshots..."
+#~ msgstr "Ekran görüntüleri..."
+
+#~ msgid "feature^JPEG screenshots"
+#~ msgstr "JPEG ekran görüntüleri"
+
+#~ msgid "Number of columns differ."
+#~ msgstr "Sütun sayıları farklı."
+
+#~ msgid "Terms"
+#~ msgstr "Şartlar"
+
+#~ msgid "version^N/A"
+#~ msgstr "M/D"
+
+#~ msgid "Assign Recruit List"
+#~ msgstr "Askere alım listesini ata"
+
+#~ msgid "Assign the selected unit set as recruit list to the unit."
+#~ msgstr "Seçili birim kümesini askere alım listesi olarak ata."
 
 #~ msgid "Room <i>“$name”</i> joined"
 #~ msgstr "<i>\"$name\"</i> odasına katıldınız"

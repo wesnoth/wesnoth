@@ -54,7 +54,6 @@
 #include "variable.hpp" // for vconfig, etc
 
 #include <boost/dynamic_bitset.hpp>
-#include <boost/function_output_iterator.hpp>
 
 #ifdef _MSC_VER
 #pragma warning (push)
@@ -244,19 +243,6 @@ static unit_race::GENDER generate_gender(const unit_type& u_type, const config& 
 
 	return generate_gender(u_type, cfg["random_gender"].to_bool());
 }
-
-struct ptr_vector_pushback
-{
-	ptr_vector_pushback(boost::ptr_vector<config>& vec) : vec_(&vec) {}
-
-	void operator()(const config& cfg)
-	{
-		vec_->push_back(new config(cfg));
-	}
-
-	//Don't use reference to be copyable.
-	boost::ptr_vector<config>* vec_;
-};
 
 // Copy constructor
 unit::unit(const unit& o)
@@ -592,8 +578,10 @@ void unit::init(const config& cfg, bool use_traits, const vconfig* vcfg)
 	// If cfg specifies [advancement]s, replace this [advancement]s with them.
 	if(cfg.has_child("advancement")) {
 		set_attr_changed(UA_ADVANCEMENTS);
-		this->advancements_.clear();
-		boost::copy(cfg.child_range("advancement"), boost::make_function_output_iterator(ptr_vector_pushback(advancements_)));
+		advancements_.clear();
+		for(const config& adv : cfg.child_range("advancement")) {
+			advancements_.push_back(adv);
+		}
 	}
 
 	// Don't use the unit_type's abilities if this config has its own defined
@@ -602,7 +590,7 @@ void unit::init(const config& cfg, bool use_traits, const vconfig* vcfg)
 		set_attr_changed(UA_ABILITIES);
 		abilities_.clear();
 		for(const config& abilities : cfg_range) {
-			this->abilities_.append(abilities);
+			abilities_.append(abilities);
 		}
 	}
 
@@ -919,7 +907,7 @@ void unit::advance_to(const unit_type& u_type, bool use_traits)
 	advancements_.clear();
 
 	for(const config& advancement : new_type.advancements()) {
-		advancements_.push_back(new config(advancement));
+		advancements_.push_back(advancement);
 	}
 
 	// If unit has specific profile, remember it and keep it after advancing
@@ -1152,9 +1140,6 @@ void unit::set_recruits(const std::vector<std::string>& recruits)
 {
 	unit_types.check_types(recruits);
 	recruit_list_ = recruits;
-	//TODO crab
-	//info_.minimum_recruit_price = 0;
-	//ai::manager::get_singleton().raise_recruit_list_changed();
 }
 
 const std::vector<std::string> unit::advances_to_translated() const
@@ -1387,7 +1372,7 @@ void unit::set_state(const std::string& state, bool value)
 
 bool unit::has_ability_by_id(const std::string& ability) const
 {
-	for(const config::any_child &ab : this->abilities_.all_children_range()) {
+	for(const config::any_child &ab : abilities_.all_children_range()) {
 		if(ab.cfg["id"] == ability) {
 			return true;
 		}
@@ -1399,10 +1384,10 @@ bool unit::has_ability_by_id(const std::string& ability) const
 void unit::remove_ability_by_id(const std::string& ability)
 {
 	set_attr_changed(UA_ABILITIES);
-	config::all_children_iterator i = this->abilities_.ordered_begin();
-	while (i != this->abilities_.ordered_end()) {
+	config::all_children_iterator i = abilities_.ordered_begin();
+	while (i != abilities_.ordered_end()) {
 		if(i->cfg["id"] == ability) {
-			i = this->abilities_.erase(i);
+			i = abilities_.erase(i);
 		} else {
 			++i;
 		}
@@ -1575,7 +1560,7 @@ void unit::write(config& cfg, bool write_all) const
 	}
 	if(write_all || get_attr_changed(UA_ADVANCEMENTS)) {
 		cfg.clear_children("advancement");
-		for(const config& advancement : this->advancements_) {
+		for(const config& advancement : advancements_) {
 			if(!advancement.empty()) {
 				cfg.add_child("advancement", advancement);
 			}
@@ -1801,11 +1786,7 @@ std::vector<config> unit::get_modification_advances() const
 void unit::set_advancements(std::vector<config> advancements)
 {
 	set_attr_changed(UA_ADVANCEMENTS);
-	this->advancements_.clear();
-	for(config& advancement : advancements) {
-		this->advancements_.push_back(new config());
-		this->advancements_.back().swap(advancement);
-	}
+	advancements_ = advancements;
 }
 
 const std::string& unit::type_id() const
@@ -2105,7 +2086,7 @@ void unit::apply_builtin_effect(std::string apply_to, const config& effect)
 					to_append.add_child(ab.key, ab.cfg);
 				}
 			}
-			this->abilities_.append(to_append);
+			abilities_.append(to_append);
 		}
 	} else if(apply_to == "remove_ability") {
 		if(const config& ab_effect = effect.child("abilities")) {
@@ -2174,8 +2155,9 @@ void unit::apply_builtin_effect(std::string apply_to, const config& effect)
 				advancements_.clear();
 			}
 
-			config temp = effect;
-			boost::copy(effect.child_range("advancement"), boost::make_function_output_iterator(ptr_vector_pushback(advancements_)));
+			for(const config& adv : effect.child_range("advancement")) {
+				advancements_.push_back(adv);
+			}
 		}
 	} else if(apply_to == "remove_advancement") {
 		const std::string& types = effect["types"];

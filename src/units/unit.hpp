@@ -25,7 +25,6 @@
 
 #include <bitset>
 #include <boost/dynamic_bitset_fwd.hpp>
-#include <boost/ptr_container/ptr_vector.hpp>
 #include <boost/variant.hpp>
 
 class display;
@@ -310,9 +309,8 @@ public:
 	 */
 	std::vector<std::pair<std::string, std::string>> amla_icons() const;
 
-	using advancements_list= boost::ptr_vector<config>;
 	/** The raw, unparsed data for modification advancements. */
-	const advancements_list& modification_advancements() const
+	const std::vector<config>& modification_advancements() const
 	{
 		return advancements_;
 	}
@@ -1882,7 +1880,7 @@ private:
 	config modifications_;
 	config abilities_;
 
-	advancements_list advancements_;
+	std::vector<config> advancements_;
 
 	t_string description_;
 	std::vector<t_string> special_notes_;

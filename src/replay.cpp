@@ -670,7 +670,7 @@ bool replay::add_start_if_not_there_yet()
 	}
 }
 
-static void show_oos_error_error_function(const std::string& message, bool /*heavy*/)
+static void show_oos_error_error_function(const std::string& message)
 {
 	replay::process_error(message);
 }

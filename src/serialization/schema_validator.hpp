@@ -113,7 +113,7 @@ protected:
 
 	/** Controls the way to print errors. */
 	bool create_exceptions_;
-	
+
 	virtual void print(message_info&);
 private:
 
@@ -141,8 +141,14 @@ private:
 	wml_type::map types_;
 
 	bool validate_schema_;
+
 protected:
-	void queue_message(const config& cfg, message_type t, const std::string& file, int line = 0, int n = 0, const std::string& tag = "", const std::string& key = "", const std::string& value = "");
+	template<typename... T>
+	void queue_message(const config& cfg, T&&... args)
+	{
+		cache_.top()[&cfg].emplace_back(std::forward<T>(args)...);
+	}
+
 	const wml_tag& active_tag() const;
 	std::string active_tag_path() const;
 	bool have_active_tag() const;
@@ -184,7 +190,7 @@ private:
 	bool tag_path_exists(const config& cfg, const reference& ref);
 	void check_for_duplicates(const std::string& name, std::vector<std::string>& seen, const config& cfg, message_type type, const std::string& file, int line, const std::string& tag);
 	static bool name_matches(const std::string& pattern, const std::string& name);
-	
+
 	void print(message_info& message) override;
 	enum { WRONG_TYPE = NEXT_ERROR, WRONG_PATH, DUPLICATE_TAG, DUPLICATE_KEY, NEXT_ERROR };
 };

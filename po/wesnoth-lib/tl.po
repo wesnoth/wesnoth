@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1.2+dev\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2020-11-21 01:40-0300\n"
+"POT-Creation-Date: 2020-12-18 22:26-0300\n"
 "PO-Revision-Date: 2006-05-13 05:43-0000\n"
 "Last-Translator: Joset Anthony Zamora <eradicus_kee@yahoo.ca>\n"
 "Language-Team: none\n"
@@ -2032,7 +2032,7 @@ msgstr ""
 msgid " (Press '$hotkey' for more information)"
 msgstr ""
 
-#: data/gui/macros/_initial.cfg:338
+#: data/gui/macros/_initial.cfg:336
 msgid "Search"
 msgstr ""
 
@@ -2127,7 +2127,7 @@ msgstr ""
 #. [button]: id=single_uninstall
 #. [button]: id=uninstall
 #: data/gui/widget/addon_list.cfg:435 data/gui/window/addon_manager.cfg:244
-#: src/gui/dialogs/addon/manager.cpp:864
+#: src/gui/dialogs/addon/manager.cpp:840
 msgid "Uninstall add-on"
 msgstr ""
 
@@ -2144,16 +2144,16 @@ msgstr ""
 #: data/gui/window/attack_predictions.cfg:304 data/gui/window/chat_log.cfg:200
 #: data/gui/window/end_credits.cfg:145
 #: data/gui/window/game_cache_options.cfg:247
-#: data/gui/window/game_stats.cfg:843 data/gui/window/game_version.cfg:645
+#: data/gui/window/game_stats.cfg:843 data/gui/window/game_version.cfg:652
 #: data/gui/window/gamestate_inspector.cfg:397
 #: data/gui/window/generator_settings.cfg:190
 #: data/gui/window/help_browser.cfg:188
-#: data/gui/window/lobby_player_info.cfg:294
+#: data/gui/window/lobby_player_info.cfg:292
 #: data/gui/window/lua_interpreter.cfg:130 data/gui/window/message.cfg:135
 #: data/gui/window/mp_alerts_options.cfg:242
 #: data/gui/window/preferences.cfg:429
-#: data/gui/window/screenshot_notification.cfg:216
-#: data/gui/window/server_info.cfg:252
+#: data/gui/window/screenshot_notification.cfg:214
+#: data/gui/window/server_info.cfg:253
 #: data/gui/window/statistics_dialog.cfg:615
 #: data/gui/window/terrain_layers.cfg:434 data/gui/window/unit_list.cfg:447
 msgid "Close"
@@ -2200,8 +2200,9 @@ msgstr ""
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=cancel
 #: data/gui/window/addon_connect.cfg:211
+#: data/gui/window/addon_license_prompt.cfg:115
 #: data/gui/window/addon_uninstall_list.cfg:174
-#: data/gui/window/campaign_dialog.cfg:457
+#: data/gui/window/campaign_dialog.cfg:458
 #: data/gui/window/campaign_difficulty.cfg:234
 #: data/gui/window/core_dialog.cfg:240 data/gui/window/custom_tod.cfg:444
 #: data/gui/window/depcheck_select_new.cfg:165
@@ -2237,6 +2238,23 @@ msgstr ""
 msgid "Cancel"
 msgstr ""
 
+#. [label]
+#: data/gui/window/addon_license_prompt.cfg:39
+msgid "addons_server^Terms"
+msgstr ""
+
+#. [label]: id=message
+#: data/gui/window/addon_license_prompt.cfg:54
+msgid ""
+"Before uploading content to this server, you must accept the following "
+"distribution terms by choosing “I Agree”."
+msgstr ""
+
+#. [button]: id=ok
+#: data/gui/window/addon_license_prompt.cfg:104
+msgid "I Agree"
+msgstr ""
+
 #. [label]: id=byline
 #: data/gui/window/addon_manager.cfg:84
 msgid "By:"
@@ -2256,7 +2274,7 @@ msgstr "Burahin ang Fayl"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [scroll_label]: id=description
 #: data/gui/window/addon_manager.cfg:157
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:583
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:582
 msgid "No description available."
 msgstr ""
 
@@ -2267,7 +2285,7 @@ msgid "Delete add-on"
 msgstr "Burahin ang Fayl"
 
 #. [label]
-#: data/gui/window/addon_manager.cfg:315 data/gui/window/addon_manager.cfg:730
+#: data/gui/window/addon_manager.cfg:315 data/gui/window/addon_manager.cfg:662
 #, fuzzy
 msgid "Type:"
 msgstr "oo"
@@ -2306,7 +2324,7 @@ msgstr ""
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=dependencies
-#: data/gui/window/addon_manager.cfg:520 src/gui/dialogs/addon/manager.cpp:949
+#: data/gui/window/addon_manager.cfg:520 src/gui/dialogs/addon/manager.cpp:914
 msgid "addon_dependencies^None"
 msgstr ""
 
@@ -2317,7 +2335,7 @@ msgstr ""
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=translations
-#: data/gui/window/addon_manager.cfg:554 src/gui/dialogs/addon/manager.cpp:963
+#: data/gui/window/addon_manager.cfg:554 src/gui/dialogs/addon/manager.cpp:928
 msgid "translations^None"
 msgstr ""
 
@@ -2326,72 +2344,44 @@ msgstr ""
 msgid "Website:"
 msgstr ""
 
-#. [label]: id=url_none
-#: data/gui/window/addon_manager.cfg:595
-#, fuzzy
-msgid "url^None"
-msgstr "Hindi"
-
-#. [button]: id=url_copy
-#: data/gui/window/addon_manager.cfg:630
-#, fuzzy
-#| msgid "Copy"
-msgid "url^Copy"
-msgstr "Kopyahin"
-
-#. [button]: id=url_copy
-#: data/gui/window/addon_manager.cfg:631
-msgid "Copy this URL to clipboard"
-msgstr ""
-
-#. [button]: id=url_go
-#: data/gui/window/addon_manager.cfg:644
-msgid "url^Go"
-msgstr ""
-
-#. [button]: id=url_go
-#: data/gui/window/addon_manager.cfg:645
-msgid "Visit this URL with a web browser"
-msgstr ""
-
 #. [text_box]: id=filter
-#: data/gui/window/addon_manager.cfg:691
+#: data/gui/window/addon_manager.cfg:623
 msgid "Filters on addon description, version, type or author."
 msgstr ""
 
 #. [label]
-#: data/gui/window/addon_manager.cfg:704
+#: data/gui/window/addon_manager.cfg:636
 #, fuzzy
 msgid "State:"
 msgstr "Idikit"
 
 #. [label]
-#: data/gui/window/addon_manager.cfg:757
+#: data/gui/window/addon_manager.cfg:689
 #, fuzzy
 msgid "Order:"
 msgstr "Gumawa ng Bagong Mapa"
 
 #. [label]
-#: data/gui/window/addon_manager.cfg:843 data/gui/window/addon_manager.cfg:1018
+#: data/gui/window/addon_manager.cfg:775 data/gui/window/addon_manager.cfg:950
 msgid "Add-ons Manager"
 msgstr ""
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=details_toggle
-#: data/gui/window/addon_manager.cfg:943 src/gui/dialogs/addon/manager.cpp:496
-#: src/gui/dialogs/addon/manager.cpp:687
+#: data/gui/window/addon_manager.cfg:875 src/gui/dialogs/addon/manager.cpp:472
+#: src/gui/dialogs/addon/manager.cpp:663
 msgid "Addon Details"
 msgstr ""
 
 #. [button]: id=update_all
-#: data/gui/window/addon_manager.cfg:957 data/gui/window/addon_manager.cfg:1121
+#: data/gui/window/addon_manager.cfg:889 data/gui/window/addon_manager.cfg:1053
 #, fuzzy
 #| msgid "Speak to All"
 msgid "Update All"
 msgstr "Magsalita sa Lahat"
 
 #. [button]: id=cancel
-#: data/gui/window/addon_manager.cfg:971 data/gui/window/addon_manager.cfg:1135
+#: data/gui/window/addon_manager.cfg:903 data/gui/window/addon_manager.cfg:1067
 msgid "Exit"
 msgstr ""
 
@@ -2497,19 +2487,19 @@ msgid "Modifications"
 msgstr "Pumili ng Resolusyon"
 
 #. [toggle_button]: id=checkbox_deterministic
-#: data/gui/window/campaign_dialog.cfg:426
+#: data/gui/window/campaign_dialog.cfg:427
 msgid "Save random seed"
 msgstr ""
 
 #. [toggle_button]: id=checkbox_deterministic
-#: data/gui/window/campaign_dialog.cfg:428
+#: data/gui/window/campaign_dialog.cfg:429
 msgid ""
 "Makes the random number generator yield the same results even after "
 "reloading a game"
 msgstr ""
 
 #. [button]: id=ok
-#: data/gui/window/campaign_dialog.cfg:443
+#: data/gui/window/campaign_dialog.cfg:444
 #: data/gui/window/campaign_difficulty.cfg:221
 #, fuzzy
 #| msgid "Play"
@@ -2715,8 +2705,8 @@ msgstr "Burahin ang Fayl"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/depcheck_confirm_change.cfg:40
-#: src/gui/dialogs/addon/manager.cpp:837 src/gui/dialogs/file_dialog.cpp:305
-#: src/gui/dialogs/file_dialog.cpp:731
+#: src/gui/dialogs/addon/manager.cpp:813 src/gui/dialogs/file_dialog.cpp:304
+#: src/gui/dialogs/file_dialog.cpp:730
 msgid "Confirm"
 msgstr ""
 
@@ -2947,7 +2937,7 @@ msgstr ""
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/window/editor_generate_map.cfg:43 src/hotkey/hotkey_command.cpp:240
+#: data/gui/window/editor_generate_map.cfg:43 src/hotkey/hotkey_command.cpp:239
 #, fuzzy
 msgid "Generate Map"
 msgstr "Gumawa ng Bagong Mapa"
@@ -3007,7 +2997,7 @@ msgstr "Gumawa ng Bagong Mapa"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/window/editor_resize_map.cfg:35 src/hotkey/hotkey_command.cpp:239
+#: data/gui/window/editor_resize_map.cfg:35 src/hotkey/hotkey_command.cpp:238
 msgid "Resize Map"
 msgstr ""
 
@@ -3311,7 +3301,7 @@ msgstr ""
 #. [button]: id=ok
 #. [button]: id=save
 #: data/gui/window/game_save.cfg:120
-#: data/gui/window/screenshot_notification.cfg:203
+#: data/gui/window/screenshot_notification.cfg:201
 #: src/gui/dialogs/file_dialog.cpp:183
 #, fuzzy
 #| msgid "Save As"
@@ -3354,7 +3344,7 @@ msgstr "Gumawa ng Bagong Mapa"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [toggle_button]: id=sort_2
 #: data/gui/window/game_stats.cfg:63
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:431
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:432
 msgid "Gold"
 msgstr ""
 
@@ -3385,7 +3375,7 @@ msgstr ""
 #. [toggle_button]: id=sort_6
 #: data/gui/window/game_stats.cfg:118 data/gui/window/mp_join_game.cfg:273
 #: data/gui/window/mp_join_game.cfg:286
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:437
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:438
 msgid "Income"
 msgstr ""
 
@@ -3493,55 +3483,55 @@ msgid "Opens the log file, which may contain useful debug information"
 msgstr ""
 
 #. [label]
-#: data/gui/window/game_version.cfg:195
+#: data/gui/window/game_version.cfg:196
 msgid "library^Name"
 msgstr ""
 
 #. [label]
-#: data/gui/window/game_version.cfg:205
+#: data/gui/window/game_version.cfg:207
 msgid "library^Build version"
 msgstr ""
 
 #. [label]
-#: data/gui/window/game_version.cfg:215
+#: data/gui/window/game_version.cfg:219
 msgid "library^Runtime version"
 msgstr ""
 
 #. [label]
-#: data/gui/window/game_version.cfg:293
+#: data/gui/window/game_version.cfg:300
 msgid ""
 "The following features were selected when building this version of Wesnoth:"
 msgstr ""
 
 #. [label]
-#: data/gui/window/game_version.cfg:447
+#: data/gui/window/game_version.cfg:454
 msgid "The Battle for Wesnoth"
 msgstr ""
 
 #. [widget]: id=tab_label
-#: data/gui/window/game_version.cfg:528
+#: data/gui/window/game_version.cfg:535
 msgid "Paths"
 msgstr ""
 
 #. [widget]: id=tab_label
-#: data/gui/window/game_version.cfg:541
+#: data/gui/window/game_version.cfg:548
 msgid "Libraries"
 msgstr ""
 
 #. [widget]: id=tab_label
-#: data/gui/window/game_version.cfg:554
+#: data/gui/window/game_version.cfg:561
 msgid "Features"
 msgstr ""
 
 #. [button]: id=copy_all
-#: data/gui/window/game_version.cfg:629
+#: data/gui/window/game_version.cfg:636
 #, fuzzy
 #| msgid "Copy"
 msgid "page^Copy"
 msgstr "Kopyahin"
 
 #. [button]: id=copy_all
-#: data/gui/window/game_version.cfg:630
+#: data/gui/window/game_version.cfg:637
 msgid "Copy the full report to clipboard"
 msgstr ""
 
@@ -3773,62 +3763,62 @@ msgstr "Mga manlalaro:"
 
 #. [button]: id=add_friend
 #. [button]: id=add_to_friends
-#: data/gui/window/lobby_player_info.cfg:94
+#: data/gui/window/lobby_player_info.cfg:88
 #: data/gui/window/preferences/05_multiplayer.cfg:263
 msgid "Add Friend"
 msgstr ""
 
 #. [button]: id=add_ignored
 #. [button]: id=add_to_ignores
-#: data/gui/window/lobby_player_info.cfg:105
+#: data/gui/window/lobby_player_info.cfg:99
 #: data/gui/window/preferences/05_multiplayer.cfg:276
 msgid "Block"
 msgstr ""
 
 #. [button]: id=remove_from_list
-#: data/gui/window/lobby_player_info.cfg:118
+#: data/gui/window/lobby_player_info.cfg:112
 msgid "Remove from List"
 msgstr ""
 
 #. [button]: id=start_whisper
-#: data/gui/window/lobby_player_info.cfg:129
+#: data/gui/window/lobby_player_info.cfg:123
 #, fuzzy
 msgid "Send Private Message"
 msgstr "Tanggalin ang mga Tanda"
 
 #. [label]
-#: data/gui/window/lobby_player_info.cfg:153
+#: data/gui/window/lobby_player_info.cfg:149
 #, fuzzy
 msgid "Moderator Controls"
 msgstr "Tagatubo ng Mapa"
 
 #. [label]
-#: data/gui/window/lobby_player_info.cfg:173
+#: data/gui/window/lobby_player_info.cfg:169
 msgid "Reason:"
 msgstr ""
 
 #. [label]
-#: data/gui/window/lobby_player_info.cfg:198
+#: data/gui/window/lobby_player_info.cfg:195
 msgid "Ban time:"
 msgstr ""
 
 #. [button]: id=check_status
-#: data/gui/window/lobby_player_info.cfg:238
+#: data/gui/window/lobby_player_info.cfg:236
 msgid "Check Status"
 msgstr ""
 
 #. [button]: id=kick
-#: data/gui/window/lobby_player_info.cfg:250
+#: data/gui/window/lobby_player_info.cfg:248
 msgid "Kick"
 msgstr ""
 
 #. [button]: id=kick_ban
-#: data/gui/window/lobby_player_info.cfg:262
+#: data/gui/window/lobby_player_info.cfg:260
 msgid "Kick + Ban"
 msgstr ""
 
 #. [button]: id=stopgame
-#: data/gui/window/lobby_player_info.cfg:274
+#: data/gui/window/lobby_player_info.cfg:272
 #, fuzzy
 #| msgid "Quit Game"
 msgid "Stop Game"
@@ -4246,7 +4236,7 @@ msgstr ""
 #. [widget]: id=label
 #: data/gui/window/mp_create_game.cfg:533 data/gui/window/preferences.cfg:291
 #: data/gui/window/preferences/05_multiplayer.cfg:402
-#: data/gui/window/server_info.cfg:180 src/hotkey/hotkey_command.cpp:38
+#: data/gui/window/server_info.cfg:181 src/hotkey/hotkey_command.cpp:38
 #, fuzzy
 msgid "General"
 msgstr "Gumawa ng Bagong Mapa"
@@ -4357,7 +4347,7 @@ msgstr "Gumawa ng Bagong Mapa"
 #. [row]
 #: data/gui/window/mp_faction_select.cfg:176
 #: src/gui/dialogs/multiplayer/faction_select.cpp:141
-#: src/gui/dialogs/multiplayer/mp_staging.cpp:467
+#: src/gui/dialogs/multiplayer/mp_staging.cpp:468
 msgid "Random"
 msgstr ""
 
@@ -4442,7 +4432,7 @@ msgstr ""
 #. [label]: id=status_label
 #: data/gui/window/mp_join_game.cfg:491 data/gui/window/mp_staging.cfg:614
 #: data/gui/window/mp_staging.cfg:806
-#: src/gui/dialogs/multiplayer/mp_staging.cpp:483
+#: src/gui/dialogs/multiplayer/mp_staging.cpp:484
 msgid "Waiting for players to join..."
 msgstr ""
 
@@ -4483,7 +4473,7 @@ msgstr ""
 #. [widget]: id=label
 #: data/gui/window/mp_method_selection.cfg:46
 #: data/gui/window/preferences.cfg:364 data/gui/window/title_screen.cfg:252
-#: src/gui/dialogs/game_load.cpp:431
+#: src/gui/dialogs/game_load.cpp:429
 #, fuzzy
 msgid "Multiplayer"
 msgstr "manlalaro"
@@ -4753,7 +4743,7 @@ msgstr "I-seyb As"
 #. [toggle_button]: id=sort_2
 #. Translate G as the initial letter for Game
 #: data/gui/window/preferences/02_hotkeys.cfg:135
-#: src/gui/dialogs/preferences_dialog.cpp:817
+#: src/gui/dialogs/preferences_dialog.cpp:791
 msgid "game_hotkeys^G"
 msgstr ""
 
@@ -4766,7 +4756,7 @@ msgstr ""
 #. [toggle_button]: id=sort_3
 #. Translate E as the initial letter for Editor
 #: data/gui/window/preferences/02_hotkeys.cfg:148
-#: src/gui/dialogs/preferences_dialog.cpp:818
+#: src/gui/dialogs/preferences_dialog.cpp:792
 msgid "editor_hotkeys^E"
 msgstr ""
 
@@ -4779,7 +4769,7 @@ msgstr ""
 #. [toggle_button]: id=sort_4
 #. Translate T as the initial letter for Title Screen
 #: data/gui/window/preferences/02_hotkeys.cfg:161
-#: src/gui/dialogs/preferences_dialog.cpp:819
+#: src/gui/dialogs/preferences_dialog.cpp:793
 msgid "titlescreen_hotkeys^T"
 msgstr ""
 
@@ -5136,11 +5126,6 @@ msgstr ""
 
 #. [button]: id=browse_dir
 #: data/gui/window/screenshot_notification.cfg:187
-msgid "Screenshots..."
-msgstr ""
-
-#. [button]: id=browse_dir
-#: data/gui/window/screenshot_notification.cfg:189
 msgid "Browse the screenshots folder using a file manager"
 msgstr ""
 
@@ -5182,13 +5167,13 @@ msgid "Show enemy orb"
 msgstr "Ipakita ang Galaw ng Kalaban"
 
 #. [label]: id=asdf
-#: data/gui/window/server_info.cfg:78
+#: data/gui/window/server_info.cfg:79
 #, fuzzy
 msgid "Server Information"
 msgstr "Tagatubo ng Mapa"
 
 #. [widget]: id=tab_label
-#: data/gui/window/server_info.cfg:167
+#: data/gui/window/server_info.cfg:168
 #, fuzzy
 msgid "Announcements"
 msgstr "Pumili ng Resolusyon"
@@ -5351,7 +5336,7 @@ msgstr ""
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=help
-#: data/gui/window/title_screen.cfg:174 src/hotkey/hotkey_command.cpp:274
+#: data/gui/window/title_screen.cfg:174 src/hotkey/hotkey_command.cpp:273
 msgid "Help"
 msgstr "Tulong"
 
@@ -5566,7 +5551,7 @@ msgstr ""
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/wml_error.cfg:40 src/gui/dialogs/message.cpp:210
-#: src/gui/dialogs/preferences_dialog.cpp:264
+#: src/gui/dialogs/preferences_dialog.cpp:251
 #: src/gui/dialogs/transient_message.cpp:78
 msgid "Error"
 msgstr "Eror"
@@ -5574,31 +5559,27 @@ msgstr "Eror"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=details_heading
 #: data/gui/window/wml_error.cfg:112 src/gui/dialogs/multiplayer/lobby.cpp:222
-#: src/gui/dialogs/multiplayer/lobby.cpp:238 src/gui/dialogs/wml_error.cpp:197
+#: src/gui/dialogs/multiplayer/lobby.cpp:238 src/gui/dialogs/wml_error.cpp:195
 msgid "Details:"
 msgstr ""
 
-#: src/build_info.cpp:275
-msgid "feature^JPEG screenshots"
-msgstr ""
-
-#: src/build_info.cpp:282
+#: src/build_info.cpp:276
 msgid "feature^Lua console completion"
 msgstr ""
 
-#: src/build_info.cpp:287
+#: src/build_info.cpp:281
 msgid "feature^Legacy bidirectional rendering"
 msgstr ""
 
-#: src/build_info.cpp:294
+#: src/build_info.cpp:288
 msgid "feature^D-Bus notifications back end"
 msgstr ""
 
-#: src/build_info.cpp:303
+#: src/build_info.cpp:297
 msgid "feature^Win32 notifications back end"
 msgstr ""
 
-#: src/build_info.cpp:309
+#: src/build_info.cpp:303
 msgid "feature^Cocoa notifications back end"
 msgstr ""
 
@@ -5635,22 +5616,22 @@ msgid "operating_system^<unknown>"
 msgstr ""
 
 #. TRANSLATORS: translate the part inside <...> only
-#: src/filesystem.cpp:641
+#: src/filesystem.cpp:642
 msgid "--userdata-dir=<relative path that doesn't start with a period>"
 msgstr ""
 
-#: src/filesystem.cpp:644
+#: src/filesystem.cpp:645
 msgid ""
 "Use an absolute path, or a relative path that starts with a period and a "
 "backslash"
 msgstr ""
 
 #. TRANSLATORS: translate the part inside <...> only
-#: src/filesystem.cpp:709 src/filesystem.cpp:730
+#: src/filesystem.cpp:710 src/filesystem.cpp:731
 msgid "--userdata-dir=<relative path>"
 msgstr ""
 
-#: src/filesystem.cpp:712 src/filesystem.cpp:733
+#: src/filesystem.cpp:713 src/filesystem.cpp:734
 msgid ""
 "Use absolute paths. Relative paths are deprecated because they are "
 "interpreted relative to $HOME"
@@ -5666,7 +5647,7 @@ msgstr ""
 #. other's resources rather than duplicating them. For example,
 #. Swedish (sv) and Danish (da) are such, so Swedish translator could
 #. translate this message as "sv,da", while Danish as "da,sv".
-#: src/filesystem.cpp:1639
+#: src/filesystem.cpp:1640
 msgid "language code for localized resources^en_US"
 msgstr "tl"
 
@@ -5820,280 +5801,273 @@ msgid "Linked '$id' group has multiple definitions."
 msgstr ""
 
 #: src/gui/core/window_builder.cpp:317 src/gui/widgets/addon_list.cpp:430
-#: src/gui/widgets/chatbox.cpp:815 src/gui/widgets/listbox.cpp:811
+#: src/gui/widgets/chatbox.cpp:815 src/gui/widgets/listbox.cpp:810
 #: src/gui/widgets/multi_page.cpp:199 src/gui/widgets/panel.cpp:194
-#: src/gui/widgets/scroll_label.cpp:220 src/gui/widgets/scrollbar_panel.cpp:98
-#: src/gui/widgets/size_lock.cpp:125 src/gui/widgets/stacked_widget.cpp:241
+#: src/gui/widgets/scroll_label.cpp:224 src/gui/widgets/scrollbar_panel.cpp:98
+#: src/gui/widgets/size_lock.cpp:125 src/gui/widgets/stacked_widget.cpp:240
 #: src/gui/widgets/toggle_panel.cpp:402 src/gui/widgets/tree_view.cpp:304
 #: src/gui/widgets/unit_preview_pane.cpp:607
 msgid "No grid defined."
 msgstr ""
 
-#: src/gui/core/window_builder.cpp:436
-msgid "A row must have a column."
+#: src/gui/core/window_builder.cpp:433
+msgid "Grid '$grid' row $row must have at least one column."
 msgstr ""
 
-#: src/gui/core/window_builder.cpp:437
-msgid "Number of columns differ."
-msgstr ""
-
-#: src/gui/dialogs/addon/manager.cpp:193
-msgid "addons_view^All Add-ons"
+#: src/gui/core/window_builder.cpp:445
+msgid ""
+"Grid '$grid' row $row has a differing number of columns ($found found, "
+"$expected expected)"
 msgstr ""
 
 #: src/gui/dialogs/addon/manager.cpp:194
-msgid "addons_view^Installed"
+msgid "addons_view^All Add-ons"
 msgstr ""
 
 #: src/gui/dialogs/addon/manager.cpp:195
-msgid "addons_view^Upgradable"
+msgid "addons_view^Installed"
 msgstr ""
 
 #: src/gui/dialogs/addon/manager.cpp:196
-msgid "addons_view^Publishable"
+msgid "addons_view^Upgradable"
 msgstr ""
 
 #: src/gui/dialogs/addon/manager.cpp:197
+msgid "addons_view^Publishable"
+msgstr ""
+
+#: src/gui/dialogs/addon/manager.cpp:198
 msgid "addons_view^Not Installed"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:201
+#: src/gui/dialogs/addon/manager.cpp:202
 msgid "addons_of_type^Campaigns"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:202
+#: src/gui/dialogs/addon/manager.cpp:203
 msgid "addons_of_type^Scenarios"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:203
+#: src/gui/dialogs/addon/manager.cpp:204
 msgid "addons_of_type^SP/MP campaigns"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:204
+#: src/gui/dialogs/addon/manager.cpp:205
 msgid "addons_of_type^MP campaigns"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:205
+#: src/gui/dialogs/addon/manager.cpp:206
 msgid "addons_of_type^MP scenarios"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:206
+#: src/gui/dialogs/addon/manager.cpp:207
 msgid "addons_of_type^MP map-packs"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:207
+#: src/gui/dialogs/addon/manager.cpp:208
 msgid "addons_of_type^MP eras"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:208
+#: src/gui/dialogs/addon/manager.cpp:209
 msgid "addons_of_type^MP factions"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:209
+#: src/gui/dialogs/addon/manager.cpp:210
 #, fuzzy
 #| msgid "Choose Resolution"
 msgid "addons_of_type^Modifications"
 msgstr "Pumili ng Resolusyon"
 
-#: src/gui/dialogs/addon/manager.cpp:210
+#: src/gui/dialogs/addon/manager.cpp:211
 msgid "addons_of_type^Cores"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:211
+#: src/gui/dialogs/addon/manager.cpp:212
 msgid "addons_of_type^Resources"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:213
+#: src/gui/dialogs/addon/manager.cpp:214
 msgid "addons_of_type^Other"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:214
+#: src/gui/dialogs/addon/manager.cpp:215
 msgid "addons_of_type^Unknown"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:218
+#: src/gui/dialogs/addon/manager.cpp:219
 msgid "addons_order^Name ($order)"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:221
+#: src/gui/dialogs/addon/manager.cpp:222
 msgid "addons_order^Author ($order)"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:224
+#: src/gui/dialogs/addon/manager.cpp:225
 msgid "addons_order^Size ($order)"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:227
+#: src/gui/dialogs/addon/manager.cpp:228
 msgid "addons_order^Downloads ($order)"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:230
+#: src/gui/dialogs/addon/manager.cpp:231
 msgid "addons_order^Type ($order)"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:233
+#: src/gui/dialogs/addon/manager.cpp:234
 msgid "addons_order^Last updated ($datelike_order)"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:236
+#: src/gui/dialogs/addon/manager.cpp:237
 msgid "addons_order^First uploaded ($datelike_order)"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:265 src/gui/widgets/addon_list.cpp:103
+#: src/gui/dialogs/addon/manager.cpp:261 src/gui/widgets/addon_list.cpp:103
 msgid "addon_state^Not installed"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:266 src/gui/widgets/addon_list.cpp:103
+#: src/gui/dialogs/addon/manager.cpp:262 src/gui/widgets/addon_list.cpp:103
 msgid "addon_state^Published, not installed"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:270 src/gui/widgets/addon_list.cpp:111
+#: src/gui/dialogs/addon/manager.cpp:266 src/gui/widgets/addon_list.cpp:111
 msgid "addon_state^Installed"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:271 src/gui/widgets/addon_list.cpp:111
+#: src/gui/dialogs/addon/manager.cpp:267 src/gui/widgets/addon_list.cpp:111
 msgid "addon_state^Published"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:275
+#: src/gui/dialogs/addon/manager.cpp:271
 msgid "addon_state^Installed, not tracking local version"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:278
+#: src/gui/dialogs/addon/manager.cpp:274
 msgid "addon_state^Published, not tracking local version"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:282
+#: src/gui/dialogs/addon/manager.cpp:278
 msgid "addon_state^Installed ($local_version|), upgradable"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:283
+#: src/gui/dialogs/addon/manager.cpp:279
 msgid "addon_state^Published ($local_version| installed), upgradable"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:289
+#: src/gui/dialogs/addon/manager.cpp:285
 msgid "addon_state^Installed ($local_version|), outdated on server"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:290
+#: src/gui/dialogs/addon/manager.cpp:286
 msgid "addon_state^Published ($local_version| installed), outdated on server"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:296 src/gui/widgets/addon_list.cpp:114
+#: src/gui/dialogs/addon/manager.cpp:292 src/gui/widgets/addon_list.cpp:114
 msgid "addon_state^Installed, not ready to publish"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:297 src/gui/widgets/addon_list.cpp:114
+#: src/gui/dialogs/addon/manager.cpp:293 src/gui/widgets/addon_list.cpp:114
 msgid "addon_state^Ready to publish"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:301 src/gui/widgets/addon_list.cpp:126
+#: src/gui/dialogs/addon/manager.cpp:297 src/gui/widgets/addon_list.cpp:126
 msgid "addon_state^Installed, broken"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:302 src/gui/widgets/addon_list.cpp:126
+#: src/gui/dialogs/addon/manager.cpp:298 src/gui/widgets/addon_list.cpp:126
 msgid "addon_state^Published, broken"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:305 src/gui/widgets/addon_list.cpp:130
+#: src/gui/dialogs/addon/manager.cpp:301 src/gui/widgets/addon_list.cpp:130
 msgid "addon_state^Unknown"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:367
+#: src/gui/dialogs/addon/manager.cpp:363
 msgid "ascending"
 msgstr ""
 
 #. TRANSLATORS: Sorting order of dates, oldest first
-#: src/gui/dialogs/addon/manager.cpp:369
+#: src/gui/dialogs/addon/manager.cpp:365
 msgid "oldest to newest"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:372
+#: src/gui/dialogs/addon/manager.cpp:368
 msgid "descending"
 msgstr ""
 
 #. TRANSLATORS: Sorting order of dates, newest first
-#: src/gui/dialogs/addon/manager.cpp:374
+#: src/gui/dialogs/addon/manager.cpp:370
 msgid "newest to oldest"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:416 src/gui/dialogs/chat_log.cpp:416
-#: src/gui/dialogs/game_cache_options.cpp:105
-#: src/gui/dialogs/game_version_dialog.cpp:182
-#: src/gui/dialogs/gamestate_inspector.cpp:429
-#: src/gui/dialogs/lua_interpreter.cpp:491
-#: src/gui/dialogs/screenshot_notification.cpp:102
-#: src/gui/dialogs/wml_error.cpp:229
-msgid "Clipboard support not found, contact your packager"
-msgstr ""
-
-#: src/gui/dialogs/addon/manager.cpp:493
+#: src/gui/dialogs/addon/manager.cpp:469
 msgid "addons^Back to List"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:505
+#: src/gui/dialogs/addon/manager.cpp:481
 msgid "An error occurred while downloading the add-ons list from the server."
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:541
+#: src/gui/dialogs/addon/manager.cpp:517
 msgid "No Add-ons Available"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:541
+#: src/gui/dialogs/addon/manager.cpp:517
 msgid "There are no add-ons available for download from this server."
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:729
+#: src/gui/dialogs/addon/manager.cpp:705
 msgid ""
 "The following add-on appears to have publishing or version control "
 "information stored locally, and will not be removed:"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:737
+#: src/gui/dialogs/addon/manager.cpp:713
 msgid "The following add-on could not be deleted properly:"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:790
+#: src/gui/dialogs/addon/manager.cpp:766
 msgid "Warning"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:791
+#: src/gui/dialogs/addon/manager.cpp:767
 msgid ""
 "The remote version of this add-on is greater or equal to the version being "
 "uploaded. Do you really wish to continue?"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:800
+#: src/gui/dialogs/addon/manager.cpp:776
 msgid "Invalid icon path. Make sure the path points to a valid image."
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:803 src/gui/dialogs/addon/manager.cpp:845
+#: src/gui/dialogs/addon/manager.cpp:779 src/gui/dialogs/addon/manager.cpp:821
 msgid "The server responded with an error:"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:804
-msgid "Terms"
-msgstr ""
-
-#: src/gui/dialogs/addon/manager.cpp:806
+#: src/gui/dialogs/addon/manager.cpp:782
 msgid "The add-on was rejected by the server:"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:821 src/gui/dialogs/addon/manager.cpp:848
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:506
+#: src/gui/dialogs/addon/manager.cpp:797 src/gui/dialogs/addon/manager.cpp:824
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:507
 msgid "Response"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:833
+#: src/gui/dialogs/addon/manager.cpp:809
 msgid ""
 "Deleting '$addon|' will permanently erase its download and upload counts on "
 "the add-ons server. Do you really wish to continue?"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:865
+#: src/gui/dialogs/addon/manager.cpp:841
 #, fuzzy
 msgid "Do you want to uninstall '$addon|'?"
 msgstr "Gusto niyo ba talagang umalis?"
+
+#: src/gui/dialogs/addon/manager.cpp:931
+#, fuzzy
+msgid "url^None"
+msgstr "Hindi"
 
 #: src/gui/dialogs/attack_predictions.cpp:116
 #, fuzzy
@@ -6117,12 +6091,21 @@ msgstr ""
 msgid "Attacker vulnerability vs"
 msgstr ""
 
-#: src/gui/dialogs/campaign_selection.cpp:324
+#: src/gui/dialogs/campaign_selection.cpp:323
 #: src/gui/dialogs/multiplayer/lobby.cpp:473
 #, fuzzy
 #| msgid "Choose Resolution"
 msgid "active_modifications^None"
 msgstr "Pumili ng Resolusyon"
+
+#: src/gui/dialogs/chat_log.cpp:416 src/gui/dialogs/game_cache_options.cpp:105
+#: src/gui/dialogs/game_version_dialog.cpp:182
+#: src/gui/dialogs/gamestate_inspector.cpp:429
+#: src/gui/dialogs/lua_interpreter.cpp:491
+#: src/gui/dialogs/screenshot_notification.cpp:99
+#: src/gui/dialogs/wml_error.cpp:227
+msgid "Clipboard support not found, contact your packager"
+msgstr ""
 
 #: src/gui/dialogs/depcheck_confirm_change.cpp:66
 msgid "$requester requires the following modifications to be enabled:"
@@ -6176,38 +6159,38 @@ msgstr "Dagsahang Pagpupuno"
 msgid "Open"
 msgstr ""
 
-#: src/gui/dialogs/file_dialog.cpp:304
+#: src/gui/dialogs/file_dialog.cpp:303
 msgid "The file already exists. Do you wish to overwrite it?"
 msgstr ""
 
-#: src/gui/dialogs/file_dialog.cpp:328
+#: src/gui/dialogs/file_dialog.cpp:327
 msgid "The file or folder $path cannot be created."
 msgstr ""
 
-#: src/gui/dialogs/file_dialog.cpp:334
+#: src/gui/dialogs/file_dialog.cpp:333
 msgid "The file or folder $path does not exist."
 msgstr ""
 
-#: src/gui/dialogs/file_dialog.cpp:709
+#: src/gui/dialogs/file_dialog.cpp:708
 msgid ""
 "Could not create a new folder at $path|. Make sure you have the appropriate "
 "permissions to write to this location."
 msgstr ""
 
-#: src/gui/dialogs/file_dialog.cpp:727
+#: src/gui/dialogs/file_dialog.cpp:726
 msgid "The following folder and its contents will be permanently deleted:"
 msgstr ""
 
-#: src/gui/dialogs/file_dialog.cpp:728
+#: src/gui/dialogs/file_dialog.cpp:727
 msgid "The following file will be permanently deleted:"
 msgstr ""
 
-#: src/gui/dialogs/file_dialog.cpp:729
+#: src/gui/dialogs/file_dialog.cpp:728
 #, fuzzy
 msgid "Do you wish to continue?"
 msgstr "Gusto niyo ba talagang umalis?"
 
-#: src/gui/dialogs/file_dialog.cpp:741
+#: src/gui/dialogs/file_dialog.cpp:740
 msgid ""
 "Could not delete $path|. Make sure you have the appropriate permissions to "
 "write to this location."
@@ -6222,9 +6205,9 @@ msgid "dir_size^Unknown"
 msgstr ""
 
 #: src/gui/dialogs/game_cache_options.cpp:139
-#: src/gui/dialogs/network_transmission.cpp:81
-#: src/gui/dialogs/network_transmission.cpp:82
-#: src/gui/dialogs/screenshot_notification.cpp:148
+#: src/gui/dialogs/network_transmission.cpp:87
+#: src/gui/dialogs/network_transmission.cpp:88
+#: src/gui/dialogs/screenshot_notification.cpp:146
 msgid "unit_byte^B"
 msgstr ""
 
@@ -6264,46 +6247,46 @@ msgstr ""
 msgid "The selected file is corrupt: "
 msgstr ""
 
-#: src/gui/dialogs/game_load.cpp:385
+#: src/gui/dialogs/game_load.cpp:383
 msgid "(Invalid)"
 msgstr ""
 
-#: src/gui/dialogs/game_load.cpp:422
+#: src/gui/dialogs/game_load.cpp:420
 msgid "Campaign: $campaign_name"
 msgstr ""
 
-#: src/gui/dialogs/game_load.cpp:434
+#: src/gui/dialogs/game_load.cpp:432
 #, fuzzy
 msgid "Tutorial"
 msgstr "Dayalog ng Turno"
 
-#: src/gui/dialogs/game_load.cpp:437
+#: src/gui/dialogs/game_load.cpp:435
 msgid "Test scenario"
 msgstr ""
 
-#: src/gui/dialogs/game_load.cpp:447
+#: src/gui/dialogs/game_load.cpp:445
 #, fuzzy
 msgid "Replay"
 msgstr "manlalaro"
 
-#: src/gui/dialogs/game_load.cpp:449
+#: src/gui/dialogs/game_load.cpp:447
 #, fuzzy
 msgid "Turn"
 msgstr "Batingaw ng turno"
 
-#: src/gui/dialogs/game_load.cpp:451
+#: src/gui/dialogs/game_load.cpp:449
 msgid "Scenario start"
 msgstr ""
 
-#: src/gui/dialogs/game_load.cpp:454
+#: src/gui/dialogs/game_load.cpp:452
 msgid "Difficulty: "
 msgstr ""
 
-#: src/gui/dialogs/game_load.cpp:458
+#: src/gui/dialogs/game_load.cpp:456
 msgid "Version: "
 msgstr ""
 
-#: src/gui/dialogs/game_load.cpp:463
+#: src/gui/dialogs/game_load.cpp:461
 #, fuzzy
 #| msgid "Choose Resolution"
 msgid "Modifications: "
@@ -6338,10 +6321,6 @@ msgstr ""
 
 #: src/gui/dialogs/game_version_dialog.cpp:137
 msgid "Running on $os"
-msgstr ""
-
-#: src/gui/dialogs/game_version_dialog.cpp:222
-msgid "version^N/A"
 msgstr ""
 
 #: src/gui/dialogs/label_settings.cpp:54
@@ -6553,11 +6532,11 @@ msgstr ""
 msgid "Observers not allowed"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:811
+#: src/gui/dialogs/multiplayer/lobby.cpp:809
 msgid "lobby"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:979
+#: src/gui/dialogs/multiplayer/lobby.cpp:977
 msgid ""
 "Something is wrong with the addon version check database supporting the "
 "multiplayer lobby. Please report this at https://bugs.wesnoth.org."
@@ -6579,119 +6558,119 @@ msgstr ""
 msgid "Add Server"
 msgstr "Ang kasunod na Dako"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:102
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:101
 #, fuzzy
 msgid "Scenarios"
 msgstr "I-seyb ang Mapa"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:103
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:102
 #, fuzzy
 msgid "Multiplayer Campaigns"
 msgstr "manlalaro"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:104
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:103
 msgid "Singleplayer Campaigns"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:105
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:104
 #, fuzzy
 msgid "Custom Maps"
 msgstr "Aksyon"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:106
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:105
 #, fuzzy
 msgid "Custom Scenarios"
 msgstr "I-seyb ang Mapa"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:107
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:106
 #, fuzzy
 msgid "Random Maps"
 msgstr "Gumawa ng Bagong Mapa"
 
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:180
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:181
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:182
 msgid "No games found."
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:249
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:248
 msgid "No eras found."
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:250
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:249
 msgid "No eras found"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:278
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:277
 msgid "Independent: Random factions assigned independently"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:279
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:278
 msgid "No Mirror: No two players will get the same faction"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:280
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:279
 msgid "No Ally Mirror: No two allied players will get the same faction"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:529
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:528
 msgid "No eras available for this game."
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:731
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:730
 msgid "number of players^$min to $max"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:828
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:827
 msgid "The selected game has no sides!"
 msgstr ""
 
 #. TRANSLATORS: This sentence will be followed by some details of the error, most likely the "Map could not be loaded" message from create_engine.cpp
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:835
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:834
 msgid "The selected game cannot be created."
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:904
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:906
 msgid "Choose Starting Scenario"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:904
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:906
 msgid "Select at which point to begin this campaign."
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:217
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:218
 msgid "Computer Player"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:219
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:220
 msgid "Empty slot"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:221
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:222
 msgid "Reserved for $playername"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:223
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:224
 msgid "Vacant slot"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:227
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:228
 msgid "empty"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:254
-#: src/gui/dialogs/multiplayer/mp_staging.cpp:124
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:255
+#: src/gui/dialogs/multiplayer/mp_staging.cpp:125
 #, fuzzy
 #| msgid "Quit Game"
 msgid "this game"
 msgstr "Umalis sa Laro"
 
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:364
-#: src/gui/dialogs/multiplayer/mp_staging.cpp:96
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:365
+#: src/gui/dialogs/multiplayer/mp_staging.cpp:97
 #, fuzzy
 msgid "Team:"
 msgstr "Gumawa ng Bagong Mapa"
 
-#: src/gui/dialogs/multiplayer/mp_staging.cpp:484
+#: src/gui/dialogs/multiplayer/mp_staging.cpp:485
 msgid "Waiting for players to choose factions..."
 msgstr ""
 
@@ -6699,56 +6678,56 @@ msgstr ""
 msgid "The End"
 msgstr ""
 
-#: src/gui/dialogs/preferences_dialog.cpp:187
+#: src/gui/dialogs/preferences_dialog.cpp:174
 msgid "friend"
 msgstr ""
 
-#: src/gui/dialogs/preferences_dialog.cpp:192
+#: src/gui/dialogs/preferences_dialog.cpp:179
 msgid "ignored"
 msgstr ""
 
-#: src/gui/dialogs/preferences_dialog.cpp:246
-#: src/gui/dialogs/preferences_dialog.cpp:306
+#: src/gui/dialogs/preferences_dialog.cpp:233
+#: src/gui/dialogs/preferences_dialog.cpp:293
 msgid "No username specified"
 msgstr ""
 
-#: src/gui/dialogs/preferences_dialog.cpp:264
+#: src/gui/dialogs/preferences_dialog.cpp:251
 msgid "Invalid username"
 msgstr ""
 
-#: src/gui/dialogs/preferences_dialog.cpp:311
+#: src/gui/dialogs/preferences_dialog.cpp:298
 msgid "Not on friends or ignore lists"
 msgstr ""
 
-#: src/gui/dialogs/preferences_dialog.cpp:853
-#: src/gui/dialogs/preferences_dialog.cpp:923
+#: src/gui/dialogs/preferences_dialog.cpp:827
+#: src/gui/dialogs/preferences_dialog.cpp:897
 msgid "No hotkey selected"
 msgstr ""
 
-#: src/gui/dialogs/preferences_dialog.cpp:884
+#: src/gui/dialogs/preferences_dialog.cpp:858
 msgid ""
 "“<b>$hotkey_sequence|</b>” is in use by “<b>$old_hotkey_action|</b>”.\n"
 "Do you wish to reassign it to “<b>$new_hotkey_action|</b>”?"
 msgstr ""
 
-#: src/gui/dialogs/preferences_dialog.cpp:890
+#: src/gui/dialogs/preferences_dialog.cpp:864
 #, fuzzy
 msgid "Reassign Hotkey"
 msgstr "I-seyb As"
 
-#: src/gui/dialogs/preferences_dialog.cpp:907
+#: src/gui/dialogs/preferences_dialog.cpp:881
 msgid "All hotkeys have been reset to their default values."
 msgstr ""
 
-#: src/gui/dialogs/preferences_dialog.cpp:907
+#: src/gui/dialogs/preferences_dialog.cpp:881
 msgid "Hotkeys Reset"
 msgstr ""
 
-#: src/gui/dialogs/preferences_dialog.cpp:1041
+#: src/gui/dialogs/preferences_dialog.cpp:1011
 msgid "∞"
 msgstr ""
 
-#: src/gui/dialogs/screenshot_notification.cpp:130
+#: src/gui/dialogs/screenshot_notification.cpp:128
 msgid ""
 "Unsupported image format.\n"
 "\n"
@@ -6760,21 +6739,21 @@ msgstr ""
 msgid "All Scenarios"
 msgstr "I-seyb ang Mapa"
 
-#: src/gui/dialogs/statistics_dialog.cpp:181
-#: src/gui/dialogs/statistics_dialog.cpp:341
+#: src/gui/dialogs/statistics_dialog.cpp:180
+#: src/gui/dialogs/statistics_dialog.cpp:339
 #, fuzzy
 msgid "This Turn"
 msgstr "Batingaw ng turno"
 
-#: src/gui/dialogs/statistics_dialog.cpp:217
+#: src/gui/dialogs/statistics_dialog.cpp:216
 msgid "Actual hit rates, by chance to hit:"
 msgstr ""
 
-#: src/gui/dialogs/statistics_dialog.cpp:219
+#: src/gui/dialogs/statistics_dialog.cpp:218
 msgid "(no attacks have taken place yet)"
 msgstr ""
 
-#: src/gui/dialogs/statistics_dialog.cpp:328
+#: src/gui/dialogs/statistics_dialog.cpp:326
 msgid ""
 "stats dialog^Difference of actual outcome to expected outcome, as a "
 "percentage.\n"
@@ -6784,42 +6763,42 @@ msgid ""
 "number of hits inflicted/taken."
 msgstr ""
 
-#: src/gui/dialogs/statistics_dialog.cpp:372
+#: src/gui/dialogs/statistics_dialog.cpp:370
 #, fuzzy
 #| msgid "Delete File"
 msgid "Recruits"
 msgstr "Burahin ang Fayl"
 
-#: src/gui/dialogs/statistics_dialog.cpp:373
+#: src/gui/dialogs/statistics_dialog.cpp:371
 #, fuzzy
 #| msgid "Delete File"
 msgid "Recalls"
 msgstr "Burahin ang Fayl"
 
-#: src/gui/dialogs/statistics_dialog.cpp:374
+#: src/gui/dialogs/statistics_dialog.cpp:372
 #, fuzzy
 msgid "Advancements"
 msgstr "Pumili ng Resolusyon"
 
-#: src/gui/dialogs/statistics_dialog.cpp:375
+#: src/gui/dialogs/statistics_dialog.cpp:373
 msgid "Losses"
 msgstr ""
 
-#: src/gui/dialogs/statistics_dialog.cpp:376
+#: src/gui/dialogs/statistics_dialog.cpp:374
 msgid "Kills"
 msgstr ""
 
-#: src/gui/dialogs/statistics_dialog.cpp:398
-#: src/gui/dialogs/statistics_dialog.cpp:405
+#: src/gui/dialogs/statistics_dialog.cpp:396
+#: src/gui/dialogs/statistics_dialog.cpp:403
 msgid "Inflicted"
 msgstr ""
 
-#: src/gui/dialogs/statistics_dialog.cpp:411
-#: src/gui/dialogs/statistics_dialog.cpp:418
+#: src/gui/dialogs/statistics_dialog.cpp:409
+#: src/gui/dialogs/statistics_dialog.cpp:416
 msgid "Taken"
 msgstr ""
 
-#: src/gui/dialogs/statistics_dialog.cpp:459
+#: src/gui/dialogs/statistics_dialog.cpp:457
 msgid "$count|× $name"
 msgstr ""
 
@@ -6933,31 +6912,31 @@ msgstr ""
 msgid "Mandatory widget '$id' hasn't been defined."
 msgstr ""
 
-#: src/gui/widgets/label.cpp:153
+#: src/gui/widgets/label.cpp:125
 msgid "Opening links is not supported, contact your packager"
 msgstr ""
 
-#: src/gui/widgets/label.cpp:172
+#: src/gui/widgets/label.cpp:143
 #, fuzzy
 msgid "Do you want to open this link?"
 msgstr "Gusto niyo ba talagang umalis?"
 
-#: src/gui/widgets/label.cpp:203
+#: src/gui/widgets/label.cpp:174
 msgid "Copied link!"
 msgstr ""
 
-#: src/gui/widgets/listbox.cpp:921 src/gui/widgets/multi_page.cpp:285
+#: src/gui/widgets/listbox.cpp:920 src/gui/widgets/multi_page.cpp:285
 msgid ""
 "'list_data' must have the same number of columns as the 'list_definition'."
 msgstr ""
 
-#: src/gui/widgets/listbox.cpp:965 src/gui/widgets/listbox.cpp:1070
-#: src/gui/widgets/listbox.cpp:1175 src/gui/widgets/scrollbar_panel.cpp:147
+#: src/gui/widgets/listbox.cpp:964 src/gui/widgets/listbox.cpp:1069
+#: src/gui/widgets/listbox.cpp:1174 src/gui/widgets/scrollbar_panel.cpp:147
 msgid "No list defined."
 msgstr ""
 
-#: src/gui/widgets/listbox.cpp:970 src/gui/widgets/listbox.cpp:1075
-#: src/gui/widgets/listbox.cpp:1180
+#: src/gui/widgets/listbox.cpp:969 src/gui/widgets/listbox.cpp:1074
+#: src/gui/widgets/listbox.cpp:1179
 msgid "A 'list_definition' should contain one row."
 msgstr ""
 
@@ -6965,22 +6944,22 @@ msgstr ""
 msgid "No page defined."
 msgstr ""
 
-#: src/gui/widgets/multimenu_button.cpp:167
+#: src/gui/widgets/multimenu_button.cpp:171
 msgid "multimenu^All Selected"
 msgstr ""
 
-#: src/gui/widgets/multimenu_button.cpp:172
+#: src/gui/widgets/multimenu_button.cpp:176
 msgid "multimenu^$excess other"
 msgid_plural "$excess others"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/gui/widgets/multimenu_button.cpp:174
-#: src/gui/widgets/multimenu_button.cpp:231
+#: src/gui/widgets/multimenu_button.cpp:178
+#: src/gui/widgets/multimenu_button.cpp:234
 msgid "multimenu^None Selected"
 msgstr ""
 
-#: src/gui/widgets/pane.cpp:429
+#: src/gui/widgets/pane.cpp:416
 msgid "Need at least 1 parallel item."
 msgstr ""
 
@@ -6996,11 +6975,11 @@ msgstr ""
 msgid "The number of value_labels and values don't match."
 msgstr ""
 
-#: src/gui/widgets/stacked_widget.cpp:278
+#: src/gui/widgets/stacked_widget.cpp:277
 msgid "No stack layers defined."
 msgstr ""
 
-#: src/gui/widgets/styled_widget.cpp:676
+#: src/gui/widgets/styled_widget.cpp:685
 msgid "Found a widget with a helptip and without a tooltip."
 msgstr ""
 
@@ -7077,7 +7056,7 @@ msgid "Click dismiss needs a 'click_dismiss' or 'ok' button."
 msgstr ""
 
 #: src/gui/widgets/window.cpp:959 src/gui/widgets/window.cpp:996
-#: src/tests/gui/test_gui2.cpp:563
+#: src/tests/gui/test_gui2.cpp:565
 msgid "Failed to show a dialog, which doesn't fit on the screen."
 msgstr ""
 
@@ -7640,353 +7619,345 @@ msgstr "Palitan ang wika"
 msgid "Toggle the unit being renameable."
 msgstr ""
 
-#: src/hotkey/hotkey_command.cpp:203
-msgid "Assign Recruit List"
-msgstr ""
-
-#: src/hotkey/hotkey_command.cpp:203
-msgid "Assign the selected unit set as recruit list to the unit."
-msgstr ""
-
-#: src/hotkey/hotkey_command.cpp:205
+#: src/hotkey/hotkey_command.cpp:204
 #, fuzzy
 msgid "Change Unit ID"
 msgstr "Pumili ng Resolusyon"
 
-#: src/hotkey/hotkey_command.cpp:206
+#: src/hotkey/hotkey_command.cpp:205
 msgid "Loyal"
 msgstr ""
 
-#: src/hotkey/hotkey_command.cpp:209
+#: src/hotkey/hotkey_command.cpp:208
 msgid "Toggle Minimap Unit Coding"
 msgstr ""
 
-#: src/hotkey/hotkey_command.cpp:210
+#: src/hotkey/hotkey_command.cpp:209
 msgid "Toggle Minimap Terrain Coding"
 msgstr ""
 
-#: src/hotkey/hotkey_command.cpp:212
+#: src/hotkey/hotkey_command.cpp:211
 msgid "Toggle Minimap Unit Drawing"
 msgstr ""
 
-#: src/hotkey/hotkey_command.cpp:213
+#: src/hotkey/hotkey_command.cpp:212
 msgid "Toggle Minimap Village Drawing"
 msgstr ""
 
-#: src/hotkey/hotkey_command.cpp:214
+#: src/hotkey/hotkey_command.cpp:213
 msgid "Toggle Minimap Terrain Drawing"
 msgstr ""
 
-#: src/hotkey/hotkey_command.cpp:216
+#: src/hotkey/hotkey_command.cpp:215
 #, fuzzy
 msgid "Next Brush"
 msgstr "Ang kasunod na Turno"
 
-#: src/hotkey/hotkey_command.cpp:217
+#: src/hotkey/hotkey_command.cpp:216
 #, fuzzy
 msgid "Default Brush"
 msgstr "I-seyb As"
 
-#: src/hotkey/hotkey_command.cpp:218
+#: src/hotkey/hotkey_command.cpp:217
 msgid "Single Tile"
 msgstr ""
 
-#: src/hotkey/hotkey_command.cpp:219
+#: src/hotkey/hotkey_command.cpp:218
 msgid "Radius One"
 msgstr ""
 
-#: src/hotkey/hotkey_command.cpp:220
+#: src/hotkey/hotkey_command.cpp:219
 msgid "Radius Two"
 msgstr ""
 
-#: src/hotkey/hotkey_command.cpp:221
+#: src/hotkey/hotkey_command.cpp:220
 msgid "Brush NW-SE"
 msgstr ""
 
-#: src/hotkey/hotkey_command.cpp:222
+#: src/hotkey/hotkey_command.cpp:221
 msgid "Brush SW-NE"
 msgstr ""
 
-#: src/hotkey/hotkey_command.cpp:224
+#: src/hotkey/hotkey_command.cpp:223
 msgid "Cut"
 msgstr "Putulin"
 
-#: src/hotkey/hotkey_command.cpp:225
+#: src/hotkey/hotkey_command.cpp:224
 #, fuzzy
 #| msgid "Copy"
 msgid "Copy"
 msgstr "Kopyahin"
 
-#: src/hotkey/hotkey_command.cpp:226
+#: src/hotkey/hotkey_command.cpp:225
 msgid ""
 "Left mouse button pastes from the clipboard, right brings up a context menu."
 msgstr ""
 
-#: src/hotkey/hotkey_command.cpp:226
+#: src/hotkey/hotkey_command.cpp:225
 msgid "Paste"
 msgstr "Idikit"
 
-#: src/hotkey/hotkey_command.cpp:227
+#: src/hotkey/hotkey_command.cpp:226
 msgid "Export Selected Coordinates to System Clipboard"
 msgstr ""
 
-#: src/hotkey/hotkey_command.cpp:228
+#: src/hotkey/hotkey_command.cpp:227
 msgid "Select All"
 msgstr "Piliin Lahat"
 
-#: src/hotkey/hotkey_command.cpp:229
+#: src/hotkey/hotkey_command.cpp:228
 #, fuzzy
 msgid "Select Inverse"
 msgstr "Piliin Lahat"
 
-#: src/hotkey/hotkey_command.cpp:230
+#: src/hotkey/hotkey_command.cpp:229
 #, fuzzy
 msgid "Select None"
 msgstr "Piliin Lahat"
 
-#: src/hotkey/hotkey_command.cpp:231
+#: src/hotkey/hotkey_command.cpp:230
 msgid "Rotate Clipboard Clockwise"
 msgstr ""
 
-#: src/hotkey/hotkey_command.cpp:232
+#: src/hotkey/hotkey_command.cpp:231
 msgid "Rotate Clipboard Counter-Clockwise"
 msgstr ""
 
-#: src/hotkey/hotkey_command.cpp:233
+#: src/hotkey/hotkey_command.cpp:232
 msgid "Flip Clipboard Horizontally"
 msgstr ""
 
-#: src/hotkey/hotkey_command.cpp:234
+#: src/hotkey/hotkey_command.cpp:233
 msgid "Flip Clipboard Vertically"
 msgstr ""
 
-#: src/hotkey/hotkey_command.cpp:235
+#: src/hotkey/hotkey_command.cpp:234
 #, fuzzy
 msgid "Rotate Selection"
 msgstr "Punuin ang Napili"
 
-#: src/hotkey/hotkey_command.cpp:236
+#: src/hotkey/hotkey_command.cpp:235
 #, fuzzy
 msgid "Flip Selection"
 msgstr "Punuin ang Napili"
 
-#: src/hotkey/hotkey_command.cpp:237
+#: src/hotkey/hotkey_command.cpp:236
 msgid "Fill Selection"
 msgstr "Punuin ang Napili"
 
-#: src/hotkey/hotkey_command.cpp:238
+#: src/hotkey/hotkey_command.cpp:237
 #, fuzzy
 msgid "Randomize Tiles in Selection"
 msgstr "Punuin ang Napili"
 
-#: src/hotkey/hotkey_command.cpp:241
+#: src/hotkey/hotkey_command.cpp:240
 msgid "Apply a Mask"
 msgstr ""
 
-#: src/hotkey/hotkey_command.cpp:242
+#: src/hotkey/hotkey_command.cpp:241
 #, fuzzy
 msgid "Create Mask"
 msgstr "Gumawa ng Bagong Mapa"
 
-#: src/hotkey/hotkey_command.cpp:243
+#: src/hotkey/hotkey_command.cpp:242
 msgid "Refresh Display"
 msgstr ""
 
-#: src/hotkey/hotkey_command.cpp:245
+#: src/hotkey/hotkey_command.cpp:244
 msgid "Update Terrain Transitions"
 msgstr ""
 
-#: src/hotkey/hotkey_command.cpp:248
+#: src/hotkey/hotkey_command.cpp:247
 msgid "Toggle Terrain Transition Update"
 msgstr ""
 
-#: src/hotkey/hotkey_command.cpp:250
+#: src/hotkey/hotkey_command.cpp:249
 msgid "Auto-update Terrain Transitions"
 msgstr ""
 
-#: src/hotkey/hotkey_command.cpp:251
+#: src/hotkey/hotkey_command.cpp:250
 msgid "Auto-update Terrain Transitions: No"
 msgstr ""
 
-#: src/hotkey/hotkey_command.cpp:252
+#: src/hotkey/hotkey_command.cpp:251
 msgid "Auto-update Terrain Transitions: Partial"
 msgstr ""
 
-#: src/hotkey/hotkey_command.cpp:254
+#: src/hotkey/hotkey_command.cpp:253
 msgid "Refresh Image Cache"
 msgstr "I-refresh ang Larawan"
 
-#: src/hotkey/hotkey_command.cpp:255
+#: src/hotkey/hotkey_command.cpp:254
 #, fuzzy
 msgid "Draw Hex Coordinates"
 msgstr "Gumuhit ng Tereyn"
 
-#: src/hotkey/hotkey_command.cpp:256
+#: src/hotkey/hotkey_command.cpp:255
 #, fuzzy
 msgid "Draw Terrain Codes"
 msgstr "Gumuhit ng Tereyn"
 
-#: src/hotkey/hotkey_command.cpp:257
+#: src/hotkey/hotkey_command.cpp:256
 #, fuzzy
 msgid "Draw Number of Bitmaps"
 msgstr "Numero ng mga Burol:"
 
-#: src/hotkey/hotkey_command.cpp:259
+#: src/hotkey/hotkey_command.cpp:258
 #, fuzzy
 msgid "Save Selection to Area"
 msgstr "Punuin ang Napili"
 
-#: src/hotkey/hotkey_command.cpp:260
+#: src/hotkey/hotkey_command.cpp:259
 #, fuzzy
 msgid "Rename Selected Area"
 msgstr "Burahin ang Fayl"
 
-#: src/hotkey/hotkey_command.cpp:261
+#: src/hotkey/hotkey_command.cpp:260
 #, fuzzy
 msgid "Remove Selected Area"
 msgstr "Burahin ang Fayl"
 
-#: src/hotkey/hotkey_command.cpp:262
+#: src/hotkey/hotkey_command.cpp:261
 #, fuzzy
 #| msgid "Next Side"
 msgid "Add New Area"
 msgstr "Ang kasunod na Dako"
 
-#: src/hotkey/hotkey_command.cpp:264
+#: src/hotkey/hotkey_command.cpp:263
 msgid "Edit Scenario"
 msgstr ""
 
-#: src/hotkey/hotkey_command.cpp:265
+#: src/hotkey/hotkey_command.cpp:264
 #, fuzzy
 #| msgid "Next Side"
 msgid "Edit Side"
 msgstr "Ang kasunod na Dako"
 
-#: src/hotkey/hotkey_command.cpp:266
+#: src/hotkey/hotkey_command.cpp:265
 #, fuzzy
 #| msgid "Next Side"
 msgid "Remove Side"
 msgstr "Ang kasunod na Dako"
 
-#: src/hotkey/hotkey_command.cpp:268
+#: src/hotkey/hotkey_command.cpp:267
 msgid "Delay Shroud Updates"
 msgstr ""
 
-#: src/hotkey/hotkey_command.cpp:269
+#: src/hotkey/hotkey_command.cpp:268
 msgid "Update Shroud Now"
 msgstr ""
 
-#: src/hotkey/hotkey_command.cpp:270
+#: src/hotkey/hotkey_command.cpp:269
 msgid "Continue Move"
 msgstr "Ipagpatuloy ang Galaw"
 
-#: src/hotkey/hotkey_command.cpp:271
+#: src/hotkey/hotkey_command.cpp:270
 msgid "Find Label or Unit"
 msgstr ""
 
-#: src/hotkey/hotkey_command.cpp:272
+#: src/hotkey/hotkey_command.cpp:271
 msgid "Speak to Ally"
 msgstr "Magsalita sa Kakampi"
 
-#: src/hotkey/hotkey_command.cpp:273
+#: src/hotkey/hotkey_command.cpp:272
 msgid "Speak to All"
 msgstr "Magsalita sa Lahat"
 
-#: src/hotkey/hotkey_command.cpp:275
+#: src/hotkey/hotkey_command.cpp:274
 msgid "Help about save-loading"
 msgstr ""
 
-#: src/hotkey/hotkey_command.cpp:275
+#: src/hotkey/hotkey_command.cpp:274
 msgid "Hint: save-loading is unnecessary"
 msgstr ""
 
-#: src/hotkey/hotkey_command.cpp:276
+#: src/hotkey/hotkey_command.cpp:275
 msgid "View Chat Log"
 msgstr ""
 
-#: src/hotkey/hotkey_command.cpp:277
+#: src/hotkey/hotkey_command.cpp:276
 msgid "Enter User Command"
 msgstr "Ilagay ang utos"
 
-#: src/hotkey/hotkey_command.cpp:278
+#: src/hotkey/hotkey_command.cpp:277
 #, fuzzy
 msgid "Custom Command"
 msgstr "Ilagay ang utos"
 
-#: src/hotkey/hotkey_command.cpp:279
+#: src/hotkey/hotkey_command.cpp:278
 msgid "Run Formula"
 msgstr ""
 
-#: src/hotkey/hotkey_command.cpp:280
+#: src/hotkey/hotkey_command.cpp:279
 #, fuzzy
 msgid "Clear Messages"
 msgstr "Tanggalin ang mga Tanda"
 
-#: src/hotkey/hotkey_command.cpp:282
+#: src/hotkey/hotkey_command.cpp:281
 #, fuzzy
 msgid "Change Language"
 msgstr "Palitan ang wika"
 
-#: src/hotkey/hotkey_command.cpp:283
+#: src/hotkey/hotkey_command.cpp:282
 msgid "Refresh WML"
 msgstr ""
 
-#: src/hotkey/hotkey_command.cpp:284
+#: src/hotkey/hotkey_command.cpp:283
 msgid "Next Tip of the Day"
 msgstr ""
 
-#: src/hotkey/hotkey_command.cpp:285
+#: src/hotkey/hotkey_command.cpp:284
 msgid "Previous Tip of the Day"
 msgstr ""
 
-#: src/hotkey/hotkey_command.cpp:286
+#: src/hotkey/hotkey_command.cpp:285
 #, fuzzy
 msgid "Start Tutorial"
 msgstr "Dayalog ng Turno"
 
-#: src/hotkey/hotkey_command.cpp:287
+#: src/hotkey/hotkey_command.cpp:286
 msgid "Start Campaign"
 msgstr ""
 
-#: src/hotkey/hotkey_command.cpp:288
+#: src/hotkey/hotkey_command.cpp:287
 #, fuzzy
 msgid "Start Multiplayer Game"
 msgstr "manlalaro"
 
-#: src/hotkey/hotkey_command.cpp:289
+#: src/hotkey/hotkey_command.cpp:288
 msgid "Manage Add-ons"
 msgstr ""
 
-#: src/hotkey/hotkey_command.cpp:290
+#: src/hotkey/hotkey_command.cpp:289
 #, fuzzy
 msgid "Manage Cores"
 msgstr "Pumili ng Resolusyon"
 
-#: src/hotkey/hotkey_command.cpp:291
+#: src/hotkey/hotkey_command.cpp:290
 #, fuzzy
 msgid "Start Editor"
 msgstr "Umalis sa Editor"
 
-#: src/hotkey/hotkey_command.cpp:292
+#: src/hotkey/hotkey_command.cpp:291
 #, fuzzy
 msgid "Show Credits"
 msgstr "manlalaro"
 
-#: src/hotkey/hotkey_command.cpp:293
+#: src/hotkey/hotkey_command.cpp:292
 #, fuzzy
 msgid "Start Test Scenario"
 msgstr "I-seyb ang Mapa"
 
-#: src/hotkey/hotkey_command.cpp:295
+#: src/hotkey/hotkey_command.cpp:294
 #, fuzzy
 msgid "Show Helptip"
 msgstr "manlalaro"
 
-#: src/hotkey/hotkey_command.cpp:297
+#: src/hotkey/hotkey_command.cpp:296
 msgid "Show Lua Console"
 msgstr ""
 
-#: src/hotkey/hotkey_command.cpp:300
+#: src/hotkey/hotkey_command.cpp:299
 msgid "Unrecognized Command"
 msgstr ""
 
@@ -8012,11 +7983,11 @@ msgstr ""
 msgid "Select"
 msgstr "Piliin Lahat"
 
-#: src/preferences/game.cpp:898
+#: src/preferences/game.cpp:903
 msgid "[%H:%M]"
 msgstr ""
 
-#: src/preferences/game.cpp:901
+#: src/preferences/game.cpp:906
 msgid "[%I:%M %p]"
 msgstr ""
 
@@ -8057,6 +8028,11 @@ msgid ""
 "The key '$deprecated_key' has been renamed to '$key'. Support for "
 "'$deprecated_key' will be removed in version $removal_version."
 msgstr ""
+
+#, fuzzy
+#~| msgid "Copy"
+#~ msgid "url^Copy"
+#~ msgstr "Kopyahin"
 
 #, fuzzy
 #~ msgid "Generate Tiles in Selection"

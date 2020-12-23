@@ -16,7 +16,7 @@ scons translations build=release --debug=time nls=true jobs=2 || exit 1
 
 cd ./projectfiles/Xcode
 
-xcodebuild CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO EXCLUDED_ARCHS=arm64 -project "The Battle for Wesnoth.xcodeproj" -target "The Battle for Wesnoth" -configuration "$CFG"
+xcodebuild CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO -project "The Battle for Wesnoth.xcodeproj" -target "The Battle for Wesnoth" -configuration "$CFG"
 EXIT_VAL=$?
 
 ccache -s

@@ -64,11 +64,9 @@ struct player_list
 class mp_lobby : public modal_dialog, public quit_confirmation, private plugin_executor
 {
 public:
-	mp_lobby(const game_config_view& game_config, mp::lobby_info& info, wesnothd_connection &connection);
+	mp_lobby(mp::lobby_info& info, wesnothd_connection& connection, int& joined_game);
 
 	~mp_lobby();
-
-	int get_joined_game_id() const { return joined_game_id_; }
 
 	void update_gamelist();
 
@@ -182,13 +180,10 @@ private:
 
 	chatbox* chatbox_;
 
-	toggle_button* filter_friends_;
-
-	toggle_button* filter_ignored_;
-
-	toggle_button* filter_slots_;
-
-	toggle_button* filter_invert_;
+	field_bool* filter_friends_;
+	field_bool* filter_ignored_;
+	field_bool* filter_slots_;
+	field_bool* filter_invert_;
 
 	text_box* filter_text_;
 
@@ -215,7 +210,7 @@ private:
 
 	bool delay_gamelist_update_;
 
-	int joined_game_id_;
+	int& joined_game_id_;
 
 	friend struct lobby_delay_gamelist_update_guard;
 

@@ -17,17 +17,17 @@
 
 #include "gui/dialogs/preferences_dialog.hpp"
 
-#include "gettext.hpp"
 #include "filesystem.hpp"
 #include "formatter.hpp"
 #include "formula/string_utils.hpp"
-#include "preferences/game.hpp"
+#include "gettext.hpp"
 #include "hotkey/hotkey_item.hpp"
+#include "lexical_cast.hpp"
 #include "preferences/credentials.hpp"
-#include "preferences/lobby.hpp"
-#include "preferences/general.hpp"
 #include "preferences/display.hpp"
-#include <functional>
+#include "preferences/game.hpp"
+#include "preferences/general.hpp"
+#include "preferences/lobby.hpp"
 #include "utils/general.hpp"
 #include "video.hpp"
 
@@ -57,14 +57,14 @@
 #include "gui/widgets/text_box.hpp"
 #include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/window.hpp"
-#include "lexical_cast.hpp"
-#include "game_config_view.hpp"
 
 #if BOOST_VERSION >= 106700
 #include <boost/integer/common_factor_rt.hpp>
 #else
 #include <boost/math/common_factor_rt.hpp>
 #endif
+
+#include <functional>
 
 namespace gui2
 {
@@ -112,27 +112,19 @@ void volume_setter_on_change(widget& w)
 } // end anon namespace
 
 using namespace preferences;
+using avp = preferences::advanced_manager::option;
 
 REGISTER_DIALOG(preferences_dialog)
 
-preferences_dialog::preferences_dialog(const game_config_view& game_cfg, const PREFERENCE_VIEW& initial_view)
-	: resolutions_() // should be populated by set_resolution_list before use
-	, adv_preferences_cfg_()
+preferences_dialog::preferences_dialog(const PREFERENCE_VIEW initial_view)
+	: adv_preferences_(preferences::get_advanced_preferences())
+	, resolutions_() // should be populated by set_resolution_list before use
 	, last_selected_item_(0)
 	, accl_speeds_({0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75, 2, 3, 4, 8, 16})
 	, visible_hotkeys_()
 	, cat_names_()
 	, initial_index_(pef_view_map[initial_view])
 {
-	for(const config& adv : game_cfg.child_range("advanced_preference")) {
-		adv_preferences_cfg_.push_back(adv);
-	}
-
-	std::sort(adv_preferences_cfg_.begin(), adv_preferences_cfg_.end(),
-		[](const config& lhs, const config& rhs) {
-			return lhs["name"].t_str().str() < rhs["name"].t_str().str();
-		});
-
 	for(const auto& name : hotkey::get_category_names()) {
 		// Don't include categories with no hotkeys
 		if(!hotkey::get_hotkeys_by_category(name.first).empty()) {
@@ -589,18 +581,10 @@ void preferences_dialog::post_build(window& window)
 
 	std::map<std::string, string_map> row_data;
 
-	for(const config& option : adv_preferences_cfg_) {
-		// Details about the current option
-		ADVANCED_PREF_TYPE pref_type;
-		try {
-			pref_type = ADVANCED_PREF_TYPE::string_to_enum(option["type"].str());
-		} catch(const bad_enum_cast&) {
-			continue;
-		}
+	for(const auto& option : adv_preferences_) {
+		const std::string& pref_name = option.field;
 
-		const std::string& pref_name = option["field"].str();
-
-		row_data["pref_name"]["label"] = option["name"];
+		row_data["pref_name"]["label"] = option.name;
 		advanced.add_row(row_data);
 
 		const int this_row = advanced.get_item_count() - 1;
@@ -616,16 +600,16 @@ void preferences_dialog::post_build(window& window)
 		toggle_button& toggle_box = find_widget<toggle_button>(main_grid, "value_toggle", false);
 		toggle_box.set_visible(widget::visibility::hidden);
 
-		if(!option["description"].empty()) {
-			find_widget<styled_widget>(main_grid, "description", false).set_label(option["description"]);
+		if(!option.description.empty()) {
+			find_widget<styled_widget>(main_grid, "description", false).set_label(option.description);
 		}
 
-		switch(pref_type.v) {
-			case ADVANCED_PREF_TYPE::TOGGLE: {
+		switch(option.type) {
+			case avp::avd_type::TOGGLE: {
 				//main_grid->remove_child("setter");
 
 				toggle_box.set_visible(widget::visibility::visible);
-				toggle_box.set_value(get(pref_name, option["default"].to_bool()));
+				toggle_box.set_value(get(pref_name, option.cfg["default"].to_bool()));
 
 				// We need to bind a lambda here since preferences::set is overloaded.
 				// A lambda alone would be more verbose because it'd need to specify all the parameters.
@@ -639,18 +623,18 @@ void preferences_dialog::post_build(window& window)
 				break;
 			}
 
-			case ADVANCED_PREF_TYPE::SLIDER: {
+			case avp::avd_type::SLIDER: {
 				slider* setter_widget = build_single_widget_instance<slider>(config {"definition", "minimal"});
 				setter_widget->set_id("setter");
 				// Maximum must be set first or this will assert
-				setter_widget->set_value_range(option["min"].to_int(), option["max"].to_int());
-				setter_widget->set_step_size(option["step"].to_int(1));
+				setter_widget->set_value_range(option.cfg["min"].to_int(), option.cfg["max"].to_int());
+				setter_widget->set_step_size(option.cfg["step"].to_int(1));
 
 				details_grid.swap_child("setter", setter_widget, true);
 
 				slider& slide = find_widget<slider>(&details_grid, "setter", false);
 
-				slide.set_value(lexical_cast_default<int>(get(pref_name), option["default"].to_int()));
+				slide.set_value(lexical_cast_default<int>(get(pref_name), option.cfg["default"].to_int()));
 
 				// We need to bind a lambda here since preferences::set is overloaded.
 				// A lambda alone would be more verbose because it'd need to specify all the parameters.
@@ -663,11 +647,11 @@ void preferences_dialog::post_build(window& window)
 				break;
 			}
 
-			case ADVANCED_PREF_TYPE::COMBO: {
+			case avp::avd_type::COMBO: {
 				std::vector<config> menu_data;
 				std::vector<std::string> option_ids;
 
-				for(const config& choice : option.child_range("option")) {
+				for(const config& choice : option.cfg.child_range("option")) {
 					config menu_item;
 					menu_item["label"] = choice["name"];
 					if(choice.has_attribute("description")) {
@@ -679,7 +663,7 @@ void preferences_dialog::post_build(window& window)
 
 				// Attempt to find an initial selection
 				int selected = std::distance(option_ids.begin(), std::find(option_ids.begin(), option_ids.end(),
-					get(pref_name, option["default"].str())
+					get(pref_name, option.cfg["default"].str())
 				));
 
 				// If the saved option value was invalid, reset selection to 0.
@@ -709,7 +693,7 @@ void preferences_dialog::post_build(window& window)
 				break;
 			}
 
-			case ADVANCED_PREF_TYPE::SPECIAL: {
+			case avp::avd_type::SPECIAL: {
 				//main_grid->remove_child("setter");
 
 				image* value_widget = build_single_widget_instance<image>();
@@ -973,27 +957,23 @@ void preferences_dialog::hotkey_filter_callback() const
 void preferences_dialog::on_advanced_prefs_list_select(listbox& list)
 {
 	const int selected_row = list.get_selected_row();
+	const auto& pref = adv_preferences_[selected_row];
 
-	const ADVANCED_PREF_TYPE& selected_type = ADVANCED_PREF_TYPE::string_to_enum(
-		adv_preferences_cfg_[selected_row]["type"].str());
-
-	const std::string& selected_field = adv_preferences_cfg_[selected_row]["field"].str();
-
-	if(selected_type == ADVANCED_PREF_TYPE::SPECIAL) {
-		if(selected_field == "logging") {
+	if(pref.type == avp::avd_type::SPECIAL) {
+		if(pref.field == "logging") {
 			gui2::dialogs::log_settings::display();
-		} else if(selected_field == "orb_color") {
+		} else if(pref.field == "orb_color") {
 			gui2::dialogs::select_orb_colors::display();
 		} else {
-			WRN_GUI_L << "Invalid or unimplemented custom advanced prefs option: " << selected_field << "\n";
+			WRN_GUI_L << "Invalid or unimplemented custom advanced prefs option: " << pref.field << "\n";
 		}
 
 		// Add more options here as needed
 	}
 
-	const bool has_description = !adv_preferences_cfg_[selected_row]["description"].empty();
+	const bool has_description = !pref.description.empty();
 
-	if(has_description || (selected_type != ADVANCED_PREF_TYPE::SPECIAL && selected_type != ADVANCED_PREF_TYPE::TOGGLE)) {
+	if(has_description || (pref.type != avp::avd_type::SPECIAL && pref.type != avp::avd_type::TOGGLE)) {
 		find_widget<widget>(get_advanced_row_grid(list, selected_row), "prefs_setter_grid", false)
 			.set_visible(widget::visibility::visible);
 	}

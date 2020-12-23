@@ -245,4 +245,3 @@ namespace utils
 {
 	std::vector<std::string> split(const config_attribute_value& val);
 }
-

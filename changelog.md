@@ -1,29 +1,59 @@
-## Version 1.15.7+dev
+## Version 1.15.8+dev
+ ### Add-ons client
+ ### Add-ons server
+ ### Campaigns
+ ### Multiplayer
+ ### Packaging
+  * Boost 1.65 is now required (was 1.59).
+ ### Terrain
+ ### Translations
+ ### Units
+   * New Fauna/monster unit: Horned Scarab
+ ### User interface
+ ### WML Engine
+ ### Miscellaneous and Bug Fixes
+
+## Version 1.15.8
+ ### Add-ons client
+   * Fix potential crashes when working with installed add-ons that have a corrupted _info.cfg file.
+   * Improved license information prompt for uploads.
  ### Add-ons server
    * Fixed inability to write files (including the server configuration file) on Windows.
    * Dropped plain text passphrase migration, unused in production since version 1.12.7 and 1.13.0 (issue #5080).
    * Uploading add-ons with versions not greater than the latest uploaded version is no longer allowed (issue #5079).
- ### Add-ons client
-   * Fix potential crashes when working with installed add-ons that have a corrupted _info.cfg file.
+   * Implemented optional server information query used by connecting clients.
  ### Campaigns
+   * Dead Water
+     * Reduce campaign difficulty
    * Eastern Invasion:
+     * Tweak campaign difficulty
      * S03: fix the initial keep being blocked at the start
+   * Heir to the Throne
+     * Tweak campaign difficulty
+   * The Hammer of Thursagan
+     * Reduce campaign difficulty
+   * The South Guard
+     * Reduce campaign difficulty
  ### Multiplayer
    * Added `/roll N` command to multiplayer games and game lobbies which produces a publicly visible random integer number ranged from 1 to N inclusively (issue #5221, PR #5326).
  ### Packaging
-  * SDL_Image 2.0.2 or later is now required (was 2.0.0).
+   * SDL_Image 2.0.2 or later is now required (was 2.0.0).
  ### Terrain
  ### Translations
    * Updated translations: British English, Czech, Italian, Polish, Portuguese (Brazil),
-     Russian
+     Russian, Turkish
  ### Units
    * Undead variations for Falcon, Giant Rat, serpents, and Gorer/Tusklet
  ### User interface
+   * Minor streamlining on the Game Version and Add-ons Manager dialogs.
    * Text labels now use the hyperlink mouse cursor while hovering links.
    * Link awareness is now configured on a per-instance basis for labels/scroll labels instead of globally in their definition.
  ### WML Engine
+   * Add a overwrite_specials option for weapon special abilities to allow the effect of the ability to take precedence over the effect of any identical weapon special.
  ### Miscellaneous and Bug Fixes
    * Fixed several possible crashes in wmllint
+   * Screenshots now default to JPG instead of PNG
+   * Fixed screenshot popup sometimes using the wrong path when trying to open the screenshot after saving
 
 ## Version 1.15.7
  ### Add-ons server
@@ -733,7 +763,25 @@
    * Game bans are now also enforced by username. (PR#4139)
    * Usernames on the host's ignore list are automatically banned. (PR#4143)
 
-## Version 1.14.13+dev
+## Version 1.14.15
+ ### Add-ons client
+   * Fix potential crashes when working with installed add-ons that have a corrupted _info.cfg file.
+ ### Campaigns
+   * Descent into Darkness:
+     * S11: fix low probability case of enemy being unreachable
+     * S11: recall ghosts if available and ensure the player gets one level 2 ghost.
+   * Eastern Invasion:
+     * S03: fix the initial keep being blocked at the start
+ ### Translations
+   * Updated translations: British English, Catalan, Czech, French, German, Italian,
+     Japanese, Polish, Portuguese (Brazil), Russian, Turkish
+ ### User interface
+   * Fixed formatting of hyperlinks when the same URL appears more than once in a block of text
+ ### Miscellaneous and Bug Fixes
+   * Fixed a rare issue on Windows that could result in wesnoth.exe sticking around waiting for console input after encountering an error despite not being launched with the `--wconsole` option.
+   * Removed documentation for network proxy-related command line options previously removed in version 1.13.1 along with libana.
+
+## Version 1.14.14
  ### Add-ons client
    * Add-on titles and descriptions translated to the current language are used when available.
      The original English title is displayed in the UI and considered for search purposes in addition
@@ -743,8 +791,13 @@
      time in the .pbl (PR #4993). Only clients running 1.14.14/1.15.4 or later can read the
      translated values.
  ### Language and i18n
-   * Updated translations: British English, Chinese (Simplified), Esperanto, Italian,
+   * Updated translations: British English, Catalan, Chinese (Simplified),
+     Chinese (Traditional), Czech, Esperanto, French, Hungarian, Italian, Polish,
      Portuguese (Brazil), Russian, Spanish, Turkish
+ ### Multiplayer
+   * 5p - The Wilderlands:
+     * Player 5’s units are sorted when cycling through them with the »n« key.
+     * Map tweaks (changes to some castles & villages, the northern river and embellishments)
  ### User interface
    * Do not list nameless abilities in the Abilities and Ability Upgrades lists in unit
      descriptions in Help (issue #3060).

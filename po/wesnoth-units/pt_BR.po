@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2020-11-21 04:41 UTC\n"
-"PO-Revision-Date: 2020-02-07 10:51-0300\n"
+"POT-Creation-Date: 2020-12-19 01:27 UTC\n"
+"PO-Revision-Date: 2020-12-15 07:44-0300\n"
 "Last-Translator: Andrei Machado <andreisp.machado@yahoo.com>\n"
 "Language-Team: Portuguese - Brasil <gnome-l10n-br@listas.cipsga.org.br>\n"
 "Language: pt_BR\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 2.2.3\n"
+"X-Generator: Poedit 2.4.2\n"
 
 #
 # File: data/core/units/monsters/Giant_Mudcrawler.cfg, line: 44
@@ -599,9 +599,9 @@ msgstr "arco"
 #: data/core/units/gryphons/Gryphon.cfg:28
 #: data/core/units/gryphons/Gryphon_Master.cfg:28
 #: data/core/units/gryphons/Gryphon_Rider.cfg:27
-#: data/core/units/monsters/Bear.cfg:50
-#: data/core/units/monsters/Elder_Falcon.cfg:35
-#: data/core/units/monsters/Falcon.cfg:84
+#: data/core/units/monsters/Bear.cfg:51
+#: data/core/units/monsters/Elder_Falcon.cfg:36
+#: data/core/units/monsters/Falcon.cfg:85
 #: data/core/units/monsters/Icemonax.cfg:53
 #: data/core/units/monsters/Icemonax_Greater.cfg:61
 #: data/core/units/monsters/Roc.cfg:36
@@ -658,7 +658,7 @@ msgstr "sabre"
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:268
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:283
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:299
-#: data/core/units/undead/Corpse_Walking.cfg:57
+#: data/core/units/undead/Corpse_Walking.cfg:75
 msgid "Walking Corpse"
 msgstr "Corpo Ambulante"
 
@@ -669,7 +669,7 @@ msgstr "Corpo Ambulante"
 #. [unit_type]: id=Walking Corpse Shynal, race=undead
 #: data/campaigns/Secrets_of_the_Ancients/units/Corpse_Shynal.cfg:17
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:11
-#: data/core/units/undead/Corpse_Walking.cfg:67
+#: data/core/units/undead/Corpse_Walking.cfg:85
 msgid ""
 "Walking Corpses are the bodies of the dead, re-animated by dark magic. "
 "Though not especially dangerous to a trained soldier, the sight of one’s "
@@ -736,8 +736,8 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Sun_Singer.cfg:30
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Sun_Sylph.cfg:34
 #: data/campaigns/Under_the_Burning_Suns/units/undead/Spider_Lich.cfg:26
-#: data/core/units/undead/Corpse_Soulless.cfg:74
-#: data/core/units/undead/Corpse_Walking.cfg:73
+#: data/core/units/undead/Corpse_Soulless.cfg:92
+#: data/core/units/undead/Corpse_Walking.cfg:91
 #: data/core/units/undead/Necro_Ancient_Lich.cfg:33
 #: data/core/units/undead/Necro_Lich.cfg:39
 #: data/core/units/undead/Spirit_Ghost.cfg:60
@@ -878,8 +878,8 @@ msgstr "maldição"
 #: data/core/units/goblins/Knight.cfg:34
 #: data/core/units/goblins/Pillager.cfg:33
 #: data/core/units/goblins/Wolf_Rider.cfg:46
-#: data/core/units/monsters/Ant.cfg:32 data/core/units/monsters/Bear.cfg:41
-#: data/core/units/monsters/Fire_Ant.cfg:63
+#: data/core/units/monsters/Ant.cfg:33 data/core/units/monsters/Bear.cfg:42
+#: data/core/units/monsters/Fire_Ant.cfg:64
 #: data/core/units/monsters/Giant_Spider.cfg:30
 #: data/core/units/monsters/Sea_Serpent.cfg:27
 #: data/core/units/monsters/Water_Serpent.cfg:43
@@ -899,6 +899,7 @@ msgstr "presas"
 #. [attack]: type=cold
 #. [attack]: type=blade
 #. [attack]: type=pierce
+#. [variation]
 #. [unit_type]: id=SotA Walking Corpse_Rat
 #. [unit_type]: id=SotA Soulless_Rat
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:301
@@ -908,11 +909,13 @@ msgstr "presas"
 #: data/core/units/monsters/Crocodile.cfg:101
 #: data/core/units/monsters/Fire_Dragon.cfg:34
 #: data/core/units/monsters/Giant_Rat.cfg:30
-#: data/core/units/monsters/Giant_Stoat.cfg:61
+#: data/core/units/monsters/Giant_Stoat.cfg:62
 #: data/core/units/monsters/Icemonax.cfg:62
 #: data/core/units/monsters/Icemonax_Greater.cfg:70
 #: data/core/units/monsters/Wild_Wyvern.cfg:24
 #: data/core/units/undead/Corpse_Ghast.cfg:29
+#: data/core/units/undead/Corpse_Soulless.cfg:235
+#: data/core/units/undead/Corpse_Walking.cfg:234
 msgid "bite"
 msgstr "mordida"
 
@@ -921,7 +924,7 @@ msgstr "mordida"
 # File: data/core/units/undead/Corpse_Soulless.cfg, line: 20
 #. [unit_type]: id=Soulless, race=undead
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Soulless.cfg:14
-#: data/core/units/undead/Corpse_Soulless.cfg:68
+#: data/core/units/undead/Corpse_Soulless.cfg:86
 msgid ""
 "The technique of animating a dead body is unfortunately well-known in the "
 "dark arts; practitioners often use it to raise servants and soldiers from "
@@ -966,7 +969,7 @@ msgstr ""
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Soulless.cfg:246
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Soulless.cfg:260
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Soulless.cfg:273
-#: data/core/units/undead/Corpse_Soulless.cfg:57
+#: data/core/units/undead/Corpse_Soulless.cfg:75
 msgid "Soulless"
 msgstr "Desalmado"
 
@@ -2650,11 +2653,15 @@ msgid ""
 "effective flankers or potent shock attackers."
 msgstr ""
 
+#
+# File: data/core/units/undead/Necromancer.cfg, line: 139
+# File: data/core/units/undead/Necromancer.cfg, line: 139
 #. [unit_type]: id=Dune Falconer, race=dunefolk
 #: data/core/units/dunefolk/Falconer.cfg:15
 #, fuzzy
+#| msgid "female^Necromancer"
 msgid "female^Dune Falconer"
-msgstr "a"
+msgstr "Necromante"
 
 #. [unit_type]: id=Dune Falconer, race=dunefolk
 #: data/core/units/dunefolk/Falconer.cfg:38
@@ -2677,6 +2684,7 @@ msgstr ""
 #. [attack]: type=blade
 #: data/core/units/dunefolk/Falconer.cfg:154
 #, fuzzy
+#| msgid "Falcon"
 msgid "falcon"
 msgstr "Falcão"
 
@@ -2990,13 +2998,14 @@ msgid ""
 msgstr ""
 
 #
-# File: data/core/units/drakes/Burner.cfg, line: 4
-# File: data/core/units/drakes/Burner.cfg, line: 4
+# File: data/core/units/merfolk/Hunter.cfg, line: 4
+# File: data/core/units/merfolk/Hunter.cfg, line: 4
 #. [unit_type]: id=Dune Sky Hunter, race=dunefolk
 #: data/core/units/dunefolk/Sky_Hunter.cfg:14
 #, fuzzy
+#| msgid "Merman Hunter"
 msgid "female^Dune Sky Hunter"
-msgstr "a"
+msgstr "Tritão Caçador"
 
 #. [unit_type]: id=Dune Sky Hunter, race=dunefolk
 #: data/core/units/dunefolk/Sky_Hunter.cfg:38
@@ -3270,7 +3279,7 @@ msgstr "Montador de Grifos"
 #. [unit_type]: id=Dwarvish Arcanister, race=dwarf
 #: data/core/units/dwarves/Arcanister.cfg:4
 msgid "Dwarvish Arcanister"
-msgstr "Anão arcanista"
+msgstr "Anão Arcanista"
 
 #
 # File: data/core/units/dwarves/Arcanister.cfg, line: 31
@@ -3538,7 +3547,7 @@ msgstr "Anão Trovejante"
 #. [unit_type]: id=Dwarvish Thunderguard, race=dwarf
 #: data/core/units/dwarves/Thunderguard.cfg:4
 msgid "Dwarvish Thunderguard"
-msgstr "Anão Trovejante da Guarda"
+msgstr "Anão Trovejante-Guarda"
 
 #
 # File: data/core/units/dwarves/Ulfserker.cfg, line: 4
@@ -7345,19 +7354,18 @@ msgstr "a"
 
 #. [attack]: type=pierce
 #. [attack]: type=blade
-#: data/core/units/monsters/Elder_Falcon.cfg:27
-#: data/core/units/monsters/Falcon.cfg:93 data/core/units/monsters/Roc.cfg:28
+#: data/core/units/monsters/Elder_Falcon.cfg:28
+#: data/core/units/monsters/Falcon.cfg:94 data/core/units/monsters/Roc.cfg:28
 msgid "beak"
 msgstr "bico"
 
 #. [unit_type]: id=Falcon, race=falcon
 #: data/core/units/monsters/Falcon.cfg:4
-#, fuzzy
 msgid "Falcon"
 msgstr "Falcão"
 
 #. [unit_type]: id=Falcon, race=falcon
-#: data/core/units/monsters/Falcon.cfg:18
+#: data/core/units/monsters/Falcon.cfg:19
 #, fuzzy
 msgid ""
 "Seen as status symbols of the nobles, falcons are precious possessions "
@@ -7389,7 +7397,7 @@ msgstr ""
 # File: data/core/units/humans/Mage_Great.cfg, line: 51
 # File: data/core/units/humans/Mage_Red.cfg, line: 50
 #. [attack]: type=fire
-#: data/core/units/monsters/Fire_Ant.cfg:72
+#: data/core/units/monsters/Fire_Ant.cfg:73
 #, fuzzy
 #| msgid "fireball"
 msgid "fire"
@@ -7647,15 +7655,10 @@ msgstr ""
 msgid "web"
 msgstr "teia"
 
-#
-# File: data/core/units/monsters/Giant_Rat.cfg, line: 4
-# File: data/core/units/monsters/Giant_Rat.cfg, line: 4
 #. [unit_type]: id=Giant Stoat, race=monster
 #: data/core/units/monsters/Giant_Stoat.cfg:4
-#, fuzzy
-#| msgid "Giant Rat"
 msgid "Frost Stoat"
-msgstr "Rato Gigante"
+msgstr ""
 
 #. [unit_type]: id=Giant Stoat, race=monster
 #: data/core/units/monsters/Giant_Stoat.cfg:19
@@ -7670,7 +7673,7 @@ msgstr ""
 # File: data/core/units/monsters/Fire_Guardian.cfg, line: 28
 # File: data/core/units/monsters/Fire_Guardian.cfg, line: 28
 #. [attack]: type=cold
-#: data/core/units/monsters/Giant_Stoat.cfg:70
+#: data/core/units/monsters/Giant_Stoat.cfg:71
 #, fuzzy
 #| msgid "fire claws"
 msgid "ice claw"
@@ -7851,7 +7854,7 @@ msgid "Gorer"
 msgstr ""
 
 #. [unit_type]: id=Gorer, race=monster
-#: data/core/units/monsters/Tusker_Gorer.cfg:34
+#: data/core/units/monsters/Tusker_Gorer.cfg:35
 msgid ""
 "As Tuskers age, their already formidable teeth grow longer and more "
 "numerous. A mature boar gorer is a valuable asset to any farmer. And an "
@@ -7859,13 +7862,13 @@ msgid ""
 msgstr ""
 
 #. [attack]: type=blade
-#: data/core/units/monsters/Tusker_Gorer.cfg:50
+#: data/core/units/monsters/Tusker_Gorer.cfg:51
 #: data/core/units/monsters/Tusker_Tusklet.cfg:48
 msgid "Tusks"
 msgstr ""
 
 #. [attack]: type=pierce
-#: data/core/units/monsters/Tusker_Gorer.cfg:102
+#: data/core/units/monsters/Tusker_Gorer.cfg:103
 msgid "Tusk Charge"
 msgstr ""
 
@@ -8148,14 +8151,14 @@ msgid "curved blade"
 msgstr "lâmina de guerra"
 
 #
-# File: data/core/units/nagas/Myrmidon.cfg, line: 4
-# File: data/core/units/nagas/Myrmidon.cfg, line: 4
+# File: data/core/units/nagas/Myrmidon.cfg, line: 61
+# File: data/core/units/nagas/Myrmidon.cfg, line: 61
 #. [female]
 #: data/core/units/nagas/Ophidian.cfg:88
 #, fuzzy
-#| msgid "Naga Myrmidon"
+#| msgid "Nagini Myrmidon"
 msgid "Nagini Ophidian"
-msgstr "Naga Mirmidão"
+msgstr "Nagini Mirmidão"
 
 #
 # File: data/core/units/nagas/Fighter.cfg, line: 4
@@ -8184,24 +8187,24 @@ msgid "chakram"
 msgstr ""
 
 #
-# File: data/core/units/nagas/Fighter.cfg, line: 4
-# File: data/core/units/nagas/Fighter.cfg, line: 4
+# File: data/core/units/nagas/Fighter.cfg, line: 63
+# File: data/core/units/nagas/Fighter.cfg, line: 63
 #. [female]
 #: data/core/units/nagas/Ringcaster.cfg:93
 #, fuzzy
-#| msgid "Naga Fighter"
+#| msgid "Nagini Fighter"
 msgid "Nagini Ringcaster"
-msgstr "Naga Guerreiro"
+msgstr "Nagini Guerreiro"
 
 #
-# File: data/core/units/nagas/Fighter.cfg, line: 4
-# File: data/core/units/nagas/Fighter.cfg, line: 4
+# File: data/core/units/nagas/Warrior.cfg, line: 4
+# File: data/core/units/nagas/Warrior.cfg, line: 4
 #. [unit_type]: id=Naga Sicarius, race=naga
 #: data/core/units/nagas/Sicarius.cfg:4
 #, fuzzy
-#| msgid "Naga Fighter"
+#| msgid "Naga Warrior"
 msgid "Naga Sicarius"
-msgstr "Naga Guerreiro"
+msgstr "Naga Soldado"
 
 #. [unit_type]: id=Naga Sicarius, race=naga
 #: data/core/units/nagas/Sicarius.cfg:19
@@ -8337,14 +8340,14 @@ msgid ""
 msgstr ""
 
 #
-# File: data/core/units/nagas/Fighter.cfg, line: 4
-# File: data/core/units/nagas/Fighter.cfg, line: 4
+# File: data/core/units/nagas/Fighter.cfg, line: 63
+# File: data/core/units/nagas/Fighter.cfg, line: 63
 #. [female]
 #: data/core/units/nagas/Zephyr.cfg:110
 #, fuzzy
-#| msgid "Naga Fighter"
+#| msgid "Nagini Fighter"
 msgid "Nagini Zephyr"
-msgstr "Naga Guerreiro"
+msgstr "Nagini Guerreiro"
 
 #
 # File: data/core/units/ogres/Ogre.cfg, line: 4
@@ -9187,76 +9190,114 @@ msgstr ""
 "pesadelos."
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:100
-#: data/core/units/undead/Corpse_Walking.cfg:99
+#: data/core/units/undead/Corpse_Soulless.cfg:118
+#: data/core/units/undead/Corpse_Walking.cfg:117
 msgid "wc_variation^Drake"
 msgstr "Draconato"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:115
-#: data/core/units/undead/Corpse_Walking.cfg:114
+#: data/core/units/undead/Corpse_Soulless.cfg:133
+#: data/core/units/undead/Corpse_Walking.cfg:132
 msgid "wc_variation^Dwarf"
 msgstr "Anão"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:128
-#: data/core/units/undead/Corpse_Walking.cfg:127
+#: data/core/units/undead/Corpse_Soulless.cfg:146
+#: data/core/units/undead/Corpse_Walking.cfg:145
+#, fuzzy
+#| msgid "wc_variation^Bat"
+msgid "wc_variation^Falcon"
+msgstr "Morcego"
+
+#. [variation]
+#: data/core/units/undead/Corpse_Soulless.cfg:180
+#: data/core/units/undead/Corpse_Walking.cfg:179
 msgid "wc_variation^Goblin"
 msgstr "Goblin"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:138
-#: data/core/units/undead/Corpse_Walking.cfg:153
+#: data/core/units/undead/Corpse_Soulless.cfg:190
+#: data/core/units/undead/Corpse_Walking.cfg:212
 msgid "wc_variation^Mounted"
 msgstr "Montado"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:148
-#: data/core/units/undead/Corpse_Walking.cfg:137
+#: data/core/units/undead/Corpse_Soulless.cfg:200
+#: data/core/units/undead/Corpse_Walking.cfg:189
 msgid "wc_variation^Gryphon"
 msgstr "Grifo"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:164
-#: data/core/units/undead/Corpse_Walking.cfg:163
+#: data/core/units/undead/Corpse_Soulless.cfg:223
+#: data/core/units/undead/Corpse_Walking.cfg:222
+#, fuzzy
+#| msgid "wc_variation^Bat"
+msgid "wc_variation^Rat"
+msgstr "Morcego"
+
+#. [variation]
+#: data/core/units/undead/Corpse_Soulless.cfg:240
+#: data/core/units/undead/Corpse_Walking.cfg:239
 msgid "wc_variation^Saurian"
 msgstr "Lagarto"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:174
-#: data/core/units/undead/Corpse_Walking.cfg:173
+#: data/core/units/undead/Corpse_Soulless.cfg:250
+#: data/core/units/undead/Corpse_Walking.cfg:249
 #, fuzzy
 #| msgid "wc_variation^Swimmer"
 msgid "wc_variation^Spider"
 msgstr "Nadador"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:183
-#: data/core/units/undead/Corpse_Walking.cfg:182
+#: data/core/units/undead/Corpse_Soulless.cfg:259
+#: data/core/units/undead/Corpse_Walking.cfg:258
+#, fuzzy
+#| msgid "wc_variation^Swimmer"
+msgid "wc_variation^Serpent"
+msgstr "Nadador"
+
+#. [variation]
+#: data/core/units/undead/Corpse_Soulless.cfg:276
+#: data/core/units/undead/Corpse_Walking.cfg:275
 msgid "wc_variation^Swimmer"
 msgstr "Nadador"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:201
-#: data/core/units/undead/Corpse_Walking.cfg:200
+#: data/core/units/undead/Corpse_Soulless.cfg:294
+#: data/core/units/undead/Corpse_Walking.cfg:293
 msgid "wc_variation^Troll"
 msgstr "Troll"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:210
-#: data/core/units/undead/Corpse_Walking.cfg:209
+#: data/core/units/undead/Corpse_Soulless.cfg:303
+#: data/core/units/undead/Corpse_Walking.cfg:302
+#, fuzzy
+#| msgid "wc_variation^Wose"
+msgid "wc_variation^Tusker"
+msgstr "Wose"
+
+#. [variation]
+#: data/core/units/undead/Corpse_Soulless.cfg:311
+#: data/core/units/undead/Corpse_Walking.cfg:310
+msgid "tusk"
+msgstr ""
+
+#. [variation]
+#: data/core/units/undead/Corpse_Soulless.cfg:316
+#: data/core/units/undead/Corpse_Walking.cfg:315
 msgid "wc_variation^Wose"
 msgstr "Wose"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:222
-#: data/core/units/undead/Corpse_Walking.cfg:221
+#: data/core/units/undead/Corpse_Soulless.cfg:328
+#: data/core/units/undead/Corpse_Walking.cfg:327
 msgid "wc_variation^Wolf"
 msgstr "Lobo"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:235
-#: data/core/units/undead/Corpse_Walking.cfg:234
+#: data/core/units/undead/Corpse_Soulless.cfg:341
+#: data/core/units/undead/Corpse_Walking.cfg:340
 msgid "wc_variation^Bat"
 msgstr "Morcego"
 
@@ -10015,369 +10056,6 @@ msgid ""
 "hinder their enemies."
 msgstr ""
 
-#
-# File: data/core/units/orcs/Archer.cfg, line: 20
-# File: data/core/units/orcs/Archer.cfg, line: 20
-#~ msgid ""
-#~ "Amongst orcs, bows are often regarded as a cowardly weapon; but even "
-#~ "orcs, especially youths and those of slight build, are pragmatic enough "
-#~ "to use them in spite of this. Orcish archers are seldom well equipped, "
-#~ "and have no semblance of training. Even as poorly handled as they are, "
-#~ "their weapons can still be quite deadly, and the wielders thereof rarely "
-#~ "march alone."
-#~ msgstr ""
-#~ "Entre os orcs, o arco é geralmente considerado como uma arma covarde; mas "
-#~ "até mesmo orcs, especialmente os jovens e principalmente os que não são "
-#~ "tão parrudos, são pragmáticos o suficiente para fazer uso delas apesar de "
-#~ "sua fama. Orcs arqueiros só raramente são bem equipados, e não possuem "
-#~ "nenhum semblante de treinamento. Mesmo manuseadas de forma ineficiente, "
-#~ "suas armas são mortíferas e, por conta disso, eles raramente marcham "
-#~ "sozinhos."
-
-#
-# File: data/core/units/orcs/Assassin.cfg, line: 23
-# File: data/core/units/orcs/Assassin.cfg, line: 23
-#~ msgid ""
-#~ "Though some consider it cowardly to use, poison is a weapon favored by "
-#~ "orcs, especially those weak of frame. Orcish assassins, who use it on "
-#~ "throwing knives, are typically frail by orcish standards, although "
-#~ "surprisingly nimble. Though rarely the ones who deal the killing blow, "
-#~ "their tactics are a considerable aid to their larger and more brutal kin."
-#~ msgstr ""
-#~ "Apesar de que alguns considerem-na uma tática covarde, veneno é uma arma "
-#~ "favorecida pelos orcs, especialmente por aqueles cujos corpos não são tão "
-#~ "fortes. Orcs assassinos, que usam-na em facas de arremesso, geralmente "
-#~ "fracos para os padrões orcs, mas são incrivelmente ligeiros. Embora "
-#~ "rarmente aqueles que desferem o golpe fatal, suas táticas ajudam "
-#~ "consideravelmente os seus parentes maiores e mais brutais."
-
-#
-# File: data/core/units/orcs/Crossbowman.cfg, line: 19
-# File: data/core/units/orcs/Crossbowman.cfg, line: 19
-#~ msgid ""
-#~ "Orcish crossbows are crude imitations of human or dwarvish design; a "
-#~ "crossbow of any make, though, is a fairly potent device. The orcs "
-#~ "privileged enough to wield them are capable warriors, and what they lack "
-#~ "in finesse, they make up for in numbers."
-#~ msgstr ""
-#~ "As bestas dos orcs são imitações brutas das bestas dos humanos ou anões; "
-#~ "uma besta de qualquer tipo, no entanto, é um instrumento um tanto quanto "
-#~ "potente. Os orcs que possuem o privilegio para porta-las são guerreiros "
-#~ "capazes, e o que lhes falta em delicadeza eles compensam com número."
-
-#~ msgid ""
-#~ "A blade in the dark, dripping with poison — for many orcish warlords the "
-#~ "last thing they see. Due to their high fees, orcish nightblades "
-#~ "specialize in “resolving internal conflicts” and are rarely seen on the "
-#~ "battlefield. Practice makes perfect, and few can rival them in that "
-#~ "regard: they have long lost count of their victims, though that "
-#~ "admittedly isn’t too hard for an orc with only ten fingers."
-#~ msgstr ""
-#~ "Uma lâmina nas trevas, pingando veneno — é a última visão de muitos "
-#~ "líderes orcs. Por conta de suas taxas altas, Orcs lâminas-noturnas "
-#~ "especializam-se em \"resolução de conflitos internos\" e são raramente "
-#~ "vistos nos campos de batalha. A pratica leva à perfeição, e poucos são "
-#~ "seus rivais neste quesito: há muito que eles perderam a conta de quantas "
-#~ "foram suas vítimas, muito embora isto não ser difícil para um orc que só "
-#~ "possui dez dedos."
-
-#
-# File: data/core/units/orcs/Slayer.cfg, line: 22
-# File: data/core/units/orcs/Slayer.cfg, line: 22
-#~ msgid ""
-#~ "The larger or more skilled orcish assassins are called ‘Slayers’ by their "
-#~ "enemies. Slayers are fast on their feet, and quite nimble in combat, "
-#~ "although they achieve that end by forgoing armor. Their weapon of choice, "
-#~ "poison, is a vicious tool, and its common use on the battlefield is often "
-#~ "the real cause of orcish supremacy."
-#~ msgstr ""
-#~ "Os maiores ou mais proficientes orcs assassinos são chamados de "
-#~ "'Matadores' por seus inimigos. Matadores são rápidos e ágeis em combate "
-#~ "só que, para tanto, eles renunciam ao uso de armadura. Sua arma favorita, "
-#~ "o veneno, é uma ferramenta perversa, e o seu uso comum no campo de "
-#~ "batalha é geralmente a real causa da supremacia dos orcs."
-
-#
-# File: data/core/units/orcs/Sovereign.cfg, line: 20
-# File: data/core/units/orcs/Sovereign.cfg, line: 20
-#~ msgid ""
-#~ "From time to time, an orc will arise who has a natural charisma and "
-#~ "command over his ilk. If he is also strong and cunning enough to survive "
-#~ "early leadership struggles, he will inevitably find himself leading a "
-#~ "great horde of warriors, and he will also inevitably cause a great deal "
-#~ "of trouble for the civilized races of the world. The surest way to "
-#~ "disperse such a host is to slay this rare orc who can hold it together."
-#~ msgstr ""
-#~ "De tempos em tempos, surge um orc que possui carisma natural e comanda a "
-#~ "sua raça. Se ele ambém for forte e astuto o suficiente para sobreviver às "
-#~ "lutas iniciais por liderança, ele inevitavelmente liderará uma grande "
-#~ "horda de guerreiros e ele também inevitavelmente causará muitos problemas "
-#~ "para as raças civilizadas do mundo. A melhor maneira de dispersar tal "
-#~ "horda é matando esse raro orc que consegue mantê-la unida."
-
-#~ msgid ""
-#~ "In a race where might is the be-all end-all of supremacy and respect, the "
-#~ "orcs who achieve victory time and time again become the rulers of much "
-#~ "greater orcish tribes. Wearing the most ornate armor they plunder from "
-#~ "their enemies, the Orcish Warlords are true champions of battle, their "
-#~ "mastery of the blade able to match even the finest from vaunted elvish "
-#~ "and human schools of swordsmen. They even have practice with the bow, "
-#~ "their usage of this ordinarily cowardly weapon offset by the sheer "
-#~ "admiration their warriors have for them. However, the Warlords lack the "
-#~ "insight for strategy and leading charisma of some of the more cunning "
-#~ "orcs, and so the hordes they lead often fall simply due to their "
-#~ "inability to truly lead."
-#~ msgstr ""
-#~ "Numa raça onde poder dita supremacia e respeito, os orcs que alcançam a "
-#~ "vitória repetidamente tornam-se os soberanos de tribos orcs cada vez "
-#~ "maiores. Usando as armaduras mais ornamentadas que eles conseguem "
-#~ "espólios de guerra, Orcs Senhores da Guerra são verdadeiros campeões de "
-#~ "batalhas, seu domínio da lâmina equipara-se ao dos mais vaidosos das "
-#~ "escolas humanas e élficas de espadachins. Eles até mesmo possuem prática "
-#~ "com o arco, sendo o uso desta arma geralmente considerada para covardes "
-#~ "contrabalanceada pela absoluta admiração que seus guerreiros tem deles. "
-#~ "Entretanto, eles não possuem conhecimento de estratégias e nem mesmo o "
-#~ "carisma que alguns dos orcs mais astutos possuem, e então as hordas que "
-#~ "eles lideram frequentemente encontram seu fim na inabilidade dos seus "
-#~ "líderes de liderá-las adequadamente."
-
-#~ msgid ""
-#~ "Orcish Warriors are those orcs who have proved their strength on the "
-#~ "battlefield, choosing to display their skill by fighting with a sword in "
-#~ "each hand. Their prowess in battle has gained them the respect of other "
-#~ "orcs, and they will typically be seen ordering lesser bands of raiders. "
-#~ "Despite their position, they rarely possess the commanding skills held by "
-#~ "the leaders of other armies."
-#~ msgstr ""
-#~ "Orcs Guerreiros são aqueles orcs que provaram sua força no campo de "
-#~ "batalha, escolhendo mostrar suas habilidades lutando com uma espada em "
-#~ "cada mão. Seu valor em batalha ganhou-lhes o respeito dos outros orcs e, "
-#~ "por isso, eles são frequentemente vistos comandando pequenos grupos de "
-#~ "saqueadores. Apesar de sua posição, eles raramente possuem a habilidades "
-#~ "de comandar tropas que os líderes de outros exércitos possuem."
-
-#~ msgid ""
-#~ "The curious name of the Elvish ‘Avengers’ comes from a tactic often "
-#~ "employed by these master rangers. The enemy is allowed to break through a "
-#~ "feint defense and when the vulnerable troops behind the front line "
-#~ "follow, these archers break cover and attack, cutting supply lines and "
-#~ "surrounding the enemy in one fell stroke. This has, at times, been "
-#~ "interpreted as a form of vengeance for their brethren lost earlier in the "
-#~ "battle. While not so base in design, it is not at all inaccurate.\n"
-#~ "\n"
-#~ "Even more than other elves, Avengers are a part of the realm of the "
-#~ "forests, spending most of their time living among the arboreal creatures "
-#~ "and learning the hidden secrets in the woods. As the keepers of nature, "
-#~ "these elves have the propensity to explore the wilds even beyond the "
-#~ "boundaries of the forests and are adept at traversing rough terrains like "
-#~ "mountains and deserts. Even in such unfamiliar territories, Avengers are "
-#~ "already powerful combatants; in their homes in the trees, they are nigh "
-#~ "unassailable, capable of assassinating enemies from the shadows with "
-#~ "little chance of retaliation. It is this ability which instills the most "
-#~ "fear into any invading army, for fighting a force that can barely be "
-#~ "tracked or seen in the forests leaves very little room for counterattack "
-#~ "and customarily results in crushing defeat."
-#~ msgstr ""
-#~ "O curioso nome dos Vingadores Élficos vêm da tática que esses rangers "
-#~ "mestres normalmente usam. Eles permitem que os inimigos penetrem uma "
-#~ "falsa linha defensiva e quando as tropas vulneráveis atrás da primeira "
-#~ "linha inimiga avança, esses arqueiras saem de seus abrigos e atacam, "
-#~ "cortando linhas de abastecimento e cercando os inimigos num único ataque. "
-#~ "Isto foi, por vezes, interpretado como uma forma de vingança por seus "
-#~ "irmãos mortos em guerras passadas. Embora isto não seja preciso, não está "
-#~ "muito longe da verdade.\n"
-#~ "\n"
-#~ "Ainda mais do que outros elfos, Vingadores fazem parte dos reinos das "
-#~ "florestas, passando a maior parte de suas vidas juntos as criaturas das "
-#~ "árvores e aprendendo os segredos ocultos nas florestas. Como os guardiões "
-#~ "da natureza, estes elfos possuem a propensão de explorar as regiões esmas "
-#~ "além das fronteiras das florestas e são hábeis em navegar por terrenos de "
-#~ "difícil navegação, como montanhas e desertos. Vingadores são poderosos "
-#~ "combatentes até mesmo em territórios que não são familiares para eles; em "
-#~ "suas residências por entre as árvores, são quase intocáveis e capazes de "
-#~ "assasinar inimigos das sombras sem precisar se preocuparem muito com "
-#~ "retaliação inimiga. É justamente esta habilidade que causa maior medo em "
-#~ "forças invasoras, pois enfrentar inimigos que mal podem ser seguidos ou "
-#~ "vistos nas florestas deixa muito pouco espaço para contra-ataque e "
-#~ "geralmente resulta numa derrota esmagadora."
-
-#~ msgid ""
-#~ "Compared to other elves, Elvish Avengers have superior movement and "
-#~ "defense on sand, shallow water, and mountains."
-#~ msgstr ""
-#~ "Comparado aos outros elfos, Vingadores Élficos possuem melhor movimento e "
-#~ "defesa em desertos, água rasa e montanhas."
-
-#
-# File: data/core/units/elves/Druid.cfg, line: 19
-# File: data/core/units/elves/Druid.cfg, line: 19
-#~ msgid ""
-#~ "The magic of the wood-elves is poorly suited for combat, but effective "
-#~ "nonetheless. The forests in which they thrive can become quickened by a "
-#~ "word of command, and will lash out at those who threaten their peace.\n"
-#~ "\n"
-#~ "The chief ability of Druids lies in healing, and it is for this skill "
-#~ "that they are revered by their people."
-#~ msgstr ""
-#~ "A magia dos elfos dos bosques é inadequada para combates, mas ainda assim "
-#~ "possui seus usos. As florestas em que elas prosperam despertam quando "
-#~ "dita a palavra de comando e atacam todos aqueles que ameaçam a paz "
-#~ "delas.\n"
-#~ "\n"
-#~ "A principal habilidade das Druidas é a cura e é por causa desta "
-#~ "habilidade que elas são reverenciadas por seu povo."
-
-#
-# File: data/core/units/elves/Enchantress.cfg, line: 19
-# File: data/core/units/elves/Enchantress.cfg, line: 19
-#~ msgid ""
-#~ "The magic of the elves is wholly unlike that of humanity, so much so that "
-#~ "humans are almost universally incapable of understanding it, let alone "
-#~ "using it. Likewise, those who are masters of it are equally enigmatic; "
-#~ "though it can be said that they are revered by their people, very little "
-#~ "can be said about their actual function or purpose within that society."
-#~ msgstr ""
-#~ "A magia dos elfos é completamente diferente daquela dos humanos. Tamanha "
-#~ "é a diferença que os humanos são, quase que universalmente, incapazes de "
-#~ "compreendê-la, quanto mais usá-la. Da mesma forma, aqueles que a dominam "
-#~ "são igualmente enigmáticos; embora possa-se dizer que elas são "
-#~ "reverenciadas por seu povo, muito pouco se sabe de sua função ou "
-#~ "propósito dentro da sociedade."
-
-#
-# File: data/core/units/elves/High_Lord.cfg, line: 19
-# File: data/core/units/elves/High_Lord.cfg, line: 19
-#~ msgid ""
-#~ "The leaders of elvenkind command an instinctive loyalty from their people "
-#~ "that rulers of other races can only envy, and earn it with great "
-#~ "mindfulness and wisdom. Quiet and contemplative in times of peace, a High "
-#~ "Lord in the full of his wrath is an awesome sight indeed."
-#~ msgstr ""
-#~ "Os líderes élficos possuem uma lealdade natural de seus súditos que "
-#~ "líderes de outras raças invejam muito. Tal lealdade é é fruto da atenção "
-#~ "e sabedoria dos líderes. Quietos e contemplativos em tempos de paz, um "
-#~ "Lorde Supremo tomado pela raiva é uma visão pavorante."
-
-#
-# File: data/core/units/elves/Lady.cfg, line: 21
-# File: data/core/units/elves/Lady.cfg, line: 21
-#~ msgid ""
-#~ "Elves choose their leaders for their wisdom and sensitivity to the "
-#~ "balance of universal forces; foresight is what has protected them in "
-#~ "times of uncertainty. Their just reign is rewarded by the unflagging "
-#~ "fealty of their people, which is the greatest gift for which any ruler "
-#~ "could ask."
-#~ msgstr ""
-#~ "Elfos escolhem seus líderes por sua sabedoria e sensibilidade sobre o "
-#~ "equilíbrio das forças universais; a capacidade de prever como as coisas "
-#~ "provavelmente acontecerão é o que lhes protegem em tempos de incerteza. "
-#~ "Seu reinado justo é recompensado pela fidelidade total de seu povo, que é "
-#~ "o maior presente que qualquer governante poderia pedir."
-
-#
-# File: data/core/units/elves/Outrider.cfg, line: 21
-# File: data/core/units/elves/Outrider.cfg, line: 21
-#~ msgid ""
-#~ "Elvish Outriders are trained as the royal couriers of the elven kingdoms. "
-#~ "Despite the peaceful nature of their people, their experience makes them "
-#~ "quite deadly in combat. Only the most dedicated exceed these elves’ skill "
-#~ "as mounted archers — in fact, most would be hard pressed to equal it "
-#~ "standing on solid ground.\n"
-#~ "\n"
-#~ "The speed of these soldiers allows the elves to strike when and where "
-#~ "they choose when fighting on their home ground, a fact that has saved "
-#~ "many of their number from death."
-#~ msgstr ""
-#~ "Mensageiros Élficos são treinados para serem os mensageiros reais dos "
-#~ "reinos élficos. Apesar da natureza pacífica de seu povo, sua experiência "
-#~ "em combate faz deles um tanto quanto mortíferos em combate. Apenas os "
-#~ "mais decidados ultrapassam a habilidade destes elfos como arqueiros "
-#~ "montados — na verdade, a maioria possui dificuldade em ser tão bons "
-#~ "quanto eles mesmo desmontados.\n"
-#~ "\n"
-#~ "A velocidade destas unidades faz com que os elvos possam atacar onde e "
-#~ "como eles queiram quando lutam em seus lares, fato este que salvou muitos "
-#~ "dos seus da morte certa."
-
-#~ msgid ""
-#~ "Compared to other elves, Elvish Rangers have superior movement and "
-#~ "defense on sand, shallow water, and mountains."
-#~ msgstr ""
-#~ "Comparado aos outros elfos, Rangers Élficos possuem melhor movimento e "
-#~ "defesa em desertos, água rasa e montanhas."
-
-#
-# File: data/core/units/elves/Shaman.cfg, line: 21
-# File: data/core/units/elves/Shaman.cfg, line: 21
-#~ msgid ""
-#~ "Being partly faerie in nature, elves have an inherent capability for "
-#~ "magic. This is realized in their affinity with the natural world, which "
-#~ "they can call upon as an ally in combat. Enemies wandering in their "
-#~ "forests may soon find themselves entangled by roots and hindered by the "
-#~ "very ground they stand on.\n"
-#~ "\n"
-#~ "The healing abilities of the elves are also remarkable, and of capital "
-#~ "use in battle."
-#~ msgstr ""
-#~ "Sendo parte fadas por natureza, elfos possuem uma capacidade natural para "
-#~ "magia. Isto é evidente em sua afinidade com o mundo natural, afinidade "
-#~ "esta que elas invocam para ajudá-las em combante. Não demora para que "
-#~ "inimigos vagam por suas florestas sejam presos por raízes e que o próximo "
-#~ "solo em que eles se encontram volte-se contra eles.\n"
-#~ "\n"
-#~ "As habilidades de cura dos elfos também são notáveis e essencial em "
-#~ "batalha."
-
-#
-# File: data/core/units/elves/Shyde.cfg, line: 22
-# File: data/core/units/elves/Shyde.cfg, line: 22
-#~ msgid ""
-#~ "Devotion to the path of faerie may eventually transform an elf maiden "
-#~ "into a creature of both worlds. Guided by a power which is little "
-#~ "understood, these beautiful stewards of the elven forests epitomize the "
-#~ "grace and mystery of their people."
-#~ msgstr ""
-#~ "Devoção no caminho da fada pode, eventualmente, transformar uma donzela "
-#~ "élfica em uma criatura de ambos os mundos. Guiada por um poder ainda "
-#~ "pouco entendido, estas belas criadas das florestas élficas são o ápice da "
-#~ "graça e mistério do seu povo."
-
-#
-# File: data/core/units/elves/Sorceress.cfg, line: 19
-# File: data/core/units/elves/Sorceress.cfg, line: 19
-#~ msgid ""
-#~ "The world of faerie is far more potent than the corporeal world. Simply "
-#~ "bringing some of this world into our own can have violent results. This "
-#~ "is well-understood by the elves, although rarely used with malicious "
-#~ "intent; doing so is no easy task, and is a very ill-regarded use of their "
-#~ "strength.\n"
-#~ "\n"
-#~ "Those able to do so are roughly titled as ‘sorceresses’ by other races; "
-#~ "and certainly are capable of acting the part."
-#~ msgstr ""
-#~ "O mundo das fadas é muito mais potente do que o mundo corpóreo. "
-#~ "Simplesmente trazer um pouco deste mundo para o nosso pode dar resultados "
-#~ "violentos. Os elfos entendem bem esse fato e, embora raramente o usem com "
-#~ "intenção maliciosa, fazê-lo não é tarefa fácil e é tido como um uso "
-#~ "indevido de sua força.\n"
-#~ "\n"
-#~ "Aquelas que são capazes de fazê-lo são chamadas de 'bruxas' pelas outras "
-#~ "raças; e elas realmente fazem jus ao nome."
-
-#
-# File: data/core/units/elves/Sylph.cfg, line: 21
-# File: data/core/units/elves/Sylph.cfg, line: 21
-#~ msgid ""
-#~ "Rarely seen, the sage-like Sylphs are masters of both their faerie and "
-#~ "mundane natures. They are possessed of wondrous, and sometimes terrifying "
-#~ "powers. Legends concerning these have given other races a healthy fear of "
-#~ "the elves."
-#~ msgstr ""
-#~ "Raramente vistas, as sábias Silfas dominam tanto sua parte fada quanto "
-#~ "sua parte mundana. Elas são possuídas por poderes maravilhosos, e as "
-#~ "vezes poderes aterrorizantes. As lendas a cerda delas causaram nas otras "
-#~ "raças um medo saudável dos elfos."
-
 #, fuzzy
 #~ msgid ""
 #~ "Some men excel at medicine the way others do at strength of arms, and the "
@@ -10616,6 +10294,294 @@ msgstr ""
 #~ "arrows down upon the enemy."
 #~ msgstr "a"
 
+#~ msgid ""
+#~ "The curious name of the Elvish ‘Avengers’ comes from a tactic often "
+#~ "employed by these master rangers. The enemy is allowed to break through a "
+#~ "feint defense and when the vulnerable troops behind the front line "
+#~ "follow, these archers break cover and attack, cutting supply lines and "
+#~ "surrounding the enemy in one fell stroke. This has, at times, been "
+#~ "interpreted as a form of vengeance for their brethren lost earlier in the "
+#~ "battle. While not so base in design, it is not at all inaccurate.\n"
+#~ "\n"
+#~ "Even more than other elves, Avengers are a part of the realm of the "
+#~ "forests, spending most of their time living among the arboreal creatures "
+#~ "and learning the hidden secrets in the woods. As the keepers of nature, "
+#~ "these elves have the propensity to explore the wilds even beyond the "
+#~ "boundaries of the forests and are adept at traversing rough terrains like "
+#~ "mountains and deserts. Even in such unfamiliar territories, Avengers are "
+#~ "already powerful combatants; in their homes in the trees, they are nigh "
+#~ "unassailable, capable of assassinating enemies from the shadows with "
+#~ "little chance of retaliation. It is this ability which instills the most "
+#~ "fear into any invading army, for fighting a force that can barely be "
+#~ "tracked or seen in the forests leaves very little room for counterattack "
+#~ "and customarily results in crushing defeat."
+#~ msgstr ""
+#~ "O curioso nome dos Vingadores Élficos vêm da tática que esses rangers "
+#~ "mestres normalmente usam. Eles permitem que os inimigos penetrem uma "
+#~ "falsa linha defensiva e quando as tropas vulneráveis atrás da primeira "
+#~ "linha inimiga avança, esses arqueiras saem de seus abrigos e atacam, "
+#~ "cortando linhas de abastecimento e cercando os inimigos num único ataque. "
+#~ "Isto foi, por vezes, interpretado como uma forma de vingança por seus "
+#~ "irmãos mortos em guerras passadas. Embora isto não seja preciso, não está "
+#~ "muito longe da verdade.\n"
+#~ "\n"
+#~ "Ainda mais do que outros elfos, Vingadores fazem parte dos reinos das "
+#~ "florestas, passando a maior parte de suas vidas juntos as criaturas das "
+#~ "árvores e aprendendo os segredos ocultos nas florestas. Como os guardiões "
+#~ "da natureza, estes elfos possuem a propensão de explorar as regiões esmas "
+#~ "além das fronteiras das florestas e são hábeis em navegar por terrenos de "
+#~ "difícil navegação, como montanhas e desertos. Vingadores são poderosos "
+#~ "combatentes até mesmo em territórios que não são familiares para eles; em "
+#~ "suas residências por entre as árvores, são quase intocáveis e capazes de "
+#~ "assasinar inimigos das sombras sem precisar se preocuparem muito com "
+#~ "retaliação inimiga. É justamente esta habilidade que causa maior medo em "
+#~ "forças invasoras, pois enfrentar inimigos que mal podem ser seguidos ou "
+#~ "vistos nas florestas deixa muito pouco espaço para contra-ataque e "
+#~ "geralmente resulta numa derrota esmagadora."
+
+#~ msgid ""
+#~ "Compared to other elves, Elvish Avengers have superior movement and "
+#~ "defense on sand, shallow water, and mountains."
+#~ msgstr ""
+#~ "Comparado aos outros elfos, Vingadores Élficos possuem melhor movimento e "
+#~ "defesa em desertos, água rasa e montanhas."
+
+#
+# File: data/core/units/elves/Druid.cfg, line: 19
+# File: data/core/units/elves/Druid.cfg, line: 19
+#~ msgid ""
+#~ "The magic of the wood-elves is poorly suited for combat, but effective "
+#~ "nonetheless. The forests in which they thrive can become quickened by a "
+#~ "word of command, and will lash out at those who threaten their peace.\n"
+#~ "\n"
+#~ "The chief ability of Druids lies in healing, and it is for this skill "
+#~ "that they are revered by their people."
+#~ msgstr ""
+#~ "A magia dos elfos dos bosques é inadequada para combates, mas ainda assim "
+#~ "possui seus usos. As florestas em que elas prosperam despertam quando "
+#~ "dita a palavra de comando e atacam todos aqueles que ameaçam a paz "
+#~ "delas.\n"
+#~ "\n"
+#~ "A principal habilidade das Druidas é a cura e é por causa desta "
+#~ "habilidade que elas são reverenciadas por seu povo."
+
+#
+# File: data/core/units/elves/Enchantress.cfg, line: 19
+# File: data/core/units/elves/Enchantress.cfg, line: 19
+#~ msgid ""
+#~ "The magic of the elves is wholly unlike that of humanity, so much so that "
+#~ "humans are almost universally incapable of understanding it, let alone "
+#~ "using it. Likewise, those who are masters of it are equally enigmatic; "
+#~ "though it can be said that they are revered by their people, very little "
+#~ "can be said about their actual function or purpose within that society."
+#~ msgstr ""
+#~ "A magia dos elfos é completamente diferente daquela dos humanos. Tamanha "
+#~ "é a diferença que os humanos são, quase que universalmente, incapazes de "
+#~ "compreendê-la, quanto mais usá-la. Da mesma forma, aqueles que a dominam "
+#~ "são igualmente enigmáticos; embora possa-se dizer que elas são "
+#~ "reverenciadas por seu povo, muito pouco se sabe de sua função ou "
+#~ "propósito dentro da sociedade."
+
+#
+# File: data/core/units/elves/High_Lord.cfg, line: 19
+# File: data/core/units/elves/High_Lord.cfg, line: 19
+#~ msgid ""
+#~ "The leaders of elvenkind command an instinctive loyalty from their people "
+#~ "that rulers of other races can only envy, and earn it with great "
+#~ "mindfulness and wisdom. Quiet and contemplative in times of peace, a High "
+#~ "Lord in the full of his wrath is an awesome sight indeed."
+#~ msgstr ""
+#~ "Os líderes élficos possuem uma lealdade natural de seus súditos que "
+#~ "líderes de outras raças invejam muito. Tal lealdade é é fruto da atenção "
+#~ "e sabedoria dos líderes. Quietos e contemplativos em tempos de paz, um "
+#~ "Lorde Supremo tomado pela raiva é uma visão pavorante."
+
+#
+# File: data/core/units/elves/Lady.cfg, line: 21
+# File: data/core/units/elves/Lady.cfg, line: 21
+#~ msgid ""
+#~ "Elves choose their leaders for their wisdom and sensitivity to the "
+#~ "balance of universal forces; foresight is what has protected them in "
+#~ "times of uncertainty. Their just reign is rewarded by the unflagging "
+#~ "fealty of their people, which is the greatest gift for which any ruler "
+#~ "could ask."
+#~ msgstr ""
+#~ "Elfos escolhem seus líderes por sua sabedoria e sensibilidade sobre o "
+#~ "equilíbrio das forças universais; a capacidade de prever como as coisas "
+#~ "provavelmente acontecerão é o que lhes protegem em tempos de incerteza. "
+#~ "Seu reinado justo é recompensado pela fidelidade total de seu povo, que é "
+#~ "o maior presente que qualquer governante poderia pedir."
+
+#
+# File: data/core/units/elves/Outrider.cfg, line: 21
+# File: data/core/units/elves/Outrider.cfg, line: 21
+#~ msgid ""
+#~ "Elvish Outriders are trained as the royal couriers of the elven kingdoms. "
+#~ "Despite the peaceful nature of their people, their experience makes them "
+#~ "quite deadly in combat. Only the most dedicated exceed these elves’ skill "
+#~ "as mounted archers — in fact, most would be hard pressed to equal it "
+#~ "standing on solid ground.\n"
+#~ "\n"
+#~ "The speed of these soldiers allows the elves to strike when and where "
+#~ "they choose when fighting on their home ground, a fact that has saved "
+#~ "many of their number from death."
+#~ msgstr ""
+#~ "Mensageiros Élficos são treinados para serem os mensageiros reais dos "
+#~ "reinos élficos. Apesar da natureza pacífica de seu povo, sua experiência "
+#~ "em combate faz deles um tanto quanto mortíferos em combate. Apenas os "
+#~ "mais decidados ultrapassam a habilidade destes elfos como arqueiros "
+#~ "montados — na verdade, a maioria possui dificuldade em ser tão bons "
+#~ "quanto eles mesmo desmontados.\n"
+#~ "\n"
+#~ "A velocidade destas unidades faz com que os elvos possam atacar onde e "
+#~ "como eles queiram quando lutam em seus lares, fato este que salvou muitos "
+#~ "dos seus da morte certa."
+
+#~ msgid ""
+#~ "Compared to other elves, Elvish Rangers have superior movement and "
+#~ "defense on sand, shallow water, and mountains."
+#~ msgstr ""
+#~ "Comparado aos outros elfos, Rangers Élficos possuem melhor movimento e "
+#~ "defesa em desertos, água rasa e montanhas."
+
+#
+# File: data/core/units/elves/Shaman.cfg, line: 21
+# File: data/core/units/elves/Shaman.cfg, line: 21
+#~ msgid ""
+#~ "Being partly faerie in nature, elves have an inherent capability for "
+#~ "magic. This is realized in their affinity with the natural world, which "
+#~ "they can call upon as an ally in combat. Enemies wandering in their "
+#~ "forests may soon find themselves entangled by roots and hindered by the "
+#~ "very ground they stand on.\n"
+#~ "\n"
+#~ "The healing abilities of the elves are also remarkable, and of capital "
+#~ "use in battle."
+#~ msgstr ""
+#~ "Sendo parte fadas por natureza, elfos possuem uma capacidade natural para "
+#~ "magia. Isto é evidente em sua afinidade com o mundo natural, afinidade "
+#~ "esta que elas invocam para ajudá-las em combante. Não demora para que "
+#~ "inimigos vagam por suas florestas sejam presos por raízes e que o próximo "
+#~ "solo em que eles se encontram volte-se contra eles.\n"
+#~ "\n"
+#~ "As habilidades de cura dos elfos também são notáveis e essencial em "
+#~ "batalha."
+
+#
+# File: data/core/units/elves/Shyde.cfg, line: 22
+# File: data/core/units/elves/Shyde.cfg, line: 22
+#~ msgid ""
+#~ "Devotion to the path of faerie may eventually transform an elf maiden "
+#~ "into a creature of both worlds. Guided by a power which is little "
+#~ "understood, these beautiful stewards of the elven forests epitomize the "
+#~ "grace and mystery of their people."
+#~ msgstr ""
+#~ "Devoção no caminho da fada pode, eventualmente, transformar uma donzela "
+#~ "élfica em uma criatura de ambos os mundos. Guiada por um poder ainda "
+#~ "pouco entendido, estas belas criadas das florestas élficas são o ápice da "
+#~ "graça e mistério do seu povo."
+
+#
+# File: data/core/units/elves/Sorceress.cfg, line: 19
+# File: data/core/units/elves/Sorceress.cfg, line: 19
+#~ msgid ""
+#~ "The world of faerie is far more potent than the corporeal world. Simply "
+#~ "bringing some of this world into our own can have violent results. This "
+#~ "is well-understood by the elves, although rarely used with malicious "
+#~ "intent; doing so is no easy task, and is a very ill-regarded use of their "
+#~ "strength.\n"
+#~ "\n"
+#~ "Those able to do so are roughly titled as ‘sorceresses’ by other races; "
+#~ "and certainly are capable of acting the part."
+#~ msgstr ""
+#~ "O mundo das fadas é muito mais potente do que o mundo corpóreo. "
+#~ "Simplesmente trazer um pouco deste mundo para o nosso pode dar resultados "
+#~ "violentos. Os elfos entendem bem esse fato e, embora raramente o usem com "
+#~ "intenção maliciosa, fazê-lo não é tarefa fácil e é tido como um uso "
+#~ "indevido de sua força.\n"
+#~ "\n"
+#~ "Aquelas que são capazes de fazê-lo são chamadas de 'bruxas' pelas outras "
+#~ "raças; e elas realmente fazem jus ao nome."
+
+#
+# File: data/core/units/elves/Sylph.cfg, line: 21
+# File: data/core/units/elves/Sylph.cfg, line: 21
+#~ msgid ""
+#~ "Rarely seen, the sage-like Sylphs are masters of both their faerie and "
+#~ "mundane natures. They are possessed of wondrous, and sometimes terrifying "
+#~ "powers. Legends concerning these have given other races a healthy fear of "
+#~ "the elves."
+#~ msgstr ""
+#~ "Raramente vistas, as sábias Silfas dominam tanto sua parte fada quanto "
+#~ "sua parte mundana. Elas são possuídas por poderes maravilhosos, e as "
+#~ "vezes poderes aterrorizantes. As lendas a cerda delas causaram nas otras "
+#~ "raças um medo saudável dos elfos."
+
+#
+# File: data/core/units/orcs/Archer.cfg, line: 20
+# File: data/core/units/orcs/Archer.cfg, line: 20
+#~ msgid ""
+#~ "Amongst orcs, bows are often regarded as a cowardly weapon; but even "
+#~ "orcs, especially youths and those of slight build, are pragmatic enough "
+#~ "to use them in spite of this. Orcish archers are seldom well equipped, "
+#~ "and have no semblance of training. Even as poorly handled as they are, "
+#~ "their weapons can still be quite deadly, and the wielders thereof rarely "
+#~ "march alone."
+#~ msgstr ""
+#~ "Entre os orcs, o arco é geralmente considerado como uma arma covarde; mas "
+#~ "até mesmo orcs, especialmente os jovens e principalmente os que não são "
+#~ "tão parrudos, são pragmáticos o suficiente para fazer uso delas apesar de "
+#~ "sua fama. Orcs arqueiros só raramente são bem equipados, e não possuem "
+#~ "nenhum semblante de treinamento. Mesmo manuseadas de forma ineficiente, "
+#~ "suas armas são mortíferas e, por conta disso, eles raramente marcham "
+#~ "sozinhos."
+
+#
+# File: data/core/units/orcs/Assassin.cfg, line: 23
+# File: data/core/units/orcs/Assassin.cfg, line: 23
+#~ msgid ""
+#~ "Though some consider it cowardly to use, poison is a weapon favored by "
+#~ "orcs, especially those weak of frame. Orcish assassins, who use it on "
+#~ "throwing knives, are typically frail by orcish standards, although "
+#~ "surprisingly nimble. Though rarely the ones who deal the killing blow, "
+#~ "their tactics are a considerable aid to their larger and more brutal kin."
+#~ msgstr ""
+#~ "Apesar de que alguns considerem-na uma tática covarde, veneno é uma arma "
+#~ "favorecida pelos orcs, especialmente por aqueles cujos corpos não são tão "
+#~ "fortes. Orcs assassinos, que usam-na em facas de arremesso, geralmente "
+#~ "fracos para os padrões orcs, mas são incrivelmente ligeiros. Embora "
+#~ "rarmente aqueles que desferem o golpe fatal, suas táticas ajudam "
+#~ "consideravelmente os seus parentes maiores e mais brutais."
+
+#
+# File: data/core/units/orcs/Crossbowman.cfg, line: 19
+# File: data/core/units/orcs/Crossbowman.cfg, line: 19
+#~ msgid ""
+#~ "Orcish crossbows are crude imitations of human or dwarvish design; a "
+#~ "crossbow of any make, though, is a fairly potent device. The orcs "
+#~ "privileged enough to wield them are capable warriors, and what they lack "
+#~ "in finesse, they make up for in numbers."
+#~ msgstr ""
+#~ "As bestas dos orcs são imitações brutas das bestas dos humanos ou anões; "
+#~ "uma besta de qualquer tipo, no entanto, é um instrumento um tanto quanto "
+#~ "potente. Os orcs que possuem o privilegio para porta-las são guerreiros "
+#~ "capazes, e o que lhes falta em delicadeza eles compensam com número."
+
+#~ msgid ""
+#~ "A blade in the dark, dripping with poison — for many orcish warlords the "
+#~ "last thing they see. Due to their high fees, orcish nightblades "
+#~ "specialize in “resolving internal conflicts” and are rarely seen on the "
+#~ "battlefield. Practice makes perfect, and few can rival them in that "
+#~ "regard: they have long lost count of their victims, though that "
+#~ "admittedly isn’t too hard for an orc with only ten fingers."
+#~ msgstr ""
+#~ "Uma lâmina nas trevas, pingando veneno — é a última visão de muitos "
+#~ "líderes orcs. Por conta de suas taxas altas, Orcs lâminas-noturnas "
+#~ "especializam-se em \"resolução de conflitos internos\" e são raramente "
+#~ "vistos nos campos de batalha. A pratica leva à perfeição, e poucos são "
+#~ "seus rivais neste quesito: há muito que eles perderam a conta de quantas "
+#~ "foram suas vítimas, muito embora isto não ser difícil para um orc que só "
+#~ "possui dez dedos."
+
 #
 # File: data/core/units/orcs/Ruler.cfg, line: 19
 # File: data/core/units/orcs/Ruler.cfg, line: 19
@@ -10632,6 +10598,81 @@ msgstr ""
 #~ "quanto da besta, ams seu real talento é sua rara habilidade de reunir "
 #~ "orcs para à batalha e dar ordens que são seguidas não pelo medo, mas sim "
 #~ "por lealdade."
+
+#
+# File: data/core/units/orcs/Slayer.cfg, line: 22
+# File: data/core/units/orcs/Slayer.cfg, line: 22
+#~ msgid ""
+#~ "The larger or more skilled orcish assassins are called ‘Slayers’ by their "
+#~ "enemies. Slayers are fast on their feet, and quite nimble in combat, "
+#~ "although they achieve that end by forgoing armor. Their weapon of choice, "
+#~ "poison, is a vicious tool, and its common use on the battlefield is often "
+#~ "the real cause of orcish supremacy."
+#~ msgstr ""
+#~ "Os maiores ou mais proficientes orcs assassinos são chamados de "
+#~ "'Matadores' por seus inimigos. Matadores são rápidos e ágeis em combate "
+#~ "só que, para tanto, eles renunciam ao uso de armadura. Sua arma favorita, "
+#~ "o veneno, é uma ferramenta perversa, e o seu uso comum no campo de "
+#~ "batalha é geralmente a real causa da supremacia dos orcs."
+
+#
+# File: data/core/units/orcs/Sovereign.cfg, line: 20
+# File: data/core/units/orcs/Sovereign.cfg, line: 20
+#~ msgid ""
+#~ "From time to time, an orc will arise who has a natural charisma and "
+#~ "command over his ilk. If he is also strong and cunning enough to survive "
+#~ "early leadership struggles, he will inevitably find himself leading a "
+#~ "great horde of warriors, and he will also inevitably cause a great deal "
+#~ "of trouble for the civilized races of the world. The surest way to "
+#~ "disperse such a host is to slay this rare orc who can hold it together."
+#~ msgstr ""
+#~ "De tempos em tempos, surge um orc que possui carisma natural e comanda a "
+#~ "sua raça. Se ele ambém for forte e astuto o suficiente para sobreviver às "
+#~ "lutas iniciais por liderança, ele inevitavelmente liderará uma grande "
+#~ "horda de guerreiros e ele também inevitavelmente causará muitos problemas "
+#~ "para as raças civilizadas do mundo. A melhor maneira de dispersar tal "
+#~ "horda é matando esse raro orc que consegue mantê-la unida."
+
+#~ msgid ""
+#~ "In a race where might is the be-all end-all of supremacy and respect, the "
+#~ "orcs who achieve victory time and time again become the rulers of much "
+#~ "greater orcish tribes. Wearing the most ornate armor they plunder from "
+#~ "their enemies, the Orcish Warlords are true champions of battle, their "
+#~ "mastery of the blade able to match even the finest from vaunted elvish "
+#~ "and human schools of swordsmen. They even have practice with the bow, "
+#~ "their usage of this ordinarily cowardly weapon offset by the sheer "
+#~ "admiration their warriors have for them. However, the Warlords lack the "
+#~ "insight for strategy and leading charisma of some of the more cunning "
+#~ "orcs, and so the hordes they lead often fall simply due to their "
+#~ "inability to truly lead."
+#~ msgstr ""
+#~ "Numa raça onde poder dita supremacia e respeito, os orcs que alcançam a "
+#~ "vitória repetidamente tornam-se os soberanos de tribos orcs cada vez "
+#~ "maiores. Usando as armaduras mais ornamentadas que eles conseguem "
+#~ "espólios de guerra, Orcs Senhores da Guerra são verdadeiros campeões de "
+#~ "batalhas, seu domínio da lâmina equipara-se ao dos mais vaidosos das "
+#~ "escolas humanas e élficas de espadachins. Eles até mesmo possuem prática "
+#~ "com o arco, sendo o uso desta arma geralmente considerada para covardes "
+#~ "contrabalanceada pela absoluta admiração que seus guerreiros tem deles. "
+#~ "Entretanto, eles não possuem conhecimento de estratégias e nem mesmo o "
+#~ "carisma que alguns dos orcs mais astutos possuem, e então as hordas que "
+#~ "eles lideram frequentemente encontram seu fim na inabilidade dos seus "
+#~ "líderes de liderá-las adequadamente."
+
+#~ msgid ""
+#~ "Orcish Warriors are those orcs who have proved their strength on the "
+#~ "battlefield, choosing to display their skill by fighting with a sword in "
+#~ "each hand. Their prowess in battle has gained them the respect of other "
+#~ "orcs, and they will typically be seen ordering lesser bands of raiders. "
+#~ "Despite their position, they rarely possess the commanding skills held by "
+#~ "the leaders of other armies."
+#~ msgstr ""
+#~ "Orcs Guerreiros são aqueles orcs que provaram sua força no campo de "
+#~ "batalha, escolhendo mostrar suas habilidades lutando com uma espada em "
+#~ "cada mão. Seu valor em batalha ganhou-lhes o respeito dos outros orcs e, "
+#~ "por isso, eles são frequentemente vistos comandando pequenos grupos de "
+#~ "saqueadores. Apesar de sua posição, eles raramente possuem a habilidades "
+#~ "de comandar tropas que os líderes de outros exércitos possuem."
 
 #
 # File: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Sentinel.cfg, line: 19

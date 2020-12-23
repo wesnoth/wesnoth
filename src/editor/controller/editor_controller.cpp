@@ -305,7 +305,6 @@ bool editor_controller::can_execute_command(const hotkey::hotkey_command& cmd, i
 		case HOTKEY_EDITOR_UNIT_TOGGLE_CANRECRUIT:
 		case HOTKEY_EDITOR_UNIT_TOGGLE_RENAMEABLE:
 		case HOTKEY_EDITOR_UNIT_TOGGLE_LOYAL:
-		case HOTKEY_EDITOR_UNIT_RECRUIT_ASSIGN:
 		case HOTKEY_EDITOR_UNIT_FACING:
 		case HOTKEY_UNIT_DESCRIPTION:
 		{
@@ -763,14 +762,6 @@ bool editor_controller::do_execute_command(const hotkey::hotkey_command& cmd, in
 			change_unit_id();
 			return true;
 
-		case HOTKEY_EDITOR_UNIT_RECRUIT_ASSIGN:
-		{
-			map_location loc = gui_->mouseover_hex();
-			const unit_map::unit_iterator un = get_current_map_context().units().find(loc);
-			const std::set<std::string>& recruit_set = toolkit_->get_palette_manager()->unit_palette_->get_selected_bg_items();
-			std::vector<std::string> recruits(recruit_set.begin(), recruit_set.end());
-			un->set_recruits(recruits);
-		}
 		return true;
 		case HOTKEY_EDITOR_UNIT_TOGGLE_RENAMEABLE:
 		{
@@ -1103,7 +1094,7 @@ void editor_controller::show_menu(const std::vector<config>& items_arg, int xloc
 void editor_controller::preferences()
 {
 	gui_->video().clear_all_help_strings();
-	gui2::dialogs::preferences_dialog::display(game_config_);
+	gui2::dialogs::preferences_dialog::display();
 
 	gui_->redraw_everything();
 }

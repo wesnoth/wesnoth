@@ -724,7 +724,7 @@ static int do_gameloop(const std::vector<std::string>& args)
 		return finished;
 	}
 
-	const auto game = std::make_unique<game_launcher>(cmdline_opts, args[0].c_str());
+	const auto game = std::make_unique<game_launcher>(cmdline_opts);
 	const int start_ticks = SDL_GetTicks();
 
 	init_locale();
@@ -753,7 +753,6 @@ static int do_gameloop(const std::vector<std::string>& args)
 		std::cerr << "could not initialize display\n";
 		return 1;
 	}
-
 
 	check_fpu();
 	const cursor::manager cursor_manager;
@@ -795,6 +794,8 @@ static int do_gameloop(const std::vector<std::string>& args)
 	}
 
 	LOG_CONFIG << "time elapsed: " << (SDL_GetTicks() - start_ticks) << " ms\n";
+
+	game->init_advanced_prefs_manager();
 
 	plugins_manager plugins_man(new application_lua_kernel);
 

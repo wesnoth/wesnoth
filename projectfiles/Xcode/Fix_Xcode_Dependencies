@@ -39,7 +39,7 @@ time_interval_to_string() {
 }
 
 get_mcs() {
-  git clone -b "master" --depth 1 "https://github.com/hrubymar10/MacCompileStuff" "MacCompileStuff-master"
+  git clone -b "universal_libs_support" --depth 1 "https://github.com/hrubymar10/MacCompileStuff" "MacCompileStuff-universal_libs_support"
 }
 ###/Functions
 
@@ -68,25 +68,29 @@ if ! [ -d "temp" ]; then
   mkdir "temp"
 fi
 cd "temp"
-if ! [ -d "MacCompileStuff-master" ]; then
+if [ -d "MacCompileStuff-master" ]; then
+  rm -rf MacCompileStuff-master
+fi
+
+if ! [ -d "MacCompileStuff-universal_libs_support" ]; then
   get_mcs
 else
-  cd "MacCompileStuff-master"
+  cd "MacCompileStuff-universal_libs_support"
   git pull --depth 5
   if ! [ $? -eq 0 ]; then
     echo 'Error: MacCompileStuff is too far from the local commit. Clonning again...' >&2
     cd ".."
-    rm -rf "MacCompileStuff-master"
+    rm -rf "MacCompileStuff-universal_libs_support"
     get_mcs
   fi
 fi
 cd "${MY_PATH}"
 
 rm -rf "Headers"
-ln -s "temp/MacCompileStuff-master/Headers"
+ln -s "temp/MacCompileStuff-universal_libs_support/Headers"
 
 rm -rf "lib"
-ln -s "temp/MacCompileStuff-master/lib"
+ln -s "temp/MacCompileStuff-universal_libs_support/lib"
 
 echo "==> DONE ..."
 echo

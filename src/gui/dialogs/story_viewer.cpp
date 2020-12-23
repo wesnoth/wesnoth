@@ -16,7 +16,6 @@
 
 #include "gui/dialogs/story_viewer.hpp"
 
-#include "formula/callable_objects.hpp"
 #include "formula/variant.hpp"
 #include "gui/auxiliary/find_widget.hpp"
 #include "sdl/point.hpp"
@@ -209,13 +208,15 @@ void story_viewer::display_part()
 			[
 				set_var('base_scale_x', as_decimal(image_width)  / as_decimal(image_original_width)),
 				set_var('base_scale_y', as_decimal(image_height) / as_decimal(image_original_height)),
-				set_var('base_origin', loc(clip_x, clip_y))
+				set_var('base_origin_x', clip_x),
+				set_var('base_origin_y', clip_y)
 			]
 		))";
 	} else {
 		window_canvas.set_variable("base_scale_x", wfl::variant(1));
 		window_canvas.set_variable("base_scale_y", wfl::variant(1));
-		window_canvas.set_variable("base_origin",  wfl::variant(std::make_shared<wfl::location_callable>(map_location::ZERO())));
+		window_canvas.set_variable("base_origin_x", wfl::variant(0));
+		window_canvas.set_variable("base_origin_y", wfl::variant(0));
 	}
 
 	cfg.add_child("image", get_title_area_decor_config());
@@ -330,8 +331,8 @@ void story_viewer::draw_floating_image(floating_image_list::const_iterator image
 		std::ostringstream y_ss;
 
 		// Floating images' locations are scaled by the same factor as the background.
-		x_ss << "(trunc(" << floating_image.ref_x() << " * base_scale_x) + base_origin.x";
-		y_ss << "(trunc(" << floating_image.ref_y() << " * base_scale_y) + base_origin.y";
+		x_ss << "(trunc(" << floating_image.ref_x() << " * base_scale_x) + base_origin_x";
+		y_ss << "(trunc(" << floating_image.ref_y() << " * base_scale_y) + base_origin_y";
 
 		if(floating_image.centered()) {
 			x_ss << " - (image_width  / 2)";

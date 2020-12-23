@@ -15,6 +15,7 @@
 
 #include "gui/dialogs/multiplayer/lobby.hpp"
 
+#include "gui/auxiliary/field.hpp"
 #include "gui/auxiliary/find_widget.hpp"
 #include "gui/dialogs/message.hpp"
 #include "gui/dialogs/multiplayer/mp_join_game_password_prompt.hpp"
@@ -43,6 +44,7 @@
 #include "font/text_formatting.hpp"
 #include "formatter.hpp"
 #include "formula/string_utils.hpp"
+#include "game_config_manager.hpp"
 #include "preferences/game.hpp"
 #include "gettext.hpp"
 #include "help/help.hpp"
@@ -120,16 +122,32 @@ bool mp_lobby::logout_prompt()
 std::string mp_lobby::announcements_ = "";
 std::string mp_lobby::server_information_ = "";
 
-mp_lobby::mp_lobby(const game_config_view& game_config, mp::lobby_info& info, wesnothd_connection &connection)
+mp_lobby::mp_lobby(mp::lobby_info& info, wesnothd_connection& connection, int& joined_game)
 	: quit_confirmation(&mp_lobby::logout_prompt)
-	, game_config_(game_config)
+	, game_config_(game_config_manager::get()->game_config())
 	, gamelistbox_(nullptr)
 	, lobby_info_(info)
 	, chatbox_(nullptr)
-	, filter_friends_(nullptr)
-	, filter_ignored_(nullptr)
-	, filter_slots_(nullptr)
-	, filter_invert_(nullptr)
+	, filter_friends_(register_bool("filter_with_friends",
+		  true,
+		  preferences::fi_friends_in_game,
+		  preferences::set_fi_friends_in_game,
+		  std::bind(&mp_lobby::game_filter_change_callback, this)))
+	, filter_ignored_(register_bool("filter_without_ignored",
+		  true,
+		  preferences::fi_blocked_in_game,
+		  preferences::set_fi_blocked_in_game,
+		  std::bind(&mp_lobby::game_filter_change_callback, this)))
+	, filter_slots_(register_bool("filter_vacant_slots",
+		  true,
+		  preferences::fi_vacant_slots,
+		  preferences::set_fi_vacant_slots,
+		  std::bind(&mp_lobby::game_filter_change_callback, this)))
+	, filter_invert_(register_bool("filter_invert",
+		  true,
+		  preferences::fi_invert,
+		  preferences::set_fi_invert,
+		  std::bind(&mp_lobby::game_filter_change_callback, this)))
 	, filter_text_(nullptr)
 	, selected_game_id_()
 	, player_list_()
@@ -142,11 +160,12 @@ mp_lobby::mp_lobby(const game_config_view& game_config, mp::lobby_info& info, we
 	, gamelist_id_at_row_()
 	, delay_playerlist_update_(false)
 	, delay_gamelist_update_(false)
-	, joined_game_id_(0)
+	, joined_game_id_(joined_game)
 {
 	// Need to set this in the constructor, pre_show() is too late
 	set_show_even_without_video(true);
 	set_allow_plugin_skip(false);
+	set_always_save_fields(true);
 }
 
 struct lobby_delay_gamelist_update_guard
@@ -433,7 +452,7 @@ std::map<std::string, string_map> mp_lobby::make_game_row_data(const mp::game_in
 	item["label"] = game.vacant_slots > 0 ? colorize(game.name, color_string) : game.name;
 	data.emplace("name", item);
 
-	item["label"] = colorize("<i>" + game.type_marker + scenario_text + "</i>", font::GRAY_COLOR);
+	item["label"] = colorize(game.type_marker + "<i>" + scenario_text + "</i>", font::GRAY_COLOR);
 	data.emplace("scenario", item);
 
 	item["label"] = colorize(game.status, color_string);
@@ -784,23 +803,7 @@ void mp_lobby::pre_show(window& window)
 	connect_signal_notify_modified(replay_options,
 		std::bind(&mp_lobby::skip_replay_changed_callback, this));
 
-	filter_friends_ = find_widget<toggle_button>(&window, "filter_with_friends", false, true);
-	filter_ignored_ = find_widget<toggle_button>(&window, "filter_without_ignored", false, true);
-	filter_slots_   = find_widget<toggle_button>(&window, "filter_vacant_slots", false, true);
-	filter_invert_  = find_widget<toggle_button>(&window, "filter_invert", false, true);
 	filter_text_    = find_widget<text_box>(&window, "filter_text", false, true);
-
-	connect_signal_notify_modified(*filter_friends_,
-		std::bind(&mp_lobby::game_filter_change_callback, this));
-
-	connect_signal_notify_modified(*filter_ignored_,
-		std::bind(&mp_lobby::game_filter_change_callback, this));
-
-	connect_signal_notify_modified(*filter_slots_,
-		std::bind(&mp_lobby::game_filter_change_callback, this));
-
-	connect_signal_notify_modified(*filter_invert_,
-		std::bind(&mp_lobby::game_filter_change_callback, this));
 
 	connect_signal_pre_key_press(
 			*filter_text_,
@@ -1052,7 +1055,7 @@ void mp_lobby::show_help_callback()
 
 void mp_lobby::show_preferences_button_callback()
 {
-	gui2::dialogs::preferences_dialog::display(game_config_);
+	gui2::dialogs::preferences_dialog::display();
 
 	/**
 	 * The screen size might have changed force an update of the size.
@@ -1091,26 +1094,28 @@ void mp_lobby::game_filter_reload()
 		});
 	}
 
+	window& window = *get_window();
+
 	// TODO: make changing friend/ignore lists trigger a refresh
-	if(filter_friends_->get_value()) {
+	if(filter_friends_->get_widget_value(window)) {
 		lobby_info_.add_game_filter([](const mp::game_info& info)->bool {
 			return info.has_friends == true;
 		});
 	}
 
-	if(filter_ignored_->get_value()) {
+	if(filter_ignored_->get_widget_value(window)) {
 		lobby_info_.add_game_filter([](const mp::game_info& info)->bool {
 			return info.has_ignored == false;
 		});
 	}
 
-	if(filter_slots_->get_value()) {
+	if(filter_slots_->get_widget_value(window)) {
 		lobby_info_.add_game_filter([](const mp::game_info& info)->bool {
 			return info.vacant_slots > 0;
 		});
 	}
 
-	lobby_info_.set_game_filter_invert(filter_invert_->get_value_bool());
+	lobby_info_.set_game_filter_invert(filter_invert_->get_widget_value(window));
 }
 
 void mp_lobby::game_filter_keypress_callback(const SDL_Keycode key)

@@ -35,7 +35,6 @@
 #include <boost/filesystem/fstream.hpp>
 #include <boost/iostreams/device/file_descriptor.hpp>
 #include <boost/iostreams/stream.hpp>
-#include <boost/system/windows_error.hpp>
 #include "game_config_view.hpp"
 
 #ifdef _WIN32
@@ -247,11 +246,7 @@ static void push_if_exists(std::vector<std::string>* vec, const bfs::path& file,
 
 static inline bool error_except_not_found(const error_code& ec)
 {
-	return (ec && ec.value() != boost::system::errc::no_such_file_or_directory
-#ifdef _WIN32
-		&& ec.value() != boost::system::windows_error::path_not_found
-#endif /*_WIN32*/
-	);
+	return ec && ec != boost::system::errc::no_such_file_or_directory;
 }
 
 static bool is_directory_internal(const bfs::path& fpath)

@@ -30,12 +30,27 @@ class campaign_selection : public modal_dialog
 {
 	enum CAMPAIGN_ORDER {RANK, DATE, NAME};
 public:
+	/**
+	 * RNG mode selection values.
+	 *
+	 * @note The contents of this enum must match the order of the options
+	 *       defined in the WML for the "rng_menu" widget of this dialog.
+	 */
+	enum RNG_MODE
+	{
+		RNG_DEFAULT,
+		RNG_SAVE_SEED,
+		RNG_BIASED,
+	};
+
 	explicit campaign_selection(ng::create_engine& eng)
 		: engine_(eng)
 		, choice_(-1)
-		, deterministic_(false)
+		, rng_mode_(RNG_DEFAULT)
 		, mod_states_()
 		, page_ids_()
+		, difficulties_()
+		, current_difficulty_()
 		, current_sorting_(RANK)
 		, currently_sorted_asc_(true)
 	{
@@ -49,14 +64,22 @@ public:
 		return choice_;
 	}
 
-	bool get_deterministic() const
+	RNG_MODE get_rng_mode() const
 	{
-		return deterministic_;
+		return rng_mode_;
+	}
+
+	const std::string& get_difficulty() const
+	{
+		return current_difficulty_;
 	}
 
 private:
 	/** Called when another campaign is selected. */
-	void campaign_selected() const;
+	void campaign_selected();
+
+	/** Called when the difficulty selection changes. */
+	void difficulty_selected();
 
 	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const override;
@@ -67,7 +90,7 @@ private:
 	/** Inherited from modal_dialog. */
 	virtual void post_show(window& window) override;
 
-	void sort_campaigns(CAMPAIGN_ORDER order, bool ascending) const;
+	void sort_campaigns(CAMPAIGN_ORDER order, bool ascending);
 
 	void add_campaign_to_tree(const config& campaign) const;
 
@@ -83,11 +106,15 @@ private:
 	int choice_;
 
 	/** whether the player checked the "Deterministic" checkbox. */
-	bool deterministic_;
+	RNG_MODE rng_mode_;
 
 	boost::dynamic_bitset<> mod_states_;
 
 	std::vector<std::string> page_ids_;
+
+	std::vector<std::string> difficulties_;
+
+	std::string current_difficulty_;
 
 	CAMPAIGN_ORDER current_sorting_;
 

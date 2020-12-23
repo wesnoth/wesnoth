@@ -261,7 +261,7 @@ WML_HANDLER_FUNCTION(clear_global_variable,,pcfg)
 		verify_and_clear_global_variable(pcfg);
 }
 
-static void on_replay_error(const std::string& message, bool /*b*/)
+static void on_replay_error(const std::string& message)
 {
 	ERR_NG << "Error via [do_command]:" << std::endl;
 	ERR_NG << message << std::endl;

@@ -24,17 +24,15 @@
 #include "log.hpp"
 #include "serialization/string_utils.hpp"
 #include "utils/const_clone.hpp"
-#include <functional>
 
 #include <cstdlib>
 #include <cstring>
 #include <deque>
+#include <functional>
 #include <istream>
 
-#include <boost/variant/apply_visitor.hpp>
 #include <boost/variant/get.hpp>
 #include <boost/variant/static_visitor.hpp>
-#include <boost/variant/variant.hpp>
 
 static lg::log_domain log_config("config");
 #define ERR_CF LOG_STREAM(err, log_config)

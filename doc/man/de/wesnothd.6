@@ -215,12 +215,14 @@ den angegebenen Server weiterzuleiten. Es werden die gleichen Schlüssel wie
 bei \fB[redirect]\fP akzeptiert.
 .RE
 .P
-\fB[user_handler]\fP Configures the user handler. Available keys vary depending
-on which user handler is set with the \fBuser_handler\fP key. If no
-\fB[user_handler]\fP section is present in the configuration the server will
-run without any nick registration service. All additional tables that are
-needed for the \fBforum_user_handler\fP to function can be found in
-table_definitions.sql in the Wesnoth source repository.
+\fB[user_handler]\fP Dies Konfiguriert die Nutzerverwaltung. Die verwendbaren
+Schlüssel hängen davon ab, welche Nutzerverwaltung beim \fBuser_handler\fP
+Schlüssel festgelegt wurde. Ist kein \fB[user_handler]\fP\-Bereich vorhanden, so
+ist es nicht möglich, Nutzerauthentifizierung auf dem Server zu
+verwenden. Alle zusätzlichen Datenbanktabellen, welche für den
+\fBforum_user_handler\fP benötigt werden, können über die Datei
+table_definitions.sql angelegt werden, welche im Wesnoth Code\-Repository zu
+finden is.
 .RS
 .TP 
 \fBdb_host\fP
