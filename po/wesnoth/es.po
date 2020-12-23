@@ -21,7 +21,7 @@ msgstr ""
 "Project-Id-Version: Wesnoth 1.14\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2020-12-18 22:31-0300\n"
-"PO-Revision-Date: 2020-01-19 15:42+0100\n"
+"PO-Revision-Date: 2020-12-21 13:09+0100\n"
 "Last-Translator: Pepe <donpepe1963@gmail.com>\n"
 "Language-Team: Wesnoth Spanish translation\n"
 "Language: es\n"
@@ -29,7 +29,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Poedit 2.3\n"
 
 #. [multiplayer_side]: id=Custom
 #: data/_main.cfg:22
@@ -6883,8 +6883,10 @@ msgstr "Alineamiento:"
 #. non-breaking spaces to prevent unpleasant line breaks (issue #3256).  In the
 #. translation use non-breaking spaces as appropriate for the target language.
 #: src/help/help_topic_generators.cpp:559
+#, fuzzy
+#| msgid "Required XP:"
 msgid "Required XP:"
-msgstr "PX requeridos:"
+msgstr "PX requeridos:"
 
 #: src/help/help_topic_generators.cpp:568
 msgid "unit help^Attacks"
@@ -8072,16 +8074,12 @@ msgid "Turn Number"
 msgstr "Número de turno"
 
 #: src/reports.cpp:1286
-#, fuzzy
-#| msgid ""
-#| "When the game reaches the number of turns indicated by the second number, "
-#| "it will end."
 msgid ""
 "When the game exceeds the number of turns indicated by the second number, it "
 "will end."
 msgstr ""
-"Cuando la partida alcanza el número de turnos indicado por el segundo "
-"número, ésta termina."
+"Cuando la partida supera el número de turnos indicado por el segundo número, "
+"ésta termina."
 
 #: src/reports.cpp:1311
 msgid "Gold"
