@@ -375,7 +375,7 @@ void server_base::coro_send_file(socket_ptr socket, const std::string& filename,
 
 #else
 
-inline void server_base::coro_send_file(socket_ptr socket, const std::string& filename, boost::asio::yield_context yield)
+void server_base::coro_send_file(socket_ptr socket, const std::string& filename, boost::asio::yield_context yield)
 {
 // TODO: Implement this for systems without sendfile()
 	assert(false && "Not implemented yet");
