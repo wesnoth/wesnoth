@@ -78,14 +78,4 @@ void set_fi_blocked_in_game(bool value)
 	preferences::set("fi_blocked_in_game", value);
 }
 
-std::string fi_text()
-{
-	return preferences::get("fi_text");
-}
-
-void set_fi_text(const std::string& search_string)
-{
-	preferences::set("fi_text", search_string);
-}
-
 } // end namespace preferences

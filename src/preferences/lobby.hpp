@@ -37,7 +37,4 @@ void set_fi_friends_in_game(bool value);
 
 bool fi_blocked_in_game();
 void set_fi_blocked_in_game(bool value);
-
-std::string fi_text();
-void set_fi_text(const std::string& search_string);
 } // end namespace preferences
