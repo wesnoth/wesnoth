@@ -1733,7 +1733,7 @@ int game_lua_kernel::intf_find_path(lua_State *L)
 	if (lua_istable(L, arg))
 	{
 		ignore_units = luaW_table_get_def<bool>(L, arg, "ignore_units", false);
-		see_all = luaW_table_get_def<bool>(L, arg, "see_all", false);
+		see_all = luaW_table_get_def<bool>(L, arg, "ignore_visibility", false);
 		ignore_teleport = luaW_table_get_def<bool>(L, arg, "ignore_teleport", false);
 
 		stop_at = luaW_table_get_def<double>(L, arg, "max_cost", stop_at);
@@ -1748,7 +1748,7 @@ int game_lua_kernel::intf_find_path(lua_State *L)
 				// If there's a unit, we have a valid side, so fall back to legacy behaviour.
 				// If we don't have a unit, legacy behaviour would be a crash, so let's not.
 				if(u) see_all = true;
-				deprecated_message("wesnoth.find_path with viewing_side=0 (or an invalid side)", DEP_LEVEL::FOR_REMOVAL, {1, 17, 0}, "To consider fogged and hidden units, use see_all=true instead.");
+				deprecated_message("wesnoth.find_path with viewing_side=0 (or an invalid side)", DEP_LEVEL::FOR_REMOVAL, {1, 17, 0}, "To consider fogged and hidden units, use ignore_visibility=true instead.");
 			}
 		}
 		lua_pop(L, 1);
