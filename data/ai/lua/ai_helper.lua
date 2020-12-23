@@ -1121,7 +1121,7 @@ function ai_helper.get_visible_units(viewing_side, filter)
         error('ai_helper.get_visible_units() is missing required parameter viewing_side.', 2)
     end
     if (type(viewing_side) ~= 'number') then
-        error('ai_helper.get_visible_units(): parameter viewing_side must be a number., 2')
+        error('ai_helper.get_visible_units(): parameter viewing_side must be a number.', 2)
     end
 
     local filter_plus_vision = {}
