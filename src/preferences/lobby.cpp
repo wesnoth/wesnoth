@@ -37,16 +37,6 @@ bool playerlist_group_players()
 	return preferences::get("lobby_playerlist_group_players", true);
 }
 
-bool filter_lobby()
-{
-	return preferences::get("filter_lobby", false);
-}
-
-void set_filter_lobby(bool value)
-{
-	preferences::set("filter_lobby", value);
-}
-
 bool fi_invert()
 {
 	return preferences::get("fi_invert", false);

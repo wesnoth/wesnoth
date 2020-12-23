@@ -26,9 +26,6 @@ namespace preferences {
 
 	bool playerlist_group_players();
 
-	bool filter_lobby();
-	void set_filter_lobby(bool value);
-
 	bool fi_invert();
 	void set_fi_invert(bool value);
 
