@@ -1,5 +1,5 @@
 # The Battle for Wesnoth - Traditional Chinese Translations
-# Copyright (C) 2005-2019 Wesnoth development team
+# Copyright (C) 2005-2020 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 # 楊綮銘 <steven2880@gmail.com>, 2008.
 # 李昆融 <likwueron@gmail.com>, 2018.
@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: wesnoth-1.14\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2020-12-18 22:31-0300\n"
-"PO-Revision-Date: 2020-02-10 00:55+0800\n"
+"PO-Revision-Date: 2020-12-21 15:55+0800\n"
 "Last-Translator: 楊綮銘 <steven2880@gmail.com>\n"
 "Language-Team: Wesnoth Traditional Chinese Team\n"
 "Language: zh_TW\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n>1);\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Generator: Poedit 2.2.4\n"
+"X-Generator: Poedit 2.4.2\n"
 
 #. [multiplayer_side]: id=Custom
 #: data/_main.cfg:22
@@ -7706,14 +7706,10 @@ msgid "Turn Number"
 msgstr "回合數"
 
 #: src/reports.cpp:1286
-#, fuzzy
-#| msgid ""
-#| "When the game reaches the number of turns indicated by the second number, "
-#| "it will end."
 msgid ""
 "When the game exceeds the number of turns indicated by the second number, it "
 "will end."
-msgstr "當遊戲回合數達第二個數字時，遊戲結束。"
+msgstr "當遊戲進行的回合數超過任務目標的回合數時，遊戲就會結束。"
 
 #: src/reports.cpp:1311
 msgid "Gold"
