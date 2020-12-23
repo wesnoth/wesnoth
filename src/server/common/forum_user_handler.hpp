@@ -55,6 +55,8 @@ class fuh : public user_handler {
 
 		bool user_exists(const std::string& name);
 
+		long get_forum_id(const std::string& name);
+
 		bool user_is_active(const std::string& name);
 
 		bool user_is_moderator(const std::string& name);
