@@ -109,8 +109,6 @@ public:
 	bool first_scenario() const { return first_scenario_; }
 	bool force_lock_settings() const { return force_lock_settings_; }
 
-	bool receive_from_server(config& dst) const;
-
 	const mp_campaign_info* campaign_info() const
 	{
 		return campaign_info_;

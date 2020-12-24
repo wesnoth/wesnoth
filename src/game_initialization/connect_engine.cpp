@@ -360,16 +360,6 @@ void connect_engine::send_to_server(const config& cfg) const
 	}
 }
 
-bool connect_engine::receive_from_server(config& dst) const
-{
-	if(campaign_info_) {
-		return campaign_info_->connection.receive_data(dst);
-	}
-	else {
-		return false;
-	}
-}
-
 std::vector<std::string> side_engine::get_children_to_swap()
 {
 	std::vector<std::string> children;
