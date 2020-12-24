@@ -414,13 +414,31 @@ void mp_staging::on_team_select(ng::side_engine_ptr side, menu_button& team_menu
 		return;
 	}
 
+	// Note the old team so we can remove the node if empty after the side move.
+	// Do this *before* setting the new team!
+	const std::string old_team = side->team_name();
 	side->set_team(team_index);
 
+	auto& tree = find_widget<tree_view>(get_window(), "side_list", false);
+
 	// First, remove the node from the tree
-	auto node = find_widget<tree_view>(get_window(), "side_list", false).remove_node(side_tree_map_[side]);
+	auto node = tree.remove_node(side_tree_map_[side]);
 
 	// Then add a new node as a child to the appropriate team's node
 	add_side_to_team_node(side, std::move(node.first), get_side_node_position(side));
+
+	tree_view_node* old_team_node = team_tree_map_[old_team];
+
+	// Last, remove the old team node if it's now empty
+	if(old_team_node->empty()) {
+		// Only sibling should be the decor line, and it should be last
+		auto decor = old_team_node->siblings().back();
+
+		tree.remove_node(old_team_node);
+		tree.remove_node(decor.get());
+
+		team_tree_map_[old_team] = nullptr;
+	}
 
 	set_state_changed();
 }
