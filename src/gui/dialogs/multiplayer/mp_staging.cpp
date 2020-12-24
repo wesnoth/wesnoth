@@ -138,11 +138,36 @@ int mp_staging::get_side_node_position(ng::side_engine_ptr side) const
 	return position;
 }
 
-void mp_staging::add_side_node(ng::side_engine_ptr side)
+template<typename... T>
+tree_view_node& mp_staging::add_side_to_team_node(ng::side_engine_ptr side, T&&... params)
 {
-	tree_view& tree = find_widget<tree_view>(get_window(), "side_list", false);
 	static const std::map<std::string, string_map> empty_map;
 
+	// If there is no team node in the map, this will return nullptr
+	tree_view_node* team_node = team_tree_map_[side->team_name()];
+
+	// Add a team node if none exists
+	if(team_node == nullptr) {
+		tree_view& tree = find_widget<tree_view>(get_window(), "side_list", false);
+
+		std::map<std::string, string_map> tree_data;
+		string_map tree_item;
+
+		tree_item["label"] = (formatter() << _("Team:") << " " << side->user_team_name()).str();
+		tree_data.emplace("tree_view_node_label", tree_item);
+
+		team_node = &tree.add_node("team_header", tree_data);
+		team_node->add_sibling("side_spacer", empty_map);
+
+		team_tree_map_[side->team_name()] = team_node;
+	}
+
+	assert(team_node && "No team node found!");
+	return team_node->add_child(std::forward<T>(params)...);
+}
+
+void mp_staging::add_side_node(ng::side_engine_ptr side)
+{
 	std::map<std::string, string_map> data;
 	string_map item;
 
@@ -156,22 +181,7 @@ void mp_staging::add_side_node(ng::side_engine_ptr side)
 	item["label"] = "icons/icon-random.png";
 	data.emplace("leader_gender", item);
 
-	// Check to see whether we've added a toplevel tree node for this team. If not, add one
-	if(team_tree_map_.find(side->team_name()) == team_tree_map_.end()) {
-		std::map<std::string, string_map> tree_data;
-		string_map tree_item;
-
-		tree_item["label"] = (formatter() << _("Team:") << " " << side->user_team_name()).str();
-		tree_data.emplace("tree_view_node_label", tree_item);
-
-		tree_view_node& team_node = tree.add_node("team_header", tree_data);
-		team_node.add_sibling("side_spacer", empty_map);
-
-		team_tree_map_[side->team_name()] = &team_node;
-	}
-
-	// Must be *after* the above if block, or the node ptr could be invalid
-	tree_view_node& node = team_tree_map_[side->team_name()]->add_child("side_panel", data, get_side_node_position(side));
+	tree_view_node& node = add_side_to_team_node(side, "side_panel", data, get_side_node_position(side));
 
 	side_tree_map_[side] = &node;
 
@@ -410,7 +420,7 @@ void mp_staging::on_team_select(ng::side_engine_ptr side, menu_button& team_menu
 	auto node = find_widget<tree_view>(get_window(), "side_list", false).remove_node(side_tree_map_[side]);
 
 	// Then add a new node as a child to the appropriate team's node
-	team_tree_map_[side->team_name()]->add_child(std::move(node.first), get_side_node_position(side));
+	add_side_to_team_node(side, std::move(node.first), get_side_node_position(side));
 
 	set_state_changed();
 }
