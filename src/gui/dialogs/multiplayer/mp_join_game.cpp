@@ -238,7 +238,8 @@ void mp_join_game::pre_show(window& window)
 	// Set title
 	//
 	label& title = find_widget<label>(&window, "title", false);
-	title.set_label((formatter() << title.get_label() << " " << font::unicode_em_dash << " " << get_scenario()["name"].t_str()).str());
+	// FIXME: very hacky way to get the game name...
+	title.set_label((formatter() << level_.child("multiplayer")["scenario"] << " " << font::unicode_em_dash << " " << get_scenario()["name"].t_str()).str());
 
 	//
 	// Set up sides list

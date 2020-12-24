@@ -80,7 +80,7 @@ void mp_staging::pre_show(window& window)
 	// Set title and status widget states
 	//
 	label& title = find_widget<label>(&window, "title", false);
-	title.set_label((formatter() << title.get_label() << " " << font::unicode_em_dash << " " << connect_engine_.scenario()["name"].t_str()).str());
+	title.set_label((formatter() << connect_engine_.params().name << " " << font::unicode_em_dash << " " << connect_engine_.scenario()["name"].t_str()).str());
 
 	update_status_label_and_buttons();
 
