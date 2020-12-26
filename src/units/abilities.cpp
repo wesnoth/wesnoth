@@ -776,11 +776,22 @@ unit_ability_list attack_type::get_specials(const std::string& special) const
 	//log_scope("get_specials");
 	const map_location loc = self_ ? self_->get_location() : self_loc_;
 	unit_ability_list res(loc);
+	unit_ability_list temp_res(loc);
 
 	for(const config& i : specials_.child_range(special)) {
 		if(special_active(i, AFFECT_SELF, special)) {
 			res.emplace_back(&i, loc, loc);
 		}
+	}
+
+	for(const config& i : specials_.child_range(special)) {
+		if(i["overwrite_specials"].to_bool() && special_active(i, AFFECT_SELF, special)) {
+			temp_res.emplace_back(&i, loc, loc);
+		}
+	}
+
+	if (!temp_res.empty()){
+		res = temp_res;
 	}
 
 	if(!other_attack_) {
@@ -791,6 +802,16 @@ unit_ability_list attack_type::get_specials(const std::string& special) const
 		if(other_attack_->special_active(i, AFFECT_OTHER, special)) {
 			res.emplace_back(&i, other_loc_, other_loc_);
 		}
+	}
+
+	for(const config& i : other_attack_->specials_.child_range(special)) {
+		if(i["overwrite_specials"].to_bool() && other_attack_->special_active(i, AFFECT_OTHER, special)) {
+			temp_res.emplace_back(&i, other_loc_, other_loc_);
+		}
+	}
+
+	if (!temp_res.empty()){
+		res = temp_res;
 	}
 	return res;
 }
@@ -1163,13 +1184,19 @@ unit_ability_list attack_type::list_ability(const std::string& ability) const
 unit_ability_list attack_type::get_special_ability(const std::string& ability) const
 {
 	unit_ability_list abil_list = list_ability(ability);
-	for(unit_ability_list::iterator i = abil_list.begin(); i != abil_list.end();) {
-		if((*i->ability_cfg)["overwrite_specials"].to_bool()) {
-			return abil_list;
-		}
-		++i;
-	}
 	abil_list.append(get_specials(ability));
+	unit_ability_list temp_abil_list = abil_list;
+	for(unit_ability_list::iterator i = temp_abil_list.begin(); i != temp_abil_list.end();) {
+		if(!(*i->ability_cfg)["overwrite_specials"].to_bool()) {
+			i = temp_abil_list.erase(i);
+		} else {
+			++i;
+		}
+	}
+
+	if(!temp_abil_list.empty()){
+		abil_list = temp_abil_list;
+	}
 	return abil_list;
 }
 
