@@ -109,11 +109,6 @@ public:
 	bool first_scenario() const { return first_scenario_; }
 	bool force_lock_settings() const { return force_lock_settings_; }
 
-	const mp_campaign_info* campaign_info() const
-	{
-		return campaign_info_;
-	}
-
 private:
 	connect_engine(const connect_engine&) = delete;
 	void operator=(const connect_engine&) = delete;
