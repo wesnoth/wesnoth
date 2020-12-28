@@ -124,6 +124,24 @@ function wesnoth.wml_actions.set_variable(cfg, variables)
 		local ivalue, fvalue = math.modf(tonumber(cfg.fpart) or 0)
 		variables[name] = fvalue
 	end
+	
+	-- similarly, min and max operate on the list assigned to the variable
+	-- and do not consider value already contained in the variable
+	if cfg.min then
+		local values = cfg.min:split()
+		for i = 1, #values do
+			values[i] = tonumber(values[i])
+		end
+		variables[name] = math.min(table.unpack(values))
+	end
+	
+	if cfg.max then
+		local values = cfg.max:split()
+		for i = 1, #values do
+			values[i] = tonumber(values[i])
+		end
+		variables[name] = math.max(table.unpack(values))
+	end
 
 	if cfg.string_length ~= nil then
 		variables[name] = string.len(tostring(cfg.string_length))
