@@ -392,7 +392,11 @@ public:
 					while(!stop) {
 						connection->wait_and_receive_data(data);
 
-						if(data.has_child("gamelist")) {
+						if(const config& error = data.child("error")) {
+							throw wesnothd_error(error["message"]);
+						}
+
+						else if(data.has_child("gamelist")) {
 							lobby_info.process_gamelist(data);
 
 							try {
@@ -404,6 +408,10 @@ public:
 									// We only need this for the first gamelist
 								}
 							}
+						}
+
+						else if(const config& gamelist_diff = data.child("gamelist_diff")) {
+							lobby_info.process_gamelist_diff(gamelist_diff);
 						}
 					}
 				});
