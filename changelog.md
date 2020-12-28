@@ -10,6 +10,7 @@
    * Updated translations: Chinese (Traditional), Portuguese (Brazil), Spanish
  ### Units
    * New Fauna/monster unit: Horned Scarab
+   * Some standing/bobbing animations now filtered for low HP (depicting exhaustion) (PR #5388)
  ### User interface
  ### WML Engine
  ### Miscellaneous and Bug Fixes
