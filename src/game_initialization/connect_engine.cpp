@@ -54,12 +54,12 @@ static const std::array<std::string, 5> controller_names {{
 
 namespace ng {
 
-connect_engine::connect_engine(saved_game& state, const bool first_scenario, mp_campaign_info* campaign_info)
+connect_engine::connect_engine(saved_game& state, const bool first_scenario, mp_game_metadata* metadata)
 	: level_()
 	, state_(state)
 	, params_(state.mp_settings())
-	, default_controller_(campaign_info ? CNTR_NETWORK : CNTR_LOCAL)
-	, campaign_info_(campaign_info)
+	, default_controller_(metadata ? CNTR_NETWORK : CNTR_LOCAL)
+	, mp_metadata_(metadata)
 	, first_scenario_(first_scenario)
 	, force_lock_settings_()
 	, side_engines_()
@@ -232,7 +232,7 @@ void connect_engine::import_user(const config& data, const bool observer, int si
 {
 	const std::string& username = data["name"];
 	assert(!username.empty());
-	if(campaign_info_) {
+	if(mp_metadata_) {
 		connected_users_rw().insert(username);
 	}
 
@@ -355,8 +355,8 @@ bool connect_engine::can_start_game() const
 
 void connect_engine::send_to_server(const config& cfg) const
 {
-	if(campaign_info_) {
-		campaign_info_->connection.send_data(cfg);
+	if(mp_metadata_) {
+		mp_metadata_->connection.send_data(cfg);
 	}
 }
 
@@ -828,7 +828,7 @@ void connect_engine::load_previous_sides_users()
 	//Do this in an extra loop to make sure we import each user only once.
 	for(const std::string& name : names)
 	{
-		if(connected_users().find(name) != connected_users().end() || !campaign_info_) {
+		if(connected_users().find(name) != connected_users().end() || !mp_metadata_) {
 			import_user(name, false);
 		}
 	}
@@ -843,8 +843,8 @@ void connect_engine::update_side_controller_options()
 
 const std::set<std::string>& connect_engine::connected_users() const
 {
-	if(campaign_info_) {
-		return campaign_info_->connected_players;
+	if(mp_metadata_) {
+		return mp_metadata_->connected_players;
 	}
 
 	static std::set<std::string> empty;
@@ -853,8 +853,8 @@ const std::set<std::string>& connect_engine::connected_users() const
 
 std::set<std::string>& connect_engine::connected_users_rw()
 {
-	assert(campaign_info_);
-	return campaign_info_->connected_players;
+	assert(mp_metadata_);
+	return mp_metadata_->connected_players;
 }
 
 side_engine::side_engine(const config& cfg, connect_engine& parent_engine, const int index)
@@ -1021,7 +1021,7 @@ config side_engine::new_config() const
 
 	// This function (new_config) is only meant to be called by the host's machine, which is why this check
 	// works. It essentially certifies that whatever side has the player_id that matches the host's login
-	// will be flagged. The reason we cannot check mp_campaign_info::is_host is because that flag is *always*
+	// will be flagged. The reason we cannot check mp_game_metadata::is_host is because that flag is *always*
 	// true on the host's machine, meaning this flag would be set to true for every side.
 	res["is_host"] = player_id_ == preferences::login();
 
@@ -1280,7 +1280,7 @@ void side_engine::update_controller_options()
 	controller_options_.clear();
 
 	// Default options.
-	if(parent_.campaign_info_) {
+	if(parent_.mp_metadata_) {
 		add_controller_option(CNTR_NETWORK, _("Network Player"), "human");
 	}
 

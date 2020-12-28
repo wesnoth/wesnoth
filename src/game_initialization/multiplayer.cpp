@@ -548,24 +548,24 @@ void mp_manager::enter_staging_mode()
 {
 	DBG_MP << "entering connect mode" << std::endl;
 
-	std::unique_ptr<mp_campaign_info> campaign_info;
+	std::unique_ptr<mp_game_metadata> metadata;
 
 	// If we have a connection, set the appropriate info. No connection means we're in local game mode.
 	if(connection) {
-		campaign_info = std::make_unique<mp_campaign_info>(*connection);
-		campaign_info->connected_players.insert(preferences::login());
-		campaign_info->is_host = true;
+		metadata = std::make_unique<mp_game_metadata>(*connection);
+		metadata->connected_players.insert(preferences::login());
+		metadata->is_host = true;
 	}
 
 	bool dlg_ok = false;
 	{
-		ng::connect_engine connect_engine(state, true, campaign_info.get());
+		ng::connect_engine connect_engine(state, true, metadata.get());
 		dlg_ok = gui2::dialogs::mp_staging::execute(connect_engine, connection.get());
 	} // end connect_engine
 
 	if(dlg_ok) {
 		campaign_controller controller(state, game_config_manager::get()->terrain_types());
-		controller.set_mp_info(campaign_info.get());
+		controller.set_mp_info(metadata.get());
 		controller.play_game();
 	}
 
@@ -583,16 +583,16 @@ void mp_manager::enter_wait_mode(int game_id, bool observe)
 
 	statistics::fresh_stats();
 
-	mp_campaign_info campaign_info(*connection);
-	campaign_info.is_host = false;
+	mp_game_metadata metadata(*connection);
+	metadata.is_host = false;
 
 	if(lobby_info.get_game_by_id(game_id)) {
-		campaign_info.current_turn = lobby_info.get_game_by_id(game_id)->current_turn;
+		metadata.current_turn = lobby_info.get_game_by_id(game_id)->current_turn;
 	}
 
 	if(preferences::skip_mp_replay() || preferences::blindfold_replay()) {
-		campaign_info.skip_replay = true;
-		campaign_info.skip_replay_blindfolded = preferences::blindfold_replay();
+		metadata.skip_replay = true;
+		metadata.skip_replay_blindfolded = preferences::blindfold_replay();
 	}
 
 	bool dlg_ok = false;
@@ -609,7 +609,7 @@ void mp_manager::enter_wait_mode(int game_id, bool observe)
 
 	if(dlg_ok) {
 		campaign_controller controller(state, game_config_manager::get()->terrain_types());
-		controller.set_mp_info(&campaign_info);
+		controller.set_mp_info(&metadata);
 		controller.play_game();
 	}
 

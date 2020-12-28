@@ -21,7 +21,7 @@
 #include <set>
 
 namespace randomness { class mt_rng; }
-struct mp_campaign_info;
+struct mp_game_metadata;
 class game_config_view;
 
 namespace ng {
@@ -45,7 +45,7 @@ class connect_engine
 {
 public:
 	connect_engine(saved_game& state,
-		const bool first_scenario, mp_campaign_info* campaign_info);
+		const bool first_scenario, mp_game_metadata* metadata);
 
 	config* current_config();
 
@@ -128,7 +128,7 @@ private:
 	const mp_game_settings& params_;
 
 	const ng::controller default_controller_;
-	mp_campaign_info* campaign_info_;
+	mp_game_metadata* mp_metadata_;
 	const bool first_scenario_;
 
 	bool force_lock_settings_;
