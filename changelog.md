@@ -13,6 +13,7 @@
    * Some standing/bobbing animations now filtered for low HP (depicting exhaustion) (PR #5388)
  ### User interface
  ### WML Engine
+   * New [set_variable] options: reverse=yes, min=list, max=list
  ### Miscellaneous and Bug Fixes
 
 ## Version 1.15.8
