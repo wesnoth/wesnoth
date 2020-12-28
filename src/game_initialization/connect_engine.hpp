@@ -37,7 +37,6 @@ enum controller {
 class connect_engine;
 class side_engine;
 
-typedef const std::unique_ptr<connect_engine> connect_engine_ptr;
 typedef std::shared_ptr<side_engine> side_engine_ptr;
 typedef std::pair<ng::controller, std::string> controller_option;
 
@@ -197,7 +196,6 @@ public:
 	void set_index(int index) { index_ = index; }
 	unsigned team() const { return team_; }
 	void set_team(unsigned team) { team_ = team; }
-	std::vector<std::string> get_children_to_swap();
 	std::multimap<std::string, config> get_side_children();
 	void set_side_children(std::multimap<std::string, config> children);
 	int color() const { return color_; }
@@ -236,6 +234,8 @@ public:
 private:
 	side_engine(const side_engine& engine) = delete;
 	void operator=(const side_engine&) = delete;
+
+	friend class connect_engine;
 
 	void add_controller_option(ng::controller controller,
 		const std::string& name, const std::string& controller_value);
