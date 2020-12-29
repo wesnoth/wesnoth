@@ -44,7 +44,7 @@ public:
 		return socket_;
 	}
 
-	std::string saved_client_ip() const
+	std::string client_ip() const
 	{
 		return ip_address;
 	}
@@ -90,5 +90,7 @@ using player_connections = bmi::multi_index_container<player_record, bmi::indexe
 	bmi::ordered_non_unique<bmi::tag<game_t>,
 		bmi::const_mem_fun<player_record, int, &player_record::game_id>>
 >>;
+
+typedef player_connections::const_iterator player_iterator;
 
 } // namespace wesnothd
