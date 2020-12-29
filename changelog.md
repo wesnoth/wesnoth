@@ -2,7 +2,7 @@
  ### Add-ons client
  ### Campaigns
  ### Translations
-   * Updated translations: Chinese (Traditional), Portuguese (Brazil), Spanish
+   * Updated translations: Catalan, Chinese (Traditional), Portuguese (Brazil), Spanish
  ### User interface
  ### Miscellaneous and Bug Fixes
 
