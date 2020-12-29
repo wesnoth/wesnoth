@@ -7,7 +7,7 @@
   * Boost 1.65 is now required (was 1.59).
  ### Terrain
  ### Translations
-   * Updated translations: Chinese (Traditional), Portuguese (Brazil), Spanish
+   * Updated translations: Catalan, Chinese (Traditional), Portuguese (Brazil), Spanish
  ### Units
    * New Fauna/monster unit: Horned Scarab
    * Some standing/bobbing animations now filtered for low HP (depicting exhaustion) (PR #5388)
