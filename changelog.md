@@ -2,6 +2,9 @@
  ### Add-ons client
  ### Add-ons server
  ### Campaigns
+ ### Editor
+   * Added help topics for the scenario editor's tools
+   * Added documentation about the files written by the editor
  ### Multiplayer
  ### Packaging
   * Boost 1.65 is now required (was 1.59).
