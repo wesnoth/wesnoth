@@ -21,8 +21,6 @@
 		460D899E24DC7843000B1ABC /* forum_user_handler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 460D899324DC7842000B1ABC /* forum_user_handler.cpp */; };
 		460D899F24DC7843000B1ABC /* simple_wml.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 460D899524DC7842000B1ABC /* simple_wml.cpp */; };
 		460D89A024DC7843000B1ABC /* simple_wml.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 460D899524DC7842000B1ABC /* simple_wml.cpp */; };
-		460D89A124DC7843000B1ABC /* server_base.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 460D899824DC7842000B1ABC /* server_base.cpp */; };
-		460D89A224DC7843000B1ABC /* server_base.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 460D899824DC7842000B1ABC /* server_base.cpp */; };
 		460D89B624DC7863000B1ABC /* addon_utils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 460D89AD24DC7862000B1ABC /* addon_utils.cpp */; };
 		460D89B724DC7863000B1ABC /* server.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 460D89AE24DC7862000B1ABC /* server.cpp */; };
 		460D89B824DC7863000B1ABC /* fs_commit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 460D89B024DC7862000B1ABC /* fs_commit.cpp */; };
@@ -84,6 +82,8 @@
 		464C03752283695A007D2741 /* libSDL2_ttf-2.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 464C0366228361B6007D2741 /* libSDL2_ttf-2.0.0.dylib */; };
 		464C03762283695D007D2741 /* libSDL2_mixer-2.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 464C0368228361B7007D2741 /* libSDL2_mixer-2.0.0.dylib */; };
 		464C037722836961007D2741 /* libSDL2_image-2.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 464C0362228361B5007D2741 /* libSDL2_image-2.0.0.dylib */; };
+		464F7FD125937D72006AB37B /* server_base.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 460D899824DC7842000B1ABC /* server_base.cpp */; };
+		464F7FDA25937D74006AB37B /* server_base.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 460D899824DC7842000B1ABC /* server_base.cpp */; };
 		46515C302569CE0B00084CE2 /* libssl.1.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 46515C2E2569CE0B00084CE2 /* libssl.1.1.dylib */; };
 		46515C312569CE0B00084CE2 /* libssl.1.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 46515C2E2569CE0B00084CE2 /* libssl.1.1.dylib */; };
 		46515C322569CE0B00084CE2 /* libssl.1.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 46515C2E2569CE0B00084CE2 /* libssl.1.1.dylib */; };
@@ -1466,7 +1466,6 @@
 		460D899024DC7842000B1ABC /* user_handler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = user_handler.cpp; path = ../../src/server/common/user_handler.cpp; sourceTree = SOURCE_ROOT; };
 		460D899124DC7842000B1ABC /* user_handler.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = user_handler.hpp; path = ../../src/server/common/user_handler.hpp; sourceTree = SOURCE_ROOT; };
 		460D899324DC7842000B1ABC /* forum_user_handler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = forum_user_handler.cpp; path = ../../src/server/common/forum_user_handler.cpp; sourceTree = SOURCE_ROOT; };
-		460D899424DC7842000B1ABC /* send_receive_wml_helpers.ipp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = send_receive_wml_helpers.ipp; path = ../../src/server/common/send_receive_wml_helpers.ipp; sourceTree = SOURCE_ROOT; };
 		460D899524DC7842000B1ABC /* simple_wml.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = simple_wml.cpp; path = ../../src/server/common/simple_wml.cpp; sourceTree = SOURCE_ROOT; };
 		460D899624DC7842000B1ABC /* dbconn.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = dbconn.hpp; path = ../../src/server/common/dbconn.hpp; sourceTree = SOURCE_ROOT; };
 		460D899724DC7842000B1ABC /* server_base.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = server_base.hpp; path = ../../src/server/common/server_base.hpp; sourceTree = SOURCE_ROOT; };
@@ -3385,7 +3384,6 @@
 				460D899324DC7842000B1ABC /* forum_user_handler.cpp */,
 				460D898D24DC7841000B1ABC /* forum_user_handler.hpp */,
 				460D89BC24DC95A2000B1ABC /* resultsets */,
-				460D899424DC7842000B1ABC /* send_receive_wml_helpers.ipp */,
 				460D899824DC7842000B1ABC /* server_base.cpp */,
 				460D899724DC7842000B1ABC /* server_base.hpp */,
 				460D899524DC7842000B1ABC /* simple_wml.cpp */,
@@ -5626,7 +5624,6 @@
 				46685CAD219D643C0009CFFE /* tokenizer.cpp in Sources */,
 				46F57088205FCF7E007031BF /* config_attribute_value.cpp in Sources */,
 				460D89A024DC7843000B1ABC /* simple_wml.cpp in Sources */,
-				460D89A224DC7843000B1ABC /* server_base.cpp in Sources */,
 				91C548F21D88707D00FE6A7B /* filesystem_common.cpp in Sources */,
 				46685CA8219D63FA0009CFFE /* preprocessor.cpp in Sources */,
 				46F57087205FCF5D007031BF /* filesystem_sdl.cpp in Sources */,
@@ -5640,6 +5637,7 @@
 				46F57086205FCE79007031BF /* hash.cpp in Sources */,
 				91C548DF1D886E2100FE6A7B /* log.cpp in Sources */,
 				46685CA9219D63FE0009CFFE /* binary_or_text.cpp in Sources */,
+				464F7FDA25937D74006AB37B /* server_base.cpp in Sources */,
 				91C548E01D886E2C00FE6A7B /* tstring.cpp in Sources */,
 				460D89C524DC95DD000B1ABC /* tournaments.cpp in Sources */,
 				460D89B624DC7863000B1ABC /* addon_utils.cpp in Sources */,
@@ -6232,6 +6230,7 @@
 				B5BB6C860F8943F600444FBF /* config_cache.cpp in Sources */,
 				46685CA1219D52DB0009CFFE /* parser.cpp in Sources */,
 				B5BB6B8D0F893F2300444FBF /* config.cpp in Sources */,
+				464F7FD125937D72006AB37B /* server_base.cpp in Sources */,
 				ECF9D43E19F3FF9400E6C9D9 /* filesystem.cpp in Sources */,
 				460D898B24DC7831000B1ABC /* player.cpp in Sources */,
 				903F959F1ED5496700F1BDD3 /* hash.cpp in Sources */,
@@ -6257,7 +6256,6 @@
 				46BED4D52050611600842FA5 /* crypt_blowfish.c in Sources */,
 				460D898724DC7831000B1ABC /* ban.cpp in Sources */,
 				EC64D7661A085F120092EF75 /* mt_rng.cpp in Sources */,
-				460D89A124DC7843000B1ABC /* server_base.cpp in Sources */,
 				EC64D7671A085F2F0092EF75 /* seed_rng.cpp in Sources */,
 				B5BB6C710F8941F000444FBF /* tstring.cpp in Sources */,
 				46685CA2219D52FA0009CFFE /* unicode.cpp in Sources */,
@@ -6341,10 +6339,6 @@
 					"FIFODIR=\\\"/var/run/wesnoth_campaignd\\\"",
 				);
 				INSTALL_PATH = /usr/local/bin;
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/lib",
-				);
 				PRODUCT_NAME = campaignd;
 			};
 			name = Debug;
@@ -6360,10 +6354,6 @@
 					"FIFODIR=\\\"/var/run/wesnoth_campaignd\\\"",
 				);
 				INSTALL_PATH = /usr/local/bin;
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/lib",
-				);
 				PRODUCT_NAME = campaignd;
 			};
 			name = Release;
@@ -6381,10 +6371,6 @@
 					BOOST_TEST_DYN_LINK,
 				);
 				INSTALL_PATH = /usr/local/bin;
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/lib",
-				);
 				MACH_O_TYPE = mh_execute;
 				OTHER_LDFLAGS = (
 					"-lz",
@@ -6407,10 +6393,6 @@
 					BOOST_TEST_DYN_LINK,
 				);
 				INSTALL_PATH = /usr/local/bin;
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/lib",
-				);
 				MACH_O_TYPE = mh_execute;
 				OTHER_LDFLAGS = (
 					"-lz",
@@ -6461,11 +6443,11 @@
 			buildSettings = {
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_ENTITLEMENTS = Resources/Wesnoth.entitlements;
-				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_IDENTITY = "Developer ID Application";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = N5CYW96P9T;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -6479,10 +6461,6 @@
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = /Applications;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/lib",
-				);
 				OTHER_CPLUSPLUSFLAGS = "$(OTHER_CFLAGS)";
 				OTHER_LDFLAGS = (
 					"-lz",
@@ -6519,10 +6497,6 @@
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = /Applications;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/lib",
-				);
 				OTHER_CPLUSPLUSFLAGS = "$(OTHER_CFLAGS)";
 				OTHER_LDFLAGS = (
 					"-lz",

@@ -38,20 +38,14 @@ public:
 private:
 	void handle_new_client(socket_ptr socket);
 
-	void handle_version(socket_ptr socket);
-	void read_version(socket_ptr socket, std::shared_ptr<simple_wml::document> doc);
-
-	void login(socket_ptr socket, std::string version, std::string source);
-	void handle_login(socket_ptr socket, std::shared_ptr<simple_wml::document> doc, std::string version, std::string source);
-	bool is_login_allowed(socket_ptr socket, const simple_wml::node* const login, const std::string& version, const std::string& source);
-	bool authenticate(socket_ptr socket, const std::string& username, const std::string& password, const std::string& version, const std::string& source, bool name_taken, bool& registered);
+	void login_client(boost::asio::yield_context yield, socket_ptr socket);
+	bool is_login_allowed(socket_ptr socket, const simple_wml::node* const login, const std::string& username, bool& registered, bool& is_moderator);
+	bool authenticate(socket_ptr socket, const std::string& username, const std::string& password, bool name_taken, bool& registered);
 	void send_password_request(socket_ptr socket, const std::string& msg,
-		const std::string& user, const std::string& version, const std::string& source, const char* error_code = "", bool force_confirmation = false);
+		const std::string& user, const char* error_code = "", bool force_confirmation = false);
 	bool accepting_connections() const { return !graceful_restart; }
 
-	void add_player(socket_ptr socket, const wesnothd::player&);
-	void read_from_player(socket_ptr socket);
-	void handle_read_from_player(socket_ptr socket, std::shared_ptr<simple_wml::document> doc);
+	void handle_player(boost::asio::yield_context yield, socket_ptr socket, const player& player);
 	void handle_player_in_lobby(socket_ptr socket, std::shared_ptr<simple_wml::document> doc);
 	void handle_player_in_game(socket_ptr socket, std::shared_ptr<simple_wml::document> doc);
 	void handle_whisper(socket_ptr socket, simple_wml::node& whisper);
@@ -64,9 +58,10 @@ private:
 	void handle_join_game(socket_ptr socket, simple_wml::node& join);
 	void remove_player(socket_ptr socket);
 
-	void send_to_lobby(simple_wml::document& data, socket_ptr exclude = socket_ptr()) const;
-	void send_server_message_to_lobby(const std::string& message, socket_ptr exclude = socket_ptr()) const;
-	void send_server_message_to_all(const std::string& message, socket_ptr exclude = socket_ptr()) const;
+	void send_server_message(socket_ptr socket, const std::string& message, const std::string& type);
+	void send_to_lobby(simple_wml::document& data, socket_ptr exclude = socket_ptr());
+	void send_server_message_to_lobby(const std::string& message, socket_ptr exclude = socket_ptr());
+	void send_server_message_to_all(const std::string& message, socket_ptr exclude = socket_ptr());
 	bool player_is_in_game(socket_ptr socket) const {
 		return bool(player_connections_.find(socket)->get_game());
 	}
@@ -242,7 +237,5 @@ private:
 	void abort_lan_server_timer();
 	void handle_lan_server_shutdown(const boost::system::error_code& error);
 };
-
-void send_server_message(socket_ptr socket, const std::string& message, const std::string& type);
 
 }

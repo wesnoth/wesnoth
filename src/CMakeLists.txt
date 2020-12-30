@@ -97,6 +97,7 @@ set(server-external-libs
 	${common-external-libs}
 	${Boost_SYSTEM_LIBRARIES}
 	${Boost_RANDOM_LIBRARY}
+	${Boost_COROUTINE_LIBRARY}
 	${CRYPTO_LIBRARY}
 	${MYSQL_LIBS}
 	-lpthread
