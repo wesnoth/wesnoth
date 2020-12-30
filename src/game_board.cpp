@@ -214,10 +214,19 @@ void game_board::side_drop_to(int side_num, team::CONTROLLER ctrl, team::PROXY_C
 	if (leader.valid()) leader->rename(ctrl.to_string() + std::to_string(side_num));
 }
 
-void game_board::side_change_controller(int side_num, bool is_local, const std::string& pname) {
+void game_board::side_change_controller(int side_num, bool is_local, const std::string& pname, const std::string& controller_type) {
 	team &tm = get_team(side_num);
 
 	tm.set_local(is_local);
+
+	// only changing the type of controller
+	if(controller_type == team::CONTROLLER::enum_to_string(team::CONTROLLER::AI) && !tm.is_ai()) {
+		tm.make_ai();
+		return;
+	} else if(controller_type == team::CONTROLLER::enum_to_string(team::CONTROLLER::HUMAN) && !tm.is_human()) {
+		tm.make_human();
+		return;
+	}
 
 	if (pname.empty() || !tm.is_human()) {
 		return;
