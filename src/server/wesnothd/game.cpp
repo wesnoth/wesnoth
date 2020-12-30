@@ -1140,7 +1140,7 @@ bool game::process_turn(simple_wml::document& data, const socket_ptr& user)
 			send_to_players(*message, observers_, user);
 			record_data(std::move(message));
 		} else {
-			send_data_sides(*message, to_sides, user, "game message");
+			send_data_sides(*message, to_sides, user);
 		}
 	}
 
@@ -1308,7 +1308,7 @@ void game::process_whiteboard(simple_wml::document& data, const socket_ptr& user
 		return;
 	}
 
-	send_data_sides(data, to_sides, user, "whiteboard");
+	send_data_sides(data, to_sides, user);
 }
 
 void game::process_change_turns_wml(simple_wml::document& data, const socket_ptr& user)
@@ -1697,8 +1697,7 @@ void game::send_data(simple_wml::document& data, const socket_ptr& exclude, std:
 
 void game::send_data_sides(simple_wml::document& data,
 		const simple_wml::string_span& sides,
-		const socket_ptr& exclude,
-		std::string /*packet_type*/)
+		const socket_ptr& exclude)
 {
 	std::vector<int> sides_vec = ::split<int>(sides, ::split_conv_impl);
 

@@ -15,7 +15,7 @@
 /**
  * @file
  * Test if the WML preprocessor and parser together can correctly process
- * #define and #undef macros.
+ * \#define and \#undef macros.
  */
 
 #define GETTEXT_DOMAIN "wesnoth-test"

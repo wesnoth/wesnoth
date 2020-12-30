@@ -49,7 +49,10 @@ public:
 	 * replay commands in the replay stack data. There are also no events of similar fired when
 	 * redoing an action (in most cases).
 	 *
+	 * @param commandname   The command to run.
+	 * @param data          The data to use with the command.
 	 * @param use_undo      This parameter is used to ignore undos during an ai move to optimize.
+	 * @param show          
 	 * @param error_handler An error handler for the case that data contains invalid data.
 	 *
 	 * @return              True if the action was successful.

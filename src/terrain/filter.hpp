@@ -27,7 +27,7 @@ class unit_filter;
 class terrain_filter : public xy_pred {
 public:
 
-	terrain_filter(const vconfig& cfg, const filter_context * fc, const bool flat_tod=false);
+	terrain_filter(const vconfig& cfg, const filter_context * fc, const bool flat_tod);
 	terrain_filter(const vconfig& cfg, const terrain_filter& original);
 	/** Default implementation, but defined out-of-line for efficiency reasons. */
 	~terrain_filter();

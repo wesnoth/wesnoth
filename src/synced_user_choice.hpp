@@ -33,8 +33,10 @@ struct user_choice
 	virtual ~user_choice() {}
 	virtual config query_user(int side) const = 0;
 	virtual config random_choice(int side) const = 0;
-	///whether the choice is visible for the user like an advancement choice
-	///a non-visible choice is for example get_global_variable
+	/**
+	 * whether the choice is visible for the user like an advancement choice
+	 * a non-visible choice is for example get_global_variable
+	 */
 	virtual bool is_visible() const { return true; }
 	// TRANSLATORS: In networked games, this text is shown for other clients,
 	// while they wait for an action from another player.
@@ -109,8 +111,11 @@ public:
 	void ask_local_choice();
 	void fix_oos();
 	const std::string& wait_message() const { return wait_message_; }
-	/// @param name the tagname for this user choice in the replay
-	/// @param sides an array of team numbers (beginning with 1). the specified sides may not have an empty controller.
+	/**
+	 * @param name the tagname for this user choice in the replay
+	 * @param uch the choice made
+	 * @param sides an array of team numbers (beginning with 1). the specified sides may not have an empty controller.
+	 */
 	static std::map<int, config> get_user_choice_internal(const std::string &name, const mp_sync::user_choice &uch, const std::set<int>& sides);
 	/// Inherited from events::pump_monitor
 	void process(events::pump_info&);

@@ -219,10 +219,10 @@ public:
 	static terrain_filter cfg_to_value(const config &cfg)
 	{
 		if (const config &v = cfg.child("value")) {
-			return terrain_filter(vconfig(v), resources::filter_con);
+			return terrain_filter(vconfig(v), resources::filter_con, false);
 		}
 		static config c("not");
-		return terrain_filter(vconfig(c),resources::filter_con);
+		return terrain_filter(vconfig(c),resources::filter_con, false);
 	}
 
 	static void cfg_to_value(const config &cfg, terrain_filter &value)
@@ -446,7 +446,7 @@ public:
 	static terrain_filter variant_to_value(const wfl::variant &var)
 	{
 		static config c("not");
-		terrain_filter value(vconfig(c),resources::filter_con);
+		terrain_filter value(vconfig(c), resources::filter_con, false);
 		variant_to_value(var,value);
 		return value;
 	}

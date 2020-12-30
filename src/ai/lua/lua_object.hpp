@@ -240,7 +240,7 @@ inline std::shared_ptr<terrain_filter> lua_object<terrain_filter>::to_type(lua_S
 		cfg->add_child("not");
 	}
 	vcfg->make_safe();
-	std::shared_ptr<terrain_filter> tf(new terrain_filter(*vcfg, resources::filter_con));
+	std::shared_ptr<terrain_filter> tf(new terrain_filter(*vcfg, resources::filter_con, false));
 	return tf;
 }
 

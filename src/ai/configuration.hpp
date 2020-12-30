@@ -102,6 +102,7 @@ public:
 
 
 	/**
+	 * @param[in] side the side to be parsed
 	 * @param[in] original_cfg the config to be read
 	 * @param[out] cfg parsed config
 	 * @return was all ok?

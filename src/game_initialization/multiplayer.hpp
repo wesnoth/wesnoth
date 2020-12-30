@@ -44,6 +44,7 @@ void start_local_game_commandline(saved_game& state, const commandline_options& 
 
 /** Starts a multiplayer game in client mode.
  *
+ * @param state       The save game to start.
  * @param host        The host to connect to.
  */
 void start_client(saved_game& state, const std::string& host);

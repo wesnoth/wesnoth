@@ -425,7 +425,7 @@ static bool write_difference(config& pack, const config& from, const config& to,
  * &from, &to are the top directories of their structures; addlist/removelist tag is treated as [dir]
  *
  * Does it worth it to archive and write the pack on the fly using config_writer?
- * #TODO: clientside verification?
+ * TODO: clientside verification?
  */
 void make_updatepack(config& pack, const config& from, const config& to)
 {

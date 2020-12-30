@@ -59,7 +59,7 @@ using widget_parser_t = std::function<styled_widget_definition_ptr(const config&
  * @param f                   The function to parse the definition config.
  * @param key                 The tagname from which to read the widget's
  *                            definition in the game config. If nullptr the
- *                            default [<id>_definition] is used.
+ *                            default [\<id\>_definition] is used.
  */
 void register_widget(const std::string& type, widget_parser_t f, const char* key = nullptr);
 

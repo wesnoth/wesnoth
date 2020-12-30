@@ -117,7 +117,7 @@ using info_visitor = info_visitor_base<TResult, variable_info_state<V>>;
 template<typename V, typename TResult>
 using info_visitor_const = info_visitor_base<TResult, const variable_info_state<V>>;
 
-/** Adds a '.<key>' to the current variable. */
+/** Adds a '.\<key\>' to the current variable. */
 template<typename V>
 class get_variable_key_visitor : public info_visitor<V, void>
 {

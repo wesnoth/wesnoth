@@ -59,8 +59,11 @@ public:
 		const socket_ptr sock;
 		const std::string addr;
 
-		boost::asio::yield_context yield; ///< context of the coroutine the request is executed in
-		///< async operations on @a sock can use it instead of a handler.
+		/**
+		 * context of the coroutine the request is executed in
+		 * async operations on @a sock can use it instead of a handler.
+		 */
+		boost::asio::yield_context yield;
 
 		/**
 		 * Constructor.
@@ -68,6 +71,7 @@ public:
 		 * @param reqcmd  Request command.
 		 * @param reqcfg  Request WML body.
 		 * @param reqsock Client socket that initiated the request.
+		 * @param yield The function will suspend on write operation using this yield context
 		 *
 		 * @note Neither @a reqcmd nor @a reqcfg are copied into instances, so
 		 *       they are required to exist for as long as every @a request

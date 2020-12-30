@@ -42,8 +42,7 @@ public:
 	 * Determine where the scrollbar is.
 	 *
 	 * @return  the position.
-	 * @retval  returns 0 if the scrollbar is at the top,
-	 * @retval  returns (full_size - shown_size) if it is at the bottom.
+	 * @retval  returns 0 if the scrollbar is at the top or (full_size - shown_size) if it is at the bottom.
 	 */
 	unsigned get_position() const;
 

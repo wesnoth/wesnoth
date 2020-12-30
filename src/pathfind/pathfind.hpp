@@ -104,7 +104,6 @@ struct paths
  */
 struct vision_path : public paths
 {
-	/// Construct a list of seen hexes for a unit.
 	vision_path(const unit& viewer, const map_location& loc,
 	            const std::map<map_location, int>& jamming_map);
 	vision_path(const movetype::terrain_costs & view_costs, bool slowed,

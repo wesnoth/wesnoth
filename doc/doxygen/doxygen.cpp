@@ -220,9 +220,9 @@ This module provides high level network access using an API similar
 to sockets, but primarily for the transport of @ref config objects.
 This is how the games protocols work - data is sent via config objects.
 
-A client would create a @ref manager object to initialize
+A client would create a manager object to initialize
 the network layer, connect(), and then send_data().
-A server would create a @ref server_manager object,
+A server would create a server_manager object,
 then accept_connection(), and finally receive_data().
 
 */
@@ -426,37 +426,14 @@ int divide(int a, int b)
 	@{
 */
 
-/**	-file actions.hpp */
-/**	-file ai_attack.hpp */
-/**	-file ai.hpp */
-/**	-file ai_move.hpp */
-/**	-file config.hpp */
-/**	-file display.hpp */
-/**	-file filesystem.hpp */
-/**	@file game.hpp */
-/**	-file gamestatus.hpp */
-/**	@file intro.hpp */
-/**	@file key.hpp */
+/**	@file wesnothd/game.hpp */
 /**	@file language.hpp */
-/**	-file log.hpp */
-/**	@file mapgen_dialog.hpp */
-/**	-file mapgen.hpp */
-/**	-file map.hpp */
-/**	-file multiplayer_client.hpp */
-/**	-file multiplayer_connect.hpp */
 /**	@file multiplayer.hpp */
-/**	-file pathfind.hpp */
-/**	-file playlevel.hpp */
 /**	@file playturn.hpp */
 /**	@file race.hpp */
 /**	@file replay.hpp */
-/**	-file sdl_utils.hpp */
 /**	@file team.hpp */
 /**	@file terrain.hpp */
-/**	-file theme.hpp */
-/**	-file unit.hpp */
-/**	@file unit_types.hpp */
-/**	-file util.hpp */
 /**	@file video.hpp */
 
 /** @} */

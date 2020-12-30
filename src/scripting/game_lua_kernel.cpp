@@ -2034,7 +2034,7 @@ int game_lua_kernel::intf_find_cost_map(lua_State *L)
 		filter = vconfig(config(), true);
 	}
 	filter_context & fc = game_state_;
-	const terrain_filter t_filter(filter, &fc);
+	const terrain_filter t_filter(filter, &fc, false);
 	t_filter.get_locations(location_set, true);
 	++arg;
 
@@ -2979,7 +2979,7 @@ int game_lua_kernel::intf_get_locations(lua_State *L)
 
 	std::set<map_location> res;
 	filter_context & fc = game_state_;
-	const terrain_filter t_filter(filter, &fc);
+	const terrain_filter t_filter(filter, &fc, false);
 	if(luaW_isunit(L, 2)) {
 		t_filter.get_locations(res, *luaW_tounit(L, 2), true);
 	} else {
@@ -3016,7 +3016,7 @@ int game_lua_kernel::intf_get_villages(lua_State *L)
 
 	filter_context & fc = game_state_;
 	for(std::vector<map_location>::const_iterator it = locs.begin(); it != locs.end(); ++it) {
-		bool matches = terrain_filter(filter, &fc).match(*it);
+		bool matches = terrain_filter(filter, &fc, false).match(*it);
 		if (matches) {
 			lua_createtable(L, 2, 0);
 			lua_pushinteger(L, it->wml_x());
@@ -3048,7 +3048,7 @@ int game_lua_kernel::intf_match_location(lua_State *L)
 	}
 
 	filter_context & fc = game_state_;
-	const terrain_filter t_filter(filter, &fc);
+	const terrain_filter t_filter(filter, &fc, false);
 	if(luaW_isunit(L, 3)) {
 		lua_pushboolean(L, t_filter.match(loc, *luaW_tounit(L, 3)));
 	} else {
@@ -3750,7 +3750,7 @@ int game_lua_kernel::intf_add_time_area(lua_State * L)
 	const std::string id = cfg["id"];
 
 	std::set<map_location> locs;
-	const terrain_filter filter(cfg, &game_state_);
+	const terrain_filter filter(cfg, &game_state_, false);
 	filter.get_locations(locs, true);
 	config parsed_cfg = cfg.get_parsed_config();
 	tod_man().add_time_area(id, locs, parsed_cfg);

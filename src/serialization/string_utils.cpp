@@ -72,8 +72,8 @@ void trim(string_view& s)
 
 /**
  * Splits a (comma-)separated string into a vector of pieces.
- * @param[in]  val    A (comma-)separated string.
- * @param[in]  c      The separator character (usually a comma).
+ * @param[in]  s      A (comma-)separated string.
+ * @param[in]  sep    The separator character (usually a comma).
  * @param[in]  flags  Flags controlling how the split is done.
  *                    This is a bit field with two settings (both on by default):
  *                    REMOVE_EMPTY causes empty pieces to be skipped/removed.

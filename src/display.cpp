@@ -1074,7 +1074,8 @@ void display::get_terrain_images(const map_location &loc,
 	}
 
 	for(int d=0; d<6; ++d){
-		/* concave
+		/*
+		concave
 		  _____
 		 /     \
 		/ atod1 \_____
@@ -1083,7 +1084,8 @@ void display::get_terrain_images(const map_location &loc,
 		 /  \__\ !tod  /
 		/       \_____/
 		\  tod  /
-		 \_____/*/
+		 \_____/
+		 */
 
 		const time_of_day& atod1 = *atods[d];
 		const time_of_day& atod2 = *atods[(d + 1) % 6];
@@ -1102,7 +1104,8 @@ void display::get_terrain_images(const map_location &loc,
 		lt += image::get_light_string(d + 1, acol.r, acol.g, acol.b);
 	}
 	for(int d=0; d<6; ++d){
-		/* convex 1
+		/*
+		convex 1
 		  _____
 		 /     \
 		/ atod1 \_____
@@ -1111,7 +1114,8 @@ void display::get_terrain_images(const map_location &loc,
 		 /  \__\  tod  /
 		/       \_____/
 		\  tod  /
-		 \_____/*/
+		 \_____/
+		 */
 
 		const time_of_day& atod1 = *atods[d];
 		const time_of_day& atod2 = *atods[(d + 1) % 6];
@@ -1130,7 +1134,8 @@ void display::get_terrain_images(const map_location &loc,
 		lt += image::get_light_string(d + 7, acol.r, acol.g, acol.b);
 	}
 	for(int d=0; d<6; ++d){
-		/* convex 2
+		/*
+		convex 2
 		  _____
 		 /     \
 		/ atod1 \_____
@@ -1139,7 +1144,8 @@ void display::get_terrain_images(const map_location &loc,
 		 /  \__\ !tod  /
 		/       \_____/
 		\  tod  /
-		 \_____/*/
+		 \_____/
+		 */
 
 		const time_of_day& atod1 = *atods[d];
 		const time_of_day& atod2 = *atods[(d + 1) % 6];

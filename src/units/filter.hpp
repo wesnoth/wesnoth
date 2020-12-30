@@ -50,7 +50,7 @@ namespace unit_filter_impl
 		(AND, "and")
 		(OR, "or")
 		(NOT, "not")
-	)
+	);
 	struct filter_error : public game::error
 	{
 		explicit filter_error(const std::string& message = "filter error")

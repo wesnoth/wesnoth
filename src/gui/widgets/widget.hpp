@@ -106,7 +106,7 @@ public:
 		/**
 		 * The widget is fully visible.
 		 *
-		 * The widget should be drawn if @ref dirty_ is @c true. The entire
+		 * The widget should be drawn if dirty_ is @c true. The entire
 		 * widget's rectangle should be redrawn.
 		 */
 		full,
@@ -114,7 +114,7 @@ public:
 		/**
 		 * The widget is partly visible.
 		 *
-		 * The should be drawn if @ref dirty_ is @c true. The rectangle to
+		 * The should be drawn if dirty_ is @c true. The rectangle to
 		 * redraw in determined by @ref clipping_rectangle_
 		 */
 		partly,
@@ -122,7 +122,7 @@ public:
 		/**
 		 * The widget is not visible.
 		 *
-		 * The widget should not be drawn if @ref dirty_ is @c true.
+		 * The widget should not be drawn if dirty_ is @c true.
 		 */
 		none
 	};
@@ -238,7 +238,7 @@ public:
 	 *
 	 * @param full_initialization For widgets with scrollbars it hides them
 	 *                            unless the mode is
-	 *                            @ref scrollbar_mode::ALWAYS_VISIBLE. For
+	 *                            scrollbar_mode::ALWAYS_VISIBLE. For
 	 *                            other widgets this flag is a @em NOP.
 	 */
 	virtual void layout_initialize(const bool full_initialization);
@@ -304,7 +304,6 @@ public:
 	 * size as determined during the layout phase.
 	 *
 	 * @returns                      The best size for the widget.
-	 * @retval 0,0                   The best size is 0,0.
 	 */
 	point get_best_size() const;
 
@@ -317,7 +316,6 @@ private:
 	 * their children since it is meant to update itself.
 	 *
 	 * @returns                      The best size for the widget.
-	 * @retval 0,0                   The best size is 0,0.
 	 */
 	virtual point calculate_best_size() const = 0;
 

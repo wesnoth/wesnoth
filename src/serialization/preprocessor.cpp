@@ -345,7 +345,7 @@ private:
 	/** Buffer read by the STL stream. */
 	std::string out_buffer_;
 
-	/** Buffer filled by the #current_ preprocessor. */
+	/** Buffer filled by the _current_ preprocessor. */
 	std::stringstream buffer_;
 
 	/** Input preprocessor queue. */
@@ -382,7 +382,7 @@ preprocessor::preprocessor(preprocessor_streambuf& t)
 
 /**
  * Called by an STL stream whenever it has reached the end of #out_buffer_.
- * Fills #buffer_ by calling the #current_ preprocessor, then copies its
+ * Fills #buffer_ by calling the _current_ preprocessor, then copies its
  * content into #out_buffer_.
  * @return the first character of #out_buffer_ if any, EOF otherwise.
  */

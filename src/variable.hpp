@@ -45,25 +45,17 @@ class vconfig
 {
 private:
 
-/*
- * Starting with the rc of gcc 4.6 the code failed to compile due to the
- * missing default constructor for vconfig. Not entirely sure whether it's a
- * bug in gcc or not. For now make the code conditional.
- */
-#if __GNUC__ == 4 && __GNUC_MINOR__ == 6 && defined(__GXX_EXPERIMENTAL_CXX0X__)
-	template<class T1, class T2>
-	friend class std::pair;
-#endif
-
 	vconfig();
 	vconfig(const config & cfg, const std::shared_ptr<const config> & cache);
 	vconfig(const config& cfg, const std::shared_ptr<const config> & cache, const variable_set& variables);
 public:
-	/// Constructor from a config.
-	/// Equivalent to vconfig(cfg, false).
-	/// Do not use if the vconfig will persist after @a cfg is destroyed!
-	explicit vconfig(const config &cfg);// : cache_(), cfg_(&cfg) {}
-	explicit vconfig(config &&cfg);// : cache_(new config(std::move(cfg))), cfg_(cache_.get()) { }
+	/**
+	 * Constructor from a config.
+	 * Equivalent to vconfig(cfg, false).
+	 * Do not use if the vconfig will persist after @a cfg is destroyed!
+	 */
+	explicit vconfig(const config &cfg);
+	explicit vconfig(config &&cfg);
 	// Construct a vconfig referencing a non-default set of variables.
 	// Note that the vconfig does NOT take ownership of these variables,
 	// so you need to make sure that their scope encloses the vconfig's scope!
@@ -74,7 +66,7 @@ public:
 	static vconfig empty_vconfig(); // Valid to dereference. Contains nothing
 	static vconfig unconstructed_vconfig(); // Must not be dereferenced
 
-	/// A vconfig evaluates to true iff it can be dereferenced.
+	/** A vconfig evaluates to true iff it can be dereferenced. */
 	explicit operator bool() const	{ return !null(); }
 
 	bool null() const { assert(cfg_); return cfg_ == &default_empty_config; }

@@ -70,8 +70,11 @@ public:
 		, next_scenario_()
 		, next_underlying_unit_id_()
 	{}
-	/// Turns config from a loaded savegame into carryover_info
-	/// @param from_snapshot true if cfg is a [snapshot], false if cfg is [carryover_sides(_start)]
+	/**
+	 * Turns config from a loaded savegame into carryover_info
+	 * @param cfg the config to use
+	 * @param from_snapshot true if cfg is a [snapshot], false if cfg is [carryover_sides(_start)]
+	 */
 	explicit carryover_info(const config& cfg, bool from_snapshot = false);
 
 	carryover* get_side(const std::string& save_id);

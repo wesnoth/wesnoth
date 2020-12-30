@@ -24,7 +24,10 @@ struct lua_pathfind_cost_calculator : pathfind::cost_calculator
 {
 	lua_State *L;
 	int index;
-	/// @param i the stack position of the lua function to calculate the cost.
+	/**
+	 * @param L_ the pointer to the lua interpreter.
+	 * @param i the stack position of the lua function to calculate the cost.
+	 */
 	lua_pathfind_cost_calculator(lua_State *L_, int i): L(L_), index(i) {}
 	double cost(const map_location &loc, const double so_far) const
 	{

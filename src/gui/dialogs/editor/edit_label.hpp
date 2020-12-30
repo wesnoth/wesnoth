@@ -31,8 +31,13 @@ public:
 	 * @param[in, out] text       The parameter's usage is:
 	 *                            - Input: The initial value of the label.
 	 *                            - Output: The label text the user entered if
-	 *                              the dialog returns @ref retval::OK
+	 *                              the dialog returns retval::OK
 	 *                              undefined otherwise.
+	 * @param immutable           Sets immutable_toggle attribute.
+	 * @param visible_fog         Sets visible_fog_toggle attribute.
+	 * @param visible_shroud      Sets visible_shroud_toggle attribute.
+	 * @param color               Sets slider color.
+	 * @param category            Sets category attribute. 
 	 */
 	editor_edit_label(std::string& text,
 					   bool& immutable,

@@ -501,6 +501,7 @@ void unit_mover::finish(unit_ptr u, map_location::DIRECTION dir)
  *                 (correct unit facing, path hexes redrawing).
  * @param dir      Unit will be set facing this direction after move.
  *                 If nothing passed, direction will be set based on path.
+ * @param force_scroll 
  */
 /* Note: Hide the unit in its current location,
  * but don't actually remove it until the move is done,
