@@ -83,7 +83,7 @@ public:
 	 *						off map image (see add_off_map_rule()).
 	 *						This image automatically gets the 'terrain/' prefix
 	 *						and '.png' suffix
-	 * @para draw_border    Whether the map border flag should be set to allow
+	 * @param draw_border    Whether the map border flag should be set to allow
 	 *                      its drawing.
 	 */
 	terrain_builder(const config& level, const gamemap* map, const std::string& offmap_image, bool draw_border);
@@ -330,6 +330,7 @@ public:
 		 * to select the correct images.
 		 *
 		 * @param tod    The current time-of-day
+		 * @param log
 		 */
 		void rebuild_cache(const std::string& tod, logs* log = nullptr);
 

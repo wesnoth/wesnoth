@@ -106,6 +106,7 @@ public:
 	 * Gets a config object from given @a path.
 	 * @param path file to load. Should be _main.cfg.
 	 * @param cfg config object that is written to. Should be empty on entry.
+	 * @param validator the WML schema validator, if provided.
 	 */
 	void get_config(const std::string& path, config& cfg, abstract_validator* validator = nullptr);
 

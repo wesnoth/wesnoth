@@ -54,6 +54,7 @@ namespace settings {
 	 *  When out of bounds, it will be set to the nearest bound.
 	 *
 	 *  @param value        string containing the village gold
+	 *  @param classification 
 	 *
 	 *  @returns            the village gold
 	 */

@@ -38,7 +38,7 @@ public:
 		(HUMAN, "human")
 		(AI, "ai")
 		(EMPTY, "null")
-	)
+	);
 
 	game(wesnothd::server& server, player_connections& player_connections,
 			const socket_ptr& host,
@@ -394,12 +394,13 @@ private:
 	void send_leave_game(const socket_ptr& user) const;
 
 	/**
-		@param sides a comma sperated list of side numbers to which the package should be sent,
-	*/
+	 * @param data the data to be sent to the sides.
+	 * @param sides a comma sperated list of side numbers to which the package should be sent.
+	 * @param exclude sides to not send the data to.
+	 */
 	void send_data_sides(simple_wml::document& data,
 			const simple_wml::string_span& sides,
-			const socket_ptr& exclude = socket_ptr(),
-			std::string packet_type = "");
+			const socket_ptr& exclude = socket_ptr());
 
 	void send_data_observers(
 			simple_wml::document& data, const socket_ptr& exclude = socket_ptr(), std::string packet_type = "") const;

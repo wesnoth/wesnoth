@@ -344,7 +344,7 @@ private:
 	 * NOTE the keyboard events aren't really wired in yet so doesn't do much.
 	 */
 	dispatcher* keyboard_focus_;
-	friend void capture_keyboard(dispatcher*);
+	friend void capture_keyboard(dispatcher* dispatcher);
 };
 
 sdl_event_handler::sdl_event_handler()

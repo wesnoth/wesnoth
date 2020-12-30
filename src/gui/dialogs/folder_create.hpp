@@ -31,7 +31,7 @@ public:
 	 *                            The parameter's usage is:
 	 *                            - Input: A suggested folder name.
 	 *                            - Output: The folder name the user actually
-	 *                              entered if the dialog returns @ref
+	 *                              entered if the dialog returns
 	 *                              retval::OK; undefined otherwise.
 	 */
 	folder_create(std::string& folder_name);

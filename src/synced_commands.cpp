@@ -377,7 +377,6 @@ SYNCED_COMMAND_HANDLER_FUNCTION(auto_shroud, child,  use_undo, /*show*/, /*error
  * Updates fog/shroud based on the undo stack, then updates stack as needed.
  * Call this when "updating shroud now".
  * This may fire events and change the game state.
- * @param[in]  is_replay  Set to true when this is called during a replay.
  *
  * This means it is a synced command like any other.
  */

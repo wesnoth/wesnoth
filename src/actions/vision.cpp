@@ -316,6 +316,12 @@ bool shroud_clearer::clear_loc(team &tm, const map_location &loc,
  * This should only be called if delayed shroud updates is off.
  * It is wasteful to call this if view_team uses neither fog nor shroud.
  *
+ * @param view_loc         The location to clear fog from.
+ * @param view_team        The team who will have the fog cleared from their map.
+ * @param viewer_id        The underlying ID of the unit doing the sighting (for events).
+ * @param sight_range      
+ * @param slowed           Whether the unit is slowed.
+ * @param costs            The terrain costs for the unit.
  * @param real_loc         The actual location of the viewing unit.
  *                         (This is used to avoid having a unit sight itself.)
  * @param known_units      These locations are not checked for uncovered units.
@@ -389,6 +395,9 @@ bool shroud_clearer::clear_unit(const map_location &view_loc, team &view_team,
  * This should only be called if delayed shroud updates is off.
  * It is wasteful to call this if view_team uses neither fog nor shroud.
  *
+ * @param view_loc         The location to clear fog from.
+ * @param viewer           The unit whose vision range will be used to clear the fog.
+ * @param view_team        The team who will have the fog cleared from their map.
  * @param known_units      These locations are not checked for uncovered units.
  * @param enemy_count      Incremented for each enemy uncovered (excluding known_units).
  * @param friend_count     Incremented for each friend uncovered (excluding known_units).
@@ -422,6 +431,9 @@ bool shroud_clearer::clear_unit(const map_location &view_loc,
  * This should only be called if delayed shroud updates is off.
  * It is wasteful to call this if view_team uses neither fog nor shroud.
  *
+ * @param view_loc         The location to clear fog from.
+ * @param viewer           The unit whose vision range will be used to clear the fog.
+ * @param view_team        The team who will have the fog cleared from their map.
  * @param instant          If false, then drawing delays (used to make movement look better) are allowed.
  *
  * @return whether or not information was uncovered (i.e. returns true if any

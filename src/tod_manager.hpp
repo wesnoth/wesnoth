@@ -106,6 +106,7 @@ class tod_manager
 		 * Adds a new local time area from config, making it follow its own
 		 * time-of-day sequence.
 		 *
+		 * @param map                 The game's map.
 		 * @param cfg                 Config object containing x,y range/list of
 		 *                            locations and desired [time] information.
 		 */

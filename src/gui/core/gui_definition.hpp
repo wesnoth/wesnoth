@@ -45,7 +45,7 @@ namespace gui2
 class gui_definition
 {
 public:
-	/** Private ctor. Use @ref create to initialize a new definition. */
+	/** Private ctor. Use create to initialize a new definition. */
 	explicit gui_definition(const config& cfg);
 
 	using widget_definition_map_t = std::map<std::string, styled_widget_definition_ptr>;

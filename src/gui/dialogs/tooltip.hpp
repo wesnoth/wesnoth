@@ -38,6 +38,7 @@ namespace tip
  * @param window_id           The id of the window used to show the tip.
  * @param message             The message to show in the tip.
  * @param mouse               The position of the mouse.
+ * @param source_rect         The thing being hovered over to show the tip.
  */
 void show(const std::string& window_id,
 		  const t_string& message,

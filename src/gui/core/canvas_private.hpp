@@ -179,9 +179,8 @@ public:
 	/**
 	 * Constructor.
 	 *
-	 * @param cfg                 The config object to define the image see
-	 *                            https://www.wesnoth.org/wiki/GUICanvasWML#Image
-	 *                            for more information.
+	 * @param cfg                 The config object to define the image.
+	 * @param functions           WFL functions to execute.
 	 */
 	image_shape(const config& cfg, wfl::action_function_symbol_table& functions);
 

@@ -227,7 +227,7 @@ bool schema_validator::read_config_file(const std::string& filename)
  * assume they all are on their place due to parser algorithm
  * and validation logic
  */
-void schema_validator::open_tag(const std::string& name, const config& parent, int start_line, const std::string& file, bool addittion)
+void schema_validator::open_tag(const std::string& name, const config& parent, int start_line, const std::string& file, bool addition)
 {
 	if(name.empty()) {
 		// Opened the root tag; nothing special to do here
@@ -240,7 +240,7 @@ void schema_validator::open_tag(const std::string& name, const config& parent, i
 			if(!tag) {
 				wrong_tag_error(file, start_line, name, stack_.top()->get_name(), create_exceptions_);
 			} else {
-				if(!addittion) {
+				if(!addition) {
 					counter& cnt = counter_.top()[name];
 					++cnt.cnt;
 					counter& total_cnt = counter_.top()[""];

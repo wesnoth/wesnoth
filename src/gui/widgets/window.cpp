@@ -1496,7 +1496,7 @@ window_definition::resolution::resolution(const config& cfg)
 /**
  * @page layout_algorithm Layout algorithm
  *
- * @section introduction Introduction
+ * @section introduction-layout_algorithm Introduction
  *
  * This page describes how the layout engine for the dialogs works. First
  * a global overview of some terms used in this document.
@@ -1534,8 +1534,8 @@ window_definition::resolution::resolution(const config& cfg)
  *
  * - All visible grid cells; A grid cell is visible when the widget inside
  *   of it doesn't have the state visibility::invisible. Widgets which have the
- *   state @ref visibility::hidden are sized properly since when they become
- *   @ref visibility::visible the layout shouldn't be invalidated. A grid cell
+ *   state visibility::hidden are sized properly since when they become
+ *   visibility::visible the layout shouldn't be invalidated. A grid cell
  *   that's invisible has size 0,0.
  *
  * - All resizable grid cells; A grid cell is resizable under the following

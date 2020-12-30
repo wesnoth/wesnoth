@@ -41,6 +41,7 @@ public:
 	 *
 	 * @param builder             The builder object with the settings for the
 	 *                            object.
+	 * @param control_type        The type of control to be built.
 	 */
 	styled_widget(const implementation::builder_styled_widget& builder,
 			 const std::string& control_type);
@@ -128,7 +129,7 @@ public:
 	/**
 	 * Returns the number of characters per line.
 	 *
-	 * This value is used to call @ref pango_text::set_characters_per_line
+	 * This value is used to call pango_text::set_characters_per_line
 	 * (indirectly).
 	 *
 	 * @returns                   The characters per line. This implementation
@@ -140,7 +141,7 @@ public:
 	 * Returns whether the label should be link_aware, in
 	 * in rendering and in searching for links with get_link.
 	 *
-	 * This value is used to call @ref pango_text::set_link_aware
+	 * This value is used to call pango_text::set_link_aware
 	 * (indirectly).
 	 *
 	 * @returns		      The link aware status. This impl always
@@ -151,7 +152,7 @@ public:
 	/**
 	 * Returns the color string to be used with links.
 	 *
-	 * This value is used to call @ref pango_text::set_link_color
+	 * This value is used to call pango_text::set_link_color
 	 * (indirectly).
 	 *
 	 * @returns		      The link color string. This impl returns "#ffff00".
@@ -434,7 +435,7 @@ public:
 	 *
 	 * 2) Having a static type getter allows the type string to be fetched without
 	 *    constructing an instance of the widget. A good example of this usecase is
-	 *    in @ref build_single_widget_and_cast_to.
+	 *    in build_single_widget_and_cast_to.
 	 */
 	virtual const std::string& get_control_type() const = 0;
 

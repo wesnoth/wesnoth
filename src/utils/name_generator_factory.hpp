@@ -50,6 +50,7 @@ private:
 	 * Determines a name generator from WML data. Tries first to load a context-free generator,
 	 * then falls back to Markov.
 	 * @param config the WML data to be parsed for name generators
+	 * @param id the generator id to use
 	 * @param prefix the prefix to look for
 	 */
 	void add_name_generator_from_config(const config& config, const std::string id, const std::string prefix);

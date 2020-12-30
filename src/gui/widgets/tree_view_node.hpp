@@ -119,8 +119,7 @@ public:
 	 * node. This node has no parent node and some other special features so
 	 * several code paths need to check whether they are the parent node.
 	 *
-	 * This also returns true for a detecthed node returned with @ref tree_view::
-	 * remove_node.
+	 * This also returns true for a detecthed node returned with @ref tree_view::remove_node.
 	 */
 	bool is_root_node() const
 	{

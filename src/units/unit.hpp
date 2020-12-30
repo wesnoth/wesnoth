@@ -814,7 +814,7 @@ public:
 
 	/**
 	 * Heal the unit
-	 * @amount The number of hitpoints to gain
+	 * @param amount The number of hitpoints to gain
 	 */
 	void heal(int amount);
 
@@ -955,7 +955,8 @@ public:
 	 *
 	 * @param attack              The attack to consider.
 	 * @param attacker            Whether this unit should be considered the attacker.
-	 * @param loc                 TODO: what does this do?
+	 * @param loc                 The unit's location (to resolve [resistance] abilities)
+	 * @param weapon              The weapon to check for any abilities or weapon specials
 	 *
 	 * @returns                   The expected damage.
 	 */
@@ -1018,6 +1019,8 @@ public:
 	 * @param damage_name The damage type
 	 * @param attacker True if this unit is on the offensive (to resolve [resistance] abilities)
 	 * @param loc The unit's location (to resolve [resistance] abilities)
+	 * @param weapon The weapon to check for any abilities or weapon specials
+	 * @param opp_weapon The opponent's weapon to check for any abilities or weapon specials
 	 */
 	int resistance_against(const std::string& damage_name, bool attacker, const map_location& loc, const_attack_ptr weapon = nullptr, const_attack_ptr opp_weapon = nullptr) const;
 
@@ -1026,6 +1029,7 @@ public:
 	 * @param atk The attack
 	 * @param attacker True if this unit is on the offensive (to resolve [resistance] abilities)
 	 * @param loc The unit's location (to resolve [resistance] abilities)
+	 * @param weapon The weapon to check for any abilities or weapon specials
 	 */
 	int resistance_against(const attack_type& atk, bool attacker, const map_location& loc, const_attack_ptr weapon = nullptr) const
 	{
@@ -1103,7 +1107,7 @@ public:
 	 * Gets the amount of gold this unit costs a side per turn.
 	 *
 	 * This fetches an actual numeric gold value:
-	 * - If @rec can_recruit is true, no upkeep is paid (0 is returned).
+	 * - If can_recruit is true, no upkeep is paid (0 is returned).
 	 * - If a special upkeep flag is set, the associated gold amount is returned (see @ref upkeep_value_visitor).
 	 * - If a numeric value is already set, it is returned directly.
 	 *
@@ -1725,6 +1729,7 @@ private:
 	 * @param cfg an ability WML structure
 	 * @param loc The location on which to resolve the ability
 	 * @param from The "other unit" for filter matching
+	 * @param dir The direction the unit is facing
 	 */
 	bool ability_affects_adjacent(const std::string& ability, const config& cfg, int dir, const map_location& loc, const unit& from) const;
 
