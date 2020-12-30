@@ -1618,13 +1618,6 @@
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|x64'">$(IntDir)Gui\Dialogs\Editor\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|x64'">$(IntDir)Gui\Dialogs\Editor\</ObjectFileName>
     </ClCompile>
-    <ClCompile Include="..\..\src\gui\dialogs\editor\set_starting_position.cpp">
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(IntDir)Gui\Dialogs\Editor\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|x64'">$(IntDir)Gui\Dialogs\Editor\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(IntDir)Gui\Dialogs\Editor\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|x64'">$(IntDir)Gui\Dialogs\Editor\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|x64'">$(IntDir)Gui\Dialogs\Editor\</ObjectFileName>
-    </ClCompile>
     <ClCompile Include="..\..\src\gui\dialogs\edit_label.cpp">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(IntDir)Gui\Dialogs\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|x64'">$(IntDir)Gui\Dialogs\</ObjectFileName>
@@ -3831,7 +3824,6 @@
     <ClInclude Include="..\..\src\gui\dialogs\editor\generator_settings.hpp" />
     <ClInclude Include="..\..\src\gui\dialogs\editor\new_map.hpp" />
     <ClInclude Include="..\..\src\gui\dialogs\editor\resize_map.hpp" />
-    <ClInclude Include="..\..\src\gui\dialogs\editor\set_starting_position.hpp" />
     <ClInclude Include="..\..\src\gui\dialogs\edit_label.hpp" />
     <ClInclude Include="..\..\src\gui\dialogs\edit_text.hpp" />
     <ClInclude Include="..\..\src\gui\dialogs\end_credits.hpp" />

@@ -437,8 +437,6 @@
 		46F92E362174F6A400602C1C /* generator_settings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46F92CED2174F6A300602C1C /* generator_settings.cpp */; };
 		46F92E372174F6A400602C1C /* edit_label.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46F92CEE2174F6A300602C1C /* edit_label.cpp */; };
 		46F92E382174F6A400602C1C /* edit_label.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46F92CEE2174F6A300602C1C /* edit_label.cpp */; };
-		46F92E392174F6A400602C1C /* set_starting_position.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46F92CEF2174F6A300602C1C /* set_starting_position.cpp */; };
-		46F92E3A2174F6A400602C1C /* set_starting_position.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46F92CEF2174F6A300602C1C /* set_starting_position.cpp */; };
 		46F92E3B2174F6A400602C1C /* edit_side.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46F92CF12174F6A300602C1C /* edit_side.cpp */; };
 		46F92E3C2174F6A400602C1C /* edit_side.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46F92CF12174F6A300602C1C /* edit_side.cpp */; };
 		46F92E3D2174F6A400602C1C /* new_map.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46F92CF22174F6A300602C1C /* new_map.cpp */; };
@@ -1808,12 +1806,10 @@
 		46F92CE72174F6A300602C1C /* edit_label.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = edit_label.hpp; sourceTree = "<group>"; };
 		46F92CE82174F6A300602C1C /* resize_map.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = resize_map.hpp; sourceTree = "<group>"; };
 		46F92CE92174F6A300602C1C /* generator_settings.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = generator_settings.hpp; sourceTree = "<group>"; };
-		46F92CEA2174F6A300602C1C /* set_starting_position.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = set_starting_position.hpp; sourceTree = "<group>"; };
 		46F92CEB2174F6A300602C1C /* custom_tod.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = custom_tod.hpp; sourceTree = "<group>"; };
 		46F92CEC2174F6A300602C1C /* resize_map.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = resize_map.cpp; sourceTree = "<group>"; };
 		46F92CED2174F6A300602C1C /* generator_settings.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = generator_settings.cpp; sourceTree = "<group>"; };
 		46F92CEE2174F6A300602C1C /* edit_label.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = edit_label.cpp; sourceTree = "<group>"; };
-		46F92CEF2174F6A300602C1C /* set_starting_position.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = set_starting_position.cpp; sourceTree = "<group>"; };
 		46F92CF02174F6A300602C1C /* edit_scenario.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = edit_scenario.hpp; sourceTree = "<group>"; };
 		46F92CF12174F6A300602C1C /* edit_side.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = edit_side.cpp; sourceTree = "<group>"; };
 		46F92CF22174F6A300602C1C /* new_map.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = new_map.cpp; sourceTree = "<group>"; };
@@ -3702,8 +3698,6 @@
 				46F92CE42174F6A300602C1C /* new_map.hpp */,
 				46F92CEC2174F6A300602C1C /* resize_map.cpp */,
 				46F92CE82174F6A300602C1C /* resize_map.hpp */,
-				46F92CEF2174F6A300602C1C /* set_starting_position.cpp */,
-				46F92CEA2174F6A300602C1C /* set_starting_position.hpp */,
 			);
 			path = editor;
 			sourceTree = "<group>";
@@ -5554,7 +5548,6 @@
 				46F92E832174F6A400602C1C /* grid.cpp in Sources */,
 				91FBBADB1CB6D1B700470BFE /* markov_generator.cpp in Sources */,
 				91C55DA41CC078820040012E /* context_free_grammar_generator.cpp in Sources */,
-				46F92E392174F6A400602C1C /* set_starting_position.cpp in Sources */,
 				46F92D912174F6A300602C1C /* gui_definition.cpp in Sources */,
 				916B7E941CC151FA00811097 /* race.cpp in Sources */,
 				918C8A1E1D05F9AA009744A0 /* chat_command_handler.cpp in Sources */,
@@ -5672,7 +5665,6 @@
 				91E356361CACC47F00774252 /* test_commandline_options.cpp in Sources */,
 				91E356371CACC47F00774252 /* test_config.cpp in Sources */,
 				91E356381CACC47F00774252 /* test_config_cache.cpp in Sources */,
-				46F92E3A2174F6A400602C1C /* set_starting_position.cpp in Sources */,
 				46F92E182174F6A400602C1C /* mp_alerts_options.cpp in Sources */,
 				91E356391CACC47F00774252 /* test_filesystem.cpp in Sources */,
 				46F92DE62174F6A400602C1C /* terrain_layers.cpp in Sources */,
