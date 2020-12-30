@@ -383,9 +383,6 @@ void server_base::coro_send_file(socket_ptr socket, const std::string& filename,
 
 #endif
 
-/// Receive WML document from a coroutine
-/// @param socket
-/// @param yield The function will suspend on read operation using this yield context
 std::shared_ptr<simple_wml::document> server_base::coro_receive_doc(socket_ptr socket, boost::asio::yield_context yield)
 {
 	union DataSize

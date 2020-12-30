@@ -52,21 +52,35 @@ public:
 	virtual ~server_base() {}
 	void run();
 
-	/// Send a WML document from within a coroutine
-	/// @param socket
-	/// @param doc
-	/// @param yield The function will suspend on write operation using this yield context
+	/**
+	 * Send a WML document from within a coroutine
+	 * @param socket
+	 * @param doc
+	 * @param yield The function will suspend on write operation using this yield context
+	 */
 	void coro_send_doc(socket_ptr socket, simple_wml::document& doc, boost::asio::yield_context yield);
-	/// Send contents of entire file directly to socket from within a coroutine
-	/// @param socket
-	/// @param filename
-	/// @param yield The function will suspend on write operations using this yield context
+	/**
+	 * Send contents of entire file directly to socket from within a coroutine
+	 * @param socket
+	 * @param filename
+	 * @param yield The function will suspend on write operations using this yield context
+	 */
 	void coro_send_file(socket_ptr socket, const std::string& filename, boost::asio::yield_context yield);
-	/// Receive WML document from a coroutine
-	/// @param socket
-	/// @param yield The function will suspend on read operation using this yield context
+	/**
+	 * Receive WML document from a coroutine
+	 * @param socket
+	 * @param yield The function will suspend on read operation using this yield context
+	 */
 	std::shared_ptr<simple_wml::document> coro_receive_doc(socket_ptr socket, boost::asio::yield_context yield);
 
+	/**
+	 * High level wrapper for sending a WML document
+	 * 
+	 * This function returns before send is finished. This function can be called again on same socket before previous send was finished.
+	 * WML documents are kept in internal queue and sent in FIFO order.
+	 * @param socket
+	 * @param doc Document to send. A copy of it will be made so there is no need to keep the reference live after the function returns.
+	 */
 	void async_send_doc_queued(socket_ptr socket, simple_wml::document& doc);
 
 	typedef std::map<std::string, std::string> info_table;
