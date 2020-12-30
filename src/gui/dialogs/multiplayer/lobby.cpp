@@ -638,7 +638,7 @@ void mp_lobby::update_playerlist()
 				target_list = &player_list_.active_game;
 				break;
 			case mp::user_info::user_state::GAME:
-				name = colorize(name, font::BAD_COLOR);
+				name = colorize(name, font::GRAY_COLOR);
 				icon_ss << (user.observing ? "-obs" : "-playing");
 				target_list = &player_list_.other_games;
 				break;
