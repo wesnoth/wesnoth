@@ -68,6 +68,9 @@ class user_handler {
 		/** Returns true if a user with the given name exists. */
 		virtual bool user_exists(const std::string& name) =0;
 
+		/** Returns the forum user id for the given username */
+		virtual long get_forum_id(const std::string& name) =0;
+
 		/** Returns true if the specified user account is usable for logins. */
 		virtual bool user_is_active(const std::string& name) =0;
 
