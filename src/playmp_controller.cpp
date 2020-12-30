@@ -43,7 +43,7 @@ static lg::log_domain log_engine("engine");
 playmp_controller::playmp_controller(const config& level,
 		saved_game& state_of_game,
 		const ter_data_cache & tdata,
-		mp_campaign_info* mp_info)
+		mp_game_metadata* mp_info)
 	: playsingle_controller(level, state_of_game, tdata, mp_info && mp_info->skip_replay)
 	, network_processing_stopped_(false)
 	, blindfold_(*gui_, mp_info && mp_info->skip_replay_blindfolded)

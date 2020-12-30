@@ -126,6 +126,7 @@ struct user_info
 	bool operator<(const user_info& b) const;
 
 	std::string name;
+	int forum_id;
 	int game_id;
 	user_relation relation;
 	user_state state;

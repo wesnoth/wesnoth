@@ -170,6 +170,12 @@ public:
 		return children_;
 	}
 
+	node_children_vector& siblings()
+	{
+		assert(!is_root_node());
+		return parent_node().children();
+	}
+
 	/** See @ref widget::find_at. */
 	virtual widget* find_at(const point& coordinate,
 							 const bool must_be_active) override;

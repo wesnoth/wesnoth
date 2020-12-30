@@ -1,5 +1,5 @@
 # The Battle for Wesnoth - Traditional Chinese Translations
-# Copyright (C) 2005-2019 Wesnoth development team
+# Copyright (C) 2005-2020 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 # 章存恩 <chandrew1119@gmail.com >, 2009.
 # 楊綮銘 <steven2880@gmail.com>, 2018.
@@ -9,14 +9,14 @@ msgstr ""
 "Project-Id-Version: wesnoth-1.14\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2020-12-19 01:27 UTC\n"
-"PO-Revision-Date: 2020-05-09 22:23+0800\n"
+"PO-Revision-Date: 2020-12-21 16:01+0800\n"
 "Last-Translator: 楊綮銘 <steven2880@gmail.com>\n"
 "Language-Team: Wesnoth Traditional Chinese Team\n"
 "Language: zh_TW\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.3\n"
+"X-Generator: Poedit 2.4.2\n"
 
 #. [campaign]: id=Descent_into_Darkness
 #. [scenario]: id=09_Descent_into_Darkness
@@ -1153,8 +1153,10 @@ msgstr ""
 #. [side]
 #: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:64
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_Descent_into_Darkness.cfg:115
+#, fuzzy
+#| msgid "Monsters"
 msgid "teamname^Monsters"
-msgstr ""
+msgstr "怪獸"
 
 #. [unit]: type=Necromancer, id=Darken Volk
 #. [side]
@@ -4198,8 +4200,10 @@ msgstr ""
 
 #. [side]
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_Descent_into_Darkness.cfg:93
+#, fuzzy
+#| msgid "Opposers"
 msgid "teamname^Opposers"
-msgstr ""
+msgstr "反抗者"
 
 #. [objective]: condition=win
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_Descent_into_Darkness.cfg:199
@@ -6752,28 +6756,6 @@ msgid ""
 "<italic>text='Maimed'</italic> units have 3 less movement points than usual."
 msgstr ""
 
-#~ msgid ""
-#~ "Fear is the path to the dark side. Fear leads to anger. Anger leads to "
-#~ "hate. Hate leads to suffering."
-#~ msgstr "恐懼是走向黑暗的道路。恐懼導致憤怒，憤怒導致憎恨，憎恨導致痛苦。"
-
-#~ msgid "Enemy units have reduced vision (radius 3)."
-#~ msgstr "敵方單位視野下降（半徑3）。"
-
-#~ msgid "The only thing we have to fear is fear itself."
-#~ msgstr "我們唯一需要擔心的是恐懼本身。"
-
-#~ msgid "<i>... nameless, unreasoning, unjustified terror...</i>"
-#~ msgstr "<i>...無名，無理，毫無道理的恐懼...</i>"
-
-#~ msgid ""
-#~ "Such an old, worn book. It does not seem like much, but at least we’ve "
-#~ "got it now."
-#~ msgstr "有點破舊的書。看起來並不完整，但至少我們現在得到它了。"
-
-#~ msgid "... So... how do we get out of here?"
-#~ msgstr "...所以...我們怎麼從這裡出去呢？"
-
 #~ msgid "Difficult"
 #~ msgstr "困難"
 
@@ -6786,6 +6768,11 @@ msgstr ""
 #~ msgstr ""
 #~ "你說這個能確保我們存活下來，但代價是什麼？褻瀆我們死後的身軀？難道你的靈魂"
 #~ "出賣給黑魔法了？"
+
+#~ msgid ""
+#~ "Fear is the path to the dark side. Fear leads to anger. Anger leads to "
+#~ "hate. Hate leads to suffering."
+#~ msgstr "恐懼是走向黑暗的道路。恐懼導致憤怒，憤怒導致憎恨，憎恨導致痛苦。"
 
 #~ msgid ""
 #~ "It sickens me to be of the same blood as a necromancer. Father would turn "
@@ -7068,6 +7055,9 @@ msgstr ""
 #~ msgid "This scenario takes place entirely at night."
 #~ msgstr "這個章節將完全在夜間進行。"
 
+#~ msgid "Enemy units have reduced vision (radius 3)."
+#~ msgstr "敵方單位視野下降（半徑3）。"
+
 #~ msgid "What was that?!"
 #~ msgstr "那是什麼？！"
 
@@ -7078,6 +7068,12 @@ msgstr ""
 #~ msgstr ""
 #~ "這就是通常人們所知的聖水的影響。它的釀造過程是個神秘且複雜，只有少數牧師知"
 #~ "道怎麼做。如同你可以想像的到，它對不死族非常有效。"
+
+#~ msgid "The only thing we have to fear is fear itself."
+#~ msgstr "我們唯一需要擔心的是恐懼本身。"
+
+#~ msgid "<i>... nameless, unreasoning, unjustified terror...</i>"
+#~ msgstr "<i>...無名，無理，毫無道理的恐懼...</i>"
 
 #~ msgid "How... dare you..."
 #~ msgstr "你...竟...敢..."
@@ -7090,6 +7086,14 @@ msgstr ""
 
 #~ msgid "I have found the book, master!"
 #~ msgstr "主人，我找到書了！"
+
+#~ msgid ""
+#~ "Such an old, worn book. It does not seem like much, but at least we’ve "
+#~ "got it now."
+#~ msgstr "有點破舊的書。看起來並不完整，但至少我們現在得到它了。"
+
+#~ msgid "... So... how do we get out of here?"
+#~ msgstr "...所以...我們怎麼從這裡出去呢？"
 
 #~ msgid "... have I really just been a pawn all this time?"
 #~ msgstr "...難道到頭來我只是個利用品嗎？"

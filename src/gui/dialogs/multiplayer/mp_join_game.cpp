@@ -94,20 +94,12 @@ bool mp_join_game::fetch_game_config()
 	bool has_scenario_and_controllers = false;
 	while(!has_scenario_and_controllers) {
 		config revc;
-		bool data_res = false;
 
 		gui2::dialogs::loading_screen::display([&]() {
 			gui2::dialogs::loading_screen::progress(loading_stage::download_level_data);
 
-			data_res = network_connection_.wait_and_receive_data(revc);
+			network_connection_.wait_and_receive_data(revc);
 		});
-
-		if(!data_res) {
-			// NOTE: there used to be a function after this that would throw wesnothd_error if data_res was false.
-			// However, this block here already handles that case. Dunno if we ever need this exception again.
-			// throw wesnothd_error(_("Connection timed out"));
-			return false;
-		}
 
 		if(const config& err = revc.child("error")) {
 			throw wesnothd_error(err["message"]);
@@ -238,7 +230,8 @@ void mp_join_game::pre_show(window& window)
 	// Set title
 	//
 	label& title = find_widget<label>(&window, "title", false);
-	title.set_label((formatter() << title.get_label() << " " << font::unicode_em_dash << " " << get_scenario()["name"].t_str()).str());
+	// FIXME: very hacky way to get the game name...
+	title.set_label((formatter() << level_.child("multiplayer")["scenario"] << " " << font::unicode_em_dash << " " << get_scenario()["name"].t_str()).str());
 
 	//
 	// Set up sides list

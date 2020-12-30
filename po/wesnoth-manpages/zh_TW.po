@@ -1,5 +1,5 @@
 # The Battle for Wesnoth - Traditional Chinese Translations
-# Copyright (C) 2005-2019 Wesnoth development team
+# Copyright (C) 2005-2020 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 # YP_Lin <yenpinlin@gmail.com>, 2010.
 # 楊綮銘 <steven2880@gmail.com>, 2018.
@@ -7,15 +7,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.14\n"
-"POT-Creation-Date: 2020-11-21 01:41-0300\n"
-"PO-Revision-Date: 2019-10-26 22:36+0800\n"
+"POT-Creation-Date: 2020-12-18 22:27-0300\n"
+"PO-Revision-Date: 2020-12-21 16:17+0800\n"
 "Last-Translator: 楊綮銘 <steven2880@gmail.com>\n"
 "Language-Team: Wesnoth Traditional Chinese Team\n"
 "Language: zh_TW\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.2.4\n"
+"X-Generator: Poedit 2.4.2\n"
 
 #. type: TH
 #: doc/man/wesnoth.6:16
@@ -431,10 +431,8 @@ msgstr "B<--log-precise>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:177
-#, fuzzy
-#| msgid "shows the timestamps in the logfile with more precision."
 msgid "shows the timestamps in log output with more precision."
-msgstr "在日誌檔案中顯示更詳細的時間記錄。"
+msgstr "在日誌檔案中顯示更詳細的記錄。"
 
 #. type: TP
 #: doc/man/wesnoth.6:177
@@ -1292,16 +1290,6 @@ msgstr ""
 
 #. type: Plain text
 #: doc/man/wesnoth.6:511
-#, fuzzy
-#| msgid ""
-#| "When running unit tests (withB<\\ -u>), the exit status is different. An "
-#| "exit status of 0 indicates that the test passed, and 1 indicates that the "
-#| "test failed. An exit status of 3 indicates that the test passed, but "
-#| "produced an invalid replay file. An exit status of 4 indicates that the "
-#| "test passed, but the replay produced errors. These latter two are only "
-#| "returned if B<--noreplaycheck> is not passed. An exit status of 2 "
-#| "indicates that the test timed out, when used with the deprecated B<--"
-#| "timeout> option."
 msgid ""
 "When running unit tests (withB<\\ -u>), the exit status is different. An "
 "exit status of 0 indicates that the test passed, and 1 indicates that the "
@@ -1312,8 +1300,7 @@ msgid ""
 msgstr ""
 "當執行單位測試（使用 B<\\ -u>），狀態碼會不同。狀態碼0表示通過測試，狀態碼1表"
 "示測試失敗。狀態碼3表示通過測試，但無法建立回放檔案。狀態碼4表示測試通過，但"
-"回放檔案錯誤。後兩個狀態碼只有在 B<--noreplaycheck> 不通過的情況下返回。狀態"
-"碼2是測試時間逾時，當與 B<--timeout> 使用時才會出現。"
+"回放檔案錯誤。後兩個狀態碼只有在 B<--noreplaycheck> 不通過的情況下返回。"
 
 #. type: SH
 #: doc/man/wesnoth.6:512 doc/man/wesnothd.6:263
@@ -1672,7 +1659,6 @@ msgstr ""
 msgid "B<fifo_path>"
 msgstr "B<fifo_path>"
 
-# type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:135
 msgid ""
@@ -1720,14 +1706,12 @@ msgstr "B<motd>"
 msgid "The message of the day."
 msgstr "當日訊息。"
 
-# type: TP
 #. type: TP
 #: doc/man/wesnothd.6:144
 #, no-wrap
 msgid "B<new_room_policy>"
 msgstr "B<new_room_policy>"
 
-# type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:147
 msgid ""
@@ -1774,7 +1758,6 @@ msgstr ""
 msgid "B<restart_command>"
 msgstr "B<restart_command>"
 
-# type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:156
 msgid ""
@@ -1791,7 +1774,6 @@ msgstr ""
 msgid "B<room_save_file>"
 msgstr "B<room_save_file>"
 
-# type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:159
 msgid ""
@@ -1899,7 +1881,6 @@ msgstr ""
 "重定向用逗號分隔列表的版本。顯示同樣的模式包括B<versions_accepted>在符號模"
 "式。"
 
-# type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:195
 msgid ""
@@ -1915,11 +1896,10 @@ msgstr ""
 msgid "B<name>"
 msgstr "B<name>"
 
-# type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:199
 msgid "The name used to reference the ban time."
-msgstr "用於參照封禁時間的名字。"
+msgstr "名稱禁止引用時間。"
 
 #. type: TP
 #: doc/man/wesnothd.6:199
@@ -1927,7 +1907,6 @@ msgstr "用於參照封禁時間的名字。"
 msgid "B<time>"
 msgstr "B<time>"
 
-# type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:207
 msgid ""
@@ -1951,17 +1930,8 @@ msgstr ""
 "B<[proxy]> 這個標簽告訴伺服器扮演代理伺服器角色，把使用者連接重定向到另一台伺"
 "服器。與B<[redirect]>接受一樣的參數。"
 
-# type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:223
-#, fuzzy
-#| msgid ""
-#| "B<[user_handler]> Configures the user handler. Available keys vary "
-#| "depending on which user handler is set with the B<user_handler> key. If "
-#| "no B<[user_handler]> section is present in the configuration the server "
-#| "will run without any nick registration service. All additional tables "
-#| "that are needed for the forum_user_handler to function can be found in "
-#| "table_definitions.sql in the Wesnoth source repository."
 msgid ""
 "B<[user_handler]> Configures the user handler. Available keys vary depending "
 "on which user handler is set with the B<user_handler> key. If no "
@@ -1970,10 +1940,10 @@ msgid ""
 "needed for the B<forum_user_handler> to function can be found in "
 "table_definitions.sql in the Wesnoth source repository."
 msgstr ""
-"B<[user_handler]> 配置用戶處理程序。可設置的主鍵取決於通過B<user_handler>設置"
-"的用戶資料處理器是哪一個。如果配置檔案中沒有B<[user_handler]>小節，則伺服器在"
-"運行中將不提供任何暱稱註冊服務。在 Wesnoth 原始碼儲存庫中的 "
-"table_definitions.sql 可以找到 forum_user_handler 中所運作的所有資源列表。"
+"B<[user_handler]> 設定使用者處理程序。可設置的主鍵取決於通過B<user_handler>設"
+"置的用戶資料處理器是哪一個。如果設定檔案中沒有 B<[user_handler]> ，則伺服器在"
+"運行中將不提供任何暱稱註冊服務。在韋諾原始碼儲存庫中的 table_definitions.sql "
+"可以找到 B<forum_user_handler> 中所運作的所有資源列表。"
 
 #. type: TP
 #: doc/man/wesnothd.6:224
@@ -1981,7 +1951,6 @@ msgstr ""
 msgid "B<db_host>"
 msgstr "B<db_host>"
 
-# type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:227
 #, fuzzy
@@ -1995,7 +1964,6 @@ msgstr "郵件伺服器的主機名"
 msgid "B<db_name>"
 msgstr "B<db_name>"
 
-# type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:230
 #, fuzzy
@@ -2009,7 +1977,6 @@ msgstr "郵件伺服器的主機名"
 msgid "B<db_user>"
 msgstr "B<db_user>"
 
-# type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:233
 #, fuzzy
@@ -2038,7 +2005,6 @@ msgstr "使用者密碼。"
 msgid "B<db_users_table>"
 msgstr "B<db_users_table>"
 
-# type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:239
 #, fuzzy
@@ -2059,7 +2025,6 @@ msgstr ""
 msgid "B<db_extra_table>"
 msgstr "B<db_extra_table>"
 
-# type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:242
 #, fuzzy
@@ -2078,7 +2043,6 @@ msgstr ""
 msgid "B<db_game_info_table>"
 msgstr "B<db_game_info_table>"
 
-# type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:245
 #, fuzzy
@@ -2097,7 +2061,6 @@ msgstr ""
 msgid "B<db_game_player_info_table>"
 msgstr "B<db_game_player_info_table>"
 
-# type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:248
 #, fuzzy
@@ -2117,7 +2080,6 @@ msgstr ""
 msgid "B<db_game_modification_info_table>"
 msgstr "B<db_game_modification_info_table>"
 
-# type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:251
 #, fuzzy
@@ -2137,7 +2099,6 @@ msgstr ""
 msgid "B<db_user_group_table>"
 msgstr "B<db_user_group_table>"
 
-# type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:254
 #, fuzzy
@@ -2159,7 +2120,6 @@ msgstr ""
 msgid "B<mp_mod_group>"
 msgstr "B<mp_mod_group>"
 
-# type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:257
 #, fuzzy
@@ -2197,40 +2157,10 @@ msgstr ""
 msgid "B<wesnoth>(6)"
 msgstr "B<wesnoth>(6)"
 
-#~ msgid "B<--proxy>"
-#~ msgstr "B<--proxy>"
-
-#~ msgid "enables usage of proxy for network connections."
-#~ msgstr "開啟代理伺服器來進行網路連線。"
-
-#~ msgid "B<--proxy-address>I<\\ address>"
-#~ msgstr "B<--proxy-address>I<\\ address>"
-
-#~ msgid "specifies I<address> of the proxy."
-#~ msgstr "指定代理伺服器的 I<address>。"
-
-#~ msgid "B<--proxy-port>I<\\ port>"
-#~ msgstr "B<--proxy-port>I<\\ port>"
-
-#~ msgid "specifies I<port> of the proxy."
-#~ msgstr "指定代理伺服器的 I<port>。"
-
-#~ msgid "B<--proxy-user>I<\\ username>"
-#~ msgstr "B<--proxy-user>I<\\ username>"
-
-#~ msgid "specifies I<username> to log in to the proxy."
-#~ msgstr "指定用於登入代理伺服器的 I<username>。"
-
-#~ msgid "B<--proxy-password>I<\\ password>"
-#~ msgstr "B<--proxy-password>I<\\ password>"
-
-#~ msgid "specifies I<password> to log in to the proxy."
-#~ msgstr "指定用於登入代理伺服器的 I<password>。"
-
+#, no-wrap
 #~ msgid "B<user_handler>"
 #~ msgstr "B<user_handler>"
 
-# type: Plain text
 #~ msgid ""
 #~ "The name of the user handler to use. Currently available user handlers "
 #~ "are B<forum> (to connect wesnothd to a phpbb forum database) and "
@@ -2243,19 +2173,15 @@ msgstr "B<wesnoth>(6)"
 #~ "際中使用它，那您一定是瘋了）。預設值是B<forum>，同時您必須添加一個"
 #~ "B<[user_handler]>小節，請看下面。"
 
-# type: Plain text
 #~ msgid "(for user_handler=forum) The hostname of the database server"
 #~ msgstr "（對於 user_handler=forum）資料庫伺服器的主機名稱"
 
-# type: Plain text
 #~ msgid "(for user_handler=forum) The name of the database"
 #~ msgstr "（對於 user_handler=forum）資料庫名稱"
 
-# type: Plain text
 #~ msgid "(for user_handler=forum) This user's password"
 #~ msgstr "（對於 user_handler=forum）這個用戶的密碼"
 
-# type: Plain text
 #~ msgid ""
 #~ "(for user_handler=forum) The name of the table in which wesnothd will "
 #~ "save its own data about users. You will have to create this table "
@@ -2264,16 +2190,15 @@ msgstr "B<wesnoth>(6)"
 #~ "（對於 user_handler = forum）wesnothd 將在其中保存其自己的有關用戶的數據列"
 #~ "表名稱。 您必須手動建立此表單。"
 
+#, no-wrap
 #~ msgid "B<user_expiration>"
 #~ msgstr "B<user_expiration>"
 
-# type: Plain text
 #~ msgid ""
 #~ "(for user_handler=sample) The time after which a registered nick expires "
 #~ "(in days)."
 #~ msgstr "（對於 user_handler=sample）註冊暱稱的失效時間（單位是天數）。"
 
-# type: Plain text
 #~ msgid ""
 #~ "B<[mail]> Configures an SMTP server through which the user handler can "
 #~ "send mail. Currently only used by the sample user handler."
@@ -2281,32 +2206,69 @@ msgstr "B<wesnoth>(6)"
 #~ "B<[mail]> 設置一個SMTP伺服器，通過用戶處理程序可以發送郵件。目前只在樣本用"
 #~ "戶處理程序中使用。"
 
+#, no-wrap
 #~ msgid "B<server>"
 #~ msgstr "B<server>"
 
+#, no-wrap
 #~ msgid "B<username>"
 #~ msgstr "B<username>"
 
-# type: Plain text
 #~ msgid "The user name under which to log into the mail server."
 #~ msgstr "登錄到郵件伺服器的使用者名稱。"
 
+#, no-wrap
 #~ msgid "B<password>"
 #~ msgstr "B<password>"
 
+#, no-wrap
 #~ msgid "B<from_address>"
 #~ msgstr "B<from_address>"
 
-# type: Plain text
 #~ msgid "The reply-to address of you mail."
 #~ msgstr "您電子信箱的回覆地址。"
 
+#, no-wrap
 #~ msgid "B<mail_port>"
 #~ msgstr "B<mail_port>"
 
-# type: Plain text
 #~ msgid "The port on which your mail server is running. Default is 25."
 #~ msgstr "郵件伺服器的埠口。預設值為25。"
+
+#, no-wrap
+#~ msgid "B<--proxy>"
+#~ msgstr "B<--proxy>"
+
+#~ msgid "enables usage of proxy for network connections."
+#~ msgstr "開啟代理伺服器來進行網路連線。"
+
+#, no-wrap
+#~ msgid "B<--proxy-address>I<\\ address>"
+#~ msgstr "B<--proxy-address>I<\\ address>"
+
+#~ msgid "specifies I<address> of the proxy."
+#~ msgstr "指定代理伺服器的 I<address>。"
+
+#, no-wrap
+#~ msgid "B<--proxy-port>I<\\ port>"
+#~ msgstr "B<--proxy-port>I<\\ port>"
+
+#~ msgid "specifies I<port> of the proxy."
+#~ msgstr "指定代理伺服器的 I<port>。"
+
+#, no-wrap
+#~ msgid "B<--proxy-user>I<\\ username>"
+#~ msgstr "B<--proxy-user>I<\\ username>"
+
+#~ msgid "specifies I<username> to log in to the proxy."
+#~ msgstr "指定用於登入代理伺服器的 I<username>。"
+
+#, no-wrap
+#~ msgid "B<--proxy-password>I<\\ password>"
+#~ msgstr "B<--proxy-password>I<\\ password>"
+
+#~ msgid "specifies I<password> to log in to the proxy."
+#~ msgstr "指定用於登入代理伺服器的 I<password>。"
 
 # type: Plain text
 #~ msgid ""

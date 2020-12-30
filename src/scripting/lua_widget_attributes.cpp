@@ -252,6 +252,26 @@ WIDGET_SETTER("value_compat,value", int, gui2::slider)
 	w.set_value(value);
 }
 
+WIDGET_GETTER("max_value", int, gui2::slider)
+{
+	return w.get_maximum_value();
+}
+
+WIDGET_SETTER("max_value", int, gui2::slider)
+{
+	w.set_value_range(w.get_minimum_value(), value);
+}
+
+WIDGET_GETTER("min_value", int, gui2::slider)
+{
+	return w.get_minimum_value();
+}
+
+WIDGET_SETTER("min_value", int, gui2::slider)
+{
+	w.set_value_range(value, w.get_maximum_value());
+}
+
 WIDGET_GETTER("value_compat,percentage", int, gui2::progress_bar)
 {
 	return w.get_percentage();

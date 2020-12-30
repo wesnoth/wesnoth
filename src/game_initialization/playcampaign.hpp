@@ -33,9 +33,9 @@ typedef std::shared_ptr<terrain_type_data> ter_data_cache;
 class config;
 
 class wesnothd_connection;
-struct mp_campaign_info
+struct mp_game_metadata
 {
-	mp_campaign_info(wesnothd_connection& wdc)
+	mp_game_metadata(wesnothd_connection& wdc)
 		: connected_players()
 		, is_host()
 		, current_turn(0)
@@ -60,7 +60,7 @@ class campaign_controller
 	const ter_data_cache & tdata_;
 	const bool is_unit_test_;
 	bool is_replay_;
-	mp_campaign_info* mp_info_;
+	mp_game_metadata* mp_info_;
 public:
 	campaign_controller(saved_game& state, const ter_data_cache & tdata, bool is_unit_test = false)
 		: state_(state)
@@ -76,7 +76,7 @@ public:
 		is_replay_ = true;
 		return play_game();
 	}
-	void set_mp_info(mp_campaign_info* mp_info) { mp_info_ = mp_info; }
+	void set_mp_info(mp_game_metadata* mp_info) { mp_info_ = mp_info; }
 private:
 	LEVEL_RESULT playsingle_scenario(end_level_data &end_level);
 	LEVEL_RESULT playmp_scenario(end_level_data &end_level);

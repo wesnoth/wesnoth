@@ -693,6 +693,7 @@ void server::login_client(boost::asio::yield_context yield, socket_ptr socket)
 
 	simple_wml::document join_lobby_response;
 	join_lobby_response.root().add_child("join_lobby").set_attr("is_moderator", is_moderator ? "yes" : "no");
+	join_lobby_response.root().child("join_lobby")->set_attr_dup("profile_url_prefix", "https://r.wesnoth.org/u");
 	coro_send_doc(socket, join_lobby_response, yield[ec]);
 	if(check_error(ec, socket)) return;
 
@@ -700,6 +701,7 @@ void server::login_client(boost::asio::yield_context yield, socket_ptr socket)
 	wesnothd::player new_player(
 		username,
 		player_cfg,
+		user_handler_ ? user_handler_->get_forum_id(username) : 0,
 		registered,
 		client_version,
 		client_source,

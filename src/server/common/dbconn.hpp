@@ -37,6 +37,7 @@ class dbconn
 		std::string get_uuid();
 		std::string get_tournaments();
 		bool user_exists(const std::string& name);
+		long get_forum_id(const std::string& name);
 		bool extra_row_exists(const std::string& name);
 		bool is_user_in_group(const std::string& name, int group_id);
 		std::string get_user_string(const std::string& table, const std::string& column, const std::string& name);

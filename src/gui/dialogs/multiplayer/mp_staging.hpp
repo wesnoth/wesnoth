@@ -54,6 +54,9 @@ private:
 	/** Inherited from modal_dialog. */
 	virtual void post_show(window& window) override;
 
+	template<typename... T>
+	tree_view_node& add_side_to_team_node(ng::side_engine_ptr side, T&&... params);
+
 	void add_side_node(ng::side_engine_ptr side);
 
 	/**

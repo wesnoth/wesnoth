@@ -133,7 +133,7 @@ mp_lobby::mp_lobby(mp::lobby_info& info, wesnothd_connection& connection, int& j
 		  preferences::fi_friends_in_game,
 		  preferences::set_fi_friends_in_game,
 		  std::bind(&mp_lobby::game_filter_change_callback, this)))
-	, filter_ignored_(register_bool("filter_without_ignored",
+	, filter_ignored_(register_bool("filter_with_ignored",
 		  true,
 		  preferences::fi_blocked_in_game,
 		  preferences::set_fi_blocked_in_game,
@@ -638,7 +638,7 @@ void mp_lobby::update_playerlist()
 				target_list = &player_list_.active_game;
 				break;
 			case mp::user_info::user_state::GAME:
-				name = colorize(name, font::BAD_COLOR);
+				name = colorize(name, font::GRAY_COLOR);
 				icon_ss << (user.observing ? "-obs" : "-playing");
 				target_list = &player_list_.other_games;
 				break;
@@ -1103,7 +1103,10 @@ void mp_lobby::game_filter_reload()
 		});
 	}
 
-	if(filter_ignored_->get_widget_value(window)) {
+	// Unlike the friends filter, this is an inclusion filter (do we want to also show
+	// games with blocked players) rather than an exclusion filter (do we want to show
+	// only games with friends).
+	if(filter_ignored_->get_widget_value(window) == false) {
 		lobby_info_.add_game_filter([](const mp::game_info& info)->bool {
 			return info.has_ignored == false;
 		});

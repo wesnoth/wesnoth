@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2020-12-19 01:27 UTC\n"
-"PO-Revision-Date: 2020-01-07 15:34-0300\n"
+"PO-Revision-Date: 2020-12-21 09:56-0300\n"
 "Last-Translator: Andrei Machado <andreisp.machado@yahoo.com>\n"
 "Language-Team: \n"
 "Language: pt_BR\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 2.2.3\n"
+"X-Generator: Poedit 2.4.2\n"
 
 #. [campaign]: id=Secrets of the Ancients
 #. [editor_group]: id=sota
@@ -4292,24 +4292,25 @@ msgstr ""
 #. and some fly.
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:93
 msgid "All Corpses"
-msgstr ""
+msgstr "Todos os Corpos"
 
 #. [unit_type]: id=SotA Walking Corpse_Dummy, race=undead
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:105
 msgid "Choose this “unit” to get a list of available corpses."
 msgstr ""
+"Escolha esta \"unidade\" para ver a lista de todos os corpos disponíveis."
 
 #. [unit_type]: id=SotA Flying Corpse_Gryphon
 #. [unit_type]: id=SotA Flying Corpse_Bat
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:157
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:314
 msgid "Flying Corpse"
-msgstr ""
+msgstr "Corpo Voante"
 
 #. [unit_type]: id=SotA Swimming Corpse
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:205
 msgid "Swimming Corpse"
-msgstr ""
+msgstr "Corpo Nadante"
 
 #: data/campaigns/Secrets_of_the_Ancients/utils/characters.cfg:7
 #: data/campaigns/Secrets_of_the_Ancients/utils/sota-utils.cfg:7
@@ -4415,27 +4416,27 @@ msgstr ""
 #. [message]: speaker=Carcyn
 #: data/campaigns/Secrets_of_the_Ancients/utils/sota-utils.cfg:323
 msgid "I'm going to miss him."
-msgstr ""
+msgstr "Eu vou sentir falta dele."
 
 #. [message]: speaker=Ras-Tabahn
 #: data/campaigns/Secrets_of_the_Ancients/utils/sota-utils.cfg:329
 msgid "Unfortunate. He was useful."
-msgstr ""
+msgstr "Lamentável. Ele foi útil."
 
 #. [message]: speaker=Shynal
 #: data/campaigns/Secrets_of_the_Ancients/utils/sota-utils.cfg:340
 msgid "Yes, he was helpful."
-msgstr ""
+msgstr "Sim, ele foi útil."
 
 #. [message]: speaker=Ardonna
 #: data/campaigns/Secrets_of_the_Ancients/utils/sota-utils.cfg:346
 msgid "Indeed, he will be missed."
-msgstr ""
+msgstr "De fato, ele fará falta."
 
 #. [message]: speaker=Ardonna
 #: data/campaigns/Secrets_of_the_Ancients/utils/sota-utils.cfg:368
 msgid "Don't worry, my pet. I can save you."
-msgstr ""
+msgstr "Não se preocupe, meu pet, eu posso te salvar."
 
 #. [message]: speaker=$unit.id
 #: data/campaigns/Secrets_of_the_Ancients/utils/sota-utils.cfg:424
@@ -4684,7 +4685,7 @@ msgstr "Meio Vazio"
 #. shown instead of the unit_type name in the recruitment dialog
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:24
 msgid "recruit^Flying Corpse (Bat)"
-msgstr ""
+msgstr "Corpo Voante (Morcego)"
 
 #. [value]: type=SotA Flying Corpse_Bat
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:25
@@ -4695,10 +4696,8 @@ msgstr "Agora você pode recrutar fantasmas!"
 
 #. [value]: type=SotA Walking Corpse_Rat
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:30
-#, fuzzy
-#| msgid "Raise Walking Corpse (8 Gold)"
 msgid "recruit^Walking Corpse (Rat)"
-msgstr "Reanimar Corpo Ambulante (8 de Ouro)"
+msgstr "Corpo Ambulante (Rato)"
 
 #. [value]: type=SotA Walking Corpse_Rat
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:31
@@ -4709,10 +4708,8 @@ msgstr "Agora você pode recrutar fantasmas!"
 
 #. [value]: type=SotA Walking Corpse_Wolf
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:36
-#, fuzzy
-#| msgid "Raise Walking Corpse (8 Gold)"
 msgid "recruit^Walking Corpse (Wolf)"
-msgstr "Reanimar Corpo Ambulante (8 de Ouro)"
+msgstr "Corpo Ambulante (Lobo)"
 
 #. [value]: type=SotA Walking Corpse_Wolf
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:37
@@ -4723,10 +4720,8 @@ msgstr "Agora você pode recrutar chocossos!"
 
 #. [value]: type=SotA Walking Corpse_Human
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:42
-#, fuzzy
-#| msgid "Raise Walking Corpse (8 Gold)"
 msgid "recruit^Walking Corpse (Human)"
-msgstr "Reanimar Corpo Ambulante (8 de Ouro)"
+msgstr "Corpo Ambulante (Humano)"
 
 #. [value]: type=SotA Walking Corpse_Human
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:43
@@ -4738,10 +4733,8 @@ msgstr "Agora você pode recrutar fantasmas!"
 #. [value]: type=SotA Walking Corpse_Mounted
 #. the mount is an undead horse (not a wolf), this is shown instead of the unit_type name in the recruitment dialog
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:49
-#, fuzzy
-#| msgid "Raise Walking Corpse (8 Gold)"
 msgid "recruit^Walking Corpse (Mounted)"
-msgstr "Reanimar Corpo Ambulante (8 de Ouro)"
+msgstr "Corpo Ambulante (Montado)"
 
 #. [value]: type=SotA Walking Corpse_Mounted
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:50
@@ -4752,10 +4745,8 @@ msgstr "Agora você pode recrutar fantasmas!"
 
 #. [value]: type=SotA Walking Corpse_Wolf Rider
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:55
-#, fuzzy
-#| msgid "Raise Walking Corpse (8 Gold)"
 msgid "recruit^Walking Corpse (Wolf Rider)"
-msgstr "Reanimar Corpo Ambulante (8 de Ouro)"
+msgstr "Corpo Ambulante (Montador de Lobo)"
 
 #. [value]: type=SotA Walking Corpse_Wolf Rider
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:56
@@ -4768,7 +4759,7 @@ msgstr "Agora você pode recrutar fantasmas!"
 #. this is used for both naga and merfolk zombies
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:62
 msgid "recruit^Swimming Corpse"
-msgstr ""
+msgstr "Corpo Nadante"
 
 #. [value]: type=SotA Swimming Corpse
 #. this is used for both naga and merfolk zombies
@@ -4781,7 +4772,7 @@ msgstr "Agora você pode recrutar fantasmas!"
 #. [value]: type=SotA Walking Corpse_Saurian
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:69
 msgid "recruit^Walking Corpse (Saurian)"
-msgstr ""
+msgstr "Corpo Ambulante (Lagarto)"
 
 #. [value]: type=SotA Walking Corpse_Saurian
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:70
@@ -4792,10 +4783,8 @@ msgstr "Agora você pode recrutar fantasmas!"
 
 #. [value]: type=SotA Walking Corpse_Wose
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:75
-#, fuzzy
-#| msgid "Raise Walking Corpse (8 Gold)"
 msgid "recruit^Walking Corpse (Wose)"
-msgstr "Reanimar Corpo Ambulante (8 de Ouro)"
+msgstr "Corpo Ambulante (Wose)"
 
 #. [value]: type=SotA Walking Corpse_Wose
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:76
@@ -4806,10 +4795,8 @@ msgstr "Agora você pode recrutar chocossos!"
 
 #. [value]: type=SotA Walking Corpse_Goblin
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:81
-#, fuzzy
-#| msgid "Raise Walking Corpse (8 Gold)"
 msgid "recruit^Walking Corpse (Goblin)"
-msgstr "Reanimar Corpo Ambulante (8 de Ouro)"
+msgstr "Corpo Ambulante (Góblin)"
 
 #. [value]: type=SotA Walking Corpse_Goblin
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:82
@@ -4821,7 +4808,7 @@ msgstr "Agora você pode recrutar carniçais!"
 #. [value]: type=SotA Flying Corpse_Gryphon
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:87
 msgid "recruit^Flying Corpse (Gryphon)"
-msgstr ""
+msgstr "Corpo Voante (Grifo)"
 
 #. [value]: type=SotA Flying Corpse_Gryphon
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:88
@@ -4832,10 +4819,8 @@ msgstr "Agora você pode recrutar fantasmas!"
 
 #. [value]: type=SotA Walking Corpse_Spider
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:93
-#, fuzzy
-#| msgid "Raise Walking Corpse (8 Gold)"
 msgid "recruit^Walking Corpse (Spider)"
-msgstr "Reanimar Corpo Ambulante (8 de Ouro)"
+msgstr "Corpo Ambulante (Aranha)"
 
 #. [value]: type=SotA Walking Corpse_Spider
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:94
@@ -4846,10 +4831,8 @@ msgstr "Agora você pode recrutar fantasmas!"
 
 #. [value]: type=SotA Walking Corpse_Troll
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:99
-#, fuzzy
-#| msgid "Raise Walking Corpse (8 Gold)"
 msgid "recruit^Walking Corpse (Troll)"
-msgstr "Reanimar Corpo Ambulante (8 de Ouro)"
+msgstr "Corpo Ambulante (Troll)"
 
 #. [value]: type=SotA Walking Corpse_Troll
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:100
@@ -4860,10 +4843,8 @@ msgstr "Agora você pode recrutar fantasmas!"
 
 #. [value]: type=SotA Walking Corpse_Dwarf
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:105
-#, fuzzy
-#| msgid "Raise Walking Corpse (8 Gold)"
 msgid "recruit^Walking Corpse (Dwarf)"
-msgstr "Reanimar Corpo Ambulante (8 de Ouro)"
+msgstr "Corpo Ambulante (Anão)"
 
 #. [value]: type=SotA Walking Corpse_Dwarf
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:106
@@ -4879,58 +4860,56 @@ msgstr ""
 
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:33
 msgid "Lvl 0"
-msgstr ""
+msgstr "Lvl 0"
 
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:36
 msgid "Undead"
-msgstr ""
+msgstr "Morto-vivo"
 
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:41
 msgid "Traits"
-msgstr ""
+msgstr "Características"
 
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:44
 msgid "Attacks"
-msgstr ""
+msgstr "Ataques"
 
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:56
 msgid "Choose a Corpse"
-msgstr ""
+msgstr "Escolha um Corpo"
 
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:71
 msgid "Recruit"
-msgstr ""
+msgstr "Recrutar"
 
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:72
 msgid "Cancel"
-msgstr ""
+msgstr "Cancelar"
 
 #. [lua]: select
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:85
 msgid "HP: "
-msgstr ""
+msgstr "HP: "
 
 #. [lua]: select
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:85
 msgid "MP: "
-msgstr ""
+msgstr "PM: "
 
 #. [lua]: select
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:85
 msgid "XP: "
-msgstr ""
+msgstr "XP: "
 
 #. [lua]: postshow
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:150
 msgid "There are no corpses available."
-msgstr ""
+msgstr "Não há corpos disponíveis."
 
 #. [lua]: postshow
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:155
-#, fuzzy
-#| msgid "You don't have enough gold to raise that unit."
 msgid "You do not have enough gold to recruit that unit"
-msgstr "Você não tem ouro suficiente para reanimar esta unidade."
+msgstr "Você não tem ouro suficiente para recrutar esta unidade."
 
 #~ msgid ""
 #~ "22 III, 23 YW\n"

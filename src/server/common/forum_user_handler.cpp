@@ -114,6 +114,10 @@ bool fuh::user_exists(const std::string& name) {
 	return conn_.user_exists(name);
 }
 
+long fuh::get_forum_id(const std::string& name) {
+	return conn_.get_forum_id(name);
+}
+
 bool fuh::user_is_active(const std::string& name) {
 	int user_type = conn_.get_user_int(db_users_table_, "user_type", name);
 	return user_type != USER_INACTIVE && user_type != USER_IGNORE;

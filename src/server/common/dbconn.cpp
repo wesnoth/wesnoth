@@ -124,6 +124,19 @@ bool dbconn::user_exists(const std::string& name)
 	}
 }
 
+long dbconn::get_forum_id(const std::string& name)
+{
+	try
+	{
+		return get_single_long(connection_, "SELECT IFNULL((SELECT user_id FROM `"+db_users_table_+"` WHERE UPPER(username)=UPPER(?)), 0)", name);
+	}
+	catch(const mariadb::exception::base& e)
+	{
+		log_sql_exception("Unable to get user_id for '"+name+"'!", e);
+		return 0;
+	}
+}
+
 bool dbconn::extra_row_exists(const std::string& name)
 {
 	try
@@ -302,9 +315,12 @@ long dbconn::get_single_long(mariadb::connection_ref connection, const std::stri
 	if(rslt->next())
 	{
 		// mariadbpp checks for strict integral equivalence, but we don't care
-		// so check the type beforehand, call the associated getter, and let it silently get upcast to an int if needed
+		// so check the type beforehand, call the associated getter, and let it silently get upcast to a long if needed
+		// subselects also apparently return a decimal
 		switch(rslt->column_type(0))
 		{
+			case mariadb::value::type::decimal:
+				return static_cast<long>(rslt->get_decimal(0).float32());
 			case mariadb::value::type::unsigned8:
 			case mariadb::value::type::signed8:
 				return rslt->get_signed8(0);
