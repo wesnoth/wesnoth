@@ -32,14 +32,14 @@ class unit_type;
 
 namespace actions {
 
-/// The possible results of finding a location for recruiting (or recalling).
+/** The possible results of finding a location for recruiting (or recalling). */
 enum RECRUIT_CHECK {
-	RECRUIT_NO_LEADER,         	/// No leaders exist
-	RECRUIT_NO_ABLE_LEADER,    	/// No leaders able to recall/recruit the given unit/type.
-	RECRUIT_NO_KEEP_LEADER,    	/// No able leaders are on a keep.
-	RECRUIT_NO_VACANCY,        	/// No vacant castle tiles around a leader on a keep.
-	RECRUIT_ALTERNATE_LOCATION,	/// Recruitment OK, but not at the specified location.
-	RECRUIT_OK                 	/// Recruitment OK.
+	RECRUIT_NO_LEADER,         	/** No leaders exist */
+	RECRUIT_NO_ABLE_LEADER,    	/** No leaders able to recall/recruit the given unit/type. */
+	RECRUIT_NO_KEEP_LEADER,    	/** No able leaders are on a keep. */
+	RECRUIT_NO_VACANCY,        	/** No vacant castle tiles around a leader on a keep. */
+	RECRUIT_ALTERNATE_LOCATION,	/** Recruitment OK, but not at the specified location. */
+	RECRUIT_OK                 	/** Recruitment OK. */
 };
 
 /**

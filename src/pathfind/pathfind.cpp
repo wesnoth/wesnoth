@@ -618,7 +618,7 @@ vision_path::vision_path(const movetype::terrain_costs & view_costs, bool slowed
 	            destinations, &edges, u.valid() ? &*u : nullptr, nullptr, nullptr, &viewing_team, &jamming_map, nullptr, true);
 }
 
-/// Default destructor
+/** Default destructor */
 vision_path::~vision_path()
 {
 }
@@ -645,7 +645,7 @@ jamming_path::jamming_path(const unit& jammer, const map_location& loc)
 	            0, destinations, nullptr, nullptr, nullptr, nullptr, nullptr);
 }
 
-/// Default destructor
+/** Default destructor */
 jamming_path::~jamming_path()
 {
 }

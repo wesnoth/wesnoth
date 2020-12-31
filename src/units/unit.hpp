@@ -44,15 +44,19 @@ struct unit_ability
 	{
 	}
 
-	/// Used by the formula in the ability.
-	/// The REAL location of the student (not the 'we are assuming the student is at this position' location)
-	/// once unit_ability_list can contain abilities from different 'students', as it contains abilities from
-	/// a unit aswell from its opponents (abilities with apply_to= opponent)
+	/**
+	 * Used by the formula in the ability.
+	 * The REAL location of the student (not the 'we are assuming the student is at this position' location)
+	 * once unit_ability_list can contain abilities from different 'students', as it contains abilities from
+	 * a unit aswell from its opponents (abilities with apply_to= opponent)
+	 */
 	map_location student_loc;
-	/// The location of the teacher, that is the unit who owns the ability tags
-	/// (different from student because of [affect_adjacent])
+	/**
+	 * The location of the teacher, that is the unit who owns the ability tags
+	 * (different from student because of [affect_adjacent])
+	 */
 	map_location teacher_loc;
-	/// The contents of the ability tag, never nullptr.
+	/** The contents of the ability tag, never nullptr. */
 	const config* ability_cfg;
 };
 
@@ -97,7 +101,7 @@ public:
 
 	const map_location& loc() const { return loc_; }
 
-	/// Appens the abilities from @a other to @a this, ignores other.loc()
+	/** Appens the abilities from @a other to @a this, ignores other.loc() */
 	void append(const unit_ability_list& other)
 	{
 		std::copy( other.begin(), other.end(), std::back_inserter(cfgs_ ));
@@ -850,14 +854,14 @@ public:
 	 * Built-in status effects known to the engine
 	 */
 	enum state_t {
-		STATE_SLOWED = 0, ///< The unit is slowed - it moves slower and does less damage
-		STATE_POISONED,   ///< The unit is poisoned - it loses health each turn
-		STATE_PETRIFIED,  ///< The unit is petrified - it cannot move or be attacked
-		STATE_UNCOVERED,  ///< The unit is uncovered - it was hiding but has been spotted
-		STATE_NOT_MOVED,  ///< The unit has not moved @todo Explain better
-		STATE_UNHEALABLE, ///< The unit cannot be healed
-		STATE_GUARDIAN,   ///< The unit is a guardian - it won't move unless a target is sighted
-		STATE_UNKNOWN = -1///< A status effect not known to the engine
+		STATE_SLOWED = 0, /** The unit is slowed - it moves slower and does less damage */
+		STATE_POISONED,   /** The unit is poisoned - it loses health each turn */
+		STATE_PETRIFIED,  /** The unit is petrified - it cannot move or be attacked */
+		STATE_UNCOVERED,  /** The unit is uncovered - it was hiding but has been spotted */
+		STATE_NOT_MOVED,  /** The unit has not moved @todo Explain better */
+		STATE_UNHEALABLE, /** The unit cannot be healed */
+		STATE_GUARDIAN,   /** The unit is a guardian - it won't move unless a target is sighted */
+		STATE_UNKNOWN = -1/** A status effect not known to the engine */
 	};
 
 	/**
@@ -1741,7 +1745,10 @@ private:
 	 */
 	bool ability_affects_self(const std::string& ability, const config& cfg, const map_location& loc) const;
 
-	///filters the weapons that condition the use of abilities for combat ([resistance],[leadership] or abilities used like specials(deprecated in two last cases)
+	/**
+	 * filters the weapons that condition the use of abilities for combat ([resistance],[leadership] or abilities used like specials
+	 * (deprecated in two last cases)
+	 */
 	bool ability_affects_weapon(const config& cfg, const_attack_ptr weapon, bool is_opp) const;
 
 public:
@@ -1758,7 +1765,7 @@ public:
 	bool invisible(const map_location& loc, bool see_all = true) const;
 
 	bool is_visible_to_team(const team& team, bool const see_all = true) const;
-	/// Return true if the unit would be visible to team if its location were loc.
+	/** Return true if the unit would be visible to team if its location were loc. */
 	bool is_visible_to_team(const map_location& loc, const team& team, bool const see_all = true) const;
 
 	/**

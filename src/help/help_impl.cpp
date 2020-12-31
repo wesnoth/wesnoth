@@ -1466,9 +1466,11 @@ bool is_visible_id(const std::string &id) {
 	return (id.empty() || id[0] != '.');
 }
 
-/// Return true if the id is valid for user defined topics and
-/// sections. Some IDs are special, such as toplevel and may not be
-/// be defined in the config.
+/**
+ * Return true if the id is valid for user defined topics and
+ * sections. Some IDs are special, such as toplevel and may not be
+ * be defined in the config.
+ */
 bool is_valid_id(const std::string &id) {
 	if (id == "toplevel") {
 		return false;
@@ -1556,13 +1558,13 @@ std::string generate_table(const table_spec &tab, const unsigned int spacing)
 	return ss.str();
 }
 
-/// Prepend all chars with meaning inside attributes with a backslash.
+/** Prepend all chars with meaning inside attributes with a backslash. */
 std::string escape(const std::string &s)
 {
 	return utils::escape(s, "'\\");
 }
 
-/// Load the appropriate terrain types data to use
+/** Load the appropriate terrain types data to use */
 ter_data_cache load_terrain_types_data() {
 	if (display::get_singleton()) {
 		return display::get_singleton()->get_disp_context().map().tdata();

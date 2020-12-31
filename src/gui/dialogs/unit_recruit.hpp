@@ -51,7 +51,7 @@ private:
 
 	void show_help();
 
-	/// A vector of unit types in the order listed in the UI. Used by unit_recruit::post_show.
+	/** A vector of unit types in the order listed in the UI. Used by unit_recruit::post_show. */
 	std::vector<const unit_type*> recruit_list_;
 	std::map<const unit_type*, t_string>& recruit_map_;
 

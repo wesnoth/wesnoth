@@ -84,11 +84,11 @@ protected:
 	turn_info turn_data_;
 	enum END_TURN_STATE
 	{
-		/// The turn was not ended yet
+		/** The turn was not ended yet */
 		END_TURN_NONE,
-		/// And endturn was required eigher by the player, by the ai or by [end_turn]
+		/** And endturn was required eigher by the player, by the ai or by [end_turn] */
 		END_TURN_REQUIRED,
-		/// An [end_turn] was added to the replay.
+		/** An [end_turn] was added to the replay. */
 		END_TURN_SYNCED,
 	};
 	END_TURN_STATE end_turn_;

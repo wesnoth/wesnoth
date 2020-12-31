@@ -64,8 +64,10 @@ private: // data
 	const bool animate_;
 	const bool force_scroll_;
 	unit_animator animator_;
-	int wait_until_;	/// The animation potential to wait until. INT_MIN for no wait; INT_MAX to wait for end.
-	unit_ptr shown_unit_;	/// The unit to be (re-)shown after an animation finishes.
+	/** The animation potential to wait until. INT_MIN for no wait; INT_MAX to wait for end. */
+	int wait_until_;
+	/** The unit to be (re-)shown after an animation finishes. */
+	unit_ptr shown_unit_;
 	const std::vector<map_location>& path_;
 	std::size_t current_;
 	fake_unit_ptr temp_unit_ptr_;

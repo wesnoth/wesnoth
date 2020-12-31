@@ -98,9 +98,9 @@ void editor_action_item_replace::perform_without_undo(map_context& /*mc*/) const
 	//	}
 	//	*/
 	//
-	////TODO check if that is useful
-	////	game_display::get_singleton()->invalidate_item_after_move(loc_, new_loc_);
-	////	display::get_singleton()->draw();
+	// TODO: check if that is useful
+	//  	game_display::get_singleton()->invalidate_item_after_move(loc_, new_loc_);
+	//  	display::get_singleton()->draw();
 }
 
 IMPLEMENT_ACTION(item_facing)

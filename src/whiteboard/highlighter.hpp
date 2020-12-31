@@ -52,10 +52,10 @@ public:
 	action_ptr get_bump_target();
 	unit_ptr get_selection_target();
 
-	/// @return the action that currently receives the highlight focus
+	/** @return the action that currently receives the highlight focus */
 	weak_action_ptr get_main_highlight() { return main_highlight_; }
 	typedef std::deque<weak_action_ptr> secondary_highlights_t;
-	/// @return the collection of actions that are highlighted but don't have the focus
+	/** @return the collection of actions that are highlighted but don't have the focus */
 	secondary_highlights_t get_secondary_highlights() { return secondary_highlights_; }
 
 	void set_selection_candidate(unit_ptr candidate) { selection_candidate_ = candidate; }
@@ -96,7 +96,7 @@ public:
 	void visit(move_ptr);
 	void visit(attack_ptr);
 	void visit(recruit_ptr);
-	/// @todo: find some suitable effect for mouseover on planned recall.
+	/** @todo: find some suitable effect for mouseover on planned recall. */
 	void visit(recall_ptr){}
 	void visit(suppose_dead_ptr){}
 private:

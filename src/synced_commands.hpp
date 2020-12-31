@@ -31,7 +31,6 @@ class synced_command {
 		typedef std::function<void(const std::string&)> error_handler_function;
 		/*
 			returns: true if the action succeeded correctly,
-
 		*/
 		typedef bool (*handler)(const config &, bool use_undo, bool show, error_handler_function error_handler);
 		typedef std::map<std::string, handler> map;
@@ -39,7 +38,7 @@ class synced_command {
 
 		synced_command(const std::string & tag, handler function);
 
-		/// using static function variable instead of static member variable to prevent static initialization fiasco when used in other files.
+		/** using static function variable instead of static member variable to prevent static initialization fiasco when used in other files. */
 		static map& registry();
 	};
 

@@ -76,7 +76,7 @@ modification * modification_queue::top() const
 
 namespace {
 
-/// A function used to parse modification arguments
+/** A function used to parse modification arguments */
 using mod_parser = std::function<modification*(const std::string&)>;
 
 /** A map of all registered mod parsers

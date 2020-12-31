@@ -57,7 +57,7 @@ private:
 
 		const battle_context_unit_stats& stats_;
 		const combatant& combatant_;
-		/// never null
+		/** never null */
 		unit_const_ptr unit_;
 	};
 

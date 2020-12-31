@@ -558,13 +558,13 @@ public:
 	{
 	}
 
-	/// We are in a game with no mp server and need to do this choice locally
+	/** We are in a game with no mp server and need to do this choice locally */
 	virtual config local_choice() const
 	{
 		return config{"controller", new_controller_, "is_local", true};
 	}
 
-	/// tThe request which is sent to the mp server.
+	/** The request which is sent to the mp server. */
 	virtual config request() const
 	{
 		return config{

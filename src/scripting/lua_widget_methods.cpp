@@ -404,7 +404,7 @@ static int intf_add_dialog_item(lua_State* L)
 	return 0;
 }
 
-///Closes a window
+/** Closes a window */
 static int intf_dialog_close(lua_State* L)
 {
 	gui2::widget* w = &luaW_checkwidget(L, 1);

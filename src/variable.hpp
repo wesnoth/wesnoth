@@ -70,7 +70,8 @@ public:
 	explicit operator bool() const	{ return !null(); }
 
 	bool null() const { assert(cfg_); return cfg_ == &default_empty_config; }
-	const vconfig& make_safe() const; //!< instruct the vconfig to make a private copy of its underlying data.
+	/** instruct the vconfig to make a private copy of its underlying data. */
+	const vconfig& make_safe() const;
 	const config& get_config() const { return *cfg_; }
 	config get_parsed_config() const;
 
@@ -191,13 +192,15 @@ public:
 	}
 
 private:
-	/// Returns true if *this has made a copy of its config.
+	/** Returns true if *this has made a copy of its config. */
 	bool memory_managed() const { return static_cast<bool>(cache_); }
 
-	/// Keeps a copy of our config alive when we manage our own memory.
-	/// If this is not null, then cfg_ points to *cache_ or a child of *cache_.
+	/**
+	 * Keeps a copy of our config alive when we manage our own memory.
+	 * If this is not null, then cfg_ points to *cache_ or a child of *cache_.
+	 */
 	mutable std::shared_ptr<const config> cache_;
-	/// Used to access our config (original or copy, as appropriate).
+	/** Used to access our config (original or copy, as appropriate). */
 	mutable const config* cfg_;
 	const variable_set* variables_;
 	static const config default_empty_config;

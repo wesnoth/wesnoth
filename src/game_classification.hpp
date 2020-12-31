@@ -21,7 +21,7 @@
 
 class config;
 
-/// The default difficulty setting for campaigns.
+/** The default difficulty setting for campaigns. */
 extern const std::string DEFAULT_DIFFICULTY;
 
 //meta information of the game

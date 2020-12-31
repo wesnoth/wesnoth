@@ -72,7 +72,8 @@ private:
 	//Used by process()
 	std::set<unit const*> acted_this_turn_;
 	std::set<unit const*> has_invalid_actions_;
-	std::list<side_actions::iterator> invalid_actions_; ///< Conserved invalid actions.
+	/** Conserved invalid actions. */
+	std::list<side_actions::iterator> invalid_actions_;
 };
 
 }

@@ -30,7 +30,7 @@
 using namespace image;
 
 namespace {
-/// Sets up the environment for every test
+/** Sets up the environment for every test */
 class environment_setup
 {
 public:
@@ -149,7 +149,7 @@ BOOST_AUTO_TEST_CASE(test_modificaiton_queue_order)
 	queue.pop();
 }
 
-/// Tests if the TC modification is correctly decoded
+/** Tests if the TC modification is correctly decoded */
 BOOST_AUTO_TEST_CASE(test_tc_modification_decoding)
 {
 	environment_setup env_setup;
@@ -171,7 +171,7 @@ BOOST_AUTO_TEST_CASE(test_tc_modification_decoding)
 	BOOST_CHECK(expected == mod->map());
 }
 
-/// Tests if the TC modification with invalid arguments is ignored
+/** Tests if the TC modification with invalid arguments is ignored */
 BOOST_AUTO_TEST_CASE(test_tc_modification_decoding_invalid_args)
 {
 	environment_setup env_setup;
@@ -181,7 +181,7 @@ BOOST_AUTO_TEST_CASE(test_tc_modification_decoding_invalid_args)
 	BOOST_REQUIRE_EQUAL(queue.size(), 0);
 }
 
-/// Tests if the RC modification is correctly decoded
+/** Tests if the RC modification is correctly decoded */
 BOOST_AUTO_TEST_CASE(test_rc_modification_decoding)
 {
 	environment_setup env_setup;
@@ -202,7 +202,7 @@ BOOST_AUTO_TEST_CASE(test_rc_modification_decoding)
 	BOOST_CHECK(expected == mod->map());
 }
 
-/// Tests if the RC modification with invalid arguments is ignored
+/** Tests if the RC modification with invalid arguments is ignored */
 BOOST_AUTO_TEST_CASE(test_rc_modification_decoding_invalid_args)
 {
 	environment_setup env_setup;
@@ -212,7 +212,7 @@ BOOST_AUTO_TEST_CASE(test_rc_modification_decoding_invalid_args)
 	BOOST_REQUIRE_EQUAL(queue.size(), 0);
 }
 
-/// Tests if the PAL modification is correctly decoded
+/** Tests if the PAL modification is correctly decoded */
 BOOST_AUTO_TEST_CASE(test_pal_modification_decoding)
 {
 	environment_setup env_setup;
@@ -240,7 +240,7 @@ BOOST_AUTO_TEST_CASE(test_pal_modification_decoding)
 	BOOST_CHECK(expected == mod->map());
 }
 
-/// Tests if the PAL modification with invalid arguments is ignored
+/** Tests if the PAL modification with invalid arguments is ignored */
 BOOST_AUTO_TEST_CASE(test_pal_modification_decoding_invalid_args)
 {
 	environment_setup env_setup;
@@ -251,7 +251,7 @@ BOOST_AUTO_TEST_CASE(test_pal_modification_decoding_invalid_args)
 	BOOST_REQUIRE_EQUAL(queue.size(), 0);
 }
 
-/// Tests if the FL modification is correctly decoded without arguments
+/** Tests if the FL modification is correctly decoded without arguments */
 BOOST_AUTO_TEST_CASE(test_fl_modification_decoding_default)
 {
 	environment_setup env_setup;
@@ -269,7 +269,7 @@ BOOST_AUTO_TEST_CASE(test_fl_modification_decoding_default)
 	BOOST_CHECK(!mod->get_vert());
 }
 
-/// Tests if the FL modification is correctly decoded with the horiz argument
+/** Tests if the FL modification is correctly decoded with the horiz argument */
 BOOST_AUTO_TEST_CASE(test_fl_modification_decoding_horiz)
 {
 	environment_setup env_setup;
@@ -287,7 +287,7 @@ BOOST_AUTO_TEST_CASE(test_fl_modification_decoding_horiz)
 	BOOST_CHECK(!mod->get_vert());
 }
 
-/// Tests if the FL modification is correctly decoded with the vert argument
+/** Tests if the FL modification is correctly decoded with the vert argument */
 BOOST_AUTO_TEST_CASE(test_fl_modification_decoding_vert)
 {
 	environment_setup env_setup;
@@ -305,7 +305,7 @@ BOOST_AUTO_TEST_CASE(test_fl_modification_decoding_vert)
 	BOOST_CHECK(mod->get_vert());
 }
 
-/// Tests if the FL modification is correctly decoded with both horiz and vert
+/** Tests if the FL modification is correctly decoded with both horiz and vert */
 BOOST_AUTO_TEST_CASE(test_fl_modification_decoding_horiz_and_vert)
 {
 	environment_setup env_setup;
@@ -323,7 +323,7 @@ BOOST_AUTO_TEST_CASE(test_fl_modification_decoding_horiz_and_vert)
 	BOOST_CHECK(mod->get_vert());
 }
 
-/// Tests if the GS modification is correctly decoded
+/** Tests if the GS modification is correctly decoded */
 BOOST_AUTO_TEST_CASE(test_gs_modification_decoding)
 {
 	environment_setup env_setup;
@@ -338,7 +338,7 @@ BOOST_AUTO_TEST_CASE(test_gs_modification_decoding)
 	BOOST_CHECK(mod != nullptr);
 }
 
-/// Tests if the CROP modification without arguments is ignored
+/** Tests if the CROP modification without arguments is ignored */
 BOOST_AUTO_TEST_CASE(test_crop_modification_decoding_no_args)
 {
 	environment_setup env_setup;
@@ -348,7 +348,7 @@ BOOST_AUTO_TEST_CASE(test_crop_modification_decoding_no_args)
 	BOOST_REQUIRE_EQUAL(queue.size(), 0);
 }
 
-/// Tests if the CROP modification is correctly decoded when given one argument
+/** Tests if the CROP modification is correctly decoded when given one argument */
 BOOST_AUTO_TEST_CASE(test_crop_modification_decoding_1_arg)
 {
 	environment_setup env_setup;
@@ -370,7 +370,7 @@ BOOST_AUTO_TEST_CASE(test_crop_modification_decoding_1_arg)
 	BOOST_CHECK_EQUAL(slice.h, 0);
 }
 
-/// Tests if the CROP modification is correctly decoded when given two args
+/** Tests if the CROP modification is correctly decoded when given two args */
 BOOST_AUTO_TEST_CASE(test_crop_modification_decoding_2_args)
 {
 	environment_setup env_setup;
@@ -392,7 +392,7 @@ BOOST_AUTO_TEST_CASE(test_crop_modification_decoding_2_args)
 	BOOST_CHECK_EQUAL(slice.h, 0);
 }
 
-/// Tests if the CROP modification is correctly decoded when given three args
+/** Tests if the CROP modification is correctly decoded when given three args */
 BOOST_AUTO_TEST_CASE(test_crop_modification_decoding_3_args)
 {
 	environment_setup env_setup;
@@ -414,7 +414,7 @@ BOOST_AUTO_TEST_CASE(test_crop_modification_decoding_3_args)
 	BOOST_CHECK_EQUAL(slice.h, 0);
 }
 
-/// Tests if the CROP modification is correctly decoded when given four args
+/** Tests if the CROP modification is correctly decoded when given four args */
 BOOST_AUTO_TEST_CASE(test_crop_modification_decoding_4_args)
 {
 	environment_setup env_setup;
@@ -480,7 +480,7 @@ BOOST_AUTO_TEST_CASE(test_blit_modification_decoding_3_args)
 	BOOST_CHECK_EQUAL(mod->get_y(), 2);
 }
 
-/// Tests if the BLIT modification with invalid arguments is ignored
+/** Tests if the BLIT modification with invalid arguments is ignored */
 BOOST_AUTO_TEST_CASE(test_blit_modification_decoding_invalid_args)
 {
 	environment_setup env_setup;
@@ -539,7 +539,7 @@ BOOST_AUTO_TEST_CASE(test_mask_modification_decoding_3_args)
 	BOOST_CHECK_EQUAL(mod->get_y(), 4);
 }
 
-/// Tests if the MASK modification with invalid arguments is ignored
+/** Tests if the MASK modification with invalid arguments is ignored */
 BOOST_AUTO_TEST_CASE(test_mask_modification_decoding_invalid_args)
 {
 	environment_setup env_setup;
@@ -553,7 +553,7 @@ BOOST_AUTO_TEST_CASE(test_mask_modification_decoding_invalid_args)
 	BOOST_CHECK_EQUAL(queue.size(), 0);
 }
 
-/// Tests if the L modification without arguments is ignored
+/** Tests if the L modification without arguments is ignored */
 BOOST_AUTO_TEST_CASE(test_l_modification_decoding_no_args)
 {
 	environment_setup env_setup;
@@ -583,7 +583,7 @@ BOOST_AUTO_TEST_CASE(test_l_modification_decoding_1_arg)
 	BOOST_CHECK(mod->get_surface());
 }
 
-/// Tests if the SCALE modification without arguments is ignored
+/** Tests if the SCALE modification without arguments is ignored */
 BOOST_AUTO_TEST_CASE(test_scale_modification_decoding_no_args)
 {
 	environment_setup env_setup;
@@ -593,7 +593,7 @@ BOOST_AUTO_TEST_CASE(test_scale_modification_decoding_no_args)
 	BOOST_CHECK_EQUAL(queue.size(), 0);
 }
 
-/// Tests if the SCALE modification with one argument is correctly decoded
+/** Tests if the SCALE modification with one argument is correctly decoded */
 BOOST_AUTO_TEST_CASE(test_scale_modification_decoding_1_arg)
 {
 	environment_setup env_setup;
@@ -611,7 +611,7 @@ BOOST_AUTO_TEST_CASE(test_scale_modification_decoding_1_arg)
 	BOOST_CHECK_EQUAL(mod->get_h(), 0);
 }
 
-/// Tests if the SCALE modification with two arguments is correctly decoded
+/** Tests if the SCALE modification with two arguments is correctly decoded */
 BOOST_AUTO_TEST_CASE(test_scale_modification_decoding_2_args)
 {
 	environment_setup env_setup;
@@ -629,7 +629,7 @@ BOOST_AUTO_TEST_CASE(test_scale_modification_decoding_2_args)
 	BOOST_CHECK_EQUAL(mod->get_h(), 5);
 }
 
-/// Tests if the O modification with a percent argument is correctly decoded
+/** Tests if the O modification with a percent argument is correctly decoded */
 BOOST_AUTO_TEST_CASE(test_o_modification_decoding_percent_args)
 {
 	environment_setup env_setup;
@@ -647,7 +647,7 @@ BOOST_AUTO_TEST_CASE(test_o_modification_decoding_percent_args)
 	BOOST_CHECK(mod->get_opacity() < 0.46f);
 }
 
-/// Tests if the O modification with a fraction argument is correctly decoded
+/** Tests if the O modification with a fraction argument is correctly decoded */
 BOOST_AUTO_TEST_CASE(test_o_modification_decoding_fraction_args)
 {
 	environment_setup env_setup;
@@ -665,7 +665,7 @@ BOOST_AUTO_TEST_CASE(test_o_modification_decoding_fraction_args)
 	BOOST_CHECK(mod->get_opacity() < 0.35f);
 }
 
-/// Tests if the BL modification without arguments is correctly decoded
+/** Tests if the BL modification without arguments is correctly decoded */
 BOOST_AUTO_TEST_CASE(test_bl_modification_decoding_no_args)
 {
 	environment_setup env_setup;
@@ -682,7 +682,7 @@ BOOST_AUTO_TEST_CASE(test_bl_modification_decoding_no_args)
 	BOOST_CHECK_EQUAL(mod->get_depth(), 0);
 }
 
-/// Tests if the BL modification with one argument is correctly decoded
+/** Tests if the BL modification with one argument is correctly decoded */
 BOOST_AUTO_TEST_CASE(test_bl_modification_decoding)
 {
 	environment_setup env_setup;
@@ -699,7 +699,7 @@ BOOST_AUTO_TEST_CASE(test_bl_modification_decoding)
 	BOOST_CHECK_EQUAL(mod->get_depth(), 2);
 }
 
-/// Tests if the R, G and B modifications without args are correctly decoded
+/** Tests if the R, G and B modifications without args are correctly decoded */
 BOOST_AUTO_TEST_CASE(test_rgb_modification_decoding_no_args)
 {
 	environment_setup env_setup;
@@ -724,7 +724,7 @@ BOOST_AUTO_TEST_CASE(test_rgb_modification_decoding_no_args)
 	}
 }
 
-/// Tests if the R modification with one argument is correctly decoded
+/** Tests if the R modification with one argument is correctly decoded */
 BOOST_AUTO_TEST_CASE(test_r_modification_decoding)
 {
 	environment_setup env_setup;
@@ -743,7 +743,7 @@ BOOST_AUTO_TEST_CASE(test_r_modification_decoding)
 	BOOST_CHECK_EQUAL(mod->get_b(), 0);
 }
 
-/// Tests if the G modification with one argument is correctly decoded
+/** Tests if the G modification with one argument is correctly decoded */
 BOOST_AUTO_TEST_CASE(test_g_modification_decoding)
 {
 	environment_setup env_setup;
@@ -762,7 +762,7 @@ BOOST_AUTO_TEST_CASE(test_g_modification_decoding)
 	BOOST_CHECK_EQUAL(mod->get_b(), 0);
 }
 
-/// Tests if the B modification with one argument is correctly decoded
+/** Tests if the B modification with one argument is correctly decoded */
 BOOST_AUTO_TEST_CASE(test_b_modification_decoding)
 {
 	environment_setup env_setup;
@@ -781,7 +781,7 @@ BOOST_AUTO_TEST_CASE(test_b_modification_decoding)
 	BOOST_CHECK_EQUAL(mod->get_b(), 312);
 }
 
-/// Tests if the BG modification without arguments is correctly decoded
+/** Tests if the BG modification without arguments is correctly decoded */
 BOOST_AUTO_TEST_CASE(test_bg_modification_decoding_no_args)
 {
 	environment_setup env_setup;
@@ -801,7 +801,7 @@ BOOST_AUTO_TEST_CASE(test_bg_modification_decoding_no_args)
 	BOOST_CHECK_EQUAL(mod->get_color().a, SDL_ALPHA_OPAQUE);
 }
 
-/// Tests if the BG modification with one argument is correctly decoded
+/** Tests if the BG modification with one argument is correctly decoded */
 BOOST_AUTO_TEST_CASE(test_bg_modification_decoding_1_arg)
 {
 	environment_setup env_setup;
@@ -821,7 +821,7 @@ BOOST_AUTO_TEST_CASE(test_bg_modification_decoding_1_arg)
 	BOOST_CHECK_EQUAL(mod->get_color().a, SDL_ALPHA_OPAQUE);
 }
 
-/// Tests if the BG modification with two arguments is correctly decoded
+/** Tests if the BG modification with two arguments is correctly decoded */
 BOOST_AUTO_TEST_CASE(test_bg_modification_decoding_2_args)
 {
 	environment_setup env_setup;
@@ -841,7 +841,7 @@ BOOST_AUTO_TEST_CASE(test_bg_modification_decoding_2_args)
 	BOOST_CHECK_EQUAL(mod->get_color().a, SDL_ALPHA_OPAQUE);
 }
 
-/// Tests if the BG modification with three arguments is correctly decoded
+/** Tests if the BG modification with three arguments is correctly decoded */
 BOOST_AUTO_TEST_CASE(test_bg_modification_decoding_3_args)
 {
 	environment_setup env_setup;
@@ -861,7 +861,7 @@ BOOST_AUTO_TEST_CASE(test_bg_modification_decoding_3_args)
 	BOOST_CHECK_EQUAL(mod->get_color().a, SDL_ALPHA_OPAQUE);
 }
 
-/// Tests if the BG modification with four arguments is correctly decoded
+/** Tests if the BG modification with four arguments is correctly decoded */
 BOOST_AUTO_TEST_CASE(test_bg_modification_decoding_4_args)
 {
 	environment_setup env_setup;

@@ -45,7 +45,7 @@ public:
 	void set_pos(int pos);
 
 	void append_config(const config& data);
-	/// Clears the passed config.
+	/** Clears the passed config. */
 	void append_config(config& data);
 
 	void write(config_writer& out) const;

@@ -27,9 +27,11 @@ namespace image {
 
 class modification;
 
-/// A modified priority queue used to order image modifications.
-/// The priorities for this queue are to order modifications by priority(),
-/// then by the order they are added to the queue.
+/**
+ * A modified priority queue used to order image modifications.
+ * The priorities for this queue are to order modifications by priority(),
+ * then by the order they are added to the queue.
+ */
 class modification_queue
 {
 	// Invariant for this class:
@@ -48,13 +50,13 @@ public:
 	modification * top() const;
 
 private:
-	/// Map from a mod's priority() to the mods having that priority.
+	/** Map from a mod's priority() to the mods having that priority. */
 	typedef std::map<int, std::vector<std::shared_ptr<modification>>, std::greater<int>> map_type;
-	/// Map from a mod's priority() to the mods having that priority.
+	/** Map from a mod's priority() to the mods having that priority. */
 	map_type priorities_;
 };
 
-/// Base abstract class for an image-path modification
+/** Base abstract class for an image-path modification */
 class modification
 {
 public:
@@ -93,15 +95,15 @@ public:
 		IMPLEMENT_LUA_JAILBREAK_EXCEPTION(imod_exception)
 	};
 
-	/// Decodes modifications from a modification string
+	/** Decodes modifications from a modification string */
 	static modification_queue decode(const std::string&);
 
 	virtual ~modification() {}
 
-	///Applies the image-path modification on the specified surface
+	/** Applies the image-path modification on the specified surface */
 	virtual surface operator()(const surface& src) const = 0;
 
-	/// Specifies the priority of the modification
+	/** Specifies the priority of the modification */
 	virtual int priority() const { return 0; }
 };
 

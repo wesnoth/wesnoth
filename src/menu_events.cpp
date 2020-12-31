@@ -701,7 +701,7 @@ unit_map::iterator menu_handler::current_unit()
 // Helpers for create_unit()
 namespace
 {
-/// Allows a function to return both a type and a gender.
+/** Allows a function to return both a type and a gender. */
 typedef std::tuple<const unit_type*, unit_race::GENDER, std::string> type_gender_variation;
 
 /**
@@ -734,8 +734,8 @@ type_gender_variation choose_unit()
 
 	unit_race::GENDER gender = create_dlg.gender();
 	// Do not try to set bad genders, may mess up l10n
-	/// @todo Is this actually necessary?
-	/// (Maybe create_dlg can enforce proper gender selection?)
+	// TODO: Is this actually necessary?
+	// (Maybe create_dlg can enforce proper gender selection?)
 	if(ut.genders().end() == std::find(ut.genders().begin(), ut.genders().end(), gender)) {
 		gender = ut.genders().front();
 	}

@@ -177,7 +177,7 @@ public:
 	// Wrapped functions from unit_map. These should ultimately provide notification to observers, pathfinding.
 
 	unit_map::iterator find_unit(const map_location & loc) { return units_.find(loc); }
-	/// Calculates whether a team is defeated
+	/** Calculates whether a team is defeated */
 	bool team_is_defeated(const team& t) const;
 };
 

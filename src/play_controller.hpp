@@ -289,7 +289,7 @@ public:
 	virtual bool is_networked_mp() const { return false; }
 	virtual void send_to_wesnothd(const config&, const std::string& = "unknown") const { }
 	virtual bool receive_from_wesnothd(config&) const { return false; }
-	/// Reevaluate [show_if] conditions and build a new objectives string.
+	/** Reevaluate [show_if] conditions and build a new objectives string. */
 	void refresh_objectives() const;
 	void show_objectives() const;
 
@@ -311,7 +311,7 @@ protected:
 	void process_keyup_event(const SDL_Event& event) override;
 
 	void init_managers();
-	///preload events cannot be synced
+	/** preload events cannot be synced */
 	void fire_preload();
 	void fire_prestart();
 	void fire_start();
@@ -326,7 +326,7 @@ protected:
 
 
 	bool is_team_visible(int team_num, bool observer) const;
-	/// returns 0 if no such team was found.
+	/** returns 0 if no such team was found. */
 	int find_last_visible_team() const;
 
 private:
