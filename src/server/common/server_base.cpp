@@ -355,8 +355,7 @@ void server_base::coro_send_file(socket_ptr socket, const std::string& filename,
 
 	BOOL success = TransmitFile(socket->native_handle(), in_file, 0, 0, &overlap, nullptr, 0);
 	if(!success) {
-		int winsock_ec = WSAGetLastError();
-		if(winsock_ec == WSA_IO_PENDING || winsock_ec == ERROR_IO_PENDING) {
+		if(WSAGetLastError() == WSA_IO_PENDING) {
 			while(true) {
 				// The request is pending. Wait until it completes.
 				socket->async_write_some(boost::asio::null_buffers(), yield);
