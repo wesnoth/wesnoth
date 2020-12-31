@@ -19,6 +19,7 @@
 #include <cstddef>
 #include <iosfwd>
 #include <map>
+#include <memory>
 #include <string>
 #include <vector>
 
@@ -247,7 +248,7 @@ public:
 
 	void compress();
 
-	document* clone();
+	std::unique_ptr<document> clone();
 
 	const string_span& operator[](const char* key) const {
 		return root()[key];

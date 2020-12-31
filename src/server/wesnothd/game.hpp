@@ -20,8 +20,6 @@
 #include "server/common/simple_wml.hpp"
 #include "utils/make_enum.hpp"
 
-#include <boost/ptr_container/ptr_vector.hpp>
-
 #include <map>
 #include <vector>
 
@@ -270,7 +268,7 @@ public:
 	void send_data(simple_wml::document& data, const socket_ptr& exclude = socket_ptr(), std::string packet_type = "");
 
 	void clear_history();
-	void record_data(simple_wml::document* data);
+	void record_data(std::unique_ptr<simple_wml::document> data);
 	void save_replay();
 
 	/** The full scenario data. */
@@ -527,8 +525,7 @@ private:
 	simple_wml::document level_;
 
 	/** Replay data. */
-	typedef boost::ptr_vector<simple_wml::document> history;
-	mutable history history_;
+	mutable std::vector<std::unique_ptr<simple_wml::document>> history_;
 
 	/** Pointer to the game's description in the games_and_users_list_. */
 	simple_wml::node* description_;

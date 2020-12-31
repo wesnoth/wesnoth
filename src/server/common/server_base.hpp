@@ -71,11 +71,11 @@ public:
 	 * @param socket
 	 * @param yield The function will suspend on read operation using this yield context
 	 */
-	std::shared_ptr<simple_wml::document> coro_receive_doc(socket_ptr socket, boost::asio::yield_context yield);
+	std::unique_ptr<simple_wml::document> coro_receive_doc(socket_ptr socket, boost::asio::yield_context yield);
 
 	/**
 	 * High level wrapper for sending a WML document
-	 * 
+	 *
 	 * This function returns before send is finished. This function can be called again on same socket before previous send was finished.
 	 * WML documents are kept in internal queue and sent in FIFO order.
 	 * @param socket

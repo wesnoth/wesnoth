@@ -383,7 +383,7 @@ void server_base::coro_send_file(socket_ptr socket, const std::string& filename,
 
 #endif
 
-std::shared_ptr<simple_wml::document> server_base::coro_receive_doc(socket_ptr socket, boost::asio::yield_context yield)
+std::unique_ptr<simple_wml::document> server_base::coro_receive_doc(socket_ptr socket, boost::asio::yield_context yield)
 {
 	union DataSize
 	{
@@ -412,7 +412,7 @@ std::shared_ptr<simple_wml::document> server_base::coro_receive_doc(socket_ptr s
 
 	try {
 		simple_wml::string_span compressed_buf(buffer.get(), size);
-		return std::shared_ptr<simple_wml::document> { new simple_wml::document(compressed_buf) };
+		return std::make_unique<simple_wml::document>(compressed_buf);
 	}  catch (simple_wml::error& e) {
 		ERR_SERVER <<
 			client_address(socket) <<
@@ -424,23 +424,22 @@ std::shared_ptr<simple_wml::document> server_base::coro_receive_doc(socket_ptr s
 
 void server_base::async_send_doc_queued(socket_ptr socket, simple_wml::document& doc)
 {
-	std::shared_ptr<simple_wml::document> doc_ptr { doc.clone() };
+	boost::asio::spawn(
+		io_service_, [this, doc_ptr = doc.clone(), socket](boost::asio::yield_context yield) mutable {
+			static std::map<socket_ptr, std::queue<std::unique_ptr<simple_wml::document>>> queues;
 
-	boost::asio::spawn(io_service_, [this, doc_ptr, socket](boost::asio::yield_context yield)
-	{
-		static std::map<socket_ptr, std::queue<std::shared_ptr<simple_wml::document>>> queues;
+			queues[socket].push(std::move(doc_ptr));
+			if(queues[socket].size() > 1) {
+				return;
+			}
 
-		queues[socket].emplace(doc_ptr);
-		if(queues[socket].size() > 1) {
-			return;
+			while(queues[socket].size() > 0) {
+				coro_send_doc(socket, *(queues[socket].front()), yield);
+				queues[socket].pop();
+			}
+			queues.erase(socket);
 		}
-
-		while(queues[socket].size() > 0) {
-			coro_send_doc(socket, *(queues[socket].front()), yield);
-			queues[socket].pop();
-		}
-		queues.erase(socket);
-	});
+	);
 }
 
 void server_base::async_send_error(socket_ptr socket, const std::string& msg, const char* error_code, const info_table& info)

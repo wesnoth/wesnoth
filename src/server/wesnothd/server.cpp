@@ -1072,26 +1072,26 @@ void server::handle_player(boost::asio::yield_context yield, socket_ptr socket, 
 		}
 
 		if(!player_is_in_game(socket)) {
-			handle_player_in_lobby(socket, doc);
+			handle_player_in_lobby(socket, *doc);
 		} else {
-			handle_player_in_game(socket, doc);
+			handle_player_in_game(socket, *doc);
 		}
 	}
 }
 
-void server::handle_player_in_lobby(socket_ptr socket, std::shared_ptr<simple_wml::document> doc)
+void server::handle_player_in_lobby(socket_ptr socket, simple_wml::document& data)
 {
-	if(simple_wml::node* message = doc->child("message")) {
+	if(simple_wml::node* message = data.child("message")) {
 		handle_message(socket, *message);
 		return;
 	}
 
-	if(simple_wml::node* create_game = doc->child("create_game")) {
+	if(simple_wml::node* create_game = data.child("create_game")) {
 		handle_create_game(socket, *create_game);
 		return;
 	}
 
-	if(simple_wml::node* join = doc->child("join")) {
+	if(simple_wml::node* join = data.child("join")) {
 		handle_join_game(socket, *join);
 		return;
 	}
@@ -1437,7 +1437,7 @@ void server::handle_join_game(socket_ptr socket, simple_wml::node& join)
 	}
 }
 
-void server::handle_player_in_game(socket_ptr socket, std::shared_ptr<simple_wml::document> doc)
+void server::handle_player_in_game(socket_ptr socket, simple_wml::document& data)
 {
 	DBG_SERVER << "in process_data_game...\n";
 
@@ -1447,10 +1447,8 @@ void server::handle_player_in_game(socket_ptr socket, std::shared_ptr<simple_wml
 	game& g = *(p->get_game());
 	std::weak_ptr<game> g_ptr{p->get_game()};
 
-	simple_wml::document& data = *doc;
-
 	// If this is data describing the level for a game.
-	if(doc->child("snapshot") || doc->child("scenario")) {
+	if(data.child("snapshot") || data.child("scenario")) {
 		if(!g.is_owner(socket)) {
 			return;
 		}
@@ -1472,7 +1470,7 @@ void server::handle_player_in_game(socket_ptr socket, std::shared_ptr<simple_wml
 			simple_wml::node& desc = gamelist->add_child("game");
 			g.level().root().copy_into(desc);
 
-			if(const simple_wml::node* m = doc->child("multiplayer")) {
+			if(const simple_wml::node* m = data.child("multiplayer")) {
 				m->copy_into(desc);
 			} else {
 				WRN_SERVER << client_address(socket) << "\t" << player.name() << "\tsent scenario data in game:\t\""
