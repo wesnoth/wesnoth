@@ -46,8 +46,8 @@ private:
 	bool accepting_connections() const { return !graceful_restart; }
 
 	void handle_player(boost::asio::yield_context yield, socket_ptr socket, const player& player);
-	void handle_player_in_lobby(socket_ptr socket, std::shared_ptr<simple_wml::document> doc);
-	void handle_player_in_game(socket_ptr socket, std::shared_ptr<simple_wml::document> doc);
+	void handle_player_in_lobby(socket_ptr socket, simple_wml::document& data);
+	void handle_player_in_game(socket_ptr socket, simple_wml::document& data);
 	void handle_whisper(socket_ptr socket, simple_wml::node& whisper);
 	void handle_query(socket_ptr socket, simple_wml::node& query);
 	void handle_nickserv(socket_ptr socket, simple_wml::node& nickserv);
