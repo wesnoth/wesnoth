@@ -23,6 +23,6 @@ RUN pip3 install --upgrade pip
 RUN yes | pip3 install paramiko
 
 # programs
-RUN apt install -y -qq openssl gdb xvfb bzip2 git scons cmake make ccache gcc g++ clang lld
+RUN apt install -y -qq openssl gdb xvfb bzip2 git scons cmake make ccache gcc g++ clang lld doxygen graphviz
 
 WORKDIR /home/wesnoth-travis
