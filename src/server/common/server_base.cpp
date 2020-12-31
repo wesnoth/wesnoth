@@ -383,7 +383,7 @@ void server_base::coro_send_file(socket_ptr socket, const std::string& filename,
 
 #endif
 
-std::shared_ptr<simple_wml::document> server_base::coro_receive_doc(socket_ptr socket, boost::asio::yield_context yield)
+std::unique_ptr<simple_wml::document> server_base::coro_receive_doc(socket_ptr socket, boost::asio::yield_context yield)
 {
 	union DataSize
 	{
@@ -412,7 +412,7 @@ std::shared_ptr<simple_wml::document> server_base::coro_receive_doc(socket_ptr s
 
 	try {
 		simple_wml::string_span compressed_buf(buffer.get(), size);
-		return std::shared_ptr<simple_wml::document> { new simple_wml::document(compressed_buf) };
+		return std::make_unique<simple_wml::document>(compressed_buf);
 	}  catch (simple_wml::error& e) {
 		ERR_SERVER <<
 			client_address(socket) <<
