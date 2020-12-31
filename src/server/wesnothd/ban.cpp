@@ -61,12 +61,6 @@ bool banned_compare_subnet::less(const banned_ptr& a, const banned_ptr& b) const
 
 const std::string banned::who_banned_default_ = "system";
 
-banned_ptr banned::create_dummy(const std::string& ip)
-{
-	banned_ptr dummy(new banned(ip));
-	return dummy;
-}
-
 banned::banned(const std::string& ip)
 	: ip_(0)
 	, mask_(0)
@@ -131,7 +125,7 @@ ip_mask parse_ip(const std::string& ip)
 	unsigned int shift = 4*8; // start shifting from the highest byte
 	unsigned int mask = 0xFF000000;
 	const unsigned int complete_part_mask = 0xFF;
-	std::vector<std::string>::const_iterator part = split_ip.begin();
+	auto part = split_ip.begin();
 	bool wildcard = false;
 	do {
 		shift -= 8;
@@ -283,15 +277,14 @@ void ban_manager::read()
 	filesystem::scoped_istream ban_file = filesystem::istream_file(filename_);
 	read_gz(cfg, *ban_file);
 
-	for (const config &b : cfg.child_range("ban"))
-	{
+	for(const config& b : cfg.child_range("ban")) {
 		try {
-			banned_ptr new_ban(new banned(b));
+			auto new_ban = std::make_shared<banned>(b);
 			assert(bans_.insert(new_ban).second);
 
 			if (new_ban->get_end_time() != 0)
 				time_queue_.push(new_ban);
-		} catch (const banned::error& e) {
+		} catch(const banned::error& e) {
 			ERR_SERVER << e.message << " while reading bans" << std::endl;
 		}
 	}
@@ -300,7 +293,7 @@ void ban_manager::read()
 	if(const config& cfg_del = cfg.child("deleted")) {
 		for(const config& b : cfg_del.child_range("ban")) {
 			try {
-				banned_ptr new_ban(new banned(b));
+				auto new_ban = std::make_shared<banned>(b);
 				deleted_bans_.push_back(new_ban);
 			} catch(const banned::error& e) {
 				ERR_SERVER << e.message << " while reading deleted bans" << std::endl;
@@ -319,15 +312,15 @@ void ban_manager::write()
 	dirty_ = false;
 
 	config cfg;
-	for(ban_set::const_iterator itor = bans_.begin(); itor != bans_.end(); ++itor) {
+	for(const auto& b : bans_) {
 		config& child = cfg.add_child("ban");
-		(*itor)->write(child);
+		b->write(child);
 	}
 
 	config& deleted = cfg.add_child("deleted");
-	for(deleted_ban_list::const_iterator itor = deleted_bans_.begin(); itor != deleted_bans_.end(); ++itor) {
+	for(const auto& db : deleted_bans_) {
 		config& child = deleted.add_child("ban");
-		(*itor)->write(child);
+		db->write(child);
 	}
 
 	filesystem::scoped_ostream ban_file = filesystem::ostream_file(filename_);
@@ -344,7 +337,7 @@ bool ban_manager::parse_time(const std::string& duration, std::time_t* time) con
 		loc = std::localtime(time);
 
 		std::size_t number = 0;
-		for(std::string::const_iterator i = duration.begin() + 4; i != duration.end(); ++i) {
+		for(auto i = duration.begin() + 4; i != duration.end(); ++i) {
 			if(is_digit(*i)) {
 				number = number * 10 + to_digit(*i);
 			} else {
@@ -378,7 +371,7 @@ bool ban_manager::parse_time(const std::string& duration, std::time_t* time) con
 		return true;
 	}
 
-	default_ban_times::const_iterator time_itor = ban_times_.find(duration);
+	const auto time_itor = ban_times_.find(duration);
 
 	std::string dur_lower;
 	try {
@@ -507,7 +500,7 @@ std::string ban_manager::ban(const std::string& ip,
 	std::ostringstream ret;
 	try {
 		ban_set::iterator ban;
-		if((ban = bans_.find(banned::create_dummy(ip))) != bans_.end()) {
+		if((ban = bans_.find(std::make_shared<banned>(ip))) != bans_.end()) {
 			// Already exsiting ban for ip. We have to first remove it
 			ret << "Overwriting ban: " << (**ban) << "\n";
 			bans_.erase(ban);
@@ -518,7 +511,7 @@ std::string ban_manager::ban(const std::string& ip,
 	}
 
 	try {
-		banned_ptr new_ban(new banned(ip, end_time, reason, who_banned, group, nick));
+		auto new_ban = std::make_shared<banned>(ip, end_time, reason, who_banned, group, nick);
 		bans_.insert(new_ban);
 		if(end_time != 0) {
 			time_queue_.push(new_ban);
@@ -538,7 +531,7 @@ void ban_manager::unban(std::ostringstream& os, const std::string& ip, bool imme
 {
 	ban_set::iterator ban;
 	try {
-		ban = bans_.find(banned::create_dummy(ip));
+		ban = bans_.find(std::make_shared<banned>(ip));
 	} catch (const banned::error& e) {
 		ERR_SERVER << e.message << std::endl;
 		os << e.message;
@@ -639,13 +632,13 @@ void ban_manager::list_bans(std::ostringstream& out, const std::string& mask)
 	out << "BAN LIST";
 	std::set<std::string> groups;
 
-	for(ban_set::const_iterator i = bans_.begin(); i != bans_.end(); ++i) {
-		if((*i)->get_group().empty()) {
-			if((*i)->match_ipmask(pair)) {
-				out << "\n" << (**i);
+	for(const auto& b : bans_) {
+		if(b->get_group().empty()) {
+			if(b->match_ipmask(pair)) {
+				out << "\n" << *b;
 			}
 		} else {
-			groups.insert((*i)->get_group());
+			groups.insert(b->get_group());
 		}
 	}
 
@@ -670,7 +663,7 @@ std::string ban_manager::is_ip_banned(const std::string& ip)
 		return "";
 	}
 
-	ban_set::const_iterator ban = std::find_if(bans_.begin(), bans_.end(), [pair](const banned_ptr& p) { return p->match_ip(pair); });
+	auto ban = std::find_if(bans_.begin(), bans_.end(), [pair](const banned_ptr& p) { return p->match_ip(pair); });
 	if (ban == bans_.end()) return "";
 	const std::string& nick = (*ban)->get_nick();
 	return (*ban)->get_reason() + (nick.empty() ? "" : " (" + nick + ")") + " (Remaining ban duration: " + (*ban)->get_human_time_span() + ")";
@@ -684,7 +677,7 @@ void ban_manager::init_ban_help()
 			" or D (days), M (months) or y or Y (years) and %d is a number.\n"
 			"Permanent bans can be set with 'permanent' or '0' as the time"
 			" argument.\n";
-	default_ban_times::iterator itor = ban_times_.begin();
+	auto itor = ban_times_.begin();
 	if(itor != ban_times_.end()) {
 		ban_help_ += "You can also use " + itor->first;
 		++itor;

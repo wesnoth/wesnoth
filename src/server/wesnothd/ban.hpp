@@ -68,11 +68,11 @@ class banned {
 	std::string nick_;
 	static const std::string who_banned_default_;
 
-	banned(const std::string& ip);
-
 public:
 	banned(const std::string& ip, const std::time_t end_time, const std::string& reason, const std::string& who_banned=who_banned_default_, const std::string& group="", const std::string& nick="");
 	banned(const config&);
+
+	banned(const std::string& ip);
 
 	void read(const config&);
 	void write(config&) const;
@@ -111,8 +111,6 @@ public:
 
 	unsigned int mask() const
 	{ return mask_; }
-
-	static banned_ptr create_dummy(const std::string& ip);
 
 	bool operator>(const banned& b) const;
 
