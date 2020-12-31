@@ -725,16 +725,6 @@ void server::login_client(boost::asio::yield_context yield, socket_ptr socket)
 		}
 	}
 
-	if(is_moderator) {
-		LOG_SERVER << "Admin automatically recognized: IP: " << client_address(socket) << "\tnick: " << username
-				   << std::endl;
-
-		// This string is parsed by the client!
-		send_server_message(socket,
-			"You are now recognized as an administrator. "
-			"If you no longer want to be automatically authenticated use '/query signout'.", "alert");
-	}
-
 	// Log the IP
 	connection_log ip_name { username, client_address(socket), 0 };
 
