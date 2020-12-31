@@ -1687,9 +1687,12 @@ void server::handle_player_in_game(socket_ptr socket, simple_wml::document& data
 		} else {
 			auto description = g.description();
 
+			// After this line, the game object may be destroyed. Don't use `g`!
 			player_connections_.modify(player_connections_.find(socket), std::bind(&player_record::enter_lobby, std::placeholders::_1));
-			if(!g_ptr.expired()) {
-				g.describe_slots();
+
+			// Only run this if the game object is still valid
+			if(auto gStrong = g_ptr.lock()) {
+				gStrong->describe_slots();
 			}
 
 			// Send all other players in the lobby the update to the gamelist.
