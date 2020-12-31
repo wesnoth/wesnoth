@@ -35,25 +35,23 @@ struct compare_samples_by_time {
 	}
 };
 
-
-metrics::metrics() :
-	samples_(),
-	most_consecutive_requests_(0),
-	current_requests_(0),
-	nrequests_(0),
-	nrequests_waited_(0),
-	started_at_(std::time(nullptr)),
-	terminations_()
-{}
+metrics::metrics()
+	: samples_()
+	, most_consecutive_requests_(0)
+	, current_requests_(0)
+	, nrequests_(0)
+	, nrequests_waited_(0)
+	, started_at_(std::time(nullptr))
+	, terminations_()
+{
+}
 
 metrics::~metrics()
 {
-
-	for(std::vector<sample>::iterator itor = samples_.begin();
-			itor != samples_.end(); ++itor)
-	{
+	for(std::vector<sample>::iterator itor = samples_.begin(); itor != samples_.end(); ++itor) {
 		delete[] itor->name.begin();
 	}
+
 	samples_.clear();
 }
 
