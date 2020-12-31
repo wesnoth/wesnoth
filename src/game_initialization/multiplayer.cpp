@@ -359,7 +359,7 @@ std::unique_ptr<wesnothd_connection> open_connection(std::string host)
 			preferences::set_admin_authentication(join_lobby["is_moderator"].to_bool(false));
 
 			// Note the forum profile prefix (will be empty if this server doesn't have an attached database)
-			profile_url_prefix = join_lobby["profile_url_prefix"];
+			profile_url_prefix = join_lobby["profile_url_prefix"].str();
 
 			// All done!
 			break;
