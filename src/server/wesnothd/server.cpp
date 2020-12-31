@@ -209,7 +209,7 @@ const std::string help_msg =
 	" ban <mask> <time> <reason>, bans [deleted] [<ipmask>], clones,"
 	" dul|deny_unregistered_login [yes|no], kick <mask> [<reason>],"
 	" k[ick]ban <mask> <time> <reason>, help, games, metrics,"
-	" netstats [all], [lobby]msg <message>, motd [<message>],"
+	" [lobby]msg <message>, motd [<message>],"
 	" pm|privatemsg <nickname> <message>, requests, roll <sides>, sample, searchlog <mask>,"
 	" signout, stats, status [<mask>], stopgame <nick> [<reason>], unban <ipmask>\n"
 	"Specific strings (those not in between <> like the command names)"
@@ -387,7 +387,6 @@ void server::setup_handlers()
 	SETUP_HANDLER("roll", &server::roll_handler);
 	SETUP_HANDLER("games", &server::games_handler);
 	SETUP_HANDLER("wml", &server::wml_handler);
-	SETUP_HANDLER("netstats", &server::netstats_handler);
 	SETUP_HANDLER("report", &server::adminmsg_handler);
 	SETUP_HANDLER("adminmsg", &server::adminmsg_handler);
 	SETUP_HANDLER("pm", &server::pm_handler);
@@ -1151,7 +1150,7 @@ void server::handle_query(socket_ptr socket, simple_wml::node& query)
 
 	const std::string& query_help_msg =
 		"Available commands are: adminmsg <msg>, help, games, metrics,"
-		" motd, netstats [all], requests, roll <sides>, sample, stats, status, version, wml.";
+		" motd, requests, roll <sides>, sample, stats, status, version, wml.";
 
 	// Commands a player may issue.
 	if(command == "status") {
@@ -1162,8 +1161,6 @@ void server::handle_query(socket_ptr socket, simple_wml::node& query)
 		command == "games" ||
 		command == "metrics" ||
 		command == "motd" ||
-		command == "netstats" ||
-		command == "netstats all" ||
 		command.compare(0, 7, "version") == 0 ||
 		command == "requests" ||
 		command.compare(0, 4, "roll") == 0 ||
@@ -2191,33 +2188,6 @@ void server::wml_handler(const std::string& /*issuer_name*/,
 {
 	assert(out != nullptr);
 	*out << simple_wml::document::stats();
-}
-
-void server::netstats_handler(const std::string& /*issuer_name*/,
-		const std::string& /*query*/,
-		std::string& /*parameters*/,
-		std::ostringstream* /*out*/)
-{
-	/*
-	assert(out != nullptr);
-
-	network::pending_statistics stats = network::get_pending_stats();
-	*out << "Network stats:\nPending send buffers: "
-		<< stats.npending_sends << "\nBytes in buffers: "
-		<< stats.nbytes_pending_sends << "\n";
-
-	try {
-
-	if (utf8::lowercase(parameters) == "all") {
-		*out << network::get_bandwidth_stats_all();
-	} else {
-		*out << network::get_bandwidth_stats(); // stats from previuos hour
-	}
-
-	} catch ( utf8::invalid_utf8_exception & e ) {
-		ERR_SERVER << "While handling a netstats command, caught an invalid utf8 exception: " << e.what() << std::endl;
-	}
-	*/
 }
 
 void server::adminmsg_handler(

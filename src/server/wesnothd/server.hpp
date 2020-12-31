@@ -205,7 +205,6 @@ private:
 	void roll_handler(const std::string &, const std::string &, std::string &, std::ostringstream *);
 	void games_handler(const std::string &, const std::string &, std::string &, std::ostringstream *);
 	void wml_handler(const std::string &, const std::string &, std::string &, std::ostringstream *);
-	void netstats_handler(const std::string &, const std::string &, std::string &, std::ostringstream *);
 	void adminmsg_handler(const std::string &, const std::string &, std::string &, std::ostringstream *);
 	void pm_handler(const std::string &, const std::string &, std::string &, std::ostringstream *);
 	void version_handler(const std::string &, const std::string &, std::string &, std::ostringstream *);
