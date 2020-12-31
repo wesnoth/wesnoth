@@ -146,7 +146,7 @@ carryover_info::carryover_info(const config& cfg, bool from_snpashot)
 	for(const config& item : cfg.child_range("menu_item"))
 	{
 		if(item["persistent"].to_bool(true)) {
-			wml_menu_items_.push_back(new config(item));
+			wml_menu_items_.push_back(item);
 		}
 	}
 }
