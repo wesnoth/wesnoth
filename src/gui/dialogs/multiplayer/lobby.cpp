@@ -41,6 +41,7 @@
 #include "addon/client.hpp"
 #include "addon/manager_ui.hpp"
 #include "chat_log.hpp"
+#include "desktop/open.hpp"
 #include "font/text_formatting.hpp"
 #include "formatter.hpp"
 #include "formula/string_utils.hpp"
@@ -823,6 +824,27 @@ void mp_lobby::pre_show(window& window)
 
 	lobby_update_timer_ = add_timer(
 		game_config::lobby_network_timer, std::bind(&mp_lobby::network_handler, this), true);
+
+	//
+	// Profile box
+	//
+	if(auto* profile_panel = find_widget<panel>(&window, "profile", false, false)) {
+		const mp::user_info& your_info = *std::find_if(lobby_info_.users().begin(), lobby_info_.users().end(),
+			[](const auto& u) { return u.relation == mp::user_info::user_relation::ME; });
+
+		find_widget<label>(profile_panel, "username", false).set_label(your_info.name);
+
+		auto& profile_button = find_widget<button>(profile_panel, "view_profile", false);
+		if(your_info.forum_id != 0) {
+			connect_signal_mouse_left_click(profile_button,
+				std::bind(&desktop::open_object, mp::get_profile_link(your_info.forum_id)));
+		} else {
+			profile_button.set_active(false);
+		}
+
+		// TODO: implement
+		find_widget<button>(profile_panel, "view_match_history", false).set_active(false);
+	}
 
 	// Set up Lua plugin context
 	plugins_context_.reset(new plugins_context("Multiplayer Lobby"));

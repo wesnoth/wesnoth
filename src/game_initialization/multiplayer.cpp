@@ -56,6 +56,8 @@ static lg::log_domain log_mp("mp/main");
 
 namespace
 {
+std::string profile_url_prefix;
+
 /** Opens a new server connection and prompts the client for login credentials, if necessary. */
 std::unique_ptr<wesnothd_connection> open_connection(std::string host)
 {
@@ -356,6 +358,9 @@ std::unique_ptr<wesnothd_connection> open_connection(std::string host)
 			// Flag us as authenticated, if applicable...
 			preferences::set_admin_authentication(join_lobby["is_moderator"].to_bool(false));
 
+			// Note the forum profile prefix (will be empty if this server doesn't have an attached database)
+			profile_url_prefix = join_lobby["profile_url_prefix"];
+
 			// All done!
 			break;
 		}
@@ -586,8 +591,8 @@ void mp_manager::enter_wait_mode(int game_id, bool observe)
 	mp_game_metadata metadata(*connection);
 	metadata.is_host = false;
 
-	if(lobby_info.get_game_by_id(game_id)) {
-		metadata.current_turn = lobby_info.get_game_by_id(game_id)->current_turn;
+	if(mp::game_info* gi = lobby_info.get_game_by_id(game_id)) {
+		metadata.current_turn = gi->current_turn;
 	}
 
 	if(preferences::skip_mp_replay() || preferences::blindfold_replay()) {
@@ -761,6 +766,15 @@ void start_local_game_commandline(saved_game& state, const commandline_options& 
 		saved_game state_copy(state);
 		campaign_controller controller(state_copy, game_config_manager::get()->terrain_types());
 		controller.play_game();
+	}
+}
+
+std::string get_profile_link(int user_id)
+{
+	if(!profile_url_prefix.empty()) {
+		return profile_url_prefix + std::to_string(user_id);
+	} else {
+		return "";
 	}
 }
 

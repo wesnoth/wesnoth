@@ -60,4 +60,7 @@ bool goto_mp_connect(ng::connect_engine& engine, wesnothd_connection* connection
  */
 bool goto_mp_wait(saved_game& state, wesnothd_connection* connection, bool observe);
 
+/** Gets the forum profile link for the given user. */
+std::string get_profile_link(int user_id);
+
 }
