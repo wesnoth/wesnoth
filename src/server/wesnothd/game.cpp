@@ -38,15 +38,12 @@ static lg::log_domain log_config("config");
 
 namespace
 {
-struct split_conv_impl
+void split_conv_impl(std::vector<int>& res, const simple_wml::string_span& span)
 {
-	void operator()(std::vector<int>& res, const simple_wml::string_span& span)
-	{
-		if(!span.empty()) {
-			res.push_back(span.to_int());
-		}
+	if(!span.empty()) {
+		res.push_back(span.to_int());
 	}
-};
+}
 
 template<typename TResult, typename TConvert>
 std::vector<TResult> split(const simple_wml::string_span& val, TConvert conv, const char c = ',')
@@ -1698,39 +1695,19 @@ void game::send_data(simple_wml::document& data, const socket_ptr& exclude, std:
 	send_to_players(data, all_game_users(), exclude);
 }
 
-namespace
-{
-struct controls_side_helper
-{
-	const wesnothd::game& game_;
-	const std::vector<int>& sides_;
-
-	controls_side_helper(const wesnothd::game& game, const std::vector<int>& sides)
-		: game_(game)
-		, sides_(sides)
-	{
-	}
-
-	bool operator()(socket_ptr user) const
-	{
-		return game_.controls_side(sides_, user);
-	}
-};
-}
-
 void game::send_data_sides(simple_wml::document& data,
 		const simple_wml::string_span& sides,
 		const socket_ptr& exclude,
 		std::string /*packet_type*/)
 {
-	std::vector<int> sides_vec = ::split<int>(sides, ::split_conv_impl());
+	std::vector<int> sides_vec = ::split<int>(sides, ::split_conv_impl);
 
 	DBG_GAME << __func__ << "...\n";
 
 	decltype(players_) filtered_players;
 
 	std::copy_if(players_.begin(), players_.end(), std::back_inserter(filtered_players),
-		controls_side_helper(*this, sides_vec));
+		[this, &sides_vec](socket_ptr user) { return controls_side(sides_vec, user); });
 
 	send_to_players(data, filtered_players, exclude);
 }
