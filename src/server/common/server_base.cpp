@@ -51,17 +51,18 @@ static lg::log_domain log_config("config");
 #define ERR_CONFIG LOG_STREAM(err, log_config)
 #define WRN_CONFIG LOG_STREAM(warn, log_config)
 
-server_base::server_base(unsigned short port, bool keep_alive) :
-	port_(port),
-	keep_alive_(keep_alive),
-	io_service_(),
-	acceptor_v6_(io_service_),
-	acceptor_v4_(io_service_),
-	#ifndef _WIN32
-	input_(io_service_),
-	sighup_(io_service_, SIGHUP),
-	#endif
-	sigs_(io_service_, SIGINT, SIGTERM)
+server_base::server_base(unsigned short port, bool keep_alive)
+	: port_(port)
+	, keep_alive_(keep_alive)
+	, io_service_()
+	, acceptor_v6_(io_service_)
+	, acceptor_v4_(io_service_)
+	, handshake_response_()
+#ifndef _WIN32
+	, input_(io_service_)
+	, sighup_(io_service_, SIGHUP)
+#endif
+	, sigs_(io_service_, SIGINT, SIGTERM)
 {
 }
 
@@ -239,7 +240,7 @@ void server_base::coro_send_doc(socket_ptr socket, simple_wml::document& doc, bo
 		{
 			uint32_t size;
 			char buf[4];
-		} data_size;
+		} data_size {};
 		data_size.size = htonl(s.size());
 
 		std::vector<boost::asio::const_buffer> buffers {
@@ -267,7 +268,7 @@ void server_base::coro_send_file(socket_ptr socket, const std::string& filename,
 	{
 		uint32_t size;
 		char buf[4];
-	} data_size;
+	} data_size {};
 	data_size.size = htonl(filesize);
 
 	async_write(*socket, boost::asio::buffer(data_size.buf), yield);
@@ -348,7 +349,7 @@ void server_base::coro_send_file(socket_ptr socket, const std::string& filename,
 	{
 		uint32_t size;
 		char buf[4];
-	} data_size;
+	} data_size {};
 	data_size.size = htonl(filesize);
 
 	async_write(*socket, boost::asio::buffer(data_size.buf, 4), yield);
@@ -388,7 +389,7 @@ std::unique_ptr<simple_wml::document> server_base::coro_receive_doc(socket_ptr s
 	{
 		uint32_t size;
 		char buf[4];
-	} data_size;
+	} data_size {};
 	async_read(*socket, boost::asio::buffer(data_size.buf, 4), yield);
 	if(*yield.ec_) return {};
 	uint32_t size = ntohl(data_size.size);
