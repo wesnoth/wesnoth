@@ -104,7 +104,7 @@ public:
 	{ return required_.size() == res_.size(); }
 	bool has_local_choice() const
 	{ return local_choice_ != 0; }
-	/// Note: currently finished() does not imply !waiting() so you may need to check both.
+	/** Note: currently finished() does not imply !waiting() so you may need to check both. */
 	bool waiting() const
 	{ return local_choice_ == 0 && !oos_; }
 	void update_local_choice();
@@ -117,7 +117,7 @@ public:
 	 * @param sides an array of team numbers (beginning with 1). the specified sides may not have an empty controller.
 	 */
 	static std::map<int, config> get_user_choice_internal(const std::string &name, const mp_sync::user_choice &uch, const std::set<int>& sides);
-	/// Inherited from events::pump_monitor
+	/** Inherited from events::pump_monitor */
 	void process(events::pump_info&);
 	events::generic_event changed_event_;
 };

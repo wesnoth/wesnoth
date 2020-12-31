@@ -273,7 +273,7 @@ namespace { // Helpers for check_recall_location()
 	}
 }//anonymous namespace
 
-/// Checks if there is a location on which to recall @a unit_recall.
+/** Checks if there is a location on which to recall @a unit_recall. */
 RECRUIT_CHECK check_recall_location(const int side, map_location& recall_location,
                                     map_location& recall_from,
                                     const unit &unit_recall)
@@ -403,7 +403,7 @@ namespace { // Helpers for check_recruit_location()
 	}
 }//anonymous namespace
 
-/// Checks if there is a location on which to place a recruited unit.
+/** Checks if there is a location on which to place a recruited unit. */
 RECRUIT_CHECK check_recruit_location(const int side, map_location &recruit_location,
                                      map_location& recruited_from,
                                      const std::string& unit_type)

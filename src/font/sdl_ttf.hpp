@@ -38,16 +38,16 @@ SDL_Rect draw_text_line(surface& gui_surface, const SDL_Rect& area, int size,
 // Returns the maximum height of a font, in pixels
 int get_max_height(int size);
 
-///
-/// Determine the width of a line of text given a certain font size.
-/// The font type used is the default wesnoth font type.
-///
+/**
+ * Determine the width of a line of text given a certain font size.
+ * The font type used is the default wesnoth font type.
+ */
 int line_width(const std::string& line, int font_size, int style=TTF_STYLE_NORMAL);
 
-///
-/// Determine the size of a line of text given a certain font size. Similar to
-/// line_width, but for both coordinates.
-///
+/**
+ * Determine the size of a line of text given a certain font size. Similar to
+ * line_width, but for both coordinates.
+ */
 SDL_Rect line_size(const std::string& line, int font_size, int style=TTF_STYLE_NORMAL);
 
 /**

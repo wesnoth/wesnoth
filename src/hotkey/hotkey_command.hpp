@@ -223,16 +223,18 @@ std::list<HOTKEY_COMMAND> get_hotkeys_by_category(HOTKEY_CATEGORY category);
 
 typedef std::bitset<SCOPE_COUNT> hk_scopes;
 
-/// Do not use this outside hotkeys.cpp.
-/// hotkey_command uses t_string which might cause bugs when used at program startup,
-/// so use this for the master hotkey list (and only there).
+/**
+ * Do not use this outside hotkeys.cpp.
+ * hotkey_command uses t_string which might cause bugs when used at program startup,
+ * so use this for the master hotkey list (and only there).
+ */
 struct hotkey_command_temp
 {
 	HOTKEY_COMMAND id;
 
 	std::string command;
 
-	/// description, tooltip are untranslated
+	/** description, tooltip are untranslated */
 	std::string description;
 
 	bool hidden;
@@ -243,8 +245,10 @@ struct hotkey_command_temp
 	std::string tooltip;
 };
 
-/// Stores all information related to functions that can be bound to hotkeys.
-/// this is currently a semi struct: it haves a constructor, but only const-public members.
+/**
+ * Stores all information related to functions that can be bound to hotkeys.
+ * this is currently a semi struct: it haves a constructor, but only const-public members.
+ */
 struct hotkey_command
 {
 	hotkey_command() = delete;
@@ -257,40 +261,46 @@ struct hotkey_command
 	hotkey_command(const hotkey_command&) = default;
 	hotkey_command& operator=(const hotkey_command&) = default;
 
-	/// the names are strange: the "hotkey::HOTKEY_COMMAND" is named id, and the string to identify the object is called "command"
-	/// there is some inconstancy with that names in this file.
-	/// This binds the command to a function. Does not need to be unique.
+	/**
+	 * the names are strange: the "hotkey::HOTKEY_COMMAND" is named id, and the string to identify the object is called "command"
+	 * there is some inconstancy with that names in this file.
+	 * This binds the command to a function. Does not need to be unique.
+	 */
 	HOTKEY_COMMAND id;
 
-	/// The command is unique.
+	/** The command is unique. */
 	std::string command;
 
 	// since the wml_menu hotkey_command s can have different textdomains we need t_string now.
 	t_string description;
 
-	/// If hidden then don't show the command in the hotkey preferences.
+	/** If hidden then don't show the command in the hotkey preferences. */
 	bool hidden;
 
-	/// Toggle hotkeys have some restrictions on what can be bound to them.
-	/// They require a binding that has two states, "pressed" and "released".
+	/**
+	 * Toggle hotkeys have some restrictions on what can be bound to them.
+	 * They require a binding that has two states, "pressed" and "released"
+	 */
 	bool toggle;
 
-	/// The visibility scope of the command.
+	/** The visibility scope of the command. */
 	hk_scopes scope;
 
-	/// The category of the command.
+	/** The category of the command. */
 	HOTKEY_CATEGORY category;
 
 	t_string tooltip;
 
-	/// checks weather this is the null hotkey_command
+	/** checks weather this is the null hotkey_command */
 	bool null() const;
 
-	/// returns the command that is treated as null
+	/** returns the command that is treated as null */
 	static const hotkey_command& null_command();
 
-	/// the execute_command argument was changed from HOTKEY_COMMAND to hotkey_command,
-	/// to be able to call it with HOTKEY_COMMAND, this function was created
+	/**
+	 * the execute_command argument was changed from HOTKEY_COMMAND to hotkey_command,
+	 * to be able to call it with HOTKEY_COMMAND, this function was created
+	 */
 	static const hotkey_command& get_command_by_command(HOTKEY_COMMAND command);
 };
 
@@ -302,14 +312,16 @@ private:
 	hk_scopes prev_scope_active_;
 };
 
-/// returns a container that contains all currently active hotkey_commands.
-/// everything that wants a hotkey, must be in this container.
+/**
+ * returns a container that contains all currently active hotkey_commands.
+ * everything that wants a hotkey, must be in this container
+ */
 const std::vector<hotkey_command>& get_hotkey_commands();
 
-/// returns the hotkey_command with the given name
+/** returns the hotkey_command with the given name */
 const hotkey_command& get_hotkey_command(const std::string& command);
 
-/// returns the hotkey_command that is treated as null.
+/** returns the hotkey_command that is treated as null. */
 const hotkey_command& get_hotkey_null();
 
 void deactivate_all_scopes();
@@ -318,16 +330,17 @@ void set_active_scopes(hk_scopes s);
 bool is_scope_active(scope s);
 bool is_scope_active(hk_scopes s);
 
-///
 bool has_hotkey_command(const std::string& id);
 
-/// adds a new wml hotkey to the list, but only if there is no hotkey with that id yet on the list.
-/// the object that is created here will be deleted in "delete_all_wml_hotkeys()"
+/**
+ * adds a new wml hotkey to the list, but only if there is no hotkey with that id yet on the list.
+ * the object that is created here will be deleted in "delete_all_wml_hotkeys()"
+ */
 void add_wml_hotkey(const std::string& id, const t_string& description, const config& default_hotkey);
 
-/// deletes all wml hotkeys, should be called after a game has ended
+/** deletes all wml hotkeys, should be called after a game has ended */
 void delete_all_wml_hotkeys();
-///removes a wml hotkey with the given id, returns true if the deletion was successful
+/** removes a wml hotkey with the given id, returns true if the deletion was successful */
 bool remove_wml_hotkey(const std::string& id);
 
 const std::string& get_description(const std::string& command);
@@ -337,6 +350,6 @@ void init_hotkey_commands();
 
 void clear_hotkey_commands();
 
-/// returns get_hotkey_command(command).id
+/** returns get_hotkey_command(command).id */
 HOTKEY_COMMAND get_id(const std::string& command);
 }

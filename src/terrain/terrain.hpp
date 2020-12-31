@@ -127,8 +127,7 @@ public:
 	 */
 	bool is_nonnull() const { return  (number_ != t_translation::NONE_TERRAIN) &&
 		(number_ != t_translation::VOID_TERRAIN ); }
-	/// Returns the light (lawful) bonus for this terrain when the time of day
-	/// gives a @a base bonus.
+	/** Returns the light (lawful) bonus for this terrain when the time of day gives a @a base bonus. */
 	int light_bonus(int base) const
 	{
 		return bounded_add(base, light_modification_, max_light_, min_light_);

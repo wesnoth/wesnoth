@@ -143,7 +143,7 @@ game::~game()
 	}
 }
 
-/// returns const so that operator [] won't create empty keys if not existent
+/** returns const so that operator [] won't create empty keys if not existent */
 static const simple_wml::node& get_multiplayer(const simple_wml::node& root)
 {
 	if(const simple_wml::node* multiplayer = root.child("multiplayer")) {
@@ -1388,8 +1388,10 @@ void game::update_turn_data()
 
 }
 
-///@todo differentiate between "observers not allowed" and "player already in the game" errors.
-//      maybe return a string with an error message.
+/**
+ * @todo differentiate between "observers not allowed" and "player already in the game" errors.
+ * maybe return a string with an error message.
+ */
 bool game::add_player(const socket_ptr& player, bool observer)
 {
 	if(is_member(player)) {

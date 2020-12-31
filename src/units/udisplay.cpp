@@ -406,9 +406,9 @@ void unit_mover::wait_for_anims()
 		animator_.wait_until(wait_until_);
 		// debug code, see unit_frame::redraw()
 		// std::cout << "   end\n";
-		/// @todo For wesnoth 1.14+: check if efficient for redrawing?
-		/// Check with large animated units too make sure artifacts are
-		/// not left on screen after unit movement in particular.
+		// TODO: For wesnoth 1.14+: check if efficient for redrawing?
+		// Check with large animated units too make sure artifacts are
+		// not left on screen after unit movement in particular.
 		if ( disp_ ) { // Should always be true if we get here.
 			// Invalidate the hexes around the move that prompted this wait.
 			adjacent_loc_array_t arr;

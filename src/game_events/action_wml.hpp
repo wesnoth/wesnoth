@@ -49,17 +49,19 @@ namespace game_events
 		typedef void (*handler)(const queued_event &, const vconfig &);
 		typedef std::map<std::string, handler> map;
 
-		/// Using this constructor for a static object outside action_wml.cpp
-		/// will likely lead to a static initialization fiasco.
+		/**
+		 * Using this constructor for a static object outside action_wml.cpp
+		 * will likely lead to a static initialization fiasco.
+		 */
 		wml_action(const std::string & tag, handler function);
 
-		/// The first registered action.
+		/** The first registered action. */
 		static map::const_iterator begin()  { return registry_.begin(); }
-		/// One past the last registered action.
+		/** One past the last registered action. */
 		static map::const_iterator end()    { return registry_.end(); }
 		static const map& registry() { return registry_; }
 	private:
-		/// Tracks the known action handlers.
+		/** Tracks the known action handlers. */
 		static map registry_;
 	};
 }

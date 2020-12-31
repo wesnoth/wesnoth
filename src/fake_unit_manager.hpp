@@ -20,10 +20,10 @@ class display;
 class unit;
 class fake_unit_ptr;
 
-///Manages a list of fake units for the display object.
+/** Manages a list of fake units for the display object. */
 class fake_unit_manager {
 public:
-	///Construct a fake unit manager from a display which owns it.
+	/** Construct a fake unit manager from a display which owns it. */
 	fake_unit_manager(display & disp) : fake_units_(), my_display_(disp) {}
 
 	//Anticipate making place_temporary_unit and remove_temporary_unit private to force exception safety
@@ -51,7 +51,8 @@ private:
 	 */
 	int remove_temporary_unit(internal_ptr_type);
 
-	/// collection of units destined to be drawn but not put into the unit map
+	/** collection of units destined to be drawn but not put into the unit map */
 	std::deque<internal_ptr_type> fake_units_;
-	display & my_display_; //!< Reference to my display
+	/** Reference to my display */
+	display & my_display_;
 };

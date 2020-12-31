@@ -46,10 +46,10 @@ struct move_action : undo_action, shroud_clearing_action
 	virtual const char* get_type() const { return "move"; }
 	virtual ~move_action() {}
 
-	/// Writes this into the provided config.
+	/** Writes this into the provided config. */
 	virtual void write(config & cfg) const;
 
-	/// Undoes this action.
+	/** Undoes this action. */
 	virtual bool undo(int side);
 };
 

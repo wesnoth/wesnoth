@@ -33,33 +33,37 @@ public:
 	std::vector<scoped_wml_variable*> scoped_variables;
 
 	const config& get_variables() const { return variables_; }
-	/// throws invalid_variablename_exception if varname is no valid variable name.
+	/** throws invalid_variablename_exception if varname is no valid variable name. */
 	config::attribute_value &get_variable(const std::string &varname);
-	/// returns a blank attribute value if varname is no valid variable name.
+	/** returns a blank attribute value if varname is no valid variable name. */
 	virtual config::attribute_value get_variable_const(const std::string& varname) const;
-	/// throws invalid_variablename_exception if varname is no valid variable name.
+	/** throws invalid_variablename_exception if varname is no valid variable name. */
 	config& get_variable_cfg(const std::string& varname);
-	/// does nothing if varname is no valid variable name.
+	/** does nothing if varname is no valid variable name. */
 	void set_variable(const std::string& varname, const t_string& value);
-	/// throws invalid_variablename_exception if varname is no valid variable name.
+	/** throws invalid_variablename_exception if varname is no valid variable name. */
 	config& add_variable_cfg(const std::string& varname, const config& value=config());
-	/// returns a variable_access that cannot be used to change the game variables
+	/** returns a variable_access that cannot be used to change the game variables */
 	variable_access_const get_variable_access_read(const std::string& varname) const
 	{
 		activate_scope_variable(varname);
 		return variable_access_const(varname, variables_);
 	}
-	/// returns a variable_access that can be used to change the game variables
+	/** returns a variable_access that can be used to change the game variables */
 	variable_access_create get_variable_access_write(const std::string& varname)
 	{
 		activate_scope_variable(varname);
 		return variable_access_create(varname, variables_);
 	}
-	/// Clears attributes config children
-	/// does nothing if varname is no valid variable name.
+	/**
+	 * Clears attributes config children
+	 * does nothing if varname is no valid variable name.
+	 */
 	void clear_variable(const std::string& varname);
-	/// Clears only the config children
-	/// does nothing if varname is no valid variable name.
+	/**
+	 * Clears only the config children
+	 * does nothing if varname is no valid variable name.
+	 */
 	void clear_variable_cfg(const std::string& varname);
 
 	const randomness::mt_rng& rng() const { return rng_; }
@@ -107,7 +111,7 @@ public:
 
 private:
 	void activate_scope_variable(std::string var_name) const;
-	///Used to delete variables.
+	/** Used to delete variables. */
 	variable_access_throw get_variable_access_throw(const std::string& varname)
 	{
 		activate_scope_variable(varname);
@@ -119,7 +123,7 @@ private:
 	PHASE phase_;
 	bool can_end_turn_;
 	t_string cannot_end_turn_reason_;
-	/// the scenario coming next (for campaigns)
+	/** the scenario coming next (for campaigns) */
 	std::string next_scenario_;
 	// the id of a scenario cannot change during a scenario
 	std::string id_;

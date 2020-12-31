@@ -45,7 +45,7 @@ struct mp_game_metadata
 	{
 
 	}
-	/// players and observers
+	/** players and observers */
 	std::set<std::string> connected_players;
 	bool is_host;
 	unsigned current_turn;

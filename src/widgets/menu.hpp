@@ -168,16 +168,20 @@ public:
 
 	void set_heading(const std::vector<std::string>& heading);
 
-	/// Set new items to show and redraw/recalculate everything. If
-	/// strip_spaces is false, spaces will remain at the item edges. If
-	/// keep_viewport is true, the menu tries to keep the selection at
-	/// the same position as it were before the items were set.
+	/**
+	 * Set new items to show and redraw/recalculate everything. If
+	 * strip_spaces is false, spaces will remain at the item edges. If
+	 * keep_viewport is true, the menu tries to keep the selection at
+	 * the same position as it were before the items were set.
+	 */
 	virtual void set_items(const std::vector<std::string>& items, bool strip_spaces=true,
 				   bool keep_viewport=false);
 
-	/// Set a new max height for this menu. Note that this does not take
-	/// effect immediately, only after certain operations that clear
-	/// everything, such as set_items().
+	/**
+	 * Set a new max height for this menu. Note that this does not take
+	 * effect immediately, only after certain operations that clear
+	 * everything, such as set_items().
+	 */
 	void set_max_height(const int new_max_height);
 	void set_max_width(const int new_max_width);
 
@@ -279,8 +283,10 @@ private:
 
 	void update_scrollbar_grip_height();
 
-	///variable which determines whether a numeric keypress should
-	///select an item on the dialog
+	/**
+	 * variable which determines whether a numeric keypress should
+	 * select an item on the dialog
+	 */
 	bool num_selects_;
 	// These two variables are used to get the correct double click
 	// behavior so that a click that causes one double click won't be
@@ -296,8 +302,10 @@ private:
 	bool sortreversed_;
 	int highlight_heading_;
 
-	/// Set new items to show. If strip_spaces is false, spaces will
-	/// remain at the item edges.
+	/**
+	 * Set new items to show. If strip_spaces is false, spaces will
+	 * remain at the item edges.
+	 */
 	void fill_items(const std::vector<std::string>& items, bool strip_spaces);
 
 	void do_sort();

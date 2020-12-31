@@ -377,7 +377,7 @@ bool contains_hashlist(const config& from, const config& to)
 	return true;
 }
 
-//! Surround with [dir][/dir]
+/** Surround with [dir][/dir] */
 static bool write_difference(config& pack, const config& from, const config& to, bool with_content)
 {
 	pack["name"] = to["name"];

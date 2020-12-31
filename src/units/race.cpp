@@ -26,11 +26,11 @@
 #include "utils/name_generator.hpp"
 #include "utils/name_generator_factory.hpp"
 
-/// Dummy race used when a race is not yet known.
+/** Dummy race used when a race is not yet known. */
 const unit_race unit_race::null_race;
-/// Standard string id (not translatable) for FEMALE
+/** Standard string id (not translatable) for FEMALE */
 const std::string unit_race::s_female("female");
-/// Standard string id (not translatable) for MALE
+/** Standard string id (not translatable) for MALE */
 const std::string unit_race::s_male("male");
 
 

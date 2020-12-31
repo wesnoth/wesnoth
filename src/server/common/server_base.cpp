@@ -227,10 +227,12 @@ void info_table_into_simple_wml(simple_wml::document& doc, const std::string& pa
 
 }
 
-/// Send a WML document from within a coroutine
-/// @param socket
-/// @param doc
-/// @param yield The function will suspend on write operation using this yield context
+/**
+ * Send a WML document from within a coroutine
+ * @param socket
+ * @param doc
+ * @param yield The function will suspend on write operation using this yield context
+ */
 void server_base::coro_send_doc(socket_ptr socket, simple_wml::document& doc, boost::asio::yield_context yield)
 {
 	try {

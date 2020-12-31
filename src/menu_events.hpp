@@ -110,9 +110,9 @@ public:
 			int side_num,
 			mouse_handler& mousehandler);
 
-	///@return If the recruit is possible, an empty string and set @a recruited_from; otherwise, return an error message string.
+	/** @return If the recruit is possible, an empty string and set @a recruited_from; otherwise, return an error message string. */
 	t_string can_recruit(const std::string& name, int side_num, map_location& target_hex, map_location& recruited_from);
-	///@return Whether or not the recruit was successful
+	/** @return Whether or not the recruit was successful */
 	bool do_recruit(const std::string& name, int side_num, map_location& target_hex);
 	void do_speak();
 	void do_search(const std::string& new_search);

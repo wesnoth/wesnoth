@@ -539,9 +539,11 @@ private:
 	// IP ban list and name ban list
 	std::vector<std::string> bans_;
 	std::vector<std::string> name_bans_;
-	/// in multiplayer campaigns it can happen that some players are still in the previousl scenario
-	/// keep track of those players because processing certain
-	/// input from those side wil lead to error (oos)
+	/**
+	 * in multiplayer campaigns it can happen that some players are still in the previous scenario
+	 * keep track of those players because processing certain
+	 * input from those side wil lead to error (oos)
+	 */
 	std::set<socket_ptr> players_not_advanced_;
 
 	std::string termination_;

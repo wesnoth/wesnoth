@@ -24,7 +24,7 @@ namespace ng {
 
 const std::string random_enemy_picture("units/random-dice.png");
 
-/// FLG stands for faction, leader and gender.
+/** FLG stands for faction, leader and gender. */
 class flg_manager
 {
 public:
@@ -97,9 +97,9 @@ private:
 	void select_default_faction();
 
 	int faction_index(const config& faction) const;
-	/// returns -1 if no leader with that name was found
+	/** returns -1 if no leader with that name was found */
 	int leader_index(const std::string& leader) const;
-	/// returns -1 if no gender with that name was found
+	/** returns -1 if no gender with that name was found */
 	int gender_index(const std::string& gender) const;
 
 	const std::vector<const config*>& era_factions_;

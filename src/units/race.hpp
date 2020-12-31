@@ -64,11 +64,11 @@ public:
 
 	const std::string& help_taxonomy() const { return help_taxonomy_; }
 
-	/// Dummy race used when a race is not yet known.
+	/** Dummy race used when a race is not yet known. */
 	static const unit_race null_race;
 
 private:
-	/// Only used to construct null_race.
+	/** Only used to construct null_race. */
 	unit_race();
 
 	const config cfg_;

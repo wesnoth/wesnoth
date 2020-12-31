@@ -83,7 +83,7 @@ public:
 	bool play_test();
 	bool play_screenshot_mode();
 	bool play_render_image_mode();
-	/// Runs unit tests specified on the command line
+	/** Runs unit tests specified on the command line */
 	unit_test_result unit_test();
 
 	bool is_loading() const;
@@ -92,7 +92,7 @@ public:
 	void set_tutorial();
 	void set_test(const std::string& id);
 
-	/// Return the ID of the campaign to jump to (skipping the main menu).
+	/** Return the ID of the campaign to jump to (skipping the main menu). */
 	std::string jump_to_campaign_id() const;
 	bool new_campaign();
 	bool goto_campaign();
@@ -126,8 +126,10 @@ private:
 	editor::EXIT_STATUS start_editor(const std::string& filename);
 	unit_test_result pass_victory_or_defeat(LEVEL_RESULT res);
 
-	/// Internal to the implementation of unit_test(). If a single instance of
-	/// Wesnoth is running multiple unit tests, this gets called once per test.
+	/**
+	 * Internal to the implementation of unit_test(). If a single instance of
+	 * Wesnoth is running multiple unit tests, this gets called once per test.
+	 */
 	unit_test_result single_unit_test();
 
 	const commandline_options& cmdline_opts_;

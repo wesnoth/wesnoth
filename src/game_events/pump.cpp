@@ -57,7 +57,7 @@ namespace game_events
 {
 namespace context
 {
-/// State when processing a particular flight of events or commands.
+/** State when processing a particular flight of events or commands. */
 struct state
 {
 	bool undo_disabled;
@@ -114,12 +114,12 @@ public:
 	pump_manager(pump_impl&);
 	~pump_manager();
 
-	/// Allows iteration through the queued events.
+	/** Allows iteration through the queued events. */
 	queued_event& next()
 	{
 		return queue_[pumped_count_++];
 	}
-	/// Indicates the iteration is over.
+	/** Indicates the iteration is over. */
 	bool done() const
 	{
 		return pumped_count_ >= queue_.size();

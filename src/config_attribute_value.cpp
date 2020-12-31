@@ -254,7 +254,7 @@ bool config_attribute_value::to_bool(bool def) const
 
 namespace
 {
-/// Visitor for converting a variant to a numeric type (T).
+/** Visitor for converting a variant to a numeric type (T). */
 template<typename T>
 class attribute_numeric_visitor : public boost::static_visitor<T>
 {
@@ -305,7 +305,7 @@ double config_attribute_value::to_double(double def) const
 	return apply_visitor(attribute_numeric_visitor<double>(def));
 }
 
-/// Visitor for converting a variant to a string.
+/** Visitor for converting a variant to a string. */
 class config_attribute_value::string_visitor : public boost::static_visitor<std::string>
 {
 	const std::string default_;
@@ -361,7 +361,7 @@ bool config_attribute_value::empty() const
 	return false;
 }
 
-/// Visitor handling equality checks.
+/** Visitor handling equality checks. */
 class config_attribute_value::equality_visitor : public boost::static_visitor<bool>
 {
 public:

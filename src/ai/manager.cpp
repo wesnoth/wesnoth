@@ -464,9 +464,9 @@ bool manager::should_intercept( const std::string& str ) const
 
 }
 
-//this is stub code to allow testing of basic 'history', 'repeat-last-command', 'add/remove/replace ai' capabilities.
-//yes, it doesn't look nice. but it is usable.
-//to be refactored at earliest opportunity
+// this is stub code to allow testing of basic 'history', 'repeat-last-command', 'add/remove/replace ai' capabilities.
+// yes, it doesn't look nice. but it is usable.
+// to be refactored at earliest opportunity
 // TODO: extract to separate class which will use fai or lua parser
 const std::string manager::internal_evaluate_command( side_number side, const std::string& str ){
 	const int MAX_HISTORY_VISIBLE = 30;
@@ -512,7 +512,7 @@ const std::string manager::internal_evaluate_command( side_number side, const st
 	std::vector< std::string > cmd = utils::parenthetical_split(str, ' ',"'","'");
 
 	if (cmd.size()==3){
-		//!add_ai side file
+		// add_ai side file
 		if (cmd.at(0)=="!add_ai"){
 			side = std::stoi(cmd.at(1));
 			std::string file = cmd.at(2);
@@ -522,7 +522,7 @@ const std::string manager::internal_evaluate_command( side_number side, const st
 				return std::string("AI MANAGER: failed attempt to add AI for side ")+std::to_string(side)+std::string(" from file ")+file;
 			}
 		}
-		//!replace_ai side file
+		// replace_ai side file
 		if (cmd.at(0)=="!replace_ai"){
 			side = std::stoi(cmd.at(1));
 			std::string file = cmd.at(2);
@@ -534,7 +534,7 @@ const std::string manager::internal_evaluate_command( side_number side, const st
 		}
 
 	} else if (cmd.size()==2){
-		//!remove_ai side
+		// remove_ai side
 		if (cmd.at(0)=="!remove_ai"){
 			side = std::stoi(cmd.at(1));
 			remove_ai_for_side(side);

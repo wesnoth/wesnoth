@@ -167,7 +167,7 @@ public:
 	map_location special_location(const std::string& id) const;
 
 
-	/// returns the side number of the side starting at position loc, 0 if no such side exists.
+	/** returns the side number of the side starting at position loc, 0 if no such side exists. */
 	const std::string* is_starting_position(const map_location& loc) const;
 	int num_valid_starting_positions() const;
 
