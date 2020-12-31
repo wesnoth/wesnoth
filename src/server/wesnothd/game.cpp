@@ -659,7 +659,7 @@ std::unique_ptr<simple_wml::document> game::change_controller_type(const std::si
 	change.set_attr("is_local", "no");
 
 	send_data(response, sock);
-	return std::unique_ptr<simple_wml::document>(response.clone());
+	return response.clone();
 }
 
 void game::notify_new_host()
@@ -1111,11 +1111,11 @@ bool game::process_turn(simple_wml::document& data, const socket_ptr& user)
 	for(simple_wml::node* command : commands) {
 		simple_wml::node* const speak = (*command).child("speak");
 		if(speak == nullptr) {
-			simple_wml::document* mdata = new simple_wml::document;
+			auto mdata = std::make_unique<simple_wml::document>();
 			simple_wml::node& mturn = mdata->root().add_child("turn");
 			(*command).copy_into(mturn.add_child("command"));
 			send_data(*mdata, user, "game replay");
-			record_data(mdata);
+			record_data(std::move(mdata));
 			continue;
 		}
 
@@ -1135,10 +1135,10 @@ bool game::process_turn(simple_wml::document& data, const socket_ptr& user)
 
 		if(to_sides.empty()) {
 			send_data(*message, user, "game message");
-			record_data(message.release());
+			record_data(std::move(message));
 		} else if(to_sides == game_config::observer_team_name) {
 			send_to_players(*message, observers_, user);
-			record_data(message.release());
+			record_data(std::move(message));
 		} else {
 			send_data_sides(*message, to_sides, user, "game message");
 		}
@@ -1154,7 +1154,7 @@ void game::handle_random_choice(const simple_wml::node&)
 	std::stringstream stream;
 	stream << std::setfill('0') << std::setw(sizeof(uint32_t) * 2) << std::hex << seed;
 
-	simple_wml::document* mdata = new simple_wml::document;
+	auto mdata = std::make_unique<simple_wml::document>();
 	simple_wml::node& turn = mdata->root().add_child("turn");
 	simple_wml::node& command = turn.add_child("command");
 	simple_wml::node& random_seed = command.add_child("random_seed");
@@ -1165,7 +1165,7 @@ void game::handle_random_choice(const simple_wml::node&)
 	command.set_attr("dependent", "yes");
 
 	send_data(*mdata, socket_ptr(), "game replay");
-	record_data(mdata);
+	record_data(std::move(mdata));
 }
 
 void game::handle_add_side_wml(const simple_wml::node&)
@@ -1218,7 +1218,7 @@ void game::handle_controller_choice(const simple_wml::node& req)
 
 	side_controllers_[side_index] = new_controller;
 
-	simple_wml::document* mdata = new simple_wml::document;
+	auto mdata = std::make_unique<simple_wml::document>();
 	simple_wml::node& turn = mdata->root().add_child("turn");
 	simple_wml::node& command = turn.add_child("command");
 	simple_wml::node& change_controller_wml = command.add_child("change_controller_wml");
@@ -1237,7 +1237,7 @@ void game::handle_controller_choice(const simple_wml::node& req)
 	change_controller_wml.set_attr("is_local", "no");
 
 	send_data(*mdata, sides_[side_index], "game replay");
-	record_data(mdata);
+	record_data(std::move(mdata));
 }
 
 void game::handle_choice(const simple_wml::node& data, const socket_ptr& user)
@@ -1787,17 +1787,17 @@ void game::send_history(const socket_ptr& socket) const
 	// TODO: Work out how to concentate buffers without decompressing.
 	std::string buf;
 	for(auto& h : history_) {
-		buf += h.output();
+		buf += h->output();
 	}
 
 	try {
-		simple_wml::document* doc = new simple_wml::document(buf.c_str(), simple_wml::INIT_STATIC);
+		auto doc = std::make_unique<simple_wml::document>(buf.c_str(), simple_wml::INIT_STATIC);
 		doc->compress();
 
 		server.async_send_doc_queued(socket, *doc);
 
 		history_.clear();
-		history_.push_back(doc);
+		history_.push_back(std::move(doc));
 	} catch(const simple_wml::error& e) {
 		WRN_CONFIG << __func__ << ": simple_wml error: " << e.message << std::endl;
 	}
@@ -1841,7 +1841,7 @@ void game::save_replay()
 
 	std::string replay_commands;
 	for(const auto& h : history_) {
-		const simple_wml::node::child_list& turn_list = h.root().children("turn");
+		const simple_wml::node::child_list& turn_list = h->root().children("turn");
 
 		for(const simple_wml::node* turn : turn_list) {
 			replay_commands += simple_wml::node_to_string(*turn);
@@ -1889,10 +1889,10 @@ void game::save_replay()
 	}
 }
 
-void game::record_data(simple_wml::document* data)
+void game::record_data(std::unique_ptr<simple_wml::document> data)
 {
 	data->compress();
-	history_.push_back(data);
+	history_.push_back(std::move(data));
 }
 
 void game::clear_history()
@@ -1998,14 +1998,12 @@ socket_ptr game::find_user(const simple_wml::string_span& name)
 
 void game::send_and_record_server_message(const char* message, const socket_ptr& exclude)
 {
-	simple_wml::document* doc = new simple_wml::document;
-	send_server_message(message, socket_ptr(), doc);
+	auto doc = std::make_unique<simple_wml::document>();
+	send_server_message(message, socket_ptr(), doc.get());
 	send_data(*doc, exclude, "message");
 
 	if(started_) {
-		record_data(doc);
-	} else {
-		delete doc;
+		record_data(std::move(doc));
 	}
 }
 

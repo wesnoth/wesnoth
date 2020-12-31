@@ -1115,11 +1115,11 @@ void document::generate_root()
 	root_ = new node(*this, nullptr, &cbuf);
 }
 
-document* document::clone()
+std::unique_ptr<document> document::clone()
 {
 	char* buf = new char[strlen(output())+1];
 	strcpy(buf, output());
-	return new document(buf);
+	return std::make_unique<document>(buf);
 }
 
 void document::swap(document& o)
