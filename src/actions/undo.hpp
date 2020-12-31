@@ -24,8 +24,6 @@
 #include "units/ptr.hpp"
 #include "undo_action.hpp"
 
-#include <boost/ptr_container/ptr_vector.hpp>
-
 #include <vector>
 
 namespace actions {
