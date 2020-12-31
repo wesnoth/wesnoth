@@ -736,7 +736,7 @@ void server::login_client(boost::asio::yield_context yield, socket_ptr socket)
 	}
 
 	// Log the IP
-	connection_log ip_name = connection_log(username, client_address(socket), 0);
+	connection_log ip_name { username, client_address(socket), 0 };
 
 	if(std::find(ip_log_.begin(), ip_log_.end(), ip_name) == ip_log_.end()) {
 		ip_log_.push_back(ip_name);
@@ -924,7 +924,7 @@ bool server::authenticate(
 				// Reset the random seed
 				seeds_.erase(socket.get());
 
-				login_log login_ip = login_log(client_address(socket), 0, now);
+				login_log login_ip { client_address(socket), 0, now };
 				auto i = std::find(failed_logins_.begin(), failed_logins_.end(), login_ip);
 
 				if(i == failed_logins_.end()) {
@@ -1887,7 +1887,7 @@ void server::remove_player(socket_ptr socket)
 			   << "\n";
 
 	// Find the matching nick-ip pair in the log and update the sign off time
-	connection_log ip_name = connection_log(iter->info().name(), ip, 0);
+	connection_log ip_name { iter->info().name(), ip, 0 };
 
 	auto i = std::find(ip_log_.begin(), ip_log_.end(), ip_name);
 	if(i != ip_log_.end()) {

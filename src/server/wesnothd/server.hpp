@@ -62,15 +62,16 @@ private:
 	void send_to_lobby(simple_wml::document& data, socket_ptr exclude = socket_ptr());
 	void send_server_message_to_lobby(const std::string& message, socket_ptr exclude = socket_ptr());
 	void send_server_message_to_all(const std::string& message, socket_ptr exclude = socket_ptr());
-	bool player_is_in_game(socket_ptr socket) const {
-		return bool(player_connections_.find(socket)->get_game());
+
+	bool player_is_in_game(socket_ptr socket) const
+	{
+		return player_connections_.find(socket)->get_game() != nullptr;
 	}
 
 	wesnothd::ban_manager ban_manager_;
 
-	struct connection_log {
-		connection_log(std::string _nick, std::string _ip, std::time_t _log_off) :
-			nick(_nick), ip(_ip), log_off(_log_off) {}
+	struct connection_log
+	{
 		std::string nick, ip;
 		std::time_t log_off;
 
@@ -83,9 +84,8 @@ private:
 
 	std::deque<connection_log> ip_log_;
 
-	struct login_log {
-		login_log(std::string _ip, int _attempts, std::time_t _first_attempt) :
-			ip(_ip), attempts(_attempts), first_attempt(_first_attempt) {}
+	struct login_log
+	{
 		std::string ip;
 		int attempts;
 		std::time_t first_attempt;
@@ -105,13 +105,21 @@ private:
 	std::mt19937 die_;
 
 	player_connections player_connections_;
-	std::deque<std::shared_ptr<game>> games() {
+
+	std::deque<std::shared_ptr<game>> games() const
+	{
 		std::deque<std::shared_ptr<game>> result;
-		for(const auto& iter : player_connections_.get<game_t>())
-			if(result.empty() || iter.get_game() != result.back())
+
+		for(const auto& iter : player_connections_.get<game_t>()) {
+			if(result.empty() || iter.get_game() != result.back()) {
 				result.push_back(iter.get_game());
-		if(!result.empty() && result.front() == 0)
+			}
+		}
+
+		if(!result.empty() && result.front() == nullptr) {
 			result.pop_front();
+		}
+
 		return result;
 	}
 
