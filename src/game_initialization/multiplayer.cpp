@@ -161,6 +161,13 @@ mp_manager::mp_manager(const std::string& host, saved_game& state)
 		gui2::dialogs::loading_screen::display([&]() {
 			connection = open_connection(host);
 
+			// If for whatever reason our connection is null at this point (dismissing the password prompt, for
+			// instance), treat it as a normal condition and exit. Any actual error conditions throw exceptions
+			// which can be handled higher up the stack.
+			if(connection == nullptr) {
+				return;
+			}
+
 			gui2::dialogs::loading_screen::progress(loading_stage::download_lobby_data);
 
 			std::promise<void> received_initial_gamelist;
