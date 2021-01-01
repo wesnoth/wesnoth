@@ -44,25 +44,25 @@ static lg::log_domain log_engine("engine");
 #define DBG_NG LOG_STREAM(debug, log_engine)
 #define ERR_NG LOG_STREAM(err, log_engine)
 
-game_state::game_state(const config & level, play_controller & pc, const ter_data_cache & tdata) :
-	gamedata_(level),
-	board_(tdata, level),
-	tod_manager_(level),
-	pathfind_manager_(new pathfind::manager(level)),
-	reports_(new reports()),
-	lua_kernel_(new game_lua_kernel(*this, pc, *reports_)),
-	ai_manager_(),
-	events_manager_(new game_events::manager()),
-	//TODO: this construct units (in dimiss undo action) but resrouces:: are not available yet,
+game_state::game_state(const config& level, play_controller& pc, const ter_data_cache& tdata)
+	: gamedata_(level)
+	, board_(tdata, level)
+	, tod_manager_(level)
+	, pathfind_manager_(new pathfind::manager(level))
+	, reports_(new reports())
+	, lua_kernel_(new game_lua_kernel(*this, pc, *reports_))
+	, ai_manager_()
+	, events_manager_(new game_events::manager())
+	// TODO: this construct units (in dimiss undo action) but resrouces:: are not available yet,
 	//      so we might want to move the innitialisation of undo_stack_ to game_state::init
-	undo_stack_(new actions::undo_list(level.child("undo_stack"))),
-	player_number_(level["playing_team"].to_int() + 1),
-	next_player_number_(level["next_player_number"].to_int(player_number_ + 1)),
-	do_healing_(level["do_healing"].to_bool(false)),
-	init_side_done_(level["init_side_done"].to_bool(false)),
-	start_event_fired_(!level["playing_team"].empty()),
-	server_request_number_(level["server_request_number"].to_int()),
-	first_human_team_(-1)
+	, undo_stack_(new actions::undo_list(level.child("undo_stack")))
+	, player_number_(level["playing_team"].to_int() + 1)
+	, next_player_number_(level["next_player_number"].to_int(player_number_ + 1))
+	, do_healing_(level["do_healing"].to_bool(false))
+	, init_side_done_(level["init_side_done"].to_bool(false))
+	, start_event_fired_(!level["playing_team"].empty())
+	, server_request_number_(level["server_request_number"].to_int())
+	, first_human_team_(-1)
 {
 	lua_kernel_->load_core();
 	if(const config& endlevel_cfg = level.child("end_level_data")) {
@@ -73,23 +73,23 @@ game_state::game_state(const config & level, play_controller & pc, const ter_dat
 	}
 }
 
-game_state::game_state(const config & level, play_controller & pc, game_board& board) :
-	gamedata_(level),
-	board_(board),
-	tod_manager_(level),
-	pathfind_manager_(new pathfind::manager(level)),
-	reports_(new reports()),
-	lua_kernel_(new game_lua_kernel(*this, pc, *reports_)),
-	ai_manager_(),
-	events_manager_(new game_events::manager()),
-	player_number_(level["playing_team"].to_int() + 1),
-	next_player_number_(level["next_player_number"].to_int(player_number_ + 1)),
-	do_healing_(level["do_healing"].to_bool(false)),
-	end_level_data_(),
-	init_side_done_(level["init_side_done"].to_bool(false)),
-	start_event_fired_(!level["playing_team"].empty()),
-	server_request_number_(level["server_request_number"].to_int()),
-	first_human_team_(-1)
+game_state::game_state(const config& level, play_controller& pc, game_board& board)
+	: gamedata_(level)
+	, board_(board)
+	, tod_manager_(level)
+	, pathfind_manager_(new pathfind::manager(level))
+	, reports_(new reports())
+	, lua_kernel_(new game_lua_kernel(*this, pc, *reports_))
+	, ai_manager_()
+	, events_manager_(new game_events::manager())
+	, player_number_(level["playing_team"].to_int() + 1)
+	, next_player_number_(level["next_player_number"].to_int(player_number_ + 1))
+	, do_healing_(level["do_healing"].to_bool(false))
+	, end_level_data_()
+	, init_side_done_(level["init_side_done"].to_bool(false))
+	, start_event_fired_(!level["playing_team"].empty())
+	, server_request_number_(level["server_request_number"].to_int())
+	, first_human_team_(-1)
 {
 	lua_kernel_->load_core();
 	events_manager_->read_scenario(level);
@@ -100,7 +100,6 @@ game_state::game_state(const config & level, play_controller & pc, game_board& b
 		end_level_data_ = el_data;
 	}
 }
-
 
 game_state::~game_state() {}
 
