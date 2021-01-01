@@ -82,7 +82,7 @@ public:
 
 private:
 	flg_manager(const flg_manager&) = delete;
-	void operator=(const flg_manager&) = delete;
+	flg_manager& operator=(const flg_manager&) = delete;
 
 	void update_available_factions();
 	void update_available_leaders();

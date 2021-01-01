@@ -110,7 +110,7 @@ public:
 
 private:
 	connect_engine(const connect_engine&) = delete;
-	void operator=(const connect_engine&) = delete;
+	connect_engine& operator=(const connect_engine&) = delete;
 
 	void send_level_data() const;
 
@@ -233,7 +233,7 @@ public:
 
 private:
 	side_engine(const side_engine& engine) = delete;
-	void operator=(const side_engine&) = delete;
+	side_engine& operator=(const side_engine&) = delete;
 
 	friend class connect_engine;
 

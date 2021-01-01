@@ -179,7 +179,7 @@ public:
 
 private:
 	node(const node&) = delete;
-	void operator=(const node&) = delete;
+	node& operator=(const node&) = delete;
 
 	int get_children(const string_span& name);
 	int get_children(const char* name);
@@ -291,7 +291,7 @@ public:
 private:
 	void generate_root();
 	document(const document&) = delete;
-	void operator=(const document&) = delete;
+	document& operator=(const document&) = delete;
 
 	string_span compressed_buf_;
 	const char* output_;

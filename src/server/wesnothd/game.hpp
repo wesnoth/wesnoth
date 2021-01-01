@@ -341,7 +341,7 @@ public:
 private:
 	// forbidden operations
 	game(const game&) = delete;
-	void operator=(const game&) = delete;
+	game& operator=(const game&) = delete;
 
 	std::size_t current_side() const
 	{
