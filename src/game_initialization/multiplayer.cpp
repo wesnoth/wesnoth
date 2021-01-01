@@ -115,13 +115,13 @@ private:
 	bool enter_lobby_mode();
 
 	/** Opens the MP Create screen for hosts to configure a new game. */
-	void enter_create_mode();
+	void enter_create_mode() const;
 
 	/** Opens the MP Staging screen for hosts to wait for players. */
-	void enter_staging_mode();
+	void enter_staging_mode() const;
 
 	/** Opens the MP Join Game screen for non-host players and observers. */
-	void enter_wait_mode(int game_id, bool observe);
+	void enter_wait_mode(int game_id, bool observe) const;
 
 	/** Worker thread to handle receiving and processing network data. */
 	std::thread network_worker;
@@ -590,7 +590,7 @@ bool mp_manager::enter_lobby_mode()
 	return true;
 }
 
-void mp_manager::enter_create_mode()
+void mp_manager::enter_create_mode() const
 {
 	DBG_MP << "entering create mode" << std::endl;
 
@@ -601,7 +601,7 @@ void mp_manager::enter_create_mode()
 	}
 }
 
-void mp_manager::enter_staging_mode()
+void mp_manager::enter_staging_mode() const
 {
 	DBG_MP << "entering connect mode" << std::endl;
 
@@ -631,7 +631,7 @@ void mp_manager::enter_staging_mode()
 	}
 }
 
-void mp_manager::enter_wait_mode(int game_id, bool observe)
+void mp_manager::enter_wait_mode(int game_id, bool observe) const
 {
 	DBG_MP << "entering wait mode" << std::endl;
 
@@ -643,7 +643,7 @@ void mp_manager::enter_wait_mode(int game_id, bool observe)
 	mp_game_metadata metadata(*connection);
 	metadata.is_host = false;
 
-	if(mp::game_info* gi = lobby_info.get_game_by_id(game_id)) {
+	if(const mp::game_info* gi = lobby_info.get_game_by_id(game_id)) {
 		metadata.current_turn = gi->current_turn;
 	}
 
