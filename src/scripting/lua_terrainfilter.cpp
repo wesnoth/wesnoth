@@ -665,8 +665,11 @@ std::unique_ptr<filter_impl> build_filter(lua_State* L, int res_index, knows_set
 //////////////// PUBLIC API ////////////////
 
 namespace lua_mapgen {
-/// @a data_index a index to the lua stack pointing to the lua table that describes the filter.
-/// @a res_index a _positive_ index to the lua stack pointing to the lua table that describes the filter resources.
+/**
+ * @param L the pointer to the lua interpreter.
+ * @param data_index a index to the lua stack pointing to the lua table that describes the filter.
+ * @param res_index a _positive_ index to the lua stack pointing to the lua table that describes the filter resources.
+ */
 filter::filter(lua_State* L, int data_index, int res_index)
 {
 	LOG_LMG <<  "creating filter object\n";

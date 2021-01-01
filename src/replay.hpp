@@ -64,10 +64,12 @@ public:
 	*/
 	config& get_last_real_command();
 	/**
-		adds a user_input to the replay
-		@param from_side the side that had to make the decision, -1 for 'server'
+	 * adds a user_input to the replay
+	 * @param name The tag name of the config to add
+	 * @param input the contents of the config to add
+	 * @param from_side the side that had to make the decision, -1 for 'server'
 	*/
-	void user_input(const std::string &, const config &, int from_side);
+	void user_input(const std::string &name, const config &input, int from_side);
 	void add_label(const terrain_label*);
 	void clear_labels(const std::string&, bool);
 	void add_rename(const std::string& name, const map_location& loc);

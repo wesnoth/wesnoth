@@ -180,13 +180,10 @@ private:
 
 	chatbox* chatbox_;
 
-	toggle_button* filter_friends_;
-
-	toggle_button* filter_ignored_;
-
-	toggle_button* filter_slots_;
-
-	toggle_button* filter_invert_;
+	field_bool* filter_friends_;
+	field_bool* filter_ignored_;
+	field_bool* filter_slots_;
+	field_bool* filter_invert_;
 
 	text_box* filter_text_;
 

@@ -255,12 +255,12 @@ enum class op_code { n_var, FOREACH_SPIRIT_PO_BINARY_OP(ENUMERATE) not_op };
 
 #undef ENUMERATE
 
-/// Instruction that causes us to skip upcoming instructions
+/** Instruction that causes us to skip upcoming instructions */
 struct skip {
   uint distance;
 };
 
-/// Instructions that conditionally cause us to skip upcoming instructions
+/** Instructions that conditionally cause us to skip upcoming instructions */
 struct skip_if {
   uint distance;
 };

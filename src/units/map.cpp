@@ -232,7 +232,7 @@ unit_map::umap_retval_pair_t unit_map::replace(const map_location& l, unit_ptr p
 
 std::size_t unit_map::num_iters() const
 {
-	/// Add up number of extant iterators
+	/** Add up number of extant iterators */
 	std::size_t num_iters(0);
 	umap::const_iterator ui = umap_.begin();
 	umap::const_iterator uend = umap_.end();

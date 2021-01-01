@@ -158,7 +158,7 @@ static std::string do_interpolation(const std::string &str, const variable_set& 
 		// Two dots in a row cannot be part of a valid variable name.
 		// That matters for random=, e.g. $x..$y
 		var_end = std::adjacent_find(var_name_begin, var_end, two_dots);
-		/// the default value is specified after ''?'
+		// the default value is specified after ''?'
 		const std::string::iterator default_start = var_end < res.end() && *var_end == '?' ? var_end + 1 : res.end();
 
 		// If the last character is '.', then it can't be a sub-variable.

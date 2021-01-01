@@ -44,13 +44,17 @@ namespace game_events
 		static const entity_location null_entity;
 
 	private:
-		/// The underlying ID of the unit associated with this.
-		/// Set to 0 if there is no associated unit.
+		/**
+		 * The underlying ID of the unit associated with this.
+		 * Set to 0 if there is no associated unit.
+		 */
 		std::size_t id_;
 
-		/// This map_location allows a unit to be filtered as if it were
-		/// somewhere other than where it is. (Use the parent struct if
-		/// you want to locate the unit.)
+		/**
+		 * This map_location allows a unit to be filtered as if it were
+		 * somewhere other than where it is. (Use the parent struct if
+		 * you want to locate the unit.)
+		 */
 		map_location filter_loc_;
 	};
 }

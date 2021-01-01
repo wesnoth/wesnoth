@@ -105,8 +105,7 @@ struct battle_context_unit_stats
 	{
 	}
 
-	/// Calculates the number of blows we would have if we had @a new_hp
-	// instead of the recorded hp.
+	/** Calculates the number of blows we would have if we had @a new_hp instead of the recorded hp. */
 	unsigned int calc_blows(unsigned new_hp) const
 	{
 		return swarm_blows(swarm_min, swarm_max, new_hp, max_hp);

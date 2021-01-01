@@ -10,8 +10,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
-"POT-Creation-Date: 2020-11-21 01:41-0300\n"
-"PO-Revision-Date: 2020-08-04 10:24+0200\n"
+"POT-Creation-Date: 2020-12-18 22:27-0300\n"
+"PO-Revision-Date: 2020-12-21 13:02+0100\n"
 "Last-Translator: Pepe <donpepe1963@gmail.com>\n"
 "Language-Team: Wesnoth\n"
 "Language: es\n"
@@ -468,11 +468,9 @@ msgstr "B<--log-precise>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:177
-#, fuzzy
-#| msgid "shows the timestamps in the logfile with more precision."
 msgid "shows the timestamps in log output with more precision."
 msgstr ""
-"muestra los marcadores de tiempo del archivo de registro con mayor precisión"
+"muestra los marcadores de tiempo del archivo de registro con mayor precisión."
 
 #. type: TP
 #: doc/man/wesnoth.6:177
@@ -968,7 +966,7 @@ msgstr "B<-u,\\ --unit>I<\\ scenario-id>"
 msgid "runs the specified test scenario as a unit test. Implies B<--nogui>."
 msgstr ""
 "ejecuta el escenario de prueba especificado para testar una unidad. Implica "
-"B<--nogui.>"
+"B<--nogui>."
 
 #. type: TP
 #: doc/man/wesnoth.6:354
@@ -2316,36 +2314,7 @@ msgstr ""
 msgid "B<wesnoth>(6)"
 msgstr "B<wesnoth>(6)"
 
-#~ msgid "B<--proxy>"
-#~ msgstr "B<--proxy>"
-
-#~ msgid "enables usage of proxy for network connections."
-#~ msgstr "habilita el uso de proxy para conexiones de red."
-
-#~ msgid "B<--proxy-address>I<\\ address>"
-#~ msgstr "B<--proxy-address>I<\\ address>"
-
-#~ msgid "specifies I<address> of the proxy."
-#~ msgstr "especifica la  I<address> para el proxy."
-
-#~ msgid "B<--proxy-port>I<\\ port>"
-#~ msgstr "B<--proxy-port>I<\\ port>"
-
-#~ msgid "specifies I<port> of the proxy."
-#~ msgstr "especifica el  I<port> para el proxy."
-
-#~ msgid "B<--proxy-user>I<\\ username>"
-#~ msgstr "B<--proxy-user>I<\\ username>"
-
-#~ msgid "specifies I<username> to log in to the proxy."
-#~ msgstr "especifica el I<username> para iniciar sesión en el proxy."
-
-#~ msgid "B<--proxy-password>I<\\ password>"
-#~ msgstr "B<--proxy-password>I<\\ password>"
-
-#~ msgid "specifies I<password> to log in to the proxy."
-#~ msgstr "especifica la I<password> para iniciar sesión en el proxy."
-
+#, no-wrap
 #~ msgid "B<user_handler>"
 #~ msgstr "B<user_handler>"
 
@@ -2382,6 +2351,7 @@ msgstr "B<wesnoth>(6)"
 #~ "sus propios datos sobre los usuarios. Tendrá que crear esta tabla de "
 #~ "forma manual."
 
+#, no-wrap
 #~ msgid "B<user_expiration>"
 #~ msgstr "B<user_expiration>"
 
@@ -2400,9 +2370,11 @@ msgstr "B<wesnoth>(6)"
 #~ "usuarios enviará correos electrónicos. Por ahora sólo es utilizado por el "
 #~ "servicio de ejemplo (user_handler=sample)."
 
+#, no-wrap
 #~ msgid "B<server>"
 #~ msgstr "B<server>"
 
+#, no-wrap
 #~ msgid "B<username>"
 #~ msgstr "B<username>"
 
@@ -2411,20 +2383,53 @@ msgstr "B<wesnoth>(6)"
 #~ "El nombre de usuario utilizado para iniciar sesión en el servidor de "
 #~ "correos."
 
+#, no-wrap
 #~ msgid "B<password>"
 #~ msgstr "B<password>"
 
+#, no-wrap
 #~ msgid "B<from_address>"
 #~ msgstr "B<from_address>"
 
 #~ msgid "The reply-to address of you mail."
 #~ msgstr "La dirección de respuesta (reply-to) de su correo."
 
+#, no-wrap
 #~ msgid "B<mail_port>"
 #~ msgstr "B<mail_port>"
 
 #~ msgid "The port on which your mail server is running. Default is 25."
 #~ msgstr "El puerto del servidor de correo (por defecto, 25)."
+
+#~ msgid "B<--proxy>"
+#~ msgstr "B<--proxy>"
+
+#~ msgid "enables usage of proxy for network connections."
+#~ msgstr "habilita el uso de proxy para conexiones de red."
+
+#~ msgid "B<--proxy-address>I<\\ address>"
+#~ msgstr "B<--proxy-address>I<\\ address>"
+
+#~ msgid "specifies I<address> of the proxy."
+#~ msgstr "especifica la  I<address> para el proxy."
+
+#~ msgid "B<--proxy-port>I<\\ port>"
+#~ msgstr "B<--proxy-port>I<\\ port>"
+
+#~ msgid "specifies I<port> of the proxy."
+#~ msgstr "especifica el  I<port> para el proxy."
+
+#~ msgid "B<--proxy-user>I<\\ username>"
+#~ msgstr "B<--proxy-user>I<\\ username>"
+
+#~ msgid "specifies I<username> to log in to the proxy."
+#~ msgstr "especifica el I<username> para iniciar sesión en el proxy."
+
+#~ msgid "B<--proxy-password>I<\\ password>"
+#~ msgstr "B<--proxy-password>I<\\ password>"
+
+#~ msgid "specifies I<password> to log in to the proxy."
+#~ msgstr "especifica la I<password> para iniciar sesión en el proxy."
 
 #~ msgid ""
 #~ "(for user_handler=forum) The name of the table in which wesnothd will "

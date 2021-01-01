@@ -60,11 +60,18 @@ public:
 		const std::string addr;
 
 		/**
+		 * context of the coroutine the request is executed in
+		 * async operations on @a sock can use it instead of a handler.
+		 */
+		boost::asio::yield_context yield;
+
+		/**
 		 * Constructor.
 		 *
 		 * @param reqcmd  Request command.
 		 * @param reqcfg  Request WML body.
 		 * @param reqsock Client socket that initiated the request.
+		 * @param yield The function will suspend on write operation using this yield context
 		 *
 		 * @note Neither @a reqcmd nor @a reqcfg are copied into instances, so
 		 *       they are required to exist for as long as every @a request
@@ -74,11 +81,13 @@ public:
 		 */
 		request(const std::string& reqcmd,
 				config& reqcfg,
-				socket_ptr reqsock)
+				socket_ptr reqsock,
+				boost::asio::yield_context yield)
 			: cmd(reqcmd)
 			, cfg(reqcfg)
 			, sock(reqsock)
 			, addr(client_address(sock))
+			, yield(yield)
 		{}
 	};
 
@@ -125,7 +134,6 @@ private:
 	boost::asio::basic_waitable_timer<std::chrono::steady_clock> flush_timer_;
 
 	void handle_new_client(socket_ptr socket);
-	void handle_request(socket_ptr socket, std::shared_ptr<simple_wml::document> doc);
 
 #ifndef _WIN32
 	void handle_read_from_fifo(const boost::system::error_code& error, std::size_t bytes_transferred);

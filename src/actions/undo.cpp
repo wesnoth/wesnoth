@@ -145,7 +145,7 @@ undo_list::~undo_list()
  */
 void undo_list::add_auto_shroud(bool turned_on)
 {
-	/// @todo: Consecutive shroud actions can be collapsed into one.
+	// TODO: Consecutive shroud actions can be collapsed into one.
 
 	// Do not call add(), as this should not clear the redo stack.
 	add(new undo::auto_shroud_action(turned_on));
@@ -153,7 +153,7 @@ void undo_list::add_auto_shroud(bool turned_on)
 
 void undo_list::add_dummy()
 {
-	/// @todo: Consecutive shroud actions can be collapsed into one.
+	// TODO: Consecutive shroud actions can be collapsed into one.
 
 	// Do not call add(), as this should not clear the redo stack.
 	add(new undo_dummy_action());
@@ -204,7 +204,7 @@ void undo_list::add_recruit(const unit_const_ptr u, const map_location& loc,
  */
 void undo_list::add_update_shroud()
 {
-	/// @todo: Consecutive shroud actions can be collapsed into one.
+	// TODO: Consecutive shroud actions can be collapsed into one.
 
 	add(new undo::update_shroud_action());
 }

@@ -701,7 +701,7 @@ unit_map::iterator menu_handler::current_unit()
 // Helpers for create_unit()
 namespace
 {
-/// Allows a function to return both a type and a gender.
+/** Allows a function to return both a type and a gender. */
 typedef std::tuple<const unit_type*, unit_race::GENDER, std::string> type_gender_variation;
 
 /**
@@ -734,8 +734,8 @@ type_gender_variation choose_unit()
 
 	unit_race::GENDER gender = create_dlg.gender();
 	// Do not try to set bad genders, may mess up l10n
-	/// @todo Is this actually necessary?
-	/// (Maybe create_dlg can enforce proper gender selection?)
+	// TODO: Is this actually necessary?
+	// (Maybe create_dlg can enforce proper gender selection?)
 	if(ut.genders().end() == std::find(ut.genders().begin(), ut.genders().end(), gender)) {
 		gender = ut.genders().front();
 	}
@@ -1485,6 +1485,7 @@ void console_handler::do_droid()
 	std::transform(action.begin(), action.end(), action.begin(), tolower);
 	// default to the current side if empty
 	const unsigned int side = side_s.empty() ? team_num_ : lexical_cast_default<unsigned int>(side_s);
+	const bool is_your_turn = resources::controller->current_side() == static_cast<int>(display::get_singleton()->viewing_side());
 
 	utils::string_map symbols;
 	symbols["side"] = std::to_string(side);
@@ -1498,43 +1499,81 @@ void console_handler::do_droid()
 	} else if(menu_handler_.board().get_team(side).is_local()) {
 		bool changed = false;
 
+		const bool is_human = menu_handler_.board().get_team(side).is_human();
+		const bool is_droid = menu_handler_.board().get_team(side).is_droid();
+		const bool is_proxy_human = menu_handler_.board().get_team(side).is_proxy_human();
+		const bool is_ai = menu_handler_.board().get_team(side).is_ai();
+		const std::string human = team::CONTROLLER::enum_to_string(team::CONTROLLER::HUMAN);
+		const std::string ai = team::CONTROLLER::enum_to_string(team::CONTROLLER::AI);
+
 		if(action == "on") {
-			if(!menu_handler_.board().get_team(side).is_human() || !menu_handler_.board().get_team(side).is_droid()) {
+			if(is_ai && !is_your_turn) {
+				command_failed(_("It is not allowed to change a side from AI to human control when it's not your turn."));
+				return;
+			}
+			if(!is_human || !is_droid) {
 				menu_handler_.board().get_team(side).make_human();
 				menu_handler_.board().get_team(side).make_droid();
 				changed = true;
+				if(is_ai) {
+					menu_handler_.pc_.send_to_wesnothd(config {"change_controller", config {"side", side, "player", preferences::login(), "to", human}});
+				}
 				print(get_cmd(), VGETTEXT("Side '$side' controller is now controlled by: AI.", symbols));
 			} else {
 				print(get_cmd(), VGETTEXT("Side '$side' is already droided.", symbols));
 			}
 		} else if(action == "off") {
-			if(!menu_handler_.board().get_team(side).is_human() || !menu_handler_.board().get_team(side).is_proxy_human()) {
+			if(is_ai && !is_your_turn) {
+				command_failed(_("It is not allowed to change a side from AI to human control when it's not your turn."));
+				return;
+			}
+			if(!is_human || !is_proxy_human) {
 				menu_handler_.board().get_team(side).make_human();
 				menu_handler_.board().get_team(side).make_proxy_human();
 				changed = true;
+				if(is_ai) {
+					menu_handler_.pc_.send_to_wesnothd(config {"change_controller", config {"side", side, "player", preferences::login(), "to", human}});
+				}
 				print(get_cmd(), VGETTEXT("Side '$side' controller is now controlled by: human.", symbols));
 			} else {
 				print(get_cmd(), VGETTEXT("Side '$side' is already not droided.", symbols));
 			}
 		} else if(action == "full") {
-			if(!menu_handler_.board().get_team(side).is_ai() || !menu_handler_.board().get_team(side).is_droid()) {
+			if(!is_your_turn) {
+				command_failed(_("It is not allowed to change a side from human to AI control when it's not your turn."));
+				return;
+			}
+			if(!is_ai || !is_droid) {
 				menu_handler_.board().get_team(side).make_ai();
 				menu_handler_.board().get_team(side).make_droid();
 				changed = true;
+				if(is_human || is_proxy_human) {
+					menu_handler_.pc_.send_to_wesnothd(config {"change_controller", config {"side", side, "player", preferences::login(), "to", ai}});
+				}
 				print(get_cmd(), VGETTEXT("Side '$side' controller is now fully controlled by: AI.", symbols));
 			} else {
 				print(get_cmd(), VGETTEXT("Side '$side' is already fully AI controlled.", symbols));
 			}
 		} else if(action == "") {
-			if(menu_handler_.board().get_team(side).is_ai() || menu_handler_.board().get_team(side).is_droid()) {
+			if(is_ai && !is_your_turn) {
+				command_failed(_("It is not allowed to change a side from AI to human control when it's not your turn."));
+				return;
+			}
+			if(is_ai || is_droid) {
 				menu_handler_.board().get_team(side).make_human();
 				menu_handler_.board().get_team(side).make_proxy_human();
 				changed = true;
+				if(is_ai) {
+					menu_handler_.pc_.send_to_wesnothd(config {"change_controller", config {"side", side, "player", preferences::login(), "to", human}});
+				}
 				print(get_cmd(), VGETTEXT("Side '$side' controller is now controlled by: human.", symbols));
 			} else {
 				menu_handler_.board().get_team(side).make_human();
 				menu_handler_.board().get_team(side).make_droid();
 				changed = true;
+				if(is_ai) {
+					menu_handler_.pc_.send_to_wesnothd(config {"change_controller", config {"side", side, "player", preferences::login(), "to", human}});
+				}
 				print(get_cmd(), VGETTEXT("Side '$side' controller is now controlled by: AI.", symbols));
 			}
 		} else {

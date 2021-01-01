@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2020-12-18 22:26-0300\n"
-"PO-Revision-Date: 2020-12-15 07:40-0300\n"
+"PO-Revision-Date: 2020-12-25 15:53-0300\n"
 "Last-Translator: Andrei Machado <andreisp.machado@yahoo.com>\n"
 "Language-Team: Portuguese - Brasil\n"
 "Language: pt_BR\n"
@@ -150,10 +150,8 @@ msgstr ""
 # File: data/core/macros/abilities.cfg, line: 10
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:62
-#, fuzzy
-#| msgid "heals +4"
 msgid "heals +12"
-msgstr "medicar +4"
+msgstr "medicar +12"
 
 #
 # File: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg, line: 17
@@ -164,10 +162,8 @@ msgstr "medicar +4"
 # File: data/core/macros/abilities.cfg, line: 11
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:63
-#, fuzzy
-#| msgid "female^heals +4"
 msgid "female^heals +12"
-msgstr "medicar +4"
+msgstr "medicar +12"
 
 #
 # File: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg, line: 46
@@ -362,8 +358,6 @@ msgstr "HP max +1"
 # File: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg, line: 783
 # File: data/core/macros/abilities.cfg, line: 686
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:53
-#, fuzzy
-#| msgid "first strike"
 msgid "firststrike"
 msgstr "iniciativa"
 
@@ -644,10 +638,8 @@ msgstr "Editor de Terreno"
 
 #. [section]: id=editor_mode_scenario
 #: data/core/editor/help.cfg:20
-#, fuzzy
-#| msgid "Map/Scenario Editor"
 msgid "Scenario Editor"
-msgstr "Editor de Mapas/Cenários"
+msgstr "Editor de Cenários"
 
 #. [topic]: id=editor_tool_paint
 #: data/core/editor/help.cfg:28
@@ -677,22 +669,22 @@ msgstr ""
 #. [topic]: id=editor_tool_paint
 #: data/core/editor/help.cfg:41
 msgid "Paint single hexes."
-msgstr ""
+msgstr "Preenche um hexágono por vez."
 
 #. [topic]: id=editor_tool_paint
 #: data/core/editor/help.cfg:42
 msgid "Paint seven hexes at a time."
-msgstr ""
+msgstr "Preenche sete hexágonos por vez."
 
 #. [topic]: id=editor_tool_paint
 #: data/core/editor/help.cfg:43
 msgid "Paint nineteen hexes at a time."
-msgstr ""
+msgstr "Preenche dezenove hexágonos por vez."
 
 #. [topic]: id=editor_tool_paint
 #: data/core/editor/help.cfg:44 data/core/editor/help.cfg:45
 msgid "Paint three hexes in a line."
-msgstr ""
+msgstr "Preenche três hexágonos em linha."
 
 #. [topic]: id=editor_tool_fill
 #: data/core/editor/help.cfg:52
@@ -740,22 +732,22 @@ msgstr ""
 #. [topic]: id=editor_tool_select
 #: data/core/editor/help.cfg:78
 msgid "Select single hexes."
-msgstr ""
+msgstr "Seleciona um hexágono por vez."
 
 #. [topic]: id=editor_tool_select
 #: data/core/editor/help.cfg:79
 msgid "Select seven hexes at a time."
-msgstr ""
+msgstr "Seleciona sete hexágonos por vez."
 
 #. [topic]: id=editor_tool_select
 #: data/core/editor/help.cfg:80
 msgid "Select nineteen hexes at a time."
-msgstr ""
+msgstr "Seleciona dezenove hexágonos por vez."
 
 #. [topic]: id=editor_tool_select
 #: data/core/editor/help.cfg:81 data/core/editor/help.cfg:82
 msgid "Select three hexes in a line."
-msgstr ""
+msgstr "Seleciona três hexágonos em linha."
 
 #. [topic]: id=editor_tool_paste
 #: data/core/editor/help.cfg:89
@@ -800,10 +792,8 @@ msgstr ""
 
 #. [topic]: id=editor_tool_starting
 #: data/core/editor/help.cfg:107
-#, fuzzy
-#| msgid "Starting Positions Howto"
 msgid "Starting Locations Tool"
-msgstr "Como Definir Posições Iniciais"
+msgstr "Ferramenta para Definir Posições Iniciais"
 
 #. [topic]: id=editor_tool_starting
 #: data/core/editor/help.cfg:108
@@ -1151,17 +1141,17 @@ msgstr ""
 #. [topic]: id=editor_palette
 #: data/core/editor/help.cfg:297
 msgid "Show all kinds of terrain"
-msgstr ""
+msgstr "Mostrar todos os tipos de terrenos"
 
 #. [topic]: id=editor_palette
 #: data/core/editor/help.cfg:298
 msgid "Show only water terrains"
-msgstr ""
+msgstr "Mostrar apenas terrenos aquáticos"
 
 #. [topic]: id=editor_palette
 #: data/core/editor/help.cfg:299
 msgid "Show only villages"
-msgstr ""
+msgstr "Mostar apenas aldeias"
 
 #. [topic]: id=map_format
 #: data/core/editor/help.cfg:309
@@ -1271,18 +1261,18 @@ msgstr "Enciclopédia"
 # File: data/core/encyclopedia/_main.cfg, line: 14
 #. [topic]: id=..encyclopedia
 #: data/core/encyclopedia/_main.cfg:14
-#, fuzzy
-#| msgid "<ref>dst='..geography' text='Geography'</ref>"
 msgid ""
 "<ref>dst='..calendar' text='Calendar'</ref>\n"
 "<ref>dst='..geography' text='Geography'</ref>"
-msgstr "<ref>dst='..geography' text='Geografia'</ref>"
+msgstr ""
+"<ref>dst='..calendar' text='Calendário'</ref>\n"
+"<ref>dst='..geography' text='Geografia'</ref>"
 
 #. [section]: id=calendar
 #. [topic]: id=..calendar
 #: data/core/encyclopedia/calendar.cfg:5 data/core/encyclopedia/calendar.cfg:12
 msgid "Calendar"
-msgstr ""
+msgstr "Calendário"
 
 #. [topic]: id=..calendar
 #: data/core/encyclopedia/calendar.cfg:13
@@ -3160,20 +3150,12 @@ msgstr ""
 
 #. [topic]: id=saveload
 #: data/core/help.cfg:301
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "That said, it’s a game; the best way to play it is whichever way gives "
-#| "you the most enjoyment."
 msgid ""
 "That said, it’s a game; the best way to play it is whichever way gives you "
 "the most enjoyment."
 msgstr ""
-"\n"
-"\n"
-"Tendo dito isso, estamos falando de um jogo; a melhor maneira de joga-lo é "
-"aquela que lhe tráz mais satisfação."
+"Dito isso, estamos falando de um jogo; a melhor maneira de joga-lo é aquela "
+"que lhe tráz mais satisfação."
 
 #. [topic]: id=whylost
 #: data/core/help.cfg:308
@@ -5689,10 +5671,8 @@ msgstr ""
 # File: data/core/macros/abilities.cfg, line: 73
 #. [regenerate]: id=regenerates
 #: data/core/macros/abilities.cfg:83
-#, fuzzy
-#| msgid "regenerates"
 msgid "regenerates +4"
-msgstr "regeneração"
+msgstr "regeneração +4"
 
 #
 # File: data/core/macros/abilities.cfg, line: 74
@@ -5700,10 +5680,8 @@ msgstr "regeneração"
 # File: data/core/macros/abilities.cfg, line: 74
 #. [regenerate]: id=regenerates
 #: data/core/macros/abilities.cfg:84
-#, fuzzy
-#| msgid "female^regenerates"
 msgid "female^regenerates +4"
-msgstr "regeneração"
+msgstr "regeneração +4"
 
 #
 # File: data/core/macros/abilities.cfg, line: 75
@@ -5711,16 +5689,12 @@ msgstr "regeneração"
 # File: data/core/macros/abilities.cfg, line: 75
 #. [regenerate]: id=regenerates
 #: data/core/macros/abilities.cfg:85
-#, fuzzy
-#| msgid ""
-#| "The unit will heal itself 8 HP per turn. If it is poisoned, it will "
-#| "remove the poison instead of healing."
 msgid ""
 "The unit will heal itself 4 HP per turn. If it is poisoned, it will remove "
 "the poison instead of healing."
 msgstr ""
-"A unidade se cura 8 pontos de vida por turno. Se envenenada, ela remove o "
-"veneno ao invés de se curar."
+"A unidade se cura 4 de HP por turno. Se envenenada, ela remove o veneno ao "
+"invés de se curar."
 
 #
 # File: data/core/macros/abilities.cfg, line: 95
@@ -5747,7 +5721,7 @@ msgstr ""
 #. [chance_to_hit]: id=diversion
 #: data/core/macros/abilities.cfg:118
 msgid "diversion"
-msgstr ""
+msgstr "desvio"
 
 #
 # File: data/core/macros/abilities.cfg, line: 110
@@ -5767,10 +5741,8 @@ msgstr ""
 # File: data/core/macros/abilities.cfg, line: 270
 #. [chance_to_hit]: id=diversion
 #: data/core/macros/abilities.cfg:119
-#, fuzzy
-#| msgid "female^leadership"
 msgid "female^diversion"
-msgstr "liderança"
+msgstr "desvio"
 
 #
 # File: data/core/macros/special-notes.cfg, line: 62
@@ -5778,22 +5750,17 @@ msgstr "liderança"
 # File: data/core/macros/special-notes.cfg, line: 62
 #. [chance_to_hit]: id=diversion
 #: data/core/macros/abilities.cfg:120
-#, fuzzy
-#| msgid ""
-#| " If there is an enemy of the target on the opposite side of the target "
-#| "while attacking it, this unit may backstab, inflicting double damage by "
-#| "creeping around behind that enemy."
 msgid ""
 "If there is an enemy of the target on the opposite side of the target, this "
 "unit diverts the target’s attention and reduces its chance to hit by 20%."
 msgstr ""
-" Se houver um inimigo do alvo no lado oposto dele, esta unidade pode "
-"realizar um ataque pelas costas, causando dano em dobro."
+"Se houver um inimigo do alvo no lado oposto dele, esta unidade pode realizar "
+"um ataque pelas costas, causando dano em dobro."
 
 #. [chance_to_hit]: id=diversion
 #: data/core/macros/abilities.cfg:121
 msgid "This is inactive for now."
-msgstr ""
+msgstr "Isto está inativo por enquanto."
 
 #
 # File: data/core/macros/abilities.cfg, line: 110
@@ -6657,31 +6624,19 @@ msgstr "A Longa Noite (4)"
 # File: data/core/macros/special-notes.cfg, line: 3
 # File: data/core/macros/special-notes.cfg, line: 3
 #: data/core/macros/special-notes.cfg:6 src/help/help_topic_generators.cpp:565
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "Special Notes:"
 msgid "Special Notes:"
-msgstr ""
-"\n"
-"\n"
-"Notas Especiais:"
+msgstr "Notas Especiais:"
 
 #
 # File: data/core/macros/special-notes.cfg, line: 8
 # File: data/core/macros/special-notes.cfg, line: 8
 # File: data/core/macros/special-notes.cfg, line: 8
 #: data/core/macros/special-notes.cfg:17
-#, fuzzy
-#| msgid ""
-#| " Spirits have very unusual resistances to damage, and move quite slowly "
-#| "over open water."
 msgid ""
 "Spirits have very unusual resistances to damage, and move quite slowly over "
 "open water."
 msgstr ""
-" Espíritos possuem resistências incomuns a dano, e movem-se lentamente por "
+"Espíritos possuem resistências incomuns a dano, e movem-se lentamente por "
 "sobre água."
 
 #
@@ -6689,15 +6644,11 @@ msgstr ""
 # File: data/core/macros/special-notes.cfg, line: 11
 # File: data/core/macros/special-notes.cfg, line: 11
 #: data/core/macros/special-notes.cfg:20
-#, fuzzy
-#| msgid ""
-#| " This unit’s arcane attack deals tremendous damage to magical creatures, "
-#| "and even some to mundane creatures."
 msgid ""
 "This unit’s arcane attack deals tremendous damage to magical creatures, and "
 "even some to mundane creatures."
 msgstr ""
-" O ataque arcano desta unidade causa grande quantidade de dano a criaturas "
+"O ataque arcano desta unidade causa grande quantidade de dano a criaturas "
 "mágicas, e um pouco de dano a criaturas mundanas."
 
 #
@@ -6705,34 +6656,26 @@ msgstr ""
 # File: data/core/macros/special-notes.cfg, line: 14
 # File: data/core/macros/special-notes.cfg, line: 14
 #: data/core/macros/special-notes.cfg:23
-#, fuzzy
-#| msgid " This unit is capable of basic healing."
 msgid "This unit is capable of basic healing."
-msgstr " Esta unidade é capaz de curar."
+msgstr "Esta unidade é capaz de curar."
 
 #
 # File: data/core/macros/special-notes.cfg, line: 17
 # File: data/core/macros/special-notes.cfg, line: 17
 # File: data/core/macros/special-notes.cfg, line: 17
 #: data/core/macros/special-notes.cfg:26
-#, fuzzy
-#| msgid " This unit is capable of rapid healing."
 msgid "This unit is capable of rapid healing."
-msgstr " Esta unidade é capaz de curar rapidamente."
+msgstr "Esta unidade é capaz de curar rapidamente."
 
 #
 # File: data/core/macros/special-notes.cfg, line: 20
 # File: data/core/macros/special-notes.cfg, line: 20
 # File: data/core/macros/special-notes.cfg, line: 20
 #: data/core/macros/special-notes.cfg:29
-#, fuzzy
-#| msgid ""
-#| " This unit is capable of healing those around it, and curing them of "
-#| "poison."
 msgid ""
 "This unit is capable of healing those around it, and curing them of poison."
 msgstr ""
-" Esta unidade é capaz de curar aqueles ao seu redor, e também de remover "
+"Esta unidade é capaz de curar aqueles ao seu redor, e também de remover "
 "envenenamento."
 
 #
@@ -6740,15 +6683,11 @@ msgstr ""
 # File: data/core/macros/special-notes.cfg, line: 23
 # File: data/core/macros/special-notes.cfg, line: 23
 #: data/core/macros/special-notes.cfg:32
-#, fuzzy
-#| msgid ""
-#| " This unit is capable of neutralizing the effects of poison in units "
-#| "around it."
 msgid ""
 "This unit is capable of neutralizing the effects of poison in units around "
 "it."
 msgstr ""
-" Esta unidade é capaz de neutralizar o efeito de envenenamento nas unidades "
+"Esta unidade é capaz de neutralizar o efeito de envenenamento nas unidades "
 "ao seu redor."
 
 #
@@ -6756,15 +6695,11 @@ msgstr ""
 # File: data/core/macros/special-notes.cfg, line: 26
 # File: data/core/macros/special-notes.cfg, line: 26
 #: data/core/macros/special-notes.cfg:35
-#, fuzzy
-#| msgid ""
-#| " This unit regenerates, which allows it to heal as though always "
-#| "stationed in a village."
 msgid ""
 "This unit regenerates, which allows it to heal as though always stationed in "
 "a village."
 msgstr ""
-" Esta unidade se regenera, o que lhe permite se curar como se sempre "
+"Esta unidade se regenera, o que lhe permite se curar como se sempre "
 "estivesse posicionada em uma aldeia."
 
 #
@@ -6834,15 +6769,11 @@ msgstr ""
 # File: data/core/macros/special-notes.cfg, line: 41
 # File: data/core/macros/special-notes.cfg, line: 41
 #: data/core/macros/special-notes.cfg:50
-#, fuzzy
-#| msgid ""
-#| " This unit can use one move to teleport between any two empty villages "
-#| "controlled by its side."
 msgid ""
 "This unit can use one move to teleport between any two empty villages "
 "controlled by its side."
 msgstr ""
-" Esta unidade pode se teleportar entre quaisquer duas aldeias vazias "
+"Esta unidade pode se teleportar entre quaisquer duas aldeias vazias "
 "controladas por um lado usando um ponto de movimento."
 
 #
@@ -6850,15 +6781,11 @@ msgstr ""
 # File: data/core/macros/special-notes.cfg, line: 44
 # File: data/core/macros/special-notes.cfg, line: 44
 #: data/core/macros/special-notes.cfg:53
-#, fuzzy
-#| msgid ""
-#| " In woodlands, this unit’s ambush skill renders it invisible to enemies "
-#| "unless it is immediately adjacent or has revealed itself by attacking."
 msgid ""
 "In woodlands, this unit’s ambush skill renders it invisible to enemies "
 "unless it is immediately adjacent or has revealed itself by attacking."
 msgstr ""
-" Em florestas, a habilidade desta unidade em montar emboscadas torna-a "
+"Em florestas, a habilidade desta unidade em montar emboscadas torna-a "
 "invisível aos inimigos, a não ser que um deles esteja adjacente à unidade, "
 "ou que ela tenha se revelado ao atacar uma unidade inimiga."
 
@@ -6867,12 +6794,9 @@ msgstr ""
 # File: data/core/macros/special-notes.cfg, line: 47
 # File: data/core/macros/special-notes.cfg, line: 47
 #: data/core/macros/special-notes.cfg:56
-#, fuzzy
-#| msgid ""
-#| " This unit is able to hide at night, leaving no trace of its presence."
 msgid "This unit is able to hide at night, leaving no trace of its presence."
 msgstr ""
-" Esta unidade pode se esconder à noite, sumindo sem deixar traço de sua "
+"Esta unidade pode se esconder à noite, sumindo sem deixar traço de sua "
 "presença."
 
 #
@@ -6880,15 +6804,11 @@ msgstr ""
 # File: data/core/macros/special-notes.cfg, line: 50
 # File: data/core/macros/special-notes.cfg, line: 50
 #: data/core/macros/special-notes.cfg:59
-#, fuzzy
-#| msgid ""
-#| " This unit can hide in villages (with the exception of water villages), "
-#| "and remain undetected by its enemies, except by those standing next to it."
 msgid ""
 "This unit can hide in villages (with the exception of water villages), and "
 "remain undetected by its enemies, except by those standing next to it."
 msgstr ""
-" Esta unidade pode se esconder em aldeias (com exceção de aldeias aquáticas) "
+"Esta unidade pode se esconder em aldeias (com exceção de aldeias aquáticas) "
 "e permanecer invisível para seus inimigos, exceto para aqueles que estão ao "
 "seu lado."
 
@@ -6897,14 +6817,10 @@ msgstr ""
 # File: data/core/macros/special-notes.cfg, line: 53
 # File: data/core/macros/special-notes.cfg, line: 53
 #: data/core/macros/special-notes.cfg:62
-#, fuzzy
-#| msgid ""
-#| " This unit can move unseen in deep water, requiring no air from the "
-#| "surface."
 msgid ""
 "This unit can move unseen in deep water, requiring no air from the surface."
 msgstr ""
-" Esta unidade pode se deslocar sorrateiramente em águas profundas, sem "
+"Esta unidade pode se deslocar sorrateiramente em águas profundas, sem "
 "precisar voltar à superfície para respirar."
 
 #
@@ -6912,15 +6828,11 @@ msgstr ""
 # File: data/core/macros/special-notes.cfg, line: 56
 # File: data/core/macros/special-notes.cfg, line: 56
 #: data/core/macros/special-notes.cfg:65
-#, fuzzy
-#| msgid ""
-#| " This unit gains 1 hitpoint added to its maximum whenever it kills a "
-#| "living unit."
 msgid ""
 "This unit gains 1 hitpoint added to its maximum whenever it kills a living "
 "unit."
 msgstr ""
-" Esta unidade ganha 1 ponto de vida máximo toda vez que ela mata uma unidade "
+"Esta unidade ganha 1 ponto de vida máximo toda vez que ela mata uma unidade "
 "viva."
 
 #
@@ -6928,15 +6840,11 @@ msgstr ""
 # File: data/core/macros/special-notes.cfg, line: 59
 # File: data/core/macros/special-notes.cfg, line: 59
 #: data/core/macros/special-notes.cfg:68
-#, fuzzy
-#| msgid ""
-#| " Whenever its berserk attack is used, this unit continues to push the "
-#| "attack until either it or its enemy lies dead."
 msgid ""
 "Whenever its berserk attack is used, this unit continues to push the attack "
 "until either it or its enemy lies dead."
 msgstr ""
-" Sempre que seu ataque frenesi é usado, esta unidade continuará atacando até "
+"Sempre que seu ataque frenesi é usado, esta unidade continuará atacando até "
 "que ela ou seu adversário esteja morto."
 
 #
@@ -6944,33 +6852,24 @@ msgstr ""
 # File: data/core/macros/special-notes.cfg, line: 62
 # File: data/core/macros/special-notes.cfg, line: 62
 #: data/core/macros/special-notes.cfg:71
-#, fuzzy
-#| msgid ""
-#| " If there is an enemy of the target on the opposite side of the target "
-#| "while attacking it, this unit may backstab, inflicting double damage by "
-#| "creeping around behind that enemy."
 msgid ""
 "If there is an enemy of the target on the opposite side of the target while "
 "attacking it, this unit may backstab, inflicting double damage by creeping "
 "around behind that enemy."
 msgstr ""
-" Se houver um inimigo do alvo no lado oposto dele, esta unidade pode "
-"realizar um ataque pelas costas, causando dano em dobro."
+"Se houver um inimigo do alvo no lado oposto dele, esta unidade pode realizar "
+"um ataque pelas costas, causando dano em dobro."
 
 #
 # File: data/core/macros/special-notes.cfg, line: 65
 # File: data/core/macros/special-notes.cfg, line: 65
 # File: data/core/macros/special-notes.cfg, line: 65
 #: data/core/macros/special-notes.cfg:74
-#, fuzzy
-#| msgid ""
-#| " Foes who lose their life to the plague will rise again in unlife, unless "
-#| "they are standing on a village."
 msgid ""
 "Foes who lose their life to the plague will rise again in unlife, unless "
 "they are standing on a village."
 msgstr ""
-" Oponentes que sejam mortos pela praga se levantarão novamente para lutar "
+"Oponentes que sejam mortos pela praga se levantarão novamente para lutar "
 "como mortos-vivos, a menos que estejam em uma aldeia."
 
 #
@@ -6978,15 +6877,11 @@ msgstr ""
 # File: data/core/macros/special-notes.cfg, line: 68
 # File: data/core/macros/special-notes.cfg, line: 68
 #: data/core/macros/special-notes.cfg:77
-#, fuzzy
-#| msgid ""
-#| " This unit is able to slow its enemies, halving their movement speed and "
-#| "attack damage until they end a turn."
 msgid ""
 "This unit is able to slow its enemies, halving their movement speed and "
 "attack damage until they end a turn."
 msgstr ""
-" Esta unidade é capaz de causar lentidão nos inimigos , cortando seu "
+"Esta unidade é capaz de causar lentidão nos inimigos , cortando seu "
 "movimento e dano de ataque pela metade até o fim do turno deles."
 
 #
@@ -7025,15 +6920,11 @@ msgstr ""
 # File: data/core/macros/special-notes.cfg, line: 77
 # File: data/core/macros/special-notes.cfg, line: 77
 #: data/core/macros/special-notes.cfg:86
-#, fuzzy
-#| msgid ""
-#| " This unit has magical attacks, which always have a high chance of "
-#| "hitting an opponent."
 msgid ""
 "This unit has magical attacks, which always have a high chance of hitting an "
 "opponent."
 msgstr ""
-" Esta uniadade possui ataques mágicos. Ataques mágicos sempre possuem uma "
+"Esta uniadade possui ataques mágicos. Ataques mágicos sempre possuem uma "
 "chance alta de acertar o oponente."
 
 #
@@ -7041,15 +6932,11 @@ msgstr ""
 # File: data/core/macros/special-notes.cfg, line: 80
 # File: data/core/macros/special-notes.cfg, line: 80
 #: data/core/macros/special-notes.cfg:89
-#, fuzzy
-#| msgid ""
-#| " The swarming attacks of this unit become less deadly whenever its "
-#| "members are wounded."
 msgid ""
 "The swarming attacks of this unit become less deadly whenever its members "
 "are wounded."
 msgstr ""
-" Os ataques de enxame desta unidade se tornam menos perigosos conforme seus "
+"Os ataques de enxame desta unidade se tornam menos perigosos conforme seus "
 "membros são feridos."
 
 #
@@ -7074,14 +6961,10 @@ msgstr ""
 # File: data/core/macros/special-notes.cfg, line: 86
 # File: data/core/macros/special-notes.cfg, line: 86
 #: data/core/macros/special-notes.cfg:95
-#, fuzzy
-#| msgid ""
-#| " During battle, this unit can drain life from victims to renew its own "
-#| "health."
 msgid ""
 "During battle, this unit can drain life from victims to renew its own health."
 msgstr ""
-" Durante a batalha, esta unidade pode drenar a força vital de suas vítimas, "
+"Durante a batalha, esta unidade pode drenar a força vital de suas vítimas, "
 "recuperando sua própria vitalidade."
 
 #
@@ -7089,15 +6972,11 @@ msgstr ""
 # File: data/core/macros/special-notes.cfg, line: 89
 # File: data/core/macros/special-notes.cfg, line: 89
 #: data/core/macros/special-notes.cfg:98
-#, fuzzy
-#| msgid ""
-#| " The length of this unit’s weapon allows it to strike first in melee, "
-#| "even in defense."
 msgid ""
 "The length of this unit’s weapon allows it to strike first in melee, even in "
 "defense."
 msgstr ""
-" O comprimento da arma desta unidade lhe permite atacar primeiro em combate "
+"O comprimento da arma desta unidade lhe permite atacar primeiro em combate "
 "corpo a corpo, mesmo quando está na defensiva."
 
 #
@@ -7105,27 +6984,19 @@ msgstr ""
 # File: data/core/macros/special-notes.cfg, line: 92
 # File: data/core/macros/special-notes.cfg, line: 92
 #: data/core/macros/special-notes.cfg:101
-#, fuzzy
-#| msgid ""
-#| " The victims of this unit’s poison will continually take damage until "
-#| "they can be cured in town or by a unit which cures."
 msgid ""
 "The victims of this unit’s poison will continually take damage until they "
 "can be cured in town or by a unit which cures."
 msgstr ""
-" As vítimas do veneno desta unidade irão levar dano a cada turno até que "
+"As vítimas do veneno desta unidade irão levar dano a cada turno até que "
 "sejam curadas em uma aldeia ou por uma unidade que cura envenenamento."
 
 #: data/core/macros/special-notes.cfg:104
-#, fuzzy
-#| msgid ""
-#| " This unit has a defense cap on certain terrain types — it cannot achieve "
-#| "a higher defense rating on mixed terrains with such terrain types."
 msgid ""
 "This unit has a defense cap on certain terrain types — it cannot achieve a "
 "higher defense rating on mixed terrains with such terrain types."
 msgstr ""
-" Esta unidade possui um limite de defesa em certos tipos de terreno. Em "
+"Esta unidade possui um limite de defesa em certos tipos de terreno. Em "
 "terrenos misxtos ela não pode exceder esse limite de defesa nos terrenos "
 "mixtos que possuem esse tipo de terreno."
 
@@ -7135,15 +7006,11 @@ msgstr ""
 # File: data/core/macros/special-notes.cfg, line: 26
 #. [special_note]
 #: data/core/macros/special-notes.cfg:160
-#, fuzzy
-#| msgid ""
-#| " This unit regenerates, which allows it to heal as though always "
-#| "stationed in a village."
 msgid ""
 "This unit heals itself each turn, though not as much as if stationed in a "
 "village."
 msgstr ""
-" Esta unidade se regenera, o que lhe permite se curar como se sempre "
+"Esta unidade se regenera, o que lhe permite se curar como se sempre "
 "estivesse posicionada em uma aldeia."
 
 #
@@ -7152,18 +7019,13 @@ msgstr ""
 # File: data/core/macros/special-notes.cfg, line: 62
 #. [special_note]
 #: data/core/macros/special-notes.cfg:304
-#, fuzzy
-#| msgid ""
-#| " If there is an enemy of the target on the opposite side of the target "
-#| "while attacking it, this unit may backstab, inflicting double damage by "
-#| "creeping around behind that enemy."
 msgid ""
 "If there is an enemy of the target on the opposite side of the target while "
 "attacking it, this unit diverts the target's attention and reduces its "
 "chance to hit."
 msgstr ""
-" Se houver um inimigo do alvo no lado oposto dele, esta unidade pode "
-"realizar um ataque pelas costas, causando dano em dobro."
+"Se houver um inimigo do alvo no lado oposto dele, esta unidade pode realizar "
+"um ataque pelas costas, causando dano em dobro."
 
 #
 # File: data/core/macros/traits.cfg, line: 8
@@ -9872,45 +9734,39 @@ msgstr "Erro de análise ao ler o texto de ajuda: "
 
 #: src/help/help_topic_generators.cpp:64
 msgid "Best of"
-msgstr ""
+msgstr "Melhor de"
 
 #: src/help/help_topic_generators.cpp:64
 msgid "Worst of"
-msgstr ""
+msgstr "Pior de"
 
 #
 # File: src/help.cpp, line: 1606
 # File: src/help.cpp, line: 1606
 # File: src/help.cpp, line: 1606
 #: src/help/help_topic_generators.cpp:157
-#, fuzzy
-#| msgid "Terrain"
 msgid "Base Terrain: "
-msgstr "Terreno"
+msgstr "Terreno Base: "
 
 #
 # File: src/help.cpp, line: 1608
 # File: src/help.cpp, line: 1608
 # File: src/help.cpp, line: 1608
 #: src/help/help_topic_generators.cpp:177
-#, fuzzy
-#| msgid "Movement Cost"
 msgid "Movement properties: "
-msgstr "Custo de Movimento"
+msgstr "Propriedades do movimento: "
 
 #: src/help/help_topic_generators.cpp:181
 msgid "Defense properties: "
-msgstr ""
+msgstr "Propriedades de defesa: "
 
 #
 # File: src/help.cpp, line: 1354
 # File: src/help.cpp, line: 1354
 # File: src/help.cpp, line: 1354
 #: src/help/help_topic_generators.cpp:261
-#, fuzzy
-#| msgid "level"
 msgid "Level"
-msgstr "nível"
+msgstr "Nível"
 
 #
 # File: src/help.cpp, line: 1387
@@ -9925,39 +9781,32 @@ msgstr "Avança de: "
 # File: src/help.cpp, line: 1387
 # File: src/help.cpp, line: 1387
 #: src/help/help_topic_generators.cpp:324
-#, fuzzy
-#| msgid "Advances from: "
 msgid "Advances to: "
-msgstr "Avança de: "
+msgstr "Avança para: "
 
 #
 # File: src/help.cpp, line: 1606
 # File: src/help.cpp, line: 1606
 # File: src/help.cpp, line: 1606
 #: src/help/help_topic_generators.cpp:353
-#, fuzzy
-#| msgid "Terrain"
 msgid "Base unit: "
-msgstr "Terreno"
+msgstr "Unidade Base: "
 
 #
 # File: src/help.cpp, line: 1606
 # File: src/help.cpp, line: 1606
 # File: src/help.cpp, line: 1606
 #: src/help/help_topic_generators.cpp:358
-#, fuzzy
-#| msgid "Terrain"
 msgid "Base units: "
-msgstr "Terreno"
+msgstr "Unidades Base: "
 
 #
 # File: src/help.cpp, line: 1422
 # File: src/help.cpp, line: 1422
 # File: src/help.cpp, line: 1422
 #: src/help/help_topic_generators.cpp:376
-#, fuzzy
 msgid "Variations: "
-msgstr "Facções:"
+msgstr "Variações: "
 
 #
 # File: src/help.cpp, line: 1446
@@ -10005,10 +9854,8 @@ msgstr "Habilidades Melhoradas: "
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:528
-#, fuzzy
-#| msgid "HP: "
 msgid "HP:"
-msgstr "HP: "
+msgstr "HP:"
 
 #
 # File: src/help.cpp, line: 1489
@@ -10018,17 +9865,15 @@ msgstr "HP: "
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:532
-#, fuzzy
-#| msgid "Moves: "
 msgid "Moves:"
-msgstr "Movimento: "
+msgstr "Movimento:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:537
 msgid "Vision:"
-msgstr ""
+msgstr "Visão:"
 
 #
 # File: data/core/encyclopedia/drakes.cfg, line: 145
@@ -10051,10 +9896,8 @@ msgstr "Examiando"
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:548
-#, fuzzy
-#| msgid "Cost: "
 msgid "Cost:"
-msgstr "Custo: "
+msgstr "Custo:"
 
 #
 # File: src/help.cpp, line: 1495
@@ -10064,10 +9907,8 @@ msgstr "Custo: "
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:552
-#, fuzzy
-#| msgid "Alignment: "
 msgid "Alignment:"
-msgstr "Alinhamento: "
+msgstr "Alinhamento:"
 
 #
 # File: src/help.cpp, line: 1501
@@ -10077,10 +9918,8 @@ msgstr "Alinhamento: "
 #. non-breaking spaces to prevent unpleasant line breaks (issue #3256).  In the
 #. translation use non-breaking spaces as appropriate for the target language.
 #: src/help/help_topic_generators.cpp:559
-#, fuzzy
-#| msgid "Required XP: "
 msgid "Required XP:"
-msgstr "XP necessário: "
+msgstr "XP necessárioa"
 
 #
 # File: src/help.cpp, line: 1510
@@ -10143,10 +9982,8 @@ msgstr "Resistência"
 # File: src/help.cpp, line: 1602
 # File: src/help.cpp, line: 1602
 #: src/help/help_topic_generators.cpp:697
-#, fuzzy
-#| msgid "Terrain Editor"
 msgid "Terrain Modifiers"
-msgstr "Editor de Terreno"
+msgstr "Modificadores de Terreno"
 
 #
 # File: src/help.cpp, line: 1606
@@ -10169,14 +10006,12 @@ msgstr "Custo de Movimento"
 # File: src/help.cpp, line: 1607
 # File: src/help.cpp, line: 1607
 #: src/help/help_topic_generators.cpp:707
-#, fuzzy
-#| msgid "Defense"
 msgid "Defense Cap"
-msgstr "Defesa"
+msgstr "Limite de Defesa"
 
 #: src/help/help_topic_generators.cpp:712
 msgid "Vision Cost"
-msgstr ""
+msgstr "Custo de Visão"
 
 #: src/help/help_topic_generators.cpp:716
 msgid "Jamming Cost"

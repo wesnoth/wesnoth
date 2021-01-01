@@ -122,10 +122,10 @@ void teleport_group::get_teleport_pair(
 	vconfig target(cfg_.child_or_empty("target"), true);
 	const unit_filter ufilt(filter); //Note: Don't use the ignore units filter context here, only for the terrain filters. (That's how it worked before the filter contexts were introduced)
 	if (ufilt.matches(u)) {
-		terrain_filter source_filter(source, fc);
+		terrain_filter source_filter(source, fc, false);
 		source_filter.get_locations(reversed_ ? loc_pair.second : loc_pair.first, u);
 
-		terrain_filter target_filter(target, fc);
+		terrain_filter target_filter(target, fc, false);
 		target_filter.get_locations(reversed_ ? loc_pair.first : loc_pair.second, u);
 	}
 

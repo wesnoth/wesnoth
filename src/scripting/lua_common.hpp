@@ -100,7 +100,9 @@ void luaW_pushlocation(lua_State *L, const map_location& loc);
 
 /**
  * Converts an optional table or pair of integers to a map location object.
+ * @param L the pointer to the lua interpreter.
  * @param index stack position of the table or first integer.
+ * @param loc the location to write to.
  * @return false if a map location couldn't be matched.
  */
 bool luaW_tolocation(lua_State *L, int index, map_location &loc);
@@ -119,7 +121,9 @@ void luaW_pushconfig(lua_State *L, const config& cfg);
 
 /**
  * Converts an optional table or vconfig to a config object.
+ * @param L the pointer to the lua interpreter.
  * @param index stack position of the table.
+ * @param cfg the config to write the data to.
  * @return false if some attributes had not the proper type.
  * @note If the table has holes in the integer keys or floating-point keys,
  *       some keys will be ignored and the error will go undetected.
@@ -139,6 +143,8 @@ bool luaW_tovconfig(lua_State *L, int index, vconfig &vcfg);
 
 /**
  * Gets an optional vconfig from either a table or a userdata.
+ * @param L the pointer to the lua interpreter.
+ * @param index the location in the current lua execution stack to look at.
  * @param allow_missing true if missing values are allowed; the function
  *        then returns an unconstructed vconfig.
  */
@@ -186,7 +192,10 @@ void chat_message(const std::string& caption, const std::string& msg);
 
 /**
  * Calls a Lua function stored below its @a nArgs arguments at the top of the stack.
+ * @param L the pointer to the lua interpreter.
+ * @param nArgs 
  * @param nRets LUA_MULTRET for unbounded return values.
+ * @param allow_wml_error controls where any stack traces are output.
  * @return true if the call was successful and @a nRets return values are available.
  */
 bool luaW_pcall(lua_State *L, int nArgs, int nRets, bool allow_wml_error = false);

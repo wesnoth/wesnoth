@@ -589,12 +589,12 @@ side_actions::iterator side_actions::find_first_action_at(map_location hex)
 	return find_first_action_of(actions_.get<container::by_hex>().equal_range(hex), begin(), std::less<iterator>());
 }
 
-side_actions::iterator side_actions::find_first_action_of(size_t unit_id, side_actions::iterator start_position)
+side_actions::iterator side_actions::find_first_action_of(size_t unit_id, iterator start_position)
 {
 	return find_first_action_of(actions_.get<container::by_unit>().equal_range(unit_id), start_position, std::less<iterator>());
 }
 
-side_actions::const_iterator side_actions::find_last_action_of(size_t unit_id, side_actions::const_iterator start_position) const {
+side_actions::const_iterator side_actions::find_last_action_of(size_t unit_id, iterator start_position) const {
 	return find_first_action_of(actions_.get<container::by_unit>().equal_range(unit_id), start_position, std::greater<iterator>());
 }
 

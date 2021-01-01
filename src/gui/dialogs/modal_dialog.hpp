@@ -90,10 +90,10 @@ namespace dialogs
 
 /**
  * Adds a bare-bones static `display` function to a dialog class that immediately
- * invokes the dialogs's @ref modal_dialog::show function. If more complex behavior
+ * invokes the dialogs's modal_dialog::show function. If more complex behavior
  * is desired, the function should be defined manually.
  *
- * See the @ref modal_dialog documentation (below) for more info.
+ * See the modal_dialog documentation (below) for more info.
  */
 #define DEFINE_SIMPLE_DISPLAY_WRAPPER(dialog)                                                                          \
 	template<typename... T>                                                                                            \
@@ -104,10 +104,10 @@ namespace dialogs
 
 /**
  * Adds a bare-bonesstatic `execute` function to a dialog class that immediately
- * invokes and return the result of the dialogs's @ref modal_dialog::show function.
+ * invokes and return the result of the dialogs's modal_dialog::show function.
  * If more complex behavior is desired, the function should be defined manually.
  *
- * See the @ref modal_dialog documentation (below) for more info.
+ * See the modal_dialog documentation (below) for more info.
  */
 #define DEFINE_SIMPLE_EXECUTE_WRAPPER(dialog)                                                                          \
 	template<typename... T>                                                                                            \
@@ -139,7 +139,7 @@ namespace dialogs
  * When a function only has 'in parameters' it should return a void value and
  * the function should be called @p display, if it has 'in + out parameters' it
  * must return a bool value. This value indicates whether or not the OK button
- * was pressed to close the dialog. See @ref editor_new_map::execute for an
+ * was pressed to close the dialog. See editor_new_map::execute for an
  * example.
  */
 class modal_dialog
@@ -224,6 +224,7 @@ protected:
 	 *                            with ok.
 	 * @param callback_change     When the value of the widget changes this
 	 *                            callback is called.
+	 * @param initial_fire        
 	 *
 	 * @returns                   Pointer to the created widget.
 	 */
@@ -247,6 +248,7 @@ protected:
 	 *                            @ref field::field for more information.
 	 * @param callback_change     When the value of the widget changes this
 	 *                            callback is called.
+	 * @param initial_fire        
 	 *
 	 * @returns                   Pointer to the created widget.
 	 */

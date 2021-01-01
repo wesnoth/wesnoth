@@ -46,7 +46,7 @@ public:
 		(NONE,		"not created")
 		(RUNNING,	"running")
 		(STOPPED,	"stopped")
-	)
+	);
 
 	std::size_t size();
 

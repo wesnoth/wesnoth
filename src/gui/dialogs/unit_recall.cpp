@@ -59,7 +59,7 @@ static listbox::order_pair sort_default { 2, preferences::SORT_ORDER::DESCENDING
 
 REGISTER_DIALOG(unit_recall)
 
-unit_recall::unit_recall(recalls_ptr_vector& recall_list, team& team)
+unit_recall::unit_recall(std::vector<unit_const_ptr>& recall_list, team& team)
 	: recall_list_(recall_list)
 	, team_(team)
 	, selected_index_()

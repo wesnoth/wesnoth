@@ -56,6 +56,8 @@ static lg::log_domain log_mp("mp/main");
 
 namespace
 {
+std::string profile_url_prefix;
+
 /** Opens a new server connection and prompts the client for login credentials, if necessary. */
 std::unique_ptr<wesnothd_connection> open_connection(std::string host)
 {
@@ -356,6 +358,9 @@ std::unique_ptr<wesnothd_connection> open_connection(std::string host)
 			// Flag us as authenticated, if applicable...
 			preferences::set_admin_authentication(join_lobby["is_moderator"].to_bool(false));
 
+			// Note the forum profile prefix (will be empty if this server doesn't have an attached database)
+			profile_url_prefix = join_lobby["profile_url_prefix"].str();
+
 			// All done!
 			break;
 		}
@@ -392,7 +397,11 @@ public:
 					while(!stop) {
 						connection->wait_and_receive_data(data);
 
-						if(data.has_child("gamelist")) {
+						if(const config& error = data.child("error")) {
+							throw wesnothd_error(error["message"]);
+						}
+
+						else if(data.has_child("gamelist")) {
 							lobby_info.process_gamelist(data);
 
 							try {
@@ -404,6 +413,10 @@ public:
 									// We only need this for the first gamelist
 								}
 							}
+						}
+
+						else if(const config& gamelist_diff = data.child("gamelist_diff")) {
+							lobby_info.process_gamelist_diff(gamelist_diff);
 						}
 					}
 				});
@@ -467,89 +480,6 @@ private:
 	mp::lobby_info lobby_info;
 };
 
-void mp_manager::enter_wait_mode(int game_id, bool observe)
-{
-	DBG_MP << "entering wait mode" << std::endl;
-
-	// The connection should never be null here, since one should never reach this screen in local game mode.
-	assert(connection);
-
-	statistics::fresh_stats();
-
-	mp_campaign_info campaign_info(*connection);
-	campaign_info.is_host = false;
-
-	if(lobby_info.get_game_by_id(game_id)) {
-		campaign_info.current_turn = lobby_info.get_game_by_id(game_id)->current_turn;
-	}
-
-	if(preferences::skip_mp_replay() || preferences::blindfold_replay()) {
-		campaign_info.skip_replay = true;
-		campaign_info.skip_replay_blindfolded = preferences::blindfold_replay();
-	}
-
-	bool dlg_ok = false;
-	{
-		gui2::dialogs::mp_join_game dlg(state, *connection, true, observe);
-
-		if(!dlg.fetch_game_config()) {
-			connection->send_data(config("leave_game"));
-			return;
-		}
-
-		dlg_ok = dlg.show();
-	}
-
-	if(dlg_ok) {
-		campaign_controller controller(state, game_config_manager::get()->terrain_types());
-		controller.set_mp_info(&campaign_info);
-		controller.play_game();
-	}
-
-	connection->send_data(config("leave_game"));
-}
-
-void mp_manager::enter_staging_mode()
-{
-	DBG_MP << "entering connect mode" << std::endl;
-
-	std::unique_ptr<mp_campaign_info> campaign_info;
-
-	// If we have a connection, set the appropriate info. No connection means we're in local game mode.
-	if(connection) {
-		campaign_info = std::make_unique<mp_campaign_info>(*connection);
-		campaign_info->connected_players.insert(preferences::login());
-		campaign_info->is_host = true;
-	}
-
-	bool dlg_ok = false;
-	{
-		ng::connect_engine connect_engine(state, true, campaign_info.get());
-		dlg_ok = gui2::dialogs::mp_staging::execute(connect_engine, connection.get());
-	} // end connect_engine
-
-	if(dlg_ok) {
-		campaign_controller controller(state, game_config_manager::get()->terrain_types());
-		controller.set_mp_info(campaign_info.get());
-		controller.play_game();
-	}
-
-	if(connection) {
-		connection->send_data(config("leave_game"));
-	}
-}
-
-void mp_manager::enter_create_mode()
-{
-	DBG_MP << "entering create mode" << std::endl;
-
-	if(gui2::dialogs::mp_create_game::execute(state, connection == nullptr)) {
-		enter_staging_mode();
-	} else if(connection) {
-		connection->send_data(config("refresh_lobby"));
-	}
-}
-
 bool mp_manager::enter_lobby_mode()
 {
 	DBG_MP << "entering lobby mode" << std::endl;
@@ -606,6 +536,89 @@ bool mp_manager::enter_lobby_mode()
 	}
 
 	return true;
+}
+
+void mp_manager::enter_create_mode()
+{
+	DBG_MP << "entering create mode" << std::endl;
+
+	if(gui2::dialogs::mp_create_game::execute(state, connection == nullptr)) {
+		enter_staging_mode();
+	} else if(connection) {
+		connection->send_data(config("refresh_lobby"));
+	}
+}
+
+void mp_manager::enter_staging_mode()
+{
+	DBG_MP << "entering connect mode" << std::endl;
+
+	std::unique_ptr<mp_game_metadata> metadata;
+
+	// If we have a connection, set the appropriate info. No connection means we're in local game mode.
+	if(connection) {
+		metadata = std::make_unique<mp_game_metadata>(*connection);
+		metadata->connected_players.insert(preferences::login());
+		metadata->is_host = true;
+	}
+
+	bool dlg_ok = false;
+	{
+		ng::connect_engine connect_engine(state, true, metadata.get());
+		dlg_ok = gui2::dialogs::mp_staging::execute(connect_engine, connection.get());
+	} // end connect_engine
+
+	if(dlg_ok) {
+		campaign_controller controller(state, game_config_manager::get()->terrain_types());
+		controller.set_mp_info(metadata.get());
+		controller.play_game();
+	}
+
+	if(connection) {
+		connection->send_data(config("leave_game"));
+	}
+}
+
+void mp_manager::enter_wait_mode(int game_id, bool observe)
+{
+	DBG_MP << "entering wait mode" << std::endl;
+
+	// The connection should never be null here, since one should never reach this screen in local game mode.
+	assert(connection);
+
+	statistics::fresh_stats();
+
+	mp_game_metadata metadata(*connection);
+	metadata.is_host = false;
+
+	if(mp::game_info* gi = lobby_info.get_game_by_id(game_id)) {
+		metadata.current_turn = gi->current_turn;
+	}
+
+	if(preferences::skip_mp_replay() || preferences::blindfold_replay()) {
+		metadata.skip_replay = true;
+		metadata.skip_replay_blindfolded = preferences::blindfold_replay();
+	}
+
+	bool dlg_ok = false;
+	{
+		gui2::dialogs::mp_join_game dlg(state, *connection, true, observe);
+
+		if(!dlg.fetch_game_config()) {
+			connection->send_data(config("leave_game"));
+			return;
+		}
+
+		dlg_ok = dlg.show();
+	}
+
+	if(dlg_ok) {
+		campaign_controller controller(state, game_config_manager::get()->terrain_types());
+		controller.set_mp_info(&metadata);
+		controller.play_game();
+	}
+
+	connection->send_data(config("leave_game"));
 }
 
 } // end anon namespace
@@ -753,6 +766,15 @@ void start_local_game_commandline(saved_game& state, const commandline_options& 
 		saved_game state_copy(state);
 		campaign_controller controller(state_copy, game_config_manager::get()->terrain_types());
 		controller.play_game();
+	}
+}
+
+std::string get_profile_link(int user_id)
+{
+	if(!profile_url_prefix.empty()) {
+		return profile_url_prefix + std::to_string(user_id);
+	} else {
+		return "";
 	}
 }
 

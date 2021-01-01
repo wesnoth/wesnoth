@@ -16,28 +16,25 @@
 
 #include <string>
 
-namespace preferences {
+namespace preferences
+{
+bool whisper_friends_only();
+void set_whisper_friends_only(bool v);
 
-	bool whisper_friends_only();
-	void set_whisper_friends_only(bool v);
+bool auto_open_whisper_windows();
+void set_auto_open_whisper_windows(bool v);
 
-	bool auto_open_whisper_windows();
-	void set_auto_open_whisper_windows(bool v);
+bool playerlist_group_players();
 
-	bool playerlist_group_players();
+bool fi_invert();
+void set_fi_invert(bool value);
 
-	bool filter_lobby();
-	void set_filter_lobby(bool value);
+bool fi_vacant_slots();
+void set_fi_vacant_slots(bool value);
 
-	bool fi_invert();
-	void set_fi_invert(bool value);
+bool fi_friends_in_game();
+void set_fi_friends_in_game(bool value);
 
-	bool fi_vacant_slots();
-	void set_fi_vacant_slots(bool value);
-
-	bool fi_friends_in_game();
-	void set_fi_friends_in_game(bool value);
-
-	std::string fi_text();
-	void set_fi_text(const std::string& search_string);
-} //end namespace preferences
+bool fi_blocked_in_game();
+void set_fi_blocked_in_game(bool value);
+} // end namespace preferences

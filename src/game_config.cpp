@@ -215,7 +215,7 @@ std::string
 	observer,
 	tod_bright,
 	tod_dark,
-	///@todo de-hardcode this
+	// TODO: de-hardcode this
 	selected_menu   = "buttons/radiobox-pressed.png",
 	deselected_menu = "buttons/radiobox.png",
 	checked_menu    = "buttons/checkbox-pressed.png",

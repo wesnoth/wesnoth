@@ -23,9 +23,8 @@ namespace dialogs
 
 class unit_advance : public modal_dialog
 {
-	typedef std::vector<unit_const_ptr> unit_ptr_vector;
 public:
-	unit_advance(const unit_ptr_vector& samples, std::size_t real);
+	unit_advance(const std::vector<unit_const_ptr>& samples, std::size_t real);
 
 	int get_selected_index() const
 	{
@@ -44,7 +43,7 @@ private:
 
 	void show_help();
 
-	const unit_ptr_vector& previews_;
+	const std::vector<unit_const_ptr>& previews_;
 
 	std::size_t selected_index_, last_real_advancement_;
 };

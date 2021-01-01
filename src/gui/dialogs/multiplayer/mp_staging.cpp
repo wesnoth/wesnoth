@@ -80,32 +80,12 @@ void mp_staging::pre_show(window& window)
 	// Set title and status widget states
 	//
 	label& title = find_widget<label>(&window, "title", false);
-	title.set_label((formatter() << title.get_label() << " " << font::unicode_em_dash << " " << connect_engine_.scenario()["name"].t_str()).str());
+	title.set_label((formatter() << connect_engine_.params().name << " " << font::unicode_em_dash << " " << connect_engine_.scenario()["name"].t_str()).str());
 
 	update_status_label_and_buttons();
 
 	//
-	// Set up teams
-	//
-	for(const ng::connect_engine::team_data_pod& team : connect_engine_.team_data()) {
-		tree_view& tree = find_widget<tree_view>(&window, "side_list", false);
-		static const std::map<std::string, string_map> empty_map;
-
-		std::map<std::string, string_map> tree_data;
-		string_map tree_item;
-
-		tree_item["label"] = (formatter() << _("Team:") << " " << t_string::from_serialized(team.user_team_name)).str();
-		tree_data.emplace("tree_view_node_label", tree_item);
-
-		tree_view_node& team_node = tree.add_node("team_header", tree_data);
-		team_node.add_sibling("side_spacer", empty_map);
-
-		team_tree_map_[team.team_name] = &team_node;
-	}
-
-	//
 	// Set up sides list
-	// This must be after setting up teams because add_side_node() uses team_tree_map_
 	//
 	for(const auto& side : connect_engine_.side_engines()) {
 		if(side->allow_player() || game_config::debug) {
@@ -158,6 +138,34 @@ int mp_staging::get_side_node_position(ng::side_engine_ptr side) const
 	return position;
 }
 
+template<typename... T>
+tree_view_node& mp_staging::add_side_to_team_node(ng::side_engine_ptr side, T&&... params)
+{
+	static const std::map<std::string, string_map> empty_map;
+
+	// If there is no team node in the map, this will return nullptr
+	tree_view_node* team_node = team_tree_map_[side->team_name()];
+
+	// Add a team node if none exists
+	if(team_node == nullptr) {
+		tree_view& tree = find_widget<tree_view>(get_window(), "side_list", false);
+
+		std::map<std::string, string_map> tree_data;
+		string_map tree_item;
+
+		tree_item["label"] = (formatter() << _("Team:") << " " << side->user_team_name()).str();
+		tree_data.emplace("tree_view_node_label", tree_item);
+
+		team_node = &tree.add_node("team_header", tree_data);
+		team_node->add_sibling("side_spacer", empty_map);
+
+		team_tree_map_[side->team_name()] = team_node;
+	}
+
+	assert(team_node && "No team node found!");
+	return team_node->add_child(std::forward<T>(params)...);
+}
+
 void mp_staging::add_side_node(ng::side_engine_ptr side)
 {
 	std::map<std::string, string_map> data;
@@ -173,7 +181,7 @@ void mp_staging::add_side_node(ng::side_engine_ptr side)
 	item["label"] = "icons/icon-random.png";
 	data.emplace("leader_gender", item);
 
-	tree_view_node& node = team_tree_map_[side->team_name()]->add_child("side_panel", data, get_side_node_position(side));
+	tree_view_node& node = add_side_to_team_node(side, "side_panel", data, get_side_node_position(side));
 
 	side_tree_map_[side] = &node;
 
@@ -406,13 +414,31 @@ void mp_staging::on_team_select(ng::side_engine_ptr side, menu_button& team_menu
 		return;
 	}
 
+	// Note the old team so we can remove the node if empty after the side move.
+	// Do this *before* setting the new team!
+	const std::string old_team = side->team_name();
 	side->set_team(team_index);
 
+	auto& tree = find_widget<tree_view>(get_window(), "side_list", false);
+
 	// First, remove the node from the tree
-	auto node = find_widget<tree_view>(get_window(), "side_list", false).remove_node(side_tree_map_[side]);
+	auto node = tree.remove_node(side_tree_map_[side]);
 
 	// Then add a new node as a child to the appropriate team's node
-	team_tree_map_[side->team_name()]->add_child(std::move(node.first), get_side_node_position(side));
+	add_side_to_team_node(side, std::move(node.first), get_side_node_position(side));
+
+	tree_view_node* old_team_node = team_tree_map_[old_team];
+
+	// Last, remove the old team node if it's now empty
+	if(old_team_node->empty()) {
+		// Only sibling should be the decor line, and it should be last
+		auto decor = old_team_node->siblings().back();
+
+		tree.remove_node(old_team_node);
+		tree.remove_node(decor.get());
+
+		team_tree_map_[old_team] = nullptr;
+	}
 
 	set_state_changed();
 }

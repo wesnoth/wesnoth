@@ -20,8 +20,10 @@
 
 namespace font {
 
-/// structure which will hide all current floating labels, and cause floating labels
-/// instantiated after it is created to be displayed
+/**
+ * structure which will hide all current floating labels, and cause floating labels
+ * instantiated after it is created to be displayed
+ */
 struct floating_label_context
 {
 	floating_label_context();
@@ -103,22 +105,23 @@ private:
 };
 
 
-/// add a label floating on the screen above everything else.
-/// @returns a handle to the label which can be used with other label functions
-
+/**
+ * add a label floating on the screen above everything else.
+ * @returns a handle to the label which can be used with other label functions
+ */
 int add_floating_label(const floating_label& flabel);
 
 
-/// moves the floating label given by 'handle' by (xmove,ymove)
+/** moves the floating label given by 'handle' by (xmove,ymove) */
 void move_floating_label(int handle, double xmove, double ymove);
 
-/// moves all floating labels that have 'scroll_mode' set to ANCHOR_LABEL_MAP
+/** moves all floating labels that have 'scroll_mode' set to ANCHOR_LABEL_MAP */
 void scroll_floating_labels(double xmove, double ymove);
 
-/// removes the floating label given by 'handle' from the screen
+/** removes the floating label given by 'handle' from the screen */
 void remove_floating_label(int handle);
 
-/// hides or shows a floating label
+/** hides or shows a floating label */
 void show_floating_label(int handle, bool show);
 
 SDL_Rect get_floating_label_rect(int handle);

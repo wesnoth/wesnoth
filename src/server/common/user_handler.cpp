@@ -27,7 +27,8 @@
 #include <ctime>
 #include <sstream>
 
-std::string user_handler::create_unsecure_nonce(int length) {
+std::string user_handler::create_unsecure_nonce(int length)
+{
 	srand(static_cast<unsigned>(std::time(nullptr)));
 
 	std::stringstream ss;
@@ -36,15 +37,16 @@ std::string user_handler::create_unsecure_nonce(int length) {
 		ss << randomness::rng::default_instance().get_random_int(0, 9);
 	}
 
-	return  ss.str();
+	return ss.str();
 }
 
 #ifndef __APPLE__
-namespace {
-	class RAND_bytes_exception: public std::exception
-	{
-	};
-}
+namespace
+{
+class RAND_bytes_exception : public std::exception
+{
+};
+} // namespace
 #endif
 
 std::string user_handler::create_secure_nonce()
@@ -62,4 +64,3 @@ std::string user_handler::create_secure_nonce()
 
 	return base64::encode({buf.data(), buf.size()});
 }
-

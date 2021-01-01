@@ -277,7 +277,7 @@ private:
 
 	mp_game_settings& parameters_;
 
-	/// Never nullptr.
+	/** Never nullptr. */
 	const config* initial_;
 
 	/**

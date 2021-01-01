@@ -110,18 +110,27 @@ public:
 	friend class unit;
 	friend class unit_drawer;
 private:
-	const unit & u_; /**< A reference to the unit that owns this object. It does so with a scoped pointer, so this reference should not dangle. */
+	/** A reference to the unit that owns this object. It does so with a scoped pointer, so this reference should not dangle. */
+	const unit & u_;
 
-	std::unique_ptr<unit_animation> anim_; /**< The current animation. */
-	std::vector<unit_animation> animations_; /**< List of registered animations for this unit. */
+	/** The current animation. */
+	std::unique_ptr<unit_animation> anim_;
+	/** List of registered animations for this unit. */
+	std::vector<unit_animation> animations_;
 
-	STATE state_; //!< animation state
+	/** animation state */
+	STATE state_;
 
-	int next_idling_;      //!< time for next idle animation
-	int frame_begin_time_; //!< time for the frame to begin
+	/** time for next idle animation */
+	int next_idling_;
+	/** time for the frame to begin */
+	int frame_begin_time_;
 
-	bool draw_bars_;  //!< bool indicating whether to draw bars with the unit
-	bool refreshing_; //!< avoid infinite recursion. flag used for drawing / animation
+	/** bool indicating whether to draw bars with the unit */
+	bool draw_bars_;
+	/** avoid infinite recursion. flag used for drawing / animation */
+	bool refreshing_;
 
-	halo::handle unit_halo_; //!< handle to the halo of this unit
+	/** handle to the halo of this unit */
+	halo::handle unit_halo_;
 };

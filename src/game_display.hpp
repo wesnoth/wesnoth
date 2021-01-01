@@ -213,10 +213,10 @@ public:
 
 	void set_game_mode(const game_mode mode);
 
-	/// Sets whether the screen (map visuals) needs to be rebuilt. This is typically after the map has been changed by wml.
+	/** Sets whether the screen (map visuals) needs to be rebuilt. This is typically after the map has been changed by wml. */
 	void needs_rebuild(bool b);
 
-	/// Rebuilds the screen if needs_rebuild(true) was previously called, and resets the flag.
+	/** Rebuilds the screen if needs_rebuild(true) was previously called, and resets the flag. */
 	bool maybe_rebuild();
 
 private:

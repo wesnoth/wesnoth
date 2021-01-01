@@ -102,8 +102,10 @@ private:
 	mutable bool categories_dirty;
 };
 
-/// To store label data
-/// Class implements logic for rendering
+/**
+ * To store label data
+ * Class implements logic for rendering
+ */
 class terrain_label
 {
 public:

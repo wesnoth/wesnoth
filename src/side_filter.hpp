@@ -51,7 +51,8 @@ private:
 	bool flat_;
 	std::string side_string_;
 
-	const filter_context * fc_; //!< The filter context for this filter. It should be a pointer because otherwise the default ctor doesn't work
+	/** The filter context for this filter. It should be a pointer because otherwise the default ctor doesn't work */
+	const filter_context * fc_;
 
 	mutable std::unique_ptr<unit_filter> ufilter_;
 	mutable std::unique_ptr<side_filter> allied_filter_;

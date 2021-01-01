@@ -20,8 +20,10 @@
  */
 namespace hotkey {
 
-/// this class is initialized once at game start
-/// put all initialization and wipe code in the methods here.
+/**
+ * this class is initialized once at game start
+ * put all initialization and wipe code in the methods here.
+ */
 class manager {
 public:
 	manager();

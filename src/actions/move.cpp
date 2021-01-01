@@ -186,7 +186,7 @@ game_events::pump_result_t get_village(const map_location& loc, int side, bool *
 
 namespace { // Private helpers for move_unit()
 
-	/// Helper class for move_unit().
+	/** Helper class for move_unit(). */
 	class unit_mover {
 		typedef std::vector<map_location>::const_iterator route_iterator;
 
@@ -199,28 +199,30 @@ namespace { // Private helpers for move_unit()
 		           bool skip_sightings, bool skip_ally_sightings);
 		~unit_mover();
 
-		/// Determines how far along the route the unit can expect to move this turn.
+		/** Determines how far along the route the unit can expect to move this turn. */
 		bool check_expected_movement();
-		/// Attempts to move the unit along the expected path.
+		/** Attempts to move the unit along the expected path. */
 		void try_actual_movement(bool show);
-		/// Does some bookkeeping and event firing, for use after movement.
+		/** Does some bookkeeping and event firing, for use after movement. */
 		void post_move(undo_list *undo_stack);
-		/// Shows the various on-screen messages, for use after movement.
+		/** Shows the various on-screen messages, for use after movement. */
 		void feedback() const;
 
-		/// After checking expected movement, this is the expected path.
+		/** After checking expected movement, this is the expected path. */
 		std::vector<map_location> expected_path() const
 		{ return std::vector<map_location>(begin_, expected_end_); }
-		/// After moving, this is the final hex reached.
+		/** After moving, this is the final hex reached. */
 		const map_location & final_hex() const
 		{ return *move_loc_; }
-		/// The number of hexes actually entered.
+		/** The number of hexes actually entered. */
 		std::size_t steps_travelled() const
 		{ return move_loc_ - begin_; }
-		/// After moving, use this to detect if movement was less than expected.
+		/** After moving, use this to detect if movement was less than expected. */
 		bool stopped_early() const  { return expected_end_ != real_end_; }
-		/// After moving, use this to detect if something happened that would
-		/// interrupt movement (even if movement ended for a different reason).
+		/**
+		 * After moving, use this to detect if something happened that would
+		 * interrupt movement (even if movement ended for a different reason).
+		 */
 		bool interrupted(bool include_end_of_move_events=true) const
 		{
 			return ambushed_ || blocked() || sighted_ || teleport_failed_ ||
@@ -229,31 +231,31 @@ namespace { // Private helpers for move_unit()
 		}
 
 	private: // functions
-		/// Returns whether or not movement was blocked by a non-ambushing enemy.
+		/** Returns whether or not movement was blocked by a non-ambushing enemy. */
 		bool blocked() const { return blocked_loc_ != map_location::null_location(); }
-		/// Checks the expected route for hidden units.
+		/** Checks the expected route for hidden units. */
 		void cache_hidden_units(const route_iterator & start,
 		                        const route_iterator & stop);
-		/// Fires the enter_hex or exit_hex event and updates our data as needed.
+		/** Fires the enter_hex or exit_hex event and updates our data as needed. */
 		void fire_hex_event(const std::string & event_name,
 		                    const route_iterator & current,
 	                        const route_iterator & other);
-		/// AI moves are supposed to not change the "goto" order.
+		/** AI moves are supposed to not change the "goto" order. */
 		bool is_ai_move() const	{ return spectator_ != nullptr; }
-		/// Checks how far it appears we can move this turn.
+		/** Checks how far it appears we can move this turn. */
 		route_iterator plot_turn(const route_iterator & start,
 		                         const route_iterator & stop);
-		/// Updates our stored info after a WML event might have changed something.
+		/** Updates our stored info after a WML event might have changed something. */
 		void post_wml(game_events::pump_result_t pump_res, const route_iterator & step);
 		void post_wml(game_events::pump_result_t pump_res) { return post_wml(pump_res, full_end_); }
-		/// Fires the sighted events that were raised earlier.
+		/** Fires the sighted events that were raised earlier. */
 		void pump_sighted(const route_iterator & from);
-		/// Returns the ambush alert (if any) for the given unit.
+		/** Returns the ambush alert (if any) for the given unit. */
 		static std::string read_ambush_string(const unit & ambusher);
-		/// Reveals the unit at the indicated location.
+		/** Reveals the unit at the indicated location. */
 		void reveal_ambusher(const map_location & hex, bool update_alert=true);
 
-		/// Returns whether or not undoing this move should be blocked.
+		/** Returns whether or not undoing this move should be blocked. */
 		bool undo_blocked() const
 		{ return ambushed_ || blocked() || wml_removed_unit_ || wml_undo_disabled_ || fog_changed_ ||
 		         teleport_failed_; }
@@ -262,21 +264,21 @@ namespace { // Private helpers for move_unit()
 		// each is used in only one place. (They are separate functions to ease
 		// code reading.)
 
-		/// Checks for ambushers around @a hex, setting flags as appropriate.
+		/** Checks for ambushers around @a hex, setting flags as appropriate. */
 		inline void check_for_ambushers(const map_location & hex);
-		/// Makes sure the path is not obstructed by a unit.
+		/** Makes sure the path is not obstructed by a unit. */
 		inline bool check_for_obstructing_unit(const map_location & hex,
 		                                       const map_location & prev_hex);
-		/// Moves the unit the next step.
+		/** Moves the unit the next step. */
 		inline bool do_move(const route_iterator & step_from,
 		                    const route_iterator & step_to,
 		                    unit_display::unit_mover & animator);
-		/// Clears fog/shroud and handles units being sighted.
+		/** Clears fog/shroud and handles units being sighted. */
 		inline void handle_fog(const map_location & hex, bool new_animation);
 		inline bool is_reasonable_stop(const map_location & hex) const;
-		/// Reveals the units stored in ambushers_ (and blocked_loc_).
+		/** Reveals the units stored in ambushers_ (and blocked_loc_). */
 		inline void reveal_ambushers();
-		/// Makes sure the units in ambushers_ still exist.
+		/** Makes sure the units in ambushers_ still exist. */
 		inline void validate_ambushers();
 
 	private: // data
@@ -337,11 +339,13 @@ namespace { // Private helpers for move_unit()
 	};
 
 
-	/// This constructor assumes @a route is not empty, and it will assert() that
-	/// there is a unit at route.front().
-	/// Iterators into @a route must remain valid for the life of this object.
-	/// It is assumed that move_spectator is only supplied for AI moves (only
-	/// affects whether or not gotos are changed).
+	/**
+	 * This constructor assumes @a route is not empty, and it will assert() that
+	 * there is a unit at route.front().
+	 * Iterators into @a route must remain valid for the life of this object.
+	 * It is assumed that move_spectator is only supplied for AI moves (only
+	 * affects whether or not gotos are changed).
+	 */
 	unit_mover::unit_mover(const std::vector<map_location> & route,
 	                       move_unit_spectator *move_spectator,
 	                       bool skip_sightings, bool skip_ally_sightings)

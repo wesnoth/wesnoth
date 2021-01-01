@@ -188,7 +188,7 @@ int help_menu::process()
 				chosen_topic_ = find_topic(default_toplevel, ".."+sec->id );
 			}
 		} else if (selected_item_.t != nullptr) {
-			/// Choose a topic if it is clicked.
+			// Choose a topic if it is clicked.
 			chosen_topic_ = selected_item_.t;
 		}
 	}

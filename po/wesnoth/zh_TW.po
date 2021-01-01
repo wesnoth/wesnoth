@@ -1,5 +1,5 @@
 # The Battle for Wesnoth - Traditional Chinese Translations
-# Copyright (C) 2005-2019 Wesnoth development team
+# Copyright (C) 2005-2020 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 # 楊綮銘 <steven2880@gmail.com>, 2008.
 # 李昆融 <likwueron@gmail.com>, 2018.
@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: wesnoth-1.14\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2020-12-18 22:26-0300\n"
-"PO-Revision-Date: 2020-02-10 00:55+0800\n"
+"PO-Revision-Date: 2020-12-21 15:55+0800\n"
 "Last-Translator: 楊綮銘 <steven2880@gmail.com>\n"
 "Language-Team: Wesnoth Traditional Chinese Team\n"
 "Language: zh_TW\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n>1);\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Generator: Poedit 2.2.4\n"
+"X-Generator: Poedit 2.4.2\n"
 
 #. [multiplayer_side]: id=Custom
 #: data/_main.cfg:22
@@ -8094,14 +8094,10 @@ msgid "Turn Number"
 msgstr "回合數"
 
 #: src/reports.cpp:1391
-#, fuzzy
-#| msgid ""
-#| "When the game reaches the number of turns indicated by the second number, "
-#| "it will end."
 msgid ""
 "When the game exceeds the number of turns indicated by the second number, it "
 "will end."
-msgstr "當遊戲回合數達第二個數字時，遊戲結束。"
+msgstr "當遊戲進行的回合數超過任務目標的回合數時，遊戲就會結束。"
 
 #: src/reports.cpp:1416
 msgid "Gold"
@@ -8670,22 +8666,6 @@ msgstr "對 $player 隱藏計劃"
 msgid "Whiteboard Options"
 msgstr "白板選項"
 
-#, fuzzy
-#~| msgid "Sending add-on <i>$addon_title</i>..."
-#~ msgid ""
-#~ "Requesting the older version composition for the add-on <i>$addon_title</"
-#~ "i>..."
-#~ msgstr "正在傳送模組 <i>$addon_title</i>..."
-
-#~ msgid "Connection timed out"
-#~ msgstr "連線愈時"
-
-#~ msgid "Cancel"
-#~ msgstr "取消"
-
-#~ msgid "Battle for Wesnoth"
-#~ msgstr "Battle for Wesnoth"
-
 #~ msgid "Graphics scaling options"
 #~ msgstr "圖像縮放選項"
 
@@ -8780,6 +8760,9 @@ msgstr "白板選項"
 #~ msgid "(Note: You should use $replacement instead in new code)"
 #~ msgstr "（備註：你應該使用 $replacement 而不是新的程式碼）"
 
+#~ msgid "Cancel"
+#~ msgstr "取消"
+
 #~ msgid "registering with password *** and no email address"
 #~ msgstr "以密碼 *** 註冊，未輸入電子郵件"
 
@@ -8810,6 +8793,9 @@ msgstr "白板選項"
 
 #~ msgid "Request a list of details you can set for your registered nickname."
 #~ msgstr "取得您註冊帳號的詳細資訊。"
+
+#~ msgid "Connection timed out"
+#~ msgstr "連線愈時"
 
 #~ msgid "No Saved Games"
 #~ msgstr "沒有存檔"
@@ -10237,6 +10223,9 @@ msgstr "白板選項"
 
 #~ msgid "There are no players on your friends or ignore list."
 #~ msgstr "您的好友名單和黑名單是空的."
+
+#~ msgid "Battle for Wesnoth"
+#~ msgstr "Battle for Wesnoth"
 
 #~ msgid "save_compression_short^gzip"
 #~ msgstr "gzip"

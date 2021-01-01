@@ -27,7 +27,7 @@ class unit_filter;
 class terrain_filter : public xy_pred {
 public:
 
-	terrain_filter(const vconfig& cfg, const filter_context * fc, const bool flat_tod=false);
+	terrain_filter(const vconfig& cfg, const filter_context * fc, const bool flat_tod);
 	terrain_filter(const vconfig& cfg, const terrain_filter& original);
 	/** Default implementation, but defined out-of-line for efficiency reasons. */
 	~terrain_filter();
@@ -35,32 +35,40 @@ public:
 	terrain_filter(const terrain_filter &other);
 	terrain_filter& operator=(const terrain_filter &other);
 
-	/// @param loc The location to test
-	/// @returns true if and only if the given location matches this filter
+	/**
+	 * @param loc The location to test
+	 * @returns true if and only if the given location matches this filter
+	 */
 	bool match(const map_location& loc) const {
 		return match_impl(loc, nullptr);
 	}
 
-	/// @param loc The location to test
-	/// @param ref_unit A reference unit for the $teleport_unit auto-stored variable
-	/// @returns true if and only if the given location matches this filter
+	/**
+	 * @param loc The location to test
+	 * @param ref_unit A reference unit for the $teleport_unit auto-stored variable
+	 * @returns true if and only if the given location matches this filter
+	 */
 	bool match(const map_location& loc, const unit& ref_unit) const {
 		return match_impl(loc, &ref_unit);
 	}
 
 	virtual bool operator()(const map_location& loc) const { return this->match(loc); }
 
-	/// gets all locations on the map that match this filter
-	/// @param[out] locs set to store the results in
-	/// @param[in] with_border whether to include the borders
+	/**
+	 * gets all locations on the map that match this filter
+	 * @param[out] locs set to store the results in
+	 * @param[in] with_border whether to include the borders
+	 */
 	void get_locations(std::set<map_location>& locs, bool with_border=false) const {
 		return get_locs_impl(locs, nullptr, with_border);
 	}
 
-	/// gets all locations on the map that match this filter
-	/// @param[out] locs set to store the results in
-	/// @param[in] with_border whether to include the borders
-	/// @param[in] ref_unit A reference unit for the $teleport_unit auto-stored variable
+	/**
+	 * gets all locations on the map that match this filter
+	 * @param[out] locs set to store the results in
+	 * @param[in] with_border whether to include the borders
+	 * @param[in] ref_unit A reference unit for the $teleport_unit auto-stored variable
+	 */
 	void get_locations(std::set<map_location>& locs, const unit& ref_unit, bool with_border=false) const {
 		return get_locs_impl(locs, &ref_unit, with_border);
 	}

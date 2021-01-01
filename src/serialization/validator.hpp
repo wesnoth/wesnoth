@@ -45,14 +45,16 @@ public:
 	/**
 	 * Is called when parser opens tag.
 	 * @param name        Name of tag
+	 * @param parent      The parent config
 	 * @param start_line  Line in file
 	 * @param file        Name of file
+	 * @param addition    
 	 */
 	virtual void open_tag(const std::string & name,
 						  const config& parent,
 						  int start_line,
 						  const std::string &file,
-						  bool addittion = false) = 0;
+						  bool addition = false) = 0;
 	/**
 	 * As far as parser is built on stack, some realizations can store stack
 	 * too. So they need to know if tag was closed.
@@ -75,6 +77,7 @@ public:
 	 * What exactly is validated depends on validator realization
 	 * @param cfg         Config to be validated.
 	 * @param name        Name of tag
+	 * @param value       The key's value
 	 * @param start_line  Line in file
 	 * @param file        Name of file
 	 */

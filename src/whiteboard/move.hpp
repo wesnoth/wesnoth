@@ -67,8 +67,10 @@ public:
 	void modify_unit(unit& new_unit);
 	virtual void set_route(const pathfind::marked_route& route);
 	virtual const pathfind::marked_route& get_route() const { assert(route_); return *route_; }
-	/// attempts to pathfind a new marked route for this path between these two hexes;
-	/// returns true and assigns it to the internal route if successful.
+	/**
+	 * attempts to pathfind a new marked route for this path between these two hexes;
+	 * returns true and assigns it to the internal route if successful.
+	 */
 	virtual bool calculate_new_route(const map_location& source_hex, const map_location& dest_hex);
 
 	virtual arrow_ptr get_arrow() { return arrow_; }
@@ -90,7 +92,7 @@ public:
 
 	virtual config to_config() const;
 
-	///@todo Make use of safe_enum idiom?
+	/** @todo Make use of safe_enum idiom? */
 	enum ARROW_BRIGHTNESS {ARROW_BRIGHTNESS_STANDARD, ARROW_BRIGHTNESS_HIGHLIGHTED, ARROW_BRIGHTNESS_FOCUS};
 	void set_arrow_brightness(ARROW_BRIGHTNESS x) const {arrow_brightness_=x; }
 	enum ARROW_TEXTURE {ARROW_TEXTURE_VALID, ARROW_TEXTURE_INVALID};
@@ -108,7 +110,7 @@ protected:
 	std::string unit_id_;
 	std::unique_ptr<pathfind::marked_route> route_;
 	int movement_cost_;
-	/// Turn end number to draw if greater than zero. Assigned by the map builder.
+	/** Turn end number to draw if greater than zero. Assigned by the map builder. */
 	int turn_number_;
 
 	arrow_ptr arrow_;

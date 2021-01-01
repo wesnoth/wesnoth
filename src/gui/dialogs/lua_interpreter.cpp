@@ -167,11 +167,14 @@ public:
 	 **/
 	void add_dialog_message(const std::string & msg);
 
-	std::string get_log() const { return log_.str(); } ///< Get the log string
-	std::string get_raw_log() const { return raw_log_.str(); } ///< Get the unescaped log
-	std::string get_name() const { return L_.my_name(); } ///< Get a string describing the name of lua kernel
+	/** Get the log string */
+	std::string get_log() const { return log_.str(); }
+	/** Get the unescaped log */
+	std::string get_raw_log() const { return raw_log_.str(); }
+	/** Get a string describing the name of lua kernel */
+	std::string get_name() const { return L_.my_name(); }
 
-	/// Clear the console log
+	/** Clear the console log */
 	void clear_log() {
 		L_.clear_log();
 		log_.str("");
@@ -406,7 +409,8 @@ public:
 						   const SDL_Keycode key,
 						   window& window);
 
-	void update_view(); ///< Update the view based on the model
+	/** Update the view based on the model */
+	void update_view();
 
 	friend class lua_interpreter;
 };

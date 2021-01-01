@@ -109,6 +109,7 @@ void room_info::process_room_members(const config& data)
 
 user_info::user_info(const config& c)
 	: name(c["name"])
+	, forum_id(c["forum_id"].to_int())
 	, game_id(c["game_id"])
 	, relation(user_relation::ME)
 	, state(game_id == 0 ? user_state::LOBBY : user_state::GAME)

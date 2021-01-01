@@ -105,8 +105,12 @@ bool wmi_manager::fire_item(
 /**
  * Returns the menu items that can be shown for the given location.
  *
+ * @param hex               The current hex.
  * @param[out] items        Pointers to applicable menu items will be pushed onto @a items.
  * @param[out] descriptions Menu item text will be pushed onto @a descriptions (in the same order as @a items).
+ * @param fc                Used to check whether the menu's filter matches.
+ * @param gamedata          Used to check whether to show if selecting is required.
+ * @param units             Used to highlight a unit if needed.
  */
 void wmi_manager::get_items(const map_location& hex,
 		std::vector<std::shared_ptr<const wml_menu_item>>& items,

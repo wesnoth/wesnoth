@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2020-11-21 04:40 UTC\n"
-"PO-Revision-Date: 2019-11-04 22:20-0300\n"
+"PO-Revision-Date: 2020-12-23 22:51-0300\n"
 "Last-Translator: Andrei Machado <andreisp.machado@yahoo.com>\n"
 "Language-Team: none\n"
 "Language: pt_BR\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 2.2.3\n"
+"X-Generator: Poedit 2.4.2\n"
 
 #. [campaign]: id=Two_Brothers
 #: data/campaigns/Two_Brothers/_main.cfg:13
@@ -40,10 +40,8 @@ msgstr "Desafiador"
 
 #. [campaign]: id=Two_Brothers
 #: data/campaigns/Two_Brothers/_main.cfg:19
-#, fuzzy
-#| msgid "Knight"
 msgid "Grand Knight"
-msgstr "Cavaleiro"
+msgstr "Cavaleiro Mestre"
 
 #. [campaign]: id=Two_Brothers
 #: data/campaigns/Two_Brothers/_main.cfg:21
@@ -60,10 +58,8 @@ msgstr ""
 
 #. [campaign]: id=Two_Brothers
 #: data/campaigns/Two_Brothers/_main.cfg:23
-#, fuzzy
-#| msgid "(Rookie level, 4 scenarios.)"
 msgid "(Novice level, 4 scenarios.)"
-msgstr "(Nível Recruta, 4 cenários.)"
+msgstr "(Nível novato, 4 cenários.)"
 
 #. [about]
 #: data/campaigns/Two_Brothers/_main.cfg:30
@@ -479,23 +475,6 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:34
-#, fuzzy
-#| msgid ""
-#| "16 V, 363 YW\n"
-#| "Excerpt from the journal of Arvith of Maghre\n"
-#| "\n"
-#| "We’ve been searching three days for Baran, and turned up nothing. My best "
-#| "hunch was to head north into the borderlands, where the necromancer’s "
-#| "minions could safely hide; everywhere else is more farmland. At first I "
-#| "thought the search might be useless, but late in the first day we found a "
-#| "set of tracks. Some of them had been made by skeletal feet.\n"
-#| "\n"
-#| "We’re close enough to be certain now: those tracks are heading into the "
-#| "Grey Woods. No one from Maghre or any of the other villages has gone into "
-#| "that forest in living memory. Stories have been passed down for "
-#| "generations warning against it. Supposedly the place is haunted by lost "
-#| "souls who hunger for the living, and anyone who dies there is doomed to "
-#| "join them."
 msgid ""
 "16 V, 363 YW\n"
 "Excerpt from the journal of Arvith of Maghre\n"
@@ -521,7 +500,8 @@ msgstr ""
 "necromante poderia se esconder em segurança; todas as outras direções são "
 "apenas pastos e plantações. A princípio eu achei que essa procurara seria "
 "inútil, mas no final do primeiro dia nós encontramos pegadas. Algumas delas "
-"haviam sido feitas por pés esqueléticos.\n"
+"haviam sido feitas por pés esqueléticos, mas após o primeiro acampamento "
+"deles as pegadas mudaram para a de homens levando cargas pesadas.\n"
 "\n"
 "Estamos pertos o suficiente para termos certeza: esses rastros vão em "
 "direção aos Bosques Cinzentos. Já faz muito tempo que ninguém de Maghre nem "
@@ -653,6 +633,11 @@ msgid ""
 "murderer, and rest assured that the grey mages will release all of the souls "
 "that their prisoner’s evil magic has bound to this world."
 msgstr ""
+"Aqueles homens capturaram o prisoneiro deles enquanto ele estava praticando "
+"necromancia; pelo seu próprio bem, espero que ele não seja o seu irmão. "
+"Suponha que o homen que eles capturaram seja o assasino do seu irmão, pode "
+"ficar tranquilo que os magos cinzas libertarão todas as almas que a magia "
+"víl do prisoneiro deles mantem presos neste mundo."
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:379
@@ -660,6 +645,8 @@ msgid ""
 "We killed the necromancer on the battlefield! I struck the killing blow "
 "myself."
 msgstr ""
+"Nós matamos o necromante no campo de batalha! Eu pessoalmente desferi o "
+"golpe fatal."
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:385
@@ -667,6 +654,8 @@ msgid ""
 "We killed the necromancer on the battlefield! I saw the killing blow with my "
 "own eyes."
 msgstr ""
+"Nós matamos o necromante no campo de batalha! Eu vi o golpe que o matou com "
+"os meus próprios olhos."
 
 #. [message]: speaker=Nil-Galion
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:392
@@ -680,19 +669,23 @@ msgid ""
 "Either way, nothing will be gained by your intrusion into our woods. Now "
 "advance no further, or you will die."
 msgstr ""
+"Nós escutamos o som da batalha três dias atrás, mas o fedor de morte quando "
+"os prisoneiros passaram por nós era inconfundível; se o seu irmão realmente "
+"for o prisoneiro então ele também é um necromante. Lembre-se do seu irmão "
+"como ele era, e saiba que ele será vingado.\n"
+"\n"
+"De qualquer forma, não há nada para vocês nessas florestas. Não avançem "
+"mais, ou vocêsmorrerão."
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:399
-#, fuzzy
-#| msgid ""
-#| "So much for those ghost stories. Mere elves will not stop me from freeing "
-#| "Baran!"
 msgid ""
 "So much for those ghost stories, but even ghosts might have been more "
 "observant than these elves. Still, they will not stop me from freeing Baran!"
 msgstr ""
-"Pelo visto, os fantasmas não passam de histórias. Meros elfos não me "
-"impedirão de libertar Baran!"
+"Pelo visto os fantasmas não passam de histórias, mas pelo visto até mesmo os "
+"fantasmas entendem melhor o que está acontecendo do que os elfos. Ainda "
+"assim, eles não me impedirão de libertar Baran!"
 
 #. [message]: role=Mercenary
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:404
@@ -734,7 +727,7 @@ msgstr ""
 #. it's likely that all the elves are already dead, and Arvith is just shouting to the forest
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:497
 msgid "Well, elves? Now do you see who the necromancers are?"
-msgstr ""
+msgstr "E então, elfos? Agora vocês sabem quem são os necromantes?"
 
 #. [message]: speaker=messenger_elf
 #. a elven scout rides in from off-map, takes their first look at the situation, and realises that they have no idea what's going on
@@ -743,6 +736,8 @@ msgid ""
 "I heard sounds of battle, but did not expect to see this. I will inform the "
 "Council, they can work out who the necromancers are."
 msgstr ""
+"Eu ouvi o som da batalha, mas não estava esperando por isso. Irei informar o "
+"Conselho, eles decidirão que são os necromantes."
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:543
@@ -937,6 +932,8 @@ msgid ""
 "Deluded fool, you are rescuing a necromancer. I can only hope that you are "
 "too late, and that our souls will rest in peace."
 msgstr ""
+"Tolo iludido, você está resgatando um necromante. Espero que você tenha "
+"chegado tarde demais e que nossas almas descansarão em paz."
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:731
@@ -1170,8 +1167,8 @@ msgid ""
 "The adept didn’t lead us astray after all. I’ll keep my word, distasteful as "
 "it may be; cut him loose, and let’s be rid of him."
 msgstr ""
-"No final das contas, o adepto não nos despistou. Manterei minha palavra, por "
-"mais desagradável que isso seja. Soltem-no e deixem-no ir."
+"No final das contas, o adepto nos levou pelo caminho certo. Manterei minha "
+"palavra, por mais desagradável que isso seja. Soltem-no e deixem-no ir."
 
 #. [message]: speaker=Guard_leader
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:477

@@ -236,13 +236,13 @@ private:
 
 	std::vector<map_location> hidden_unit_hexes_;
 
-	///net_buffer_[i] = whiteboard network data to be sent "from" teams[i].
+	/** net_buffer_[i] = whiteboard network data to be sent "from" teams[i]. */
 	std::vector<config> net_buffer_;
 
-	///team_plans_hidden_[i] = whether or not to hide actions from teams[i].
+	/** team_plans_hidden_[i] = whether or not to hide actions from teams[i]. */
 	boost::dynamic_bitset<> team_plans_hidden_;
 
-	///used to keep track of units owning planned moves for visual ghosting/unghosting
+	/** used to keep track of units owning planned moves for visual ghosting/unghosting */
 	std::set<std::size_t> units_owning_moves_;
 };
 

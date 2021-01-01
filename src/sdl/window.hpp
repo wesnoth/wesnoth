@@ -16,7 +16,7 @@
 
 /**
  * @file
- * Contains a wrapper class for the @ref SDL_Window class.
+ * Contains a wrapper class for the SDL_Window class.
  */
 
 #include <SDL2/SDL_video.h>
@@ -30,16 +30,16 @@ namespace sdl
 {
 
 /**
- * The wrapper class for the @ref SDL_Window class.
+ * The wrapper class for the SDL_Window class.
  *
  * At the moment of writing it is not certain yet how many windows will be
  * created. At least one as main window, but maybe the GUI dialogs will have
  * their own window. Once that is known it might be a good idea to evaluate
  * whether the class should become a singleton or not.
  *
- * The class also wraps several functions operating on @ref SDL_Window objects.
+ * The class also wraps several functions operating on SDL_Window objects.
  * For functions not wrapped the class offers an implicit conversion operator
- * to a pointer to the @ref SDL_Window object it owns.
+ * to a pointer to the SDL_Window object it owns.
  */
 class window
 {
@@ -52,15 +52,15 @@ public:
 	/**
 	 * Constructor.
 	 *
-	 * The function calls @ref SDL_CreateWindow and @ref SDL_CreateRenderer.
+	 * The function calls SDL_CreateWindow and SDL_CreateRenderer.
 	 *
-	 * @param title               Used as title for @ref SDL_CreateWindow.
-	 * @param x                   Used as x for @ref SDL_CreateWindow.
-	 * @param y                   Used as y for @ref SDL_CreateWindow.
-	 * @param w                   Used as w for @ref SDL_CreateWindow.
-	 * @param h                   Used as x for @ref SDL_CreateWindow.
-	 * @param window_flags        Used as flags for @ref SDL_CreateWindow.
-	 * @param render_flags        Used as flags for @ref SDL_CreateRenderer.
+	 * @param title               Used as title for SDL_CreateWindow.
+	 * @param x                   Used as x for SDL_CreateWindow.
+	 * @param y                   Used as y for SDL_CreateWindow.
+	 * @param w                   Used as w for SDL_CreateWindow.
+	 * @param h                   Used as x for SDL_CreateWindow.
+	 * @param window_flags        Used as flags for SDL_CreateWindow.
+	 * @param render_flags        Used as flags for SDL_CreateRenderer.
 	 */
 	window(const std::string& title,
 			const int x,
@@ -76,10 +76,10 @@ public:
 	/***** ***** ***** Operations. ***** ***** *****/
 
 	/**
-	 * Wrapper for @ref SDL_SetWindowSize.
+	 * Wrapper for SDL_SetWindowSize.
 	 *
-	 * @param w                   Used as w for @ref SDL_SetWindowSize.
-	 * @param h                   Used as x for @ref SDL_SetWindowSize.
+	 * @param w                   Used as w for SDL_SetWindowSize.
+	 * @param h                   Used as x for SDL_SetWindowSize.
 	 */
 	void set_size(const int w, const int h);
 
@@ -129,6 +129,7 @@ public:
 	 * @param r                   Red value of the color.
 	 * @param g                   Green value of the color.
 	 * @param b                   Blue value of the color.
+	 * @param a                   Alpha value.
 	 */
 	void fill(uint8_t r, uint8_t g, uint8_t b, uint8_t a = 0);
 
@@ -138,7 +139,7 @@ public:
 	/**
 	 * Sets the title of the window.
 	 *
-	 * This is a wrapper for @ref SDL_SetWindowTitle.
+	 * This is a wrapper for SDL_SetWindowTitle.
 	 *
 	 * @param title               The new title for the window.
 	 */
@@ -147,9 +148,9 @@ public:
 	/**
 	 * Sets the icon of the window.
 	 *
-	 * This is a wrapper for @ref SDL_SetWindowIcon.
+	 * This is a wrapper for SDL_SetWindowIcon.
 	 *
-	 * @note The @p icon is a @ref SDL_Surface and not a @ref SDL_Texture, this
+	 * @note The @p icon is a SDL_Surface and not a SDL_Texture, this
 	 * is part of the SDL 2 API.
 	 *
 	 * @param icon                The new icon for the window.
@@ -161,7 +162,7 @@ public:
 	/**
 	 * Set minimum size of the window.
 	 *
-	 * This is a wrapper for @ref SDL_SetWindowMinimumWindowSize.
+	 * This is a wrapper for SDL_SetWindowMinimumWindowSize.
 	 */
 	void set_minimum_size(int min_w, int min_h);
 
@@ -182,7 +183,7 @@ public:
 private:
 	/***** ***** ***** Members. ***** ***** *****/
 
-	/** The @ref SDL_Window we own. */
+	/** The SDL_Window we own. */
 	SDL_Window* window_;
 
 	/** The preferred pixel format for the renderer. */

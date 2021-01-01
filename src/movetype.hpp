@@ -21,57 +21,67 @@ class attack_type;
 namespace t_translation { struct terrain_code; }
 
 
-/// The basic "size" of the unit - flying, small land, large land, etc.
-/// This encompasses terrain costs, defenses, and resistances.
-///
-/// This class is used for both [movetype] and [unit] configs, which use the
-/// same data in their configs for [movement_costs], [defense], etc. However,
-/// the data for whether the unit flies is historically held in [movetype]'s
-/// "flies" vs [unit]'s "flying".
-///
-/// Existing behavior of 1.14:
-/// * movetype::movetype(const config & cfg) will read only the "flies" key
-/// * movetype::merge(const config & cfg, bool overwrite) will read both keys,
-///     with "flying" taking priority if both are supplied
-/// * movetype::write() will write only the "flying" key
-///
-/// \todo make this more logical. Ideas:
-/// * for 1.15, support both "flying" and "flies" in [movetype]
-/// * for 1.17 or later, drop the "flies"
+/**
+ * The basic "size" of the unit - flying, small land, large land, etc.
+ * This encompasses terrain costs, defenses, and resistances.
+ * 
+ * This class is used for both [movetype] and [unit] configs, which use the
+ * same data in their configs for [movement_costs], [defense], etc. However,
+ * the data for whether the unit flies is historically held in [movetype]'s
+ * "flies" vs [unit]'s "flying".
+ * 
+ * Existing behavior of 1.14:
+ * * movetype::movetype(const config & cfg) will read only the "flies" key
+ * * movetype::merge(const config & cfg, bool overwrite) will read both keys,
+ *     with "flying" taking priority if both are supplied
+ * * movetype::write() will write only the "flying" key
+ * 
+ * @todo make this more logical. Ideas:
+ * * for 1.15, support both "flying" and "flies" in [movetype]
+ * * for 1.17 or later, drop the "flies"
+ */
 class movetype
 {
 public:
-	/// A const-only interface for how many (movement, vision, or "jamming") points a
-	/// unit needs for each hex. Functions to modify the costs are exposed by the
-	/// movetype instance owning this terrain_costs, so that changes to movement will
-	/// cascade to the vision, etc.
+	/**
+	 * A const-only interface for how many (movement, vision, or "jamming") points a
+	 * unit needs for each hex. Functions to modify the costs are exposed by the
+	 * movetype instance owning this terrain_costs, so that changes to movement will
+	 * cascade to the vision, etc.
+	 */
 	class terrain_costs
 	{
 	public:
 		virtual ~terrain_costs() = default;
 
-		/// Returns the value associated with the given terrain.
-		///
-		/// Calculated values are cached for later queries.
+		/**
+		 * Returns the value associated with the given terrain.
+		 * 
+		 * Calculated values are cached for later queries.
+		 */
 		virtual int value(const t_translation::terrain_code & terrain) const = 0;
 
-		/// Returns the cost associated with the given terrain.
-		/// Costs are doubled when @a slowed is true.
+		/**
+		 * Returns the cost associated with the given terrain.
+		 * Costs are doubled when @a slowed is true.
+		 */
 		int cost(const t_translation::terrain_code & terrain, bool slowed=false) const
 		{
 			int result = value(terrain);
 			return  slowed  &&  result != movetype::UNREACHABLE ? 2 * result : result;
 		}
 
-		/// Does a sufficiently deep copy so that the returned object's lifespan
-		/// is independent of other objects' lifespan. Never returns nullptr.
+		/**
+		 * Does a sufficiently deep copy so that the returned object's lifespan
+		 * is independent of other objects' lifespan. Never returns nullptr.
+		 */
 		virtual std::unique_ptr<terrain_costs> make_standalone() const = 0;
 
-		/// Writes our data to a config.
+		/** Writes our data to a config. */
 		virtual void write(config & cfg, const std::string & child_name="", bool merged=true) const = 0;
 	};
 
-	/// Reverse of terrain_costs::write. Never returns nullptr.
+	/** Reverse of terrain_costs::write. Never returns nullptr. */
 	static std::unique_ptr<terrain_costs> read_terrain_costs(const config & cfg);
 
 	// Forward declaration so that terrain_info can friend the
@@ -80,22 +90,24 @@ public:
 
 private:
 
-	/// Stores a set of data based on terrain, in some cases with raw pointers to
-	/// other instances of terrain_info (the fallback_).
-	///
-	/// The data can either be a single instance (in which case it's
-	/// writable and stored in unique_data_) or may have already been shared
-	/// (via make_data_shareable()), in which case it's stored in shared_data_.
-	/// There will always be exactly one of those two that's non-null,
-	/// get_data() returns it from where-ever it is.
+	/**
+	 * Stores a set of data based on terrain, in some cases with raw pointers to
+	 * other instances of terrain_info (the fallback_).
+	 * 
+	 * The data can either be a single instance (in which case it's
+	 * writable and stored in unique_data_) or may have already been shared
+	 * (via make_data_shareable()), in which case it's stored in shared_data_.
+	 * There will always be exactly one of those two that's non-null,
+	 * get_data() returns it from where-ever it is.
+	 */
 	class terrain_info : public terrain_costs
 	{
-		/// The terrain-based data.
+		/** The terrain-based data. */
 		class data;
 		// The data class is not defined here to keep the header file cleaner.
 
 	public:
-		/// The parameters used when calculating a terrain-based value.
+		/** The parameters used when calculating a terrain-based value. */
 		struct parameters;
 
 		explicit terrain_info(const parameters & params,
@@ -120,9 +132,9 @@ private:
 		void copy_data(const movetype::terrain_info & that);
 		void swap_data(movetype::terrain_info & that);
 
-		/// Returns whether or not our data is empty.
+		/** Returns whether or not our data is empty. */
 		bool empty() const;
-		/// Merges the given config over the existing values.
+		/** Merges the given config over the existing values. */
 		void merge(const config & new_values, bool overwrite,
 			const std::vector<movetype::terrain_info *> & dependants);
 
@@ -132,14 +144,20 @@ private:
 		std::unique_ptr<terrain_costs> make_standalone() const override;
 
 	private:
-		/// Move data to an immutable copy in shared_data_, no-op if the data
-		/// is already in shared_data_.
+		/**
+		 * Move data to an immutable copy in shared_data_, no-op if the data
+		 * is already in shared_data_.
+		 */
 		void make_data_shareable() const;
-		/// Copy the immutable data back to unique_data_, no-op if the data
-		/// is already in unique_data_.
+		/**
+		 * Copy the immutable data back to unique_data_, no-op if the data
+		 * is already in unique_data_.
+		 */
 		void make_data_writable() const;
-		/// Returns either *unique_data_ or *shared_data_, choosing the one that
-		/// currently holds the data.
+		/**
+		 * Returns either *unique_data_ or *shared_data_, choosing the one that
+		 * currently holds the data.
+		 */
 		const data & get_data() const;
 
 	private:
@@ -150,11 +168,13 @@ private:
 
 
 public:
-	/// Magic value that signifies a hex is unreachable.
-	/// The UNREACHABLE macro in the data tree should match this value.
+	/**
+	 * Magic value that signifies a hex is unreachable.
+	 * The UNREACHABLE macro in the data tree should match this value.
+	 */
 	static const int UNREACHABLE = 99;
 
-	/// Stores a set of defense levels.
+	/** Stores a set of defense levels. */
 	class terrain_defense
 	{
 		static const terrain_info::parameters params_min_;
@@ -170,17 +190,21 @@ public:
 		terrain_defense & operator=(const terrain_defense & that);
 		terrain_defense & operator=(terrain_defense && that);
 
-		/// Returns the defense associated with the given terrain.
+		/** Returns the defense associated with the given terrain. */
 		int defense(const t_translation::terrain_code & terrain) const
 		{ return std::max(min_.value(terrain), max_.value(terrain)); }
-		/// Returns whether there is a defense cap associated to this terrain.
+		/** Returns whether there is a defense cap associated to this terrain. */
 		bool capped(const t_translation::terrain_code & terrain) const
 		{ return min_.value(terrain) != 0; }
-		/// Merges the given config over the existing costs.
-		/// (Not overwriting implies adding.)
+		/**
+		 * Merges the given config over the existing costs.
+		 * (Not overwriting implies adding.)
+		 */
 		void merge(const config & new_data, bool overwrite);
-		/// Writes our data to a config, as a child if @a child_name is specified.
-		/// (No child is created if there is no data.)
+		/**
+		 * Writes our data to a config, as a child if @a child_name is specified.
+		 * (No child is created if there is no data.)
+		 */
 		void write(config & cfg, const std::string & child_name="") const
 		{ max_.write(cfg, child_name, false); }
 
@@ -193,22 +217,22 @@ public:
 		terrain_info max_;
 	};
 
-	/// Stores a set of resistances.
+	/** Stores a set of resistances. */
 	class resistances
 	{
 	public:
 		resistances() : cfg_() {}
 		explicit resistances(const config & cfg) : cfg_(cfg) {}
 
-		/// Returns a map from attack types to resistances.
+		/** Returns a map from attack types to resistances. */
 		utils::string_map damage_table() const;
-		/// Returns the resistance against the indicated attack.
+		/** Returns the resistance against the indicated attack. */
 		int resistance_against(const attack_type & attack) const;
-		/// Returns the resistance against the indicated damage type.
+		/** Returns the resistance against the indicated damage type. */
 		int resistance_against(const std::string & damage_type) const;
-		/// Merges the given config over the existing costs.
+		/** Merges the given config over the existing costs. */
 		void merge(const config & new_data, bool overwrite);
-		/// Writes our data to a config, as a child if @a child_name is specified.
+		/** Writes our data to a config, as a child if @a child_name is specified. */
 		void write(config & out_cfg, const std::string & child_name="") const;
 
 	private:
@@ -248,55 +272,59 @@ public:
 	const terrain_defense & get_defense() const { return defense_; }
 	const resistances & get_resistances() const { return resist_; }
 
-	/// Returns whether or not *this is flagged as a flying movement type.
+	/** Returns whether or not *this is flagged as a flying movement type. */
 	bool is_flying() const { return flying_; }
-	/// Sets whether or not *this is flagged as a flying movement type.
+	/** Sets whether or not *this is flagged as a flying movement type. */
 	void set_flying(bool flies=true) { flying_ = flies; }
 
-	/// Returns the cost to move through the indicated terrain.
+	/** Returns the cost to move through the indicated terrain. */
 	int movement_cost(const t_translation::terrain_code & terrain, bool slowed=false) const
 	{ return movement_.cost(terrain, slowed); }
-	/// Returns the cost to see through the indicated terrain.
+	/** Returns the cost to see through the indicated terrain. */
 	int vision_cost(const t_translation::terrain_code & terrain, bool slowed=false) const
 	{ return vision_.cost(terrain, slowed); }
-	/// Returns the cost to "jam" through the indicated terrain.
+	/** Returns the cost to "jam" through the indicated terrain. */
 	int jamming_cost(const t_translation::terrain_code & terrain, bool slowed=false) const
 	{ return jamming_.cost(terrain, slowed); }
 
-	/// Returns the defensive value of the indicated terrain.
+	/** Returns the defensive value of the indicated terrain. */
 	int defense_modifier(const t_translation::terrain_code & terrain) const
 	{ return defense_.defense(terrain); }
 
-	/// Returns the resistance against the indicated attack.
+	/** Returns the resistance against the indicated attack. */
 	int resistance_against(const attack_type & attack) const
 	{ return resist_.resistance_against(attack); }
-	/// Returns the resistance against the indicated damage type.
+	/** Returns the resistance against the indicated damage type. */
 	int resistance_against(const std::string & damage_type) const
 	{ return resist_.resistance_against(damage_type); }
-	/// Returns a map from attack types to resistances.
+	/** Returns a map from attack types to resistances. */
 	utils::string_map damage_table() const
 	{ return resist_.damage_table(); }
 
-	/// Returns whether or not there are any terrain caps with respect to a set of terrains.
+	/** Returns whether or not there are any terrain caps with respect to a set of terrains. */
 	bool has_terrain_defense_caps(const std::set<t_translation::terrain_code> & ts) const;
-	/// Returns whether or not there are any vision-specific costs.
+	/** Returns whether or not there are any vision-specific costs. */
 	bool has_vision_data()  const { return !vision_.empty(); }
-	/// Returns whether or not there are any jamming-specific costs.
+	/** Returns whether or not there are any jamming-specific costs. */
 	bool has_jamming_data() const { return !jamming_.empty(); }
 
-	/// Merges the given config over the existing data, the config should have zero or more
-	/// children named "movement_costs", "defense", etc.
+	/**
+	 * Merges the given config over the existing data, the config should have zero or more
+	 * children named "movement_costs", "defense", etc.
+	 */
 	void merge(const config & new_cfg, bool overwrite=true);
 
-	/// Merges the given config over the existing data.
-	/// @a applies_to which type of movement to change ("movement_costs", etc)
-	/// @a new_cfg data which could be one of the children of the config for the two-argument form of this function.
+	/**
+	 * Merges the given config over the existing data.
+	 * @a applies_to which type of movement to change ("movement_costs", etc)
+	 * @a new_cfg data which could be one of the children of the config for the two-argument form of this function.
+	 */
 	void merge(const config & new_cfg, const std::string & applies_to, bool overwrite=true);
 
-	/// The set of applicable effects for movement types
+	/** The set of applicable effects for movement types */
 	static const std::set<std::string> effects;
 
-	/// Writes the movement type data to the provided config.
+	/** Writes the movement type data to the provided config. */
 	void write(config & cfg) const;
 
 private:

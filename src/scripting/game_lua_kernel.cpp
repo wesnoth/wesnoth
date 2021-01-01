@@ -2034,7 +2034,7 @@ int game_lua_kernel::intf_find_cost_map(lua_State *L)
 		filter = vconfig(config(), true);
 	}
 	filter_context & fc = game_state_;
-	const terrain_filter t_filter(filter, &fc);
+	const terrain_filter t_filter(filter, &fc, false);
 	t_filter.get_locations(location_set, true);
 	++arg;
 
@@ -2979,7 +2979,7 @@ int game_lua_kernel::intf_get_locations(lua_State *L)
 
 	std::set<map_location> res;
 	filter_context & fc = game_state_;
-	const terrain_filter t_filter(filter, &fc);
+	const terrain_filter t_filter(filter, &fc, false);
 	if(luaW_isunit(L, 2)) {
 		t_filter.get_locations(res, *luaW_tounit(L, 2), true);
 	} else {
@@ -3016,7 +3016,7 @@ int game_lua_kernel::intf_get_villages(lua_State *L)
 
 	filter_context & fc = game_state_;
 	for(std::vector<map_location>::const_iterator it = locs.begin(); it != locs.end(); ++it) {
-		bool matches = terrain_filter(filter, &fc).match(*it);
+		bool matches = terrain_filter(filter, &fc, false).match(*it);
 		if (matches) {
 			lua_createtable(L, 2, 0);
 			lua_pushinteger(L, it->wml_x());
@@ -3048,7 +3048,7 @@ int game_lua_kernel::intf_match_location(lua_State *L)
 	}
 
 	filter_context & fc = game_state_;
-	const terrain_filter t_filter(filter, &fc);
+	const terrain_filter t_filter(filter, &fc, false);
 	if(luaW_isunit(L, 3)) {
 		lua_pushboolean(L, t_filter.match(loc, *luaW_tounit(L, 3)));
 	} else {
@@ -3424,7 +3424,7 @@ int game_lua_kernel::intf_log_replay(lua_State* L)
 	return 0;
 }
 
-/// Adding new events
+/** Adding new events */
 int game_lua_kernel::intf_add_event(lua_State *L)
 {
 	vconfig cfg(luaW_checkvconfig(L, 1));
@@ -3707,7 +3707,7 @@ static int intf_debug_ai(lua_State *L)
 	return 1;
 }
 
-/// Allow undo sets the flag saying whether the event has mutated the game to false.
+/** Allow undo sets the flag saying whether the event has mutated the game to false. */
 int game_lua_kernel::intf_allow_end_turn(lua_State * L)
 {
 	bool allow;
@@ -3723,7 +3723,7 @@ int game_lua_kernel::intf_allow_end_turn(lua_State * L)
 	return 0;
 }
 
-/// Allow undo sets the flag saying whether the event has mutated the game to false.
+/** Allow undo sets the flag saying whether the event has mutated the game to false. */
 int game_lua_kernel::intf_allow_undo(lua_State * L)
 {
 	if(lua_isboolean(L, 1)) {
@@ -3741,7 +3741,7 @@ int game_lua_kernel::intf_cancel_action(lua_State*)
 	return 0;
 }
 
-/// Adding new time_areas dynamically with Standard Location Filters.
+/** Adding new time_areas dynamically with Standard Location Filters. */
 int game_lua_kernel::intf_add_time_area(lua_State * L)
 {
 	log_scope("time_area");
@@ -3750,7 +3750,7 @@ int game_lua_kernel::intf_add_time_area(lua_State * L)
 	const std::string id = cfg["id"];
 
 	std::set<map_location> locs;
-	const terrain_filter filter(cfg, &game_state_);
+	const terrain_filter filter(cfg, &game_state_, false);
 	filter.get_locations(locs, true);
 	config parsed_cfg = cfg.get_parsed_config();
 	tod_man().add_time_area(id, locs, parsed_cfg);
@@ -3758,7 +3758,7 @@ int game_lua_kernel::intf_add_time_area(lua_State * L)
 	return 0;
 }
 
-/// Removing new time_areas dynamically with Standard Location Filters.
+/** Removing new time_areas dynamically with Standard Location Filters. */
 int game_lua_kernel::intf_remove_time_area(lua_State * L)
 {
 	log_scope("remove_time_area");
@@ -3770,7 +3770,7 @@ int game_lua_kernel::intf_remove_time_area(lua_State * L)
 	return 0;
 }
 
-/// Replacing the current time of day schedule.
+/** Replacing the current time of day schedule. */
 int game_lua_kernel::intf_replace_schedule(lua_State * L)
 {
 	vconfig cfg = luaW_checkvconfig(L, 1);
@@ -4544,9 +4544,11 @@ void game_lua_kernel::set_game_display(game_display * gd) {
 	game_display_ = gd;
 }
 
-/// These are the child tags of [scenario] (and the like) that are handled
-/// elsewhere (in the C++ code).
-/// Any child tags not in this list will be passed to Lua's on_load event.
+/**
+ * These are the child tags of [scenario] (and the like) that are handled
+ * elsewhere (in the C++ code).
+ * Any child tags not in this list will be passed to Lua's on_load event.
+ */
 static const std::array<std::string, 24> handled_file_tags {{
 	"color_palette",
 	"color_range",

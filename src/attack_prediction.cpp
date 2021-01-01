@@ -255,9 +255,9 @@ public:
 	// Shift rows on this plane (a taking damage).
 	void shift_rows(unsigned dst, unsigned src, unsigned damage, double prob, int drain_constant, int drain_percent);
 
-	/// Move a column (adding it to the destination).
+	/** Move a column (adding it to the destination). */
 	void move_column(unsigned d_plane, unsigned s_plane, unsigned d_col, unsigned s_col);
-	/// Move a row (adding it to the destination).
+	/** Move a row (adding it to the destination). */
 	void move_row(unsigned d_plane, unsigned s_plane, unsigned d_row, unsigned s_row);
 
 	// Move values within a row (or column) to a specified column (or row).
@@ -278,16 +278,16 @@ public:
 		return (a_slowed ? 1 : 0) + (b_slowed ? 2 : 0);
 	}
 
-	/// What is the chance that an indicated combatant (one of them) is at zero?
+	/** What is the chance that an indicated combatant (one of them) is at zero? */
 	double prob_of_zero(bool check_a, bool check_b) const;
-	/// Sums the values in the specified row.
+	/** Sums the values in the specified row. */
 	double row_sum(unsigned plane, unsigned row) const;
-	/// Sums the values in the specified column.
+	/** Sums the values in the specified column. */
 	double col_sum(unsigned plane, unsigned column) const;
-	/// Sums the values in the specified plane.
+	/** Sums the values in the specified plane. */
 	void sum(unsigned plane, std::vector<double>& row_sums, std::vector<double>& col_sums) const;
 
-	/// Returns true if the specified plane might have data in it.
+	/** Returns true if the specified plane might have data in it. */
 	bool plane_used(unsigned p) const
 	{
 		return p < NUM_PLANES && plane_[p] != nullptr;
@@ -330,7 +330,7 @@ private:
 	double& val(unsigned plane, unsigned row, unsigned col);
 	const double& val(unsigned plane, unsigned row, unsigned col) const;
 
-	/// Transfers a portion (value * prob) of one value in the matrix to another.
+	/** Transfers a portion (value * prob) of one value in the matrix to another. */
 	void xfer(unsigned dst_plane,
 			unsigned src_plane,
 			unsigned row_dst,
@@ -338,7 +338,7 @@ private:
 			unsigned row_src,
 			unsigned col_src,
 			double prob);
-	/// Transfers one value in the matrix to another.
+	/** Transfers one value in the matrix to another. */
 	void xfer(unsigned dst_plane,
 			unsigned src_plane,
 			unsigned row_dst,
@@ -1238,19 +1238,19 @@ public:
 	// B hits A.  Why can't they just get along?
 	void receive_blow_a(double hit_chance);
 
-	/// What is the chance that one of the combatants is dead?
+	/** What is the chance that one of the combatants is dead? */
 	double dead_prob() const
 	{
 		return prob_of_zero(true, true);
 	}
 
-	/// What is the chance that combatant 'a' is dead?
+	/** What is the chance that combatant 'a' is dead? */
 	double dead_prob_a() const
 	{
 		return prob_of_zero(true, false);
 	}
 
-	/// What is the chance that combatant 'b' is dead?
+	/** What is the chance that combatant 'b' is dead? */
 	double dead_prob_b() const
 	{
 		return prob_of_zero(false, true);

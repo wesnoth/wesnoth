@@ -63,6 +63,7 @@ public:
 		 *
 		 * @param canvas          The resulting image will be blitted upon this
 		 *                        canvas.
+		 * @param renderer        The SDL_Renderer to use.
 		 * @param variables       The canvas can have formulas in it's
 		 *                        definition, this parameter contains the values
 		 *                        for these formulas.
@@ -114,9 +115,8 @@ public:
 	/**
 	 * Sets the config.
 	 *
-	 * @param cfg                 The config object with the data to draw, see
-	 *                            https://www.wesnoth.org/wiki/GUICanvasWML for
-	 *                            more information.
+	 * @param cfg                 The config object with the data to draw.
+	 * @param force               Whether to clear all shapes or not.
 	 */
 	void set_cfg(const config& cfg, const bool force = false)
 	{
@@ -128,9 +128,7 @@ public:
 	/**
 	 * Appends data to the config.
 	 *
-	 * @param cfg                 The config object with the data to draw, see
-	 *                            https://www.wesnoth.org/wiki/GUICanvasWML for
-	 *                            more information.
+	 * @param cfg                 The config object with the data to draw.
 	 */
 	void append_cfg(const config& cfg)
 	{

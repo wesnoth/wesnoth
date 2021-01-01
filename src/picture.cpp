@@ -771,7 +771,7 @@ static surface get_brightened(const locator& i_locator)
 	return brighten_image(image, ftofxp(game_config::hex_brightening));
 }
 
-/// translate type to a simpler one when possible
+/** translate type to a simpler one when possible */
 static TYPE simplify_type(const image::locator& i_locator, TYPE type)
 {
 	switch(type) {

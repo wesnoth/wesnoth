@@ -69,7 +69,7 @@ namespace randomness
 		 * should be one.
 		 * @param first	Iterator to the beginning of the container
 		 * @param last	Iterator to the end of the container
-		 * @ret			The index of the selected number
+		 * @return		The index of the selected number
 		 */
 		template <typename T>
 		unsigned int get_random_element(T first, T last);

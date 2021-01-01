@@ -163,7 +163,7 @@ void target_location_goal::on_create()
 	}
 	const config &criteria = cfg_.child("criteria");
 	if (criteria) {
-		filter_ptr_.reset(new terrain_filter(vconfig(criteria),resources::filter_con));
+		filter_ptr_.reset(new terrain_filter(vconfig(criteria),resources::filter_con, false));
 	}
 }
 
@@ -212,7 +212,7 @@ void protect_goal::on_create()
 	}
 	const config &criteria = cfg_.child("criteria");
 	if (criteria) {
-		filter_ptr_.reset(new terrain_filter(vconfig(criteria),resources::filter_con));
+		filter_ptr_.reset(new terrain_filter(vconfig(criteria), resources::filter_con, false));
 	}
 
 }

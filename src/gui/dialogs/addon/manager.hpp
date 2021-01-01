@@ -50,7 +50,7 @@ private:
 	struct addon_order
 	{
 		std::string label;
-		/// The value used in the preferences file
+		/** The value used in the preferences file */
 		std::string as_preference;
 		int column_index; // -1 if there is no such column
 		addon_list::addon_sort_func sort_func_asc;

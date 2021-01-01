@@ -32,7 +32,7 @@ public:
 	 * @param [in, out] text      The parameter's usage is:
 	 *                            - Input: The initial value of the text field.
 	 *                            - Output: The new unit name the user entered
-	 *                              if the dialog returns @ref retval::OK,
+	 *                              if the dialog returns retval::OK,
 	 *                              undefined otherwise.
 	 * @param disallow_empty      Whether to prevent the user from entering a string that is
 	 *                            empty or consists only of whitespace.

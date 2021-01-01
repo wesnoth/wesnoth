@@ -44,6 +44,7 @@ void start_local_game_commandline(saved_game& state, const commandline_options& 
 
 /** Starts a multiplayer game in client mode.
  *
+ * @param state       The save game to start.
  * @param host        The host to connect to.
  */
 void start_client(saved_game& state, const std::string& host);
@@ -59,5 +60,8 @@ bool goto_mp_connect(ng::connect_engine& engine, wesnothd_connection* connection
  * changes made.
  */
 bool goto_mp_wait(saved_game& state, wesnothd_connection* connection, bool observe);
+
+/** Gets the forum profile link for the given user. */
+std::string get_profile_link(int user_id);
 
 }

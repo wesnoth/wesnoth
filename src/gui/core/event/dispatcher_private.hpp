@@ -35,9 +35,7 @@ struct dispatcher_implementation
  *
  * Implements two helper functions as documented in the macro.
  *
- * @param SET                     The set in which the event type needs to be
- *                                eg the @ref gui2::event::set_event or a
- *                                similar set defined in that header.
+ * @param SET                     The set in which the event type needs to be.
  * @param FUNCTION                The function signature to validate the
  *                                implementation function SFINAE against eg the
  *                                @ref gui2::event::signal_function or another

@@ -273,7 +273,7 @@ namespace { // Helpers for check_recall_location()
 	}
 }//anonymous namespace
 
-/// Checks if there is a location on which to recall @a unit_recall.
+/** Checks if there is a location on which to recall @a unit_recall. */
 RECRUIT_CHECK check_recall_location(const int side, map_location& recall_location,
                                     map_location& recall_from,
                                     const unit &unit_recall)
@@ -403,7 +403,7 @@ namespace { // Helpers for check_recruit_location()
 	}
 }//anonymous namespace
 
-/// Checks if there is a location on which to place a recruited unit.
+/** Checks if there is a location on which to place a recruited unit. */
 RECRUIT_CHECK check_recruit_location(const int side, map_location &recruit_location,
                                      map_location& recruited_from,
                                      const std::string& unit_type)
@@ -707,10 +707,6 @@ place_recruit_result place_recruit(unit_ptr u, const map_location &recruit_locat
 	return res;
 }
 
-
-/**
- * Recruits a unit of the given type for the given side.
- */
 void recruit_unit(const unit_type & u_type, int side_num, const map_location & loc,
                   const map_location & from, bool show, bool use_undo)
 {
@@ -739,10 +735,6 @@ void recruit_unit(const unit_type & u_type, int side_num, const map_location & l
 		// Other updates were done by place_recruit().
 }
 
-
-/**
- * Recalls the unit with the indicated ID for the provided team.
- */
 bool recall_unit(const std::string & id, team & current_team,
                  const map_location & loc, const map_location & from,
                  map_location::DIRECTION facing, bool show, bool use_undo)

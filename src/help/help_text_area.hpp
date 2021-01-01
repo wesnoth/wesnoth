@@ -28,17 +28,19 @@ namespace help { struct topic; }
 namespace help {
 
 
-/// The area where the content is shown in the help browser.
+/** The area where the content is shown in the help browser. */
 class help_text_area : public gui::scrollarea
 {
 public:
 	help_text_area(CVideo &video, const section &toplevel);
-	/// Display the topic.
+	/** Display the topic. */
 	void show_topic(const topic &t);
 
-	/// Return the ID that is cross-referenced at the (screen)
-	/// coordinates x, y. If no cross-reference is there, return the
-	/// empty string.
+	/**
+	 * Return the ID that is cross-referenced at the (screen)
+	 * coordinates x, y. If no cross-reference is there, return the
+	 * empty string.
+	 */
 	std::string ref_at(const int x, const int y);
 
 protected:
@@ -47,12 +49,13 @@ protected:
 
 private:
 	enum ALIGNMENT {LEFT, MIDDLE, RIGHT, HERE};
-	/// Convert a string to an alignment. Throw parse_error if
-	/// unsuccessful.
+	/** Convert a string to an alignment. Throw parse_error if unsuccessful. */
 	ALIGNMENT str_to_align(const std::string &s);
 
-	/// An item that is displayed in the text area. Contains the surface
-	/// that should be blitted along with some other information.
+	/**
+	 * An item that is displayed in the text area. Contains the surface
+	 * that should be blitted along with some other information.
+	 */
 	struct item {
 
 		item(surface surface, int x, int y, const std::string& text="",
@@ -62,7 +65,7 @@ private:
 		item(surface surface, int x, int y,
 			 bool floating, bool box=false, ALIGNMENT=HERE);
 
-		/// Relative coordinates of this item.
+		/** Relative coordinates of this item. */
 		SDL_Rect rect;
 
 		surface surf;
@@ -81,7 +84,7 @@ private:
 		ALIGNMENT align;
 	};
 
-	/// Function object to find an item at the specified coordinates.
+	/** Function object to find an item at the specified coordinates. */
 	class item_at {
 	public:
 		item_at(const int x, const int y) : x_(x), y_(y) {}
@@ -90,8 +93,10 @@ private:
 		const int x_, y_;
 	};
 
-	/// Update the vector with the items of the shown topic, creating
-	/// surfaces for everything and putting things where they belong.
+	/**
+	 * Update the vector with the items of the shown topic, creating
+	 * surfaces for everything and putting things where they belong.
+	 */
 	void set_items();
 
 	// Create appropriate items from configs. Items will be added to the
@@ -107,47 +112,51 @@ private:
 
 	void draw_contents();
 
-	/// Add an item with text. If ref_dst is something else than the
-	/// empty string, the text item will be underlined to show that it
-	/// is a cross-reference. The item will also remember what the
-	/// reference points to. If font_size is below zero, the default
-	/// will be used.
+	/**
+	 * Add an item with text. If ref_dst is something else than the
+	 * empty string, the text item will be underlined to show that it
+	 * is a cross-reference. The item will also remember what the
+	 * reference points to. If font_size is below zero, the default
+	 * will be used.
+	 */
 	void add_text_item(const std::string& text, const std::string& ref_dst="",
 					   bool broken_link = false,
 					   int font_size=-1, bool bold=false, bool italic=false,
 					   color_t color=font::NORMAL_COLOR);
 
-	/// Add an image item with the specified attributes.
+	/** Add an image item with the specified attributes. */
 	void add_img_item(const std::string& path, const std::string& alignment, const bool floating,
 					  const bool box);
 
-	/// Move the current input point to the next line.
+	/** Move the current input point to the next line. */
 	void down_one_line();
 
-	/// Adjust the heights of the items in the last row to make it look
-	/// good .
+	/** Adjust the heights of the items in the last row to make it look good. */
 	void adjust_last_row();
 
-	/// Return the width that remain on the line the current input point is at.
+	/** Return the width that remain on the line the current input point is at. */
 	int get_remaining_width();
 
-	/// Return the least x coordinate at which something of the
-	/// specified height can be drawn at the specified y coordinate
-	/// without interfering with floating images.
+	/**
+	 * Return the least x coordinate at which something of the
+	 * specified height can be drawn at the specified y coordinate
+	 * without interfering with floating images.
+	 */
 	int get_min_x(const int y, const int height=0);
 
-	/// Analogous with get_min_x but return the maximum X.
+	/** Analogous with get_min_x but return the maximum X. */
 	int get_max_x(const int y, const int height=0);
 
-	/// Find the lowest y coordinate where a floating img of the
-	/// specified width and at the specified x coordinate can be
-	/// placed. Start looking at desired_y and continue downwards. Only
-	/// check against other floating things, since text and inline
-	/// images only can be above this place if called correctly.
+	/**
+	 * Find the lowest y coordinate where a floating img of the
+	 * specified width and at the specified x coordinate can be
+	 * placed. Start looking at desired_y and continue downwards. Only
+	 * check against other floating things, since text and inline
+	 * images only can be above this place if called correctly.
+	 */
 	int get_y_for_floating_img(const int width, const int x, const int desired_y);
 
-	/// Add an item to the internal list, update the locations and row
-	/// height.
+	/** Add an item to the internal list, update the locations and row height. */
 	void add_item(const item& itm);
 
 	std::list<item> items_;
@@ -155,11 +164,11 @@ private:
 	const section &toplevel_;
 	topic const *shown_topic_;
 	const int title_spacing_;
-	// The current input location when creating items.
+	/** The current input location when creating items. */
 	std::pair<int, int> curr_loc_;
 	const unsigned min_row_height_;
 	unsigned curr_row_height_;
-	/// The height of all items in total.
+	/** The height of all items in total. */
 	int contents_height_;
 };
 

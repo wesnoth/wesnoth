@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.5-CVS\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2020-12-18 22:26-0300\n"
-"PO-Revision-Date: 2020-05-17 17:21-0300\n"
+"PO-Revision-Date: 2020-12-24 12:50-0300\n"
 "Last-Translator: Andrei Machado <andreisp.machado@yahoo.com>\n"
 "Language-Team: Portuguese/Brazil\n"
 "Language: pt_BR\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 2.3.1\n"
+"X-Generator: Poedit 2.4.2\n"
 
 #. [ai]: id=ai_default_rca
 #: data/ai/ais/ai_default_rca.cfg:9
@@ -27,7 +27,7 @@ msgstr ""
 #. [ai]: id=ai_default_rca_1_14
 #: data/ai/ais/ai_default_rca_1_14.cfg:9
 msgid "Multiplayer_AI^Old Default AI (1.14 version)"
-msgstr ""
+msgstr "Antiga AI Padrão (versão 1.14)"
 
 #
 # File: data/gui/default/window/mp_method_selection.cfg, line: 39
@@ -696,10 +696,8 @@ msgstr "Braseiro Aceso"
 # File: data/core/terrain.cfg, line: 418
 #. [terrain_type]: id=fence_iron
 #: data/core/terrain.cfg:490
-#, fuzzy
-#| msgid "Fence"
 msgid "Iron Fence"
-msgstr "Cerca"
+msgstr "Cerca de Ferro"
 
 #
 # File: data/core/terrain.cfg, line: 427
@@ -1171,10 +1169,8 @@ msgstr "Piso Simples de Pedra"
 # File: data/core/terrain.cfg, line: 901
 #. [terrain_type]: id=ancient_stone_floor
 #: data/core/terrain.cfg:860
-#, fuzzy
-#| msgid "Stone Floor"
 msgid "Ancient Stone Floor"
-msgstr "Piso de Pedra"
+msgstr "Piso de Pedra Ancião"
 
 #. [terrain_type]: id=rug_floor
 #. [terrain_type]: id=rug2_floor
@@ -1385,7 +1381,7 @@ msgstr "Bosque de Cogumelos Iluminados"
 #. [terrain_type]: id=fungus_floor
 #: data/core/terrain.cfg:1038 data/core/terrain.cfg:1039
 msgid "Mycelium"
-msgstr ""
+msgstr "Micélio"
 
 #
 # File: data/core/terrain.cfg, line: 987
@@ -4127,7 +4123,7 @@ msgstr ""
 #. [button]: id=ok
 #: data/gui/window/addon_license_prompt.cfg:104
 msgid "I Agree"
-msgstr ""
+msgstr "Eu Concordo"
 
 #. [label]: id=byline
 #: data/gui/window/addon_manager.cfg:84
@@ -4479,7 +4475,7 @@ msgstr ""
 #: data/gui/window/campaign_dialog.cfg:444
 #: data/gui/window/campaign_difficulty.cfg:221
 msgid "game^Play"
-msgstr ""
+msgstr "Jogar"
 
 #
 # File: data/gui/default/window/campaign_difficulty.cfg, line: 57
@@ -5772,7 +5768,7 @@ msgstr "Carregar Jogo"
 #. [menu_button]: id=dirList
 #: data/gui/window/game_load.cfg:311
 msgid "Show saves from a different version of Wesnoth"
-msgstr ""
+msgstr "Mostra saves de outras versões do Wesnoth"
 
 #
 # File: data/gui/default/window/game_load.cfg, line: 383
@@ -6518,10 +6514,8 @@ msgstr "Observar"
 # File: src/hotkeys.cpp, line: 157
 #. [button]: id=server_info
 #: data/gui/window/lobby_main.cfg:456 data/gui/window/lobby_main.cfg:609
-#, fuzzy
-#| msgid "Map Information"
 msgid "Information"
-msgstr "Informação do Mapa"
+msgstr "Informação"
 
 #
 # File: src/hotkeys.cpp, line: 91
@@ -6729,27 +6723,27 @@ msgstr "Cabana"
 #. [row]
 #: data/gui/window/logging.cfg:196
 msgid "log_level^Debug"
-msgstr ""
+msgstr "Debug"
 
 #. [row]
 #: data/gui/window/logging.cfg:197
 msgid "log_level^Info"
-msgstr ""
+msgstr "Info"
 
 #. [row]
 #: data/gui/window/logging.cfg:198
 msgid "log_level^Warning"
-msgstr ""
+msgstr "Alerta"
 
 #. [row]
 #: data/gui/window/logging.cfg:199
 msgid "log_level^Error"
-msgstr ""
+msgstr "Erro"
 
 #. [row]
 #: data/gui/window/logging.cfg:200
 msgid "log_level^None"
-msgstr ""
+msgstr "Nenhum"
 
 #
 # File: data/core/terrain.cfg, line: 237
@@ -6870,10 +6864,8 @@ msgstr "Sussurro:"
 # File: data/gui/default/window/lobby_main.cfg, line: 586
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:187
-#, fuzzy
-#| msgid "Friend message:"
 msgid "Friend message"
-msgstr "Mensagem de amigo:"
+msgstr "Mensagem de amigo"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:187
@@ -6886,10 +6878,8 @@ msgstr "Quando receber a mensagem de um amigo"
 # File: data/gui/default/window/mp_cmd_wrapper.cfg, line: 69
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:188
-#, fuzzy
-#| msgid "Public message:"
 msgid "Public message"
-msgstr "Mensagem pública:"
+msgstr "Mensagem pública"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:188
@@ -6902,10 +6892,8 @@ msgstr "Quando receber uma mensagem pública"
 # File: data/gui/default/window/lobby_player_info.cfg, line: 70
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:189
-#, fuzzy
-#| msgid "Server message:"
 msgid "Server message"
-msgstr "Mensagem do servidor:"
+msgstr "Mensagem do servidor"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:189
@@ -6930,10 +6918,8 @@ msgstr "Quando o jogo que você está hosteando está pronto para começar"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:191
-#, fuzzy
-#| msgid "Game has begun:"
 msgid "Game has begun"
-msgstr "Jogo começou:"
+msgstr "O jogo começou"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:191
@@ -6954,10 +6940,8 @@ msgstr "Quando um novo turno começou"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:193
-#, fuzzy
-#| msgid "Game created:"
 msgid "Game created"
-msgstr "Jogo Criado:"
+msgstr "O jogo foi criado"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:193
@@ -7004,10 +6988,8 @@ msgstr "Conectar ao servidor multiplayer oficial de Wesnoth"
 # File: data/gui/default/window/mp_server_list.cfg, line: 124
 #. [label]
 #: data/gui/window/mp_connect.cfg:101
-#, fuzzy
-#| msgid "Address"
 msgid "Address:"
-msgstr "Endereço"
+msgstr "Endereço:"
 
 #
 # File: data/gui/default/window/mp_server_list.cfg, line: 124
@@ -7024,10 +7006,8 @@ msgstr "Endereço"
 # File: data/gui/default/window/mp_server_list.cfg, line: 124
 #. [button]: id=server_add
 #: data/gui/window/mp_connect.cfg:270
-#, fuzzy
-#| msgid "Address"
 msgid "Add"
-msgstr "Endereço"
+msgstr "Adicionar"
 
 #. [label]
 #: data/gui/window/mp_create_game.cfg:119
@@ -7735,7 +7715,7 @@ msgstr "Estou pronto"
 #. [text]
 #: data/gui/window/outro.cfg:49
 msgid "Press ESC to skip"
-msgstr ""
+msgstr "Precione ESC para pular"
 
 #
 # File: src/game_preferences_display.cpp, line: 200
@@ -8700,10 +8680,8 @@ msgstr "Mostrar esfera inimiga"
 # File: src/hotkeys.cpp, line: 157
 #. [label]: id=asdf
 #: data/gui/window/server_info.cfg:79
-#, fuzzy
-#| msgid "Map Information"
 msgid "Server Information"
-msgstr "Informação do Mapa"
+msgstr "Informação do Servidor"
 
 #
 # File: src/game_preferences_display.cpp, line: 205
@@ -8711,10 +8689,8 @@ msgstr "Informação do Mapa"
 # File: src/game_preferences_display.cpp, line: 205
 #. [widget]: id=tab_label
 #: data/gui/window/server_info.cfg:168
-#, fuzzy
-#| msgid "Advancements"
 msgid "Announcements"
-msgstr "Evoluidos"
+msgstr "Anúncios"
 
 #
 # File: data/gui/default/window/formula_debugger.cfg, line: 94
@@ -9978,7 +9954,7 @@ msgstr "O servidor respondeu com um erro:"
 
 #: src/gui/dialogs/addon/manager.cpp:782
 msgid "The add-on was rejected by the server:"
-msgstr ""
+msgstr "O add-on foi rejeitado pelo servidor:"
 
 #: src/gui/dialogs/addon/manager.cpp:797 src/gui/dialogs/addon/manager.cpp:824
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:507
@@ -10245,7 +10221,7 @@ msgstr "O cache de data do jogo não pode ser completamente expurgado."
 
 #: src/gui/dialogs/game_load.cpp:169
 msgid "game_version^Current Version"
-msgstr ""
+msgstr "Versão Atual"
 
 #
 # File: src/gui/dialogs/title_screen.cpp, line: 297
@@ -10752,10 +10728,8 @@ msgstr "Lado $side"
 # File: data/gui/default/window/addon_connect.cfg, line: 89
 # File: data/gui/default/window/mp_connect.cfg, line: 90
 #: src/gui/dialogs/multiplayer/mp_connect.cpp:204
-#, fuzzy
-#| msgid "Server:"
 msgid "Add Server"
-msgstr "Servidor:"
+msgstr "Adicionar Servidor"
 
 #
 # File: src/gui/dialogs/game_load.cpp, line: 312

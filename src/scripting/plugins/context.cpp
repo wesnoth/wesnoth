@@ -26,7 +26,7 @@ plugins_context::plugins_context(const std::string & name)
 	, name_(name)
 {}
 
-plugins_context::plugins_context(const std::string& name, const std::vector<Reg>& l, const std::vector<aReg>& r)
+plugins_context::plugins_context(const std::string& name, const reg_vec& l, const areg_vec& r)
 	: callbacks_()
 	, accessors_()
 	, name_(name)
@@ -34,7 +34,7 @@ plugins_context::plugins_context(const std::string& name, const std::vector<Reg>
 	initialize(l, r);
 }
 
-void plugins_context::initialize(const std::vector<Reg>& callbacks, const std::vector<aReg>& accessors)
+void plugins_context::initialize(const reg_vec& callbacks, const areg_vec& accessors)
 {
 	for (const Reg& l : callbacks) {  /* fill the table with given functions */
 		if (l.name != nullptr) {

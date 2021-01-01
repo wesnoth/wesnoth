@@ -155,7 +155,7 @@ public:
 	// Manipulator from playturn
 
 	void side_drop_to (int side_num, team::CONTROLLER ctrl, team::PROXY_CONTROLLER proxy = team::PROXY_CONTROLLER::PROXY_HUMAN);
-	void side_change_controller (int side_num, bool is_local, const std::string& pname = "");
+	void side_change_controller (int side_num, bool is_local, const std::string& pname, const std::string& controller_type);
 
 	// Manipulator from actionwml
 
@@ -177,7 +177,7 @@ public:
 	// Wrapped functions from unit_map. These should ultimately provide notification to observers, pathfinding.
 
 	unit_map::iterator find_unit(const map_location & loc) { return units_.find(loc); }
-	/// Calculates whether a team is defeated
+	/** Calculates whether a team is defeated */
 	bool team_is_defeated(const team& t) const;
 };
 

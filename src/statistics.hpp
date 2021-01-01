@@ -47,13 +47,13 @@ namespace statistics
 		/** A type that will map different % chances to hit to different results. */
 		typedef std::map<int,battle_sequence_frequency_map> battle_result_map;
 
-		/// Statistics of this side's attacks on its own turns.
+		/** Statistics of this side's attacks on its own turns. */
 		battle_result_map attacks_inflicted;
-		/// Statistics of this side's attacks on enemies' turns.
+		/** Statistics of this side's attacks on enemies' turns. */
 		battle_result_map defends_inflicted;
-		/// Statistics of enemies' counter attacks on this side's turns.
+		/** Statistics of enemies' counter attacks on this side's turns. */
 		battle_result_map attacks_taken;
-		/// Statistics of enemies' attacks against this side on their turns.
+		/** Statistics of enemies' attacks against this side on their turns. */
 		battle_result_map defends_taken;
 
 		long long damage_inflicted, damage_taken;
@@ -67,7 +67,7 @@ namespace statistics
 			explicit hitrate_t(const config& cfg);
 			config write() const;
 		};
-		/// A type that maps chance-to-hit percentage to number of hits and strikes at that CTH.
+		/** A type that maps chance-to-hit percentage to number of hits and strikes at that CTH. */
 		typedef std::map<int, hitrate_t> hitrate_map;
 		hitrate_map by_cth_inflicted, by_cth_taken;
 		hitrate_map turn_by_cth_inflicted, turn_by_cth_taken;
@@ -126,16 +126,16 @@ namespace statistics
 	void write_stats(config_writer &out);
 	void read_stats(const config& cfg);
 	void fresh_stats();
-	/// Delete the current scenario from the stats.
+	/** Delete the current scenario from the stats. */
 	void clear_current_scenario();
-	/// Reset the stats of the current scenario to the beginning.
+	/** Reset the stats of the current scenario to the beginning. */
 	void reset_current_scenario();
 
 	void reset_turn_stats(const std::string & save_id);
 	stats calculate_stats(const std::string & save_id);
-	/// Stats (and name) for each scenario. The pointers are never nullptr.
+	/** Stats (and name) for each scenario. The pointers are never nullptr. */
 	typedef std::vector< std::pair<const std::string *, const stats *>> levels;
-	/// Returns a list of names and stats for each scenario in the current campaign.
+	/** Returns a list of names and stats for each scenario in the current campaign. */
 	levels level_stats(const std::string & save_id);
 } // end namespace statistics
 std::ostream& operator<<(std::ostream& outstream, const statistics::stats::hitrate_t& by_cth);

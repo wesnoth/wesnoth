@@ -139,6 +139,7 @@ std::ostream& operator<<(std::ostream& stream, const preproc_map::value_type& de
  * Function to use the WML preprocessor on a file.
  *
  * @param defines                 A map of symbols defined.
+ * @param fname                   The file to be preprocessed.
  *
  * @returns                       The resulting preprocessed file data.
  */
