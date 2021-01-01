@@ -737,7 +737,7 @@ void chatbox::process_message(const ::config& data, bool whisper /*= false*/)
 	}
 
 	const std::string& message = data["message"];
-	preferences::parse_admin_authentication(sender, message);
+	//preferences::parse_admin_authentication(sender, message); TODO: replace
 
 	if(whisper) {
 		add_whisper_received(sender, message);

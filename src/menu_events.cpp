@@ -37,6 +37,7 @@
 #include "game_end_exceptions.hpp"
 #include "game_events/pump.hpp"
 #include "preferences/game.hpp"
+#include "game_initialization/multiplayer.hpp"
 #include "game_state.hpp"
 #include "gettext.hpp"
 #include "gui/dialogs/chat_log.hpp"
@@ -1213,7 +1214,7 @@ protected:
 	{
 		return !((c.has_flag('D') && !game_config::debug)
 		      || (c.has_flag('N') && !menu_handler_.pc_.is_networked_mp())
-		      || (c.has_flag('A') && !preferences::is_authenticated())
+		      || (c.has_flag('A') && !mp::logged_in_as_moderator())
 		      || (c.has_flag('S') && (synced_context::get_synced_state() != synced_context::UNSYNCED || !menu_handler_.pc_.current_team().is_local())));
 	}
 

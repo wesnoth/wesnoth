@@ -39,26 +39,6 @@ class acquaintance;
 		base_manager base;
 	};
 
-	bool is_authenticated();
-	void parse_admin_authentication(const std::string& sender, const std::string& message);
-	void set_admin_authentication(bool authed);
-
-	/**
-	 * Used to reset is_authenticated flag after disconnecting.
-	 *
-	 * @todo FIXME: is_authenticated shouldn't be a preferences function. Also,
-	 *              the name is misleading.
-	 */
-	struct admin_authentication_reset
-	{
-		/**
-		 * Default constructor, defined out of line to work around a warning in
-		 * gcc 4.5.2
-		 */
-		admin_authentication_reset();
-		~admin_authentication_reset();
-	};
-
 	bool parse_should_show_lobby_join(const std::string& sender, const std::string& message);
 	int lobby_joins();
 	void _set_lobby_joins(int show);

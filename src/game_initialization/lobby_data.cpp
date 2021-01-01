@@ -15,24 +15,25 @@
 #include "game_initialization/lobby_data.hpp"
 
 #include "config.hpp"
-#include "preferences/credentials.hpp"
-#include "preferences/game.hpp"
-#include "gui/dialogs/campaign_difficulty.hpp"
 #include "filesystem.hpp"
 #include "font/pango/escape.hpp"
 #include "formatter.hpp"
 #include "formula/string_utils.hpp"
 #include "game_config_manager.hpp"
+#include "game_config_view.hpp"
+#include "game_initialization/multiplayer.hpp"
+#include "game_version.hpp"
 #include "gettext.hpp"
+#include "gui/dialogs/campaign_difficulty.hpp"
 #include "lexical_cast.hpp"
 #include "log.hpp"
-#include "map/map.hpp"
 #include "map/exception.hpp"
+#include "map/map.hpp"
+#include "mp_game_settings.hpp"
+#include "preferences/credentials.hpp"
+#include "preferences/game.hpp"
 #include "terrain/type_data.hpp"
 #include "wml_exception.hpp"
-#include "game_version.hpp"
-#include "mp_game_settings.hpp"
-#include "game_config_view.hpp"
 
 #include <iterator>
 
@@ -543,7 +544,7 @@ bool game_info::can_join() const
 
 bool game_info::can_observe() const
 {
-	return observers || preferences::is_authenticated();
+	return observers || mp::logged_in_as_moderator();
 }
 
 const char* game_info::display_status_string() const

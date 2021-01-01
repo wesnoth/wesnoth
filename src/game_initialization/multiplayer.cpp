@@ -54,12 +54,154 @@ static lg::log_domain log_mp("mp/main");
 #define DBG_MP LOG_STREAM(debug, log_mp)
 #define ERR_MP LOG_STREAM(err, log_mp)
 
+namespace mp
+{
 namespace
 {
-std::string profile_url_prefix;
+/** Pointer to the current mp_manager instance. */
+class mp_manager* manager = nullptr;
 
-/** Opens a new server connection and prompts the client for login credentials, if necessary. */
-std::unique_ptr<wesnothd_connection> open_connection(std::string host)
+/** The main controller of the MP workflow. */
+class mp_manager
+{
+public:
+	// Declare this as a friend to allow direct access to enter_create_mode
+	friend void mp::start_local_game(saved_game&);
+
+	mp_manager(const std::string& host, saved_game& state);
+
+	~mp_manager()
+	{
+		assert(manager);
+		manager = nullptr;
+
+		if(network_worker.joinable()) {
+			stop = true;
+			network_worker.join();
+		}
+	}
+
+	/**
+	 * Enters the mp loop. It consists of four screens:
+	 *
+	 * Host POV:   LOBBY <---> CREATE GAME ---> STAGING -----> GAME BEGINS
+	 * Player POV: LOBBY <--------------------> JOIN GAME ---> GAME BEGINS
+	 */
+	void run_lobby_loop();
+
+private:
+	/** Represents the contents of the [join_lobby] response. */
+	struct session_metadata
+	{
+		session_metadata() = default;
+
+		session_metadata(const config& cfg)
+			: is_moderator(cfg["is_moderator"].to_bool(false))
+			, profile_url_prefix(cfg["profile_url_prefix"].str())
+		{
+		}
+
+		/** Whether you are logged in as a server moderator. */
+		bool is_moderator = false;
+
+		/** The external URL prefix for player profiles (empty if the server doesn't have an attached database). */
+		std::string profile_url_prefix;
+	};
+
+	/** Opens a new server connection and prompts the client for login credentials, if necessary. */
+	std::unique_ptr<wesnothd_connection> open_connection(std::string host);
+
+	/** Opens the MP lobby. */
+	bool enter_lobby_mode();
+
+	/** Opens the MP Create screen for hosts to configure a new game. */
+	void enter_create_mode();
+
+	/** Opens the MP Staging screen for hosts to wait for players. */
+	void enter_staging_mode();
+
+	/** Opens the MP Join Game screen for non-host players and observers. */
+	void enter_wait_mode(int game_id, bool observe);
+
+	/** Worker thread to handle receiving and processing network data. */
+	std::thread network_worker;
+
+	/** Flag to signal the worker thread terminate. */
+	std::atomic_bool stop;
+
+	/** The connection to the server. */
+	std::unique_ptr<wesnothd_connection> connection;
+
+	/** The current session's info sent by the server on login. */
+	session_metadata session_info;
+
+	saved_game& state;
+
+	mp::lobby_info lobby_info;
+
+public:
+	const session_metadata& get_session_info() const
+	{
+		return session_info;
+	}
+};
+
+mp_manager::mp_manager(const std::string& host, saved_game& state)
+	: network_worker()
+	, stop(false)
+	, connection(nullptr)
+	, session_info()
+	, state(state)
+	, lobby_info(::installed_addons())
+{
+	assert(!manager);
+	manager = this;
+
+	if(!host.empty()) {
+		gui2::dialogs::loading_screen::display([&]() {
+			connection = open_connection(host);
+
+			gui2::dialogs::loading_screen::progress(loading_stage::download_lobby_data);
+
+			std::promise<void> received_initial_gamelist;
+
+			network_worker = std::thread([this, &received_initial_gamelist]() {
+				config data;
+
+				while(!stop) {
+					connection->wait_and_receive_data(data);
+
+					if(const config& error = data.child("error")) {
+						throw wesnothd_error(error["message"]);
+					}
+
+					else if(data.has_child("gamelist")) {
+						this->lobby_info.process_gamelist(data);
+
+						try {
+							received_initial_gamelist.set_value();
+							// TODO: only here while we transition away from dialog-bound timer-based handling
+							return;
+						} catch(const std::future_error& e) {
+							if(e.code() == std::future_errc::promise_already_satisfied) {
+								// We only need this for the first gamelist
+							}
+						}
+					}
+
+					else if(const config& gamelist_diff = data.child("gamelist_diff")) {
+						this->lobby_info.process_gamelist_diff(gamelist_diff);
+					}
+				}
+			});
+
+			// Wait at the loading screen until the initial gamelist has been processed
+			received_initial_gamelist.get_future().wait();
+		});
+	}
+}
+
+std::unique_ptr<wesnothd_connection> mp_manager::open_connection(std::string host)
 {
 	DBG_MP << "opening connection" << std::endl;
 
@@ -355,11 +497,8 @@ std::unique_ptr<wesnothd_connection> open_connection(std::string host)
 		} // end login loop
 
 		if(const config& join_lobby = data.child("join_lobby")) {
-			// Flag us as authenticated, if applicable...
-			preferences::set_admin_authentication(join_lobby["is_moderator"].to_bool(false));
-
-			// Note the forum profile prefix (will be empty if this server doesn't have an attached database)
-			profile_url_prefix = join_lobby["profile_url_prefix"].str();
+			// Note any session data sent with the response. This should be the only place session_info is set.
+			session_info = { join_lobby };
 
 			// All done!
 			break;
@@ -369,116 +508,29 @@ std::unique_ptr<wesnothd_connection> open_connection(std::string host)
 	return conn;
 }
 
-/** The main controller of the MP workflow. */
-class mp_manager
+void mp_manager::run_lobby_loop()
 {
-public:
-	// Declare this as a friend to allow direct access to enter_create_mode
-	friend void mp::start_local_game(saved_game&);
-
-	mp_manager(const std::string& host, saved_game& state)
-		: network_worker()
-		, stop(false)
-		, state(state)
-		, connection(nullptr)
-		, lobby_info(::installed_addons())
-	{
-		if(!host.empty()) {
-			gui2::dialogs::loading_screen::display([&]() {
-				connection = open_connection(host);
-
-				gui2::dialogs::loading_screen::progress(loading_stage::download_lobby_data);
-
-				std::promise<void> received_initial_gamelist;
-
-				network_worker = std::thread([this, &received_initial_gamelist]() {
-					config data;
-
-					while(!stop) {
-						connection->wait_and_receive_data(data);
-
-						if(const config& error = data.child("error")) {
-							throw wesnothd_error(error["message"]);
-						}
-
-						else if(data.has_child("gamelist")) {
-							lobby_info.process_gamelist(data);
-
-							try {
-								received_initial_gamelist.set_value();
-								// TODO: only here while we transition away from dialog-bound timer-based handling
-								return;
-							} catch(const std::future_error& e) {
-								if(e.code() == std::future_errc::promise_already_satisfied) {
-									// We only need this for the first gamelist
-								}
-							}
-						}
-
-						else if(const config& gamelist_diff = data.child("gamelist_diff")) {
-							lobby_info.process_gamelist_diff(gamelist_diff);
-						}
-					}
-				});
-
-				// Wait at the loading screen until the initial gamelist has been processed
-				received_initial_gamelist.get_future().wait();
-			});
-		}
+	// This should only work if we have a connection. If we're in a local mode,
+	// enter_create_mode should be accessed directly.
+	if(!connection) {
+		return;
 	}
 
-	~mp_manager()
-	{
-		if(network_worker.joinable()) {
-			stop = true;
-			network_worker.join();
-		}
+	// A return of false means a config reload was requested, so do that and then loop.
+	while(!enter_lobby_mode()) {
+		game_config_manager* gcm = game_config_manager::get();
+		gcm->reload_changed_game_config();
+		gcm->load_game_config_for_create(true); // NOTE: Using reload_changed_game_config only doesn't seem to work here
+
+		// This function does not refer to an addon database, it calls filesystem functions.
+		// For the sanity of the mp lobby, this list should be fixed for the entire lobby session,
+		// even if the user changes the contents of the addon directory in the meantime.
+		// TODO: do we want to handle fetching the installed addons in the lobby_info ctor?
+		lobby_info.set_installed_addons(::installed_addons());
+
+		connection->send_data(config("refresh_lobby"));
 	}
-
-	/* Enters the mp loop. It consists of four screens:
-	 *
-	 * Host POV:   LOBBY <---> CREATE GAME ---> STAGING -----> GAME BEGINS
-	 * Player POV: LOBBY <--------------------> JOIN GAME ---> GAME BEGINS
-	 */
-	void run_lobby_loop()
-	{
-		// This should only work if we have a connection. If we're in a local mode,
-		// enter_create_mode should be accessed directly.
-		if(!connection) {
-			return;
-		}
-
-		// A return of false means a config reload was requested, so do that and then loop.
-		while(!enter_lobby_mode()) {
-			game_config_manager* gcm = game_config_manager::get();
-			gcm->reload_changed_game_config();
-			gcm->load_game_config_for_create(true); // NOTE: Using reload_changed_game_config only doesn't seem to work here
-
-			// This function does not refer to an addon database, it calls filesystem functions.
-			// For the sanity of the mp lobby, this list should be fixed for the entire lobby session,
-			// even if the user changes the contents of the addon directory in the meantime.
-			// TODO: do we want to handle fetching the installed addons in the lobby_info ctor?
-			lobby_info.set_installed_addons(::installed_addons());
-
-			connection->send_data(config("refresh_lobby"));
-		}
-	}
-
-private:
-	bool enter_lobby_mode();
-	void enter_create_mode();
-	void enter_staging_mode();
-	void enter_wait_mode(int game_id, bool observe);
-
-	std::thread network_worker;
-	std::atomic_bool stop;
-
-	saved_game& state;
-
-	std::unique_ptr<wesnothd_connection> connection;
-
-	mp::lobby_info lobby_info;
-};
+}
 
 bool mp_manager::enter_lobby_mode()
 {
@@ -624,14 +676,10 @@ void mp_manager::enter_wait_mode(int game_id, bool observe)
 } // end anon namespace
 
 /** Pubic entry points for the MP workflow */
-namespace mp
-{
+
 void start_client(saved_game& state, const std::string& host)
 {
 	DBG_MP << "starting client" << std::endl;
-
-	preferences::admin_authentication_reset admin_raii_helper;
-
 	mp_manager(host, state).run_lobby_loop();
 }
 
@@ -769,13 +817,22 @@ void start_local_game_commandline(saved_game& state, const commandline_options& 
 	}
 }
 
+bool logged_in_as_moderator()
+{
+	return manager && manager->get_session_info().is_moderator;
+}
+
 std::string get_profile_link(int user_id)
 {
-	if(!profile_url_prefix.empty()) {
-		return profile_url_prefix + std::to_string(user_id);
-	} else {
-		return "";
+	if(manager) {
+		const std::string& prefix = manager->get_session_info().profile_url_prefix;
+
+		if(!prefix.empty()) {
+			return prefix + std::to_string(user_id);
+		}
 	}
+
+	return "";
 }
 
 } // end namespace mp
