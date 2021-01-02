@@ -44,9 +44,9 @@ static lg::log_domain log_engine("engine");
 #define DBG_NG LOG_STREAM(debug, log_engine)
 #define ERR_NG LOG_STREAM(err, log_engine)
 
-game_state::game_state(const config& level, play_controller& pc, const ter_data_cache& tdata)
+game_state::game_state(const config& level, play_controller& pc)
 	: gamedata_(level)
-	, board_(tdata, level)
+	, board_(level)
 	, tod_manager_(level)
 	, pathfind_manager_(new pathfind::manager(level))
 	, reports_(new reports())

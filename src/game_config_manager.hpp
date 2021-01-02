@@ -41,7 +41,7 @@ public:
 
 	const game_config_view& game_config() const { return game_config_view_; }
 	const preproc_map& old_defines_map() const { return old_defines_map_; }
-	const ter_data_cache & terrain_types() const { return tdata_; }
+	const std::shared_ptr<terrain_type_data> & terrain_types() const { return tdata_; }
 
 	bool init_game_config(FORCE_RELOAD_CONFIG force_reload);
 	void reload_changed_game_config();
@@ -84,5 +84,5 @@ private:
 
 	game_config::config_cache& cache_;
 
-	ter_data_cache tdata_;
+	std::shared_ptr<terrain_type_data> tdata_;
 };

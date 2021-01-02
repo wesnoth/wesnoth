@@ -49,7 +49,7 @@ class game_config_view;
 class config;
 class unit_type;
 class terrain_type_data;
-typedef std::shared_ptr<terrain_type_data> ter_data_cache;
+
 namespace help {
 
 /**
@@ -330,7 +330,7 @@ std::string escape(const std::string &s);
 std::string get_first_word(const std::string &s);
 
 /** Load the appropriate terrain types data to use */
-ter_data_cache load_terrain_types_data();
+std::shared_ptr<terrain_type_data> load_terrain_types_data();
 
 extern const game_config_view *game_cfg;
 // The default toplevel.

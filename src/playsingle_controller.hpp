@@ -37,8 +37,7 @@ struct reset_gamestate_exception : public std::exception
 class playsingle_controller : public play_controller
 {
 public:
-	playsingle_controller(const config& level, saved_game& state_of_game,
-		const ter_data_cache & tdata, bool skip_replay);
+	playsingle_controller(const config& level, saved_game& state_of_game, bool skip_replay);
 
 	LEVEL_RESULT play_scenario(const config& level);
 	void play_scenario_init();

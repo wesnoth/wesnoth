@@ -65,7 +65,7 @@ public:
 	const terrain_type& get_terrain_info(const t_translation::terrain_code & terrain) const;
 
 	/* Get the underlying terrain_type_data object. */
-	const ter_data_cache & tdata() const { return tdata_; }
+	const std::shared_ptr<terrain_type_data>& tdata() const { return tdata_; }
 
 	/**
 	 * Loads a map, with the given terrain configuration.
@@ -76,7 +76,7 @@ public:
 	 * @param tdata the terrain data
 	 * @param data the map data to load.
 	 */
-	gamemap(const ter_data_cache &tdata, const std::string &data); //throw(incorrect_map_format_error)
+	gamemap(const std::shared_ptr<terrain_type_data>& tdata, const std::string& data); // throw(incorrect_map_format_error)
 
 	virtual ~gamemap();
 
@@ -254,7 +254,7 @@ private:
 	 */
 	int read_header(const std::string& data);
 
-	ter_data_cache tdata_;
+	std::shared_ptr<terrain_type_data> tdata_;
 
 protected:
 	std::vector<map_location> villages_;

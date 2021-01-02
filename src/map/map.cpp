@@ -100,12 +100,12 @@ void gamemap::write_terrain(const map_location &loc, config& cfg) const
 	cfg["terrain"] = t_translation::write_terrain_code(get_terrain(loc));
 }
 
-gamemap::gamemap(const ter_data_cache& tdata, const std::string& data):
-		tiles_(1, 1),
-		tdata_(tdata),
-		villages_(),
-		w_(-1),
-		h_(-1)
+gamemap::gamemap(const std::shared_ptr<terrain_type_data>& tdata, const std::string& data)
+	: tiles_(1, 1)
+	, tdata_(tdata)
+	, villages_()
+	, w_(-1)
+	, h_(-1)
 {
 	DBG_G << "loading map: '" << data << "'\n";
 

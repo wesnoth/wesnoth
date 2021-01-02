@@ -137,13 +137,11 @@ static void clear_resources()
 	resources::classification = nullptr;
 }
 
-play_controller::play_controller(const config& level, saved_game& state_of_game,
-		const ter_data_cache& tdata, bool skip_replay)
+play_controller::play_controller(const config& level, saved_game& state_of_game, bool skip_replay)
 	: controller_base()
 	, observer()
 	, quit_confirmation()
 	, ticks_(SDL_GetTicks())
-	, tdata_(tdata)
 	, gamestate_()
 	, level_()
 	, saved_game_(state_of_game)
@@ -219,7 +217,7 @@ void play_controller::init(const config& level)
 		gui2::dialogs::loading_screen::progress(loading_stage::load_level);
 
 		LOG_NG << "initializing game_state..." << (SDL_GetTicks() - ticks()) << std::endl;
-		gamestate_.reset(new game_state(level, *this, tdata_));
+		gamestate_.reset(new game_state(level, *this));
 
 		resources::gameboard = &gamestate().board_;
 		resources::gamedata = &gamestate().gamedata_;
@@ -319,7 +317,7 @@ void play_controller::reset_gamestate(const config& level, int replay_pos)
 	This is necessary to ensure that while the old AI manager is being destroyed,
 	all its member objects access the old manager instead of the new. */
 	gamestate_.reset();
-	gamestate_.reset(new game_state(level, *this, tdata_));
+	gamestate_.reset(new game_state(level, *this));
 	resources::gameboard = &gamestate().board_;
 	resources::gamedata = &gamestate().gamedata_;
 	resources::tod_manager = &gamestate().tod_manager_;

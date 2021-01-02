@@ -14,6 +14,7 @@
 
 #include "config.hpp"
 #include "game_board.hpp"
+#include "game_config_manager.hpp"
 #include "preferences/game.hpp"
 #include "log.hpp"
 #include "map/map.hpp"
@@ -33,9 +34,9 @@ static lg::log_domain log_engine("enginerefac");
 static lg::log_domain log_engine_enemies("engine/enemies");
 #define DBG_EE LOG_STREAM(debug, log_engine_enemies)
 
-game_board::game_board(const ter_data_cache & tdata, const config & level)
+game_board::game_board(const config& level)
 	: teams_()
-	, map_(new gamemap(tdata, level["map_data"]))
+	, map_(new gamemap(game_config_manager::get()->terrain_types(), level["map_data"]))
 	, unit_id_manager_(level["next_underlying_unit_id"])
 	, units_()
 {

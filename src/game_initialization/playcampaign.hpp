@@ -28,11 +28,9 @@ class saved_game;
 class terrain_type_data;
 class team;
 class playsingle_controller;
-typedef std::shared_ptr<terrain_type_data> ter_data_cache;
-
 class config;
-
 class wesnothd_connection;
+
 struct mp_game_metadata
 {
 	mp_game_metadata(wesnothd_connection& wdc)
@@ -57,14 +55,12 @@ struct mp_game_metadata
 class campaign_controller
 {
 	saved_game& state_;
-	const ter_data_cache & tdata_;
 	const bool is_unit_test_;
 	bool is_replay_;
 	mp_game_metadata* mp_info_;
 public:
-	campaign_controller(saved_game& state, const ter_data_cache & tdata, bool is_unit_test = false)
+	campaign_controller(saved_game& state, bool is_unit_test = false)
 		: state_(state)
-		, tdata_(tdata)
 		, is_unit_test_(is_unit_test)
 		, is_replay_(false)
 		, mp_info_(nullptr)

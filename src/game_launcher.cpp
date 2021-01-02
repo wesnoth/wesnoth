@@ -481,7 +481,7 @@ bool game_launcher::play_test()
 	game_config_manager::get()->load_game_config_for_game(state_.classification(), state_.get_scenario_id());
 
 	try {
-		campaign_controller ccontroller(state_, game_config_manager::get()->terrain_types());
+		campaign_controller ccontroller(state_);
 		ccontroller.play_game();
 	} catch(const savegame::load_game_exception& e) {
 		load_data_.reset(new savegame::load_game_metadata(std::move(e.data_)));
@@ -554,7 +554,7 @@ game_launcher::unit_test_result game_launcher::single_unit_test()
 
 	LEVEL_RESULT game_res = LEVEL_RESULT::TEST_FAIL;
 	try {
-		campaign_controller ccontroller(state_, game_config_manager::get()->terrain_types(), true);
+		campaign_controller ccontroller(state_, true);
 		game_res = ccontroller.play_game();
 		// TODO: How to handle the case where a unit test scenario ends without an explicit {SUCCEED} or {FAIL}?
 		// ex: check_victory_never_ai_fail results in victory by killing one side's leaders
@@ -587,7 +587,7 @@ game_launcher::unit_test_result game_launcher::single_unit_test()
 	}
 
 	try {
-		campaign_controller ccontroller(state_, game_config_manager::get()->terrain_types(), true);
+		campaign_controller ccontroller(state_, true);
 		ccontroller.play_replay();
 		if(lg::broke_strict()) {
 			std::cerr << "Observed failure on replay" << std::endl;
@@ -1017,7 +1017,7 @@ void game_launcher::launch_game(RELOAD_GAME_DATA reload)
 	});
 
 	try {
-		campaign_controller ccontroller(state_, game_config_manager::get()->terrain_types());
+		campaign_controller ccontroller(state_);
 		LEVEL_RESULT result = ccontroller.play_game();
 		ai::manager::singleton_ = nullptr;
 		// don't show The End for multiplayer scenario
@@ -1041,7 +1041,7 @@ void game_launcher::play_replay()
 {
 	assert(!load_data_);
 	try {
-		campaign_controller ccontroller(state_, game_config_manager::get()->terrain_types());
+		campaign_controller ccontroller(state_);
 		ccontroller.play_replay();
 	} catch(const savegame::load_game_exception& e) {
 		load_data_.reset(new savegame::load_game_metadata(std::move(e.data_)));

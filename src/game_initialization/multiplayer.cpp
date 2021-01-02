@@ -628,7 +628,7 @@ void mp_manager::enter_staging_mode() const
 	} // end connect_engine
 
 	if(dlg_ok) {
-		campaign_controller controller(state, game_config_manager::get()->terrain_types());
+		campaign_controller controller(state);
 		controller.set_mp_info(metadata.get());
 		controller.play_game();
 	}
@@ -672,7 +672,7 @@ void mp_manager::enter_wait_mode(int game_id, bool observe) const
 	}
 
 	if(dlg_ok) {
-		campaign_controller controller(state, game_config_manager::get()->terrain_types());
+		campaign_controller controller(state);
 		controller.set_mp_info(&metadata);
 		controller.play_game();
 	}
@@ -819,7 +819,7 @@ void start_local_game_commandline(saved_game& state, const commandline_options& 
 	unsigned int repeat = (cmdline_opts.multiplayer_repeat) ? *cmdline_opts.multiplayer_repeat : 1;
 	for(unsigned int i = 0; i < repeat; i++){
 		saved_game state_copy(state);
-		campaign_controller controller(state_copy, game_config_manager::get()->terrain_types());
+		campaign_controller controller(state_copy);
 		controller.play_game();
 	}
 }

@@ -23,8 +23,7 @@ struct mp_game_metadata;
 class playmp_controller : public playsingle_controller, public syncmp_handler
 {
 public:
-	playmp_controller(const config& level, saved_game& state_of_game,
-		const ter_data_cache & tdata, mp_game_metadata* mp_info);
+	playmp_controller(const config& level, saved_game& state_of_game, mp_game_metadata* mp_info);
 	virtual ~playmp_controller();
 
 	void maybe_linger() override;

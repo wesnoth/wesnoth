@@ -80,8 +80,7 @@ class game_state;
 class play_controller : public controller_base, public events::observer, public quit_confirmation
 {
 public:
-	play_controller(const config& level, saved_game& state_of_game,
-		const ter_data_cache& tdata, bool skip_replay);
+	play_controller(const config& level, saved_game& state_of_game, bool skip_replay);
 	virtual ~play_controller();
 
 	//event handler, overridden from observer
@@ -334,7 +333,6 @@ private:
 
 protected:
 	//gamestate
-	const ter_data_cache& tdata_;
 	std::unique_ptr<game_state> gamestate_;
 	config level_;
 	saved_game& saved_game_;

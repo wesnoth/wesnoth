@@ -287,7 +287,7 @@ int movetype::terrain_info::data::calc_value(
 		return params_.default_value;
 	}
 
-	ter_data_cache tdata;
+	std::shared_ptr<terrain_type_data> tdata;
 	if (game_config_manager::get()){
 		tdata = game_config_manager::get()->terrain_types(); //This permits to get terrain info in unit help pages from the help in title screen, even if there is no residual gamemap object
 	}

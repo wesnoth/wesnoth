@@ -86,7 +86,7 @@ public:
 	n_unit::id_manager& unit_id_manager() { return unit_id_manager_; }
 	// Constructors, trivial dtor, and const accessors
 
-	game_board(const ter_data_cache & tdata, const config & level);
+	game_board(const config& level);
 	virtual ~game_board();
 
 	virtual const std::vector<team>& teams() const override
