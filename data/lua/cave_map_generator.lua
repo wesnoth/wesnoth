@@ -132,7 +132,7 @@ function callbacks.generate_map(params)
 				return res
 			end
 			local path = wesnoth.find_path(
-				v.start_x, v.start_y, v.dest_x, v.dest_y, calc, params.map_width, params.map_height)
+				v.start_x, v.start_y, v.dest_x, v.dest_y, calc, map.w - 2, map.h - 2)
 			for i, loc in ipairs(path) do
 				local locs_set = LS.create()
 				build_chamber(loc[1], loc[2], locs_set, width, jagged)
