@@ -29,7 +29,6 @@
 #include "ai/manager.hpp"
 #include "fake_unit_ptr.hpp"
 #include "filesystem.hpp"
-#include "game_classification.hpp"
 #include "game_display.hpp"
 #include "preferences/game.hpp"
 #include "gettext.hpp"
