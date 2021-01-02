@@ -41,8 +41,8 @@ struct mp_game_metadata
 		, skip_replay_blindfolded(false)
 		, connection(wdc)
 	{
-
 	}
+
 	/** players and observers */
 	std::set<std::string> connected_players;
 	bool is_host;
@@ -54,10 +54,6 @@ struct mp_game_metadata
 
 class campaign_controller
 {
-	saved_game& state_;
-	const bool is_unit_test_;
-	bool is_replay_;
-	mp_game_metadata* mp_info_;
 public:
 	campaign_controller(saved_game& state, bool is_unit_test = false)
 		: state_(state)
@@ -66,16 +62,31 @@ public:
 		, mp_info_(nullptr)
 	{
 	}
+
 	LEVEL_RESULT play_game();
 	LEVEL_RESULT play_replay()
 	{
 		is_replay_ = true;
 		return play_game();
 	}
-	void set_mp_info(mp_game_metadata* mp_info) { mp_info_ = mp_info; }
+
+	void set_mp_info(mp_game_metadata* mp_info)
+	{
+		mp_info_ = mp_info;
+	}
+
 private:
-	LEVEL_RESULT playsingle_scenario(end_level_data &end_level);
-	LEVEL_RESULT playmp_scenario(end_level_data &end_level);
-	void show_carryover_message(playsingle_controller& playcontroller, const end_level_data& end_level, LEVEL_RESULT res);
-	static void report_victory(std::ostringstream &report, team& t,	int finishing_bonus_per_turn, int turns_left, int finishing_bonus);
+	LEVEL_RESULT playsingle_scenario(end_level_data& end_level);
+	LEVEL_RESULT playmp_scenario(end_level_data& end_level);
+
+	void show_carryover_message(
+		playsingle_controller& playcontroller, const end_level_data& end_level, LEVEL_RESULT res);
+
+	static void report_victory(
+		std::ostringstream& report, team& t, int finishing_bonus_per_turn, int turns_left, int finishing_bonus);
+
+	saved_game& state_;
+	const bool is_unit_test_;
+	bool is_replay_;
+	mp_game_metadata* mp_info_;
 };
