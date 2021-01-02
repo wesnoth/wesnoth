@@ -305,6 +305,7 @@ void saved_game::check_require_scenario()
 	scenario["required"] = starting_point_["require_scenario"].to_bool(false);
 	config& content = scenario.add_child("content");
 	content["id"] = starting_point_["id"];
+	content["name"] = starting_point_["name"];
 	content["type"] = "scenario";
 
 	mp_settings_.update_addon_requirements(scenario);
@@ -330,6 +331,7 @@ void saved_game::load_non_scenario(const std::string& type, const std::string& i
 		non_scenario["required"] = cfg[require_attr].to_bool(require_default);
 		config& content = non_scenario.add_child("content");
 		content["id"] = id;
+		content["name"] = cfg["addon_title"].str(cfg["name"].str("Unknown"));
 		content["type"] = type;
 
 		mp_settings_.update_addon_requirements(non_scenario);

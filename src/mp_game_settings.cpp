@@ -150,7 +150,7 @@ mp_game_settings::addon_version_info::addon_version_info(const config & cfg)
 		min_version = cfg["min_version"].str();
 	}
 	for(const auto& child : cfg.child_range("content")) {
-		content.emplace_back(addon_content{ child["id"].str(), child["type"].str() });
+		content.emplace_back(addon_content{ child["id"].str(), child["name"].str(), child["type"].str() });
 	}
 }
 
@@ -167,6 +167,7 @@ void mp_game_settings::addon_version_info::write(config & cfg) const {
 	for(const auto& item : content) {
 		config& c = cfg.add_child("content");
 		c["id"] = item.id;
+		c["name"] = item.name;
 		c["type"] = item.type;
 	}
 }
@@ -188,7 +189,7 @@ void mp_game_settings::update_addon_requirements(const config & cfg) {
 		// an add-on can contain multiple types of content
 		// for example, an era and a scenario
 		for(const auto& item : new_data.content) {
-			addon.content.emplace_back(addon_content{ item.id, item.type });
+			addon.content.emplace_back(addon_content{ item.id, item.name, item.type });
 		}
 
 		if(addon.version != new_data.version) {
