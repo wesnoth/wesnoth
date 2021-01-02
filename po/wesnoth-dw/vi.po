@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2020-12-19 01:31 UTC\n"
+"POT-Creation-Date: 2021-01-02 09:37 UTC\n"
 "PO-Revision-Date: 2013-09-18 10:47+0700\n"
 "Last-Translator: Pham Thanh Nam <phamthanhnam.ptn@gmail.com>\n"
 "Language-Team: Vietnamese <>\n"
@@ -771,8 +771,8 @@ msgstr "Còn chờ gì mà không giết nó đi? Chúng ta cần tiếp tục d
 msgid "I would feel bad about that. It is, uh, licking my hand."
 msgstr "Tôi thấy điều đó không hay chút nào. Nó, ừm, đang liếm tay tôi."
 
-#. [message]: speaker=Friendly Bat
 #. [message]: speaker=unit
+#. [message]: speaker=Friendly Bat
 #. This should just be "translated" to whatever noise a bat makes in your language.
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:617
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:651
@@ -2653,6 +2653,23 @@ msgstr ""
 "bạn của tôi và tôi sẽ tham gia cùng anh chiến đấu, Hải vương Krellis. Chúng "
 "tôi tuân theo lệnh của anh, và chúng tôi từ chối nhận tiền công."
 
+#. [unit]: type=Footpad, id=Lyllan
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:449
+msgid "Lyllan"
+msgstr ""
+
+#. [unit]: type=Thug, id=Trudd
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:462
+msgid "Trudd"
+msgstr ""
+
+#. [unit]: type=Thug, id=Dorcyn
+#. [unit]: type=Footpad, id=Dorcyn
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:475
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:493
+msgid "Dorcyn"
+msgstr ""
+
 #. [message]: speaker=Dorcyn
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:501
 msgid "I’ll join you right now! That monster is just unnatural."
@@ -2919,6 +2936,31 @@ msgstr ""
 "hướng về phía nam dọc theo bờ biển tới một số ngôi làng ngoài rìa để thu "
 "thập tin tức về những kẻ xâm lược."
 
+#. [set_variable]
+#: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:303
+msgid "Mal-Necross"
+msgstr ""
+
+#. [set_variable]
+#: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:327
+msgid "Mal-Verloth"
+msgstr ""
+
+#. [unit]: type=Merman Fighter, id=Nebthun
+#: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:403
+msgid "Nebthun"
+msgstr ""
+
+#. [unit]: type=Merman Hunter, id=Jarla
+#: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:416
+msgid "Jarla"
+msgstr ""
+
+#. [unit]: type=Merman Brawler, id=Tabomo
+#: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:429
+msgid "Tabomo"
+msgstr ""
+
 #. [message]: speaker=Nebthun
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:439
 msgid ""
@@ -3019,6 +3061,11 @@ msgstr ""
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:547
 msgid "Absolutely! Bring ’em on!"
 msgstr "Chắc chắn rồi! Diệt chúng!"
+
+#. [unit]: type=$type_3, id=Carallcyn
+#: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:618
+msgid "Carallcyn"
+msgstr ""
 
 #. [message]: speaker=Carallcyn
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:624
