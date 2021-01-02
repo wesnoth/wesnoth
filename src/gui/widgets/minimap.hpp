@@ -20,7 +20,6 @@
 #include "gui/core/window_builder.hpp"
 
 class config;
-class game_config_view;
 namespace gui2
 {
 namespace implementation
@@ -75,21 +74,9 @@ public:
 		return map_data_;
 	}
 
-	void set_config(const ::game_config_view* terrain)
-	{
-		terrain_ = terrain;
-	}
-
 private:
 	/** The map data to be used to generate the map. */
 	std::string map_data_;
-
-	/**
-	 * The config object with the terrain data.
-	 *
-	 * This config must be set before the object can be drawn.
-	 */
-	const ::game_config_view* terrain_;
 
 	/**
 	 * Gets the image for the minimap.

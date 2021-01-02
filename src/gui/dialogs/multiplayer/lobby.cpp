@@ -558,7 +558,6 @@ void mp_lobby::adjust_game_row_contents(const mp::game_info& game, grid* grid, b
 	//
 	minimap& map = find_widget<minimap>(grid, "minimap", false);
 
-	map.set_config(&game_config_);
 	map.set_map_data(game.map_data);
 
 	if(!add_callbacks) {

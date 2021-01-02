@@ -129,8 +129,6 @@ mp_create_game::mp_create_game(saved_game& state, bool local_mode)
 
 void mp_create_game::pre_show(window& win)
 {
-	find_widget<minimap>(&win, "minimap", false).set_config(&cfg_);
-
 	find_widget<text_box>(&win, "game_name", false).set_value(local_mode_ ? "" : ng::configure_engine::game_name_default());
 
 	connect_signal_mouse_left_click(
