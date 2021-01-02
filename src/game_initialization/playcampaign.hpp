@@ -82,9 +82,6 @@ private:
 	void show_carryover_message(
 		playsingle_controller& playcontroller, const end_level_data& end_level, LEVEL_RESULT res);
 
-	static void report_victory(
-		std::ostringstream& report, team& t, int finishing_bonus_per_turn, int turns_left, int finishing_bonus);
-
 	saved_game& state_;
 	const bool is_unit_test_;
 	bool is_replay_;
