@@ -99,14 +99,15 @@ void campaign_controller::show_carryover_message(
 		const gamemap& map = playcontroller.get_map_const();
 		const tod_manager& tod = playcontroller.get_tod_manager_const();
 
-		int turns_left = std::max<int>(0, tod.number_of_turns() - tod.turn());
+		const int turns_left = std::max<int>(0, tod.number_of_turns() - tod.turn());
 		for(team& t : teams) {
 			if(!t.persistent() || t.lost()) {
 				continue;
 			}
 
-			int finishing_bonus_per_turn = map.villages().size() * t.village_gold() + t.base_income();
-			int finishing_bonus = t.carryover_bonus() * finishing_bonus_per_turn * turns_left;
+			const int finishing_bonus_per_turn = map.villages().size() * t.village_gold() + t.base_income();
+			const int finishing_bonus = t.carryover_bonus() * finishing_bonus_per_turn * turns_left;
+
 			t.set_carryover_gold(div100rounded((t.gold() + finishing_bonus) * t.carryover_percentage()));
 
 			if(!t.is_local_human()) {
@@ -149,29 +150,26 @@ void campaign_controller::show_carryover_message(
 			if(t.carryover_add()) {
 				if(t.carryover_gold() > 0) {
 					goldmsg = VNGETTEXT(
-							"You will start the next scenario with $gold "
-							"on top of the defined minimum starting gold.",
-							"You will start the next scenario with $gold "
-							"on top of the defined minimum starting gold.",
-							t.carryover_gold(), symbols);
+						"You will start the next scenario with $gold on top of the defined minimum starting gold.",
+						"You will start the next scenario with $gold on top of the defined minimum starting gold.",
+						t.carryover_gold(), symbols
+					);
 
 				} else {
 					goldmsg = VNGETTEXT(
-							"You will start the next scenario with "
-							"the defined minimum starting gold.",
-							"You will start the next scenario with "
-							"the defined minimum starting gold.",
-							t.carryover_gold(), symbols);
+						"You will start the next scenario with the defined minimum starting gold.",
+						"You will start the next scenario with the defined minimum starting gold.",
+						t.carryover_gold(), symbols
+					);
 				}
 			} else {
 				goldmsg = VNGETTEXT(
-					"You will start the next scenario with $gold "
-					"or its defined minimum starting gold, "
+					"You will start the next scenario with $gold or its defined minimum starting gold, "
 					"whichever is higher.",
-					"You will start the next scenario with $gold "
-					"or its defined minimum starting gold, "
+					"You will start the next scenario with $gold or its defined minimum starting gold, "
 					"whichever is higher.",
-					t.carryover_gold(), symbols);
+					t.carryover_gold(), symbols
+				);
 			}
 
 			// xgettext:no-c-format
@@ -195,7 +193,6 @@ LEVEL_RESULT campaign_controller::playsingle_scenario(end_level_data &end_level)
 	}
 
 	LEVEL_RESULT res = playcontroller.play_scenario(is_replay_ ? state_.get_replay_starting_point() : state_.get_starting_point());
-
 	if(res == LEVEL_RESULT::QUIT) {
 		return LEVEL_RESULT::QUIT;
 	}
@@ -370,6 +367,7 @@ LEVEL_RESULT campaign_controller::play_game()
 
 				const bool is_mp = state_.classification().is_normal_mp_game();
 				state_.mp_settings().num_turns = starting_pos["turns"].to_int(-1);
+
 				if(state_.mp_settings().saved_game == mp_game_settings::SAVED_GAME_MODE::MIDGAME) {
 					state_.mp_settings().saved_game = mp_game_settings::SAVED_GAME_MODE::SCENARIO_START;
 				}
@@ -396,12 +394,9 @@ LEVEL_RESULT campaign_controller::play_game()
 
 			// If this isn't the last scenario, then save the game
 			if(end_level.prescenario_save) {
-				// For multiplayer, we want the save
-				// to contain the starting position.
-				// For campaigns however, this is the
-				// start-of-scenario save and the
-				// starting position needs to be empty,
-				// to force a reload of the scenario config.
+				// For multiplayer, we want the save to contain the starting position.
+				// For campaigns however, this is the start-of-scenario save and the
+				// starting position needs to be empty, to force a reload of the scenario config.
 				savegame::scenariostart_savegame save(state_, preferences::save_compression_format());
 				save.save_game_automatic();
 			}
@@ -409,10 +404,12 @@ LEVEL_RESULT campaign_controller::play_game()
 	}
 
 	if(!state_.get_scenario_id().empty()) {
-		std::string message = _("Unknown scenario: '$scenario|'");
 		utils::string_map symbols;
 		symbols["scenario"] = state_.get_scenario_id();
+
+		std::string message = _("Unknown scenario: '$scenario|'");
 		message = utils::interpolate_variables_into_string(message, &symbols);
+
 		gui2::show_error_message(message);
 		return LEVEL_RESULT::QUIT;
 	}
