@@ -851,9 +851,6 @@ void game_launcher::start_wesnothd()
 
 bool game_launcher::play_multiplayer(mp_selection res)
 {
-	state_.clear();
-	state_.classification().campaign_type = game_classification::CAMPAIGN_TYPE::MULTIPLAYER;
-
 	try {
 		if(res == MP_HOST) {
 			try {
@@ -891,9 +888,9 @@ bool game_launcher::play_multiplayer(mp_selection res)
 		cursor::set(cursor::NORMAL);
 
 		if(res == MP_LOCAL) {
-			mp::start_local_game(state_);
+			mp::start_local_game();
 		} else {
-			mp::start_client(state_, multiplayer_server_);
+			mp::start_client(multiplayer_server_);
 			multiplayer_server_.clear();
 		}
 
@@ -963,16 +960,12 @@ bool game_launcher::play_multiplayer_commandline()
 
 	DBG_MP << "starting multiplayer game from the commandline" << std::endl;
 
-	// These are all the relevant lines taken literally from play_multiplayer() above
-	state_.clear();
-	state_.classification().campaign_type = game_classification::CAMPAIGN_TYPE::MULTIPLAYER;
-
 	game_config_manager::get()->load_game_config_for_create(true);
 
 	events::discard_input(); // prevent the "keylogger" effect
 	cursor::set(cursor::NORMAL);
 
-	mp::start_local_game_commandline(state_, cmdline_opts_);
+	mp::start_local_game_commandline(cmdline_opts_);
 
 	return false;
 }

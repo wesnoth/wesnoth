@@ -66,9 +66,9 @@ class mp_manager
 {
 public:
 	// Declare this as a friend to allow direct access to enter_create_mode
-	friend void mp::start_local_game(saved_game&);
+	friend void mp::start_local_game();
 
-	mp_manager(const std::string& host, saved_game& state);
+	mp_manager(const std::string& host);
 
 	~mp_manager()
 	{
@@ -115,13 +115,13 @@ private:
 	bool enter_lobby_mode();
 
 	/** Opens the MP Create screen for hosts to configure a new game. */
-	void enter_create_mode() const;
+	void enter_create_mode();
 
 	/** Opens the MP Staging screen for hosts to wait for players. */
-	void enter_staging_mode() const;
+	void enter_staging_mode();
 
 	/** Opens the MP Join Game screen for non-host players and observers. */
-	void enter_wait_mode(int game_id, bool observe) const;
+	void enter_wait_mode(int game_id, bool observe);
 
 	/** Worker thread to handle receiving and processing network data. */
 	std::thread network_worker;
@@ -135,7 +135,8 @@ private:
 	/** The current session's info sent by the server on login. */
 	session_metadata session_info;
 
-	saved_game& state;
+	/** This single instance is reused for all games played during the current connection to the server. */
+	saved_game state;
 
 	mp::lobby_info lobby_info;
 
@@ -146,16 +147,18 @@ public:
 	}
 };
 
-mp_manager::mp_manager(const std::string& host, saved_game& state)
+mp_manager::mp_manager(const std::string& host)
 	: network_worker()
 	, stop(false)
 	, connection(nullptr)
 	, session_info()
-	, state(state)
+	, state()
 	, lobby_info(::installed_addons())
 {
 	assert(!manager);
 	manager = this;
+
+	state.classification().campaign_type = game_classification::CAMPAIGN_TYPE::MULTIPLAYER;
 
 	if(!host.empty()) {
 		gui2::dialogs::loading_screen::display([&]() {
@@ -597,7 +600,7 @@ bool mp_manager::enter_lobby_mode()
 	return true;
 }
 
-void mp_manager::enter_create_mode() const
+void mp_manager::enter_create_mode()
 {
 	DBG_MP << "entering create mode" << std::endl;
 
@@ -608,7 +611,7 @@ void mp_manager::enter_create_mode() const
 	}
 }
 
-void mp_manager::enter_staging_mode() const
+void mp_manager::enter_staging_mode()
 {
 	DBG_MP << "entering connect mode" << std::endl;
 
@@ -638,7 +641,7 @@ void mp_manager::enter_staging_mode() const
 	}
 }
 
-void mp_manager::enter_wait_mode(int game_id, bool observe) const
+void mp_manager::enter_wait_mode(int game_id, bool observe)
 {
 	DBG_MP << "entering wait mode" << std::endl;
 
@@ -684,10 +687,10 @@ void mp_manager::enter_wait_mode(int game_id, bool observe) const
 
 /** Pubic entry points for the MP workflow */
 
-void start_client(saved_game& state, const std::string& host)
+void start_client(const std::string& host)
 {
 	DBG_MP << "starting client" << std::endl;
-	mp_manager(host, state).run_lobby_loop();
+	mp_manager(host).run_lobby_loop();
 }
 
 bool goto_mp_connect(ng::connect_engine& engine, wesnothd_connection* connection)
@@ -711,16 +714,16 @@ bool goto_mp_wait(saved_game& state, wesnothd_connection* connection, bool obser
 	return dlg.show();
 }
 
-void start_local_game(saved_game& state)
+void start_local_game()
 {
 	DBG_MP << "starting local game" << std::endl;
 
 	preferences::set_message_private(false);
 
-	mp_manager("", state).enter_create_mode();
+	mp_manager("").enter_create_mode();
 }
 
-void start_local_game_commandline(saved_game& state, const commandline_options& cmdline_opts)
+void start_local_game_commandline(const commandline_options& cmdline_opts)
 {
 	DBG_MP << "starting local MP game from commandline" << std::endl;
 
@@ -734,7 +737,9 @@ void start_local_game_commandline(saved_game& state, const commandline_options& 
 	DBG_MP << "entering create mode" << std::endl;
 
 	// Set the default parameters
-	state.clear(); // This creates these parameters with default values defined in mp_game_settings.cpp
+	saved_game state;
+	state.classification().campaign_type = game_classification::CAMPAIGN_TYPE::MULTIPLAYER;
+
 	mp_game_settings& parameters = state.mp_settings();
 
 	// Hardcoded default values

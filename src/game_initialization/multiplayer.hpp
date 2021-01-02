@@ -33,21 +33,21 @@ const std::size_t max_login_size = 20;
  */
 
 /** Starts a multiplayer game in single-user mode. */
-void start_local_game(saved_game& state);
+void start_local_game();
 
-/** Starts a multiplayer game in single-user mode.
+/**
+ * Starts a multiplayer game in single-user mode.
  *
- * Same parameters as start_local_game plus:
- * cmdline_opts The commandline options
+ * @param cmdline_opts        The commandline options
  */
-void start_local_game_commandline(saved_game& state, const commandline_options& cmdline_opts);
+void start_local_game_commandline(const commandline_options& cmdline_opts);
 
-/** Starts a multiplayer game in client mode.
+/**
+ * Starts a multiplayer game in client mode.
  *
- * @param state       The save game to start.
- * @param host        The host to connect to.
+ * @param host                The host to connect to.
  */
-void start_client(saved_game& state, const std::string& host);
+void start_client(const std::string& host);
 
 /**
  * Opens mp::connect screen and sets game state according to the
