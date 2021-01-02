@@ -101,6 +101,7 @@ create table game_player_info
 -- information about the scenario/era/modifications for the game
 -- TYPE: one of era/scenario/modification
 -- ID: the id of the content
+-- NAME: the content's user-visible name
 -- SOURCE: the id of the add-on that the particular content came from
 -- VERSION: the version of the source add-on
 create table game_content_info
@@ -109,6 +110,7 @@ create table game_content_info
     GAME_ID           INT UNSIGNED NOT NULL,
     TYPE              VARCHAR(255) NOT NULL,
     ID                VARCHAR(255) NOT NULL,
+    NAME              VARCHAR(255),
     SOURCE            VARCHAR(255) NOT NULL,
     VERSION           VARCHAR(255) NOT NULL,
     PRIMARY KEY (INSTANCE_UUID, GAME_ID, TYPE, ID)

@@ -1636,7 +1636,7 @@ void server::handle_player_in_game(socket_ptr socket, simple_wml::document& data
 			// [addon] info handling
 			for(const auto& addon : m.children("addon")) {
 				for(const auto& content : addon->children("content")) {
-					user_handler_->db_insert_game_content_info(uuid_, g.db_id(), content->attr("type").to_string(), content->attr("id").to_string(), addon->attr("id").to_string(), addon->attr("version").to_string());
+					user_handler_->db_insert_game_content_info(uuid_, g.db_id(), content->attr("type").to_string(), content->attr("name").to_string(), content->attr("id").to_string(), addon->attr("id").to_string(), addon->attr("version").to_string());
 				}
 			}
 

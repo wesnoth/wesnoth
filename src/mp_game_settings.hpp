@@ -82,6 +82,7 @@ struct mp_game_settings
 	struct addon_content
 	{
 		std::string id;
+		std::string name;
 		std::string type;
 	};
 
@@ -97,7 +98,8 @@ struct mp_game_settings
 		void write(config &) const;
 	};
 
-	std::map<std::string, addon_version_info> addons; // the key is the addon_id
+	/** the key is the addon_id */
+	std::map<std::string, addon_version_info> addons;
 
 	/**
 	 * Takes a config with addon metadata (id, name, version, min_version) and adds
