@@ -32,7 +32,6 @@
 #include "mp_game_settings.hpp"
 #include "preferences/credentials.hpp"
 #include "preferences/game.hpp"
-#include "terrain/type_data.hpp"
 #include "wml_exception.hpp"
 
 #include <iterator>
@@ -297,7 +296,7 @@ game_info::game_info(const config& game, const std::vector<std::string>& install
 		info_stream << " — ??×??";
 	} else {
 		try {
-			gamemap map(std::make_shared<terrain_type_data>(game_config), map_data);
+			gamemap map(map_data);
 			std::ostringstream msi;
 			msi << map.w() << font::unicode_multiplication_sign << map.h();
 			map_size_info = msi.str();

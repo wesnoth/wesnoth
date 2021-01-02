@@ -1069,7 +1069,7 @@ int game_lua_kernel::intf_terrain_mask(lua_State *L)
 	}
 
 
-	gamemap mask_map(board().map().tdata(), "");
+	gamemap mask_map("");
 	mask_map.read(t_str, false);
 	board().map_->overlay(mask_map, loc, rules, is_odd, ignore_special_locations);
 

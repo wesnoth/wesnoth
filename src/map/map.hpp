@@ -68,15 +68,14 @@ public:
 	const std::shared_ptr<terrain_type_data>& tdata() const { return tdata_; }
 
 	/**
-	 * Loads a map, with the given terrain configuration.
+	 * Loads a map.
 	 *
 	 * Data should be a series of lines, with each character representing one
 	 * hex on the map.  Starting locations are represented by numbers.
 	 *
-	 * @param tdata the terrain data
 	 * @param data the map data to load.
 	 */
-	gamemap(const std::shared_ptr<terrain_type_data>& tdata, const std::string& data); // throw(incorrect_map_format_error)
+	gamemap(const std::string& data); // throw(incorrect_map_format_error)
 
 	virtual ~gamemap();
 

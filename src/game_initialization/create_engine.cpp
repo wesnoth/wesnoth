@@ -67,8 +67,7 @@ void scenario::set_metadata()
 	const std::string& map_data = data_["map_data"];
 
 	try {
-		map_.reset(new gamemap(game_config_manager::get()->terrain_types(),
-			map_data));
+		map_.reset(new gamemap(map_data));
 	} catch(const incorrect_map_format_error& e) {
 		data_["description"] = _("Map could not be loaded: ") + e.message;
 
@@ -658,7 +657,7 @@ void create_engine::init_all_levels()
 			bool add_map = true;
 			std::unique_ptr<gamemap> map;
 			try {
-				map.reset(new gamemap(game_config_manager::get()->terrain_types(), user_map_data["map_data"]));
+				map.reset(new gamemap(user_map_data["map_data"]));
 			} catch (const incorrect_map_format_error& e) {
 				user_map_data["description"] = _("Map could not be loaded: ") + e.message;
 

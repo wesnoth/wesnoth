@@ -14,7 +14,6 @@
 
 #include "config.hpp"
 #include "game_board.hpp"
-#include "game_config_manager.hpp"
 #include "preferences/game.hpp"
 #include "log.hpp"
 #include "map/map.hpp"
@@ -36,7 +35,7 @@ static lg::log_domain log_engine_enemies("engine/enemies");
 
 game_board::game_board(const config& level)
 	: teams_()
-	, map_(new gamemap(game_config_manager::get()->terrain_types(), level["map_data"]))
+	, map_(std::make_unique<gamemap>(level["map_data"]))
 	, unit_id_manager_(level["next_underlying_unit_id"])
 	, units_()
 {
@@ -47,7 +46,9 @@ game_board::game_board(const game_board & other)
 	, labels_(other.labels_)
 	, map_(new gamemap(*(other.map_)))
 	, unit_id_manager_(other.unit_id_manager_)
-	, units_(other.units_) {}
+	, units_(other.units_)
+{
+}
 
 game_board::~game_board() {}
 
