@@ -37,58 +37,58 @@
 /**
  * A user_handler implementation to link the server with a phpbb3 forum.
  */
-class fuh : public user_handler {
-	public:
-		fuh(const config& c);
+class fuh : public user_handler
+{
+public:
+	fuh(const config& c);
 
-		bool login(const std::string& name, const std::string& password, const std::string& seed);
+	bool login(const std::string& name, const std::string& password, const std::string& seed);
 
-		/**
-		 * Needed because the hashing algorithm used by phpbb requires some info
-		 * from the original hash to recreate the same hash
-		 *
-		 * Return an empty string if an error occurs
-		 */
-		std::string extract_salt(const std::string& name);
+	/**
+	 * Needed because the hashing algorithm used by phpbb requires some info
+	 * from the original hash to recreate the same hash
+	 *
+	 * Return an empty string if an error occurs
+	 */
+	std::string extract_salt(const std::string& name);
 
-		void user_logged_in(const std::string& name);
+	void user_logged_in(const std::string& name);
 
-		bool user_exists(const std::string& name);
+	bool user_exists(const std::string& name);
 
-		long get_forum_id(const std::string& name);
+	long get_forum_id(const std::string& name);
 
-		bool user_is_active(const std::string& name);
+	bool user_is_active(const std::string& name);
 
-		bool user_is_moderator(const std::string& name);
-		void set_is_moderator(const std::string& name, const bool& is_moderator);
+	bool user_is_moderator(const std::string& name);
+	void set_is_moderator(const std::string& name, const bool& is_moderator);
 
-		ban_info user_is_banned(const std::string& name, const std::string& addr);
+	ban_info user_is_banned(const std::string& name, const std::string& addr);
 
-		std::string user_info(const std::string& name);
+	std::string user_info(const std::string& name);
 
-		bool use_phpbb_encryption() const { return true; }
+	bool use_phpbb_encryption() const { return true; }
 
-		std::string get_uuid();
-		std::string get_tournaments();
-		void db_insert_game_info(const std::string& uuid, int game_id, const std::string& version, const std::string& name, int reload, int observers, int is_public, int has_password);
-		void db_update_game_end(const std::string& uuid, int game_id, const std::string& replay_location);
-		void db_insert_game_player_info(const std::string& uuid, int game_id, const std::string& username, int side_number, int is_host, const std::string& faction, const std::string& version, const std::string& source, const std::string& current_user);
-		void db_insert_game_content_info(const std::string& uuid, int game_id, const std::string& type, const std::string& id, const std::string& source, const std::string& version);
-		void db_set_oos_flag(const std::string& uuid, int game_id);
+	std::string get_uuid();
+	std::string get_tournaments();
+	void db_insert_game_info(const std::string& uuid, int game_id, const std::string& version, const std::string& name, int reload, int observers, int is_public, int has_password);
+	void db_update_game_end(const std::string& uuid, int game_id, const std::string& replay_location);
+	void db_insert_game_player_info(const std::string& uuid, int game_id, const std::string& username, int side_number, int is_host, const std::string& faction, const std::string& version, const std::string& source, const std::string& current_user);
+	void db_insert_game_content_info(const std::string& uuid, int game_id, const std::string& type, const std::string& id, const std::string& source, const std::string& version);
+	void db_set_oos_flag(const std::string& uuid, int game_id);
 
-		void async_test_query(boost::asio::io_service& io_service, int limit);
+	void async_test_query(boost::asio::io_service& io_service, int limit);
 
-	private:
-		dbconn conn_;
-		std::string db_users_table_;
-		std::string db_extra_table_;
-		int mp_mod_group_;
+private:
+	dbconn conn_;
+	std::string db_users_table_;
+	std::string db_extra_table_;
+	int mp_mod_group_;
 
-		std::string get_hash(const std::string& user);
-		std::time_t get_lastlogin(const std::string& user);
-		std::time_t get_registrationdate(const std::string& user);
-		bool is_inactive(const std::string& user);
-		void set_lastlogin(const std::string& user, const std::time_t& lastlogin);
-		bool is_user_in_group(const std::string& name, int group_id);
+	std::string get_hash(const std::string& user);
+	std::time_t get_lastlogin(const std::string& user);
+	std::time_t get_registrationdate(const std::string& user);
+	bool is_inactive(const std::string& user);
+	void set_lastlogin(const std::string& user, const std::time_t& lastlogin);
+	bool is_user_in_group(const std::string& name, int group_id);
 };
-
