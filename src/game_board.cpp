@@ -18,7 +18,6 @@
 #include "log.hpp"
 #include "map/map.hpp"
 #include "recall_list_manager.hpp"
-#include "terrain/type_data.hpp"
 #include "units/unit.hpp"
 
 #include <set>

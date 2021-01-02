@@ -27,7 +27,6 @@
 #include "serialization/binary_or_text.hpp"
 #include "serialization/parser.hpp"
 #include "team.hpp"
-#include "terrain/type_data.hpp"
 #include "units/unit.hpp"
 #include "game_config_view.hpp"
 

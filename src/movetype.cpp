@@ -24,7 +24,6 @@
 #include "log.hpp"
 #include "map/map.hpp"
 #include "terrain/translation.hpp"
-#include "terrain/type_data.hpp"
 #include "units/types.hpp" // for attack_type
 
 static lg::log_domain log_config("config");

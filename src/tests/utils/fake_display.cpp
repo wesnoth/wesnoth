@@ -20,7 +20,6 @@
 #include "game_config_view.hpp"
 #include "game_display.hpp"
 #include "reports.hpp"
-#include "terrain/type_data.hpp"
 
 namespace wb
 {

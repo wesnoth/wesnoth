@@ -93,7 +93,6 @@
 #include "terrain/terrain.hpp"                  // for terrain_type
 #include "terrain/filter.hpp"           // for terrain_filter
 #include "terrain/translation.hpp"      // for read_terrain_code, etc
-#include "terrain/type_data.hpp"
 #include "time_of_day.hpp"              // for time_of_day
 #include "tod_manager.hpp"              // for tod_manager
 #include "tstring.hpp"                  // for t_string, operator+

@@ -16,7 +16,6 @@
 
 #include "display_context.hpp"
 #include "team.hpp"
-#include "terrain/type_data.hpp"
 #include "units/map.hpp"
 #include "units/id.hpp"
 #include "utils/optional_fwd.hpp"

@@ -23,8 +23,6 @@
 #include "map/label.hpp"
 #include "wml_exception.hpp"
 
-#include "terrain/type_data.hpp"
-
 namespace editor {
 
 editor_map_load_exception wrap_exc(const char* type, const std::string& e_msg, const std::string& filename)

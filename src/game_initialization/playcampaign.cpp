@@ -42,7 +42,6 @@
 #include "savegame.hpp"
 #include "saved_game.hpp"
 #include "sound.hpp"
-#include "terrain/type_data.hpp"
 #include "wml_exception.hpp"
 #include "formula/string_utils.hpp"
 #include "wesnothd_connection.hpp"

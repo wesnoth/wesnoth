@@ -22,7 +22,6 @@
 #include "menu_events.hpp"
 #include "mouse_events.hpp"
 #include "persist_manager.hpp"
-#include "terrain/type_data.hpp"
 #include "tod_manager.hpp"
 #include "game_state.hpp"
 #include "utils/optional_fwd.hpp"

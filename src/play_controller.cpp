@@ -60,7 +60,6 @@
 #include "soundsource.hpp"
 #include "statistics.hpp"
 #include "synced_context.hpp"
-#include "terrain/type_data.hpp"
 #include "tooltips.hpp"
 #include "units/unit.hpp"
 #include "units/types.hpp"

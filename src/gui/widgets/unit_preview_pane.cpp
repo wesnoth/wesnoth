@@ -38,6 +38,7 @@
 #include "resources.hpp"
 #include "team.hpp"
 #include "terrain/movement.hpp"
+#include "terrain/type_data.hpp"
 #include "units/attack_type.hpp"
 #include "units/types.hpp"
 #include "units/helper.hpp"
