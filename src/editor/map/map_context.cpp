@@ -182,7 +182,7 @@ map_context::map_context(const game_config_view& game_config, const std::string&
 			LOG_ED << "Loading generated scenario file" << std::endl;
 			// 4.0 editor generated scenario
 			try {
-				load_scenario(game_config);
+				load_scenario();
 			} catch(const config::error& e) {
 				// We already caught and rethrew this exception in load_scenario
 				throw editor_map_load_exception("load_scenario", e.message);
@@ -313,7 +313,7 @@ void map_context::replace_local_schedule(const std::vector<time_of_day>& schedul
 	}
 }
 
-void map_context::load_scenario(const game_config_view& game_config)
+void map_context::load_scenario()
 {
 	config scenario;
 
