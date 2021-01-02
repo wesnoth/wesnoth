@@ -123,7 +123,7 @@ saved_game::saved_game()
 	, replay_start_()
 	, classification_()
 	, mp_settings_()
-	, starting_point_type_(STARTING_POINT_NONE)
+	, starting_point_type_(starting_point::NONE)
 	, starting_point_()
 	, replay_data_()
 	, skip_story_(false)
@@ -136,7 +136,7 @@ saved_game::saved_game(config cfg)
 	, replay_start_()
 	, classification_(cfg)
 	, mp_settings_()
-	, starting_point_type_(STARTING_POINT_NONE)
+	, starting_point_type_(starting_point::NONE)
 	, starting_point_()
 	, replay_data_()
 	, skip_story_(false)
@@ -194,9 +194,9 @@ void saved_game::write_config(config_writer& out) const
 
 void saved_game::write_starting_point(config_writer& out) const
 {
-	if(starting_point_type_ == STARTING_POINT_SNAPSHOT) {
+	if(starting_point_type_ == starting_point::SNAPSHOT) {
 		out.write_child("snapshot", starting_point_);
-	} else if(starting_point_type_ == STARTING_POINT_SCENARIO) {
+	} else if(starting_point_type_ == starting_point::SCENARIO) {
 		out.write_child("scenario", starting_point_);
 	}
 }
@@ -215,7 +215,7 @@ void saved_game::write_general_info(config_writer& out) const
 
 void saved_game::set_defaults()
 {
-	const bool is_loaded_game = starting_point_type_ != STARTING_POINT_SCENARIO;
+	const bool is_loaded_game = starting_point_type_ != starting_point::SCENARIO;
 	const bool is_multiplayer_tag = classification().get_tagname() == "multiplayer";
 	const game_config_view& game_config = game_config_manager::get()->game_config();
 	static const std::vector<std::string> team_defaults {
@@ -268,7 +268,7 @@ void saved_game::set_defaults()
 
 void saved_game::expand_scenario()
 {
-	if(starting_point_type_ == STARTING_POINT_NONE && !has_carryover_expanded_) {
+	if(starting_point_type_ == starting_point::NONE && !has_carryover_expanded_) {
 		game_config_manager::get()->load_game_config_for_game(classification(), carryover_["next_scenario"]);
 
 		const game_config_view& game_config = game_config_manager::get()->game_config();
@@ -276,7 +276,7 @@ void saved_game::expand_scenario()
 			game_config.find_child(classification().get_tagname(), "id", carryover_["next_scenario"]);
 
 		if(scenario) {
-			starting_point_type_ = STARTING_POINT_SCENARIO;
+			starting_point_type_ = starting_point::SCENARIO;
 			starting_point_ = scenario;
 
 			// A hash has to be generated using an unmodified scenario data.
@@ -288,7 +288,7 @@ void saved_game::expand_scenario()
 			set_defaults();
 		} else {
 			ERR_NG << "Couldn't find [" << classification().get_tagname() << "] with id=" << carryover_["next_scenario"] << std::endl;
-			starting_point_type_ = STARTING_POINT_INVALID;
+			starting_point_type_ = starting_point::INVALID;
 			starting_point_.clear();
 		}
 	}
@@ -371,7 +371,7 @@ void saved_game::expand_mp_events()
 {
 	expand_scenario();
 
-	if(starting_point_type_ == STARTING_POINT_SCENARIO && !starting_point_["has_mod_events"].to_bool(false)) {
+	if(starting_point_type_ == starting_point::SCENARIO && !starting_point_["has_mod_events"].to_bool(false)) {
 		std::vector<modevents_entry> mods;
 		std::set<std::string> loaded_resources;
 
@@ -410,7 +410,7 @@ void saved_game::expand_mp_events()
 
 void saved_game::expand_mp_options()
 {
-	if(starting_point_type_ == STARTING_POINT_SCENARIO && !has_carryover_expanded_) {
+	if(starting_point_type_ == starting_point::SCENARIO && !has_carryover_expanded_) {
 		std::vector<modevents_entry> mods;
 
 		std::transform(classification_.active_mods.begin(), classification_.active_mods.end(), std::back_inserter(mods),
@@ -478,7 +478,7 @@ void saved_game::expand_random_scenario()
 {
 	expand_scenario();
 
-	if(starting_point_type_ == STARTING_POINT_SCENARIO) {
+	if(starting_point_type_ == starting_point::SCENARIO) {
 		// If the entire scenario should be randomly generated
 		if(!starting_point_["scenario_generation"].empty()) {
 			LOG_NG << "randomly generating scenario...\n";
@@ -538,7 +538,7 @@ void saved_game::post_scenario_generation(const config& old_scenario, config& ge
 void saved_game::expand_carryover()
 {
 	expand_scenario();
-	if(starting_point_type_ == STARTING_POINT_SCENARIO && !has_carryover_expanded_) {
+	if(starting_point_type_ == starting_point::SCENARIO && !has_carryover_expanded_) {
 		carryover_info sides(carryover_);
 
 		sides.transfer_to(get_starting_point());
@@ -553,12 +553,12 @@ void saved_game::expand_carryover()
 
 bool saved_game::valid() const
 {
-	return starting_point_type_ != STARTING_POINT_INVALID;
+	return starting_point_type_ != starting_point::INVALID;
 }
 
 config& saved_game::set_snapshot(config snapshot)
 {
-	starting_point_type_ = STARTING_POINT_SNAPSHOT;
+	starting_point_type_ = starting_point::SNAPSHOT;
 	starting_point_.swap(snapshot);
 
 	return starting_point_;
@@ -566,7 +566,7 @@ config& saved_game::set_snapshot(config snapshot)
 
 void saved_game::set_scenario(config scenario)
 {
-	starting_point_type_ = STARTING_POINT_SCENARIO;
+	starting_point_type_ = starting_point::SCENARIO;
 	starting_point_.swap(scenario);
 
 	has_carryover_expanded_ = false;
@@ -576,7 +576,7 @@ void saved_game::set_scenario(config scenario)
 
 void saved_game::remove_snapshot()
 {
-	starting_point_type_ = STARTING_POINT_NONE;
+	starting_point_type_ = starting_point::NONE;
 	starting_point_.clear();
 }
 
@@ -597,7 +597,7 @@ const config& saved_game::get_replay_starting_point()
 		expand_carryover();
 	}
 
-	if(starting_point_type_ == STARTING_POINT_SCENARIO) {
+	if(starting_point_type_ == starting_point::SCENARIO) {
 		return starting_point_;
 	}
 
@@ -606,7 +606,7 @@ const config& saved_game::get_replay_starting_point()
 
 void saved_game::convert_to_start_save()
 {
-	assert(starting_point_type_ == STARTING_POINT_SNAPSHOT);
+	assert(starting_point_type_ == starting_point::SNAPSHOT);
 
 	carryover_info sides(starting_point_, true);
 
@@ -634,9 +634,9 @@ config saved_game::to_config() const
 
 	replay_data_.write(r.add_child("replay"));
 
-	if(starting_point_type_ == STARTING_POINT_SNAPSHOT) {
+	if(starting_point_type_ == starting_point::SNAPSHOT) {
 		r.add_child("snapshot", starting_point_);
-	} else if(starting_point_type_ == STARTING_POINT_SCENARIO) {
+	} else if(starting_point_type_ == starting_point::SCENARIO) {
 		r.add_child("scenario", starting_point_);
 	}
 
@@ -650,7 +650,7 @@ std::string saved_game::get_scenario_id() const
 {
 	std::string scenario_id;
 
-	if(starting_point_type_ == STARTING_POINT_SNAPSHOT || starting_point_type_ == STARTING_POINT_SCENARIO) {
+	if(starting_point_type_ == starting_point::SNAPSHOT || starting_point_type_ == starting_point::SCENARIO) {
 		scenario_id = starting_point_["id"].str();
 	} else if(!has_carryover_expanded_) {
 		scenario_id = carryover_["next_scenario"].str();
@@ -767,13 +767,13 @@ void saved_game::set_data(config& cfg)
 	replay_data_.set_to_end();
 
 	if(config& snapshot = cfg.child("snapshot")) {
-		starting_point_type_ = STARTING_POINT_SNAPSHOT;
+		starting_point_type_ = starting_point::SNAPSHOT;
 		starting_point_.swap(snapshot);
 	} else if(config& scenario = cfg.child("scenario")) {
-		starting_point_type_ = STARTING_POINT_SCENARIO;
+		starting_point_type_ = starting_point::SCENARIO;
 		starting_point_.swap(scenario);
 	} else {
-		starting_point_type_ = STARTING_POINT_NONE;
+		starting_point_type_ = starting_point::NONE;
 		starting_point_.clear();
 	}
 
@@ -799,7 +799,7 @@ void saved_game::clear()
 	replay_data_.swap(replay_recorder_base());
 	replay_start_.clear();
 	starting_point_.clear();
-	starting_point_type_ = STARTING_POINT_NONE;
+	starting_point_type_ = starting_point::NONE;
 }
 
 void swap(saved_game& lhs, saved_game& rhs)

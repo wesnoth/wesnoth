@@ -20,20 +20,19 @@
 
 class config_writer;
 
-
 class saved_game
 {
-	enum STARTING_POINT_TYPE
-	{
+	enum class starting_point {
 		/** There is no scenario stating pos data (start-of-scenario). */
-		STARTING_POINT_NONE,
+		NONE,
 		/** We have a [snapshot] (mid-game-savefile). */
-		STARTING_POINT_SNAPSHOT,
+		SNAPSHOT,
 		/** We have a [scenario] (start-of-scenario) savefile. */
-		STARTING_POINT_SCENARIO,
+		SCENARIO,
 		/** We failed to get a starting pos in expand_scenario. */
-		STARTING_POINT_INVALID
+		INVALID
 	};
+
 public:
 	saved_game();
 	saved_game(const saved_game& state);
@@ -104,7 +103,7 @@ public:
 
 	bool is_mid_game_save() const
 	{
-		return starting_point_type_ == STARTING_POINT_SNAPSHOT;
+		return starting_point_type_ == starting_point::SNAPSHOT;
 	}
 	/**
 	 * converts a normal savegame form the end of a scenaio to a start-of-scenario savefile for the next scenaio,
@@ -153,7 +152,7 @@ private:
 	game_classification classification_;
 	mp_game_settings mp_settings_;
 
-	STARTING_POINT_TYPE starting_point_type_;
+	starting_point starting_point_type_;
 	/**
 		The starting pos where the (non replay) game will be started from.
 		This can eigher be a [scenario] for a fresh game or a [snapshot] if this is a reloaded game
