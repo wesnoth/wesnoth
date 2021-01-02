@@ -258,11 +258,10 @@ create_engine::create_engine(saved_game& state)
 	state_.clear();
 	state_.classification().campaign_type = type;
 
-	game_config_manager::get()->load_game_config_for_create(type == game_classification::CAMPAIGN_TYPE::MULTIPLAYER);
+	game_config_manager::get()->load_game_config_for_create(state_.classification().is_multiplayer());
 
 	// Initialize dependency_manager_ after refreshing game config.
-	dependency_manager_.reset(new depcheck::manager(
-		game_config_, type == game_classification::CAMPAIGN_TYPE::MULTIPLAYER));
+	dependency_manager_.reset(new depcheck::manager(game_config_, state_.classification().is_multiplayer()));
 
 	// TODO: the editor dir is already configurable, is the preferences value
 	filesystem::get_files_in_dir(filesystem::get_user_data_dir() + "/editor/maps", &user_map_names_,
@@ -279,7 +278,7 @@ create_engine::create_engine(saved_game& state)
 
 	state_.mp_settings().saved_game = mp_game_settings::SAVED_GAME_MODE::NONE;
 
-	for(const std::string& str : preferences::modifications(state_.classification().campaign_type == game_classification::CAMPAIGN_TYPE::MULTIPLAYER)) {
+	for(const std::string& str : preferences::modifications(state_.classification().is_multiplayer())) {
 		if(game_config_.find_child("modification", "id", str)) {
 			state_.classification().active_mods.push_back(str);
 		}
@@ -531,7 +530,7 @@ void create_engine::set_current_level(const std::size_t index)
 		generator_.reset(nullptr);
 	}
 
-	if(state_.classification().campaign_type == game_classification::CAMPAIGN_TYPE::MULTIPLAYER) {
+	if(state_.classification().is_multiplayer()) {
 		dependency_manager_->try_scenario(current_level().id());
 	}
 }
@@ -733,7 +732,7 @@ void create_engine::init_all_levels()
 		}
 
 		const std::string& type = data["type"];
-		bool mp = state_.classification().campaign_type == game_classification::CAMPAIGN_TYPE::MULTIPLAYER;
+		const bool mp = state_.classification().is_multiplayer();
 
 		if(type == "mp" || (type == "hybrid" && mp)) {
 			type_map_[level::TYPE::CAMPAIGN].games.emplace_back(new campaign(data));
@@ -770,7 +769,7 @@ void create_engine::init_extras(const MP_EXTRA extra_type)
 	for(const config& extra : game_config_.child_range(extra_name))
 	{
 		ng::depcheck::component_availability type = extra["type"].to_enum(default_availabilty);
-		bool mp = state_.classification().campaign_type == game_classification::CAMPAIGN_TYPE::MULTIPLAYER;
+		const bool mp = state_.classification().is_multiplayer();
 
 		if((type != ng::depcheck::component_availability::MP || mp) && (type != ng::depcheck::component_availability::SP || !mp) )
 		{

@@ -4282,7 +4282,7 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 	}
 	luaL_setfuncs(L, callbacks, 0);
 
-	if(play_controller_.get_classification().campaign_type == game_classification::CAMPAIGN_TYPE::TEST) {
+	if(play_controller_.get_classification().is_test()) {
 		static luaL_Reg const test_callbacks[] {
 			{ "fire_wml_menu_item",        &dispatch<&game_lua_kernel::intf_fire_wml_menu_item         >        },
 			{ nullptr, nullptr }

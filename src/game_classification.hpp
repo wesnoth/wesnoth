@@ -31,11 +31,6 @@ public:
 	game_classification() = default;
 	explicit game_classification(const config& cfg);
 
-	config to_config() const;
-	std::string get_tagname() const;
-	bool is_normal_mp_game() const;
-	std::set<std::string> active_addons(const std::string& scenario_id) const;
-
 	std::string label;                               /**< Name of the game (e.g. name of save file). */
 	std::string version;                             /**< Version game was created with. */
 	MAKE_ENUM (CAMPAIGN_TYPE,			 /**< Type of the game - campaign, multiplayer etc. */
@@ -64,4 +59,33 @@ public:
 	std::string difficulty = DEFAULT_DIFFICULTY; /**< The difficulty level the game is being played on. */
 	std::string random_mode = "";
 	bool oos_debug = false;
+
+	config to_config() const;
+	std::string get_tagname() const;
+	std::set<std::string> active_addons(const std::string& scenario_id) const;
+
+	bool is_normal_mp_game() const
+	{
+		return is_multiplayer() && campaign.empty();
+	}
+
+	bool is_scenario() const
+	{
+		return campaign_type == CAMPAIGN_TYPE::SCENARIO;
+	}
+
+	bool is_multiplayer() const
+	{
+		return campaign_type == CAMPAIGN_TYPE::MULTIPLAYER;
+	}
+
+	bool is_test() const
+	{
+		return campaign_type == CAMPAIGN_TYPE::TEST;
+	}
+
+	bool is_tutorial() const
+	{
+		return campaign_type == CAMPAIGN_TYPE::TUTORIAL;
+	}
 };

@@ -84,24 +84,19 @@ config game_classification::to_config() const
 
 std::string game_classification::get_tagname() const
 {
-	if(this->campaign_type == CAMPAIGN_TYPE::MULTIPLAYER) {
-		return this->campaign.empty() ? "multiplayer" : "scenario";
+	if(is_multiplayer()) {
+		return campaign.empty() ? "multiplayer" : "scenario";
 	}
 
-	if(this->campaign_type == CAMPAIGN_TYPE::TUTORIAL) {
+	if(is_tutorial()) {
 		return "scenario";
 	}
 
-	return this->campaign_type.to_string();
+	return campaign_type.to_string();
 }
 
-bool game_classification::is_normal_mp_game() const
+namespace
 {
-	return this->campaign_type == CAMPAIGN_TYPE::MULTIPLAYER && this->campaign.empty();
-}
-
-namespace {
-
 // helper objects for saved_game::expand_mp_events()
 struct modevents_entry
 {

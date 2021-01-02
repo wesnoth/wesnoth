@@ -668,9 +668,9 @@ void game_config_manager::load_game_config_for_game(
 	game_config::scoped_preproc_define era(classification.era_define,
 		!classification.era_define.empty());
 	game_config::scoped_preproc_define multiplayer("MULTIPLAYER",
-		classification.campaign_type == game_classification::CAMPAIGN_TYPE::MULTIPLAYER);
+		classification.is_multiplayer());
 	game_config::scoped_preproc_define mptest("MP_TEST", cmdline_opts_.mptest &&
-		classification.campaign_type == game_classification::CAMPAIGN_TYPE::MULTIPLAYER);
+		classification.is_multiplayer());
 
 	//
 	// NOTE: these deques aren't used here, but the objects within are utilized as RAII helpers.

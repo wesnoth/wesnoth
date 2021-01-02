@@ -727,7 +727,7 @@ bool game_launcher::load_game()
 		statistics::clear_current_scenario();
 	}
 
-	if(state_.classification().campaign_type == game_classification::CAMPAIGN_TYPE::MULTIPLAYER) {
+	if(state_.classification().is_multiplayer()) {
 		state_.unify_controllers();
 	}
 

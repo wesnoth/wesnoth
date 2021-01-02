@@ -93,9 +93,7 @@ void campaign_controller::show_carryover_message(
 		}
 	}
 
-	if(persistent_teams > 0 && ((has_next_scenario && end_level.proceed_to_next_level)||
-			state_.classification().campaign_type == game_classification::CAMPAIGN_TYPE::TEST))
-	{
+	if(persistent_teams > 0 && ((has_next_scenario && end_level.proceed_to_next_level) || state_.classification().is_test())) {
 		const gamemap& map = playcontroller.get_map_const();
 		const tod_manager& tod = playcontroller.get_tod_manager_const();
 
@@ -256,8 +254,6 @@ LEVEL_RESULT campaign_controller::play_game()
 
 	state_.expand_scenario();
 
-	game_classification::CAMPAIGN_TYPE game_type = state_.classification().campaign_type;
-
 	while(state_.valid()) {
 		LEVEL_RESULT res = LEVEL_RESULT::VICTORY;
 		end_level_data end_level;
@@ -276,7 +272,7 @@ LEVEL_RESULT campaign_controller::play_game()
 			state_.expand_mp_options();
 
 #if !defined(ALWAYS_USE_MP_CONTROLLER)
-			if(game_type != game_classification::CAMPAIGN_TYPE::MULTIPLAYER || is_replay_) {
+			if(!state_.classification().is_multiplayer() || is_replay_) {
 				res = playsingle_scenario(end_level);
 				if(is_replay_) {
 					return res;
@@ -376,7 +372,7 @@ LEVEL_RESULT campaign_controller::play_game()
 
 				ng::connect_engine connect_engine(state_, false, mp_info_);
 
-				if(!connect_engine.can_start_game() || (game_config::debug && game_type == game_classification::CAMPAIGN_TYPE::MULTIPLAYER)) {
+				if(!connect_engine.can_start_game() || (game_config::debug && state_.classification().is_multiplayer())) {
 					// Opens staging dialog to allow users to make an adjustments for scenario.
 					if(!mp::goto_mp_connect(connect_engine, mp_info_ ? &mp_info_->connection : nullptr)) {
 						return LEVEL_RESULT::QUIT;
@@ -414,7 +410,7 @@ LEVEL_RESULT campaign_controller::play_game()
 		return LEVEL_RESULT::QUIT;
 	}
 
-	if(game_type == game_classification::CAMPAIGN_TYPE::SCENARIO) {
+	if(state_.classification().is_scenario()) {
 		if(preferences::delete_saves()) {
 			savegame::clean_saves(state_.classification().label);
 		}
