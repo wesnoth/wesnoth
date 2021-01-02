@@ -738,17 +738,6 @@ bool game_launcher::load_game()
 	return true;
 }
 
-void game_launcher::set_tutorial()
-{
-	state_.clear();
-	state_.classification().campaign_type = game_classification::CAMPAIGN_TYPE::TUTORIAL;
-	state_.classification().campaign_define = "TUTORIAL";
-	state_.classification().campaign = "Tutorial";
-	state_.classification().era_id = "era_default";
-
-	state_.set_carryover_sides_start(config{"next_scenario", "tutorial"});
-}
-
 void game_launcher::mark_completed_campaigns(std::vector<config>& campaigns)
 {
 	for(config& campaign : campaigns) {

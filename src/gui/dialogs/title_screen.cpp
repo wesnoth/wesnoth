@@ -316,14 +316,6 @@ void title_screen::pre_show(window& win)
 	register_button(win, "about", hotkey::HOTKEY_NULL, std::bind(&game_version::display<>));
 
 	//
-	// Tutorial
-	//
-	register_button(win, "tutorial", hotkey::TITLE_SCREEN__TUTORIAL, [this, &win]() {
-		game_.set_tutorial();
-		win.set_retval(LAUNCH_GAME);
-	});
-
-	//
 	// Campaign
 	//
 	register_button(win, "campaign", hotkey::TITLE_SCREEN__CAMPAIGN, [this, &win]() {

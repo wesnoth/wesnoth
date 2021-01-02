@@ -89,7 +89,6 @@ public:
 	bool is_loading() const;
 	void clear_loaded_game();
 	bool load_game();
-	void set_tutorial();
 	void set_test(const std::string& id);
 
 	/** Return the ID of the campaign to jump to (skipping the main menu). */
