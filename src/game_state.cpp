@@ -197,7 +197,7 @@ void game_state::init(const config& level, play_controller & pc)
 		// in case there are no teams, using player_number_ migh still cause problems later.
 	}
 
-	std::vector<team_builder_ptr> team_builders;
+	std::vector<team_builder> team_builders;
 
 	int team_num = 0;
 	for (const config &side : level.child_range("side"))
@@ -209,11 +209,11 @@ void game_state::init(const config& level, play_controller & pc)
 			}
 		}
 		++team_num;
-		team_builder_ptr tb_ptr = create_team_builder(side,
-			board_.teams(), level, board_, team_num);
-		build_team_stage_one(tb_ptr);
-		team_builders.push_back(tb_ptr);
+
+		team_builders.emplace_back(side, board_.teams(), level, board_, team_num);
+		team_builders.back().build_team_stage_one();
 	}
+
 	//Initialize the lua kernel before the units are created.
 	lua_kernel_->initialize(level);
 
@@ -223,10 +223,10 @@ void game_state::init(const config& level, play_controller & pc)
 
 		tod_manager_.resolve_random(*randomness::generator);
 
-		for(team_builder_ptr tb_ptr : team_builders)
-		{
-			build_team_stage_two(tb_ptr);
+		for(team_builder& tb : team_builders) {
+			tb.build_team_stage_two();
 		}
+
 		for(std::size_t i = 0; i < board_.teams().size(); i++) {
 			// Labels from players in your ignore list default to hidden
 			if(preferences::is_ignored(board_.teams()[i].current_player())) {
