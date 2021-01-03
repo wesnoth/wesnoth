@@ -122,7 +122,7 @@ void playsingle_controller::init_gui()
 		if (scroll_team == 0) {
 			scroll_team = 1;
 		}
-		map_location loc(gamestate().board_.map().starting_position(scroll_team));
+		map_location loc(get_map().starting_position(scroll_team));
 		if ((loc.x >= 0) && (loc.y >= 0)) {
 			gui_->scroll_to_tile(loc, game_display::WARP);
 			LOG_NG << "Found bad stored ui location " << map_start_ << " using side starting location " << loc << "\n";
@@ -382,7 +382,7 @@ void playsingle_controller::play_side_impl()
 		LOG_NG << "is human...\n";
 		// If a side is dead end the turn, but play at least side=1's
 		// turn in case all sides are dead
-		if (gamestate().board_.side_units(current_side()) == 0 && !(gamestate().board_.units().empty() && current_side() == 1)) {
+		if (gamestate().board_.side_units(current_side()) == 0 && !(get_units().empty() && current_side() == 1)) {
 			end_turn_ = END_TURN_REQUIRED;
 		}
 

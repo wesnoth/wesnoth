@@ -266,7 +266,8 @@ bool play_controller::hotkey_handler::do_execute_command(const hotkey::hotkey_co
 		std::string name = cmd.command.substr(prefixlen);
 		const map_location& hex = mouse_handler_.get_last_hex();
 
-		return gamestate().get_wml_menu_items().fire_item(name, hex, gamestate().gamedata_, gamestate(), gamestate().board_.units(), !press);
+		return gamestate().get_wml_menu_items().fire_item(
+			name, hex, gamestate().gamedata_, gamestate(), play_controller_.get_units(), !press);
 	}
 	return command_executor::do_execute_command(cmd, index, press, release);
 }
@@ -444,7 +445,7 @@ void play_controller::hotkey_handler::expand_wml_commands(std::vector<config>& i
 	std::vector<config> newitems;
 
 	gamestate().get_wml_menu_items().get_items(mouse_handler_.get_last_hex(), wml_commands_, newitems,
-		gamestate(), gamestate().gamedata_, gamestate().board_.units());
+		gamestate(), gamestate().gamedata_, play_controller_.get_units());
 
 	// Replace this placeholder entry with available menu items.
 	items.insert(pos, newitems.begin(), newitems.end());

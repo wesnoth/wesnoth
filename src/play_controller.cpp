@@ -364,7 +364,7 @@ void play_controller::fire_prestart()
 
 	// Fire these right before prestart events, to catch only the units sides
 	// have started with.
-	for (const unit& u : gamestate().board_.units()) {
+	for(const unit& u : get_units()) {
 		pump().fire("unit_placed", map_location(u.get_location()));
 	}
 
@@ -622,8 +622,8 @@ bool play_controller::enemies_visible() const
 		return true;
 
 	// See if any enemies are visible
-	for (const unit& u : gamestate().board_.units()) {
-		if (current_team().is_enemy(u.side()) && !gui_->fogged(u.get_location())) {
+	for(const unit& u : get_units()) {
+		if(current_team().is_enemy(u.side()) && !gui_->fogged(u.get_location())) {
 			return true;
 		}
 	}
@@ -672,7 +672,7 @@ void play_controller::tab()
 	switch(mode) {
 	case gui::TEXTBOX_SEARCH:
 	{
-		for (const unit& u : gamestate().board_.units()){
+		for(const unit& u : get_units()) {
 			const map_location& loc = u.get_location();
 			if(!gui_->fogged(loc) &&
 					!(get_teams()[gui_->viewing_team()].is_enemy(u.side()) && u.invisible(loc)))
