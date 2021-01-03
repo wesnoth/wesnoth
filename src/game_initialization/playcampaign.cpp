@@ -39,7 +39,6 @@
 #include "persist_manager.hpp"
 #include "playmp_controller.hpp"
 #include "preferences/game.hpp"
-#include "resources.hpp"
 #include "saved_game.hpp"
 #include "savegame.hpp"
 #include "sound.hpp"
@@ -58,13 +57,11 @@ static lg::log_domain log_enginerefac("enginerefac");
 void campaign_controller::show_carryover_message(
 	playsingle_controller& playcontroller, const end_level_data& end_level, const LEVEL_RESULT res)
 {
-	assert(resources::gameboard);
-
-	bool has_next_scenario
-		= !resources::gamedata->next_scenario().empty() && resources::gamedata->next_scenario() != "null";
+	// We need to write the carryover amount to the team that's why we need non const
+	std::vector<team>& teams = playcontroller.get_teams();
 
 	// maybe this can be the case for scenario that only contain a story and end during the prestart event ?
-	if(resources::gameboard->teams().size() < 1) {
+	if(teams.size() < 1) {
 		return;
 	}
 
@@ -83,8 +80,8 @@ void campaign_controller::show_carryover_message(
 		report << _("You have been defeated!");
 	}
 
-	// We need to write the carryover amount to the team that's why we need non const
-	std::vector<team>& teams = resources::gameboard->teams();
+	const std::string& next_scenario = playcontroller.gamestate().get_game_data()->next_scenario();
+	const bool has_next_scenario = !next_scenario.empty() && next_scenario != "null";
 
 	int persistent_teams = 0;
 	for(const team& t : teams) {
