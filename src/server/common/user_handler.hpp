@@ -83,17 +83,17 @@ public:
 	/** Ban type values */
 	enum BAN_TYPE
 	{
-		BAN_NONE = 0,	/**< Not a ban */
-		BAN_IP = 1, 	/**< IP address ban */
-		BAN_USER = 2,	/**< User account/name ban */
-		BAN_EMAIL = 3,	/**< Account email address ban */
+		BAN_NONE = 0,	/** Not a ban */
+		BAN_IP = 1, 	/** IP address ban */
+		BAN_USER = 2,	/** User account/name ban */
+		BAN_EMAIL = 3,	/** Account email address ban */
 	};
 
 	/** Ban status description */
 	struct ban_info
 	{
-		BAN_TYPE type;			/**< Ban type */
-		std::time_t duration;	/**< Ban duration (0 if permanent) */
+		BAN_TYPE type;			/** Ban type */
+		std::time_t duration;	/** Ban duration (0 if permanent) */
 
 		ban_info()
 			: type(BAN_NONE)
@@ -131,13 +131,6 @@ public:
 	 * If not needed let it return and empty string or whatever you feel like.
 	 */
 	virtual std::string extract_salt(const std::string& username) = 0;
-
-	/**
-	 * Does this user_handler want passwords passed encrypted using phpbb's algorithm?
-	 *
-	 * Let it return true if it does and false if it does not.
-	 */
-	virtual bool use_phpbb_encryption() const = 0;
 
 	virtual std::string get_uuid() = 0;
 	virtual std::string get_tournaments() = 0;

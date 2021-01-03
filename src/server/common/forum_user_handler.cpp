@@ -139,12 +139,6 @@ void fuh::set_is_moderator(const std::string& name, const bool& is_moderator) {
 
 fuh::ban_info fuh::user_is_banned(const std::string& name, const std::string& addr)
 {
-	//
-	// NOTE: glob IP and email address bans are NOT supported yet since they
-	//       require a different kind of query that isn't supported by our
-	//       prepared SQL statement API right now. However, they are basically
-	//       never used on forums.wesnoth.org, so this shouldn't be a problem
-	//       for the time being.
 	ban_check b = conn_.get_ban_info(name, addr);
 	switch(b.get_ban_type())
 	{

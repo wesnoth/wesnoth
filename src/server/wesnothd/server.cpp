@@ -980,7 +980,7 @@ void server::send_password_request(socket_ptr socket,
 		: user_handler_->create_unsecure_nonce()};
 
 	std::string password_challenge = salt + nonce;
-	if(user_handler_->use_phpbb_encryption() && salt.empty()) {
+	if(salt.empty()) {
 		async_send_error(socket,
 			"Even though your nickname is registered on this server you "
 			"cannot log in due to an error in the hashing algorithm. "
@@ -995,7 +995,7 @@ void server::send_password_request(socket_ptr socket,
 	simple_wml::node& e = doc.root().add_child("error");
 	e.set_attr_dup("message", msg.c_str());
 	e.set_attr("password_request", "yes");
-	e.set_attr("phpbb_encryption", user_handler_->use_phpbb_encryption() ? "yes" : "no");
+	e.set_attr("phpbb_encryption", "yes");
 	e.set_attr_dup("salt", password_challenge.c_str());
 	e.set_attr("force_confirmation", force_confirmation ? "yes" : "no");
 
