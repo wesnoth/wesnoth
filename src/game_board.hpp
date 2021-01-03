@@ -45,7 +45,6 @@ namespace events {
  * code at all points in the engine which modify the relevant data.
  *
  **/
-
 class game_board : public display_context
 {
 	std::vector<team> teams_;
@@ -54,9 +53,6 @@ class game_board : public display_context
 	std::unique_ptr<gamemap> map_;
 	n_unit::id_manager unit_id_manager_;
 	unit_map units_;
-
-	//TODO: Remove these when we have refactored enough to make it possible.
-	friend class game_lua_kernel;
 
 	/**
 	 * Temporary unit move structs:

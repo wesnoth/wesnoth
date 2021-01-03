@@ -1070,7 +1070,7 @@ int game_lua_kernel::intf_terrain_mask(lua_State *L)
 
 	gamemap mask_map("");
 	mask_map.read(t_str, false);
-	board().map_->overlay(mask_map, loc, rules, is_odd, ignore_special_locations);
+	board().map().overlay(mask_map, loc, rules, is_odd, ignore_special_locations);
 
 	for(team& t : board().teams()) {
 		t.fix_villages(board().map());
@@ -4160,11 +4160,11 @@ game_board & game_lua_kernel::board() {
 }
 
 unit_map & game_lua_kernel::units() {
-	return game_state_.board_.units_;
+	return game_state_.board_.units();
 }
 
 std::vector<team> & game_lua_kernel::teams() {
-	return game_state_.board_.teams_;
+	return game_state_.board_.teams();
 }
 
 const gamemap & game_lua_kernel::map() const {
