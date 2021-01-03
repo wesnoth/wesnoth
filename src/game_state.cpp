@@ -199,6 +199,11 @@ void game_state::init(const config& level, play_controller & pc)
 
 	std::vector<team_builder> team_builders;
 
+	// Note this isn't strictly necessary since team_builder declares a move constructor which will
+	// be used if a copy is needed (see the class documentation for why a copy causes crashes), but
+	// it can't hurt to be doubly safe.
+	team_builders.reserve(board_.teams().size());
+
 	int team_num = 0;
 	for (const config &side : level.child_range("side"))
 	{

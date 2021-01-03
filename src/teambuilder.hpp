@@ -30,6 +30,16 @@ class team_builder
 public:
 	team_builder(const config& side_cfg, std::vector<team>& teams, const config& level, game_board& board, int num);
 
+	/**
+	 * Very important! Delete copy constructor and declare a move constructor.
+	 *
+	 * @c `unit_configs_` may hold a pointer to a config object stored in @c `leader_configs_`.
+	 * In that case, if a copy happens (such as when doing in-place construction that requires
+	 * the vector be resized), these pointers will become invalid and lead to a crash.
+	 */
+	team_builder(const team_builder&) = delete;
+	team_builder(team_builder&&) noexcept = default;
+
 	/** Handles the first stage of team initialization (everything except unit placement). */
 	void build_team_stage_one();
 
