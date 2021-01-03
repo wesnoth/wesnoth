@@ -162,6 +162,11 @@ public:
 		return gamestate().board_.units();
 	}
 
+	unit_map& get_units()
+	{
+		return gamestate().board_.units();
+	}
+
 	const gamemap& get_map() const
 	{
 		return gamestate().board_.map();

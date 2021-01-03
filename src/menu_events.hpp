@@ -123,9 +123,6 @@ public:
 	game_state& gamestate() const;
 	game_data& gamedata();
 	game_board& board() const;
-	unit_map& units();
-	std::vector<team>& teams() const;
-	const gamemap& map() const;
 
 protected:
 	void add_chat_message(const std::time_t& time,
