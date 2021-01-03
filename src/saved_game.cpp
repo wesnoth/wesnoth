@@ -140,7 +140,6 @@ saved_game::saved_game(config cfg)
 	, starting_point_()
 	, replay_data_()
 	, skip_story_(false)
-
 {
 	set_data(cfg);
 }
@@ -218,14 +217,13 @@ void saved_game::set_defaults()
 	const bool is_loaded_game = starting_point_type_ != starting_point::SCENARIO;
 	const bool is_multiplayer_tag = classification().get_tagname() == "multiplayer";
 	const game_config_view& game_config = game_config_manager::get()->game_config();
+
 	static const std::vector<std::string> team_defaults {
 		"carryover_percentage",
 		"carryover_add",
 	};
 
-
-	if (const config& campaign = game_config.find_child("campaign", "id", classification_.campaign))
-	{
+	if(const config& campaign = game_config.find_child("campaign", "id", classification_.campaign)) {
 		bool require_campaign = campaign["require_campaign"].to_bool(true);
 		starting_point_["require_scenario"] = require_campaign;
 	}
@@ -452,8 +450,7 @@ static void inherit_scenario(config& scenario, config& map_scenario)
 		if(side_to) {
 			side_to.inherit_attributes(side_from);
 			side_to.append_children(side_from);
-		}
-		else {
+		} else {
 			scenario.add_child("side", side_from);
 		}
 	}
@@ -463,15 +460,14 @@ void saved_game::expand_map_file(config& scenario)
 {
 	if(scenario["map_data"].empty() && !scenario["map_file"].empty()) {
 		std::string map_data = filesystem::read_map(scenario["map_file"]);
-		if (map_data.find("map_data") != std::string::npos) {
-			//we have a scenario, gnerated by the editor
+		if(map_data.find("map_data") != std::string::npos) {
+			// we have a scenario, gnerated by the editor
 			config map_data_cfg;
 			read(map_data_cfg, map_data);
 			inherit_scenario(scenario, map_data_cfg);
-		}
-		else {
-			//we have an plain map_data file
-			scenario["map_data"]= map_data;
+		} else {
+			// we have an plain map_data file
+			scenario["map_data"] = map_data;
 		}
 	}
 }
@@ -786,8 +782,8 @@ void saved_game::set_data(config& cfg)
 		statistics::read_stats(stats);
 	}
 
-	classification_ = game_classification(cfg);
-	mp_settings_ = mp_game_settings(cfg.child_or_empty("multiplayer"));
+	classification_ = { cfg };
+	mp_settings_ = { cfg.child_or_empty("multiplayer") };
 
 	cfg.clear();
 }
@@ -795,10 +791,10 @@ void saved_game::set_data(config& cfg)
 void saved_game::clear()
 {
 	carryover_.clear();
-	classification_ = game_classification();
+	classification_ = {};
 	has_carryover_expanded_ = false;
-	mp_settings_ = mp_game_settings();
-	replay_data_.swap(replay_recorder_base());
+	mp_settings_ = {};
+	replay_data_.swap({});
 	replay_start_.clear();
 	starting_point_.clear();
 	starting_point_type_ = starting_point::NONE;
