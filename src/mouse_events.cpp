@@ -1380,7 +1380,7 @@ std::set<map_location> mouse_handler::get_adj_enemies(const map_location& loc, i
 {
 	std::set<map_location> res;
 
-	const team& uteam = pc_.gamestate().board_.teams_[side - 1];
+	const team& uteam = pc_.get_teams()[side - 1];
 
 	adjacent_loc_array_t adj;
 	get_adjacent_tiles(loc, adj.data());
@@ -1411,7 +1411,7 @@ void mouse_handler::show_attack_options(const unit_map::const_iterator& u)
 
 	// Get the teams involved.
 	const team& cur_team = current_team();
-	const team& u_team = pc_.gamestate().board_.teams_[u->side() - 1];
+	const team& u_team = pc_.get_teams()[u->side() - 1];
 
 	// Check each adjacent hex.
 	adjacent_loc_array_t adj;
@@ -1514,17 +1514,17 @@ void mouse_handler::set_current_paths(const pathfind::paths& new_paths)
 
 team& mouse_handler::viewing_team()
 {
-	return pc_.gamestate().board_.teams_[gui().viewing_team()];
+	return pc_.get_teams()[gui().viewing_team()];
 }
 
 const team& mouse_handler::viewing_team() const
 {
-	return pc_.gamestate().board_.teams()[gui().viewing_team()];
+	return pc_.get_teams()[gui().viewing_team()];
 }
 
 team& mouse_handler::current_team()
 {
-	return pc_.gamestate().board_.teams_[side_num_ - 1];
+	return pc_.get_teams()[side_num_ - 1];
 }
 
 mouse_handler* mouse_handler::singleton_ = nullptr;

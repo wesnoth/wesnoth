@@ -160,7 +160,7 @@ void playsingle_controller::play_scenario_main_loop()
 	LOG_NG << "starting main loop\n" << (SDL_GetTicks() - ticks()) << "\n";
 
 	ai_testing::log_game_start();
-	if(gamestate().board_.teams().empty())
+	if(get_teams().empty())
 	{
 		ERR_NG << "Playing game with 0 teams." << std::endl;
 	}
@@ -193,10 +193,10 @@ void playsingle_controller::play_scenario_main_loop()
 			//    game (luckily this is never the case for autosaves).
 			//
 			boost::dynamic_bitset<> local_players;
-			local_players.resize(gamestate().board_.teams().size(), true);
+			local_players.resize(get_teams().size(), true);
 			//Preserve side controllers, because we won't get the side controoller updates again when replaying.
 			for(std::size_t i = 0; i < local_players.size(); ++i) {
-				local_players[i] = gamestate().board_.teams()[i].is_local();
+				local_players[i] = get_teams()[i].is_local();
 			}
 			if(ex.start_replay) {
 				// MP "Back to turn"
@@ -278,7 +278,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(const config& level)
 
 		const end_level_data& end_level = get_end_level_data_const();
 
-		if (gamestate().board_.teams().empty())
+		if (get_teams().empty())
 		{
 			//store persistent teams
 			saved_game_.set_snapshot(config());
@@ -622,8 +622,8 @@ void playsingle_controller::force_end_turn(){
 
 void playsingle_controller::check_objectives()
 {
-	if (!gamestate().board_.teams().empty()) {
-		const team &t = gamestate().board_.teams()[gui_->viewing_team()];
+	if (!get_teams().empty()) {
+		const team &t = get_teams()[gui_->viewing_team()];
 
 		if (!is_regular_game_end() && !is_browsing() && t.objectives_changed()) {
 			show_objectives();
@@ -636,7 +636,7 @@ void playsingle_controller::maybe_linger()
 {
 	// mouse_handler expects at least one team for linger mode to work.
 	assert(is_regular_game_end());
-	if (get_end_level_data_const().transient.linger_mode && !gamestate().board_.teams().empty()) {
+	if (get_end_level_data_const().transient.linger_mode && !get_teams().empty()) {
 		linger();
 	}
 }
