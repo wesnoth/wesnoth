@@ -782,7 +782,7 @@ void saved_game::set_data(config& cfg)
 		statistics::read_stats(stats);
 	}
 
-	classification_ = { cfg };
+	classification_ = game_classification{ cfg };
 	mp_settings_ = { cfg.child_or_empty("multiplayer") };
 
 	cfg.clear();
