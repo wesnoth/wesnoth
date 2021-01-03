@@ -38,7 +38,7 @@ public:
 	 * the vector be resized), these pointers will become invalid and lead to a crash.
 	 */
 	team_builder(const team_builder&) = delete;
-	team_builder(team_builder&&) noexcept = default;
+	team_builder(team_builder&&) = default;
 
 	/** Handles the first stage of team initialization (everything except unit placement). */
 	void build_team_stage_one();
