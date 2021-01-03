@@ -134,11 +134,7 @@ public:
 		gamestate().end_level_data_.reset();
 	}
 	bool is_regular_game_end() const {
-#if defined HAVE_CXX17 || BOOST_VERSION >= 106800
-		return gamestate().end_level_data_.has_value();
-#else
-		return gamestate().end_level_data_ != utils::nullopt;
-#endif
+		return utils::has_optional_value(gamestate().end_level_data_);
 	}
 	const end_level_data& get_end_level_data_const() const {
 		return *gamestate().end_level_data_;
