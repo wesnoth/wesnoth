@@ -215,7 +215,7 @@ void game_state::init(const config& level, play_controller & pc)
 		}
 		++team_num;
 
-		team_builders.emplace_back(side, board_.teams(), level, board_, team_num);
+		team_builders.emplace_back(side, board_.get_team(team_num), level, board_, team_num);
 		team_builders.back().build_team_stage_one();
 	}
 

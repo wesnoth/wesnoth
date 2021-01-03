@@ -28,7 +28,7 @@ class game_board;
 class team_builder
 {
 public:
-	team_builder(const config& side_cfg, std::vector<team>& teams, const config& level, game_board& board, int num);
+	team_builder(const config& side_cfg, team& to_build, const config& level, game_board& board, int num);
 
 	/**
 	 * Very important! Delete copy constructor and declare a move constructor.
@@ -57,8 +57,7 @@ private:
 	std::set<std::string> seen_ids_;
 	int side_;
 	const config& side_cfg_;
-	team* t_;
-	std::vector<team>& teams_;
+	team& team_;
 	std::vector<const config*> unit_configs_;
 
 	void log_step(const char* s) const;

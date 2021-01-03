@@ -34,7 +34,7 @@ static lg::log_domain log_engine_tc("engine/team_construction");
 #define LOG_NG_TC LOG_STREAM(info, log_engine_tc)
 #define DBG_NG_TC LOG_STREAM(debug, log_engine_tc)
 
-team_builder::team_builder(const config& side_cfg, std::vector<team>& teams, const config& level, game_board& board, int num)
+team_builder::team_builder(const config& side_cfg, team& to_build, const config& level, game_board& board, int num)
 	: gold_info_ngold_(0)
 	, leader_configs_()
 	, level_(level)
@@ -43,8 +43,7 @@ team_builder::team_builder(const config& side_cfg, std::vector<team>& teams, con
 	, seen_ids_()
 	, side_(num)
 	, side_cfg_(side_cfg)
-	, t_(nullptr)
-	, teams_(teams)
+	, team_(to_build)
 	, unit_configs_()
 {
 }
@@ -59,8 +58,6 @@ void team_builder::build_team_stage_one()
 
 	// builds the team for the given side
 	new_team();
-
-	assert(t_ != nullptr);
 
 	// set team objectives if necessary
 	objectives();
@@ -93,7 +90,6 @@ void team_builder::init()
 		ERR_NG_TC << "found invalid side=" << side_cfg_["side"].to_int(side_) << " in definition of side number " << side_ << std::endl;
 	}
 
-	t_ = &teams_[side_ - 1];
 	log_step("init");
 
 	// track whether a [player] tag with persistence information exists (in addition to the [side] tag)
@@ -121,7 +117,7 @@ void team_builder::gold()
 void team_builder::new_team()
 {
 	log_step("new team");
-	t_->build(side_cfg_, board_.map(), gold_info_ngold_);
+	team_.build(side_cfg_, board_.map(), gold_info_ngold_);
 }
 
 void team_builder::objectives()
@@ -130,8 +126,8 @@ void team_builder::objectives()
 	// If this team has no objectives, set its objectives
 	// to the level-global "objectives"
 	// this is only used by the default mp 'Defeat enemy leader' objectives
-	if(t_->objectives().empty()) {
-		t_->set_objectives(level_["objectives"], false);
+	if(team_.objectives().empty()) {
+		team_.set_objectives(level_["objectives"], false);
 	}
 }
 
@@ -147,7 +143,7 @@ void team_builder::previous_recruits()
 	if(const config::attribute_value* v = side_cfg_.get("previous_recruits")) {
 		for(const std::string& rec : utils::split(*v)) {
 			DBG_NG_TC << "adding previous recruit: " << rec << '\n';
-			t_->add_recruit(rec);
+			team_.add_recruit(rec);
 		}
 	}
 }
@@ -179,7 +175,7 @@ void team_builder::handle_unit(const config& u, const char* origin)
 			// seen before
 			config u_tmp = u;
 			u_tmp["side"] = std::to_string(side_);
-			t_->recall_list().add(unit::create(u_tmp, true));
+			team_.recall_list().add(unit::create(u_tmp, true));
 		} else {
 			// not seen before
 			unit_configs_.push_back(&u);
@@ -251,7 +247,7 @@ void team_builder::prepare_units()
 void team_builder::place_units()
 {
 	log_step("place units");
-	unit_creator uc(*t_, board_.map().starting_position(side_), &board_);
+	unit_creator uc(team_, board_.map().starting_position(side_), &board_);
 	uc.allow_add_to_recall(true)
 		.allow_discover(true)
 		.allow_get_village(false)
