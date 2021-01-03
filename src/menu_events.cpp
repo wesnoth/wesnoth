@@ -1471,7 +1471,7 @@ void console_handler::do_droid()
 	std::transform(action.begin(), action.end(), action.begin(), tolower);
 	// default to the current side if empty
 	const unsigned int side = side_s.empty() ? team_num_ : lexical_cast_default<unsigned int>(side_s);
-	const bool is_your_turn = menu_handler_.pc_.current_side() == static_cast<int>(display::get_singleton()->viewing_side());
+	const bool is_your_turn = menu_handler_.pc_.current_side() == static_cast<int>(menu_handler_.gui_->viewing_side());
 
 	utils::string_map symbols;
 	symbols["side"] = std::to_string(side);
