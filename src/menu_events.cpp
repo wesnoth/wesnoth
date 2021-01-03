@@ -122,12 +122,12 @@ game_board& menu_handler::board() const
 
 unit_map& menu_handler::units()
 {
-	return gamestate().board_.units_;
+	return gamestate().board_.units();
 }
 
 std::vector<team>& menu_handler::teams() const
 {
-	return gamestate().board_.teams_;
+	return gamestate().board_.teams();
 }
 
 const gamemap& menu_handler::map() const

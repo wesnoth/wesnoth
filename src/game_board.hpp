@@ -56,8 +56,6 @@ class game_board : public display_context
 	unit_map units_;
 
 	//TODO: Remove these when we have refactored enough to make it possible.
-	friend class events::mouse_handler;
-	friend class events::menu_handler;
 	friend class game_lua_kernel;
 
 	/**

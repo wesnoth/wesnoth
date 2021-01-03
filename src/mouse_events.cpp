@@ -624,7 +624,7 @@ unit_map::iterator mouse_handler::find_unit(const map_location& hex)
 		return it;
 	}
 
-	return pc_.gamestate().board_.units_.end();
+	return pc_.gamestate().board_.units().end();
 }
 
 unit_map::const_iterator mouse_handler::find_unit(const map_location& hex) const
@@ -905,8 +905,7 @@ void mouse_handler::move_action(bool browse)
 
 					// block where we temporary move the unit
 					{
-						temporary_unit_mover temp_mover(
-								pc_.gamestate().board_.units_, src, attack_from, itor->move_left);
+						temporary_unit_mover temp_mover(pc_.gamestate().board_.units(), src, attack_from, itor->move_left);
 						choice = show_attack_dialog(attack_from, clicked_u->get_location());
 					}
 
@@ -1083,7 +1082,7 @@ void mouse_handler::select_hex(const map_location& hex, const bool browse, const
 		pathfind::paths clicked_location;
 		clicked_location.destinations.insert(hex);
 
-		for(unit_map::iterator u = pc_.gamestate().board_.units_.begin(); u != pc_.gamestate().board_.units_.end();
+		for(unit_map::iterator u = pc_.gamestate().board_.units().begin(); u != pc_.gamestate().board_.units().end();
 				++u) {
 			bool invisible = u->invisible(u->get_location());
 
@@ -1100,7 +1099,7 @@ void mouse_handler::select_hex(const map_location& hex, const bool browse, const
 
 		gui_->highlight_another_reach(reaching_unit_locations);
 	} else {
-		if(!pc_.gamestate().board_.units_.find(last_hex_)) {
+		if(!pc_.gamestate().board_.units().find(last_hex_)) {
 			unselected_reach_ = gui_->unhighlight_reach();
 		}
 
@@ -1247,7 +1246,7 @@ int mouse_handler::fill_weapon_choices(
 	for(unsigned int i = 0; i < attacker->attacks().size(); i++) {
 		// skip weapons with attack_weight=0
 		if(attacker->attacks()[i].attack_weight() > 0) {
-			battle_context bc(pc_.gamestate().board_.units_, attacker->get_location(), defender->get_location(), i);
+			battle_context bc(pc_.gamestate().board_.units(), attacker->get_location(), defender->get_location(), i);
 
 			// Don't include if the attacker's weapon has at least one active "disable" special.
 			if(bc.get_attacker_stats().disable) {
@@ -1270,8 +1269,8 @@ int mouse_handler::show_attack_dialog(const map_location& attacker_loc, const ma
 {
 	game_board& board = pc_.gamestate().board_;
 
-	unit_map::iterator attacker = board.units_.find(attacker_loc);
-	unit_map::iterator defender = board.units_.find(defender_loc);
+	unit_map::iterator attacker = board.units().find(attacker_loc);
+	unit_map::iterator defender = board.units().find(defender_loc);
 
 	if(!attacker || !defender) {
 		ERR_NG << "One fighter is missing, can't attack";
