@@ -168,7 +168,7 @@ void game_state::place_sides_in_preferred_locations(const config& level)
 		if(placed.count(i->side) == 0 && positions_taken.count(i->pos) == 0) {
 			placed.insert(i->side);
 			positions_taken.insert(i->pos);
-			board_.map_->set_starting_position(i->side,i->pos);
+			board_.map().set_starting_position(i->side,i->pos);
 			LOG_NG << "placing side " << i->side << " at " << i->pos << std::endl;
 		}
 	}
@@ -190,9 +190,9 @@ void game_state::init(const config& level, play_controller & pc)
 
 	LOG_NG << "initialized teams... "    << (SDL_GetTicks() - pc.ticks()) << std::endl;
 
-	board_.teams_.resize(level.child_count("side"));
-	if (player_number_ > static_cast<int>(board_.teams_.size())) {
-		ERR_NG << "invalid player number " <<  player_number_ << " #sides=" << board_.teams_.size() << "\n";
+	board_.teams().resize(level.child_count("side"));
+	if (player_number_ > static_cast<int>(board_.teams().size())) {
+		ERR_NG << "invalid player number " <<  player_number_ << " #sides=" << board_.teams().size() << "\n";
 		player_number_ = 1;
 		// in case there are no teams, using player_number_ migh still cause problems later.
 	}
@@ -210,7 +210,7 @@ void game_state::init(const config& level, play_controller & pc)
 		}
 		++team_num;
 		team_builder_ptr tb_ptr = create_team_builder(side,
-			board_.teams_, level, board_, team_num);
+			board_.teams(), level, board_, team_num);
 		build_team_stage_one(tb_ptr);
 		team_builders.push_back(tb_ptr);
 	}
@@ -227,9 +227,9 @@ void game_state::init(const config& level, play_controller & pc)
 		{
 			build_team_stage_two(tb_ptr);
 		}
-		for(std::size_t i = 0; i < board_.teams_.size(); i++) {
+		for(std::size_t i = 0; i < board_.teams().size(); i++) {
 			// Labels from players in your ignore list default to hidden
-			if(preferences::is_ignored(board_.teams_[i].current_player())) {
+			if(preferences::is_ignored(board_.teams()[i].current_player())) {
 				std::string label_cat = "side:" + std::to_string(i + 1);
 				board_.hidden_label_categories().push_back(label_cat);
 			}
@@ -451,11 +451,11 @@ private:
 
 void game_state::add_side_wml(config cfg)
 {
-	cfg["side"] = board_.teams_.size() + 1;
+	cfg["side"] = board_.teams().size() + 1;
 	//if we want to also allow setting the controller we must update the server code.
 	cfg["controller"] = "null";
 	//TODO: is this it? are there caches which must be cleared?
-	board_.teams_.emplace_back();
-	board_.teams_.back().build(cfg, board_.map(), cfg["gold"].to_int());
+	board_.teams().emplace_back();
+	board_.teams().back().build(cfg, board_.map(), cfg["gold"].to_int());
 	config choice = synced_context::ask_server_choice(add_side_wml_choice());
 }

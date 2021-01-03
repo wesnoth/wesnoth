@@ -394,7 +394,7 @@ void play_controller::fire_start()
 	check_objectives();
 	// prestart and start events may modify the initial gold amount,
 	// reflect any changes.
-	for (team& tm : gamestate().board_.teams_)
+	for (team& tm : get_teams())
 	{
 		tm.set_start_gold(tm.gold());
 	}
@@ -834,7 +834,7 @@ void play_controller::process_keyup_event(const SDL_Event& event)
 				unit_movement_resetter move_reset(*u, u->side() != current_side());
 
 				mouse_handler_.set_current_paths(pathfind::paths(*u, false,
-				                       true, gamestate().board_.teams_[gui_->viewing_team()],
+				                       true, get_teams()[gui_->viewing_team()],
 				                       mouse_handler_.get_path_turns()));
 
 				gui_->highlight_reach(mouse_handler_.current_paths());

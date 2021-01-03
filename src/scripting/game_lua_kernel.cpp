@@ -2438,7 +2438,7 @@ static int intf_unit_movement_cost(lua_State *L)
 	t_translation::terrain_code t;
 	map_location loc;
 	if(luaW_tolocation(L, 2, loc)) {
-		t = resources::gameboard->map()[loc];
+		t = static_cast<const game_board*>(resources::gameboard)->map()[loc];
 	} else if(lua_isstring(L, 2)) {
 		char const *m = luaL_checkstring(L, 2);
 		t = t_translation::read_terrain_code(m);
@@ -2459,7 +2459,7 @@ static int intf_unit_vision_cost(lua_State *L)
 	t_translation::terrain_code t;
 	map_location loc;
 	if(luaW_tolocation(L, 2, loc)) {
-		t = resources::gameboard->map()[loc];
+		t = static_cast<const game_board*>(resources::gameboard)->map()[loc];
 	} else if(lua_isstring(L, 2)) {
 		char const *m = luaL_checkstring(L, 2);
 		t = t_translation::read_terrain_code(m);
@@ -2480,7 +2480,7 @@ static int intf_unit_jamming_cost(lua_State *L)
 	t_translation::terrain_code t;
 	map_location loc;
 	if(luaW_tolocation(L, 2, loc)) {
-		t = resources::gameboard->map()[loc];
+		t = static_cast<const game_board*>(resources::gameboard)->map()[loc];
 	} else if(lua_isstring(L, 2)) {
 		char const *m = luaL_checkstring(L, 2);
 		t = t_translation::read_terrain_code(m);
@@ -2501,7 +2501,7 @@ static int intf_unit_defense(lua_State *L)
 	t_translation::terrain_code t;
 	map_location loc;
 	if(luaW_tolocation(L, 2, loc)) {
-		t = resources::gameboard->map()[loc];
+		t = static_cast<const game_board*>(resources::gameboard)->map()[loc];
 	} else if(lua_isstring(L, 2)) {
 		char const *m = luaL_checkstring(L, 2);
 		t = t_translation::read_terrain_code(m);

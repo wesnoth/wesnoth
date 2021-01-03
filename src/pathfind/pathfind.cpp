@@ -674,7 +674,7 @@ marked_route mark_route(const plain_route &rt, bool update_move_cost)
 
 		// move_cost of the next step is irrelevant for the last step
 		assert(last_step || resources::gameboard->map().on_board(*(i+1)));
-		const int move_cost = last_step ? 0 : u.movement_cost((resources::gameboard->map())[*(i+1)]);
+		const int move_cost = last_step ? 0 : u.movement_cost(static_cast<const game_board*>(resources::gameboard)->map()[*(i+1)]);
 
 		const team& viewing_team = resources::gameboard->teams()[display::get_singleton()->viewing_team()];
 

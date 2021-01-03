@@ -48,7 +48,6 @@ namespace events {
 
 class game_board : public display_context
 {
-
 	std::vector<team> teams_;
 	std::vector<std::string> labels_;
 
@@ -57,10 +56,8 @@ class game_board : public display_context
 	unit_map units_;
 
 	//TODO: Remove these when we have refactored enough to make it possible.
-	friend class play_controller;
 	friend class events::mouse_handler;
 	friend class events::menu_handler;
-	friend class game_state;
 	friend class game_lua_kernel;
 
 	/**
@@ -106,6 +103,11 @@ public:
 	}
 
 	virtual const gamemap& map() const override
+	{
+		return *map_;
+	}
+
+	gamemap& map()
 	{
 		return *map_;
 	}
