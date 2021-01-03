@@ -1471,7 +1471,7 @@ void console_handler::do_droid()
 	std::transform(action.begin(), action.end(), action.begin(), tolower);
 	// default to the current side if empty
 	const unsigned int side = side_s.empty() ? team_num_ : lexical_cast_default<unsigned int>(side_s);
-	const bool is_your_turn = resources::controller->current_side() == static_cast<int>(display::get_singleton()->viewing_side());
+	const bool is_your_turn = menu_handler_.pc_.current_side() == static_cast<int>(display::get_singleton()->viewing_side());
 
 	utils::string_map symbols;
 	symbols["side"] = std::to_string(side);
@@ -1670,9 +1670,10 @@ void console_handler::do_control()
 	try {
 		side_num = lexical_cast<unsigned int>(side);
 	} catch(const bad_lexical_cast&) {
-		const auto it_t = std::find_if(
-				resources::gameboard->teams().begin(), resources::gameboard->teams().end(), save_id_matches(side));
-		if(it_t == resources::gameboard->teams().end()) {
+		const auto& teams = menu_handler_.pc_.get_teams();
+		const auto it_t = std::find_if(teams.begin(), teams.end(), save_id_matches(side));
+
+		if(it_t == teams.end()) {
 			utils::string_map symbols;
 			symbols["side"] = side;
 			command_failed(VGETTEXT("Can't change control of invalid side: '$side'.", symbols));
@@ -1964,7 +1965,7 @@ void console_handler::do_inspect()
 {
 	vconfig cfg = vconfig::empty_vconfig();
 	gui2::dialogs::gamestate_inspector::display(
-		resources::gamedata->get_variables(), *resources::game_events, *resources::gameboard);
+		menu_handler_.gamedata().get_variables(), *resources::game_events, menu_handler_.board());
 }
 
 void console_handler::do_control_dialog()
