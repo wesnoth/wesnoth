@@ -29,7 +29,7 @@ class game_classification
 {
 public:
 	game_classification() = default;
-	explicit game_classification(const config& cfg);
+	game_classification(const config& cfg);
 
 	std::string label;                               /**< Name of the game (e.g. name of save file). */
 	std::string version;                             /**< Version game was created with. */
