@@ -107,7 +107,7 @@ std::string fuh::extract_salt(const std::string& name) {
 }
 
 void fuh::user_logged_in(const std::string& name) {
-	set_lastlogin(name, std::time(nullptr));
+	conn_.write_user_int("user_lastvisit", name, static_cast<int>(std::time(nullptr)));
 }
 
 bool fuh::user_exists(const std::string& name) {
@@ -197,10 +197,6 @@ std::time_t fuh::get_lastlogin(const std::string& user) {
 
 std::time_t fuh::get_registrationdate(const std::string& user) {
 	return std::time_t(conn_.get_user_int(db_users_table_, "user_regdate", user));
-}
-
-void fuh::set_lastlogin(const std::string& user, const std::time_t& lastlogin) {
-	conn_.write_user_int("user_lastvisit", user, static_cast<int>(lastlogin));
 }
 
 std::string fuh::get_uuid(){

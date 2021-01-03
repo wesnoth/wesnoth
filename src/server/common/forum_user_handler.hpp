@@ -52,7 +52,7 @@ public:
 	std::string extract_salt(const std::string& name);
 
 	/**
-	 * Public wrapper function of @ref set_lastlogin().
+	 * Sets the last login time to the current time.
 	 * 
 	 * @param name The player's username.
 	 */
@@ -214,14 +214,6 @@ private:
 	 * @return The player's forum registration date.
 	 */
 	std::time_t get_registrationdate(const std::string& user);
-
-	/**
-	 * Sets the last login time to the current time.
-	 * 
-	 * @param user The player's username.
-	 * @param lastlogin The time to set as the player's last login.
-	 */
-	void set_lastlogin(const std::string& user, const std::time_t& lastlogin);
 
 	/**
 	 * @param name The player's username.

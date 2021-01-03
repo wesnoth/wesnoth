@@ -190,16 +190,7 @@ static bool make_change_diff(const simple_wml::node& src,
 static std::string player_status(const wesnothd::player_record& player)
 {
 	std::ostringstream out;
-	// const network::connection_stats& stats = network::get_connection_stats(pl->first);
-	// const int time_connected = stats.time_connected / 1000;
-	// const int seconds = time_connected % 60;
-	// const int minutes = (time_connected / 60) % 60;
-	// const int hours = time_connected / (60 * 60);
 	out << "'" << player.name() << "' @ " << client_address(player.socket());
-	//		<< " connected for " << std::setw(2) << hours << ":" << std::setw(2) << minutes << ":" << std::setw(2) <<
-	//seconds
-	//		<< " sent " << stats.bytes_sent << " bytes, received "
-	//		<< stats.bytes_received << " bytes";
 	return out.str();
 }
 
