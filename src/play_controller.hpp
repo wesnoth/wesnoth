@@ -127,49 +127,73 @@ public:
 	 */
 	virtual void process_oos(const std::string& msg) const;
 
-	void set_end_level_data(const end_level_data& data) {
+	void set_end_level_data(const end_level_data& data)
+	{
 		gamestate().end_level_data_ = data;
 	}
-	void reset_end_level_data() {
+
+	void reset_end_level_data()
+	{
 		gamestate().end_level_data_.reset();
 	}
-	bool is_regular_game_end() const {
+
+	bool is_regular_game_end() const
+	{
 		return utils::has_optional_value(gamestate().end_level_data_);
 	}
-	const end_level_data& get_end_level_data_const() const {
+
+	const end_level_data& get_end_level_data_const() const
+	{
 		return *gamestate().end_level_data_;
 	}
-	const std::vector<team>& get_teams_const() const {
-		return gamestate().board_.teams_;
+
+	std::vector<team>& get_teams()
+	{
+		return gamestate().board_.teams();
 	}
 
-	const unit_map& get_units_const() const {
+	const std::vector<team>& get_teams() const
+	{
+		return gamestate().board_.teams();
+	}
+
+	const unit_map& get_units_const() const
+	{
 		return gamestate().board_.units();
 	}
 
-	const gamemap& get_map_const() const{
+	const gamemap& get_map_const() const
+	{
 		return gamestate().board_.map();
 	}
-	const tod_manager& get_tod_manager_const() const{
-			return gamestate().tod_manager_;
-		}
 
-	bool is_observer() const {
+	const tod_manager& get_tod_manager_const() const
+	{
+		return gamestate().tod_manager_;
+	}
+
+	bool is_observer() const
+	{
 		return gamestate().board_.is_observer();
 	}
 
-	bool do_healing() const {
+	bool do_healing() const
+	{
 		return gamestate().do_healing_;
 	}
 
-	void set_do_healing(bool do_healing) {
+	void set_do_healing(bool do_healing)
+	{
 		gamestate().do_healing_ = do_healing;
 	}
 
-	game_state& gamestate() {
+	game_state& gamestate()
+	{
 		return *gamestate_;
 	}
-	const game_state& gamestate() const {
+
+	const game_state& gamestate() const
+	{
 		return *gamestate_;
 	}
 

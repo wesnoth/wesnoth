@@ -64,7 +64,7 @@ const game_state & play_controller::hotkey_handler::gamestate() const {
 bool play_controller::hotkey_handler::browse() const { return play_controller_.is_browsing(); }
 bool play_controller::hotkey_handler::linger() const { return play_controller_.is_lingering(); }
 
-const team & play_controller::hotkey_handler::viewing_team() const { return play_controller_.get_teams_const()[gui()->viewing_team()]; }
+const team & play_controller::hotkey_handler::viewing_team() const { return play_controller_.get_teams()[gui()->viewing_team()]; }
 bool play_controller::hotkey_handler::viewing_team_is_playing() const { return gui()->viewing_team() == gui()->playing_team(); }
 
 void play_controller::hotkey_handler::objectives(){
@@ -335,7 +335,7 @@ bool play_controller::hotkey_handler::can_execute_command(const hotkey::hotkey_c
 
 	case hotkey::HOTKEY_SURRENDER: {
 		std::size_t humans_notme_cnt = 0;
-		for(const auto& t : play_controller_.get_teams_const()) {
+		for(const auto& t : play_controller_.get_teams()) {
 			if(t.is_network_human()) {
 				++humans_notme_cnt;
 			}
@@ -376,7 +376,7 @@ bool play_controller::hotkey_handler::can_execute_command(const hotkey::hotkey_c
 			menu_handler_.current_unit().valid() &&
 			!(menu_handler_.current_unit()->unrenamable()) &&
 			menu_handler_.current_unit()->side() == gui()->viewing_side() &&
-			play_controller_.get_teams_const()[menu_handler_.current_unit()->side() - 1].is_local_human();
+			play_controller_.get_teams()[menu_handler_.current_unit()->side() - 1].is_local_human();
 
 	default:
 		return false;
