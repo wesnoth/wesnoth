@@ -161,7 +161,7 @@ void mouse_handler::touch_motion(int x, int y, const bool browse, bool update, m
 
 	if(new_hex != last_hex_) {
 		update = true;
-		if( pc_.get_map_const().on_board(last_hex_) ) {
+		if( pc_.get_map().on_board(last_hex_) ) {
 			// we store the previous hexes used to propose attack direction
 			previous_hex_ = last_hex_;
 			// the hex of the selected unit is also "free"
@@ -197,7 +197,7 @@ void mouse_handler::touch_motion(int x, int y, const bool browse, bool update, m
 
 	// reset current_route_ and current_paths if not valid anymore
 	// we do it before cursor selection, because it uses current_paths_
-	if( !pc_.get_map_const().on_board(new_hex) ) {
+	if( !pc_.get_map().on_board(new_hex) ) {
 		current_route_.steps.clear();
 		gui().set_route(nullptr);
 		pc_.get_whiteboard()->erase_temp_move();
@@ -394,7 +394,7 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update, m
 
 		update = true;
 
-		if(pc_.get_map_const().on_board(last_hex_)) {
+		if(pc_.get_map().on_board(last_hex_)) {
 			// we store the previous hexes used to propose attack direction
 			previous_hex_ = last_hex_;
 
@@ -439,7 +439,7 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update, m
 
 	// reset current_route_ and current_paths if not valid anymore
 	// we do it before cursor selection, because it uses current_paths_
-	if(!pc_.get_map_const().on_board(new_hex)) {
+	if(!pc_.get_map().on_board(new_hex)) {
 		current_route_.steps.clear();
 		gui().set_route(nullptr);
 		pc_.get_whiteboard()->erase_temp_move();
@@ -796,7 +796,7 @@ bool mouse_handler::right_click_show_menu(int x, int y, const bool /*browse*/)
 
 void mouse_handler::select_or_action(bool browse)
 {
-	if(!pc_.get_map_const().on_board(last_hex_)) {
+	if(!pc_.get_map().on_board(last_hex_)) {
 		tooltips::click(drag_from_x_, drag_from_y_);
 		return;
 	}
@@ -833,7 +833,7 @@ void mouse_handler::move_action(bool browse)
 	// TODO
 	//	// Clicks on border hexes mean to deselect.
 	//	// (Check this before doing processing that might not be needed.)
-	//	if ( !pc_.get_map_const().on_board(hex) ) {
+	//	if ( !pc_.get_map().on_board(hex) ) {
 	//		deselect_hex();
 	//		return false;
 	//	}
@@ -1180,7 +1180,7 @@ std::size_t mouse_handler::move_unit_along_route(const std::vector<map_location>
 
 	// If this is a leader on a keep, ask permission to the whiteboard to move it
 	// since otherwise it may cause planned recruits to be erased.
-	if(pc_.get_map_const().is_keep(steps.front())) {
+	if(pc_.get_map().is_keep(steps.front())) {
 		unit_map::const_iterator const u = pc_.gamestate().board_.units().find(steps.front());
 
 		if(u && u->can_recruit() && u->side() == gui().viewing_side()
@@ -1357,7 +1357,7 @@ void mouse_handler::attack_enemy_(const map_location& att_loc, const map_locatio
 	current_team().set_action_bonus_count(1 + current_team().action_bonus_count());
 	// TODO: change ToD to be location specific for the defender
 
-	const tod_manager& tod_man = pc_.get_tod_manager_const();
+	const tod_manager& tod_man = pc_.get_tod_manager();
 
 	synced_context::run_and_throw("attack",
 		replay_helper::get_attack(
@@ -1419,7 +1419,7 @@ void mouse_handler::show_attack_options(const unit_map::const_iterator& u)
 	for(const map_location& loc : adj) {
 		// No attack option shown if no visible unit present.
 		// (Visible to current team, not necessarily the unit's team.)
-		if(!pc_.get_map_const().on_board(loc)) {
+		if(!pc_.get_map().on_board(loc)) {
 			continue;
 		}
 

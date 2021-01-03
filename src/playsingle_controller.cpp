@@ -90,7 +90,7 @@ std::string playsingle_controller::describe_result() const
 	if(!is_regular_game_end()) {
 		return "NONE";
 	}
-	else if(get_end_level_data_const().is_victory){
+	else if(get_end_level_data().is_victory){
 		return "VICTORY";
 	}
 	else {
@@ -268,7 +268,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(const config& level)
 		if (game_config::exit_at_end) {
 			exit(0);
 		}
-		const bool is_victory = get_end_level_data_const().is_victory;
+		const bool is_victory = get_end_level_data().is_victory;
 
 		if(gamestate().gamedata_.phase() <= game_data::PRESTART) {
 			gui_->video().clear_screen();
@@ -276,7 +276,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(const config& level)
 
 		ai_testing::log_game_end();
 
-		const end_level_data& end_level = get_end_level_data_const();
+		const end_level_data& end_level = get_end_level_data();
 
 		if (get_teams().empty())
 		{
@@ -636,7 +636,7 @@ void playsingle_controller::maybe_linger()
 {
 	// mouse_handler expects at least one team for linger mode to work.
 	assert(is_regular_game_end());
-	if (get_end_level_data_const().transient.linger_mode && !get_teams().empty()) {
+	if (get_end_level_data().transient.linger_mode && !get_teams().empty()) {
 		linger();
 	}
 }

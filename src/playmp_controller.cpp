@@ -235,7 +235,7 @@ void playmp_controller::linger()
 
 	set_end_scenario_button();
 	assert(is_regular_game_end());
-	if ( get_end_level_data_const().transient.reveal_map ) {
+	if ( get_end_level_data().transient.reveal_map ) {
 		// Change the view of all players and observers
 		// to see the whole map regardless of shroud and fog.
 		update_gui_to_player(gui_->viewing_team(), true);
@@ -413,7 +413,7 @@ void playmp_controller::maybe_linger()
 {
 	// mouse_handler expects at least one team for linger mode to work.
 	assert(is_regular_game_end());
-	if (!get_end_level_data_const().transient.linger_mode || get_teams().empty() || gui_->video().faked()) {
+	if (!get_end_level_data().transient.linger_mode || get_teams().empty() || gui_->video().faked()) {
 		const bool has_next_scenario = !gamestate().gamedata_.next_scenario().empty() && gamestate().gamedata_.next_scenario() != "null";
 		if(!is_host() && has_next_scenario) {
 			// If we continue without lingering we need to

@@ -500,8 +500,8 @@ bool play_controller::hotkey_handler::in_context_menu(hotkey::HOTKEY_COMMAND com
 
 		// A quick check to save us having to create the future map and
 		// possibly loop through all units.
-		if ( !play_controller_.get_map_const().is_keep(last_hex)  &&
-		     !play_controller_.get_map_const().is_castle(last_hex) )
+		if ( !play_controller_.get_map().is_keep(last_hex)  &&
+		     !play_controller_.get_map().is_castle(last_hex) )
 			return false;
 
 		wb::future_map future; /* lasts until method returns. */

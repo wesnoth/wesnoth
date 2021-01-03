@@ -91,8 +91,8 @@ void campaign_controller::show_carryover_message(
 	}
 
 	if(persistent_teams > 0 && ((has_next_scenario && end_level.proceed_to_next_level) || state_.classification().is_test())) {
-		const gamemap& map = playcontroller.get_map_const();
-		const tod_manager& tod = playcontroller.get_tod_manager_const();
+		const gamemap& map = playcontroller.get_map();
+		const tod_manager& tod = playcontroller.get_tod_manager();
 
 		const int turns_left = std::max<int>(0, tod.number_of_turns() - tod.turn());
 		for(team& t : teams) {
@@ -200,7 +200,7 @@ LEVEL_RESULT campaign_controller::playsingle_scenario(end_level_data &end_level)
 		return res;
 	}
 
-	end_level = playcontroller.get_end_level_data_const();
+	end_level = playcontroller.get_end_level_data();
 	show_carryover_message(playcontroller, end_level, res);
 
 	if(!CVideo::get_singleton().faked()) {
@@ -221,7 +221,7 @@ LEVEL_RESULT campaign_controller::playmp_scenario(end_level_data &end_level)
 		return LEVEL_RESULT::QUIT;
 	}
 
-	end_level = playcontroller.get_end_level_data_const();
+	end_level = playcontroller.get_end_level_data();
 
 	if(res != LEVEL_RESULT::OBSERVER_END) {
 		// We need to call this before linger because it prints the defeated/victory message.

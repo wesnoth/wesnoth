@@ -142,7 +142,7 @@ public:
 		return utils::has_optional_value(gamestate().end_level_data_);
 	}
 
-	const end_level_data& get_end_level_data_const() const
+	const end_level_data& get_end_level_data() const
 	{
 		return *gamestate().end_level_data_;
 	}
@@ -157,17 +157,17 @@ public:
 		return gamestate().board_.teams();
 	}
 
-	const unit_map& get_units_const() const
+	const unit_map& get_units() const
 	{
 		return gamestate().board_.units();
 	}
 
-	const gamemap& get_map_const() const
+	const gamemap& get_map() const
 	{
 		return gamestate().board_.map();
 	}
 
-	const tod_manager& get_tod_manager_const() const
+	const tod_manager& get_tod_manager() const
 	{
 		return gamestate().tod_manager_;
 	}
