@@ -96,8 +96,9 @@ public:
 	/**
 	 * @param name The player's username.
 	 * @param addr The IP address being checked.
-	 * @return Whether the user is banned, and if so then how long. See also @ref user_handler::ban_info
-	 * @note glob IP and email address bans are NOT supported yet since they require a different kind of query that isn't supported
+	 * @return Whether the user is banned, and if so then how long. See also @ref user_handler::ban_info().
+	 * @note This checks for bans by username, the email associated to the username, and IP address.
+	 * @note Glob IP and email address bans are NOT supported yet since they require a different kind of query that isn't supported
 	 *       by our prepared SQL statement API right now. However, they are basically never used on forums.wesnoth.org,
 	 *       so this shouldn't be a problem.
 	 */

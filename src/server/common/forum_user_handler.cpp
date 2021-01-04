@@ -220,7 +220,7 @@ void fuh::db_insert_game_player_info(const std::string& uuid, int game_id, const
 }
 
 void fuh::db_insert_game_content_info(const std::string& uuid, int game_id, const std::string& type, const std::string& name, const std::string& id, const std::string& source, const std::string& version){
-	conn_.db_insert_game_content_info(uuid, game_id, type, name, id, source, version);
+	conn_.insert_game_content_info(uuid, game_id, type, name, id, source, version);
 }
 
 void fuh::db_set_oos_flag(const std::string& uuid, int game_id){
