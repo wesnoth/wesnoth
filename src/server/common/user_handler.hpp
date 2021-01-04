@@ -83,17 +83,17 @@ public:
 	/** Ban type values */
 	enum BAN_TYPE
 	{
-		BAN_NONE = 0,	/** Not a ban */
-		BAN_IP = 1, 	/** IP address ban */
-		BAN_USER = 2,	/** User account/name ban */
-		BAN_EMAIL = 3,	/** Account email address ban */
+		BAN_NONE = 0,	/**< Not a ban */
+		BAN_IP = 1, 	/**< IP address ban */
+		BAN_USER = 2,	/**< User account/name ban */
+		BAN_EMAIL = 3,	/**< Account email address ban */
 	};
 
 	/** Ban status description */
 	struct ban_info
 	{
-		BAN_TYPE type;			/** Ban type */
-		std::time_t duration;	/** Ban duration (0 if permanent) */
+		BAN_TYPE type;			/**< Ban type */
+		std::time_t duration;	/**< Ban duration (0 if permanent) */
 
 		ban_info()
 			: type(BAN_NONE)
