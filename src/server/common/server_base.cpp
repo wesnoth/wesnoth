@@ -51,6 +51,8 @@ static lg::log_domain log_config("config");
 #define ERR_CONFIG LOG_STREAM(err, log_config)
 #define WRN_CONFIG LOG_STREAM(warn, log_config)
 
+bool dump_wml = false;
+
 server_base::server_base(unsigned short port, bool keep_alive)
 	: port_(port)
 	, keep_alive_(keep_alive)
@@ -235,6 +237,10 @@ void info_table_into_simple_wml(simple_wml::document& doc, const std::string& pa
  */
 void server_base::coro_send_doc(socket_ptr socket, simple_wml::document& doc, boost::asio::yield_context yield)
 {
+	if(dump_wml) {
+		std::cout << "Sending WML to " << client_address(socket) << ": \n" << doc.output() << std::endl;
+	}
+
 	try {
 		simple_wml::string_span s = doc.output_compressed();
 

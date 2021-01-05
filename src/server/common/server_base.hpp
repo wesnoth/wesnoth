@@ -38,6 +38,8 @@
 
 #include <map>
 
+extern bool dump_wml;
+
 typedef std::shared_ptr<boost::asio::ip::tcp::socket> socket_ptr;
 
 struct server_shutdown : public game::error

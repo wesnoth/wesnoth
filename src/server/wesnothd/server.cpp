@@ -2945,6 +2945,8 @@ int main(int argc, char** argv)
 			config_file = argv[++arg];
 		} else if(val == "--verbose" || val == "-v") {
 			lg::set_log_domain_severity("all", lg::debug());
+		} else if(val == "--dump-wml" || val == "-w") {
+			dump_wml = true;
 		} else if(val.substr(0, 6) == "--log-") {
 			std::size_t p = val.find('=');
 			if(p == std::string::npos) {
@@ -2997,7 +2999,8 @@ int main(int argc, char** argv)
 					  << "  --keepalive                Enable TCP keepalive.\n"
 					  << "  -t, --threads <n>          Uses n worker threads for network I/O (default: 5).\n"
 					  << "  -v  --verbose              Turns on more verbose logging.\n"
-					  << "  -V, --version              Returns the server version.\n";
+					  << "  -V, --version              Returns the server version.\n"
+					  << "  -w, --dump-wml             Print all WML sent to clients to stdout.\n";
 			return 0;
 		} else if(val == "--version" || val == "-V") {
 			std::cout << "Battle for Wesnoth server " << game_config::wesnoth_version.str() << "\n";
