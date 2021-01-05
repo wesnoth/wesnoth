@@ -105,8 +105,6 @@ public:
 	bool play_multiplayer_commandline();
 	bool change_language();
 
-	void show_preferences();
-
 	enum RELOAD_GAME_DATA { RELOAD_DATA, NO_RELOAD_DATA };
 	void launch_game(RELOAD_GAME_DATA reload=RELOAD_DATA);
 	void play_replay();

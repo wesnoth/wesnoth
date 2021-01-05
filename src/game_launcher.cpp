@@ -37,7 +37,6 @@
 #include "gui/dialogs/multiplayer/mp_host_game_prompt.hpp" // for host game prompt
 #include "gui/dialogs/multiplayer/mp_method_selection.hpp"
 #include "gui/dialogs/outro.hpp"
-#include "gui/dialogs/preferences_dialog.hpp"
 #include "gui/dialogs/title_screen.hpp"      // for show_debug_clock_button
 #include "gui/dialogs/transient_message.hpp" // for show_transient_message
 #include "gui/widgets/retval.hpp"            // for window, etc
@@ -971,11 +970,6 @@ bool game_launcher::change_language()
 	}
 
 	return true;
-}
-
-void game_launcher::show_preferences()
-{
-	gui2::dialogs::preferences_dialog::display();
 }
 
 void game_launcher::launch_game(RELOAD_GAME_DATA reload)

@@ -34,6 +34,7 @@
 #include "gui/dialogs/message.hpp"
 #include "gui/dialogs/multiplayer/mp_host_game_prompt.hpp"
 #include "gui/dialogs/multiplayer/mp_method_selection.hpp"
+#include "gui/dialogs/preferences_dialog.hpp"
 #include "gui/dialogs/screenshot_notification.hpp"
 #include "gui/dialogs/simple_item_selector.hpp"
 #include "log.hpp"
@@ -386,7 +387,9 @@ void title_screen::pre_show(window& win)
 	//
 	// Preferences
 	//
-	register_button(win, "preferences", hotkey::HOTKEY_PREFERENCES, [this]() { game_.show_preferences(); });
+	register_button(win, "preferences", hotkey::HOTKEY_PREFERENCES, []() {
+		gui2::dialogs::preferences_dialog::display();
+	});
 
 	//
 	// Credits
