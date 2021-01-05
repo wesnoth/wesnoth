@@ -58,7 +58,7 @@ public:
 	game_launcher(const commandline_options& cmdline_opts);
 	~game_launcher();
 
-	enum mp_selection {MP_CONNECT, MP_HOST, MP_LOCAL};
+	enum class mp_mode { CONNECT, HOST, LOCAL };
 
 	/**
 	 * Status code after running a unit test, should match the run_wml_tests
@@ -101,7 +101,7 @@ public:
 	bool jump_to_editor() const { return jump_to_editor_; }
 
 	void select_mp_server(const std::string& server) { multiplayer_server_ = server; }
-	bool play_multiplayer(mp_selection res);
+	bool play_multiplayer(mp_mode mode);
 	bool play_multiplayer_commandline();
 	bool change_language();
 

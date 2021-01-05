@@ -777,7 +777,7 @@ bool game_launcher::goto_multiplayer()
 {
 	if(jump_to_multiplayer_) {
 		jump_to_multiplayer_ = false;
-		if(play_multiplayer(MP_CONNECT)) {
+		if(play_multiplayer(mp_mode::CONNECT)) {
 			;
 		} else {
 			return false;
@@ -839,10 +839,10 @@ void game_launcher::start_wesnothd()
 	throw game::mp_server_error("Starting MP server failed!");
 }
 
-bool game_launcher::play_multiplayer(mp_selection res)
+bool game_launcher::play_multiplayer(mp_mode mode)
 {
 	try {
-		if(res == MP_HOST) {
+		if(mode == mp_mode::HOST) {
 			try {
 				start_wesnothd();
 			} catch(const game::mp_server_error&) {
@@ -857,7 +857,7 @@ bool game_launcher::play_multiplayer(mp_selection res)
 		}
 
 		// If a server address wasn't specified, prompt for it now.
-		if(res != MP_LOCAL && multiplayer_server_.empty()) {
+		if(mode != mp_mode::LOCAL && multiplayer_server_.empty()) {
 			if(!gui2::dialogs::mp_connect::execute()) {
 				return false;
 			}
@@ -877,7 +877,7 @@ bool game_launcher::play_multiplayer(mp_selection res)
 		events::discard_input(); // prevent the "keylogger" effect
 		cursor::set(cursor::NORMAL);
 
-		if(res == MP_LOCAL) {
+		if(mode == mp_mode::LOCAL) {
 			mp::start_local_game();
 		} else {
 			mp::start_client(multiplayer_server_);
