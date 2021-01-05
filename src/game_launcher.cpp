@@ -656,7 +656,7 @@ bool game_launcher::play_render_image_mode()
 	return false;
 }
 
-bool game_launcher::is_loading() const
+bool game_launcher::has_load_data() const
 {
 	return utils::has_optional_value(load_data_);
 }

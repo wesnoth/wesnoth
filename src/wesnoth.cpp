@@ -814,7 +814,7 @@ static int do_gameloop(const std::vector<std::string>& args)
 	for(;;) {
 		statistics::fresh_stats();
 
-		if(!game->is_loading()) {
+		if(!game->has_load_data()) {
 			const config& cfg = config_manager.game_config().child("titlescreen_music");
 			if(cfg) {
 				for(const config& i : cfg.child_range("music")) {
@@ -883,7 +883,7 @@ static int do_gameloop(const std::vector<std::string>& args)
 		game_launcher::RELOAD_GAME_DATA should_reload = game_launcher::RELOAD_DATA;
 
 		// If loading a game, skip the titlescreen entirely
-		if(game->is_loading() && game->load_game()) {
+		if(game->has_load_data() && game->load_game()) {
 			game->launch_game(should_reload);
 			continue;
 		}

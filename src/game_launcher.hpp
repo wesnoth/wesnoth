@@ -87,7 +87,7 @@ public:
 	/** Runs unit tests specified on the command line */
 	unit_test_result unit_test();
 
-	bool is_loading() const;
+	bool has_load_data() const;
 	void clear_loaded_game();
 	bool load_game();
 	void set_test(const std::string& id);
