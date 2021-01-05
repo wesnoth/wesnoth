@@ -81,7 +81,6 @@ create table game_info
 -- SIDE_NUMBER: the side controlled by USER_ID
 -- IS_HOST: if USER_ID is the game's host
 -- FACTION: the faction being played by this side
--- STATUS: the status of the side, currently only updated at game end
 -- CLIENT_VERSION: the version of the wesnoth client used to connect
 -- CLIENT_SOURCE: where the wesnoth client was downloaded from - SourceForge, Steam, etc
 create table game_player_info
