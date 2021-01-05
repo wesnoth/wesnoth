@@ -84,8 +84,9 @@ void clean_saves(const std::string& label)
 loadgame::loadgame(const std::shared_ptr<save_index_class>& index, const game_config_view& game_config, saved_game& gamestate)
 	: game_config_(game_config)
 	, gamestate_(gamestate)
-	, load_data_(index)
-{}
+	, load_data_{index}
+{
+}
 
 bool loadgame::show_difficulty_dialog()
 {

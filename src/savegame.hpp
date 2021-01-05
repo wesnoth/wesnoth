@@ -61,29 +61,19 @@ struct load_game_metadata
 	std::string difficulty;
 
 	/** State of the "show_replay" checkbox in the load-game dialog. */
-	bool show_replay;
+	bool show_replay = false;
 
 	/** State of the "cancel_orders" checkbox in the load-game dialog. */
-	bool cancel_orders;
+	bool cancel_orders = false;
 
 	/** State of the "change_difficulty" checkbox in the load-game dialog. */
-	bool select_difficulty;
+	bool select_difficulty = false;
 
 	/** Summary config of the save selected in the load game dialog. */
 	config summary;
 
 	/** Config information of the savefile to be loaded. */
 	config load_config;
-
-	explicit load_game_metadata(std::shared_ptr<save_index_class> index,
-	        const std::string& fname = "", const std::string& hard = "",
-			bool replay = false, bool stop = false, bool change = false,
-			const config& summary = config(), const config& info = config())
-		: manager(index), filename(fname), difficulty(hard)
-		, show_replay(replay), cancel_orders(stop), select_difficulty(change)
-		, summary(summary), load_config(info)
-	{
-	}
 };
 
 /**
