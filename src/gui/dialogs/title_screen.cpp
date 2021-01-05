@@ -340,8 +340,6 @@ void title_screen::pre_show(window& win)
 	register_button(win, "load", hotkey::HOTKEY_LOAD_GAME, [this, &win]() {
 		if(game_.load_game()) {
 			win.set_retval(LAUNCH_GAME);
-		} else {
-			game_.clear_loaded_game();
 		}
 	});
 

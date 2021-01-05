@@ -884,10 +884,7 @@ static int do_gameloop(const std::vector<std::string>& args)
 
 		// If loading a game, skip the titlescreen entirely
 		if(game->is_loading()) {
-			if(!game->load_game()) {
-				game->clear_loaded_game();
-			}
-
+			game->load_game();
 			game->launch_game(should_reload);
 			continue;
 		}
