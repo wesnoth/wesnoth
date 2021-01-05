@@ -883,8 +883,7 @@ static int do_gameloop(const std::vector<std::string>& args)
 		game_launcher::RELOAD_GAME_DATA should_reload = game_launcher::RELOAD_DATA;
 
 		// If loading a game, skip the titlescreen entirely
-		if(game->is_loading()) {
-			game->load_game();
+		if(game->is_loading() && game->load_game()) {
 			game->launch_game(should_reload);
 			continue;
 		}
