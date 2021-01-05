@@ -141,6 +141,7 @@ if [ "$IMAGE" != "1804" ]; then
 fi
 execute "WML tests" ./run_wml_tests -g -v -c -t 20
 execute "Play tests" ./utils/CI/play_test_executor.sh
+execute "MP tests" ./utils/CI/play_test_executor.sh
 execute "Boost unit tests" ./utils/CI/test_executor.sh
 
 if [ -f "errors.log" ]; then
