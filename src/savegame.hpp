@@ -52,13 +52,13 @@ void clean_saves(const std::string& label);
 struct load_game_metadata
 {
 	/** There may be different instances of the index for different directories */
-	std::shared_ptr<save_index_class> manager;
+	std::shared_ptr<save_index_class> manager {};
 
 	/** Name of the savefile to be loaded (not including the directory). */
-	std::string filename;
+	std::string filename = "";
 
 	/** The difficulty the save is meant to be loaded with. */
-	std::string difficulty;
+	std::string difficulty = "";
 
 	/** State of the "show_replay" checkbox in the load-game dialog. */
 	bool show_replay = false;
@@ -70,10 +70,10 @@ struct load_game_metadata
 	bool select_difficulty = false;
 
 	/** Summary config of the save selected in the load game dialog. */
-	config summary;
+	config summary {};
 
 	/** Config information of the savefile to be loaded. */
-	config load_config;
+	config load_config {};
 };
 
 /**
