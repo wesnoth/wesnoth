@@ -22,7 +22,9 @@
 #include "picture.hpp"               // for manager
 #include "preferences/game.hpp"      // for manager
 #include "saved_game.hpp"            // for saved_game
+#include "savegame.hpp"              // for clean_saves, etc
 #include "sound.hpp"                 // for music_thinker
+#include "utils/optional_fwd.hpp"
 
 #include <string>                       // for string
 #include <vector>                       // for vector
@@ -31,7 +33,6 @@ class commandline_options;
 class config;
 class CVideo;
 
-namespace savegame { struct load_game_metadata; }
 namespace preferences { class advanced_manager; }
 
 struct jump_to_campaign_info
@@ -156,5 +157,5 @@ private:
 	jump_to_campaign_info jump_to_campaign_;
 
 	bool jump_to_editor_;
-	std::unique_ptr<savegame::load_game_metadata> load_data_;
+	utils::optional<savegame::load_game_metadata> load_data_;
 };

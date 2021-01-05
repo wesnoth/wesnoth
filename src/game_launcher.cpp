@@ -50,7 +50,6 @@
 #include "preferences/display.hpp"
 #include "preferences/general.hpp" // for disable_preferences_save, etc
 #include "save_index.hpp"
-#include "savegame.hpp" // for clean_saves, etc
 #include "scripting/application_lua_kernel.hpp"
 #include "sdl/surface.hpp"                // for surface
 #include "serialization/compression.hpp"  // for format::NONE
@@ -183,8 +182,8 @@ game_launcher::game_launcher(const commandline_options& cmdline_opts)
 	if(cmdline_opts_.editor) {
 		jump_to_editor_ = true;
 		if(!cmdline_opts_.editor->empty()) {
-			load_data_.reset(new savegame::load_game_metadata{
-				savegame::save_index_class::default_saves_dir(), *cmdline_opts_.editor});
+			load_data_ = savegame::load_game_metadata{
+				savegame::save_index_class::default_saves_dir(), *cmdline_opts_.editor};
 		}
 	}
 	if(cmdline_opts_.fps)
@@ -192,8 +191,8 @@ game_launcher::game_launcher(const commandline_options& cmdline_opts)
 	if(cmdline_opts_.fullscreen)
 		video_->set_fullscreen(true);
 	if(cmdline_opts_.load)
-		load_data_.reset(
-			new savegame::load_game_metadata{savegame::save_index_class::default_saves_dir(), *cmdline_opts_.load});
+		load_data_ = savegame::load_game_metadata{
+			savegame::save_index_class::default_saves_dir(), *cmdline_opts_.load};
 	if(cmdline_opts_.max_fps) {
 		int fps = utils::clamp(*cmdline_opts_.max_fps, 1, 1000);
 		fps = 1000 / fps;
@@ -483,8 +482,8 @@ bool game_launcher::play_test()
 	try {
 		campaign_controller ccontroller(state_);
 		ccontroller.play_game();
-	} catch(const savegame::load_game_exception& e) {
-		load_data_.reset(new savegame::load_game_metadata(std::move(e.data_)));
+	} catch(savegame::load_game_exception& e) {
+		load_data_ = std::move(e.data_);
 		return true;
 	}
 
@@ -578,8 +577,8 @@ game_launcher::unit_test_result game_launcher::single_unit_test()
 	savegame::replay_savegame save(state_, compression::NONE);
 	save.save_game_automatic(false, "unit_test_replay");
 
-	load_data_.reset(new savegame::load_game_metadata{
-		savegame::save_index_class::default_saves_dir(), save.filename(), "", true, true, false});
+	load_data_ = savegame::load_game_metadata{
+		savegame::save_index_class::default_saves_dir(), save.filename(), "", true, true, false};
 
 	if(!load_game()) {
 		std::cerr << "Failed to load the replay!" << std::endl;
@@ -659,7 +658,7 @@ bool game_launcher::play_render_image_mode()
 
 bool game_launcher::is_loading() const
 {
-	return !!load_data_;
+	return utils::has_optional_value(load_data_);
 }
 
 bool game_launcher::load_game()
@@ -671,8 +670,8 @@ bool game_launcher::load_game()
 	savegame::loadgame load(
 		savegame::save_index_class::default_saves_dir(), game_config_manager::get()->game_config(), state_);
 	if(load_data_) {
-		std::unique_ptr<savegame::load_game_metadata> load_data = std::move(load_data_);
-		load.data() = std::move(*load_data);
+		load.data() = std::move(load_data_.value());
+		clear_loaded_game();
 	}
 
 	try {
@@ -793,8 +792,11 @@ bool game_launcher::goto_editor()
 {
 	if(jump_to_editor_) {
 		jump_to_editor_ = false;
-		std::unique_ptr<savegame::load_game_metadata> load_data = std::move(load_data_);
-		if(start_editor(filesystem::normalize_path(load_data ? load_data->filename : "")) == editor::EXIT_QUIT_TO_DESKTOP) {
+
+		const std::string to_open = load_data_ ? filesystem::normalize_path(load_data_->filename) : "";
+		clear_loaded_game();
+
+		if(start_editor(to_open) == editor::EXIT_QUIT_TO_DESKTOP) {
 			return false;
 		}
 	}
@@ -928,8 +930,8 @@ bool game_launcher::play_multiplayer(mp_selection res)
 		}
 	} catch(const incorrect_map_format_error& e) {
 		gui2::show_error_message(_("The game map could not be loaded: ") + e.message);
-	} catch(const savegame::load_game_exception& e) {
-		load_data_.reset(new savegame::load_game_metadata(std::move(e.data_)));
+	} catch(savegame::load_game_exception& e) {
+		load_data_ = std::move(e.data_);
 		// this will make it so next time through the title screen loop, this game is loaded
 	} catch(const wml_exception& e) {
 		e.show();
@@ -1009,8 +1011,8 @@ void game_launcher::launch_game(RELOAD_GAME_DATA reload)
 
 			gui2::dialogs::outro::display(state_.classification());
 		}
-	} catch(const savegame::load_game_exception& e) {
-		load_data_.reset(new savegame::load_game_metadata(std::move(e.data_)));
+	} catch(savegame::load_game_exception& e) {
+		load_data_ = std::move(e.data_);
 		// this will make it so next time through the title screen loop, this game is loaded
 	} catch(const wml_exception& e) {
 		e.show();
@@ -1025,8 +1027,8 @@ void game_launcher::play_replay()
 	try {
 		campaign_controller ccontroller(state_);
 		ccontroller.play_replay();
-	} catch(const savegame::load_game_exception& e) {
-		load_data_.reset(new savegame::load_game_metadata(std::move(e.data_)));
+	} catch(savegame::load_game_exception& e) {
+		load_data_ = std::move(e.data_);
 		// this will make it so next time through the title screen loop, this game is loaded
 	} catch(const wml_exception& e) {
 		e.show();
