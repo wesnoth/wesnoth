@@ -6,6 +6,10 @@
      * S09: Name the enemy team.
    * The South Guard:
      * S06b: Fix some enemies’ ambush abilities (issue #5383).
+ ### Editor
+   * Re-enabled topics for the terrain editor in the in-game help browser
+   * Added help topics for the scenario editor’s tools
+   * Added documentation about the files written by the editor
  ### Translations
    * Updated translations: Catalan, Chinese (Traditional), Portuguese (Brazil), Spanish
 
