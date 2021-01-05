@@ -800,7 +800,7 @@ static int do_gameloop(const std::vector<std::string>& args)
 	plugins_manager plugins_man(new application_lua_kernel);
 
 	const plugins_context::reg_vec callbacks {
-		{"play_multiplayer", std::bind(&game_launcher::play_multiplayer, game.get(), game_launcher::MP_CONNECT)},
+		{"play_multiplayer", std::bind(&game_launcher::play_multiplayer, game.get(), game_launcher::mp_mode::CONNECT)},
 	};
 
 	const plugins_context::areg_vec accessors {
