@@ -917,7 +917,7 @@ void preprocessor_data::pop_token()
 
 void preprocessor_data::skip_spaces()
 {
-	for(;;) {
+	while(true) {
 		int c = in_.peek();
 
 		if(in_.eof() || (c != ' ' && c != '\t')) {
@@ -930,7 +930,7 @@ void preprocessor_data::skip_spaces()
 
 void preprocessor_data::skip_eol()
 {
-	for(;;) {
+	while(true) {
 		int c = in_.get();
 
 		if(c == '\n') {
@@ -948,7 +948,7 @@ std::string preprocessor_data::read_word()
 {
 	std::string res;
 
-	for(;;) {
+	while(true) {
 		int c = in_.peek();
 
 		if(c == preprocessor_streambuf::traits_type::eof() || utils::portable_isspace(c)) {
@@ -965,7 +965,7 @@ std::string preprocessor_data::read_line()
 {
 	std::string res;
 
-	for(;;) {
+	while(true) {
 		int c = in_.get();
 
 		if(c == '\n') {
@@ -1098,7 +1098,7 @@ bool preprocessor_data::get_chunk()
 	if(c == OUTPUT_SEPARATOR) {
 		std::string buffer(1, c);
 
-		for(;;) {
+		while(true) {
 			char d = static_cast<char>(in_.get());
 
 			if(in_.eof() || d == '\n') {
@@ -1160,7 +1160,7 @@ bool preprocessor_data::get_chunk()
 			utils::optional<DEP_LEVEL> deprecation_level;
 			std::string buffer, deprecation_detail;
 			version_info deprecation_version = game_config::wesnoth_version;
-			for(;;) {
+			while(true) {
 				if(in_.eof())
 					break;
 				char d = static_cast<char>(in_.get());
@@ -1187,7 +1187,7 @@ bool preprocessor_data::get_chunk()
 							std::string argbuffer;
 
 							int found_endarg = 0;
-							for(;;) {
+							while(true) {
 								if(in_.eof()) {
 									break;
 								}

@@ -58,7 +58,7 @@ const token &tokenizer::next_token()
 	token_.value.clear();
 
 	// Dump spaces and inlined comments
-	for(;;)
+	while(true)
 	{
 		while (is_space(current_)) {
 			next_char_fast();

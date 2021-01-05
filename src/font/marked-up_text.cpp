@@ -167,7 +167,7 @@ SDL_Rect draw_text(surface& dst, const SDL_Rect& area, int size,
 
 	std::string::const_iterator i1 = text.begin();
 	std::string::const_iterator i2 = std::find(i1,text.end(),'\n');
-	for(;;) {
+	while(true) {
 		color_t col = color;
 		int sz = size;
 		int text_style = style;

@@ -301,7 +301,7 @@ node::node(document& doc, node* parent, const char** str, int depth) :
 				goto read_attribute;
 			}
 			end = s;
-			for(;;)
+			while(true)
 			{
 				// Read until the first single double quote.
 				while((end = strchr(end+1, '"')) && end[1] == '"') {

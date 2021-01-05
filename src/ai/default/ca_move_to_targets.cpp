@@ -133,7 +133,7 @@ void move_to_targets_phase::execute()
 	unit_map::const_iterator leader = resources::gameboard->units().find_leader(get_side());
 	LOG_AI << "finding targets...\n";
 	std::vector<target> targets;
-	for(;;) {
+	while(true) {
 		if(targets.empty()) {
 			targets = find_targets(get_enemy_dstsrc());
 			targets.insert(targets.end(),additional_targets().begin(),

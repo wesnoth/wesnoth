@@ -811,7 +811,7 @@ static int do_gameloop(const std::vector<std::string>& args)
 
 	plugins.set_callback("exit", [](const config& cfg) { safe_exit(cfg["code"].to_int(0)); }, false);
 
-	for(;;) {
+	while(true) {
 		statistics::fresh_stats();
 
 		if(!game->has_load_data()) {
