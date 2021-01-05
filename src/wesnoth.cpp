@@ -911,21 +911,15 @@ static int do_gameloop(const std::vector<std::string>& args)
 			return 0;
 		case gui2::dialogs::title_screen::MP_CONNECT:
 			game_config::set_debug(game_config::mp_debug);
-			if(!game->play_multiplayer(game_launcher::mp_mode::CONNECT)) {
-				continue;
-			}
+			game->play_multiplayer(game_launcher::mp_mode::CONNECT);
 			break;
 		case gui2::dialogs::title_screen::MP_HOST:
 			game_config::set_debug(game_config::mp_debug);
-			if(!game->play_multiplayer(game_launcher::mp_mode::HOST)) {
-				continue;
-			}
+			game->play_multiplayer(game_launcher::mp_mode::HOST);
 			break;
 		case gui2::dialogs::title_screen::MP_LOCAL:
 			game_config::set_debug(game_config::mp_debug);
-			if(!game->play_multiplayer(game_launcher::mp_mode::LOCAL)) {
-				continue;
-			}
+			game->play_multiplayer(game_launcher::mp_mode::LOCAL);
 			break;
 		case gui2::dialogs::title_screen::RELOAD_GAME_DATA:
 			gui2::dialogs::loading_screen::display([&config_manager]() {
