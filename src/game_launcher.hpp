@@ -88,7 +88,6 @@ public:
 	unit_test_result unit_test();
 
 	bool has_load_data() const;
-	void clear_loaded_game();
 	bool load_game();
 	void set_test(const std::string& id);
 
@@ -114,13 +113,14 @@ public:
 
 	editor::EXIT_STATUS start_editor() { return start_editor(""); }
 
-	void start_wesnothd();
-
 	const commandline_options & opts() const { return cmdline_opts_; }
-private:
-	game_launcher(const game_launcher&);
-	void operator=(const game_launcher&);
 
+private:
+	game_launcher(const game_launcher&) = delete;
+	game_launcher& operator=(const game_launcher&) = delete;
+
+	void clear_loaded_game();
+	void start_wesnothd();
 	void mark_completed_campaigns(std::vector<config>& campaigns);
 
 	editor::EXIT_STATUS start_editor(const std::string& filename);
