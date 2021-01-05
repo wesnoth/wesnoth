@@ -1,10 +1,13 @@
 ## Version 1.14.15+dev
- ### Add-ons client
  ### Campaigns
+   * Dead Water:
+     * Fix some characters’ names, which hadn’t been marked as translatable.
+   * Son of the Black-Eye:
+     * S09: Name the enemy team.
+   * The South Guard:
+     * S06b: Fix some enemies’ ambush abilities (issue #5383).
  ### Translations
    * Updated translations: Catalan, Chinese (Traditional), Portuguese (Brazil), Spanish
- ### User interface
- ### Miscellaneous and Bug Fixes
 
 ## Version 1.14.15
  ### Add-ons client
