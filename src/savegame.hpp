@@ -99,7 +99,7 @@ private:
 class loadgame
 {
 public:
-	loadgame(const std::shared_ptr<save_index_class>& index, const game_config_view& game_config, saved_game& gamestate);
+	loadgame(const std::shared_ptr<save_index_class>& index, saved_game& gamestate);
 	virtual ~loadgame() {}
 
 	/* In any of the following three function, a bool value of false indicates

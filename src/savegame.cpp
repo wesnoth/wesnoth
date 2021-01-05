@@ -46,6 +46,7 @@
 #include "game_version.hpp"
 #include "video.hpp"
 #include "game_config_view.hpp"
+#include "game_config_manager.hpp"
 
 #include <algorithm>
 #include <iomanip>
@@ -81,8 +82,8 @@ void clean_saves(const std::string& label)
 	}
 }
 
-loadgame::loadgame(const std::shared_ptr<save_index_class>& index, const game_config_view& game_config, saved_game& gamestate)
-	: game_config_(game_config)
+loadgame::loadgame(const std::shared_ptr<save_index_class>& index, saved_game& gamestate)
+	: game_config_(game_config_manager::get()->game_config())
 	, gamestate_(gamestate)
 	, load_data_{index}
 {

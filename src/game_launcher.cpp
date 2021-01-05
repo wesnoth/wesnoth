@@ -667,8 +667,7 @@ bool game_launcher::load_game()
 
 	DBG_GENERAL << "Current campaign type: " << state_.classification().campaign_type << std::endl;
 
-	savegame::loadgame load(
-		savegame::save_index_class::default_saves_dir(), game_config_manager::get()->game_config(), state_);
+	savegame::loadgame load(savegame::save_index_class::default_saves_dir(), state_);
 	if(load_data_) {
 		load.data() = std::move(load_data_.value());
 		clear_loaded_game();
