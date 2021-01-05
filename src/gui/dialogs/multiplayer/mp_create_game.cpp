@@ -67,8 +67,7 @@ namespace prefs = preferences;
 REGISTER_DIALOG(mp_create_game)
 
 mp_create_game::mp_create_game(saved_game& state, bool local_mode)
-	: cfg_(game_config_manager::get()->game_config())
-	, create_engine_(state)
+	: create_engine_(state)
 	, config_engine_()
 	, options_manager_()
 	, selected_game_index_(-1)
@@ -399,7 +398,6 @@ void mp_create_game::pre_show(window& win)
 		on_mod_toggle(cfg["index"].to_int(), nullptr);
 	}, true);
 
-	//plugins_context_->set_accessor("game_config",  [this](const config&) {return cfg_; });
 	plugins_context_->set_accessor("get_selected", [this](const config&) {
 		const ng::level& current_level = create_engine_.current_level();
 		return config {

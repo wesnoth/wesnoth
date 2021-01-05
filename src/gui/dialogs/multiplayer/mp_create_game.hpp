@@ -23,7 +23,6 @@
 #include "mp_game_settings.hpp"
 
 class config;
-class game_config_view;
 
 namespace gui2
 {
@@ -53,8 +52,6 @@ private:
 
 	/** Inherited from modal_dialog. */
 	virtual void post_show(window& window) override;
-
-	const game_config_view& cfg_;
 
 	ng::create_engine create_engine_;
 	std::unique_ptr<ng::configure_engine> config_engine_;
