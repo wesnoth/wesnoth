@@ -329,7 +329,7 @@ void saved_game::load_non_scenario(const std::string& type, const std::string& i
 		non_scenario["required"] = cfg[require_attr].to_bool(require_default);
 		config& content = non_scenario.add_child("content");
 		content["id"] = id;
-		content["name"] = cfg["addon_title"].str(cfg["name"].str("Unknown"));
+		content["name"] = cfg["addon_title"].str(cfg["name"].str(""));
 		content["type"] = type;
 
 		mp_settings_.update_addon_requirements(non_scenario);
