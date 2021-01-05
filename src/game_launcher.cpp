@@ -939,7 +939,7 @@ bool game_launcher::play_multiplayer(mp_mode mode)
 		gui2::show_error_message(_("Error: ") + e.message);
 	}
 
-	return false;
+	return true;
 }
 
 bool game_launcher::play_multiplayer_commandline()
