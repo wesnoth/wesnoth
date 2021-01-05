@@ -119,7 +119,6 @@ private:
 
 	void clear_loaded_game();
 	void start_wesnothd();
-	void mark_completed_campaigns(std::vector<config>& campaigns);
 
 	editor::EXIT_STATUS start_editor(const std::string& filename);
 	unit_test_result pass_victory_or_defeat(LEVEL_RESULT res);

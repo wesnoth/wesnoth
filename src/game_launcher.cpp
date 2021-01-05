@@ -735,13 +735,6 @@ bool game_launcher::load_game()
 	return true;
 }
 
-void game_launcher::mark_completed_campaigns(std::vector<config>& campaigns)
-{
-	for(config& campaign : campaigns) {
-		campaign["completed"] = preferences::is_campaign_completed(campaign["id"]);
-	}
-}
-
 bool game_launcher::new_campaign()
 {
 	state_.clear();
