@@ -987,7 +987,7 @@ void game_launcher::launch_game(reload_mode reload)
 
 	try {
 		campaign_controller ccontroller(state_);
-		LEVEL_RESULT result = ccontroller.play_game();
+		ccontroller.play_game();
 		ai::manager::singleton_ = nullptr;
 	} catch(savegame::load_game_exception& e) {
 		load_data_ = std::move(e.data_);
