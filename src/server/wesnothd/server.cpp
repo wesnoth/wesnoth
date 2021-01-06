@@ -1807,7 +1807,33 @@ void server::handle_player_in_game(socket_ptr socket, simple_wml::document& data
 	} else if(data.child("stop_updates")) {
 		g.send_data(data, socket);
 		return;
-		// Data to ignore.
+	} else if(simple_wml::node* request = data.child("game_history_request")) {
+		if(user_handler_) {
+			int offset = request->attr("offset").to_int();
+			int player_id = 0;
+
+			// if no search_for attribute -> get the requestor's forum id
+			// if search_for attribute for offline player -> query the forum database for the forum id
+			// if search_for attribute for online player -> get the forum id from wesnothd's player info
+			if(!request->has_attr("search_for")) {
+				player_id = player.config_address()->attr("forum_id").to_int();
+			} else {
+				std::string player_name = request->attr("search_for").to_string();
+				auto player_ptr = player_connections_.get<name_t>().find(player_name);
+				if(player_ptr == player_connections_.get<name_t>().end()) {
+					player_id = user_handler_->get_forum_id(player_name);
+				} else {
+					player_id = player_ptr->info().config_address()->attr("forum_id").to_int();
+				}
+			}
+
+			if(player_id != 0) {
+				LOG_SERVER << "Querying game history requested by player `" << player.name() << "` for player id `" << player_id << "`." << std::endl;
+				user_handler_->async_get_and_send_game_history(io_service_, *this, socket, player_id, offset);
+			}
+		}
+		return;
+	// Data to ignore.
 	} else if(
 		data.child("error") ||
 		data.child("side_secured") ||
