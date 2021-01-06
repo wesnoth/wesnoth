@@ -31,6 +31,7 @@
 #include "generators/map_generator.hpp"
 #include "gettext.hpp"
 #include "gui/dialogs/message.hpp"
+#include "gui/dialogs/outro.hpp"
 #include "gui/dialogs/transient_message.hpp"
 #include "gui/widgets/retval.hpp"
 #include "log.hpp"
@@ -335,6 +336,14 @@ LEVEL_RESULT campaign_controller::play_game()
 
 		// If there is no next scenario we're done now.
 		if(state_.get_scenario_id().empty()) {
+			// Don't show The End for multiplayer scenarios.
+			if(res == LEVEL_RESULT::VICTORY && !state_.classification().is_normal_mp_game()) {
+				preferences::add_completed_campaign(
+					state_.classification().campaign, state_.classification().difficulty);
+
+				gui2::dialogs::outro::display(state_.classification());
+			}
+
 			return res;
 		} else if(res == LEVEL_RESULT::OBSERVER_END && mp_info_ && !mp_info_->is_host) {
 			const int dlg_res = gui2::show_message(_("Game Over"),

@@ -36,7 +36,6 @@
 #include "gui/dialogs/multiplayer/mp_connect.hpp"
 #include "gui/dialogs/multiplayer/mp_host_game_prompt.hpp" // for host game prompt
 #include "gui/dialogs/multiplayer/mp_method_selection.hpp"
-#include "gui/dialogs/outro.hpp"
 #include "gui/dialogs/title_screen.hpp"      // for show_debug_clock_button
 #include "gui/dialogs/transient_message.hpp" // for show_transient_message
 #include "gui/widgets/retval.hpp"            // for window, etc
@@ -990,13 +989,6 @@ void game_launcher::launch_game(RELOAD_GAME_DATA reload)
 		campaign_controller ccontroller(state_);
 		LEVEL_RESULT result = ccontroller.play_game();
 		ai::manager::singleton_ = nullptr;
-		// don't show The End for multiplayer scenario
-		// change this if MP campaigns are implemented
-		if(result == LEVEL_RESULT::VICTORY && !state_.classification().is_normal_mp_game()) {
-			preferences::add_completed_campaign(state_.classification().campaign, state_.classification().difficulty);
-
-			gui2::dialogs::outro::display(state_.classification());
-		}
 	} catch(savegame::load_game_exception& e) {
 		load_data_ = std::move(e.data_);
 		// this will make it so next time through the title screen loop, this game is loaded
