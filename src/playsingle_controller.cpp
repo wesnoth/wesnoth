@@ -80,7 +80,7 @@ playsingle_controller::playsingle_controller(const config& level, saved_game& st
 	hotkey_handler_.reset(new hotkey_handler(*this, saved_game_));
 
 	// game may need to start in linger mode
-	linger_ = this->is_regular_game_end();
+	linger_ = is_regular_game_end();
 
 	plugins_context_->set_accessor_string("level_result", std::bind(&playsingle_controller::describe_result, this));
 	plugins_context_->set_accessor_int("turn", std::bind(&play_controller::turn, this));
@@ -234,7 +234,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(const config& level)
 
 	sound::commit_music_changes();
 
-	if(!this->is_skipping_replay() && !this->is_skipping_story()) {
+	if(!is_skipping_replay() && !is_skipping_story()) {
 		// Combine all the [story] tags into a single config. Handle this here since
 		// storyscreen::controller doesn't have a default constructor.
 		config cfg;
@@ -267,7 +267,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(const config& level)
 	try {
 		play_scenario_init();
 		// clears level config;
-		this->saved_game_.remove_snapshot();
+		saved_game_.remove_snapshot();
 
 		if(!is_regular_game_end() && !linger_) {
 			play_scenario_main_loop();
@@ -692,7 +692,7 @@ void playsingle_controller::update_viewing_player()
 		replay_controller_->update_viewing_player();
 	} else if(int side_num = play_controller::find_last_visible_team()) {
 		// Update viewing team in case it has changed during the loop.
-		if(side_num != this->gui_->viewing_side()) {
+		if(side_num != gui_->viewing_side()) {
 			update_gui_to_player(side_num - 1);
 		}
 	}

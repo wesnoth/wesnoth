@@ -416,7 +416,7 @@ void play_controller::init_side_begin()
 	mouse_handler_.set_side(current_side());
 
 	// If we are observers we move to watch next team if it is allowed
-	if((is_observer() && !current_team().get_disallow_observers()) || (current_team().is_local_human() && !this->is_replay())) {
+	if((is_observer() && !current_team().get_disallow_observers()) || (current_team().is_local_human() && !is_replay())) {
 		update_gui_to_player(current_side() - 1);
 	}
 
@@ -763,11 +763,11 @@ int play_controller::find_last_visible_team() const
 {
 	assert(current_side() <= static_cast<int>(get_teams().size()));
 	const int num_teams = get_teams().size();
-	const bool is_observer = this->is_observer();
+	const bool observer = is_observer();
 
 	for(int i = 0; i < num_teams; i++) {
 		const int team_num = modulo(current_side() - i, num_teams, 1);
-		if(is_team_visible(team_num, is_observer)) {
+		if(is_team_visible(team_num, observer)) {
 			return team_num;
 		}
 	}
@@ -1075,7 +1075,7 @@ void play_controller::do_consolesave(const std::string& filename)
 void play_controller::update_savegame_snapshot() const
 {
 	// note: this writes to level_ if this is not a replay.
-	this->saved_game_.set_snapshot(to_config());
+	saved_game_.set_snapshot(to_config());
 }
 
 game_events::wml_event_pump& play_controller::pump()
