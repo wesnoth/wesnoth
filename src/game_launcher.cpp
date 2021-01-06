@@ -118,7 +118,7 @@ game_launcher::game_launcher(const commandline_options& cmdline_opts)
 	, play_replay_(false)
 	, multiplayer_server_()
 	, jump_to_multiplayer_(false)
-	, jump_to_campaign_(false, false, -1, "", "")
+	, jump_to_campaign_{}
 	, jump_to_editor_(false)
 	, load_data_()
 {
@@ -146,24 +146,24 @@ game_launcher::game_launcher(const commandline_options& cmdline_opts)
 		preferences::set_core_id(*cmdline_opts_.core_id);
 	}
 	if(cmdline_opts_.campaign) {
-		jump_to_campaign_.jump_ = true;
-		jump_to_campaign_.campaign_id_ = *cmdline_opts_.campaign;
-		std::cerr << "selected campaign id: [" << jump_to_campaign_.campaign_id_ << "]\n";
+		jump_to_campaign_.jump = true;
+		jump_to_campaign_.campaign_id = *cmdline_opts_.campaign;
+		std::cerr << "selected campaign id: [" << jump_to_campaign_.campaign_id << "]\n";
 
 		if(cmdline_opts_.campaign_difficulty) {
-			jump_to_campaign_.difficulty_ = *cmdline_opts_.campaign_difficulty;
-			std::cerr << "selected difficulty: [" << jump_to_campaign_.difficulty_ << "]\n";
+			jump_to_campaign_.difficulty = *cmdline_opts_.campaign_difficulty;
+			std::cerr << "selected difficulty: [" << jump_to_campaign_.difficulty << "]\n";
 		} else {
-			jump_to_campaign_.difficulty_ = -1; // let the user choose the difficulty
+			jump_to_campaign_.difficulty = -1; // let the user choose the difficulty
 		}
 
 		if(cmdline_opts_.campaign_scenario) {
-			jump_to_campaign_.scenario_id_ = *cmdline_opts_.campaign_scenario;
-			std::cerr << "selected scenario id: [" << jump_to_campaign_.scenario_id_ << "]\n";
+			jump_to_campaign_.scenario_id = *cmdline_opts_.campaign_scenario;
+			std::cerr << "selected scenario id: [" << jump_to_campaign_.scenario_id << "]\n";
 		}
 
 		if(cmdline_opts_.campaign_skip_story) {
-			jump_to_campaign_.skip_story_ = true;
+			jump_to_campaign_.skip_story = true;
 		}
 	}
 	if(cmdline_opts_.clock)
@@ -360,7 +360,7 @@ bool game_launcher::init_lua_script()
 			/* Cancel all "jumps" to editor / campaign / multiplayer */
 			jump_to_multiplayer_ = false;
 			jump_to_editor_ = false;
-			jump_to_campaign_.jump_ = false;
+			jump_to_campaign_.jump = false;
 
 			std::string full_script((std::istreambuf_iterator<char>(*sf)), std::istreambuf_iterator<char>());
 
@@ -388,7 +388,7 @@ bool game_launcher::init_lua_script()
 			/* Cancel all "jumps" to editor / campaign / multiplayer */
 			jump_to_multiplayer_ = false;
 			jump_to_editor_ = false;
-			jump_to_campaign_.jump_ = false;
+			jump_to_campaign_.jump = false;
 
 			std::string full_plugin((std::istreambuf_iterator<char>(*sf)), std::istreambuf_iterator<char>());
 
@@ -746,18 +746,18 @@ bool game_launcher::new_campaign()
 
 std::string game_launcher::jump_to_campaign_id() const
 {
-	return jump_to_campaign_.campaign_id_;
+	return jump_to_campaign_.campaign_id;
 }
 
 bool game_launcher::goto_campaign()
 {
-	if(jump_to_campaign_.jump_) {
+	if(jump_to_campaign_.jump) {
 		if(new_campaign()) {
-			state_.set_skip_story(jump_to_campaign_.skip_story_);
-			jump_to_campaign_.jump_ = false;
+			state_.set_skip_story(jump_to_campaign_.skip_story);
+			jump_to_campaign_.jump = false;
 			launch_game(NO_RELOAD_DATA);
 		} else {
-			jump_to_campaign_.jump_ = false;
+			jump_to_campaign_.jump = false;
 			return false;
 		}
 	}

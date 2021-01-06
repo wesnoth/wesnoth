@@ -37,19 +37,20 @@ namespace preferences { class advanced_manager; }
 
 struct jump_to_campaign_info
 {
-public:
-	jump_to_campaign_info(bool jump, bool skip_story, int difficulty, const std::string& campaign_id,const std::string& scenario_id)
-		: jump_(jump)
-		, skip_story_(skip_story)
-		, difficulty_(difficulty)
-		, campaign_id_(campaign_id)
-		, scenario_id_(scenario_id)
-	{
-	}
-	bool jump_;
-	bool skip_story_;
-	int difficulty_;
-	std::string campaign_id_,scenario_id_;
+	/** Whether the game should immediately start a campaign. */
+	bool jump = false;
+
+	/** Whether the story screen should be skipped. */
+	bool skip_story = false;
+
+	/** The difficulty at which to launch the campaign. */
+	int difficulty = -1;
+
+	/** The ID of the campaign to launch. */
+	std::string campaign_id = "";
+
+	/** The ID of the scenario within the campaign to jump to. */
+	std::string scenario_id = "";
 };
 
 class game_launcher
