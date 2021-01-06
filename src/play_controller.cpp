@@ -202,14 +202,6 @@ play_controller::~play_controller()
 	clear_resources();
 }
 
-struct throw_end_level
-{
-	void operator()(const config&) const
-	{
-		throw_quit_game_exception();
-	}
-};
-
 void play_controller::init(const config& level)
 {
 	gui2::dialogs::loading_screen::display([this, &level]() {
@@ -291,7 +283,7 @@ void play_controller::init(const config& level)
 		plugins_context_.reset(new plugins_context("Game"));
 		plugins_context_->set_callback("save_game", [this](const config& cfg) { save_game_auto(cfg["filename"]); }, true);
 		plugins_context_->set_callback("save_replay", [this](const config& cfg) { save_replay_auto(cfg["filename"]); }, true);
-		plugins_context_->set_callback("quit", throw_end_level(), false);
+		plugins_context_->set_callback("quit", [](const config&) { throw_quit_game_exception(); }, false);
 		plugins_context_->set_accessor_string("scenario_name", [this](config) { return get_scenario_name(); });
 	});
 
