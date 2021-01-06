@@ -60,6 +60,7 @@ public:
 	~game_launcher();
 
 	enum class mp_mode { CONNECT, HOST, LOCAL };
+	enum class reload_mode { RELOAD_DATA, NO_RELOAD_DATA };
 
 	/**
 	 * Status code after running a unit test, should match the run_wml_tests
@@ -106,8 +107,7 @@ public:
 	bool play_multiplayer_commandline();
 	bool change_language();
 
-	enum RELOAD_GAME_DATA { RELOAD_DATA, NO_RELOAD_DATA };
-	void launch_game(RELOAD_GAME_DATA reload=RELOAD_DATA);
+	void launch_game(reload_mode reload = reload_mode::RELOAD_DATA);
 	void play_replay();
 
 	editor::EXIT_STATUS start_editor() { return start_editor(""); }

@@ -754,7 +754,7 @@ bool game_launcher::goto_campaign()
 		if(new_campaign()) {
 			state_.set_skip_story(jump_to_campaign_.skip_story);
 			jump_to_campaign_.jump = false;
-			launch_game(NO_RELOAD_DATA);
+			launch_game(reload_mode::NO_RELOAD_DATA);
 		} else {
 			jump_to_campaign_.jump = false;
 			return false;
@@ -964,7 +964,7 @@ bool game_launcher::change_language()
 	return true;
 }
 
-void game_launcher::launch_game(RELOAD_GAME_DATA reload)
+void game_launcher::launch_game(reload_mode reload)
 {
 	assert(!load_data_);
 	if(play_replay_) {
@@ -975,7 +975,7 @@ void game_launcher::launch_game(RELOAD_GAME_DATA reload)
 	gui2::dialogs::loading_screen::display([this, reload]() {
 		gui2::dialogs::loading_screen::progress(loading_stage::load_data);
 
-		if(reload == RELOAD_DATA) {
+		if(reload == reload_mode::RELOAD_DATA) {
 			try {
 				game_config_manager::get()->load_game_config_for_game(
 					state_.classification(), state_.get_scenario_id());

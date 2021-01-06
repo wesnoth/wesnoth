@@ -880,11 +880,9 @@ static int do_gameloop(const std::vector<std::string>& args)
 
 		cursor::set(cursor::NORMAL);
 
-		game_launcher::RELOAD_GAME_DATA should_reload = game_launcher::RELOAD_DATA;
-
 		// If loading a game, skip the titlescreen entirely
 		if(game->has_load_data() && game->load_game()) {
-			game->launch_game(should_reload);
+			game->launch_game(game_launcher::reload_mode::RELOAD_DATA);
 			continue;
 		}
 
@@ -923,7 +921,7 @@ static int do_gameloop(const std::vector<std::string>& args)
 			gui2::dialogs::end_credits::display();
 			break;
 		case gui2::dialogs::title_screen::LAUNCH_GAME:
-			game->launch_game(should_reload);
+			game->launch_game(game_launcher::reload_mode::RELOAD_DATA);
 			break;
 		case gui2::dialogs::title_screen::REDRAW_BACKGROUND:
 			break;
