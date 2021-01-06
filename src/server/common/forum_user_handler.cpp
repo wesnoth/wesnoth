@@ -207,6 +207,14 @@ std::string fuh::get_tournaments(){
 	return conn_.get_tournaments();
 }
 
+void fuh::async_get_and_send_game_history(boost::asio::io_service& io_service, server_base& s_base, socket_ptr player_socket, int player_id, int offset) {
+	boost::asio::post([this, &s_base, player_socket, player_id, offset, &io_service] { 
+		boost::asio::post(io_service, [player_socket, &s_base, doc = conn_.get_game_history(player_id, offset)]{
+			s_base.async_send_doc_queued(player_socket, *doc);
+		});
+	 });
+}
+
 void fuh::db_insert_game_info(const std::string& uuid, int game_id, const std::string& version, const std::string& name, int reload, int observers, int is_public, int has_password){
 	conn_.insert_game_info(uuid, game_id, version, name, reload, observers, is_public, has_password);
 }

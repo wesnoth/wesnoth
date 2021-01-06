@@ -121,6 +121,18 @@ public:
 	std::string get_tournaments();
 
 	/**
+	 * Runs an asynchronous query to fetch the user's game history data.
+	 * The result is then posted back to the main boost::asio thread to be sent to the requesting player.
+	 * 
+	 * @param io_service The boost io_service to use to post the query results back to the main boost::asio thread.
+	 * @param s_base The server instance the player is connected to.
+	 * @param player_socket The socket use to communicate with the player's client.
+	 * @param player_id The forum ID of the player to get the game history for.
+	 * @param offset Where to start returning rows to the client from the query results.
+	 */
+	void async_get_and_send_game_history(boost::asio::io_service& io_service, server_base& s_base, socket_ptr player_socket, int player_id, int offset);
+
+	/**
 	 * Inserts game related information.
 	 * 
 	 * @param uuid The value returned by @ref get_uuid().
