@@ -16,13 +16,12 @@
 
 #pragma once
 
-#include <iosfwd>
+#include "server/common/simple_wml.hpp"
 
+#include <ctime>
+#include <iosfwd>
 #include <map>
 #include <string>
-#include <ctime>
-
-#include "server/common/simple_wml.hpp"
 
 class metrics
 {
@@ -33,8 +32,7 @@ public:
 	void service_request();
 	void no_requests();
 
-	void record_sample(const simple_wml::string_span& name,
-	                   clock_t parsing_time, clock_t processing_time);
+	void record_sample(const simple_wml::string_span& name, clock_t parsing_time, clock_t processing_time);
 
 	void game_terminated(const std::string& reason);
 
@@ -42,15 +40,15 @@ public:
 	std::ostream& requests(std::ostream& out) const;
 	friend std::ostream& operator<<(std::ostream& out, metrics& met);
 
-	struct sample {
-
-		sample() :
-			name(),
-			nsamples(0),
-			parsing_time(0),
-			processing_time(0),
-			max_parsing_time(0),
-			max_processing_time(0)
+	struct sample
+	{
+		sample()
+			: name()
+			, nsamples(0)
+			, parsing_time(0)
+			, processing_time(0)
+			, max_parsing_time(0)
+			, max_processing_time(0)
 		{
 		}
 
@@ -73,7 +71,7 @@ private:
 	int nrequests_;
 	int nrequests_waited_;
 	const std::time_t started_at_;
-	std::map<std::string,int> terminations_;
+	std::map<std::string, int> terminations_;
 };
 
 std::ostream& operator<<(std::ostream& out, metrics& met);

@@ -139,6 +139,7 @@ struct one_item : public virtual generator_base
 	 * @pre                       @p select == @c true
 	 *
 	 * @param index               The item to select.
+	 * @param select              Should always be true.
 	 */
 	void select_item(const unsigned index, const bool select) override
 	{

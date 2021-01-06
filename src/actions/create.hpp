@@ -32,14 +32,14 @@ class unit_type;
 
 namespace actions {
 
-/// The possible results of finding a location for recruiting (or recalling).
+/** The possible results of finding a location for recruiting (or recalling). */
 enum RECRUIT_CHECK {
-	RECRUIT_NO_LEADER,         	/// No leaders exist
-	RECRUIT_NO_ABLE_LEADER,    	/// No leaders able to recall/recruit the given unit/type.
-	RECRUIT_NO_KEEP_LEADER,    	/// No able leaders are on a keep.
-	RECRUIT_NO_VACANCY,        	/// No vacant castle tiles around a leader on a keep.
-	RECRUIT_ALTERNATE_LOCATION,	/// Recruitment OK, but not at the specified location.
-	RECRUIT_OK                 	/// Recruitment OK.
+	RECRUIT_NO_LEADER,         	/** No leaders exist */
+	RECRUIT_NO_ABLE_LEADER,    	/** No leaders able to recall/recruit the given unit/type. */
+	RECRUIT_NO_KEEP_LEADER,    	/** No able leaders are on a keep. */
+	RECRUIT_NO_VACANCY,        	/** No vacant castle tiles around a leader on a keep. */
+	RECRUIT_ALTERNATE_LOCATION,	/** Recruitment OK, but not at the specified location. */
+	RECRUIT_OK                 	/** Recruitment OK. */
 };
 
 /**
@@ -145,7 +145,16 @@ typedef std::tuple<bool /*event modified*/, int /*previous village owner side*/,
  * Place a unit into the game.
  * The unit will be placed on @a recruit_location, which should be retrieved
  * through a call to recruit_location().
+ * @param u the unit.
+ * @param recruit_location the location it was recruited onto.
+ * @param recruited_from the location it was recruited from.
+ * @param cost the unit's cost.
+ * @param is_recall whether the unit was recalled.
  * @param facing the desired facing for the unit, map_location::NDIRECTIONS to determine facing automatically.
+ * @param show 
+ * @param fire_event whether to fire events for the unit placement.
+ * @param full_movement whether the unit starts with full movement points.
+ * @param wml_triggered whether this was triggered via WML.
  * @returns true if an event (or fog clearing) has mutated the game state.
  */
 place_recruit_result place_recruit(unit_ptr u, const map_location &recruit_location, const map_location& recruited_from,
@@ -169,7 +178,13 @@ void recruit_unit(const unit_type & u_type, int side_num, const map_location & l
  * found, and it handles moving the unit to the board, paying gold, firing events,
  * tracking statistics, updating the undo stack (unless @a use_undo is false), and
  * recording the recall (unless @a use_recorder is false).
+ * @param id the id of the unit to recall.
+ * @param current_team the team to recall the unit to.
+ * @param loc the location it was recalled onto.
+ * @param from the location it was recalled from.
  * @param facing the desired facing for the unit, map_location::NDIRECTIONS to determine facing automatically.
+ * @param show 
+ * @param use_undo if it's possible to undo the recall.
  * @returns false if the recall could not be found in the team's recall list.
  */
 bool recall_unit(const std::string & id, team & current_team,

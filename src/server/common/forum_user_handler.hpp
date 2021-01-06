@@ -21,72 +21,205 @@
 #include <memory>
 #include <ctime>
 
-// The [user_handler] section in the server configuration
-// file could look like this:
-//
-//[user_handler]
-//	db_name=phpbb3
-//	db_host=localhost
-//	db_user=root
-//	db_password=secret
-//	db_users_table=users
-//	db_banlist_table=banlist
-//	db_extra_table=extra_data
-//[/user_handler]
-
 /**
- * A user_handler implementation to link the server with a phpbb3 forum.
+ * A class to handle the non-SQL logic for connecting to the phpbb forum database.
  */
-class fuh : public user_handler {
-	public:
-		fuh(const config& c);
+class fuh : public user_handler
+{
+public:
+	/**
+	 * Reads wesnothd's config for the data needed to initialize this class and @ref dbconn.
+	 */
+	fuh(const config& c);
 
-		bool login(const std::string& name, const std::string& password, const std::string& seed);
+	/**
+	 * Retrieves the player's hashed password from the phpbb forum database and checks if it matches the hashed password sent by the client.
+	 * 
+	 * @param name The username used to login.
+	 * @param password The hashed password sent by the client.
+	 * @param seed The nonce created for this login attempt.
+	 *             @see server::send_password_request().
+	 * @return Whether the hashed password sent by the client matches the hash retrieved from the phpbb database.
+	 */
+	bool login(const std::string& name, const std::string& password, const std::string& seed);
 
-		/**
-		 * Needed because the hashing algorithm used by phpbb requires some info
-		 * from the original hash to recreate the same hash
-		 *
-		 * Return an empty string if an error occurs
-		 */
-		std::string extract_salt(const std::string& name);
+	/**
+	 * Needed because the hashing algorithm used by phpbb requires some info
+	 * from the original hash to recreate the same hash
+	 *
+	 * @return the salt, or an empty string if an error occurs.
+	 */
+	std::string extract_salt(const std::string& name);
 
-		void user_logged_in(const std::string& name);
+	/**
+	 * Sets the last login time to the current time.
+	 * 
+	 * @param name The player's username.
+	 */
+	void user_logged_in(const std::string& name);
 
-		bool user_exists(const std::string& name);
+	/**
+	 * @param name The player's username.
+	 * @return Whether the player's username is exists in the forum database.
+	 */
+	bool user_exists(const std::string& name);
 
-		bool user_is_active(const std::string& name);
+	/**
+	 * @param name The player's username.
+	 * @return The phpbb USER_ID value created when the player registers on the forums.
+	 * @note wesnothd allows the same player to login with multiple clients using the same username but with different case letters (ie: abc and ABC).
+	 *       This means that this value is not necessarily unique among all connected clients.
+	 */
+	long get_forum_id(const std::string& name);
 
-		bool user_is_moderator(const std::string& name);
-		void set_is_moderator(const std::string& name, const bool& is_moderator);
+	/**
+	 * @param name The player's username.
+	 * @return Whether the username has been activated.
+	 */
+	bool user_is_active(const std::string& name);
 
-		ban_info user_is_banned(const std::string& name, const std::string& addr);
+	/**
+	 * @param name The player's username.
+	 * @return Whether the user is a moderator or not.
+	 * @note This can be either from the extra table or whether the player is a member of the MP Moderators groups.
+	 */
+	bool user_is_moderator(const std::string& name);
 
-		std::string user_info(const std::string& name);
+	/**
+	 * Sets or unsets whether the player should be considered a moderator in the extra table.
+	 * 
+	 * @param name The player's username.
+	 * @param is_moderator The moderator value to set.
+	 */
+	void set_is_moderator(const std::string& name, const bool& is_moderator);
 
-		bool use_phpbb_encryption() const { return true; }
+	/**
+	 * @param name The player's username.
+	 * @param addr The IP address being checked.
+	 * @return Whether the user is banned, and if so then how long. See also @ref user_handler::ban_info().
+	 * @note This checks for bans by username, the email associated to the username, and IP address.
+	 * @note Glob IP and email address bans are NOT supported yet since they require a different kind of query that isn't supported
+	 *       by our prepared SQL statement API right now. However, they are basically never used on forums.wesnoth.org,
+	 *       so this shouldn't be a problem.
+	 */
+	ban_info user_is_banned(const std::string& name, const std::string& addr);
 
-		std::string get_uuid();
-		std::string get_tournaments();
-		void db_insert_game_info(const std::string& uuid, int game_id, const std::string& version, const std::string& name, int reload, int observers, int is_public, int has_password);
-		void db_update_game_end(const std::string& uuid, int game_id, const std::string& replay_location);
-		void db_insert_game_player_info(const std::string& uuid, int game_id, const std::string& username, int side_number, int is_host, const std::string& faction, const std::string& version, const std::string& source, const std::string& current_user);
-		void db_insert_game_content_info(const std::string& uuid, int game_id, const std::string& type, const std::string& id, const std::string& source, const std::string& version);
-		void db_set_oos_flag(const std::string& uuid, int game_id);
+	/**
+	 * @param name The player's username.
+	 * @return A string containing basic information about the player.
+	 */
+	std::string user_info(const std::string& name);
 
-		void async_test_query(boost::asio::io_service& io_service, int limit);
+	/**
+	 * @return A unique UUID from the backing database.
+	 */
+	std::string get_uuid();
 
-	private:
-		dbconn conn_;
-		std::string db_users_table_;
-		std::string db_extra_table_;
-		int mp_mod_group_;
+	/**
+	 * @return A list of active tournaments pulled from the Tournaments subforum.
+	 */
+	std::string get_tournaments();
 
-		std::string get_hash(const std::string& user);
-		std::time_t get_lastlogin(const std::string& user);
-		std::time_t get_registrationdate(const std::string& user);
-		bool is_inactive(const std::string& user);
-		void set_lastlogin(const std::string& user, const std::time_t& lastlogin);
-		bool is_user_in_group(const std::string& name, int group_id);
+	/**
+	 * Inserts game related information.
+	 * 
+	 * @param uuid The value returned by @ref get_uuid().
+	 * @param game_id The game's db_id.
+	 * @param version The version of wesnothd running this game.
+	 * @param name The game's name as entered by the user.
+	 * @param reload Whether this game was loaded from the save of a previous game.
+	 * @param observers Whether observers are allowed.
+	 * @param is_public Whether the game's replay will be publicly available.
+	 * @param has_password Whether the game has a password.
+	 */
+	void db_insert_game_info(const std::string& uuid, int game_id, const std::string& version, const std::string& name, int reload, int observers, int is_public, int has_password);
+
+	/**
+	 * Update the game related information when the game ends.
+	 * 
+	 * @param uuid The value returned by @ref get_uuid().
+	 * @param game_id The game's db_id.
+	 * @param replay_location The location of the game's publicly available replay.
+	 */
+	void db_update_game_end(const std::string& uuid, int game_id, const std::string& replay_location);
+
+	/**
+	 * Inserts player information per side.
+	 * 
+	 * @param uuid The value returned by @ref get_uuid().
+	 * @param game_id The game's db_id.
+	 * @param username The username of the player who owns this side.
+	 * @param side_number This side's side number.
+	 * @param is_host Whether this player is the host.
+	 * @param faction The name of this side's faction.
+	 * @param version The version of Wesnoth this player is using.
+	 * @param source The source where this player downloaded Wesnoth (ie: Steam, SourceForge, etc).
+	 * @param current_user The player currently in control of this side.
+	 */
+	void db_insert_game_player_info(const std::string& uuid, int game_id, const std::string& username, int side_number, int is_host, const std::string& faction, const std::string& version, const std::string& source, const std::string& current_user);
+
+	/**
+	 * Inserts information about the content being played.
+	 * 
+	 * @param uuid The value returned by @ref get_uuid().
+	 * @param game_id The game's db_id.
+	 * @param type The add-on content's type (ie: era, scenario, etc).
+	 * @param name The name of the content.
+	 * @param id The id of the content.
+	 * @param source The source add-on for the content.
+	 * @param version The version of the source add-on.
+	 */
+	void db_insert_game_content_info(const std::string& uuid, int game_id, const std::string& type, const std::string& name, const std::string& id, const std::string& source, const std::string& version);
+
+	/**
+	 * Sets the OOS flag in the database if wesnothd is told by a client it has detected an OOS error.
+	 * 
+	 * @param uuid The value returned by @ref get_uuid().
+	 * @param game_id The game's db_id.
+	 */
+	void db_set_oos_flag(const std::string& uuid, int game_id);
+
+	/**
+	 * A simple test query for running a query asynchronously.
+	 * The main point is that it takes a meaningful amount of time to complete so that it's easy to see that multiple are running at once and are finishing out of order.
+	 * 
+	 * @param io_service The boost io_service to use to post the query results back to the main boost::asio thread.
+	 * @param limit How many recursions to make in the query.
+	 */
+	void async_test_query(boost::asio::io_service& io_service, int limit);
+
+private:
+	/** An instance of the class responsible for executing the queries and handling the database connection. */
+	dbconn conn_;
+	/** The name of the phpbb users table */
+	std::string db_users_table_;
+	/** The name of the extras custom table, not part of a phpbb database */
+	std::string db_extra_table_;
+	/** The group ID of the forums MP Moderators group */
+	int mp_mod_group_;
+
+	/**
+	 * @param user The player's username.
+	 * @return The player's hashed password from the phpbb forum database.
+	 */
+	std::string get_hash(const std::string& user);
+
+	/**
+	 * @param user The player's username.
+	 * @return The player's last login time.
+	 */
+	std::time_t get_lastlogin(const std::string& user);
+
+	/**
+	 * @param user The player's username.
+	 * @return The player's forum registration date.
+	 */
+	std::time_t get_registrationdate(const std::string& user);
+
+	/**
+	 * @param name The player's username.
+	 * @param group_id The forum group ID to check if the user is part of.
+	 * @return Whether the user is a member of the forum group.
+	 */
+	bool is_user_in_group(const std::string& name, int group_id);
 };
-

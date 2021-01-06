@@ -21,6 +21,7 @@
 
 #include "config.hpp"
 #include "formula/string_utils.hpp"
+#include "game_config_manager.hpp"
 #include "log.hpp"
 #include "map/exception.hpp"
 #include "serialization/parser.hpp"
@@ -100,15 +101,21 @@ void gamemap::write_terrain(const map_location &loc, config& cfg) const
 	cfg["terrain"] = t_translation::write_terrain_code(get_terrain(loc));
 }
 
-gamemap::gamemap(const ter_data_cache& tdata, const std::string& data):
-		tiles_(1, 1),
-		tdata_(tdata),
-		villages_(),
-		w_(-1),
-		h_(-1)
+gamemap::gamemap(const std::string& data)
+	: tiles_(1, 1)
+	, tdata_()
+	, villages_()
+	, w_(-1)
+	, h_(-1)
 {
-	DBG_G << "loading map: '" << data << "'\n";
+	if(const auto* gcm = game_config_manager::get()) {
+		tdata_ = gcm->terrain_types();
+	} else {
+		// Should only be encountered in unit tests
+		tdata_ = std::make_shared<terrain_type_data>(game_config_view::wrap({}));
+	}
 
+	DBG_G << "loading map: '" << data << "'\n";
 	read(data);
 }
 

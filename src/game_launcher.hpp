@@ -22,7 +22,9 @@
 #include "picture.hpp"               // for manager
 #include "preferences/game.hpp"      // for manager
 #include "saved_game.hpp"            // for saved_game
+#include "savegame.hpp"              // for clean_saves, etc
 #include "sound.hpp"                 // for music_thinker
+#include "utils/optional_fwd.hpp"
 
 #include <string>                       // for string
 #include <vector>                       // for vector
@@ -31,7 +33,6 @@ class commandline_options;
 class config;
 class CVideo;
 
-namespace savegame { struct load_game_metadata; }
 namespace preferences { class advanced_manager; }
 
 struct jump_to_campaign_info
@@ -57,7 +58,7 @@ public:
 	game_launcher(const commandline_options& cmdline_opts);
 	~game_launcher();
 
-	enum mp_selection {MP_CONNECT, MP_HOST, MP_LOCAL};
+	enum class mp_mode { CONNECT, HOST, LOCAL };
 
 	/**
 	 * Status code after running a unit test, should match the run_wml_tests
@@ -83,16 +84,14 @@ public:
 	bool play_test();
 	bool play_screenshot_mode();
 	bool play_render_image_mode();
-	/// Runs unit tests specified on the command line
+	/** Runs unit tests specified on the command line */
 	unit_test_result unit_test();
 
-	bool is_loading() const;
-	void clear_loaded_game();
+	bool has_load_data() const;
 	bool load_game();
-	void set_tutorial();
 	void set_test(const std::string& id);
 
-	/// Return the ID of the campaign to jump to (skipping the main menu).
+	/** Return the ID of the campaign to jump to (skipping the main menu). */
 	std::string jump_to_campaign_id() const;
 	bool new_campaign();
 	bool goto_campaign();
@@ -102,11 +101,9 @@ public:
 	bool jump_to_editor() const { return jump_to_editor_; }
 
 	void select_mp_server(const std::string& server) { multiplayer_server_ = server; }
-	bool play_multiplayer(mp_selection res);
+	bool play_multiplayer(mp_mode mode);
 	bool play_multiplayer_commandline();
 	bool change_language();
-
-	void show_preferences();
 
 	enum RELOAD_GAME_DATA { RELOAD_DATA, NO_RELOAD_DATA };
 	void launch_game(RELOAD_GAME_DATA reload=RELOAD_DATA);
@@ -114,20 +111,22 @@ public:
 
 	editor::EXIT_STATUS start_editor() { return start_editor(""); }
 
-	void start_wesnothd();
-
 	const commandline_options & opts() const { return cmdline_opts_; }
-private:
-	game_launcher(const game_launcher&);
-	void operator=(const game_launcher&);
 
-	void mark_completed_campaigns(std::vector<config>& campaigns);
+private:
+	game_launcher(const game_launcher&) = delete;
+	game_launcher& operator=(const game_launcher&) = delete;
+
+	void clear_loaded_game();
+	void start_wesnothd();
 
 	editor::EXIT_STATUS start_editor(const std::string& filename);
 	unit_test_result pass_victory_or_defeat(LEVEL_RESULT res);
 
-	/// Internal to the implementation of unit_test(). If a single instance of
-	/// Wesnoth is running multiple unit tests, this gets called once per test.
+	/**
+	 * Internal to the implementation of unit_test(). If a single instance of
+	 * Wesnoth is running multiple unit tests, this gets called once per test.
+	 */
 	unit_test_result single_unit_test();
 
 	const commandline_options& cmdline_opts_;
@@ -155,5 +154,5 @@ private:
 	jump_to_campaign_info jump_to_campaign_;
 
 	bool jump_to_editor_;
-	std::unique_ptr<savegame::load_game_metadata> load_data_;
+	utils::optional<savegame::load_game_metadata> load_data_;
 };

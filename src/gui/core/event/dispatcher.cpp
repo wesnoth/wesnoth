@@ -201,7 +201,7 @@ void connect_signal_on_draw(dispatcher& dispatcher, const signal_function& signa
 /**
  * @page event_dispatching Event dispatching.
  *
- * @section introduction Introduction
+ * @section introduction-event_dispatching Introduction
  *
  * This page describes how the new event handling system works, since the
  * system is still work in progress it might be out of date with the actual
@@ -261,7 +261,7 @@ void connect_signal_on_draw(dispatcher& dispatcher, const signal_function& signa
  * tries sees where the event sticks. This following sections describe how the
  * events are tried for this usage scenario.
  *
- * @subsubsection unhandled Unhandled event
+ * @subsubsection unhandled-all_queues Unhandled event
  *
  * - W pre child
  * - C pre child
@@ -273,13 +273,13 @@ void connect_signal_on_draw(dispatcher& dispatcher, const signal_function& signa
  * - C post child
  * - B post child
  *
- * @subsubsection mouse_down Mouse down
+ * @subsubsection mouse_down-all_queues Mouse down
  *
  * - W pre child
  * - C pre child -> set focus -> !handled
  * - B pre child -> set pressed state -> handled
  *
- * @subsubsection mouse_wheel Mouse wheel
+ * @subsubsection mouse_wheel-all_queues Mouse wheel
  *
  * - W pre child
  * - C pre child
@@ -296,7 +296,7 @@ void connect_signal_on_draw(dispatcher& dispatcher, const signal_function& signa
  * the last possible widget and to the child of the last widget. The pre queue
  * will be send from top to bottom, the post queue from bottom to top.
  *
- * @subsubsection unhandled Unhandled event
+ * @subsubsection unhandled-chain Unhandled event
  *
  * - W pre child
  * - C pre child
@@ -304,13 +304,13 @@ void connect_signal_on_draw(dispatcher& dispatcher, const signal_function& signa
  * - C post child
  * - W post child
  *
- * @subsubsection mouse_down Mouse down
+ * @subsubsection mouse_down-chain Mouse down
  *
  * - W pre child
  * - C pre child -> set focus -> !handled
  * - B child -> set pressed state -> handled
  *
- * @subsubsection mouse_wheel Mouse wheel
+ * @subsubsection mouse_wheel-chain Mouse wheel
  *
  * - W pre child
  * - C pre child

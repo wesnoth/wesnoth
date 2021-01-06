@@ -20,8 +20,6 @@
 #include "server/common/simple_wml.hpp"
 #include "utils/make_enum.hpp"
 
-#include <boost/ptr_container/ptr_vector.hpp>
-
 #include <map>
 #include <vector>
 
@@ -31,6 +29,7 @@ namespace wesnothd
 {
 typedef std::vector<socket_ptr> user_vector;
 typedef std::vector<socket_ptr> side_vector;
+class server;
 
 class game
 {
@@ -39,9 +38,9 @@ public:
 		(HUMAN, "human")
 		(AI, "ai")
 		(EMPTY, "null")
-	)
+	);
 
-	game(player_connections& player_connections,
+	game(wesnothd::server& server, player_connections& player_connections,
 			const socket_ptr& host,
 			const std::string& name = "",
 			bool save_replays = false,
@@ -243,8 +242,8 @@ public:
 	 */
 	bool describe_slots();
 
-	void send_server_message_to_all(const char* message, const socket_ptr& exclude = socket_ptr()) const;
-	void send_server_message_to_all(const std::string& message, const socket_ptr& exclude = socket_ptr()) const
+	void send_server_message_to_all(const char* message, const socket_ptr& exclude = socket_ptr());
+	void send_server_message_to_all(const std::string& message, const socket_ptr& exclude = socket_ptr())
 	{
 		send_server_message_to_all(message.c_str(), exclude);
 	}
@@ -264,11 +263,12 @@ public:
 		send_and_record_server_message(message.c_str(), exclude);
 	}
 
-	void send_data(
-			simple_wml::document& data, const socket_ptr& exclude = socket_ptr(), std::string packet_type = "") const;
+	template<typename Container>
+	void send_to_players(simple_wml::document& data, const Container& players, socket_ptr exclude = socket_ptr());
+	void send_data(simple_wml::document& data, const socket_ptr& exclude = socket_ptr(), std::string packet_type = "");
 
 	void clear_history();
-	void record_data(simple_wml::document* data);
+	void record_data(std::unique_ptr<simple_wml::document> data);
 	void save_replay();
 
 	/** The full scenario data. */
@@ -341,7 +341,7 @@ public:
 private:
 	// forbidden operations
 	game(const game&) = delete;
-	void operator=(const game&) = delete;
+	game& operator=(const game&) = delete;
 
 	std::size_t current_side() const
 	{
@@ -387,16 +387,20 @@ private:
 			const socket_ptr& sock,
 			const std::string& player_name,
 			const bool player_left = true);
+	std::unique_ptr<simple_wml::document> change_controller_type(const std::size_t side_num,
+			const socket_ptr& sock,
+			const std::string& player_name);
 	void transfer_ai_sides(const socket_ptr& player);
 	void send_leave_game(const socket_ptr& user) const;
 
 	/**
-		@param sides a comma sperated list of side numbers to which the package should be sent,
-	*/
+	 * @param data the data to be sent to the sides.
+	 * @param sides a comma sperated list of side numbers to which the package should be sent.
+	 * @param exclude sides to not send the data to.
+	 */
 	void send_data_sides(simple_wml::document& data,
 			const simple_wml::string_span& sides,
-			const socket_ptr& exclude = socket_ptr(),
-			std::string packet_type = "") const;
+			const socket_ptr& exclude = socket_ptr());
 
 	void send_data_observers(
 			simple_wml::document& data, const socket_ptr& exclude = socket_ptr(), std::string packet_type = "") const;
@@ -405,8 +409,8 @@ private:
 	 * Send [observer] tags of all the observers in the game to the user or
 	 * everyone if none given.
 	 */
-	void send_observerjoins(const socket_ptr& sock = socket_ptr()) const;
-	void send_observerquit(const socket_ptr& observer) const;
+	void send_observerjoins(const socket_ptr& sock = socket_ptr());
+	void send_observerquit(const socket_ptr& observer);
 	void send_history(const socket_ptr& sock) const;
 
 	/** In case of a host transfer, notify the new host about its status. */
@@ -447,7 +451,7 @@ private:
 	 *
 	 * Only sends data if the game is initialized but not yet started.
 	 */
-	void send_user_list(const socket_ptr& exclude = socket_ptr()) const;
+	void send_user_list(const socket_ptr& exclude = socket_ptr());
 
 	/** Returns the name of the user or "(unfound)". */
 	std::string username(const socket_ptr& pl) const;
@@ -467,6 +471,7 @@ private:
 	/** Helps debugging controller tweaks. */
 	std::string debug_sides_info() const;
 
+	wesnothd::server& server;
 	player_connections& player_connections_;
 
 	// used for unique identification of game instances within wesnothd
@@ -521,8 +526,7 @@ private:
 	simple_wml::document level_;
 
 	/** Replay data. */
-	typedef boost::ptr_vector<simple_wml::document> history;
-	mutable history history_;
+	mutable std::vector<std::unique_ptr<simple_wml::document>> history_;
 
 	/** Pointer to the game's description in the games_and_users_list_. */
 	simple_wml::node* description_;
@@ -535,9 +539,11 @@ private:
 	// IP ban list and name ban list
 	std::vector<std::string> bans_;
 	std::vector<std::string> name_bans_;
-	/// in multiplayer campaigns it can happen that some players are still in the previousl scenario
-	/// keep track of those players because processing certain
-	/// input from those side wil lead to error (oos)
+	/**
+	 * in multiplayer campaigns it can happen that some players are still in the previous scenario
+	 * keep track of those players because processing certain
+	 * input from those side wil lead to error (oos)
+	 */
 	std::set<socket_ptr> players_not_advanced_;
 
 	std::string termination_;

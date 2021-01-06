@@ -38,6 +38,7 @@
 #include "resources.hpp"
 #include "team.hpp"
 #include "terrain/movement.hpp"
+#include "terrain/type_data.hpp"
 #include "units/attack_type.hpp"
 #include "units/types.hpp"
 #include "units/helper.hpp"
@@ -150,7 +151,7 @@ static inline std::string get_mp_tooltip(int total_movement, std::function<int (
 	std::ostringstream tooltip;
 	tooltip << "<big>" << _("Movement Costs:") << "</big>";
 
-	ter_data_cache tdata = help::load_terrain_types_data();
+	std::shared_ptr<terrain_type_data> tdata = help::load_terrain_types_data();
 
 	if(!tdata) {
 		return "";

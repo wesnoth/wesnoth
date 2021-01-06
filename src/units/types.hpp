@@ -68,9 +68,11 @@ public:
 
 	~unit_type();
 
-	/// Records the status of the lazy building of unit types.
-	/// These are in order of increasing levels of being built.
-	/// HELP_INDEX is already defined in a windows header under some conditions.
+	/**
+	 * Records the status of the lazy building of unit types.
+	 * These are in order of increasing levels of being built.
+	 * HELP_INDEX is already defined in a windows header under some conditions
+	 */
 	enum BUILD_STATUS {NOT_BUILT, CREATED, VARIATIONS, HELP_INDEXED, FULL};
 
 	/**
@@ -82,22 +84,24 @@ public:
 	static void check_id(std::string& id);
 
 private: // These will be called by build().
-	/// Load data into an empty unit_type (build to FULL).
+	/** Load data into an empty unit_type (build to FULL). */
 	void build_full(const movement_type_map &movement_types,
 		const race_map &races, const config_array_view &traits);
-	/// Partially load data into an empty unit_type (build to HELP_INDEXED).
+	/** Partially load data into an empty unit_type (build to HELP_INDEXED). */
 	void build_help_index(const movement_type_map &movement_types,
 		const race_map &races, const config_array_view &traits);
-	/// Load the most needed data into an empty unit_type (build to CREATE).
+	/** Load the most needed data into an empty unit_type (build to CREATE). */
 	void build_created();
 
 	typedef std::map<std::string,unit_type> variations_map;
 public:
-	/// Performs a build of this to the indicated stage.
+	/** Performs a build of this to the indicated stage. */
 	void build(BUILD_STATUS status, const movement_type_map &movement_types,
 	           const race_map &races, const config_array_view &traits);
-	/// Performs a build of this to the indicated stage.
-	/// (This does not logically change the unit type, so allow const access.)
+	/**
+	 * Performs a build of this to the indicated stage.
+	 * (This does not logically change the unit type, so allow const access.)
+	 */
 	void build(BUILD_STATUS status, const movement_type_map &movement_types,
 	           const race_map &races, const config_array_view &traits) const
 	{ const_cast<unit_type *>(this)->build(status, movement_types, races, traits); }
@@ -109,12 +113,12 @@ public:
 	 */
 	std::set<std::string> advancement_tree() const;
 
-	/// A vector of unit_type ids that this unit_type can advance to.
+	/** A vector of unit_type ids that this unit_type can advance to. */
 	const std::vector<std::string>& advances_to() const { return advances_to_; }
-	/// A vector of unit_type ids that can advance to this unit_type.
+	/** A vector of unit_type ids that can advance to this unit_type. */
 	const std::vector<std::string> advances_from() const;
 
-	/// Returns two iterators pointing to a range of AMLA configs.
+	/** Returns two iterators pointing to a range of AMLA configs. */
 	config::const_child_itors modification_advancements() const
 	{ return get_cfg().child_range("advancement"); }
 
@@ -123,7 +127,7 @@ public:
 	 * @param gender "male" or "female".
 	 */
 	const unit_type& get_gender_unit_type(std::string gender) const;
-	/// Returns a gendered variant of this unit_type based on the given parameter.
+	/** Returns a gendered variant of this unit_type based on the given parameter. */
 	const unit_type& get_gender_unit_type(unit_race::GENDER gender) const;
 
 	const unit_type& get_variation(const std::string& id) const;
@@ -135,13 +139,13 @@ public:
 	/** The name of the unit in the current language setting. */
 	const t_string& type_name() const { return type_name_; }
 
-	/// The id for this unit_type.
+	/** The id for this unit_type. */
 	const std::string& id() const { return id_; }
-	/// A variant on id() that is more descriptive, for use with message logging.
+	/** A variant on id() that is more descriptive, for use with message logging. */
 	const std::string log_id() const { return id_ + debug_id_; }
-	/// The id of the original type from which this (variation) descended.
+	/** The id of the original type from which this (variation) descended. */
 	const std::string& parent_id() const { return parent_id_; }
-	/// The id of this variation; empty if it's a gender variation or a base unit.
+	/** The id of this variation; empty if it's a gender variation or a base unit. */
 	const std::string& variation_id() const { return variation_id_; }
 	// NOTE: this used to be a const object reference, but it messed up with the
 	// translation engine upon changing the language in the same session.
@@ -155,7 +159,7 @@ public:
 	int recall_cost() const { return recall_cost_;}
 	int movement() const { return movement_; }
 	int vision() const { return vision_ < 0 ? movement() : vision_; }
-	/// If @a base_value is set to true, do not fall back to movement().
+	/** If @a base_value is set to true, do not fall back to movement(). */
 	int vision(bool base_value) const { return base_value ? vision_ : vision(); }
 	int jamming() const {return jamming_; }
 	int max_attacks() const { return max_attacks_; }
@@ -233,8 +237,10 @@ public:
 
 	bool has_random_traits() const;
 
-	/// The returned vector will not be empty, provided this has been built
-	/// to the HELP_INDEXED status.
+	/**
+	 * The returned vector will not be empty, provided this has been built
+	 * to the HELP_INDEXED status.
+	 */
 	const std::vector<unit_race::GENDER>& genders() const { return genders_; }
 	bool has_gender_variation(const unit_race::GENDER gender) const
 	{
@@ -257,10 +263,12 @@ public:
 	 */
 	bool show_variations_in_help() const;
 
-	/// Returns the ID of this type's race without the need to build the type.
+	/** Returns the ID of this type's race without the need to build the type. */
 	std::string race_id() const { return get_cfg()["race"]; } //race_->id(); }
-	/// Never returns nullptr, but may point to the null race.
-	/// Requires building to the HELP_INDEXED status to get the correct race.
+	/**
+	 * Never returns nullptr, but may point to the null race.
+	 * Requires building to the HELP_INDEXED status to get the correct race.
+	 */
 	const unit_race* race() const { return race_; }
 	bool hide_help() const;
 	bool do_not_list() const { return do_not_list_; }
@@ -274,15 +282,17 @@ public:
 		return *cfg_;
 	}
 
-	/// Gets resistance while considering custom WML abilities.
-	/// Attention: Filters in resistance-abilities will be ignored.
+	/**
+	 * Gets resistance while considering custom WML abilities.
+	 * Attention: Filters in resistance-abilities will be ignored.
+	 */
 	int resistance_against(const std::string& damage_name, bool attacker) const;
 
 	void apply_scenario_fix(const config& cfg);
 	void remove_scenario_fixes();
 private:
 
-	/// Identical to unit::resistance_filter_matches.
+	/** Identical to unit::resistance_filter_matches. */
 	bool resistance_filter_matches(const config& cfg,bool attacker,const std::string& damage_name, int res) const;
 
 private:
@@ -296,7 +306,7 @@ private:
 	void fill_variations_and_gender();
 	std::unique_ptr<unit_type> create_sub_type(const config& var_cfg, bool default_inherit);
 
-	void operator=(const unit_type& o);
+	unit_type& operator=(const unit_type& o) = delete;
 
 	const config* cfg_;
 	friend class unit_type_data;
@@ -305,9 +315,11 @@ private:
 	mutable attack_list attacks_cache_;
 
 	std::string id_;
-	std::string debug_id_;  /// A suffix for id_, used when logging messages.
-	std::string parent_id_;   /// The id of the top ancestor of this unit_type.
-	/// from [base_unit]
+	/** A suffix for id_, used when logging messages. */
+	std::string debug_id_;
+	/** The id of the top ancestor of this unit_type. */
+	std::string parent_id_;
+	/** from [base_unit] */
 	std::string base_unit_id_;
 	t_string type_name_;
 	t_string description_;
@@ -339,7 +351,8 @@ private:
 	std::string variation_id_;
 	t_string variation_name_;
 
-	const unit_race* race_;	/// Never nullptr, but may point to the null race.
+	/** Never nullptr, but may point to the null race. */
+	const unit_race* race_;
 
 	std::vector<ability_metadata> abilities_, adv_abilities_;
 
@@ -378,14 +391,14 @@ public:
 	config_array_view traits() const { return units_cfg().child_range("trait"); }
 	void set_config(const game_config_view &cfg);
 
-	/// Finds a unit_type by its id() and makes sure it is built to the specified level.
+	/** Finds a unit_type by its id() and makes sure it is built to the specified level. */
 	const unit_type *find(const std::string &key, unit_type::BUILD_STATUS status = unit_type::FULL) const;
 	void check_types(const std::vector<std::string>& types) const;
 	const unit_race *find_race(const std::string &) const;
 
-	/// Makes sure the all unit_types are built to the specified level.
+	/** Makes sure the all unit_types are built to the specified level. */
 	void build_all(unit_type::BUILD_STATUS status);
-	/// Makes sure the provided unit_type is built to the specified level.
+	/** Makes sure the provided unit_type is built to the specified level. */
 	void build_unit_type(const unit_type & ut, unit_type::BUILD_STATUS status) const;
 
 	/** Checks if the [hide_help] tag contains these IDs. */

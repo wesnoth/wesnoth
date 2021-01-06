@@ -396,7 +396,7 @@ bool unit::ability_active(const std::string& ability,const config& cfg,const map
 	for (const config &i : cfg.child_range("filter_adjacent_location"))
 	{
 		std::size_t count = 0;
-		terrain_filter adj_filter(vconfig(i), resources::filter_con);
+		terrain_filter adj_filter(vconfig(i), resources::filter_con, false);
 		adj_filter.flatten(illuminates);
 
 		std::vector<map_location::DIRECTION> dirs = map_location::parse_directions(i["adjacent"]);
@@ -888,6 +888,7 @@ std::string attack_type::weapon_specials(bool only_active, bool is_backstab) con
 /**
  * Sets the context under which specials will be checked for being active.
  * This version is appropriate if both units in a combat are known.
+ * @param[in]  weapon        The weapon being considered.
  * @param[in]  self          A reference to the unit with this weapon.
  * @param[in]  other         A reference to the other unit in the combat.
  * @param[in]  unit_loc      The location of the unit with this weapon.
@@ -916,6 +917,7 @@ attack_type::specials_context_t::specials_context_t(const attack_type& weapon,
 /**
  * Sets the context under which specials will be checked for being active.
  * This version is appropriate if there is no specific combat being considered.
+ * @param[in]  weapon        The weapon being considered.
  * @param[in]  self          A reference to the unit with this weapon.
  * @param[in]  loc           The location of the unit with this weapon.
  * @param[in]  attacking     Whether or not the unit with this weapon is the attacker.
@@ -935,6 +937,7 @@ attack_type::specials_context_t::specials_context_t(const attack_type& weapon, u
 /**
  * Sets the context under which specials will be checked for being active.
  * This version is appropriate for theoretical units of a particular type.
+ * @param[in]  weapon        The weapon being considered.
  * @param[in]  self_type     A reference to the type of the unit with this weapon.
  * @param[in]  loc           The location of the unit with this weapon.
  * @param[in]  attacking     Whether or not the unit with this weapon is the attacker.
@@ -1069,12 +1072,13 @@ namespace { // Helpers for attack_type::special_active()
 	/**
 	 * Determines if a unit/weapon combination matches the specified child
 	 * (normally a [filter_*] child) of the provided filter.
-	 * @param[in]  u          A unit to filter.
-	 * @param[in]  u2         Another unit to filter.
-	 * @param[in]  loc        The presumed location of @a un_it.
-	 * @param[in]  weapon     The attack_type to filter.
-	 * @param[in]  filter     The filter containing the child filter to use.
-	 * @param[in]  child_tag  The tag of the child filter to use.
+	 * @param[in]  u           A unit to filter.
+	 * @param[in]  u2          Another unit to filter.
+	 * @param[in]  loc         The presumed location of @a un_it.
+	 * @param[in]  weapon      The attack_type to filter.
+	 * @param[in]  filter      The filter containing the child filter to use.
+	 * @param[in]  for_listing 
+	 * @param[in]  child_tag   The tag of the child filter to use.
 	 */
 	static bool special_unit_matches(unit_const_ptr & u,
 		                             unit_const_ptr & u2,
@@ -1220,12 +1224,15 @@ bool attack_type::special_active(const config& special, AFFECTS whom, const std:
 /**
  * Returns whether or not the given special is active for the specified unit,
  * based on the current context (see set_specials_context).
- * @param[in] special           a weapon special WML structure
- * @param[in] whom              specifies which combatant we care about
- * @param[in] tag_name          tag name of the special config
- * @param[in] include_backstab  false if backstab specials should not be active
+ * @param self_attack       this unit's attack
+ * @param other_attack      the other unit's attack
+ * @param special           a weapon special WML structure
+ * @param whom              specifies which combatant we care about
+ * @param tag_name          tag name of the special config
+ * @param include_backstab  false if backstab specials should not be active
  *                              (usually true since backstab is usually accounted
  *                              for elsewhere)
+ *  @param filter_self      the filter to use
  */
 bool attack_type::special_active_impl(const_attack_ptr self_attack, const_attack_ptr other_attack, const config& special, AFFECTS whom, const std::string& tag_name,
                                  bool include_backstab, const std::string& filter_self)
@@ -1359,7 +1366,7 @@ bool attack_type::special_active_impl(const_attack_ptr self_attack, const_attack
 	{
 		std::size_t count = 0;
 		std::vector<map_location::DIRECTION> dirs = map_location::parse_directions(i["adjacent"]);
-		terrain_filter adj_filter(vconfig(i), resources::filter_con);
+		terrain_filter adj_filter(vconfig(i), resources::filter_con, false);
 		for (const map_location::DIRECTION index : dirs)
 		{
 			if (index == map_location::NDIRECTIONS)

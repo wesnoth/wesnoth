@@ -22,7 +22,6 @@
 #include "menu_events.hpp"
 #include "mouse_events.hpp"
 #include "persist_manager.hpp"
-#include "terrain/type_data.hpp"
 #include "tod_manager.hpp"
 #include "game_state.hpp"
 #include "utils/optional_fwd.hpp"
@@ -80,8 +79,7 @@ class game_state;
 class play_controller : public controller_base, public events::observer, public quit_confirmation
 {
 public:
-	play_controller(const config& level, saved_game& state_of_game,
-		const ter_data_cache& tdata, bool skip_replay);
+	play_controller(const config& level, saved_game& state_of_game, bool skip_replay);
 	virtual ~play_controller();
 
 	//event handler, overridden from observer
@@ -129,53 +127,78 @@ public:
 	 */
 	virtual void process_oos(const std::string& msg) const;
 
-	void set_end_level_data(const end_level_data& data) {
+	void set_end_level_data(const end_level_data& data)
+	{
 		gamestate().end_level_data_ = data;
 	}
-	void reset_end_level_data() {
+
+	void reset_end_level_data()
+	{
 		gamestate().end_level_data_.reset();
 	}
-	bool is_regular_game_end() const {
-#if defined HAVE_CXX17 || BOOST_VERSION >= 106800
-		return gamestate().end_level_data_.has_value();
-#else
-		return gamestate().end_level_data_ != utils::nullopt;
-#endif
-	}
-	const end_level_data& get_end_level_data_const() const {
-		return *gamestate().end_level_data_;
-	}
-	const std::vector<team>& get_teams_const() const {
-		return gamestate().board_.teams_;
+
+	bool is_regular_game_end() const
+	{
+		return utils::has_optional_value(gamestate().end_level_data_);
 	}
 
-	const unit_map& get_units_const() const {
+	const end_level_data& get_end_level_data() const
+	{
+		return *gamestate().end_level_data_;
+	}
+
+	std::vector<team>& get_teams()
+	{
+		return gamestate().board_.teams();
+	}
+
+	const std::vector<team>& get_teams() const
+	{
+		return gamestate().board_.teams();
+	}
+
+	const unit_map& get_units() const
+	{
 		return gamestate().board_.units();
 	}
 
-	const gamemap& get_map_const() const{
+	unit_map& get_units()
+	{
+		return gamestate().board_.units();
+	}
+
+	const gamemap& get_map() const
+	{
 		return gamestate().board_.map();
 	}
-	const tod_manager& get_tod_manager_const() const{
-			return gamestate().tod_manager_;
-		}
 
-	bool is_observer() const {
+	const tod_manager& get_tod_manager() const
+	{
+		return gamestate().tod_manager_;
+	}
+
+	bool is_observer() const
+	{
 		return gamestate().board_.is_observer();
 	}
 
-	bool do_healing() const {
+	bool do_healing() const
+	{
 		return gamestate().do_healing_;
 	}
 
-	void set_do_healing(bool do_healing) {
+	void set_do_healing(bool do_healing)
+	{
 		gamestate().do_healing_ = do_healing;
 	}
 
-	game_state& gamestate() {
+	game_state& gamestate()
+	{
 		return *gamestate_;
 	}
-	const game_state& gamestate() const {
+
+	const game_state& gamestate() const
+	{
 		return *gamestate_;
 	}
 
@@ -289,7 +312,7 @@ public:
 	virtual bool is_networked_mp() const { return false; }
 	virtual void send_to_wesnothd(const config&, const std::string& = "unknown") const { }
 	virtual bool receive_from_wesnothd(config&) const { return false; }
-	/// Reevaluate [show_if] conditions and build a new objectives string.
+	/** Reevaluate [show_if] conditions and build a new objectives string. */
 	void refresh_objectives() const;
 	void show_objectives() const;
 
@@ -311,7 +334,7 @@ protected:
 	void process_keyup_event(const SDL_Event& event) override;
 
 	void init_managers();
-	///preload events cannot be synced
+	/** preload events cannot be synced */
 	void fire_preload();
 	void fire_prestart();
 	void fire_start();
@@ -326,7 +349,7 @@ protected:
 
 
 	bool is_team_visible(int team_num, bool observer) const;
-	/// returns 0 if no such team was found.
+	/** returns 0 if no such team was found. */
 	int find_last_visible_team() const;
 
 private:
@@ -334,7 +357,6 @@ private:
 
 protected:
 	//gamestate
-	const ter_data_cache& tdata_;
 	std::unique_ptr<game_state> gamestate_;
 	config level_;
 	saved_game& saved_game_;

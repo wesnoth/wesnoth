@@ -44,15 +44,19 @@ struct unit_ability
 	{
 	}
 
-	/// Used by the formula in the ability.
-	/// The REAL location of the student (not the 'we are assuming the student is at this position' location)
-	/// once unit_ability_list can contain abilities from different 'students', as it contains abilities from
-	/// a unit aswell from its opponents (abilities with apply_to= opponent)
+	/**
+	 * Used by the formula in the ability.
+	 * The REAL location of the student (not the 'we are assuming the student is at this position' location)
+	 * once unit_ability_list can contain abilities from different 'students', as it contains abilities from
+	 * a unit aswell from its opponents (abilities with apply_to= opponent)
+	 */
 	map_location student_loc;
-	/// The location of the teacher, that is the unit who owns the ability tags
-	/// (different from student because of [affect_adjacent])
+	/**
+	 * The location of the teacher, that is the unit who owns the ability tags
+	 * (different from student because of [affect_adjacent])
+	 */
 	map_location teacher_loc;
-	/// The contents of the ability tag, never nullptr.
+	/** The contents of the ability tag, never nullptr. */
 	const config* ability_cfg;
 };
 
@@ -97,7 +101,7 @@ public:
 
 	const map_location& loc() const { return loc_; }
 
-	/// Appens the abilities from @a other to @a this, ignores other.loc()
+	/** Appens the abilities from @a other to @a this, ignores other.loc() */
 	void append(const unit_ability_list& other)
 	{
 		std::copy( other.begin(), other.end(), std::back_inserter(cfgs_ ));
@@ -814,7 +818,7 @@ public:
 
 	/**
 	 * Heal the unit
-	 * @amount The number of hitpoints to gain
+	 * @param amount The number of hitpoints to gain
 	 */
 	void heal(int amount);
 
@@ -850,14 +854,14 @@ public:
 	 * Built-in status effects known to the engine
 	 */
 	enum state_t {
-		STATE_SLOWED = 0, ///< The unit is slowed - it moves slower and does less damage
-		STATE_POISONED,   ///< The unit is poisoned - it loses health each turn
-		STATE_PETRIFIED,  ///< The unit is petrified - it cannot move or be attacked
-		STATE_UNCOVERED,  ///< The unit is uncovered - it was hiding but has been spotted
-		STATE_NOT_MOVED,  ///< The unit has not moved @todo Explain better
-		STATE_UNHEALABLE, ///< The unit cannot be healed
-		STATE_GUARDIAN,   ///< The unit is a guardian - it won't move unless a target is sighted
-		STATE_UNKNOWN = -1///< A status effect not known to the engine
+		STATE_SLOWED = 0, /** The unit is slowed - it moves slower and does less damage */
+		STATE_POISONED,   /** The unit is poisoned - it loses health each turn */
+		STATE_PETRIFIED,  /** The unit is petrified - it cannot move or be attacked */
+		STATE_UNCOVERED,  /** The unit is uncovered - it was hiding but has been spotted */
+		STATE_NOT_MOVED,  /** The unit has not moved @todo Explain better */
+		STATE_UNHEALABLE, /** The unit cannot be healed */
+		STATE_GUARDIAN,   /** The unit is a guardian - it won't move unless a target is sighted */
+		STATE_UNKNOWN = -1/** A status effect not known to the engine */
 	};
 
 	/**
@@ -955,7 +959,8 @@ public:
 	 *
 	 * @param attack              The attack to consider.
 	 * @param attacker            Whether this unit should be considered the attacker.
-	 * @param loc                 TODO: what does this do?
+	 * @param loc                 The unit's location (to resolve [resistance] abilities)
+	 * @param weapon              The weapon to check for any abilities or weapon specials
 	 *
 	 * @returns                   The expected damage.
 	 */
@@ -1018,6 +1023,8 @@ public:
 	 * @param damage_name The damage type
 	 * @param attacker True if this unit is on the offensive (to resolve [resistance] abilities)
 	 * @param loc The unit's location (to resolve [resistance] abilities)
+	 * @param weapon The weapon to check for any abilities or weapon specials
+	 * @param opp_weapon The opponent's weapon to check for any abilities or weapon specials
 	 */
 	int resistance_against(const std::string& damage_name, bool attacker, const map_location& loc, const_attack_ptr weapon = nullptr, const_attack_ptr opp_weapon = nullptr) const;
 
@@ -1026,6 +1033,7 @@ public:
 	 * @param atk The attack
 	 * @param attacker True if this unit is on the offensive (to resolve [resistance] abilities)
 	 * @param loc The unit's location (to resolve [resistance] abilities)
+	 * @param weapon The weapon to check for any abilities or weapon specials
 	 */
 	int resistance_against(const attack_type& atk, bool attacker, const map_location& loc, const_attack_ptr weapon = nullptr) const
 	{
@@ -1103,7 +1111,7 @@ public:
 	 * Gets the amount of gold this unit costs a side per turn.
 	 *
 	 * This fetches an actual numeric gold value:
-	 * - If @rec can_recruit is true, no upkeep is paid (0 is returned).
+	 * - If can_recruit is true, no upkeep is paid (0 is returned).
 	 * - If a special upkeep flag is set, the associated gold amount is returned (see @ref upkeep_value_visitor).
 	 * - If a numeric value is already set, it is returned directly.
 	 *
@@ -1725,6 +1733,7 @@ private:
 	 * @param cfg an ability WML structure
 	 * @param loc The location on which to resolve the ability
 	 * @param from The "other unit" for filter matching
+	 * @param dir The direction the unit is facing
 	 */
 	bool ability_affects_adjacent(const std::string& ability, const config& cfg, int dir, const map_location& loc, const unit& from) const;
 
@@ -1736,7 +1745,10 @@ private:
 	 */
 	bool ability_affects_self(const std::string& ability, const config& cfg, const map_location& loc) const;
 
-	///filters the weapons that condition the use of abilities for combat ([resistance],[leadership] or abilities used like specials(deprecated in two last cases)
+	/**
+	 * filters the weapons that condition the use of abilities for combat ([resistance],[leadership] or abilities used like specials
+	 * (deprecated in two last cases)
+	 */
 	bool ability_affects_weapon(const config& cfg, const_attack_ptr weapon, bool is_opp) const;
 
 public:
@@ -1753,7 +1765,7 @@ public:
 	bool invisible(const map_location& loc, bool see_all = true) const;
 
 	bool is_visible_to_team(const team& team, bool const see_all = true) const;
-	/// Return true if the unit would be visible to team if its location were loc.
+	/** Return true if the unit would be visible to team if its location were loc. */
 	bool is_visible_to_team(const map_location& loc, const team& team, bool const see_all = true) const;
 
 	/**

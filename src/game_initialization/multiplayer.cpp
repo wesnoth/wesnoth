@@ -54,10 +54,164 @@ static lg::log_domain log_mp("mp/main");
 #define DBG_MP LOG_STREAM(debug, log_mp)
 #define ERR_MP LOG_STREAM(err, log_mp)
 
+namespace mp
+{
 namespace
 {
-/** Opens a new server connection and prompts the client for login credentials, if necessary. */
-std::unique_ptr<wesnothd_connection> open_connection(std::string host)
+/** Pointer to the current mp_manager instance. */
+class mp_manager* manager = nullptr;
+
+/** The main controller of the MP workflow. */
+class mp_manager
+{
+public:
+	// Declare this as a friend to allow direct access to enter_create_mode
+	friend void mp::start_local_game();
+
+	mp_manager(const std::string& host);
+
+	~mp_manager()
+	{
+		assert(manager);
+		manager = nullptr;
+
+		if(network_worker.joinable()) {
+			stop = true;
+			network_worker.join();
+		}
+	}
+
+	/**
+	 * Enters the mp loop. It consists of four screens:
+	 *
+	 * Host POV:   LOBBY <---> CREATE GAME ---> STAGING -----> GAME BEGINS
+	 * Player POV: LOBBY <--------------------> JOIN GAME ---> GAME BEGINS
+	 */
+	void run_lobby_loop();
+
+private:
+	/** Represents the contents of the [join_lobby] response. */
+	struct session_metadata
+	{
+		session_metadata() = default;
+
+		session_metadata(const config& cfg)
+			: is_moderator(cfg["is_moderator"].to_bool(false))
+			, profile_url_prefix(cfg["profile_url_prefix"].str())
+		{
+		}
+
+		/** Whether you are logged in as a server moderator. */
+		bool is_moderator = false;
+
+		/** The external URL prefix for player profiles (empty if the server doesn't have an attached database). */
+		std::string profile_url_prefix;
+	};
+
+	/** Opens a new server connection and prompts the client for login credentials, if necessary. */
+	std::unique_ptr<wesnothd_connection> open_connection(std::string host);
+
+	/** Opens the MP lobby. */
+	bool enter_lobby_mode();
+
+	/** Opens the MP Create screen for hosts to configure a new game. */
+	void enter_create_mode();
+
+	/** Opens the MP Staging screen for hosts to wait for players. */
+	void enter_staging_mode();
+
+	/** Opens the MP Join Game screen for non-host players and observers. */
+	void enter_wait_mode(int game_id, bool observe);
+
+	/** Worker thread to handle receiving and processing network data. */
+	std::thread network_worker;
+
+	/** Flag to signal the worker thread terminate. */
+	std::atomic_bool stop;
+
+	/** The connection to the server. */
+	std::unique_ptr<wesnothd_connection> connection;
+
+	/** The current session's info sent by the server on login. */
+	session_metadata session_info;
+
+	/** This single instance is reused for all games played during the current connection to the server. */
+	saved_game state;
+
+	mp::lobby_info lobby_info;
+
+public:
+	const session_metadata& get_session_info() const
+	{
+		return session_info;
+	}
+};
+
+mp_manager::mp_manager(const std::string& host)
+	: network_worker()
+	, stop(false)
+	, connection(nullptr)
+	, session_info()
+	, state()
+	, lobby_info(::installed_addons())
+{
+	assert(!manager);
+	manager = this;
+
+	state.classification().campaign_type = game_classification::CAMPAIGN_TYPE::MULTIPLAYER;
+
+	if(!host.empty()) {
+		gui2::dialogs::loading_screen::display([&]() {
+			connection = open_connection(host);
+
+			// If for whatever reason our connection is null at this point (dismissing the password prompt, for
+			// instance), treat it as a normal condition and exit. Any actual error conditions throw exceptions
+			// which can be handled higher up the stack.
+			if(connection == nullptr) {
+				return;
+			}
+
+			gui2::dialogs::loading_screen::progress(loading_stage::download_lobby_data);
+
+			std::promise<void> received_initial_gamelist;
+
+			network_worker = std::thread([this, &received_initial_gamelist]() {
+				config data;
+
+				while(!stop) {
+					connection->wait_and_receive_data(data);
+
+					if(const config& error = data.child("error")) {
+						throw wesnothd_error(error["message"]);
+					}
+
+					else if(data.has_child("gamelist")) {
+						this->lobby_info.process_gamelist(data);
+
+						try {
+							received_initial_gamelist.set_value();
+							// TODO: only here while we transition away from dialog-bound timer-based handling
+							return;
+						} catch(const std::future_error& e) {
+							if(e.code() == std::future_errc::promise_already_satisfied) {
+								// We only need this for the first gamelist
+							}
+						}
+					}
+
+					else if(const config& gamelist_diff = data.child("gamelist_diff")) {
+						this->lobby_info.process_gamelist_diff(gamelist_diff);
+					}
+				}
+			});
+
+			// Wait at the loading screen until the initial gamelist has been processed
+			received_initial_gamelist.get_future().wait();
+		});
+	}
+}
+
+std::unique_ptr<wesnothd_connection> mp_manager::open_connection(std::string host)
 {
 	DBG_MP << "opening connection" << std::endl;
 
@@ -353,8 +507,8 @@ std::unique_ptr<wesnothd_connection> open_connection(std::string host)
 		} // end login loop
 
 		if(const config& join_lobby = data.child("join_lobby")) {
-			// Flag us as authenticated, if applicable...
-			preferences::set_admin_authentication(join_lobby["is_moderator"].to_bool(false));
+			// Note any session data sent with the response. This should be the only place session_info is set.
+			session_info = { join_lobby };
 
 			// All done!
 			break;
@@ -364,188 +518,26 @@ std::unique_ptr<wesnothd_connection> open_connection(std::string host)
 	return conn;
 }
 
-/** The main controller of the MP workflow. */
-class mp_manager
+void mp_manager::run_lobby_loop()
 {
-public:
-	// Declare this as a friend to allow direct access to enter_create_mode
-	friend void mp::start_local_game(saved_game&);
-
-	mp_manager(const std::string& host, saved_game& state)
-		: network_worker()
-		, stop(false)
-		, state(state)
-		, connection(nullptr)
-		, lobby_info(::installed_addons())
-	{
-		if(!host.empty()) {
-			gui2::dialogs::loading_screen::display([&]() {
-				connection = open_connection(host);
-
-				gui2::dialogs::loading_screen::progress(loading_stage::download_lobby_data);
-
-				std::promise<void> received_initial_gamelist;
-
-				network_worker = std::thread([this, &received_initial_gamelist]() {
-					config data;
-
-					while(!stop) {
-						connection->wait_and_receive_data(data);
-
-						if(data.has_child("gamelist")) {
-							lobby_info.process_gamelist(data);
-
-							try {
-								received_initial_gamelist.set_value();
-								// TODO: only here while we transition away from dialog-bound timer-based handling
-								return;
-							} catch(const std::future_error& e) {
-								if(e.code() == std::future_errc::promise_already_satisfied) {
-									// We only need this for the first gamelist
-								}
-							}
-						}
-					}
-				});
-
-				// Wait at the loading screen until the initial gamelist has been processed
-				received_initial_gamelist.get_future().wait();
-			});
-		}
+	// This should only work if we have a connection. If we're in a local mode,
+	// enter_create_mode should be accessed directly.
+	if(!connection) {
+		return;
 	}
 
-	~mp_manager()
-	{
-		if(network_worker.joinable()) {
-			stop = true;
-			network_worker.join();
-		}
-	}
+	// A return of false means a config reload was requested, so do that and then loop.
+	while(!enter_lobby_mode()) {
+		game_config_manager* gcm = game_config_manager::get();
+		gcm->reload_changed_game_config();
+		gcm->load_game_config_for_create(true); // NOTE: Using reload_changed_game_config only doesn't seem to work here
 
-	/* Enters the mp loop. It consists of four screens:
-	 *
-	 * Host POV:   LOBBY <---> CREATE GAME ---> STAGING -----> GAME BEGINS
-	 * Player POV: LOBBY <--------------------> JOIN GAME ---> GAME BEGINS
-	 */
-	void run_lobby_loop()
-	{
-		// This should only work if we have a connection. If we're in a local mode,
-		// enter_create_mode should be accessed directly.
-		if(!connection) {
-			return;
-		}
+		// This function does not refer to an addon database, it calls filesystem functions.
+		// For the sanity of the mp lobby, this list should be fixed for the entire lobby session,
+		// even if the user changes the contents of the addon directory in the meantime.
+		// TODO: do we want to handle fetching the installed addons in the lobby_info ctor?
+		lobby_info.set_installed_addons(::installed_addons());
 
-		// A return of false means a config reload was requested, so do that and then loop.
-		while(!enter_lobby_mode()) {
-			game_config_manager* gcm = game_config_manager::get();
-			gcm->reload_changed_game_config();
-			gcm->load_game_config_for_create(true); // NOTE: Using reload_changed_game_config only doesn't seem to work here
-
-			// This function does not refer to an addon database, it calls filesystem functions.
-			// For the sanity of the mp lobby, this list should be fixed for the entire lobby session,
-			// even if the user changes the contents of the addon directory in the meantime.
-			// TODO: do we want to handle fetching the installed addons in the lobby_info ctor?
-			lobby_info.set_installed_addons(::installed_addons());
-
-			connection->send_data(config("refresh_lobby"));
-		}
-	}
-
-private:
-	bool enter_lobby_mode();
-	void enter_create_mode();
-	void enter_staging_mode();
-	void enter_wait_mode(int game_id, bool observe);
-
-	std::thread network_worker;
-	std::atomic_bool stop;
-
-	saved_game& state;
-
-	std::unique_ptr<wesnothd_connection> connection;
-
-	mp::lobby_info lobby_info;
-};
-
-void mp_manager::enter_wait_mode(int game_id, bool observe)
-{
-	DBG_MP << "entering wait mode" << std::endl;
-
-	// The connection should never be null here, since one should never reach this screen in local game mode.
-	assert(connection);
-
-	statistics::fresh_stats();
-
-	mp_campaign_info campaign_info(*connection);
-	campaign_info.is_host = false;
-
-	if(lobby_info.get_game_by_id(game_id)) {
-		campaign_info.current_turn = lobby_info.get_game_by_id(game_id)->current_turn;
-	}
-
-	if(preferences::skip_mp_replay() || preferences::blindfold_replay()) {
-		campaign_info.skip_replay = true;
-		campaign_info.skip_replay_blindfolded = preferences::blindfold_replay();
-	}
-
-	bool dlg_ok = false;
-	{
-		gui2::dialogs::mp_join_game dlg(state, *connection, true, observe);
-
-		if(!dlg.fetch_game_config()) {
-			connection->send_data(config("leave_game"));
-			return;
-		}
-
-		dlg_ok = dlg.show();
-	}
-
-	if(dlg_ok) {
-		campaign_controller controller(state, game_config_manager::get()->terrain_types());
-		controller.set_mp_info(&campaign_info);
-		controller.play_game();
-	}
-
-	connection->send_data(config("leave_game"));
-}
-
-void mp_manager::enter_staging_mode()
-{
-	DBG_MP << "entering connect mode" << std::endl;
-
-	std::unique_ptr<mp_campaign_info> campaign_info;
-
-	// If we have a connection, set the appropriate info. No connection means we're in local game mode.
-	if(connection) {
-		campaign_info = std::make_unique<mp_campaign_info>(*connection);
-		campaign_info->connected_players.insert(preferences::login());
-		campaign_info->is_host = true;
-	}
-
-	bool dlg_ok = false;
-	{
-		ng::connect_engine connect_engine(state, true, campaign_info.get());
-		dlg_ok = gui2::dialogs::mp_staging::execute(connect_engine, connection.get());
-	} // end connect_engine
-
-	if(dlg_ok) {
-		campaign_controller controller(state, game_config_manager::get()->terrain_types());
-		controller.set_mp_info(campaign_info.get());
-		controller.play_game();
-	}
-
-	if(connection) {
-		connection->send_data(config("leave_game"));
-	}
-}
-
-void mp_manager::enter_create_mode()
-{
-	DBG_MP << "entering create mode" << std::endl;
-
-	if(gui2::dialogs::mp_create_game::execute(state, connection == nullptr)) {
-		enter_staging_mode();
-	} else if(connection) {
 		connection->send_data(config("refresh_lobby"));
 	}
 }
@@ -608,18 +600,97 @@ bool mp_manager::enter_lobby_mode()
 	return true;
 }
 
+void mp_manager::enter_create_mode()
+{
+	DBG_MP << "entering create mode" << std::endl;
+
+	if(gui2::dialogs::mp_create_game::execute(state, connection == nullptr)) {
+		enter_staging_mode();
+	} else if(connection) {
+		connection->send_data(config("refresh_lobby"));
+	}
+}
+
+void mp_manager::enter_staging_mode()
+{
+	DBG_MP << "entering connect mode" << std::endl;
+
+	std::unique_ptr<mp_game_metadata> metadata;
+
+	// If we have a connection, set the appropriate info. No connection means we're in local game mode.
+	if(connection) {
+		metadata = std::make_unique<mp_game_metadata>(*connection);
+		metadata->connected_players.insert(preferences::login());
+		metadata->is_host = true;
+	}
+
+	bool dlg_ok = false;
+	{
+		ng::connect_engine connect_engine(state, true, metadata.get());
+		dlg_ok = gui2::dialogs::mp_staging::execute(connect_engine, connection.get());
+	} // end connect_engine
+
+	if(dlg_ok) {
+		campaign_controller controller(state);
+		controller.set_mp_info(metadata.get());
+		controller.play_game();
+	}
+
+	if(connection) {
+		connection->send_data(config("leave_game"));
+	}
+}
+
+void mp_manager::enter_wait_mode(int game_id, bool observe)
+{
+	DBG_MP << "entering wait mode" << std::endl;
+
+	// The connection should never be null here, since one should never reach this screen in local game mode.
+	assert(connection);
+
+	statistics::fresh_stats();
+
+	mp_game_metadata metadata(*connection);
+	metadata.is_host = false;
+
+	if(const mp::game_info* gi = lobby_info.get_game_by_id(game_id)) {
+		metadata.current_turn = gi->current_turn;
+	}
+
+	if(preferences::skip_mp_replay() || preferences::blindfold_replay()) {
+		metadata.skip_replay = true;
+		metadata.skip_replay_blindfolded = preferences::blindfold_replay();
+	}
+
+	bool dlg_ok = false;
+	{
+		gui2::dialogs::mp_join_game dlg(state, *connection, true, observe);
+
+		if(!dlg.fetch_game_config()) {
+			connection->send_data(config("leave_game"));
+			return;
+		}
+
+		dlg_ok = dlg.show();
+	}
+
+	if(dlg_ok) {
+		campaign_controller controller(state);
+		controller.set_mp_info(&metadata);
+		controller.play_game();
+	}
+
+	connection->send_data(config("leave_game"));
+}
+
 } // end anon namespace
 
 /** Pubic entry points for the MP workflow */
-namespace mp
-{
-void start_client(saved_game& state, const std::string& host)
+
+void start_client(const std::string& host)
 {
 	DBG_MP << "starting client" << std::endl;
-
-	preferences::admin_authentication_reset admin_raii_helper;
-
-	mp_manager(host, state).run_lobby_loop();
+	mp_manager(host).run_lobby_loop();
 }
 
 bool goto_mp_connect(ng::connect_engine& engine, wesnothd_connection* connection)
@@ -643,16 +714,16 @@ bool goto_mp_wait(saved_game& state, wesnothd_connection* connection, bool obser
 	return dlg.show();
 }
 
-void start_local_game(saved_game& state)
+void start_local_game()
 {
 	DBG_MP << "starting local game" << std::endl;
 
 	preferences::set_message_private(false);
 
-	mp_manager("", state).enter_create_mode();
+	mp_manager("").enter_create_mode();
 }
 
-void start_local_game_commandline(saved_game& state, const commandline_options& cmdline_opts)
+void start_local_game_commandline(const commandline_options& cmdline_opts)
 {
 	DBG_MP << "starting local MP game from commandline" << std::endl;
 
@@ -666,7 +737,9 @@ void start_local_game_commandline(saved_game& state, const commandline_options& 
 	DBG_MP << "entering create mode" << std::endl;
 
 	// Set the default parameters
-	state.clear(); // This creates these parameters with default values defined in mp_game_settings.cpp
+	saved_game state;
+	state.classification().campaign_type = game_classification::CAMPAIGN_TYPE::MULTIPLAYER;
+
 	mp_game_settings& parameters = state.mp_settings();
 
 	// Hardcoded default values
@@ -751,9 +824,27 @@ void start_local_game_commandline(saved_game& state, const commandline_options& 
 	unsigned int repeat = (cmdline_opts.multiplayer_repeat) ? *cmdline_opts.multiplayer_repeat : 1;
 	for(unsigned int i = 0; i < repeat; i++){
 		saved_game state_copy(state);
-		campaign_controller controller(state_copy, game_config_manager::get()->terrain_types());
+		campaign_controller controller(state_copy);
 		controller.play_game();
 	}
+}
+
+bool logged_in_as_moderator()
+{
+	return manager && manager->get_session_info().is_moderator;
+}
+
+std::string get_profile_link(int user_id)
+{
+	if(manager) {
+		const std::string& prefix = manager->get_session_info().profile_url_prefix;
+
+		if(!prefix.empty()) {
+			return prefix + std::to_string(user_id);
+		}
+	}
+
+	return "";
 }
 
 } // end namespace mp

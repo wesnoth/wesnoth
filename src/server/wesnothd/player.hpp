@@ -30,7 +30,7 @@ public:
 		OBSERVING
 	};
 
-	player(const std::string& n, simple_wml::node& cfg, bool registered, const std::string& version, const std::string& source,
+	player(const std::string& n, simple_wml::node& cfg, int id, bool registered, const std::string& version, const std::string& source,
 	       const std::size_t max_messages=4, const std::size_t time_period=10,
 	       const bool moderator=false);
 

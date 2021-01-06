@@ -30,7 +30,7 @@ void dump(const T& v)
 }
 #endif
 
-BOOST_AUTO_TEST_SUITE( filesystem ) // implicit namespace filesystem
+BOOST_AUTO_TEST_SUITE( filesystem ); // implicit namespace filesystem
 
 const std::string& gamedata = game_config::path;
 

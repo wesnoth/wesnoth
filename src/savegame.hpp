@@ -52,38 +52,28 @@ void clean_saves(const std::string& label);
 struct load_game_metadata
 {
 	/** There may be different instances of the index for different directories */
-	std::shared_ptr<save_index_class> manager;
+	std::shared_ptr<save_index_class> manager {};
 
 	/** Name of the savefile to be loaded (not including the directory). */
-	std::string filename;
+	std::string filename = "";
 
 	/** The difficulty the save is meant to be loaded with. */
-	std::string difficulty;
+	std::string difficulty = "";
 
 	/** State of the "show_replay" checkbox in the load-game dialog. */
-	bool show_replay;
+	bool show_replay = false;
 
 	/** State of the "cancel_orders" checkbox in the load-game dialog. */
-	bool cancel_orders;
+	bool cancel_orders = false;
 
 	/** State of the "change_difficulty" checkbox in the load-game dialog. */
-	bool select_difficulty;
+	bool select_difficulty = false;
 
 	/** Summary config of the save selected in the load game dialog. */
-	config summary;
+	config summary {};
 
 	/** Config information of the savefile to be loaded. */
-	config load_config;
-
-	explicit load_game_metadata(std::shared_ptr<save_index_class> index,
-	        const std::string& fname = "", const std::string& hard = "",
-			bool replay = false, bool stop = false, bool change = false,
-			const config& summary = config(), const config& info = config())
-		: manager(index), filename(fname), difficulty(hard)
-		, show_replay(replay), cancel_orders(stop), select_difficulty(change)
-		, summary(summary), load_config(info)
-	{
-	}
+	config load_config {};
 };
 
 /**
@@ -109,7 +99,7 @@ private:
 class loadgame
 {
 public:
-	loadgame(const std::shared_ptr<save_index_class>& index, const game_config_view& game_config, saved_game& gamestate);
+	loadgame(const std::shared_ptr<save_index_class>& index, saved_game& gamestate);
 	virtual ~loadgame() {}
 
 	/* In any of the following three function, a bool value of false indicates

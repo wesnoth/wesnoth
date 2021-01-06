@@ -15,6 +15,7 @@
 #include "config.hpp"
 #include "gui/core/canvas.hpp"
 #include "gui/core/gui_definition.hpp"
+#include "gui/core/event/handler.hpp" // for open_window_stack
 #include "gui/core/window_builder.hpp"
 #include "gui/widgets/clickable_item.hpp"
 #include "gui/widgets/styled_widget.hpp"
@@ -74,7 +75,9 @@ int intf_show_dialog(lua_State* L)
 		lua_call(L, 1, 0);
 	}
 
+	gui2::open_window_stack.push_back(wp.get());
 	int v = wp->show(true, 0);
+	gui2::remove_from_window_stack(wp.get());
 
 	if (!lua_isnoneornil(L, 3)) {
 		lua_pushvalue(L, 3);
@@ -401,7 +404,7 @@ static int intf_add_dialog_item(lua_State* L)
 	return 0;
 }
 
-///Closes a window
+/** Closes a window */
 static int intf_dialog_close(lua_State* L)
 {
 	gui2::widget* w = &luaW_checkwidget(L, 1);

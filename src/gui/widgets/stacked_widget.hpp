@@ -120,7 +120,7 @@ private:
 	/**
 	 * Finishes the building initialization of the widget.
 	 *
-	 * @param widget_builder      The builder to build the contents of the
+	 * @param widget_builders     The builder to build the contents of the
 	 *                            widget.
 	 */
 	void finalize(const std::vector<builder_grid>& widget_builders);

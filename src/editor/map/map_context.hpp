@@ -336,8 +336,7 @@ public:
 	 */
 	bool save_scenario();
 
-
-	void load_scenario(const game_config_view& game_config);
+	void load_scenario();
 
 	config to_config();
 

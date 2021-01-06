@@ -29,7 +29,6 @@
 #include "ai/manager.hpp"
 #include "fake_unit_ptr.hpp"
 #include "filesystem.hpp"
-#include "game_classification.hpp"
 #include "game_display.hpp"
 #include "preferences/game.hpp"
 #include "gettext.hpp"
@@ -253,8 +252,10 @@ wml_action::wml_action(const std::string & tag, handler function)
 	static void wml_func_##pname(const queued_event& pei, const vconfig& pcfg)
 
 
-/// Experimental data persistence
-/// @todo Finish experimenting.
+/**
+ * Experimental data persistence
+ * @todo Finish experimenting.
+ */
 WML_HANDLER_FUNCTION(clear_global_variable,,pcfg)
 {
 	if (!resources::controller->is_replay())
@@ -340,8 +341,10 @@ WML_HANDLER_FUNCTION(do_command,, cfg)
 	}
 }
 
-/// Experimental data persistence
-/// @todo Finish experimenting.
+/**
+ * Experimental data persistence
+ * @todo Finish experimenting.
+ */
 WML_HANDLER_FUNCTION(get_global_variable,,pcfg)
 {
 	verify_and_get_global_variable(pcfg);
@@ -372,8 +375,10 @@ WML_HANDLER_FUNCTION(modify_turns,, cfg)
 	}
 }
 
-/// Moving a 'unit' - i.e. a dummy unit
-/// that is just moving for the visual effect
+/**
+ * Moving a 'unit' - i.e. a dummy unit
+ * that is just moving for the visual effect
+ */
 WML_HANDLER_FUNCTION(move_unit_fake,, cfg)
 {
 	set_scontext_unsynced leave_synced_context;
@@ -452,9 +457,11 @@ WML_HANDLER_FUNCTION(move_units_fake,, cfg)
 	LOG_NG << "Units moved\n";
 }
 
-/// If we should recall units that match a certain description.
-// If you change attributes specific to [recall] (that is, not a Standard Unit Filter)
-// be sure to update data/lua/wml_tag, auto_recall feature for [role] to reflect your changes.
+/**
+ * If we should recall units that match a certain description.
+ * If you change attributes specific to [recall] (that is, not a Standard Unit Filter)
+ * be sure to update data/lua/wml_tag, auto_recall feature for [role] to reflect your changes.
+ */
 WML_HANDLER_FUNCTION(recall,, cfg)
 {
 	events::command_disabler command_disabler;
@@ -463,7 +470,7 @@ WML_HANDLER_FUNCTION(recall,, cfg)
 	// Prevent the recall unit filter from using the location as a criterion
 
 	/**
-	 * @todo FIXME: we should design the WML to avoid these types of
+	 * FIXME: we should design the WML to avoid these types of
 	 * collisions; filters should be named consistently and always have a
 	 * distinct scope.
 	 */
@@ -505,7 +512,6 @@ WML_HANDLER_FUNCTION(recall,, cfg)
 					}
 				}
 
-				/// @todo fendrin: comment this monster
 				for (unit_map::const_unit_iterator leader : leaders) {
 					DBG_NG << "...considering " + leader->id() + " as the recalling leader...\n";
 					map_location loc = cfg_loc;
@@ -575,8 +581,10 @@ namespace {
 	};
 }
 
-/// Experimental map replace
-/// @todo Finish experimenting.
+/**
+ * Experimental map replace
+ * @todo Finish experimenting.
+ */
 WML_HANDLER_FUNCTION(replace_map,, cfg)
 {
 	/*
@@ -638,8 +646,10 @@ WML_HANDLER_FUNCTION(replace_map,, cfg)
 	ai::manager::get_singleton().raise_map_changed();
 }
 
-/// Experimental data persistence
-/// @todo Finish experimenting.
+/**
+ * Experimental data persistence
+ * @todo Finish experimenting.
+ */
 WML_HANDLER_FUNCTION(set_global_variable,,pcfg)
 {
 	if (!resources::controller->is_replay())
@@ -751,9 +761,11 @@ WML_HANDLER_FUNCTION(set_variables,, cfg)
 	}
 }
 
-/// Store the relative direction from one hex to another in a WML variable.
-/// This is mainly useful as a diagnostic tool, but could be useful
-/// for some kind of scenario.
+/**
+ * Store the relative direction from one hex to another in a WML variable.
+ * This is mainly useful as a diagnostic tool, but could be useful
+ * for some kind of scenario.
+ */
 WML_HANDLER_FUNCTION(store_relative_direction,, cfg)
 {
 	if (!cfg.child("source")) {
@@ -786,10 +798,12 @@ WML_HANDLER_FUNCTION(store_relative_direction,, cfg)
 	}
 }
 
-/// Store the rotation of one hex around another in a WML variable.
-/// In increments of 60 degrees, clockwise.
-/// This is mainly useful as a diagnostic tool, but could be useful
-/// for some kind of scenario.
+/**
+ * Store the rotation of one hex around another in a WML variable.
+ * In increments of 60 degrees, clockwise.
+ * This is mainly useful as a diagnostic tool, but could be useful
+ * for some kind of scenario.
+ */
 WML_HANDLER_FUNCTION(store_rotate_map_location,, cfg)
 {
 	if (!cfg.child("source")) {
@@ -824,9 +838,11 @@ WML_HANDLER_FUNCTION(store_rotate_map_location,, cfg)
 }
 
 
-/// Store time of day config in a WML variable. This is useful for those who
-/// are too lazy to calculate the corresponding time of day for a given turn,
-/// or if the turn / time-of-day sequence mutates in a scenario.
+/**
+ * Store time of day config in a WML variable. This is useful for those who
+ * are too lazy to calculate the corresponding time of day for a given turn,
+ * or if the turn / time-of-day sequence mutates in a scenario.
+ */
 WML_HANDLER_FUNCTION(store_time_of_day,, cfg)
 {
 	const map_location loc = cfg_to_loc(cfg);
@@ -874,7 +890,7 @@ WML_HANDLER_FUNCTION(tunnel,, cfg)
 	}
 }
 
-/// If we should spawn a new unit on the map somewhere
+/** If we should spawn a new unit on the map somewhere */
 WML_HANDLER_FUNCTION(unit,, cfg)
 {
 	events::command_disabler command_disabler;

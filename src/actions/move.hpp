@@ -99,8 +99,10 @@ private:
  */
 game_events::pump_result_t get_village(const map_location& loc, int side, bool *time_bonus = nullptr, bool fire_event = true);
 
-/// Moves a unit across the board.
-/// And enters the synced context.
+/**
+ * Moves a unit across the board.
+ * And enters the synced context.
+ */
 std::size_t move_unit_and_record(const std::vector<map_location> &steps,
                  undo_list* undo_stack,
                  bool continued_move = false,
@@ -108,8 +110,10 @@ std::size_t move_unit_and_record(const std::vector<map_location> &steps,
                  bool* interrupted = nullptr,
                  move_unit_spectator* move_spectator = nullptr);
 
-/// Moves a unit across the board.
-/// to be called from replay when we are already in the synced context.
+/**
+ * Moves a unit across the board.
+ * to be called from replay when we are already in the synced context.
+ */
 std::size_t move_unit_from_replay(const std::vector<map_location> &steps,
                  undo_list* undo_stack,
                  bool continued_move, bool skip_ally_sighted,

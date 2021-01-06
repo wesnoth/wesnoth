@@ -29,9 +29,11 @@ namespace lua_mapgen
 	class filter
 	{
 	public:
-		/// @a a lua table with the folllowing attributes
-		/// [1]: the filter table,
-		/// [2]: attributeslocation_sets
+		/**
+		 * @a a lua table with the following attributes
+		 * [1]: the filter table,
+		 * [2]: attributeslocation_sets
+		 */
 		explicit filter(lua_State* L, int data_index, int res_index = 0);
 
 		//impl_ may contain pointers to known_sets_, copycontructing this will result in segfaults.

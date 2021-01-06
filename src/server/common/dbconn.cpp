@@ -36,11 +36,10 @@ dbconn::dbconn(const config& c)
 {
 	try
 	{
-		// NOTE: settings put on the connection, rather than the account, are NOT kept if a reconnect occurs!
 		account_ = mariadb::account::create(c["db_host"].str(), c["db_user"].str(), c["db_password"].str());
 		account_->set_connect_option(mysql_option::MYSQL_SET_CHARSET_NAME, std::string("utf8mb4"));
 		account_->set_schema(c["db_name"].str());
-		// initialize sync query connection
+		// initialize the connection used to run synchronous queries.
 		connection_ = create_connection();
 	}
 	catch(const mariadb::exception::base& e)
@@ -64,7 +63,6 @@ mariadb::connection_ref dbconn::create_connection()
 //
 // queries
 //
-/* simple test async query that will taken a noticeable amount of time to complete */
 int dbconn::async_test_query(int limit)
 {
 	std::string sql = "with recursive TEST(T) as "
@@ -121,6 +119,19 @@ bool dbconn::user_exists(const std::string& name)
 	{
 		log_sql_exception("Unable to check if user row for '"+name+"' exists!", e);
 		return false;
+	}
+}
+
+long dbconn::get_forum_id(const std::string& name)
+{
+	try
+	{
+		return get_single_long(connection_, "SELECT IFNULL((SELECT user_id FROM `"+db_users_table_+"` WHERE UPPER(username)=UPPER(?)), 0)", name);
+	}
+	catch(const mariadb::exception::base& e)
+	{
+		log_sql_exception("Unable to get user_id for '"+name+"'!", e);
+		return 0;
 	}
 }
 
@@ -244,12 +255,12 @@ void dbconn::insert_game_player_info(const std::string& uuid, int game_id, const
 		log_sql_exception("Failed to insert game player info row for UUID `"+uuid+"` and game ID `"+std::to_string(game_id)+"`", e);
 	}
 }
-void dbconn::db_insert_game_content_info(const std::string& uuid, int game_id, const std::string& type, const std::string& id, const std::string& source, const std::string& version)
+void dbconn::insert_game_content_info(const std::string& uuid, int game_id, const std::string& type, const std::string& name, const std::string& id, const std::string& source, const std::string& version)
 {
 	try
 	{
-		modify(connection_, "INSERT INTO `"+db_game_content_info_table_+"`(INSTANCE_UUID, GAME_ID, TYPE, ID, SOURCE, VERSION) VALUES(?, ?, ?, ?, ?, ?)",
-			uuid, game_id, type, id, source, version);
+		modify(connection_, "INSERT INTO `"+db_game_content_info_table_+"`(INSTANCE_UUID, GAME_ID, TYPE, NAME, ID, SOURCE, VERSION) VALUES(?, ?, ?, ?, ?, ?, ?)",
+			uuid, game_id, type, name, id, source, version);
 	}
 	catch(const mariadb::exception::base& e)
 	{
@@ -270,8 +281,7 @@ void dbconn::set_oos_flag(const std::string& uuid, int game_id)
 }
 
 //
-// queries can return data with various types that can't be easily fit into a pre-determined structure
-// therefore for queries that can return multiple rows of multiple columns, implement a class to define how the results should be read
+// handle complex query results
 //
 template<typename... Args>
 void dbconn::get_complex_results(mariadb::connection_ref connection, rs_base& base, const std::string& sql, Args&&... args)
@@ -280,7 +290,7 @@ void dbconn::get_complex_results(mariadb::connection_ref connection, rs_base& ba
 	base.read(rslt);
 }
 //
-// get single values
+// handle single values
 //
 template<typename... Args>
 std::string dbconn::get_single_string(mariadb::connection_ref connection, const std::string& sql, Args&&... args)
@@ -302,9 +312,12 @@ long dbconn::get_single_long(mariadb::connection_ref connection, const std::stri
 	if(rslt->next())
 	{
 		// mariadbpp checks for strict integral equivalence, but we don't care
-		// so check the type beforehand, call the associated getter, and let it silently get upcast to an int if needed
+		// so check the type beforehand, call the associated getter, and let it silently get upcast to a long if needed
+		// subselects also apparently return a decimal
 		switch(rslt->column_type(0))
 		{
+			case mariadb::value::type::decimal:
+				return static_cast<long>(rslt->get_decimal(0).float32());
 			case mariadb::value::type::unsigned8:
 			case mariadb::value::type::signed8:
 				return rslt->get_signed8(0);
@@ -367,9 +380,9 @@ int dbconn::modify(mariadb::connection_ref connection, const std::string& sql, A
 	}
 }
 
-//
-// start of recursive unpacking of variadic template in order to be able to call correct parameterized setters on query
-//
+
+
+
 template<typename... Args>
 mariadb::statement_ref dbconn::query(mariadb::connection_ref connection, const std::string& sql, Args&&... args)
 {
@@ -377,15 +390,14 @@ mariadb::statement_ref dbconn::query(mariadb::connection_ref connection, const s
 	prepare(stmt, 0, args...);
 	return stmt;
 }
-// split off the next parameter
+
 template<typename Arg, typename... Args>
 void dbconn::prepare(mariadb::statement_ref stmt, int i, Arg arg, Args&&... args)
 {
 	i = prepare(stmt, i, arg);
 	prepare(stmt, i, args...);
 }
-// template specialization for supported parameter types
-// there are other parameter setters, but so far there hasn't been a reason to add them
+
 template<>
 int dbconn::prepare(mariadb::statement_ref stmt, int i, int arg)
 {
@@ -410,7 +422,7 @@ int dbconn::prepare(mariadb::statement_ref stmt, int i, std::string arg)
 	stmt->set_string(i++, arg);
 	return i;
 }
-// no more parameters, nothing left to do
+
 void dbconn::prepare(mariadb::statement_ref, int){}
 
 #endif //HAVE_MYSQLPP

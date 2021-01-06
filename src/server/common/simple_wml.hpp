@@ -19,6 +19,7 @@
 #include <cstddef>
 #include <iosfwd>
 #include <map>
+#include <memory>
 #include <string>
 #include <vector>
 
@@ -178,7 +179,7 @@ public:
 
 private:
 	node(const node&) = delete;
-	void operator=(const node&) = delete;
+	node& operator=(const node&) = delete;
 
 	int get_children(const string_span& name);
 	int get_children(const char* name);
@@ -247,7 +248,7 @@ public:
 
 	void compress();
 
-	document* clone();
+	std::unique_ptr<document> clone();
 
 	const string_span& operator[](const char* key) const {
 		return root()[key];
@@ -290,7 +291,7 @@ public:
 private:
 	void generate_root();
 	document(const document&) = delete;
-	void operator=(const document&) = delete;
+	document& operator=(const document&) = delete;
 
 	string_span compressed_buf_;
 	const char* output_;

@@ -39,7 +39,7 @@ MAKE_ENUM(LEVEL_RESULT,
 	(TEST_PASS,    "pass")
 	(TEST_FAIL,    "fail")
 	(TEST_INVALID, "test_result_value_invalid")
-)
+);
 
 /**
  * Exception used to escape form the ai or ui code to playsingle_controller::play_side.
@@ -109,7 +109,8 @@ struct end_level_data
 	void read(const config& cfg);
 
 	config to_config() const;
-	config to_config_full() const; ///< Includes the transient data
+	/** Includes the transient data */
+	config to_config_full() const;
 };
 inline void throw_quit_game_exception()
 {

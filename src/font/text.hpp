@@ -169,6 +169,7 @@ public:
 	 * and not including any characters from the delimiters set.
 	 *
 	 * @param position            The pixel position in the text area.
+	 * @param delimiters          
 	 *
 	 * @returns                   The token containing position, and none of the
 	 * 			      delimiter characters. If position is out of bounds,
@@ -395,6 +396,7 @@ private:
 	 * a bit harder to recover from the errors and still set the markup.
 	 *
 	 * @param text                The text to set as markup.
+	 * @param layout              
 	 *
 	 * @returns                   Whether the markup was set or an
 	 *                            unrecoverable error occurred and the text is

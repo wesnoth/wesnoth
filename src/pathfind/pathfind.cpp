@@ -577,6 +577,7 @@ paths::~paths()
  * @param viewer     The unit doing the viewing.
  * @param loc        The location from which the viewing occurs
  *                   (does not have to be the unit's location).
+ * @param jamming_map The relevant "jamming" of the costs being used.
  */
 vision_path::vision_path(const unit& viewer, const map_location& loc,
                          const std::map<map_location, int>& jamming_map)
@@ -602,6 +603,7 @@ vision_path::vision_path(const unit& viewer, const map_location& loc,
  * @param sight_range  The vision() of the unit.
  * @param loc          The location from which the viewing occurs
  *                     (does not have to be the unit's location).
+ * @param jamming_map The relevant "jamming" of the costs being used.
  */
 vision_path::vision_path(const movetype::terrain_costs & view_costs, bool slowed,
                          int sight_range, const map_location & loc,
@@ -616,7 +618,7 @@ vision_path::vision_path(const movetype::terrain_costs & view_costs, bool slowed
 	            destinations, &edges, u.valid() ? &*u : nullptr, nullptr, nullptr, &viewing_team, &jamming_map, nullptr, true);
 }
 
-/// Default destructor
+/** Default destructor */
 vision_path::~vision_path()
 {
 }
@@ -643,7 +645,7 @@ jamming_path::jamming_path(const unit& jammer, const map_location& loc)
 	            0, destinations, nullptr, nullptr, nullptr, nullptr, nullptr);
 }
 
-/// Default destructor
+/** Default destructor */
 jamming_path::~jamming_path()
 {
 }
@@ -672,7 +674,7 @@ marked_route mark_route(const plain_route &rt, bool update_move_cost)
 
 		// move_cost of the next step is irrelevant for the last step
 		assert(last_step || resources::gameboard->map().on_board(*(i+1)));
-		const int move_cost = last_step ? 0 : u.movement_cost((resources::gameboard->map())[*(i+1)]);
+		const int move_cost = last_step ? 0 : u.movement_cost(static_cast<const game_board*>(resources::gameboard)->map()[*(i+1)]);
 
 		const team& viewing_team = resources::gameboard->teams()[display::get_singleton()->viewing_team()];
 
@@ -907,6 +909,7 @@ full_cost_map::full_cost_map(bool force_ignore_zoc,
 /**
  * Adds a units cost map to cost_map (increments the elements in cost_map)
  * @param u a real existing unit on the map
+ * @param use_max_moves whether to use the unit's max movement or the unit's remaining movement
  */
 void full_cost_map::add_unit(const unit& u, bool use_max_moves)
 {

@@ -84,7 +84,7 @@ namespace builtin_conditions {
 	bool have_location(const vconfig& cfg)
 	{
 		std::set<map_location> res;
-		terrain_filter(cfg, resources::filter_con).get_locations(res);
+		terrain_filter(cfg, resources::filter_con, false).get_locations(res);
 
 		std::vector<std::pair<int,int>> counts = cfg.has_attribute("count")
 		? utils::parse_ranges(cfg["count"]) : default_counts;

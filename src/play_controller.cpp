@@ -60,7 +60,6 @@
 #include "soundsource.hpp"
 #include "statistics.hpp"
 #include "synced_context.hpp"
-#include "terrain/type_data.hpp"
 #include "tooltips.hpp"
 #include "units/unit.hpp"
 #include "units/types.hpp"
@@ -137,13 +136,11 @@ static void clear_resources()
 	resources::classification = nullptr;
 }
 
-play_controller::play_controller(const config& level, saved_game& state_of_game,
-		const ter_data_cache& tdata, bool skip_replay)
+play_controller::play_controller(const config& level, saved_game& state_of_game, bool skip_replay)
 	: controller_base()
 	, observer()
 	, quit_confirmation()
 	, ticks_(SDL_GetTicks())
-	, tdata_(tdata)
 	, gamestate_()
 	, level_()
 	, saved_game_(state_of_game)
@@ -219,7 +216,7 @@ void play_controller::init(const config& level)
 		gui2::dialogs::loading_screen::progress(loading_stage::load_level);
 
 		LOG_NG << "initializing game_state..." << (SDL_GetTicks() - ticks()) << std::endl;
-		gamestate_.reset(new game_state(level, *this, tdata_));
+		gamestate_.reset(new game_state(level, *this));
 
 		resources::gameboard = &gamestate().board_;
 		resources::gamedata = &gamestate().gamedata_;
@@ -277,7 +274,7 @@ void play_controller::init(const config& level)
 			// Find first team that is allowed to be observed.
 			// If not set here observer would be without fog until
 			// the first turn of observable side
-			for (const team& t : gamestate().board_.teams())
+			for (const team& t : get_teams())
 			{
 				if (!t.get_disallow_observers())
 				{
@@ -319,7 +316,7 @@ void play_controller::reset_gamestate(const config& level, int replay_pos)
 	This is necessary to ensure that while the old AI manager is being destroyed,
 	all its member objects access the old manager instead of the new. */
 	gamestate_.reset();
-	gamestate_.reset(new game_state(level, *this, tdata_));
+	gamestate_.reset(new game_state(level, *this));
 	resources::gameboard = &gamestate().board_;
 	resources::gamedata = &gamestate().gamedata_;
 	resources::tod_manager = &gamestate().tod_manager_;
@@ -367,7 +364,7 @@ void play_controller::fire_prestart()
 
 	// Fire these right before prestart events, to catch only the units sides
 	// have started with.
-	for (const unit& u : gamestate().board_.units()) {
+	for(const unit& u : get_units()) {
 		pump().fire("unit_placed", map_location(u.get_location()));
 	}
 
@@ -397,7 +394,7 @@ void play_controller::fire_start()
 	check_objectives();
 	// prestart and start events may modify the initial gold amount,
 	// reflect any changes.
-	for (team& tm : gamestate().board_.teams_)
+	for (team& tm : get_teams())
 	{
 		tm.set_start_gold(tm.gold());
 	}
@@ -625,8 +622,8 @@ bool play_controller::enemies_visible() const
 		return true;
 
 	// See if any enemies are visible
-	for (const unit& u : gamestate().board_.units()) {
-		if (current_team().is_enemy(u.side()) && !gui_->fogged(u.get_location())) {
+	for(const unit& u : get_units()) {
+		if(current_team().is_enemy(u.side()) && !gui_->fogged(u.get_location())) {
 			return true;
 		}
 	}
@@ -675,10 +672,10 @@ void play_controller::tab()
 	switch(mode) {
 	case gui::TEXTBOX_SEARCH:
 	{
-		for (const unit& u : gamestate().board_.units()){
+		for(const unit& u : get_units()) {
 			const map_location& loc = u.get_location();
 			if(!gui_->fogged(loc) &&
-					!(gamestate().board_.teams()[gui_->viewing_team()].is_enemy(u.side()) && u.invisible(loc)))
+					!(get_teams()[gui_->viewing_team()].is_enemy(u.side()) && u.invisible(loc)))
 				dictionary.insert(u.name());
 		}
 		//TODO List map labels
@@ -692,7 +689,7 @@ void play_controller::tab()
 	}
 	case gui::TEXTBOX_MESSAGE:
 	{
-		for (const team& t : gamestate().board_.teams()) {
+		for (const team& t : get_teams()) {
 			if(!t.is_empty())
 				dictionary.insert(t.current_player());
 		}
@@ -729,7 +726,7 @@ void play_controller::tab()
 
 team& play_controller::current_team()
 {
-	if(gamestate().board_.teams().size() == 0) {
+	if(get_teams().size() == 0) {
 		throw game::game_error("The scenario has no sides defined");
 	}
 	assert(gamestate().board_.has_team(current_side()));
@@ -738,7 +735,7 @@ team& play_controller::current_team()
 
 const team& play_controller::current_team() const
 {
-	if(gamestate().board_.teams().size() == 0) {
+	if(get_teams().size() == 0) {
 		throw game::game_error("The scenario has no sides defined");
 	}
 	assert(gamestate().board_.has_team(current_side()));
@@ -758,8 +755,8 @@ bool play_controller::is_team_visible(int team_num, bool observer) const
 
 int play_controller::find_last_visible_team() const
 {
-	assert(current_side() <= static_cast<int>(gamestate().board_.teams().size()));
-	const int num_teams = gamestate().board_.teams().size();
+	assert(current_side() <= static_cast<int>(get_teams().size()));
+	const int num_teams = get_teams().size();
 	const bool is_observer = this->is_observer();
 
 	for(int i = 0; i < num_teams; i++) {
@@ -837,7 +834,7 @@ void play_controller::process_keyup_event(const SDL_Event& event)
 				unit_movement_resetter move_reset(*u, u->side() != current_side());
 
 				mouse_handler_.set_current_paths(pathfind::paths(*u, false,
-				                       true, gamestate().board_.teams_[gui_->viewing_team()],
+				                       true, get_teams()[gui_->viewing_team()],
 				                       mouse_handler_.get_path_turns()));
 
 				gui_->highlight_reach(mouse_handler_.current_paths());
@@ -918,7 +915,7 @@ void play_controller::save_map()
 
 void play_controller::load_game()
 {
-	savegame::loadgame load(savegame::save_index_class::default_saves_dir(), game_config_, saved_game_);
+	savegame::loadgame load(savegame::save_index_class::default_saves_dir(), saved_game_);
 	load.load_game_ingame();
 }
 
@@ -1127,7 +1124,7 @@ void play_controller::start_game()
 			return;
 		}
 
-		for (const team& t : gamestate().board_.teams()) {
+		for (const team& t : get_teams()) {
 			actions::clear_shroud(t.side(), false, false);
 		}
 
@@ -1141,7 +1138,7 @@ void play_controller::start_game()
 		sync.do_final_checkup();
 		gui_->recalculate_minimap();
 		// Initialize countdown clock.
-		for (const team& t : gamestate().board_.teams())
+		for (const team& t : get_teams())
 		{
 			if (saved_game_.mp_settings().mp_countdown) {
 				t.set_countdown_time(1000 * saved_game_.mp_settings().mp_countdown_init_time);
@@ -1158,14 +1155,14 @@ void play_controller::start_game()
 
 bool play_controller::can_use_synced_wml_menu() const
 {
-	const team& viewing_team = get_teams_const()[gui_->viewing_team()];
+	const team& viewing_team = get_teams()[gui_->viewing_team()];
 	return gui_->viewing_team() == gui_->playing_team() && !events::commands_disabled && viewing_team.is_local_human() && !is_lingering() && !is_browsing();
 }
 
 std::set<std::string> play_controller::all_players() const
 {
 	std::set<std::string> res = gui_->observers();
-	for (const team& t : get_teams_const())
+	for (const team& t : get_teams())
 	{
 		if (t.is_human()) {
 			res.insert(t.current_player());
@@ -1219,7 +1216,7 @@ void play_controller::play_turn()
 	int last_player_number = gamestate_->player_number_;
 	int next_player_number = gamestate_->next_player_number_;
 
-	while(gamestate_->player_number_ <= static_cast<int>(gamestate().board_.teams().size())) {
+	while(gamestate_->player_number_ <= static_cast<int>(get_teams().size())) {
 		gamestate_->next_player_number_ = gamestate_->player_number_ + 1;
 		next_player_number = gamestate_->next_player_number_;
 		last_player_number = gamestate_->player_number_;
@@ -1236,7 +1233,7 @@ void play_controller::play_turn()
 			play_side();
 			//ignore any changes to next_player_number_ that happen after the [end_turn] is sended to the server, otherwise we will get OOS.
 			next_player_number = gamestate_->next_player_number_;
-			assert(next_player_number <= 2 * static_cast<int>(gamestate().board_.teams().size()));
+			assert(next_player_number <= 2 * static_cast<int>(get_teams().size()));
 			if(is_regular_game_end()) {
 				return;
 			}
@@ -1266,7 +1263,7 @@ void play_controller::play_turn()
 	check_time_over();
 
 	if (!is_regular_game_end()) {
-		gamestate_->player_number_ = modulo(next_player_number, gamestate().board_.teams().size(), 1);
+		gamestate_->player_number_ = modulo(next_player_number, get_teams().size(), 1);
 	}
 }
 
@@ -1313,7 +1310,7 @@ play_controller::scoped_savegame_snapshot::~scoped_savegame_snapshot()
 
 void play_controller::show_objectives() const
 {
-	const team& t = gamestate().board_.teams()[gui_->viewing_team()];
+	const team& t = get_teams()[gui_->viewing_team()];
 	static const std::string no_objectives(_("No objectives available"));
 	std::string objectives = utils::interpolate_variables_into_string(t.objectives(), *gamestate_->get_game_data());
 	gui2::show_transient_message(get_scenario_name(), (objectives.empty() ? no_objectives : objectives), "", true);

@@ -111,7 +111,7 @@ void game_stats::pre_show(window& window)
 			}
 
 			if(resources::controller) {
-				if(resources::controller->get_classification().campaign_type == game_classification::CAMPAIGN_TYPE::MULTIPLAYER) {
+				if(resources::controller->get_classification().is_multiplayer()) {
 					leader_name = team.side_name();
 				}
 			}

@@ -1008,11 +1008,7 @@ public:
 	 * @param attacker_loc location of attacker
 	 * @param defender_loc location of defender
 	 * @param attacker_weapon weapon of attacker
-	 * @retval possible result: ok
-	 * @retval possible result: something wrong
-	 * @retval possible result: attacker and/or defender are invalid
-	 * @retval possible result: attacker and/or defender are invalid
-	 * @retval possible result: attacker doesn't have the specified weapon
+	 * @retval possible results: ok, something wrong, attacker and/or defender are invalid, attacker and/or defender are invalid, or attacker doesn't have the specified weapon
 	 */
 	attack_result_ptr check_attack_action(const map_location& attacker_loc, const map_location& defender_loc, int attacker_weapon) override;
 
@@ -1021,10 +1017,8 @@ public:
 	 * @param from location of our unit
 	 * @param to where to move
 	 * @param remove_movement set unit movement to 0 in case of successful move
-	 * @retval possible result: ok
-	 * @retval possible result: something wrong
-	 * @retval possible result: move is interrupted
-	 * @retval possible result: move is impossible
+ 	 * @param unreach_is_ok whether it's okay for a destination to be unreachable
+	 * @retval possible results: ok, something wrong, move is interrupted, or move is impossible
 	 */
 	move_result_ptr check_move_action(const map_location& from, const map_location& to, bool remove_movement=true, bool unreach_is_ok=false) override;
 
@@ -1032,11 +1026,8 @@ public:
 	 * Check if it is possible to recall a unit for us on specified location
 	 * @param id the id of the unit to be recruited.
 	 * @param where location where the unit is to be recruited.
-	 * @retval possible result: ok
-	 * @retval possible_result: something wrong
-	 * @retval possible_result: leader not on keep
-	 * @retval possible_result: no free space on keep
-	 * @retval possible_result: not enough gold
+	 * @param from location of the recaller.
+	 * @retval possible results: ok, something wrong, leader not on keep, no free space on keep, or not enough gold
 	 */
 	recall_result_ptr check_recall_action(const std::string& id, const map_location &where = map_location::null_location(), const map_location &from = map_location::null_location()) override;
 
@@ -1044,11 +1035,8 @@ public:
 	 * Check if it is possible to recruit a unit for us on specified location
 	 * @param unit_name the name of the unit to be recruited.
 	 * @param where location where the unit is to be recruited.
-	 * @retval possible result: ok
-	 * @retval possible_result: something wrong
-	 * @retval possible_result: leader not on keep
-	 * @retval possible_result: no free space on keep
-	 * @retval possible_result: not enough gold
+	 * @param from location of the recruiter.
+	 * @retval possible results: ok, something wrong, leader not on keep, no free space on keep, or not enough gold
 	 */
 	recruit_result_ptr check_recruit_action(const std::string& unit_name, const map_location &where = map_location::null_location(), const map_location &from = map_location::null_location()) override;
 
@@ -1057,9 +1045,7 @@ public:
 	 * @param unit_location the location of our unit
 	 * @param remove_movement set remaining movements to 0
 	 * @param remove_attacks set remaining attacks to 0
-	 * @retval possible result: ok
-	 * @retval possible_result: something wrong
-	 * @retval possible_result: nothing to do
+	 * @retval possible results: ok, something wrong, or nothing to do
 	 */
 	stopunit_result_ptr check_stopunit_action(const map_location& unit_location, bool remove_movement = true, bool remove_attacks = false) override;
 
@@ -1067,9 +1053,7 @@ public:
 	 * Check if it is possible to run Lua code
 	 * @param lua_code the code to be run
 	 * @param location location to be passed to the code as x1/y1
-	 * @retval possible result: ok
-	 * @retval possible_result: something wrong
-	 * @retval possible_result: nothing to do
+	 * @retval possible results: ok, something wrong, or nothing to do
 	 */
 	synced_command_result_ptr check_synced_command_action(const std::string& lua_code, const map_location& location = map_location::null_location()) override;
 
@@ -1334,11 +1318,7 @@ public:
 	 * @param attacker_loc location of attacker
 	 * @param defender_loc location of defender
 	 * @param attacker_weapon weapon of attacker
-	 * @retval possible result: ok
-	 * @retval possible result: something wrong
-	 * @retval possible result: attacker and/or defender are invalid
-	 * @retval possible result: attacker and/or defender are invalid
-	 * @retval possible result: attacker doesn't have the specified weapon
+	 * @retval possible results: ok, something wrong, attacker and/or defender are invalid, attacker and/or defender are invalid, or attacker doesn't have the specified weapon
 	 */
 	virtual attack_result_ptr execute_attack_action(const map_location& attacker_loc, const map_location& defender_loc, int attacker_weapon) override;
 
@@ -1347,10 +1327,8 @@ public:
 	 * @param from location of our unit
 	 * @param to where to move
 	 * @param remove_movement set unit movement to 0 in case of successful move
-	 * @retval possible result: ok
-	 * @retval possible result: something wrong
-	 * @retval possible result: move is interrupted
-	 * @retval possible result: move is impossible
+ 	 * @param unreach_is_ok whether it's okay for a destination to be unreachable
+	 * @retval possible results: ok, something wrong, move is interrupted, or move is impossible
 	 */
 	virtual move_result_ptr execute_move_action(const map_location& from, const map_location& to, bool remove_movement=true, bool unreach_is_ok=false) override;
 
@@ -1358,11 +1336,8 @@ public:
 	 * Ask the game to recall a unit for us on specified location
 	 * @param id the id of the unit to be recalled.
 	 * @param where location where the unit is to be recalled.
-	 * @retval possible result: ok
-	 * @retval possible_result: something wrong
-	 * @retval possible_result: leader not on keep
-	 * @retval possible_result: no free space on keep
-	 * @retval possible_result: not enough gold
+	 * @param from location of the recaller.
+	 * @retval possible results: ok, something wrong, leader not on keep, no free space on keep, or not enough gold
 	 */
 	virtual recall_result_ptr execute_recall_action(const std::string& id, const map_location &where = map_location::null_location(), const map_location &from = map_location::null_location()) override;
 
@@ -1370,11 +1345,8 @@ public:
 	 * Ask the game to recruit a unit for us on specified location
 	 * @param unit_name the name of the unit to be recruited.
 	 * @param where location where the unit is to be recruited.
-	 * @retval possible result: ok
-	 * @retval possible_result: something wrong
-	 * @retval possible_result: leader not on keep
-	 * @retval possible_result: no free space on keep
-	 * @retval possible_result: not enough gold
+	 * @param from location of the recruiter.
+	 * @retval possible results: ok, something wrong, leader not on keep, no free space on keep, or not enough gold
 	 */
 	virtual recruit_result_ptr execute_recruit_action(const std::string& unit_name, const map_location &where = map_location::null_location(), const map_location &from = map_location::null_location()) override;
 
@@ -1383,9 +1355,7 @@ public:
 	 * @param unit_location the location of our unit
 	 * @param remove_movement set remaining movements to 0
 	 * @param remove_attacks set remaining attacks to 0
-	 * @retval possible result: ok
-	 * @retval possible_result: something wrong
-	 * @retval possible_result: nothing to do
+	 * @retval possible results: ok, something wrong, nothing to do
 	 */
 	virtual stopunit_result_ptr execute_stopunit_action(const map_location& unit_location, bool remove_movement = true, bool remove_attacks = false) override;
 
@@ -1393,9 +1363,7 @@ public:
 	 * Ask the game to run Lua code
 	 * @param lua_code the code to be run
 	 * @param location location to be passed to the code as x1/y1
-	 * @retval possible result: ok
-	 * @retval possible_result: something wrong
-	 * @retval possible_result: nothing to do
+	 * @retval possible results: ok, something wrong, nothing to do
 	 */
 	virtual synced_command_result_ptr execute_synced_command_action(const std::string& lua_code, const map_location& location = map_location::null_location()) override;
 

@@ -65,18 +65,17 @@ public:
 	const terrain_type& get_terrain_info(const t_translation::terrain_code & terrain) const;
 
 	/* Get the underlying terrain_type_data object. */
-	const ter_data_cache & tdata() const { return tdata_; }
+	const std::shared_ptr<terrain_type_data>& tdata() const { return tdata_; }
 
 	/**
-	 * Loads a map, with the given terrain configuration.
+	 * Loads a map.
 	 *
 	 * Data should be a series of lines, with each character representing one
 	 * hex on the map.  Starting locations are represented by numbers.
 	 *
-	 * @param tdata the terrain data
 	 * @param data the map data to load.
 	 */
-	gamemap(const ter_data_cache &tdata, const std::string &data); //throw(incorrect_map_format_error)
+	gamemap(const std::string& data); // throw(incorrect_map_format_error)
 
 	virtual ~gamemap();
 
@@ -167,7 +166,7 @@ public:
 	map_location special_location(const std::string& id) const;
 
 
-	/// returns the side number of the side starting at position loc, 0 if no such side exists.
+	/** returns the side number of the side starting at position loc, 0 if no such side exists. */
 	const std::string* is_starting_position(const map_location& loc) const;
 	int num_valid_starting_positions() const;
 
@@ -254,7 +253,7 @@ private:
 	 */
 	int read_header(const std::string& data);
 
-	ter_data_cache tdata_;
+	std::shared_ptr<terrain_type_data> tdata_;
 
 protected:
 	std::vector<map_location> villages_;

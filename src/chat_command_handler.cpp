@@ -14,6 +14,7 @@
 #include "chat_command_handler.hpp"
 
 #include "chat_events.hpp"
+#include "game_initialization/multiplayer.hpp"
 #include "game_version.hpp"
 #include "gui/dialogs/preferences_dialog.hpp"
 #include "map_command_handler.hpp"
@@ -24,7 +25,7 @@ namespace events {
 
 bool chat_command_handler::is_enabled(const map_command_handler<chat_command_handler>::command& c) const
 {
-	return !(c.has_flag('A') && !preferences::is_authenticated());
+	return !(c.has_flag('A') && !mp::logged_in_as_moderator());
 }
 
 void chat_command_handler::print(const std::string& title, const std::string& message)

@@ -800,7 +800,7 @@ static int do_gameloop(const std::vector<std::string>& args)
 	plugins_manager plugins_man(new application_lua_kernel);
 
 	const plugins_context::reg_vec callbacks {
-		{"play_multiplayer", std::bind(&game_launcher::play_multiplayer, game.get(), game_launcher::MP_CONNECT)},
+		{"play_multiplayer", std::bind(&game_launcher::play_multiplayer, game.get(), game_launcher::mp_mode::CONNECT)},
 	};
 
 	const plugins_context::areg_vec accessors {
@@ -811,10 +811,10 @@ static int do_gameloop(const std::vector<std::string>& args)
 
 	plugins.set_callback("exit", [](const config& cfg) { safe_exit(cfg["code"].to_int(0)); }, false);
 
-	for(;;) {
+	while(true) {
 		statistics::fresh_stats();
 
-		if(!game->is_loading()) {
+		if(!game->has_load_data()) {
 			const config& cfg = config_manager.game_config().child("titlescreen_music");
 			if(cfg) {
 				for(const config& i : cfg.child_range("music")) {
@@ -883,28 +883,14 @@ static int do_gameloop(const std::vector<std::string>& args)
 		game_launcher::RELOAD_GAME_DATA should_reload = game_launcher::RELOAD_DATA;
 
 		// If loading a game, skip the titlescreen entirely
-		if(game->is_loading()) {
-			if(!game->load_game()) {
-				game->clear_loaded_game();
-			}
-
+		if(game->has_load_data() && game->load_game()) {
 			game->launch_game(should_reload);
 			continue;
 		}
 
 		gui2::dialogs::title_screen dlg(*game);
 
-		/*
-		 * Quick explanation of the titlscreen loop:
-		 *
-		 * The dialog's redraw_background_ flag is initialized as true in the constructor, so the dialog will always
-		 * display at least once when this loop is executed. Each time it's opened, the aforementioned flag is set to
-		 * false, and any selection that results in leaving the dialog simply sets the window's retval and proceeds to
-		 * the appropriate action.
-		 *
-		 * Certain actions (such as window resizing) set the flag to true, which allows the dialog to reopen with any
-		 * layout changes such as those dictated by window resolution.
-		 */
+		// Allows re-layout on resize
 		while(dlg.get_retval() == gui2::dialogs::title_screen::REDRAW_BACKGROUND) {
 			dlg.show();
 		}
@@ -915,21 +901,15 @@ static int do_gameloop(const std::vector<std::string>& args)
 			return 0;
 		case gui2::dialogs::title_screen::MP_CONNECT:
 			game_config::set_debug(game_config::mp_debug);
-			if(!game->play_multiplayer(game_launcher::MP_CONNECT)) {
-				continue;
-			}
+			game->play_multiplayer(game_launcher::mp_mode::CONNECT);
 			break;
 		case gui2::dialogs::title_screen::MP_HOST:
 			game_config::set_debug(game_config::mp_debug);
-			if(!game->play_multiplayer(game_launcher::MP_HOST)) {
-				continue;
-			}
+			game->play_multiplayer(game_launcher::mp_mode::HOST);
 			break;
 		case gui2::dialogs::title_screen::MP_LOCAL:
 			game_config::set_debug(game_config::mp_debug);
-			if(!game->play_multiplayer(game_launcher::MP_LOCAL)) {
-				continue;
-			}
+			game->play_multiplayer(game_launcher::mp_mode::LOCAL);
 			break;
 		case gui2::dialogs::title_screen::RELOAD_GAME_DATA:
 			gui2::dialogs::loading_screen::display([&config_manager]() {

@@ -121,7 +121,7 @@ protected:
 
 private:
 	level(const level&) = delete;
-	void operator=(const level&) = delete;
+	level& operator=(const level&) = delete;
 };
 
 class scenario : public level
@@ -153,8 +153,8 @@ protected:
 	std::string map_hash_;
 
 private:
-	scenario(const scenario&);
-	void operator=(const scenario&);
+	scenario(const scenario&) = delete;
+	scenario& operator=(const scenario&) = delete;
 
 	int num_players_;
 };
@@ -181,7 +181,7 @@ public:
 
 private:
 	user_map(const user_map&) = delete;
-	void operator=(const user_map&) = delete;
+	user_map& operator=(const user_map&) = delete;
 
 	std::string name_;
 };
@@ -210,7 +210,7 @@ public:
 
 private:
 	random_map(const random_map&) = delete;
-	void operator=(const random_map&) = delete;
+	random_map& operator=(const random_map&) = delete;
 
 	config generator_data_;
 
@@ -261,7 +261,7 @@ public:
 
 private:
 	campaign(const campaign&) = delete;
-	void operator=(const campaign&) = delete;
+	campaign& operator=(const campaign&) = delete;
 
 	std::string id_;
 	bool allow_era_choice_;
@@ -403,7 +403,7 @@ public:
 
 private:
 	create_engine(const create_engine&) = delete;
-	void operator=(const create_engine&) = delete;
+	create_engine& operator=(const create_engine&) = delete;
 
 	void init_all_levels();
 	void init_extras(const MP_EXTRA extra_type);

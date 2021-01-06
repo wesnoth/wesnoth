@@ -39,7 +39,7 @@ MAKE_ENUM(component_availability,
 	(SP, "sp")
 	(MP, "mp")
 	(HYBRID, "hybrid")
-)
+);
 /**
  * Note to all triers:
  * It's not guaranteed that the specified component will be selected

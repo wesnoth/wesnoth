@@ -107,11 +107,15 @@ std::string fuh::extract_salt(const std::string& name) {
 }
 
 void fuh::user_logged_in(const std::string& name) {
-	set_lastlogin(name, std::time(nullptr));
+	conn_.write_user_int("user_lastvisit", name, static_cast<int>(std::time(nullptr)));
 }
 
 bool fuh::user_exists(const std::string& name) {
 	return conn_.user_exists(name);
+}
+
+long fuh::get_forum_id(const std::string& name) {
+	return conn_.get_forum_id(name);
 }
 
 bool fuh::user_is_active(const std::string& name) {
@@ -135,12 +139,6 @@ void fuh::set_is_moderator(const std::string& name, const bool& is_moderator) {
 
 fuh::ban_info fuh::user_is_banned(const std::string& name, const std::string& addr)
 {
-	//
-	// NOTE: glob IP and email address bans are NOT supported yet since they
-	//       require a different kind of query that isn't supported by our
-	//       prepared SQL statement API right now. However, they are basically
-	//       never used on forums.wesnoth.org, so this shouldn't be a problem
-	//       for the time being.
 	ban_check b = conn_.get_ban_info(name, addr);
 	switch(b.get_ban_type())
 	{
@@ -201,10 +199,6 @@ std::time_t fuh::get_registrationdate(const std::string& user) {
 	return std::time_t(conn_.get_user_int(db_users_table_, "user_regdate", user));
 }
 
-void fuh::set_lastlogin(const std::string& user, const std::time_t& lastlogin) {
-	conn_.write_user_int("user_lastvisit", user, static_cast<int>(lastlogin));
-}
-
 std::string fuh::get_uuid(){
 	return conn_.get_uuid();
 }
@@ -225,8 +219,8 @@ void fuh::db_insert_game_player_info(const std::string& uuid, int game_id, const
 	conn_.insert_game_player_info(uuid, game_id, username, side_number, is_host, faction, version, source, current_user);
 }
 
-void fuh::db_insert_game_content_info(const std::string& uuid, int game_id, const std::string& type, const std::string& id, const std::string& source, const std::string& version){
-	conn_.db_insert_game_content_info(uuid, game_id, type, id, source, version);
+void fuh::db_insert_game_content_info(const std::string& uuid, int game_id, const std::string& type, const std::string& name, const std::string& id, const std::string& source, const std::string& version){
+	conn_.insert_game_content_info(uuid, game_id, type, name, id, source, version);
 }
 
 void fuh::db_set_oos_flag(const std::string& uuid, int game_id){

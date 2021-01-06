@@ -28,14 +28,12 @@ class saved_game;
 class terrain_type_data;
 class team;
 class playsingle_controller;
-typedef std::shared_ptr<terrain_type_data> ter_data_cache;
-
 class config;
-
 class wesnothd_connection;
-struct mp_campaign_info
+
+struct mp_game_metadata
 {
-	mp_campaign_info(wesnothd_connection& wdc)
+	mp_game_metadata(wesnothd_connection& wdc)
 		: connected_players()
 		, is_host()
 		, current_turn(0)
@@ -43,9 +41,9 @@ struct mp_campaign_info
 		, skip_replay_blindfolded(false)
 		, connection(wdc)
 	{
-
 	}
-	/// players and observers
+
+	/** players and observers */
 	std::set<std::string> connected_players;
 	bool is_host;
 	unsigned current_turn;
@@ -56,30 +54,36 @@ struct mp_campaign_info
 
 class campaign_controller
 {
-	saved_game& state_;
-	const ter_data_cache & tdata_;
-	const bool is_unit_test_;
-	bool is_replay_;
-	mp_campaign_info* mp_info_;
 public:
-	campaign_controller(saved_game& state, const ter_data_cache & tdata, bool is_unit_test = false)
+	campaign_controller(saved_game& state, bool is_unit_test = false)
 		: state_(state)
-		, tdata_(tdata)
 		, is_unit_test_(is_unit_test)
 		, is_replay_(false)
 		, mp_info_(nullptr)
 	{
 	}
+
 	LEVEL_RESULT play_game();
 	LEVEL_RESULT play_replay()
 	{
 		is_replay_ = true;
 		return play_game();
 	}
-	void set_mp_info(mp_campaign_info* mp_info) { mp_info_ = mp_info; }
+
+	void set_mp_info(mp_game_metadata* mp_info)
+	{
+		mp_info_ = mp_info;
+	}
+
 private:
-	LEVEL_RESULT playsingle_scenario(end_level_data &end_level);
-	LEVEL_RESULT playmp_scenario(end_level_data &end_level);
-	void show_carryover_message(playsingle_controller& playcontroller, const end_level_data& end_level, LEVEL_RESULT res);
-	static void report_victory(std::ostringstream &report, team& t,	int finishing_bonus_per_turn, int turns_left, int finishing_bonus);
+	LEVEL_RESULT playsingle_scenario(end_level_data& end_level);
+	LEVEL_RESULT playmp_scenario(end_level_data& end_level);
+
+	void show_carryover_message(
+		playsingle_controller& playcontroller, const end_level_data& end_level, LEVEL_RESULT res);
+
+	saved_game& state_;
+	const bool is_unit_test_;
+	bool is_replay_;
+	mp_game_metadata* mp_info_;
 };

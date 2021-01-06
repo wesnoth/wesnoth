@@ -169,8 +169,10 @@ public:
 	team();
 	virtual ~team();
 
-	/// Stores the attributes recognized by [side]. These should be stripped
-	/// from a side's config before using it to create the side's leader.
+	/**
+	 * Stores the attributes recognized by [side]. These should be stripped
+	 * from a side's config before using it to create the side's leader.
+	 */
 	static const std::set<std::string> attributes;
 
 	void build(const config &cfg, const gamemap &map, int gold = default_team_gold_);
@@ -178,7 +180,13 @@ public:
 	void write(config& cfg) const;
 
 	void fix_villages(const gamemap &map);
-	game_events::pump_result_t get_village(const map_location&, const int owner_side, game_data * fire_event); //!< Acquires a village from owner_side. Pointer fire_event should be the game_data for the game if it is desired to fire an event -- a "capture" event with owner_side variable scoped in will be fired. For no event, pass it nullptr. Default is the resources::gamedata pointer
+	/**
+	 * Acquires a village from owner_side.
+	 * Pointer fire_event should be the game_data for the game if it is desired to fire an event -- a "capture" event with owner_side variable scoped in will be fired.
+	 * For no event, pass it nullptr.
+	 * Default is the resources::gamedata pointer.
+	 */
+	game_events::pump_result_t get_village(const map_location&, const int owner_side, game_data * fire_event);
 	void lose_village(const map_location&);
 	void clear_villages() { villages_.clear(); }
 	const std::set<map_location>& villages() const { return villages_; }
@@ -254,7 +262,7 @@ public:
 
 	CONTROLLER controller() const { return info_.controller; }
 	const std::string& color() const { return info_.color; }
-	/// @note Call display::reinit_flag_for_side() after calling this
+	/** @note Call display::reinit_flag_for_side() after calling this */
 	void set_color(const std::string& color) { info_.color = color; }
 	bool is_empty() const { return info_.controller == CONTROLLER::EMPTY; }
 
@@ -301,7 +309,7 @@ public:
 	const std::string& flag() const { return info_.flag; }
 	const std::string& flag_icon() const { return info_.flag_icon; }
 
-	/// @note Call display::reinit_flag_for_side() after calling this
+	/** @note Call display::reinit_flag_for_side() after calling this */
 	void set_flag(const std::string& flag) { info_.flag = flag; }
 	void set_flag_icon(const std::string& flag_icon) { info_.flag_icon = flag_icon; }
 
@@ -330,9 +338,9 @@ public:
 	void merge_shroud_map_data(const std::string& shroud_data) { shroud_.merge(shroud_data); }
 
 	bool knows_about_team(std::size_t index) const;
-	/// Records hexes that were cleared of fog via WML.
+	/** Records hexes that were cleared of fog via WML. */
 	void add_fog_override(const std::set<map_location> &hexes) { fog_clearer_.insert(hexes.begin(), hexes.end()); }
-	/// Removes the record of hexes that were cleared of fog via WML.
+	/** Removes the record of hexes that were cleared of fog via WML. */
 	void remove_fog_override(const std::set<map_location> &hexes);
 
 	bool auto_shroud_updates() const { return auto_shroud_updates_; }
@@ -341,7 +349,7 @@ public:
 	bool no_leader() const { return info_.no_leader; }
 	DEFEAT_CONDITION defeat_condition() const { return info_.defeat_condition; }
 	void set_defeat_condition(DEFEAT_CONDITION value) { info_.defeat_condition = value; }
-	///sets the defeat condition if @param value is a valid defeat condition, otherwise nothing happes.
+	/** sets the defeat condition if @param value is a valid defeat condition, otherwise nothing happes. */
 	void set_defeat_condition_string(const std::string& value) { info_.defeat_condition.parse(value); }
 	void have_leader(bool value=true) { info_.no_leader = !value; }
 	bool hidden() const { return info_.hidden; }
@@ -421,7 +429,7 @@ private:
 	std::set<map_location> villages_;
 
 	shroud_map shroud_, fog_;
-	/// Stores hexes that have been cleared of fog via WML.
+	/** Stores hexes that have been cleared of fog via WML. */
 	std::set<map_location> fog_clearer_;
 
 	bool auto_shroud_updates_;

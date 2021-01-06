@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2020-10-17 04:28 UTC\n"
-"PO-Revision-Date: 2020-12-17 10:26-0300\n"
+"PO-Revision-Date: 2020-12-23 23:00-0300\n"
 "Last-Translator: Andrei Machado <andreisp.machado@yahoo.com>\n"
 "Language-Team: none\n"
 "Language: pt_BR\n"
@@ -22,13 +22,13 @@ msgstr ""
 #. [campaign]: id=Tutorial
 #: data/campaigns/tutorial/_main.cfg:11
 msgid "Battle Training"
-msgstr ""
+msgstr "Treinamento de Batalha"
 
 #. [difficulty]
 #. [campaign]: id=Tutorial
 #: data/campaigns/tutorial/_main.cfg:14 data/campaigns/tutorial/_main.cfg:29
 msgid "Tutorial"
-msgstr ""
+msgstr "Tutorial"
 
 #. [campaign]: id=Tutorial
 #: data/campaigns/tutorial/_main.cfg:20
@@ -36,11 +36,13 @@ msgid ""
 "Learn the basics of Wesnoth gameplay with a tutorial. Recommended for first "
 "time players."
 msgstr ""
+"Aprenda os fundamentos de Wesnoth com um tutorial. Recomendado para "
+"jogadores novos."
 
 #. [difficulty]
 #: data/campaigns/tutorial/_main.cfg:30
 msgid "Beginner"
-msgstr ""
+msgstr "Iniviante"
 
 #. [lua]: wml_actions.select_character
 #: data/campaigns/tutorial/lua/character_selection.lua:25
@@ -154,15 +156,11 @@ msgstr "Morrer"
 
 #. [disallow_end_turn]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:136
-#, fuzzy
-#| msgid ""
-#| "You cannot end your turn until you have recruited troops and captured a "
-#| "village!"
 msgid ""
 "You cannot end your turn until you have completed the lesson on movement!"
 msgstr ""
-"Você não pode terminar o seu turno até que tenha recrutado tropas e "
-"capturado uma aldeia!"
+"Você não pode terminar o seu turno até que tenha completado a lição sobre "
+"movimentação!"
 
 #
 # File: data/campaigns/tutorial/scenarios/1_Tutorial.cfg, line: 213
@@ -448,14 +446,9 @@ msgstr ""
 
 #. [disallow_end_turn]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:526
-#, fuzzy
-#| msgid ""
-#| "You cannot end your turn until you have recruited troops and captured a "
-#| "village!"
 msgid "You cannot end your turn until you have attacked the dummy!"
 msgstr ""
-"Você não pode terminar o seu turno até que tenha recrutado tropas e "
-"capturado uma aldeia!"
+"Você não pode terminar o seu turno até que tenha atacado o boneco de treino!"
 
 #
 # File: data/campaigns/tutorial/scenarios/1_Tutorial.cfg, line: 443
@@ -605,15 +598,11 @@ msgstr "Termine o seu turno"
 
 #. [disallow_end_turn]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:630
-#, fuzzy
-#| msgid ""
-#| "You cannot end your turn until you have recruited troops and captured a "
-#| "village!"
 msgid ""
 "You cannot end your turn until you have completed the lesson on healing!"
 msgstr ""
-"Você não pode terminar o seu turno até que tenha recrutado tropas e "
-"capturado uma aldeia!"
+"Você não pode terminar o seu turno até que tenha completado a lição sobre "
+"cura!"
 
 #
 # File: data/campaigns/tutorial/scenarios/1_Tutorial.cfg, line: 518
@@ -698,15 +687,11 @@ msgstr ""
 
 #. [disallow_end_turn]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:697
-#, fuzzy
-#| msgid ""
-#| "You cannot end your turn until you have recruited troops and captured a "
-#| "village!"
 msgid ""
 "You cannot end your turn until you have completed the lesson on recruiting!"
 msgstr ""
-"Você não pode terminar o seu turno até que tenha recrutado tropas e "
-"capturado uma aldeia!"
+"Você não pode terminar o seu turno até que tenha cmpletado a lição sobre "
+"recrutamento!"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:706
@@ -843,15 +828,11 @@ msgstr ""
 
 #. [disallow_end_turn]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:829
-#, fuzzy
-#| msgid ""
-#| "You cannot end your turn until you have recruited troops and captured a "
-#| "village!"
 msgid ""
 "You cannot end your turn until you have completed the lesson on attacking!"
 msgstr ""
-"Você não pode terminar o seu turno até que tenha recrutado tropas e "
-"capturado uma aldeia!"
+"Você não pode terminar o seu turno até que tenha completado a lição sobre "
+"ataque!"
 
 #
 # File: data/campaigns/tutorial/scenarios/1_Tutorial.cfg, line: 760
@@ -962,19 +943,13 @@ msgstr ""
 #. [message]: speaker=Delfador
 #. a strong elf, so +1 damage
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:917
-#, fuzzy
-#| msgid ""
-#| "Your elf used a sword (5×4; or 5 damage on each hit, with 4 attacks), "
-#| "which is a <i>melee</i> attack. The quintain defended with its melee "
-#| "attack (3×5; or 3 damage on each hit, with 5 attacks). The ranged attack "
-#| "(the bow) would have been safer."
 msgid ""
 "Your elf used a sword (6×4; or 6 damage on each hit, with 4 attacks), which "
 "is a <i>melee</i> attack. The quintain defended with its melee attack (3×5; "
 "or 3 damage on each hit, with 5 attacks). The ranged attack (the bow) would "
 "have been safer."
 msgstr ""
-"Seu elfo usou uma espada, que é um ataque <i>corpo-a-corpo</i> (5x4; ou 5 de "
+"Seu elfo usou uma espada, que é um ataque <i>corpo-a-corpo</i> (6x4; ou 5 de "
 "dano em cada acerto, com 4 ataques). O estafermo se defendeu com seu próprio "
 "ataque corpo-a-corpo (3x5; ou 5 de dano em cada acerto, com 5 ataques). O "
 "ataque a distância (o arco) teria sido uma opção mais segura."
@@ -985,6 +960,9 @@ msgid ""
 "Elvish Fighters normally do 5×4 damage with their swords, but this elf has "
 "the <i>strong</i> trait, which increases the damage output of melee attacks."
 msgstr ""
+"Guerreiros Élficos geralmente causam 5x4 de dano com os suas espadas, mas "
+"este elfo possui a característica <i>forte</i>, que aumenta o dano dos seus "
+"ataques corpo-a-corpo."
 
 #
 # File: data/campaigns/tutorial/scenarios/1_Tutorial.cfg, line: 862
@@ -1016,17 +994,12 @@ msgstr ""
 #. [message]: speaker=Delfador
 #. a dextrous elf, so +1 damage
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:948
-#, fuzzy
-#| msgid ""
-#| "Your elf used a bow, which is a <i>ranged</i> attack (3×3; or 3 damage on "
-#| "each hit, with 3 attacks). The quintain has no ranged attack, only a "
-#| "melee attack, so it could not defend itself."
 msgid ""
 "Your elf used a bow, which is a <i>ranged</i> attack (4×3; or 4 damage on "
 "each hit, with 3 attacks). The quintain has no ranged attack, only a melee "
 "attack, so it could not defend itself."
 msgstr ""
-"Seu elfo usou um arco, que é um <i>ataque à distância</i> (3x3; ou 3 de dano "
+"Seu elfo usou um arco, que é um <i>ataque à distância</i> (4x3; ou 4 de dano "
 "em cada acerto, com 3 ataques). O estafermo não tem um ataque à distância, "
 "apenas corpo-a-corpo, então ele não pôde se defender."
 
@@ -1036,6 +1009,9 @@ msgid ""
 "Elvish Fighters normally do 3×3 damage with their bows, but this elf has the "
 "<i>dextrous</i> trait, which increases the damage output of ranged attacks."
 msgstr ""
+"Guerreiros Élficos geralmente causam 3x3 de dano com os seus arcos, mas este "
+"elfo possui a característica <i>habilidoso</i>, que aumenta o dano dos seus "
+"ataques à distância."
 
 #
 # File: data/campaigns/tutorial/scenarios/1_Tutorial.cfg, line: 914

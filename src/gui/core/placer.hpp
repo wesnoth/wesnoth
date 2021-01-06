@@ -56,7 +56,7 @@ public:
 	MAKE_ENUM(grow_direction,
 		(horizontal, "horizontal")
 		(vertical, "vertical")
-	)
+	);
 
 
 	/***** ***** Constructor, destructor, assignment. ***** *****/

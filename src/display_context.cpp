@@ -139,7 +139,7 @@ bool display_context::is_observer() const
 	return true;
 }
 
-/// Static info getters previously declared at global scope in unit.?pp
+// Static info getters previously declared at global scope in unit.?pp
 
 int display_context::side_units(int side) const
 {

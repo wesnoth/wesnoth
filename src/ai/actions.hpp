@@ -322,10 +322,7 @@ public:
  * @param defender_loc location of defender
  * @param attacker_weapon weapon of attacker
  * @param aggression aggression of attacker, is used to determine attacker's weapon if it is not specified
- * @retval possible result: ok
- * @retval possible result: something wrong
- * @retval possible result: attacker and/or defender are invalid
- * @retval possible result: attacker doesn't have the specified weapon
+ * @retval possible results: ok, something wrong, attacker and/or defender are invalid, or attacker doesn't have the specified weapon
  */
 static attack_result_ptr execute_attack_action( side_number side,
 	bool execute,
@@ -342,10 +339,8 @@ static attack_result_ptr execute_attack_action( side_number side,
  * @param from location of our unit
  * @param to where to move
  * @param remove_movement set unit movement to 0 in case of successful move
- * @retval possible result: ok
- * @retval possible result: something wrong
- * @retval possible result: move is interrupted
- * @retval possible result: move is impossible
+ * @param unreach_is_ok whether it's okay for a destination to be unreachable
+ * @retval possible results: ok, something wrong, move is interrupted, or move is impossible
  */
 static move_result_ptr execute_move_action( side_number side,
 	bool execute,
@@ -362,11 +357,8 @@ static move_result_ptr execute_move_action( side_number side,
  * @param execute should move be actually executed or not
  * @param unit_id the id of the unit to be recalled.
  * @param where location where the unit is to be recalled.
- * @retval possible result: ok
- * @retval possible_result: something wrong
- * @retval possible_result: leader not on keep
- * @retval possible_result: no free space on keep
- * @retval possible_result: not enough gold
+ * @param from the location where the unit was recruited from.
+ * @retval possible results: ok, something wrong, leader not on keep, no free space on keep, or not enough gold
  */
 static recall_result_ptr execute_recall_action( side_number side,
 	bool execute,
@@ -382,11 +374,8 @@ static recall_result_ptr execute_recall_action( side_number side,
  * @param execute should move be actually executed or not
  * @param unit_name the name of the unit to be recruited.
  * @param where location where the unit is to be recruited.
- * @retval possible result: ok
- * @retval possible_result: something wrong
- * @retval possible_result: leader not on keep
- * @retval possible_result: no free space on keep
- * @retval possible_result: not enough gold
+ * @param from the location where the unit was recruited from.
+ * @retval possible results: ok, something wrong, leader not on keep, no free space on keep, or not enough gold
  */
 static recruit_result_ptr execute_recruit_action( side_number side,
 	bool execute,
@@ -402,9 +391,7 @@ static recruit_result_ptr execute_recruit_action( side_number side,
  * @param unit_location the location of our unit
  * @param remove_movement set remaining movements to 0
  * @param remove_attacks set remaining attacks to 0
- * @retval possible result: ok
- * @retval possible_result: something wrong
- * @retval possible_result: nothing to do
+ * @retval possible results: ok, something wrong, or nothing to do
  */
 static stopunit_result_ptr execute_stopunit_action( side_number side,
 	bool execute,
@@ -419,9 +406,7 @@ static stopunit_result_ptr execute_stopunit_action( side_number side,
  * @param execute should move be actually executed or not
  * @param lua_code the code to be run
  * @param location location to be passed to the code as x1/y1
- * @retval possible result: ok
- * @retval possible_result: something wrong
- * @retval possible_result: nothing to do
+ * @retval possible results: ok, something wrong, or nothing to do
  */
 static synced_command_result_ptr execute_synced_command_action( side_number side,
 	bool execute,

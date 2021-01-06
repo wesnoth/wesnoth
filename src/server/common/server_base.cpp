@@ -16,6 +16,20 @@
 
 #include "lexical_cast.hpp"
 #include "log.hpp"
+#include "filesystem.hpp"
+
+#ifdef HAVE_CONFIG_H
+#include "config.h"
+#endif
+
+#ifdef HAVE_SENDFILE
+#include <sys/sendfile.h>
+#endif
+
+#ifdef _WIN32
+#include <windows.h>
+#include <boost/scope_exit.hpp>
+#endif
 
 #include <boost/asio/ip/v6_only.hpp>
 #include <boost/asio/read.hpp>
@@ -37,42 +51,30 @@ static lg::log_domain log_config("config");
 #define ERR_CONFIG LOG_STREAM(err, log_config)
 #define WRN_CONFIG LOG_STREAM(warn, log_config)
 
-#include "server/common/send_receive_wml_helpers.ipp"
+bool dump_wml = false;
 
-server_base::server_base(unsigned short port, bool keep_alive) :
-	port_(port),
-	keep_alive_(keep_alive),
-	io_service_(),
-	acceptor_v6_(io_service_),
-	acceptor_v4_(io_service_),
-	#ifndef _WIN32
-	input_(io_service_),
-	sighup_(io_service_, SIGHUP),
-	#endif
-	sigs_(io_service_, SIGINT, SIGTERM)
+server_base::server_base(unsigned short port, bool keep_alive)
+	: port_(port)
+	, keep_alive_(keep_alive)
+	, io_service_()
+	, acceptor_v6_(io_service_)
+	, acceptor_v4_(io_service_)
+	, handshake_response_()
+#ifndef _WIN32
+	, input_(io_service_)
+	, sighup_(io_service_, SIGHUP)
+#endif
+	, sigs_(io_service_, SIGINT, SIGTERM)
 {
-}
-
-void server_base::setup_acceptor(boost::asio::ip::tcp::acceptor& acceptor, boost::asio::ip::tcp::endpoint endpoint)
-{
-	acceptor.open(endpoint.protocol());
-	acceptor.set_option(boost::asio::ip::tcp::acceptor::reuse_address(true));
-	acceptor.set_option(boost::asio::ip::tcp::acceptor::keep_alive(keep_alive_));
-	if(endpoint.protocol() == boost::asio::ip::tcp::v6())
-		acceptor.set_option(boost::asio::ip::v6_only(true));
-	acceptor.bind(endpoint);
-	acceptor.listen();
 }
 
 void server_base::start_server()
 {
 	boost::asio::ip::tcp::endpoint endpoint_v6(boost::asio::ip::tcp::v6(), port_);
-	setup_acceptor(acceptor_v6_, endpoint_v6);
-	serve(acceptor_v6_);
+	boost::asio::spawn(io_service_, [this, endpoint_v6](boost::asio::yield_context yield) { serve(yield, acceptor_v6_, endpoint_v6); });
 
 	boost::asio::ip::tcp::endpoint endpoint_v4(boost::asio::ip::tcp::v4(), port_);
-	setup_acceptor(acceptor_v4_, endpoint_v4);
-	serve(acceptor_v4_);
+	boost::asio::spawn(io_service_, [this, endpoint_v4](boost::asio::yield_context yield) { serve(yield, acceptor_v4_, endpoint_v4); });
 
 	handshake_response_.connection_num = htonl(42);
 
@@ -84,21 +86,29 @@ void server_base::start_server()
 	sigs_.async_wait(std::bind(&server_base::handle_termination, this, std::placeholders::_1, std::placeholders::_2));
 }
 
-void server_base::serve(boost::asio::ip::tcp::acceptor& acceptor)
+void server_base::serve(boost::asio::yield_context yield, boost::asio::ip::tcp::acceptor& acceptor, boost::asio::ip::tcp::endpoint endpoint)
 {
-	socket_ptr socket = std::make_shared<boost::asio::ip::tcp::socket>(io_service_);
-	acceptor.async_accept(*socket, [&acceptor, socket, this](const boost::system::error_code& error){
-		this->accept_connection(acceptor, error, socket);
-	});
-}
+	if(!acceptor.is_open()) {
+		acceptor.open(endpoint.protocol());
+		acceptor.set_option(boost::asio::ip::tcp::acceptor::reuse_address(true));
+		acceptor.set_option(boost::asio::ip::tcp::acceptor::keep_alive(keep_alive_));
+		if(endpoint.protocol() == boost::asio::ip::tcp::v6())
+			acceptor.set_option(boost::asio::ip::v6_only(true));
+		acceptor.bind(endpoint);
+		acceptor.listen();
+	}
 
-void server_base::accept_connection(boost::asio::ip::tcp::acceptor& acceptor, const boost::system::error_code& error, socket_ptr socket)
-{
-	if(accepting_connections())
-		serve(acceptor);
+	socket_ptr socket = std::make_shared<socket_ptr::element_type>(io_service_);
+
+	boost::system::error_code error;
+	acceptor.async_accept(socket->lowest_layer(), yield[error]);
 	if(error) {
 		ERR_SERVER << "Accept failed: " << error.message() << "\n";
 		return;
+	}
+
+	if(accepting_connections()) {
+		boost::asio::spawn(io_service_, [this, &acceptor, endpoint](boost::asio::yield_context yield) { serve(yield, acceptor, endpoint); });
 	}
 
 #ifndef _WIN32
@@ -118,20 +128,9 @@ void server_base::accept_connection(boost::asio::ip::tcp::acceptor& acceptor, co
 #endif
 
 	DBG_SERVER << client_address(socket) << "\tnew connection tentatively accepted\n";
-	serverside_handshake(socket);
-}
 
-void server_base::serverside_handshake(socket_ptr socket)
-{
 	boost::shared_array<char> handshake(new char[4]);
-	async_read(
-				*socket, boost::asio::buffer(handshake.get(), 4),
-				std::bind(&server_base::handle_handshake, this, std::placeholders::_1, socket, handshake)
-				);
-}
-
-void server_base::handle_handshake(const boost::system::error_code& error, socket_ptr socket, boost::shared_array<char> handshake)
-{
+	async_read(*socket, boost::asio::buffer(handshake.get(), 4), yield[error]);
 	if(check_error(error, socket))
 		return;
 
@@ -139,29 +138,26 @@ void server_base::handle_handshake(const boost::system::error_code& error, socke
 		ERR_SERVER << client_address(socket) << "\tincorrect handshake\n";
 		return;
 	}
-	async_write(
-				*socket, boost::asio::buffer(handshake_response_.buf, 4),
-				[=](const boost::system::error_code& error, std::size_t)
-					{
-						if(!check_error(error, socket)) {
-							const std::string ip = client_address(socket);
 
-							const std::string reason = is_ip_banned(ip);
-							if (!reason.empty()) {
-								LOG_SERVER << ip << "\trejected banned user. Reason: " << reason << "\n";
-								async_send_error(socket, "You are banned. Reason: " + reason);
-								return;
-							} else if (ip_exceeds_connection_limit(ip)) {
-								LOG_SERVER << ip << "\trejected ip due to excessive connections\n";
-								async_send_error(socket, "Too many connections from your IP.");
-								return;
-							} else {
-								DBG_SERVER << ip << "\tnew connection fully accepted\n";
-								this->handle_new_client(socket);
-							}
-						}
-					}
-	);
+	async_write(*socket, boost::asio::buffer(handshake_response_.buf, 4), yield[error]);
+
+	if(!check_error(error, socket)) {
+		const std::string ip = client_address(socket);
+
+		const std::string reason = is_ip_banned(ip);
+		if (!reason.empty()) {
+			LOG_SERVER << ip << "\trejected banned user. Reason: " << reason << "\n";
+			async_send_error(socket, "You are banned. Reason: " + reason);
+				return;
+		} else if (ip_exceeds_connection_limit(ip)) {
+			LOG_SERVER << ip << "\trejected ip due to excessive connections\n";
+			async_send_error(socket, "Too many connections from your IP.");
+			return;
+		} else {
+			DBG_SERVER << ip << "\tnew connection fully accepted\n";
+			this->handle_new_client(socket);
+		}
+	}
 }
 
 #ifndef _WIN32
@@ -219,7 +215,7 @@ bool check_error(const boost::system::error_code& error, socket_ptr socket)
 
 namespace {
 
-void info_table_into_simple_wml(simple_wml::document& doc, const std::string& parent_name, const info_table& info)
+void info_table_into_simple_wml(simple_wml::document& doc, const std::string& parent_name, const server_base::info_table& info)
 {
 	if(info.empty()) {
 		return;
@@ -233,31 +229,228 @@ void info_table_into_simple_wml(simple_wml::document& doc, const std::string& pa
 
 }
 
-using SendQueue = std::map<socket_ptr, std::queue<std::shared_ptr<simple_wml::document>>>;
-SendQueue send_queue;
-
-static void handle_async_send_doc_queued(socket_ptr socket)
+/**
+ * Send a WML document from within a coroutine
+ * @param socket
+ * @param doc
+ * @param yield The function will suspend on write operation using this yield context
+ */
+void server_base::coro_send_doc(socket_ptr socket, simple_wml::document& doc, boost::asio::yield_context yield)
 {
-	if(send_queue[socket].empty()) {
-		send_queue.erase(socket);
-	} else {
-		async_send_doc(socket, *(send_queue[socket].front()), handle_async_send_doc_queued, handle_async_send_doc_queued);
-		send_queue[socket].pop();
+	if(dump_wml) {
+		std::cout << "Sending WML to " << client_address(socket) << ": \n" << doc.output() << std::endl;
+	}
+
+	try {
+		simple_wml::string_span s = doc.output_compressed();
+
+		union DataSize
+		{
+			uint32_t size;
+			char buf[4];
+		} data_size {};
+		data_size.size = htonl(s.size());
+
+		std::vector<boost::asio::const_buffer> buffers {
+			{ data_size.buf, 4 },
+			{ s.begin(), std::size_t(s.size()) }
+		};
+
+		async_write(*socket, buffers, yield);
+	} catch (simple_wml::error& e) {
+		WRN_CONFIG << __func__ << ": simple_wml error: " << e.message << std::endl;
+		throw;
 	}
 }
 
-void async_send_doc_queued(socket_ptr socket, simple_wml::document& doc)
+#ifdef HAVE_SENDFILE
+
+void server_base::coro_send_file(socket_ptr socket, const std::string& filename, boost::asio::yield_context yield)
 {
-	auto iter = send_queue.find(socket);
-	if(iter == send_queue.end()) {
-		send_queue[socket];
-		async_send_doc(socket, doc, handle_async_send_doc_queued, handle_async_send_doc_queued);
-	} else {
-		send_queue[socket].emplace(doc.clone());
+	std::size_t filesize { std::size_t(filesystem::file_size(filename)) };
+	int in_file { open(filename.c_str(), O_RDONLY) };
+	off_t offset { 0 };
+	std::size_t total_bytes_transferred { 0 };
+
+	union DataSize
+	{
+		uint32_t size;
+		char buf[4];
+	} data_size {};
+	data_size.size = htonl(filesize);
+
+	async_write(*socket, boost::asio::buffer(data_size.buf), yield);
+	if(*(yield.ec_)) return;
+
+	// Put the underlying socket into non-blocking mode.
+	if(!socket->native_non_blocking())
+		socket->native_non_blocking(true, *yield.ec_);
+	if(*(yield.ec_)) return;
+
+	for (;;)
+	{
+		// Try the system call.
+		errno = 0;
+		int n = ::sendfile(socket->native_handle(), in_file, &offset, 65536);
+		*(yield.ec_) = boost::system::error_code(n < 0 ? errno : 0,
+									   boost::asio::error::get_system_category());
+		total_bytes_transferred += *(yield.ec_) ? 0 : n;
+
+		// Retry operation immediately if interrupted by signal.
+		if (*(yield.ec_) == boost::asio::error::interrupted)
+			continue;
+
+		// Check if we need to run the operation again.
+		if (*(yield.ec_) == boost::asio::error::would_block
+				|| *(yield.ec_) == boost::asio::error::try_again)
+		{
+			// We have to wait for the socket to become ready again.
+			socket->async_write_some(boost::asio::null_buffers(), yield);
+			continue;
+		}
+
+		if (*(yield.ec_) || n == 0)
+		{
+			// An error occurred, or we have reached the end of the file.
+			// Either way we must exit the loop.
+			break;
+		}
+
+		// Loop around to try calling sendfile again.
 	}
 }
 
-void async_send_error(socket_ptr socket, const std::string& msg, const char* error_code, const info_table& info)
+#elif defined(_WIN32)
+
+void server_base::coro_send_file(socket_ptr socket, const std::string& filename, boost::asio::yield_context yield)
+{
+
+	OVERLAPPED overlap;
+	std::vector<boost::asio::const_buffer> buffers;
+
+	SetLastError(ERROR_SUCCESS);
+
+	std::size_t filesize = filesystem::file_size(filename);
+	std::wstring filename_ucs2 = unicode_cast<std::wstring>(filename);
+	HANDLE in_file = CreateFileW(filename_ucs2.c_str(), GENERIC_READ, FILE_SHARE_READ, nullptr, OPEN_EXISTING,
+		FILE_FLAG_SEQUENTIAL_SCAN, nullptr);
+	if (GetLastError() != ERROR_SUCCESS)
+	{
+		throw std::runtime_error("Failed to open the file");
+	}
+	BOOST_SCOPE_EXIT_ALL(in_file) {
+		CloseHandle(&in_file);
+	};
+
+	HANDLE event = CreateEvent(nullptr, TRUE, TRUE, nullptr);
+	if (GetLastError() != ERROR_SUCCESS)
+	{
+		throw std::runtime_error("Failed to create an event");
+	}
+	BOOST_SCOPE_EXIT_ALL(&overlap) {
+		CloseHandle(overlap.hEvent);
+	};
+
+	overlap.hEvent = event;
+
+	union DataSize
+	{
+		uint32_t size;
+		char buf[4];
+	} data_size {};
+	data_size.size = htonl(filesize);
+
+	async_write(*socket, boost::asio::buffer(data_size.buf, 4), yield);
+
+	BOOL success = TransmitFile(socket->native_handle(), in_file, 0, 0, &overlap, nullptr, 0);
+	if(!success) {
+		if(WSAGetLastError() == WSA_IO_PENDING) {
+			while(true) {
+				// The request is pending. Wait until it completes.
+				socket->async_write_some(boost::asio::null_buffers(), yield);
+
+				DWORD win_ec = GetLastError();
+				if (win_ec != ERROR_IO_PENDING && win_ec != ERROR_SUCCESS)
+					throw std::runtime_error("TransmitFile failed");
+
+				if(HasOverlappedIoCompleted(&overlap)) break;
+			}
+		} else {
+			throw std::runtime_error("TransmitFile failed");
+		}
+	}
+}
+
+#else
+
+void server_base::coro_send_file(socket_ptr socket, const std::string& filename, boost::asio::yield_context yield)
+{
+// TODO: Implement this for systems without sendfile()
+	assert(false && "Not implemented yet");
+}
+
+#endif
+
+std::unique_ptr<simple_wml::document> server_base::coro_receive_doc(socket_ptr socket, boost::asio::yield_context yield)
+{
+	union DataSize
+	{
+		uint32_t size;
+		char buf[4];
+	} data_size {};
+	async_read(*socket, boost::asio::buffer(data_size.buf, 4), yield);
+	if(*yield.ec_) return {};
+	uint32_t size = ntohl(data_size.size);
+
+	if(size == 0) {
+		ERR_SERVER <<
+					  client_address(socket) <<
+					  "\treceived invalid packet with payload size 0" << std::endl;
+		return {};
+	}
+	if(size > simple_wml::document::document_size_limit) {
+		ERR_SERVER <<
+					  client_address(socket) <<
+					  "\treceived packet with payload size over size limit" << std::endl;
+		return {};
+	}
+
+	boost::shared_array<char> buffer{ new char[size] };
+	async_read(*socket, boost::asio::buffer(buffer.get(), size), yield);
+
+	try {
+		simple_wml::string_span compressed_buf(buffer.get(), size);
+		return std::make_unique<simple_wml::document>(compressed_buf);
+	}  catch (simple_wml::error& e) {
+		ERR_SERVER <<
+			client_address(socket) <<
+			"\tsimple_wml error in received data: " << e.message << std::endl;
+		async_send_error(socket, "Invalid WML received: " + e.message);
+		return {};
+	}
+}
+
+void server_base::async_send_doc_queued(socket_ptr socket, simple_wml::document& doc)
+{
+	boost::asio::spawn(
+		io_service_, [this, doc_ptr = doc.clone(), socket](boost::asio::yield_context yield) mutable {
+			static std::map<socket_ptr, std::queue<std::unique_ptr<simple_wml::document>>> queues;
+
+			queues[socket].push(std::move(doc_ptr));
+			if(queues[socket].size() > 1) {
+				return;
+			}
+
+			while(queues[socket].size() > 0) {
+				coro_send_doc(socket, *(queues[socket].front()), yield);
+				queues[socket].pop();
+			}
+			queues.erase(socket);
+		}
+	);
+}
+
+void server_base::async_send_error(socket_ptr socket, const std::string& msg, const char* error_code, const info_table& info)
 {
 	simple_wml::document doc;
 	doc.root().add_child("error").set_attr_dup("message", msg.c_str());
@@ -269,7 +462,7 @@ void async_send_error(socket_ptr socket, const std::string& msg, const char* err
 	async_send_doc_queued(socket, doc);
 }
 
-void async_send_warning(socket_ptr socket, const std::string& msg, const char* warning_code, const info_table& info)
+void server_base::async_send_warning(socket_ptr socket, const std::string& msg, const char* warning_code, const info_table& info)
 {
 	simple_wml::document doc;
 	doc.root().add_child("warning").set_attr_dup("message", msg.c_str());

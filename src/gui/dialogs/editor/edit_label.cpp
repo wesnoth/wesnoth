@@ -61,19 +61,6 @@ editor_edit_label::editor_edit_label(std::string& text,
 									   std::string& category)
 	: color_store(color)
 {
-	// std::string text = label.text();
-	// bool immutable = label.immutable();
-
-
-	// std::string label     = old_label ? old_label->text()              : "";
-	// std::string team_name = old_label ? old_label->team_name()         : "";
-	// bool visible_shroud   = old_label ? old_label->visible_in_shroud() :
-	// false;
-	// bool visible_fog      = old_label ? old_label->visible_in_fog()    :
-	// true;
-	// bool immutable        = old_label ? old_label->immutable()         :
-	// true;
-
 	register_text("label", true, text, true);
 	register_text("category", true, category, false);
 	register_bool("immutable_toggle", true, immutable);

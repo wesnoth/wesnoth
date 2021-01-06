@@ -65,7 +65,7 @@ void display_chat_manager::add_chat_message(const std::time_t& time, const std::
 	if (!preferences::parse_should_show_lobby_join(sender, message)) return;
 	if (preferences::is_ignored(sender)) return;
 
-	preferences::parse_admin_authentication(sender, message);
+	//preferences::parse_admin_authentication(sender, message); TODO: replace
 
 	bool is_observer = false;
 	{ //TODO: Clean this block up somehow

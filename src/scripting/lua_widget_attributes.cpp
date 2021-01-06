@@ -155,10 +155,9 @@ void BOOST_PP_CAT(setter_, id)::do_it(widgt_type& w, const value_type& value)
 
 /**
  * @param name: string  comma seperated list
- * @param type: the type of the attribute, for example int or std::string
+ * @param value_type: the type of the attribute, for example int or std::string
  * @param widgt_type: the type of the widget, for example gui2::listbox
  */
-
 #define WIDGET_GETTER(name, value_type, widgt_type) WIDGET_GETTER4(name, value_type, widgt_type, __LINE__)
 
 #define WIDGET_SETTER(name, value_type, widgt_type) WIDGET_SETTER4(name, value_type, widgt_type, __LINE__)
@@ -170,16 +169,6 @@ WIDGET_GETTER("value_compat,selected_index", int, gui2::listbox)
 {
 	return w.get_selected_row() + 1;
 }
-
-/* idea
-WIDGET_GETTER("selected_widget", gui2::widget, gui2::listbox)
-{
-	if(w.get_selected_row() >= w.get_item_count()) {
-		throw std::invalid_argument("widget has no selected item");
-	}
-	return w.get_row_grid(w.get_selected_row());
-}
-*/
 
 WIDGET_SETTER("value_compat,selected_index", int, gui2::listbox)
 {
@@ -250,6 +239,26 @@ WIDGET_GETTER("value_compat,value", int, gui2::slider)
 WIDGET_SETTER("value_compat,value", int, gui2::slider)
 {
 	w.set_value(value);
+}
+
+WIDGET_GETTER("max_value", int, gui2::slider)
+{
+	return w.get_maximum_value();
+}
+
+WIDGET_SETTER("max_value", int, gui2::slider)
+{
+	w.set_value_range(w.get_minimum_value(), value);
+}
+
+WIDGET_GETTER("min_value", int, gui2::slider)
+{
+	return w.get_minimum_value();
+}
+
+WIDGET_SETTER("min_value", int, gui2::slider)
+{
+	w.set_value_range(value, w.get_maximum_value());
 }
 
 WIDGET_GETTER("value_compat,percentage", int, gui2::progress_bar)

@@ -105,11 +105,10 @@ public:
 
 	// Accessor from team.cpp
 
-	/// Check if we are an observer in this game
+	/** Check if we are an observer in this game */
 	bool is_observer() const;
 
 	// Dtor
-
 	virtual ~display_context() {}
 };
 

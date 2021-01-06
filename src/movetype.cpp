@@ -24,7 +24,6 @@
 #include "log.hpp"
 #include "map/map.hpp"
 #include "terrain/translation.hpp"
-#include "terrain/type_data.hpp"
 #include "units/types.hpp" // for attack_type
 
 static lg::log_domain log_config("config");
@@ -37,13 +36,13 @@ static lg::log_domain log_config("config");
 
 namespace { // Some functions for use with parameters::eval.
 
-	/// Converts config defense values to a "max" value.
+	/** Converts config defense values to a "max" value. */
 	int config_to_max(int value)
 	{
 		return value < 0 ? -value : value;
 	}
 
-	/// Converts config defense values to a "min" value.
+	/** Converts config defense values to a "min" value. */
 	int config_to_min(int value)
 	{
 		return value < 0 ? -value : 0;
@@ -51,17 +50,23 @@ namespace { // Some functions for use with parameters::eval.
 }
 
 
-/// The parameters used when calculating a terrain-based value.
+/** The parameters used when calculating a terrain-based value. */
 struct movetype::terrain_info::parameters
 {
-	int min_value;     /// The smallest allowable value.
-	int max_value;     /// The largest allowable value.
-	int default_value; /// The default value (if no data is available).
+	/** The smallest allowable value. */
+	int min_value;
+	/** The largest allowable value. */
+	int max_value;
+	/** The default value (if no data is available). */
+	int default_value;
 
-	int (*eval)(int);  /// Converter for values taken from a config. May be nullptr.
+	/** Converter for values taken from a config. May be nullptr. */
+	int (*eval)(int);
 
-	bool use_move;     /// Whether to look at underlying movement or defense terrains.
-	bool high_is_good; /// Whether we are looking for highest or lowest (unless inverted by the underlying terrain).
+	/** Whether to look at underlying movement or defense terrains. */
+	bool use_move;
+	/** Whether we are looking for highest or lowest (unless inverted by the underlying terrain). */
+	bool high_is_good;
 
 	parameters(int min, int max, int (*eval_fun)(int)=nullptr, bool move=true, bool high=false) :
 		min_value(min), max_value(max), default_value(high ? min : max),
@@ -70,7 +75,7 @@ struct movetype::terrain_info::parameters
 };
 
 
-/// Limits for movement, vision and jamming
+/** Limits for movement, vision and jamming */
 const movetype::terrain_info::parameters
 	movetype::mvj_params_{1, movetype::UNREACHABLE};
 
@@ -86,13 +91,17 @@ const movetype::terrain_info::parameters
 class movetype::terrain_info::data
 {
 public:
-	/// Constructor.
-	/// @a params must be long-lived (typically a static variable).
+	/**
+	 * Constructor.
+	 * @a params must be long-lived (typically a static variable).
+	 */
 	explicit data(const parameters & params) :
 		cfg_(), cache_(), params_(params)
 	{}
-	/// Constructor.
-	/// @a params must be long-lived (typically a static variable).
+	/**
+	 * Constructor.
+	 * @a params must be long-lived (typically a static variable).
+	 */
 	data(const config & cfg, const parameters & params) :
 		cfg_(cfg), cache_(), params_(params)
 	{}
@@ -103,42 +112,42 @@ public:
 		cfg_(that.cfg_), cache_(), params_(that.params_)
 	{}
 
-	/// Clears the cached data (presumably our fallback has changed).
+	/** Clears the cached data (presumably our fallback has changed). */
 	void clear_cache() const;
-	/// Tests if merging @a new_values would result in changes.
+	/** Tests if merging @a new_values would result in changes. */
 	bool config_has_changes(const config & new_values, bool overwrite) const;
-	/// Tests for no data in this object.
+	/** Tests for no data in this object. */
 	bool empty() const { return cfg_.empty(); }
-	/// Merges the given config over the existing costs.
+	/** Merges the given config over the existing costs. */
 	void merge(const config & new_values, bool overwrite);
-	/// Read-only access to our parameters.
+	/** Read-only access to our parameters. */
 	const parameters & params() const { return params_; }
-	/// Returns the value associated with the given terrain.
+	/** Returns the value associated with the given terrain. */
 	int value(const t_translation::terrain_code & terrain,
 	          const terrain_info * fallback) const
 	{ return value(terrain, fallback, 0); }
-	/// If there is data, writes it to the config.
+	/** If there is data, writes it to the config. */
 	void write(config & out_cfg, const std::string & child_name) const;
-	/// If there is (merged) data, writes it to the config.
+	/** If there is (merged) data, writes it to the config. */
 	void write(config & out_cfg, const std::string & child_name,
 	           const terrain_info * fallback) const;
 
 private:
-	/// Calculates the value associated with the given terrain.
+	/** Calculates the value associated with the given terrain. */
 	int calc_value(const t_translation::terrain_code & terrain,
 	               const terrain_info * fallback, unsigned recurse_count) const;
-	/// Returns the value associated with the given terrain (possibly cached).
+	/** Returns the value associated with the given terrain (possibly cached). */
 	int value(const t_translation::terrain_code & terrain,
 	          const terrain_info * fallback, unsigned recurse_count) const;
 
 private:
 	typedef std::map<t_translation::terrain_code, int> cache_t;
 
-	/// Config describing the terrain values.
+	/** Config describing the terrain values. */
 	config cfg_;
-	/// Cache of values based on the config.
+	/** Cache of values based on the config. */
 	mutable cache_t cache_;
-	/// Various parameters used when calculating values.
+	/** Various parameters used when calculating values. */
 	const parameters & params_;
 };
 
@@ -277,7 +286,7 @@ int movetype::terrain_info::data::calc_value(
 		return params_.default_value;
 	}
 
-	ter_data_cache tdata;
+	std::shared_ptr<terrain_type_data> tdata;
 	if (game_config_manager::get()){
 		tdata = game_config_manager::get()->terrain_types(); //This permits to get terrain info in unit help pages from the help in title screen, even if there is no residual gamemap object
 	}
@@ -699,8 +708,10 @@ movetype::terrain_defense & movetype::terrain_defense::operator=(terrain_defense
 	max_.swap_data(that.max_);
 	return *this;
 }
-/// Merges the given config over the existing costs.
-/// (Not overwriting implies adding.)
+/**
+ * Merges the given config over the existing costs.
+ * (Not overwriting implies adding.)
+ */
 void movetype::terrain_defense::merge(const config & new_data, bool overwrite)
 {
 	min_.merge(new_data, overwrite, {});

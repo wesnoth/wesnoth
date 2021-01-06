@@ -79,7 +79,8 @@ typedef boost::multi_index_container<
 typedef wnotify_set::index<by_owner>::type wnotify_by_owner;
 typedef wnotify_by_owner::iterator wnotify_owner_it;
 
-wnotify_set notifications; //!< Holds all the notifications transaction records
+/** Holds all the notifications transaction records */
+wnotify_set notifications;
 
 DBusHandlerResult filter_dbus_signal(DBusConnection *, DBusMessage *buf, void *)
 {

@@ -81,7 +81,8 @@ else()
 	set(CRYPTO_LIBRARY "-framework Security")
 endif()
 
-find_package(Boost ${BOOST_VERSION} REQUIRED COMPONENTS iostreams program_options regex system thread random)
+find_package(Boost ${BOOST_VERSION} REQUIRED COMPONENTS iostreams
+	program_options regex system thread random coroutine)
 
 # no, gettext executables are not required when NLS is deactivated
 find_package(Gettext)

@@ -55,8 +55,6 @@ bool sp_modifications_initialized = false;
 config option_values;
 bool options_initialized = false;
 
-bool authenticated = false;
-
 void initialize_modifications(bool mp = true)
 {
 	if (mp) {
@@ -175,33 +173,6 @@ manager::~manager()
 	history_map.clear();
 	encountered_units_set.clear();
 	encountered_terrains_set.clear();
-}
-
-bool is_authenticated() {
-	return authenticated;
-}
-
-void parse_admin_authentication(const std::string& sender, const std::string& message) {
-	if(sender != "server") return;
-	if(message.compare(0, 43, "You are now recognized as an administrator.") == 0) {
-		authenticated = true;
-	} else if(message.compare(0, 50, "You are no longer recognized as an administrator.") == 0) {
-		authenticated = false;
-	}
-}
-
-void set_admin_authentication(bool authed)
-{
-	authenticated = authed;
-}
-
-admin_authentication_reset::admin_authentication_reset()
-{
-}
-
-admin_authentication_reset::~admin_authentication_reset()
-{
-	authenticated = false;
 }
 
 static void load_acquaintances() {

@@ -718,7 +718,7 @@ void context_manager::generate_map_dialog()
 		if(map_string.empty()) {
 			gui2::show_transient_message("", _("Map creation failed."));
 		} else {
-			editor_map new_map(game_config_, map_string);
+			editor_map new_map(map_string);
 			editor_action_whole_map a(new_map);
 			get_map_context().set_needs_labels_reset(); // Ensure Player Start labels are updated together with newly generated map
 			perform_refresh(a);
@@ -951,7 +951,7 @@ void context_manager::revert_map()
 void context_manager::new_map(int width, int height, const t_translation::terrain_code& fill, bool new_context)
 {
 	const config& default_schedule = game_config_.find_child("editor_times", "id", "empty");
-	editor_map m(game_config_, width, height, fill);
+	editor_map m(width, height, fill);
 
 	if(new_context) {
 		int new_id = add_map_context(m, true, default_schedule);
@@ -964,7 +964,7 @@ void context_manager::new_map(int width, int height, const t_translation::terrai
 void context_manager::new_scenario(int width, int height, const t_translation::terrain_code& fill, bool new_context)
 {
 	const config& default_schedule = game_config_.find_child("editor_times", "id", "empty");
-	editor_map m(game_config_, width, height, fill);
+	editor_map m(width, height, fill);
 
 	if(new_context) {
 		int new_id = add_map_context(m, false, default_schedule);
@@ -1017,7 +1017,7 @@ void context_manager::create_default_context()
 			t_translation::read_terrain_code(game_config::default_terrain);
 
 		const config& default_schedule = game_config_.find_child("editor_times", "id", "empty");
-		add_map_context(editor_map(game_config_, 44, 33, default_terrain), true, default_schedule);
+		add_map_context(editor_map(44, 33, default_terrain), true, default_schedule);
 	} else {
 		for(const std::string& filename : saved_windows_) {
 			add_map_context(game_config_, filename);

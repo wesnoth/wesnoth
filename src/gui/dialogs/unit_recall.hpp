@@ -34,10 +34,8 @@ namespace dialogs
 
 class unit_recall : public modal_dialog
 {
-	typedef std::vector<unit_const_ptr> recalls_ptr_vector;
-
 public:
-	unit_recall(recalls_ptr_vector& recall_list, team& team);
+	unit_recall(std::vector<unit_const_ptr>& recall_list, team& team);
 
 	int get_selected_index() const
 	{
@@ -45,7 +43,7 @@ public:
 	}
 
 private:
-	recalls_ptr_vector& recall_list_;
+	std::vector<unit_const_ptr>& recall_list_;
 
 	team& team_;
 

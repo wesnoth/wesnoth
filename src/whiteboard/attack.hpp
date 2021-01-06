@@ -72,10 +72,10 @@ private:
 	virtual void do_hide() {invalidate();}
 	virtual void do_show() {invalidate();}
 
-	///invalidates the move-destination and attack-target hexes
+	/** invalidates the move-destination and attack-target hexes */
 	void invalidate();
 
-	///the target of the attack
+	/** the target of the attack */
 	map_location target_hex_;
 
 	int weapon_choice_;

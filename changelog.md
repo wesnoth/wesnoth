@@ -2,16 +2,21 @@
  ### Add-ons client
  ### Add-ons server
  ### Campaigns
+ ### Editor
+   * Added help topics for the scenario editor's tools
+   * Added documentation about the files written by the editor
  ### Multiplayer
  ### Packaging
   * Boost 1.65 is now required (was 1.59).
  ### Terrain
  ### Translations
-   * Updated translations: Chinese (Traditional), Portuguese (Brazil), Spanish
+   * Updated translations: Catalan, Chinese (Traditional), Portuguese (Brazil), Spanish
  ### Units
    * New Fauna/monster unit: Horned Scarab
+   * Some standing/bobbing animations now filtered for low HP (depicting exhaustion) (PR #5388)
  ### User interface
  ### WML Engine
+   * New [set_variable] options: reverse=yes, min=list, max=list
    * Change overwrite_specials option to overwrite_others option for weapon special abilities or weapon special to allow the effect of both to take precedence over the effect of any identical weapon special or weapon special ability who don't have overwrite_others option( don't concern the boolean specials like[poison],[slow],[firststrike] or [petrifies], and [plague]).
  ### Miscellaneous and Bug Fixes
 

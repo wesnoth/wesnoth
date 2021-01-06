@@ -44,25 +44,25 @@ static lg::log_domain log_engine("engine");
 #define DBG_NG LOG_STREAM(debug, log_engine)
 #define ERR_NG LOG_STREAM(err, log_engine)
 
-game_state::game_state(const config & level, play_controller & pc, const ter_data_cache & tdata) :
-	gamedata_(level),
-	board_(tdata, level),
-	tod_manager_(level),
-	pathfind_manager_(new pathfind::manager(level)),
-	reports_(new reports()),
-	lua_kernel_(new game_lua_kernel(*this, pc, *reports_)),
-	ai_manager_(),
-	events_manager_(new game_events::manager()),
-	//TODO: this construct units (in dimiss undo action) but resrouces:: are not available yet,
+game_state::game_state(const config& level, play_controller& pc)
+	: gamedata_(level)
+	, board_(level)
+	, tod_manager_(level)
+	, pathfind_manager_(new pathfind::manager(level))
+	, reports_(new reports())
+	, lua_kernel_(new game_lua_kernel(*this, pc, *reports_))
+	, ai_manager_()
+	, events_manager_(new game_events::manager())
+	// TODO: this construct units (in dimiss undo action) but resrouces:: are not available yet,
 	//      so we might want to move the innitialisation of undo_stack_ to game_state::init
-	undo_stack_(new actions::undo_list(level.child("undo_stack"))),
-	player_number_(level["playing_team"].to_int() + 1),
-	next_player_number_(level["next_player_number"].to_int(player_number_ + 1)),
-	do_healing_(level["do_healing"].to_bool(false)),
-	init_side_done_(level["init_side_done"].to_bool(false)),
-	start_event_fired_(!level["playing_team"].empty()),
-	server_request_number_(level["server_request_number"].to_int()),
-	first_human_team_(-1)
+	, undo_stack_(new actions::undo_list(level.child("undo_stack")))
+	, player_number_(level["playing_team"].to_int() + 1)
+	, next_player_number_(level["next_player_number"].to_int(player_number_ + 1))
+	, do_healing_(level["do_healing"].to_bool(false))
+	, init_side_done_(level["init_side_done"].to_bool(false))
+	, start_event_fired_(!level["playing_team"].empty())
+	, server_request_number_(level["server_request_number"].to_int())
+	, first_human_team_(-1)
 {
 	lua_kernel_->load_core();
 	if(const config& endlevel_cfg = level.child("end_level_data")) {
@@ -73,23 +73,23 @@ game_state::game_state(const config & level, play_controller & pc, const ter_dat
 	}
 }
 
-game_state::game_state(const config & level, play_controller & pc, game_board& board) :
-	gamedata_(level),
-	board_(board),
-	tod_manager_(level),
-	pathfind_manager_(new pathfind::manager(level)),
-	reports_(new reports()),
-	lua_kernel_(new game_lua_kernel(*this, pc, *reports_)),
-	ai_manager_(),
-	events_manager_(new game_events::manager()),
-	player_number_(level["playing_team"].to_int() + 1),
-	next_player_number_(level["next_player_number"].to_int(player_number_ + 1)),
-	do_healing_(level["do_healing"].to_bool(false)),
-	end_level_data_(),
-	init_side_done_(level["init_side_done"].to_bool(false)),
-	start_event_fired_(!level["playing_team"].empty()),
-	server_request_number_(level["server_request_number"].to_int()),
-	first_human_team_(-1)
+game_state::game_state(const config& level, play_controller& pc, game_board& board)
+	: gamedata_(level)
+	, board_(board)
+	, tod_manager_(level)
+	, pathfind_manager_(new pathfind::manager(level))
+	, reports_(new reports())
+	, lua_kernel_(new game_lua_kernel(*this, pc, *reports_))
+	, ai_manager_()
+	, events_manager_(new game_events::manager())
+	, player_number_(level["playing_team"].to_int() + 1)
+	, next_player_number_(level["next_player_number"].to_int(player_number_ + 1))
+	, do_healing_(level["do_healing"].to_bool(false))
+	, end_level_data_()
+	, init_side_done_(level["init_side_done"].to_bool(false))
+	, start_event_fired_(!level["playing_team"].empty())
+	, server_request_number_(level["server_request_number"].to_int())
+	, first_human_team_(-1)
 {
 	lua_kernel_->load_core();
 	events_manager_->read_scenario(level);
@@ -100,7 +100,6 @@ game_state::game_state(const config & level, play_controller & pc, game_board& b
 		end_level_data_ = el_data;
 	}
 }
-
 
 game_state::~game_state() {}
 
@@ -169,7 +168,7 @@ void game_state::place_sides_in_preferred_locations(const config& level)
 		if(placed.count(i->side) == 0 && positions_taken.count(i->pos) == 0) {
 			placed.insert(i->side);
 			positions_taken.insert(i->pos);
-			board_.map_->set_starting_position(i->side,i->pos);
+			board_.map().set_starting_position(i->side,i->pos);
 			LOG_NG << "placing side " << i->side << " at " << i->pos << std::endl;
 		}
 	}
@@ -191,14 +190,19 @@ void game_state::init(const config& level, play_controller & pc)
 
 	LOG_NG << "initialized teams... "    << (SDL_GetTicks() - pc.ticks()) << std::endl;
 
-	board_.teams_.resize(level.child_count("side"));
-	if (player_number_ > static_cast<int>(board_.teams_.size())) {
-		ERR_NG << "invalid player number " <<  player_number_ << " #sides=" << board_.teams_.size() << "\n";
+	board_.teams().resize(level.child_count("side"));
+	if (player_number_ > static_cast<int>(board_.teams().size())) {
+		ERR_NG << "invalid player number " <<  player_number_ << " #sides=" << board_.teams().size() << "\n";
 		player_number_ = 1;
 		// in case there are no teams, using player_number_ migh still cause problems later.
 	}
 
-	std::vector<team_builder_ptr> team_builders;
+	std::vector<team_builder> team_builders;
+
+	// Note this isn't strictly necessary since team_builder declares a move constructor which will
+	// be used if a copy is needed (see the class documentation for why a copy causes crashes), but
+	// it can't hurt to be doubly safe.
+	team_builders.reserve(board_.teams().size());
 
 	int team_num = 0;
 	for (const config &side : level.child_range("side"))
@@ -210,11 +214,11 @@ void game_state::init(const config& level, play_controller & pc)
 			}
 		}
 		++team_num;
-		team_builder_ptr tb_ptr = create_team_builder(side,
-			board_.teams_, level, board_, team_num);
-		build_team_stage_one(tb_ptr);
-		team_builders.push_back(tb_ptr);
+
+		team_builders.emplace_back(side, board_.get_team(team_num), level, board_, team_num);
+		team_builders.back().build_team_stage_one();
 	}
+
 	//Initialize the lua kernel before the units are created.
 	lua_kernel_->initialize(level);
 
@@ -224,13 +228,13 @@ void game_state::init(const config& level, play_controller & pc)
 
 		tod_manager_.resolve_random(*randomness::generator);
 
-		for(team_builder_ptr tb_ptr : team_builders)
-		{
-			build_team_stage_two(tb_ptr);
+		for(team_builder& tb : team_builders) {
+			tb.build_team_stage_two();
 		}
-		for(std::size_t i = 0; i < board_.teams_.size(); i++) {
+
+		for(std::size_t i = 0; i < board_.teams().size(); i++) {
 			// Labels from players in your ignore list default to hidden
-			if(preferences::is_ignored(board_.teams_[i].current_player())) {
+			if(preferences::is_ignored(board_.teams()[i].current_player())) {
 				std::string label_cat = "side:" + std::to_string(i + 1);
 				board_.hidden_label_categories().push_back(label_cat);
 			}
@@ -428,13 +432,13 @@ public:
 	{
 	}
 
-	/// We are in a game with no mp server and need to do this choice locally
+	/** We are in a game with no mp server and need to do this choice locally */
 	virtual config local_choice() const
 	{
 		return config{};
 	}
 
-	/// tThe request which is sent to the mp server.
+	/** The request which is sent to the mp server. */
 	virtual config request() const
 	{
 		return config{};
@@ -452,11 +456,11 @@ private:
 
 void game_state::add_side_wml(config cfg)
 {
-	cfg["side"] = board_.teams_.size() + 1;
+	cfg["side"] = board_.teams().size() + 1;
 	//if we want to also allow setting the controller we must update the server code.
 	cfg["controller"] = "null";
 	//TODO: is this it? are there caches which must be cleared?
-	board_.teams_.emplace_back();
-	board_.teams_.back().build(cfg, board_.map(), cfg["gold"].to_int());
+	board_.teams().emplace_back();
+	board_.teams().back().build(cfg, board_.map(), cfg["gold"].to_int());
 	config choice = synced_context::ask_server_choice(add_side_wml_choice());
 }

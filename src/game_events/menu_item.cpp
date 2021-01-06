@@ -147,7 +147,7 @@ bool wml_menu_item::can_show(const map_location& hex, const game_data& data, fil
 	}
 
 	// Failing the [fiter_location] tag means no show.
-	if(!filter_location_.empty() && !terrain_filter(filter_location_, &filter_con)(hex)) {
+	if(!filter_location_.empty() && !terrain_filter(filter_location_, &filter_con, false)(hex)) {
 		return false;
 	}
 

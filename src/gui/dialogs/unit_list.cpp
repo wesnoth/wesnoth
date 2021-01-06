@@ -45,7 +45,7 @@ namespace dialogs
 
 REGISTER_DIALOG(unit_list)
 
-unit_list::unit_list(unit_ptr_vector& unit_list, map_location& scroll_to)
+unit_list::unit_list(std::vector<unit_const_ptr>& unit_list, map_location& scroll_to)
 	: unit_list_(unit_list)
 	, scroll_to_(scroll_to)
 {
@@ -198,7 +198,7 @@ void unit_list::post_show(window& window)
 
 void show_unit_list(display& gui)
 {
-	unit_ptr_vector unit_list;
+	std::vector<unit_const_ptr> unit_list;
 	map_location scroll_to;
 
 	const unit_map& units = gui.get_units();

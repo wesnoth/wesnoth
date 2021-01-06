@@ -50,7 +50,7 @@ namespace unit_filter_impl
 		(AND, "and")
 		(OR, "or")
 		(NOT, "not")
-	)
+	);
 	struct filter_error : public game::error
 	{
 		explicit filter_error(const std::string& message = "filter error")
@@ -123,16 +123,20 @@ public:
 		return *this;
 	}
 
-	/// Determine if *this matches @a filter at a specified location.
-	/// Use this for units on a recall list, or to test for a match if
-	/// a unit is hypothetically moved.
+	/**
+	 * Determine if *this matches @a filter at a specified location.
+	 * Use this for units on a recall list, or to test for a match if
+	 * a unit is hypothetically moved.
+	 */
 	bool matches(const unit & u, const map_location & loc) const {
 		return impl_.matches(unit_filter_impl::unit_filter_args{u, loc, nullptr, fc_, use_flat_tod_});
 	}
 
-	/// Determine if *this matches @a filter at its current location.
-	/// (Only use for units currently on the map; otherwise use the overload
-	/// that takes a location, possibly with a null location.)
+	/**
+	 * Determine if *this matches @a filter at its current location.
+	 * (Only use for units currently on the map; otherwise use the overload
+	 * that takes a location, possibly with a null location.)
+	 */
 	bool matches(const unit & u) const;
 
 	bool matches(const unit & u, const map_location & loc, const unit & u2) const {

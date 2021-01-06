@@ -13,7 +13,7 @@
  */
 
 /**
- * @file Enable range-for iteration over pairs of iterators.
+ * Enable range-for iteration over pairs of iterators.
  */
 
 #pragma once

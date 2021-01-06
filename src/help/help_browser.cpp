@@ -98,12 +98,12 @@ void help_browser::process_event()
 	int mousex, mousey;
 	SDL_GetMouseState(&mousex,&mousey);
 
-	/// Fake focus functionality for the menu, only process it if it has focus.
+	// Fake focus functionality for the menu, only process it if it has focus.
 	if (sdl::point_in_rect(mousex, mousey, menu_.location())) {
 		menu_.process();
 		const topic *chosen_topic = menu_.chosen_topic();
 		if (chosen_topic != nullptr && chosen_topic != shown_topic_) {
-			/// A new topic has been chosen in the menu, display it.
+			// A new topic has been chosen in the menu, display it.
 			show_topic(*chosen_topic);
 		}
 	}

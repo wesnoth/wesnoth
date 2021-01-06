@@ -45,7 +45,7 @@ private:
 
 	void add_stat_row(const std::string& type, const statistics::stats::str_int_map& value, const bool has_cost = true);
 
-	/// Add a row to the Damage table
+	/** Add a row to the Damage table */
 	void add_damage_row(
 		const std::string& type,
 		const long long& damage,
@@ -54,9 +54,14 @@ private:
 		const long long& turn_expected,
 		const bool show_this_turn);
 
-	/// Add a row to the Hits table
-	///
-	/// @param more_is_better True for "Inflicted" and false for "Taken". Affects coloring.
+	/**
+	 * Add a row to the Hits table
+	 * @param type 
+	 * @param more_is_better True for "Inflicted" and false for "Taken". Affects coloring.
+	 * @param by_cth 
+	 * @param turn_by_cth 
+	 * @param show_this_turn 
+	 */
 	void add_hits_row(
 		const std::string& type,
 		const bool more_is_better,

@@ -20,7 +20,7 @@
 
 /**
  * Function that will add to @a result all elements of @a locs, plus all
- * on-board (that is: all locs that match @pred1) locations matching @a pred2
+ * on-board (that is: all locs that match @a pred1) locations matching @a pred2
  * that are connected to elements of
  * locs by a chain of at most @a radius tiles, each of which matches @a pred2.
  * @a result must be a std::set of locations.

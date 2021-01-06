@@ -27,7 +27,6 @@
 #include "serialization/binary_or_text.hpp"
 #include "serialization/parser.hpp"
 #include "team.hpp"
-#include "terrain/type_data.hpp"
 #include "units/unit.hpp"
 #include "game_config_view.hpp"
 
@@ -91,7 +90,7 @@ map_context::map_context(const game_config_view& game_config, const std::string&
 	, map_data_key_()
 	, embedded_(false)
 	, pure_map_(false)
-	, map_(game_config)
+	, map_()
 	, undo_stack_()
 	, redo_stack_()
 	, actions_since_save_(0)
@@ -161,7 +160,7 @@ map_context::map_context(const game_config_view& game_config, const std::string&
 	if(!boost::regex_search(
 		file_string, matched_map_data, rexpression_map_data, boost::regex_constants::match_not_dot_null)
 	) {
-		map_ = editor_map::from_string(game_config, file_string); // throws on error
+		map_ = editor_map::from_string(file_string); // throws on error
 		pure_map_ = true;
 
 		add_to_recent_files();
@@ -182,7 +181,7 @@ map_context::map_context(const game_config_view& game_config, const std::string&
 			LOG_ED << "Loading generated scenario file" << std::endl;
 			// 4.0 editor generated scenario
 			try {
-				load_scenario(game_config);
+				load_scenario();
 			} catch(const config::error& e) {
 				// We already caught and rethrew this exception in load_scenario
 				throw editor_map_load_exception("load_scenario", e.message);
@@ -191,7 +190,7 @@ map_context::map_context(const game_config_view& game_config, const std::string&
 			LOG_ED << "Loading embedded map file" << std::endl;
 			embedded_ = true;
 			pure_map_ = true;
-			map_ = editor_map::from_string(game_config, map_data);
+			map_ = editor_map::from_string(map_data);
 		}
 
 		add_to_recent_files();
@@ -216,7 +215,7 @@ map_context::map_context(const game_config_view& game_config, const std::string&
 
 	filename_ = new_filename;
 	file_string = filesystem::read_file(filename_);
-	map_ = editor_map::from_string(game_config, file_string);
+	map_ = editor_map::from_string(file_string);
 	pure_map_ = true;
 
 	add_to_recent_files();
@@ -313,7 +312,7 @@ void map_context::replace_local_schedule(const std::vector<time_of_day>& schedul
 	}
 }
 
-void map_context::load_scenario(const game_config_view& game_config)
+void map_context::load_scenario()
 {
 	config scenario;
 
@@ -334,7 +333,7 @@ void map_context::load_scenario(const game_config_view& game_config)
 	victory_defeated_ = scenario["victory_when_enemies_defeated"].to_bool(true);
 	random_time_ = scenario["random_start_time"].to_bool(false);
 
-	map_ = editor_map::from_string(game_config, scenario["map_data"]); // throws on error
+	map_ = editor_map::from_string(scenario["map_data"]); // throws on error
 
 	labels_.read(scenario);
 

@@ -94,20 +94,12 @@ bool mp_join_game::fetch_game_config()
 	bool has_scenario_and_controllers = false;
 	while(!has_scenario_and_controllers) {
 		config revc;
-		bool data_res = false;
 
 		gui2::dialogs::loading_screen::display([&]() {
 			gui2::dialogs::loading_screen::progress(loading_stage::download_level_data);
 
-			data_res = network_connection_.wait_and_receive_data(revc);
+			network_connection_.wait_and_receive_data(revc);
 		});
-
-		if(!data_res) {
-			// NOTE: there used to be a function after this that would throw wesnothd_error if data_res was false.
-			// However, this block here already handles that case. Dunno if we ever need this exception again.
-			// throw wesnothd_error(_("Connection timed out"));
-			return false;
-		}
 
 		if(const config& err = revc.child("error")) {
 			throw wesnothd_error(err["message"]);

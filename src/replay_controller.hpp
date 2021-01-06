@@ -48,11 +48,7 @@ public:
 	bool should_stop() const { return stop_condition_->should_stop(); }
 	bool can_execute_command(const hotkey::hotkey_command& cmd, int index) const;
 	bool is_controlling_view() const {
-#if defined HAVE_CXX17 || BOOST_VERSION >= 106800
-		return vision_.has_value();
-#else
-		return vision_ != utils::nullopt;
-#endif
+		return utils::has_optional_value(vision_);
 	}
 	bool allow_reset_replay() const { return reset_state_.get() != nullptr; }
 	const std::shared_ptr<config>& get_reset_state() const { return reset_state_; }

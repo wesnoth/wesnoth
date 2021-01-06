@@ -37,8 +37,7 @@ struct reset_gamestate_exception : public std::exception
 class playsingle_controller : public play_controller
 {
 public:
-	playsingle_controller(const config& level, saved_game& state_of_game,
-		const ter_data_cache & tdata, bool skip_replay);
+	playsingle_controller(const config& level, saved_game& state_of_game, bool skip_replay);
 
 	LEVEL_RESULT play_scenario(const config& level);
 	void play_scenario_init();
@@ -84,11 +83,11 @@ protected:
 	turn_info turn_data_;
 	enum END_TURN_STATE
 	{
-		/// The turn was not ended yet
+		/** The turn was not ended yet */
 		END_TURN_NONE,
-		/// And endturn was required eigher by the player, by the ai or by [end_turn]
+		/** And endturn was required eigher by the player, by the ai or by [end_turn] */
 		END_TURN_REQUIRED,
-		/// An [end_turn] was added to the replay.
+		/** An [end_turn] was added to the replay. */
 		END_TURN_SYNCED,
 	};
 	END_TURN_STATE end_turn_;

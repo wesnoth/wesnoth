@@ -18,7 +18,6 @@
 #include "log.hpp"
 #include "map/map.hpp"
 #include "recall_list_manager.hpp"
-#include "terrain/type_data.hpp"
 #include "units/unit.hpp"
 
 #include <set>
@@ -33,9 +32,9 @@ static lg::log_domain log_engine("enginerefac");
 static lg::log_domain log_engine_enemies("engine/enemies");
 #define DBG_EE LOG_STREAM(debug, log_engine_enemies)
 
-game_board::game_board(const ter_data_cache & tdata, const config & level)
+game_board::game_board(const config& level)
 	: teams_()
-	, map_(new gamemap(tdata, level["map_data"]))
+	, map_(std::make_unique<gamemap>(level["map_data"]))
 	, unit_id_manager_(level["next_underlying_unit_id"])
 	, units_()
 {
@@ -46,7 +45,9 @@ game_board::game_board(const game_board & other)
 	, labels_(other.labels_)
 	, map_(new gamemap(*(other.map_)))
 	, unit_id_manager_(other.unit_id_manager_)
-	, units_(other.units_) {}
+	, units_(other.units_)
+{
+}
 
 game_board::~game_board() {}
 
@@ -214,10 +215,19 @@ void game_board::side_drop_to(int side_num, team::CONTROLLER ctrl, team::PROXY_C
 	if (leader.valid()) leader->rename(ctrl.to_string() + std::to_string(side_num));
 }
 
-void game_board::side_change_controller(int side_num, bool is_local, const std::string& pname) {
+void game_board::side_change_controller(int side_num, bool is_local, const std::string& pname, const std::string& controller_type) {
 	team &tm = get_team(side_num);
 
 	tm.set_local(is_local);
+
+	// only changing the type of controller
+	if(controller_type == team::CONTROLLER::enum_to_string(team::CONTROLLER::AI) && !tm.is_ai()) {
+		tm.make_ai();
+		return;
+	} else if(controller_type == team::CONTROLLER::enum_to_string(team::CONTROLLER::HUMAN) && !tm.is_human()) {
+		tm.make_human();
+		return;
+	}
 
 	if (pname.empty() || !tm.is_human()) {
 		return;

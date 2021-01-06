@@ -116,7 +116,7 @@ bool game_config_manager::init_game_config(FORCE_RELOAD_CONFIG force_reload)
 
 namespace
 {
-/// returns true if every define in special is also defined in general
+/** returns true if every define in special is also defined in general */
 bool map_includes(const preproc_map& general, const preproc_map& special)
 {
 	for(const auto& pair : special) {
@@ -668,9 +668,9 @@ void game_config_manager::load_game_config_for_game(
 	game_config::scoped_preproc_define era(classification.era_define,
 		!classification.era_define.empty());
 	game_config::scoped_preproc_define multiplayer("MULTIPLAYER",
-		classification.campaign_type == game_classification::CAMPAIGN_TYPE::MULTIPLAYER);
+		classification.is_multiplayer());
 	game_config::scoped_preproc_define mptest("MP_TEST", cmdline_opts_.mptest &&
-		classification.campaign_type == game_classification::CAMPAIGN_TYPE::MULTIPLAYER);
+		classification.is_multiplayer());
 
 	//
 	// NOTE: these deques aren't used here, but the objects within are utilized as RAII helpers.
@@ -712,8 +712,7 @@ void game_config_manager::load_game_config_for_create(bool is_mp, bool is_test)
 	game_config::scoped_preproc_define multiplayer("MULTIPLAYER", is_mp);
 	game_config::scoped_preproc_define test("TEST", is_test);
 	game_config::scoped_preproc_define mptest("MP_TEST", cmdline_opts_.mptest && is_mp);
-	/// During an mp game the default difficulty define is also defined so better already load it now if we already must
-	/// reload config cache.
+	/** During an mp game the default difficulty define is also defined so better already load it now if we already must reload config cache. */
 	game_config::scoped_preproc_define normal(
 		DEFAULT_DIFFICULTY, !map_includes(old_defines_map_, cache_.get_preproc_map()));
 

@@ -252,7 +252,7 @@ default_map_generator_job::default_map_generator_job(uint32_t seed)
  * the center of the map will be inverted (i.e. be valleys).  'island_size' as
  * 0 indicates no island.
  */
-height_map default_map_generator_job::generate_height_map(std::size_t width, std::size_t height, std::size_t iterations, std::size_t hill_size, std::size_t island_size, std::size_t island_off_center)
+height_map default_map_generator_job::generate_height_map(size_t width, size_t height, size_t iterations, size_t hill_size, size_t island_size, size_t island_off_center)
 {
 	size_t center_x = width/2;
 	size_t center_y = height/2;

@@ -92,7 +92,7 @@ public:
 	/**
 	 * Creates a config with several attributes and children.
 	 * Pass the keys/tags and values/children alternately.
-	 * @example config("key", 42, "value", config())
+	 * For example: config("key", 42, "value", config())
 	 */
 	template<typename... T>
 	explicit config(config_key_type first, T&&... args);
@@ -354,6 +354,11 @@ public:
 
 	config& add_child(config_key_type key);
 	config& add_child(config_key_type key, const config& val);
+	/**
+	 * @param key the tag name
+	 * @param val the contents of the tag
+	 * @param index is the index of the new child within all children of type key.
+	 */
 	config& add_child_at(config_key_type key, const config &val, unsigned index);
 
 	config &add_child(config_key_type key, config &&val);
@@ -635,8 +640,11 @@ public:
 		friend class config;
 	};
 
-	/// here pos is the index of the new child in _all_ childs, while in add_child_at
-	/// it is the index of the new child within all chils of type @key.
+	/**
+	 * @param key the tag name
+	 * @param val the contents of the tag
+	 * @param pos is the index of the new child in _all_ children.
+	 */
 	config& add_child_at_total(config_key_type key, const config &val, size_t pos);
 	size_t find_total_first_of(config_key_type key, size_t start = 0);
 

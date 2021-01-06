@@ -49,15 +49,16 @@ class game_config_view;
 class config;
 class unit_type;
 class terrain_type_data;
-typedef std::shared_ptr<terrain_type_data> ter_data_cache;
+
 namespace help {
 
-/// Generate the help contents from the configurations given to the
-/// manager.
+/**
+ * Generate the help contents from the configurations given to the manager.
+ */
 void generate_contents();
 
 
-/// Generate a topic text on the fly.
+/** Generate a topic text on the fly. */
 class topic_generator
 {
 public:
@@ -73,8 +74,9 @@ public:
 	virtual std::string operator()() const { return text_; }
 };
 
-/// The text displayed in a topic. It is generated on the fly with the information
-/// contained in generator_.
+/**
+ * The text displayed in a topic. It is generated on the fly with the information contained in generator_
+ */
 class topic_text
 {
 	mutable std::vector< std::string > parsed_text_;
@@ -104,7 +106,7 @@ public:
 	const std::vector<std::string>& parsed_text() const;
 };
 
-/// A topic contains a title, an id and some text.
+/** A topic contains a title, an id and some text. */
 struct topic
 {
 	topic() :
@@ -125,10 +127,10 @@ struct topic
 		: title(_title), id(_id), text(_text) {}
 	topic(const std::string &_title, const std::string &_id, std::shared_ptr<topic_generator> g)
 		: title(_title), id(_id), text(g) {}
-	/// Two topics are equal if their IDs are equal.
+	/** Two topics are equal if their IDs are equal. */
 	bool operator==(const topic &) const;
 	bool operator!=(const topic &t) const { return !operator==(t); }
-	/// Comparison on the ID.
+	/** Comparison on the ID. */
 	bool operator<(const topic &) const;
 	std::string title, id;
 	mutable topic_text text;
@@ -138,7 +140,7 @@ struct section;
 typedef std::list<section> section_list;
 typedef std::list<topic> topic_list;
 
-/// A section contains topics and sections along with title and ID.
+/** A section contains topics and sections along with title and ID. */
 struct section {
 	section() :
 		title(""),
@@ -148,12 +150,12 @@ struct section {
 	{
 	}
 
-	/// Two sections are equal if their IDs are equal.
+	/** Two sections are equal if their IDs are equal. */
 	bool operator==(const section &) const;
-	/// Comparison on the ID.
+	/** Comparison on the ID. */
 	bool operator<(const section &) const;
 
-	/// Allocate memory for and add the section.
+	/** Allocate memory for and add the section. */
 	void add_section(const section &s);
 
 	void clear();
@@ -163,8 +165,9 @@ struct section {
 };
 
 
-/// To be used as a function object to locate sections and topics
-/// with a specified ID.
+/**
+ * To be used as a function object to locate sections and topics with a specified ID.
+ */
 class has_id
 {
 public:
@@ -176,7 +179,7 @@ private:
 	const std::string id_;
 };
 
-/// To be used as a function object when sorting topic lists on the title.
+/** To be used as a function object when sorting topic lists on the title. */
 class title_less
 {
 public:
@@ -184,7 +187,7 @@ public:
             return translation::compare(t1.title, t2.title) < 0; }
 };
 
-/// To be used as a function object when sorting section lists on the title.
+/** To be used as a function object when sorting section lists on the title. */
 class section_less
 {
 public:
@@ -200,7 +203,7 @@ public:
 	}
 };
 
-/// Thrown when the help system fails to parse something.
+/** Thrown when the help system fails to parse something. */
 struct parse_error : public game::error
 {
 	parse_error(const std::string& msg) : game::error(msg) {}
@@ -210,7 +213,7 @@ struct parse_error : public game::error
 // getting crowded. Dunno if much more is needed though so I'll wait and
 // see.
 
-/// Dispatch generators to their appropriate functions.
+/** Dispatch generators to their appropriate functions. */
 void generate_sections(const config *help_cfg, const std::string &generator, section &sec, int level);
 std::vector<topic> generate_topics(const bool sort_topics,const std::string &generator);
 std::string generate_topic_text(const std::string &generator, const config *help_cfg,
@@ -218,10 +221,12 @@ const section &sec, const std::vector<topic>& generated_topics);
 std::string generate_contents_links(const std::string& section_name, const config *help_cfg);
 std::string generate_contents_links(const section &sec, const std::vector<topic>& topics);
 
-/// return a hyperlink with the unit's name and pointing to the unit page
-/// return empty string if this unit is hidden. If not yet discovered add the (?) suffix
+/**
+ * return a hyperlink with the unit's name and pointing to the unit page
+ * return empty string if this unit is hidden. If not yet discovered add the (?) suffix
+ */
 std::string make_unit_link(const std::string& type_id);
-/// return a list of hyperlinks to unit's pages (ordered or not)
+/** return a list of hyperlinks to unit's pages (ordered or not) */
 std::vector<std::string> make_unit_links_list(
 		const std::vector<std::string>& type_id_list, bool ordered = false);
 
@@ -243,10 +248,12 @@ enum UNIT_DESCRIPTION_TYPE {
 	 */
 	HIDDEN_BUT_SHOW_MACROS
 };
-/// Return the type of description that should be shown for a unit of
-/// the given kind. This method is intended to filter out information
-/// about units that should not be shown, for example due to not being
-/// encountered.
+/**
+ * Return the type of description that should be shown for a unit of
+ * the given kind. This method is intended to filter out information
+ * about units that should not be shown, for example due to not being
+ * encountered.
+ */
 UNIT_DESCRIPTION_TYPE description_type(const unit_type &type);
 std::vector<topic> generate_ability_topics(const bool);
 std::vector<topic> generate_time_of_day_topics(const bool);
@@ -257,58 +264,73 @@ std::vector<topic> generate_faction_topics(const config &, const bool);
 std::vector<topic> generate_era_topics(const bool, const std::string & era_id);
 std::vector<topic> generate_trait_topics(const bool);
 
-/// Parse a help config, return the top level section. Return an empty
-/// section if cfg is nullptr.
+/**
+ * Parse a help config, return the top level section. Return an empty
+ * section if cfg is nullptr.
+ */
 section parse_config(const config *cfg);
-/// Recursive function used by parse_config.
+/** Recursive function used by parse_config. */
 void parse_config_internal(const config *help_cfg, const config *section_cfg,
 						   section &sec, int level=0);
 
-/// Return true if the section with id section_id is referenced from
-/// another section in the config, or the toplevel.
+/**
+ * Return true if the section with id section_id is referenced from
+ * another section in the config, or the toplevel.
+ */
 bool section_is_referenced(const std::string &section_id, const config &cfg);
-/// Return true if the topic with id topic_id is referenced from
-/// another section in the config, or the toplevel.
+/**
+ * Return true if the topic with id topic_id is referenced from
+ * another section in the config, or the toplevel.
+ */
 bool topic_is_referenced(const std::string &topic_id, const config &cfg);
 
-/// Search for the topic with the specified identifier in the section
-/// and its subsections. Return the found topic, or nullptr if none could
-/// be found.
+/**
+ * Search for the topic with the specified identifier in the section
+ * and its subsections. Return the found topic, or nullptr if none could
+ * be found.
+ */
 const topic *find_topic(const section &sec, const std::string &id);
 
-/// Search for the section with the specified identifier in the section
-/// and its subsections. Return the found section or nullptr if none could
-/// be found.
+/**
+ * Search for the section with the specified identifier in the section
+ * and its subsections. Return the found section or nullptr if none could
+ * be found.
+ */
 const section *find_section(const section &sec, const std::string &id);
 section *find_section(section &sec, const std::string &id);
 
-/// Parse a text string. Return a vector with the different parts of the
-/// text. Each markup item is a separate part while the text between
-/// markups are separate parts.
+/**
+ * Parse a text string. Return a vector with the different parts of the
+ * text. Each markup item is a separate part while the text between
+ * markups are separate parts.
+ */
 std::vector<std::string> parse_text(const std::string &text);
 
-/// Convert the contents to wml attributes, surrounded within
-/// [element_name]...[/element_name]. Return the resulting WML.
+/**
+ * Convert the contents to wml attributes, surrounded within
+ * [element_name]...[/element_name]. Return the resulting WML.
+ */
 std::string convert_to_wml(const std::string &element_name, const std::string &contents);
 
-/// Return the color the string represents. Return font::NORMAL_COLOR if
-/// the string is empty or can't be matched against any other color.
+/**
+ * Return the color the string represents. Return font::NORMAL_COLOR if
+ * the string is empty or can't be matched against any other color.
+ */
 color_t string_to_color(const std::string &s);
 
-/// Make a best effort to word wrap s. All parts are less than width.
+/** Make a best effort to word wrap s. All parts are less than width. */
 std::vector<std::string> split_in_width(const std::string &s, const int font_size, const unsigned width);
 
 std::string remove_first_space(const std::string& text);
 
-/// Prepend all chars with meaning inside attributes with a backslash.
+/** Prepend all chars with meaning inside attributes with a backslash. */
 std::string escape(const std::string &s);
 
-/// Return the first word in s, not removing any spaces in the start of
-/// it.
+/** Return the first word in s, not removing any spaces in the start of it. */
 std::string get_first_word(const std::string &s);
 
-/// Load the appropriate terrain types data to use
-ter_data_cache load_terrain_types_data();
+/** Load the appropriate terrain types data to use */
+std::shared_ptr<terrain_type_data> load_terrain_types_data();
 
 extern const game_config_view *game_cfg;
 // The default toplevel.
@@ -346,9 +368,11 @@ std::string hidden_symbol(bool hidden = true);
 
 bool is_visible_id(const std::string &id);
 
-/// Return true if the id is valid for user defined topics and
-/// sections. Some IDs are special, such as toplevel and may not be
-/// be defined in the config.
+/**
+ * Return true if the id is valid for user defined topics and
+ * sections. Some IDs are special, such as toplevel and may not be
+ * be defined in the config.
+ */
 bool is_valid_id(const std::string &id);
 
 	// Helpers for making generation of topics easier.

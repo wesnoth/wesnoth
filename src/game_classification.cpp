@@ -29,7 +29,7 @@ static lg::log_domain log_engine("engine");
 #define LOG_NG LOG_STREAM(info, log_engine)
 #define DBG_NG LOG_STREAM(debug, log_engine)
 
-/// The default difficulty setting for campaigns.
+/** The default difficulty setting for campaigns. */
 const std::string DEFAULT_DIFFICULTY("NORMAL");
 
 game_classification::game_classification(const config& cfg)
@@ -84,24 +84,19 @@ config game_classification::to_config() const
 
 std::string game_classification::get_tagname() const
 {
-	if(this->campaign_type == CAMPAIGN_TYPE::MULTIPLAYER) {
-		return this->campaign.empty() ? "multiplayer" : "scenario";
+	if(is_multiplayer()) {
+		return campaign.empty() ? "multiplayer" : "scenario";
 	}
 
-	if(this->campaign_type == CAMPAIGN_TYPE::TUTORIAL) {
+	if(is_tutorial()) {
 		return "scenario";
 	}
 
-	return this->campaign_type.to_string();
+	return campaign_type.to_string();
 }
 
-bool game_classification::is_normal_mp_game() const
+namespace
 {
-	return this->campaign_type == CAMPAIGN_TYPE::MULTIPLAYER && this->campaign.empty();
-}
-
-namespace {
-
 // helper objects for saved_game::expand_mp_events()
 struct modevents_entry
 {
@@ -118,7 +113,7 @@ struct modevents_entry
 
 std::set<std::string> game_classification::active_addons(const std::string& scenario_id) const
 {
-	//FIXME: this doesn include modsthe current scenario.
+	//FIXME: this doesn't include mods from the current scenario.
 	std::list<modevents_entry> mods;
 	std::set<std::string> loaded_resources;
 	std::set<std::string> res;

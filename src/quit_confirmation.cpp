@@ -66,7 +66,7 @@ bool quit_confirmation::default_prompt()
 	std::size_t humans_notme_cnt = 0;
 
 	if(pmc != nullptr) {
-		for(const auto& t : pmc->get_teams_const()) {
+		for(const auto& t : pmc->get_teams()) {
 			if(t.is_network_human()) {
 				++humans_notme_cnt;
 			}

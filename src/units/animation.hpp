@@ -38,7 +38,7 @@ public:
 		(MISS, "miss")
 		(KILL, "kill")
 		(INVALID, "invalid")
-	)
+	);
 
 	static void fill_initial_animations(std::vector<unit_animation>& animations, const config& cfg);
 	static void add_anims(std::vector<unit_animation>& animations, const config& cfg);

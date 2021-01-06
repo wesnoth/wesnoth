@@ -52,7 +52,7 @@ private:
 	// Private data related to menu implementation (expansion of AUTOSAVES, WML entries)
 	//
 
-	/// A smart pointer used when retrieving menu items.
+	/** A smart pointer used when retrieving menu items. */
 	typedef std::shared_ptr<const game_events::wml_menu_item> const_item_ptr;
 
 	// Expand AUTOSAVES in the menu items, setting the real savenames.

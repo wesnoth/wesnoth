@@ -18,7 +18,6 @@ class config;
 #include <vector>
 #include <string>
 #include <set>
-#include <boost/ptr_container/ptr_vector.hpp>
 
 #include "config.hpp"
 #include "mt_rng.hpp"
@@ -71,8 +70,11 @@ public:
 		, next_scenario_()
 		, next_underlying_unit_id_()
 	{}
-	/// Turns config from a loaded savegame into carryover_info
-	/// @param from_snapshot true if cfg is a [snapshot], false if cfg is [carryover_sides(_start)]
+	/**
+	 * Turns config from a loaded savegame into carryover_info
+	 * @param cfg the config to use
+	 * @param from_snapshot true if cfg is a [snapshot], false if cfg is [carryover_sides(_start)]
+	 */
 	explicit carryover_info(const config& cfg, bool from_snapshot = false);
 
 	carryover* get_side(const std::string& save_id);
@@ -100,7 +102,7 @@ private:
 	std::vector<carryover> carryover_sides_;
 	config variables_;
 	randomness::mt_rng rng_;
-	boost::ptr_vector<config> wml_menu_items_;
+	std::vector<config> wml_menu_items_;
 	std::string next_scenario_;    /**< the scenario coming next (for campaigns) */
 	int next_underlying_unit_id_;
 };

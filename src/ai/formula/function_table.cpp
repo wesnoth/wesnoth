@@ -795,10 +795,11 @@ DEFINE_FAI_FUNCTION(simplest_path, 2, 3)
 	}
 
 	for (std::vector<map_location>::const_iterator loc_iter = route.steps.begin() + 1 ; loc_iter !=route.steps.end(); ++loc_iter) {
-		if (unit_it->movement_cost((resources::gameboard->map())[*loc_iter]) < movetype::UNREACHABLE )
+		if(unit_it->movement_cost(static_cast<const game_board*>(resources::gameboard)->map()[*loc_iter]) < movetype::UNREACHABLE) {
 			locations.emplace_back(std::make_shared<location_callable>(*loc_iter));
-		else
+		} else {
 			break;
+		}
 	}
 
 	return variant(locations);

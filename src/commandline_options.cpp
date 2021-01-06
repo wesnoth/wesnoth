@@ -61,104 +61,104 @@ bad_commandline_tuple::bad_commandline_tuple(const std::string& str,
 {
 }
 
-commandline_options::commandline_options (const std::vector<std::string>& args) :
-	bunzip2(),
-	bzip2(),
-	campaign(),
-	campaign_difficulty(),
-	campaign_scenario(),
-	campaign_skip_story(false),
-	clock(false),
-	core_id(),
-	data_path(false),
-	data_dir(),
-	debug(false),
-	debug_lua(false),
+commandline_options::commandline_options(const std::vector<std::string>& args)
+	: bunzip2()
+	, bzip2()
+	, campaign()
+	, campaign_difficulty()
+	, campaign_scenario()
+	, campaign_skip_story(false)
+	, clock(false)
+	, core_id()
+	, data_path(false)
+	, data_dir()
+	, debug(false)
+	, debug_lua(false)
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
-	debug_dot_domain(),
-	debug_dot_level(),
+	, debug_dot_domain()
+	, debug_dot_level()
 #endif
-	editor(),
-	fps(false),
-	fullscreen(false),
-	gunzip(),
-	gzip(),
-	help(),
-	language(),
-	log(),
-	load(),
-	logdomains(),
-	log_precise_timestamps(false),
-	multiplayer(false),
-	multiplayer_ai_config(),
-	multiplayer_algorithm(),
-	multiplayer_controller(),
-	multiplayer_era(),
-	multiplayer_exit_at_end(),
-	multiplayer_ignore_map_settings(),
-	multiplayer_label(),
-	multiplayer_parm(),
-	multiplayer_repeat(),
-	multiplayer_scenario(),
-	multiplayer_side(),
-	multiplayer_turns(),
-	max_fps(),
-	noaddons(false),
-	nocache(false),
-	nodelay(false),
-	nogui(false),
-	nomusic(false),
-	nosound(false),
-	new_widgets(false),
-	preprocess(false),
-	preprocess_defines(),
-	preprocess_input_macros(),
-	preprocess_output_macros(),
-	preprocess_path(),
-	preprocess_target(),
-	resolution(),
-	rng_seed(),
-	server(),
-	username(),
-	password(),
-	render_image(),
-	render_image_dst(),
-	screenshot(false),
-	screenshot_map_file(),
-	screenshot_output_file(),
-	script_file(),
-	plugin_file(),
-	script_unsafe_mode(false),
-	strict_validation(false),
-	test(),
-	unit_test(),
-	headless_unit_test(false),
-	noreplaycheck(false),
-	mptest(false),
-	userconfig_path(false),
-	userconfig_dir(),
-	userdata_path(false),
-	userdata_dir(),
-	validcache(false),
-	validate_core(false),
-	validate_addon(),
-	validate_schema(),
-	validate_wml(),
-	validate_with(),
-	do_diff(),
-	do_patch(),
-	diff_left(),
-	diff_right(),
-	version(false),
-	report(false),
-	windowed(false),
-	with_replay(false),
-	translation_percent(),
-	args_(args.begin() + 1 , args.end()),
-	args0_(*args.begin()),
-	all_(),
-	visible_(),
-	hidden_()
+	, editor()
+	, fps(false)
+	, fullscreen(false)
+	, gunzip()
+	, gzip()
+	, help()
+	, language()
+	, log()
+	, load()
+	, logdomains()
+	, log_precise_timestamps(false)
+	, multiplayer(false)
+	, multiplayer_ai_config()
+	, multiplayer_algorithm()
+	, multiplayer_controller()
+	, multiplayer_era()
+	, multiplayer_exit_at_end()
+	, multiplayer_ignore_map_settings()
+	, multiplayer_label()
+	, multiplayer_parm()
+	, multiplayer_repeat()
+	, multiplayer_scenario()
+	, multiplayer_side()
+	, multiplayer_turns()
+	, max_fps()
+	, noaddons(false)
+	, nocache(false)
+	, nodelay(false)
+	, nogui(false)
+	, nomusic(false)
+	, nosound(false)
+	, new_widgets(false)
+	, preprocess(false)
+	, preprocess_defines()
+	, preprocess_input_macros()
+	, preprocess_output_macros()
+	, preprocess_path()
+	, preprocess_target()
+	, resolution()
+	, rng_seed()
+	, server()
+	, username()
+	, password()
+	, render_image()
+	, render_image_dst()
+	, screenshot(false)
+	, screenshot_map_file()
+	, screenshot_output_file()
+	, script_file()
+	, plugin_file()
+	, script_unsafe_mode(false)
+	, strict_validation(false)
+	, test()
+	, unit_test()
+	, headless_unit_test(false)
+	, noreplaycheck(false)
+	, mptest(false)
+	, userconfig_path(false)
+	, userconfig_dir()
+	, userdata_path(false)
+	, userdata_dir()
+	, validcache(false)
+	, validate_core(false)
+	, validate_addon()
+	, validate_schema()
+	, validate_wml()
+	, validate_with()
+	, do_diff()
+	, do_patch()
+	, diff_left()
+	, diff_right()
+	, version(false)
+	, report(false)
+	, windowed(false)
+	, with_replay(false)
+	, translation_percent()
+	, args_(args.begin() + 1, args.end())
+	, args0_(*args.begin())
+	, all_()
+	, visible_()
+	, hidden_()
 {
 	// When adding items don't forget to update doc/man/wesnoth.6
 	// Options are sorted alphabetically by --long-option.

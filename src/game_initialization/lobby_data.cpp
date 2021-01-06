@@ -15,24 +15,24 @@
 #include "game_initialization/lobby_data.hpp"
 
 #include "config.hpp"
-#include "preferences/credentials.hpp"
-#include "preferences/game.hpp"
-#include "gui/dialogs/campaign_difficulty.hpp"
 #include "filesystem.hpp"
 #include "font/pango/escape.hpp"
 #include "formatter.hpp"
 #include "formula/string_utils.hpp"
 #include "game_config_manager.hpp"
+#include "game_config_view.hpp"
+#include "game_initialization/multiplayer.hpp"
+#include "game_version.hpp"
 #include "gettext.hpp"
+#include "gui/dialogs/campaign_difficulty.hpp"
 #include "lexical_cast.hpp"
 #include "log.hpp"
-#include "map/map.hpp"
 #include "map/exception.hpp"
-#include "terrain/type_data.hpp"
-#include "wml_exception.hpp"
-#include "game_version.hpp"
+#include "map/map.hpp"
 #include "mp_game_settings.hpp"
-#include "game_config_view.hpp"
+#include "preferences/credentials.hpp"
+#include "preferences/game.hpp"
+#include "wml_exception.hpp"
 
 #include <iterator>
 
@@ -109,6 +109,7 @@ void room_info::process_room_members(const config& data)
 
 user_info::user_info(const config& c)
 	: name(c["name"])
+	, forum_id(c["forum_id"].to_int())
 	, game_id(c["game_id"])
 	, relation(user_relation::ME)
 	, state(game_id == 0 ? user_state::LOBBY : user_state::GAME)
@@ -295,7 +296,7 @@ game_info::game_info(const config& game, const std::vector<std::string>& install
 		info_stream << " — ??×??";
 	} else {
 		try {
-			gamemap map(std::make_shared<terrain_type_data>(game_config), map_data);
+			gamemap map(map_data);
 			std::ostringstream msi;
 			msi << map.w() << font::unicode_multiplication_sign << map.h();
 			map_size_info = msi.str();
@@ -542,7 +543,7 @@ bool game_info::can_join() const
 
 bool game_info::can_observe() const
 {
-	return observers || preferences::is_authenticated();
+	return observers || mp::logged_in_as_moderator();
 }
 
 const char* game_info::display_status_string() const

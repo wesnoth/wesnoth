@@ -93,7 +93,6 @@
 #include "terrain/terrain.hpp"                  // for terrain_type
 #include "terrain/filter.hpp"           // for terrain_filter
 #include "terrain/translation.hpp"      // for read_terrain_code, etc
-#include "terrain/type_data.hpp"
 #include "time_of_day.hpp"              // for time_of_day
 #include "tod_manager.hpp"              // for tod_manager
 #include "tstring.hpp"                  // for t_string, operator+
@@ -1069,9 +1068,9 @@ int game_lua_kernel::intf_terrain_mask(lua_State *L)
 	}
 
 
-	gamemap mask_map(board().map().tdata(), "");
+	gamemap mask_map("");
 	mask_map.read(t_str, false);
-	board().map_->overlay(mask_map, loc, rules, is_odd, ignore_special_locations);
+	board().map().overlay(mask_map, loc, rules, is_odd, ignore_special_locations);
 
 	for(team& t : board().teams()) {
 		t.fix_villages(board().map());
@@ -1622,7 +1621,7 @@ int game_lua_kernel::intf_get_end_level_data(lua_State* L)
 	if (!play_controller_.is_regular_game_end()) {
 		return 0;
 	}
-	auto data = play_controller_.get_end_level_data_const();
+	auto data = play_controller_.get_end_level_data();
 	new(L) end_level_data(data);
 	if(luaL_newmetatable(L, "end level data")) {
 		static luaL_Reg const callbacks[] {
@@ -2034,7 +2033,7 @@ int game_lua_kernel::intf_find_cost_map(lua_State *L)
 		filter = vconfig(config(), true);
 	}
 	filter_context & fc = game_state_;
-	const terrain_filter t_filter(filter, &fc);
+	const terrain_filter t_filter(filter, &fc, false);
 	t_filter.get_locations(location_set, true);
 	++arg;
 
@@ -2439,7 +2438,7 @@ static int intf_unit_movement_cost(lua_State *L)
 	t_translation::terrain_code t;
 	map_location loc;
 	if(luaW_tolocation(L, 2, loc)) {
-		t = resources::gameboard->map()[loc];
+		t = static_cast<const game_board*>(resources::gameboard)->map()[loc];
 	} else if(lua_isstring(L, 2)) {
 		char const *m = luaL_checkstring(L, 2);
 		t = t_translation::read_terrain_code(m);
@@ -2460,7 +2459,7 @@ static int intf_unit_vision_cost(lua_State *L)
 	t_translation::terrain_code t;
 	map_location loc;
 	if(luaW_tolocation(L, 2, loc)) {
-		t = resources::gameboard->map()[loc];
+		t = static_cast<const game_board*>(resources::gameboard)->map()[loc];
 	} else if(lua_isstring(L, 2)) {
 		char const *m = luaL_checkstring(L, 2);
 		t = t_translation::read_terrain_code(m);
@@ -2481,7 +2480,7 @@ static int intf_unit_jamming_cost(lua_State *L)
 	t_translation::terrain_code t;
 	map_location loc;
 	if(luaW_tolocation(L, 2, loc)) {
-		t = resources::gameboard->map()[loc];
+		t = static_cast<const game_board*>(resources::gameboard)->map()[loc];
 	} else if(lua_isstring(L, 2)) {
 		char const *m = luaL_checkstring(L, 2);
 		t = t_translation::read_terrain_code(m);
@@ -2502,7 +2501,7 @@ static int intf_unit_defense(lua_State *L)
 	t_translation::terrain_code t;
 	map_location loc;
 	if(luaW_tolocation(L, 2, loc)) {
-		t = resources::gameboard->map()[loc];
+		t = static_cast<const game_board*>(resources::gameboard)->map()[loc];
 	} else if(lua_isstring(L, 2)) {
 		char const *m = luaL_checkstring(L, 2);
 		t = t_translation::read_terrain_code(m);
@@ -2979,7 +2978,7 @@ int game_lua_kernel::intf_get_locations(lua_State *L)
 
 	std::set<map_location> res;
 	filter_context & fc = game_state_;
-	const terrain_filter t_filter(filter, &fc);
+	const terrain_filter t_filter(filter, &fc, false);
 	if(luaW_isunit(L, 2)) {
 		t_filter.get_locations(res, *luaW_tounit(L, 2), true);
 	} else {
@@ -3016,7 +3015,7 @@ int game_lua_kernel::intf_get_villages(lua_State *L)
 
 	filter_context & fc = game_state_;
 	for(std::vector<map_location>::const_iterator it = locs.begin(); it != locs.end(); ++it) {
-		bool matches = terrain_filter(filter, &fc).match(*it);
+		bool matches = terrain_filter(filter, &fc, false).match(*it);
 		if (matches) {
 			lua_createtable(L, 2, 0);
 			lua_pushinteger(L, it->wml_x());
@@ -3048,7 +3047,7 @@ int game_lua_kernel::intf_match_location(lua_State *L)
 	}
 
 	filter_context & fc = game_state_;
-	const terrain_filter t_filter(filter, &fc);
+	const terrain_filter t_filter(filter, &fc, false);
 	if(luaW_isunit(L, 3)) {
 		lua_pushboolean(L, t_filter.match(loc, *luaW_tounit(L, 3)));
 	} else {
@@ -3424,7 +3423,7 @@ int game_lua_kernel::intf_log_replay(lua_State* L)
 	return 0;
 }
 
-/// Adding new events
+/** Adding new events */
 int game_lua_kernel::intf_add_event(lua_State *L)
 {
 	vconfig cfg(luaW_checkvconfig(L, 1));
@@ -3707,7 +3706,7 @@ static int intf_debug_ai(lua_State *L)
 	return 1;
 }
 
-/// Allow undo sets the flag saying whether the event has mutated the game to false.
+/** Allow undo sets the flag saying whether the event has mutated the game to false. */
 int game_lua_kernel::intf_allow_end_turn(lua_State * L)
 {
 	bool allow;
@@ -3723,7 +3722,7 @@ int game_lua_kernel::intf_allow_end_turn(lua_State * L)
 	return 0;
 }
 
-/// Allow undo sets the flag saying whether the event has mutated the game to false.
+/** Allow undo sets the flag saying whether the event has mutated the game to false. */
 int game_lua_kernel::intf_allow_undo(lua_State * L)
 {
 	if(lua_isboolean(L, 1)) {
@@ -3741,7 +3740,7 @@ int game_lua_kernel::intf_cancel_action(lua_State*)
 	return 0;
 }
 
-/// Adding new time_areas dynamically with Standard Location Filters.
+/** Adding new time_areas dynamically with Standard Location Filters. */
 int game_lua_kernel::intf_add_time_area(lua_State * L)
 {
 	log_scope("time_area");
@@ -3750,7 +3749,7 @@ int game_lua_kernel::intf_add_time_area(lua_State * L)
 	const std::string id = cfg["id"];
 
 	std::set<map_location> locs;
-	const terrain_filter filter(cfg, &game_state_);
+	const terrain_filter filter(cfg, &game_state_, false);
 	filter.get_locations(locs, true);
 	config parsed_cfg = cfg.get_parsed_config();
 	tod_man().add_time_area(id, locs, parsed_cfg);
@@ -3758,7 +3757,7 @@ int game_lua_kernel::intf_add_time_area(lua_State * L)
 	return 0;
 }
 
-/// Removing new time_areas dynamically with Standard Location Filters.
+/** Removing new time_areas dynamically with Standard Location Filters. */
 int game_lua_kernel::intf_remove_time_area(lua_State * L)
 {
 	log_scope("remove_time_area");
@@ -3770,7 +3769,7 @@ int game_lua_kernel::intf_remove_time_area(lua_State * L)
 	return 0;
 }
 
-/// Replacing the current time of day schedule.
+/** Replacing the current time of day schedule. */
 int game_lua_kernel::intf_replace_schedule(lua_State * L)
 {
 	vconfig cfg = luaW_checkvconfig(L, 1);
@@ -4161,11 +4160,11 @@ game_board & game_lua_kernel::board() {
 }
 
 unit_map & game_lua_kernel::units() {
-	return game_state_.board_.units_;
+	return game_state_.board_.units();
 }
 
 std::vector<team> & game_lua_kernel::teams() {
-	return game_state_.board_.teams_;
+	return game_state_.board_.teams();
 }
 
 const gamemap & game_lua_kernel::map() const {
@@ -4283,7 +4282,7 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 	}
 	luaL_setfuncs(L, callbacks, 0);
 
-	if(play_controller_.get_classification().campaign_type == game_classification::CAMPAIGN_TYPE::TEST) {
+	if(play_controller_.get_classification().is_test()) {
 		static luaL_Reg const test_callbacks[] {
 			{ "fire_wml_menu_item",        &dispatch<&game_lua_kernel::intf_fire_wml_menu_item         >        },
 			{ nullptr, nullptr }
@@ -4544,9 +4543,11 @@ void game_lua_kernel::set_game_display(game_display * gd) {
 	game_display_ = gd;
 }
 
-/// These are the child tags of [scenario] (and the like) that are handled
-/// elsewhere (in the C++ code).
-/// Any child tags not in this list will be passed to Lua's on_load event.
+/**
+ * These are the child tags of [scenario] (and the like) that are handled
+ * elsewhere (in the C++ code).
+ * Any child tags not in this list will be passed to Lua's on_load event.
+ */
 static const std::array<std::string, 24> handled_file_tags {{
 	"color_palette",
 	"color_range",

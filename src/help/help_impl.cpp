@@ -836,7 +836,7 @@ void generate_era_sections(const config* help_cfg, section & sec, int level)
 
 void generate_terrain_sections(section& sec, int /*level*/)
 {
-	ter_data_cache tdata = load_terrain_types_data();
+	std::shared_ptr<terrain_type_data> tdata = load_terrain_types_data();
 
 	if (!tdata) {
 		WRN_HP << "When building terrain help sections, couldn't acquire terrain types data, aborting.\n";
@@ -1466,9 +1466,11 @@ bool is_visible_id(const std::string &id) {
 	return (id.empty() || id[0] != '.');
 }
 
-/// Return true if the id is valid for user defined topics and
-/// sections. Some IDs are special, such as toplevel and may not be
-/// be defined in the config.
+/**
+ * Return true if the id is valid for user defined topics and
+ * sections. Some IDs are special, such as toplevel and may not be
+ * be defined in the config.
+ */
 bool is_valid_id(const std::string &id) {
 	if (id == "toplevel") {
 		return false;
@@ -1556,20 +1558,21 @@ std::string generate_table(const table_spec &tab, const unsigned int spacing)
 	return ss.str();
 }
 
-/// Prepend all chars with meaning inside attributes with a backslash.
+/** Prepend all chars with meaning inside attributes with a backslash. */
 std::string escape(const std::string &s)
 {
 	return utils::escape(s, "'\\");
 }
 
-/// Load the appropriate terrain types data to use
-ter_data_cache load_terrain_types_data() {
+/** Load the appropriate terrain types data to use */
+std::shared_ptr<terrain_type_data> load_terrain_types_data()
+{
 	if (display::get_singleton()) {
 		return display::get_singleton()->get_disp_context().map().tdata();
 	} else if (game_config_manager::get()){
 		return game_config_manager::get()->terrain_types();
 	} else {
-		return ter_data_cache();
+		return {};
 	}
 }
 

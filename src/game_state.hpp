@@ -50,13 +50,15 @@ public:
 	std::unique_ptr<game_lua_kernel> lua_kernel_;
 	ai::manager ai_manager_;
 	const std::unique_ptr<game_events::manager> events_manager_;
-	/// undo_stack_ is never nullptr. It is implemented as a pointer so that
-	/// undo_list can be an incomplete type at this point (which reduces the
-	/// number of files that depend on actions/undo.hpp).
+	/**
+	 * undo_stack_ is never nullptr. It is implemented as a pointer so that
+	 * undo_list can be an incomplete type at this point (which reduces the
+	 * number of files that depend on actions/undo.hpp).
+	 */
 	const std::unique_ptr<actions::undo_list> undo_stack_;
 	int player_number_;
 	int next_player_number_;
-	/// True if healing should be done at the beginning of the next side turn
+	/** True if healing should be done at the beginning of the next side turn */
 	bool do_healing_;
 
 	utils::optional<end_level_data> end_level_data_;
@@ -72,8 +74,8 @@ public:
 	int first_human_team_; //needed to initialize the viewpoint during setup
 	bool has_human_sides() const { return first_human_team_ != -1; }
 
-	game_state(const config & level, play_controller &, const ter_data_cache & tdata);
-	/// The third parameter is an optimisation.
+	game_state(const config & level, play_controller &);
+	/** The third parameter is an optimisation. */
 	game_state(const config & level, play_controller &, game_board& board);
 
 	~game_state();
@@ -110,22 +112,24 @@ public:
 		return lua_kernel_.get();
 	}
 
-	/// Checks to see if a leader at @a leader_loc could recruit somewhere.
+	/** Checks to see if a leader at @a leader_loc could recruit somewhere. */
 	bool can_recruit_from(const map_location& leader_loc, int side) const;
-	/// Checks to see if @a leader (assumed a leader) can recruit somewhere.
-	/// This takes into account terrain, shroud, and the presence of visible units.
+	/** Checks to see if @a leader (assumed a leader) can recruit somewhere. */
+	/** This takes into account terrain, shroud, and the presence of visible units. */
 	bool can_recruit_from(const unit& leader) const;
 
-	/// Checks to see if a leader at @a leader_loc could recruit on @a recruit_loc.
+	/** Checks to see if a leader at @a leader_loc could recruit on @a recruit_loc. */
 	bool can_recruit_on(const map_location& leader_loc, const map_location& recruit_loc, int side) const;
-	/// Checks to see if @a leader (assumed a leader) can recruit on @a recruit_loc.
-	/// This takes into account terrain, shroud, and whether or not there is already
-	/// a visible unit at recruit_loc.
+	/**
+	 * Checks to see if @a leader (assumed a leader) can recruit on @a recruit_loc.
+	 * This takes into account terrain, shroud, and whether or not there is already
+	 * a visible unit at recruit_loc.
+	 */
 	bool can_recruit_on(const unit& leader, const map_location& recruit_loc) const;
 
-	/// Checks if any of the sides leaders can recruit at a location
+	/** Checks if any of the sides leaders can recruit at a location */
 	bool side_can_recruit_on(int side, map_location loc) const;
 
-	///creates a new side during a game. todo: maybe add parameters like id etc?
+	/** creates a new side during a game. @todo: maybe add parameters like id etc? */
 	void add_side_wml(config cfg);
 };

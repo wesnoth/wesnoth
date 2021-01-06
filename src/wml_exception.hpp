@@ -79,6 +79,7 @@
  *  @param line         The line at which the test failed.
  *  @param function     The function in which the test failed.
  *  @param message      The translated message to show the user.
+ *  @param dev_message  Any additional information that might be useful to a developer.
  */
 [[noreturn]] void throw_wml_exception(
 		  const char* cond

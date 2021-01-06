@@ -356,7 +356,9 @@ if env["prereqs"]:
             have_libpthread = conf.CheckLib("pthread")
         return have_libpthread & \
             conf.CheckBoost("system") & \
-            conf.CheckBoost("asio", header_only = True)
+            conf.CheckBoost("asio", header_only = True) & \
+            conf.CheckBoost("context") & \
+            conf.CheckBoost("coroutine")
 
     def have_sdl_other():
         return \
@@ -428,6 +430,8 @@ if env["prereqs"]:
         client_env.Append(CPPDEFINES = ["HAVE_FRIBIDI"])
     if env["history"]:
         client_env.Append(CPPDEFINES = ["HAVE_HISTORY"])
+
+    env.Append(CPPDEFINES = ["BOOST_COROUTINES_NO_DEPRECATION_WARNING"])
 
     if env["forum_user_handler"]:
         found_connector = False

@@ -20,7 +20,6 @@
 #include "config_cache.hpp"
 #include "filesystem.hpp"
 #include "formula/debugger.hpp"
-#include "game_classification.hpp"
 #include "game_config.hpp"
 #include "game_config_view.hpp"
 #include "game_display.hpp"
@@ -54,7 +53,6 @@
 #include "gui/dialogs/editor/generator_settings.hpp"
 #include "gui/dialogs/editor/new_map.hpp"
 #include "gui/dialogs/editor/resize_map.hpp"
-#include "gui/dialogs/editor/set_starting_position.hpp"
 #include "gui/dialogs/end_credits.hpp"
 #include "gui/dialogs/file_dialog.hpp"
 #include "gui/dialogs/folder_create.hpp"
@@ -434,7 +432,6 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 	test<editor_generate_map>();
 	test<editor_new_map>();
 	test<editor_resize_map>();
-	test<editor_set_starting_position>();
 	//test<end_credits>();
 	test<faction_select>();
 	test<file_dialog>();
@@ -1030,16 +1027,6 @@ struct dialog_tester<editor_new_map>
 	editor_new_map* create()
 	{
 		return new editor_new_map("Test", width, height);
-	}
-};
-
-template<>
-struct dialog_tester<editor_set_starting_position>
-{
-	std::vector<map_location> locations;
-	editor_set_starting_position* create()
-	{
-		return new editor_set_starting_position(0, 0, locations);
 	}
 };
 

@@ -75,7 +75,7 @@ public:
 	// wrapper to catch bad_alloc so this should be called
 	void attack_enemy(const map_location& attacker_loc, const map_location& defender_loc, int choice);
 
-	/// Moves a unit across the board for a player.
+	/** Moves a unit across the board for a player. */
 	std::size_t move_unit_along_route(const std::vector<map_location> & steps, bool & interrupted);
 
 	void select_hex(const map_location& hex, const bool browse,

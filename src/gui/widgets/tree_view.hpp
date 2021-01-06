@@ -152,10 +152,12 @@ private:
 	 *                            * negative values reduce height.
 	 *                            * zero leave height as is.
 	 *                            * positive values increase height.
+	 * @param width_modification_pos 
+	 * @param height_modification_pos 
 	 */
 	void resize_content(const int width_modification,
 						const int height_modification,
-						const int width__modification_pos = -1,
+						const int width_modification_pos = -1,
 						const int height_modification_pos = -1);
 
 	/** Layouts the children if needed. */

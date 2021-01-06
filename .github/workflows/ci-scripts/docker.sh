@@ -136,8 +136,12 @@ fi
 
 execute "WML validation" ./utils/CI/schema_validation.sh
 execute "WML indentation check" checkindent
+if [ "$IMAGE" != "1804" ]; then
+  execute "Doxygen check" ./utils/CI/doxygen-check.sh
+fi
 execute "WML tests" ./run_wml_tests -g -v -c -t 20
 execute "Play tests" ./utils/CI/play_test_executor.sh
+execute "MP tests" ./utils/CI/play_test_executor.sh
 execute "Boost unit tests" ./utils/CI/test_executor.sh
 
 if [ -f "errors.log" ]; then

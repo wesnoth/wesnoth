@@ -93,11 +93,7 @@ struct preproc_define
 	version_info deprecation_version;
 
 	bool is_deprecated() const {
-#if defined HAVE_CXX17 || BOOST_VERSION >= 106800
-		return deprecation_level.has_value();
-#else
-		return deprecation_level != utils::nullopt;
-#endif
+		return utils::has_optional_value(deprecation_level);
 	}
 
 	void write(config_writer&, const std::string&) const;
@@ -139,6 +135,7 @@ std::ostream& operator<<(std::ostream& stream, const preproc_map::value_type& de
  * Function to use the WML preprocessor on a file.
  *
  * @param defines                 A map of symbols defined.
+ * @param fname                   The file to be preprocessed.
  *
  * @returns                       The resulting preprocessed file data.
  */

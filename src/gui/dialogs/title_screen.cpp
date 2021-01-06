@@ -34,6 +34,7 @@
 #include "gui/dialogs/message.hpp"
 #include "gui/dialogs/multiplayer/mp_host_game_prompt.hpp"
 #include "gui/dialogs/multiplayer/mp_method_selection.hpp"
+#include "gui/dialogs/preferences_dialog.hpp"
 #include "gui/dialogs/screenshot_notification.hpp"
 #include "gui/dialogs/simple_item_selector.hpp"
 #include "log.hpp"
@@ -316,14 +317,6 @@ void title_screen::pre_show(window& win)
 	register_button(win, "about", hotkey::HOTKEY_NULL, std::bind(&game_version::display<>));
 
 	//
-	// Tutorial
-	//
-	register_button(win, "tutorial", hotkey::TITLE_SCREEN__TUTORIAL, [this, &win]() {
-		game_.set_tutorial();
-		win.set_retval(LAUNCH_GAME);
-	});
-
-	//
 	// Campaign
 	//
 	register_button(win, "campaign", hotkey::TITLE_SCREEN__CAMPAIGN, [this, &win]() {
@@ -348,8 +341,6 @@ void title_screen::pre_show(window& win)
 	register_button(win, "load", hotkey::HOTKEY_LOAD_GAME, [this, &win]() {
 		if(game_.load_game()) {
 			win.set_retval(LAUNCH_GAME);
-		} else {
-			game_.clear_loaded_game();
 		}
 	});
 
@@ -396,7 +387,9 @@ void title_screen::pre_show(window& win)
 	//
 	// Preferences
 	//
-	register_button(win, "preferences", hotkey::HOTKEY_PREFERENCES, [this]() { game_.show_preferences(); });
+	register_button(win, "preferences", hotkey::HOTKEY_PREFERENCES, []() {
+		gui2::dialogs::preferences_dialog::display();
+	});
 
 	//
 	// Credits

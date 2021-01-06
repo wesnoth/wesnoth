@@ -118,7 +118,7 @@ int impl_slocs_set(lua_State* L)
 
 ////////  MAP  ////////
 
-mapgen_gamemap::mapgen_gamemap(string_view s)
+mapgen_gamemap::mapgen_gamemap(utils::string_view s)
 	: tiles_()
 	, starting_positions_()
 {
