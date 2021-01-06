@@ -1096,7 +1096,7 @@ void server::handle_request_campaign(const server::request& req)
 	// Clients doing upgrades or some other specific thing shouldn't bump
 	// the downloads count. Default to true for compatibility with old
 	// clients that won't tell us what they are trying to do.
-	if(from.empty() && req.cfg["increase_downloads"].to_bool(true) && !ignore_address_stats(req.addr)) {
+	if(req.cfg["increase_downloads"].to_bool(true) && !ignore_address_stats(req.addr)) {
 		addon["downloads"] = 1 + addon["downloads"].to_int();
 		mark_dirty(name);
 	}
