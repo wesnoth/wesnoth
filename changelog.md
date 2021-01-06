@@ -12,6 +12,7 @@
    * New Fauna/monster unit: Horned Scarab
  ### User interface
  ### WML Engine
+    * Change overwrite_specials option to overwrite_others option for weapon special abilities or weapon special to allow the effect of both to take precedence over the effect of any identical weapon special or weapon special ability who don't have overwrite_others option.
  ### Miscellaneous and Bug Fixes
 
 ## Version 1.15.8
