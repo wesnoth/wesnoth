@@ -75,7 +75,7 @@ void mp_method_selection::post_show(window& window)
 {
 	if(get_retval() == retval::OK) {
 		listbox& list = find_widget<listbox>(&window, "method_list", false);
-		choice_ = list.get_selected_row();
+		choice_ = static_cast<choice>(list.get_selected_row());
 
 		text_box& user_widget = find_widget<text_box>(&window, "user_name", false);
 		user_widget.save_to_history();

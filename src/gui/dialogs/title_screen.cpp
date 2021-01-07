@@ -496,28 +496,28 @@ void title_screen::button_callback_multiplayer(window& window)
 			return;
 		}
 
-		const int res = dlg.get_choice();
+		const auto res = dlg.get_choice();
 
-		if(res == 2 && preferences::mp_server_warning_disabled() < 2) {
+		if(res == decltype(dlg)::choice::HOST && preferences::mp_server_warning_disabled() < 2) {
 			if(!gui2::dialogs::mp_host_game_prompt::execute()) {
 				continue;
 			}
 		}
 
 		switch(res) {
-		case 0:
+		case decltype(dlg)::choice::JOIN:
 			game_.select_mp_server(preferences::builtin_servers_list().front().address);
 			window.set_retval(MP_CONNECT);
 			break;
-		case 1:
+		case decltype(dlg)::choice::CONNECT:
 			game_.select_mp_server("");
 			window.set_retval(MP_CONNECT);
 			break;
-		case 2:
+		case decltype(dlg)::choice::HOST:
 			game_.select_mp_server("localhost");
 			window.set_retval(MP_HOST);
 			break;
-		case 3:
+		case decltype(dlg)::choice::LOCAL:
 			window.set_retval(MP_LOCAL);
 			break;
 		}
