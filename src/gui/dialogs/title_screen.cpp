@@ -53,10 +53,10 @@
 #include "hotkey/hotkey_command.hpp"
 #include "sdl/surface.hpp"
 #include "sdl/utils.hpp"
-#include <functional>
 #include "video.hpp"
 
 #include <algorithm>
+#include <functional>
 
 static lg::log_domain log_config("config");
 #define ERR_CF LOG_STREAM(err, log_config)
@@ -373,10 +373,6 @@ void title_screen::pre_show(window& win)
 	register_button(win, "language", hotkey::HOTKEY_LANGUAGE, [this, &win]() {
 		try {
 			if(game_.change_language()) {
-				t_string::reset_translations();
-				::image::flush_cache();
-				sound::flush_cache();
-				font::load_font_config();
 				on_resize();
 			}
 		} catch(const std::runtime_error& e) {

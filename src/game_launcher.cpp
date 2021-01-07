@@ -961,6 +961,11 @@ bool game_launcher::change_language()
 		video_->set_window_title(game_config::get_default_title_string());
 	}
 
+	t_string::reset_translations();
+	image::flush_cache();
+	sound::flush_cache();
+	font::load_font_config();
+
 	return true;
 }
 
