@@ -333,7 +333,7 @@ void title_screen::pre_show(window& win)
 	// Multiplayer
 	//
 	register_button(win, "multiplayer", hotkey::TITLE_SCREEN__MULTIPLAYER,
-		std::bind(&title_screen::button_callback_multiplayer, this, std::ref(win)));
+		std::bind(&title_screen::button_callback_multiplayer, this));
 
 	//
 	// Load game
@@ -486,7 +486,7 @@ void title_screen::hotkey_callback_select_tests()
 	}
 }
 
-void title_screen::button_callback_multiplayer(window& window)
+void title_screen::button_callback_multiplayer()
 {
 	while(true) {
 		gui2::dialogs::mp_method_selection dlg;
@@ -507,18 +507,18 @@ void title_screen::button_callback_multiplayer(window& window)
 		switch(res) {
 		case decltype(dlg)::choice::JOIN:
 			game_.select_mp_server(preferences::builtin_servers_list().front().address);
-			window.set_retval(MP_CONNECT);
+			get_window()->set_retval(MP_CONNECT);
 			break;
 		case decltype(dlg)::choice::CONNECT:
 			game_.select_mp_server("");
-			window.set_retval(MP_CONNECT);
+			get_window()->set_retval(MP_CONNECT);
 			break;
 		case decltype(dlg)::choice::HOST:
 			game_.select_mp_server("localhost");
-			window.set_retval(MP_HOST);
+			get_window()->set_retval(MP_HOST);
 			break;
 		case decltype(dlg)::choice::LOCAL:
-			window.set_retval(MP_LOCAL);
+			get_window()->set_retval(MP_LOCAL);
 			break;
 		}
 
