@@ -74,12 +74,6 @@ namespace wesnothd
 int game::id_num = 1;
 int game::db_id_num = 1;
 
-void game::missing_user(player_iterator /*socket*/, const std::string& func) const
-{
-	WRN_GAME << func << "(): Could not find user (socket:\t<some C++ pointer>"
-			 << ") in player_info_ in game:\t\"" << name_ << "\" (" << id_ << ", " << db_id_ << ")\n";
-}
-
 game::game(wesnothd::server& server, player_connections& player_connections,
 		player_iterator host,
 		const std::string& name,

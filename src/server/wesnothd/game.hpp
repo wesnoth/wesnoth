@@ -461,9 +461,6 @@ private:
 	/** Returns a comma separated list of user names. */
 	std::string list_users(user_vector users, const std::string& func) const;
 
-	/** Function to log when we don't find a connection in player_info_. */
-	void missing_user(player_iterator socket, const std::string& func) const;
-
 	/** calculates the initial value for sides_, side_controllerds_, nsides_*/
 	void reset_sides();
 
