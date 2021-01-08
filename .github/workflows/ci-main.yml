@@ -14,7 +14,7 @@ jobs:
 
     name: Discord Notification
 
-    needs: [ubuntu-2004-scons-gcc-release-lto, ubuntu-2004-scons-clang-debug, ubuntu-2004-cmake-clang-release, ubuntu-2004-cmake-gcc-debug, ubuntu-1804, steam-runtime, mingw, flatpak, translations, macos-intel-master-release, macos-intel-master-debug, macos-arm-master-release, macos-arm-master-debug, windows-release, windows-debug]
+    needs: [ubuntu-2004-scons-gcc-release-lto, ubuntu-2004-scons-clang-debug, ubuntu-2004-cmake-clang-release, ubuntu-2004-cmake-gcc-debug, ubuntu-1804, steam-runtime, mingw, flatpak, translations, macos-intel-master-release, macos-intel-master-debug, windows-release, windows-debug]
     if: always()
 
     steps:
@@ -277,39 +277,39 @@ jobs:
           path: |
             ~/work/wesnoth/wesnoth/projectfiles/Xcode/Wesnoth_Debug.dmg
 
-  macos-arm-master-release:
-    runs-on: macos-11.0
+#  macos-arm-master-release:
+#    runs-on: macos-11.0
+#
+#    steps:
+#      - uses: actions/checkout@v2
+#        with:
+#          submodules: "recursive"
+#
+#      - name: macOS ARM Release
+#        run: |
+#          export CFG=Release
+#          export CACHE_DIR=~/build-cache
+#          ./.github/workflows/ci-scripts/macos.sh
 
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          submodules: "recursive"
-
-      - name: macOS ARM Release
-        run: |
-          export CFG=Release
-          export CACHE_DIR=~/build-cache
-          ./.github/workflows/ci-scripts/macos.sh
-
-  macos-arm-master-debug:
-    runs-on: macos-11.0
-
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          submodules: "recursive"
-
-      - name: macOS ARM Debug
-        run: |
-          export CFG=Debug
-          export CACHE_DIR=~/build-cache
-          ./.github/workflows/ci-scripts/macos.sh
-      - name: Upload
-        uses: actions/upload-artifact@v2
-        with:
-          name: macOS-ARM-Debug
-          path: |
-            ~/work/wesnoth/wesnoth/projectfiles/Xcode/Wesnoth_Debug.dmg
+#  macos-arm-master-debug:
+#    runs-on: macos-11.0
+#
+#    steps:
+#      - uses: actions/checkout@v2
+#        with:
+#          submodules: "recursive"
+#
+#      - name: macOS ARM Debug
+#        run: |
+#          export CFG=Debug
+#          export CACHE_DIR=~/build-cache
+#          ./.github/workflows/ci-scripts/macos.sh
+#      - name: Upload
+#        uses: actions/upload-artifact@v2
+#        with:
+#          name: macOS-ARM-Debug
+#          path: |
+#            ~/work/wesnoth/wesnoth/projectfiles/Xcode/Wesnoth_Debug.dmg
 
 # in the case of needing to recompile the vcpkg-created Windows dependencies, increment the cache-name and key for both Release and Debug
 # this will create a brand new cache and recompile the vcpkg dependencies from scratch
