@@ -132,8 +132,7 @@ manager::manager()
 manager::~manager()
 {
 	config campaigns;
-	typedef const std::pair<std::string, std::set<std::string>> cc_elem;
-	for(cc_elem elem : completed_campaigns) {
+	for(const auto& elem : completed_campaigns) {
 		config cmp;
 		cmp["name"] = elem.first;
 		cmp["difficulty_levels"] = utils::join(elem.second);
@@ -154,8 +153,7 @@ manager::~manager()
 				[/line]
 	*/
 	config history;
-	typedef std::pair<std::string, std::vector<std::string>> hack;
-	for(const hack history_id : history_map) {
+	for(const auto& history_id : history_map) {
 		config history_id_cfg; // [history_id]
 		for(const std::string& line : history_id.second) {
 			config cfg; // [line]
@@ -188,9 +186,9 @@ static void save_acquaintances()
 	config* cfg = preferences::get_prefs();
 	cfg->clear_children("acquaintance");
 
-	for(std::map<std::string, acquaintance>::iterator i = acquaintances.begin(); i != acquaintances.end(); ++i) {
+	for(auto& a : acquaintances) {
 		config& item = cfg->add_child("acquaintance");
-		i->second.save(item);
+		a.second.save(item);
 	}
 }
 
@@ -220,9 +218,9 @@ std::map<std::string, std::string> get_acquaintances_nice(const std::string& fil
 	load_acquaintances();
 	std::map<std::string, std::string> ac_nice;
 
-	for(std::map<std::string, acquaintance>::iterator i = acquaintances.begin(); i != acquaintances.end(); ++i) {
-		if(i->second.get_status() == filter) {
-			ac_nice[i->second.get_nick()] = i->second.get_notes();
+	for(const auto& a : acquaintances) {
+		if(a.second.get_status() == filter) {
+			ac_nice[a.second.get_nick()] = a.second.get_notes();
 		}
 	}
 
@@ -278,7 +276,7 @@ bool remove_acquaintance(const std::string& nick)
 bool is_friend(const std::string& nick)
 {
 	load_acquaintances();
-	const std::map<std::string, acquaintance>::const_iterator it = acquaintances.find(nick);
+	const auto it = acquaintances.find(nick);
 
 	if(it == acquaintances.end()) {
 		return false;
@@ -290,7 +288,7 @@ bool is_friend(const std::string& nick)
 bool is_ignored(const std::string& nick)
 {
 	load_acquaintances();
-	const std::map<std::string, acquaintance>::const_iterator it = acquaintances.find(nick);
+	const auto it = acquaintances.find(nick);
 
 	if(it == acquaintances.end()) {
 		return false;
@@ -311,7 +309,7 @@ bool is_campaign_completed(const std::string& campaign_id)
 
 bool is_campaign_completed(const std::string& campaign_id, const std::string& difficulty_level)
 {
-	std::map<std::string, std::set<std::string>>::iterator it = completed_campaigns.find(campaign_id);
+	const auto it = completed_campaigns.find(campaign_id);
 	return it == completed_campaigns.end() ? false : it->second.count(difficulty_level) != 0;
 }
 
@@ -960,11 +958,8 @@ std::vector<std::string>* get_history(const std::string& id)
 
 bool green_confirm()
 {
-	std::string confirmation = preferences::get("confirm_end_turn");
-
-	if(confirmation == "green" || confirmation == "yes")
-		return true;
-	return false;
+	const std::string confirmation = preferences::get("confirm_end_turn");
+	return confirmation == "green" || confirmation == "yes";
 }
 
 bool yellow_confirm()
@@ -981,16 +976,16 @@ bool confirm_no_moves()
 
 void encounter_recruitable_units(const std::vector<team>& teams)
 {
-	for(std::vector<team>::const_iterator help_team_it = teams.begin(); help_team_it != teams.end(); ++help_team_it) {
-		help_team_it->log_recruitable();
-		encountered_units_set.insert(help_team_it->recruits().begin(), help_team_it->recruits().end());
+	for(const team& help_team : teams) {
+		help_team.log_recruitable();
+		encountered_units_set.insert(help_team.recruits().begin(), help_team.recruits().end());
 	}
 }
 
 void encounter_start_units(const unit_map& units)
 {
-	for(unit_map::const_iterator help_unit_it = units.begin(); help_unit_it != units.end(); ++help_unit_it) {
-		encountered_units_set.insert(help_unit_it->type_id());
+	for(const auto& help_unit : units) {
+		encountered_units_set.insert(help_unit.type_id());
 	}
 }
 
