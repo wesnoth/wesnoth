@@ -194,7 +194,7 @@ private:
 
 	void delete_game(int, const std::string& reason="");
 
-	void update_game_in_lobby(const game& g, utils::optional< wesnothd::player_iterator > exclude = {});
+	void update_game_in_lobby(const game& g, utils::optional<player_iterator> exclude = {});
 
 	void start_new_server();
 
