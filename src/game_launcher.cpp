@@ -43,7 +43,6 @@
 #include "language.hpp"                      // for language_def, etc
 #include "log.hpp"                           // for LOG_STREAM, logger, general, etc
 #include "map/exception.hpp"
-#include "preferences/advanced.hpp" // for advanced_manager
 #include "preferences/credentials.hpp"
 #include "preferences/display.hpp"
 #include "preferences/general.hpp" // for disable_preferences_save, etc
@@ -104,7 +103,6 @@ game_launcher::game_launcher(const commandline_options& cmdline_opts)
 	, video_(new CVideo())
 	, font_manager_()
 	, prefs_manager_()
-	, advanced_prefs_manager_()
 	, image_manager_()
 	, main_event_context_()
 	, hotkey_manager_()
@@ -429,11 +427,6 @@ bool game_launcher::init_lua_script()
 	}
 
 	return !error;
-}
-
-void game_launcher::init_advanced_prefs_manager()
-{
-	advanced_prefs_manager_ = std::make_unique<preferences::advanced_manager>(game_config_manager::get()->game_config());
 }
 
 void game_launcher::set_test(const std::string& id)

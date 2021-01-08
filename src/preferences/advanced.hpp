@@ -27,7 +27,7 @@ namespace preferences
 class advanced_manager
 {
 public:
-	advanced_manager(const game_config_view& gc);
+	explicit advanced_manager(const game_config_view& gc);
 
 	~advanced_manager();
 
@@ -61,6 +61,9 @@ public:
 private:
 	std::vector<option> prefs;
 };
+
+/** Initializes the manager singleton. */
+void init_advanced_manager(const game_config_view& gc);
 
 using advanced_pref_list = std::vector<advanced_manager::option>;
 

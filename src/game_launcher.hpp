@@ -33,8 +33,6 @@ class commandline_options;
 class config;
 class CVideo;
 
-namespace preferences { class advanced_manager; }
-
 struct jump_to_campaign_info
 {
 	/** Whether the game should immediately start a campaign. */
@@ -81,7 +79,6 @@ public:
 	bool init_video();
 	bool init_language();
 	bool init_lua_script();
-	void init_advanced_prefs_manager();
 
 	bool play_test();
 	bool play_screenshot_mode();
@@ -136,7 +133,6 @@ private:
 
 	font::manager font_manager_;
 	const preferences::manager prefs_manager_;
-	std::unique_ptr<preferences::advanced_manager> advanced_prefs_manager_;
 	const image::manager image_manager_;
 	const events::event_context main_event_context_;
 	const hotkey::manager hotkey_manager_;

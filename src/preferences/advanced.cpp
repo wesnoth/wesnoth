@@ -24,13 +24,11 @@ static lg::log_domain advanced_preferences("advanced_preferences");
 
 namespace preferences
 {
-static advanced_manager* singleton = nullptr;
+static std::unique_ptr<preferences::advanced_manager> singleton = nullptr;
 
 advanced_manager::advanced_manager(const game_config_view& gc)
 	: prefs()
 {
-	singleton = this;
-
 	for(const config& pref : gc.child_range("advanced_preference")) {
 		try {
 			prefs.emplace_back(pref);
@@ -46,7 +44,6 @@ advanced_manager::advanced_manager(const game_config_view& gc)
 
 advanced_manager::~advanced_manager()
 {
-	singleton = nullptr;
 }
 
 advanced_manager::option::option(const config& pref)
@@ -69,6 +66,11 @@ advanced_manager::option::option(const config& pref)
 	} else {
 		throw std::invalid_argument("Unknown type '" + p_type + "' for advanced preference " + name);
 	}
+}
+
+void init_advanced_manager(const game_config_view& gc)
+{
+	singleton = std::make_unique<advanced_manager>(gc);
 }
 
 const advanced_pref_list& get_advanced_preferences()

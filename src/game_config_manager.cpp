@@ -31,6 +31,7 @@
 #include "language.hpp"
 #include "log.hpp"
 #include "picture.hpp"
+#include "preferences/advanced.hpp"
 #include "preferences/general.hpp"
 #include "scripting/game_lua_kernel.hpp"
 #include "serialization/schema_validator.hpp"
@@ -106,6 +107,9 @@ bool game_config_manager::init_game_config(FORCE_RELOAD_CONFIG force_reload)
 	// Load the standard hotkeys, then apply any player customizations.
 	hotkey::load_hotkeys(game_config(), true);
 	preferences::load_hotkeys();
+
+	// TODO: consider making this part of preferences::manager in some fashion
+	preferences::init_advanced_manager(game_config());
 
 	::init_textdomains(game_config());
 	about::set_about(game_config());

@@ -795,8 +795,6 @@ static int do_gameloop(const std::vector<std::string>& args)
 
 	LOG_CONFIG << "time elapsed: " << (SDL_GetTicks() - start_ticks) << " ms\n";
 
-	game->init_advanced_prefs_manager();
-
 	plugins_manager plugins_man(new application_lua_kernel);
 
 	const plugins_context::reg_vec callbacks {
