@@ -23,8 +23,9 @@
 #include "server/common/server_base.hpp"
 #include "server/wesnothd/player_connection.hpp"
 
+#include "utils/optional_fwd.hpp"
+
 #include <boost/asio/steady_timer.hpp>
-#include <utils/optional_fwd.hpp>
 
 #include <random>
 
