@@ -1927,10 +1927,11 @@ std::string game::debug_sides_info() const
 utils::optional<player_iterator> game::find_user(const simple_wml::string_span& name)
 {
 	auto player { player_connections_.get<name_t>().find(name.to_string()) };
-	if(player != player_connections_.get<name_t>().end())
+	if(player != player_connections_.get<name_t>().end()) {
 		return player_connections_.project<0>(player);
-	else
+	} else {
 		return {};
+	}
 }
 
 void game::send_and_record_server_message(const char* message, utils::optional<player_iterator> exclude)
