@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2020-12-18 22:26-0300\n"
-"PO-Revision-Date: 2020-12-25 15:53-0300\n"
+"PO-Revision-Date: 2021-01-03 16:08-0300\n"
 "Last-Translator: Andrei Machado <andreisp.machado@yahoo.com>\n"
 "Language-Team: Portuguese - Brasil\n"
 "Language: pt_BR\n"
@@ -773,22 +773,22 @@ msgstr ""
 #. [topic]: id=editor_tool_paste
 #: data/core/editor/help.cfg:97
 msgid "Rotate clockwise by 60°."
-msgstr ""
+msgstr "Girar no sentido horário em 60°."
 
 #. [topic]: id=editor_tool_paste
 #: data/core/editor/help.cfg:98
 msgid "Rotate counter-clockwise by 60°."
-msgstr ""
+msgstr "Girae no sentido anti-horário em 60°."
 
 #. [topic]: id=editor_tool_paste
 #: data/core/editor/help.cfg:99
 msgid "Flip horizontally"
-msgstr ""
+msgstr "Virar horizontalmente"
 
 #. [topic]: id=editor_tool_paste
 #: data/core/editor/help.cfg:100
 msgid "Flip vertically"
-msgstr ""
+msgstr "Virar verticalmente"
 
 #. [topic]: id=editor_tool_starting
 #: data/core/editor/help.cfg:107
@@ -1162,6 +1162,7 @@ msgstr "Formato dos Mapas de Wesnoth"
 #: data/core/editor/help.cfg:310
 msgid "Wesnoth stores its maps in human readable plain text files."
 msgstr ""
+"Wesnoth salva os mapas em arquivos de texto simples legíveis para humanos."
 
 #. [topic]: id=map_format
 #: data/core/editor/help.cfg:312
@@ -3047,16 +3048,8 @@ msgstr ""
 # File: data/core/help.cfg, line: 813
 #. [topic]: id=shroud_and_fog
 #: data/core/help.cfg:282
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<header>text='Multiplayer Eras and Factions'</header>"
 msgid "<header>text='Multiplayer and undo'</header>"
-msgstr ""
-"\n"
-"\n"
-"<header>text='Eras e Facções Multiplayer'</header>"
+msgstr "<header>text='Multiplayer e desgazer'</header>"
 
 #. [topic]: id=shroud_and_fog
 #: data/core/help.cfg:284
@@ -3103,15 +3096,6 @@ msgstr ""
 
 #. [topic]: id=saveload
 #: data/core/help.cfg:294
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "One of the challenges of the game is to work out how to protect your "
-#| "heroes. Small risks quickly build up: if you have five important units, "
-#| "and they each have just a 1% chance of death each turn, you can "
-#| "<italic>text='expect'</italic> one of them to die about every 20 turns. "
-#| "So, you’ll rarely make it through a scenario without having it happen."
 msgid ""
 "One of the challenges of the game is to work out how to protect your heroes. "
 "Small risks quickly build up: if you have five important units, and they "
@@ -3119,11 +3103,9 @@ msgid ""
 "<italic>text='expect'</italic> one of them to die about every 20 turns. So, "
 "you’ll rarely make it through a scenario without having it happen."
 msgstr ""
-"\n"
-"\n"
 "Um dos desafios do jogo é descobrir como proteger os seus heróis. Pequenos "
-"riscos acumulam rapidamente: se você tem cinco unidades importantes e cada "
-"uma delas possui 1% de chance de morrer a cada turno, você pode "
+"riscos acumulam-se rapidamente: se você tem cinco unidades importantes e "
+"cada uma delas possui 1% de chance de morrer a cada turno, você pode "
 "<italic>text='esperar'</italic>que uma delas morra mais ou menos a cada 20 "
 "turnos. Então, você raramente completaá um cenário sem que isto aconteça."
 
@@ -3757,7 +3739,7 @@ msgstr ""
 #. [topic]: id=orbs
 #: data/core/help.cfg:382
 msgid "Orbs and ellipses"
-msgstr ""
+msgstr "Esferas e elipses"
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:383
@@ -3765,11 +3747,14 @@ msgid ""
 "There are colored indicators above the energy bars of some units, consisting "
 "of a colored orb (and sometimes a <ref>dst='crowns' text='crown'</ref>)."
 msgstr ""
+"Existem indicadores coloridos acima da barra de energia de algumas unidades "
+"que consistem de uma esfera colorida (e as vezes uma <ref>dst='crowns' "
+"text='coroa'</ref>)."
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:387
 msgid "The orbs show whether the unit can move, and the standard colors are:"
-msgstr ""
+msgstr "A esfera indica se a unidade pode se mover, e as cores padrões são:"
 
 #
 # File: data/core/help.cfg, line: 189
@@ -3777,10 +3762,8 @@ msgstr ""
 # File: data/core/help.cfg, line: 189
 #. [topic]: id=orbs
 #: data/core/help.cfg:388
-#, fuzzy
-#| msgid " green if it hasn’t moved this turn,"
 msgid "• <bold>text='Green'</bold> if it hasn’t moved this turn."
-msgstr " verde se ainda não se moveu neste turno,"
+msgstr "• <bold>text='Verde'</bold> se ela ainda não se moveu neste turno."
 
 #
 # File: data/core/help.cfg, line: 190
@@ -3788,13 +3771,12 @@ msgstr " verde se ainda não se moveu neste turno,"
 # File: data/core/help.cfg, line: 190
 #. [topic]: id=orbs
 #: data/core/help.cfg:389
-#, fuzzy
-#| msgid " yellow if it has moved, but could still move further or attack, or"
 msgid ""
 "• <bold>text='Yellow'</bold> if it has moved, but could still move further "
 "or attack."
 msgstr ""
-" amarela se ela já se moveu, mas ainda pode se mover mais ou atacar, ou"
+"• <bold>text='Amarelo'</bold> se ela já se moveu, mas ainda pode se mover "
+"mais ou atacar."
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:390
@@ -3804,6 +3786,10 @@ msgid ""
 "in the middle of a multi-turn move (has been told to move further than it "
 "can in the current turn)."
 msgstr ""
+"• <bold>text='Vermelho'</bold> se ela não pode mais atacar nem se mover.\n"
+"    • Vermelho também é usado após o comando \"terminar o turno da unidade"
+"\", e quando a unidade está no de mover-se ao longo de turnos (foi mandada "
+"mover-se mais longe do que é capaz em um só turno)."
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:392
@@ -3813,6 +3799,11 @@ msgid ""
 "moves, and the corresponding orb changes, are delayed as explained in "
 "<ref>dst='shroud_and_fog' text='Shroud and Fog of War'</ref>."
 msgstr ""
+"• <bold>text='Azul'</bold> para unidades aliadas. Durante o turno do aliado, "
+"as suas unidades exibirão as cores verde/amarelo/vermelho; entretanto o seu "
+"movimento e a mudança das eferas de acordo com ele é atrasado, como "
+"explicado em <ref>dst='shroud_and_fog' text='Escuridão e Névoa de guerra'</"
+"ref>."
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:393
@@ -3820,6 +3811,8 @@ msgid ""
 "• Enemy units normally don’t have orbs, however these can be enabled in the "
 "advanced preference “Customize orb colors”."
 msgstr ""
+"• Unidades inimigas normalmente não possuem esferas, mas isso pode ser "
+"mudado na opção \"customizar cor das esferas\" nas preferências avançadas."
 
 #
 # File: data/core/help.cfg, line: 248
@@ -3827,16 +3820,8 @@ msgstr ""
 # File: data/core/help.cfg, line: 248
 #. [topic]: id=orbs
 #: data/core/help.cfg:395
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<header>text='Cores'</header>"
 msgid "<header>text='Ellipses'</header>"
-msgstr ""
-"\n"
-"\n"
-"<header>text='Cores'</header>"
+msgstr "<header>text='Elipses'</header>"
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:398
@@ -3844,6 +3829,9 @@ msgid ""
 "A team-colored shape is drawn on the ground under each unit. This is called "
 "the “ellipse”, although some units’ ellipses are not elliptical."
 msgstr ""
+"Uma forma geométrica colorida com a cor do time pode ser encontrada no solo "
+"abaixo de cada unidade. Isto é chamado de \"elipse\", embora as elipses de "
+"algumas unidades não sejam elipticas."
 
 #. [topic]: id=orbs
 #. The help page has a set of images above this paragraph, in the same order as the bullet points
@@ -3858,11 +3846,20 @@ msgid ""
 "• Some campaigns start with a level zero leader. Able to recruit but lacking "
 "a ZoC, these units have a broken outline version of the seven-pointed star."
 msgstr ""
+"• A maioria das unidades possuem uma elipse circular.\n"
+"• As unidades que podem recrutar possuem uma estrela de sete pontas.\n"
+"•<ref>dst='crowns' text='Unidades Heróis'</ref> possuem uma variante menor "
+"da estrela de sete pontas. Estas unidades não podem recrutar.\n"
+"• Unidades que não possuem <ref>dst='movement' text='zona de controle'</ref> "
+"possuem uma forma quebrada.\n"
+"• Algumas campanhas começam com um líder de nível zero. Capaz de recrutar "
+"mas sem ZdC, estas unidades possuem uma versão quebrada da estrela de sete "
+"pontas."
 
 #. [topic]: id=crowns
 #: data/core/help.cfg:420
 msgid "Crowns and loyal markers"
-msgstr ""
+msgstr "Coroas e marcadores de lealdade."
 
 #. [topic]: id=crowns
 #: data/core/help.cfg:421
@@ -3912,17 +3909,6 @@ msgstr "Período do Dia"
 # File: data/core/help.cfg, line: 274
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:455
-#, fuzzy
-#| msgid ""
-#| "The time of day affects the damage of certain units as follows:\n"
-#| "\n"
-#| "• <bold>text='Lawful'</bold> units get +25% damage in daytime, and −25% "
-#| "damage at night.\n"
-#| "• <bold>text='Chaotic'</bold> units get +25% damage at night, and −25% in "
-#| "daytime.\n"
-#| "• <bold>text='Neutral'</bold> units are unaffected by the time of day.\n"
-#| "• <bold>text='Liminal'</bold> units get −25% damage during both night and "
-#| "daytime."
 msgid ""
 "The time of day affects the damage of certain units as follows:\n"
 "\n"
@@ -3940,8 +3926,7 @@ msgstr ""
 "• <bold>text='Caóticas'</bold> possuem +25% durante a noite e -25% durante o "
 "dia.\n"
 "• <bold>text='Neutras'</bold>não são afetadas pelo período do dia.\n"
-"• <bold>text='Liminares'</bold> possuem -25% de dano tanto de dia quanto de "
-"noite."
+"• <bold>text='Liminares'</bold> possuem +25% durante o crepúsculo."
 
 #
 # File: data/core/help.cfg, line: 278
@@ -6707,15 +6692,11 @@ msgstr ""
 # File: data/core/macros/special-notes.cfg, line: 29
 # File: data/core/macros/special-notes.cfg, line: 29
 #: data/core/macros/special-notes.cfg:38
-#, fuzzy
-#| msgid ""
-#| " The steadiness of this unit reduces damage from some attacks, but only "
-#| "while defending."
 msgid ""
 "The steadiness of this unit reduces damage from some attacks, but only while "
 "defending."
 msgstr ""
-" A capacidade defensiva desta unidade reduz o dano causado por alguns "
+"A capacidade defensiva desta unidade reduz o dano causado por alguns "
 "ataques, mas apenas quando ela está se defendendo."
 
 #
@@ -6723,33 +6704,24 @@ msgstr ""
 # File: data/core/macros/special-notes.cfg, line: 32
 # File: data/core/macros/special-notes.cfg, line: 32
 #: data/core/macros/special-notes.cfg:41
-#, fuzzy
-#| msgid ""
-#| " The leadership of this unit enables adjacent units of the same side to "
-#| "deal more damage in combat, though this only applies to units of lower "
-#| "level."
 msgid ""
 "The leadership of this unit enables adjacent units of the same side to deal "
 "more damage in combat, though this only applies to units of lower level."
 msgstr ""
-" A habilidade de liderança desta unidade faz com que unidades aliadas "
-"adjacentes a ela causem mais dano em combate. Isto só se aplica, porém, a "
-"unidades de nível mais baixo."
+"A liderança desta unidade faz com que unidades aliadas adjacentes a ela "
+"causem mais dano em combate. Isto só se aplica, porém, a unidades de nível "
+"mais baixo do que o líder."
 
 #
 # File: data/core/macros/special-notes.cfg, line: 35
 # File: data/core/macros/special-notes.cfg, line: 35
 # File: data/core/macros/special-notes.cfg, line: 35
 #: data/core/macros/special-notes.cfg:44
-#, fuzzy
-#| msgid ""
-#| " This unit’s skill at skirmishing allows it to ignore enemies’ zones of "
-#| "control and thus move unhindered around them."
 msgid ""
 "This unit’s skill at skirmishing allows it to ignore enemies’ zones of "
 "control and thus move unhindered around them."
 msgstr ""
-" A habilidade de combatente desta unidade lhe permite ignorar as zonas de "
+"A habilidade de combatente desta unidade lhe permite ignorar as zonas de "
 "controle dos inimigos, de maneira a poder se mover livremente por entre eles."
 
 #
@@ -6757,12 +6729,8 @@ msgstr ""
 # File: data/core/macros/special-notes.cfg, line: 38
 # File: data/core/macros/special-notes.cfg, line: 38
 #: data/core/macros/special-notes.cfg:47
-#, fuzzy
-#| msgid " Illumination increases the lighting level in adjacent areas."
 msgid "Illumination increases the lighting level in adjacent areas."
-msgstr ""
-" A habilidade de iluminação aumenta o nivel de luminosidade das regiões "
-"adjacentes."
+msgstr "Iluminação aumenta o nivel de luminosidade das áreas adjacentes."
 
 #
 # File: data/core/macros/special-notes.cfg, line: 41
@@ -6889,31 +6857,23 @@ msgstr ""
 # File: data/core/macros/special-notes.cfg, line: 71
 # File: data/core/macros/special-notes.cfg, line: 71
 #: data/core/macros/special-notes.cfg:80
-#, fuzzy
-#| msgid ""
-#| " The ability to turn the living to stone makes this unit extremely "
-#| "dangerous."
 msgid ""
 "The ability to turn the living to stone makes this unit extremely dangerous."
 msgstr ""
-" A habilidade de transformar seres vivos em pedra torna esta unidade "
-"extremamente perigosa."
+"A habilidade de transformar seres vivos em pedra faz com que esta unidade "
+"seja extremamente perigosa."
 
 #
 # File: data/core/macros/special-notes.cfg, line: 74
 # File: data/core/macros/special-notes.cfg, line: 74
 # File: data/core/macros/special-notes.cfg, line: 74
 #: data/core/macros/special-notes.cfg:83
-#, fuzzy
-#| msgid ""
-#| " This unit’s marksmanship gives it a high chance of hitting targeted "
-#| "enemies, but only on the attack."
 msgid ""
 "This unit’s marksmanship gives it a high chance of hitting targeted enemies, "
 "but only on the attack."
 msgstr ""
-" A habilidade desta unidade com armas de ataque a distância lhe proporciona "
-"uma alta chance de acertar os inimigos, mas apenas quando ela ataca."
+"A habilidade de atirador desta unidade lhe proporciona uma alta chance de "
+"acertar os inimigos, mas apenas quando ela ataca."
 
 #
 # File: data/core/macros/special-notes.cfg, line: 77
@@ -6944,15 +6904,11 @@ msgstr ""
 # File: data/core/macros/special-notes.cfg, line: 83
 # File: data/core/macros/special-notes.cfg, line: 83
 #: data/core/macros/special-notes.cfg:92
-#, fuzzy
-#| msgid ""
-#| " Using a charging attack doubles both damage dealt and received; this "
-#| "does not affect defensive retaliation."
 msgid ""
 "Using a charging attack doubles both damage dealt and received; this does "
 "not affect defensive retaliation."
 msgstr ""
-" Usar um ataque de carga dobra tanto o dano causado quanto o dano recebido. "
+"Usar um ataque de carga dobra tanto o dano causado quanto o dano recebido. "
 "Isso não se aplica caso o ataque seja usado quando a unidade está se "
 "defendendo."
 
@@ -9727,10 +9683,8 @@ msgstr "Ajuda para Battle for Wesnoth"
 # File: src/help.cpp, line: 3332
 # File: src/help.cpp, line: 3332
 #: src/help/help.cpp:236 src/help/help.cpp:240
-#, fuzzy
-#| msgid "Parse error when parsing help text: "
 msgid "Parse error when parsing help text:"
-msgstr "Erro de análise ao ler o texto de ajuda: "
+msgstr "Erro de análise ao ler o texto de ajuda:"
 
 #: src/help/help_topic_generators.cpp:64
 msgid "Best of"
@@ -9919,7 +9873,7 @@ msgstr "Alinhamento:"
 #. translation use non-breaking spaces as appropriate for the target language.
 #: src/help/help_topic_generators.cpp:559
 msgid "Required XP:"
-msgstr "XP necessárioa"
+msgstr "XP Necessária:"
 
 #
 # File: src/help.cpp, line: 1510

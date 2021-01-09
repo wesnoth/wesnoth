@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2020-12-18 22:26-0300\n"
-"PO-Revision-Date: 2020-12-15 08:01-0300\n"
+"PO-Revision-Date: 2020-12-28 11:24-0300\n"
 "Last-Translator: Andrei Machado <andreisp.machado@yahoo.com>\n"
 "Language-Team: Portuguese - Brasil\n"
 "Language: pt_BR\n"
@@ -369,7 +369,7 @@ msgstr "Bônus máximo de enxame: "
 #: data/campaigns/World_Conquest/lua/map/main.lua:138
 #: data/campaigns/World_Conquest/lua/map/postgeneration/1A_Start.lua:144
 msgid "Start"
-msgstr ""
+msgstr "Começo"
 
 #
 # File: src/statistics_dialog.cpp, line: 225
@@ -380,14 +380,13 @@ msgstr ""
 # File: src/statistics_dialog.cpp, line: 303
 #. [lua]: wc_ii_generate_scenario
 #: data/campaigns/World_Conquest/lua/map/main.lua:140
-#, fuzzy
 msgid "Scenario"
-msgstr "Terminar o Cenário"
+msgstr "Cenário"
 
 #. [lua]: wc_ii_generate_scenario
 #: data/campaigns/World_Conquest/lua/map/main.lua:142
 msgid "Final Battle"
-msgstr ""
+msgstr "Batalha Final"
 
 #. [lua]: wct_map_2a_post_bunus_decoration
 #: data/campaigns/World_Conquest/lua/map/postgeneration/2A_Springs.lua:182
@@ -470,7 +469,7 @@ msgstr ""
 #. [lua]: world_conquest_tek_map_repaint_6d
 #: data/campaigns/World_Conquest/lua/map/postgeneration/6D_Feudal.lua:472
 msgid "Feudal"
-msgstr ""
+msgstr "Feudal"
 
 #
 # File: src/terrain.cpp, line: 168
@@ -478,20 +477,18 @@ msgstr ""
 # File: src/terrain.cpp, line: 168
 #. [lua]: add_enemy_side
 #: data/campaigns/World_Conquest/lua/map/scenario_utils/side_definitions.lua:38
-#, fuzzy
-#| msgid "Enemy village"
 msgid "Enemies"
-msgstr "Aldeia Inimiga"
+msgstr "Inimigos"
 
 #. [lua]: add_player_side
 #: data/campaigns/World_Conquest/lua/map/scenario_utils/side_definitions.lua:61
 msgid "Allies"
-msgstr ""
+msgstr "Aliados"
 
 #. [chance]
 #: data/campaigns/World_Conquest/resources/data/training.cfg:305
 msgid "$range|: $special|"
-msgstr ""
+msgstr "$range|: $special|"
 
 #. [chance]
 #: data/campaigns/World_Conquest/resources/data/training.cfg:519
@@ -501,22 +498,22 @@ msgstr ""
 #. [chance]
 #: data/campaigns/World_Conquest/resources/data/training.cfg:533
 msgid "$range|: +$boost| damage"
-msgstr ""
+msgstr "$range|: +$boost| dano"
 
 #. [chance]
 #: data/campaigns/World_Conquest/resources/data/training.cfg:549
 msgid "$range|: +1 damage per level"
-msgstr ""
+msgstr "$range|: +1 de dano por nível"
 
 #. [chance]
 #: data/campaigns/World_Conquest/resources/data/training.cfg:565
 msgid "+$hitpoints| hitpoints"
-msgstr ""
+msgstr "+$hitpoints| pontos de vida"
 
 #. [chance]
 #: data/campaigns/World_Conquest/resources/data/training.cfg:580
 msgid "+$hitpoints| hitpoints per level"
-msgstr ""
+msgstr "+$hitpoints| pontos por nível"
 
 #
 # File: src/unit.cpp, line: 2470
@@ -527,15 +524,13 @@ msgstr ""
 # File: src/unit.cpp, line: 2622
 #. [chance]
 #: data/campaigns/World_Conquest/resources/data/training.cfg:596
-#, fuzzy
-#| msgid "XP to advance"
 msgid "$value| XP to advance"
-msgstr "XP para avançar"
+msgstr "$value| XP para avançar"
 
 #. [chance]
 #: data/campaigns/World_Conquest/resources/data/training.cfg:620
 msgid "Village/Castle: +5 defense"
-msgstr ""
+msgstr "Aldeia/Castelo: +5 de defesa"
 
 #. [chance]
 #: data/campaigns/World_Conquest/resources/data/training.cfg:652
@@ -546,7 +541,7 @@ msgstr ""
 #. [chance]
 #: data/campaigns/World_Conquest/resources/data/training.cfg:681
 msgid "$terrain|: +10 defense and full movement"
-msgstr ""
+msgstr "$terrain|: +10 de defesa e sem penalidade de movimento"
 
 #
 # File: data/core/macros/ai_controller.cfg, line: 59
@@ -567,7 +562,7 @@ msgstr ""
 #. [chance]
 #: data/campaigns/World_Conquest/resources/data/training.cfg:727
 msgid "$range|: arcane and +25% damage"
-msgstr ""
+msgstr "$range|: arcano e +25% de dano"
 
 #
 # File: src/unit.cpp, line: 2368
@@ -627,10 +622,8 @@ msgstr "frio"
 # File: src/statistics_dialog.cpp, line: 283
 # File: src/statistics_dialog.cpp, line: 283
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:162
-#, fuzzy
-#| msgid "Damage"
 msgid "damage"
-msgstr "Dano"
+msgstr "dano"
 
 #
 # File: data/english.cfg, line: 3
@@ -824,22 +817,20 @@ msgstr "resistência contra "
 # File: src/unit_types.cpp, line: 250
 # File: src/unit_types.cpp, line: 327
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:210
-#, fuzzy
-#| msgid "Strikes"
 msgid "strike"
-msgstr "Golpes"
+msgstr "golpe"
 
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:4
 msgid "World Conquest 1p"
-msgstr ""
+msgstr "Conquistando o Mundo 1p"
 
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:7
 msgid "World Conquest 2p"
-msgstr ""
+msgstr "Conquistando o Mundo 2p"
 
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:10
 msgid "World Conquest 3p"
-msgstr ""
+msgstr "Conquistando o Mundo 3p"
 
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:13
 msgid ""
@@ -5691,15 +5682,13 @@ msgstr "Avanços:"
 # File: src/attack_prediction_display.cpp, line: 224
 #. [leadership]: id=magical_leadership
 #: data/scenario-test.cfg:339
-#, fuzzy
-#| msgid "Leadership"
 msgid "magical leadership"
-msgstr "Liderança"
+msgstr "Liderança mágica"
 
 #. [leadership]: id=magical_leadership
 #: data/scenario-test.cfg:340
 msgid "female^magical leadership"
-msgstr ""
+msgstr "liderança mágica"
 
 #. [leadership]: id=magical_leadership
 #: data/scenario-test.cfg:341
@@ -5741,7 +5730,7 @@ msgstr ""
 #. [plague]: id=plague, type=Walking Corpse
 #: data/scenario-test.cfg:403
 msgid "plague"
-msgstr ""
+msgstr "praga"
 
 #. [plague]: id=plague, type=Walking Corpse
 #: data/scenario-test.cfg:404
@@ -5760,10 +5749,8 @@ msgstr ""
 # File: src/reports.cpp, line: 809
 #. [firststrike]: id=initiative
 #: data/scenario-test.cfg:465
-#, fuzzy
-#| msgid " (inactive)"
 msgid "initiative"
-msgstr " (inativo)"
+msgstr "iniciativa"
 
 #. [firststrike]: id=initiative
 #: data/scenario-test.cfg:466
@@ -5796,10 +5783,8 @@ msgstr ""
 #. [heals]: id=aura of death 4
 #. [heals]: id=aura of death 8
 #: data/scenario-test.cfg:1066 data/scenario-test.cfg:1094
-#, fuzzy
-#| msgid "aura of seath ("
 msgid "aura of death ("
-msgstr "aura de seath ("
+msgstr "aura de morte ("
 
 #. [heals]: id=aura of death 4
 #. [heals]: id=aura of death 8
@@ -8341,7 +8326,7 @@ msgstr ""
 
 #: src/addon/validation.cpp:448
 msgid "Success."
-msgstr ""
+msgstr "sucesso."
 
 #: src/addon/validation.cpp:452
 msgid "Incorrect add-on passphrase."
@@ -8834,7 +8819,7 @@ msgstr "Remove um apelido da sua lista de ignorados ou de amigos."
 
 #: src/chat_command_handler.hpp:114
 msgid "<N>"
-msgstr ""
+msgstr "<N>"
 
 #: src/chat_command_handler.hpp:114
 msgid "Get a random number between 1 and N visible in the game setup lobby."
