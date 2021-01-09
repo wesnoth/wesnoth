@@ -459,7 +459,7 @@ private:
 	std::string username(player_iterator pl) const;
 
 	/** Returns a comma separated list of user names. */
-	std::string list_users(user_vector users, const std::string& func) const;
+	std::string list_users(user_vector users) const;
 
 	/** calculates the initial value for sides_, side_controllerds_, nsides_*/
 	void reset_sides();

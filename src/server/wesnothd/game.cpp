@@ -174,7 +174,7 @@ std::string game::username(player_iterator iter) const
 	return iter->info().name();
 }
 
-std::string game::list_users(user_vector users, const std::string& /*func*/) const
+std::string game::list_users(user_vector users) const
 {
 	std::string list;
 
@@ -265,7 +265,7 @@ void game::start_game(player_iterator starter)
 	LOG_GAME
 		<< starter->client_ip() << "\t" << starter->name() << "\t"
 		<< (advance ? "advanced" : "started") << (save ? " reloaded" : "") << " game:\t\"" << name_ << "\" (" << id_
-		<< ", " << db_id_ << ") with: " << list_users(players_, __func__)
+		<< ", " << db_id_ << ") with: " << list_users(players_)
 		<< ". Settings: map: " << multiplayer["mp_scenario"]
 		<< "\tera: "       << multiplayer["mp_era"]
 		<< "\tXP: "        << multiplayer["experience_modifier"]
@@ -690,7 +690,7 @@ void game::send_muted_observers(player_iterator user) const
 		return;
 	}
 
-	std::string muted_nicks = list_users(muted_observers_, __func__);
+	std::string muted_nicks = list_users(muted_observers_);
 
 	send_server_message("Muted observers: " + muted_nicks, user);
 }
