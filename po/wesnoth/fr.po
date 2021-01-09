@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: Wesnoth-1.12\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2021-01-02 12:38+0300\n"
-"PO-Revision-Date: 2020-01-20 13:40+0100\n"
+"PO-Revision-Date: 2021-01-04 11:08+0100\n"
 "Last-Translator: Syll <syll-dev@laposte.net>\n"
 "Language-Team: French <wesnoth@ml.free.fr>\n"
 "Language: fr\n"
@@ -23,7 +23,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 2.2.3\n"
+"X-Generator: Poedit 2.4.2\n"
 
 #. [multiplayer_side]: id=Custom
 #: data/_main.cfg:22
@@ -1745,7 +1745,7 @@ msgstr ""
 #: data/core/macros/items.cfg:521
 msgid ""
 "This trident gives merfolk the power to throw lightning at their enemies."
-msgstr "Ce trident permet à un ondin de tirer des éclairs sur ses ennemis !"
+msgstr "Ce trident permet à un ondin de tirer des éclairs sur ses ennemis."
 
 #. [effect]: type=fire
 #: data/core/macros/items.cfg:525
@@ -5351,7 +5351,7 @@ msgstr "Embuscade !"
 
 #: src/actions/move.cpp:1130
 msgid "Failed teleport! Exit not empty"
-msgstr "Téléportation ratée ! La sortie est occupée."
+msgstr "Téléportation ratée ! La sortie est occupée"
 
 #: src/actions/move.cpp:1146
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
@@ -5378,8 +5378,8 @@ msgstr[1] "$enemies unités ennemies en vue !"
 #: src/actions/move.cpp:1156
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
-msgstr[0] "Unité alliée en vue !"
-msgstr[1] "$friends unités alliées en vue !"
+msgstr[0] "Unité alliée en vue"
+msgstr[1] "$friends unités alliées en vue"
 
 #: src/actions/move.cpp:1171
 msgid "(press $hotkey to keep moving)"
@@ -6166,7 +6166,7 @@ msgstr "indisponible."
 
 #: src/game_initialization/create_engine.cpp:149
 msgid "Custom map."
-msgstr "Carte personnalisée"
+msgstr "Carte personnalisée."
 
 #: src/game_initialization/depcheck.cpp:491
 msgid "Failed to resolve dependencies"
@@ -6207,7 +6207,7 @@ msgstr "Un composant"
 
 #: src/game_initialization/flg_manager.cpp:211
 msgid "Only random sides in the current era."
-msgstr "Uniquement des camps aléatoires dans l'ère actuelle"
+msgstr "Uniquement des camps aléatoires dans l'ère actuelle."
 
 #: src/game_initialization/flg_manager.cpp:233
 msgid "Unable to find a leader type for faction $faction"
@@ -7156,7 +7156,7 @@ msgid ""
 "unit."
 msgstr ""
 "Dans cette phase de votre plan, vous n'aurez pas assez d'or pour recruter "
-"cette unité"
+"cette unité."
 
 #: src/menu_events.cpp:331
 msgid "You do not have enough gold to recruit this unit."
@@ -7796,7 +7796,7 @@ msgstr "La partie est terminée."
 
 #: src/playsingle_controller.cpp:440
 msgid "It is now $name|’s turn"
-msgstr "C'est maintenant à $name| de jouer."
+msgstr "C'est maintenant à $name| de jouer"
 
 #: src/playturn.cpp:277
 msgid "Give control to their ally $player"
@@ -8085,15 +8085,11 @@ msgid "Turn Number"
 msgstr "Tour numéro"
 
 #: src/reports.cpp:1286
-#, fuzzy
-#| msgid ""
-#| "When the game reaches the number of turns indicated by the second number, "
-#| "it will end."
 msgid ""
 "When the game exceeds the number of turns indicated by the second number, it "
 "will end."
 msgstr ""
-"Lorsque le jeu atteint le nombre de tours indiqué par le second nombre, il "
+"Lorsque le jeu dépasse le nombre de tours indiqués par le second nombre, il "
 "se termine."
 
 #: src/reports.cpp:1311

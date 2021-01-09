@@ -11,7 +11,8 @@
    * Added help topics for the scenario editor’s tools
    * Added documentation about the files written by the editor
  ### Translations
-   * Updated translations: Catalan, Chinese (Traditional), Portuguese (Brazil), Spanish
+   * Updated translations: Catalan, Chinese (Traditional), French, Portuguese (Brazil),
+     Spanish
 
 ## Version 1.14.15
  ### Add-ons client
