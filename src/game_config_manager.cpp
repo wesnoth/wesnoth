@@ -48,9 +48,8 @@ static lg::log_domain log_config("config");
 
 static game_config_manager* singleton;
 
-game_config_manager::game_config_manager(const commandline_options& cmdline_opts, const bool jump_to_editor)
+game_config_manager::game_config_manager(const commandline_options& cmdline_opts)
 	: cmdline_opts_(cmdline_opts)
-	, jump_to_editor_(jump_to_editor)
 	, game_config_()
 	, game_config_view_()
 	, addon_cfgs_()
@@ -87,13 +86,12 @@ game_config_manager* game_config_manager::get()
 bool game_config_manager::init_game_config(FORCE_RELOAD_CONFIG force_reload)
 {
 	// Add preproc defines according to the command line arguments.
-	game_config::scoped_preproc_define multiplayer("MULTIPLAYER",
-		cmdline_opts_.multiplayer);
-	game_config::scoped_preproc_define test("TEST", bool(cmdline_opts_.test));
+	game_config::scoped_preproc_define multiplayer("MULTIPLAYER", cmdline_opts_.multiplayer);
+	game_config::scoped_preproc_define test("TEST", utils::has_optional_value(cmdline_opts_.test));
 	game_config::scoped_preproc_define mptest("MP_TEST", cmdline_opts_.mptest);
-	game_config::scoped_preproc_define editor("EDITOR", jump_to_editor_);
+	game_config::scoped_preproc_define editor("EDITOR", utils::has_optional_value(cmdline_opts_.editor));
 	game_config::scoped_preproc_define title_screen("TITLE_SCREEN",
-		!cmdline_opts_.multiplayer && !cmdline_opts_.test && !jump_to_editor_);
+		!cmdline_opts_.multiplayer && !cmdline_opts_.test && !cmdline_opts_.editor);
 
 	game_config::reset_color_info();
 
