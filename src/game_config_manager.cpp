@@ -123,14 +123,10 @@ namespace
 /** returns true if every define in special is also defined in general */
 bool map_includes(const preproc_map& general, const preproc_map& special)
 {
-	for(const auto& pair : special) {
-		auto it = general.find(pair.first);
-		if(it == general.end() || it->second != pair.second) {
-			return false;
-		}
-	}
-
-	return true;
+	return std::all_of(special.begin(), special.end(), [&general](const auto& pair) {
+		const auto it = general.find(pair.first);
+		return it != general.end() && it->second == pair.second;
+	});
 }
 } // end anonymous namespace
 
