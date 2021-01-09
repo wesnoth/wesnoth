@@ -11,18 +11,20 @@ msgstr ""
 "Project-Id-Version: 1.5.5+dev\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2020-12-18 22:27-0300\n"
-"PO-Revision-Date: 2008-10-18 17:11+0200\n"
-"Last-Translator: Jordà Polo <jorda@ettin.org>\n"
+"PO-Revision-Date: 2021-01-07 16:14+0100\n"
+"Last-Translator: Miquel-Àngel Burgos i Fradeja <miquel.angel.burgos@gmail."
+"com>\n"
 "Language-Team: Catalan <wesnoth-ca@ettin.org>\n"
 "Language: ca\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.4.1\n"
 
 #. [brush]: id=brush-1
 #: data/core/editor/brushes.cfg:6
 msgid "Single Hex"
-msgstr ""
+msgstr "Un hexàgon"
 
 #. [brush]: id=brush-2
 #: data/core/editor/brushes.cfg:16
@@ -37,12 +39,12 @@ msgstr "Radi de 2 hexàgons"
 #. [brush]: id=brush-nw-se
 #: data/core/editor/brushes.cfg:47
 msgid "Hex Line NW-SE"
-msgstr ""
+msgstr "Línia NO-SE"
 
 #. [brush]: id=brush-sw-ne
 #: data/core/editor/brushes.cfg:63
 msgid "Hex Line SW-NE"
-msgstr ""
+msgstr "Línia SO-NE"
 
 #. [editor_group]: id=all
 #: data/core/editor/terrain-groups.cfg:11
@@ -67,7 +69,7 @@ msgstr "desert"
 #. [editor_group]: id=embellishments
 #: data/core/editor/terrain-groups.cfg:38
 msgid "embellishments"
-msgstr ""
+msgstr "embelliments"
 
 #. [editor_group]: id=forest
 #: data/core/editor/terrain-groups.cfg:45
@@ -77,7 +79,7 @@ msgstr "bosc"
 #. [editor_group]: id=fall
 #: data/core/editor/terrain-groups.cfg:52
 msgid "fall"
-msgstr ""
+msgstr "tardor"
 
 #. [editor_group]: id=frozen
 #: data/core/editor/terrain-groups.cfg:59
@@ -97,7 +99,7 @@ msgstr "cova"
 #. [editor_group]: id=obstacle
 #: data/core/editor/terrain-groups.cfg:80
 msgid "obstacle"
-msgstr ""
+msgstr "obstacle"
 
 #. [editor_group]: id=village
 #: data/core/editor/terrain-groups.cfg:87
@@ -112,55 +114,53 @@ msgstr "castell"
 #. [editor_group]: id=bridge
 #: data/core/editor/terrain-groups.cfg:101
 msgid "bridge"
-msgstr ""
+msgstr "pont"
 
 #. [editor_group]: id=special
 #: data/core/editor/terrain-groups.cfg:108
 msgid "special"
-msgstr ""
+msgstr "especial"
 
 #. [editor_times]: id=empty
 #. Describes a scenario in the editor that has not set a time of day schedule
 #: data/core/editor/time-of-day.cfg:6
 msgid "time of day^None"
-msgstr ""
+msgstr "time of day^Cap"
 
 #. [editor_times]: id=test
 #: data/core/editor/time-of-day.cfg:11
 msgid "Test"
-msgstr ""
+msgstr "Prova"
 
 #. [editor_times]: id=default
 #: data/core/editor/time-of-day.cfg:22
 msgid "Default"
-msgstr ""
+msgstr "Per defecte"
 
 #. [editor_times]: id=summer
 #: data/core/editor/time-of-day.cfg:28
 msgid "Summer"
-msgstr ""
+msgstr "Estiu"
 
 #. [editor_times]: id=winter
 #: data/core/editor/time-of-day.cfg:34
 msgid "Winter"
-msgstr ""
+msgstr "Hivern"
 
 #. [editor_times]: id=24
 #: data/core/editor/time-of-day.cfg:60
 msgid "24 Hour Schedule"
-msgstr ""
+msgstr "Horari de 24 hores"
 
 #. [editor_times]: id=after_the_fall
 #: data/core/editor/time-of-day.cfg:66
 msgid "After the Fall"
-msgstr ""
+msgstr "Rere la tardor"
 
 #. [theme]: id=editor
 #: data/themes/editor.cfg:11
-#, fuzzy
-#| msgid "Quit Editor"
 msgid "theme^Editor"
-msgstr "Tanca l'editor"
+msgstr "theme^Editor"
 
 #. [menu]: id=menu-editor-file, type=turbo
 #: data/themes/editor.cfg:61
@@ -170,7 +170,7 @@ msgstr "Fitxer"
 #. [menu]: id=menu-editor-recent
 #: data/themes/editor.cfg:72
 msgid "Load Recent"
-msgstr ""
+msgstr "Fitxers recents"
 
 #. [menu]: id=menu-editor-map
 #: data/themes/editor.cfg:80
@@ -180,40 +180,37 @@ msgstr "Mapa"
 #. [menu]: id=menu-unit-facing
 #: data/themes/editor.cfg:88
 msgid "Unit Facing"
-msgstr ""
+msgstr "Orientació de la unitat"
 
 #. [menu]: id=menu-editor-transitions
 #: data/themes/editor.cfg:94
-#, fuzzy
-#| msgid "Delay transition updates"
 msgid "Transition Update"
-msgstr "Retarda l'actualització de transicions"
+msgstr "Actualització de les transicions"
 
 #. [menu]: id=menu-editor-window
 #: data/themes/editor.cfg:101
-#, fuzzy
 msgid "Window"
-msgstr "Desfés"
+msgstr "Finestra"
 
 #. [menu]: id=menu-editor-areas
 #: data/themes/editor.cfg:110
 msgid "Areas"
-msgstr ""
+msgstr "Àrees"
 
 #. [menu]: id=menu-editor-local-time
 #: data/themes/editor.cfg:118
 msgid "Assign Local Time"
-msgstr ""
+msgstr "Assigna l'hora local"
 
 #. [menu]: id=menu-editor-local-schedule
 #: data/themes/editor.cfg:124
 msgid "Assign Local Time Schedule"
-msgstr ""
+msgstr "Assigna l'horari local"
 
 #. [menu]: id=menu-editor-side
 #: data/themes/editor.cfg:132
 msgid "Side"
-msgstr ""
+msgstr "Bàndol"
 
 #. [label]: id=villages-icon
 #: data/themes/editor.cfg:149
@@ -223,42 +220,42 @@ msgstr "llogarets"
 #. [label]: id=units-icon
 #: data/themes/editor.cfg:165
 msgid "units"
-msgstr ""
+msgstr "unitats"
 
 #. [menu]: id=switch_time
 #: data/themes/editor.cfg:444
 msgid "Time Schedule Menu"
-msgstr ""
+msgstr "Menú horari"
 
 #. [menu]: id=menu-playlist
 #: data/themes/editor.cfg:455
 msgid "Playlist"
-msgstr ""
+msgstr "Llista de reproducció"
 
 #. [menu]: id=menu-editor-schedule
 #: data/themes/editor.cfg:461
 msgid "Assign Time Schedule"
-msgstr ""
+msgstr "Assigna l'horari"
 
 #: src/editor/action/mouse/mouse_action_unit.cpp:63
 msgid "Identifier: "
-msgstr ""
+msgstr "Identificador: "
 
 #: src/editor/action/mouse/mouse_action_unit.cpp:65
 msgid "Name: "
-msgstr ""
+msgstr "Nom: "
 
 #: src/editor/action/mouse/mouse_action_unit.cpp:67
 msgid "Type: "
-msgstr ""
+msgstr "Tipus: "
 
 #: src/editor/action/mouse/mouse_action_unit.cpp:68
 msgid "Level: "
-msgstr ""
+msgstr "Nivell: "
 
 #: src/editor/action/mouse/mouse_action_unit.cpp:69
 msgid "Cost: "
-msgstr ""
+msgstr "Cost: "
 
 #: src/editor/controller/editor_controller.cpp:179
 msgid "Fatal error"
@@ -269,87 +266,84 @@ msgid "Do you really want to quit?"
 msgstr "Segur que voleu sortir?"
 
 #: src/editor/controller/editor_controller.cpp:211
-#, fuzzy
 msgid ""
 "Do you really want to quit? Changes to this map since the last save will be "
 "lost."
-msgstr "Voleu descartar tots els canvis que heu fet al mapa?"
+msgstr ""
+"Segur que voleu sortir? Es perdran els canvis fets a aquest mapa des del "
+"darrer desament."
 
 #: src/editor/controller/editor_controller.cpp:213
 msgid ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
 msgstr ""
+"Segur que voleu sortir? Els mapes següents han estat modificats i es perdran "
+"tots els canvis des del darrer desament:"
 
 #: src/editor/controller/editor_controller.cpp:222
 msgid "No editor time-of-day found."
-msgstr ""
+msgstr "No s'ha trobat cap editor de moment del dia."
 
 #: src/editor/controller/editor_controller.cpp:1135
 msgid "Change Unit ID"
-msgstr ""
+msgstr "Canvia l'ID de la unitat"
 
 #: src/editor/controller/editor_controller.cpp:1136
 msgid "ID:"
-msgstr ""
+msgstr "ID:"
 
 #: src/editor/controller/editor_controller.cpp:1152
 msgid "Rename Unit"
-msgstr ""
+msgstr "Canvia el nom de la unitat"
 
 #: src/editor/controller/editor_controller.cpp:1153
 msgid "Name:"
-msgstr ""
+msgstr "Nom:"
 
 #: src/editor/map/context_manager.cpp:208
 msgid "Load Map"
-msgstr ""
+msgstr "Carrega un mapa"
 
 #: src/editor/map/context_manager.cpp:276 src/editor/map/map_context.cpp:852
 msgid "New Map"
-msgstr ""
+msgstr "Mapa nou"
 
 #: src/editor/map/context_manager.cpp:289 src/editor/map/map_context.cpp:852
-#, fuzzy
-#| msgid "Save the Map As"
 msgid "New Scenario"
-msgstr "Desa com"
+msgstr "Escenari nou"
 
 #: src/editor/map/context_manager.cpp:345
 msgid "No Recent Files"
-msgstr ""
+msgstr "No hi ha cap fitxer recent"
 
 #: src/editor/map/context_manager.cpp:383
 msgid "Unnamed Area"
-msgstr ""
+msgstr "Àrea sense nom"
 
 #: src/editor/map/context_manager.cpp:414
-#, fuzzy
-#| msgid "Save the Map As"
 msgid "New Side"
-msgstr "Desa com"
+msgstr "Bàndol nou"
 
 #: src/editor/map/context_manager.cpp:470
 msgid "Apply Mask"
-msgstr ""
+msgstr "Aplica una màscara"
 
 #: src/editor/map/context_manager.cpp:479
-#, fuzzy
 msgid "Error loading mask"
-msgstr "S'ha produït un error en carregar el mapa"
+msgstr "S'ha produït un error en carregar la màscara"
 
 #: src/editor/map/context_manager.cpp:499
 msgid "Identifier:"
-msgstr ""
+msgstr "Identificador:"
 
 #: src/editor/map/context_manager.cpp:499
 msgid "Rename Area"
-msgstr ""
+msgstr "Canvia el nom de l'àrea"
 
 #: src/editor/map/context_manager.cpp:513
-#, fuzzy
 msgid "Choose Target Map"
-msgstr "Trieu el jugador"
+msgstr "Tria un mapa de destinació"
 
 #: src/editor/map/context_manager.cpp:522
 #: src/editor/map/context_manager.cpp:931
@@ -357,21 +351,16 @@ msgid "Error loading map"
 msgstr "S'ha produït un error en carregar el mapa"
 
 #: src/editor/map/context_manager.cpp:648
-#, fuzzy
-#| msgid "Save the Map As"
 msgid "Save Map As"
-msgstr "Desa com"
+msgstr "Anomena i desa el mapa"
 
 #: src/editor/map/context_manager.cpp:669
-#, fuzzy
-#| msgid "Save the Map As"
 msgid "Save Scenario As"
-msgstr "Desa com"
+msgstr "Anomena i desa l'escenari"
 
 #: src/editor/map/context_manager.cpp:701
-#, fuzzy
 msgid "No random map generators found."
-msgstr "No s'han trobat generadors de mapes aleatoris"
+msgstr "No s'ha trobat cap generador de mapes aleatoris."
 
 #: src/editor/map/context_manager.cpp:714
 #: src/editor/map/context_manager.cpp:719
@@ -380,80 +369,79 @@ msgstr "S'ha produït un error en la creació del mapa."
 
 #: src/editor/map/context_manager.cpp:734
 msgid "Unsaved Changes"
-msgstr ""
+msgstr "Canvis sense desar"
 
 #: src/editor/map/context_manager.cpp:735
-#, fuzzy
 msgid "Do you want to discard all changes made to the map since the last save?"
-msgstr "Voleu descartar tots els canvis que heu fet al mapa?"
+msgstr ""
+"Voleu descartar tots els canvis que heu fet al mapa des del darrer desament?"
 
 #: src/editor/map/context_manager.cpp:791
 msgid "This scenario is already open."
-msgstr ""
+msgstr "Aquest escenari ja és obert."
 
 #: src/editor/map/context_manager.cpp:814
 #: src/editor/map/context_manager.cpp:877
 msgid "This map is already open."
-msgstr ""
+msgstr "Aquest mapa ja és obert."
 
 #: src/editor/map/context_manager.cpp:838
-#, fuzzy
-#| msgid "Map saved."
 msgid "Scenario saved."
-msgstr "Mapa desat."
+msgstr "S'ha desat l'escenari."
 
 #: src/editor/map/context_manager.cpp:853
 msgid "Map saved."
-msgstr "Mapa desat."
+msgstr "S'ha desat el mapa."
 
 #: src/editor/map/context_manager.cpp:910
 msgid "Loaded embedded map data"
-msgstr ""
+msgstr "S'han carregat les dades de mapa incrustades"
 
 #: src/editor/map/context_manager.cpp:911
 #: src/editor/map/context_manager.cpp:924
 msgid "Map loaded from scenario"
-msgstr ""
+msgstr "S'ha carregat el mapa de l'escenari"
 
 #: src/editor/map/context_manager.cpp:921
 msgid ""
 "Loaded referenced map file:\n"
 "$new"
 msgstr ""
+"S'ha carregat el fitxer de mapa referenciat:\n"
+"$new"
 
 #: src/editor/map/editor_map.cpp:148
 #: src/editor/palette/location_palette.cpp:119
 msgid "Player $side_num"
-msgstr ""
+msgstr "Jugador $side_num"
 
 #: src/editor/map/editor_map.cpp:283
 msgid "The size of the target map is different from the current map"
-msgstr ""
+msgstr "La mida del mapa de destinació és diferent de la del mapa actual"
 
 #: src/editor/map/map_context.cpp:146
 msgid "File not found"
-msgstr ""
+msgstr "No s'ha trobat el fitxer"
 
 #: src/editor/map/map_context.cpp:153
 msgid "Empty file"
-msgstr ""
+msgstr "Fitxer buit"
 
 #: src/editor/map/map_context.cpp:209
 msgid ""
 "The map file looks like a scenario, but the map_data value does not point to "
 "an existing file"
 msgstr ""
+"El fitxer de mapa sembla ser un escenari, però el valor de map_data no "
+"apunta a un fitxer existent"
 
 #: src/editor/map/map_context.cpp:618
-#, fuzzy
-#| msgid "Could not save the map: $msg"
 msgid "Could not save the scenario: $msg"
-msgstr "No s'ha pogut desar el mapa: $msg"
+msgstr "No s'ha pogut desar l'escenari: $msg"
 
 #: src/editor/map/map_context.cpp:653
-#, fuzzy
 msgid "Could not save into scenario"
-msgstr "No s'ha pogut desar el mapa: $msg"
+msgstr "No s'ha pogut desar a l'escenari"
 
 #: src/editor/map/map_context.cpp:663
 msgid "Could not save the map: $msg"
@@ -461,27 +449,27 @@ msgstr "No s'ha pogut desar el mapa: $msg"
 
 #: src/editor/palette/editor_palettes.cpp:51
 msgid "(Unknown Group)"
-msgstr ""
+msgstr "(Grup desconegut)"
 
 #: src/editor/palette/editor_palettes.cpp:284
 msgid "(non-core)"
-msgstr ""
+msgstr "(no core)"
 
 #: src/editor/palette/editor_palettes.cpp:285
 msgid "Will not work in game without extra care."
-msgstr ""
+msgstr "No funcionarà al joc sense assistència addicional."
 
 #: src/editor/palette/location_palette.cpp:256
 msgid "Go To"
-msgstr ""
+msgstr "Ves a"
 
 #: src/editor/palette/location_palette.cpp:263
 msgid "Add"
-msgstr ""
+msgstr "Afegeix"
 
 #: src/editor/palette/location_palette.cpp:265
 msgid "New Location Identifier"
-msgstr ""
+msgstr "Identificador d'ubicació nou"
 
 #: src/editor/palette/location_palette.cpp:272
 msgid "Error"
@@ -489,11 +477,11 @@ msgstr "Error"
 
 #: src/editor/palette/location_palette.cpp:273
 msgid "Invalid location id"
-msgstr ""
+msgstr "Identificador d'ubicació no vàlid"
 
 #: src/editor/palette/location_palette.cpp:280
 msgid "Delete"
-msgstr ""
+msgstr "Suprimeix"
 
 #: src/editor/palette/terrain_palettes.cpp:231
 msgid "Left-click: "
@@ -525,26 +513,35 @@ msgstr ""
 #: src/gui/dialogs/editor/custom_tod.cpp:140
 msgid "Clipboard support not found, contact your packager"
 msgstr ""
+"No s'ha trobat cap porta-retalls compatible. Contacteu el vostre empaquetador"
 
 #: src/gui/dialogs/editor/custom_tod.cpp:204
-#, fuzzy
-#| msgid "Choose player"
 msgid "Choose File"
-msgstr "Trieu el jugador"
+msgstr "Tria un fitxer"
 
 #: src/gui/dialogs/editor/custom_tod.cpp:205
 msgid "Select"
-msgstr ""
+msgstr "Selecciona"
 
 #: src/gui/dialogs/editor/set_starting_position.cpp:84
-#, fuzzy
-#| msgid "(Player)^None"
 msgid "player^None"
-msgstr "Cap"
+msgstr "player^Cap"
 
 #: src/gui/dialogs/editor/set_starting_position.cpp:97
 msgid "Player $player_number"
-msgstr ""
+msgstr "Jugador $player_number"
+
+#~ msgid "(Unknown unit type: $type)"
+#~ msgstr "(Tipus d'unitat desconegut: $type)"
+
+#~ msgid "Recruit: "
+#~ msgstr "Recluta: "
+
+#~ msgid "FG: "
+#~ msgstr "PP: "
+
+#~ msgid "BG: "
+#~ msgstr "SP: "
 
 #~ msgid "None"
 #~ msgstr "Cap"
