@@ -475,7 +475,7 @@ void attack_type::add_formula_context(wfl::map_formula_callable& callable) const
 	if(unit_const_ptr & att = is_attacker_ ? self_ : other_) {
 		callable.add("attacker", wfl::variant(std::make_shared<wfl::unit_callable>(*att)));
 	}
-	if(unit_const_ptr & def = is_attacker_ ? self_ : other_) {
+	if(unit_const_ptr & def = is_attacker_ ? other_ : self_) {
 		callable.add("defender", wfl::variant(std::make_shared<wfl::unit_callable>(*def)));
 	}
 }
