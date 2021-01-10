@@ -357,7 +357,7 @@ LEVEL_RESULT campaign_controller::play_game()
 
 		if(mp_info_ && !mp_info_->is_host) {
 			// Opens join game dialog to get a new gamestate.
-			if(!mp::goto_mp_wait(state_, &mp_info_->connection, res == LEVEL_RESULT::OBSERVER_END)) {
+			if(!mp::goto_mp_wait(res == LEVEL_RESULT::OBSERVER_END)) {
 				return LEVEL_RESULT::QUIT;
 			}
 
@@ -383,7 +383,7 @@ LEVEL_RESULT campaign_controller::play_game()
 
 				if(!connect_engine.can_start_game() || (game_config::debug && state_.classification().is_multiplayer())) {
 					// Opens staging dialog to allow users to make an adjustments for scenario.
-					if(!mp::goto_mp_connect(connect_engine, mp_info_ ? &mp_info_->connection : nullptr)) {
+					if(!mp::goto_mp_staging(connect_engine)) {
 						return LEVEL_RESULT::QUIT;
 					}
 				} else {
