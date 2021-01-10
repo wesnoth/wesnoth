@@ -407,7 +407,7 @@ inline std::string bold(const std::string &s)
 // A string to be displayed and its width.
 typedef std::pair< std::string, unsigned > item;
 
-typedef std::vector<std::vector<help::item> > table_spec;
+typedef std::vector<std::vector<help::item>> table_spec;
 // Create a table using the table specs. Return markup with jumps
 // that create a table. The table spec contains a vector with
 // vectors with pairs. The pairs are the markup string that should

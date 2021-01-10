@@ -31,6 +31,7 @@
 #include "language.hpp"
 #include "log.hpp"
 #include "picture.hpp"
+#include "preferences/advanced.hpp"
 #include "preferences/general.hpp"
 #include "scripting/game_lua_kernel.hpp"
 #include "serialization/schema_validator.hpp"
@@ -47,9 +48,8 @@ static lg::log_domain log_config("config");
 
 static game_config_manager* singleton;
 
-game_config_manager::game_config_manager(const commandline_options& cmdline_opts, const bool jump_to_editor)
+game_config_manager::game_config_manager(const commandline_options& cmdline_opts)
 	: cmdline_opts_(cmdline_opts)
-	, jump_to_editor_(jump_to_editor)
 	, game_config_()
 	, game_config_view_()
 	, addon_cfgs_()
@@ -86,13 +86,12 @@ game_config_manager* game_config_manager::get()
 bool game_config_manager::init_game_config(FORCE_RELOAD_CONFIG force_reload)
 {
 	// Add preproc defines according to the command line arguments.
-	game_config::scoped_preproc_define multiplayer("MULTIPLAYER",
-		cmdline_opts_.multiplayer);
-	game_config::scoped_preproc_define test("TEST", bool(cmdline_opts_.test));
+	game_config::scoped_preproc_define multiplayer("MULTIPLAYER", cmdline_opts_.multiplayer);
+	game_config::scoped_preproc_define test("TEST", utils::has_optional_value(cmdline_opts_.test));
 	game_config::scoped_preproc_define mptest("MP_TEST", cmdline_opts_.mptest);
-	game_config::scoped_preproc_define editor("EDITOR", jump_to_editor_);
+	game_config::scoped_preproc_define editor("EDITOR", utils::has_optional_value(cmdline_opts_.editor));
 	game_config::scoped_preproc_define title_screen("TITLE_SCREEN",
-		!cmdline_opts_.multiplayer && !cmdline_opts_.test && !jump_to_editor_);
+		!cmdline_opts_.multiplayer && !cmdline_opts_.test && !cmdline_opts_.editor);
 
 	game_config::reset_color_info();
 
@@ -107,6 +106,9 @@ bool game_config_manager::init_game_config(FORCE_RELOAD_CONFIG force_reload)
 	hotkey::load_hotkeys(game_config(), true);
 	preferences::load_hotkeys();
 
+	// TODO: consider making this part of preferences::manager in some fashion
+	preferences::init_advanced_manager(game_config());
+
 	::init_textdomains(game_config());
 	about::set_about(game_config());
 	ai::configuration::init(game_config());
@@ -119,14 +121,10 @@ namespace
 /** returns true if every define in special is also defined in general */
 bool map_includes(const preproc_map& general, const preproc_map& special)
 {
-	for(const auto& pair : special) {
-		auto it = general.find(pair.first);
-		if(it == general.end() || it->second != pair.second) {
-			return false;
-		}
-	}
-
-	return true;
+	return std::all_of(special.begin(), special.end(), [&general](const auto& pair) {
+		const auto it = general.find(pair.first);
+		return it != general.end() && it->second == pair.second;
+	});
 }
 } // end anonymous namespace
 

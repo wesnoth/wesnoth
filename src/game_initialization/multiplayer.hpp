@@ -18,8 +18,6 @@
 
 class commandline_options;
 class config;
-class saved_game;
-class wesnothd_connection;
 
 namespace ng { class connect_engine; }
 
@@ -50,16 +48,16 @@ void start_local_game_commandline(const commandline_options& cmdline_opts);
 void start_client(const std::string& host);
 
 /**
- * Opens mp::connect screen and sets game state according to the
- * changes made.
+ * Opens the MP Staging screen and sets the game state according to the changes made.
+ * Meant to be used between scenarios in a campaign.
  */
-bool goto_mp_connect(ng::connect_engine& engine, wesnothd_connection* connection);
+bool goto_mp_staging(ng::connect_engine& engine);
 
 /**
- * Opens mp::wait screen and sets game state according to the
- * changes made.
+ * Opens the MP Join Game screen and sets the game state according to the changes made.
+ * Meant to be used between scenarios in a campaign.
  */
-bool goto_mp_wait(saved_game& state, wesnothd_connection* connection, bool observe);
+bool goto_mp_wait(bool observe);
 
 /** Gets whether the currently logged-in user is a moderator. */
 bool logged_in_as_moderator();

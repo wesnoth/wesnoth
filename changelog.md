@@ -10,15 +10,17 @@
   * Boost 1.65 is now required (was 1.59).
  ### Terrain
  ### Translations
-   * Updated translations: Catalan, Chinese (Traditional), Portuguese (Brazil), Spanish
+   * Updated translations: Catalan, Chinese (Traditional), French, Portuguese (Brazil),
+     Spanish
  ### Units
    * New Fauna/monster unit: Horned Scarab
    * Some standing/bobbing animations now filtered for low HP (depicting exhaustion) (PR #5388)
  ### User interface
  ### WML Engine
-   * New [set_variable] options: reverse=yes, min=list, max=list
+   * New `[set_variable]` options: reverse=yes, min=list, max=list
    * Change 'overwrite_specials' option to 'overwrite_others' option for weapon special abilities or weapon special to allow the effect of both to take precedence over the effect of any identical weapon special or weapon special ability who don't have 'overwrite_others' option( don't concern the boolean specials like[poison],[slow],[firststrike] or [petrifies], and [plague]).
  ### Miscellaneous and Bug Fixes
+   * Fixed `[terrain_defaults]` and `[resistance_defaults]` (issue #5308).
 
 ## Version 1.15.8
  ### Add-ons client
@@ -43,6 +45,7 @@
      * Reduce campaign difficulty
  ### Multiplayer
    * Added `/roll N` command to multiplayer games and game lobbies which produces a publicly visible random integer number ranged from 1 to N inclusively (issue #5221, PR #5326).
+   * Isar’s Cross got map background graphics, mainlined from the Visual Map Pack on 1.14
  ### Packaging
    * SDL_Image 2.0.2 or later is now required (was 2.0.0).
  ### Terrain

@@ -89,6 +89,10 @@ public:
 	 */
 	void run_lobby_loop();
 
+	bool post_scenario_staging(ng::connect_engine& engine);
+
+	bool post_scenario_wait(bool observe);
+
 private:
 	/** Represents the contents of the [join_lobby] response. */
 	struct session_metadata
@@ -683,22 +687,12 @@ void mp_manager::enter_wait_mode(int game_id, bool observe)
 	connection->send_data(config("leave_game"));
 }
 
-} // end anon namespace
-
-/** Pubic entry points for the MP workflow */
-
-void start_client(const std::string& host)
+bool mp_manager::post_scenario_staging(ng::connect_engine& engine)
 {
-	DBG_MP << "starting client" << std::endl;
-	mp_manager(host).run_lobby_loop();
+	return gui2::dialogs::mp_staging::execute(engine, connection.get());
 }
 
-bool goto_mp_connect(ng::connect_engine& engine, wesnothd_connection* connection)
-{
-	return gui2::dialogs::mp_staging::execute(engine, connection);
-}
-
-bool goto_mp_wait(saved_game& state, wesnothd_connection* connection, bool observe)
+bool mp_manager::post_scenario_wait(bool observe)
 {
 	gui2::dialogs::mp_join_game dlg(state, *connection, false, observe);
 
@@ -712,6 +706,16 @@ bool goto_mp_wait(saved_game& state, wesnothd_connection* connection, bool obser
 	}
 
 	return dlg.show();
+}
+
+} // end anon namespace
+
+/** Pubic entry points for the MP workflow */
+
+void start_client(const std::string& host)
+{
+	DBG_MP << "starting client" << std::endl;
+	mp_manager(host).run_lobby_loop();
 }
 
 void start_local_game()
@@ -827,6 +831,16 @@ void start_local_game_commandline(const commandline_options& cmdline_opts)
 		campaign_controller controller(state_copy);
 		controller.play_game();
 	}
+}
+
+bool goto_mp_staging(ng::connect_engine& engine)
+{
+	return manager && manager->post_scenario_staging(engine);
+}
+
+bool goto_mp_wait(bool observe)
+{
+	return manager && manager->post_scenario_wait(observe);
 }
 
 bool logged_in_as_moderator()

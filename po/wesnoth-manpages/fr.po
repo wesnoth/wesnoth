@@ -8,8 +8,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth_Manpages-1.12\n"
-"POT-Creation-Date: 2020-11-21 01:41-0300\n"
-"PO-Revision-Date: 2020-06-23 13:02+0200\n"
+"POT-Creation-Date: 2020-12-18 22:27-0300\n"
+"PO-Revision-Date: 2021-01-04 11:12+0100\n"
 "Last-Translator: Émile Enguehard <zerbugug@gmail.com>\n"
 "Language-Team: français <wesnoth@ml.free.fr>\n"
 "Language: fr\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 2.3.1\n"
+"X-Generator: Poedit 2.4.2\n"
 
 # type: TH
 #. type: TH
@@ -511,8 +511,6 @@ msgstr "B<--log-precise>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:177
-#, fuzzy
-#| msgid "shows the timestamps in the logfile with more precision."
 msgid "shows the timestamps in log output with more precision."
 msgstr ""
 "Affiche les horodatages avec plus de précision dans le fichier de "
@@ -2534,39 +2532,7 @@ msgid "B<wesnoth>(6)"
 msgstr "B<wesnoth>(6)"
 
 # type: TP
-#~ msgid "B<--proxy>"
-#~ msgstr "B<--proxy>"
-
-#~ msgid "enables usage of proxy for network connections."
-#~ msgstr "active l'utilisation d'un proxy pour les connexions au réseau."
-
-# type: TP
-#~ msgid "B<--proxy-address>I<\\ address>"
-#~ msgstr "B<--proxy-address>I<\\ addresse>"
-
-#~ msgid "specifies I<address> of the proxy."
-#~ msgstr "indique l'I<addresse> du proxy."
-
-# type: TP
-#~ msgid "B<--proxy-port>I<\\ port>"
-#~ msgstr "B<--proxy-port>I<\\ port>"
-
-#~ msgid "specifies I<port> of the proxy."
-#~ msgstr "indique le I<port> du proxy."
-
-#~ msgid "B<--proxy-user>I<\\ username>"
-#~ msgstr "B<--proxy-user>I<\\ nom d'utilisateur>"
-
-#~ msgid "specifies I<username> to log in to the proxy."
-#~ msgstr "indique le I<nom d'utilisateur> du proxy."
-
-#~ msgid "B<--proxy-password>I<\\ password>"
-#~ msgstr "B<--proxy-password>I<\\ mot de passe>"
-
-#~ msgid "specifies I<password> to log in to the proxy."
-#~ msgstr "indique le I<mot de passe> du proxy."
-
-# type: TP
+#, no-wrap
 #~ msgid "B<user_handler>"
 #~ msgstr "B<user_handler>"
 
@@ -2608,6 +2574,7 @@ msgstr "B<wesnoth>(6)"
 #~ "manuellement."
 
 # type: TP
+#, no-wrap
 #~ msgid "B<user_expiration>"
 #~ msgstr "B<user_expiration>"
 
@@ -2629,10 +2596,12 @@ msgstr "B<wesnoth>(6)"
 #~ "'sample'."
 
 # type: TP
+#, no-wrap
 #~ msgid "B<server>"
 #~ msgstr "B<server>"
 
 # type: TP
+#, no-wrap
 #~ msgid "B<username>"
 #~ msgstr "B<username>"
 
@@ -2641,10 +2610,12 @@ msgstr "B<wesnoth>(6)"
 #~ msgstr "Nom d'utilisateur utilisé pour vous connecter au serveur mail."
 
 # type: TP
+#, no-wrap
 #~ msgid "B<password>"
 #~ msgstr "B<password>"
 
 # type: TP
+#, no-wrap
 #~ msgid "B<from_address>"
 #~ msgstr "B<from_address>"
 
@@ -2653,12 +2624,51 @@ msgstr "B<wesnoth>(6)"
 #~ msgstr "Adresse de réponse de votre mail."
 
 # type: TP
+#, no-wrap
 #~ msgid "B<mail_port>"
 #~ msgstr "B<mail_port>"
 
 # type: Plain text
 #~ msgid "The port on which your mail server is running. Default is 25."
 #~ msgstr "Port de votre serveur mail (par défaut : 25)."
+
+# type: TP
+#, no-wrap
+#~ msgid "B<--proxy>"
+#~ msgstr "B<--proxy>"
+
+#~ msgid "enables usage of proxy for network connections."
+#~ msgstr "active l'utilisation d'un proxy pour les connexions au réseau."
+
+# type: TP
+#, no-wrap
+#~ msgid "B<--proxy-address>I<\\ address>"
+#~ msgstr "B<--proxy-address>I<\\ addresse>"
+
+#~ msgid "specifies I<address> of the proxy."
+#~ msgstr "indique l'I<addresse> du proxy."
+
+# type: TP
+#, no-wrap
+#~ msgid "B<--proxy-port>I<\\ port>"
+#~ msgstr "B<--proxy-port>I<\\ port>"
+
+#~ msgid "specifies I<port> of the proxy."
+#~ msgstr "indique le I<port> du proxy."
+
+#, no-wrap
+#~ msgid "B<--proxy-user>I<\\ username>"
+#~ msgstr "B<--proxy-user>I<\\ nom d'utilisateur>"
+
+#~ msgid "specifies I<username> to log in to the proxy."
+#~ msgstr "indique le I<nom d'utilisateur> du proxy."
+
+#, no-wrap
+#~ msgid "B<--proxy-password>I<\\ password>"
+#~ msgstr "B<--proxy-password>I<\\ mot de passe>"
+
+#~ msgid "specifies I<password> to log in to the proxy."
+#~ msgstr "indique le I<mot de passe> du proxy."
 
 # type: Plain text
 #~ msgid ""

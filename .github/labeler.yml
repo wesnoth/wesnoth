@@ -1,5 +1,6 @@
 Add-ons:
   - src/server/campaignd/**
+  - src/server/common/**
   - src/addon/**
   - src/gui/dialogs/addon/**
 
@@ -69,6 +70,8 @@ macOS:
 
 MP:
   - data/multiplayer/**/*
+  - src/server/wesnothd/**
+  - src/server/common/**
 
 Packaging:
   - packaging/**/*

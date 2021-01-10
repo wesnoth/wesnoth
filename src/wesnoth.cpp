@@ -765,7 +765,7 @@ static int do_gameloop(const std::vector<std::string>& args)
 	gui2::init();
 	const gui2::event::manager gui_event_manager;
 
-	game_config_manager config_manager(cmdline_opts, game->jump_to_editor());
+	game_config_manager config_manager(cmdline_opts);
 
 	gui2::dialogs::loading_screen::display([&res, &config_manager]() {
 		gui2::dialogs::loading_screen::progress(loading_stage::load_config);
@@ -794,8 +794,6 @@ static int do_gameloop(const std::vector<std::string>& args)
 	}
 
 	LOG_CONFIG << "time elapsed: " << (SDL_GetTicks() - start_ticks) << " ms\n";
-
-	game->init_advanced_prefs_manager();
 
 	plugins_manager plugins_man(new application_lua_kernel);
 
@@ -880,11 +878,9 @@ static int do_gameloop(const std::vector<std::string>& args)
 
 		cursor::set(cursor::NORMAL);
 
-		game_launcher::RELOAD_GAME_DATA should_reload = game_launcher::RELOAD_DATA;
-
 		// If loading a game, skip the titlescreen entirely
 		if(game->has_load_data() && game->load_game()) {
-			game->launch_game(should_reload);
+			game->launch_game(game_launcher::reload_mode::RELOAD_DATA);
 			continue;
 		}
 
@@ -923,7 +919,7 @@ static int do_gameloop(const std::vector<std::string>& args)
 			gui2::dialogs::end_credits::display();
 			break;
 		case gui2::dialogs::title_screen::LAUNCH_GAME:
-			game->launch_game(should_reload);
+			game->launch_game(game_launcher::reload_mode::RELOAD_DATA);
 			break;
 		case gui2::dialogs::title_screen::REDRAW_BACKGROUND:
 			break;

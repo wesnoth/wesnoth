@@ -33,23 +33,22 @@ class commandline_options;
 class config;
 class CVideo;
 
-namespace preferences { class advanced_manager; }
-
 struct jump_to_campaign_info
 {
-public:
-	jump_to_campaign_info(bool jump, bool skip_story, int difficulty, const std::string& campaign_id,const std::string& scenario_id)
-		: jump_(jump)
-		, skip_story_(skip_story)
-		, difficulty_(difficulty)
-		, campaign_id_(campaign_id)
-		, scenario_id_(scenario_id)
-	{
-	}
-	bool jump_;
-	bool skip_story_;
-	int difficulty_;
-	std::string campaign_id_,scenario_id_;
+	/** Whether the game should immediately start a campaign. */
+	bool jump = false;
+
+	/** Whether the story screen should be skipped. */
+	bool skip_story = false;
+
+	/** The difficulty at which to launch the campaign. */
+	int difficulty = -1;
+
+	/** The ID of the campaign to launch. */
+	std::string campaign_id = "";
+
+	/** The ID of the scenario within the campaign to jump to. */
+	std::string scenario_id = "";
 };
 
 class game_launcher
@@ -59,6 +58,7 @@ public:
 	~game_launcher();
 
 	enum class mp_mode { CONNECT, HOST, LOCAL };
+	enum class reload_mode { RELOAD_DATA, NO_RELOAD_DATA };
 
 	/**
 	 * Status code after running a unit test, should match the run_wml_tests
@@ -79,7 +79,6 @@ public:
 	bool init_video();
 	bool init_language();
 	bool init_lua_script();
-	void init_advanced_prefs_manager();
 
 	bool play_test();
 	bool play_screenshot_mode();
@@ -98,15 +97,12 @@ public:
 	bool goto_multiplayer();
 	bool goto_editor();
 
-	bool jump_to_editor() const { return jump_to_editor_; }
-
 	void select_mp_server(const std::string& server) { multiplayer_server_ = server; }
 	bool play_multiplayer(mp_mode mode);
 	bool play_multiplayer_commandline();
 	bool change_language();
 
-	enum RELOAD_GAME_DATA { RELOAD_DATA, NO_RELOAD_DATA };
-	void launch_game(RELOAD_GAME_DATA reload=RELOAD_DATA);
+	void launch_game(reload_mode reload = reload_mode::RELOAD_DATA);
 	void play_replay();
 
 	editor::EXIT_STATUS start_editor() { return start_editor(""); }
@@ -135,7 +131,6 @@ private:
 
 	font::manager font_manager_;
 	const preferences::manager prefs_manager_;
-	std::unique_ptr<preferences::advanced_manager> advanced_prefs_manager_;
 	const image::manager image_manager_;
 	const events::event_context main_event_context_;
 	const hotkey::manager hotkey_manager_;

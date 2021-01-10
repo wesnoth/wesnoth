@@ -24,7 +24,10 @@ namespace dialogs
 class mp_method_selection : public modal_dialog
 {
 public:
-	mp_method_selection() : user_name_(), choice_(-1)
+	/** Corresponds to each connection option. */
+	enum class choice { JOIN = 0, CONNECT, HOST, LOCAL };
+
+	mp_method_selection() : user_name_(), choice_()
 	{
 	}
 
@@ -33,7 +36,7 @@ public:
 		return user_name_;
 	}
 
-	int get_choice() const
+	choice get_choice() const
 	{
 		return choice_;
 	}
@@ -43,7 +46,7 @@ private:
 	std::string user_name_;
 
 	/** The selected method to `connect' to the MP server. */
-	int choice_;
+	choice choice_;
 
 	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const override;

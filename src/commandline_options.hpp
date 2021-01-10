@@ -98,7 +98,7 @@ public:
 	 * Contains parsed arguments of --log-* (e.g. --log-debug).
 	 * Vector of pairs (severity, log domain).
 	 */
-	utils::optional<std::vector<std::pair<int, std::string>> > log;
+	utils::optional<std::vector<std::pair<int, std::string>>> log;
 	/** Non-empty if --log-strict was given */
 	utils::optional<int> log_strict_level;
 	/** Non-empty if --load was given on the command line. Savegame specified to load after start. */
@@ -110,11 +110,11 @@ public:
 	/** True if --multiplayer was given on the command line. Goes directly into multiplayer mode. */
 	bool multiplayer;
 	/** Non-empty if --ai-config was given on the command line. Vector of pairs (side number, value). Dependent on --multiplayer. */
-	utils::optional<std::vector<std::pair<unsigned int, std::string>> > multiplayer_ai_config;
+	utils::optional<std::vector<std::pair<unsigned int, std::string>>> multiplayer_ai_config;
 	/** Non-empty if --algorithm was given on the command line. Vector of pairs (side number, value). Dependent on --multiplayer. */
-	utils::optional<std::vector<std::pair<unsigned int, std::string>> > multiplayer_algorithm;
+	utils::optional<std::vector<std::pair<unsigned int, std::string>>> multiplayer_algorithm;
 	/** Non-empty if --controller was given on the command line. Vector of pairs (side number, controller). Dependent on --multiplayer. */
-	utils::optional<std::vector<std::pair<unsigned int, std::string>> > multiplayer_controller;
+	utils::optional<std::vector<std::pair<unsigned int, std::string>>> multiplayer_controller;
 	/** Non-empty if --era was given on the command line. Dependent on --multiplayer. */
 	utils::optional<std::string> multiplayer_era;
 	/** True if --exit-at-and was given on the command line. Dependent on --multiplayer. */
@@ -124,13 +124,13 @@ public:
 	/** Non-empty if --label was given on the command line. Dependent on --multiplayer. */
 	utils::optional<std::string> multiplayer_label;
 	/** Non-empty if --parm was given on the command line. Vector of pairs (side number, parm name, parm value). Dependent on --multiplayer. */
-	utils::optional<std::vector<std::tuple<unsigned int, std::string, std::string>> > multiplayer_parm;
+	utils::optional<std::vector<std::tuple<unsigned int, std::string, std::string>>> multiplayer_parm;
 	/** Repeats specified by --multiplayer-repeat option. Repeats a multiplayer game after it is finished. Dependent on --multiplayer. */
 	utils::optional<unsigned int> multiplayer_repeat;
 	/** Non-empty if --scenario was given on the command line. Dependent on --multiplayer. */
 	utils::optional<std::string> multiplayer_scenario;
 	/** Non-empty if --side was given on the command line. Vector of pairs (side number, faction id). Dependent on --multiplayer. */
-	utils::optional<std::vector<std::pair<unsigned int, std::string>> > multiplayer_side;
+	utils::optional<std::vector<std::pair<unsigned int, std::string>>> multiplayer_side;
 	/** Non-empty if --turns was given on the command line. Dependent on --multiplayer. */
 	utils::optional<std::string> multiplayer_turns;
 	/** Max FPS specified by --max-fps option. */

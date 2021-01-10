@@ -27,7 +27,7 @@ class game_config_manager
 {
 	friend class game_config_view;
 public:
-	game_config_manager(const commandline_options& cmdline_opts, const bool jump_to_editor);
+	game_config_manager(const commandline_options& cmdline_opts);
 	~game_config_manager();
 	enum FORCE_RELOAD_CONFIG
 	{
@@ -70,7 +70,6 @@ private:
 	void set_unit_data();
 
 	const commandline_options& cmdline_opts_;
-	const bool jump_to_editor_;
 
 	config game_config_;
 	game_config_view game_config_view_;

@@ -53,8 +53,7 @@ struct mp_connect_fixture {
 		hotkey_manager(),
 		config_manager()
 	{
-
-		config_manager.reset(new game_config_manager(cmdline_opts, false));
+		config_manager.reset(new game_config_manager(cmdline_opts));
 		config_manager->init_game_config(game_config_manager::NO_FORCE_RELOAD);
 
 		state.reset(new saved_game());

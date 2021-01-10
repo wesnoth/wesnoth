@@ -47,7 +47,7 @@ bool select_campaign(saved_game& state, jump_to_campaign_info jump_to_campaign)
 		std::string random_mode = "", difficulty = "";
 
 		// No campaign selected from command line
-		if(jump_to_campaign.campaign_id_.empty()) {
+		if(jump_to_campaign.campaign_id.empty()) {
 			gui2::dialogs::campaign_selection dlg(create_eng);
 
 			try {
@@ -80,12 +80,12 @@ bool select_campaign(saved_game& state, jump_to_campaign_info jump_to_campaign)
 
 			// Checking for valid campaign name
 			const auto campaign = std::find_if(campaigns.begin(), campaigns.end(), [&jump_to_campaign](ng::create_engine::level_ptr level) {
-				return level->data()["id"] == jump_to_campaign.campaign_id_;
+				return level->data()["id"] == jump_to_campaign.campaign_id;
 			});
 
 			// Didn't find a campaign with that id
 			if(campaign == campaigns.end()) {
-				ERR_NG << "No such campaign id to jump to: [" << jump_to_campaign.campaign_id_ << "]" << std::endl;
+				ERR_NG << "No such campaign id to jump to: [" << jump_to_campaign.campaign_id << "]" << std::endl;
 				return false;
 			}
 
@@ -98,8 +98,8 @@ bool select_campaign(saved_game& state, jump_to_campaign_info jump_to_campaign)
 
 		if(selected_difficulty == "FAIL") return false;
 		if(selected_difficulty == "CANCEL") {
-			if(!jump_to_campaign.campaign_id_.empty()) {
-				jump_to_campaign.campaign_id_ = "";
+			if(!jump_to_campaign.campaign_id.empty()) {
+				jump_to_campaign.campaign_id = "";
 			}
 
 			// Canceled difficulty dialog, relaunch the campaign selection dialog
@@ -109,9 +109,9 @@ bool select_campaign(saved_game& state, jump_to_campaign_info jump_to_campaign)
 		create_eng.prepare_for_era_and_mods();
 		create_eng.prepare_for_campaign(selected_difficulty);
 
-		if(!jump_to_campaign.scenario_id_.empty()) {
+		if(!jump_to_campaign.scenario_id.empty()) {
 			state.set_carryover_sides_start(
-				config {"next_scenario", jump_to_campaign.scenario_id_}
+				config {"next_scenario", jump_to_campaign.scenario_id}
 			);
 		}
 

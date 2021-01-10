@@ -36,7 +36,6 @@
 #include "gui/dialogs/multiplayer/mp_connect.hpp"
 #include "gui/dialogs/multiplayer/mp_host_game_prompt.hpp" // for host game prompt
 #include "gui/dialogs/multiplayer/mp_method_selection.hpp"
-#include "gui/dialogs/outro.hpp"
 #include "gui/dialogs/title_screen.hpp"      // for show_debug_clock_button
 #include "gui/dialogs/transient_message.hpp" // for show_transient_message
 #include "gui/widgets/retval.hpp"            // for window, etc
@@ -44,7 +43,6 @@
 #include "language.hpp"                      // for language_def, etc
 #include "log.hpp"                           // for LOG_STREAM, logger, general, etc
 #include "map/exception.hpp"
-#include "preferences/advanced.hpp" // for advanced_manager
 #include "preferences/credentials.hpp"
 #include "preferences/display.hpp"
 #include "preferences/general.hpp" // for disable_preferences_save, etc
@@ -105,7 +103,6 @@ game_launcher::game_launcher(const commandline_options& cmdline_opts)
 	, video_(new CVideo())
 	, font_manager_()
 	, prefs_manager_()
-	, advanced_prefs_manager_()
 	, image_manager_()
 	, main_event_context_()
 	, hotkey_manager_()
@@ -118,7 +115,7 @@ game_launcher::game_launcher(const commandline_options& cmdline_opts)
 	, play_replay_(false)
 	, multiplayer_server_()
 	, jump_to_multiplayer_(false)
-	, jump_to_campaign_(false, false, -1, "", "")
+	, jump_to_campaign_{}
 	, jump_to_editor_(false)
 	, load_data_()
 {
@@ -146,24 +143,24 @@ game_launcher::game_launcher(const commandline_options& cmdline_opts)
 		preferences::set_core_id(*cmdline_opts_.core_id);
 	}
 	if(cmdline_opts_.campaign) {
-		jump_to_campaign_.jump_ = true;
-		jump_to_campaign_.campaign_id_ = *cmdline_opts_.campaign;
-		std::cerr << "selected campaign id: [" << jump_to_campaign_.campaign_id_ << "]\n";
+		jump_to_campaign_.jump = true;
+		jump_to_campaign_.campaign_id = *cmdline_opts_.campaign;
+		std::cerr << "selected campaign id: [" << jump_to_campaign_.campaign_id << "]\n";
 
 		if(cmdline_opts_.campaign_difficulty) {
-			jump_to_campaign_.difficulty_ = *cmdline_opts_.campaign_difficulty;
-			std::cerr << "selected difficulty: [" << jump_to_campaign_.difficulty_ << "]\n";
+			jump_to_campaign_.difficulty = *cmdline_opts_.campaign_difficulty;
+			std::cerr << "selected difficulty: [" << jump_to_campaign_.difficulty << "]\n";
 		} else {
-			jump_to_campaign_.difficulty_ = -1; // let the user choose the difficulty
+			jump_to_campaign_.difficulty = -1; // let the user choose the difficulty
 		}
 
 		if(cmdline_opts_.campaign_scenario) {
-			jump_to_campaign_.scenario_id_ = *cmdline_opts_.campaign_scenario;
-			std::cerr << "selected scenario id: [" << jump_to_campaign_.scenario_id_ << "]\n";
+			jump_to_campaign_.scenario_id = *cmdline_opts_.campaign_scenario;
+			std::cerr << "selected scenario id: [" << jump_to_campaign_.scenario_id << "]\n";
 		}
 
 		if(cmdline_opts_.campaign_skip_story) {
-			jump_to_campaign_.skip_story_ = true;
+			jump_to_campaign_.skip_story = true;
 		}
 	}
 	if(cmdline_opts_.clock)
@@ -360,7 +357,7 @@ bool game_launcher::init_lua_script()
 			/* Cancel all "jumps" to editor / campaign / multiplayer */
 			jump_to_multiplayer_ = false;
 			jump_to_editor_ = false;
-			jump_to_campaign_.jump_ = false;
+			jump_to_campaign_.jump = false;
 
 			std::string full_script((std::istreambuf_iterator<char>(*sf)), std::istreambuf_iterator<char>());
 
@@ -388,7 +385,7 @@ bool game_launcher::init_lua_script()
 			/* Cancel all "jumps" to editor / campaign / multiplayer */
 			jump_to_multiplayer_ = false;
 			jump_to_editor_ = false;
-			jump_to_campaign_.jump_ = false;
+			jump_to_campaign_.jump = false;
 
 			std::string full_plugin((std::istreambuf_iterator<char>(*sf)), std::istreambuf_iterator<char>());
 
@@ -430,11 +427,6 @@ bool game_launcher::init_lua_script()
 	}
 
 	return !error;
-}
-
-void game_launcher::init_advanced_prefs_manager()
-{
-	advanced_prefs_manager_ = std::make_unique<preferences::advanced_manager>(game_config_manager::get()->game_config());
 }
 
 void game_launcher::set_test(const std::string& id)
@@ -746,18 +738,18 @@ bool game_launcher::new_campaign()
 
 std::string game_launcher::jump_to_campaign_id() const
 {
-	return jump_to_campaign_.campaign_id_;
+	return jump_to_campaign_.campaign_id;
 }
 
 bool game_launcher::goto_campaign()
 {
-	if(jump_to_campaign_.jump_) {
+	if(jump_to_campaign_.jump) {
 		if(new_campaign()) {
-			state_.set_skip_story(jump_to_campaign_.skip_story_);
-			jump_to_campaign_.jump_ = false;
-			launch_game(NO_RELOAD_DATA);
+			state_.set_skip_story(jump_to_campaign_.skip_story);
+			jump_to_campaign_.jump = false;
+			launch_game(reload_mode::NO_RELOAD_DATA);
 		} else {
-			jump_to_campaign_.jump_ = false;
+			jump_to_campaign_.jump = false;
 			return false;
 		}
 	}
@@ -962,10 +954,15 @@ bool game_launcher::change_language()
 		video_->set_window_title(game_config::get_default_title_string());
 	}
 
+	t_string::reset_translations();
+	image::flush_cache();
+	sound::flush_cache();
+	font::load_font_config();
+
 	return true;
 }
 
-void game_launcher::launch_game(RELOAD_GAME_DATA reload)
+void game_launcher::launch_game(reload_mode reload)
 {
 	assert(!load_data_);
 	if(play_replay_) {
@@ -976,7 +973,7 @@ void game_launcher::launch_game(RELOAD_GAME_DATA reload)
 	gui2::dialogs::loading_screen::display([this, reload]() {
 		gui2::dialogs::loading_screen::progress(loading_stage::load_data);
 
-		if(reload == RELOAD_DATA) {
+		if(reload == reload_mode::RELOAD_DATA) {
 			try {
 				game_config_manager::get()->load_game_config_for_game(
 					state_.classification(), state_.get_scenario_id());
@@ -988,15 +985,8 @@ void game_launcher::launch_game(RELOAD_GAME_DATA reload)
 
 	try {
 		campaign_controller ccontroller(state_);
-		LEVEL_RESULT result = ccontroller.play_game();
+		ccontroller.play_game();
 		ai::manager::singleton_ = nullptr;
-		// don't show The End for multiplayer scenario
-		// change this if MP campaigns are implemented
-		if(result == LEVEL_RESULT::VICTORY && !state_.classification().is_normal_mp_game()) {
-			preferences::add_completed_campaign(state_.classification().campaign, state_.classification().difficulty);
-
-			gui2::dialogs::outro::display(state_.classification());
-		}
 	} catch(savegame::load_game_exception& e) {
 		load_data_ = std::move(e.data_);
 		// this will make it so next time through the title screen loop, this game is loaded

@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: Wesnoth-1.12\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2020-12-18 22:26-0300\n"
-"PO-Revision-Date: 2020-01-20 13:40+0100\n"
+"PO-Revision-Date: 2021-01-04 11:08+0100\n"
 "Last-Translator: Syll <syll-dev@laposte.net>\n"
 "Language-Team: French <wesnoth@ml.free.fr>\n"
 "Language: fr\n"
@@ -23,7 +23,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 2.2.3\n"
+"X-Generator: Poedit 2.4.2\n"
 
 #. [multiplayer_side]: id=Custom
 #: data/_main.cfg:22
@@ -1971,7 +1971,7 @@ msgstr ""
 #: data/core/macros/items.cfg:532
 msgid ""
 "This trident gives merfolk the power to throw lightning at their enemies."
-msgstr "Ce trident permet à un ondin de tirer des éclairs sur ses ennemis !"
+msgstr "Ce trident permet à un ondin de tirer des éclairs sur ses ennemis."
 
 #. [effect]: type=fire
 #: data/core/macros/items.cfg:536
@@ -4524,10 +4524,8 @@ msgstr ""
 #. [heals]: id=aura of death 4
 #. [heals]: id=aura of death 8
 #: data/scenario-test.cfg:1066 data/scenario-test.cfg:1094
-#, fuzzy
-#| msgid "female^healthy"
 msgid "aura of death ("
-msgstr "vigoureuse"
+msgstr ""
 
 #. [heals]: id=aura of death 4
 #. [heals]: id=aura of death 8
@@ -5685,8 +5683,6 @@ msgid "You do not have a leader to recruit with."
 msgstr "Vous n'avez pas de chef pour pouvoir recruter des unités."
 
 #: src/actions/create.cpp:479
-#, fuzzy
-#| msgid "None of your leaders are able to recruit this unit."
 msgid "None of your leaders are able to recruit this unit."
 msgstr "Aucun de vos chefs n'est capable de recruter cette unité."
 
@@ -5712,7 +5708,7 @@ msgstr "Embuscade !"
 
 #: src/actions/move.cpp:1130
 msgid "Failed teleport! Exit not empty"
-msgstr "Téléportation ratée ! La sortie est occupée."
+msgstr "Téléportation ratée ! La sortie est occupée"
 
 #: src/actions/move.cpp:1146
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
@@ -5739,8 +5735,8 @@ msgstr[1] "$enemies unités ennemies en vue !"
 #: src/actions/move.cpp:1156
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
-msgstr[0] "Unité alliée en vue !"
-msgstr[1] "$friends unités alliées en vue !"
+msgstr[0] "Unité alliée en vue"
+msgstr[1] "$friends unités alliées en vue"
 
 #: src/actions/move.cpp:1171
 msgid "(press $hotkey to keep moving)"
@@ -6660,7 +6656,7 @@ msgstr "indisponible."
 
 #: src/game_initialization/create_engine.cpp:149
 msgid "Custom map."
-msgstr "Carte personnalisée"
+msgstr "Carte personnalisée."
 
 #: src/game_initialization/depcheck.cpp:490
 msgid "Failed to resolve dependencies"
@@ -6705,7 +6701,7 @@ msgstr "Un composant"
 
 #: src/game_initialization/flg_manager.cpp:211
 msgid "Only random sides in the current era."
-msgstr "Uniquement des camps aléatoires dans l'ère actuelle"
+msgstr "Uniquement des camps aléatoires dans l'ère actuelle."
 
 #: src/game_initialization/flg_manager.cpp:233
 msgid "Unable to find a leader type for faction $faction"
@@ -7490,8 +7486,6 @@ msgid "You have no units available to recruit."
 msgstr "Il n'y a pas d'unité à recruter."
 
 #: src/menu_events.cpp:298
-#, fuzzy
-#| msgid "No unit recruited."
 msgid "No unit recruited."
 msgstr "Aucune unité recrutée."
 
@@ -7510,25 +7504,17 @@ msgid ""
 "unit."
 msgstr ""
 "Dans cette phase de votre plan, vous n'aurez pas assez d'or pour recruter "
-"cette unité"
+"cette unité."
 
 #: src/menu_events.cpp:345
-#, fuzzy
-#| msgid "You do not have enough gold to recruit this unit."
 msgid "You do not have enough gold to recruit this unit."
 msgstr "Vous n'avez pas assez d'or pour recruter cette unité."
 
 #: src/menu_events.cpp:388
-#, fuzzy
-#| msgid "You are separated from your soldiers and may not recall them."
 msgid "You are separated from your soldiers and may not recall them."
 msgstr "Vous êtes séparés de vos soldats et ne pouvez les rappeler."
 
 #: src/menu_events.cpp:409
-#, fuzzy
-#| msgid ""
-#| "There are no troops available to recall.\n"
-#| "(You must have veteran survivors from a previous scenario.)"
 msgid ""
 "There are no troops available to recall.\n"
 "(You must have veteran survivors from a previous scenario.)"
@@ -7537,23 +7523,16 @@ msgstr ""
 "(Vous devez avoir des survivants d'un précédent scénario.)"
 
 #: src/menu_events.cpp:413
-#, fuzzy
-#| msgid "You currently can't recall at the highlighted location."
 msgid "You currently can't recall at the highlighted location."
 msgstr ""
 "Vous ne pouvez pas rappeler d'unités à la position actuellement en "
 "surbrillance."
 
 #: src/menu_events.cpp:425
-#, fuzzy
-#| msgid "No unit recalled."
 msgid "No unit recalled."
 msgstr "Aucune unité rappelée."
 
 #: src/menu_events.cpp:442
-#, fuzzy
-#| msgid "You must have at least 1 gold piece to recall a unit."
-#| msgid_plural "You must have at least $cost gold pieces to recall this unit."
 msgid "You must have at least 1 gold piece to recall a unit."
 msgid_plural "You must have at least $cost gold pieces to recall this unit."
 msgstr[0] "Vous devez posséder au moins 1 pièce d'or pour rappeler une unité."
@@ -7816,10 +7795,6 @@ msgstr "Afficher une variable du scénario."
 
 #. TRANSLATORS: Do not translate the word "advances"; it is a hardcoded literal argument.
 #: src/menu_events.cpp:1300
-#, fuzzy
-#| msgid ""
-#| "Modify a unit variable. (Only top level keys are supported, and "
-#| "advances=<number>.)"
 msgid ""
 "Modify a unit variable. (Only top level keys are supported, and "
 "advances=<number>.)"
@@ -8202,7 +8177,7 @@ msgstr "La partie est terminée."
 
 #: src/playsingle_controller.cpp:441
 msgid "It is now $name|’s turn"
-msgstr "C'est maintenant à $name| de jouer."
+msgstr "C'est maintenant à $name| de jouer"
 
 #: src/playturn.cpp:277
 msgid "Give control to their ally $player"
@@ -8494,15 +8469,11 @@ msgid "Turn Number"
 msgstr "Tour numéro"
 
 #: src/reports.cpp:1391
-#, fuzzy
-#| msgid ""
-#| "When the game reaches the number of turns indicated by the second number, "
-#| "it will end."
 msgid ""
 "When the game exceeds the number of turns indicated by the second number, it "
 "will end."
 msgstr ""
-"Lorsque le jeu atteint le nombre de tours indiqué par le second nombre, il "
+"Lorsque le jeu dépasse le nombre de tours indiqués par le second nombre, il "
 "se termine."
 
 #: src/reports.cpp:1416
@@ -8533,13 +8504,6 @@ msgid "Units"
 msgstr "Unités"
 
 #: src/reports.cpp:1450
-#, fuzzy
-#| msgid ""
-#| "The expenses incurred at the end of every turn to maintain your army. The "
-#| "first number is the amount of gold that will be deducted. It is equal to "
-#| "the number of unit levels not supported by villages. The second is the "
-#| "total cost of upkeep, including that covered by villages — in other "
-#| "words, the amount of gold that would be deducted if you lost all villages."
 msgid ""
 "The expenses incurred at the end of every turn to maintain your army. The "
 "first number is the amount of gold that will be deducted. It is equal to the "
@@ -8563,10 +8527,6 @@ msgid "Net Income"
 msgstr "Revenu net"
 
 #: src/reports.cpp:1487
-#, fuzzy
-#| msgid ""
-#| "The net amount of gold you gain or lose each turn, taking into account "
-#| "income from controlled villages and payment of upkeep."
 msgid ""
 "The net amount of gold you gain or lose each turn, taking into account "
 "income from controlled villages and payment of upkeep."
@@ -9114,25 +9074,6 @@ msgstr "Masquer les planifications de $player"
 msgid "Whiteboard Options"
 msgstr "Options de planification"
 
-#, fuzzy
-#~| msgid "Sending add-on <i>$addon_title</i>..."
-#~ msgid ""
-#~ "Requesting the older version composition for the add-on <i>$addon_title</"
-#~ "i>..."
-#~ msgstr "Envoi de l'extension <i>$addon_title</i>..."
-
-#~ msgid "Connection timed out"
-#~ msgstr "Délai de connexion dépassé"
-
-#~ msgid "Cancel"
-#~ msgstr "Annuler"
-
-#~ msgid "Battle for Wesnoth"
-#~ msgstr "Bataille pour Wesnoth"
-
-#~ msgid "<i>― Vank of Galun’s Flight, 6YW</i>"
-#~ msgstr "<i>- Vank de la Nuée de Galun, 6 ap. W.</i>"
-
 #~ msgid "Graphics scaling options"
 #~ msgstr "Options graphiques de redimensionnement"
 
@@ -9202,37 +9143,78 @@ msgstr "Options de planification"
 #~ msgid "<small>(early finish bonus)</small>"
 #~ msgstr "<small>(bonus de fin anticipée)</small>"
 
+#~ msgid ""
+#~ "Liminal units only reach their full strength during twilight.\n"
+#~ "\n"
+#~ "Day: −25% Damage\n"
+#~ "Night: −25% Damage"
+#~ msgstr ""
+#~ "Les unités liminales disposent de toutes leurs forces uniquement durant "
+#~ "le demi-jour.\n"
+#~ "\n"
+#~ "Jour : -25 % de dégâts\n"
+#~ "Nuit : -25 % de dégâts"
+
+#~ msgid ""
+#~ "There are no custom options available for the selected era, game, or "
+#~ "modification."
+#~ msgstr ""
+#~ "Aucune option personnalisable pour l'ère, la partie ou la modification "
+#~ "sélectionnée."
+
+#~ msgid "Defaults"
+#~ msgstr "Valeurs par défaut"
+
+#~ msgid "Connected Players"
+#~ msgstr "Joueurs connectés"
+
 #~ msgid "(Note: You should use $replacement instead in new code)"
 #~ msgstr ""
 #~ "(Note : Vous devriez utiliser $replacement à la place, dans le nouveau "
 #~ "code)"
 
-#~ msgid "theme^Classic"
-#~ msgstr "Classique"
+#~ msgid "Cancel"
+#~ msgstr "Annuler"
 
-#~ msgid "The classic, pre-1.12 theme"
-#~ msgstr "Le thème classique d'avant la 1.12"
+#~ msgid "registering with password *** and no email address"
+#~ msgstr ""
+#~ "enregistrement avec le mot de passe *** et aucune adresse électronique"
 
-#~ msgid "villages"
-#~ msgstr "villages"
+#~ msgid "registering with password *** and email address $email"
+#~ msgstr ""
+#~ "enregistrement avec le mot de passe *** et l'adresse électronique $email"
 
-#~ msgid "units"
-#~ msgstr "unités"
+#~ msgid "dropping your username"
+#~ msgstr "abandon de votre nom d'utilisateur"
 
-#~ msgid "upkeep"
-#~ msgstr "entretien"
+#~ msgid "setting $var to $value"
+#~ msgstr "$value affectée à $var"
 
-#~ msgid "income"
-#~ msgstr "revenu"
+#~ msgid "<password> <email (optional)>"
+#~ msgstr "<mot de passe> <courriel (optionnel)>"
 
-#~ msgid "statuspanel^level"
-#~ msgstr "niveau"
+#~ msgid "Register your nickname"
+#~ msgstr "Enregistrer votre pseudonyme"
 
-#~ msgid "statuspanel^moves"
-#~ msgstr "mouvement"
+#~ msgid "Drop your nickname."
+#~ msgstr "Supprimer votre pseudonyme."
 
-#~ msgid "statuspanel^terrain def."
-#~ msgstr "défense"
+#~ msgid ""
+#~ "Update details for your nickname. For possible details see '/details'."
+#~ msgstr ""
+#~ "Mettre à jour les détails de votre pseudonyme. Pour les détails "
+#~ "disponibles, consultez « /details »."
+
+#~ msgid "<detail> <value>"
+#~ msgstr "<détail> <valeur>"
+
+#~ msgid "Request a list of details you can set for your registered nickname."
+#~ msgstr ""
+#~ "Demander une liste des détails que vous pouvez établir pour votre "
+#~ "pseudonyme enregistré."
+
+#~ msgid "Connection timed out"
+#~ msgstr "Délai de connexion dépassé"
 
 #~ msgid "No Saved Games"
 #~ msgstr "Aucune partie sauvegardée"
@@ -9309,11 +9291,11 @@ msgstr "Options de planification"
 #~ msgid "unit help^Name"
 #~ msgstr "Nom"
 
-#~ msgid "Range"
-#~ msgstr "Portée"
-
 #~ msgid "Type"
 #~ msgstr "Type"
+
+#~ msgid "Range"
+#~ msgstr "Portée"
 
 #~ msgid "Special"
 #~ msgstr "Spécial"
@@ -9348,96 +9330,51 @@ msgstr "Options de planification"
 #~ msgid "Jamming Cost"
 #~ msgstr "Coût du brouillage"
 
+#~ msgid "Can't droid a local ai side: '$side'."
+#~ msgstr "Impossible de robotiser ce camp (IA locale) : « $side »."
+
+#~ msgid "Side:"
+#~ msgstr "Camp:"
+
+#~ msgid "theme^Classic"
+#~ msgstr "Classique"
+
+#~ msgid "The classic, pre-1.12 theme"
+#~ msgstr "Le thème classique d'avant la 1.12"
+
+#~ msgid "villages"
+#~ msgstr "villages"
+
+#~ msgid "units"
+#~ msgstr "unités"
+
+#~ msgid "upkeep"
+#~ msgstr "entretien"
+
+#~ msgid "income"
+#~ msgstr "revenu"
+
+#~ msgid "statuspanel^level"
+#~ msgstr "niveau"
+
+#~ msgid "statuspanel^moves"
+#~ msgstr "mouvement"
+
+#~ msgid "statuspanel^terrain def."
+#~ msgstr "défense"
+
+#~ msgid " replay"
+#~ msgstr " film"
+
 #~ msgid "do not translate the 'all'^[all|<command>]"
 #~ msgstr "[all|<commande>]"
 
 #~ msgid "aliases:"
 #~ msgstr "alias :"
 
-#, fuzzy
-#~| msgid "do not translate the 'all'^[all|<command>]"
-#~ msgid "do not translate the on/off^[<side> [on/off]]"
-#~ msgstr "[all|<commande>]"
-
 # ips est plus correct mais tellement moins habituel
 #~ msgid "Show fps."
 #~ msgstr "Montrer les fps."
-
-#~ msgid "Side:"
-#~ msgstr "Camp:"
-
-#, fuzzy
-#~| msgid "income"
-#~ msgid "Income"
-#~ msgstr "revenu"
-
-#~ msgid " replay"
-#~ msgstr " film"
-
-#~ msgid ""
-#~ "Liminal units only reach their full strength during twilight.\n"
-#~ "\n"
-#~ "Day: −25% Damage\n"
-#~ "Night: −25% Damage"
-#~ msgstr ""
-#~ "Les unités liminales disposent de toutes leurs forces uniquement durant "
-#~ "le demi-jour.\n"
-#~ "\n"
-#~ "Jour : -25 % de dégâts\n"
-#~ "Nuit : -25 % de dégâts"
-
-#~ msgid ""
-#~ "There are no custom options available for the selected era, game, or "
-#~ "modification."
-#~ msgstr ""
-#~ "Aucune option personnalisable pour l'ère, la partie ou la modification "
-#~ "sélectionnée."
-
-#~ msgid "Defaults"
-#~ msgstr "Valeurs par défaut"
-
-#~ msgid "Connected Players"
-#~ msgstr "Joueurs connectés"
-
-#~ msgid "registering with password *** and no email address"
-#~ msgstr ""
-#~ "enregistrement avec le mot de passe *** et aucune adresse électronique"
-
-#~ msgid "registering with password *** and email address $email"
-#~ msgstr ""
-#~ "enregistrement avec le mot de passe *** et l'adresse électronique $email"
-
-#~ msgid "dropping your username"
-#~ msgstr "abandon de votre nom d'utilisateur"
-
-#~ msgid "setting $var to $value"
-#~ msgstr "$value affectée à $var"
-
-#~ msgid "<password> <email (optional)>"
-#~ msgstr "<mot de passe> <courriel (optionnel)>"
-
-#~ msgid "Register your nickname"
-#~ msgstr "Enregistrer votre pseudonyme"
-
-#~ msgid "Drop your nickname."
-#~ msgstr "Supprimer votre pseudonyme."
-
-#~ msgid ""
-#~ "Update details for your nickname. For possible details see '/details'."
-#~ msgstr ""
-#~ "Mettre à jour les détails de votre pseudonyme. Pour les détails "
-#~ "disponibles, consultez « /details »."
-
-#~ msgid "<detail> <value>"
-#~ msgstr "<détail> <valeur>"
-
-#~ msgid "Request a list of details you can set for your registered nickname."
-#~ msgstr ""
-#~ "Demander une liste des détails que vous pouvez établir pour votre "
-#~ "pseudonyme enregistré."
-
-#~ msgid "Can't droid a local ai side: '$side'."
-#~ msgstr "Impossible de robotiser ce camp (IA locale) : « $side »."
 
 #~ msgid "Empty"
 #~ msgstr "Vide"
@@ -10823,6 +10760,9 @@ msgstr "Options de planification"
 
 #~ msgid "There are no players on your friends or ignore list."
 #~ msgstr "Il n'y a pas de joueurs dans vos listes d'amis ou d'ignorés."
+
+#~ msgid "Battle for Wesnoth"
+#~ msgstr "Bataille pour Wesnoth"
 
 #~ msgid "save_compression_short^gzip"
 #~ msgstr "gzip"

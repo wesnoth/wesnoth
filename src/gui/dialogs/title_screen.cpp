@@ -53,10 +53,10 @@
 #include "hotkey/hotkey_command.hpp"
 #include "sdl/surface.hpp"
 #include "sdl/utils.hpp"
-#include <functional>
 #include "video.hpp"
 
 #include <algorithm>
+#include <functional>
 
 static lg::log_domain log_config("config");
 #define ERR_CF LOG_STREAM(err, log_config)
@@ -333,7 +333,7 @@ void title_screen::pre_show(window& win)
 	// Multiplayer
 	//
 	register_button(win, "multiplayer", hotkey::TITLE_SCREEN__MULTIPLAYER,
-		std::bind(&title_screen::button_callback_multiplayer, this, std::ref(win)));
+		std::bind(&title_screen::button_callback_multiplayer, this));
 
 	//
 	// Load game
@@ -347,12 +347,12 @@ void title_screen::pre_show(window& win)
 	//
 	// Addons
 	//
-	register_button(win, "addons", hotkey::TITLE_SCREEN__ADDONS, []() {
+	register_button(win, "addons", hotkey::TITLE_SCREEN__ADDONS, [&win]() {
 		// NOTE: we need the help_manager to get access to the Add-ons section in the game help!
 		help::help_manager help_manager(&game_config_manager::get()->game_config());
 
 		if(manage_addons()) {
-			game_config_manager::get()->reload_changed_game_config();
+			win.set_retval(RELOAD_GAME_DATA);
 		}
 	});
 
@@ -373,10 +373,6 @@ void title_screen::pre_show(window& win)
 	register_button(win, "language", hotkey::HOTKEY_LANGUAGE, [this, &win]() {
 		try {
 			if(game_.change_language()) {
-				t_string::reset_translations();
-				::image::flush_cache();
-				sound::flush_cache();
-				font::load_font_config();
 				on_resize();
 			}
 		} catch(const std::runtime_error& e) {
@@ -490,7 +486,7 @@ void title_screen::hotkey_callback_select_tests()
 	}
 }
 
-void title_screen::button_callback_multiplayer(window& window)
+void title_screen::button_callback_multiplayer()
 {
 	while(true) {
 		gui2::dialogs::mp_method_selection dlg;
@@ -500,29 +496,29 @@ void title_screen::button_callback_multiplayer(window& window)
 			return;
 		}
 
-		const int res = dlg.get_choice();
+		const auto res = dlg.get_choice();
 
-		if(res == 2 && preferences::mp_server_warning_disabled() < 2) {
+		if(res == decltype(dlg)::choice::HOST && preferences::mp_server_warning_disabled() < 2) {
 			if(!gui2::dialogs::mp_host_game_prompt::execute()) {
 				continue;
 			}
 		}
 
 		switch(res) {
-		case 0:
+		case decltype(dlg)::choice::JOIN:
 			game_.select_mp_server(preferences::builtin_servers_list().front().address);
-			window.set_retval(MP_CONNECT);
+			get_window()->set_retval(MP_CONNECT);
 			break;
-		case 1:
+		case decltype(dlg)::choice::CONNECT:
 			game_.select_mp_server("");
-			window.set_retval(MP_CONNECT);
+			get_window()->set_retval(MP_CONNECT);
 			break;
-		case 2:
+		case decltype(dlg)::choice::HOST:
 			game_.select_mp_server("localhost");
-			window.set_retval(MP_HOST);
+			get_window()->set_retval(MP_HOST);
 			break;
-		case 3:
-			window.set_retval(MP_LOCAL);
+		case decltype(dlg)::choice::LOCAL:
+			get_window()->set_retval(MP_LOCAL);
 			break;
 		}
 
@@ -548,7 +544,7 @@ void title_screen::button_callback_cores()
 		const std::string& core_id = cores[core_dlg.get_choice()]["id"];
 
 		preferences::set_core_id(core_id);
-		game_config_manager::get()->reload_changed_game_config();
+		get_window()->set_retval(RELOAD_GAME_DATA);
 	}
 }
 

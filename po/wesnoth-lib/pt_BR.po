@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.5-CVS\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2020-12-18 22:26-0300\n"
-"PO-Revision-Date: 2020-12-24 12:50-0300\n"
+"PO-Revision-Date: 2020-12-31 10:39-0300\n"
 "Last-Translator: Andrei Machado <andreisp.machado@yahoo.com>\n"
 "Language-Team: Portuguese/Brazil\n"
 "Language: pt_BR\n"
@@ -41,10 +41,8 @@ msgstr "Antiga AI Padrão (versão 1.14)"
 # File: src/gui/dialogs/game_load.cpp, line: 296
 #. [ai]: id=experimental_ai
 #: data/ai/ais/ai_experimental.cfg:11
-#, fuzzy
-#| msgid "Multiplayer Alerts"
 msgid "Multiplayer_AI^Experimental AI"
-msgstr "Alertas de Multiplayer"
+msgstr "AI Experimental"
 
 #
 # File: data/gui/default/window/mp_method_selection.cfg, line: 39
@@ -58,10 +56,8 @@ msgstr "Alertas de Multiplayer"
 # File: src/gui/dialogs/game_load.cpp, line: 296
 #. [ai]: id=idle_ai
 #: data/ai/ais/idle_ai.cfg:4
-#, fuzzy
-#| msgid "Multiplayer Alerts"
 msgid "Multiplayer_AI^Dev AI: Idle AI"
-msgstr "Alertas de Multiplayer"
+msgstr "Dev AI: AI Inativa"
 
 #. [ai]: id=ai_default_rca_alternate_recruiting
 #: data/ai/dev/ai_default_rca_alternate_recruiting.cfg:10
@@ -1719,10 +1715,8 @@ msgstr "Parede de Mina Polida"
 # File: data/core/terrain.cfg, line: 1198
 #. [terrain_type]: id=wall_stone_ancient
 #: data/core/terrain.cfg:1346
-#, fuzzy
-#| msgid "Lit Stone Wall"
 msgid "Ancient Stone Wall"
-msgstr "Parede de Pedra Acesa"
+msgstr "Parede de Pedra Anciã"
 
 #
 # File: data/core/terrain.cfg, line: 1143
@@ -1739,10 +1733,8 @@ msgstr "Parede de Pedra Acesa"
 # File: data/core/terrain.cfg, line: 1176
 #. [terrain_type]: id=wall_stone_tomb
 #: data/core/terrain.cfg:1356
-#, fuzzy
-#| msgid "Cave Wall"
 msgid "Catacombs Wall"
-msgstr "Parede de Caverna"
+msgstr "Parede de Catacumba"
 
 #
 # File: data/core/terrain.cfg, line: 1187
@@ -1753,10 +1745,8 @@ msgstr "Parede de Caverna"
 # File: data/core/terrain.cfg, line: 1197
 #. [terrain_type]: id=wall_stone_tomb
 #: data/core/terrain.cfg:1357
-#, fuzzy
-#| msgid "Clean Stone Wall"
 msgid "Catacombs Stone Wall"
-msgstr "Parede de Mina Polida"
+msgstr "Parede de Pedra de Catacumba"
 
 #
 # File: data/core/terrain.cfg, line: 247
@@ -3414,8 +3404,8 @@ msgstr ""
 "atrassar praticamente qualquer unidade e deixá-la vulnerável a ataques. "
 "Anões, tendo em vista que a água bate na altura de seus pescoços, não se dão "
 "bem nesses terrenos. A excessão a regra são as raças cujos corpos são "
-"adaptados a corpos d'água. Já elas possuem pleno movimento e recebem um "
-"considerável bônus de defesa nesses terrenos.\n"
+"adaptados a corpos d'água. Já elas não possuem penalidade de movimento e "
+"recebem um bônus de defesa considerável nesses terrenos.\n"
 "\n"
 "\n"
 "A maioria das unidades lutam para ter entre 20% e 30% de defesa em água "
@@ -3436,11 +3426,12 @@ msgstr ""
 "<italic>text='Castelos'</italic> são qualquer tipo de fortificação "
 "permanente.\n"
 "Praticamente todas as unidades possuem um forte bônus de defesa quando são "
-"posicionadas em castelos, e a maioria também possui pleno movimento dentro "
-"deles. Posicionar unidades em castelo representa as capacidades defensivas "
-"da fortificação. Sem unidades para guarnecer cada hexágono do castelo, um "
-"inimigo pode invadir o castelo sem encontrar resistência, ganhando o mesmo "
-"bônus defensido de todos os que estão noc astelo.\n"
+"posicionadas em castelos, e a maioria também não possui penalidade de "
+"movimento dentro deles. Posicionar unidades em castelo representa as "
+"capacidades defensivas da fortificação. Sem unidades para guarnecer cada "
+"hexágono do castelo, um inimigo pode invadir o castelo sem encontrar "
+"resistência, ganhando o mesmo bônus defensido de todos os que estão noc "
+"astelo.\n"
 "\n"
 "A maioria das unidades possuem cerca de 60% de defesa em castelos."
 
@@ -3484,8 +3475,8 @@ msgstr ""
 "A maioria das unidades não podem entrar em águas profundas, sendo um terreno "
 "exclusivo para unidades que voam ou que sejam exímios nadadores.\n"
 "\n"
-"Tritões e nagas possuem 50% de defesa em água profunda e também possuem "
-"movimentação plena."
+"Tritões e nagas possuem 50% de defesa em água profunda e não possuem "
+"penalidade de movimento."
 
 #
 # File: data/core/terrain.cfg, line: 2304
@@ -4108,10 +4099,8 @@ msgstr "Cancelar"
 
 #. [label]
 #: data/gui/window/addon_license_prompt.cfg:39
-#, fuzzy
-#| msgid "addons_order^Type ($order)"
 msgid "addons_server^Terms"
-msgstr "Tipo ($order)"
+msgstr "Termos"
 
 #. [label]: id=message
 #: data/gui/window/addon_license_prompt.cfg:54
@@ -6832,10 +6821,8 @@ msgstr "Quando um Jogador entrar no saguão ou no jogo"
 # File: src/mapgen_dialog.cpp, line: 120
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:185
-#, fuzzy
-#| msgid "Player leaves:"
 msgid "Player leaves"
-msgstr "Jogador sai:"
+msgstr "Jogador sai"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:185
@@ -6853,10 +6840,8 @@ msgstr "Quando receber um sussurro"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:186
-#, fuzzy
-#| msgid "Whisper:"
 msgid "Whisper"
-msgstr "Sussurro:"
+msgstr "Sussurro"
 
 #
 # File: data/gui/default/window/lobby_main.cfg, line: 586
@@ -6906,10 +6891,8 @@ msgstr "Quando receber uma mensagem do servidor"
 # File: data/gui/default/window/mp_create_game.cfg, line: 501
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:190
-#, fuzzy
-#| msgid "Ready to start:"
 msgid "Ready to start"
-msgstr "Pronto para começar:"
+msgstr "Pronto para começar"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:190
@@ -6928,10 +6911,8 @@ msgstr "Quando o host (não você) comçou o jogo"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:192
-#, fuzzy
-#| msgid "Turn changed:"
 msgid "Turn changed"
-msgstr "Turno mudou:"
+msgstr "O turno mudou"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:192
@@ -6977,10 +6958,8 @@ msgstr "Mudar Controle"
 # File: data/gui/default/window/mp_method_selection.cfg, line: 147
 #. [label]
 #: data/gui/window/mp_connect.cfg:71
-#, fuzzy
-#| msgid "Log on to the official Wesnoth multiplayer server"
 msgid "Choose or enter the address of a multiplayer server."
-msgstr "Conectar ao servidor multiplayer oficial de Wesnoth"
+msgstr "Escolha ou insira o endereço de um servidor multiplayer."
 
 #
 # File: data/gui/default/window/mp_server_list.cfg, line: 124
@@ -8257,16 +8236,12 @@ msgstr "Limitar FPS"
 
 #. [toggle_button]: id=fps_limiter
 #: data/gui/window/preferences/03_display.cfg:275
-#, fuzzy
-#| msgid ""
-#| "Disabling this increases CPU usage to 100% but may slightly improve "
-#| "performance at high resolutions"
 msgid ""
 "Disabling this increases CPU usage, but may slightly improve performance "
 "(requires restart to take effect)"
 msgstr ""
-"Desabilitar isso aumenta o uso da CPU para 100% mas aument aum pouco a "
-"performance em resoluções altas"
+"Desabilitar isto aumenta o uso da CPU, mas poderá melhorar um pouco a "
+"performance (só entrará em efeito após o jogo ser reiniciado)"
 
 #
 # File: src/game_preferences_display.cpp, line: 199
@@ -8603,10 +8578,8 @@ msgstr "Remove este nome de usuário da sua lista"
 
 #. [label]: id=no_friends_notice
 #: data/gui/window/preferences/05_multiplayer.cfg:311
-#, fuzzy
-#| msgid "You have not befriended or ignored any other players."
 msgid "You have not befriended or blocked any other players."
-msgstr "Você não fez amizade e nem ignorou nenhum outro jogador."
+msgstr "Você não fez amizade e nem bloqueou nenhum outro jogador."
 
 #. [button]: id=open
 #: data/gui/window/screenshot_notification.cfg:49
@@ -8746,7 +8719,7 @@ msgstr ""
 #. [column]
 #: data/gui/window/statistics_dialog.cfg:568
 msgid "Hits"
-msgstr ""
+msgstr "Acertos"
 
 #. [column]
 #: data/gui/window/statistics_dialog.cfg:571
@@ -9086,10 +9059,8 @@ msgstr "Atacar Inimigo"
 # File: src/hotkeys.cpp, line: 88
 #. [label]
 #: data/gui/window/unit_create.cfg:55
-#, fuzzy
-#| msgid "Delete Unit"
 msgid "Create Unit"
-msgstr "Deletar Unidade"
+msgstr "Criar Unidade"
 
 #
 # File: data/gui/default/window/unit_create.cfg, line: 119
@@ -10228,10 +10199,8 @@ msgstr "Versão Atual"
 # File: src/gui/dialogs/title_screen.cpp, line: 297
 # File: src/gui/dialogs/title_screen.cpp, line: 297
 #: src/gui/dialogs/game_load.cpp:174
-#, fuzzy
-#| msgid "Version $version"
 msgid "game_version^Wesnoth $version"
-msgstr "Versão $version"
+msgstr "Wesnoth $version"
 
 #: src/gui/dialogs/game_load.cpp:311
 msgid "The selected file is corrupt: "
@@ -10570,10 +10539,8 @@ msgid "Do you really want to log out?"
 msgstr "Você realmente deseja sair?"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:218
-#, fuzzy
-#| msgid "Incompatible User-made Content."
 msgid "Incompatible User-made Content"
-msgstr "Conteúdo feito por usuários incompatível."
+msgstr "Conteúdo Feito por Usuários Incompatível"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:219
 msgid ""
@@ -10586,10 +10553,8 @@ msgstr ""
 "host atualize os seus add-ons."
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:234
-#, fuzzy
-#| msgid "Missing User-made Content."
 msgid "Missing User-made Content"
-msgstr "Conteúdo feito por usuários faltando."
+msgstr "Conteúdo Feito por Usuários Faltando"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:235
 msgid ""
@@ -10818,8 +10783,6 @@ msgstr "O jogo selecionado não possui lados!"
 
 #. TRANSLATORS: This sentence will be followed by some details of the error, most likely the "Map could not be loaded" message from create_engine.cpp
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:834
-#, fuzzy
-#| msgid "The selected game can not be created."
 msgid "The selected game cannot be created."
 msgstr "O jogo selecionado não pode ser criado."
 
@@ -12978,11 +12941,11 @@ msgstr "Falar com Todos"
 
 #: src/hotkey/hotkey_command.cpp:274
 msgid "Help about save-loading"
-msgstr ""
+msgstr "Ajuda sobre salvar e carregar"
 
 #: src/hotkey/hotkey_command.cpp:274
 msgid "Hint: save-loading is unnecessary"
-msgstr ""
+msgstr "Dica: Não é necessário salvando e carregando"
 
 #
 # File: src/hotkeys.cpp, line: 236
@@ -13187,16 +13150,12 @@ msgstr "[%I:%M %p]"
 # File: src/terrain_translation.cpp, line: 714
 # File: src/terrain_translation.cpp, line: 714
 #: src/terrain/translation.cpp:714
-#, fuzzy
-#| msgid ""
-#| "A terrain with a string with more than 4 characters has been found, the "
-#| "affected terrain is :"
 msgid ""
 "A terrain with a string with more than 4 characters has been found, the "
 "affected terrain is:"
 msgstr ""
-"Um terreno com um string com mais de 4 caracteres foi encontrada, o terreno "
-"afetado é :"
+"Um terreno com um string com mais de 4 personagens foi encontrada, o terreno "
+"afetado é:"
 
 #
 # File: src/wml_exception.cpp, line: 64

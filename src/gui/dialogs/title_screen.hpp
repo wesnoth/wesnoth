@@ -89,7 +89,7 @@ private:
 
 	void hotkey_callback_select_tests();
 
-	void button_callback_multiplayer(window& window);
+	void button_callback_multiplayer();
 
 	void button_callback_cores();
 
