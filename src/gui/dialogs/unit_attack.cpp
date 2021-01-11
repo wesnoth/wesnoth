@@ -41,32 +41,6 @@ namespace gui2
 namespace dialogs
 {
 
-/*WIKI
- * @page = GUIWindowDefinitionWML
- * @order = 2_unit_attack
- *
- * == Unit attack ==
- *
- * This shows the dialog for attacking units.
- *
- * @begin{table}{dialog_widgets}
- *                                     $
- * attacker_icon     & & image   & o & Shows the icon of the attacking unit. $
- * attacker_name     & & styled_widget & o & Shows the name of the attacking unit. $
- *
- * defender_portrait & & image   & o & Shows the portrait of the defending unit.
- *                                     $
- * defender_icon     & & image   & o & Shows the icon of the defending unit. $
- * defender_name     & & styled_widget & o & Shows the name of the defending unit. $
- *
- *
- * weapon_list       & & listbox & m & The list with weapons to choose from. $
- * -attacker_weapon  & & styled_widget & o & The weapon for the attacker to use. $
- * -defender_weapon  & & styled_widget & o & The weapon for the defender to use. $
- *
- * @end{table}
- */
-
 REGISTER_DIALOG(unit_attack)
 
 unit_attack::unit_attack(const unit_map::iterator& attacker_itor,

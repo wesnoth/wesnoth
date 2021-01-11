@@ -46,9 +46,7 @@ SDL_Rect create_rect(const point& origin, const point& size);
 /**
  * Converts a color string to a color.
  *
- * @param color                   A color string see
- *                                https://www.wesnoth.org/wiki/GUIVariable for
- *                                more info.
+ * @param color                   A color string see @ref GUIWidgetWML for more info.
  *
  * @returns                       The color.
  */
@@ -57,9 +55,7 @@ color_t decode_color(const std::string& color);
 /**
  * Converts a text alignment string to a text alignment.
  *
- * @param alignment               An alignment string see
- *                                https://www.wesnoth.org/wiki/GUIVariable for
- *                                more info.
+ * @param alignment               An alignment string see @ref GUIWidgetWML for more info.
  *
  * @returns                       The text alignment.
  */
@@ -70,18 +66,14 @@ PangoAlignment decode_text_alignment(const std::string& alignment);
  *
  * @param alignment               An alignment.
  *
- * @returns                       An alignment string see
- *                                https://www.wesnoth.org/wiki/GUIVariable for
- *                                more info.
+ * @returns                       An alignment string see @ref GUIWidgetWML for more info.
  */
 std::string encode_text_alignment(const PangoAlignment alignment);
 
 /**
  * Converts a font style string to a font style.
  *
- * @param style                   A font style string see
- *                                https://www.wesnoth.org/wiki/GUIVariable for
- *                                more info.
+ * @param style                   A font style string see @ref GUIWidgetWML for more info.
  *
  * @returns                       The font style.
  */

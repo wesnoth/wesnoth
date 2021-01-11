@@ -31,35 +31,6 @@ namespace gui2
 namespace dialogs
 {
 
-/*WIKI
- * @page = GUIWindowDefinitionWML
- * @order = 2_mp_login
- *
- * == Multiplayer connect ==
- *
- * This shows the dialog to log in to the MP server
- *
- * @begin{table}{dialog_widgets}
- *
- * user_name & & text_box & m &
- *         The login user name. $
- *
- * password & & text_box & m &
- *         The password. $
- *
- * remember_password & & toggle_button & o &
- *         A toggle button to offer to remember the password in the
- *         preferences. $
- *
- * change_username & & button & o &
- *         Use a different username. $
- *
- * login_label & & button & o &
- *         Displays the information received from the server. $
- *
- * @end{table}
- */
-
 REGISTER_DIALOG(mp_login)
 
 mp_login::mp_login(const std::string& host, const std::string& label, const bool focus_password)

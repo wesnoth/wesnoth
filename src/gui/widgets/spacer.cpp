@@ -115,59 +115,12 @@ spacer_definition::spacer_definition(const config& cfg)
 	load_resolutions<resolution>(cfg);
 }
 
-/*WIKI
- * @page = GUIWidgetDefinitionWML
- * @order = 1_spacer
- *
- * == Spacer ==
- *
- * @macro = spacer_description
- *
- * A spacer has no states so nothing to load.
- * @begin{parent}{name="gui/"}
- * @begin{tag}{name="spacer_definition"}{min=0}{max=-1}{super="generic/widget_definition"}
- * @end{tag}{name="spacer_definition"}
- * @end{parent}{name="gui/"}
- */
 spacer_definition::resolution::resolution(const config& cfg)
 	: resolution_definition(cfg)
 {
 }
 
 // }---------- BUILDER -----------{
-
-/*WIKI_MACRO
- * @begin{macro}{spacer_description}
- *
- *        A spacer is a dummy item to either fill in a widget since no empty
- *        items are allowed or to reserve a fixed space.
- * @end{macro}
- */
-
-
-/*WIKI
- * @page = GUIWidgetInstanceWML
- * @order = 2_spacer
- * @begin{parent}{name="gui/window/resolution/grid/row/column/"}
- * @begin{tag}{name="spacer"}{min=0}{max=-1}{super="generic/widget_instance"}
- * == Spacer ==
- *
- * @macro = spacer_description
- *
- * If either the width or the height is non-zero the spacer functions as a
- * fixed size spacer.
- *
- * @begin{table}{config}
- *     width & f_unsigned & 0 &          The width of the spacer. $
- *     height & f_unsigned & 0 &         The height of the spacer. $
- * @end{table}
- *
- * The variable available are the same as for the window resolution see
- * https://www.wesnoth.org/wiki/GUIToolkitWML#Resolution_2 for the list of
- * items.
- * @end{tag}{name="spacer"}
- * @end{parent}{name="gui/window/resolution/grid/row/column/"}
- */
 
 namespace implementation
 {

@@ -56,8 +56,10 @@ class distributor;
 } // namespace event
 
 /**
- * base class of top level items, the only item
- * which needs to store the final canvases to draw on
+ * @ingroup GUIWidgetWML
+ * 
+ * base class of top level items, the only item which needs to store the final canvases to draw on.
+ * A window is a kind of panel see the panel for which fields exist.
  */
 class window : public panel
 {

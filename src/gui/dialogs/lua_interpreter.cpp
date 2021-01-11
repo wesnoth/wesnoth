@@ -62,17 +62,6 @@ namespace gui2
 namespace dialogs
 {
 
-/*WIKI
- * @page = GUIWindowDefinitionWML
- * @order = 3_lua_interpretter
- *
- * == Settings manager ==
- *
- * This shows the settings manager
- *
- */
-
-
 REGISTER_DIALOG(lua_interpreter)
 
 // Model, View, Controller definitions

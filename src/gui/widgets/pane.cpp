@@ -369,40 +369,6 @@ void pane::signal_handler_request_placement(dispatcher& dispatcher,
 
 // }---------- BUILDER -----------{
 
-/*WIKI_MACRO
- * @begin{macro}{pane_description}
- *
- *        A pane is a container where new members can be added and removed
- *        during run-time.
- * @end{macro}
- */
-
-/*WIKI
- * @page = GUIWidgetInstanceWML
- * @order = 2_viewport
- * @begin{parent}{name="gui/window/resolution/grid/row/column/"}
- * @begin{tag}{name="pane"}{min=0}{max=-1}{super="generic/widget_instance"}
- * == Label ==
- *
- * @macro = viewport_description
- *
- * List with the label specific variables:
- * @begin{table}{config}
- *     grow_direction & grow_direction & &
- *                                The direction in which new items grow. $
- *     parallel_items & unsigned & &
- *                                The number of items that are growing in
- *                                parallel. $
- *     item_definition & section & &
- *                                The definition of a new item. $
- * @end{table}
- *
- * @begin{tag}{name="item_definition"}{min=1}{max=1}{super="gui/window/resolution/grid"}
- * @end{tag}{name="item_definition"}
- * @end{tag}{name="pane"}
- * @end{parent}{name="gui/window/resolution/grid/row/column/"}
- */
-
 namespace implementation
 {
 

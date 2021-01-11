@@ -25,6 +25,17 @@ namespace gui2
 namespace dialogs
 {
 
+/**
+ * @ingroup GUIWindowDefinitionWML
+ * 
+ * This shows the gamestate inspector.
+ * Key               |Type          |Mandatory|Description  
+ * ------------------|--------------|---------|-----------
+ * inspector_name    | control      |yes      |Name of the inspector.
+ * stuff_list        | control      |yes      |List of various stuff that can be viewed.
+ * inspect           | control      |yes      |The state of the variable or event.
+ * copy              | @ref button  |yes      |A button to copy the state to clipboard.
+ */
 class gamestate_inspector : public modal_dialog
 {
 public:

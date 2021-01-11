@@ -45,25 +45,6 @@ namespace gui2
 namespace dialogs
 {
 
-/*WIKI
- * @page = GUIWindowDefinitionWML
- * @order = 2_mp_change_control
- *
- * == Change control dialog ==
- *
- * This shows the multiplayer change control dialog.
- *
- * @begin{table}{dialog_widgets}
- * sides_list & & listbox & m &
- *         List of sides participating in the MP game. $
- *
- * nicks_list & & listbox & m &
- *         List of nicks of all clients playing or observing the MP game. $
- *
- * @end{table}
- *
- */
-
 REGISTER_DIALOG(mp_change_control)
 
 mp_change_control::mp_change_control(events::menu_handler& mh)

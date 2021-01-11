@@ -293,55 +293,6 @@ toggle_panel_definition::toggle_panel_definition(const config& cfg)
 	load_resolutions<resolution>(cfg);
 }
 
-/*WIKI
- * @page = GUIWidgetDefinitionWML
- * @order = 1_toggle_panel
- *
- * == Toggle panel ==
- *
- * @begin{parent}{name="gui/"}
- * @begin{tag}{name="oggle_panel_definition"}{min=0}{max=-1}{super="generic/widget_definition"}
- * The definition of a toggle panel. A toggle panel is like a toggle button, but
- * instead of being a button it's a panel. This means it can hold multiple child
- * items.
- *
- * @begin{tag}{name="resolution"}{min=0}{max=-1}{super=generic/widget_definition/resolution}
- * The resolution for a toggle panel also contains the following keys:
- * @begin{table}{config}
- *     top_border & unsigned & 0 &     The size which isn't used for the client
- *                                   area. $
- *     bottom_border & unsigned & 0 &  The size which isn't used for the client
- *                                   area. $
- *     left_border & unsigned & 0 &    The size which isn't used for the client
- *                                   area. $
- *     right_border & unsigned & 0 &   The size which isn't used for the client
- *                                   area. $
- * @end{table}
- *
- * The following states exist:
- * * state_enabled, the panel is enabled and not selected.
- * * state_disabled, the panel is disabled and not selected.
- * * state_focused, the mouse is over the panel and not selected.
- *
- * * state_enabled_selected, the panel is enabled and selected.
- * * state_disabled_selected, the panel is disabled and selected.
- * * state_focused_selected, the mouse is over the panel and selected.
- * @begin{tag}{name="state_enabled"}{min=0}{max=1}{super="generic/state"}
- * @end{tag}{name="state_enabled"}
- * @begin{tag}{name="state_disabled"}{min=0}{max=1}{super="generic/state"}
- * @end{tag}{name="state_disabled"}
- * @begin{tag}{name="state_focused"}{min=0}{max=1}{super="generic/state"}
- * @end{tag}{name="state_focused"}
- * @begin{tag}{name="state_enabled_selected"}{min=0}{max=1}{super="generic/state"}
- * @end{tag}{name="state_enabled_selected"}
- * @begin{tag}{name="state_disabled_selected"}{min=0}{max=1}{super="generic/state"}
- * @end{tag}{name="state_disabled_selected"}
- * @begin{tag}{name="state_focused_selected"}{min=0}{max=1}{super="generic/state"}
- * @end{tag}{name="state_focused_selected"}
- * @end{tag}{name="resolution"}
- * @end{tag}{name="oggle_panel_definition"}
- * @end{parent}{name="gui/"}
- */
 toggle_panel_definition::resolution::resolution(const config& cfg)
 	: resolution_definition(cfg)
 	, top_border(cfg["top_border"])
@@ -359,34 +310,6 @@ toggle_panel_definition::resolution::resolution(const config& cfg)
 }
 
 // }---------- BUILDER -----------{
-
-/*WIKI
- * @page = GUIWidgetInstanceWML
- * @order = 2_toggle_panel
- * @begin{parent}{name="gui/window/resolution/grid/row/column/"}
- * @begin{tag}{name="toggle_panel"}{min=0}{max=-1}{super="generic/widget_instance"}
- * == Toggle panel ==
- *
- * A toggle panel is an item which can hold other items. The difference between
- * a grid and a panel is that it's possible to define how a panel looks. A grid
- * in an invisible container to just hold the items. The toggle panel is a
- * combination of the panel and a toggle button, it allows a toggle button with
- * its own grid.
- *
- * @begin{table}{config}
- *     grid & grid & &                 Defines the grid with the widgets to
- *                                     place on the panel. $
- *     return_value_id & string & "" & The return value id, see
- *                                     [[GUIToolkitWML#Button]] for more
- *                                     information. $
- *     return_value & int & 0 &        The return value, see
- *                                     [[GUIToolkitWML#Button]] for more
- *                                     information. $
- * @end{table}
- * @allow{link}{name="gui/window/resolution/grid"}
- * @end{tag}{name="toggle_panel"}
- * @end{parent}{name="gui/window/resolution/grid/row/column/"}
- */
 
 namespace implementation
 {

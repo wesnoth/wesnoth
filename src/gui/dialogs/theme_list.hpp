@@ -23,6 +23,16 @@ namespace gui2
 namespace dialogs
 {
 
+/**
+ * @ingroup GUIWindowDefinitionWML
+ * 
+ * Dialog for selecting a GUI theme.
+ * Key               |Type          |Mandatory|Description  
+ * ------------------|--------------|---------|-----------
+ * themes            | @ref listbox |yes      |Listbox displaying user choices.
+ * name              | control      |yes      |Widget which shows a theme item name.
+ * description       | control      |yes      |Widget which shows a theme item description.
+ */
 class theme_list : public modal_dialog
 {
 public:

@@ -33,48 +33,6 @@ namespace gui2
 namespace dialogs
 {
 
-/*WIKI
- * @page = GUIWindowDefinitionWML
- * @order = 2_clock
- *
- * == Clock ==
- *
- * This shows the dialog for keeping track of the drawing events related to the
- * current time. (This window is used for debug purposes only.)
- *
- * @begin{table}{dialog_widgets}
- * hour_percentage   & & progress_bar     & o &
- *         This shows the hours as a percentage, where 24 hours is 100%. $
- * minute_percentage & & progress_bar     & o &
- *         This shows the minutes as a percentage, where 60 minutes is 100%. $
- * second_percentage & & progress_bar     & o &
- *         This shows the seconds as a percentage, where 60 seconds is 100%. $
- *
- * hour              & & integer_selector & o &
- *         This shows the seconds since the beginning of the day. The styled_widget
- *         should have a ''minimum_value'' of 0 and a ''maximum_value'' of 86399
- *         (24 * 60 * 60 - 1). $
- *
- * minute            & & integer_selector & o &
- *         This shows the seconds since the beginning of the current hour. The
- *         styled_widget should have a ''minimum_value'' of 0 and a ''maximum_value''
- *         of 3599 (60 * 60 - 1). $
- *
- * minute            & & integer_selector & o &
- *         This shows the seconds since the beginning of the current minute. The
- *         styled_widget should have a ''minimum_value'' of 0 and a ''maximum_value''
- *         of 59. $
- *
- * clock             & & styled_widget          & o &
- *         A styled_widget which will have set three variables in its canvas:
- *         @* hour, the same value as the hour integer_selector.
- *         @* minute, the same value as the minute integer_selector.
- *         @* second, the same value as the second integer_selector.
- *         @- the styled_widget can then should the time in its own preferred
- *         format(s). $
- * @end{table}
- */
-
 REGISTER_DIALOG(debug_clock)
 
 void debug_clock::pre_show(window& window)

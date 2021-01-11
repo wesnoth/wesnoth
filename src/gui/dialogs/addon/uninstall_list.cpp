@@ -28,28 +28,6 @@ namespace gui2
 namespace dialogs
 {
 
-/*WIKI
- * @page = GUIWindowDefinitionWML
- * @order = 2_addon_uninstall_list
- *
- * == Add-on uninstall list ==
- *
- * Dialog with a checkbox list for choosing installed add-ons to remove.
- *
- * @begin{table}{dialog_widgets}
- *
- * addons_list & & listbox & m &
- *     A listbox containing add-on selection entries. $
- *
- * -checkbox & & toggle_button & m &
- *     A toggle button allowing the user to mark/unmark the add-on. $
- *
- * -name & & styled_widget & o &
- *     The name of the add-on. $
- *
- * @end{table}
- */
-
 REGISTER_DIALOG(addon_uninstall_list)
 
 void addon_uninstall_list::pre_show(window& window)

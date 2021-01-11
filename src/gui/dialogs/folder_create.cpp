@@ -27,25 +27,6 @@ namespace gui2
 namespace dialogs
 {
 
-/*WIKI
- * @page = GUIWindowDefinitionWML
- * @order = 2_folder_create
- *
- * == Folder Create ==
- *
- * Dialog for providing the name of a new folder or bookmark to create.
- * Used by the file dialog.
- *
- * @begin{table}{dialog_widgets}
- *
- * title & & styled_widget & m &
- *         Label with the dialog caption. Changed in bookmark mode. $
- * name & & text_box & m &
- *         Input field for the new folder/bookmark name. $
- *
- * @end{table}
- */
-
 REGISTER_DIALOG(folder_create)
 
 folder_create::folder_create(std::string& folder_name)

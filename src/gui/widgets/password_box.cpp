@@ -101,7 +101,7 @@ void password_box::paste_selection(const bool mouse)
 	insert_char(text);
 }
 
-const std::string& password_box::type()                                                                                      \
+const std::string& password_box::type()
 {
 	static const std::string type = "password_box";
 	return type;
@@ -116,21 +116,6 @@ const std::string& password_box::get_control_type() const
 
 namespace implementation
 {
-
-/*WIKI
- * @page = GUIWidgetInstanceWML
- * @order = 2_password_box
- *
- * == Password box ==
- *
- * @begin{parent}{name="gui/window/resolution/grid/row/column/"}
- * @begin{tag}{name="password_box"}{min=0}{max=-1}{super="generic/widget_instance"}
- * @begin{table}{config}
- *     label & t_string & "" &         The initial text of the password box. $
- * @end{table}
- * @end{tag}{name="password_box"}
- * @end{parent}{name="gui/window/resolution/grid/row/column/"}
- */
 
 builder_password_box::builder_password_box(const config& cfg)
 	: builder_styled_widget(cfg), history_(cfg["history"])

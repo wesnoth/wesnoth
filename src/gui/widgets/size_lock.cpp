@@ -96,23 +96,6 @@ size_lock_definition::size_lock_definition(const config& cfg)
 	load_resolutions<resolution>(cfg);
 }
 
-/*WIKI
- * @page = GUIWidgetDefinitionWML
- * @order = 1_size_lock
- *
- * == Size lock ==
- *
- * A size lock contains one child widget and forces it to have the specified size.
- * This can be used, for example, when there are two list boxes in different rows of
- * the same grid and it's desired that only one list box changes size when its
- * contents change.
- *
- * A size lock has no states.
- * @begin{parent}{name="gui/"}
- * @begin{tag}{name="size_lock_definition"}{min=0}{max=-1}{super="generic/widget_definition"}
- * @end{tag}{name="size_lock_definition"}
- * @end{tag}{name="gui/"}
- */
 size_lock_definition::resolution::resolution(const config& cfg)
 	: resolution_definition(cfg)
 	, grid(nullptr)
@@ -126,30 +109,6 @@ size_lock_definition::resolution::resolution(const config& cfg)
 
 	grid = std::make_shared<builder_grid>(child);
 }
-
-/*WIKI
- * @page = GUIWidgetInstanceWML
- * @order = 2_size_lock
- * @begin{parent}{name="gui/window/resolution/grid/row/column/"}
- * @begin{tag}{name="size_lock"}{min=0}{max=-1}{super="generic/widget_instance"}
- * == Size lock ==
- *
- * A size lock contains one child widget and forces it to have the specified size.
- * This can be used, for example, when there are two list boxes in different rows of
- * the same grid and it's desired that only one list box changes size when its
- * contents change.
- *
- * @begin{table}{config}
- *    widget & section    & mandatory &           The widget. $
- *    width  & f_unsigned & mandatory &           The width of the widget. $
- *    height & f_unsigned & mandatory &           The height of the widget. $
- * @end{table}
- *
- * The variables available are the same as for window resolution, see
- * [[GuiToolkitWML#Resolution_2]] for the list of items.
- * @end{tag}{name="size_lock"}
- * @end{parent}{name="gui/window/resolution/grid/row/column/"}
- */
 
 namespace implementation
 {

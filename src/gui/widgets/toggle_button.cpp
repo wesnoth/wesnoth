@@ -201,41 +201,6 @@ toggle_button_definition::toggle_button_definition(const config& cfg)
 	load_resolutions<resolution>(cfg);
 }
 
-/*WIKI
- * @page = GUIWidgetDefinitionWML
- * @order = 1_toggle_button
- *
- * == Toggle button ==
- *
- * The definition of a toggle button.
- *
- * The following states exist:
- * * state_enabled, the button is enabled and not selected.
- * * state_disabled, the button is disabled and not selected.
- * * state_focused, the mouse is over the button and not selected.
- *
- * * state_enabled_selected, the button is enabled and selected.
- * * state_disabled_selected, the button is disabled and selected.
- * * state_focused_selected, the mouse is over the button and selected.
- * @begin{parent}{name="gui/"}
- * @begin{tag}{name="oggle_button_definition"}{min=0}{max=-1}{super="generic/widget_definition"}
- * @begin{tag}{name="resolution"}{min=0}{max=-1}{super="generic/widget_definition/resolution"}
- * @begin{tag}{name="state_enabled"}{min=0}{max=1}{super="generic/state"}
- * @end{tag}{name="state_enabled"}
- * @begin{tag}{name="state_disabled"}{min=0}{max=1}{super="generic/state"}
- * @end{tag}{name="state_disabled"}
- * @begin{tag}{name="state_focused"}{min=0}{max=1}{super="generic/state"}
- * @end{tag}{name="state_focused"}
- * @begin{tag}{name="state_enabled_selected"}{min=0}{max=1}{super="generic/state"}
- * @end{tag}{name="state_enabled_selected"}
- * @begin{tag}{name="state_disabled_selected"}{min=0}{max=1}{super="generic/state"}
- * @end{tag}{name="state_disabled_selected"}
- * @begin{tag}{name="state_focused_selected"}{min=0}{max=1}{super="generic/state"}
- * @end{tag}{name="state_focused_selected"}
- * @end{tag}{name="resolution"}
- * @end{tag}{name="oggle_button_definition"}
- * @end{parent}{name="gui/"}
- */
 toggle_button_definition::resolution::resolution(const config& cfg)
 	: resolution_definition(cfg)
 {
@@ -250,26 +215,6 @@ toggle_button_definition::resolution::resolution(const config& cfg)
 }
 
 // }---------- BUILDER -----------{
-
-/*WIKI
- * @page = GUIToolkitWML
- * @order = 2_toggle_button
- * @begin{parent}{name="gui/window/resolution/grid/row/column/"}
- * @begin{tag}{name="toggle_button"}{min=0}{max=-1}{super="generic/widget_instance"}
- * == Toggle button ==
- *
- * @begin{table}{config}
- *     icon & f_string & "" &          The name of the icon file to show. $
- *     return_value_id & string & "" & The return value id, see
- *                                     [[GUIToolkitWML#Button]] for more
- *                                     information. $
- *     return_value & int & 0 &        The return value, see
- *                                     [[GUIToolkitWML#Button]] for more
- *                                     information. $
- * @end{table}
- * @end{tag}{name="toggle_button"}
- * @end{parent}{name="gui/window/resolution/grid/row/column/"}
- */
 
 namespace implementation
 {

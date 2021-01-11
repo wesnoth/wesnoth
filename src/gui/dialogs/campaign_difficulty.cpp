@@ -35,38 +35,6 @@ namespace gui2
 namespace dialogs
 {
 
-/*WIKI
- * @page = GUIWindowDefinitionWML
- * @order = 2_campaign_difficulty
- *
- * == Campaign difficulty ==
- *
- * The campaign mode difficulty menu.
- *
- * @begin{table}{dialog_widgets}
- *
- * title & & label & m &
- *         Dialog title label. $
- *
- * message & & scroll_label & o &
- *         Text label displaying a description or instructions. $
- *
- * listbox & & listbox & m &
- *         Listbox displaying user choices, defined by WML for each campaign. $
- *
- * -icon & & styled_widget & m &
- *         Widget which shows a listbox item icon, first item markup column. $
- *
- * -label & & styled_widget & m &
- *         Widget which shows a listbox item label, second item markup column. $
- *
- * -description & & styled_widget & m &
- *         Widget which shows a listbox item description, third item markup
- *         column. $
- *
- * @end{table}
- */
-
 REGISTER_DIALOG(campaign_difficulty)
 
 config generate_difficulty_config(const config& source)

@@ -27,66 +27,6 @@ namespace gui2
 namespace dialogs
 {
 
-/*WIKI
- * @page = GUIWindowDefinitionWML
- * @order = 2_editor_resize_map
- *
- * == Editor resize map ==
- *
- * This shows the dialog to resize the current map.
- *
- * @begin{table}{dialog_widgets}
- *
- * old_width & & label & o &
- *         Shows the old width of the map. $
- *
- * old_height & & label & o &
- *         Shows the old height of the map. $
- *
- * width & & slider & m &
- *         Determines the new width of the map. $
- *
- * height & & slider & m &
- *         Determines the new height of the map. $
- *
- * copy_edge_terrain & & boolean_selector & m &
- *         Determines whether the border terrains should be used to expand or
- *         not. $
- *
- * expand0 & & toggle_button & m &
- *         Determines in which direction to expand, shows the north east
- *         marker. $
- *
- * expand1 & & toggle_button & m &
- *         Determines in which direction to expand, shows the north marker. $
- *
- * expand2 & & toggle_button & m &
- *         Determines in which direction to expand, shows the north west
- *         marker. $
- *
- * expand3 & & toggle_button & m &
- *         Determines in which direction to expand, shows the east marker. $
- *
- * expand4 & & toggle_button & m &
- *         Determines in which direction to expand, shows the center marker. $
- *
- * expand5 & & toggle_button & m &
- *         Determines in which direction to expand, shows the west marker. $
- *
- * expand6 & & toggle_button & m &
- *         Determines in which direction to expand, shows the south east
- *         marker. $
- *
- * expand7 & & toggle_button & m &
- *         Determines in which direction to expand, shows the south marker. $
- *
- * expand8 & & toggle_button & m &
- *         Determines in which direction to expand, shows the south west
- *         marker. $
- *
- * @end{table}
- */
-
 REGISTER_DIALOG(editor_resize_map)
 
 editor_resize_map::editor_resize_map(int& width,

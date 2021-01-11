@@ -21,6 +21,11 @@ namespace gui2
 namespace dialogs
 {
 
+/**
+ * @ingroup GUIWindowDefinitionWML
+ * 
+ * This shows the dialog to confirm surrender and/or quitting the game.
+ */
 class surrender_quit : public modal_dialog
 {
 public:

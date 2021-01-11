@@ -30,29 +30,6 @@ namespace gui2
 namespace dialogs
 {
 
-/*WIKI
- * @page = GUIWindowDefinitionWML
- * @order = 2_addon_connect
- *
- * == Addon connect ==
- *
- * This shows the dialog for managing addons and connecting to the addon server.
- *
- * @begin{table}{dialog_widgets}
- * hostname & & text_box & m &
- *         This text contains the name of the server to connect to. $
- *
- * show_help & & button & m &
- *         Thus button shows the in-game help about add-ons management when
- *         triggered. $
- *
- * & 2 & button & o &
- *         This button closes the dialog to display a dialog for removing
- *         installed add-ons. $
- *
- * @end{table}
- */
-
 REGISTER_DIALOG(addon_connect)
 
 addon_connect::addon_connect(std::string& host_name,

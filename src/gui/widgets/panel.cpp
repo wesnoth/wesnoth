@@ -103,44 +103,6 @@ panel_definition::panel_definition(const config& cfg)
 	load_resolutions<resolution>(cfg);
 }
 
-/*WIKI
- * @page = GUIWidgetDefinitionWML
- * @order = 1_panel
- *
- * == Panel ==
- *
- * @macro = panel_description
- *
- * @begin{parent}{name="gui/"}
- * @begin{tag}{name="panel_definition"}{min=0}{max=-1}{super="generic/widget_definition"}
- * A panel is always enabled and can't be disabled. Instead it uses the
- * states as layers to draw on.
- * @begin{tag}{name="resolution"}{min=0}{max=-1}{super="generic/widget_definition/resolution"}
- * The resolution for a panel also contains the following keys:
- * @begin{table}{config}
- *     top_border & unsigned & 0 &     The size which isn't used for the client
- *                                   area. $
- *     bottom_border & unsigned & 0 &  The size which isn't used for the client
- *                                   area. $
- *     left_border & unsigned & 0 &    The size which isn't used for the client
- *                                   area. $
- *     right_border & unsigned & 0 &   The size which isn't used for the client
- *                                   area. $
- * @end{table}
- *
- * The following layers exist:
- * * background, the background of the panel.
- * * foreground, the foreground of the panel.
- * @begin{tag}{name="foreground"}{min=0}{max=1}
- * @allow{link}{name="generic/state/draw"}
- * @end{tag}{name="foreground"}
- * @begin{tag}{name="background"}{min=0}{max=1}
- * @allow{link}{name="generic/state/draw"}
- * @end{tag}{name="background"}
- * @end{tag}{name="resolution"}
- * @end{tag}{name="panel_definition"}
- * @end{parent}{name="gui/"}
- */
 panel_definition::resolution::resolution(const config& cfg)
 	: resolution_definition(cfg)
 	, top_border(cfg["top_border"])
@@ -154,34 +116,6 @@ panel_definition::resolution::resolution(const config& cfg)
 }
 
 // }---------- BUILDER -----------{
-
-/*WIKI_MACRO
- * @begin{macro}{panel_description}
- *
- *        A panel is an item which can hold other items. The difference
- *        between a grid and a panel is that it's possible to define how a
- *        panel looks. A grid in an invisible container to just hold the
- *        items.
- * @end{macro}
- */
-
-/*WIKI
- * @page = GUIWidgetInstanceWML
- * @order = 2_panel
- * @begin{parent}{name="gui/window/resolution/grid/row/column/"}
- * @begin{tag}{name="panel"}{min="0"}{max="-1"}{super="generic/widget_instance"}
- * == Panel ==
- *
- * @macro = panel_description
- *
- * @begin{table}{config}
- *     grid & grid & &                 Defines the grid with the widgets to
- *                                     place on the panel. $
- * @end{table}
- * @allow{link}{name="gui/window/resolution/grid"}
- * @end{tag}{name="panel"}
- * @end{parent}{name="gui/window/resolution/grid/row/column/"}
- */
 
 namespace implementation
 {
