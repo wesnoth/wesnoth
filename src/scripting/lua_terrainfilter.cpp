@@ -57,15 +57,7 @@ using location_set = std::set<map_location>;
 static const char terrinfilterKey[] = "terrainfilter";
 #define LOG_MATCHES(NAME) \
 LOG_LMG << #NAME << ":matches(" << l << ") line:" << __LINE__   << "\n";
-namespace utils {
-	// todoc++14: use std::make_unique
-	template<typename T, typename... Args>
-	std::unique_ptr<T> make_unique(Args&&... args)
-	{
-		return std::unique_ptr<T>(new T(std::forward<Args>(args)...));
-	}
 
-}
 //helper functions for parsing
 namespace {
 	int atoi(string_view s)
@@ -575,7 +567,7 @@ public:
 		lua_pop(L, 1);
 
 		try {
-			formula_ = utils::make_unique<wfl::formula>(code);
+			formula_ = std::make_unique<wfl::formula>(code);
 		} catch(const wfl::formula_error& e) {
 			ERR_LMG << "formula error" << e.what() << "\n";
 		}
@@ -633,29 +625,29 @@ std::unique_ptr<filter_impl> build_filter(lua_State* L, int res_index, knows_set
 	switch(key)
 	{
 	case F_AND:
-		return utils::make_unique<and_filter>(L, res_index, ks);
+		return std::make_unique<and_filter>(L, res_index, ks);
 	case F_OR:
-		return utils::make_unique<or_filter>(L, res_index, ks);
+		return std::make_unique<or_filter>(L, res_index, ks);
 	case F_NAND:
-		return utils::make_unique<nand_filter>(L, res_index, ks);
+		return std::make_unique<nand_filter>(L, res_index, ks);
 	case F_NOR:
-		return utils::make_unique<nor_filter>(L, res_index, ks);
+		return std::make_unique<nor_filter>(L, res_index, ks);
 	case F_X:
-		return utils::make_unique<x_filter>(L, res_index, ks);
+		return std::make_unique<x_filter>(L, res_index, ks);
 	case F_Y:
-		return utils::make_unique<y_filter>(L, res_index, ks);
+		return std::make_unique<y_filter>(L, res_index, ks);
 	case F_FIND_IN:
-		return utils::make_unique<findin_filter>(L, res_index, ks);
+		return std::make_unique<findin_filter>(L, res_index, ks);
 	case F_ADJACENT:
-		return utils::make_unique<adjacent_filter>(L, res_index, ks);
+		return std::make_unique<adjacent_filter>(L, res_index, ks);
 	case F_TERRAIN:
-		return utils::make_unique<terrain_filter>(L, res_index, ks);
+		return std::make_unique<terrain_filter>(L, res_index, ks);
 	case F_RADUIS:
-		return utils::make_unique<radius_filter>(L, res_index, ks);
+		return std::make_unique<radius_filter>(L, res_index, ks);
 	case F_CACHED:
-		return utils::make_unique<cached_filter>(L, res_index, ks);
+		return std::make_unique<cached_filter>(L, res_index, ks);
 	case F_FORMULA:
-		return utils::make_unique<formula_filter>(L, res_index, ks);
+		return std::make_unique<formula_filter>(L, res_index, ks);
 	default:
 		throw "invalid filter key enum";
 	}
