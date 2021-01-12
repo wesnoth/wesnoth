@@ -61,23 +61,24 @@ std::map<map_location,fixed_t> game_display::debugHighlights_;
  */
 std::vector<surface> footsteps_images(const map_location& loc, const pathfind::marked_route & route_, const display_context * dc_);
 
-game_display::game_display(game_board& board, std::weak_ptr<wb::manager> wb,
-		reports & reports_object,
+game_display::game_display(game_board& board,
+		std::weak_ptr<wb::manager> wb,
+		reports& reports_object,
 		const config& theme_cfg,
 		const config& level,
-		bool) :
-		display(&board, wb, reports_object, theme_cfg, level, false),
-		overlay_map_(),
-		attack_indicator_src_(),
-		attack_indicator_dst_(),
-		route_(),
-		displayedUnitHex_(),
-		sidebarScaling_(1.0),
-		first_turn_(true),
-		in_game_(false),
-		chat_man_(new display_chat_manager(*this)),
-		mode_(RUNNING),
-		needs_rebuild_(false)
+		bool)
+	: display(&board, wb, reports_object, theme_cfg, level, false)
+	, overlay_map_()
+	, attack_indicator_src_()
+	, attack_indicator_dst_()
+	, route_()
+	, displayedUnitHex_()
+	, sidebarScaling_(1.0)
+	, first_turn_(true)
+	, in_game_(false)
+	, chat_man_(new display_chat_manager(*this))
+	, mode_(RUNNING)
+	, needs_rebuild_(false)
 {
 	video().clear_screen();
 }
@@ -85,9 +86,10 @@ game_display::game_display(game_board& board, std::weak_ptr<wb::manager> wb,
 game_display::~game_display()
 {
 	try {
-	// SDL_FreeSurface(minimap_);
-	chat_man_->prune_chat_messages(true);
-	} catch (...) {}
+		// SDL_FreeSurface(minimap_);
+		chat_man_->prune_chat_messages(true);
+	} catch(...) {
+	}
 }
 
 void game_display::new_turn()
