@@ -38,8 +38,7 @@ public:
 			std::weak_ptr<wb::manager> wb,
 			reports & reports_object,
 			const config& theme_cfg,
-			const config& level,
-			bool dummy=false);
+			const config& level);
 
 	~game_display();
 	static game_display* get_singleton()
@@ -185,10 +184,8 @@ public:
 	static int& debug_highlight(const map_location& loc);
 	static void clear_debug_highlights() { debugHighlights_.clear(); }
 
-
 	/** The playing team is the team whose turn it is. */
 	virtual int playing_side() const override { return activeTeam_ + 1; }
-
 
 	std::string current_team_name() const;
 
@@ -236,8 +233,6 @@ private:
 	void invalidate_route();
 
 	map_location displayedUnitHex_;
-
-	double sidebarScaling_;
 
 	bool first_turn_, in_game_;
 

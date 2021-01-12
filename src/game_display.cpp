@@ -65,15 +65,13 @@ game_display::game_display(game_board& board,
 		std::weak_ptr<wb::manager> wb,
 		reports& reports_object,
 		const config& theme_cfg,
-		const config& level,
-		bool)
+		const config& level)
 	: display(&board, wb, reports_object, theme_cfg, level, false)
 	, overlay_map_()
 	, attack_indicator_src_()
 	, attack_indicator_dst_()
 	, route_()
 	, displayedUnitHex_()
-	, sidebarScaling_(1.0)
 	, first_turn_(true)
 	, in_game_(false)
 	, chat_man_(new display_chat_manager(*this))
@@ -86,7 +84,6 @@ game_display::game_display(game_board& board,
 game_display::~game_display()
 {
 	try {
-		// SDL_FreeSurface(minimap_);
 		chat_man_->prune_chat_messages(true);
 	} catch(...) {
 	}
