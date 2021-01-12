@@ -651,7 +651,7 @@ void server::login_client(boost::asio::yield_context yield, socket_ptr socket)
 				   << ":\trejecting them\n";
 
 			// For compatibility with older clients
-			response.set_attr("version", accepted_versions_.begin()->c_str());
+			response.set_attr_dup("version", accepted_versions_.begin()->c_str());
 
 			simple_wml::node& reject = response.root().add_child("reject");
 			reject.set_attr_dup("accepted_versions", utils::join(accepted_versions_).c_str());
