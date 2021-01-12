@@ -562,8 +562,6 @@ public:
 	/** Expose the event, so observers can be notified about map scrolling. */
 	events::generic_event &scroll_event() const { return scroll_event_; }
 
-	events::generic_event& complete_redraw_event() { return complete_redraw_event_; }
-
 	/** Check if a tile is fully visible on screen. */
 	bool tile_fully_on_screen(const map_location& loc) const;
 
@@ -771,12 +769,6 @@ protected:
 
 	/** Event raised when the map is being scrolled */
 	mutable events::generic_event scroll_event_;
-
-	/**
-	 * notify observers that the screen has been redrawn completely
-	 * atm this is used for replay_controller to add replay controls to the standard theme
-	 */
-	events::generic_event complete_redraw_event_;
 
 	boost::circular_buffer<unsigned> frametimes_; // in milliseconds
 	unsigned int fps_counter_;

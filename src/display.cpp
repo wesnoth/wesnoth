@@ -193,7 +193,6 @@ display::display(const display_context * dc, std::weak_ptr<wb::manager> wb, repo
 	map_labels_(new map_labels(nullptr)),
 	reports_object_(&reports_object),
 	scroll_event_("scrolled"),
-	complete_redraw_event_("completely_redrawn"),
 	frametimes_(50),
 	fps_counter_(),
 	fps_start_(),
@@ -2463,8 +2462,6 @@ void display::redraw_everything()
 	draw(true,true);
 	int ticks3 = SDL_GetTicks();
 	LOG_DP << "invalidate and draw: " << (ticks3 - ticks2) << " and " << (ticks2 - ticks1) << "\n";
-
-	complete_redraw_event_.notify_observers();
 }
 
 void display::add_redraw_observer(std::function<void(display&)> f)
