@@ -56,7 +56,7 @@ bool goto_mp_staging(ng::connect_engine& engine);
  * Opens the MP Join Game screen and sets the game state according to the changes made.
  * Meant to be used between scenarios in a campaign.
  *
- * @param observer            Whether entering as an observer or player.
+ * @param observe             Whether entering as an observer or player.
  */
 bool goto_mp_wait(bool observe);
 
