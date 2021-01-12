@@ -14,6 +14,7 @@
    * update footpad sprite
    * north-facing frames for dunefolk skirmisher, loyalist bowman, and troll whelp
  ### User interface
+   * Added a "disengaged" orb, shown instead of the partially-moved orb for units that can move but can't attack.
  ### WML Engine
  ### Miscellaneous and Bug Fixes
 

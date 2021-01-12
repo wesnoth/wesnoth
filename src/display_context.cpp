@@ -67,36 +67,38 @@ unit_const_ptr display_context::get_visible_unit_shared_ptr(const map_location &
 	return u.get_shared_ptr();
 }
 
-bool display_context::unit_can_move(const unit &u) const
+display_context::can_move_result display_context::unit_can_move(const unit& u) const
 {
-	if(!u.attacks_left() && u.movement_left()==0)
-		return false;
+	if(!u.attacks_left() && u.movement_left() == 0)
+		return {false, false};
 
 	// Units with goto commands that have already done their gotos this turn
 	// (i.e. don't have full movement left) should have red globes.
 	if(u.has_moved() && u.has_goto()) {
-		return false;
+		return {false, false};
 	}
 
-	const team &current_team = get_team(u.side());
+	const team& current_team = get_team(u.side());
 
+	can_move_result result = {false, false};
 	for(const map_location& adj : get_adjacent_tiles(u.get_location())) {
 		if (map().on_board(adj)) {
-			const unit_map::const_iterator i = units().find(adj);
-			if (i.valid() && !i->incapacitated() &&
-			    current_team.is_enemy(i->side())) {
-				return true;
+			if(!result.attack_here) {
+				const unit_map::const_iterator i = units().find(adj);
+				if (i.valid() && !i->incapacitated() && current_team.is_enemy(i->side())) {
+					result.attack_here = true;
+				}
 			}
 
-			if (u.movement_cost(map()[adj]) <= u.movement_left()) {
-				return true;
+			if (!result.move && u.movement_cost(map()[adj]) <= u.movement_left()) {
+				result.move = true;
 			}
 		}
 	}
 
 	// This should probably check if the unit can teleport too
 
-	return false;
+	return result;
 }
 
 orb_status display_context::unit_orb_status(const unit& u) const
@@ -105,9 +107,12 @@ orb_status display_context::unit_orb_status(const unit& u) const
 		return orb_status::moved;
 	if(u.movement_left() == u.total_movement() && u.attacks_left() == u.max_attacks())
 		return orb_status::unmoved;
-	if(unit_can_move(u))
-		return orb_status::partial;
-	return orb_status::moved;
+	auto can_move = unit_can_move(u);
+	if(!can_move)
+		return orb_status::moved;
+	if(can_move.move && u.attacks_left() == 0)
+		return orb_status::disengaged;
+	return orb_status::partial;
 }
 
 int display_context::village_owner(const map_location& loc) const

@@ -840,43 +840,49 @@ On the top of the energy bar shown next to each unit of yours is an
 orb. This orb is:
 
 .Orbs
-`------`------------------------------------------`-----------------------------
-Orb    Image                                      Description
---------------------------------------------------------------------------------
-Green  image:images/orb-green.jpg["Green orb"]    If you control the unit and \
-                                                  it hasn't moved this turn
-Yellow image:images/orb-yellow.jpg["Yellow orb"]  If you control the unit and \
-                                                  it has moved this turn, but \
-                                                  could still move further or \
-                                                  attack
-Red    image:images/orb-red.jpg["Red orb"]        If you control the unit, but \
-                                                  it can no longer move or \
-                                                  attack, or the user ended \
-                                                  the unit's turn
-Blue   image:images/orb-blue.jpg["Blue orb"]      If the unit is an ally you \
-                                                  do not control
--      image:images/orb-none.jpg["No orb"]        Enemy units have no orb on \
-                                                  the top of their energy bar
---------------------------------------------------------------------------------
+`--------------`-------------------------------------------------`-----------------------------
+Orb            Image                                             Description
+-----------------------------------------------------------------------------------------------
+Green          image:images/orb-green.jpg["Green orb"]           If you control the unit and \
+                                                                 it hasn't moved this turn
+Yellow         image:images/orb-yellow.jpg["Yellow orb"]         If you control the unit and \
+                                                                 it has moved this turn, but \
+                                                                 could still move further or \
+                                                                 attack
+Red            image:images/orb-red.jpg["Red orb"]               If you control the unit, but \
+                                                                 it can no longer move or \
+                                                                 attack, or the user ended \
+                                                                 the unit's turn
+Red and yellow image:images/orb-disengaged.png["Two color orb"]  If you control the unit and \
+                                                                 it has attacked this turn, and \
+                                                                 could still move further but \
+                                                                 could not attack again
+Blue           image:images/orb-blue.jpg["Blue orb"]             If the unit is an ally you \
+                                                                 do not control. On the ally's \
+                                                                 own turn these will be shown \
+                                                                 with green, yellow and red orbs
+-              image:images/orb-none.jpg["No orb"]               Enemy units have no orb on \
+                                                                 the top of their energy bar
+-----------------------------------------------------------------------------------------------
 
 Ellipses, Team Colors, and Hero Icons
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Below each unit there will normally be a colored ellipses or base. The
-color identifies its team; in a campaign game, the human-player color is
-red. The team color will also show up in parts of the unit's clothing,
-or possibly on a shield insignia.
+color identifies its team. The team color will also show up in parts of
+the unit's clothing, or possibly on a shield insignia.
 
 Usually the ellipse will be a solid disk. On level 0 units,
 you will see an ellipse that has broken lines. This indicates
 that the unit has no Zone of Control.
 
-Some campaigns use a star-shaped base to indicate leaders and heroes
-(units which are somehow special and for example not allowed to die in
-the course of the scenario); others use a silver crown icon above the
-energy bar to mark heroes. Still others have no specific hero indicator
-at all. Which (if any) is used is a stylistic choice left to campaign
-designers.
+Units that can recruit will always have a star-shaped base. Other units
+normally have an elliptic base.
+
+Some campaigns use a smaller star-shaped base and a silver crown icon
+above the energy bar to indicate heroes (units which are somehow special
+and for example not allowed to die in the course of the scenario).
+Whether to do this is a stylistic choice left to campaign designers.
 
 Fighting
 ~~~~~~~~

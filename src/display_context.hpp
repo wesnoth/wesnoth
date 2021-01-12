@@ -64,19 +64,31 @@ public:
 	const unit * get_visible_unit(const map_location &loc, const team &current_team, bool see_all = false) const;
 	unit_const_ptr get_visible_unit_shared_ptr(const map_location &loc, const team &current_team, bool see_all = false) const;
 
+	struct can_move_result
+	{
+		/**
+		 * The unit can move to another hex, taking account of enemies' locations, ZoC and
+		 * terrain costs vs current movement points.
+		 */
+		bool move = false;
+
+		/**
+		 * The unit can make an attack from the hex that it's currently on, this
+		 * requires attack points and a non-petrified enemy in an adjacent hex.
+		 */
+		bool attack_here = false;
+
+		operator bool() const
+		{
+			return move || attack_here;
+		}
+	};
+
 	/**
-	 * True if, and only if, at least one of the following is true:
-	 *
-	 * (a) the unit can move to another hex, taking account of ZoC and
-	 * terrain costs vs current movement points.
-	 *
-	 * (b) the unit can make an attack from the hex that it's currently on,
-	 * requires attack points and a non-petrified enemy in an adjacent hex.
-	 *
-	 * This does not check which player's turn is currently active, the result is calculated
-	 * assuming that the unit's owner is currently active.
+	 * Work out what @a u can do - this does not check which player's turn is currently active, the
+	 * result is calculated assuming that the unit's owner is currently active.
 	 */
-	bool unit_can_move(const unit& u) const;
+	can_move_result unit_can_move(const unit& u) const;
 
 	/**
 	 * Returns an enumurated summary of whether this unit can move and/or attack.
