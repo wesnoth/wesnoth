@@ -31,13 +31,13 @@ public:
 
 	std::string config_name() const;
 
-	std::string create_map(utils::optional<uint32_t> randomseed = utils::nullopt);
-	config create_scenario(utils::optional<uint32_t> randomseed = utils::nullopt);
+	std::string create_map(utils::optional<uint32_t> randomseed = {});
+	config create_scenario(utils::optional<uint32_t> randomseed = {});
 
 private:
 	struct cave_map_generator_job
 	{
-		cave_map_generator_job(const cave_map_generator& params, utils::optional<uint32_t> randomseed = utils::nullopt);
+		cave_map_generator_job(const cave_map_generator& params, utils::optional<uint32_t> randomseed = {});
 
 		struct chamber {
 			chamber()

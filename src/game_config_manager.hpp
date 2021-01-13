@@ -62,7 +62,7 @@ private:
 	void load_game_config(bool reload_everything);
 
 	void load_game_config_with_loadscreen(FORCE_RELOAD_CONFIG force_reload,
-		game_classification const* classification = nullptr, utils::optional<std::set<std::string>> active_addons = utils::nullopt);
+		game_classification const* classification = nullptr, utils::optional<std::set<std::string>> active_addons = {});
 
 	// load_game_config() helper functions.
 	void load_addons_cfg();
