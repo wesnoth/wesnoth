@@ -163,76 +163,81 @@ void display::remove_single_overlay(const map_location& loc, const std::string& 
 	);
 }
 
-display::display(const display_context * dc, std::weak_ptr<wb::manager> wb, reports & reports_object, const config& theme_cfg, const config& level, bool auto_join) :
-	video2::draw_layering(auto_join),
-	dc_(dc),
-	halo_man_(new halo::manager(*this)),
-	wb_(wb),
-	exclusive_unit_draw_requests_(),
-	screen_(CVideo::get_singleton()),
-	currentTeam_(0),
-	dont_show_all_(false),
-	xpos_(0),
-	ypos_(0),
-	view_locked_(false),
-	theme_(theme_cfg, screen_.screen_area()),
-	zoom_index_(0),
-	fake_unit_man_(new fake_unit_manager(*this)),
-	builder_(new terrain_builder(level, (dc_ ? &dc_->map() : nullptr), theme_.border().tile_image, theme_.border().show_border)),
-	minimap_(nullptr),
-	minimap_location_(sdl::empty_rect),
-	redrawMinimap_(false),
-	redraw_background_(true),
-	invalidateAll_(true),
-	grid_(false),
-	diagnostic_label_(0),
-	panelsDrawn_(false),
-	turbo_speed_(2),
-	turbo_(false),
-	invalidateGameStatus_(true),
-	map_labels_(new map_labels(nullptr)),
-	reports_object_(&reports_object),
-	scroll_event_("scrolled"),
-	frametimes_(50),
-	fps_counter_(),
-	fps_start_(),
-	fps_actual_(),
-	reportRects_(),
-	reportSurfaces_(),
-	reports_(),
-	menu_buttons_(),
-	action_buttons_(),
-	invalidated_(),
-	mouseover_hex_overlay_(nullptr),
-	tod_hex_mask1(nullptr),
-	tod_hex_mask2(nullptr),
-	fog_images_(),
-	shroud_images_(),
-	selectedHex_(),
-	mouseoverHex_(),
-	keys_(),
-	animate_map_(true),
-	animate_water_(true),
-	flags_(),
-	activeTeam_(0),
-	drawing_buffer_(),
-	map_screenshot_(false),
-	reach_map_(),
-	reach_map_old_(),
-	reach_map_changed_(true),
-	fps_handle_(0),
-	invalidated_hexes_(0),
-	drawn_hexes_(0),
-	idle_anim_(preferences::idle_anim()),
-	idle_anim_rate_(1.0),
-	map_screenshot_surf_(nullptr),
-	redraw_observers_(),
-	draw_coordinates_(false),
-	draw_terrain_codes_(false),
-	draw_num_of_bitmaps_(false),
-	arrows_map_(),
-	color_adjust_(),
-	dirty_()
+display::display(const display_context* dc,
+		std::weak_ptr<wb::manager> wb,
+		reports& reports_object,
+		const config& theme_cfg,
+		const config& level,
+		bool auto_join)
+	: video2::draw_layering(auto_join)
+	, dc_(dc)
+	, halo_man_(new halo::manager(*this))
+	, wb_(wb)
+	, exclusive_unit_draw_requests_()
+	, screen_(CVideo::get_singleton())
+	, currentTeam_(0)
+	, dont_show_all_(false)
+	, xpos_(0)
+	, ypos_(0)
+	, view_locked_(false)
+	, theme_(theme_cfg, screen_.screen_area())
+	, zoom_index_(0)
+	, fake_unit_man_(new fake_unit_manager(*this))
+	, builder_(new terrain_builder(level, (dc_ ? &dc_->map() : nullptr), theme_.border().tile_image, theme_.border().show_border))
+	, minimap_(nullptr)
+	, minimap_location_(sdl::empty_rect)
+	, redrawMinimap_(false)
+	, redraw_background_(true)
+	, invalidateAll_(true)
+	, grid_(false)
+	, diagnostic_label_(0)
+	, panelsDrawn_(false)
+	, turbo_speed_(2)
+	, turbo_(false)
+	, invalidateGameStatus_(true)
+	, map_labels_(new map_labels(nullptr))
+	, reports_object_(&reports_object)
+	, scroll_event_("scrolled")
+	, frametimes_(50)
+	, fps_counter_()
+	, fps_start_()
+	, fps_actual_()
+	, reportRects_()
+	, reportSurfaces_()
+	, reports_()
+	, menu_buttons_()
+	, action_buttons_()
+	, invalidated_()
+	, mouseover_hex_overlay_(nullptr)
+	, tod_hex_mask1(nullptr)
+	, tod_hex_mask2(nullptr)
+	, fog_images_()
+	, shroud_images_()
+	, selectedHex_()
+	, mouseoverHex_()
+	, keys_()
+	, animate_map_(true)
+	, animate_water_(true)
+	, flags_()
+	, activeTeam_(0)
+	, drawing_buffer_()
+	, map_screenshot_(false)
+	, reach_map_()
+	, reach_map_old_()
+	, reach_map_changed_(true)
+	, fps_handle_(0)
+	, invalidated_hexes_(0)
+	, drawn_hexes_(0)
+	, idle_anim_(preferences::idle_anim())
+	, idle_anim_rate_(1.0)
+	, map_screenshot_surf_(nullptr)
+	, redraw_observers_()
+	, draw_coordinates_(false)
+	, draw_terrain_codes_(false)
+	, draw_num_of_bitmaps_(false)
+	, arrows_map_()
+	, color_adjust_()
+	, dirty_()
 {
 	//The following assertion fails when starting a campaign
 	assert(singleton_ == nullptr);
