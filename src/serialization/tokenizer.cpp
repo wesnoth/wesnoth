@@ -13,8 +13,6 @@
    See the COPYING file for more details.
 */
 
-/** @file */
-
 #include "global.hpp"
 #include "serialization/tokenizer.hpp"
 #include "wesconfig.h"

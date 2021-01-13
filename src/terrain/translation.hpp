@@ -12,8 +12,6 @@
    See the COPYING file for more details.
 */
 
-/** @file */
-
 #pragma once
 
 #include <vector>
@@ -245,7 +243,7 @@ namespace t_translation {
 	 *					the last is stored. The returned value is a map:
 	 *					* first		the starting locations
 	 *					* second	a coordinate structure where the location was found
-	 * @param border_offset 
+	 * @param border_offset
 	 *
 	 * @returns			A 2D vector with the terrains found the vector data is stored
 	 *					like result[x][y] where x the column number is and y the row number.
@@ -257,7 +255,7 @@ namespace t_translation {
 	 *
 	 * @param map				 A terrain vector, as returned from read_game_map
 	 * @param positions A starting positions map, as returned from read_game_map
-	 * @param border_offset 
+	 * @param border_offset
 	 *
 	 * @returns			A terrain string which can be read with read_game_map.
 	 *					For readability the map is padded to groups of 12 chars,

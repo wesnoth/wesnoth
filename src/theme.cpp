@@ -12,8 +12,6 @@
    See the COPYING file for more details.
 */
 
-/** @file */
-
 #include "theme.hpp"
 
 #include "desktop/battery_info.hpp"

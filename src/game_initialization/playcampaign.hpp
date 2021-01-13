@@ -13,8 +13,6 @@
    See the COPYING file for more details.
 */
 
-/** @file */
-
 #pragma once
 
 #include "game_end_exceptions.hpp"

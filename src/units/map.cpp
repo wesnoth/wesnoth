@@ -13,8 +13,6 @@
    See the COPYING file for more details.
 */
 
-/** @file */
-
 #include "log.hpp"
 #include "units/id.hpp"
 #include "units/unit.hpp"

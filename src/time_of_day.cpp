@@ -12,8 +12,6 @@
    See the COPYING file for more details.
 */
 
-/** @file */
-
 #include "time_of_day.hpp"
 
 #include "config.hpp"
