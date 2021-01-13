@@ -164,10 +164,11 @@ int tod_manager::get_current_area_time(int index) const
 int tod_manager::get_current_time(const map_location& loc) const
 {
 	if(loc != map_location::null_location()) {
-		for(std::vector<area_time_of_day>::const_reverse_iterator i = areas_.rbegin(), i_end = areas_.rend();
+		for(auto i = areas_.rbegin(), i_end = areas_.rend();
 			i != i_end; ++i) {
-			if(i->hexes.find(loc) != i->hexes.end())
+			if(i->hexes.find(loc) != i->hexes.end()) {
 				return i->currentTime;
+			}
 		}
 	}
 
@@ -177,7 +178,7 @@ int tod_manager::get_current_time(const map_location& loc) const
 const std::vector<time_of_day>& tod_manager::times(const map_location& loc) const
 {
 	if(loc != map_location::null_location()) {
-		for(std::vector<area_time_of_day>::const_reverse_iterator i = areas_.rbegin(), i_end = areas_.rend();
+		for(auto i = areas_.rbegin(), i_end = areas_.rend();
 			i != i_end; ++i) {
 			if(i->hexes.find(loc) != i->hexes.end() && !i->times.empty())
 				return i->times;
@@ -194,7 +195,7 @@ const time_of_day& tod_manager::get_time_of_day(const map_location& loc, int n_t
 	}
 
 	if(loc != map_location::null_location()) {
-		for(std::vector<area_time_of_day>::const_reverse_iterator i = areas_.rbegin(), i_end = areas_.rend();
+		for(auto i = areas_.rbegin(), i_end = areas_.rend();
 			i != i_end; ++i) {
 			if(i->hexes.find(loc) != i->hexes.end() && !i->times.empty())
 				return get_time_of_day_turn(i->times, n_turn, i->currentTime);
@@ -226,7 +227,7 @@ const time_of_day tod_manager::get_illuminated_time_of_day(
 		get_adjacent_tiles(loc, locs.data() + 1); // start at [1]
 
 		for(std::size_t i = 0; i < locs.size(); ++i) {
-			const unit_map::const_iterator itor = units.find(locs[i]);
+			const auto itor = units.find(locs[i]);
 			if(itor != units.end() && !itor->incapacitated()) {
 				unit_ability_list illum = itor->get_abilities("illuminates");
 				if(!illum.empty()) {
@@ -305,11 +306,11 @@ void tod_manager::replace_local_schedule(const std::vector<time_of_day>& schedul
 	area_time_of_day& area = areas_[area_index];
 
 	if(area.times.empty() || schedule.empty()) {
-		// If one of those is empty then their 'prievious' time of day might depend on other areas_,
-		// its better to just assume the illimination has changes than to do the explicit computation.
+		// If one of those is empty then their 'previous' time of day might depend on other areas_,
+		// its better to just assume the illumination has changes than to do the explicit computation.
 		has_tod_bonus_changed_ = true;
 	} else if(area.times[area.currentTime].lawful_bonus != schedule.front().lawful_bonus) {
-		// the current illimination on these tiles has changes.
+		// the current illumination on these tiles has changes.
 		has_tod_bonus_changed_ = true;
 	}
 
@@ -381,7 +382,7 @@ void tod_manager::remove_time_area(const std::string& area_id)
 		areas_.clear();
 	} else {
 		// search for all time areas that match the id.
-		std::vector<area_time_of_day>::iterator i = areas_.begin();
+		auto i = areas_.begin();
 		while(i != areas_.end()) {
 			if((*i).id == area_id) {
 				i = areas_.erase(i);
@@ -426,7 +427,7 @@ void tod_manager::update_server_information() const
 {
 	if(resources::controller->current_team().is_local()) {
 		// The currently active side informs the mp server about the turn change.
-		// NOTE: The current implementation does not guarnateee that the server gets informed
+		// NOTE: The current implementation does not guarantee that the server gets informed
 		// about those changes in 100% of cases. But that is ok because the information is only
 		// used to display the turn limit in the lobby (as opposed to things that cause OOS).
 		resources::controller->send_to_wesnothd(config {
