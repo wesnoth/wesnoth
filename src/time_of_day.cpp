@@ -72,6 +72,6 @@ void time_of_day::write(config& cfg) const
 void time_of_day::parse_times(const config& cfg, std::vector<time_of_day>& times)
 {
 	for(const config& t : cfg.child_range("time")) {
-		times.push_back(time_of_day(t));
+		times.emplace_back(t);
 	}
 }
