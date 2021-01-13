@@ -72,7 +72,6 @@ game_display::game_display(game_board& board,
 	, attack_indicator_dst_()
 	, route_()
 	, displayedUnitHex_()
-	, first_turn_(true)
 	, in_game_(false)
 	, chat_man_(new display_chat_manager(*this))
 	, mode_(RUNNING)
@@ -91,9 +90,11 @@ game_display::~game_display()
 
 void game_display::new_turn()
 {
+	static bool first_turn = true;
 	const time_of_day& tod = resources::tod_manager->get_time_of_day();
 
-	if( !first_turn_) {
+	// We want to skip this on the first run of this function
+	if(!first_turn) {
 		const time_of_day& old_tod = resources::tod_manager->get_previous_time_of_day();
 
 		if(old_tod.image_mask != tod.image_mask) {
@@ -131,7 +132,7 @@ void game_display::new_turn()
 		tod_hex_mask2 = nullptr;
 	}
 
-	first_turn_ = false;
+	first_turn = false;
 
 	display::update_tod();
 

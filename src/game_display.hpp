@@ -232,7 +232,7 @@ private:
 
 	map_location displayedUnitHex_;
 
-	bool first_turn_, in_game_;
+	bool in_game_;
 
 	const std::unique_ptr<display_chat_manager> chat_man_;
 
