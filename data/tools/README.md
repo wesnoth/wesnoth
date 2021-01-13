@@ -27,10 +27,12 @@ in a specified way.  Now supports only flipping the map around the Y
 axis, but provides a framework that should make other transformations
 easy.
 
-=== wmllint ===
+=== wmllint and wmllint-1.4 ===
 
 This tool lifts WML from older dialects to current and performs sanity checks.
 See the header comment of wmllint for a description and invocation options.
+wmllint-1.4 is an older version of wmllint kept alive because wmllint is
+incompatible with pre-1.4 syntax.
 
 === GUI.pyw ===
 
