@@ -26,11 +26,13 @@ namespace utils
 #ifdef HAVE_CXX17
 
 using std::optional;
+using std::make_optional;
 using std::nullopt;
 
 #else
 
 using boost::optional;
+using boost::make_optional;
 
 // Create a new nullopt object equivalent to boost::none to match the STL interface
 static const boost::none_t nullopt{boost::none_t::init_tag{}};
