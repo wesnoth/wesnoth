@@ -1804,13 +1804,14 @@ def global_sanity_check(filename, lines):
     # Because we can't be sure about what the UMC author wants to do, just warn
     in_campaign = False
     for num, line in enumerate(lines, start=1):
-        if "[campaign]" in line:
+        precomment = line.split("#")[0]
+        if "[campaign]" in precomment:
             in_campaign = True
             continue
-        if "[/campaign]" in line:
+        if "[/campaign]" in precomment:
             in_campaign = False
             continue
-        if has_opening_tag(line, "advancefrom"):
+        if has_opening_tag(precomment, "advancefrom"):
             print("{}, line {}: [advancefrom] needs to be manually updated to \
 [modify_unit_type] and moved into the _main.cfg file".format(filename, num))
         if in_campaign:
