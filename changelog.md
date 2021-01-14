@@ -2,6 +2,8 @@
  ### Add-ons client
  ### Add-ons server
  ### Campaigns
+   * Dead Water
+     * Reduce campaign difficulty
  ### Editor
    * Added help topics for the scenario editor's tools
    * Added documentation about the files written by the editor
