@@ -1965,8 +1965,16 @@ void unit::apply_builtin_effect(std::string apply_to, const config& effect)
 			hit_points_ = 1;
 		}
 	} else if(apply_to == "movement") {
-		const std::string& increase = effect["increase"];
+		const bool apply_to_vision = effect["apply_to_vision"].to_bool(true);
 
+		// Unlink vision from movement, regardless of whether we'll increment both or not
+		if(vision_ < 0) {
+			vision_ = max_movement_;
+		}
+
+		const int old_max = max_movement_;
+
+		const std::string& increase = effect["increase"];
 		if(!increase.empty()) {
 			set_total_movement(utils::apply_modifier(max_movement_, increase, 1));
 		}
@@ -1976,12 +1984,19 @@ void unit::apply_builtin_effect(std::string apply_to, const config& effect)
 		if(movement_ > max_movement_) {
 			movement_ = max_movement_;
 		}
-	} else if(apply_to == "vision") {
-		const std::string& increase = effect["increase"];
 
+		if(apply_to_vision) {
+			vision_ = std::max(0, vision_ + max_movement_ - old_max);
+		}
+	} else if(apply_to == "vision") {
+		// Unlink vision from movement, regardless of which one we're about to change.
+		if(vision_ < 0) {
+			vision_ = max_movement_;
+		}
+
+		const std::string& increase = effect["increase"];
 		if(!increase.empty()) {
-			const int current_vision = vision_ < 0 ? max_movement_ : vision_;
-			vision_ = utils::apply_modifier(current_vision, increase, 1);
+			vision_ = utils::apply_modifier(vision_, increase, 1);
 		}
 
 		vision_ = effect["set"].to_int(vision_);
