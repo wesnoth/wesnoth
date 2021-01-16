@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2020-12-19 01:27 UTC\n"
+"POT-Creation-Date: 2021-01-16 14:18 UTC\n"
 "PO-Revision-Date: 2011-12-29 00:33+0300\n"
 "Last-Translator: Kaido Kikkas <kakk@kakupesa.net>\n"
 "Language-Team: none\n"
@@ -746,6 +746,7 @@ msgstr ""
 "valis Tallin viimase. Inimesed kogunesid kiiresti, võtsid kogu toidu ja "
 "relvastuse, mida kätte said, ning sukeldusid koobaste pimedusse."
 
+#. [side]
 #. [side]: type=Troll Warrior, id=Tor
 #. [side]: type=Troll Hero, id=Bor
 #. [side]: type=Troll Rocklobber, id=Oof
@@ -753,7 +754,6 @@ msgstr ""
 #. [side]: type=Troll, id=Knash
 #. [side]: type=Troll, id=Krog
 #. [side]: type=Troll Warrior, id=Thung
-#. [side]
 #: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:71
 #: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:85
 #: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:159
@@ -787,9 +787,6 @@ msgstr "Krog"
 msgid "Hamel"
 msgstr "Hamel"
 
-#. [side]: type=Death Knight, id=Mal Barath
-#. [side]: type=Death Knight, id=Delzath
-#. [side]: type=Death Knight, id=Mal Tath
 #. [side]: type=Ancient Lich, id=Malifor
 #. [side]: type=Draug, id=Thorin
 #. [side]: type=Draug, id=Herlin
@@ -800,6 +797,9 @@ msgstr "Hamel"
 #. [side]: type=Death Knight, id=Author
 #. [side]: type=Death Knight, id=Boblin
 #. [side]: type=Death Knight, id=Antrasis
+#. [side]: type=Death Knight, id=Mal Barath
+#. [side]: type=Death Knight, id=Delzath
+#. [side]: type=Death Knight, id=Mal Tath
 #: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:143
 #: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:187
 #: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:205
@@ -1188,9 +1188,9 @@ msgstr ""
 "Hameliga."
 
 #. [message]: speaker=Tallin
+#. [message]: speaker=unit
 #. [message]: speaker=Father Morvin
 #. [message]: speaker=Ro'Arthian
-#. [message]: speaker=unit
 #: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:904
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1321
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2303
@@ -1712,9 +1712,9 @@ msgstr "Kaevanduste puhastamine"
 msgid "When the party finally reached the mines, they were not disappointed."
 msgstr "Kui seltskond viimaks kaevandusse jõudis, ei tulnud neil pettuda."
 
+#. [side]: type=Lieutenant, id=Tallin
 #. [side]
 #. [side]: type=Elvish Avenger, id=Sisal
-#. [side]: type=Lieutenant, id=Tallin
 #. [side]: type=Dwarvish Lord, id=Hamel
 #: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:29
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:32
@@ -4029,19 +4029,19 @@ msgstr ""
 msgid "Knalgans"
 msgstr "Knalgalased"
 
+#. [side]
+#. [side]: type=Orcish Warlord, id=Drung
+#. [side]: type=Orcish Warlord, id=Poul
+#. [side]: type=Orcish Warlord, id=Atul
 #. [side]: type=Troll Warrior, id=Gore
 #. [side]: type=Orcish Warlord, id=Carron
 #. [side]: type=Orcish Warlord, id=Rash
 #. [side]: type=Orcish Warlord, id=Al'Mar
 #. [side]: type=Orcish Warlord, id=Ha'Tang
 #. [side]: type=Orcish Warlord, id=Ha'Tuil
-#. [side]
 #. [side]: type=Orcish Warlord, id=Ar'Muff
 #. [side]: type=Orcish Warlord, id=Calter
 #. [side]: type=Orcish Warlord, id=Halter
-#. [side]: type=Orcish Warlord, id=Drung
-#. [side]: type=Orcish Warlord, id=Poul
-#. [side]: type=Orcish Warlord, id=Atul
 #: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:57
 #: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:87
 #: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:110
@@ -4628,8 +4628,8 @@ msgstr ""
 msgid "(<i>Giggle</i>) Something like that."
 msgstr "(itsitab) Miskit sellist jah."
 
-#. [story]
 #. [message]: speaker=Tallin
+#. [story]
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:91
 #: data/campaigns/Northern_Rebirth/scenarios/09a_Introductions.cfg:234
 msgid "(<i>Rolls eyes</i>)"
@@ -4716,8 +4716,8 @@ msgstr "Olgu nii. Kuidas me sinna mäekurule pääseme?"
 msgid "And so Tallin and his party set out to secure the help of the mages."
 msgstr "Ja nii läksid Tallin ja tema salk võlurite abi otsima."
 
-#. [side]: type=Dwarvish Lord, id=Stalrag
 #. [unit]: type=Dwarvish Lord, id=Stalrag
+#. [side]: type=Dwarvish Lord, id=Stalrag
 #. [part]
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:153
 #: data/campaigns/Northern_Rebirth/scenarios/08a_Elvish_Princess.cfg:221
@@ -4730,9 +4730,9 @@ msgstr "Stalrag"
 msgid "Liches"
 msgstr ""
 
-#. [side]: type=Ancient Lich, id=Ro'Arthian
-#. [modify_side]
 #. [unit]: type=Ancient Lich, id=Ro'Arthian
+#. [modify_side]
+#. [side]: type=Ancient Lich, id=Ro'Arthian
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:222
 #: data/campaigns/Northern_Rebirth/scenarios/08a_Elvish_Princess.cfg:247
 #: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:431
@@ -5217,10 +5217,10 @@ msgstr ""
 "Oota hetk, Tallin. Kas sa mõtled, et me peame oma kodumaa neile vastikutele "
 "võluritele jätma!?"
 
-#. [message]: speaker=Eryssa
 #. [message]: speaker=Ro'Sothian
-#. [message]: speaker=Ro'Arthian
+#. [message]: speaker=Eryssa
 #. [message]: id=Ro'Sothian
+#. [message]: speaker=Ro'Arthian
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:858
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1049
 #: data/campaigns/Northern_Rebirth/scenarios/11a_The_Eastern_Flank.cfg:520
@@ -5706,8 +5706,8 @@ msgstr ""
 msgid "INTRUDERS! KILL THEM!!"
 msgstr "SISSETUNGIJAD! TAPKE NAD!!!"
 
-#. [modify_side]
 #. [unit]: type=Elvish Sorceress, id=Eryssa
+#. [modify_side]
 #. [part]
 #: data/campaigns/Northern_Rebirth/scenarios/08a_Elvish_Princess.cfg:385
 #: data/campaigns/Northern_Rebirth/scenarios/09a_Introductions.cfg:119
@@ -6744,8 +6744,8 @@ msgstr "Pea lõuad, argpüks!"
 msgid "Help Tallin defeat the enemy leaders"
 msgstr "Aita Tallinil vaenlase pealikud alistada"
 
-#. [unit]: type=Elvish Marshal, id=Hidel
 #. [unit]: id=Hidel, type=Elvish Marshal
+#. [unit]: type=Elvish Marshal, id=Hidel
 #. [part]
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:756
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1067

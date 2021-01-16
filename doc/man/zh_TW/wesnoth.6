@@ -117,7 +117,7 @@ to the file indicated by \fI\-\-output\fP.
 設定日誌記錄的類別。\fBall\fP可以用來支援任何日誌域的類別。可選的類別有：\fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP,\ \fBnone\fP。預設的類別是\fBwarning\fP，對\fBdeprecation\fP域預設類別是\fBnone\fP，除非和\fB\-d\fP選項一併使用。
 .TP 
 \fB\-\-log\-precise\fP
-shows the timestamps in log output with more precision.
+在日誌檔案中顯示更詳細的記錄。
 .TP 
 \fB\-\-log\-strict\fP
 設定日誌記錄器的嚴格等級。任何訊息傳送至此等級網域記錄或更高等級不論勝利與否單位測試都會失敗。只有在和 \fB\-u\fP 使用時才會有效。
@@ -327,12 +327,8 @@ validates a file as a WML schema.
 .
 正常退出時的狀態碼為0。狀態碼1代表發生了（SDL、視訊、字型等）初始化錯誤。狀態碼2代表指令行選項中有錯誤。
 .br
-When running unit tests (with\fB\ \-u\fP), the exit status is different. An exit
-status of 0 indicates that the test passed, and 1 indicates that the test
-failed. An exit status of 3 indicates that the test passed, but produced an
-invalid replay file. An exit status of 4 indicates that the test passed, but
-the replay produced errors. These latter two are only returned if
-\fB\-\-noreplaycheck\fP is not passed.
+當執行單位測試（使用 \fB\ \-u\fP），狀態碼會不同。狀態碼0表示通過測試，狀態碼1表示測試失敗。狀態碼3表示通過測試，但無法建立回放檔案。狀態碼4表示測試通過，但回放檔案錯誤。後兩個狀態碼只有在
+\fB\-\-noreplaycheck\fP 不通過的情況下返回。
 .
 .SH 作者
 .

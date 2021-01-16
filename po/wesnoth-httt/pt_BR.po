@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.5-CVS\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2020-12-19 01:26 UTC\n"
+"POT-Creation-Date: 2021-01-16 14:18 UTC\n"
 "PO-Revision-Date: 2020-12-20 18:17-0300\n"
 "Last-Translator: Andrei Machado <andreisp.machado@yahoo.com>\n"
 "Language-Team: Portuguese/Brazil <gnome-l10n-br@listas.cipsga.org.br>\n"
@@ -386,8 +386,8 @@ msgstr "Morte de Delfador"
 # File: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg, line: 80
 # File: data/campaigns/Heir_To_The_Throne/scenarios/24_Battle_for_Wesnoth.cfg, line: 93
 # File: data/campaigns/Heir_To_The_Throne/scenarios/25_HttT_Epilogue.cfg, line: 46
-#. [side]: type=Commander, id=Konrad
 #. [side]: type=Fighter, id=Konrad
+#. [side]: type=Commander, id=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_The_Elves_Besieged.cfg:71
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:63
 #: data/campaigns/Heir_To_The_Throne/scenarios/03_The_Isle_of_Alduin.cfg:50
@@ -490,15 +490,15 @@ msgstr "Konrad"
 # File: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg, line: 77
 # File: data/campaigns/Heir_To_The_Throne/scenarios/24_Battle_for_Wesnoth.cfg, line: 101
 #. [side]: type=Commander, id=Konrad
-#. [side]: type=Ancient Wose, id=Haralamdum
-#. [side]: type=Elvish Enchantress, id=Bona-Melodia
-#. [side]: type=Grand Knight, id=Kaylan
+#. [side]: id=Relgorn, type=Dwarvish Lord
 #. [side]: type=Fighter, id=Konrad
 #. [side]: type=Elvish Champion, id=Galdrad
 #. [side]: type=Elvish Shyde, id=Chantal
-#. [side]: id=Relgorn, type=Dwarvish Lord
+#. [side]: type=Grand Knight, id=Kaylan
 #. [side]: id=Geldar, type=Dwarvish Lord
 #. [side]
+#. [side]: type=Ancient Wose, id=Haralamdum
+#. [side]: type=Elvish Enchantress, id=Bona-Melodia
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_The_Elves_Besieged.cfg:80
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_The_Elves_Besieged.cfg:237
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_The_Elves_Besieged.cfg:256
@@ -593,26 +593,26 @@ msgstr "Urug-Telfar"
 # File: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg, line: 597
 # File: data/campaigns/Heir_To_The_Throne/scenarios/19a_Snow_Plains.cfg, line: 80
 # File: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg, line: 128
-#. [side]: type=Orcish Warrior, id=Mokolo Qimur
-#. [side]: type=Orcish Warrior, id=Halgar Du'nar
-#. [side]: type=Orcish Warrior, id=Gorlak
 #. [side]: type=Orcish Warlord, id=Urug-Telfar
 #. [side]: type=Orcish Warlord, id=Knafa-Tan
 #. [side]: type=Orcish Warlord, id=Maga-Knafa
-#. [side]: type=Orcish Warlord, id=Kior-Dal
-#. [side]: type=Orcish Warlord, id=Kojun Herolm
-#. [side]: type=Orcish Warrior, id=Mokho Kimer
-#. [side]: type=Orcish Slurbow, id=Knafa-Telfar
-#. [side]: type=Orcish Warlord, id=Urug-Tan
-#. [side]: type=Orcish Sovereign, id=Shuuga-Mool
+#. [side]: type=Orcish Warrior, id=Mokolo Qimur
 #. [side]: type=Orcish Warrior, id=Usadar Q'kai
 #. [side]: type=Orcish Warrior, id=Dwaba-Kukai
 #. [side]: type=Orcish Warrior, id=Managa'Gwin
 #. [side]: type=Orcish Warlord, id=Gaga-Breuk
-#. [side]: type=Orcish Warlord, id=Urag-Tifer
+#. [side]: type=Orcish Warrior, id=Halgar Du'nar
+#. [side]: type=Orcish Warrior, id=Gorlak
+#. [side]: type=Orcish Slurbow, id=Knafa-Telfar
+#. [side]: type=Orcish Warlord, id=Urug-Tan
+#. [side]: type=Orcish Sovereign, id=Shuuga-Mool
 #. [side]: type=Goblin Rouser
 #. [side]: type=Orcish Warlord
 #. [side]: type=Troll Warrior
+#. [side]: type=Orcish Warlord, id=Urag-Tifer
+#. [side]: type=Orcish Warlord, id=Kior-Dal
+#. [side]: type=Orcish Warlord, id=Kojun Herolm
+#. [side]: type=Orcish Warrior, id=Mokho Kimer
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_The_Elves_Besieged.cfg:180
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_The_Elves_Besieged.cfg:193
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_The_Elves_Besieged.cfg:213
@@ -1752,8 +1752,8 @@ msgstr "Derrote um líder inimigo e resista ao outro até os turnos terminarem"
 # File: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg, line: 21
 # File: data/campaigns/Heir_To_The_Throne/scenarios/22_Return_to_Wesnoth.cfg, line: 21
 # File: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg, line: 44
-#. [objective]: condition=win
 #. [objectives]
+#. [objective]: condition=win
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:26
 #: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:25
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:24
@@ -2497,19 +2497,19 @@ msgstr "Muff Malal"
 # File: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg, line: 173
 # File: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg, line: 155
 # File: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg, line: 109
+#. [side]: type=Dark Sorcerer, id=Muff Malal
+#. [side]: id=Haf-Mal, type=Lich
+#. [side]: id=Jarmal-Gorg, type=Lich
+#. [side]: type=Lich, id=Galga
+#. [side]: type=Lich, id=Na-alga
+#. [side]: type=Lich, id=Selda-Mana
+#. [side]: type=Death Knight, id=Unan-Ka'tall
 #. [side]: type=Death Knight, id=Clarustus
 #. [side]: type=Death Knight, id=Merlunius
 #. [side]: type=Lich, id=Aimucasur
 #. [side]: type=Death Knight, id=Secadius
 #. [side]: type=Death Knight, id=Dafeis
 #. [side]: type=Ancient Lich, id=Muff Argulak
-#. [side]: type=Dark Sorcerer, id=Muff Malal
-#. [side]: type=Death Knight, id=Unan-Ka'tall
-#. [side]: type=Lich, id=Galga
-#. [side]: type=Lich, id=Na-alga
-#. [side]: type=Lich, id=Selda-Mana
-#. [side]: id=Haf-Mal, type=Lich
-#. [side]: id=Jarmal-Gorg, type=Lich
 #: data/campaigns/Heir_To_The_Throne/scenarios/05a_Muff_Malal_Peninsula.cfg:78
 #: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:131
 #: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:147
@@ -2829,8 +2829,8 @@ msgstr "Pelo visto tem alguém se escndendo no templo."
 # File: data/campaigns/Heir_To_The_Throne/scenarios/09_The_Valley_of_Death.cfg, line: 270
 # File: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg, line: 250
 # File: data/campaigns/Heir_To_The_Throne/scenarios/09_The_Valley_of_Death.cfg, line: 270
-#. [unit]: id=Moremirmu, type=Mage of Light
 #. [unit]: id=Moremirmu, type=White Mage
+#. [unit]: id=Moremirmu, type=Mage of Light
 #: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:299
 #: data/campaigns/Heir_To_The_Throne/scenarios/09_The_Valley_of_Death.cfg:258
 msgid "Moremirmu"
@@ -3019,11 +3019,11 @@ msgstr "Agadla"
 # File: data/campaigns/Heir_To_The_Throne/scenarios/16_Hasty_Alliance.cfg, line: 127
 # File: data/campaigns/Heir_To_The_Throne/scenarios/18_A_Choice_Must_Be_Made.cfg, line: 98
 # File: data/campaigns/Heir_To_The_Throne/scenarios/18_A_Choice_Must_Be_Made.cfg, line: 142
-#. [side]: type=Troll Warrior, id=Haaf-Garga
-#. [side]: id=Brugg, type=Troll Warrior
-#. [side]: id=Lionel, type=Death Knight
 #. [side]: type=Orcish Warlord, id=Agadla
 #. [side]: type=Dark Sorcerer, id=Muff Jaanal
+#. [side]: id=Brugg, type=Troll Warrior
+#. [side]: id=Lionel, type=Death Knight
+#. [side]: type=Troll Warrior, id=Haaf-Garga
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:74
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:115
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:88
@@ -3796,7 +3796,7 @@ msgstr ""
 # File: data/campaigns/Heir_To_The_Throne/scenarios/07_Crossroads.cfg, line: 466
 # File: data/campaigns/Heir_To_The_Throne/scenarios/07_Crossroads.cfg, line: 466
 #. [event]
-#: data/campaigns/Heir_To_The_Throne/scenarios/07_Crossroads.cfg:454
+#: data/campaigns/Heir_To_The_Throne/scenarios/07_Crossroads.cfg:455
 msgid "Niodien"
 msgstr "Niodien"
 
@@ -3804,7 +3804,7 @@ msgstr "Niodien"
 # File: data/campaigns/Heir_To_The_Throne/scenarios/07_Crossroads.cfg, line: 471
 # File: data/campaigns/Heir_To_The_Throne/scenarios/07_Crossroads.cfg, line: 471
 #. [message]: speaker=Niodien
-#: data/campaigns/Heir_To_The_Throne/scenarios/07_Crossroads.cfg:458
+#: data/campaigns/Heir_To_The_Throne/scenarios/07_Crossroads.cfg:459
 msgid "Stay on the path! The hills here are not safe!"
 msgstr "Continue na estrada! As colinas não são seguras!"
 
@@ -3812,7 +3812,7 @@ msgstr "Continue na estrada! As colinas não são seguras!"
 # File: data/campaigns/Heir_To_The_Throne/scenarios/07_Crossroads.cfg, line: 488
 # File: data/campaigns/Heir_To_The_Throne/scenarios/07_Crossroads.cfg, line: 488
 #. [event]
-#: data/campaigns/Heir_To_The_Throne/scenarios/07_Crossroads.cfg:475
+#: data/campaigns/Heir_To_The_Throne/scenarios/07_Crossroads.cfg:476
 msgid "Loflar"
 msgstr "Loflar"
 
@@ -3820,7 +3820,7 @@ msgstr "Loflar"
 # File: data/campaigns/Heir_To_The_Throne/scenarios/07_Crossroads.cfg, line: 493
 # File: data/campaigns/Heir_To_The_Throne/scenarios/07_Crossroads.cfg, line: 493
 #. [message]: speaker=Loflar
-#: data/campaigns/Heir_To_The_Throne/scenarios/07_Crossroads.cfg:479
+#: data/campaigns/Heir_To_The_Throne/scenarios/07_Crossroads.cfg:480
 msgid ""
 "Beware the hills! There are many orcs in hiding, preparing to ambush you!"
 msgstr ""
@@ -3831,7 +3831,7 @@ msgstr ""
 # File: data/campaigns/Heir_To_The_Throne/scenarios/07_Crossroads.cfg, line: 512
 # File: data/campaigns/Heir_To_The_Throne/scenarios/07_Crossroads.cfg, line: 512
 #. [message]: speaker=narrator
-#: data/campaigns/Heir_To_The_Throne/scenarios/07_Crossroads.cfg:498
+#: data/campaigns/Heir_To_The_Throne/scenarios/07_Crossroads.cfg:499
 msgid ""
 "NE — Dan’Tonk\n"
 "SE — Fort Tahn"
@@ -3843,7 +3843,7 @@ msgstr ""
 # File: data/campaigns/Heir_To_The_Throne/scenarios/07_Crossroads.cfg, line: 518
 # File: data/campaigns/Heir_To_The_Throne/scenarios/07_Crossroads.cfg, line: 518
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/07_Crossroads.cfg:504
+#: data/campaigns/Heir_To_The_Throne/scenarios/07_Crossroads.cfg:505
 msgid "Dan’Tonk, we are so close to Weldyn."
 msgstr "Dan'Tonk, nós estamos tão perto de Weldyn."
 
@@ -3851,7 +3851,7 @@ msgstr "Dan'Tonk, nós estamos tão perto de Weldyn."
 # File: data/campaigns/Heir_To_The_Throne/scenarios/07_Crossroads.cfg, line: 522
 # File: data/campaigns/Heir_To_The_Throne/scenarios/07_Crossroads.cfg, line: 522
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/07_Crossroads.cfg:508
+#: data/campaigns/Heir_To_The_Throne/scenarios/07_Crossroads.cfg:509
 msgid ""
 "We dare not confront Asheviere yet. We must retrieve the Sceptre of Fire and "
 "gather more allies in the north."
@@ -3863,7 +3863,7 @@ msgstr ""
 # File: data/campaigns/Heir_To_The_Throne/scenarios/07_Crossroads.cfg, line: 542
 # File: data/campaigns/Heir_To_The_Throne/scenarios/07_Crossroads.cfg, line: 542
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/07_Crossroads.cfg:519
+#: data/campaigns/Heir_To_The_Throne/scenarios/07_Crossroads.cfg:520
 msgid "Victory is ours, men. Let us proceed northeast!"
 msgstr "A vitória é nossa, homens. Continuaremos para nordeste!"
 
@@ -3974,11 +3974,11 @@ msgstr "Li’sar"
 # File: data/campaigns/Heir_To_The_Throne/scenarios/24_Battle_for_Wesnoth.cfg, line: 158
 # File: data/campaigns/Heir_To_The_Throne/scenarios/24_Battle_for_Wesnoth.cfg, line: 167
 #. [side]: type=Princess, id=Li'sar
+#. [side]: type=General, id=Robryn
 #. [side]: type=General, id=Honber
 #. [side]: type=General, id=Josephus
 #. [side]: type=Orcish Warlord, id=Dwar-Ni
 #. [side]: type=General, id=Malatus
-#. [side]: type=General, id=Robryn
 #. [side]: type=Orcish Warlord, id=Haliel-Maga
 #. [side]: type=General, id=Heford
 #. [side]: type=Cavalier, id=Sir Kalm
@@ -9669,9 +9669,9 @@ msgstr "O seu acampamento será desmontado após o primeiro turno."
 # File: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg, line: 40
 # File: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg, line: 50
 #. [side]: type=Commander, id=Konrad
-#. [side]: type=Elvish Marshal, id=El'rien
 #. [side]: type=Elvish Lord, id=Uradredia
 #. [side]: type=Elvish Lady, id=Parandra
+#. [side]: type=Elvish Marshal, id=El'rien
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:61
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:224
 #: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:30
@@ -11646,8 +11646,8 @@ msgstr "Habitante das planícies"
 # File: data/campaigns/Heir_To_The_Throne/scenarios/24_Battle_for_Wesnoth.cfg, line: 212
 # File: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg, line: 95
 # File: data/campaigns/Heir_To_The_Throne/scenarios/24_Battle_for_Wesnoth.cfg, line: 212
-#. [then]
 #. [side]: type=Grand Knight, id=Sir Alric
+#. [then]
 #: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:121
 #: data/campaigns/Heir_To_The_Throne/scenarios/24_Battle_for_Wesnoth.cfg:211
 msgid "Sir Alric"
@@ -11658,8 +11658,8 @@ msgstr "Sir Alric"
 # File: data/campaigns/Heir_To_The_Throne/scenarios/24_Battle_for_Wesnoth.cfg, line: 203
 # File: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg, line: 124
 # File: data/campaigns/Heir_To_The_Throne/scenarios/24_Battle_for_Wesnoth.cfg, line: 203
-#. [then]
 #. [side]: type=Grand Knight, id=Sir Ruga
+#. [then]
 #: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:149
 #: data/campaigns/Heir_To_The_Throne/scenarios/24_Battle_for_Wesnoth.cfg:202
 msgid "Sir Ruga"
@@ -11670,8 +11670,8 @@ msgstr "Sir Ruga"
 # File: data/campaigns/Heir_To_The_Throne/scenarios/24_Battle_for_Wesnoth.cfg, line: 194
 # File: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg, line: 153
 # File: data/campaigns/Heir_To_The_Throne/scenarios/24_Battle_for_Wesnoth.cfg, line: 194
-#. [then]
 #. [side]: type=Grand Knight, id=Sir Daryn
+#. [then]
 #: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:177
 #: data/campaigns/Heir_To_The_Throne/scenarios/24_Battle_for_Wesnoth.cfg:193
 msgid "Sir Daryn"
@@ -11684,8 +11684,8 @@ msgstr "Sir Daryn"
 # File: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg, line: 182
 # File: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg, line: 521
 # File: data/campaigns/Heir_To_The_Throne/scenarios/24_Battle_for_Wesnoth.cfg, line: 185
-#. [then]
 #. [side]: type=Grand Knight, id=Bayar
+#. [then]
 #: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:205
 #: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:542
 #: data/campaigns/Heir_To_The_Throne/scenarios/24_Battle_for_Wesnoth.cfg:184
