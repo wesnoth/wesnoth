@@ -117,7 +117,7 @@ public:
 
 		int time = 0;
 		unsigned int i = 0;
-		const int searched_time = utils::clamp(current_time, 0, base_duration);
+		const int searched_time = std::clamp(current_time, 0, base_duration);
 
 		while(time < searched_time && i < base_data.size()) {
 			time += base_data[i].second;

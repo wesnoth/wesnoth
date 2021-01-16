@@ -443,7 +443,7 @@ int font_scaling()
 
 void set_font_scaling(int scale)
 {
-	prefs["font_scale"] = utils::clamp(scale, min_font_scaling, max_font_scaling);
+	prefs["font_scale"] = std::clamp(scale, min_font_scaling, max_font_scaling);
 }
 
 int font_scaled(int size)
@@ -729,7 +729,7 @@ namespace {
 
 int scroll_speed()
 {
-	const int value = utils::clamp<int>(lexical_cast_default<int>(get("scroll"), 50), 1, 100);
+	const int value = std::clamp<int>(lexical_cast_default<int>(get("scroll"), 50), 1, 100);
 	scroll = value/100.0;
 
 	return value;

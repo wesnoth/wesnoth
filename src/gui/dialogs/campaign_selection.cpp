@@ -441,7 +441,7 @@ void campaign_selection::post_show(window& window)
 	}
 
 
-	rng_mode_ = RNG_MODE(utils::clamp<unsigned>(find_widget<menu_button>(&window, "rng_menu", false).get_value(), RNG_DEFAULT, RNG_BIASED));
+	rng_mode_ = RNG_MODE(std::clamp<unsigned>(find_widget<menu_button>(&window, "rng_menu", false).get_value(), RNG_DEFAULT, RNG_BIASED));
 
 	preferences::set_modifications(engine_.active_mods(), false);
 }

@@ -85,7 +85,7 @@ point slider::calculate_best_size() const
 
 void slider::set_value(int value)
 {
-	value = utils::clamp(value, minimum_value_, get_maximum_value());
+	value = std::clamp(value, minimum_value_, get_maximum_value());
 	int old_value = get_value();
 
 	if(value == old_value) {

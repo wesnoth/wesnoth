@@ -94,7 +94,7 @@ unsigned int display::last_zoom_ = SmallZoom;
 // Assumption: zoom_levels is a sorted vector of ascending tile sizes
 int get_zoom_levels_index(unsigned int zoom_level)
 {
-	zoom_level = utils::clamp(zoom_level, MinZoom, MaxZoom);	// ensure zoom_level is within zoom_levels bounds
+	zoom_level = std::clamp(zoom_level, MinZoom, MaxZoom);	// ensure zoom_level is within zoom_levels bounds
 	auto iter = std::lower_bound(zoom_levels.begin(), zoom_levels.end(), zoom_level);
 
 	// find closest match
@@ -2028,7 +2028,7 @@ bool display::zoom_at_min()
 bool display::set_zoom(bool increase)
 {
 	// Ensure we don't try to access nonexistent vector indices.
-	zoom_index_ = utils::clamp(increase ? zoom_index_ + 1 : zoom_index_ - 1, 0, final_zoom_index);
+	zoom_index_ = std::clamp(increase ? zoom_index_ + 1 : zoom_index_ - 1, 0, final_zoom_index);
 
 	// No validation check is needed in the next step since we've already set the index here and
 	// know the new zoom value is indeed valid.
@@ -2037,7 +2037,7 @@ bool display::set_zoom(bool increase)
 
 bool display::set_zoom(unsigned int amount, const bool validate_value_and_set_index)
 {
-	unsigned int new_zoom = utils::clamp(amount, MinZoom, MaxZoom);
+	unsigned int new_zoom = std::clamp(amount, MinZoom, MaxZoom);
 
 	LOG_DP << "new_zoom = " << new_zoom << std::endl;
 

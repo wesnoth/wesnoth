@@ -655,12 +655,12 @@ void prob_matrix::shift_cols_in_row(unsigned dst,
 		// calculation easier to parse.
 		int col_i = static_cast<int>(cols[col_x]);
 		int drain_amount = col_i * drain_percent / 100 + drain_constant;
-		unsigned newrow = utils::clamp(row_i + drain_amount, 1, max_row);
+		unsigned newrow = std::clamp(row_i + drain_amount, 1, max_row);
 		xfer(dst, src, newrow, 0, row, cols[col_x], prob);
 	}
 
 	// The remaining columns use the specified drainmax.
-	unsigned newrow = utils::clamp(row_i + drainmax, 1, max_row);
+	unsigned newrow = std::clamp(row_i + drainmax, 1, max_row);
 	for(; col_x < cols.size(); ++col_x) {
 		xfer(dst, src, newrow, cols[col_x] - damage, row, cols[col_x], prob);
 	}
@@ -728,12 +728,12 @@ void prob_matrix::shift_rows_in_col(unsigned dst,
 		// calculation easier to parse.
 		int row_i = static_cast<int>(rows[row_x]);
 		int drain_amount = row_i * drain_percent / 100 + drain_constant;
-		unsigned newcol = utils::clamp(col_i + drain_amount, 1, max_col);
+		unsigned newcol = std::clamp(col_i + drain_amount, 1, max_col);
 		xfer(dst, src, 0, newcol, rows[row_x], col, prob);
 	}
 
 	// The remaining rows use the specified drainmax.
-	unsigned newcol = utils::clamp(col_i + drainmax, 1, max_col);
+	unsigned newcol = std::clamp(col_i + drainmax, 1, max_col);
 	for(; row_x < rows.size(); ++row_x) {
 		xfer(dst, src, rows[row_x] - damage, newcol, rows[row_x], col, prob);
 	}
@@ -1527,7 +1527,7 @@ void monte_carlo_combat_matrix::simulate()
 						b_slowed |= a_slows_;
 
 						int drain_amount = (a_drain_percent_ * static_cast<signed>(damage) / 100 + a_drain_constant_);
-						a_hp = utils::clamp(a_hp + drain_amount, 1u, a_max_hp_);
+						a_hp = std::clamp(a_hp + drain_amount, 1u, a_max_hp_);
 
 						b_hp -= damage;
 
@@ -1547,7 +1547,7 @@ void monte_carlo_combat_matrix::simulate()
 						a_slowed |= b_slows_;
 
 						int drain_amount = (b_drain_percent_ * static_cast<signed>(damage) / 100 + b_drain_constant_);
-						b_hp = utils::clamp(b_hp + drain_amount, 1u, b_max_hp_);
+						b_hp = std::clamp(b_hp + drain_amount, 1u, b_max_hp_);
 
 						a_hp -= damage;
 
@@ -1779,7 +1779,7 @@ double calculate_probability_of_debuff(double initial_prob, bool enemy_gives, do
 	// Prob_kill can creep a bit above 100 % if the AI simulates an unit being attacked by multiple units in a row, due to rounding error.
 	// Likewise, it can get slightly negative if the unit already has negative HP.
 	// Simply limit it to suitable range.
-	prob_kill = utils::clamp(prob_kill, 0.0, 1.0);
+	prob_kill = std::clamp(prob_kill, 0.0, 1.0);
 
 	// Probability we are already debuffed and the enemy doesn't hit us.
 	const double prob_already_debuffed_not_touched = initial_prob * (1.0 - prob_touched);

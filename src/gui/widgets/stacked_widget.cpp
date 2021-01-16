@@ -139,7 +139,7 @@ void stacked_widget::select_layer_impl(std::function<bool(unsigned int i)> displ
 
 void stacked_widget::update_selected_layer_index(const int i)
 {
-	selected_layer_ = utils::clamp<int>(i, -1, get_layer_count() - 1);
+	selected_layer_ = std::clamp<int>(i, -1, get_layer_count() - 1);
 }
 
 bool stacked_widget::layer_selected(const unsigned layer)

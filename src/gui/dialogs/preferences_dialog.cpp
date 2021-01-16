@@ -89,7 +89,7 @@ void disable_widget_on_toggle(window& window, widget& w, const std::string& id)
 // number of pager layers (since get_layer_count returns one-past-end).
 int index_in_pager_range(const int first, const stacked_widget& pager)
 {
-	return utils::clamp<int>(first, 0, pager.get_layer_count() - 1);
+	return std::clamp<int>(first, 0, pager.get_layer_count() - 1);
 }
 
 // Helper to make it easier to immediately apply sound toggles immediately.

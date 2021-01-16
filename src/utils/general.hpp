@@ -23,17 +23,6 @@ inline bool chars_less_insensitive(char a, char b) { return tolower(a) < tolower
 
 namespace utils {
 
-#ifdef HAVE_CXX17
-using std::clamp;
-#else
-// NOTE: remove once we have C++17 support and can use std::clamp
-template<typename T>
-constexpr const T& clamp(const T& value, const T& min, const T& max)
-{
-	return std::max<T>(std::min<T>(value, max), min);
-}
-#endif
-
 namespace detail
 {
 /**
