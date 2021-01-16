@@ -173,6 +173,11 @@
   <ItemGroup>
     <ClCompile Include="..\..\src\mt_rng.cpp" />
     <ClCompile Include="..\..\src\seed_rng.cpp" />
+    <ClCompile Include="..\..\src\server\common\resultsets\game_history.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(IntDir)\Server\Common\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|x64'">$(IntDir)\Server\Common\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(IntDir)\Server\Common\</ObjectFileName>
+    </ClCompile>
     <ClCompile Include="..\..\src\server\wesnothd\ban.cpp">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(IntDir)Server\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|x64'">$(IntDir)Server\</ObjectFileName>
@@ -199,14 +204,14 @@
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(IntDir)Server\</ObjectFileName>
     </ClCompile>
     <ClCompile Include="..\..\src\server\common\resultsets\tournaments.cpp">
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(IntDir)Server\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|x64'">$(IntDir)Server\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(IntDir)Server\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(IntDir)Server\Common\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|x64'">$(IntDir)Server\Common\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(IntDir)Server\Common\</ObjectFileName>
     </ClCompile>
     <ClCompile Include="..\..\src\server\common\resultsets\ban_check.cpp">
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(IntDir)Server\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|x64'">$(IntDir)Server\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(IntDir)Server\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(IntDir)Server\Common\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|x64'">$(IntDir)Server\Common\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(IntDir)Server\Common\</ObjectFileName>
     </ClCompile>
     <ClCompile Include="..\..\src\server\wesnothd\player.cpp">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(IntDir)Server\</ObjectFileName>
@@ -251,6 +256,7 @@
     <ClInclude Include="..\..\src\server\common\dbconn.hpp" />
     <ClInclude Include="..\..\src\server\common\forum_user_handler.hpp" />
     <ClInclude Include="..\..\src\server\common\resultsets\ban_check.hpp" />
+    <ClInclude Include="..\..\src\server\common\resultsets\game_history.hpp" />
     <ClInclude Include="..\..\src\server\common\resultsets\rs_base.hpp" />
     <ClInclude Include="..\..\src\server\common\resultsets\tournaments.hpp" />
     <ClInclude Include="..\..\src\server\common\server_base.hpp" />

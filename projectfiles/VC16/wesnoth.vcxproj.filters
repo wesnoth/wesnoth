@@ -1593,6 +1593,9 @@
     <ClCompile Include="..\..\src\preferences\advanced.cpp">
       <Filter>Preferences</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\gui\dialogs\multiplayer\match_history.cpp">
+      <Filter>Gui\Dialogs\Multiplayer</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\addon\client.hpp">
@@ -3090,11 +3093,11 @@
     <ClInclude Include="..\..\src\units\orb_status.hpp">
       <Filter>Units</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\utils\optional_fwd.hpp">
-      <Filter>utils</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\src\preferences\advanced.hpp">
       <Filter>Preferences</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\dialogs\multiplayer\match_history.hpp">
+      <Filter>Gui\Dialogs\Multiplayer</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
