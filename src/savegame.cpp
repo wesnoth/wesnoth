@@ -101,7 +101,6 @@ bool loadgame::show_difficulty_dialog()
 		}
 
 		gui2::dialogs::campaign_difficulty difficulty_dlg(campaign);
-		difficulty_dlg.show();
 
 		// Return if canceled, since otherwise load_data_.difficulty will be set to 'CANCEL'
 		if(!difficulty_dlg.show()) {
@@ -109,6 +108,7 @@ bool loadgame::show_difficulty_dialog()
 		}
 
 		load_data_.difficulty = difficulty_dlg.selected_difficulty();
+		load_data_.select_difficulty = false;
 
 		// Exit loop
 		break;
