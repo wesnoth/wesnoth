@@ -20,14 +20,14 @@
 #include "serialization/schema/type.hpp"
 
 #include "config.hpp"
-#include "utils/optional_fwd.hpp"
+#include <optional>
 
 namespace schema_validation
 {
 
 std::shared_ptr<wml_type> wml_type::from_config(const config& cfg)
 {
-	utils::optional<config::const_child_itors> composite_range;
+	std::optional<config::const_child_itors> composite_range;
 	std::shared_ptr<wml_type> type;
 	if(cfg.has_child("union")) {
 		type = std::make_shared<wml_type_union>(cfg["name"]);

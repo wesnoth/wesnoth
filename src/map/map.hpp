@@ -19,7 +19,7 @@ class config;
 #include "map/location.hpp"
 #include "terrain/translation.hpp"
 #include "terrain/type_data.hpp"
-#include "utils/optional_fwd.hpp"
+#include <optional>
 
 //class terrain_type_data; Can't forward declare because of enum
 
@@ -86,7 +86,7 @@ public:
 		t_translation::ter_list old_;
 		t_translation::ter_list new_;
 		terrain_type_data::merge_mode mode_;
-		utils::optional<t_translation::terrain_code> terrain_;
+		std::optional<t_translation::terrain_code> terrain_;
 		bool use_old_;
 		bool replace_if_failed_;
 

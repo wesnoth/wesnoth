@@ -24,7 +24,7 @@
 #include "color.hpp"
 #include "halo.hpp"
 #include "picture.hpp"
-#include "utils/optional_fwd.hpp"
+#include <optional>
 
 #include <boost/logic/tribool.hpp>
 
@@ -50,8 +50,8 @@ struct frame_parameters
 	std::string sound;
 	std::string text;
 
-	utils::optional<color_t> text_color;
-	utils::optional<color_t> blend_with;
+	std::optional<color_t> text_color;
+	std::optional<color_t> blend_with;
 
 	double blend_ratio;
 	double highlight_ratio;
@@ -115,8 +115,8 @@ private:
 	std::string sound_;
 	std::string text_;
 
-	utils::optional<color_t> text_color_;
-	utils::optional<color_t> blend_with_;
+	std::optional<color_t> text_color_;
+	std::optional<color_t> blend_with_;
 
 	std::string blend_ratio_;
 	std::string highlight_ratio_;
@@ -177,8 +177,8 @@ private:
 	std::string sound_;
 	std::string text_;
 
-	utils::optional<color_t> text_color_;
-	utils::optional<color_t> blend_with_;
+	std::optional<color_t> text_color_;
+	std::optional<color_t> blend_with_;
 
 	progressive_double blend_ratio_;
 	progressive_double highlight_ratio_;

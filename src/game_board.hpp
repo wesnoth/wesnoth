@@ -18,7 +18,7 @@
 #include "team.hpp"
 #include "units/map.hpp"
 #include "units/id.hpp"
-#include "utils/optional_fwd.hpp"
+#include <optional>
 
 #include <set>
 #include <vector>
@@ -155,7 +155,7 @@ public:
 	// Manipulator from actionwml
 
 	bool try_add_unit_to_recall_list(const map_location& loc, const unit_ptr u);
-	utils::optional<std::string> replace_map(const gamemap & r);
+	std::optional<std::string> replace_map(const gamemap & r);
 
 	bool change_terrain(const map_location &loc, const std::string &t,
 	                    const std::string & mode, bool replace_if_failed); //used only by lua and debug commands

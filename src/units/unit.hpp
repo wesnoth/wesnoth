@@ -21,7 +21,7 @@
 #include "units/attack_type.hpp"
 #include "units/race.hpp"
 #include "units/alignment.hpp"
-#include "utils/optional_fwd.hpp"
+#include <optional>
 
 #include <bitset>
 #include <boost/dynamic_bitset_fwd.hpp>
@@ -1892,9 +1892,9 @@ private:
 	t_string description_;
 	std::vector<t_string> special_notes_;
 
-	utils::optional<std::string> usage_;
-	utils::optional<std::string> halo_;
-	utils::optional<std::string> ellipse_;
+	std::optional<std::string> usage_;
+	std::optional<std::string> halo_;
+	std::optional<std::string> ellipse_;
 
 	bool random_traits_;
 	bool generate_name_;

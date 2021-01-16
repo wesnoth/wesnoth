@@ -17,7 +17,7 @@
 #include "config.hpp"
 #include "lexical_cast.hpp"
 #include "serialization/string_utils.hpp"
-#include "utils/optional_fwd.hpp"
+#include <optional>
 
 #include <string>
 #include <utility>
@@ -53,8 +53,8 @@ struct subset_descriptor
 	}
 
 	std::string name;
-	utils::optional<std::string> bold_name; //If we are using another font for styled characters in this font, rather than SDL TTF method
-	utils::optional<std::string> italic_name;
+	std::optional<std::string> bold_name; //If we are using another font for styled characters in this font, rather than SDL TTF method
+	std::optional<std::string> italic_name;
 };
 
 } // end namespace font

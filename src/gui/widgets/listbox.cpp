@@ -33,7 +33,7 @@
 #include "gui/widgets/window.hpp"
 #include "sdl/rect.hpp"
 #include <functional>
-#include "utils/optional_fwd.hpp"
+#include <optional>
 
 #define LOG_SCOPE_HEADER get_control_type() + " [" + id() + "] " + __func__
 #define LOG_HEADER LOG_SCOPE_HEADER + ':'
@@ -351,7 +351,7 @@ bool listbox::update_content_size()
 
 void listbox::place(const point& origin, const point& size)
 {
-	utils::optional<unsigned> vertical_scrollbar_position, horizontal_scrollbar_position;
+	std::optional<unsigned> vertical_scrollbar_position, horizontal_scrollbar_position;
 
 	// Check if this is the first time placing the list box
 	if(get_origin() != point {-1, -1}) {

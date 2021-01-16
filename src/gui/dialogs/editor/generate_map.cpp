@@ -116,13 +116,13 @@ void editor_generate_map::pre_show(window& window)
 			std::bind(&editor_generate_map::do_settings,this));
 }
 
-utils::optional<uint32_t> editor_generate_map::get_seed()
+std::optional<uint32_t> editor_generate_map::get_seed()
 {
 	try {
 		return lexical_cast<uint32_t>(random_seed_);
 	}
 	catch(const bad_lexical_cast& ) {
-		return utils::nullopt;
+		return std::nullopt;
 	}
 }
 
