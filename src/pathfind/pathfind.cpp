@@ -354,8 +354,7 @@ static void find_routes(
 		adj_locs.erase(off_board_it, adj_locs.end());
 
 		if ( teleporter ) {
-			std::set<map_location> allowed_teleports;
-			teleports.get_adjacents(allowed_teleports, cur_hex);
+			auto allowed_teleports = teleports.get_adjacents(cur_hex);
 			adj_locs.insert(adj_locs.end(), allowed_teleports.begin(), allowed_teleports.end());
 		}
 		for ( int i = adj_locs.size()-1; i >= 0; --i ) {
