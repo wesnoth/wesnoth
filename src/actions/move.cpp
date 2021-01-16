@@ -424,20 +424,17 @@ namespace { // Private helpers for move_unit()
 		const unit_map &units = resources::gameboard->units();
 
 		// Need to check each adjacent hex for hidden enemies.
-		adjacent_loc_array_t adjacent;
-		get_adjacent_tiles(hex, adjacent.data());
-		for (unsigned i = 0; i < adjacent.size(); ++i )
-		{
-			const unit_map::const_iterator neighbor_it = units.find(adjacent[i]);
+		for(const map_location& loc : get_adjacent_tiles(hex)) {
+			const unit_map::const_iterator neighbor_it = units.find(loc);
 
 			if ( neighbor_it != units.end()  &&
 			     current_team_->is_enemy(neighbor_it->side())  &&
-			     neighbor_it->invisible(adjacent[i]) )
+			     neighbor_it->invisible(loc) )
 			{
 				// Ambushed!
 				ambushed_ = true;
 				ambush_stop_ = hex;
-				ambushers_.push_back(adjacent[i]);
+				ambushers_.push_back(loc);
 			}
 		}
 	}

@@ -966,9 +966,7 @@ static const std::string& get_direction(std::size_t n)
 std::vector<surface> display::get_fog_shroud_images(const map_location& loc, image::TYPE image_type)
 {
 	std::vector<std::string> names;
-
-	adjacent_loc_array_t adjacent;
-	get_adjacent_tiles(loc, adjacent.data());
+	const auto adjacent = get_adjacent_tiles(loc);
 
 	enum visibility {FOG=0, SHROUD=1, CLEAR=2};
 	visibility tiles[6];
@@ -1070,9 +1068,8 @@ void display::get_terrain_images(const map_location &loc,
 	const time_of_day& tod = get_time_of_day(loc);
 
 	//get all the light transitions
-	adjacent_loc_array_t adjs;
+	const auto adjs = get_adjacent_tiles(loc);
 	std::array<const time_of_day*, 6> atods;
-	get_adjacent_tiles(loc, adjs.data());
 	for(size_t d = 0; d < adjs.size(); ++d){
 		atods[d] = &get_time_of_day(adjs[d]);
 	}

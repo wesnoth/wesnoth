@@ -1226,12 +1226,9 @@ DEFINE_WFL_FUNCTION(adjacent_locs, 1, 1)
 		.convert_to<location_callable>()
 		->loc();
 
-	adjacent_loc_array_t adj;
-	get_adjacent_tiles(loc, adj.data());
-
 	std::vector<variant> v;
-	for(unsigned n = 0; n < adj.size(); ++n) {
-		v.emplace_back(std::make_shared<location_callable>(adj[n]));
+	for(const map_location& adj : get_adjacent_tiles(loc)) {
+		v.emplace_back(std::make_shared<location_callable>(adj));
 	}
 
 	return variant(v);

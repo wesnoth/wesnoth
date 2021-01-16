@@ -132,11 +132,9 @@ void cave_map_generator::cave_map_generator_job::build_chamber(map_location loc,
 
 	locs.insert(loc);
 
-	adjacent_loc_array_t adj;
-	get_adjacent_tiles(loc,adj.data());
-	for(std::size_t n = 0; n < adj.size(); ++n) {
+	for(const map_location& adj : get_adjacent_tiles(loc)) {
 		if(static_cast<int>(rng_() % 100) < (100l - static_cast<long>(jagged))) {
-			build_chamber(adj[n],locs,size-1,jagged);
+			build_chamber(adj,locs,size-1,jagged);
 		}
 	}
 }
@@ -361,9 +359,7 @@ void cave_map_generator::cave_map_generator_job::place_castle(int starting_posit
 		starting_positions_.insert(t_translation::starting_positions::value_type(std::to_string(starting_position), coord));
 	}
 
-	adjacent_loc_array_t adj;
-	get_adjacent_tiles(loc,adj.data());
-	for(std::size_t n = 0; n < adj.size(); ++n) {
-		set_terrain(adj[n], params.castle_);
+	for(const map_location& adj : get_adjacent_tiles(loc)) {
+		set_terrain(adj, params.castle_);
 	}
 }

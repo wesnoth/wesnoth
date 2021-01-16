@@ -109,8 +109,7 @@ std::shared_ptr<attacks_vector> aspect_attacks_base::analyze_targets() const
 				if (!is_allowed_enemy(*j)) {
 					continue;
 				}
-				adjacent_loc_array_t adjacent;
-				get_adjacent_tiles(j->get_location(), adjacent.data());
+				const auto adjacent = get_adjacent_tiles(j->get_location());
 				attack_analysis analysis;
 				analysis.target = j->get_location();
 				analysis.vulnerability = 0.0;
@@ -189,8 +188,7 @@ void aspect_attacks_base::do_attack_analysis(
                bool is_flanked = false;
                int enemy_units_around = 0;
                int accessible_tiles = 0;
-               adjacent_loc_array_t adj;
-               get_adjacent_tiles(current_unit, adj.data());
+               const auto adj = get_adjacent_tiles(current_unit);
 
                std::size_t tile;
                for(tile = 0; tile != 3; ++tile) {

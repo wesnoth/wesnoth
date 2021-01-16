@@ -154,8 +154,7 @@ bool unit::get_ability_bool(const std::string& tag_name, const map_location& loc
 	assert(display::get_singleton());
 	const unit_map& units = display::get_singleton()->get_units();
 
-	adjacent_loc_array_t adjacent;
-	get_adjacent_tiles(loc,adjacent.data());
+	const auto adjacent = get_adjacent_tiles(loc);
 	for(unsigned i = 0; i < adjacent.size(); ++i) {
 		const unit_map::const_iterator it = units.find(adjacent[i]);
 		if (it == units.end() || it->incapacitated())
@@ -196,8 +195,7 @@ unit_ability_list unit::get_abilities(const std::string& tag_name, const map_loc
 	assert(display::get_singleton());
 	const unit_map& units = display::get_singleton()->get_units();
 
-	adjacent_loc_array_t adjacent;
-	get_adjacent_tiles(loc,adjacent.data());
+	const auto adjacent = get_adjacent_tiles(loc);
 	for(unsigned i = 0; i < adjacent.size(); ++i) {
 		const unit_map::const_iterator it = units.find(adjacent[i]);
 		if (it == units.end() || it->incapacitated())
@@ -356,8 +354,7 @@ bool unit::ability_active(const std::string& ability,const config& cfg,const map
 		if ( !unit_filter(vconfig(afilter)).set_use_flat_tod(illuminates).matches(*this, loc) )
 			return false;
 
-	adjacent_loc_array_t adjacent;
-	get_adjacent_tiles(loc,adjacent.data());
+	const auto adjacent = get_adjacent_tiles(loc);
 
 	assert(display::get_singleton());
 	const unit_map& units = display::get_singleton()->get_units();
@@ -1056,7 +1053,7 @@ namespace { // Helpers for attack_type::special_active()
 	 * @param[in]  loc         The presumed location of @a un_it.
 	 * @param[in]  weapon      The attack_type to filter.
 	 * @param[in]  filter      The filter containing the child filter to use.
-	 * @param[in]  for_listing 
+	 * @param[in]  for_listing
 	 * @param[in]  child_tag   The tag of the child filter to use.
 	 */
 	static bool special_unit_matches(unit_const_ptr & u,
@@ -1302,8 +1299,7 @@ bool attack_type::special_active_impl(const_attack_ptr self_attack, const_attack
 	if (!special_unit_matches(def, att, def_loc, def_weapon, special, is_for_listing, "filter_defender"))
 		return false;
 
-	adjacent_loc_array_t adjacent;
-	get_adjacent_tiles(self_loc, adjacent.data());
+	const auto adjacent = get_adjacent_tiles(self_loc);
 
 	// Filter the adjacent units.
 	for (const config &i : special.child_range("filter_adjacent"))

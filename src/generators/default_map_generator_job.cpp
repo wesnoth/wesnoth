@@ -466,8 +466,7 @@ bool default_map_generator_job::generate_river_internal(const height_map& height
 	}
 
 	map_location current_loc(x,y);
-	adjacent_loc_array_t adj;
-	get_adjacent_tiles(current_loc,adj.data());
+	auto adj = get_adjacent_tiles(current_loc);
 	std::shuffle(std::begin(adj), std::end(adj), rng_);
 
 	// Mark that we have attempted from this map_location
@@ -639,17 +638,12 @@ static map_location place_village(const t_translation::ter_map& map,
 			}
 
 			int rating = child["rating"];
-			adjacent_loc_array_t adj;
-			get_adjacent_tiles(map_location(i.x,i.y),adj.data());
-			for(std::size_t n = 0; n < adj.size(); ++n) {
-				if(adj[n].x < 0 || adj[n].y < 0 ||
-						adj[n].x >= map.w ||
-						adj[n].y >= map.h) {
-
+			for(const map_location& adj : get_adjacent_tiles({i.x, i.y})) {
+				if(adj.x < 0 || adj.y < 0 || adj.x >= map.w || adj.y >= map.h) {
 					continue;
 				}
 
-				const t_translation::terrain_code t2 = map[adj[n].x][adj[n].y];
+				const t_translation::terrain_code t2 = map[adj.x][adj.y];
 				rating += std::count(adjacent_liked->begin(),adjacent_liked->end(),t2);
 			}
 
@@ -668,27 +662,24 @@ static void flood_name(const map_location& start, const std::string& name, std::
 	const t_translation::ter_match& tile_types, const terrain_map& terrain,
 	unsigned width, unsigned height,
 	std::size_t label_count, std::map<map_location,std::string>* labels, const std::string& full_name) {
-	adjacent_loc_array_t adj;
-	get_adjacent_tiles(start,adj.data());
-	std::size_t n;
+
 	//if adjacent tiles are tiles and unnamed, name them
-	for(n = 0; n < 6; n++) {
+	for(const map_location& adj : get_adjacent_tiles(start)) {
 		//we do not care for tiles outside the middle part
 		//cast to unsigned to skip x < 0 || y < 0 as well.
-		if(static_cast<unsigned>(adj[n].x) >= width / 3 || static_cast<unsigned>(adj[n].y) >= height / 3) {
+		if(static_cast<unsigned>(adj.x) >= width / 3 || static_cast<unsigned>(adj.y) >= height / 3) {
 			continue;
 		}
 
-		const t_translation::terrain_code terr = terrain[adj[n].x + (width / 3)][adj[n].y + (height / 3)];
-		const map_location loc(adj[n].x, adj[n].y);
-		if((t_translation::terrain_matches(terr, tile_types)) && (tile_names.find(loc) == tile_names.end())) {
-			tile_names.emplace(loc, name);
+		const t_translation::terrain_code terr = terrain[adj.x + (width / 3)][adj.y + (height / 3)];
+		if((t_translation::terrain_matches(terr, tile_types)) && (tile_names.find(adj) == tile_names.end())) {
+			tile_names.emplace(adj, name);
 			//labeling decision: this is result of trial and error on what looks best in game
 			if(label_count % 6 == 0) { //ensure that labels do not occur more often than every 6 recursions
-				labels->emplace(loc, full_name);
+				labels->emplace(adj, full_name);
 				label_count++; //ensure that no adjacent tiles get labeled
 			}
-			flood_name(adj[n], name, tile_names, tile_types, terrain, width, height, label_count++, labels, full_name);
+			flood_name(adj, name, tile_names, tile_types, terrain, width, height, label_count++, labels, full_name);
 		}
 	}
 }
@@ -1084,9 +1075,7 @@ std::string default_map_generator_job::default_generate_map(generator_data data,
 				const map_location& last = *(step-1);
 				const map_location& next = *(step+1);
 
-				adjacent_loc_array_t adj;
-				get_adjacent_tiles(*step,adj.data());
-
+				const auto adj = get_adjacent_tiles(*step);
 				int direction = -1;
 
 				// If we are going north-south
@@ -1316,9 +1305,7 @@ std::string default_map_generator_job::default_generate_map(generator_data data,
 					(village_naming.has_attribute("base_names") || village_naming.has_attribute("base_name_generator")) ? "base" : "male" );
 
 				const map_location loc(res.x-data.width/3,res.y-data.height/3);
-
-				adjacent_loc_array_t adj;
-				get_adjacent_tiles(loc,adj.data());
+				const auto adj = get_adjacent_tiles(loc);
 
 				std::string name_type = "village";
 				const t_translation::ter_list

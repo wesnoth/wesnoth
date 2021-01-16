@@ -1426,9 +1426,7 @@ double retreat_phase::evaluate()
 	//int leader_adj_count = 0;
 	std::vector<map_location> leaders_adj_v;
 	for (unit_map::const_iterator leader : leaders) {
-		adjacent_loc_array_t tmp_leader_adj;
-		get_adjacent_tiles(leader->get_location(), tmp_leader_adj.data());
-		for (map_location &loc : tmp_leader_adj) {
+		for(const map_location& loc : get_adjacent_tiles(leader->get_location())) {
 			bool found = false;
 			for (map_location &new_loc : leaders_adj_v) {
 				if(new_loc == loc){

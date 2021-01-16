@@ -123,8 +123,7 @@ struct unit_filter_adjacent : public unit_filter_base
 	virtual bool matches(const unit_filter_args& args) const override
 	{
 		const unit_map& units = args.context().get_disp_context().units();
-		adjacent_loc_array_t adjacent;
-		get_adjacent_tiles(args.loc, adjacent.data());
+		const auto adjacent = get_adjacent_tiles(args.loc);
 		int match_count=0;
 
 		config::attribute_value i_adjacent = cfg_["adjacent"];

@@ -273,12 +273,10 @@ bool shroud_clearer::clear_loc(team &tm, const map_location &loc,
 	// Possible screen invalidation.
 	if ( was_fogged ) {
 		display::get_singleton()->invalidate(loc);
-		// Need to also invalidate adjacent hexes to get rid of the
-		// "fog edge" graphics.
-		adjacent_loc_array_t adjacent;
-		get_adjacent_tiles(loc, adjacent.data());
-		for (unsigned i = 0; i < adjacent.size(); ++i )
-			display::get_singleton()->invalidate(adjacent[i]);
+		// Need to also invalidate adjacent hexes to get rid of the "fog edge" graphics.
+		for(const map_location& adj : get_adjacent_tiles(loc)) {
+			display::get_singleton()->invalidate(adj);
+		}
 	}
 
 	// Check for units?
@@ -319,7 +317,7 @@ bool shroud_clearer::clear_loc(team &tm, const map_location &loc,
  * @param view_loc         The location to clear fog from.
  * @param view_team        The team who will have the fog cleared from their map.
  * @param viewer_id        The underlying ID of the unit doing the sighting (for events).
- * @param sight_range      
+ * @param sight_range
  * @param slowed           Whether the unit is slowed.
  * @param costs            The terrain costs for the unit.
  * @param real_loc         The actual location of the viewing unit.
@@ -523,12 +521,11 @@ bool shroud_clearer::clear_dest(const map_location &dest, const unit &viewer)
 
 	// Clear the adjacent hexes (will be seen even if vision is 0, and the
 	// graphics do not work so well for an isolated cleared hex).
-	adjacent_loc_array_t adjacent;
-	get_adjacent_tiles(dest, adjacent.data());
-	for (unsigned i = 0; i < adjacent.size(); ++i )
-		if ( clear_loc(viewing_team, adjacent[i], dest, real_loc, viewer_id,
-		               true, enemies, friends) )
+	for(const map_location& adj : get_adjacent_tiles(dest)) {
+		if(clear_loc(viewing_team, adj, dest, real_loc, viewer_id, true, enemies, friends)) {
 			cleared_something = true;
+		}
+	}
 
 	if ( cleared_something )
 		invalidate_after_clear();

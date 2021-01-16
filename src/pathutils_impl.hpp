@@ -40,10 +40,7 @@ void get_tiles_radius(std::set<map_location>&& locs, size_t radius, std::set<map
 
 		result.insert(it, it_end);
 		for(; it != it_end; ++it) {
-			adjacent_loc_array_t adj;
-			get_adjacent_tiles(*it, adj.data());
-			for(size_t i = 0; i < adj.size(); ++i) {
-				const map_location& loc = adj[i];
+			for(const map_location& loc : get_adjacent_tiles(*it)) {
 				if( pred1(loc) ) {
 					if( !result.count(loc) && !filtered_out.count(loc) ) {
 						if( pred2(loc) ) {

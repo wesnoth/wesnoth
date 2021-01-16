@@ -173,6 +173,9 @@ bool tiles_adjacent(const map_location& a, const map_location& b);
  */
 void get_adjacent_tiles(const map_location& a, map_location* res);
 
+/** Returns an array of the six hexes adjacent to @p center. */
+adjacent_loc_array_t get_adjacent_tiles(const map_location& center);
+
 /**
  * Function which gives the number of hexes between two tiles
  * (i.e. the minimum number of hexes that have to be traversed
