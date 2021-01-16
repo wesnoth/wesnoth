@@ -79,16 +79,16 @@ std::shared_ptr<attacks_vector> aspect_attacks_base::analyze_targets() const
 	const move_map& enemy_dstsrc = get_enemy_dstsrc();
 
 	auto res = std::make_shared<attacks_vector>();
-	unit_map& units_ = resources::gameboard->units();
+	const unit_map& units_ = resources::gameboard->units();
 
 	std::vector<map_location> unit_locs;
-	for(unit_map::const_iterator i = units_.begin(); i != units_.end(); ++i) {
-		if(i->side() == get_side() && i->attacks_left() && !(i->can_recruit() && is_passive_leader(i->id()))) {
-			if(!is_allowed_attacker(*i)) {
+	for(const unit& u : units_) {
+		if(u.side() == get_side() && u.attacks_left() && !(u.can_recruit() && is_passive_leader(u.id()))) {
+			if(!is_allowed_attacker(u)) {
 				continue;
 			}
 
-			unit_locs.push_back(i->get_location());
+			unit_locs.push_back(u.get_location());
 		}
 	}
 
@@ -101,21 +101,21 @@ std::shared_ptr<attacks_vector> aspect_attacks_base::analyze_targets() const
 
 	unit_stats_cache().clear();
 
-	for(unit_map::const_iterator j = units_.begin(); j != units_.end(); ++j) {
+	for(const unit& u : units_) {
 		// Attack anyone who is on the enemy side,
 		// and who is not invisible or petrified.
-		if(current_team().is_enemy(j->side()) && !j->incapacitated() && !j->invisible(j->get_location())) {
-			if(!is_allowed_enemy(*j)) {
+		if(current_team().is_enemy(u.side()) && !u.incapacitated() && !u.invisible(u.get_location())) {
+			if(!is_allowed_enemy(u)) {
 				continue;
 			}
 
-			const auto adjacent = get_adjacent_tiles(j->get_location());
+			const auto adjacent = get_adjacent_tiles(u.get_location());
 			attack_analysis analysis;
-			analysis.target = j->get_location();
+			analysis.target = u.get_location();
 			analysis.vulnerability = 0.0;
 			analysis.support = 0.0;
 
-			do_attack_analysis(j->get_location(), srcdst, dstsrc, fullmove_srcdst, fullmove_dstsrc, enemy_srcdst,
+			do_attack_analysis(u.get_location(), srcdst, dstsrc, fullmove_srcdst, fullmove_dstsrc, enemy_srcdst,
 				enemy_dstsrc, adjacent, used_locations, unit_locs, *res, analysis, current_team());
 		}
 	}
@@ -146,7 +146,7 @@ void aspect_attacks_base::do_attack_analysis(const map_location& loc,
 
 	const gamemap& map_ = resources::gameboard->map();
 	unit_map& units_ = resources::gameboard->units();
-	std::vector<team>& teams_ = resources::gameboard->teams();
+	const std::vector<team>& teams_ = resources::gameboard->teams();
 
 	const std::size_t max_positions = 1000;
 	if(result.size() > max_positions && !cur_analysis.movements.empty()) {
@@ -184,7 +184,7 @@ void aspect_attacks_base::do_attack_analysis(const map_location& loc,
 		// Check if the friendly unit is surrounded,
 		// A unit is surrounded if it is flanked by enemy units
 		// and at least one other enemy unit is nearby
-		// or if the unit is totaly surrounded by enemies
+		// or if the unit is totally surrounded by enemies
 		// with max. one tile to escape.
 		bool is_surrounded = false;
 		bool is_flanked = false;
@@ -192,24 +192,23 @@ void aspect_attacks_base::do_attack_analysis(const map_location& loc,
 		int accessible_tiles = 0;
 		const auto adj = get_adjacent_tiles(current_unit);
 
-		std::size_t tile;
-		for(tile = 0; tile != 3; ++tile) {
+		for(std::size_t tile = 0; tile != 3; ++tile) {
 			const unit_map::const_iterator tmp_unit = units_.find(adj[tile]);
 			bool possible_flanked = false;
 
 			if(map_.on_board(adj[tile])) {
-				accessible_tiles++;
+				++accessible_tiles;
 				if(tmp_unit != units_.end() && current_team.is_enemy(tmp_unit->side())) {
-					enemy_units_around++;
+					++enemy_units_around;
 					possible_flanked = true;
 				}
 			}
 
 			const unit_map::const_iterator tmp_opposite_unit = units_.find(adj[tile + 3]);
 			if(map_.on_board(adj[tile + 3])) {
-				accessible_tiles++;
+				++accessible_tiles;
 				if(tmp_opposite_unit != units_.end() && current_team.is_enemy(tmp_opposite_unit->side())) {
-					enemy_units_around++;
+					++enemy_units_around;
 					if(possible_flanked) {
 						is_flanked = true;
 					}
@@ -234,8 +233,7 @@ void aspect_attacks_base::do_attack_analysis(const map_location& loc,
 
 			// See if the current unit can reach that position.
 			if(tiles[j] != current_unit) {
-				typedef std::multimap<map_location, map_location>::const_iterator Itor;
-				std::pair<Itor, Itor> its = dstsrc.equal_range(tiles[j]);
+				auto its = dstsrc.equal_range(tiles[j]);
 				while(its.first != its.second) {
 					if(its.first->second == current_unit) {
 						break;
@@ -394,7 +392,7 @@ bool aspect_attacks::is_allowed_attacker(const unit& u) const
 
 bool aspect_attacks::is_allowed_enemy(const unit& u) const
 {
-	team& my_team = resources::gameboard->get_team(get_side());
+	const team& my_team = resources::gameboard->get_team(get_side());
 	if(!my_team.is_enemy(u.side())) {
 		return false;
 	}
