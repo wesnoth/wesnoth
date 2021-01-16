@@ -25,7 +25,7 @@ order to build Wesnoth:
  * Fontconfig                  >= 2.4.1
  * Cairo                       >= 1.10.0
  * Pango                       >= 1.22.0 (with Cairo backend)
- * Vorbisfile
+ * Vorbisfile aka libvorbis
  * libbz2
  * libz
  * libcrypto (from OpenSSL)
