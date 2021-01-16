@@ -1,3 +1,17 @@
+## Version 1.15.9+dev
+ ### Add-ons client
+ ### Add-ons server
+ ### Campaigns
+ ### Editor
+ ### Multiplayer
+ ### Packaging
+ ### Terrain
+ ### Translations
+ ### Units
+ ### User interface
+ ### WML Engine
+ ### Miscellaneous and Bug Fixes
+
 ## Version 1.15.9
  ### Add-ons client
  ### Add-ons server
