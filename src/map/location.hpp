@@ -162,8 +162,6 @@ struct map_location {
 	int x, y;
 };
 
-using adjacent_loc_array_t = std::array<map_location, 6>;
-
 /** Function which tells if two locations are adjacent. */
 bool tiles_adjacent(const map_location& a, const map_location& b);
 
@@ -174,7 +172,7 @@ bool tiles_adjacent(const map_location& a, const map_location& b);
 void get_adjacent_tiles(const map_location& a, map_location* res);
 
 /** Returns an array of the six hexes adjacent to @p center. */
-adjacent_loc_array_t get_adjacent_tiles(const map_location& center);
+std::array<map_location, 6> get_adjacent_tiles(const map_location& center);
 
 /**
  * Function which gives the number of hexes between two tiles

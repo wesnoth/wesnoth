@@ -1419,11 +1419,6 @@ double retreat_phase::evaluate()
 	calculate_possible_moves(dummy_possible_moves, fullmove_srcdst, fullmove_dstsrc,
 			false, true, &get_avoid());
 
-	/*adjacent_loc_array_t leader_adj;
-	if(leader != units_.end()) {
-		get_adjacent_tiles(leader->get_location(), leader_adj.data());
-	}*/
-	//int leader_adj_count = 0;
 	std::vector<map_location> leaders_adj_v;
 	for (unit_map::const_iterator leader : leaders) {
 		for(const map_location& loc : get_adjacent_tiles(leader->get_location())) {

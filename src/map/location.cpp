@@ -492,9 +492,9 @@ void get_adjacent_tiles(const map_location& a, map_location* res)
 	res->y = a.y - (((a.x & 1) == 0) ? 1 : 0);
 }
 
-adjacent_loc_array_t get_adjacent_tiles(const map_location& center)
+std::array<map_location, 6> get_adjacent_tiles(const map_location& center)
 {
-	adjacent_loc_array_t res;
+	std::array<map_location, 6> res;
 	get_adjacent_tiles(center, res.data());
 	return res;
 }
