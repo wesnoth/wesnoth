@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-01-02 12:37+0300\n"
+"POT-Creation-Date: 2021-01-16 16:38+0300\n"
 "PO-Revision-Date: 2020-01-14 21:10+0100\n"
 "Last-Translator: Merijn de Vet <merijndevet@hotmail.com>\n"
 "Language-Team: Dutch <merijndevet@hotmail.com>\n"
@@ -90,494 +90,534 @@ msgstr ""
 msgid "Map and Scenario Editor"
 msgstr "Kaart en Scenario Editor"
 
-#. [topic]: id=editor_brush
-#: data/core/editor/help.cfg:13
-msgid "Editor Brush"
-msgstr "Editor Kwast"
+#. [section]: id=editor_mode_terrain
+#. [topic]: id=..editor_mode_terrain
+#: data/core/editor/help.cfg:13 data/core/editor/help.cfg:257
+msgid "Terrain Editor"
+msgstr "Terrein Editor"
 
-#. [topic]: id=editor_brush
-#. [topic]: id=editor_clipboard
-#. [topic]: id=editor_tool_label
-#. [topic]: id=editor_tool_item
-#. [topic]: id=editor_tool_village
-#. [topic]: id=editor_tool_unit
-#. [topic]: id=editor_time_schedule
-#. [topic]: id=editor_starting_positions_in_general
-#: data/core/editor/help.cfg:14 data/core/editor/help.cfg:22
-#: data/core/editor/help.cfg:78 data/core/editor/help.cfg:86
-#: data/core/editor/help.cfg:104 data/core/editor/help.cfg:112
-#: data/core/editor/help.cfg:251 data/core/editor/help.cfg:289
-msgid "TODO"
-msgstr "TODO"
-
-#. [topic]: id=editor_clipboard
-#: data/core/editor/help.cfg:21
-msgid "Terrain Clipboard"
-msgstr "Terrein Klembord"
+#. [section]: id=editor_mode_scenario
+#. [topic]: id=..editor_mode_scenario
+#: data/core/editor/help.cfg:20 data/core/editor/help.cfg:269
+#, fuzzy
+#| msgid "Map/Scenario Editor"
+msgid "Scenario Editor"
+msgstr "Kaart/Scenario Editor"
 
 #. [topic]: id=editor_tool_paint
-#: data/core/editor/help.cfg:29
+#: data/core/editor/help.cfg:28
 msgid "Paint Tool"
 msgstr "Verf Gereedschap"
 
 #. [topic]: id=editor_tool_paint
-#: data/core/editor/help.cfg:30
+#: data/core/editor/help.cfg:29
 msgid ""
 "Paint terrain tiles on the map.\n"
 "\n"
-"The paint tool utilizes the brushes and the terrain palette."
-msgstr ""
-"Verft terrein tegels op de kaart\n"
+"The paint tool utilizes the brush sizes and the terrain palette.\n"
 "\n"
-"Het verf gereedschap gebruikt de kwasten en het terreinpalet."
+"<bold>text='Keyboard Modifiers'</bold>\n"
+"\n"
+"• Shift+mouse click: If a base terrain is selected, change the base without "
+"changing the overlay. If an overlay is selected, change the overlay without "
+"changing the base.\n"
+"• Control+mouse click: Select the terrain under the mouse cursor, as if it "
+"had been selected on the terrain palette (picks up both base and overlay).\n"
+"\n"
+"<bold>text='Brush Sizes'</bold>\n"
+"\n"
+"The selected brush changes the size of the tool:"
+msgstr ""
+
+#. [topic]: id=editor_tool_paint
+#: data/core/editor/help.cfg:41
+msgid "Paint single hexes."
+msgstr ""
+
+#. [topic]: id=editor_tool_paint
+#: data/core/editor/help.cfg:42
+msgid "Paint seven hexes at a time."
+msgstr ""
+
+#. [topic]: id=editor_tool_paint
+#: data/core/editor/help.cfg:43
+msgid "Paint nineteen hexes at a time."
+msgstr ""
+
+#. [topic]: id=editor_tool_paint
+#: data/core/editor/help.cfg:44 data/core/editor/help.cfg:45
+msgid "Paint three hexes in a line."
+msgstr ""
 
 #. [topic]: id=editor_tool_fill
-#: data/core/editor/help.cfg:39
+#: data/core/editor/help.cfg:52
 msgid "Fill Tool"
 msgstr "Opvul Gereedschap"
 
 #. [topic]: id=editor_tool_fill
-#: data/core/editor/help.cfg:40
+#: data/core/editor/help.cfg:53
 msgid ""
-"Fill continuous regions of terrain with a different one!\n"
+"Fill continuous regions of terrain with a different one.\n"
 "\n"
-"The fill tool utilizes the terrain palette."
+"The fill tool utilizes the terrain palette.\n"
+"\n"
+"<bold>text='Keyboard Modifiers'</bold>\n"
+"\n"
+"• Shift+mouse click: If a base terrain is selected, change the base without "
+"changing the overlay. If an overlay is selected, change the overlay without "
+"changing the base.\n"
+"• Control+mouse click: Select the terrain under the mouse cursor, as if it "
+"had been selected on the terrain palette (picks up both base and overlay)."
 msgstr ""
-"Vult aaneengesloten gebieden terrein met een ander soort terrein!\n"
-"\n"
-"Het opvul gereedschap maakt gebruik van het terreinpalet."
 
 #. [topic]: id=editor_tool_select
-#: data/core/editor/help.cfg:49
+#: data/core/editor/help.cfg:67
 msgid "Select Tool"
 msgstr "Selecteer Gereedschap"
 
 #. [topic]: id=editor_tool_select
-#: data/core/editor/help.cfg:50
-msgid ""
-"Selects a set of hex fields. The best tool ever!\n"
-"\n"
-"This tool utilizes the brushes."
-msgstr ""
-"Selecteert een groep tegels. Het beste gereedschap ooit!\n"
-"\n"
-"Dit gereedschap maakt gebruik van de kwasten."
-
-#. [topic]: id=editor_tool_paste
-#: data/core/editor/help.cfg:59
-msgid "Paste Tool"
-msgstr "Plak Gereedschap"
-
-#. [topic]: id=editor_tool_paste
-#: data/core/editor/help.cfg:60
-msgid "Paste the terrain in the clipboard"
-msgstr "Plak het terrein in het klembord"
-
-#. [topic]: id=editor_tool_starting
-#: data/core/editor/help.cfg:67
-msgid "Starting Tool"
-msgstr "Start Gereedschap"
-
-#. [topic]: id=editor_tool_starting
 #: data/core/editor/help.cfg:68
 msgid ""
-"Defines the side leader starting position\n"
+"Selects a set of hex fields, for use with with the cut, copy and fill-"
+"selection buttons below the menu bar.\n"
 "\n"
-"This tool sets the side leaders' default starting locations, and named "
-"special locations."
+"<bold>text='Keyboard Modifiers'</bold>\n"
+"\n"
+"• Shift+mouse click: ‘Magic Wand’ mode, select the hex under the mouse "
+"cursor, and adjoining hexes of the same terrain type.\n"
+"• Control+mouse click: Unselect hexes.\n"
+"\n"
+"<bold>text='Brush Sizes'</bold>\n"
+"\n"
+"The selected brush changes the size of the tool:"
 msgstr ""
-"Definieert de startpositie van de leider\n"
+
+#. [topic]: id=editor_tool_select
+#: data/core/editor/help.cfg:78
+msgid "Select single hexes."
+msgstr ""
+
+#. [topic]: id=editor_tool_select
+#: data/core/editor/help.cfg:79
+msgid "Select seven hexes at a time."
+msgstr ""
+
+#. [topic]: id=editor_tool_select
+#: data/core/editor/help.cfg:80
+msgid "Select nineteen hexes at a time."
+msgstr ""
+
+#. [topic]: id=editor_tool_select
+#: data/core/editor/help.cfg:81 data/core/editor/help.cfg:82
+msgid "Select three hexes in a line."
+msgstr ""
+
+#. [topic]: id=editor_tool_paste
+#: data/core/editor/help.cfg:89
+msgid "Clipboard and Paste Tool"
+msgstr ""
+
+#. [topic]: id=editor_tool_paste
+#: data/core/editor/help.cfg:90
+msgid ""
+"Rotate, flip and paste the terrain in the clipboard\n"
 "\n"
-"Dit gereedschap bepaald de standaard start locatie van de leider, en kan "
-"speciale locaties een naam geven."
+"Hexes can be cut or copied to the clipboard using the "
+"<ref>dst='editor_tool_select' text='Select Tool'</ref>.\n"
+"\n"
+"The paste tool shows an outline of the clipboard, which can be pasted with a "
+"mouse-click. Only the outline is shown, but mistakes can be corrected with "
+"the undo function, which is bound to both Control+Z and to the same key as "
+"the in-game undo function.\n"
+"\n"
+"The paste tool also has some clipboard-manipulation functions:"
+msgstr ""
+
+#. [topic]: id=editor_tool_paste
+#: data/core/editor/help.cfg:97
+msgid "Rotate clockwise by 60°."
+msgstr ""
+
+#. [topic]: id=editor_tool_paste
+#: data/core/editor/help.cfg:98
+msgid "Rotate counter-clockwise by 60°."
+msgstr ""
+
+#. [topic]: id=editor_tool_paste
+#: data/core/editor/help.cfg:99
+msgid "Flip horizontally"
+msgstr ""
+
+#. [topic]: id=editor_tool_paste
+#: data/core/editor/help.cfg:100
+msgid "Flip vertically"
+msgstr ""
+
+#. [topic]: id=editor_tool_starting
+#: data/core/editor/help.cfg:107
+#, fuzzy
+#| msgid "Starting Positions Howto"
+msgid "Starting Locations Tool"
+msgstr "Start Posities Hoe"
+
+#. [topic]: id=editor_tool_starting
+#: data/core/editor/help.cfg:109
+msgid ""
+"Defines the side leader starting position.\n"
+"\n"
+"This tool sets the side leaders’ default starting locations, and named "
+"special locations. Both types of location are enabled in both <ref>dst='.."
+"editor_mode_terrain' text='Terrain Editor'</ref> and <ref>dst='.."
+"editor_mode_scenario' text='Scenario Editor'</ref> modes. The location names "
+"are shown as a list in the editor palette, clicking on the map will place "
+"that name on a hex, each location can only be placed on a single hex, and "
+"the editor will only allow one location per hex.\n"
+"\n"
+"To add named special locations, click “Add” at the bottom of the editor "
+"palette, and enter the name. These names must start with a letter and may "
+"contain numbers and underscores.\n"
+"\n"
+"More than nine teams can be added to a map, by clicking “Add” and entering a "
+"number, for example “10”. The UI will automatically show this as “Player "
+"10”.\n"
+"\n"
+"Named locations can be accessed from WML using the Standard Location "
+"Filter’s <italic>text='location_id='</italic>. Player starts can also be "
+"accessed from WML using <italic>text='location_id=1'</italic>, "
+"<italic>text='location_id=2'</italic>, etc — use only the number, without "
+"adding “Player ” in front of the number.\n"
+"\n"
+"<bold>text='Keyboard Modifiers'</bold>\n"
+"\n"
+"• Control+mouse click on a hex that already has a location: select that "
+"location for placing with a subsequent mouse click, as if it was selected in "
+"the editor palette."
+msgstr ""
 
 #. [topic]: id=editor_tool_label
-#: data/core/editor/help.cfg:77
+#: data/core/editor/help.cfg:129
 msgid "Label Tool"
 msgstr "Label Gereedschap"
 
-#. [topic]: id=editor_tool_item
-#: data/core/editor/help.cfg:85
-msgid "Item Tool"
-msgstr "Voorwerp Gereedschap"
-
-#. [topic]: id=editor_tool_soundsource
-#: data/core/editor/help.cfg:93
-msgid "Soundsource Tool"
-msgstr "Geluidsbron Gereedschap"
-
-#. [topic]: id=editor_tool_soundsource
-#: data/core/editor/help.cfg:94
+#. [topic]: id=editor_tool_label
+#: data/core/editor/help.cfg:130
 msgid ""
-"Places Soundsources on your maps!\n"
+"Put text labels on the map.\n"
 "\n"
-"This tool has not been implemented yet."
+"• Left-click will open a dialog box to create a new label or edit an "
+"existing one.\n"
+"• Right-click deletes.\n"
+"• Drag-and-drop with the left mouse button moves labels.\n"
+"\n"
+"This tool is only available in Scenario Mode; the decorations are "
+"implemented in the scenario using WML’s <italic>text='[label]'</italic> tag."
 msgstr ""
-"Plaatst Geluidsbronnen op je kaarten!\n"
+
+#. [topic]: id=editor_tool_scenery
+#: data/core/editor/help.cfg:145
+msgid "Item Tool (Scenery Tool)"
+msgstr ""
+
+#. [topic]: id=editor_tool_scenery
+#: data/core/editor/help.cfg:146
+msgid ""
+"The Item Tool allows placing decorations such as windmills, bookcases and "
+"monoliths. Multiple items can be placed on the same hex.\n"
 "\n"
-"Dit gereedschap is nog niet in gebruik."
+"<bold>text='Note:'</bold> the tool doesn’t support deleting items once "
+"placed, nor does it support undo. Mistakes can currently only be fixed by "
+"editing the generated WML file.\n"
+"\n"
+"This tool is only available in Scenario Mode; the decorations are not part "
+"of the terrain and are implemented in the scenario using WML’s "
+"<italic>text='[item]'</italic> tag."
+msgstr ""
 
 #. [topic]: id=editor_tool_village
-#: data/core/editor/help.cfg:103
+#: data/core/editor/help.cfg:159
 msgid "Village Ownership Tool"
 msgstr "Dorp Eigenaar Gereedschap"
 
+#. [topic]: id=editor_tool_village
+#: data/core/editor/help.cfg:160
+msgid ""
+"This tool assigns ownership of villages at the start of a scenario. The "
+"villages must first be placed on the terrain with the "
+"<ref>dst='editor_tool_paint' text='Paint Tool'</ref>.\n"
+"\n"
+"• Left-click will assign the village to the currently-selected side.\n"
+"• Right-click will set the village back to unowned.\n"
+"\n"
+"This tool is only available in Scenario Mode; ownership information is "
+"stored by adding WML <italic>text='[village]'</italic> tags to the "
+"appropriate <italic>text='[side]'</italic>."
+msgstr ""
+
 #. [topic]: id=editor_tool_unit
-#: data/core/editor/help.cfg:111
+#: data/core/editor/help.cfg:174
 msgid "Unit Tool"
 msgstr "Eenheid Gereedschap"
 
+#. [topic]: id=editor_tool_unit
+#: data/core/editor/help.cfg:175
+msgid ""
+"Place units belonging to the currently-selected side.\n"
+"\n"
+"• Left-click will place a unit.\n"
+"• Left drag-and-drop will move an already-placed unit.\n"
+"• Various operations are added to the right-click menu when the hex contains "
+"a unit.\n"
+"\n"
+"This tool is only available in Scenario Mode; it adds WML "
+"<italic>text='[unit]'</italic> tags to the appropriate "
+"<italic>text='[side]'</italic>."
+msgstr ""
+
 #. [topic]: id=editor_named_area
-#: data/core/editor/help.cfg:119
+#: data/core/editor/help.cfg:190
 msgid "Named Areas"
 msgstr "Benoemde Gebieden"
 
 #. [topic]: id=editor_named_area
-#: data/core/editor/help.cfg:120
+#: data/core/editor/help.cfg:191
 msgid ""
-"Named Areas are sets of gamefields which can be addressed during scenario "
-"scripting by a given name.\n"
+"This tool create sets of tiles that can be used in WML scripts’ Standard "
+"Location Filters (a concept explained in detail on the Wiki), by using the "
+"area’s id in the filter’s <italic>text='area='</italic> attribute. For "
+"example:\n"
 "\n"
-"It can be used to abstract between the implementation of an effect and the "
-"map specific setting.\n"
-"This is a very powerful mechanism since it allows generic scenario codings "
-"working with different maps providing the needed named locations."
+"• assigning a local time zone to this set of hexes\n"
+"• filtering the set of hexes which trigger an event when a unit moves on to "
+"them\n"
+"\n"
+"To use the tool:\n"
+"\n"
+"• select hexes using the <ref>dst='editor_tool_select' text='select tool'</"
+"ref>\n"
+"• in the Areas menu, select Add New Area\n"
+"• then in the Areas menu, select Save Selection to Area\n"
+"• then in the Areas menu, select Rename Selected Area and choose a name for "
+"the area\n"
+"\n"
+"This tool is only available in Scenario Mode; it adds WML "
+"<italic>text='[time_area]'</italic> tags to the scenario. Although the tag’s "
+"name implies time, it is now more generic and can be used for other purposes "
+"without needing to change the time-of-day schedule in the area."
 msgstr ""
-"Benoemde Gebieden zijn delen van het speelveld die aangesproken kunnen "
-"worden tijdens het coderen van een scenario door middel van een gegeven "
-"naam.\n"
-"\n"
-"Het kan gebruikt worden om verschil mogelijk te maken tussen de uitvoering "
-"van een effect en de specifieke kaartinstelling.\n"
-"Het is een erg bruikbaar mechanisme omdat het dezelfde scenariocoderingen "
-"kan gebruiken voor verschillende kaarten door het gebruik van dezelfde "
-"benoemde locaties."
 
 #. [topic]: id=editor_playlist
-#: data/core/editor/help.cfg:130
+#: data/core/editor/help.cfg:212
 msgid "Playlist Manager"
 msgstr "Afspeellijst Beheer"
 
 #. [topic]: id=editor_playlist
-#: data/core/editor/help.cfg:131
+#: data/core/editor/help.cfg:213
 msgid ""
-"Saves a list of music tracks defining a random playlist to the scenario.\n"
+"Shows a list of music tracks known to the editor, with toggle-boxes to "
+"enable them.\n"
 "\n"
-"Have a look at the addon server for easy to use additional music tracks."
+"This tool is only available in Scenario Mode; it adds WML "
+"<italic>text='[music]'</italic> tags to the scenario."
 msgstr ""
-"Slaat een lijst van muzieknummers en definieert een willekeurige "
-"afspeellijst voor het scenario.\n"
-"\n"
-"Neem een kijk in de add-on server voor additionele muzieknummers die "
-"makkelijk te gebruiken zijn."
 
 #. [topic]: id=..editor
-#: data/core/editor/help.cfg:140
+#: data/core/editor/help.cfg:223
 msgid "Map/Scenario Editor"
 msgstr "Kaart/Scenario Editor"
 
 #. [topic]: id=..editor
-#: data/core/editor/help.cfg:142
+#: data/core/editor/help.cfg:224
 msgid ""
-"Wesnoth's Map and Scenario Editor allows users to create and edit the maps "
+"Wesnoth’s Map and Scenario Editor allows users to create and edit the maps "
 "on which every Wesnoth scenario takes place. It also provides a limited set "
 "of features for setting up a basic scenario.\n"
 "\n"
-"The editor can be launched from the <italic>text='Map Editor'</italic>"
-msgstr ""
-"De Kaart en Scenario Editor van Wesnoth laat gebruikers een kaart te creëren "
-"en aan te passen waarop een Wesnoth scenario plaatsvindt. Het bevat ook een "
-"klein aantal geselecteerde functies waarmee een standaard scenario gemaakt "
-"kan worden.\n"
+"The editor can be launched from the <italic>text='Map Editor'</italic> "
+"option at the title screen.\n"
 "\n"
-"De editor kan geopend worden vanuit de <italic>text='Kaart Editor'</italic>"
+"<header>text='Editing Modes'</header>\n"
+"\n"
+"The editor features two modes of operation: terrain mode and scenario mode.\n"
+"\n"
+"The <ref>dst='..editor_mode_terrain' text='Terrain Mode'</ref> is similar to "
+"a simple paint application, with tools to <ref>dst='editor_tool_paint' "
+"text='paint'</ref>, <ref>dst='editor_tool_fill' text='fill'</ref>, "
+"<ref>dst='editor_tool_select' text='select (and copy)'</ref>, and "
+"<ref>dst='editor_tool_paste' text='paste'</ref>. It also has the tool for "
+"setting the leaders’ <ref>dst='editor_tool_starting' text='starting "
+"locations'</ref>.\n"
+"\n"
+"The <ref>dst='..editor_mode_scenario' text='Scenario Mode'</ref>, in "
+"addition to the tools available in terrain mode, adds support for adding "
+"<ref>dst='editor_tool_label' text='labels'</ref>, "
+"<ref>dst='editor_tool_scenery' text='scenery items'</ref>, "
+"<ref>dst='editor_tool_unit' text='units'</ref> in addition to the leader, "
+"and assigning <ref>dst='editor_tool_village' text='village ownership'</ref> "
+"at the start of the scenario. There’s also a <ref>dst='editor_playlist' "
+"text='playlist manager'</ref> for the music.\n"
+"\n"
+"<bold>text='Warning: the Scenario Mode is buggy in 1.14.'</bold> Improving "
+"it is one of the main blockers for the 1.16 release, however in 1.14 its "
+"quality is far below that of the game and the terrain mode."
+msgstr ""
 
 #. [topic]: id=..editor
-#: data/core/editor/help.cfg:144
+#: data/core/editor/help.cfg:238
 msgid ""
-" option at the title screen.\n"
+"<header>text='What you do *not* get'</header>\n"
 "\n"
-"<header>text='What you get'</header>"
-msgstr ""
-" optie op het beginscherm.\n"
+"• Exactly the same map rendering as in-game\n"
 "\n"
-"<header>text='Wat je krijgt'</header>"
-
-#. [topic]: id=..editor
-#: data/core/editor/help.cfg:146
-msgid ""
-"\n"
-"\n"
-"• <ref>dst='editor_terrain' text='Terrain Editor'</ref>\n"
-"An easy to use map editor, similar to simple paint applications.\n"
-"\n"
-"• Scenario Editor\n"
-"\n"
-"• <ref>dst='editor_playlist' text='Playlist Manager'</ref>"
-msgstr ""
-"\n"
-"\n"
-"• <ref>dst='editor_terrain' text='Terrein Editor'</ref>\n"
-"Een makkelijk te gebruiken kaart editor, vergelijkbaar met eenvoudige paint "
-"programma's.\n"
-"\n"
-"• Scenario Editor\n"
-"\n"
-"• <ref>dst='editor_playlist' text='Afspeellijst Beheer'</ref>"
-
-#. [topic]: id=..editor
-#: data/core/editor/help.cfg:153
-msgid ""
-"\n"
-"Predefine the scenario's music track playlist.\n"
-"\n"
-"• Time Schedule Editor\n"
-"\n"
-msgstr ""
-"\n"
-"Stel de muziek afspeellijst van het scenario in.\n"
-"\n"
-"• Tijdschema Editor\n"
-"\n"
-
-#. [topic]: id=..editor
-#: data/core/editor/help.cfg:158
-msgid ""
-"\n"
-"\n"
-"• What-you-see-is-what-you-get\n"
-"The editor is not a WYSIWYG application.\n"
-"\n"
-"Because which exact graphic tile represents a terrain in the map depends on "
-"all terrain rules loaded (which is different between the editor and each "
-"other use case) the map won't look exactly the same.\n"
+"The map won’t look exactly the same in the game as it does in the editor, "
+"because this depends on the terrain rules. For example, when many mountain "
+"hexes are clustered together the terrain rules will try to combine them into "
+"mountain ranges and large graphics spanning multiple hexes.\n"
 "\n"
 "• Event handlers and scripting\n"
-"The editor is not a tool to help you scripting the scenario's event "
+"\n"
+"The editor is not a tool to help you scripting the scenario’s event "
 "handlers.\n"
 "\n"
 "• Infinite Backwards Compatibility\n"
-"The editor can't load maps from versions prior to 1.10.\n"
-"TODO is that true?\n"
 "\n"
+"The editor can load most maps from older versions of Wesnoth, but not all. "
+"Maps from 1.3.2 and later will normally be supported, unless they use "
+"terrains which are no longer in mainline Wesnoth. Maps from add-ons which "
+"have their own terrains will need that add-on to tell the editor about their "
+"terrains."
 msgstr ""
-"\n"
-"\n"
-"• Wat-je-ziet-is-wat-je-krijgt (WYSIWYG)\n"
-"De editor is geen WYSIWYG programma.\n"
-"\n"
-"Omdat iedere tegel een terreinsoort vertegenwoordigd afhankelijk van de "
-"terreinregels die geladen zijn (welke anders zijn tussen de editor en iedere "
-"ander gebruik) zal de kaart niet precies hetzelfde eruit zien.\n"
-"\n"
-"• Gebeurtenis handlers en coderen\n"
-"De editor is geen gebruikersvoorwerp om gebeurtenissen te coderen.\n"
-"\n"
-"• Oneindige Terugwaardse Compatibiliteit\n"
-"De editor kan geen kaarten laden van versies voor 1.10\n"
-"\n"
 
-#. [topic]: id=..editor
-#: data/core/editor/help.cfg:172
+#. [topic]: id=..editor_mode_terrain
+#: data/core/editor/help.cfg:258
 msgid ""
+"The terrain editor’s functionality is similar to a simple paint "
+"application.\n"
 "\n"
-"• <ref>dst='editor_modes' text='Editing Modes'</ref>\n"
-"• <ref>dst='editor_toolkit' text='Editor Toolkit'</ref>\n"
-"• <ref>dst='editor_palette' text='Editor Palette'</ref>\n"
-"• <ref>dst='editor_brush' text='Editor Brushes'</ref> TODO: not sure if it "
-"needs a topic on its own\n"
-"• <ref>dst='editor_clipboard' text='Editor Clipboard'</ref>"
+"The right-hand sidebar contains, from top to bottom, the mini-map, the "
+"toolkit (see the pages for each tool), tool options, and "
+"<ref>dst='editor_palette' text='Palette'</ref>.\n"
+"\n"
+"When saved using “Save Map As” and saving to the default directory, the "
+"resulting map can be found in the “User Maps” game type of the multiplayer "
+"“Create Game” dialog."
 msgstr ""
-"\n"
-"• <ref>dst='editor_modes' text='Aanpassingmodus'</ref>\n"
-"• <ref>dst='editor_toolkit' text='Editor Gereedschapskist'</ref>\n"
-"• <ref>dst='editor_palette' text='Editor Kleuren'</ref>\n"
-"• <ref>dst='editor_brush' text='Editor Kwasten'</ref> TODO: niet zeker of "
-"het een onderwerp op zich vereist\n"
-"• <ref>dst='editor_clipboard' text='Editor Klembord'</ref>"
 
-#. [topic]: id=editor_modes
-#: data/core/editor/help.cfg:184
-msgid "Editing Modes"
-msgstr "Aanpassingmodus"
-
-#. [topic]: id=editor_modes
-#: data/core/editor/help.cfg:185
+#. [topic]: id=..editor_mode_scenario
+#: data/core/editor/help.cfg:270
 msgid ""
-"\n"
-"\n"
-"<header>text='Pure Map Mode'</header>"
+"The scenario editor mode adds support for some map-related WML features, "
+"such as areas and scenery items. Most scenarios will still require "
+"additional WML to be written using a different tool; the scenario editor "
+"does not support scripting the scenario’s events."
 msgstr ""
-"\n"
-"\n"
-"<header>text='Enkel Kaart Modus'</header>"
 
-#. [topic]: id=editor_modes
-#: data/core/editor/help.cfg:185
-msgid "The editor features two separate modes of operation:"
-msgstr "De editor bevat twee losstaande manieren van besturing:"
-
-#. [topic]: id=editor_modes
-#: data/core/editor/help.cfg:187
+#. [topic]: id=..editor_mode_scenario
+#: data/core/editor/help.cfg:272
 msgid ""
+"<header>text='Checking whether the editor is in scenario mode'</header>\n"
 "\n"
+"You can check which mode the editor is in by looking at the menu bar.\n"
 "\n"
-"Allows only the composing of the terrain map itself and the definition of "
-"leader starting positions."
+"• In scenario mode the “Areas” and “Side” menus are enabled.\n"
+"• In terrain-only mode the “Areas” and “Side” menus are grayed-out."
 msgstr ""
-"\n"
-"\n"
-"Staat enkel het samenstellen van de terreinkaart zelf en de startposities "
-"van de leiders."
 
-#. [topic]: id=editor_modes
-#: data/core/editor/help.cfg:189
+#. [topic]: id=..editor_mode_scenario
+#: data/core/editor/help.cfg:279
 msgid ""
+"<header>text='Entering scenario mode'</header>\n"
 "\n"
-"How the information is saved depends on the loaded file:\n"
+"To start a new map in scenario mode, choose “New Scenario” from the “File” "
+"menu.\n"
 "\n"
-"<bold>text='Native'</bold>"
+"If you’re already editing a map in terrain mode, use “Save Scenario As” from "
+"the “File” menu; this will switch to scenario mode."
 msgstr ""
-"\n"
-"Hoe de informatie opgeslagen wordt hangt af van het geladen bestand\n"
-"\n"
-"<bold>text='Lokaal'</bold>"
 
-#. [topic]: id=editor_modes
-#: data/core/editor/help.cfg:192
+#. [topic]: id=..editor_mode_scenario
+#: data/core/editor/help.cfg:287
 msgid ""
+"<header>text='The files: .map and .cfg'</header>\n"
 "\n"
-"A new map or file containing only the arguments to the map_data attribute.\n"
+"The map editor saves exactly one file, either a .map (for terrain mode) or "
+"a .cfg (for scenario mode). In scenario mode the terrain map is saved inside "
+"the .cfg file; there is no separate .map file. If you start editing in "
+"terrain mode and then switch to scenaro mode then an old .map file might "
+"remain, but this is not updated by the scenario editor.\n"
 "\n"
-"The produced map can be played in the “User Maps” game type at the create "
-"multiplayer game dialog if saved to the default directory.\n"
-"\n"
-"<bold>text='Embedded'</bold>"
+"Loading a .cfg file has different results depending on the contents of the ."
+"cfg file. For .cfg files that were created by the scenario editor, it will "
+"open the .cfg in the scenario editor. However, for .cfg files that use a "
+"separate .map file (which can't be created by the scenario editor), the "
+"editor may follow the link and open the corresponding .map in terrain-only "
+"mode, as if the .map file was chosen in the file selector."
 msgstr ""
-"\n"
-"Een nieuwe kaart of nieuw bestand bevat enkel argumenten over het map_data "
-"attribuut.\n"
-"\n"
-"De geproduceerde kaart kan afgespeeld worden in de \"Gebruikers mappen\" "
-"speltype wanneer een multiplayer speldialoog opgeslagen wordt in een lokale "
-"map.\n"
-"\n"
-"<bold>text='Ingebouwd'</bold>"
 
-#. [topic]: id=editor_modes
-#: data/core/editor/help.cfg:197
+#. [topic]: id=editor_separate_events_file
+#: data/core/editor/help.cfg:299
+msgid "Using a separate file for WML events"
+msgstr ""
+
+#. [topic]: id=editor_separate_events_file
+#: data/core/editor/help.cfg:300
 msgid ""
+"When loading a .cfg file, the scenario editor understands files created by "
+"the scenario editor, but is likely to have difficulty with files that have "
+"been edited by hand.\n"
 "\n"
-"Scenario files containing a valid map_data attribute (not a file include) "
-"will be opened in this submode. The editor replaces only the content of "
-"map_data and leaves everything else in the scenario untouched. Maps opened "
-"this way are marked [e] in the Maps menu."
+"Files created by the scenario editor omit the opening [scenario] and closing "
+"[/scenario] tags. If you are creating a campaign (or other add-on), then "
+"those tags need to be added; there is more detail about this in the "
+"<ref>dst='editor_map_format' text='map file format'</ref> documentation.\n"
+"\n"
+"One workflow is to create a separate WML file, also with the .cfg extension, "
+"which uses the WML preprocessor to include the editor-created file. This "
+"separate file contains both the [scenario] tag and any hand-edited WML such "
+"as events. With this workflow, the add-on’s file structure could look like "
+"this:\n"
+"\n"
+"<header>text='For Wesnoth 1.14'</header>\n"
+"\n"
+"• _main.cfg:\n"
+"  ◦ use “{./scenarios}” to include the “scenarios” directory\n"
+"• maps/map_from_01.cfg\n"
+"  ◦ this is the file created by the scenario editor\n"
+"• scenarios/01_Forest.cfg, instead of the opening [scenario] tag put in "
+"these four lines:\n"
+"  ◦ [scenario]\n"
+"  ◦     {~add-ons/NAME_OF_ADD_ON/maps/map_from_01.cfg}\n"
+"  ◦ [/scenario]\n"
+"  ◦ [+scenario]\n"
+"\n"
+"The first three of those lines insert the scenario-generated file inside a "
+"[scenario] tag. The ‘+’ sign on the fourth line means that two scenario tags "
+"will be combined, with attributes in the second one overriding attributes in "
+"the first one.\n"
+"\n"
+"<header>text='1.16 and later'</header>\n"
+"\n"
+"If your add-on will only be used on 1.16 and later, there are new features "
+"to load .cfg files via map_file, and to avoid repeating the add-on’s name "
+"within the .cfg files.\n"
+"\n"
+"• _main.cfg:\n"
+"  ◦ use “[binary_path]” to add add-on’s directories to the binary path, "
+"which makes “map_file” search the “maps” directory.\n"
+"  ◦ use “{./scenarios}” to include the “scenarios” directory\n"
+"• maps/map_from_01.cfg\n"
+"  ◦ this is the file created by the scenario editor\n"
+"• scenarios/01_Forest.cfg\n"
+"  ◦ inside the [scenario] element, use “map_file=\"map_from_01.cfg\"” to "
+"load that file"
 msgstr ""
-"\n"
-"Scenario bestanden die een geldig map_data attribuut bevatten (zonder "
-"bestand toegevoegd) worden geopend in deze submodus. De editor vervangt "
-"enkel de inhoud van map_data en laat al het andere zoals het was. Kaarten "
-"die op deze manier geopend worden zijn gemarkeerd met [e] in het Kaart menu."
-
-#. [topic]: id=editor_modes
-#: data/core/editor/help.cfg:198
-msgid ""
-"\n"
-"\n"
-"<header>text='Scenario Mode'</header>"
-msgstr ""
-"\n"
-"\n"
-"<header>text='Scenario Modus'</header>"
-
-#. [topic]: id=editor_modes
-#: data/core/editor/help.cfg:200
-msgid ""
-"\n"
-"\n"
-"The Scenario mode allows several extra tools to be used, such as the Unit "
-"tool. At least one side must be defined in order to use these tools, "
-"however.\n"
-"\n"
-"In this mode, terrain data is stored in the map_data attribute and saved "
-"into a file with any applicable WML."
-msgstr ""
-"\n"
-"\n"
-"De Scenario modus staat toe dat een aantal extra hulpmiddelen gebruikt "
-"kunnen worden, zoals het Eenheid hulpmiddel. Ten minste een kant moet "
-"gedefinieerd worden om deze hulpmiddelen te kunnen gebruiken.\n"
-"\n"
-"In deze modus, terrein data is opgeslagen in het map_data attribuut en "
-"opgeslagen in een bestand met een toepasselijk WML."
-
-#. [topic]: id=editor_toolkit
-#: data/core/editor/help.cfg:211
-msgid "Editor Tools"
-msgstr "Editor Hulpmiddelen"
-
-#. [topic]: id=editor_toolkit
-#: data/core/editor/help.cfg:212
-msgid ""
-"The editor provides several tools for editing your maps and scenarios. At "
-"all times, one of the editor tools is active. The active tool's context "
-"determines the content of the editor palette and context menu.\n"
-"\n"
-"These following tools are provided:\n"
-"\n"
-"• <ref>dst='editor_tool_paint' text='Paint Tool'</ref>\n"
-"• <ref>dst='editor_tool_fill'  text='Fill Tool'</ref>\n"
-"• <ref>dst='editor_tool_select' text='Select Tool'</ref>\n"
-"• <ref>dst='editor_tool_paste' text='Paste Tool'</ref>\n"
-"• <ref>dst='editor_tool_starting' text='Starting Tool'</ref>\n"
-"• <ref>dst='editor_tool_label' text='Label Tool'</ref>\n"
-"• <ref>dst='editor_tool_item' text='Item Tool'</ref>\n"
-"• <ref>dst='editor_tool_soundsource' text='Soundsource Tool'</ref>\n"
-"• <ref>dst='editor_tool_village' text='Village Tool'</ref>\n"
-"• <ref>dst='editor_tool_unit' text='Unit Tool'</ref>\n"
-"\n"
-msgstr ""
-"De editor heeft verschillende gereedschappen voor het aanpassen van je "
-"kaarten en scenarios. Er is altijd één gereedschap actief. Het actieve "
-"gereedschap bepaalt de inhoud van het editor palette en het contextmenu.\n"
-"\n"
-"De volgende gereedschappen zijn beschikbaar:\n"
-"\n"
-"• <ref>dst='editor_tool_paint' text='Verf Gereedschap'</ref>\n"
-"• <ref>dst='editor_tool_fill'  text='Opvul Gereedschap'</ref>\n"
-"• <ref>dst='editor_tool_select' text='Selecteer Gereedschap'</ref>\n"
-"• <ref>dst='editor_tool_paste' text='Plak Gereedschap'</ref>\n"
-"• <ref>dst='editor_tool_starting' text='Start Gereedschap'</ref>\n"
-"• <ref>dst='editor_tool_label' text='Label Gereedschap'</ref>\n"
-"• <ref>dst='editor_tool_item' text='Voorwerp Gereedschap'</ref>\n"
-"• <ref>dst='editor_tool_soundsource' text='Geluidsbron Gereedschap'</ref>\n"
-"• <ref>dst='editor_tool_village' text='Dorpen Gereedschap'</ref>\n"
-"• <ref>dst='editor_tool_unit' text='Eenheid Gereedschap'</ref>\n"
-"\n"
-
-#. [topic]: id=editor_terrain
-#: data/core/editor/help.cfg:234
-msgid "Terrain Editor"
-msgstr "Terrein Editor"
-
-#. [topic]: id=editor_terrain
-#: data/core/editor/help.cfg:235
-msgid ""
-"The terrain editor's functionality is covered by the "
-"<ref>dst='editor_tool_paint' text='Paint'</ref> and "
-"<ref>dst='editor_tool_fill' text='Fill Tool'</ref>."
-msgstr ""
-"De functionaliteit van de terrein editor valt onder het "
-"<ref>dst='editor_tool_paint' text='Verf'</ref> en "
-"<ref>dst='editor_tool_fill' text='Opvul gereedschap'</ref>."
 
 #. [topic]: id=editor_masks
-#: data/core/editor/help.cfg:242
+#: data/core/editor/help.cfg:338
 msgid "Editor Mask Usage"
 msgstr "Editor Laag Gebruik"
 
 #. [topic]: id=editor_masks
-#: data/core/editor/help.cfg:243
+#: data/core/editor/help.cfg:339
 msgid ""
 "Masks can be applied to a base map for reusal in several scenarios playing "
 "at the same locations."
@@ -586,68 +626,158 @@ msgstr ""
 "scenarios die zich op dezelfde locatie afspelen."
 
 #. [topic]: id=editor_time_schedule
-#: data/core/editor/help.cfg:250
-msgid "Time Schedule Editor"
+#. Time of Day and Schedule Editor, please use a short string as it will be used in the left-hand pane of the help browser
+#: data/core/editor/help.cfg:347
+#, fuzzy
+#| msgid "Time Schedule Editor"
+msgid "ToD and Schedule Editor"
 msgstr "Tijdschema Editor"
 
+#. [topic]: id=editor_time_schedule
+#: data/core/editor/help.cfg:348
+msgid ""
+"This button at the top-right of the screen accesses the time-of-day preview "
+"and the schedule editor.\n"
+"\n"
+"In terrain mode, this displays the map as it will be recolored at different "
+"times of day.\n"
+"\n"
+"In scenario mode, the button accesses an editor for individual schedules for "
+"<ref>dst='editor_named_area' text='time areas'</ref>."
+msgstr ""
+
 #. [topic]: id=editor_palette
-#: data/core/editor/help.cfg:258
+#: data/core/editor/help.cfg:359
 msgid "Editor Palette"
 msgstr "Editor Kleur"
 
 #. [topic]: id=editor_palette
-#: data/core/editor/help.cfg:259
+#. the “Player 1”, “Player 2”, ... list is translated using "Player $side_num" in the wesnoth-editor textdomain
+#: data/core/editor/help.cfg:361
 msgid ""
 "The editor palette contains the applicable items you may use with the "
 "currently selected tool. For example, the Paint tool will display a full "
 "list of all available terrains, and the unit tool will provide a list of "
-"available units."
+"available units. When using the Starting Locations Tool, the palette changes "
+"to a list of “Player 1”, “Player 2”, etc.\n"
+"\n"
+"<bold>text='Filter'</bold>\n"
+"\n"
+"There is a filter function to show only a subset of the available items — "
+"this is the leftmost of the four buttons at the top of the palette, and the "
+"graphic changes depending on what is selected. Examples:"
 msgstr ""
-"De editor kleur bevat alle toepasbare onderdelen die je kan gebruiken in "
-"samenwerken met het geselecteerde gereedschap. Bijvoorbeeld, het Verf "
-"gereedschap zal een lijst weergeven van alle beschikbare terreinen, en het "
-"Eenheid gereedschap zal een lijst weergeven van alle beschikbare eenheden."
 
-#. [topic]: id=map_format
-#: data/core/editor/help.cfg:266
+#. [topic]: id=editor_palette
+#: data/core/editor/help.cfg:366
+msgid "Show all kinds of terrain"
+msgstr ""
+
+#. [topic]: id=editor_palette
+#: data/core/editor/help.cfg:367
+msgid "Show only water terrains"
+msgstr ""
+
+#. [topic]: id=editor_palette
+#: data/core/editor/help.cfg:368
+msgid "Show only villages"
+msgstr ""
+
+#. [topic]: id=editor_map_format
+#: data/core/editor/help.cfg:379
 msgid "Wesnoth Map Format"
 msgstr "Wesnoth Kaart Format"
 
-#. [topic]: id=map_format
-#: data/core/editor/help.cfg:267
+#. [topic]: id=editor_map_format
+#: data/core/editor/help.cfg:380
+msgid "Wesnoth stores its maps in human readable plain text files."
+msgstr ""
+
+#. [topic]: id=editor_map_format
+#: data/core/editor/help.cfg:382
 msgid ""
-"Wesnoth stores its maps in human readable plain text files.\n"
+"<header>text='Native'</header>\n"
 "\n"
 "A map file consists of rows with comma separated terrain code strings. The "
-"files can be edited with a general purpose text editor like notepad.\n"
+"only non-terrain information provided by the map syntax is the set of "
+"locations created by the <ref>dst='editor_tool_starting' text='Starting "
+"Locations Tool'</ref>. The files can be edited with a general purpose text "
+"editor like notepad.\n"
 "\n"
-"The only additional information provided by the map syntax are the starting "
-"positions of the scenario's sides.\n"
+"These files can be used directly for multiplayer games, the number of "
+"players is automatically determined by the number of starting positions. "
+"When saved in the default directory, the map can be found in the “Custom "
+"Maps” game type of the multiplayer “Create Game” dialog; you may need to "
+"refresh the cache (press F5 on the title screen) before a newly-created map "
+"appears.\n"
 "\n"
-"Additional information, such as teams, custom events, and complex side "
-"setups still need to be manually coded in WML."
+"These files can be used in a scenario’s .cfg file, with the scenario’s WML "
+"providing additional information such as teams, custom events, and complex "
+"side setups. The .cfg file loads the map file with either of:\n"
+"\n"
+"• map_file=maps/01_First_Map.map <italic>text='— supported since Wesnoth "
+"1.14'</italic>\n"
+"• map_data=\"{maps/01_First_Map.map}\" <italic>text='— a WML preprocessor "
+"include'</italic>\n"
+"\n"
+"The <italic>text='map_file'</italic> method is preferred over using a "
+"preprocessor include."
 msgstr ""
-"Wesnoth slaat de kaarten op in bestanden die door mensen te lezen zijn.\n"
-"\n"
-"Een kaart bestand bevat rijen met terreincodes door komma's gescheiden. De "
-"bestanden kunnen aangepast worden met een standaard tekstverwerker zoals "
-"notepad.\n"
-"\n"
-"De enige extra informatie die de kaartcode geeft zijn de startposities van "
-"de leiders.\n"
-"\n"
-"Verdere informatie zoals teams, gebeurtenissen, en ingewikkelde instellingen "
-"moeten nog steeds handmatig gecodeerd worden in WML."
 
-#. [topic]: id=scenario_format
-#: data/core/editor/help.cfg:280
-msgid "Scenario Format"
-msgstr "Scenario Format"
+#. [topic]: id=editor_map_format
+#: data/core/editor/help.cfg:395
+msgid ""
+"<header>text='Embedded'</header>\n"
+"\n"
+"The map data can stored as part of a scenario’s .cfg file, directly in the "
+"<italic>text='map_data'</italic> attribute. In other words, in the place "
+"that the preprocessor would include it when using the preprocessor-include "
+"method.\n"
+"\n"
+"<header>text='Using Embedded Format in Terrain Mode'</header>\n"
+"\n"
+"If you are editing the map and not using the Scenario Mode support, then "
+"it’s trivial to move the data to a native map file before opening it in the "
+"editor. This conversion is recommended — the editor supports editing the "
+"content of map_data while leaving everything else in the file untouched, but "
+"this is rarely-used code. Maps opened this way are marked (E) in the Window "
+"menu."
+msgstr ""
 
-#. [topic]: id=editor_starting_positions_in_general
-#: data/core/editor/help.cfg:288
-msgid "Starting Positions Howto"
-msgstr "Start Posities Hoe"
+#. [topic]: id=editor_map_format
+#: data/core/editor/help.cfg:403
+msgid ""
+"<header>text='Files created by the Scenario Editor'</header>\n"
+"\n"
+"In scenario mode, the editor saves the data as a .cfg file with embedded map "
+"data. When loading a .cfg file, the scenario editor understands files "
+"created by the scenario editor itself, but is likely to have difficulty with "
+"files that have been edited by hand; problems can be avoided by "
+"<ref>dst='editor_separate_events_file' text='using a separate .cfg file'</"
+"ref> for the hand-edited parts."
+msgstr ""
+
+#. [topic]: id=editor_map_format
+#: data/core/editor/help.cfg:407
+msgid ""
+"<header>text='Which scenario files use the [scenario] tag'</header>\n"
+"\n"
+"Files created by the scenario editor have the contents of a WML scenario "
+"element, but don’t include the opening [scenario] and closing [/scenario] "
+"tags. For each .cfg file in the userdata folder’s editor/scenarios "
+"subfolder, the game will automatically try to load a scenario from it to "
+"include in the “Custom Scenarios” list (files that fail to load are "
+"ignored). In this folder each file is a separate item - files that fail to "
+"parse as a scenario are ignored, and files must not contain the [scenario][/"
+"scenario] tags.\n"
+"\n"
+"The opposite applies when a scenario is part of a campaign or other add-on. "
+"Typically each scenario has its own .cfg file, however this is unnecessary - "
+"all of the WML in an add-on will be combined by the preprocessor, it doesn’t "
+"matter whether the add-on is written as separate files or not. The engine "
+"needs the [scenario]...[/scenario] (or [multiplayer]...[/multiplayer]) tags "
+"to know which WML is part of each scenario."
+msgstr ""
 
 #. [editor_times]: id=deep_underground
 #. [time]: id=deep_underground
@@ -1187,72 +1317,72 @@ msgstr ""
 "    • Dorre Vlakten"
 
 #. [section]: id=schedule
-#: data/core/help.cfg:14
+#: data/core/help.cfg:10
 msgid "Time of Day Schedule"
 msgstr "Tijd van de Dag Schema"
 
 #. [section]: id=introduction
 #. [topic]: id=..introduction
-#: data/core/help.cfg:21 data/core/help.cfg:99
+#: data/core/help.cfg:17 data/core/help.cfg:95
 msgid "Introduction"
 msgstr "Introductie"
 
 #. [section]: id=gameplay
 #. [topic]: id=..gameplay
-#: data/core/help.cfg:27 data/core/help.cfg:171
+#: data/core/help.cfg:23 data/core/help.cfg:167
 msgid "Gameplay"
 msgstr "Gameplay"
 
 #. [section]: id=traits_section
 #. [topic]: id=..traits_section
-#: data/core/help.cfg:33 data/core/help.cfg:461
+#: data/core/help.cfg:29 data/core/help.cfg:457
 msgid "Traits"
 msgstr "Karaktereigenschappen"
 
 #. [section]: id=units
 #. [topic]: id=..units
-#: data/core/help.cfg:41 data/core/help.cfg:122
+#: data/core/help.cfg:37 data/core/help.cfg:118
 msgid "Units"
 msgstr "Eenheden"
 
 #. [section]: id=abilities_section
 #. [topic]: id=..abilities_section
-#: data/core/help.cfg:50 data/core/help.cfg:142
+#: data/core/help.cfg:46 data/core/help.cfg:138
 msgid "Abilities"
 msgstr "Vaardigheden"
 
 #. [section]: id=weapon_specials
 #. [topic]: id=..weapon_specials
-#: data/core/help.cfg:58 data/core/help.cfg:151
+#: data/core/help.cfg:54 data/core/help.cfg:147
 msgid "Weapon Specials"
 msgstr "Wapenspecialiteiten"
 
 #. [section]: id=eras_section
 #. [topic]: id=..eras_section
-#: data/core/help.cfg:66 data/core/help.cfg:131
+#: data/core/help.cfg:62 data/core/help.cfg:127
 msgid "Eras"
 msgstr "Tijdperken"
 
 #. [section]: id=terrains_section
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:74 data/core/help.cfg:476
+#: data/core/help.cfg:70 data/core/help.cfg:472
 msgid "Terrains"
 msgstr "Terrein"
 
 #. [section]: id=addons
 #. [topic]: id=..addons
-#: data/core/help.cfg:82 data/core/help.cfg:529
+#: data/core/help.cfg:78 data/core/help.cfg:525
 msgid "Add-ons"
 msgstr "Add-ons"
 
 #. [section]: id=commands
 #. [topic]: id=..commands
-#: data/core/help.cfg:88 data/core/help.cfg:602
+#: data/core/help.cfg:84 data/core/help.cfg:598
 msgid "Commands"
 msgstr "Opdrachten"
 
 #. [topic]: id=..introduction
-#: data/core/help.cfg:100
+#: data/core/help.cfg:96
 msgid ""
 "\n"
 "\n"
@@ -1285,12 +1415,12 @@ msgstr ""
 "uitzonderingen, klik je op de links."
 
 #. [topic]: id=about_game
-#: data/core/help.cfg:110
+#: data/core/help.cfg:106
 msgid "About the Game"
 msgstr "Over het Spel"
 
 #. [topic]: id=about_game
-#: data/core/help.cfg:111
+#: data/core/help.cfg:107
 msgid ""
 "The game takes place on a hex-based game field, where your units battle "
 "against those controlled by the computer, friends who each take turns on the "
@@ -1333,7 +1463,7 @@ msgstr ""
 "en sindsdien is er door veel vrijwilligers aan gewerkt."
 
 #. [topic]: id=..units
-#: data/core/help.cfg:123
+#: data/core/help.cfg:119
 msgid ""
 "This section will list all the units you discover as you explore the world "
 "of Wesnoth. When you see a new unit during a campaign or multiplayer "
@@ -1352,7 +1482,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=..eras_section
-#: data/core/help.cfg:132
+#: data/core/help.cfg:128
 msgid ""
 "A faction is a collection of units and leaders. Factions are assigned to "
 "sides in multiplayer games.\n"
@@ -1363,7 +1493,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=..eras_section
-#: data/core/help.cfg:134
+#: data/core/help.cfg:130
 msgid ""
 "An era is a collection of factions, intended to be played against one "
 "another. Besides the mainline eras that come with the game, many user-made "
@@ -1376,7 +1506,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=..abilities_section
-#: data/core/help.cfg:143
+#: data/core/help.cfg:139
 msgid ""
 "Certain units have abilities that either directly affect other units or have "
 "an impact on how the unit interacts with other units. These abilities will "
@@ -1393,7 +1523,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=..weapon_specials
-#: data/core/help.cfg:152
+#: data/core/help.cfg:148
 msgid ""
 "Some weapons have special features that increase the effectiveness of "
 "attacking with them. When you see a new weapon special during a campaign or "
@@ -1412,12 +1542,12 @@ msgstr ""
 "\n"
 
 #. [topic]: id=.unknown_unit
-#: data/core/help.cfg:161
+#: data/core/help.cfg:157
 msgid "Unknown Unit"
 msgstr "Onbekende Eenheid"
 
 #. [topic]: id=.unknown_unit
-#: data/core/help.cfg:162
+#: data/core/help.cfg:158
 msgid ""
 "\n"
 "\n"
@@ -1430,7 +1560,7 @@ msgstr ""
 "ontdekken voordat je de beschrijving kan zien."
 
 #. [topic]: id=..gameplay
-#: data/core/help.cfg:172
+#: data/core/help.cfg:168
 msgid ""
 "Wesnoth is comprised of a series of battles, called "
 "<italic>text='scenarios'</italic>, that pit your troops against the troops "
@@ -1490,7 +1620,7 @@ msgstr ""
 "behalen zijn en meer inzichten vereisen."
 
 #. [topic]: id=..gameplay
-#: data/core/help.cfg:181
+#: data/core/help.cfg:177
 msgid ""
 "\n"
 "\n"
@@ -1503,7 +1633,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=..gameplay
-#: data/core/help.cfg:181
+#: data/core/help.cfg:177
 msgid ""
 "While playing, keep in mind that you can mouse-over many items in the game, "
 "such as the information displayed in the status pane, to see a brief "
@@ -1518,12 +1648,12 @@ msgstr ""
 "tegenkomt."
 
 #. [topic]: id=victory_and_defeat
-#: data/core/help.cfg:193
+#: data/core/help.cfg:189
 msgid "Victory and Defeat"
 msgstr "Winnen en Verliezen"
 
 #. [topic]: id=victory_and_defeat
-#: data/core/help.cfg:194
+#: data/core/help.cfg:190
 msgid ""
 "\n"
 "\n"
@@ -1541,7 +1671,7 @@ msgstr ""
 "verder te gaan."
 
 #. [topic]: id=victory_and_defeat
-#: data/core/help.cfg:194
+#: data/core/help.cfg:190
 msgid ""
 "Pay careful attention to the <bold>text='Objectives'</bold> pop-up box at "
 "the beginning of each scenario. In most scenarios, you will achieve victory "
@@ -1559,12 +1689,12 @@ msgstr ""
 "beurten stand houden."
 
 #. [topic]: id=recruit_and_recall
-#: data/core/help.cfg:203
+#: data/core/help.cfg:199
 msgid "Recruiting and Recalling"
 msgstr "Rekruteren en Oproepen"
 
 #. [topic]: id=recruit_and_recall
-#: data/core/help.cfg:204
+#: data/core/help.cfg:200
 msgid ""
 "\n"
 "\n"
@@ -1582,7 +1712,7 @@ msgstr ""
 "zolang je genoeg goud hebt."
 
 #. [topic]: id=recruit_and_recall
-#: data/core/help.cfg:204
+#: data/core/help.cfg:200
 msgid ""
 "Each side begins with one leader in their keep. At the start of any battle, "
 "and at times during it, you will need to recruit <ref>dst='..units' "
@@ -1609,7 +1739,7 @@ msgstr ""
 "bold> om de eenheid te rekruteren."
 
 #. [topic]: id=recruit_and_recall
-#: data/core/help.cfg:206
+#: data/core/help.cfg:202
 msgid ""
 "\n"
 "\n"
@@ -1623,7 +1753,7 @@ msgstr ""
 "beïnvloeden."
 
 #. [topic]: id=recruit_and_recall
-#: data/core/help.cfg:208
+#: data/core/help.cfg:204
 msgid ""
 "\n"
 "\n"
@@ -1638,7 +1768,7 @@ msgstr ""
 "alle eenheden uit voorgaande scenario's."
 
 #. [topic]: id=recruit_and_recall
-#: data/core/help.cfg:210
+#: data/core/help.cfg:206
 msgid ""
 "\n"
 "\n"
@@ -1653,12 +1783,12 @@ msgstr ""
 "onderhoud'</ref> voor meer informatie."
 
 #. [topic]: id=income_and_upkeep
-#: data/core/help.cfg:219
+#: data/core/help.cfg:215
 msgid "Income and Upkeep"
 msgstr "Inkomen en Onderhoud"
 
 #. [topic]: id=income_and_upkeep
-#: data/core/help.cfg:220
+#: data/core/help.cfg:216
 msgid ""
 "\n"
 "\n"
@@ -1675,7 +1805,7 @@ msgstr ""
 "onderhoudskosten worden daar van afgetrokken, zoals hieronder beschreven."
 
 #. [topic]: id=income_and_upkeep
-#: data/core/help.cfg:220
+#: data/core/help.cfg:216
 msgid ""
 "In Wesnoth, it is not enough simply to recruit units and fight. You must "
 "watch your gold as well, especially in campaigns, where you can carry extra "
@@ -1689,7 +1819,7 @@ msgstr ""
 "<italic>text='onderhoud'</italic>."
 
 #. [topic]: id=income_and_upkeep
-#: data/core/help.cfg:224
+#: data/core/help.cfg:220
 msgid ""
 "\n"
 "\n"
@@ -1709,7 +1839,7 @@ msgstr ""
 "dorpjes. Je moet dan twee goudstukken per beurt betalen aan onderhoud."
 
 #. [topic]: id=income_and_upkeep
-#: data/core/help.cfg:226
+#: data/core/help.cfg:222
 msgid ""
 "\n"
 "\n"
@@ -1724,7 +1854,7 @@ msgstr ""
 "hebben van 10 goudstukken per beurt."
 
 #. [topic]: id=income_and_upkeep
-#: data/core/help.cfg:230
+#: data/core/help.cfg:226
 msgid ""
 "\n"
 "\n"
@@ -1745,7 +1875,7 @@ msgstr ""
 "laat de juiste waarden voor het huidige gevecht zien."
 
 #. [topic]: id=income_and_upkeep
-#: data/core/help.cfg:232
+#: data/core/help.cfg:228
 msgid ""
 "\n"
 "\n"
@@ -1766,12 +1896,12 @@ msgstr ""
 "Konrad) zal bijna altijd een leider zijn."
 
 #. [topic]: id=hitpoints
-#: data/core/help.cfg:241
+#: data/core/help.cfg:237
 msgid "Hitpoints and Experience"
 msgstr "Levenspunten en Ervaring"
 
 #. [topic]: id=hitpoints
-#: data/core/help.cfg:242
+#: data/core/help.cfg:238
 msgid ""
 "Each unit has a certain number of <italic>text='hitpoints'</italic> (HP). If "
 "the hitpoints of a unit drop below 1, the unit dies. Each unit also has a "
@@ -1787,7 +1917,7 @@ msgstr ""
 "te vechten."
 
 #. [topic]: id=hitpoints
-#: data/core/help.cfg:246
+#: data/core/help.cfg:242
 msgid ""
 "The hitpoints and experience points are both indicated in the status pane "
 "using two numbers (the current value and the maximum value the unit can "
@@ -1798,7 +1928,7 @@ msgstr ""
 "hebben)."
 
 #. [topic]: id=hitpoints
-#: data/core/help.cfg:248
+#: data/core/help.cfg:244
 msgid ""
 "The hitpoints are also indicated by an energy bar next to each unit, which "
 "is green, yellow or red. A unit with at least 1 experience point has a blue "
@@ -1811,12 +1941,12 @@ msgstr ""
 "<ref>dst='advancement' text='promoveert'</ref>."
 
 #. [topic]: id=advancement
-#: data/core/help.cfg:255
+#: data/core/help.cfg:251
 msgid "Advancement"
 msgstr "Promotie"
 
 #. [topic]: id=advancement
-#: data/core/help.cfg:256
+#: data/core/help.cfg:252
 msgid ""
 "\n"
 "\n"
@@ -1834,7 +1964,7 @@ msgstr ""
 "sommige gevallen mag je kiezen tot wat de eenheid promoveert."
 
 #. [topic]: id=advancement
-#: data/core/help.cfg:256
+#: data/core/help.cfg:252
 msgid ""
 "If both units survive a combat, they gain a number of experience points "
 "equal to the level of the unit they’re fighting. If a unit kills another in "
@@ -1848,7 +1978,7 @@ msgstr ""
 "voor een met rang 3, etc..."
 
 #. [topic]: id=advancement
-#: data/core/help.cfg:258
+#: data/core/help.cfg:254
 msgid ""
 "\n"
 "\n"
@@ -1876,12 +2006,12 @@ msgstr ""
 "het vaak verstandiger is eenheden van lagere rang te doen promoveren."
 
 #. [topic]: id=movement
-#: data/core/help.cfg:267
+#: data/core/help.cfg:263
 msgid "Movement"
 msgstr "Verplaatsing"
 
 #. [topic]: id=movement
-#: data/core/help.cfg:268
+#: data/core/help.cfg:264
 msgid ""
 "\n"
 "\n"
@@ -1909,7 +2039,7 @@ msgstr ""
 "eenheid nodig heeft voor elk van de terreinsoorten."
 
 #. [topic]: id=movement
-#: data/core/help.cfg:268
+#: data/core/help.cfg:264
 msgid ""
 "Movement in <italic>text='Battle for Wesnoth'</italic> is simple. Click on "
 "the unit you wish to move to select it, then click on the hex you wish to "
@@ -1940,7 +2070,7 @@ msgstr ""
 "dorpje heeft ingenomen (maar die kan nog wel aanvallen)."
 
 #. [topic]: id=movement
-#: data/core/help.cfg:270
+#: data/core/help.cfg:266
 msgid ""
 "\n"
 "\n"
@@ -1963,7 +2093,7 @@ msgstr ""
 "beheersingszones."
 
 #. [topic]: id=movement
-#: data/core/help.cfg:272
+#: data/core/help.cfg:268
 msgid ""
 "\n"
 "\n"
@@ -1978,12 +2108,12 @@ msgstr ""
 "als jouw eenheden niet in de weg zouden staan."
 
 #. [topic]: id=shroud_and_fog
-#: data/core/help.cfg:281
+#: data/core/help.cfg:277
 msgid "Shroud and Fog of War"
 msgstr "Sluier en Oorlogsmist"
 
 #. [topic]: id=shroud_and_fog
-#: data/core/help.cfg:282
+#: data/core/help.cfg:278
 msgid ""
 "In some scenarios, parts of the map will be hidden from you. There are two "
 "mechanisms that can be used separately or together. The "
@@ -2027,12 +2157,12 @@ msgstr ""
 "daardoor het ongedaan maken van zetten mogelijk maken."
 
 #. [topic]: id=saveload
-#: data/core/help.cfg:291
+#: data/core/help.cfg:287
 msgid "Save-loading"
 msgstr "Spel-laden"
 
 #. [topic]: id=saveload
-#: data/core/help.cfg:292
+#: data/core/help.cfg:288
 msgid ""
 "\n"
 "\n"
@@ -2052,7 +2182,7 @@ msgstr ""
 "voltooid zonder dat dit gebeurd."
 
 #. [topic]: id=saveload
-#: data/core/help.cfg:292
+#: data/core/help.cfg:288
 msgid ""
 "Random numbers are part of Wesnoth, attacks can fail and units can die due "
 "to bad luck. This is an expected part of the game, and one of the aims of "
@@ -2064,7 +2194,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=saveload
-#: data/core/help.cfg:294
+#: data/core/help.cfg:290
 msgid ""
 "\n"
 "\n"
@@ -2074,7 +2204,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=saveload
-#: data/core/help.cfg:296
+#: data/core/help.cfg:292
 msgid ""
 "\n"
 "\n"
@@ -2089,7 +2219,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=saveload
-#: data/core/help.cfg:301
+#: data/core/help.cfg:297
 msgid ""
 "\n"
 "\n"
@@ -2098,12 +2228,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:310
+#: data/core/help.cfg:306
 msgid "Learning from Losses"
 msgstr ""
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:311
+#: data/core/help.cfg:307
 msgid ""
 "<italic>text='Why did I lose that scenario?'</italic>\n"
 "\n"
@@ -2112,7 +2242,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:313
+#: data/core/help.cfg:309
 msgid ""
 "\n"
 "\n"
@@ -2123,7 +2253,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:315
+#: data/core/help.cfg:311
 msgid ""
 "\n"
 "\n"
@@ -2131,7 +2261,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:317
+#: data/core/help.cfg:313
 msgid ""
 "\n"
 "\n"
@@ -2140,7 +2270,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:319
+#: data/core/help.cfg:315
 msgid ""
 "\n"
 "\n"
@@ -2150,7 +2280,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:321
+#: data/core/help.cfg:317
 msgid ""
 "\n"
 "\n"
@@ -2161,7 +2291,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:323
+#: data/core/help.cfg:319
 msgid ""
 "\n"
 "\n"
@@ -2178,7 +2308,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:325
+#: data/core/help.cfg:321
 msgid ""
 "\n"
 "\n"
@@ -2191,7 +2321,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:327
+#: data/core/help.cfg:323
 msgid ""
 "\n"
 "\n"
@@ -2202,7 +2332,7 @@ msgstr ""
 "<header>text='Onwaarschijnlijke redenen'</header>"
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:329
+#: data/core/help.cfg:325
 msgid ""
 "\n"
 "\n"
@@ -2211,7 +2341,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:331
+#: data/core/help.cfg:327
 msgid ""
 "\n"
 "\n"
@@ -2221,7 +2351,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:333
+#: data/core/help.cfg:329
 msgid ""
 "\n"
 "\n"
@@ -2234,7 +2364,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:335
+#: data/core/help.cfg:331
 msgid ""
 "\n"
 "\n"
@@ -2253,7 +2383,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:337
+#: data/core/help.cfg:333
 msgid ""
 "\n"
 "\n"
@@ -2265,7 +2395,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:339
+#: data/core/help.cfg:335
 msgid ""
 "\n"
 "\n"
@@ -2277,12 +2407,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=combat
-#: data/core/help.cfg:348
+#: data/core/help.cfg:344
 msgid "Combat"
 msgstr "Vechten"
 
 #. [topic]: id=combat
-#: data/core/help.cfg:349
+#: data/core/help.cfg:345
 msgid ""
 "\n"
 "\n"
@@ -2293,7 +2423,7 @@ msgstr ""
 "<header>text='Volgorde en Aantal Slagen'</header>"
 
 #. [topic]: id=combat
-#: data/core/help.cfg:349
+#: data/core/help.cfg:345
 msgid ""
 "Combat in <italic>text='Battle for Wesnoth'</italic> always takes place "
 "between units in adjacent hexes. Click on your unit, and click on the enemy "
@@ -2319,7 +2449,7 @@ msgstr ""
 "vuurballen."
 
 #. [topic]: id=combat
-#: data/core/help.cfg:351
+#: data/core/help.cfg:347
 msgid ""
 "\n"
 "\n"
@@ -2343,7 +2473,7 @@ msgstr ""
 "toebrengen."
 
 #. [topic]: id=combat
-#: data/core/help.cfg:353
+#: data/core/help.cfg:349
 msgid ""
 "\n"
 "\n"
@@ -2354,7 +2484,7 @@ msgstr ""
 "<header>text='Raakkans'</header>"
 
 #. [topic]: id=combat
-#: data/core/help.cfg:355
+#: data/core/help.cfg:351
 msgid ""
 "\n"
 "\n"
@@ -2379,7 +2509,7 @@ msgstr ""
 "aanvaller raakt, af van het terreinsoort waarin de aanvaller zich bevindt."
 
 #. [topic]: id=combat
-#: data/core/help.cfg:357
+#: data/core/help.cfg:353
 msgid ""
 "\n"
 "\n"
@@ -2398,7 +2528,7 @@ msgstr ""
 "van het terrein."
 
 #. [topic]: id=combat
-#: data/core/help.cfg:359
+#: data/core/help.cfg:355
 msgid ""
 "\n"
 "\n"
@@ -2409,7 +2539,7 @@ msgstr ""
 "<header>text=Schade</header>"
 
 #. [topic]: id=combat
-#: data/core/help.cfg:361
+#: data/core/help.cfg:357
 msgid ""
 "\n"
 "\n"
@@ -2433,7 +2563,7 @@ msgstr ""
 "aanvalselectievenster."
 
 #. [topic]: id=combat
-#: data/core/help.cfg:363
+#: data/core/help.cfg:359
 msgid ""
 "\n"
 "\n"
@@ -2451,12 +2581,12 @@ msgstr ""
 "wanneer de eenheid met dit vermogen aanvalt."
 
 #. [topic]: id=damage_types_and_resistance
-#: data/core/help.cfg:371
+#: data/core/help.cfg:367
 msgid "Damage Types and Resistance"
 msgstr "Aanvalssoorten en Weestand"
 
 #. [topic]: id=damage_types_and_resistance
-#: data/core/help.cfg:372
+#: data/core/help.cfg:368
 msgid ""
 "\n"
 "\n"
@@ -2475,7 +2605,7 @@ msgstr ""
 "verdubbeld wordt."
 
 #. [topic]: id=damage_types_and_resistance
-#: data/core/help.cfg:372
+#: data/core/help.cfg:368
 msgid ""
 "In Wesnoth, there are three types of damage usually associated with physical "
 "attacks: <italic>text='blade, pierce, and impact damage'</italic>. "
@@ -2492,7 +2622,7 @@ msgstr ""
 "daadwerkelijk toegebrachte schade verandert."
 
 #. [topic]: id=damage_types_and_resistance
-#: data/core/help.cfg:374
+#: data/core/help.cfg:370
 msgid ""
 "\n"
 "\n"
@@ -2507,7 +2637,7 @@ msgstr ""
 "kwetsbaar voor witte magie aanvallen."
 
 #. [topic]: id=damage_types_and_resistance
-#: data/core/help.cfg:376
+#: data/core/help.cfg:372
 msgid ""
 "\n"
 "\n"
@@ -2521,12 +2651,12 @@ msgstr ""
 "zelfs als de verdediger 100% weerstand heeft tegen het aanvalstype."
 
 #. [topic]: id=orbs
-#: data/core/help.cfg:384
+#: data/core/help.cfg:380
 msgid "Orbs"
 msgstr "Bollen"
 
 #. [topic]: id=orbs
-#: data/core/help.cfg:385
+#: data/core/help.cfg:381
 msgid ""
 "On top of the energy bar shown next to each unit of yours is an orb. For "
 "units you control, this orb is:"
@@ -2535,19 +2665,19 @@ msgstr ""
 "eenheden die jij beheerst is deze bol:"
 
 #. [topic]: id=orbs
-#: data/core/help.cfg:387
+#: data/core/help.cfg:383
 msgid " green if it hasn’t moved this turn,"
 msgstr " groen als de eenheid deze beurt nog niet verplaatst is,"
 
 #. [topic]: id=orbs
-#: data/core/help.cfg:388
+#: data/core/help.cfg:384
 msgid " yellow if it has moved, but could still move further or attack, or"
 msgstr ""
 " geel als de eenheid verplaatst is, maar nog meer kan verplaatsen of aan kan "
 "vallen, of"
 
 #. [topic]: id=orbs
-#: data/core/help.cfg:389
+#: data/core/help.cfg:385
 msgid ""
 " red if it can no longer move or attack, or the user ended the unit’s turn."
 msgstr ""
@@ -2555,23 +2685,23 @@ msgstr ""
 "de speler de beurt van de eenheid heeft beëindigd."
 
 #. [topic]: id=orbs
-#: data/core/help.cfg:390
+#: data/core/help.cfg:386
 msgid " blue if the unit is an ally you do not control."
 msgstr " blauw als de eenheid een bondgenoot is die je niet beheerst."
 
 #. [topic]: id=orbs
-#: data/core/help.cfg:391
+#: data/core/help.cfg:387
 msgid " Enemy units have no orb on top of their energy bar."
 msgstr ""
 " Vijandelijke eenheden hebben geen bolletje boven hun levenspuntenbalk."
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:398
+#: data/core/help.cfg:394
 msgid "Time of Day"
 msgstr "Tijd van de Dag"
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:399
+#: data/core/help.cfg:395
 msgid ""
 "The time of day affects the damage of certain units as follows:\n"
 "\n"
@@ -2596,7 +2726,7 @@ msgstr ""
 "overdag als 's nachts."
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:404
+#: data/core/help.cfg:400
 msgid ""
 "\n"
 "\n"
@@ -2615,21 +2745,21 @@ msgstr ""
 #. [time]: id=dawn
 #. [time]: id=dawn_hour
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:408 data/core/macros/schedules.cfg:14
+#: data/core/help.cfg:404 data/core/macros/schedules.cfg:14
 #: data/core/macros/schedules.cfg:275 data/test/maps/pathfind_1.cfg:64
 msgid "Dawn"
 msgstr "Zonsopgang"
 
 #. [time]: id=morning
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:409 data/core/macros/schedules.cfg:26
+#: data/core/help.cfg:405 data/core/macros/schedules.cfg:26
 #: data/test/maps/pathfind_1.cfg:75
 msgid "Morning"
 msgstr "Ochtend"
 
 #. [time]: id=afternoon
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:410 data/core/macros/schedules.cfg:44
+#: data/core/help.cfg:406 data/core/macros/schedules.cfg:44
 #: data/test/maps/pathfind_1.cfg:86
 msgid "Afternoon"
 msgstr "Middag"
@@ -2637,27 +2767,27 @@ msgstr "Middag"
 #. [time]: id=dusk
 #. [time]: id=dusk_hour
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:411 data/core/macros/schedules.cfg:53
+#: data/core/help.cfg:407 data/core/macros/schedules.cfg:53
 #: data/core/macros/schedules.cfg:396 data/test/maps/pathfind_1.cfg:97
 msgid "Dusk"
 msgstr "Zonsondergang"
 
 #. [time]: id=first_watch
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:412 data/core/macros/schedules.cfg:65
+#: data/core/help.cfg:408 data/core/macros/schedules.cfg:65
 #: data/test/maps/pathfind_1.cfg:108
 msgid "First Watch"
 msgstr "Eerste Helft"
 
 #. [time]: id=second_watch
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:413 data/core/macros/schedules.cfg:89
+#: data/core/help.cfg:409 data/core/macros/schedules.cfg:89
 #: data/test/maps/pathfind_1.cfg:119
 msgid "Second Watch"
 msgstr "Tweede Helft"
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:415
+#: data/core/help.cfg:411
 msgid ""
 "Keep in mind that some scenarios take place underground, where it is "
 "perpetually night!\n"
@@ -2666,7 +2796,7 @@ msgstr ""
 "het voortdurend nacht is!\n"
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:417
+#: data/core/help.cfg:413
 msgid ""
 "Some underground locations are illuminated. They are perpetually "
 "intermediate between day and night.\n"
@@ -2675,7 +2805,7 @@ msgstr ""
 "en geen nacht.\n"
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:419
+#: data/core/help.cfg:415
 msgid ""
 "Some role-playing scenarios take place indoors — these regions are similarly "
 "intermediate.\n"
@@ -2684,7 +2814,7 @@ msgstr ""
 "voortdurend tussen dag en nacht in.\n"
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:421
+#: data/core/help.cfg:417
 msgid ""
 "Finally, units with the <ref>dst='ability_illuminationilluminates' "
 "text='illuminates'</ref> ability and terrain features such as "
@@ -2697,12 +2827,12 @@ msgstr ""
 "veranderen de tijd van de dag-bonus om hen heen."
 
 #. [topic]: id=healing
-#: data/core/help.cfg:428
+#: data/core/help.cfg:424
 msgid "Healing"
 msgstr "Genezing"
 
 #. [topic]: id=healing
-#: data/core/help.cfg:429
+#: data/core/help.cfg:425
 msgid ""
 "\n"
 "\n"
@@ -2715,7 +2845,7 @@ msgstr ""
 "zal 2 HP genezen in de volgende beurt."
 
 #. [topic]: id=healing
-#: data/core/help.cfg:429
+#: data/core/help.cfg:425
 msgid ""
 "In combat, your units will inevitably take damage. There are several ways to "
 "heal your units. However, with the exception of resting, these do not stack; "
@@ -2727,7 +2857,7 @@ msgstr ""
 "plaatsvinden."
 
 #. [topic]: id=healing
-#: data/core/help.cfg:431
+#: data/core/help.cfg:427
 msgid ""
 "\n"
 "• <bold>text='Villages'</bold>: A unit which starts a turn in a village or "
@@ -2738,7 +2868,7 @@ msgstr ""
 "Dorpen: Een eenheid die een beurt begint in een dorp geneest 8HP."
 
 #. [topic]: id=healing
-#: data/core/help.cfg:432
+#: data/core/help.cfg:428
 msgid ""
 "\n"
 "• <ref>dst='ability_regeneratesregenerates' text='Regeneration'</ref>: "
@@ -2752,7 +2882,7 @@ msgstr ""
 "genezen worden."
 
 #. [topic]: id=healing
-#: data/core/help.cfg:433
+#: data/core/help.cfg:429
 msgid ""
 "\n"
 "• <bold>text='Healing units'</bold>: Units with the "
@@ -2770,7 +2900,7 @@ msgstr ""
 "dat een vergiftiging de eenheid verwondt."
 
 #. [topic]: id=healing
-#: data/core/help.cfg:434
+#: data/core/help.cfg:430
 msgid ""
 "\n"
 "• <bold>text='Curing units'</bold>: Units with the "
@@ -2785,7 +2915,7 @@ msgstr ""
 "het genezen van HP, als het deze vaardigheid ook heeft)."
 
 #. [topic]: id=healing
-#: data/core/help.cfg:435
+#: data/core/help.cfg:431
 msgid ""
 "\n"
 "• <bold>text='Advancement'</bold>: When a unit <ref>dst='advancement' "
@@ -2799,7 +2929,7 @@ msgstr ""
 "wiens beurt het is."
 
 #. [topic]: id=healing
-#: data/core/help.cfg:436
+#: data/core/help.cfg:432
 msgid ""
 "\n"
 "\n"
@@ -2815,7 +2945,7 @@ msgstr ""
 "worden eenheden volledig genezen."
 
 #. [topic]: id=healing
-#: data/core/help.cfg:438
+#: data/core/help.cfg:434
 msgid ""
 "\n"
 "\n"
@@ -2826,7 +2956,7 @@ msgstr ""
 "<bold>text='Gevorderd'</bold>"
 
 #. [topic]: id=healing
-#: data/core/help.cfg:440
+#: data/core/help.cfg:436
 msgid ""
 "\n"
 "\n"
@@ -2846,12 +2976,12 @@ msgstr ""
 "meerdere beurten genezen worden."
 
 #. [topic]: id=wrap_up
-#: data/core/help.cfg:448
+#: data/core/help.cfg:444
 msgid "Wrap Up"
 msgstr "Afronding"
 
 #. [topic]: id=wrap_up
-#: data/core/help.cfg:449
+#: data/core/help.cfg:445
 msgid ""
 "This concludes the fundamentals of Wesnoth. You might want to read up on "
 "basic strategy, or familiarize yourself with <ref>dst='..traits_section' "
@@ -2867,12 +2997,12 @@ msgstr ""
 "plezier en succes!"
 
 #. [topic]: id=license
-#: data/core/help.cfg:454
+#: data/core/help.cfg:450
 msgid "License"
 msgstr "Licentie"
 
 #. [topic]: id=..traits_section
-#: data/core/help.cfg:463
+#: data/core/help.cfg:459
 msgid ""
 "\n"
 "\n"
@@ -2890,7 +3020,7 @@ msgstr ""
 "karaktereigenschappen. "
 
 #. [topic]: id=..traits_section
-#: data/core/help.cfg:463
+#: data/core/help.cfg:459
 msgid ""
 "Traits are modifications that change a unit’s attributes slightly. They are "
 "usually randomly assigned to a unit when it is recruited. The traits "
@@ -2904,7 +3034,7 @@ msgstr ""
 "<italic>text='ras'</italic>."
 
 #. [topic]: id=..traits_section
-#: data/core/help.cfg:465
+#: data/core/help.cfg:461
 msgid ""
 "\n"
 "\n"
@@ -2921,7 +3051,7 @@ msgstr ""
 "text='Flexibel'</ref>, en <ref>dst='traits_strong' text='Sterk'</ref>."
 
 #. [topic]: id=..traits_section
-#: data/core/help.cfg:467
+#: data/core/help.cfg:463
 msgid ""
 "\n"
 "\n"
@@ -2944,7 +3074,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:477
+#: data/core/help.cfg:473
 msgid ""
 "\n"
 "\n"
@@ -2957,7 +3087,7 @@ msgstr ""
 "<italic>text='gemengd'</italic>."
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:477
+#: data/core/help.cfg:473
 msgid ""
 "Game maps feature a variety of terrains that affect both unit movement and a "
 "unit’s defensive capability in combat."
@@ -2966,7 +3096,7 @@ msgstr ""
 "verplaatsingen en verdedigingsmogelijkheden beïnvloeden."
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:479
+#: data/core/help.cfg:475
 msgid ""
 "\n"
 "\n"
@@ -2977,7 +3107,7 @@ msgstr ""
 "<header>text='Standaard Terreinsoorten'</header>"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:481
+#: data/core/help.cfg:477
 msgid ""
 "\n"
 "\n"
@@ -2995,7 +3125,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:485
+#: data/core/help.cfg:481
 msgid ""
 "\n"
 "\n"
@@ -3010,7 +3140,7 @@ msgstr ""
 "terreinsoorten kunnen ook unieke eigenschappen hebben zoals verlicht."
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:487
+#: data/core/help.cfg:483
 msgid ""
 "\n"
 "\n"
@@ -3021,7 +3151,7 @@ msgstr ""
 "<header>text='Gemengde Terreinsoorten'</header>"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:489
+#: data/core/help.cfg:485
 msgid ""
 "\n"
 "\n"
@@ -3045,7 +3175,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:493
+#: data/core/help.cfg:489
 msgid ""
 "\n"
 "\n"
@@ -3071,7 +3201,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:497
+#: data/core/help.cfg:493
 msgid ""
 "\n"
 "\n"
@@ -3088,7 +3218,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:501
+#: data/core/help.cfg:497
 msgid ""
 "\n"
 "\n"
@@ -3105,7 +3235,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:505
+#: data/core/help.cfg:501
 msgid ""
 "\n"
 "\n"
@@ -3120,7 +3250,7 @@ msgstr ""
 "bekijken (bij gebruik van standaard thema)."
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:507
+#: data/core/help.cfg:503
 msgid ""
 "\n"
 "\n"
@@ -3136,7 +3266,7 @@ msgstr ""
 "bekijken door het indrukken van de sneltoets of via rechter muisknop."
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:509
+#: data/core/help.cfg:505
 msgid ""
 "\n"
 "\n"
@@ -3147,7 +3277,7 @@ msgstr ""
 "<header>text='Verdeding Maximum'</header>"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:511
+#: data/core/help.cfg:507
 msgid ""
 "\n"
 "\n"
@@ -3163,7 +3293,7 @@ msgstr ""
 "het maximum."
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:513
+#: data/core/help.cfg:509
 msgid ""
 "\n"
 "\n"
@@ -3181,7 +3311,7 @@ msgstr ""
 "zijn dan het maximum."
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:515
+#: data/core/help.cfg:511
 msgid ""
 "\n"
 "\n"
@@ -3195,7 +3325,7 @@ msgstr ""
 "niet hoger zijn)."
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:517
+#: data/core/help.cfg:513
 msgid ""
 "\n"
 "\n"
@@ -3208,7 +3338,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=..addons
-#: data/core/help.cfg:530
+#: data/core/help.cfg:526
 msgid ""
 "The degree of customization offered by the Wesnoth engine allows players to "
 "create their own game content, including new scenarios, campaigns, and much "
@@ -3222,12 +3352,12 @@ msgstr ""
 "\n"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:540
+#: data/core/help.cfg:536
 msgid "Using Add-ons"
 msgstr "Add-ons gebruiken"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:541
+#: data/core/help.cfg:537
 msgid ""
 "\n"
 "\n"
@@ -3238,7 +3368,7 @@ msgstr ""
 "<header>text='Veldtochten en Scenarios'</header>"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:541
+#: data/core/help.cfg:537
 msgid ""
 "The game supports different types of add-on content, which are not all "
 "available in every gameplay mode."
@@ -3247,7 +3377,7 @@ msgstr ""
 "allemaal even beschikbaar in iedere spelmodus."
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:543
+#: data/core/help.cfg:539
 msgid ""
 "\n"
 "\n"
@@ -3264,7 +3394,7 @@ msgstr ""
 "<italic>text='Veldtochten'</italic> menu op het hoofdscherm."
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:545
+#: data/core/help.cfg:541
 msgid ""
 "\n"
 "\n"
@@ -3276,7 +3406,7 @@ msgstr ""
 "header>"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:547
+#: data/core/help.cfg:543
 msgid ""
 "\n"
 "\n"
@@ -3292,7 +3422,7 @@ msgstr ""
 "multiplayer scenario bieden."
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:549
+#: data/core/help.cfg:545
 msgid ""
 "\n"
 "\n"
@@ -3303,7 +3433,7 @@ msgstr ""
 "<header>text='Multiplayer Tijdperken en Facties'</header>"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:551
+#: data/core/help.cfg:547
 msgid ""
 "\n"
 "\n"
@@ -3328,7 +3458,7 @@ msgstr ""
 "bij dit tijdperk hoort om mee te spelen."
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:555
+#: data/core/help.cfg:551
 msgid ""
 "\n"
 "\n"
@@ -3341,7 +3471,7 @@ msgstr ""
 "<ref>text='tijdperken' dst='..eras_section'</ref> van help."
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:557
+#: data/core/help.cfg:553
 msgid ""
 "\n"
 "\n"
@@ -3352,7 +3482,7 @@ msgstr ""
 "<header>text='Aanpassingen'</header>"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:559
+#: data/core/help.cfg:555
 msgid ""
 "\n"
 "\n"
@@ -3367,7 +3497,7 @@ msgstr ""
 "aanpassingen kiezen en aanpassen wanneer je een nieuw spel maakt."
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:561
+#: data/core/help.cfg:557
 msgid ""
 "\n"
 "\n"
@@ -3378,7 +3508,7 @@ msgstr ""
 "<header>text='Bronnen'</header>"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:563
+#: data/core/help.cfg:559
 msgid ""
 "\n"
 "\n"
@@ -3402,7 +3532,7 @@ msgstr ""
 "een of andere manier."
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:567
+#: data/core/help.cfg:563
 msgid ""
 "\n"
 "\n"
@@ -3413,7 +3543,7 @@ msgstr ""
 "<header>text='Ontwerp Middelen'</header>"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:569
+#: data/core/help.cfg:565
 msgid ""
 "\n"
 "\n"
@@ -3433,12 +3563,12 @@ msgstr ""
 "worden."
 
 #. [topic]: id=installing_addons
-#: data/core/help.cfg:578
+#: data/core/help.cfg:574
 msgid "Installing Add-ons"
 msgstr "Installeren Add-ons"
 
 #. [topic]: id=installing_addons
-#: data/core/help.cfg:579
+#: data/core/help.cfg:575
 msgid ""
 "User-made add-ons can be obtained and updated through the <italic>text='Add-"
 "ons'</italic> option in the main menu. After connecting to the add-ons "
@@ -3487,12 +3617,12 @@ msgstr ""
 "vertalingen."
 
 #. [topic]: id=removing_addons
-#: data/core/help.cfg:592
+#: data/core/help.cfg:588
 msgid "Removing Add-ons"
 msgstr "Verwijderen Add-ons"
 
 #. [topic]: id=removing_addons
-#: data/core/help.cfg:593
+#: data/core/help.cfg:589
 msgid ""
 "To remove add-ons, choose <bold>text='Remove Add-ons'</bold> in the add-ons "
 "server connection dialog. You will be presented with options to remove any "
@@ -3515,14 +3645,14 @@ msgstr ""
 "systeem."
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:608
+#: data/core/help.cfg:604
 msgid "General Commands"
 msgstr "Algemene Opdrachten"
 
 #. [topic]: id=general_commands
 #. [topic]: id=mp_commands
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:610 data/core/help.cfg:653 data/core/help.cfg:691
+#: data/core/help.cfg:606 data/core/help.cfg:649 data/core/help.cfg:687
 msgid ""
 "These commands can either be issued via the command line by prefixing them "
 "with ':' (as shown here) or via the chat by prefixing them with '/' (press "
@@ -3536,7 +3666,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:612
+#: data/core/help.cfg:608
 msgid ""
 "\n"
 "Clear chat messages.\n"
@@ -3547,7 +3677,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:615
+#: data/core/help.cfg:611
 msgid ""
 "\n"
 "Switch debug mode on (does not work in multiplayer). See "
@@ -3562,7 +3692,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:619
+#: data/core/help.cfg:615
 msgid ""
 "\n"
 "Set or toggle player on side between human and AI player. The player/client "
@@ -3581,7 +3711,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:622
+#: data/core/help.cfg:618
 msgid ""
 "\n"
 "Display the controller status of a side.\n"
@@ -3592,7 +3722,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:625
+#: data/core/help.cfg:621
 msgid ""
 "\n"
 "Toggle the display of the current frames per second.\n"
@@ -3603,7 +3733,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:628
+#: data/core/help.cfg:624
 msgid ""
 "\n"
 "Switch a log domain to a different log level.\n"
@@ -3614,7 +3744,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:631
+#: data/core/help.cfg:627
 msgid ""
 "\n"
 "Redraws the screen and reloads any image files that have been changed.\n"
@@ -3625,7 +3755,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:634
+#: data/core/help.cfg:630
 msgid ""
 "\n"
 "Bring up theme selection menu.\n"
@@ -3636,7 +3766,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:637
+#: data/core/help.cfg:633
 msgid ""
 "\n"
 "Quit the scenario (without prompting).\n"
@@ -3647,7 +3777,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:640
+#: data/core/help.cfg:636
 msgid ""
 "\n"
 "Save the game (without prompting).\n"
@@ -3658,7 +3788,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:643
+#: data/core/help.cfg:639
 msgid ""
 "\n"
 "Save the game and quit the scenario (without prompting)."
@@ -3667,12 +3797,12 @@ msgstr ""
 "Spel opslaan en scenario afsluiten (zonder bevestiging)."
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:652
+#: data/core/help.cfg:648
 msgid "Multiplayer Commands"
 msgstr "Multiplayercommando's"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:655
+#: data/core/help.cfg:651
 msgid ""
 "\n"
 "Ban a user in a multiplayer game by the IP address used by that username and "
@@ -3688,7 +3818,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:658
+#: data/core/help.cfg:654
 msgid ""
 "\n"
 "Change the controller for side (write here the number of the side) to "
@@ -3709,7 +3839,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:661
+#: data/core/help.cfg:657
 msgid ""
 "\n"
 "Launch a dialog to assist the host in changing the human controllers of "
@@ -3722,7 +3852,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:664
+#: data/core/help.cfg:660
 msgid ""
 "\n"
 "Toggle the idle state for a side. The host may make a side idle after a "
@@ -3735,7 +3865,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:667
+#: data/core/help.cfg:663
 msgid ""
 "\n"
 "Kick a user in multiplayer. They will be able to rejoin the game. If you "
@@ -3750,7 +3880,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:670
+#: data/core/help.cfg:666
 msgid ""
 "\n"
 "Send a private message to a user. When in a game, it is not possible to send "
@@ -3765,7 +3895,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:673
+#: data/core/help.cfg:669
 msgid ""
 "\n"
 "Mute a specific observer. If no username is supplied the muted usernames are "
@@ -3778,7 +3908,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:676
+#: data/core/help.cfg:672
 msgid ""
 "\n"
 "Toggle muting/silencing of all observers on/off.\n"
@@ -3789,7 +3919,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:679
+#: data/core/help.cfg:675
 msgid ""
 "\n"
 "Unban a user in a multiplayer game by the IP address used by that username. "
@@ -3804,7 +3934,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:682
+#: data/core/help.cfg:678
 msgid ""
 "\n"
 "Unmute a specific observer. If no username is supplied the list of muted "
@@ -3815,12 +3945,12 @@ msgstr ""
 "lijst met waarnemers die de mond gesnoerd zijn gewist."
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:690
+#: data/core/help.cfg:686
 msgid "Debug Mode Commands"
 msgstr "Debug Modus Commando's"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:693
+#: data/core/help.cfg:689
 msgid ""
 "\n"
 "Brings up a menu for choosing a scenario to immediately advance to in a "
@@ -3833,7 +3963,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:696
+#: data/core/help.cfg:692
 msgid ""
 "\n"
 "Create a unit of the specified type on the selected hex.\n"
@@ -3844,7 +3974,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:699
+#: data/core/help.cfg:695
 msgid ""
 "\n"
 "Toggle fog/shroud for the current side.\n"
@@ -3855,7 +3985,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:702
+#: data/core/help.cfg:698
 msgid ""
 "\n"
 "Adds the specified amount to the current side’s gold.\n"
@@ -3866,7 +3996,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:705
+#: data/core/help.cfg:701
 msgid ""
 "\n"
 "Immediately advances to the next scenario in a campaign.\n"
@@ -3877,7 +4007,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:708
+#: data/core/help.cfg:704
 msgid ""
 "\n"
 "Manually set a gamestate variable to value.\n"
@@ -3888,7 +4018,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:711
+#: data/core/help.cfg:707
 msgid ""
 "\n"
 "Show a gamestate variable.\n"
@@ -3899,7 +4029,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:714
+#: data/core/help.cfg:710
 msgid ""
 "\n"
 "Manually fire the specified event.\n"
@@ -3910,7 +4040,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:717
+#: data/core/help.cfg:713
 msgid ""
 "\n"
 "Modifies the specified property of the selected unit. Example: :unit "
@@ -3923,7 +4053,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:720
+#: data/core/help.cfg:716
 msgid ""
 "\n"
 "Makes the selected unit level up N times. Example: :unit advances=2"
@@ -6984,6 +7114,404 @@ msgstr "De Strijd om Wesnoth Help"
 #: src/help/help.cpp:241
 msgid "Parse error when parsing help text: "
 msgstr "Fout bij het verwerken van de helptekst: "
+
+#~ msgid "Editor Brush"
+#~ msgstr "Editor Kwast"
+
+#~ msgid "TODO"
+#~ msgstr "TODO"
+
+#~ msgid "Terrain Clipboard"
+#~ msgstr "Terrein Klembord"
+
+#~ msgid ""
+#~ "Paint terrain tiles on the map.\n"
+#~ "\n"
+#~ "The paint tool utilizes the brushes and the terrain palette."
+#~ msgstr ""
+#~ "Verft terrein tegels op de kaart\n"
+#~ "\n"
+#~ "Het verf gereedschap gebruikt de kwasten en het terreinpalet."
+
+#~ msgid ""
+#~ "Fill continuous regions of terrain with a different one!\n"
+#~ "\n"
+#~ "The fill tool utilizes the terrain palette."
+#~ msgstr ""
+#~ "Vult aaneengesloten gebieden terrein met een ander soort terrein!\n"
+#~ "\n"
+#~ "Het opvul gereedschap maakt gebruik van het terreinpalet."
+
+#~ msgid ""
+#~ "Selects a set of hex fields. The best tool ever!\n"
+#~ "\n"
+#~ "This tool utilizes the brushes."
+#~ msgstr ""
+#~ "Selecteert een groep tegels. Het beste gereedschap ooit!\n"
+#~ "\n"
+#~ "Dit gereedschap maakt gebruik van de kwasten."
+
+#~ msgid "Paste Tool"
+#~ msgstr "Plak Gereedschap"
+
+#~ msgid "Paste the terrain in the clipboard"
+#~ msgstr "Plak het terrein in het klembord"
+
+#~ msgid "Starting Tool"
+#~ msgstr "Start Gereedschap"
+
+#~ msgid ""
+#~ "Defines the side leader starting position\n"
+#~ "\n"
+#~ "This tool sets the side leaders' default starting locations, and named "
+#~ "special locations."
+#~ msgstr ""
+#~ "Definieert de startpositie van de leider\n"
+#~ "\n"
+#~ "Dit gereedschap bepaald de standaard start locatie van de leider, en kan "
+#~ "speciale locaties een naam geven."
+
+#~ msgid "Item Tool"
+#~ msgstr "Voorwerp Gereedschap"
+
+#~ msgid "Soundsource Tool"
+#~ msgstr "Geluidsbron Gereedschap"
+
+#~ msgid ""
+#~ "Places Soundsources on your maps!\n"
+#~ "\n"
+#~ "This tool has not been implemented yet."
+#~ msgstr ""
+#~ "Plaatst Geluidsbronnen op je kaarten!\n"
+#~ "\n"
+#~ "Dit gereedschap is nog niet in gebruik."
+
+#~ msgid ""
+#~ "Named Areas are sets of gamefields which can be addressed during scenario "
+#~ "scripting by a given name.\n"
+#~ "\n"
+#~ "It can be used to abstract between the implementation of an effect and "
+#~ "the map specific setting.\n"
+#~ "This is a very powerful mechanism since it allows generic scenario "
+#~ "codings working with different maps providing the needed named locations."
+#~ msgstr ""
+#~ "Benoemde Gebieden zijn delen van het speelveld die aangesproken kunnen "
+#~ "worden tijdens het coderen van een scenario door middel van een gegeven "
+#~ "naam.\n"
+#~ "\n"
+#~ "Het kan gebruikt worden om verschil mogelijk te maken tussen de "
+#~ "uitvoering van een effect en de specifieke kaartinstelling.\n"
+#~ "Het is een erg bruikbaar mechanisme omdat het dezelfde scenariocoderingen "
+#~ "kan gebruiken voor verschillende kaarten door het gebruik van dezelfde "
+#~ "benoemde locaties."
+
+#~ msgid ""
+#~ "Saves a list of music tracks defining a random playlist to the scenario.\n"
+#~ "\n"
+#~ "Have a look at the addon server for easy to use additional music tracks."
+#~ msgstr ""
+#~ "Slaat een lijst van muzieknummers en definieert een willekeurige "
+#~ "afspeellijst voor het scenario.\n"
+#~ "\n"
+#~ "Neem een kijk in de add-on server voor additionele muzieknummers die "
+#~ "makkelijk te gebruiken zijn."
+
+#~ msgid ""
+#~ "Wesnoth's Map and Scenario Editor allows users to create and edit the "
+#~ "maps on which every Wesnoth scenario takes place. It also provides a "
+#~ "limited set of features for setting up a basic scenario.\n"
+#~ "\n"
+#~ "The editor can be launched from the <italic>text='Map Editor'</italic>"
+#~ msgstr ""
+#~ "De Kaart en Scenario Editor van Wesnoth laat gebruikers een kaart te "
+#~ "creëren en aan te passen waarop een Wesnoth scenario plaatsvindt. Het "
+#~ "bevat ook een klein aantal geselecteerde functies waarmee een standaard "
+#~ "scenario gemaakt kan worden.\n"
+#~ "\n"
+#~ "De editor kan geopend worden vanuit de <italic>text='Kaart Editor'</"
+#~ "italic>"
+
+#~ msgid ""
+#~ " option at the title screen.\n"
+#~ "\n"
+#~ "<header>text='What you get'</header>"
+#~ msgstr ""
+#~ " optie op het beginscherm.\n"
+#~ "\n"
+#~ "<header>text='Wat je krijgt'</header>"
+
+#~ msgid ""
+#~ "\n"
+#~ "\n"
+#~ "• <ref>dst='editor_terrain' text='Terrain Editor'</ref>\n"
+#~ "An easy to use map editor, similar to simple paint applications.\n"
+#~ "\n"
+#~ "• Scenario Editor\n"
+#~ "\n"
+#~ "• <ref>dst='editor_playlist' text='Playlist Manager'</ref>"
+#~ msgstr ""
+#~ "\n"
+#~ "\n"
+#~ "• <ref>dst='editor_terrain' text='Terrein Editor'</ref>\n"
+#~ "Een makkelijk te gebruiken kaart editor, vergelijkbaar met eenvoudige "
+#~ "paint programma's.\n"
+#~ "\n"
+#~ "• Scenario Editor\n"
+#~ "\n"
+#~ "• <ref>dst='editor_playlist' text='Afspeellijst Beheer'</ref>"
+
+#~ msgid ""
+#~ "\n"
+#~ "Predefine the scenario's music track playlist.\n"
+#~ "\n"
+#~ "• Time Schedule Editor\n"
+#~ "\n"
+#~ msgstr ""
+#~ "\n"
+#~ "Stel de muziek afspeellijst van het scenario in.\n"
+#~ "\n"
+#~ "• Tijdschema Editor\n"
+#~ "\n"
+
+#~ msgid ""
+#~ "\n"
+#~ "\n"
+#~ "• What-you-see-is-what-you-get\n"
+#~ "The editor is not a WYSIWYG application.\n"
+#~ "\n"
+#~ "Because which exact graphic tile represents a terrain in the map depends "
+#~ "on all terrain rules loaded (which is different between the editor and "
+#~ "each other use case) the map won't look exactly the same.\n"
+#~ "\n"
+#~ "• Event handlers and scripting\n"
+#~ "The editor is not a tool to help you scripting the scenario's event "
+#~ "handlers.\n"
+#~ "\n"
+#~ "• Infinite Backwards Compatibility\n"
+#~ "The editor can't load maps from versions prior to 1.10.\n"
+#~ "TODO is that true?\n"
+#~ "\n"
+#~ msgstr ""
+#~ "\n"
+#~ "\n"
+#~ "• Wat-je-ziet-is-wat-je-krijgt (WYSIWYG)\n"
+#~ "De editor is geen WYSIWYG programma.\n"
+#~ "\n"
+#~ "Omdat iedere tegel een terreinsoort vertegenwoordigd afhankelijk van de "
+#~ "terreinregels die geladen zijn (welke anders zijn tussen de editor en "
+#~ "iedere ander gebruik) zal de kaart niet precies hetzelfde eruit zien.\n"
+#~ "\n"
+#~ "• Gebeurtenis handlers en coderen\n"
+#~ "De editor is geen gebruikersvoorwerp om gebeurtenissen te coderen.\n"
+#~ "\n"
+#~ "• Oneindige Terugwaardse Compatibiliteit\n"
+#~ "De editor kan geen kaarten laden van versies voor 1.10\n"
+#~ "\n"
+
+#~ msgid ""
+#~ "\n"
+#~ "• <ref>dst='editor_modes' text='Editing Modes'</ref>\n"
+#~ "• <ref>dst='editor_toolkit' text='Editor Toolkit'</ref>\n"
+#~ "• <ref>dst='editor_palette' text='Editor Palette'</ref>\n"
+#~ "• <ref>dst='editor_brush' text='Editor Brushes'</ref> TODO: not sure if "
+#~ "it needs a topic on its own\n"
+#~ "• <ref>dst='editor_clipboard' text='Editor Clipboard'</ref>"
+#~ msgstr ""
+#~ "\n"
+#~ "• <ref>dst='editor_modes' text='Aanpassingmodus'</ref>\n"
+#~ "• <ref>dst='editor_toolkit' text='Editor Gereedschapskist'</ref>\n"
+#~ "• <ref>dst='editor_palette' text='Editor Kleuren'</ref>\n"
+#~ "• <ref>dst='editor_brush' text='Editor Kwasten'</ref> TODO: niet zeker of "
+#~ "het een onderwerp op zich vereist\n"
+#~ "• <ref>dst='editor_clipboard' text='Editor Klembord'</ref>"
+
+#~ msgid "Editing Modes"
+#~ msgstr "Aanpassingmodus"
+
+#~ msgid ""
+#~ "\n"
+#~ "\n"
+#~ "<header>text='Pure Map Mode'</header>"
+#~ msgstr ""
+#~ "\n"
+#~ "\n"
+#~ "<header>text='Enkel Kaart Modus'</header>"
+
+#~ msgid "The editor features two separate modes of operation:"
+#~ msgstr "De editor bevat twee losstaande manieren van besturing:"
+
+#~ msgid ""
+#~ "\n"
+#~ "\n"
+#~ "Allows only the composing of the terrain map itself and the definition of "
+#~ "leader starting positions."
+#~ msgstr ""
+#~ "\n"
+#~ "\n"
+#~ "Staat enkel het samenstellen van de terreinkaart zelf en de startposities "
+#~ "van de leiders."
+
+#~ msgid ""
+#~ "\n"
+#~ "How the information is saved depends on the loaded file:\n"
+#~ "\n"
+#~ "<bold>text='Native'</bold>"
+#~ msgstr ""
+#~ "\n"
+#~ "Hoe de informatie opgeslagen wordt hangt af van het geladen bestand\n"
+#~ "\n"
+#~ "<bold>text='Lokaal'</bold>"
+
+#~ msgid ""
+#~ "\n"
+#~ "A new map or file containing only the arguments to the map_data "
+#~ "attribute.\n"
+#~ "\n"
+#~ "The produced map can be played in the “User Maps” game type at the create "
+#~ "multiplayer game dialog if saved to the default directory.\n"
+#~ "\n"
+#~ "<bold>text='Embedded'</bold>"
+#~ msgstr ""
+#~ "\n"
+#~ "Een nieuwe kaart of nieuw bestand bevat enkel argumenten over het "
+#~ "map_data attribuut.\n"
+#~ "\n"
+#~ "De geproduceerde kaart kan afgespeeld worden in de \"Gebruikers mappen\" "
+#~ "speltype wanneer een multiplayer speldialoog opgeslagen wordt in een "
+#~ "lokale map.\n"
+#~ "\n"
+#~ "<bold>text='Ingebouwd'</bold>"
+
+#~ msgid ""
+#~ "\n"
+#~ "Scenario files containing a valid map_data attribute (not a file include) "
+#~ "will be opened in this submode. The editor replaces only the content of "
+#~ "map_data and leaves everything else in the scenario untouched. Maps "
+#~ "opened this way are marked [e] in the Maps menu."
+#~ msgstr ""
+#~ "\n"
+#~ "Scenario bestanden die een geldig map_data attribuut bevatten (zonder "
+#~ "bestand toegevoegd) worden geopend in deze submodus. De editor vervangt "
+#~ "enkel de inhoud van map_data en laat al het andere zoals het was. Kaarten "
+#~ "die op deze manier geopend worden zijn gemarkeerd met [e] in het Kaart "
+#~ "menu."
+
+#~ msgid ""
+#~ "\n"
+#~ "\n"
+#~ "<header>text='Scenario Mode'</header>"
+#~ msgstr ""
+#~ "\n"
+#~ "\n"
+#~ "<header>text='Scenario Modus'</header>"
+
+#~ msgid ""
+#~ "\n"
+#~ "\n"
+#~ "The Scenario mode allows several extra tools to be used, such as the Unit "
+#~ "tool. At least one side must be defined in order to use these tools, "
+#~ "however.\n"
+#~ "\n"
+#~ "In this mode, terrain data is stored in the map_data attribute and saved "
+#~ "into a file with any applicable WML."
+#~ msgstr ""
+#~ "\n"
+#~ "\n"
+#~ "De Scenario modus staat toe dat een aantal extra hulpmiddelen gebruikt "
+#~ "kunnen worden, zoals het Eenheid hulpmiddel. Ten minste een kant moet "
+#~ "gedefinieerd worden om deze hulpmiddelen te kunnen gebruiken.\n"
+#~ "\n"
+#~ "In deze modus, terrein data is opgeslagen in het map_data attribuut en "
+#~ "opgeslagen in een bestand met een toepasselijk WML."
+
+#~ msgid "Editor Tools"
+#~ msgstr "Editor Hulpmiddelen"
+
+#~ msgid ""
+#~ "The editor provides several tools for editing your maps and scenarios. At "
+#~ "all times, one of the editor tools is active. The active tool's context "
+#~ "determines the content of the editor palette and context menu.\n"
+#~ "\n"
+#~ "These following tools are provided:\n"
+#~ "\n"
+#~ "• <ref>dst='editor_tool_paint' text='Paint Tool'</ref>\n"
+#~ "• <ref>dst='editor_tool_fill'  text='Fill Tool'</ref>\n"
+#~ "• <ref>dst='editor_tool_select' text='Select Tool'</ref>\n"
+#~ "• <ref>dst='editor_tool_paste' text='Paste Tool'</ref>\n"
+#~ "• <ref>dst='editor_tool_starting' text='Starting Tool'</ref>\n"
+#~ "• <ref>dst='editor_tool_label' text='Label Tool'</ref>\n"
+#~ "• <ref>dst='editor_tool_item' text='Item Tool'</ref>\n"
+#~ "• <ref>dst='editor_tool_soundsource' text='Soundsource Tool'</ref>\n"
+#~ "• <ref>dst='editor_tool_village' text='Village Tool'</ref>\n"
+#~ "• <ref>dst='editor_tool_unit' text='Unit Tool'</ref>\n"
+#~ "\n"
+#~ msgstr ""
+#~ "De editor heeft verschillende gereedschappen voor het aanpassen van je "
+#~ "kaarten en scenarios. Er is altijd één gereedschap actief. Het actieve "
+#~ "gereedschap bepaalt de inhoud van het editor palette en het contextmenu.\n"
+#~ "\n"
+#~ "De volgende gereedschappen zijn beschikbaar:\n"
+#~ "\n"
+#~ "• <ref>dst='editor_tool_paint' text='Verf Gereedschap'</ref>\n"
+#~ "• <ref>dst='editor_tool_fill'  text='Opvul Gereedschap'</ref>\n"
+#~ "• <ref>dst='editor_tool_select' text='Selecteer Gereedschap'</ref>\n"
+#~ "• <ref>dst='editor_tool_paste' text='Plak Gereedschap'</ref>\n"
+#~ "• <ref>dst='editor_tool_starting' text='Start Gereedschap'</ref>\n"
+#~ "• <ref>dst='editor_tool_label' text='Label Gereedschap'</ref>\n"
+#~ "• <ref>dst='editor_tool_item' text='Voorwerp Gereedschap'</ref>\n"
+#~ "• <ref>dst='editor_tool_soundsource' text='Geluidsbron Gereedschap'</"
+#~ "ref>\n"
+#~ "• <ref>dst='editor_tool_village' text='Dorpen Gereedschap'</ref>\n"
+#~ "• <ref>dst='editor_tool_unit' text='Eenheid Gereedschap'</ref>\n"
+#~ "\n"
+
+#~ msgid ""
+#~ "The terrain editor's functionality is covered by the "
+#~ "<ref>dst='editor_tool_paint' text='Paint'</ref> and "
+#~ "<ref>dst='editor_tool_fill' text='Fill Tool'</ref>."
+#~ msgstr ""
+#~ "De functionaliteit van de terrein editor valt onder het "
+#~ "<ref>dst='editor_tool_paint' text='Verf'</ref> en "
+#~ "<ref>dst='editor_tool_fill' text='Opvul gereedschap'</ref>."
+
+#~ msgid ""
+#~ "The editor palette contains the applicable items you may use with the "
+#~ "currently selected tool. For example, the Paint tool will display a full "
+#~ "list of all available terrains, and the unit tool will provide a list of "
+#~ "available units."
+#~ msgstr ""
+#~ "De editor kleur bevat alle toepasbare onderdelen die je kan gebruiken in "
+#~ "samenwerken met het geselecteerde gereedschap. Bijvoorbeeld, het Verf "
+#~ "gereedschap zal een lijst weergeven van alle beschikbare terreinen, en "
+#~ "het Eenheid gereedschap zal een lijst weergeven van alle beschikbare "
+#~ "eenheden."
+
+#~ msgid ""
+#~ "Wesnoth stores its maps in human readable plain text files.\n"
+#~ "\n"
+#~ "A map file consists of rows with comma separated terrain code strings. "
+#~ "The files can be edited with a general purpose text editor like notepad.\n"
+#~ "\n"
+#~ "The only additional information provided by the map syntax are the "
+#~ "starting positions of the scenario's sides.\n"
+#~ "\n"
+#~ "Additional information, such as teams, custom events, and complex side "
+#~ "setups still need to be manually coded in WML."
+#~ msgstr ""
+#~ "Wesnoth slaat de kaarten op in bestanden die door mensen te lezen zijn.\n"
+#~ "\n"
+#~ "Een kaart bestand bevat rijen met terreincodes door komma's gescheiden. "
+#~ "De bestanden kunnen aangepast worden met een standaard tekstverwerker "
+#~ "zoals notepad.\n"
+#~ "\n"
+#~ "De enige extra informatie die de kaartcode geeft zijn de startposities "
+#~ "van de leiders.\n"
+#~ "\n"
+#~ "Verdere informatie zoals teams, gebeurtenissen, en ingewikkelde "
+#~ "instellingen moeten nog steeds handmatig gecodeerd worden in WML."
+
+#~ msgid "Scenario Format"
+#~ msgstr "Scenario Format"
 
 #, fuzzy
 #~| msgid ""
