@@ -1,4 +1,4 @@
-## Version 1.15.8+dev
+## Version 1.15.9
  ### Add-ons client
  ### Add-ons server
  ### Campaigns
