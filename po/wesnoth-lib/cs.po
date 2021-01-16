@@ -12,22 +12,21 @@
 # Vladimír Slávik <slavik.vladimir@seznam.cz>, 2007 - 2011.
 # Jan Dědič <jan.dedic@gmail.com>, 2014.
 # Martin Hrubý <hrubymar10@gmail.com>, 2017 - 2020.
-# Michal Žejdl <lachim@emer.cz>, 2019 - 2020.
+# Michal Žejdl <lachim@emer.cz>, 2019 - 2021.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2021-01-16 17:18+0300\n"
-"PO-Revision-Date: 2020-12-06 14:46+0100\n"
-"Last-Translator: Septim <septim@centrum.cz>\n"
+"PO-Revision-Date: 2021-01-09 22:02+0100\n"
+"Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Český <hrubymar10@gmail.com>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Poedit 2.4.2\n"
 
 #. [ai]: id=ai_default_rca
 #: data/ai/ais/ai_default_rca.cfg:9
@@ -745,10 +744,8 @@ msgstr "Houbový háj"
 
 #. [terrain_type]: id=fungus_grove_old
 #: data/core/terrain.cfg:975
-#, fuzzy
-#| msgid "Lit Mushroom Grove"
 msgid "Non-mixed Mushroom Grove"
-msgstr "Osvětlený houbový háj"
+msgstr "Souvislý houbový háj"
 
 #. [terrain_type]: id=fungus_grove_old
 #. [terrain_type]: id=fungus_beam_old
@@ -777,13 +774,15 @@ msgid ""
 "defense and movement costs are purely based on the unit’s stats for "
 "<italic>text='Fungus'</italic>."
 msgstr ""
+"Trpasličí příběhy popisují různé druhy hub. U některých druhů nemá obtížnost "
+"chůze po houbovité podlaze žádný vztah k jejímu podkladu, i když je podklad "
+"stále viditelný. Obranný bonus a náklady na pohyb v tomto terénu vycházejí "
+"čistě ze statistik jednotky pro <italic>text='houby'</italic>."
 
 #. [terrain_type]: id=fungus_beam_old
 #: data/core/terrain.cfg:994
-#, fuzzy
-#| msgid "Lit Mushroom Grove"
 msgid "Lit Non-mixed Mushroom Grove"
-msgstr "Osvětlený houbový háj"
+msgstr "Osvětlený souvislý houbový háj"
 
 #. [terrain_type]: id=fungus_beam
 #: data/core/terrain.cfg:1026
@@ -824,18 +823,16 @@ msgstr ""
 "obyvatelé jeskyň, jako trpaslíci a trollové, jsou zcela schopni najít "
 "v takovém terénu správný směr.\n"
 "\n"
-"Většina jednotek má ve skalnatých jeskyních obranný bonus okolo 50%, zatímco "
-"jízda je omezena na 40%. Trpaslíci, díky jejich malému vzrůstu, se ve "
-"skalnatých jeskyních těší obraně 60%.\n"
+"Většina jednotek má ve skalnatých jeskyních obranný bonus okolo 50 %, "
+"zatímco jízda je omezena na 40 %. Trpaslíci, díky svému malému vzrůstu, se "
+"ve skalnatých jeskyních těší obraně 60 %.\n"
 "\n"
 "Někdy jsou jeskyně <italic>text='osvětlené'</italic>."
 
 #. [terrain_type]: id=earthy_rocky_cave
 #: data/core/terrain.cfg:1065
-#, fuzzy
-#| msgid "Rockbound Cave"
 msgid "Earthy Rockbound Cave"
-msgstr "Skalnatá jeskyně"
+msgstr "Zemitě skalnatá jeskyně"
 
 #. [terrain_type]: id=mine_rails
 #. [terrain_type]: id=mine_railsdiag1
@@ -1137,7 +1134,7 @@ msgstr "Vesnice z nepálených cihel"
 #. [terrain_type]: id=desert_village_ruin
 #: data/core/terrain.cfg:1602
 msgid "Ruined Adobe Village"
-msgstr "Vesnice z nepálených cihel"
+msgstr "Pobořená vesnice z nepálených cihel"
 
 #. [terrain_type]: id=desert_village_tent
 #: data/core/terrain.cfg:1615
@@ -1217,7 +1214,7 @@ msgstr "Zasněžená kamenná vesnice v kopcích"
 #. [terrain_type]: id=hill_village_ruin
 #: data/core/terrain.cfg:1816
 msgid "Ruined Hill Stone Village"
-msgstr "Rozbořená vesnice v kopcích"
+msgstr "Pobořená vesnice v kopcích"
 
 #. [terrain_type]: id=tropical_forest_village
 #: data/core/terrain.cfg:1829
@@ -1315,7 +1312,7 @@ msgstr "Ležení"
 #. [terrain_type]: id=encampment_ruin
 #: data/core/terrain.cfg:2010
 msgid "Ruined Encampment"
-msgstr "Ruiny tábora"
+msgstr "Pobořené ležení"
 
 #. [terrain_type]: id=encampment_snow
 #: data/core/terrain.cfg:2022
@@ -1371,12 +1368,12 @@ msgstr "Zasněžený lidský hrad"
 #. [terrain_type]: id=elven_castle
 #: data/core/terrain.cfg:2081
 msgid "Elven Castle"
-msgstr "Elfský hrad"
+msgstr "Elfí hrad"
 
 #. [terrain_type]: id=elven_castle_ruin
 #: data/core/terrain.cfg:2093
 msgid "Elven Castle Ruin"
-msgstr "Ruiny elfského hradu"
+msgstr "Ruiny elfího hradu"
 
 #. [terrain_type]: id=elven_castle_winter
 #: data/core/terrain.cfg:2105
@@ -1410,12 +1407,12 @@ msgstr "Zimní trpasličí hrad"
 #: data/core/terrain.cfg:2164 data/core/terrain.cfg:2176
 #: data/core/terrain.cfg:2189 data/core/terrain.cfg:2214
 msgid "Ruined Castle"
-msgstr "Zřícenina"
+msgstr "Pobořený hrad"
 
 #. [terrain_type]: id=ruin
 #: data/core/terrain.cfg:2165
 msgid "Ruined Human Castle"
-msgstr "Zřícený lidský hrad"
+msgstr "Pobořený lidský hrad"
 
 #. [terrain_type]: id=sunkenruin
 #: data/core/terrain.cfg:2177
@@ -1435,7 +1432,7 @@ msgstr "Pouštní hrad"
 #. [terrain_type]: id=sand_castle_ruin
 #: data/core/terrain.cfg:2215
 msgid "Ruined Desert Castle"
-msgstr "Zřícený pouštní hrad"
+msgstr "Pobořený pouštní hrad"
 
 #. [terrain_type]: id=troll_encampment
 #: data/core/terrain.cfg:2227
@@ -1466,7 +1463,7 @@ msgstr "Tvrz ležení"
 #. [terrain_type]: id=encampment_ruin_keep
 #: data/core/terrain.cfg:2280
 msgid "Ruined Encampment Keep"
-msgstr "Zřícená tvrz ležení"
+msgstr "Pobořená tvrz ležení"
 
 #. [terrain_type]: id=encampment_keep_tall
 #: data/core/terrain.cfg:2293
@@ -1530,7 +1527,7 @@ msgstr "Elfí hradní tvrz"
 #. [terrain_type]: id=elven_keep_ruin
 #: data/core/terrain.cfg:2384
 msgid "Elven Keep Ruin"
-msgstr "Zřícená elfí tvrz"
+msgstr "Zřícenina elfí tvrze"
 
 #. [terrain_type]: id=elven_keep_winter
 #: data/core/terrain.cfg:2397
@@ -1549,17 +1546,13 @@ msgstr "Trpasličí hradní tvrz"
 
 #. [terrain_type]: id=dwarven_keep_ruin
 #: data/core/terrain.cfg:2436
-#, fuzzy
-#| msgid "Dwarven Castle Keep"
 msgid "Dwarven Ruin Keep"
-msgstr "Trpasličí hradní tvrz"
+msgstr "Ruiny trpasličí tvrze"
 
 #. [terrain_type]: id=dwarven_keep_winter
 #: data/core/terrain.cfg:2449
-#, fuzzy
-#| msgid "Dwarven Castle Keep"
 msgid "Winter Dwarven Keep"
-msgstr "Trpasličí hradní tvrz"
+msgstr "Zimní trpasličí tvrz"
 
 #. [terrain_type]: id=ruined_keep
 #. [terrain_type]: id=sunken_keep
@@ -1568,12 +1561,12 @@ msgstr "Trpasličí hradní tvrz"
 #: data/core/terrain.cfg:2461 data/core/terrain.cfg:2474
 #: data/core/terrain.cfg:2487 data/core/terrain.cfg:2513
 msgid "Ruined Keep"
-msgstr "Zřícená tvrz"
+msgstr "Pobořená tvrz"
 
 #. [terrain_type]: id=ruined_keep
 #: data/core/terrain.cfg:2462
 msgid "Ruined Human Castle Keep"
-msgstr "Tvrz zříceného lidského hradu"
+msgstr "Pobořená lidská hradní tvrz"
 
 #. [terrain_type]: id=sunken_keep
 #: data/core/terrain.cfg:2475
@@ -1593,7 +1586,7 @@ msgstr "Pouštní tvrz"
 #. [terrain_type]: id=desert_keep_ruined
 #: data/core/terrain.cfg:2514
 msgid "Ruined Desert Keep"
-msgstr "Zřícená pouštní tvrz"
+msgstr "Pobořená pouštní tvrz"
 
 #. [terrain_type]: id=merman_campkeep
 #: data/core/terrain.cfg:2527
@@ -1736,7 +1729,7 @@ msgstr "Kamenný most přes propast"
 #: data/core/terrain.cfg:2848 data/core/terrain.cfg:2862
 #: data/core/terrain.cfg:2876
 msgid "Plank Bridge"
-msgstr "Dřevený most"
+msgstr "Prkenný most"
 
 #. [terrain_type]: id=off_map
 #: data/core/terrain.cfg:2893
@@ -1827,7 +1820,7 @@ msgstr ""
 "chaotické. Ve všech ostatních ohledech je osvětlená jeskyně shodná "
 "s normální jeskyní.\n"
 "\n"
-"Většina jednotek zde získá 20 až 40% obranný bonus, zatímco trpaslíci 50%."
+"Většina jednotek zde získá obranný bonus 20 až 40 %, zatímco trpaslíci 50 %."
 
 #. [terrain_type]: id=sand
 #: data/core/terrain.cfg:2980
@@ -1851,21 +1844,10 @@ msgstr ""
 "postavení než brodění v mělké vodě a také dává výjimečně vysokou obranu "
 "vodním tvorům.\n"
 "\n"
-"Mořský lid a nágy dostanou v pobřežních útesech obranu 70%."
+"Mořský lid a nágy získávají v pobřežních útesech obranný bonus 70 %."
 
 #. [terrain_type]: id=hills
 #: data/core/terrain.cfg:3011
-#, fuzzy
-#| msgid ""
-#| "<italic>text='Hills'</italic> represent any reasonably rough terrain,\n"
-#| "with enough dips and rises in the ground to provide some cover. Hills are "
-#| "difficult for most troops to navigate. Dwarves, trolls, and orcs have "
-#| "enough familiarity with the terrain that they can pass through it without "
-#| "being slowed down. Cavalry have enough trouble navigating the terrain "
-#| "that any defensive aid lent by cover is negated.\n"
-#| "\n"
-#| "Most units have about 50% defense in hills, whereas cavalry are limited "
-#| "to 40%. Dwarves enjoy 60% defense in hills."
 msgid ""
 "<italic>text='Hills'</italic> represent any reasonably rough terrain, with "
 "enough dips and rises in the ground to provide some cover. Hills are "
@@ -1879,14 +1861,14 @@ msgid ""
 msgstr ""
 "<italic>text='Kopce'</italic> představují docela obtížný terén s dostatečným "
 "počtem údolí a skalních stěn, které poskytují určitý stupeň krytí. Kopce "
-"jsou obtížným terénem pro většinu jednotek a to zejména pro jejich "
-"orientaci. Trpaslíci, Trollové i Obři jsou s tímto terénem dostatečně "
+"jsou obtížným terénem pro většinu jednotek, a to zejména pro jejich "
+"orientaci. Trpaslíci, trollové a skřeti jsou s tímto terénem dostatečně "
 "obeznámeni, takže se v něm mohou pohybovat bez ztráty rychlosti. Jízda má v "
-"tomto terénu potíže s pohybem, takže je jakákoliv pomoc poskytnutá krytím "
+"tomto terénu potíže s pohybem, čímž je jakákoliv pomoc poskytnutá krytím "
 "zmařena.\n"
 "\n"
-"Většina jednotek v kopcích získá okolo 50% obranného bonusu, zatímco jízda "
-"je omezena 40%. Trpaslíci se v kopcích těší 60% obrannému bonusu."
+"Většina jednotek v kopcích získává obranný bonus okolo 50 %, zatímco jízda "
+"je omezena na 40 %. Trpaslíci se v kopcích těší obrannému bonusu 60 %."
 
 #. [terrain_type]: id=swamp_water
 #: data/core/terrain.cfg:3025
@@ -1907,7 +1889,7 @@ msgstr ""
 "schopny dosáhnout plné rychlosti a získávají obranný bonus. Ti, kteří bydlí "
 "v mokřadech, jsou také schopni použít tento terén pro svou ochranu.\n"
 "\n"
-"Většina jednotek se v močálech spokojí s 30% obrany. Mořští lidé, nágy "
+"Většina jednotek se v močálech spokojí s 30 % obrany. Mořští lidé, nágy "
 "a ještěráci se obvykle těší 60% obraně."
 
 #. [terrain_type]: id=shallow_water
@@ -2014,13 +1996,13 @@ msgid ""
 "\n"
 "Most units have defense of 30 to 40% on grassland."
 msgstr ""
-"<italic>text='Louka'</italic> představuje otevřenou rovinu — ať už "
-"kultivovanou, upravenou pro pastevectví, nebo divokou. Je to otevřená "
-"krajina, velmi vhodná pro pohyb, ale je zde těžké se bránit. Typickou "
-"jednotkou, pro kterou je tato krajina nejlepší, představuje jezdectvo, nebo "
-"velmi hbité jednotky, které dávají přednost otevřenému prostranství.\n"
+"<italic>text='Louka'</italic> představuje otevřenou rovinu, ať už "
+"kultivovanou, upravenou pro pastevectví, nebo divokou.\n"
+"Je to otevřená krajina, velmi vhodná pro pohyb, ale je zde těžké se bránit. "
+"Typické jednotky, pro které je tato krajina nejlepší, představuje jezdectvo "
+"nebo velmi hbité jednotky, které dávají přednost otevřenému prostranství.\n"
 "\n"
-"Většina jednotek má na louce defenzivní bonus od 30 do 40%."
+"Většina jednotek má na louce obranný bonus od 30 do 40 %."
 
 #. [terrain_type]: id=forest
 #: data/core/terrain.cfg:3105
@@ -2043,17 +2025,17 @@ msgstr ""
 "<italic>text='Lesy'</italic> představuje každý lesík s příslušným porostem, "
 "který je dostatečný pro zpomalení pochodu. I když zpomalí téměř každého, "
 "nabízí les pro většinu jednotek lepší defenzivní pozici než otevřené "
-"prostranství. Jízda má samozřejmě spoustu problémů při pohybu v tomto "
-"terénu, takže jakýkoliv prospěch, získaný ze skrytí se v lese, je tímto "
+"prostranství. Jízda má samozřejmě při pohybu v tomto terénu spoustu "
+"problémů, takže jakýkoliv prospěch, získaný ze skrytí se v lese, je tímto "
 "potlačen. Elfové jsou výjimkou oproti všeobecně platnému pravidlu pro lesy. "
 "Nejen že jsou schopni postupu lesem beze zpomalení, ale také získávají "
-"značný obranný bonus. Trpaslíci jsou také výjimkou; i když jsou schopni se "
+"značný obranný bonus. Trpaslíci jsou také výjimkou. I když jsou schopni se "
 "pohybovat lesem bez výrazné ztráty rychlosti, jejich neobeznámenost s "
 "terénem způsobuje, že nezískávají žádný obranný bonus.\n"
 "\n"
-"Většina jednotek získá jako obranný bonus 50%, ale jízda je omezena na 30%. "
-"Elfové naproti tomu získávají obranný bonus od 60% do 70%, a to i když jedou "
-"na koních. Trpaslíci obvykle získají v lese pouze 30% obrany."
+"Většina jednotek získá jako obranný bonus 50 %, ale jízda je omezena na 30 "
+"%. Elfové naproti tomu získávají obranný bonus od 60 % do 70 %, a to i když "
+"jedou na koních. Trpaslíci obvykle získají v lese obranný bonus pouze 30 %."
 
 # pseudoterén
 #. [terrain_type]: id=frozen
@@ -2180,10 +2162,8 @@ msgstr "Výchozí"
 
 #. [label]
 #: data/gui/macros/player_list_panel.cfg:30
-#, fuzzy
-#| msgid "Choose Player"
 msgid "Connected Players"
-msgstr "Vyber hráče"
+msgstr "Připojení hráči"
 
 #. [toggle_button]: id=sort_0
 #. [label]
@@ -2371,11 +2351,13 @@ msgid ""
 "Before uploading content to this server, you must accept the following "
 "distribution terms by choosing “I Agree”."
 msgstr ""
+"Před nahráním obsahu na tento server musíš přijmout následující podmínky "
+"distribuce výběrem možnosti „Souhlasím“."
 
 #. [button]: id=ok
 #: data/gui/window/addon_license_prompt.cfg:104
 msgid "I Agree"
-msgstr ""
+msgstr "Souhlasím"
 
 #. [label]: id=byline
 #: data/gui/window/addon_manager.cfg:84
@@ -3082,7 +3064,7 @@ msgstr "Žádné"
 #. [label]
 #: data/gui/window/editor_generate_map.cfg:43 src/hotkey/hotkey_command.cpp:239
 msgid "Generate Map"
-msgstr "Vygeneruj mapu"
+msgstr "Generovat mapu"
 
 #. [label]
 #: data/gui/window/editor_generate_map.cfg:58
@@ -3138,7 +3120,7 @@ msgstr "Vytvoř"
 #. [label]
 #: data/gui/window/editor_resize_map.cfg:35 src/hotkey/hotkey_command.cpp:238
 msgid "Resize Map"
-msgstr "Změň velikost"
+msgstr "Změnit velikost"
 
 #. [label]
 #: data/gui/window/editor_resize_map.cfg:54
@@ -3784,9 +3766,9 @@ msgstr ""
 #. [toggle_button]: id=filter_with_ignored
 #: data/gui/window/lobby_main.cfg:363
 #, fuzzy
-#| msgid "Choose Player"
+#| msgid "Connected Players"
 msgid "Blocked players"
-msgstr "Vyber hráče"
+msgstr "Připojení hráči"
 
 #. [toggle_button]: id=filter_with_ignored
 #: data/gui/window/lobby_main.cfg:364
@@ -4162,10 +4144,8 @@ msgstr "Změň"
 
 #. [label]
 #: data/gui/window/mp_connect.cfg:71
-#, fuzzy
-#| msgid "Log on to the official Wesnoth multiplayer server"
 msgid "Choose or enter the address of a multiplayer server."
-msgstr "Přihlas se na oficiální herní server Wesnothu"
+msgstr "Vyber nebo zadej adresu serveru pro hru více hráčů."
 
 #. [label]
 #: data/gui/window/mp_connect.cfg:101
@@ -5217,39 +5197,37 @@ msgstr "Procházet screenshoty ve správci souborů"
 #. [label]
 #: data/gui/window/select_orb_colors.cfg:80
 msgid "Choose Orb/Minimap Colors"
-msgstr "Vyberte barvy orbů/minimapy"
+msgstr "Vybrat barvy koulí a do minimapy"
 
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:84
 msgid "Show unmoved orb"
-msgstr "Zobrazuj neposunutý orb"
+msgstr "Zobrazit kouli neposunutých"
 
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:85
 msgid "Show partial moved orb"
-msgstr "Zobrazuj částečný orb pohybu"
+msgstr "Zobrazit kouli částečně posunutých"
 
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:86
 msgid "Show moved orb"
-msgstr "Zobrazuj orb pohybu"
+msgstr "Zobrazit kouli posunutých"
 
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:87
 msgid "Show ally orb"
-msgstr "Zobrazuj spřátelený orb"
+msgstr "Zobrazit kouli spojenců"
 
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:88
 msgid "Show enemy orb"
-msgstr "Zobrazuj nepřátelský orb"
+msgstr "Zobrazit kouli nepřátel"
 
 #. [label]: id=asdf
 #: data/gui/window/server_info.cfg:79
-#, fuzzy
-#| msgid "Map Information"
 msgid "Server Information"
-msgstr "Informace o mapě"
+msgstr "Informace o serveru"
 
 #. [label]
 #: data/gui/window/sp_options_configure.cfg:44
@@ -5532,10 +5510,8 @@ msgstr "Napadni nepřítele"
 
 #. [label]
 #: data/gui/window/unit_create.cfg:55
-#, fuzzy
-#| msgid "Delete Unit"
 msgid "Create Unit"
-msgstr "Smaž jednotku"
+msgstr "Vytvoř jednotku"
 
 #. [toggle_button]: id=sort_0
 #: data/gui/window/unit_create.cfg:134
@@ -5592,7 +5568,7 @@ msgstr "Přivolat"
 #. [text_box]: id=filter_box
 #: data/gui/window/unit_recall.cfg:311
 msgid "Search for unit name, unit type name, unit level, or trait."
-msgstr ""
+msgstr "Hledat jméno, typ, úroveň nebo vlastnost jednotky."
 
 #. [button]: id=rename
 #: data/gui/window/unit_recall.cfg:401
@@ -6521,10 +6497,8 @@ msgid "Do you really want to log out?"
 msgstr "Opravdu se chceš odhlásit?"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:238
-#, fuzzy
-#| msgid "Incompatible User-made Content."
 msgid "Incompatible User-made Content"
-msgstr "Nekompatibilní uživatelský obsah."
+msgstr "Nekompatibilní uživatelský obsah"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:239
 msgid ""
@@ -6534,10 +6508,8 @@ msgid ""
 msgstr ""
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:254
-#, fuzzy
-#| msgid "Missing User-made Content."
 msgid "Missing User-made Content"
-msgstr "Chybějící uživatelský obsah."
+msgstr "Chybějící uživatelský obsah"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:255
 msgid ""
@@ -7283,15 +7255,15 @@ msgstr "Popis jednotky"
 
 #: src/hotkey/hotkey_command.cpp:97
 msgid "Delete Unit"
-msgstr "Smaž jednotku"
+msgstr "Smazat jednotku"
 
 #: src/hotkey/hotkey_command.cpp:100
 msgid "Save Replay"
-msgstr "Ulož záznam"
+msgstr "Uložit záznam"
 
 #: src/hotkey/hotkey_command.cpp:101 src/hotkey/hotkey_command.cpp:174
 msgid "Save Map"
-msgstr "Ulož mapu"
+msgstr "Uložit mapu"
 
 #: src/hotkey/hotkey_command.cpp:104
 msgid "Repeat Recruit"
@@ -7299,7 +7271,7 @@ msgstr "Zopakuj verbování"
 
 #: src/hotkey/hotkey_command.cpp:106
 msgid "Show/Hide Labels"
-msgstr "Zobraz/skryj popisky"
+msgstr "Zobrazit/skrýt popisky"
 
 #: src/hotkey/hotkey_command.cpp:107
 msgid "End Turn"
@@ -7307,11 +7279,11 @@ msgstr "Ukončit kolo"
 
 #: src/hotkey/hotkey_command.cpp:109
 msgid "Toggle Ellipses"
-msgstr "Zapni/vypni elipsy"
+msgstr "Zapnout/vypnout elipsy"
 
 #: src/hotkey/hotkey_command.cpp:110
 msgid "Toggle Grid"
-msgstr "Zapni/vypni mřížku"
+msgstr "Zapnout/vypnout mřížku"
 
 #: src/hotkey/hotkey_command.cpp:111
 msgid "Mouse Scrolling"
@@ -7490,11 +7462,11 @@ msgstr "Nový scénář"
 
 #: src/hotkey/hotkey_command.cpp:173
 msgid "Load Map"
-msgstr "Načti mapu"
+msgstr "Načíst mapu"
 
 #: src/hotkey/hotkey_command.cpp:175
 msgid "Save Map As"
-msgstr "Ulož mapu jako"
+msgstr "Uložit mapu jako"
 
 #: src/hotkey/hotkey_command.cpp:176
 msgid "Save Scenario As"
@@ -7502,7 +7474,7 @@ msgstr "Uložit scénář jako"
 
 #: src/hotkey/hotkey_command.cpp:177
 msgid "Save All Maps"
-msgstr "Ulož všechny mapy"
+msgstr "Uložit všechny mapy"
 
 #: src/hotkey/hotkey_command.cpp:178
 msgid "Revert All Changes"
@@ -7546,7 +7518,7 @@ msgstr "Další nástroj"
 
 #: src/hotkey/hotkey_command.cpp:192
 msgid "Paint Tool"
-msgstr "Kreslící nástroj"
+msgstr "Nástroj malování"
 
 #: src/hotkey/hotkey_command.cpp:192 src/hotkey/hotkey_command.cpp:193
 msgid ""
@@ -7554,7 +7526,7 @@ msgid ""
 "paint base layer only. Ctrl+click to sample terrain under cursor."
 msgstr ""
 "Použijte levé/pravé tlačítko myši k vykreslení popředí/pozadí povrchu. "
-"Podržte Shift pro kreslení pouze základních vrstev. Ctrl+klinutí pro výběr "
+"Podržte Shift pro kreslení pouze základních vrstev. Ctrl+kliknutí pro výběr "
 "terénu pod kurzorem."
 
 #: src/hotkey/hotkey_command.cpp:193
@@ -7566,8 +7538,8 @@ msgid ""
 "Left mouse button selects or deselects with Ctrl, right brings up a context "
 "menu. Hold Shift for magic-wand selection of tiles with same terrain."
 msgstr ""
-"Levým tlačítkem myči vybírá nebo odebírá s Ctrl, pravé vyvolá kontextové "
-"menu. Podržte Shift pro výběr shodných polířek se stejným terénem pomocí "
+"Levým tlačítkem myši vybírá nebo odebírá s Ctrl, pravé vyvolá kontextové "
+"menu. Podržte Shift pro výběr shodných políček se stejným terénem pomocí "
 "magické hůlky."
 
 #: src/hotkey/hotkey_command.cpp:194
@@ -7613,10 +7585,8 @@ msgid "Item Tool"
 msgstr "Nástroj pro předměty"
 
 #: src/hotkey/hotkey_command.cpp:198
-#, fuzzy
-#| msgid "Left mouse button sets or drags a label, right clears."
 msgid "Left mouse button sets a new item."
-msgstr "Levé tlačítko myši nastavuje nebo přesunuje popisek, pravé ho maže."
+msgstr "Levé tlačítko myši umístí nový předmět."
 
 #: src/hotkey/hotkey_command.cpp:199
 msgid ""
@@ -7684,7 +7654,7 @@ msgstr "Výchozí štětec"
 
 #: src/hotkey/hotkey_command.cpp:217
 msgid "Single Tile"
-msgstr "Vlastní buňka"
+msgstr "Jediná dlaždice"
 
 #: src/hotkey/hotkey_command.cpp:218
 msgid "Radius One"
@@ -7704,7 +7674,7 @@ msgstr "Štětec JZ-SV"
 
 #: src/hotkey/hotkey_command.cpp:223
 msgid "Cut"
-msgstr "Vyřízni"
+msgstr "Vyjmout"
 
 #: src/hotkey/hotkey_command.cpp:224
 msgid "Copy"
@@ -7717,7 +7687,7 @@ msgstr "Levým tlačítkem vložíte ze schránky, pravým vyvoláte kontextové
 
 #: src/hotkey/hotkey_command.cpp:225
 msgid "Paste"
-msgstr "Vlož"
+msgstr "Vložit"
 
 #: src/hotkey/hotkey_command.cpp:226
 msgid "Export Selected Coordinates to System Clipboard"
@@ -7725,7 +7695,7 @@ msgstr "Exportovat vybrané souřadnice do schránky systému"
 
 #: src/hotkey/hotkey_command.cpp:227
 msgid "Select All"
-msgstr "Vyber vše"
+msgstr "Vybrat vše"
 
 #: src/hotkey/hotkey_command.cpp:228
 msgid "Select Inverse"
@@ -7733,7 +7703,7 @@ msgstr "Invertovat výběr"
 
 #: src/hotkey/hotkey_command.cpp:229
 msgid "Select None"
-msgstr "Vyber nic"
+msgstr "Zrušit výběr"
 
 #: src/hotkey/hotkey_command.cpp:230
 msgid "Rotate Clipboard Clockwise"
@@ -7753,15 +7723,15 @@ msgstr "Převrátit schránku vertikálně"
 
 #: src/hotkey/hotkey_command.cpp:234
 msgid "Rotate Selection"
-msgstr "Otoč výběr"
+msgstr "Otočit výběr"
 
 #: src/hotkey/hotkey_command.cpp:235
 msgid "Flip Selection"
-msgstr "Otoč výběr"
+msgstr "Převrátit výběr"
 
 #: src/hotkey/hotkey_command.cpp:236
 msgid "Fill Selection"
-msgstr "Vyplň výběr"
+msgstr "Vyplnit výběr"
 
 #: src/hotkey/hotkey_command.cpp:237
 msgid "Randomize Tiles in Selection"
@@ -7769,15 +7739,15 @@ msgstr "Náhodně nastavit políčka ve výběru"
 
 #: src/hotkey/hotkey_command.cpp:240
 msgid "Apply a Mask"
-msgstr "Aplikuj masku"
+msgstr "Aplikovat masku"
 
 #: src/hotkey/hotkey_command.cpp:241
 msgid "Create Mask"
-msgstr "Vytvoř masku"
+msgstr "Vytvořit masku"
 
 #: src/hotkey/hotkey_command.cpp:242
 msgid "Refresh Display"
-msgstr "Obnov pohled"
+msgstr "Obnovit pohled"
 
 #: src/hotkey/hotkey_command.cpp:244
 msgid "Update Terrain Transitions"
@@ -7801,39 +7771,39 @@ msgstr "Obnovovat přechody terénu automaticky: Částečně"
 
 #: src/hotkey/hotkey_command.cpp:253
 msgid "Refresh Image Cache"
-msgstr "Obnov obrazovou paměť"
+msgstr "Obnovit obrazovou paměť"
 
 #: src/hotkey/hotkey_command.cpp:254
 msgid "Draw Hex Coordinates"
-msgstr "Zobraz souřadnice políček"
+msgstr "Zobrazit souřadnice políček"
 
 #: src/hotkey/hotkey_command.cpp:255
 msgid "Draw Terrain Codes"
-msgstr "Zobraz kódy terénu"
+msgstr "Zobrazit kódy terénu"
 
 #: src/hotkey/hotkey_command.cpp:256
 msgid "Draw Number of Bitmaps"
-msgstr "Zobraz počet bitmap"
+msgstr "Zobrazit počet bitmap"
 
 #: src/hotkey/hotkey_command.cpp:258
 msgid "Save Selection to Area"
-msgstr "Ulož výběr do oblasti"
+msgstr "Uložit výběr do oblasti"
 
 #: src/hotkey/hotkey_command.cpp:259
 msgid "Rename Selected Area"
-msgstr "Přejmenuj vybranou oblast"
+msgstr "Přejmenovat vybranou oblast"
 
 #: src/hotkey/hotkey_command.cpp:260
 msgid "Remove Selected Area"
-msgstr "Odeber vybranou oblast"
+msgstr "Odebrat vybranou oblast"
 
 #: src/hotkey/hotkey_command.cpp:261
 msgid "Add New Area"
-msgstr "Přidej novou oblast"
+msgstr "Přidat novou oblast"
 
 #: src/hotkey/hotkey_command.cpp:263
 msgid "Edit Scenario"
-msgstr "Uprav scénář"
+msgstr "Upravit scénář"
 
 #: src/hotkey/hotkey_command.cpp:264
 msgid "Edit Side"
@@ -7988,14 +7958,10 @@ msgid "[%I:%M %p]"
 msgstr "[%I:%M %p]"
 
 #: src/terrain/translation.cpp:714
-#, fuzzy
-#| msgid ""
-#| "A terrain with a string with more than 4 characters has been found, the "
-#| "affected terrain is :"
 msgid ""
 "A terrain with a string with more than 4 characters has been found, the "
 "affected terrain is:"
-msgstr "Nalezen terén s řetězcem s více než čtyřmi znaky, postižený terén :"
+msgstr "Nalezen terén s řetězcem o více než čtyř znacích, postižený terén:"
 
 #: src/wml_exception.cpp:62
 msgid ""

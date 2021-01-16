@@ -19,14 +19,15 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2021-01-16 14:18 UTC\n"
-"PO-Revision-Date: 2020-12-06 19:04+0100\n"
-"Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
+"PO-Revision-Date: 2020-12-13 14:29+0100\n"
+"Last-Translator: Septim <septim@centrum.cz>\n"
 "Language-Team: Český <hrubymar10@gmail.com>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+"X-Generator: Poedit 2.4.2\n"
 
 #. [campaign]: id=Under_the_Burning_Suns
 #. [editor_group]: id=utbs
@@ -124,17 +125,18 @@ msgid ""
 "\n"
 "Units cannot be killed or deal no damage as a result of dehydration."
 msgstr ""
-"dehydratace: Tato jednotka je dehydratovaná. Bude ztrácet 4 HP a její škody "
-"jsou sníženy o 1 během každého kola, dokud se nevyléčí u léčitele nebo ve "
-"vodě v oáze.\n"
+"dehydratace: Tato jednotka je dehydrovaná. Pokud se nevyléčí u léčitele nebo "
+"zcela neosvěží vodou v oáze, bude každé kolo ztrácet 4 životy a poškození "
+"způsobená jejími útoky se sníží o 1.\n"
 "\n"
-"Jednotha nemůže být zabita nebo nemít žádné poškození kvůli dehydrataci."
+"Jednotka nemůže na dehydrataci zemřít a poškození, které uděluje, nemůže "
+"klesnout na 0."
 
 #. [lua]: wesnoth.interface.game_display.unit_status
 #: data/campaigns/Under_the_Burning_Suns/lua/theme.lua:20
 msgid "stunned: This unit is stunned. It cannot enforce its Zone of Control."
 msgstr ""
-"omráčení: Tato jednotka je omráčená. Nemůže nadále chránit svou zonu "
+"omráčení: Tato jednotka je omráčená. Nemůže nadále chránit svou zónu "
 "kontroly."
 
 #. [lua]: wesnoth.interface.game_display.unit_status
@@ -15381,10 +15383,8 @@ msgstr ""
 
 #. [unit_type]: id=Tauroch, race=monster
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Tauroch.cfg:5
-#, fuzzy
-#| msgid "Tauroch Rider"
 msgid "Tauroch"
-msgstr "Býčí jezdec"
+msgstr "Taur"
 
 #. [unit_type]: id=Tauroch, race=monster
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Tauroch.cfg:18
@@ -15395,6 +15395,12 @@ msgid ""
 "easily carry or pull heavy loads, their thick hides and unwavering "
 "resolution also make them formidable mounts in battle."
 msgstr ""
+"Tauři jsou obrovská odolná zvířata pouště, která jsou většinou přežívajících "
+"ras považována za nezkrotná. Avšak spříznění elfů s přírodou jim umožnilo "
+"vytvořit i s těmito neposlušnými zvířaty pouto, ač je považováno za "
+"nepravděpodobné. Tauři mohou snadno přenášet nebo táhnout těžká břemena. "
+"Nicméně jejich tlusté kůže a neochvějné odhodlání z nich také činí "
+"impozantní jízdní zvířata pro boj."
 
 #. [attack]: type=impact
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Tauroch.cfg:22
@@ -15421,6 +15427,13 @@ msgid ""
 "times of need, when the elves are threatened by something more than mere "
 "scavengers or wild beasts."
 msgstr ""
+"Renomovaní vlajkonoši tráví roky pobytem venku v otevřených pouštích. Vedou "
+"své bratry na hlídkách a lovech, kde shánějí zásoby a brání své vesnice před "
+"lupiči. Jsou to osvědčení mistři potyček a taktiky, velmi zdatní v potulkách "
+"nehostinným pískem. Vlajkonoši se zřídka stávají vůdci velkých vesnic či "
+"armád. Stále ale mají dovednosti a charisma, aby v dobách nouze, kdy jsou "
+"elfové ohroženi něčím víc než pouhými mrchožrouty nebo divokými zvířaty, "
+"jednali jako generálové."
 
 #. [unit_type]: id=Tauroch Protector, race=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Tauroch_Protector.cfg:5
@@ -15473,6 +15486,14 @@ msgid ""
 "skilled rider can hold off multiple enemies by itself and serves as a "
 "powerful warden to protect elven villages and carvans."
 msgstr ""
+"Tauři jsou obrovská odolná zvířata pouště, která jsou většinou přežívajících "
+"ras považována za nezkrotná. Avšak spříznění elfů s přírodou jim umožnilo "
+"vytvořit i s těmito neposlušnými zvířaty pouto, ač je považováno za "
+"nepravděpodobné. Tauři mohou snadno přenášet nebo táhnout těžká břemena. "
+"Nicméně jejich tlusté kůže a neochvějné odhodlání z nich také činí "
+"impozantní jízdní zvířata pro boj. Taur vedený zkušeným jezdcem dokáže sám "
+"zadržet několik nepřátel a slouží jako mocný strážce, ochraňující elfí "
+"vesnice a karavany."
 
 #. [unit_type]: id=Tauroch Stalwart, race=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Tauroch_Stalwart.cfg:5
@@ -15490,6 +15511,14 @@ msgid ""
 "Stalwart would undoubtedly be wise to seek another path, for trying to "
 "displace the beast would be akin to trying to fight a stone wall."
 msgstr ""
+"Když se quenothští lovci setkávají s divokými taury, často pozorují podivné "
+"chování těchto zvláště tvrdohlavých zvířat, kdy tato i v případě "
+"provokujícího popudu naprosto odmítají ustoupit, podporujíce navzájem svá "
+"drsná těla. Ačkoli je obtížné je uklidnit, jsou tito tauři někdy pro svou "
+"výjimečnou odolnost vybíráni zkušenými jezdci. Pro každého válečníka, jehož "
+"postup zkříží býčí odvážlivec, by bylo moudřejší vyhledat jinou cestu, "
+"protože pokus o přetlačení tohoto zvířete by byl podobný pokusu přetlačit "
+"kamennou zeď."
 
 #. [unit_type]: id=Tauroch Vanguard, race=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Tauroch_Vanguard.cfg:5
@@ -15514,6 +15543,7 @@ msgstr ""
 msgid "Quenoth Warrior"
 msgstr "Quenothský válečník"
 
+# Předěláno do množného čísla (stejně to bylo nějak plovoucí).
 #. [unit_type]: id=Quenoth Warrior, race=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Warrior.cfg:23
 msgid ""
@@ -15524,6 +15554,12 @@ msgid ""
 "these somewhat unorthodox weapons to both strike with great power and to "
 "support their nearby brethren."
 msgstr ""
+"Ve srovnání s kopím představuje kůsa většinou zbraň s kratším dosahem, ale s "
+"univerzálnějším použitím. Zkušení bojovníci dokážou pomocí její čepele "
+"zahákovat nebo sevřít nepřátelské zbraně. A také zasáhnout z neobvyklých "
+"úhlů, což jim umožnuje překvapit neopatrné protivníky. Quenothští válečníci "
+"využívají tyto poněkud neortodoxní zbraně ve formaci, aby dokázali udeřit s "
+"velkou silou a podpořit své bratry, co jim stojí po boku."
 
 # turned inwards for answers and guidance - najít nějaké lepší vyjádření, odpovídající původnímu úmyslu
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:4
@@ -15563,32 +15599,32 @@ msgstr "Vůdce"
 #. [advancement]: id=warrior_2_1
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:153
 msgid "Warrior (choose only one): specialize in melee combat"
-msgstr ""
+msgstr "Válečník (lze vybrat jen jedno): specializace v boji zblízka"
 
 #. [advancement]: id=warrior_2_2
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:175
 msgid "Warrior (choose only one): specialize in archery"
-msgstr ""
+msgstr "Válečník (lze vybrat jen jedno): specializace v lukostřelbě"
 
 #. [advancement]: id=hunter_2_1
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:200
 msgid "Hunter (choose only one): specialize in surprise attacks"
-msgstr ""
+msgstr "Lovec (lze vybrat jen jedno): specializace v překvapivých útocích"
 
 #. [advancement]: id=hunter_2_2
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:230
 msgid "Hunter (choose only one): specialize in skirmishing"
-msgstr ""
+msgstr "Lovec (lze vybrat jen jedno): specializace v průbojnosti"
 
 #. [advancement]: id=leader_2_1
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:258
 msgid "Leader (choose only one): specialize in supporting allies"
-msgstr ""
+msgstr "Vůdce (lze vybrat jen jedno): specializace v podpoře spojenců"
 
 #. [advancement]: id=leader_2_2
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:290
 msgid "Leader (choose only one): specialize in distracting enemies"
-msgstr ""
+msgstr "Vůdce (lze vybrat jen jedno): specializace v rozptylování nepřátel"
 
 #. [unit_type]: id=Quenoth Youth, race=quenoth, description={QUENOTH_YOUTH_DESCRIPTION}
 #. [unit_type]: id=Quenoth Youth 2, race=quenoth, description={QUENOTH_YOUTH_DESCRIPTION}
@@ -15787,24 +15823,18 @@ msgstr ""
 
 #. [race]: id=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/units.cfg:5
-#, fuzzy
-#| msgid "team_name^Quenoth Elves"
 msgid "race^Quenoth Elf"
-msgstr "Elfové z Quenothu"
+msgstr "Quenothský elf"
 
 #. [race]: id=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/units.cfg:6
-#, fuzzy
-#| msgid "female^Quenoth Druid"
 msgid "race+female^Quenoth Elf"
-msgstr "Quenothská druidka"
+msgstr "Quenothská elfka"
 
 #. [race]: id=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/units.cfg:7
-#, fuzzy
-#| msgid "team_name^Quenoth Elves"
 msgid "race^Quenoth Elves"
-msgstr "Elfové z Quenothu"
+msgstr "Quenothští elfové"
 
 #. [race]: id=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/units.cfg:8
@@ -15812,6 +15842,8 @@ msgid ""
 "Compared to the elves of the Great Continent around the time of Wesnoth, the "
 "Quenoth Elves are far more suited to life in the desert."
 msgstr ""
+"Ve srovnání s elfy Velkého kontinentu z časů Wesnothského království jsou "
+"quenothští elfové mnohem přizpůsobenější pro život v poušti."
 
 #. [special_note]
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:94
