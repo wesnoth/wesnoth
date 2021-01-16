@@ -16,6 +16,7 @@
 ## Version 1.15.9
  ### Add-ons client
  ### Add-ons server
+   * Fixed a regression from 1.15.8 that caused add-on downloads to never bump download counts (issue #5411).
  ### Campaigns
    * Dead Water
      * Reduce campaign difficulty
@@ -33,6 +34,8 @@
    * New Fauna/monster unit: Horned Scarab
    * Some standing/bobbing animations now filtered for low HP (depicting exhaustion) (PR #5388)
  ### User interface
+   * Major campaign menu overhaul including more accessible RNG options (including the experimental PRNG option previously found in Advanced Preferences), a difficulty dropdown replacing the difficulty dialog, and custom backgrounds set using `[campaign] background=` (issue #4543, PR #5358).
+   * The OS version displayed in the game version dialog and --report now includes the runtime CPU architecture.
  ### WML Engine
    * New `[set_variable]` options: reverse=yes, min=list, max=list
  ### Miscellaneous and Bug Fixes
