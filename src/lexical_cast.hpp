@@ -167,7 +167,7 @@ struct lexical_caster<
 	  std::string
 	, From
 	, void
-	, std::enable_if_t<std::is_integral<std::remove_pointer_t<From>>::value>
+	, std::enable_if_t<std::is_integral_v<std::remove_pointer_t<From>>>
 >
 {
 	std::string operator()(From value, std::optional<std::string>) const
@@ -192,7 +192,7 @@ struct lexical_caster<
 	  long long
 	, From
 	, void
-	, std::enable_if_t<std::is_same<From, const char*>::value || std::is_same<From, char*>::value>
+	, std::enable_if_t<std::is_same_v<From, const char*> || std::is_same_v<From, char*>>
 	>
 {
 	long long operator()(From value, std::optional<long long> fallback) const
@@ -247,8 +247,8 @@ template <class To, class From>
 struct lexical_caster<
 	  To
 	, From
-	, std::enable_if_t<std::is_integral<To>::value && std::is_signed<To>::value && !std::is_same<To, long long>::value>
-	, std::enable_if_t<std::is_same<From, const char*>::value || std::is_same<From, char*>::value>
+	, std::enable_if_t<std::is_integral_v<To> && std::is_signed_v<To> && !std::is_same_v<To, long long>>
+	, std::enable_if_t<std::is_same_v<From, const char*> || std::is_same_v<From, char*>>
 	>
 {
 	To operator()(From value, std::optional<To> fallback) const
@@ -272,7 +272,7 @@ template <class To>
 struct lexical_caster<
 	  To
 	, std::string
-	, std::enable_if_t<std::is_integral<To>::value && std::is_signed<To>::value && !std::is_same<To, long long>::value>
+	, std::enable_if_t<std::is_integral_v<To> && std::is_signed_v<To> && !std::is_same_v<To, long long>>
 	>
 {
 	To operator()(const std::string& value, std::optional<To> fallback) const
@@ -305,8 +305,8 @@ template <class To, class From>
 struct lexical_caster<
 	  To
 	, From
-	, std::enable_if_t<std::is_floating_point<To>::value>
-	, std::enable_if_t<std::is_same<From, const char*>::value || std::is_same<From, char*>::value>
+	, std::enable_if_t<std::is_floating_point_v<To>>
+	, std::enable_if_t<std::is_same_v<From, const char*> || std::is_same_v<From, char*>>
 	>
 {
 	To operator()(From value, std::optional<To> fallback) const
@@ -330,7 +330,7 @@ template <class To>
 struct lexical_caster<
 	  To
 	, std::string
-	, std::enable_if_t<std::is_floating_point<To>::value>
+	, std::enable_if_t<std::is_floating_point_v<To>>
 	>
 {
 	To operator()(const std::string& value, std::optional<To> fallback) const
@@ -375,7 +375,7 @@ struct lexical_caster<
 	  unsigned long long
 	, From
 	, void
-	, std::enable_if_t<std::is_same<From, const char*>::value || std::is_same<From, char*>::value>
+	, std::enable_if_t<std::is_same_v<From, const char*> || std::is_same_v<From, char*>>
 	>
 {
 	unsigned long long operator()(From value, std::optional<unsigned long long> fallback) const
@@ -431,8 +431,8 @@ template <class To, class From>
 struct lexical_caster<
 	  To
 	, From
-	, std::enable_if_t<std::is_unsigned<To>::value && !std::is_same<To, unsigned long long>::value>
-	, std::enable_if_t<std::is_same<From, const char*>::value || std::is_same<From, char*>::value>
+	, std::enable_if_t<std::is_unsigned_v<To> && !std::is_same_v<To, unsigned long long>>
+	, std::enable_if_t<std::is_same_v<From, const char*> || std::is_same_v<From, char*>>
 	>
 {
 	To operator()(From value, std::optional<To> fallback) const
@@ -456,7 +456,7 @@ template <class To>
 struct lexical_caster<
 	  To
 	, std::string
-	, std::enable_if_t<std::is_unsigned<To>::value>
+	, std::enable_if_t<std::is_unsigned_v<To>>
 	>
 {
 	To operator()(const std::string& value, std::optional<To> fallback) const

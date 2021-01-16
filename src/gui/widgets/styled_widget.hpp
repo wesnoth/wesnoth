@@ -32,11 +32,11 @@ struct builder_styled_widget;
 
 /**
  * @ingroup GUIWidgetWML
- * 
+ *
  * Base class for all visible items.
- * 
+ *
  * All widgets placed in a cell of a grid have some values in common:
- * Key                          |Type                                |Default  |Description  
+ * Key                          |Type                                |Default  |Description
  * -----------------------------|------------------------------------|---------|-----------
  * id                           | @ref guivartype_string "string"    |""       |This value is used for the engine to identify 'special' items. This means that for example a text_box can get the proper initial value. This value should be unique or empty. Those special values are documented at the window definition that uses them. NOTE: items starting with an underscore are used for composed widgets and these should be unique per composed widget.
  * definition                   | @ref guivartype_string "string"    |"default"|The id of the widget definition to use. This way it's possible to select a specific version of the widget e.g. a title label when the label is used as title.
@@ -318,7 +318,7 @@ protected:
 	template<typename T>
 	std::shared_ptr<const typename T::resolution> cast_config_to() const
 	{
-		static_assert(std::is_base_of<resolution_definition, typename T::resolution>::value,
+		static_assert(std::is_base_of_v<resolution_definition, typename T::resolution>,
 			"Given type's resolution object does not derive from resolution_definition."
 		);
 

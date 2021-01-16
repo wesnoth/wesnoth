@@ -1155,7 +1155,7 @@ public:
 	struct upkeep_type_visitor : public boost::static_visitor<std::string>
 	{
 		template<typename T>
-		std::enable_if_t<!std::is_same<int, T>::value, std::string>
+		std::enable_if_t<!std::is_same_v<int, T>, std::string>
 		operator()(T&) const
 		{
 			// Any special upkeep type should have an associated @ref type getter in its helper struct.
@@ -1175,7 +1175,7 @@ public:
 	{
 	public:
 		template<typename N>
-		std::enable_if_t<std::is_arithmetic<N>::value, upkeep_t>
+		std::enable_if_t<std::is_arithmetic_v<N>, upkeep_t>
 		operator()(N n) const
 		{
 			if(n == 0) return upkeep_loyal();
@@ -1184,7 +1184,7 @@ public:
 		}
 
 		template<typename B>
-		std::enable_if_t<std::is_convertible<B, bool>::value && !std::is_arithmetic<B>::value, upkeep_t>
+		std::enable_if_t<std::is_convertible_v<B, bool> && !std::is_arithmetic_v<B>, upkeep_t>
 		operator()(B b) const
 		{
 			throw std::invalid_argument(b.str());

@@ -36,11 +36,11 @@ template<typename D, typename S>
 struct const_clone
 {
 	static const bool is_source_const =
-		std::is_const<
+		std::is_const_v<
 			std::remove_pointer_t<
 				std::remove_reference_t<S>
 			>
-		>::value;
+		>;
 
 	/** The destination type, possibly const qualified. */
 	using type =

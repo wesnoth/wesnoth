@@ -27,7 +27,7 @@ namespace gui2
  * Default value getter for selectable widgets (like toggle buttons)
  */
 template<typename T>
-static inline std::enable_if_t<std::is_base_of<selectable_item, T>::value, std::string>
+static inline std::enable_if_t<std::is_base_of_v<selectable_item, T>, std::string>
 default_status_value_getter(T& w)
 {
 	return w.get_value_bool() ? _("yes") : _("no");
@@ -37,7 +37,7 @@ default_status_value_getter(T& w)
  * Default value getter for integer-based widgets (like sliders)
  */
 template<typename T>
-static inline std::enable_if_t<std::is_base_of<integer_selector, T>::value, std::string>
+static inline std::enable_if_t<std::is_base_of_v<integer_selector, T>, std::string>
 default_status_value_getter(T& w)
 {
 	return w.get_value_label();
