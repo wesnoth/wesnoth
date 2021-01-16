@@ -7,7 +7,7 @@
  ### Packaging
  ### Terrain
  ### Translations
-   * Updated translations: Czech
+   * Updated translations: Catalan, Czech
  ### Units
  ### User interface
  ### WML Engine
