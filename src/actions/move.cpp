@@ -469,18 +469,9 @@ namespace { // Private helpers for move_unit()
 				// block the tunnel if pass_allied_units=true. Whether the teleport is possible
 				// is checked by getting the teleport map with the see_all flag set to true.
 				const pathfind::teleport_map teleports = pathfind::get_teleport_locations(*move_it_, *current_team_, true, false, false);
-				auto allowed_teleports = teleports.get_adjacents(prev_hex);
+				const auto allowed_teleports = teleports.get_adjacents(prev_hex);
 
-				bool found_valid_teleport = false;
-				std::set<map_location>::const_iterator it = allowed_teleports.begin();
-				while( it!=allowed_teleports.end() && !found_valid_teleport ) {
-					if ( *it == hex ) {
-						found_valid_teleport = true;
-					}
-					++it;
-				}
-
-				if (!found_valid_teleport) {
+				if(allowed_teleports.count(hex) == 0) {
 					teleport_failed_ = true;
 					return true;
 				}
