@@ -48,14 +48,6 @@
 # define GETTEXT_DOMAIN ""
 #endif
 
-#ifdef HAVE_CXX17
-#define UNUSEDNOWARN [[maybe_unused]]
-#elif defined(__GNUCC__) || defined(__clang__) || defined(__MINGW32__)
-#define UNUSEDNOWARN __attribute__((unused))
-#else
-#define UNUSEDNOWARN
-#endif
-
 namespace translation
 {
 	std::string dgettext(const char* domain, const char* msgid);
@@ -64,11 +56,11 @@ namespace translation
 	//const char* sngettext(const char *singular, const char *plural, int n);
 	std::string dsngettext(const char * domainname, const char *singular, const char *plural, int n);
 
-	UNUSEDNOWARN inline static std::string gettext(const char* str)
+	[[maybe_unused]] inline static std::string gettext(const char* str)
 	{ return translation::dgettext(GETTEXT_DOMAIN, str); }
-	UNUSEDNOWARN inline static std::string sgettext(const char* str)
+	[[maybe_unused]] inline static std::string sgettext(const char* str)
 	{ return translation::dsgettext(GETTEXT_DOMAIN, str); }
-	UNUSEDNOWARN inline static std::string sngettext(const char* str1, const char* str2, int n)
+	[[maybe_unused]] inline static std::string sngettext(const char* str1, const char* str2, int n)
 	{ return translation::dsngettext(GETTEXT_DOMAIN, str1, str2 , n); }
 
 
@@ -97,11 +89,11 @@ namespace translation
 }
 
 //#define _(String) translation::dsgettext(GETTEXT_DOMAIN,String)
-UNUSEDNOWARN inline static std::string _(const char* str)
+[[maybe_unused]] inline static std::string _(const char* str)
 { return translation::dsgettext(GETTEXT_DOMAIN, str); }
 
 //#define _n(String1, String2, Int) translation::dsngettext(GETTEXT_DOMAIN, String1,String2,Int)
-UNUSEDNOWARN inline static std::string _n(const char* str1, const char* str2, int n)
+[[maybe_unused]] inline static std::string _n(const char* str1, const char* str2, int n)
 { return translation::dsngettext(GETTEXT_DOMAIN, str1, str2, n); }
 
 #define gettext_noop(String) String
