@@ -39,9 +39,9 @@
 
 #define UNUSED(x)  ((void)(x))     /* to avoid warnings */
 
-// To allow using some optional C++17 features
-#if __cplusplus >= 201703L
-#define HAVE_CXX17
+// To allow using some optional C++20 features (TODO: use the actual C++20 value once that's finalized)
+#if __cplusplus > 201703L
+#define HAVE_CXX20
 #endif
 
 #if defined(__clang__)
