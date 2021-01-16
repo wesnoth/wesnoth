@@ -90,8 +90,8 @@ std::shared_ptr<attacks_vector> aspect_attacks_base::analyze_targets() const
 			}
 		}
 
-		bool used_locations[6];
-		std::fill(used_locations,used_locations+6,false);
+		std::array<bool, 6> used_locations;
+		used_locations.fill(false);
 
 		moves_map dummy_moves;
 		move_map fullmove_srcdst, fullmove_dstsrc;
@@ -130,7 +130,7 @@ void aspect_attacks_base::do_attack_analysis(const map_location& loc,
 	const move_map& enemy_srcdst,
 	const move_map& enemy_dstsrc,
 	const adjacent_loc_array_t& tiles,
-	bool* used_locations,
+	std::array<bool, 6>& used_locations,
 	std::vector<map_location>& units,
 	std::vector<attack_analysis>& result,
 	attack_analysis& cur_analysis,

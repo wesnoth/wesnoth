@@ -48,7 +48,7 @@ protected:
 		const move_map& enemy_srcdst,
 		const move_map& enemy_dstsrc,
 		const adjacent_loc_array_t& tiles,
-		bool* used_locations,
+		std::array<bool, 6>& used_locations,
 		std::vector<map_location>& units,
 		std::vector<attack_analysis>& result,
 		attack_analysis& cur_analysis,
