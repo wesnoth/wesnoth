@@ -403,44 +403,6 @@ text_box_definition::text_box_definition(const config& cfg)
 	load_resolutions<resolution>(cfg);
 }
 
-/*WIKI
- * @page = GUIWidgetDefinitionWML
- * @order = 1_text_box
- *
- * == Text box ==
- *
- * The definition of a text box.
- *
- * @begin{parent}{name="gui/"}
- * @begin{tag}{name="ext_box_definition"}{min=0}{max=-1}{super="generic/widget_definition"}
- * The resolution for a text box also contains the following keys:
- * @begin{tag}{name="resolution"}{min=0}{max=-1}{super=generic/widget_definition/resolution}
- * @begin{table}{config}
- *     text_x_offset & f_unsigned & "" & The x offset of the text in the text
- *                                     box. This is needed for the code to
- *                                     determine where in the text the mouse
- *                                     clicks, so it can set the cursor
- *                                     properly. $
- *     text_y_offset & f_unsigned & "" & The y offset of the text in the text
- *                                     box. $
- * @end{table}
- *
- * The following states exist:
- * * state_enabled, the text box is enabled.
- * * state_disabled, the text box is disabled.
- * * state_focused, the text box has the focus of the keyboard.
- * @begin{tag}{name="state_enabled"}{min=0}{max=1}{super="generic/state"}
- * @end{tag}{name="state_enabled"}
- * @begin{tag}{name="state_disabled"}{min=0}{max=1}{super="generic/state"}
- * @end{tag}{name="state_disabled"}
- * @begin{tag}{name="state_focused"}{min=0}{max=1}{super="generic/state"}
- * @end{tag}{name="state_focused"}
- * @begin{tag}{name="state_hovered"}{min=0}{max=1}{super="generic/state"}
- * @end{tag}{name="state_hovered"}
- * @end{tag}{name="resolution"}
- * @end{tag}{name="ext_box_definition"}
- * @end{parent}{name="gui/"}
- */
 text_box_definition::resolution::resolution(const config& cfg)
 	: resolution_definition(cfg)
 	, text_x_offset(cfg["text_x_offset"])
@@ -454,28 +416,6 @@ text_box_definition::resolution::resolution(const config& cfg)
 }
 
 // }---------- BUILDER -----------{
-
-/*WIKI
- * @page = GUIWidgetInstanceWML
- * @order = 2_text_box
- *
- * == Text box ==
- * @begin{parent}{name="gui/window/resolution/grid/row/column/"}
- * @begin{tag}{name="text_box"}{min="0"}{max="-1"}{super="generic/widget_instance"}
- * @begin{table}{config}
- *     label & t_string & "" &          The initial text of the text box. $
- *     history & string & "" &         The name of the history for the text
- *                                     box.
- *                                     A history saves the data entered in a
- *                                     text box between the games. With the up
- *                                     and down arrow it can be accessed. To
- *                                     create a new history item just add a
- *                                     new unique name for this field and the
- *                                     engine will handle the rest. $
- * @end{table}
- * @end{tag}{name="text_box"}
- * @end{parent}{name="gui/window/resolution/grid/row/column/"}
- */
 
 namespace implementation
 {

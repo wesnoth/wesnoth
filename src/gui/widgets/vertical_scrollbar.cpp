@@ -105,54 +105,6 @@ vertical_scrollbar_definition::vertical_scrollbar_definition(
 	load_resolutions<resolution>(cfg);
 }
 
-/*WIKI
- * @page = GUIWidgetDefinitionWML
- * @order = 1_vertical_scrollbar
- *
- * == Vertical scrollbar ==
- *
- * The definition of a vertical scrollbar. This class is most of the time not
- * used directly. Instead it's used to build other items with scrollbars.
- *
- * @begin{parent}{name="gui/"}
- * @begin{tag}{name="vertical_scrollbar_definition"}{min=0}{max=-1}{super="generic/widget_definition"}
- * The resolution for a vertical scrollbar also contains the following keys:
- * @begin{tag}{name="resolution"}{min=0}{max=-1}{super=generic/widget_definition/resolution}
- * @begin{table}{config}
- *     minimum_positioner_length & unsigned & &
- *                                     The minimum size the positioner is
- *                                     allowed to be. The engine needs to know
- *                                     this in order to calculate the best size
- *                                     for the positioner. $
- *     maximum_positioner_length & unsigned & 0 &
- *                                     The maximum size the positioner is
- *                                     allowed to be. If minimum and maximum are
- *                                     the same value the positioner is fixed
- *                                     size. If the maximum is 0 (and the
- *                                     minimum not) there's no maximum. $
- *     top_offset & unsigned & 0 &     The number of pixels at the top which
- *                                     can't be used by the positioner. $
- *     bottom_offset & unsigned & 0 &  The number of pixels at the bottom which
- *                                     can't be used by the positioner. $
- * @end{table}
- * The following states exist:
- * * state_enabled, the vertical scrollbar is enabled.
- * * state_disabled, the vertical scrollbar is disabled.
- * * state_pressed, the left mouse button is down on the positioner of the
- *   vertical scrollbar.
- * * state_focused, the mouse is over the positioner of the vertical scrollbar.
- * @begin{tag}{name="state_enabled"}{min=0}{max=1}{super="generic/state"}
- * @end{tag}{name="state_enabled"}
- * @begin{tag}{name="state_disabled"}{min=0}{max=1}{super="generic/state"}
- * @end{tag}{name="state_disabled"}
- * @begin{tag}{name="state_pressed"}{min=0}{max=1}{super="generic/state"}
- * @end{tag}{name="state_pressed"}
- * @begin{tag}{name="state_focused"}{min=0}{max=1}{super="generic/state"}
- * @end{tag}{name="state_focused"}
- * @end{tag}{name="resolution"}
- * @end{tag}{name="vertical_scrollbar_definition"}
- * @end{parent}{name="gui/"}
- */
 vertical_scrollbar_definition::resolution::resolution(const config& cfg)
 	: resolution_definition(cfg)
 	, minimum_positioner_length(cfg["minimum_positioner_length"])
@@ -172,19 +124,6 @@ vertical_scrollbar_definition::resolution::resolution(const config& cfg)
 }
 
 // }---------- BUILDER -----------{
-
-/*WIKI
- * @page = GUIWidgetInstanceWML
- * @order = 2_vertical_scrollbar
- *
- * == Vertical scrollbar ==
- *
- *
- * @begin{parent}{name="gui/window/resolution/grid/row/column/"}
- * @begin{tag}{name="vertical_scrollbar"}{min=0}{max=1}{super="generic/widget_instance"}
- * @end{tag}{name="vertical_scrollbar"}
- * @end{parent}{name="gui/window/resolution/grid/row/column/"}
- */
 
 namespace implementation
 {

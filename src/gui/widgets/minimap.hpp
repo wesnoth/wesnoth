@@ -30,10 +30,14 @@ struct builder_minimap;
 // ------------ WIDGET -----------{
 
 /**
+ * @ingroup GUIWidgetWML
+ * 
  * The basic minimap class.
- *
- * This minimap can only show a minimap, but it can't be interacted with. For
- * that the tminimap_interactive class will be created.
+ * This minimap can only show a minimap, but it can't be interacted with.
+ * 
+ * The following states exist:
+ * * state_enabled - the minimap is enabled.
+ * A minimap has no extra fields.
  */
 class minimap : public styled_widget
 {

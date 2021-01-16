@@ -26,29 +26,6 @@ namespace gui2
 namespace dialogs
 {
 
-/*WIKI
- * @page = GUIWindowDefinitionWML
- * @order = 2_edit_scenario
- *
- * == Edit scenario ==
- *
- * Dialog for editing gamemap scenarios.
- *
- * @begin{table}{dialog_widgets}
- *
- * title & & label & m &
- *         Dialog title label. $
- *
- * label & & text_box & m &
- *         Input field for the map label. $
- *
- * team_only_toggle & & toggle_button & m &
- *         Checkbox for whether to make the label visible to the player's team
- *         only or not. $
- *
- * @end{table}
- */
-
 REGISTER_DIALOG(editor_edit_scenario)
 
 editor_edit_scenario::editor_edit_scenario(

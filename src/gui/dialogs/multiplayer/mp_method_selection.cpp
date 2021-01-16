@@ -30,25 +30,6 @@ namespace gui2
 {
 namespace dialogs
 {
-/*WIKI
- * @page = GUIWindowDefinitionWML
- * @order = 2_mp_method_selection
- *
- * == MP method selection ==
- *
- * This shows the dialog to select the kind of MP game the user wants to play.
- *
- * @begin{table}{dialog_widgets}
- *
- * user_name & & text_box & m &
- *         This text contains the name the user on the MP server. This widget
- *         will get a fixed maximum length by the engine. $
- *
- * method_list & & listbox & m &
- *         The list with possible game methods. $
- *
- * @end{table}
- */
 
 REGISTER_DIALOG(mp_method_selection)
 

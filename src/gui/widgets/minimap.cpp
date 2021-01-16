@@ -233,25 +233,6 @@ minimap_definition::minimap_definition(const config& cfg)
 	load_resolutions<resolution>(cfg);
 }
 
-/*WIKI
- * @page = GUIWidgetDefinitionWML
- * @order = 1_minimap
- *
- * == Minimap ==
- *
- * @macro = minimap_description
- *
- * The following states exist:
- * * state_enabled, the minimap is enabled.
- * @begin{parent}{name="gui/"}
- * @begin{tag}{name="minimap_definition"}{min=0}{max=-1}{super="generic/widget_definition"}
- * @begin{tag}{name="resolution"}{min=0}{max=-1}{super="generic/widget_definition/resolution"}
- * @begin{tag}{name="state_enabled"}{min=0}{max=1}{super="generic/state"}
- * @end{tag}{name="state_enabled"}
- * @end{tag}{name="resolution"}
- * @end{tag}{name="minimap_definition"}
- * @end{parent}{name="gui/"}
- */
 minimap_definition::resolution::resolution(const config& cfg)
 	: resolution_definition(cfg)
 {
@@ -260,30 +241,6 @@ minimap_definition::resolution::resolution(const config& cfg)
 }
 
 // }---------- BUILDER -----------{
-
-/*WIKI_MACRO
- * @begin{macro}{minimap_description}
- *
- *        A minimap to show the gamemap, this only shows the map and has no
- *        interaction options. This version is used for map previews, there
- *        will be a another version which allows interaction.
- * @end{macro}
- */
-
-/*WIKI
- * @page = GUIWidgetInstanceWML
- * @order = 2_minimap
- *
- * == Minimap ==
- *
- * @macro = minimap_description
- *
- * A minimap has no extra fields.
- * @begin{parent}{name="gui/window/resolution/grid/row/column/"}
- * @begin{tag}{name="minimap"}{min=0}{max=-1}{super="generic/widget_instance"}
- * @end{tag}{name="minimap"}
- * @end{parent}{name="gui/window/resolution/grid/row/column/"}
- */
 
 namespace implementation
 {

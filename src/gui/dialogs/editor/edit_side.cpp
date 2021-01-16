@@ -27,29 +27,6 @@ namespace gui2
 namespace dialogs
 {
 
-/*WIKI
- * @page = GUIWindowDefinitionWML
- * @order = 2_edit_side
- *
- * == Edit side ==
- *
- * Dialog for editing gamemap sides.
- *
- * @begin{table}{dialog_widgets}
- *
- * title & & label & m &
- *         Dialog title label. $
- *
- * id & & text_box & m &
- *         Input field for the id. $
- *
- * team_only_toggle & & toggle_button & m &
- *         Checkbox for whether to make the label visible to the player's team
- *         only or not. $
- *
- * @end{table}
- */
-
 REGISTER_DIALOG(editor_edit_side)
 
 editor_edit_side::editor_edit_side(editor::editor_team_info& info)

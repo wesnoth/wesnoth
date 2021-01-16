@@ -23,22 +23,6 @@ namespace gui2
 namespace dialogs
 {
 
-/*WIKI
- * @page = GUIWindowDefinitionWML
- * @order = 2_mp_host_game_prompt
- *
- * == Host Networked Game prompt ==
- *
- * This shows the dialog to confirm deleting a savegame file.
- *
- * @begin{table}{dialog_widgets}
- *
- * do_not_show_again & & boolean_selector & m &
- *        A checkbox to not show this dialog again. $
- *
- * @end{table}
- */
-
 REGISTER_DIALOG(mp_host_game_prompt)
 
 /**

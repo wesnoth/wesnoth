@@ -71,31 +71,6 @@ namespace gui2
 namespace dialogs
 {
 
-/*WIKI
- * @page = GUIWindowDefinitionWML
- * @order = 2_gamestate_inspector
- *
- * == Gamestate inspector ==
- *
- * This shows the gamestate inspector
- *
- * @begin{table}{dialog_widgets}
- *
- * inspector_name & & styled_widget & m &
- *         Name of the inspector. $
- *
- * stuff_list & & styled_widget & m &
- *         List of various stuff that can be viewed. $
- *
- * inspect & & styled_widget & m &
- *         The state of the variable or event. $
- *
- * copy & & button & m &
- *         A button to copy the state to clipboard. $
- *
- * @end{table}
- */
-
 class gamestate_inspector::model
 {
 public:

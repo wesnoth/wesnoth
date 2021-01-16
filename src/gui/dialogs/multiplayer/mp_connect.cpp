@@ -59,25 +59,6 @@ void clear_listbox_selection(listbox& listbox)
 namespace dialogs
 {
 
-/*WIKI
- * @page = GUIWindowDefinitionWML
- * @order = 2_mp_connect
- *
- * == Multiplayer connect ==
- *
- * This shows the dialog to the MP server to connect to.
- *
- * @begin{table}{dialog_widgets}
- *
- * start_table & & text_box & m &
- *         The name of the server to connect to. $
- *
- * list & & button & o &
- *         Shows a dialog with a list of predefined servers to connect to. $
- *
- * @end{table}
- */
-
 REGISTER_DIALOG(mp_connect)
 
 mp_connect::mp_connect()

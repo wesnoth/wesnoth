@@ -35,29 +35,6 @@ namespace gui2
 namespace dialogs
 {
 
-/*WIKI
- * @page = GUIWindowDefinitionWML
- * @order = 2_editor_generate_map
- *
- * == Editor generate map ==
- *
- * This shows the dialog in the editor to select which random generator
- * should be used to generate a map.
- *
- * @begin{table}{dialog_widgets}
- *
- * generators_list & & listbox & m &
- *         Listbox displaying known map generators. $
- *
- * settings & & button & m &
- *         When clicked this button opens the generator settings dialog. $
- *
- * seed_textbox & & text_box & m &
- *         Allows entering a seed for the map generator. $
- *
- * @end{table}
- */
-
 REGISTER_DIALOG(editor_generate_map)
 
 editor_generate_map::editor_generate_map(std::vector<std::unique_ptr<map_generator>>& mg)

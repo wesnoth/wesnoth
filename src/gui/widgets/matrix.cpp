@@ -175,36 +175,15 @@ bool matrix::disable_click_dismiss() const
 	return false;
 }
 
+/**
+ * @todo Implement properly.
+ */
 iteration::walker_base* matrix::create_walker()
 {
-	/**
-	 * @todo Implement properly.
-	 */
 	return nullptr;
 }
 
 // }---------- DEFINITION ---------{
-
-/*WIKI
- * @page = GUIWidgetDefinitionWML
- * @order = 1_matrix
- * @begin{parent}{name="gui/"}
- * @begin{tag}{name="matrix_definition"}{min=0}{max=-1}{super="generic/widget_definition"}
- * == Listbox ==
- *
- * @begin{tag}{name="resolution"}{min=0}{max=-1}{super=generic/widget_definition/resolution}
- *
- *
- * @begin{tag}{name="state_enabled"}{min=1}{max=1}{super="generic/state"}
- * @end{tag}{name="state_enabled"}
- * @begin{tag}{name="state_disabled"}{min=1}{max=1}{super="generic/state"}
- * @end{tag}{name="state_disabled"}
- * @begin{tag}{name="content"}{min=1}{max=1}{super="gui/window/resolution/grid"}
- * @end{tag}{name="content"}
- * @end{tag}{name="resolution"}
- * @end{tag}{name="matrix_definition"}
- * @end{parent}{name="gui/"}
- */
 
 matrix_definition::matrix_definition(const config& cfg)
 	: styled_widget_definition(cfg)
@@ -224,43 +203,6 @@ matrix_definition::resolution::resolution(const config& cfg)
 }
 
 // }---------- BUILDER -----------{
-
-/*WIKI
- * @page = GUIWidgetInstanceWML
- * @order = 2_matrix
- *
- * == Listbox ==
- * @begin{parent}{name="gui/window/resolution/grid/row/column/"}
- * @begin{tag}{name="matrix"}{min=0}{max=-1}{super="generic/widget_instance"}
- *
- *
- * List with the matrix specific variables:
- * @begin{table}{config}
- *     vertical_scrollbar_mode & scrollbar_mode & initial_auto &
- *                                     Determines whether or not to show the
- *                                     scrollbar. $
- *     horizontal_scrollbar_mode & scrollbar_mode & initial_auto &
- *                                     Determines whether or not to show the
- *                                     scrollbar. $
- * @end{table}
- *
- *
- * @begin{tag}{name="top"}{min=0}{max=1}{super="gui/window/resolution/grid"}
- * @end{tag}{name="top"}
- * @begin{tag}{name="bottom"}{min=0}{max=1}{super="gui/window/resolution/grid"}
- * @end{tag}{name="bottom"}
- *
- * @begin{tag}{name="left"}{min=0}{max=1}{super="gui/window/resolution/grid"}
- * @end{tag}{name="left"}
- * @begin{tag}{name="right"}{min=0}{max=1}{super="gui/window/resolution/grid"}
- * @end{tag}{name="right"}
- *
- * @begin{tag}{name="main"}{min="1"}{max="1"}{super="gui/window/resolution/grid/row/column"}
- * @end{tag}{name="main"}
- * @end{tag}{name="matrix"}
- *
- * @end{parent}{name="gui/window/resolution/grid/row/column/"}
- */
 
 namespace implementation
 {

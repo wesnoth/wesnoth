@@ -39,35 +39,6 @@ namespace gui2
 namespace dialogs
 {
 
-/*WIKI
- * @page = GUIWindowDefinitionWML
- * @order = 2_screenshot_notification
- *
- * == Screenshot notification ==
- *
- * Notification dialog used after saving a game or map screenshot to display
- * information about it for the user.
- *
- * @begin{table}{dialog_widgets}
- *
- * path & & text_box & m &
- *         Read-only textbox containing the screenshot path. $
- *
- * filesize & & label & o &
- *         Optional label to display the file size. $
- *
- * copy & & button & m &
- *         Button to copy the path to clipboard. $
- *
- * open & & button & m &
- *         Button to open the screnshot using the default application. $
- *
- * browse_dir & & button & m &
- *         Button to browse the screenshots directory in the file manager. $
- *
- * @end{table}
- */
-
 REGISTER_DIALOG(screenshot_notification)
 
 screenshot_notification::screenshot_notification(const std::string& path, surface screenshot)

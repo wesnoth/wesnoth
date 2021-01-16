@@ -244,34 +244,6 @@ multimenu_button_definition::multimenu_button_definition(const config& cfg)
 	load_resolutions<resolution>(cfg);
 }
 
-/*WIKI
- * @page = GUIWidgetDefinitionWML
- * @order = 1_multimenu_button
- *
- * == multimenu_button ==
- *
- * @macro = multimenu_button_description
- *
- * The following states exist:
- * * state_enabled, the multimenu_button is enabled.
- * * state_disabled, the multimenu_button is disabled.
- * * state_pressed, the left mouse multimenu_button is down.
- * * state_focused, the mouse is over the multimenu_button.
- * @begin{parent}{name="gui/"}
- * @begin{tag}{name="multimenu_button_definition"}{min=0}{max=-1}{super="generic/widget_definition"}
- * @begin{tag}{name="resolution"}{min=0}{max=-1}{super="generic/widget_definition/resolution"}
- * @begin{tag}{name="state_enabled"}{min=0}{max=1}{super="generic/state"}
- * @end{tag}{name="state_enabled"}
- * @begin{tag}{name="state_disabled"}{min=0}{max=1}{super="generic/state"}
- * @end{tag}{name="state_disabled"}
- * @begin{tag}{name="state_pressed"}{min=0}{max=1}{super="generic/state"}
- * @end{tag}{name="state_pressed"}
- * @begin{tag}{name="state_focused"}{min=0}{max=1}{super="generic/state"}
- * @end{tag}{name="state_focused"}
- * @end{tag}{name="resolution"}
- * @end{tag}{name="multimenu_button_definition"}
- * @end{parent}{name="gui/"}
- */
 multimenu_button_definition::resolution::resolution(const config& cfg)
 	: resolution_definition(cfg)
 {
@@ -283,44 +255,6 @@ multimenu_button_definition::resolution::resolution(const config& cfg)
 }
 
 // }---------- BUILDER -----------{
-
-/*WIKI_MACRO
- * @begin{macro}{multimenu_button_description}
- *
- *        A multimenu_button is a styled_widget to choose an element from a list of elements.
- * @end{macro}
- */
-
-/*WIKI
- * @page = GUIWidgetInstanceWML
- * @order = 2_multimenu_button
- * @begin{parent}{name="gui/window/resolution/grid/row/column/"}
- * @begin{tag}{name="multimenu_button"}{min=0}{max=-1}{super="generic/widget_instance"}
- * == multimenu_button ==
- *
- * @macro = multimenu_button_description
- *
- * Instance of a multimenu_button. When a multimenu_button has a return value it sets the
- * return value for the window. Normally this closes the window and returns
- * this value to the caller. The return value can either be defined by the
- * user or determined from the id of the multimenu_button. The return value has a
- * higher precedence as the one defined by the id. (Of course it's weird to
- * give a multimenu_button an id and then override its return value.)
- *
- * When the multimenu_button doesn't have a standard id, but you still want to use the
- * return value of that id, use return_value_id instead. This has a higher
- * precedence as return_value.
- *
- * List with the multimenu_button specific variables:
- * @begin{table}{config}
- *     return_value_id & string & "" &   The return value id. $
- *     return_value & int & 0 &          The return value. $
- *     maximum_shown & int & -1 &        The maximum number of currently selected values to list on the button. $
- *
- * @end{table}
- * @end{tag}{name="multimenu_button"}
- * @end{parent}{name="gui/window/resolution/grid/row/column/"}
- */
 
 namespace implementation
 {

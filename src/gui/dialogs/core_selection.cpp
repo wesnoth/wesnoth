@@ -31,39 +31,6 @@ namespace gui2
 namespace dialogs
 {
 
-/*WIKI
- * @page = GUIWindowDefinitionWML
- * @order = 2_core_selection
- *
- * == Core selection ==
- *
- * This shows the dialog which allows the user to choose which core to
- * play.
- *
- * @begin{table}{dialog_widgets}
- *
- * core_list & & listbox & m &
- *         A listbox that contains all available cores. $
- *
- * -icon & & image & o &
- *         The icon for the core. $
- *
- * -name & & styled_widget & o &
- *         The name of the core. $
- *
- * core_details & & multi_page & m &
- *         A multi page widget that shows more details for the selected
- *         core. $
- *
- * -image & & image & o &
- *         The image for the core. $
- *
- * -description & & styled_widget & o &
- *         The description of the core. $
- *
- * @end{table}
- */
-
 REGISTER_DIALOG(core_selection)
 
 void core_selection::core_selected() const

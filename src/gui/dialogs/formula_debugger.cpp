@@ -31,40 +31,6 @@ namespace gui2
 namespace dialogs
 {
 
-/*WIKI
- * @page = GUIWindowDefinitionWML
- * @order = 2_formula_debugger
- *
- * == Formula debugger ==
- *
- * This shows the debugger for the formulas.
- *
- * @begin{table}{dialog_widgets}
- *
- * stack & & styled_widget & m &
- *         A stack. $
- *
- * execution & & styled_widget & m &
- *         Execution trace label. $
- *
- * state & & styled_widget & m &
- *         The state. $
- *
- * step & & button & m &
- *         Button to step into the execution. $
- *
- * stepout & & button & m &
- *         Button to step out of the execution. $
- *
- * next & & button & m &
- *         Button to execute the next statement. $
- *
- * continue & & button & m &
- *         Button to continue the execution. $
- *
- * @end{table}
- */
-
 REGISTER_DIALOG(formula_debugger)
 
 void formula_debugger::pre_show(window& window)

@@ -28,27 +28,6 @@ namespace gui2
 namespace dialogs
 {
 
-/*WIKI
- * @page = GUIWindowDefinitionWML
- * @order = 2_language_selection
- *
- * == Language selection ==
- *
- * This shows the dialog to select the language to use. When the dialog is
- * closed with the OK button it also updates the selected language in the
- * preferences.
- *
- * @begin{table}{dialog_widgets}
- *
- * language_list & & listbox & m &
- *         This listbox contains the list with available languages. $
- *
- * - & & styled_widget & o &
- *         Show the name of the language in the current row. $
- *
- * @end{table}
- */
-
 /**
  * @todo show we also reset the translations and is the tips of day call
  * really needed?

@@ -21,6 +21,14 @@ namespace gui2
 namespace dialogs
 {
 
+/**
+ * @ingroup GUIWindowDefinitionWML
+ * 
+ * Dialog for providing the name of a new folder to create. Used by the file dialog.
+ * Key               |Type          |Mandatory|Description  
+ * ------------------|--------------|---------|-----------
+ * name              | text_box     |yes      |Input field for the new folder name.
+ */
 class folder_create : public modal_dialog
 {
 public:

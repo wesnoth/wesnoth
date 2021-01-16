@@ -35,7 +35,20 @@ class stacked_widget;
 namespace dialogs
 {
 
-/** Shows the list of addons on the server. */
+/**
+ * @ingroup GUIWindowDefinitionWML
+ * 
+ * Shows the list of addons on the server available for installation.
+ * This dialog is under construction and only used with --new-widgets.
+ * Key               |Type          |Mandatory|Description  
+ * ------------------|--------------|---------|-----------
+ * addons            | @ref listbox |yes      |A listbox that will contain the info about all addons on the server.
+ * name              | control      |no       |The name of the addon.
+ * version           | control      |no       |The version number of the addon.
+ * author            | control      |no       |The author of the addon.
+ * downloads         | control      |no       |The number of times the addon has been downloaded.
+ * size              | control      |no       |The size of the addon.
+ */
 class addon_manager : public modal_dialog
 {
 public:

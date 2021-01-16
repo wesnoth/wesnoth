@@ -171,48 +171,6 @@ scroll_label_definition::scroll_label_definition(const config& cfg)
 	load_resolutions<resolution>(cfg);
 }
 
-/*WIKI
- * @page = GUIWidgetDefinitionWML
- * @order = 1_scroll_label
- *
- * == Scroll label ==
- *
- * @macro = scroll_label_description
- *
- * @begin{parent}{name="gui/"}
- * This widget is slower as a normal label widget so only use this widget
- * when the scrollbar is required (or expected to become required).
- * @begin{tag}{name="scroll_label_definition"}{min=0}{max=-1}{super="generic/widget_definition"}
- * @begin{tag}{name="resolution"}{min=0}{max=-1}{super="generic/widget_definition/resolution"}
- * @begin{table}{config}
- *     grid & grid & &                 A grid containing the widgets for main
- *                                     widget. $
- * @end{table}
- * @allow{link}{name="gui/window/resolution/grid"}
- * TODO we need one definition for a vertical scrollbar since this is the second
- * time we use it.
- *
- * @begin{table}{dialog_widgets}
- *     _content_grid & & grid & m &    A grid which should only contain one
- *                                     label widget. $
- *     _scrollbar_grid & & grid & m &  A grid for the scrollbar
- *                                     (Merge with listbox info.) $
- * @end{table}
- * @begin{tag}{name="content_grid"}{min=0}{max=1}{super="gui/window/resolution/grid"}
- * @end{tag}{name="content_grid"}
- * @begin{tag}{name="scrollbar_grid"}{min=0}{max=1}{super="gui/window/resolution/grid"}
- * @end{tag}{name="scrollbar_grid"}
- * The following states exist:
- * * state_enabled, the scroll label is enabled.
- * * state_disabled, the scroll label is disabled.
- * @begin{tag}{name="state_enabled"}{min=0}{max=1}{super="generic/state"}
- * @end{tag}{name="state_enabled"}
- * @begin{tag}{name="state_disabled"}{min=0}{max=1}{super="generic/state"}
- * @end{tag}{name="state_disabled"}
- * @end{tag}{name="resolution"}
- * @end{tag}{name="scroll_label_definition"}
- * @end{parent}{name="gui/"}
- */
 scroll_label_definition::resolution::resolution(const config& cfg)
 	: resolution_definition(cfg), grid(nullptr)
 {
@@ -227,39 +185,6 @@ scroll_label_definition::resolution::resolution(const config& cfg)
 }
 
 // }---------- BUILDER -----------{
-
-/*WIKI_MACRO
- * @begin{macro}{scroll_label_description}
- *
- *        A scroll label is a label that wraps its text and also has a
- *        vertical scrollbar. This way a text can't be too long to be shown
- *        for this widget.
- * @end{macro}
- */
-
-/*WIKI
- * @page = GUIWidgetInstanceWML
- * @order = 2_scroll_label
- * @begin{parent}{name="gui/window/resolution/grid/row/column/"}
- * @begin{tag}{name="scroll_label"}{min="0"}{max="-1"}{super="generic/widget_instance"}
- * == Scroll label ==
- *
- * @macro = scroll_label_description
- *
- * List with the scroll label specific variables:
- * @begin{table}{config}
- *     vertical_scrollbar_mode & scrollbar_mode & initial_auto &
- *                                     Determines whether or not to show the
- *                                     scrollbar. $
- *     horizontal_scrollbar_mode & scrollbar_mode & initial_auto &
- *                                     Determines whether or not to show the
- *                                     scrollbar. $
- *     wrap & boolean & true &         Determines whether the text of the
- *                                     label is allowed to wrap. $
- * @end{table}
- * @end{tag}{name="scroll_label"}
- * @end{parent}{name="gui/window/resolution/grid/row/column/"}
- */
 
 namespace implementation
 {
