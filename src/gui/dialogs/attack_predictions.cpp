@@ -385,7 +385,7 @@ hp_probability_vector attack_predictions::get_hitpoint_probabilities(const std::
 	}
 
 	// Then sort by descending probability.
-	std::sort(temp_vec.begin(), temp_vec.end(), [](const hp_probability_t& pair1, const hp_probability_t& pair2) {
+	std::sort(temp_vec.begin(), temp_vec.end(), [](const auto& pair1, const auto& pair2) {
 		return pair1.second > pair2.second;
 	});
 
@@ -393,7 +393,7 @@ hp_probability_vector attack_predictions::get_hitpoint_probabilities(const std::
 	std::copy_n(temp_vec.begin(), std::min<int>(graph_max_rows, temp_vec.size()), std::back_inserter(res));
 
 	// Then, we sort the hitpoint values in descending order.
-	std::sort(res.begin(), res.end(), [](const hp_probability_t& pair1, const hp_probability_t& pair2) {
+	std::sort(res.begin(), res.end(), [](const auto& pair1, const auto& pair2) {
 		return pair1.first > pair2.first;
 	});
 

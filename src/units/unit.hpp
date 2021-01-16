@@ -207,13 +207,8 @@ public:
 
 	unit_ptr clone() const
 	{
-		return unit_ptr(std::shared_ptr<unit>(new unit(*this)));
+		return std::shared_ptr<unit>(new unit(*this));
 	}
-
-	//unit_ptr shared_from_this()
-	//{
-	//	return unit_ptr(this);
-	//}
 
 	virtual ~unit();
 
