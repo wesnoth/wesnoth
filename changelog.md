@@ -4,6 +4,8 @@
  ### Campaigns
  ### Editor
  ### Multiplayer
+ ### Lua API
+   * Upgrade to Lua 5.3.6.
  ### Packaging
  ### Terrain
  ### Translations
