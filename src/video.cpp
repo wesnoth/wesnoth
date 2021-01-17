@@ -299,8 +299,7 @@ SDL_Rect CVideo::screen_area(bool as_pixels) const
 
 	// Then convert the dimensions into screen coordinates, if applicable.
 	if(!as_pixels) {
-		float scale_x, scale_y;
-		std::tie(scale_x, scale_y) = get_dpi_scale_factor();
+		auto [scale_x, scale_y] = get_dpi_scale_factor();
 
 		size.x /= scale_x;
 		size.y /= scale_y;
@@ -464,8 +463,7 @@ std::vector<point> CVideo::get_available_resolutions(const bool include_current)
 
 #if 0
 	// DPI scale factor.
-	float scale_h, scale_v;
-	std::tie(scale_h, scale_v) = get_dpi_scale_factor();
+	auto [scale_h, scale_v] = get_dpi_scale_factor();
 #endif
 
 	// The maximum size to which this window can be set. For some reason this won't

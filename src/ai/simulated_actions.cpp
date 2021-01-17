@@ -98,11 +98,8 @@ bool simulated_move(int side, const map_location& from, const map_location& to, 
 {
 	LOG_AI_SIM_ACTIONS << "Simulated move" << std::endl;
 
-	unit_map::unit_iterator move_unit;
-	bool success = false;
-
 	// In simulation, AI should not know if there is a enemy's ambusher.
-	std::tie(move_unit, success) = resources::gameboard->units().move(from, to);
+	auto [move_unit, success] = resources::gameboard->units().move(from, to);
 
 	if(!success) {
 		// This happened because in some CAs like get_village_phase and move_leader_to_keep phase,
@@ -221,10 +218,7 @@ void helper_place_unit(const unit& u, const map_location& loc){
 	new_unit->heal_fully();
 	new_unit->set_location(loc);
 
-	unit_map::unit_iterator new_unit_itor;
-	bool success = false;
-
-	std::tie(new_unit_itor, success) = resources::gameboard->units().insert(new_unit);
+	auto [new_unit_itor, success] = resources::gameboard->units().insert(new_unit);
 	assert(success);
 
 	if(resources::gameboard->map().is_village(loc)){

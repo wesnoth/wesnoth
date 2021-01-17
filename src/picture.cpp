@@ -1018,10 +1018,7 @@ bool exists(const image::locator& i_locator)
 
 	// The insertion will fail if there is already an element in the cache
 	// and this will point to the existing element.
-	auto iter = image_existence_map.begin();
-	bool success;
-
-	std::tie(iter, success) = image_existence_map.emplace(i_locator.get_filename(), false);
+	auto [iter, success] = image_existence_map.emplace(i_locator.get_filename(), false);
 
 	bool& cache = iter->second;
 	if(success) {

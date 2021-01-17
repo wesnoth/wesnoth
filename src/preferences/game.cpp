@@ -235,11 +235,7 @@ std::pair<preferences::acquaintance*, bool> add_acquaintance(
 	}
 
 	preferences::acquaintance new_entry(nick, mode, notes);
-
-	acquaintances_map::iterator iter;
-	bool success;
-
-	std::tie(iter, success) = acquaintances.emplace(nick, new_entry);
+	auto [iter, success] = acquaintances.emplace(nick, new_entry);
 
 	if(!success) {
 		iter->second = new_entry;

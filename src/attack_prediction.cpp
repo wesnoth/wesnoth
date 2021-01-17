@@ -875,8 +875,7 @@ void prob_matrix::clear()
 			continue;
 		}
 
-		decltype(used_rows_[p].begin()) first_row, last_row;
-		std::tie(first_row, last_row) = std::minmax_element(used_rows_[p].begin(), used_rows_[p].end());
+		auto [first_row, last_row] = std::minmax_element(used_rows_[p].begin(), used_rows_[p].end());
 		for(unsigned int r = *first_row; r <= *last_row; ++r) {
 			for(unsigned int c = 0u; c < cols_; ++c) {
 				plane_[p][r * cols_ + c] = 0.0;

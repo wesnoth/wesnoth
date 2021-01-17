@@ -298,8 +298,7 @@ void attack_predictions::draw_hp_graph(drawing& hp_graph, const combatant_data& 
 	for(const auto& probability : get_hitpoint_probabilities(attacker.combatant_.hp_dist)) {
 
 		// Get the HP and probability.
-		int hp; double prob;
-		std::tie(hp, prob) = probability;
+		auto [hp, prob] = probability;
 
 		color_t row_color;
 
