@@ -364,7 +364,7 @@ static int process_command_args(const commandline_options& cmdline_opts)
 	// Options that don't change behavior based on any others should be checked alphabetically below.
 
 	if(cmdline_opts.log) {
-		for(const auto& log_pair : cmdline_opts.log.value()) {
+		for(const auto& log_pair : *cmdline_opts.log) {
 			const std::string log_domain = log_pair.second;
 			const int severity = log_pair.first;
 			if(!lg::set_log_domain_severity(log_domain, severity)) {
@@ -1124,44 +1124,44 @@ int main(int argc, char** argv)
 /**
  * @page GUIToolkitWML GUIToolkitWML
  * @tableofcontents
- * 
+ *
  * @section State State
- * 
+ *
  * A state contains the info what to do in a state. At the moment this is rather focussed on the drawing part, might change later. Keys:
- * Key              |Type                                |Default  |Description  
+ * Key              |Type                                |Default  |Description
  * -----------------|------------------------------------|---------|-------------
  * draw             | @ref guivartype_section "section"  |mandatory|Section with drawing directions for a canvas.
- * 
+ *
  * @section WindowDefinition Window Definition
- * 
+ *
  * A window defines how a window looks in the game.
- * Key              |Type                                |Default  |Description  
+ * Key              |Type                                |Default  |Description
  * -----------------|------------------------------------|---------|-------------
  * id               | @ref guivartype_string "string"    |mandatory|Unique id for this window.
  * description      | @ref guivartype_t_string "t_string"|mandatory|Unique translatable name for this window.
  * resolution       | @ref guivartype_section "section"  |mandatory|The definitions of the window in various resolutions.
- * 
+ *
  * @section Cell Cell
- * 
+ *
  * Every grid cell has some cell configuration values and one widget in the grid cell.
  * Here we describe the what is available more information about the usage can be found at @ref GUILayout.
- * 
- * Key                 |Type                                    |Default  |Description  
+ *
+ * Key                 |Type                                    |Default  |Description
  * --------------------|----------------------------------------|---------|-------------
  * id                  | @ref guivartype_string "string"        |""       |A grid is a widget and can have an id. This isn't used that often, but is allowed.
  * linked_group        | @ref guivartype_string "string"        |0        |.
- * 
+ *
  * @section RowValues Row Values
- * 
+ *
  * For every row the following variables are available:
- * Key                 |Type                                    |Default  |Description  
+ * Key                 |Type                                    |Default  |Description
  * --------------------|----------------------------------------|---------|-------------
  * grow_factor         | @ref guivartype_unsigned "unsigned"    |0        |The grow factor for a row.
- * 
+ *
  * @section CellValues Cell Values
- * 
+ *
  * For every column the following variables are available:
- * Key                 |Type                                    |Default  |Description  
+ * Key                 |Type                                    |Default  |Description
  * --------------------|----------------------------------------|---------|-------------
  * grow_factor         | @ref guivartype_unsigned "unsigned"    |0        |The grow factor for a column, this value is only read for the first row.
  * border_size         | @ref guivartype_unsigned "unsigned"    |0        |The border size for this grid cell.
@@ -1175,7 +1175,7 @@ int main(int argc, char** argv)
 /**
  * @page GUILayout GUILayout
  * @tableofcontents
- * 
+ *
  * @section Abstract Abstract
  *
  * In the widget library the placement and sizes of elements is determined by
@@ -1375,7 +1375,7 @@ int main(int argc, char** argv)
 /**
  * @defgroup GUIWidgetWML GUIWidgetWML
  * In various parts of the GUI there are several variables types in use. This section describes them.
- * 
+ *
  * Below are the simple types which have one value or a short list of options:
  * Variable                                        |description
  * ------------------------------------------------|-----------
@@ -1398,16 +1398,16 @@ int main(int argc, char** argv)
  * @anchor guivartype_scrollbar_mode scrollbar_mode|How to show the scrollbar of a widget. Possible values:<ul><li>always - The scrollbar is always shown, regardless whether it's required or not.</li><li>never - The scrollbar is never shown, even not when needed. (Note when setting this mode dialogs might not properly fit anymore).</li><li>auto - Shows the scrollbar when needed. The widget will reserve space for the scrollbar, but only show when needed.</li><li>initial_auto - Like auto, but when the scrollbar is not needed the space is not reserved.</li></ul>Use auto when the list can be changed dynamically eg the game list in the lobby. For optimization you can also use auto when you really expect a scrollbar, but don't want it to be shown when not needed eg the language list will need a scrollbar on most screens.
  * @anchor guivartype_resize_mode resize_mode      |Determines how an image is resized. Possible values:<ul><li>scale - The image is scaled.</li><li>stretch - The first row or column of pixels is copied over the entire image. (Can only be used to scale resize in one direction, else falls back to scale.)</li><li>tile - The image is placed several times until the entire surface is filled. The last images are truncated.</li></ul>
  * @anchor guivartype_grow_direction grow_direction|Determines how an image is resized. Possible values:<ul><li>scale - The image is scaled.</li><li>stretch - The first row or column of pixels is copied over the entire image. (Can only be used to scale resize in one direction, else falls back to scale.)</li><li>tile - The image is placed several times until the entire surface is filled. The last images are truncated.</li></ul>
- * 
+ *
  * For more complex parts, there are sections. Sections contain of several lines of WML and can have sub sections. For example a grid has sub sections which contain various widgets. Here's the list of sections:
  * Variable                                        |description
  * ------------------------------------------------|-----------
  * @anchor guivartype_section section              |A generic section. The documentation about the section should describe the section in further detail.
  * @anchor guivartype_grid grid                    |A grid contains several widgets.
  * @anchor guivartype_config config                |.
- * 
+ *
  * Every widget has some parts in common. First of all, every definition has the following fields:
- * Key          |Type                                |Default  |Description  
+ * Key          |Type                                |Default  |Description
  * -------------|------------------------------------|---------|-----------
  * id           | @ref guivartype_string "string"    |mandatory|Unique id for this gui (theme).
  * description  | @ref guivartype_t_string "t_string"|mandatory|Unique translatable name for this gui.
@@ -1417,29 +1417,29 @@ int main(int argc, char** argv)
 
 /**
  * @defgroup GUICanvasWML GUICanvasWML
- * 
+ *
  * A canvas is a blank drawing area on which the user can draw several shapes.
  * The drawing is done by adding WML structures to the canvas.
- * 
+ *
  * @section PreCommit Pre-commit
- * 
+ *
  * This section contains the pre commit functions.
  * These functions will be executed before the drawn canvas is applied on top of the normal background.
  * There should only be one pre commit section and its order regarding the other shapes doesn't matter.
- * The function has effect on the entire canvas, it's not possible to affect only a small part of the canvas. 
- * 
+ * The function has effect on the entire canvas, it's not possible to affect only a small part of the canvas.
+ *
  * @subsection Blur Blur
- * 
- * Blurs the background before applying the canvas. This doesn't make sense if the widget isn't semi-transparent. 
- * 
+ *
+ * Blurs the background before applying the canvas. This doesn't make sense if the widget isn't semi-transparent.
+ *
  * Keys:
- * Key          |Type                                |Default  |Description  
+ * Key          |Type                                |Default  |Description
  * -------------|------------------------------------|---------|-----------
  * depth        | @ref guivartype_unsigned "unsigned"|0        |The depth to blur.
  */
 
 /**
  * @defgroup GUIWindowDefinitionWML GUIWindowDefinitionWML
- * 
+ *
  * The window definition define how the windows shown in the dialog look.
  */

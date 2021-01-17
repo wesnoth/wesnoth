@@ -81,7 +81,7 @@ std::string default_map_generator::generate_map(std::map<map_location,std::strin
 {
 	uint32_t seed;
 	if(randomseed) {
-		seed = randomseed.value();
+		seed = *randomseed;
 	} else {
 		seed = seed_rng::next_seed();
 	}

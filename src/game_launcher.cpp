@@ -660,7 +660,7 @@ bool game_launcher::load_game()
 
 	savegame::loadgame load(savegame::save_index_class::default_saves_dir(), state_);
 	if(load_data_) {
-		load.data() = std::move(load_data_.value());
+		load.data() = std::move(*load_data_);
 		clear_loaded_game();
 	}
 

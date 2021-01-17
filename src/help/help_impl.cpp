@@ -1507,10 +1507,10 @@ void push_tab_pair(std::vector<help::item> &v, const std::string &s, const std::
 	help::item item(s, font::line_width(s, normal_font_size));
 	if (image) {
 		// If the image doesn't exist, don't add padding.
-		auto width = image_width(image.value());
+		auto width = image_width(*image);
 		padding = (width ? padding : 0);
 
-		item.first = "<img>src='" + image.value() + "'</img>" + (padding ? jump(padding) : "") + s;
+		item.first = "<img>src='" + *image + "'</img>" + (padding ? jump(padding) : "") + s;
 		item.second += width + padding;
 	}
 	v.emplace_back(item);

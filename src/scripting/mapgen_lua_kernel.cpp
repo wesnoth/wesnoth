@@ -301,7 +301,7 @@ config mapgen_lua_kernel::create_scenario(const char * prog, const config & gene
 uint32_t mapgen_lua_kernel::get_random_seed()
 {
 	if(random_seed_) {
-		return random_seed_.value()++;
+		return (*random_seed_)++;
 	}
 	else {
 		return lua_kernel_base::get_random_seed();

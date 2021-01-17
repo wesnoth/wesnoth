@@ -1437,15 +1437,15 @@ void unit::write(config& cfg, bool write_all) const
 	}
 
 	if(halo_) {
-		cfg["halo"] = halo_.value();
+		cfg["halo"] = *halo_;
 	}
 
 	if(ellipse_) {
-		cfg["ellipse"] = ellipse_.value();
+		cfg["ellipse"] = *ellipse_;
 	}
 
 	if(usage_) {
-		cfg["usage"] = usage_.value();
+		cfg["usage"] = *usage_;
 	}
 
 	write_upkeep(cfg["upkeep"]);

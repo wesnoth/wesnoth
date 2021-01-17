@@ -147,7 +147,7 @@ struct lexical_caster
 		std::stringstream sstr;
 
 		if(!(sstr << value && sstr >> result)) {
-			if(fallback) { return fallback.value(); }
+			if(fallback) { return *fallback; }
 
 			throw bad_lexical_cast();
 		} else {
@@ -200,7 +200,7 @@ struct lexical_caster<
 		DEBUG_THROW("specialized - To long long - From (const) char*");
 
 		if(fallback) {
-			return lexical_cast_default<long long>(std::string(value), fallback.value());
+			return lexical_cast_default<long long>(std::string(value), *fallback);
 		} else {
 			return lexical_cast<long long>(std::string(value));
 		}
@@ -231,7 +231,7 @@ struct lexical_caster<
 		}
 
 		if(fallback) {
-			return fallback.value();
+			return *fallback;
 		} else {
 			throw bad_lexical_cast();
 		}
@@ -256,7 +256,7 @@ struct lexical_caster<
 		DEBUG_THROW("specialized - To signed - From (const) char*");
 
 		if(fallback) {
-			return lexical_cast_default<To>(std::string(value), fallback.value());
+			return lexical_cast_default<To>(std::string(value), *fallback);
 		} else {
 			return lexical_cast<To>(std::string(value));
 		}
@@ -289,7 +289,7 @@ struct lexical_caster<
 		}
 
 		if(fallback) {
-			return fallback.value();
+			return *fallback;
 		} else {
 			throw bad_lexical_cast();
 		}
@@ -314,7 +314,7 @@ struct lexical_caster<
 		DEBUG_THROW("specialized - To floating point - From (const) char*");
 
 		if(fallback) {
-			return lexical_cast_default<To>(std::string(value), fallback.value());
+			return lexical_cast_default<To>(std::string(value), *fallback);
 		} else {
 			return lexical_cast<To>(std::string(value));
 		}
@@ -340,7 +340,7 @@ struct lexical_caster<
 		// Explicitly reject hexadecimal values. Unit tests of the config class require that.
 		if(value.find_first_of("Xx") != std::string::npos) {
 			if(fallback) {
-				return fallback.value();
+				return *fallback;
 			} else {
 				throw bad_lexical_cast();
 			}
@@ -356,7 +356,7 @@ struct lexical_caster<
 		}
 
 		if(fallback) {
-			return fallback.value();
+			return *fallback;
 		} else {
 			throw bad_lexical_cast();
 		}
@@ -384,7 +384,7 @@ struct lexical_caster<
 				"specialized - To unsigned long long - From (const) char*");
 
 		if(fallback) {
-			return lexical_cast_default<unsigned long long>(std::string(value), fallback.value());
+			return lexical_cast_default<unsigned long long>(std::string(value), *fallback);
 		} else {
 			return lexical_cast<unsigned long long>(std::string(value));
 		}
@@ -415,7 +415,7 @@ struct lexical_caster<
 		}
 
 		if(fallback) {
-			return fallback.value();
+			return *fallback;
 		} else {
 			throw bad_lexical_cast();
 		}
@@ -440,7 +440,7 @@ struct lexical_caster<
 		DEBUG_THROW("specialized - To unsigned - From (const) char*");
 
 		if(fallback) {
-			return lexical_cast_default<To>(std::string(value), fallback.value());
+			return lexical_cast_default<To>(std::string(value), *fallback);
 		} else {
 			return lexical_cast<To>(std::string(value));
 		}
@@ -474,7 +474,7 @@ struct lexical_caster<
 		}
 
 		if(fallback) {
-			return fallback.value();
+			return *fallback;
 		} else {
 			throw bad_lexical_cast();
 		}
