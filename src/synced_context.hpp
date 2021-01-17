@@ -52,7 +52,7 @@ public:
 	 * @param commandname   The command to run.
 	 * @param data          The data to use with the command.
 	 * @param use_undo      This parameter is used to ignore undos during an ai move to optimize.
-	 * @param show          
+	 * @param show
 	 * @param error_handler An error handler for the case that data contains invalid data.
 	 *
 	 * @return              True if the action was successful.
@@ -202,7 +202,7 @@ public:
 
 private:
 	/** Weather we are in a synced move, in a user_choice, or none of them. */
-	static synced_state state_;
+	static inline synced_state state_ = synced_context::UNSYNCED;
 
 	/**
 	 * As soon as get_user_choice is used with side != current_side (for example in generate_random_seed) other sides
@@ -213,13 +213,13 @@ private:
 	 *
 	 * TODO: it would be better if the following variable were not static.
 	 */
-	static bool is_simultaneous_;
+	static inline bool is_simultaneous_ = false;
 
 	/** Used to restore the unit id manager when undoing. */
-	static int last_unit_id_;
+	static inline int last_unit_id_ = 0;
 
 	/** Actions wml to be executed when the current action is undone. */
-	static event_list undo_commands_;
+	static inline event_list undo_commands_ {};
 };
 
 class set_scontext_synced_base
