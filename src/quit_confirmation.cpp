@@ -24,9 +24,6 @@
 
 #include <boost/range/adaptor/reversed.hpp>
 
-std::vector<quit_confirmation*> quit_confirmation::blockers_ = std::vector<quit_confirmation*>();
-bool quit_confirmation::open_ = false;
-
 bool quit_confirmation::quit()
 {
 	if(!open_) {
