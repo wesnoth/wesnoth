@@ -514,10 +514,7 @@ namespace { // Private helpers for move_unit()
 		move_it_->anim_comp().invalidate(disp);
 
 		// Attempt actually moving. Fails if *step_to is occupied.
-		unit_map::unit_iterator unit_it;
-		bool success = false;
-
-		std::tie(unit_it, success) = resources::gameboard->units().move(*move_loc_, *step_to);
+		auto [unit_it, success] = resources::gameboard->units().move(*move_loc_, *step_to);
 
 		if(success) {
 			// Update the moving unit.
@@ -891,11 +888,7 @@ namespace { // Private helpers for move_unit()
 			// Make sure this hex is drawn correctly.
 			disp.invalidate(hex);
 			// Fire sighted events.
-
-			bool wml_undo_blocked = false;
-			bool wml_move_aborted = false;
-
-			std::tie(wml_undo_blocked, wml_move_aborted) = actor_sighted(*ambusher, &sight_cache);
+			auto [wml_undo_blocked, wml_move_aborted] = actor_sighted(*ambusher, &sight_cache);
 			// TODO: should we call post_wml ?
 			wml_move_aborted_ |= wml_move_aborted;
 			wml_undo_disabled_ |= wml_undo_blocked;
@@ -1000,11 +993,7 @@ namespace { // Private helpers for move_unit()
 				// Finish animating.
 				animator.finish(move_it_.get_shared_ptr());
 				// Check for the moving unit being seen.
-
-				bool wml_undo_blocked = false;
-				bool wml_move_aborted = false;
-
-				std::tie(wml_undo_blocked, wml_move_aborted) = actor_sighted(*move_it_, &not_seeing);
+				auto [wml_undo_blocked, wml_move_aborted] = actor_sighted(*move_it_, &not_seeing);
 				// TODO: should we call post_wml ?
 				wml_move_aborted_ |= wml_move_aborted;
 				wml_undo_disabled_ |= wml_undo_blocked;

@@ -242,10 +242,7 @@ void preferences_dialog::add_friend_list_entry(const bool is_friend, text_box& t
 		username = username.substr(0, pos);
 	}
 
-	acquaintance* entry = nullptr;
-	bool added_new;
-
-	std::tie(entry, added_new) = add_acquaintance(username, (is_friend ? "friend": "ignore"), reason);
+	auto [entry, added_new] = add_acquaintance(username, (is_friend ? "friend": "ignore"), reason);
 
 	if(!entry) {
 		gui2::show_transient_message(_("Error"), _("Invalid username"), "", false, false, true);

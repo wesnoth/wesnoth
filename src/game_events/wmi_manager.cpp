@@ -204,11 +204,8 @@ void wmi_manager::to_config(config& cfg) const
  */
 void wmi_manager::set_item(const std::string& id, const vconfig& menu_item)
 {
-	auto iter = wml_menu_items_.begin();
-	bool success;
-
 	// First, try to insert a brand new menu item.
-	std::tie(iter, success) = wml_menu_items_.emplace(id, std::make_shared<wml_menu_item>(id, menu_item));
+	auto [iter, success] = wml_menu_items_.emplace(id, std::make_shared<wml_menu_item>(id, menu_item));
 
 	// If an entry already exists, reset it.
 	if(!success) {

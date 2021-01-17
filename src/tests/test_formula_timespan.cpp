@@ -52,16 +52,14 @@ typedef std::tuple<
 
 inline time_t gen_as_time_t(const time_detailed& params)
 {
-	time_t sec, min, hr, day, wk, mo, yr;
-	std::tie(sec, min, hr, day, wk, mo, yr) = params;
+	auto [sec, min, hr, day, wk, mo, yr] = params;
 
 	return YEAR*yr + MONTH*mo + WEEK*wk + DAY*day + HOUR*hr + MIN*min + SEC*sec;
 }
 
 inline std::string gen_as_str(const time_detailed& params)
 {
-	time_t sec, min, hr, day, wk, mo, yr;
-	std::tie(sec, min, hr, day, wk, mo, yr) = params;
+	auto [sec, min, hr, day, wk, mo, yr] = params;
 
 	std::vector<t_string> bits;
 	std::string res;
