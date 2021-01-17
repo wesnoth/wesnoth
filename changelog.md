@@ -25,7 +25,7 @@
    * Added documentation about the files written by the editor
  ### Multiplayer
  ### Packaging
-  * Boost 1.65 is now required (was 1.59).
+   * Boost 1.65 is now required (was 1.59).
  ### Terrain
  ### Translations
    * Updated translations: Catalan, Chinese (Traditional), French, Portuguese (Brazil),
@@ -36,6 +36,8 @@
  ### User interface
    * Major campaign menu overhaul including more accessible RNG options (including the experimental PRNG option previously found in Advanced Preferences), a difficulty dropdown replacing the difficulty dialog, and custom backgrounds set using `[campaign] background=` (issue #4543, PR #5358).
    * The OS version displayed in the game version dialog and --report now includes the runtime CPU architecture.
+   * Improved sidebar area in the MP Lobby.
+   * Improved filter options in the MP Lobby. Labels are clearer and games with blocked players are excluded from the list by default (with an option to unhide said games).
  ### WML Engine
    * New `[set_variable]` options: reverse=yes, min=list, max=list
  ### Miscellaneous and Bug Fixes
