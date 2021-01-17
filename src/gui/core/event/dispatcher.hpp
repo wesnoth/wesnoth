@@ -17,10 +17,11 @@
 
 #include "gui/core/event/handler.hpp"
 #include "hotkey/hotkey_command.hpp"
-#include <functional>
 
 #include <SDL2/SDL_events.h>
 
+#include <cassert>
+#include <functional>
 #include <list>
 #include <map>
 #include <type_traits>
@@ -484,310 +485,98 @@ public:
 		back_post_child
 	};
 
-	/**
-	 * Connect a signal for callback in set_event.
-	 *
-	 * The function uses some enable_if magic to avoid registering the wrong
-	 * function, but the common way to use this function is:
-	 * widget->connect_signal<EVENT_ID>(
-	 * std::bind(&tmy_dialog::my_member, this));
-	 * This allows simply adding a member of a dialog to be used as a callback
-	 * for widget without a lot of magic. Note most widgets probably will get a
-	 * callback like
-	 * connect_signal_mouse_left_click(const signal_function& callback)
-	 * which hides this function for the average use.
-	 *
-	 * @tparam E                     The event the callback needs to react to.
-	 * @param signal                 The callback function.
-	 * @param position               The position to place the callback.
-	 */
-	template<ui_event E>
-	std::enable_if_t<is_general_event(E)>
-	connect_signal(const signal_function& signal, const queue_position position = back_child)
-	{
-		signal_queue_.connect_signal(E, position, signal);
-	}
+/** Helper macro to wrap the result of a macro concatnation in a string. */
+#define STR(RES) #RES
+
+#define VALIDATE_AND_ADD_TO_QUEUE(QUEUE)                                                                               \
+	static_assert(std::is_convertible_v<F, QUEUE##_function>,                                                          \
+		"connect_signal: function signature does not match " STR(QUEUE##_function));                                   \
+	QUEUE##_queue_.connect_signal(E, position, func);
 
 	/**
-	 * Disconnect a signal for callback in set_event.
+	 * Adds a callback to the appropriate queue based on event type.
 	 *
-	 * @tparam E                     The event the callback was used for.
-	 * @param signal                 The callback function.
+	 * @tparam E                     The event the callback needs to react to.
+	 * @tparam F                     The event signature. This must match the
+	 *                               appropriate queue's callback signature.
+	 *
+	 * @param func                   The callback function.
+	 * @param position               The position to place the callback.
+	 */
+	template<ui_event E, typename F>
+	void connect_signal(const F& func, const queue_position position = back_child)
+	{
+		if constexpr(is_general_event(E)) {
+			VALIDATE_AND_ADD_TO_QUEUE(signal)
+		} else if constexpr(is_mouse_event(E)) {
+			VALIDATE_AND_ADD_TO_QUEUE(signal_mouse)
+		} else if constexpr(is_keyboard_event(E)) {
+			VALIDATE_AND_ADD_TO_QUEUE(signal_keyboard)
+		} else if constexpr(is_touch_motion_event(E)) {
+			VALIDATE_AND_ADD_TO_QUEUE(signal_touch_motion)
+		} else if constexpr(is_touch_gesture_event(E)) {
+			VALIDATE_AND_ADD_TO_QUEUE(signal_touch_gesture)
+		} else if constexpr(is_notification_event(E)) {
+			VALIDATE_AND_ADD_TO_QUEUE(signal_notification)
+		} else if constexpr(is_message_event(E)) {
+			VALIDATE_AND_ADD_TO_QUEUE(signal_message)
+		} else if constexpr(is_raw_event_event(E)) {
+			VALIDATE_AND_ADD_TO_QUEUE(signal_raw_event)
+		} else if constexpr(is_text_input_event(E)) {
+			VALIDATE_AND_ADD_TO_QUEUE(signal_text_input)
+		} else {
+			assert(false && "No matching signal queue found for event");
+		}
+	}
+
+#define VALIDATE_AND_REMOVE_FROM_QUEUE(QUEUE)                                                                          \
+	static_assert(std::is_convertible_v<F, QUEUE##_function>,                                                          \
+		"disconnect_signal: function signature does not match " STR(QUEUE##_function));                                \
+	QUEUE##_queue_.disconnect_signal(E, position, func);
+
+	/**
+	 * Removes a callback from the appropriate queue based on event type.
+	 *
+	 * @tparam E                     The event the callback needs to react to.
+	 * @tparam F                     The event signature. This must match the
+	 *                               appropriate queue's callback signature.
+	 *
+	 * @param func                   The callback function.
 	 * @param position               The place where the function was added.
 	 *                               Needed remove the event from the right
 	 *                               place. (The function doesn't care whether
 	 *                               was added in front or back.)
 	 */
-	template<ui_event E>
-	std::enable_if_t<is_general_event(E)>
-	disconnect_signal(const signal_function& signal, const queue_position position = back_child)
+	template<ui_event E, typename F>
+	void disconnect_signal(const F& func, const queue_position position = back_child)
 	{
-		signal_queue_.disconnect_signal(E, position, signal);
+		if constexpr(is_general_event(E)) {
+			VALIDATE_AND_REMOVE_FROM_QUEUE(signal)
+		} else if constexpr(is_mouse_event(E)) {
+			VALIDATE_AND_REMOVE_FROM_QUEUE(signal_mouse)
+		} else if constexpr(is_keyboard_event(E)) {
+			VALIDATE_AND_REMOVE_FROM_QUEUE(signal_keyboard)
+		} else if constexpr(is_touch_motion_event(E)) {
+			VALIDATE_AND_REMOVE_FROM_QUEUE(signal_touch_motion)
+		} else if constexpr(is_touch_gesture_event(E)) {
+			VALIDATE_AND_REMOVE_FROM_QUEUE(signal_touch_gesture)
+		} else if constexpr(is_notification_event(E)) {
+			VALIDATE_AND_REMOVE_FROM_QUEUE(signal_notification)
+		} else if constexpr(is_message_event(E)) {
+			VALIDATE_AND_REMOVE_FROM_QUEUE(signal_message)
+		} else if constexpr(is_raw_event_event(E)) {
+			VALIDATE_AND_REMOVE_FROM_QUEUE(signal_raw_event)
+		} else if constexpr(is_text_input_event(E)) {
+			VALIDATE_AND_REMOVE_FROM_QUEUE(signal_text_input)
+		} else {
+			assert(false && "No matching signal queue found for event");
+		}
 	}
 
-	/**
-	 * Connect a signal for callback in set_event_mouse.
-	 *
-	 * @tparam E                     The event the callback needs to react to.
-	 * @param signal                 The callback function.
-	 * @param position               The position to place the callback.
-	 */
-	template<ui_event E>
-	std::enable_if_t<is_mouse_event(E)>
-	connect_signal(const signal_mouse_function& signal, const queue_position position = back_child)
-	{
-		signal_mouse_queue_.connect_signal(E, position, signal);
-	}
+#undef VALIDATE_AND_ADD_TO_QUEUE
+#undef VALIDATE_AND_REMOVE_FROM_QUEUE
 
-	/**
-	 * Disconnect a signal for callback in set_event_mouse.
-	 *
-	 * @tparam E                     The event the callback was used for.
-	 * @param signal                 The callback function.
-	 * @param position               The place where the function was added.
-	 *                               Needed remove the event from the right
-	 *                               place. (The function doesn't care whether
-	 *                               was added in front or back.)
-	 */
-	template<ui_event E>
-	std::enable_if_t<is_mouse_event(E)>
-	disconnect_signal(const signal_mouse_function& signal, const queue_position position = back_child)
-	{
-		signal_mouse_queue_.disconnect_signal(E, position, signal);
-	}
-
-	/**
-	 * Connect a signal for callback in set_event_keyboard.
-	 *
-	 * @tparam E                     The event the callback needs to react to.
-	 * @param signal                 The callback function.
-	 * @param position               The position to place the callback.
-	 */
-	template<ui_event E>
-	std::enable_if_t<is_keyboard_event(E)>
-	connect_signal(const signal_keyboard_function& signal, const queue_position position = back_child)
-	{
-		signal_keyboard_queue_.connect_signal(E, position, signal);
-	}
-
-	/**
-	 * Disconnect a signal for callback in set_event_keyboard.
-	 *
-	 * @tparam E                     The event the callback was used for.
-	 * @param signal                 The callback function.
-	 * @param position               The place where the function was added.
-	 *                               Needed remove the event from the right
-	 *                               place. (The function doesn't care whether
-	 *                               was added in front or back.)
-	 */
-	template<ui_event E>
-	std::enable_if_t<is_keyboard_event(E)>
-	disconnect_signal(const signal_keyboard_function& signal, const queue_position position = back_child)
-	{
-		signal_keyboard_queue_.disconnect_signal(E, position, signal);
-	}
-
-	/**
-	 * Connect a signal for callback in set_event_touch_motion.
-	 *
-	 * @tparam E                     The event the callback needs to react to.
-	 * @param signal                 The callback function.
-	 * @param position               The position to place the callback.
-	 */
-	template<ui_event E>
-	std::enable_if_t<is_touch_motion_event(E)>
-	connect_signal(const signal_touch_motion_function& signal, const queue_position position = back_child)
-	{
-		signal_touch_motion_queue_.connect_signal(E, position, signal);
-	}
-
-	/**
-	 * Disconnect a signal for callback in set_event_touch_motion.
-	 *
-	 * @tparam E                     The event the callback was used for.
-	 * @param signal                 The callback function.
-	 * @param position               The place where the function was added.
-	 *                               Needed remove the event from the right
-	 *                               place. (The function doesn't care whether
-	 *                               was added in front or back.)
-	 */
-	template<ui_event E>
-	std::enable_if_t<is_touch_motion_event(E)>
-	disconnect_signal(const signal_touch_motion_function& signal, const queue_position position = back_child)
-	{
-		signal_touch_motion_queue_.disconnect_signal(E, position, signal);
-	}
-
-	/**
-	 * Connect a signal for callback in set_event_touch_gesture.
-	 *
-	 * @tparam E                     The event the callback needs to react to.
-	 * @param signal                 The callback function.
-	 * @param position               The position to place the callback.
-	 */
-	template<ui_event E>
-	std::enable_if_t<is_touch_gesture_event(E)>
-	connect_signal(const signal_touch_gesture_function& signal, const queue_position position = back_child)
-	{
-		signal_touch_gesture_queue_.connect_signal(E, position, signal);
-	}
-
-	/**
-	 * Disconnect a signal for callback in set_event_touch_gesture.
-	 *
-	 * @tparam E                     The event the callback was used for.
-	 * @param signal                 The callback function.
-	 * @param position               The place where the function was added.
-	 *                               Needed remove the event from the right
-	 *                               place. (The function doesn't care whether
-	 *                               was added in front or back.)
-	 */
-	template<ui_event E>
-	std::enable_if_t<is_touch_gesture_event(E)>
-	disconnect_signal(const signal_touch_gesture_function& signal, const queue_position position = back_child)
-	{
-		signal_touch_gesture_queue_.disconnect_signal(E, position, signal);
-	}
-
-	/**
-	 * Connect a signal for callback in set_event_notification.
-	 *
-	 * @tparam E                     The event the callback needs to react to.
-	 * @param signal                 The callback function.
-	 * @param position               The position to place the callback. Since
-	 *                               the message is send to a widget directly
-	 *                               the pre and post positions make no sense
-	 *                               and shouldn't be used.
-	 */
-	template<ui_event E>
-	std::enable_if_t<is_notification_event(E)>
-	connect_signal(const signal_notification_function& signal, const queue_position position = back_child)
-	{
-		signal_notification_queue_.connect_signal(E, position, signal);
-	}
-
-	/**
-	 * Disconnect a signal for callback in set_event_notification.
-	 *
-	 * @tparam E                     The event the callback was used for.
-	 * @param signal                 The callback function.
-	 * @param position               The place where the function was added.
-	 *                               Needed remove the event from the right
-	 *                               place. (The function doesn't care whether
-	 *                               was added in front or back, but it needs
-	 *                               to know the proper queue so it's save to
-	 *                               add with front_child and remove with
-	 *                               back_child. But it's not save to add with
-	 *                               front_child and remove with
-	 *                               front_pre_child)
-	 */
-	template<ui_event E>
-	std::enable_if_t<is_notification_event(E)>
-	disconnect_signal(const signal_notification_function& signal, const queue_position position = back_child)
-	{
-		signal_notification_queue_.disconnect_signal(E, position, signal);
-	}
-
-	/**
-	 * Connect a signal for callback in set_event_message.
-	 *
-	 * @tparam E                     The event the callback needs to react to.
-	 * @param signal                 The callback function.
-	 * @param position               The position to place the callback. Since
-	 *                               the message is send to a widget directly
-	 *                               the pre and post positions make no sense
-	 *                               and shouldn't be used.
-	 */
-	template<ui_event E>
-	std::enable_if_t<is_message_event(E)>
-	connect_signal(const signal_message_function& signal, const queue_position position = back_child)
-	{
-		signal_message_queue_.connect_signal(E, position, signal);
-	}
-
-	/**
-	 * Disconnect a signal for callback in set_event_message.
-	 *
-	 * @tparam E                     The event the callback was used for.
-	 * @param signal                 The callback function.
-	 * @param position               The place where the function was added.
-	 *                               Needed remove the event from the right
-	 *                               place. (The function doesn't care whether
-	 *                               was added in front or back, but it needs
-	 *                               to know the proper queue so it's save to
-	 *                               add with front_child and remove with
-	 *                               back_child. But it's not save to add with
-	 *                               front_child and remove with
-	 *                               front_pre_child)
-	 */
-	template<ui_event E>
-	std::enable_if_t<is_message_event(E)>
-	disconnect_signal(const signal_message_function& signal, const queue_position position = back_child)
-	{
-		signal_message_queue_.disconnect_signal(E, position, signal);
-	}
-
-	/**
-	 * Connect a signal for callback in set_raw_event.
-	 *
-	 * @tparam E                     The event the callback needs to react to.
-	 * @param signal                 The callback function.
-	 * @param position               The position to place the callback.
-	 */
-	template<ui_event E>
-	std::enable_if_t<is_raw_event_event(E)>
-	connect_signal(const signal_raw_event_function& signal, const queue_position position = back_child)
-	{
-		signal_raw_event_queue_.connect_signal(E, position, signal);
-	}
-
-	/**
-	 * Disconnect a signal for callback in set_raw_event.
-	 *
-	 * @tparam E                     The event the callback was used for.
-	 * @param signal                 The callback function.
-	 * @param position               The place where the function was added.
-	 *                               Needed remove the event from the right
-	 *                               place. (The function doesn't care whether
-	 *                               was added in front or back.)
-	 */
-	template<ui_event E>
-	std::enable_if_t<is_raw_event_event(E)>
-	disconnect_signal(const signal_raw_event_function& signal, const queue_position position = back_child)
-	{
-		signal_raw_event_queue_.disconnect_signal(E, position, signal);
-	}
-
-	/**
-	 * Connect a signal for callback in set_text_input.
-	 *
-	 * @tparam E                     The event the callback needs to react to.
-	 * @param signal                 The callback function.
-	 * @param position               The position to place the callback.
-	 */
-	template<ui_event E>
-	std::enable_if_t<is_text_input_event(E)>
-	connect_signal(const signal_text_input_function& signal, const queue_position position = back_child)
-	{
-		signal_text_input_queue_.connect_signal(E, position, signal);
-	}
-
-	/**
-	 * Disconnect a signal for callback in set_text_input.
-	 *
-	 * @tparam E                     The event the callback was used for.
-	 * @param signal                 The callback function.
-	 * @param position               The place where the function was added.
-	 *                               Needed remove the event from the right
-	 *                               place. (The function doesn't care whether
-	 *                               was added in front or back.)
-	 */
-	template<ui_event E>
-	std::enable_if_t<is_text_input_event(E)>
-	disconnect_signal(const signal_text_input_function& signal, const queue_position position = back_child)
-	{
-		signal_text_input_queue_.disconnect_signal(E, position, signal);
-	}
+#undef STR
 
 	/**
 	 * The behavior of the mouse events.
