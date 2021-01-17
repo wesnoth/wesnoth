@@ -14,7 +14,6 @@
  ### Miscellaneous and Bug Fixes
 
 ## Version 1.15.9
- ### Add-ons client
  ### Add-ons server
    * Fixed a regression from 1.15.8 that caused add-on downloads to never bump download counts (issue #5411).
  ### Campaigns
@@ -24,9 +23,9 @@
    * Added help topics for the scenario editor's tools
    * Added documentation about the files written by the editor
  ### Multiplayer
+   * Isar’s Cross got map background graphics, mainlined from the Visual Map Pack on 1.14
  ### Packaging
    * Boost 1.65 is now required (was 1.59).
- ### Terrain
  ### Translations
    * Updated translations: Catalan, Chinese (Traditional), French, Portuguese (Brazil),
      Spanish
@@ -67,7 +66,6 @@
      * Reduce campaign difficulty
  ### Multiplayer
    * Added `/roll N` command to multiplayer games and game lobbies which produces a publicly visible random integer number ranged from 1 to N inclusively (issue #5221, PR #5326).
-   * Isar’s Cross got map background graphics, mainlined from the Visual Map Pack on 1.14
  ### Packaging
    * SDL_Image 2.0.2 or later is now required (was 2.0.0).
  ### Terrain
