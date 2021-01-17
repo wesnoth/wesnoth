@@ -30,6 +30,9 @@ mp_match_history::mp_match_history(mp::user_info& info, wesnothd_connection& con
 	, connection_(connection)
 {
 	register_label("title", true, VGETTEXT("Match History — $player", {{"player", info.name}}));
+
+	UNUSED(info_);
+	UNUSED(connection_);
 }
 
 void mp_match_history::pre_show(window& /*window*/)
