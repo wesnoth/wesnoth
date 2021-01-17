@@ -42,7 +42,6 @@
 #include <string>                       // for string, allocator, etc
 #include <utility>                      // for pair, make_pair
 #include <vector>                       // for vector, etc
-#include <SDL2/SDL.h>                  // for SDL_Surface
 #include <boost/logic/tribool.hpp>
 
 class game_config_view;

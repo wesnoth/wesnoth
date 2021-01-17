@@ -53,7 +53,6 @@
 #include <iterator>                     // for back_insert_iterator, etc
 #include <map>                          // for map, etc
 #include <set>
-#include <SDL2/SDL.h>
 
 static lg::log_domain log_display("display");
 #define WRN_DP LOG_STREAM(warn, log_display)

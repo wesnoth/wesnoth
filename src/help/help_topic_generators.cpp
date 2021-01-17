@@ -36,7 +36,6 @@
 #include <iostream>                     // for operator<<, basic_ostream, etc
 #include <map>                          // for map, etc
 #include <set>
-#include <SDL2/SDL.h>
 
 static lg::log_domain log_help("help");
 #define WRN_HP LOG_STREAM(warn, log_help)
