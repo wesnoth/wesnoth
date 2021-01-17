@@ -72,21 +72,15 @@ frame_builder::frame_builder(const config& cfg,const std::string& frame_string)
 	, primary_frame_(boost::logic::indeterminate)
 	, drawing_layer_(cfg[frame_string + "layer"])
 {
-	if(!cfg.has_attribute(frame_string + "auto_vflip")) {
-		auto_vflip_ = boost::logic::indeterminate;
-	} else {
+	if(cfg.has_attribute(frame_string + "auto_vflip")) {
 		auto_vflip_ = cfg[frame_string + "auto_vflip"].to_bool();
 	}
 
-	if(!cfg.has_attribute(frame_string + "auto_hflip")) {
-		auto_hflip_ = boost::logic::indeterminate;
-	} else {
+	if(cfg.has_attribute(frame_string + "auto_hflip")) {
 		auto_hflip_ = cfg[frame_string + "auto_hflip"].to_bool();
 	}
 
-	if(!cfg.has_attribute(frame_string + "primary")) {
-		primary_frame_ = boost::logic::indeterminate;
-	} else {
+	if(cfg.has_attribute(frame_string + "primary")) {
 		primary_frame_ = cfg[frame_string + "primary"].to_bool();
 	}
 
