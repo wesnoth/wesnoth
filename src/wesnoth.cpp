@@ -701,6 +701,14 @@ static void check_fpu()
 }
 #endif
 
+namespace
+{
+template<typename... T>
+void fold_test(std::ostream& os, T... values)
+{
+	(os << ... << values);
+}
+} // namespace
 /**
  * Setups the game environment and enters
  * the titlescreen or game loops.
@@ -877,6 +885,9 @@ static int do_gameloop(const std::vector<std::string>& args)
 		const font::floating_label_context label_manager;
 
 		cursor::set(cursor::NORMAL);
+
+		std::ostringstream test;
+		fold_test(test, 1, 2, 3, 4, 5);
 
 		// If loading a game, skip the titlescreen entirely
 		if(game->has_load_data() && game->load_game()) {
