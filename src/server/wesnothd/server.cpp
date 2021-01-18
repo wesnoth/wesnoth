@@ -22,7 +22,6 @@
 #include "config.hpp"
 #include "filesystem.hpp"
 #include "game_config.hpp"
-#include "lexical_cast.hpp"
 #include "log.hpp"
 #include "multiplayer_error_codes.hpp"
 #include "serialization/parser.hpp"
@@ -1464,7 +1463,7 @@ void server::handle_player_in_game(socket_ptr socket, simple_wml::document& data
 			}
 
 			g.set_description(&desc);
-			desc.set_attr_dup("id", lexical_cast<std::string>(g.id()).c_str());
+			desc.set_attr_dup("id", std::to_string(g.id()).c_str());
 		} else {
 			WRN_SERVER << client_address(socket) << "\t" << player.name() << "\tsent scenario data in game:\t\""
 					   << g.name() << "\" (" << g.id() << ", " << g.db_id() << ") although it's already initialized.\n";

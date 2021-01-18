@@ -2734,7 +2734,7 @@ void display::draw_hex(const map_location& loc) {
 		if (draw_num_of_bitmaps_) {
 			int off_x = xpos + hex_size()/2;
 			int off_y = ypos + hex_size()/2;
-			surface text = font::get_rendered_text(lexical_cast<std::string>(num_images_bg + num_images_fg), font::SIZE_SMALL, font::NORMAL_COLOR);
+			surface text = font::get_rendered_text(std::to_string(num_images_bg + num_images_fg), font::SIZE_SMALL, font::NORMAL_COLOR);
 			surface bg(text->w, text->h);
 			SDL_Rect bg_rect {0, 0, text->w, text->h};
 			sdl::fill_surface_rect(bg, &bg_rect, 0xaa000000);

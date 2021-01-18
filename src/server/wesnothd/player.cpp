@@ -13,7 +13,6 @@
 */
 
 #include "server/wesnothd/player.hpp"
-#include "lexical_cast.hpp"
 
 wesnothd::player::player(const std::string& n, simple_wml::node& cfg, int id,
                          bool registered, const std::string& version, const std::string& source, const std::size_t max_messages,
@@ -67,7 +66,7 @@ void wesnothd::player::mark_available(const int game_id,
 	} else {
 		cfg_.set_attr("available", "no");
 	}
-	cfg_.set_attr_dup("game_id", lexical_cast<std::string>(game_id).c_str());
+	cfg_.set_attr_dup("game_id", std::to_string(game_id).c_str());
 	cfg_.set_attr_dup("location", location.c_str());
 }
 
