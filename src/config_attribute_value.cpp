@@ -316,8 +316,8 @@ public:
 	std::string operator()(const boost::blank &) const { return default_; }
 	std::string operator()(const yes_no & b)     const { return b.str(); }
 	std::string operator()(const true_false & b) const { return b.str(); }
-	std::string operator()(int i)                const { return lexical_cast<std::string>(i); }
-	std::string operator()(unsigned long long u) const { return lexical_cast<std::string>(u); }
+	std::string operator()(int i)                const { return std::to_string(i); }
+	std::string operator()(unsigned long long u) const { return std::to_string(u); }
 	std::string operator()(double d)             const { return lexical_cast<std::string>(d); }
 	std::string operator()(const std::string& s) const { return s; }
 	std::string operator()(const t_string& s)    const { return s.str(); }
