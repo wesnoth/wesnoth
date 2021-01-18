@@ -342,10 +342,10 @@ static int impl_unit_get(lua_State *L)
 		unit::upkeep_t upkeep = u.upkeep_raw();
 
 		// Need to keep these separate in order to ensure an int value is always used if applicable.
-		if(int* v = boost::get<int>(&upkeep)) {
+		if(int* v = std::get_if<int>(&upkeep)) {
 			lua_push(L, *v);
 		} else {
-			const std::string type = boost::apply_visitor(unit::upkeep_type_visitor(), upkeep);
+			const std::string type = std::visit(unit::upkeep_type_visitor{}, upkeep);
 			lua_push(L, type);
 		}
 
