@@ -1896,6 +1896,7 @@ to be called on their own".format(filename, num))
     in_map_generator = False
     in_name_generator = False
     in_candidate_action = False
+    in_lua = False
     storeid = None
     storevar = None
     ignoreable = False
@@ -1906,6 +1907,13 @@ to be called on their own".format(filename, num))
     translation_mark = re.compile(r'_ *"')
     name_generator_re = re.compile(r"name_generator\s*=\s*_\s*<<")
     for i in range(len(lines)):
+        if has_opening_tag(lines[i], "lua"):
+            in_lua = True
+        elif "[/lua]" in lines[i]:
+            in_lua = False
+        if in_lua:
+            # As far as I can tell none of the below tests make sense inside of a lua tag
+            continue
         if '[' in lines[i]:
             preamble_seen = True
         # This logic looks odd because a scenario can be conditionally
