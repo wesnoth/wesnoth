@@ -690,7 +690,7 @@ void unit_filter_compound::fill(vconfig cfg)
 		for(auto child : cfg.all_ordered()) {
 			CONDITIONAL_TYPE cond;
 			if(cond.parse(child.first)) {
-				cond_children_.emplace_back(std::piecewise_construct_t(), std::make_tuple(cond), std::make_tuple(child.second));
+				cond_children_.emplace_back(std::piecewise_construct_t(), std::tuple(cond), std::tuple(child.second));
 			}
 			else if (child.first == "filter_wml") {
 				create_child(child.second, [](const vconfig& c, const unit_filter_args& args) {

@@ -601,7 +601,7 @@ pump_result_t wml_event_pump::operator()()
 	// This is used to track when moves, recruits, etc. happen.
 	resources::whiteboard->on_gamestate_change();
 
-	return std::make_tuple(undo_disabled(), action_canceled());
+	return std::tuple(undo_disabled(), action_canceled());
 }
 
 void wml_event_pump::flush_messages()
