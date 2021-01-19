@@ -74,10 +74,6 @@ namespace lua_check_impl
 	{};
 
 	template<typename T>
-	using remove_constref = std::remove_const_t<std::remove_reference_t<std::remove_const_t<T>>>;
-
-
-	template<typename T>
 	std::enable_if_t<std::is_same_v<T, lua_index_raw>, lua_index_raw>
 	lua_check(lua_State *L, int n)
 	{
@@ -328,7 +324,7 @@ namespace lua_check_impl
 			for (int i = 1, i_end = lua_rawlen(L, n); i <= i_end; ++i)
 			{
 				lua_rawgeti(L, n, i);
-				res.push_back(lua_check_impl::lua_check<remove_constref<typename T::reference>>(L, -1));
+				res.push_back(lua_check_impl::lua_check<std::decay_t<typename T::reference>>(L, -1));
 				lua_pop(L, 1);
 			}
 			return res;
@@ -360,7 +356,7 @@ namespace lua_check_impl
 		lua_createtable(L, list.size(), 0);
 		int i = 1;
 		for(typename T::const_iterator iter = list.begin(); iter != list.end(); ++iter) {
-			lua_check_impl::lua_push<remove_constref<typename T::reference>>(L, *iter);
+			lua_check_impl::lua_push<std::decay_t<typename T::reference>>(L, *iter);
 			lua_rawseti(L, -2, i++);
 		}
 	}
@@ -374,8 +370,8 @@ namespace lua_check_impl
 		lua_newtable(L);
 		for(const typename T::value_type& pair : map)
 		{
-			lua_check_impl::lua_push<remove_constref<typename T::key_type>>(L, pair.first);
-			lua_check_impl::lua_push<remove_constref<typename T::mapped_type>>(L, pair.second);
+			lua_check_impl::lua_push<std::decay_t<typename T::key_type>>(L, pair.first);
+			lua_check_impl::lua_push<std::decay_t<typename T::mapped_type>>(L, pair.second);
 			lua_settable(L, -3);
 		}
 	}
@@ -383,23 +379,23 @@ namespace lua_check_impl
 }
 
 template<typename T>
-lua_check_impl::remove_constref<T> lua_check(lua_State *L, int n)
+std::decay_t<T> lua_check(lua_State *L, int n)
 {
 	//remove possible const& to make life easier for the impl namespace.
-	return lua_check_impl::lua_check<lua_check_impl::remove_constref<T>>(L, n);
+	return lua_check_impl::lua_check<std::decay_t<T>>(L, n);
 }
 
 template<typename T>
-lua_check_impl::remove_constref<T> lua_to_or_default(lua_State *L, int n, const T& def)
+std::decay_t<T> lua_to_or_default(lua_State *L, int n, const T& def)
 {
 	//remove possible const& to make life easier for the impl namespace.
-	return lua_check_impl::lua_to_or_default<lua_check_impl::remove_constref<T>>(L, n, def);
+	return lua_check_impl::lua_to_or_default<std::decay_t<T>>(L, n, def);
 }
 
 template<typename T>
 void lua_push(lua_State *L, const T& val)
 {
-	return lua_check_impl::lua_push<lua_check_impl::remove_constref<T>>(L, val);
+	return lua_check_impl::lua_push<std::decay_t<T>>(L, val);
 }
 
 /**
@@ -407,7 +403,7 @@ void lua_push(lua_State *L, const T& val)
  *
  */
 template<typename T>
-lua_check_impl::remove_constref<T> luaW_table_get_def(lua_State *L, int index, utils::string_view k,  const T& def)
+std::decay_t<T> luaW_table_get_def(lua_State *L, int index, utils::string_view k,  const T& def)
 {
 	if(!lua_istable(L, index)) {
 		luaL_argerror(L, index, "table expected");
@@ -422,7 +418,7 @@ lua_check_impl::remove_constref<T> luaW_table_get_def(lua_State *L, int index, u
 		lua_pop(L, 1);
 		return def;
 	}
-	T res =  lua_check_impl::lua_to_or_default<lua_check_impl::remove_constref<T>>(L, -1, def);
+	T res =  lua_check_impl::lua_to_or_default<std::decay_t<T>>(L, -1, def);
 	lua_pop(L, 1);
 	return res;
 }
