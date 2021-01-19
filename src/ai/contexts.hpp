@@ -27,6 +27,7 @@
 #include "generic_event.hpp"         // for observer
 #include "units/ptr.hpp"              // for unit_ptr
 #include "map/location.hpp"       // for map_location
+#include "utils/variant.hpp"
 
 #include <map>                          // for map, map<>::value_compare
 #include <set>                          // for set
@@ -241,13 +242,13 @@ public:
 
 	virtual config get_leader_goal() const = 0;
 
-	virtual boost::variant<bool, std::vector<std::string>> get_leader_ignores_keep() const = 0;
+	virtual utils::variant<bool, std::vector<std::string>> get_leader_ignores_keep() const = 0;
 
 	virtual double get_leader_value() const = 0;
 
-	virtual boost::variant<bool, std::vector<std::string>> get_passive_leader() const = 0;
+	virtual utils::variant<bool, std::vector<std::string>> get_passive_leader() const = 0;
 
-	virtual boost::variant<bool, std::vector<std::string>> get_passive_leader_shares_keep() const = 0;
+	virtual utils::variant<bool, std::vector<std::string>> get_passive_leader_shares_keep() const = 0;
 
 	virtual const moves_map& get_possible_moves() const = 0;
 
@@ -647,7 +648,7 @@ public:
 		return target_->get_leader_goal();
 	}
 
-	virtual boost::variant<bool, std::vector<std::string>> get_leader_ignores_keep() const override
+	virtual utils::variant<bool, std::vector<std::string>> get_leader_ignores_keep() const override
 	{
 		return target_->get_leader_ignores_keep();
 	}
@@ -657,12 +658,12 @@ public:
 		return target_->get_leader_value();
 	}
 
-	virtual boost::variant<bool, std::vector<std::string>> get_passive_leader() const override
+	virtual utils::variant<bool, std::vector<std::string>> get_passive_leader() const override
 	{
 		return target_->get_passive_leader();
 	}
 
-	virtual boost::variant<bool, std::vector<std::string>> get_passive_leader_shares_keep() const override
+	virtual utils::variant<bool, std::vector<std::string>> get_passive_leader_shares_keep() const override
 	{
 		return target_->get_passive_leader_shares_keep();
 	}
@@ -1157,13 +1158,13 @@ public:
 
 	virtual config get_leader_goal() const override;
 
-	virtual boost::variant<bool, std::vector<std::string>> get_leader_ignores_keep() const override;
+	virtual utils::variant<bool, std::vector<std::string>> get_leader_ignores_keep() const override;
 
 	virtual double get_leader_value() const override;
 
-	virtual boost::variant<bool, std::vector<std::string>> get_passive_leader() const override;
+	virtual utils::variant<bool, std::vector<std::string>> get_passive_leader() const override;
 
-	virtual boost::variant<bool, std::vector<std::string>> get_passive_leader_shares_keep() const override;
+	virtual utils::variant<bool, std::vector<std::string>> get_passive_leader_shares_keep() const override;
 
 	virtual const moves_map& get_possible_moves() const override;
 
@@ -1249,7 +1250,7 @@ private:
 	template<typename T>
 	void add_known_aspect(const std::string &name, typesafe_aspect_ptr<T>& where);
 
-	bool applies_to_leader(const boost::variant<bool, std::vector<std::string>> &aspect_value, const std::string &id) const;
+	bool applies_to_leader(const utils::variant<bool, std::vector<std::string>> &aspect_value, const std::string &id) const;
 
 	const config cfg_;
 
@@ -1276,7 +1277,7 @@ private:
 	mutable keeps_cache keeps_;
 	typesafe_aspect_ptr<double> leader_aggression_;
 	typesafe_aspect_ptr<config> leader_goal_;
-	typesafe_aspect_ptr<boost::variant<bool, std::vector<std::string>>> leader_ignores_keep_;
+	typesafe_aspect_ptr<utils::variant<bool, std::vector<std::string>>> leader_ignores_keep_;
 	typesafe_aspect_ptr<double> leader_value_;
 	mutable bool move_maps_enemy_valid_;
 	mutable bool move_maps_valid_;
@@ -1284,8 +1285,8 @@ private:
 	mutable bool dst_src_enemy_valid_lua_;
 	mutable bool src_dst_valid_lua_;
 	mutable bool src_dst_enemy_valid_lua_;
-	typesafe_aspect_ptr<boost::variant<bool, std::vector<std::string>>> passive_leader_;
-	typesafe_aspect_ptr<boost::variant<bool, std::vector<std::string>>> passive_leader_shares_keep_;
+	typesafe_aspect_ptr<utils::variant<bool, std::vector<std::string>>> passive_leader_;
+	typesafe_aspect_ptr<utils::variant<bool, std::vector<std::string>>> passive_leader_shares_keep_;
 	mutable moves_map possible_moves_;
 	typesafe_aspect_ptr<double> recruitment_diversity_;
 	typesafe_aspect_ptr<config> recruitment_instructions_;

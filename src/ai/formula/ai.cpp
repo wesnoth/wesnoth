@@ -51,6 +51,7 @@
 #include "ai/formula/function_table.hpp"           // for ai_function_symbol_table
 #include "ai/game_info.hpp"  // for move_result_ptr, move_map, etc
 #include "ai/formula/candidates.hpp"               // for base_candidate_action, etc
+#include "utils/variant.hpp"
 
 #include <cassert>                     // for assert
 #include <ctime>                       // for time
@@ -306,11 +307,11 @@ variant formula_ai::get_value(const std::string& key) const
 
 	} else if(key == "leader_ignores_keep")
 	{
-		boost::variant<bool, std::vector<std::string>> leader_ignores_keep = get_leader_ignores_keep();
-		if (leader_ignores_keep.which() == 0) {
-			return variant(boost::get<bool>(leader_ignores_keep));
+		auto leader_ignores_keep = get_leader_ignores_keep();
+		if (utils::variant_index(leader_ignores_keep) == 0) {
+			return variant(utils::get<bool>(leader_ignores_keep));
 		} else {
-			std::vector<std::string> &strlist = boost::get<std::vector<std::string>>(leader_ignores_keep);
+			std::vector<std::string> &strlist = utils::get<std::vector<std::string>>(leader_ignores_keep);
 			std::vector<variant> vars;
 			for(const std::string &i : strlist) {
 				vars.emplace_back(i);
@@ -324,11 +325,11 @@ variant formula_ai::get_value(const std::string& key) const
 
 	} else if(key == "passive_leader")
 	{
-		boost::variant<bool, std::vector<std::string>> passive_leader = get_passive_leader();
-		if (passive_leader.which() == 0) {
-			return variant(boost::get<bool>(passive_leader));
+		auto passive_leader = get_passive_leader();
+		if (utils::variant_index(passive_leader) == 0) {
+			return variant(utils::get<bool>(passive_leader));
 		} else {
-			std::vector<std::string> &strlist = boost::get<std::vector<std::string>>(passive_leader);
+			std::vector<std::string> &strlist = utils::get<std::vector<std::string>>(passive_leader);
 			std::vector<variant> vars;
 			for(const std::string &i : strlist) {
 				vars.emplace_back(i);
@@ -338,11 +339,11 @@ variant formula_ai::get_value(const std::string& key) const
 
 	} else if(key == "passive_leader_shares_keep")
 	{
-		boost::variant<bool, std::vector<std::string>> passive_leader_shares_keep = get_passive_leader_shares_keep();
-		if (passive_leader_shares_keep.which() == 0) {
-			return variant(boost::get<bool>(passive_leader_shares_keep));
+		auto passive_leader_shares_keep = get_passive_leader_shares_keep();
+		if (utils::variant_index(passive_leader_shares_keep) == 0) {
+			return variant(utils::get<bool>(passive_leader_shares_keep));
 		} else {
-			std::vector<std::string> &strlist = boost::get<std::vector<std::string>>(passive_leader_shares_keep);
+			std::vector<std::string> &strlist = utils::get<std::vector<std::string>>(passive_leader_shares_keep);
 			std::vector<variant> vars;
 			for(const std::string &i : strlist) {
 				vars.emplace_back(i);

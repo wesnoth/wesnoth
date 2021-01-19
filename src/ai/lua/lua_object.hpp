@@ -30,7 +30,6 @@
 #include "ai/default/contexts.hpp"
 #include "ai/lua/aspect_advancements.hpp"
 
-#include <boost/variant/get.hpp>
 #include <iterator>
 #include <string>
 #include <vector>
@@ -117,13 +116,13 @@ inline std::shared_ptr<std::string> lua_object<std::string>::to_type(lua_State *
 }
 
 template <>
-inline void lua_object<boost::variant<bool, std::vector<std::string>>>::from_type(lua_State *L, std::shared_ptr<boost::variant<bool, std::vector<std::string>>> value)
+inline void lua_object<utils::variant<bool, std::vector<std::string>>>::from_type(lua_State *L, std::shared_ptr<utils::variant<bool, std::vector<std::string>>> value)
 {
 	if(value) {
-		if (value->which() == 0) {
-			lua_pushboolean(L, boost::get<bool>(*value));
+		if (utils::variant_index(*value) == 0) {
+			lua_pushboolean(L, utils::get<bool>(*value));
 		} else {
-			std::vector<std::string> strlist = boost::get<std::vector<std::string>>(*value);
+			std::vector<std::string> strlist = utils::get<std::vector<std::string>>(*value);
 			lua_createtable(L, strlist.size(), 0);
 			for(const std::string& str : strlist) {
 				lua_pushlstring(L, str.c_str(), str.size());
@@ -134,10 +133,10 @@ inline void lua_object<boost::variant<bool, std::vector<std::string>>>::from_typ
 }
 
 template <>
-inline std::shared_ptr< boost::variant<bool, std::vector<std::string>> > lua_object< boost::variant<bool, std::vector<std::string>> >::to_type(lua_State *L, int n)
+inline std::shared_ptr< utils::variant<bool, std::vector<std::string>> > lua_object< utils::variant<bool, std::vector<std::string>> >::to_type(lua_State *L, int n)
 {
 	if (lua_isboolean(L, n)) {
-		return std::make_shared<boost::variant<bool, std::vector<std::string>>>(luaW_toboolean(L, n));
+		return std::make_shared<utils::variant<bool, std::vector<std::string>>>(luaW_toboolean(L, n));
 	} else {
 		std::shared_ptr<std::vector<std::string>> v(new std::vector<std::string>());
 		int l = lua_rawlen(L, n);
@@ -150,7 +149,7 @@ inline std::shared_ptr< boost::variant<bool, std::vector<std::string>> > lua_obj
 			v->push_back(s);
 		}
 
-		return std::make_shared<boost::variant<bool, std::vector<std::string>>>(*v);
+		return std::make_shared<utils::variant<bool, std::vector<std::string>>>(*v);
 	}
 }
 

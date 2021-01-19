@@ -229,9 +229,9 @@ const std::string holder::get_ai_overview()
 		get_ai_ref();
 	}
 	// These assignments are necessary because the code will otherwise not compile on some platforms with an lvalue/rvalue mismatch error
-	boost::variant<bool, std::vector<std::string>> lik = this->ai_->get_leader_ignores_keep();
-	boost::variant<bool, std::vector<std::string>> pl = this->ai_->get_passive_leader();
-	boost::variant<bool, std::vector<std::string>> plsk = this->ai_->get_passive_leader_shares_keep();
+	auto lik = this->ai_->get_leader_ignores_keep();
+	auto pl = this->ai_->get_passive_leader();
+	auto plsk = this->ai_->get_passive_leader_shares_keep();
 	// In order to display booleans as yes/no rather than 1/0 or true/false
 	config cfg;
 	cfg["simple_targeting"] = this->ai_->get_simple_targeting();
@@ -242,10 +242,10 @@ const std::string holder::get_ai_overview()
 	s << "caution:  " << this->ai_->get_caution() << std::endl;
 	s << "grouping:  " << this->ai_->get_grouping() << std::endl;
 	s << "leader_aggression:  " << this->ai_->get_leader_aggression() << std::endl;
-	s << "leader_ignores_keep:  " << boost::apply_visitor(leader_aspects_visitor(), lik) << std::endl;
+	s << "leader_ignores_keep:  " << utils::visit(leader_aspects_visitor(), lik) << std::endl;
 	s << "leader_value:  " << this->ai_->get_leader_value() << std::endl;
-	s << "passive_leader:  " << boost::apply_visitor(leader_aspects_visitor(), pl) << std::endl;
-	s << "passive_leader_shares_keep:  " << boost::apply_visitor(leader_aspects_visitor(), plsk) << std::endl;
+	s << "passive_leader:  " << utils::visit(leader_aspects_visitor(), pl) << std::endl;
+	s << "passive_leader_shares_keep:  " << utils::visit(leader_aspects_visitor(), plsk) << std::endl;
 	s << "recruitment_diversity:  " << this->ai_->get_recruitment_diversity() << std::endl;
 	s << "recruitment_instructions:  " << std::endl << "----config begin----" << std::endl;
 	s << this->ai_->get_recruitment_instructions() << "-----config end-----" << std::endl;

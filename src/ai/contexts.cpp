@@ -666,12 +666,12 @@ config readonly_context_impl::get_leader_goal() const
 	return config();
 }
 
-boost::variant<bool, std::vector<std::string>> readonly_context_impl::get_leader_ignores_keep() const
+utils::variant<bool, std::vector<std::string>> readonly_context_impl::get_leader_ignores_keep() const
 {
 	if (leader_ignores_keep_) {
 		return leader_ignores_keep_->get();
 	}
-	return boost::variant<bool, std::vector<std::string>>();
+	return {};
 }
 
 double readonly_context_impl::get_leader_value() const
@@ -682,20 +682,20 @@ double readonly_context_impl::get_leader_value() const
 	return 0;
 }
 
-boost::variant<bool, std::vector<std::string>> readonly_context_impl::get_passive_leader() const
+utils::variant<bool, std::vector<std::string>> readonly_context_impl::get_passive_leader() const
 {
 	if (passive_leader_) {
 		return passive_leader_->get();
 	}
-	return boost::variant<bool, std::vector<std::string>>();
+	return {};
 }
 
-boost::variant<bool, std::vector<std::string>> readonly_context_impl::get_passive_leader_shares_keep() const
+utils::variant<bool, std::vector<std::string>> readonly_context_impl::get_passive_leader_shares_keep() const
 {
 	if (passive_leader_shares_keep_) {
 		return passive_leader_shares_keep_->get();
 	}
-	return boost::variant<bool, std::vector<std::string>>();
+	return {};
 }
 
 const moves_map& readonly_context_impl::get_possible_moves() const
@@ -1198,12 +1198,12 @@ bool readonly_context_impl::is_active(const std::string &time_of_day, const std:
 	return true;
 }
 
-bool readonly_context_impl::applies_to_leader(const boost::variant<bool, std::vector<std::string>> &aspect_value, const std::string &id) const
+bool readonly_context_impl::applies_to_leader(const utils::variant<bool, std::vector<std::string>> &aspect_value, const std::string &id) const
 {
-	if (aspect_value.which() == 0) {
-		return boost::get<bool>(aspect_value);
+	if (utils::variant_index(aspect_value) == 0) {
+		return utils::get<bool>(aspect_value);
 	} else {
-		std::vector<std::string> aspect_ids = boost::get<std::vector<std::string>>(aspect_value);
+		std::vector<std::string> aspect_ids = utils::get<std::vector<std::string>>(aspect_value);
 		for(std::vector<std::string>::const_iterator aspect_id = aspect_ids.begin(); aspect_id != aspect_ids.end() ; ++aspect_id ) {
 			if(*aspect_id == id) {
 				return true;
