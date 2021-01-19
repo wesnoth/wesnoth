@@ -17,11 +17,21 @@
 
 #include <algorithm>
 #include <cctype>
+#include <functional>
 
 inline bool chars_equal_insensitive(char a, char b) { return tolower(a) == tolower(b); }
 inline bool chars_less_insensitive(char a, char b) { return tolower(a) < tolower(b); }
 
-namespace utils {
+namespace utils
+{
+/**
+ * Equivalent to as @c std::is_same_v except it uses the decayed form of V.
+ *
+ * @tparam T1    The first type to compare.
+ * @tparam T2    The second type to compare. This will be passed through @c std::decay .
+ */
+template<typename T1, typename T2>
+inline constexpr bool decayed_is_same = std::is_same_v<T1, std::decay_t<T2>>;
 
 namespace detail
 {
