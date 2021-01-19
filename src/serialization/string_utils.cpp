@@ -656,7 +656,7 @@ bool word_completion(std::string& text, std::vector<std::string>& wordlist) {
 	{
 		if (word->size() < semiword.size()
 		|| !std::equal(semiword.begin(), semiword.end(), word->begin(),
-				chars_equal_insensitive))
+				utils::chars_equal_insensitive))
 		{
 			continue;
 		}

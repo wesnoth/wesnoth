@@ -155,7 +155,7 @@ bool menu::basic_sorter::less(int column, const item& row1, const item& row2) co
 			++begin2;
 		}
 
-		return std::lexicographical_compare(begin1,end1,begin2,end2,chars_less_insensitive);
+		return std::lexicographical_compare(begin1,end1,begin2,end2,utils::chars_less_insensitive);
 	} else if(numeric_sort_.count(column) == 1) {
 		int val_1 = lexical_cast_default<int>(item1, 0);
 		int val_2 = lexical_cast_default<int>(item2, 0);

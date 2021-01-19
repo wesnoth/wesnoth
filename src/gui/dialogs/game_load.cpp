@@ -307,7 +307,7 @@ void game_load::filter_text_changed(const std::string& text)
 									games_[i].name().end(),
 									word.begin(),
 									word.end(),
-									chars_equal_insensitive)
+									utils::chars_equal_insensitive)
 						!= games_[i].name().end();
 
 				if(!found) {

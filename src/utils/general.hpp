@@ -19,11 +19,11 @@
 #include <cctype>
 #include <functional>
 
+namespace utils
+{
 inline bool chars_equal_insensitive(char a, char b) { return tolower(a) == tolower(b); }
 inline bool chars_less_insensitive(char a, char b) { return tolower(a) < tolower(b); }
 
-namespace utils
-{
 /**
  * Equivalent to as @c std::is_same_v except it uses the decayed form of V.
  *

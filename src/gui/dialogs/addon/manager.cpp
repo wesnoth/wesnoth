@@ -79,7 +79,7 @@ namespace {
 						val.end(),
 						filter.begin(),
 						filter.end(),
-						chars_equal_insensitive)
+						utils::chars_equal_insensitive)
 						!= val.end())
 					{
 						found = true;
