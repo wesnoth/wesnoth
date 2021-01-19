@@ -21,11 +21,13 @@
 #include "units/attack_type.hpp"
 #include "units/race.hpp"
 #include "units/alignment.hpp"
-#include <optional>
+#include "utils/variant.hpp"
 
-#include <bitset>
 #include <boost/dynamic_bitset_fwd.hpp>
 #include <boost/variant.hpp>
+
+#include <bitset>
+#include <optional>
 
 class display;
 class team;
@@ -1124,8 +1126,13 @@ public:
 		static std::string type() { static std::string v = "loyal"; return v; }
 	};
 
+	using upkeep_t = utils::variant<upkeep_full, upkeep_loyal, int>;
+
 	/** Visitor helper class to fetch the appropriate upkeep value. */
-	class upkeep_value_visitor : public boost::static_visitor<int>
+	class upkeep_value_visitor
+#ifdef USING_BOOST_VARIANT
+		: public boost::static_visitor<int>
+#endif
 	{
 	public:
 		explicit upkeep_value_visitor(const unit& unit) : u_(unit) {}
@@ -1152,7 +1159,10 @@ public:
 	};
 
 	/** Visitor helper struct to fetch the upkeep type flag if applicable, or the the value otherwise. */
-	struct upkeep_type_visitor : public boost::static_visitor<std::string>
+	struct upkeep_type_visitor
+#ifdef USING_BOOST_VARIANT
+		: public boost::static_visitor<std::string>
+#endif
 	{
 		template<typename T>
 		std::enable_if_t<!std::is_same_v<int, T>, std::string>
@@ -1168,8 +1178,6 @@ public:
 		}
 	};
 
-	using upkeep_t = boost::variant<upkeep_full, upkeep_loyal, int>;
-
 	/** Visitor helper class to parse the upkeep value from a config. */
 	class upkeep_parser_visitor : public boost::static_visitor<upkeep_t>
 	{
@@ -1180,7 +1188,7 @@ public:
 		{
 			if(n == 0) return upkeep_loyal();
 			if(n < 0) throw std::invalid_argument(std::to_string(n));
-			return n;
+			return static_cast<int>(n);
 		}
 
 		template<typename B>

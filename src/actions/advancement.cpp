@@ -372,9 +372,11 @@ void advance_unit(map_location loc, const advancement_option &advance_to, bool f
 	std::vector<int> not_seeing = actions::get_sides_not_seeing(*u);
 
 	// Create the advanced unit.
-	bool use_amla = boost::get<std::string>(&advance_to) == nullptr;
-	unit_ptr new_unit = use_amla ? get_amla_unit(*u, *boost::get<const config*>(advance_to)) :
-	                           get_advanced_unit(*u, boost::get<std::string>(advance_to));
+	const bool use_amla = !utils::holds_alternative<std::string>(advance_to);
+	unit_ptr new_unit = use_amla
+		? get_amla_unit(*u, *utils::get<const config*>(advance_to))
+		: get_advanced_unit(*u, utils::get<std::string>(advance_to));
+
 	new_unit->set_location(loc);
 	if ( !use_amla )
 	{
