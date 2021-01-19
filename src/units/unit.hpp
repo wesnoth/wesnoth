@@ -1188,7 +1188,7 @@ public:
 		{
 			if(n == 0) return upkeep_loyal();
 			if(n < 0) throw std::invalid_argument(std::to_string(n));
-			return n;
+			return static_cast<int>(n);
 		}
 
 		template<typename B>
