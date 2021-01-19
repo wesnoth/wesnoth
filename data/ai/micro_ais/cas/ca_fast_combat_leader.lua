@@ -3,7 +3,7 @@ local AH = wesnoth.require "ai/lua/ai_helper.lua"
 local FAU = wesnoth.require "ai/micro_ais/cas/ca_fast_attack_utils.lua"
 local LS = wesnoth.require "location_set"
 
-local leader, fast_target, fast_dst
+local fast_leader, fast_target, fast_dst
 local gamedata, move_cache
 
 local ca_fast_combat_leader = {}
@@ -178,7 +178,7 @@ function ca_fast_combat_leader:evaluation(cfg, data)
         end
 
         if best_target then
-            leader = leader
+            fast_leader = leader
             fast_target, fast_dst = best_target, best_dst
             return cfg.ca_score
         end
@@ -188,8 +188,8 @@ function ca_fast_combat_leader:evaluation(cfg, data)
 end
 
 function ca_fast_combat_leader:execution(cfg, data)
-    AH.robust_move_and_attack(ai, leader, fast_dst, fast_target)
-    leader, fast_target, fast_dst = nil, nil, nil
+    AH.robust_move_and_attack(ai, fast_leader, fast_dst, fast_target)
+    fast_leader, fast_target, fast_dst = nil, nil, nil
 end
 
 return ca_fast_combat_leader
