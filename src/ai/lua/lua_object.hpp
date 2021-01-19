@@ -138,7 +138,7 @@ inline std::shared_ptr< utils::variant<bool, std::vector<std::string>> > lua_obj
 	if (lua_isboolean(L, n)) {
 		return std::make_shared<utils::variant<bool, std::vector<std::string>>>(luaW_toboolean(L, n));
 	} else {
-		std::shared_ptr<std::vector<std::string>> v(new std::vector<std::string>());
+		auto v = std::make_shared<std::vector<std::string>>();
 		int l = lua_rawlen(L, n);
 		for (int i = 1; i < l + 1; ++i)
 		{
@@ -189,7 +189,7 @@ inline void lua_object<int>::from_type(lua_State *L, std::shared_ptr<int> value)
 template <>
 inline std::shared_ptr< std::vector<std::string> > lua_object< std::vector<std::string> >::to_type(lua_State *L, int n)
 {
-	std::shared_ptr<std::vector<std::string>> v(new std::vector<std::string>());
+	auto v = std::make_shared<std::vector<std::string>>();
 	int l = lua_rawlen(L, n);
 	for (int i = 1; i < l + 1; ++i)
 	{
@@ -218,7 +218,7 @@ inline void lua_object< std::vector<std::string> >::from_type(lua_State *L, std:
 template <>
 inline std::shared_ptr<config> lua_object<config>::to_type(lua_State *L, int n)
 {
-	std::shared_ptr<config> cfg(new config());
+	auto cfg = std::make_shared<config>();
 	luaW_toconfig(L, n, *cfg);
 	return cfg;
 }
@@ -233,14 +233,13 @@ inline void lua_object<config>::from_type(lua_State *L, std::shared_ptr<config> 
 template <>
 inline std::shared_ptr<terrain_filter> lua_object<terrain_filter>::to_type(lua_State *L, int n)
 {
-	std::shared_ptr<config> cfg(new config());
-	std::shared_ptr<vconfig> vcfg(new vconfig(*cfg));
+	auto cfg = std::make_shared<config>();
+	auto vcfg = std::make_shared<vconfig>(*cfg);
 	if (!luaW_tovconfig(L, n, *vcfg)) {
 		cfg->add_child("not");
 	}
 	vcfg->make_safe();
-	std::shared_ptr<terrain_filter> tf(new terrain_filter(*vcfg, resources::filter_con, false));
-	return tf;
+	return std::make_shared<terrain_filter>(*vcfg, resources::filter_con, false);
 }
 
 template <>
@@ -260,8 +259,7 @@ inline void lua_object<terrain_filter>::from_type(lua_State *L, std::shared_ptr<
 template <>
 inline std::shared_ptr<std::vector<target> > lua_object< std::vector<target> >::to_type(lua_State *L, int n)
 {
-	std::shared_ptr<std::vector<target>> targets(new std::vector<target>());
-	std::back_insert_iterator< std::vector<target> > tg(*targets);
+	auto targets = std::make_shared<std::vector<target>>();
 	int l = lua_rawlen(L, n);
 
 	for (int i = 1; i <= l; ++i)
@@ -298,7 +296,7 @@ inline std::shared_ptr<std::vector<target> > lua_object< std::vector<target> >::
 
 		map_location ml(x, y, wml_loc());
 
-		*tg = target(ml, value, type);
+		targets->emplace_back(ml, value, type);
 	}
 
 	lua_settop(L, n);
