@@ -17,17 +17,13 @@
 #include "scripting/lua_widget.hpp"
 
 #include "serialization/string_view.hpp"
-
-#include <type_traits>
-#include <boost/mpl/not.hpp>
-#include <boost/mpl/and.hpp>
-#include <boost/mpl/has_xxx.hpp>
 #include "tstring.hpp"
 #include "map/location.hpp"
 #include "lua/lauxlib.h"
 #include "lua/lua.h"
 
 #include <cassert>
+#include <type_traits>
 
 class enum_tag;
 
@@ -35,43 +31,34 @@ struct lua_index_raw { int index; };
 
 namespace lua_check_impl
 {
-	namespace detail
-	{
-		BOOST_MPL_HAS_XXX_TRAIT_DEF(value_type)
-		BOOST_MPL_HAS_XXX_TRAIT_DEF(iterator)
-		BOOST_MPL_HAS_XXX_TRAIT_DEF(size_type)
-		BOOST_MPL_HAS_XXX_TRAIT_DEF(reference)
-		BOOST_MPL_HAS_XXX_TRAIT_DEF(key_type)
-		BOOST_MPL_HAS_XXX_TRAIT_DEF(mapped_type)
-		BOOST_MPL_HAS_XXX_TRAIT_DEF(first_type)
-		BOOST_MPL_HAS_XXX_TRAIT_DEF(second_type)
-	}
+	template<typename T, typename T2 = void>
+	struct is_container : std::false_type {};
 
-	template<typename T, typename T2 = std::remove_reference_t<T>>
-	struct is_container
-		: boost::mpl::bool_<
-			detail::has_value_type<T2>::value &&
-			detail::has_iterator<T2>::value &&
-			detail::has_size_type<T2>::value &&
-			detail::has_reference<T2>::value
-		>
-	{};
+	template<typename T>
+	struct is_container<T, std::void_t<
+		typename std::decay_t<T>::value_type,
+		typename std::decay_t<T>::iterator,
+		typename std::decay_t<T>::size_type,
+		typename std::decay_t<T>::reference>
+	> : std::true_type {};
 
-	template<typename T, typename T2 = std::remove_reference_t<T>>
-	struct is_map
-		: boost::mpl::bool_<
-			detail::has_key_type<T2>::value &&
-			detail::has_mapped_type<T2>::value
-		>
-	{};
+	template<typename T, typename T2 = void>
+	struct is_map : std::false_type {};
 
-	template<typename T, typename T2 = std::remove_reference_t<T>>
-	struct is_pair
-		: boost::mpl::bool_<
-			detail::has_first_type<T2>::value &&
-			detail::has_second_type<T2>::value
-		>
-	{};
+	template<typename T>
+	struct is_map<T, std::void_t<
+		typename std::decay_t<T>::key_type,
+		typename std::decay_t<T>::mapped_type>
+	> : std::true_type {};
+
+	template<typename T, typename T2 = void>
+	struct is_pair : std::false_type {};
+
+	template<typename T>
+	struct is_pair<T, std::void_t<
+		typename std::decay_t<T>::first_type,
+		typename std::decay_t<T>::second_type>
+	> : std::true_type {};
 
 	template<typename T>
 	std::enable_if_t<std::is_same_v<T, lua_index_raw>, lua_index_raw>
