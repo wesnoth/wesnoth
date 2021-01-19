@@ -28,7 +28,6 @@
 #include "preferences/game.hpp"
 #include "preferences/general.hpp"
 #include "preferences/lobby.hpp"
-#include "utils/general.hpp"
 #include "video.hpp"
 
 // Sub-dialog includes

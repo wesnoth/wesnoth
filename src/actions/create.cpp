@@ -46,6 +46,7 @@
 #include "units/udisplay.hpp"
 #include "units/filter.hpp"
 #include "units/types.hpp"
+#include "utils/general.hpp"
 #include "variable.hpp"
 #include "whiteboard/manager.hpp"
 

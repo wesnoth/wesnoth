@@ -29,7 +29,6 @@
 #include "serialization/base64.hpp"
 #include "serialization/string_utils.hpp"
 #include "sdl/rect.hpp"
-#include "utils/general.hpp"
 
 #include <SDL2/SDL_image.h>
 

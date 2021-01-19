@@ -15,8 +15,8 @@
 #pragma once
 
 #include "tstring.hpp"
-#include "utils/general.hpp"
 
+#include <algorithm>
 #include <vector>
 
 class config;

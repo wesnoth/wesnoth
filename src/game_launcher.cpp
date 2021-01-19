@@ -53,7 +53,6 @@
 #include "serialization/string_utils.hpp" // for split
 #include "statistics.hpp"
 #include "tstring.hpp"       // for operator==, operator!=
-#include "utils/general.hpp" // for clamp
 #include "video.hpp"         // for CVideo
 #include "wesnothd_connection_error.hpp"
 #include "wml_exception.hpp" // for wml_exception

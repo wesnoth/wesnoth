@@ -23,7 +23,6 @@
 #include "gui/widgets/generator.hpp"
 #include "gettext.hpp"
 #include "utils/const_clone.hpp"
-#include "utils/general.hpp"
 
 #include <functional>
 

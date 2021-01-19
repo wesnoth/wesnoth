@@ -31,7 +31,6 @@
 #include "sdl/point.hpp"
 #include "serialization/parser.hpp"
 #include "sound.hpp"
-#include "utils/general.hpp"
 #include "video.hpp" // non_interactive()
 #include "game_config_view.hpp"
 

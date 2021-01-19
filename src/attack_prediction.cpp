@@ -42,7 +42,6 @@
 #include "preferences/general.hpp"
 #include "random.hpp"
 #include "serialization/string_utils.hpp"
-#include "utils/general.hpp"
 
 #include <array>
 #include <cfloat>

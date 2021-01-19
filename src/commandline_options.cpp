@@ -19,7 +19,6 @@
 #include "lexical_cast.hpp"
 #include "log.hpp"                      // for logger, set_strict_severity, etc
 #include "serialization/string_utils.hpp"  // for split
-#include "utils/general.hpp" // for clamp
 
 #include <boost/any.hpp>                // for any
 #include <boost/program_options/cmdline.hpp>

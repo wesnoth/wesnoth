@@ -18,7 +18,6 @@
 #include "config.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
-#include "utils/general.hpp"
 #include "utils/math.hpp"
 #include "game_version.hpp"
 #include "wesconfig.h"

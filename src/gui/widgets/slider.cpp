@@ -25,7 +25,6 @@
 #include "gui/widgets/window.hpp"
 #include "sdl/rect.hpp"
 #include "sound.hpp"
-#include "utils/general.hpp"
 #include "gettext.hpp"
 #include "wml_exception.hpp"
 
