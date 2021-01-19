@@ -261,7 +261,7 @@ int mapgen_lua_kernel::intf_get_variable(lua_State *L)
 	variable_access_const v(m, vars_ ? *vars_ : empty_cfg);
 	return luaW_pushvariable(L, v) ? 1 : 0;
 }
-std::string mapgen_lua_kernel::create_map(const char * prog, const config & generator, utils::optional<uint32_t> seed) // throws game::lua_error
+std::string mapgen_lua_kernel::create_map(const char * prog, const config & generator, std::optional<uint32_t> seed) // throws game::lua_error
 {
 	random_seed_ = seed;
 	default_rng_ = std::mt19937(get_random_seed());
@@ -277,7 +277,7 @@ std::string mapgen_lua_kernel::create_map(const char * prog, const config & gene
 	return lua_tostring(mState, -1);
 }
 
-config mapgen_lua_kernel::create_scenario(const char * prog, const config & generator, utils::optional<uint32_t> seed) // throws game::lua_error
+config mapgen_lua_kernel::create_scenario(const char * prog, const config & generator, std::optional<uint32_t> seed) // throws game::lua_error
 {
 	random_seed_ = seed;
 	default_rng_ = std::mt19937(get_random_seed());
@@ -301,7 +301,7 @@ config mapgen_lua_kernel::create_scenario(const char * prog, const config & gene
 uint32_t mapgen_lua_kernel::get_random_seed()
 {
 	if(random_seed_) {
-		return random_seed_.value()++;
+		return (*random_seed_)++;
 	}
 	else {
 		return lua_kernel_base::get_random_seed();

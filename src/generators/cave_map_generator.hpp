@@ -12,14 +12,12 @@
    See the COPYING file for more details.
 */
 
-/** @file */
-
 #pragma once
 
 #include "config.hpp"
 #include "generators/map_generator.hpp"
 #include "terrain/translation.hpp"
-#include "utils/optional_fwd.hpp"
+#include <optional>
 
 #include <set>
 #include <random>
@@ -33,13 +31,13 @@ public:
 
 	std::string config_name() const;
 
-	std::string create_map(utils::optional<uint32_t> randomseed = utils::nullopt);
-	config create_scenario(utils::optional<uint32_t> randomseed = utils::nullopt);
+	std::string create_map(std::optional<uint32_t> randomseed = {});
+	config create_scenario(std::optional<uint32_t> randomseed = {});
 
 private:
 	struct cave_map_generator_job
 	{
-		cave_map_generator_job(const cave_map_generator& params, utils::optional<uint32_t> randomseed = utils::nullopt);
+		cave_map_generator_job(const cave_map_generator& params, std::optional<uint32_t> randomseed = {});
 
 		struct chamber {
 			chamber()

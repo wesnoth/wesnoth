@@ -132,7 +132,7 @@ unsigned slider_base::get_state() const
 void slider_base::set_slider_position(int item_position)
 {
 	// Set the value always execute since we update a part of the state.
-	item_position_ = utils::clamp(item_position, 0, item_last_);
+	item_position_ = std::clamp(item_position, 0, item_last_);
 
 	// Determine the pixel offset of the item position.
 	positioner_offset_ = rounded_division(item_position_, max_offset(), item_last_) + offset_before();
@@ -176,7 +176,7 @@ void slider_base::recalculate()
 void slider_base::move_positioner(int new_offset)
 {
 	int max_offset = this->max_offset();
-	new_offset = utils::clamp(new_offset, 0, max_offset);
+	new_offset = std::clamp(new_offset, 0, max_offset);
 
 	slider_base::slider_position_t final_offset = {new_offset, max_offset};
 	update_slider_position(final_offset);

@@ -16,6 +16,7 @@
 #include "config.hpp"
 #include "server/common/resultsets/rs_base.hpp"
 #include "server/common/resultsets/ban_check.hpp"
+#include "server/common/simple_wml.hpp"
 
 #include <mysql/mysql.h>
 #include "mariadb++/account.hpp"
@@ -56,6 +57,15 @@ class dbconn
 		 * @see forum_user_handler::get_tournaments().
 		 */
 		std::string get_tournaments();
+
+		/**
+		 * This is an asynchronous query that is executed on a separate connection to retrieve the game history for the provided player.
+		 * 
+		 * @param player_id The forum ID of the player to get the game history for.
+		 * @param offset The offset to provide to the database for where to start returning rows from.
+		 * @return The simple_wml document containing the query results, or simply the @a error attribute if an exception is thrown.
+		 */
+		std::unique_ptr<simple_wml::document> get_game_history(int player_id, int offset);
 
 		/**
 		 * @see forum_user_handler::user_exists().

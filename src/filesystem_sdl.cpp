@@ -116,11 +116,11 @@ typedef std::pair<int64_t, std::ios_base::seekdir> offset_dir;
 static offset_dir translate_seekdir(int64_t offset, int whence) {
 	switch(whence){
 	case RW_SEEK_SET:
-		return std::make_pair(std::max<int64_t>(0, offset), std::ios_base::beg);
+		return std::pair(std::max<int64_t>(0, offset), std::ios_base::beg);
 	case RW_SEEK_CUR:
-		return std::make_pair(offset, std::ios_base::cur);
+		return std::pair(offset, std::ios_base::cur);
 	case RW_SEEK_END:
-		return std::make_pair(std::min<int64_t>(0, offset), std::ios_base::end);
+		return std::pair(std::min<int64_t>(0, offset), std::ios_base::end);
 	default:
 		assert(false);
 		throw "assertion ignored";

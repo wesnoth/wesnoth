@@ -37,52 +37,6 @@ namespace gui2
 namespace dialogs
 {
 
-/*WIKI
- * @page = GUIWindowDefinitionWML
- * @order = 2_custom_tod
- *
- * == Custom Schedules ==
- *
- * This shows the dialog to modify tod schedules.
- *
- * @begin{table}{dialog_widgets}
- *
- * current_tod_name & & text_box & m &
- *         The name of the time of day(ToD). $
- *
- * current_tod_id & & text_box & m &
- *         The id of the time of day(ToD). $
- *
- * current_tod_image & & image & m &
- *         The image for the time of day(ToD). $
- *
- * current_tod_mask & & image & m &
- *         The image mask for the time of day(ToD). $
- *
- * current_tod_sonund & & label & m &
- *         The sound for the time of day(ToD). $
- *
- * next_tod & & button & m &
- *         Selects the next ToD. $
- *
- * prev_tod & & button & m &
- *         Selects the previous ToD. $
- *
- * lawful_bonus & & slider & m &
- *         Sets the Lawful Bonus for the current ToD. $
- *
- * tod_red & & slider & m &
- *         Sets the red component of the current ToD. $
- *
- * tod_green & & slider & m &
- *         Sets the green component of the current ToD. $
- *
- * tod_blue & & slider & m &
- *         Sets the blue component of the current ToD. $
- *
- * @end{table}
- */
-
 static custom_tod::string_pair tod_getter_image(const time_of_day& tod)
 {
 	static std::string type = "image";

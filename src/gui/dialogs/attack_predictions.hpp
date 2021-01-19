@@ -29,9 +29,7 @@ class drawing;
 
 namespace dialogs
 {
-
-using hp_probability_t = std::pair<int, double>;
-using hp_probability_vector = std::vector<hp_probability_t>;
+using hp_probability_vector = std::vector<std::pair<int, double>>;
 
 class attack_predictions : public modal_dialog
 {

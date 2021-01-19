@@ -74,10 +74,7 @@ unit_ptr lua_unit::get_shared() const
 bool lua_unit::put_map(const map_location &loc)
 {
 	if (ptr) {
-		unit_map::unit_iterator unit_it;
-		bool success = false;
-
-		std::tie(unit_it, success) = resources::gameboard->units().replace(loc, ptr);
+		auto [unit_it, success] = resources::gameboard->units().replace(loc, ptr);
 
 		if(success) {
 			ptr.reset();
@@ -345,10 +342,10 @@ static int impl_unit_get(lua_State *L)
 		unit::upkeep_t upkeep = u.upkeep_raw();
 
 		// Need to keep these separate in order to ensure an int value is always used if applicable.
-		if(int* v = boost::get<int>(&upkeep)) {
+		if(int* v = utils::get_if<int>(&upkeep)) {
 			lua_push(L, *v);
 		} else {
-			const std::string type = boost::apply_visitor(unit::upkeep_type_visitor(), upkeep);
+			const std::string type = utils::visit(unit::upkeep_type_visitor{}, upkeep);
 			lua_push(L, type);
 		}
 
@@ -472,7 +469,7 @@ static int impl_unit_set(lua_State *L)
 
 	if(strcmp(m, "upkeep") == 0) {
 		if(lua_isnumber(L, 3)) {
-			u.set_upkeep(luaL_checkinteger(L, 3));
+			u.set_upkeep(static_cast<int>(luaL_checkinteger(L, 3)));
 			return 0;
 		}
 		const char* v = luaL_checkstring(L, 3);
@@ -530,10 +527,7 @@ static int impl_unit_set(lua_State *L)
 					return luaL_argerror(L, 2, err_msg.c_str());
 				}
 
-				unit_map::iterator unit_iterator = gb->units().end();
-				bool success = false;
-
-				std::tie(unit_iterator, success) = gb->units().move(src, dst);
+				auto [unit_iterator, success] = gb->units().move(src, dst);
 
 				if(success) {
 					unit_iterator->anim_comp().set_standing();

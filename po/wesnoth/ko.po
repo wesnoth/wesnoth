@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1.1+dev\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2020-12-18 22:26-0300\n"
+"POT-Creation-Date: 2021-01-16 17:18+0300\n"
 "PO-Revision-Date: 2019-09-30 13:37+0900\n"
 "Last-Translator: mistzone <drier22@gmail.com>\n"
 "Language-Team: none\n"
@@ -219,32 +219,11 @@ msgstr ""
 "메시지는 비활성화되어 있어도 로그에 계속 표시됩니다.또한 지원 중단 로그 도메"
 "인은 인쇄할 메시지 수를 제어합니다."
 
-#. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:172
-msgid "Use experimental PRNG combat"
-msgstr "전투에 유사난수를 사용한다"
-
-#. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:173
-msgid ""
-"Enables more determinstic chance-to-hit calculations. This is an "
-"experimental feature designed to bring the observed hit/miss rate more in "
-"line with the displayed percentages.\n"
-"\n"
-"Note: this option only affects singleplayer, and the ‘Save random seed’ "
-"option must also be enabled when creating a game for this to work."
-msgstr ""
-"계산을 하는 데에 더 결정적인 기회를 가능하게 합니다. 이것은 관찰된 수치를 화"
-"면에 보이는 퍼센트와 함께 더 실험적인 기능을 보여줍니다.\n"
-"\n"
-"메모: 이 옵션은 싱글플레이어에게만 영향을 주며,게임을 만들때 '임의 시드 저"
-"장' 옵션도 활성화 해야 작동합니다."
-
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [unstore_unit]
 #. [lua]: set_status
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:365
-#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1075
+#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1078
 msgid "poisoned"
 msgstr "중독"
 
@@ -656,284 +635,284 @@ msgid "Bots"
 msgstr "IRC 봇"
 
 #. [about]
-#: data/core/about_i18n.cfg:4
+#: data/core/about_i18n.cfg:6
 msgid "Afrikaans Translation"
 msgstr "아프리카어 번역 담당"
 
 #. [about]
-#: data/core/about_i18n.cfg:24
+#: data/core/about_i18n.cfg:26
 #, fuzzy
 #| msgid "Greek Translation"
 msgid "Ancient Greek Translation"
 msgstr "그리스어 번역 담당"
 
 #. [about]
-#: data/core/about_i18n.cfg:32
+#: data/core/about_i18n.cfg:34
 msgid "Arabic Translation"
 msgstr "아랍어 번역 담당"
 
 #. [about]
-#: data/core/about_i18n.cfg:40
+#: data/core/about_i18n.cfg:42
 #, fuzzy
 #| msgid "Estonian Translation"
 msgid "Asturian Translation"
 msgstr "에스토니아어 번역 담당"
 
 #. [about]
-#: data/core/about_i18n.cfg:46
+#: data/core/about_i18n.cfg:48
 msgid "Basque Translation"
 msgstr "바스크어 번역 담당"
 
 #. [about]
-#: data/core/about_i18n.cfg:59
+#: data/core/about_i18n.cfg:61
 msgid "Bulgarian Translation"
 msgstr "불가리아어 번역 담당"
 
 #. [about]
-#: data/core/about_i18n.cfg:82
+#: data/core/about_i18n.cfg:84
 msgid "Catalan Translation"
 msgstr "카탈로니아어 번역 담당"
 
 #. [about]
-#: data/core/about_i18n.cfg:128
+#: data/core/about_i18n.cfg:130
 msgid "Chinese Translation"
 msgstr "중국어 번역 담당"
 
 #. [about]
-#: data/core/about_i18n.cfg:219
+#: data/core/about_i18n.cfg:221
 msgid "Chinese (Taiwan) Translation"
 msgstr "중국어 (대만) 번역 담당"
 
 #. [about]
-#: data/core/about_i18n.cfg:232
+#: data/core/about_i18n.cfg:234
 msgid "Croatian Translation"
 msgstr "크로아티아어 번역 담당"
 
 #. [about]
-#: data/core/about_i18n.cfg:242
+#: data/core/about_i18n.cfg:244
 msgid "Czech Translation"
 msgstr "체코어 번역 담당"
 
 #. [about]
-#: data/core/about_i18n.cfg:311
+#: data/core/about_i18n.cfg:313
 msgid "Danish Translation"
 msgstr "덴마크어 번역 담당"
 
 #. [about]
-#: data/core/about_i18n.cfg:342
+#: data/core/about_i18n.cfg:344
 msgid "Dutch Translation"
 msgstr "네덜란드어 번역 담당"
 
 #. [about]
-#: data/core/about_i18n.cfg:413
+#: data/core/about_i18n.cfg:415
 msgid "English (GB) Translation"
 msgstr "영어 (영국) 번역 담당"
 
 #. [about]
-#: data/core/about_i18n.cfg:438
+#: data/core/about_i18n.cfg:440
 msgid "English (Shaw) Translation"
 msgstr "영어 Shaw식 음역 담당"
 
 #. [about]
-#: data/core/about_i18n.cfg:456
+#: data/core/about_i18n.cfg:458
 msgid "Esperanto Translation"
 msgstr "에스페란토어 번역 담당"
 
 #. [about]
-#: data/core/about_i18n.cfg:475
+#: data/core/about_i18n.cfg:477
 msgid "Estonian Translation"
 msgstr "에스토니아어 번역 담당"
 
 #. [about]
-#: data/core/about_i18n.cfg:485
+#: data/core/about_i18n.cfg:487
 msgid "Filipino Translation"
 msgstr "필리핀어 번역 담당"
 
 #. [about]
-#: data/core/about_i18n.cfg:495
+#: data/core/about_i18n.cfg:497
 msgid "Finnish Translation"
 msgstr "핀란드어 번역 담당"
 
 #. [about]
-#: data/core/about_i18n.cfg:544
+#: data/core/about_i18n.cfg:546
 msgid "French Translation"
 msgstr "프랑스어 번역 담당"
 
 #. [about]
-#: data/core/about_i18n.cfg:706
+#: data/core/about_i18n.cfg:708
 msgid "Friulian Translation"
 msgstr "프리울리 어 번역 담당"
 
 #. [about]
-#: data/core/about_i18n.cfg:713
+#: data/core/about_i18n.cfg:715
 msgid "Galician Translation"
 msgstr "갈리시아어 번역 담당"
 
 #. [about]
-#: data/core/about_i18n.cfg:749
+#: data/core/about_i18n.cfg:751
 msgid "German Translation"
 msgstr "독일어 번역 담당"
 
 #. [about]
-#: data/core/about_i18n.cfg:854
+#: data/core/about_i18n.cfg:856
 msgid "Greek Translation"
 msgstr "그리스어 번역 담당"
 
 #. [about]
-#: data/core/about_i18n.cfg:897
+#: data/core/about_i18n.cfg:899
 msgid "Hebrew Translation"
 msgstr "히브리어 번역 담당"
 
 #. [about]
-#: data/core/about_i18n.cfg:910
+#: data/core/about_i18n.cfg:912
 msgid "Hungarian Translation"
 msgstr "헝가리어 번역 담당"
 
 #. [about]
-#: data/core/about_i18n.cfg:971
+#: data/core/about_i18n.cfg:973
 msgid "Icelandic Translation"
 msgstr "아이슬란드어 번역 담당"
 
 #. [about]
-#: data/core/about_i18n.cfg:981
+#: data/core/about_i18n.cfg:983
 msgid "Indonesian Translation"
 msgstr "인도네시아어 번역 담당"
 
 #. [about]
-#: data/core/about_i18n.cfg:1004
+#: data/core/about_i18n.cfg:1006
 msgid "Irish Translation"
 msgstr "아일랜드어 번역 담당"
 
 #. [about]
-#: data/core/about_i18n.cfg:1011
+#: data/core/about_i18n.cfg:1013
 msgid "Italian Translation"
 msgstr "이탈리아어 번역 담당"
 
 #. [about]
-#: data/core/about_i18n.cfg:1058
+#: data/core/about_i18n.cfg:1060
 msgid "Japanese Translation"
 msgstr "일본어 번역 담당"
 
 #. [about]
-#: data/core/about_i18n.cfg:1151
+#: data/core/about_i18n.cfg:1153
 msgid "Korean Translation"
 msgstr "한국어 번역 담당"
 
 #. [about]
-#: data/core/about_i18n.cfg:1159
+#: data/core/about_i18n.cfg:1161
 msgid "Latin Translation"
 msgstr "라틴어 번역 담당"
 
 #. [about]
-#: data/core/about_i18n.cfg:1185
+#: data/core/about_i18n.cfg:1187
 msgid "Latvian Translation"
 msgstr "라트비아어 번역 담당"
 
 #. [about]
-#: data/core/about_i18n.cfg:1200
+#: data/core/about_i18n.cfg:1202
 msgid "Lithuanian Translation"
 msgstr "리투아니아어 번역 담당"
 
 #. [about]
-#: data/core/about_i18n.cfg:1225
+#: data/core/about_i18n.cfg:1227
 msgid "Macedonian Translation"
 msgstr "마케도니아어 번역 담당"
 
 #. [about]
-#: data/core/about_i18n.cfg:1232
+#: data/core/about_i18n.cfg:1234
 msgid "Marathi Translation"
 msgstr "마라티어 번역 담당"
 
 #. [about]
-#: data/core/about_i18n.cfg:1241
+#: data/core/about_i18n.cfg:1243
 msgid "Norwegian Translation"
 msgstr "노르웨이어 번역 담당"
 
 #. [about]
-#: data/core/about_i18n.cfg:1266
+#: data/core/about_i18n.cfg:1268
 msgid "Old English Translation"
 msgstr "옛 영어 번역 담당"
 
 #. [about]
-#: data/core/about_i18n.cfg:1284
+#: data/core/about_i18n.cfg:1286
 msgid "Polish Translation"
 msgstr "폴란드어 번역 담당"
 
 #. [about]
-#: data/core/about_i18n.cfg:1340
+#: data/core/about_i18n.cfg:1342
 msgid "Portuguese Translation"
 msgstr "포르투갈어 번역 담당"
 
 #. [about]
-#: data/core/about_i18n.cfg:1354
+#: data/core/about_i18n.cfg:1356
 msgid "Portuguese (Brazil) Translation"
 msgstr "포르투갈어 (브라질) 번역 담당"
 
 #. [about]
-#: data/core/about_i18n.cfg:1412
+#: data/core/about_i18n.cfg:1414
 msgid "Romanian Translation"
 msgstr "루마니아어 번역 담당"
 
 #. [about]
-#: data/core/about_i18n.cfg:1420
+#: data/core/about_i18n.cfg:1422
 msgid "Russian Translation"
 msgstr "러시아어 번역 담당"
 
 #. [about]
-#: data/core/about_i18n.cfg:1515
+#: data/core/about_i18n.cfg:1517
 #, fuzzy
 #| msgid "Galician Translation"
 msgid "Scottish Gaelic Translation"
 msgstr "갈리시아어 번역 담당"
 
 #. [about]
-#: data/core/about_i18n.cfg:1524
+#: data/core/about_i18n.cfg:1526
 msgid "Serbian Translation"
 msgstr "세르비아어 번역 담당"
 
 #. [about]
-#: data/core/about_i18n.cfg:1543
+#: data/core/about_i18n.cfg:1545
 msgid "Slovak Translation"
 msgstr "슬로바키아어 번역 담당"
 
 #. [about]
-#: data/core/about_i18n.cfg:1572
+#: data/core/about_i18n.cfg:1574
 msgid "Slovenian Translation"
 msgstr "슬로베니아어 번역 담당"
 
 #. [about]
-#: data/core/about_i18n.cfg:1588
+#: data/core/about_i18n.cfg:1590
 msgid "Spanish Translation"
 msgstr "스페인어 번역 담당"
 
 #. [about]
-#: data/core/about_i18n.cfg:1670
+#: data/core/about_i18n.cfg:1672
 msgid "Swedish Translation"
 msgstr "스웨덴어 번역 담당"
 
 #. [about]
-#: data/core/about_i18n.cfg:1715
+#: data/core/about_i18n.cfg:1717
 msgid "Turkish Translation"
 msgstr "터키어 번역 담당"
 
 #. [about]
-#: data/core/about_i18n.cfg:1740
+#: data/core/about_i18n.cfg:1742
 msgid "Ukrainian Translation"
 msgstr "우크라이나어 번역 담당"
 
 #. [about]
-#: data/core/about_i18n.cfg:1756
+#: data/core/about_i18n.cfg:1758
 msgid "Valencian (southern Catalan) Translation"
 msgstr "발렌시아어 (남부 카탈로니아어) 번역 담당"
 
 #. [about]
-#: data/core/about_i18n.cfg:1769
+#: data/core/about_i18n.cfg:1771
 msgid "Vietnamese Translation"
 msgstr "베트남어 번역 담당"
 
 #. [about]
 #. Real Acadèmia de Cultura Valenciana
-#: data/core/about_i18n.cfg:1789
+#: data/core/about_i18n.cfg:1791
 msgid "RACV’s Translation"
 msgstr "RACV식 발렌시아 번역 담당"
 
@@ -1152,8 +1131,8 @@ msgstr "곡물 다발"
 msgid "Runic Hammer"
 msgstr "신비한 망치"
 
-#. [object]
 #. [item]: id=holly-water
+#. [object]
 #: data/core/editor/items.cfg:282 data/core/macros/items.cfg:283
 msgid "Holy Water"
 msgstr "성수"
@@ -1196,8 +1175,8 @@ msgstr "녹색 물약"
 msgid "Gray Potion"
 msgstr "회색 물약"
 
-#. [object]: id={ID}
 #. [item]: id=potion-poison
+#. [object]: id={ID}
 #: data/core/editor/items.cfg:336 data/core/macros/items.cfg:246
 msgid "Poison"
 msgstr "독"
@@ -1267,8 +1246,8 @@ msgstr "지팡이"
 msgid "Stone Tablet"
 msgstr "석판"
 
-#. [object]
 #. [item]: id=storm-trident
+#. [object]
 #: data/core/editor/items.cfg:420 data/core/macros/items.cfg:529
 msgid "Storm Trident"
 msgstr "폭풍의 삼지창"
@@ -3887,14 +3866,14 @@ msgstr "통과불능"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=fog
-#: data/core/team-colors.cfg:224 src/game_initialization/lobby_data.cpp:449
+#: data/core/team-colors.cfg:224 src/game_initialization/lobby_data.cpp:450
 msgid "Fog"
 msgstr "안개"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=shroud
-#: data/core/team-colors.cfg:230 src/game_initialization/lobby_data.cpp:452
-#: src/game_initialization/lobby_data.cpp:455
+#: data/core/team-colors.cfg:230 src/game_initialization/lobby_data.cpp:453
+#: src/game_initialization/lobby_data.cpp:456
 msgid "Shroud"
 msgstr "장막"
 
@@ -4307,31 +4286,31 @@ msgstr "잘못된 지원 중단 수준 (1-4이어야 함)"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1075
+#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1078
 msgid "female^poisoned"
 msgstr "중독"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:128 src/actions/attack.cpp:1082
+#: data/lua/wml/harm_unit.lua:128 src/actions/attack.cpp:1085
 msgid "female^slowed"
 msgstr "둔화"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:128 src/actions/attack.cpp:1082
+#: data/lua/wml/harm_unit.lua:128 src/actions/attack.cpp:1085
 msgid "slowed"
 msgstr "둔화"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:129 src/actions/attack.cpp:1088
+#: data/lua/wml/harm_unit.lua:129 src/actions/attack.cpp:1091
 msgid "female^petrified"
 msgstr "석화"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:129 src/actions/attack.cpp:1088
+#: data/lua/wml/harm_unit.lua:129 src/actions/attack.cpp:1091
 msgid "petrified"
 msgstr "석화"
 
@@ -4348,8 +4327,8 @@ msgstr "치료불가"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: wesnoth.wml_actions.message
-#: data/lua/wml/message.lua:433 src/scripting/game_lua_kernel.cpp:2897
-#: src/scripting/game_lua_kernel.cpp:2932
+#: data/lua/wml/message.lua:433 src/scripting/game_lua_kernel.cpp:2896
+#: src/scripting/game_lua_kernel.cpp:2931
 msgid "input"
 msgstr "입력"
 
@@ -5583,7 +5562,7 @@ msgstr ""
 msgid "waiting for^an advancement choice"
 msgstr "승급 선택"
 
-#: src/actions/attack.cpp:605 src/actions/attack.cpp:1365
+#: src/actions/attack.cpp:606 src/actions/attack.cpp:1368
 msgid "An invalid attacker weapon got selected."
 msgstr "공격에 적합하지 않은 무기가 선택되었습니다."
 
@@ -5635,39 +5614,39 @@ msgstr "해독됨"
 msgid "female^cured"
 msgstr "해독됨"
 
-#: src/actions/move.cpp:622
+#: src/actions/move.cpp:613
 msgid "Ambushed!"
 msgstr "기습당했다!"
 
-#: src/actions/move.cpp:1130
+#: src/actions/move.cpp:1121
 msgid "Failed teleport! Exit not empty"
 msgstr "전이 실패! 출구가 비어있지 않음"
 
-#: src/actions/move.cpp:1146
+#: src/actions/move.cpp:1137
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
 msgstr[0] "아군 × $friends"
 
-#: src/actions/move.cpp:1147
+#: src/actions/move.cpp:1138
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
 msgstr[0] "적군 × $enemies"
 
-#: src/actions/move.cpp:1148
+#: src/actions/move.cpp:1139
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
 msgstr "유닛 발견! ($friendphrase, $enemyphrase)"
 
-#: src/actions/move.cpp:1152
+#: src/actions/move.cpp:1143
 msgid "Enemy unit sighted!"
 msgid_plural "$enemies enemy units sighted!"
 msgstr[0] "적 유닛 × $enemies 발견!"
 
-#: src/actions/move.cpp:1156
+#: src/actions/move.cpp:1147
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
 msgstr[0] "우호 유닛 × $friends 발견"
 
-#: src/actions/move.cpp:1171
+#: src/actions/move.cpp:1162
 msgid "(press $hotkey to keep moving)"
 msgstr "(계속 이동하려면 $hotkey 키를 누르세요)"
 
@@ -5830,7 +5809,7 @@ msgid "Do you really wish to continue?"
 msgstr "정말로 이 게임을 지우시겠습니까?"
 
 #: src/addon/client.cpp:546 src/addon/manager_ui.cpp:172
-#: src/game_initialization/multiplayer.cpp:202
+#: src/game_initialization/multiplayer.cpp:358
 msgid "Confirm"
 msgstr "확인"
 
@@ -6119,43 +6098,43 @@ msgstr ""
 msgid "Unspecified validation failure."
 msgstr ""
 
-#: src/chat_command_handler.cpp:111
+#: src/chat_command_handler.cpp:112
 msgid "Added to ignore list: $nick"
 msgstr "무시할 목록에 추가: $nick"
 
-#: src/chat_command_handler.cpp:111
+#: src/chat_command_handler.cpp:112
 msgid "ignores list"
 msgstr "무시할 목록"
 
-#: src/chat_command_handler.cpp:115 src/chat_command_handler.cpp:134
+#: src/chat_command_handler.cpp:116 src/chat_command_handler.cpp:135
 msgid "Invalid username: $nick"
 msgstr "잘못된 사용자 이름: $nick"
 
-#: src/chat_command_handler.cpp:130
+#: src/chat_command_handler.cpp:131
 msgid "Added to friends list: $nick"
 msgstr "친구 목록에 추가: $nick"
 
-#: src/chat_command_handler.cpp:130
+#: src/chat_command_handler.cpp:131
 msgid "friends list"
 msgstr "친구 목록"
 
-#: src/chat_command_handler.cpp:146
+#: src/chat_command_handler.cpp:147
 msgid "Removed from list: $nick"
 msgstr "목록에서 제외: $nick"
 
-#: src/chat_command_handler.cpp:146
+#: src/chat_command_handler.cpp:147
 msgid "friends and ignores list"
 msgstr "친구 및 무시 목록"
 
-#: src/chat_command_handler.cpp:156
+#: src/chat_command_handler.cpp:157
 msgid "version"
 msgstr "버전"
 
-#: src/chat_command_handler.cpp:168
+#: src/chat_command_handler.cpp:169
 msgid "nick registration"
 msgstr "대화명 등록"
 
-#: src/chat_command_handler.cpp:168
+#: src/chat_command_handler.cpp:169
 msgid "requesting information for user $nick"
 msgstr "$nick 사용자 정보를 요구하기"
 
@@ -6163,7 +6142,7 @@ msgstr "$nick 사용자 정보를 요구하기"
 msgid "(A) — admin command"
 msgstr "(A) — 관리자 명령"
 
-#: src/chat_command_handler.hpp:58 src/menu_events.cpp:1207
+#: src/chat_command_handler.hpp:58 src/menu_events.cpp:1193
 msgid "(admin only)"
 msgstr "(관지라 전용)"
 
@@ -6426,62 +6405,62 @@ msgstr "%b %d %Y"
 msgid "Invalid color in range: "
 msgstr "범위 밖의 무효한 색상: "
 
-#: src/game_config_manager.cpp:243 src/game_config_manager.cpp:253
-#: src/game_config_manager.cpp:265
+#: src/game_config_manager.cpp:241 src/game_config_manager.cpp:251
+#: src/game_config_manager.cpp:263
 msgid "Error validating data core."
 msgstr "코어 데이터의 유효화에 실패했습니다."
 
-#: src/game_config_manager.cpp:244
+#: src/game_config_manager.cpp:242
 msgid "Found a core without id attribute."
 msgstr "id 속성이 없는 코어를 검출했습니다."
 
-#: src/game_config_manager.cpp:245 src/game_config_manager.cpp:256
-#: src/game_config_manager.cpp:269
+#: src/game_config_manager.cpp:243 src/game_config_manager.cpp:254
+#: src/game_config_manager.cpp:267
 msgid "Skipping the core."
 msgstr "코어를 스킵합니다."
 
-#: src/game_config_manager.cpp:254 src/game_config_manager.cpp:266
-#: src/game_config_manager.cpp:289
+#: src/game_config_manager.cpp:252 src/game_config_manager.cpp:264
+#: src/game_config_manager.cpp:287
 msgid "Core ID: "
 msgstr "Core ID:"
 
-#: src/game_config_manager.cpp:255
+#: src/game_config_manager.cpp:253
 msgid "The ID is already in use."
 msgstr "ID는 이미 사용되고 있습니다."
 
-#: src/game_config_manager.cpp:267
+#: src/game_config_manager.cpp:265
 msgid "Core Path: "
 msgstr "Core Path: "
 
-#: src/game_config_manager.cpp:268
+#: src/game_config_manager.cpp:266
 #, fuzzy
 #| msgid "No era information found."
 msgid "File not found."
 msgstr "파일이 발견되지않습니다."
 
-#: src/game_config_manager.cpp:288 src/game_config_manager.cpp:300
+#: src/game_config_manager.cpp:286 src/game_config_manager.cpp:298
 msgid "Error loading core data."
 msgstr "코어 데이터의 읽기에 실패했습니다."
 
-#: src/game_config_manager.cpp:290
+#: src/game_config_manager.cpp:288
 msgid "Error loading the core with named id."
 msgstr "named id를 가지는 코어를 읽는데 실패했습니다."
 
-#: src/game_config_manager.cpp:291
+#: src/game_config_manager.cpp:289
 msgid "Falling back to the default core."
 msgstr "Falling back to the default core."
 
-#: src/game_config_manager.cpp:301
+#: src/game_config_manager.cpp:299
 msgid "Can't locate the default core."
 msgstr "Can't locate the default core."
 
-#: src/game_config_manager.cpp:302
+#: src/game_config_manager.cpp:300
 #, fuzzy
 #| msgid "The game is over."
 msgid "The game will now exit."
 msgstr "게임이 종료될 것입니다"
 
-#: src/game_config_manager.cpp:351
+#: src/game_config_manager.cpp:349
 msgid ""
 "Error loading custom game configuration files. The game will try without "
 "loading add-ons."
@@ -6489,7 +6468,7 @@ msgstr ""
 "커스텀 게임 설정 파일을 읽을 때에 에러가 발생했습니다.부가 기능을 읽지 않고 "
 "게임을 시작합니다."
 
-#: src/game_config_manager.cpp:358
+#: src/game_config_manager.cpp:356
 msgid ""
 "Error loading custom game configuration files. The game will fallback to the "
 "default core files."
@@ -6497,32 +6476,32 @@ msgstr ""
 "커스텀 게임 설정 파일을 읽을 때에 에러가 발생했습니다.디폴트 코어 파일에 폴백"
 "하여 게임을 기동합니다."
 
-#: src/game_config_manager.cpp:367
+#: src/game_config_manager.cpp:365
 msgid ""
 "Error loading default core game configuration files. The game will now exit."
 msgstr ""
 "디폴트 코어의 게임 설정 파일을 읽는데 에러가 발생했습니다. 게임을 종료합니다."
 
-#: src/game_config_manager.cpp:519
+#: src/game_config_manager.cpp:517
 msgid "Use [modify_unit_type]\n"
 msgstr ""
 
-#: src/game_config_manager.cpp:558
+#: src/game_config_manager.cpp:556
 msgid "instead, use the macro with the same name in the [campaign] tag"
 msgstr ""
 
-#: src/game_config_manager.cpp:609
+#: src/game_config_manager.cpp:607
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
 msgstr[0] "이하의 부가 기능에는 문제가 있어, 읽기에 실패했습니다:"
 
-#: src/game_config_manager.cpp:613
+#: src/game_config_manager.cpp:611
 msgid "Please report this to the author or maintainer of this add-on."
 msgid_plural ""
 "Please report this to the respective authors or maintainers of these add-ons."
 msgstr[0] "이 주소의 제작자나 유지자에게 보고해 주십시오."
 
-#: src/game_events/pump.cpp:476 src/game_launcher.cpp:952
+#: src/game_events/pump.cpp:476 src/game_launcher.cpp:923
 msgid "Error: "
 msgstr "에러: "
 
@@ -6542,61 +6521,61 @@ msgstr "정보: "
 msgid "$login|’s game"
 msgstr "$login|의 방"
 
-#: src/game_initialization/connect_engine.cpp:89
+#: src/game_initialization/connect_engine.cpp:98
 msgid "Team"
 msgstr "군단"
 
-#: src/game_initialization/connect_engine.cpp:995
+#: src/game_initialization/connect_engine.cpp:972
 #, fuzzy
 #| msgid "Computer player"
 msgid "Anonymous player"
 msgstr "익명 플레이어"
 
-#: src/game_initialization/connect_engine.cpp:1000
-#: src/game_initialization/connect_engine.cpp:1298
+#: src/game_initialization/connect_engine.cpp:977
+#: src/game_initialization/connect_engine.cpp:1275
 msgid "Computer Player"
 msgstr "컴퓨터 상대"
 
-#: src/game_initialization/connect_engine.cpp:1042
+#: src/game_initialization/connect_engine.cpp:1019
 msgid "$playername $side"
 msgstr "$playername $side"
 
-#: src/game_initialization/connect_engine.cpp:1294
+#: src/game_initialization/connect_engine.cpp:1271
 msgid "Network Player"
 msgstr "네트워크 상대"
 
-#: src/game_initialization/connect_engine.cpp:1297
+#: src/game_initialization/connect_engine.cpp:1274
 msgid "Local Player"
 msgstr "로컬 플레이어"
 
-#: src/game_initialization/connect_engine.cpp:1299
+#: src/game_initialization/connect_engine.cpp:1276
 msgid "Nobody"
 msgstr "아무도 없음"
 
-#: src/game_initialization/connect_engine.cpp:1302
+#: src/game_initialization/connect_engine.cpp:1279
 msgid "Reserved"
 msgstr "예약됨"
 
-#: src/game_initialization/create_engine.cpp:73
-#: src/game_initialization/create_engine.cpp:663
+#: src/game_initialization/create_engine.cpp:72
+#: src/game_initialization/create_engine.cpp:661
 #, fuzzy
 #| msgid "The game could not be loaded: "
 msgid "Map could not be loaded: "
 msgstr "지도를 불러올 수 없습니다: "
 
-#: src/game_initialization/create_engine.cpp:77
+#: src/game_initialization/create_engine.cpp:76
 #, fuzzy
 #| msgid "The game could not be loaded: "
 msgid "Map could not be loaded."
 msgstr "지도를 불러올 수 없습니다."
 
-#: src/game_initialization/create_engine.cpp:94
+#: src/game_initialization/create_engine.cpp:93
 #, fuzzy
 #| msgid "No objectives available"
 msgid "not available."
 msgstr "불가능함"
 
-#: src/game_initialization/create_engine.cpp:149
+#: src/game_initialization/create_engine.cpp:148
 #, fuzzy
 #| msgid "Commands"
 msgid "Custom map."
@@ -6657,69 +6636,69 @@ msgstr "$faction 당파에 지휘관 타입 유닛을 찾을 수 없습니다"
 msgid "Cannot obtain genders for invalid leader $leader"
 msgstr "Cannot obtain genders for invalid leader $leader"
 
-#: src/game_initialization/lobby_data.cpp:226
+#: src/game_initialization/lobby_data.cpp:227
 msgid "Missing addon: $name"
 msgstr "Missing addon: $name"
 
-#: src/game_initialization/lobby_data.cpp:228
+#: src/game_initialization/lobby_data.cpp:229
 msgid "Missing addon: $id"
 msgstr "Missing addon: $id"
 
-#: src/game_initialization/lobby_data.cpp:260
+#: src/game_initialization/lobby_data.cpp:261
 msgid "Unknown era"
 msgstr "알 수 없는 시대"
 
-#: src/game_initialization/lobby_data.cpp:327
-#: src/game_initialization/lobby_data.cpp:361
+#: src/game_initialization/lobby_data.cpp:328
+#: src/game_initialization/lobby_data.cpp:362
 #, fuzzy
 #| msgid "scenario settings^Side"
 msgid "scenario_abbreviation^S"
 msgstr "S"
 
-#: src/game_initialization/lobby_data.cpp:347
+#: src/game_initialization/lobby_data.cpp:348
 msgid "Remote scenario"
 msgstr "리모트 시나리오"
 
-#: src/game_initialization/lobby_data.cpp:368
-#: src/game_initialization/lobby_data.cpp:394
+#: src/game_initialization/lobby_data.cpp:369
+#: src/game_initialization/lobby_data.cpp:395
 msgid "campaign_abbreviation^C"
 msgstr "C"
 
-#: src/game_initialization/lobby_data.cpp:400
+#: src/game_initialization/lobby_data.cpp:401
 msgid "Unknown scenario"
 msgstr "알 수 없는 시나리오"
 
-#: src/game_initialization/lobby_data.cpp:414
+#: src/game_initialization/lobby_data.cpp:415
 msgid "Reloaded game"
 msgstr "불러온 게임"
 
-#: src/game_initialization/lobby_data.cpp:429
+#: src/game_initialization/lobby_data.cpp:430
 msgid "Vacant Slot:"
 msgid_plural "Vacant Slots:"
 msgstr[0] "빈 슬롯 수:"
 
-#: src/game_initialization/lobby_data.cpp:431
+#: src/game_initialization/lobby_data.cpp:432
 msgid "mp_game_available_slots^Full"
 msgstr "만석"
 
-#: src/game_initialization/lobby_data.cpp:442
-#: src/game_initialization/lobby_data.cpp:444 src/savegame.cpp:645
+#: src/game_initialization/lobby_data.cpp:443
+#: src/game_initialization/lobby_data.cpp:445 src/savegame.cpp:648
 msgid "Turn"
 msgstr "턴 수"
 
-#: src/game_initialization/lobby_data.cpp:457
+#: src/game_initialization/lobby_data.cpp:458
 #, fuzzy
 #| msgid "Version: "
 msgid "vision^none"
 msgstr "저장 파일 버전:"
 
-#: src/game_initialization/lobby_data.cpp:466
+#: src/game_initialization/lobby_data.cpp:467
 #, fuzzy
 #| msgid "Time limit"
 msgid "time limit^none"
 msgstr "시간 제한"
 
-#: src/game_initialization/lobby_data.cpp:510
+#: src/game_initialization/lobby_data.cpp:511
 msgid ""
 "The host's version of <i>$addon</i> is incompatible. They have version <b>"
 "$host_ver</b> while you have version <b>$local_ver</b>."
@@ -6728,7 +6707,7 @@ msgstr ""
 "다.당신의 버전은 <b>$local_ver</b> 이고, 호스트측의 버전은 <b>$host_ver</b> "
 "입니다."
 
-#: src/game_initialization/lobby_data.cpp:524
+#: src/game_initialization/lobby_data.cpp:525
 msgid ""
 "Your version of <i>$addon</i> is incompatible. You have version <b>"
 "$local_ver</b> while the host has version <b>$host_ver</b>."
@@ -6744,11 +6723,11 @@ msgstr "적 지휘관(들)을 격파하라"
 msgid "Cannot find era $era"
 msgstr "$era 시대를 찾을 수 없습니다"
 
-#: src/game_initialization/multiplayer.cpp:76
+#: src/game_initialization/multiplayer.cpp:233
 msgid "Invalid address specified for multiplayer server"
 msgstr ""
 
-#: src/game_initialization/multiplayer.cpp:112
+#: src/game_initialization/multiplayer.cpp:268
 msgid ""
 "The server accepts versions '$required_version', but you are using version "
 "'$your_version'"
@@ -6756,11 +6735,11 @@ msgstr ""
 "서버에서는 버전\" $required_version\"을 요구하고 있습니다만,당신의 버전은 "
 "\"$your_version\"입니다."
 
-#: src/game_initialization/multiplayer.cpp:125
+#: src/game_initialization/multiplayer.cpp:281
 msgid "Server-side redirect loop"
 msgstr "Server-side redirect loop"
 
-#: src/game_initialization/multiplayer.cpp:175
+#: src/game_initialization/multiplayer.cpp:331
 msgid ""
 "The nickname ‘$nick’ is inactive. You cannot claim ownership of this "
 "nickname until you activate your account via email or ask an administrator "
@@ -6770,78 +6749,78 @@ msgstr ""
 "로 만들(또는 관리자에게 부탁한다) 때까지 이 대화명의 소유권을 주장할 수 없습"
 "니다."
 
-#: src/game_initialization/multiplayer.cpp:184
+#: src/game_initialization/multiplayer.cpp:340
 #, fuzzy
 msgid "Do you want to continue?"
 msgstr "계속하길 원하십니까?"
 
-#: src/game_initialization/multiplayer.cpp:186
+#: src/game_initialization/multiplayer.cpp:342
 #, fuzzy
 #| msgid "Morning"
 msgid "Warning"
 msgstr "경고"
 
-#: src/game_initialization/multiplayer.cpp:228
-#: src/game_initialization/multiplayer.cpp:249
-#: src/game_initialization/multiplayer.cpp:252
+#: src/game_initialization/multiplayer.cpp:384
+#: src/game_initialization/multiplayer.cpp:405
+#: src/game_initialization/multiplayer.cpp:408
 msgid "Bad data received from server"
 msgstr "서버로부터 배드 데이터를 수신했습니다."
 
-#: src/game_initialization/multiplayer.cpp:287
+#: src/game_initialization/multiplayer.cpp:443
 msgid "You must login first."
 msgstr "먼저 로그인하세요."
 
-#: src/game_initialization/multiplayer.cpp:289
+#: src/game_initialization/multiplayer.cpp:445
 msgid "The nickname ‘$nick’ is already taken."
 msgstr "'$nick' 아이디로 접속한 사람이 이미 있습니다."
 
-#: src/game_initialization/multiplayer.cpp:291
+#: src/game_initialization/multiplayer.cpp:447
 msgid ""
 "The nickname ‘$nick’ contains invalid characters. Only alpha-numeric "
 "characters (one at minimum), underscores and hyphens are allowed."
 msgstr "대화명 ‘$nick’ 는 사용할 수 없는 문자를 포함하고 있습니다."
 
-#: src/game_initialization/multiplayer.cpp:295
+#: src/game_initialization/multiplayer.cpp:451
 msgid "The nickname ‘$nick’ is too long. Nicks must be 20 characters or less."
 msgstr "'$nick' 아이디는 너무 깁니다. 아이디는 20자 이하만 가능합니다."
 
-#: src/game_initialization/multiplayer.cpp:297
+#: src/game_initialization/multiplayer.cpp:453
 msgid "The nickname ‘$nick’ is reserved and cannot be used by players."
 msgstr ""
 "대화명 ‘$nick’ 는 예약이 끝난 상태입니다. 다른 플레이어는 사용할 수 없습니다."
 
-#: src/game_initialization/multiplayer.cpp:299
+#: src/game_initialization/multiplayer.cpp:455
 msgid "The nickname ‘$nick’ is not registered on this server."
 msgstr "대화명 ‘$nick’ 는 이 서버에 등록되어 있지 않습니다."
 
-#: src/game_initialization/multiplayer.cpp:300
+#: src/game_initialization/multiplayer.cpp:456
 msgid " This server disallows unregistered nicknames."
 msgstr " 이 서버는 미등록 아이디를 허용하지 않습니다."
 
-#: src/game_initialization/multiplayer.cpp:303
+#: src/game_initialization/multiplayer.cpp:459
 #, fuzzy
 #| msgid "The nickname ‘$nick’ is registered on this server."
 msgid "The nickname ‘$nick’ is banned on this server’s forums for $duration|."
 msgstr ""
 "이 서버의 포럼에서는 당신의 대화명 ‘$nick’ 이 $duration| 동안 밴 되어 있다."
 
-#: src/game_initialization/multiplayer.cpp:305
+#: src/game_initialization/multiplayer.cpp:461
 #, fuzzy
 #| msgid "The nickname ‘$nick’ is registered on this server."
 msgid "The nickname ‘$nick’ is banned on this server’s forums."
 msgstr "이 서버의 포럼에서는 당신의 대화명 ‘$nick’ 이 밴 되어 있다."
 
-#: src/game_initialization/multiplayer.cpp:309
+#: src/game_initialization/multiplayer.cpp:465
 #, fuzzy
 #| msgid "The nickname ‘$nick’ is registered on this server."
 msgid "Your IP address is banned on this server’s forums for $duration|."
 msgstr "이 서버의 포럼에서는 당신의 IP 주소가 $duration| 동안 금지되어 있다."
 
-#: src/game_initialization/multiplayer.cpp:311
+#: src/game_initialization/multiplayer.cpp:467
 msgid "Your IP address is banned on this server’s forums."
 msgstr "이 서버의 포럼에서는 당신의 IP 주소가 금지되어 있다."
 
-#: src/game_initialization/multiplayer.cpp:315
+#: src/game_initialization/multiplayer.cpp:471
 #, fuzzy
 #| msgid "The nickname ‘$nick’ is registered on this server."
 msgid ""
@@ -6850,19 +6829,19 @@ msgid ""
 msgstr ""
 "대화명 ‘$nick’ 의 메일 주소는 포럼상에서 $duration 동안 밴 되어 있습니다."
 
-#: src/game_initialization/multiplayer.cpp:317
+#: src/game_initialization/multiplayer.cpp:473
 #, fuzzy
 #| msgid "The nickname ‘$nick’ is registered on this server."
 msgid ""
 "The email address for the nickname ‘$nick’ is banned on this server’s forums."
 msgstr "대화명 ‘$nick’ 의 메일 주소는 포럼상에서 밴 되어 있습니다."
 
-#: src/game_initialization/multiplayer.cpp:320
-#: src/game_initialization/multiplayer.cpp:322
+#: src/game_initialization/multiplayer.cpp:476
+#: src/game_initialization/multiplayer.cpp:478
 msgid "The nickname ‘$nick’ is registered on this server."
 msgstr "'$nick' 아이디는 이 서버에 등록되어 있습니다."
 
-#: src/game_initialization/multiplayer.cpp:323
+#: src/game_initialization/multiplayer.cpp:479
 msgid ""
 "WARNING: There is already a client using this nickname, logging in will "
 "cause that client to be kicked!"
@@ -6870,68 +6849,88 @@ msgstr ""
 "경고: 이미 이 대화명을 사용하는 유저가 있다. 이 대화명으로 로그인하면 그 유저"
 "가 로그아웃 당할 것이다!"
 
-#: src/game_initialization/multiplayer.cpp:326
+#: src/game_initialization/multiplayer.cpp:482
 msgid ""
 "Error in the login procedure (the server had no seed for your connection)."
 msgstr "로그인 절차에서 오류 발생(서버에 연결 시드가 없음)."
 
-#: src/game_initialization/multiplayer.cpp:328
+#: src/game_initialization/multiplayer.cpp:484
 msgid "The password you provided was incorrect."
 msgstr "입력한 암호가 잘못되었다."
 
-#: src/game_initialization/multiplayer.cpp:330
+#: src/game_initialization/multiplayer.cpp:486
 msgid "You have made too many login attempts."
 msgstr "로그인 시도를 너무 많이 했습니다"
 
-#: src/game_initialization/playcampaign.cpp:63
+#: src/game_initialization/playcampaign.cpp:75
+msgid "Scenario Report"
+msgstr "시나리오 보고서"
+
+#: src/game_initialization/playcampaign.cpp:77
+msgid "Victory"
+msgstr "승리"
+
+#: src/game_initialization/playcampaign.cpp:78
+msgid "You have emerged victorious!"
+msgstr "당신은 승리했습니다!"
+
+#: src/game_initialization/playcampaign.cpp:80
+msgid "Defeat"
+msgstr "패배"
+
+#: src/game_initialization/playcampaign.cpp:81
+msgid "You have been defeated!"
+msgstr "당신은 패배하였습니다!"
+
+#: src/game_initialization/playcampaign.cpp:117
 msgid "Remaining gold: "
 msgstr "남은 금: "
 
-#: src/game_initialization/playcampaign.cpp:67
+#: src/game_initialization/playcampaign.cpp:121
 msgid "Turns finished early: "
 msgstr "남아 있는 턴 수: "
 
-#: src/game_initialization/playcampaign.cpp:68
+#: src/game_initialization/playcampaign.cpp:122
 #, fuzzy
 #| msgid "per turn"
 msgid " per turn"
 msgstr "턴당"
 
-#: src/game_initialization/playcampaign.cpp:68
+#: src/game_initialization/playcampaign.cpp:122
 msgid "Early finish bonus: "
 msgstr "조기 종료 보너스: "
 
-#: src/game_initialization/playcampaign.cpp:69
+#: src/game_initialization/playcampaign.cpp:123
 #, fuzzy
 #| msgid "Turn bonus: "
 msgid "Total bonus: "
 msgstr "합계 보너스: "
 
-#: src/game_initialization/playcampaign.cpp:71
+#: src/game_initialization/playcampaign.cpp:126
 #, fuzzy
 #| msgid "Village gold: "
 msgid "Total gold: "
 msgstr "합계 금: "
 
-#: src/game_initialization/playcampaign.cpp:74
+#: src/game_initialization/playcampaign.cpp:130
 #, fuzzy
 #| msgid "Carry over percentage: "
 msgid "Carryover percentage: "
 msgstr "이월 비율: "
 
-#: src/game_initialization/playcampaign.cpp:77
+#: src/game_initialization/playcampaign.cpp:134
 #, fuzzy
 #| msgid "Bonus Gold: "
 msgid "Bonus gold: "
 msgstr "보너스 금: "
 
-#: src/game_initialization/playcampaign.cpp:79
+#: src/game_initialization/playcampaign.cpp:136
 #, fuzzy
 #| msgid "Retained Gold: "
 msgid "Retained gold: "
 msgstr "보유한 금: "
 
-#: src/game_initialization/playcampaign.cpp:92
+#: src/game_initialization/playcampaign.cpp:149
 msgid ""
 "You will start the next scenario with $gold on top of the defined minimum "
 "starting gold."
@@ -6941,14 +6940,14 @@ msgid_plural ""
 msgstr[0] ""
 "당신은 다음 시나리오의 최소 시작 금액에 $gold 원을 더 가지고 시작하게 됩니다."
 
-#: src/game_initialization/playcampaign.cpp:100
+#: src/game_initialization/playcampaign.cpp:156
 msgid ""
 "You will start the next scenario with the defined minimum starting gold."
 msgid_plural ""
 "You will start the next scenario with the defined minimum starting gold."
 msgstr[0] "당신은 규정된 최소 시작 금액으로 다음 시나리오로 넘어갑니다."
 
-#: src/game_initialization/playcampaign.cpp:108
+#: src/game_initialization/playcampaign.cpp:163
 msgid ""
 "You will start the next scenario with $gold or its defined minimum starting "
 "gold, whichever is higher."
@@ -6959,57 +6958,37 @@ msgstr[0] ""
 "당신은 $gold 원이나 규정된 최소 시작 금액중 높은 쪽을 가지고 다음 시나리오로 "
 "넘어갑니다."
 
-#: src/game_initialization/playcampaign.cpp:138
-msgid "Scenario Report"
-msgstr "시나리오 보고서"
-
-#: src/game_initialization/playcampaign.cpp:140
-msgid "Victory"
-msgstr "승리"
-
-#: src/game_initialization/playcampaign.cpp:141
-msgid "You have emerged victorious!"
-msgstr "당신은 승리했습니다!"
-
-#: src/game_initialization/playcampaign.cpp:143
-msgid "Defeat"
-msgstr "패배"
-
-#: src/game_initialization/playcampaign.cpp:144
-msgid "You have been defeated!"
-msgstr "당신은 패배하였습니다!"
-
-#: src/game_initialization/playcampaign.cpp:297 src/game_launcher.cpp:905
+#: src/game_initialization/playcampaign.cpp:290 src/game_launcher.cpp:876
 msgid "The game could not be loaded: "
 msgstr "로드가 안됩니다: "
 
-#: src/game_initialization/playcampaign.cpp:303 src/game_launcher.cpp:907
+#: src/game_initialization/playcampaign.cpp:296 src/game_launcher.cpp:878
 msgid "Error while playing the game: "
 msgstr "게임을 하는 중 오류 발생: "
 
-#: src/game_initialization/playcampaign.cpp:306 src/game_launcher.cpp:944
+#: src/game_initialization/playcampaign.cpp:299 src/game_launcher.cpp:915
 msgid "The game map could not be loaded: "
 msgstr "게임 지도를 불러올 수 없음: "
 
-#: src/game_initialization/playcampaign.cpp:309 src/game_launcher.cpp:909
-#: src/game_launcher.cpp:1036
+#: src/game_initialization/playcampaign.cpp:302 src/game_launcher.cpp:880
+#: src/game_launcher.cpp:996
 msgid "Map generator error: "
 msgstr "지도 생성기 오류:"
 
-#: src/game_initialization/playcampaign.cpp:311
+#: src/game_initialization/playcampaign.cpp:304
 msgid "Error while reading the WML: "
 msgstr "WML을 읽는 중 오류 발생: "
 
-#: src/game_initialization/playcampaign.cpp:348
-#: src/playsingle_controller.cpp:308
+#: src/game_initialization/playcampaign.cpp:349
+#: src/playsingle_controller.cpp:321
 msgid "Game Over"
 msgstr "게임 오버"
 
-#: src/game_initialization/playcampaign.cpp:349
+#: src/game_initialization/playcampaign.cpp:350
 msgid "This scenario has ended. Do you want to continue the campaign?"
 msgstr "이 시나리오는 끝났다. 캠페인을 계속하시겠습니까?"
 
-#: src/game_initialization/playcampaign.cpp:417
+#: src/game_initialization/playcampaign.cpp:415
 msgid "Unknown scenario: '$scenario|'"
 msgstr "불분명한 시나리오: '$scenario|'"
 
@@ -7019,39 +6998,39 @@ msgstr "불분명한 시나리오: '$scenario|'"
 msgid "No campaigns are available."
 msgstr "가능한 캠패인 없음"
 
-#: src/game_launcher.cpp:692 src/game_launcher.cpp:711
+#: src/game_launcher.cpp:681 src/game_launcher.cpp:700
 msgid "The file you have tried to load is corrupt"
 msgstr "로드하려는 파일이 손상되었습니다"
 
-#: src/game_launcher.cpp:694 src/game_launcher.cpp:713
-#: src/hotkey/hotkey_handler_sp.cpp:315 src/savegame.cpp:156
-#: src/savegame.cpp:311
+#: src/game_launcher.cpp:683 src/game_launcher.cpp:702
+#: src/hotkey/hotkey_handler_sp.cpp:315 src/savegame.cpp:154
+#: src/savegame.cpp:304
 msgid "The file you have tried to load is corrupt: '"
 msgstr "로드하려는 파일이 손상되었습니다: '"
 
-#: src/game_launcher.cpp:703
+#: src/game_launcher.cpp:692
 msgid "File I/O Error while reading the game"
 msgstr "게임 읽기 중 파일 I/O 오류"
 
-#: src/game_launcher.cpp:705
+#: src/game_launcher.cpp:694
 msgid "File I/O Error while reading the game: '"
 msgstr "게임 읽기 중 파일 I/O 오류: '"
 
-#: src/game_launcher.cpp:903
+#: src/game_launcher.cpp:874
 msgid "Error while starting server: "
 msgstr "서버를 시작하는 중 오류 발생: "
 
-#: src/game_launcher.cpp:925
+#: src/game_launcher.cpp:896
 #, fuzzy
 #| msgid "Connection timed out"
 msgid "Connection failed: "
 msgstr "접속 시간 초과"
 
-#: src/generators/default_map_generator_job.cpp:715
+#: src/generators/default_map_generator_job.cpp:706
 msgid "Random maps with an odd width aren't supported."
 msgstr "홀수 폭을 가진 랜덤 지도는 지원되지 않음."
 
-#: src/generators/default_map_generator_job.cpp:978
+#: src/generators/default_map_generator_job.cpp:969
 msgid ""
 "No valid castle location found. Too many or too few mountain hexes? (please "
 "check the 'max hill size' parameter)"
@@ -7080,43 +7059,43 @@ msgstr[0] ""
 msgid "No visible sides found."
 msgstr "시대 정보를 찾을 수 없습니다."
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:106
+#: src/gui/dialogs/multiplayer/player_info.cpp:107
 msgid "In game:"
 msgstr "방에 있음:"
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:108
+#: src/gui/dialogs/multiplayer/player_info.cpp:109
 msgid "(observing)"
 msgstr "(관전중)"
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:110
+#: src/gui/dialogs/multiplayer/player_info.cpp:111
 msgid "(playing)"
 msgstr "(플레이중)"
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:113
+#: src/gui/dialogs/multiplayer/player_info.cpp:114
 msgid "In lobby"
 msgstr "로비에 있음"
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:142
+#: src/gui/dialogs/multiplayer/player_info.cpp:143
 msgid "On friends list"
 msgstr "친구 목록에 있음"
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:147
+#: src/gui/dialogs/multiplayer/player_info.cpp:148
 msgid "On ignores list"
 msgstr "무시자 목록에 있음"
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:152
+#: src/gui/dialogs/multiplayer/player_info.cpp:153
 msgid "Neither a friend nor ignored"
 msgstr "친구도 무시자도 아님"
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:157
+#: src/gui/dialogs/multiplayer/player_info.cpp:158
 msgid "You"
 msgstr "당신"
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:160
+#: src/gui/dialogs/multiplayer/player_info.cpp:161
 msgid "Error"
 msgstr "에러"
 
-#: src/gui/dialogs/unit_list.hpp:45
+#: src/gui/dialogs/unit_list.hpp:42
 #, fuzzy
 #| msgid "No era information found."
 msgid "No units found."
@@ -7305,11 +7284,11 @@ msgstr "속도 가속 활성화!"
 msgid "Accelerated speed disabled!"
 msgstr "속도 가속 비활성화!"
 
-#: src/hotkey/hotkey_handler.cpp:421
+#: src/hotkey/hotkey_handler.cpp:422
 msgid "Back to Turn "
 msgstr "되돌리기 - 턴 "
 
-#: src/hotkey/hotkey_handler.cpp:427
+#: src/hotkey/hotkey_handler.cpp:428
 msgid "Back to Start"
 msgstr "처음으로 돌아감"
 
@@ -7319,11 +7298,11 @@ msgstr "처음으로 돌아감"
 msgid "(press $hotkey to deactivate)"
 msgstr "(계속 이동하려면 $hotkey 키를 누르세요)"
 
-#: src/hotkey/hotkey_handler_sp.cpp:145 src/menu_events.cpp:2068
+#: src/hotkey/hotkey_handler_sp.cpp:145 src/menu_events.cpp:2094
 msgid "Planning mode activated!"
 msgstr "계획 모드 활성"
 
-#: src/hotkey/hotkey_handler_sp.cpp:147 src/menu_events.cpp:2071
+#: src/hotkey/hotkey_handler_sp.cpp:147 src/menu_events.cpp:2097
 msgid "Planning mode deactivated!"
 msgstr "계획 모드 비활성"
 
@@ -7429,62 +7408,62 @@ msgid "command^Alias:"
 msgid_plural "Aliases:"
 msgstr[0] ""
 
-#: src/menu_events.cpp:178
+#: src/menu_events.cpp:164
 #, fuzzy
 #| msgid "Save the Map As"
 msgid "Save Map As"
 msgstr "다른 이름으로 지도 저장"
 
-#: src/menu_events.cpp:189
+#: src/menu_events.cpp:175
 msgid "Map saved."
 msgstr "지도가 저장되었습니다."
 
-#: src/menu_events.cpp:193
+#: src/menu_events.cpp:179
 msgid "Could not save the map: $msg"
 msgstr "지도를 저장할 수 없습니다: $msg"
 
-#: src/menu_events.cpp:221
+#: src/menu_events.cpp:207
 msgid "Message:"
 msgstr "대화:"
 
-#: src/menu_events.cpp:223
+#: src/menu_events.cpp:209
 msgid "Send to observers only"
 msgstr "관전자만이 볼 수 있음"
 
-#: src/menu_events.cpp:224
+#: src/menu_events.cpp:210
 msgid "Send to allies only"
 msgstr "동맹만이 볼 수 있음(동맹 채팅)"
 
 #. TRANSLATORS: An error that should never happen, might happen when loading an old savegame. If there are
 #. any units that the player can recruit then their standard recruitment dialog will be shown after this
 #. error message, otherwise they'll get the "You have no units available to recruit." error after this one.
-#: src/menu_events.cpp:280
+#: src/menu_events.cpp:266
 msgid "Error: there’s an unknown unit type on your recruit list: $unknown_ids"
 msgid_plural ""
 "Error: there are several unknown unit types on your recruit list: "
 "$unknown_ids"
 msgstr[0] ""
 
-#: src/menu_events.cpp:288
+#: src/menu_events.cpp:274
 msgid "You have no units available to recruit."
 msgstr "소집할 수 있는 유닛이 없습니다."
 
-#: src/menu_events.cpp:298
+#: src/menu_events.cpp:284
 #, fuzzy
 #| msgid "No era information found."
 msgid "No unit recruited."
 msgstr "소집할 유닛이 없습니다."
 
-#: src/menu_events.cpp:323
+#: src/menu_events.cpp:309
 msgid "Internal error. Please report this as a bug! Details:\n"
 msgstr ""
 
-#: src/menu_events.cpp:329
+#: src/menu_events.cpp:315
 msgid "You cannot recruit a $unit_type_name at this time."
 msgstr ""
 
 #. TRANSLATORS: "plan" refers to Planning Mode
-#: src/menu_events.cpp:343
+#: src/menu_events.cpp:329
 #, fuzzy
 #| msgid "You do not have enough gold to recruit that unit"
 msgid ""
@@ -7492,19 +7471,19 @@ msgid ""
 "unit."
 msgstr "해당 유닛을 소집할만한 자금이 충분하지 않습니다"
 
-#: src/menu_events.cpp:345
+#: src/menu_events.cpp:331
 #, fuzzy
 #| msgid "You do not have enough gold to recruit that unit"
 msgid "You do not have enough gold to recruit this unit."
 msgstr "해당 유닛을 소집할만한 자금이 충분하지 않습니다"
 
-#: src/menu_events.cpp:388
+#: src/menu_events.cpp:374
 #, fuzzy
 #| msgid "You are separated from your soldiers and may not recall them"
 msgid "You are separated from your soldiers and may not recall them."
 msgstr "당신은 당신의 병사들과 떨어져 있으므로 그들을 재소집할 수 없습니다"
 
-#: src/menu_events.cpp:409
+#: src/menu_events.cpp:395
 #, fuzzy
 #| msgid ""
 #| "There are no troops available to recall\n"
@@ -7516,19 +7495,19 @@ msgstr ""
 "재소집할 수 있는 부대원이 없습니다\n"
 "(이전 시나리오에서 살아남은 숙련병이 필요합니다)"
 
-#: src/menu_events.cpp:413
+#: src/menu_events.cpp:399
 #, fuzzy
 #| msgid "You currently can't recall at the highlighted location"
 msgid "You currently can't recall at the highlighted location."
 msgstr "현재 표시된 위치에서 재소집 할수 없음"
 
-#: src/menu_events.cpp:425
+#: src/menu_events.cpp:411
 #, fuzzy
 #| msgid "No unit recalled"
 msgid "No unit recalled."
 msgstr "재소집 할 유닛이 없습니다"
 
-#: src/menu_events.cpp:442
+#: src/menu_events.cpp:428
 #, fuzzy
 #| msgid "You must have at least 1 gold piece to recall a unit"
 #| msgid_plural "You must have at least $cost gold pieces to recall a unit"
@@ -7536,175 +7515,175 @@ msgid "You must have at least 1 gold piece to recall a unit."
 msgid_plural "You must have at least $cost gold pieces to recall this unit."
 msgstr[0] "재소집을 하려면 최소 $cost 원이 필요합니다"
 
-#: src/menu_events.cpp:588
+#: src/menu_events.cpp:574
 msgid "You cannot end your turn yet!"
 msgstr "너는 아직 네 차례를 끝낼 수 없어!"
 
-#: src/menu_events.cpp:603
+#: src/menu_events.cpp:589
 msgid ""
 "You have not started your turn yet. Do you really want to end your turn?"
 msgstr "아직 아무런 행동도 하지 않았습니다. 정말로 턴을 끝내시겠습니까?"
 
-#: src/menu_events.cpp:612
+#: src/menu_events.cpp:598
 msgid "Some units have movement left. Do you really want to end your turn?"
 msgstr "행동하지 않은 부대가 남아 있다. 정말로 턴을 끝내시겠습니까?"
 
-#: src/menu_events.cpp:621
+#: src/menu_events.cpp:607
 #, fuzzy
 #| msgid ""
 #| "Some units have planned actions left. Do you really want to end your turn?"
 msgid "Some units have not moved. Do you really want to end your turn?"
 msgstr "행동하지 않은 부대가 남아 있습니다. 정말로 턴을 끝내시겠습니까?"
 
-#: src/menu_events.cpp:678
+#: src/menu_events.cpp:664
 msgid "Rename Unit"
 msgstr "이름 붙이기"
 
-#: src/menu_events.cpp:679
+#: src/menu_events.cpp:665
 msgid "Name:"
 msgstr "이름:"
 
-#: src/menu_events.cpp:856
+#: src/menu_events.cpp:842
 #, fuzzy
 #| msgid "Clear all orders"
 msgid "Clear Labels"
 msgstr "라벨 지우기"
 
-#: src/menu_events.cpp:857
+#: src/menu_events.cpp:843
 #, fuzzy
 #| msgid "Are you sure you want to remove the add-on '$addon|'?"
 msgid "Are you sure you want to clear map labels?"
 msgstr "추가 기능 '$addon|'을 정말로 삭제하시겠습니까?"
 
-#: src/menu_events.cpp:1058
+#: src/menu_events.cpp:1044
 msgid "Search"
 msgstr "탐색"
 
-#: src/menu_events.cpp:1198
+#: src/menu_events.cpp:1184
 msgid "(D) — debug only, (N) — network only, (A) — admin only"
 msgstr "(D) - 디버그 전용, (N) - 네트워크 전용, (A) - 방장 전용"
 
-#: src/menu_events.cpp:1205
+#: src/menu_events.cpp:1191
 msgid "(debug command)"
 msgstr "(디버그 명령어)"
 
-#: src/menu_events.cpp:1206
+#: src/menu_events.cpp:1192
 msgid "(network only)"
 msgstr "(네트워크 전용)"
 
-#: src/menu_events.cpp:1208
+#: src/menu_events.cpp:1194
 msgid "(not during other events)"
 msgstr "(다른 이벤트 중이 아닌 경우.)"
 
-#: src/menu_events.cpp:1237
+#: src/menu_events.cpp:1223
 msgid "Refresh gui."
 msgstr "gui 를 새로고침하다."
 
-#: src/menu_events.cpp:1238
+#: src/menu_events.cpp:1224
 msgid "Switch a side to/from AI control."
 msgstr "진영의 조작을 AI 또는 수동으로 바꿉니다."
 
 #. TRANSLATORS: These are the arguments accepted by the "droid" command,
 #. which must be a side-number and then optionally one of "on", "off" or "full".
 #. As with the command's name, "on", "off" and "full" are hardcoded, and shouldn't change in the translation.
-#: src/menu_events.cpp:1242
+#: src/menu_events.cpp:1228
 msgid ""
 "[<side> [on/off/full]]\n"
 "“on” = enable but retain vision, “full” = as if it’s controlled by another "
 "player"
 msgstr ""
 
-#: src/menu_events.cpp:1243
+#: src/menu_events.cpp:1229
 msgid "Change terrain type of current hex"
 msgstr ""
 
 #. TRANSLATORS: [both|base|overlay] are hardcoded literal arguments and shouldn't be translated.
-#: src/menu_events.cpp:1245
+#: src/menu_events.cpp:1231
 msgid "<terrain type> [both|base|overlay]"
 msgstr ""
 
-#: src/menu_events.cpp:1246
+#: src/menu_events.cpp:1232
 msgid "Switch a side to/from idle state."
 msgstr "진영의 대기 상태를 전환하겠습니다."
 
 #. TRANSLATORS: These are the arguments accepted by the "idle" command,
 #. which must be a side-number and then optionally "on" or "off".
 #. As with the command's name, "on" and "off" are hardcoded, and shouldn't change in the translation.
-#: src/menu_events.cpp:1250
+#: src/menu_events.cpp:1236
 #, fuzzy
 #| msgid "command_idle^[<side> [on/off]]"
 msgid "command_idle^[<side> [on/off]]"
 msgstr "command_idle^[<side> [on/off]]"
 
-#: src/menu_events.cpp:1251
+#: src/menu_events.cpp:1237
 msgid "Change the in-game theme."
 msgstr ""
 
-#: src/menu_events.cpp:1253
+#: src/menu_events.cpp:1239
 msgid "<side> <nickname>"
 msgstr "<진영> <대화명>"
 
-#: src/menu_events.cpp:1253
+#: src/menu_events.cpp:1239
 msgid "Assign control of a side to a different player or observer."
 msgstr "진영의 조작권을 다른 플레이어 또는 관전자에게 할당합니다."
 
-#: src/menu_events.cpp:1254
+#: src/menu_events.cpp:1240
 msgid "Query the controller status of a side."
 msgstr "진영의 컨트롤러 상태를 문의합니다."
 
-#: src/menu_events.cpp:1255
+#: src/menu_events.cpp:1241
 msgid "<side>"
 msgstr "<진영>"
 
-#: src/menu_events.cpp:1256
+#: src/menu_events.cpp:1242
 msgid "Clear chat history."
 msgstr "채팅 이력을 소거합니다."
 
-#: src/menu_events.cpp:1257
+#: src/menu_events.cpp:1243
 msgid "Debug foreground terrain."
 msgstr "메인 지형을 디버깅합니다."
 
-#: src/menu_events.cpp:1259
+#: src/menu_events.cpp:1245
 msgid "Debug layers from terrain under the mouse."
 msgstr "마우스 아래의 지형 레이어를 디버깅합니다."
 
-#: src/menu_events.cpp:1260
+#: src/menu_events.cpp:1246
 msgid "Show fps (Frames Per Second)."
 msgstr "fps를 표시한다"
 
-#: src/menu_events.cpp:1262
+#: src/menu_events.cpp:1248
 msgid "Save game."
 msgstr "게임을 저장한다."
 
-#: src/menu_events.cpp:1264
+#: src/menu_events.cpp:1250
 msgid "Quit game."
 msgstr "게임을 종료한다."
 
-#: src/menu_events.cpp:1267
+#: src/menu_events.cpp:1253
 msgid "Save and quit."
 msgstr "저장하고 종료한다."
 
-#: src/menu_events.cpp:1269
+#: src/menu_events.cpp:1255
 msgid "Ignore replay errors."
 msgstr "반복 오류를 무시한다"
 
-#: src/menu_events.cpp:1270
+#: src/menu_events.cpp:1256
 msgid "Disable autosaves."
 msgstr "자동 저장을 비활성한다"
 
-#: src/menu_events.cpp:1272
+#: src/menu_events.cpp:1258
 msgid "<id>"
 msgstr "<id>"
 
-#: src/menu_events.cpp:1272
+#: src/menu_events.cpp:1258
 msgid "Advance to the next scenario, or scenario identified by 'id'"
 msgstr "다음 시나리오 또는 \"id\"로 식별되는 시나리오로 진행합니다."
 
-#: src/menu_events.cpp:1274
+#: src/menu_events.cpp:1260
 msgid "Choose next scenario"
 msgstr "다음 시나리오를 선택합니다."
 
-#: src/menu_events.cpp:1277
+#: src/menu_events.cpp:1263
 msgid ""
 "Change turn number (and time of day), or increase by one if no number is "
 "specified."
@@ -7712,11 +7691,11 @@ msgstr ""
 "턴수(그리고 게임내 시각)를 변경합니다.만약 값이 지정되지 않는다면 1턴씩 진행"
 "하겠습니다."
 
-#: src/menu_events.cpp:1277
+#: src/menu_events.cpp:1263
 msgid "[turn]"
 msgstr "[턴]"
 
-#: src/menu_events.cpp:1280
+#: src/menu_events.cpp:1266
 msgid ""
 "Change turn limit, or turn the turn limit off if no number is specified or "
 "it’s −1."
@@ -7724,68 +7703,68 @@ msgstr ""
 "턴 제한을 변경합니다.만약 턴 수를 지정되지 않았거나-1이 지정되어 있다면 턴 제"
 "한을 해제합니다."
 
-#: src/menu_events.cpp:1280
+#: src/menu_events.cpp:1266
 msgid "[limit]"
 msgstr "[제한]"
 
-#: src/menu_events.cpp:1282
+#: src/menu_events.cpp:1268
 msgid "Turn debug mode on."
 msgstr "디버깅 모드를 활성화 합니다."
 
-#: src/menu_events.cpp:1283
+#: src/menu_events.cpp:1269
 msgid "Turn debug mode off."
 msgstr "디버깅 모드를 비활성화 합니다."
 
-#: src/menu_events.cpp:1285 src/menu_events.cpp:1289
+#: src/menu_events.cpp:1271 src/menu_events.cpp:1275
 msgid "<command>[;<command>...]"
 msgstr "<command>[;<command>...]"
 
-#: src/menu_events.cpp:1285
+#: src/menu_events.cpp:1271
 msgid "Execute a Lua statement."
 msgstr "Lua 명령문을 실행합니다."
 
-#: src/menu_events.cpp:1287
+#: src/menu_events.cpp:1273
 msgid "Grant higher privileges to Lua scripts."
 msgstr "실행에 특권이 필요한 Lua 스크립트를 허용합니다."
 
-#: src/menu_events.cpp:1288
+#: src/menu_events.cpp:1274
 msgid "Set the command used by the custom command hotkey"
 msgstr "커스텀 커맨드 핫키로 호출하는 커맨드를 설정합니다."
 
-#: src/menu_events.cpp:1291
+#: src/menu_events.cpp:1277
 msgid "Invoke a dialog allowing changing control of MP sides."
 msgstr "멀티 플레이어 게임에서, 진영을 변경하기 위한 다이얼로그를 기동합니다."
 
-#: src/menu_events.cpp:1292
+#: src/menu_events.cpp:1278
 msgid "Launch the gamestate inspector"
 msgstr "게임 상태 인스펙터를 기동합니다."
 
-#: src/menu_events.cpp:1294
+#: src/menu_events.cpp:1280
 msgid "<name>[=<command>]"
 msgstr "<name>[=<command>]"
 
-#: src/menu_events.cpp:1294
+#: src/menu_events.cpp:1280
 msgid "Set or show alias to a command"
 msgstr "Set or show alias to a command"
 
-#: src/menu_events.cpp:1296 src/menu_events.cpp:1301
+#: src/menu_events.cpp:1282 src/menu_events.cpp:1287
 msgid "<var>=<value>"
 msgstr "<var>=<value>"
 
-#: src/menu_events.cpp:1296
+#: src/menu_events.cpp:1282
 msgid "Set a scenario variable."
 msgstr "시나리오 변수를 설정한다"
 
-#: src/menu_events.cpp:1297
+#: src/menu_events.cpp:1283
 msgid "<var>"
 msgstr "<var>"
 
-#: src/menu_events.cpp:1297
+#: src/menu_events.cpp:1283
 msgid "Show a scenario variable."
 msgstr "시나리오 변수를 표시한다"
 
 #. TRANSLATORS: Do not translate the word "advances"; it is a hardcoded literal argument.
-#: src/menu_events.cpp:1300
+#: src/menu_events.cpp:1286
 #, fuzzy
 #| msgid "Modify a unit variable. (Only top level keys are supported.)"
 msgid ""
@@ -7793,164 +7772,176 @@ msgid ""
 "advances=<number>.)"
 msgstr "유닛 변수를 변경합니다(적용 되는 것은 최대 레벨 뿐입니다)"
 
-#: src/menu_events.cpp:1307
+#: src/menu_events.cpp:1293
 msgid "Discover all units in help."
 msgstr "도움말의 모든 유닛을 발견으로 합니다."
 
-#: src/menu_events.cpp:1308
+#: src/menu_events.cpp:1294
 msgid "'Undiscover' all units in help."
 msgstr "도움말의 모든 유닛을 미발견으로 합니다."
 
-#: src/menu_events.cpp:1309
+#: src/menu_events.cpp:1295
 msgid "<unit type id>"
 msgstr ""
 
-#: src/menu_events.cpp:1309
+#: src/menu_events.cpp:1295
 msgid "Create a unit."
 msgstr "유닛을 생성합니다"
 
-#: src/menu_events.cpp:1310
+#: src/menu_events.cpp:1296
 msgid "Toggle fog for the current player."
 msgstr "현재의 플레이어의 안개를 바꿉니다."
 
-#: src/menu_events.cpp:1311
+#: src/menu_events.cpp:1297
 msgid "Toggle shroud for the current player."
 msgstr "현재의 플레이어의 장막을 바꿉니다."
 
-#: src/menu_events.cpp:1312
+#: src/menu_events.cpp:1298
 msgid "<amount>"
 msgstr ""
 
-#: src/menu_events.cpp:1312
+#: src/menu_events.cpp:1298
 msgid "Give gold to the current player."
 msgstr "현재의 플레이어에 골드를 줍니다."
 
-#: src/menu_events.cpp:1313
+#: src/menu_events.cpp:1299
 #, fuzzy
 #| msgid "<nickname>"
 msgid "<event name>"
 msgstr "<대화명>"
 
-#: src/menu_events.cpp:1313
+#: src/menu_events.cpp:1299
 msgid "Fire a game event."
 msgstr "게임 이벤트를 일으킵니다."
 
-#: src/menu_events.cpp:1316
+#: src/menu_events.cpp:1302
 msgid "Toggle overlaying of x,y coordinates on hexes."
 msgstr "헥스상의 x,y 좌표 표시를 바꿉니다."
 
-#: src/menu_events.cpp:1319
+#: src/menu_events.cpp:1305
 msgid "Toggle overlaying of terrain codes on hexes."
 msgstr "헥스상의 지형 코드 표시를 바꿉니다."
 
-#: src/menu_events.cpp:1322
+#: src/menu_events.cpp:1308
 msgid "Toggle overlaying of number of bitmaps on hexes."
 msgstr "헥스상의 비트맵수의 표시를 바꿉니다."
 
-#: src/menu_events.cpp:1324
+#: src/menu_events.cpp:1310
 msgid "Toggle planning mode."
 msgstr "계획 모드를 바꿉니다."
 
-#: src/menu_events.cpp:1327
+#: src/menu_events.cpp:1313
 msgid "Access whiteboard options dialog."
 msgstr "행동 예정 설정 다이얼로그를 엽니다."
 
-#: src/menu_events.cpp:1447
+#: src/menu_events.cpp:1433
 msgid "Could not find label or unit containing the string ‘$search’."
 msgstr "‘$search’를 포함한 라벨이나 유닛은 발견되지 않았습니다."
 
-#: src/menu_events.cpp:1493
+#: src/menu_events.cpp:1480
 msgid "Can't droid invalid side: '$side'."
 msgstr "무효한 진영 '$side' 를 컴퓨터에 조작시킬 수 없습니다."
 
-#: src/menu_events.cpp:1496
+#: src/menu_events.cpp:1483
 msgid "Can't droid networked side: '$side'."
 msgstr "네트워크 진영 '$side' 를 컴퓨터에 조작시킬 수 없습니다."
 
-#: src/menu_events.cpp:1506 src/menu_events.cpp:1538
+#: src/menu_events.cpp:1497 src/menu_events.cpp:1513 src/menu_events.cpp:1545
+msgid ""
+"It is not allowed to change a side from AI to human control when it's not "
+"your turn."
+msgstr ""
+
+#: src/menu_events.cpp:1507 src/menu_events.cpp:1563
 msgid "Side '$side' controller is now controlled by: AI."
 msgstr "진영 '$side' 는 AI에 의해 조작됩니다."
 
-#: src/menu_events.cpp:1508
+#: src/menu_events.cpp:1509
 msgid "Side '$side' is already droided."
 msgstr "진영 '$side' 는 이미 컴퓨터에 조작되어 있습니다."
 
-#: src/menu_events.cpp:1515 src/menu_events.cpp:1533
+#: src/menu_events.cpp:1523 src/menu_events.cpp:1555
 msgid "Side '$side' controller is now controlled by: human."
 msgstr "진영 '$side' 는 인간에 의해 조작됩니다."
 
-#: src/menu_events.cpp:1517
+#: src/menu_events.cpp:1525
 #, fuzzy
 #| msgid "Side '$side' is already droided."
 msgid "Side '$side' is already not droided."
 msgstr "진영 '$side' 는 이미 컴퓨터에 조작되어 있습니다."
 
-#: src/menu_events.cpp:1524
+#: src/menu_events.cpp:1529
+msgid ""
+"It is not allowed to change a side from human to AI control when it's not "
+"your turn."
+msgstr ""
+
+#: src/menu_events.cpp:1539
 #, fuzzy
 #| msgid "Side '$side' controller is now controlled by: AI."
 msgid "Side '$side' controller is now fully controlled by: AI."
 msgstr "진영 '$side' 는 AI에 의해 조작됩니다."
 
-#: src/menu_events.cpp:1526
+#: src/menu_events.cpp:1541
 #, fuzzy
 #| msgid "Side '$side' is already droided."
 msgid "Side '$side' is already fully AI controlled."
 msgstr "진영 '$side' 는 이미 컴퓨터에 조작되어 있습니다."
 
-#: src/menu_events.cpp:1541
+#: src/menu_events.cpp:1566
 msgid ""
 "Invalid action provided for side '$side'. Valid actions are: on, off, full."
 msgstr ""
 
-#: src/menu_events.cpp:1583
+#: src/menu_events.cpp:1608
 msgid "Can't idle invalid side: '$side'."
 msgstr "무효한 진영 '$side' 를 대기상태로 할 수 없습니다."
 
-#: src/menu_events.cpp:1588
+#: src/menu_events.cpp:1613
 msgid "Can't idle networked side: '$side'."
 msgstr "네트워크상의 진영 '$side' 는 대기상태로 할 수 없습니다."
 
-#: src/menu_events.cpp:1593
+#: src/menu_events.cpp:1618
 msgid "Can't idle local ai side: '$side'."
 msgstr "로컬 AI 진영 '$side' 는 대기 상태로 할 수 없습니다."
 
-#: src/menu_events.cpp:1653
+#: src/menu_events.cpp:1679
 msgid "Can't change control of invalid side: '$side'."
 msgstr "무효한 진영 '$side' 의 컨트롤을 변경할 수 없습니다."
 
-#: src/menu_events.cpp:1663
+#: src/menu_events.cpp:1689
 msgid "Can't change control of out-of-bounds side: '$side'."
 msgstr "규정외의 진영 '$side' 의 컨트롤을 변경할 수 없습니다."
 
-#: src/menu_events.cpp:1680
+#: src/menu_events.cpp:1706
 msgid "Can't query control of invalid side: '$side'."
 msgstr "무효한 진영 '$side' 의 컨트롤을 확인할 수 없습니다."
 
-#: src/menu_events.cpp:1687
+#: src/menu_events.cpp:1713
 msgid "Can't query control of out-of-bounds side: '$side'."
 msgstr "규정외의 진영 '$side' 의 컨트롤을 확인할 수 없습니다."
 
-#: src/menu_events.cpp:1808
+#: src/menu_events.cpp:1834
 msgid "Choose Scenario (Debug!)"
 msgstr "시나리오 선택 (디버그!)"
 
-#: src/menu_events.cpp:1844
+#: src/menu_events.cpp:1870
 msgid "Debug mode activated!"
 msgstr "디버그 모드가 켜졌습니다!"
 
-#: src/menu_events.cpp:1847
+#: src/menu_events.cpp:1873
 msgid "Debug mode not available in network games"
 msgstr "네트워크 게임에서는 디버그 모드를 쓸 수 없습니다"
 
-#: src/menu_events.cpp:1854
+#: src/menu_events.cpp:1880
 msgid "Debug mode deactivated!"
 msgstr "디버그 모드가 꺼졌습니다!"
 
-#: src/menu_events.cpp:1874
+#: src/menu_events.cpp:1900
 msgid "WARNING! Unsafe Lua Mode"
 msgstr "경고! 안전하지 않은 Lua Mode"
 
-#: src/menu_events.cpp:1875
+#: src/menu_events.cpp:1901
 msgid ""
 "Executing Lua code in in this manner opens your computer to potential "
 "security breaches from any malicious add-ons or other programs you may have "
@@ -7963,15 +7954,15 @@ msgstr ""
 "\"\n"
 "지금부터 하고자 하는 것의 의미를 이해하고 있지 않으면, 속행하지 말아 주세요."
 
-#: src/menu_events.cpp:1880
+#: src/menu_events.cpp:1906
 msgid "Unsafe mode enabled!"
 msgstr "Unsafe mode enabled!"
 
-#: src/menu_events.cpp:1929
+#: src/menu_events.cpp:1955
 msgid "Variable not found"
 msgstr "변수를 찾을수 없습니다"
 
-#: src/menu_events.cpp:1975
+#: src/menu_events.cpp:2001
 msgid ""
 "Invalid alignment: '$alignment', needs to be one of lawful, neutral, "
 "chaotic, or liminal."
@@ -7979,23 +7970,23 @@ msgstr ""
 "무효한 얼라인먼트: '$alignment' 는 질서, 중립, 혼돈, 박명 중 어느 것이어야 합"
 "니다."
 
-#: src/menu_events.cpp:2001
+#: src/menu_events.cpp:2027
 msgid "Do you wish to clear all of your discovered units from help?"
 msgstr "도움말에서 발견된 유닛의 정보를 삭제합니까? "
 
-#: src/menu_events.cpp:2015
+#: src/menu_events.cpp:2041
 msgid "Invalid unit type"
 msgstr "무효한 유닛 타입"
 
-#: src/menu_events.cpp:2022
+#: src/menu_events.cpp:2048
 msgid "Invalid location"
 msgstr "무효한 장소"
 
-#: src/menu_events.cpp:2095 src/menu_events.cpp:2121
+#: src/menu_events.cpp:2121 src/menu_events.cpp:2147
 msgid "prompt^Command:"
 msgstr "명령"
 
-#: src/mouse_events.cpp:1190
+#: src/mouse_events.cpp:1185
 #, fuzzy
 #| msgid ""
 #| "You cannot move your leader away from the keep with some planned recruits "
@@ -8005,21 +7996,21 @@ msgid ""
 "recalls left."
 msgstr "소집 계획이 있는 상태로는 대장을 본성 밖으로 빼낼 수 없습니다."
 
-#: src/mouse_events.cpp:1285
+#: src/mouse_events.cpp:1280
 #, fuzzy
 #| msgid "No usable weapon"
 msgid "This unit has no usable weapons."
 msgstr "이 유닛은 사용할 수 있는 무기를 가지고 있지 않습니다."
 
-#: src/mp_game_settings.hpp:73
+#: src/mp_game_settings.hpp:71
 msgid "Independent"
 msgstr "완전 랜덤."
 
-#: src/mp_game_settings.hpp:74
+#: src/mp_game_settings.hpp:72
 msgid "No Mirror"
 msgstr "미러매치 방지"
 
-#: src/mp_game_settings.hpp:75
+#: src/mp_game_settings.hpp:73
 msgid "No Ally Mirror"
 msgstr "동맹 미러 방지"
 
@@ -8058,7 +8049,7 @@ msgstr "$name 는 조작권을 취득했습니다."
 msgid "Turn changed"
 msgstr "턴이 진행되었습니다."
 
-#: src/pathfind/pathfind.cpp:747
+#: src/pathfind/pathfind.cpp:743
 msgid "Terrain with a movement cost less than 1 encountered."
 msgstr "필요 이동력이 1보다 작은 지형이 나타났습니다."
 
@@ -8069,15 +8060,15 @@ msgstr "필요 이동력이 1보다 작은 지형이 나타났습니다."
 msgid "waiting for^a global variable"
 msgstr "글로벌 변수"
 
-#: src/play_controller.cpp:255
+#: src/play_controller.cpp:245
 msgid "time left for current turn"
 msgstr "이번 턴에 남은 시간"
 
-#: src/play_controller.cpp:257
+#: src/play_controller.cpp:247
 msgid "current local time"
 msgstr "현재 시간"
 
-#: src/play_controller.cpp:1028
+#: src/play_controller.cpp:1038
 msgid ""
 "The game is out of sync. It might not make much sense to continue. Do you "
 "want to save your game?"
@@ -8085,25 +8076,25 @@ msgstr ""
 "이 게임은 동기화 되지 않아서, 속행 불능이라고 생각됩니다.이 게임을 저장하시겠"
 "습니까?"
 
-#: src/play_controller.cpp:1029
+#: src/play_controller.cpp:1039
 msgid "Error details:"
 msgstr "상세 에러:"
 
-#: src/play_controller.cpp:1317
+#: src/play_controller.cpp:1333
 msgid "No objectives available"
 msgstr "가능한 목표 없음"
 
-#: src/playmp_controller.cpp:151
+#: src/playmp_controller.cpp:158
 msgid "Undoing moves not yet transmitted to the server."
 msgstr "이동 취소는 아직 서버에 송신되지 않았습니다."
 
-#: src/playmp_controller.cpp:264 src/playsingle_controller.cpp:348
+#: src/playmp_controller.cpp:272 src/playsingle_controller.cpp:366
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
 "want to save the game?"
 msgstr "연결이 끊어져서 게임을 더 이상 진행할 수 없습니다.저장하시겠습니까?"
 
-#: src/playmp_controller.cpp:266 src/playsingle_controller.cpp:350
+#: src/playmp_controller.cpp:276 src/playsingle_controller.cpp:370
 #, fuzzy
 #| msgid "Do you really want to delete this game?"
 msgid ""
@@ -8113,7 +8104,7 @@ msgstr ""
 "\n"
 "게임을 저장하겠습니까?"
 
-#: src/playmp_controller.cpp:266 src/playsingle_controller.cpp:350
+#: src/playmp_controller.cpp:276 src/playsingle_controller.cpp:370
 #, fuzzy
 #| msgid "The game has been saved"
 msgid ""
@@ -8123,7 +8114,7 @@ msgstr ""
 "이 게임은 끝났습니다.\n"
 "이유: "
 
-#: src/playmp_controller.cpp:368
+#: src/playmp_controller.cpp:385
 msgid ""
 "The game is out of sync, and cannot continue. There are a number of reasons "
 "this could happen: this can occur if you or another player have modified "
@@ -8139,7 +8130,7 @@ msgstr ""
 "\n"
 "게임의 에러로그를 저장합니까?\""
 
-#: src/playmp_controller.cpp:411
+#: src/playmp_controller.cpp:430
 msgid ""
 "This side is in an idle state. To proceed with the game, it must be assigned "
 "to another controller. You may use :droid, :control or :give_control for "
@@ -8149,13 +8140,13 @@ msgstr ""
 "가 있어요.:droid, :control, :give_control 중 어느 하나를 사용하면 좋을 것입니"
 "다"
 
-#: src/playsingle_controller.cpp:152
+#: src/playsingle_controller.cpp:148
 #, fuzzy
 #| msgid "Game Over"
 msgid "Game Error"
 msgstr "게임 에러"
 
-#: src/playsingle_controller.cpp:153
+#: src/playsingle_controller.cpp:149
 msgid ""
 "This multiplayer game uses an alternative random mode, if you don't know "
 "what this message means, then most likely someone is cheating or someone "
@@ -8164,43 +8155,43 @@ msgstr ""
 "이 멀티 플레이어 게임은 다른 난수 모드를 사용하고 있습니다.당신에게 짐작이 없"
 "다면, 누군가가 치트를 하고 있거나, 부정한 게임일 가능성이 있습니다."
 
-#: src/playsingle_controller.cpp:308
+#: src/playsingle_controller.cpp:321
 msgid "The game is over."
 msgstr "게임이 끝났습니다."
 
-#: src/playsingle_controller.cpp:441
+#: src/playsingle_controller.cpp:470
 msgid "It is now $name|’s turn"
 msgstr "지금 $name| 의 턴입니다"
 
-#: src/playturn.cpp:277
+#: src/playturn.cpp:278
 msgid "Give control to their ally $player"
 msgstr "동맹군의 컨트롤을 $player 에 넘긴다."
 
-#: src/playturn.cpp:286
+#: src/playturn.cpp:287
 #, fuzzy
 #| msgid "Send to observers only"
 msgid "Give control to observer $player"
 msgstr "관전자 $player 에게 컨트롤을 건네준다."
 
-#: src/playturn.cpp:291
+#: src/playturn.cpp:292
 msgid "Replace with AI"
 msgstr "인공지능으로 교체"
 
-#: src/playturn.cpp:292
+#: src/playturn.cpp:293
 msgid "Replace with local player"
 msgstr "로컬 플레이어로 교체"
 
-#: src/playturn.cpp:293
+#: src/playturn.cpp:294
 msgid "Set side to idle"
 msgstr "진영을 대기 상태로 하다."
 
-#: src/playturn.cpp:294
+#: src/playturn.cpp:295
 #, fuzzy
 #| msgid "Abort game"
 msgid "Save and abort game"
 msgstr "저장하고 게임 나가기"
 
-#: src/playturn.cpp:298
+#: src/playturn.cpp:299
 #, fuzzy
 #| msgid "$player has left the game. What do you want to do?"
 msgid ""
@@ -8220,7 +8211,7 @@ msgstr "나가기"
 msgid "Do you really want to quit?"
 msgstr "정말 종료하시겠습니까?"
 
-#: src/reports.cpp:172 src/savegame.cpp:420
+#: src/reports.cpp:172 src/savegame.cpp:419
 msgid "Name: "
 msgstr "이름: "
 
@@ -8572,20 +8563,20 @@ msgid "%a %b %d %H:%M %Y"
 msgstr "%Y년%m월%d일（%a） %H:%M"
 
 #. TRANSLATORS: This string is used as part of a filename, as in, "HttT-The Elves Besieged replay.gz"
-#: src/save_index.cpp:261 src/savegame.cpp:572
+#: src/save_index.cpp:261 src/savegame.cpp:574
 msgid "replay"
 msgstr "리플레이 파일"
 
-#: src/save_index.cpp:345 src/savegame.cpp:72 src/savegame.cpp:608
-#: src/savegame.cpp:610
+#: src/save_index.cpp:345 src/savegame.cpp:71 src/savegame.cpp:610
+#: src/savegame.cpp:612
 msgid "Auto-Save"
 msgstr "자동 저장"
 
-#: src/savegame.cpp:206 src/savegame.cpp:210
+#: src/savegame.cpp:205 src/savegame.cpp:207
 msgid "Warning: The file you have tried to load is corrupt. Loading anyway.\n"
 msgstr "경고: 로드하려는 파일이 손상되어 있습니다. 로드는 계속합니다.\n"
 
-#: src/savegame.cpp:257
+#: src/savegame.cpp:251
 #, fuzzy
 #| msgid "This save is from a version too old to be loaded."
 msgid ""
@@ -8593,7 +8584,7 @@ msgid ""
 "be loaded."
 msgstr "이 세이브 파일의 버전이 너무 오래되어 불러올 수 없습니다."
 
-#: src/savegame.cpp:265
+#: src/savegame.cpp:260
 #, fuzzy
 #| msgid ""
 #| "This save is from a different version of the game. Do you want to try to "
@@ -8605,66 +8596,66 @@ msgstr ""
 "이 세이브 파일은 다른 버전의 파일입니다.($version_number|)그래도 불러오시겠습"
 "니까?"
 
-#: src/savegame.cpp:268 src/savegame.cpp:317
+#: src/savegame.cpp:263 src/savegame.cpp:309
 msgid "Load Game"
 msgstr "게임 불러오기"
 
-#: src/savegame.cpp:317
+#: src/savegame.cpp:309
 #, fuzzy
 #| msgid "Factions are only used in multiplayer"
 msgid "Replays are not supported in multiplayer mode."
 msgstr "리플레이는 멀티플레이에서 지원안함"
 
-#: src/savegame.cpp:324
+#: src/savegame.cpp:316
 #, fuzzy
 #| msgid "Multiplayer"
 msgid "This is not a multiplayer save."
 msgstr "멀티 플레이어 게임의 세이브 데이터가 아닙니다."
 
-#: src/savegame.cpp:352
+#: src/savegame.cpp:350
 msgid "The game could not be saved: "
 msgstr "저장이 안됩니다: "
 
-#: src/savegame.cpp:420
+#: src/savegame.cpp:419
 msgid "Save already exists. Do you want to overwrite it?"
 msgstr "그 이름의 세이브 파일이 이미 있습니다. 덮어씌우겠습니까?"
 
-#: src/savegame.cpp:421
+#: src/savegame.cpp:420
 msgid "Overwrite?"
 msgstr "덮어씌우시겠습니까?"
 
-#: src/savegame.cpp:429
+#: src/savegame.cpp:427
 msgid ""
 "Save names should not end on '.gz' or '.bz2'. Please remove the extension."
 msgstr "파일명이 '.gz'나 '.bz2'로 끝나면 안됩니다. 확장자를 지워주세요."
 
-#: src/savegame.cpp:477
+#: src/savegame.cpp:474
 msgid "Saved"
 msgstr "저장됨"
 
-#: src/savegame.cpp:477
+#: src/savegame.cpp:474
 #, fuzzy
 #| msgid "The game has been saved"
 msgid "The game has been saved."
 msgstr "게임이 저장되었습니다"
 
-#: src/savegame.cpp:507 src/savegame.cpp:527
+#: src/savegame.cpp:506 src/savegame.cpp:526
 msgid "Could not write to file"
 msgstr "파일을 쓸수 없습니다"
 
-#: src/savegame.cpp:562
+#: src/savegame.cpp:563
 msgid "Save Replay"
 msgstr "리플레이 저장"
 
-#: src/savegame.cpp:590
+#: src/savegame.cpp:592
 msgid "Could not auto save the game. Please save the game manually."
 msgstr "게임 자동 저장을 실행할 수 없습니다. 직접 저장해 주세요."
 
-#: src/savegame.cpp:638
+#: src/savegame.cpp:642
 msgid "Save Game"
 msgstr "게임 저장"
 
-#: src/savegame.cpp:652
+#: src/savegame.cpp:656
 msgid "Game state is corrupted"
 msgstr "게임 상태가 손상됨"
 
@@ -8812,17 +8803,17 @@ msgstr "Y"
 msgid "infix_binary^i"
 msgstr "i"
 
-#: src/synced_commands.cpp:410
+#: src/synced_commands.cpp:409
 #, fuzzy
 #| msgid "Unknown era"
 msgid "(unknown player)"
 msgstr "알 수 없는 플레이어"
 
-#: src/synced_commands.cpp:415
+#: src/synced_commands.cpp:414
 msgid "The :$command debug command was used during $player’s turn"
 msgstr "디버깅 커맨드 : $command 가 $player 턴에 사용되었습니다."
 
-#: src/synced_commands.cpp:423
+#: src/synced_commands.cpp:422
 msgid ""
 "A player used a debug command during the game. If this is unexpected, it is "
 "possible the player in question is cheating."
@@ -8830,23 +8821,23 @@ msgstr ""
 "게임 중에 디버그 명령이 사용되었습니다.이것이 의도적인 것은 아닐 경우, 디버"
 "깅 커멘드를 사용하고 있는 플레이어에 의한 치트일 가능성이 있습니다."
 
-#: src/synced_commands.cpp:425
+#: src/synced_commands.cpp:424
 #, fuzzy
 #| msgid "Details"
 msgid "Details:"
 msgstr "상세 정보: "
 
-#: src/synced_commands.cpp:428
+#: src/synced_commands.cpp:427
 msgid "Do you wish to save the game before continuing?"
 msgstr "계속하기 전에 저장하길 원하십니까?"
 
-#: src/synced_commands.cpp:430
+#: src/synced_commands.cpp:429
 #, fuzzy
 #| msgid "(debug command)"
 msgid "Debug Command Used"
 msgstr "디버깅 커맨드가 사용되었습니다."
 
-#: src/synced_commands.cpp:536
+#: src/synced_commands.cpp:535
 msgid "A unit was created using debug mode during $player’s turn"
 msgstr "디버깅 모드에 의해 $player 턴에 유닛이 작성되었습니다."
 
@@ -8858,7 +8849,7 @@ msgstr[0] "$desc 때문에 진영 $sides 가 대기중."
 #. TRANSLATORS: In networked games, this text is shown for other clients,
 #. while they wait for an action from another player.
 #. This text will be embedded into a sentence.
-#: src/synced_user_choice.hpp:42
+#: src/synced_user_choice.hpp:44
 msgid "waiting for^input"
 msgstr "입력"
 
@@ -8880,11 +8871,11 @@ msgstr "적 소속 마을"
 msgid "Owned village"
 msgstr "아군 마을"
 
-#: src/theme.cpp:316
+#: src/theme.cpp:314
 msgid "border_size should be between 0.0 and 0.5."
 msgstr "경계 크기는 0.0에서 0.5 사이여야 한다."
 
-#: src/theme.cpp:566 src/theme.cpp:571
+#: src/theme.cpp:564 src/theme.cpp:569
 msgid "Hotkey(s): "
 msgstr "단축키(s):"
 
@@ -9107,6 +9098,23 @@ msgstr "$player 의 계획을 숨기기."
 #: src/whiteboard/manager.cpp:1137
 msgid "Whiteboard Options"
 msgstr "행동 예정 옵션"
+
+#~ msgid "Use experimental PRNG combat"
+#~ msgstr "전투에 유사난수를 사용한다"
+
+#~ msgid ""
+#~ "Enables more determinstic chance-to-hit calculations. This is an "
+#~ "experimental feature designed to bring the observed hit/miss rate more in "
+#~ "line with the displayed percentages.\n"
+#~ "\n"
+#~ "Note: this option only affects singleplayer, and the ‘Save random seed’ "
+#~ "option must also be enabled when creating a game for this to work."
+#~ msgstr ""
+#~ "계산을 하는 데에 더 결정적인 기회를 가능하게 합니다. 이것은 관찰된 수치를 "
+#~ "화면에 보이는 퍼센트와 함께 더 실험적인 기능을 보여줍니다.\n"
+#~ "\n"
+#~ "메모: 이 옵션은 싱글플레이어에게만 영향을 주며,게임을 만들때 '임의 시드 저"
+#~ "장' 옵션도 활성화 해야 작동합니다."
 
 #, fuzzy
 #~| msgid "Downloading add-on: $addon_title|..."

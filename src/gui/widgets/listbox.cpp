@@ -33,7 +33,7 @@
 #include "gui/widgets/window.hpp"
 #include "sdl/rect.hpp"
 #include <functional>
-#include "utils/optional_fwd.hpp"
+#include <optional>
 
 #define LOG_SCOPE_HEADER get_control_type() + " [" + id() + "] " + __func__
 #define LOG_HEADER LOG_SCOPE_HEADER + ':'
@@ -351,7 +351,7 @@ bool listbox::update_content_size()
 
 void listbox::place(const point& origin, const point& size)
 {
-	utils::optional<unsigned> vertical_scrollbar_position, horizontal_scrollbar_position;
+	std::optional<unsigned> vertical_scrollbar_position, horizontal_scrollbar_position;
 
 	// Check if this is the first time placing the list box
 	if(get_origin() != point {-1, -1}) {
@@ -666,11 +666,11 @@ const listbox::order_pair listbox::get_active_sorting_option()
 		selectable_item* w = orders_[column].first;
 
 		if(w && w->get_value() != SORT_ORDER::NONE) {
-			return std::make_pair(column, static_cast<SORT_ORDER::type>(w->get_value()));
+			return std::pair(column, static_cast<SORT_ORDER::type>(w->get_value()));
 		}
 	}
 
-	return std::make_pair(-1, SORT_ORDER::NONE);
+	return std::pair(-1, SORT_ORDER::NONE);
 }
 
 void listbox::mark_as_unsorted()
@@ -719,85 +719,6 @@ listbox_definition::listbox_definition(const config& cfg)
 	load_resolutions<resolution>(cfg);
 }
 
-/*WIKI
- * @page = GUIWidgetDefinitionWML
- * @order = 1_listbox
- * @begin{parent}{name="gui/"}
- * @begin{tag}{name="listbox_definition"}{min=0}{max=-1}{super="generic/widget_definition"}
- * == Listbox ==
- *
- * @macro = listbox_description
- *
- * The definition of a listbox contains the definition of its scrollbar.
- *
- * The resolution for a listbox also contains the following keys:
- * @begin{tag}{name="resolution"}{min=0}{max=-1}{super=generic/widget_definition/resolution}
- * @begin{table}{config}
- *     scrollbar & section & &         A grid containing the widgets for the
- *                                     scrollbar. The scrollbar has some special
- *                                     widgets so it can make default behavior
- *                                     for certain widgets. $
- * @end{table}
- * @begin{table}{dialog_widgets}
- *     _begin & & clickable & o &      Moves the position to the beginning
- *                                     of the list. $
- *     _line_up & & clickable & o &    Move the position one item up. (NOTE
- *                                     if too many items to move per item it
- *                                     might be more items.) $
- *     _half_page_up & & clickable & o &
- *                                     Move the position half the number of the
- *                                     visible items up. (See note at
- *                                     _line_up.) $
- *     _page_up & & clickable & o &    Move the position the number of
- *                                     visible items up. (See note at
- *                                     _line_up.) $
- *
- *     _end & & clickable & o &        Moves the position to the end of the
- *                                     list. $
- *     _line_down & & clickable & o &  Move the position one item down.(See
- *                                     note at _line_up.) $
- *     _half_page_down & & clickable & o &
- *                                     Move the position half the number of the
- *                                     visible items down. (See note at
- *                                     _line_up.) $
- *     _page_down & & clickable & o &  Move the position the number of
- *                                     visible items down. (See note at
- *                                     _line_up.) $
- *
- *     _scrollbar & & vertical_scrollbar & m &
- *                                     This is the scrollbar so the user can
- *                                     scroll through the list. $
- * @end{table}
- * A clickable is one of:
- * * button
- * * repeating_button
- * @{allow}{link}{name="gui/window/resolution/grid/row/column/button"}
- * @{allow}{link}{name="gui/window/resolution/grid/row/column/repeating_button"}
- * The following states exist:
- * * state_enabled, the listbox is enabled.
- * * state_disabled, the listbox is disabled.
- * @begin{tag}{name="state_enabled"}{min=0}{max=1}{super="generic/state"}
- * @end{tag}{name="state_enabled"}
- * @begin{tag}{name="state_disabled"}{min=0}{max=1}{super="generic/state"}
- * @end{tag}{name="state_disabled"}
- * @allow{link}{name="gui/window/resolution/grid"}
- * @end{tag}{name="resolution"}
- * @end{tag}{name="listbox_definition"}
- * @end{parent}{name="gui/"}
- */
-
-/*WIKI
- * @page = GUIWidgetDefinitionWML
- * @order = 1_horizonal_listbox
- *
- * == Horizontal listbox ==
- * @begin{parent}{name="gui/"}
- * @begin{tag}{name="horizontal_listbox_definition"}{min=0}{max=-1}{super="gui/listbox_definition"}
- * @end{tag}{name="horizontal_listbox_definition"}
- * @end{parent}{name="gui/"}
- * @macro = horizontal_listbox_description
- * The definition of a horizontal listbox is the same as for a normal listbox.
- */
 listbox_definition::resolution::resolution(const config& cfg)
 	: resolution_definition(cfg)
 	, grid(nullptr)
@@ -811,101 +732,6 @@ listbox_definition::resolution::resolution(const config& cfg)
 
 	grid = std::make_shared<builder_grid>(child);
 }
-
-// }---------- BUILDER -----------{
-
-/*WIKI_MACRO
- * @begin{macro}{listbox_description}
- *
- *        A listbox is a styled_widget that holds several items of the same type.
- *        Normally the items in a listbox are ordered in rows, this version
- *        might allow more options for ordering the items in the future.
- * @end{macro}
- */
-
-/*WIKI
- * @page = GUIWidgetInstanceWML
- * @order = 2_listbox
- *
- * == Listbox ==
- * @begin{parent}{name="gui/window/resolution/grid/row/column/"}
- * @begin{tag}{name="listbox"}{min=0}{max=-1}{super="generic/widget_instance"}
- * @macro = listbox_description
- *
- * List with the listbox specific variables:
- * @begin{table}{config}
- *     vertical_scrollbar_mode & scrollbar_mode & initial_auto &
- *                                     Determines whether or not to show the
- *                                     scrollbar. $
- *     horizontal_scrollbar_mode & scrollbar_mode & initial_auto &
- *                                     Determines whether or not to show the
- *                                     scrollbar. $
- *
- *     header & grid & [] &            Defines the grid for the optional
- *                                     header. (This grid will automatically
- *                                     get the id _header_grid.) $
- *     footer & grid & [] &            Defines the grid for the optional
- *                                     footer. (This grid will automatically
- *                                     get the id _footer_grid.) $
- *
- *     list_definition & section & &   This defines how a listbox item
- *                                     looks. It must contain the grid
- *                                     definition for 1 row of the list. $
- *
- *     list_data & section & [] &      A grid alike section which stores the
- *                                     initial data for the listbox. Every row
- *                                     must have the same number of columns as
- *                                     the 'list_definition'. $
- *
- *     has_minimum & bool & true &     If false, less than one row can be selected. $
- *
- *     has_maximum & bool & true &     If false, more than one row can be selected. $
- *
- * @end{table}
- * @begin{tag}{name="header"}{min=0}{max=1}{super="gui/window/resolution/grid"}
- * @end{tag}{name="header"}
- * @begin{tag}{name="footer"}{min=0}{max=1}{super="gui/window/resolution/grid"}
- * @end{tag}{name="footer"}
- * @begin{tag}{name="list_definition"}{min=0}{max=1}
- * @begin{tag}{name="row"}{min=1}{max=1}{super="generic/listbox_grid/row"}
- * @end{tag}{name="row"}
- * @end{tag}{name="list_definition"}x
- * @begin{tag}{name="list_data"}{min=0}{max=1}{super="generic/listbox_grid"}
- * @end{tag}{name="list_data"}
- *
- * In order to force widgets to be the same size inside a listbox, the widgets
- * need to be inside a linked_group.
- *
- * Inside the list section there are only the following widgets allowed
- * * grid (to nest)
- * * selectable widgets which are
- * ** toggle_button
- * ** toggle_panel
- * @end{tag}{name="listbox"}
- *
- * @end{parent}{name="gui/window/resolution/grid/row/column/"}
- */
-
-/*WIKI
- * @begin{parent}{name="generic/"}
- * @begin{tag}{name="listbox_grid"}{min="0"}{max="-1"}
- * @begin{tag}{name="row"}{min="0"}{max="-1"}
- * @begin{table}{config}
- *     grow_factor & unsigned & 0 &      The grow factor for a row. $
- * @end{table}
- * @begin{tag}{name="column"}{min="0"}{max="-1"}{super="gui/window/resolution/grid/row/column"}
- * @begin{table}{config}
- *     label & t_string & "" &  $
- *     tooltip & t_string & "" &  $
- *     icon & t_string & "" &  $
- * @end{table}
- * @allow{link}{name="gui/window/resolution/grid/row/column/toggle_button"}
- * @allow{link}{name="gui/window/resolution/grid/row/column/toggle_panel"}
- * @end{tag}{name="column"}
- * @end{tag}{name="row"}
- * @end{tag}{name="listbox_grid"}
- * @end{parent}{name="generic/"}
- */
 
 namespace implementation
 {
@@ -992,69 +818,6 @@ widget* builder_listbox::build() const
 	return widget;
 }
 
-/*WIKI_MACRO
- * @begin{macro}{horizontal_listbox_description}
- *
- *        A horizontal listbox is a styled_widget that holds several items of the
- *        same type.  Normally the items in a listbox are ordered in rows,
- *        this version orders them in columns instead.
- * @end{macro}
- */
-
-/*WIKI
- * @page = GUIWidgetInstanceWML
- * @order = 2_horizontal_listbox
- * @begin{parent}{name="gui/window/resolution/grid/row/column/"}
- * @begin{tag}{name="horizontal_listbox"}{min="0"}{max="-1"}{super="generic/widget_instance"}
- * == Horizontal listbox ==
- *
- * @macro = horizontal_listbox_description
- *
- * List with the horizontal listbox specific variables:
- * @begin{table}{config}
- *     vertical_scrollbar_mode & scrollbar_mode & initial_auto &
- *                                     Determines whether or not to show the
- *                                     scrollbar. $
- *     horizontal_scrollbar_mode & scrollbar_mode & initial_auto &
- *                                     Determines whether or not to show the
- *                                     scrollbar. $
- *
- *     list_definition & section & &   This defines how a listbox item
- *                                     looks. It must contain the grid
- *                                     definition for 1 column of the list. $
- *
- *     list_data & section & [] &      A grid alike section which stores the
- *                                     initial data for the listbox. Every row
- *                                     must have the same number of columns as
- *                                     the 'list_definition'. $
- *
- *     has_minimum & bool & true &     If false, less than one row can be selected. $
- *
- *     has_maximum & bool & true &     If false, more than one row can be selected. $
- *
- * @end{table}
- * @begin{tag}{name="header"}{min=0}{max=1}{super="gui/window/resolution/grid"}
- * @end{tag}{name="header"}
- * @begin{tag}{name="footer"}{min=0}{max=1}{super="gui/window/resolution/grid"}
- * @end{tag}{name="footer"}
- * @begin{tag}{name="list_definition"}{min=0}{max=1}
- * @begin{tag}{name="row"}{min=1}{max=1}{super="generic/listbox_grid/row"}
- * @end{tag}{name="row"}
- * @end{tag}{name="list_definition"}
- * @begin{tag}{name="list_data"}{min=0}{max=1}{super="generic/listbox_grid"}
- * @end{tag}{name="list_data"}
- * In order to force widgets to be the same size inside a horizontal listbox,
- * the widgets need to be inside a linked_group.
- *
- * Inside the list section there are only the following widgets allowed
- * * grid (to nest)
- * * selectable widgets which are
- * ** toggle_button
- * ** toggle_panel
- * @end{tag}{name="horizontal_listbox"}
- * @end{parent}{name="gui/window/resolution/grid/row/column/"}
- */
-
 builder_horizontal_listbox::builder_horizontal_listbox(const config& cfg)
 	: builder_styled_widget(cfg)
 	, vertical_scrollbar_mode(get_scrollbar_mode(cfg["vertical_scrollbar_mode"]))
@@ -1096,69 +859,6 @@ widget* builder_horizontal_listbox::build() const
 
 	return widget;
 }
-
-/*WIKI_MACRO
- * @begin{macro}{grid_listbox_description}
- *
- *        A grid listbox is a styled_widget that holds several items of the
- *        same type.  Normally the items in a listbox are ordered in rows,
- *        this version orders them in a grid instead.
- * @end{macro}
- */
-
-/*WIKI
- * @page = GUIWidgetInstanceWML
- * @order = 2_grid_listbox
- * @begin{parent}{name="gui/window/resolution/grid/row/column/"}
- * @begin{tag}{name="grid_listbox"}{min="0"}{max="-1"}{super="generic/widget_instance"}
- * == Horizontal listbox ==
- *
- * @macro = grid_listbox_description
- *
- * List with the grid listbox specific variables:
- * @begin{table}{config}
- *     vertical_scrollbar_mode & scrollbar_mode & initial_auto &
- *                                     Determines whether or not to show the
- *                                     scrollbar. $
- *     horizontal_scrollbar_mode & scrollbar_mode & initial_auto &
- *                                     Determines whether or not to show the
- *                                     scrollbar. $
- *
- *     list_definition & section & &   This defines how a listbox item
- *                                     looks. It must contain the grid
- *                                     definition for 1 column of the list. $
- *
- *     list_data & section & [] &      A grid alike section which stores the
- *                                     initial data for the listbox. Every row
- *                                     must have the same number of columns as
- *                                     the 'list_definition'. $
- *
- *     has_minimum & bool & true &     If false, less than one cell can be selected. $
- *
- *     has_maximum & bool & true &     If false, more than one cell can be selected. $
- *
- * @end{table}
- * @begin{tag}{name="header"}{min=0}{max=1}{super="gui/window/resolution/grid"}
- * @end{tag}{name="header"}
- * @begin{tag}{name="footer"}{min=0}{max=1}{super="gui/window/resolution/grid"}
- * @end{tag}{name="footer"}
- * @begin{tag}{name="list_definition"}{min=0}{max=1}
- * @begin{tag}{name="row"}{min=1}{max=1}{super="generic/listbox_grid/row"}
- * @end{tag}{name="row"}
- * @end{tag}{name="list_definition"}
- * @begin{tag}{name="list_data"}{min=0}{max=1}{super="generic/listbox_grid"}
- * @end{tag}{name="list_data"}
- * In order to force widgets to be the same size inside a grid listbox,
- * the widgets need to be inside a linked_group.
- *
- * Inside the list section there are only the following widgets allowed
- * * grid (to nest)
- * * selectable widgets which are
- * ** toggle_button
- * ** toggle_panel
- * @end{tag}{name="grid_listbox"}
- * @end{parent}{name="gui/window/resolution/grid/row/column/"}
- */
 
 builder_grid_listbox::builder_grid_listbox(const config& cfg)
 	: builder_styled_widget(cfg)

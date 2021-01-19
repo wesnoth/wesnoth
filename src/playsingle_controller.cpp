@@ -77,7 +77,7 @@ playsingle_controller::playsingle_controller(const config& level, saved_game& st
 	, replay_controller_()
 {
 	// upgrade hotkey handler to the sp (whiteboard enabled) version
-	hotkey_handler_.reset(new hotkey_handler(*this, saved_game_));
+	hotkey_handler_ = std::make_unique<hotkey_handler>(*this, saved_game_);
 
 	// game may need to start in linger mode
 	linger_ = is_regular_game_end();
@@ -213,7 +213,7 @@ void playsingle_controller::play_scenario_main_loop()
 			play_scenario_init();
 
 			if(replay_controller_ == nullptr) {
-				replay_controller_.reset(new replay_controller(*this, false, ex.level, [this]() { on_replay_end(false); }));
+				replay_controller_ = std::make_unique<replay_controller>(*this, false, ex.level, [this]() { on_replay_end(false); });
 			}
 
 			if(ex.start_replay) {
@@ -710,9 +710,12 @@ void playsingle_controller::reset_replay()
 
 void playsingle_controller::enable_replay(bool is_unit_test)
 {
-	replay_controller_.reset(new replay_controller(*this, gamestate().has_human_sides(),
-		std::shared_ptr<config>(new config(saved_game_.get_replay_starting_point())),
-		std::bind(&playsingle_controller::on_replay_end, this, is_unit_test)));
+	replay_controller_ = std::make_unique<replay_controller>(
+		*this,
+ 		gamestate().has_human_sides(),
+		std::make_shared<config>(saved_game_.get_replay_starting_point()),
+		std::bind(&playsingle_controller::on_replay_end, this, is_unit_test)
+	);
 
 	if(is_unit_test) {
 		replay_controller_->play_replay();

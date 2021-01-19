@@ -128,7 +128,7 @@ void attack_predictions::set_data(window& window, const combatant_data& attacker
 	// Set specials context (for safety, it should not have changed normally).
 	const_attack_ptr weapon = attacker.stats_.weapon, opp_weapon = defender.stats_.weapon;
 	auto ctx = weapon->specials_context(attacker.unit_, defender.unit_, attacker.unit_->get_location(), defender.unit_->get_location(), attacker.stats_.is_attacker, opp_weapon);
-	utils::optional<decltype(ctx)> opp_ctx;
+	std::optional<decltype(ctx)> opp_ctx;
 
 	if(opp_weapon) {
 		opp_ctx.emplace(opp_weapon->specials_context(defender.unit_, attacker.unit_, defender.unit_->get_location(), attacker.unit_->get_location(), defender.stats_.is_attacker, weapon));
@@ -298,8 +298,7 @@ void attack_predictions::draw_hp_graph(drawing& hp_graph, const combatant_data& 
 	for(const auto& probability : get_hitpoint_probabilities(attacker.combatant_.hp_dist)) {
 
 		// Get the HP and probability.
-		int hp; double prob;
-		std::tie(hp, prob) = probability;
+		auto [hp, prob] = probability;
 
 		color_t row_color;
 
@@ -385,7 +384,7 @@ hp_probability_vector attack_predictions::get_hitpoint_probabilities(const std::
 	}
 
 	// Then sort by descending probability.
-	std::sort(temp_vec.begin(), temp_vec.end(), [](const hp_probability_t& pair1, const hp_probability_t& pair2) {
+	std::sort(temp_vec.begin(), temp_vec.end(), [](const auto& pair1, const auto& pair2) {
 		return pair1.second > pair2.second;
 	});
 
@@ -393,7 +392,7 @@ hp_probability_vector attack_predictions::get_hitpoint_probabilities(const std::
 	std::copy_n(temp_vec.begin(), std::min<int>(graph_max_rows, temp_vec.size()), std::back_inserter(res));
 
 	// Then, we sort the hitpoint values in descending order.
-	std::sort(res.begin(), res.end(), [](const hp_probability_t& pair1, const hp_probability_t& pair2) {
+	std::sort(res.begin(), res.end(), [](const auto& pair1, const auto& pair2) {
 		return pair1.first > pair2.first;
 	});
 

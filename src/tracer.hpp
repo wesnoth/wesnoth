@@ -99,5 +99,5 @@ struct tracer
  */
 #define TRACER_COUNT(marker)                                                 \
 	do {                                                                     \
-		++tracer.counters[std::make_pair(__LINE__, marker)];                 \
+		++tracer.counters[std::pair(__LINE__, marker)];                 \
 	} while(false)

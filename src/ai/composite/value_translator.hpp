@@ -20,13 +20,13 @@
 
 #include "ai/composite/engine.hpp"
 #include "ai/composite/stage.hpp"
-
-#include "ai/manager.hpp"
-#include "terrain/filter.hpp"
-#include "lexical_cast.hpp"
-#include "serialization/string_utils.hpp"
-#include "resources.hpp"
 #include "ai/lua/aspect_advancements.hpp"
+#include "ai/manager.hpp"
+#include "lexical_cast.hpp"
+#include "resources.hpp"
+#include "serialization/string_utils.hpp"
+#include "terrain/filter.hpp"
+#include "utils/variant.hpp"
 
 namespace ai {
 
@@ -112,7 +112,11 @@ public:
 	}
 };
 
-class leader_aspects_visitor : public boost::static_visitor<std::string> {
+class leader_aspects_visitor
+#ifdef USING_BOOST_VARIANT
+	: public boost::static_visitor<std::string>
+#endif
+{
 public:
 	std::string operator()(const bool b) const {
 		if (b) {
@@ -125,10 +129,10 @@ public:
 };
 
 template<>
-class config_value_translator< boost::variant<bool, std::vector<std::string>>> {
+class config_value_translator<utils::variant<bool, std::vector<std::string>>> {
 public:
 
-	static boost::variant<bool, std::vector<std::string>> cfg_to_value(const config &cfg)
+	static utils::variant<bool, std::vector<std::string>> cfg_to_value(const config &cfg)
 	{
 		if (cfg["value"].to_bool(true) == cfg["value"].to_bool(false)) {
 			return cfg["value"].to_bool();
@@ -136,17 +140,17 @@ public:
 		return utils::split(cfg["value"]);
 	}
 
-	static void cfg_to_value(const config &cfg, boost::variant<bool, std::vector<std::string>> &value)
+	static void cfg_to_value(const config &cfg, utils::variant<bool, std::vector<std::string>> &value)
 	{
 		value = cfg_to_value(cfg);
 	}
 
-	static void value_to_cfg(const boost::variant<bool, std::vector<std::string>> &value, config &cfg)
+	static void value_to_cfg(const utils::variant<bool, std::vector<std::string>> &value, config &cfg)
 	{
-		cfg["value"] = boost::apply_visitor(leader_aspects_visitor(), value);
+		cfg["value"] = utils::visit(leader_aspects_visitor(), value);
 	}
 
-	static config value_to_cfg(const boost::variant<bool, std::vector<std::string>> &value)
+	static config value_to_cfg(const utils::variant<bool, std::vector<std::string>> &value)
 	{
 		config cfg;
 		value_to_cfg(value,cfg);

@@ -94,7 +94,7 @@ unsigned int display::last_zoom_ = SmallZoom;
 // Assumption: zoom_levels is a sorted vector of ascending tile sizes
 int get_zoom_levels_index(unsigned int zoom_level)
 {
-	zoom_level = utils::clamp(zoom_level, MinZoom, MaxZoom);	// ensure zoom_level is within zoom_levels bounds
+	zoom_level = std::clamp(zoom_level, MinZoom, MaxZoom);	// ensure zoom_level is within zoom_levels bounds
 	auto iter = std::lower_bound(zoom_levels.begin(), zoom_levels.end(), zoom_level);
 
 	// find closest match
@@ -163,77 +163,81 @@ void display::remove_single_overlay(const map_location& loc, const std::string& 
 	);
 }
 
-display::display(const display_context * dc, std::weak_ptr<wb::manager> wb, reports & reports_object, const config& theme_cfg, const config& level, bool auto_join) :
-	video2::draw_layering(auto_join),
-	dc_(dc),
-	halo_man_(new halo::manager(*this)),
-	wb_(wb),
-	exclusive_unit_draw_requests_(),
-	screen_(CVideo::get_singleton()),
-	currentTeam_(0),
-	dont_show_all_(false),
-	xpos_(0),
-	ypos_(0),
-	view_locked_(false),
-	theme_(theme_cfg, screen_.screen_area()),
-	zoom_index_(0),
-	fake_unit_man_(new fake_unit_manager(*this)),
-	builder_(new terrain_builder(level, (dc_ ? &dc_->map() : nullptr), theme_.border().tile_image, theme_.border().show_border)),
-	minimap_(nullptr),
-	minimap_location_(sdl::empty_rect),
-	redrawMinimap_(false),
-	redraw_background_(true),
-	invalidateAll_(true),
-	grid_(false),
-	diagnostic_label_(0),
-	panelsDrawn_(false),
-	turbo_speed_(2),
-	turbo_(false),
-	invalidateGameStatus_(true),
-	map_labels_(new map_labels(nullptr)),
-	reports_object_(&reports_object),
-	scroll_event_("scrolled"),
-	complete_redraw_event_("completely_redrawn"),
-	frametimes_(50),
-	fps_counter_(),
-	fps_start_(),
-	fps_actual_(),
-	reportRects_(),
-	reportSurfaces_(),
-	reports_(),
-	menu_buttons_(),
-	action_buttons_(),
-	invalidated_(),
-	mouseover_hex_overlay_(nullptr),
-	tod_hex_mask1(nullptr),
-	tod_hex_mask2(nullptr),
-	fog_images_(),
-	shroud_images_(),
-	selectedHex_(),
-	mouseoverHex_(),
-	keys_(),
-	animate_map_(true),
-	animate_water_(true),
-	flags_(),
-	activeTeam_(0),
-	drawing_buffer_(),
-	map_screenshot_(false),
-	reach_map_(),
-	reach_map_old_(),
-	reach_map_changed_(true),
-	fps_handle_(0),
-	invalidated_hexes_(0),
-	drawn_hexes_(0),
-	idle_anim_(preferences::idle_anim()),
-	idle_anim_rate_(1.0),
-	map_screenshot_surf_(nullptr),
-	redraw_observers_(),
-	draw_coordinates_(false),
-	draw_terrain_codes_(false),
-	draw_num_of_bitmaps_(false),
-	arrows_map_(),
-	color_adjust_(),
-	dirty_()
+display::display(const display_context* dc,
+		std::weak_ptr<wb::manager> wb,
+		reports& reports_object,
+		const config& theme_cfg,
+		const config& level,
+		bool auto_join)
+	: video2::draw_layering(auto_join)
+	, dc_(dc)
+	, halo_man_(new halo::manager(*this))
+	, wb_(wb)
+	, exclusive_unit_draw_requests_()
+	, screen_(CVideo::get_singleton())
+	, currentTeam_(0)
+	, dont_show_all_(false)
+	, xpos_(0)
+	, ypos_(0)
+	, view_locked_(false)
+	, theme_(theme_cfg, screen_.screen_area())
+	, zoom_index_(0)
+	, fake_unit_man_(new fake_unit_manager(*this))
+	, builder_(new terrain_builder(level, (dc_ ? &dc_->map() : nullptr), theme_.border().tile_image, theme_.border().show_border))
+	, minimap_(nullptr)
+	, minimap_location_(sdl::empty_rect)
+	, redrawMinimap_(false)
+	, redraw_background_(true)
+	, invalidateAll_(true)
+	, grid_(false)
+	, diagnostic_label_(0)
+	, panelsDrawn_(false)
+	, turbo_speed_(2)
+	, turbo_(false)
+	, invalidateGameStatus_(true)
+	, map_labels_(new map_labels(nullptr))
+	, reports_object_(&reports_object)
+	, scroll_event_("scrolled")
+	, frametimes_(50)
+	, fps_counter_()
+	, fps_start_()
+	, fps_actual_()
+	, reportRects_()
+	, reportSurfaces_()
+	, reports_()
+	, menu_buttons_()
+	, action_buttons_()
+	, invalidated_()
+	, mouseover_hex_overlay_(nullptr)
+	, tod_hex_mask1(nullptr)
+	, tod_hex_mask2(nullptr)
+	, fog_images_()
+	, shroud_images_()
+	, selectedHex_()
+	, mouseoverHex_()
+	, keys_()
+	, animate_map_(true)
+	, animate_water_(true)
+	, flags_()
+	, activeTeam_(0)
+	, drawing_buffer_()
+	, map_screenshot_(false)
+	, reach_map_()
+	, reach_map_old_()
+	, reach_map_changed_(true)
+	, fps_handle_(0)
+	, invalidated_hexes_(0)
+	, drawn_hexes_(0)
+	, idle_anim_(preferences::idle_anim())
+	, idle_anim_rate_(1.0)
+	, map_screenshot_surf_(nullptr)
+	, redraw_observers_()
+	, draw_coordinates_(false)
+	, draw_terrain_codes_(false)
+	, draw_num_of_bitmaps_(false)
+	, arrows_map_()
+	, color_adjust_()
+	, dirty_()
 {
 	//The following assertion fails when starting a campaign
 	assert(singleton_ == nullptr);
@@ -962,9 +966,7 @@ static const std::string& get_direction(std::size_t n)
 std::vector<surface> display::get_fog_shroud_images(const map_location& loc, image::TYPE image_type)
 {
 	std::vector<std::string> names;
-
-	adjacent_loc_array_t adjacent;
-	get_adjacent_tiles(loc, adjacent.data());
+	const auto adjacent = get_adjacent_tiles(loc);
 
 	enum visibility {FOG=0, SHROUD=1, CLEAR=2};
 	visibility tiles[6];
@@ -1066,9 +1068,8 @@ void display::get_terrain_images(const map_location &loc,
 	const time_of_day& tod = get_time_of_day(loc);
 
 	//get all the light transitions
-	adjacent_loc_array_t adjs;
+	const auto adjs = get_adjacent_tiles(loc);
 	std::array<const time_of_day*, 6> atods;
-	get_adjacent_tiles(loc, adjs.data());
 	for(size_t d = 0; d < adjs.size(); ++d){
 		atods[d] = &get_time_of_day(adjs[d]);
 	}
@@ -2027,7 +2028,7 @@ bool display::zoom_at_min()
 bool display::set_zoom(bool increase)
 {
 	// Ensure we don't try to access nonexistent vector indices.
-	zoom_index_ = utils::clamp(increase ? zoom_index_ + 1 : zoom_index_ - 1, 0, final_zoom_index);
+	zoom_index_ = std::clamp(increase ? zoom_index_ + 1 : zoom_index_ - 1, 0, final_zoom_index);
 
 	// No validation check is needed in the next step since we've already set the index here and
 	// know the new zoom value is indeed valid.
@@ -2036,7 +2037,7 @@ bool display::set_zoom(bool increase)
 
 bool display::set_zoom(unsigned int amount, const bool validate_value_and_set_index)
 {
-	unsigned int new_zoom = utils::clamp(amount, MinZoom, MaxZoom);
+	unsigned int new_zoom = std::clamp(amount, MinZoom, MaxZoom);
 
 	LOG_DP << "new_zoom = " << new_zoom << std::endl;
 
@@ -2463,8 +2464,6 @@ void display::redraw_everything()
 	draw(true,true);
 	int ticks3 = SDL_GetTicks();
 	LOG_DP << "invalidate and draw: " << (ticks3 - ticks2) << " and " << (ticks2 - ticks1) << "\n";
-
-	complete_redraw_event_.notify_observers();
 }
 
 void display::add_redraw_observer(std::function<void(display&)> f)
@@ -2735,7 +2734,7 @@ void display::draw_hex(const map_location& loc) {
 		if (draw_num_of_bitmaps_) {
 			int off_x = xpos + hex_size()/2;
 			int off_y = ypos + hex_size()/2;
-			surface text = font::get_rendered_text(lexical_cast<std::string>(num_images_bg + num_images_fg), font::SIZE_SMALL, font::NORMAL_COLOR);
+			surface text = font::get_rendered_text(std::to_string(num_images_bg + num_images_fg), font::SIZE_SMALL, font::NORMAL_COLOR);
 			surface bg(text->w, text->h);
 			SDL_Rect bg_rect {0, 0, text->w, text->h};
 			sdl::fill_surface_rect(bg, &bg_rect, 0xaa000000);

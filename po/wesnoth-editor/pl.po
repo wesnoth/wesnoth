@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.5-CVS\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2020-12-18 22:27-0300\n"
+"POT-Creation-Date: 2021-01-16 17:17+0300\n"
 "PO-Revision-Date: 2020-11-02 12:06+0100\n"
 "Last-Translator: Paweł Jackowski <pjackowski@gmail.com>\n"
 "Language-Team: none\n"
@@ -236,23 +236,23 @@ msgstr "Lista utworów"
 msgid "Assign Time Schedule"
 msgstr "Przypisz porę dnia"
 
-#: src/editor/action/mouse/mouse_action_unit.cpp:63
+#: src/editor/action/mouse/mouse_action_unit.cpp:61
 msgid "Identifier: "
 msgstr "Identyfikator: "
 
-#: src/editor/action/mouse/mouse_action_unit.cpp:65
+#: src/editor/action/mouse/mouse_action_unit.cpp:63
 msgid "Name: "
 msgstr "Imię: "
 
-#: src/editor/action/mouse/mouse_action_unit.cpp:67
+#: src/editor/action/mouse/mouse_action_unit.cpp:65
 msgid "Type: "
 msgstr "Typ: "
 
-#: src/editor/action/mouse/mouse_action_unit.cpp:68
+#: src/editor/action/mouse/mouse_action_unit.cpp:66
 msgid "Level: "
 msgstr "Poziom: "
 
-#: src/editor/action/mouse/mouse_action_unit.cpp:69
+#: src/editor/action/mouse/mouse_action_unit.cpp:67
 msgid "Cost: "
 msgstr "Koszt: "
 
@@ -304,11 +304,11 @@ msgstr "Imię:"
 msgid "Load Map"
 msgstr "Otwórz mapę"
 
-#: src/editor/map/context_manager.cpp:276 src/editor/map/map_context.cpp:852
+#: src/editor/map/context_manager.cpp:276 src/editor/map/map_context.cpp:851
 msgid "New Map"
 msgstr "Nowa mapa"
 
-#: src/editor/map/context_manager.cpp:289 src/editor/map/map_context.cpp:852
+#: src/editor/map/context_manager.cpp:289 src/editor/map/map_context.cpp:851
 msgid "New Scenario"
 msgstr "Nowy scenariusz"
 
@@ -409,24 +409,24 @@ msgstr ""
 "Załadowano używany plik mapy:\n"
 "$new"
 
-#: src/editor/map/editor_map.cpp:148
+#: src/editor/map/editor_map.cpp:144
 #: src/editor/palette/location_palette.cpp:119
 msgid "Player $side_num"
 msgstr "Gracz $side_num"
 
-#: src/editor/map/editor_map.cpp:283
+#: src/editor/map/editor_map.cpp:279
 msgid "The size of the target map is different from the current map"
 msgstr "Rozmiar mapy docelowej jest inny niż mapy obecnie załadowanej"
 
-#: src/editor/map/map_context.cpp:146
+#: src/editor/map/map_context.cpp:145
 msgid "File not found"
 msgstr "Nie znaleziono pliku"
 
-#: src/editor/map/map_context.cpp:153
+#: src/editor/map/map_context.cpp:152
 msgid "Empty file"
 msgstr "Pusty plik mapy"
 
-#: src/editor/map/map_context.cpp:209
+#: src/editor/map/map_context.cpp:208
 msgid ""
 "The map file looks like a scenario, but the map_data value does not point to "
 "an existing file"
@@ -434,15 +434,15 @@ msgstr ""
 "Plik mapy wygląda na scenariusz, ale wartość map_data nie wskazuje na "
 "istniejący plik"
 
-#: src/editor/map/map_context.cpp:618
+#: src/editor/map/map_context.cpp:617
 msgid "Could not save the scenario: $msg"
 msgstr "Zapisanie scenariusza nie powiodło się: $msg"
 
-#: src/editor/map/map_context.cpp:653
+#: src/editor/map/map_context.cpp:652
 msgid "Could not save into scenario"
 msgstr "Zapisanie do scenariusza nie powiodło się"
 
-#: src/editor/map/map_context.cpp:663
+#: src/editor/map/map_context.cpp:662
 msgid "Could not save the map: $msg"
 msgstr "Zapisanie mapy nie powiodło się: $msg"
 
@@ -523,13 +523,11 @@ msgstr "Wybierz plik"
 msgid "Select"
 msgstr "Wybierz"
 
-#: src/gui/dialogs/editor/set_starting_position.cpp:84
-msgid "player^None"
-msgstr "Brak"
+#~ msgid "player^None"
+#~ msgstr "Brak"
 
-#: src/gui/dialogs/editor/set_starting_position.cpp:97
-msgid "Player $player_number"
-msgstr "Gracz $player_number"
+#~ msgid "Player $player_number"
+#~ msgstr "Gracz $player_number"
 
 #~ msgid "(Unknown unit type: $type)"
 #~ msgstr "(Nieznany typ jednostki: $typ)"

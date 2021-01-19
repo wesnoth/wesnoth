@@ -13,15 +13,13 @@
    See the COPYING file for more details.
 */
 
-/** @file */
-
 #pragma once
 
 #include "deprecation.hpp"
 #include "exceptions.hpp"
 #include "filesystem.hpp"
 #include "game_version.hpp"
-#include "utils/optional_fwd.hpp"
+#include <optional>
 
 #include <iosfwd>
 #include <map>
@@ -61,7 +59,7 @@ struct preproc_define
 			int line,
 			const std::string& loc,
 			const std::string& dep_msg,
-			utils::optional<DEP_LEVEL> dep_lvl, const version_info& dep_ver)
+			std::optional<DEP_LEVEL> dep_lvl, const version_info& dep_ver)
 		: value(val)
 		, arguments(args)
 		, optional_arguments(optargs)
@@ -88,12 +86,12 @@ struct preproc_define
 
 	std::string deprecation_message;
 
-	utils::optional<DEP_LEVEL> deprecation_level;
+	std::optional<DEP_LEVEL> deprecation_level;
 
 	version_info deprecation_version;
 
 	bool is_deprecated() const {
-		return utils::has_optional_value(deprecation_level);
+		return deprecation_level.has_value();
 	}
 
 	void write(config_writer&, const std::string&) const;

@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2020-12-18 22:27-0300\n"
+"POT-Creation-Date: 2021-01-16 17:17+0300\n"
 "PO-Revision-Date: 2018-05-16 06:45+0100\n"
 "Last-Translator: Adrian Chaves <adrian@chaves.io>\n"
 "Language-Team: Galician <kde-i18n-doc@kde.org>\n"
@@ -243,23 +243,23 @@ msgstr "Lista de reprodución"
 msgid "Assign Time Schedule"
 msgstr "Asignar un horario"
 
-#: src/editor/action/mouse/mouse_action_unit.cpp:63
+#: src/editor/action/mouse/mouse_action_unit.cpp:61
 msgid "Identifier: "
 msgstr "Identificador: "
 
-#: src/editor/action/mouse/mouse_action_unit.cpp:65
+#: src/editor/action/mouse/mouse_action_unit.cpp:63
 msgid "Name: "
 msgstr "Nome: "
 
-#: src/editor/action/mouse/mouse_action_unit.cpp:67
+#: src/editor/action/mouse/mouse_action_unit.cpp:65
 msgid "Type: "
 msgstr "Tipo: "
 
-#: src/editor/action/mouse/mouse_action_unit.cpp:68
+#: src/editor/action/mouse/mouse_action_unit.cpp:66
 msgid "Level: "
 msgstr "Nivel: "
 
-#: src/editor/action/mouse/mouse_action_unit.cpp:69
+#: src/editor/action/mouse/mouse_action_unit.cpp:67
 msgid "Cost: "
 msgstr "Custo: "
 
@@ -311,11 +311,11 @@ msgstr "Nome:"
 msgid "Load Map"
 msgstr "Cargar un mapa"
 
-#: src/editor/map/context_manager.cpp:276 src/editor/map/map_context.cpp:852
+#: src/editor/map/context_manager.cpp:276 src/editor/map/map_context.cpp:851
 msgid "New Map"
 msgstr "Novo mapa"
 
-#: src/editor/map/context_manager.cpp:289 src/editor/map/map_context.cpp:852
+#: src/editor/map/context_manager.cpp:289 src/editor/map/map_context.cpp:851
 msgid "New Scenario"
 msgstr "Novo escenario"
 
@@ -417,24 +417,24 @@ msgstr ""
 "Cargouse o ficheiro do mapa ao que se fai referencia:\n"
 "$new"
 
-#: src/editor/map/editor_map.cpp:148
+#: src/editor/map/editor_map.cpp:144
 #: src/editor/palette/location_palette.cpp:119
 msgid "Player $side_num"
 msgstr "Xogador $side_num"
 
-#: src/editor/map/editor_map.cpp:283
+#: src/editor/map/editor_map.cpp:279
 msgid "The size of the target map is different from the current map"
 msgstr "O tamaño do mapa de destino é diferente do do mapa actual"
 
-#: src/editor/map/map_context.cpp:146
+#: src/editor/map/map_context.cpp:145
 msgid "File not found"
 msgstr "Non se atopou o ficheiro"
 
-#: src/editor/map/map_context.cpp:153
+#: src/editor/map/map_context.cpp:152
 msgid "Empty file"
 msgstr "Ficheiro baleiro"
 
-#: src/editor/map/map_context.cpp:209
+#: src/editor/map/map_context.cpp:208
 msgid ""
 "The map file looks like a scenario, but the map_data value does not point to "
 "an existing file"
@@ -442,15 +442,15 @@ msgstr ""
 "O ficheiro de mapa parece un escenario, pero o valor de map_data non fai "
 "referencia a ningún ficheiro existente"
 
-#: src/editor/map/map_context.cpp:618
+#: src/editor/map/map_context.cpp:617
 msgid "Could not save the scenario: $msg"
 msgstr "Non foi posíbel gardar o escenario: $msg"
 
-#: src/editor/map/map_context.cpp:653
+#: src/editor/map/map_context.cpp:652
 msgid "Could not save into scenario"
 msgstr "Non foi posíbel gardar no escenario"
 
-#: src/editor/map/map_context.cpp:663
+#: src/editor/map/map_context.cpp:662
 msgid "Could not save the map: $msg"
 msgstr "Non foi posíbel gardar o mapa: $msg"
 
@@ -530,13 +530,11 @@ msgstr "Escoller un ficheiro"
 msgid "Select"
 msgstr "Seleccionar"
 
-#: src/gui/dialogs/editor/set_starting_position.cpp:84
-msgid "player^None"
-msgstr "Ningún"
+#~ msgid "player^None"
+#~ msgstr "Ningún"
 
-#: src/gui/dialogs/editor/set_starting_position.cpp:97
-msgid "Player $player_number"
-msgstr "Xogador $player_number"
+#~ msgid "Player $player_number"
+#~ msgstr "Xogador $player_number"
 
 #~ msgid "Recruit: "
 #~ msgstr "Recrutar: "

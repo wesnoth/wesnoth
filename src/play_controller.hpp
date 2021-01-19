@@ -24,7 +24,7 @@
 #include "persist_manager.hpp"
 #include "tod_manager.hpp"
 #include "game_state.hpp"
-#include "utils/optional_fwd.hpp"
+#include <optional>
 
 #include <set>
 
@@ -139,7 +139,7 @@ public:
 
 	bool is_regular_game_end() const
 	{
-		return utils::has_optional_value(gamestate().end_level_data_);
+		return gamestate().end_level_data_.has_value();
 	}
 
 	const end_level_data& get_end_level_data() const

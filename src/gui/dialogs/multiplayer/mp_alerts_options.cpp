@@ -36,31 +36,6 @@ namespace gui2
 {
 namespace dialogs
 {
-/*WIKI
- * @page = GUIWindowDefinitionWML
- * @order = 2_mp_alerts_options
- *
- * == Lobby sounds options ==
- *
- * A Preferences subdialog permitting to configure the sounds and notifications
- * generated in response to various mp lobby / game events.
- *
- * @begin{table}{dialog_widgets}
- *
- * _label & & label & m &
- *        Item name. $
- *
- * _sound & & toggle_button & m &
- *        Toggles whether to play the item sound. $
- *
- * _notif & & toggle_button & m &
- *        Toggles whether to give a notification. $
- *
- * _lobby & & toggle_button & m &
- *        Toggles whether to take actions for this item when in the lobby. $
- *
- * @end{table}
- */
 
 static toggle_button * setup_pref_toggle_button(const std::string & id, bool def, window & window)
 {

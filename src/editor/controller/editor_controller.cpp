@@ -123,7 +123,7 @@ void editor_controller::init_tods(const game_config_view& game_config)
 		tods_map::iterator times = tods_.find(schedule_id);
 		if (times == tods_.end()) {
 			std::pair<tods_map::iterator, bool> new_times =
-				tods_.emplace(schedule_id, std::make_pair(schedule_name, std::vector<time_of_day>()));
+				tods_.emplace(schedule_id, std::pair(schedule_name, std::vector<time_of_day>()));
 
 			times = new_times.first;
 		} else {

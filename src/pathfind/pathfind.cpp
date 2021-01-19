@@ -92,10 +92,8 @@ map_location find_vacant_tile(const map_location& loc, VACANT_TILE_TYPE vacancy,
 			if (pass_check_and_unreachable && distance > 10) continue;
 			//If the hex is empty and we do either no pass check or the hex is reachable, return it.
 			if (units.find(l) == units.end() && !pass_check_and_unreachable) return l;
-			adjacent_loc_array_t adjs;
-			get_adjacent_tiles(l,adjs.data());
-			for (const map_location &l2 : adjs)
-			{
+
+			for(const map_location& l2 : get_adjacent_tiles(l)) {
 				if (!map.on_board(l2)) continue;
 				// Add the tile to be checked if it hasn't already been and
 				// isn't being checked.
@@ -137,11 +135,8 @@ bool enemy_zoc(const team& current_team, const map_location& loc,
                const team& viewing_team, bool see_all)
 {
 	// Check the adjacent tiles.
-	adjacent_loc_array_t locs;
-	get_adjacent_tiles(loc,locs.data());
-	for (unsigned i = 0; i < locs.size(); ++i)
-	{
-		const unit *u = resources::gameboard->get_visible_unit(locs[i], viewing_team, see_all);
+	for(const map_location& adj : get_adjacent_tiles(loc)) {
+		const unit *u = resources::gameboard->get_visible_unit(adj, viewing_team, see_all);
 		if ( u  &&  current_team.is_enemy(u->side())  &&  u->emits_zoc() )
 			return true;
 	}
@@ -359,8 +354,7 @@ static void find_routes(
 		adj_locs.erase(off_board_it, adj_locs.end());
 
 		if ( teleporter ) {
-			std::set<map_location> allowed_teleports;
-			teleports.get_adjacents(allowed_teleports, cur_hex);
+			auto allowed_teleports = teleports.get_adjacents(cur_hex);
 			adj_locs.insert(adj_locs.end(), allowed_teleports.begin(), allowed_teleports.end());
 		}
 		for ( int i = adj_locs.size()-1; i >= 0; --i ) {
@@ -888,7 +882,7 @@ full_cost_map::full_cost_map(const unit& u, bool force_ignore_zoc,
 	 viewing_team_(viewing_team), see_all_(see_all), ignore_units_(ignore_units)
 {
 	const gamemap& map = resources::gameboard->map();
-	cost_map = std::vector<std::pair<int, int>>(map.w() * map.h(), std::make_pair(-1, 0));
+	cost_map = std::vector<std::pair<int, int>>(map.w() * map.h(), std::pair(-1, 0));
 	add_unit(u);
 }
 
@@ -903,7 +897,7 @@ full_cost_map::full_cost_map(bool force_ignore_zoc,
 	 viewing_team_(viewing_team), see_all_(see_all), ignore_units_(ignore_units)
 {
 	const gamemap& map = resources::gameboard->map();
-	cost_map = std::vector<std::pair<int, int>>(map.w() * map.h(), std::make_pair(-1, 0));
+	cost_map = std::vector<std::pair<int, int>>(map.w() * map.h(), std::pair(-1, 0));
 }
 
 /**
@@ -968,7 +962,7 @@ std::pair<int, int> full_cost_map::get_pair_at(map_location loc) const
 	assert(cost_map.size() == static_cast<unsigned>(map.w() * map.h()));
 
 	if (!map.on_board(loc)) {
-		return std::make_pair(-1, 0);  // invalid
+		return std::pair(-1, 0);  // invalid
 	}
 
 	return cost_map[loc.x + (loc.y * map.w())];

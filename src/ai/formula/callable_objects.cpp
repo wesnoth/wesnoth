@@ -269,14 +269,11 @@ void attack_map_callable::get_inputs(formula_input_vector& inputs) const {
 
 /* add to vars all attacks on enemy units around <attack_position> tile. attacker_location is tile where unit is currently standing. It's moved to attack_position first and then performs attack.*/
 void attack_map_callable::collect_possible_attacks(std::vector<variant>& vars, map_location attacker_location, map_location attack_position) const {
-	adjacent_loc_array_t adj;
-	get_adjacent_tiles(attack_position, adj.data());
-
-	for(unsigned n = 0; n < adj.size(); ++n) {
+	for(const map_location& adj : get_adjacent_tiles(attack_position)) {
 		/* if adjacent tile is outside the board */
-		if (! resources::gameboard->map().on_board(adj[n]))
+		if (! resources::gameboard->map().on_board(adj))
 			continue;
-		unit_map::const_iterator unit = units_.find(adj[n]);
+		unit_map::const_iterator unit = units_.find(adj);
 		/* if tile is empty */
 		if (unit == units_.end())
 			continue;
@@ -286,7 +283,7 @@ void attack_map_callable::collect_possible_attacks(std::vector<variant>& vars, m
 		    unit->invisible(unit->get_location()))
 			continue;
 		/* add attacks with default weapon */
-		auto item = std::make_shared<attack_callable>(attacker_location, attack_position, adj[n], -1);
+		auto item = std::make_shared<attack_callable>(attacker_location, attack_position, adj, -1);
 		vars.emplace_back(item);
 	}
 }

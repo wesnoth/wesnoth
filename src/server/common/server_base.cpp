@@ -14,7 +14,6 @@
 
 #include "server/common/server_base.hpp"
 
-#include "lexical_cast.hpp"
 #include "log.hpp"
 #include "filesystem.hpp"
 
@@ -177,7 +176,7 @@ void server_base::handle_termination(const boost::system::error_code& error, int
 	std::string signame;
 	if(signal_number == SIGINT) signame = "SIGINT";
 	else if(signal_number == SIGTERM) signame = "SIGTERM";
-	else signame = lexical_cast<std::string>(signal_number);
+	else signame = std::to_string(signal_number);
 	LOG_SERVER << signame << " caught, exiting without cleanup immediately.\n";
 	exit(128 + signal_number);
 }

@@ -666,12 +666,12 @@ config readonly_context_impl::get_leader_goal() const
 	return config();
 }
 
-boost::variant<bool, std::vector<std::string>> readonly_context_impl::get_leader_ignores_keep() const
+utils::variant<bool, std::vector<std::string>> readonly_context_impl::get_leader_ignores_keep() const
 {
 	if (leader_ignores_keep_) {
 		return leader_ignores_keep_->get();
 	}
-	return boost::variant<bool, std::vector<std::string>>();
+	return {};
 }
 
 double readonly_context_impl::get_leader_value() const
@@ -682,20 +682,20 @@ double readonly_context_impl::get_leader_value() const
 	return 0;
 }
 
-boost::variant<bool, std::vector<std::string>> readonly_context_impl::get_passive_leader() const
+utils::variant<bool, std::vector<std::string>> readonly_context_impl::get_passive_leader() const
 {
 	if (passive_leader_) {
 		return passive_leader_->get();
 	}
-	return boost::variant<bool, std::vector<std::string>>();
+	return {};
 }
 
-boost::variant<bool, std::vector<std::string>> readonly_context_impl::get_passive_leader_shares_keep() const
+utils::variant<bool, std::vector<std::string>> readonly_context_impl::get_passive_leader_shares_keep() const
 {
 	if (passive_leader_shares_keep_) {
 		return passive_leader_shares_keep_->get();
 	}
-	return boost::variant<bool, std::vector<std::string>>();
+	return {};
 }
 
 const moves_map& readonly_context_impl::get_possible_moves() const
@@ -887,10 +887,8 @@ const std::set<map_location>& keeps_cache::get()
 			for(int y = 0; y != map_->h(); ++y) {
 				const map_location loc(x,y);
 				if(map_->is_keep(loc)) {
-					adjacent_loc_array_t adj;
-					get_adjacent_tiles(loc,adj.data());
-					for(std::size_t n = 0; n < adj.size(); ++n) {
-						if(map_->is_castle(adj[n])) {
+					for(const map_location& adj : get_adjacent_tiles(loc)) {
+						if(map_->is_castle(adj)) {
 							keeps_.insert(loc);
 							break;
 						}
@@ -961,8 +959,7 @@ double readonly_context_impl::power_projection(const map_location& loc, const mo
 	std::fill_n(ratings, 0, 6);
 	int num_used_locs = 0;
 
-	adjacent_loc_array_t locs;
-	get_adjacent_tiles(loc,locs.data());
+	const auto locs = get_adjacent_tiles(loc);
 
 	const gamemap& map_ = resources::gameboard->map();
 	unit_map& units_ = resources::gameboard->units();
@@ -1201,12 +1198,12 @@ bool readonly_context_impl::is_active(const std::string &time_of_day, const std:
 	return true;
 }
 
-bool readonly_context_impl::applies_to_leader(const boost::variant<bool, std::vector<std::string>> &aspect_value, const std::string &id) const
+bool readonly_context_impl::applies_to_leader(const utils::variant<bool, std::vector<std::string>> &aspect_value, const std::string &id) const
 {
-	if (aspect_value.which() == 0) {
-		return boost::get<bool>(aspect_value);
+	if (utils::variant_index(aspect_value) == 0) {
+		return utils::get<bool>(aspect_value);
 	} else {
-		std::vector<std::string> aspect_ids = boost::get<std::vector<std::string>>(aspect_value);
+		std::vector<std::string> aspect_ids = utils::get<std::vector<std::string>>(aspect_value);
 		for(std::vector<std::string>::const_iterator aspect_id = aspect_ids.begin(); aspect_id != aspect_ids.end() ; ++aspect_id ) {
 			if(*aspect_id == id) {
 				return true;

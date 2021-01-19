@@ -33,28 +33,6 @@ namespace gui2
 namespace dialogs
 {
 
-/*WIKI
- * @page = GUIWindowDefinitionWML
- * @order = 2_theme_list
- *
- * == Theme list ==
- *
- * Dialog for selecting a GUI theme.
- *
- * @begin{table}{dialog_widgets}
- *
- * themes & & listbox & m &
- *         Listbox displaying user choices. $
- *
- * -name & & styled_widget & m &
- *         Widget which shows a theme item name. $
- *
- * -description & & styled_widget & m &
- *         Widget which shows a theme item description. $
- *
- * @end{table}
- */
-
 REGISTER_DIALOG(synched_choice_wait)
 
 synched_choice_wait::synched_choice_wait(user_choice_manager& mgr)

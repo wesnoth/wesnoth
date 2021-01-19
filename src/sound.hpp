@@ -16,7 +16,7 @@
 
 #include "events.hpp"
 #include "sound_music_track.hpp"
-#include "utils/optional_fwd.hpp"
+#include <optional>
 
 #include <string>
 
@@ -119,7 +119,7 @@ void set_sound_volume(int vol);
 void set_bell_volume(int vol);
 void set_UI_volume(int vol);
 
-utils::optional<unsigned int> get_current_track_index();
+std::optional<unsigned int> get_current_track_index();
 std::shared_ptr<sound::music_track> get_current_track();
 std::shared_ptr<sound::music_track> get_previous_music_track();
 void set_previous_track(std::shared_ptr<music_track>);

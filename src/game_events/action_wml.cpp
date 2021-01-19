@@ -635,7 +635,7 @@ WML_HANDLER_FUNCTION(replace_map,, cfg)
 		}
 	}
 
-	utils::optional<std::string> errmsg = resources::gameboard->replace_map(map);
+	std::optional<std::string> errmsg = resources::gameboard->replace_map(map);
 
 	if (errmsg) {
 		lg::wml_error() << *errmsg << std::endl;

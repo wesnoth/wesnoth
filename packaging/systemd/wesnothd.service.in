@@ -22,7 +22,7 @@ ExecReload=/bin/kill -s SIGHUP $MAINPID
 ExecStopPost=/bin/rm -f @FIFO_DIR@/socket
 
 SyslogIdentifier=Wesnothd@BINARY_SUFFIX@
-WorkingDirectory=@FIFODIR@
+WorkingDirectory=@FIFO_DIR@
 User=nobody
 Group=users
 

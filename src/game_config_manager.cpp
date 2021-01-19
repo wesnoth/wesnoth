@@ -87,9 +87,9 @@ bool game_config_manager::init_game_config(FORCE_RELOAD_CONFIG force_reload)
 {
 	// Add preproc defines according to the command line arguments.
 	game_config::scoped_preproc_define multiplayer("MULTIPLAYER", cmdline_opts_.multiplayer);
-	game_config::scoped_preproc_define test("TEST", utils::has_optional_value(cmdline_opts_.test));
+	game_config::scoped_preproc_define test("TEST", cmdline_opts_.test.has_value());
 	game_config::scoped_preproc_define mptest("MP_TEST", cmdline_opts_.mptest);
-	game_config::scoped_preproc_define editor("EDITOR", utils::has_optional_value(cmdline_opts_.editor));
+	game_config::scoped_preproc_define editor("EDITOR", cmdline_opts_.editor.has_value());
 	game_config::scoped_preproc_define title_screen("TITLE_SCREEN",
 		!cmdline_opts_.multiplayer && !cmdline_opts_.test && !cmdline_opts_.editor);
 
@@ -129,7 +129,7 @@ bool map_includes(const preproc_map& general, const preproc_map& special)
 } // end anonymous namespace
 
 void game_config_manager::load_game_config_with_loadscreen(
-	FORCE_RELOAD_CONFIG force_reload, game_classification const*, utils::optional<std::set<std::string>> active_addons)
+	FORCE_RELOAD_CONFIG force_reload, game_classification const*, std::optional<std::set<std::string>> active_addons)
 {
 	if(!lg::info().dont_log(log_config)) {
 		auto out = formatter();

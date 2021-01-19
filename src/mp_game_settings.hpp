@@ -12,15 +12,13 @@
    See the COPYING file for more details.
 */
 
-/** @file */
-
 #pragma once
 
 #include "config.hpp"
 #include "game_version.hpp"
 #include "gettext.hpp"
 #include "utils/make_enum.hpp"
-#include "utils/optional_fwd.hpp"
+#include <optional>
 
 struct mp_game_settings
 {
@@ -88,8 +86,8 @@ struct mp_game_settings
 
 	struct addon_version_info
 	{
-		utils::optional<version_info> version;
-		utils::optional<version_info> min_version;
+		std::optional<version_info> version;
+		std::optional<version_info> min_version;
 		std::string name;
 		bool required;
 		std::vector<addon_content> content;

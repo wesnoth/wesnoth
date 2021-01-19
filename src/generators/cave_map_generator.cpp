@@ -69,19 +69,19 @@ std::size_t cave_map_generator::cave_map_generator_job::translate_y(std::size_t 
 	return y;
 }
 
-std::string cave_map_generator::create_map(utils::optional<uint32_t> randomseed)
+std::string cave_map_generator::create_map(std::optional<uint32_t> randomseed)
 {
 	const config res = create_scenario(randomseed);
 	return res["map_data"];
 }
 
-config cave_map_generator::create_scenario(utils::optional<uint32_t> randomseed)
+config cave_map_generator::create_scenario(std::optional<uint32_t> randomseed)
 {
 	cave_map_generator_job job(*this, randomseed);
 	return job.res_;
 }
 
-cave_map_generator::cave_map_generator_job::cave_map_generator_job(const cave_map_generator& pparams, utils::optional<uint32_t> randomseed)
+cave_map_generator::cave_map_generator_job::cave_map_generator_job(const cave_map_generator& pparams, std::optional<uint32_t> randomseed)
 	: params(pparams)
 	, flipx_(false)
 	, flipy_(false)
@@ -101,7 +101,7 @@ cave_map_generator::cave_map_generator_job::cave_map_generator_job(const cave_ma
 			"message", "Use the Lua cave generator instead, with scenario_generation=lua and create_scenario= (see wiki for details).",
 		},
 	});
-	uint32_t seed = randomseed ? randomseed.value() : seed_rng::next_seed();
+	uint32_t seed = randomseed ? *randomseed : seed_rng::next_seed();
 	rng_.seed(seed);
 	LOG_NG << "creating random cave with seed: " << seed << '\n';
 	flipx_ = static_cast<int>(rng_() % 100) < params.flipx_chance_;
@@ -132,11 +132,9 @@ void cave_map_generator::cave_map_generator_job::build_chamber(map_location loc,
 
 	locs.insert(loc);
 
-	adjacent_loc_array_t adj;
-	get_adjacent_tiles(loc,adj.data());
-	for(std::size_t n = 0; n < adj.size(); ++n) {
+	for(const map_location& adj : get_adjacent_tiles(loc)) {
 		if(static_cast<int>(rng_() % 100) < (100l - static_cast<long>(jagged))) {
-			build_chamber(adj[n],locs,size-1,jagged);
+			build_chamber(adj,locs,size-1,jagged);
 		}
 	}
 }
@@ -361,9 +359,7 @@ void cave_map_generator::cave_map_generator_job::place_castle(int starting_posit
 		starting_positions_.insert(t_translation::starting_positions::value_type(std::to_string(starting_position), coord));
 	}
 
-	adjacent_loc_array_t adj;
-	get_adjacent_tiles(loc,adj.data());
-	for(std::size_t n = 0; n < adj.size(); ++n) {
-		set_terrain(adj[n], params.castle_);
+	for(const map_location& adj : get_adjacent_tiles(loc)) {
+		set_terrain(adj, params.castle_);
 	}
 }

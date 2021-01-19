@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.11\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2020-12-18 22:27-0300\n"
+"POT-Creation-Date: 2021-01-16 17:17+0300\n"
 "PO-Revision-Date: 2019-02-09 01:45+0000\n"
 "Last-Translator: Andrius Štikonas <andrius@stikonas.eu>\n"
 "Language-Team: Lithuanian <wesnoth-lt@googlegroups.com>\n"
@@ -233,23 +233,23 @@ msgstr "Grojaraštis"
 msgid "Assign Time Schedule"
 msgstr "Priskirti paros laiką"
 
-#: src/editor/action/mouse/mouse_action_unit.cpp:63
+#: src/editor/action/mouse/mouse_action_unit.cpp:61
 msgid "Identifier: "
 msgstr "Identifikatorius: "
 
-#: src/editor/action/mouse/mouse_action_unit.cpp:65
+#: src/editor/action/mouse/mouse_action_unit.cpp:63
 msgid "Name: "
 msgstr "Vardas: "
 
-#: src/editor/action/mouse/mouse_action_unit.cpp:67
+#: src/editor/action/mouse/mouse_action_unit.cpp:65
 msgid "Type: "
 msgstr "Tipas: "
 
-#: src/editor/action/mouse/mouse_action_unit.cpp:68
+#: src/editor/action/mouse/mouse_action_unit.cpp:66
 msgid "Level: "
 msgstr "Lygis: "
 
-#: src/editor/action/mouse/mouse_action_unit.cpp:69
+#: src/editor/action/mouse/mouse_action_unit.cpp:67
 msgid "Cost: "
 msgstr "Kaina: "
 
@@ -301,11 +301,11 @@ msgstr "Vardas:"
 msgid "Load Map"
 msgstr "Įkelti žemėlapį"
 
-#: src/editor/map/context_manager.cpp:276 src/editor/map/map_context.cpp:852
+#: src/editor/map/context_manager.cpp:276 src/editor/map/map_context.cpp:851
 msgid "New Map"
 msgstr "Naujas žemėlapis"
 
-#: src/editor/map/context_manager.cpp:289 src/editor/map/map_context.cpp:852
+#: src/editor/map/context_manager.cpp:289 src/editor/map/map_context.cpp:851
 msgid "New Scenario"
 msgstr "Naujas scenarijus"
 
@@ -407,24 +407,24 @@ msgstr ""
 "Įkeltas nurodytas žemėlapio failas:\n"
 "$new"
 
-#: src/editor/map/editor_map.cpp:148
+#: src/editor/map/editor_map.cpp:144
 #: src/editor/palette/location_palette.cpp:119
 msgid "Player $side_num"
 msgstr "Žaidėjas $side_num"
 
-#: src/editor/map/editor_map.cpp:283
+#: src/editor/map/editor_map.cpp:279
 msgid "The size of the target map is different from the current map"
 msgstr "Pritaikomo žemėlapio dydis skiriasi nuo dabartinio žemėlapio dydžio"
 
-#: src/editor/map/map_context.cpp:146
+#: src/editor/map/map_context.cpp:145
 msgid "File not found"
 msgstr "Failas nerastas"
 
-#: src/editor/map/map_context.cpp:153
+#: src/editor/map/map_context.cpp:152
 msgid "Empty file"
 msgstr "Tuščias failas"
 
-#: src/editor/map/map_context.cpp:209
+#: src/editor/map/map_context.cpp:208
 msgid ""
 "The map file looks like a scenario, but the map_data value does not point to "
 "an existing file"
@@ -432,15 +432,15 @@ msgstr ""
 "Žemėlapio failas atrodo kaip scenarijus, tačiau map_data vertė nerodo į "
 "egzistuojantį failą"
 
-#: src/editor/map/map_context.cpp:618
+#: src/editor/map/map_context.cpp:617
 msgid "Could not save the scenario: $msg"
 msgstr "Nepavyksta išsaugoti scenarijaus: $msg"
 
-#: src/editor/map/map_context.cpp:653
+#: src/editor/map/map_context.cpp:652
 msgid "Could not save into scenario"
 msgstr "Nepavyksta įrašyti į scenarijų"
 
-#: src/editor/map/map_context.cpp:663
+#: src/editor/map/map_context.cpp:662
 msgid "Could not save the map: $msg"
 msgstr "Nepavyksta išsaugoti žemėlapio: $msg"
 
@@ -519,13 +519,11 @@ msgstr "Pasirinkite failą"
 msgid "Select"
 msgstr "Pažymėti"
 
-#: src/gui/dialogs/editor/set_starting_position.cpp:84
-msgid "player^None"
-msgstr "Joks"
+#~ msgid "player^None"
+#~ msgstr "Joks"
 
-#: src/gui/dialogs/editor/set_starting_position.cpp:97
-msgid "Player $player_number"
-msgstr "Žaidėjas $player_number"
+#~ msgid "Player $player_number"
+#~ msgstr "Žaidėjas $player_number"
 
 #~ msgid "Recruit: "
 #~ msgstr "Samdyti:"

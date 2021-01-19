@@ -231,15 +231,11 @@ std::pair<preferences::acquaintance*, bool> add_acquaintance(
 	const std::string& nick, const std::string& mode, const std::string& notes)
 {
 	if(!utils::isvalid_wildcard(nick)) {
-		return std::make_pair(nullptr, false);
+		return std::pair(nullptr, false);
 	}
 
 	preferences::acquaintance new_entry(nick, mode, notes);
-
-	acquaintances_map::iterator iter;
-	bool success;
-
-	std::tie(iter, success) = acquaintances.emplace(nick, new_entry);
+	auto [iter, success] = acquaintances.emplace(nick, new_entry);
 
 	if(!success) {
 		iter->second = new_entry;
@@ -247,7 +243,7 @@ std::pair<preferences::acquaintance*, bool> add_acquaintance(
 
 	save_acquaintances();
 
-	return std::make_pair(&iter->second, success);
+	return std::pair(&iter->second, success);
 }
 
 bool remove_acquaintance(const std::string& nick)
@@ -622,7 +618,7 @@ void set_countdown(bool value)
 
 int countdown_init_time()
 {
-	return utils::clamp<int>(lexical_cast_default<int>(preferences::get("mp_countdown_init_time"), 270), 0, 1500);
+	return std::clamp<int>(lexical_cast_default<int>(preferences::get("mp_countdown_init_time"), 270), 0, 1500);
 }
 
 void set_countdown_init_time(int value)
@@ -632,7 +628,7 @@ void set_countdown_init_time(int value)
 
 int countdown_reservoir_time()
 {
-	return utils::clamp<int>(lexical_cast_default<int>(preferences::get("mp_countdown_reservoir_time"), 330), 30, 1500);
+	return std::clamp<int>(lexical_cast_default<int>(preferences::get("mp_countdown_reservoir_time"), 330), 30, 1500);
 }
 
 void set_countdown_reservoir_time(int value)
@@ -642,7 +638,7 @@ void set_countdown_reservoir_time(int value)
 
 int countdown_turn_bonus()
 {
-	return utils::clamp<int>(lexical_cast_default<int>(preferences::get("mp_countdown_turn_bonus"), 60), 0, 300);
+	return std::clamp<int>(lexical_cast_default<int>(preferences::get("mp_countdown_turn_bonus"), 60), 0, 300);
 }
 
 void set_countdown_turn_bonus(int value)
@@ -652,7 +648,7 @@ void set_countdown_turn_bonus(int value)
 
 int countdown_action_bonus()
 {
-	return utils::clamp<int>(lexical_cast_default<int>(preferences::get("mp_countdown_action_bonus"), 13), 0, 30);
+	return std::clamp<int>(lexical_cast_default<int>(preferences::get("mp_countdown_action_bonus"), 13), 0, 30);
 }
 
 void set_countdown_action_bonus(int value)

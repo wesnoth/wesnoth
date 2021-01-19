@@ -31,42 +31,29 @@ namespace gui2
 namespace dialogs
 {
 
-/*WIKI
- * @page = GUIWindowDefinitionWML
- * @order = 2_tip
- *
- * == Tip float ==
- *
- * Generic window to show a floating tip window. The class has several
- * subclasses using the same format. For example there will be tooltips and
- * helptips, both using this class.
- *
- * @begin{table}{dialog_widgets}
- *
- * label & & styled_widget & m &
- *         This text contains the message to show in the tip. $
- *
- * @end{table}
- *
- * In the canvas of the windows used in this dialog the following variables are
- * defined:
- *
- * @begin{table}{formula}
- *     mouse_x & unsigned &          The x coordinate of the mouse pointer when
- *                                   the window was created. $
- *     mouse_y & unsigned &          The y coordinate of the mouse pointer when
- *                                   the window was created. $
- * @end{table}
- */
-
 REGISTER_WINDOW(tooltip_large)
 
 /**
+ * @ingroup GUIWindowDefinitionWML
+ * 
  * Class to show the tips.
  *
  * At the moment two kinds of tips are known:
  * * tooltip
  * * helptip
+ * 
+ * Generic window to show a floating tip window.
+ * The class has several subclasses using the same format.
+ * For example there will be tooltips and helptips, both using this class.
+ * Key               |Type          |Mandatory|Description  
+ * ------------------|--------------|---------|-----------
+ * label             | control      |yes      |This text contains the message to show in the tip.
+ * 
+ * In the canvas of the windows used in this dialog the following variables are defined:
+ * Variable          |Type                               |Description  
+ * ------------------|-----------------------------------|-----------
+ * mouse_x           | @ref guivartype_string "unsigned" |The x coordinate of the mouse pointer when the window was created.
+ * mouse_y           | @ref guivartype_string "unsigned" |The y coordinate of the mouse pointer when the window was created.
  */
 class tooltip : public modeless_dialog
 {

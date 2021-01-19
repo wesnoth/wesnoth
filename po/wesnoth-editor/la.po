@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth-editor 1.2\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2020-12-18 22:27-0300\n"
+"POT-Creation-Date: 2021-01-16 17:17+0300\n"
 "PO-Revision-Date: 2013-06-23 02:19-0000\n"
 "Last-Translator: Thomas Hockings <elprofesh@gmail.com>\n"
 "Language-Team: Latin <http://wiki.wesnoth.org/LatinTranslation>\n"
@@ -241,23 +241,23 @@ msgstr ""
 msgid "Assign Time Schedule"
 msgstr ""
 
-#: src/editor/action/mouse/mouse_action_unit.cpp:63
+#: src/editor/action/mouse/mouse_action_unit.cpp:61
 msgid "Identifier: "
 msgstr ""
 
-#: src/editor/action/mouse/mouse_action_unit.cpp:65
+#: src/editor/action/mouse/mouse_action_unit.cpp:63
 msgid "Name: "
 msgstr "Nomen: "
 
-#: src/editor/action/mouse/mouse_action_unit.cpp:67
+#: src/editor/action/mouse/mouse_action_unit.cpp:65
 msgid "Type: "
 msgstr "Genus: "
 
-#: src/editor/action/mouse/mouse_action_unit.cpp:68
+#: src/editor/action/mouse/mouse_action_unit.cpp:66
 msgid "Level: "
 msgstr "Ordo: "
 
-#: src/editor/action/mouse/mouse_action_unit.cpp:69
+#: src/editor/action/mouse/mouse_action_unit.cpp:67
 msgid "Cost: "
 msgstr "Impendium: "
 
@@ -311,13 +311,13 @@ msgstr "Nomen:"
 msgid "Load Map"
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:276 src/editor/map/map_context.cpp:852
+#: src/editor/map/context_manager.cpp:276 src/editor/map/map_context.cpp:851
 #, fuzzy
 #| msgid "(New Map)"
 msgid "New Map"
 msgstr "(Charta Nova)"
 
-#: src/editor/map/context_manager.cpp:289 src/editor/map/map_context.cpp:852
+#: src/editor/map/context_manager.cpp:289 src/editor/map/map_context.cpp:851
 #, fuzzy
 #| msgid "(New Side)"
 msgid "New Scenario"
@@ -437,28 +437,28 @@ msgstr ""
 "Fasciculus chartae arcessitus:\n"
 "$new"
 
-#: src/editor/map/editor_map.cpp:148
+#: src/editor/map/editor_map.cpp:144
 #: src/editor/palette/location_palette.cpp:119
 #, fuzzy
 #| msgid "Player $player_number"
 msgid "Player $side_num"
 msgstr "Lusor $player_number"
 
-#: src/editor/map/editor_map.cpp:283
+#: src/editor/map/editor_map.cpp:279
 msgid "The size of the target map is different from the current map"
 msgstr "Magnitudo chartae electae dissimilis chartae praesenti est"
 
-#: src/editor/map/map_context.cpp:146
+#: src/editor/map/map_context.cpp:145
 msgid "File not found"
 msgstr "Fasciculus non inventus est"
 
-#: src/editor/map/map_context.cpp:153
+#: src/editor/map/map_context.cpp:152
 #, fuzzy
 #| msgid "Empty map file"
 msgid "Empty file"
 msgstr "Fasciculus inanis chartae"
 
-#: src/editor/map/map_context.cpp:209
+#: src/editor/map/map_context.cpp:208
 msgid ""
 "The map file looks like a scenario, but the map_data value does not point to "
 "an existing file"
@@ -466,17 +466,17 @@ msgstr ""
 "Fasciculus chartae scaenarium esse videtur, sed numerus map_data fasciculum "
 "verum non indicat"
 
-#: src/editor/map/map_context.cpp:618
+#: src/editor/map/map_context.cpp:617
 #, fuzzy
 #| msgid "Could not save the map: $msg"
 msgid "Could not save the scenario: $msg"
 msgstr "Non potest ut charta servetur: $msg"
 
-#: src/editor/map/map_context.cpp:653
+#: src/editor/map/map_context.cpp:652
 msgid "Could not save into scenario"
 msgstr "Non potest ut ad scaenarium servetur"
 
-#: src/editor/map/map_context.cpp:663
+#: src/editor/map/map_context.cpp:662
 msgid "Could not save the map: $msg"
 msgstr "Non potest ut charta servetur: $msg"
 
@@ -555,13 +555,11 @@ msgstr "Fasciculum eligere"
 msgid "Select"
 msgstr ""
 
-#: src/gui/dialogs/editor/set_starting_position.cpp:84
-msgid "player^None"
-msgstr "Nemo"
+#~ msgid "player^None"
+#~ msgstr "Nemo"
 
-#: src/gui/dialogs/editor/set_starting_position.cpp:97
-msgid "Player $player_number"
-msgstr "Lusor $player_number"
+#~ msgid "Player $player_number"
+#~ msgstr "Lusor $player_number"
 
 # Eminentia
 #~ msgid "FG: "

@@ -12,13 +12,11 @@
    See the COPYING file for more details.
 */
 
-/** @file */
-
 #pragma once
 
 #include "tstring.hpp"
-#include "utils/general.hpp"
 
+#include <algorithm>
 #include <vector>
 
 class config;
@@ -27,9 +25,9 @@ class config;
 // This is a color delta, so do not replace with color_t!
 struct tod_color {
 	explicit tod_color(int red = 0, int green = 0, int blue = 0)
-		: r(utils::clamp(red, -510, 510))
-		, g(utils::clamp(green, -510, 510))
-		, b(utils::clamp(blue, -510, 510))
+		: r(std::clamp(red, -510, 510))
+		, g(std::clamp(green, -510, 510))
+		, b(std::clamp(blue, -510, 510))
 	{}
 	bool operator==(const tod_color& o) const {
 		return r == o.r && g == o.g && b == o.b;

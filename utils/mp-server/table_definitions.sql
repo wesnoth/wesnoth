@@ -74,6 +74,7 @@ create table game_info
     PUBLIC           BIT(1) NOT NULL,
     PRIMARY KEY (INSTANCE_UUID, GAME_ID)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+CREATE INDEX START_TIME_IDX ON game_info(START_TIME);
 
 -- information about the players in a particular game present in game_info
 -- this is accurate at the start of the game, but is not currently updated if a side changes owners, someone disconnects, etc
@@ -96,6 +97,7 @@ create table game_player_info
     USER_NAME      VARCHAR(255) NOT NULL DEFAULT '',
     PRIMARY KEY (INSTANCE_UUID, GAME_ID, SIDE_NUMBER)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+CREATE INDEX USER_ID_IDX ON game_player_info(USER_ID);
 
 -- information about the scenario/era/modifications for the game
 -- TYPE: one of era/scenario/modification

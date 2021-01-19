@@ -46,7 +46,7 @@
 #endif
 
 #include "global.hpp"
-#include "utils/optional_fwd.hpp"
+#include <optional>
 
 #include <cstdlib>
 #include <limits>
@@ -89,7 +89,7 @@ namespace implementation {
 template<typename To, typename From>
 inline To lexical_cast(From value)
 {
-	return implementation::lexical_caster<To, From>().operator()(value, utils::nullopt);
+	return implementation::lexical_caster<To, From>().operator()(value, std::nullopt);
 }
 
 /**
@@ -139,7 +139,7 @@ template<
 >
 struct lexical_caster
 {
-	To operator()(From value, utils::optional<To> fallback) const
+	To operator()(From value, std::optional<To> fallback) const
 	{
 		DEBUG_THROW("generic");
 
@@ -147,7 +147,7 @@ struct lexical_caster
 		std::stringstream sstr;
 
 		if(!(sstr << value && sstr >> result)) {
-			if(fallback) { return fallback.value(); }
+			if(fallback) { return *fallback; }
 
 			throw bad_lexical_cast();
 		} else {
@@ -167,10 +167,10 @@ struct lexical_caster<
 	  std::string
 	, From
 	, void
-	, std::enable_if_t<std::is_integral<std::remove_pointer_t<From>>::value>
+	, std::enable_if_t<std::is_integral_v<std::remove_pointer_t<From>>>
 >
 {
-	std::string operator()(From value, utils::optional<std::string>) const
+	std::string operator()(From value, std::optional<std::string>) const
 	{
 		DEBUG_THROW("specialized - To std::string - From integral (pointer)");
 
@@ -192,15 +192,15 @@ struct lexical_caster<
 	  long long
 	, From
 	, void
-	, std::enable_if_t<std::is_same<From, const char*>::value || std::is_same<From, char*>::value>
+	, std::enable_if_t<std::is_same_v<From, const char*> || std::is_same_v<From, char*>>
 	>
 {
-	long long operator()(From value, utils::optional<long long> fallback) const
+	long long operator()(From value, std::optional<long long> fallback) const
 	{
 		DEBUG_THROW("specialized - To long long - From (const) char*");
 
 		if(fallback) {
-			return lexical_cast_default<long long>(std::string(value), fallback.value());
+			return lexical_cast_default<long long>(std::string(value), *fallback);
 		} else {
 			return lexical_cast<long long>(std::string(value));
 		}
@@ -220,7 +220,7 @@ struct lexical_caster<
 	, std::string
 	>
 {
-	long long operator()(const std::string& value, utils::optional<long long> fallback) const
+	long long operator()(const std::string& value, std::optional<long long> fallback) const
 	{
 		DEBUG_THROW("specialized - To long long - From std::string");
 
@@ -231,7 +231,7 @@ struct lexical_caster<
 		}
 
 		if(fallback) {
-			return fallback.value();
+			return *fallback;
 		} else {
 			throw bad_lexical_cast();
 		}
@@ -247,16 +247,16 @@ template <class To, class From>
 struct lexical_caster<
 	  To
 	, From
-	, std::enable_if_t<std::is_integral<To>::value && std::is_signed<To>::value && !std::is_same<To, long long>::value>
-	, std::enable_if_t<std::is_same<From, const char*>::value || std::is_same<From, char*>::value>
+	, std::enable_if_t<std::is_integral_v<To> && std::is_signed_v<To> && !std::is_same_v<To, long long>>
+	, std::enable_if_t<std::is_same_v<From, const char*> || std::is_same_v<From, char*>>
 	>
 {
-	To operator()(From value, utils::optional<To> fallback) const
+	To operator()(From value, std::optional<To> fallback) const
 	{
 		DEBUG_THROW("specialized - To signed - From (const) char*");
 
 		if(fallback) {
-			return lexical_cast_default<To>(std::string(value), fallback.value());
+			return lexical_cast_default<To>(std::string(value), *fallback);
 		} else {
 			return lexical_cast<To>(std::string(value));
 		}
@@ -272,10 +272,10 @@ template <class To>
 struct lexical_caster<
 	  To
 	, std::string
-	, std::enable_if_t<std::is_integral<To>::value && std::is_signed<To>::value && !std::is_same<To, long long>::value>
+	, std::enable_if_t<std::is_integral_v<To> && std::is_signed_v<To> && !std::is_same_v<To, long long>>
 	>
 {
-	To operator()(const std::string& value, utils::optional<To> fallback) const
+	To operator()(const std::string& value, std::optional<To> fallback) const
 	{
 		DEBUG_THROW("specialized - To signed - From std::string");
 
@@ -289,7 +289,7 @@ struct lexical_caster<
 		}
 
 		if(fallback) {
-			return fallback.value();
+			return *fallback;
 		} else {
 			throw bad_lexical_cast();
 		}
@@ -305,16 +305,16 @@ template <class To, class From>
 struct lexical_caster<
 	  To
 	, From
-	, std::enable_if_t<std::is_floating_point<To>::value>
-	, std::enable_if_t<std::is_same<From, const char*>::value || std::is_same<From, char*>::value>
+	, std::enable_if_t<std::is_floating_point_v<To>>
+	, std::enable_if_t<std::is_same_v<From, const char*> || std::is_same_v<From, char*>>
 	>
 {
-	To operator()(From value, utils::optional<To> fallback) const
+	To operator()(From value, std::optional<To> fallback) const
 	{
 		DEBUG_THROW("specialized - To floating point - From (const) char*");
 
 		if(fallback) {
-			return lexical_cast_default<To>(std::string(value), fallback.value());
+			return lexical_cast_default<To>(std::string(value), *fallback);
 		} else {
 			return lexical_cast<To>(std::string(value));
 		}
@@ -330,17 +330,17 @@ template <class To>
 struct lexical_caster<
 	  To
 	, std::string
-	, std::enable_if_t<std::is_floating_point<To>::value>
+	, std::enable_if_t<std::is_floating_point_v<To>>
 	>
 {
-	To operator()(const std::string& value, utils::optional<To> fallback) const
+	To operator()(const std::string& value, std::optional<To> fallback) const
 	{
 		DEBUG_THROW("specialized - To floating point - From std::string");
 
 		// Explicitly reject hexadecimal values. Unit tests of the config class require that.
 		if(value.find_first_of("Xx") != std::string::npos) {
 			if(fallback) {
-				return fallback.value();
+				return *fallback;
 			} else {
 				throw bad_lexical_cast();
 			}
@@ -356,7 +356,7 @@ struct lexical_caster<
 		}
 
 		if(fallback) {
-			return fallback.value();
+			return *fallback;
 		} else {
 			throw bad_lexical_cast();
 		}
@@ -375,16 +375,16 @@ struct lexical_caster<
 	  unsigned long long
 	, From
 	, void
-	, std::enable_if_t<std::is_same<From, const char*>::value || std::is_same<From, char*>::value>
+	, std::enable_if_t<std::is_same_v<From, const char*> || std::is_same_v<From, char*>>
 	>
 {
-	unsigned long long operator()(From value, utils::optional<unsigned long long> fallback) const
+	unsigned long long operator()(From value, std::optional<unsigned long long> fallback) const
 	{
 		DEBUG_THROW(
 				"specialized - To unsigned long long - From (const) char*");
 
 		if(fallback) {
-			return lexical_cast_default<unsigned long long>(std::string(value), fallback.value());
+			return lexical_cast_default<unsigned long long>(std::string(value), *fallback);
 		} else {
 			return lexical_cast<unsigned long long>(std::string(value));
 		}
@@ -404,7 +404,7 @@ struct lexical_caster<
 	, std::string
 	>
 {
-	unsigned long long operator()(const std::string& value, utils::optional<unsigned long long> fallback) const
+	unsigned long long operator()(const std::string& value, std::optional<unsigned long long> fallback) const
 	{
 		DEBUG_THROW("specialized - To unsigned long long - From std::string");
 
@@ -415,7 +415,7 @@ struct lexical_caster<
 		}
 
 		if(fallback) {
-			return fallback.value();
+			return *fallback;
 		} else {
 			throw bad_lexical_cast();
 		}
@@ -431,16 +431,16 @@ template <class To, class From>
 struct lexical_caster<
 	  To
 	, From
-	, std::enable_if_t<std::is_unsigned<To>::value && !std::is_same<To, unsigned long long>::value>
-	, std::enable_if_t<std::is_same<From, const char*>::value || std::is_same<From, char*>::value>
+	, std::enable_if_t<std::is_unsigned_v<To> && !std::is_same_v<To, unsigned long long>>
+	, std::enable_if_t<std::is_same_v<From, const char*> || std::is_same_v<From, char*>>
 	>
 {
-	To operator()(From value, utils::optional<To> fallback) const
+	To operator()(From value, std::optional<To> fallback) const
 	{
 		DEBUG_THROW("specialized - To unsigned - From (const) char*");
 
 		if(fallback) {
-			return lexical_cast_default<To>(std::string(value), fallback.value());
+			return lexical_cast_default<To>(std::string(value), *fallback);
 		} else {
 			return lexical_cast<To>(std::string(value));
 		}
@@ -456,10 +456,10 @@ template <class To>
 struct lexical_caster<
 	  To
 	, std::string
-	, std::enable_if_t<std::is_unsigned<To>::value>
+	, std::enable_if_t<std::is_unsigned_v<To>>
 	>
 {
-	To operator()(const std::string& value, utils::optional<To> fallback) const
+	To operator()(const std::string& value, std::optional<To> fallback) const
 	{
 		DEBUG_THROW("specialized - To unsigned - From std::string");
 
@@ -474,7 +474,7 @@ struct lexical_caster<
 		}
 
 		if(fallback) {
-			return fallback.value();
+			return *fallback;
 		} else {
 			throw bad_lexical_cast();
 		}

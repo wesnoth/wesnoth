@@ -37,7 +37,6 @@
 #include "scripting/lua_kernel_base.hpp"
 #include "serialization/string_utils.hpp"
 #include "serialization/unicode.hpp"
-#include "lexical_cast.hpp"
 #include "log.hpp"
 #include "font/pango/escape.hpp"
 
@@ -61,17 +60,6 @@ namespace gui2
 {
 namespace dialogs
 {
-
-/*WIKI
- * @page = GUIWindowDefinitionWML
- * @order = 3_lua_interpretter
- *
- * == Settings manager ==
- *
- * This shows the settings manager
- *
- */
-
 
 REGISTER_DIALOG(lua_interpreter)
 
@@ -325,7 +313,7 @@ public:
 
 			std::string result;
 			for (int i = 0; the_list[i]; i++) {
-				result += lexical_cast<std::string, int>(i+history_base);
+				result += std::to_string(i+history_base);
 				result += ": ";
 				result += the_list[i]->line;
 				result += "\n";

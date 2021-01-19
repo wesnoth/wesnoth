@@ -223,8 +223,7 @@ private:
 	 * the config object is no longer required and thus not stored in the
 	 * object.
 	 *
-	 * @param cfg                 The config object with the data to draw, see
-	 *                            https://www.wesnoth.org/wiki/GUICanvasWML
+	 * @param cfg                 The config object with the data to draw, see @ref GUICanvasWML
 	 */
 	void parse_cfg(const config& cfg);
 

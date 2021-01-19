@@ -17,22 +17,21 @@
 
 #include <algorithm>
 #include <cctype>
+#include <functional>
 
+namespace utils
+{
 inline bool chars_equal_insensitive(char a, char b) { return tolower(a) == tolower(b); }
 inline bool chars_less_insensitive(char a, char b) { return tolower(a) < tolower(b); }
 
-namespace utils {
-
-#ifdef HAVE_CXX17
-using std::clamp;
-#else
-// NOTE: remove once we have C++17 support and can use std::clamp
-template<typename T>
-constexpr const T& clamp(const T& value, const T& min, const T& max)
-{
-	return std::max<T>(std::min<T>(value, max), min);
-}
-#endif
+/**
+ * Equivalent to as @c std::is_same_v except it uses the decayed form of V.
+ *
+ * @tparam T1    The first type to compare.
+ * @tparam T2    The second type to compare. This will be passed through @c std::decay .
+ */
+template<typename T1, typename T2>
+inline constexpr bool decayed_is_same = std::is_same_v<T1, std::decay_t<T2>>;
 
 namespace detail
 {

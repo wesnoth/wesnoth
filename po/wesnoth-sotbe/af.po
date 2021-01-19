@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.5-CVS\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2020-10-17 04:28 UTC\n"
+"POT-Creation-Date: 2021-01-16 14:18 UTC\n"
 "PO-Revision-Date: 2005-12-05 10:51+0200\n"
 "Last-Translator: \n"
 "Language-Team: Afrikaans\n"
@@ -123,11 +123,11 @@ msgstr "Verslaan Ar Dant"
 msgid "Death of Kapou’e"
 msgstr "Dood van Kapou'e"
 
-#. [side]: id=Kapou'e, type=Orcish Leader
-#. [side]: type=Orcish Slayer, id=Rugh
-#. [side]
-#. [side]: type=General, id=Howgarth III
 #. [side]: type=Orcish Leader, id=Kapou'e
+#. [side]: id=Kapou'e, type=Orcish Leader
+#. [side]
+#. [side]: type=Orcish Slayer, id=Rugh
+#. [side]: type=General, id=Howgarth III
 #. [side]: id=Grüü, type=Great Troll
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/01_End_of_Peace.cfg:56
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/01_End_of_Peace.cfg:64
@@ -165,11 +165,11 @@ msgstr "Kapou’e"
 msgid "Alber"
 msgstr "Albert"
 
+#. [side]: type=Lieutenant, id=Alber
+#. [side]: type=General, id=Lanbec'h
 #. [side]: type=General, id=Slowhand
 #. [side]
 #. [side]: type=General, id=Harman
-#. [side]: type=General, id=Lanbec'h
-#. [side]: type=Lieutenant, id=Alber
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/01_End_of_Peace.cfg:82
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/02_The_Human_Army.cfg:94
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:34
@@ -1642,17 +1642,17 @@ msgstr "Ar Dant"
 
 #. [side]: type=Elvish Champion, id=Thelarion
 #. [side]: type=Dwarvish Steelclad, id=Darstang
+#. [side]: type=General, id=Earl Lanbec'h
+#. [side]
 #. [side]: type=General, id=Arthain
 #. [side]: type=Lieutenant, id=Hanak
-#. [side]: type=Assassin, type=Rogue, id=Ar-Dant
-#. [side]
-#. [side]: type=General, id=Earl Lanbec'h
 #. [side]: type=Bandit, id=Sagmar
 #. [side]: type=Grand Marshal, id=Earl Lanbec'h
 #. [side]: type=Orcish Warlord, id=Shan Taum
 #. [side]: type=General, id=Telthys
 #. [side]: type=General, id=Fredor
 #. [side]: type=General, id=Georan
+#. [side]: type=Assassin, type=Rogue, id=Ar-Dant
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:88
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:98
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:106
@@ -2162,8 +2162,13 @@ msgstr "Oorwin Slowhand"
 msgid "Shan Taum"
 msgstr "Shan Taum"
 
+#. [side]: type=Orcish Warlord, id=Shan Taum
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:69
+msgid "Rivals"
+msgstr ""
+
 #. [part]
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:76
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:77
 msgid ""
 "After clearing out the elves from the Silent Forest, Kapou’e and his party "
 "set out on the last leg of their journey. Within a few days they finally "
@@ -2172,20 +2177,20 @@ msgid ""
 msgstr ""
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:105
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:106
 #, fuzzy
 msgid "At last, here are the Mourned Hills! We can only hope for the best."
 msgstr "Uiteindelik! Hier is die Mourned Hills. Ek hoop alles is nou OK."
 
 #. [message]: role=cannonfodder
 #. [message]: speaker=Grüü
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:110
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:111
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_of_Armies.cfg:289
 msgid "Why?"
 msgstr "Hoekom?"
 
 #. [message]: speaker=Gork
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:115
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:116
 #, fuzzy
 msgid ""
 "You are a troll, so you don’t know. These lands are ruled by Shan Taum the "
@@ -2195,25 +2200,25 @@ msgstr ""
 "nie. Shan was 'n mededinger van die Swart Oog Karun."
 
 #. [message]: speaker=Pirk
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:120
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:121
 #, fuzzy
 msgid "I doubt he would welcome the son of the Black-Eye."
 msgstr "Ek twyfel of hy die Seuan van Swart Oog sal verwelkom."
 
 #. [message]: speaker=Shan Taum
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:124
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:125
 #, fuzzy
 msgid ""
 "Who is that? Kapou’e! What are you doing in my lands, you weakling runt?"
 msgstr "Wie is dit? Kapou'e? Wat maak jy in hierdie area jou gespuis ?"
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:129
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:130
 msgid "Hold on, Shan Taum. We seek the Great Council, not a quarrel with you."
 msgstr ""
 
 #. [message]: speaker=Shan Taum
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:134
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:135
 msgid ""
 "Bwahaha! You are nothing! Where is your land? You became a beggar. You are "
 "as pathetic as your father!"
@@ -2222,7 +2227,7 @@ msgstr ""
 "is so pateties soos jou vader!"
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:139
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:140
 #, fuzzy
 msgid ""
 "How can you talk that way about my father, you miserable coward?! I’ll make "
@@ -2232,33 +2237,33 @@ msgstr ""
 "van jou skedel maak!"
 
 #. [message]: speaker=Shan Taum
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:143
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:144
 msgid "Really? What would you drink with it? Mint cordial?"
 msgstr "Regtig ? En wat wil jy daarmee saamdrink? 'n Peperment Drankie?"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:148
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:149
 msgid ""
 "Exasperated, Kapou’e launched an attack on his fellow orc Shan Taum the Smug."
 msgstr "Hoogs verergd val Kapou'e sy Ork-broer Shan Taum aan. "
 
 #. [event]
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:155
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:156
 msgid "Fabstep"
 msgstr ""
 
 #. [event]
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:156
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:157
 msgid "Klebar"
 msgstr ""
 
 #. [event]
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:157
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:158
 msgid "Echarp"
 msgstr ""
 
 #. [message]: speaker=Echarp
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:160
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:161
 #, fuzzy
 msgid ""
 "What is this? Are you mad?! Humans are to besiege our fortress at Prestim "
@@ -2268,12 +2273,12 @@ msgstr ""
 "Prestim aan te val en julle baklei ondermekaar?"
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:165
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:166
 msgid "Well, ermmm..."
 msgstr "Wel, ermmm..."
 
 #. [message]: speaker=Echarp
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:169
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:170
 #, fuzzy
 msgid ""
 "Kapou’e, rumors tell of you making a long trip to seek assistance from us, "
@@ -2283,20 +2288,20 @@ msgstr ""
 "vra, en dat jy Pik, Gork en Vraurk begelei. Die Raad is dankbaar daarvoor."
 
 #. [message]: speaker=Fabstep
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:173
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:174
 msgid "I know what you want from us but I’m afraid we can’t help you."
 msgstr ""
 "Ek weet wat jy van ons verwag maar ons kan jou ongelukkig nie help nie."
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:177
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:178
 #, fuzzy
 #| msgid "Really? But my people..."
 msgid "But my people..."
 msgstr "Regtig? Maar my mense..."
 
 #. [message]: speaker=Echarp
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:181
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:182
 #, fuzzy
 msgid ""
 "You don’t understand. Orcs have been divided for ages. The only one who gave "
@@ -2309,7 +2314,7 @@ msgstr ""
 "volg."
 
 #. [message]: speaker=Vraurk
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:185
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:186
 #, fuzzy
 msgid ""
 "This is true. Now we are pressed from all sides by humans and elves; we need "
@@ -2319,17 +2324,17 @@ msgstr ""
 "ons het 'n leier nodig wat al die stamme kan verenig. Daai leier is JY!"
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:189
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:190
 msgid "Thank you."
 msgstr ""
 
 #. [message]: speaker=Grüü
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:193
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:194
 msgid "Did you hear? There is a battle waiting for us at Prestim!"
 msgstr "Het jy gehoor? Daar is 'n veldslag wat vir ons wag by Prestim!"
 
 #. [message]: speaker=Echarp
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:197
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:198
 msgid ""
 "Kapou’e, if Prestim falls, humans will have a strong bridgehead on this side "
 "of the river and your people won’t be safe. You are the only one that can "
@@ -2340,7 +2345,7 @@ msgstr ""
 "wat ons kan help met die verdediging van Prestim!"
 
 #. [message]: speaker=Pirk
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:201
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:202
 #, fuzzy
 msgid ""
 "Go defend Prestim, Kapou'e. In the meantime, now that the council is "
@@ -2353,7 +2358,7 @@ msgstr ""
 "jou gaan leier maak daarvan."
 
 #. [message]: speaker=Shan Taum
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:246
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:247
 #, fuzzy
 msgid "Nooo! Don’t kill me, I surrender to you little earthworm."
 msgstr "Neee! Moenie my doodmaak nie ! Ek gee oor aan jou, jou klein wurm."
@@ -3882,8 +3887,8 @@ msgstr ""
 msgid "Ahhh, perfect, more reinforcements."
 msgstr ""
 
-#. [side]: type=General, id=Howgarth III
 #. [unit]: type=General, id=Howgarth III
+#. [side]: type=General, id=Howgarth III
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:386
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:150
 msgid "Howgarth III"
@@ -4338,7 +4343,7 @@ msgstr ""
 #: data/campaigns/Son_Of_The_Black_Eye/utils/deaths.cfg:76
 #, fuzzy
 msgid ""
-"Blast it, without Inarix to lead his saurians, we can no longer count on "
+"Blast it, without Inarix to lead her saurians, we can no longer count on "
 "their help."
 msgstr "Sonder Inarix om sy Sauriane te lei is daar min hoop."
 

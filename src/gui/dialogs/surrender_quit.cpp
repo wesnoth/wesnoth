@@ -21,16 +21,6 @@ namespace gui2
 namespace dialogs
 {
 
-/*WIKI
- * @page = GUIWindowDefinitionWML
- * @order = 2_surrender_quit
- *
- * == Surrender and/or quit a game ==
- *
- * This shows the dialog to confirm surrender and/or quitting the game
- *
- */
-
 REGISTER_DIALOG(surrender_quit)
 
 

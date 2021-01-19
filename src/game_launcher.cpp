@@ -53,7 +53,6 @@
 #include "serialization/string_utils.hpp" // for split
 #include "statistics.hpp"
 #include "tstring.hpp"       // for operator==, operator!=
-#include "utils/general.hpp" // for clamp
 #include "video.hpp"         // for CVideo
 #include "wesnothd_connection_error.hpp"
 #include "wml_exception.hpp" // for wml_exception
@@ -190,7 +189,7 @@ game_launcher::game_launcher(const commandline_options& cmdline_opts)
 		load_data_ = savegame::load_game_metadata{
 			savegame::save_index_class::default_saves_dir(), *cmdline_opts_.load};
 	if(cmdline_opts_.max_fps) {
-		int fps = utils::clamp(*cmdline_opts_.max_fps, 1, 1000);
+		int fps = std::clamp(*cmdline_opts_.max_fps, 1, 1000);
 		fps = 1000 / fps;
 		// increase the delay to avoid going above the maximum
 		if(1000 % fps != 0) {
@@ -649,7 +648,7 @@ bool game_launcher::play_render_image_mode()
 
 bool game_launcher::has_load_data() const
 {
-	return utils::has_optional_value(load_data_);
+	return load_data_.has_value();
 }
 
 bool game_launcher::load_game()
@@ -660,7 +659,7 @@ bool game_launcher::load_game()
 
 	savegame::loadgame load(savegame::save_index_class::default_saves_dir(), state_);
 	if(load_data_) {
-		load.data() = std::move(load_data_.value());
+		load.data() = std::move(*load_data_);
 		clear_loaded_game();
 	}
 

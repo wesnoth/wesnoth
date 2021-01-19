@@ -428,15 +428,6 @@ window* window::window_instance(const unsigned handle)
 	return manager::instance().get_window(handle);
 }
 
-/*WIKI
- * @page = GUIToolkitWML
- * @order = 3_widget_window_2
- *
- * List if the id's that have generate a return value:
- * * ok confirms the dialog.
- * * cancel cancels the dialog.
- *
- */
 retval window::get_retval_by_id(const std::string& id)
 {
 	// Note it might change to a map later depending on the number
@@ -1449,25 +1440,6 @@ void window::signal_handler_close_window()
 
 // }---------- DEFINITION ---------{
 
-/*WIKI
- * @page = GUIWidgetDefinitionWML
- * @order = 1_window
- *
- * == Window ==
- *
- * The definition of a window. A window is a kind of panel see the panel for
- * which fields exist
- *
- * @begin{parent}{name="gui/"}
- * @begin{tag}{name="window_definition"}{min=0}{max=-1}{super="generic/widget_definition"}
- * @begin{tag}{name="resolution"}{min=0}{max=-1}{super="gui/panel_definition/resolution"}
- * @allow{link}{name="gui/window/resolution/grid"}
- * @allow{link}{name="gui/panel_definition/resolution/background"}
- * @allow{link}{name="gui/panel_definition/resolution/foreground"}
- * @end{tag}{name="resolution"}
- * @end{tag}{name="window_definition"}
- * @end{parent}{name="gui/"}
- */
 window_definition::window_definition(const config& cfg)
 	: styled_widget_definition(cfg)
 {

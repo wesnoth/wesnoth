@@ -56,8 +56,7 @@ void update_screen_size_variables()
 	screen_width = rect.w;
 	screen_height = rect.h;
 
-	float scalew, scaleh;
-	std::tie(scalew, scaleh) = vid.get_dpi_scale_factor();
+	auto [scalew, scaleh] = vid.get_dpi_scale_factor();
 	float avgscale = (scalew + scaleh)/2;
 	screen_pitch_microns = MICRONS_PER_INCH / (avgscale * MAGIC_DPI_MATCH_VIDEO);
 

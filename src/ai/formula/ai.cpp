@@ -51,6 +51,7 @@
 #include "ai/formula/function_table.hpp"           // for ai_function_symbol_table
 #include "ai/game_info.hpp"  // for move_result_ptr, move_map, etc
 #include "ai/formula/candidates.hpp"               // for base_candidate_action, etc
+#include "utils/variant.hpp"
 
 #include <cassert>                     // for assert
 #include <ctime>                       // for time
@@ -217,8 +218,7 @@ pathfind::plain_route formula_ai::shortest_path_calculator(const map_location &s
         const map_location::DIRECTION preferred = destination.get_relative_dir(src);
 
         int best_rating = 100;//smaller is better
-        adjacent_loc_array_t adj;
-        get_adjacent_tiles(destination,adj.data());
+		const auto adj = get_adjacent_tiles(destination);
 
         for(std::size_t n = 0; n < adj.size(); ++n) {
                 if(resources::gameboard->map().on_board(adj[n]) == false) {
@@ -260,8 +260,7 @@ pathfind::teleport_map formula_ai::get_allowed_teleports(unit_map::iterator& uni
 
 void formula_ai::add_formula_function(const std::string& name, const_formula_ptr formula, const_formula_ptr precondition, const std::vector<std::string>& args)
 {
-	formula_function_ptr fcn(new user_formula_function(name,formula,precondition,args));
-	function_table_.add_function(name, std::move(fcn));
+	function_table_.add_function(name, std::make_shared<user_formula_function>(name, formula, precondition, args));
 }
 
 namespace {
@@ -308,11 +307,11 @@ variant formula_ai::get_value(const std::string& key) const
 
 	} else if(key == "leader_ignores_keep")
 	{
-		boost::variant<bool, std::vector<std::string>> leader_ignores_keep = get_leader_ignores_keep();
-		if (leader_ignores_keep.which() == 0) {
-			return variant(boost::get<bool>(leader_ignores_keep));
+		auto leader_ignores_keep = get_leader_ignores_keep();
+		if (utils::variant_index(leader_ignores_keep) == 0) {
+			return variant(utils::get<bool>(leader_ignores_keep));
 		} else {
-			std::vector<std::string> &strlist = boost::get<std::vector<std::string>>(leader_ignores_keep);
+			std::vector<std::string> &strlist = utils::get<std::vector<std::string>>(leader_ignores_keep);
 			std::vector<variant> vars;
 			for(const std::string &i : strlist) {
 				vars.emplace_back(i);
@@ -326,11 +325,11 @@ variant formula_ai::get_value(const std::string& key) const
 
 	} else if(key == "passive_leader")
 	{
-		boost::variant<bool, std::vector<std::string>> passive_leader = get_passive_leader();
-		if (passive_leader.which() == 0) {
-			return variant(boost::get<bool>(passive_leader));
+		auto passive_leader = get_passive_leader();
+		if (utils::variant_index(passive_leader) == 0) {
+			return variant(utils::get<bool>(passive_leader));
 		} else {
-			std::vector<std::string> &strlist = boost::get<std::vector<std::string>>(passive_leader);
+			std::vector<std::string> &strlist = utils::get<std::vector<std::string>>(passive_leader);
 			std::vector<variant> vars;
 			for(const std::string &i : strlist) {
 				vars.emplace_back(i);
@@ -340,11 +339,11 @@ variant formula_ai::get_value(const std::string& key) const
 
 	} else if(key == "passive_leader_shares_keep")
 	{
-		boost::variant<bool, std::vector<std::string>> passive_leader_shares_keep = get_passive_leader_shares_keep();
-		if (passive_leader_shares_keep.which() == 0) {
-			return variant(boost::get<bool>(passive_leader_shares_keep));
+		auto passive_leader_shares_keep = get_passive_leader_shares_keep();
+		if (utils::variant_index(passive_leader_shares_keep) == 0) {
+			return variant(utils::get<bool>(passive_leader_shares_keep));
 		} else {
-			std::vector<std::string> &strlist = boost::get<std::vector<std::string>>(passive_leader_shares_keep);
+			std::vector<std::string> &strlist = utils::get<std::vector<std::string>>(passive_leader_shares_keep);
 			std::vector<variant> vars;
 			for(const std::string &i : strlist) {
 				vars.emplace_back(i);
@@ -628,10 +627,8 @@ variant formula_ai::get_keeps() const
 			for(std::size_t y = 0; y != std::size_t(resources::gameboard->map().h()); ++y) {
 				const map_location loc(x,y);
 				if(resources::gameboard->map().is_keep(loc)) {
-					adjacent_loc_array_t adj;
-					get_adjacent_tiles(loc,adj.data());
-					for(std::size_t n = 0; n < adj.size(); ++n) {
-						if(resources::gameboard->map().is_castle(adj[n])) {
+					for(const map_location& adj : get_adjacent_tiles(loc)) {
+						if(resources::gameboard->map().is_castle(adj)) {
 							vars.emplace_back(std::make_shared<location_callable>(loc));
 							break;
 						}

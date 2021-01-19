@@ -424,20 +424,17 @@ namespace { // Private helpers for move_unit()
 		const unit_map &units = resources::gameboard->units();
 
 		// Need to check each adjacent hex for hidden enemies.
-		adjacent_loc_array_t adjacent;
-		get_adjacent_tiles(hex, adjacent.data());
-		for (unsigned i = 0; i < adjacent.size(); ++i )
-		{
-			const unit_map::const_iterator neighbor_it = units.find(adjacent[i]);
+		for(const map_location& loc : get_adjacent_tiles(hex)) {
+			const unit_map::const_iterator neighbor_it = units.find(loc);
 
 			if ( neighbor_it != units.end()  &&
 			     current_team_->is_enemy(neighbor_it->side())  &&
-			     neighbor_it->invisible(adjacent[i]) )
+			     neighbor_it->invisible(loc) )
 			{
 				// Ambushed!
 				ambushed_ = true;
 				ambush_stop_ = hex;
-				ambushers_.push_back(adjacent[i]);
+				ambushers_.push_back(loc);
 			}
 		}
 	}
@@ -472,19 +469,9 @@ namespace { // Private helpers for move_unit()
 				// block the tunnel if pass_allied_units=true. Whether the teleport is possible
 				// is checked by getting the teleport map with the see_all flag set to true.
 				const pathfind::teleport_map teleports = pathfind::get_teleport_locations(*move_it_, *current_team_, true, false, false);
-				std::set<map_location> allowed_teleports;
-				teleports.get_adjacents(allowed_teleports, prev_hex);
+				const auto allowed_teleports = teleports.get_adjacents(prev_hex);
 
-				bool found_valid_teleport = false;
-				std::set<map_location>::const_iterator it = allowed_teleports.begin();
-				while( it!=allowed_teleports.end() && !found_valid_teleport ) {
-					if ( *it == hex ) {
-						found_valid_teleport = true;
-					}
-					++it;
-				}
-
-				if (!found_valid_teleport) {
+				if(allowed_teleports.count(hex) == 0) {
 					teleport_failed_ = true;
 					return true;
 				}
@@ -527,10 +514,7 @@ namespace { // Private helpers for move_unit()
 		move_it_->anim_comp().invalidate(disp);
 
 		// Attempt actually moving. Fails if *step_to is occupied.
-		unit_map::unit_iterator unit_it;
-		bool success = false;
-
-		std::tie(unit_it, success) = resources::gameboard->units().move(*move_loc_, *step_to);
+		auto [unit_it, success] = resources::gameboard->units().move(*move_loc_, *step_to);
 
 		if(success) {
 			// Update the moving unit.
@@ -904,11 +888,7 @@ namespace { // Private helpers for move_unit()
 			// Make sure this hex is drawn correctly.
 			disp.invalidate(hex);
 			// Fire sighted events.
-
-			bool wml_undo_blocked = false;
-			bool wml_move_aborted = false;
-
-			std::tie(wml_undo_blocked, wml_move_aborted) = actor_sighted(*ambusher, &sight_cache);
+			auto [wml_undo_blocked, wml_move_aborted] = actor_sighted(*ambusher, &sight_cache);
 			// TODO: should we call post_wml ?
 			wml_move_aborted_ |= wml_move_aborted;
 			wml_undo_disabled_ |= wml_undo_blocked;
@@ -1013,11 +993,7 @@ namespace { // Private helpers for move_unit()
 				// Finish animating.
 				animator.finish(move_it_.get_shared_ptr());
 				// Check for the moving unit being seen.
-
-				bool wml_undo_blocked = false;
-				bool wml_move_aborted = false;
-
-				std::tie(wml_undo_blocked, wml_move_aborted) = actor_sighted(*move_it_, &not_seeing);
+				auto [wml_undo_blocked, wml_move_aborted] = actor_sighted(*move_it_, &not_seeing);
 				// TODO: should we call post_wml ?
 				wml_move_aborted_ |= wml_move_aborted;
 				wml_undo_disabled_ |= wml_undo_blocked;

@@ -433,7 +433,7 @@ public:
 		: container_(container)
 	{
 		// NOTE: add more conditions if this changes.
-		static_assert((std::is_same<variant_vector, T>::value || std::is_same<variant_map_raw, T>::value),
+		static_assert((std::is_same_v<variant_vector, T> || std::is_same_v<variant_map_raw, T>),
 			"variant_container only accepts vector or map specifications.");
 	}
 

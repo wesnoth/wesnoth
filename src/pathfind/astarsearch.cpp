@@ -85,8 +85,7 @@ struct node {
 		if (teleports && !teleports->empty()) {
 
 			double new_srch = 1.0;
-			std::set<map_location> sources;
-			teleports->get_sources(sources);
+			auto sources = teleports->get_sources();
 
 			std::set<map_location>::const_iterator it = sources.begin();
 			for(; it != sources.end(); ++it) {
@@ -94,10 +93,8 @@ struct node {
 				if (tmp_srch < new_srch) { new_srch = tmp_srch; }
 			}
 
-
 			double new_dsth = 1.0;
-			std::set<map_location> targets;
-			teleports->get_targets(targets);
+			auto targets = teleports->get_targets();
 
 			for(it = targets.begin(); it != targets.end(); ++it) {
 				const double tmp_dsth = heuristic(*it, dst);
@@ -186,37 +183,34 @@ plain_route a_star_search(const map_location& src, const map_location& dst,
 		if (n.t >= nodes[index(dst)].g) break;
 
 		std::vector<map_location> locs(6);
+		get_adjacent_tiles(n.curr, locs.data());
 
 		if (teleports && !teleports->empty()) {
-
-			std::set<map_location> allowed_teleports;
-			teleports->get_adjacents(allowed_teleports, n.curr);
+			auto allowed_teleports = teleports->get_adjacents(n.curr);
 			locs.insert(locs.end(), allowed_teleports.begin(), allowed_teleports.end());
 		}
 
-		int i = locs.size();
+		for(auto i = locs.rbegin(); i != locs.rend(); ++i) {
+			const map_location& loc = *i;
 
-		get_adjacent_tiles(n.curr, locs.data());
-
-		for (; i-- > 0;) {
-			if (!locs[i].valid(width, height, border)) continue;
-			if (locs[i] == n.curr) continue;
-			node& next = nodes[index(locs[i])];
+			if (!loc.valid(width, height, border)) continue;
+			if (loc == n.curr) continue;
+			node& next = nodes[index(loc)];
 
 			double thresh = (next.in - search_counter <= 1u) ? next.g : stop_at + 1;
 			// cost() is always >= 1  (assumed and needed by the heuristic)
 			if (n.g + 1 >= thresh) continue;
-			double cost = n.g + calc.cost(locs[i], n.g);
+			double cost = n.g + calc.cost(loc, n.g);
 			if (cost >= thresh) continue;
 
 			bool in_list = next.in == search_counter + 1;
 
-			next = node(cost, locs[i], n.curr, dst, true, teleports);
+			next = node(cost, loc, n.curr, dst, true, teleports);
 
 			if (in_list) {
-				std::push_heap(pq.begin(), std::find(pq.begin(), pq.end(), static_cast<int>(index(locs[i]))) + 1, node_comp);
+				std::push_heap(pq.begin(), std::find(pq.begin(), pq.end(), static_cast<int>(index(loc))) + 1, node_comp);
 			} else {
-				pq.push_back(index(locs[i]));
+				pq.push_back(index(loc));
 				std::push_heap(pq.begin(), pq.end(), node_comp);
 			}
 		}

@@ -21,11 +21,13 @@
 #include "units/attack_type.hpp"
 #include "units/race.hpp"
 #include "units/alignment.hpp"
-#include "utils/optional_fwd.hpp"
+#include "utils/variant.hpp"
 
-#include <bitset>
 #include <boost/dynamic_bitset_fwd.hpp>
 #include <boost/variant.hpp>
+
+#include <bitset>
+#include <optional>
 
 class display;
 class team;
@@ -207,13 +209,8 @@ public:
 
 	unit_ptr clone() const
 	{
-		return unit_ptr(std::shared_ptr<unit>(new unit(*this)));
+		return std::shared_ptr<unit>(new unit(*this));
 	}
-
-	//unit_ptr shared_from_this()
-	//{
-	//	return unit_ptr(this);
-	//}
 
 	virtual ~unit();
 
@@ -1129,8 +1126,13 @@ public:
 		static std::string type() { static std::string v = "loyal"; return v; }
 	};
 
+	using upkeep_t = utils::variant<upkeep_full, upkeep_loyal, int>;
+
 	/** Visitor helper class to fetch the appropriate upkeep value. */
-	class upkeep_value_visitor : public boost::static_visitor<int>
+	class upkeep_value_visitor
+#ifdef USING_BOOST_VARIANT
+		: public boost::static_visitor<int>
+#endif
 	{
 	public:
 		explicit upkeep_value_visitor(const unit& unit) : u_(unit) {}
@@ -1157,10 +1159,13 @@ public:
 	};
 
 	/** Visitor helper struct to fetch the upkeep type flag if applicable, or the the value otherwise. */
-	struct upkeep_type_visitor : public boost::static_visitor<std::string>
+	struct upkeep_type_visitor
+#ifdef USING_BOOST_VARIANT
+		: public boost::static_visitor<std::string>
+#endif
 	{
 		template<typename T>
-		std::enable_if_t<!std::is_same<int, T>::value, std::string>
+		std::enable_if_t<!std::is_same_v<int, T>, std::string>
 		operator()(T&) const
 		{
 			// Any special upkeep type should have an associated @ref type getter in its helper struct.
@@ -1173,23 +1178,21 @@ public:
 		}
 	};
 
-	using upkeep_t = boost::variant<upkeep_full, upkeep_loyal, int>;
-
 	/** Visitor helper class to parse the upkeep value from a config. */
 	class upkeep_parser_visitor : public boost::static_visitor<upkeep_t>
 	{
 	public:
 		template<typename N>
-		std::enable_if_t<std::is_arithmetic<N>::value, upkeep_t>
+		std::enable_if_t<std::is_arithmetic_v<N>, upkeep_t>
 		operator()(N n) const
 		{
 			if(n == 0) return upkeep_loyal();
 			if(n < 0) throw std::invalid_argument(std::to_string(n));
-			return n;
+			return static_cast<int>(n);
 		}
 
 		template<typename B>
-		std::enable_if_t<std::is_convertible<B, bool>::value && !std::is_arithmetic<B>::value, upkeep_t>
+		std::enable_if_t<std::is_convertible_v<B, bool> && !std::is_arithmetic_v<B>, upkeep_t>
 		operator()(B b) const
 		{
 			throw std::invalid_argument(b.str());
@@ -1897,9 +1900,9 @@ private:
 	t_string description_;
 	std::vector<t_string> special_notes_;
 
-	utils::optional<std::string> usage_;
-	utils::optional<std::string> halo_;
-	utils::optional<std::string> ellipse_;
+	std::optional<std::string> usage_;
+	std::optional<std::string> halo_;
+	std::optional<std::string> ellipse_;
 
 	bool random_traits_;
 	bool generate_name_;

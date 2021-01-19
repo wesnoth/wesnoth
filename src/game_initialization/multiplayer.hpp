@@ -21,24 +21,11 @@ class config;
 
 namespace ng { class connect_engine; }
 
+/** Main entry points of multiplayer mode. */
 namespace mp
 {
-// max. length of a player name
+/** Max length of a player name. */
 const std::size_t max_login_size = 20;
-
-/*
- * This is the main entry points of multiplayer mode.
- */
-
-/** Starts a multiplayer game in single-user mode. */
-void start_local_game();
-
-/**
- * Starts a multiplayer game in single-user mode.
- *
- * @param cmdline_opts        The commandline options
- */
-void start_local_game_commandline(const commandline_options& cmdline_opts);
 
 /**
  * Starts a multiplayer game in client mode.
@@ -47,15 +34,29 @@ void start_local_game_commandline(const commandline_options& cmdline_opts);
  */
 void start_client(const std::string& host);
 
+/** Starts a multiplayer game in single-user mode. */
+void start_local_game();
+
+/**
+ * Starts a multiplayer game in single-user mode using command line settings.
+ *
+ * @param cmdline_opts        The commandline options.
+ */
+void start_local_game_commandline(const commandline_options& cmdline_opts);
+
 /**
  * Opens the MP Staging screen and sets the game state according to the changes made.
  * Meant to be used between scenarios in a campaign.
+ *
+ * @param engine              A connect_engine instance to pass to MP Staging.
  */
 bool goto_mp_staging(ng::connect_engine& engine);
 
 /**
  * Opens the MP Join Game screen and sets the game state according to the changes made.
  * Meant to be used between scenarios in a campaign.
+ *
+ * @param observe             Whether entering as an observer or player.
  */
 bool goto_mp_wait(bool observe);
 

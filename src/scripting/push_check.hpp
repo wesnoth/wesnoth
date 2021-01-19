@@ -17,17 +17,13 @@
 #include "scripting/lua_widget.hpp"
 
 #include "serialization/string_view.hpp"
-
-#include <type_traits>
-#include <boost/mpl/not.hpp>
-#include <boost/mpl/and.hpp>
-#include <boost/mpl/has_xxx.hpp>
 #include "tstring.hpp"
 #include "map/location.hpp"
 #include "lua/lauxlib.h"
 #include "lua/lua.h"
 
 #include <cassert>
+#include <type_traits>
 
 class enum_tag;
 
@@ -35,57 +31,44 @@ struct lua_index_raw { int index; };
 
 namespace lua_check_impl
 {
-	namespace detail
-	{
-		BOOST_MPL_HAS_XXX_TRAIT_DEF(value_type)
-		BOOST_MPL_HAS_XXX_TRAIT_DEF(iterator)
-		BOOST_MPL_HAS_XXX_TRAIT_DEF(size_type)
-		BOOST_MPL_HAS_XXX_TRAIT_DEF(reference)
-		BOOST_MPL_HAS_XXX_TRAIT_DEF(key_type)
-		BOOST_MPL_HAS_XXX_TRAIT_DEF(mapped_type)
-		BOOST_MPL_HAS_XXX_TRAIT_DEF(first_type)
-		BOOST_MPL_HAS_XXX_TRAIT_DEF(second_type)
-	}
-
-	template<typename T, typename T2 = std::remove_reference_t<T>>
-	struct is_container
-		: boost::mpl::bool_<
-			detail::has_value_type<T2>::value &&
-			detail::has_iterator<T2>::value &&
-			detail::has_size_type<T2>::value &&
-			detail::has_reference<T2>::value
-		>
-	{};
-
-	template<typename T, typename T2 = std::remove_reference_t<T>>
-	struct is_map
-		: boost::mpl::bool_<
-			detail::has_key_type<T2>::value &&
-			detail::has_mapped_type<T2>::value
-		>
-	{};
-
-	template<typename T, typename T2 = std::remove_reference_t<T>>
-	struct is_pair
-		: boost::mpl::bool_<
-			detail::has_first_type<T2>::value &&
-			detail::has_second_type<T2>::value
-		>
-	{};
+	template<typename T, typename T2 = void>
+	struct is_container : std::false_type {};
 
 	template<typename T>
-	using remove_constref = std::remove_const_t<std::remove_reference_t<std::remove_const_t<T>>>;
+	struct is_container<T, std::void_t<
+		typename std::decay_t<T>::value_type,
+		typename std::decay_t<T>::iterator,
+		typename std::decay_t<T>::size_type,
+		typename std::decay_t<T>::reference>
+	> : std::true_type {};
 
+	template<typename T, typename T2 = void>
+	struct is_map : std::false_type {};
 
 	template<typename T>
-	std::enable_if_t<std::is_same<T, lua_index_raw>::value, lua_index_raw>
+	struct is_map<T, std::void_t<
+		typename std::decay_t<T>::key_type,
+		typename std::decay_t<T>::mapped_type>
+	> : std::true_type {};
+
+	template<typename T, typename T2 = void>
+	struct is_pair : std::false_type {};
+
+	template<typename T>
+	struct is_pair<T, std::void_t<
+		typename std::decay_t<T>::first_type,
+		typename std::decay_t<T>::second_type>
+	> : std::true_type {};
+
+	template<typename T>
+	std::enable_if_t<std::is_same_v<T, lua_index_raw>, lua_index_raw>
 	lua_check(lua_State *L, int n)
 	{
 		UNUSED(L);
 		return lua_index_raw{ n };
 	}
 	template<typename T>
-	std::enable_if_t<std::is_same<T, lua_index_raw>::value, lua_index_raw>
+	std::enable_if_t<std::is_same_v<T, lua_index_raw>, lua_index_raw>
 	lua_to_or_default(lua_State *L, int n, const T& /*def*/)
 	{
 		UNUSED(L);
@@ -94,13 +77,13 @@ namespace lua_check_impl
 
 	//std::string
 	template<typename T>
-	std::enable_if_t<std::is_same<T, std::string>::value, std::string>
+	std::enable_if_t<std::is_same_v<T, std::string>, std::string>
 	lua_check(lua_State *L, int n)
 	{
 		return luaL_checkstring(L, n);
 	}
 	template<typename T>
-	std::enable_if_t<std::is_same<T, std::string>::value, void>
+	std::enable_if_t<std::is_same_v<T, std::string>, void>
 	lua_push(lua_State *L, const T& val)
 	{
 		lua_pushlstring(L, val.c_str(), val.size());
@@ -108,19 +91,19 @@ namespace lua_check_impl
 
 	//utils::string_view
 	template<typename T>
-	std::enable_if_t<std::is_same<T, utils::string_view>::value, utils::string_view>
+	std::enable_if_t<std::is_same_v<T, utils::string_view>, utils::string_view>
 	lua_check(lua_State *L, int n)
 	{
 		return luaW_tostring(L, n);
 	}
 	template<typename T>
-	std::enable_if_t<std::is_same<T, utils::string_view>::value, utils::string_view>
+	std::enable_if_t<std::is_same_v<T, utils::string_view>, utils::string_view>
 	lua_to_or_default(lua_State *L, int n, const T& def)
 	{
 		return luaW_tostring_or_default(L, n, def);
 	}
 	template<typename T>
-	std::enable_if_t<std::is_same<T, utils::string_view>::value, void>
+	std::enable_if_t<std::is_same_v<T, utils::string_view>, void>
 	lua_push(lua_State *L, const T& val)
 	{
 		lua_pushlstring(L, val.data(), val.size());
@@ -128,13 +111,13 @@ namespace lua_check_impl
 
 	//config
 	template<typename T>
-	std::enable_if_t<std::is_same<T, config>::value, config>
+	std::enable_if_t<std::is_same_v<T, config>, config>
 	lua_check(lua_State *L, int n)
 	{
 		return luaW_checkconfig(L, n);
 	}
 	template<typename T>
-	std::enable_if_t<std::is_same<T, config>::value, void>
+	std::enable_if_t<std::is_same_v<T, config>, void>
 	lua_push(lua_State *L, const config& val)
 	{
 		luaW_pushconfig(L, val);
@@ -142,13 +125,13 @@ namespace lua_check_impl
 
 	//location
 	template<typename T>
-	std::enable_if_t<std::is_same<T, map_location>::value, map_location>
+	std::enable_if_t<std::is_same_v<T, map_location>, map_location>
 	lua_check(lua_State *L, int n)
 	{
 		return luaW_checklocation(L, n);
 	}
 	template<typename T>
-	std::enable_if_t<std::is_same<T, map_location>::value, map_location>
+	std::enable_if_t<std::is_same_v<T, map_location>, map_location>
 	lua_to_or_default(lua_State *L, int n, const T& def)
 	{
 		map_location res;
@@ -158,7 +141,7 @@ namespace lua_check_impl
 		return res;
 	}
 	template<typename T>
-	std::enable_if_t<std::is_same<T, map_location>::value, void>
+	std::enable_if_t<std::is_same_v<T, map_location>, void>
 	lua_push(lua_State *L, const map_location& val)
 	{
 		luaW_pushlocation(L, val);
@@ -166,7 +149,7 @@ namespace lua_check_impl
 
 	//enums generated by MAKE_ENUM
 	template<typename T>
-	std::enable_if_t<std::is_base_of<enum_tag, T>::value, T>
+	std::enable_if_t<std::is_base_of_v<enum_tag, T>, T>
 	lua_check(lua_State *L, int n)
 	{
 		T val;
@@ -178,7 +161,7 @@ namespace lua_check_impl
 		return val;
 	}
 	template<typename T>
-	std::enable_if_t<std::is_base_of<enum_tag, T>::value, T>
+	std::enable_if_t<std::is_base_of_v<enum_tag, T>, T>
 	lua_to_or_default(lua_State *L, int n, const T& def)
 	{
 		T val;
@@ -190,7 +173,7 @@ namespace lua_check_impl
 		return val;
 	}
 	template<typename T>
-	std::enable_if_t<std::is_base_of<enum_tag, T>::value, void>
+	std::enable_if_t<std::is_base_of_v<enum_tag, T>, void>
 	lua_push(lua_State *L, T val)
 	{
 		lua_check_impl::lua_push(L, val.to_string());
@@ -198,13 +181,13 @@ namespace lua_check_impl
 
 	//t_string
 	template<typename T>
-	std::enable_if_t<std::is_same<T, t_string>::value, t_string>
+	std::enable_if_t<std::is_same_v<T, t_string>, t_string>
 	lua_check(lua_State *L, int n)
 	{
 		return luaW_checktstring(L, n);
 	}
 	template<typename T>
-	std::enable_if_t<std::is_same<T, t_string>::value, void>
+	std::enable_if_t<std::is_same_v<T, t_string>, void>
 	lua_push(lua_State *L, const t_string& val)
 	{
 		luaW_pushtstring(L, val);
@@ -213,7 +196,7 @@ namespace lua_check_impl
 	//widget
 	//widget not suppored becasue lua_checek returns by value
 	template<typename T>
-	std::enable_if_t<std::is_same<T, gui2::widget>::value, void>
+	std::enable_if_t<std::is_same_v<T, gui2::widget>, void>
 	lua_push(lua_State *L, gui2::widget& val)
 	{
 		luaW_pushwidget(L, val);
@@ -221,19 +204,19 @@ namespace lua_check_impl
 
 	//bool
 	template<typename T>
-	std::enable_if_t<std::is_same<T, bool>::value, bool>
+	std::enable_if_t<std::is_same_v<T, bool>, bool>
 	lua_check(lua_State *L, int n)
 	{
 		return luaW_toboolean(L, n);
 	}
 	template<typename T>
-	std::enable_if_t<std::is_same<T, bool>::value, bool>
+	std::enable_if_t<std::is_same_v<T, bool>, bool>
 	lua_to_or_default(lua_State *L, int n, const T& /*def*/)
 	{
 		return luaW_toboolean(L, n);
 	}
 	template<typename T>
-	std::enable_if_t<std::is_same<T, bool>::value, void>
+	std::enable_if_t<std::is_same_v<T, bool>, void>
 	lua_push(lua_State *L, bool val)
 	{
 		lua_pushboolean(L, val);
@@ -241,13 +224,13 @@ namespace lua_check_impl
 
 	//double, float
 	template<typename T>
-	std::enable_if_t<std::is_floating_point<T>::value, T>
+	std::enable_if_t<std::is_floating_point_v<T>, T>
 	lua_check(lua_State *L, int n)
 	{
 		return luaL_checknumber(L, n);
 	}
 	template<typename T>
-	std::enable_if_t<std::is_floating_point<T>::value, T>
+	std::enable_if_t<std::is_floating_point_v<T>, T>
 	lua_to_or_default(lua_State *L, int n, const T& def)
 	{
 		int isnum;
@@ -258,7 +241,7 @@ namespace lua_check_impl
 		return d;
 	}
 	template<typename T>
-	std::enable_if_t<std::is_floating_point<T>::value, void>
+	std::enable_if_t<std::is_floating_point_v<T>, void>
 	lua_push(lua_State *L, T val)
 	{
 		lua_pushnumber(L, val);
@@ -266,13 +249,13 @@ namespace lua_check_impl
 
 	//integer types
 	template<typename T>
-	std::enable_if_t<std::is_integral<T>::value && !std::is_same<T, bool>::value, T>
+	std::enable_if_t<std::is_integral_v<T> && !std::is_same_v<T, bool>, T>
 	lua_check(lua_State *L, int n)
 	{
 		return luaL_checkinteger(L, n);
 	}
 	template<typename T>
-	std::enable_if_t<std::is_integral<T>::value && !std::is_same<T, bool>::value, T>
+	std::enable_if_t<std::is_integral_v<T> && !std::is_same_v<T, bool>, T>
 	lua_to_or_default(lua_State *L, int n, const T& def)
 	{
 		int isnum;
@@ -284,7 +267,7 @@ namespace lua_check_impl
 	}
 
 	template<typename T>
-	std::enable_if_t<std::is_integral<T>::value && !std::is_same<T, bool>::value, void>
+	std::enable_if_t<std::is_integral_v<T> && !std::is_same_v<T, bool>, void>
 	lua_push(lua_State *L, T val)
 	{
 		lua_pushnumber(L, val);
@@ -293,7 +276,7 @@ namespace lua_check_impl
 	//std::pair
 	//Not sure if the not_<is_const> is required; only (maybe) if std::map matches is_container
 	template<typename T>
-	std::enable_if_t<is_pair<T>::value && !std::is_const<typename T::first_type>::value, T>
+	std::enable_if_t<is_pair<T>::value && !std::is_const_v<typename T::first_type>, T>
 	lua_check(lua_State *L, int n)
 	{
 		T result;
@@ -307,7 +290,7 @@ namespace lua_check_impl
 		return result;
 	}
 	template<typename T>
-	std::enable_if_t<is_pair<T>::value && !std::is_const<typename T::first_type>::value, void>
+	std::enable_if_t<is_pair<T>::value && !std::is_const_v<typename T::first_type>, void>
 	lua_push(lua_State *L, const T& val)
 	{
 		lua_newtable(L);
@@ -319,7 +302,7 @@ namespace lua_check_impl
 
 	//std::vector and similar but not std::string
 	template<typename T>
-	std::enable_if_t<is_container<T>::value && !std::is_same<T, std::string>::value && !std::is_same<T, utils::string_view>::value, T>
+	std::enable_if_t<is_container<T>::value && !std::is_same_v<T, std::string> && !std::is_same_v<T, utils::string_view>, T>
 	lua_check(lua_State * L, int n)
 	{
 		if (lua_istable(L, n))
@@ -328,7 +311,7 @@ namespace lua_check_impl
 			for (int i = 1, i_end = lua_rawlen(L, n); i <= i_end; ++i)
 			{
 				lua_rawgeti(L, n, i);
-				res.push_back(lua_check_impl::lua_check<remove_constref<typename T::reference>>(L, -1));
+				res.push_back(lua_check_impl::lua_check<std::decay_t<typename T::reference>>(L, -1));
 				lua_pop(L, 1);
 			}
 			return res;
@@ -350,7 +333,7 @@ namespace lua_check_impl
 	//also accepts things like std::vector<int>() | std::adaptors::transformed(..)
 	template<typename T>
 	std::enable_if_t<
-		is_container<T>::value && !std::is_same<T, std::string>::value && !std::is_same<T, utils::string_view>::value && !is_map<T>::value
+		is_container<T>::value && !std::is_same_v<T, std::string> && !std::is_same_v<T, utils::string_view> && !is_map<T>::value
 		, void
 	>
 	lua_push(lua_State * L, const T& list )
@@ -360,7 +343,7 @@ namespace lua_check_impl
 		lua_createtable(L, list.size(), 0);
 		int i = 1;
 		for(typename T::const_iterator iter = list.begin(); iter != list.end(); ++iter) {
-			lua_check_impl::lua_push<remove_constref<typename T::reference>>(L, *iter);
+			lua_check_impl::lua_push<std::decay_t<typename T::reference>>(L, *iter);
 			lua_rawseti(L, -2, i++);
 		}
 	}
@@ -374,8 +357,8 @@ namespace lua_check_impl
 		lua_newtable(L);
 		for(const typename T::value_type& pair : map)
 		{
-			lua_check_impl::lua_push<remove_constref<typename T::key_type>>(L, pair.first);
-			lua_check_impl::lua_push<remove_constref<typename T::mapped_type>>(L, pair.second);
+			lua_check_impl::lua_push<std::decay_t<typename T::key_type>>(L, pair.first);
+			lua_check_impl::lua_push<std::decay_t<typename T::mapped_type>>(L, pair.second);
 			lua_settable(L, -3);
 		}
 	}
@@ -383,23 +366,23 @@ namespace lua_check_impl
 }
 
 template<typename T>
-lua_check_impl::remove_constref<T> lua_check(lua_State *L, int n)
+std::decay_t<T> lua_check(lua_State *L, int n)
 {
 	//remove possible const& to make life easier for the impl namespace.
-	return lua_check_impl::lua_check<lua_check_impl::remove_constref<T>>(L, n);
+	return lua_check_impl::lua_check<std::decay_t<T>>(L, n);
 }
 
 template<typename T>
-lua_check_impl::remove_constref<T> lua_to_or_default(lua_State *L, int n, const T& def)
+std::decay_t<T> lua_to_or_default(lua_State *L, int n, const T& def)
 {
 	//remove possible const& to make life easier for the impl namespace.
-	return lua_check_impl::lua_to_or_default<lua_check_impl::remove_constref<T>>(L, n, def);
+	return lua_check_impl::lua_to_or_default<std::decay_t<T>>(L, n, def);
 }
 
 template<typename T>
 void lua_push(lua_State *L, const T& val)
 {
-	return lua_check_impl::lua_push<lua_check_impl::remove_constref<T>>(L, val);
+	return lua_check_impl::lua_push<std::decay_t<T>>(L, val);
 }
 
 /**
@@ -407,7 +390,7 @@ void lua_push(lua_State *L, const T& val)
  *
  */
 template<typename T>
-lua_check_impl::remove_constref<T> luaW_table_get_def(lua_State *L, int index, utils::string_view k,  const T& def)
+std::decay_t<T> luaW_table_get_def(lua_State *L, int index, utils::string_view k,  const T& def)
 {
 	if(!lua_istable(L, index)) {
 		luaL_argerror(L, index, "table expected");
@@ -422,7 +405,7 @@ lua_check_impl::remove_constref<T> luaW_table_get_def(lua_State *L, int index, u
 		lua_pop(L, 1);
 		return def;
 	}
-	T res =  lua_check_impl::lua_to_or_default<lua_check_impl::remove_constref<T>>(L, -1, def);
+	T res =  lua_check_impl::lua_to_or_default<std::decay_t<T>>(L, -1, def);
 	lua_pop(L, 1);
 	return res;
 }

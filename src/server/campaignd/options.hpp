@@ -19,7 +19,7 @@
 
 #pragma once
 
-#include "utils/optional_fwd.hpp"
+#include <optional>
 
 #include <boost/program_options/options_description.hpp>
 #include <map>
@@ -51,11 +51,11 @@ public:
 	bool version;
 
 	/** Path to the add-ons server configuration file. */
-	utils::optional<std::string> config_file;
+	std::optional<std::string> config_file;
 	/** Path to the add-ons server storage dir. */
-	utils::optional<std::string> server_dir;
+	std::optional<std::string> server_dir;
 	/** Port number on which the server will listen for incoming connections. */
-	utils::optional<unsigned short> port;
+	std::optional<unsigned short> port;
 
 	/** True if --logdomains was passed. */
 	bool show_log_domains;

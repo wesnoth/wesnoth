@@ -46,11 +46,6 @@ static lg::log_domain log_replay("replay");
 #define WRN_REPLAY LOG_STREAM(warn, log_replay)
 #define ERR_REPLAY LOG_STREAM(err, log_replay)
 
-synced_context::synced_state synced_context::state_ = synced_context::UNSYNCED;
-int synced_context::last_unit_id_ = 0;
-synced_context::event_list synced_context::undo_commands_;
-bool synced_context::is_simultaneous_ = false;
-
 bool synced_context::run(const std::string& commandname,
 	const config& data,
 	bool use_undo,

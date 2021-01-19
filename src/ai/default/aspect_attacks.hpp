@@ -41,14 +41,19 @@ protected:
 	std::shared_ptr<attacks_vector> analyze_targets() const;
 
 	void do_attack_analysis(const map_location& loc,
-	                const move_map& srcdst, const move_map& dstsrc,
-			const move_map& fullmove_srcdst, const move_map& fullmove_dstsrc,
-	                const move_map& enemy_srcdst, const move_map& enemy_dstsrc,
-			const adjacent_loc_array_t& tiles, bool* used_locations,
-	                std::vector<map_location>& units,
-	                std::vector<attack_analysis>& result,
-			attack_analysis& cur_analysis,
-			 const team &current_team) const;
+		const move_map& srcdst,
+		const move_map& dstsrc,
+		const move_map& fullmove_srcdst,
+		const move_map& fullmove_dstsrc,
+		const move_map& enemy_srcdst,
+		const move_map& enemy_dstsrc,
+		const std::array<map_location, 6>& tiles,
+		std::array<bool, 6>& used_locations,
+		std::vector<map_location>& units,
+		std::vector<attack_analysis>& result,
+		attack_analysis& cur_analysis,
+		const team& current_team) const;
+
 	static int rate_terrain(const unit& u, const map_location& loc);
 };
 

@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2020-12-18 22:27-0300\n"
+"POT-Creation-Date: 2021-01-16 17:17+0300\n"
 "PO-Revision-Date: 2020-01-13 11:45+0000\n"
 "Last-Translator: GunChleoc, 2018\n"
 "Language-Team: Gaelic, Scottish (https://www.transifex.com/gunchleoc/"
@@ -240,23 +240,23 @@ msgstr "Liosta-chluich"
 msgid "Assign Time Schedule"
 msgstr "Sònraich sgeideal an ama"
 
-#: src/editor/action/mouse/mouse_action_unit.cpp:63
+#: src/editor/action/mouse/mouse_action_unit.cpp:61
 msgid "Identifier: "
 msgstr "Aithnichear: "
 
-#: src/editor/action/mouse/mouse_action_unit.cpp:65
+#: src/editor/action/mouse/mouse_action_unit.cpp:63
 msgid "Name: "
 msgstr "Ainm: "
 
-#: src/editor/action/mouse/mouse_action_unit.cpp:67
+#: src/editor/action/mouse/mouse_action_unit.cpp:65
 msgid "Type: "
 msgstr "Seòrsa: "
 
-#: src/editor/action/mouse/mouse_action_unit.cpp:68
+#: src/editor/action/mouse/mouse_action_unit.cpp:66
 msgid "Level: "
 msgstr "Rang: "
 
-#: src/editor/action/mouse/mouse_action_unit.cpp:69
+#: src/editor/action/mouse/mouse_action_unit.cpp:67
 msgid "Cost: "
 msgstr "Cosgais: "
 
@@ -309,11 +309,11 @@ msgstr "Ainm:"
 msgid "Load Map"
 msgstr "Luchdaich mapa"
 
-#: src/editor/map/context_manager.cpp:276 src/editor/map/map_context.cpp:852
+#: src/editor/map/context_manager.cpp:276 src/editor/map/map_context.cpp:851
 msgid "New Map"
 msgstr "Mapa ùr"
 
-#: src/editor/map/context_manager.cpp:289 src/editor/map/map_context.cpp:852
+#: src/editor/map/context_manager.cpp:289 src/editor/map/map_context.cpp:851
 msgid "New Scenario"
 msgstr "Cnàmh-sgeul ùr"
 
@@ -415,24 +415,24 @@ msgstr ""
 "Faidhle mapa le iomradh air air a luchdadh:\n"
 "$new"
 
-#: src/editor/map/editor_map.cpp:148
+#: src/editor/map/editor_map.cpp:144
 #: src/editor/palette/location_palette.cpp:119
 msgid "Player $side_num"
 msgstr "Cluicheadair $side_num"
 
-#: src/editor/map/editor_map.cpp:283
+#: src/editor/map/editor_map.cpp:279
 msgid "The size of the target map is different from the current map"
 msgstr "Tha meud a’ mhapa amais eadar-dhealaichte bhon mhapa seo"
 
-#: src/editor/map/map_context.cpp:146
+#: src/editor/map/map_context.cpp:145
 msgid "File not found"
 msgstr "Cha deach am faidhle a lorg"
 
-#: src/editor/map/map_context.cpp:153
+#: src/editor/map/map_context.cpp:152
 msgid "Empty file"
 msgstr "Faidhle falamh"
 
-#: src/editor/map/map_context.cpp:209
+#: src/editor/map/map_context.cpp:208
 msgid ""
 "The map file looks like a scenario, but the map_data value does not point to "
 "an existing file"
@@ -440,15 +440,15 @@ msgstr ""
 "Tha coltas cnàmh-sgeòil air an fhaidhle mapa seo, ach chan eil an luach "
 "map_data a’ tomhadh ri faidhle a tha ann"
 
-#: src/editor/map/map_context.cpp:618
+#: src/editor/map/map_context.cpp:617
 msgid "Could not save the scenario: $msg"
 msgstr "Cha b' urrainn dhuinn an cnàmh-sgeul a shàbhaladh: $msg"
 
-#: src/editor/map/map_context.cpp:653
+#: src/editor/map/map_context.cpp:652
 msgid "Could not save into scenario"
 msgstr "Cha b' urrainn dhuinn sàbhaladh dhan chnàmh-sgeul"
 
-#: src/editor/map/map_context.cpp:663
+#: src/editor/map/map_context.cpp:662
 msgid "Could not save the map: $msg"
 msgstr "Cha b' urrainn dhuinn am mapa a shàbhaladh: $msg"
 
@@ -528,13 +528,11 @@ msgstr "Tagh faidhle"
 msgid "Select"
 msgstr "Tagh"
 
-#: src/gui/dialogs/editor/set_starting_position.cpp:84
-msgid "player^None"
-msgstr "Gin"
+#~ msgid "player^None"
+#~ msgstr "Gin"
 
-#: src/gui/dialogs/editor/set_starting_position.cpp:97
-msgid "Player $player_number"
-msgstr "Cluicheadair $player_number"
+#~ msgid "Player $player_number"
+#~ msgstr "Cluicheadair $player_number"
 
 #~ msgid "(Unknown unit type: $type)"
 #~ msgstr "(Seòrsa aonaid nach aithne dhuinn: $type)"

@@ -14,7 +14,7 @@
 # While the script is at it, it checks for various incorrect and dodgy WML
 # constructs, including:
 #   * unbalanced tags
-#   * strings that need a translation mark and should not have them
+#   * strings that need a translation mark and do not have them
 #   * strings that have a translation mark and should not
 #   * translatable strings containing macro references
 #   * filter references by id= not matched by an actual unit
@@ -1696,40 +1696,41 @@ def global_sanity_check(filename, lines):
         if line.startswith("#endif"):
             ifdef_stack.pop()
             continue
-        if "[generator]" in line:
+        precomment = line.split("#")[0]
+        if "[generator]" in precomment:
             in_generator = True
             continue
-        elif "[/generator]" in line:
+        elif "[/generator]" in precomment:
             in_generator = False
             continue
         # do not use has_opening_tag() here, otherwise a [+side] tag
         # will make the sidecount variable incorrect
-        elif "[side]" in line:
+        elif "[side]" in precomment:
             in_side = True
             sidecount += 1
             continue
-        elif "[/side]" in line:
+        elif "[/side]" in precomment:
             if recruit or recruitment_pattern:
                 sides.append((filename, recruit, recruitment_pattern))
             in_side = False
             recruit = {}
             recruitment_pattern = {}
             continue
-        elif in_side and has_opening_tag(line, "ai"):
+        elif in_side and has_opening_tag(precomment, "ai"):
             in_ai = True
             continue
-        elif in_side and has_opening_tag(line, "unit"):
+        elif in_side and has_opening_tag(precomment, "unit"):
             in_subunit = True
             continue
-        elif in_side and "[/ai]" in line:
+        elif in_side and "[/ai]" in precomment:
             in_ai = False
             continue
-        elif in_side and "[/unit]" in line:
+        elif in_side and "[/unit]" in precomment:
             in_subunit = False
             continue
         if "wmllint: skip-side" in line:
             sidecount += 1
-        if not in_side or in_subunit or '=' not in line:
+        if not in_side or in_subunit or '=' not in precomment:
             continue
         try:
             (key, prefix, value, comment) = parse_attribute(line)
@@ -1804,13 +1805,14 @@ def global_sanity_check(filename, lines):
     # Because we can't be sure about what the UMC author wants to do, just warn
     in_campaign = False
     for num, line in enumerate(lines, start=1):
-        if "[campaign]" in line:
+        precomment = line.split("#")[0]
+        if "[campaign]" in precomment:
             in_campaign = True
             continue
-        if "[/campaign]" in line:
+        if "[/campaign]" in precomment:
             in_campaign = False
             continue
-        if has_opening_tag(line, "advancefrom"):
+        if has_opening_tag(precomment, "advancefrom"):
             print("{}, line {}: [advancefrom] needs to be manually updated to \
 [modify_unit_type] and moved into the _main.cfg file".format(filename, num))
         if in_campaign:
@@ -2882,7 +2884,7 @@ def translator(filename, mapxforms, textxform):
                     else:
                         fields = [x for x in line]
                     outmap.append(fields)
-                    if not maskwarn and maptype == 'map' and ("_f" in line or "_s" in line):
+                    if not maskwarn and maptype == 'map' and re.search('_s|_f(?!me)', line):
                         print('"%s", line %d: warning, fog or shroud in map file' \
                               % (filename, lineno+1))
                         maskwarn = True

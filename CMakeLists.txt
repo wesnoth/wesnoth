@@ -67,7 +67,7 @@ endif(ENABLE_MYSQL)
 
 # set what std version to use
 if(NOT CXX_STD)
-	set(CXX_STD "14")
+	set(CXX_STD "17")
 endif()
 set(CMAKE_CXX_STANDARD ${CXX_STD})
 # make sure to force using it
@@ -382,7 +382,7 @@ if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
 		set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} -flto=${LTO_JOBS}" CACHE STRING "Release build flags with LTO" FORCE)
 
 		MESSAGE("Using GCC gold linker")
-		set(CMAKE_EXE_LINKER_FLAGS_RELEASE "${CMAKE_EXE_LINKER_FLAGS_RELEASE} -fuse-ld=gold" CACHE STRING "" FORCE)
+		set(CMAKE_EXE_LINKER_FLAGS_RELEASE "${CMAKE_EXE_LINKER_FLAGS_RELEASE} -fuse-ld=gold -Wno-stringop-overflow" CACHE STRING "" FORCE)
 	endif(ENABLE_LTO)
 endif(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
 

@@ -51,7 +51,7 @@
 #include "units/udisplay.hpp"
 #include "units/unit.hpp"
 #include "units/types.hpp"
-#include "utils/optional_fwd.hpp"
+#include <optional>
 #include "whiteboard/manager.hpp"
 #include "wml_exception.hpp"
 
@@ -137,7 +137,7 @@ battle_context_unit_stats::battle_context_unit_stats(nonempty_unit_const_ptr up,
 
 	// Get the weapon characteristics as appropriate.
 	auto ctx = weapon->specials_context(up, oppp, u_loc, opp_loc, attacking, opp_weapon);
-	utils::optional<decltype(ctx)> opp_ctx;
+	std::optional<decltype(ctx)> opp_ctx;
 
 	if(opp_weapon) {
 		opp_ctx.emplace(opp_weapon->specials_context(oppp, up, opp_loc, u_loc, !attacking, weapon));
@@ -179,7 +179,7 @@ battle_context_unit_stats::battle_context_unit_stats(nonempty_unit_const_ptr up,
 	signed int cth = opp.defense_modifier(resources::gameboard->map().get_terrain(opp_loc)) + weapon->accuracy()
 		- (opp_weapon ? opp_weapon->parry() : 0);
 
-	cth = utils::clamp(cth, 0, 100);
+	cth = std::clamp(cth, 0, 100);
 
 	unit_ability_list cth_specials = weapon->get_special_ability("chance_to_hit");
 	unit_abilities::effect cth_effects(cth_specials, cth, backstab_pos, weapon);
@@ -190,7 +190,7 @@ battle_context_unit_stats::battle_context_unit_stats(nonempty_unit_const_ptr up,
 		cth = 0;
 	}
 
-	chance_to_hit = utils::clamp(cth, 0, 100);
+	chance_to_hit = std::clamp(cth, 0, 100);
 
 	// Compute base damage done with the weapon.
 	int base_damage = weapon->modified_damage(backstab_pos);
@@ -299,7 +299,7 @@ battle_context_unit_stats::battle_context_unit_stats(const unit_type* u_type,
 
 	// Get the weapon characteristics as appropriate.
 	auto ctx = weapon->specials_context(*u_type, map_location::null_location(), attacking);
-	utils::optional<decltype(ctx)> opp_ctx;
+	std::optional<decltype(ctx)> opp_ctx;
 
 	if(opp_weapon) {
 		opp_ctx.emplace(opp_weapon->specials_context(*opp_type, map_location::null_location(), !attacking));
@@ -325,13 +325,13 @@ battle_context_unit_stats::battle_context_unit_stats(const unit_type* u_type,
 	}
 
 	signed int cth = 100 - opp_terrain_defense + weapon->accuracy() - (opp_weapon ? opp_weapon->parry() : 0);
-	cth = utils::clamp(cth, 0, 100);
+	cth = std::clamp(cth, 0, 100);
 
 	unit_ability_list cth_specials = weapon->get_specials("chance_to_hit");
 	unit_abilities::effect cth_effects(cth_specials, cth, backstab_pos, weapon);
 	cth = cth_effects.get_composite_value();
 
-	chance_to_hit = utils::clamp(cth, 0, 100);
+	chance_to_hit = std::clamp(cth, 0, 100);
 
 	int base_damage = weapon->modified_damage(backstab_pos);
 	int damage_multiplier = 100;
@@ -881,7 +881,7 @@ void attack::fire_event(const std::string& n)
 	config& d_weapon_cfg = ev_data.add_child("second");
 
 	// Need these to ensure weapon filters work correctly
-	utils::optional<attack_type::specials_context_t> a_ctx, d_ctx;
+	std::optional<attack_type::specials_context_t> a_ctx, d_ctx;
 
 	if(a_stats_->weapon != nullptr && a_.valid()) {
 		if(d_stats_->weapon != nullptr && d_.valid()) {
@@ -1650,9 +1650,7 @@ bool backstab_check(const map_location& attacker_loc,
 		return false; // No defender
 	}
 
-	adjacent_loc_array_t adj;
-	get_adjacent_tiles(defender_loc, adj.data());
-
+	const auto adj = get_adjacent_tiles(defender_loc);
 	unsigned i;
 
 	for(i = 0; i < adj.size(); ++i) {

@@ -2,7 +2,7 @@
 
 ## Prerequisites
 
-Wesnoth requires a compiler with sufficient C++14 support such as GCC 5.4 and
+Wesnoth requires a compiler with sufficient C++17 support such as GCC 7 and
 later, or a version of Clang with equivalent support.
 
 You'll need to have these libraries and their development headers installed in
@@ -25,7 +25,7 @@ order to build Wesnoth:
  * Fontconfig                  >= 2.4.1
  * Cairo                       >= 1.10.0
  * Pango                       >= 1.22.0 (with Cairo backend)
- * Vorbisfile
+ * Vorbisfile aka libvorbis
  * libbz2
  * libz
  * libcrypto (from OpenSSL)

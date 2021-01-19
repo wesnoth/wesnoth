@@ -728,8 +728,7 @@ map_location mouse_handler::current_unit_attacks_from(const map_location& loc) c
 	int best_rating = 100; // smaller is better
 
 	map_location res;
-	adjacent_loc_array_t adj;
-	get_adjacent_tiles(loc, adj.data());
+	const auto adj = get_adjacent_tiles(loc);
 
 	for(std::size_t n = 0; n < adj.size(); ++n) {
 		if(pc_.get_map().on_board(adj[n]) == false) {
@@ -1378,10 +1377,7 @@ std::set<map_location> mouse_handler::get_adj_enemies(const map_location& loc, i
 
 	const team& uteam = pc_.get_teams()[side - 1];
 
-	adjacent_loc_array_t adj;
-	get_adjacent_tiles(loc, adj.data());
-
-	for(const map_location& aloc : adj) {
+	for(const map_location& aloc : get_adjacent_tiles(loc)) {
 		unit_map::const_iterator i = find_unit(aloc);
 
 		if(i && uteam.is_enemy(i->side())) {
@@ -1410,10 +1406,7 @@ void mouse_handler::show_attack_options(const unit_map::const_iterator& u)
 	const team& u_team = pc_.get_teams()[u->side() - 1];
 
 	// Check each adjacent hex.
-	adjacent_loc_array_t adj;
-	get_adjacent_tiles(u->get_location(), adj.data());
-
-	for(const map_location& loc : adj) {
+	for(const map_location& loc : get_adjacent_tiles(u->get_location())) {
 		// No attack option shown if no visible unit present.
 		// (Visible to current team, not necessarily the unit's team.)
 		if(!pc_.get_map().on_board(loc)) {

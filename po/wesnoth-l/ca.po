@@ -10,14 +10,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.3.14\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2020-10-17 04:28 UTC\n"
-"PO-Revision-Date: 2009-03-22 08:51+0100\n"
-"Last-Translator: Jose Gordillo\n"
+"POT-Creation-Date: 2021-01-16 14:18 UTC\n"
+"PO-Revision-Date: 2021-01-15 14:31+0100\n"
+"Last-Translator: Miquel-Àngel Burgos i Fradeja <miquel.angel.burgos@gmail."
+"com>\n"
 "Language-Team: Catalan <wesnoth-ca@lists.ettin.org>\n"
 "Language: ca\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.4.1\n"
 
 #. [campaign]: id=Liberty
 #: data/campaigns/Liberty/_main.cfg:10 data/campaigns/Liberty/_main.cfg:11
@@ -26,10 +28,8 @@ msgstr "Llibertat"
 
 #. [campaign]: id=Liberty
 #: data/campaigns/Liberty/_main.cfg:19
-#, fuzzy
-#| msgid "(Easy)"
 msgid "Easy"
-msgstr "(Fàcil)"
+msgstr "Fàcil"
 
 #. [campaign]: id=Liberty
 #: data/campaigns/Liberty/_main.cfg:19
@@ -38,10 +38,8 @@ msgstr "Camperol"
 
 #. [campaign]: id=Liberty
 #: data/campaigns/Liberty/_main.cfg:20
-#, fuzzy
-#| msgid "(Normal)"
 msgid "Normal"
-msgstr "(Normal)"
+msgstr "Normal"
 
 #. [campaign]: id=Liberty
 #: data/campaigns/Liberty/_main.cfg:20
@@ -50,10 +48,8 @@ msgstr "Proscrit"
 
 #. [campaign]: id=Liberty
 #: data/campaigns/Liberty/_main.cfg:21
-#, fuzzy
-#| msgid "(Difficult)"
 msgid "Difficult"
-msgstr "(Difícil)"
+msgstr "Difícil"
 
 #. [campaign]: id=Liberty
 #: data/campaigns/Liberty/_main.cfg:21
@@ -64,6 +60,12 @@ msgstr "Fugitiu"
 #. "marchlander" is archaic English for an inhabitant of a border region, not to be confused with "marshlander"
 #: data/campaigns/Liberty/_main.cfg:25
 #, fuzzy
+#| msgid ""
+#| "As the shadow of civil war lengthens across Wesnoth, a band of hardy "
+#| "marchlanders revolts against the tyranny of Queen Asheviere. To win their "
+#| "way to freedom, they must defeat not just the trained blades of "
+#| "Wesnothian troops but darker foes including orcs and undead.\n"
+#| "\n"
 msgid ""
 "As the shadow of civil war deepens across Wesnoth, a band of hardy "
 "marchlanders revolts against the governance of the new queen. To win their "
@@ -72,17 +74,18 @@ msgid ""
 "\n"
 msgstr ""
 "Mentre l'ombra de la guerra civil s'allarga sobre Wesnoth, una grup de durs "
-"habitants dels pantans s'alcen contra la tirania de la reina Asheviere. I "
-"per aconseguir la tan difícil llibertat, han de derrotar no sols els soldats "
-"dels exèrcits wesnothians, sinó també enemics més obscurs, com ara els orcs "
-"o els no morts.\n"
+"habitants dels pantans s'alcen contra la tirania de la reina Asheviere. Per "
+"a guanyar-se el dret a la llibertat, han de derrotar no sols les espases "
+"entrenades de les tropes wesnothianes, sinó també enemics més foscos, com "
+"ara orcs o no morts.\n"
 "\n"
-"(Nivell mitjà, 9 escenaris. Traducció completa.)"
 
 #. [campaign]: id=Liberty
 #: data/campaigns/Liberty/_main.cfg:27
+#, fuzzy
+#| msgid "(Novice level, 8 scenarios.)"
 msgid "(Novice level, 7 scenarios.)"
-msgstr ""
+msgstr "(Nivell principiant, 8 escenaris.)"
 
 #. [about]
 #: data/campaigns/Liberty/_main.cfg:30
@@ -170,15 +173,15 @@ msgid "Fal Khag"
 msgstr "Fal Hag"
 
 #. [side]: type=Goblin Pillager, id=Fal Khag
-#. [side]: type=Orcish Warlord, id=Vashna
 #. [side]: type=Orcish Warrior, id=Urk Delek
 #. [side]: type=Saurian Oracle, id=Thhsthss
+#. [side]: type=Orcish Warlord, id=Vashna
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:86
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:106
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:131
 #: data/campaigns/Liberty/scenarios/07_Glory.cfg:119
 msgid "Orcs"
-msgstr ""
+msgstr "Orcs"
 
 #. [objective]: condition=win
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:109
@@ -332,23 +335,27 @@ msgstr ""
 #. He's a bit of a reckless kid as Baldras alludes to, but he's much more polite
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:268
 #, fuzzy
+#| msgid ""
+#| "That goblin leader is heading full-speed straight for Dallben. But we’ll "
+#| "need to chase them all down if we’re going to stop them."
 msgid ""
 "Uncle, we got no time to talk! Them riders are heading full-speed straight "
 "for Dallben. We’ll need to chase them down through those woods — and fast, "
 "or we won’t be able to catch up."
 msgstr ""
-"El cap dels goblins va a tota marxa cap a Dallben. Caldrà que l'acacem si "
-"els volem aturar."
+"Aquell líder goblin es dirigeix a tota velocitat directament a Dallben. Però "
+"necessitarem enxampar-los si volem aturar-los."
 
 #. [message]: speaker=Baldras
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:272
 #, fuzzy
+#| msgid ""
+#| "Do it. Try to hold them back until us old-timers can get there and finish "
+#| "them off."
 msgid ""
 "Do it. Hold them beasts back till us old-timers gets there to finish ‘em off."
 msgstr ""
-"Feu-lo. Intenteu mantenir-los parats fins que els nostres vells ossos ens "
-"puguen dur allà i eliminar-los. Tinc la sensació que si podeu distraure al "
-"capitost, la resta es confondran."
+"Feu-ho. Intenteu contenir-los fins que els més grans hi arribem i hi acabem."
 
 #. [message]: speaker=Baldras
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:276
@@ -462,10 +469,9 @@ msgstr "Jasken"
 #. [message]: speaker=Wolmas
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:464
 #, fuzzy
+#| msgid "What’s happening here? Why are you running like mad, $unit.name|?"
 msgid "What’s happening here? Why be you running like mad, $unit.name|?"
-msgstr ""
-"Què passa? Per què estàs corrent com si s'acabara el mon, $unit."
-"user_description|?"
+msgstr "Què està passant aquí? Per què correu com boig, $unit.name|?"
 
 #. [message]: speaker=unit
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:468
@@ -534,14 +540,14 @@ msgid ""
 "village, just in case..."
 msgstr ""
 
-#. [side]: type=Bandit, id=Baldras
-#. [side]: type=General, id=Lord Maddock
-#. [side]: type=Rogue, id=Hans
 #. [side]: type=Highwayman, id=Baldras
 #. [side]: type=Shadow Lord, id=Helicrom
-#. [side]
 #. [side]: type=Bandit_Peasant, id=Baldras
+#. [side]
+#. [side]: type=Bandit, id=Baldras
 #. [side]: type=Highwayman_Peasant, id=Relana
+#. [side]: type=General, id=Lord Maddock
+#. [side]: type=Rogue, id=Hans
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:44
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:83
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:48
@@ -555,20 +561,20 @@ msgstr ""
 #: data/campaigns/Liberty/scenarios/07_Glory.cfg:46
 #: data/campaigns/Liberty/scenarios/07_Glory.cfg:132
 msgid "Rebels"
-msgstr ""
+msgstr "Rebels"
 
 #. [side]: type=Cavalier, id=Tarwen
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:53
 msgid "Tarwen"
 msgstr "Tarwen"
 
+#. [side]: type=Shock Trooper, id=Linneus
+#. [side]: type=Lieutenant, id=Archarel
+#. [side]: type=Cavalier, id=Tarwen
 #. [side]: type=General, id=Kestrel
 #. [side]: type=Master Bowman, id=Quentin
 #. [side]
-#. [side]: type=Shock Trooper, id=Linneus
-#. [side]: type=Lieutenant, id=Archarel
 #. [side]: type=General, id=Dommel
-#. [side]: type=Cavalier, id=Tarwen
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:60
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:81
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:85
@@ -635,7 +641,7 @@ msgstr ""
 #. [message]: speaker=Tarwen
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:212
 msgid "Guard the gate."
-msgstr "Vigileu la porta!"
+msgstr "Vigileu la porta."
 
 #. [message]: speaker=Harper
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:225
@@ -840,7 +846,7 @@ msgstr ""
 #. [side]: type=Highwayman_Peasant, id=Relana
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:57
 msgid "Relana"
-msgstr ""
+msgstr "Relana"
 
 #. [side]: type=Orcish Warrior, id=Urk Delek
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:86
@@ -859,9 +865,8 @@ msgstr "Derrota ambdós líders enemics"
 
 #. [objective]: condition=lose
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:169
-#, fuzzy
 msgid "Death of Relana"
-msgstr "Mort de Relnan"
+msgstr "Mort de Relana"
 
 #. [message]: speaker=Relana
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:203
@@ -1112,11 +1117,21 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:505
+#, fuzzy
+#| msgid ""
+#| "Baldras and Relana returned to their villages to find them destroyed, "
+#| "with those who fought left dead and the few survivors borne away to "
+#| "unknown fates. It was a bitter doom, and as Wesnoth descended into "
+#| "darkness they would live to see worse."
 msgid ""
 "Baldras and Relana returned to their villages to find them destroyed, with "
 "any survivors borne away to unknown fates. It was a bitter doom, and as "
 "Wesnoth descended into chaos they would live to see worse."
 msgstr ""
+"Baldras i Relana tornaren a llurs pobles per a trobar-los destruïts, amb "
+"aquells que lluitaren morts i els pocs supervivents havent marxat cap a "
+"destinacions desconegudes. Fou una condemna amarga, i, a mesura que Wesnoth "
+"descendí cap a la foscor, les coses no feren més que anar a pitjor."
 
 #. [scenario]: id=04_Unlawful_Orders
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:4
@@ -1338,9 +1353,9 @@ msgstr ""
 msgid "Hold there, soldier! Can we not come to terms without bloodshed?"
 msgstr ""
 
+#. [message]: type=Spearman
 #. [message]: speaker=unit
 #. [message]: speaker=Lord Maddock
-#. [message]: type=Spearman
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:409
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:850
 #: data/campaigns/Liberty/scenarios/06_The_Hunters.cfg:873
@@ -1367,7 +1382,7 @@ msgstr ""
 #. [wml_message]
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:512
 msgid "Could not convert a $stored_changers[$i].type, please report!"
-msgstr ""
+msgstr "No s'ha pogut convertir un $stored_changers[$i].type. Informeu-ne."
 
 #. [message]: speaker=Harper
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:799
@@ -1398,17 +1413,23 @@ msgstr "Qui sou? Què sou?"
 #. [message]: speaker=Kestrel
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:830
 #, fuzzy
+#| msgid ""
+#| "We are accursed. We were once under the command of Prince Eldred, the "
+#| "King’s son and betrayer. The price for our treason is this hellish "
+#| "existence. We know not who or what inflicted this curse upon us, but our "
+#| "mortal deaths may be only the beginning of the penance we are doomed to "
+#| "pay."
 msgid ""
 "We... are accursed. We were the soldiers of Prince Eldred, the King’s son "
 "and betrayer. We know not how... but upon his death, we were warped into "
 "these twisted forms. Now, our mortal bodies pass... into another plane of "
 "hellish existence..."
 msgstr ""
-"Som uns maleïts que vam servir a les ordres del Príncep Eldred, el fill del "
-"Rei i el traïdor. El preu que paguem per la traïció és aquesta existència "
-"infernal. No sabem qui o què ens va infligir aquesta maledicció, però les "
-"nostres morts tal volta només siguen l'inici d'aquest càstig que estem "
-"condemnats a complir."
+"Estem maleïts. Una vegada fórem sota el comandament del príncep Eldred, el "
+"fill traïdor del rei. El preu de la nostra traïció és aquesta existència "
+"infernal. No sabem qui o què ens infligí aquesta maledicció, però les "
+"nostres morts mortals poden ser només el començament de la penitència que "
+"estem condemnats a pagar."
 
 #. [message]: speaker=Lord Maddock
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:841
@@ -1471,11 +1492,19 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:904
+#, fuzzy
+#| msgid ""
+#| "Indeed, Asheviere’s armies had mustered and struck before the nascent "
+#| "rebellion could even be planned. Her power and ruthlessness — and their "
+#| "toll of death — would only grow greater with time."
 msgid ""
 "Asheviere’s armies assembled and struck before the nascent rebellion could "
 "even be planned. Without the necessary forces, Annuvin soon fell under "
 "Weldyn’s absolute control."
 msgstr ""
+"De fet, els exèrcits d'Asheviere s'havien reunit i havien colpejat abans que "
+"la naixent rebel·lió es pogués planejar. El seu poder i la seva crueltat, i "
+"llur impost de mort, només augmentarien amb el temps."
 
 #. [scenario]: id=05_Hide_and_Seek
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:6
@@ -1519,14 +1548,17 @@ msgstr "Hans"
 #. [objective]: condition=win
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:151
 #, fuzzy
+#| msgid "The Grey Woods"
 msgid "Enter the Grey Woods"
-msgstr "El Bosc Terrós"
+msgstr "Els Boscos Grisos"
 
 #. [note]
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:164
 msgid ""
 "Remember that in fog, units always see one hex further than they can move."
 msgstr ""
+"Recordeu que dins la boira, les unitats sempre veuen una casella més del que "
+"poden moure."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:345
@@ -1611,16 +1643,22 @@ msgstr ""
 #. [message]: speaker=Link
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:454
 #, fuzzy
+#| msgid ""
+#| "Well, good thing I found you first. Now hurry, you must make it past the "
+#| "city into the Grey Woods. There is a small path in the southeast that "
+#| "leads into the forest; look for the signpost. My brother Hans is waiting "
+#| "for you there and will take you to our master. Try to avoid the soldiers "
+#| "if you can."
 msgid ""
 "Very likely. Now hurry, you must make it past the city into the Grey Woods. "
 "There is a small path in the southeast that leads into the forest — look for "
 "the signpost. My brother Hans will guide you from there. Avoid the soldiers "
 "if you can."
 msgstr ""
-"Bo, està bé que jo us haja trobat abans. Ara apressureu-vos, haveu de creuar "
-"la ciutat fins arribar al Bosc Terrós. Hi ha una xicoteta senda al sud-est "
-"que vos portarà al bosc, busqueu el senyal.El meu germà està esperant-vos "
-"allà per poder dur-vos al nostre cap. Intenteu evitar els soldats, si podeu."
+"Bé, sort que us he trobat primer. Ara afanyeu-vos, heu de passar la ciutat i "
+"arribar als Boscos Grisos. Hi ha un corriol al sud-est que porta al bosc; "
+"cerqueu-ne el senyal. El meu germà Hans us hi estarà esperant i us portarà "
+"al nostre mestre. Mireu d'evitar els soldats si podeu."
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:492
@@ -1661,9 +1699,8 @@ msgstr "Qui va?"
 
 #. [message]: speaker=Harper
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:571
-#, fuzzy
 msgid "They’ve seen us! <i>Run</i>!"
-msgstr "Ens han vist, CORREU!"
+msgstr "Ens han vist! <i>Correu</i>!"
 
 #. [message]: speaker=Baldras
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:588
@@ -1675,9 +1712,10 @@ msgstr "Retireu-vos, ràpid! Potser encara els podrem perdre!"
 #. [message]: speaker=unit
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:604
 #, fuzzy
+#| msgid "Fly, and we may yet evade them in the Grey Woods."
 msgid ""
 "This way, into the forest! We’ll be able to lose them in the Grey Woods."
-msgstr "Voleu, i tal volta els puguem despistar al Bosc Terrós."
+msgstr "Voleu i encara podríem evadir-los als Boscos Grisos."
 
 #. [message]: speaker=Hans
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:629
@@ -1689,8 +1727,8 @@ msgid ""
 "You can come if you wish, but we are mostly interested in speaking to "
 "Baldras."
 msgstr ""
-"Pots vindre si vols, però el capitost només està interessat en entrevistar-"
-"se amb Baldras"
+"Podeu venir si ho desitgeu, però el líder només està interessat en parlar "
+"amb Baldras."
 
 #. [message]: speaker=Baldras
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:649
@@ -1704,9 +1742,9 @@ msgid ""
 "infiltrating a heavily guarded city relyin’ on nothing but the cover of "
 "darkness and my wits."
 msgstr ""
-"No havia corregut tant des de feia temps. Si m'hagueres demanat que "
-"m'infiltrara en una ciutat fortament vigilada confiant només en el meu valor "
-"i la foscor de la nit, t'haguera dit que estaves com una gàbia!"
+"No havia corregut tant des de feia anys. Si em demanessis que m'infiltrés en "
+"una ciutat fortament vigilada confiant en res més que les meves agalles i la "
+"protecció de la foscor, diria que esteu com una gàbia."
 
 #. [message]: speaker=Harper
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:654
@@ -1727,9 +1765,8 @@ msgstr ""
 
 #. [message]: speaker=Baldras
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:669
-#, fuzzy
 msgid "Lead the way."
-msgstr "Dirigeix-nos..."
+msgstr "Mostreu-nos el camí."
 
 #. [message]: speaker=Baldras
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:693
@@ -2141,15 +2178,9 @@ msgstr ""
 
 #. [message]: speaker=Archarel
 #: data/campaigns/Liberty/scenarios/06_The_Hunters.cfg:1041
-#, fuzzy
-#| msgid ""
-#| "Troops, to arms! These peasant scum think they are above the law. We will "
-#| "show them the law!"
 msgid ""
 "Troops, to arms! Show these fugitive scum the meaning of the Queen’s law!"
 msgstr ""
-"Soldats, a les armes! Aquestos camperolets es creuen per damunt de la llei.  "
-"Ara sabran quina és la bona llei!"
 
 #. [message]: speaker=Helicrom
 #: data/campaigns/Liberty/scenarios/06_The_Hunters.cfg:1045
@@ -2519,12 +2550,15 @@ msgstr ""
 #. [message]: speaker=Baldras
 #: data/campaigns/Liberty/scenarios/07_Glory.cfg:410
 #, fuzzy
+#| msgid ""
+#| "Baldras, Gwydion is Lord Maddock’s son. This battle isn’t just about "
+#| "Annuvin anymore."
 msgid ""
 "Gwydion be Lord Maddock’s son... more be hinging on victory than I thoughts. "
 "This battle don’t just be about our little villages no more."
 msgstr ""
-"Baldras, Gwydion és el fill del Senyor Maddock. Esta batalla ja no és sols "
-"per Annuvin."
+"Baldras, Gwydion és el fill de Lord Maddock. Aquesta batalla ja no és només "
+"sobre Annuvin."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Liberty/scenarios/07_Glory.cfg:447
@@ -2554,16 +2588,15 @@ msgstr ""
 
 #. [message]: speaker=Dommel
 #: data/campaigns/Liberty/scenarios/07_Glory.cfg:538
-#, fuzzy
 msgid "They have breached the fortress gate! Repulse them!"
-msgstr "Han penetrat per la porta! Rebutjeu-los!"
+msgstr "Han penetrat per la porta de la fortalesa! Repel·liu-los!"
 
 #. [message]: speaker=unit
 #: data/campaigns/Liberty/scenarios/07_Glory.cfg:560
 #, fuzzy
 #| msgid "I’m inside the tower! I’m going down to the catacombs — cover me."
 msgid "I’m inside! I’m heading down to the catacombs."
-msgstr "Estic dins de la torre! Ara baixe cap a les catacumbes - cobriu-me!"
+msgstr "Soc dins la torre! Baixaré a les catacumbes: cobriu-me."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Liberty/scenarios/07_Glory.cfg:578
@@ -2590,22 +2623,28 @@ msgstr "No podem quedar-nos ací dins. S'està caient a trossos!"
 #. [message]: speaker=Baldras
 #: data/campaigns/Liberty/scenarios/07_Glory.cfg:666
 #, fuzzy
+#| msgid "I think it’s working! Everybody get clear <i>now</i>!"
 msgid "I think it be working! Everybody get clear!"
-msgstr "Crec que funciona! Tot el món fora ARA!"
+msgstr "Crec que està funcionant! Tothom fora d'aquí <i>ja</i>!"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Liberty/scenarios/07_Glory.cfg:707
 #, fuzzy
+#| msgid ""
+#| "With a thunderous roar and a vast billowing of dust, thousands of tons of "
+#| "stone and wood crashed in on itself. Some of it tumbled down the steep "
+#| "sides, while the remainder came to rest several hundred feet below "
+#| "ground, in the bowels of the hollowed-out mountain."
 msgid ""
 "With a thunderous roar and a vast billowing of dust, thousands of tons of "
 "stone and wood crashed in on itself. Some of the wreckage tumbled down the "
 "steep sides, while the remainder came to rest several hundred feet below "
 "ground, in the bowels of the hollowed-out mountain."
 msgstr ""
-"Amb un soroll semblant al d'un tro i una onada de pols, milers de tones de "
-"pedra i fusta van caure a terra. Algunes restes van caure per les vessants, "
-"però la major part van quedar dins les entranyes de l'osca muntanya, molts "
-"centenars de peus per damunt dels camps del voltant."
+"Amb un rugit tronador i una vasta onada de pols, milers de tones de pedra i "
+"fusta s'esfondraren sobre si mateixes. Algunes caigueren pels costats "
+"empinats, mentre que la resta anaren a parar uns centenars de metres sota "
+"terra, a les entranyes de la muntanya buidada."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Liberty/scenarios/07_Glory.cfg:715
@@ -2618,15 +2657,15 @@ msgstr "No pot haver sobreviscut cap dels qui estaven dins."
 #| msgid ""
 #| "After more than a week of fierce fighting, the main body of Asheviere’s "
 #| "host arrived from Weldyn. The battle was soon finished. Every last man "
-#| "from the province of Annuvin was executed."
+#| "from the Province of Annuvin was executed."
 msgid ""
 "After several days of fierce fighting, the main body of Weldyn’s host "
 "arrived. The battle was soon finished. Every last man from the rebellion was "
 "executed."
 msgstr ""
-"Després d'una setmana de ferotge lluita, els principals regiments de les "
-"hostes d'Asheviere van arribar des de Weldyn. La batalla va acabar prompte. "
-"Tots els hòmens de la provincia d'Annunvin van ser executats."
+"Després de més d'una setmana de ferotge lluita, els principals regiments de "
+"l'exèrcit d'Asheviere arribaren des de Weldyn. La batalla acabà aviat. "
+"Executaren fins al darrer home de la Província d'Annuvin."
 
 #. [message]: speaker=Baldras
 #: data/campaigns/Liberty/scenarios/07_Glory.cfg:829
@@ -2649,10 +2688,18 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/Liberty/scenarios/07_Glory.cfg:845
+#, fuzzy
+#| msgid ""
+#| "The rebellion had staked its all on victory at Halstead, but win or lose, "
+#| "there would be no help for the villagers, ground beneath the wheels of "
+#| "Asheviere’s wrath."
 msgid ""
 "The rebellion had staked its all on victory at Halstead, but win or lose, "
 "there would be no help for the doomed villagers."
 msgstr ""
+"La rebel·lió s'ho jugà tot a la victòria a Halstead, però, guanyant o "
+"perdent, no hi hauria ajut per als vilatans, aniquilats sota les rodes de la "
+"fúria d'Asheviere."
 
 #. [message]: speaker=Harper
 #: data/campaigns/Liberty/scenarios/07_Glory.cfg:864
@@ -2678,7 +2725,7 @@ msgstr ""
 #, fuzzy
 #| msgid "Your reign of terror is over, General."
 msgid "Your time is over, General."
-msgstr "Arriba la fi del teu regne de terror, General!"
+msgstr "El vostre regnat de terror s'acaba, General."
 
 #. [message]: speaker=Dommel
 #: data/campaigns/Liberty/scenarios/07_Glory.cfg:936
@@ -2839,7 +2886,6 @@ msgstr "Escuder de la Mort"
 
 #. [unit_type]: id=Death Squire, race=undead
 #: data/campaigns/Liberty/units/Death_Squire.cfg:26
-#, fuzzy
 msgid ""
 "Sometimes the mightiest warriors and generals, cursed with hate and angst, "
 "came back to this world as Death Knights. Death Squires serve them whilst "
@@ -2848,10 +2894,10 @@ msgid ""
 "underlings."
 msgstr ""
 "A vegades, els guerrers i els generals més poderosos, maleïts amb odi i "
-"angoixa tornen al món com Cavallers de la Mort. Els Escuders de la Mort els "
-"serven mentre acumulen prou poder obscur per a convertir-se en Cavallers."
-"Mentrestant, aprenen molts dels poders d'un Cavaller, incloent-hi "
-"l'habilitat de dirigir criatures subordinades."
+"angoixa, tornen a aquest món com a Cavallers de la Mort. Els Escuders de la "
+"Mort els serveixen mentre acumulen prou poder obscur per a convertir-se en "
+"Cavallers Foscos. Mentrestant, aprenen molts dels poders d'un Cavaller, "
+"incloent-hi l'habilitat de dirigir subordinats."
 
 #. [unit_type]: id=Rogue Mage, race=human
 #: data/campaigns/Liberty/units/Rogue_Mage.cfg:5
@@ -2860,14 +2906,6 @@ msgstr "Mag rebel"
 
 #. [unit_type]: id=Rogue Mage, race=human
 #: data/campaigns/Liberty/units/Rogue_Mage.cfg:17
-#, fuzzy
-#| msgid ""
-#| "Some mages are thrown out of the mage’s guild for attempting to practice "
-#| "forbidden arts. Now completely outside the law, these rogue mages do "
-#| "whatever necessary to support their study of black magic. Although not as "
-#| "skilled as mages with more formal training, their magic can be quite "
-#| "lethal, while their banditry has resulted in moderate skill with the "
-#| "short sword."
 msgid ""
 "Some mages are thrown out of the mages’ guild for attempting to practice "
 "forbidden arts. Now completely outside the law, these rogue mages do "
@@ -2875,12 +2913,12 @@ msgid ""
 "skilled as mages with more formal training, their magic can be quite lethal, "
 "while their banditry has resulted in moderate skill with the short sword."
 msgstr ""
-"Aquestos mags van ser expulsats del gremi de mags per intentar practicar "
-"arts prohibides; en conseqüència, ara es troben fora de la llei i fan "
-"qualsevol cosa que siga necessària per ajudar les seues possibilitats "
-"d'estudiar màgia obscura. Encara que no són tan destres com els mags amb un "
-"entrenament formal més vigorós, poden ser prou letals, mentre que el seu "
-"bandolerisme els ha fet mitjanament hàbils amb l'espasa curta."
+"Alguns mags són expulsats del gremi de mags per intentar practicar arts "
+"prohibides. Ara es troben totalment fora de la llei i fan qualsevol cosa que "
+"sigui necessària per a progressar en l'estudi de la màgia negra. Tot i que "
+"no són tan destres com els mags amb més entrenament formal, llur màgia pot "
+"ser prou letal, mentre que llur bandolerisme els ha fet mitjanament hàbils "
+"amb l'espasa curta."
 
 #. [attack]: type=cold
 #: data/campaigns/Liberty/units/Rogue_Mage.cfg:34
@@ -2967,9 +3005,8 @@ msgstr ""
 
 #. [unit_type]: id=Thug_Peasant
 #: data/campaigns/Liberty/units/Villagers.cfg:20
-#, fuzzy
 msgid "Villager"
-msgstr "Magistrat del poblet"
+msgstr "Vilatà"
 
 #. [unit_type]: id=Thug_Peasant
 #: data/campaigns/Liberty/units/Villagers.cfg:23
@@ -3015,9 +3052,8 @@ msgstr ""
 
 #. [female]
 #: data/campaigns/Liberty/units/Villagers.cfg:59
-#, fuzzy
 msgid "female^Senior Village Elder"
-msgstr "Magistrat Sènior"
+msgstr "female^Ancià de poble sènior"
 
 #. [unit_type]: id=Footpad_Peasant
 #: data/campaigns/Liberty/units/Villagers.cfg:92
@@ -3037,7 +3073,7 @@ msgstr ""
 #. [female]
 #: data/campaigns/Liberty/units/Villagers.cfg:102
 msgid "female^Peasant Youth"
-msgstr "Jove camperola"
+msgstr "female^Jove camperola"
 
 #. [unit_type]: id=Outlaw_Peasant
 #: data/campaigns/Liberty/units/Villagers.cfg:116
@@ -3057,7 +3093,7 @@ msgstr ""
 #. [female]
 #: data/campaigns/Liberty/units/Villagers.cfg:123
 msgid "female^Watchwoman"
-msgstr "Vigilant"
+msgstr "female^Vigilant"
 
 #. [unit_type]: id=Fugitive_Peasant
 #: data/campaigns/Liberty/units/Villagers.cfg:137
@@ -3072,11 +3108,15 @@ msgid ""
 "native toughness and knowledge of local conditions make them formidable on "
 "their home ground."
 msgstr ""
+"Els pobles fronterers tenen milícies dedicades a mantenir a ratlla les "
+"hostilitats. Mentre que aquests vigilants no són entrenats i armats seguint "
+"els estàndards militars, llur duresa nadiua i coneixement de les condicions "
+"locals els fan formidables a llur terra natal."
 
 #. [female]
 #: data/campaigns/Liberty/units/Villagers.cfg:144
 msgid "female^Borderer"
-msgstr "Fronterera"
+msgstr "female^Fronterera"
 
 #. [unit_type]: id=Poacher_Peasant
 #: data/campaigns/Liberty/units/Villagers.cfg:163
@@ -3118,19 +3158,15 @@ msgstr "Furtiu"
 
 #. [unit_type]: id=Huntsman_Peasant
 #: data/campaigns/Liberty/units/Villagers.cfg:201
-#, fuzzy
-#| msgid ""
-#| "Huntsmen have spent their lives in the backwoods and swamps of their "
-#| "wilderness homes. They can bullseye wamprats and track anything that "
-#| "moves in their territory."
 msgid ""
 "Huntsmen have spent their lives in the backwoods and swamps of their "
 "wilderness homes. They can bullseye ferocious swamp rats and track anything "
 "that moves in their territory."
 msgstr ""
-"Els furtius han passat tota la seua vida dins les profunditats dels boscos i "
-"les marjals. Poden encertar qualsevol bestiola a molts passos de distància "
-"amb el seu arc i rastrejar qualsevol cosa que es moga."
+"Els caçadors furtius s'han passat tota la vida dins les profunditats dels "
+"boscos i els pantans de llurs terres natals salvatges. Poden encertar rates "
+"feroces i seguir les petjades de qualsevol cosa que es mogui en llur "
+"territori."
 
 #. [message]: speaker=Baldras
 #: data/campaigns/Liberty/utils/utils.cfg:19
@@ -3152,55 +3188,84 @@ msgstr "Cóm pot ser? Hem perdut."
 #~ msgid "Prose-doctoring and preparation for mainline"
 #~ msgstr "Revisió textual i preparacions oficials"
 
-#, fuzzy
-#~| msgid ""
-#~| "In the Era of Turmoil, during the reign of King Garard II, the border "
-#~| "towns of Delwyn and Dallben in the province of Annuvin grew increasingly "
-#~| "dissatisfied with the King’s rule. Being preoccupied with the great "
-#~| "wars, the King was unable to send adequate forces to protect the "
-#~| "frontier."
 #~ msgid ""
 #~ "In the Era of Turmoil, during the reign of King Garard II, the border "
 #~ "towns of Delwyn and Dallben in the Province of Annuvin grew increasingly "
 #~ "dissatisfied with the King’s rule. Being preoccupied with the great wars, "
 #~ "the King was unable to send adequate forces to protect the frontier."
 #~ msgstr ""
-#~ "Fa molts anys, en l'Era dels Conflictes, durant el regne del rei Garard "
-#~ "II va créixer paulatinament el malcontent produït pel govern del Rei a "
-#~ "les ciutats frontereres Delwyn i Dallben, en la província d'Annuvin. "
-#~ "Ocupat en grans guerres, es va mostrar incapaç de manar les tropes "
-#~ "adequades per a la tasca de guarir les fronteres."
+#~ "A l'Era dels Conflictes, durant el regnat del rei Garard II, creixia cada "
+#~ "cop més el malcontent produït pel govern del Rei a les ciutats "
+#~ "frontereres de Delwyn i Dallben, a la província d'Annuvin. Preocupat per "
+#~ "les grans guerres, el Rei era incapaç d'enviar forces adequades per a la "
+#~ "protegir la frontera."
 
-#, fuzzy
+#~ msgid ""
+#~ "The hardy people of these marches learned self-reliance and survival "
+#~ "skills against the raiding orc hordes and savage saurians. They "
+#~ "established their own trading routes and pacts of mutual defense."
+#~ msgstr ""
+#~ "En conseqüència, aquestos durs habitants dels pantans van aprendre a "
+#~ "sobreviure pel seu compte front a les hordes d'orcs i els indòmits "
+#~ "saquejadors sauris. Ells mateixos van establir les seues rutes comercials "
+#~ "i pactes de defensa mútua."
+
+#~ msgid ""
+#~ "Although not permitted to train with proper military weapons, these "
+#~ "woodsmen were at home in the forests and swamps of the Western Marches, "
+#~ "and became very effective with their simple slings and clubs."
+#~ msgstr ""
+#~ "Encara que mancaven del vistiplau reial per a entrenar-se amb les armes "
+#~ "militars usuals, estos camperols es trobaven com a casa entre els boscos "
+#~ "i les marjals de sa pàtria i eren molt efectius fins i tot amb les seues "
+#~ "rudimentàries fones i garrots."
+
+#~ msgid ""
+#~ "After the betrayal of the King by Queen Asheviere, the new regent of "
+#~ "Wesnoth sought to consolidate her ill-gotten power. She sent her armies "
+#~ "across Wesnoth to intimidate the provincial rulers and secure her "
+#~ "continued reign."
+#~ msgstr ""
+#~ "Després de la traïció de la reina Asheviere, la nova regent de Wesnoth va "
+#~ "intentar consolidar les seues desmesurades ambicions enviant exèrcits per "
+#~ "tot Wesnoth per tal d'intimidar els governadors provincials i assegurar-"
+#~ "se'n un llarg regnat."
+
+#~ msgid ""
+#~ "The people of Annuvin were unwilling to relinquish their hard-earned self-"
+#~ "rule, especially not to this pretender..."
+#~ msgstr ""
+#~ "Els Annuvins no eren partidaris de deixar de banda una independència "
+#~ "guanyada amb la sang de molts sacrificis, especialment no amb aquesta "
+#~ "pretendent..."
+
 #~ msgid ""
 #~ "I long to burn human cities, but until our great chieftains provide us "
 #~ "with sufficient forces we must look to these villagers to feed our wolves "
 #~ "and slake the thirst of our blades."
 #~ msgstr ""
-#~ "Desitge cremar ciutats humanes, però mentre els nostres grans cabdills no "
-#~ "ens manen prou tropes, hem de considerar eixos estúpids humans com si "
-#~ "foren menjar de llops i aigua per a les nostres espases sedejants."
+#~ "Desitjo cremar ciutats humanes, però fins que els nostres grans cabdills "
+#~ "no ens enviïn prou forces, aquests vilatans hauran d'alimentar els "
+#~ "nostres llops i saciar la set de les nostres espases."
 
 #~ msgid ""
 #~ "We must stop them before they reach the village. Damn the crown, they "
 #~ "have long since forgotten about us out here."
 #~ msgstr ""
-#~ "Hem d'aturar-los abans que arriben al poblet. Maleïda siga la Corona, "
-#~ "s'han oblidat de nosaltres des de fa massa temps"
+#~ "Hem d'aturar-los abans que arribin al poble. Maleïda sigui la Corona, fa "
+#~ "molt de temps que s'han oblidat de nosaltres."
 
-#, fuzzy
 #~ msgid ""
 #~ "And Harper... don’t get yourself killed. I’m responsible for you now that "
 #~ "your father is gone, and I won’t dishonor his memory by breaking my "
 #~ "promise to keep you safe."
 #~ msgstr ""
-#~ "Ah, Harper... que no et maten. Ara que el teu pare és mort, jo sóc el "
-#~ "responsable de la teua seguretat i no pense deshonrar la seua memòria "
-#~ "trencant la promesa que li vaig fer."
+#~ "I Harper... que no et matin. Ara que el vostre pare és mort, soc "
+#~ "responsable de vós i no penso deshonrar la seva memòria trencant la "
+#~ "promesa de mantenir-te estalvi."
 
-#, fuzzy
 #~ msgid "... I know... All right now, let’s stop these goblins!"
-#~ msgstr "...Val... Au, a matxacar goblins!"
+#~ msgstr "... Ho sé... D'acord, aturem aquests goblins!"
 
 #~ msgid ""
 #~ "We are barely able to survive these orc raids. We lost two men last week, "
@@ -3209,13 +3274,12 @@ msgstr "Cóm pot ser? Hem perdut."
 #~ "Gairebé no podem resistir estes ràtzies dels orcs! Vam perdre dos hòmens "
 #~ "la setmana passada, uns quants més avui... però Weldyn no fa res!"
 
-#, fuzzy
 #~ msgid ""
 #~ "We are barely able to survive these orc raids. We lost two men last week, "
 #~ "more could have died today... yet Weldyn does nothing!"
 #~ msgstr ""
-#~ "Gairebé no podem resistir estes ràtzies dels orcs! Vam perdre dos hòmens "
-#~ "la setmana passada, uns quants més avui... però Weldyn no fa res!"
+#~ "Gairebé no podem sobreviure a aquests atacs orcs. Perdérem dos homes la "
+#~ "setmana passada, més podríem haver mort avui... i Weldyn no fa res!"
 
 #~ msgid ""
 #~ "The King stopped sending patrols out here once the war started. Once that "
@@ -3232,15 +3296,14 @@ msgstr "Cóm pot ser? Hem perdut."
 #~ "La bandera ondejarà sobre una ciutat fantasma si no ens arriba prompte "
 #~ "ajuda abans."
 
-#, fuzzy
 #~ msgid ""
 #~ "They’ll come out when they see those riders, or us, approaching, but "
 #~ "there aren’t many of them... I wouldn’t count on them being able to "
 #~ "protect the village alone for long."
 #~ msgstr ""
-#~ "Eixiran quan vegen eixos genets, o a nosaltres quan estiguem arribant, "
-#~ "però no en son molts... Jo no pensaria que siguen capaços de protegir "
-#~ "l'aldea molta estona a soles."
+#~ "Sortiran quan vegin aquells genets, o a nosaltres, apropar-nos-hi, però "
+#~ "no són gaires... Jo no comptaria que puguin protegir el poble tots sols "
+#~ "durant gaire temps."
 
 #~ msgid ""
 #~ "Goblin riders on the hunt. We must not let any of them to the village!"
@@ -3250,37 +3313,39 @@ msgstr "Cóm pot ser? Hem perdut."
 #~ msgid "Halt!"
 #~ msgstr "No passaran!"
 
-#, fuzzy
-#~| msgid "Garard is the King of Wesnoth. We are ruled by no queen."
-#~ msgid "Besides, Garard is the King of Wesnoth. We are ruled by no queen."
+#~ msgid ""
+#~ "None remarked on the passing of the tiny, isolated frontier town. It was "
+#~ "but a harbinger of the evil to come under the tyranny of Asheviere."
+#~ msgstr ""
+#~ "Ningú no s'adonà del final de la ciutat fronterera diminuta i aïllada. No "
+#~ "fou més que un presagi del mal que vindria sota la tirania d'Asheviere."
+
+#~ msgid "Asheviere"
+#~ msgstr "Asheviere"
+
+#~ msgid "Garard is the King of Wesnoth. We are ruled by no queen."
 #~ msgstr "Garard és el Rei de Wesnoth. No ens governa cap Reina."
 
-#, fuzzy
-#~| msgid ""
-#~| "Insolent peasants, you will kneel before your betters! Asheviere is the "
-#~| "queen of Wesnoth. The King fell three weeks ago at Abez. I shall not "
-#~| "bandy words with you. Your magistrate will be coming with us, and we do "
-#~| "not care if it is dead or alive."
 #~ msgid ""
 #~ "Insolent peasants, you will kneel before your betters! Asheviere is the "
 #~ "Queen of Wesnoth. The King fell three weeks ago at Abez. I shall not "
 #~ "bandy words with you. Your magistrate will be coming with us, and we do "
 #~ "not care if it is dead or alive."
 #~ msgstr ""
-#~ "Sou uns imbècils, camperolets. Asheviere és la Reina de Wesnoth. El Rei "
-#~ "va caure farà tres setmanes a Abez. Ja he acabat de parlar. El vostre "
-#~ "magistrat vindrà en nosaltres, i a nosaltres ens dona igual si és viu o "
-#~ "mort."
+#~ "Camperols insolents, us agenollareu davant els superiors! Asheviere és la "
+#~ "Reina de Wesnoth. El Rei caigué fa tres setmanes a Abez. No intercanviaré "
+#~ "paraules amb vós. El vostre magistrat vindrà amb nosaltres i no ens "
+#~ "importa si és mort o viu."
 
 #~ msgid "Harper, get out of here. This is no battle for you."
-#~ msgstr "Harper, fora! Ja veig com acabarà açò i no és una batalla per tu!"
+#~ msgstr "Harper, surtiu d'aquí. Aquesta batalla no és per a vós."
 
-#, fuzzy
 #~ msgid ""
 #~ "I am the magistrate of Dallben, and it is <i>you</i> who will be leaving "
 #~ "Dallben, be it dead or alive."
 #~ msgstr ""
-#~ "Jo soc el magistrat de Dallben, i eres TU qui eixirà d'ací, viu o mort."
+#~ "Jo soc el magistrat de Dallben, i sou <i>vós</i> qui marxareu de Dallben, "
+#~ "sigui mort o viu."
 
 #~ msgid ""
 #~ "Our lives were hard enough when we were beneath the attention of the "
@@ -3318,42 +3383,61 @@ msgstr "Cóm pot ser? Hem perdut."
 #~ "Oh, no! We have run out of time, they have arrived with reinforcements..."
 #~ msgstr "Oh, no! Se'ns ha acabat el temps, arriben els reforços..."
 
-#, fuzzy
+#~ msgid ""
+#~ "They would be remembered only as traitors rightly put down by the Queen’s "
+#~ "lances. And in the dark years to come, woe betide any who questioned it."
+#~ msgstr ""
+#~ "Hom els recordaria només com a traïdors abatuts per la raó de les llances "
+#~ "de la Reina. I, en els anys foscos que vindran, ai d'aquell que ho "
+#~ "qüestioni."
+
+#~ msgid ""
+#~ "Fearing that the Queen’s army would return in force in the wake of its "
+#~ "fallen patrol, Baldras and his men fled Dallben. They tracked to Delwyn "
+#~ "and sent ahead for the magistrate, Relana, to meet them in a secluded "
+#~ "strath in the swamps."
+#~ msgstr ""
+#~ "Tement que l'exèrcit de la Reina tornaria amb força com a resultes de la "
+#~ "patrulla caiguda, Baldras i els seus homes fugiren de Dallben. Seguiren "
+#~ "cap a Delwyn i enviaren algú a cercar la magistrada, Relana, perquè s'hi "
+#~ "trobés en una vall aïllada als pantans."
+
+#~ msgid ""
+#~ "As morning dawned over the day after next, they found Relana already "
+#~ "waiting for them."
+#~ msgstr ""
+#~ "Quan el sol començava a sortir dos dies més tard, trobaren Relana "
+#~ "esperant-los-hi."
+
+#~ msgid "Evil"
+#~ msgstr "Malvats"
+
 #~ msgid ""
 #~ "Relana, thank you for welcoming our messenger and agreeing to meet with "
 #~ "us. In your many years as Delwyn’s magistrate I have never known your "
 #~ "judgment to err."
 #~ msgstr ""
-#~ "Relnan, gràcies per rebre el nostre missatger i acordar aquest encontre. "
-#~ "En tots els teus anys com a magistrat de Delwyn, mai he sentit que el teu "
-#~ "judici haja errat."
+#~ "Relana, gràcies per rebre el nostre missatger i acceptar aquest encontre. "
+#~ "En tots els vostres anys com a magistrada de Delwyn, mai he tingut "
+#~ "constància que el vostre judici hagi errat."
 
-#, fuzzy
-#~| msgid ""
-#~| "It has been a long time, old friend. Your news worries us. Yet, there is "
-#~| "no problem we have not worked out here at our secret meeting place."
 #~ msgid ""
 #~ "It has been a long time, old friend. Your news worries us. Yet, there is "
 #~ "no problem we have not worked out together."
 #~ msgstr ""
-#~ "Quant de temps, vell amic! Les teues noves ens amoïnen. Tanmateix, no hi "
-#~ "ha cap problema que no hagem pogut solucionar ací a aquest lloc secret."
+#~ "Ha passat molt de temps, vell amic. Les vostres noves ens amoïnen. "
+#~ "Tanmateix, no hi ha cap problema que no hàgim pogut solucionar plegats."
 
-#, fuzzy
-#~| msgid ""
-#~| "You do not understand. We attacked a Wesnoth army patrol. Not only that, "
-#~| "the leader was no man I had ever seen in Annuvin province before. Never "
-#~| "has one been sent out here as a patrol captain who was so ruthless and "
-#~| "cruel."
 #~ msgid ""
 #~ "You do not understand. We attacked a Wesnoth army patrol. Not only that, "
 #~ "the leader was no man I had ever seen in Annuvin Province before. Never "
 #~ "has one been sent out here as a patrol captain who was so ruthless and "
 #~ "cruel."
 #~ msgstr ""
-#~ "No ho entens? Hem atacat una patrulla de Wesnoth. A més a més, el capità "
-#~ "era un home que no mai havia vist a Annuvin. Mai ha sigut enviat com a "
-#~ "cap de patrulla un home tan cruel i sanguinari."
+#~ "No ho enteneu. Hem atacat una patrulla de l'exèrcit de Wesnoth. A més a "
+#~ "més, el capità era un home que no havia vist mai a la Província "
+#~ "d'Annuvin. Mai no havien enviat aquí un capità de patrulla tan despietat "
+#~ "i cruel."
 
 #~ msgid ""
 #~ "Had they taken my uncle, they would have surely shown up in Delwyn today "
@@ -3363,13 +3447,12 @@ msgstr "Cóm pot ser? Hem perdut."
 #~ "per Delwyn amb el mateix ultimàtum. No hem d'oblidar que van escapar "
 #~ "alguns genets."
 
-#, fuzzy
 #~ msgid ""
 #~ "Well, it won’t be long until they report back to the local garrison with "
 #~ "the details of your encounter."
 #~ msgstr ""
-#~ "Genial, no deu faltar molt per a que puguen informar a la guarnició local "
-#~ "dels detalls de la lluita."
+#~ "Bé, no trigaran a informar la guarnició local dels detalls del vostre "
+#~ "encontre."
 
 #~ msgid ""
 #~ "An offense to decency, this is! Since when has Wesnoth been ruled by fear "
@@ -3381,37 +3464,31 @@ msgstr "Cóm pot ser? Hem perdut."
 #~ "Maddock de Elensefar. Des de sempre hem sabut que era noble tant de "
 #~ "paraula com de fets."
 
-#, fuzzy
 #~ msgid ""
 #~ "I agree. But, Baldras, what will you tell him? We know something has been "
 #~ "going badly wrong in Wesnoth of late, that more than ordinary corruption "
 #~ "and incompetence is afoot. But when the effects fall on mere peasants, "
 #~ "the wrong of it may not seem so obvious from a noble’s chair."
 #~ msgstr ""
-#~ "Estic d'acord. Però, Baldras, què penses contar-li? Sabem que últimament "
-#~ "alguna cosa funciona molt mal en Wesnoth, a més de l'habitual "
-#~ "incompetència i corrupció, tan esteses. Tanmateix, quan els efectes "
-#~ "recauen sobre simples camperols, el mal pot no parèixer tan obvi des "
-#~ "d'una cadira d'un noble."
+#~ "Hi estic d'acord. Però, Baldras, què li direu? Sabem que últimament "
+#~ "alguna cosa ha estat funcionant molt malament a Wesnoth, que hi ha una "
+#~ "corrupció i una incompetència superiors a les ordinàries. Però quan els "
+#~ "efectes recauen en mers camperols, el mal pot no semblar tan obvi des de "
+#~ "la cadira d'un noble."
 
-#, fuzzy
 #~ msgid ""
 #~ "We need evidence. Hard evidence... but wait— Are those orcish war drums I "
 #~ "hear?"
 #~ msgstr ""
-#~ "Necessitem probes, probes de debò... però espera, això són tambors de "
-#~ "guerra orcs?"
+#~ "Necessitem proves. Proves irrefutables... però espereu, són tambors de "
+#~ "guerra orcs allò que sento?"
 
-#, fuzzy
-#~| msgid ""
-#~| "I think they are, old friend. And that rank smell on the wind tells "
-#~| "another tale; saurians approach. To arms!"
 #~ msgid ""
 #~ "I think they are, old friend. And that rank smell on the wind tells "
 #~ "another tale: saurians approach. To arms!"
 #~ msgstr ""
-#~ "Sí, jo també els sent, vell amic. I eixe olor que es respira també ens "
-#~ "conta una altra història, s'aproximen els sauris. A les armes!"
+#~ "Això crec, vell amic. I aquest olor ranci a l'aire explica una altra "
+#~ "història: s'acosten sauris. A les armes!"
 
 #~ msgid ""
 #~ "By the sound of the wolves, the scent trail of Fal Khag’s killers ends "
@@ -3421,43 +3498,37 @@ msgstr "Cóm pot ser? Hem perdut."
 #~ msgid "You will get gold. And our wolves will get meat."
 #~ msgstr "Tindreu l'or. I els nostres llops, carn."
 
-#, fuzzy
 #~ msgid ""
 #~ "Can the darkest rumors be true, then? Does the Kingdom— Does Queen "
 #~ "Asheviere... send orcs against her own people?"
 #~ msgstr ""
-#~ "Pot ser que els més malvats rumors siguen certs? Es que el regne... Es "
-#~ "que la reina Asheviere... mana orcs contra la seua pròpia gent?"
+#~ "Poden ser certs els rumors més foscos, doncs? El Regne, la Reina "
+#~ "Asheviere... envia orcs contra la seva pròpia gent?"
 
-#, fuzzy
 #~ msgid ""
 #~ "We have tarried here for far too long... There is no way we can reach "
 #~ "Elensefar and return with help before the Wesnoth army destroys our "
 #~ "homes. Retreat!"
 #~ msgstr ""
-#~ "Hem perdut massa temps ací... és impossible que puguem arribar a "
-#~ "Elensefar i tornar amb ajuda abans que l'exèrcit wesnothià arribe i "
-#~ "destruïsca les nostres cases. Retirada!!"
+#~ "Hem perdut massa temps ací... És impossible que puguem arribar a "
+#~ "Elensefar i tornar amb ajuda abans que l'exèrcit wesnothià destrueixi les "
+#~ "nostres cases. Retirada!"
 
-#, fuzzy
 #~ msgid ""
 #~ "Baldras, your trip here was not wise. The Queen’s patrols have been "
 #~ "visiting the local villages and bringing the elders here. Those that "
 #~ "swear allegiance to the Queen are allowed to return home. Those that do "
 #~ "not—"
 #~ msgstr ""
-#~ "Baldras, aquest viatge no ha sigut gens intel·ligent. Les patrulles de la "
-#~ "reina han estat visitant els poblets de la rodalia i portant als batlles "
-#~ "ací.  Aquells que juren lleialtat a la Reina, se'ls permet tornar a casa. "
-#~ "Els qui no..."
+#~ "Baldras, venir aquí no ha estat assenyat. Les patrulles de la Reina han "
+#~ "estat visitant els pobles locals i portant la gent gran aquí. Als qui "
+#~ "juren lleialtat a la Reina el deixen tornar a casa. Als que no..."
 
-#, fuzzy
 #~ msgid ""
 #~ "— Are dispatched on the spot. I know the price of dissent. But what of "
 #~ "you?"
 #~ msgstr ""
-#~ "... són executats immediatament. Conec el preu de la dissidència. I què "
-#~ "és de tu?"
+#~ "... els executen in situ. Jo conec el preu de la dissidència. Però, i vós?"
 
 #~ msgid ""
 #~ "Well, they do not come within the walls of my city. They are actually "
@@ -3496,19 +3567,14 @@ msgstr "Cóm pot ser? Hem perdut."
 #~ "i Wesnoth és antic, però no soc tan simple com per a dipositar tota la "
 #~ "meua confiança en ell. Com a mínim, no en aquesta època tan revolta."
 
-#, fuzzy
-#~| msgid ""
-#~| "What can we do then? We have brought with us many from Annuvin province "
-#~| "who are willing to fight, but our families are still at home. They will "
-#~| "not last long if the Queen’s patrols return."
 #~ msgid ""
 #~ "What can we do then? We have brought with us many from Annuvin Province "
 #~ "who are willing to fight, but our families are still at home. They will "
 #~ "not last long if the Queen’s patrols return."
 #~ msgstr ""
-#~ "I què podem fer, doncs? Amb nosaltres venen molts Annuvins que estan "
-#~ "disposats a lluitar, però les nostres famílies encara són a casa. No "
-#~ "podran resistir gens ni miqueta si les patrulles de la Reina tornen."
+#~ "Què podem fer, doncs? Hem portat amb nosaltres molts de la Província "
+#~ "d'Annuvin que volen lluitar, però les nostres famílies segueixen a casa. "
+#~ "No duraran gaire si les patrulles de la Reina hi tornen."
 
 #~ msgid ""
 #~ "I am unwilling to start a civil war. I believe the Queen will remain "
@@ -3596,13 +3662,12 @@ msgstr "Cóm pot ser? Hem perdut."
 #~ msgid "Take Baldras to meet the leader of the insurgency"
 #~ msgstr "Porta a Baldras a reunir-se amb el líder de la resistència"
 
-#, fuzzy
 #~ msgid ""
 #~ "I’m not sure where we’re supposed to go now. If we go into town we can "
 #~ "start asking around for information."
 #~ msgstr ""
 #~ "No estic segur d'on hem d'anar ara. Si anem a la ciutat, podríem començar "
-#~ "a preguntar per informar-nos."
+#~ "a demanar informació."
 
 #~ msgid "Who are you?"
 #~ msgstr "Qui sou vosaltres?"
@@ -3630,8 +3695,8 @@ msgstr "Cóm pot ser? Hem perdut."
 #~ msgid ""
 #~ "As soon as we escape the Wesnoth death squad, we will be happy to oblige."
 #~ msgstr ""
-#~ "Una vegada aconseguim escapar dels comandos de la mort de Wesnoth, estaré "
-#~ "encantat de complir"
+#~ "Tan aviat com escapem dels comandos de la mort de Wesnoth, estarem "
+#~ "encantats de complir-hi."
 
 #~ msgid "As it turns out, I’m the crazy one. Let’s finish this folly."
 #~ msgstr ""
@@ -3646,469 +3711,6 @@ msgstr "Cóm pot ser? Hem perdut."
 #~ "Dallben. No hem pogut acabar la nostra missió, però hem de tornar per "
 #~ "lluitar en una batalla suïcida."
 
-#, fuzzy
-#~ msgid ""
-#~ "I am Helicrom, and you should not be so glib. I control dangerous men. My "
-#~ "henchmen can slip unseen through any city, rob a man while he sleeps, or "
-#~ "attack a caravan head-on. It’s not noble work, but our pursuits require "
-#~ "plenty of gold."
-#~ msgstr ""
-#~ "Sóc Helicrom, i no deuries estar tan segur de tu mateix. Comane hòmens "
-#~ "molt perillosos. Els meus subordinats poden entrar a qualsevol ciutat "
-#~ "sense ser vists, robar a un home mentre dorm o atacar una caravana a camp "
-#~ "obert. No és un treball noble, però els nostres objectius requereixen "
-#~ "molt or."
-
-#, fuzzy
-#~ msgid "Why do you want to help us?"
-#~ msgstr "Val, doncs. Per què vols la nostra ajuda?"
-
-#, fuzzy
-#~| msgid ""
-#~| "We don’t. You have sought us out. But, I do know of your situation and "
-#~| "am willing to help. Any weakening of the Throne of Wesnoth, whether it "
-#~| "be occupied by King or Queen, aids us."
-#~ msgid ""
-#~ "You are the ones who have sought us out. But, I do know of your situation "
-#~ "and am willing to help. Any weakening of the Throne of Wesnoth, whether "
-#~ "it be occupied by King or Queen, aids us. Do you know of Halstead?"
-#~ msgstr ""
-#~ "No la volem. Vosaltres ens haveu buscat. Conec la vostra situació, però, "
-#~ "i estic disposat a ajudar-vos. El tron de Wesnoth, sota el control d'un "
-#~ "Rei o Reina, és una vaca que ens agrada agullonar, per dir-ho d'alguna "
-#~ "manera."
-
-#, fuzzy
-#~| msgid ""
-#~| "The words of Lord Maddock have weighed heavy on me these past few days. "
-#~| "It has dawned on me that we can never win. We will never defeat the "
-#~| "entire army of Wesnoth. Idiocy! If the noble lord of Elensefar is "
-#~| "unwilling to resist the Queen, how should I ever expect to?"
-#~ msgid ""
-#~ "Well, what can we do? It seems to me that we can never win. It is "
-#~ "impossible for us to face the entire forces of Weldyn by ourselves. "
-#~ "Idiocy! If the noble lord of Elensefar is unwilling to resist the Queen, "
-#~ "how can we expect to?"
-#~ msgstr ""
-#~ "Les paraules del Senyor Maddock m'estan arribant al cor segons passen els "
-#~ "dies. Cada vegada estic més segur que no tenim res a fer en esta guerra. "
-#~ "No mai podrem derrotar tot l'exèrcit de Wesnoth. Quina imbecil·litat! Si "
-#~ "ni tan sols el noble senyor d'Elensefar està disposat a resistir a la "
-#~ "Reina, què puc esperar jo?"
-
-#, fuzzy
-#~| msgid ""
-#~| "Do you propose surrender? It’s this or nothing. All we can do is see it "
-#~| "through to the end."
-#~ msgid ""
-#~ "We... cannot just surrender either. Helicrom is right. It’s this or "
-#~ "nothing. All we can do is see it through to the end."
-#~ msgstr ""
-#~ "Prefereixes rendir-te? És a tot o res. Només podem continuar fins el "
-#~ "final."
-
-#, fuzzy
-#~| msgid ""
-#~| "What a bloody mess. We must attack Halstead next. If we wait, they will "
-#~| "become invincible. If we can burn it to the ground before that happens, "
-#~| "our people may have a chance. Rest well tonight, because tomorrow’s "
-#~| "battle will decide the fate of our homes, our families, and our freedom."
-#~ msgid ""
-#~ "It seems to me that our only choice is to attack Halstead itself. If we "
-#~ "wait, their armies will become invincible. If we can burn it to the "
-#~ "ground before the Queen’s forces rally, we may yet be able to break their "
-#~ "foothold in this province."
-#~ msgstr ""
-#~ "Quina massacre. Ara hem d'atacar Halstead, si aguaitem, seran "
-#~ "invencibles.  Si podem arrasar-ho abans que això passe, encara hi haurà "
-#~ "alguna possibilitat per la nostra gent. Descanseu bé esta nit, perquè la "
-#~ "batalla de demà serà la que decidirà el destí de la nostra llar, les "
-#~ "nostres famílies i la nostra llibertat."
-
-#, fuzzy
-#~ msgid ""
-#~ "In the Year of Wesnoth 161, the newly crowned king sought to tame the "
-#~ "wildlands that separated the human cities surrounding Weldyn and the "
-#~ "coastal regions of Elensefar once and for all."
-#~ msgstr ""
-#~ "A l'any 161 des de la fundació de Wesnoth, 338 anys abans de la traïció "
-#~ "de Asheviere, el rei, recentment coronat, va buscar de assegurar d'una "
-#~ "vegada per sempre les terres salvatges que separaven les ciutats que "
-#~ "voltejaven Weldyn i les regions costeres d'Elensefar."
-
-#~ msgid ""
-#~ "The grand army of Wesnoth, personally led by the High Council of "
-#~ "Archmagi, scoured the plains of all manner of hostile creature, be it "
-#~ "beast, orc, or elf. The city-state of Elensefar was formally united to "
-#~ "the kingdom and settlements rapidly spread. The country of Wesnoth had "
-#~ "been carved in deed as well as in name."
-#~ msgstr ""
-#~ "El poderós exèrcit de Wesnoth, comandat per l'Alt Consell d'Arximags, va "
-#~ "eliminar d'aquestes terres tota mena de criatures perilloses, foren "
-#~ "bèsties, orcs o elfs. Aleshores, la ciutat estat de Elensefar va unir-se "
-#~ "formalment al regne i els poblats ràpidament es van estendre. El domini "
-#~ "de Wesnoth sobre aquesta regió va passar a ser un fet i no només un "
-#~ "tractat."
-
-#~ msgid ""
-#~ "A monument to this achievement was erected in the very heart of the "
-#~ "wildlands. In a twelve-year ritual, the High Council demonstrated the "
-#~ "height to which human magic had grown over the years by drawing the "
-#~ "monument directly from the earth’s living rock."
-#~ msgstr ""
-#~ "Es va erigir un monument per a commemorar aquest esdeveniment al propi "
-#~ "cor d'aquelles terres salvatges. En un ritual que va durar dotze anys, "
-#~ "l'Alt Consell va demostrar el nivell de coneixements que havien assimilat "
-#~ "els estudiosos en màgia fent eixir el monument de la pròpia pedra viva."
-
-#~ msgid ""
-#~ "Hundreds of feet tall, the mountain towered high above the plains, its "
-#~ "sheer walls both inspiring and terrifying. Men from all over the "
-#~ "countryside labored there, building the most formidable fortress ever "
-#~ "conceived. It became the Stronghold of Halstead."
-#~ msgstr ""
-#~ "Centenars de peus d'alta, la muntanya dominava totes les terres al seu "
-#~ "voltant, amb unes muralles tan massives que inspiraven a la vegada que "
-#~ "aterrien. Van treballar ací hòmens de tota la rodalia, construint la "
-#~ "fortalesa més inexpugnable mai imaginada. Era la Fortalesa de Halstead."
-
-#, fuzzy
-#~ msgid ""
-#~ "This sentinel of the western plains stood watch as Wesnoth prospered for "
-#~ "many centuries under its protection. No war has overcome it, and its "
-#~ "walls have never been overrun. The blood of invaders stains its parapets "
-#~ "and the bones of the defeated crumble at the base of Halstead’s frozen "
-#~ "waves of stone."
-#~ msgstr ""
-#~ "Aquest vigilant sentinella de les terres de l'oest va romandre en guàrdia "
-#~ "mentre Wesnoth prosperava durant molts segles sota la protecció que "
-#~ "oferia. Cap guerra ha pogut amb ell, i no mai s'ha pogut sobrepassar les "
-#~ "seues muralles. Les taques de sang dels invasors sollen els seus "
-#~ "parapets, i els ossos dels vençuts esquitxen les gelades vessants a la "
-#~ "base de Halstead."
-
-#~ msgid ""
-#~ "That may not be too far from the truth. During the time of the Great "
-#~ "Kings of Wesnoth, this land was tamed with powerful magic. Wizards of an "
-#~ "ancient era forged the walls of Halstead from the rock below."
-#~ msgstr ""
-#~ "Tal volta no estigues tan allunyat de la veritat com pots pensar. Durant "
-#~ "el temps dels Grans Reis de Wesnoth, aquesta terra va ser domada amb "
-#~ "potents màgies. Uns mags d'èpoques anteriors van forjar les muralles de "
-#~ "Halstead a partir de la roca."
-
-#~ msgid ""
-#~ "No, my young friend. Halstead indeed has a weakness. Among my many assets "
-#~ "is access to a wealth of secrets few in Wesnoth are privy to."
-#~ msgstr ""
-#~ "No, jove amic. Encara que no ho semble, té alguns punts dèbils. Entre els "
-#~ "meus mitjans, un és el coneixement d'alguns secrets com pocs en Wesnoth "
-#~ "poden. "
-
-#~ msgid ""
-#~ "You see, the mountain on which the fort was built is solid, but the "
-#~ "castle on top has been built and rebuilt many times over the ages. It is "
-#~ "not as indestructible as you might think."
-#~ msgstr ""
-#~ "Com pots veure, la muntanya on es va construir la fortalesa és sòlida, "
-#~ "però el castell damunt ha sigut construït i reconstruït moltes vegades al "
-#~ "llarg del temps. No és tan indestructible com podries creure."
-
-#~ msgid ""
-#~ "Beneath the structure is a system of catacombs that connects all four "
-#~ "towers to the central keep. Over time, after many wars, supports were "
-#~ "required to hold up the middle."
-#~ msgstr ""
-#~ "Sota l'estructura hi ha una xarxa de catacumbes que connecten les quatre "
-#~ "torres amb la torrassa central. Segons van passar els anys, després de "
-#~ "moltes guerres, van ser necessaris reforços per a que no s'enfonsara el "
-#~ "centre."
-
-#~ msgid ""
-#~ "I hope you’re right. In a few hours, night will fall, and we will find "
-#~ "out."
-#~ msgstr ""
-#~ "Tant de bo tingues raó. Dins d'unes hores, es farà fosc i ho sabrem."
-
-#~ msgid ""
-#~ "We must be cautious. Look there, a substantial orc force is also "
-#~ "advancing on Halstead. They must think Wesnoth’s army is spread out right "
-#~ "now."
-#~ msgstr ""
-#~ "Hem d'anar amb cura. Mireu allà, un grup ben gran d'orcs també avança cap "
-#~ "a Halstead. Deuen pensar que l'exèrcit de Wesnoth estarà escampat per "
-#~ "tota la regió."
-
-#~ msgid "Heh. They’re in for a surprise. This may work to our advantage."
-#~ msgstr "Heh. Benvinguts a la festa. Pot anar-nos bé."
-
-#~ msgid "Who is it?"
-#~ msgstr "Qui són?"
-
-#~ msgid "Help, I hope. Circumstances cannot afford to get much more dire."
-#~ msgstr "Espere que ajuda. Açò no pot empitjorar molt més."
-
-#~ msgid "Riders approach from the northwest! Stand fast, men."
-#~ msgstr "Genets al nord oest! Resistiu!"
-
-#, fuzzy
-#~ msgid ""
-#~ "Knights of Elensefar, behold: the battle has already begun! Make camp "
-#~ "here. Then, we charge!"
-#~ msgstr ""
-#~ "Cavallers de Elensefar, mireu! La batalla ha començat! Muntarem ací el "
-#~ "campament. Després, anirem a la CARREGA"
-
-#~ msgid ""
-#~ "Amazing. Lord Maddock sent his house guards... his finest troops! "
-#~ "Elensefar must be defenseless now. More hinges on this battle than I "
-#~ "thought."
-#~ msgstr ""
-#~ "Increïble. El Senyor Maddock ha enviat la seua guàrdia... les seues "
-#~ "millors tropes! Elensefar deu haver quedat indefensa. Hi ha molt més que "
-#~ "depenja d'aquesta batalla del que havia pensat."
-
-#~ msgid "After about an hour..."
-#~ msgstr "Un hora després..."
-
-#~ msgid "Men, help me out of here! I am trapped under this rubble."
-#~ msgstr "Ei! Ajudeu-me a traure'm d'ací! Estic baix estes pedres!"
-
-#~ msgid "I hope this sacrifice is not in vain... but we will never know."
-#~ msgstr ""
-#~ "Espere que aquest sacrifici no hage sigut debades... no mai ho sabrem."
-
-#, fuzzy
-#~ msgid "Our dream of freedom... gone... Unngh."
-#~ msgstr "El nostre somni de llibertat...perdut... Uungh."
-
-#~ msgid "Uncle!"
-#~ msgstr "Oncle!"
-
-#~ msgid "NO!"
-#~ msgstr "NO!"
-
-#~ msgid "I promised your father I would watch after you... and I failed."
-#~ msgstr "Vaig prometre a ton pare que et protegiria... i he fallat."
-
-#~ msgid ""
-#~ "But we are so close to the end. We must finish this. I am sorry you will "
-#~ "not be able to enjoy our freedom. Goodbye, Harper."
-#~ msgstr ""
-#~ "Però estem tan a prop de la fi... Hem de continuar amb açò. Perdona'm per "
-#~ "que no pugues gaudir de nostra llibertat. Adéu, Harper."
-
-#~ msgid ""
-#~ "Carry on, my friends. Fighting by your side is the most honorable thing I "
-#~ "have done..."
-#~ msgstr ""
-#~ "Seguiu, amics meus. Lluitar amb vosaltres ha sigut la cosa més honrosa "
-#~ "que he fet mai..."
-
-#~ msgid ""
-#~ "You will never successfully oppose Asheviere. Her power is too great... "
-#~ "This small victory today is but a reprieve from the unimaginable pain you "
-#~ "will suffer when the full force of her wrath descends upon you."
-#~ msgstr ""
-#~ "Bah, no mai podreu oposar-vos a Asheviere. El seu poder es massa gran... "
-#~ "Açò no és més que una xicoteta victòria que vos traurà mals inimaginables "
-#~ "quan la seua fúria vos arribe!"
-
-#~ msgid ""
-#~ "This was no small victory. You underestimate the power of love for "
-#~ "freedom."
-#~ msgstr ""
-#~ "Açò no ha sigut cap victòria xicoteta. Subestimes el poder de l'ànsia de "
-#~ "llibertat."
-
-#, fuzzy
-#~ msgid ""
-#~ "You... underestimate the... cruelty and ambition of your Queen... Uungh..."
-#~ msgstr ""
-#~ "I tu... subestimes la... crueltat i ambició de la teua Reina... unngh..."
-
-#~ msgid ""
-#~ "Small victory? Bah! Now we will raze this fortress and bury it in the "
-#~ "earth from whence it came."
-#~ msgstr ""
-#~ "Una victòria menuda? Ximpleries! Ara destruirem aquesta fortalessa fins "
-#~ "que no quede pedra sota pedra."
-
-#~ msgid ""
-#~ "The rest of the battle was a blur. The shock of what had happened stunned "
-#~ "everybody."
-#~ msgstr ""
-#~ "La resta de la batalla va ser com una boira. El que va passar allà va "
-#~ "deixar atabalats a tots."
-
-#, fuzzy
-#~| msgid ""
-#~| "Baldras and his men fled the plains of western Wesnoth under the cover "
-#~| "of night. The spectacle of Halstead’s destruction stunned them into a "
-#~| "daze that only slowly wore off as they made their way north to and past "
-#~| "Elensefar."
-#~ msgid ""
-#~ "Baldras and his men fled the plains of western Wesnoth under the cover of "
-#~ "night. The spectacle of Halstead’s destruction held them in a daze that "
-#~ "only slowly wore off as they made their way north to and past Elensefar."
-#~ msgstr ""
-#~ "Baldras i els seus hòmens van fugir de les planícies occidentals de "
-#~ "Wesnoth sota la foscor de la nit. L'espectacle de la destrucció de "
-#~ "Halstead els va mantenir en un atordiment que va anar desapareixent "
-#~ "segons continuaven cap al nord."
-
-#, fuzzy
-#~| msgid ""
-#~| "The Elense riders routed the orcish army, small as it was, and sent them "
-#~| "back across the Great River. They then scattered to the countryside and "
-#~| "were not heard from again. Baldras thought this odd behavior when he "
-#~| "heard about it."
-#~ msgid ""
-#~ "The Elense riders routed the orcish army, small as it was, and sent them "
-#~ "back across the Great River. They then scattered to the countryside and "
-#~ "were not heard from again. Baldras thought this behavior odd when word of "
-#~ "this first reached him."
-#~ msgstr ""
-#~ "Els genets elensians van fer fugir l'exèrcit orc, que no era molt gran, i "
-#~ "els van perseguir fins a les vores del Gran Riu. Després es van escampar "
-#~ "pels camps i no es va tornar a sentir parlar d'ells. Baldras va pensar "
-#~ "que això era prou estrany quan ho va sentir."
-
-#~ msgid ""
-#~ "As the main body of Asheviere’s army neared the ruins of Halstead, "
-#~ "strange things began to happen. Every night, men would disappear. Others "
-#~ "were found hacked to bloody pieces. Unexplained misfortune plagued the "
-#~ "marching columns. Soldiers dropped dead where they stood, slain by unseen "
-#~ "assassins. Fear of an undead menace spread through the ranks."
-#~ msgstr ""
-#~ "Mentre l'exèrcit principal d'Asheviere s'acostava a les ruïnes de "
-#~ "Halstead, van ocòrrer moltes coses estranyes. Totes les nits "
-#~ "desapareixien hòmens, altres apareixien talladets a trocets, una plaga "
-#~ "inexplicable va assolir les columnes de marxa, els soldats queien morts "
-#~ "per assassins invisibles... La por d'una amenaça no morta va escampar "
-#~ "entre les files."
-
-#, fuzzy
-#~| msgid ""
-#~| "When the army of Wesnoth found the ruins of the mighty fortress "
-#~| "Halstead, it was too much. Their shock that such a thing could happen "
-#~| "combined with the invisible terror stalking them convinced Asheviere’s "
-#~| "second in command the entire countryside was cursed. He quickly "
-#~| "retreated to the traditional border and set up strong defenses against "
-#~| "the west."
-#~ msgid ""
-#~ "When the army of Wesnoth found the ruins of the mighty fortress Halstead, "
-#~ "it was too much. Their shock that such a thing could happen, combined "
-#~ "with the invisible terror stalking them, convinced Asheviere’s second in "
-#~ "command the entire countryside was cursed. He quickly retreated to the "
-#~ "traditional border and set up strong defenses against the west."
-#~ msgstr ""
-#~ "Quan l'exèrcit va trobar les ruïnes de la gran fortalesa de Halstead, ja "
-#~ "va ser massa. Entre que no podien creure que això poguera haver succeït i "
-#~ "l'invisible terror que els fuetejava, el segon al cap d'Asheviere es va "
-#~ "creure que tota la província estava maleïda. Ràpidament es va retirar a "
-#~ "les fronteres tradicionals i va establir unes fortes defenses contra "
-#~ "l'oest."
-
-#, fuzzy
-#~ msgid ""
-#~ "Baldras had just crossed the Great River when rumors of night-stalkers "
-#~ "filtered through his ranks. With bitter humor he realized that Lord "
-#~ "Maddock’s men were successfully using tactics Baldras had mastered and "
-#~ "used during his resistance."
-#~ msgstr ""
-#~ "Baldras havia acabat de creuar el Gran Riu quan li van arribar les "
-#~ "notícies d'aquestos saltamarges. Amb una certa dosi d'humor, va "
-#~ "comprendre que els soldats del Senyor Maddock estaven emprant les "
-#~ "mateixes tàctiques que Baldras havia dominat i emprat durant la seua "
-#~ "resistència."
-
-#~ msgid ""
-#~ "The peasants-turned-outlaws finally reached Dallben. It was burnt to the "
-#~ "ground. In a panic, they raced through the forest to Delwyn. It was "
-#~ "likewise devastated. However, they did find one clue as to what "
-#~ "happened..."
-#~ msgstr ""
-#~ "Els camperols convertits en proscrits van arribar a la fi a Dallben. No "
-#~ "quedava pedra sobre pedra. Presa del pànic, van córrer cap a Delwyn. "
-#~ "Tampoc quedava res. Tanmateix, van trobar una pista del que havia "
-#~ "succeït..."
-
-#, fuzzy
-#~ msgid ""
-#~ "... a grimy note nailed to a charred post that read, <i>“Baldras, You "
-#~ "would have been proud. We gave ’em hell. But in the end, it wasn’t "
-#~ "enough.”</i>"
-#~ msgstr ""
-#~ "... una nota emmascarada clavada a un pal cremat que deia: 'Baldras, "
-#~ "hagueres estat orgullós. Els vam donar canya de la bona. Però al cap i a "
-#~ "la fi, no va ser prou.'"
-
-#, fuzzy
-#~ msgid ""
-#~ "<i>“We fled like criminals in the night, but we made sure that no one "
-#~ "would harass us anymore.”</i>"
-#~ msgstr ""
-#~ "...Vam fugir com criminals, de nit, però ens vam assegurar que no cap ens "
-#~ "tornaria a amenaçar mai més..."
-
-#, fuzzy
-#~ msgid ""
-#~ "<i>“If you wish to find us, head southwest. When you reach the land’s "
-#~ "end, just keep going. See you in the Three Sisters, old friend. ― "
-#~ "Relana”</i>"
-#~ msgstr ""
-#~ "...si ens vol trobar, ves cap a l'oest. Una vegada arribes al fi de la "
-#~ "terra, senzillament segueix caminant. Fins a d'ara, amic meu. - Relnan"
-
-#~ msgid "Tell my wife... that I loved her!"
-#~ msgstr "Dieu-li a la meua dona... que l'estimava molt!"
-
-#~ msgid "Unngh... Now our people may never be free..."
-#~ msgstr "Unngh... La nostra gent mai no serà lliure..."
-
-#~ msgid "I am finished... will we ever be free?"
-#~ msgstr "Estic acabat... alguna vegada aconseguirem ser lliures?"
-
-#~ msgid ""
-#~ "The hardy people of these marches learned self-reliance and survival "
-#~ "skills against the raiding orc hordes and savage saurians. They "
-#~ "established their own trading routes and pacts of mutual defense."
-#~ msgstr ""
-#~ "En conseqüència, aquestos durs habitants dels pantans van aprendre a "
-#~ "sobreviure pel seu compte front a les hordes d'orcs i els indòmits "
-#~ "saquejadors sauris. Ells mateixos van establir les seues rutes comercials "
-#~ "i pactes de defensa mútua."
-
-#~ msgid ""
-#~ "Although not permitted to train with proper military weapons, these "
-#~ "woodsmen were at home in the forests and swamps of the Western Marches, "
-#~ "and became very effective with their simple slings and clubs."
-#~ msgstr ""
-#~ "Encara que mancaven del vistiplau reial per a entrenar-se amb les armes "
-#~ "militars usuals, estos camperols es trobaven com a casa entre els boscos "
-#~ "i les marjals de sa pàtria i eren molt efectius fins i tot amb les seues "
-#~ "rudimentàries fones i garrots."
-
-#~ msgid ""
-#~ "After the betrayal of the King by Queen Asheviere, the new regent of "
-#~ "Wesnoth sought to consolidate her ill-gotten power. She sent her armies "
-#~ "across Wesnoth to intimidate the provincial rulers and secure her "
-#~ "continued reign."
-#~ msgstr ""
-#~ "Després de la traïció de la reina Asheviere, la nova regent de Wesnoth va "
-#~ "intentar consolidar les seues desmesurades ambicions enviant exèrcits per "
-#~ "tot Wesnoth per tal d'intimidar els governadors provincials i assegurar-"
-#~ "se'n un llarg regnat."
-
-#~ msgid ""
-#~ "The people of Annuvin were unwilling to relinquish their hard-earned self-"
-#~ "rule, especially not to this pretender..."
-#~ msgstr ""
-#~ "Els Annuvins no eren partidaris de deixar de banda una independència "
-#~ "guanyada amb la sang de molts sacrificis, especialment no amb aquesta "
-#~ "pretendent..."
-
 #~ msgid "Mal-Jarrof"
 #~ msgstr "Mal-Jarof"
 
@@ -4120,6 +3722,17 @@ msgstr "Cóm pot ser? Hem perdut."
 
 #~ msgid "Defeat the lich and its minions"
 #~ msgstr "Derrota els Senyors Lich"
+
+#~ msgid ""
+#~ "I am Helicrom, and you should not be so glib. I control dangerous men. My "
+#~ "henchmen can slip unseen through any city, rob a man while he sleeps, or "
+#~ "attack a caravan head-on. It’s not noble work, but our pursuits require "
+#~ "plenty of gold."
+#~ msgstr ""
+#~ "Em dic Helicrom, i no hauríeu de ser tan murri. Controlo homes "
+#~ "perillosos. Els meus partisans poden infiltrar-se en qualsevol ciutat, "
+#~ "robar a algú mentre dorm o atacar una caravana frontalment. No és una "
+#~ "feina noble, però els nostres objectius requereixen un munt d'or."
 
 #~ msgid "I have heard of you. Necromancers. Barely-human scum, I say."
 #~ msgstr ""
@@ -4140,16 +3753,27 @@ msgstr "Cóm pot ser? Hem perdut."
 #~ "equilibri místic entre la llum i la foscor. Per tant, existim entre "
 #~ "ambdós mons, sense encaixar en cap."
 
-#, fuzzy
+#~ msgid "I... see, I think. Why do you want to help us?"
+#~ msgstr "Ja... ho veig, crec. Per què voleu ajudar-nos?"
+
+#~ msgid ""
+#~ "We don’t. You have sought us out. But, I do know of your situation and am "
+#~ "willing to help. Any weakening of the Throne of Wesnoth, whether it be "
+#~ "occupied by King or Queen, aids us."
+#~ msgstr ""
+#~ "No la volem. Vosaltres ens haveu buscat. Conec la vostra situació, però, "
+#~ "i estic disposat a ajudar-vos. El tron de Wesnoth, sota el control d'un "
+#~ "Rei o Reina, és una vaca que ens agrada agullonar, per dir-ho d'alguna "
+#~ "manera."
+
 #~ msgid ""
 #~ "Carcyn is always foggy as of late because these woods have recently "
 #~ "become home to a lich and two of its underling necromancers. Our "
 #~ "experiments may have actually aroused it from sleep... We’re not sure."
 #~ msgstr ""
-#~ "Carcyn està últimament tan emboirat des que un Lich i dos dels seus "
-#~ "súbits nigromants van convertir aquest lloc en la seua llar. Tal volta "
-#~ "hagen sigut els nostres experiments el que l'han fet despertar... no "
-#~ "estem segurs."
+#~ "Carcyn sempre està emboirat darrerament, perquè aquests boscos han estat "
+#~ "recentment la llar d'un lich i dos dels seus nigromants inferiors. Els "
+#~ "nostres experiments poden haver-lo despertat... No n'estem segurs."
 
 #~ msgid ""
 #~ "So now you need to defend your rear as well as your front... I see your "
@@ -4160,33 +3784,32 @@ msgstr "Cóm pot ser? Hem perdut."
 #~ "esquena.  Veig que et trobes en un destret. Els meus hòmens et deixaran "
 #~ "tot el bosc com una patena si ens ajudes a defendre la nostra llar."
 
-#, fuzzy
 #~ msgid "Finally, that creature is dead, yet its foolish minions resist."
-#~ msgstr "Per fi hem derrotat eixa criatura, encara queden els seus súbdits."
+#~ msgstr ""
+#~ "Per fi aquella criatura és morta, però els seus servents estúpids "
+#~ "resisteixen."
 
 #~ msgid "The lich is destroyed and its minions dead."
 #~ msgstr "El lich ha estat destruït, i, amb ell, han mort els seus súbits."
 
-#, fuzzy
 #~ msgid ""
 #~ "The defeat of the evil lich infesting the Grey Woods was a bittersweet "
 #~ "victory. With Helicrom dead, the guild of shadow magic was thrown into "
 #~ "disarray."
 #~ msgstr ""
-#~ "La derrota dels malvats Lich que havien infestat el Bosc Terrós ha sigut "
-#~ "una victòria agredolça. Amb la mort d'Helicrom, el gremi de màgia fosca "
-#~ "va caure en el desordre."
+#~ "La derrota dels malvats lich que infestaven els Boscos Grisos ha estat "
+#~ "una victòria agredolça. Amb la mort d'Helicrom, el gremi de la màgia "
+#~ "fosca caigué en el desordre."
 
-#, fuzzy
 #~ msgid ""
 #~ "The remaining members were very grateful and offered Baldras a sizable "
 #~ "sum of gold for his help. It was not the help he was hoping for, but he "
 #~ "knew it would have to be enough for the coming conflict."
 #~ msgstr ""
-#~ "La resta de membres estaven molt agraïts, i li van oferir una important "
-#~ "quantitat d'or per la seua ajuda. Tanmateix, no era l'ajuda que ell "
-#~ "esperava, però sabia que deuria aprofitar-la al màxim durant el pròxim "
-#~ "conflicte."
+#~ "La resta de membres estaven molt agraïts i oferiren a Baldras una "
+#~ "important quantitat d'or per la seva ajuda. No era l'ajuda que ell "
+#~ "esperava, però sabia que hauria de ser suficient per al conflicte que "
+#~ "vindria."
 
 #~ msgid ""
 #~ "With the undead driven out, we may live here in relative peace and pursue "
@@ -4202,15 +3825,14 @@ msgstr "Cóm pot ser? Hem perdut."
 #~ "Estudis? Pau? Voldràs dir que continuaràs vivint dels honrats ciutadans "
 #~ "de Wesnoth. No hi haurà pau per a ells."
 
-#, fuzzy
 #~ msgid ""
 #~ "No one here is in a position to be dispensing moral judgments. "
 #~ "Regardless, you have done great service to us today, and we owe you a "
 #~ "debt. I will help you to the utmost of my ability."
 #~ msgstr ""
-#~ "Baldras, Baldras... cap dels dos es troba en posició de fer judicis de "
-#~ "moral. D'altra banda, no et pots fer la idea de l'inestimable servei que "
-#~ "haveu realitzat ací avui. T'ajudaré amb totes les meues capacitats."
+#~ "Ningú aquí és en la posició de dispensar judicis morals. En qualsevol "
+#~ "cas, ens heu fet un gran servei avui, i estem en deute amb vós. Us "
+#~ "ajudaré fins a on arribin les meves habilitats."
 
 #~ msgid ""
 #~ "I was planning on giving you gold. Any good army is well financed, and "
@@ -4265,47 +3887,44 @@ msgstr "Cóm pot ser? Hem perdut."
 #~ msgstr ""
 #~ "Preferiria que m'ajudares en alguna batalla contra les forces de la Reina."
 
-#, fuzzy
 #~ msgid ""
 #~ "All right. I need time to clean up this forest and recall my men from the "
 #~ "countryside. We will be ready to march in seven days. All now hinges on "
 #~ "you! Until then..."
 #~ msgstr ""
-#~ "Perfecte. Necessitaré una miqueta de temps per deixar ben net aquest bosc "
-#~ "i cridar els meus hòmens escampats pel país. Estarem enllestits en una "
-#~ "setmana. Tot depèn de tu! Mentre tant..."
+#~ "D'acord. Necessitaré temps per a netejar aquest fosc i reincorporar els "
+#~ "meus homes del camp. Estarem a punt per a marxar en set dies. Ara tot "
+#~ "depèn de vós! Fins aleshores..."
 
 #~ msgid "My men... have failed to protect me! I perish..."
 #~ msgstr "Els meus hòmens... no han pogut protegir-me! Soc història..."
 
-#, fuzzy
 #~ msgid ""
 #~ "Baldras and his men quickly left the Grey Woods, not entirely convinced "
 #~ "of their safety even after eradicating the lich."
 #~ msgstr ""
-#~ "Baldras i els seus hòmens van abandonar ràpidament el Bosc Terrós, sense "
-#~ "tindre molta fe en la seua seguretat encara havent derrotat els Lich."
+#~ "Baldras i els seus homes abandonaren ràpidament els Boscos Grisos, no del "
+#~ "tot convençuts de llur seguretat fins i tot després d'erradicar el lich."
 
-#, fuzzy
 #~ msgid ""
 #~ "As they marched, many men and women from the small hamlets peppering the "
 #~ "area around Carcyn and the Grey Woods approached the group, asking to "
 #~ "join them. The ascent of the Queen had cast an uneasy pall over the "
 #~ "citizens of Wesnoth, and some of them were willing to resist it."
 #~ msgstr ""
-#~ "Mentre marxaven, molts hòmens i dones dels xicotets poblets que estan "
-#~ "escampats per l'àrea entre Carcyn i el Bosc, s'acostaren al grup, "
-#~ "demanant unir-se. L'ascensió de la Reina havia causat un malestar entre "
-#~ "els ciutadans de Wesnoth, i molts estaven disposats a resistir-se."
+#~ "Mentre marxaven, molts homes i dones dels petits poblets escampats per "
+#~ "l'àrea al voltant de Carcyn i els Boscos Grisos s'acostaren al grup, "
+#~ "demanant unir-s'hi. L'ascensió de la Reina havia causat un malestar entre "
+#~ "els ciutadans de Wesnoth, i molts n'estaven disposats a resistir-hi."
 
-#, fuzzy
 #~ msgid ""
 #~ "Knowing they too would be labeled criminals, he reluctantly accepted "
 #~ "their help.\n"
 #~ "<b>Note:</b> Baldras is now able to recruit Outlaws."
 #~ msgstr ""
-#~ "Sabent que ells també serien considerats proscrits, va acceptar la seu "
-#~ "ajuda de mala gana. Baldras pot reclutar proscrits."
+#~ "Sabent que ells també serien considerats criminals, n'acceptà l'ajuda de "
+#~ "mala gana.\n"
+#~ "<b>Nota:</b> Baldras ara pot reclutar Proscrits."
 
 #~ msgid ""
 #~ "Camped at the edge of the forest, they quietly observed substantial troop "
@@ -4327,47 +3946,60 @@ msgstr "Cóm pot ser? Hem perdut."
 #~ msgid "Majel"
 #~ msgstr "Majel"
 
-#, fuzzy
+#~ msgid ""
+#~ "The words of Lord Maddock have weighed heavy on me these past few days. "
+#~ "It has dawned on me that we can never win. We will never defeat the "
+#~ "entire army of Wesnoth. Idiocy! If the noble lord of Elensefar is "
+#~ "unwilling to resist the Queen, how should I ever expect to?"
+#~ msgstr ""
+#~ "Les paraules del Senyor Maddock m'estan arribant al cor segons passen els "
+#~ "dies. Cada vegada estic més segur que no tenim res a fer en esta guerra. "
+#~ "No mai podrem derrotar tot l'exèrcit de Wesnoth. Quina imbecil·litat! Si "
+#~ "ni tan sols el noble senyor d'Elensefar està disposat a resistir a la "
+#~ "Reina, què puc esperar jo?"
+
 #~ msgid ""
 #~ "What’s worse is that she appears to have taken notice. We have counted "
 #~ "five platoons of heavy infantry marching towards the garrison in just the "
 #~ "last two hours."
 #~ msgstr ""
-#~ "A més, el pitjor és que ella pareix haver-se'n donat compte. Només en "
-#~ "aquestes últimes dos hores, hem contat cinc companyies d'infanteria "
-#~ "pesada marxant cap a la guarnició."
+#~ "El que és pitjor és que ella sembla haver-se'n adonat. Hem comptat cinc "
+#~ "escamots d'infanteria pesada marxant cap a la guarnició només durant les "
+#~ "darreres dues hores."
 
-#, fuzzy
 #~ msgid ""
 #~ "The garrison. The towers of Halstead are more than a garrison, nephew, "
 #~ "they are a fortress. They used to protect this area from the enemies of "
 #~ "Wesnoth; I never imagined they would house its enemies."
 #~ msgstr ""
-#~ "La guarnició... Les torres de Halstead són prou més que una simple "
-#~ "guarnició, nebot, són una fortalesa. Abans, servien per a protegir tota "
-#~ "aquesta àrea dels enemics de Wesnoth; no mai vaig imaginar que acabarien "
-#~ "albergant als enemics de Wesnoth."
+#~ "La guarnició. Les torres d'Halstead són més que una guarnició, nebot, són "
+#~ "una fortalesa. Solien protegir aquesta àrea dels enemics de Wesnoth; mai "
+#~ "imaginí que n'acollirien els enemics."
 
 #~ msgid "Pitcher"
 #~ msgstr "Pixer"
 
+#~ msgid "whisper^<i>Baldras!</i>"
+#~ msgstr "whisper^<i>Baldras!</i>"
+
 #~ msgid "Uncle, he wears the crest of the Elense. We should answer."
 #~ msgstr "Oncle, du l'uniforme dels elensians. Deuríem respondre."
 
-#, fuzzy
 #~ msgid "Rider, hush before we are discovered! Come to us, but quietly!"
-#~ msgstr "Genet, tranquil·litza't abans ens puguen descobrir! Ràpid, vine!"
+#~ msgstr ""
+#~ "Genet, tranquil·litza't abans ens descobreixin! Vine aquí, però en "
+#~ "silenci!"
 
-#, fuzzy
 #~ msgid ""
 #~ "Master Baldras, I bring news from the north. During the past week, "
 #~ "several patrols have again ventured across the Great River into Annuvin. "
 #~ "A woman named Relana opposed them with a small militia. She was "
 #~ "victorious."
 #~ msgstr ""
-#~ "Mestre Baldras, porte notícies del nord. Durant la setmana passada, "
-#~ "algunes patrulles han tornat a creuar el Gran Riu cap a Annuvin. Un home "
-#~ "anomenat Relnan va plantar-los cara amb una xicoteta milícia i va vèncer."
+#~ "Mestre Baldras, porto notícies del nord. Durant la setmana passada, "
+#~ "algunes patrulles han tornat a travessar el Riu Gran cap a Annuvin. Una "
+#~ "dona anomenada Relana els plantà cara amb una petita milícia. En sortí "
+#~ "victoriosa."
 
 #~ msgid "This is surely good news!"
 #~ msgstr "Això sí que són bones notícies!"
@@ -4398,16 +4030,41 @@ msgstr "Cóm pot ser? Hem perdut."
 #~ msgid "You just said we can’t beat their entire army!"
 #~ msgstr "Però si fa no res havies dit que no podies amb tot un exèrcit!"
 
-#, fuzzy
+#~ msgid ""
+#~ "Do you propose surrender? It’s this or nothing. All we can do is see it "
+#~ "through to the end."
+#~ msgstr ""
+#~ "Prefereixes rendir-te? És a tot o res. Només podem continuar fins el "
+#~ "final."
+
 #~ msgid ""
 #~ "May you prevail in peace and war. I must depart before I am seen so far "
 #~ "from my Lord’s borders."
 #~ msgstr ""
-#~ "Tant de bo triomfes a la pau i la guerra. He de partir abans siga vist "
-#~ "tan allunyat del territori del meu Senyor."
+#~ "Tant de bo triomfeu a la pau i la guerra. He de partir abans que em vegin "
+#~ "tan allunyat de les fronteres del meu Senyor."
+
+#~ msgid ""
+#~ "Troops, to arms! These peasant scum think they are above the law. We will "
+#~ "show them the law!"
+#~ msgstr ""
+#~ "Soldats, a les armes! Aquestos camperolets es creuen per damunt de la "
+#~ "llei.  Ara sabran quina és la bona llei!"
 
 #~ msgid "Ow! Fire hot! No step in fire!"
 #~ msgstr "Au! Foc calent! Foc roí! No s'ha de passar per damunt del foc!"
+
+#~ msgid ""
+#~ "What a bloody mess. We must attack Halstead next. If we wait, they will "
+#~ "become invincible. If we can burn it to the ground before that happens, "
+#~ "our people may have a chance. Rest well tonight, because tomorrow’s "
+#~ "battle will decide the fate of our homes, our families, and our freedom."
+#~ msgstr ""
+#~ "Quina massacre. Ara hem d'atacar Halstead, si aguaitem, seran "
+#~ "invencibles.  Si podem arrasar-ho abans que això passe, encara hi haurà "
+#~ "alguna possibilitat per la nostra gent. Descanseu bé esta nit, perquè la "
+#~ "batalla de demà serà la que decidirà el destí de la nostra llar, les "
+#~ "nostres famílies i la nostra llibertat."
 
 #~ msgid ""
 #~ "Send word to Helicrom that we are ready. It is time for him to repay his "
@@ -4423,25 +4080,115 @@ msgstr "Cóm pot ser? Hem perdut."
 #~ "Hem perdut massa temps ací. Segur que ara tot l'exèrcit de Wesnoth sencer "
 #~ "marxa cap ací. Estem acabats!"
 
+#~ msgid ""
+#~ "In the Year of Wesnoth 161, the newly crowned king sought to tame the "
+#~ "wildlands that separated the human cities surrounding Weldyn and the "
+#~ "coastal regions of Elensefar once and for all."
+#~ msgstr ""
+#~ "L'any 161 de Wesnoth, el rei acabat de coronar, perseguia dominar les "
+#~ "terres salvatges que separaven les ciutats humanes que envoltaven Weldyn "
+#~ "i les regions costeres d'Elensefar d'una vegada per totes."
+
+#~ msgid ""
+#~ "The grand army of Wesnoth, personally led by the High Council of "
+#~ "Archmagi, scoured the plains of all manner of hostile creature, be it "
+#~ "beast, orc, or elf. The city-state of Elensefar was formally united to "
+#~ "the kingdom and settlements rapidly spread. The country of Wesnoth had "
+#~ "been carved in deed as well as in name."
+#~ msgstr ""
+#~ "El poderós exèrcit de Wesnoth, comandat per l'Alt Consell d'Arximags, va "
+#~ "eliminar d'aquestes terres tota mena de criatures perilloses, foren "
+#~ "bèsties, orcs o elfs. Aleshores, la ciutat estat de Elensefar va unir-se "
+#~ "formalment al regne i els poblats ràpidament es van estendre. El domini "
+#~ "de Wesnoth sobre aquesta regió va passar a ser un fet i no només un "
+#~ "tractat."
+
+#~ msgid ""
+#~ "A monument to this achievement was erected in the very heart of the "
+#~ "wildlands. In a twelve-year ritual, the High Council demonstrated the "
+#~ "height to which human magic had grown over the years by drawing the "
+#~ "monument directly from the earth’s living rock."
+#~ msgstr ""
+#~ "Es va erigir un monument per a commemorar aquest esdeveniment al propi "
+#~ "cor d'aquelles terres salvatges. En un ritual que va durar dotze anys, "
+#~ "l'Alt Consell va demostrar el nivell de coneixements que havien assimilat "
+#~ "els estudiosos en màgia fent eixir el monument de la pròpia pedra viva."
+
+#~ msgid ""
+#~ "Hundreds of feet tall, the mountain towered high above the plains, its "
+#~ "sheer walls both inspiring and terrifying. Men from all over the "
+#~ "countryside labored there, building the most formidable fortress ever "
+#~ "conceived. It became the Stronghold of Halstead."
+#~ msgstr ""
+#~ "Centenars de peus d'alta, la muntanya dominava totes les terres al seu "
+#~ "voltant, amb unes muralles tan massives que inspiraven a la vegada que "
+#~ "aterrien. Van treballar ací hòmens de tota la rodalia, construint la "
+#~ "fortalesa més inexpugnable mai imaginada. Era la Fortalesa de Halstead."
+
+#~ msgid ""
+#~ "This sentinel of the western plains stood watch as Wesnoth prospered for "
+#~ "many centuries under its protection. No war has overcome it, and its "
+#~ "walls have never been overrun. The blood of invaders stains its parapets "
+#~ "and the bones of the defeated crumble at the base of Halstead’s frozen "
+#~ "waves of stone."
+#~ msgstr ""
+#~ "Aquest sentinella de les planes occidentals romangué en guàrdia mentre "
+#~ "Wesnoth prosperava durant molts segles sota la seva protecció. Cap guerra "
+#~ "no hi ha pogut, i mai no se n'han pogut sobrepassar les muralles. La sang "
+#~ "dels invasors en taca els parapets i els ossos dels vençuts s'esmicolen a "
+#~ "la base de les onades congelades de pedra de Halstead."
+
+#~ msgid ""
+#~ "That may not be too far from the truth. During the time of the Great "
+#~ "Kings of Wesnoth, this land was tamed with powerful magic. Wizards of an "
+#~ "ancient era forged the walls of Halstead from the rock below."
+#~ msgstr ""
+#~ "Tal volta no estigues tan allunyat de la veritat com pots pensar. Durant "
+#~ "el temps dels Grans Reis de Wesnoth, aquesta terra va ser domada amb "
+#~ "potents màgies. Uns mags d'èpoques anteriors van forjar les muralles de "
+#~ "Halstead a partir de la roca."
+
+#~ msgid ""
+#~ "No, my young friend. Halstead indeed has a weakness. Among my many assets "
+#~ "is access to a wealth of secrets few in Wesnoth are privy to."
+#~ msgstr ""
+#~ "No, jove amic. Halstead sí que té una feblesa. Entre els meus molts "
+#~ "actius hi ha l'accés a una riquesa de secrets a la qual pocs a Wesnoth "
+#~ "tenen accés."
+
+#~ msgid ""
+#~ "You see, the mountain on which the fort was built is solid, but the "
+#~ "castle on top has been built and rebuilt many times over the ages. It is "
+#~ "not as indestructible as you might think."
+#~ msgstr ""
+#~ "Com pots veure, la muntanya on es va construir la fortalesa és sòlida, "
+#~ "però el castell damunt ha sigut construït i reconstruït moltes vegades al "
+#~ "llarg del temps. No és tan indestructible com podries creure."
+
+#~ msgid ""
+#~ "Beneath the structure is a system of catacombs that connects all four "
+#~ "towers to the central keep. Over time, after many wars, supports were "
+#~ "required to hold up the middle."
+#~ msgstr ""
+#~ "Sota l'estructura hi ha una xarxa de catacumbes que connecten les quatre "
+#~ "torres amb la torrassa central. Segons van passar els anys, després de "
+#~ "moltes guerres, van ser necessaris reforços per a que no s'enfonsara el "
+#~ "centre."
+
 #~ msgid "No, young one. Halstead indeed has a weakness."
 #~ msgstr "No, jove. Encara que no ho semble, Halstead té un punt dèbil."
 
 #~ msgid "How do you know?"
 #~ msgstr "Cóm ho saps?"
 
-#, fuzzy
-#~| msgid ""
-#~| "When I was a boy, my father — your grandfather — brought your dad and me "
-#~| "to live in Aldril after orcs massacred many in our village. We grew up "
-#~| "around here, and we learned many things."
 #~ msgid ""
 #~ "When I was a boy, my father — your grandfather — brought your mother and "
 #~ "me to live in Aldril after orcs massacred many in our village. We grew up "
 #~ "around here, and we learned many things."
 #~ msgstr ""
-#~ "Quan era un xiquet, mon pare - el teu avi - va dur-nos a ton pare i a mi "
-#~ "a viure ací a Aldril després que els orcs massacraren el nostre poblet. "
-#~ "Vam créixer per ací dins, i vam aprendre moltes coses."
+#~ "Quan era petit, mon pare — el vostre avi — ens dugué a la vostra mare i a "
+#~ "mi a viure ací a Aldril després que els orcs massacraren molta gent del "
+#~ "nostre poblet. Creixérem per ací, i aprenguérem moltes coses."
 
 #~ msgid ""
 #~ "Beneath the structure is a system of catacombs that connects all four "
@@ -4452,6 +4199,240 @@ msgstr "Cóm pot ser? Hem perdut."
 #~ "Sota l'estructura, hi ha una xarxa de catacumbes que connecta les quatre "
 #~ "torres amb la torrassa central. Al créixer les catacumbes, combinat amb "
 #~ "els segles de guerres, va ser necessari apuntalar el centre amb reforços."
+
+#~ msgid ""
+#~ "I hope you’re right. In a few hours, night will fall, and we will find "
+#~ "out."
+#~ msgstr ""
+#~ "Tant de bo tingues raó. Dins d'unes hores, es farà fosc i ho sabrem."
+
+#~ msgid ""
+#~ "We must be cautious. Look there, a substantial orc force is also "
+#~ "advancing on Halstead. They must think Wesnoth’s army is spread out right "
+#~ "now."
+#~ msgstr ""
+#~ "Hem d'anar amb cura. Mireu allà, un grup ben gran d'orcs també avança cap "
+#~ "a Halstead. Deuen pensar que l'exèrcit de Wesnoth estarà escampat per "
+#~ "tota la regió."
+
+#~ msgid "Heh. They’re in for a surprise. This may work to our advantage."
+#~ msgstr "Heh. Benvinguts a la festa. Pot anar-nos bé."
+
+#~ msgid "Who is it?"
+#~ msgstr "Qui són?"
+
+#~ msgid "Help, I hope. Circumstances cannot afford to get much more dire."
+#~ msgstr "Espere que ajuda. Açò no pot empitjorar molt més."
+
+#~ msgid "Riders approach from the northwest! Stand fast, men."
+#~ msgstr "S'acosten genets pel nord-oest! Resistiu, homes."
+
+#~ msgid ""
+#~ "Knights of Elensefar, behold: the battle has already begun! Make camp "
+#~ "here. Then, we charge!"
+#~ msgstr ""
+#~ "Cavallers d'Elensefar, mireu: la batalla ja ha començat! Acampeu aquí. "
+#~ "Després, carreguem!"
+
+#~ msgid ""
+#~ "Amazing. Lord Maddock sent his house guards... his finest troops! "
+#~ "Elensefar must be defenseless now. More hinges on this battle than I "
+#~ "thought."
+#~ msgstr ""
+#~ "Increïble. El Senyor Maddock ha enviat la seua guàrdia... les seues "
+#~ "millors tropes! Elensefar deu haver quedat indefensa. Hi ha molt més que "
+#~ "depenja d'aquesta batalla del que havia pensat."
+
+#~ msgid "After about an hour..."
+#~ msgstr "Un hora després..."
+
+#~ msgid "Men, help me out of here! I am trapped under this rubble."
+#~ msgstr ""
+#~ "Nois, ajudeu-me a sortir d'aquí! Estic atrapat sota aquestes pedres."
+
+#~ msgid "I hope this sacrifice is not in vain... but we will never know."
+#~ msgstr ""
+#~ "Espere que aquest sacrifici no hage sigut debades... no mai ho sabrem."
+
+#~ msgid "Our dream of freedom... gone... Unngh."
+#~ msgstr "El nostre somni de llibertat... perdut... Unngh."
+
+#~ msgid "Uncle!"
+#~ msgstr "Oncle!"
+
+#~ msgid "NO!"
+#~ msgstr "NO!"
+
+#~ msgid "I promised your father I would watch after you... and I failed."
+#~ msgstr "Vaig prometre a ton pare que et protegiria... i he fallat."
+
+#~ msgid ""
+#~ "But we are so close to the end. We must finish this. I am sorry you will "
+#~ "not be able to enjoy our freedom. Goodbye, Harper."
+#~ msgstr ""
+#~ "Però estem tan a prop de la fi... Hem de continuar amb açò. Perdona'm per "
+#~ "que no pugues gaudir de nostra llibertat. Adéu, Harper."
+
+#~ msgid ""
+#~ "Carry on, my friends. Fighting by your side is the most honorable thing I "
+#~ "have done..."
+#~ msgstr ""
+#~ "Seguiu, amics meus. Lluitar amb vosaltres ha sigut la cosa més honrosa "
+#~ "que he fet mai..."
+
+#~ msgid ""
+#~ "You will never successfully oppose Asheviere. Her power is too great... "
+#~ "This small victory today is but a reprieve from the unimaginable pain you "
+#~ "will suffer when the full force of her wrath descends upon you."
+#~ msgstr ""
+#~ "Mai aconseguireu plantar cara a Asheviere. El seu poder és massa gran... "
+#~ "Aquesta petita victòria d'avui no és més que un respir del dolor "
+#~ "inimaginable que sofrireu quan tota la força de la seva fúria descendeixi "
+#~ "sobre vós."
+
+#~ msgid ""
+#~ "This was no small victory. You underestimate the power of love for "
+#~ "freedom."
+#~ msgstr ""
+#~ "Açò no ha sigut cap victòria xicoteta. Subestimes el poder de l'ànsia de "
+#~ "llibertat."
+
+#~ msgid ""
+#~ "You... underestimate the... cruelty and ambition of your Queen... Uungh..."
+#~ msgstr ""
+#~ "Vós... infravaloreu la... crueltat i ambició de la vostra Reina... "
+#~ "Uungh... "
+
+#~ msgid ""
+#~ "Small victory? Bah! Now we will raze this fortress and bury it in the "
+#~ "earth from whence it came."
+#~ msgstr ""
+#~ "Una victòria menuda? Ximpleries! Ara destruirem aquesta fortalessa fins "
+#~ "que no quede pedra sota pedra."
+
+#~ msgid ""
+#~ "The rest of the battle was a blur. The shock of what had happened stunned "
+#~ "everybody."
+#~ msgstr ""
+#~ "La resta de la batalla va ser com una boira. El que va passar allà va "
+#~ "deixar atabalats a tots."
+
+#~ msgid ""
+#~ "Baldras and his men fled the plains of western Wesnoth under the cover of "
+#~ "night. The spectacle of Halstead’s destruction stunned them into a daze "
+#~ "that only slowly wore off as they made their way north to and past "
+#~ "Elensefar."
+#~ msgstr ""
+#~ "Baldras i els seus hòmens van fugir de les planícies occidentals de "
+#~ "Wesnoth sota la foscor de la nit. L'espectacle de la destrucció de "
+#~ "Halstead els va mantenir en un atordiment que va anar desapareixent "
+#~ "segons continuaven cap al nord."
+
+#~ msgid ""
+#~ "The Elense riders routed the orcish army, small as it was, and sent them "
+#~ "back across the Great River. They then scattered to the countryside and "
+#~ "were not heard from again. Baldras thought this behavior odd when he "
+#~ "heard about it."
+#~ msgstr ""
+#~ "Els genets d'Elense feren fugir l'exèrcit orc, que no era gaire gran, i "
+#~ "els expulsaren fins a l'altra banda del Riu Gran. Després, s'escamparen "
+#~ "pels camps i no se'n tornà a sentir parlar. Baldras pensà que era un "
+#~ "comportament estrany quan ho sentí."
+
+#~ msgid ""
+#~ "As the main body of Asheviere’s army neared the ruins of Halstead, "
+#~ "strange things began to happen. Every night, men would disappear. Others "
+#~ "were found hacked to bloody pieces. Unexplained misfortune plagued the "
+#~ "marching columns. Soldiers dropped dead where they stood, slain by unseen "
+#~ "assassins. Fear of an undead menace spread through the ranks."
+#~ msgstr ""
+#~ "Mentre l'exèrcit principal d'Asheviere s'acostava a les ruïnes de "
+#~ "Halstead, van ocòrrer moltes coses estranyes. Totes les nits "
+#~ "desapareixien hòmens, altres apareixien talladets a trocets, una plaga "
+#~ "inexplicable va assolir les columnes de marxa, els soldats queien morts "
+#~ "per assassins invisibles... La por d'una amenaça no morta va escampar "
+#~ "entre les files."
+
+#~ msgid ""
+#~ "When the army of Wesnoth found the ruins of the mighty fortress Halstead, "
+#~ "it was too much. Their shock that such a thing could happen combined with "
+#~ "the invisible terror stalking them convinced Asheviere’s second in "
+#~ "command the entire countryside was cursed. He quickly retreated to the "
+#~ "traditional border and set up strong defenses against the west."
+#~ msgstr ""
+#~ "Quan l'exèrcit va trobar les ruïnes de la gran fortalesa de Halstead, ja "
+#~ "va ser massa. Entre que no podien creure que això poguera haver succeït i "
+#~ "l'invisible terror que els fuetejava, el segon al cap d'Asheviere es va "
+#~ "creure que tota la província estava maleïda. Ràpidament es va retirar a "
+#~ "les fronteres tradicionals i va establir unes fortes defenses contra "
+#~ "l'oest."
+
+#~ msgid ""
+#~ "Baldras had just crossed the Great River when rumors of night-stalkers "
+#~ "filtered through his ranks. With bitter humor he realized that Lord "
+#~ "Maddock’s men were successfully using tactics Baldras had mastered and "
+#~ "used during his resistance."
+#~ msgstr ""
+#~ "Baldras acabava de travessar el Riu Gran quan li van arribar rumors de "
+#~ "saltamarges. Amb una certa dosi d'humor, s'adonà que els homes de Lord "
+#~ "Maddock estaven emprant amb èxit les tàctiques que Baldras havia dominat "
+#~ "i emprat durant la seva resistència."
+
+#~ msgid ""
+#~ "The peasants-turned-outlaws finally reached Dallben. It was burnt to the "
+#~ "ground. In a panic, they raced through the forest to Delwyn. It was "
+#~ "likewise devastated. However, they did find one clue as to what "
+#~ "happened..."
+#~ msgstr ""
+#~ "Els camperols convertits en proscrits van arribar a la fi a Dallben. No "
+#~ "quedava pedra sobre pedra. Presa del pànic, van córrer cap a Delwyn. "
+#~ "Tampoc quedava res. Tanmateix, van trobar una pista del que havia "
+#~ "succeït..."
+
+#~ msgid ""
+#~ "... a grimy note nailed to a charred post that read, <i>“Baldras, You "
+#~ "would have been proud. We gave ’em hell. But in the end, it wasn’t "
+#~ "enough.”</i>"
+#~ msgstr ""
+#~ "... una nota bruta clavada en un pal cremat que deia: <i>«Baldras, "
+#~ "n'hauries estat orgullós. Els donàrem canya de la bona. Però, al cap i a "
+#~ "la fi, no fou prou».</i>"
+
+#~ msgid ""
+#~ "<i>“We fled like criminals in the night, but we made sure that no one "
+#~ "would harass us anymore.”</i>"
+#~ msgstr ""
+#~ "<i>«Fugirem com criminals durant la nit, però ens asseguràrem que ningú "
+#~ "ens molestaria més».</i>"
+
+#~ msgid ""
+#~ "<i>“If you wish to find us, head southwest. When you reach the land’s "
+#~ "end, just keep going. See you in the Three Sisters, old friend. ― "
+#~ "Relana”</i>"
+#~ msgstr ""
+#~ "<i>«Si voleu trobar-nos, aneu cap al sud-oest. Quan arribeu al final de "
+#~ "la terra, seguiu endavant. Ens veiem a les Tres Germanes, vell amic. ― "
+#~ "Relana»</i>"
+
+#~ msgid "Tell my wife... that I loved her!"
+#~ msgstr "Dieu-li a la meua dona... que l'estimava molt!"
+
+#~ msgid "Unngh... Now our people may never be free..."
+#~ msgstr "Unngh... La nostra gent mai no serà lliure..."
+
+#~ msgid "I am finished... will we ever be free?"
+#~ msgstr "Estic acabat... alguna vegada aconseguirem ser lliures?"
+
+#~ msgid ""
+#~ "They returned to their village to find it destroyed, with those who "
+#~ "fought left dead and the few survivors borne away to unknown fates. It "
+#~ "was a bitter doom, but as Asheviere’s grip tightened they would live to "
+#~ "see worse."
+#~ msgstr ""
+#~ "Tornaren a llur poble i el trobaren destruït, amb aquells que lluitaren "
+#~ "morts i els pocs sobrevivents fugits amb destinació desconeguda. Fou una "
+#~ "condemna amarga, però a mesura que la pressió d'Asheviere creixia, "
+#~ "veurien coses molt pitjors."
 
 #~ msgid "axe"
 #~ msgstr "destral"

@@ -62,31 +62,6 @@ scrollbar_panel_definition::scrollbar_panel_definition(const config& cfg)
 	load_resolutions<resolution>(cfg);
 }
 
-/*WIKI
- * @page = GUIWidgetDefinitionWML
- * @order = 1_scrollbar_panel
- *
- * == Scrollbar panel ==
- *
- * @begin{parent}{name="gui/"}
- * @begin{tag}{name="scrollbar_panel_definition"}{min=0}{max=-1}{super="generic/widget_definition"}
- * @begin{tag}{name="resolution"}{min=0}{max=-1}{super="gui/window_definition/resolution"}
- * The definition of a panel with scrollbars. A panel is a container holding
- * other elements in its grid. A panel is always enabled and can't be
- * disabled. Instead it uses the states as layers to draw on.
- *
- * @begin{table}{config}
- *     grid & grid & &                    A grid containing the widgets for main
- *                                     widget. $
- * @end{table}
- * The following layers exist:
- * * background, the background of the panel.
- * * foreground, the foreground of the panel.
- *
- * @end{tag}{name="resolution"}
- * @end{tag}{name="scrollbar_panel_definition"}
- * @end{parent}{name="gui/"}
- */
 scrollbar_panel_definition::resolution::resolution(const config& cfg)
 	: resolution_definition(cfg), grid()
 {
@@ -101,35 +76,6 @@ scrollbar_panel_definition::resolution::resolution(const config& cfg)
 }
 
 // }---------- BUILDER -----------{
-
-/*WIKI
- * @page = GUIWidgetInstanceWML
- * @order = 2_scrollbar_panel
- *
- * == Scrollbar panel ==
- * @begin{parent}{name="gui/window/resolution/grid/row/column/"}
- * @begin{tag}{name="scrollbar_panel"}{min="0"}{max="-1"}{super="generic/widget_instance"}
- * Instance of a scrollbar_panel.
- *
- * List with the scrollbar_panel specific variables:
- * @begin{table}{config}
- *     vertical_scrollbar_mode & scrollbar_mode & initial_auto &
- *                                     Determines whether or not to show the
- *                                     scrollbar. $
- *     horizontal_scrollbar_mode & scrollbar_mode & initial_auto &
- *                                     Determines whether or not to show the
- *                                     scrollbar. $
- *
- *     definition & section & &        This defines how a scrollbar_panel item
- *                                     looks. It must contain the grid
- *                                     definition for 1 row of the list. $
- *
- * @end{table}
- * @begin{tag}{name="definition"}{min=0}{max=1}{super="gui/window/resolution/grid"}
- * @end{tag}{name="definition"}
- * @end{tag}{name="scrollbar_panel"}
- * @end{parent}{name="gui/window/resolution/grid/row/column/"}
- */
 
 namespace implementation
 {

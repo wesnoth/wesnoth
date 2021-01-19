@@ -256,7 +256,7 @@ std::size_t wesnothd_connection::is_write_complete(const boost::system::error_co
 	MPTEST_LOG;
 	if(ec) {
 		{
-			std::lock_guard<std::mutex> lock(last_error_mutex_);
+			std::lock_guard lock(last_error_mutex_);
 			last_error_ = ec;
 		}
 
@@ -280,7 +280,7 @@ void wesnothd_connection::handle_write(const boost::system::error_code& ec, std:
 
 	if(ec) {
 		{
-			std::lock_guard<std::mutex> lock(last_error_mutex_);
+			std::lock_guard lock(last_error_mutex_);
 			last_error_ = ec;
 		}
 
@@ -302,7 +302,7 @@ std::size_t wesnothd_connection::is_read_complete(const boost::system::error_cod
 	MPTEST_LOG;
 	if(ec) {
 		{
-			std::lock_guard<std::mutex> lock(last_error_mutex_);
+			std::lock_guard lock(last_error_mutex_);
 			last_error_ = ec;
 		}
 
@@ -343,7 +343,7 @@ void wesnothd_connection::handle_read(const boost::system::error_code& ec, std::
 	bytes_to_read_ = 0;
 	if(last_error_ && ec != boost::asio::error::eof) {
 		{
-			std::lock_guard<std::mutex> lock(last_error_mutex_);
+			std::lock_guard lock(last_error_mutex_);
 			last_error_ = ec;
 		}
 
@@ -359,7 +359,7 @@ void wesnothd_connection::handle_read(const boost::system::error_code& ec, std::
 	if(!data.empty()) { DBG_NW << "Received:\n" << data; }
 
 	{
-		std::lock_guard<std::mutex> lock(recv_queue_mutex_);
+		std::lock_guard lock(recv_queue_mutex_);
 		recv_queue_.emplace(std::move(data));
 		recv_queue_lock_.notify_all();
 	}
@@ -404,7 +404,7 @@ bool wesnothd_connection::receive_data(config& result)
 	MPTEST_LOG;
 
 	{
-		std::lock_guard<std::mutex> lock(recv_queue_mutex_);
+		std::lock_guard lock(recv_queue_mutex_);
 		if(!recv_queue_.empty()) {
 			result.swap(recv_queue_.front());
 			recv_queue_.pop();
@@ -413,7 +413,7 @@ bool wesnothd_connection::receive_data(config& result)
 	}
 
 	{
-		std::lock_guard<std::mutex> lock(last_error_mutex_);
+		std::lock_guard lock(last_error_mutex_);
 		if(last_error_) {
 			std::string user_msg;
 

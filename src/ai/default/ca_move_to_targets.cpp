@@ -270,7 +270,7 @@ std::pair<map_location,map_location> move_to_targets_phase::choose_move(std::vec
 		if (!(u->side() != get_side() || (u->can_recruit() && !is_keep_ignoring_leader(u->id())) || u->movement_left() <= 0 || u->incapacitated())) {
 			if (u->get_state("guardian")) {
 				LOG_AI << u->type_id() << " is guardian, staying still\n";
-				return std::make_pair(u->get_location(), u->get_location());
+				return std::pair(u->get_location(), u->get_location());
 			}
 		}
 	}
@@ -363,7 +363,7 @@ std::pair<map_location,map_location> move_to_targets_phase::choose_move(std::vec
 
 	if(best_rated_target == rated_targets.end()) {
 		LOG_AI << "no eligible targets found for unit at " << u->get_location() << std::endl;
-		return std::make_pair(u->get_location(), u->get_location());
+		return std::pair(u->get_location(), u->get_location());
 	}
 
 	assert(best_rating >= 0);
@@ -446,7 +446,7 @@ std::pair<map_location,map_location> move_to_targets_phase::choose_move(std::vec
 			}
 
 			LOG_AI << "returning support...\n";
-			return std::make_pair(best->get_location(), best_loc);
+			return std::pair(best->get_location(), best_loc);
 		}
 	}
 
@@ -503,7 +503,7 @@ std::pair<map_location,map_location> move_to_targets_phase::choose_move(std::vec
 				LOG_AI << "group didn't move " << group.size() << "\n";
 
 				//the group didn't move, so end the first unit in the group's turn, to prevent an infinite loop
-				return std::make_pair(best->get_location(), best->get_location());
+				return std::pair(best->get_location(), best->get_location());
 
 			}
 		} else {
@@ -604,7 +604,7 @@ std::pair<map_location,map_location> move_to_targets_phase::choose_move(std::vec
 		//create this as a target, attempting to rally units around
 		targets.emplace_back(best->get_location(), best_target->value);
 		best_target = targets.end() - 1;
-		return std::make_pair(best->get_location(), best->get_location());
+		return std::pair(best->get_location(), best->get_location());
 	}
 
 	LOG_AI << "Could not find anywhere to move!\n";
@@ -646,10 +646,8 @@ double move_to_targets_phase::compare_groups(const std::set<map_location>& our_g
 void move_to_targets_phase::enemies_along_path(const std::vector<map_location>& route, const move_map& dstsrc, std::set<map_location>& res)
 {
 	for(std::vector<map_location>::const_iterator i = route.begin(); i != route.end(); ++i) {
-		adjacent_loc_array_t adj;
-		get_adjacent_tiles(*i,adj.data());
-		for(std::size_t n = 0; n < adj.size(); ++n) {
-			const std::pair<move_map::const_iterator,move_map::const_iterator> itors = dstsrc.equal_range(adj[n]);
+		for(const map_location& adj : get_adjacent_tiles(*i)) {
+			const std::pair<move_map::const_iterator,move_map::const_iterator> itors = dstsrc.equal_range(adj);
 			for(move_map::const_iterator j = itors.first; j != itors.second; ++j) {
 				res.insert(j->second);
 			}
@@ -723,9 +721,7 @@ bool move_to_targets_phase::move_group(const map_location& dst, const std::vecto
 	}
 
 	if(next.valid()) {
-		adjacent_loc_array_t adj;
-		get_adjacent_tiles(dst,adj.data());
-
+		const auto adj = get_adjacent_tiles(dst);
 		direction = std::distance(adj.begin(), std::find(adj.begin(), adj.end(), next));
 	}
 
@@ -782,8 +778,7 @@ bool move_to_targets_phase::move_group(const map_location& dst, const std::vecto
 			preferred_moves.erase(std::find(preferred_moves.begin(),preferred_moves.end(),best_loc));
 
 			//find locations that are 'perpendicular' to the direction of movement for further units to move to.
-			adjacent_loc_array_t adj;
-			get_adjacent_tiles(best_loc,adj.data());
+			const auto adj = get_adjacent_tiles(best_loc);
 			for(std::size_t n = 0; n < adj.size(); ++n) {
 				if(n != direction && ((n+3)%6) != direction && map_.on_board(adj[n]) &&
 				   units_.count(adj[n]) == 0 && std::count(preferred_moves.begin(),preferred_moves.end(),adj[n]) == 0) {

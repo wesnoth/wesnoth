@@ -19,8 +19,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2020-12-19 01:27 UTC\n"
-"PO-Revision-Date: 2020-12-02 15:41+0100\n"
+"POT-Creation-Date: 2021-01-16 14:18 UTC\n"
+"PO-Revision-Date: 2021-01-07 13:08+0100\n"
 "Last-Translator: Septim <septim@centrum.cz>\n"
 "Language-Team: Český <hrubymar10@gmail.com>\n"
 "Language: cs\n"
@@ -49,19 +49,19 @@ msgstr "pěst"
 #. [attack]: type=impact
 #: data/campaigns/Dead_Water/units/Brawler.cfg:32
 #: data/core/units/monsters/Fire_Dragon.cfg:43
-#: data/core/units/monsters/Icemonax_Greater.cfg:79
+#: data/core/units/monsters/Icemonax_Greater.cfg:72
 msgid "tail"
 msgstr "ocas"
 
 #. [attack]: type=impact
-#: data/campaigns/Dead_Water/units/Kraken.cfg:37
+#: data/campaigns/Dead_Water/units/Kraken.cfg:29
 #: data/core/units/monsters/Cuttle_Fish.cfg:31
 #: data/core/units/monsters/Tentacle.cfg:34
 msgid "tentacle"
 msgstr "chapadlo"
 
 #. [attack]: type=pierce
-#: data/campaigns/Dead_Water/units/Kraken.cfg:48
+#: data/campaigns/Dead_Water/units/Kraken.cfg:40
 #: data/core/units/monsters/Cuttle_Fish.cfg:42
 msgid "ink"
 msgstr "inkoust"
@@ -132,7 +132,7 @@ msgstr "hůl"
 #: data/campaigns/Liberty/units/Rogue_Mage.cfg:24
 #: data/campaigns/Liberty/units/Shadow_Mage.cfg:34
 #: data/core/units/dunefolk/Falconer.cfg:142
-#: data/core/units/dunefolk/Sky_Hunter.cfg:140
+#: data/core/units/dunefolk/Sky_Hunter.cfg:141
 #: data/core/units/humans/Loyalist_Bowman.cfg:22
 #: data/core/units/orcs/Crossbowman.cfg:23 data/core/units/orcs/Slurbow.cfg:28
 msgid "short sword"
@@ -192,7 +192,7 @@ msgstr "prak"
 #: data/core/units/dunefolk/Rover.cfg:31
 #: data/core/units/dunefolk/Wayfarer.cfg:43
 #: data/core/units/dwarves/Explorer.cfg:33
-#: data/core/units/dwarves/Fighter.cfg:41
+#: data/core/units/dwarves/Fighter.cfg:57
 #: data/core/units/dwarves/Pathfinder.cfg:36
 #: data/core/units/dwarves/Pathfinder.cfg:44
 #: data/core/units/dwarves/Scout.cfg:35 data/core/units/dwarves/Scout.cfg:43
@@ -277,7 +277,7 @@ msgstr "řemdih"
 #: data/core/units/humans/Loyalist_Swordsman.cfg:29
 #: data/core/units/humans/Woodsman_Ranger.cfg:44
 #: data/core/units/nagas/Fighter.cfg:30 data/core/units/nagas/Myrmidon.cfg:29
-#: data/core/units/nagas/Warrior.cfg:27 data/core/units/orcs/Grunt.cfg:43
+#: data/core/units/nagas/Warrior.cfg:27 data/core/units/orcs/Grunt.cfg:59
 #: data/core/units/orcs/Leader.cfg:28
 msgid "sword"
 msgstr "meč"
@@ -319,8 +319,8 @@ msgstr "luk"
 
 #. [attack]: type=blade
 #. [attack]: type=pierce
-#. [unit_type]: id=SotA Flying Corpse_Gryphon
 #. [unit_type]: id=SotA Soulless_Gryphon
+#. [unit_type]: id=SotA Flying Corpse_Gryphon
 #: data/campaigns/Heir_To_The_Throne/units/Sleeping_Gryphon.cfg:30
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:161
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Soulless.cfg:133
@@ -334,7 +334,7 @@ msgstr "luk"
 #: data/core/units/monsters/Elder_Falcon.cfg:36
 #: data/core/units/monsters/Falcon.cfg:85
 #: data/core/units/monsters/Icemonax.cfg:53
-#: data/core/units/monsters/Icemonax_Greater.cfg:61
+#: data/core/units/monsters/Icemonax_Greater.cfg:54
 #: data/core/units/monsters/Roc.cfg:36
 #: data/core/units/monsters/Skeletal_Dragon.cfg:43
 #: data/core/units/undead/Corpse_Ghoul.cfg:33
@@ -349,12 +349,13 @@ msgstr "drápy"
 #: data/campaigns/Secrets_of_the_Ancients/units/Sailor.cfg:23
 #: data/campaigns/Secrets_of_the_Ancients/units/Sea_Captain.cfg:27
 #: data/core/units/humans/Loyalist_Duelist.cfg:37
-#: data/core/units/humans/Loyalist_Fencer.cfg:53
+#: data/core/units/humans/Loyalist_Fencer.cfg:60
 #: data/core/units/humans/Loyalist_Master_at_Arms.cfg:32
 msgid "saber"
 msgstr "šavle"
 
 #. [unit_type]: id=Walking Corpse, race=undead
+#. [unit_type]: id=Walking Corpse Shynal, race=undead
 #. [unit_type]: id=SotA Walking Corpse_Human
 #. [unit_type]: id=SotA Walking Corpse_Dwarf
 #. [unit_type]: id=SotA Walking Corpse_Goblin
@@ -366,7 +367,6 @@ msgstr "šavle"
 #. [unit_type]: id=SotA Walking Corpse_Wolf Rider
 #. [unit_type]: id=SotA Walking Corpse_Spider
 #. [unit_type]: id=SotA Walking Corpse_Rat
-#. [unit_type]: id=Walking Corpse Shynal, race=undead
 #: data/campaigns/Secrets_of_the_Ancients/units/Corpse_Shynal.cfg:4
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:111
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:126
@@ -397,17 +397,8 @@ msgstr ""
 "nepředstavují pro zkušeného bojovníka velké nebezpečí, pohled na bývalé "
 "přátele v jejich řadách nepřidá na veselí."
 
-#. [attack]: type=impact
 #. [attack]: type=arcane
-#. [unit_type]: id=SotA Walking Corpse_Human
-#. [unit_type]: id=SotA Walking Corpse_Dwarf
-#. [unit_type]: id=SotA Walking Corpse_Goblin
-#. [unit_type]: id=SotA Walking Corpse_Mounted
-#. [unit_type]: id=SotA Walking Corpse_Saurian
-#. [unit_type]: id=SotA Swimming Corpse
-#. [unit_type]: id=SotA Walking Corpse_Troll
-#. [unit_type]: id=SotA Walking Corpse_Wose
-#. [unit_type]: id=SotA Walking Corpse_Wolf Rider
+#. [attack]: type=impact
 #. [unit_type]: id=SotA Soulless_Human
 #. [unit_type]: id=SotA Soulless_Dwarf
 #. [unit_type]: id=SotA Soulless_Goblin
@@ -417,8 +408,17 @@ msgstr ""
 #. [unit_type]: id=SotA Soulless_Troll
 #. [unit_type]: id=SotA Soulless_Wose
 #. [unit_type]: id=SotA Soulless_Wolf Rider
-#. [attack]: type=cold
+#. [unit_type]: id=SotA Walking Corpse_Human
+#. [unit_type]: id=SotA Walking Corpse_Dwarf
+#. [unit_type]: id=SotA Walking Corpse_Goblin
+#. [unit_type]: id=SotA Walking Corpse_Mounted
+#. [unit_type]: id=SotA Walking Corpse_Saurian
+#. [unit_type]: id=SotA Swimming Corpse
+#. [unit_type]: id=SotA Walking Corpse_Troll
+#. [unit_type]: id=SotA Walking Corpse_Wose
+#. [unit_type]: id=SotA Walking Corpse_Wolf Rider
 #. [attack]: type=fire
+#. [attack]: type=cold
 #: data/campaigns/Secrets_of_the_Ancients/units/Corpse_Shynal.cfg:36
 #: data/campaigns/Secrets_of_the_Ancients/units/Necro_Ancient_Lich.cfg:36
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:114
@@ -502,12 +502,12 @@ msgstr "prokletí"
 
 #. [attack]: type=blade
 #. [attack]: type=pierce
-#. [unit_type]: id=SotA Walking Corpse_Wolf
-#. [unit_type]: id=SotA Walking Corpse_Spider
-#. [unit_type]: id=SotA Flying Corpse_Bat
 #. [unit_type]: id=SotA Soulless_Wolf
 #. [unit_type]: id=SotA Soulless_Spider
 #. [unit_type]: id=SotA Soulless_Bat
+#. [unit_type]: id=SotA Walking Corpse_Wolf
+#. [unit_type]: id=SotA Walking Corpse_Spider
+#. [unit_type]: id=SotA Flying Corpse_Bat
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:255
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:286
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:318
@@ -532,23 +532,24 @@ msgstr "prokletí"
 msgid "fangs"
 msgstr "tesáky"
 
-#. [attack]: type=cold
 #. [attack]: type=blade
 #. [attack]: type=pierce
+#. [attack]: type=cold
 #. [variation]
-#. [unit_type]: id=SotA Walking Corpse_Rat
 #. [unit_type]: id=SotA Soulless_Rat
+#. [unit_type]: id=SotA Walking Corpse_Rat
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:301
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Soulless.cfg:261
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Familiar.cfg:33
 #: data/core/units/dunefolk/Wyvern_Rider.cfg:23
 #: data/core/units/monsters/Crocodile.cfg:101
 #: data/core/units/monsters/Fire_Dragon.cfg:34
+#: data/core/units/monsters/Frost_Stoat.cfg:95
 #: data/core/units/monsters/Giant_Rat.cfg:30
-#: data/core/units/monsters/Giant_Stoat.cfg:62
 #: data/core/units/monsters/Icemonax.cfg:62
-#: data/core/units/monsters/Icemonax_Greater.cfg:70
-#: data/core/units/monsters/Wild_Wyvern.cfg:24
+#: data/core/units/monsters/Icemonax_Greater.cfg:63
+#: data/core/units/monsters/Scarab.cfg:44
+#: data/core/units/monsters/Wild_Wyvern.cfg:95
 #: data/core/units/undead/Corpse_Ghast.cfg:29
 #: data/core/units/undead/Corpse_Soulless.cfg:235
 #: data/core/units/undead/Corpse_Walking.cfg:234
@@ -620,7 +621,7 @@ msgstr ""
 #. [attack]: type=blade
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Berserker.cfg:37
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Ulfserker.cfg:31
-#: data/core/units/dwarves/Berserker.cfg:37
+#: data/core/units/dwarves/Berserker.cfg:44
 #: data/core/units/dwarves/Ulfserker.cfg:31
 msgid "berserker frenzy"
 msgstr "válečná zuřivost"
@@ -654,9 +655,9 @@ msgstr ""
 #: data/core/units/dunefolk/Burner.cfg:32
 #: data/core/units/dunefolk/Firetrooper.cfg:86
 #: data/core/units/dunefolk/Scorcher.cfg:33
-#: data/core/units/dwarves/Dragonguard.cfg:37
-#: data/core/units/dwarves/Thunderer.cfg:49
-#: data/core/units/dwarves/Thunderguard.cfg:38
+#: data/core/units/dwarves/Dragonguard.cfg:38
+#: data/core/units/dwarves/Thunderer.cfg:64
+#: data/core/units/dwarves/Thunderguard.cfg:39
 #: data/core/units/humans/Outlaw_Assassin.cfg:30
 #: data/core/units/humans/Outlaw_Rogue.cfg:28
 #: data/core/units/humans/Outlaw_Thief.cfg:95
@@ -673,7 +674,7 @@ msgstr "dýka"
 
 #. [attack]: type=pierce
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Dragonguard.cfg:33
-#: data/core/units/dwarves/Dragonguard.cfg:46
+#: data/core/units/dwarves/Dragonguard.cfg:47
 msgid "dragonstaff"
 msgstr "dračí hůl"
 
@@ -697,10 +698,10 @@ msgstr ""
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Steelclad.cfg:37
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Rune_Lord.cfg:33
 #: data/core/units/dwarves/Arcanister.cfg:30
-#: data/core/units/dwarves/Fighter.cfg:49 data/core/units/dwarves/Lord.cfg:56
+#: data/core/units/dwarves/Fighter.cfg:65 data/core/units/dwarves/Lord.cfg:57
 #: data/core/units/dwarves/Runemaster.cfg:30
 #: data/core/units/dwarves/Runesmith.cfg:29
-#: data/core/units/dwarves/Steelclad.cfg:56 data/core/units/trolls/Great.cfg:26
+#: data/core/units/dwarves/Steelclad.cfg:57 data/core/units/trolls/Great.cfg:26
 #: data/core/units/trolls/Hero.cfg:26 data/core/units/trolls/Warrior.cfg:26
 msgid "hammer"
 msgstr "kladivo"
@@ -743,7 +744,7 @@ msgstr ""
 #: data/core/units/goblins/Spearman.cfg:36
 #: data/core/units/humans/Horseman.cfg:25
 #: data/core/units/humans/Loyalist_Javelineer.cfg:28
-#: data/core/units/humans/Loyalist_Spearman.cfg:65
+#: data/core/units/humans/Loyalist_Spearman.cfg:81
 #: data/core/units/merfolk/Hoplite.cfg:36 data/core/units/merfolk/Hunter.cfg:24
 #: data/core/units/merfolk/Hunter.cfg:32
 #: data/core/units/merfolk/Javelineer.cfg:23
@@ -774,22 +775,22 @@ msgstr "kopí"
 #: data/core/units/dwarves/Sentinel.cfg:48
 #: data/core/units/dwarves/Stalwart.cfg:43
 #: data/core/units/humans/Loyalist_Javelineer.cfg:39
-#: data/core/units/humans/Loyalist_Spearman.cfg:77
+#: data/core/units/humans/Loyalist_Spearman.cfg:93
 msgid "javelin"
 msgstr "oštěp"
 
 #. [attack]: type=blade
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Lord.cfg:28
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Steelclad.cfg:28
-#: data/core/units/dwarves/Explorer.cfg:24 data/core/units/dwarves/Lord.cfg:47
-#: data/core/units/dwarves/Steelclad.cfg:47
+#: data/core/units/dwarves/Explorer.cfg:24 data/core/units/dwarves/Lord.cfg:48
+#: data/core/units/dwarves/Steelclad.cfg:48
 #: data/core/units/undead/Skele_Death_Knight.cfg:35
 msgid "battle axe"
 msgstr "válečná sekera"
 
 #. [attack]: type=blade
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Lord.cfg:46
-#: data/core/units/dwarves/Lord.cfg:65
+#: data/core/units/dwarves/Lord.cfg:66
 msgid "hatchet"
 msgstr "sekyrka"
 
@@ -844,8 +845,8 @@ msgstr ""
 #. [attack]: type=pierce
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Thunderer.cfg:38
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Thunderguard.cfg:35
-#: data/core/units/dwarves/Thunderer.cfg:58
-#: data/core/units/dwarves/Thunderguard.cfg:47
+#: data/core/units/dwarves/Thunderer.cfg:73
+#: data/core/units/dwarves/Thunderguard.cfg:48
 msgid "thunderstick"
 msgstr "hromová hůl"
 
@@ -1127,8 +1128,8 @@ msgstr ""
 "Oproti ostatním drakonidům mají drakonidé soudci vyšší odolnost vůči útokům "
 "„bodnutím“."
 
-#. [attack]: type=blade
 #. [attack]: type=pierce
+#. [attack]: type=blade
 #: data/core/units/drakes/Arbiter.cfg:31 data/core/units/drakes/Arbiter.cfg:40
 #: data/core/units/drakes/Warden.cfg:32 data/core/units/drakes/Warden.cfg:41
 #: data/core/units/humans/Loyalist_Halberdier.cfg:32
@@ -2265,7 +2266,7 @@ msgstr ""
 "lidu."
 
 #. [attack]: type=blade
-#: data/core/units/dunefolk/Sky_Hunter.cfg:152
+#: data/core/units/dunefolk/Sky_Hunter.cfg:153
 msgid "eagle"
 msgstr "orel"
 
@@ -2848,17 +2849,6 @@ msgstr "Elfí mstitel"
 
 #. [unit_type]: id=Elvish Avenger, race=elf
 #: data/core/units/elves/Avenger.cfg:20
-#, fuzzy
-#| msgid ""
-#| "The curious name of the elvish ‘Avengers’ comes from a tactic often "
-#| "employed by these master rangers. The enemy is allowed to break through a "
-#| "feint defense, and when the vulnerable troops behind the front line "
-#| "follow, these archers break cover and attack, cutting the supply lines "
-#| "and surrounding the enemy in one fell stroke.\n"
-#| "\n"
-#| "This has, at times, been interpreted as a form of vengeance for their "
-#| "brethren lost earlier in the battle. Although not so base in design, it "
-#| "is not at all inaccurate."
 msgid ""
 "The curious name of the Elvish ‘Avengers’ comes from a tactic often employed "
 "by these master rangers. The enemy is allowed to break through a feint "
@@ -2869,12 +2859,12 @@ msgid ""
 "in design, it is not at all inaccurate."
 msgstr ""
 "Zvláštní jméno elfích „mstitelů“ vychází z taktiky, tak často používané "
-"těmito mistry střelci. Nepřátelům je umožněno dostat se skrz obranné linie — "
-"a když jsou zranitelné jednotky za frontovou oblastí, tito lučištníci vyjdou "
-"z úkrytu, zaútočí a odříznou tak nepřítele od podpůrných jednotek.\n"
-"\n"
-"To je často vykládáno jako určitý druh msty za své padlé bratry. Ačkoliv "
-"msta není základní myšlenkou nejedná se o nepřesný termín jejich pojmenování."
+"těmito mistry střelci. Nepřátelské jednotky se nechají projít skrz zdánlivou "
+"obrannou linii, a když jejich zranitelné spojenecké týlové jednotky "
+"následují, vyjdou tito lučištníci z úkrytu a zaútočí. Jedním tahem tak "
+"odříznou nepřítele od podpůrných jednotek a zároveň ho sevřou do kleští. To "
+"je často vykládáno jako určitý druh msty za padlé bratry. Jakkoli msta není "
+"základní myšlenkou, nejedná se o nepřesný termín jejich pojmenování."
 
 #. [special_note]
 #: data/core/units/elves/Avenger.cfg:22
@@ -2882,6 +2872,8 @@ msgid ""
 "Elvish Avengers are well-traveled and adept at traversing harsh terrains "
 "like sand, water, and mountains."
 msgstr ""
+"Elfí mstitelé jsou zcestovalí a zběhlí v překonávání drsných terénů, jako je "
+"písek, voda a hory."
 
 #. [female]
 #: data/core/units/elves/Avenger.cfg:97
@@ -2964,6 +2956,17 @@ msgid ""
 "the druids’ careful tending, the forest kindles their magics in turn, "
 "symbiotically enhancing the already potent powers that these elves possess."
 msgstr ""
+"Někteří elfové se rozhodli prohloubit své spojení s tělesným světem, a tím "
+"posílit své již tak silné schopnosti ovládat přírodní síly a pečovat o ně. "
+"Snad nejpozoruhodnějším účinkem magie těchto druidek v hlubokých lesích, "
+"které chrání, je výrazný pocit oživlosti. Cizí poutníci, procházející elfími "
+"lesy, často mluví o zaplétání kořenů a rév pohybujících se téměř tak rychle, "
+"jako je tempo pochodu válečníka, či o skřípavém pohupování prastarých "
+"stromů, které za jedinou noc zaplní celá ležení. Les a země se stávají téměř "
+"propojenou entitou, něčím, co žije a dýchá jako jeden jediný masivní "
+"organismus. Jak les vzkvétá pod starostlivou péčí druidek, rozněcuje jim na "
+"oplátku jejich kouzla a symbioticky zvyšuje již tak mocné síly, které tyto "
+"elfky mají."
 
 #. [attack]: type=impact
 #: data/core/units/elves/Druid.cfg:38 data/core/units/elves/Lady.cfg:29
@@ -2990,6 +2993,15 @@ msgid ""
 "well-regarded by most of their kin and sometimes called upon for guidance "
 "especially in unusual or peculiar matters."
 msgstr ""
+"V kontextu elfí magie je pojem čarování trochu zavádějící, protože téměř "
+"vždy odkazuje na manipulaci s esencí objektu za účelem věštění nebo vhledu. "
+"Oblíbeným mezi příslušnými kouzelnicemi je naplňování jejich přirozeného "
+"prostředí dechem nadpozemskosti, čímž se vytváří tajemné háje, existující na "
+"pomezí mezi tělesným a éterickým světem. Tyto záhadné domény jsou udržovány "
+"svými stejně záhadnými správkyněmi, které se většinou drží daleko od "
+"zvědavých očí. I když jsou tyto elfky spíše rezervované a nespolečenské, "
+"většina elfů je pokládá za vážené a někdy jsou žádány o radu či vedení, "
+"zejména v neobvyklých nebo zvláštních záležitostech."
 
 #. [attack]: type=impact
 #: data/core/units/elves/Enchantress.cfg:39 data/core/units/elves/Shaman.cfg:44
@@ -3028,23 +3040,6 @@ msgstr "Elfí hrdina"
 
 #. [unit_type]: id=Elvish Hero, race=elf
 #: data/core/units/elves/Hero.cfg:18
-#, fuzzy
-#| msgid ""
-#| "Accomplished Elvish warriors are sometimes called ‘Sárcan’, roughly "
-#| "meaning ‘one who has sacrificed in defense’ or ‘one transfigured by "
-#| "experience’. Often translated to ‘Elvish Heroes’ in the human tongue, "
-#| "this name does indicate some level of esteem and prestige, but is not "
-#| "used to glorify the position that these elves hold. Elvish Heroes are "
-#| "those who have survived numerous wars and have outlived many of their "
-#| "friends who fell in prior battles. They have seen all manner of atrocity "
-#| "committed by all races, be it orcs and humans ravaging the natural beauty "
-#| "of the forests, or even their own kind, other elves who are not above "
-#| "slaughtering innocent people out of pride and vengeance. Many years of "
-#| "fighting naturally make these swordsmen highly skilled in melee combat, "
-#| "but the hardships and destruction wrought by war take a great toll on "
-#| "both mind and body. While the Elves realize the necessity of military "
-#| "strength and honor the ‘Sárcanet’ as heroes for their service, such a "
-#| "status is not one often sought after by the majority of Elvenkind."
 msgid ""
 "Accomplished Elvish warriors are sometimes called ‘Sárcan’, roughly meaning "
 "‘one who has sacrificed in defense’ or ‘one transfigured by experience’. "
@@ -3062,19 +3057,19 @@ msgid ""
 "Elvenkind."
 msgstr ""
 "Vynikající elfí válečníci jsou někdy nazýváni „Sárcan“, což přibližně "
-"znamená „ten, kdo se obětoval na obranu“ nebo „proměněný zkušeností“. Toto "
-"jméno, do lidské řeči často překládáno jako „elfí hrdinové“, naznačuje "
-"určitou úroveň vážnosti a významnosti, ale nepoužívá se k oslavě postavení, "
-"které tito elfové zastávají. Elfí hrdinové jsou ti, kteří přestáli mnohé "
-"války a přežili mnoho svých přátel, již padli v předchozích bitvách. "
-"Spatřili všechny způsoby krutosti páchané každou rasou, ať to byli skřeti "
-"a lidé pustošící přirozenou krásu lesů nebo dokonce jejich vlastní druh, "
-"jiní elfové, kteří se nepovznesli nad vraždění nevinných lidí z pýchy a pro "
-"pomstu. Mnoho let bojů z těchto šermířů přirozeně učinilo velké odborníky na "
-"boj zblízka, ale útrapy a ničení působené válkou si vybírají velkou daň na "
-"duši i na těle. Přestože si elfové uvědomují nezbytnost vojenských sil a ctí "
-"„Sárcanet“ za jejich službu jako hrdiny, není toto postavení většinou elfího "
-"národa často vyhledáváno."
+"znamená „ten, kdo se obětoval na obranu“ nebo „ten, kdo byl proměněn "
+"zkušeností“. Toto jméno, které je v jazyku lidí často překládáno jako „elfí "
+"hrdinové“, naznačuje určitou úroveň proslulosti, ale není určeno k oslavě "
+"této pozice. Elfí hrdinové jsou ti, kteří přestáli mnohé války a přežili "
+"mnoho svých přátel, co padli v předchozích bitvách. Tito bojem zakalení "
+"vojáci, kteří často patří mezi několik osamělých přeživších, byli zasvěceni "
+"do četných zvěrstev války, ať to byli skřeti a lidé pustošící přirozenou "
+"krásu jejich lesních domovů, trpaslíci drancující vzácné artefakty od "
+"padlých, nekromanti pozvedávající jejich vlastní druhy proti nim nebo "
+"dokonce jejich vlastní druh zabíjející bez výčitek a milosrdenství nevinné. "
+"Přestože si elfové uvědomují nezbytnost vojenských sil a ctí „Sárcany“ za "
+"jejich službu jako hrdiny, není toto postavení většinou elfího národa často "
+"vyhledáváno."
 
 #. [unit_type]: id=Elvish High Lord, race=elf
 #: data/core/units/elves/High_Lord.cfg:4
@@ -3101,12 +3096,27 @@ msgid ""
 "lords is invaluable for maintaining the prosperity of Elvish rule, whether "
 "or not they sit at the top of the chain of command."
 msgstr ""
+"Zatímco dualita elfí magie se nejznatelněji projevuje v cestách rozdělených "
+"mezi tělesný a tajemný svět, stejná dichotomie se odráží i mezi elfí "
+"šlechtou. Většina lordů se ocitla v silném propojení s čarodejnicemi a "
+"spojila se tak s aspekty vhledu a ničení, částečně kvůli tomu, že používají "
+"tajemný oheň. Ačkoli to není na stejné úrovni jako moudrost, obvykle je "
+"třeba respektovat pánovu intuici a bát se jeho hněvu. S jeho věkem se to "
+"stává jen pravdivější, protože čas přináší elfovi ostrost mysli a smyslů.\n"
+"\n"
+"Představy cizinců, že existuje vyšší třída „vysokých lordů“, jsou obvykle "
+"klam vyplývající z velkých rozdílů ve vnímavosti a moci, kterými tito "
+"zkušení elfové disponují. Ve skutečnosti se hierarchie elfí vlády liší mezi "
+"enklávami a pak situačně mezi dobami míru a války. Jediná věc, kterou lze s "
+"jistotou říci, je, že prozíravost těchto lordů je neocenitelná pro udržení "
+"prosperity elfí vlády, a to ať už jsou či nejsou na vrcholu velení."
 
 #. [unit_type]: id=Elvish Lady, race=elf
 #: data/core/units/elves/Lady.cfg:4
 msgid "female^Elvish Lady"
 msgstr "Elfí dáma"
 
+# Panské protějšky nejsou úplně dobré, ale pánské, mužské nebo lordí jsou ještě horší.
 #. [unit_type]: id=Elvish Lady, race=elf
 #: data/core/units/elves/Lady.cfg:20
 msgid ""
@@ -3122,6 +3132,16 @@ msgid ""
 "peacekeepers, holding high authority during times of amity and taking a "
 "lesser role in times of war."
 msgstr ""
+"Urozené dámy elfích enkláv jsou obvykle silně propojeny s pozemským aspektem "
+"elfí magie a je jim přisuzována moudrost a ochrana. Je jim svěřeno udržování "
+"mnoha ctěných elfích tradic a hrají velkou roli při zabezpečování pokoje a "
+"přirozené zázračnosti svých proslulých lesních útočišť. Na rozdíl od svých "
+"panských protějšků, z nichž mnozí získávají díky používání nezemské magie "
+"značný individuální vhled a uvědomění, šíří většina dam svou moc v rámci "
+"společenských řádů, které řídí, často za určitou cenu svých osobních "
+"schopností. Z tohoto důvodu slouží nejčastěji jako diplomatky a strážkyně "
+"míru. Proto je jejich autorita v dobách přátelství mnohem vyšší než v dobách "
+"války."
 
 #. [unit_type]: id=Elvish Lord, race=elf
 #: data/core/units/elves/Lord.cfg:4
@@ -3149,6 +3169,22 @@ msgid ""
 "an absolute one, and they are expected to lead more by diplomacy and wisdom "
 "rather than force."
 msgstr ""
+"Nástupnictví mezi elfí šlechtou je složitý proces, který se mezi různými "
+"enklávami elfího lidu poněkud liší. Obvykle mají budoucí vůdci elfů za úkol "
+"řídit trojí aspekty elfí společnosti: válečníky a strážce, kteří brání lesy, "
+"mírumilovné civilisty, kteří se vyhýbají boji, a kolektivní skupinu léčitelů "
+"a mystiků, kteří studují umění vílí magie. Schopnost sladit rozdíly mezi "
+"těmito frakcemi a účinně vést svůj lid klade značné nároky na osobní kvality "
+"a vyžaduje hluboký vhled do elfů všech druhů. To má za důsledek, že elfí "
+"lordi jsou obvykle jedinými zástupci mužského pohlaví, kterým je dovoleno "
+"naučit se jakékoli množství vílí magie, kterou se tradičně učí pouze elfské "
+"šamanky.\n"
+"\n"
+"Ačkoli existují některé enklávy, jako je severní Lintanirský háj, které "
+"udržují svou šlechtu prostřednictvím pokrevní linie, ostatní, jako jsou "
+"mocní elfové z Wesmérie, volí v každé nové generaci nové pány. V obou "
+"případech je postavení šlechticů jen zřídkakdy absolutní a očekává se od "
+"nich, že budou spíše vládnout diplomacií a moudrostí než silou."
 
 #. [unit_type]: id=Elvish Marksman, race=elf
 #: data/core/units/elves/Marksman.cfg:4
@@ -3167,6 +3203,15 @@ msgid ""
 "training the body to keep up with the eyes is no easy feat, and realizing "
 "this prodigious skill does come with the cost of weakness in close quarters."
 msgstr ""
+"Elfové jsou důvěrně spojeni se světem víl, což jim přirozeně vštěpuje a "
+"poskytuje vysoce rozvinuté smysly a neuvěřitelně živé vidění. V kombinaci s "
+"mnohaletými loveckými zkušenostmi v hlubokých lesích to významně přispívá k "
+"elfímu mistrovství v ovládání luků. Zkušený elfí střelec je schopen "
+"zasáhnout cíl o velikosti špendlíkové hlavičky ze vzdálenosti desítek kroků "
+"a také střílet tak rychle a přesně, aby ve vzduchu rozdělil padající větve. "
+"Synchronizace těla se zrakem není samozřejmě snadný výkon a vykonávání této "
+"podivuhodné dovednosti přichází za cenu nerozvíjení bojových dovedností na "
+"blízko."
 
 #. [attack]: type=pierce
 #: data/core/units/elves/Marksman.cfg:39
@@ -3200,12 +3245,23 @@ msgid ""
 "task for any invasion force, precisely because of the skillful maneuvering "
 "of the marshals who are entrusted with the protection of their people."
 msgstr ""
+"Elfové nepatří mezi časté podněcovatele otevřené války. Ale když přijde čas "
+"bojovat, nevyhýbají se jí. Za tímto účelem stále udržují malý počet "
+"strategicky smýšlejících maršálů. Tito velitelé, vybraní z "
+"nejtalentovanějších hlídkových kapitánů, procházejí rozsáhlým výcvikem v "
+"různých vojenských stylech, včetně těch lidských a skřetích. Jsou to "
+"neortodoxní, ale skvělí stratégové, kteří vynikají v rozbíjení velkých "
+"bitevních front na menší potyčky, přetvářejíce tak běžné kampaně na "
+"rozptýlenou partyzánskou válku. Angažovanost elfů v jejich domovině "
+"představuje pro každou invazní sílu skličující úkol, což je přesně kvůli "
+"obratnému manévrování maršálů, kterým je svěřena ochrana jejich lidu."
 
 #. [unit_type]: id=Elvish Outrider, race=elf
 #: data/core/units/elves/Outrider.cfg:4
 msgid "Elvish Outrider"
 msgstr "Elfí eskorta"
 
+# Tak toto opravdu přeložit doslovně neumím. Nebo umím, ale krása tím utrpí.
 #. [unit_type]: id=Elvish Outrider, race=elf
 #: data/core/units/elves/Outrider.cfg:19
 msgid ""
@@ -3239,6 +3295,33 @@ msgid ""
 "The truth of this tale, one can only surmise, but doubtless, Outriders the "
 "fastest do comprise."
 msgstr ""
+"Byl kdysi jeden elf, co jméno Beirand měl, který na velkou cestu do dálav "
+"vyjel.\n"
+"Bez spočinutí on tři a deset dní jel, než do přístřešku jezerní nymfy "
+"vešel.\n"
+"„Podívej, Naryo!“ radostný výkřik zněl, „Také zde vidíš tu nádhernou "
+"jabloněl?“\n"
+"Hned v odpověď ji dychtivou po boku měl, cvalem, však rozvážným, co nesetřel "
+"by pel.\n"
+"Nedala mu čas, aby se rozseděl, než vzdušný její hlas se vůkol rozezněl:\n"
+"„Mé je ovoce v háji, tak co bys elfe chtěl, snad by sis ty či kůň tvůj na ně "
+"nemyslel?“\n"
+"Na to ji prosil on: „Odpočinek uděl. Naši sešlost cestou by i slepý viděl!“\n"
+"„K únavě své sis svým činěním přišel. Závodit však musíš, bys mou milost "
+"našel.“\n"
+"A vskutku se k tomu ten elfí jezdec měl, že ten závod od stromu ke stromu on "
+"jel.\n"
+"Ač kvílící vichr mu kolem uší zněl, ocasu jeho koně se přece neudržel.\n"
+"Jako v záblescích lehce on na koni jel, jako by cvalem svým ovládnout vítr "
+"chtěl.\n"
+"Jel tak, že i čas tikati snad zapomněl, až nakonec se v cíli na místě prvním "
+"skvěl.\n"
+"V hlase jejím pak tón ocenění zněl a svou milost dala i těm, co za bratry "
+"měl.\n"
+"A když pak Beirand od Naryi odešel, stále si nesl milost, co u ní našel.\n"
+"\n"
+"O pravdivosti tohoto příběhu se lze už jen dohadovat, ale jeho poselství "
+"nejrychlejší jezdci elfích eskort bezpochyby stále naplňují."
 
 #. [unit_type]: id=Elvish Ranger, race=elf
 #: data/core/units/elves/Ranger.cfg:3
@@ -3364,6 +3447,15 @@ msgid ""
 "peaceful by nature, these shamans rarely engage in combat, instead using "
 "their magic to command the earth itself to hinder or pacify their enemies."
 msgstr ""
+"S trochou tréninku lze přirozenou elfí spřízněnost s přírodním světem "
+"přenést do hmotné magie, která dokáže ovlivnit fyzickou rovinu. Šamanky "
+"tohoto oboru nejčastěji používají své dovednosti k tomu, aby pečovaly o "
+"přírodní prostředí, které je spojuje s jejich silami, což má za následek "
+"neobvykle svěží a zelené lesy obklopující jejich domovy. Stejná magie se "
+"hodí k rozvíjení pozoruhodného a velmi proslulého talentu v umění "
+"léčitelství. Tyto šamanky jsou přirozeně oddané mírumilovnosti a zřídkakdy "
+"bojují. Místo toho pomocí své magie velí samotné Zemi, aby zbržďovala nebo "
+"pacifikovala jejich nepřátele."
 
 #. [unit_type]: id=Elvish Sharpshooter, race=elf
 #: data/core/units/elves/Sharpshooter.cfg:4
@@ -3383,12 +3475,22 @@ msgid ""
 "sharpshooters of the elves have honed their art to its highest form and are "
 "the undisputed masters of archery."
 msgstr ""
+"I když nejde o formální název, je označení „ostrostřelec“ zažitým "
+"přívlastkem pro nejnadanější elfí střelce. Tito zkušení lučištníci jsou "
+"schopni výkonů, které i podle elfích měřítek hraničí se zázračnými "
+"vlastnostmi. Dovedou rozstřelit šíp letící ve vzduchu. Dovedou vystřelit "
+"druhý šíp, ještě než jejich první doletí. A to vše při zachování dostatečné "
+"síly potřebné k probití plátového brnění. Jediná salva jejich šípů sundá "
+"rytíře z koně, a dokonce i dobře obrněný těžkooděnec zřídka přežije několik "
+"zásahů. Elfí ostrostřelci zdokonalili své umění do nejvyšší podoby a jsou "
+"nespornými mistry lukostřelby."
 
 #. [female]
 #: data/core/units/elves/Sharpshooter.cfg:82
 msgid "female^Elvish Sharpshooter"
 msgstr "Elfí ostrostřelkyně"
 
+# Trošku je to s těmi vílami zamotané.
 #. [unit_type]: id=Elvish Shyde, race=elf
 #: data/core/units/elves/Shyde.cfg:22
 msgid ""
@@ -3401,6 +3503,14 @@ msgid ""
 "for true faerie or ‘forest spirits’, these stewards of the forests epitomize "
 "their people’s mysterious connection with the natural order."
 msgstr ""
+"Jak se elfka stále více proplétá s přírodou, podstata země začíná přeměňovat "
+"její tělo. Motýlí křídla, která vyrůstají na zádech této elfky, jsou přímým "
+"projevem jejího spojení se světem víl a přinášejí jí její charakteristickou "
+"éterickou auru, auru pokoje i strachu. Víly jsou mistryně pozemského bytí a "
+"jsou vedeny mocí, které lze porozumět jen velmi omezeně. Přesto jsou "
+"ostatními elfy velmi respektovány. Tyto správkyně lesů, které jsou často "
+"mylně považovány za skutečné „víly“ nebo „lesní duchy“, ztělesňují tajemné "
+"spojení svého lidu s přírodním řádem."
 
 #. [attack]: type=impact
 #: data/core/units/elves/Shyde.cfg:32 data/core/units/elves/Sylph.cfg:31
@@ -3427,12 +3537,24 @@ msgid ""
 "nonetheless hold the arcane flame in high regard and are careful to utilize "
 "it with judicious caution."
 msgstr ""
+"Elfí magie se nejčastěji dělí na dvě cesty – cestu manipulace s přírodním "
+"nebo tělesným světem a cestu vnoření do nezemské roviny. Ta druhá "
+"reprezentuje sílu, která je obtížně zvladatelná a těžce pochopitelná i pro "
+"většinu těch, kdo ji praktikují a proto není elfy často vyhledávána. "
+"Nositelé tohoto tajemství čelí při studiu značnému riziku, vyplývajícímu z "
+"nestálé povahy své disciplíny, a tak se rychle naučí respektovat rozvratnou "
+"sílu svých dovedností. Tato destruktivní povaha se nejčastěji projevuje v "
+"záchvěvech „kouzelného ohně“, což je jedna z nejlépe zvládnutých dovedností "
+"elfí vědmy. Přestože elfové využívají spíše povrchní aplikace tohoto umění, "
+"zachovávají tajemný plamen ve velké úctě a dbají na to, aby jej využili s "
+"uvážlivou opatrností."
 
 #. [unit_type]: id=Elvish Sylph, race=elf
 #: data/core/units/elves/Sylph.cfg:4
 msgid "female^Elvish Sylph"
 msgstr "Elfí sylfa"
 
+# Existuje mudrkyně i mudřena, ale zvolil jsem vědmu.
 #. [unit_type]: id=Elvish Sylph, race=elf
 #: data/core/units/elves/Sylph.cfg:21
 msgid ""
@@ -3452,11 +3574,26 @@ msgid ""
 "‘reflection pools’ and steer them is one of her greatest — and most feared — "
 "abilities."
 msgstr ""
+"Vědmy, jako jsou sylfy, jsou nesmírně silné těmi nejnepředstavitelnějšími "
+"způsoby a jsou mistryněmi manipulace spojení mezi pozemským a tajemným "
+"světem. Dlouhá léta strávená nazíráním do éterické říše narušila schopnost "
+"těchto elfek nahlížet fyzický svět. Na oplátku je jim poskytnut abstraktní "
+"pohled, ze kterého získávají schopnost vidět jeden nebo dokonce několik "
+"různých aspektů esence reality. Stejně jako hromada střepů z rozbitého "
+"zrcadla i nesčetné fragmenty hmotného světa odrážejí světlo tajemnosti "
+"prostřednictvím mnoha různých aspektů. Pečlivá praxe umožňuje elfce sledovat "
+"tyto prameny světla z jednoho okna fyzické reality do druhého a sledovat, "
+"jak se s každou volbou svobodné vůle vyvíjí reálný výsledek. Zatímco přímého "
+"ovlivnění tkaniva reality není obvykle možné dosáhnout, nepřímá manipulace "
+"je možná, a to pomocí machinací v tělesné rovině, v které je odraz tajemné "
+"roviny nejsilnější. Schopnost sylf lokalizovat a řídit tyto „odrazové "
+"potenciality“ je jednou z jejich největších – a nejobávanějších – schopností."
 
+# Upraveno vzhledem k popisu schopností sylf.
 #. [attack]: type=impact
 #: data/core/units/elves/Sylph.cfg:44
 msgid "gossamer"
-msgstr "pavučinka"
+msgstr "pavučinka reality"
 
 #. [unit_type]: id=Fog Clearer, race=monster
 #: data/core/units/fake/Fog_Clearer.cfg:13
@@ -4523,7 +4660,7 @@ msgid "fireball"
 msgstr "ohnivá koule"
 
 #. [female]
-#: data/core/units/humans/Mage_Arch.cfg:103
+#: data/core/units/humans/Mage_Arch.cfg:110
 msgid "female^Arch Mage"
 msgstr "Arcimagyně"
 
@@ -4976,7 +5113,7 @@ msgstr ""
 "Někteří muži, neschopní živit se řádným řemeslem, sklouznou po šikmé ploše "
 "až na dno, ale ani tam se nevzdávají a probojovávají si dál cestu životem, "
 "nejlépe pořádným kyjem. Prostě lotři. S trochou štěstí se dokáží vyhnout "
-"zatčení či smrti, které očekávají většinu z jejich řad."
+"zatčení či smrti, co na většinu z jejich řad čeká."
 
 #. [unit_type]: id=Thief, race=human
 #: data/core/units/humans/Outlaw_Thief.cfg:4
@@ -5554,12 +5691,6 @@ msgstr "Medvěd jeskynní"
 
 #. [unit_type]: id=Cave Bear, race=monster
 #: data/core/units/monsters/Bear.cfg:19
-#, fuzzy
-#| msgid ""
-#| "Cave Bears are large, powerful beasts with sharp claws and large teeth.  "
-#| "Adapted to roaming the dark caves, they have a keen sense of smell and "
-#| "hearing, but poor eyesight.  When a rival predator, or some other threat, "
-#| "gets too close, a bear will reliably attack."
 msgid ""
 "Cave Bears are large, powerful beasts with sharp claws and large teeth. "
 "Adapted to roaming the dark caves, they have a keen sense of smell and "
@@ -5579,14 +5710,6 @@ msgstr "Ještěr bažinný"
 
 #. [unit_type]: id=Swamp Lizard, race=monster
 #: data/core/units/monsters/Crocodile.cfg:74
-#, fuzzy
-#| msgid ""
-#| "Swamps are vibrant environments, but often not friendly to humans or "
-#| "orcs.  Swamp Lizards are one of the more notable hazards, with their "
-#| "powerful jaws and armored hide.  Despite their primitive appearance, "
-#| "these lizards are not stupid, and after generations of being hunted for "
-#| "their hides, they have adopted a 'two legs bad' outlook and do not "
-#| "hesitate to avenge their ancestors."
 msgid ""
 "Swamps are vibrant environments, but often not friendly to humans or orcs. "
 "Swamp Lizards are one of the more notable hazards, with their powerful jaws "
@@ -5660,22 +5783,16 @@ msgstr "Starý sokol"
 
 #. [unit_type]: id=Elder Falcon, race=falcon
 #: data/core/units/monsters/Elder_Falcon.cfg:18
-#, fuzzy
-#| msgid ""
-#| "Elder Falcons bear the telltale scars of veteran warriors from protecting "
-#| "their masters, their bodies proof of repeated dives into a swirling "
-#| "melee. Stronger and faster than their younger kin, they are rumored to "
-#| "hit with enough force to remove an enemy's head. "
 msgid ""
 "Elder Falcons bear the telltale scars of veteran warriors from protecting "
 "their masters, their bodies proof of repeated dives into a swirling melee. "
 "Stronger and faster than their younger kin, they are rumored to hit with "
 "enough force to remove an enemy’s head."
 msgstr ""
-"Starší sokoli nesou jizvy svědčící o mnohých bojích a ochraně jejich pánů. "
-"Jejich těla svědčí o tom, jak se opakovaně vrhali do víru bitvy. Silnější a "
-"rycheljší než mladí sokoli, říká se dokonce, že dokáží zasáhnout dost silně "
-"na to, aby to soupeře stálo hlavu. "
+"Starší sokoli nesou výmluvné jizvy veteránů válek, které utržili při ochraně "
+"svých pánů. Jejich těla svědčí o tom, jak se opakovaně vrhali do víru boje. "
+"Jsou silnější a rychlejší než mladší sokoli, říká se dokonce, že dokáží "
+"zasáhnout tak silně, že to soupeře stojí hlavu."
 
 #. [attack]: type=pierce
 #. [attack]: type=blade
@@ -5714,10 +5831,8 @@ msgstr "Lorem ipsum..."
 
 #. [attack]: type=fire
 #: data/core/units/monsters/Fire_Ant.cfg:73
-#, fuzzy
-#| msgid "fireball"
 msgid "fire"
-msgstr "ohnivá koule"
+msgstr "oheň"
 
 #. [unit_type]: id=Fire Dragon, race=monster
 #: data/core/units/monsters/Fire_Dragon.cfg:4
@@ -5769,6 +5884,52 @@ msgstr ""
 #: data/core/units/monsters/Fire_Guardian.cfg:28
 msgid "fire claws"
 msgstr "ohnivé drápy"
+
+# Pořád má v popisu, že je obří.
+#. [unit_type]: id=Frost Stoat, race=monster
+#: data/core/units/monsters/Frost_Stoat.cfg:20
+msgid "Frost Stoat"
+msgstr "Obří lasice sněžná"
+
+# V originále je hlodavec, ale lasice je šelma.
+#. [unit_type]: id=Frost Stoat, race=monster
+#: data/core/units/monsters/Frost_Stoat.cfg:35
+#, fuzzy
+#| msgid ""
+#| "Giant Stoats are a devious rodent predominantly found in the frozen parts "
+#| "of the Northlands, although they can survive anywhere. They generally "
+#| "scavenge and hunt smaller animals, but are territorial and the young "
+#| "adults have been known to attack larger intruders, including humans and "
+#| "orcs."
+msgid ""
+"Frost Stoats are a devious rodent predominantly found in the frozen parts of "
+"the Northlands, although they can survive anywhere. Their most distinctive "
+"feature is their icy-cold front claws, which is unlike anything found in "
+"other wild animals. These stoats generally scavenge refuse or hunt smaller "
+"animals, but are quite territorial and the young adults have been known to "
+"attack larger intruders, including humans and orcs."
+msgstr ""
+"Obří lasice patří mezi nevyzpytatelné šelmy, které se vyskytují převážně v "
+"zamrzlých oblastech Severních zemí. Ale přežít mohou kdekoli. Běžně žerou "
+"jen mršiny či loví menší zvířata. Jsou ale teritoriální a je známo, že mladí "
+"dospělci útočí i na větší vetřelce, včetně lidí a skřetů."
+
+#. [attack]: type=cold
+#: data/core/units/monsters/Frost_Stoat.cfg:104
+msgid "ice claw"
+msgstr "ledové drápy"
+
+#. [unit_type]: id=Giant Stoat
+#: data/core/units/monsters/Frost_Stoat.cfg:170
+#, fuzzy
+#| msgid "Giant Rat"
+msgid "Giant Stoat"
+msgstr "Obří krysa"
+
+#. [unit_type]: id=Giant Stoat
+#: data/core/units/monsters/Frost_Stoat.cfg:171
+msgid "Giant Stoats are obsolete, use Frost Stoat."
+msgstr ""
 
 #. [unit_type]: id=Giant Mudcrawler, race=monster
 #: data/core/units/monsters/Giant_Mudcrawler.cfg:4
@@ -5845,7 +6006,7 @@ msgstr "klepeta"
 #. [variation]
 #: data/core/units/monsters/Giant_Scorpion.cfg:112
 msgid "Sand Scuttler"
-msgstr ""
+msgstr "Písečný krab"
 
 #. [variation]
 #: data/core/units/monsters/Giant_Scorpion.cfg:115
@@ -5854,6 +6015,10 @@ msgid ""
 "mix of mundane creature and elemental beast. Though usually timid, Sand "
 "Scuttlers sometimes attack unwary travelers, especially when startled."
 msgstr ""
+"Tito tvorové, kteří téměř splývají s písečnými dunami, jsou zvláštní směsicí "
+"pozemského tvora a elementálního stvoření. Ačkoli jsou píseční krabi obvykle "
+"plaší, někdy zaútočí na neopatrné cestovatele, zvláště pokud se cítí "
+"ohroženi."
 
 #. [unit_type]: id=Giant Scorpling, race=monster
 #: data/core/units/monsters/Giant_Scorpling.cfg:4
@@ -5862,19 +6027,6 @@ msgstr "Obří škorpioně"
 
 #. [unit_type]: id=Giant Scorpling, race=monster
 #: data/core/units/monsters/Giant_Scorpling.cfg:27
-#, fuzzy
-#| msgid ""
-#| "One of the most potent known venoms is that of the monstrous scorpions of "
-#| "the frontier. Fetching a high price by assassins and apothecaries alike, "
-#| "this venom is often seen as a quick way to make coin, alluring bold "
-#| "hunters to venture into the wilderness to harvest it. However, even in a "
-#| "juvenile state, these scorpions can deliver deadly stings and are faster "
-#| "than most men. What's worse is that they can live in rather large nests, "
-#| "and angering a seemingly lone scorpion can lead to swarms of them "
-#| "crawling up from the ground — quickly turning the hunter into the hunted. "
-#| "They are protected by a sturdy shell which hardens as they age, becoming "
-#| "more resilient. This carapace is very resistant to normal blade strikes "
-#| "or piercing attacks, but can be broken with heavy blows."
 msgid ""
 "One of the most potent known venoms is that of the monstrous scorpions of "
 "the frontier. Fetching a high price by assassins and apothecaries alike, "
@@ -5921,40 +6073,6 @@ msgstr ""
 msgid "web"
 msgstr "pavučina"
 
-#. [unit_type]: id=Giant Stoat, race=monster
-#: data/core/units/monsters/Giant_Stoat.cfg:4
-#, fuzzy
-#| msgid "Giant Stoat"
-msgid "Frost Stoat"
-msgstr "Obří lasice"
-
-# V originále je hlodavec, ale lasice je šelma.
-#. [unit_type]: id=Giant Stoat, race=monster
-#: data/core/units/monsters/Giant_Stoat.cfg:19
-#, fuzzy
-#| msgid ""
-#| "Giant Stoats are a devious rodent predominantly found in the frozen "
-#| "northlands, although they can survive anywhere.  They generally scavenge "
-#| "and hunt smaller animals, but are territorial and the young adults have "
-#| "been known to attack larger intruders, including humans and orcs."
-msgid ""
-"Giant Stoats are a devious rodent predominantly found in the frozen parts of "
-"the Northlands, although they can survive anywhere. They generally scavenge "
-"and hunt smaller animals, but are territorial and the young adults have been "
-"known to attack larger intruders, including humans and orcs."
-msgstr ""
-"Obří lasice patří mezi nevyzpytatelné šelmy, které se vyskytují převážně v "
-"zamrzlých severních oblastech. Ale přežít mohou kdekoli. Běžně žerou jen "
-"mršiny či loví menší zvířata. Jsou ale teritoriální a je známo, že mladí "
-"dospělci útočí i na větší vetřelce, včetně lidí a skřetů."
-
-#. [attack]: type=cold
-#: data/core/units/monsters/Giant_Stoat.cfg:71
-#, fuzzy
-#| msgid "fire claws"
-msgid "ice claw"
-msgstr "ohnivé drápy"
-
 #. [unit_type]: id=Icemonax, race=monster
 #: data/core/units/monsters/Icemonax.cfg:4
 msgid "Icemonax"
@@ -5962,13 +6080,6 @@ msgstr "Icemonax"
 
 #. [unit_type]: id=Icemonax, race=monster
 #: data/core/units/monsters/Icemonax.cfg:34
-#, fuzzy
-#| msgid ""
-#| "Icemonax are a strange beast of the frozen north, best described as a "
-#| "large, armored ground squirrel.  Their armor accummulates frost and snow, "
-#| "even in more temperate climates.  Most Icemonax are curious, often "
-#| "wandering into places they do not belong.  Despite this, efforts to study "
-#| "and domesticate them have failed, as they die soon after capture."
 msgid ""
 "Icemonax are a strange beast of the frozen north, best described as a large, "
 "armored ground squirrel. Their armor accumulates frost and snow, even in "
@@ -5977,11 +6088,11 @@ msgid ""
 "them have failed, as they die soon after capture."
 msgstr ""
 "Icemonaxové jsou podivná zvířata ze zmrzlého severu, která lze nejlépe "
-"připodobnit k velkým obrněným veverkám. Na jejich krunýřích se hromadí mráz "
-"a sníh, a to i v mírnějším podnebí. Většina icemonaxů je zvědavá, a tak "
-"často putují na místa, kde se běžně nevyskytují. I přes to, že na ně lze "
-"narazit, všechno úsilí o jejich studium a domestikaci selhalo, neboť v "
-"zajetí brzy umírají."
+"připodobnit k velkým obrněným veverkám, pohybujícím se po zemi. Na jejich "
+"krunýřích se hromadí mráz a sníh, a to i v mírnějším podnebí. Většina "
+"icemonaxů je zvědavá, a tak často putují na místa, kde se běžně nevyskytují. "
+"I přes to, že na ně lze narazit, všechno úsilí o jejich studium a "
+"domestikaci selhalo, neboť v zajetí brzy umírají."
 
 #. [unit_type]: id=Great Icemonax, race=monster
 #: data/core/units/monsters/Icemonax_Greater.cfg:4
@@ -5990,12 +6101,6 @@ msgstr "Velký icemonax"
 
 #. [unit_type]: id=Great Icemonax, race=monster
 #: data/core/units/monsters/Icemonax_Greater.cfg:35
-#, fuzzy
-#| msgid ""
-#| "Icemonax are a strange beast of the frozen north, best described as a "
-#| "large, armored ground squirrel.  Their armor accummulates ice and snow, "
-#| "even when the climate is warm and dry.  Some Icemonax grow to be quite "
-#| "large and powerful, guarding their smaller, younger kin."
 msgid ""
 "Icemonax are a strange beast of the frozen north, best described as a large, "
 "armored ground squirrel. Their armor accumulates ice and snow, even when the "
@@ -6003,9 +6108,10 @@ msgid ""
 "guarding their smaller, younger kin."
 msgstr ""
 "Icemonaxové jsou podivná zvířata ze zmrzlého severu, která lze nejlépe "
-"připodobnit k velkým obrněným veverkám. Na jejich krunýřích se hromadí led a "
-"sníh, a to i v teplém a suchém podnebí. Někteří icemonaxové vyrostou do "
-"větší velikosti a síly. Pak ochraňují své menší, mladší druhy."
+"připodobnit k velkým obrněným veverkám, pohybujícím se po zemi. Na jejich "
+"krunýřích se hromadí led a sníh, a to i v teplém a suchém podnebí. Někteří "
+"icemonaxové vyrostou do větší velikosti a síly. Pak ochraňují své menší, "
+"mladší druhy."
 
 #. [unit_type]: id=Jinn, race=monster, description=
 #: data/core/units/monsters/Jinn.cfg:4
@@ -6042,6 +6148,34 @@ msgstr ""
 #: data/core/units/monsters/Roc.cfg:4
 msgid "Roc"
 msgstr "Pták Noh"
+
+#. [unit_type]: id=Horned Scarab, race=monster
+#: data/core/units/monsters/Scarab.cfg:4
+msgid "Horned Scarab"
+msgstr ""
+
+#. [special_note]
+#: data/core/units/monsters/Scarab.cfg:21
+msgid ""
+"This unit can burrow under loose dirt, sand, or leaves, concealing itself if "
+"it does not change location."
+msgstr ""
+
+#. [unit_type]: id=Horned Scarab, race=monster
+#: data/core/units/monsters/Scarab.cfg:25
+msgid ""
+"Horned Scarabs are large, rugged insects that can grow to be quite large, "
+"making them a threat when they decide to be aggressive. Their primary means "
+"of attack is the large, sharp horn growing from their head. Because of their "
+"large size, armor, and horn, they cannot fly."
+msgstr ""
+
+#. [attack]: type=pierce
+#: data/core/units/monsters/Scarab.cfg:53
+#, fuzzy
+#| msgid "thorns"
+msgid "horn"
+msgstr "ostny"
 
 #. [unit_type]: id=Sea Serpent, race=monster
 #: data/core/units/monsters/Sea_Serpent.cfg:4
@@ -6123,11 +6257,6 @@ msgstr "Prase bradavičnaté"
 
 #. [unit_type]: id=Gorer, race=monster
 #: data/core/units/monsters/Tusker_Gorer.cfg:35
-#, fuzzy
-#| msgid ""
-#| "As Tuskers age, their already formidable teeth grow longer and more "
-#| "numerous.  A mature boar gorer is a valuable asset to any farmer.  And "
-#| "angry boar gorer is a challenge even to the best hunters"
 msgid ""
 "As Tuskers age, their already formidable teeth grow longer and more "
 "numerous. A mature boar gorer is a valuable asset to any farmer. And an "
@@ -6155,11 +6284,6 @@ msgstr "Lončák"
 
 #. [unit_type]: id=Tusklet, race=monster
 #: data/core/units/monsters/Tusker_Tusklet.cfg:33
-#, fuzzy
-#| msgid ""
-#| "Young tuskers are as notoriously bad-tempered as the adults of the "
-#| "species, if a little less of a challenge.  But woe betide the unfortunate "
-#| "who comes between a Tusklet and its parents."
 msgid ""
 "Young tuskers are as notoriously bad-tempered as the adults of the species, "
 "if a little less of a challenge. But woe betide the unfortunate who comes "
@@ -6187,19 +6311,40 @@ msgstr ""
 "primitivní příbuzný druh nág. Jedno je ale jisté - vodám, v nichž se "
 "zdržují, je radno se vyhýbat."
 
-#. [unit_type]: id=Wild Wyvern, race=monster, description=
-#: data/core/units/monsters/Wild_Wyvern.cfg:4
+#. [unit_type]: id=Wild Wyvern, race=monster
+#: data/core/units/monsters/Wild_Wyvern.cfg:8
 msgid "Wild Wyvern"
 msgstr "Divoká wyverna"
+
+#. [unit_type]: id=Wild Wyvern, race=monster
+#: data/core/units/monsters/Wild_Wyvern.cfg:44
+msgid ""
+"Wyverns are large reptiles that resemble dragons, but are not the "
+"intelligent, magical creatures. However, the fact that they are just wild "
+"beasts should not cause any traveler who encounters one to dismiss the "
+"threat, for they are fast and fierce when threatened or hungry.\n"
+"\n"
+"Wyverns are social creatures, usually traveling in pairs or small groups.  "
+"Their hunting patterns and diet are difficult to discern, for they often "
+"work with smaller animals that would appear to be potential prey.  That odd "
+"behavior may be an adaptation to the harsh desert environments they often "
+"inhabit."
+msgstr ""
+
+#. [attack]: type=impact
+#: data/core/units/monsters/Wild_Wyvern.cfg:86
+#: data/core/units/orcs/Nightblade.cfg:36
+msgid "kick"
+msgstr "kop"
 
 #. [unit_type]: id=Wolf, race=wolf
 #: data/core/units/monsters/Wolf.cfg:4
 msgid "Wolf"
 msgstr "Vlk"
 
-#. [unit_type]: id=Great Wolf, race=wolf
 #. [unit_type]: id=Wolf, race=wolf
 #. [unit_type]: id=Direwolf, race=wolf
+#. [unit_type]: id=Great Wolf, race=wolf
 #: data/core/units/monsters/Wolf.cfg:34
 #: data/core/units/monsters/Wolf_Dire.cfg:19
 #: data/core/units/monsters/Wolf_Great.cfg:19
@@ -6251,11 +6396,22 @@ msgstr "Mladá nága ostrobřit"
 
 #. [unit_type]: id=Naga Dirkfang, race=naga
 #: data/core/units/nagas/Dirkfang.cfg:18
+#, fuzzy
+#| msgid ""
+#| "In contrast to the heavily melee-focused style of their northern "
+#| "brethren, young Naga of the southern waters prefer to soften their prey "
+#| "from afar before closing in. The small chakri they throw can be carried "
+#| "on the wrist or on a belt without causing hindrance.  While any final "
+#| "kill under water must usually be done at close range, the mixed combat "
+#| "style often allows them to live long enough to learn and improve. "
+#| "Sometimes viewed as cowardly by the northern Naga warriors, these "
+#| "fighters are nonetheless effective when it comes time to engage in "
+#| "warfare."
 msgid ""
 "In contrast to the heavily melee-focused style of their northern brethren, "
 "young Naga of the southern waters prefer to soften their prey from afar "
 "before closing in. The small chakri they throw can be carried on the wrist "
-"or on a belt without causing hindrance.  While any final kill under water "
+"or on a belt without causing hindrance. While any final kill under water "
 "must usually be done at close range, the mixed combat style often allows "
 "them to live long enough to learn and improve. Sometimes viewed as cowardly "
 "by the northern Naga warriors, these fighters are nonetheless effective when "
@@ -6353,16 +6509,29 @@ msgstr "Ofidián"
 
 #. [unit_type]: id=Naga Ophidian, race=naga
 #: data/core/units/nagas/Ophidian.cfg:18
+#, fuzzy
+#| msgid ""
+#| "Experienced warriors of the Southern Naga often find work as mercenaries, "
+#| "usually hired by neighboring Dunefolk to control key waterways near the "
+#| "coastline.  Due to their constant confrontations with enemy horsemen, "
+#| "Ophidians have retired the ringed blades of their youth and picked up the "
+#| "piercing bow.  Though generally amicable with their wealthy employers, "
+#| "this friendliness should not be mistaken for loyalty, for the Ophidian "
+#| "are known for readily switching between rival city-state factions at the "
+#| "start of each shipping season, when demand for water-based protection is "
+#| "the highest.  As a group, these nagas encourage a healthy amount of "
+#| "competition among the surface factions, ensuring their services are "
+#| "valued by one tribe or another."
 msgid ""
 "Experienced warriors of the Southern Naga often find work as mercenaries, "
 "usually hired by neighboring Dunefolk to control key waterways near the "
-"coastline.  Due to their constant confrontations with enemy horsemen, "
+"coastline. Due to their constant confrontations with enemy horsemen, "
 "Ophidians have retired the ringed blades of their youth and picked up the "
-"piercing bow.  Though generally amicable with their wealthy employers, this "
+"piercing bow. Though generally amicable with their wealthy employers, this "
 "friendliness should not be mistaken for loyalty, for the Ophidian are known "
 "for readily switching between rival city-state factions at the start of each "
-"shipping season, when demand for water-based protection is the highest.  As "
-"a group, these nagas encourage a healthy amount of competition among the "
+"shipping season, when demand for water-based protection is the highest. As a "
+"group, these nagas encourage a healthy amount of competition among the "
 "surface factions, ensuring their services are valued by one tribe or another."
 msgstr ""
 "Zkušení válečníci jižních nág jsou často zaměstnávani jako žoldáci. Obvykle "
@@ -6395,9 +6564,15 @@ msgstr "Nága vrhač prstenců"
 
 #. [unit_type]: id=Naga Ringcaster, race=naga
 #: data/core/units/nagas/Ringcaster.cfg:17
+#, fuzzy
+#| msgid ""
+#| "The chakram, a greater blade ring than the chakri, is the signature "
+#| "weapon of the southern Naga and their renowned Ringcasters.  Well "
+#| "balanced chakrams are useful for throwing, but the rejected blades make a "
+#| "good fist-load weapon, similar to a sharp-bladed tekko or knuckleduster."
 msgid ""
 "The chakram, a greater blade ring than the chakri, is the signature weapon "
-"of the southern Naga and their renowned Ringcasters.  Well balanced chakrams "
+"of the southern Naga and their renowned Ringcasters. Well balanced chakrams "
 "are useful for throwing, but the rejected blades make a good fist-load "
 "weapon, similar to a sharp-bladed tekko or knuckleduster."
 msgstr ""
@@ -6688,6 +6863,13 @@ msgid ""
 "with more easily handled crossbows. Simplistic but potent, these weapons can "
 "still be deadly even when handled roughly by inexperienced warriors."
 msgstr ""
+"Navzdory velkému významu, který je u většiny skřetů kladen na bojovou "
+"zdatnost, disponuje jen velmi málo kmenů nějakou podobou formálního výcviku "
+"v některém z bojových umění. Z tohoto důvodu neumí skřetí lučištníci účinně "
+"ovládat luky, ukořistěné od lidských či elfích lukostřelců. Místo toho se "
+"raději vyzbrojují kušemi, s kterými se snadněji manipuluje. Tyto zbraně jsou "
+"zjednodušené, ale silné a mohou být stále smrtící, i když s nimi hrubě "
+"zachází nezkušení válečníci."
 
 #. [unit_type]: id=Orcish Grunt, race=orc
 #: data/core/units/orcs/Grunt.cfg:4
@@ -6696,14 +6878,6 @@ msgstr "Skřetí pěšák"
 
 #. [unit_type]: id=Orcish Grunt, race=orc
 #: data/core/units/orcs/Grunt.cfg:17
-#, fuzzy
-#| msgid ""
-#| "Orcish Grunts are the mainstay of the orcish forces, made up of the "
-#| "biggest and strongest orcs the clan can muster, given the most basic of "
-#| "equipment and thrown into the field. Even these basic recruits can be "
-#| "dangerous, as the larger orcs are naturally strong and can survive many "
-#| "injuries before falling. What makes an orcish horde most threatening, "
-#| "however, is the sheer numbers in which these fighters can be fielded."
 msgid ""
 "True orcs are well known for their raw strength and ferocity, as well as "
 "their propensity toward aggressive combat. These traits mean that even the "
@@ -6713,12 +6887,13 @@ msgid ""
 "overcome. What makes an orcish horde most threatening, however, is the sheer "
 "numbers in which these fighters can be fielded."
 msgstr ""
-"Stěžejní částí skřetích vojenských sil jsou pěšáci, tvořeni těmi největšími "
-"a nejsilnějšími skřety, které klan dokáže shromáždit. Je jim dána ta "
-"nejzákladnější výstroj a jsou uvedeni na bitevní pole. I tihle základní "
-"branci mohou být nebezpeční, protože větší skřeti jsou od přírody silní "
-"a dokážou přestát mnoho zranění než padnou. Avšak to nejhrozivější na skřetí "
-"hordě jsou pouhé počty těchto bojovníků, kteří mohou být postaveni do boje."
+"Čistokrevní skřeti jsou pověstní svou surovou silou a divokostí, stejně jako "
+"svým sklonem k agresivnímu boji. Tyto vlastnosti znamenají, že i ti nejméně "
+"zkušení a nejhůře vybavení skřetí pěšáci mohou na bojišti představovat "
+"náročné soupeře. I osamocený skřet je schopen uštědřit brutálně těžké rány a "
+"přestát velké množství zásahů, než je přemožen. Avšak to nejhrozivější na "
+"skřetí hordě jsou vlastní počty těchto bojovníků, co mohou být postaveni do "
+"boje."
 
 #. [unit_type]: id=Orcish Leader, race=orc
 #: data/core/units/orcs/Leader.cfg:4
@@ -6773,11 +6948,6 @@ msgstr ""
 msgid "blade"
 msgstr "čepel"
 
-#. [attack]: type=impact
-#: data/core/units/orcs/Nightblade.cfg:36
-msgid "kick"
-msgstr "kop"
-
 #. [unit_type]: id=Orcish Ruler, race=orc
 #: data/core/units/orcs/Ruler.cfg:4
 msgid "Orcish Ruler"
@@ -6794,6 +6964,12 @@ msgid ""
 "inevitably the most shrewd and perceptive among his peers and has won the "
 "respect of his brethren through leadership rather than coercion."
 msgstr ""
+"Běžnou mylnou představou o hierarchii skřetích klanů je ta, že skřeti "
+"oceňují pouze hrubou sílu. I když vůdcem menšího skřetího vojska může být "
+"ten nejsilnější, vládce velkého kmene musí zvládat obtíže při potlačování "
+"vnitřních svárů a bojů, což je něco, čeho nelze pouze silou dosáhnout. "
+"Takový skřet pak nevyhnutelně patří mezi nejchytřejší a nejvnímavější mezi "
+"svými vrstevníky a respekt svých bratří si získal spíše vedením než nátlakem."
 
 #. [unit_type]: id=Orcish Slayer, race=orc
 #: data/core/units/orcs/Slayer.cfg:4
@@ -6813,6 +6989,15 @@ msgid ""
 "precisely what gives rise to these ruthless soldiers, rightly dubbed "
 "‘Slayers’ by their enemies."
 msgstr ""
+"Zruční skřetí zabijáci jsou překvapivě mrštní a nenápadní vojáci. Dosáhli "
+"velké hbitosti tím, že se vzdali těžkého brnění svých bratří. Zbraň jejich "
+"výběru, jed, je často kritizována jako nemravný nástroj, který se nehodí pro "
+"zavedené zvyky typického umění boje. Většina skřetů však žádná taková bojová "
+"pravidla neuznává a snaží se dosáhnout vítězství jakýmikoli nezbytnými "
+"prostředky. Neboť porážka pro ně představuje, bez ohledu na svou příčinu, "
+"největší možné zneuctění. Brutální podstata totální války, ve které se "
+"skřeti angažují, je přesně to, co dává vzniknout takovýmto bezohledným "
+"vojákům, jimž jejich nepřátelé právem říkají „mordýři“."
 
 #. [unit_type]: id=Orcish Slurbow, race=orc
 #: data/core/units/orcs/Slurbow.cfg:4
@@ -6863,6 +7048,17 @@ msgid ""
 "rapidly dissolves back into individual clans once the strength of its "
 "leadership is extinguished."
 msgstr ""
+"Ačkoli mají skřeti tendenci žít v kmenové struktuře, čas od času nastane "
+"situace, která přinutí několik klanů spojit síly pod jediným mocným "
+"panovníkem. Z vážnosti postavení monarchy plyne, že takový skřet musí mít "
+"sílu i vychytralost, aby mohl vést velkou hordu válečníků. Také musí téměř "
+"vždy disponovat vrozeným charismatem, které je mezi skřety výjimečnou "
+"raritou. Cesty k tomuto postavení mohou být různé. Někdy může mocný kmen "
+"dobýt menší a začlenit poražené válečníky do svých řad, zatímco jiné "
+"okolnosti vyžadují jmenování radou šamanů, kdy se monarcha stává dočasným, "
+"ale formálním titulem. V obou případech je válečný vůdce kritickým pilířem "
+"hordy, která se v případě, že síla jejího vedení zanikne, rychle rozpadne "
+"zpět do jednotlivých klanů."
 
 #. [unit_type]: id=Orcish Warlord, race=orc
 #: data/core/units/orcs/Warlord.cfg:4
@@ -6885,6 +7081,18 @@ msgid ""
 "for a warlord’s downfall when his skills wane with age and another powerful "
 "warrior arises to take his place."
 msgstr ""
+"I když síla není ve skřetím klanu naprosto klíčovou podmínkou nadřazenosti, "
+"je určitě předpokladem pro získání respektu a poslušnosti jiných skřetů. "
+"Vojevůdce je nejčastěji nejsilnějším bojovníkem ve svém kmeni, takovým, "
+"který si získává a drží pozici tím, že znovu a znovu vítězí nad "
+"ctižádostivými vyzyvateli. Tato síla takovému skřetu v boji umožnuje, aby "
+"vystupoval jako kmenový náčelník, dohlížel na každodenní jednání svého klanu "
+"a velel podřízeným válečníkům, když přijde čas krveprolití. Ačkoli jsou "
+"vojevůdci obvykle mazaní a velmi zdatní v umění válečnictví, většina z nich "
+"si získává obdiv pouze pro své bojové dovednosti a postrádá znalosti či "
+"charisma, které by jim přinášely respekt i mimo bitvu. Časem se tento "
+"nedostatek obvykle stane příčinou pádu vojevůdce, když jeho schopnosti s "
+"věkem zeslábnou a na jeho místo se tlačí další mocný válečník."
 
 #. [unit_type]: id=Orcish Warrior, race=orc
 #: data/core/units/orcs/Warrior.cfg:4
@@ -7267,10 +7475,8 @@ msgstr "Trpaslík"
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:146
 #: data/core/units/undead/Corpse_Walking.cfg:145
-#, fuzzy
-#| msgid "wc_variation^Bat"
 msgid "wc_variation^Falcon"
-msgstr "Netopýr"
+msgstr "Sokol"
 
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:180
@@ -7293,10 +7499,8 @@ msgstr "Gryfon"
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:223
 #: data/core/units/undead/Corpse_Walking.cfg:222
-#, fuzzy
-#| msgid "wc_variation^Bat"
 msgid "wc_variation^Rat"
-msgstr "Netopýr"
+msgstr "Krysa"
 
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:240
@@ -7313,10 +7517,8 @@ msgstr "Pavouk"
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:259
 #: data/core/units/undead/Corpse_Walking.cfg:258
-#, fuzzy
-#| msgid "wc_variation^Spider"
 msgid "wc_variation^Serpent"
-msgstr "Pavouk"
+msgstr "Plaz"
 
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:276
@@ -7333,16 +7535,14 @@ msgstr "Troll"
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:303
 #: data/core/units/undead/Corpse_Walking.cfg:302
-#, fuzzy
-#| msgid "wc_variation^Wose"
 msgid "wc_variation^Tusker"
-msgstr "Stromový muž"
+msgstr "Kelnatec"
 
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:311
 #: data/core/units/undead/Corpse_Walking.cfg:310
 msgid "tusk"
-msgstr ""
+msgstr "kel"
 
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:316
@@ -7375,6 +7575,15 @@ msgid ""
 "that the rise of an Ancient Lich has not led to the shadows ruling the world "
 "for the rest of time."
 msgstr ""
+"Lich, který během své nově nalezené délky života, jež není omezena smrtí, "
+"nabere dostatek síly, se stává tím, kdo je schopen poskvrňovat duše "
+"zoufalstvím a zasévat zkázu po celém světě. Lich tohoto řádu vždy velí téměř "
+"neomezené hordě vzkříšených válečníků a nemrtvých příšer a je mistrem v "
+"temném čarodějnictví, co nahání hrůzu i těm nejznámějším lidským a elfím "
+"mágům. Taková postava obvykle reprezentuje temnou a krvavou kapitolu "
+"historie. A v těchto časech nouze jen neúnavné úsilí nejodvážnějších hrdinů "
+"zajišťuje, aby vzestup starého licha nevedl k tomu, že stíny povládnou světu "
+"po zbytek dnů."
 
 #. [unit_type]: id=Dark Adept, race=human
 #: data/core/units/undead/Necro_Dark_Adept.cfg:4

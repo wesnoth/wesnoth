@@ -12,8 +12,6 @@
    See the COPYING file for more details.
 */
 
-/** @file */
-
 #pragma once
 
 #include "exceptions.hpp"

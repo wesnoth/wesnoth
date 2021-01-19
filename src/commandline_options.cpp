@@ -19,7 +19,6 @@
 #include "lexical_cast.hpp"
 #include "log.hpp"                      // for logger, set_strict_severity, etc
 #include "serialization/string_utils.hpp"  // for split
-#include "utils/general.hpp" // for clamp
 
 #include <boost/any.hpp>                // for any
 #include <boost/program_options/cmdline.hpp>
@@ -528,7 +527,7 @@ commandline_options::commandline_options(const std::vector<std::string>& args)
 	if(vm.count("all-translations"))
 		translation_percent = 0;
 	else if(vm.count("translations-over"))
-		translation_percent = utils::clamp<unsigned int>(vm["translations-over"].as<unsigned int>(), 0, 100);
+		translation_percent = std::clamp<unsigned int>(vm["translations-over"].as<unsigned int>(), 0, 100);
 }
 
 void commandline_options::parse_log_domains_(const std::string &domains_string, const int severity)
@@ -570,7 +569,7 @@ void commandline_options::parse_resolution_ ( const std::string& resolution_stri
 		throw bad_commandline_resolution(resolution_string);
 	}
 
-	resolution = std::make_pair(xres, yres);
+	resolution = std::pair(xres, yres);
 }
 
 std::vector<std::pair<unsigned int,std::string>> commandline_options::parse_to_uint_string_tuples_(const std::vector<std::string> &strings, char separator)

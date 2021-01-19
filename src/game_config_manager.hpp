@@ -20,7 +20,7 @@
 #include "filesystem.hpp"
 #include "game_config_view.hpp"
 #include "terrain/type_data.hpp"
-#include "utils/optional_fwd.hpp"
+#include <optional>
 
 class game_classification;
 class game_config_manager
@@ -62,7 +62,7 @@ private:
 	void load_game_config(bool reload_everything);
 
 	void load_game_config_with_loadscreen(FORCE_RELOAD_CONFIG force_reload,
-		game_classification const* classification = nullptr, utils::optional<std::set<std::string>> active_addons = utils::nullopt);
+		game_classification const* classification = nullptr, std::optional<std::set<std::string>> active_addons = {});
 
 	// load_game_config() helper functions.
 	void load_addons_cfg();
@@ -75,7 +75,7 @@ private:
 	game_config_view game_config_view_;
 
 	std::map<std::string, config> addon_cfgs_;
-	utils::optional<std::set<std::string>> active_addons_;
+	std::optional<std::set<std::string>> active_addons_;
 
 	preproc_map old_defines_map_;
 

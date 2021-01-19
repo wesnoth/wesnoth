@@ -12,15 +12,13 @@
    See the COPYING file for more details.
 */
 
-/** @file */
-
 #pragma once
 
 class config;
 
 #include "exceptions.hpp"
 #include "map/location.hpp"
-#include "utils/optional_fwd.hpp"
+#include <optional>
 
 #include <cstdint>
 
@@ -65,7 +63,7 @@ public:
 	 * Creates a new map and returns it.
 	 * args may contain arguments to the map generator.
 	 */
-	virtual std::string create_map(utils::optional<uint32_t> randomseed = utils::nullopt) = 0;
+	virtual std::string create_map(std::optional<uint32_t> randomseed = {}) = 0;
 
-	virtual config create_scenario(utils::optional<uint32_t> randomseed = utils::nullopt);
+	virtual config create_scenario(std::optional<uint32_t> randomseed = {});
 };

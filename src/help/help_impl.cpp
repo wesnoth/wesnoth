@@ -53,7 +53,6 @@
 #include <iterator>                     // for back_insert_iterator, etc
 #include <map>                          // for map, etc
 #include <set>
-#include <SDL2/SDL.h>
 
 static lg::log_domain log_display("display");
 #define WRN_DP LOG_STREAM(warn, log_display)
@@ -1502,15 +1501,15 @@ unsigned image_width(const std::string &filename)
 	return 0;
 }
 
-void push_tab_pair(std::vector<help::item> &v, const std::string &s, const utils::optional<std::string> &image, unsigned padding)
+void push_tab_pair(std::vector<help::item> &v, const std::string &s, const std::optional<std::string> &image, unsigned padding)
 {
 	help::item item(s, font::line_width(s, normal_font_size));
 	if (image) {
 		// If the image doesn't exist, don't add padding.
-		auto width = image_width(image.value());
+		auto width = image_width(*image);
 		padding = (width ? padding : 0);
 
-		item.first = "<img>src='" + image.value() + "'</img>" + (padding ? jump(padding) : "") + s;
+		item.first = "<img>src='" + *image + "'</img>" + (padding ? jump(padding) : "") + s;
 		item.second += width + padding;
 	}
 	v.emplace_back(item);

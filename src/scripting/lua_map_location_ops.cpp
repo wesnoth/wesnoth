@@ -157,11 +157,8 @@ int intf_get_adjacent_tiles(lua_State* L)
 		return luaL_argerror(L, 1, "expected a location");
 	}
 
-	map_location locs[6];
-	get_adjacent_tiles(l1, locs);
-
-	for (int i = 0; i < 6; ++i) {
-		luaW_pushlocation(L, locs[i]);
+	for(const map_location& adj : get_adjacent_tiles(l1)) {
+		luaW_pushlocation(L, adj);
 	}
 
 	return 6;

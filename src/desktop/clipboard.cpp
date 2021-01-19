@@ -12,8 +12,6 @@
    See the COPYING file for more details.
 */
 
-/** @file */
-
 #include "desktop/clipboard.hpp"
 #include "serialization/unicode.hpp"
 #include <algorithm>

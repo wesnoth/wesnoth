@@ -58,49 +58,6 @@ namespace gui2
 namespace dialogs
 {
 
-/*WIKI
- * @page = GUIWindowDefinitionWML
- * @order = 2_game_load
- *
- * == Load a game ==
- *
- * This shows the dialog to select and load a savegame file.
- *
- * @begin{table}{dialog_widgets}
- *
- * txtFilter & & text & m &
- *         The filter for the listbox items. $
- *
- * dirList & & menu_button & m &
- *         Allows changing directory to the directories for old versions of Wesnoth. $
- *
- * savegame_list & & listbox & m &
- *         List of savegames. $
- *
- * -filename & & styled_widget & m &
- *         Name of the savegame. $
- *
- * -date & & styled_widget & o &
- *         Date the savegame was created. $
- *
- * -minimap & & minimap & m &
- *         Minimap of the selected savegame. $
- *
- * -imgLeader & & image & m &
- *         The image of the leader in the selected savegame. $
- *
- * -lblScenario & & label & m &
- *         The name of the scenario of the selected savegame. $
- *
- * -lblSummary & & label & m &
- *         Summary of the selected savegame. $
- *
- * delete & & button & m &
- *         Delete the selected savegame. $
- *
- * @end{table}
- */
-
 REGISTER_DIALOG(game_load)
 
 game_load::game_load(const game_config_view& cache_config, savegame::load_game_metadata& data)
@@ -350,7 +307,7 @@ void game_load::filter_text_changed(const std::string& text)
 									games_[i].name().end(),
 									word.begin(),
 									word.end(),
-									chars_equal_insensitive)
+									utils::chars_equal_insensitive)
 						!= games_[i].name().end();
 
 				if(!found) {

@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: en@shaw\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2020-12-18 22:26-0300\n"
+"POT-Creation-Date: 2021-01-16 17:17+0300\n"
 "PO-Revision-Date: 2009-10-11 21:15-0400\n"
 "Last-Translator: Arc Riley <arcriley@ubuntu.com>\n"
 "Language-Team: Shavian English <ubuntu-l10n-en-shaw@lists.launchpad.net>\n"
@@ -173,7 +173,7 @@ msgstr "𐑨𐑥𐑚𐑫𐑖"
 
 #. [damage]: id=backstab
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:17
-#: data/core/macros/abilities.cfg:352
+#: data/core/macros/abilities.cfg:373
 msgid "backstab"
 msgstr "𐑚𐑨𐑒𐑕𐑑𐑨𐑚"
 
@@ -187,13 +187,13 @@ msgstr "𐑒𐑱𐑝"
 
 #. [damage]: id=charge
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:26
-#: data/core/macros/abilities.cfg:448
+#: data/core/macros/abilities.cfg:469
 msgid "charge"
 msgstr "𐑗𐑸𐑡"
 
 #. [hides]: id=concealment
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:29
-#: data/core/macros/abilities.cfg:289
+#: data/core/macros/abilities.cfg:310
 msgid "concealment"
 msgstr "𐑒𐑩𐑯𐑕𐑰𐑤𐑥𐑩𐑯𐑑"
 
@@ -212,7 +212,7 @@ msgstr "𐑛𐑦𐑓𐑧𐑯𐑕"
 
 #. [drains]: id=drains
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:38
-#: data/core/macros/abilities.cfg:461
+#: data/core/macros/abilities.cfg:482
 msgid "drains"
 msgstr "𐑛𐑮𐑱𐑯𐑟"
 
@@ -224,13 +224,13 @@ msgstr "𐑓𐑽𐑤𐑩𐑕"
 
 #. [dummy]: id=feeding
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:44
-#: data/core/macros/abilities.cfg:328
+#: data/core/macros/abilities.cfg:349
 msgid "feeding"
 msgstr "𐑓𐑰𐑛𐑦𐑙"
 
 #. [dummy]: id=feeding
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:47
-#: data/core/macros/abilities.cfg:330
+#: data/core/macros/abilities.cfg:351
 #, fuzzy
 #| msgid ""
 #| " This unit gains 1 hitpoint added to its maximum whenever it kills a "
@@ -286,13 +286,13 @@ msgstr "𐑤𐑰𐑛𐑼𐑖𐑦𐑐"
 
 #. [chance_to_hit]: id=magical
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:86
-#: data/core/macros/abilities.cfg:426
+#: data/core/macros/abilities.cfg:447
 msgid "magical"
 msgstr "𐑥𐑨𐑡𐑦𐑒𐑩𐑤"
 
 #. [chance_to_hit]: id=marksman
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:89
-#: data/core/macros/abilities.cfg:413
+#: data/core/macros/abilities.cfg:434
 msgid "marksman"
 msgstr "𐑥𐑸𐑒𐑕𐑥𐑩𐑯"
 
@@ -302,20 +302,20 @@ msgstr "𐑥𐑳𐑖𐑮𐑵𐑥 𐑜𐑮𐑴𐑝"
 
 #. [hides]: id=nightstalk
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:95
-#: data/core/macros/abilities.cfg:270 data/core/macros/abilities.cfg:271
+#: data/core/macros/abilities.cfg:291 data/core/macros/abilities.cfg:292
 msgid "nightstalk"
 msgstr "𐑯𐑲𐑑𐑕𐑑𐑷𐑒"
 
 #. [plague]: id=plague({TYPE}), type={TYPE}
 #. [plague]: id=plague, type=Walking Corpse
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:98
-#: data/core/macros/abilities.cfg:371 data/core/macros/abilities.cfg:382
+#: data/core/macros/abilities.cfg:392 data/core/macros/abilities.cfg:403
 msgid "plague"
 msgstr "𐑐𐑤𐑱𐑜"
 
 #. [poison]: id=poison
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:101
-#: data/core/macros/abilities.cfg:481
+#: data/core/macros/abilities.cfg:502
 msgid "poison"
 msgstr "𐑐𐑶𐑟𐑩𐑯"
 
@@ -342,7 +342,7 @@ msgstr "𐑕𐑒𐑻𐑥𐑦𐑖𐑻"
 
 #. [slow]: id=slow
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:116
-#: data/core/macros/abilities.cfg:393
+#: data/core/macros/abilities.cfg:414
 msgid "slows"
 msgstr "𐑕𐑤𐑴𐑟"
 
@@ -359,7 +359,7 @@ msgstr "𐑕𐑑𐑮𐑲𐑒𐑕"
 
 #. [hides]: id=submerge
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:125
-#: data/core/macros/abilities.cfg:308
+#: data/core/macros/abilities.cfg:329
 msgid "submerge"
 msgstr "𐑕𐑩𐑚𐑥𐑻𐑡"
 
@@ -390,14 +390,15 @@ msgstr ""
 
 #. [section]: id=editor_mode_terrain
 #. [topic]: id=..editor_mode_terrain
-#: data/core/editor/help.cfg:13 data/core/editor/help.cfg:263
+#: data/core/editor/help.cfg:13 data/core/editor/help.cfg:257
 #, fuzzy
 #| msgid "Terrain Modifiers"
 msgid "Terrain Editor"
 msgstr "𐑑𐑻𐑱𐑯 𐑥𐑪𐑛𐑦𐑓𐑲𐑼𐑟"
 
 #. [section]: id=editor_mode_scenario
-#: data/core/editor/help.cfg:20
+#. [topic]: id=..editor_mode_scenario
+#: data/core/editor/help.cfg:20 data/core/editor/help.cfg:269
 #, fuzzy
 #| msgid "Terrain Modifiers"
 msgid "Scenario Editor"
@@ -558,16 +559,17 @@ msgid "Starting Locations Tool"
 msgstr ""
 
 #. [topic]: id=editor_tool_starting
-#: data/core/editor/help.cfg:108
+#: data/core/editor/help.cfg:109
 msgid ""
-"Defines the side leader starting position\n"
+"Defines the side leader starting position.\n"
 "\n"
 "This tool sets the side leaders’ default starting locations, and named "
 "special locations. Both types of location are enabled in both <ref>dst='.."
-"editor_mode_terrain' text='Terrain Editor'</ref> and Scenario Editor modes. "
-"The location names are shown as a list in the editor palette, clicking on "
-"the map will place that name on a hex, each location can only be placed on a "
-"single hex, and the editor will only allow one location per hex.\n"
+"editor_mode_terrain' text='Terrain Editor'</ref> and <ref>dst='.."
+"editor_mode_scenario' text='Scenario Editor'</ref> modes. The location names "
+"are shown as a list in the editor palette, clicking on the map will place "
+"that name on a hex, each location can only be placed on a single hex, and "
+"the editor will only allow one location per hex.\n"
 "\n"
 "To add named special locations, click “Add” at the bottom of the editor "
 "palette, and enter the name. These names must start with a letter and may "
@@ -591,78 +593,138 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=editor_tool_label
-#: data/core/editor/help.cfg:127
+#: data/core/editor/help.cfg:129
 msgid "Label Tool"
 msgstr ""
 
 #. [topic]: id=editor_tool_label
-#. [topic]: id=editor_tool_item
-#. [topic]: id=editor_tool_village
-#. [topic]: id=editor_tool_unit
-#. [topic]: id=editor_time_schedule
-#: data/core/editor/help.cfg:128 data/core/editor/help.cfg:136
-#: data/core/editor/help.cfg:144 data/core/editor/help.cfg:152
-#: data/core/editor/help.cfg:284
-msgid "TODO"
+#: data/core/editor/help.cfg:130
+msgid ""
+"Put text labels on the map.\n"
+"\n"
+"• Left-click will open a dialog box to create a new label or edit an "
+"existing one.\n"
+"• Right-click deletes.\n"
+"• Drag-and-drop with the left mouse button moves labels.\n"
+"\n"
+"This tool is only available in Scenario Mode; the decorations are "
+"implemented in the scenario using WML’s <italic>text='[label]'</italic> tag."
 msgstr ""
 
-#. [topic]: id=editor_tool_item
-#: data/core/editor/help.cfg:135
-msgid "Item Tool"
+#. [topic]: id=editor_tool_scenery
+#: data/core/editor/help.cfg:145
+msgid "Item Tool (Scenery Tool)"
+msgstr ""
+
+#. [topic]: id=editor_tool_scenery
+#: data/core/editor/help.cfg:146
+msgid ""
+"The Item Tool allows placing decorations such as windmills, bookcases and "
+"monoliths. Multiple items can be placed on the same hex.\n"
+"\n"
+"<bold>text='Note:'</bold> the tool doesn’t support deleting items once "
+"placed, nor does it support undo. Mistakes can currently only be fixed by "
+"editing the generated WML file.\n"
+"\n"
+"This tool is only available in Scenario Mode; the decorations are not part "
+"of the terrain and are implemented in the scenario using WML’s "
+"<italic>text='[item]'</italic> tag."
 msgstr ""
 
 #. [topic]: id=editor_tool_village
-#: data/core/editor/help.cfg:143
+#: data/core/editor/help.cfg:159
 msgid "Village Ownership Tool"
 msgstr ""
 
+#. [topic]: id=editor_tool_village
+#: data/core/editor/help.cfg:160
+msgid ""
+"This tool assigns ownership of villages at the start of a scenario. The "
+"villages must first be placed on the terrain with the "
+"<ref>dst='editor_tool_paint' text='Paint Tool'</ref>.\n"
+"\n"
+"• Left-click will assign the village to the currently-selected side.\n"
+"• Right-click will set the village back to unowned.\n"
+"\n"
+"This tool is only available in Scenario Mode; ownership information is "
+"stored by adding WML <italic>text='[village]'</italic> tags to the "
+"appropriate <italic>text='[side]'</italic>."
+msgstr ""
+
 #. [topic]: id=editor_tool_unit
-#: data/core/editor/help.cfg:151
+#: data/core/editor/help.cfg:174
 msgid "Unit Tool"
 msgstr ""
 
+#. [topic]: id=editor_tool_unit
+#: data/core/editor/help.cfg:175
+msgid ""
+"Place units belonging to the currently-selected side.\n"
+"\n"
+"• Left-click will place a unit.\n"
+"• Left drag-and-drop will move an already-placed unit.\n"
+"• Various operations are added to the right-click menu when the hex contains "
+"a unit.\n"
+"\n"
+"This tool is only available in Scenario Mode; it adds WML "
+"<italic>text='[unit]'</italic> tags to the appropriate "
+"<italic>text='[side]'</italic>."
+msgstr ""
+
 #. [topic]: id=editor_named_area
-#: data/core/editor/help.cfg:159
+#: data/core/editor/help.cfg:190
 msgid "Named Areas"
 msgstr ""
 
 #. [topic]: id=editor_named_area
-#: data/core/editor/help.cfg:160
+#: data/core/editor/help.cfg:191
 msgid ""
-"This tool can create [time_area]s, unlike the name suggests these do not "
-"need to have a specific time zone assigned to them.\n"
-"    [time_area]s are sets of tiles which can be addressed during scenario "
-"scripting by their id. [time_area]s can optionally have a custom\n"
-"    time zone assigned to them. The simplest way to address a [time_area] "
-"via scenario scripting is the `area=` attribute in standard location "
-"filters.\n"
+"This tool create sets of tiles that can be used in WML scripts’ Standard "
+"Location Filters (a concept explained in detail on the Wiki), by using the "
+"area’s id in the filter’s <italic>text='area='</italic> attribute. For "
+"example:\n"
 "\n"
-"This tool can be used to abstract between the implementation of an effect "
-"and the map specific setting.\n"
-"This is a very powerful mechanism since it allows generic scenario code to "
-"work with different maps providing the needed named locations."
+"• assigning a local time zone to this set of hexes\n"
+"• filtering the set of hexes which trigger an event when a unit moves on to "
+"them\n"
+"\n"
+"To use the tool:\n"
+"\n"
+"• select hexes using the <ref>dst='editor_tool_select' text='select tool'</"
+"ref>\n"
+"• in the Areas menu, select Add New Area\n"
+"• then in the Areas menu, select Save Selection to Area\n"
+"• then in the Areas menu, select Rename Selected Area and choose a name for "
+"the area\n"
+"\n"
+"This tool is only available in Scenario Mode; it adds WML "
+"<italic>text='[time_area]'</italic> tags to the scenario. Although the tag’s "
+"name implies time, it is now more generic and can be used for other purposes "
+"without needing to change the time-of-day schedule in the area."
 msgstr ""
 
 #. [topic]: id=editor_playlist
-#: data/core/editor/help.cfg:172
+#: data/core/editor/help.cfg:212
 msgid "Playlist Manager"
 msgstr ""
 
 #. [topic]: id=editor_playlist
-#: data/core/editor/help.cfg:173
+#: data/core/editor/help.cfg:213
 msgid ""
-"Saves a list of music tracks defining a random playlist to the scenario.\n"
+"Shows a list of music tracks known to the editor, with toggle-boxes to "
+"enable them.\n"
 "\n"
-"Have a look at the addon server for easy to use additional music tracks."
+"This tool is only available in Scenario Mode; it adds WML "
+"<italic>text='[music]'</italic> tags to the scenario."
 msgstr ""
 
 #. [topic]: id=..editor
-#: data/core/editor/help.cfg:182
+#: data/core/editor/help.cfg:223
 msgid "Map/Scenario Editor"
 msgstr ""
 
 #. [topic]: id=..editor
-#: data/core/editor/help.cfg:184
+#: data/core/editor/help.cfg:224
 msgid ""
 "Wesnoth’s Map and Scenario Editor allows users to create and edit the maps "
 "on which every Wesnoth scenario takes place. It also provides a limited set "
@@ -671,32 +733,51 @@ msgid ""
 "The editor can be launched from the <italic>text='Map Editor'</italic> "
 "option at the title screen.\n"
 "\n"
-"<header>text='What you get'</header>\n"
+"<header>text='Editing Modes'</header>\n"
 "\n"
-"• <ref>dst='..editor_mode_terrain' text='Terrain Editor'</ref>\n"
-"An easy to use map editor, similar to simple paint applications.\n"
+"The editor features two modes of operation: terrain mode and scenario mode.\n"
 "\n"
-"• Scenario Editor\n"
+"The <ref>dst='..editor_mode_terrain' text='Terrain Mode'</ref> is similar to "
+"a simple paint application, with tools to <ref>dst='editor_tool_paint' "
+"text='paint'</ref>, <ref>dst='editor_tool_fill' text='fill'</ref>, "
+"<ref>dst='editor_tool_select' text='select (and copy)'</ref>, and "
+"<ref>dst='editor_tool_paste' text='paste'</ref>. It also has the tool for "
+"setting the leaders’ <ref>dst='editor_tool_starting' text='starting "
+"locations'</ref>.\n"
 "\n"
-"• <ref>dst='editor_playlist' text='Playlist Manager'</ref>\n"
-"Predefine the scenario’s music track playlist.\n"
+"The <ref>dst='..editor_mode_scenario' text='Scenario Mode'</ref>, in "
+"addition to the tools available in terrain mode, adds support for adding "
+"<ref>dst='editor_tool_label' text='labels'</ref>, "
+"<ref>dst='editor_tool_scenery' text='scenery items'</ref>, "
+"<ref>dst='editor_tool_unit' text='units'</ref> in addition to the leader, "
+"and assigning <ref>dst='editor_tool_village' text='village ownership'</ref> "
+"at the start of the scenario. There’s also a <ref>dst='editor_playlist' "
+"text='playlist manager'</ref> for the music.\n"
 "\n"
-"• Time Schedule Editor\n"
-"\n"
+"<bold>text='Warning: the Scenario Mode is buggy in 1.14.'</bold> Improving "
+"it is one of the main blockers for the 1.16 release, however in 1.14 its "
+"quality is far below that of the game and the terrain mode."
+msgstr ""
+
+#. [topic]: id=..editor
+#: data/core/editor/help.cfg:238
+msgid ""
 "<header>text='What you do *not* get'</header>\n"
 "\n"
-"• What-you-see-is-what-you-get\n"
-"The editor is not a WYSIWYG application.\n"
+"• Exactly the same map rendering as in-game\n"
 "\n"
-"Because which exact graphic tile represents a terrain in the map depends on "
-"all terrain rules loaded (which is different between the editor and each "
-"other use case) the map won’t look exactly the same.\n"
+"The map won’t look exactly the same in the game as it does in the editor, "
+"because this depends on the terrain rules. For example, when many mountain "
+"hexes are clustered together the terrain rules will try to combine them into "
+"mountain ranges and large graphics spanning multiple hexes.\n"
 "\n"
 "• Event handlers and scripting\n"
+"\n"
 "The editor is not a tool to help you scripting the scenario’s event "
 "handlers.\n"
 "\n"
 "• Infinite Backwards Compatibility\n"
+"\n"
 "The editor can load most maps from older versions of Wesnoth, but not all. "
 "Maps from 1.3.2 and later will normally be supported, unless they use "
 "terrains which are no longer in mainline Wesnoth. Maps from add-ons which "
@@ -704,112 +785,171 @@ msgid ""
 "terrains."
 msgstr ""
 
-#. [topic]: id=..editor
-#: data/core/editor/help.cfg:213
-msgid ""
-"<header>text='Basic Concepts'</header>\n"
-"• <ref>dst='editor_modes' text='Editing Modes'</ref>\n"
-"• <ref>dst='editor_toolkit' text='Editor Toolkit'</ref>\n"
-"• <ref>dst='editor_palette' text='Editor Palette'</ref>\n"
-"• The clipboard is described in the <ref>dst='editor_tool_paste' text='Paste "
-"Tool'</ref>"
-msgstr ""
-
-#. [topic]: id=editor_modes
-#: data/core/editor/help.cfg:223
-msgid "Editing Modes"
-msgstr ""
-
-#. [topic]: id=editor_modes
-#: data/core/editor/help.cfg:224
-msgid ""
-"The editor features two modes of operation:\n"
-"\n"
-"<header>text='Terrain-only Mode'</header>\n"
-"\n"
-"Allows only the composing of the terrain map itself and the definition of "
-"leader starting positions.\n"
-"\n"
-"When saved using “Save Map As” and saving to the default directory, the "
-"produced map can be found in the “User Maps” game type of the create "
-"multiplayer game dialog.\n"
-"\n"
-"<header>text='Scenario Mode'</header>\n"
-"\n"
-"The Scenario mode allows several extra tools to be used, such as the Unit "
-"tool. At least one side must be defined in order to use these tools, "
-"however.\n"
-"\n"
-"In this mode, terrain data is stored in the map_data attribute and saved "
-"into a file with any applicable WML."
-msgstr ""
-
-#. [topic]: id=editor_toolkit
-#: data/core/editor/help.cfg:241
-msgid "Editor Tools"
-msgstr ""
-
-#. [topic]: id=editor_toolkit
-#: data/core/editor/help.cfg:242
-msgid ""
-"The editor provides several tools for editing your maps and scenarios. At "
-"all times, one of the editor tools is active. The active tool’s context "
-"determines the content of the editor palette and context menu.\n"
-"\n"
-"These tools are available in both terrain-only mode and scenario mode:\n"
-"\n"
-"• <ref>dst='editor_tool_paint' text='Paint Tool'</ref>\n"
-"• <ref>dst='editor_tool_fill' text='Fill Tool'</ref>\n"
-"• <ref>dst='editor_tool_select' text='Select Tool'</ref>\n"
-"• <ref>dst='editor_tool_paste' text='Paste Tool'</ref>\n"
-"• <ref>dst='editor_tool_starting' text='Starting Locations Tool'</ref>\n"
-"\n"
-"These tools are only available in scenario mode:\n"
-"\n"
-"• <ref>dst='editor_tool_label' text='Label Tool'</ref>\n"
-"• <ref>dst='editor_tool_item' text='Item Tool'</ref>\n"
-"• <ref>dst='editor_tool_village' text='Village Tool'</ref>\n"
-"• <ref>dst='editor_tool_unit' text='Unit Tool'</ref>"
-msgstr ""
-
 #. [topic]: id=..editor_mode_terrain
-#: data/core/editor/help.cfg:264
+#: data/core/editor/help.cfg:258
 msgid ""
 "The terrain editor’s functionality is similar to a simple paint "
 "application.\n"
 "\n"
-"The right-hand sidebar contains, from top to bottom, the mini-map, "
-"<ref>dst='editor_toolkit' text='Toolkit'</ref>, tool options, and "
+"The right-hand sidebar contains, from top to bottom, the mini-map, the "
+"toolkit (see the pages for each tool), tool options, and "
 "<ref>dst='editor_palette' text='Palette'</ref>.\n"
 "\n"
-"To get started, refer to the <ref>dst='editor_tool_paint' text='Paint Tool'</"
-"ref>’s page."
+"When saved using “Save Map As” and saving to the default directory, the "
+"resulting map can be found in the “User Maps” game type of the multiplayer "
+"“Create Game” dialog."
+msgstr ""
+
+#. [topic]: id=..editor_mode_scenario
+#: data/core/editor/help.cfg:270
+msgid ""
+"The scenario editor mode adds support for some map-related WML features, "
+"such as areas and scenery items. Most scenarios will still require "
+"additional WML to be written using a different tool; the scenario editor "
+"does not support scripting the scenario’s events."
+msgstr ""
+
+#. [topic]: id=..editor_mode_scenario
+#: data/core/editor/help.cfg:272
+msgid ""
+"<header>text='Checking whether the editor is in scenario mode'</header>\n"
+"\n"
+"You can check which mode the editor is in by looking at the menu bar.\n"
+"\n"
+"• In scenario mode the “Areas” and “Side” menus are enabled.\n"
+"• In terrain-only mode the “Areas” and “Side” menus are grayed-out."
+msgstr ""
+
+#. [topic]: id=..editor_mode_scenario
+#: data/core/editor/help.cfg:279
+msgid ""
+"<header>text='Entering scenario mode'</header>\n"
+"\n"
+"To start a new map in scenario mode, choose “New Scenario” from the “File” "
+"menu.\n"
+"\n"
+"If you’re already editing a map in terrain mode, use “Save Scenario As” from "
+"the “File” menu; this will switch to scenario mode."
+msgstr ""
+
+#. [topic]: id=..editor_mode_scenario
+#: data/core/editor/help.cfg:287
+msgid ""
+"<header>text='The files: .map and .cfg'</header>\n"
+"\n"
+"The map editor saves exactly one file, either a .map (for terrain mode) or "
+"a .cfg (for scenario mode). In scenario mode the terrain map is saved inside "
+"the .cfg file; there is no separate .map file. If you start editing in "
+"terrain mode and then switch to scenaro mode then an old .map file might "
+"remain, but this is not updated by the scenario editor.\n"
+"\n"
+"Loading a .cfg file has different results depending on the contents of the ."
+"cfg file. For .cfg files that were created by the scenario editor, it will "
+"open the .cfg in the scenario editor. However, for .cfg files that use a "
+"separate .map file (which can't be created by the scenario editor), the "
+"editor may follow the link and open the corresponding .map in terrain-only "
+"mode, as if the .map file was chosen in the file selector."
+msgstr ""
+
+#. [topic]: id=editor_separate_events_file
+#: data/core/editor/help.cfg:299
+msgid "Using a separate file for WML events"
+msgstr ""
+
+#. [topic]: id=editor_separate_events_file
+#: data/core/editor/help.cfg:300
+msgid ""
+"When loading a .cfg file, the scenario editor understands files created by "
+"the scenario editor, but is likely to have difficulty with files that have "
+"been edited by hand.\n"
+"\n"
+"Files created by the scenario editor omit the opening [scenario] and closing "
+"[/scenario] tags. If you are creating a campaign (or other add-on), then "
+"those tags need to be added; there is more detail about this in the "
+"<ref>dst='editor_map_format' text='map file format'</ref> documentation.\n"
+"\n"
+"One workflow is to create a separate WML file, also with the .cfg extension, "
+"which uses the WML preprocessor to include the editor-created file. This "
+"separate file contains both the [scenario] tag and any hand-edited WML such "
+"as events. With this workflow, the add-on’s file structure could look like "
+"this:\n"
+"\n"
+"<header>text='For Wesnoth 1.14'</header>\n"
+"\n"
+"• _main.cfg:\n"
+"  ◦ use “{./scenarios}” to include the “scenarios” directory\n"
+"• maps/map_from_01.cfg\n"
+"  ◦ this is the file created by the scenario editor\n"
+"• scenarios/01_Forest.cfg, instead of the opening [scenario] tag put in "
+"these four lines:\n"
+"  ◦ [scenario]\n"
+"  ◦     {~add-ons/NAME_OF_ADD_ON/maps/map_from_01.cfg}\n"
+"  ◦ [/scenario]\n"
+"  ◦ [+scenario]\n"
+"\n"
+"The first three of those lines insert the scenario-generated file inside a "
+"[scenario] tag. The ‘+’ sign on the fourth line means that two scenario tags "
+"will be combined, with attributes in the second one overriding attributes in "
+"the first one.\n"
+"\n"
+"<header>text='1.16 and later'</header>\n"
+"\n"
+"If your add-on will only be used on 1.16 and later, there are new features "
+"to load .cfg files via map_file, and to avoid repeating the add-on’s name "
+"within the .cfg files.\n"
+"\n"
+"• _main.cfg:\n"
+"  ◦ use “[binary_path]” to add add-on’s directories to the binary path, "
+"which makes “map_file” search the “maps” directory.\n"
+"  ◦ use “{./scenarios}” to include the “scenarios” directory\n"
+"• maps/map_from_01.cfg\n"
+"  ◦ this is the file created by the scenario editor\n"
+"• scenarios/01_Forest.cfg\n"
+"  ◦ inside the [scenario] element, use “map_file=\"map_from_01.cfg\"” to "
+"load that file"
 msgstr ""
 
 #. [topic]: id=editor_masks
-#: data/core/editor/help.cfg:275
+#: data/core/editor/help.cfg:338
 msgid "Editor Mask Usage"
 msgstr ""
 
 #. [topic]: id=editor_masks
-#: data/core/editor/help.cfg:276
+#: data/core/editor/help.cfg:339
 msgid ""
 "Masks can be applied to a base map for reusal in several scenarios playing "
 "at the same locations."
 msgstr ""
 
 #. [topic]: id=editor_time_schedule
-#: data/core/editor/help.cfg:283
-msgid "Time Schedule Editor"
+#. Time of Day and Schedule Editor, please use a short string as it will be used in the left-hand pane of the help browser
+#: data/core/editor/help.cfg:347
+#, fuzzy
+#| msgid "Time of Day"
+msgid "ToD and Schedule Editor"
+msgstr "𐑑𐑲𐑥 𐑝 𐑛𐑱"
+
+#. [topic]: id=editor_time_schedule
+#: data/core/editor/help.cfg:348
+msgid ""
+"This button at the top-right of the screen accesses the time-of-day preview "
+"and the schedule editor.\n"
+"\n"
+"In terrain mode, this displays the map as it will be recolored at different "
+"times of day.\n"
+"\n"
+"In scenario mode, the button accesses an editor for individual schedules for "
+"<ref>dst='editor_named_area' text='time areas'</ref>."
 msgstr ""
 
 #. [topic]: id=editor_palette
-#: data/core/editor/help.cfg:291
+#: data/core/editor/help.cfg:359
 msgid "Editor Palette"
 msgstr ""
 
 #. [topic]: id=editor_palette
-#: data/core/editor/help.cfg:292
+#. the “Player 1”, “Player 2”, ... list is translated using "Player $side_num" in the wesnoth-editor textdomain
+#: data/core/editor/help.cfg:361
 msgid ""
 "The editor palette contains the applicable items you may use with the "
 "currently selected tool. For example, the Paint tool will display a full "
@@ -825,40 +965,40 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=editor_palette
-#: data/core/editor/help.cfg:297
+#: data/core/editor/help.cfg:366
 msgid "Show all kinds of terrain"
 msgstr ""
 
 #. [topic]: id=editor_palette
-#: data/core/editor/help.cfg:298
+#: data/core/editor/help.cfg:367
 msgid "Show only water terrains"
 msgstr ""
 
 #. [topic]: id=editor_palette
-#: data/core/editor/help.cfg:299
+#: data/core/editor/help.cfg:368
 msgid "Show only villages"
 msgstr ""
 
-#. [topic]: id=map_format
-#: data/core/editor/help.cfg:309
+#. [topic]: id=editor_map_format
+#: data/core/editor/help.cfg:379
 msgid "Wesnoth Map Format"
 msgstr ""
 
-#. [topic]: id=map_format
-#: data/core/editor/help.cfg:310
+#. [topic]: id=editor_map_format
+#: data/core/editor/help.cfg:380
 msgid "Wesnoth stores its maps in human readable plain text files."
 msgstr ""
 
-#. [topic]: id=map_format
-#: data/core/editor/help.cfg:312
+#. [topic]: id=editor_map_format
+#: data/core/editor/help.cfg:382
 msgid ""
 "<header>text='Native'</header>\n"
 "\n"
 "A map file consists of rows with comma separated terrain code strings. The "
-"only non-terrain information provided by the map syntax are the locations "
-"created by the <ref>dst='editor_tool_starting' text='Starting Locations "
-"Tool'</ref>. The files can be edited with a general purpose text editor like "
-"notepad.\n"
+"only non-terrain information provided by the map syntax is the set of "
+"locations created by the <ref>dst='editor_tool_starting' text='Starting "
+"Locations Tool'</ref>. The files can be edited with a general purpose text "
+"editor like notepad.\n"
 "\n"
 "These files can be used directly for multiplayer games, the number of "
 "players is automatically determined by the number of starting positions. "
@@ -880,8 +1020,8 @@ msgid ""
 "preprocessor include."
 msgstr ""
 
-#. [topic]: id=map_format
-#: data/core/editor/help.cfg:325
+#. [topic]: id=editor_map_format
+#: data/core/editor/help.cfg:395
 msgid ""
 "<header>text='Embedded'</header>\n"
 "\n"
@@ -890,7 +1030,7 @@ msgid ""
 "that the preprocessor would include it when using the preprocessor-include "
 "method.\n"
 "\n"
-"<bold>text='Using Embedded Format in Terrain Mode'</bold>\n"
+"<header>text='Using Embedded Format in Terrain Mode'</header>\n"
 "\n"
 "If you are editing the map and not using the Scenario Mode support, then "
 "it’s trivial to move the data to a native map file before opening it in the "
@@ -900,22 +1040,49 @@ msgid ""
 "menu."
 msgstr ""
 
-#. [topic]: id=map_format
-#: data/core/editor/help.cfg:333
+#. [topic]: id=editor_map_format
+#: data/core/editor/help.cfg:403
 msgid ""
-"<bold>text='Using Embedded Format in Scenario Mode'</bold>\n"
+"<header>text='Files created by the Scenario Editor'</header>\n"
 "\n"
-"TODO: add documentation about the scenario mode."
+"In scenario mode, the editor saves the data as a .cfg file with embedded map "
+"data. When loading a .cfg file, the scenario editor understands files "
+"created by the scenario editor itself, but is likely to have difficulty with "
+"files that have been edited by hand; problems can be avoided by "
+"<ref>dst='editor_separate_events_file' text='using a separate .cfg file'</"
+"ref> for the hand-edited parts."
 msgstr ""
 
-#. [time]: id=deep_underground
+#. [topic]: id=editor_map_format
+#: data/core/editor/help.cfg:407
+msgid ""
+"<header>text='Which scenario files use the [scenario] tag'</header>\n"
+"\n"
+"Files created by the scenario editor have the contents of a WML scenario "
+"element, but don’t include the opening [scenario] and closing [/scenario] "
+"tags. For each .cfg file in the userdata folder’s editor/scenarios "
+"subfolder, the game will automatically try to load a scenario from it to "
+"include in the “Custom Scenarios” list (files that fail to load are "
+"ignored). In this folder each file is a separate item - files that fail to "
+"parse as a scenario are ignored, and files must not contain the [scenario][/"
+"scenario] tags.\n"
+"\n"
+"The opposite applies when a scenario is part of a campaign or other add-on. "
+"Typically each scenario has its own .cfg file, however this is unnecessary - "
+"all of the WML in an add-on will be combined by the preprocessor, it doesn’t "
+"matter whether the add-on is written as separate files or not. The engine "
+"needs the [scenario]...[/scenario] (or [multiplayer]...[/multiplayer]) tags "
+"to know which WML is part of each scenario."
+msgstr ""
+
 #. [editor_times]: id=deep_underground
+#. [time]: id=deep_underground
 #: data/core/editor/time-of-day.cfg:47 data/core/macros/schedules.cfg:127
 msgid "Deep Underground"
 msgstr "𐑛𐑰𐑐 𐑳𐑯𐑛𐑼𐑜𐑮𐑬𐑯𐑛"
 
-#. [time]: id=indoors
 #. [editor_times]: id=indoors
+#. [time]: id=indoors
 #: data/core/editor/time-of-day.cfg:53 data/core/macros/schedules.cfg:104
 msgid "Indoors"
 msgstr ""
@@ -2713,8 +2880,8 @@ msgstr ""
 "𐑛𐑱/𐑯𐑲𐑑 𐑕𐑲𐑒𐑩𐑤, 𐑥𐑹𐑯𐑦𐑙 𐑯 𐑭𐑓𐑑𐑼𐑯𐑵𐑯 𐑒𐑬𐑯𐑑 𐑨𐑟 𐑛𐑱, 𐑓𐑻𐑕𐑑 𐑯 𐑕𐑧𐑒𐑩𐑯𐑛 𐑢𐑪𐑡 𐑒𐑬𐑯𐑑 𐑨𐑟 𐑯𐑲𐑑:\n"
 
 #. [time]: id=dawn
-#. [topic]: id=time_of_day
 #. [time]: id=dawn_hour
+#. [topic]: id=time_of_day
 #: data/core/help.cfg:464 data/core/macros/schedules.cfg:16
 #: data/core/macros/schedules.cfg:290 data/test/maps/pathfind_1.cfg:64
 msgid "Dawn"
@@ -2735,8 +2902,8 @@ msgid "Afternoon"
 msgstr "𐑭𐑓𐑑𐑼𐑯𐑵𐑯"
 
 #. [time]: id=dusk
-#. [topic]: id=time_of_day
 #. [time]: id=dusk_hour
+#. [topic]: id=time_of_day
 #: data/core/help.cfg:467 data/core/macros/schedules.cfg:55
 #: data/core/macros/schedules.cfg:411 data/test/maps/pathfind_1.cfg:97
 msgid "Dusk"
@@ -4134,8 +4301,45 @@ msgstr ""
 "𐑯𐑧𐑒𐑕𐑑 𐑑 𐑦𐑑. 𐑧𐑯𐑦 𐑧𐑯𐑩𐑥𐑦 𐑿𐑯𐑦𐑑 𐑞𐑨𐑑 𐑓𐑻𐑕𐑑 𐑛𐑦𐑕𐑒𐑳𐑝𐑼𐑟 𐑞𐑦𐑕 𐑿𐑯𐑦𐑑 𐑦𐑥𐑰𐑛𐑾𐑑𐑤𐑰 𐑤𐑵𐑟𐑩𐑟 𐑷𐑤 𐑦𐑑𐑕 "
 "𐑮𐑦𐑥𐑱𐑯𐑦𐑙 𐑥𐑵𐑝𐑥𐑩𐑯𐑑."
 
-#. [hides]: id=nightstalk
+#. [hides]: id=burrow
+#: data/core/macros/abilities.cfg:270
+msgid "burrow"
+msgstr ""
+
+#. [hides]: id=burrow
+#: data/core/macros/abilities.cfg:271
+#, fuzzy
+#| msgid "female^slow"
+msgid "female^burrow"
+msgstr "𐑕𐑤𐑴"
+
+#. [hides]: id=burrow
 #: data/core/macros/abilities.cfg:272
+#, fuzzy
+#| msgid ""
+#| "Ambush:\n"
+#| "This unit can hide in forest, and remain undetected by its enemies.\n"
+#| "\n"
+#| "Enemy units cannot see this unit while it is in forest, except if they "
+#| "have units next to it. Any enemy unit that first discovers this unit "
+#| "immediately loses all its remaining movement."
+msgid ""
+"This unit can hide in forest or sand if it is resting (has not moved for a "
+"turn), and remain undetected by its enemies.\n"
+"\n"
+"Enemy units cannot see this unit while it is resting in forest or sand, "
+"except if they have units next to it. Any enemy unit that first discovers "
+"this unit immediately loses all its remaining movement."
+msgstr ""
+"𐑨𐑥𐑚𐑫𐑖:\n"
+"𐑞𐑦𐑕 𐑿𐑯𐑦𐑑 𐑒𐑨𐑯 𐑣𐑲𐑛 𐑦𐑯 𐑓𐑹𐑦𐑕𐑑, 𐑯 𐑮𐑦𐑥𐑱𐑯 𐑩𐑯𐑛𐑦𐑑𐑧𐑒𐑑𐑦𐑛 𐑚𐑲 𐑦𐑑𐑕 𐑧𐑯𐑦𐑥𐑦𐑟.\n"
+"\n"
+"𐑧𐑯𐑩𐑥𐑦 𐑿𐑯𐑦𐑑𐑕 𐑒𐑨𐑯𐑪𐑑 𐑕𐑰 𐑞𐑦𐑕 𐑿𐑯𐑦𐑑 𐑢𐑲𐑤 𐑦𐑑 𐑦𐑟 𐑦𐑯 𐑓𐑹𐑦𐑕𐑑, 𐑦𐑒𐑕𐑧𐑐𐑑 𐑦𐑓 𐑞𐑱 𐑣𐑨𐑝 𐑿𐑯𐑦𐑑𐑕 "
+"𐑯𐑧𐑒𐑕𐑑 𐑑 𐑦𐑑. 𐑧𐑯𐑦 𐑧𐑯𐑩𐑥𐑦 𐑿𐑯𐑦𐑑 𐑞𐑨𐑑 𐑓𐑻𐑕𐑑 𐑛𐑦𐑕𐑒𐑳𐑝𐑼𐑟 𐑞𐑦𐑕 𐑿𐑯𐑦𐑑 𐑦𐑥𐑰𐑛𐑾𐑑𐑤𐑰 𐑤𐑵𐑟𐑩𐑟 𐑷𐑤 𐑦𐑑𐑕 "
+"𐑮𐑦𐑥𐑱𐑯𐑦𐑙 𐑥𐑵𐑝𐑥𐑩𐑯𐑑."
+
+#. [hides]: id=nightstalk
+#: data/core/macros/abilities.cfg:293
 #, fuzzy
 #| msgid ""
 #| "Nightstalk:\n"
@@ -4158,12 +4362,12 @@ msgstr ""
 "𐑧𐑯𐑩𐑥𐑦 𐑿𐑯𐑦𐑑 𐑞𐑨𐑑 𐑓𐑻𐑕𐑑 𐑛𐑦𐑕𐑒𐑳𐑝𐑼𐑟 𐑞𐑦𐑕 𐑿𐑯𐑦𐑑 𐑦𐑥𐑰𐑛𐑾𐑑𐑤𐑰 𐑤𐑵𐑟𐑩𐑟 𐑷𐑤 𐑦𐑑𐑕 𐑮𐑦𐑥𐑱𐑯𐑦𐑙 𐑥𐑵𐑝𐑥𐑩𐑯𐑑."
 
 #. [hides]: id=concealment
-#: data/core/macros/abilities.cfg:290
+#: data/core/macros/abilities.cfg:311
 msgid "female^concealment"
 msgstr "𐑒𐑩𐑯𐑕𐑰𐑤𐑥𐑩𐑯𐑑"
 
 #. [hides]: id=concealment
-#: data/core/macros/abilities.cfg:291
+#: data/core/macros/abilities.cfg:312
 #, fuzzy
 #| msgid ""
 #| "Concealment:\n"
@@ -4191,12 +4395,12 @@ msgstr ""
 "𐑮𐑦𐑥𐑱𐑯𐑦𐑙 𐑥𐑵𐑝𐑥𐑩𐑯𐑑."
 
 #. [hides]: id=submerge
-#: data/core/macros/abilities.cfg:309
+#: data/core/macros/abilities.cfg:330
 msgid "female^submerge"
 msgstr "𐑕𐑩𐑚𐑥𐑻𐑡"
 
 #. [hides]: id=submerge
-#: data/core/macros/abilities.cfg:310
+#: data/core/macros/abilities.cfg:331
 #, fuzzy
 #| msgid ""
 #| "Submerge:\n"
@@ -4220,17 +4424,17 @@ msgstr ""
 "𐑮𐑦𐑥𐑱𐑯𐑦𐑙 𐑥𐑵𐑝𐑥𐑩𐑯𐑑."
 
 #. [dummy]: id=feeding
-#: data/core/macros/abilities.cfg:329
+#: data/core/macros/abilities.cfg:350
 msgid "female^feeding"
 msgstr "𐑓𐑰𐑛𐑦𐑙"
 
 #. [berserk]: id=berserk
-#: data/core/macros/abilities.cfg:341
+#: data/core/macros/abilities.cfg:362
 msgid "berserk"
 msgstr "𐑚𐑻𐑕𐑻𐑒"
 
 #. [berserk]: id=berserk
-#: data/core/macros/abilities.cfg:342
+#: data/core/macros/abilities.cfg:363
 #, fuzzy
 #| msgid ""
 #| "Berserk:\n"
@@ -4246,7 +4450,7 @@ msgstr ""
 "𐑝 𐑞 𐑒𐑩𐑥𐑚𐑨𐑑𐑩𐑯𐑑𐑕 𐑦𐑟 𐑕𐑤𐑱𐑯, 𐑹 30 𐑮𐑬𐑯𐑛𐑟 𐑝 𐑩𐑑𐑨𐑒𐑕 𐑣𐑨𐑝 𐑪𐑒𐑻𐑛."
 
 #. [damage]: id=backstab
-#: data/core/macros/abilities.cfg:353
+#: data/core/macros/abilities.cfg:374
 #, fuzzy
 #| msgid ""
 #| "Backstab:\n"
@@ -4264,7 +4468,7 @@ msgstr ""
 "𐑕𐑑𐑴𐑯 𐑹 𐑳𐑞𐑼𐑢𐑲𐑟 𐑐𐑺𐑩𐑤𐑲𐑟𐑛)."
 
 #. [plague]: id=plague({TYPE}), type={TYPE}
-#: data/core/macros/abilities.cfg:372
+#: data/core/macros/abilities.cfg:393
 #, fuzzy
 #| msgid ""
 #| "Plague:\n"
@@ -4281,7 +4485,7 @@ msgstr ""
 "𐑕𐑱𐑥 𐑕𐑲𐑛 𐑨𐑟 𐑞 𐑿𐑯𐑦𐑑 𐑢𐑦𐑞 𐑞 𐑐𐑤𐑱𐑜 𐑩𐑑𐑨𐑒. 𐑞𐑦𐑕 𐑛𐑳𐑟𐑯𐑑 𐑢𐑻𐑒 𐑪𐑯 𐑳𐑯𐑛𐑧𐑛 𐑹 𐑿𐑯𐑦𐑑𐑕 𐑦𐑯 𐑝𐑦𐑤𐑦𐑡𐑦𐑟."
 
 #. [plague]: id=plague, type=Walking Corpse
-#: data/core/macros/abilities.cfg:383
+#: data/core/macros/abilities.cfg:404
 #, fuzzy
 #| msgid ""
 #| "Plague:\n"
@@ -4298,7 +4502,7 @@ msgstr ""
 "𐑕𐑱𐑥 𐑕𐑲𐑛 𐑨𐑟 𐑞 𐑿𐑯𐑦𐑑 𐑢𐑦𐑞 𐑞 𐑐𐑤𐑱𐑜 𐑩𐑑𐑨𐑒. 𐑞𐑦𐑕 𐑛𐑳𐑟𐑯𐑑 𐑢𐑻𐑒 𐑪𐑯 𐑳𐑯𐑛𐑧𐑛 𐑹 𐑿𐑯𐑦𐑑𐑕 𐑦𐑯 𐑝𐑦𐑤𐑦𐑡𐑦𐑟."
 
 #. [slow]: id=slow
-#: data/core/macros/abilities.cfg:394
+#: data/core/macros/abilities.cfg:415
 #, fuzzy
 #| msgid ""
 #| "Slow:\n"
@@ -4318,12 +4522,12 @@ msgstr ""
 "𐑲𐑒𐑪𐑯 𐑦𐑯 𐑦𐑑𐑕 𐑕𐑲𐑛𐑚𐑸 𐑦𐑯𐑓𐑼𐑥𐑱𐑖𐑩𐑑𐑦𐑪𐑯 𐑢𐑧𐑯 𐑦𐑑 𐑦𐑟 𐑕𐑩𐑤𐑧𐑒𐑑𐑩𐑛."
 
 #. [petrifies]: id=petrifies
-#: data/core/macros/abilities.cfg:403
+#: data/core/macros/abilities.cfg:424
 msgid "petrifies"
 msgstr "𐑐𐑧𐑑𐑮𐑩𐑓𐑲𐑟"
 
 #. [petrifies]: id=petrifies
-#: data/core/macros/abilities.cfg:404
+#: data/core/macros/abilities.cfg:425
 #, fuzzy
 #| msgid ""
 #| "Petrify:\n"
@@ -4338,7 +4542,7 @@ msgstr ""
 "𐑯𐑪𐑑 𐑥𐑵𐑝 𐑹 𐑩𐑑𐑨𐑒."
 
 #. [chance_to_hit]: id=marksman
-#: data/core/macros/abilities.cfg:414
+#: data/core/macros/abilities.cfg:435
 #, fuzzy
 #| msgid ""
 #| "Marksman:\n"
@@ -4351,7 +4555,7 @@ msgstr ""
 "𐑢𐑧𐑯 𐑫𐑖𐑔𐑴𐑵𐑿𐑕𐑑 𐑩𐑓𐑧𐑯𐑕𐑦𐑝𐑤𐑰, 𐑞𐑦𐑕 𐑩𐑑𐑨𐑒 𐑷𐑤𐑢𐑱𐑟 𐑣𐑨𐑟 𐑨𐑑 𐑤𐑰𐑕𐑑 𐑩 60% 𐑗𐑭𐑯𐑕 𐑑 𐑣𐑦𐑑."
 
 #. [chance_to_hit]: id=magical
-#: data/core/macros/abilities.cfg:427
+#: data/core/macros/abilities.cfg:448
 #, fuzzy
 #| msgid ""
 #| "Magical:\n"
@@ -4366,12 +4570,12 @@ msgstr ""
 "𐑚𐑰𐑦𐑙 𐑩𐑑𐑨𐑒𐑑."
 
 #. [swarm]: id=swarm
-#: data/core/macros/abilities.cfg:438
+#: data/core/macros/abilities.cfg:459
 msgid "swarm"
 msgstr "𐑕𐑢𐑹𐑥"
 
 #. [swarm]: id=swarm
-#: data/core/macros/abilities.cfg:439
+#: data/core/macros/abilities.cfg:460
 #, fuzzy
 #| msgid ""
 #| "Swarm:\n"
@@ -4391,7 +4595,7 @@ msgstr ""
 "𐑿𐑯𐑦𐑑 𐑢𐑦𐑞 3/4 𐑝 𐑦𐑑𐑕 𐑥𐑨𐑒𐑕𐑦𐑥𐑩𐑥 HP 𐑢𐑦𐑤 𐑜𐑧𐑑 3/4 𐑝 𐑞 𐑯𐑳𐑥𐑚𐑻 𐑝 𐑕𐑑𐑮𐑲𐑒𐑕."
 
 #. [damage]: id=charge
-#: data/core/macros/abilities.cfg:449
+#: data/core/macros/abilities.cfg:470
 #, fuzzy
 #| msgid ""
 #| "Charge:\n"
@@ -4407,7 +4611,7 @@ msgstr ""
 "𐑞𐑦𐑕 𐑿𐑯𐑦𐑑 𐑑 𐑑𐑱𐑒 𐑛𐑳𐑚𐑩𐑤 𐑛𐑨𐑥𐑦𐑡 𐑓𐑮𐑪𐑥 𐑞 𐑑𐑸𐑜𐑩𐑑𐑕 𐑒𐑬𐑯𐑑𐑻𐑩𐑑𐑨𐑒."
 
 #. [drains]: id=drains
-#: data/core/macros/abilities.cfg:462
+#: data/core/macros/abilities.cfg:483
 #, fuzzy
 #| msgid ""
 #| "Drain:\n"
@@ -4422,14 +4626,14 @@ msgstr ""
 "𐑛𐑰𐑤𐑟 (𐑮𐑬𐑯𐑛𐑩𐑛 𐑛𐑬𐑯)."
 
 #. [firststrike]: id=firststrike
-#: data/core/macros/abilities.cfg:471
+#: data/core/macros/abilities.cfg:492
 #, fuzzy
 #| msgid "firststrike"
 msgid "first strike"
 msgstr "J𐑓𐑻𐑕𐑑𐑕𐑑𐑮𐑲𐑒"
 
 #. [firststrike]: id=firststrike
-#: data/core/macros/abilities.cfg:472
+#: data/core/macros/abilities.cfg:493
 #, fuzzy
 #| msgid ""
 #| "First Strike:\n"
@@ -4442,7 +4646,7 @@ msgstr ""
 "𐑞𐑦𐑕 𐑿𐑯𐑦𐑑 𐑷𐑤𐑢𐑱𐑟 𐑕𐑑𐑮𐑲𐑒𐑕 𐑓𐑻𐑕𐑑 𐑢𐑦𐑞 𐑞𐑦𐑕 𐑩𐑑𐑨𐑒, 𐑰𐑝𐑩𐑯 𐑦𐑓 𐑞𐑱 𐑸 𐑛𐑦𐑓𐑧𐑯𐑛𐑦𐑙."
 
 #. [poison]: id=poison
-#: data/core/macros/abilities.cfg:482
+#: data/core/macros/abilities.cfg:503
 #, fuzzy
 #| msgid ""
 #| "Poison:\n"

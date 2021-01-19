@@ -27,11 +27,7 @@ const team& display_context::get_team(int side) const
 
 bool display_context::would_be_discovered(const map_location & loc, int side_num, bool see_all)
 {
-	adjacent_loc_array_t adjs;
-	get_adjacent_tiles(loc,adjs.data());
-
-	for (const map_location &u_loc : adjs)
-	{
+	for(const map_location& u_loc : get_adjacent_tiles(loc)) {
 		unit_map::const_iterator u_it = units().find(u_loc);
 		if (!u_it.valid()) {
 			continue;
@@ -84,17 +80,15 @@ bool display_context::unit_can_move(const unit &u) const
 
 	const team &current_team = get_team(u.side());
 
-	adjacent_loc_array_t locs;
-	get_adjacent_tiles(u.get_location(), locs.data());
-	for(unsigned n = 0; n < locs.size(); ++n) {
-		if (map().on_board(locs[n])) {
-			const unit_map::const_iterator i = units().find(locs[n]);
+	for(const map_location& adj : get_adjacent_tiles(u.get_location())) {
+		if (map().on_board(adj)) {
+			const unit_map::const_iterator i = units().find(adj);
 			if (i.valid() && !i->incapacitated() &&
 			    current_team.is_enemy(i->side())) {
 				return true;
 			}
 
-			if (u.movement_cost(map()[locs[n]]) <= u.movement_left()) {
+			if (u.movement_cost(map()[adj]) <= u.movement_left()) {
 				return true;
 			}
 		}

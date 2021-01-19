@@ -15,7 +15,7 @@
 #pragma once
 
 #include "gui/dialogs/modal_dialog.hpp"
-#include "utils/optional_fwd.hpp"
+#include <optional>
 
 #include <cstdint>
 #include <memory>
@@ -28,7 +28,16 @@ namespace gui2
 namespace dialogs
 {
 
-/** The dialog for selecting which random generator to use in the editor. */
+/**
+ * @ingroup GUIWindowDefinitionWML
+ *
+ * The dialog for selecting which random generator to use in the editor.
+ * Key               |Type          |Mandatory|Description
+ * ------------------|--------------|---------|-----------
+ * generators_list   | @ref listbox |yes      |Listbox displaying known map generators.
+ * settings          | @ref button  |yes      |When clicked this button opens the generator settings dialog.
+ * seed_textbox      | text_box     |yes      |Allows entering a seed for the map generator.
+ */
 class editor_generate_map : public modal_dialog
 {
 public:
@@ -43,7 +52,7 @@ public:
 
 	void select_map_generator(map_generator* mg);
 
-	utils::optional<uint32_t> get_seed();
+	std::optional<uint32_t> get_seed();
 
 private:
 	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */

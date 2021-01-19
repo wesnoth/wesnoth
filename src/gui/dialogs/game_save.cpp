@@ -27,25 +27,6 @@ namespace gui2
 namespace dialogs
 {
 
-/*WIKI
- * @page = GUIWindowDefinitionWML
- * @order = 2_game_save
- *
- * == Save a game ==
- *
- * This shows the dialog to create a savegame file.
- *
- * @begin{table}{dialog_widgets}
- *
- * lblTitle & & label & m &
- *         The title of the window. $
- *
- * txtFilename & & text_box & m &
- *         The name of the savefile. $
- *
- * @end{table}
- */
-
 REGISTER_DIALOG(game_save)
 
 game_save::game_save(std::string& filename, const std::string& title)

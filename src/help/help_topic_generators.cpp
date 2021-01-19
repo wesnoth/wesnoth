@@ -30,13 +30,12 @@
 #include "tstring.hpp"                  // for t_string, operator<<
 #include "units/helper.hpp"             // for resistance_color
 #include "units/types.hpp"              // for unit_type, unit_type_data, etc
-#include "utils/optional_fwd.hpp"
+#include <optional>
 #include "video.hpp"                    // fore current_resolution
 
 #include <iostream>                     // for operator<<, basic_ostream, etc
 #include <map>                          // for map, etc
 #include <set>
-#include <SDL2/SDL.h>
 
 static lg::log_domain log_help("help");
 #define WRN_HP LOG_STREAM(warn, log_help)
@@ -75,7 +74,7 @@ static std::string print_behavior_description(ter_iter start, ter_iter end, cons
 	if (start == end) return "";
 	if (*start == t_translation::MINUS || *start == t_translation::PLUS) return print_behavior_description(start+1, end, tdata, first_level, *start == t_translation::PLUS); //absorb any leading mode changes by calling again, with a new default value begin_best.
 
-	utils::optional<ter_iter> last_change_pos;
+	std::optional<ter_iter> last_change_pos;
 
 	bool best = begin_best;
 	for (ter_iter i = start; i != end; ++i) {

@@ -267,31 +267,6 @@ void wml_tag::remove_keys_by_type(const std::string& type)
 	}
 }
 
-/*WIKI
- * @begin{parent}{name="wml_schema/"}
- * @begin{tag}{name="tag"}{min=0}{max=1}
- * @begin{table}{config}
- *     name & string & &          The name of tag. $
- *     min & int & &           The min number of occurrences. $
- *     max & int & &           The max number of occurrences. $
- *     super & string & "" &   The super-tag of this tag $
- * @end{table}
- * @begin{tag}{name="link"}{min=0}{max=-1}
- * @begin{table}{config}
- *     name & string & &          The name of link. $
- * @end{table}
- * @end{tag}{name="link"}
- * @begin{tag}{name="tag"}{min=0}{max=-1}{super="wml_schema/tag"}
- * @end{tag}{name="tag"}
- * @end{tag}{name="tag"}
- * @begin{tag}{name="type"}{min=0}{max=-1}
- * @begin{table}{config}
- *     name & string & &          The name of type. $
- *     value & string & &         The value of the type, regex. $
- * @end{table}
- * @end{tag}{name="type"}
- * @end{parent}{name="wml_schema/"}
- */
 void wml_tag::printl(std::ostream& os, int level, int step)
 {
 	std::string s;

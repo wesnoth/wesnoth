@@ -13,8 +13,6 @@
    See the COPYING file for more details.
 */
 
-/** @file */
-
 #include "log.hpp"
 #include "units/id.hpp"
 #include "units/unit.hpp"
@@ -99,19 +97,19 @@ unit_map::umap_retval_pair_t unit_map::move(const map_location& src, const map_l
 	// Find the unit at the src location
 	lmap::iterator i = lmap_.find(src);
 	if(i == lmap_.end()) {
-		return std::make_pair(make_unit_iterator(i), false);
+		return std::pair(make_unit_iterator(i), false);
 	}
 
 	umap::iterator uit(i->second);
 
 	if(src == dst) {
-		return std::make_pair(make_unit_iterator(uit), true);
+		return std::pair(make_unit_iterator(uit), true);
 	}
 
 	// Fail if there is no unit to move.
 	unit_ptr p = uit->second.unit;
 	if(!p) {
-		return std::make_pair(make_unit_iterator(uit), false);
+		return std::pair(make_unit_iterator(uit), false);
 	}
 
 	p->set_location(dst);
@@ -124,12 +122,12 @@ unit_map::umap_retval_pair_t unit_map::move(const map_location& src, const map_l
 	if(res.second == false) {
 		p->set_location(src);
 		lmap_.emplace(src, uit);
-		return std::make_pair(make_unit_iterator(uit), false);
+		return std::pair(make_unit_iterator(uit), false);
 	}
 
 	self_check();
 
-	return std::make_pair(make_unit_iterator(uit), true);
+	return std::pair(make_unit_iterator(uit), true);
 }
 
 unit_map::umap_retval_pair_t unit_map::insert(unit_ptr p)
@@ -146,7 +144,7 @@ unit_map::umap_retval_pair_t unit_map::insert(unit_ptr p)
 
 	if(!loc.valid()) {
 		ERR_NG << "Trying to add " << p->name() << " - " << p->id() << " at an invalid location; Discarding.\n";
-		return std::make_pair(make_unit_iterator(umap_.end()), false);
+		return std::pair(make_unit_iterator(umap_.end()), false);
 	}
 
 	unit_pod upod;
@@ -215,11 +213,11 @@ unit_map::umap_retval_pair_t unit_map::insert(unit_ptr p)
 			   << (linsert.first->second->second).unit->name() << " - " << linsert.first->second->second.unit->id()
 			   << "\n";
 
-		return std::make_pair(make_unit_iterator(umap_.end()), false);
+		return std::pair(make_unit_iterator(umap_.end()), false);
 	}
 
 	self_check();
-	return std::make_pair(make_unit_iterator(uinsert.first), true);
+	return std::pair(make_unit_iterator(uinsert.first), true);
 }
 
 unit_map::umap_retval_pair_t unit_map::replace(const map_location& l, unit_ptr p)

@@ -91,30 +91,6 @@ drawing_definition::drawing_definition(const config& cfg)
 	load_resolutions<resolution>(cfg);
 }
 
-/*WIKI
- * @page = GUIWidgetDefinitionWML
- * @order = 1_drawing
- *
- * == Drawing ==
- *
- * @macro = drawing_description
- *
- * The definition of a drawing. The widget normally has no event interaction
- * so only one state is defined.
- *
- * The following states exist:
- * * state_enabled
- *     the drawing is enabled. The state is a dummy since the
- *     things really drawn are placed in the window instance.
- * @begin{parent}{name="gui/"}
- * @begin{tag}{name="drawing_definition"}{min=0}{max=-1}{super="generic/widget_definition"}
- * @begin{tag}{name="resolution"}{min=0}{max=-1}{super="generic/widget_definition/resolution"}
- * @begin{tag}{name="state_enabled"}{min=0}{max=1}{super="generic/state"}
- * @end{tag}{name="state_enabled"}
- * @end{tag}{name="resolution"}
- * @end{tag}{name="drawing_definition"}
- * @end{parent}{name="gui/"}
- */
 drawing_definition::resolution::resolution(const config& cfg)
 	: resolution_definition(cfg)
 {
@@ -128,40 +104,6 @@ drawing_definition::resolution::resolution(const config& cfg)
 }
 
 // }---------- BUILDER -----------{
-
-/*WIKI_MACRO
- * @begin{macro}{drawing_description}
- *
- *        A drawing is widget with a fixed size and gives access to the
- *        canvas of the widget in the window instance. This allows special
- *        display only widgets.
- * @end{macro}
- */
-
-/*WIKI
- * @page = GUIWidgetInstanceWML
- * @order = 2_drawing
- *
- * == Spacer ==
- * @begin{parent}{name="gui/window/resolution/grid/row/column/"}
- * @begin{tag}{name="drawing"}{min=0}{max=-1}{super="generic/widget_instance"}
- * @macro = drawing_description
- *
- * If either the width or the height is not zero the drawing functions as a
- * fixed size drawing.
- *
- * @begin{table}{config}
- *     width & f_unsigned & 0 &          The width of the drawing. $
- *     height & f_unsigned & 0 &         The height of the drawing. $
- *     draw & config & &                 The config containing the drawing. $
- * @end{table}
- * @allow{link}{name="generic/state/draw"}
- * @end{tag}{name="drawing"}
- * @end{parent}{name="gui/window/resolution/grid/row/column/"}
- * The variable available are the same as for the window resolution see
- * https://www.wesnoth.org/wiki/GUIToolkitWML#Resolution_2 for the list of
- * items.
- */
 
 namespace implementation
 {

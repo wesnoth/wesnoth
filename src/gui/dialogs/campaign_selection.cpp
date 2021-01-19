@@ -43,44 +43,6 @@ namespace gui2
 namespace dialogs
 {
 
-/*WIKI
- * @page = GUIWindowDefinitionWML
- * @order = 2_campaign_selection
- *
- * == Campaign selection ==
- *
- * This shows the dialog which allows the user to choose which campaign to
- * play.
- *
- * @begin{table}{dialog_widgets}
- *
- * campaign_tree & & tree_view & m &
- *         A tree_view that contains all available campaigns. $
- *
- * -icon & & image & o &
- *         The icon for the campaign. $
- *
- * -name & & styled_widget & o &
- *         The name of the campaign. $
- *
- * -victory & & image & o &
- *         The icon to show when the user finished the campaign. The engine
- *         determines whether or not the user has finished the campaign and
- *         sets the visible flag for the widget accordingly. $
- *
- * campaign_details & & multi_page & m &
- *         A multi page widget that shows more details for the selected
- *         campaign. $
- *
- * -image & & image & o &
- *         The image for the campaign. $
- *
- * -description & & styled_widget & o &
- *         The description of the campaign. $
- *
- * @end{table}
- */
-
 REGISTER_DIALOG(campaign_selection)
 
 void campaign_selection::campaign_selected()
@@ -479,7 +441,7 @@ void campaign_selection::post_show(window& window)
 	}
 
 
-	rng_mode_ = RNG_MODE(utils::clamp<unsigned>(find_widget<menu_button>(&window, "rng_menu", false).get_value(), RNG_DEFAULT, RNG_BIASED));
+	rng_mode_ = RNG_MODE(std::clamp<unsigned>(find_widget<menu_button>(&window, "rng_menu", false).get_value(), RNG_DEFAULT, RNG_BIASED));
 
 	preferences::set_modifications(engine_.active_mods(), false);
 }

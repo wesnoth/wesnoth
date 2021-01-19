@@ -49,17 +49,6 @@ namespace gui2
 namespace dialogs
 {
 
-/*WIKI
- * @page = GUIWindowDefinitionWML
- * @order = 3_chat_log
- *
- * == Settings manager ==
- *
- * This shows the settings manager
- *
- */
-
-
 REGISTER_DIALOG(chat_log)
 
 // The model is an interface defining the data to be displayed or otherwise
@@ -288,7 +277,7 @@ public:
 
 		LOG_CHAT_LOG << "First " << first << ", last " << last << '\n';
 
-		return std::make_pair(first, last);
+		return std::pair(first, last);
 	}
 
 	void update_view_from_model(bool select_last_page = false)

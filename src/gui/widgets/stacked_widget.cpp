@@ -23,7 +23,6 @@
 #include "gui/widgets/generator.hpp"
 #include "gettext.hpp"
 #include "utils/const_clone.hpp"
-#include "utils/general.hpp"
 
 #include <functional>
 
@@ -139,7 +138,7 @@ void stacked_widget::select_layer_impl(std::function<bool(unsigned int i)> displ
 
 void stacked_widget::update_selected_layer_index(const int i)
 {
-	selected_layer_ = utils::clamp<int>(i, -1, get_layer_count() - 1);
+	selected_layer_ = std::clamp<int>(i, -1, get_layer_count() - 1);
 }
 
 bool stacked_widget::layer_selected(const unsigned layer)
@@ -209,26 +208,6 @@ stacked_widget_definition::stacked_widget_definition(const config& cfg)
 	load_resolutions<resolution>(cfg);
 }
 
-/*WIKI
- * @page = GUIWidgetDefinitionWML
- * @order = 1_stacked_widget
- *
- * == Stacked widget ==
- *
- * A stacked widget holds several widgets on top of each other. This can be used
- * for various effects; add an optional overlay to an image, stack it with a
- * spacer to force a minimum size of a widget. The latter is handy to avoid
- * making a separate definition for a single instance with a fixed size.
- *
- * A stacked widget has no states.
- * @begin{parent}{name="gui/"}
- * @begin{tag}{name="stacked_widget_definition"}{min=0}{max=-1}{super="generic/widget_definition"}
- * @begin{tag}{name="resolution"}{min=0}{max=-1}{super="generic/widget_definition/resolution"}
- * @allow{link}{name="gui/window/resolution/grid"}
- * @end{tag}{name="resolution"}
- * @end{tag}{name="stacked_widget_definition"}
- * @end{parent}{name="gui/"}
- */
 stacked_widget_definition::resolution::resolution(const config& cfg)
 	: resolution_definition(cfg), grid(nullptr)
 {
@@ -243,26 +222,6 @@ stacked_widget_definition::resolution::resolution(const config& cfg)
 }
 
 // }---------- BUILDER -----------{
-
-/*WIKI
- * @page = GUIToolkitWML
- * @order = 2_stacked_widget
- *
- * == Stacked widget ==
- *
- * A stacked widget is a set of widget stacked on top of each other. The
- * widgets are drawn in the layers, in the order defined in the the instance
- * config. By default the last drawn item is also the 'active' layer for the
- * event handling.
- * @begin{parent}{name="gui/window/resolution/grid/row/column/"}
- * @begin{tag}{name="stacked_widget"}{min="0"}{max="-1"}{super="generic/widget_instance"}
- * @begin{table}{config}
- * @end{table}
- * @begin{tag}{name="layer"}{min=0}{max=-1}{super="gui/window/resolution/grid"}
- * @end{tag}{name="layer"}
- * @end{tag}{name="stacked_widget"}
- * @end{parent}{name="gui/window/resolution/grid/row/column/"}
- */
 
 namespace implementation
 {

@@ -114,19 +114,17 @@ public:
 	teleport_map() :
 		teleport_map_(), sources_(), targets_() {}
 
-	/*
-	 * @param adjacents		used to return the adjacent hexes
+	/**
 	 * @param loc			the map location for which we want to know the adjacent hexes
+	 * @todo what does this function actually have to do with adjacent hexes?
 	 */
-	void get_adjacents(std::set<map_location>& adjacents, map_location loc) const;
-	/*
-	 * @param sources	used to return the locations that are an entrance of the tunnel
-	 */
-	void get_sources(std::set<map_location>& sources) const;
-	/*
-	 * @param targets	used to return the locations that are an exit of the tunnel
-	 */
-	void get_targets(std::set<map_location>& targets) const;
+	std::set<map_location> get_adjacents(map_location loc) const;
+
+	/** Returns the locations that are an entrance of the tunnel. */
+	std::set<map_location> get_sources() const;
+
+	/** Returns the locations that are an exit of the tunnel. */
+	std::set<map_location> get_targets() const;
 
 	/*
 	 * @returns whether the teleport_map does contain any defined tunnel

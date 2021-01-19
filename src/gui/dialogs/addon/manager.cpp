@@ -63,38 +63,6 @@ namespace gui2
 namespace dialogs
 {
 
-/*WIKI
- * @page = GUIWindowDefinitionWML
- * @order = 2_addon_list
- *
- * == Addon list ==
- *
- * This shows the dialog with the addons to install. This dialog is under
- * construction and only used with --new-widgets.
- *
- * @begin{table}{dialog_widgets}
- *
- * addons & & listbox & m &
- *        A listbox that will contain the info about all addons on the server. $
- *
- * -name & & styled_widget & o &
- *        The name of the addon. $
- *
- * -version & & styled_widget & o &
- *        The version number of the addon. $
- *
- * -author & & styled_widget & o &
- *        The author of the addon. $
- *
- * -downloads & & styled_widget & o &
- *        The number of times the addon has been downloaded. $
- *
- * -size & & styled_widget & o &
- *        The size of the addon. $
- *
- * @end{table}
- */
-
 namespace {
 	struct filter_transform
 	{
@@ -111,7 +79,7 @@ namespace {
 						val.end(),
 						filter.begin(),
 						filter.end(),
-						chars_equal_insensitive)
+						utils::chars_equal_insensitive)
 						!= val.end())
 					{
 						found = true;

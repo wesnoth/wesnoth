@@ -442,14 +442,11 @@ DEFINE_WFL_FUNCTION(castle_locs, 1, 1)
 
 				visited_locs.insert(loc);
 
-				adjacent_loc_array_t adj;
-				get_adjacent_tiles(loc, adj.data());
-
-				for(unsigned n = 0; n < adj.size(); ++n) {
-					if (resources::gameboard->map().on_board(adj[n]) && visited_locs.find( adj[n] ) == visited_locs.end() ) {
-						if (resources::gameboard->map().get_terrain_info(adj[n]).is_keep() ||
-								resources::gameboard->map().get_terrain_info(adj[n]).is_castle() ) {
-							queued_locs.push(adj[n]);
+				for(const map_location& adj : get_adjacent_tiles(loc)) {
+					if (resources::gameboard->map().on_board(adj) && visited_locs.find( adj ) == visited_locs.end() ) {
+						if (resources::gameboard->map().get_terrain_info(adj).is_keep() ||
+								resources::gameboard->map().get_terrain_info(adj).is_castle() ) {
+							queued_locs.push(adj);
 						}
 					}
 				}
@@ -1043,7 +1040,7 @@ namespace {
 			}
 		}
 
-		return std::make_pair(highest_melee_damage, highest_ranged_damage);
+		return std::pair(highest_melee_damage, highest_ranged_damage);
 	}
 }
 

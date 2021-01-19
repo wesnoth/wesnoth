@@ -12,8 +12,6 @@
    See the COPYING file for more details.
 */
 
-/** @file */
-
 #include "units/udisplay.hpp"
 
 #include "fake_unit_manager.hpp"
@@ -411,13 +409,13 @@ void unit_mover::wait_for_anims()
 		// not left on screen after unit movement in particular.
 		if ( disp_ ) { // Should always be true if we get here.
 			// Invalidate the hexes around the move that prompted this wait.
-			adjacent_loc_array_t arr;
-			get_adjacent_tiles(path_[current_-1], arr.data());
-			for ( unsigned i = 0; i < arr.size(); ++i )
-				disp_->invalidate(arr[i]);
-			get_adjacent_tiles(path_[current_], arr.data());
-			for ( unsigned i = 0; i < arr.size(); ++i )
-				disp_->invalidate(arr[i]);
+			for(const map_location& adj : get_adjacent_tiles(path_[current_ - 1])) {
+				disp_->invalidate(adj);
+			}
+
+			for(const map_location& adj : get_adjacent_tiles(path_[current_])) {
+				disp_->invalidate(adj);
+			}
 		}
 	}
 
@@ -501,7 +499,7 @@ void unit_mover::finish(unit_ptr u, map_location::DIRECTION dir)
  *                 (correct unit facing, path hexes redrawing).
  * @param dir      Unit will be set facing this direction after move.
  *                 If nothing passed, direction will be set based on path.
- * @param force_scroll 
+ * @param force_scroll
  */
 /* Note: Hide the unit in its current location,
  * but don't actually remove it until the move is done,

@@ -134,39 +134,6 @@ namespace gui2
 namespace dialogs
 {
 
-/*WIKI
- * @page = GUIWindowDefinitionWML
- * @order = 2_wml_error
- *
- * == WML error ==
- *
- * Dialog used to report WML parser or preprocessor errors.
- *
- * @begin{table}{dialog_widgets}
- *
- * summary & & styled_widget & m &
- *         Label used for displaying a brief summary of the error(s). $
- *
- * files & & styled_widget & m &
- *         Label used to display the list of affected add-ons or files, if
- *         applicable. It is hidden otherwise. It is recommended to place it
- *         after the summary label. $
- *
- * post_summary & & styled_widget & m &
- *         Label used for displaying instructions for reporting the error.
- *         It is recommended to place it after the file list label. It may be
- *         hidden if empty. $
- *
- * details & & styled_widget & m &
- *         Full report of the parser or preprocessor error(s) found. $
- *
- * copy & & button & m &
- *         Button that the user can click on to copy the error report to the
- *         system clipboard. $
- *
- * @end{table}
- */
-
 REGISTER_DIALOG(wml_error)
 
 wml_error::wml_error(const std::string& summary,

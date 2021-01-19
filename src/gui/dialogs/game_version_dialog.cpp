@@ -54,33 +54,6 @@ namespace gui2
 namespace dialogs
 {
 
-/*WIKI
- * @page = GUIWindowDefinitionWML
- * @order = 2_game_version
- *
- * == Game paths ==
- *
- * Dialog displaying the various paths used by the game to locate
- * resource and configuration files.
- *
- * There are several item types used to build widget ids in this dialog.
- * All references to TYPE below refer to the following suffixes:
- * datadir, config, userdata, saves, addons, cache.
- *
- * @begin{table}{dialog_widgets}
- *
- * path_TYPE & & text_box & m &
- *        Textbox containing the filesystem path for the given item. $
- *
- * copy_TYPE & & button & m &
- *        Copies the given item's path to clipboard. $
- *
- * browse_TYPE & & button & m &
- *        Launches the default file browser on the given item's path. $
- *
- * @end{table}
- */
-
 REGISTER_DIALOG(game_version)
 
 game_version::game_version()

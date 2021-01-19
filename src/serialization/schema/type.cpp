@@ -20,26 +20,14 @@
 #include "serialization/schema/type.hpp"
 
 #include "config.hpp"
-#include "utils/optional_fwd.hpp"
+#include <optional>
 
 namespace schema_validation
 {
 
-/*WIKI
- * @begin{parent}{name="wml_schema/tag/"}
- * @begin{tag}{name="key"}{min=0}{max=-1}
- * @begin{table}{config}
- *     name & string & &              The name of key. $
- *     type & string & &              The type of key value. $
- *     default & string & &        The default value of the key. $
- *     mandatory & string & &   Shows if key is mandatory $
- * @end{table}
- * @end{tag}{name="key"}
- * @end{parent}{name="wml_schema/tag/"}
- */
 std::shared_ptr<wml_type> wml_type::from_config(const config& cfg)
 {
-	utils::optional<config::const_child_itors> composite_range;
+	std::optional<config::const_child_itors> composite_range;
 	std::shared_ptr<wml_type> type;
 	if(cfg.has_child("union")) {
 		type = std::make_shared<wml_type_union>(cfg["name"]);

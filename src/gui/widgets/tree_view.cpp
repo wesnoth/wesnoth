@@ -82,7 +82,7 @@ std::pair<tree_view_node::ptr_t, int> tree_view::remove_node(tree_view_node* nod
 		resize_content(0, -node_size.y);
 	}
 
-	return std::make_pair(std::move(old_node), position);
+	return std::pair(std::move(old_node), position);
 }
 
 void tree_view::clear()
@@ -267,31 +267,6 @@ tree_view_definition::tree_view_definition(const config& cfg)
 	load_resolutions<resolution>(cfg);
 }
 
-/*WIKI
- * @page = GUIWidgetDefinitionWML
- * @order = 1_tree_view
- *
- * == Tree view ==
- *
- * @macro = tree_view_description
- *
- * The documentation is not written yet.
- *
- * The following states exist:
- * * state_enabled, the listbox is enabled.
- * * state_disabled, the listbox is disabled.
- * @begin{parent}{name="gui/"}
- * @begin{tag}{name="ree_view_definition"}{min=0}{max=-1}{super="generic/widget_definition"}
- * @begin{tag}{name="resolution"}{min=0}{max=-1}{super="generic/widget_definition/resolution"}
- * @allow{link}{name="gui/window/resolution/grid"}
- * @begin{tag}{name="state_enabled"}{min=0}{max=1}{super="generic/state"}
- * @end{tag}{name="state_enabled"}
- * @begin{tag}{name="state_disabled"}{min=0}{max=1}{super="generic/state"}
- * @end{tag}{name="state_disabled"}
- * @end{tag}{name="resolution"}
- * @end{tag}{name="ree_view_definition"}
- * @end{parent}{name="gui/"}
- */
 tree_view_definition::resolution::resolution(const config& cfg)
 	: resolution_definition(cfg)
 	, grid(nullptr)
@@ -307,59 +282,6 @@ tree_view_definition::resolution::resolution(const config& cfg)
 }
 
 // }---------- BUILDER -----------{
-
-/*WIKI_MACRO
- * @begin{macro}{tree_view_description}
- *
- *        A tree view is a styled_widget that holds several items of the same or
- *        different types. The items shown are called tree view nodes and when
- *        a node has children, these can be shown or hidden. Nodes that contain
- *        children need to provide a clickable button in order to fold or
- *        unfold the children.
- * @end{macro}
- */
-
-/*WIKI
- * @page = GUIWidgetInstanceWML
- * @order = 2_tree_view
- *
- * == Tree view ==
- * @begin{parent}{name="gui/window/resolution/grid/row/column/"}
- * @begin{tag}{name="tree_view"}{min=0}{max=-1}{super="generic/widget_instance"}
- * @macro = tree_view_description
- *
- * List with the tree view specific variables:
- * @begin{table}{config}
- *     vertical_scrollbar_mode & scrollbar_mode & initial_auto &
- *                                     Determines whether or not to show the
- *                                     scrollbar. $
- *     horizontal_scrollbar_mode & scrollbar_mode & initial_auto &
- *                                     Determines whether or not to show the
- *                                     scrollbar. $
- *
- *     indentation_step_size & unsigned & 0 &
- *                                     The number of pixels every level of
- *                                     nodes is indented from the previous
- *                                     level. $
- *
- *     node & section &  &             The tree view can contain multiple node
- *                                     sections. This part needs more
- *                                     documentation. $
- * @end{table}
- * @begin{tag}{name="node"}{min=0}{max=-1}
- * @begin{table}{config}
- *     id & string & "" &  $
- * @end{table}
- * @begin{tag}{name="node_definition"}{min=0}{max=-1}{super="gui/window/resolution/grid"}
- * @begin{table}{config}
- *     return_value_id & string & "" &  $
- * @end{table}
- * @end{tag}{name="node_definition"}
- * @end{tag}{name="node"}
- * @end{tag}{name="tree_view"}
- * @end{parent}{name="gui/window/resolution/grid/row/column/"}
- * NOTE more documentation and examples are needed.
- */ // TODO annotate node
 
 namespace implementation
 {

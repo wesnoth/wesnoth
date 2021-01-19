@@ -46,6 +46,7 @@
 #include "units/udisplay.hpp"
 #include "units/filter.hpp"
 #include "units/types.hpp"
+#include "utils/general.hpp"
 #include "variable.hpp"
 #include "whiteboard/manager.hpp"
 
@@ -630,11 +631,8 @@ place_recruit_result place_recruit(unit_ptr u, const map_location &recruit_locat
 			find_recruit_leader(u->side(), recruit_location, recruited_from);
 	u->set_location(recruit_location);
 
-	unit_map::unit_iterator new_unit_itor;
-	bool success = false;
-
 	// Add the unit to the board.
-	std::tie(new_unit_itor, success) = resources::gameboard->units().insert(u);
+	auto [new_unit_itor, success] = resources::gameboard->units().insert(u);
 	assert(success);
 
 	map_location current_loc = recruit_location;
@@ -662,7 +660,7 @@ place_recruit_result place_recruit(unit_ptr u, const map_location &recruit_locat
 			std::get<0>(res) |= std::get<0>(resources::game_events->pump().fire(event_name, current_loc, recruited_from));
 		}
 		if ( !validate_recruit_iterator(new_unit_itor, current_loc) )
-			return std::make_tuple(true, 0, false);
+			return std::tuple(true, 0, false);
 		new_unit_itor->set_hidden(true);
 	}
 	preferences::encountered_units().insert(new_unit_itor->type_id());
@@ -683,7 +681,7 @@ place_recruit_result place_recruit(unit_ptr u, const map_location &recruit_locat
 		std::get<1>(res) = resources::gameboard->village_owner(current_loc);
 		std::get<0>(res) |= std::get<0>(actions::get_village(current_loc, new_unit_itor->side(), &std::get<2>(res)));
 		if ( !validate_recruit_iterator(new_unit_itor, current_loc) )
-			return std::make_tuple(true, 0, false);
+			return std::tuple(true, 0, false);
 	}
 
 	// Fog clearing.

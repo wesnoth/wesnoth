@@ -207,8 +207,7 @@ bool terrain_filter::match_internal(const map_location& loc, const unit* ref_uni
 
 	//Allow filtering on adjacent locations
 	if(cfg_.has_child("filter_adjacent_location")) {
-		adjacent_loc_array_t adjacent;
-		get_adjacent_tiles(loc, adjacent.data());
+		const auto adjacent = get_adjacent_tiles(loc);
 		const vconfig::child_list& adj_cfgs = cfg_.get_children("filter_adjacent_location");
 		vconfig::child_list::const_iterator i, i_end, i_begin = adj_cfgs.begin();
 		for (i = i_begin, i_end = adj_cfgs.end(); i != i_end; ++i) {
@@ -218,7 +217,7 @@ bool terrain_filter::match_internal(const map_location& loc, const unit* ref_uni
 				? map_location::parse_directions((*i)["adjacent"]) : map_location::default_dirs();
 			std::vector<map_location::DIRECTION>::const_iterator j, j_end = dirs.end();
 			for (j = dirs.begin(); j != j_end; ++j) {
-				map_location &adj = adjacent[*j];
+				const map_location &adj = adjacent[*j];
 				if (fc_->get_disp_context().map().on_board(adj)) {
 					if(cache_.adjacent_matches == nullptr) {
 						while(index >= std::distance(cache_.adjacent_match_cache.begin(), cache_.adjacent_match_cache.end())) {

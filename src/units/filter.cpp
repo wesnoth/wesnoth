@@ -123,8 +123,7 @@ struct unit_filter_adjacent : public unit_filter_base
 	virtual bool matches(const unit_filter_args& args) const override
 	{
 		const unit_map& units = args.context().get_disp_context().units();
-		adjacent_loc_array_t adjacent;
-		get_adjacent_tiles(args.loc, adjacent.data());
+		const auto adjacent = get_adjacent_tiles(args.loc);
 		int match_count=0;
 
 		config::attribute_value i_adjacent = cfg_["adjacent"];
@@ -443,7 +442,7 @@ void unit_filter_compound::fill(vconfig cfg)
 			},
 			[](unit::upkeep_t upkeep, const unit_filter_args& args)
 			{
-				return args.u.upkeep() == boost::apply_visitor(unit::upkeep_value_visitor(args.u), upkeep);
+				return args.u.upkeep() == utils::visit(unit::upkeep_value_visitor{args.u}, upkeep);
 			}
 		);
 
@@ -691,7 +690,7 @@ void unit_filter_compound::fill(vconfig cfg)
 		for(auto child : cfg.all_ordered()) {
 			CONDITIONAL_TYPE cond;
 			if(cond.parse(child.first)) {
-				cond_children_.emplace_back(std::piecewise_construct_t(), std::make_tuple(cond), std::make_tuple(child.second));
+				cond_children_.emplace_back(std::piecewise_construct_t(), std::tuple(cond), std::tuple(child.second));
 			}
 			else if (child.first == "filter_wml") {
 				create_child(child.second, [](const vconfig& c, const unit_filter_args& args) {

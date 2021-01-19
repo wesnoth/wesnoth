@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-editor\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2020-12-18 22:27-0300\n"
+"POT-Creation-Date: 2021-01-16 17:17+0300\n"
 "PO-Revision-Date: 2011-11-30 16:10+0100\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
@@ -242,23 +242,23 @@ msgstr ""
 msgid "Assign Time Schedule"
 msgstr ""
 
-#: src/editor/action/mouse/mouse_action_unit.cpp:63
+#: src/editor/action/mouse/mouse_action_unit.cpp:61
 msgid "Identifier: "
 msgstr ""
 
-#: src/editor/action/mouse/mouse_action_unit.cpp:65
+#: src/editor/action/mouse/mouse_action_unit.cpp:63
 msgid "Name: "
 msgstr ""
 
-#: src/editor/action/mouse/mouse_action_unit.cpp:67
+#: src/editor/action/mouse/mouse_action_unit.cpp:65
 msgid "Type: "
 msgstr ""
 
-#: src/editor/action/mouse/mouse_action_unit.cpp:68
+#: src/editor/action/mouse/mouse_action_unit.cpp:66
 msgid "Level: "
 msgstr ""
 
-#: src/editor/action/mouse/mouse_action_unit.cpp:69
+#: src/editor/action/mouse/mouse_action_unit.cpp:67
 msgid "Cost: "
 msgstr ""
 
@@ -314,13 +314,13 @@ msgstr ""
 msgid "Load Map"
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:276 src/editor/map/map_context.cpp:852
+#: src/editor/map/context_manager.cpp:276 src/editor/map/map_context.cpp:851
 #, fuzzy
 #| msgid "(New Map)"
 msgid "New Map"
 msgstr "(nova mapa)"
 
-#: src/editor/map/context_manager.cpp:289 src/editor/map/map_context.cpp:852
+#: src/editor/map/context_manager.cpp:289 src/editor/map/map_context.cpp:851
 #, fuzzy
 #| msgid "(New Map)"
 msgid "New Scenario"
@@ -440,28 +440,28 @@ msgstr ""
 "Učitana pomenuta datoteka mape:\n"
 "$new"
 
-#: src/editor/map/editor_map.cpp:148
+#: src/editor/map/editor_map.cpp:144
 #: src/editor/palette/location_palette.cpp:119
 #, fuzzy
 #| msgid "Player $player_number"
 msgid "Player $side_num"
 msgstr "Igrač $player_number"
 
-#: src/editor/map/editor_map.cpp:283
+#: src/editor/map/editor_map.cpp:279
 msgid "The size of the target map is different from the current map"
 msgstr "Veličina ciljne mape je različita od tekuće"
 
-#: src/editor/map/map_context.cpp:146
+#: src/editor/map/map_context.cpp:145
 msgid "File not found"
 msgstr "Datoteka nije nađena."
 
-#: src/editor/map/map_context.cpp:153
+#: src/editor/map/map_context.cpp:152
 #, fuzzy
 #| msgid "Empty map file"
 msgid "Empty file"
 msgstr "Prazna datoteka mape."
 
-#: src/editor/map/map_context.cpp:209
+#: src/editor/map/map_context.cpp:208
 msgid ""
 "The map file looks like a scenario, but the map_data value does not point to "
 "an existing file"
@@ -469,17 +469,17 @@ msgstr ""
 "Datoteka mape liči na scenario, ali vrednost map_data ne pokazuje na "
 "postojeću datoteku."
 
-#: src/editor/map/map_context.cpp:618
+#: src/editor/map/map_context.cpp:617
 #, fuzzy
 #| msgid "Could not save the map: $msg"
 msgid "Could not save the scenario: $msg"
 msgstr "Ne mogu da sačuvam mapu: $msg"
 
-#: src/editor/map/map_context.cpp:653
+#: src/editor/map/map_context.cpp:652
 msgid "Could not save into scenario"
 msgstr "Ne mogu da sačuvam u scenario."
 
-#: src/editor/map/map_context.cpp:663
+#: src/editor/map/map_context.cpp:662
 msgid "Could not save the map: $msg"
 msgstr "Ne mogu da sačuvam mapu: $msg"
 
@@ -559,13 +559,11 @@ msgstr ""
 msgid "Select"
 msgstr ""
 
-#: src/gui/dialogs/editor/set_starting_position.cpp:84
-msgid "player^None"
-msgstr "nijedan"
+#~ msgid "player^None"
+#~ msgstr "nijedan"
 
-#: src/gui/dialogs/editor/set_starting_position.cpp:97
-msgid "Player $player_number"
-msgstr "Igrač $player_number"
+#~ msgid "Player $player_number"
+#~ msgstr "Igrač $player_number"
 
 # |, no-check-spell
 #~ msgid "FG: "

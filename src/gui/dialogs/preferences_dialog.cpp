@@ -28,7 +28,6 @@
 #include "preferences/game.hpp"
 #include "preferences/general.hpp"
 #include "preferences/lobby.hpp"
-#include "utils/general.hpp"
 #include "video.hpp"
 
 // Sub-dialog includes
@@ -89,7 +88,7 @@ void disable_widget_on_toggle(window& window, widget& w, const std::string& id)
 // number of pager layers (since get_layer_count returns one-past-end).
 int index_in_pager_range(const int first, const stacked_widget& pager)
 {
-	return utils::clamp<int>(first, 0, pager.get_layer_count() - 1);
+	return std::clamp<int>(first, 0, pager.get_layer_count() - 1);
 }
 
 // Helper to make it easier to immediately apply sound toggles immediately.
@@ -242,10 +241,7 @@ void preferences_dialog::add_friend_list_entry(const bool is_friend, text_box& t
 		username = username.substr(0, pos);
 	}
 
-	acquaintance* entry = nullptr;
-	bool added_new;
-
-	std::tie(entry, added_new) = add_acquaintance(username, (is_friend ? "friend": "ignore"), reason);
+	auto [entry, added_new] = add_acquaintance(username, (is_friend ? "friend": "ignore"), reason);
 
 	if(!entry) {
 		gui2::show_transient_message(_("Error"), _("Invalid username"), "", false, false, true);

@@ -57,7 +57,7 @@ struct dispatcher_implementation
 	 *                            dispatcher::signal_type<FUNCTION>            \
 	 */                                                                        \
 	template<typename F>                                                       \
-	static std::enable_if_t<std::is_same<F, FUNCTION>::value, dispatcher::signal_type<FUNCTION>>& \
+	static std::enable_if_t<std::is_same_v<F, FUNCTION>, dispatcher::signal_type<FUNCTION>>& \
 	event_signal(dispatcher& dispatcher, const ui_event event)                 \
 	{                                                                          \
 		return dispatcher.QUEUE.queue[event];                                  \

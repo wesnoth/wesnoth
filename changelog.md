@@ -17,16 +17,18 @@
  ### Miscellaneous and Bug Fixes
 
 ## Version 1.15.9
- ### Add-ons client
  ### Add-ons server
+   * Fixed a regression from 1.15.8 that caused add-on downloads to never bump download counts (issue #5411).
  ### Campaigns
+   * Dead Water
+     * Reduce campaign difficulty
  ### Editor
    * Added help topics for the scenario editor's tools
    * Added documentation about the files written by the editor
  ### Multiplayer
+   * Isar’s Cross got map background graphics, mainlined from the Visual Map Pack on 1.14
  ### Packaging
-  * Boost 1.65 is now required (was 1.59).
- ### Terrain
+   * Boost 1.65 is now required (was 1.59).
  ### Translations
    * Updated translations: Catalan, Chinese (Traditional), French, Portuguese (Brazil),
      Spanish
@@ -34,10 +36,15 @@
    * New Fauna/monster unit: Horned Scarab
    * Some standing/bobbing animations now filtered for low HP (depicting exhaustion) (PR #5388)
  ### User interface
+   * Major campaign menu overhaul including more accessible RNG options (including the experimental PRNG option previously found in Advanced Preferences), a difficulty dropdown replacing the difficulty dialog, and custom backgrounds set using `[campaign] background=` (issue #4543, PR #5358).
+   * The OS version displayed in the game version dialog and --report now includes the runtime CPU architecture.
+   * Improved sidebar area in the MP Lobby.
+   * Improved filter options in the MP Lobby. Labels are clearer and games with blocked players are excluded from the list by default (with an option to unhide said games).
  ### WML Engine
    * New `[set_variable]` options: reverse=yes, min=list, max=list
  ### Miscellaneous and Bug Fixes
    * Fixed `[terrain_defaults]` and `[resistance_defaults]` (issue #5308).
+   * Fixed being prompted multiple times to select campaign difficulty when loading a game (issue #5392)
 
 ## Version 1.15.8
  ### Add-ons client
@@ -62,7 +69,6 @@
      * Reduce campaign difficulty
  ### Multiplayer
    * Added `/roll N` command to multiplayer games and game lobbies which produces a publicly visible random integer number ranged from 1 to N inclusively (issue #5221, PR #5326).
-   * Isar’s Cross got map background graphics, mainlined from the Visual Map Pack on 1.14
  ### Packaging
    * SDL_Image 2.0.2 or later is now required (was 2.0.0).
  ### Terrain

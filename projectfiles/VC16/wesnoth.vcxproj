@@ -1709,6 +1709,13 @@
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|x64'">$(IntDir)Gui\Dialogs\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|x64'">$(IntDir)Gui\Dialogs\</ObjectFileName>
     </ClCompile>
+    <ClCompile Include="..\..\src\gui\dialogs\multiplayer\match_history.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(IntDir)Gui\Dialogs\Multiplayer\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|x64'">$(IntDir)Gui\Dialogs\Multiplayer\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|x64'">$(IntDir)Gui\Dialogs\Multiplayer\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(IntDir)Gui\Dialogs\Multiplayer\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|x64'">$(IntDir)Gui\Dialogs\Multiplayer\</ObjectFileName>
+    </ClCompile>
     <ClCompile Include="..\..\src\gui\dialogs\server_info_dialog.cpp">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(IntDir)Gui\Dialogs\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|x64'">$(IntDir)Gui\Dialogs\</ObjectFileName>
@@ -3849,6 +3856,7 @@
     <ClInclude Include="..\..\src\gui\dialogs\modeless_dialog.hpp" />
     <ClInclude Include="..\..\src\gui\dialogs\multiplayer\faction_select.hpp" />
     <ClInclude Include="..\..\src\gui\dialogs\multiplayer\lobby.hpp" />
+    <ClInclude Include="..\..\src\gui\dialogs\multiplayer\match_history.hpp" />
     <ClInclude Include="..\..\src\gui\dialogs\multiplayer\mp_alerts_options.hpp" />
     <ClInclude Include="..\..\src\gui\dialogs\multiplayer\mp_change_control.hpp" />
     <ClInclude Include="..\..\src\gui\dialogs\multiplayer\mp_connect.hpp" />
@@ -4143,7 +4151,6 @@
     <ClInclude Include="..\..\src\utils\math.hpp" />
     <ClInclude Include="..\..\src\utils\name_generator.hpp" />
     <ClInclude Include="..\..\src\utils\name_generator_factory.hpp" />
-    <ClInclude Include="..\..\src\utils\optional_fwd.hpp" />
     <ClInclude Include="..\..\src\utils\parse_network_address.hpp" />
     <ClInclude Include="..\..\src\utils\reference_counter.hpp" />
     <ClInclude Include="..\..\src\utils\scope_exit.hpp" />

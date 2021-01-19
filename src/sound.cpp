@@ -197,7 +197,7 @@ void flush_cache()
 	music_cache.clear();
 }
 
-utils::optional<unsigned int> get_current_track_index()
+std::optional<unsigned int> get_current_track_index()
 {
 	if(current_track_index >= current_track_list.size()){
 		return {};

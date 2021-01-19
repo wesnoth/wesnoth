@@ -28,22 +28,6 @@ namespace gui2
 namespace dialogs
 {
 
-/*WIKI
- * @page = GUIWindowDefinitionWML
- * @order = 2_rename_unit
- *
- * == Rename unit ==
- *
- * Dialog for renaming units in-game.
- *
- * @begin{table}{dialog_widgets}
- *
- * name & & text_box & m &
- *         Input field for the unit name. $
- *
- * @end{table}
- */
-
 REGISTER_DIALOG(edit_text)
 
 edit_text::edit_text(const std::string& title,

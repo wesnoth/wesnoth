@@ -25,7 +25,6 @@
 #include "gui/widgets/window.hpp"
 #include "sdl/rect.hpp"
 #include "sound.hpp"
-#include "utils/general.hpp"
 #include "gettext.hpp"
 #include "wml_exception.hpp"
 
@@ -85,7 +84,7 @@ point slider::calculate_best_size() const
 
 void slider::set_value(int value)
 {
-	value = utils::clamp(value, minimum_value_, get_maximum_value());
+	value = std::clamp(value, minimum_value_, get_maximum_value());
 	int old_value = get_value();
 
 	if(value == old_value) {
@@ -312,53 +311,6 @@ slider_definition::slider_definition(const config& cfg)
 	load_resolutions<resolution>(cfg);
 }
 
-/*WIKI
- * @page = GUIWidgetDefinitionWML
- * @order = 1_slider
- *
- * == Slider ==
- *
- * @macro = slider_description
- *
- * @begin{parent}{name="gui/"}
- * @begin{tag}{name="slider_definition"}{min=0}{max=-1}{super="generic/widget_definition"}
- * @begin{tag}{name="resolution"}{min=0}{max=-1}{super="generic/widget_definition/resolution"}
- * @begin{table}{config}
- *     minimum_positioner_length & unsigned & &
- *                                     The minimum size the positioner is
- *                                     allowed to be. The engine needs to know
- *                                     this in order to calculate the best size
- *                                     for the positioner. $
- *     maximum_positioner_length & unsigned & 0 &
- *                                     The maximum size the positioner is
- *                                     allowed to be. If minimum and maximum are
- *                                     the same value the positioner is fixed
- *                                     size. If the maximum is 0 (and the
- *                                     minimum not) there's no maximum. $
- *     left_offset & unsigned & 0 &    The number of pixels at the left side
- *                                     which can't be used by the positioner. $
- *     right_offset & unsigned & 0 &   The number of pixels at the right side
- *                                     which can't be used by the positioner. $
- * @end{table}
- *
- * The following states exist:
- * * state_enabled, the slider is enabled.
- * * state_disabled, the slider is disabled.
- * * state_pressed, the left mouse button is down on the positioner of the
- *   slider.
- * * state_focused, the mouse is over the positioner of the slider.
- * @begin{tag}{name="state_enabled"}{min=0}{max=1}{super="generic/state"}
- * @end{tag}{name="state_enabled"}
- * @begin{tag}{name="state_disabled"}{min=0}{max=1}{super="generic/state"}
- * @end{tag}{name="state_disabled"}
- * @begin{tag}{name="state_pressed"}{min=0}{max=1}{super="generic/state"}
- * @end{tag}{name="state_pressed"}
- * @begin{tag}{name="state_focused"}{min=0}{max=1}{super="generic/state"}
- * @end{tag}{name="state_focused"}
- * @end{tag}{name="resolution"}
- * @end{tag}{name="slider_definition"}
- * @end{parent}{name="gui/"}
- */
 slider_definition::resolution::resolution(const config& cfg)
 	: resolution_definition(cfg)
 	, positioner_length(cfg["minimum_positioner_length"])
@@ -375,57 +327,6 @@ slider_definition::resolution::resolution(const config& cfg)
 }
 
 // }---------- BUILDER -----------{
-
-/*WIKI_MACRO
- * @begin{macro}{slider_description}
- * A slider is a styled_widget that can select a value by moving a grip on a groove.
- * @end{macro}
- */
-
-/*WIKI
- * @page = GUIWidgetInstanceWML
- * @order = 3_slider
- * @begin{parent}{name="gui/window/resolution/grid/row/column/"}
- * @begin{tag}{name="slider"}{min="0"}{max="-1"}{super="generic/widget_instance"}
- * == Slider ==
- *
- * @macro = slider_description
- *
- * @begin{table}{config}
- *     best_slider_length & unsigned & 0 &
- *                                    The best length for the sliding part. $
- *     minimum_value & int & 0 &        The minimum value the slider can have. $
- *     maximum_value & int & 0 &        The maximum value the slider can have. $
- *
- *     step_size & unsigned & 0 &       The number of items the slider's value
- *                                    increases with one step. $
- *     value & int & 0 &                The value of the slider. $
- *
- *     minimum_value_label & t_string & "" &
- *                                    If the minimum value is chosen there
- *                                    might be the need for a special value
- *                                    (eg off). When this key has a value
- *                                    that value will be shown if the minimum
- *                                    is selected. $
- *     maximum_value_label & t_string & "" &
- *                                    If the maximum value is chosen there
- *                                    might be the need for a special value
- *                                    (eg unlimited)). When this key has a
- *                                    value that value will be shown if the
- *                                    maximum is selected. $
- *     value_labels & [] &              It might be the labels need to be shown
- *                                    are not a linear number sequence eg
- *                                    (0.5, 1, 2, 4) in that case for all
- *                                    items this section can be filled with
- *                                    the values, which should be the same
- *                                    number of items as the items in the
- *                                    slider. NOTE if this option is used,
- *                                    'minimum_value_label' and
- *                                    'maximum_value_label' are ignored. $
- * @end{table}
- * @end{tag}{name="slider"}
- * @end{parent}{name="gui/window/resolution/grid/row/column/"}
- */
 
 namespace implementation
 {

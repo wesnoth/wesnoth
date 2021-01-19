@@ -395,7 +395,7 @@ unit::unit(unit_ctor_t)
 	, ellipse_()
 	, random_traits_(true)
 	, generate_name_(true)
-	, upkeep_(upkeep_full())
+	, upkeep_(upkeep_full{})
 	, changed_attributes_(0)
 	, invisibility_cache_()
 {
@@ -684,7 +684,7 @@ void unit::init(const unit_type& u_type, int side, bool real_unit, unit_race::GE
 	side_ = side;
 	gender_ = gender != unit_race::NUM_GENDERS ? gender : generate_gender(u_type, real_unit);
 	facing_ = static_cast<map_location::DIRECTION>(randomness::rng::default_instance().get_random_int(0, map_location::NDIRECTIONS-1));
-	upkeep_ = upkeep_full();
+	upkeep_ = upkeep_full{};
 
 	// Apply the unit type's data to this unit.
 	advance_to(u_type, real_unit);
@@ -951,7 +951,7 @@ void unit::advance_to(const unit_type& u_type, bool use_traits)
 
 	flag_rgb_ = new_type.flag_rgb();
 
-	upkeep_ = upkeep_full();
+	upkeep_ = upkeep_full{};
 	parse_upkeep(new_type.get_cfg()["upkeep"]);
 
 	anim_comp_->reset_after_advance(&new_type);
@@ -1437,15 +1437,15 @@ void unit::write(config& cfg, bool write_all) const
 	}
 
 	if(halo_) {
-		cfg["halo"] = halo_.value();
+		cfg["halo"] = *halo_;
 	}
 
 	if(ellipse_) {
-		cfg["ellipse"] = ellipse_.value();
+		cfg["ellipse"] = *ellipse_;
 	}
 
 	if(usage_) {
-		cfg["usage"] = usage_.value();
+		cfg["usage"] = *usage_;
 	}
 
 	write_upkeep(cfg["upkeep"]);
@@ -1585,12 +1585,12 @@ int unit::upkeep() const
 		return 0;
 	}
 
-	return boost::apply_visitor(upkeep_value_visitor(*this), upkeep_);
+	return utils::visit(upkeep_value_visitor{*this}, upkeep_);
 }
 
 bool unit::loyal() const
 {
-	return boost::get<upkeep_loyal>(&upkeep_) != nullptr;
+	return utils::holds_alternative<upkeep_loyal>(upkeep_);
 }
 
 int unit::defense_modifier(const t_translation::terrain_code & terrain) const
@@ -2052,7 +2052,7 @@ void unit::apply_builtin_effect(std::string apply_to, const config& effect)
 			set_max_experience(utils::apply_modifier(max_experience_, increase, 1));
 		}
 	} else if(apply_to == upkeep_loyal::type()) {
-		upkeep_ = upkeep_loyal();
+		upkeep_ = upkeep_loyal{};
 	} else if(apply_to == "status") {
 		const std::string& add = effect["add"];
 		const std::string& remove = effect["remove"];
@@ -2626,16 +2626,16 @@ void unit::parse_upkeep(const config::attribute_value& upkeep)
 	}
 
 	try {
-		upkeep_ = upkeep.apply_visitor(upkeep_parser_visitor());
+		upkeep_ = upkeep.apply_visitor(upkeep_parser_visitor{});
 	} catch(std::invalid_argument& e) {
 		WRN_UT << "Found invalid upkeep=\"" << e.what() <<  "\" in a unit" << std::endl;
-		upkeep_ = upkeep_full();
+		upkeep_ = upkeep_full{};
 	}
 }
 
 void unit::write_upkeep(config::attribute_value& upkeep) const
 {
-	upkeep = boost::apply_visitor(upkeep_type_visitor(), upkeep_);
+	upkeep = utils::visit(upkeep_type_visitor{}, upkeep_);
 }
 
 void unit::clear_changed_attributes()
