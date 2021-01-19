@@ -17,8 +17,7 @@
  * Lua object(value) wrapper implementation
  */
 
-#ifndef LUA_OBJECT_HPP_INCLUDED
-#define LUA_OBJECT_HPP_INCLUDED
+#pragma once
 
 #include "config.hpp"
 #include "lua/lua.h"
@@ -314,5 +313,3 @@ struct aspect_attacks_lua_filter;
 template <>
 std::shared_ptr<aspect_attacks_lua_filter> lua_object<aspect_attacks_lua_filter>::to_type(lua_State *L, int n);
 } // end of namespace ai
-
-#endif

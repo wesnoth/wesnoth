@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef UNIT_ADVANCEMENT_ACPECT_H_INCLUDED
-#define UNIT_ADVANCEMENT_ACPECT_H_INCLUDED
+#pragma once
 
 #include <string>
 #include <vector>
@@ -40,5 +39,3 @@ private:
 	int ref_;
 };
 }
-
-#endif

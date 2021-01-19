@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef AI_LUA_CORE_HPP
-#define AI_LUA_CORE_HPP
+#pragma once
 
 #include <memory>
 
@@ -84,5 +83,3 @@ public:
 };
 
 }//of namespace ai
-
-#endif

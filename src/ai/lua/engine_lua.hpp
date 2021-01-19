@@ -17,8 +17,7 @@
  * @file
  */
 
-#ifndef AI_COMPOSITE_ENGINE_LUA_HPP_INCLUDED
-#define AI_COMPOSITE_ENGINE_LUA_HPP_INCLUDED
+#pragma once
 
 #include "ai/composite/engine.hpp"
 
@@ -91,5 +90,3 @@ private:
 };
 
 } //end of namespace ai
-
-#endif
