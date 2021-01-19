@@ -109,7 +109,7 @@ static std::pair<int, int> parse_fraction(const std::string& s)
 	parts.resize(2);
 	int num = lexical_cast_default<int>(parts[0], 0);
 	int denom = lexical_cast_default<int>(parts[1], 0);
-	return std::make_pair(num, denom);
+	return std::pair(num, denom);
 }
 
 static int xp_to_advance(const std::string& s) {

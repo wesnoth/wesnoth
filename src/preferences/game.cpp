@@ -231,7 +231,7 @@ std::pair<preferences::acquaintance*, bool> add_acquaintance(
 	const std::string& nick, const std::string& mode, const std::string& notes)
 {
 	if(!utils::isvalid_wildcard(nick)) {
-		return std::make_pair(nullptr, false);
+		return std::pair(nullptr, false);
 	}
 
 	preferences::acquaintance new_entry(nick, mode, notes);
@@ -243,7 +243,7 @@ std::pair<preferences::acquaintance*, bool> add_acquaintance(
 
 	save_acquaintances();
 
-	return std::make_pair(&iter->second, success);
+	return std::pair(&iter->second, success);
 }
 
 bool remove_acquaintance(const std::string& nick)

@@ -370,7 +370,7 @@ void gamemap::set_special_location(const std::string& id, const map_location& lo
 		}
 	}
 	else {
-		starting_positions_.left.insert(it_left, std::make_pair(id, loc));
+		starting_positions_.left.insert(it_left, std::pair(id, loc));
 	}
 }
 

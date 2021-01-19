@@ -882,7 +882,7 @@ full_cost_map::full_cost_map(const unit& u, bool force_ignore_zoc,
 	 viewing_team_(viewing_team), see_all_(see_all), ignore_units_(ignore_units)
 {
 	const gamemap& map = resources::gameboard->map();
-	cost_map = std::vector<std::pair<int, int>>(map.w() * map.h(), std::make_pair(-1, 0));
+	cost_map = std::vector<std::pair<int, int>>(map.w() * map.h(), std::pair(-1, 0));
 	add_unit(u);
 }
 
@@ -897,7 +897,7 @@ full_cost_map::full_cost_map(bool force_ignore_zoc,
 	 viewing_team_(viewing_team), see_all_(see_all), ignore_units_(ignore_units)
 {
 	const gamemap& map = resources::gameboard->map();
-	cost_map = std::vector<std::pair<int, int>>(map.w() * map.h(), std::make_pair(-1, 0));
+	cost_map = std::vector<std::pair<int, int>>(map.w() * map.h(), std::pair(-1, 0));
 }
 
 /**
@@ -962,7 +962,7 @@ std::pair<int, int> full_cost_map::get_pair_at(map_location loc) const
 	assert(cost_map.size() == static_cast<unsigned>(map.w() * map.h()));
 
 	if (!map.on_board(loc)) {
-		return std::make_pair(-1, 0);  // invalid
+		return std::pair(-1, 0);  // invalid
 	}
 
 	return cost_map[loc.x + (loc.y * map.w())];

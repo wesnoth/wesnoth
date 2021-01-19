@@ -1040,7 +1040,7 @@ namespace {
 			}
 		}
 
-		return std::make_pair(highest_melee_damage, highest_ranged_damage);
+		return std::pair(highest_melee_damage, highest_ranged_damage);
 	}
 }
 

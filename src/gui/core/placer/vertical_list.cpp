@@ -29,7 +29,7 @@ namespace implementation
 
 placer_vertical_list::placer_vertical_list(const unsigned maximum_columns)
 	: maximum_columns_(maximum_columns)
-	, rows_(1, std::make_pair(0, 0))
+	, rows_(1, std::pair(0, 0))
 	, columns_(maximum_columns, 0)
 	, row_(0)
 	, column_(0)

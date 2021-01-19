@@ -666,11 +666,11 @@ const listbox::order_pair listbox::get_active_sorting_option()
 		selectable_item* w = orders_[column].first;
 
 		if(w && w->get_value() != SORT_ORDER::NONE) {
-			return std::make_pair(column, static_cast<SORT_ORDER::type>(w->get_value()));
+			return std::pair(column, static_cast<SORT_ORDER::type>(w->get_value()));
 		}
 	}
 
-	return std::make_pair(-1, SORT_ORDER::NONE);
+	return std::pair(-1, SORT_ORDER::NONE);
 }
 
 void listbox::mark_as_unsorted()

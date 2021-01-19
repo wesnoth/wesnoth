@@ -330,7 +330,7 @@ void user_choice_manager::update_local_choice()
 		"waiting for $desc from side $sides",
 		"waiting for $desc from sides $sides",
 		sides_str.size(),
-		{std::make_pair("desc", uch_.description()), std::make_pair("sides", utils::format_conjunct_list("", sides_str))}
+		{std::pair("desc", uch_.description()), std::pair("sides", utils::format_conjunct_list("", sides_str))}
 	);
 	if(local_choice_prev != local_choice_) {
 		changed_event_.notify_observers();

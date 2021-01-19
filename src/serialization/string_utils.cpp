@@ -815,9 +815,9 @@ std::pair<int, int> parse_range(const std::string& str)
 	std::pair<int,int> res {0,0};
 	try {
 		if (b == "infinity") {
-			res = std::make_pair(std::stoi(a), std::numeric_limits<int>::max());
+			res = std::pair(std::stoi(a), std::numeric_limits<int>::max());
 		} else {
-			res = std::make_pair(std::stoi(a), std::stoi(b));
+			res = std::pair(std::stoi(a), std::stoi(b));
 		}
 
 		if (res.second < res.first) {

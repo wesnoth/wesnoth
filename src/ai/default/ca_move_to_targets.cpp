@@ -270,7 +270,7 @@ std::pair<map_location,map_location> move_to_targets_phase::choose_move(std::vec
 		if (!(u->side() != get_side() || (u->can_recruit() && !is_keep_ignoring_leader(u->id())) || u->movement_left() <= 0 || u->incapacitated())) {
 			if (u->get_state("guardian")) {
 				LOG_AI << u->type_id() << " is guardian, staying still\n";
-				return std::make_pair(u->get_location(), u->get_location());
+				return std::pair(u->get_location(), u->get_location());
 			}
 		}
 	}
@@ -363,7 +363,7 @@ std::pair<map_location,map_location> move_to_targets_phase::choose_move(std::vec
 
 	if(best_rated_target == rated_targets.end()) {
 		LOG_AI << "no eligible targets found for unit at " << u->get_location() << std::endl;
-		return std::make_pair(u->get_location(), u->get_location());
+		return std::pair(u->get_location(), u->get_location());
 	}
 
 	assert(best_rating >= 0);
@@ -446,7 +446,7 @@ std::pair<map_location,map_location> move_to_targets_phase::choose_move(std::vec
 			}
 
 			LOG_AI << "returning support...\n";
-			return std::make_pair(best->get_location(), best_loc);
+			return std::pair(best->get_location(), best_loc);
 		}
 	}
 
@@ -503,7 +503,7 @@ std::pair<map_location,map_location> move_to_targets_phase::choose_move(std::vec
 				LOG_AI << "group didn't move " << group.size() << "\n";
 
 				//the group didn't move, so end the first unit in the group's turn, to prevent an infinite loop
-				return std::make_pair(best->get_location(), best->get_location());
+				return std::pair(best->get_location(), best->get_location());
 
 			}
 		} else {
@@ -604,7 +604,7 @@ std::pair<map_location,map_location> move_to_targets_phase::choose_move(std::vec
 		//create this as a target, attempting to rally units around
 		targets.emplace_back(best->get_location(), best_target->value);
 		best_target = targets.end() - 1;
-		return std::make_pair(best->get_location(), best->get_location());
+		return std::pair(best->get_location(), best->get_location());
 	}
 
 	LOG_AI << "Could not find anywhere to move!\n";

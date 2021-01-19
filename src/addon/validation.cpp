@@ -183,7 +183,7 @@ bool check_case_insensitive_duplicates_internal(const config& dir, const std::st
 		const config::attribute_value &filename = path["name"];
 		const std::string lowercase = boost::algorithm::to_lower_copy(filename.str(), std::locale::classic());
 		const std::string with_prefix = prefix + filename.str();
-		std::tie(std::ignore, inserted) = filenames.emplace(lowercase, std::make_pair(false, with_prefix));
+		std::tie(std::ignore, inserted) = filenames.emplace(lowercase, std::pair(false, with_prefix));
 		if (!inserted){
 			if(badlist){
 				std::tie(printed, original) = filenames[lowercase];
@@ -201,7 +201,7 @@ bool check_case_insensitive_duplicates_internal(const config& dir, const std::st
 		const config::attribute_value &filename = path["name"];
 		const std::string lowercase = boost::algorithm::to_lower_copy(filename.str(), std::locale::classic());
 		const std::string with_prefix = prefix + filename.str();
-		std::tie(std::ignore, inserted) = filenames.emplace(lowercase, std::make_pair(false, with_prefix));
+		std::tie(std::ignore, inserted) = filenames.emplace(lowercase, std::pair(false, with_prefix));
 		if (!inserted) {
 			if(badlist){
 				std::tie(printed, original) = filenames[lowercase];

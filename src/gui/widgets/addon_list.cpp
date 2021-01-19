@@ -385,7 +385,7 @@ void addon_list::finalize_setup()
 	list.register_sorting_option(3, [this](const int i) { return addon_vector_[i]->downloads; });
 	list.register_translatable_sorting_option(4, [this](const int i) { return addon_vector_[i]->display_type(); });
 
-	auto order = std::make_pair(0, preferences::SORT_ORDER::ASCENDING);
+	auto order = std::pair(0, preferences::SORT_ORDER::ASCENDING);
 	list.set_active_sorting_option(order);
 }
 

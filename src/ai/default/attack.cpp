@@ -125,7 +125,7 @@ void attack_analysis::analyze(const gamemap& map, unit_map& units,
 
 		// This cache is only about 99% correct, but speeds up evaluation by about 1000 times.
 		// We recalculate when we actually attack.
-		const readonly_context::unit_stats_cache_t::key_type cache_key = std::make_pair(target, &up->type());
+		const readonly_context::unit_stats_cache_t::key_type cache_key = std::pair(target, &up->type());
 		const readonly_context::unit_stats_cache_t::iterator usc = ai_obj.unit_stats_cache().find(cache_key);
 		// Just check this attack is valid for this attacking unit (may be modified)
 		if (usc != ai_obj.unit_stats_cache().end() &&
@@ -146,7 +146,7 @@ void attack_analysis::analyze(const gamemap& map, unit_map& units,
 		old_bc.reset(nullptr);
 
 		if ( !from_cache ) {
-			ai_obj.unit_stats_cache().emplace(cache_key, std::make_pair(
+			ai_obj.unit_stats_cache().emplace(cache_key, std::pair(
 				bc->get_attacker_stats(),
 				bc->get_defender_stats()
 			));

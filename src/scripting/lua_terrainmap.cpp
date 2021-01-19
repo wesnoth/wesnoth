@@ -174,7 +174,7 @@ void mapgen_gamemap::set_special_location(const std::string& id, const map_locat
 		}
 	}
 	else {
-		starting_positions_.left.insert(it_left, std::make_pair(id, loc));
+		starting_positions_.left.insert(it_left, std::pair(id, loc));
 	}
 }
 

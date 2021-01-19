@@ -82,7 +82,7 @@ std::pair<tree_view_node::ptr_t, int> tree_view::remove_node(tree_view_node* nod
 		resize_content(0, -node_size.y);
 	}
 
-	return std::make_pair(std::move(old_node), position);
+	return std::pair(std::move(old_node), position);
 }
 
 void tree_view::clear()

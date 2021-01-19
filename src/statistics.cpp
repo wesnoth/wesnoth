@@ -130,7 +130,7 @@ static void write_str_int_map(config_writer &out, const stats::str_int_map& m)
 		m.begin(), m.end(),
 		std::inserter(rev, rev.begin()),
 		[](const stats::str_int_map::value_type p) {
-			return std::make_pair(p.second, p.first);
+			return std::pair(p.second, p.first);
 		}
 	);
 	reverse_map::const_iterator i = rev.begin(), j;

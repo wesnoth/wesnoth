@@ -569,7 +569,7 @@ void commandline_options::parse_resolution_ ( const std::string& resolution_stri
 		throw bad_commandline_resolution(resolution_string);
 	}
 
-	resolution = std::make_pair(xres, yres);
+	resolution = std::pair(xres, yres);
 }
 
 std::vector<std::pair<unsigned int,std::string>> commandline_options::parse_to_uint_string_tuples_(const std::vector<std::string> &strings, char separator)

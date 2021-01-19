@@ -139,7 +139,7 @@ int path_cost(const std::vector<map_location>& path, const unit& u)
 
 	int result = 0;
 	const gamemap& map = resources::gameboard->map();
-	for(const map_location& loc : std::make_pair(path.begin()+1,path.end())) {
+	for(const map_location& loc : std::pair(path.begin()+1,path.end())) {
 		result += u.movement_cost(map[loc]);
 	}
 	return result;

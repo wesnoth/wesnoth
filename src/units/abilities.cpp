@@ -550,7 +550,7 @@ template<typename TComp>
 std::pair<int,map_location> unit_ability_list::get_extremum(const std::string& key, int def, const TComp& comp) const
 {
 	if ( cfgs_.empty() ) {
-		return std::make_pair(def, map_location());
+		return std::pair(def, map_location());
 	}
 	// The returned location is the best non-cumulative one, if any,
 	// the best absolute cumulative one otherwise.
@@ -578,7 +578,7 @@ std::pair<int,map_location> unit_ability_list::get_extremum(const std::string& k
 			best_loc = p.teacher_loc;
 		}
 	}
-	return std::make_pair(flat + stack, best_loc);
+	return std::pair(flat + stack, best_loc);
 }
 
 template std::pair<int, map_location> unit_ability_list::get_extremum<std::less<int>>(const std::string& key, int def, const std::less<int>& comp) const;

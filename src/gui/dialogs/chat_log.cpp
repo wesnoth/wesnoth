@@ -277,7 +277,7 @@ public:
 
 		LOG_CHAT_LOG << "First " << first << ", last " << last << '\n';
 
-		return std::make_pair(first, last);
+		return std::pair(first, last);
 	}
 
 	void update_view_from_model(bool select_last_page = false)
