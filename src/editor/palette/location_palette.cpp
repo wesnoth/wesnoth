@@ -292,7 +292,7 @@ void location_palette::adjust_size(const SDL_Rect& target)
 	// Just skip it in that case.
 	if(items_fitting > 0 && num_visible_items() != items_fitting) {
 		location_palette_item lpi(disp_.video(), *this);
-		buttons_.resize(items_fitting, lpi);
+		buttons_.resize(items_fitting, &lpi);
 	}
 
 	set_location(target);
