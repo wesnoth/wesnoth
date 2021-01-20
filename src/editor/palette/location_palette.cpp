@@ -292,9 +292,7 @@ void location_palette::adjust_size(const SDL_Rect& target)
 	// Just skip it in that case.
 	if(items_fitting > 0 && num_visible_items() != items_fitting) {
 		location_palette_item lpi(disp_.video(), *this);
-		//Why does this need a pointer to a non-const as second paraeter?
-		//TODO: we should write our own ptr_vector class, boost::ptr_vector has a lot of flaws.
-		buttons_.resize(items_fitting, &lpi);
+		buttons_.resize(items_fitting, lpi);
 	}
 
 	set_location(target);
@@ -419,8 +417,7 @@ void location_palette::add_item(const std::string& id)
 	const auto itor = std::upper_bound(items_.begin(), items_.end(), id, loc_id_comp);
 	if(itor == items_.begin() || *(itor - 1) != id) {
 		pos = std::distance(items_.begin(), items_.insert(itor, id));
-	}
-	else {
+	} else {
 		pos = std::distance(items_.begin(), itor);
 	}
 	selected_item_ = id;
