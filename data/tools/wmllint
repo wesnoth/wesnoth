@@ -1508,7 +1508,6 @@ def global_sanity_check(filename, lines):
             continue
         elif "wmllint: notecheck on" in nav.text:
             notecheck = True
-        #print("Element = %s, text = %s" % (nav.element, repr(nav.text)))
         if nav.element == "[unit_type]":
             unit_race = ""
             unit_id = ""
@@ -1527,8 +1526,6 @@ def global_sanity_check(filename, lines):
             defense_cap_note_needed = False
             continue
         elif nav.element == "[/unit_type]":
-            #print('"%s", %d: unit has traits %s and notes %s' \
-            #      % (filename, in_unit_type, traits, notes))
             if unit_id and unit_usage:
                 usage[unit_id] = unit_usage
             if unit_id and temp_movetypes:
@@ -2237,9 +2234,6 @@ to be called on their own".format(filename, num))
                 if '{' in value and "+" not in value and value.find('{') > value.find("_"):
                     print('"%s", line %d: macro reference in translatable string'\
                           % (filename, i+1))
-                #if future and re.search("[.,!?]  ", lines[i]):
-                #    print('"%s", line %d: extraneous space in translatable string'\
-                #          % (filename, i+1))
             # Check correctness of translation marks and descriptions
             if key.startswith("#"): # FIXME: parse_attribute is confused.
                 pass
@@ -2435,7 +2429,6 @@ def consistency_check():
             print('"%s", line %d: %s has unknown advancements %s' \
                   % (filename, lineno, unit_id, bad_advancements))
     # Check next-scenario pointers
-    #print("Scenario ID map", scenario_to_filename)
     for (filename, lineno, value) in nextrefs:
         if value not in scenario_to_filename:
             print('"%s", line %d: unresolved scenario reference %s' % \
@@ -2719,7 +2712,6 @@ def hack_syntax(filename, lines):
                             if side_one_tag_needs_side_one:
                                 if verbose:
                                     print('"%s", line %d: [%s] without "side" attribute is now applied to all sides'%(filename, i+1, tag))
-                                #lines.insert(i, leader(precomment) + baseindent + "side=1\n")
                             in_side_one_tag = False
                             side_one_tag_needs_side_one = True
                             break
@@ -3148,14 +3140,11 @@ def spellcheck(fn, d):
             local_spellings += declared_spellings.get(up,[])
             up = os.path.dirname(up)
     local_spellings = [w for w in local_spellings if not d.check(w)]
-    #if local_spellings:
-    #    print("%s: inherited local spellings: %s" % (fn, local_spellings))
     for word in local_spellings:
         d.add_to_session(word)
 
     # Process this individual file
     for nav in WmllintIterator(filename=fn):
-        #print("element=%s, text=%s" % (nav.element, repr(nav.text)))
         # Recognize local spelling exceptions
         if not nav.element and "#" in nav.text:
             comment = nav.text[nav.text.index("#"):]
@@ -3168,8 +3157,6 @@ def spellcheck(fn, d):
                         local_spellings.append(word)
                     else:
                         nav.printError("spelling '%s' already declared" % word)
-    #if local_spellings:
-    #    print("%s: with this file's local spellings: %s" % (fn,local_spellings))
 
     for nav in WmllintIterator(filename=fn):
         # Spell-check message and story parts
@@ -3194,8 +3181,6 @@ def spellcheck(fn, d):
             if value and not d.check(value):
                 d.add_to_session(value)
                 local_spellings.append(value)
-    #if local_spellings:
-    #    print("%s: slated for removal: %s" % (fn, local_spellings))
     for word in local_spellings:
         try:
             d.remove_from_session(word)
