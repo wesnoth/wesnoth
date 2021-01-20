@@ -2994,7 +2994,6 @@ def translator(filename, mapxforms, textxform):
     else:
         # Map or mask -- just run everything together
         transformed = "".join(newdata)
-    # Simple check for unbalanced macro calls
     linecount = 1
     quotecount = 0
     display_state = False
