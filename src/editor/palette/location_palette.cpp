@@ -50,7 +50,7 @@ public:
 		}
 
 	};
-	location_palette_item(CVideo& video, editor::location_palette& parent)
+	location_palette_item(CVideo& video, editor::location_palette* parent)
 		: gui::widget(video, true)
 		, parent_(parent)
 	{
@@ -78,7 +78,7 @@ public:
 		if (!(hit(e.x, e.y)))
 			return;
 		if (e.button == SDL_BUTTON_LEFT) {
-			parent_.select_item(id_);
+			parent_->select_item(id_);
 		}
 		if (e.button == SDL_BUTTON_RIGHT) {
 			//TODO: add a context menu with the following options:
@@ -131,7 +131,7 @@ private:
 	std::string id_;
 	std::string desc_;
 	state_t state_;
-	editor::location_palette& parent_;
+	editor::location_palette* parent_;
 };
 
 class location_palette_button : public gui::button
@@ -291,7 +291,7 @@ void location_palette::adjust_size(const SDL_Rect& target)
 	// If that happens, no items will fit and we'll have a negative number here.
 	// Just skip it in that case.
 	if(items_fitting > 0 && num_visible_items() != items_fitting) {
-		location_palette_item lpi(disp_.video(), *this);
+		location_palette_item lpi(disp_.video(), this);
 		buttons_.resize(items_fitting, lpi);
 	}
 
