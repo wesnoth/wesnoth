@@ -122,11 +122,6 @@
 # Note that this will also disable stack-based validation on the span
 # of lines they enclose.
 #
-# You can suppress warnings about newlines in messages (and attempts to
-# repair them) with "wmllint: display on", and re-enable them with
-# "wmllint: display off".  The repair attempts (only) may also be
-# suppressed with the --stringfreeze option.
-#
 # A special comment "# wmllint: notecheck off" will disable checking unit types
 # for consistency between abilities/weapon specials and usage of special notes
 # macros in their descriptions.
@@ -2986,27 +2981,6 @@ def translator(filename, mapxforms, textxform):
     else:
         # Map or mask -- just run everything together
         transformed = "".join(newdata)
-    linecount = 1
-    quotecount = 0
-    display_state = False
-    singleline = False
-    for i in range(len(transformed)):
-        if transformed[i] == '\n':
-            if singleline:
-                singleline = False
-                if not display_state and quotecount % 2 and transformed[i:i+2] != "\n\n" and transformed[i-1:i+1] != "\n\n":
-                    print('"%s", line %d: nonstandard word-wrap style within message' % (filename, linecount))
-            linecount += 1
-        elif transformed[i-7:i] == "message" and transformed[i] == '=':
-            singleline = True
-        elif re.match(" *wmllint: *display +on", transformed[i:]):
-            display_state = True
-        elif re.match(" *wmllint: *display +off", transformed[i:]):
-            display_state = False
-        elif transformed[i] == '"' and not display_state:
-            quotecount += 1
-            if quotecount % 2 == 0:
-                singleline = False
     # Return None if the transformation functions made no changes.
     if "".join(unmodified) != transformed:
         return transformed
