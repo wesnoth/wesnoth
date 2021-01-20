@@ -24,7 +24,6 @@
 #include "utils/variant.hpp"
 
 #include <boost/dynamic_bitset_fwd.hpp>
-#include <boost/variant.hpp>
 
 #include <bitset>
 #include <optional>
@@ -1179,7 +1178,10 @@ public:
 	};
 
 	/** Visitor helper class to parse the upkeep value from a config. */
-	class upkeep_parser_visitor : public boost::static_visitor<upkeep_t>
+	class upkeep_parser_visitor
+#ifdef USING_BOOST_VARIANT
+		: public boost::static_visitor<upkeep_t>
+#endif
 	{
 	public:
 		template<typename N>
@@ -1198,7 +1200,7 @@ public:
 			throw std::invalid_argument(b.str());
 		}
 
-		upkeep_t operator()(boost::blank) const
+		upkeep_t operator()(utils::monostate) const
 		{
 			return upkeep_full();
 		}

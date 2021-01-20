@@ -36,11 +36,6 @@
 #include <istream>
 #include <locale>
 
-#include <boost/variant/apply_visitor.hpp>
-#include <boost/variant/get.hpp>
-#include <boost/variant/static_visitor.hpp>
-#include <boost/variant/variant.hpp>
-
 static lg::log_domain log_config("config");
 #define ERR_CF LOG_STREAM(err, log_config)
 #define DBG_CF LOG_STREAM(debug, log_config)

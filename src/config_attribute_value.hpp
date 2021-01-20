@@ -28,6 +28,8 @@
 #pragma once
 
 #include "global.hpp"
+#include "tstring.hpp"
+#include "utils/variant.hpp"
 
 #include <climits>
 #include <ctime>
@@ -41,11 +43,7 @@
 #include <memory>
 
 #include <boost/exception/exception.hpp>
-#include <boost/variant/apply_visitor.hpp>
-#include <boost/variant/variant.hpp>
 #include <boost/range/iterator_range.hpp>
-
-#include "tstring.hpp"
 
 class enum_tag;
 
@@ -107,7 +105,7 @@ private:
 	// use few types (to keep the overhead low), we do have use cases for
 	// fractions (double) and huge numbers (up to the larger of LLONG_MAX
 	// and SIZE_MAX).
-	typedef boost::variant<boost::blank,
+	typedef utils::variant<utils::monostate,
 		true_false, yes_no,
 		int, unsigned long long, double,
 		std::string, t_string
@@ -238,9 +236,9 @@ public:
 	 * (See the documentation for Boost.Variant.)
 	 */
 	template <typename V>
-	typename V::result_type apply_visitor(const V & visitor) const
+	auto apply_visitor(const V & visitor) const
 	{
-		return boost::apply_visitor(visitor, value_);
+		return utils::visit(visitor, value_);
 	}
 
 private:
@@ -248,6 +246,11 @@ private:
 	static const std::string s_yes, s_no;
 	static const std::string s_true, s_false;
 };
+
+#ifndef USING_BOOST_VARIANT
+/** Specialize operator<< for monostate. Boost already does this, but the STL does not. */
+inline std::ostream& operator<<(std::ostream& os, const std::monostate&) { return os; }
+#endif
 
 namespace utils
 {
