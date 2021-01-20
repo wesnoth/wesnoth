@@ -50,7 +50,7 @@ using boost::variant;
 using monostate = boost::blank;
 
 template<typename... Args>
-inline auto visit(Args&&... args) -> decltype(boost::apply_visitor(std::forward<Args>(args)...))
+inline auto visit(Args&&... args)
 {
 	return boost::apply_visitor(std::forward<Args>(args)...);
 }
