@@ -54,7 +54,7 @@ config& replay_recorder_base::get_command_at(int pos)
 config& replay_recorder_base::add_child()
 {
 	assert(pos_ <= size());
-	commands_.insert(commands_.begin() + pos_, config());
+	commands_.insert(commands_.begin() + pos_, new config());
 	++pos_;
 	return commands_[pos_ - 1];
 }
@@ -89,7 +89,7 @@ config& replay_recorder_base::insert_command(int index)
 	{
 		++pos_;
 	}
-	return *commands_.insert(commands_.begin() + index, config());
+	return *commands_.insert(commands_.begin() + index, new config());
 }
 
 
@@ -101,7 +101,7 @@ void replay_recorder_base::append_config(const config& data)
 	}
 	for(const config& command : data.child_range("command"))
 	{
-		commands_.push_back(command);
+		commands_.push_back(new config(command));
 	}
 }
 
@@ -113,9 +113,11 @@ void replay_recorder_base::append_config(config& data)
 	}
 	for(config& command : data.child_range("command"))
 	{
-		config new_config {};
-		new_config.swap(command);
-		commands_.push_back(std::move(new_config));
+		config* new_config = new config();
+		new_config->swap(command);
+		commands_.push_back(new_config);
+
+
 	}
 }
 

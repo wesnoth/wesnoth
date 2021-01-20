@@ -13,6 +13,7 @@
 
 #pragma once
 #include <cassert>
+#include <boost/ptr_container/ptr_vector.hpp>
 
 #include "config.hpp"
 
@@ -54,7 +55,7 @@ public:
 	void delete_upcoming_commands();
 protected:
 	config upload_log_;
-	std::vector<config> commands_;
+	boost::ptr_vector<config> commands_;
 	int pos_;
 };
 
