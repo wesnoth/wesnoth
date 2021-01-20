@@ -67,6 +67,12 @@ inline T* get_if(V* variant)
 	return boost::get<T>(variant);
 }
 
+template<typename T, typename V>
+inline const T* get_if(const V* variant)
+{
+	return boost::get<T>(variant);
+}
+
 #endif
 
 template<typename... Types>
