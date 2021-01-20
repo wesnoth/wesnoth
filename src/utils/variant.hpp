@@ -55,22 +55,22 @@ inline auto visit(Args&&... args)
 	return boost::apply_visitor(std::forward<Args>(args)...);
 }
 
-template<typename T, typename V>
-inline bool holds_alternative(const V& variant)
+template<typename Ret, typename... Types>
+inline bool holds_alternative(const boost::variant<Types...>& variant)
 {
-	return boost::get<T>(&variant) != nullptr;
+	return boost::get<Ret>(&variant) != nullptr;
 }
 
-template<typename T, typename V>
-inline T* get_if(V* variant)
+template<typename Ret, typename... Types>
+inline Ret* get_if(boost::variant<Types...>* variant)
 {
-	return boost::get<T>(variant);
+	return boost::get<Ret>(variant);
 }
 
-template<typename T, typename V>
-inline const T* get_if(const V* variant)
+template<typename Ret, typename... Types>
+inline const Ret* get_if(const boost::variant<Types...>* variant)
 {
-	return boost::get<T>(variant);
+	return boost::get<Ret>(variant);
 }
 
 #endif
