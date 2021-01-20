@@ -509,17 +509,10 @@ private:
 	const TFuncFormula& formula_handler_;
 };
 
-
-template<typename T, typename TFuncFormula>
-get_ability_value_visitor<T, TFuncFormula> make_get_ability_value_visitor(T def, const TFuncFormula& formula_handler)
-{
-	return get_ability_value_visitor<T, TFuncFormula>(def, formula_handler);
-}
-
 template<typename T, typename TFuncFormula>
 T get_single_ability_value(const config::attribute_value& v, T def, const unit_ability& ability_info, const map_location& receiver_loc, const_attack_ptr att, const TFuncFormula& formula_handler)
 {
-	return v.apply_visitor(make_get_ability_value_visitor(def, [&](const std::string& s) {
+	return v.apply_visitor(get_ability_value_visitor(def, [&](const std::string& s) {
 
 			try {
 				assert(display::get_singleton());
