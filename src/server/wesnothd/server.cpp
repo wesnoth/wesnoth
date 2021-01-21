@@ -1732,7 +1732,7 @@ void server::handle_player_in_game(player_iterator p, simple_wml::document& data
 			: g.kick_member(*data.child("kick"), p)};
 
 		if(user) {
-			player_connections_.modify(user.value(), std::bind(&player_record::enter_lobby, std::placeholders::_1));
+			player_connections_.modify(*user, std::bind(&player_record::enter_lobby, std::placeholders::_1));
 			if(g.describe_slots()) {
 				update_game_in_lobby(g, user);
 			}
@@ -1740,12 +1740,12 @@ void server::handle_player_in_game(player_iterator p, simple_wml::document& data
 			// Send all other players in the lobby the update to the gamelist.
 			simple_wml::document gamelist_diff;
 			make_change_diff(*games_and_users_list_.child("gamelist"), "gamelist", "game", g.description(), gamelist_diff);
-			make_change_diff(games_and_users_list_.root(), nullptr, "user", user.value()->info().config_address(), gamelist_diff);
+			make_change_diff(games_and_users_list_.root(), nullptr, "user", (*user)->info().config_address(), gamelist_diff);
 
 			send_to_lobby(gamelist_diff, p);
 
 			// Send the removed user the lobby game list.
-			async_send_doc_queued(user.value()->socket(), games_and_users_list_);
+			async_send_doc_queued((*user)->socket(), games_and_users_list_);
 		}
 
 		return;
