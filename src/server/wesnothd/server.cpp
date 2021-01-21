@@ -1816,7 +1816,7 @@ void server::handle_player_in_game(player_iterator p, simple_wml::document& data
 
 			if(player_id != 0) {
 				LOG_SERVER << "Querying game history requested by player `" << player.name() << "` for player id `" << player_id << "`." << std::endl;
-				user_handler_->async_get_and_send_game_history(io_service_, *this, socket, player_id, offset);
+				user_handler_->async_get_and_send_game_history(io_service_, *this, p->socket(), player_id, offset);
 			}
 		}
 		return;
