@@ -233,12 +233,11 @@ namespace
 			}
 			else
 			{
-				//we are in the situation, that the unit is owned by a human, but he's not allowed to do this decision.
-				//because it's a mp game and it's not his turn.
-				//note that it doesn't matter whether we call randomness::generator->next_random() or rand().
-				res = randomness::generator->get_random_int(0, nb_options_-1);
+				// we are in the situation, that the unit is owned by a human, but he's not allowed to do this decision.
+				// because it's a mp game and it's not his turn.
+				// default to the first unit listed in the unit's advancements
 			}
-			LOG_NG << "unit at position " << loc_ << "choose advancement number " << res << "\n";
+			LOG_NG << "unit at position " << loc_ << " chose advancement number " << res << "\n";
 			config retv;
 			retv["value"] = res;
 			return retv;
