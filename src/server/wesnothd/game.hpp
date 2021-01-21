@@ -20,9 +20,8 @@
 #include "server/common/simple_wml.hpp"
 #include "utils/make_enum.hpp"
 
-#include "utils/optional_fwd.hpp"
-
 #include <map>
+#include <optional>
 #include <vector>
 
 // class player;
@@ -30,7 +29,7 @@
 namespace wesnothd
 {
 typedef std::vector<player_iterator> user_vector;
-typedef std::vector<utils::optional<player_iterator>> side_vector;
+typedef std::vector<std::optional<player_iterator>> side_vector;
 class server;
 
 class game
@@ -165,7 +164,7 @@ public:
 	 * @return                    The iterator to the removed member if
 	 *                            successful, empty optional otherwise.
 	 */
-	utils::optional<player_iterator> kick_member(const simple_wml::node& kick, player_iterator kicker);
+	std::optional<player_iterator> kick_member(const simple_wml::node& kick, player_iterator kicker);
 
 	/**
 	 * Ban and kick a user by name.
@@ -175,7 +174,7 @@ public:
 	 * @return                    The iterator to the banned player if he
 	 *                            was in this game, empty optional otherwise.
 	 */
-	utils::optional<player_iterator> ban_user(const simple_wml::node& ban, player_iterator banner);
+	std::optional<player_iterator> ban_user(const simple_wml::node& ban, player_iterator banner);
 
 	void unban_user(const simple_wml::node& unban, player_iterator unbanner);
 
@@ -244,30 +243,30 @@ public:
 	 */
 	bool describe_slots();
 
-	void send_server_message_to_all(const char* message, utils::optional<player_iterator> exclude = {});
-	void send_server_message_to_all(const std::string& message, utils::optional<player_iterator> exclude = {})
+	void send_server_message_to_all(const char* message, std::optional<player_iterator> exclude = {});
+	void send_server_message_to_all(const std::string& message, std::optional<player_iterator> exclude = {})
 	{
 		send_server_message_to_all(message.c_str(), exclude);
 	}
 
 	void send_server_message(
-			const char* message, utils::optional<player_iterator> player = {}, simple_wml::document* doc = nullptr) const;
+			const char* message, std::optional<player_iterator> player = {}, simple_wml::document* doc = nullptr) const;
 	void send_server_message(
-			const std::string& message, utils::optional<player_iterator> player = {}, simple_wml::document* doc = nullptr) const
+			const std::string& message, std::optional<player_iterator> player = {}, simple_wml::document* doc = nullptr) const
 	{
 		send_server_message(message.c_str(), player, doc);
 	}
 
 	/** Send data to all players in this game except 'exclude'. */
-	void send_and_record_server_message(const char* message, utils::optional<player_iterator> exclude = {});
-	void send_and_record_server_message(const std::string& message, utils::optional<player_iterator> exclude = {})
+	void send_and_record_server_message(const char* message, std::optional<player_iterator> exclude = {});
+	void send_and_record_server_message(const std::string& message, std::optional<player_iterator> exclude = {})
 	{
 		send_and_record_server_message(message.c_str(), exclude);
 	}
 
 	template<typename Container>
-	void send_to_players(simple_wml::document& data, const Container& players, utils::optional<player_iterator> exclude = {});
-	void send_data(simple_wml::document& data, utils::optional<player_iterator> exclude = {}, std::string packet_type = "");
+	void send_to_players(simple_wml::document& data, const Container& players, std::optional<player_iterator> exclude = {});
+	void send_data(simple_wml::document& data, std::optional<player_iterator> exclude = {}, std::string packet_type = "");
 
 	void clear_history();
 	void record_data(std::unique_ptr<simple_wml::document> data);
@@ -350,7 +349,7 @@ private:
 		return nsides_ ? (current_side_index_ % nsides_) : 0;
 	}
 
-	utils::optional<player_iterator> current_player() const
+	std::optional<player_iterator> current_player() const
 	{
 		return sides_[current_side()];
 	}
@@ -402,16 +401,16 @@ private:
 	 */
 	void send_data_sides(simple_wml::document& data,
 			const simple_wml::string_span& sides,
-			utils::optional<player_iterator> exclude = {});
+			std::optional<player_iterator> exclude = {});
 
 	void send_data_observers(
-			simple_wml::document& data, utils::optional<player_iterator> exclude = {}, std::string packet_type = "") const;
+			simple_wml::document& data, std::optional<player_iterator> exclude = {}, std::string packet_type = "") const;
 
 	/**
 	 * Send [observer] tags of all the observers in the game to the user or
 	 * everyone if none given.
 	 */
-	void send_observerjoins(utils::optional<player_iterator> player = {});
+	void send_observerjoins(std::optional<player_iterator> player = {});
 	void send_observerquit(player_iterator observer);
 	void send_history(player_iterator sock) const;
 
@@ -419,7 +418,7 @@ private:
 	void notify_new_host();
 
 	/** Shortcut to a convenience function for finding a user by name. */
-	utils::optional<player_iterator> find_user(const simple_wml::string_span& name);
+	std::optional<player_iterator> find_user(const simple_wml::string_span& name);
 
 	bool observers_can_label() const
 	{
@@ -453,7 +452,7 @@ private:
 	 *
 	 * Only sends data if the game is initialized but not yet started.
 	 */
-	void send_user_list(utils::optional<player_iterator> exclude = {});
+	void send_user_list(std::optional<player_iterator> exclude = {});
 
 	/** Returns the name of the user or "(unfound)". */
 	std::string username(player_iterator pl) const;

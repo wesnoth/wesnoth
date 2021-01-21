@@ -23,10 +23,9 @@
 #include "server/common/server_base.hpp"
 #include "server/wesnothd/player_connection.hpp"
 
-#include "utils/optional_fwd.hpp"
-
 #include <boost/asio/steady_timer.hpp>
 
+#include <optional>
 #include <random>
 
 namespace wesnothd
@@ -64,9 +63,9 @@ private:
 	void send_server_message(player_iterator player, const std::string& message, const std::string& type) {
 		send_server_message(player->socket(), message, type);
 	}
-	void send_to_lobby(simple_wml::document& data, utils::optional<player_iterator> exclude = {});
-	void send_server_message_to_lobby(const std::string& message, utils::optional<player_iterator> exclude = {});
-	void send_server_message_to_all(const std::string& message, utils::optional<player_iterator> exclude = {});
+	void send_to_lobby(simple_wml::document& data, std::optional<player_iterator> exclude = {});
+	void send_server_message_to_lobby(const std::string& message, std::optional<player_iterator> exclude = {});
+	void send_server_message_to_all(const std::string& message, std::optional<player_iterator> exclude = {});
 
 	bool player_is_in_game(player_iterator player) const {
 		return player->get_game() != nullptr;
@@ -194,7 +193,7 @@ private:
 
 	void delete_game(int, const std::string& reason="");
 
-	void update_game_in_lobby(const game& g, utils::optional<player_iterator> exclude = {});
+	void update_game_in_lobby(const game& g, std::optional<player_iterator> exclude = {});
 
 	void start_new_server();
 

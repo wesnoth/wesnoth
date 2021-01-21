@@ -775,7 +775,7 @@ void game::send_leave_game(player_iterator user) const
 	server.async_send_doc_queued(user->socket(), leave_game);
 }
 
-utils::optional<player_iterator> game::kick_member(const simple_wml::node& kick, player_iterator kicker)
+std::optional<player_iterator> game::kick_member(const simple_wml::node& kick, player_iterator kicker)
 {
 	if(kicker != owner_) {
 		send_server_message("You cannot kick: not the game host", kicker);
@@ -807,7 +807,7 @@ utils::optional<player_iterator> game::kick_member(const simple_wml::node& kick,
 	return user;
 }
 
-utils::optional<player_iterator> game::ban_user(const simple_wml::node& ban, player_iterator banner)
+std::optional<player_iterator> game::ban_user(const simple_wml::node& ban, player_iterator banner)
 {
 	if(banner != owner_) {
 		send_server_message("You cannot ban: not the game host", banner);
@@ -1542,7 +1542,7 @@ bool game::remove_player(player_iterator player, const bool disconnect, const bo
 	return false;
 }
 
-void game::send_user_list(utils::optional<player_iterator> exclude)
+void game::send_user_list(std::optional<player_iterator> exclude)
 {
 	// If the game hasn't started yet, then send all players a list of the users in the game.
 	if(started_ /*|| description_ == nullptr*/) {
@@ -1630,7 +1630,7 @@ void game::load_next_scenario(player_iterator user)
 }
 
 template<typename Container>
-void game::send_to_players(simple_wml::document& data, const Container& players, utils::optional<player_iterator> exclude)
+void game::send_to_players(simple_wml::document& data, const Container& players, std::optional<player_iterator> exclude)
 {
 	for(const auto& player : players) {
 		if(player != exclude) {
@@ -1639,14 +1639,14 @@ void game::send_to_players(simple_wml::document& data, const Container& players,
 	}
 }
 
-void game::send_data(simple_wml::document& data, utils::optional<player_iterator> exclude, std::string /*packet_type*/)
+void game::send_data(simple_wml::document& data, std::optional<player_iterator> exclude, std::string /*packet_type*/)
 {
 	send_to_players(data, all_game_users(), exclude);
 }
 
 void game::send_data_sides(simple_wml::document& data,
 		const simple_wml::string_span& sides,
-		utils::optional<player_iterator> exclude)
+		std::optional<player_iterator> exclude)
 {
 	std::vector<int> sides_vec = ::split<int>(sides, ::split_conv_impl);
 
@@ -1688,7 +1688,7 @@ std::string game::has_same_ip(player_iterator user) const
 	return clones;
 }
 
-void game::send_observerjoins(utils::optional<player_iterator> player)
+void game::send_observerjoins(std::optional<player_iterator> player)
 {
 	for(auto ob : observers_) {
 		if(ob == player) {
@@ -1918,7 +1918,7 @@ std::string game::debug_sides_info() const
 	return result.str();
 }
 
-utils::optional<player_iterator> game::find_user(const simple_wml::string_span& name)
+std::optional<player_iterator> game::find_user(const simple_wml::string_span& name)
 {
 	auto player { player_connections_.get<name_t>().find(name.to_string()) };
 	if(player != player_connections_.get<name_t>().end()) {
@@ -1928,7 +1928,7 @@ utils::optional<player_iterator> game::find_user(const simple_wml::string_span& 
 	}
 }
 
-void game::send_and_record_server_message(const char* message, utils::optional<player_iterator> exclude)
+void game::send_and_record_server_message(const char* message, std::optional<player_iterator> exclude)
 {
 	auto doc = std::make_unique<simple_wml::document>();
 	send_server_message(message, {}, doc.get());
@@ -1939,14 +1939,14 @@ void game::send_and_record_server_message(const char* message, utils::optional<p
 	}
 }
 
-void game::send_server_message_to_all(const char* message, utils::optional<player_iterator> exclude)
+void game::send_server_message_to_all(const char* message, std::optional<player_iterator> exclude)
 {
 	simple_wml::document doc;
 	send_server_message(message, {}, &doc);
 	send_data(doc, exclude, "message");
 }
 
-void game::send_server_message(const char* message, utils::optional<player_iterator> player, simple_wml::document* docptr) const
+void game::send_server_message(const char* message, std::optional<player_iterator> player, simple_wml::document* docptr) const
 {
 	simple_wml::document docbuf;
 	if(docptr == nullptr) {
