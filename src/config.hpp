@@ -512,7 +512,7 @@ public:
 	std::string debug() const;
 	std::string hash() const;
 
-	struct error : public game::error, public std::exception {
+	struct error : public game::error {
 		error(const std::string& message) : game::error(message) {}
 	};
 
