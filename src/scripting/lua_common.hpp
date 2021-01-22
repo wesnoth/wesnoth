@@ -26,10 +26,10 @@ class vconfig;
 #include "config.hpp"
 #include "variable_info.hpp"
 #include "map/location.hpp"
-#include "serialization/string_view.hpp"
 
-#include <vector>
 #include <string>
+#include <string_view>
+#include <vector>
 
 namespace lua_common {
 	int intf_textdomain(lua_State *L);
@@ -182,8 +182,8 @@ bool luaW_checkvariable(lua_State *L, variable_access_create& v, int n);
 
 bool luaW_tableget(lua_State *L, int index, const char* key);
 
-utils::string_view luaW_tostring(lua_State *L, int index);
-utils::string_view luaW_tostring_or_default(lua_State *L, int index, utils::string_view def = utils::string_view());
+std::string_view luaW_tostring(lua_State *L, int index);
+std::string_view luaW_tostring_or_default(lua_State *L, int index, std::string_view def = std::string_view());
 
 /**
  * Displays a message in the chat window.
@@ -193,7 +193,7 @@ void chat_message(const std::string& caption, const std::string& msg);
 /**
  * Calls a Lua function stored below its @a nArgs arguments at the top of the stack.
  * @param L the pointer to the lua interpreter.
- * @param nArgs 
+ * @param nArgs
  * @param nRets LUA_MULTRET for unbounded return values.
  * @param allow_wml_error controls where any stack traces are output.
  * @return true if the call was successful and @a nRets return values are available.

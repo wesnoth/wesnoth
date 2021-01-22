@@ -978,24 +978,24 @@ bool luaW_tableget(lua_State *L, int index, const char* key)
 	return true;
 }
 
-utils::string_view luaW_tostring(lua_State *L, int index)
+std::string_view luaW_tostring(lua_State *L, int index)
 {
 	size_t len = 0;
 	const char* str = lua_tolstring(L, index, &len);
 	if(!str) {
 		throw luaL_error (L, "not a string");
 	}
-	return utils::string_view(str, len);
+	return std::string_view(str, len);
 }
 
-utils::string_view luaW_tostring_or_default(lua_State *L, int index, utils::string_view def)
+std::string_view luaW_tostring_or_default(lua_State *L, int index, std::string_view def)
 {
 	size_t len = 0;
 	const char* str = lua_tolstring(L, index, &len);
 	if(!str) {
 		return def;
 	}
-	return utils::string_view(str, len);
+	return std::string_view(str, len);
 }
 
 void chat_message(const std::string& caption, const std::string& msg)

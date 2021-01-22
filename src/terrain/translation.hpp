@@ -24,7 +24,8 @@
 
 #include "exceptions.hpp"
 #include "map/location.hpp"
-#include "serialization/string_view.hpp"
+
+#include <string_view>
 
 namespace t_translation {
 
@@ -102,7 +103,7 @@ namespace t_translation {
 	 */
 	struct ter_match{
 		ter_match();
-		ter_match(utils::string_view str, const ter_layer filler = NO_LAYER);
+		ter_match(std::string_view str, const ter_layer filler = NO_LAYER);
 		ter_match(const terrain_code& tcode);
 
 		ter_list terrain;
@@ -180,7 +181,7 @@ namespace t_translation {
 	 *
 	 * @return			A single terrain code
 	 */
-	terrain_code read_terrain_code(utils::string_view str, const ter_layer filler = NO_LAYER);
+	terrain_code read_terrain_code(std::string_view str, const ter_layer filler = NO_LAYER);
 
 	/**
 	 * Writes a single terrain code to a string.
@@ -202,7 +203,7 @@ namespace t_translation {
 	 *
 	 * @returns		A vector which contains the terrain codes found in the string
 	 */
-	 ter_list read_list(utils::string_view str, const ter_layer filler = NO_LAYER);
+	 ter_list read_list(std::string_view str, const ter_layer filler = NO_LAYER);
 
 	/**
 	 * Writes a list of terrains to a string, only writes the new format.
@@ -248,7 +249,7 @@ namespace t_translation {
 	 * @returns			A 2D vector with the terrains found the vector data is stored
 	 *					like result[x][y] where x the column number is and y the row number.
 	 */
-	ter_map read_game_map(utils::string_view str, starting_positions& positions, coordinate border_offset = coordinate{ 0, 0 });
+	ter_map read_game_map(std::string_view str, starting_positions& positions, coordinate border_offset = coordinate{ 0, 0 });
 
 	/**
 	 * Write a gamemap in to a vector string.

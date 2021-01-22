@@ -43,8 +43,8 @@ void luaW_clearwindowtable(lua_State* L, gui2::window* owner);
 /** [-0, +1, -] */
 void luaW_pushwidgettable(lua_State* L, gui2::widget* wg, gui2::window* owner);
 /** returns true if a callback already existed. [-1, +0, -] */
-bool luaW_setwidgetcallback(lua_State* L, gui2::widget* wg, gui2::window* owner, utils::string_view name);
+bool luaW_setwidgetcallback(lua_State* L, gui2::widget* wg, gui2::window* owner, std::string_view name);
 /** pushed ther callback function onoto the stack [-0, +1, -] */
-void luaW_getwidgetcallback(lua_State* L, gui2::widget* wg, gui2::window* owner, utils::string_view name);
+void luaW_getwidgetcallback(lua_State* L, gui2::widget* wg, gui2::window* owner, std::string_view name);
 /** callas a widgets callback [-0, +0, e] */
-void luaW_callwidgetcallback(lua_State* L, gui2::widget* wg, gui2::window* owner, utils::string_view name);
+void luaW_callwidgetcallback(lua_State* L, gui2::widget* wg, gui2::window* owner, std::string_view name);
