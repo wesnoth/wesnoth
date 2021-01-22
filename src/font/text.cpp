@@ -788,9 +788,6 @@ bool pango_text::set_markup(std::string_view text, PangoLayout& layout) {
  */
 std::string pango_text::format_links(std::string_view text) const
 {
-	const std::string delim = " \n\r\t";
-	std::string result = "";
-
 	static const std::string delim = " \n\r\t";
 	std::ostringstream result;
 
