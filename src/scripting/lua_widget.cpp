@@ -137,7 +137,7 @@ void luaW_pushwidgettable(lua_State* L, gui2::widget* wg, gui2::window* owner)
 }
 
 
-bool luaW_setwidgetcallback(lua_State* L, gui2::widget* wg, gui2::window* owner, utils::string_view name)
+bool luaW_setwidgetcallback(lua_State* L, gui2::widget* wg, gui2::window* owner, std::string_view name)
 {
 	//stack: function
 	luaW_pushwidgettable(L, wg, owner);
@@ -159,7 +159,7 @@ bool luaW_setwidgetcallback(lua_State* L, gui2::widget* wg, gui2::window* owner,
 	return existed_already;
 }
 
-void luaW_getwidgetcallback(lua_State* L, gui2::widget* wg, gui2::window* owner, utils::string_view name)
+void luaW_getwidgetcallback(lua_State* L, gui2::widget* wg, gui2::window* owner, std::string_view name)
 {
 	luaW_pushwidgettable(L, wg, owner);
 	//stack: {name = function},
@@ -171,7 +171,7 @@ void luaW_getwidgetcallback(lua_State* L, gui2::widget* wg, gui2::window* owner,
 	//stack: function
 }
 
-void luaW_callwidgetcallback(lua_State* L, gui2::widget* wg, gui2::window* owner, utils::string_view name)
+void luaW_callwidgetcallback(lua_State* L, gui2::widget* wg, gui2::window* owner, std::string_view name)
 {
 	luaW_getwidgetcallback(L, wg, owner, name);
 	assert(lua_isfunction(L, -1));

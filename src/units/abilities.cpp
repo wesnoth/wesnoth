@@ -35,11 +35,12 @@
 #include "formula/callable_objects.hpp"
 #include "formula/formula.hpp"
 #include "formula/function_gamestate.hpp"
-#include "serialization/string_view.hpp"
 #include "deprecation.hpp"
 
 #include <boost/dynamic_bitset.hpp>
 #include <boost/algorithm/string/predicate.hpp>
+
+#include <string_view>
 
 static lg::log_domain log_engine("engine");
 #define ERR_NG LOG_STREAM(err, log_engine)

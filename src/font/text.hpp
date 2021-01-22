@@ -169,7 +169,7 @@ public:
 	 * and not including any characters from the delimiters set.
 	 *
 	 * @param position            The pixel position in the text area.
-	 * @param delimiters          
+	 * @param delimiters
 	 *
 	 * @returns                   The token containing position, and none of the
 	 * 			      delimiter characters. If position is out of bounds,
@@ -396,15 +396,15 @@ private:
 	 * a bit harder to recover from the errors and still set the markup.
 	 *
 	 * @param text                The text to set as markup.
-	 * @param layout              
+	 * @param layout
 	 *
 	 * @returns                   Whether the markup was set or an
 	 *                            unrecoverable error occurred and the text is
 	 *                            set as plain text with an error message.
 	 */
-	bool set_markup(utils::string_view text, PangoLayout& layout);
+	bool set_markup(std::string_view text, PangoLayout& layout);
 
-	bool validate_markup(utils::string_view text, char** raw_text, std::string& semi_escaped) const;
+	bool validate_markup(std::string_view text, char** raw_text, std::string& semi_escaped) const;
 
 	static void copy_layout_properties(PangoLayout& src, PangoLayout& dst);
 

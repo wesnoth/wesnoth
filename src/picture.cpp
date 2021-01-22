@@ -184,20 +184,20 @@ unsigned int cached_zoom = 0;
 
 const std::string data_uri_prefix = "data:";
 struct parsed_data_URI{
-	explicit parsed_data_URI(utils::string_view data_URI);
-	utils::string_view scheme;
-	utils::string_view mime;
-	utils::string_view base64;
-	utils::string_view data;
+	explicit parsed_data_URI(std::string_view data_URI);
+	std::string_view scheme;
+	std::string_view mime;
+	std::string_view base64;
+	std::string_view data;
 	bool good;
 };
-parsed_data_URI::parsed_data_URI(utils::string_view data_URI)
+parsed_data_URI::parsed_data_URI(std::string_view data_URI)
 {
 	const std::size_t colon = data_URI.find(':');
-	const utils::string_view after_scheme = data_URI.substr(colon + 1);
+	const std::string_view after_scheme = data_URI.substr(colon + 1);
 
 	const std::size_t comma = after_scheme.find(',');
-	const utils::string_view type_info = after_scheme.substr(0, comma);
+	const std::string_view type_info = after_scheme.substr(0, comma);
 
 	const std::size_t semicolon = type_info.find(';');
 
@@ -267,8 +267,8 @@ void locator::parse_arguments()
 		parsed_data_URI parsed{fn};
 
 		if(!parsed.good) {
-			utils::string_view view{ fn };
-			utils::string_view stripped = view.substr(0, view.find(","));
+			std::string_view view{ fn };
+			std::string_view stripped = view.substr(0, view.find(","));
 			ERR_DP << "Invalid data URI: " << stripped << std::endl;
 		}
 
@@ -560,8 +560,8 @@ static surface load_image_data_uri(const image::locator& loc)
 	parsed_data_URI parsed{loc.get_filename()};
 
 	if(!parsed.good) {
-		utils::string_view fn = loc.get_filename();
-		utils::string_view stripped = fn.substr(0, fn.find(","));
+		std::string_view fn = loc.get_filename();
+		std::string_view stripped = fn.substr(0, fn.find(","));
 		ERR_DP << "Invalid data URI: " << stripped << std::endl;
 	} else if(parsed.mime.substr(0, 5) != "image") {
 		ERR_DP << "Data URI not of image MIME type: " << parsed.mime << std::endl;

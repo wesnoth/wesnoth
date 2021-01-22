@@ -59,7 +59,7 @@ bool notspace(const char c)
 	return !portable_isspace(c);
 }
 
-void trim(string_view& s)
+void trim(std::string_view& s)
 {
 	s.remove_prefix(std::min(s.find_first_not_of(" \t\r\n"), s.size()));
 	if(s.empty()) {
@@ -79,19 +79,19 @@ void trim(string_view& s)
  *                    REMOVE_EMPTY causes empty pieces to be skipped/removed.
  *                    STRIP_SPACES causes the leading and trailing spaces of each piece to be ignored/stripped.
  */
-std::vector<std::string> split(string_view s, const char sep, const int flags)
+std::vector<std::string> split(std::string_view s, const char sep, const int flags)
 {
 	std::vector<std::string> res;
-	split_foreach(s, sep, flags, [&](string_view item) {
+	split_foreach(s, sep, flags, [&](std::string_view item) {
 		res.emplace_back(item);
 	});
 	return res;
 }
 
-std::set<std::string> split_set(string_view s, char sep, const int flags)
+std::set<std::string> split_set(std::string_view s, char sep, const int flags)
 {
 	std::set<std::string> res;
-	split_foreach(s, sep, flags, [&](string_view item) {
+	split_foreach(s, sep, flags, [&](std::string_view item) {
 		res.emplace(item);
 	});
 	return res;

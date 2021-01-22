@@ -16,13 +16,13 @@
 #include "scripting/lua_common.hpp"
 #include "scripting/lua_widget.hpp"
 
-#include "serialization/string_view.hpp"
 #include "tstring.hpp"
 #include "map/location.hpp"
 #include "lua/lauxlib.h"
 #include "lua/lua.h"
 
 #include <cassert>
+#include <string_view>
 #include <type_traits>
 
 class enum_tag;
@@ -89,21 +89,21 @@ namespace lua_check_impl
 		lua_pushlstring(L, val.c_str(), val.size());
 	}
 
-	//utils::string_view
+	//std::string_view
 	template<typename T>
-	std::enable_if_t<std::is_same_v<T, utils::string_view>, utils::string_view>
+	std::enable_if_t<std::is_same_v<T, std::string_view>, std::string_view>
 	lua_check(lua_State *L, int n)
 	{
 		return luaW_tostring(L, n);
 	}
 	template<typename T>
-	std::enable_if_t<std::is_same_v<T, utils::string_view>, utils::string_view>
+	std::enable_if_t<std::is_same_v<T, std::string_view>, std::string_view>
 	lua_to_or_default(lua_State *L, int n, const T& def)
 	{
 		return luaW_tostring_or_default(L, n, def);
 	}
 	template<typename T>
-	std::enable_if_t<std::is_same_v<T, utils::string_view>, void>
+	std::enable_if_t<std::is_same_v<T, std::string_view>, void>
 	lua_push(lua_State *L, const T& val)
 	{
 		lua_pushlstring(L, val.data(), val.size());
@@ -165,7 +165,7 @@ namespace lua_check_impl
 	lua_to_or_default(lua_State *L, int n, const T& def)
 	{
 		T val;
-		utils::string_view str = lua_check_impl::lua_to_or_default<utils::string_view>(L, n, utils::string_view());
+		std::string_view str = lua_check_impl::lua_to_or_default<std::string_view>(L, n, std::string_view());
 		if(!val.parse(str))
 		{
 			return def;
@@ -302,7 +302,7 @@ namespace lua_check_impl
 
 	//std::vector and similar but not std::string
 	template<typename T>
-	std::enable_if_t<is_container<T>::value && !std::is_same_v<T, std::string> && !std::is_same_v<T, utils::string_view>, T>
+	std::enable_if_t<is_container<T>::value && !std::is_same_v<T, std::string> && !std::is_same_v<T, std::string_view>, T>
 	lua_check(lua_State * L, int n)
 	{
 		if (lua_istable(L, n))
@@ -333,7 +333,7 @@ namespace lua_check_impl
 	//also accepts things like std::vector<int>() | std::adaptors::transformed(..)
 	template<typename T>
 	std::enable_if_t<
-		is_container<T>::value && !std::is_same_v<T, std::string> && !std::is_same_v<T, utils::string_view> && !is_map<T>::value
+		is_container<T>::value && !std::is_same_v<T, std::string> && !std::is_same_v<T, std::string_view> && !is_map<T>::value
 		, void
 	>
 	lua_push(lua_State * L, const T& list )
@@ -390,7 +390,7 @@ void lua_push(lua_State *L, const T& val)
  *
  */
 template<typename T>
-std::decay_t<T> luaW_table_get_def(lua_State *L, int index, utils::string_view k,  const T& def)
+std::decay_t<T> luaW_table_get_def(lua_State *L, int index, std::string_view k,  const T& def)
 {
 	if(!lua_istable(L, index)) {
 		luaL_argerror(L, index, "table expected");
@@ -412,7 +412,7 @@ std::decay_t<T> luaW_table_get_def(lua_State *L, int index, utils::string_view k
 
 
 template<typename T>
-void luaW_table_set(lua_State *L, int index, utils::string_view k,  const T& value)
+void luaW_table_set(lua_State *L, int index, std::string_view k,  const T& value)
 {
 	if(!lua_istable(L, index)) {
 		luaL_argerror(L, index, "table expected");

@@ -39,15 +39,15 @@
 #include <map>
 #include <memory>
 #include <string>
+#include <string_view>
 #include <type_traits>
 #include <utility>
 #include <vector>
 
 #include <boost/exception/exception.hpp>
 #include <boost/range/iterator_range.hpp>
-#include <boost/utility/string_view.hpp>
 
-using config_key_type = boost::string_view;
+using config_key_type = std::string_view;
 
 class config;
 class enum_tag;
