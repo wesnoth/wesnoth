@@ -26,5 +26,4 @@ that class. */
 namespace utils
 {
 using string_view = boost::string_view;
-using byte_string_view = boost::basic_string_view<uint8_t, std::char_traits<uint8_t>>;
 } // namespace utils

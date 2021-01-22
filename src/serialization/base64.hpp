@@ -16,7 +16,13 @@
 
 #include "serialization/string_view.hpp"
 
+#include <string_view>
 #include <vector>
+
+namespace utils
+{
+using byte_string_view = std::basic_string_view<uint8_t>;
+}
 
 // Official Base64 encoding (RFC4648)
 namespace base64 {
