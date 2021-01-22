@@ -767,7 +767,7 @@ bool pango_text::set_markup(std::string_view text, PangoLayout& layout) {
 
 	if(valid) {
 		if(link_aware_) {
-			std::string formatted_text = format_links(std::string(text));
+			std::string formatted_text = format_links(text);
 			pango_layout_set_markup(&layout, formatted_text.c_str(), formatted_text.size());
 		} else {
 			pango_layout_set_markup(&layout, text.data(), text.size());
@@ -786,38 +786,41 @@ bool pango_text::set_markup(std::string_view text, PangoLayout& layout) {
  * Replaces all instances of URLs in a given string with formatted links
  * and returns the result.
  */
-std::string pango_text::format_links(const std::string& text) const
+std::string pango_text::format_links(std::string_view text) const
 {
 	const std::string delim = " \n\r\t";
 	std::string result = "";
 
-	int last_delim = -1;
-	for (std::size_t index = 0; index < text.size(); ++index) {
-		if (delim.find(text[index]) != std::string::npos) {
-			// Token starts from after the last delimiter up to (but not including) this delimiter
-			std::string token = text.substr(last_delim + 1, index - last_delim - 1);
+	static const std::string delim = " \n\r\t";
+	std::ostringstream result;
 
-			if (looks_like_url(token)) {
-				result += format_as_link(token, link_color_) + text[index];
+	std::size_t last_delim = -1;
+	for(std::size_t index = 0; index < text.size(); ++index) {
+		if(delim.find(text[index]) != std::string::npos) {
+			// Token starts from after the last delimiter up to (but not including) this delimiter
+			auto token = text.substr(last_delim + 1, index - last_delim - 1);
+
+			if(looks_like_url(token)) {
+				result << format_as_link(std::string(token), link_color_) << text[index];
 			} else {
-				result += token + text[index];
+				result << token << text[index];
 			}
 
 			last_delim = index;
 		}
 	}
 
-	if (last_delim < static_cast<int>(text.size()) - 1) {
-		std::string token = text.substr(last_delim + 1, text.size() - last_delim - 1);
+	if(last_delim < text.size() - 1) {
+		auto token = text.substr(last_delim + 1, text.size() - last_delim - 1);
 
 		if(looks_like_url(token)) {
-			result += format_as_link(token, link_color_);
+			result << format_as_link(std::string(token), link_color_);
 		} else {
-			result += token;
+			result << token;
 		}
 	}
 
-	return result;
+	return result.str();
 }
 
 bool pango_text::validate_markup(std::string_view text, char** raw_text, std::string& semi_escaped) const

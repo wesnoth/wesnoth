@@ -408,7 +408,7 @@ private:
 
 	static void copy_layout_properties(PangoLayout& src, PangoLayout& dst);
 
-	std::string format_links(const std::string& text) const;
+	std::string format_links(std::string_view text) const;
 };
 
 /**
