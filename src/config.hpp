@@ -44,7 +44,6 @@
 #include <utility>
 #include <vector>
 
-#include <boost/exception/exception.hpp>
 #include <boost/range/iterator_range.hpp>
 
 using config_key_type = std::string_view;
@@ -513,7 +512,7 @@ public:
 	std::string debug() const;
 	std::string hash() const;
 
-	struct error : public game::error, public boost::exception {
+	struct error : public game::error, public std::exception {
 		error(const std::string& message) : game::error(message) {}
 	};
 
