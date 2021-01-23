@@ -29,7 +29,6 @@
 
 #include "config_attribute_value.hpp"
 #include "exceptions.hpp"
-#include "global.hpp"
 
 #include <climits>
 #include <ctime>

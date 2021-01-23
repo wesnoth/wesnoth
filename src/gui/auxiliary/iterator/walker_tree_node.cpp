@@ -16,8 +16,6 @@
 
 #include "gui/auxiliary/iterator/walker_tree_node.hpp"
 
-#include "global.hpp"
-
 #include <cassert>
 
 namespace gui2

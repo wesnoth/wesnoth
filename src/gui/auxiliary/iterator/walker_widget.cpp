@@ -16,7 +16,6 @@
 
 #include "gui/auxiliary/iterator/walker_widget.hpp"
 
-#include "global.hpp"
 #include "gui/widgets/widget.hpp"
 
 #include <cassert>

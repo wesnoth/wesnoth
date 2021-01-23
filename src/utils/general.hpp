@@ -13,8 +13,6 @@
 
 #pragma once
 
-#include "global.hpp"
-
 #include <algorithm>
 #include <cctype>
 #include <functional>

@@ -16,6 +16,7 @@
 #include "scripting/lua_common.hpp"
 #include "scripting/lua_widget.hpp"
 
+#include "global.hpp"
 #include "tstring.hpp"
 #include "map/location.hpp"
 #include "lua/lauxlib.h"

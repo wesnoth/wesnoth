@@ -28,8 +28,6 @@
 #include <ctime>
 #include <mutex>
 
-#include "global.hpp"
-
 namespace {
 
 class null_streambuf : public std::streambuf

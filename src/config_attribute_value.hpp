@@ -27,7 +27,6 @@
 
 #pragma once
 
-#include "global.hpp"
 #include "tstring.hpp"
 #include "utils/variant.hpp"
 
