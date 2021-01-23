@@ -2898,7 +2898,7 @@ def inner_spellcheck(nav, value, spelldict):
         # Last char in this regexp is to ignore concatenation signs.
         while lowered and lowered[0] in " \t(`@*'%_+":
             lowered = lowered[1:]
-            normal = normal1:]
+            normal = normal[1:]
         # Not interested in interpolations or numeric literals
         if not lowered or lowered.startswith("$"):
             continue
