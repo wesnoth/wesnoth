@@ -41,9 +41,6 @@
 #include <type_traits>
 #include <memory>
 
-#include <boost/exception/exception.hpp>
-#include <boost/range/iterator_range.hpp>
-
 class enum_tag;
 
 /**

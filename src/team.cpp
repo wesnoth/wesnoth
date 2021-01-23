@@ -35,8 +35,6 @@
 #include "units/types.hpp"
 #include "whiteboard/side_actions.hpp"
 
-#include <boost/dynamic_bitset.hpp>
-
 static lg::log_domain log_engine("engine");
 #define DBG_NG LOG_STREAM(debug, log_engine)
 #define LOG_NG LOG_STREAM(info, log_engine)
