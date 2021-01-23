@@ -455,8 +455,8 @@ void unit::init(const config& cfg, bool use_traits, const vconfig* vcfg)
 	facing_ = map_location::parse_direction(cfg["facing"]);
 	if(facing_ == map_location::NDIRECTIONS) facing_ = static_cast<map_location::DIRECTION>(randomness::rng::default_instance().get_random_int(0, map_location::NDIRECTIONS-1));
 
-	if(const config& mods = cfg.child("modifications")) {
-		modifications_ = mods;
+	for(const config& mods : cfg.child_range("modifications")) {
+		modifications_.append_children(mods);
 	}
 
 	generate_name_ = cfg["generate_name"].to_bool(true);
