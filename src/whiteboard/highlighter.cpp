@@ -18,8 +18,6 @@
 
 #include <algorithm>
 #include <iterator>
-#include <boost/range/adaptor/reversed.hpp>
-
 #include <functional>
 
 #include "whiteboard/highlighter.hpp"
@@ -45,6 +43,7 @@
 #include "units/unit.hpp"
 #include "units/animation_component.hpp"
 #include "units/map.hpp"
+#include "utils/ranges.hpp"
 
 namespace wb
 {
@@ -109,7 +108,7 @@ void highlighter::set_mouseover_hex(const map_location& hex)
 	if(side_actions_->empty()) {
 		return;
 	}
-	for(action_ptr act : boost::adaptors::reverse(*side_actions_)) {
+	for(action_ptr act : utils::reversed_view(*side_actions_)) {
 		/**@todo "is_numbering_hex" is not the "correct" criterion by which to
 		 * select the highlighted/selected action. It's just convenient for me
 		 * to use at the moment since it happens to coincide with the "correct"

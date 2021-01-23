@@ -22,8 +22,7 @@
 #include "log.hpp" //LOG_STREAM
 #include "variable.hpp" //scoped_wml_variable
 #include "serialization/string_utils.hpp"
-
-#include <boost/range/adaptor/reversed.hpp>
+#include "utils/ranges.hpp"
 
 static lg::log_domain log_engine("engine");
 #define ERR_NG LOG_STREAM(err, log_engine)
@@ -156,7 +155,7 @@ void game_data::activate_scope_variable(std::string var_name) const
 		var_name.erase(itor, var_name.end());
 	}
 
-	for (scoped_wml_variable* v : boost::adaptors::reverse(scoped_variables)) {
+	for (scoped_wml_variable* v : utils::reversed_view(scoped_variables)) {
 		if (v->name() == var_name) {
 			recursive_activation = true;
 			if (!v->activated()) {

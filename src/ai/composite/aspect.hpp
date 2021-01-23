@@ -23,12 +23,11 @@
 #include "ai/lua/lua_object.hpp"
 #include "ai/lua/core.hpp"
 #include "scripting/game_lua_kernel.hpp"
+#include "utils/ranges.hpp"
 
 #include "log.hpp"
 
 #include <functional>
-
-#include <boost/range/adaptor/reversed.hpp>
 
 namespace ai {
 
@@ -286,7 +285,7 @@ public:
 
 	virtual void recalculate() const
 	{
-		for(const auto& f : boost::adaptors::reverse(facets_)) {
+		for(const auto& f : utils::reversed_view(facets_)) {
 			if (f->active()) {
 				this->value_ = f->get_ptr();
 				this->valid_ = true;
