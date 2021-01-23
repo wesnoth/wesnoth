@@ -186,7 +186,7 @@ public:
         SPIRIT_PO_CATALOG_FAIL(("Failed to read plural forms function. "
                                 "Input: '" + metadata_.plural_forms_function_string + "', "
                                 "error message: " + pf_function_object_.error()));
-      } 
+      }
 
       // Cache the 'singular' form index since it is most common
       singular_index_ = pf_function_object_(1);
@@ -225,7 +225,7 @@ public:
         if (!msg.id.size()) {
           int err_line = it.position();
           SPIRIT_PO_CATALOG_FAIL(("Malformed po file: Cannot overwrite the header entry later in the po file."
-                                  "Started at " + std::to_string(line_no) + ": , stopped at " + std::to_string(err_line) + ":\n" 
+                                  "Started at " + std::to_string(line_no) + ": , stopped at " + std::to_string(err_line) + ":\n"
                                   + iterator_context(it, end)));
         }
         msg.line_no = line_no;
@@ -460,6 +460,9 @@ public:
     }
   }
 };
+
+// Helper typedef, most people will use default_catalog type
+using default_catalog = catalog<>;
 
 } // end namespace spirit_po
 
