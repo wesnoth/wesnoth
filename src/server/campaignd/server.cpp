@@ -705,7 +705,7 @@ void server::write_config()
 	DBG_CS << "... done\n";
 }
 
-void server::fire(const std::string& hook, const std::string& addon)
+void server::fire(const std::string& hook, [[maybe_unused]] const std::string& addon)
 {
 	const std::map<std::string, std::string>::const_iterator itor = hooks_.find(hook);
 	if(itor == hooks_.end()) {
@@ -718,7 +718,6 @@ void server::fire(const std::string& hook, const std::string& addon)
 	}
 
 #if defined(_WIN32)
-	UNUSED(addon);
 	ERR_CS << "Tried to execute a script on an unsupported platform\n";
 	return;
 #else

@@ -221,9 +221,8 @@ public:
 		} catch (...) { std::cerr << "Swallowed an exception when trying to write lua command line history\n";}
 	}
 #endif
-	void add_to_history (const std::string& str) {
+	void add_to_history ([[maybe_unused]] const std::string& str) {
 		prefix_ = "";
-		UNUSED(str);
 #ifdef HAVE_HISTORY
 		add_history(str.c_str());
 #endif
@@ -241,7 +240,7 @@ public:
 		LOG_LUA << "updated prefix\n";
 	}
 
-	std::string search( int direction ) {
+	std::string search([[maybe_unused]] int direction ) {
 #ifdef HAVE_HISTORY
 		LOG_LUA << "searching in direction " << direction << " from position " << where_history() << "\n";
 
@@ -285,7 +284,6 @@ public:
 
 		// reset, set history to the end and prefix_ to empty, and return the current prefix_ for the user to edit
 		end_of_history_ = true;
-		UNUSED(direction);
 		std::string temp = prefix_;
 		prefix_ = "";
 		return temp;
@@ -330,7 +328,7 @@ public:
 	// Does history expansion in a command line. A return value of true indicates an error,
 	// the error message will be returned in the string argument. A return value of false
 	// indicates success and that execution should proceed.
-	bool do_history_expansion (std::string & cmd) {
+	bool do_history_expansion ([[maybe_unused]] std::string & cmd) {
 #ifdef HAVE_HISTORY
 		// Do history expansions
 		std::unique_ptr<char[]> cmd_cstr(new char[cmd.length()+1]);
@@ -349,7 +347,6 @@ public:
 		cmd = expansion;
 		free(expansion);
 #endif
-		UNUSED(cmd);
 		return false;
 	}
 };

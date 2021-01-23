@@ -607,9 +607,7 @@ static bool is_path_relative_to_cwd(const std::string& str)
 
 void set_user_data_dir(std::string newprefdir)
 {
-	bool relative_ok = false;
-	// Not always but it can be unused in some configurations
-	UNUSED(relative_ok);
+	[[maybe_unused]] bool relative_ok = false;
 
 #ifdef PREFERENCES_DIR
 	if(newprefdir.empty()) {
