@@ -29,14 +29,17 @@ mp_match_history::mp_match_history(mp::user_info& info, wesnothd_connection& con
 	: info_(info)
 	, connection_(connection)
 {
-	register_label("title", true, VGETTEXT("Match History — $player", {{"player", info.name}}));
-
-	UNUSED(info_);
-	UNUSED(connection_);
+	register_label("title", true, VGETTEXT("Match History — $player", {{"player", info_.name}}));
 }
 
 void mp_match_history::pre_show(window& /*window*/)
 {
+	request_history(0);
+}
+
+void mp_match_history::request_history(int offset)
+{
+	connection_.send_data({ "game_history_request", config { "offset", offset } });
 }
 
 } // namespace dialogs
