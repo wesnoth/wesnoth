@@ -25,8 +25,6 @@
 #include <exception>
 #include <string>
 
-#include <boost/algorithm/string/predicate.hpp>
-
 #include "lua/lauxlib.h"
 #include "lua/lua.h"
 #include "lua/luaconf.h"                // for LUAL_BUFFERSIZE

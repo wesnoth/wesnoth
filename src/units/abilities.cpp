@@ -39,7 +39,6 @@
 #include "deprecation.hpp"
 
 #include <boost/dynamic_bitset.hpp>
-#include <boost/algorithm/string/predicate.hpp>
 
 #include <string_view>
 
