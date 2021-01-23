@@ -580,7 +580,7 @@ bool mp_manager::enter_lobby_mode()
 				enter_create_mode();
 				break;
 			case gui2::dialogs::mp_lobby::JOIN:
-				FALLTHROUGH;
+				[[fallthrough]];
 			case gui2::dialogs::mp_lobby::OBSERVE:
 				enter_wait_mode(dlg_joined_game_id, dlg_retval == gui2::dialogs::mp_lobby::OBSERVE);
 				break;

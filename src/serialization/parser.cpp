@@ -389,7 +389,7 @@ void parser::parse_variable()
 				buffer += " ";
 			}
 
-			FALLTHROUGH;
+			[[fallthrough]];
 
 		default:
 			buffer += tok_.current_token().value;
@@ -408,7 +408,7 @@ void parser::parse_variable()
 				continue;
 			}
 
-			FALLTHROUGH;
+			[[fallthrough]];
 
 		case token::END:
 			goto finish;

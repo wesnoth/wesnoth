@@ -848,7 +848,7 @@ bool editor_controller::do_execute_command(const hotkey::hotkey_command& cmd, in
 				context_manager_->perform_refresh(editor_action_select_all());
 				return true;
 			}
-			FALLTHROUGH;
+			[[fallthrough]];
 		case HOTKEY_EDITOR_SELECT_INVERSE:
 			context_manager_->perform_refresh(editor_action_select_inverse());
 			return true;
@@ -945,7 +945,7 @@ bool editor_controller::do_execute_command(const hotkey::hotkey_command& cmd, in
 			if(context_manager_->toggle_update_transitions()) {
 				return true;
 			}
-			FALLTHROUGH;
+			[[fallthrough]];
 		case HOTKEY_EDITOR_UPDATE_TRANSITIONS:
 			context_manager_->refresh_all();
 			return true;

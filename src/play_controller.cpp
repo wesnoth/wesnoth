@@ -683,7 +683,7 @@ void play_controller::tab()
 	case gui::TEXTBOX_COMMAND: {
 		std::vector<std::string> commands = menu_handler_.get_commands_list();
 		dictionary.insert(commands.begin(), commands.end());
-		FALLTHROUGH; // we also want player names from the next case
+		[[fallthrough]]; // we also want player names from the next case
 	}
 	case gui::TEXTBOX_MESSAGE: {
 		for(const team& t : get_teams()) {

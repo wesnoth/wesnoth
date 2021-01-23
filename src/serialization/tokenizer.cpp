@@ -132,7 +132,7 @@ const token &tokenizer::next_token()
 			token_.value = current_;
 			break;
 		}
-		FALLTHROUGH;
+		[[fallthrough]];
 
 	default:
 		if (is_alnum(current_) || current_ == '$') {

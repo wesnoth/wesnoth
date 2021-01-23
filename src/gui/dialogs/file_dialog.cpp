@@ -327,7 +327,7 @@ bool file_dialog::process_submit_common(const std::string& name)
 				show_transient_error_message(VGETTEXT("The file or folder $path cannot be created.", {{"path", name}}));
 				break;
 			}
-			FALLTHROUGH;
+			[[fallthrough]];
 		case SELECTION_NOT_FOUND:
 			// We only get here if we aren't in save mode.
 			show_transient_error_message(VGETTEXT("The file or folder $path does not exist.", {{"path", name}}));

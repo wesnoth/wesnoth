@@ -43,7 +43,7 @@ walker_base::state_t tree_node::next(const level level)
 				widget_ = nullptr;
 				return invalid;
 			}
-			FALLTHROUGH;
+			[[fallthrough]];
 		case internal:
 			assert(false);
 			return fail;

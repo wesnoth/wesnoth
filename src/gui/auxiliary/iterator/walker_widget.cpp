@@ -46,7 +46,7 @@ walker_base::state_t widget::next(const level level)
 				widget_ = nullptr;
 				return invalid;
 			}
-			FALLTHROUGH;
+			[[fallthrough]];
 		case internal:
 		case child:
 			break;

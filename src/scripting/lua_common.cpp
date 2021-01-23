@@ -951,7 +951,7 @@ bool luaW_checkvariable(lua_State *L, variable_access_create& v, int n)
 				if (luaW_toconfig(L, n, cfg)) {
 					return true;
 				}
-				FALLTHROUGH;
+				[[fallthrough]];
 			}
 		default:
 		default_explicit:
