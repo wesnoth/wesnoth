@@ -2891,12 +2891,14 @@ def inner_spellcheck(nav, value, spelldict):
     for token in value.split():
         # Try it with simple lowercasing first
         lowered = token.lower()
+        normal = token
         if d.check(lowered):
             continue
         # Strip leading punctuation and grotty Wesnoth highlighters
         # Last char in this regexp is to ignore concatenation signs.
         while lowered and lowered[0] in " \t(`@*'%_+":
             lowered = lowered[1:]
+            normal = normal1:]
         # Not interested in interpolations or numeric literals
         if not lowered or lowered.startswith("$"):
             continue
@@ -2904,15 +2906,18 @@ def inner_spellcheck(nav, value, spelldict):
         # Dwarvish dialect words end in a single quote
         while lowered and lowered[-1] in "_-*).,:;?!& \t":
             lowered = lowered[:-1]
+            normal = normal[:-1]
         if lowered and spelldict.check(lowered):
             continue
         while lowered and lowered[-1] in "_-*').,:;?!& \t":
             lowered = lowered[:-1]
+            normal = normal[:-1]
         # Not interested in interpolations or numeric literals
         if not lowered or lowered.startswith("$") or lowered[0].isdigit():
             continue
        # Nuke balanced string quotes if present
         lowered = string_strip(lowered)
+        normal = string_strip(normal)
         if lowered and spelldict.check(lowered):
             continue
         # No match? Strip possessive suffixes and try again.
@@ -2945,7 +2950,7 @@ def inner_spellcheck(nav, value, spelldict):
             continue
         if re.match("s+h+", lowered):
             continue
-        yield lowered
+        yield normal
 
 
 def spellcheck(fn, d):
