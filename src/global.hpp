@@ -16,9 +16,6 @@
 
 #ifdef _MSC_VER
 
-// Enable C99 support for lua
-#define STDC99
-
 #if _MSVC_LANG > 201402	// fallthrough only supported when MSVC targets later than C++14
 #define FALLTHROUGH [[fallthrough]]
 #else
