@@ -3040,6 +3040,8 @@ def inner_spellcheck(nav, value, spelldict):
     value = string_strip(value)
     # Discard extraneous stuff
     replacements = (
+        ("[", " "),
+        ("]", " "),
         ("...", " "),
         ("\"", " "),
         ("\\n", " "),
