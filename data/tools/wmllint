@@ -3473,7 +3473,6 @@ In your case, your system interprets your arguments as:
                 failed_any_dirs = True
                 print("wmllint: skipping non-existent path %s" % directory)
                 continue
-            ofp = None
             for fn in allcfgfiles(directory):
                 if verbose >= 2:
                     print(fn + ":")
@@ -3547,7 +3546,6 @@ In your case, your system interprets your arguments as:
                             failed_any_dirs = True
                             print("wmllint: skipping non-existent path %s" % directory)
                             continue
-                        ofp = None
                         for fn in allcfgfiles(directory):
                             if verbose >= 2:
                                 print(fn + ":")
