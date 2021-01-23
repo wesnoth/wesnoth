@@ -3016,7 +3016,7 @@ def spellcheck(fn, d):
             spellings = set(to_insert[i]) - inserted
             inserted = inserted | spellings
             if spellings:
-                print('#wmllint: local spellings', ' '.join(spellings), file=fd)
+                print('# wmllint: local spellings', ' '.join(spellings), file=fd)
             print(l, file=fd, end='')
 
 vctypes = (".svn", ".git", ".hg")
