@@ -24,16 +24,17 @@
 #include "gettext.hpp"
 #include "gui/auxiliary/find_widget.hpp"
 #include "gui/core/timer.hpp"
+#include "gui/widgets/drawing.hpp"
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 #include "log.hpp"
 #include "preferences/general.hpp"
-#include <functional>
 #include "video.hpp"
 
 #include <chrono>
 #include <cstdlib>
+#include <functional>
 
 static lg::log_domain log_loadscreen("loadscreen");
 #define ERR_LS LOG_STREAM(err, log_loadscreen)
@@ -79,22 +80,13 @@ loading_screen::loading_screen(std::function<void()> f)
 	, worker_result_()
 	, cursor_setter_()
 	, progress_stage_label_(nullptr)
-	, animation_label_(nullptr)
+	, animation_(nullptr)
 	, current_stage_(loading_stage::none)
 	, visible_stages_()
-	, animation_stages_()
 	, current_visible_stage_()
 {
-	for(const auto& pair : stage_names) {
-		visible_stages_[pair.first] = t_string(pair.second, "wesnoth-lib") + "...";
-	}
-
-	animation_stages_.reserve(20);
-
-	for(int i = 0; i != 20; ++i) {
-		std::string s(20, ' ');
-		s[i] = '.';
-		animation_stages_.push_back(std::move(s));
+	for(const auto& [stage, description] : stage_names) {
+		visible_stages_[stage] = t_string(description, "wesnoth-lib") + "...";
 	}
 
 	current_visible_stage_ = visible_stages_.end();
@@ -119,7 +111,7 @@ void loading_screen::pre_show(window& window)
 	}
 
 	progress_stage_label_ = find_widget<label>(&window, "status", false, true);
-	animation_label_ = find_widget<label>(&window, "test_animation", false, true);
+	animation_ = find_widget<drawing>(&window, "animation", false, true);
 
 	// Add a draw callback to handle the animation, et al.
 	window.connect_signal<event::DRAW>(
@@ -168,10 +160,8 @@ void loading_screen::draw_callback()
 		progress_stage_label_->set_label(iter->second);
 	}
 
-	++animation_counter_;
-	if(animation_counter_ % 2 == 0) {
-		animation_label_->set_label(animation_stages_[(animation_counter_ / 2) % animation_stages_.size()]);
-	}
+	animation_->get_drawing_canvas().set_variable("tick", wfl::variant(animation_counter_++));
+	animation_->set_is_dirty(true);
 }
 
 loading_screen::~loading_screen()

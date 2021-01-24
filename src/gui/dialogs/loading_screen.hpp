@@ -63,6 +63,7 @@ enum class loading_stage
 
 namespace gui2
 {
+class drawing;
 class label;
 class window;
 
@@ -104,14 +105,12 @@ private:
 	std::unique_ptr<cursor::setter> cursor_setter_;
 
 	label* progress_stage_label_;
-	label* animation_label_;
+	drawing* animation_;
 
 	std::atomic<loading_stage> current_stage_;
 
 	using stage_map = std::map<loading_stage, t_string>;
 	stage_map visible_stages_;
-
-	std::vector<t_string> animation_stages_;
 	stage_map::const_iterator current_visible_stage_;
 };
 
