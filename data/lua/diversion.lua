@@ -100,7 +100,7 @@ function wesnoth.wml_actions.on_undo_diversion(cfg)
 	status_anim_update(true)
 end
 
-on_event("moveto, die", function()
+on_event("moveto, die, recruit, recall", function()
         status_anim_update()
         
 end)
