@@ -993,10 +993,7 @@ void preferences_dialog::pre_show(window& window)
 	// is not the case for those in Advanced
 	//
 
-	gui2::bind_status_label<slider>(&window, "max_saves_slider", [](slider& s)->std::string {
-		return s.get_value() == INFINITE_AUTO_SAVES ? _("∞") : s.get_value_label().str();
-	});
-
+	gui2::bind_status_label<slider>(&window, "max_saves_slider");
 	gui2::bind_status_label<slider>(&window, "turbo_slider");
 
 	//gui2::bind_status_label<slider>(&window, "scaling_slider",   [](slider& s)->std::string {
