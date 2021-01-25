@@ -11,6 +11,8 @@
  ### Translations
    * Updated translations: Catalan, Czech, French, Portuguese (Brazil)
  ### Units
+   * update footpad sprite
+   * north-facing frames for dunefolk skirmisher, loyalist bowman, and troll whelp
  ### User interface
  ### WML Engine
  ### Miscellaneous and Bug Fixes
