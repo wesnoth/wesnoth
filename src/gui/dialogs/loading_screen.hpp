@@ -19,8 +19,10 @@
 #include "tstring.hpp"
 
 #include <atomic>
+#include <chrono>
 #include <future>
 #include <map>
+#include <optional>
 #include <vector>
 
 namespace cursor
@@ -99,13 +101,14 @@ private:
 
 	static loading_screen* singleton_;
 
-	int animation_counter_;
 	std::function<void()> load_func_;
 	std::future<void> worker_result_;
 	std::unique_ptr<cursor::setter> cursor_setter_;
 
 	label* progress_stage_label_;
 	drawing* animation_;
+
+	std::optional<decltype(std::chrono::steady_clock::now())> animation_start_;
 
 	std::atomic<loading_stage> current_stage_;
 

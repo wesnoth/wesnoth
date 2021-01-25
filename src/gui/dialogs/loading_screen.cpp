@@ -32,7 +32,6 @@
 #include "preferences/general.hpp"
 #include "video.hpp"
 
-#include <chrono>
 #include <cstdlib>
 #include <functional>
 
@@ -75,12 +74,12 @@ REGISTER_DIALOG(loading_screen)
 loading_screen* loading_screen::singleton_ = nullptr;
 
 loading_screen::loading_screen(std::function<void()> f)
-	: animation_counter_(0)
-	, load_func_(f)
+	: load_func_(f)
 	, worker_result_()
 	, cursor_setter_()
 	, progress_stage_label_(nullptr)
 	, animation_(nullptr)
+	, animation_start_()
 	, current_stage_(loading_stage::none)
 	, visible_stages_()
 	, current_visible_stage_()
@@ -160,7 +159,15 @@ void loading_screen::draw_callback()
 		progress_stage_label_->set_label(iter->second);
 	}
 
-	animation_->get_drawing_canvas().set_variable("tick", wfl::variant(animation_counter_++));
+	using namespace std::chrono;
+	const auto now = steady_clock::now();
+
+	// We only need to set the start time once;
+	if(!animation_start_.has_value()) {
+		animation_start_ = now;
+	}
+
+	animation_->get_drawing_canvas().set_variable("time", wfl::variant(duration_cast<milliseconds>(now - *animation_start_).count()));
 	animation_->set_is_dirty(true);
 }
 
