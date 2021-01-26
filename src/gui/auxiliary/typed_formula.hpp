@@ -25,6 +25,7 @@
 #include "tstring.hpp"
 
 #include <cassert>
+#include <optional>
 
 namespace gui2
 {
@@ -93,7 +94,7 @@ public:
 	/** Determine whether the class contains a formula. */
 	bool has_formula() const
 	{
-		return !formula_.empty();
+		return formula_.has_value();
 	}
 
 private:
@@ -123,9 +124,9 @@ private:
 	/**
 	 * Contains the formula for the variable.
 	 *
-	 * If the string is empty, there's no formula.
+	 * If without value, there's no formula.
 	 */
-	std::string formula_;
+	std::optional<std::string> formula_;
 
 	/** If there's no formula it contains the value. */
 	T value_;
@@ -154,10 +155,10 @@ operator()(const wfl::map_formula_callable& variables, wfl::function_symbol_tabl
 		return value_;
 	}
 
-	wfl::variant v = wfl::formula(formula_, functions).evaluate(variables);
+	wfl::variant v = wfl::formula(*formula_, functions).evaluate(variables);
 	const T& result = execute(v);
 
-	LOG_GUI_D << "Formula: execute '" << formula_ << "' result '" << result << "'.\n";
+	LOG_GUI_D << "Formula: execute '" << *formula_ << "' result '" << result << "'.\n";
 
 	return result;
 }
