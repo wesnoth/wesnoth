@@ -1276,7 +1276,7 @@ bool attack_type::check_abilities(const std::string& special) const
 
 bool attack_type::impl_check_abilities(const std::string& special, unit_const_ptr u, const map_location& u_loc, const_attack_ptr weapon, const_attack_ptr other_weapon, AFFECTS whom)
 {
-	static std::set<std::string> included_tags{"leadership", "resistance", "damage", "chance_to_hit", "berserk", "swarm", "drains", "heal_on_hit", "plague", "slow", "petrifies", "firststrike", "poison"};
+	static std::set<std::string> included_tags{"leadership", "resistance", "damage", "chance_to_hit", "berserk", "swarm", "drains", "heal_on_hit", "plague", "slow", "petrifies", "firststrike", "poison", "weapon_anim"};
 	unit_ability_list abil_list(u_loc);
 	if(included_tags.count(special) != 0){
 		abil_list.append((*u).get_abilities(special, u_loc));
