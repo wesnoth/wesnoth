@@ -38,43 +38,48 @@ class optional_reference
 public:
 	optional_reference() = default;
 
-	optional_reference(T& val)
-		: value_(val)
+	optional_reference(T& ref)
+		: opt_(ref)
 	{
 	}
 
-	optional_reference(std::nullopt_t val)
-		: value_(val)
+	optional_reference(std::nullopt_t)
+		: opt_()
 	{
 	}
 
 	T& value() const
 	{
 #ifndef __APPLE__
-		return value_.value().get();
+		return opt_.value().get();
 #else
-		if(value_) {
-			return value_->get();
+		if(opt_) {
+			return opt_->get();
 		} else {
 			throw std::bad_optional_access{};
 		}
 #endif
 	}
 
-	optional_reference<T>& operator=(T& new_val)
+	optional_reference<T>& operator=(T& new_ref)
 	{
-		value_ = new_val;
+		opt_ = new_ref;
 		return *this;
 	}
 
 	operator bool() const
 	{
-		return value_.has_value();
+		return opt_.has_value();
+	}
+
+	T* ptr() const
+	{
+		return &value();
 	}
 
 	T* operator->() const
 	{
-		return &value();
+		return ptr();
 	}
 
 	T& operator*() const
@@ -83,7 +88,7 @@ public:
 	}
 
 private:
-	std::optional<std::reference_wrapper<T>> value_;
+	std::optional<std::reference_wrapper<T>> opt_;
 };
 
 } // namespace utils

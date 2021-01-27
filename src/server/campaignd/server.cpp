@@ -1297,13 +1297,13 @@ ADDON_CHECK_STATUS server::validate_addon(const server::request& req, config*& e
 
 	std::vector<std::string> badnames;
 
-	if(multi_find_illegal_names(badnames, {&data.value(), &addlist.value(), &removelist.value()})) {
+	if(multi_find_illegal_names(badnames, {data.ptr(), addlist.ptr(), removelist.ptr()})) {
 		error_data = utils::join(badnames, "\n");
 		LOG_CS << "Validation error: invalid filenames in add-on pack (" << badnames.size() << " entries)\n";
 		return ADDON_CHECK_STATUS::ILLEGAL_FILENAME;
 	}
 
-	if(multi_find_case_conflicts(badnames, {&data.value(), &addlist.value(), &removelist.value()})) {
+	if(multi_find_case_conflicts(badnames, {data.ptr(), addlist.ptr(), removelist.ptr()})) {
 		error_data = utils::join(badnames, "\n");
 		LOG_CS << "Validation error: case conflicts in add-on pack (" << badnames.size() << " entries)\n";
 		return ADDON_CHECK_STATUS::FILENAME_CASE_CONFLICT;
