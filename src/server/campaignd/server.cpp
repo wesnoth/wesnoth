@@ -203,17 +203,9 @@ inline std::string index_from_full_pack_filename(std::string pack_fn)
 }
 
 /**
- * Returns a pointer to a WML child if it exists or nullptr otherwise.
- */
-const config* optional_wml_child(const config& cfg, const std::string& child_name)
-{
-	return cfg.has_child(child_name) ? &cfg.child(child_name) : nullptr;
-}
-
-/**
  * Returns @a false if @a cfg is null or empty.
  */
-bool have_wml(const config* cfg)
+bool have_wml(const utils::optional_reference<const config>& cfg)
 {
 	return cfg && !cfg->empty();
 }
@@ -1170,9 +1162,9 @@ ADDON_CHECK_STATUS server::validate_addon(const server::request& req, config*& e
 
 	const config& upload = req.cfg;
 
-	const config* data =  optional_wml_child(upload, "data");
-	const config* removelist = optional_wml_child(upload, "removelist");
-	const config* addlist = optional_wml_child(upload, "addlist");
+	const auto data = upload.optional_child("data");
+	const auto removelist = upload.optional_child("removelist");
+	const auto addlist = upload.optional_child("addlist");
 
 	const bool is_upload_pack = have_wml(removelist) || have_wml(addlist);
 
@@ -1305,13 +1297,13 @@ ADDON_CHECK_STATUS server::validate_addon(const server::request& req, config*& e
 
 	std::vector<std::string> badnames;
 
-	if(multi_find_illegal_names(badnames, {data, addlist, removelist})) {
+	if(multi_find_illegal_names(badnames, {&data.value(), &addlist.value(), &removelist.value()})) {
 		error_data = utils::join(badnames, "\n");
 		LOG_CS << "Validation error: invalid filenames in add-on pack (" << badnames.size() << " entries)\n";
 		return ADDON_CHECK_STATUS::ILLEGAL_FILENAME;
 	}
 
-	if(multi_find_case_conflicts(badnames, {data, addlist, removelist})) {
+	if(multi_find_case_conflicts(badnames, {&data.value(), &addlist.value(), &removelist.value()})) {
 		error_data = utils::join(badnames, "\n");
 		LOG_CS << "Validation error: case conflicts in add-on pack (" << badnames.size() << " entries)\n";
 		return ADDON_CHECK_STATUS::FILENAME_CASE_CONFLICT;
@@ -1346,9 +1338,9 @@ void server::handle_upload(const server::request& req)
 
 	LOG_CS << req << "Processing add-on '" << name << "'...\n";
 
-	const config* const full_pack    = optional_wml_child(upload, "data");
-	const config* const delta_remove = optional_wml_child(upload, "removelist");
-	const config* const delta_add    = optional_wml_child(upload, "addlist");
+	const auto const full_pack    = upload.optional_child("data");
+	const auto const delta_remove = upload.optional_child("removelist");
+	const auto const delta_add    = upload.optional_child("addlist");
 
 	const bool is_delta_upload = have_wml(delta_remove) || have_wml(delta_add);
 	const bool is_existing_upload = addon_ptr != nullptr;
