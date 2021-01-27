@@ -457,7 +457,7 @@ const config& config::child(config_key_type key, const std::string& parent) cons
 utils::optional_reference<config> config::optional_child(config_key_type key, int n)
 {
 	try {
-		throw_when_child_not_found{};
+		throw_when_child_not_found raii_helper{};
 		return child(key, n);
 	} catch(const error&) {
 		return std::nullopt;
@@ -467,7 +467,7 @@ utils::optional_reference<config> config::optional_child(config_key_type key, in
 utils::optional_reference<const config> config::optional_child(config_key_type key, int n) const
 {
 	try {
-		throw_when_child_not_found{};
+		throw_when_child_not_found raii_helper{};
 		return child(key, n);
 	} catch(const error&) {
 		return std::nullopt;
