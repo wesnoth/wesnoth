@@ -29,6 +29,7 @@
 
 #include "config_attribute_value.hpp"
 #include "exceptions.hpp"
+#include "utils/optional_reference.hpp"
 
 #include <climits>
 #include <ctime>
@@ -301,12 +302,44 @@ public:
 	const config & child_or_empty(config_key_type key) const;
 
 	/**
+	 * An object of this type will cause the following functions to throw a config::error instead
+	 * of returning a reference to the invalid config for the duration of its lfetime. If multiple
+	 * instances exist simultaneously, this behavior will persist until all objects are destroyed.
+	 *
+	 * - @c child
+	 * - @c find_child
+	 */
+	class throw_when_child_not_found
+	{
+	public:
+		friend class config;
+
+		throw_when_child_not_found()
+		{
+			instances++;
+		}
+
+		~throw_when_child_not_found()
+		{
+			instances--;
+		}
+
+		static constexpr bool do_throw()
+		{
+			return instances > 0;
+		}
+
+	private:
+		static inline unsigned instances = 0;
+	};
+
+	/**
 	 * Returns the nth child with the given @a key, or
 	 * a reference to an invalid config if there is none.
 	 * @note A negative @a n accesses from the end of the object.
 	 *       For instance, -1 is the index of the last child.
 	 */
-	config &child(config_key_type key, int n = 0);
+	config& child(config_key_type key, int n = 0);
 
 	/**
 	 * Returns the nth child with the given @a key, or
@@ -315,7 +348,14 @@ public:
 	 *       For instance, -1 is the index of the last child.
 	 */
 	const config& child(config_key_type key, int n = 0) const
-	{ return const_cast<config *>(this)->child(key, n); }
+	{ return const_cast<config*>(this)->child(key, n); }
+
+	/** Euivalent to @ref child, but returns an empty optional if the nth child was not found. */
+	utils::optional_reference<config> optional_child(config_key_type key, int n = 0);
+
+	/** Euivalent to @ref child, but returns an empty optional if the nth child was not found. */
+	utils::optional_reference<const config> optional_child(config_key_type key, int n = 0) const;
+
 	/**
 	 * Returns a mandatory child node.
 	 *
@@ -346,9 +386,7 @@ public:
 	 *
 	 * @returns                   The wanted child node.
 	 */
-	const config& child(
-		config_key_type key
-			, const std::string& parent) const;
+	const config& child(config_key_type key, const std::string& parent) const;
 
 	config& add_child(config_key_type key);
 	config& add_child(config_key_type key, const config& val);
