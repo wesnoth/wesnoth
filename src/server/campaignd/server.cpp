@@ -1338,9 +1338,9 @@ void server::handle_upload(const server::request& req)
 
 	LOG_CS << req << "Processing add-on '" << name << "'...\n";
 
-	const auto const full_pack    = upload.optional_child("data");
-	const auto const delta_remove = upload.optional_child("removelist");
-	const auto const delta_add    = upload.optional_child("addlist");
+	const auto full_pack    = upload.optional_child("data");
+	const auto delta_remove = upload.optional_child("removelist");
+	const auto delta_add    = upload.optional_child("addlist");
 
 	const bool is_delta_upload = have_wml(delta_remove) || have_wml(delta_add);
 	const bool is_existing_upload = addon_ptr != nullptr;
