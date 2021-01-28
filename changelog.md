@@ -17,7 +17,6 @@
  ### WML Engine
    * Extent 'special_id_active' and 'special_type_active' to abilities used like weapon.
    * abilities used like weapon can call [leading_anim] now.
-   * add a [weapon_anim] for call [leading_anim] in some cases
  ### Miscellaneous and Bug Fixes
 
 ## Version 1.15.9

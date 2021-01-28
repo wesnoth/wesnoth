@@ -657,7 +657,7 @@ void unit_attack(display * disp, game_board & board,
 
 	animator.add_animation(defender.shared_from_this(), defender_anim, def->get_location(), true, text, {255, 0, 0});
 
-	const std::vector<std::string> leader_tags{"leadership", "damage", "chance_to_hit", "berserk", "swarm", "drains", "heal_on_hit", "plague", "slow", "petrifies", "firststrike", "poison", "weapon_anim"};
+	const std::vector<std::string> leader_tags{"leadership", "damage", "chance_to_hit", "berserk", "swarm", "drains", "heal_on_hit", "plague", "slow", "petrifies", "firststrike", "poison"};
 	if(!leader_tags.empty()) {
 		for(auto& special : leader_tags) {
 			unit_ability_list abilities(att->get_location());
@@ -735,7 +735,7 @@ void reset_helpers(const unit *attacker,const unit *defender)
 	display* disp = display::get_singleton();
 	const unit_map& units = disp->get_units();
 	if(attacker) {
-		const std::vector<std::string> leader_tags{"leadership", "damage", "chance_to_hit", "berserk", "swarm", "drains", "heal_on_hit", "plague", "slow", "petrifies", "firststrike", "poison", "weapon_anim"};
+		const std::vector<std::string> leader_tags{"leadership", "damage", "chance_to_hit", "berserk", "swarm", "drains", "heal_on_hit", "plague", "slow", "petrifies", "firststrike", "poison"};
 		if(!leader_tags.empty()) {
 			for(auto& special : leader_tags) {
 				for(const unit_ability& ability : attacker->get_abilities(special)) {
@@ -750,7 +750,7 @@ void reset_helpers(const unit *attacker,const unit *defender)
 
 
 	if(defender) {
-		const std::vector<std::string> helper_tags{"resistance", "damage", "chance_to_hit", "berserk", "swarm", "drains", "heal_on_hit", "plague", "slow", "petrifies", "firststrike", "poison", "weapon_anim"};
+		const std::vector<std::string> helper_tags{"resistance", "damage", "chance_to_hit", "berserk", "swarm", "drains", "heal_on_hit", "plague", "slow", "petrifies", "firststrike", "poison"};
 		if(!helper_tags.empty()) {
 			for(auto& special : helper_tags) {
 				for(const unit_ability& ability : defender->get_abilities(special)) {

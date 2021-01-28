@@ -1219,7 +1219,7 @@ bool attack_type::get_special_ability_bool(const std::string& special, bool spec
 {
 	const unit_map& units = display::get_singleton()->get_units();
 	assert(display::get_singleton());
-	static std::set<std::string> included_tags{"leadership", "resistance", "damage", "chance_to_hit", "berserk", "swarm", "drains", "heal_on_hit", "plague", "slow", "petrifies", "firststrike", "poison", "weapon_anim"};
+	static std::set<std::string> included_tags{"leadership", "resistance", "damage", "chance_to_hit", "berserk", "swarm", "drains", "heal_on_hit", "plague", "slow", "petrifies", "firststrike", "poison"};
 	if(self_){
 		std::vector<special_match> special_tag_matches;
 		std::vector<special_match> special_id_matches;
