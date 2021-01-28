@@ -56,7 +56,9 @@ public:
 		if(opt_) {
 			return opt_->get();
 		} else {
-			throw std::bad_optional_access{};
+			// We're going to drop this codepath once we can use optional::value anyway, but just
+			// noting we want this function to ultimately throw std::bad_optional_access.
+			throw std::runtime_error("Optional reference has no value");
 		}
 #endif
 	}

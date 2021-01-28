@@ -324,7 +324,7 @@ public:
 			instances--;
 		}
 
-		static const bool do_throw()
+		static bool do_throw()
 		{
 			return instances > 0;
 		}
