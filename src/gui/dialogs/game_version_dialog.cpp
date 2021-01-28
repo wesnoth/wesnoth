@@ -102,7 +102,7 @@ void game_version::pre_show(window& window)
 	//
 
 	styled_widget& version_label = find_widget<styled_widget>(&window, "version", false);
-	i18n_syms["version"] = game_config::revision;
+	i18n_syms["version"] = game_config::revision + " " + game_config::build_arch();
 	version_label.set_label(VGETTEXT("Version $version", i18n_syms));
 
 	styled_widget& os_label = find_widget<styled_widget>(&window, "os", false);

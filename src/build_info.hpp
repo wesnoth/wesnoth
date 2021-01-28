@@ -47,6 +47,11 @@ struct optional_feature
 };
 
 /**
+ * Obtain the processor architecture for this build.
+ */
+std::string build_arch();
+
+/**
  * Return a localized features table.
  */
 std::vector<optional_feature> optional_features_table();

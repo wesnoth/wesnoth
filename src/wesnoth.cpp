@@ -1026,7 +1026,7 @@ int main(int argc, char** argv)
 	SDL_StartTextInput();
 
 	try {
-		std::cerr << "Battle for Wesnoth v" << game_config::revision << '\n';
+		std::cerr << "Battle for Wesnoth v" << game_config::revision  << " " << game_config::build_arch() << '\n';
 		const std::time_t t = std::time(nullptr);
 		std::cerr << "Started on " << ctime(&t) << "\n";
 
