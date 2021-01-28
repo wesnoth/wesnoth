@@ -117,17 +117,6 @@ private:
 	bool special_active(const config& special, AFFECTS whom, const std::string& tag_name,
 	                    bool include_backstab=true, const std::string& filter_self ="filter_self") const;
 
-	bool check_abilities(const std::string& special) const;
-
-	static bool impl_check_abilities(
-		const std::string& special,
-		unit_const_ptr u,
-		const map_location& u_loc,
-		const_attack_ptr weapon,
-		const_attack_ptr other_weapon,
-		AFFECTS whom
-	);
-
 	static bool special_active_impl(
 		const_attack_ptr self_attack,
 		const_attack_ptr other_attack,
