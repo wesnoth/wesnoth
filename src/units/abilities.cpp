@@ -1191,6 +1191,30 @@ static bool get_ability_children(std::vector<special_match>& tag_result,
 		return false;
 }
 
+bool unit::get_self_ability_bool(const config& special, const std::string& tag_name, const map_location& loc) const
+{
+	if (ability_active(tag_name, special, loc) &&
+		ability_affects_self(tag_name, special, loc))
+	{
+		return true;
+	}
+
+	return false;
+}
+
+bool unit::get_adj_ability_bool(const config& special, const std::string& tag_name, int dir, const map_location& loc, const unit& from) const
+{
+	const auto adjacent = get_adjacent_tiles(loc);
+	if (affects_side(special, side(), from.side()) &&
+		from.ability_active(tag_name, special, adjacent[dir]) &&
+		ability_affects_adjacent(tag_name,  special, dir, loc, from))
+	{
+		return true;
+	}
+
+	return false;
+}
+
 bool attack_type::get_special_ability_bool(const std::string& special, bool special_id, bool special_tags) const
 {
 	const unit_map& units = display::get_singleton()->get_units();
@@ -1201,6 +1225,24 @@ bool attack_type::get_special_ability_bool(const std::string& special, bool spec
 		std::vector<special_match> special_id_matches;
 		if(get_ability_children(special_tag_matches, special_id_matches, (*self_).abilities(), special, special_id , special_tags)){
 			return true;
+		}
+		if(special_tags){
+			for(const special_match& entry : special_tag_matches) {
+				if(included_tags.count(entry.tag_name) != 0){
+					if((*self_).get_self_ability_bool(*entry.cfg, entry.tag_name, self_loc_) && special_active(*entry.cfg, AFFECT_SELF, entry.tag_name, true, "filter_student")) {
+						return true;
+					}
+				}
+			}
+		}
+		if(special_id){
+			for(const special_match& entry : special_id_matches) {
+				if(included_tags.count(entry.tag_name) != 0){
+					if((*self_).get_self_ability_bool(*entry.cfg, entry.tag_name, self_loc_) && special_active(*entry.cfg, AFFECT_SELF, entry.tag_name, true, "filter_student")) {
+						return true;
+					}
+				}
+			}
 		}
 
 		const auto adjacent = get_adjacent_tiles(self_loc_);
@@ -1214,24 +1256,24 @@ bool attack_type::get_special_ability_bool(const std::string& special, bool spec
 			if(get_ability_children(special_tag_matches, special_id_matches, it->abilities(), special, special_id , special_tags)){
 				return true;
 			}
-		}
-		if(special_tags){
-			for(const special_match& entry : special_tag_matches) {
-				if(included_tags.count(entry.tag_name) != 0){
-					if((*self_).get_ability_bool(entry.tag_name, self_loc_) && special_active(*entry.cfg, AFFECT_SELF, entry.tag_name, true, "filter_student")) {
-						return true;
+			if(special_tags){
+				for(const special_match& entry : special_tag_matches) {
+					if(included_tags.count(entry.tag_name) != 0){
+						if((*self_).get_adj_ability_bool(*entry.cfg, entry.tag_name, i, self_loc_, *it) && special_active(*entry.cfg, AFFECT_SELF, entry.tag_name, true, "filter_student")) {
+							return true;
+						}
 					}
 				}
 			}
-		}
 		if(special_id){
 			for(const special_match& entry : special_id_matches) {
 				if(included_tags.count(entry.tag_name) != 0){
-					if((*self_).get_ability_bool(entry.tag_name, self_loc_) && special_active(*entry.cfg, AFFECT_SELF, entry.tag_name, true, "filter_student")) {
+					if((*self_).get_adj_ability_bool(*entry.cfg, entry.tag_name, i, self_loc_, *it) && special_active(*entry.cfg, AFFECT_SELF, entry.tag_name, true, "filter_student")) {
 						return true;
 					}
 				}
 			}
+		}
 		}
 	}
 
@@ -1240,6 +1282,25 @@ bool attack_type::get_special_ability_bool(const std::string& special, bool spec
 		std::vector<special_match> special_id_matches;
 		if(get_ability_children(special_tag_matches, special_id_matches, (*other_).abilities(), special, special_id , special_tags)){
 			return true;
+		}
+		if(special_tags){
+			for(const special_match& entry : special_tag_matches) {
+				if(included_tags.count(entry.tag_name) != 0){
+					if((*other_).get_self_ability_bool(*entry.cfg, entry.tag_name, other_loc_) && special_active_impl(other_attack_, shared_from_this(), *entry.cfg, AFFECT_OTHER, entry.tag_name, true, "filter_student")) {
+						return true;
+					}
+				}
+			}
+		}
+
+		if(special_id){
+			for(const special_match& entry : special_id_matches) {
+				if(included_tags.count(entry.tag_name) != 0){
+					if((*other_).get_self_ability_bool(*entry.cfg, entry.tag_name, other_loc_) && special_active_impl(other_attack_, shared_from_this(), *entry.cfg, AFFECT_OTHER, entry.tag_name, true, "filter_student")) {
+						return true;
+					}
+				}
+			}
 		}
 
 		const auto adjacent = get_adjacent_tiles(other_loc_);
@@ -1253,23 +1314,22 @@ bool attack_type::get_special_ability_bool(const std::string& special, bool spec
 			if(get_ability_children(special_tag_matches, special_id_matches, it->abilities(), special, special_id , special_tags)){
 				return true;
 			}
-		}
-
-		if(special_tags){
-			for(const special_match& entry : special_tag_matches) {
-				if(included_tags.count(entry.tag_name) != 0){
-					if((*other_).get_ability_bool(entry.tag_name, other_loc_) && special_active_impl(other_attack_, shared_from_this(), *entry.cfg, AFFECT_OTHER, entry.tag_name, true, "filter_student")) {
-						return true;
+			if(special_tags){
+				for(const special_match& entry : special_tag_matches) {
+					if(included_tags.count(entry.tag_name) != 0){
+						if((*other_).get_adj_ability_bool(*entry.cfg, entry.tag_name, i, other_loc_, *it) && special_active_impl(other_attack_, shared_from_this(), *entry.cfg, AFFECT_OTHER, entry.tag_name, true, "filter_student")) {
+							return true;
+						}
 					}
 				}
 			}
-		}
 
-		if(special_id){
-			for(const special_match& entry : special_id_matches) {
-				if(included_tags.count(entry.tag_name) != 0){
-					if((*other_).get_ability_bool(entry.tag_name, other_loc_) && special_active_impl(other_attack_, shared_from_this(), *entry.cfg, AFFECT_OTHER, entry.tag_name, true, "filter_student")) {
-						return true;
+			if(special_id){
+				for(const special_match& entry : special_id_matches) {
+					if(included_tags.count(entry.tag_name) != 0){
+						if((*other_).get_adj_ability_bool(*entry.cfg, entry.tag_name, i, other_loc_, *it) && special_active_impl(other_attack_, shared_from_this(), *entry.cfg, AFFECT_OTHER, entry.tag_name, true, "filter_student")) {
+							return true;
+						}
 					}
 				}
 			}

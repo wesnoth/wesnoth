@@ -1649,6 +1649,10 @@ public:
 		return get_ability_bool(tag_name, loc_);
 	}
 
+	bool get_self_ability_bool(const config& special, const std::string& tag_name, const map_location& loc) const;
+
+	bool get_adj_ability_bool(const config& special, const std::string& tag_name, int dir, const map_location& loc, const unit& from) const;
+
 	/**
 	 * Gets the unit's active abilities of a particular type if it were on a specified location.
 	 * @param tag_name The type of ability to check for
