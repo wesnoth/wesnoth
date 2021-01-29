@@ -1653,9 +1653,9 @@ public:
 
 	bool get_adj_ability_bool(const config& special, const std::string& tag_name, int dir, const map_location& loc, const unit& from) const;
 
-	bool get_self_ability_bool_weapon(const config& special, const std::string& tag_name, const map_location& loc, const_attack_ptr weapon=nullptr, const_attack_ptr opp_weapon=nullptr) const;
+	bool get_self_ability_bool_weapon(const config& special, const std::string& tag_name, const map_location& loc, const_attack_ptr weapon = nullptr, const_attack_ptr opp_weapon = nullptr) const;
 
-	bool get_adj_ability_bool_weapon(const config& special, const std::string& tag_name, int dir, const map_location& loc, const unit& from, const_attack_ptr weapon=nullptr, const_attack_ptr opp_weapon=nullptr) const;
+	bool get_adj_ability_bool_weapon(const config& special, const std::string& tag_name, int dir, const map_location& loc, const unit& from, const_attack_ptr weapon=nullptr, const_attack_ptr opp_weapon = nullptr) const;
 
 	/**
 	 * Gets the unit's active abilities of a particular type if it were on a specified location.
