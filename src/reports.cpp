@@ -402,32 +402,35 @@ static config unit_abilities(const unit* u, const map_location& loc)
 	config res;
 
 	boost::dynamic_bitset<> active;
-	const std::vector<std::tuple<std::string, t_string,t_string,t_string>> &abilities = u->ability_tooltips(active, loc);
+	const auto abilities = u->ability_tooltips(active, loc);
+
 	const std::size_t abilities_size = abilities.size();
-	for ( std::size_t i = 0; i != abilities_size; ++i )
-	{
+	for(std::size_t i = 0; i != abilities_size; ++i) {
 		// Aliases for readability:
-		const std::string& id        = std::get<0>(abilities[i]);
-		const std::string& base_name = std::get<1>(abilities[i]).base_str();
-		const t_string& display_name = std::get<2>(abilities[i]);
-		const t_string& description  = std::get<3>(abilities[i]);
+		const auto& [id, base_name, display_name, description] = abilities[i];
 
 		std::ostringstream str, tooltip;
 
-		if ( active[i] )
+		if(active[i]) {
 			str << display_name;
-		else
+		} else {
 			str << span_color(font::inactive_ability_color) << display_name << naps;
-		if ( i + 1 != abilities_size )
+		}
+
+		if(i + 1 != abilities_size) {
 			str << ", ";
+		}
 
 		tooltip << _("Ability: ") << "<b>" << display_name << "</b>";
-		if ( !active[i] )
+		if(!active[i]) {
 			tooltip << "<i>" << _(" (inactive)") << "</i>";
+		}
+
 		tooltip << '\n' << description;
 
-		add_text(res, str.str(), tooltip.str(), "ability_" + id + base_name);
+		add_text(res, str.str(), tooltip.str(), "ability_" + id + base_name.base_str());
 	}
+
 	return res;
 }
 REPORT_GENERATOR(unit_abilities, rc)

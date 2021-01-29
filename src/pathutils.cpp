@@ -153,34 +153,34 @@ namespace { // Helpers for get_tiles_radius() without a radius filter.
 	{
 		// This should help optimize the insertions (since we will be
 		// processing hexes in their lexicographical order).
-		std::set<map_location>::const_iterator insert_hint = result.begin();
 		// Note: This hint will get incremented later, which is the only
 		// reason we require result to be initially non-empty.
+		auto insert_hint = result.begin();
 
-		for (const column_ranges::value_type & column : collected_tiles)
-		{
+		for(const auto& [column, range] : collected_tiles) {
 			// For this loop, the order within the set is crucial; we need
 			// rows.first to be non-decreasing with each iteration.
 			// Loop invariant: within this column, all rows before next_row
 			// have been processed and either added to result or skipped.
 			// There is no going back (nor a need to).
 			int next_row = row_begin;
-			for (const row_range &rows : column.second)
-			{
+
+			for(const auto& [row_index, num_rows] : range) {
 				// Skipping some rows?
-				if ( next_row < rows.first )
-					next_row = rows.first;
+				if(next_row < row_index) {
+					next_row = row_index;
+				}
 
 				// Add this range of hexes.
-				const int end = std::min(rows.first + static_cast<int>(rows.second),
-				                         row_end);
-				for ( ; next_row < end; ++next_row )
-					insert_hint = result.insert(++insert_hint,
-						              map_location(column.first, next_row));
+				const int end = std::min(row_index + static_cast<int>(num_rows), row_end);
+				for(; next_row < end; ++next_row) {
+					insert_hint = result.insert(++insert_hint, map_location(column, next_row));
+				}
 
 				// Have we reached the end of the board?
-				if ( next_row >= row_end )
+				if(next_row >= row_end) {
 					break;
+				}
 			}
 		}
 	}

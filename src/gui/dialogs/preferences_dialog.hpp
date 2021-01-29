@@ -23,8 +23,6 @@
 #include "preferences/advanced.hpp"
 #include "preferences/game.hpp"
 
-#include <boost/dynamic_bitset.hpp>
-
 // This file is not named preferences.hpp in order -I conflicts with
 // src/preferences.hpp.
 
