@@ -1215,6 +1215,49 @@ bool unit::get_adj_ability_bool(const config& special, const std::string& tag_na
 	return false;
 }
 
+bool attack_type::check_self_abilities(const config& cfg, const std::string& special) const
+{
+	static std::set<std::string> included_tags{"damage", "chance_to_hit", "berserk", "swarm", "drains", "heal_on_hit", "plague", "slow", "petrifies", "firststrike", "poison"};
+	if(special == "leadership"){
+		if((*self_).get_self_ability_bool_weapon(cfg, special, self_loc_, shared_from_this(), other_attack_)) {
+			return true;
+		}
+	}
+	if(special == "resistance"){
+		if((*self_).get_self_ability_bool_weapon(cfg, special, self_loc_, other_attack_, shared_from_this())) {
+			return true;
+		}
+	}
+	if(included_tags.count(special) != 0){
+		if((*self_).get_self_ability_bool(cfg, special, self_loc_) && special_active(cfg, AFFECT_SELF, special, true, "filter_student")) {
+			return true;
+		}
+	}
+	return false;
+
+}
+
+bool attack_type::check_adj_abilities(const config& cfg, const std::string& special, int dir, const unit& from) const
+{
+	static std::set<std::string> included_tags{"damage", "chance_to_hit", "berserk", "swarm", "drains", "heal_on_hit", "plague", "slow", "petrifies", "firststrike", "poison"};
+	if(special == "leadership"){
+		if((*self_).get_adj_ability_bool_weapon(cfg, special, dir, self_loc_, from, shared_from_this(), other_attack_)) {
+			return true;
+		}
+	}
+	if(special == "resistance"){
+		if((*self_).get_adj_ability_bool_weapon(cfg, special, dir, self_loc_, from, other_attack_, shared_from_this())) {
+			return true;
+		}
+	}
+	if(included_tags.count(special) != 0){
+		if((*self_).get_adj_ability_bool(cfg, special, dir, self_loc_, from) && special_active(cfg, AFFECT_SELF, special, true, "filter_student")) {
+			return true;
+		}
+	}
+	return false;
+}
+
 bool attack_type::get_special_ability_bool(const std::string& special, bool special_id, bool special_tags) const
 {
 	const unit_map& units = display::get_singleton()->get_units();
@@ -1228,19 +1271,15 @@ bool attack_type::get_special_ability_bool(const std::string& special, bool spec
 		}
 		if(special_tags){
 			for(const special_match& entry : special_tag_matches) {
-				if(included_tags.count(entry.tag_name) != 0){
-					if((*self_).get_self_ability_bool(*entry.cfg, entry.tag_name, self_loc_) && special_active(*entry.cfg, AFFECT_SELF, entry.tag_name, true, "filter_student")) {
-						return true;
-					}
+				if(check_self_abilities(*entry.cfg, entry.tag_name)){
+					return true;
 				}
 			}
 		}
 		if(special_id){
 			for(const special_match& entry : special_id_matches) {
-				if(included_tags.count(entry.tag_name) != 0){
-					if((*self_).get_self_ability_bool(*entry.cfg, entry.tag_name, self_loc_) && special_active(*entry.cfg, AFFECT_SELF, entry.tag_name, true, "filter_student")) {
-						return true;
-					}
+				if(check_self_abilities(*entry.cfg, entry.tag_name)){
+					return true;
 				}
 			}
 		}
@@ -1258,22 +1297,18 @@ bool attack_type::get_special_ability_bool(const std::string& special, bool spec
 			}
 			if(special_tags){
 				for(const special_match& entry : special_tag_matches) {
-					if(included_tags.count(entry.tag_name) != 0){
-						if((*self_).get_adj_ability_bool(*entry.cfg, entry.tag_name, i, self_loc_, *it) && special_active(*entry.cfg, AFFECT_SELF, entry.tag_name, true, "filter_student")) {
-							return true;
-						}
-					}
-				}
-			}
-		if(special_id){
-			for(const special_match& entry : special_id_matches) {
-				if(included_tags.count(entry.tag_name) != 0){
-					if((*self_).get_adj_ability_bool(*entry.cfg, entry.tag_name, i, self_loc_, *it) && special_active(*entry.cfg, AFFECT_SELF, entry.tag_name, true, "filter_student")) {
+					if(check_adj_abilities(*entry.cfg, entry.tag_name, i , *it)){
 						return true;
 					}
 				}
 			}
-		}
+			if(special_id){
+				for(const special_match& entry : special_id_matches) {
+					if(check_adj_abilities(*entry.cfg, entry.tag_name, i , *it)){
+						return true;
+					}
+				}
+			}
 		}
 	}
 
