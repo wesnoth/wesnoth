@@ -1215,6 +1215,34 @@ bool unit::get_adj_ability_bool(const config& special, const std::string& tag_na
 	return false;
 }
 
+bool unit::get_self_ability_bool_weapon(const config& special, const std::string& tag_name, const map_location& loc, const_attack_ptr weapon, const_attack_ptr opp_weapon) const
+{
+	if (ability_active(tag_name, special, loc) &&
+		ability_affects_self(tag_name, special, loc) &&
+		ability_affects_weapon(special, weapon, false) &&
+		ability_affects_weapon(special, opp_weapon, true))
+	{
+		return true;
+	}
+
+	return false;
+}
+
+bool unit::get_adj_ability_bool_weapon(const config& special, const std::string& tag_name, int dir, const map_location& loc, const unit& from, const_attack_ptr weapon, const_attack_ptr opp_weapon) const
+{
+	const auto adjacent = get_adjacent_tiles(loc);
+	if (affects_side(special, side(), from.side()) &&
+		from.ability_active(tag_name, special, adjacent[dir]) &&
+		ability_affects_adjacent(tag_name,  special, dir, loc, from) &&
+		ability_affects_weapon(special, weapon, false) &&
+		ability_affects_weapon(special, opp_weapon, true))
+	{
+		return true;
+	}
+
+	return false;
+}
+
 bool attack_type::check_self_abilities(const config& cfg, const std::string& special) const
 {
 	static std::set<std::string> included_tags{"damage", "chance_to_hit", "berserk", "swarm", "drains", "heal_on_hit", "plague", "slow", "petrifies", "firststrike", "poison"};
