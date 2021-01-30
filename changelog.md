@@ -11,8 +11,8 @@
    * Added help topics for the scenario editor’s tools
    * Added documentation about the files written by the editor
  ### Translations
-   * Updated translations: Catalan, Chinese (Traditional), French, Portuguese (Brazil),
-     Spanish
+   * Updated translations: British English, Catalan, Chinese (Traditional), French,
+     Portuguese (Brazil), Spanish
  ### Miscellaneous and Bug Fixes
    * Added support to wmlxgettext for double-quote characters in translatable raw strings
 
