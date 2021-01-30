@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2021-01-16 14:18 UTC\n"
-"PO-Revision-Date: 2020-11-21 20:42+1100\n"
+"PO-Revision-Date: 2021-01-26 10:46+1100\n"
 "Last-Translator: Wedge009 <wedge009@wedge009.net>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
 "EnglishGBTranslation>\n"
@@ -5900,13 +5900,6 @@ msgstr "Frost Stoat"
 
 #. [unit_type]: id=Frost Stoat, race=monster
 #: data/core/units/monsters/Frost_Stoat.cfg:35
-#, fuzzy
-#| msgid ""
-#| "Giant Stoats are a devious rodent predominantly found in the frozen parts "
-#| "of the Northlands, although they can survive anywhere. They generally "
-#| "scavenge and hunt smaller animals, but are territorial and the young "
-#| "adults have been known to attack larger intruders, including humans and "
-#| "orcs."
 msgid ""
 "Frost Stoats are a devious rodent predominantly found in the frozen parts of "
 "the Northlands, although they can survive anywhere. Their most distinctive "
@@ -5915,10 +5908,12 @@ msgid ""
 "animals, but are quite territorial and the young adults have been known to "
 "attack larger intruders, including humans and orcs."
 msgstr ""
-"Giant Stoats are a devious rodent predominantly found in the frozen parts of "
-"the Northlands, although they can survive anywhere. They generally scavenge "
-"and hunt smaller animals, but are territorial and the young adults have been "
-"known to attack larger intruders, including humans and orcs."
+"Frost Stoats are a devious rodent predominantly found in the frozen parts of "
+"the Northlands, although they can survive anywhere. Their most distinctive "
+"feature is their icy-cold front claws, which is unlike anything found in "
+"other wild animals. These stoats generally scavenge refuse or hunt smaller "
+"animals, but are quite territorial and the young adults have been known to "
+"attack larger intruders, including humans and orcs."
 
 #. [attack]: type=cold
 #: data/core/units/monsters/Frost_Stoat.cfg:104
@@ -5927,15 +5922,13 @@ msgstr "ice claw"
 
 #. [unit_type]: id=Giant Stoat
 #: data/core/units/monsters/Frost_Stoat.cfg:170
-#, fuzzy
-#| msgid "Giant Rat"
 msgid "Giant Stoat"
-msgstr "Giant Rat"
+msgstr "Giant Stoat"
 
 #. [unit_type]: id=Giant Stoat
 #: data/core/units/monsters/Frost_Stoat.cfg:171
 msgid "Giant Stoats are obsolete, use Frost Stoat."
-msgstr ""
+msgstr "Giant Stoats are obsolete, use Frost Stoat."
 
 #. [unit_type]: id=Giant Mudcrawler, race=monster
 #: data/core/units/monsters/Giant_Mudcrawler.cfg:4
@@ -6154,7 +6147,7 @@ msgstr "Roc"
 #. [unit_type]: id=Horned Scarab, race=monster
 #: data/core/units/monsters/Scarab.cfg:4
 msgid "Horned Scarab"
-msgstr ""
+msgstr "Horned Scarab"
 
 #. [special_note]
 #: data/core/units/monsters/Scarab.cfg:21
@@ -6162,6 +6155,8 @@ msgid ""
 "This unit can burrow under loose dirt, sand, or leaves, concealing itself if "
 "it does not change location."
 msgstr ""
+"This unit can burrow under loose dirt, sand, or leaves, concealing itself if "
+"it does not change location."
 
 #. [unit_type]: id=Horned Scarab, race=monster
 #: data/core/units/monsters/Scarab.cfg:25
@@ -6171,13 +6166,15 @@ msgid ""
 "of attack is the large, sharp horn growing from their head. Because of their "
 "large size, armor, and horn, they cannot fly."
 msgstr ""
+"Horned Scarabs are large, rugged insects that can grow to be quite large, "
+"making them a threat when they decide to be aggressive. Their primary means "
+"of attack is the large, sharp horn growing from their head. Because of their "
+"large size, armour, and horn, they cannot fly."
 
 #. [attack]: type=pierce
 #: data/core/units/monsters/Scarab.cfg:53
-#, fuzzy
-#| msgid "thorns"
 msgid "horn"
-msgstr "thorns"
+msgstr "horn"
 
 #. [unit_type]: id=Sea Serpent, race=monster
 #: data/core/units/monsters/Sea_Serpent.cfg:4
@@ -6330,6 +6327,16 @@ msgid ""
 "behavior may be an adaptation to the harsh desert environments they often "
 "inhabit."
 msgstr ""
+"Wyverns are large reptiles that resemble dragons, but are not the "
+"intelligent, magical creatures. However, the fact that they are just wild "
+"beasts should not cause any traveller who encounters one to dismiss the "
+"threat, for they are fast and fierce when threatened or hungry.\n"
+"\n"
+"Wyverns are social creatures, usually travelling in pairs or small groups. "
+"Their hunting patterns and diet are difficult to discern, for they often "
+"work with smaller animals that would appear to be potential prey. That odd "
+"behaviour may be an adaptation to the harsh desert environments they often "
+"inhabit."
 
 #. [attack]: type=impact
 #: data/core/units/monsters/Wild_Wyvern.cfg:86
@@ -6394,17 +6401,6 @@ msgstr "Naga Dirkfang"
 
 #. [unit_type]: id=Naga Dirkfang, race=naga
 #: data/core/units/nagas/Dirkfang.cfg:18
-#, fuzzy
-#| msgid ""
-#| "In contrast to the heavily melee-focused style of their northern "
-#| "brethren, young Naga of the southern waters prefer to soften their prey "
-#| "from afar before closing in. The small chakri they throw can be carried "
-#| "on the wrist or on a belt without causing hindrance.  While any final "
-#| "kill under water must usually be done at close range, the mixed combat "
-#| "style often allows them to live long enough to learn and improve. "
-#| "Sometimes viewed as cowardly by the northern Naga warriors, these "
-#| "fighters are nonetheless effective when it comes time to engage in "
-#| "warfare."
 msgid ""
 "In contrast to the heavily melee-focused style of their northern brethren, "
 "young Naga of the southern waters prefer to soften their prey from afar "
@@ -6508,19 +6504,6 @@ msgstr "Naga Ophidian"
 
 #. [unit_type]: id=Naga Ophidian, race=naga
 #: data/core/units/nagas/Ophidian.cfg:18
-#, fuzzy
-#| msgid ""
-#| "Experienced warriors of the Southern Naga often find work as mercenaries, "
-#| "usually hired by neighboring Dunefolk to control key waterways near the "
-#| "coastline.  Due to their constant confrontations with enemy horsemen, "
-#| "Ophidians have retired the ringed blades of their youth and picked up the "
-#| "piercing bow.  Though generally amicable with their wealthy employers, "
-#| "this friendliness should not be mistaken for loyalty, for the Ophidian "
-#| "are known for readily switching between rival city-state factions at the "
-#| "start of each shipping season, when demand for water-based protection is "
-#| "the highest.  As a group, these nagas encourage a healthy amount of "
-#| "competition among the surface factions, ensuring their services are "
-#| "valued by one tribe or another."
 msgid ""
 "Experienced warriors of the Southern Naga often find work as mercenaries, "
 "usually hired by neighboring Dunefolk to control key waterways near the "
@@ -6561,12 +6544,6 @@ msgstr "Naga Ringcaster"
 
 #. [unit_type]: id=Naga Ringcaster, race=naga
 #: data/core/units/nagas/Ringcaster.cfg:17
-#, fuzzy
-#| msgid ""
-#| "The chakram, a greater blade ring than the chakri, is the signature "
-#| "weapon of the southern Naga and their renowned Ringcasters.  Well "
-#| "balanced chakrams are useful for throwing, but the rejected blades make a "
-#| "good fist-load weapon, similar to a sharp-bladed tekko or knuckleduster."
 msgid ""
 "The chakram, a greater blade ring than the chakri, is the signature weapon "
 "of the southern Naga and their renowned Ringcasters. Well balanced chakrams "
@@ -6574,7 +6551,7 @@ msgid ""
 "weapon, similar to a sharp-bladed tekko or knuckleduster."
 msgstr ""
 "The chakram, a greater blade ring than the chakri, is the signature weapon "
-"of the southern Naga and their renowned Ringcasters. Well-balanced chakrams "
+"of the southern Naga and their renowned Ringcasters. Well balanced chakrams "
 "are useful for throwing, but the rejected blades make a good fist-load "
 "weapon, similar to a sharp-bladed tekko or knuckleduster."
 
@@ -7474,10 +7451,8 @@ msgstr "Dwarf"
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:146
 #: data/core/units/undead/Corpse_Walking.cfg:145
-#, fuzzy
-#| msgid "wc_variation^Bat"
 msgid "wc_variation^Falcon"
-msgstr "Bat"
+msgstr "Falcon"
 
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:180
@@ -7500,10 +7475,8 @@ msgstr "Gryphon"
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:223
 #: data/core/units/undead/Corpse_Walking.cfg:222
-#, fuzzy
-#| msgid "wc_variation^Bat"
 msgid "wc_variation^Rat"
-msgstr "Bat"
+msgstr "Rat"
 
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:240
@@ -7520,10 +7493,8 @@ msgstr "Swimmer"
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:259
 #: data/core/units/undead/Corpse_Walking.cfg:258
-#, fuzzy
-#| msgid "wc_variation^Spider"
 msgid "wc_variation^Serpent"
-msgstr "Swimmer"
+msgstr "Serpent"
 
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:276
@@ -7540,16 +7511,14 @@ msgstr "Troll"
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:303
 #: data/core/units/undead/Corpse_Walking.cfg:302
-#, fuzzy
-#| msgid "wc_variation^Wose"
 msgid "wc_variation^Tusker"
-msgstr "Wose"
+msgstr "Tusker"
 
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:311
 #: data/core/units/undead/Corpse_Walking.cfg:310
 msgid "tusk"
-msgstr ""
+msgstr "tusk"
 
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:316

@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2021-01-16 17:18+0300\n"
-"PO-Revision-Date: 2020-11-21 20:18+1100\n"
+"PO-Revision-Date: 2021-01-26 10:35+1100\n"
 "Last-Translator: Wedge009 <wedge009@wedge009.net>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
 "EnglishGBTranslation>\n"
@@ -2344,10 +2344,8 @@ msgstr "Cancel"
 
 #. [label]
 #: data/gui/window/addon_license_prompt.cfg:39
-#, fuzzy
-#| msgid "addons_order^Type ($order)"
 msgid "addons_server^Terms"
-msgstr "Type ($order)"
+msgstr "Terms"
 
 #. [label]: id=message
 #: data/gui/window/addon_license_prompt.cfg:54
@@ -2355,11 +2353,13 @@ msgid ""
 "Before uploading content to this server, you must accept the following "
 "distribution terms by choosing “I Agree”."
 msgstr ""
+"Before uploading content to this server, you must accept the following "
+"distribution terms by choosing “I Agree”."
 
 #. [button]: id=ok
 #: data/gui/window/addon_license_prompt.cfg:104
 msgid "I Agree"
-msgstr ""
+msgstr "I Agree"
 
 #. [label]: id=byline
 #: data/gui/window/addon_manager.cfg:84
@@ -2558,10 +2558,8 @@ msgstr "Sort by full campaign name in alphabetical order"
 
 #. [toggle_button]: id=sort_time
 #: data/gui/window/campaign_dialog.cfg:230
-#, fuzzy
-#| msgid "Time limit:"
 msgid "Timeline"
-msgstr "Time limit:"
+msgstr "Timeline"
 
 #. [toggle_button]: id=sort_time
 #: data/gui/window/campaign_dialog.cfg:231
@@ -2578,34 +2576,32 @@ msgstr "Modifications:"
 #. [label]
 #: data/gui/window/campaign_dialog.cfg:306
 msgid "Combat:"
-msgstr ""
+msgstr "Combat:"
 
 #. [option]
 #: data/gui/window/campaign_dialog.cfg:321
-#, fuzzy
-#| msgid "Default"
 msgid "Default RNG"
-msgstr "Default"
+msgstr "Default RNG"
 
 #. [option]
 #: data/gui/window/campaign_dialog.cfg:322
 msgid "Reloading alters future combat outcomes"
-msgstr ""
+msgstr "Reloading alters future combat outcomes"
 
 #. [option]
 #: data/gui/window/campaign_dialog.cfg:325
 msgid "Predictable RNG"
-msgstr ""
+msgstr "Predictable RNG"
 
 #. [option]
 #: data/gui/window/campaign_dialog.cfg:326
 msgid "Combat outcomes remain constant when reloading"
-msgstr ""
+msgstr "Combat outcomes remain constant when reloading"
 
 #. [option]
 #: data/gui/window/campaign_dialog.cfg:329
 msgid "Biased RNG (experimental)"
-msgstr ""
+msgstr "Biased RNG (experimental)"
 
 #. [option]
 #: data/gui/window/campaign_dialog.cfg:330
@@ -2613,30 +2609,28 @@ msgid ""
 "Combat outcomes are more in line with displayed probabilities and unaffected "
 "by reloading"
 msgstr ""
+"Combat outcomes are more in line with displayed probabilities and unaffected "
+"by reloading"
 
 #. [label]
 #: data/gui/window/campaign_dialog.cfg:345
-#, fuzzy
-#| msgid "Difficulty: "
 msgid "Difficulty:"
-msgstr "Difficulty: "
+msgstr "Difficulty:"
 
 #. [option]
 #: data/gui/window/campaign_dialog.cfg:359
 msgid "Easy"
-msgstr ""
+msgstr "Easy"
 
 #. [option]
 #: data/gui/window/campaign_dialog.cfg:362
-#, fuzzy
-#| msgid "Normal Rug"
 msgid "Normal"
-msgstr "Normal Rug"
+msgstr "Normal"
 
 #. [option]
 #: data/gui/window/campaign_dialog.cfg:365
 msgid "Hard"
-msgstr ""
+msgstr "Hard"
 
 #. [label]
 #: data/gui/window/campaign_dialog.cfg:422
@@ -3744,7 +3738,7 @@ msgstr "Vacant slots"
 #. [toggle_button]: id=filter_vacant_slots
 #: data/gui/window/lobby_main.cfg:338
 msgid "Only show games with vacant slots"
-msgstr ""
+msgstr "Only show games with vacant slots"
 
 #. [widget]: id=tab_label
 #. [toggle_button]: id=filter_with_friends
@@ -3756,19 +3750,17 @@ msgstr "Friends"
 #. [toggle_button]: id=filter_with_friends
 #: data/gui/window/lobby_main.cfg:351
 msgid "Only show games with friends"
-msgstr ""
+msgstr "Only show games with friends"
 
 #. [toggle_button]: id=filter_with_ignored
 #: data/gui/window/lobby_main.cfg:363
-#, fuzzy
-#| msgid "Connected Players"
 msgid "Blocked players"
-msgstr "Connected Players"
+msgstr "Blocked players"
 
 #. [toggle_button]: id=filter_with_ignored
 #: data/gui/window/lobby_main.cfg:364
 msgid "Show games that include players you have blocked"
-msgstr ""
+msgstr "Show games that include players you have blocked"
 
 #. [toggle_button]: id=filter_invert
 #: data/gui/window/lobby_main.cfg:376
@@ -5629,7 +5621,7 @@ msgstr "Root"
 
 #: src/desktop/version.cpp:113
 msgid "cpu_archictecture^<unknown>"
-msgstr ""
+msgstr "<unknown>"
 
 #: src/desktop/version.cpp:327
 msgid "operating_system^<unknown>"
@@ -5835,16 +5827,16 @@ msgid "No grid defined."
 msgstr "No grid defined."
 
 #: src/gui/core/window_builder.cpp:433
-#, fuzzy
-#| msgid "A row must have a column."
 msgid "Grid '$grid' row $row must have at least one column."
-msgstr "A row must have a column."
+msgstr "Grid '$grid' row $row must have at least one column."
 
 #: src/gui/core/window_builder.cpp:445
 msgid ""
 "Grid '$grid' row $row has a differing number of columns ($found found, "
 "$expected expected)"
 msgstr ""
+"Grid '$grid' row $row has a differing number of columns ($found found, "
+"$expected expected)"
 
 #: src/gui/dialogs/addon/manager.cpp:194
 msgid "addons_view^All Add-ons"
@@ -6934,10 +6926,8 @@ msgid "Opening links is not supported, contact your packager"
 msgstr "Opening links is not supported, contact your packager"
 
 #: src/gui/widgets/label.cpp:143
-#, fuzzy
-#| msgid "Copied link!"
 msgid "Open link?"
-msgstr "Copied link!"
+msgstr "Open link?"
 
 #: src/gui/widgets/label.cpp:174
 msgid "Copied link!"
