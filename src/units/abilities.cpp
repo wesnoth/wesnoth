@@ -1251,11 +1251,6 @@ bool attack_type::check_self_abilities(const config& cfg, const std::string& spe
 			return true;
 		}
 	}
-	if(special == "resistance"){
-		if((*self_).get_self_ability_bool_weapon(cfg, special, self_loc_, other_attack_, shared_from_this())) {
-			return true;
-		}
-	}
 	if(included_tags.count(special) != 0){
 		if((*self_).get_self_ability_bool(cfg, special, self_loc_) && special_active(cfg, AFFECT_SELF, special, true, "filter_student")) {
 			return true;
@@ -1273,11 +1268,6 @@ bool attack_type::check_adj_abilities(const config& cfg, const std::string& spec
 			return true;
 		}
 	}
-	if(special == "resistance"){
-		if((*self_).get_adj_ability_bool_weapon(cfg, special, dir, self_loc_, from, other_attack_, shared_from_this())) {
-			return true;
-		}
-	}
 	if(included_tags.count(special) != 0){
 		if((*self_).get_adj_ability_bool(cfg, special, dir, self_loc_, from) && special_active(cfg, AFFECT_SELF, special, true, "filter_student")) {
 			return true;
@@ -1290,7 +1280,7 @@ bool attack_type::get_special_ability_bool(const std::string& special, bool spec
 {
 	const unit_map& units = display::get_singleton()->get_units();
 	assert(display::get_singleton());
-	static std::set<std::string> included_tags{"leadership", "resistance", "damage", "chance_to_hit", "berserk", "swarm", "drains", "heal_on_hit", "plague", "slow", "petrifies", "firststrike", "poison"};
+	static std::set<std::string> included_tags{"damage", "chance_to_hit", "berserk", "swarm", "drains", "heal_on_hit", "plague", "slow", "petrifies", "firststrike", "poison"};
 	if(self_){
 		std::vector<special_match> special_tag_matches;
 		std::vector<special_match> special_id_matches;

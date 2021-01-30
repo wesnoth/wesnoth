@@ -15,7 +15,7 @@
    * north-facing frames for dunefolk skirmisher, loyalist bowman, and troll whelp
  ### User interface
  ### WML Engine
-   * Extent 'special_id_active' and 'special_type_active' to abilities used like weapon.
+   * Extent 'special_id_active' and 'special_type_active' to abilities used like weapon and to [leadership] abilities.
    * abilities used like weapon can call [leading_anim] now.
  ### Miscellaneous and Bug Fixes
 
