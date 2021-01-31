@@ -39,7 +39,7 @@ jobs:
 
       - name: Ubuntu 1604
         run: |
-          export BRANCH=master
+          export BRANCH=1.14
           export IMAGE=1604
           export NLS=false
           export TOOL=scons
@@ -61,7 +61,7 @@ jobs:
 
       - name: Ubuntu 1604
         run: |
-          export BRANCH=master
+          export BRANCH=1.14
           export IMAGE=1604
           export NLS=false
           export TOOL=scons
@@ -91,9 +91,31 @@ jobs:
 
       - name: Ubuntu 1604
         run: |
-          export BRANCH=master
+          export BRANCH=1.14
           export IMAGE=1604
           export NLS=false
+          export TOOL=cmake
+          export CC=clang
+          export CXX=clang++
+          export CXX_STD=11
+          export CFG=Debug
+          export LTO=false
+          export CACHE_DIR=/home/wesnoth-travis/build
+          ./.github/workflows/ci-scripts/ubuntu.sh
+
+  translations:
+    runs-on: ubuntu-20.04
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: "recursive"
+
+      - name: Ubuntu 1604
+        run: |
+          export BRANCH=1.14
+          export IMAGE=1604
+          export NLS=only
           export TOOL=cmake
           export CC=clang
           export CXX=clang++
