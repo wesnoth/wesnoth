@@ -1198,54 +1198,23 @@ static bool get_ability_children(std::vector<special_match>& tag_result,
 //is more precise when many abilities of same type are present.
 bool unit::get_self_ability_bool(const config& special, const std::string& tag_name, const map_location& loc) const
 {
-	if (ability_active(tag_name, special, loc) &&
-		ability_affects_self(tag_name, special, loc))
-	{
-		return true;
-	}
-
-	return false;
+	return (ability_active(tag_name, special, loc) && ability_affects_self(tag_name, special, loc));
 }
 
 bool unit::get_adj_ability_bool(const config& special, const std::string& tag_name, int dir, const map_location& loc, const unit& from) const
 {
 	const auto adjacent = get_adjacent_tiles(loc);
-	if (affects_side(special, side(), from.side()) &&
-		from.ability_active(tag_name, special, adjacent[dir]) &&
-		ability_affects_adjacent(tag_name,  special, dir, loc, from))
-	{
-		return true;
-	}
-
-	return false;
+	return (affects_side(special, side(), from.side()) && from.ability_active(tag_name, special, adjacent[dir]) && ability_affects_adjacent(tag_name,  special, dir, loc, from));
 }
 //same functions but for [leadership] checking instead.
 bool unit::get_self_ability_bool_weapon(const config& special, const std::string& tag_name, const map_location& loc, const_attack_ptr weapon, const_attack_ptr opp_weapon) const
 {
-	if (ability_active(tag_name, special, loc) &&
-		ability_affects_self(tag_name, special, loc) &&
-		ability_affects_weapon(special, weapon, false) &&
-		ability_affects_weapon(special, opp_weapon, true))
-	{
-		return true;
-	}
-
-	return false;
+	return (get_self_ability_bool(special, tag_name, loc) && ability_affects_weapon(special, weapon, false) && ability_affects_weapon(special, opp_weapon, true));
 }
 
 bool unit::get_adj_ability_bool_weapon(const config& special, const std::string& tag_name, int dir, const map_location& loc, const unit& from, const_attack_ptr weapon, const_attack_ptr opp_weapon) const
 {
-	const auto adjacent = get_adjacent_tiles(loc);
-	if (affects_side(special, side(), from.side()) &&
-		from.ability_active(tag_name, special, adjacent[dir]) &&
-		ability_affects_adjacent(tag_name,  special, dir, loc, from) &&
-		ability_affects_weapon(special, weapon, false) &&
-		ability_affects_weapon(special, opp_weapon, true))
-	{
-		return true;
-	}
-
-	return false;
+	return (get_adj_ability_bool(special, tag_name, dir, loc, from) && ability_affects_weapon(special, weapon, false) && ability_affects_weapon(special, opp_weapon, true));
 }
 
 //these function check the activity of abilities used like weapon and [leadership] abilities
