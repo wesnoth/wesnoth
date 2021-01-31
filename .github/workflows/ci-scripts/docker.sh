@@ -33,6 +33,27 @@ execute() {
 
 EXIT_VAL=-1
 
+if [ "$NLS" == "only" ]; then
+    export LANGUAGE=en_US.UTF-8
+    export LANG=en_US.UTF-8
+    export LC_ALL=en_US.UTF-8
+
+    ./utils/travis/check_utf8.sh || exit 1
+    ./utils/travis/utf8_bom_dog.sh || exit 1
+    echo "Checked for invalid characters"
+
+    cmake -DENABLE_NLS=true -DENABLE_GAME=false -DENABLE_SERVER=false -DENABLE_CAMPAIGN_SERVER=false -DENABLE_TESTS=false -DENABLE_POT_UPDATE_TARGET=TRUE
+    make update-po4a-man || exit 1
+    echo "Ran umake pdate-po4a-man"
+    make update-po4a-manual || exit 1
+    echo "Ran make update-po4a-manual"
+    make pot-update || exit 1
+    echo "Ran make pot-update"
+    make mo-update || exit 1
+    echo "Ran make mo-update"
+    exit 0
+fi
+
 if [ "$TOOL" == "cmake" ]; then
     export CCACHE_MAXSIZE=3000M
     export CCACHE_COMPILERCHECK=content
