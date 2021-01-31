@@ -119,6 +119,30 @@ private:
 	bool special_active(const config& special, AFFECTS whom, const std::string& tag_name,
 	                    bool include_backstab=true, const std::string& filter_self ="filter_self") const;
 
+	static bool check_self_abilities_impl(
+		const_attack_ptr self_attack,
+		const_attack_ptr other_attack,
+		const config& special,
+		unit_const_ptr u,
+		const map_location& loc,
+		AFFECTS whom,
+		const std::string& tag_name,
+		bool leader_bool=false
+	);
+
+	static bool check_adj_abilities_impl(
+		const_attack_ptr self_attack,
+		const_attack_ptr other_attack,
+		const config& special,
+		unit_const_ptr u,
+		const unit& from,
+		int dir,
+		const map_location& loc,
+		AFFECTS whom,
+		const std::string& tag_name,
+		bool leader_bool=false
+	);
+
 	static bool special_active_impl(
 		const_attack_ptr self_attack,
 		const_attack_ptr other_attack,
