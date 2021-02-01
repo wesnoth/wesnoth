@@ -134,9 +134,6 @@ private:
 	 * @param whom determine if unit affected or not by special ability.
 	 * @param tag_name The special ability type who is being checked.
 	 * @param leader_bool If true, [leadership] abilities are checked.
-	 ** two other parameters for check_adj_abilities_impl
-	 * @param from unit adjacent to @a u is checked in case of [affect_adjacent] abilities.
-	 * @param dir direction to research a unit adjacent to @a u.
 	 */
 	static bool check_self_abilities_impl(
 		const_attack_ptr self_attack,
@@ -148,6 +145,11 @@ private:
 		const std::string& tag_name,
 		bool leader_bool=false
 	);
+	
+	/** two other parameters for check_adj_abilities_impl
+	 * @param from unit adjacent to @a u is checked in case of [affect_adjacent] abilities.
+	 * @param dir direction to research a unit adjacent to @a u.
+	 */
 
 	static bool check_adj_abilities_impl(
 		const_attack_ptr self_attack,
