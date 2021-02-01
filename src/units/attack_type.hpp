@@ -124,7 +124,7 @@ private:
 	bool special_active(const config& special, AFFECTS whom, const std::string& tag_name,
 	                    bool include_backstab=true, const std::string& filter_self ="filter_self") const;
 
-	/** check_self_abilities_impl and check_adj_abilities_impl : return an boolean value for checking of activities of abilities used like weapon
+	/** check_adj_abilities_impl : return an boolean value for checking of activities of abilities used like weapon
 	 * @return True if the special @a special is active.
 	 * @param self_attack the attack used by unit checked in this function.
 	 * @param other_attack the attack used by opponent to unit checked.
@@ -145,12 +145,22 @@ private:
 		const std::string& tag_name,
 		bool leader_bool=false
 	);
+
 	
-	/** two other parameters for check_adj_abilities_impl
+	/** check_adj_abilities_impl : return an boolean value for checking of activities of abilities used like weapon
+	 * @return True if the special @a special is active.
+	 * @param self_attack the attack used by unit checked in this function.
+	 * @param other_attack the attack used by opponent to unit checked.
+	 * @param special the config to one special ability checked.
+	 * @param u the unit checked.
+	 * @param loc location of the unit checked.
+	 * @param whom determine if unit affected or not by special ability.
+	 * @param tag_name The special ability type who is being checked.
+	 * @param leader_bool If true, [leadership] abilities are checked.
+	 */** two other parameters for check_adj_abilities_impl
 	 * @param from unit adjacent to @a u is checked in case of [affect_adjacent] abilities.
 	 * @param dir direction to research a unit adjacent to @a u.
 	 */
-
 	static bool check_adj_abilities_impl(
 		const_attack_ptr self_attack,
 		const_attack_ptr other_attack,
