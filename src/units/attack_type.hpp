@@ -92,7 +92,12 @@ public:
 	unit_ability_list list_ability(const std::string& ability) const;
 	/** Returns list who contains list_ability and get_specials list for each ability type */
 	unit_ability_list get_special_ability(const std::string& ability) const;
-	/** return an boolean value for abilities like poison slow firstrike or petrifies */
+	/** return an boolean value for abilities like poison slow firstrike or petrifies
+	 * @return True if the special @a special is active.
+	 * @param special The special being checked.
+	 * @param special_id If true, match @a special against the @c id of special tags.
+	 * @param special_tags If true, match @a special against the tag name of special tags.
+	 */
 	bool get_special_ability_bool(const std::string& special, bool special_id=true, bool special_tags=true) const;
 	bool bool_ability(const std::string& ability, bool special_id=true, bool special_tags=true) const;
 
@@ -115,10 +120,24 @@ private:
 	// Configured as a bit field, in case that is useful.
 	enum AFFECTS { AFFECT_SELF=1, AFFECT_OTHER=2, AFFECT_EITHER=3 };
 	bool check_self_abilities(const config& cfg, const std::string& special) const;
-    bool check_adj_abilities(const config& cfg, const std::string& special, int dir, const unit& from) const;
+	bool check_adj_abilities(const config& cfg, const std::string& special, int dir, const unit& from) const;
 	bool special_active(const config& special, AFFECTS whom, const std::string& tag_name,
 	                    bool include_backstab=true, const std::string& filter_self ="filter_self") const;
 
+	/** check_self_abilities_impl and check_adj_abilities_impl : return an boolean value for checking of activities of abilities used like weapon
+	 * @return True if the special @a special is active.
+	 * @param self_attack the attack used by unit checked in this function.
+	 * @param other_attack the attack used by opponent to unit checked.
+	 * @param special the config to one special ability checked.
+	 * @param u the unit checked.
+	 * @param loc location of the unit checked.
+	 * @param whom determine if unit affected or not by special ability.
+	 * @param tag_name The special ability type who is being checked.
+	 * @param leader_bool If true, [leadership] abilities are checked.
+	 ** two other parameters for check_adj_abilities_impl
+	 * @param from unit adjacent to @a u is checked in case of [affect_adjacent] abilities.
+	 * @param dir direction to research a unit adjacent to @a u.
+	 */
 	static bool check_self_abilities_impl(
 		const_attack_ptr self_attack,
 		const_attack_ptr other_attack,

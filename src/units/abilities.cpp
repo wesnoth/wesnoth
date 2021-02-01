@@ -1171,8 +1171,6 @@ unit_ability_list attack_type::get_special_ability(const std::string& ability) c
 	return abil_list;
 }
 
-// these functions below are used for extent to special_id/type_active to abilities used like weapon
-//and are equivalent to get_special_bool function.
 static bool get_ability_children(std::vector<special_match>& tag_result,
 	                           std::vector<special_match>& id_result,
 	                           const config& parent, const std::string& id,
@@ -1193,9 +1191,6 @@ static bool get_ability_children(std::vector<special_match>& tag_result,
 		return false;
 }
 
-// like self checking and adjacent checking are already done in get_special_ability_bool
-// use separate function like get_self_ability_bool and get_adj_ability_bool and put const config instead of redefine in get_ability_bool
-//is more precise when many abilities of same type are present.
 bool unit::get_self_ability_bool(const config& special, const std::string& tag_name, const map_location& loc) const
 {
 	return (ability_active(tag_name, special, loc) && ability_affects_self(tag_name, special, loc));
@@ -1206,7 +1201,7 @@ bool unit::get_adj_ability_bool(const config& special, const std::string& tag_na
 	const auto adjacent = get_adjacent_tiles(loc);
 	return (affects_side(special, side(), from.side()) && from.ability_active(tag_name, special, adjacent[dir]) && ability_affects_adjacent(tag_name,  special, dir, loc, from));
 }
-//same functions but for [leadership] checking instead.
+
 bool unit::get_self_ability_bool_weapon(const config& special, const std::string& tag_name, const map_location& loc, const_attack_ptr weapon, const_attack_ptr opp_weapon) const
 {
 	return (get_self_ability_bool(special, tag_name, loc) && ability_affects_weapon(special, weapon, false) && ability_affects_weapon(special, opp_weapon, true));
@@ -1217,8 +1212,10 @@ bool unit::get_adj_ability_bool_weapon(const config& special, const std::string&
 	return (get_adj_ability_bool(special, tag_name, dir, loc, from) && ability_affects_weapon(special, weapon, false) && ability_affects_weapon(special, opp_weapon, true));
 }
 
-//these function check the activity of abilities used like weapon and [leadership] abilities
-// with test of abilities atribute and filters and specials attribute and filters
+/**
+ * these function check the activity of abilities used like weapon and [leadership] abilities
+ * with test of abilities atribute and filters and specials attribute and filters
+ */
 bool attack_type::check_self_abilities(const config& cfg, const std::string& special) const
 {
 	return check_self_abilities_impl(shared_from_this(), other_attack_, cfg, self_, self_loc_, AFFECT_SELF, special, true);
@@ -1260,13 +1257,16 @@ bool attack_type::check_adj_abilities_impl(const_attack_ptr self_attack, const_a
 	}
 	return false;
 }
-//end of get_special_ability_bool sub functions
-
+/**
+ * Returns whether or not @a *this has a special ability with a tag or id equal to
+ * @a special. the Check is for a special ability
+ * active in the current context (see set_specials_context), including
+ * specials obtained from the opponent's attack.
+ */
 bool attack_type::get_special_ability_bool(const std::string& special, bool special_id, bool special_tags) const
 {
 	const unit_map& units = display::get_singleton()->get_units();
 	assert(display::get_singleton());
-	static std::set<std::string> included_tags{"damage", "chance_to_hit", "berserk", "swarm", "drains", "heal_on_hit", "plague", "slow", "petrifies", "firststrike", "poison"};
 	if(self_){
 		std::vector<special_match> special_tag_matches;
 		std::vector<special_match> special_id_matches;
