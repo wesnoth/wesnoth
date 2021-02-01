@@ -153,12 +153,12 @@ private:
 	 * @param other_attack the attack used by opponent to unit checked.
 	 * @param special the config to one special ability checked.
 	 * @param u the unit checked.
+	 * @param from unit adjacent to @a u is checked in case of [affect_adjacent] abilities.
+	 * @param dir direction to research a unit adjacent to @a u.
 	 * @param loc location of the unit checked.
 	 * @param whom determine if unit affected or not by special ability.
 	 * @param tag_name The special ability type who is being checked.
 	 * @param leader_bool If true, [leadership] abilities are checked.
-	 * @param from unit adjacent to @a u is checked in case of [affect_adjacent] abilities.
-	 * @param dir direction to research a unit adjacent to @a u.
 	 */
 	static bool check_adj_abilities_impl(
 		const_attack_ptr self_attack,
