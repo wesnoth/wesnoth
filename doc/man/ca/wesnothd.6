@@ -1,0 +1,321 @@
+.\" This program is free software; you can redistribute it and/or modify
+.\" it under the terms of the GNU General Public License as published by
+.\" the Free Software Foundation; either version 2 of the License, or
+.\" (at your option) any later version.
+.\"
+.\" This program is distributed in the hope that it will be useful,
+.\" but WITHOUT ANY WARRANTY; without even the implied warranty of
+.\" MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+.\" GNU General Public License for more details.
+.\"
+.\" You should have received a copy of the GNU General Public License
+.\" along with this program; if not, write to the Free Software
+.\" Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+.\"
+.
+.\"*******************************************************************
+.\"
+.\" This file was generated with po4a. Translate the source file.
+.\"
+.\"*******************************************************************
+.TH WESNOTHD 6 2018 wesnothd "Dimoni de xarxa multijugador de Batalla per Wesnoth"
+.
+.SH NOM
+.
+wesnothd: dimoni de xarxa multijugador Batalla per \fBWesnoth\fP
+.
+.SH SINOPSI
+.
+\fBwesnothd\fP [\|\fB\-dv\fP\|] [\|\fB\-c\fP \fIpath\fP\|] [\|\fB\-p\fP \fIport\fP\|] [\|\fB\-t\fP
+\fInumber\fP\|] [\|\fB\-T\fP \fInumber\fP\|]
+.br
+\fBwesnothd\fP \fB\-V\fP
+.
+.SH DESCRIPCIÓ
+.
+Gestiona les partides multijugador de Batalla per Wesnoth. Vegeu
+https://www.wesnoth.org/wiki/ServerAdministration per a saber quines ordres
+accepta el servidor mitjançant el client wesnoth (/query ...) o el fifo.
+.
+.SH OPCIONS
+.
+.TP 
+\fB\-c\ \fP\fIpath\fP\fB,\ \-\-config\fP\fI\ path\fP
+diu a wesnothd on trobar el fitxer config a utilitzar. Vegeu la secció
+\fBSERVER CONFIG\fP a continuació per a la sintaxi. Podeu recarregar el config
+enviant SIGHUP al procés del servidor.
+.TP 
+\fB\-d, \-\-daemon\fP
+executa wesnothd com un dimoni.
+.TP 
+\fB\-h, \-\-help\fP
+us diu què fan les opcions de línia d'ordres.
+.TP 
+\fB\-\-log\-\fP\fIlevel\fP\fB=\fP\fIdomain1\fP\fB,\fP\fIdomain2\fP\fB,\fP\fI...\fP
+sets the severity level of the log domains.  \fBall\fP es pot utilitzar per a
+coincidir amb qualsevol domini de registre. Nivells disponibles: \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP.  Per defecte, s'utilitza el nivell \fBerror\fP
+i el nivell \fBinfo\fP per al domini \fBserver\fP.
+.TP 
+\fB\-p\ \fP\fIport\fP\fB,\ \-\-port\fP\fI\ port\fP
+vincula el servidor al port especificat. Si no s'especifica cap port,
+s'utilitzarà el port \fB15000\fP.
+.TP 
+\fB\-t\ \fP\fInumber\fP\fB,\ \-\-threads\fP\fI\ number\fP
+estableix el nombre màxim de fils d'espera de l'E/S de la xarxa a n (per
+defecte: \fB5\fP,\ màx:\ \fB30\fP).
+.TP 
+\fB\-T\ \fP\fInumber\fP\fB,\ \-\-max\-threads\fP\fI\ number\fP
+estableix el nombre màxim de fils d'espera que es crearan.  Si s'estableix a
+\fB0\fP, no hi haurà cap límit (per defecte: \fB0\fP).
+.TP 
+\fB\-V, \-\-version\fP
+mostra el número de versió i surt.
+.TP 
+\fB\-v, \-\-verbose\fP
+activa el registre de depuració.
+.
+.SH "CONFIGURACIÓ DEL SERVIDOR"
+.
+.SS "La sintaxi general és:"
+.
+.P
+[\fItag\fP]
+.IP
+\fIkey\fP="\fIvalue\fP"
+.IP
+\fIkey\fP="\fIvalue\fP,\fIvalue\fP,..."
+.P
+[/\fItag\fP]
+.
+.SS "Claus globals:"
+.
+.TP 
+\fBallow_remote_shutdown\fP
+Si s'estableix a \fBno\fP (per defecte), les sol·licituds d'apagament i reinici
+s'ignoren, tret que vinguin del fifo.  Establiu\-ho a \fByes\fP per a permetre
+l'apagament remot mitjançant una /query d'un administrador.
+.TP 
+\fBban_save_file\fP
+Camí complet o relatiu a un fitxer (comprimit en gzip) que el servidor pot
+llegir i escriure.  Les prohibicions es desaran en aquest fitxer i es
+tornaran a llegir en l'inici del servidor.
+.TP 
+\fBcompress_stored_rooms\fP
+Determina si el fitxer de sales s'hauria de llegir i escriure en format
+comprimit. Per defecte, és \fByes\fP.
+.TP 
+\fBconnections_allowed\fP
+El nombre de connexions permeses des de la mateixa IP. \fB0\fP vol dir
+infinit. (per defecte: \fB5\fP)
+.TP 
+\fBdisallow_names\fP
+Els noms/sobrenoms que no accepta el servidor. S'admeten \fB*\fP i \fB?\fP dels
+patrons de comodins. Vegeu \fBglob\fP(7)  per a més detalls.  Els valors per
+defecte (utilitzats si no s'hi especifica res) són:
+\fB*admin*,*admln*,*server*,ai,ai?,computer,human,network,player\fP.
+.TP 
+\fBfifo_path\fP
+El camí al fifo en el qual podeu mostrar ordres del servidor (igual que
+/query ... de wesnoth).  Si no s'especifica, el valor per defecte n'és el
+camí de temps de compilació (per defecte: \fB/var/run/wesnothd/socket\fP).
+.TP 
+\fBmax_messages\fP
+El nombre de missatges permesos a \fBmessages_time_period\fP. (per defecte:
+\fB4\fP)
+.TP 
+\fBmessages_time_period\fP
+El període de temps (en segons) en el qual es detecta l'ompliment de
+missatges. (per defecte: \fB10\fP segons)
+.TP 
+\fBmotd\fP
+El missatge del dia.
+.TP 
+\fBnew_room_policy\fP
+Determina qui pot crear noves sales al servidor. Els valors disponibles són
+\fBeveryone\fP, \fBregistered\fP, \fBadmin\fP i \fBnobody\fP, i donen el permís
+respectivament a tothom, els usuaris registrats, els usuaris administradors
+o deshabilita la creació de noves sales. El valor per defecte és
+\fBeveryone\fP.
+.TP 
+\fBpasswd\fP
+La contrasenya utilitzada per a obtenir privilegis admin (mitjançant
+\fB/query admin \fP\fIpassword\fP).
+.TP 
+\fBreplay_save_path\fP
+El directori on el servidor emmagatzema les repeticions de les partides. (No
+oblideu el final /!) El valor per defecte n'és `', que vol dir el directori
+on s'ha iniciat wesnothd.
+.TP 
+\fBrestart_command\fP
+L'ordre que utilitza el servidor per a iniciar un procés de servidor nou
+mitjançant l'ordre \fBrestart\fP. (Només es pot emetre mitjançant el
+fifo. Vegeu el paràmetre \fBallow_remote_shutdown\fP.)
+.TP 
+\fBroom_save_file\fP
+El camí a un fitxer on la informació de la sala hauria
+d'emmagatzemar\-se. Aquest fitxer es llegeix a l'inici del servidor i
+s'escriu més tard. Si és buit o no s'estableix, les sales no es carreguen i
+no es desen.
+.TP 
+\fBsave_replays\fP
+Defineix si el servidor desarà automàticament repeticions de les partides
+(per defecte: \fBfalse\fP)
+.TP 
+\fBversions_accepted\fP
+Una llista separada per comes de cadenes de versió acceptades pel
+servidor. S'admeten \fB*\fP i \fB?\fP dels patrons de comodins.  (el valor per
+defecte n'és la versió de wesnoth corresponent)
+.br
+Exemple: \fBversions_accepted="*"\fP accepta qualsevol cadena de versió.
+.TP 
+\fBuser_handler\fP
+El nom del gestor d'usuaris a utilitzar. Actualment, els gestors d'usuari
+disponibles són \fBforum\fP (per a connectar wesnothd a una base de dades de
+fòrums de phpbb) i \fBsample\fP (una implementació de mostra de la interfície
+de gestió d'usuaris; si l'utilitzeu en alguna cosa real, sou boig). El valor
+per defecte és \fBforum\fP. També heu d'afegir una secció de \fB[user.handler]\fP;
+vegeu més avall.
+.
+.SS "Etiquetes globals:"
+.
+.P
+\fB[redirect]\fP Una etiqueta per a especificar un servidor per a redirigir\-hi
+certes versions de client.
+.RS
+.TP 
+\fBhost\fP
+L'adreça del servidor al qual redirigir.
+.TP 
+\fBport\fP
+El port al qual connectar\-se.
+.TP 
+\fBversion\fP
+Una llista separada per comes de versions a les quals redirigir. Es comporta
+de la mateixa manera que \fBversions_accepted\fP en relació amb els patrons de
+comodins.
+.RE
+.P
+\fB[ban_time]\fP Una etiqueta per a definir paraules clau convenients per a les
+durades de prohibicions temporals.
+.RS
+.TP 
+\fBname\fP
+El nom utilitzat per a referenciar el temps de prohibició.
+.TP 
+\fBtime\fP
+La definició de la durada.  El format és: %d[%s[%d%s[...]]], on %s és s
+(segons), m (minuts), h (hores), D (dies), M (mesos) o Y (anys) i %d és un
+nombre.  Si no es dona cap modificador de temps, s'assumeixen els minuts
+(m).  Exemple: \fBtime="1D12h30m"\fP dona com a resultat un temps de prohibició
+d'un dia, 12 hores i 30 minuts.
+.RE
+.P
+\fB[proxy]\fP Una etiqueta per a dir al servidor que actuï com a servidor
+intermediari i reenviar les sol·licituds del client connectat al servidor
+especificat. Accepta les mateixes claus que \fB[redirect]\fP.
+.RE
+.P
+\fB[user_handler]\fP Configura el gestor d'usuaris. Les claus disponibles
+varien en funció del gestor d'usuaris establert amb la clau
+\fBuser_handler\fP. Si no hi ha cap secció \fB[user_handler]\fP a la configuració,
+el servidor s'executarà sense cap servei de registre de sobrenoms. Totes les
+taules addicionals necessàries perquè \fBforum_user_handler\fP funcioni es
+poden trobar a table_definitions.sql al repositori font de Wesnoth.
+.RS
+.TP 
+\fBdb_host\fP
+(per a user_handler=forum) El nom d'amfitrió del servidor de base de dades
+.TP 
+\fBdb_name\fP
+(per a user_handler=forum) El nom de la base de dades
+.TP 
+\fBdb_user\fP
+(per a user_handler=forum) El nom de l'usuari amb el qual iniciar sessió a
+la base de dades
+.TP 
+\fBdb_password\fP
+(per a user_handler=forum) La contrasenya d'aquest usuari
+.TP 
+\fBdb_users_table\fP
+(per a user_handler=forum) El nom de la taula en la qual el vostre phpbb
+forums desa les seves dades d'usuari. Probablement, serà
+<table\-prefix>_users (per exemple, phpbb3_users).
+.TP 
+\fBdb_extra_table\fP
+(per a user_handler=forum) El nom de la taula en la qual wesnothd desarà les
+seves pròpies dades sobre els usuaris. Haureu de crear aquesta taula
+manualment.
+.TP 
+\fBdb_game_info_table\fP
+(per a user_handler=forum) El nom de la taula en la qual wesnothd desarà les
+seves pròpies dades sobre les partides.
+.TP 
+\fBdb_game_player_info_table\fP
+(per a user_handler=forum) El nom de la taula en la qual wesnothd desarà les
+seves pròpies dades sobre els jugadors d'una partida.
+.TP 
+\fBdb_game_modification_info_table\fP
+(per a user_handler=forum) El nom de la taula en la qual wesnothd desarà les
+seves pròpies dades sobre les modificacions utilitzades en una partida.
+.TP 
+\fBdb_user_group_table\fP
+(per a user_handler=forum) El nom de la taula en la qual el vostre phpbb
+forums desa les seves pròpies dades de grup d'usuari. Probablement, serà
+<table\-prefix>_user_group (per exemple, phpbb3_user_group).
+.TP 
+\fBmp_mod_group\fP
+(per a user_handler=forum) L'ID del grup de fòrums que es considera que té
+autoritat de moderació.
+.TP 
+\fBuser_expiration\fP
+(per a user_handler=sample) El temps rere el qual un sobrenom registrat
+expira (en dies).
+.RE
+.P
+\fB[mail]\fP Configura un servidor SMTP mitjançant el qual el gestor d'usuaris
+pot enviar correu. Actualment només l'utilitza el gestor d'usuaris de prova.
+.RS
+.TP 
+\fBserver\fP
+El nom d'amfitrió del servidor de correu
+.TP 
+\fBusername\fP
+El nom d'usuari amb el qual iniciar sessió al servidor de correu.
+.TP 
+\fBpassword\fP
+La contrasenya d'aquest usuari.
+.TP 
+\fBfrom_address\fP
+L'adreça de resposta del vostre correu.
+.TP 
+\fBmail_port\fP
+El port en el qual s'està executant el vostre servidor de correu. Per
+defecte és 25.
+.
+.SH "ESTAT DE LA SORTIDA"
+.
+L'estat de sortida normal és 0 quan el servidor es tanca correctament. Un
+estat de sortida de 2 indica un error amb les opcions de la línia d'ordres.
+.
+.SH AUTOR
+.
+Escrit per David White <davidnwhite@verizon.net>.  Editat per Nils
+Kneuper <crazy\-ivanovic@gmx.net>, ott <ott@gaon.net>,
+Soliton <soliton.de@gmail.com> i Thomas Baumhauer
+<thomas.baumhauer@gmail.com>.  Aquesta pàgina de manual ha estat
+escrita originalment per Cyril Bouthors <cyril@bouthors.org>.
+.br
+Visiteu la pàgina web oficial: https://www.wesnoth.org/
+.
+.SH COPYRIGHT
+.
+Copyright \(co 2003\-2018 David White <davidnwhite@verizon.net>
+.br
+Això és programari lliure; aquest programari està llicenciat sota la versió
+2 de la GPL, tal com ha estat publicada per la Free Software Foundation.
+NO hi ha cap garantia, ni TAN SOLS PER A LA COMERCIALITZACIÓ O L'ADEQUACIÓ A
+UN PROPÒSIT PARTICULAR.
+.
+.SH "VEGEU TAMBÉ"
+.
+\fBwesnoth\fP(6)
