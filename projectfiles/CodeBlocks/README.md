@@ -18,7 +18,7 @@
     NOTE: You must make sure to download the 64-bit version.
 
 	
-	if you download 32 bit version and what you have memory errors when creating debug builds, you can follow these steps:
+	If you download the 32 bit version and you have out of memory errors when creating debug builds, you can follow these steps:
 	
 	1. If you use 32-bit Windows, run in admin command prompt
 	```
@@ -36,7 +36,7 @@
 	C:\masm32\bineditbin.exe /LARGEADDRESSAWARE cc1plus.exe
 	```
 	
-	if you use 64-bit version, then you cannot use MASM32, who don't have 64 bit version, and you cannot make debug build.
+	If you use the 64-bit version then you cannot use MASM32 since it doesn't have a 64 bit version, which means you cannot make a debug build.
 
 4.  Download the latest `CodeBlocksWinSDK*.zip` package from <http://sourceforge.net/projects/wesnoth/files/SDK/>.
     The package contains the right version/build combination of source headers,
