@@ -35,7 +35,7 @@ bootstrap gcc
 ```
 Then run this command:
 ```
-.\b2 -sZLIB_SOURCE=..\zlib-1.2.11 -sBZIP2_SOURCE=..\bzip2-1.0.6 -j2 --with-date_time --with-filesystem --with-iostreams --with-locale --with-program_options --with-random --with-regex --with-system --with-thread --with-test --with-timer --toolset=gcc --layout=system variant=release address-model=32
+.\b2 -sZLIB_SOURCE=..\zlib-1.2.11 -sBZIP2_SOURCE=..\bzip2-1.0.6 -j2 --with-coroutine --with-date_time --with-filesystem --with-iostreams --with-locale --with-program_options --with-random --with-regex --with-system --with-thread --with-test --with-timer --toolset=gcc --layout=system variant=release address-model=64
 ```
 Depending on your boost version, you may need to replace `..\` with the absolute paths to zlib and bzip.
 If you have multiple versions of gcc, add `--toolset=gcc-X.Y.Z` with **X.Y.Z** being the target version number.
@@ -47,7 +47,7 @@ Run this command for generate `bcp.exe`
 ```
 Create `include` in same path what `boost_...` and run this command:
 ```
-dist\bin\bcp.exe algorithm asio assign bimap container date_time dynamic_bitset exception filesystem iostreams iterator locale math mpl multi_array multi_index program_options ptr_container random range regex serialization system spirit test boost\nondet_random.hpp boost\fusion\include\define_struct.hpp ..\include
+dist\bin\bcp.exe algorithm asio assign bimap coroutine container date_time dynamic_bitset exception filesystem iostreams iterator locale math mpl multi_array multi_index program_options ptr_container random range regex serialization system spirit test boost\nondet_random.hpp boost\fusion\include\define_struct.hpp ..\include
 ```
 
 Replace the outdated files in 'cb/lib' with those from 'boost_.../stage/lib' and those in 'cb/include/boost' with  the ones in 'boost_.../boost'.
