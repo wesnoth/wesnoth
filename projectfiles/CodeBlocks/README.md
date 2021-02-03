@@ -18,7 +18,7 @@
     NOTE: You must make sure to download the 64-bit version.
 
 	
-	if you download 32 bit versiion and what you have memory errors when creating debug builds, you can follow these steps:
+	if you download 32 bit version and what you have memory errors when creating debug builds, you can follow these steps:
 	
 	1. If you use 32-bit Windows, run in admin command prompt
 	```
