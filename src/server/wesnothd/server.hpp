@@ -40,14 +40,14 @@ private:
 	void handle_new_client(socket_ptr socket);
 	void handle_new_client(tls_socket_ptr socket);
 
-	void login_client(boost::asio::yield_context yield, socket_ptr socket);
-	bool is_login_allowed(socket_ptr socket, const simple_wml::node* const login, const std::string& username, bool& registered, bool& is_moderator);
-	bool authenticate(socket_ptr socket, const std::string& username, const std::string& password, bool name_taken, bool& registered);
-	void send_password_request(socket_ptr socket, const std::string& msg,
+	template<class SocketPtr> void login_client(boost::asio::yield_context yield, SocketPtr socket);
+	template<class SocketPtr> bool is_login_allowed(SocketPtr socket, const simple_wml::node* const login, const std::string& username, bool& registered, bool& is_moderator);
+	template<class SocketPtr> bool authenticate(SocketPtr socket, const std::string& username, const std::string& password, bool name_taken, bool& registered);
+	template<class SocketPtr> void send_password_request(SocketPtr socket, const std::string& msg,
 		const std::string& user, const char* error_code = "", bool force_confirmation = false);
 	bool accepting_connections() const { return !graceful_restart; }
 
-	void handle_player(boost::asio::yield_context yield, socket_ptr socket, const player& player);
+	template<class SocketPtr> void handle_player(boost::asio::yield_context yield, SocketPtr socket, const player& player);
 	void handle_player_in_lobby(player_iterator player, simple_wml::document& doc);
 	void handle_player_in_game(player_iterator player, simple_wml::document& doc);
 	void handle_whisper(player_iterator player, simple_wml::node& whisper);
@@ -60,11 +60,21 @@ private:
 	void disconnect_player(player_iterator player);
 	void remove_player(player_iterator player);
 
-	void send_server_message(socket_ptr socket, const std::string& message, const std::string& type);
+public:
+	template<class SocketPtr> void send_server_message(SocketPtr socket, const std::string& message, const std::string& type);
 	void send_server_message(player_iterator player, const std::string& message, const std::string& type) {
-		send_server_message(player->socket(), message, type);
+		utils::visit(
+			[this, &message, &type](auto&& socket) { send_server_message(socket, message, type); },
+			player->socket()
+		);
 	}
 	void send_to_lobby(simple_wml::document& data, std::optional<player_iterator> exclude = {});
+	void send_to_player(player_iterator player, simple_wml::document& data) {
+		utils::visit(
+			[this, &data](auto&& socket) { async_send_doc_queued(socket, data); },
+			player->socket()
+		);
+	}
 	void send_server_message_to_lobby(const std::string& message, std::optional<player_iterator> exclude = {});
 	void send_server_message_to_all(const std::string& message, std::optional<player_iterator> exclude = {});
 
@@ -72,6 +82,7 @@ private:
 		return player->get_game() != nullptr;
 	}
 
+private:
 	wesnothd::ban_manager ban_manager_;
 
 	struct connection_log
@@ -104,7 +115,7 @@ private:
 	std::deque<login_log> failed_logins_;
 
 	std::unique_ptr<user_handler> user_handler_;
-	std::map<socket_ptr::element_type*, std::string> seeds_;
+	std::map<void*, std::string> seeds_;
 
 	std::mt19937 die_;
 

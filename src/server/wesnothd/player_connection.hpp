@@ -31,7 +31,8 @@ class game;
 class player_record
 {
 public:
-	player_record(const socket_ptr socket, const player& player)
+	template<class SocketPtr>
+	player_record(const SocketPtr socket, const player& player)
 		: socket_(socket)
 		, player_(player)
 		, game_()
@@ -39,7 +40,7 @@ public:
 	{
 	}
 
-	const socket_ptr socket() const
+	const any_socket_ptr socket() const
 	{
 		return socket_;
 	}
@@ -70,7 +71,7 @@ public:
 	void enter_lobby();
 
 private:
-	const socket_ptr socket_;
+	const any_socket_ptr socket_;
 	mutable player player_;
 	std::shared_ptr<game> game_;
 	std::string ip_address;
@@ -84,7 +85,7 @@ namespace bmi = boost::multi_index;
 
 using player_connections = bmi::multi_index_container<player_record, bmi::indexed_by<
 	bmi::ordered_unique<bmi::tag<socket_t>,
-		bmi::const_mem_fun<player_record, const socket_ptr, &player_record::socket>>,
+		bmi::const_mem_fun<player_record, const any_socket_ptr, &player_record::socket>>,
 	bmi::hashed_unique<bmi::tag<name_t>,
 		bmi::const_mem_fun<player_record, const std::string&, &player_record::name>>,
 	bmi::ordered_non_unique<bmi::tag<game_t>,

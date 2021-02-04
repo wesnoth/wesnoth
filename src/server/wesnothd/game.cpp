@@ -350,7 +350,7 @@ bool game::send_taken_side(simple_wml::document& cfg, const simple_wml::node* si
 	cfg.root().set_attr_dup("side", (*side)["side"]);
 
 	// Tell the host which side the new player should take.
-	server.async_send_doc_queued(owner_->socket(), cfg);
+	server.send_to_player(owner_, cfg);
 	return true;
 }
 
@@ -602,7 +602,7 @@ void game::change_controller(
 	// side_drop already.)
 	if(!player_left) {
 		response->root().child("change_controller")->set_attr("is_local", "yes");
-		server.async_send_doc_queued(player->socket(), *response.get());
+		server.send_to_player(player, *response.get());
 	}
 }
 
@@ -630,7 +630,7 @@ void game::notify_new_host()
 	cfg.root().add_child("host_transfer");
 
 	std::string message = owner_name + " has been chosen as the new host.";
-	server.async_send_doc_queued(owner_->socket(), cfg);
+	server.send_to_player(owner_, cfg);
 	send_and_record_server_message(message);
 }
 
@@ -772,7 +772,7 @@ void game::unmute_observer(const simple_wml::node& unmute, player_iterator unmut
 void game::send_leave_game(player_iterator user) const
 {
 	static simple_wml::document leave_game("[leave_game]\n[/leave_game]\n", simple_wml::INIT_COMPRESSED);
-	server.async_send_doc_queued(user->socket(), leave_game);
+	server.send_to_player(user, leave_game);
 }
 
 std::optional<player_iterator> game::kick_member(const simple_wml::node& kick, player_iterator kicker)
@@ -986,7 +986,7 @@ bool game::process_turn(simple_wml::document& data, player_iterator user)
 			msg << "Removing illegal command '" << (*command).first_child().to_string() << "' from: " << username(user)
 				<< ". Current player is: " << username(*current_player()) << " (" << current_side_index_ + 1 << "/" << nsides_
 				<< ").";
-			LOG_GAME << msg.str() << " (socket: " << (*current_player())->socket() << ") (game id: " << id_ << ", " << db_id_ << ")\n";
+			LOG_GAME << msg.str() << " (game id: " << id_ << ", " << db_id_ << ")\n";
 			send_and_record_server_message(msg.str());
 
 			marked.push_back(index - marked.size());
@@ -1187,7 +1187,7 @@ void game::handle_controller_choice(const simple_wml::node& req)
 	command.set_attr("dependent", "yes");
 
 	if(sides_[side_index]) {
-		server.async_send_doc_queued((*sides_[side_index])->socket(), *mdata);
+		server.send_to_player((*sides_[side_index]), *mdata);
 	}
 
 	change_controller_wml.set_attr("is_local", "no");
@@ -1226,7 +1226,7 @@ void game::handle_choice(const simple_wml::node& data, player_iterator user)
 	}
 
 	DBG_GAME << "answering seed request " << request_id << " by player "
-			 << user->info().name() << "(" << user->socket() << ")" << std::endl;
+			 << user->info().name() << std::endl;
 	last_choice_request_id_ = request_id;
 
 	if(const simple_wml::node* rand = data.child("random_seed")) {
@@ -1351,7 +1351,7 @@ void game::update_turn_data()
 bool game::add_player(player_iterator player, bool observer)
 {
 	if(is_member(player)) {
-		ERR_GAME << "ERROR: Player is already in this game. (socket: " << player->socket() << ")\n";
+		ERR_GAME << "ERROR: Player is already in this game.\n";
 		return false;
 	}
 
@@ -1393,20 +1393,19 @@ bool game::add_player(player_iterator player, bool observer)
 
 	LOG_GAME
 		<< player->client_ip() << "\t" << user->info().name() << "\tjoined game:\t\""
-		<< name_ << "\" (" << id_ << ", " << db_id_ << ")" << (observer ? " as an observer" : "") << ". (socket: " << player->socket()
-		<< ")\n";
+		<< name_ << "\" (" << id_ << ", " << db_id_ << ")" << (observer ? " as an observer" : "") << ".\n";
 
 	user->info().mark_available(id_, name_);
 	user->info().set_status((observer) ? player::OBSERVING : player::PLAYING);
 	DBG_GAME << debug_player_info();
 
 	// Send the user the game data.
-	server.async_send_doc_queued(player->socket(), level_);
+	server.send_to_player(player, level_);
 
 	if(started_) {
 		// Tell this player that the game has started
 		static simple_wml::document start_game_doc("[start_game]\n[/start_game]\n", simple_wml::INIT_COMPRESSED);
-		server.async_send_doc_queued(player->socket(), start_game_doc);
+		server.send_to_player(player, start_game_doc);
 
 		// Send observer join of all the observers in the game to the new player
 		// only once the game started. The client forgets about it anyway otherwise.
@@ -1435,7 +1434,7 @@ bool game::add_player(player_iterator player, bool observer)
 bool game::remove_player(player_iterator player, const bool disconnect, const bool destruct)
 {
 	if(!is_member(player)) {
-		ERR_GAME << "ERROR: User is not in this game. (socket: " << player->socket() << ")\n";
+		ERR_GAME << "ERROR: User is not in this game.\n";
 		return false;
 	}
 
@@ -1462,8 +1461,7 @@ bool game::remove_player(player_iterator player, const bool disconnect, const bo
 			? " at turn: " + lexical_cast_default<std::string, std::size_t>(current_turn())
 				+ " with reason: '" + termination_reason() + "'"
 			: "")
-		<< (observer ? " as an observer" : "") << (disconnect ? " and disconnected" : "") << ". (socket: " << user->socket()
-		<< ")\n";
+		<< (observer ? " as an observer" : "") << (disconnect ? " and disconnected" : "") << ".\n";
 
 	if(game_ended && started_ && !(observer && destruct)) {
 		send_server_message_to_all(user->info().name() + " ended the game.", player);
@@ -1529,7 +1527,7 @@ bool game::remove_player(player_iterator player, const bool disconnect, const bo
 
 		DBG_GAME << "*** sending side drop: \n" << drop.output() << std::endl;
 
-		server.async_send_doc_queued(owner_->socket(), drop);
+		server.send_to_player(owner_, drop);
 	}
 
 	if(ai_transfer) {
@@ -1617,8 +1615,8 @@ void game::load_next_scenario(player_iterator user)
 		cfg_controller.set_attr("is_local", side_user == user ? "yes" : "no");
 	}
 
-	server.async_send_doc_queued(user->socket(), cfg_scenario);
-	server.async_send_doc_queued(user->socket(), doc_controllers);
+	server.send_to_player(user, cfg_scenario);
+	server.send_to_player(user, doc_controllers);
 
 	players_not_advanced_.erase(&*user);
 
@@ -1634,7 +1632,7 @@ void game::send_to_players(simple_wml::document& data, const Container& players,
 {
 	for(const auto& player : players) {
 		if(player != exclude) {
-			server.async_send_doc_queued(player->socket(), data);
+			server.send_to_player(player, data);
 		}
 	}
 }
@@ -1703,7 +1701,7 @@ void game::send_observerjoins(std::optional<player_iterator> player)
 			send_data(cfg, ob);
 		} else {
 			// Send to the (new) user.
-			server.async_send_doc_queued((*player)->socket(), cfg);
+			server.send_to_player(*player, cfg);
 		}
 	}
 }
@@ -1738,7 +1736,7 @@ void game::send_history(player_iterator player) const
 		auto doc = std::make_unique<simple_wml::document>(buf.c_str(), simple_wml::INIT_STATIC);
 		doc->compress();
 
-		server.async_send_doc_queued(player->socket(), *doc);
+		server.send_to_player(player, *doc);
 
 		history_.clear();
 		history_.push_back(std::move(doc));
@@ -1911,8 +1909,7 @@ std::string game::debug_sides_info() const
 			<< "side " << (*s)["side"].to_int()
 			<< " :\t" << (*s)["controller"].to_string()
 			<< "\t, " << side_controllers_[(*s)["side"].to_int() - 1].to_cstring()
-			<< "\t( " << (*sides_[(*s)["side"].to_int() - 1])->socket()
-			<< ",\t" << (*s)["current_player"].to_string() << " )\n";
+			<< "\t( " << (*s)["current_player"].to_string() << " )\n";
 	}
 
 	return result.str();
@@ -1971,7 +1968,7 @@ void game::send_server_message(const char* message, std::optional<player_iterato
 	}
 
 	if(player) {
-		server.async_send_doc_queued((*player)->socket(), doc);
+		server.send_to_player(*player, doc);
 	}
 }
 

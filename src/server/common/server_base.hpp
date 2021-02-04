@@ -66,20 +66,20 @@ public:
 	 * @param doc
 	 * @param yield The function will suspend on write operation using this yield context
 	 */
-	void coro_send_doc(socket_ptr socket, simple_wml::document& doc, boost::asio::yield_context yield);
+	template<class SocketPtr> void coro_send_doc(SocketPtr socket, simple_wml::document& doc, boost::asio::yield_context yield);
 	/**
 	 * Send contents of entire file directly to socket from within a coroutine
 	 * @param socket
 	 * @param filename
 	 * @param yield The function will suspend on write operations using this yield context
 	 */
-	void coro_send_file(socket_ptr socket, const std::string& filename, boost::asio::yield_context yield);
+	template<class SocketPtr> void coro_send_file(SocketPtr socket, const std::string& filename, boost::asio::yield_context yield);
 	/**
 	 * Receive WML document from a coroutine
 	 * @param socket
 	 * @param yield The function will suspend on read operation using this yield context
 	 */
-	std::unique_ptr<simple_wml::document> coro_receive_doc(socket_ptr socket, boost::asio::yield_context yield);
+	template<class SocketPtr> std::unique_ptr<simple_wml::document> coro_receive_doc(SocketPtr socket, boost::asio::yield_context yield);
 
 	/**
 	 * High level wrapper for sending a WML document
@@ -89,11 +89,11 @@ public:
 	 * @param socket
 	 * @param doc Document to send. A copy of it will be made so there is no need to keep the reference live after the function returns.
 	 */
-	void async_send_doc_queued(socket_ptr socket, simple_wml::document& doc);
+	template<class SocketPtr> void async_send_doc_queued(SocketPtr socket, simple_wml::document& doc);
 
 	typedef std::map<std::string, std::string> info_table;
-	void async_send_error(socket_ptr socket, const std::string& msg, const char* error_code = "", const info_table& info = {});
-	void async_send_warning(socket_ptr socket, const std::string& msg, const char* warning_code = "", const info_table& info = {});
+	template<class SocketPtr> void async_send_error(SocketPtr socket, const std::string& msg, const char* error_code = "", const info_table& info = {});
+	template<class SocketPtr> void async_send_warning(SocketPtr socket, const std::string& msg, const char* warning_code = "", const info_table& info = {});
 
 protected:
 	unsigned short port_;
@@ -135,5 +135,5 @@ protected:
 	void handle_termination(const boost::system::error_code& error, int signal_number);
 };
 
-std::string client_address(socket_ptr socket);
-bool check_error(const boost::system::error_code& error, socket_ptr socket);
+template<class SocketPtr> std::string client_address(SocketPtr socket);
+template<class SocketPtr> bool check_error(const boost::system::error_code& error, SocketPtr socket);

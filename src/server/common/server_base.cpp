@@ -219,17 +219,17 @@ void server_base::run() {
 	}
 }
 
-std::string client_address(const socket_ptr socket)
+template<class SocketPtr> std::string client_address(SocketPtr socket)
 {
 	boost::system::error_code error;
-	std::string result = socket->remote_endpoint(error).address().to_string();
+	std::string result = socket->lowest_layer().remote_endpoint(error).address().to_string();
 	if(error)
 		return "<unknown address>";
 	else
 		return result;
 }
 
-bool check_error(const boost::system::error_code& error, socket_ptr socket)
+template<class SocketPtr> bool check_error(const boost::system::error_code& error, SocketPtr socket)
 {
 	if(error) {
 		if(error == boost::asio::error::eof)
@@ -240,6 +240,7 @@ bool check_error(const boost::system::error_code& error, socket_ptr socket)
 	}
 	return false;
 }
+template bool check_error<tls_socket_ptr>(const boost::system::error_code& error, tls_socket_ptr socket);
 
 namespace {
 
@@ -263,7 +264,7 @@ void info_table_into_simple_wml(simple_wml::document& doc, const std::string& pa
  * @param doc
  * @param yield The function will suspend on write operation using this yield context
  */
-void server_base::coro_send_doc(socket_ptr socket, simple_wml::document& doc, boost::asio::yield_context yield)
+template<class SocketPtr> void server_base::coro_send_doc(SocketPtr socket, simple_wml::document& doc, boost::asio::yield_context yield)
 {
 	if(dump_wml) {
 		std::cout << "Sending WML to " << client_address(socket) << ": \n" << doc.output() << std::endl;
@@ -290,10 +291,12 @@ void server_base::coro_send_doc(socket_ptr socket, simple_wml::document& doc, bo
 		throw;
 	}
 }
+template void server_base::coro_send_doc<socket_ptr>(socket_ptr socket, simple_wml::document& doc, boost::asio::yield_context yield);
+template void server_base::coro_send_doc<tls_socket_ptr>(tls_socket_ptr socket, simple_wml::document& doc, boost::asio::yield_context yield);
 
 #ifdef HAVE_SENDFILE
 
-void server_base::coro_send_file(socket_ptr socket, const std::string& filename, boost::asio::yield_context yield)
+template<class SocketPtr> void server_base::coro_send_file(SocketPtr socket, const std::string& filename, boost::asio::yield_context yield)
 {
 	std::size_t filesize { std::size_t(filesystem::file_size(filename)) };
 	int in_file { open(filename.c_str(), O_RDONLY) };
@@ -350,7 +353,7 @@ void server_base::coro_send_file(socket_ptr socket, const std::string& filename,
 
 #elif defined(_WIN32)
 
-void server_base::coro_send_file(socket_ptr socket, const std::string& filename, boost::asio::yield_context yield)
+template<class SocketPtr> void server_base::coro_send_file(SocketPtr socket, const std::string& filename, boost::asio::yield_context yield)
 {
 
 	OVERLAPPED overlap;
@@ -411,7 +414,7 @@ void server_base::coro_send_file(socket_ptr socket, const std::string& filename,
 
 #else
 
-void server_base::coro_send_file(socket_ptr socket, const std::string& filename, boost::asio::yield_context yield)
+template<class SocketPtr> void server_base::coro_send_file(SocketPtr socket, const std::string& filename, boost::asio::yield_context yield)
 {
 // TODO: Implement this for systems without sendfile()
 	assert(false && "Not implemented yet");
@@ -419,7 +422,7 @@ void server_base::coro_send_file(socket_ptr socket, const std::string& filename,
 
 #endif
 
-std::unique_ptr<simple_wml::document> server_base::coro_receive_doc(socket_ptr socket, boost::asio::yield_context yield)
+template<class SocketPtr> std::unique_ptr<simple_wml::document> server_base::coro_receive_doc(SocketPtr socket, boost::asio::yield_context yield)
 {
 	union DataSize
 	{
@@ -457,12 +460,14 @@ std::unique_ptr<simple_wml::document> server_base::coro_receive_doc(socket_ptr s
 		return {};
 	}
 }
+template std::unique_ptr<simple_wml::document> server_base::coro_receive_doc<socket_ptr>(socket_ptr socket, boost::asio::yield_context yield);
+template std::unique_ptr<simple_wml::document> server_base::coro_receive_doc<tls_socket_ptr>(tls_socket_ptr socket, boost::asio::yield_context yield);
 
-void server_base::async_send_doc_queued(socket_ptr socket, simple_wml::document& doc)
+template<class SocketPtr> void server_base::async_send_doc_queued(SocketPtr socket, simple_wml::document& doc)
 {
 	boost::asio::spawn(
 		io_service_, [this, doc_ptr = doc.clone(), socket](boost::asio::yield_context yield) mutable {
-			static std::map<socket_ptr, std::queue<std::unique_ptr<simple_wml::document>>> queues;
+			static std::map<SocketPtr, std::queue<std::unique_ptr<simple_wml::document>>> queues;
 
 			queues[socket].push(std::move(doc_ptr));
 			if(queues[socket].size() > 1) {
@@ -478,7 +483,7 @@ void server_base::async_send_doc_queued(socket_ptr socket, simple_wml::document&
 	);
 }
 
-void server_base::async_send_error(socket_ptr socket, const std::string& msg, const char* error_code, const info_table& info)
+template<class SocketPtr> void server_base::async_send_error(SocketPtr socket, const std::string& msg, const char* error_code, const info_table& info)
 {
 	simple_wml::document doc;
 	doc.root().add_child("error").set_attr_dup("message", msg.c_str());
@@ -489,8 +494,10 @@ void server_base::async_send_error(socket_ptr socket, const std::string& msg, co
 
 	async_send_doc_queued(socket, doc);
 }
+template void server_base::async_send_error<socket_ptr>(socket_ptr socket, const std::string& msg, const char* error_code, const info_table& info);
+template void server_base::async_send_error<tls_socket_ptr>(tls_socket_ptr socket, const std::string& msg, const char* error_code, const info_table& info);
 
-void server_base::async_send_warning(socket_ptr socket, const std::string& msg, const char* warning_code, const info_table& info)
+template<class SocketPtr> void server_base::async_send_warning(SocketPtr socket, const std::string& msg, const char* warning_code, const info_table& info)
 {
 	simple_wml::document doc;
 	doc.root().add_child("warning").set_attr_dup("message", msg.c_str());
@@ -501,6 +508,8 @@ void server_base::async_send_warning(socket_ptr socket, const std::string& msg, 
 
 	async_send_doc_queued(socket, doc);
 }
+template void server_base::async_send_warning<socket_ptr>(socket_ptr socket, const std::string& msg, const char* warning_code, const info_table& info);
+template void server_base::async_send_warning<tls_socket_ptr>(tls_socket_ptr socket, const std::string& msg, const char* warning_code, const info_table& info);
 
 void server_base::load_tls_config(const config& cfg)
 {

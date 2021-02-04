@@ -130,7 +130,7 @@ public:
 	 * @param player_id The forum ID of the player to get the game history for.
 	 * @param offset Where to start returning rows to the client from the query results.
 	 */
-	void async_get_and_send_game_history(boost::asio::io_service& io_service, server_base& s_base, socket_ptr player_socket, int player_id, int offset);
+	void async_get_and_send_game_history(boost::asio::io_service& io_service, wesnothd::server& s, wesnothd::player_iterator player, int player_id, int offset);
 
 	/**
 	 * Inserts game related information.

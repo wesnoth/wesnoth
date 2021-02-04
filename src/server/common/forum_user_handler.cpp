@@ -15,6 +15,7 @@
 #ifdef HAVE_MYSQLPP
 
 #include "server/common/forum_user_handler.hpp"
+#include "server/wesnothd/server.hpp"
 #include "hash.hpp"
 #include "log.hpp"
 #include "config.hpp"
@@ -207,10 +208,10 @@ std::string fuh::get_tournaments(){
 	return conn_.get_tournaments();
 }
 
-void fuh::async_get_and_send_game_history(boost::asio::io_service& io_service, server_base& s_base, socket_ptr player_socket, int player_id, int offset) {
-	boost::asio::post([this, &s_base, player_socket, player_id, offset, &io_service] {
-		boost::asio::post(io_service, [player_socket, &s_base, doc = conn_.get_game_history(player_id, offset)]{
-			s_base.async_send_doc_queued(player_socket, *doc);
+void fuh::async_get_and_send_game_history(boost::asio::io_service& io_service, wesnothd::server& s, wesnothd::player_iterator player, int player_id, int offset) {
+	boost::asio::post([this, &s, player, player_id, offset, &io_service] {
+		boost::asio::post(io_service, [player, &s, doc = conn_.get_game_history(player_id, offset)]{
+			s.send_to_player(player, *doc);
 		});
 	 });
 }
