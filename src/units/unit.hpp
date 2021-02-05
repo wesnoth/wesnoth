@@ -1649,7 +1649,32 @@ public:
 		return get_ability_bool(tag_name, loc_);
 	}
 
-	/** Checks whether this unit currently possesses or is affected by a given ability  used like weapon
+	/** Checks whether this unit currently possesses a given ability used like weapon
+	 * @return True if the ability @a tag_name is active.
+	 * @param special the const config to one of abilities @a tag_name checked.
+	 * @param tag_name name of ability type checked.
+	 * @param loc location of the unit checked.
+	 */
+	bool get_self_ability_bool(const config& special, const std::string& tag_name, const map_location& loc) const;
+	/** Checks whether this unit currently possesses a given ability of leadership type
+	 * @return True if the ability @a tag_name is active.
+	 * @param special the const config to one of abilities @a tag_name checked.
+	 * @param tag_name name of ability type checked.
+	 * @param loc location of the unit checked.
+	 * @param weapon the attack used by unit checked in this function.
+	 * @param opp_weapon the attack used by opponent to unit checked.
+	 */
+	bool get_self_ability_bool_weapon(const config& special, const std::string& tag_name, const map_location& loc, const_attack_ptr weapon = nullptr, const_attack_ptr opp_weapon = nullptr) const;
+	/** Checks whether this unit is affected by a given ability  used like weapon
+	 * @return True if the ability @a tag_name is active.
+	 * @param special the const config to one of abilities @a tag_name checked.
+	 * @param tag_name name of ability type checked.
+	 * @param loc location of the unit checked.
+	 * @param from unit adjacent to @a this is checked in case of [affect_adjacent] abilities.
+	 * @param dir direction to research a unit adjacent to @a this.
+	 */
+	bool get_adj_ability_bool(const config& special, const std::string& tag_name, int dir, const map_location& loc, const unit& from) const;
+	/** Checks whether this unit is affected by a given ability of leadership type
 	 * @return True if the ability @a tag_name is active.
 	 * @param special the const config to one of abilities @a tag_name checked.
 	 * @param tag_name name of ability type checked.
@@ -1660,12 +1685,6 @@ public:
 	 * @param opp_weapon the attack used by opponent to unit checked.
 	 */
 	bool get_adj_ability_bool_weapon(const config& special, const std::string& tag_name, int dir, const map_location& loc, const unit& from, const_attack_ptr weapon=nullptr, const_attack_ptr opp_weapon = nullptr) const;
-
-	bool get_self_ability_bool_weapon(const config& special, const std::string& tag_name, const map_location& loc, const_attack_ptr weapon = nullptr, const_attack_ptr opp_weapon = nullptr) const;
-
-	bool get_self_ability_bool(const config& special, const std::string& tag_name, const map_location& loc) const;
-
-	bool get_adj_ability_bool(const config& special, const std::string& tag_name, int dir, const map_location& loc, const unit& from) const;
 
 
 	/**
