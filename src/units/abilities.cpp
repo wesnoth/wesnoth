@@ -1172,7 +1172,7 @@ unit_ability_list attack_type::get_special_ability(const std::string& ability) c
 }
 
 	/**
-	 * Gets the children of @parent (which should be the abilities for an
+	 * Gets the children of parent (which should be the abilities for an
 	 * attack_type) and places the ones whose tag or id= matches @a id into
 	 * @a tag_result and @a id_result.
 	 * @param tag_result receive the children whose tag matches @a id
