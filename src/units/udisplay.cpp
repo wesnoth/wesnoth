@@ -674,23 +674,6 @@ void unit_attack(display * disp, game_board & board,
 
 	}
 
-	for(const unit_ability& ability : attacker.get_abilities_weapons("leadership", weapon, secondary_attack)) {
-		if(ability.teacher_loc == a) {
-			continue;
-		}
-		if(ability.teacher_loc == b) {
-			continue;
-		}
-
-		unit_map::const_iterator leader = board.units().find(ability.teacher_loc);
-		assert(leader.valid());
-		leader->set_facing(ability.teacher_loc.get_relative_dir(a));
-		animator.add_animation(leader.get_shared_ptr(), "leading", ability.teacher_loc,
-		att->get_location(), damage, true,  "", {0,0,0},
-		hit_type, weapon, secondary_attack, swing);
-
-	}
-
 	for(const unit_ability& ability : defender.get_abilities_weapons("resistance", secondary_attack, weapon)) {
 		if(ability.teacher_loc == a) {
 			continue;
