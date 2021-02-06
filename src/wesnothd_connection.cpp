@@ -23,6 +23,7 @@
 #include <boost/asio/connect.hpp>
 #include <boost/asio/read.hpp>
 #include <boost/asio/write.hpp>
+#include <boost/asio/ssl/host_name_verification.hpp>
 
 #include <cstdint>
 #include <deque>
@@ -60,7 +61,10 @@ wesnothd_connection::wesnothd_connection(const std::string& host, const std::str
 	: worker_thread_()
 	, io_context_()
 	, resolver_(io_context_)
-	, socket_(io_context_)
+	, tls_context_(boost::asio::ssl::context::sslv23)
+	, host_(host)
+	, service_(service)
+	, socket_(raw_socket{io_context_})
 	, last_error_()
 	, last_error_mutex_()
 	, handshake_finished_()
@@ -121,7 +125,7 @@ void wesnothd_connection::handle_resolve(const error_code& ec, results_type resu
 		throw system_error(ec);
 	}
 
-	boost::asio::async_connect(socket_, results,
+	boost::asio::async_connect(utils::get<raw_socket>(socket_), results,
 		std::bind(&wesnothd_connection::handle_connect, this, std::placeholders::_1, std::placeholders::_2));
 }
 
@@ -147,11 +151,11 @@ void wesnothd_connection::handshake()
 {
 	MPTEST_LOG;
 	static const uint32_t handshake = 0;
+	static const uint32_t tls_handshake = htonl(uint32_t(1));
 
-	boost::asio::async_write(socket_, boost::asio::buffer(reinterpret_cast<const char*>(&handshake), 4),
+	boost::asio::async_write(utils::get<raw_socket>(socket_), boost::asio::buffer(use_tls_ ? reinterpret_cast<const char*>(&tls_handshake) : reinterpret_cast<const char*>(&handshake), 4),
 		[](const error_code& ec, std::size_t) { if(ec) { throw system_error(ec); } });
-
-	boost::asio::async_read(socket_, boost::asio::buffer(&handshake_response_.binary, 4),
+	boost::asio::async_read(utils::get<raw_socket>(socket_), boost::asio::buffer(&handshake_response_.binary, 4),
 		std::bind(&wesnothd_connection::handle_handshake, this, std::placeholders::_1));
 }
 
@@ -163,9 +167,43 @@ void wesnothd_connection::handle_handshake(const error_code& ec)
 		LOG_NW << __func__ << " Throwing: " << ec << "\n";
 		throw system_error(ec);
 	}
+	
+	if(use_tls_) {
+		if(handshake_response_.num == 0xFFFFFFFFU) {
+			throw std::runtime_error("The server doesn't support TLS");
+		}
 
-	handshake_finished_.set_value();
-	recv();
+		if(handshake_response_.num == 0x00000000) {
+			tls_context_.set_default_verify_paths();
+			raw_socket s { std::move(utils::get<raw_socket>(socket_)) };
+			socket_.emplace<1>(std::move(s), tls_context_);
+			
+			auto& socket { utils::get<tls_socket>(socket_) };
+
+			socket.set_verify_mode(
+				boost::asio::ssl::verify_peer |
+				boost::asio::ssl::verify_fail_if_no_peer_cert
+			);
+
+			socket.set_verify_callback(boost::asio::ssl::host_name_verification(host_));
+
+			socket.async_handshake(boost::asio::ssl::stream_base::client, [this](const error_code& ec) {
+				if(ec) {
+					LOG_NW << __func__ << " Throwing: " << ec << "\n";
+					throw system_error(ec);
+				}
+
+				handshake_finished_.set_value();
+				recv();
+			});
+			return;
+		}
+
+		throw std::runtime_error("Invalid handshake");
+	} else {
+		handshake_finished_.set_value();
+		recv();
+	}
 }
 
 // main thread
@@ -223,8 +261,9 @@ void wesnothd_connection::send_data(const configr_of& request)
 void wesnothd_connection::cancel()
 {
 	MPTEST_LOG;
-	if(socket_.is_open()) {
-		boost::system::error_code ec;
+	utils::visit([](auto&& socket) {
+		if(socket.lowest_layer().is_open()) {
+			boost::system::error_code ec;
 
 #ifdef _MSC_VER
 // Silence warning about boost::asio::basic_socket<Protocol>::cancel always
@@ -232,15 +271,16 @@ void wesnothd_connection::cancel()
 #pragma warning(push)
 #pragma warning(disable:4996)
 #endif
-		socket_.cancel(ec);
+		socket.lowest_layer().cancel(ec);
 #ifdef _MSC_VER
 #pragma warning(pop)
 #endif
 
-		if(ec) {
-			WRN_NW << "Failed to cancel network operations: " << ec.message() << std::endl;
+			if(ec) {
+				WRN_NW << "Failed to cancel network operations: " << ec.message() << std::endl;
+			}
 		}
-	}
+	}, socket_);
 }
 
 // main thread
@@ -384,9 +424,11 @@ void wesnothd_connection::send()
 		buf.data()
 	};
 
-	boost::asio::async_write(socket_, bufs,
-		std::bind(&wesnothd_connection::is_write_complete, this, std::placeholders::_1, std::placeholders::_2),
-		std::bind(&wesnothd_connection::handle_write, this, std::placeholders::_1, std::placeholders::_2));
+	utils::visit([this, &bufs](auto&& socket) {
+		boost::asio::async_write(socket, bufs,
+			std::bind(&wesnothd_connection::is_write_complete, this, std::placeholders::_1, std::placeholders::_2),
+			std::bind(&wesnothd_connection::handle_write, this, std::placeholders::_1, std::placeholders::_2));
+	}, socket_);
 }
 
 // worker thread
@@ -394,9 +436,11 @@ void wesnothd_connection::recv()
 {
 	MPTEST_LOG;
 
-	boost::asio::async_read(socket_, read_buf_,
-		std::bind(&wesnothd_connection::is_read_complete, this, std::placeholders::_1, std::placeholders::_2),
-		std::bind(&wesnothd_connection::handle_read, this, std::placeholders::_1, std::placeholders::_2));
+	utils::visit([this](auto&& socket) {
+		boost::asio::async_read(socket, read_buf_,
+			std::bind(&wesnothd_connection::is_read_complete, this, std::placeholders::_1, std::placeholders::_2),
+			std::bind(&wesnothd_connection::handle_read, this, std::placeholders::_1, std::placeholders::_2));
+	}, socket_);
 }
 
 // main thread

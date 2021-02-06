@@ -40,6 +40,7 @@
 #endif
 #include <boost/asio/ip/tcp.hpp>
 #include <boost/asio/streambuf.hpp>
+#include <boost/asio/ssl.hpp>
 
 #include <condition_variable>
 #include <deque>
@@ -72,6 +73,7 @@ public:
 	 *
 	 * @param host        Name of the host to connect to
 	 * @param service     Service identifier such as "80" or "http"
+	 * @param tls         Whether we want to use TLS to make connection encrypted
 	 */
 	wesnothd_connection(const std::string& host, const std::string& service);
 
@@ -147,8 +149,15 @@ private:
 	typedef boost::asio::ip::tcp::resolver resolver;
 	resolver resolver_;
 
-	typedef boost::asio::ip::tcp::socket socket;
-	socket socket_;
+	boost::asio::ssl::context tls_context_;
+
+	std::string host_;
+	std::string service_;
+	typedef boost::asio::ip::tcp::socket raw_socket;
+	typedef boost::asio::ssl::stream<raw_socket> tls_socket;
+	typedef utils::variant<raw_socket, tls_socket> any_socket;
+	bool use_tls_ = true;
+	any_socket socket_;
 
 	boost::system::error_code last_error_;
 

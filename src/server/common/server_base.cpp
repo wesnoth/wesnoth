@@ -99,7 +99,6 @@ void server_base::serve(boost::asio::yield_context yield, boost::asio::ip::tcp::
 	}
 
 	socket_ptr socket = std::make_shared<socket_ptr::element_type>(io_service_);
-	bool use_tls { false };
 
 	boost::system::error_code error;
 	acceptor.async_accept(socket->lowest_layer(), yield[error]);
@@ -135,6 +134,13 @@ void server_base::serve(boost::asio::yield_context yield, boost::asio::ip::tcp::
 		char buf[4];
 	} protocol_version;
 
+	union {
+		uint32_t number;
+		char buf[4];
+	} handshake_response;
+	
+	any_socket_ptr final_socket;
+
 	async_read(*socket, boost::asio::buffer(protocol_version.buf), yield[error]);
 	if(check_error(error, socket))
 		return;
@@ -143,14 +149,25 @@ void server_base::serve(boost::asio::yield_context yield, boost::asio::ip::tcp::
 		case 0:
 			async_write(*socket, boost::asio::buffer(handshake_response_.buf, 4), yield[error]);
 			if(check_error(error, socket)) return;
+			final_socket = socket;
 			break;
 		case 1:
 			if(!tls_enabled_) {
 				ERR_SERVER << client_address(socket) << "\tTLS requested by client but not enabled on server\n";
-				async_send_error(socket, "TLS support disabled on server.");
+				handshake_response.number = 0xFFFFFFFFU;
+			} else {
+				handshake_response.number = 0x00000000;
+			}
+
+			async_write(*socket, boost::asio::buffer(handshake_response.buf, 4), yield[error]);
+			if(check_error(error, socket) || !tls_enabled_) return;
+			
+			final_socket = tls_socket_ptr { new tls_socket_ptr::element_type(std::move(*socket), tls_context_) };
+			utils::get<tls_socket_ptr>(final_socket)->async_handshake(boost::asio::ssl::stream_base::server, yield[error]);
+			if(error) {
+				ERR_SERVER << "TLS handshake failed: " << error.message() << "\n";
 				return;
 			}
-			use_tls = true;
 
 			break;
 		default:
@@ -158,34 +175,27 @@ void server_base::serve(boost::asio::yield_context yield, boost::asio::ip::tcp::
 			return;
 	}
 
-	const std::string ip = client_address(socket);
+	utils::visit([this](auto&& socket) {
+		const std::string ip = client_address(socket);
 
-	const std::string reason = is_ip_banned(ip);
-	if (!reason.empty()) {
-		LOG_SERVER << ip << "\trejected banned user. Reason: " << reason << "\n";
-		async_send_error(socket, "You are banned. Reason: " + reason);
-			return;
-	} else if (ip_exceeds_connection_limit(ip)) {
-		LOG_SERVER << ip << "\trejected ip due to excessive connections\n";
-		async_send_error(socket, "Too many connections from your IP.");
-		return;
-	} else {
-		if(use_tls) {
-			async_send_warning(socket, "Go TLS.");
-			tls_socket_ptr tls_socket { new tls_socket_ptr::element_type(std::move(*socket), tls_context_) };
-			tls_socket->async_handshake(boost::asio::ssl::stream_base::server, yield[error]);
-			if(error) {
-				ERR_SERVER << "TLS handshake failed: " << error.message() << "\n";
+		const std::string reason = is_ip_banned(ip);
+		if (!reason.empty()) {
+			LOG_SERVER << ip << "\trejected banned user. Reason: " << reason << "\n";
+			async_send_error(socket, "You are banned. Reason: " + reason);
 				return;
-			}
-
-			DBG_SERVER << ip << "\tnew encrypted connection fully accepted\n";
-			this->handle_new_client(tls_socket);
+		} else if (ip_exceeds_connection_limit(ip)) {
+			LOG_SERVER << ip << "\trejected ip due to excessive connections\n";
+			async_send_error(socket, "Too many connections from your IP.");
+			return;
 		} else {
-			DBG_SERVER << ip << "\tnew connection fully accepted\n";
+			if constexpr (std::is_same_v<decltype(socket), tls_socket_ptr>) {
+				DBG_SERVER << ip << "\tnew encrypted connection fully accepted\n";
+			} else {
+				DBG_SERVER << ip << "\tnew connection fully accepted\n";
+			}
 			this->handle_new_client(socket);
 		}
-	}
+	}, final_socket);
 }
 
 #ifndef _WIN32
