@@ -657,10 +657,16 @@ void unit_attack(display * disp, game_board & board,
 
 	animator.add_animation(defender.shared_from_this(), defender_anim, def->get_location(), true, text, {255, 0, 0});
 
-	for(const unit_ability& ability : attacker.get_abilities_weapons("leadership", weapon, secondary_attack)) {
+	static const std::vector<std::string> leader_tags{"damage", "chance_to_hit", "berserk", "swarm", "drains", "heal_on_hit", "plague", "slow", "petrifies", "firststrike", "poison"};
+	unit_ability_list abilities = attacker.get_abilities_weapons("leadership", weapon, secondary_attack);
+	for(auto& special : leader_tags) {
+		abilities.append(weapon->list_ability(special));
+	}
+	for(const unit_ability& ability : abilities) {
 		if(ability.teacher_loc == a) {
 			continue;
 		}
+
 		if(ability.teacher_loc == b) {
 			continue;
 		}
@@ -724,8 +730,13 @@ void reset_helpers(const unit *attacker,const unit *defender)
 {
 	display* disp = display::get_singleton();
 	const unit_map& units = disp->get_units();
+	static const std::vector<std::string> leader_tags{"damage", "chance_to_hit", "berserk", "swarm", "drains", "heal_on_hit", "plague", "slow", "petrifies", "firststrike", "poison"};
 	if(attacker) {
-		for(const unit_ability& ability : attacker->get_abilities("leadership")) {
+		unit_ability_list attacker_abilities = attacker->get_abilities("leadership");
+		for(auto& special : leader_tags) {
+			attacker_abilities.append(attacker->get_abilities(special));
+		}
+		for(const unit_ability& ability : attacker_abilities) {
 			unit_map::const_iterator leader = units.find(ability.teacher_loc);
 			assert(leader != units.end());
 			leader->anim_comp().set_standing();
@@ -733,7 +744,11 @@ void reset_helpers(const unit *attacker,const unit *defender)
 	}
 
 	if(defender) {
-		for(const unit_ability& ability : defender->get_abilities("resistance")) {
+		unit_ability_list defender_abilities = defender->get_abilities("resistance");
+		for(auto& special : leader_tags) {
+			defender_abilities.append(defender->get_abilities(special));
+		}
+		for(const unit_ability& ability : defender_abilities) {
 			unit_map::const_iterator helper = units.find(ability.teacher_loc);
 			assert(helper != units.end());
 			helper->anim_comp().set_standing();
