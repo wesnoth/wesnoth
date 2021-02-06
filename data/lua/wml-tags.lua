@@ -839,7 +839,8 @@ wml_actions.unstore_unit = function(cfg)
 	local x = cfg.x or unit.x or -1
 	local y = cfg.y or unit.y or -1
 	if cfg.location_id then
-		x, y = wesnoth.special_locations[cfg.location_id]
+		local loc = wesnoth.special_locations[cfg.location_id]
+		x,y = loc[1], loc[2]
 	end
 	wesnoth.add_known_unit(unit.type)
 	if on_board(x, y) then
