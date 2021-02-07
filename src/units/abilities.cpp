@@ -1176,33 +1176,23 @@ unit_ability_list attack_type::get_special_ability(const std::string& ability) c
 	 * attack_type) and places the ones whose tag or id= matches @a id into
 	 * @a tag_result and @a id_result.
 	 * @param tag_result receive the children whose tag matches @a id
-	 * @param id_result receive the children whose idg matches @a id
+	 * @param id_result receive the children whose id matches @a id
 	 * @param parent the tags whose contain children (abilities here)
 	 * @param id tag or id of child tested
 	 * @param special_id if true, children check by id
 	 * @param special_tags if true, children check by tags
-	 *
-	 * @returns  true if  just_peeking in get_special_children(_id/tags) is true and a match was found;
-	 *           false otherwise.
 	 */
-static bool get_ability_children(std::vector<special_match>& tag_result,
+static void get_ability_children(std::vector<special_match>& tag_result,
 	                           std::vector<special_match>& id_result,
 	                           const config& parent, const std::string& id,
 	                           bool special_id=true, bool special_tags=true) {
-		if(special_id && special_tags){
-			if ( get_special_children(tag_result, id_result, parent, id) ) {
-				return true;
-			}
-		} else if(special_id && !special_tags){
-			if ( get_special_children_id(id_result, parent, id) ) {
-				return true;
-			}
-		} else if(!special_id && special_tags){
-			if ( get_special_children_tags(tag_result, parent, id) ) {
-				return true;
-			}
-		}
-		return false;
+	if(special_id && special_tags){
+		get_special_children(tag_result, id_result, parent, id);
+	} else if(special_id && !special_tags){
+		get_special_children_id(id_result, parent, id);
+	} else if(!special_id && special_tags){
+		get_special_children_tags(tag_result, parent, id);
+	}
 }
 
 bool unit::get_self_ability_bool(const config& special, const std::string& tag_name, const map_location& loc) const
@@ -1274,14 +1264,12 @@ bool attack_type::check_adj_abilities_impl(const_attack_ptr self_attack, const_a
 bool attack_type::get_special_ability_bool(const std::string& special, bool special_id, bool special_tags) const
 {
 	static std::set<std::string> included_tags{"damage", "chance_to_hit", "berserk", "swarm", "drains", "heal_on_hit", "plague", "slow", "petrifies", "firststrike", "poison"};
-	const unit_map& units = display::get_singleton()->get_units();
 	assert(display::get_singleton());
+	const unit_map& units = display::get_singleton()->get_units();
 	if(self_){
 		std::vector<special_match> special_tag_matches;
 		std::vector<special_match> special_id_matches;
-		if(get_ability_children(special_tag_matches, special_id_matches, (*self_).abilities(), special, special_id , special_tags)){
-			return true;
-		}
+		get_ability_children(special_tag_matches, special_id_matches, (*self_).abilities(), special, special_id , special_tags);
 		if(special_tags){
 			for(const special_match& entry : special_tag_matches) {
 				if(check_self_abilities(*entry.cfg, entry.tag_name, included_tags)){
@@ -1305,9 +1293,7 @@ bool attack_type::get_special_ability_bool(const std::string& special, bool spec
 			if ( &*it == self_.get() )
 				continue;
 
-			if(get_ability_children(special_tag_matches, special_id_matches, it->abilities(), special, special_id , special_tags)){
-				return true;
-			}
+			get_ability_children(special_tag_matches, special_id_matches, it->abilities(), special, special_id , special_tags);
 			if(special_tags){
 				for(const special_match& entry : special_tag_matches) {
 					if(check_adj_abilities(*entry.cfg, entry.tag_name, i , *it, included_tags)){
@@ -1328,9 +1314,7 @@ bool attack_type::get_special_ability_bool(const std::string& special, bool spec
 	if(other_){
 		std::vector<special_match> special_tag_matches;
 		std::vector<special_match> special_id_matches;
-		if(get_ability_children(special_tag_matches, special_id_matches, (*other_).abilities(), special, special_id , special_tags)){
-			return true;
-		}
+		get_ability_children(special_tag_matches, special_id_matches, (*other_).abilities(), special, special_id , special_tags);
 		if(special_tags){
 			for(const special_match& entry : special_tag_matches) {
 				if(check_self_abilities_impl(other_attack_, shared_from_this(), *entry.cfg, other_, other_loc_, AFFECT_OTHER, entry.tag_name, included_tags)){
@@ -1355,9 +1339,7 @@ bool attack_type::get_special_ability_bool(const std::string& special, bool spec
 			if ( &*it == other_.get() )
 				continue;
 
-			if(get_ability_children(special_tag_matches, special_id_matches, it->abilities(), special, special_id , special_tags)){
-				return true;
-			}
+			get_ability_children(special_tag_matches, special_id_matches, it->abilities(), special, special_id , special_tags);
 			if(special_tags){
 				for(const special_match& entry : special_tag_matches) {
 					if(check_adj_abilities_impl(other_attack_, shared_from_this(), *entry.cfg, other_, *it, i, other_loc_, AFFECT_OTHER, entry.tag_name, included_tags)){
