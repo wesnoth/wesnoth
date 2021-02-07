@@ -560,7 +560,11 @@ std::string server::is_ip_banned(const std::string& ip)
 
 void server::start_dump_stats()
 {
+#if BOOST_VERSION >= 106600
+	dump_stats_timer_.expires_after(std::chrono::minutes(5));
+#else
 	dump_stats_timer_.expires_from_now(std::chrono::minutes(5));
+#endif
 	dump_stats_timer_.async_wait([this](const boost::system::error_code& ec) { dump_stats(ec); });
 }
 
@@ -578,7 +582,11 @@ void server::dump_stats(const boost::system::error_code& ec)
 
 void server::start_tournaments_timer()
 {
+#if BOOST_VERSION >= 106600
+	tournaments_timer_.expires_after(std::chrono::minutes(60));
+#else
 	tournaments_timer_.expires_from_now(std::chrono::minutes(60));
+#endif
 	tournaments_timer_.async_wait([this](const boost::system::error_code& ec) { refresh_tournaments(ec); });
 }
 
