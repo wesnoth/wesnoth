@@ -48,6 +48,7 @@
 #include <fstream>
 #include <functional>
 #include <future>
+#include <optional>
 #include <thread>
 
 static lg::log_domain log_mp("mp/main");
@@ -68,7 +69,7 @@ public:
 	// Declare this as a friend to allow direct access to enter_create_mode
 	friend void mp::start_local_game();
 
-	mp_manager(const std::string& host);
+	mp_manager(const std::optional<std::string> host);
 
 	~mp_manager()
 	{
@@ -151,7 +152,7 @@ public:
 	}
 };
 
-mp_manager::mp_manager(const std::string& host)
+mp_manager::mp_manager(const std::optional<std::string> host)
 	: network_worker()
 	, stop(false)
 	, connection(nullptr)
@@ -164,9 +165,9 @@ mp_manager::mp_manager(const std::string& host)
 
 	state.classification().campaign_type = game_classification::CAMPAIGN_TYPE::MULTIPLAYER;
 
-	if(!host.empty()) {
+	if(host) {
 		gui2::dialogs::loading_screen::display([&]() {
-			connection = open_connection(host);
+			connection = open_connection(*host);
 
 			// If for whatever reason our connection is null at this point (dismissing the password prompt, for
 			// instance), treat it as a normal condition and exit. Any actual error conditions throw exceptions
@@ -724,7 +725,7 @@ void start_local_game()
 
 	preferences::set_message_private(false);
 
-	mp_manager("").enter_create_mode();
+	mp_manager(std::nullopt).enter_create_mode();
 }
 
 void start_local_game_commandline(const commandline_options& cmdline_opts)
