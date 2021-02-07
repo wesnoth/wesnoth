@@ -160,9 +160,6 @@ mp_manager::mp_manager(const std::optional<std::string> host)
 	, state()
 	, lobby_info(::installed_addons())
 {
-	assert(!manager);
-	manager = this;
-
 	state.classification().campaign_type = game_classification::CAMPAIGN_TYPE::MULTIPLAYER;
 
 	if(host) {
@@ -214,6 +211,11 @@ mp_manager::mp_manager(const std::optional<std::string> host)
 			received_initial_gamelist.get_future().wait();
 		});
 	}
+
+	// Avoid setting this until the connection has been fully established. open_connection may throw,
+	// in which case we don't want to point to an object instance that has not properly connected.
+	assert(!manager);
+	manager = this;
 }
 
 std::unique_ptr<wesnothd_connection> mp_manager::open_connection(std::string host)
