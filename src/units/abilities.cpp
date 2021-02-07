@@ -1263,7 +1263,6 @@ bool attack_type::check_adj_abilities_impl(const_attack_ptr self_attack, const_a
  */
 bool attack_type::get_special_ability_bool(const std::string& special, bool special_id, bool special_tags) const
 {
-	static std::set<std::string> included_tags{"damage", "chance_to_hit", "berserk", "swarm", "drains", "heal_on_hit", "plague", "slow", "petrifies", "firststrike", "poison"};
 	assert(display::get_singleton());
 	const unit_map& units = display::get_singleton()->get_units();
 	if(self_){
@@ -1272,14 +1271,14 @@ bool attack_type::get_special_ability_bool(const std::string& special, bool spec
 		get_ability_children(special_tag_matches, special_id_matches, (*self_).abilities(), special, special_id , special_tags);
 		if(special_tags){
 			for(const special_match& entry : special_tag_matches) {
-				if(check_self_abilities(*entry.cfg, entry.tag_name, included_tags)){
+				if(check_self_abilities(*entry.cfg, entry.tag_name, checking_tags_)){
 					return true;
 				}
 			}
 		}
 		if(special_id){
 			for(const special_match& entry : special_id_matches) {
-				if(check_self_abilities(*entry.cfg, entry.tag_name, included_tags)){
+				if(check_self_abilities(*entry.cfg, entry.tag_name, checking_tags_)){
 					return true;
 				}
 			}
@@ -1296,14 +1295,14 @@ bool attack_type::get_special_ability_bool(const std::string& special, bool spec
 			get_ability_children(special_tag_matches, special_id_matches, it->abilities(), special, special_id , special_tags);
 			if(special_tags){
 				for(const special_match& entry : special_tag_matches) {
-					if(check_adj_abilities(*entry.cfg, entry.tag_name, i , *it, included_tags)){
+					if(check_adj_abilities(*entry.cfg, entry.tag_name, i , *it, checking_tags_)){
 						return true;
 					}
 				}
 			}
 			if(special_id){
 				for(const special_match& entry : special_id_matches) {
-					if(check_adj_abilities(*entry.cfg, entry.tag_name, i , *it, included_tags)){
+					if(check_adj_abilities(*entry.cfg, entry.tag_name, i , *it, checking_tags_)){
 						return true;
 					}
 				}
@@ -1317,7 +1316,7 @@ bool attack_type::get_special_ability_bool(const std::string& special, bool spec
 		get_ability_children(special_tag_matches, special_id_matches, (*other_).abilities(), special, special_id , special_tags);
 		if(special_tags){
 			for(const special_match& entry : special_tag_matches) {
-				if(check_self_abilities_impl(other_attack_, shared_from_this(), *entry.cfg, other_, other_loc_, AFFECT_OTHER, entry.tag_name, included_tags)){
+				if(check_self_abilities_impl(other_attack_, shared_from_this(), *entry.cfg, other_, other_loc_, AFFECT_OTHER, entry.tag_name, checking_tags_)){
 					return true;
 				}
 			}
@@ -1325,7 +1324,7 @@ bool attack_type::get_special_ability_bool(const std::string& special, bool spec
 
 		if(special_id){
 			for(const special_match& entry : special_id_matches) {
-				if(check_self_abilities_impl(other_attack_, shared_from_this(), *entry.cfg, other_, other_loc_, AFFECT_OTHER, entry.tag_name, included_tags)){
+				if(check_self_abilities_impl(other_attack_, shared_from_this(), *entry.cfg, other_, other_loc_, AFFECT_OTHER, entry.tag_name, checking_tags_)){
 					return true;
 				}
 			}
@@ -1342,7 +1341,7 @@ bool attack_type::get_special_ability_bool(const std::string& special, bool spec
 			get_ability_children(special_tag_matches, special_id_matches, it->abilities(), special, special_id , special_tags);
 			if(special_tags){
 				for(const special_match& entry : special_tag_matches) {
-					if(check_adj_abilities_impl(other_attack_, shared_from_this(), *entry.cfg, other_, *it, i, other_loc_, AFFECT_OTHER, entry.tag_name, included_tags)){
+					if(check_adj_abilities_impl(other_attack_, shared_from_this(), *entry.cfg, other_, *it, i, other_loc_, AFFECT_OTHER, entry.tag_name, checking_tags_)){
 						return true;
 					}
 				}
@@ -1350,7 +1349,7 @@ bool attack_type::get_special_ability_bool(const std::string& special, bool spec
 
 			if(special_id){
 				for(const special_match& entry : special_id_matches) {
-					if(check_adj_abilities_impl(other_attack_, shared_from_this(), *entry.cfg, other_, *it, i, other_loc_, AFFECT_OTHER, entry.tag_name, included_tags)){
+					if(check_adj_abilities_impl(other_attack_, shared_from_this(), *entry.cfg, other_, *it, i, other_loc_, AFFECT_OTHER, entry.tag_name, checking_tags_)){
 						return true;
 					}
 				}

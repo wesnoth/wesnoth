@@ -38,7 +38,9 @@ class attack_type : public std::enable_shared_from_this<attack_type>
 {
 public:
 
+	const std::set<std::string> checking_tags_{"damage", "chance_to_hit", "berserk", "swarm", "drains", "heal_on_hit", "plague", "slow", "petrifies", "firststrike", "poison"};
 	explicit attack_type(const config& cfg);
+	const std::set<std::string>& checking_tags() const { return checking_tags_; };
 	const t_string& name() const { return description_; }
 	const std::string& id() const { return id_; }
 	const std::string& type() const { return type_; }

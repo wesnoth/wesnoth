@@ -518,7 +518,7 @@ void move_unit(const std::vector<map_location>& path, unit_ptr u,
 }
 
 
-void reset_helpers(const unit *attacker,const unit *defender);
+void reset_helpers(const unit *attacker,const unit *defender, const_attack_ptr weapon=nullptr);
 
 void unit_draw_weapon(const map_location& loc, unit& attacker,
 		const_attack_ptr attack,const_attack_ptr secondary_attack, const map_location& defender_loc, unit_ptr defender)
@@ -657,9 +657,8 @@ void unit_attack(display * disp, game_board & board,
 
 	animator.add_animation(defender.shared_from_this(), defender_anim, def->get_location(), true, text, {255, 0, 0});
 
-	static const std::vector<std::string> leader_tags{"damage", "chance_to_hit", "berserk", "swarm", "drains", "heal_on_hit", "plague", "slow", "petrifies", "firststrike", "poison"};
 	unit_ability_list abilities = attacker.get_abilities_weapons("leadership", weapon, secondary_attack);
-	for(auto& special : leader_tags) {
+	for(auto& special : attack.checking_tags()) {
 		abilities.append(weapon->list_ability(special));
 	}
 	for(const unit_ability& ability : abilities) {
@@ -721,20 +720,21 @@ void unit_attack(display * disp, game_board & board,
 	animator.wait_for_end();
 	// pass the animation back to the real unit
 	def->anim_comp().start_animation(animator.get_end_time(), defender_anim, true);
-	reset_helpers(&*att, &*def);
+	reset_helpers(&*att, &*def, weapon);
 	def->set_hitpoints(def_hitpoints);
 }
 
 // private helper function, set all helpers to default position
-void reset_helpers(const unit *attacker,const unit *defender)
+void reset_helpers(const unit *attacker,const unit *defender, const_attack_ptr weapon)
 {
 	display* disp = display::get_singleton();
 	const unit_map& units = disp->get_units();
-	static const std::vector<std::string> leader_tags{"damage", "chance_to_hit", "berserk", "swarm", "drains", "heal_on_hit", "plague", "slow", "petrifies", "firststrike", "poison"};
 	if(attacker) {
 		unit_ability_list attacker_abilities = attacker->get_abilities("leadership");
-		for(auto& special : leader_tags) {
-			attacker_abilities.append(attacker->get_abilities(special));
+		if(weapon){
+			for(auto& special : weapon->checking_tags()) {
+				attacker_abilities.append(attacker->get_abilities(special));
+			}
 		}
 		for(const unit_ability& ability : attacker_abilities) {
 			unit_map::const_iterator leader = units.find(ability.teacher_loc);
@@ -745,8 +745,10 @@ void reset_helpers(const unit *attacker,const unit *defender)
 
 	if(defender) {
 		unit_ability_list defender_abilities = defender->get_abilities("resistance");
-		for(auto& special : leader_tags) {
-			defender_abilities.append(defender->get_abilities(special));
+		if(weapon){
+			for(auto& special : weapon->checking_tags()) {
+				defender_abilities.append(defender->get_abilities(special));
+			}
 		}
 		for(const unit_ability& ability : defender_abilities) {
 			unit_map::const_iterator helper = units.find(ability.teacher_loc);
