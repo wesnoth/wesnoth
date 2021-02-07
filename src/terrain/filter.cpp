@@ -90,14 +90,6 @@ terrain_filter::terrain_filter_cache::terrain_filter_cache() :
 	ufilter_()
 {}
 
-namespace {
-	struct cfg_isor {
-		bool operator() (std::pair<const std::string,const vconfig> val) const {
-			return val.first == "or";
-		}
-	};
-} //end anonymous namespace
-
 bool terrain_filter::match_internal(const map_location& loc, const unit* ref_unit, const bool ignore_xy) const
 {
 	if (!this->fc_->get_disp_context().map().on_board_with_border(loc)) {
@@ -411,31 +403,22 @@ bool terrain_filter::match_impl(const map_location& loc, const unit* ref_unit) c
 	for(i = hexes.begin(); i != hexes.end(); ++i) {
 		bool matches = match_internal(*i, ref_unit, false);
 
-		//handle [and], [or], and [not] with in-order precedence
-		vconfig::all_children_iterator cond = cfg_.ordered_begin();
-		vconfig::all_children_iterator cond_end = cfg_.ordered_end();
-		while(cond != cond_end)
-		{
-			const std::string& cond_name = cond.get_key();
-			const vconfig& cond_cfg = cond.get_child();
-
-			//handle [and]
-			if(cond_name == "and")
-			{
-				matches = matches && terrain_filter(cond_cfg, *this).match_impl(*i, ref_unit);
+		// Handle [and], [or], and [not] with in-order precedence
+		for(const auto& [key, filter] : cfg_.all_ordered()) {
+			// Handle [and]
+			if(key == "and") {
+				matches = matches && terrain_filter(filter, *this).match_impl(*i, ref_unit);
 			}
-			//handle [or]
-			else if(cond_name == "or")
-			{
-				matches = matches || terrain_filter(cond_cfg, *this).match_impl(*i, ref_unit);
+			// Handle [or]
+			else if(key == "or") {
+				matches = matches || terrain_filter(filter, *this).match_impl(*i, ref_unit);
 			}
-			//handle [not]
-			else if(cond_name == "not")
-			{
-				matches = matches && !terrain_filter(cond_cfg, *this).match_impl(*i, ref_unit);
+			// Handle [not]
+			else if(key == "not") {
+				matches = matches && !terrain_filter(filter, *this).match_impl(*i, ref_unit);
 			}
-			++cond;
 		}
+
 		if(matches) {
 			return true;
 		}
@@ -604,24 +587,19 @@ void terrain_filter::get_locs_impl(std::set<map_location>& locs, const unit* ref
 		}
 	}
 
-	//handle [and], [or], and [not] with in-order precedence
-	vconfig::all_children_iterator cond = cfg_.ordered_begin();
-	vconfig::all_children_iterator cond_end = cfg_.ordered_end();
-	int ors_left = std::count_if(cond, cond_end, cfg_isor());
-	while(cond != cond_end)
-	{
+	int ors_left = std::count_if(cfg_.ordered_begin(), cfg_.ordered_end(), [](const auto& val) { return val.first == "or"; });
+
+	// Handle [and], [or], and [not] with in-order precedence
+	for(const auto& [key, filter] : cfg_.all_ordered()) {
 		//if there are no locations or [or] conditions left, go ahead and return empty
 		if(match_set.empty() && ors_left <= 0) {
 			return;
 		}
 
-		const std::string& cond_name = cond.get_key();
-		const vconfig& cond_cfg = cond.get_child();
-
-		//handle [and]
-		if(cond_name == "and") {
+		// Handle [and]
+		if(key == "and") {
 			std::set<map_location> intersect_hexes;
-			terrain_filter(cond_cfg, *this).get_locations(intersect_hexes, with_border);
+			terrain_filter(filter, *this).get_locations(intersect_hexes, with_border);
 			std::set<map_location>::iterator intersect_itor = match_set.begin();
 			while(intersect_itor != match_set.end()) {
 				if(intersect_hexes.find(*intersect_itor) == intersect_hexes.end()) {
@@ -631,10 +609,10 @@ void terrain_filter::get_locs_impl(std::set<map_location>& locs, const unit* ref
 				}
 			}
 		}
-		//handle [or]
-		else if(cond_name == "or") {
+		// Handle [or]
+		else if(key == "or") {
 			std::set<map_location> union_hexes;
-			terrain_filter(cond_cfg, *this).get_locations(union_hexes, with_border);
+			terrain_filter(filter, *this).get_locations(union_hexes, with_border);
 			//match_set.insert(union_hexes.begin(), union_hexes.end()); //doesn't compile on MSVC
 			std::set<map_location>::iterator insert_itor = union_hexes.begin();
 			while(insert_itor != union_hexes.end()) {
@@ -642,16 +620,15 @@ void terrain_filter::get_locs_impl(std::set<map_location>& locs, const unit* ref
 			}
 			--ors_left;
 		}
-		//handle [not]
-		else if(cond_name == "not") {
+		// Handle [not]
+		else if(key == "not") {
 			std::set<map_location> removal_hexes;
-			terrain_filter(cond_cfg, *this).get_locations(removal_hexes, with_border);
+			terrain_filter(filter, *this).get_locations(removal_hexes, with_border);
 			std::set<map_location>::iterator erase_itor = removal_hexes.begin();
 			while(erase_itor != removal_hexes.end()) {
 				match_set.erase(*erase_itor++);
 			}
 		}
-		++cond;
 	}
 	if(match_set.empty()) {
 		return;

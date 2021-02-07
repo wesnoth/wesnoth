@@ -317,10 +317,10 @@ WML_HANDLER_FUNCTION(do_command,, cfg)
 		ERR_NG << "[do_command] can only be used from clients that control the currently playing side" << std::endl;
 		return;
 	}
-	for(vconfig::all_children_iterator i = cfg.ordered_begin(); i != cfg.ordered_end(); ++i)
+	for(const auto& [key, child] : cfg.all_ordered())
 	{
-		if(allowed_tags.find( i.get_key()) == allowed_tags.end()) {
-			ERR_NG << "unsupported tag [" << i.get_key() << "] in [do_command]" << std::endl;
+		if(allowed_tags.find(key) == allowed_tags.end()) {
+			ERR_NG << "unsupported tag [" << key << "] in [do_command]" << std::endl;
 			std::stringstream o;
 			std::copy(allowed_tags.begin(), allowed_tags.end(), std::ostream_iterator<std::string>(o, " "));
 			ERR_NG << "allowed tags: " << o.str() << std::endl;
@@ -332,8 +332,8 @@ WML_HANDLER_FUNCTION(do_command,, cfg)
 		//Note that this fires related events and everything else that also happens normally.
 		//have to watch out with the undo stack, therefore forbid [auto_shroud] and [update_shroud] here...
 		synced_context::run_in_synced_context_if_not_already(
-			/*commandname*/ i.get_key(),
-			/*data*/ i.get_child().get_parsed_config(),
+			/*commandname*/ key,
+			/*data*/ child.get_parsed_config(),
 			/*use_undo*/ true,
 			/*show*/ true,
 			/*error_handler*/ &on_replay_error
