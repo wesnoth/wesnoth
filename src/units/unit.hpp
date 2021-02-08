@@ -1714,6 +1714,8 @@ public:
 
 	const config &abilities() const { return abilities_; }
 
+	const std::set<std::string>& checking_tags() const { return checking_tags_; };
+
 	/**
 	 * Gets the names and descriptions of this unit's abilities. Location-independent variant
 	 * with all abilities shown as active.
@@ -1763,6 +1765,8 @@ public:
 
 
 private:
+
+ 	const std::set<std::string> checking_tags_{"damage", "chance_to_hit", "berserk", "swarm", "drains", "heal_on_hit", "plague", "slow", "petrifies", "firststrike", "poison"};
 	/**
 	 * Check if an ability is active.
 	 * @param ability The type (tag name) of the ability
