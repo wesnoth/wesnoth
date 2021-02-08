@@ -183,6 +183,8 @@ private:
 
 	data_union handshake_response_;
 
+	void fallback_to_unencrypted();
+
 	std::size_t is_write_complete(const boost::system::error_code& error, std::size_t bytes_transferred);
 	void handle_write(const boost::system::error_code& ec, std::size_t bytes_transferred);
 

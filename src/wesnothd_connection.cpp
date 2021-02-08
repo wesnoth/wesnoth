@@ -164,8 +164,10 @@ void wesnothd_connection::handle_handshake(const error_code& ec)
 {
 	MPTEST_LOG;
 	if(ec) {
-		if(ec == boost::asio::error::eof) {
-			throw std::runtime_error("Failed to complete handshake with server");
+		if(ec == boost::asio::error::eof && use_tls_) {
+			// immediate disconnect likely means old server not supporting TLS handshake code
+			fallback_to_unencrypted();
+			return;
 		}
 		LOG_NW << __func__ << " Throwing: " << ec << "\n";
 		throw system_error(ec);
@@ -173,7 +175,8 @@ void wesnothd_connection::handle_handshake(const error_code& ec)
 	
 	if(use_tls_) {
 		if(handshake_response_.num == 0xFFFFFFFFU) {
-			throw std::runtime_error("The server doesn't support TLS");
+			fallback_to_unencrypted();
+			return;
 		}
 
 		if(handshake_response_.num == 0x00000000) {
@@ -202,11 +205,24 @@ void wesnothd_connection::handle_handshake(const error_code& ec)
 			return;
 		}
 
-		throw std::runtime_error("Invalid handshake");
+		fallback_to_unencrypted();
 	} else {
 		handshake_finished_.set_value();
 		recv();
 	}
+}
+
+// worker thread
+void wesnothd_connection::fallback_to_unencrypted()
+{
+	assert(use_tls_ == true);
+	use_tls_ = false;
+
+	boost::asio::ip::tcp::endpoint endpoint { utils::get<raw_socket>(socket_).remote_endpoint() };
+	utils::get<raw_socket>(socket_).close();
+
+	utils::get<raw_socket>(socket_).async_connect(endpoint,
+		std::bind(&wesnothd_connection::handle_connect, this, std::placeholders::_1, endpoint));
 }
 
 // main thread
