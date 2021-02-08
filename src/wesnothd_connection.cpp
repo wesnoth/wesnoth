@@ -164,6 +164,9 @@ void wesnothd_connection::handle_handshake(const error_code& ec)
 {
 	MPTEST_LOG;
 	if(ec) {
+		if(ec == boost::asio::error::eof) {
+			throw std::runtime_error("Failed to complete handshake with server");
+		}
 		LOG_NW << __func__ << " Throwing: " << ec << "\n";
 		throw system_error(ec);
 	}
