@@ -160,7 +160,11 @@ void server_base::serve(boost::asio::yield_context yield, boost::asio::ip::tcp::
 			}
 
 			async_write(*socket, boost::asio::buffer(handshake_response.buf, 4), yield[error]);
-			if(check_error(error, socket) || !tls_enabled_) return;
+			if(check_error(error, socket)) return;
+			if(!tls_enabled_) { // continue with unencrypted connection if TLS disabled
+				final_socket = socket;
+				break;
+			}
 			
 			final_socket = tls_socket_ptr { new tls_socket_ptr::element_type(std::move(*socket), tls_context_) };
 			utils::get<tls_socket_ptr>(final_socket)->async_handshake(boost::asio::ssl::stream_base::server, yield[error]);

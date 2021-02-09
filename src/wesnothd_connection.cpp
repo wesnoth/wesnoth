@@ -175,7 +175,8 @@ void wesnothd_connection::handle_handshake(const error_code& ec)
 	
 	if(use_tls_) {
 		if(handshake_response_.num == 0xFFFFFFFFU) {
-			fallback_to_unencrypted();
+			use_tls_ = false;
+			handle_handshake(ec);
 			return;
 		}
 
