@@ -17,6 +17,7 @@
 #include "log.hpp"
 #include "serialization/parser.hpp"
 #include "filesystem.hpp"
+#include "utils/general.hpp"
 
 #ifdef HAVE_CONFIG_H
 #include "config.h"
@@ -192,7 +193,7 @@ void server_base::serve(boost::asio::yield_context yield, boost::asio::ip::tcp::
 			async_send_error(socket, "Too many connections from your IP.");
 			return;
 		} else {
-			if constexpr (std::is_same_v<decltype(socket), tls_socket_ptr>) {
+			if constexpr (utils::decayed_is_same<tls_socket_ptr, decltype(socket)>) {
 				DBG_SERVER << ip << "\tnew encrypted connection fully accepted\n";
 			} else {
 				DBG_SERVER << ip << "\tnew connection fully accepted\n";
