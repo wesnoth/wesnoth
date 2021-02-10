@@ -146,6 +146,9 @@ void wesnothd_connection::handle_connect(const boost::system::error_code& ec, en
 #else
 		LOG_NW << "Connected to " << endpoint->endpoint().address() << '\n';
 #endif
+		if(endpoint.address().is_loopback()) {
+			use_tls_ = false;
+		}
 		handshake();
 	}
 }
