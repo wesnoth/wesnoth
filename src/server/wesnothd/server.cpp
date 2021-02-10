@@ -29,6 +29,7 @@
 #include "serialization/string_utils.hpp"
 #include "serialization/unicode.hpp"
 #include <functional>
+#include "utils/general.hpp"
 #include "utils/iterable_pair.hpp"
 #include "game_version.hpp"
 
@@ -1874,8 +1875,13 @@ template<class SocketPtr> void server::send_server_message(SocketPtr socket, con
 
 void server::disconnect_player(player_iterator player)
 {
-	// FIXME: this is not a correct way for TLS
-	utils::visit([](auto&& socket) { socket->lowest_layer().shutdown(boost::asio::ip::tcp::socket::shutdown_receive); }, player->socket());
+	utils::visit([](auto&& socket) {
+		if constexpr (utils::decayed_is_same<tls_socket_ptr, decltype(socket)>) {
+			socket->shutdown();
+		} else {
+			socket->lowest_layer().shutdown(boost::asio::ip::tcp::socket::shutdown_receive);
+		}
+	}, player->socket());
 }
 
 void server::remove_player(player_iterator iter)
