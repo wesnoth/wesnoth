@@ -115,13 +115,13 @@ wesnothd_connection::~wesnothd_connection()
 {
 	MPTEST_LOG;
 
-	if(socket_.index() == 1) {
+	if(auto socket = utils::get_if<tls_socket>(&socket_)) {
 		error_code ec;
 		// this sends close_notify for secure connection shutdown
-		utils::get<tls_socket>(socket_).async_shutdown([](const error_code&) {} );
+		socket->async_shutdown([](const error_code&) {} );
 		const char buffer[] = "";
 		// this write is needed to trigger immediate close instead of waiting for other side's close_notify
-		boost::asio::write(utils::get<tls_socket>(socket_), boost::asio::buffer(buffer, 0), ec);
+		boost::asio::write(*socket, boost::asio::buffer(buffer, 0), ec);
 	}
 	// Stop the io_service and wait for the worker thread to terminate.
 	stop();
