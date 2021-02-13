@@ -87,11 +87,8 @@ wesnoth.wml_actions.random_placement = function(cfg)
 				utils.set_exiting("none")
 				break
 			elseif action ~= "none" then
-				utils.end_var_scope(variable, variable_previous)
 				return
 			end
 		end
 	end
-	utils.end_var_scope(variable, variable_previous)
-
 end
