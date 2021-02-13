@@ -50,10 +50,7 @@ class game_load : public modal_dialog
 public:
 	game_load(const game_config_view& cache_config, savegame::load_game_metadata& data);
 
-	static bool execute(const game_config_view& cache_config, savegame::load_game_metadata& data)
-	{
-		return game_load(cache_config, data).show();
-	}
+	static bool execute(const game_config_view& cache_config, savegame::load_game_metadata& data);
 
 private:
 	/** Inherited from modal_dialog. */
@@ -72,7 +69,8 @@ private:
 	void delete_button_callback();
 	void handle_dir_select();
 
-	void display_savegame_internal();
+	/** Part of display_savegame that might throw a config::error if the savegame data is corrupt. */
+	void display_savegame_internal(const savegame::save_info& game);
 	void display_savegame();
 	void evaluate_summary_string(std::stringstream& str, const config& cfg_summary);
 

@@ -58,6 +58,27 @@ namespace gui2::dialogs
 
 REGISTER_DIALOG(game_load)
 
+bool game_load::execute(const game_config_view& cache_config, savegame::load_game_metadata& data)
+{
+	if(savegame::save_index_class::default_saves_dir()->get_saves_list().empty()) {
+		bool found_files = false;
+		for(const auto& dir : filesystem::find_other_version_saves_dirs()) {
+			if(!found_files) {
+				// this needs to be a shared_ptr because get_saves_list() uses shared_from_this
+				auto index = std::make_shared<savegame::save_index_class>(dir.path);
+				found_files = !index->get_saves_list().empty();
+			}
+		}
+
+		if(!found_files) {
+			gui2::show_transient_message(_("No Saved Games"), _("There are no saved games to load."));
+			return false;
+		}
+	}
+
+	return game_load(cache_config, data).show();
+}
+
 game_load::game_load(const game_config_view& cache_config, savegame::load_game_metadata& data)
 	: filename_(data.filename)
 	, save_index_manager_(data.manager)
@@ -122,12 +143,10 @@ void game_load::set_save_dir_list(menu_button& dir_list)
 	options.emplace_back("label",  _("game_version^Current Version"), "path", "");
 
 	for(const auto& known_dir : other_dirs) {
-		if(!known_dir.path.empty()) {
-			options.emplace_back(
-				"label", VGETTEXT("game_version^Wesnoth $version", utils::string_map{{"version", known_dir.version}}),
-				"path", known_dir.path
-			);
-		}
+		options.emplace_back(
+			"label", VGETTEXT("game_version^Wesnoth $version", utils::string_map{{"version", known_dir.version}}),
+			"path", known_dir.path
+		);
 	}
 
 	dir_list.set_values(options);
@@ -159,16 +178,8 @@ void game_load::populate_game_list()
 	find_widget<button>(get_window(), "delete", false).set_active(!save_index_manager_->read_only());
 }
 
-void game_load::display_savegame_internal()
+void game_load::display_savegame_internal(const savegame::save_info& game)
 {
-	const int selected_row =
-		find_widget<listbox>(get_window(), "savegame_list", false).get_selected_row();
-
-	if(selected_row == -1) {
-		return;
-	}
-
-	savegame::save_info& game = games_[selected_row];
 	filename_ = game.name();
 	summary_  = game.summary();
 
@@ -257,18 +268,30 @@ void game_load::display_savegame_internal()
 // the first in the list) from making the dialog fail to open.
 void game_load::display_savegame()
 {
+	bool successfully_displayed_a_game = false;
+
 	try {
-		game_load::display_savegame_internal();
+		const int selected_row = find_widget<listbox>(get_window(), "savegame_list", false).get_selected_row();
+		if(selected_row < 0) {
+			find_widget<button>(get_window(), "delete", false).set_active(false);
+		} else {
+			find_widget<button>(get_window(), "delete", false).set_active(!save_index_manager_->read_only());
+			game_load::display_savegame_internal(games_[selected_row]);
+			successfully_displayed_a_game = true;
+		}
 	} catch(const config::error& e) {
 		// Clear the UI widgets, show an error message.
 		const std::string preamble = _("The selected file is corrupt: ");
 		const std::string message = e.message.empty() ? "(no details)" : e.message;
 		ERR_GAMELOADDLG << preamble << message << "\n";
+	}
+
+	if(!successfully_displayed_a_game) {
 		find_widget<minimap>(get_window(), "minimap", false).set_map_data("");
 		find_widget<label>(get_window(), "lblScenario", false)
-			.set_label(preamble);
+			.set_label("");
 		find_widget<scroll_label>(get_window(), "slblSummary", false)
-			.set_label(message);
+			.set_label("");
 
 		listbox& leader_list = find_widget<listbox>(get_window(), "leader_list", false);
 		leader_list.clear();
@@ -281,6 +304,12 @@ void game_load::display_savegame()
 		cancel_orders_toggle.set_active(false);
 		change_difficulty_toggle.set_active(false);
 	}
+
+	// Disable Load button if nothing is selected or if the currently selected file can't be loaded
+	find_widget<button>(get_window(), "ok", false).set_active(successfully_displayed_a_game);
+
+	// Disable 'Enter' loading in the same circumstance
+	get_window()->set_enter_disabled(!successfully_displayed_a_game);
 }
 
 void game_load::filter_text_changed(const std::string& text)
@@ -319,14 +348,6 @@ void game_load::filter_text_changed(const std::string& text)
 	}
 
 	list.set_row_shown(show_items);
-
-	const bool any_shown = list.any_rows_shown();
-
-	// Disable Load button if no games are available
-	find_widget<button>(get_window(), "ok", false).set_active(any_shown);
-
-	// Disable 'Enter' loading if no games are available
-	get_window()->set_enter_disabled(!any_shown);
 }
 
 void game_load::evaluate_summary_string(std::stringstream& str, const config& cfg_summary)
@@ -334,7 +355,10 @@ void game_load::evaluate_summary_string(std::stringstream& str, const config& cf
 	std::string difficulty_human_str = string_table[cfg_summary["difficulty"]];
 	if(cfg_summary["corrupt"].to_bool()) {
 		str << "\n<span color='#f00'>" << _("(Invalid)") << "</span>";
-
+		// \todo: this skips the catch() statement in display_savegame. Low priority, as the
+		// dialog's state is reasonable; the "load" button is inactive, the "delete" button is
+		// active, and (cosmetic bug) it leaves the "change difficulty" toggle active. Can be
+		// triggered by creating an empty file in the save directory.
 		return;
 	}
 
@@ -451,11 +475,6 @@ void game_load::delete_button_callback()
 		games_.erase(games_.begin() + index);
 
 		list.remove_row(index);
-
-		// Close the dialog if there are no more saves
-		if(list.get_item_count() == 0) {
-			set_retval(retval::CANCEL);
-		}
 
 		display_savegame();
 	}
