@@ -1068,7 +1068,7 @@ void server::handle_request_campaign(const server::request& req)
 			simple_wml::document doc(wml_text.c_str(), simple_wml::INIT_STATIC);
 			doc.compress();
 
-			LOG_CS << req << "Sending add-on '" << name << "' version: " << from << " -> " << to << " (delta))\n";
+			LOG_CS << req << "Sending add-on '" << name << "' version: " << from << " -> " << to << " (delta)\n";
 
 			boost::system::error_code ec;
 			coro_send_doc(req.sock, doc, req.yield[ec]);
