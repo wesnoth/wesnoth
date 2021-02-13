@@ -20,9 +20,6 @@
     <ClCompile Include="..\..\src\lua\lbaselib.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\lua\lbitlib.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\src\lua\lcode.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -191,6 +188,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\wesnoth_lua_config.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\lua\ljumptab.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\lua\lopnames.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

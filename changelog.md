@@ -5,7 +5,7 @@
  ### Editor
  ### Multiplayer
  ### Lua API
-   * Upgrade to Lua 5.3.6.
+   * Upgrade to Lua 5.4.2.
  ### Packaging
  ### Terrain
  ### Translations
