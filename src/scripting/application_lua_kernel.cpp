@@ -299,7 +299,8 @@ application_lua_kernel::request_list application_lua_kernel::thread::run_script(
 	}
 
 	// Now we resume the function, calling the coroutine with the three arguments (events, context, info).
-	lua_resume(T_, nullptr, 3, nullptr);
+	int numres = 0;
+	lua_resume(T_, nullptr, 3, &numres);
 
 	started_ = true;
 
