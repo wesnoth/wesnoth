@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: Wesnoth_Lib-1.12\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2021-01-16 17:18+0300\n"
-"PO-Revision-Date: 2020-06-01 10:53+0200\n"
+"PO-Revision-Date: 2021-02-08 16:04+0100\n"
 "Last-Translator: Clémence\n"
 "Language-Team: French <wesnothfr@lists.tuxfamily.org>\n"
 "Language: fr\n"
@@ -20,46 +20,42 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 2.2.1\n"
+"X-Generator: Poedit 2.4.2\n"
 
 #. [ai]: id=ai_default_rca
 #: data/ai/ais/ai_default_rca.cfg:9
 msgid "Multiplayer_AI^Default AI (RCA)"
-msgstr ""
+msgstr "IA par défaut (RCA)"
 
 #. [ai]: id=ai_default_rca_1_14
 #: data/ai/ais/ai_default_rca_1_14.cfg:9
 msgid "Multiplayer_AI^Old Default AI (1.14 version)"
-msgstr ""
+msgstr "Ancienne IA par défaut (Version 1.14)"
 
 #. [ai]: id=experimental_ai
 #: data/ai/ais/ai_experimental.cfg:11
-#, fuzzy
-#| msgid "Multiplayer Alerts"
 msgid "Multiplayer_AI^Experimental AI"
-msgstr "Alertes multijoueurs"
+msgstr "IA expérimentale"
 
 #. [ai]: id=idle_ai
 #: data/ai/ais/idle_ai.cfg:4
-#, fuzzy
-#| msgid "Multiplayer Alerts"
 msgid "Multiplayer_AI^Dev AI: Idle AI"
-msgstr "Alertes multijoueurs"
+msgstr "IA de dév. : IA immobile"
 
 #. [ai]: id=ai_default_rca_alternate_recruiting
 #: data/ai/dev/ai_default_rca_alternate_recruiting.cfg:10
 msgid "Multiplayer_AI^Dev AI: Default AI (RCA) with Alternate Recruiting"
-msgstr ""
+msgstr "IA de dév. : IA par défaut (RCA) avec recrutement alternatif"
 
 #. [ai]: id=formula_ai # id is needed to uniquely identify a MP AI, it is not needed in the scenario AI
 #: data/ai/dev/formula_ai.cfg:10
 msgid "Multiplayer_AI^Dev AI: Default + Experimental Recruitment (Formula AI)"
-msgstr ""
+msgstr "IA de dév. : IA par défaut + recrutement expérimental (Formula AI)"
 
 #. [ai]: id=formula_ai_poisoning
 #: data/ai/dev/formula_ai_poisoning.cfg:9
 msgid "Multiplayer_AI^Dev AI: Default + Poisoning (Formula AI)"
-msgstr ""
+msgstr "IA de dév. : par défaut + empoisonnement (Formula AI)"
 
 #. [terrain_type]: id=zfarmer-fence  # AI-animal-proof fences from first scenario
 #. [terrain_type]: id=farmer-fence  # AI-animal-proof fences from first scenario
@@ -375,9 +371,8 @@ msgstr "Pierres"
 #. [terrain_type]: id=snowbits_small
 #: data/core/terrain.cfg:386
 #, fuzzy
-#| msgid "Snow"
 msgid "Snowbits"
-msgstr "Neige"
+msgstr "Morceaux de neige"
 
 #. [terrain_type]: id=mushrooms_small
 #: data/core/terrain.cfg:395
@@ -426,10 +421,8 @@ msgstr "Brasero allumé"
 
 #. [terrain_type]: id=fence_iron
 #: data/core/terrain.cfg:490
-#, fuzzy
-#| msgid "Fence"
 msgid "Iron Fence"
-msgstr "Clôture"
+msgstr "Clôture de fer"
 
 #. [terrain_type]: id=sand_drifts
 #: data/core/terrain.cfg:499
@@ -651,10 +644,8 @@ msgstr "Sol en pierre basique"
 
 #. [terrain_type]: id=ancient_stone_floor
 #: data/core/terrain.cfg:860
-#, fuzzy
-#| msgid "Stone Floor"
 msgid "Ancient Stone Floor"
-msgstr "Sol en pierre"
+msgstr "Sol en pierre ancien"
 
 #. [terrain_type]: id=rug_floor
 #. [terrain_type]: id=rug2_floor
@@ -745,9 +736,8 @@ msgstr "Forêt de champignons"
 #. [terrain_type]: id=fungus_grove_old
 #: data/core/terrain.cfg:975
 #, fuzzy
-#| msgid "Lit Mushroom Grove"
 msgid "Non-mixed Mushroom Grove"
-msgstr "Forêt de champignons éclairée"
+msgstr "Forêt de champignons uniforme"
 
 #. [terrain_type]: id=fungus_grove_old
 #. [terrain_type]: id=fungus_beam_old
@@ -779,10 +769,8 @@ msgstr ""
 
 #. [terrain_type]: id=fungus_beam_old
 #: data/core/terrain.cfg:994
-#, fuzzy
-#| msgid "Lit Mushroom Grove"
 msgid "Lit Non-mixed Mushroom Grove"
-msgstr "Forêt de champignons éclairée"
+msgstr "Forêt de champignons uniforme éclairée"
 
 #. [terrain_type]: id=fungus_beam
 #: data/core/terrain.cfg:1026
@@ -792,7 +780,7 @@ msgstr "Forêt de champignons éclairée"
 #. [terrain_type]: id=fungus_floor
 #: data/core/terrain.cfg:1038 data/core/terrain.cfg:1039
 msgid "Mycelium"
-msgstr ""
+msgstr "Mycélium"
 
 #. [terrain_type]: id=rocky_cave
 #. [terrain_type]: id=earthy_rocky_cave
@@ -833,10 +821,8 @@ msgstr ""
 
 #. [terrain_type]: id=earthy_rocky_cave
 #: data/core/terrain.cfg:1065
-#, fuzzy
-#| msgid "Rockbound Cave"
 msgid "Earthy Rockbound Cave"
-msgstr "Caverne accidentée"
+msgstr "Caverne accidentée terreuse"
 
 #. [terrain_type]: id=mine_rails
 #. [terrain_type]: id=mine_railsdiag1
@@ -985,38 +971,28 @@ msgstr "Mur de pierre propre"
 
 #. [terrain_type]: id=wall_stone_ancient
 #: data/core/terrain.cfg:1346
-#, fuzzy
-#| msgid "Lit Stone Wall"
 msgid "Ancient Stone Wall"
-msgstr "Mur de pierre éclairé"
+msgstr "Mur de pierre ancien"
 
 #. [terrain_type]: id=wall_stone_tomb
 #: data/core/terrain.cfg:1356
-#, fuzzy
-#| msgid "Cave Wall"
 msgid "Catacombs Wall"
-msgstr "Mur de caverne"
+msgstr "Mur de catacombes"
 
 #. [terrain_type]: id=wall_stone_tomb
 #: data/core/terrain.cfg:1357
-#, fuzzy
-#| msgid "Clean Stone Wall"
 msgid "Catacombs Stone Wall"
-msgstr "Mur de pierre propre"
+msgstr "Mur de catacombes en pierre"
 
 #. [terrain_type]: id=wall_stone_overgrown
 #: data/core/terrain.cfg:1367
-#, fuzzy
-#| msgid "Overgrown Cobbles"
 msgid "Overgrown Wall"
-msgstr "Pavés envahis par la végétation"
+msgstr "Murs envahis par la végétation"
 
 #. [terrain_type]: id=wall_stone_overgrown
 #: data/core/terrain.cfg:1368
-#, fuzzy
-#| msgid "Clean Stone Wall"
 msgid "Overgrown Stone Wall"
-msgstr "Mur de pierre propre"
+msgstr "Mur de pierre envahis par la végétation"
 
 #. [terrain_type]: id=portal_gate_rusty_sw
 #. [terrain_type]: id=portal_gate_rusty_se
@@ -1401,17 +1377,13 @@ msgstr "Château elfique en ruine"
 
 #. [terrain_type]: id=elven_castle_winter
 #: data/core/terrain.cfg:2105
-#, fuzzy
-#| msgid "Elven Castle"
 msgid "Winter Elven Castle"
-msgstr "Château elfique"
+msgstr "Château d'hiver elfique"
 
 #. [terrain_type]: id=dwarven_castle
 #: data/core/terrain.cfg:2117
-#, fuzzy
-#| msgid "Dwarven Castle"
 msgid "Dwarven Underground Castle"
-msgstr "Château nain"
+msgstr "Château souterrain nain"
 
 #. [terrain_type]: id=dwarven_castle2
 #: data/core/terrain.cfg:2129
@@ -1420,17 +1392,13 @@ msgstr "Château nain"
 
 #. [terrain_type]: id=dwarven_castle_ruin
 #: data/core/terrain.cfg:2141
-#, fuzzy
-#| msgid "Dwarven Castle"
 msgid "Dwarven Castle Ruins"
-msgstr "Château nain"
+msgstr "Château nain en ruine"
 
 #. [terrain_type]: id=dwarven_castle_winter
 #: data/core/terrain.cfg:2153
-#, fuzzy
-#| msgid "Dwarven Castle"
 msgid "Winter Dwarven Castle"
-msgstr "Château nain"
+msgstr "Château d'hiver nain"
 
 #. [terrain_type]: id=ruin
 #. [terrain_type]: id=sunkenruin
@@ -1574,17 +1542,13 @@ msgstr "Donjon de château elfe en ruine"
 
 #. [terrain_type]: id=elven_keep_winter
 #: data/core/terrain.cfg:2397
-#, fuzzy
-#| msgid "Elven Keep Ruin"
 msgid "Winter Elven Keep"
-msgstr "Donjon de château elfe en ruine"
+msgstr "Donjon de château d'hiver elfe"
 
 #. [terrain_type]: id=dwarven_keep
 #: data/core/terrain.cfg:2410
-#, fuzzy
-#| msgid "Dwarven Castle Keep"
 msgid "Dwarven Underground Keep"
-msgstr "Donjon de château nain"
+msgstr "Donjon de château souterrain nain"
 
 #. [terrain_type]: id=dwarven_keep2
 #: data/core/terrain.cfg:2423
@@ -1593,17 +1557,13 @@ msgstr "Donjon de château nain"
 
 #. [terrain_type]: id=dwarven_keep_ruin
 #: data/core/terrain.cfg:2436
-#, fuzzy
-#| msgid "Dwarven Castle Keep"
 msgid "Dwarven Ruin Keep"
-msgstr "Donjon de château nain"
+msgstr "Donjon de château en ruine nain"
 
 #. [terrain_type]: id=dwarven_keep_winter
 #: data/core/terrain.cfg:2449
-#, fuzzy
-#| msgid "Dwarven Castle Keep"
 msgid "Winter Dwarven Keep"
-msgstr "Donjon de château nain"
+msgstr "Donjon de château d'hiver nain"
 
 #. [terrain_type]: id=ruined_keep
 #. [terrain_type]: id=sunken_keep
@@ -1822,18 +1782,6 @@ msgstr "Champignons"
 
 #. [terrain_type]: id=fungus
 #: data/core/terrain.cfg:2956
-#, fuzzy
-#| msgid ""
-#| "<italic>text='Mushroom groves'</italic> are vast underground forests of "
-#| "giant mushrooms,\n"
-#| "which thrive in the damp darkness. Most units have trouble negotiating "
-#| "the spongy floor of smaller fungi, but they have plenty of cover behind "
-#| "the larger stalks. Mounted units, however, become completely mired and "
-#| "lack proper freedom of movement in combat. Undead units have a natural "
-#| "affinity for decay and function quite well in mushroom forests.\n"
-#| "\n"
-#| "Most units receive 50% to 60% defense in mushroom groves, whereas cavalry "
-#| "receive only 20%."
 msgid ""
 "<italic>text='Mushroom groves'</italic> are vast underground forests of "
 "giant mushrooms, which thrive in the damp darkness. Most units have trouble "
@@ -1920,17 +1868,6 @@ msgstr ""
 
 #. [terrain_type]: id=hills
 #: data/core/terrain.cfg:3011
-#, fuzzy
-#| msgid ""
-#| "<italic>text='Hills'</italic> represent any reasonably rough terrain,\n"
-#| "with enough dips and rises in the ground to provide some cover. Hills are "
-#| "difficult for most troops to navigate. Dwarves, trolls, and orcs have "
-#| "enough familiarity with the terrain that they can pass through it without "
-#| "being slowed down. Cavalry have enough trouble navigating the terrain "
-#| "that any defensive aid lent by cover is negated.\n"
-#| "\n"
-#| "Most units have about 50% defense in hills, whereas cavalry are limited "
-#| "to 40%. Dwarves enjoy 60% defense in hills."
 msgid ""
 "<italic>text='Hills'</italic> represent any reasonably rough terrain, with "
 "enough dips and rises in the ground to provide some cover. Hills are "
@@ -2449,7 +2386,7 @@ msgstr ""
 #. [button]: id=ok
 #: data/gui/window/addon_license_prompt.cfg:104
 msgid "I Agree"
-msgstr ""
+msgstr "J'accepte"
 
 #. [label]: id=byline
 #: data/gui/window/addon_manager.cfg:84
@@ -2708,27 +2645,23 @@ msgstr ""
 
 #. [label]
 #: data/gui/window/campaign_dialog.cfg:345
-#, fuzzy
-#| msgid "Difficulty: "
 msgid "Difficulty:"
 msgstr "Difficulté : "
 
 #. [option]
 #: data/gui/window/campaign_dialog.cfg:359
 msgid "Easy"
-msgstr ""
+msgstr "Facile"
 
 #. [option]
 #: data/gui/window/campaign_dialog.cfg:362
-#, fuzzy
-#| msgid "Normal Rug"
 msgid "Normal"
-msgstr "Rocaille normale"
+msgstr "Normale"
 
 #. [option]
 #: data/gui/window/campaign_dialog.cfg:365
 msgid "Hard"
-msgstr ""
+msgstr "Difficile"
 
 #. [label]
 #: data/gui/window/campaign_dialog.cfg:422
@@ -2738,8 +2671,6 @@ msgstr "Jouer une campagne"
 #. [button]: id=ok
 #: data/gui/window/campaign_dialog.cfg:486
 #: data/gui/window/campaign_difficulty.cfg:221
-#, fuzzy
-#| msgid "Play"
 msgid "game^Play"
 msgstr "Jouer"
 
@@ -3444,7 +3375,7 @@ msgstr "Charger un jeu"
 #. [menu_button]: id=dirList
 #: data/gui/window/game_load.cfg:311
 msgid "Show saves from a different version of Wesnoth"
-msgstr ""
+msgstr "Montrer les sauvegardes d'une version différente de Wesnoth"
 
 #. [toggle_button]: id=change_difficulty
 #: data/gui/window/game_load.cfg:496
@@ -3846,7 +3777,7 @@ msgstr "Places restantes"
 #. [toggle_button]: id=filter_vacant_slots
 #: data/gui/window/lobby_main.cfg:338
 msgid "Only show games with vacant slots"
-msgstr ""
+msgstr "Affiche uniquement les parties avec des places vacantes"
 
 #. [widget]: id=tab_label
 #. [toggle_button]: id=filter_with_friends
@@ -3858,19 +3789,17 @@ msgstr "Amis"
 #. [toggle_button]: id=filter_with_friends
 #: data/gui/window/lobby_main.cfg:351
 msgid "Only show games with friends"
-msgstr ""
+msgstr "Affiche uniquement les parties avec vos amis"
 
 #. [toggle_button]: id=filter_with_ignored
 #: data/gui/window/lobby_main.cfg:363
-#, fuzzy
-#| msgid "Connected Players"
 msgid "Blocked players"
-msgstr "Joueurs connectés"
+msgstr "Joueurs bloqués"
 
 #. [toggle_button]: id=filter_with_ignored
 #: data/gui/window/lobby_main.cfg:364
 msgid "Show games that include players you have blocked"
-msgstr ""
+msgstr "Affiche les parties incluant des joueurs que vous avez bloqués"
 
 #. [toggle_button]: id=filter_invert
 #: data/gui/window/lobby_main.cfg:376
@@ -3904,10 +3833,8 @@ msgstr "Observer"
 #. [button]: id=server_info
 #: data/gui/window/lobby_main.cfg:448 data/gui/window/lobby_main.cfg:690
 #: data/gui/window/server_info.cfg:168
-#, fuzzy
-#| msgid "Advancements"
 msgid "Announcements"
-msgstr "Avancements"
+msgstr "Annonces"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=title
@@ -4042,39 +3969,37 @@ msgstr "Désactiver la journalisation"
 #. [label]
 #: data/gui/window/logging.cfg:145
 msgid "Logging Options"
-msgstr "Options de connexion"
+msgstr "Options de journalisation"
 
 #. [label]
 #: data/gui/window/logging.cfg:192
-#, fuzzy
-#| msgid "Log Cabin"
 msgid "Log Domain"
-msgstr "Cabane en rondins"
+msgstr "Domaine de journalisation"
 
 #. [row]
 #: data/gui/window/logging.cfg:196
 msgid "log_level^Debug"
-msgstr ""
+msgstr "Debug"
 
 #. [row]
 #: data/gui/window/logging.cfg:197
 msgid "log_level^Info"
-msgstr ""
+msgstr "Info"
 
 #. [row]
 #: data/gui/window/logging.cfg:198
 msgid "log_level^Warning"
-msgstr ""
+msgstr "Warning"
 
 #. [row]
 #: data/gui/window/logging.cfg:199
 msgid "log_level^Error"
-msgstr ""
+msgstr "Error"
 
 #. [row]
 #: data/gui/window/logging.cfg:200
 msgid "log_level^None"
-msgstr ""
+msgstr "None"
 
 #. [button]: id=clear
 #: data/gui/window/lua_interpreter.cfg:117
@@ -4122,10 +4047,8 @@ msgstr "Dans le vestibule"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:184
-#, fuzzy
-#| msgid "Player joins:"
 msgid "Player joins"
-msgstr "Arrivée du joueur :"
+msgstr "Arrivée d'un joueur"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:184
@@ -4134,10 +4057,8 @@ msgstr "Lorsqu'un joueur rejoint le salon ou une partie"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:185
-#, fuzzy
-#| msgid "Player leaves:"
 msgid "Player leaves"
-msgstr "Départ du joueur :"
+msgstr "Départ d'un joueur"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:185
@@ -4151,17 +4072,13 @@ msgstr "Lorsqu'un message privé est reçu"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:186
-#, fuzzy
-#| msgid "Whisper:"
 msgid "Whisper"
-msgstr "Murmure :"
+msgstr "Murmure"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:187
-#, fuzzy
-#| msgid "Friend message:"
 msgid "Friend message"
-msgstr "Message d'un ami :"
+msgstr "Message d'un ami"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:187
@@ -4170,10 +4087,8 @@ msgstr "Lorsqu'un message d'un ami est reçu"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:188
-#, fuzzy
-#| msgid "Public message:"
 msgid "Public message"
-msgstr "Message public :"
+msgstr "Message public"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:188
@@ -4182,10 +4097,8 @@ msgstr "Lorsqu'un message public est reçu"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:189
-#, fuzzy
-#| msgid "Server message:"
 msgid "Server message"
-msgstr "Message du serveur :"
+msgstr "Message du serveur"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:189
@@ -4194,10 +4107,8 @@ msgstr "Lorsqu'un message du serveur est reçu"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:190
-#, fuzzy
-#| msgid "Ready to start:"
 msgid "Ready to start"
-msgstr "Prêt à commencer :"
+msgstr "Prêt à commencer"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:190
@@ -4206,10 +4117,8 @@ msgstr "Lorsque la partie dont vous êtes l'hôte est prête à commencer"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:191
-#, fuzzy
-#| msgid "Game has begun:"
 msgid "Game has begun"
-msgstr "La partie a commencé :"
+msgstr "La partie a commencé"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:191
@@ -4218,10 +4127,8 @@ msgstr "Lorsque l'hôte (pas vous) a commencé la partie"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:192
-#, fuzzy
-#| msgid "Turn changed:"
 msgid "Turn changed"
-msgstr "Changement de tour :"
+msgstr "Changement de tour"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:192
@@ -4230,10 +4137,8 @@ msgstr "Lorsqu'un nouveau tour a commencé"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:193
-#, fuzzy
-#| msgid "Game created:"
 msgid "Game created"
-msgstr "Partie créée :"
+msgstr "Partie créée"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:193
@@ -4264,10 +4169,8 @@ msgstr "Se connecter au serveur multijoueur officiel de Wesnoth"
 
 #. [label]
 #: data/gui/window/mp_connect.cfg:101
-#, fuzzy
-#| msgid "Address"
 msgid "Address:"
-msgstr "Adresse"
+msgstr "Adresse :"
 
 #. [label]: id=address
 #: data/gui/window/mp_connect.cfg:176
@@ -4277,9 +4180,8 @@ msgstr "Adresse"
 #. [button]: id=server_add
 #: data/gui/window/mp_connect.cfg:270
 #, fuzzy
-#| msgid "Address"
 msgid "Add"
-msgstr "Adresse"
+msgstr "Ajouter"
 
 #. [label]
 #: data/gui/window/mp_create_game.cfg:119
@@ -4740,8 +4642,9 @@ msgstr "Je suis prêt"
 
 #. [text]
 #: data/gui/window/outro.cfg:49
+#, fuzzy
 msgid "Press ESC to skip"
-msgstr ""
+msgstr "Appuyez sur ESC pour sauter"
 
 #. [widget]: id=label
 #: data/gui/window/preferences.cfg:310
@@ -5088,16 +4991,12 @@ msgstr "Limité le nombre d'image par seconde"
 
 #. [toggle_button]: id=fps_limiter
 #: data/gui/window/preferences/03_display.cfg:275
-#, fuzzy
-#| msgid ""
-#| "Disabling this increases CPU usage to 100% but may slightly improve "
-#| "performance at high resolutions"
 msgid ""
 "Disabling this increases CPU usage, but may slightly improve performance "
 "(requires restart to take effect)"
 msgstr ""
-"Désactiver cette option augmente l'usage du CPU à 100%, mais peut améliorer "
-"sensiblement les performances à hautes résolutions"
+"Désactiver cette option augmente l'usage du CPU, mais peut améliorer "
+"sensiblement les performances (nécessite un redémarrage pour prendre effet)"
 
 #. [button]: id=choose_theme
 #: data/gui/window/preferences/03_display.cfg:290
@@ -5349,10 +5248,8 @@ msgstr "Afficher les orbes ennemies"
 
 #. [label]: id=asdf
 #: data/gui/window/server_info.cfg:79
-#, fuzzy
-#| msgid "Map Information"
 msgid "Server Information"
-msgstr "Information de la carte"
+msgstr "Information du serveur"
 
 #. [label]
 #: data/gui/window/sp_options_configure.cfg:44
@@ -5623,10 +5520,8 @@ msgstr "Attaquer l'ennemi"
 
 #. [label]
 #: data/gui/window/unit_create.cfg:55
-#, fuzzy
-#| msgid "Delete Unit"
 msgid "Create Unit"
-msgstr "Supprimer l'unité"
+msgstr "Créer l'unité"
 
 #. [toggle_button]: id=sort_0
 #: data/gui/window/unit_create.cfg:134
@@ -5779,7 +5674,7 @@ msgstr "Racine"
 
 #: src/desktop/version.cpp:113
 msgid "cpu_archictecture^<unknown>"
-msgstr ""
+msgstr "<inconnu>"
 
 #: src/desktop/version.cpp:327
 msgid "operating_system^<unknown>"
@@ -5788,7 +5683,7 @@ msgstr "<inconnu>"
 #. TRANSLATORS: translate the part inside <...> only
 #: src/filesystem.cpp:637
 msgid "--userdata-dir=<relative path that doesn't start with a period>"
-msgstr ""
+msgstr "--userdata-dir=<chemin relatif qui ne commence par par un point>"
 
 #: src/filesystem.cpp:640
 msgid ""
@@ -5799,7 +5694,7 @@ msgstr ""
 #. TRANSLATORS: translate the part inside <...> only
 #: src/filesystem.cpp:705 src/filesystem.cpp:726
 msgid "--userdata-dir=<relative path>"
-msgstr ""
+msgstr "--userdata-dir=<chemin relatif>"
 
 #: src/filesystem.cpp:708 src/filesystem.cpp:729
 msgid ""
@@ -5981,16 +5876,16 @@ msgid "No grid defined."
 msgstr "Aucune grille définie."
 
 #: src/gui/core/window_builder.cpp:433
-#, fuzzy
-#| msgid "A row must have a column."
 msgid "Grid '$grid' row $row must have at least one column."
-msgstr "Une ligne doit avoir au moins une colonne."
+msgstr "La ligne $row de la grille « $grid » doit avoir au moins une colonne."
 
 #: src/gui/core/window_builder.cpp:445
 msgid ""
 "Grid '$grid' row $row has a differing number of columns ($found found, "
 "$expected expected)"
 msgstr ""
+"La ligne $rw de la grille « $grid » a un nombre différent de colonnes "
+"($found trouvées, $expected attendues)"
 
 #: src/gui/dialogs/addon/manager.cpp:194
 msgid "addons_view^All Add-ons"
@@ -6224,7 +6119,7 @@ msgstr "Le serveur a répondu avec une erreur :"
 
 #: src/gui/dialogs/addon/manager.cpp:782
 msgid "The add-on was rejected by the server:"
-msgstr ""
+msgstr "L'extension a été rejetée par le serveur :"
 
 #: src/gui/dialogs/addon/manager.cpp:797 src/gui/dialogs/addon/manager.cpp:824
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:500
@@ -6426,13 +6321,11 @@ msgstr "Le cache des données du jeu ne peut pas être purgé."
 
 #: src/gui/dialogs/game_load.cpp:167
 msgid "game_version^Current Version"
-msgstr ""
+msgstr "Version actuelle"
 
 #: src/gui/dialogs/game_load.cpp:172
-#, fuzzy
-#| msgid "Version $version"
 msgid "game_version^Wesnoth $version"
-msgstr "Version $version"
+msgstr "Wesnoth $version"
 
 #: src/gui/dialogs/game_load.cpp:309
 msgid "The selected file is corrupt: "
@@ -6636,10 +6529,8 @@ msgid "Do you really want to log out?"
 msgstr "Voulez-vous réellement vous déconnecter ?"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:238
-#, fuzzy
-#| msgid "Incompatible User-made Content."
 msgid "Incompatible User-made Content"
-msgstr "Contenu non officiel incompatible."
+msgstr "Contenu non officiel incompatible"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:239
 msgid ""
@@ -6652,10 +6543,8 @@ msgstr ""
 "l'hôte de mettre à jour ses extensions."
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:254
-#, fuzzy
-#| msgid "Missing User-made Content."
 msgid "Missing User-made Content"
-msgstr "Contenu non officiel manquant."
+msgstr "Contenu non officiel manquant"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:255
 msgid ""
@@ -6820,8 +6709,6 @@ msgstr "Le jeu sélectionné n'a pas de camps !"
 
 #. TRANSLATORS: This sentence will be followed by some details of the error, most likely the "Map could not be loaded" message from create_engine.cpp
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:829
-#, fuzzy
-#| msgid "The selected game can not be created."
 msgid "The selected game cannot be created."
 msgstr "Le jeu sélectionné ne peut être créé."
 
@@ -6948,7 +6835,7 @@ msgstr ""
 
 #: src/gui/dialogs/statistics_dialog.cpp:218
 msgid "(no attacks have taken place yet)"
-msgstr ""
+msgstr "(aucune attaque n'a eu lieu à présent)"
 
 #: src/gui/dialogs/statistics_dialog.cpp:326
 msgid ""
@@ -7110,10 +6997,8 @@ msgstr ""
 "L'ouverture des liens n'est pas prise en charge, contacter votre empaqueteur"
 
 #: src/gui/widgets/label.cpp:143
-#, fuzzy
-#| msgid "Copied link!"
 msgid "Open link?"
-msgstr "Lien copié !"
+msgstr "Ouvrir le lien ?"
 
 #: src/gui/widgets/label.cpp:174
 msgid "Copied link!"
@@ -7740,11 +7625,8 @@ msgid "Item Tool"
 msgstr "Outil d'objet"
 
 #: src/hotkey/hotkey_command.cpp:198
-#, fuzzy
-#| msgid "Left mouse button sets or drags a label, right clears."
 msgid "Left mouse button sets a new item."
-msgstr ""
-"Les clic gauche place ou déplace les étiquettes, les clic droit les efface."
+msgstr "Les clic gauche place un nouvel objet."
 
 #: src/hotkey/hotkey_command.cpp:199
 msgid ""
@@ -8121,10 +8003,6 @@ msgid "[%I:%M %p]"
 msgstr "[%I:%M %p]"
 
 #: src/terrain/translation.cpp:714
-#, fuzzy
-#| msgid ""
-#| "A terrain with a string with more than 4 characters has been found, the "
-#| "affected terrain is :"
 msgid ""
 "A terrain with a string with more than 4 characters has been found, the "
 "affected terrain is:"
