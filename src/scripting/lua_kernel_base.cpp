@@ -534,7 +534,7 @@ lua_kernel_base::lua_kernel_base()
 	cmd_log_ << "Adding game_config table...\n";
 
 	lua_getglobal(L, "wesnoth");
-	lua_newuserdata(L, 0);
+	lua_newuserdatauv(L, 0, 0);
 	lua_createtable(L, 0, 3);
 	lua_pushcfunction(L, &dispatch<&lua_kernel_base::impl_game_config_get>);
 	lua_setfield(L, -2, "__index");

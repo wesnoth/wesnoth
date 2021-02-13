@@ -4324,7 +4324,7 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 	cmd_log_ << "Adding wesnoth current table...\n";
 
 	lua_getglobal(L, "wesnoth");
-	lua_newuserdata(L, 0);
+	lua_newuserdatauv(L, 0, 0);
 	lua_createtable(L, 0, 2);
 	lua_pushcfunction(L, &dispatch<&game_lua_kernel::impl_current_get>);
 	lua_setfield(L, -2, "__index");

@@ -95,7 +95,7 @@ int intf_textdomain(lua_State *L)
 	std::size_t l;
 	char const *m = luaL_checklstring(L, 1, &l);
 
-	void *p = lua_newuserdata(L, l + 1);
+	void *p = lua_newuserdatauv(L, l + 1, 0);
 	memcpy(p, m, l + 1);
 
 	luaL_setmetatable(L, gettextKey);
@@ -498,7 +498,7 @@ std::string register_vconfig_metatable(lua_State *L)
 
 void* operator new(std::size_t sz, lua_State *L)
 {
-	return lua_newuserdata(L, sz);
+	return lua_newuserdatauv(L, sz, 0);
 }
 
 void operator delete(void*, lua_State *L)

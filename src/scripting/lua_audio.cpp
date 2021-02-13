@@ -305,7 +305,7 @@ namespace lua_audio {
 	std::string register_table(lua_State* L) {
 		// The music playlist metatable
 		lua_getglobal(L, "wesnoth");
-		lua_newuserdata(L, 0);
+		lua_newuserdatauv(L, 0, 0);
 		lua_createtable(L, 0, 4);
 		static luaL_Reg pl_callbacks[] {
 			{ "__index", impl_music_get },

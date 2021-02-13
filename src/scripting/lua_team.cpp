@@ -339,7 +339,7 @@ namespace lua_team {
 
 void luaW_pushteam(lua_State *L, team & tm)
 {
-	team** t = static_cast<team**>(lua_newuserdata(L, sizeof(team*)));
+	team** t = static_cast<team**>(lua_newuserdatauv(L, sizeof(team*), 0));
 	*t = &tm;
 	luaL_setmetatable(L, Team);
 }
