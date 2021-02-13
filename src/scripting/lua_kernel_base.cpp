@@ -659,8 +659,6 @@ bool lua_kernel_base::protected_call(lua_State * L, int nArgs, int nRets, error_
 			context += "Lua error in attached debugger: ";
 		} else if (errcode == LUA_ERRMEM) {
 			context += "Lua out of memory error: ";
-		} else if (errcode == LUA_ERRGCMM) {
-			context += "Lua error in garbage collection metamethod: ";
 		} else {
 			context += "unknown lua error: ";
 		}
@@ -694,8 +692,6 @@ bool lua_kernel_base::load_string(char const * prog, const std::string& name, er
 			context += " a syntax error";
 		} else if(errcode == LUA_ERRMEM){
 			context += " a memory error";
-		} else if(errcode == LUA_ERRGCMM) {
-			context += " an error in garbage collection metamethod";
 		} else {
 			context += " an unknown error";
 		}
