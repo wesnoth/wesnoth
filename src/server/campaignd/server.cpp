@@ -982,7 +982,10 @@ void server::handle_request_campaign(const server::request& req)
 	const auto& from = req.cfg["from_version"].str();
 	const auto& to = req.cfg["version"].str(version_map.rbegin()->first);
 
-	auto to_version_iter = version_map.find(version_info{to});
+	const version_info from_parsed{from};
+	const version_info to_parsed{to};
+
+	auto to_version_iter = version_map.find(to_parsed);
 	if(to_version_iter == version_map.end()) {
 		send_error("Could not find requested version " + to + " of the addon '" + name +
 					"'.", req.sock);
@@ -992,7 +995,13 @@ void server::handle_request_campaign(const server::request& req)
 	auto full_pack_path = addon["filename"].str() + '/' + to_version_iter->second["filename"].str();
 	const int full_pack_size = filesystem::file_size(full_pack_path);
 
-	if(!from.empty() && version_map.count(version_info{from}) != 0) {
+	// Assert `From < To` before attempting to do build an update sequence, since std::distance(A, B)
+	// requires A <= B to avoid UB with std::map (which doesn't support random access iterators) and
+	// we're going to be using that a lot next. We also can't do anything fancy with downgrades anyway,
+	// and same-version downloads can be regarded as though no From version was specified in order to
+	// keep things simple.
+
+	if(!from.empty() && from_parsed < to_parsed && version_map.count(from_parsed) != 0) {
 		// Build a sequence of updates beginning from the client's old version to the
 		// requested version. Every pair of incrementing versions on the server should
 		// have an update pack written to disk during the original upload(s).
@@ -1004,7 +1013,7 @@ void server::handle_request_campaign(const server::request& req)
 		int delivery_size = 0;
 		bool force_use_full = false;
 
-		auto start_point = version_map.find(version_info{from}); // Already known to exist
+		auto start_point = version_map.find(from_parsed); // Already known to exist
 		auto end_point = std::next(to_version_iter, 1); // May be end()
 
 		if(std::distance(start_point, end_point) <= 1) {
