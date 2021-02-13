@@ -200,7 +200,7 @@ function utils.scoped_var(name)
 	}, {
 		__metatable = "scoped WML variable",
 		__close = function(self)
-			utils.end_var_scope(name, self.original_value)
+			utils.end_var_scope(name, orig)
 		end,
 		__index = function(self, key)
 			if key == '__original' then
