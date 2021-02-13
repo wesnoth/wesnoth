@@ -4,24 +4,23 @@
 # Copyright (C) 2004 - 2020 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 #
-# Czech Wesnoth translation team <hrubymar10@gmail.com>,
-#
+# Czech Wesnoth translation team
 #
 # Yeti <yeti@physics.muni.cz> et al, 2004.
 # Oto 'tapik' Buchta <tapik@buchtovi.cz>, 2005 - 2007, 2010.
 # Vladimír Slávik <slavik.vladimir@seznam.cz>, 2007 - 2011.
 # Jan Dědič <jan.dedic@gmail.com>, 2014.
 # Martin Hrubý <hrubymar10@gmail.com>, 2017 - 2020.
-# Michal Žejdl <lachim@emer.cz>, 2019 - 2020.
+# Michal Žejdl <lachim@emer.cz>, 2019 - 2021.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2021-01-16 17:18+0300\n"
-"PO-Revision-Date: 2020-12-24 08:55+0100\n"
+"PO-Revision-Date: 2021-02-09 05:31+0100\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
-"Language-Team: Český <hrubymar10@gmail.com>\n"
+"Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -143,20 +142,16 @@ msgstr "Potvrzovat načtení uložených her z jiné verze"
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:117
 msgid "Show all unit types in help"
-msgstr "Ukázat v nápovědě všechny jednotky"
+msgstr "Ukázat v nápovědě všechny typy jednotek"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:118
-#, fuzzy
-#| msgid ""
-#| "Show all unit types in the help (requires restart). This does not alter "
-#| "the list of encountered units"
 msgid ""
 "Show all unit types in the help (requires restart). If unset, only units "
 "that have been encountered will be shown."
 msgstr ""
-"Zobrazí v nápovědě všechny druhy jednotek (vyžaduje restart). Seznam "
-"spatřených druhů jednotek tímto není ovlivněn"
+"Ukázat v nápovědě všechny typy jednotek (vyžaduje restart). Pokud není "
+"nastaveno, ukážou se pouze jednotky, se kterými ses setkal."
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:125
@@ -245,10 +240,8 @@ msgstr "Poznámky:"
 
 #. [advancement]: id=amla_default
 #: data/campaigns/World_Conquest/era/campaign/heroes.cfg:142
-#, fuzzy
-#| msgid "Max swarm bonus: "
 msgid "Max HP bonus +6%"
-msgstr "Bonus za kolo: "
+msgstr "Max. bonus zdraví +6 %"
 
 #. [lua]: wc_ii_generate_scenario
 #. [lua]: wct_store_possible_encampment_ford
@@ -396,10 +389,8 @@ msgstr ""
 
 #. [chance]
 #: data/campaigns/World_Conquest/resources/data/training.cfg:692
-#, fuzzy
-#| msgid "Be more defensive"
 msgid "+moves defense"
-msgstr "Buď opatrnější"
+msgstr "obrana navíc za počet kroků"
 
 #. [chance]
 #: data/campaigns/World_Conquest/resources/data/training.cfg:702
@@ -3877,7 +3868,7 @@ msgid ""
 "Neutral units are unaffected by day and night, fighting equally well under "
 "both conditions."
 msgstr ""
-"Neutrální jednotky nejsou ovlivněny střídáním dne a noci. V každou denní "
+"Neutrální jednotky nejsou ovlivněny střídáním dne a noci. V každou denní "
 "dobu bojují stejně."
 
 #. [language]
@@ -4230,10 +4221,8 @@ msgstr "$percent % zlata přeneseno do dalšího scénáře."
 
 #. [modification]: id=delay_advancements, type=hybrid
 #: data/modifications.cfg:3
-#, fuzzy
-#| msgid "Advancements:"
 msgid "Delay Advancements"
-msgstr "Povýšení:"
+msgstr "Pozdržet povýšení"
 
 #. [leadership]: id=magical_leadership
 #: data/scenario-test.cfg:339
@@ -4299,10 +4288,8 @@ msgstr ""
 
 #. [firststrike]: id=initiative
 #: data/scenario-test.cfg:465
-#, fuzzy
-#| msgid " (inactive)"
 msgid "initiative"
-msgstr " (neaktivní)"
+msgstr "iniciativa"
 
 #. [firststrike]: id=initiative
 #: data/scenario-test.cfg:466
@@ -4316,14 +4303,12 @@ msgstr ""
 #. [chance_to_hit]: id=marksman_leadership
 #: data/scenario-test.cfg:478
 msgid "cantor"
-msgstr ""
+msgstr "kantor"
 
 #. [chance_to_hit]: id=marksman_leadership
 #: data/scenario-test.cfg:479
-#, fuzzy
-#| msgid "female^chaotic"
 msgid "female^cantor"
-msgstr "chaotická"
+msgstr "kantorka"
 
 #. [chance_to_hit]: id=marksman_leadership
 #: data/scenario-test.cfg:480
@@ -4354,10 +4339,8 @@ msgstr "elektrický"
 
 #. [action]: id=button-playreplay, type=image
 #: data/themes/_initial.cfg:428
-#, fuzzy
-#| msgid "replay"
 msgid "replay^Play"
-msgstr "záznam"
+msgstr "Přehrát"
 
 #. [action]: id=button-playreplay, type=image
 #: data/themes/_initial.cfg:429 data/themes/_initial.cfg:589
@@ -4366,10 +4349,8 @@ msgstr "souvislé přehrávání záznamu"
 
 #. [action]: id=button-stopreplay, type=image
 #: data/themes/_initial.cfg:443
-#, fuzzy
-#| msgid "replay"
 msgid "replay^Stop"
-msgstr "záznam"
+msgstr "Zastavit"
 
 #. [action]: id=button-stopreplay, type=image
 #: data/themes/_initial.cfg:444
@@ -4378,10 +4359,8 @@ msgstr "po tomto tahu pauznout hru"
 
 #. [action]: id=button-resetreplay, type=image
 #: data/themes/_initial.cfg:459
-#, fuzzy
-#| msgid "replay"
 msgid "replay^Reset"
-msgstr "záznam"
+msgstr "Znovu"
 
 #. [action]: id=button-resetreplay, type=image
 #: data/themes/_initial.cfg:460 data/themes/_initial.cfg:617
@@ -5123,10 +5102,11 @@ msgid ""
 "lower-level units instead."
 msgstr ""
 "Namísto povyšování mají jednotky na nejvyšší úrovni schopnost <i>rozvoje po "
-"dosažení maximální úrovně</i> (<i>After Maximum Level Advancement – AMLA</"
-"i>), která obvykle zvýší maximální počet životů o 3 a uzdraví je. Toto není "
-"velký zisk, a navíc každá dosažená AMLA ztíží podmínky pro dosažení další; "
-"proto je většinou vhodnější pokusit se povýšit jednotky nižší úrovně."
+"dosažení maximální úrovně</i> (After Maximum Level Advancement – AMLA), "
+"která obvykle zvýší maximální počet bodů života jednotky o tři a úplně "
+"ji uzdraví. To jsou mnohem menší výhody než ty obvyklé při postupu na další "
+"úroveň, takže je obyčejně moudřejší místo toho povyšovat tvé jednotky nižší "
+"úrovně."
 
 #. [tip]
 #: data/tips.cfg:196
@@ -5366,7 +5346,7 @@ msgid ""
 "otherwise possible."
 msgstr ""
 "Pokud je jednotka umístěna vedle léčitelů ze dvou spojeneckých stran, bude "
-"léčena v kolech obou stran. Takto může být jednotka léčena rychleji, než by "
+"léčena v kolech obou stran. Takto může být jednotka léčena rychleji, než by "
 "jinak bylo možné."
 
 #. [tip]
@@ -5548,16 +5528,12 @@ msgstr ""
 "lišící se pouze velikostí písmen."
 
 #: src/addon/client.cpp:224
-#, fuzzy
-#| msgid "Requesting distribution terms..."
 msgid "Requesting file index..."
-msgstr "Žádám o podmínky používání..."
+msgstr "Vyžádání seznamu souborů..."
 
 #: src/addon/client.cpp:240
-#, fuzzy
-#| msgid "Sending add-on <i>$addon_title</i>..."
 msgid "Sending an update pack for the add-on <i>$addon_title</i>..."
-msgstr "Stahuji rozšíření: <i>$addon_title|</i>..."
+msgstr "Posílání aktualizačního balíčku pro rozšíření <i>$addon_title</i>..."
 
 #: src/addon/client.cpp:261
 msgid "Sending add-on <i>$addon_title</i>..."
@@ -5824,10 +5800,8 @@ msgid "No add-on data was supplied by the client."
 msgstr ""
 
 #: src/addon/validation.cpp:473
-#, fuzzy
-#| msgid "Invalid location"
 msgid "Invalid upload pack."
-msgstr "Neplatná lokace"
+msgstr "Neplatný nahraný balíček."
 
 #: src/addon/validation.cpp:477
 msgid "Invalid add-on name."
@@ -5851,30 +5825,24 @@ msgid ""
 msgstr ""
 
 #: src/addon/validation.cpp:495
-#, fuzzy
-#| msgid ""
-#| "The add-on <i>$addon_title</i> contains files or directories with case "
-#| "conflicts. File or directory names may not be differently-cased versions "
-#| "of the same string."
 msgid ""
 "The add-on contains files or directories with case conflicts.\n"
 "\n"
 "Names in the same directory may not be differently-cased versions of each "
 "other."
 msgstr ""
-"Rozšíření <i>$addon_title</i> obsahuje soubory nebo adresáře s kolizí malých "
-"a velkých písmen. Názvy souborů nebo adresářů nesmí být shodné řetězce znaků "
-"lišící se pouze velikostí písmen."
+"Rozšíření obsahuje soubory nebo adresáře s kolizí malých a velkých písmen.\n"
+"\n"
+"V jednom adresáři nesmí být vzájemně shodné názvy lišící se pouze velikostí "
+"písmen."
 
 #: src/addon/validation.cpp:501
 msgid "The add-on name contains an invalid UTF-8 sequence."
 msgstr ""
 
 #: src/addon/validation.cpp:510
-#, fuzzy
-#| msgid "No add-ons to update"
 msgid "No add-on title specified."
-msgstr "Žádná rozšíření nepotřebují aktualizaci"
+msgstr "Nebyl stanoven název rozšíření."
 
 #: src/addon/validation.cpp:514
 msgid "No add-on author/maintainer name specified."
@@ -5885,10 +5853,8 @@ msgid "No add-on version specified."
 msgstr ""
 
 #: src/addon/validation.cpp:522
-#, fuzzy
-#| msgid "No description available."
 msgid "No add-on description specified."
-msgstr "Žádné informace nejsou k dispozici."
+msgstr "Nebyl stanoven popis rozšíření."
 
 #: src/addon/validation.cpp:526
 msgid "No add-on author/maintainer email specified."
@@ -5903,10 +5869,8 @@ msgid "Formatting character in add-on title."
 msgstr ""
 
 #: src/addon/validation.cpp:538
-#, fuzzy
-#| msgid "Invalid unit type"
 msgid "Invalid or unspecified add-on type."
-msgstr "Neplatný druh jednotky"
+msgstr "Neplatný nebo neurčený typ rozšíření."
 
 #: src/addon/validation.cpp:542
 msgid "Version number not greater than the latest uploaded version."
@@ -5925,10 +5889,8 @@ msgid "Server is in read-only mode."
 msgstr ""
 
 #: src/addon/validation.cpp:563
-#, fuzzy
-#| msgid "You have no add-ons installed."
 msgid "Corrupted server add-ons list."
-msgstr "Nejsou nainstalována žádná rozšíření."
+msgstr "Poškozený seznam rozšíření serveru."
 
 #: src/addon/validation.cpp:567
 msgid "Empty add-on version list on the server."
@@ -6057,16 +6019,12 @@ msgid "Send an emotion or personal action in chat."
 msgstr "Napíše, co děláš, nebo jak se cítíš, do chatu."
 
 #: src/chat_command_handler.hpp:100
-#, fuzzy
-#| msgid ""
-#| "Sends a private message. You cannot send private messages to players in a "
-#| "running game you observe or play in."
 msgid ""
 "Send a private message. You cannot send private messages to players in a "
 "running game you observe or play in."
 msgstr ""
-"Pošle soukromou zprávu. Nelze ji poslat hráči, který hraje za některou "
-"stranu ve stejné hře jako vy (právě běžící)."
+"Poslat soukromou zprávu. Nemůžeš posílat soukromé zprávy hráčům v běžící "
+"hře, kterou sleduješ, nebo sám hraješ."
 
 #: src/chat_command_handler.hpp:102
 msgid "<nickname> <message>"
@@ -6491,9 +6449,9 @@ msgstr "Načtená hra"
 #: src/game_initialization/lobby_data.cpp:430
 msgid "Vacant Slot:"
 msgid_plural "Vacant Slots:"
-msgstr[0] "Prázdná pozice:"
-msgstr[1] "Prázdné pozice:"
-msgstr[2] "Prázdných pozic:"
+msgstr[0] "Volná pozice:"
+msgstr[1] "Volné pozice:"
+msgstr[2] "Volných pozic:"
 
 #: src/game_initialization/lobby_data.cpp:432
 msgid "mp_game_available_slots^Full"
@@ -6545,7 +6503,7 @@ msgid ""
 "The server accepts versions '$required_version', but you are using version "
 "'$your_version'"
 msgstr ""
-"Server přijímá pouze verzi '$required_version', zatímco vy máte verzi "
+"Server přijímá pouze verze '$required_version', ale ty používáš verzi "
 "'$your_version'"
 
 #: src/game_initialization/multiplayer.cpp:281
@@ -6559,7 +6517,7 @@ msgid ""
 "to do it for you."
 msgstr ""
 "Přezdívka ‘$nick’ není aktivní. Nelze si ji přivlastnit, dokud svůj účet "
-"neaktivujete emailem, nebo o to nepožádáte administrátora."
+"neaktivuješ emailem nebo o to nepožádáš administrátora."
 
 #: src/game_initialization/multiplayer.cpp:340
 msgid "Do you want to continue?"
@@ -7007,24 +6965,20 @@ msgid ""
 "This is a group of units, all of whom are <ref>dst='$topic_id' "
 "text='$help_taxonomy'</ref>"
 msgstr ""
+"Toto je skupina jednotek, z nichž jsou všichni <ref>dst='$topic_id' "
+"text='$help_taxonomy'</ref>"
 
 #: src/help/help_impl.cpp:1026
-#, fuzzy
-#| msgid "<header>text='Units with this ability'</header>"
 msgid "<header>text='Subgroups of units within this group'</header>"
-msgstr "<header>text='Jednotky s touto schopností'</header>"
+msgstr "<header>text='Podskupiny jednotek v této skupině'</header>"
 
 #: src/help/help_impl.cpp:1028
-#, fuzzy
-#| msgid "<header>text='Units of this race'</header>"
 msgid "<header>text='Groups of units within this race'</header>"
-msgstr "<header>text='Jednotky této rasy'</header>"
+msgstr "<header>text='Skupiny jednotek v této rase'</header>"
 
 #: src/help/help_impl.cpp:1037
-#, fuzzy
-#| msgid "<header>text='Units of this race'</header>"
 msgid "<header>text='Units of this group'</header>"
-msgstr "<header>text='Jednotky této rasy'</header>"
+msgstr "<header>text='Jednotky této skupiny'</header>"
 
 #: src/help/help_impl.cpp:1039
 msgid "<header>text='Units of this race'</header>"
@@ -7342,17 +7296,14 @@ msgstr "Předá/odejme ovládání strany umělé inteligenci."
 #. which must be a side-number and then optionally one of "on", "off" or "full".
 #. As with the command's name, "on", "off" and "full" are hardcoded, and shouldn't change in the translation.
 #: src/menu_events.cpp:1228
-#, fuzzy
-#| msgid ""
-#| "[<side> [on/off]]\n"
-#| "“on” = enable control by the AI, “off” = side is controlled by the player"
 msgid ""
 "[<side> [on/off/full]]\n"
 "“on” = enable but retain vision, “full” = as if it’s controlled by another "
 "player"
 msgstr ""
-"[<strana> [on/off]]\n"
-"„on“ = zapnout ovládání umělou inteligencí, „off“ = strana je ovládána hráčem"
+"[<strana> [on/off/full]]\n"
+"„on“ = zapnout, ale ponechat rozhled, „full” = jako když je ovládaná jiným "
+"hráčem"
 
 #: src/menu_events.cpp:1229
 msgid "Change terrain type of current hex"
@@ -7632,16 +7583,12 @@ msgid ""
 msgstr ""
 
 #: src/menu_events.cpp:1539
-#, fuzzy
-#| msgid "Side '$side' controller is now controlled by: AI."
 msgid "Side '$side' controller is now fully controlled by: AI."
-msgstr "Strana '$side' je nyní řízena počítačem."
+msgstr "Strana '$side' je nyní plně ovládaná počítačem."
 
 #: src/menu_events.cpp:1541
-#, fuzzy
-#| msgid "Side '$side' controller is now controlled by: AI."
 msgid "Side '$side' is already fully AI controlled."
-msgstr "Strana '$side' je nyní řízena počítačem."
+msgstr "Strana '$side' už je plně ovládaná počítačem."
 
 #: src/menu_events.cpp:1566
 msgid ""
@@ -7970,7 +7917,7 @@ msgstr "neviditelný: "
 #: src/reports.cpp:334
 msgid "This unit is invisible. It cannot be seen or attacked by enemy units."
 msgstr ""
-"Tato jednotka je neviditelná. Nemůže být spatřena a nepřítel na ni nemůže "
+"Tato jednotka je neviditelná. Nemůže být spatřena a nepřítel na ni nemůže "
 "zaútočit."
 
 #: src/reports.cpp:337
@@ -11070,11 +11017,6 @@ msgstr "Nastavení plánovacího módu"
 #~ msgid "Defeat Rowck"
 #~ msgstr "Porážka"
 
-# | msgid "Defeat enemy leader(s)"
-#, fuzzy
-#~ msgid "Death of the bat leader"
-#~ msgstr "Znič nepřátelské(ho) vůdce"
-
 #, fuzzy
 #~| msgid "Faction"
 #~ msgid "Station 1"
@@ -11305,21 +11247,6 @@ msgstr "Nastavení plánovacího módu"
 
 #~ msgid "Difficulty: Hard"
 #~ msgstr "Obtížnost: těžká"
-
-# | msgid "Campaign: $campaign_name"
-#, fuzzy
-#~ msgid "Main campaign define"
-#~ msgstr "Tažení: $campaign_name"
-
-# | msgid "Campaign Design"
-#, fuzzy
-#~ msgid "Extra campaign define"
-#~ msgstr "Návrh tažení"
-
-# | msgid "Multiplayer"
-#, fuzzy
-#~ msgid "Multiplayer define"
-#~ msgstr "Hra více hráčů"
 
 #~ msgid "Download"
 #~ msgstr "Stáhnout"
