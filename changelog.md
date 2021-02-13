@@ -11,6 +11,8 @@
  ### Translations
  ### Units
  ### User interface
+   * Improved the Load dialog when there are no saved games for the current version, and also when there are corrupted files.
+   * Re-added the pop-up when there are no saved games at all (issue #5517).
  ### WML Engine
    * Standard Location Filters now support gives_income=yes|no to make it simpler to match villages regardless of owner
  ### Miscellaneous and Bug Fixes
