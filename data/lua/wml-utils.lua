@@ -183,8 +183,36 @@ function utils.end_var_scope(name, var)
 end
 
 function utils.scoped_var(name)
-	utils.start_var_scope(name)
-	return setmetatable({}, {__close = function() utils.end_var_scope(name) end})
+	local orig = utils.start_var_scope(name)
+	return setmetatable({
+		set = function(self, new)
+			if type(new) == "table" then
+				wml.array_variables[name] = new
+			else
+				wml.variables[name] = new
+			end
+		end,
+		get = function(self)
+			local val = wml.array_variables[name]
+			if #val == 0 then val = wml.variables[name] end
+			return val
+		end
+	}, {
+		__metatable = "scoped WML variable",
+		__close = function(self)
+			utils.end_var_scope(name, self.original_value)
+		end,
+		__index = function(self, key)
+			if key == '__original' then
+				return orig
+			end
+		end,
+		__newindex = function(self, key, val)
+			if key == '__original' then
+				error("scoped variable '__original' value is read-only", 1)
+			end
+		end
+	})
 end
 
 utils.trim = wesnoth.deprecate_api('wml_utils.trim', 'stringx.trim', 1, nil, stringx.trim)
