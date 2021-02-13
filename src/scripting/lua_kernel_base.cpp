@@ -534,7 +534,7 @@ lua_kernel_base::lua_kernel_base()
 	cmd_log_ << "Adding game_config table...\n";
 
 	lua_getglobal(L, "wesnoth");
-	lua_newuserdata(L, 0);
+	lua_newuserdatauv(L, 0, 0);
 	lua_createtable(L, 0, 3);
 	lua_pushcfunction(L, &dispatch<&lua_kernel_base::impl_game_config_get>);
 	lua_setfield(L, -2, "__index");
@@ -659,8 +659,6 @@ bool lua_kernel_base::protected_call(lua_State * L, int nArgs, int nRets, error_
 			context += "Lua error in attached debugger: ";
 		} else if (errcode == LUA_ERRMEM) {
 			context += "Lua out of memory error: ";
-		} else if (errcode == LUA_ERRGCMM) {
-			context += "Lua error in garbage collection metamethod: ";
 		} else {
 			context += "unknown lua error: ";
 		}
@@ -694,8 +692,6 @@ bool lua_kernel_base::load_string(char const * prog, const std::string& name, er
 			context += " a syntax error";
 		} else if(errcode == LUA_ERRMEM){
 			context += " a memory error";
-		} else if(errcode == LUA_ERRGCMM) {
-			context += " an error in garbage collection metamethod";
 		} else {
 			context += " an unknown error";
 		}

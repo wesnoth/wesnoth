@@ -131,7 +131,6 @@
     <ClCompile Include="..\..\src\lua\lapi.cpp" />
     <ClCompile Include="..\..\src\lua\lauxlib.cpp" />
     <ClCompile Include="..\..\src\lua\lbaselib.cpp" />
-    <ClCompile Include="..\..\src\lua\lbitlib.cpp" />
     <ClCompile Include="..\..\src\lua\lcode.cpp" />
     <ClCompile Include="..\..\src\lua\lcorolib.cpp" />
     <ClCompile Include="..\..\src\lua\lctype.cpp" />
@@ -171,11 +170,13 @@
     <ClInclude Include="..\..\src\lua\ldo.h" />
     <ClInclude Include="..\..\src\lua\lfunc.h" />
     <ClInclude Include="..\..\src\lua\lgc.h" />
+    <ClInclude Include="..\..\src\lua\ljumptab.h" />
     <ClInclude Include="..\..\src\lua\llex.h" />
     <ClInclude Include="..\..\src\lua\llimits.h" />
     <ClInclude Include="..\..\src\lua\lmem.h" />
     <ClInclude Include="..\..\src\lua\lobject.h" />
     <ClInclude Include="..\..\src\lua\lopcodes.h" />
+    <ClInclude Include="..\..\src\lua\lopnames.h" />
     <ClInclude Include="..\..\src\lua\lparser.h" />
     <ClInclude Include="..\..\src\lua\lprefix.h" />
     <ClInclude Include="..\..\src\lua\lstate.h" />
