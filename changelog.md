@@ -1,6 +1,7 @@
 ## Version 1.15.9+dev
  ### Add-ons client
  ### Add-ons server
+   * Fixed undefined behavior when servicing requests to downgrade add-ons.
  ### Campaigns
  ### Editor
  ### Multiplayer
@@ -15,6 +16,7 @@
    * north-facing frames for dunefolk skirmisher, loyalist bowman, and troll whelp
  ### User interface
    * Added a "disengaged" orb, shown instead of the partially-moved orb for units that can move but can't attack.
+   * Added information about the build's (not runtime) target CPU architecture to the game version info dialog and --report.
  ### WML Engine
  ### Miscellaneous and Bug Fixes
 
