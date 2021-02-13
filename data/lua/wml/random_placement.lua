@@ -9,7 +9,7 @@ wesnoth.wml_actions.random_placement = function(cfg)
 	local num_items = cfg.num_items or wml.error("[random_placement] missing required 'num_items' attribute")
 	local variable = cfg.variable or wml.error("[random_placement] missing required 'variable' attribute")
 	local allow_less = cfg.allow_less == true
-	local variable_previous = utils.start_var_scope(variable)
+	local variable_previous <close> = utils.scoped_var(variable)
 	local math_abs = math.abs
 	local locs = wesnoth.get_locations(filter)
 	if type(num_items) == "string" then

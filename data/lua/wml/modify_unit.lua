@@ -184,12 +184,11 @@ local function simple_modify_unit(cfg)
 		end
 	end
 
-	local this_unit = utils.start_var_scope("this_unit")
+	local this_unit <close> = utils.scoped_var("this_unit")
 	for i, u in ipairs(wesnoth.units.find(filter)) do
 		wml.variables["this_unit"] = u.__cfg
 		handle_unit(u)
 	end
-	utils.end_var_scope("this_unit", this_unit)
 end
 
 function wml_actions.modify_unit(cfg)
@@ -289,11 +288,10 @@ function wml_actions.modify_unit(cfg)
 	wml_actions.store_unit { {"filter", filter}, variable = unit_variable }
 	local max_index = wml.variables[unit_variable .. ".length"] - 1
 
-	local this_unit = utils.start_var_scope("this_unit")
+	local this_unit <close> = utils.scoped_var("this_unit")
 	for current_unit = 0, max_index do
 		handle_unit(current_unit)
 	end
-	utils.end_var_scope("this_unit", this_unit)
 
 	wml.variables[unit_variable] = nil
 end

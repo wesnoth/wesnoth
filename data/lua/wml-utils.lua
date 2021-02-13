@@ -182,8 +182,15 @@ function utils.end_var_scope(name, var)
 	end
 end
 
+function utils.scoped_var(name)
+	utils.start_var_scope(name)
+	return setmetatable({}, {__close = function() utils.end_var_scope(name) end})
+end
+
 utils.trim = wesnoth.deprecate_api('wml_utils.trim', 'stringx.trim', 1, nil, stringx.trim)
 utils.parenthetical_split = wesnoth.deprecate_api('wml_utils.parenthetical_split', 'stringx.quoted_split or stringx.split', 1, nil, utils.parenthetical_split)
 utils.split = wesnoth.deprecate_api('wml_utils.split', 'stringx.split', 1, nil, utils.split)
+utils.start_var_scope = wesnoth.deprecate_api('wml_utils.start_var_scope', 'wml_utils.scoped_var', 1, nil, utils.start_var_scope, 'Assign the scoped_var to a to-be-closed local variable.')
+utils.end_var_scope = wesnoth.deprecate_api('wml_utils.end_var_scope', 'wml_utils.scoped_var', 1, nil, utils.end_var_scope, 'Assign the scoped_var to a to-be-closed local variable.')
 
 return utils
