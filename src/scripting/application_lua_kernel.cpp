@@ -277,7 +277,7 @@ application_lua_kernel::request_list application_lua_kernel::thread::run_script(
 	}
 
 	// Now we have to create the context object. It is arranged as a table of boost functions.
-	std::shared_ptr<lua_context_backend> this_context_backend = std::make_shared<lua_context_backend> (lua_context_backend());
+	auto this_context_backend = std::make_shared<lua_context_backend>();
 	lua_newtable(T_); // this will be the context table
 	for (const std::string & key : ctxt.callbacks_ | boost::adaptors::map_keys ) {
 		lua_pushstring(T_, key.c_str());
