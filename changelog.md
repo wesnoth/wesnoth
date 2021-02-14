@@ -21,6 +21,8 @@
    * Added a "disengaged" orb, shown instead of the partially-moved orb for units that can move but can't attack.
    * Added information about the build's (not runtime) target CPU architecture to the game version info dialog and --report.
  ### WML Engine
+   * Extent 'special_id_active' and 'special_type_active' to abilities used like weapon and to [leadership] abilities.
+   * abilities used like weapon can call [leading_anim] now.
  ### Miscellaneous and Bug Fixes
 
 ## Version 1.15.9
