@@ -1391,7 +1391,7 @@ bool attack_type::special_active_impl(const_attack_ptr self_attack, const_attack
 		return false;
 	}
 	if (tag_name == "firststrike" && !is_attacker && other_attack &&
-		other_attack->get_special_bool("firststrike", false)) {
+		other_attack->bool_ability("firststrike")) {
 		return false;
 	}
 
