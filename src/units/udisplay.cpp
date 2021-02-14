@@ -657,31 +657,26 @@ void unit_attack(display * disp, game_board & board,
 
 	animator.add_animation(defender.shared_from_this(), defender_anim, def->get_location(), true, text, {255, 0, 0});
 
-	const std::vector<std::string> leader_tags{"leadership", "damage", "chance_to_hit", "berserk", "swarm", "drains", "heal_on_hit", "plague", "slow", "petrifies", "firststrike", "poison"};
-	if(!leader_tags.empty()) {
-		for(auto& special : leader_tags) {
-			unit_ability_list abilities(att->get_location());
-			if(special == "leadership" || !weapon){
-				abilities = attacker.get_abilities_weapons(special, weapon, secondary_attack);
-			} else if(weapon && special != "leadership"){
-				abilities = weapon->list_ability(special);
-			}
-			for(const unit_ability& ability : abilities) {
-				if(ability.teacher_loc == a) {
-					continue;
-				}
-				if(ability.teacher_loc == b) {
-					continue;
-				}
-
-				unit_map::const_iterator leader = board.units().find(ability.teacher_loc);
-				assert(leader.valid());
-				leader->set_facing(ability.teacher_loc.get_relative_dir(a));
-				animator.add_animation(leader.get_shared_ptr(), "leading", ability.teacher_loc,
-				att->get_location(), damage, true,  "", {0,0,0},
-				hit_type, weapon, secondary_attack, swing);
-			}
+	unit_ability_list abilities = attacker.get_abilities_weapons("leadership", weapon, secondary_attack);
+	for(auto& special : attacker.checking_tags()) {
+		abilities.append(weapon->list_ability(special));
+	}
+	for(const unit_ability& ability : abilities) {
+		if(ability.teacher_loc == a) {
+			continue;
 		}
+
+		if(ability.teacher_loc == b) {
+			continue;
+		}
+
+		unit_map::const_iterator leader = board.units().find(ability.teacher_loc);
+		assert(leader.valid());
+		leader->set_facing(ability.teacher_loc.get_relative_dir(a));
+		animator.add_animation(leader.get_shared_ptr(), "leading", ability.teacher_loc,
+		att->get_location(), damage, true,  "", {0,0,0},
+		hit_type, weapon, secondary_attack, swing);
+
 	}
 
 	for(const unit_ability& ability : defender.get_abilities_weapons("resistance", secondary_attack, weapon)) {
@@ -735,30 +730,26 @@ void reset_helpers(const unit *attacker,const unit *defender)
 	display* disp = display::get_singleton();
 	const unit_map& units = disp->get_units();
 	if(attacker) {
-		const std::vector<std::string> leader_tags{"leadership", "damage", "chance_to_hit", "berserk", "swarm", "drains", "heal_on_hit", "plague", "slow", "petrifies", "firststrike", "poison"};
-		if(!leader_tags.empty()) {
-			for(auto& special : leader_tags) {
-				for(const unit_ability& ability : attacker->get_abilities(special)) {
-					unit_map::const_iterator leader = units.find(ability.teacher_loc);
-					assert(leader != units.end());
-					leader->anim_comp().set_standing();
-				}
-			}
+		unit_ability_list attacker_abilities = attacker->get_abilities("leadership");
+		for(auto& special : attacker->checking_tags()) {
+			attacker_abilities.append(attacker->get_abilities(special));
+		}
+		for(const unit_ability& ability : attacker_abilities) {
+			unit_map::const_iterator leader = units.find(ability.teacher_loc);
+			assert(leader != units.end());
+			leader->anim_comp().set_standing();
 		}
 	}
 
-
-
 	if(defender) {
-		const std::vector<std::string> helper_tags{"resistance", "damage", "chance_to_hit", "berserk", "swarm", "drains", "heal_on_hit", "plague", "slow", "petrifies", "firststrike", "poison"};
-		if(!helper_tags.empty()) {
-			for(auto& special : helper_tags) {
-				for(const unit_ability& ability : defender->get_abilities(special)) {
-					unit_map::const_iterator helper = units.find(ability.teacher_loc);
-					assert(helper != units.end());
-					helper->anim_comp().set_standing();
-				}
-			}
+		unit_ability_list defender_abilities = defender->get_abilities("resistance");
+		for(auto& special : defender->checking_tags()) {
+			defender_abilities.append(defender->get_abilities(special));
+		}
+		for(const unit_ability& ability : defender_abilities) {
+			unit_map::const_iterator helper = units.find(ability.teacher_loc);
+			assert(helper != units.end());
+			helper->anim_comp().set_standing();
 		}
 	}
 }
