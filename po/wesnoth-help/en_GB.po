@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-01-16 16:38+0300\n"
+"POT-Creation-Date: 2021-02-14 16:35-0300\n"
 "PO-Revision-Date: 2021-01-26 10:54+1100\n"
 "Last-Translator: Wedge009 <wedge009@wedge009.net>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
@@ -684,6 +684,18 @@ msgstr ""
 
 #. [topic]: id=..editor_mode_terrain
 #: data/core/editor/help.cfg:258
+#, fuzzy
+#| msgid ""
+#| "The terrain editor’s functionality is similar to a simple paint "
+#| "application.\n"
+#| "\n"
+#| "The right-hand sidebar contains, from top to bottom, the mini-map, the "
+#| "toolkit (see the pages for each tool), tool options, and "
+#| "<ref>dst='editor_palette' text='Palette'</ref>.\n"
+#| "\n"
+#| "When saved using “Save Map As” and saving to the default directory, the "
+#| "resulting map can be found in the “User Maps” game type of the "
+#| "multiplayer “Create Game” dialog."
 msgid ""
 "The terrain editor’s functionality is similar to a simple paint "
 "application.\n"
@@ -693,7 +705,7 @@ msgid ""
 "<ref>dst='editor_palette' text='Palette'</ref>.\n"
 "\n"
 "When saved using “Save Map As” and saving to the default directory, the "
-"resulting map can be found in the “User Maps” game type of the multiplayer "
+"resulting map can be found in the “Custom Maps” game type of the multiplayer "
 "“Create Game” dialog."
 msgstr ""
 "The terrain editor’s functionality is similar to a simple paint "
@@ -739,6 +751,15 @@ msgstr ""
 
 #. [topic]: id=..editor_mode_scenario
 #: data/core/editor/help.cfg:279
+#, fuzzy
+#| msgid ""
+#| "<header>text='Entering scenario mode'</header>\n"
+#| "\n"
+#| "To start a new map in scenario mode, choose “New Scenario” from the "
+#| "“File” menu.\n"
+#| "\n"
+#| "If you’re already editing a map in terrain mode, use “Save Scenario As” "
+#| "from the “File” menu; this will switch to scenario mode."
 msgid ""
 "<header>text='Entering scenario mode'</header>\n"
 "\n"
@@ -746,7 +767,10 @@ msgid ""
 "menu.\n"
 "\n"
 "If you’re already editing a map in terrain mode, use “Save Scenario As” from "
-"the “File” menu; this will switch to scenario mode."
+"the “File” menu; this will switch to scenario mode.\n"
+"\n"
+"To load a map that was created in the scenario editor, use “Load Map” from "
+"the “File” menu, and select the .cfg file (not a .map file)."
 msgstr ""
 "<header>text='Entering scenario mode'</header>\n"
 "\n"
@@ -1146,14 +1170,14 @@ msgstr ""
 "needs the [scenario]...[/scenario] (or [multiplayer]...[/multiplayer]) tags "
 "to know which WML is part of each scenario."
 
-#. [editor_times]: id=deep_underground
 #. [time]: id=deep_underground
+#. [editor_times]: id=deep_underground
 #: data/core/editor/time-of-day.cfg:47 data/core/macros/schedules.cfg:121
 msgid "Deep Underground"
 msgstr "Deep Underground"
 
-#. [editor_times]: id=indoors
 #. [time]: id=indoors
+#. [editor_times]: id=indoors
 #: data/core/editor/time-of-day.cfg:53 data/core/macros/schedules.cfg:101
 msgid "Indoors"
 msgstr "Indoors"
@@ -3205,8 +3229,8 @@ msgstr ""
 "\n"
 
 #. [time]: id=dawn
-#. [time]: id=dawn_hour
 #. [topic]: id=time_of_day
+#. [time]: id=dawn_hour
 #: data/core/help.cfg:404 data/core/macros/schedules.cfg:14
 #: data/core/macros/schedules.cfg:275 data/test/maps/pathfind_1.cfg:64
 msgid "Dawn"
@@ -3227,8 +3251,8 @@ msgid "Afternoon"
 msgstr "Afternoon"
 
 #. [time]: id=dusk
-#. [time]: id=dusk_hour
 #. [topic]: id=time_of_day
+#. [time]: id=dusk_hour
 #: data/core/help.cfg:407 data/core/macros/schedules.cfg:53
 #: data/core/macros/schedules.cfg:396 data/test/maps/pathfind_1.cfg:97
 msgid "Dusk"

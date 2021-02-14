@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-01-16 16:38+0300\n"
+"POT-Creation-Date: 2021-02-14 16:35-0300\n"
 "PO-Revision-Date: 2020-01-13 12:16+0000\n"
 "Last-Translator: GunChleoc, 2019\n"
 "Language-Team: Gaelic, Scottish (https://www.transifex.com/gunchleoc/"
@@ -505,7 +505,7 @@ msgid ""
 "<ref>dst='editor_palette' text='Palette'</ref>.\n"
 "\n"
 "When saved using “Save Map As” and saving to the default directory, the "
-"resulting map can be found in the “User Maps” game type of the multiplayer "
+"resulting map can be found in the “Custom Maps” game type of the multiplayer "
 "“Create Game” dialog."
 msgstr ""
 
@@ -538,7 +538,10 @@ msgid ""
 "menu.\n"
 "\n"
 "If you’re already editing a map in terrain mode, use “Save Scenario As” from "
-"the “File” menu; this will switch to scenario mode."
+"the “File” menu; this will switch to scenario mode.\n"
+"\n"
+"To load a map that was created in the scenario editor, use “Load Map” from "
+"the “File” menu, and select the .cfg file (not a .map file)."
 msgstr ""
 
 #. [topic]: id=..editor_mode_scenario
@@ -786,14 +789,14 @@ msgid ""
 "to know which WML is part of each scenario."
 msgstr ""
 
-#. [editor_times]: id=deep_underground
 #. [time]: id=deep_underground
+#. [editor_times]: id=deep_underground
 #: data/core/editor/time-of-day.cfg:47 data/core/macros/schedules.cfg:121
 msgid "Deep Underground"
 msgstr "Fada fon talamh"
 
-#. [editor_times]: id=indoors
 #. [time]: id=indoors
+#. [editor_times]: id=indoors
 #: data/core/editor/time-of-day.cfg:53 data/core/macros/schedules.cfg:101
 msgid "Indoors"
 msgstr "Taobh a-staigh"
@@ -2781,8 +2784,8 @@ msgstr ""
 "\n"
 
 #. [time]: id=dawn
-#. [time]: id=dawn_hour
 #. [topic]: id=time_of_day
+#. [time]: id=dawn_hour
 #: data/core/help.cfg:404 data/core/macros/schedules.cfg:14
 #: data/core/macros/schedules.cfg:275 data/test/maps/pathfind_1.cfg:64
 msgid "Dawn"
@@ -2803,8 +2806,8 @@ msgid "Afternoon"
 msgstr "Feasgar"
 
 #. [time]: id=dusk
-#. [time]: id=dusk_hour
 #. [topic]: id=time_of_day
+#. [time]: id=dusk_hour
 #: data/core/help.cfg:407 data/core/macros/schedules.cfg:53
 #: data/core/macros/schedules.cfg:396 data/test/maps/pathfind_1.cfg:97
 msgid "Dusk"
