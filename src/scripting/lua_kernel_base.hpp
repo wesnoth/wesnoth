@@ -115,6 +115,7 @@ protected:
 	// Print text to the command log for this lua kernel. Used as a replacement impl for lua print.
 	int intf_print(lua_State * L);
 public:
+	void add_log_to_console(const std::string& msg);
 	// Show the interactive lua console (for debugging purposes)
 	int intf_show_lua_console(lua_State * L);
 protected:
