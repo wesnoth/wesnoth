@@ -1830,40 +1830,33 @@ int game_lua_kernel::intf_find_reach(lua_State *L)
 		++arg;
 	}
 
-	int viewing_side = 0;
+	int viewing_side = u->side();
 	bool ignore_units = false, see_all = false, ignore_teleport = false;
 	int additional_turns = 0;
 
 	if (lua_istable(L, arg))
 	{
-		lua_pushstring(L, "ignore_units");
-		lua_rawget(L, arg);
-		ignore_units = luaW_toboolean(L, -1);
-		lua_pop(L, 1);
-
-		lua_pushstring(L, "ignore_teleport");
-		lua_rawget(L, arg);
-		ignore_teleport = luaW_toboolean(L, -1);
-		lua_pop(L, 1);
-
-		lua_pushstring(L, "additional_turns");
-		lua_rawget(L, arg);
-		additional_turns = lua_tointeger(L, -1);
-		lua_pop(L, 1);
+		ignore_units = luaW_table_get_def<bool>(L, arg, "ignore_units", false);
+		see_all = luaW_table_get_def<bool>(L, arg, "ignore_visibility", false);
+		ignore_teleport = luaW_table_get_def<bool>(L, arg, "ignore_teleport", false);
+		additional_turns = luaW_table_get_def<int>(L, arg, "max_cost", additional_turns);
 
 		lua_pushstring(L, "viewing_side");
 		lua_rawget(L, arg);
 		if (!lua_isnil(L, -1)) {
 			int i = luaL_checkinteger(L, -1);
 			if (i >= 1 && i <= static_cast<int>(teams().size())) viewing_side = i;
-			else see_all = true;
+			else {
+				// If there's a unit, we have a valid side, so fall back to legacy behaviour.
+				// If we don't have a unit, legacy behaviour would be a crash, so let's not.
+				if(u) see_all = true;
+				deprecated_message("wesnoth.find_reach with viewing_side=0 (or an invalid side)", DEP_LEVEL::FOR_REMOVAL, {1, 17, 0}, "To consider fogged and hidden units, use ignore_visibility=true instead.");
+			}
 		}
 		lua_pop(L, 1);
 	}
 
-	const team& viewing_team = viewing_side
-		? board().get_team(viewing_side)
-		: board().get_team(u->side());
+	const team& viewing_team = board().get_team(viewing_side);
 
 	pathfind::paths res(*u, ignore_units, !ignore_teleport,
 		viewing_team, additional_turns, see_all, ignore_units);
