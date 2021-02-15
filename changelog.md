@@ -16,6 +16,7 @@
  ### Miscellaneous and Bug Fixes
    * Added support to wmlxgettext for double-quote characters in translatable raw strings
    * Fixed an error message and the AI leader potentially not moving when it cannot reach a keep because it's occupied by an allied unit
+   * Fixed display zoom not being taken into account when using the `x`, `y`, `directional_x` and `directional_y` attributes in unit animations.
 
 ## Version 1.14.15
  ### Add-ons client
