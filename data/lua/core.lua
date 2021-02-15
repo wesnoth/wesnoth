@@ -282,7 +282,7 @@ function wesnoth.deprecate_api(elem_name, replacement, level, version, elem, det
 		end
 		local mt = {}
 		for k,v in pairs(old_mt) do
-			mt[k] = old_mt[v]
+			mt[k] = old_mt[k]
 		end
 		mt.__index = function(self, key)
 			if not msg_shown then
