@@ -55,7 +55,6 @@
 #include "game_events/entity_location.hpp"
 #include "game_events/pump.hpp"         // for queued_event
 #include "preferences/game.hpp"         // for encountered_units
-#include "help/help.hpp"
 #include "log.hpp"                      // for LOG_STREAM, logger, etc
 #include "utils/make_enum.hpp"                // for operator<<
 #include "map/map.hpp"                      // for gamemap
@@ -1289,14 +1288,6 @@ int game_lua_kernel::intf_message(lua_State *L)
 	}
 	lua_chat(h, m);
 	LOG_LUA << "Script says: \"" << m << "\"\n";
-	return 0;
-}
-
-int game_lua_kernel::intf_open_help(lua_State *L)
-{
-	if (game_display_) {
-		help::show_help(luaL_checkstring(L, 1));
-	}
 	return 0;
 }
 
@@ -4005,7 +3996,6 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 		{ "log_replay",                &dispatch<&game_lua_kernel::intf_log_replay                 >        },
 		{ "log",                       &dispatch<&game_lua_kernel::intf_log                        >        },
 		{ "message",                   &dispatch<&game_lua_kernel::intf_message                    >        },
-		{ "open_help",                 &dispatch<&game_lua_kernel::intf_open_help                  >        },
 		{ "print",                     &dispatch<&game_lua_kernel::intf_print                      >        },
 		{ "redraw",                    &dispatch<&game_lua_kernel::intf_redraw                     >        },
 		{ "remove_event_handler",      &dispatch<&game_lua_kernel::intf_remove_event               >        },
