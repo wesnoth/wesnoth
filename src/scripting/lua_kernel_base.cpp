@@ -974,7 +974,9 @@ int lua_kernel_base::impl_game_config_get(lua_State* L)
 	return_int_attrib("recall_cost", game_config::recall_cost);
 	return_int_attrib("kill_experience", game_config::kill_experience);
 	return_int_attrib("combat_experience", game_config::combat_experience);
-	return_string_attrib("version", game_config::wesnoth_version.str());
+	return_string_attrib("version",
+		(deprecated_message("wesnoth.game_config.version", DEP_LEVEL::INDEFINITE, "1.17", "Use version.current() instead"),
+		game_config::wesnoth_version.str()));
 	return_bool_attrib("debug", game_config::debug);
 	return_bool_attrib("debug_lua", game_config::debug_lua);
 	return_bool_attrib("strict_lua", game_config::strict_lua);
