@@ -1040,6 +1040,7 @@
 		91E3570B1CACC9B200774252 /* singleplayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC2F600C1A048E220018C9D6 /* singleplayer.cpp */; };
 		91ECD5D21BA11A5200B25CF1 /* unit_creator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91ECD5D01BA11A5200B25CF1 /* unit_creator.cpp */; };
 		91F8E12E260A25E2002312BA /* lua_mathx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91F8E12D260A25E1002312BA /* lua_mathx.cpp */; };
+		91F8E135260A2676002312BA /* lua_audio.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91F8E133260A2676002312BA /* lua_audio.cpp */; };
 		91FAC70A1C7FBC3400DAB2C3 /* lua_formula_bridge.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91FAC7091C7FBC2C00DAB2C3 /* lua_formula_bridge.cpp */; };
 		91FBBAD81CB6BC3F00470BFE /* filesystem_sdl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91FBBAD71CB6BC3F00470BFE /* filesystem_sdl.cpp */; };
 		91FBBADB1CB6D1B700470BFE /* markov_generator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91FBBAD91CB6D1B700470BFE /* markov_generator.cpp */; };
@@ -2235,6 +2236,7 @@
 		91EF6C001C9E22E400E2A733 /* reference_counter.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = reference_counter.hpp; sourceTree = "<group>"; };
 		91F8E12C260A25E1002312BA /* lua_mathx.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = lua_mathx.hpp; sourceTree = "<group>"; };
 		91F8E12D260A25E1002312BA /* lua_mathx.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lua_mathx.cpp; sourceTree = "<group>"; };
+		91F8E133260A2676002312BA /* lua_audio.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lua_audio.cpp; sourceTree = "<group>"; };
 		91FAC7081C7F931900DAB2C3 /* lua_formula_bridge.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = lua_formula_bridge.hpp; sourceTree = "<group>"; };
 		91FAC7091C7FBC2C00DAB2C3 /* lua_formula_bridge.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lua_formula_bridge.cpp; sourceTree = "<group>"; };
 		91FBBAD71CB6BC3F00470BFE /* filesystem_sdl.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = filesystem_sdl.cpp; sourceTree = "<group>"; };
@@ -4666,6 +4668,7 @@
 				91B621E21B76BAF300B00E0F /* context.hpp */,
 				EC218EA21A106673007C910C /* game_lua_kernel.cpp */,
 				91B621E41B76BB0100B00E0F /* game_lua_kernel.hpp */,
+				91F8E133260A2676002312BA /* lua_audio.cpp */,
 				EC3863621EB6286E0048B0C8 /* lua_audio.cpp */,
 				EC3863631EB6286E0048B0C8 /* lua_audio.hpp */,
 				461DC52B241F836200B9DD10 /* lua_color.cpp */,
@@ -4721,6 +4724,7 @@
 				ECA1E1001A12755B00426E00 /* mapgen_lua_kernel.cpp */,
 				91B621EF1B76BB3200B00E0F /* mapgen_lua_kernel.hpp */,
 				91B621F01B76BB3500B00E0F /* push_check.hpp */,
+				EC3863631EB6286E0048B0C8 /* lua_audio.hpp */,
 			);
 			path = scripting;
 			sourceTree = "<group>";
@@ -5527,6 +5531,7 @@
 				46F92E732174F6A400602C1C /* addon_list.cpp in Sources */,
 				46F92E8D2174F6A400602C1C /* password_box.cpp in Sources */,
 				46F92DF92174F6A400602C1C /* unit_list.cpp in Sources */,
+				91F8E135260A2676002312BA /* lua_audio.cpp in Sources */,
 				46F92E952174F6A400602C1C /* spacer.cpp in Sources */,
 				627F1EDB175AF35C000042E0 /* aspect_advancements.cpp in Sources */,
 				EC386CF1195119AA006004ED /* animation_component.cpp in Sources */,

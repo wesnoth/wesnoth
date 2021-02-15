@@ -93,7 +93,8 @@ public:
 	// add or replace a soundsource
 	void add(const sourcespec &source);
 	void remove(const std::string &id);
-	config get(const std::string &id);
+	sourcespec get(const std::string &id);
+	bool contains(const std::string& id);
 	void update();
 
 	// checks which sound sources are visible
@@ -114,7 +115,7 @@ public:
 class sourcespec
 {
 	const std::string id_;
-	const std::string files_;
+	std::string files_;
 
 	int min_delay_;
 	int chance_;
@@ -172,6 +173,10 @@ public:
 		return locations_;
 	}
 
+	void set_locations(const std::vector<map_location>& locs) {
+		locations_ = locs;
+	}
+
 	int full_range() const { return range_; }
 
 	void set_full_range(int value) {
@@ -199,6 +204,10 @@ public:
 	const std::string& id() const { return id_; }
 
 	const std::string& files() const { return files_; }
+	
+	void set_files(const std::string& f) {
+		files_ = f;
+	}
 };
 
 } // namespace soundsource

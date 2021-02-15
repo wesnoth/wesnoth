@@ -21,6 +21,8 @@ See the COPYING file for more details.
 #include "sound.hpp"
 #include "sound_music_track.hpp"
 #include "preferences/general.hpp"
+#include "resources.hpp"
+#include "soundsource.hpp"
 #include <set>
 
 static lg::log_domain log_audio("audio");
@@ -29,6 +31,7 @@ static lg::log_domain log_audio("audio");
 #define ERR_AUDIO LOG_STREAM(err, log_audio)
 
 static const char* Track = "music track";
+static const char* Source = "sound source";
 
 class lua_music_track {
 	std::shared_ptr<sound::music_track> track;
@@ -66,6 +69,35 @@ static lua_music_track* push_track(lua_State* L, std::shared_ptr<sound::music_tr
 
 static lua_music_track* get_track(lua_State* L, int i) {
 	return static_cast<lua_music_track*>(luaL_checkudata(L, i, Track));
+}
+
+class lua_sound_source {
+	soundsource::sourcespec spec;
+public:
+	explicit lua_sound_source(const soundsource::sourcespec& spec) : spec(spec) {}
+	lua_sound_source(lua_sound_source&) = delete;
+	soundsource::sourcespec& operator*() {
+		return spec;
+	}
+	const soundsource::sourcespec& operator*() const {
+		return spec;
+	}
+	soundsource::sourcespec* operator->() {
+		return &spec;
+	}
+	const soundsource::sourcespec* operator->() const {
+		return &spec;
+	}
+};
+
+static lua_sound_source& push_source(lua_State* L, const soundsource::sourcespec& spec) {
+	lua_sound_source* src = new(L) lua_sound_source(spec);
+	luaL_setmetatable(L, Source);
+	return *src;
+}
+
+static lua_sound_source& get_source(lua_State* L, int i) {
+	return *static_cast<lua_sound_source*>(luaL_checkudata(L, i, Source));
 }
 
 /**
@@ -301,12 +333,193 @@ static int impl_track_eq(lua_State* L) {
 	return 1;
 }
 
+/**
+ * Get an existing sound source
+ * Key: The sound source ID
+ */
+static int impl_sndsrc_get(lua_State* L) {
+	if(!resources::soundsources) {
+		return 0;
+	}
+	std::string id = luaL_checkstring(L, 2);
+	if(!resources::soundsources->contains(id)) {
+		return 0;
+	}
+	push_source(L, resources::soundsources->get(id));
+	return 1;
+}
+
+/**
+ * Adds or removes a sound source by its ID
+ * Key: sound source ID
+ * Value: Table containing keyword arguments, existing sound source userdata, or nil to delete
+ */
+static int impl_sndsrc_set(lua_State* L) {
+	if(!resources::soundsources) {
+		return 0;
+	}
+	std::string id = luaL_checkstring(L, 2);
+	config cfg;
+	if(lua_isnil(L, 3)) {
+		resources::soundsources->remove(id);
+	} else if(luaW_toconfig(L, 3, cfg)) {
+		cfg["id"] = id;
+		soundsource::sourcespec spec(cfg);
+		resources::soundsources->add(spec);
+		resources::soundsources->update();
+	} else {
+		auto& src = get_source(L, 3);
+		resources::soundsources->add(*src);
+		resources::soundsources->update();
+	}
+	return 0;
+}
+static int impl_source_collect(lua_State* L)
+{
+	lua_sound_source& u = get_source(L, 1);
+	u.lua_sound_source::~lua_sound_source();
+	return 0;
+}
+
+static int impl_source_get(lua_State* L) {
+	lua_sound_source& src = get_source(L, 1);
+	const char* m = luaL_checkstring(L, 2);
+	return_string_attrib("id", src->id());
+	return_vector_string_attrib("sounds", utils::split(src->files()));
+	return_int_attrib("delay", src->minimum_delay());
+	return_int_attrib("chance", src->chance());
+	return_int_attrib("loop", src->loops());
+	return_int_attrib("range", src->full_range());
+	return_int_attrib("fade_range", src->fade_range());
+	return_bool_attrib("check_fogged", src->check_fogged());
+	return_bool_attrib("check_shrouded", src->check_shrouded());
+	return_cfg_attrib("__cfg", src->write(cfg));
+	
+	if(strcmp(m, "locations") == 0) {
+		const auto& locs = src->get_locations();
+		lua_createtable(L, locs.size(), 0);
+		for(const auto& loc : locs) {
+			luaW_pushlocation(L, loc);
+			lua_rawseti(L, -1, lua_rawlen(L, -2) + 1);
+		}
+	}
+
+	return luaW_getmetafield(L, 1, m);
+}
+
+static int impl_source_set(lua_State* L) {
+	lua_sound_source& src = get_source(L, 1);
+	const char* m = luaL_checkstring(L, 2);
+	modify_int_attrib("delay", src->set_minimum_delay(value));
+	modify_int_attrib("chance", src->set_chance(value));
+	modify_int_attrib("loop", src->set_loops(value));
+	modify_int_attrib("range", src->set_full_range(value));
+	modify_int_attrib("fade_range", src->set_fade_range(value));
+	modify_bool_attrib("check_fogged", src->set_check_fogged(value));
+	modify_bool_attrib("check_shrouded", src->set_check_shrouded(value));
+	
+	if(strcmp(m, "sounds") == 0) {
+		std::string files;
+		if(lua_istable(L, 3)) {
+			files = utils::join(lua_check<std::vector<std::string>>(L, 3));
+		} else {
+			files = luaL_checkstring(L, 3);
+		}
+		src->set_files(files);
+	}
+	
+	if(strcmp(m, "locations") == 0) {
+		std::vector<map_location> locs;
+		locs.resize(1);
+		if(luaW_tolocation(L, 3, locs[0])) {
+			
+		} else {
+			locs.clear();
+			for(lua_pushnil(L); lua_next(L, 3); lua_pop(L, 1)) {
+				locs.push_back(luaW_checklocation(L, -1));
+			}
+		}
+		src->set_locations(locs);
+	}
+	
+	// Now apply the change
+	resources::soundsources->add(*src);
+	resources::soundsources->update();
+	return 0;
+}
+
+static int impl_source_eq(lua_State* L) {
+	lua_sound_source& a = get_source(L, 1);
+	lua_sound_source& b = get_source(L, 2);
+	if(a->id() != b->id()) {
+		lua_pushboolean(L, false);
+		return 1;
+	}
+	lua_pushboolean(L,
+		a->files() == b->files() &&
+		a->minimum_delay() == b->minimum_delay() &&
+		a->chance() == b->chance() &&
+		a->loops() == b->loops() &&
+		a->full_range() == b->full_range() &&
+		a->fade_range() == b->fade_range() &&
+		a->check_fogged() == b->check_fogged() &&
+		a->check_shrouded() == b->check_shrouded() &&
+		std::set<map_location>(a->get_locations().begin(), a->get_locations().end()) == std::set<map_location>(b->get_locations().begin(), b->get_locations().end())
+	);
+	return 1;
+}
+
+/**
+ * Gets the current sound volume
+ * - Return: Current volume
+ */
+static int impl_audio_get(lua_State* L)
+{
+	std::string m = luaL_checkstring(L, 2);
+	if(m != "volume") return 0;
+	int vol = preferences::sound_volume();
+	lua_pushnumber(L, sound::get_sound_volume() * 100.0 / vol);
+	return 1;
+}
+
+/**
+ * Sets the current sound volume
+ * - Arg: New volume to set
+ */
+static int impl_audio_set(lua_State* L)
+{
+	std::string m = luaL_checkstring(L, 2);
+	if(m != "volume") {
+		lua_rawset(L, 1);
+		return 0;
+	}
+	int vol = preferences::sound_volume();
+	lua_pushnumber(L, sound::get_sound_volume() * 100.0 / vol);
+	float rel = lua_tonumber(L, 2);
+	if(rel < 0.0f || rel > 100.0f) {
+		return luaL_argerror(L, 1, "volume must be in range 0..100");
+	}
+	vol = static_cast<int>(rel*vol / 100.0f);
+	sound::set_sound_volume(vol);
+	return 0;
+}
+
 namespace lua_audio {
 	std::string register_table(lua_State* L) {
+		// Metatable to enable the volume attribute
+		luaW_getglobal(L, "wesnoth", "audio");
+		lua_createtable(L, 0, 2);
+		static luaL_Reg vol_callbacks[] {
+			{ "__index", impl_audio_get },
+			{ "__newindex", impl_audio_set },
+			{ nullptr, nullptr },
+		};
+		luaL_setfuncs(L, vol_callbacks, 0);
+		lua_setmetatable(L, -2);
+		
 		// The music playlist metatable
-		lua_getglobal(L, "wesnoth");
 		lua_newuserdatauv(L, 0, 0);
-		lua_createtable(L, 0, 4);
+		lua_createtable(L, 0, 10);
 		static luaL_Reg pl_callbacks[] {
 			{ "__index", impl_music_get },
 			{ "__newindex", impl_music_set },
@@ -324,6 +537,20 @@ namespace lua_audio {
 		lua_setfield(L, -2, "__metatable");
 		lua_setmetatable(L, -2);
 		lua_setfield(L, -2, "music_list");
+		
+		// The sound source map metatable
+		lua_newuserdatauv(L, 0, 0);
+		lua_createtable(L, 0, 3);
+		static luaL_Reg slm_callbacks[] {
+			{ "__index", impl_sndsrc_get },
+			{ "__newindex", impl_sndsrc_set },
+			{ nullptr, nullptr },
+		};
+		luaL_setfuncs(L, slm_callbacks, 0);
+		lua_pushstring(L, "sound source map");
+		lua_setfield(L, -2, "__metatable");
+		lua_setmetatable(L, -2);
+		lua_setfield(L, -2, "sources");
 		lua_pop(L, 1);
 
 		// The music track metatable
@@ -337,6 +564,20 @@ namespace lua_audio {
 		};
 		luaL_setfuncs(L, track_callbacks, 0);
 		lua_pushstring(L, Track);
+		lua_setfield(L, -2, "__metatable");
+		lua_pop(L, 1);
+
+		// The sound source metatable
+		luaL_newmetatable(L, Source);
+		static luaL_Reg source_callbacks[] {
+			{"__gc", impl_source_collect},
+			{ "__index", impl_source_get },
+			{ "__newindex", impl_source_set },
+			{ "__eq", impl_source_eq },
+			{ nullptr, nullptr },
+		};
+		luaL_setfuncs(L, source_callbacks, 0);
+		lua_pushstring(L, Source);
 		lua_setfield(L, -2, "__metatable");
 
 		return "Adding music playlist table...\n";

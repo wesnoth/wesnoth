@@ -2493,23 +2493,6 @@ int game_lua_kernel::intf_simulate_combat(lua_State *L)
 }
 
 /**
- * Modifies the music playlist.
- * - Arg 1: WML table, or nil to force changes.
- */
-static int intf_set_music(lua_State *L)
-{
-	deprecated_message("wesnoth.set_music", DEP_LEVEL::INDEFINITE, "", "Use the wesnoth.playlist table instead!");
-	if (lua_isnoneornil(L, 1)) {
-		sound::commit_music_changes();
-		return 0;
-	}
-
-	config cfg = luaW_checkconfig(L, 1);
-	sound::play_music_config(cfg);
-	return 0;
-}
-
-/**
  * Plays a sound, possibly repeated.
  * - Arg 1: string.
  * - Arg 2: optional integer.
@@ -2521,26 +2504,6 @@ int game_lua_kernel::intf_play_sound(lua_State *L)
 	int repeats = lua_tointeger(L, 2);
 	sound::play_sound(m, sound::SOUND_FX, repeats);
 	return 0;
-}
-
-/**
- * Gets/sets the current sound volume
- * - Arg 1: (optional) New volume to set
- * - Return: Original volume
- */
-static int intf_sound_volume(lua_State* L)
-{
-	int vol = preferences::sound_volume();
-	lua_pushnumber(L, sound::get_sound_volume() * 100.0 / vol);
-	if(lua_isnumber(L, 1)) {
-		float rel = lua_tonumber(L, 1);
-		if(rel < 0.0f || rel > 100.0f) {
-			return luaL_argerror(L, 1, "volume must be in range 0..100");
-		}
-		vol = static_cast<int>(rel*vol / 100.0f);
-		sound::set_sound_volume(vol);
-	}
-	return 1;
 }
 
 /**
@@ -3840,60 +3803,6 @@ int game_lua_kernel::intf_teleport(lua_State *L)
 }
 
 /**
- * Removes a sound source by its ID
- * Arg 1: sound source ID
- */
-int game_lua_kernel::intf_remove_sound_source(lua_State *L)
-{
-	soundsource::manager* man = play_controller_.get_soundsource_man();
-	std::string id = luaL_checkstring(L, 1);
-	man->remove(id);
-	return 0;
-}
-
-/**
- * Add a new sound source
- * Arg 1: Table containing keyword arguments
- */
-int game_lua_kernel::intf_add_sound_source(lua_State *L)
-{
-	soundsource::manager* man = play_controller_.get_soundsource_man();
-	config cfg = luaW_checkconfig(L, 1);
-	try {
-		soundsource::sourcespec spec(cfg);
-		man->add(spec);
-		man->update();
-	} catch (const bad_lexical_cast &) {
-		ERR_LUA << "Error when parsing sound_source config: invalid parameter." << std::endl;
-		ERR_LUA << "sound_source config was: " << cfg.debug() << std::endl;
-		ERR_LUA << "Skipping this sound source..." << std::endl;
-	}
-	return 0;
-}
-
-/**
- * Get an existing sound source
- * Arg 1: The sound source ID
- * Return: Config of sound source info, or nil if it didn't exist
- * This is a copy of the sound source info, so you need to call
- * add_sound_source again after changing it.
- */
-int game_lua_kernel::intf_get_sound_source(lua_State *L)
-{
-	soundsource::manager* man = play_controller_.get_soundsource_man();
-	std::string id = luaL_checkstring(L, 1);
-	config cfg = man->get(id);
-	if(cfg.empty()) {
-		return 0;
-	}
-	// Sound sources do not know their own string ID
-	// Thus, we need to add this manually
-	cfg["id"] = id;
-	luaW_pushconfig(L, cfg);
-	return 1;
-}
-
-/**
  * Logs a message
  * Arg 1: (optional) Logger; "wml" for WML errors or deprecations
  * Arg 2: Message
@@ -4073,11 +3982,8 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 		{ "get_viewing_side",         &intf_get_viewing_side         },
 		{ "invoke_synced_command",    &intf_invoke_synced_command    },
 		{ "modify_ai",                &intf_modify_ai_old            },
-		{ "set_music",                &intf_set_music                },
-		{ "sound_volume",             &intf_sound_volume             },
 		{ "unsynced",                 &intf_do_unsynced              },
 		{ "add_event_handler",         &dispatch<&game_lua_kernel::intf_add_event                  >        },
-		{ "add_sound_source",          &dispatch<&game_lua_kernel::intf_add_sound_source           >        },
 		{ "allow_end_turn",            &dispatch<&game_lua_kernel::intf_allow_end_turn             >        },
 		{ "allow_undo",                &dispatch<&game_lua_kernel::intf_allow_undo                 >        },
 		{ "cancel_action",             &dispatch<&game_lua_kernel::intf_cancel_action              >        },
@@ -4093,7 +3999,6 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 		{ "fire_event_by_id",          &dispatch2<&game_lua_kernel::intf_fire_event, true          >        },
 		{ "get_all_vars",              &dispatch<&game_lua_kernel::intf_get_all_vars               >        },
 		{ "get_end_level_data",        &dispatch<&game_lua_kernel::intf_get_end_level_data         >        },
-		{ "get_sound_source",          &dispatch<&game_lua_kernel::intf_get_sound_source           >        },
 		{ "get_time_of_day",           &dispatch<&game_lua_kernel::intf_get_time_of_day            >        },
 		{ "get_max_liminal_bonus",     &dispatch<&game_lua_kernel::intf_get_max_liminal_bonus      >        },
 		{ "get_variable",              &dispatch<&game_lua_kernel::intf_get_variable               >        },
@@ -4101,11 +4006,9 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 		{ "log",                       &dispatch<&game_lua_kernel::intf_log                        >        },
 		{ "message",                   &dispatch<&game_lua_kernel::intf_message                    >        },
 		{ "open_help",                 &dispatch<&game_lua_kernel::intf_open_help                  >        },
-		{ "play_sound",                &dispatch<&game_lua_kernel::intf_play_sound                 >        },
 		{ "print",                     &dispatch<&game_lua_kernel::intf_print                      >        },
 		{ "redraw",                    &dispatch<&game_lua_kernel::intf_redraw                     >        },
 		{ "remove_event_handler",      &dispatch<&game_lua_kernel::intf_remove_event               >        },
-		{ "remove_sound_source",       &dispatch<&game_lua_kernel::intf_remove_sound_source        >        },
 		{ "replace_schedule",          &dispatch<&game_lua_kernel::intf_replace_schedule           >        },
 		{ "select_hex",                &dispatch<&game_lua_kernel::intf_select_hex                 >        },
 		{ "set_time_of_day",           &dispatch<&game_lua_kernel::intf_set_time_of_day            >        },
@@ -4330,6 +4233,18 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 	lua_newtable(L);
 	luaL_setfuncs(L, intf_callbacks, 0);
 	lua_setfield(L, -2, "interface");
+	lua_pop(L, 1);
+
+	// Create the audio module
+	cmd_log_ << "Adding audio module...\n";
+	static luaL_Reg const audio_callbacks[] {
+		{ "play",                &dispatch<&game_lua_kernel::intf_play_sound                 >        },
+		{ nullptr, nullptr }
+	};
+	lua_getglobal(L, "wesnoth");
+	lua_newtable(L);
+	luaL_setfuncs(L, audio_callbacks, 0);
+	lua_setfield(L, -2, "audio");
 	lua_pop(L, 1);
 
 	// Create the playlist table with its metatable
