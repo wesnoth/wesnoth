@@ -1133,22 +1133,26 @@ int game_lua_kernel::impl_game_config_get(lua_State *L)
 	char const *m = luaL_checkstring(L, 2);
 
 	// Find the corresponding attribute.
-	return_int_attrib("last_turn", tod_man().number_of_turns());
+	return_int_attrib_deprecated("last_turn", "wesnoth.game_config", INDEFINITE, "11.7", "Use wesnoth.scenario.turns instead", tod_man().number_of_turns());
 	return_bool_attrib("do_healing", play_controller_.gamestate().do_healing_);
-	return_string_attrib("next_scenario", gamedata().next_scenario());
+	return_string_attrib_deprecated("next_scenario", "wesnoth.game_config", INDEFINITE, "1.17", "Use wesnoth.scenario.next instead", gamedata().next_scenario());
 	return_string_attrib("theme", gamedata().get_theme());
-	return_string_attrib("scenario_id", gamedata().get_id());
-	return_vector_string_attrib("defeat_music", gamedata().get_defeat_music());
-	return_vector_string_attrib("victory_music", gamedata().get_victory_music());
-	return_vector_string_attrib("active_resources", utils::split(play_controller_.get_loaded_resources()) );
+	return_string_attrib_deprecated("scenario_id", "wesnoth.game_config", INDEFINITE, "1.17", "Use wesnoth.scenario.id instead", gamedata().get_id());
+	return_vector_string_attrib_deprecated("defeat_music", "wesnoth.game_config", INDEFINITE, "1.17", "Use wesnoth.scenario.defeat_music instead",
+		gamedata().get_defeat_music());
+	return_vector_string_attrib_deprecated("victory_music", "wesnoth.game_config", INDEFINITE, "1.17", "Use wesnoth.scenario.victory_music instead",
+		gamedata().get_victory_music());
+	return_vector_string_attrib_deprecated("active_resources", "wesnoth.game_config", INDEFINITE, "1.17", "Use wesnoth.scenario.resources instead",
+		utils::split(play_controller_.get_loaded_resources()));
 
 	const mp_game_settings& mp_settings = play_controller_.get_mp_settings();
 	const game_classification & classification = play_controller_.get_classification();
 
-	return_string_attrib("campaign_type", classification.campaign_type.to_string());
+	return_string_attrib_deprecated("campaign_type", "wesnoth.game_config", INDEFINITE, "1.17", "Use wesnoth.scenario.type instead", classification.campaign_type.to_string());
 	if(classification.campaign_type==game_classification::CAMPAIGN_TYPE::MULTIPLAYER) {
-		return_cfgref_attrib("mp_settings", mp_settings.to_config());
-		return_cfgref_attrib("era", game_config_manager::get()->game_config().find_child("era","id",classification.era_id));
+		return_cfgref_attrib_deprecated("mp_settings", "wesnoth.game_config", INDEFINITE, "1.17", "Use wesnoth.scenario.mp_settings instead", mp_settings.to_config());
+		return_cfgref_attrib_deprecated("era", "wesnoth.game_config", INDEFINITE, "1.17", "Use wesnoth.scenario.era instead",
+			game_config_manager::get()->game_config().find_child("era","id",classification.era_id));
 		//^ finds the era with name matching mp_era, and creates a lua reference from the config of that era.
 
 		//This code for SigurdFD, not the cleanest implementation but seems to work just fine.
@@ -1181,16 +1185,98 @@ int game_lua_kernel::impl_game_config_set(lua_State *L)
 	modify_int_attrib("recall_cost", game_config::recall_cost = value);
 	modify_int_attrib("kill_experience", game_config::kill_experience = value);
 	modify_int_attrib("combat_experience", game_config::combat_experience = value);
-	modify_int_attrib("last_turn", tod_man().set_number_of_turns_by_wml(value));
+	modify_int_attrib_deprecated("last_turn", "wesnoth.game_config", INDEFINITE, "1.17", "Use wesnoth.scenario.turns instead", tod_man().set_number_of_turns_by_wml(value));
 	modify_bool_attrib("do_healing", play_controller_.gamestate().do_healing_ = value);
-	modify_string_attrib("next_scenario", gamedata().set_next_scenario(value));
+	modify_string_attrib_deprecated("next_scenario", "wesnoth.game_config", INDEFINITE, "1.17", "Use wesnoth.scenario.next instead", gamedata().set_next_scenario(value));
 	modify_string_attrib("theme",
 		gamedata().set_theme(value);
 		const game_config_view& game_config = game_config_manager::get()->game_config();
 		game_display_->set_theme(play_controller_.get_theme(game_config, value));
 	);
+	modify_vector_string_attrib_deprecated("defeat_music", "wesnoth.game_config", INDEFINITE, "1.17", "Use wesnoth.scenario.defeat_music instead", gamedata().set_defeat_music(std::move(value)));
+	modify_vector_string_attrib_deprecated("victory_music", "wesnoth.game_config", INDEFINITE, "1.17", "Use wesnoth.scenario.victory_music instead", gamedata().set_victory_music(std::move(value)));
+	return lua_kernel_base::impl_game_config_set(L);
+}
+
+namespace {
+	static config find_addon(const std::string& type, const std::string& id)
+	{
+		return game_config_manager::get()->game_config().find_child(type, "id", id);
+	}
+}
+
+/**
+ * Gets some scenario data (__index metamethod).
+ * - Arg 1: userdata (ignored).
+ * - Arg 2: string containing the name of the property.
+ * - Ret 1: something containing the attribute.
+ */
+int game_lua_kernel::impl_scenario_get(lua_State *L)
+{
+	LOG_LUA << "impl_scenario_get\n";
+	char const *m = luaL_checkstring(L, 2);
+
+	// Find the corresponding attribute.
+	return_int_attrib("turns", tod_man().number_of_turns());
+	return_string_attrib("next", gamedata().next_scenario());
+	return_string_attrib("id", gamedata().get_id());
+	return_vector_string_attrib("defeat_music", gamedata().get_defeat_music());
+	return_vector_string_attrib("victory_music", gamedata().get_victory_music());
+	if(strcmp(m, "resources") == 0) {
+		std::vector<config> resources;
+		for(const std::string& rsrc : utils::split(play_controller_.get_loaded_resources())) {
+			resources.push_back(find_addon("resource", rsrc));
+		}
+		lua_push(L, resources);
+		return 1;
+	}
+
+	const game_classification& classification = play_controller_.get_classification();
+	return_string_attrib("type", classification.campaign_type.to_string());
+	return_string_attrib("difficulty", classification.difficulty);
+	return_bool_attrib("show_credits", classification.end_credits);
+	return_string_attrib("end_text", classification.end_text);
+	return_int_attrib("end_text_duration", classification.end_text_duration);
+	if(!classification.campaign.empty()) {
+		return_cfgref_attrib("campaign", find_addon("campaign", classification.campaign));
+	}
+	if(strcmp(m, "modifications") == 0) {
+		std::vector<config> mods;
+		for(const std::string& mod : classification.active_mods) {
+			mods.push_back(find_addon("modification", mod));
+		}
+		lua_push(L, mods);
+		return 1;
+	}
+	
+	if(classification.is_multiplayer()) {
+		return_cfgref_attrib("mp_settings", play_controller_.get_mp_settings().to_config());
+		return_cfgref_attrib("era", find_addon("era", classification.era_id));
+	}
+	return lua_kernel_base::impl_game_config_get(L);
+}
+
+/**
+ * Sets some scenario data (__newindex metamethod).
+ * - Arg 1: userdata (ignored).
+ * - Arg 2: string containing the name of the property.
+ * - Arg 3: something containing the attribute.
+ */
+int game_lua_kernel::impl_scenario_set(lua_State *L)
+{
+	LOG_LUA << "impl_scenario_set\n";
+	char const *m = luaL_checkstring(L, 2);
+
+	// Find the corresponding attribute.
+	modify_int_attrib("turns", tod_man().set_number_of_turns_by_wml(value));
+	modify_string_attrib("next", gamedata().set_next_scenario(value));
 	modify_vector_string_attrib("defeat_music", gamedata().set_defeat_music(std::move(value)));
 	modify_vector_string_attrib("victory_music", gamedata().set_victory_music(std::move(value)));
+
+	game_classification& classification = play_controller_.get_classification();
+	modify_bool_attrib("show_credits", classification.end_credits = value);
+	modify_string_attrib("end_text", classification.end_text = value);
+	modify_int_attrib("end_text_duration", classification.end_text_duration = value);
 	return lua_kernel_base::impl_game_config_set(L);
 }
 
@@ -4300,6 +4386,20 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 	lua_setfield(L, -2, "__newindex");
 	lua_setmetatable(L, -2);
 	lua_setfield(L, -2, "game_display");
+	lua_pop(L, 1);
+	
+	// Create the scenario table.
+	cmd_log_ << "Adding scenario table...\n";
+
+	luaW_getglobal(L, "wesnoth");
+	lua_newtable(L);
+	lua_createtable(L, 0, 2);
+	lua_pushcfunction(L, &dispatch<&game_lua_kernel::impl_scenario_get>);
+	lua_setfield(L, -2, "__index");
+	lua_pushcfunction(L, &dispatch<&game_lua_kernel::impl_scenario_set>);
+	lua_setfield(L, -2, "__newindex");
+	lua_setmetatable(L, -2);
+	lua_setfield(L, -2, "scenario");
 	lua_pop(L, 1);
 
 	lua_settop(L, 0);
