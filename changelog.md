@@ -3,6 +3,8 @@
  ### Add-ons server
    * Fixed undefined behavior when servicing requests to downgrade add-ons.
  ### Campaigns
+   * The Rise of Wesnoth
+     * Adjust campaign difficulty
  ### Editor
  ### Multiplayer
    * The Delay Advancements modification has been removed in favor of adding the Plan Unit Advance modification to mainline. Enabling this modification allows each player to choose what their units will level up into in case the advancement happens on an enemy player's turn in an online multiplayer game.
