@@ -57,7 +57,7 @@ public:
 		const std::string& cmd;
 		const config& cfg;
 
-		const socket_ptr sock;
+		const any_socket_ptr sock;
 		const std::string addr;
 
 		/**
@@ -80,14 +80,15 @@ public:
 		 *       TO A CONST OBJECT, since some code may modify it directly for
 		 *       performance reasons.
 		 */
+		template<class Socket>
 		request(const std::string& reqcmd,
 				config& reqcfg,
-				socket_ptr reqsock,
+				Socket reqsock,
 				boost::asio::yield_context yield)
 			: cmd(reqcmd)
 			, cfg(reqcfg)
 			, sock(reqsock)
-			, addr(client_address(sock))
+			, addr(client_address(reqsock))
 			, yield(yield)
 		{}
 	};
@@ -138,6 +139,10 @@ private:
 	boost::asio::basic_waitable_timer<std::chrono::steady_clock> flush_timer_;
 
 	void handle_new_client(socket_ptr socket);
+	void handle_new_client(tls_socket_ptr socket);
+
+	template<class Socket>
+	void serve_requests(Socket socket, boost::asio::yield_context yield);
 
 #ifndef _WIN32
 	void handle_read_from_fifo(const boost::system::error_code& error, std::size_t bytes_transferred);
@@ -240,7 +245,7 @@ private:
 	 * The WML sent consists of a document containing a single @p [message]
 	 * child with a @a message attribute holding the value of @a msg.
 	 */
-	void send_message(const std::string& msg, socket_ptr sock);
+	void send_message(const std::string& msg, const any_socket_ptr& sock);
 
 	/**
 	 * Send a client an error message.
@@ -250,7 +255,7 @@ private:
 	 * sending the error to the client, a line with the client IP and message
 	 * is recorded to the server log.
 	 */
-	void send_error(const std::string& msg, socket_ptr sock);
+	void send_error(const std::string& msg, const any_socket_ptr& sock);
 
 	/**
 	 * Send a client an error message.
@@ -262,7 +267,7 @@ private:
 	 * addition to sending the error to the client, a line with the client IP
 	 * and message is recorded to the server log.
 	 */
-	void send_error(const std::string& msg, const std::string& extra_data, unsigned int status_code, socket_ptr sock);
+	void send_error(const std::string& msg, const std::string& extra_data, unsigned int status_code, const any_socket_ptr& sock);
 };
 
 } // end namespace campaignd

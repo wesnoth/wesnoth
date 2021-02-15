@@ -437,6 +437,8 @@ template<class SocketPtr> void server_base::coro_send_file(SocketPtr socket, con
 
 #endif
 
+template void server_base::coro_send_file<socket_ptr>(socket_ptr socket, const std::string& filename, boost::asio::yield_context yield);
+
 template<class SocketPtr> std::unique_ptr<simple_wml::document> server_base::coro_receive_doc(SocketPtr socket, boost::asio::yield_context yield)
 {
 	union DataSize

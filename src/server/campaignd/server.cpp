@@ -476,37 +476,50 @@ std::ostream& operator<<(std::ostream& o, const server::request& r)
 	return o;
 }
 
+void server::handle_new_client(tls_socket_ptr socket)
+{
+	boost::asio::spawn(io_service_, [this, socket](boost::asio::yield_context yield) {
+		serve_requests(socket, yield);
+	});
+}
+
 void server::handle_new_client(socket_ptr socket)
 {
 	boost::asio::spawn(io_service_, [this, socket](boost::asio::yield_context yield) {
-		while(true) {
-			boost::system::error_code ec;
-			auto doc { coro_receive_doc(socket, yield[ec]) };
-			if(check_error(ec, socket) || !doc) return;
+		serve_requests(socket, yield);
+	});
+}
 
-			config data;
-			read(data, doc->output());
+template<class Socket>
+void server::serve_requests(Socket socket, boost::asio::yield_context yield)
+{
+	while(true) {
+		boost::system::error_code ec;
+		auto doc { coro_receive_doc(socket, yield[ec]) };
+		if(check_error(ec, socket) || !doc) return;
 
-			config::all_children_iterator i = data.ordered_begin();
+		config data;
+		read(data, doc->output());
 
-			if(i != data.ordered_end()) {
-				// We only handle the first child.
-				const config::any_child& c = *i;
+		config::all_children_iterator i = data.ordered_begin();
 
-				request_handlers_table::const_iterator j
-					= handlers_.find(c.key);
+		if(i != data.ordered_end()) {
+			// We only handle the first child.
+			const config::any_child& c = *i;
 
-				if(j != handlers_.end()) {
-					// Call the handler.
-					request req{c.key, c.cfg, socket, yield};
-					auto st = service_timer(req);
-					j->second(this, req);
-				} else {
-					send_error("Unrecognized [" + c.key + "] request.",socket);
-				}
+			request_handlers_table::const_iterator j
+				= handlers_.find(c.key);
+
+			if(j != handlers_.end()) {
+				// Call the handler.
+				request req{c.key, c.cfg, socket, yield};
+				auto st = service_timer(req);
+				j->second(this, req);
+			} else {
+				send_error("Unrecognized [" + c.key + "] request.",socket);
 			}
 		}
-	});
+	}
 }
 
 #ifndef _WIN32
@@ -805,24 +818,28 @@ bool server::ignore_address_stats(const std::string& addr) const
 	return false;
 }
 
-void server::send_message(const std::string& msg, socket_ptr sock)
+void server::send_message(const std::string& msg, const any_socket_ptr& sock)
 {
 	const auto& escaped_msg = simple_wml_escape(msg);
 	simple_wml::document doc;
 	doc.root().add_child("message").set_attr_dup("message", escaped_msg.c_str());
-	async_send_doc_queued(sock, doc);
+	utils::visit([this, &doc](auto&& sock) { async_send_doc_queued(sock, doc); }, sock);
 }
 
-void server::send_error(const std::string& msg, socket_ptr sock)
+inline std::string client_address(const any_socket_ptr& sock) {
+	return utils::visit([](auto&& sock) { return client_address(sock); }, sock);
+}
+
+void server::send_error(const std::string& msg, const any_socket_ptr& sock)
 {
 	ERR_CS << "[" << client_address(sock) << "] " << msg << '\n';
 	const auto& escaped_msg = simple_wml_escape(msg);
 	simple_wml::document doc;
 	doc.root().add_child("error").set_attr_dup("message", escaped_msg.c_str());
-	async_send_doc_queued(sock, doc);
+	utils::visit([this, &doc](auto&& sock) { async_send_doc_queued(sock, doc); }, sock);
 }
 
-void server::send_error(const std::string& msg, const std::string& extra_data, unsigned int status_code, socket_ptr sock)
+void server::send_error(const std::string& msg, const std::string& extra_data, unsigned int status_code, const any_socket_ptr& sock)
 {
 	const std::string& status_hex = formatter()
 		<< "0x" << std::setfill('0') << std::setw(2*sizeof(unsigned int)) << std::hex
@@ -840,7 +857,7 @@ void server::send_error(const std::string& msg, const std::string& extra_data, u
 	err_cfg.set_attr_dup("extra_data", escaped_extra_data.c_str());
 	err_cfg.set_attr_dup("status_code", escaped_status_str.c_str());
 
-	async_send_doc_queued(sock, doc);
+	utils::visit([this, &doc](auto&& sock) { async_send_doc_queued(sock, doc); }, sock);
 }
 
 config& server::get_addon(const std::string& id)
@@ -914,7 +931,7 @@ void server::handle_server_id(const server::request& req)
 	simple_wml::document doc(wml.c_str(), simple_wml::INIT_STATIC);
 	doc.compress();
 
-	async_send_doc_queued(req.sock, doc);
+	utils::visit([this, &doc](auto&& sock) { async_send_doc_queued(sock, doc); }, req.sock);
 }
 
 void server::handle_request_campaign_list(const server::request& req)
@@ -1015,7 +1032,7 @@ void server::handle_request_campaign_list(const server::request& req)
 	simple_wml::document doc(wml.c_str(), simple_wml::INIT_STATIC);
 	doc.compress();
 
-	async_send_doc_queued(req.sock, doc);
+	utils::visit([this, &doc](auto&& sock) { async_send_doc_queued(sock, doc); }, req.sock);
 }
 
 void server::handle_request_campaign(const server::request& req)
@@ -1127,9 +1144,11 @@ void server::handle_request_campaign(const server::request& req)
 
 			LOG_CS << req << "Sending add-on '" << name << "' version: " << from << " -> " << to << " (delta)\n";
 
-			boost::system::error_code ec;
-			coro_send_doc(req.sock, doc, req.yield[ec]);
-			if(check_error(ec, req.sock)) return;
+			utils::visit([this, &req, &doc](auto && sock) {
+				boost::system::error_code ec;
+				coro_send_doc(sock, doc, req.yield[ec]);
+				if(check_error(ec, sock)) return;
+			}, req.sock);
 
 			full_pack_path.clear();
 		}
@@ -1145,9 +1164,16 @@ void server::handle_request_campaign(const server::request& req)
 		}
 
 		LOG_CS << req << "Sending add-on '" << name << "' version: " << to << " size: " << full_pack_size / 1024 << " KiB\n";
-		boost::system::error_code ec;
-		coro_send_file(req.sock, full_pack_path, req.yield[ec]);
-		if(check_error(ec, req.sock)) return;
+		if(auto sock = utils::get_if<socket_ptr>(&req.sock)) {
+			boost::system::error_code ec;
+			coro_send_file(*sock, full_pack_path, req.yield[ec]);
+			if(check_error(ec, *sock)) return;
+		} else {
+			// FIXME: need to decide what to do about sending addons over TLS.
+			// sendfile is low level api so either drop TLS for this part
+			// or don't use sendfile at all.
+			ERR_CS << "Not sending addon over TLS yet\n";
+		}
 	}
 
 	// Clients doing upgrades or some other specific thing shouldn't bump
@@ -1199,9 +1225,13 @@ void server::handle_request_campaign_hash(const server::request& req)
 		}
 
 		LOG_CS << req << "Sending add-on hash index for '" << req.cfg["name"] << "' size: " << file_size / 1024 << " KiB\n";
-		boost::system::error_code ec;
-		coro_send_file(req.sock, path, req.yield[ec]);
-		if(check_error(ec, req.sock)) return;
+		if(auto sock = utils::get_if<socket_ptr>(&req.sock)) {
+			boost::system::error_code ec;
+			coro_send_file(*sock, path, req.yield[ec]);
+			if(check_error(ec, *sock)) return;
+		} else {
+			ERR_CS << "No sendfile over TLS\n";
+		}
 	}
 }
 
