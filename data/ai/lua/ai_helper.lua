@@ -1457,6 +1457,10 @@ function ai_helper.next_hop(unit, x, y, cfg)
     --       in the way) as possible. Setting 'fan_out=false' restores the old behavior. The main
     --       disadvantage of the new method is that it needs to do more path finding and therefore takes longer.
 
+    local viewing_side = cfg and cfg.viewing_side or unit.side
+    ai_helper.check_viewing_side(viewing_side)
+    local ignore_visibility = cfg and cfg.ignore_visibility
+
     local path, cost
     if cfg and cfg.path then
         path = cfg.path
@@ -1480,6 +1484,9 @@ function ai_helper.next_hop(unit, x, y, cfg)
                 local unit_in_way
                 if (not cfg) or (not cfg.ignore_units) then
                     unit_in_way = wesnoth.units.get(path[i][1], path[i][2])
+                    if unit_in_way and (not ignore_visibility) and (not ai_helper.is_visible_unit(viewing_side, unit_in_way)) then
+                        unit_in_way = nil
+                    end
 
                     -- If ignore_own_units is set, ignore own side units that can move out of the way
                     if cfg and cfg.ignore_own_units then
@@ -1530,16 +1537,11 @@ function ai_helper.next_hop(unit, x, y, cfg)
             inverse_reach_map:insert(r[1], r[2], inverse_cost)
         end
 
-
-
         local units
-        if cfg and cfg.ignore_visibility then
-            units = ai_helper.get_units({ { "not", { id = unit.id } } })
+        if ignore_visibility then
+            units = wesnoth.units.find_on_map({ { "not", { id = unit.id } } })
         else
-            units = ai_helper.get_visible_units(
-                cfg and cfg.viewing_side or unit.side,
-                { { "not", { id = unit.id } }
-            })
+            units = ai_helper.get_visible_units(viewing_side, { { "not", { id = unit.id } } })
         end
         local unit_map = LS.create()
         for _,u in ipairs(units) do unit_map:insert(u.x, u.y, u.id) end
