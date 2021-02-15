@@ -24,6 +24,7 @@
    * Added information about the build's (not runtime) target CPU architecture to the game version info dialog and --report.
  ### WML Engine
  ### Miscellaneous and Bug Fixes
+   * Fixed display zoom not being taken into account when using the `x`, `y`, `directional_x` and `directional_y` attributes in unit animations.
 
 ## Version 1.15.9
  ### Add-ons server
