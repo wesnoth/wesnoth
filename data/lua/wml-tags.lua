@@ -716,7 +716,7 @@ function wml_actions.scroll(cfg)
 end
 
 function wml_actions.color_adjust(cfg)
-	wesnoth.interface.color_adjust(cfg)
+	wesnoth.interface.color_adjust(cfg.red, cfg.green, cfg.blue)
 end
 
 function wml_actions.end_turn(cfg)

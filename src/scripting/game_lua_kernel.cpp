@@ -3225,9 +3225,7 @@ int game_lua_kernel::intf_remove_event(lua_State *L)
 int game_lua_kernel::intf_color_adjust(lua_State *L)
 {
 	if (game_display_) {
-		vconfig cfg(luaW_checkvconfig(L, 1));
-
-		game_display_->adjust_color_overlay(cfg["red"], cfg["green"], cfg["blue"]);
+		game_display_->adjust_color_overlay(luaL_checkinteger(L, 1), luaL_checkinteger(L, 2), luaL_checkinteger(L, 3));
 		game_display_->invalidate_all();
 		game_display_->draw(true,true);
 	}
