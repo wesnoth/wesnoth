@@ -74,14 +74,19 @@ public:
 		return opt_.has_value();
 	}
 
+	/** Returns a pointer to the referenced object or nullptr if no reference is held. */
 	T* ptr() const
 	{
-		return &value();
+		if(opt_) {
+			return &value();
+		} else {
+			return nullptr;
+		}
 	}
 
 	T* operator->() const
 	{
-		return ptr();
+		return &value();
 	}
 
 	T& operator*() const
