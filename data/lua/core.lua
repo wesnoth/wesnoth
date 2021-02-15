@@ -881,3 +881,5 @@ wesnoth.show_dialog = wesnoth.deprecate_api('wesnoth.show_dialog', 'gui.show_dia
 wesnoth.format = wesnoth.deprecate_api('wesnoth.format', 'stringx.vformat', 1, nil, stringx.vformat)
 wesnoth.format_conjunct_list = wesnoth.deprecate_api('wesnoth.format_conjunct_list', 'stringx.format_conjunct_list', 1, nil, stringx.format_conjunct_list)
 wesnoth.format_disjunct_list = wesnoth.deprecate_api('wesnoth.format_disjunct_list', 'stringx.format_disjunct_list', 1, nil, stringx.format_disjunct_list)
+-- Other
+unpack = wesnoth.deprecate_api('unpack', 'table.unpack', 3, '1.17', table.unpack)
