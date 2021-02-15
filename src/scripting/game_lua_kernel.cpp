@@ -3965,7 +3965,6 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 	// Put some callback functions in the scripting environment.
 	static luaL_Reg const callbacks[] {
 		{ "add_known_unit",           &intf_add_known_unit           },
-		{ "create_animator",          &dispatch<&game_lua_kernel::intf_create_animator>          },
 		{ "eval_conditional",         &intf_eval_conditional         },
 		{ "get_era",                  &intf_get_era                  },
 		{ "get_resource",             &intf_get_resource             },
@@ -4159,6 +4158,9 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 		{"find_on_recall", &dispatch<&game_lua_kernel::intf_get_recall_units>},
 		{"get", &dispatch<&game_lua_kernel::intf_get_unit>},
 		{"get_hovered", &dispatch<&game_lua_kernel::intf_get_displayed_unit>},
+		{"create_animator", &dispatch<&game_lua_kernel::intf_create_animator>},
+		{"create_weapon", intf_create_attack},
+
 		{ nullptr, nullptr }
 	};
 	lua_getglobal(L, "wesnoth");
