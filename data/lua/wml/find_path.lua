@@ -6,7 +6,7 @@ function wesnoth.wml_actions.find_path(cfg)
 	local unit = wesnoth.units.find_on_map(filter_unit)[1] or wml.error("[find_path]'s filter didn't match any unit")
 	local filter_location = wml.get_child(cfg, "destination") or wml.error( "[find_path] missing required [destination] tag" )
 	-- support for $this_unit
-	local this_unit = utils.start_var_scope("this_unit")
+	local this_unit <close> = utils.scoped_var("this_unit")
 
 	wml.variables["this_unit"] = nil -- clearing this_unit
 	wml.variables["this_unit"] = unit.__cfg -- cfg field needed
@@ -116,17 +116,13 @@ function wesnoth.wml_actions.find_path(cfg)
 
 		if cost >= 42424241 then -- it's the high value returned for unwalkable or busy terrains
 			wml.variables[tostring(variable)] = { hexes = 0 } -- set only length, nil all other values
-			-- support for $this_unit
-			wml.variables["this_unit"] = nil -- clearing this_unit
-			utils.end_var_scope("this_unit", this_unit)
-		return end
+			return
+		end
 
 		if not allow_multiple_turns and turns > 1 then -- location cannot be reached in one turn
 			wml.variables[tostring(variable)] = { hexes = 0 }
-			-- support for $this_unit
-			wml.variables["this_unit"] = nil -- clearing this_unit
-			utils.end_var_scope("this_unit", this_unit)
-		return end -- skip the cycles below
+			return
+		end -- skip the cycles below
 
 		wml.variables[tostring( variable )] =
 			{
@@ -165,8 +161,4 @@ function wesnoth.wml_actions.find_path(cfg)
 				}
 		end
 	end
-
-	-- support for $this_unit
-	wml.variables["this_unit"] = nil -- clearing this_unit
-	utils.end_var_scope("this_unit", this_unit)
 end
