@@ -234,7 +234,7 @@ static int intf_music_commit(lua_State*) {
 
 static int impl_track_get(lua_State* L) {
 	lua_music_track* track = get_track(L, 1);
-	if(track == nullptr || !track->valid()) {
+	if(track == nullptr) {
 		return luaL_error(L, "Error: Attempted to access an invalid music track.\n");
 	}
 	const char* m = luaL_checkstring(L, 2);

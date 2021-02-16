@@ -522,6 +522,7 @@ void unit_frame::redraw(const int frame_time, bool on_start_time, bool in_scope_
 
 	const int x = static_cast<int>(tmp_offset * xdst + (1.0 - tmp_offset) * xsrc) + d2;
 	const int y = static_cast<int>(tmp_offset * ydst + (1.0 - tmp_offset) * ysrc) + d2;
+	const double disp_zoom = display::get_singleton()->get_zoom_factor();
 
 	if(image != nullptr) {
 		bool facing_west = (
@@ -536,19 +537,19 @@ void unit_frame::redraw(const int frame_time, bool on_start_time, bool in_scope_
 		if(!current_data.auto_hflip) { facing_west = false; }
 		if(!current_data.auto_vflip) { facing_north = true; }
 
-		int my_x = x + current_data.x - image->w / 2;
-		int my_y = y + current_data.y - image->h / 2;
+		int my_x = x + current_data.x * disp_zoom - image->w / 2;
+		int my_y = y + current_data.y * disp_zoom - image->h / 2;
 
 		if(facing_west) {
-			my_x -= current_data.directional_x;
+			my_x -= current_data.directional_x * disp_zoom;
 		} else {
-			my_x += current_data.directional_x;
+			my_x += current_data.directional_x * disp_zoom;
 		}
 
 		if(facing_north) {
-			my_y += current_data.directional_y;
+			my_y += current_data.directional_y * disp_zoom;
 		} else {
-			my_y -= current_data.directional_y;
+			my_y -= current_data.directional_y * disp_zoom;
 		}
 
 		display::get_singleton()->render_image(my_x, my_y,
@@ -602,16 +603,16 @@ void unit_frame::redraw(const int frame_time, bool on_start_time, bool in_scope_
 
 	if(direction != map_location::SOUTH_WEST && direction != map_location::NORTH_WEST) {
 		halo_id = halo_man.add(
-			static_cast<int>(x + current_data.halo_x * display::get_singleton()->get_zoom_factor()),
-			static_cast<int>(y + current_data.halo_y * display::get_singleton()->get_zoom_factor()),
+			static_cast<int>(x + current_data.halo_x * disp_zoom),
+			static_cast<int>(y + current_data.halo_y * disp_zoom),
 			current_data.halo  + current_data.halo_mod,
 			map_location(-1, -1),
 			orientation
 		);
 	} else {
 		halo_id = halo_man.add(
-			static_cast<int>(x - current_data.halo_x * display::get_singleton()->get_zoom_factor()),
-			static_cast<int>(y + current_data.halo_y * display::get_singleton()->get_zoom_factor()),
+			static_cast<int>(x - current_data.halo_x * disp_zoom),
+			static_cast<int>(y + current_data.halo_y * disp_zoom),
 			current_data.halo  + current_data.halo_mod,
 			map_location(-1, -1),
 			orientation

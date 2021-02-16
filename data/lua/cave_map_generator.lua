@@ -122,6 +122,10 @@ function callbacks.generate_map(params)
 			local width = math.max(v.data.width or 1, 1)
 			local jagged = v.data.jagged or 0
 			local calc = function(x, y)
+				if x == 0 or x == params.map_width or y == 0 or y == params.map_height then
+					-- Map borders are impassable
+					return math.huge
+				end
 				local res = 1.0
 				if map:get_tile(x, y) == params.terrain_wall then
 					res = laziness

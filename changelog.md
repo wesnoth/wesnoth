@@ -1,11 +1,17 @@
 ## Version 1.15.9+dev
  ### Add-ons client
  ### Add-ons server
+   * Fixed undefined behavior when servicing requests to downgrade add-ons.
  ### Campaigns
+   * The Rise of Wesnoth
+     * Adjust campaign difficulty
  ### Editor
  ### Multiplayer
+   * The Delay Advancements modification has been removed in favor of adding the Plan Unit Advance modification to mainline. Enabling this modification allows each player to choose what their units will level up into in case the advancement happens on an enemy player's turn in an online multiplayer game.
+   * Unit advancement that happens on an enemy's turn in online multiplayer games are no longer randomized. Instead, the first advancement listed for the unit is always used.
  ### Lua API
    * Upgrade to Lua 5.4.2.
+   * Added the wesnoth.as_text(...) function as a way to more easily view the contents of a lua table. This is intended as a debugging aid and nothing more.
  ### Packaging
  ### Terrain
  ### Translations
@@ -15,8 +21,10 @@
    * north-facing frames for dunefolk skirmisher, loyalist bowman, and troll whelp
  ### User interface
    * Added a "disengaged" orb, shown instead of the partially-moved orb for units that can move but can't attack.
+   * Added information about the build's (not runtime) target CPU architecture to the game version info dialog and --report.
  ### WML Engine
  ### Miscellaneous and Bug Fixes
+   * Fixed display zoom not being taken into account when using the `x`, `y`, `directional_x` and `directional_y` attributes in unit animations.
 
 ## Version 1.15.9
  ### Add-ons server

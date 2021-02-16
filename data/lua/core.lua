@@ -282,7 +282,7 @@ function wesnoth.deprecate_api(elem_name, replacement, level, version, elem, det
 		end
 		local mt = {}
 		for k,v in pairs(old_mt) do
-			mt[k] = old_mt[v]
+			mt[k] = old_mt[k]
 		end
 		mt.__index = function(self, key)
 			if not msg_shown then
@@ -699,7 +699,7 @@ local function reorder_dialog_args(t, n)
 		table.insert( res, t[1])
 		table.remove( t, 1 )
 	end
-	local w = open_dialogs[1]:find(unpack(t))
+	local w = open_dialogs[1]:find(table.unpack(t))
 	return w, res
 end
 
@@ -720,7 +720,7 @@ end
 
 local function set_dialog_canvas(...)
 	local w, args = reorder_dialog_args({...}, 2)
-	w:set_canvas(unpack(args))
+	w:set_canvas(table.unpack(args))
 end
 
 local function set_dialog_focus(...)
@@ -750,12 +750,12 @@ end
 
 local function add_dialog_tree_node(...)
 	local w, args = reorder_dialog_args({...}, 2)
-	w:add_item_of_type(unpack(args))
+	w:add_item_of_type(table.unpack(args))
 end
 
 local function remove_dialog_item(...)
 	local w, args = reorder_dialog_args({...}, 2)
-	w:remove_items_at(unpack(args))
+	w:remove_items_at(table.unpack(args))
 end
 
 local old_show_dialog = gui.show_dialog
@@ -881,3 +881,5 @@ wesnoth.show_dialog = wesnoth.deprecate_api('wesnoth.show_dialog', 'gui.show_dia
 wesnoth.format = wesnoth.deprecate_api('wesnoth.format', 'stringx.vformat', 1, nil, stringx.vformat)
 wesnoth.format_conjunct_list = wesnoth.deprecate_api('wesnoth.format_conjunct_list', 'stringx.format_conjunct_list', 1, nil, stringx.format_conjunct_list)
 wesnoth.format_disjunct_list = wesnoth.deprecate_api('wesnoth.format_disjunct_list', 'stringx.format_disjunct_list', 1, nil, stringx.format_disjunct_list)
+-- Other
+unpack = wesnoth.deprecate_api('unpack', 'table.unpack', 3, '1.17', table.unpack)

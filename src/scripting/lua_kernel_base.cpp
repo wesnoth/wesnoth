@@ -129,6 +129,23 @@ int lua_kernel_base::intf_print(lua_State* L)
 	return 0;
 }
 
+static void impl_warn(void* p, const char* msg, int tocont) {
+	static const char*const prefix = "Warning:\n  ";
+	static std::ostringstream warning(prefix);
+	warning.seekp(0, std::ios::end);
+	warning << msg << ' ';
+	if(!tocont) {
+		auto& lk = lua_kernel_base::get_lua_kernel<lua_kernel_base>(reinterpret_cast<lua_State*>(p));
+		lk.add_log_to_console(warning.str());
+		warning.str(prefix);
+	}
+}
+
+void lua_kernel_base::add_log_to_console(const std::string& msg) {
+	cmd_log_ << msg << "\n";
+	DBG_LUA << "'" << msg << "'\n";
+}
+
 /**
  * Replacement load function. Mostly the same as regular load, but disallows loading binary chunks
  * due to CVE-2018-1999023.
@@ -328,6 +345,7 @@ static int intf_deprecated_message(lua_State* L) {
 		lua_push(L, msg);
 		return lua_error(L);
 	}
+	lua_warning(L, msg.c_str(), false);
 	return 0;
 }
 
@@ -485,6 +503,7 @@ lua_kernel_base::lua_kernel_base()
 	lua_setglobal(L, "std_print"); //storing original impl as 'std_print'
 	lua_settop(L, 0); //clear stack, just to be sure
 
+	lua_setwarnf(L, &::impl_warn, L);
 	lua_pushcfunction(L, &dispatch<&lua_kernel_base::intf_print>);
 	lua_setglobal(L, "print");
 
