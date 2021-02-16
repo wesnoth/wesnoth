@@ -152,6 +152,7 @@ class game_lua_kernel : public lua_kernel_base
 	int intf_color_adjust(lua_State *L);
 	int intf_delay(lua_State *L);
 	int intf_label(lua_State *L, bool add);
+	int intf_get_label(lua_State* L);
 	int intf_redraw(lua_State *L);
 	int intf_replace_schedule(lua_State *l);
 	int intf_set_time_of_day(lua_State *L);

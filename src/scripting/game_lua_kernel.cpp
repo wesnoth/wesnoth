@@ -3267,6 +3267,42 @@ int game_lua_kernel::intf_label(lua_State *L, bool add)
 	return 0;
 }
 
+int game_lua_kernel::intf_get_label(lua_State* L)
+{
+	if(game_display_) {
+		game_display &screen = *game_display_;
+		auto loc = luaW_checklocation(L, 1);
+		const terrain_label* label = nullptr;
+		switch(lua_type(L, 2)) {
+			// Missing 2nd argument - get global label
+			case LUA_TNONE: case LUA_TNIL:
+				label = screen.labels().get_label(loc, "");
+				break;
+			// Side number - get label belonging to that side's team
+			case LUA_TNUMBER:
+				if(size_t n = luaL_checkinteger(L, 2); n > 0 && n <= teams().size()) {
+					label = screen.labels().get_label(loc, teams().at(n - 1).team_name());
+				}
+				break;
+			// String - get label belonging to the team with that name
+			case LUA_TSTRING:
+				label = screen.labels().get_label(loc, luaL_checkstring(L, 2));
+				break;
+			// Side userdata - get label belonging to that side's team
+			case LUA_TUSERDATA:
+				label = screen.labels().get_label(loc, luaW_checkteam(L, 2).team_name());
+				break;
+		}
+		if(label) {
+			config cfg;
+			label->write(cfg);
+			luaW_pushconfig(L, cfg);
+			return 1;
+		}
+	}
+	return 0;
+}
+
 int game_lua_kernel::intf_redraw(lua_State *L)
 {
 	if (game_display_) {
@@ -4114,7 +4150,7 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 		// Label operations
 		{"add_label", &dispatch2<&game_lua_kernel::intf_label, true>},
 		{"remove_label", &dispatch2<&game_lua_kernel::intf_label, false>},
-		// TODO: get_label
+		{"get_label", &dispatch<&game_lua_kernel::intf_get_label>},
 		// Time area operations
 		{"place_area", &dispatch<&game_lua_kernel::intf_add_time_area>},
 		{"remove_area", &dispatch<&game_lua_kernel::intf_remove_time_area>},
