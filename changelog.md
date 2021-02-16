@@ -10,6 +10,7 @@
  ### Units
  ### User interface
  ### WML Engine
+   * Standard Location Filters now support gives_income=yes|no to make it simpler to match villages regardless of owner
  ### Miscellaneous and Bug Fixes
 
 ## Version 1.15.10
