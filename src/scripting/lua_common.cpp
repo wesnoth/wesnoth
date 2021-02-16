@@ -496,12 +496,12 @@ std::string register_vconfig_metatable(lua_State *L)
 
 } // end namespace lua_common
 
-void* operator new(std::size_t sz, lua_State *L)
+void* operator new(std::size_t sz, lua_State *L, int nuv)
 {
-	return lua_newuserdatauv(L, sz, 0);
+	return lua_newuserdatauv(L, sz, nuv);
 }
 
-void operator delete(void*, lua_State *L)
+void operator delete(void*, lua_State *L, int nuv)
 {
 	// Not sure if this is needed since it's a no-op
 	// It's only called if a constructor throws while using the above operator new
