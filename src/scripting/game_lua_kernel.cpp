@@ -3252,7 +3252,7 @@ int game_lua_kernel::intf_delay(lua_State *L)
 	return 0;
 }
 
-int game_lua_kernel::intf_label(lua_State *L)
+int game_lua_kernel::intf_label(lua_State *L, bool add)
 {
 	if (game_display_) {
 		vconfig cfg(luaW_checkvconfig(L, 1));
@@ -3261,7 +3261,7 @@ int game_lua_kernel::intf_label(lua_State *L)
 
 		terrain_label label(screen.labels(), cfg.get_config());
 
-		screen.labels().set_label(label.location(), label.text(), label.creator(), label.team_name(), label.color(),
+		screen.labels().set_label(label.location(), add ? label.text() : "", label.creator(), label.team_name(), label.color(),
 				label.visible_in_fog(), label.visible_in_shroud(), label.immutable(), label.category(), label.tooltip());
 	}
 	return 0;
@@ -3985,8 +3985,6 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 		{ "sound_volume",             &intf_sound_volume             },
 		{ "unsynced",                 &intf_do_unsynced              },
 		{ "add_event_handler",         &dispatch<&game_lua_kernel::intf_add_event                  >        },
-		{ "add_fog",                   &dispatch2<&game_lua_kernel::intf_toggle_fog, false         >        },
-		{ "add_time_area",             &dispatch<&game_lua_kernel::intf_add_time_area              >        },
 		{ "add_sound_source",          &dispatch<&game_lua_kernel::intf_add_sound_source           >        },
 		{ "allow_end_turn",            &dispatch<&game_lua_kernel::intf_allow_end_turn             >        },
 		{ "allow_undo",                &dispatch<&game_lua_kernel::intf_allow_undo                 >        },
@@ -4002,44 +4000,32 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 		{ "fire_event_by_id",          &dispatch2<&game_lua_kernel::intf_fire_event, true          >        },
 		{ "get_all_vars",              &dispatch<&game_lua_kernel::intf_get_all_vars               >        },
 		{ "get_end_level_data",        &dispatch<&game_lua_kernel::intf_get_end_level_data         >        },
-		{ "get_locations",             &dispatch<&game_lua_kernel::intf_get_locations              >        },
 		{ "get_sound_source",          &dispatch<&game_lua_kernel::intf_get_sound_source           >        },
 		{ "get_terrain_info",          &dispatch<&game_lua_kernel::intf_get_terrain_info           >        },
 		{ "get_time_of_day",           &dispatch<&game_lua_kernel::intf_get_time_of_day            >        },
 		{ "get_max_liminal_bonus",     &dispatch<&game_lua_kernel::intf_get_max_liminal_bonus      >        },
 		{ "get_variable",              &dispatch<&game_lua_kernel::intf_get_variable               >        },
-		{ "get_villages",              &dispatch<&game_lua_kernel::intf_get_villages               >        },
-		{ "get_village_owner",         &dispatch<&game_lua_kernel::intf_get_village_owner          >        },
-		{ "label",                     &dispatch<&game_lua_kernel::intf_label                      >        },
 		{ "log_replay",                &dispatch<&game_lua_kernel::intf_log_replay                 >        },
 		{ "log",                       &dispatch<&game_lua_kernel::intf_log                        >        },
-		{ "match_location",            &dispatch<&game_lua_kernel::intf_match_location             >        },
 		{ "message",                   &dispatch<&game_lua_kernel::intf_message                    >        },
 		{ "open_help",                 &dispatch<&game_lua_kernel::intf_open_help                  >        },
 		{ "play_sound",                &dispatch<&game_lua_kernel::intf_play_sound                 >        },
 		{ "print",                     &dispatch<&game_lua_kernel::intf_print                      >        },
 		{ "redraw",                    &dispatch<&game_lua_kernel::intf_redraw                     >        },
 		{ "remove_event_handler",      &dispatch<&game_lua_kernel::intf_remove_event               >        },
-		{ "remove_fog",                &dispatch2<&game_lua_kernel::intf_toggle_fog, true          >        },
-		{ "remove_time_area",          &dispatch<&game_lua_kernel::intf_remove_time_area           >        },
 		{ "remove_sound_source",       &dispatch<&game_lua_kernel::intf_remove_sound_source        >        },
 		{ "replace_schedule",          &dispatch<&game_lua_kernel::intf_replace_schedule           >        },
 		{ "select_hex",                &dispatch<&game_lua_kernel::intf_select_hex                 >        },
 		{ "set_time_of_day",           &dispatch<&game_lua_kernel::intf_set_time_of_day            >        },
-		{ "is_fogged",                 &dispatch2<&game_lua_kernel::intf_get_fog_or_shroud, true   >        },
-		{ "is_shrouded",               &dispatch2<&game_lua_kernel::intf_get_fog_or_shroud, false  >        },
 		{ "set_end_campaign_credits",  &dispatch<&game_lua_kernel::intf_set_end_campaign_credits   >        },
 		{ "set_end_campaign_text",     &dispatch<&game_lua_kernel::intf_set_end_campaign_text      >        },
 		{ "create_side",               &dispatch<&game_lua_kernel::intf_create_side                >        },
 		{ "set_next_scenario",         &dispatch<&game_lua_kernel::intf_set_next_scenario          >        },
 		{ "set_variable",              &dispatch<&game_lua_kernel::intf_set_variable               >        },
-		{ "set_village_owner",         &dispatch<&game_lua_kernel::intf_set_village_owner          >        },
 		{ "simulate_combat",           &dispatch<&game_lua_kernel::intf_simulate_combat            >        },
 		{ "synchronize_choice",        &intf_synchronize_choice                                             },
 		{ "synchronize_choices",       &intf_synchronize_choices                                            },
 		{ "teleport",                  &dispatch<&game_lua_kernel::intf_teleport                   >        },
-		{ "place_shroud",              &dispatch2<&game_lua_kernel::intf_shroud_op, true  >                 },
-		{ "remove_shroud",             &dispatch2<&game_lua_kernel::intf_shroud_op, false >                 },
 		{ nullptr, nullptr }
 	};lua_getglobal(L, "wesnoth");
 	if (!lua_istable(L,-1)) {
@@ -4109,12 +4095,36 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 	lua_setfield(L, -2, "tovconfig");
 	lua_pop(L, 1);
 	
-	// Add replace_if_failed to the map module
+	// Add functions to the map module
 	luaW_getglobal(L, "wesnoth", "map");
-	lua_pushcfunction(L, &intf_replace_if_failed);
-	lua_setfield(L, -2, "replace_if_failed");
-	lua_pushcfunction(L, &intf_terrain_mask);
-	lua_setfield(L, -2, "terrain_mask");
+	static luaL_Reg const map_callbacks[] {
+		// Map methods
+		{"terrain_mask", &intf_terrain_mask},
+		// Shroud operations
+		{"place_shroud", &dispatch2<&game_lua_kernel::intf_shroud_op, true>},
+		{"remove_shroud", &dispatch2<&game_lua_kernel::intf_shroud_op, false>},
+		{"is_shrouded", &dispatch2<&game_lua_kernel::intf_get_fog_or_shroud, false>},
+		// Fog operations
+		{"place_fog", &dispatch2<&game_lua_kernel::intf_toggle_fog, false>},
+		{"remove_fog", &dispatch2<&game_lua_kernel::intf_toggle_fog, true>},
+		{"is_fogged", &dispatch2<&game_lua_kernel::intf_get_fog_or_shroud, true>},
+		// Village operations
+		{"get_owner", &dispatch<&game_lua_kernel::intf_get_village_owner>},
+		{"set_owner", &dispatch<&game_lua_kernel::intf_set_village_owner>},
+		// Label operations
+		{"add_label", &dispatch2<&game_lua_kernel::intf_label, true>},
+		{"remove_label", &dispatch2<&game_lua_kernel::intf_label, false>},
+		// TODO: get_label
+		// Time area operations
+		{"place_area", &dispatch<&game_lua_kernel::intf_add_time_area>},
+		{"remove_area", &dispatch<&game_lua_kernel::intf_remove_time_area>},
+		// Filters
+		{"find", &dispatch<&game_lua_kernel::intf_get_locations>},
+		{"matches", &dispatch<&game_lua_kernel::intf_match_location>},
+		{"replace_if_failed", intf_replace_if_failed},
+		{ nullptr, nullptr }
+	};
+	luaL_setfuncs(L, map_callbacks, 0);
 	lua_pop(L, 1);
 
 	// Create the units module
