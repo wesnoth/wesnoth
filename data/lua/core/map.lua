@@ -67,6 +67,132 @@ if wesnoth.kernel_type() ~= "Application Lua Kernel" then
 end
 
 if wesnoth.kernel_type() == "Game Lua Kernel" then
+	local hex_mt = {__metatable = 'terrain hex reference'}
+	
+	function hex_mt.__index(self, key)
+		if key == 'fogged' then
+			return self:fogged_for(wesnoth.current.side)
+		elseif key == 'shrouded' then
+			return self:shrouded_for(wesnoth.current.side)
+		elseif key == 'team_label' then
+			local label = self:label_for(wesnoth.current.side)
+			if label then return label.text end
+			return nil
+		elseif key == 'global_label' then
+			local label = self:label_for(nil)
+			if label then return label.text end
+			return nil
+		elseif key == 'label' then
+			return self.team_label or self.global_label
+		elseif key == 'terrain' then
+			return wesnoth.current.map[self]
+		elseif key == 'base_terrain' then
+			return self.terrain:split('^')[1]
+		elseif key == 'overlay_terrain' then
+			return self.terrain:split('^', {remove_empty=false})[2]
+		elseif key == 'info' then
+			return wesnoth.get_terrain_info(wesnoth.current.map[self])
+		elseif key == 1 then
+			return self.x
+		elseif key == 2 then
+			return self.y
+		elseif #key > 0 and key[0] ~= '_' then
+			return hex_mt[key]
+		end
+	end
+	
+	function hex_mt.__newindex(self, key, val)
+		if key == 'fogged' then
+			self:set_fogged(wesnoth.current.side, val)
+		elseif key == 'shrouded' then
+			self:set_shrouded(wesnoth.current.side, val)
+		elseif key == 'team_label' or key == 'global_label' or key == 'label' then
+			local cfg
+			if type(val) == 'string' or (type(val) == 'userdata' and getmetatable(val) == 'translatable string') then
+				cfg = {x = self.x, y = self.y, text = val}
+			else
+				cfg = wml.parsed(val)
+				cfg.x, cfg.y = self.x, self.y
+			end
+			if key == 'team_label' then
+				cfg.side = wesnoth.current.side
+				cfg.team_name = wesnoth.sides[wesnoth.current.side].team_name
+			elseif key == 'global_label' then
+				cfg.side = 0
+				cfg.team_name = nil
+			elseif cfg.side == nil and cfg.team_name == nil then
+				-- If side or team name explicitly specified, use that, otherwise use current side and no team
+				cfg.side = wesnoth.current.side
+				cfg.team_name = nil
+			end
+			wesnoth.map.add_label(cfg)
+		elseif key == 'terrain' then
+			wesnoth.current.map[self] = val
+		elseif key == 'base_terrain' then
+			wesnoth.current.map[self] = wesnoth.map.replace_base(val)
+		elseif key == 'overlay_terrain' then
+			wesnoth.current.map[self] = wesnoth.map.replace_overlay(val)
+		elseif key == 1 then
+			self.x = val
+		elseif key == 2 then
+			self.y = val
+		elseif key == 'info' then
+			error('hex.info is read-only', 1)
+		end
+	end
+	
+	function hex_mt:fogged_for(side)
+		return wesnoth.map.is_fogged(side, self.x, self.y)
+	end
+	
+	function hex_mt:shrouded_for(side)
+		return wesnoth.map.is_shrouded(side, self.x, self.y)
+	end
+	
+	function hex_mt:set_fogged(side, val)
+		if val then
+			wesnoth.map.place_shroud(side, {val})
+		else
+			wesnoth.map.remove_shroud(side, {val})
+		end
+	end
+	
+	function hex_mt:set_fogged(side, val)
+		if val then
+			wesnoth.map.place_fog(side, {val})
+		else
+			wesnoth.map.remove_fog(side, {val})
+		end
+	end
+	
+	function hex_mt:label_for(who)
+		return wesnoth.map.get_label(self.x, self.y, who)
+	end
+	
+	function hex_mt:matches(filter)
+		return wesnoth.map.matches(self.x, self.y, filter)
+	end
+	
+	-- Backwards compatibility - length is always 2
+	hex_mt.__len = wesnoth.deprecate_api('#location', 'nil', 3, '1.17', function() return 2 end, 'Using the length of a location as a validity test is no longer supported. You should represent an invalid location by nil instead.')
+	
+	function wesnoth.map.get(x, y)
+		if not x or not y then error('Missing coordinate') end
+		if type(x) ~= 'number' or type(y) ~= 'number' then
+			error('Coordinate must be a number')
+		end
+		return setmetatable({x = x, y = y}, hex_mt)
+	end
+	
+	local find_locations = wesnoth.map.find
+	function wesnoth.map.find(cfg)
+		local hexes = find_locations(cfg)
+		for i = 1, #hexes do
+			hexes[i] = wesnoth.map.get(hexes[i][1], hexes[i][2])
+		end
+		return hexes
+	end
+	
 	wesnoth.terrain_mask = wesnoth.deprecate_api('wesnoth.terrain_mask', 'wesnoth.current.map:terrain_mask', 1, nil, function(...)
 		wesnoth.current.map:terrain_mask(...)
 	end)
