@@ -2800,6 +2800,7 @@ def translator(filename, mapxforms, textxform):
     cont = False
     validate = True
     unbalanced = False
+    in_lua_code = False
     newdata = []
     refname = None
     while mfile:
@@ -2930,7 +2931,7 @@ def translator(filename, mapxforms, textxform):
             # Now do warnings based on the state of the tag stack.
             # the regex check for "path=" is needed due to [modify_ai]
             # which uses square braces in its syntax
-            if not unbalanced and not re.match(r"\s*path\=", destringed):
+            if not unbalanced and not in_lua_code and not re.match(r"\s*path\=", destringed):
                 for instance in re.finditer(r"\[\/?\+?([a-z][a-z_]*[a-z])\]", destringed):
                     tag = instance.group(1)
                     closer = instance.group(0)[1] == '/'
@@ -2959,6 +2960,14 @@ def translator(filename, mapxforms, textxform):
                 unbalanced = True
             if "wmllint: unbalanced-off" in comment:
                 unbalanced = False
+            # single line of Lua code, skip
+            if re.match(r"\s*?code\s?=\s?<<.*>>", destringed):
+                continue
+            # multiline Lua block
+            if re.match(r"\s*?code\s?=\s?<<.*", destringed):
+                in_lua_code = True
+            if in_lua_code and re.match(r".*?>>\s*$", destringed):
+                in_lua_code = False
             if "wmllint: match" in comment:
                 comment = comment.strip()
                 try:
