@@ -676,7 +676,6 @@ void unit_attack(display * disp, game_board & board,
 		animator.add_animation(leader.get_shared_ptr(), "leading", ability.teacher_loc,
 			att->get_location(), damage, true,  "", {0,0,0},
 			hit_type, weapon, secondary_attack, swing);
-
 	}
 
 	for(const unit_ability& ability : defender.get_abilities_weapons("resistance", secondary_attack, weapon)) {
