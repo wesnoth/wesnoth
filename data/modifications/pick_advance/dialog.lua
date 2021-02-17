@@ -28,7 +28,7 @@ function pickadvance.show_dialog_unsynchronized(advance_info, unit)
 			horizontal_alignment = "left",
 			T.label {
 				definition = "title",
-				label = _ "Plan Advance"
+				label = _ "Plan Advancement"
 			}
 		},
 	}

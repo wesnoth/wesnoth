@@ -6,7 +6,7 @@ local _ = wesnoth.textdomain "wesnoth"
 
 wesnoth.wml_actions.set_menu_item {
 	id = "pickadvance",
-	description = _"Pick Advance",
+	description = _ "Plan Advancement",
 	T.show_if {
 		T.lua {
 			code = "return pickadvance.menu_available()"
