@@ -437,7 +437,12 @@ function wml_actions.store_reachable_locations(cfg)
 	local range = cfg.range or "movement"
 	local moves = cfg.moves or "current"
 	local variable = cfg.variable or wml.error "[store_reachable_locations] missing required variable= key"
-	local reach_param = { viewing_side = cfg.viewing_side or 0 }
+	local reach_param = { viewing_side = cfg.viewing_side }
+	if cfg.viewing_side == 0 then
+		wml.error "[store_reachable_locations] invalid viewing_side"
+	elseif cfg.viewing_side == nil then
+		reach_param.ignore_visibility = true
+	end
 	if range == "vision" then
 		moves = "max"
 		reach_param.ignore_units = true
