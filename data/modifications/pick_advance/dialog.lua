@@ -161,19 +161,15 @@ function pickadvance.show_dialog_unsynchronized(advance_info, unit)
 			end
 			wesnoth.set_dialog_value(text, "the_list", i, "the_label")
 			local img = advance_type.__cfg.image
-			wesnoth.set_dialog_value(img or "misc/blank-hex.png", "the_list", i, "the_icon")
+			if img then
+				img = ("%s~TC(%d,%s)"):format(img, unit.side, advance_type.__cfg.flag_rgb or "magenta")
+			else
+				img = "misc/blank-hex.png"
+			end
+			wesnoth.set_dialog_value(img, "the_list", i, "the_icon")
 		end
 
 		wesnoth.set_dialog_focus("the_list")
-
-		local function select()
-			local i = wesnoth.get_dialog_value "the_list"
-			if i > 0 then
-				local img = options[i].__cfg.image
-				wesnoth.set_dialog_value(img or "misc/blank-hex.png", "the_list", i, "the_icon")
-			end
-		end
-		wesnoth.set_dialog_callback(select, "the_list")
 	end
 
 -- dialog postshow function
