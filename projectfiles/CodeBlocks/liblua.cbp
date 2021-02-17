@@ -31,7 +31,7 @@
 		</Build>
 		<Compiler>
 			<Add option="-Wall" />
-			<Add option="-std=c++17" />
+			<Add option="-std=c++20" />
 			<Add option="-U__STRICT_ANSI__" />
 			<Add option="-include ../../src/wesnoth_lua_config.h" />
 			<Add directory="../../src" />
@@ -41,7 +41,6 @@
 		<Unit filename="../../src/lua/lauxlib.cpp" />
 		<Unit filename="../../src/lua/lauxlib.h" />
 		<Unit filename="../../src/lua/lbaselib.cpp" />
-		<Unit filename="../../src/lua/lbitlib.cpp" />
 		<Unit filename="../../src/lua/lcode.cpp" />
 		<Unit filename="../../src/lua/lcode.h" />
 		<Unit filename="../../src/lua/lcorolib.cpp" />
@@ -57,6 +56,7 @@
 		<Unit filename="../../src/lua/lfunc.h" />
 		<Unit filename="../../src/lua/lgc.cpp" />
 		<Unit filename="../../src/lua/lgc.h" />
+		<Unit filename="../../src/lua/ljumptab.h" />
 		<Unit filename="../../src/lua/liolib.cpp" />
 		<Unit filename="../../src/lua/llex.cpp" />
 		<Unit filename="../../src/lua/llex.h" />
@@ -69,6 +69,7 @@
 		<Unit filename="../../src/lua/lobject.h" />
 		<Unit filename="../../src/lua/lopcodes.cpp" />
 		<Unit filename="../../src/lua/lopcodes.h" />
+		<Unit filename="../../src/lua/ljumptab.h" />
 		<Unit filename="../../src/lua/loslib.cpp" />
 		<Unit filename="../../src/lua/lparser.cpp" />
 		<Unit filename="../../src/lua/lparser.h" />
