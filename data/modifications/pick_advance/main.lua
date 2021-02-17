@@ -173,7 +173,7 @@ end
 -- return true if the side can be played and has either a recruit list set or non-leader units
 local function humans_can_recruit()
 	for _, side in ipairs(wesnoth.sides) do
-		local units = wesnoth.units.find { side = side.side, canrecruit = false }
+		local units = wesnoth.units.find_on_map { side = side.side, canrecruit = false }
 		if side.__cfg.allow_player and (#side.recruit ~= 0 or #units > 0) then
 			return true
 		end
@@ -210,7 +210,7 @@ on_event("moveto", function()
 	if fresh_turn then
 		fresh_turn = false
 		if not wesnoth.sides[wesnoth.current.side].__cfg.allow_player then return end
-		for _, unit in ipairs(wesnoth.units.find { side = wesnoth.current.side }) do
+		for _, unit in ipairs(wesnoth.units.find_on_map { side = wesnoth.current.side }) do
 			if #unit.advances_to > 1 and wml.variables.pickadvance_force_choice and wesnoth.current.turn > 1 then
 				pickadvance.pick_advance(unit)
 				if #unit.advances_to > 1 then
