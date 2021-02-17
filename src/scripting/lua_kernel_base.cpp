@@ -546,6 +546,7 @@ lua_kernel_base::lua_kernel_base()
 		{ "rotate_right_around_center",	&lua_map_location::intf_rotate_right_around_center	},
 		{ "are_hexes_adjacent",		&lua_map_location::intf_tiles_adjacent			},
 		{ "get_adjacent_hexes",		&lua_map_location::intf_get_adjacent_tiles		},
+		{ "get_hexes_in_radius",		&lua_map_location::intf_get_tiles_in_radius		},
 		{ "distance_between",		&lua_map_location::intf_distance_between		},
 		{ "get_in_basis_N_NE",		&lua_map_location::intf_get_in_basis_N_NE		},
 		{ "get_relative_dir",		&lua_map_location::intf_get_relative_dir		},

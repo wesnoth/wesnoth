@@ -14,8 +14,10 @@
 
 #include "scripting/lua_map_location_ops.hpp"
 #include "scripting/lua_common.hpp"
+#include "scripting/push_check.hpp"
 
 #include "map/location.hpp"
+#include "pathutils.hpp"
 
 #include <string>
 #include <utility>
@@ -87,7 +89,7 @@ int intf_vector_diff(lua_State* L)
 {
 	map_location l1, l2;
 	if(!luaW_tolocation(L, 1, l1) || !luaW_tolocation(L, 2, l2)) {
-		lua_pushstring(L, "vector_sum: requires two locations");
+		lua_pushstring(L, "vector_diff: requires two locations");
 		return lua_error(L);
 	}
 
@@ -137,7 +139,7 @@ int intf_tiles_adjacent(lua_State* L)
 {
 	map_location l1, l2;
 	if(!luaW_tolocation(L, 1, l1) || !luaW_tolocation(L, 2, l2)) {
-		lua_pushstring(L, "vector_sum: requires two locations");
+		lua_pushstring(L, "tiles_adjacent: requires two locations");
 		return lua_error(L);
 	}
 
@@ -162,6 +164,26 @@ int intf_get_adjacent_tiles(lua_State* L)
 	}
 
 	return 6;
+}
+
+/**
+ * Expose map_location get_tiles_in_radius
+ * - Arg 1: A location
+ * - Ret: The locations
+ */
+int intf_get_tiles_in_radius(lua_State* L)
+{
+	map_location l1;
+	if(!luaW_tolocation(L, 1, l1)) {
+		return luaL_argerror(L, 1, "expected a location");
+	}
+	int radius = luaL_checkinteger(L, 2);
+
+	std::vector<map_location> locs;
+	get_tiles_in_radius(l1, radius, locs);
+	lua_push(L, locs);
+
+	return 1;
 }
 
 /**
