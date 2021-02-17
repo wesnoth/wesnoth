@@ -1,8 +1,5 @@
-FROM wesnoth/wesnoth:1804-master
+FROM wesnoth/wesnoth:2004-master
 
-# install ppa for more recent flatpak version, otherwise "dir" source type is unrecognized
-RUN apt install -y software-properties-common
-RUN add-apt-repository -y ppa:alexlarsson/flatpak
 RUN apt update
 # install flatpak
 RUN apt install -y flatpak flatpak-builder jq
