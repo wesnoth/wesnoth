@@ -4,22 +4,10 @@ pickadvance = {}
 local T = wesnoth.require("lua/helper.lua").set_wml_tag_metatable {}
 local _ = wesnoth.textdomain "wesnoth"
 
-local function filter_false(arr)
-	local result = {}
-	for _, v in ipairs(arr) do
-		if v ~= false then
-			result[#result + 1] = v
-		end
-	end
-	return result
-end
-
-
 function pickadvance.show_dialog_unsynchronized(advance_info, unit)
 -- dialog exit codes --
 	local reset_code = -3
 	local single_unit_code = -1
-	local all_units_code = 1
 --
 	local unit_type_options = advance_info.type_advances
 	local options = {}
@@ -33,54 +21,137 @@ function pickadvance.show_dialog_unsynchronized(advance_info, unit)
 		and (advance_info.game_override or {})[1] or nil
 
 	local description_row = T.row {
-		T.column { T.label { use_markup = true, label = _"Plan advance:" } },
+		T.column {
+			border = "all",
+			border_size = 5,
+			horizontal_alignment = "left",
+			T.label {
+				definition = "title",
+				label = _ "Plan Advance"
+			}
+		},
 	}
 
-	local list_sub_row = T.row {
-			T.column { T.image { id = "the_icon" } },
-			T.column { grow_factor = 0, T.label { use_markup = true, id = "the_label" } },
-			T.column { grow_factor = 1, T.spacer {} },
+	local list_row_definition = T.grid {
+		T.row {
+			T.column {
+				border = "all",
+				border_size = 5,
+				grow_factor = 0,
+				horizontal_alignment = "left",
+				T.image {
+					id = "the_icon",
+					linked_group = "image"
+				}
+			},
+			T.column {
+				border = "all",
+				border_size = 5,
+				grow_factor = 1,
+				horizontal_alignment = "left",
+				T.label {
+					use_markup = true,
+					id = "the_label",
+					linked_group = "type"
+				}
+			}
 		}
-
-	local toggle_panel = T.toggle_panel { return_value = single_unit_code, T.grid { list_sub_row } }
-
-	local list_definition = T.list_definition { T.row { T.column { horizontal_grow = true, toggle_panel } } }
-
-	local listbox = T.listbox { id = "the_list", list_definition, has_minimum = true }
-
-	local reset_button = T.button {
-		return_value = reset_code,
-		label = _"Reset",
-		tooltip = _"Reset advancements to default"
 	}
-	local unit_button = T.button {
-		return_value = single_unit_code,
-		label = _"Save",
-		tooltip = _"Save the advancement for this unit only"
+
+	local listbox = T.listbox {
+		id = "the_list",
+		has_minimum = true,
+		T.list_definition {
+			T.row {
+				T.column {
+					horizontal_grow = true,
+					vertical_grow = true,
+					T.toggle_panel {
+						return_value = single_unit_code,
+						list_row_definition
+					}
+				}
+			}
+		}
 	}
-	local recruits_subbutton = T.button {
-		return_value = all_units_code,
-		label = _"Save (all)",
-		tooltip = _"Save the advancement for all units of this type"
-	}
-	local recruits_button = not unit.canrecruit and T.row { T.column { horizontal_grow = true, recruits_subbutton } }
 
 -- main dialog definition
 	local dialog = {
-		T.tooltip { id = "tooltip_large" },
-		T.helptip { id = "tooltip_large" },
-		T.grid(filter_false {
-			T.row { T.column { T.spacer { width = 250 } } },
+		T.tooltip {
+			id = "tooltip_large"
+		},
+		T.helptip {
+			id = "tooltip_large"
+		},
+		T.linked_group {
+			id = "image",
+			fixed_width = true
+		},
+		T.linked_group {
+			id = "type",
+			fixed_width = true
+		},
+		T.grid {
 			description_row,
-			T.row { T.column { horizontal_grow = true, listbox } },
-			T.row { T.column { horizontal_grow = true, unit_button } },
-			recruits_button,
-			T.row { T.column { horizontal_grow = true, (unit_override_one or game_override_one) and reset_button or T.spacer { width = 250 } } },
-		})
+			T.row {
+				grow_factor = 1,
+				T.column {
+					border = "all",
+					border_size = 5,
+					horizontal_grow = true,
+					listbox
+				}
+			},
+			T.row {
+				grow_factor = 0,
+				T.column {
+					border = "all",
+					border_size = 5,
+					horizontal_alignment = "left",
+					T.toggle_button {
+						id = "apply_to_all",
+						label = _ "Apply to all units of this type"
+					}
+				}
+			},
+			T.row {
+				T.column {
+					horizontal_grow = true,
+					T.grid {
+						T.row {
+							grow_factor = 0,
+							T.column {
+								border = "all",
+								border_size = 5,
+								horizontal_alignment = "left",
+								T.button {
+									return_value = reset_code,
+									id = "reset",
+									label = _ "Reset",
+									tooltip = _ "Reset advancements to default"
+								}
+							},
+							T.column {
+								border = "all",
+								border_size = 5,
+								horizontal_alignment = "right",
+								T.button {
+									return_value = single_unit_code,
+									label = _ "Save"
+								}
+							}
+						}
+					}
+				}
+			}
+		}
 	}
 
 -- dialog preshow function
 	local function preshow()
+		wesnoth.set_dialog_active(not not (unit_override_one or game_override_one), "reset")
+		wesnoth.set_dialog_visible(not unit.canrecruit, "apply_to_all")
+
 		for i, advance_type in ipairs(options) do
 			local text = advance_type.name
 			if advance_type.id == game_override_one then
@@ -107,8 +178,10 @@ function pickadvance.show_dialog_unsynchronized(advance_info, unit)
 
 -- dialog postshow function
 	local item_result
+	local apply_to_all
 	local function postshow()
 		item_result = wesnoth.get_dialog_value("the_list")
+		apply_to_all = wesnoth.get_dialog_value("apply_to_all")
 	end
 
 	local dialog_exit_code = wesnoth.show_dialog(dialog, preshow, postshow)
@@ -116,13 +189,12 @@ function pickadvance.show_dialog_unsynchronized(advance_info, unit)
 -- determine the choice made
 	local is_reset = dialog_exit_code == reset_code
 	local is_ok = dialog_exit_code >= single_unit_code and item_result >= 1
-	local game_scope = dialog_exit_code == all_units_code
 	return {
 		is_unit_override = is_reset or is_ok,
 		unit_override = is_ok and options[item_result].id or is_reset and table.concat(unit_type_options, ","),
 
-		is_game_override = is_reset or game_scope,
-		game_override = game_scope and options[item_result].id or nil,
+		is_game_override = is_reset or apply_to_all,
+		game_override = apply_to_all and options[item_result].id or nil,
 	}
 end
 
