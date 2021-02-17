@@ -6,7 +6,6 @@ local _ = wesnoth.textdomain "wesnoth"
 
 function pickadvance.show_dialog_unsynchronized(advance_info, unit)
 -- dialog exit codes --
-	local reset_code = -3
 	local cancel_code = -2
 	local single_unit_code = -1
 --
@@ -55,6 +54,18 @@ function pickadvance.show_dialog_unsynchronized(advance_info, unit)
 					id = "the_label",
 					linked_group = "type"
 				}
+			},
+			T.column {
+				border = "all",
+				border_size = 5,
+				horizontal_alignment = "center",
+				vertical_alignment = "center",
+				T.image {
+					id = "global_icon",
+					linked_group = "global_icon",
+					label = "icons/action/editor-tool-unit_30-pressed.png",
+					tooltip = _ "This advancement is currently the default for all units of the same type"
+				}
 			}
 		}
 	}
@@ -79,10 +90,10 @@ function pickadvance.show_dialog_unsynchronized(advance_info, unit)
 -- main dialog definition
 	local dialog = {
 		T.tooltip {
-			id = "tooltip_large"
+			id = "tooltip"
 		},
 		T.helptip {
-			id = "tooltip_large"
+			id = "tooltip"
 		},
 		T.linked_group {
 			id = "image",
@@ -90,6 +101,10 @@ function pickadvance.show_dialog_unsynchronized(advance_info, unit)
 		},
 		T.linked_group {
 			id = "type",
+			fixed_width = true
+		},
+		T.linked_group {
+			id = "global_icon",
 			fixed_width = true
 		},
 		T.grid {
@@ -117,21 +132,10 @@ function pickadvance.show_dialog_unsynchronized(advance_info, unit)
 			},
 			T.row {
 				T.column {
-					horizontal_grow = true,
+					horizontal_alignment = "right",
 					T.grid {
 						T.row {
 							grow_factor = 0,
-							T.column {
-								border = "all",
-								border_size = 5,
-								horizontal_alignment = "left",
-								T.button {
-									return_value = reset_code,
-									id = "reset",
-									label = _ "Reset",
-									tooltip = _ "Reset advancements to default"
-								}
-							},
 							T.column {
 								border = "all",
 								border_size = 5,
@@ -159,34 +163,44 @@ function pickadvance.show_dialog_unsynchronized(advance_info, unit)
 
 -- dialog preshow function
 	local function preshow()
-		wesnoth.set_dialog_active(not not (unit_override_one or game_override_one), "reset")
 		wesnoth.set_dialog_visible(not unit.canrecruit, "apply_to_all")
 
+		local selection = 0
+
+		local empty_icon_unit = "misc/blank-hex.png"
+
+		wesnoth.set_dialog_value(empty_icon_unit, "the_list", 1, "the_icon")
+		wesnoth.set_dialog_value( _ "No planned advancement", "the_list", 1, "the_label")
+		wesnoth.set_dialog_visible(false, "the_list", 1, "global_icon")
+
 		for i, advance_type in ipairs(options) do
+			local n = i + 1
 			local text = advance_type.name
-			if advance_type.id == game_override_one then
-				text = text .. _" (chosen, all)"
-			elseif advance_type.id == unit_override_one then
-				text = text .. _" (chosen)"
+			if advance_type.id == game_override_one or advance_type.id == unit_override_one then
+				selection = n
 			end
-			wesnoth.set_dialog_value(text, "the_list", i, "the_label")
+			wesnoth.set_dialog_value(text, "the_list", n, "the_label")
 			local img = advance_type.__cfg.image
 			if img then
 				img = ("%s~TC(%d,%s)"):format(img, unit.side, advance_type.__cfg.flag_rgb or "magenta")
 			else
-				img = "misc/blank-hex.png"
+				img = empty_icon_unit
 			end
-			wesnoth.set_dialog_value(img, "the_list", i, "the_icon")
+			wesnoth.set_dialog_value(img, "the_list", n, "the_icon")
+			wesnoth.set_dialog_visible(not not (advance_type.id == game_override_one) or "hidden", "the_list", n, "global_icon")
 		end
 
 		wesnoth.set_dialog_focus("the_list")
+		if selection > 0 then
+			wesnoth.set_dialog_value(selection, "the_list")
+		end
 	end
 
 -- dialog postshow function
 	local item_result
 	local apply_to_all
 	local function postshow()
-		item_result = wesnoth.get_dialog_value("the_list")
+		item_result = wesnoth.get_dialog_value("the_list") - 1
 		apply_to_all = wesnoth.get_dialog_value("apply_to_all")
 	end
 
@@ -197,15 +211,14 @@ function pickadvance.show_dialog_unsynchronized(advance_info, unit)
 	end
 
 -- determine the choice made
-	local is_reset = dialog_exit_code == reset_code
-	local is_ok = dialog_exit_code >= single_unit_code and item_result >= 1
+	local is_reset = item_result == 0
 	return {
 		ignore = false,
-		is_unit_override = is_reset or is_ok,
-		unit_override = is_ok and options[item_result].id or is_reset and table.concat(unit_type_options, ","),
+		is_unit_override = not apply_to_all,
+		unit_override = not is_reset and options[item_result].id or table.concat(unit_type_options, ","),
 
-		is_game_override = is_reset or apply_to_all,
-		game_override = apply_to_all and options[item_result].id or nil,
+		is_game_override = apply_to_all,
+		game_override = apply_to_all and (not is_reset and options[item_result].id) or nil,
 	}
 end
 
