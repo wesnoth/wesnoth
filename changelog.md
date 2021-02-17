@@ -12,6 +12,8 @@
  ### Lua API
    * Upgrade to Lua 5.4.2.
    * Added the wesnoth.as_text(...) function as a way to more easily view the contents of a lua table. This is intended as a debugging aid and nothing more.
+   * Deprecation warnings can now be viewed in the in-game Lua console, together with a stack trace to the first location that triggered them.
+   * There is now a --strict-lua command-line option that disables most deprecated Lua functions; this makes the use of deprecated APIs an error instead of a warning.
  ### Packaging
  ### Terrain
  ### Translations
