@@ -31,6 +31,7 @@
 #endif
 
 #include "exceptions.hpp"
+#include "utils/variant.hpp"
 
 #if BOOST_VERSION >= 106600
 #include <boost/asio/io_context.hpp>
@@ -39,6 +40,7 @@
 #endif
 #include <boost/asio/ip/tcp.hpp>
 #include <boost/asio/streambuf.hpp>
+#include <boost/asio/ssl.hpp>
 
 class config;
 
@@ -130,11 +132,18 @@ private:
 	boost::asio::io_service io_context_;
 #endif
 
+	std::string host_;
+	const std::string service_;
 	typedef boost::asio::ip::tcp::resolver resolver;
 	resolver resolver_;
 
-	typedef boost::asio::ip::tcp::socket socket;
-	socket socket_;
+	boost::asio::ssl::context tls_context_ { boost::asio::ssl::context::sslv23 };
+
+	typedef boost::asio::ip::tcp::socket raw_socket;
+	typedef boost::asio::ssl::stream<raw_socket> tls_socket;
+	typedef utils::variant<raw_socket, tls_socket> any_socket;
+	bool use_tls_ = true;
+	any_socket socket_;
 
 	bool done_;
 
@@ -156,6 +165,8 @@ private:
 	void handle_handshake(const boost::system::error_code& ec);
 
 	data_union handshake_response_;
+
+	void fallback_to_unencrypted();
 
 	std::size_t is_write_complete(const boost::system::error_code& error, std::size_t bytes_transferred);
 	void handle_write(const boost::system::error_code& ec, std::size_t bytes_transferred);
