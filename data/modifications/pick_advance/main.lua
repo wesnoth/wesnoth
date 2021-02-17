@@ -1,7 +1,8 @@
 -- << pick_advance/main.lua
 
-local on_event = wesnoth.require("lua/on_event.lua")
-local T = wesnoth.require("lua/helper.lua").set_wml_tag_metatable {}
+local on_event = wesnoth.require "on_event"
+local F = wesnoth.require "functional"
+local T = wml.tag
 local _ = wesnoth.textdomain "wesnoth"
 
 wesnoth.wml_actions.set_menu_item {
@@ -27,15 +28,10 @@ end
 -- splits a comma delimited string of unit types
 -- returns a table of unit types that aren't blank, "null", and that exist
 local function split_comma_units(string_to_split)
-	local result = {}
-	local n = 1
-	for s in string.gmatch(string_to_split or "", "[^,]+") do
-		if s ~= "" and s ~= "null" and wesnoth.unit_types[s] then
-			result[n] = s
-			n = n + 1
-		end
-	end
-	return result
+	return F.filter(
+		stringx.split(string_to_split or ""),
+		function(s) return s ~= "" and s ~= "null" and wesnoth.unit_types[s] end
+	)
 end
 
 -- returns a table of the original unit types
@@ -48,13 +44,13 @@ end
 
 -- replace the unit's current advancements with the new set of units via object/effect
 local function set_advances(unit, array)
-	wesnoth.add_modification(unit, "object", {
-		id = "pickadvance",
+	unit:add_modification("object", {
+		pickadvance = true,
 		take_only_once = false,
 		T.effect {
 			apply_to = "new_advancement",
 			replace = true,
-			types = table.concat(array, ",")
+			types = array
 		}
 	})
 end
@@ -69,23 +65,11 @@ local function array_to_set(arr)
 	return result
 end
 
--- for table "arr" containing sets of [unit_type,true]
--- return table containing sets of [index,unit_type]
-local function array_filter(arr, func)
-	local result = {}
-	for _, v in ipairs(arr) do
-		if func(v) then
-			result[#result + 1] = v
-		end
-	end
-	return result
-end
-
 -- works as anti-cheat and fixes tricky bugs in [male]/[female]/undead variation overrides
 local function filter_overrides(unit, overrides)
 	local possible_advances_array = original_advances(unit)
 	local possible_advances = array_to_set(possible_advances_array)
-	local filtered = array_filter(overrides, function(e) return possible_advances[e] end)
+	local filtered = F.filter(overrides, function(e) return possible_advances[e] end)
 	return #filtered > 0 and filtered or possible_advances_array
 end
 
@@ -95,7 +79,7 @@ end
 local function get_advance_info(unit)
 	local type_advances, orig_options_sanitized = original_advances(unit)
 	local game_override_key = "pickadvance_side" .. unit.side .. "_" .. orig_options_sanitized
-	local game_override = wesnoth.get_variable(game_override_key)
+	local game_override = wml.variables[game_override_key]
 	local function correct(override)
 		return override and #override > 0 and #override < #type_advances and override or nil
 	end
@@ -112,7 +96,7 @@ end
 --      the unit is on a local human controlled side
 --      the unit has multiple options in either its original set of advancements or current set of advancements
 function pickadvance.menu_available()
-	local unit = wesnoth.get_unit(wml.variables.x1, wml.variables.y1)
+	local unit = wesnoth.units.get(wml.variables.x1, wml.variables.y1)
 	return unit and
 		#unit.advances_to > 0
 		and wesnoth.sides[unit.side].is_local and wesnoth.sides[unit.side].controller == "human"
@@ -125,9 +109,8 @@ end
 local function initialize_unit(unit)
 	local clean_type = clean_type_func(unit.type)
 	if unit.variables["pickadvance_orig_" .. clean_type] == nil then
-		wesnoth.wml_actions.remove_object {
-			object_id = "pickadvance",
-			id = unit.id
+		unit:remove_modifications{
+			pickadvance = true
 		}
 		unit.variables["pickadvance_orig_" .. clean_type] = table.concat(unit.advances_to, ",")
 		local advance_info = get_advance_info(unit)
@@ -139,7 +122,7 @@ end
 
 -- let the player select the unit's advancement via dialog
 function pickadvance.pick_advance(unit)
-	unit = unit or wesnoth.get_unit(wml.variables.x1, wml.variables.y1)
+	unit = unit or wesnoth.units.get(wml.variables.x1, wml.variables.y1)
 	initialize_unit(unit)
 	local _, orig_options_sanitized = original_advances(unit)
 	local dialog_result = wesnoth.synchronize_choice(function()
@@ -158,7 +141,7 @@ function pickadvance.pick_advance(unit)
 	end
 	if dialog_result.is_game_override then
 		local key = "pickadvance_side" .. unit.side .. "_" .. orig_options_sanitized
-		wesnoth.set_variable(key, table.concat(dialog_result.game_override, ","))
+		wml.variables[key] = table.concat(dialog_result.game_override, ",")
 	end
 end
 
@@ -178,7 +161,7 @@ end
 -- make its advancements viewable
 -- force picking an advancement if it has multiple and the force option was specified
 local function initialize_unit_x1y1(ctx)
-	local unit = wesnoth.get_unit(ctx.x1, ctx.y1)
+	local unit = wesnoth.units.get(ctx.x1, ctx.y1)
 	if not wesnoth.sides[unit.side].__cfg.allow_player then return end
 	initialize_unit(unit)
 	make_unit_known(unit)
@@ -190,7 +173,7 @@ end
 -- return true if the side can be played and has either a recruit list set or non-leader units
 local function humans_can_recruit()
 	for _, side in ipairs(wesnoth.sides) do
-		local units = wesnoth.get_units { side = side.side, canrecruit = false }
+		local units = wesnoth.units.find { side = side.side, canrecruit = false }
 		if side.__cfg.allow_player and (#side.recruit ~= 0 or #units > 0) then
 			return true
 		end
@@ -227,7 +210,7 @@ on_event("moveto", function()
 	if fresh_turn then
 		fresh_turn = false
 		if not wesnoth.sides[wesnoth.current.side].__cfg.allow_player then return end
-		for _, unit in ipairs(wesnoth.get_units { side = wesnoth.current.side }) do
+		for _, unit in ipairs(wesnoth.units.find { side = wesnoth.current.side }) do
 			if #unit.advances_to > 1 and wml.variables.pickadvance_force_choice and wesnoth.current.turn > 1 then
 				pickadvance.pick_advance(unit)
 				if #unit.advances_to > 1 then

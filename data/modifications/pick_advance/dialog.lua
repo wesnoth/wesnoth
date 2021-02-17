@@ -1,7 +1,7 @@
 -- << pickadvance_dialog
 
 pickadvance = {}
-local T = wesnoth.require("lua/helper.lua").set_wml_tag_metatable {}
+local T = wml.tag
 local _ = wesnoth.textdomain "wesnoth"
 
 function pickadvance.show_dialog_unsynchronized(advance_info, unit)
@@ -162,16 +162,17 @@ function pickadvance.show_dialog_unsynchronized(advance_info, unit)
 	}
 
 -- dialog preshow function
-	local function preshow()
-		wesnoth.set_dialog_visible(not unit.canrecruit, "apply_to_all")
+	local function preshow(window)
+		window.apply_to_all.visible = not unit.canrecruit
 
 		local selection = 0
 
 		local empty_icon_unit = "misc/blank-hex.png"
 
-		wesnoth.set_dialog_value(empty_icon_unit, "the_list", 1, "the_icon")
-		wesnoth.set_dialog_value( _ "No planned advancement", "the_list", 1, "the_label")
-		wesnoth.set_dialog_visible(false, "the_list", 1, "global_icon")
+		local null_row = window.the_list[1]
+		null_row.the_icon.label = empty_icon_unit
+		null_row.the_label.label = _ "No planned advancement"
+		null_row.global_icon.visible = false
 
 		for i, advance_type in ipairs(options) do
 			local n = i + 1
@@ -179,32 +180,33 @@ function pickadvance.show_dialog_unsynchronized(advance_info, unit)
 			if advance_type.id == game_override_one or advance_type.id == unit_override_one then
 				selection = n
 			end
-			wesnoth.set_dialog_value(text, "the_list", n, "the_label")
+			local this_row = window.the_list[n]
+			this_row.the_label.label = text
 			local img = advance_type.__cfg.image
 			if img then
 				img = ("%s~TC(%d,%s)"):format(img, unit.side, advance_type.__cfg.flag_rgb or "magenta")
 			else
 				img = empty_icon_unit
 			end
-			wesnoth.set_dialog_value(img, "the_list", n, "the_icon")
-			wesnoth.set_dialog_visible(not not (advance_type.id == game_override_one) or "hidden", "the_list", n, "global_icon")
+			this_row.the_icon.label = img
+			this_row.global_icon.visible = not not (advance_type.id == game_override_one) or "hidden"
 		end
 
-		wesnoth.set_dialog_focus("the_list")
+		window.the_list:focus()
 		if selection > 0 then
-			wesnoth.set_dialog_value(selection, "the_list")
+			window.the_list.selected_index = selection
 		end
 	end
 
 -- dialog postshow function
 	local item_result
 	local apply_to_all
-	local function postshow()
-		item_result = wesnoth.get_dialog_value("the_list") - 1
-		apply_to_all = wesnoth.get_dialog_value("apply_to_all")
+	local function postshow(window)
+		item_result = window.the_list.selected_index - 1
+		apply_to_all = window.apply_to_all.selected
 	end
 
-	local dialog_exit_code = wesnoth.show_dialog(dialog, preshow, postshow)
+	local dialog_exit_code = gui.show_dialog(dialog, preshow, postshow)
 
 	if dialog_exit_code == cancel_code then
 		return { ignore = true }
