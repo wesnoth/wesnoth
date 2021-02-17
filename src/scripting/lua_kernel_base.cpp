@@ -135,8 +135,13 @@ static void impl_warn(void* p, const char* msg, int tocont) {
 	warning.seekp(0, std::ios::end);
 	warning << msg << ' ';
 	if(!tocont) {
-		auto& lk = lua_kernel_base::get_lua_kernel<lua_kernel_base>(reinterpret_cast<lua_State*>(p));
-		lk.add_log_to_console(warning.str());
+		auto L = reinterpret_cast<lua_State*>(p);
+		luaW_getglobal(L, "debug", "traceback");
+		lua_push(L, warning.str());
+		lua_pushinteger(L, 2);
+		lua_call(L, 2, 1);
+		auto& lk = lua_kernel_base::get_lua_kernel<lua_kernel_base>(L);
+		lk.add_log_to_console(luaL_checkstring(L, -1));
 		warning.str(prefix);
 	}
 }
