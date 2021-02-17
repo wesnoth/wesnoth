@@ -146,7 +146,7 @@ function pickadvance.pick_advance(unit)
 		local local_result = pickadvance.show_dialog_unsynchronized(get_advance_info(unit), unit)
 		return local_result
 	end, function() return { is_ai = true } end)
-	if dialog_result.is_ai then
+	if dialog_result.ignore or dialog_result.is_ai then
 		return
 	end
 	dialog_result.unit_override = split_comma_units(dialog_result.unit_override)

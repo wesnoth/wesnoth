@@ -7,6 +7,7 @@ local _ = wesnoth.textdomain "wesnoth"
 function pickadvance.show_dialog_unsynchronized(advance_info, unit)
 -- dialog exit codes --
 	local reset_code = -3
+	local cancel_code = -2
 	local single_unit_code = -1
 --
 	local unit_type_options = advance_info.type_advances
@@ -139,6 +140,15 @@ function pickadvance.show_dialog_unsynchronized(advance_info, unit)
 									return_value = single_unit_code,
 									label = _ "Save"
 								}
+							},
+							T.column {
+								border = "all",
+								border_size = 5,
+								horizontal_alignment = "right",
+								T.button {
+									id = "cancel",
+									label = _ "Cancel"
+								}
 							}
 						}
 					}
@@ -182,10 +192,15 @@ function pickadvance.show_dialog_unsynchronized(advance_info, unit)
 
 	local dialog_exit_code = wesnoth.show_dialog(dialog, preshow, postshow)
 
+	if dialog_exit_code == cancel_code then
+		return { ignore = true }
+	end
+
 -- determine the choice made
 	local is_reset = dialog_exit_code == reset_code
 	local is_ok = dialog_exit_code >= single_unit_code and item_result >= 1
 	return {
+		ignore = false,
 		is_unit_override = is_reset or is_ok,
 		unit_override = is_ok and options[item_result].id or is_reset and table.concat(unit_type_options, ","),
 
