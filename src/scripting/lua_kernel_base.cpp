@@ -897,6 +897,7 @@ int lua_kernel_base::impl_game_config_get(lua_State* L)
 	return_string_attrib("version", game_config::wesnoth_version.str());
 	return_bool_attrib("debug", game_config::debug);
 	return_bool_attrib("debug_lua", game_config::debug_lua);
+	return_bool_attrib("strict_lua", game_config::strict_lua);
 	return_bool_attrib("mp_debug", game_config::mp_debug);
 	return 0;
 }

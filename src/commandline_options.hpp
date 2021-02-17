@@ -74,6 +74,8 @@ public:
 	bool debug;
 	/** True if --debug-lua was given in the commandline. Enables some Lua debugging mechanisms. */
 	bool debug_lua;
+	/** True if --strict-lua was given in the commandline. Disallows use of deprecated APIs. */
+	bool strict_lua;
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
 	/** Non-empty if --debug-dot-domain was given on the command line. */
 	std::optional<std::string> debug_dot_domain;

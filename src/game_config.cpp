@@ -98,6 +98,7 @@ std::vector<server_info> server_list;
 bool
 	debug_impl           = false,
 	debug_lua            = false,
+	strict_lua           = false,
 	editor               = false,
 	ignore_replay_errors = false,
 	mp_debug             = false,
