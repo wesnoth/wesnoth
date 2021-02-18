@@ -25,29 +25,43 @@ static lg::log_domain log_font("font");
 
 namespace font {
 
+namespace {
+
+pango_text& private_renderer()
+{
+	// Use a separate renderer for GUI1 in case of shenanigans.
+	static pango_text text_renderer;
+	return text_renderer;
+}
+
+}
+
 surface pango_render_text(const std::string& text, int size, const color_t& color, font::pango_text::FONT_STYLE style, bool use_markup, int max_width)
 {
-	font::pango_text ptext;
+	auto& ptext = private_renderer();
+
 	ptext.set_text(text, use_markup);
 	ptext.set_font_size(size)
 		 .set_font_style(style)
-		 .set_foreground_color(color);
-
-	if(max_width > 0) {
-		ptext.set_maximum_width(max_width)
-			 .set_ellipse_mode(PANGO_ELLIPSIZE_END);
-	}
+		 .set_maximum_height(-1, false)
+		 .set_foreground_color(color)
+		 .set_maximum_width(max_width)
+		 .set_ellipse_mode(max_width > 0 ? PANGO_ELLIPSIZE_END : PANGO_ELLIPSIZE_NONE);
 
 	return ptext.render().clone();
 }
 
 std::pair<int, int> pango_line_size(const std::string& line, int font_size, font::pango_text::FONT_STYLE font_style)
 {
-	font::pango_text ptext;
+	auto& ptext = private_renderer();
+
 	ptext.set_text(line, false);
 	ptext.set_font_size(font_size)
 		 .set_font_style(font_style)
-		 .set_maximum_height(-1, false);
+		 .set_maximum_height(-1, false)
+		 .set_foreground_color(color_t{})
+		 .set_maximum_width(-1)
+		 .set_ellipse_mode(PANGO_ELLIPSIZE_NONE);
 
 	auto& s = ptext.render();
 	return { s->w, s->h };
