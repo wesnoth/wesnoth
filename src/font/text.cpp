@@ -868,6 +868,32 @@ void pango_text::copy_layout_properties(PangoLayout& src, PangoLayout& dst)
 	pango_layout_set_ellipsize(&dst, pango_layout_get_ellipsize(&src));
 }
 
+std::vector<std::string> pango_text::get_lines() const
+{
+	this->recalculate();
+
+	PangoLayout* const layout = layout_.get();
+	std::vector<std::string> res;
+	int count = pango_layout_get_line_count(layout);
+
+	if(count < 1) {
+		return res;
+	}
+
+	using layout_iterator = std::unique_ptr<PangoLayoutIter, std::function<void(PangoLayoutIter*)>>;
+	layout_iterator i{pango_layout_get_iter(layout), pango_layout_iter_free};
+
+	res.reserve(count);
+
+	do {
+		PangoLayoutLine* ll = pango_layout_iter_get_line_readonly(i.get());
+		const char* begin = &pango_layout_get_text(layout)[ll->start_index];
+		res.emplace_back(begin, ll->length);
+	} while(pango_layout_iter_next_line(i.get()));
+
+	return res;
+}
+
 pango_text& get_text_renderer()
 {
 	static pango_text text_renderer;
