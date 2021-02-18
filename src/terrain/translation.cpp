@@ -599,8 +599,6 @@ bool has_wildcard(const ter_list& list)
 
 ter_map read_builder_map(const std::string& str)
 {
-	boost::multi_array<int, sizeof(ter_map)> a;
-
 	std::size_t offset = 0;
 	// Skip the leading newlines
 	while(offset < str.length() && utils::isnewline(str[offset])) {
