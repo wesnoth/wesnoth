@@ -24,7 +24,7 @@ local function custom_cost(x, y, unit, enemy_rating_map, prefer_map)
     --    non-preferred hexes rather than a bonus for preferred hexes as the cost function
     --    must return values >=1 for the a* search to work.
 
-    local terrain = wesnoth.get_terrain(x, y)
+    local terrain = wesnoth.current.map[{x, y}]
     local move_cost = unit:movement(terrain)
 
     move_cost = move_cost + (enemy_rating_map:get(x, y) or 0)
@@ -95,7 +95,7 @@ function ca_assassin_move:execution(cfg)
     -- Penalties for damage by enemies
     local enemy_rating_map = LS.create()
     enemy_damage_map:iter(function(x, y, enemy_damage)
-        local hit_chance = (100 - unit:defense_on(wesnoth.get_terrain(x, y))) / 100.
+        local hit_chance = (100 - unit:defense_on(wesnoth.current.map[{x, y}])) / 100.
 
         local rating = hit_chance * enemy_damage
         rating = rating / unit.max_hitpoints
@@ -131,7 +131,7 @@ function ca_assassin_move:execution(cfg)
     local prefer_slf = wml.get_child(cfg, "prefer")
     local prefer_map -- want this to be nil, not empty LS if [prefer] tag not given
     if prefer_slf then
-        local preferred_hexes = wesnoth.get_locations(prefer_slf)
+        local preferred_hexes = wesnoth.map.find(prefer_slf)
         prefer_map = LS.create()
         for _,hex in ipairs(preferred_hexes) do
             prefer_map:insert(hex[1], hex[2], true)

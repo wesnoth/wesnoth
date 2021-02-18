@@ -105,7 +105,7 @@ function get_f_wct_bonus_location_filter(map)
 	)
 end
 function wct_bonus_chose_scenery(loc, theme, filter_extra)
-	local terrain = map:get_terrain(loc)
+	local terrain = map[loc]
 	-- determine possible scenery values based on terrain
 	local scenery = "well_g,temple,tent2_g,tent1,village,monolith3,burial"
 	local terrain_to_scenery =
@@ -162,7 +162,7 @@ function wct_bonus_chose_scenery(loc, theme, filter_extra)
 	::intial_list_screated::
 
 	local function matches_location(f)
-		local filter_object = wesnoth.create_filter(f, filter_extra)
+		local filter_object = wesnoth.map.filter(f, filter_extra)
 		return #map:get_locations(filter_object, {loc}) > 0
 	end
 
@@ -401,7 +401,7 @@ function world_conquest_tek_bonus_points(theme)
 	local res = {}
 	local scenario_num = wesnoth.get_variable("wc2_scenario") or 1
 	oceanic = get_oceanic()
-	f_wct_bonus_location_filter = wesnoth.create_filter(get_f_wct_bonus_location_filter(map), { oceanic = oceanic })
+	f_wct_bonus_location_filter = wesnoth.map.filter(get_f_wct_bonus_location_filter(map), { oceanic = oceanic })
 	local possible_locs = map:get_locations(f_wct_bonus_location_filter)
 	function place_item(loc)
 		scenery = wct_bonus_chose_scenery(loc, theme, { oceanic = oceanic })

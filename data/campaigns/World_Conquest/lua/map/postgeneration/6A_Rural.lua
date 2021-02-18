@@ -271,7 +271,7 @@ local function world_conquest_tek_map_decoration_6a()
 	local terrain_to_change = wct_store_possible_dwarven_castle()
 	while #terrain_to_change > 0 and wesnoth.random(2) == 1 do
 		local loc = terrain_to_change[wesnoth.random(#terrain_to_change)]
-		map:set_terrain(loc, "Cud")
+		map[loc] = "Cud"
 		terrain_to_change = wct_store_possible_dwarven_castle()
 	end
 	-- decorative farmlands in base to log villages
@@ -329,7 +329,7 @@ local function world_conquest_tek_map_decoration_6a()
 			), "ne,se,sw,nw", "1-6")
 		))
 		for i, loc in ipairs(terrain_to_change) do
-			map:set_terrain(loc, map:get_terrain(loc) .. "^Eff")
+			map[loc] = "^Eff"
 		end
 	end
 

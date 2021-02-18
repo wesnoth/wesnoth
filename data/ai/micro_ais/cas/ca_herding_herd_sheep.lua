@@ -63,7 +63,7 @@ function ca_herding_herd_sheep:execution(cfg)
                 -- And the closer dog goes first (so that it might be able to chase another sheep afterward)
                 rating = rating - M.distance_between(x, y, dog.x, dog.y) / 100.
                 -- Finally, prefer to stay on path, if possible
-                if (wesnoth.match_location(x, y, wml.get_child(cfg, "filter_location")) ) then rating = rating + 0.001 end
+                if (wesnoth.map.matches(x, y, wml.get_child(cfg, "filter_location")) ) then rating = rating + 0.001 end
 
                 reach_map:insert(x, y, rating)
 

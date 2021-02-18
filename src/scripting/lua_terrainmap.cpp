@@ -350,7 +350,7 @@ The map iterator, when called with false as its parameter
 is roughly equivalent to the following Lua function:
 
 function map_iter()
-	local map, x, y = wesnoth.map.get(), 0, 1
+	local map, x, y = wesnoth.current.map, 0, 1
 	return function()
 		if x == map.playable_width then
 			if y == map.playable_height then

@@ -44,7 +44,7 @@ function wct_maritime_bridges()
 		pb = functional.filter(pb, function(t) return #t.locs >0 end)
 		local sel = pb[wesnoth.random(#pb)]
 		local loc = sel.locs[wesnoth.random(#sel.locs)]
-		map:set_terrain(loc, "Ww^" .. sel.type)
+		map[loc] = "Ww^" .. sel.type
 		pb = get_possible_maritime_bridge()
 	end
 end
@@ -191,7 +191,7 @@ function world_conquest_tek_map_decoration_6b()
 			f.adjacent(f.terrain("Wog,Wwg"))
 		))
 		loc = locs[wesnoth.random(#locs)];
-		map:set_terrain(loc, "Iwr^Vl")
+		map[loc] = "Iwr^Vl"
 	end
 
 	set_terrain { "Wwg,Iwr,Wwg^Bw\\,Wwg^Bw\\,Wwg^Bw\\,Wwg^Bw\\",

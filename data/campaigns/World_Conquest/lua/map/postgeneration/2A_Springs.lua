@@ -28,7 +28,7 @@ function world_conquest_tek_map_decoration_2a()
 			local r = wesnoth.random(0, #terrain_to_change - 3)
 			for i = 1, r do
 				local loc = terrain_to_change[wesnoth.random(#terrain_to_change)]
-				map:set_terrain(loc, "Hh^Ftp")
+				map[loc] = "Hh^Ftp"
 			end
 		end
 	end
@@ -41,7 +41,7 @@ function world_conquest_tek_map_decoration_2a()
 		local r = wesnoth.random(0, #terrain_to_change - 3)
 			for i = 1, r do
 				local loc = terrain_to_change[wesnoth.random(#terrain_to_change)]
-				map:set_terrain(loc, "Gs^Ftp")
+				map[loc] = "Gs^Ftp"
 			end
 		end
 	end
@@ -154,7 +154,7 @@ function world_conquest_tek_map_decoration_2a()
 	local terrain_to_change = wct_store_possible_flowers("G*^Fet")
 	while #terrain_to_change > 0 and wesnoth.random(10) ~= 1 do
 		local loc = terrain_to_change[wesnoth.random(#terrain_to_change)]
-		map:set_terrain(loc, "Gg^Efm", "overlay")
+		map[loc] = "^Efm"
 		local terrain_to_change = wct_store_possible_flowers("G*^Fet")
 	end
 	-- extra coast

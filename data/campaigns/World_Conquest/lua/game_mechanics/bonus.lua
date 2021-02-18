@@ -37,7 +37,7 @@ end
 
 function bonus.place_item(x, y, image)
 	if image == "campfire" then
-		wesnoth.set_terrain(x, y, "*^Ecf", "overlay")
+		wesnoth.current.map[{x, y}] = "^Ecf"
 		image = nil
 	else
 		image = image or "scenery/lighthouse.png"
@@ -134,7 +134,7 @@ end
 function bonus.get_random_hero(x, y)
 	return wc2_utils.pick_random_filtered("wc2.random_heroes", wc2_era.generate_bonus_heroes, function(unittypeid)
 		for _, sf in ipairs(wc2_era.spawn_filters) do
-			if sf.types[unittypeid] and not wesnoth.match_location(x, y, sf.filter_location) then
+			if sf.types[unittypeid] and not wesnoth.map.matches(x, y, sf.filter_location) then
 				return false
 			end
 		end

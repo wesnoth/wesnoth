@@ -145,7 +145,7 @@ function world_conquest_tek_map_decoration_2c()
 	-- base amount in map surface
 	local r = helper.rand(tostring(total_tiles // 285) .. ".." .. tostring(total_tiles // 150))
 	for i = 1, math.min(r, #terrain_to_change) do
-		map:set_terrain(terrain_to_change[i], "Ai")
+		map[terrain_to_change[i]] = "Ai"
 	end
 
 	local icepack_candiates = map:get_locations(f.all(

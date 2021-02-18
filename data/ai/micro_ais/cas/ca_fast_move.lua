@@ -30,15 +30,15 @@ function ca_fast_move:execution(cfg)
     -- Villages get added first, so that (hopefully, scouts and faster units will go for them first)
     local village_value = ai.aspects.village_value
     if leader and (village_value > 0) then
-        local villages = wesnoth.get_villages()
+        local villages = wesnoth.map.find{gives_income = true}
 
         -- Eliminate villages in avoid_map and those owned by an allied side
         -- Also remove unowned villages if the AI has no leader
         for i = #villages,1,-1 do
-            if avoid_map:get(villages[i][1], villages[i][2]) then
+            if avoid_map:get(villages[i]) then
                 table.remove(villages, i)
             else
-                local owner = wesnoth.get_village_owner(villages[i][1], villages[i][2])
+                local owner = wesnoth.map.get_owner(villages[i])
                 if owner and (not wesnoth.sides.is_enemy(owner, wesnoth.current.side)) then
                     table.remove(villages, i)
                 elseif (not leader) and (not owner) then

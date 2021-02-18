@@ -21,7 +21,7 @@ function retreat_functions.min_hp(unit)
     if (caution_factor < 0) then caution_factor = 0 end
     caution_factor = math.sqrt(caution_factor) * 2
 
-    local hp_per_level = (100 - unit:defense_on(wesnoth.get_terrain(unit.x, unit.y)))/15 * caution_factor
+    local hp_per_level = (100 - unit:defense_on(wesnoth.current.map[unit]))/15 * caution_factor
     local level = unit.level
 
     -- Leaders are considered to be higher level because of their value
@@ -150,7 +150,7 @@ function retreat_functions.get_retreat_injured_units(healees, regen_amounts, avo
             local location_subset = {}
             for j,loc in ipairs(possible_locations) do
                 if (not avoid_map) or (not avoid_map:get(loc[1], loc[2])) then
-                    local heal_amount = wesnoth.get_terrain_info(wesnoth.get_terrain(loc[1], loc[2])).healing or 0
+                    local heal_amount = wesnoth.terrain_types[wesnoth.current.map[loc]].healing or 0
                     if heal_amount == true then
                         -- handle deprecated syntax
                         -- TODO: remove this when removed from game
@@ -212,7 +212,7 @@ function retreat_functions.get_retreat_injured_units(healees, regen_amounts, avo
                 rating = rating - enemy_count * 100000
 
                 -- Penalty based on terrain defense for unit
-                rating = rating - (100 - u:defense_on(wesnoth.get_terrain(loc[1], loc[2])))/10
+                rating = rating - (100 - u:defense_on(wesnoth.current.map[loc]))/10
 
                 if (loc[1] == u.x) and (loc[2] == u.y) and (not u.status.poisoned) then
                     if is_healthy or enemy_count == 0 then

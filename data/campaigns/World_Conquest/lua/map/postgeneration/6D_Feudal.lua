@@ -135,12 +135,12 @@ local function world_conquest_tek_map_repaint_6d()
 		-- this is faster.
 		local r8_Re = map:get_tiles_radius(
 			map:get_locations(f.terrain("Re")),
-			wesnoth.create_filter(f.all()),
+			wesnoth.map.filter(f.all()),
 			8
 		)
 		local r6_Khs = map:get_tiles_radius(
 			map:get_locations(f.terrain("Khs")),
-			wesnoth.create_filter(f.all()),
+			wesnoth.map.filter(f.all()),
 			6
 		)
 		set_terrain { "Chs",

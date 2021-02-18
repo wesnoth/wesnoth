@@ -5,7 +5,7 @@ local function wct_conect_factory_rails()
 		f.terrain("*^Br*"),
 		f.adjacent(f.terrain("*^Vhh"))
 	))
-	while #map:get_locations(wesnoth.create_filter(
+	while #map:get_locations(wesnoth.map.filter(
 		f.all(
 			f.terrain("*^Br*"),
 			f.adjacent(f.find_in("rails_conected")),
@@ -55,7 +55,7 @@ local function wct_conect_factory_rails()
 			filter_extra = { rails_conected = rails_conected },
 			layer = "overlay",
 		}
-		rails_conected = map:get_locations(wesnoth.create_filter(
+		rails_conected = map:get_locations(wesnoth.map.filter(
 			f.all(
 				f.terrain("*^Br*"),
 				f.radius(1, f.find_in("rails_conected"))
@@ -105,7 +105,7 @@ local function wct_dirty_deltas()
 	while #terrain_to_change > 0 do
 		local loc = 1 -- todo: maybe use  terrain_to_change[wesnoth.random(#terrain_to_change)]
 		local ter = helper.rand("Gs,Hh^Uf,Cud,Gs^Uf,Gs,Hh,Ds^Edt,Ds,Hh^Fmf,Gs,Gs^Fmf")
-		map:set_terrain(loc, ter)
+		map[loc] = ter
 		terrain_to_change = wct_store_possible_dirty_delta()
 	end
 end
@@ -124,7 +124,7 @@ local function wct_ford_deltas()
 	while #terrain_to_change > 0 do
 		local loc = terrain_to_change[1]-- todo: maybe use errain_to_change[wesnoth.random(#terrain_to_change)]
 		local ter = helper.rand("Gg,Gg^Efm,Mm,Gg^Fet,Gg,Mm,Gg")
-		map:set_terrain(loc, ter)
+		map[loc] = ter
 		terrain_to_change = wct_store_possible_ford_delta()
 	end
 end

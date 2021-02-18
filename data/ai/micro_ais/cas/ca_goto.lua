@@ -7,7 +7,7 @@ local MAISD = wesnoth.require "ai/micro_ais/micro_ai_self_data.lua"
 local M = wesnoth.map
 
 local function custom_cost(x, y, unit, avoid_map, enemy_map, enemy_attack_map, multiplier)
-    local terrain = wesnoth.get_terrain(x, y)
+    local terrain = wesnoth.current.map[{x, y}]
     local move_cost = unit:movement(terrain)
 
     if avoid_map and avoid_map:get(x, y) then

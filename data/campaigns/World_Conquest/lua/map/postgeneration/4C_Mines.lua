@@ -264,11 +264,11 @@ function wct_map_4c_post_bunus_decoration()
 	for forge_i, v in ipairs(terrain_to_change) do
 		local r = wesnoth.random(6)
 		if r == 1 then
-			map:set_terrain(v, "Cud")
+			map[v] = "Cud"
 		elseif r == 2 then
-			map:set_terrain(v, "Kud")
+			map[v] = "Kud"
 		elseif r == 3 then
-			map:set_terrain(v, "Kv")
+			map[v] = "Kv"
 		end
 	end
 
