@@ -198,6 +198,17 @@ public:
 	point get_column_line(const point& position) const;
 
 	/**
+	 * Retrieves a list of strings with contents for each rendered line.
+	 *
+	 * This method is not const because it requires rendering the text.
+	 *
+	 * @note This is only intended for renderer implementation details. This
+	 *       is a rather expensive function because it copies everything at
+	 *       least once.
+	 */
+	std::vector<std::string> get_lines() const;
+
+	/**
 	 * Gets the length of the text in bytes.
 	 *
 	 * The text set is UTF-8 so the length of the string might not be the length

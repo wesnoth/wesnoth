@@ -98,4 +98,36 @@ std::string pango_line_ellipsize(const std::string& text, int font_size, int max
 	return text; // Should not happen
 }
 
+std::string pango_word_wrap(const std::string& unwrapped_text, int font_size, int max_width, int max_height, int max_lines, bool /*partial_line*/)
+{
+	// FIXME: what the hell does partial_line do in the SDL_ttf version?
+
+	if(max_lines == 0) {
+		return "";
+	}
+
+	auto& ptext = private_renderer();
+
+	ptext.set_text(unwrapped_text, false);
+	ptext.set_font_size(font_size)
+		 .set_font_style(font::pango_text::STYLE_NORMAL)
+		 .set_maximum_height(max_height, true)
+		 .set_foreground_color(color_t{})
+		 .set_maximum_width(max_width)
+		 .set_ellipse_mode(PANGO_ELLIPSIZE_NONE);
+
+	std::string res;
+	const auto& lines = ptext.get_lines();
+
+	for(const auto& line : lines) {
+		if(!res.empty())
+			res += '\n';
+		res += line;
+		if(--max_lines == 0)
+			break;
+	}
+
+	return res;
+}
+
 } // end namespace font

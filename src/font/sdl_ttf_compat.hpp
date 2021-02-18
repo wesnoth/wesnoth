@@ -46,4 +46,9 @@ inline int pango_line_width(const std::string& line, int font_size, font::pango_
  */
 std::string pango_line_ellipsize(const std::string& text, int font_size, int max_width, font::pango_text::FONT_STYLE font_style = font::pango_text::STYLE_NORMAL);
 
+/**
+ * Uses Pango to word wrap text.
+ */
+std::string pango_word_wrap(const std::string& unwrapped_text, int font_size, int max_width, int max_height = -1, int max_lines = -1, bool partial_line = false);
+
 } // end namespace font
