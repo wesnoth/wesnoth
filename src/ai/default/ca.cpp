@@ -491,11 +491,9 @@ double move_leader_to_keep_phase::evaluate()
 	map_location next_hop = map_location::null_location();
 	int next_hop_cost = 0;
 	for (const map_location& step : route.steps) {
-		if (leader_paths.destinations.contains(step)) {
+		if (leader_paths.destinations.contains(step) && units_.count(step) == 0) {
 			next_hop = step;
 			next_hop_cost += leader->movement_cost(resources::gameboard->map().get_terrain(step));
-		} else {
-			break;
 		}
 	}
 	if (next_hop == map_location::null_location()) {
