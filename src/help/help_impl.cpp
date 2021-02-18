@@ -31,6 +31,7 @@
 #include "map/map.hpp"                  // for gamemap
 #include "font/marked-up_text.hpp"      // for is_cjk_char, word_wrap_text
 #include "font/standard_colors.hpp"     // for NORMAL_COLOR
+#include "font/sdl_ttf_compat.hpp"
 #include "units/race.hpp"               // for unit_race, etc
 #include "resources.hpp"                // for tod_manager, config_manager
 #include "sdl/surface.hpp"                // for surface
@@ -1348,11 +1349,11 @@ std::vector<std::string> split_in_width(const std::string &s, const int font_siz
 {
 	std::vector<std::string> res;
 	try {
-	const std::string& first_line = font::word_wrap_text(s, font_size, width, -1, 1, true);
-	res.push_back(first_line);
-	if(s.size() > first_line.size()) {
-		res.push_back(s.substr(first_line.size()));
-	}
+		const std::string& first_line = font::pango_word_wrap(s, font_size, width, -1, 1, true);
+		res.push_back(first_line);
+		if(s.size() > first_line.size()) {
+			res.push_back(s.substr(first_line.size()));
+		}
 	}
 	catch (utf8::invalid_utf8_exception&)
 	{
