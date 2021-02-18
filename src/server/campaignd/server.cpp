@@ -216,16 +216,12 @@ bool have_wml(const utils::optional_reference<const config>& cfg)
  * Null WML objects are skipped.
  */
 template<typename... Vals>
-std::optional<std::vector<std::string>> multi_find_illegal_names(const Vals&... items)
+std::optional<std::vector<std::string>> multi_find_illegal_names(const Vals&... args)
 {
 	std::vector<std::string> names;
-	((items && check_names_legal(*items, &names)), ...);
+	((args && check_names_legal(*args, &names)), ...);
 
-	if(!names.empty()) {
-		return names;
-	} else {
-		return std::nullopt;
-	}
+	return !names.empty() ? std::optional(names) : std::nullopt;
 }
 
 /**
@@ -234,16 +230,12 @@ std::optional<std::vector<std::string>> multi_find_illegal_names(const Vals&... 
  * Null WML objects are skipped.
  */
 template<typename... Vals>
-std::optional<std::vector<std::string>> multi_find_case_conflicts(const Vals&... items)
+std::optional<std::vector<std::string>> multi_find_case_conflicts(const Vals&... args)
 {
 	std::vector<std::string> names;
-	((items && check_case_insensitive_duplicates(*items, &names)), ...);
+	((args && check_case_insensitive_duplicates(*args, &names)), ...);
 
-	if(!names.empty()) {
-		return names;
-	} else {
-		return std::nullopt;
-	}
+	return !names.empty() ? std::optional(names) : std::nullopt;
 }
 
 /**
