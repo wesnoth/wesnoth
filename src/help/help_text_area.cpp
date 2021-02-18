@@ -16,6 +16,7 @@
 
 #include "config.hpp"                   // for config, etc
 #include "game_config.hpp"              // for debug
+#include "font/sdl_ttf_compat.hpp"
 #include "help/help_impl.hpp"           // for parse_error, box_width, etc
 #include "picture.hpp"                    // for get_image
 #include "log.hpp"                      // for LOG_STREAM, log_domain, etc
@@ -109,9 +110,8 @@ void help_text_area::set_items()
 	curr_row_height_ = min_row_height_;
 	// Add the title item.
 	const std::string show_title =
-		font::make_text_ellipsis(shown_topic_->title, title_size, inner_location().w);
-	surface surf(font::get_rendered_text(show_title, title_size,
-					     font::NORMAL_COLOR, TTF_STYLE_BOLD));
+		font::pango_line_ellipsize(shown_topic_->title, title_size, inner_location().w);
+	surface surf = font::pango_render_text(show_title, title_size, font::NORMAL_COLOR, font::pango_text::STYLE_BOLD);
 	if (surf != nullptr) {
 		add_item(item(surf, 0, 0, show_title));
 		curr_loc_.second = title_spacing_;
@@ -319,11 +319,11 @@ void help_text_area::add_text_item(const std::string& text, const std::string& r
 		return;
 	}
 	const std::string first_word = get_first_word(text);
-	int state = 0;
-	state |= bold ? TTF_STYLE_BOLD : 0;
-	state |= italic ? TTF_STYLE_ITALIC : 0;
+	int state = font::pango_text::STYLE_NORMAL;
+	state |= bold ? font::pango_text::STYLE_BOLD : 0;
+	state |= italic ? font::pango_text::STYLE_ITALIC : 0;
 	if (curr_loc_.first != get_min_x(curr_loc_.second, curr_row_height_)
-		&& remaining_width < font::line_width(first_word, scaled_font_size, state)) {
+		&& remaining_width < font::pango_line_width(first_word, scaled_font_size, font::pango_text::FONT_STYLE(state))) {
 		// The first word does not fit, and we are not at the start of
 		// the line. Move down.
 		down_one_line();
@@ -349,7 +349,7 @@ void help_text_area::add_text_item(const std::string& text, const std::string& r
 			down_one_line();
 		}
 		else {
-			surface surf(font::get_rendered_text(first_part, scaled_font_size, color, state));
+			surface surf = font::pango_render_text(first_part, scaled_font_size, color, font::pango_text::FONT_STYLE(state));
 			if (surf)
 				add_item(item(surf, curr_loc_.first, curr_loc_.second, first_part, ref_dst));
 		}
@@ -359,16 +359,16 @@ void help_text_area::add_text_item(const std::string& text, const std::string& r
 
 			const std::string first_word_before = get_first_word(s);
 			const std::string first_word_after = get_first_word(remove_first_space(s));
-			if (get_remaining_width() >= font::line_width(first_word_after, scaled_font_size, state)
+			if (get_remaining_width() >= font::pango_line_width(first_word_after, scaled_font_size, font::pango_text::FONT_STYLE(state))
 				&& get_remaining_width()
-				< font::line_width(first_word_before, scaled_font_size, state)) {
+				< font::pango_line_width(first_word_before, scaled_font_size, font::pango_text::FONT_STYLE(state))) {
 				// If the removal of the space made this word fit, we
 				// must move down a line, otherwise it will be drawn
 				// without a space at the end of the line.
 				s = remove_first_space(s);
 				down_one_line();
 			}
-			else if (!(font::line_width(first_word_before, scaled_font_size, state)
+			else if (!(font::pango_line_width(first_word_before, scaled_font_size, font::pango_text::FONT_STYLE(state))
 					   < get_remaining_width())) {
 				s = remove_first_space(s);
 			}
