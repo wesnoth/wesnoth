@@ -25,6 +25,7 @@
 #include "gettext.hpp"
 #include "gui/dialogs/addon/addon_auth.hpp"
 #include "gui/dialogs/addon/install_dependencies.hpp"
+#include "gui/dialogs/file_progress.hpp"
 #include "gui/dialogs/message.hpp"
 #include "gui/widgets/retval.hpp"
 #include "log.hpp"
@@ -344,6 +345,11 @@ bool addons_client::install_addon(config& archive_cfg, const addon_info& info)
 	utils::string_map i18n_symbols;
 	i18n_symbols["addon_title"] = font::escape_text(info.title);
 
+	auto progress_dlg = gui2::dialogs::file_progress::display(_("Add-ons Manager"), VGETTEXT("Installing add-on <i>$addon_title</i>...", i18n_symbols));
+	auto progress_cb = [&progress_dlg](unsigned value) {
+		progress_dlg->update_progress(value);
+	};
+
 	if(archive_cfg.has_child("removelist") || archive_cfg.has_child("addlist")) {
 		LOG_ADDONS << "Received an updatepack for the addon '" << info.id << "'";
 
@@ -366,7 +372,7 @@ bool addons_client::install_addon(config& archive_cfg, const addon_info& info)
 			if(entry.key == "removelist") {
 				purge_addon(entry.cfg);
 			} else if(entry.key == "addlist") {
-				unarchive_addon(entry.cfg);
+				unarchive_addon(entry.cfg, progress_cb);
 			}
 		}
 
@@ -393,7 +399,7 @@ bool addons_client::install_addon(config& archive_cfg, const addon_info& info)
 			WRN_ADDONS << "failed to uninstall previous version of " << info.id << "; the add-on may not work properly!";
 		}
 
-		unarchive_addon(archive_cfg);
+		unarchive_addon(archive_cfg, progress_cb);
 		LOG_ADDONS << "unpacking finished";
 	}
 

@@ -33,6 +33,7 @@ class version_info;
 
 #include "addon/validation.hpp"
 
+#include <functional>
 #include <string>
 #include <vector>
 #include <utility>
@@ -153,7 +154,7 @@ bool is_addon_installed(const std::string& addon_name);
 void archive_addon(const std::string& addon_name, class config& cfg);
 
 /** Unarchives an add-on from campaignd's retrieved config object. */
-void unarchive_addon(const class config& cfg);
+void unarchive_addon(const class config& cfg, std::function<void(unsigned)> progress_callback = {});
 
 /** Removes the listed files from the addon. */
 void purge_addon(const config& removelist);

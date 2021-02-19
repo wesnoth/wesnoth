@@ -293,7 +293,7 @@ static void unarchive_file(const std::string& path, const config& cfg)
 	filesystem::write_file(path + '/' + cfg["name"].str(), unencode_binary(cfg["contents"]));
 }
 
-static void unarchive_dir(const std::string& path, const config& cfg)
+static void unarchive_dir(const std::string& path, const config& cfg, std::function<void()> file_callback = {})
 {
 	std::string dir;
 	if (cfg["name"].empty())
@@ -304,18 +304,36 @@ static void unarchive_dir(const std::string& path, const config& cfg)
 	filesystem::make_directory(dir);
 
 	for(const config &d : cfg.child_range("dir")) {
-		unarchive_dir(dir, d);
+		unarchive_dir(dir, d, file_callback);
 	}
 
 	for(const config &f : cfg.child_range("file")) {
 		unarchive_file(dir, f);
+		if(file_callback) {
+			file_callback();
+		}
 	}
 }
 
-void unarchive_addon(const config& cfg)
+static unsigned count_pack_files(const config& cfg)
+{
+	unsigned count = 0;
+
+	for(const config& d : cfg.child_range("dir")) {
+		count += count_pack_files(d);
+	}
+
+	return count + cfg.child_count("file");
+}
+
+void unarchive_addon(const config& cfg, std::function<void(unsigned)> progress_callback)
 {
 	const std::string parentd = filesystem::get_addons_dir();
-	unarchive_dir(parentd, cfg);
+	unsigned file_count = progress_callback ? count_pack_files(cfg) : 0, done = 0;
+	auto file_callback = progress_callback
+		? [&]() { progress_callback(++done * 100.0 / file_count); }
+		: std::function<void()>{};
+	unarchive_dir(parentd, cfg, file_callback);
 }
 
 static void purge_dir(const std::string& path, const config& removelist)
