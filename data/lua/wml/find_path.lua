@@ -23,7 +23,7 @@ function wesnoth.wml_actions.find_path(cfg)
 	end
 
 	local allow_multiple_turns = cfg.allow_multiple_turns
-	local viewing_side
+	local ignore_visibility = not cfg.check_visibility
 
 	local nearest_by_cost = true
 	local nearest_by_distance = false
@@ -37,8 +37,6 @@ function wesnoth.wml_actions.find_path(cfg)
 		nearest_by_distance = false
 		nearest_by_steps = true
 	end
-
-	if not cfg.check_visibility then viewing_side = 0 end -- if check_visiblity then shroud is taken in account
 
 	-- only the first location with the lowest distance and lowest movement cost will match.
 	local locations = wesnoth.get_locations(filter_location)
@@ -57,7 +55,12 @@ function wesnoth.wml_actions.find_path(cfg)
 		else
 			local distance = wesnoth.map.distance_between ( unit.x, unit.y, location[1], location[2] )
 			-- if we pass an unreachable location then an empty path and high value cost will be returned
-			local path, cost = wesnoth.find_path( unit, location[1], location[2], { max_cost = max_cost, ignore_units = ignore_units, ignore_teleport = ignore_teleport, viewing_side = viewing_side } )
+			local path, cost = wesnoth.find_path( unit, location[1], location[2], {
+				max_cost = max_cost,
+				ignore_units = ignore_units,
+				ignore_teleport = ignore_teleport,
+				ignore_visibility = ignore_visibility
+			} )
 
 			if #path == 0 or cost >= 42424241 then
 				-- it's not a reachable hex. 42424242 is the high value returned for unwalkable or busy terrains
@@ -104,7 +107,7 @@ function wesnoth.wml_actions.find_path(cfg)
 				max_cost = max_cost,
 				ignore_units = ignore_units,
 				ignore_teleport = ignore_teleport,
-				viewing_side = viewing_side
+				ignore_visibility = ignore_visibility
 			})
 		local turns
 
@@ -142,7 +145,7 @@ function wesnoth.wml_actions.find_path(cfg)
 					max_cost = max_cost,
 					ignore_units = ignore_units,
 					ignore_teleport = ignore_teleport,
-					viewing_side = viewing_side
+					ignore_visibility = ignore_visibility
 				} )
 			local sub_turns
 

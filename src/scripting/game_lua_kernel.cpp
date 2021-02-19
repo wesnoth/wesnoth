@@ -1695,11 +1695,13 @@ int game_lua_kernel::intf_find_path(lua_State *L)
 	int arg = 1;
 	map_location src, dst;
 	const unit* u = nullptr;
+	int viewing_side = 0;
 
 	if (lua_isuserdata(L, arg))
 	{
 		u = &luaW_checkunit(L, arg);
 		src = u->get_location();
+		viewing_side = u->side();
 		++arg;
 	}
 	else
@@ -1708,6 +1710,7 @@ int game_lua_kernel::intf_find_path(lua_State *L)
 		unit_map::const_unit_iterator ui = units().find(src);
 		if (ui.valid()) {
 			u = ui.get_shared_ptr().get();
+			viewing_side = u->side();
 		}
 		++arg;
 	}
@@ -1721,7 +1724,6 @@ int game_lua_kernel::intf_find_path(lua_State *L)
 		return luaL_argerror(L, arg - 2, "invalid location");
 
 	const gamemap &map = board().map();
-	int viewing_side = 0;
 	bool ignore_units = false, see_all = false, ignore_teleport = false;
 	double stop_at = 10000;
 	std::unique_ptr<pathfind::cost_calculator> calc;
@@ -1729,10 +1731,10 @@ int game_lua_kernel::intf_find_path(lua_State *L)
 	if (lua_istable(L, arg))
 	{
 		ignore_units = luaW_table_get_def<bool>(L, arg, "ignore_units", false);
-
+		see_all = luaW_table_get_def<bool>(L, arg, "ignore_visibility", false);
 		ignore_teleport = luaW_table_get_def<bool>(L, arg, "ignore_teleport", false);
 
-		stop_at = luaW_table_get_def<double>(L, arg, "stop_at", stop_at);
+		stop_at = luaW_table_get_def<double>(L, arg, "max_cost", stop_at);
 
 
 		lua_pushstring(L, "viewing_side");
@@ -1740,7 +1742,12 @@ int game_lua_kernel::intf_find_path(lua_State *L)
 		if (!lua_isnil(L, -1)) {
 			int i = luaL_checkinteger(L, -1);
 			if (i >= 1 && i <= static_cast<int>(teams().size())) viewing_side = i;
-			else see_all = true;
+			else {
+				// If there's a unit, we have a valid side, so fall back to legacy behaviour.
+				// If we don't have a unit, legacy behaviour would be a crash, so let's not.
+				if(u) see_all = true;
+				deprecated_message("wesnoth.find_path with viewing_side=0 (or an invalid side)", DEP_LEVEL::FOR_REMOVAL, {1, 17, 0}, "To consider fogged and hidden units, use ignore_visibility=true instead.");
+			}
 		}
 		lua_pop(L, 1);
 
@@ -1757,20 +1764,22 @@ int game_lua_kernel::intf_find_path(lua_State *L)
 		calc.reset(new lua_pathfind_cost_calculator(L, arg));
 	}
 
-	const team& viewing_team = viewing_side
-		? board().get_team(viewing_side)
-		: board().get_team(u->side());
-
 	pathfind::teleport_map teleport_locations;
 
 	if(!ignore_teleport) {
-		teleport_locations = pathfind::get_teleport_locations(*u, viewing_team, see_all, ignore_units);
+		if(viewing_side == 0) {
+			return luaL_error(L, "wesnoth.find_path: ignore_teleport=false requires a valid viewing_side");
+		} else {
+			teleport_locations = pathfind::get_teleport_locations(*u, board().get_team(viewing_side), see_all, ignore_units);
+		}
 	}
 
 	if (!calc) {
-		if (!u) return luaL_argerror(L, 1, "unit not found");
+		if(!u) {
+			return luaL_argerror(L, 1, "unit not found OR custom cost function not provided");
+		}
 
-		calc.reset(new pathfind::shortest_path_calculator(*u, viewing_team,
+		calc.reset(new pathfind::shortest_path_calculator(*u, board().get_team(viewing_side),
 			teams(), map, ignore_units, false, see_all));
 	}
 
@@ -1819,40 +1828,33 @@ int game_lua_kernel::intf_find_reach(lua_State *L)
 		++arg;
 	}
 
-	int viewing_side = 0;
+	int viewing_side = u->side();
 	bool ignore_units = false, see_all = false, ignore_teleport = false;
 	int additional_turns = 0;
 
 	if (lua_istable(L, arg))
 	{
-		lua_pushstring(L, "ignore_units");
-		lua_rawget(L, arg);
-		ignore_units = luaW_toboolean(L, -1);
-		lua_pop(L, 1);
-
-		lua_pushstring(L, "ignore_teleport");
-		lua_rawget(L, arg);
-		ignore_teleport = luaW_toboolean(L, -1);
-		lua_pop(L, 1);
-
-		lua_pushstring(L, "additional_turns");
-		lua_rawget(L, arg);
-		additional_turns = lua_tointeger(L, -1);
-		lua_pop(L, 1);
+		ignore_units = luaW_table_get_def<bool>(L, arg, "ignore_units", false);
+		see_all = luaW_table_get_def<bool>(L, arg, "ignore_visibility", false);
+		ignore_teleport = luaW_table_get_def<bool>(L, arg, "ignore_teleport", false);
+		additional_turns = luaW_table_get_def<int>(L, arg, "max_cost", additional_turns);
 
 		lua_pushstring(L, "viewing_side");
 		lua_rawget(L, arg);
 		if (!lua_isnil(L, -1)) {
 			int i = luaL_checkinteger(L, -1);
 			if (i >= 1 && i <= static_cast<int>(teams().size())) viewing_side = i;
-			else see_all = true;
+			else {
+				// If there's a unit, we have a valid side, so fall back to legacy behaviour.
+				// If we don't have a unit, legacy behaviour would be a crash, so let's not.
+				if(u) see_all = true;
+				deprecated_message("wesnoth.find_reach with viewing_side=0 (or an invalid side)", DEP_LEVEL::FOR_REMOVAL, {1, 17, 0}, "To consider fogged and hidden units, use ignore_visibility=true instead.");
+			}
 		}
 		lua_pop(L, 1);
 	}
 
-	const team& viewing_team = viewing_side
-		? board().get_team(viewing_side)
-		: board().get_team(u->side());
+	const team& viewing_team = board().get_team(viewing_side);
 
 	pathfind::paths res(*u, ignore_units, !ignore_teleport,
 		viewing_team, additional_turns, see_all, ignore_units);
