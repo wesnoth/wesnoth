@@ -25,7 +25,7 @@
    * Added a "disengaged" orb, shown instead of the partially-moved orb for units that can move but can't attack.
    * Added information about the build's (not runtime) target CPU architecture to the game version info dialog and --report.
    * Added terminal-style command history browsing with up-down keys for in-game consoles used by debug mode, ai and search floating textboxes.
- ### WML engine
+ ### WML Engine
    * Extent 'special_id_active' and 'special_type_active' to abilities used like weapon and to [leadership] abilities.
    * abilities used like weapon can call [leading_anim] now.
    * Change 'overwrite_specials' option to 'overwrite_others' option for weapon special abilities or weapon special to allow the effect of both to take precedence over the effect of any identical weapon special or weapon special ability who don't have 'overwrite_others' option( don't concern the boolean specials like[poison],[slow],[firststrike] or [petrifies], and [plague]).
