@@ -4,8 +4,7 @@
 # Copyright (C) 2004 - 2020 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 #
-# Czech Wesnoth translation team <hrubymar10@gmail.com>,
-#
+# Czech Wesnoth translation team
 #
 # Yeti <yeti@physics.muni.cz> et al, 2004.
 # Oto 'tapik' Buchta <tapik@buchtovi.cz>, 2005 - 2007, 2010.
@@ -19,9 +18,9 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2021-01-16 17:17+0300\n"
-"PO-Revision-Date: 2021-01-09 08:30+0100\n"
+"PO-Revision-Date: 2021-02-07 22:13+0100\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
-"Language-Team: Český <hrubymar10@gmail.com>\n"
+"Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -367,7 +366,7 @@ msgstr "Editor terénu"
 #. [topic]: id=..editor_mode_scenario
 #: data/core/editor/help.cfg:20 data/core/editor/help.cfg:269
 msgid "Scenario Editor"
-msgstr "Editor scénářů"
+msgstr "Editor scénáře"
 
 #. [topic]: id=editor_tool_paint
 #: data/core/editor/help.cfg:28
@@ -393,26 +392,40 @@ msgid ""
 "\n"
 "The selected brush changes the size of the tool:"
 msgstr ""
+"Maluje dlaždice terénu na mapu.\n"
+"\n"
+"Nástroj malování používá velikosti štětců a paletu terénů.\n"
+"\n"
+"<bold>text='Klávesové modifikátory'</bold>\n"
+"\n"
+"• Shift + kliknutí myší: Když je vybrán základní terén, změní základ "
+"a překryv ponechá. Pokud je vybrán překryv, změní překryv a ponechá základ.\n"
+"• Control + kliknutí myší: Vybere terén pod kurzorem myši, jako kdyby byl "
+"vybrán na paletě terénů (vezme jak základ, tak překryv).\n"
+"\n"
+"<bold>text='Velikosti štětců'</bold>\n"
+"\n"
+"Vybraný štětec mění velikost nástroje:"
 
 #. [topic]: id=editor_tool_paint
 #: data/core/editor/help.cfg:41
 msgid "Paint single hexes."
-msgstr ""
+msgstr "Malovat jednotlivé hexy."
 
 #. [topic]: id=editor_tool_paint
 #: data/core/editor/help.cfg:42
 msgid "Paint seven hexes at a time."
-msgstr ""
+msgstr "Malovat sedm hexů najednou."
 
 #. [topic]: id=editor_tool_paint
 #: data/core/editor/help.cfg:43
 msgid "Paint nineteen hexes at a time."
-msgstr ""
+msgstr "Malovat devatenáct hexů najednou."
 
 #. [topic]: id=editor_tool_paint
 #: data/core/editor/help.cfg:44 data/core/editor/help.cfg:45
 msgid "Paint three hexes in a line."
-msgstr ""
+msgstr "Malovat tři hexy za sebou."
 
 #. [topic]: id=editor_tool_fill
 #: data/core/editor/help.cfg:52
@@ -434,6 +447,16 @@ msgid ""
 "• Control+mouse click: Select the terrain under the mouse cursor, as if it "
 "had been selected on the terrain palette (picks up both base and overlay)."
 msgstr ""
+"Vyplní spojité oblasti terénu jiným.\n"
+"\n"
+"Nástroj vyplňování používá paletu terénů.\n"
+"\n"
+"<bold>text='Klávesové modifikátory'</bold>\n"
+"\n"
+"• Shift + kliknutí myší: Když je vybrán základní terén, změní základ "
+"a překryv ponechá. Pokud je vybrán překryv, změní překryv a ponechá základ.\n"
+"• Control + kliknutí myší: Vybere terén pod kurzorem myši, jako kdyby byl "
+"vybrán na paletě terénů (vezme jak základ, tak překryv)."
 
 #. [topic]: id=editor_tool_select
 #: data/core/editor/help.cfg:67
@@ -456,26 +479,38 @@ msgid ""
 "\n"
 "The selected brush changes the size of the tool:"
 msgstr ""
+"Vybere množinu šestiúhelníkových políček pro použití s tlačítky Vyjmout, "
+"Kopírovat a Vyplnit výběr, která se nacházejí pod lištou s menu.\n"
+"\n"
+"<bold>text='Klávesové modifikátory'</bold>\n"
+"\n"
+"• Shift + kliknutí myší: Režim „kouzelné hůlky“ vybere hex pod kurzorem myši "
+"a sousední hexy se stejným typem terénu.\n"
+"• Control + kliknutí myší: Zruší výběr hexů.\n"
+"\n"
+"<bold>text='Velikosti štětců'</bold>\n"
+"\n"
+"Vybraný štětec mění velikost nástroje:"
 
 #. [topic]: id=editor_tool_select
 #: data/core/editor/help.cfg:78
 msgid "Select single hexes."
-msgstr "Vybrat jedno políčko."
+msgstr "Vybrat jednotlivé hexy."
 
 #. [topic]: id=editor_tool_select
 #: data/core/editor/help.cfg:79
 msgid "Select seven hexes at a time."
-msgstr "Vybrat 7 políček najednou."
+msgstr "Vybrat sedm hexů najednou."
 
 #. [topic]: id=editor_tool_select
 #: data/core/editor/help.cfg:80
 msgid "Select nineteen hexes at a time."
-msgstr "Vybrat 19 políček najednou."
+msgstr "Vybrat devatenáct hexů najednou."
 
 #. [topic]: id=editor_tool_select
 #: data/core/editor/help.cfg:81 data/core/editor/help.cfg:82
 msgid "Select three hexes in a line."
-msgstr "Vybrat 3 políčka v linii."
+msgstr "Vybrat tři hexy za sebou."
 
 #. [topic]: id=editor_tool_paste
 #: data/core/editor/help.cfg:89
@@ -497,6 +532,17 @@ msgid ""
 "\n"
 "The paste tool also has some clipboard-manipulation functions:"
 msgstr ""
+"Otáčí, převrací a vkládá terén ve schránce.\n"
+"\n"
+"Hexy lze do schránky vyjmout nebo kopírovat pomocí "
+"<ref>dst='editor_tool_select' text='nástroje vybírání'</ref>.\n"
+"\n"
+"Nástroj vkládání zobrazuje obrys obsahu schránky, který může být vložen "
+"kliknutím myší. Je vidět pouze obrys, ale chyby mohou být opraveny pomocí "
+"funkce zpět, která je svázaná jak s Control+Z, tak i s tou samou klávesou "
+"jako funkce zpět ve hře.\n"
+"\n"
+"Nástroj vkládání má také některé funkce pro zacházení se schránkou:"
 
 #. [topic]: id=editor_tool_paste
 #: data/core/editor/help.cfg:97
@@ -556,6 +602,35 @@ msgid ""
 "location for placing with a subsequent mouse click, as if it was selected in "
 "the editor palette."
 msgstr ""
+"Stanovuje počáteční umístění vůdce dané strany.\n"
+"\n"
+"Tento nástroj nastavuje výchozí umístění vůdců stran a pojmenovaná zvláštní "
+"místa. Oba typy míst jsou povoleny jak v režimu <ref>dst='.."
+"editor_mode_terrain' text='editoru terénu'</ref>, tak <ref>dst='.."
+"editor_mode_scenario' text='editoru scénáře'</ref>. Jména míst jsou "
+"zobrazena jako seznam v paletě editoru, kliknutí do mapy umístí toto jméno "
+"na hex, každé místo může být pouze na jediném hexu a editor umožní jenom "
+"jedno místo na hex.\n"
+"\n"
+"Pro přidání pojmenovaných zvlášních míst klikni dole na paletě na „Přidat“ "
+"a vlož jméno. Tato jména musí začínat písmenem a mohou obsahovat čísla "
+"a podtržítka.\n"
+"\n"
+"Do mapy může být přidáno více než devět týmů kliknutím na „Přidat” "
+"a vložením čísla, například „10“. Uživatelské rozhraní to automaticky "
+"zobrazí jako „Hráč 10“.\n"
+"\n"
+"K pojmenovaným místům je možné se z WML dostat pomocí "
+"<italic>text='location_id='</italic> standardního filtru oblastí. Též "
+"výchozí polohy hráčů lze získat použitím <italic>text='location_id=1'</"
+"italic>, <italic>text='location_id=2'</italic>, atd. – použij pouze číslo "
+"a nepřidávej před něj „Hráč ”.\n"
+"\n"
+"<bold>text='Klávesové modifikátory'</bold>\n"
+"\n"
+"• Control + kliknutí myší na hex, který už nějaké místo obsahuje: vybere "
+"toto místo pro vložení následným kliknutím myší, jako by bylo vybráno "
+"v paletě editoru."
 
 #. [topic]: id=editor_tool_label
 #: data/core/editor/help.cfg:129
@@ -575,11 +650,20 @@ msgid ""
 "This tool is only available in Scenario Mode; the decorations are "
 "implemented in the scenario using WML’s <italic>text='[label]'</italic> tag."
 msgstr ""
+"Vloží do mapy textové popisky.\n"
+"\n"
+"• Kliknutí levým otevře dialogové okno pro vytvoření nového popisku nebo "
+"úpravu stávajícího.\n"
+"• Kliknutí pravým maže.\n"
+"• Přetažení pomocí levého tlačítka myši popisky posouvá.\n"
+"\n"
+"Tento nástroj je dostupný pouze v režimu scénáře. Ve scénáři jsou tyto "
+"přízdoby zavedeny použitím WML značky <italic>text='[label]'</italic>."
 
 #. [topic]: id=editor_tool_scenery
 #: data/core/editor/help.cfg:145
 msgid "Item Tool (Scenery Tool)"
-msgstr ""
+msgstr "Předměty (dekorace)"
 
 #. [topic]: id=editor_tool_scenery
 #: data/core/editor/help.cfg:146
@@ -595,6 +679,16 @@ msgid ""
 "of the terrain and are implemented in the scenario using WML’s "
 "<italic>text='[item]'</italic> tag."
 msgstr ""
+"Nástroj pro předměty umožňuje umístění dekorací jako třeba větrných mlýnů, "
+"knihovniček a monolitů. Na jeden hex lze dát více předmětů.\n"
+"\n"
+"<bold>text='Poznámka:'</bold> u již umístěných předmětů nástroj nepodporuje "
+"mazání ani funkci zpět. Momentálně mohou být omyly opraveny pouze úpravou "
+"vytvořeného WML souboru.\n"
+"\n"
+"Tento nástroj je dostupný pouze v režimu scénáře. Dekorace nejsou součástí "
+"terénu a ve scénáři jsou zavedeny použitím WML značky <italic>text='[item]'</"
+"italic>."
 
 #. [topic]: id=editor_tool_village
 #: data/core/editor/help.cfg:159
@@ -615,6 +709,16 @@ msgid ""
 "stored by adding WML <italic>text='[village]'</italic> tags to the "
 "appropriate <italic>text='[side]'</italic>."
 msgstr ""
+"Tento nástroj přidělí vlastnictví vesnic na začátku scénáře. Nejprve musí "
+"být vesnice umístěny na terén pomocí <ref>dst='editor_tool_paint' "
+"text='nástroje malování'</ref>.\n"
+"\n"
+"• Kliknutí levým přidělí vesnici momentálně vybrané straně.\n"
+"• Kliknutí pravým vlastnictví vesnice zruší.\n"
+"\n"
+"Tento nástroj je dostupný pouze v režimu scénáře. Informace o vlastnictví je "
+"uložena přidáním WML značky <italic>text='[village]'</italic> příslušné "
+"straně <italic>text='[side]'</italic>."
 
 #. [topic]: id=editor_tool_unit
 #: data/core/editor/help.cfg:174
@@ -635,6 +739,16 @@ msgid ""
 "<italic>text='[unit]'</italic> tags to the appropriate "
 "<italic>text='[side]'</italic>."
 msgstr ""
+"Umístí jednotky náležející momentálně vybrané straně.\n"
+"\n"
+"• Kliknutí levým umístí jednotku.\n"
+"• Přetažení levým posune jednotku již umístěnou.\n"
+"• Když hex obsahuje jednotku, tak jsou do menu po kliknutí pravým přidány "
+"různé akce.\n"
+"\n"
+"Tento nástroj je dostupný pouze v režimu scénáře. K příslušné WML značce pro "
+"stranu <italic>text='[side]'</italic> přidává značku jednotky "
+"<italic>text='[unit]'</italic>."
 
 #. [topic]: id=editor_named_area
 #: data/core/editor/help.cfg:190
@@ -682,6 +796,11 @@ msgid ""
 "This tool is only available in Scenario Mode; it adds WML "
 "<italic>text='[music]'</italic> tags to the scenario."
 msgstr ""
+"Ukáže seznam hudebních nahrávek, které editor zná, se zaškrtávacími políčky "
+"pro jejich zapnutí.\n"
+"\n"
+"Tento nástroj je dostupný pouze v režimu scénáře. Přidá do scénáře WML "
+"značky <italic>text='[music]'</italic>."
 
 #. [topic]: id=..editor
 #: data/core/editor/help.cfg:223
@@ -723,6 +842,37 @@ msgid ""
 "it is one of the main blockers for the 1.16 release, however in 1.14 its "
 "quality is far below that of the game and the terrain mode."
 msgstr ""
+"Editor map a scénářů Wesnothu umožňuje uživatelům vytvářet a upravovat mapy, "
+"na kterých se odehrává každý scénář. Také poskytuje omezenou sadu prvků pro "
+"vytvoření základního scénáře.\n"
+"\n"
+"Editor může být spuštěn volbou <italic>text='Editor map'</italic> na úvodní "
+"obrazovce.\n"
+"\n"
+"<header>text='Režimy úprav'</header>\n"
+"\n"
+"Editor obsahuje dva režimy úprav: režim terénu a scénáře.\n"
+"\n"
+"<ref>dst='..editor_mode_terrain' text='Režim terénu'</ref> je podobný jako "
+"jednoduchý program na malování, s nástroji pro <ref>dst='editor_tool_paint' "
+"text='malování'</ref>, <ref>dst='editor_tool_fill' text='vyplňování'</ref>, "
+"<ref>dst='editor_tool_select' text='výběr (a kopírování)'</ref> "
+"a <ref>dst='editor_tool_paste' text='vkládání'</ref>. Také má nástroj pro "
+"nastavení <ref>dst='editor_tool_starting' text='počátečního umístění'</ref> "
+"vůdců.\n"
+"\n"
+"<ref>dst='..editor_mode_scenario' text='Režim scénáře'</ref> navíc "
+"k nástrojům, které jsou dostupné v režimu terénu, dodává podporu přidávání "
+"<ref>dst='editor_tool_label' text='popisků'</ref>, "
+"<ref>dst='editor_tool_scenery' text='dekorativních předmětů'</ref>, dalších "
+"<ref>dst='editor_tool_unit' text='jednotek'</ref> k vůdci a přidělování "
+"<ref>dst='editor_tool_village' text='vlastnictví vesnic'</ref> na začátku "
+"scénáře. V režimu scénáře je také <ref>dst='editor_playlist' text='správce "
+"seznamu skladeb'</ref> pro hudbu.\n"
+"\n"
+"<bold>text='Varování: režim scénáře je v 1.14 zachybovaný.'</bold> Jeho "
+"vylepšení je jednou z hlavních zábran vydání 1.16, nicméně v 1.14 je jeho "
+"kvalita hluboko pod úrovní hry a režimu terénu."
 
 #. [topic]: id=..editor
 #: data/core/editor/help.cfg:238
@@ -749,6 +899,27 @@ msgid ""
 "have their own terrains will need that add-on to tell the editor about their "
 "terrains."
 msgstr ""
+"<header>text='Co *nedostaneš*'</header>\n"
+"\n"
+"• Přesně to samé vykreslování mapy jako ve hře\n"
+"\n"
+"Mapa nebude v editoru vypadat přesně tak jako ve hře, protože to závisí na "
+"pravidlech terénu. Například když je společně nakupeno mnoho horských hexů, "
+"pravidla pro terén se je pokusí spojit do pohoří a velkých grafik, které "
+"pokrývají mnohé hexy.\n"
+"\n"
+"• Obsluhy událostí a skriptování\n"
+"\n"
+"Editor není nástrojem, který by ti pomohl skriptovat obsluhy událostí "
+"scénáře.\n"
+"\n"
+"• Neomezenou zpětnou kompatibilitu\n"
+"\n"
+"Editor dokáže načíst většinu map ze starších verzí Wesnothu, ale ne všechny. "
+"Mapy z 1.3.2 a následujících budou obvykle podporovány, ledaže by používaly "
+"terény, které již nejsou v hlavním Wesnothu. Mapy rozšíření, která mají "
+"vlastní terény, budou potřebovat toto rozšíření, aby editor o jejich "
+"terénech věděl."
 
 #. [topic]: id=..editor_mode_terrain
 #: data/core/editor/help.cfg:258
@@ -764,6 +935,16 @@ msgid ""
 "resulting map can be found in the “User Maps” game type of the multiplayer "
 "“Create Game” dialog."
 msgstr ""
+"Rozsah funkcí editoru terénu je podobný, jako má jednoduchý program na "
+"kreslení.\n"
+"\n"
+"Postranní panel napravo obsahuje zhora dolů minimapu, sadu nástrojů (viz "
+"stránku pro každý nástroj), možnosti nástrojů a <ref>dst='editor_palette' "
+"text='paletu'</ref>.\n"
+"\n"
+"Když bude mapa uložena pomocí „Uložit mapu jako” do výchozího adresáře, lze "
+"výslednou mapu najít pod typem hry „Vlastní mapy“ v dialogovém okně „Vytvoř "
+"hru“ pro hru více hráčů."
 
 #. [topic]: id=..editor_mode_scenario
 #: data/core/editor/help.cfg:270
@@ -773,6 +954,10 @@ msgid ""
 "additional WML to be written using a different tool; the scenario editor "
 "does not support scripting the scenario’s events."
 msgstr ""
+"Editor v režimu scénáře přidává podporu pro některé WML prvky související "
+"z mapou, jako třeba oblasti a dekorační předměty. Přesto bude většina "
+"scénářů potřebovat napsat další WML pomocí jiného nástroje. Editor scénáře "
+"nepodporuje skriptování událostí."
 
 #. [topic]: id=..editor_mode_scenario
 #: data/core/editor/help.cfg:272
@@ -784,6 +969,12 @@ msgid ""
 "• In scenario mode the “Areas” and “Side” menus are enabled.\n"
 "• In terrain-only mode the “Areas” and “Side” menus are grayed-out."
 msgstr ""
+"<header>text='Ověření, jestli je editor v režimu scénáře'</header>\n"
+"\n"
+"Pohledem na lištu menu můžeš zjistit, ve kterém je editor režimu.\n"
+"\n"
+"• V režimu scénáře jsou menu „Oblasti“ a „Strana“ povolená.\n"
+"• V režimu pouze pro terén jsou menu „Oblasti“ a „Strana“ zašedlá."
 
 #. [topic]: id=..editor_mode_scenario
 #: data/core/editor/help.cfg:279
@@ -796,6 +987,13 @@ msgid ""
 "If you’re already editing a map in terrain mode, use “Save Scenario As” from "
 "the “File” menu; this will switch to scenario mode."
 msgstr ""
+"<header>text='Vstup do režimu scénáře'</header>\n"
+"\n"
+"Abys začal novou mapu v režimu scénáře, vyber „Nový scénář“ z menu "
+"„Soubor“.\n"
+"\n"
+"Pokud už upravuješ mapu v režimu terénu, použij „Uložit scénář jako” z menu "
+"„Soubor“. To přepne do režimu scénáře."
 
 #. [topic]: id=..editor_mode_scenario
 #: data/core/editor/help.cfg:287
@@ -815,11 +1013,26 @@ msgid ""
 "editor may follow the link and open the corresponding .map in terrain-only "
 "mode, as if the .map file was chosen in the file selector."
 msgstr ""
+"<header>text='Soubory: .map a .cfg'</header>\n"
+"\n"
+"Editor map uloží právě jeden soubor, buď .map (v režimu terénu), nebo .cfg "
+"(v režimu scénáře). V režimu scénáře je mapa terénu uložena uvnitř souboru ."
+"cfg, žádný samostatný soubor .map není. Když začneš úpravy v režimu terénu "
+"a pak přepneš do režimu scénáře, pak může zůstat starý soubor .map, ale ten "
+"není editorem scénáře aktualizován.\n"
+"\n"
+"Různé výsledky načtení souboru .cfg závisí na obsahu souboru .cfg. Pro "
+"soubory .cfg, které byly vytvořeny v editoru scénáře, se .cfg otevře "
+"v editoru scénáře. Avšak u souborů .cfg, které využívají samostatný soubor ."
+"map (jenž nemůže být vytvořen editorem scénáře), může editor následovat "
+"odkaz a otevřít odpovídající .map v režimu pouze pro terén, jako kdyby byl "
+"soubor .map vybrán při volbě souboru."
 
+# zkráceno, aby se to vešlo do levého panelu v nápovědě (i s posuvnou lištou)
 #. [topic]: id=editor_separate_events_file
 #: data/core/editor/help.cfg:299
 msgid "Using a separate file for WML events"
-msgstr ""
+msgstr "Soubor WML událostí"
 
 #. [topic]: id=editor_separate_events_file
 #: data/core/editor/help.cfg:300
@@ -873,6 +1086,53 @@ msgid ""
 "  ◦ inside the [scenario] element, use “map_file=\"map_from_01.cfg\"” to "
 "load that file"
 msgstr ""
+"Při načítání souboru .cfg editor scénáře rozumí souborům, které jím byly "
+"vytvořeny, ale je pravděpodobné, že bude mít obtíže se soubory, které byly "
+"upravovány ručně.\n"
+"\n"
+"Soubory vytvořené editorem scénáře nezahrnují úvodní [scenario] a uzavírací "
+"[/scenario] značky. Když vytváříš tažení (nebo jiné rozšíření), pak musí být "
+"tyto značky přidány. O tomto je více podrobností v dokumentaci "
+"<ref>dst='editor_map_format' text='formátu mapového souboru'</ref>.\n"
+"\n"
+"Jedním z pracovních postupů je vytvořit samostatný soubor WML, který bude "
+"mít také příponu .cfg a použije WML preprocesor, aby zahrnul soubor "
+"vytvořený editorem. Tento samostatný soubor obsahuje jak [scenario] značku, "
+"tak jakýkoli ručně upravovaný WML, jako třeba události. S tímto pracovním "
+"postupem by mohla struktura souborů rozšíření vypadat asi takto:\n"
+"\n"
+"<header>text='Pro Wesnoth 1.14'</header>\n"
+"\n"
+"• _main.cfg:\n"
+"  ◦ použij “{./scenarios}” pro vložení adresáře „scenarios“\n"
+"• maps/map_from_01.cfg\n"
+"  ◦ toto je soubor vytvořený editorem scénáře\n"
+"• scenarios/01_Forest.cfg, místo úvodní značky [scenario] vlož tyto čtyři "
+"řádky:\n"
+"  ◦ [scenario]\n"
+"  ◦     {~add-ons/NAME_OF_ADD_ON/maps/map_from_01.cfg}\n"
+"  ◦ [/scenario]\n"
+"  ◦ [+scenario]\n"
+"\n"
+"První tři z těchto řádků vloží soubor s vytvořeným scénářem dovnitř značky "
+"[scenario]. Znaménko „+“ na čtvrtém řádku znamená, že se dvě scenario značky "
+"spojí a zároveň s tím atributy v druhé přepíší adributy z první.\n"
+"\n"
+"<header>text='1.16 a následující'</header>\n"
+"\n"
+"Jestliže bude tvé rozšíření použito pouze v 1.16 a následujících, jsou zde "
+"nové prvky pro načítání souborů .cfg přes map_file a vyhnutí se opakování "
+"názvu rozšíření uvnitř souborů .cfg.\n"
+"\n"
+"• _main.cfg:\n"
+"  ◦ použij „[binary_path]“, abys přidal adresáře rozšíření k binární cestě, "
+"což způsobí, že „map_file“ prohledá adresář „maps“.\n"
+"  ◦ použij „{./scenarios}“, abys zahrnul adresář „scenarios“\n"
+"• maps/map_from_01.cfg\n"
+"  ◦ toto je soubor vytvořený editorem scénáře\n"
+"• scenarios/01_Forest.cfg\n"
+"  ◦ uvnitř prvku [scenario] použij „map_file=\"map_from_01.cfg\"“, abys "
+"tento soubor načetl"
 
 #. [topic]: id=editor_masks
 #: data/core/editor/help.cfg:338
@@ -891,10 +1151,8 @@ msgstr ""
 #. [topic]: id=editor_time_schedule
 #. Time of Day and Schedule Editor, please use a short string as it will be used in the left-hand pane of the help browser
 #: data/core/editor/help.cfg:347
-#, fuzzy
-#| msgid "Time Schedule Editor"
 msgid "ToD and Schedule Editor"
-msgstr "Časový plán"
+msgstr "Editor rozvrhu dne"
 
 #. [topic]: id=editor_time_schedule
 #: data/core/editor/help.cfg:348
@@ -908,6 +1166,13 @@ msgid ""
 "In scenario mode, the button accesses an editor for individual schedules for "
 "<ref>dst='editor_named_area' text='time areas'</ref>."
 msgstr ""
+"Toto tlačítko v pravém horním rohu obrazovky umožňuje přístup k náhledu "
+"denní doby a editoru rozvrhu dne.\n"
+"\n"
+"V režimu terénu zobrazuje, jak bude mapa v různé denní doby přebarvena.\n"
+"\n"
+"V režimu scénáře tlačítko zpřístupňuje editor jednotlivých rozvrhů "
+"<ref>dst='editor_named_area' text='časových oblastí'</ref>."
 
 #. [topic]: id=editor_palette
 #: data/core/editor/help.cfg:359
@@ -930,21 +1195,31 @@ msgid ""
 "this is the leftmost of the four buttons at the top of the palette, and the "
 "graphic changes depending on what is selected. Examples:"
 msgstr ""
+"Paleta editoru obsahuje příslušné položky, které můžeš použít s právě "
+"vybraným nástrojem. Například nástroj malování ukáže dlouhý seznam všech "
+"dostupných terénů a nástroj pro jednotky ukáže jednotky, které jsou k mání. "
+"Při použití nástroje pro startovní pozice se paleta změní na výpis „Hráč 1“, "
+"„Hráč 2“ atd.\n"
+"\n"
+"<bold>text='Filtr'</bold>\n"
+"Pro zobrazení pouze podmnožiny dostupných položek existuje funkce filtru – "
+"ze čtyř tlačítek nad paletou je to tlačítko nejvíce vlevo a obrázek na něm "
+"se mění podle toho, co je vybráno. Příklady:"
 
 #. [topic]: id=editor_palette
 #: data/core/editor/help.cfg:366
 msgid "Show all kinds of terrain"
-msgstr ""
+msgstr "Ukázat všechny typy terénu"
 
 #. [topic]: id=editor_palette
 #: data/core/editor/help.cfg:367
 msgid "Show only water terrains"
-msgstr ""
+msgstr "Ukázat jen terény s vodou"
 
 #. [topic]: id=editor_palette
 #: data/core/editor/help.cfg:368
 msgid "Show only villages"
-msgstr ""
+msgstr "Ukázat pouze vesnice"
 
 #. [topic]: id=editor_map_format
 #: data/core/editor/help.cfg:379
@@ -955,6 +1230,7 @@ msgstr "Formát mapy"
 #: data/core/editor/help.cfg:380
 msgid "Wesnoth stores its maps in human readable plain text files."
 msgstr ""
+"Wesnoth své mapy ukládá do jednoduchých textových souborů čitelných člověkem."
 
 #. [topic]: id=editor_map_format
 #: data/core/editor/help.cfg:382
@@ -986,6 +1262,32 @@ msgid ""
 "The <italic>text='map_file'</italic> method is preferred over using a "
 "preprocessor include."
 msgstr ""
+"<header>text='Původní'</header>\n"
+"\n"
+"Soubor s mapou obsahuje řádky s řetězci oddělenými čárkami, ve kterých je "
+"zakódován terén. Jediná informace, kterou poskytuje syntaxe mapy a která se "
+"netýká terénu, je sada umístění vytvořených <ref>dst='editor_tool_starting' "
+"text='nástrojem startovních pozic'</ref>. Soubory mohou být upravovány "
+"pomocí textového editoru pro univerzální použití jako notepad.\n"
+"\n"
+"Tyto soubory mohou být použity přímo pro hry více hráčů, počet hráčů je "
+"automaticky určen počtem startovních pozic. Pokud je mapa uložena do "
+"výchozího adresáře, lze ji najít pod typem hry „Vlastní mapy“ v dialogovém "
+"okně „Vytvoř hru“ pro hru více hráčů. Možná bude třeba, abys obnovil "
+"vyrovnávací paměť (na titulní obrazovce stiskni F5), než se nově vytvořená "
+"mapa objeví.\n"
+"\n"
+"Tyto soubory mohou být použity v souboru scénáře .cfg s WML scénáře, který "
+"poskytne další informace jako třeba týmy, vlastní událost a složitá "
+"nastavení stran. Soubor .cfg načte soubor s mapou jedním z těchto způsobů:\n"
+"\n"
+"• map_file=maps/01_First_Map.map <italic>text='– podporováno od Wesnothu "
+"1.14'</italic>\n"
+"• map_data=\"{maps/01_First_Map.map}\" <italic>text='– začleněno WML "
+"preprocesorem'</italic>\n"
+"\n"
+"Způsobu s <italic>text='map_file'</italic> je dána přednost před použitím "
+"začleňování preprocesorem."
 
 #. [topic]: id=editor_map_format
 #: data/core/editor/help.cfg:395
@@ -1006,6 +1308,20 @@ msgid ""
 "this is rarely-used code. Maps opened this way are marked (E) in the Window "
 "menu."
 msgstr ""
+"<header>text='Vnořený'</header>\n"
+"\n"
+"Mapové údaje mohou být uloženy jako součást souboru scénáře .cfg, přímo "
+"v atributu <italic>text='map_data'</italic>. Jinými slovy v místě, které by "
+"preprocesor začlenil při použití způsobu s preprocesorem.\n"
+"\n"
+"<header>text='Použití vnořeného formátu v režimu terénu'</header>\n"
+"\n"
+"Když upravuješ mapu a nepoužíváš podporu režimu scénáře, pak je jednoduché "
+"přesunout data do původního mapového souboru předtím, než jej otevřeš "
+"v editoru. Tento převod je doporučený – editor podporuje úpravu obsahu "
+"map_data, zatímco nechává všechno ostatní v souboru nedotčené, ale to je "
+"zřídka používaný kód. Mapy otevřené tímto způsobem jsou v menu Okno označeny "
+"(E)."
 
 #. [topic]: id=editor_map_format
 #: data/core/editor/help.cfg:403
@@ -1019,6 +1335,14 @@ msgid ""
 "<ref>dst='editor_separate_events_file' text='using a separate .cfg file'</"
 "ref> for the hand-edited parts."
 msgstr ""
+"<header>text='Soubory vytvořené editorem scénáře'</header>\n"
+"\n"
+"V režimu scénáře editor ukládá data jako soubor .cfg s vnořenými mapovými "
+"údaji. Když editor scénáře soubor .cfg načítá, rozumí souborům, které jím "
+"byly vytvořeny, ale pravděpodobně bude mít obtíže se soubory, jež byly "
+"upravovány ručně. Potížím se lze vyhnout "
+"<ref>dst='editor_separate_events_file' text='použitím samostatného souboru ."
+"cfg'</ref> pro ručně upravované části."
 
 #. [topic]: id=editor_map_format
 #: data/core/editor/help.cfg:407
@@ -1041,6 +1365,23 @@ msgid ""
 "needs the [scenario]...[/scenario] (or [multiplayer]...[/multiplayer]) tags "
 "to know which WML is part of each scenario."
 msgstr ""
+"<header>text='Které soubory scénáře používají značku [scenario]'</header>\n"
+"\n"
+"Soubory vytvořené editorem scénáře mají obsah WML prvku scénář, ale "
+"nezahrnují úvodní [scenario] a uzavírací [/scenario] značky. Hra bude "
+"automaticky zkoušet načíst scénář z každého souboru .cfg v podsložce editor/"
+"scenarios složky s uživatelskými daty, aby jej zahrnula do seznamu „Vlastní "
+"scénáře“ (soubory, které se nepodaří načíst, jsou ignorovány). V této složce "
+"je každý soubor samostatnou položkou – soubory, které se nepodaří rozpoznat "
+"jako scénář, jsou ignorovány a soubory nesmí obsahovat značky [scenario][/"
+"scenario].\n"
+"\n"
+"Opak je pravdou, když je scénář součástí tažení nebo jiného rozšíření. "
+"Obvykle má každý scénář svůj vlastní soubor .cfg, ačkoli to není důležité – "
+"vše z WML v rozšíření bude spojeno preprocesorem, nezáleží na tom, zda je "
+"rozšíření napsáno v samostatných souborech, nebo ne. Engine potřebuje značky "
+"[scenario]...[/scenario] (nebo [multiplayer]...[/multiplayer]), aby věděl, "
+"který WML je částí každého scénáře."
 
 #. [editor_times]: id=deep_underground
 #. [time]: id=deep_underground
@@ -3317,7 +3658,7 @@ msgid ""
 "Keep in mind that some scenarios take place underground, where it is "
 "perpetually night!\n"
 msgstr ""
-"Pamatujte pro\\sím, že pokud se scénář nachází pod zemí, pak je zde neustále "
+"Měj na paměti, že některé scénáře se odehrávají v podzemí, kde je neustále "
 "noc!\n"
 
 #. [topic]: id=time_of_day
@@ -4686,7 +5027,7 @@ msgstr ""
 #. [chance_to_hit]: id=diversion
 #: data/core/macros/abilities.cfg:121
 msgid "This is inactive for now."
-msgstr ""
+msgstr "Toto zatím není aktivní."
 
 #. [leadership]: id=leadership
 #: data/core/macros/abilities.cfg:173
@@ -4722,8 +5063,8 @@ msgid ""
 "This unit is skilled in moving past enemies quickly, and ignores all enemy "
 "Zones of Control."
 msgstr ""
-"Tato jednotka je zvyklá pohybovat se mezi nepřáteli a ignoruje všechny "
-"oblasti kontroly."
+"Tato jednotka se umí rychle pohybovat kolem nepřátel a ignoruje všechny "
+"jejich oblasti kontroly."
 
 #. [illuminates]: id=illumination
 #: data/core/macros/abilities.cfg:207
@@ -4782,24 +5123,15 @@ msgstr ""
 #. [hides]: id=burrow
 #: data/core/macros/abilities.cfg:270
 msgid "burrow"
-msgstr ""
+msgstr "zanoření"
 
 #. [hides]: id=burrow
 #: data/core/macros/abilities.cfg:271
-#, fuzzy
-#| msgid "female^slow"
 msgid "female^burrow"
-msgstr "pomalá"
+msgstr "zanoření"
 
 #. [hides]: id=burrow
 #: data/core/macros/abilities.cfg:272
-#, fuzzy
-#| msgid ""
-#| "This unit can hide in forest, and remain undetected by its enemies.\n"
-#| "\n"
-#| "Enemy units cannot see this unit while it is in forest, except if they "
-#| "have units next to it. Any enemy unit that first discovers this unit "
-#| "immediately loses all its remaining movement."
 msgid ""
 "This unit can hide in forest or sand if it is resting (has not moved for a "
 "turn), and remain undetected by its enemies.\n"
@@ -4808,11 +5140,13 @@ msgid ""
 "except if they have units next to it. Any enemy unit that first discovers "
 "this unit immediately loses all its remaining movement."
 msgstr ""
-"Jednotka se dokáže ukrýt v lese a zůstat nezpozorována svými nepřáteli.\n"
+"Tato jednotka se dokáže ukrýt v lese nebo v písku, pokud odpočívá (po jedno "
+"kolo se nepohnula), a zůstat nezpozorována svými nepřáteli.\n"
 "\n"
-"Nepřátelské jednotky nemohou tuto jednotku spatřit v lese, pouze jsou-li na "
-"sousedních polích. Nepřátelská jednotka, která ji nalezne jako první, ztrácí "
-"všechny své zbývající body pohybu."
+"Dokud tato jednotka odpočívá v lese nebo v písku, nemohou ji nepřátelské "
+"jednotky spatřit až na případy, kdy jsou vedle ní. První nepřátelská "
+"jednotka, která tuto jednotku najde, okamžitě ztratí veškerou svou zbývající "
+"možnost pohybu."
 
 #. [hides]: id=nightstalk
 #: data/core/macros/abilities.cfg:293
@@ -5145,52 +5479,52 @@ msgstr "První hlídka — čtvrtá hodina"
 #. [time]: id=dawn1
 #: data/core/macros/schedules.cfg:514
 msgid "First Dawn"
-msgstr "První hlídka"
+msgstr "První svítání"
 
 #. [time]: id=dawn2
 #: data/core/macros/schedules.cfg:525
 msgid "Second Dawn"
-msgstr "Druhá hlídka"
+msgstr "Druhé svítání"
 
 #. [time]: id=morning1
 #: data/core/macros/schedules.cfg:536
 msgid "First Morning"
-msgstr "Ráno"
+msgstr "První dopoledne"
 
 #. [time]: id=morning2
 #: data/core/macros/schedules.cfg:548
 msgid "Second Morning"
-msgstr "Dopoledne"
+msgstr "Druhé dopoledne"
 
 #. [time]: id=midday1
 #: data/core/macros/schedules.cfg:560
 msgid "First Midday"
-msgstr "Poledne"
+msgstr "První poledne"
 
 #. [time]: id=midday2
 #: data/core/macros/schedules.cfg:572
 msgid "Second Midday"
-msgstr "Poledne"
+msgstr "Druhé poledne"
 
 #. [time]: id=afternoon1
 #: data/core/macros/schedules.cfg:584
 msgid "First Afternoon"
-msgstr "Druhá hlídka"
+msgstr "První odpoledne"
 
 #. [time]: id=afternoon2
 #: data/core/macros/schedules.cfg:596
 msgid "Second Afternoon"
-msgstr "Odpoledne"
+msgstr "Druhé odpoledne"
 
 #. [time]: id=dusk1
 #: data/core/macros/schedules.cfg:608
 msgid "First Dusk"
-msgstr "První hlídka"
+msgstr "První soumrak"
 
 #. [time]: id=dusk2
 #: data/core/macros/schedules.cfg:619
 msgid "Second Dusk"
-msgstr "Druhá hlídka"
+msgstr "Druhý soumrak"
 
 #. [time]: id=short_dark
 #: data/core/macros/schedules.cfg:630
@@ -6367,6 +6701,65 @@ msgid ""
 "tradition, in both Wesmere and Lintanir, an enchantress from the order of "
 "elven mystics is also called upon to facilitate the transition of power."
 msgstr ""
+"V porovnání s lidmi jsou elfové o něco vyšší, obratnější, ale méně robustní. "
+"Mají lehce zašpičatělé uši, světlou kůži a obvykle blonďaté vlasy. Jen málo "
+"rozdílů mezi lidmi a elfy je zmiňováno více než dlouhověkost elfů – většina "
+"žije alespoň dobrá dvě století, pokud si jejich život nevyžádá nemoc, nehoda "
+"nebo válka. Ačkoli se o některých elfech s velkým talentem pro magii ví, že "
+"žijí déle, většina elfů začne někdy mezi 250. a 300. rokem života tělesně "
+"slábnout a poté rychle skoná.\n"
+"\n"
+"Téměř všichni elfové sdílí silnou náklonnost k nedotčené přírodě "
+"a v otevřených, nezarostlých místech se cítí nesví. Žijí především v lesích "
+"na Velkém kontinentu, v Aethenwoodu na jihozápadě, ve Wesmérii na "
+"severozápadě a ve velkých severních lesích, ze kterých Lintanir leží "
+"nejjižněji.\n"
+"\n"
+"Elfové jsou nejstarší rasou na kontinentu, snad jen s výjimkou trollů. Stáří "
+"mnoha jejich sídel nemůže být spolehlivě určeno, nepochybně existovala "
+"několik tisíciletí.\n"
+"\n"
+"<header>text='Magie'</header>\n"
+"Ačkoli jsou elfové stvoření od základu odlišná od bájných skřítků a víl, "
+"jejich magie má s kouzelným světem jisté spojení a je zdrojem jejich "
+"pronikavých smyslů a dlouhého života. Elfí magie je rozdělena na dvě různé "
+"cesty, jednu zaměřenou na zacházení s obyčejným nebo přírodním světem "
+"a druhou na vhled do tajemné roviny. Častější je cesta změny světského, "
+"která má hmatetelnější výsledky než její protiklad v nadpozemském. Třebaže "
+"se elfí přírodní magie k boji nehodí, její silná schopnost využít sil země "
+"pro péči a ochranu je hlavním důvodem účinnosti elfího léčení, stejně jako "
+"krásy a vitality jejich lesů.\n"
+"\n"
+"Těch, kteří sledují tajemnou cestu, si ostatní elfové rovněž velmi váží, ale "
+"jejich pohnutky a schopnosti jsou těm, kteří stojí mimo jejich řád, často "
+"nejasné. Někteří z těch, co se odváží po tajemné cestě dál, nabývají více "
+"kouzelných vlastností, získávají mimořádný vhled a dlouhověkost, ale také se "
+"stanou vnímavými na přítomnost studeného železa až tak, že je pálí.\n"
+"\n"
+"<header>text='Kultura'</header>\n"
+"Elfové tráví mnoho času zdokonalováním svého nadání a dovedností. Ti, kteří "
+"se nedají cestou magie, obvykle zasvětí svůj život pilování tělesných "
+"schopností, často pro sportovní účely. Výsledkem toho je, že elfové vynikají "
+"v lukostřelbě, umění, které je snadno a účinně použito při válčení. Elfové "
+"jsou též proslulí hudebníci, zvlášť dovední ve hře na dechové a strunné "
+"nástroje v malých souborech. Například Aeolské harfy z Aethenského lesa jsou "
+"vyrobeny z kvalitního dřeva elfských tisů a jsou pro svůj tichý, jemný zvuk "
+"legendární.\n"
+"\n"
+"<header>text='Společnost'</header>\n"
+"Elfí společnost se dělí zhruba na tři frakce: Nepravou armádu, zodpovědnou "
+"za obranu jejich lesů, mírumilovné civilisty, kteří jsou obvykle řemeslníky "
+"nebo umělci, a léčitele a mystiky, již udržují spojení elfů s kouzelným "
+"světem. Za vládnutí těmto různým stranám je zodpovědná šlechta, která je "
+"považována za služebníky širšího společenského řádu, spíše než přísné vládce "
+"svého lidu. Postup výběru těchto šlechticů se mezi různými elfími "
+"shromážděními liší, u vládnoucí rady Wesmérie – Kalianu – jsou voleni "
+"a v Linaniru je obyčejně šlechtictví dědičné.\n"
+"\n"
+"V dobách nepokojů se posloupnost velení stává přizpůsobivější a obyčejná "
+"šlechta se podřizuje bojechtivějším maršálům. Jak ve Wesmérii, tak "
+"v Lintaniru je také zvykem vyzvat čarodějku z řádu elfích mystiků pro "
+"přístup k vyšší moci."
 
 #. [race]: id=falcon
 #: data/core/units.cfg:137
@@ -7268,35 +7661,8 @@ msgstr "Nemrtvá"
 msgid "race+plural^Undead"
 msgstr "Nemrtví"
 
-# Ten původní první odstavec je fakt slabý ... pořád se to opakuje dokola.
 #. [race]: id=undead
 #: data/core/units.cfg:367
-#, fuzzy
-#| msgid ""
-#| "Undead are not really a single race of creatures, although often treated "
-#| "as such. Almost any dead creature can, by a sufficiently skilled "
-#| "necromancer, be reanimated and rise again in undeath. Undead are for the "
-#| "most part unnatural but mindless constructs, obeying whoever created them "
-#| "without question nor thought. A greater mystery of necromancy is in how "
-#| "constructs are sustained without continuous effort from the necromancer. "
-#| "An undead creature does not require the constant attention of the "
-#| "necromancer to command and sustain, but can work autonomously according "
-#| "to the commands of its master. Only rarely, perhaps once every few "
-#| "months, does the necromancer need to maintain his creation.\n"
-#| "\n"
-#| "Necromancy is almost solely limited to humans. Even the legends of "
-#| "magically apt races like elves and merfolk tell of very few of their kind "
-#| "who have ever delved in the dark arts. It is surmised that necromantic "
-#| "magic requires great adaptability and a flexible mind, extremes of which "
-#| "are most commonly found in humans. The ultimate goal of most necromancers "
-#| "is to turn the same art of preserving and imbuing life upon themselves, "
-#| "to alter themselves at whatever cost, to ultimately escape death by "
-#| "preserving their own mind and spirit.\n"
-#| "\n"
-#| "<header>text='Geography'</header>\n"
-#| "While undead lords arrived on the Great Continent in considerable numbers "
-#| "only in the wake of Haldric I, they were not completely unheard of by "
-#| "elves and dwarves before that."
 msgid ""
 "Undead are not really a single race of creatures, although often treated as "
 "such. Most ordinary creatures can, by a sufficiently skilled necromancer, be "
@@ -7332,21 +7698,32 @@ msgid ""
 "and dwarves before that."
 msgstr ""
 "Nemrtví nepředstavují opravdovou rasu tvorů, ale jsou tak často vnímáni. "
-"Dostatečně zkušený nekromant dokáže oživit téměř každé mrtvé stvoření "
-"a učinit z něj nemrtvé. Nemrtví jsou nepřirozené výtvory, většinou bez "
-"vlastní vůle. Hlavní výhodou je, že poslouchají svého tvůrce bez pochyb "
-"a dotazů. Tajemstvím ovšem je, jak dokáží nekromanti udržovat nemrtvé tvory "
-"bez nepřetržitého úsilí z jejich strany – nemrtví nevyžadují „údržbu“ "
-"častěji než jednou za několik měsíců, jinak slouží samostatně bez dalšího "
-"úsilí.\n"
+"Většina obyčejných stvoření může být dostatečně dovedným nekromantem oživena "
+"do výtvorů proměnlivého ražení – vzkříšení fyzické formy má často za "
+"následek vytvoření přisluhovače, který bez ptaní poslouchá svého pána, "
+"zatímco zhmotnění duše obvykle vyvolá služebníka s alespoň špetkou myšlení. "
+"Velkým tajemstvím nekromancie je, jak jsou tyto výtvory udržovány a ovládány "
+"bez nepřetržitého úsilí ze strany nekromanta. Většina temných mágů "
+"neposkytuje svým stvořením nepřetržitou pozornost nebo péči. Místo toho jim "
+"nechají malé množství nezávislosti, aby pracovali samostatně v souladu "
+"s udělenými příkazy. Nicméně pokud se nechají bez omezení, získají někteří "
+"nemrtví nezávislosti dost na to, aby se vymanili z vlivu svých pánů "
+"a dokonce se obrátili proti nim. V souladu s tím, kdy i nižší nemrtví "
+"potřebují pravidelnou péči, to obzvlášť platí pro silnější nemrtvé, zejména "
+"větší duchy nebo mrtvé rytíře, kteří mají vlastní vůle vyšší množství. "
+"V těchto případech se nekromancie stává rozhodující bitvou mezi mágem "
+"a přisluhovačem. Nekromant musí udržovat křehkou rovnováhu mezi ovládáním "
+"svých služebníků a ponecháním jejich svobodné vůle – zdroje jejich "
+"individuálních schopností.\n"
 "\n"
 "Nekromancii praktikují téměř bez výjimky pouze lidé. Ani legendy magicky "
 "zdatných ras, například elfů a mořského lidu, nezmiňují mnoho případů, kdy "
 "by se do tajů temného učení ponořili jejich členové. Obecně je "
 "předpokládáno, že nekromancie vyžaduje velmi přizpůsobivou mysl – a tuto "
-"vlastnost vykazují nejvíce lidé. Cílem většiny nekromantů je dokázat obrátit "
-"toto umění vdechování a udržování „života“ na sebe, i za jakoukoli cenu se "
-"transformovat a uprchnout tak navěky smrti uchováním vlastní mysli a ducha.\n"
+"vlastnost vykazují nejvíce lidé. Nejvyšším cílem většiny nekromantů je "
+"dokázat namířit toto umění vdechování a udržování „života“ na sebe, aby se "
+"za jakoukoli cenu pozměnili, a tak nakonec unikli smrti tím, že si uchovají "
+"svou vlastní mysl a ducha.\n"
 "\n"
 "<header>text='Zeměpis'</header>\n"
 "Ačkoli se páni nemrtvých na Velkém kontinentě objevili ve větších počtech až "
@@ -7484,11 +7861,11 @@ msgstr "Chyba rozboru (parsing) textu nápovědy:"
 
 #: src/help/help_topic_generators.cpp:64
 msgid "Best of"
-msgstr ""
+msgstr "Nejlepší z/ze"
 
 #: src/help/help_topic_generators.cpp:64
 msgid "Worst of"
-msgstr ""
+msgstr "Nejhorší z/ze"
 
 #: src/help/help_topic_generators.cpp:157
 msgid "Base Terrain: "
@@ -7640,7 +8017,7 @@ msgstr "Omezení obrany"
 
 #: src/help/help_topic_generators.cpp:712
 msgid "Vision Cost"
-msgstr "Cena pohledu"
+msgstr "Cena rozhledu"
 
 #: src/help/help_topic_generators.cpp:716
 msgid "Jamming Cost"

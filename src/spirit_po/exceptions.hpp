@@ -22,7 +22,7 @@ std::string iterator_context(Iterator & it, Iterator & end) {
     result = "Line " + std::to_string(line_no) + ":\n";
   }
 
-  uint count = 80;
+  unsigned int count = 80;
   while (it != end && count) {
     result += *it;
     ++it;

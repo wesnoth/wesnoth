@@ -22,7 +22,6 @@
 #include "config.hpp"
 #include "utils/make_enum.hpp"
 
-#include <boost/ptr_container/ptr_vector.hpp>
 #include <string>
 
 struct plugin;
@@ -67,7 +66,8 @@ public:
 	};
 
 private:
-	boost::ptr_vector<plugin> plugins_;
+	// TODO: this used to use boost::ptr_vector. Need to consider if there are some performance implications to not doing so
+	std::vector<plugin> plugins_;
 	std::shared_ptr<bool> playing_;
 	std::unique_ptr<application_lua_kernel> kernel_;
 };

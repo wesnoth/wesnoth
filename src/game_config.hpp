@@ -59,7 +59,7 @@ namespace game_config
 	/** Default percentage gold carried over to the next scenario. */
 	extern const int gold_carryover_percentage;
 
-	extern bool debug_lua, editor, ignore_replay_errors, mp_debug,
+	extern bool debug_lua, strict_lua, editor, ignore_replay_errors, mp_debug,
 		exit_at_end, no_delay, disable_autosave, no_addons;
 
 	extern const bool& debug;
@@ -85,15 +85,21 @@ namespace game_config
 	extern std::vector<std::string> default_victory_music;
 
 	namespace colors {
-	extern std::string unmoved_orb_color,
-			partial_orb_color,
-			enemy_orb_color,
-			ally_orb_color,
-			moved_orb_color,
-			default_color_list;
+	extern std::string ally_orb_color;
+	extern std::string disengaged_orb_color;
+	extern std::string enemy_orb_color;
+	extern std::string moved_orb_color;
+	extern std::string partial_orb_color;
+	extern std::string unmoved_orb_color;
+	extern std::string default_color_list;
 	} // colors
 
-	extern bool show_ally_orb, show_enemy_orb, show_moved_orb, show_partial_orb, show_unmoved_orb;
+	extern bool show_ally_orb;
+	extern bool show_disengaged_orb;
+	extern bool show_enemy_orb;
+	extern bool show_moved_orb;
+	extern bool show_partial_orb;
+	extern bool show_unmoved_orb;
 
 	namespace images {
 	extern std::string game_title,
@@ -105,6 +111,7 @@ namespace game_config
 			victory_laurel_easy,
 			// orbs and hp/xp bar
 			orb,
+			orb_two_color,
 			energy,
 			// top bar icons
 			battery_icon,

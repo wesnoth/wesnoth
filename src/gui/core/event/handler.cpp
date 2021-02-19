@@ -26,10 +26,9 @@
 #include "video.hpp"
 #include "serialization/unicode_cast.hpp"
 #include "sdl/userevent.hpp"
+#include "utils/ranges.hpp"
 
 #include <cassert>
-
-#include <boost/range/adaptor/reversed.hpp>
 
 /**
  * @todo The items below are not implemented yet.
@@ -639,7 +638,7 @@ void sdl_event_handler::mouse(const ui_event event, const point& position)
 		return;
 	}
 
-	for(auto& dispatcher : boost::adaptors::reverse(dispatchers_)) {
+	for(auto& dispatcher : utils::reversed_view(dispatchers_)) {
 		if(dispatcher->get_mouse_behavior() == dispatcher::all) {
 			dispatcher->fire(event, dynamic_cast<widget&>(*dispatcher), position);
 			break;
@@ -719,7 +718,7 @@ dispatcher* sdl_event_handler::keyboard_dispatcher()
 		return keyboard_focus_;
 	}
 
-	for(auto& dispatcher : boost::adaptors::reverse(dispatchers_)) {
+	for(auto& dispatcher : utils::reversed_view(dispatchers_)) {
 		if(dispatcher->get_want_keyboard_input()) {
 			return dispatcher;
 		}
@@ -730,28 +729,28 @@ dispatcher* sdl_event_handler::keyboard_dispatcher()
 
 void sdl_event_handler::touch_motion(const point& position, const point& distance)
 {
-	for(auto& dispatcher : boost::adaptors::reverse(dispatchers_)) {
+	for(auto& dispatcher : utils::reversed_view(dispatchers_)) {
 		dispatcher->fire(SDL_TOUCH_MOTION , dynamic_cast<widget&>(*dispatcher), position, distance);
 	}
 }
 
 void sdl_event_handler::touch_up(const point& position)
 {
-	for(auto& dispatcher : boost::adaptors::reverse(dispatchers_)) {
+	for(auto& dispatcher : utils::reversed_view(dispatchers_)) {
 		dispatcher->fire(SDL_TOUCH_UP, dynamic_cast<widget&>(*dispatcher), position);
 	}
 }
 
 void sdl_event_handler::touch_down(const point& position)
 {
-	for(auto& dispatcher : boost::adaptors::reverse(dispatchers_)) {
+	for(auto& dispatcher : utils::reversed_view(dispatchers_)) {
 		dispatcher->fire(SDL_TOUCH_DOWN, dynamic_cast<widget&>(*dispatcher), position);
 	}
 }
 
 void sdl_event_handler::touch_multi_gesture(const point& center, float dTheta, float dDist, uint8_t numFingers)
 {
-	for(auto& dispatcher : boost::adaptors::reverse(dispatchers_)) {
+	for(auto& dispatcher : utils::reversed_view(dispatchers_)) {
 		dispatcher->fire(SDL_TOUCH_MULTI_GESTURE, dynamic_cast<widget&>(*dispatcher), center, dTheta, dDist, numFingers);
 	}
 }

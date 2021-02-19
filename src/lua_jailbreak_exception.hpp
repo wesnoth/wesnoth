@@ -14,8 +14,6 @@
 
 #pragma once
 
-#include "global.hpp"
-
 /**
  * Base class for exceptions that want to be thrown 'through' lua.
  *

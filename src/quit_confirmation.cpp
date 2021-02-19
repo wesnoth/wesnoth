@@ -21,14 +21,13 @@
 #include "gui/dialogs/surrender_quit.hpp"
 #include "gui/dialogs/message.hpp"
 #include "gui/widgets/retval.hpp"
-
-#include <boost/range/adaptor/reversed.hpp>
+#include "utils/ranges.hpp"
 
 bool quit_confirmation::quit()
 {
 	if(!open_) {
 		open_ = true;
-		for(quit_confirmation* blocker : boost::adaptors::reverse(blockers_))
+		for(quit_confirmation* blocker : utils::reversed_view(blockers_))
 		{
 			if(!blocker->prompt_()) {
 				open_ = false;

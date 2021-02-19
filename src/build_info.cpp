@@ -38,6 +38,7 @@
 #include <SDL2/SDL_ttf.h>
 
 #include <boost/algorithm/string.hpp>
+#include <boost/predef.h>
 #include <boost/version.hpp>
 
 #ifndef __APPLE__
@@ -308,6 +309,39 @@ version_table_manager::version_table_manager()
 const std::string empty_version = "";
 
 } // end anonymous namespace 1
+
+std::string build_arch()
+{
+#if BOOST_ARCH_X86_64
+	return "x86_64";
+#elif BOOST_ARCH_X86_32
+	return "x86";
+#elif BOOST_ARCH_ARM && (defined(__arm64) || defined(_M_ARM64))
+	return "arm64";
+#elif BOOST_ARCH_ARM
+	return "arm";
+#elif BOOST_ARCH_IA64
+	return "ia64";
+#elif BOOST_ARCH_PPC
+	return "ppc";
+#elif BOOST_ARCH_ALPHA
+	return "alpha";
+#elif BOOST_ARCH_MIPS
+	return "mips";
+#elif BOOST_ARCH_SPARC
+	return "sparc";
+#else
+	// Congratulations, you're running Wesnoth on an exotic platform -- either that or you live in
+	// the foretold future where x86 and ARM stopped being the dominant CPU architectures for the
+	// general-purpose consumer market. If you want to add label support for your platform, check
+	// out the Boost.Predef library's documentation and alter the code above accordingly.
+	//
+	// On the other hand, if you got here looking for Wesnoth's biggest secret let me just say
+	// right here and now that Irdya is round. There, I said the thing that nobody has dared say
+	// in mainline content before.
+	return _("cpu_architecture^<unknown>");
+#endif
+}
 
 std::vector<optional_feature> optional_features_table()
 {
@@ -637,7 +671,7 @@ std::string full_build_report()
 
 	std::ostringstream o;
 
-	o << "The Battle for Wesnoth version " << game_config::revision << '\n'
+	o << "The Battle for Wesnoth version " << game_config::revision << " " << build_arch() << '\n'
 	  << "Running on " << desktop::os_version() << '\n'
 	  << "Distribution channel: " << dist_channel_id() << '\n'
 	  << '\n'

@@ -24,7 +24,6 @@
 #include "lexical_cast.hpp"
 #include "log.hpp"
 #include "utils/const_clone.hpp"
-#include <functional>
 #include "deprecation.hpp"
 #include "game_version.hpp"
 #include "serialization/string_utils.hpp"
@@ -32,14 +31,8 @@
 #include <algorithm>
 #include <cstdlib>
 #include <cstring>
-#include <deque>
 #include <istream>
 #include <locale>
-
-#include <boost/variant/apply_visitor.hpp>
-#include <boost/variant/get.hpp>
-#include <boost/variant/static_visitor.hpp>
-#include <boost/variant/variant.hpp>
 
 static lg::log_domain log_config("config");
 #define ERR_CF LOG_STREAM(err, log_config)
@@ -71,6 +64,7 @@ int map_erase_key(Map& map, Key&& key)
 	}
 	return 0;
 }
+
 }
 
 struct config_implementation
@@ -425,18 +419,28 @@ config& config::child(config_key_type key, int n)
 	if(i == children_.end()) {
 		DBG_CF << "The config object has no child named »" << key << "«.\n";
 
-		return invalid;
+		if(throw_when_child_not_found::do_throw()) {
+			throw error("Child not found");
+		} else {
+			return invalid;
+		}
 	}
 
-	if(n < 0)
+	if(n < 0) {
 		n = i->second.size() + n;
-	if(std::size_t(n) < i->second.size()) {
-		return *i->second[n];
-	} else {
+	}
+
+	try {
+		return *i->second.at(n);
+	} catch(const std::out_of_range&) {
 		DBG_CF << "The config object has only »" << i->second.size() << "« children named »" << key
 			   << "«; request for the index »" << n << "« cannot be honored.\n";
 
-		return invalid;
+		if(throw_when_child_not_found::do_throw()) {
+			throw error("Child at index not found");
+		} else {
+			return invalid;
+		}
 	}
 }
 
@@ -448,6 +452,26 @@ config& config::child(config_key_type key, const std::string& parent)
 const config& config::child(config_key_type key, const std::string& parent) const
 {
 	return config_implementation::child(this, key, parent);
+}
+
+utils::optional_reference<config> config::optional_child(config_key_type key, int n)
+{
+	try {
+		throw_when_child_not_found raii_helper{};
+		return child(key, n);
+	} catch(const error&) {
+		return std::nullopt;
+	}
+}
+
+utils::optional_reference<const config> config::optional_child(config_key_type key, int n) const
+{
+	try {
+		throw_when_child_not_found raii_helper{};
+		return child(key, n);
+	} catch(const error&) {
+		return std::nullopt;
+	}
 }
 
 const config& config::child_or_empty(config_key_type key) const
@@ -841,7 +865,11 @@ config& config::find_child(config_key_type key, const std::string& name, const s
 	if(i == children_.end()) {
 		DBG_CF << "Key »" << name << "« value »" << value << "« pair not found as child of key »" << key << "«.\n";
 
-		return invalid;
+		if(throw_when_child_not_found::do_throw()) {
+			throw error("Child not found");
+		} else {
+			return invalid;
+		}
 	}
 
 	const child_list::iterator j = std::find_if(i->second.begin(), i->second.end(),
@@ -857,7 +885,11 @@ config& config::find_child(config_key_type key, const std::string& name, const s
 
 	DBG_CF << "Key »" << name << "« value »" << value << "« pair not found as child of key »" << key << "«.\n";
 
-	return invalid;
+	if(throw_when_child_not_found::do_throw()) {
+		throw error("Child not found");
+	} else {
+		return invalid;
+	}
 }
 
 void config::clear()

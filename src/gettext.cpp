@@ -12,7 +12,6 @@
    See the COPYING file for more details.
 */
 
-#include "global.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
 #include "filesystem.hpp"
@@ -84,7 +83,6 @@ namespace
 	};
 	class wesnoth_message_format : public bl::message_format<char>
 	{
-		using po_catalog = spirit_po::catalog<>;
 	public:
 		wesnoth_message_format(std::locale base, const std::set<std::string>& domains, const std::set<std::string>& paths)
 			: base_loc_(base)
@@ -134,7 +132,7 @@ namespace
 				try {
 					filesystem::scoped_istream po_file = filesystem::istream_file(path);
 					po_file->exceptions(std::ios::badbit);
-					const po_catalog& cat = po_catalog::from_istream(*po_file);
+					const auto& cat = spirit_po::default_catalog::from_istream(*po_file);
 					extra_messages_.emplace(get_base().domain(domain), cat);
 				} catch(const spirit_po::catalog_exception& e) {
 					throw_po_error(lang_name_long, domain, e.what());
@@ -208,7 +206,7 @@ namespace
 		}
 
 		std::locale base_loc_;
-		std::map<int, po_catalog> extra_messages_;
+		std::map<int, spirit_po::default_catalog> extra_messages_;
 	};
 	struct translation_manager
 	{

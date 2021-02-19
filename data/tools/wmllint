@@ -122,11 +122,6 @@
 # Note that this will also disable stack-based validation on the span
 # of lines they enclose.
 #
-# You can suppress warnings about newlines in messages (and attempts to
-# repair them) with "wmllint: display on", and re-enable them with
-# "wmllint: display off".  The repair attempts (only) may also be
-# suppressed with the --stringfreeze option.
-#
 # A special comment "# wmllint: notecheck off" will disable checking unit types
 # for consistency between abilities/weapon specials and usage of special notes
 # macros in their descriptions.
@@ -1508,7 +1503,6 @@ def global_sanity_check(filename, lines):
             continue
         elif "wmllint: notecheck on" in nav.text:
             notecheck = True
-        #print("Element = %s, text = %s" % (nav.element, repr(nav.text)))
         if nav.element == "[unit_type]":
             unit_race = ""
             unit_id = ""
@@ -1527,8 +1521,6 @@ def global_sanity_check(filename, lines):
             defense_cap_note_needed = False
             continue
         elif nav.element == "[/unit_type]":
-            #print('"%s", %d: unit has traits %s and notes %s' \
-            #      % (filename, in_unit_type, traits, notes))
             if unit_id and unit_usage:
                 usage[unit_id] = unit_usage
             if unit_id and temp_movetypes:
@@ -1896,6 +1888,7 @@ to be called on their own".format(filename, num))
     in_map_generator = False
     in_name_generator = False
     in_candidate_action = False
+    in_lua = False
     storeid = None
     storevar = None
     ignoreable = False
@@ -1906,6 +1899,13 @@ to be called on their own".format(filename, num))
     translation_mark = re.compile(r'_ *"')
     name_generator_re = re.compile(r"name_generator\s*=\s*_\s*<<")
     for i in range(len(lines)):
+        if has_opening_tag(lines[i], "lua"):
+            in_lua = True
+        elif "[/lua]" in lines[i]:
+            in_lua = False
+        if in_lua:
+            # As far as I can tell none of the below tests make sense inside of a lua tag
+            continue
         if '[' in lines[i]:
             preamble_seen = True
         # This logic looks odd because a scenario can be conditionally
@@ -2237,9 +2237,6 @@ to be called on their own".format(filename, num))
                 if '{' in value and "+" not in value and value.find('{') > value.find("_"):
                     print('"%s", line %d: macro reference in translatable string'\
                           % (filename, i+1))
-                #if future and re.search("[.,!?]  ", lines[i]):
-                #    print('"%s", line %d: extraneous space in translatable string'\
-                #          % (filename, i+1))
             # Check correctness of translation marks and descriptions
             if key.startswith("#"): # FIXME: parse_attribute is confused.
                 pass
@@ -2435,7 +2432,6 @@ def consistency_check():
             print('"%s", line %d: %s has unknown advancements %s' \
                   % (filename, lineno, unit_id, bad_advancements))
     # Check next-scenario pointers
-    #print("Scenario ID map", scenario_to_filename)
     for (filename, lineno, value) in nextrefs:
         if value not in scenario_to_filename:
             print('"%s", line %d: unresolved scenario reference %s' % \
@@ -2719,7 +2715,6 @@ def hack_syntax(filename, lines):
                             if side_one_tag_needs_side_one:
                                 if verbose:
                                     print('"%s", line %d: [%s] without "side" attribute is now applied to all sides'%(filename, i+1, tag))
-                                #lines.insert(i, leader(precomment) + baseindent + "side=1\n")
                             in_side_one_tag = False
                             side_one_tag_needs_side_one = True
                             break
@@ -2805,6 +2800,7 @@ def translator(filename, mapxforms, textxform):
     cont = False
     validate = True
     unbalanced = False
+    in_lua_code = False
     newdata = []
     refname = None
     while mfile:
@@ -2884,10 +2880,12 @@ def translator(filename, mapxforms, textxform):
                     else:
                         fields = [x for x in line]
                     outmap.append(fields)
-                    if not maskwarn and maptype == 'map' and re.search('_s|_f(?!me)', line):
-                        print('"%s", line %d: warning, fog or shroud in map file' \
-                              % (filename, lineno+1))
-                        maskwarn = True
+                    if not maskwarn and maptype == 'map':
+                        terrain_strings = (f.split()[-1] for f in fields)
+                        if any(re.search('_s|_f(?!me)', t) for t in terrain_strings):
+                            print('"%s", line %d: warning, fog or shroud in map file' \
+                                  % (filename, lineno+1))
+                            maskwarn = True
             # Deduce the map type
             if not map_only:
                 if maptype == "map":
@@ -2933,7 +2931,7 @@ def translator(filename, mapxforms, textxform):
             # Now do warnings based on the state of the tag stack.
             # the regex check for "path=" is needed due to [modify_ai]
             # which uses square braces in its syntax
-            if not unbalanced and not re.match(r"\s*path\=", destringed):
+            if not unbalanced and not in_lua_code and not re.match(r"\s*path\=", destringed):
                 for instance in re.finditer(r"\[\/?\+?([a-z][a-z_]*[a-z])\]", destringed):
                     tag = instance.group(1)
                     closer = instance.group(0)[1] == '/'
@@ -2962,6 +2960,14 @@ def translator(filename, mapxforms, textxform):
                 unbalanced = True
             if "wmllint: unbalanced-off" in comment:
                 unbalanced = False
+            # single line of Lua code, skip
+            if re.match(r"\s*?code\s?=\s?<<.*>>", destringed):
+                continue
+            # multiline Lua block
+            if re.match(r"\s*?code\s?=\s?<<.*", destringed):
+                in_lua_code = True
+            if in_lua_code and re.match(r".*?>>\s*$", destringed):
+                in_lua_code = False
             if "wmllint: match" in comment:
                 comment = comment.strip()
                 try:
@@ -2994,28 +3000,6 @@ def translator(filename, mapxforms, textxform):
     else:
         # Map or mask -- just run everything together
         transformed = "".join(newdata)
-    # Simple check for unbalanced macro calls
-    linecount = 1
-    quotecount = 0
-    display_state = False
-    singleline = False
-    for i in range(len(transformed)):
-        if transformed[i] == '\n':
-            if singleline:
-                singleline = False
-                if not display_state and quotecount % 2 and transformed[i:i+2] != "\n\n" and transformed[i-1:i+1] != "\n\n":
-                    print('"%s", line %d: nonstandard word-wrap style within message' % (filename, linecount))
-            linecount += 1
-        elif transformed[i-7:i] == "message" and transformed[i] == '=':
-            singleline = True
-        elif re.match(" *wmllint: *display +on", transformed[i:]):
-            display_state = True
-        elif re.match(" *wmllint: *display +off", transformed[i:]):
-            display_state = False
-        elif transformed[i] == '"' and not display_state:
-            quotecount += 1
-            if quotecount % 2 == 0:
-                singleline = False
     # Return None if the transformation functions made no changes.
     if "".join(unmodified) != transformed:
         return transformed
@@ -3148,14 +3132,11 @@ def spellcheck(fn, d):
             local_spellings += declared_spellings.get(up,[])
             up = os.path.dirname(up)
     local_spellings = [w for w in local_spellings if not d.check(w)]
-    #if local_spellings:
-    #    print("%s: inherited local spellings: %s" % (fn, local_spellings))
     for word in local_spellings:
         d.add_to_session(word)
 
     # Process this individual file
     for nav in WmllintIterator(filename=fn):
-        #print("element=%s, text=%s" % (nav.element, repr(nav.text)))
         # Recognize local spelling exceptions
         if not nav.element and "#" in nav.text:
             comment = nav.text[nav.text.index("#"):]
@@ -3168,8 +3149,6 @@ def spellcheck(fn, d):
                         local_spellings.append(word)
                     else:
                         nav.printError("spelling '%s' already declared" % word)
-    #if local_spellings:
-    #    print("%s: with this file's local spellings: %s" % (fn,local_spellings))
 
     for nav in WmllintIterator(filename=fn):
         # Spell-check message and story parts
@@ -3194,8 +3173,6 @@ def spellcheck(fn, d):
             if value and not d.check(value):
                 d.add_to_session(value)
                 local_spellings.append(value)
-    #if local_spellings:
-    #    print("%s: slated for removal: %s" % (fn, local_spellings))
     for word in local_spellings:
         try:
             d.remove_from_session(word)
@@ -3473,7 +3450,6 @@ In your case, your system interprets your arguments as:
                 failed_any_dirs = True
                 print("wmllint: skipping non-existent path %s" % directory)
                 continue
-            ofp = None
             for fn in allcfgfiles(directory):
                 if verbose >= 2:
                     print(fn + ":")
@@ -3547,7 +3523,6 @@ In your case, your system interprets your arguments as:
                             failed_any_dirs = True
                             print("wmllint: skipping non-existent path %s" % directory)
                             continue
-                        ofp = None
                         for fn in allcfgfiles(directory):
                             if verbose >= 2:
                                 print(fn + ":")

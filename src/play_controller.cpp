@@ -522,18 +522,6 @@ void play_controller::do_init_side()
 	// Make sure vision is accurate.
 	actions::clear_shroud(current_side(), true);
 
-	{
-		const auto& active_mods = get_saved_game().classification().active_mods;
-		bool delay_advancements
-			= std::find(active_mods.begin(), active_mods.end(), "delay_advancements") != active_mods.end();
-
-		for(unit& u : resources::gameboard->units()) {
-			if(delay_advancements && u.side() == current_side()) {
-				advance_unit_at(u.get_location());
-			}
-		}
-	}
-
 	init_side_end();
 	check_victory();
 	sync.do_final_checkup();
@@ -645,6 +633,7 @@ void play_controller::enter_textbox()
 	switch(menu_handler_.get_textbox().mode()) {
 	case gui::TEXTBOX_SEARCH:
 		menu_handler_.do_search(str);
+		menu_handler_.get_textbox().memorize_command(str);
 		menu_handler_.get_textbox().close(*gui_);
 		break;
 	case gui::TEXTBOX_MESSAGE:
@@ -652,16 +641,58 @@ void play_controller::enter_textbox()
 		menu_handler_.get_textbox().close(*gui_); // need to close that one after executing do_speak() !
 		break;
 	case gui::TEXTBOX_COMMAND:
+		menu_handler_.get_textbox().memorize_command(str);
 		menu_handler_.get_textbox().close(*gui_);
 		menu_handler_.do_command(str);
 		break;
 	case gui::TEXTBOX_AI:
+		menu_handler_.get_textbox().memorize_command(str);
 		menu_handler_.get_textbox().close(*gui_);
 		menu_handler_.do_ai_formula(str, team_num, mousehandler);
 		break;
 	default:
 		menu_handler_.get_textbox().close(*gui_);
 		ERR_DP << "unknown textbox mode" << std::endl;
+	}
+}
+
+void play_controller::textbox_move_vertically(bool up)
+{
+	if(menu_handler_.get_textbox().active() == false) {
+		return;
+	}
+
+	if(menu_handler_.get_textbox().mode() == gui::TEXTBOX_MESSAGE
+		|| menu_handler_.get_textbox().mode() == gui::TEXTBOX_NONE) {
+		// Not handling messages to avoid spam
+		return;
+	}
+
+	const std::string str = menu_handler_.get_textbox().box()->text();
+	const std::vector<std::string>& command_history = menu_handler_.get_textbox().command_history();
+
+	auto prev = std::find(command_history.begin(), command_history.end(), str);
+
+	if (prev != command_history.end())
+	{
+		if(up) {
+			if(prev != command_history.begin()) {
+				menu_handler_.get_textbox().box()->set_text(*--prev);
+			}
+		} else {
+			if(++prev != command_history.end()) {
+				menu_handler_.get_textbox().box()->set_text(*prev);
+			} else {
+				menu_handler_.get_textbox().box()->set_text("");
+			}
+		}
+	} else if (up) {
+		if(command_history.size() > 0) {
+			menu_handler_.get_textbox().box()->set_text(*--prev);
+		}
+		if(!str.empty()) {
+			menu_handler_.get_textbox().memorize_command(str);
+		}
 	}
 }
 
@@ -683,7 +714,7 @@ void play_controller::tab()
 	case gui::TEXTBOX_COMMAND: {
 		std::vector<std::string> commands = menu_handler_.get_commands_list();
 		dictionary.insert(commands.begin(), commands.end());
-		FALLTHROUGH; // we also want player names from the next case
+		[[fallthrough]]; // we also want player names from the next case
 	}
 	case gui::TEXTBOX_MESSAGE: {
 		for(const team& t : get_teams()) {
@@ -803,6 +834,10 @@ void play_controller::process_focus_keydown_event(const SDL_Event& event)
 		menu_handler_.get_textbox().close(*gui_);
 	} else if(event.key.keysym.sym == SDLK_TAB) {
 		tab();
+	} else if(event.key.keysym.sym == SDLK_UP) {
+		textbox_move_vertically(true);
+	} else if(event.key.keysym.sym == SDLK_DOWN) {
+		textbox_move_vertically(false);
 	} else if(event.key.keysym.sym == SDLK_RETURN || event.key.keysym.sym == SDLK_KP_ENTER) {
 		enter_textbox();
 	}

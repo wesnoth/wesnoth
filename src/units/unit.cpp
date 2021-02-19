@@ -50,27 +50,16 @@
 #include "units/id.hpp"
 #include "units/map.hpp" // for unit_map, etc
 #include "units/types.hpp"
-#include <functional>
 #include "variable.hpp" // for vconfig, etc
 
-#include <boost/dynamic_bitset.hpp>
-
-#ifdef _MSC_VER
-#pragma warning (push)
-#pragma warning (disable: 4510 4610)
-#endif
-#include <boost/range/algorithm.hpp>
-#ifdef _MSC_VER
-#pragma warning (pop)
-#endif
-
-#include <array>
 #include <cassert>                     // for assert
 #include <cstdlib>                     // for rand
 #include <exception>                    // for exception
+#include <functional>
 #include <iterator>                     // for back_insert_iterator, etc
 #include <new>                          // for operator new
 #include <ostream>                      // for operator<<, basic_ostream, etc
+#include <string_view>
 
 namespace t_translation { struct terrain_code; }
 
@@ -83,7 +72,7 @@ static lg::log_domain log_unit("unit");
 namespace
 {
 	// "advance" only kept around for backwards compatibility; only "advancement" should be used
-	const std::array<std::string, 4> ModificationTypes {{ "advancement", "advance", "trait", "object" }};
+	const std::set<std::string_view> ModificationTypes { "advancement", "advance", "trait", "object" };
 
 	/**
 	 * Pointers to units which have data in their internal caches. The
@@ -93,7 +82,7 @@ namespace
 	static std::vector<const unit*> units_with_cache;
 
 	static const std::string leader_crown_path = "misc/leader-crown.png";
-	static std::array<std::string, 60> internalized_attrs {{
+	static const std::set<std::string_view> internalized_attrs {
 		"type",
 		"id",
 		"name",
@@ -155,18 +144,7 @@ namespace
 		"language_name",
 		"image",
 		"image_icon"
-	}};
-
-	struct internalized_attrs_sorter
-	{
-		internalized_attrs_sorter()
-		{
-			std::sort(std::begin(internalized_attrs), std::end(internalized_attrs));
-		}
 	};
-
-	// Sort the array to make set_difference below work.
-	internalized_attrs_sorter sorter;
 
 	void warn_unknown_attribute(const config::const_attr_itors& cfg)
 	{
@@ -399,7 +377,6 @@ unit::unit(unit_ctor_t)
 	, changed_attributes_(0)
 	, invisibility_cache_()
 {
-
 }
 
 void unit::init(const config& cfg, bool use_traits, const vconfig* vcfg)
@@ -455,8 +432,8 @@ void unit::init(const config& cfg, bool use_traits, const vconfig* vcfg)
 	facing_ = map_location::parse_direction(cfg["facing"]);
 	if(facing_ == map_location::NDIRECTIONS) facing_ = static_cast<map_location::DIRECTION>(randomness::rng::default_instance().get_random_int(0, map_location::NDIRECTIONS-1));
 
-	if(const config& mods = cfg.child("modifications")) {
-		modifications_ = mods;
+	for(const config& mods : cfg.child_range("modifications")) {
+		modifications_.append_children(mods);
 	}
 
 	generate_name_ = cfg["generate_name"].to_bool(true);
@@ -2654,7 +2631,7 @@ std::string get_checksum(const unit& u)
 	config wcfg;
 	u.write(unit_config);
 
-	const std::array<std::string, 22> main_keys {{
+	static const std::set<std::string_view> main_keys {
 		"advances_to",
 		"alignment",
 		"cost",
@@ -2677,24 +2654,24 @@ std::string get_checksum(const unit& u)
 		"undead_variation",
 		"upkeep",
 		"zoc"
-	}};
+	};
 
-	for(const std::string& main_key : main_keys) {
+	for(const std::string_view& main_key : main_keys) {
 		wcfg[main_key] = unit_config[main_key];
 	}
 
-	const std::array<std::string, 5> attack_keys {{
+	static const std::set<std::string_view> attack_keys {
 		"name",
 		"type",
 		"range",
 		"damage",
 		"number"
-	}};
+	};
 
 	for(const config& att : unit_config.child_range("attack")) {
 		config& child = wcfg.add_child("attack");
 
-		for(const std::string& attack_key : attack_keys) {
+		for(const std::string_view& attack_key : attack_keys) {
 			child[attack_key] = att[attack_key];
 		}
 
@@ -2723,16 +2700,16 @@ std::string get_checksum(const unit& u)
 		child.recursive_clear_value("name");
 	}
 
-	const std::array<std::string, 6> child_keys {{
+	static const std::set<std::string_view> child_keys {
 		"advance_from",
 		"defense",
 		"movement_costs",
 		"vision_costs",
 		"jamming_costs",
 		"resistance"
-	}};
+	};
 
-	for(const std::string& child_key : child_keys) {
+	for(const std::string_view& child_key : child_keys) {
 		for(const config& c : unit_config.child_range(child_key)) {
 			wcfg.add_child(child_key, c);
 		}

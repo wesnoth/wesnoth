@@ -15,6 +15,7 @@
 #include "scripting/lua_terrainmap.hpp"
 
 #include "formatter.hpp"
+#include "global.hpp"
 #include "log.hpp"
 #include "map/location.hpp"
 #include "map/map.hpp"
@@ -50,7 +51,7 @@ private:
 
 using knows_sets_t = std::map<std::string, std::set<map_location>>;
 using offset_list_t = std::vector<std::pair<int, int>>;
-using utils::string_view;
+using std::string_view;
 using dynamic_bitset  = boost::dynamic_bitset<>;
 using location_set = std::set<map_location>;
 

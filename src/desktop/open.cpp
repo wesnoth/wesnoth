@@ -43,7 +43,7 @@ static lg::log_domain log_desktop("desktop");
 
 namespace desktop {
 
-bool open_object(const std::string& path_or_url)
+bool open_object([[maybe_unused]] const std::string& path_or_url)
 {
 	LOG_DU << "open_object(): requested object: " << path_or_url << '\n';
 
@@ -88,7 +88,6 @@ bool open_object(const std::string& path_or_url)
 
 #else
 
-	UNUSED(path_or_url); // silence gcc's -Wunused-parameter
 	ERR_DU << "open_object(): unsupported platform" << std::endl;
 	return false;
 

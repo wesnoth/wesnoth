@@ -23,6 +23,11 @@
 enum class orb_status {
 	/** The unit still has full movement and all attacks available. */
 	unmoved,
+	/**
+	 * The unit can move but can't attack, and wouldn't be able to attack even
+	 * if it was moved to a hex adjacent to an enemy.
+	 */
+	disengaged,
 	/** All moves and possible attacks have been done. */
 	moved,
 	/** There are still moves and/or attacks possible, but the unit doesn't fit in the "unmoved" status. */

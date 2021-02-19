@@ -94,6 +94,7 @@ wesnothd_connection::wesnothd_connection(const std::string& host, const std::str
 			} catch(const std::future_error&) {
 				// Handshake already complete. Do nothing.
 			}
+		} catch(...) {
 		}
 
 		LOG_NW << "wesnothd_connection::io_service::run() returned\n";

@@ -345,6 +345,7 @@ protected:
 	bool enemies_visible() const;
 
 	void enter_textbox();
+	void textbox_move_vertically(bool up);
 	void tab();
 
 

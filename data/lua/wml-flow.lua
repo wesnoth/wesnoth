@@ -111,7 +111,7 @@ wesnoth.wml_actions["for"] = function(cfg)
 		return
 	end
 	local i_var = cfg.variable or "i"
-	local save_i = utils.start_var_scope(i_var)
+	local save_i <close> = utils.scoped_var(i_var)
 	wml.variables[i_var] = first
 	local function loop_condition()
 		local sentinel = loop_lim.last
@@ -146,7 +146,6 @@ wesnoth.wml_actions["for"] = function(cfg)
 		wml.variables[i_var] = wml.variables[i_var] + loop_lim.step
 	end
 	::exit::
-	utils.end_var_scope(i_var, save_i)
 end
 
 wml_actions["repeat"] = function(cfg)
@@ -180,9 +179,9 @@ function wml_actions.foreach(cfg)
 	local array = wml.array_variables[array_name]
 	if #array == 0 then return end -- empty and scalars unwanted
 	local item_name = cfg.variable or "this_item"
-	local this_item = utils.start_var_scope(item_name) -- if this_item is already set
+	local this_item <close> = utils.scoped_var(item_name) -- if this_item is already set
 	local i_name = cfg.index_var or "i"
-	local i = utils.start_var_scope(i_name) -- if i is already set
+	local i <close> = utils.scoped_var(i_name) -- if i is already set
 	local array_length = wml.variables[array_name .. ".length"]
 
 	for index, value in ipairs(array) do
@@ -213,10 +212,6 @@ function wml_actions.foreach(cfg)
 		end
 	end
 	::exit::
-
-	-- house cleaning
-	utils.end_var_scope(item_name, this_item)
-	utils.end_var_scope(i_name, i)
 
 	--[[
 		This forces the readonly key to be taken literally.

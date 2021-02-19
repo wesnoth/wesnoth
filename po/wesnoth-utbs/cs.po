@@ -4,14 +4,13 @@
 # Copyright (C) 2006 - 2020 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 #
-# Czech Wesnoth translation team <hrubymar10@gmail.com>,
-#
+# Czech Wesnoth translation team
 #
 # Vladimír Slávik <slavik.vladimir@seznam.cz>, 2006 - 2011.
 # Oto 'tapik' Buchta <tapik@buchtovi.cz>, 2006, 2007.
 # Honza <Honza-mistic@seznam.cz>, 2014.
 # Martin Hrubý <hrubymar10@gmail.com>, 2017 - 2020.
-# Michal Žejdl <lachim@emer.cz>, 2019 - 2020.
+# Michal Žejdl <lachim@emer.cz>, 2019 - 2021.
 # Tereza Žejdlová, 2020.
 #
 msgid ""
@@ -19,15 +18,14 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2021-01-16 14:18 UTC\n"
-"PO-Revision-Date: 2020-12-13 14:29+0100\n"
-"Last-Translator: Septim <septim@centrum.cz>\n"
-"Language-Team: Český <hrubymar10@gmail.com>\n"
+"PO-Revision-Date: 2021-02-08 18:37+0100\n"
+"Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
+"Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Poedit 2.4.2\n"
 
 #. [campaign]: id=Under_the_Burning_Suns
 #. [editor_group]: id=utbs
@@ -39,7 +37,7 @@ msgstr "Pod žhnoucími slunci"
 #. [campaign]: id=Under_the_Burning_Suns
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:14
 msgid "UtBS"
-msgstr "PžS"
+msgstr "PŽS"
 
 #. [campaign]: id=Under_the_Burning_Suns
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:20
@@ -145,6 +143,8 @@ msgid ""
 "dazed: This unit is dazed. It suffers a -10% penalty to both its defense and "
 "chance to hit (except for magical attacks)."
 msgstr ""
+"omámení: Tato jednotka je omámená. O 10 % se snižuje jak její obrana, tak "
+"šance zasáhnout útokem (s výjimkou magických útoků)."
 
 #. [scenario]: id=01_The_Morning_After
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:5
@@ -642,10 +642,8 @@ msgstr "Chraňte kněžky, pošleme tu obludnost zpět do hloubek, odkud pocház
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:810
-#, fuzzy
-#| msgid "These fields seem strangely vacant. Where are the horses?"
 msgid "These fields seem strangely vacant. Where are the dustboks?"
-msgstr "Pole se zdají podivně prázdná. Kde jsou koně?"
+msgstr "Ohrady se zdají podivně prázdné. Kam se poděly antilopy?"
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:815
@@ -664,59 +662,43 @@ msgstr "Je bezpečné vycházet ven? Byl jsem tak vyděšený."
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:862
-#, fuzzy
-#| msgid "Where are all the other horses?"
 msgid "Where are all the other dustboks?"
-msgstr "Kde jsou všichni další koně?"
+msgstr "Kde jsou všechny další antilopy?"
 
 #. [message]: speaker=Naru
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:867
-#, fuzzy
-#| msgid ""
-#| "A hunting party left just yesterday, so unless the rocks fell all over "
-#| "the land, many of the horses have probably survived. The few that "
-#| "remained here were scared by the falling rocks and fled into the night. "
-#| "It took all my skill to calm Yasi and keep him from running."
 msgid ""
 "A hunting party left just yesterday, so unless the rocks fell all over the "
 "land, many of the dustboks have probably survived. The few that remained "
 "here were scared by the falling rocks and fled into the night. It took all "
 "my skill to calm Yasi and keep him from running."
 msgstr ""
-"Lovci zrovna včera odjeli, takže pokud kameny nepadaly po celé zemi, mnoho "
-"koní zřejmě přežilo. Těch pár, kteří tu zůstali, tak vystrašily padající "
-"balvany, že uprchli do noci. Jen stěží jsem uklidnil Yasiho a zabránil mu "
-"utéct."
+"Skupina lovců odjela zrovna včera, takže pokud kameny nepadaly po celé zemi, "
+"mnoho antilop zřejmě přežilo. Těch pár, co tu zůstalo, tak vystrašily "
+"padající balvany, že uprchly do noci. Jen stěží jsem uklidnil Yasiho a "
+"zabránil mu utéct."
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:872
-#, fuzzy
-#| msgid ""
-#| "We’ll need your help in checking to see if the outer settlements "
-#| "survived. Who knows what kinds of damage they suffered in the night? And "
-#| "perhaps some of the people out in the desert have been able to round up "
-#| "some of the loose horses."
 msgid ""
 "We’ll need your help in checking to see if the outer settlements survived. "
 "Who knows what kinds of damage they suffered in the night? And perhaps some "
 "of the people out in the desert have been able to round up some of the loose "
 "dusties."
 msgstr ""
-"Budeme potřebovat tvou pomoc při kontrole vnějších osad. Snad přežili! Kdo "
+"Budeme potřebovat tvou pomoc při kontrole přeživších z vnějších osad. Kdo "
 "ví, co všechno se jim mohlo v noci stát? A třeba někteří z těch venku v "
-"poušti dokázali chytit některé uprchlé koně."
+"poušti dokázali sehnat zpátky některé uprchlé antilopy."
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:877
 msgid "We can only hope that hunting party returns soon."
-msgstr "No, doufejme, že se lovci vrátí brzy."
+msgstr "No, doufejme, že se lovci brzy vrátí."
 
 #. [message]: speaker=unit
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:887
-#, fuzzy
-#| msgid "Hey, Nisa, the rocks have stopped falling. You can come out now!"
 msgid "Hey, Nisen, the rocks have stopped falling. You can come out now!"
-msgstr "Hej, Niso, kamení už přestalo padat. Můžeš vyjít ven!"
+msgstr "Hej, Nisene, kamení už přestalo padat. Už můžeš vyjít ven!"
 
 #. [event]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:891
@@ -749,7 +731,7 @@ msgid ""
 "bloodstains but nothing else. I fear for those elves who lived out here."
 msgstr ""
 "Tato osada je opuštěná. Jsou tu známky násilí a pár krvavých skvrn, ale "
-"jinak nic. Bojím se o ty elfy, kteří tu žili."
+"jinak nic. Bojím se o ty, kteří tu žili."
 
 #. [unit]: type=Necromancer, type=Dark Sorcerer, id=Xanthos
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1082
@@ -791,17 +773,12 @@ msgstr ""
 
 #. [message]: speaker=Garak
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1118
-#, fuzzy
-#| msgid ""
-#| "Bah, I’ve fought these dark cultists before. They can be killed just like "
-#| "anyone else, and our elvish hunters can easily defeat their skeleton "
-#| "armies."
 msgid ""
 "Bah, I’ve fought these dark cultists before. They can be killed just like "
 "anyone else, and our riders can easily defeat their skeleton armies."
 msgstr ""
 "Pche, bojoval jsem už s takovými temnými kultisty. Dají se zabít jako každý "
-"jiný, a naši elfí lovci snadno rozmetají jejich kostlivé armády."
+"jiný, a naši jezdci snadno rozmetají jejich kostlivé armády."
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1123
@@ -1126,6 +1103,8 @@ msgid ""
 "Your units become dehydrated during the day, losing hitpoints and damage "
 "when they are not on a water hex"
 msgstr ""
+"Tvé jednotky jsou během dne dehydrovány a dokud nejsou na políčku s vodou "
+"ztrácejí životy a sílu poškození"
 
 #. [note]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:235
@@ -1133,16 +1112,18 @@ msgid ""
 "Units are refreshed at the start of your turn when they are on a water or "
 "oasis hex"
 msgstr ""
+"Jednotky se občerství na začátku tvého tahu, pokud jsou na políčku s vodou "
+"nebo na oáze"
 
 #. [note]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:238
 msgid "Healers can prevent dehydration from getting worse, but cannot heal it"
-msgstr ""
+msgstr "Léčitelé mohou bránit postupu dehydratace, ale nemohou ji vyléčit"
 
 #. [note]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:241
 msgid "Healers are unable to heal adjacent units during the day"
-msgstr ""
+msgstr "Léčitelé nejsou během dne schopni léčit sousedící jednotky"
 
 #. [label]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:265
@@ -1158,10 +1139,11 @@ msgid ""
 "nightfall, but all his magics couldn’t save him when we cut off his head. "
 "Ah, those were the days..."
 msgstr ""
-"Kdysi dávno, ještě jako mladík, jsem tudy šel; vyrazili jsme proti "
-"nekromantovi skrývajícímu se v jedné z ruin, vytvářel armádu nemrtvých. Byla "
-"to ošklivá bitva, hlavně po setmění, ale všechna jeho magie mu nepomohla, "
-"když jsme mu usekli hlavu. Jo, to byly časy..."
+"Kdysi dávno, ještě jako mladík, jsem těmi písky putoval. Vyrazili jsme na "
+"velkou výpravu proti hnusnému nekromantovi skrývajícímu se v jedné z ruin, "
+"který vytvářel armádu nemrtvých. Byla to ošklivá bitva, hlavně po setmění, "
+"ale veškerá jeho magie mu nebyla nic platná, když jsme mu setnuli hlavu. Jó, "
+"to byly časy..."
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:293
@@ -1186,8 +1168,8 @@ msgid ""
 "Rock we will be just a few miles from the edge of the mountains."
 msgstr ""
 "Vidíš tu hnědou tečku čnící na severním obzoru? To je Špičatá skála. Je to "
-"nejvyšší kousek země široko daleko, a u paty má pramen, nebo spíš měla "
-"minule když jsem tam tábořil. Pokud se dostaneme ke Špičaté skále, budeme "
+"nejvyšší kousek země široko daleko a u paty má pramen. Nebo spíš měla "
+"naposled, když jsem tam tábořil. Pokud se dostaneme ke Špičaté skále, budeme "
 "jen pár mil od okraje hor."
 
 #. [message]: speaker=Garak
@@ -1200,11 +1182,12 @@ msgid ""
 "old stone roads that lead from oasis to oasis. Once the path must have "
 "formed a great thoroughfare for commerce."
 msgstr ""
-"Ale mezi námi a tím místem se nalézají obzvlášť nehostinné písky s jen "
-"několika prameny a oázami. Myslím že tu kdysi naštěstí bývala karavanní "
-"stezka vedoucí na sever, která spojovala oázy. Není lehké je najít, ale "
-"občas vítr odvane písek z kusu staré dlážděné cesty, která vede od oázy k "
-"oáze. Kdysi musel ten chodník představovat rušnou obchodní tepnu."
+"Ale mezi námi a tím místem se nalézají obzvlášť nehostinné písky, jen s "
+"několika oázami a prameny. Naštěstí tu myslím kdysi bývala karavanní stezka "
+"vedoucí na sever, která spojovala jednotlivé oázy. Není lehké ty oázy najít, "
+"ale občas vítr odvane písek z kusu staré dlážděné cesty, která mezi "
+"jednotlivými oázami vede. Kdysi musel ten chodník představovat rušnou "
+"obchodní tepnu."
 
 #. [message]: speaker=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:324
@@ -1212,8 +1195,8 @@ msgid ""
 "I believe that there was once a great empire in these lands, long ago, "
 "before the sands came."
 msgstr ""
-"Věřím, že se v těchto zemích kdysi rozkládala velká říše, dávno, ještě "
-"předtím než přišly písky."
+"Věřím, že se v těchto zemích kdysi rozkládala velká říše, dávno předtím, než "
+"to tu pokryl písek."
 
 #. [message]: speaker=Garak
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:330
@@ -1286,7 +1269,7 @@ msgstr "Dobrá, čím dříve dosáhneme Špičaté skály, tím lépe. Kupředu
 #. [scenario]: id=02_Across_the_Harsh_Sands, role=Hunting Ogre
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:367
 msgid "Scuttler"
-msgstr ""
+msgstr "Krab"
 
 #. [message]: speaker=unit
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:393
@@ -1536,7 +1519,7 @@ msgstr "Elyssa"
 #. [event]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1052
 msgid "Go’hag"
-msgstr "Go’hag"
+msgstr "Gohag"
 
 #. [event]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1053
@@ -1660,19 +1643,14 @@ msgstr ""
 
 #. [message]: speaker=Vengeful Lord
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1223
-#, fuzzy
-#| msgid ""
-#| "Elf with a bow, I remember you. You thought me defeated, but I am back "
-#| "even more powerful than before. Death reigns eternal, your scorched bones "
-#| "and lifeless body will join my host."
 msgid ""
 "Elf of the sands, I remember you. You thought me defeated, but I am back "
 "even more powerful than before. Death reigns eternal, your scorched bones "
 "and lifeless body will join my host."
 msgstr ""
-"Elfe, ty s tím lukem, pamatuji si tě. Mysleli jste si, že jsem poražen, ale "
-"vracím se ve formě ještě silnější než dříve. Smrt vládne navěky, a brzy mi "
-"budou sloužit i vaše dobité kosti a bezduchá těla!"
+"Pamatuji si tě, elfe z pouště. Mysleli jste si, že jsem poražen, ale vracím "
+"se ještě v silnější formě než dříve. Smrt vládne navěky. Brzy mi budou "
+"sloužit i vaše sežehlé kosti a bezduchá těla!"
 
 #. [message]: speaker=Garak
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1228
@@ -1752,7 +1730,7 @@ msgid ""
 "there. I think we’re being watched. I suspect there are more of these "
 "bandits lurking in these dunes than we originally thought."
 msgstr ""
-"Viděli jste to? Myslím, že na tamté duně bylo někoho vidět; právě zmizel. "
+"Viděli jste to? Myslím, že na tamté duně bylo někoho vidět. Právě zmizel. "
 "Zřejmě nás někdo sleduje. Mám podezření, že se tu v těch dunách potuluje víc "
 "banditů než jsme si mysleli."
 
@@ -2078,7 +2056,7 @@ msgstr "Poraz Ystaru"
 #. [objective]: condition=lose
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:266
 msgid "You lose control (even temporarily) of more than 6 villages"
-msgstr "Přijdeš (byť i jen dočasně) o více než šest vesnic."
+msgstr "Přijdeš (byť jen dočasně) o více než šest vesnic"
 
 #. [event]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:341
@@ -2133,8 +2111,8 @@ msgid ""
 "You always were an arrogant little bastard. Grak will swallow your soul, or "
 "what’s left of it."
 msgstr ""
-"Vždycky jsi byl arogantní malý bastard. Grek dřív spolkne tvou duši, nebo "
-"spíš to co z ní zbylo."
+"Vždycky jsi byl arogantní malý bastard. Grak dřív spolkne tvou duši, nebo "
+"spíš to, co z ní zbylo."
 
 #. [message]: speaker=Azkotep
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:400
@@ -2142,8 +2120,8 @@ msgid ""
 "You spurned me once and I will make you pay. To battle, my minions! Become "
 "my wrath!"
 msgstr ""
-"Už jednou jsi mnou pohrdl; donutím tě za to zaplatit. Ale dost bylo "
-"včerejška - do boje, mé legie! Boj se hněvu mrtvých!"
+"Už jednou jsi mnou pohrdl, donutím tě za to zaplatit. Do boje, mí věrní! "
+"Ukažte sílu mého hněvu!"
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:404
@@ -2289,23 +2267,18 @@ msgstr ""
 
 #. [message]: speaker=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:672
-#, fuzzy
-#| msgid ""
-#| "I bless you champion with the light that will come, I bless you with the "
-#| "memory and the promise. Lay down your bow, champion, and let your sword "
-#| "shine in the dark."
 msgid ""
 "I bless you with the light that will come, I bless you with the memory and "
 "the promise. Lay down your shield, champion, and let your blade shine in the "
 "dark."
 msgstr ""
-"Prohlašuji tě šampiónem světla, které přijde. Dávám ti příslib paměti a "
-"naděje. Šampióne, odlož svůj luk a nech svůj meč zářit v temnotách."
+"Žehnám ti ve jménu světla, které přijde. Žehnám ti v síle vzpomínek a "
+"příslibů. Odlož svůj štít, šampióne, a nech svůj meč zářit v temnotách."
 
 #. [berserk]: id=berserk
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:701
 msgid "righteous rage"
-msgstr ""
+msgstr "spravedlivý vztek"
 
 #. [berserk]: id=berserk
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:703
@@ -2314,11 +2287,14 @@ msgid ""
 "attack presses the engagement until one of the combatants is slain, or 30 "
 "rounds of attacks have occurred."
 msgstr ""
+"Pokud je tento útok použit ofenzivně nebo defenzivně proti šampionům Grakovi "
+"či Zurovi, boj trvá tak dlouho, dokud jeden z protivníků nezemře, nebo do "
+"počtu 30 útoků."
 
 #. [chance_to_hit]: id=magical
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:712
 msgid "true strike"
-msgstr ""
+msgstr "úder pravdy"
 
 #. [chance_to_hit]: id=magical
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:714
@@ -2326,6 +2302,8 @@ msgid ""
 "This attack always has a 70% chance to hit regardless of the defensive "
 "ability of the champion being attacked."
 msgstr ""
+"Tento útok má vždy 70% šanci k zásahu bez ohledu na obranný bonus napadeného "
+"šampiona. "
 
 #. [message]: speaker=Garak
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:778
@@ -2358,7 +2336,7 @@ msgstr "Ty tam! Kostitřase! Vyzývám tě, postav se mi!"
 #. [message]: speaker=Zur
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:826
 msgid "Puny elf... Time to die..."
-msgstr "Čas zemřít, elfe..."
+msgstr "Přišel čas zemřít, elfátko..."
 
 #. [message]: speaker=Zur
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:832
@@ -2392,15 +2370,11 @@ msgstr ""
 
 #. [message]: speaker=$lich_lord.id
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:933
-#, fuzzy
-#| msgid ""
-#| "No! This contest is not over yet, Azkotep. I shall show you a taste of my "
-#| "true power."
 msgid ""
 "No! This contest is not over yet, Ystara. I shall show you a taste of my "
 "true power."
 msgstr ""
-"Ne! Tato soutěž ještě neskončila, Azkotepe. Předvedu ti ukázku mé opravdové "
+"Ne! Tato soutěž ještě neskončila, Ystaro. Předvedu ti ukázku mé opravdové "
 "moci."
 
 #. [message]: speaker=$lich_lord.id
@@ -2670,7 +2644,7 @@ msgstr "Už se nikdy nedozvíme, co na tom pergamenu bylo."
 #. [message]: race=orc
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1625
 msgid "Chief has fallen! Flee!"
-msgstr "Náčelník padl! Prchněte, spaste se!"
+msgstr "Náčelník padnul! Prchejte!"
 
 # říká goblin...
 #. [message]: race=goblin,wolf
@@ -3001,7 +2975,7 @@ msgstr "Turg"
 #. [side]: id=Ug'lok, type=Orcish Warrior, type=Orcish Warlord
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:127
 msgid "Ug’lok"
-msgstr "Ug’lok"
+msgstr "Uglok"
 
 #. [objectives]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:197
@@ -3192,7 +3166,7 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:578
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:739
 msgid "Yesss, we remember the oath...  Sssslay them all!"
-msgstr ""
+msgstr "Ssvou příssahu ssplníme... Zzabte je všššechny!"
 
 #. [message]: speaker=Panok
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:600
@@ -3297,6 +3271,8 @@ msgid ""
 "Remember, Kaleh, it’s nasty fighting underground. We will be at a "
 "disadvantage against orcs and other things that prefer the darkness."
 msgstr ""
+"Pamatuj, Kalehu, v podzemí to nebude hezký boj. Budeme v nevýhodě proti "
+"skřetům a dalším věcem, co dávají přednost temnotě."
 
 #. [message]: speaker=Elyssa
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:780
@@ -3326,8 +3302,8 @@ msgid ""
 "Looks like he’s been squirreling away his stolen loot in this cave. Not that "
 "he had much. Must be hard times."
 msgstr ""
-"Vypadá to, že si v téhle jeskyni vršil svůj lup. Ne že by tam měl nějak moc. "
-"Musí být krušné časy."
+"Vypadá to, že si v téhle jeskyni vršil svůj lup. Ne že by tady toho měl "
+"nějak moc. Časy musí být krušné."
 
 #. [message]: speaker=unit
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:854
@@ -3529,7 +3505,7 @@ msgstr "Podzemní šarvátka"
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:96
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1109
 msgid "team_name^Trolls"
-msgstr "Trólové"
+msgstr "Trollové"
 
 #. [side]
 #. [modify_side]
@@ -3549,7 +3525,6 @@ msgstr "Prozkoumej podzemí"
 msgid "Defeat troll leaders"
 msgstr "Poraz trollí vůdce"
 
-# | msgid "Defeat Dwarf Leaders"
 #. [objective]: condition=win
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:333
 msgid "Defeat dwarf leaders"
@@ -3560,25 +3535,21 @@ msgstr "Poraz trpasličí vůdce"
 msgid "Defeat the Cloaked Figure"
 msgstr "Poraz zahalenou postavu"
 
-# | msgid "Death of Zhul"
 #. [objective]: condition=lose
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:366
 msgid "Death of Fundin"
 msgstr "Fundin zemře"
 
-# | msgid "Death of Nog"
 #. [objective]: condition=lose
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:373
 msgid "Death of Nori"
 msgstr "Nori zemře"
 
-# | msgid "Death of Zhul"
 #. [objective]: condition=lose
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:380
 msgid "Death of Thungar"
 msgstr "Thungar zemře"
 
-# | msgid "Death of Jarl"
 #. [objective]: condition=lose
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:387
 msgid "Death of Gnarl"
@@ -3919,7 +3890,7 @@ msgid ""
 "You invade our tunnels, you slaughter our people, by Griknagh we will make "
 "you pay!"
 msgstr ""
-"Zabíráte naše tunely, zabíjíte naše lidi, u Grišnáka, donutíme vás za to "
+"Zabíráte naše tunely, zabíjíte naše druhy, u Grišnáka, donutíme vás za to "
 "draze zaplatit!"
 
 #. [message]: speaker=Dwarf Leader
@@ -3954,7 +3925,7 @@ msgstr "Počkej chvilku... Prázdný pohled, špičaté uši – to musí být e
 #. [message]: speaker=second_dwarf
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1023
 msgid "Elves?! What in the nine hells are elves doing down here?"
-msgstr "Elfové!?! Co u devíti pekel dělají elfové tady dole?"
+msgstr "Elfové?! Co u devíti pekel dělají elfové tady dole?"
 
 #. [message]: speaker=Dwarf Leader
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1028
@@ -4057,8 +4028,8 @@ msgid ""
 "I knew elves couldn’t be trusted. Foolish boy, you will regret your "
 "betrayal. Taste dwarven steel!"
 msgstr ""
-"Věděl jsem, že se elfům nedá věřit. Hloupý chlapče, budeš litovat svou "
-"zradu. Okus trpasličí ocel!"
+"Věděl jsem, že se elfům nedá věřit. Hloupý chlapče, budeš své zrady litovat. "
+"Okus trpasličí ocel!"
 
 #. [message]: speaker=$explorer.id
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1129
@@ -4228,7 +4199,7 @@ msgstr ""
 #. [unit]: type=Troll Shaman, id=Thu'lok, role=ally
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1825
 msgid "Thu’lok"
-msgstr "Thu’lok"
+msgstr "Thulok"
 
 #. [unit]: type=Troll Whelp, id=Harpo, role=ally
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1840
@@ -4238,12 +4209,12 @@ msgstr "Harpo"
 #. [unit]: type=Troll Whelp, id=Groucho, role=ally
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1855
 msgid "Groucho"
-msgstr "Groucho"
+msgstr "Groučo"
 
 #. [unit]: type=Troll Whelp, id=Chico, role=ally
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1870
 msgid "Chico"
-msgstr "Chico"
+msgstr "Čiko"
 
 #. [unit]: type=Troll Rocklobber, id=Groo, role=ally
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1886
@@ -4619,7 +4590,7 @@ msgid ""
 "The cloaked figure is gone. Still, our work is not yet done. Gather "
 "yourselves together; we must follow Zurg."
 msgstr ""
-"Ta zahalená postava je pryč; náš úkol však stále není u konce. Shromážděte "
+"Ta zahalená postava je pryč. Náš úkol však stále není u konce. Shromážděte "
 "se, musíme jít za Zurgem."
 
 #. [message]: speaker=Kaleh
@@ -4628,7 +4599,7 @@ msgid ""
 "The cloaked figure is gone. Still, our work is not yet done. Gather "
 "yourselves together; we must follow Grimnir."
 msgstr ""
-"Ta zahalená postava je pryč; náš úkol však stále není u konce. Shromážděte "
+"Ta zahalená postava je pryč. Náš úkol však stále není u konce. Shromážděte "
 "se, musíme jít za Grimnirem."
 
 #. [message]: speaker=Kaleh
@@ -4653,7 +4624,7 @@ msgstr ""
 #. [scenario]: id=06a_In_the_Tunnels_of_the_Trolls
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:10
 msgid "In the Tunnels of the Trolls"
-msgstr "Ve trollích tunelech"
+msgstr "V trollích tunelech"
 
 #. [side]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:54
@@ -4844,13 +4815,13 @@ msgid ""
 "Hah! You think you can save your friends. You are wrong. Ulg, go kill the "
 "other prisoner. We will deal with these fools."
 msgstr ""
-"Cha! Myslíte si, že dokážete zachránit vaše přátele. To se teda mýlíte. "
-"Ulgu, jdi a zabij toho druhého vězně. My se postaráme tady o ty hlupáky."
+"Cha! Myslíte si, že dokážete zachránit své přátele. To se teda mýlíte. Ulgu, "
+"jdi a zabij toho druhého vězně. My se postaráme tady o ty hlupáky."
 
 #. [message]: speaker=Ulg
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:646
 msgid "Yes master, I’ll make him suffer."
-msgstr "Ano, pane, bude VELMI trpět."
+msgstr "Ano, pane, bude velmi trpět."
 
 #. [message]: speaker=Wounded Dwarf
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:685
@@ -4991,7 +4962,7 @@ msgstr "Strážný Fénix"
 #. [message]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:1079
 msgid "That thing just won’t stay dead!"
-msgstr "Ta věc prostě nezůstane mrtvá!"
+msgstr "Ta věc prostě nemůže zůstat mrtvá!"
 
 #. [message]: role=Troll High Shaman
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:1125
@@ -5531,7 +5502,7 @@ msgstr "Neustálá ostražitost, chlapci; nepřítel může být kdekoliv!"
 #. [message]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:634
 msgid "But sir—"
-msgstr "Ale pane—"
+msgstr "Ale pane..."
 
 #. [message]: speaker=Dwarf Sergeant
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:639
@@ -6839,21 +6810,14 @@ msgstr "Připadlo mi to jako vzdálený rachot. A co je to za hřmění?"
 msgid "Troll Avenger"
 msgstr "Troll mstitel"
 
-# pův.: Přidejte se k nám ve smrti!
 #. [message]: role=avenger
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:629
-#, fuzzy
-#| msgid ""
-#| "Foul elves, you not escaped us yet. The Great Leader shall be avenged! We "
-#| "have dammed the river and soon all shall drown in its dark waters. Come "
-#| "join us in death!"
 msgid ""
 "Foul elves, you not escaped us yet. Great Leader will be avenged! We plugged "
 "river and you all drown with us!"
 msgstr ""
-"Nečistí elfové, ještě jste nám neuprchli. Velký vůdce musí být pomstěn! "
-"Přehradili jsme řeku a brzo vše utone v jejích temných vodách. Zemřete s "
-"námi!"
+"Nečistí elfové, ještě jste nám neuprchli. Velký vůdce bude pomstěn! "
+"Nasměrovali jsme sem proud řeky. Všichni se s námi utopíte!"
 
 #. [unit]: type=Dwarvish Fighter
 #. [unit]: type=Dwarvish Thunderguard
@@ -6864,7 +6828,6 @@ msgstr ""
 msgid "Dwarf Avenger"
 msgstr "Trpaslík mstitel"
 
-# pův.: Přidejte se k nám ve smrti!
 #. [message]: role=avenger
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:700
 msgid ""
@@ -6997,7 +6960,7 @@ msgid ""
 "the earth and hate everything that lives above ground. This must be an "
 "invasion! The trolls must have started the flood!"
 msgstr ""
-"Jasně, přesně jako mi kdysi říkala babička — temně šedá kůže, červené oči "
+"Jasně, přesně jako mi kdysi říkala babička: temně šedá kůže, oči červené "
 "jako korálky, nemotorné brutální hovada s mozkem velikosti vilejše. Slídí "
 "hluboko pod zemí a nenávidí všechno co žije na povrchu. Tohle je útok, musí "
 "mít prsty v té potopě!"
@@ -7027,7 +6990,7 @@ msgid ""
 "hands on. This must part of their plot. The dwarves must have started the "
 "flood!"
 msgstr ""
-"Jasně, přesně jako mi kdysi říkala babička — nízcí a zavalití, dlouhé brady; "
+"Jasně, přesně jako mi kdysi říkala babička: nízcí a zavalití, dlouhé vousy, "
 "špinaví bastardi, kteří se plíží jako chobotnice. Číhají pod zemí a "
 "vycházejí, jen když můžou krást nějaké cennosti, na které dosáhnou prackami. "
 "Tohle musí být část nějakého jejich plánu, určitě je ta potopa jejich dílo!"
@@ -7050,19 +7013,14 @@ msgstr "Cože? Elfové?"
 
 #. [message]: speaker=Bellerin
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:976
-#, fuzzy
-#| msgid ""
-#| "Yeah, just like my old grandmam used to tell us: pointy ears, pale hair, "
-#| "those shifty eyes, hearts as hard as a hermit crab’s shell. It must be an "
-#| "invasion! They must have started the flood!"
 msgid ""
 "Yeah, just like my old grandmam used to tell us: pointy ears, those shifty "
 "eyes, hearts as hard as a hermit crab’s shell. It must be an invasion! They "
 "must have started the flood!"
 msgstr ""
-"Jasně, přesně jako mi kdysi říkala babička — špičaté uši, světlé vlasy, "
-"pichlavé oči, srdce tvrdé jako ulita raka poustevníka. Tohle musí být "
-"invaze, určitě spustili povodeň!"
+"Jasně, přesně jako mi kdysi říkala babička: špičaté uši, uhýbavé oči, srdce "
+"tvrdé jako ulita raka poustevníka. Tohle musí být invaze, určitě spustili "
+"povodeň!"
 
 #. [set_variable]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:981
@@ -7112,7 +7070,7 @@ msgstr "Musí být nějaká další cesta ven. Musí!"
 #. [message]: speaker=$ally_name
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1064
 msgid "There might be, but I don’t—"
-msgstr "Možná, ano, ale nevím—"
+msgstr "Možná, ano, ale nevím..."
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1069
@@ -7804,16 +7762,12 @@ msgstr ""
 
 #. [message]: speaker=unit
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2315
-#, fuzzy
-#| msgid ""
-#| "Look, the western passage is already flooding! It must connect back "
-#| "somehow to the other tunnels."
 msgid ""
 "I think I hear the sound of rushing water down the western passage; it might "
 "already be flooding! It must connect back somehow to the other tunnels."
 msgstr ""
-"Podívejte, západní chodba už se zaplavuje! Musí být nějak spojená s "
-"ostatními tunely."
+"Myslím, že v západní chodbě slyším zvuk proudící vody. Mohla by být už "
+"zaplavená! Musí být někde nějak připojená k ostatním tunelům."
 
 #. [message]: speaker=unit
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2321
@@ -7984,7 +7938,7 @@ msgstr "Podívejte, denní světlo! Myslím že jsme se konečně dostali z jesk
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2599
 msgid "Kaleh? Zhul? I’m still stuck back here..."
-msgstr ""
+msgstr "Kalehu? Zhul? Pořád vězím tady vzadu..."
 
 #. [message]: speaker=$explorer.id
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2614
@@ -8002,7 +7956,7 @@ msgstr "Kalehu, myslím že bys měl přijít a podívat se na tohle."
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2650
 msgid "Ack, I’m surrounded by water!"
-msgstr ""
+msgstr "Ha, jsem obklopen vodou!"
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2670
@@ -8030,7 +7984,7 @@ msgstr ""
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2696
 msgid "You idiot—"
-msgstr "Idiote—"
+msgstr "Idiote..."
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2701
@@ -8639,19 +8593,13 @@ msgstr ""
 
 #. [message]: speaker=Eloh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3346
-#, fuzzy
-#| msgid ""
-#| "You were weak and foolish, but I forgive you. You must remember, Kaleh, "
-#| "that without my guidance, your people would have died out years ago. I am "
-#| "your god, and you must follow my every command."
 msgid ""
 "You were weak and foolish, but I forgive you. You must remember, Kaleh, that "
 "without my guidance, your people would have died out years ago.  Believe in "
 "me, I alone can save you."
 msgstr ""
 "Byl jsi slabý a hloupý, ale odpouštím ti. Pamatuj, Kalehu, že bez mého "
-"vedení by tvůj lid vymřel před lety. Jsem tvá bohyně, a ty musíš vyplnit "
-"všechny mé příkazy."
+"vedení by tvůj lid vymřel před lety. Věř mi, jen já vás můžu zachránit."
 
 #. [message]: speaker=Eloh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3351
@@ -8675,16 +8623,12 @@ msgstr ""
 
 #. [message]: speaker=Eloh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3361
-#, fuzzy
-#| msgid ""
-#| "Of course I am. Oh, how little you understand. Do not worry yourself with "
-#| "all those tiny questions. Come to me and all will be made clear."
 msgid ""
 "Of course I am!  Oh, how little you understand. Do not worry yourself with "
 "such distractions, come to me and all will be made clear."
 msgstr ""
-"Ovšemže jsem. Ach, jak málo toho chápeš. Nestarej se o všechny ty zbytečné "
-"otázky. Přijď za mnou a vše bude hned jasné."
+"Ovšemže jsem. Ach, jak málo toho chápeš. Nestarej se o všechny ty "
+"rozptylující myšlenky. Přijď za mnou a vše bude hned jasné."
 
 #. [unit]: type=Human Commander, id=Sergeant Durstrag
 #. [event]
@@ -8721,7 +8665,7 @@ msgid ""
 "unfortunately we found your men dead—"
 msgstr ""
 "Mé jméno je Kaleh, a to je můj lid. Přicházíme z jihu a naneštěstí jsme "
-"našli vaše muže mrtvé—"
+"našli vaše muže mrtvé..."
 
 # pův.: jestli vás nevezmu za slovo
 #. [message]: speaker=Sergeant Durstrag
@@ -8739,7 +8683,7 @@ msgstr ""
 #. [message]: speaker=$ally_name
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3392
 msgid "Well, actually they were fleeing from—"
-msgstr "No, vlastně utíkali před—"
+msgstr "No, vlastně utíkali před..."
 
 #. [message]: speaker=Sergeant Durstrag
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3404
@@ -8768,7 +8712,7 @@ msgstr ""
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3418
 msgid "Look, if you’ll just let me explain—"
-msgstr "Podívej, kdybys mě prostě nechal vysvětlit—"
+msgstr "Podívej, kdybys mě to prostě nechal vysvětlit..."
 
 #. [message]: speaker=Sergeant Durstrag
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3430
@@ -8844,12 +8788,6 @@ msgstr ""
 # vaše kosti... /znečistí/
 #. [message]: speaker=Eloh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3476
-#, fuzzy
-#| msgid ""
-#| "Kaleh, I am Eloh, bearer of the staff of Ishtar and slayer of the demon-"
-#| "god Zhangor. Do as I say! Submit to him or I will abandon your people to "
-#| "suffering and death. Your bones will litter the sand dunes, and vultures "
-#| "shall pick at your flesh. I am not a forgiving god, Kaleh."
 msgid ""
 "Kaleh, I am Eloh, bearer of the staff of Ishtar and slayer of the demon-god "
 "Zhangor. Submit to him or I shall abandon your people to suffering and "
@@ -8858,60 +8796,43 @@ msgid ""
 "desert sun."
 msgstr ""
 "Kalehu, já jsem Eloh, nositelka Ištařiny hole a ta, která zabila boha-démona "
-"Zhangora. Udělej to, co ti říkám! Vzdej se mu nebo opustím tvůj lid a "
-"zanechám jej napospas utrpení a smrti. Vaše kosti posypou písečné duny a "
-"supi se budou krmit vaším masem. Nejsem promíjející bohyně, Kalehu."
+"Zhangora. Vzdej se mu, nebo opustím tvůj lid a zanechám jej napospas utrpení "
+"a smrti. Vaše kosti posypou písečné duny a supi se budou krmit vaším masem. "
+"Jsem dobrá bohyně, Kalehu, ale neodpouštím víc než ostré pouštní slunce."
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3482
-#, fuzzy
-#| msgid ""
-#| "Then kill me if you must, but I will not give myself over to those who "
-#| "threaten me and my people. I have not come through peril and darkness "
-#| "just to surrender to a man such as you."
 msgid ""
 "Then kill me if you must, but I will not give myself over to those who "
 "threaten me and my people. I have not come through peril and darkness just "
 "to surrender to one such as you."
 msgstr ""
-"Pak mě zabij, jestli musíš, ale nevzdám se tomu, kdo vyhrožuje mi a mému "
-"lidu. Neprošel jsem utrpením a temnotou jenom proto, abych se vzdal takovému "
-"člověku jako jsi ty."
+"Pak mě zabij, jestli musíš. Ale nevzdám se tomu, kdo vyhrožuje mně a mému "
+"lidu. Neprošel jsem utrpením a temnotou jenom proto, abych se vzdal někomu "
+"takovému, jako jsi ty."
 
 #. [message]: speaker=Sergeant Durstrag
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3487
-#, fuzzy
-#| msgid ""
-#| "Your dare defy me?! All who refuse to submit to the authority of the Iron "
-#| "Council shall be killed. By the Dark Lady, I shall not put up with this "
-#| "bickering any longer. To battle, men! Drive those heathens back into the "
-#| "caves!"
 msgid ""
 "You dare defy me?! All who refuse to submit to the authority of the Iron "
 "Council shall be killed. By the Dark Lady, I shall not put up with this "
 "bickering any longer. To battle, men! Drive those heathens back into the "
 "caves!"
 msgstr ""
-"Ty si troufáš pohrdat mnou?!? Každý, kdo se odmítne podřídit autoritě "
-"Železné rady, má být zabit. U Temné paní, nebudu se obtěžovat s tímhle "
-"dohadováním ani o chvíli déle. Muži, do boje! Zatlačte ty neznabohy zpátky "
-"do jeskyní!"
+"Ty se mi opovažuješ vzdorovat?! Každý, kdo se odmítne podřídit autoritě "
+"Železné rady, má být zabit. U Temné paní, nebudu se už zdržovat tímhle "
+"hašteřením. Muži, do boje! Zatlačte ty neznabohy zpátky do jeskyní!"
 
 #. [message]: speaker=Eloh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3522
-#, fuzzy
-#| msgid ""
-#| "You disappoint me, Kaleh. You are weak, and not worthy of my guidance. Do "
-#| "what you will, but this is not over. You may be the appointed leader of "
-#| "your people but I am your god, and I will not let you usurp my authority."
 msgid ""
 "You disappoint me, Kaleh. You are weak, and not worthy of my guidance...  Do "
 "as you like, but know that while you may be the appointed leader of your "
 "people, I am your god, and you defy me at your peril!"
 msgstr ""
-"Znechucuješ mne, Kalehu. Jsi slabý a nehoden mého vedení. Dělej si co chceš, "
-"ale toto není konec. Můžeš být zvoleným vůdcem svého lidu, ale já jsem tvá "
-"bohyně a nenechám tě přivlastňovat si mou autoritu."
+"Znechucuješ mne, Kalehu. Jsi slabý a nehoden mého vedení... Dělej, jak "
+"myslíš. Ale věz, že i když můžeš být ustanoveným vůdcem svého lidu, vaší "
+"bohyní jsem já a ty se mi vzpíráš na vlastní nebezpečí!"
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3533
@@ -8927,7 +8848,7 @@ msgstr ""
 #. [message]: speaker=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3538
 msgid "Kaleh, would you mind telling me what in Uria’s name is going on."
-msgstr "Kalehu, nevadilo by ti říct mi, co u Urie se tu děje?"
+msgstr "Kalehu, nevadilo by ti říct mi, co se tu u Urie děje?"
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3543
@@ -8936,7 +8857,7 @@ msgid ""
 "I’d better head back to the outpost and rally our troops. I fear a whole lot "
 "of hurt is going to be coming up through those hills very soon."
 msgstr ""
-"Nemáme čas. Právě teď se musíme připravit na další bitvu. Raději bych se měl "
+"Není čas. Právě teď se musíme připravit na další bitvu. Raději bych se měl "
 "vrátit do pevnůstky a připravit naše jednotky. Obávám se, že velmi brzy "
 "vstoupí do těchto kopců velmi mnoho bolesti."
 
@@ -8944,7 +8865,7 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3548
 msgid ""
 "Well, now we’re really in for it. I hope you know what you’re doing, Kaleh."
-msgstr "No, teď jsme v tom tedy až po uši. Doufám že víš co děláš, Kalehu."
+msgstr "No, teď jsme v tom tedy až po uši. Doufám, že víš, co děláš, Kalehu."
 
 #. [message]: speaker=Grog
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3557
@@ -9416,7 +9337,7 @@ msgstr "Uběhlo několik hodin..."
 #. [event]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4426
 msgid "Jezhar"
-msgstr ""
+msgstr "Jezhar"
 
 #. [message]: speaker=Dummy Unit7
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4430
@@ -9424,6 +9345,9 @@ msgid ""
 "Eastern scouts, reporting back!  If you like sand and hot dust, there's "
 "plenty more out there!  No water, or signs of others, we had to turn back."
 msgstr ""
+"Východní zvědové se hlásí zpět! Pokud máte rádi písek a horký prach, je ho "
+"tam požehnaně! Nenašli jsme žádnou vodu ani známky po výskytu jiných tvorů. "
+"Museli jsme se otočit a vrátit se."
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4435
@@ -9431,11 +9355,13 @@ msgid ""
 "No shame in that, Jezhar.  Of all the scouts, only Tanstafaal and Nym have "
 "yet to return."
 msgstr ""
+"Stejně dobrá práce, Jezhare. Ze všech skupin zvědů se nevrátili už jen "
+"Tanstafaal a Nym."
 
 #. [message]: speaker=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4440
 msgid "And that has me worried.  What if-"
-msgstr ""
+msgstr "A to mě znepokojuje. Co když..."
 
 #. [message]: speaker=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4465
@@ -9494,19 +9420,14 @@ msgstr "Nesnaž se mu to vysvětlit, Esanoo. Budeme jim to muset ukázat."
 
 #. [message]: speaker=Esanoo
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4552
-#, fuzzy
-#| msgid ""
-#| "It’s not important. What’s important is that I am an emissary from one "
-#| "who much desires to speak with you, Kaleh. Despite the danger, my master "
-#| "sent me and my brethren to scour the dry land searching for you."
 msgid ""
 "It’s not important. What’s important is that I am an emissary from one who "
 "much desires to speak with you, Kaleh. Despite the danger, our wise leader "
 "sent me and my brethren to scour the dry land searching for you."
 msgstr ""
 "To není důležité. Důležité je, že jsem vyslanec někoho, kdo si velmi přeje s "
-"tebou mluvit, Kalehu. Navzdory nebezpečí poslala má paní mne a mé bratry "
-"prohledat suchou zemi a najít tě."
+"tebou mluvit, Kalehu. Navzdory nebezpečí poslala naše moudrá vůdkyně mne a "
+"mé bratry prohledat suchou zemi a najít tě."
 
 #. [message]: speaker=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4557
@@ -9529,20 +9450,14 @@ msgstr "A proč bychom měli věřit čemukoliv co říkáš?"
 
 #. [message]: speaker=Esanoo
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4572
-#, fuzzy
-#| msgid ""
-#| "My master thought you might be suspicious. She said that what we must "
-#| "talk with you about concerns the fate of your people. Apparently it "
-#| "concerns ‘Yechnagoth’ and ‘Zhangor’. She said that you would understand, "
-#| "Kaleh."
 msgid ""
 "Our leader thought you might be suspicious. She said that what we must talk "
 "with you about concerns the fate of your people. Apparently it concerns "
 "‘Yechnagoth’ and ‘Zhangor’. She said that you would understand, Kaleh."
 msgstr ""
-"Má paní očekávala, že budeš podezřívavý. Říkala, že to, co s tebou musíme "
-"projednat, se týká osudu tvého lidu. A taky ještě říkala, že se to týká "
-"„Yechnagoth“ a „Zhangora“. Prý to určitě pochopíš, Kalehu."
+"Naše vůdkyně očekávala, že budeš podezřívavý. Říkala, že to, co s tebou "
+"musíme projednat, se týká osudu tvého lidu. A taky ještě říkala, že se to "
+"týká „Yechnagoth“ a „Zhangora“. Prý to určitě pochopíš, Kalehu."
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4577
@@ -9551,19 +9466,14 @@ msgstr "Hmmmm... Ano, myslím, že ano. Nevím proč, ale věřím ti."
 
 #. [message]: speaker=Esanoo
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4582
-#, fuzzy
-#| msgid ""
-#| "Thank you. Now I have a boon to ask of you. Our instructions were to find "
-#| "you and to bring you and your people to meet with my master. The problem "
-#| "is that I don’t know where she is hiding."
 msgid ""
 "Thank you, Kaleh. Now I have a favor to ask of you. Our instructions were to "
 "find you and to bring you and your people to meet with our wise leader. The "
 "problem is that I don’t know where she is hiding."
 msgstr ""
-"Děkuji. Teď tě musím o něco poprosit. Naše instrukce byly najít tě a dovést "
-"tě i s tvým lidem k setkání naší paní. Problém je v tom, že nevím, kde se "
-"skrývá."
+"Děkuji ti, Kalehu. Teď tě musím o něco poprosit. Naše instrukce byly najít "
+"tě a dovést tě i s tvým lidem na schůzku s naší moudrou vůdkyní. Problém je "
+"v tom, že nevím, kde se skrývá."
 
 #. [message]: speaker=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4587
@@ -9572,19 +9482,6 @@ msgstr "Ty nevíš, kde máš hledat svou paní?"
 
 #. [message]: speaker=Esanoo
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4592
-#, fuzzy
-#| msgid ""
-#| "It’s complicated, and I don’t know how much I am allowed to tell you. My "
-#| "people are fighting a desperate war against... against a powerful foe. "
-#| "Many times our enemy has tried to assassinate my master. My master "
-#| "worried that her presence was a danger to the rest of my kind. So right "
-#| "after she sent us on our mission she went into hiding. I am the youngest "
-#| "member of our group, and so I wasn’t told the location. You must "
-#| "understand, there are spies everywhere. Only the leaders of our group "
-#| "knew, but the rest of them were all captured by those foul humans. They "
-#| "are being held in the settlement to the north. If we are to have any "
-#| "chance of finding my master, we must first rescue them. I would do it "
-#| "myself, but..."
 msgid ""
 "It’s complicated, and I don’t know how much I am allowed to tell you. My "
 "people are fighting a desperate war against... against a powerful foe. Many "
@@ -9599,38 +9496,33 @@ msgid ""
 msgstr ""
 "Je to složité a nevím, kolik vám toho vlastně mohu říci. Můj lid bojuje "
 "zoufalou válku proti... mocnému nepříteli. Mnohokrát se pokusil zavraždit "
-"mou paní. Obávala se, že její přítomnost bude nebezpečím pro zbytek mého "
-"druhu. Takže hned poté, co nás vyslala, se někde ukryla. Jsem nejmladší člen "
-"naší skupiny, neřekli mi, kde ji mám hledat. Pochopte, všude jsou zvědové. "
-"Jen vůdcové mé skupiny věděli, kde je, ale jejich zbytek zajali ti špinaví "
-"lidé. Drží je v osadě na severu. Pokud se chceme pokusit najít mou paní, "
-"musíme je nejdříve osvobodit. Udělal bych to sám, ale..."
+"naší moudrou vůdkyni. Obávala se, že její přítomnost bude nebezpečím pro "
+"zbytek z nás. Takže hned poté, co nás vyslala, se někde ukryla. Jsem "
+"nejmladší člen naší skupiny, neřekli mi, kde ji mám hledat. Pochopte, všude "
+"jsou zvědové. Jen vůdcové mé skupiny věděli, kde je. Ale všechy, co přežili, "
+"zajali ti špinaví lidé. Drží je v osadě na severu. Pokud se chceme pokusit "
+"najít naši moudrou vůdkyni, musíme je nejdříve osvobodit. Udělal bych to "
+"sám, ale..."
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4597
-#, fuzzy
-#| msgid ""
-#| "It would be suicide for you to try to rescue them alone. Of course we "
-#| "will help you."
 msgid ""
 "...It would be suicide for you to try to rescue them alone. Of course we "
 "will help you!"
 msgstr ""
-"Byly by to sebevražda, kdyby ses pokoušel zachránit je sám. Samozřejmě, že "
-"ti pomůžeme."
+"... byla by to sebevražda, pokud by ses o to sám pokusil. Samozřejmě, že ti "
+"pomůžeme!"
 
 #. [message]: speaker=Esanoo
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4602
-#, fuzzy
-#| msgid "Thank you. I am not very good at fighting on the dry ground."
 msgid "Thank you, Nym. I am not very good at fighting on the dry ground."
-msgstr "Děkuji. Nedokážu dost dobře bojovat na suché zemi."
+msgstr "Děkuji ti, Nym. Nedokážu dost dobře bojovat na suché zemi."
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4607
 msgid ""
 "With you back, Nym, the only scouts yet to return are Tanstafaal's group."
-msgstr ""
+msgstr "Teď, když ses vrátila, Nym, postrádáme už jen Tanstafaalovu skupinu."
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4612
@@ -9644,17 +9536,12 @@ msgstr ""
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4617
-#, fuzzy
-#| msgid ""
-#| "Things are coming to a head. I’m worried about Tanstafaal and your "
-#| "merfolk friends. Time is of the essence, so let’s move out as soon as "
-#| "possible."
 msgid ""
 "Things are coming to a head, Tanstafaal and our new friends are in trouble.  "
 "Time is of the essence, so let’s move out as soon as possible."
 msgstr ""
-"Události se dostávají do pohybu. Bojím se o Tanstafaala a tvé mořské "
-"přátele. Čas je klíčový, takže se vydejme na cestu co nejdřív."
+"Události se dostávají do pohybu. Tanstafaal a naši noví přátelé jsou v "
+"nebezpečí. Čas je klíčový, takže se vydejme na cestu co nejdřív."
 
 # Současný překlad se vztahuje k bojům s rebelujícími elfy, ale je možný i "doslovný" výklad, že to jsou takové jatka, že krev teče úplnými potoky - a ona je opravdu hustší než voda.
 #. [scenario]: id=09_Blood_is_Thicker_Than_Water
@@ -9784,13 +9671,6 @@ msgstr ""
 
 #. [message]: speaker=Esanoo
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:429
-#, fuzzy
-#| msgid ""
-#| "My master wanted to make sure that if one of us was captured, we couldn’t "
-#| "betray her location. So she didn’t tell us where she was, but she taught "
-#| "us a simple spell to divine her hiding place. But it requires three "
-#| "merfolk to cast. So in order to find her, we must rescue at least two of "
-#| "my people. Though I hope we can save all of them."
 msgid ""
 "Our leader wanted to make sure that if one of us was captured, we couldn’t "
 "betray her location. So she didn’t tell us where she was, but she taught us "
@@ -9798,9 +9678,9 @@ msgid ""
 "cast. So in order to find her, we must rescue at least two of my people. "
 "Though I hope we can save all of them."
 msgstr ""
-"Moje paní se chtěla ujistit, že když jednoho z nás zajmou, nebudeme moci "
-"prozradit její úkryt. Proto nám neřekla kde se skrývá, ale naučila nás "
-"jednoduché zaklínadlo, které nám odhalí to místo. Ale je k němu zapotřebí "
+"Naše vůdkyně si chtěla být jistá, že když jednoho z nás zajmou, nebudeme "
+"moci prozradit její úkryt. Proto nám neřekla, kde se skrývá, ale naučila nás "
+"jednoduché zaklínadlo, které nám to místo odhalí. Ale je k němu zapotřebí "
 "tří mořských lidí. Takže abychom ji našli, musíme zachránit alespoň dva z "
 "mých společníků. I když doufám, že je dokážeme zachránit všechny."
 
@@ -9811,15 +9691,6 @@ msgstr "Říkal jsi, že kromě tebe je v tvé skupině jen pět dalších?"
 
 #. [message]: speaker=Esanoo
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:437
-#, fuzzy
-#| msgid ""
-#| "We originally numbered much more, but we were ambushed by a band of naga "
-#| "on the way here. Half of our force held off the naga while the rest of us "
-#| "fled. By the time we got to these shores, only six of us were left. But "
-#| "for the grace of the Sea God I managed to hide when the rest of my group "
-#| "was ambushed and captured. I doubt that they have been broken yet, but I "
-#| "do not know how long they can last. Remember, without three of us, you "
-#| "will not be able to find my master."
 msgid ""
 "We originally numbered much more, but we were ambushed by a band of naga on "
 "the way here. Half of our force held off the naga while the rest of us fled. "
@@ -9829,12 +9700,12 @@ msgid ""
 "know how long they can last. Remember, without three of us, you will not be "
 "able to find our leader."
 msgstr ""
-"Původně nás bylo mnohem více, ale na cestě sem nás překvapila smečka nág. "
-"Poloviny našich sil zadržovala nágy, zatímco zbytek uprchl. Když jsme se "
-"přiblížili tomuto pobřeží, zbývalo nás již jen šest. Ale milostí Boha moří "
-"jsem se stihl schovat, když přepadli zbytek mé skupiny a zajali jej. "
-"Nemyslím že je dokázali zlomit, ale také nevím, jak dlouho se udrží. "
-"Pamatujte, bez tří z nás nedokážete najít mou paní."
+"Původně nás bylo mnohem více, ale na cestě sem nás překvapila skupina nág. "
+"Polovina našich sil zadržovala nágy, zatímco zbytek uprchl. Když jsme se "
+"přiblížili tomuto pobřeží, zbývalo nás již jen šest. Jen díky milosti boha "
+"moří jsem se stihl schovat, když přepadli zbytek mé skupiny a zajali jej. "
+"Nemyslím, že by je zatím dokázali zlomit, ale také nevím, jak dlouho se "
+"udrží. Pamatujte, bez tří z nás nedokážete najít naši vůdkyni."
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:441
@@ -10152,17 +10023,12 @@ msgstr "Yantili"
 
 #. [message]: speaker=Yantili
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:921
-#, fuzzy
-#| msgid ""
-#| "Thank you for rescuing me. I never imagined that we would actually be "
-#| "able to find you elves. Our master was right after all. But more of that "
-#| "later..."
 msgid ""
 "Thank you for rescuing me. I never imagined that we would actually be able "
 "to find you elves. Our leader was right after all. But more of that later..."
 msgstr ""
 "Díky za záchranu. Nikdy bych nebyl věřil, že vás elfy dokážeme najít. Naše "
-"paní měla nakonec pravdu. Ale o tom později..."
+"vůdkyně měla nakonec pravdu. Ale o tom později..."
 
 #. [unit]: type=Mermaid Priestess, id=Il-tian
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:944
@@ -10229,12 +10095,6 @@ msgstr ""
 
 #. [message]: speaker=We-jial
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:1053
-#, fuzzy
-#| msgid ""
-#| "Do not worry yourself, now that I am free all will be set to rights. It "
-#| "is not our mission to defeat all the evil in this world. Protecting the "
-#| "elves is most important. We must bring them to our master; all else is "
-#| "secondary."
 msgid ""
 "Do not worry yourself, now that I am free all will be set to rights. It is "
 "not our mission to defeat all the evil in this world. Protecting the elves "
@@ -10242,7 +10102,7 @@ msgid ""
 msgstr ""
 "Nestarej se, teď když jsem volná, vše bude uvedeno do pořádku. Naším úkolem "
 "není porazit všechno zlo tohoto světa. Ochrana elfů je důležitější. Musíme "
-"je přivést za naší paní; vše ostatní jde stranou."
+"je přivést za naší vůdkyní. Vše ostatní je vedlejší."
 
 #. [message]: speaker=$explorer.id
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:1057
@@ -10348,6 +10208,8 @@ msgstr ""
 msgid ""
 "$(16 - $turn_number) turns remain to free $number_merfolk_caged| merfolk"
 msgstr ""
+"$(16 - $turn_number) kol zbývá k osvobození $number_merfolk_caged| mořských "
+"lidí"
 
 #. [message]: speaker=Darius
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:1324
@@ -10450,10 +10312,8 @@ msgstr ""
 
 #. [message]: speaker=Esanoo
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:1469
-#, fuzzy
-#| msgid "They are all dead. We were too late. Forgive me, master!"
 msgid "They are all dead. We were too late. Forgive me, wise leader!"
-msgstr "Jsou všichni mrtví. Nestihli jsme to. Promiň, pane!"
+msgstr "Jsou všichni mrtví. Nestihli jsme to. Odpusť mi, moudrá vůdkyně!"
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:1473
@@ -10796,16 +10656,12 @@ msgstr ""
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:1824
-#, fuzzy
-#| msgid ""
-#| "I have followed you this far Kaleh, I will not abandon you now. But I "
-#| "admit that my faith is shaken. If that is not our god, than what is it?"
 msgid ""
 "I have followed you this far Kaleh, I will not abandon you now. But I admit "
 "that my faith is shaken. If that is not our god, then what is it?"
 msgstr ""
-"Dosud jsem tě následovala, Kalehu, neopustím tě teď. Ale musím přiznat, že "
-"má víra je otřesena. Pokud to není naše bohyně, co to potom je?"
+"Dosud jsem tě následovala, Kalehu, neopustím tě ani teď. Ale musím přiznat, "
+"že má víra je otřesena. Pokud to není naše bohyně, co to potom je?"
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:1828
@@ -10822,7 +10678,7 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:1832
 msgid ""
 "Forgive me, Kaleh. I do not know what to believe. I... I have to ponder this."
-msgstr "Promiň, Kalehu. Nevím, čemu mám věřit. Já... musím si to promyslet."
+msgstr "Promiň, Kalehu. Nevím, čemu mám věřit. Já... si to musím promyslet."
 
 #. [message]: speaker=Grog
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:1839
@@ -11401,6 +11257,11 @@ msgid ""
 "pressing and our leader lives too far out in the waters to make this voyage "
 "twice."
 msgstr ""
+"Získali jsme nějaké znalosti o řízení lodí, když jsme špehovali lidi, a máme "
+"nějaké magické dovednosti pro ovládání větrů. Jakmile vyjedeme na otevřené "
+"moře, měla by být naše cesta rychlá a bezpečná. Kromě toho nás tlačí čas. "
+"Naše vůdkyně žije příliš daleko ve vodách, abychom zvládli tu cestu tam i "
+"zpátky."
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2501
@@ -11409,9 +11270,9 @@ msgid ""
 "merfolk. If they believe that they can transport us safely across the "
 "waters, then I will put my life in their hands."
 msgstr ""
-"Už jsme byli na mnoha podivných místech a přežili. Věřím mořskému lidu; "
-"jestli si myslí, že nás dokáží bezpečně přepravit přes vlny, svěřím do "
-"jejich rukou svůj život."
+"Už jsme byli na mnoha podivných místech a přežili. Věřím mořskému lidu. "
+"Jestli si myslí, že nás dokáží bezpečně přepravit přes vlny, svěřím jim do "
+"rukou svůj život."
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2505
@@ -11582,17 +11443,11 @@ msgstr ""
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:165
 msgid "This is—"
-msgstr "Toto je—"
+msgstr "Toto je..."
 
 # pův.: A musím říct, že $intl_ally_name mě svými činy přesvědčil, že ???.
 #. [message]: speaker=Melusand
 #: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:178
-#, fuzzy
-#| msgid ""
-#| "No, you don’t have to introduce yourselves. I already know who you are "
-#| "and why you have been journeying all this way. And I must say, Grog, that "
-#| "your recent actions and indeed your presence with these fine folk is a "
-#| "credit to your race."
 msgid ""
 "No, you don’t have to introduce yourselves. I already know who you are and "
 "why you have been journeying all this way. And I must say, Grog, that your "
@@ -11600,9 +11455,8 @@ msgid ""
 "your people."
 msgstr ""
 "Ne, nemusíte se představovat. Vím již, kdo jste a proč jste putovali až sem. "
-"A musím říct, že Grogovy dosavadní činy a nakonec i jeho přítomnost ve "
-"společnosti tohoto ušlechtilého lidu pomohly jeho rase vydobýt si u mne "
-"dobrou pověst."
+"A musím říct, Grogu, že tvé nedávné činy a tvé setrvávání ve společnosti "
+"tohoto ušlechtilého lidu dělají dobrý dojem o celém tvém národě."
 
 #. [message]: speaker=Grog
 #: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:183
@@ -11611,12 +11465,6 @@ msgstr "Grog říká díky tobě."
 
 #. [message]: speaker=Melusand
 #: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:189
-#, fuzzy
-#| msgid ""
-#| "No, you don’t have to introduce yourselves. I already know who you are "
-#| "and why you have been journeying all this way. And I must say, Nog, that "
-#| "your recent actions and indeed your presence with these fine folk is a "
-#| "credit to your race."
 msgid ""
 "No, you don’t have to introduce yourselves. I already know who you are and "
 "why you have been journeying all this way. And I must say, Nog, that your "
@@ -11624,9 +11472,8 @@ msgid ""
 "your people."
 msgstr ""
 "Ne, nemusíte se představovat. Vím již, kdo jste a proč jste putovali až sem. "
-"A musím říct, že Nogoy dosavadní činy a nakonec i jeho přítomnost ve "
-"společnosti tohoto ušlechtilého lidu pomohly jeho rase vydobýt si u mne "
-"dobrou pověst."
+"A musím říct, Nogu, že tvé nedávné činy a tvé setrvávání ve společnosti "
+"tohoto ušlechtilého lidu dělají dobrý dojem o celém tvém národě."
 
 #. [message]: speaker=Nog
 #: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:194
@@ -11635,12 +11482,6 @@ msgstr "Nog říká díky tobě."
 
 #. [message]: speaker=Melusand
 #: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:200
-#, fuzzy
-#| msgid ""
-#| "No, you don’t have to introduce yourselves. I already know who you are "
-#| "and why you have been journeying all this way. And I must say, Rogrimir, "
-#| "that your recent actions and indeed your presence with these fine folk is "
-#| "a credit to your race."
 msgid ""
 "No, you don’t have to introduce yourselves. I already know who you are and "
 "why you have been journeying all this way. And I must say, Rogrimir, that "
@@ -11648,9 +11489,8 @@ msgid ""
 "well for your people."
 msgstr ""
 "Ne, nemusíte se představovat. Vím již, kdo jste a proč jste putovali až sem. "
-"A musím říct, že dosavadní činy Rogrimira a nakonec i jeho přítomnost ve "
-"společnosti tohoto ušlechtilého lidu pomohly jeho rase vydobýt si u mne "
-"dobrou pověst."
+"A musím říct, Rogrimire, že tvé nedávné činy a tvé setrvávání ve společnosti "
+"tohoto ušlechtilého lidu dělají dobrý dojem o celém tvém národě."
 
 #. [message]: speaker=Rogrimir
 #. [message]: speaker=Jarl
@@ -11661,12 +11501,6 @@ msgstr "Děkuji ti za tvou laskavost."
 
 #. [message]: speaker=Melusand
 #: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:211
-#, fuzzy
-#| msgid ""
-#| "No, you don’t have to introduce yourselves. I already know who you are "
-#| "and why you have been journeying all this way. And I must say, Jarl, that "
-#| "your recent actions and indeed your presence with these fine folk is a "
-#| "credit to your race."
 msgid ""
 "No, you don’t have to introduce yourselves. I already know who you are and "
 "why you have been journeying all this way. And I must say, Jarl, that your "
@@ -11674,9 +11508,8 @@ msgid ""
 "your people."
 msgstr ""
 "Ne, nemusíte se představovat. Vím již, kdo jste a proč jste putovali až sem. "
-"A musím říct, že Jarlovy dosavadní činy a nakonec i jeho přítomnost ve "
-"společnosti tohoto ušlechtilého lidu pomohly jeho rase vydobýt si u mne "
-"dobrou pověst."
+"A musím říct, Jarle, že tvé nedávné činy a tvé setrvávání ve společnosti "
+"tohoto ušlechtilého lidu dělají dobrý dojem o celém tvém národě."
 
 #. [message]: speaker=Melusand
 #: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:224
@@ -11720,18 +11553,14 @@ msgstr "Čí špehové?"
 
 #. [message]: speaker=Melusand
 #: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:251
-#, fuzzy
-#| msgid ""
-#| "Perhaps I should start at the beginning. Make yourselves comfortable, for "
-#| "this may take a while. I want to tell you a tale, it is a story of the "
-#| "fall of what you refer to as ‘The Golden Age’."
 msgid ""
 "Perhaps I should start at the beginning, for that is a good place to start.  "
 "Make yourselves comfortable, this may take a while. I want to tell you a "
 "tale, it is a story of the fall of what you refer to as ‘The Golden Age’."
 msgstr ""
-"Nejspíš bych měla začít od začátku. Udělejte si pohodlí, možná bude to "
-"chvíli trvat. Chci vám povědět příběh pádu toho, co vy nazýváte „Zlatý věk“."
+"Nejspíš bych měla začít od začátku, protože tak to bývá nejlepší. Udělejte "
+"si pohodlí, možná to bude chvíli trvat. Chci vám povědět příběh pádu toho, "
+"co vy nazýváte „Zlatým věkem“."
 
 # lepší překlad názvu?
 #. [message]: speaker=Melusand
@@ -11753,20 +11582,6 @@ msgstr "Ano, o té době víme."
 
 #. [message]: speaker=Melusand
 #: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:268
-#, fuzzy
-#| msgid ""
-#| "This will go much faster if you don’t interrupt me. Now, as I was saying "
-#| "the Empire of Wesnoth was very learned in the magical arts and had vast "
-#| "repositories of knowledge. Back then there was only one sun in the sky, "
-#| "the sun you call Sela. But the king decreed that he would raise a second "
-#| "sun into the heavens, to lengthen their days and shorten the darkness. "
-#| "All the mages, sorcerers and wise men came together and cast a mountain "
-#| "into the sky and made it glow as bright as the sun. They sent this second "
-#| "sun, the one you call Naia, hurtling through the sky so that only a few "
-#| "hours of darkness remained each night. Though some had called the attempt "
-#| "foolish, it was a resounding success and stood as a tribute to the power "
-#| "and might of the humans. The golden age glowed brighter than ever and the "
-#| "many believed that they had dispelled evil and darkness forever."
 msgid ""
 "This will go much faster if you don’t interrupt me. Now, as I was saying, "
 "the Empire of Wesnoth was very learned in the magical arts and had vast "
@@ -11782,35 +11597,19 @@ msgid ""
 "they had dispelled evil and darkness forever."
 msgstr ""
 "Půjde to daleko rychleji, když mne nebudete přerušovat. Jak jsem říkala, "
-"Říše Wesnoth byla velmi pokročilá v umění magie a měla hluboké studnice "
-"vědomostí. Tehdy dávno bylo na obloze jenom jedno slunce, to, které nazýváte "
-"Sela. Ale král rozhodl, že nechá vynést do nebes druhé slunce, aby "
-"prodloužil dny a zkrátil temnotu. Všichni mágové, čarodějové, zaklínači a "
-"mudrci se sešli, vynesli kouzlem do nebe horu a nechali ji zářit tak jasně "
-"jako slunce. Vyslali toto druhé slunce - vy mu říkáte Naia - po obloze tak, "
-"že z noci zbývalo vždy jen několik hodin. Ačkoliv někteří tento pokus "
-"odsuzovali, stal se skvělým úspěchem a znamením síly a moci lidí. Zlatý věk "
-"zářil jasněji než kdy předtím a mnozí věřili, že zlo a temnota byly navěky "
-"poraženy."
+"říše Wesnoth byla velmi pokročilá v umění magie a disponovala obsáhlými "
+"zdroji vědomostí. Tehdy dávno bylo na obloze jenom jedno slunce, to, které "
+"nazýváte Sela. Ale král rozhodl, že nechá vynést do nebes druhé slunce, aby "
+"prodloužil dny a zkrátil temnotu. Všichni mágové, čarodějové a mudrci se "
+"sešli, vynesli kouzlem do nebe horu a nechali ji zářit tak jasně jako "
+"slunce. Vyslali toto druhé slunce – vy mu říkáte Naia – po obloze tak, že z "
+"noci zbývalo vždy jen několik hodin. Ačkoliv někteří tento pokus odsuzovali "
+"jako bláhovost, stal se skvělým úspěchem a znamením síly a moci lidí. Zlatý "
+"věk zářil jasněji než kdy předtím a mnozí věřili, že zlo a temnota byly "
+"navěky poraženy."
 
-# 1) následovník? potomek? ...?
-# 2) centrum Wesnothu - možná to jde vylepšit
 #. [message]: speaker=Melusand
 #: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:273
-#, fuzzy
-#| msgid ""
-#| "But with their prosperity and power, over the generations the humans grew "
-#| "arrogant. One day a young descendant of the original king decreed that "
-#| "darkness should be abolished altogether from the land, so that light and "
-#| "goodness would shine forth everywhere. But the people had grown lazy and "
-#| "complacent and the ranks of mages who still trained hard to harness the "
-#| "magical arts had decreased greatly. Still the king believed he was all-"
-#| "powerful and would not listen to the mages’ protests. So, seeking to "
-#| "duplicate their ancestors’ previous success, the mages tried to lift a "
-#| "second mountain into the sky. But a great evil befell them that day; "
-#| "their power failed and the mountain crashed down onto the humans' "
-#| "capital, crushing all within it. In an instant the center of the Empire "
-#| "of Wesnoth was utterly destroyed."
 msgid ""
 "But with their prosperity and power, over the generations the humans grew "
 "arrogant. One day a young descendant of the original king decreed that "
@@ -11826,14 +11625,14 @@ msgid ""
 "destroyed."
 msgstr ""
 "S prosperitou a mocí rostla po generace i arogance lidí. Jednoho dne mladý "
-"následovník původního krále rozhodl, že temnota by měla být zcela odstraněna "
-"ze země, tak, že světlo a dobro bude svítit na vše. Ale lidé se stali línými "
-"a samolibými a řady mágů, kteří tvrdě trénovali, aby ovládli umění magie, "
-"značně prořídly. I tak král věřil, že je všemocný a nepopřál sluchu "
-"protestům mágů. Tak se mágové, pokoušejíc se zopakovat dřívější úspěch "
-"jejich předků, pokusili pozvednout druhou horu na oblohu. Ale toho dne na ně "
-"padlo velké zlo; jejich síla selhala a hora dopadla na lidské hlavní město, "
-"ničíc vše. V okamžiku nezbylo z centra Wesnothu nic než pustá zkáza."
+"následovník původního krále rozhodl, že temnota by měla být ze země zcela "
+"odstraněna, aby vše bylo osvěcováno světlem a dobrem. Ale lidé se stali "
+"línými a samolibými a řady mágů, kteří tvrdě trénovali, aby ovládli umění "
+"magie, značně prořídly. I tak král věřil, že je všemocný a nepopřál sluchu "
+"protestům mágů. Tak se mágové, snažíce se zopakovat dřívější úspěch svých "
+"předků, pokusili pozvednout na oblohu druhou horu. Ale toho dne je zasáhlo "
+"velké zlo. Jejich síla selhala a hora dopadla na lidské hlavní město, ničíc "
+"vše v něm. V okamžiku nezbylo ze středobodu Wesnothu nic než pustá zkáza."
 
 #. [message]: speaker=Melusand
 #: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:278
@@ -11843,10 +11642,10 @@ msgid ""
 "drawn into the conflicts, Orcs and Trolls spread forth from the dark places, "
 "and chaos and darkness swallowed the lands."
 msgstr ""
-"Král i celá jeho rodina zahynuli a drobní pánové brzo rozervali říši na "
-"kusy, jak známé země upadaly do chaosu. Elfové a trpaslíci se zapletli do "
-"konfliktů, skřeti a trollové se rozlezli ze svých temných úkrytů; země "
-"pohltily chaos a temnota."
+"Král i celá jeho rodina zahynuli. A jak známé země upadaly do chaosu, "
+"rozervali váleční lordi z méně významných šlechtických rodů brzy říši na "
+"kusy. Elfové a trpaslíci se zapletli do konfliktů, skřeti a trollové se "
+"rozlezli ze svých temných úkrytů. Země pohltily chaos a temnota."
 
 #. [message]: speaker=Melusand
 #: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:283
@@ -12239,7 +12038,7 @@ msgstr ""
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:471
 msgid "This entire journey has been based on a lie—"
-msgstr "Celá tahle cesta byla založená na lži—"
+msgstr "Celá tahle cesta byla založená na lži..."
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:477
@@ -12274,7 +12073,7 @@ msgid ""
 "Yechnagoth has already won."
 msgstr ""
 "Mnozí, kteří prošli temnými časy, si přejí, aby se mohli vrátit a změnit to, "
-"co se stalo. Ale to není v naší moci; vše, co teď můžeme, je dělat v čase, "
+"co se stalo. Ale to není v naší moci. Vše, co teď můžeme, je dělat v čase, "
 "který nám zbývá, to, co považujeme za správné. Nepodléhej zoufalství, "
 "Kalehu, jinak už Yechnagoth vyhrála."
 
@@ -12951,7 +12750,7 @@ msgstr ""
 #. [message]: speaker=Boyicht
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:569
 msgid "You trespass on holy ground, The One says you must die!"
-msgstr "Vstupujete na posvátnou půdu, Ona říká, že musíte zemřít!"
+msgstr "Vsstupujete na posssvátnou půdu, Ona říká, že mussíte zzemřít!"
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:574
@@ -12965,7 +12764,7 @@ msgstr ""
 #. [message]: speaker=Boyicht
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:579
 msgid "No, you are not The One. You no command Boyicht. Attack!"
-msgstr "Ne, ty nejsi Ona. Ty nerozkazuješ Boyichtovi. Útok!"
+msgstr "Ne, ty nejssi Ona. Ty Boyichtovi nerozzkazzuješšš. Útok!"
 
 #. [event]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:585
@@ -12983,12 +12782,14 @@ msgstr "Ještěrácký fanatik"
 #. [message]: speaker=Boyicht
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:620
 msgid "My death matters not. The One will kill you all. None can resist her."
-msgstr "Moje smrt nevadí. Ona vás všechny zabije. Nikdo jí neodolá."
+msgstr ""
+"Na mé ssmrti nezzáležží. Ona vásss vššechny zzabije. Nikdo jí nedokážže "
+"odporovat."
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:632
 msgid "I say good riddance. He creeped me out."
-msgstr "Konečně je po něm; pořádně mě naštval."
+msgstr "Konečně je po něm. Štval mě."
 
 #. [unit]: type=Naga Myrmidon
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:646
@@ -13408,22 +13209,16 @@ msgstr ""
 
 #. [message]: speaker=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:1389
-#, fuzzy
-#| msgid ""
-#| "Curse that girl! She’ll be the death of me. But still she doesn’t stand a "
-#| "chance without me. Kaleh is one thing, but Nym needs my protection. All "
-#| "right, I’m going in. The rest of you stand guard, if we don’t come out in "
-#| "half a hour then flee the island with the merfolk."
 msgid ""
 "Curse that girl! She’ll be the death of me. But still she doesn’t stand a "
 "chance without me. Kaleh is one thing, but Nym needs my protection. All "
 "right, I’m going in. The rest of you stand guard, if we don’t come out in "
 "half an hour then flee the island with the merfolk."
 msgstr ""
-"Strašlivé děvče! Ještě mě užene k smrti. Ale i tak beze mě nemá šanci. Kaleh "
-"je něco jiného, ale Nym potřebuje moji ochranu. No nic, asi musím jít "
-"dovnitř. Vy ostatní buďte na stráži, a když nevyjdeme do půl hodiny, "
-"prchněte z ostrova s mořským lidem."
+"To strašlivé děvče bude jednou má smrt! Ale i tak beze mě nemá šanci. Kaleh "
+"je něco jiného, ale Nym potřebuje moji ochranu. No nic, jdu dovnitř. Vy "
+"ostatní buďte na stráži, a když nevyjdeme do půl hodiny, prchněte z ostrova "
+"s mořským lidem."
 
 #. [message]: speaker=Grog
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:1402
@@ -13433,9 +13228,10 @@ msgid ""
 "no dark place. Grog just hope there still something to smash when he gets "
 "there."
 msgstr ""
-"Grog tu nebude sedět když Kaleh musí dělat celý boj. Kaleh potřebuje silného "
-"bojovníka jako Grog. Ostatní malí elfové se můžou bát, ale Grog nebojí "
-"žádného tmavého místa. Grog doufá že na něj zbude něco k bití až tam dojde."
+"Grog tu nebude sedět, když Kaleh musí dělat celý boj. Kaleh potřebuje "
+"silného bojovníka jako Grog. Ostatní malí elfové se můžou bát, ale Grog "
+"nebojí žádného tmavého místa. Grog doufá, že na něj zbude něco k bití až tam "
+"dojde."
 
 #. [message]: speaker=Nog
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:1408
@@ -13444,9 +13240,9 @@ msgid ""
 "need strong fighter like Nog. Other elves may be scared, but Nog fear no "
 "dark place. Nog just hope there still something to smash when he gets there."
 msgstr ""
-"Nog tu nebude sedět když Kaleh musí dělat celý boj. Kaleh potřebuje silného "
+"Nog tu nebude sedět, když Kaleh musí dělat celý boj. Kaleh potřebuje silného "
 "bojovníka jako Nog. Ostatní malí elfové se můžou bát, ale Nog nebojí žádného "
-"tmavého místa. Nog doufá že na něj zbude něco k bití až tam dojde."
+"tmavého místa. Nog doufá, že na něj zbude něco k bití až tam dojde."
 
 #. [message]: speaker=Rogrimir
 #. [message]: speaker=Jarl
@@ -13550,7 +13346,7 @@ msgstr "Nym, Zhul, Nogu, to jste neměli."
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:434
 msgid "Nym, Zhul, Rogrimir, you shouldn’t have."
-msgstr "Nym, Zhul, Rogrimire... to jste neměli."
+msgstr "Nym, Zhul, Rogrimire, to jste neměli."
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:441
@@ -14769,25 +14565,21 @@ msgstr "paprsek energie"
 #. [regenerate]: id=regenerates_yec
 #: data/campaigns/Under_the_Burning_Suns/units/monsters/Alien_Body.cfg:100
 msgid "alien regenerates"
-msgstr ""
+msgstr "nepřirozeně regeneruje"
 
 #. [regenerate]: id=regenerates_yec
 #: data/campaigns/Under_the_Burning_Suns/units/monsters/Alien_Body.cfg:101
-#, fuzzy
-#| msgid "disengage"
 msgid "female^alien regenerates"
-msgstr "uvolnění"
+msgstr "nepřirozeně regeneruje"
 
 #. [regenerate]: id=regenerates_yec
 #: data/campaigns/Under_the_Burning_Suns/units/monsters/Alien_Body.cfg:102
-#, fuzzy
-#| msgid "The unit will heal itself 6 HP per turn on sand or dirt terrain."
 msgid ""
 "The unit will heal itself 150 HP per turn. If it is poisoned, it will remove "
 "the poison instead of healing."
 msgstr ""
-"Jednotka se uzdraví každé kolo o 6 životů, pokud stojí na písečném nebo "
-"prašném terénu."
+"Jednotka každé kolo regeneruje 150 životů. Pokud je otrávená, tak se místo "
+"regenerace uzdraví."
 
 #. [unit_type]: id=Central Body2
 #: data/campaigns/Under_the_Burning_Suns/units/monsters/Alien_Body.cfg:115
@@ -14954,7 +14746,7 @@ msgstr "Malý blátožrout"
 #. [unit_type]: id=Naga Guardian, race=naga
 #: data/campaigns/Under_the_Burning_Suns/units/nagas/Naga_Guardian.cfg:4
 msgid "Naga Guardian"
-msgstr "Naga hlídka"
+msgstr "Nága hlídka"
 
 #. [unit_type]: id=Naga Guardian, race=naga
 #. [unit_type]: id=Naga Sentinel, race=naga
@@ -14969,14 +14761,14 @@ msgid ""
 "participate in offensive raids."
 msgstr ""
 "Tito obávaní bojovníci jsou elitními hlídkami nág. Jsou pomalejší a více "
-"vyzbrojené než většina nág; třímají velké palice, kterými drtí nepřátele. "
-"Ponejvíce brání předsunuté základny nág, ale zřídkavě se účastní i útočných "
-"nájezdů."
+"obrněné než většina nág a třímají velké palice, kterými drtí nepřátele. "
+"Ponejvíce brání předsunuté základny nág, ale příležitostně se účastní i "
+"útočných nájezdů."
 
 #. [unit_type]: id=Naga Hunter, race=naga
 #: data/campaigns/Under_the_Burning_Suns/units/nagas/Naga_Hunter.cfg:4
 msgid "Naga Hunter"
-msgstr "Naga lovec"
+msgstr "Nága lovec"
 
 #. [unit_type]: id=Naga Hunter, race=naga
 #: data/campaigns/Under_the_Burning_Suns/units/nagas/Naga_Hunter.cfg:18
@@ -14994,12 +14786,12 @@ msgstr ""
 #. [unit_type]: id=Naga Sentinel, race=naga
 #: data/campaigns/Under_the_Burning_Suns/units/nagas/Naga_Sentinel.cfg:4
 msgid "Naga Sentinel"
-msgstr "Naga patrola"
+msgstr "Nága patrola"
 
 #. [unit_type]: id=Naga Warden, race=naga
 #: data/campaigns/Under_the_Burning_Suns/units/nagas/Naga_Warden.cfg:4
 msgid "Naga Warden"
-msgstr "Naga strážce"
+msgstr "Nága strážce"
 
 #. [unit_type]: id=Dark Assassin1, race=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/other/Dark_Assassin1.cfg:4
@@ -15020,12 +14812,12 @@ msgstr ""
 #. [attack]: type=blade
 #: data/campaigns/Under_the_Burning_Suns/units/other/Dark_Assassin1.cfg:40
 msgid "dagger"
-msgstr ""
+msgstr "dýka"
 
 #. [attack]: type=blade
 #: data/campaigns/Under_the_Burning_Suns/units/other/Dark_Assassin1.cfg:49
 msgid "throwing knives"
-msgstr ""
+msgstr "házecí nože"
 
 #. [unit_type]: id=Quenoth Archer, race=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Archer.cfg:5
@@ -15042,6 +14834,11 @@ msgid ""
 "from the saddle, allowing them to more easily avoid the perils of melee "
 "combat."
 msgstr ""
+"Vzhledem k tomu, že otevřené písky poskytují mnohem menší ochranu než "
+"starodávné lesy, široké řady elfích lučištníků, které kdysi tvořily jádro "
+"elfí armády, značně prořídly. Místo toho se těch několik, kteří se stále "
+"věnují tradiční zbrani svých předků, cvičí v umění jízdní lukostřelby, což "
+"jim umožňuje snadněji se vyhnout rizikům boje zblízka."
 
 #. [unit_type]: id=Quenoth Champion, race=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Champion.cfg:5
@@ -15057,6 +14854,10 @@ msgid ""
 "with raw power and can force their way through all but the most secure of "
 "defenses."
 msgstr ""
+"Šampióni, kteří zvládli ovládání kůs téměř k dokonalosti, stojí v čele "
+"většiny quenothských kopinických sestav. Tito elfové možná mírně postrádají "
+"strategickou vytříbenost. O to více to kompenzují surovou silou, kdy si "
+"dokáží protlačit cestu přes všechny i ty nejzabezpečenější obranné linie."
 
 #. [attack]: type=pierce
 #. [attack]: type=blade
@@ -15066,7 +14867,7 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Warrior.cfg:32
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Warrior.cfg:44
 msgid "glaive"
-msgstr "kosa"
+msgstr "kůsa"
 
 #. [unit_type]: id=Corrupted Quenoth Elf, race=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Corrupted_Elf.cfg:5
@@ -15137,6 +14938,12 @@ msgid ""
 "for combat and survival, these elves are the few who remain as healers and "
 "caretakers."
 msgstr ""
+"Druidky, uctívačky bohyně světla Eloh, jsou považovány za tajemné i "
+"ostatními elfkami stejného řádu. Tento dojem částěčně pramení z neobvyklého "
+"spojení druidek s přírodou, něčeho, co ve světě prostoupeném spáleným pískem "
+"téměř úplně chybí. V brutálním světě, kde se ostatní trénují v umění boje a "
+"přežití, jsou tyto elfky jedny z nemnohých, které setrvávají na léčitelské a "
+"ošetřovatelské cestě."
 
 #. [attack]: type=impact
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Druid.cfg:41
@@ -15150,7 +14957,7 @@ msgstr "písek"
 #. Made-up animal name derived from 'dust' (sand) and 'bok' as in real-world steenbok or springbok antelope
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Dustbok.cfg:6
 msgid "Dustbok"
-msgstr ""
+msgstr "Antilopa pouštní"
 
 #. [unit_type]: id=Quenoth Fighter, race=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Fighter.cfg:5
@@ -15169,11 +14976,19 @@ msgid ""
 "weaponry by forming robust spear ranks capable of repelling nearly any "
 "frontal assault."
 msgstr ""
+"Kdysi dávno, během prosperujících dob, elfští válečníci upřednostňovali "
+"použití mečů, neboť jim ve srovnání s jinými zbraněmi na blízko přišly jako "
+"elegantnější a všestrannější zbraně. V současné době však nedostatek surovin "
+"pro kovářskou výrobu snížil dostupnost čepelí, což si vyžádalo výrobu "
+"levnějších a snadněji opravitelných zbraní. Quenothští bojovníci jsou "
+"pozoruhodně zruční v koordinovaných skupinách, v kterých mohou čelit "
+"nedostatku sofistikovanějších zbraní vytvořením robustních kopinických "
+"formací schopných odrazit téměř jakýkoli frontální útok."
 
 #. [unit_type]: id=Quenoth Flanker, race=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Flanker.cfg:5
 msgid "Quenoth Flanker"
-msgstr ""
+msgstr "Quenothský obkličovač"
 
 #. [unit_type]: id=Quenoth Flanker, race=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Flanker.cfg:23
@@ -15186,12 +15001,19 @@ msgid ""
 "frowned on by their ancestors — to cripple their foes before charging in for "
 "the finish."
 msgstr ""
+"Někteří bojovníci zjišťují, že jejich skutečný talent nespočívá v boji v "
+"těsných kopinických sestavách, ale ve volném pohybu v písku, odkud napadají "
+"boky a týl nepřátelských sil. Tito elfové, rychlí a obratní, využívají "
+"slabosti nepřátelských formací, aby narušili jejich linie a vyvolali na "
+"bojišti chaos. Ve více bezohledných konfliktech se obkličovači dokonce "
+"spoléhají na jed – nástroj, na jehož použití se jejich předkové dívali s "
+"nevolí - kterým ochromují své nepřátele předtím, než je dorazí."
 
 #. [attack]: type=pierce
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Flanker.cfg:43
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Ranger.cfg:44
 msgid "blowgun"
-msgstr ""
+msgstr "foukačka"
 
 #. [unit_type]: id=Quenoth Marksman, race=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Marksman.cfg:5
@@ -15212,6 +15034,18 @@ msgid ""
 "ancestors, these master archers can achieve the same speed and precision as "
 "the Sharpshooters of old, all while in full gallop on horseback."
 msgstr ""
+"V dávných dobách byla elfí nadvláda v lukostřelbě mezi ostatními rasami "
+"Velkého kontinentu nepochybná. Vzhledem k tomu, že se lukostřelba stala v "
+"zemi s omezeným krytím méně životaschopnou, staly se dovednosti několika "
+"zbývajících elfích lučištníků podezřelými, a to až do té míry, že dokonce i "
+"jejich bratři začali věřit, že lukostřelba je spíše zastaralou památkou než "
+"praktickým bojovým nástrojem.\n"
+"\n"
+"Pouhý pohled na quenothského střelce v akci by stačil k rozptýlení tohoto "
+"pošetilého myšlenkového sledu. Tito mistrovští lukostřelci jsou schopni "
+"dosáhnout stejně legendárních výkonů jako jejich předkové. Dokáží střílet "
+"stejně rychle a přesně jako starodávní ostrostřelci a to vše z koňského "
+"hřbetu při plném trysku."
 
 #. [unit_type]: id=Quenoth Mystic, race=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Mystic.cfg:5
@@ -15228,11 +15062,17 @@ msgid ""
 "sun are the source of the elves’ new powers, which they employ to great "
 "effect in their homes in the deserts."
 msgstr ""
+"Stejně jako u jejich předků patří quenothské mystičky mezi ty, které se "
+"věnují přírodním energiím, proudícím v prostředí Irdye. V drsných pustinách "
+"se však tyto elfky již nemohou spoléhat na kdysi rozsáhlé lesy, ze kterých "
+"jejich předchůdkyně čerpaly velkou část své síly. Místo toho se zdrojem "
+"nových elfích sil staly písek a slunce. Ty jsou elfy v jejich pouštních "
+"domovech velmi efektivně využívány."
 
 #. [unit_type]: id=Quenoth Outrider, race=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Outrider.cfg:5
 msgid "Quenoth Outrider"
-msgstr "Quenothská kavalérie"
+msgstr "Quenothská eskorta"
 
 #. [unit_type]: id=Quenoth Outrider, race=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Outrider.cfg:22
@@ -15244,6 +15084,13 @@ msgid ""
 "riders is especially dangerous, for against them, both retreat and attrition "
 "are futile, a prospect that is only ruinous in the inhospitable desert."
 msgstr ""
+"Jsou vyličováni jako jezdci, co se „honí s větrem“, a skutečně se v poušti "
+"pohybují bezkonkurenční rychlostí s lehkostí vánku. Na rozdíl od svých méně "
+"zkušených bratří se jezdci eskort cvičí v přímém boji. Se svými meči a "
+"bolami najíždějí na zraněné jednotky a odkryté slabé boky nepřátelských "
+"linií. Skupina těchto jezdců je obzvláště nebezpečná, protože taktiky ústupu "
+"i stahování jsou proti ní neúčinné, v nehostinné poušti jen s vyhlídkou "
+"zkázy."
 
 #. [attack]: type=impact
 #. [effect]: type=impact
@@ -15270,6 +15117,16 @@ msgid ""
 "tries the patience of their enemies, who are provoked into recklessly giving "
 "chase — inevitably into many a deadly trap."
 msgstr ""
+"V dávných dobách bylo otáčení a útěk ze střetnutí riskantní taktikou, "
+"protože existovalo jen málo způsobů, jak se vyhnout nebo blokovat "
+"nepřátelské lukostřelce střílející zezadu. V poušti je však kvůli "
+"nestabilnímu povrchu a nedostatečnému krytí pro většinu bojovníků daleko "
+"obtížnější udeřit z dálky. Nepolapitelní zvědové to využívají. Jezdí na "
+"mimořádně agilních pouštních antilopách, které jsou pro manévrování v dunách "
+"velmi dobře přizpůsobeny a dokáží se většině útoků díky svým rychlým pohybům "
+"vyhnout. Obtížné připoutání těchto jezdců do přímé konfrontace často zkouší "
+"trpělivost jejich nepřátel. Ti tak bývají vyprovokováni k bezohlednému "
+"pronásledování, co nevyhnutelně končí v mnoha smrtících pastech."
 
 #. [unit_type]: id=Quenoth Ranger, race=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Ranger.cfg:5
@@ -15290,6 +15147,15 @@ msgid ""
 "deadly in the harsh desert terrain, where fewer options to retreat are "
 "available."
 msgstr ""
+"Označení „hraničáři“ je trochu zavádějící, protože tito hbití elfové mají "
+"jen málo společného s mírumilovnějšími průzkumníky přírody, kteří kdysi "
+"nosili stejný titul. Jsou to naopak zkušení bojovníci, kteří právě boj "
+"vyhledávají, aby se mohli více zdokonalit v umění šarvátek. I když "
+"quenothští hraničáři nemají hrubou sílu svých válečných protějšků, umí se "
+"orientovat v chaotických bojích, dokáží pronikat do a z nepřátelských linií "
+"a zabíjet zraněné cíle. Právě kvůli mistrovskému využití jedu a impozantnímu "
+"šermu jsou tito elfové obzvláště smrtící v drsném pouštním terénu, kde je k "
+"dispozici méně možností ústupu."
 
 #. [unit_type]: id=Quenoth Scout, race=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Scout.cfg:5
@@ -15304,6 +15170,10 @@ msgid ""
 "useful abilities to harry enemies and allows them to act as effective "
 "hunters and patrolmen."
 msgstr ""
+"Quenothští průzkumníci, jezdící na elegantních hbitých pouštních antilopách, "
+"se pohybují po písku bezkonkurenční rychlostí. Osvojili si ovládání meče a "
+"praku, což se hodí při pronásledování nepřátel a umožňuje jim efektivně "
+"působit v loveckých a hlídkových skupinách."
 
 #. [unit_type]: id=Quenoth Shaman, race=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Shaman.cfg:5
@@ -15321,12 +15191,20 @@ msgid ""
 "inhospitable environment is a sign of hope as well, a chance that nature "
 "might one day rise from its sandy grave and bloom again."
 msgstr ""
+"Stejně jako elfové dávnověku se i mnoho quenothských elfů snaží proniknout "
+"do umění medicíny a léčení, spíše než se zdokonalovat v umění boje. Šamanky "
+"jsou velmi dobře informovány o řídkém rostlinstvu rozptýleném v pouštích. "
+"Dokonce mají určitou schopnost podpory růstu plodin, což je neocenitelná "
+"dovednost v oblastech s malou produkcí. Schopnost pěstovat flóru v tak "
+"nehostinném prostředí je také známkou naděje, šance, že příroda jednoho dne "
+"může povstat ze svého písečného hrobu a znovu rozkvést."
 
 #. [unit_type]: id=Quenoth Shyde, race=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Shyde.cfg:5
 msgid "female^Quenoth Shyde"
 msgstr "Quenothská víla"
 
+# Tady mi zase v češtině chybí ženský tvar slova duch.
 #. [unit_type]: id=Quenoth Shyde, race=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Shyde.cfg:23
 msgid ""
@@ -15343,6 +15221,17 @@ msgid ""
 "we be, for the power of faerie is that to transmute the flesh of our world, "
 "from sand to earth, from scorched wasteland to life.”"
 msgstr ""
+"Z učení Analie, léčitelky Smaragdového květu:\n"
+"\n"
+"„... tím, že se vydáme po cestě víly, musíme překročit hranici mezi "
+"fyzických a magickým, abychom se staly bytostmi obého. Tak jako fyzická "
+"forma váže krev, co nám dává život, musí vázat energii, která řídí náš svět. "
+"Tou energií je proudící vítr, koloběh dne a noci, nekonečný pochod času... "
+"Jsme fyzická stvoření, ale také jsme nadčasoví duchové, bytosti dotčené vílí "
+"existencí. To je říše, co vydrží věky, ať už má podobu přírody, ohně nebo "
+"písku, vždy je přítomná. Protože je však proměnlivá, musíme i my být "
+"proměnlivé, protože síla víly spočívá v tom, že dokáže přetvořit maso našeho "
+"světa, z písku na hlínu a ze spálených pustin na život.“"
 
 #. [unit_type]: id=Quenoth Sun Singer, race=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Sun_Singer.cfg:5
@@ -15361,6 +15250,13 @@ msgid ""
 "this new magic sing of the dual nature of these embodiments of fire: flames "
 "that are both life and life’s demise."
 msgstr ""
+"Vílí a elfí magie byla často patřičně spojena s živou přírodou, ze které "
+"čerpala většinu své síly. S vymizením většiny vegetace na Irdyi však byli "
+"quenothští elfové nuceni hledat další zdroj své magie. Časem se naučili "
+"využívat sílu sluncí Sela a Naia – dvojčat, která rozdrtila lesy Irdye na "
+"popel, a přesto vyvinula energii potřebnou k jiskření života. Ty, které "
+"ovládají tuto novou magii, tak zpívají o dvojí povaze těchto ztělesnění "
+"ohně: plamenů, co jsou jak zdrojem, tak zánikem života."
 
 #. [unit_type]: id=Quenoth Sun Sylph, race=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Sun_Sylph.cfg:5
@@ -15380,6 +15276,14 @@ msgid ""
 "These Sun Sylphs very much embody the power that they wield: light that "
 "heals and protects, and flames that smolder with destruction."
 msgstr ""
+"V dobách minulých se ty, kdo překročily hranice světa elfů a světa víl, "
+"nazývaly sylfami, mystičkami s bezkonkurenční znalostí tajemství přírodní "
+"sféry. V drsném novém světě se však cesta do říše víl již nepokrývá s cestou "
+"do srdce přírody, ale s cestou rozcházející se mezi světlem a temnotou. Tyto "
+"elfky, přijímající hořící slunce jako opěrný bod života a smrti, se také učí "
+"využívat svou sílu a přeměňovat se na bytosti naplněné zářivým ohněm. Tyto "
+"sluneční sylfy ztělesňují sílu, kterou ovládají: světlo, které léčí a "
+"chrání, a plameny, které doutnají ničením."
 
 #. [unit_type]: id=Tauroch, race=monster
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Tauroch.cfg:5
@@ -15469,6 +15373,30 @@ msgid ""
 "Goddess herself. I think I will call her Nala, meaning ‘Protector’ in our "
 "tongue. I am sure we will have many more adventures together."
 msgstr ""
+"Z deníku Syniela, křižovatele dun:\n"
+"\n"
+"Za soumraku mě přepadli poblíž oázy skřeti. Musel jsem uprchnout do pouště, "
+"ale i tam byli vlci tak rychlí, že se mnou téměř drželi krok. Celé hodiny "
+"jsem v jasném měsíčním světle běžel a běžel, už jsem sotva cítil nohy a "
+"stále mě pronásledovali. Myslel jsem, že jsem synem smrti. Ale jako by tomu "
+"Eloh chtěla, narazil jsem na mladou taurku, která se zatoulala od svého "
+"stáda. Musela vycítit mé potíže, protože ke mně přiběhla a pak celou dlouhou "
+"noc bojovala po mém boku. Na pokraji vyčerpání se nám nějak podařilo zahnat "
+"ty desítky skřetů a vlků. Za úsvitu jsme osamněli, ale naše těla byla poseta "
+"ranami a my byli unaveni až do morku kostí. A na dohled nebylo nic jiného "
+"než písek. To málo, co zbylo z mých zásob, jsem použil k ošetření ran "
+"taurky. Pak jsem podlehl únavě a už si toho moc nepamatuji.\n"
+"\n"
+"-----------------------\n"
+"\n"
+"Dnes jsem se probudil ve vesnici unavený, ale živý. Moji přátelé mi řekli, "
+"že taurka mě po mnoho hodin nesla pouští. Nesla mě bez ohledu na sebe, neboť "
+"v době, kdy jsme tam dorazili, byla v horším stavu než já. Mohu být jen "
+"vděčný za to, že se mi podařilo tu hroznou noc přežít. Tak věrného "
+"společníka se mi dostalo jen díky milosti Eloh. Je to má zachránkyně, má "
+"bdělá strážkyně, požehnání od samotné bohyně. Myslím, že jí budu říkat Nala, "
+"což v našem jazyce znamená „Ochránce“. Jsem si jistý, že spolu zažijeme "
+"mnohem více dobrodružství."
 
 #. [unit_type]: id=Tauroch Rider, race=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Tauroch_Rider.cfg:5
@@ -15486,14 +15414,13 @@ msgid ""
 "skilled rider can hold off multiple enemies by itself and serves as a "
 "powerful warden to protect elven villages and carvans."
 msgstr ""
-"Tauři jsou obrovská odolná zvířata pouště, která jsou většinou přežívajících "
-"ras považována za nezkrotná. Avšak spříznění elfů s přírodou jim umožnilo "
-"vytvořit i s těmito neposlušnými zvířaty pouto, ač je považováno za "
-"nepravděpodobné. Tauři mohou snadno přenášet nebo táhnout těžká břemena. "
-"Nicméně jejich tlusté kůže a neochvějné odhodlání z nich také činí "
-"impozantní jízdní zvířata pro boj. Taur vedený zkušeným jezdcem dokáže sám "
-"zadržet několik nepřátel a slouží jako mocný strážce, ochraňující elfí "
-"vesnice a karavany."
+"Tauři jsou obrovská, odolná zvířata pouště, která jsou většinou "
+"přežívajících ras považována za nezkrotná. Avšak spříznění elfů s přírodou "
+"jim umožnilo vytvořit si s těmito neposlušnými zvířaty zvláštní pouto. Tauři "
+"mohou snadno přenášet nebo táhnout těžká břemena. Nicméně jejich tlustá kůže "
+"a neochvějné odhodlání z nich také činí impozantní jízdní zvířata pro boj. "
+"Taur vedený zkušeným jezdcem dokáže sám zadržet několik nepřátel a slouží "
+"jako mocný strážce, ochraňující elfí vesnice a karavany."
 
 #. [unit_type]: id=Tauroch Stalwart, race=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Tauroch_Stalwart.cfg:5
@@ -15537,6 +15464,14 @@ msgid ""
 "presence of these riders is a heartening one for most elves and a deterrent "
 "for the many pillagers that rove the deserts."
 msgstr ""
+"Mohutní a nebojácní tauři jsou často využíváni nejen k nájezdům a prorážení "
+"nepřátelských formací, ale také k seskupování a inspirování pěchoty při "
+"udržování linie. V býčích předvojích figurují vytrvalí jezdci, co dokáží "
+"přežít v bitvě a vést své bratry z předních linií. Jezdci předvoje se tyčí "
+"nad převalujícími se dunami a nesou velké vlajky, které se jasně obráží na "
+"pouštní obloze, čímž jsou v poušti výrazně zřetelní i při pohledu zdálky. "
+"Přítomnost těchto jezdců je pro většinu elfů povzbudivá. A pro mnoho "
+"drancířů, potulujících se v poušti, je odstrašující."
 
 #. [unit_type]: id=Quenoth Warrior, race=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Warrior.cfg:5
@@ -15645,7 +15580,7 @@ msgstr "Quenothské děvče"
 #. [unit_type]: id=EGhost
 #: data/campaigns/Under_the_Burning_Suns/units/undead/Ethereal_Ghost.cfg:7
 msgid "Ethereal Ghost"
-msgstr "Nezemský duch"
+msgstr "Éterický duch"
 
 #. [unit_type]: id=EGhost
 #: data/campaigns/Under_the_Burning_Suns/units/undead/Ethereal_Ghost.cfg:16
@@ -15669,7 +15604,7 @@ msgstr ""
 #. [unit_type]: id=ENightgaunt
 #: data/campaigns/Under_the_Burning_Suns/units/undead/Ethereal_Nightgaunt.cfg:7
 msgid "Ethereal Nightgaunt"
-msgstr "Nezemský nightgaunt"
+msgstr "Éterický nightgaunt"
 
 #. [unit_type]: id=ENightgaunt
 #: data/campaigns/Under_the_Burning_Suns/units/undead/Ethereal_Nightgaunt.cfg:20
@@ -15686,19 +15621,15 @@ msgstr ""
 
 #. [special_note]
 #: data/campaigns/Under_the_Burning_Suns/units/undead/Ethereal_Nightgaunt.cfg:26
-#, fuzzy
-#| msgid ""
-#| "SPECIAL_NOTE^ Unlike normal Nightgaunts, Ethereal Nightgaunts cannot hide "
-#| "at night."
 msgid ""
 "SPECIAL_NOTE^Unlike normal Nightgaunts, Ethereal Nightgaunts cannot hide at "
 "night."
-msgstr "Nezemští nightgaunti se na rozdíl od běžných nedokáži skrýt v noci."
+msgstr "Éteričtí nightgaunti se na rozdíl od běžných nedokáží skrýt v noci."
 
 #. [unit_type]: id=EShadow
 #: data/campaigns/Under_the_Burning_Suns/units/undead/Ethereal_Shadow.cfg:7
 msgid "Ethereal Shadow"
-msgstr "Nezemský stín"
+msgstr "Éterický stín"
 
 #. [unit_type]: id=EShadow
 #: data/campaigns/Under_the_Burning_Suns/units/undead/Ethereal_Shadow.cfg:21
@@ -15713,18 +15644,18 @@ msgstr ""
 "stáhnout se do temnoty. Od toho dne stíny světa přinášejí lidstvu "
 "bezdůvodnou nedefinovatelnou hrůzu.\n"
 "\n"
-"Na otázku proč vám snadno odpoví nekromant."
+"Na tuto otázku vám snadno odpoví nekromant."
 
 #. [special_note]
 #: data/campaigns/Under_the_Burning_Suns/units/undead/Ethereal_Shadow.cfg:29
 msgid ""
 "SPECIAL_NOTE^ Unlike normal Shadows, Ethereal Shadows cannot hide at night."
-msgstr "Nezemské stíny se na rozdíl od běžných nedokáži skrýt v noci."
+msgstr "Éterické stíny se na rozdíl od běžných nedokáží skrýt v noci."
 
 #. [unit_type]: id=ESpectre
 #: data/campaigns/Under_the_Burning_Suns/units/undead/Ethereal_Spectre.cfg:7
 msgid "Ethereal Spectre"
-msgstr "Nezemský přízrak"
+msgstr "Éterický přízrak"
 
 #. [unit_type]: id=ESpectre
 #: data/campaigns/Under_the_Burning_Suns/units/undead/Ethereal_Spectre.cfg:14
@@ -15737,18 +15668,18 @@ msgid ""
 "is that it is likely only the harbinger of a much more dangerous force that "
 "will follow in its wake."
 msgstr ""
-"Přízraky, někdy také nazývané ‘neviditelní lidé‘ jsou pravou rukou síly "
-"svého mistra. Tyto ohavnosti jsou oprávněným postrachem živých, držící "
-"nekonečnou hlídku nad říší svého pána.\n"
+"Přízraky, někdy také nazývané „průhlední lidé“, jsou pravou rukou síly svého "
+"mistra. Tyto ohavnosti jsou oprávněným postrachem živých, držící nekonečnou "
+"hlídku nad říší svého pána.\n"
 "\n"
-"Jejich stvoření není nijak jednoduchým činem, pravá hrůza z jejich spatření "
-"proto tkví spíše v tom, že jsou většinou pouhými zvěstovateli mnohem většího "
+"Jejich stvoření není jen tak snadným činem. Ta pravá hrůza z jejich spatření "
+"tedy tkví v tom, že jsou většinou pouhými předzvěstmi mnohem většího "
 "nebezpečí, kráčejícího v jejich stopách."
 
 #. [unit_type]: id=EWraith
 #: data/campaigns/Under_the_Burning_Suns/units/undead/Ethereal_Wraith.cfg:7
 msgid "Ethereal Wraith"
-msgstr "Nezemský fantóm"
+msgstr "Éterický fantóm"
 
 #. [unit_type]: id=EWraith
 #: data/campaigns/Under_the_Burning_Suns/units/undead/Ethereal_Wraith.cfg:15
@@ -15802,8 +15733,8 @@ msgid ""
 msgstr ""
 "Nikdo si není úplně jistý, jak vlastně pavoučí lichové vznikají, ale jsou to "
 "na pohled strašliví tvorové. Plazí se kolem na obřích kostlivých nohou a "
-"ohánějí se obřími kouzelnými holemi; tyto nemrtvé příšery jsou velmi "
-"obávané. "
+"třímají obří kouzelné hole. Tyto ohavné příšery jsou velmi obávanými "
+"nemrtvými nepřáteli."
 
 #. [unit_type]: id=Skeleton Rider, race=undead
 #: data/campaigns/Under_the_Burning_Suns/units/undead/Undead_Horseman.cfg:5
@@ -15847,28 +15778,21 @@ msgstr ""
 
 #. [special_note]
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:94
-#, fuzzy
-#| msgid " This unit is capable of basic healing and slowing dehydration."
 msgid "This unit is capable of basic healing and slowing dehydration."
 msgstr ""
-" Tato jednotka je schopna základní léčby a také dokáže zpomalit dehydrataci."
+"Tato jednotka je schopna základní léčby a také dokáže zpomalit dehydrataci."
 
 #. [special_note]
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:100
-#, fuzzy
-#| msgid ""
-#| " This unit is capable of healing those around it, slowing dehydration, "
-#| "and curing them of poison."
 msgid ""
 "This unit is capable of healing those around it, slowing dehydration, and "
 "curing them of poison."
 msgstr ""
-" Tato jednotka je schopna jednak léčit, ale také uzdravit jednotky z otravy."
+"Tato jednotka je schopna sousedící jednotky léčit, zpomalovat jim "
+"dehydrataci a uzdravovat je z otravy."
 
 #. [special_note]
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:106
-#, fuzzy
-#| msgid "SPECIAL_NOTE^ This unit is able to move through solid stone walls."
 msgid "SPECIAL_NOTE^This unit is able to move through solid stone walls."
 msgstr "Tato jednotka dokáže procházet pevnými zdmi."
 
@@ -15889,6 +15813,9 @@ msgid ""
 "all the units of the same side adjacent to it. If no suitable unit is "
 "adjacent, its experience just goes back to zero."
 msgstr ""
+"Na začátku každého tahu tato jednotka přerozděluje své body zkušenosti všem "
+"jednotkám své strany, které se nacházejí vedle ní. Pokud s ní nesousedí "
+"žádná vhodná jednotka, její zkušenost se vrátí zpět na nulu."
 
 #. [attacks]: id=shock
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:126
@@ -15897,13 +15824,12 @@ msgstr "šok"
 
 #. [attacks]: id=shock
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:127
-#, fuzzy
 msgid ""
 "When this attack is used on offense, the opponent will retaliate with one "
 "less strike than normally, to a minimum of one strike."
 msgstr ""
-"Když je tento útok využitý při obraně, protivník bude mít o jeden úder méně "
-"než normálně, až do minima jednoho zásahu."
+"Pokud je tento útok použitý ofenzivně, zasažený protivník bude mít při "
+"protiúderech o jeden úder méně než normálně, minimálně však jeden úder."
 
 #. [dummy]: id=formation
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:158
@@ -15922,6 +15848,9 @@ msgid ""
 "ability is adjacent to it. However, this cannot raise the unit’s defense "
 "above 70%."
 msgstr ""
+"Tato jednotka získá +10 % k obrannému bonusu, pokud se na sousedícím políčku "
+"nachází další jednotka se stejnou schopností. Tento efekt však nemůže zvýšit "
+"obranný bonus jednotky nad 70 %."
 
 #. [dummy]: id=disengage
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:179
@@ -15939,6 +15868,8 @@ msgid ""
 "If this unit doesn’t move before attacking, it will retain its movement "
 "points after the attack."
 msgstr ""
+"Pokud se tato jednotka před útokem nepohybuje, udrží si body pohybu i po "
+"útoku."
 
 #. [dummy]: id=daze
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:188
@@ -15955,6 +15886,14 @@ msgid ""
 "Magical attacks will still have a 70% chance to hit.\n"
 "Marksman attacks are only affected if the chance to hit is greater than 60%."
 msgstr ""
+"Když je zasažena tímto útokem, sníží se nepřátelské jednotce na jedno kolo o "
+"10 % jak obranný bonus, tak šance zasáhnout útokem. Před tímto speciálním "
+"efektem však mají přednost jiné speciální efekty, které ovlivňují šanci na "
+"zásah (např. magický útok či odstřelovač).\n"
+"\n"
+"Magické útoky budou stále mít 70 % šanci zasáhnout.\n"
+"Útoky odstřelovačů jsou ovlivněny pouze v případě, že šance na zásah je "
+"větší než 60 %."
 
 #. [skirmisher]: id=distract
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:199
@@ -15972,6 +15911,8 @@ msgid ""
 "This unit negates enemy Zones of Control around itself for allied units (but "
 "not for itself)."
 msgstr ""
+"Tato jednotka na sousedících políčkách ruší nepřátelské zóny kontroly pro "
+"své spojence (ne však pro sebe)."
 
 #. [dummy]: id=support
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:212
@@ -15987,29 +15928,26 @@ msgstr "podporující"
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:214
 msgid "The upkeep costs of adjacent friendly units are lowered by 1."
 msgstr ""
+"Náklady na údržbu jsou u sousedících spřátelených jednotek sníženy o 1."
 
 #. [special_note]
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:220
-#, fuzzy
-#| msgid ""
-#| " This unit’s melee attack can overwhelm the defenses of enemies, "
-#| "preventing them from retaliating as effectively."
 msgid ""
 "This unit’s melee attack can overwhelm the defenses of enemies, preventing "
 "them from retaliating as effectively."
 msgstr ""
-"U této jednotky může útok na blízko převálcovat obranu nepřátel, takže "
-"protiúder není tak účinný."
+"U této jednotky může útok na blízko převálcovat obranu nepřátel a zabránit "
+"jim v účinném protiúderu."
 
 #. [special_note]
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:226
 msgid "Groups of units of this type are able to shield each other in combat."
-msgstr ""
+msgstr "Skupiny jednotek tohoto typu se dokáží v boji navzájem chránit."
 
 #. [special_note]
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:232
 msgid "This unit can move either before or after attacking."
-msgstr ""
+msgstr "Tato jednotka se může pohybovat před nebo po útoku."
 
 #. [special_note]
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:238
@@ -16017,6 +15955,8 @@ msgid ""
 "This unit can daze its enemies, reducing their accuracy and defense until "
 "they end a turn."
 msgstr ""
+"Tato jednotka může omámit své nepřátele a snižovat tak do konce jejich tahu "
+"jejich přesnost a obranu."
 
 #. [special_note]
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:244
@@ -16024,6 +15964,9 @@ msgid ""
 "This unit is capable of distracting opponents, allowing allied units to "
 "trespass their Zones of Control and move unhindered around them."
 msgstr ""
+"Tato jednotka je schopna rozptýlit protivníky a umožnit tak spojeneckým "
+"jednotkám překročit jejich zóny kontroly a bez překážek se kolem nich "
+"pohybovat."
 
 #. [unstore_unit]
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:297
@@ -16129,15 +16072,17 @@ msgstr ""
 "Jak jen jsme ji mohli nechat zemřít? Nikdy předtím jsem neviděl takovou "
 "ohnivou magii. Bude nám bolestivě scházet."
 
+# Kontextuálně správnější než žízeň, originál kulhá.
 #. [floating_text]
 #: data/campaigns/Under_the_Burning_Suns/utils/dehydration-utils.cfg:114
 msgid "female^thirst"
-msgstr "žízeň"
+msgstr "žíznivá"
 
+# Kontextuálně správnější než žízeň, originál kulhá.
 #. [floating_text]
 #: data/campaigns/Under_the_Burning_Suns/utils/dehydration-utils.cfg:123
 msgid "thirst"
-msgstr "žízeň"
+msgstr "žíznivý"
 
 #. [floating_text]
 #. [unstore_unit]
@@ -16155,7 +16100,7 @@ msgstr "osvěžený"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/garak-abilities.cfg:57
 msgid "+%d XP"
-msgstr "+%d XP"
+msgstr "+%d zkušenosti"
 
 #. [part]
 #: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:6

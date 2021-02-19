@@ -437,7 +437,12 @@ function wml_actions.store_reachable_locations(cfg)
 	local range = cfg.range or "movement"
 	local moves = cfg.moves or "current"
 	local variable = cfg.variable or wml.error "[store_reachable_locations] missing required variable= key"
-	local reach_param = { viewing_side = cfg.viewing_side or 0 }
+	local reach_param = { viewing_side = cfg.viewing_side }
+	if cfg.viewing_side == 0 then
+		wml.error "[store_reachable_locations] invalid viewing_side"
+	elseif cfg.viewing_side == nil then
+		reach_param.ignore_visibility = true
+	end
 	if range == "vision" then
 		moves = "max"
 		reach_param.ignore_units = true
@@ -839,7 +844,7 @@ wml_actions.unstore_unit = function(cfg)
 	local x = cfg.x or unit.x or -1
 	local y = cfg.y or unit.y or -1
 	if cfg.location_id then
-		x, y = wesnoth.special_locations[cfg.location_id]
+		x,y = table.unpack(wesnoth.special_locations[cfg.location_id])
 	end
 	wesnoth.add_known_unit(unit.type)
 	if on_board(x, y) then
@@ -877,10 +882,10 @@ wml_actions.teleport = function(cfg)
 		return
 	end
 	local x,y = cfg.x, cfg.y
-	if not x or not y then
-		x,y = wesnoth.special_locations[cfg.location_id]
+	if cfg.location_id then
+		x,y = table.unpack(wesnoth.special_locations[cfg.location_id])
 	end
-	wesnoth.teleport(unit, cfg.x, cfg.y, cfg.check_passability == false, cfg.clear_shroud ~= false, cfg.animate)
+	wesnoth.teleport(unit, x, y, cfg.check_passability == false, cfg.clear_shroud ~= false, cfg.animate)
 end
 
 function wml_actions.remove_sound_source(cfg)

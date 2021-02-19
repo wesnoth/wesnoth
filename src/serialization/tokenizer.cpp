@@ -13,7 +13,6 @@
    See the COPYING file for more details.
 */
 
-#include "global.hpp"
 #include "serialization/tokenizer.hpp"
 #include "wesconfig.h"
 
@@ -132,7 +131,7 @@ const token &tokenizer::next_token()
 			token_.value = current_;
 			break;
 		}
-		FALLTHROUGH;
+		[[fallthrough]];
 
 	default:
 		if (is_alnum(current_) || current_ == '$') {

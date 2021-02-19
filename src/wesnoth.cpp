@@ -426,6 +426,10 @@ static int process_command_args(const commandline_options& cmdline_opts)
 		game_config::debug_lua = true;
 	}
 
+	if(cmdline_opts.strict_lua) {
+		game_config::strict_lua = true;
+	}
+
 	if(cmdline_opts.gunzip) {
 		const std::string input_file(*cmdline_opts.gunzip);
 		if(!filesystem::is_gzip_file(input_file)) {
@@ -1026,7 +1030,7 @@ int main(int argc, char** argv)
 	SDL_StartTextInput();
 
 	try {
-		std::cerr << "Battle for Wesnoth v" << game_config::revision << '\n';
+		std::cerr << "Battle for Wesnoth v" << game_config::revision  << " " << game_config::build_arch() << '\n';
 		const std::time_t t = std::time(nullptr);
 		std::cerr << "Started on " << ctime(&t) << "\n";
 

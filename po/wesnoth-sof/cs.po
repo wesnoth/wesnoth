@@ -4,8 +4,7 @@
 # Copyright (C) 2007 - 2020 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 #
-# Czech Wesnoth translation team <hrubymar10@gmail.com>,
-#
+# Czech Wesnoth translation team
 #
 # David Novotný [Draqen] <Dragen@seznam.cz>, 2007.
 # Vladimír Slávik <slavik.vladimir@seznam.cz>, 2007 - 2011.
@@ -13,21 +12,22 @@
 # Karel Doleček <KDolecek@seznam.cz>, 2008.
 # Honza <Honza-mistic@seznam.cz>, 2014.
 # Martin Hrubý <hrubymar10@gmail.com>, 2017 - 2020.
-# Michal Žejdl <lachim@emer.cz>, 2019 - 2020.
+# Michal Žejdl <lachim@emer.cz>, 2019 - 2021.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2021-01-16 14:18 UTC\n"
-"PO-Revision-Date: 2020-09-26 21:43+0200\n"
-"Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
-"Language-Team: Český <hrubymar10@gmail.com>\n"
+"PO-Revision-Date: 2021-01-27 22:58+0100\n"
+"Last-Translator: Septim <septim@centrum.cz>\n"
+"Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+"X-Generator: Poedit 2.4.2\n"
 
 #. [campaign]: id=Sceptre_of_Fire
 #: data/campaigns/Sceptre_of_Fire/_main.cfg:11
@@ -69,20 +69,21 @@ msgstr "Náročná"
 msgid "Lord"
 msgstr "Lord"
 
-# Pozn.: někde uchovat ostatní verze básničky!
+# Varianty:
+# Ač tvoří to vlastního Wesnothu znak,
+# (Ač tvoří to vlastní Wesnothu znak,)
+# nepřišlo ze země té, přišlo jinak.
+# Kde kraj trpaslíků je chmurný jak mrak,
+# (Kde kraj trpaslíků chmurný všelijak,)
+# (V kraji trpaslíků, chmurném všelijak,)
+# tam runový kovář ho vytvořil tak,
+# že oheň plane žezlem, až šálí zrak.
+# (že žezlo ohněm plane, až šálí zrak.)
+# O něm i o tvůrcích, kdo, jak a kterak,
+# já vyprávím příběh, je jeden beztak.
+# (vyprávím příběh, vše souvisí nějak.)
 #. [campaign]: id=Sceptre_of_Fire
 #: data/campaigns/Sceptre_of_Fire/_main.cfg:25
-#, fuzzy
-#| msgid ""
-#| "<i>The land of Wesnoth’s banner bold\n"
-#| "Comes not from its own land;\n"
-#| "It comes from Dwarfdom, grim and old\n"
-#| "Made by a runesmith’s hand.\n"
-#| "So now I tell from whence it came —\n"
-#| "The Fire-sceptre great —\n"
-#| "And of the makers of the same,\n"
-#| "Their tale I now relate...</i>\n"
-#| "\n"
 msgid ""
 "<i>The mark of Wesnoth’s banner bold\n"
 "Comes not from its own land;\n"
@@ -94,13 +95,13 @@ msgid ""
 "Their tale I now relate...</i>\n"
 "\n"
 msgstr ""
-"<i>Ač tvoří to vlastní Wesnothu znak,\n"
+"<i>Ač tvoří to vlastního Wesnothu znak,\n"
 "nepřišlo ze země té, přišlo jinak.\n"
-"Kde kraj trpaslíků chmurný všelijak,\n"
+"Kde kraj trpaslíků je chmurný jak mrak,\n"
 "tam runový kovář ho vytvořil tak,\n"
 "že oheň plane žezlem, až šálí zrak.\n"
 "O něm i o tvůrcích, kdo, jak a kterak,\n"
-"vyprávím příběh, je jen jeden beztak.</i>\n"
+"já vyprávím příběh, je jeden beztak.</i>\n"
 "\n"
 
 #. [campaign]: id=Sceptre_of_Fire
@@ -130,8 +131,6 @@ msgstr "Kresby a grafika"
 
 #. [editor_group]: id=sof
 #: data/campaigns/Sceptre_of_Fire/_main.cfg:134
-#, fuzzy
-#| msgid "The Sceptre of Fire"
 msgid "Sceptre of Fire"
 msgstr "Ohnivé žezlo"
 
@@ -377,16 +376,12 @@ msgstr ""
 
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:361
-#, fuzzy
-#| msgid ""
-#| "Well... I think we can make a deal, but I’m not sure. I’ll have to ask "
-#| "the tribal leaders."
 msgid ""
 "Well... I think we can make a deal, but I’m not sure. I’ll have to ask the "
 "clan leaders."
 msgstr ""
-"Dobrá... myslím, že můžeme udělat obchod, ale nejsem si jistý. Musím se "
-"zeptat kmenových vůdců."
+"Dobrá... myslím, že můžeme udělat obchod, ale nejsem si jistý. Budu se muset "
+"zeptat klanových vůdců."
 
 #. [message]: speaker=Haldric II
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:365
@@ -408,16 +403,12 @@ msgstr ""
 
 #. [message]: speaker=Haldric II
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:374
-#, fuzzy
-#| msgid ""
-#| "I can always take my offer to another tribe more friendly to its "
-#| "potential patrons. You are not the only smiths in the Northlands!"
 msgid ""
 "I can always take my offer to another clan more friendly to its potential "
 "patrons. You are not the only smiths in the Northlands!"
 msgstr ""
-"Mohu klidně přednést svou nabídku jinému kmeni. Více přátelskému k "
-"potenciálnímu zákazníkovi. Nejste jediní kováři v Severních zemích!"
+"Mohu klidně přednést svou nabídku jinému klanu, přátelštějšímu ke svým "
+"potenciálním zákazníkům. Nejste jediní kováři v Severních zemích!"
 
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:379
@@ -471,12 +462,12 @@ msgstr ""
 
 #. [message]: speaker=Haldric II
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:409
-#, fuzzy
-#| msgid "I want you to make it into a sceptre, a sceptre of fire."
 msgid ""
 "I want you to make it into a sceptre. A gold and ruby sceptre to all "
 "appearances. We shall call it the Sceptre of Fire."
-msgstr "Chci abyste z něj vytvořili žezlo. Ohnivé žezlo."
+msgstr ""
+"Chci, abyste z něj vytvořili žezlo. Podle všeho zlaté žezlo s rubínem. "
+"Budeme ho nazývat Ohnivé žezlo."
 
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:414
@@ -518,16 +509,12 @@ msgstr "Dle rozkazu. Vydám se na cestu společně se zlatem."
 
 #. [message]: speaker=Glildur
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:487
-#, fuzzy
-#| msgid ""
-#| "Hey! You can’t do that — this road is an elvish road. We’re not letting "
-#| "you transport gold and jewels on it without paying a toll."
 msgid ""
 "Hey!  You can’t do that — this road is an elvish road. We’re not letting you "
 "transport gold and jewels on it without paying a toll."
 msgstr ""
-"Hej! Tohle nemůžete... tohle je elfí cesta. Nenecháme vás převézt zlato ani "
-"šperky bez zaplacení mýtného."
+"Hej! To nemůžete – tohle je elfí cesta. Nenecháme vás po ní převézt zlato "
+"ani šperky bez zaplacení mýtného."
 
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:491
@@ -606,16 +593,12 @@ msgstr ""
 
 #. [message]: speaker=Alanin
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:689
-#, fuzzy
-#| msgid ""
-#| "Here’s the stone, for you dwarves! Now, if you’ll excuse me, I think I’ll "
-#| "be taking refuge in this castle here... I don’t much like fighting."
 msgid ""
 "Here’s the stone, for you dwarves! Now, if you’ll excuse me, I think I’ll be "
 "taking refuge here... I don’t much like fighting."
 msgstr ""
-"Tady máte ten kámen, trpaslíci! Teď, když mne omluvíte, bych se uchýlil tady "
-"do hradu... nemám moc rád boj."
+"Tady máte ten kámen, trpaslíci! Teď, když mne omluvíte, myslím, že se "
+"uchýlím sem... Nemám moc rád boj."
 
 #. [message]: speaker=Haldric II
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:710
@@ -1026,15 +1009,13 @@ msgid ""
 "That’s all of the elves. Now I should go down to the city and report. I’m "
 "late already..."
 msgstr ""
-"Tak to bysme měli elfy. Teď bych měl jít podat hlášení do města. Už teď mám "
+"Tolik k elfům. Nyní bych měl jít podat hlášení do města. Už teď mám "
 "zpoždění..."
 
 #. [scenario]: id=2p5_Reaching_the_Runecrafter
 #: data/campaigns/Sceptre_of_Fire/scenarios/2p5_Reaching_the_Runecrafter.cfg:3
-#, fuzzy
-#| msgid "Searching for the Runecrafter"
 msgid "Reaching the Runecrafter"
-msgstr "Hledání runového mistra"
+msgstr "Shánění runového mistra"
 
 #. [side]: type=Orcish Warrior, id=Bragdash
 #: data/campaigns/Sceptre_of_Fire/scenarios/2p5_Reaching_the_Runecrafter.cfg:31
@@ -1283,7 +1264,7 @@ msgstr ""
 #. [message]: speaker=Durstorn
 #: data/campaigns/Sceptre_of_Fire/scenarios/2t_In_the_Dwarven_City.cfg:136
 msgid "... ?"
-msgstr ""
+msgstr "...?"
 
 #. [message]: speaker=Durstorn
 #: data/campaigns/Sceptre_of_Fire/scenarios/2t_In_the_Dwarven_City.cfg:140

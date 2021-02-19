@@ -19,6 +19,7 @@
 #include "log.hpp"
 #include "quit_confirmation.hpp"
 #include "sdl/userevent.hpp"
+#include "utils/ranges.hpp"
 #include "video.hpp"
 
 #if defined _WIN32
@@ -35,8 +36,6 @@
 #include <vector>
 
 #include <SDL2/SDL.h>
-
-#include <boost/range/adaptor/reversed.hpp>
 
 #define ERR_GEN LOG_STREAM(err, lg::general)
 
@@ -249,7 +248,7 @@ sdl_handler::sdl_handler(const sdl_handler &that)
 		event_contexts.front().add_handler(this);
 	} else if(has_joined_) {
 		bool found_context = false;
-		for(auto &context : boost::adaptors::reverse(event_contexts)) {
+		for(auto &context : utils::reversed_view(event_contexts)) {
 			if(context.has_handler(&that)) {
 				found_context = true;
 				context.add_handler(this);
@@ -268,7 +267,7 @@ sdl_handler &sdl_handler::operator=(const sdl_handler &that)
 	if(that.has_joined_global_) {
 		join_global();
 	} else if(that.has_joined_) {
-		for(auto &context : boost::adaptors::reverse(event_contexts)) {
+		for(auto &context : utils::reversed_view(event_contexts)) {
 			if(context.has_handler(&that)) {
 				join(context);
 				break;
@@ -329,7 +328,7 @@ void sdl_handler::join_same(sdl_handler* parent)
 		leave(); // should not be in multiple event contexts
 	}
 
-	for(auto& context : boost::adaptors::reverse(event_contexts)) {
+	for(auto& context : utils::reversed_view(event_contexts)) {
 		if(context.has_handler(parent)) {
 			join(context);
 			return;
@@ -351,7 +350,7 @@ void sdl_handler::leave()
 		member->leave();
 	}
 
-	for(auto& context : boost::adaptors::reverse(event_contexts)) {
+	for(auto& context : utils::reversed_view(event_contexts)) {
 		if(context.remove_handler(this)) {
 			break;
 		}
@@ -522,7 +521,7 @@ void pump()
 	}
 
 	bool resize_found = false;
-	for(const SDL_Event& event : boost::adaptors::reverse(events)) {
+	for(const SDL_Event& event : utils::reversed_view(events)) {
 		if(event.type == SDL_WINDOWEVENT && event.window.event == SDL_WINDOWEVENT_RESIZED) {
 			resize_found = true;
 			last_resize_event = event;

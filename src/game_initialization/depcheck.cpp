@@ -208,7 +208,7 @@ std::vector<std::string> manager::get_conflicting_enabled(const elem& e) const
 	std::vector<std::string> result;
 
 	for(const std::string& mod : mods_) {
-		if(conflicts(elem(mod, "modification"), e)) {
+		if(does_conflict(elem(mod, "modification"), e)) {
 			result.push_back(mod);
 		}
 	}
@@ -216,7 +216,7 @@ std::vector<std::string> manager::get_conflicting_enabled(const elem& e) const
 	return result;
 }
 
-bool manager::conflicts(const elem& elem1, const elem& elem2, bool directonly) const
+bool manager::does_conflict(const elem& elem1, const elem& elem2, bool directonly) const
 {
 	if(elem1 == elem2) {
 		return false;
@@ -258,7 +258,7 @@ bool manager::conflicts(const elem& elem1, const elem& elem2, bool directonly) c
 	if(data1.has_attribute("allow_" + elem2.type)) {
 		std::vector<std::string> allowed = utils::split(data1["allow_" + elem2.type]);
 
-		result = !utils::contains(allowed, elem2.id) && !requires(elem1, elem2);
+		result = !utils::contains(allowed, elem2.id) && !does_require(elem1, elem2);
 	} else if(data1.has_attribute("disallow_" + elem2.type)) {
 		std::vector<std::string> disallowed = utils::split(data1["disallow_" + elem2.type]);
 
@@ -268,7 +268,7 @@ bool manager::conflicts(const elem& elem1, const elem& elem2, bool directonly) c
 	if(data2.has_attribute("allow_" + elem1.type)) {
 		std::vector<std::string> allowed = utils::split(data2["allow_" + elem1.type]);
 
-		result = result || (!utils::contains(allowed, elem1.id) && !requires(elem2, elem1));
+		result = result || (!utils::contains(allowed, elem1.id) && !does_require(elem2, elem1));
 	} else if(data2.has_attribute("disallow_" + elem1.type)) {
 		std::vector<std::string> disallowed = utils::split(data2["disallow_" + elem1.type]);
 
@@ -286,7 +286,7 @@ bool manager::conflicts(const elem& elem1, const elem& elem2, bool directonly) c
 		for(const std::string& s : req1) {
 			elem m(s, "modification");
 
-			if(conflicts(elem2, m, true)) {
+			if(does_conflict(elem2, m, true)) {
 				return true;
 			}
 		}
@@ -294,7 +294,7 @@ bool manager::conflicts(const elem& elem1, const elem& elem2, bool directonly) c
 		for(const std::string& s : req2) {
 			elem m(s, "modification");
 
-			if(conflicts(elem1, m, true)) {
+			if(does_conflict(elem1, m, true)) {
 				return true;
 			}
 		}
@@ -305,7 +305,7 @@ bool manager::conflicts(const elem& elem1, const elem& elem2, bool directonly) c
 			for(const std::string& id2 : req2) {
 				elem m2(id2, "modification");
 
-				if(conflicts(m1, m2)) {
+				if(does_conflict(m1, m2)) {
 					return true;
 				}
 			}
@@ -315,7 +315,7 @@ bool manager::conflicts(const elem& elem1, const elem& elem2, bool directonly) c
 	return false;
 }
 
-bool manager::requires(const elem& elem1, const elem& elem2) const
+bool manager::does_require(const elem& elem1, const elem& elem2) const
 {
 	if(elem2.type != "modification") {
 		return false;
@@ -552,13 +552,13 @@ bool manager::change_scenario(const std::string& id)
 
 	// Now checking if the currently selected era conflicts the scenario
 	// and changing era if necessary
-	if(!conflicts(scen, elem(era_, "era"))) {
+	if(!does_conflict(scen, elem(era_, "era"))) {
 		return true;
 	}
 
 	std::vector<std::string> compatible;
 	for(const config& i : depinfo_.child_range("era")) {
-		if(!conflicts(scen, elem(i["id"], "era"))) {
+		if(!does_conflict(scen, elem(i["id"], "era"))) {
 			compatible.push_back(i["id"]);
 		}
 	}
@@ -620,13 +620,13 @@ bool manager::change_era(const std::string& id)
 
 	// Now checking if the currently selected scenario conflicts the era
 	// and changing scenario if necessary
-	if(!conflicts(era, elem(scenario_, "scenario"))) {
+	if(!does_conflict(era, elem(scenario_, "scenario"))) {
 		return true;
 	}
 
 	std::vector<std::string> compatible;
 	for(const config& i : depinfo_.child_range("scenario")) {
-		if(!conflicts(era, elem(i["id"], "scenario"))) {
+		if(!does_conflict(era, elem(i["id"], "scenario"))) {
 			compatible.push_back(i["id"]);
 		}
 	}
@@ -654,7 +654,7 @@ bool manager::change_modifications(const std::vector<std::string>& modifications
 		elem ei(i, "modification");
 
 		for(const std::string& j : filtered) {
-			ok = ok && !conflicts(ei, elem(j, "modification"));
+			ok = ok && !does_conflict(ei, elem(j, "modification"));
 		}
 
 		if(ok) {
@@ -677,7 +677,7 @@ bool manager::change_modifications(const std::vector<std::string>& modifications
 		bool ok = true;
 
 		for(const std::string& s : mods_) {
-			ok = ok && !conflicts(era, elem(s, "modification"));
+			ok = ok && !does_conflict(era, elem(s, "modification"));
 		}
 
 		if(ok) {
@@ -714,7 +714,7 @@ bool manager::change_modifications(const std::vector<std::string>& modifications
 		elem scen(c["id"], "scenario");
 		bool ok = true;
 		for(const std::string& s : mods_) {
-			ok = ok && !conflicts(scen, elem(s, "modification"));
+			ok = ok && !does_conflict(scen, elem(s, "modification"));
 		}
 
 		if(ok) {

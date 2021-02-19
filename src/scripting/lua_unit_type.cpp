@@ -242,7 +242,7 @@ namespace lua_unit_type {
 
 void luaW_pushunittype(lua_State *L, const unit_type& ut)
 {
-	*static_cast<const unit_type**>(lua_newuserdata(L, sizeof(unit_type*))) = &ut;
+	*static_cast<const unit_type**>(lua_newuserdatauv(L, sizeof(unit_type*), 0)) = &ut;
 	luaL_setmetatable(L, UnitType);
 }
 

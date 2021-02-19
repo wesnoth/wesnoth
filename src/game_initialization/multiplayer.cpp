@@ -48,6 +48,7 @@
 #include <fstream>
 #include <functional>
 #include <future>
+#include <optional>
 #include <thread>
 
 static lg::log_domain log_mp("mp/main");
@@ -68,7 +69,7 @@ public:
 	// Declare this as a friend to allow direct access to enter_create_mode
 	friend void mp::start_local_game();
 
-	mp_manager(const std::string& host);
+	mp_manager(const std::optional<std::string> host);
 
 	~mp_manager()
 	{
@@ -151,7 +152,7 @@ public:
 	}
 };
 
-mp_manager::mp_manager(const std::string& host)
+mp_manager::mp_manager(const std::optional<std::string> host)
 	: network_worker()
 	, stop(false)
 	, connection(nullptr)
@@ -159,14 +160,11 @@ mp_manager::mp_manager(const std::string& host)
 	, state()
 	, lobby_info(::installed_addons())
 {
-	assert(!manager);
-	manager = this;
-
 	state.classification().campaign_type = game_classification::CAMPAIGN_TYPE::MULTIPLAYER;
 
-	if(!host.empty()) {
+	if(host) {
 		gui2::dialogs::loading_screen::display([&]() {
-			connection = open_connection(host);
+			connection = open_connection(*host);
 
 			// If for whatever reason our connection is null at this point (dismissing the password prompt, for
 			// instance), treat it as a normal condition and exit. Any actual error conditions throw exceptions
@@ -213,6 +211,11 @@ mp_manager::mp_manager(const std::string& host)
 			received_initial_gamelist.get_future().wait();
 		});
 	}
+
+	// Avoid setting this until the connection has been fully established. open_connection may throw,
+	// in which case we don't want to point to an object instance that has not properly connected.
+	assert(!manager);
+	manager = this;
 }
 
 std::unique_ptr<wesnothd_connection> mp_manager::open_connection(std::string host)
@@ -580,7 +583,7 @@ bool mp_manager::enter_lobby_mode()
 				enter_create_mode();
 				break;
 			case gui2::dialogs::mp_lobby::JOIN:
-				FALLTHROUGH;
+				[[fallthrough]];
 			case gui2::dialogs::mp_lobby::OBSERVE:
 				enter_wait_mode(dlg_joined_game_id, dlg_retval == gui2::dialogs::mp_lobby::OBSERVE);
 				break;
@@ -724,7 +727,7 @@ void start_local_game()
 
 	preferences::set_message_private(false);
 
-	mp_manager("").enter_create_mode();
+	mp_manager(std::nullopt).enter_create_mode();
 }
 
 void start_local_game_commandline(const commandline_options& cmdline_opts)

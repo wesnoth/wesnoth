@@ -30,8 +30,6 @@
 #include "units/map.hpp"
 #include "team.hpp"
 
-#include <boost/variant/static_visitor.hpp>
-
 static lg::log_domain log_engine("engine");
 #define LOG_NG LOG_STREAM(info, log_engine)
 #define WRN_NG LOG_STREAM(warn, log_engine)
@@ -106,7 +104,7 @@ vconfig::vconfig(const config & cfg, const std::shared_ptr<const config> & cache
  *                          If false, no copy is made, so @a cfg must be
  *                          guaranteed to persist as long as the vconfig will.
  *                          If in doubt, set to true; it is less efficient, but safe.
- * @param[in] vars          
+ * @param[in] vars
  * See also make_safe().
  */
 vconfig::vconfig(const config &cfg, bool manage_memory, const variable_set* vars)
@@ -330,7 +328,10 @@ bool vconfig::has_child(const std::string& key) const
 }
 
 namespace {
-	struct vconfig_expand_visitor : boost::static_visitor<void>
+	struct vconfig_expand_visitor
+#ifdef USING_BOOST_VARIANT
+		: boost::static_visitor<void>
+#endif
 	{
 		config::attribute_value &result;
 		const variable_set& vars;

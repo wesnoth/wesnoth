@@ -17,10 +17,11 @@
 #include "gui/core/event/dispatcher.hpp"
 
 #include "gui/widgets/widget.hpp"
+#include "utils/ranges.hpp"
 
 #include <SDL2/SDL_events.h>
 
-#include <boost/range/adaptor/reversed.hpp>
+#include <cassert>
 
 namespace gui2
 {
@@ -290,7 +291,7 @@ inline bool fire_event(const ui_event event,
 	bool halt = false;
 
 	/***** ***** ***** Pre ***** ***** *****/
-	for(auto& ritor_widget : boost::adaptors::reverse(event_chain)) {
+	for(auto& ritor_widget : utils::reversed_view(event_chain)) {
 		auto& signal = dispatcher_implementation::event_signal<T>(*ritor_widget.first, ritor_widget.second);
 
 		for(auto& pre_func : signal.pre_child) {

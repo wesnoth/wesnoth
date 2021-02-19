@@ -469,12 +469,12 @@ temporary_unit_mover::temporary_unit_mover(unit_map& m, const map_location& src,
 	, old_moves_(-1)
 	, temp_(src == dst ? unit_ptr() : m_.extract(dst))
 {
-	std::pair<unit_map::iterator, bool> move_result = m_.move(src_, dst_);
+	auto [iter, success] = m_.move(src_, dst_);
 
 	// Set the movement.
-	if(move_result.second) {
-		old_moves_ = move_result.first->movement_left(true);
-		move_result.first->set_movement(new_moves);
+	if(success) {
+		old_moves_ = iter->movement_left(true);
+		iter->set_movement(new_moves);
 	}
 }
 
@@ -486,12 +486,12 @@ temporary_unit_mover::temporary_unit_mover(
 	, old_moves_(-1)
 	, temp_(src == dst ? unit_ptr() : m_.extract(dst))
 {
-	std::pair<unit_map::iterator, bool> move_result = m_.move(src_, dst_);
+	auto [iter, success] = m_.move(src_, dst_);
 
 	// Set the movement.
-	if(move_result.second) {
-		old_moves_ = move_result.first->movement_left(true);
-		move_result.first->set_movement(new_moves);
+	if(success) {
+		old_moves_ = iter->movement_left(true);
+		iter->set_movement(new_moves);
 	}
 }
 
@@ -522,11 +522,12 @@ temporary_unit_mover::temporary_unit_mover(game_board& b, const map_location& sr
 temporary_unit_mover::~temporary_unit_mover()
 {
 	try {
-		std::pair<unit_map::iterator, bool> move_result = m_.move(dst_, src_);
+		auto [iter, success] = m_.move(dst_, src_);
 
 		// Restore the movement?
-		if(move_result.second && old_moves_ >= 0)
-			move_result.first->set_movement(old_moves_);
+		if(success && old_moves_ >= 0) {
+			iter->set_movement(old_moves_);
+		}
 
 		// Restore the extracted unit?
 		if(temp_) {

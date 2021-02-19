@@ -74,7 +74,7 @@ FOREACH_SPIRIT_PO_CONJUNCTION(FWD_DECL_)
 
 #define WRAP_(name, op) boost::recursive_wrapper< name >, \
 
-typedef boost::variant<constant, n_var, boost::recursive_wrapper<not_op>, 
+typedef boost::variant<constant, n_var, boost::recursive_wrapper<not_op>,
 FOREACH_SPIRIT_PO_BINARY_OP(WRAP_)
 FOREACH_SPIRIT_PO_CONJUNCTION(WRAP_)
 boost::recursive_wrapper<ternary_op>> expr;
@@ -172,7 +172,7 @@ namespace default_plural_forms {
  *
  *   CURRENT_PRECEDENCE = LOWER_PRECEDENCE[local_var = result] >>
  *     (BINARY_OP(local_var) | OTHER_OP(local_var) | YET_ANOTHER_OP(local_var) | qi::attr(local_var)
- * 
+ *
  */
 
 template <typename Iterator>
@@ -215,7 +215,7 @@ struct op_grammar : qi::grammar<Iterator, expr(), qi::space_type> {
     not_ = lit('!') >> atom_level_;
     atom_level_ = paren_expr_ | not_ | n_ | constant_;
 
-    mod_ = lit('%') >> attr(qi::_r1) >> atom_level_; 
+    mod_ = lit('%') >> attr(qi::_r1) >> atom_level_;
     mod_level_ = qi::omit[atom_level_[qi::_a = qi::_1]] >> (mod_(qi::_a) | attr(qi::_a));
 
     ge_ = lit(">=") >> attr(qi::_r1) >> mod_level_;
@@ -383,7 +383,7 @@ FOREACH_SPIRIT_PO_BINARY_OP(EMIT_OP_)
   std::vector<instruction> operator()(const and_op & o) const {
     auto result = boost::apply_visitor(*this, o.e1);
     auto second = boost::apply_visitor(*this, o.e2);
-    bool second_is_boolean = boost::apply_visitor(is_boolean{}, o.e2);
+    bool second_is_boolean = boost::apply_visitor(is_boolean(), o.e2);
 
     uint sec_size = static_cast<uint>(second.size());
     if (!second_is_boolean) { sec_size += 2; }
@@ -404,7 +404,7 @@ FOREACH_SPIRIT_PO_BINARY_OP(EMIT_OP_)
   std::vector<instruction> operator()(const or_op & o) const {
     auto result = boost::apply_visitor(*this, o.e1);
     auto second = boost::apply_visitor(*this, o.e2);
-    bool second_is_boolean = boost::apply_visitor(is_boolean{}, o.e2);
+    bool second_is_boolean = boost::apply_visitor(is_boolean(), o.e2);
 
     uint sec_size = static_cast<uint>(second.size());
     if (!second_is_boolean) { sec_size += 2; }
@@ -491,7 +491,7 @@ private:
 
 public:
   explicit stack_machine(const expr & e)
-    : instruction_seq_(boost::apply_visitor(emitter{}, e))
+    : instruction_seq_(boost::apply_visitor(emitter(), e))
     , stack_()
     , n_value_()
   {}

@@ -1338,7 +1338,7 @@ color_t string_to_color(const std::string &cmp_str)
 	}
 	// a #rrggbb color in pango format.
 	if (*cmp_str.c_str() == '#' && cmp_str.size() == 7) {
-		return color_t::from_argb_bytes(strtoul(cmp_str.c_str() + 1, nullptr, 16));
+		return color_t::from_hex_string(cmp_str.substr(1));
 	}
 	return font::NORMAL_COLOR;
 }

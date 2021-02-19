@@ -6,7 +6,7 @@ function wesnoth.wml_actions.find_path(cfg)
 	local unit = wesnoth.units.find_on_map(filter_unit)[1] or wml.error("[find_path]'s filter didn't match any unit")
 	local filter_location = wml.get_child(cfg, "destination") or wml.error( "[find_path] missing required [destination] tag" )
 	-- support for $this_unit
-	local this_unit = utils.start_var_scope("this_unit")
+	local this_unit <close> = utils.scoped_var("this_unit")
 
 	wml.variables["this_unit"] = nil -- clearing this_unit
 	wml.variables["this_unit"] = unit.__cfg -- cfg field needed
@@ -23,7 +23,7 @@ function wesnoth.wml_actions.find_path(cfg)
 	end
 
 	local allow_multiple_turns = cfg.allow_multiple_turns
-	local viewing_side
+	local ignore_visibility = not cfg.check_visibility
 
 	local nearest_by_cost = true
 	local nearest_by_distance = false
@@ -37,8 +37,6 @@ function wesnoth.wml_actions.find_path(cfg)
 		nearest_by_distance = false
 		nearest_by_steps = true
 	end
-
-	if not cfg.check_visibility then viewing_side = 0 end -- if check_visiblity then shroud is taken in account
 
 	-- only the first location with the lowest distance and lowest movement cost will match.
 	local locations = wesnoth.get_locations(filter_location)
@@ -57,7 +55,12 @@ function wesnoth.wml_actions.find_path(cfg)
 		else
 			local distance = wesnoth.map.distance_between ( unit.x, unit.y, location[1], location[2] )
 			-- if we pass an unreachable location then an empty path and high value cost will be returned
-			local path, cost = wesnoth.find_path( unit, location[1], location[2], { max_cost = max_cost, ignore_units = ignore_units, ignore_teleport = ignore_teleport, viewing_side = viewing_side } )
+			local path, cost = wesnoth.find_path( unit, location[1], location[2], {
+				max_cost = max_cost,
+				ignore_units = ignore_units,
+				ignore_teleport = ignore_teleport,
+				ignore_visibility = ignore_visibility
+			} )
 
 			if #path == 0 or cost >= 42424241 then
 				-- it's not a reachable hex. 42424242 is the high value returned for unwalkable or busy terrains
@@ -104,7 +107,7 @@ function wesnoth.wml_actions.find_path(cfg)
 				max_cost = max_cost,
 				ignore_units = ignore_units,
 				ignore_teleport = ignore_teleport,
-				viewing_side = viewing_side
+				ignore_visibility = ignore_visibility
 			})
 		local turns
 
@@ -116,17 +119,13 @@ function wesnoth.wml_actions.find_path(cfg)
 
 		if cost >= 42424241 then -- it's the high value returned for unwalkable or busy terrains
 			wml.variables[tostring(variable)] = { hexes = 0 } -- set only length, nil all other values
-			-- support for $this_unit
-			wml.variables["this_unit"] = nil -- clearing this_unit
-			utils.end_var_scope("this_unit", this_unit)
-		return end
+			return
+		end
 
 		if not allow_multiple_turns and turns > 1 then -- location cannot be reached in one turn
 			wml.variables[tostring(variable)] = { hexes = 0 }
-			-- support for $this_unit
-			wml.variables["this_unit"] = nil -- clearing this_unit
-			utils.end_var_scope("this_unit", this_unit)
-		return end -- skip the cycles below
+			return
+		end -- skip the cycles below
 
 		wml.variables[tostring( variable )] =
 			{
@@ -146,7 +145,7 @@ function wesnoth.wml_actions.find_path(cfg)
 					max_cost = max_cost,
 					ignore_units = ignore_units,
 					ignore_teleport = ignore_teleport,
-					viewing_side = viewing_side
+					ignore_visibility = ignore_visibility
 				} )
 			local sub_turns
 
@@ -165,8 +164,4 @@ function wesnoth.wml_actions.find_path(cfg)
 				}
 		end
 	end
-
-	-- support for $this_unit
-	wml.variables["this_unit"] = nil -- clearing this_unit
-	utils.end_var_scope("this_unit", this_unit)
 end

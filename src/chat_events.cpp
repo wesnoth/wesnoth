@@ -22,8 +22,6 @@
 #include "preferences/general.hpp"
 #include "preferences/game.hpp"
 
-#include <boost/range/algorithm/find_if.hpp>
-
 static lg::log_domain log_engine("engine");
 #define ERR_NG LOG_STREAM(err, log_engine)
 #define LOG_NG LOG_STREAM(info, log_engine)

@@ -23,16 +23,12 @@
 #include "lexical_cast.hpp"
 #include "log.hpp"
 #include "serialization/string_utils.hpp"
-#include "utils/const_clone.hpp"
 
 #include <cstdlib>
 #include <cstring>
 #include <deque>
 #include <functional>
 #include <istream>
-
-#include <boost/variant/get.hpp>
-#include <boost/variant/static_visitor.hpp>
 
 static lg::log_domain log_config("config");
 #define ERR_CF LOG_STREAM(err, log_config)
@@ -243,9 +239,9 @@ void config_attribute_value::write_if_not_empty(const std::string& v)
 
 bool config_attribute_value::to_bool(bool def) const
 {
-	if(const yes_no* p = boost::get<const yes_no>(&value_))
+	if(const yes_no* p = utils::get_if<yes_no>(&value_))
 		return *p;
-	if(const true_false* p = boost::get<const true_false>(&value_))
+	if(const true_false* p = utils::get_if<true_false>(&value_))
 		return *p;
 
 	// No other types are ever recognized as boolean.
@@ -256,13 +252,16 @@ namespace
 {
 /** Visitor for converting a variant to a numeric type (T). */
 template<typename T>
-class attribute_numeric_visitor : public boost::static_visitor<T>
+class attribute_numeric_visitor
+#ifdef USING_BOOST_VARIANT
+	: public boost::static_visitor<T>
+#endif
 {
 public:
 	// Constructor stores the default value.
 	attribute_numeric_visitor(T def) : def_(def) {}
 
-	T operator()(const boost::blank&) const { return def_; }
+	T operator()(const utils::monostate&) const { return def_; }
 	T operator()(bool)                 const { return def_; }
 	T operator()(int i)                const { return static_cast<T>(i); }
 	T operator()(unsigned long long u) const { return static_cast<T>(u); }
@@ -306,14 +305,17 @@ double config_attribute_value::to_double(double def) const
 }
 
 /** Visitor for converting a variant to a string. */
-class config_attribute_value::string_visitor : public boost::static_visitor<std::string>
+class config_attribute_value::string_visitor
+#ifdef USING_BOOST_VARIANT
+	: public boost::static_visitor<std::string>
+#endif
 {
 	const std::string default_;
 
 public:
 	string_visitor(const std::string& fallback) : default_(fallback) {}
 
-	std::string operator()(const boost::blank &) const { return default_; }
+	std::string operator()(const utils::monostate &) const { return default_; }
 	std::string operator()(const yes_no & b)     const { return b.str(); }
 	std::string operator()(const true_false & b) const { return b.str(); }
 	std::string operator()(int i)                const { return std::to_string(i); }
@@ -330,7 +332,7 @@ std::string config_attribute_value::str(const std::string& fallback) const
 
 t_string config_attribute_value::t_str() const
 {
-	if(const t_string* p = boost::get<const t_string>(&value_)) {
+	if(const t_string* p = utils::get_if<t_string>(&value_)) {
 		return *p;
 	}
 
@@ -342,7 +344,7 @@ t_string config_attribute_value::t_str() const
  */
 bool config_attribute_value::blank() const
 {
-	return boost::get<const boost::blank>(&value_) != nullptr;
+	return utils::holds_alternative<utils::monostate>(value_);
 }
 
 /**
@@ -350,11 +352,11 @@ bool config_attribute_value::blank() const
  */
 bool config_attribute_value::empty() const
 {
-	if(boost::get<const boost::blank>(&value_)) {
+	if(blank()) {
 		return true;
 	}
 
-	if(const std::string* p = boost::get<const std::string>(&value_)) {
+	if(const std::string* p = utils::get_if<std::string>(&value_)) {
 		return p->empty();
 	}
 
@@ -362,7 +364,10 @@ bool config_attribute_value::empty() const
 }
 
 /** Visitor handling equality checks. */
-class config_attribute_value::equality_visitor : public boost::static_visitor<bool>
+class config_attribute_value::equality_visitor
+#ifdef USING_BOOST_VARIANT
+	: public boost::static_visitor<bool>
+#endif
 {
 public:
 	// Most generic: not equal.
@@ -398,7 +403,7 @@ public:
  */
 bool config_attribute_value::operator==(const config_attribute_value& other) const
 {
-	return boost::apply_visitor(equality_visitor(), value_, other.value_);
+	return utils::visit(equality_visitor(), value_, other.value_);
 }
 
 /**
@@ -422,7 +427,8 @@ std::ostream& operator<<(std::ostream& os, const config_attribute_value& v)
 {
 	// Simple implementation, but defined out-of-line because of the templating
 	// involved.
-	return os << v.value_;
+	v.apply_visitor([&os](const auto& val) { os << val; });
+	return os;
 }
 
 namespace utils

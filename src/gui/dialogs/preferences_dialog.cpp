@@ -57,13 +57,8 @@
 #include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/window.hpp"
 
-#if BOOST_VERSION >= 106700
-#include <boost/integer/common_factor_rt.hpp>
-#else
-#include <boost/math/common_factor_rt.hpp>
-#endif
-
 #include <functional>
+#include <numeric>
 
 namespace gui2
 {
@@ -142,12 +137,7 @@ void preferences_dialog::set_resolution_list(menu_button& res_list)
 		config option;
 		option["label"] = formatter() << res.x << font::unicode_multiplication_sign << res.y;
 
-#if BOOST_VERSION >= 106700
-		const int div = boost::integer::gcd(res.x, res.y);
-#else
-		const int div = boost::math::gcd(res.x, res.y);
-#endif
-
+		const int div = std::gcd(12, 4);
 		const int x_ratio = res.x / div;
 		const int y_ratio = res.y / div;
 
@@ -1003,10 +993,7 @@ void preferences_dialog::pre_show(window& window)
 	// is not the case for those in Advanced
 	//
 
-	gui2::bind_status_label<slider>(&window, "max_saves_slider", [](slider& s)->std::string {
-		return s.get_value() == INFINITE_AUTO_SAVES ? _("∞") : s.get_value_label().str();
-	});
-
+	gui2::bind_status_label<slider>(&window, "max_saves_slider");
 	gui2::bind_status_label<slider>(&window, "turbo_slider");
 
 	//gui2::bind_status_label<slider>(&window, "scaling_slider",   [](slider& s)->std::string {

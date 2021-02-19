@@ -16,8 +16,6 @@
 
 #include "gui/auxiliary/iterator/walker_grid.hpp"
 
-#include "global.hpp"
-
 #include <cassert>
 
 namespace gui2
@@ -43,7 +41,7 @@ walker_base::state_t grid::next(const level level)
 				widget_ = nullptr;
 				return invalid;
 			}
-			FALLTHROUGH;
+			[[fallthrough]];
 		case internal:
 			assert(false);
 			return fail;

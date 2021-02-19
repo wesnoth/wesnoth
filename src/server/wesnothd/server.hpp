@@ -25,6 +25,7 @@
 
 #include <boost/asio/steady_timer.hpp>
 
+#include <optional>
 #include <random>
 
 namespace wesnothd
@@ -46,26 +47,28 @@ private:
 	bool accepting_connections() const { return !graceful_restart; }
 
 	void handle_player(boost::asio::yield_context yield, socket_ptr socket, const player& player);
-	void handle_player_in_lobby(socket_ptr socket, simple_wml::document& data);
-	void handle_player_in_game(socket_ptr socket, simple_wml::document& data);
-	void handle_whisper(socket_ptr socket, simple_wml::node& whisper);
-	void handle_query(socket_ptr socket, simple_wml::node& query);
-	void handle_nickserv(socket_ptr socket, simple_wml::node& nickserv);
-	void handle_message(socket_ptr socket, simple_wml::node& message);
-	void handle_create_game(socket_ptr socket, simple_wml::node& create_game);
-	void create_game(player_record& host, simple_wml::node& create_game);
+	void handle_player_in_lobby(player_iterator player, simple_wml::document& doc);
+	void handle_player_in_game(player_iterator player, simple_wml::document& doc);
+	void handle_whisper(player_iterator player, simple_wml::node& whisper);
+	void handle_query(player_iterator player, simple_wml::node& query);
+	void handle_nickserv(player_iterator player, simple_wml::node& nickserv);
+	void handle_message(player_iterator player, simple_wml::node& message);
+	void handle_create_game(player_iterator player, simple_wml::node& create_game);
 	void cleanup_game(game*); // deleter for shared_ptr
-	void handle_join_game(socket_ptr socket, simple_wml::node& join);
-	void remove_player(socket_ptr socket);
+	void handle_join_game(player_iterator player, simple_wml::node& join);
+	void disconnect_player(player_iterator player);
+	void remove_player(player_iterator player);
 
 	void send_server_message(socket_ptr socket, const std::string& message, const std::string& type);
-	void send_to_lobby(simple_wml::document& data, socket_ptr exclude = socket_ptr());
-	void send_server_message_to_lobby(const std::string& message, socket_ptr exclude = socket_ptr());
-	void send_server_message_to_all(const std::string& message, socket_ptr exclude = socket_ptr());
+	void send_server_message(player_iterator player, const std::string& message, const std::string& type) {
+		send_server_message(player->socket(), message, type);
+	}
+	void send_to_lobby(simple_wml::document& data, std::optional<player_iterator> exclude = {});
+	void send_server_message_to_lobby(const std::string& message, std::optional<player_iterator> exclude = {});
+	void send_server_message_to_all(const std::string& message, std::optional<player_iterator> exclude = {});
 
-	bool player_is_in_game(socket_ptr socket) const
-	{
-		return player_connections_.find(socket)->get_game() != nullptr;
+	bool player_is_in_game(player_iterator player) const {
+		return player->get_game() != nullptr;
 	}
 
 	wesnothd::ban_manager ban_manager_;
@@ -190,7 +193,7 @@ private:
 
 	void delete_game(int, const std::string& reason="");
 
-	void update_game_in_lobby(const wesnothd::game& g, const socket_ptr& exclude=socket_ptr());
+	void update_game_in_lobby(const game& g, std::optional<player_iterator> exclude = {});
 
 	void start_new_server();
 

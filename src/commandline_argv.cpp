@@ -15,7 +15,6 @@
 
 #ifdef _WIN32
 
-#include "global.hpp"
 #include "serialization/unicode_cast.hpp"
 
 #include <windows.h>
@@ -76,11 +75,9 @@ std::vector<std::string> win32_read_argv(const std::string& input)
 
 #endif
 
-std::vector<std::string> read_argv(int argc, char** argv)
+std::vector<std::string> read_argv([[maybe_unused]] int argc, [[maybe_unused]] char** argv)
 {
 #ifdef _WIN32
-	UNUSED(argc);
-	UNUSED(argv);
 	// On Windows, argv is ANSI-encoded by default. Wesnoth absolutely needs to
 	// work with UTF-8 values in order to avoid losing or corrupting
 	// information from the command line.

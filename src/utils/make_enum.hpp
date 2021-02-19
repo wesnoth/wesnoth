@@ -77,8 +77,6 @@
 
 #pragma once
 
-#include "global.hpp"
-
 #include <cassert>
 #include <exception>
 #include <string>

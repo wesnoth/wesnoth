@@ -44,6 +44,8 @@ private:
 	/** Inherited from modal_dialog. */
 	virtual void pre_show(window& window) override;
 
+	void request_history(int offset);
+
 	mp::user_info& info_;
 
 	wesnothd_connection& connection_;

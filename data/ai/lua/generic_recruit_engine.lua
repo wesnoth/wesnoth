@@ -587,7 +587,7 @@ return {
                 -- If the recruited unit cannot reach the target hex, return it to the pool of targets
                 if recruit_data.recruit.target_hex and recruit_data.recruit.target_hex[1] then
                     local unit = wesnoth.units.get(recruit_data.recruit.best_hex[1], recruit_data.recruit.best_hex[2])
-                    local path, cost = wesnoth.find_path(unit, recruit_data.recruit.target_hex[1], recruit_data.recruit.target_hex[2], {viewing_side=0, max_cost=unit.max_moves+1})
+                    local path, cost = wesnoth.find_path(unit, recruit_data.recruit.target_hex[1], recruit_data.recruit.target_hex[2], {ignore_visibility=true, max_cost=unit.max_moves+1})
                     if cost > unit.max_moves then
                         -- The last village added to the list should be the one we tried to aim for, check anyway
                         local last = #recruit_data.castle.assigned_villages_x
@@ -676,7 +676,7 @@ return {
             local target_hex = recruit_data.recruit.target_hex
 
             local reference_hex = target_hex[1] and target_hex or best_hex
-            local enemy_location, distance_to_enemy = AH.get_closest_enemy(reference_hex, wesnoth.current.side, { viewing_side = 0 })
+            local enemy_location, distance_to_enemy = AH.get_closest_enemy(reference_hex, wesnoth.current.side, { ignore_visibility = true })
 
             -- If no enemy is on the map, then we first use closest enemy start hex,
             -- and if that does not exist either, a location mirrored w.r.t the center of the map
@@ -731,7 +731,7 @@ return {
                     random_gender = false
                 }
                 if target_hex[1] then
-                    local path, cost = wesnoth.find_path(recruit_unit, target_hex[1], target_hex[2], {viewing_side=0, max_cost=wesnoth.unit_types[recruit_id].max_moves+1})
+                    local path, cost = wesnoth.find_path(recruit_unit, target_hex[1], target_hex[2], {ignore_visibility=true, max_cost=wesnoth.unit_types[recruit_id].max_moves+1})
                     if cost > wesnoth.unit_types[recruit_id].max_moves then
                         -- Unit cost is effectively higher if cannot reach the village
                         efficiency_index = 2
@@ -854,7 +854,7 @@ return {
                 if target_hex[1] then
                     recruitable_units[recruit_id].x = best_hex[1]
                     recruitable_units[recruit_id].y = best_hex[2]
-                    local path, cost = wesnoth.find_path(recruitable_units[recruit_id], target_hex[1], target_hex[2], {viewing_side=0, max_cost=wesnoth.unit_types[recruit_id].max_moves+1})
+                    local path, cost = wesnoth.find_path(recruitable_units[recruit_id], target_hex[1], target_hex[2], {ignore_visibility=true, max_cost=wesnoth.unit_types[recruit_id].max_moves+1})
                     if cost > wesnoth.unit_types[recruit_id].max_moves then
                         -- penalty if the unit can't reach the target village
                         bonus = bonus - 0.2
@@ -993,7 +993,7 @@ return {
                             local key = unit.type .. '_' .. v[1] .. '-' .. v[2] .. '_' .. c[1]  .. '-' .. c[2]
                             local path, unit_distance
                             if (not recruit_data.unit_distances[key]) then
-                                path, unit_distance = wesnoth.find_path(unit, c[1], c[2], {viewing_side=0, max_cost=fastest_unit_speed+1})
+                                path, unit_distance = wesnoth.find_path(unit, c[1], c[2], {ignore_visibility=true, max_cost=fastest_unit_speed+1})
                                 recruit_data.unit_distances[key] = unit_distance
                             else
                                 unit_distance = recruit_data.unit_distances[key]

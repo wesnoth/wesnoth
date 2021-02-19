@@ -44,8 +44,6 @@
 
 #pragma once
 
-#include "global.hpp"
-
 #ifndef __func__
  #ifdef __FUNCTION__
   #define __func__ __FUNCTION__

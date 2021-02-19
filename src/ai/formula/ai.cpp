@@ -263,10 +263,11 @@ void formula_ai::add_formula_function(const std::string& name, const_formula_ptr
 	function_table_.add_function(name, std::make_shared<user_formula_function>(name, formula, precondition, args));
 }
 
-namespace {
+namespace
+{
 template<typename Container>
-variant villages_from_set(const Container& villages,
-				          const std::set<map_location>* exclude=nullptr) {
+variant villages_from_set(const Container& villages, const std::set<map_location>* exclude = nullptr)
+{
 	std::vector<variant> vars;
 	for(const map_location& loc : villages) {
 		if(exclude && exclude->count(loc)) {
@@ -277,7 +278,22 @@ variant villages_from_set(const Container& villages,
 
 	return variant(vars);
 }
+
+// TODO: I have no damn idea what to name this function
+variant visit_helper(const utils::variant<bool, std::vector<std::string>>& input)
+{
+	return utils::visit(
+		[](const auto& v) {
+			if constexpr(utils::decayed_is_same<bool, decltype(v)>) {
+				return variant(v);
+			} else {
+				const std::vector<variant> vars(v.begin(), v.end());
+				return variant(vars);
+			}
+		},
+		input);
 }
+} // namespace
 
 variant formula_ai::get_value(const std::string& key) const
 {
@@ -307,17 +323,7 @@ variant formula_ai::get_value(const std::string& key) const
 
 	} else if(key == "leader_ignores_keep")
 	{
-		auto leader_ignores_keep = get_leader_ignores_keep();
-		if (utils::variant_index(leader_ignores_keep) == 0) {
-			return variant(utils::get<bool>(leader_ignores_keep));
-		} else {
-			std::vector<std::string> &strlist = utils::get<std::vector<std::string>>(leader_ignores_keep);
-			std::vector<variant> vars;
-			for(const std::string &i : strlist) {
-				vars.emplace_back(i);
-			}
-			return variant(vars);
-		}
+		return visit_helper(get_leader_ignores_keep());
 
 	} else if(key == "leader_value")
 	{
@@ -325,31 +331,11 @@ variant formula_ai::get_value(const std::string& key) const
 
 	} else if(key == "passive_leader")
 	{
-		auto passive_leader = get_passive_leader();
-		if (utils::variant_index(passive_leader) == 0) {
-			return variant(utils::get<bool>(passive_leader));
-		} else {
-			std::vector<std::string> &strlist = utils::get<std::vector<std::string>>(passive_leader);
-			std::vector<variant> vars;
-			for(const std::string &i : strlist) {
-				vars.emplace_back(i);
-			}
-			return variant(vars);
-		}
+		return visit_helper(get_passive_leader());
 
 	} else if(key == "passive_leader_shares_keep")
 	{
-		auto passive_leader_shares_keep = get_passive_leader_shares_keep();
-		if (utils::variant_index(passive_leader_shares_keep) == 0) {
-			return variant(utils::get<bool>(passive_leader_shares_keep));
-		} else {
-			std::vector<std::string> &strlist = utils::get<std::vector<std::string>>(passive_leader_shares_keep);
-			std::vector<variant> vars;
-			for(const std::string &i : strlist) {
-				vars.emplace_back(i);
-			}
-			return variant(vars);
-		}
+		return visit_helper(get_passive_leader_shares_keep());
 
 	} else if(key == "recruitment_pattern")
 	{

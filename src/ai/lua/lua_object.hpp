@@ -118,16 +118,20 @@ template <>
 inline void lua_object<utils::variant<bool, std::vector<std::string>>>::from_type(lua_State *L, std::shared_ptr<utils::variant<bool, std::vector<std::string>>> value)
 {
 	if(value) {
-		if (utils::variant_index(*value) == 0) {
-			lua_pushboolean(L, utils::get<bool>(*value));
-		} else {
-			std::vector<std::string> strlist = utils::get<std::vector<std::string>>(*value);
-			lua_createtable(L, strlist.size(), 0);
-			for(const std::string& str : strlist) {
-				lua_pushlstring(L, str.c_str(), str.size());
-				lua_rawseti(L, -2, lua_rawlen(L, -2) + 1);
-			}
-		}
+		// TODO: this is is duplicated as a helper function in ai/lua/core.cpp
+		utils::visit(
+			[L](const auto& v) {
+				if constexpr(utils::decayed_is_same<bool, decltype(v)>) {
+					lua_pushboolean(L, v);
+				} else {
+					lua_createtable(L, v.size(), 0);
+					for(const std::string& str : v) {
+						lua_pushlstring(L, str.c_str(), str.size());
+						lua_rawseti(L, -2, lua_rawlen(L, -2) + 1);
+					}
+				}
+			},
+			*value);
 	} else lua_pushnil(L);
 }
 

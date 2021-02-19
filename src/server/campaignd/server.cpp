@@ -203,17 +203,9 @@ inline std::string index_from_full_pack_filename(std::string pack_fn)
 }
 
 /**
- * Returns a pointer to a WML child if it exists or nullptr otherwise.
- */
-const config* optional_wml_child(const config& cfg, const std::string& child_name)
-{
-	return cfg.has_child(child_name) ? &cfg.child(child_name) : nullptr;
-}
-
-/**
  * Returns @a false if @a cfg is null or empty.
  */
-bool have_wml(const config* cfg)
+bool have_wml(const utils::optional_reference<const config>& cfg)
 {
 	return cfg && !cfg->empty();
 }
@@ -223,17 +215,13 @@ bool have_wml(const config* cfg)
  *
  * Null WML objects are skipped.
  */
-bool multi_find_illegal_names(std::vector<std::string>& names, const std::vector<const config*>& indices)
+template<typename... Vals>
+std::optional<std::vector<std::string>> multi_find_illegal_names(const Vals&... args)
 {
-	names.clear();
+	std::vector<std::string> names;
+	((args && check_names_legal(*args, &names)), ...);
 
-	for(auto* index : indices) {
-		if(index) {
-			check_names_legal(*index, &names);
-		}
-	}
-
-	return !names.empty();
+	return !names.empty() ? std::optional(names) : std::nullopt;
 }
 
 /**
@@ -241,17 +229,13 @@ bool multi_find_illegal_names(std::vector<std::string>& names, const std::vector
  *
  * Null WML objects are skipped.
  */
-bool multi_find_case_conflicts(std::vector<std::string>& names, const std::vector<const config*>& indices)
+template<typename... Vals>
+std::optional<std::vector<std::string>> multi_find_case_conflicts(const Vals&... args)
 {
-	names.clear();
+	std::vector<std::string> names;
+	((args && check_case_insensitive_duplicates(*args, &names)), ...);
 
-	for(auto* index : indices) {
-		if(index) {
-			check_case_insensitive_duplicates(*index, &names);
-		}
-	}
-
-	return !names.empty();
+	return !names.empty() ? std::optional(names) : std::nullopt;
 }
 
 /**
@@ -705,7 +689,7 @@ void server::write_config()
 	DBG_CS << "... done\n";
 }
 
-void server::fire(const std::string& hook, const std::string& addon)
+void server::fire(const std::string& hook, [[maybe_unused]] const std::string& addon)
 {
 	const std::map<std::string, std::string>::const_iterator itor = hooks_.find(hook);
 	if(itor == hooks_.end()) {
@@ -718,7 +702,6 @@ void server::fire(const std::string& hook, const std::string& addon)
 	}
 
 #if defined(_WIN32)
-	UNUSED(addon);
 	ERR_CS << "Tried to execute a script on an unsupported platform\n";
 	return;
 #else
@@ -991,7 +974,10 @@ void server::handle_request_campaign(const server::request& req)
 	const auto& from = req.cfg["from_version"].str();
 	const auto& to = req.cfg["version"].str(version_map.rbegin()->first);
 
-	auto to_version_iter = version_map.find(version_info{to});
+	const version_info from_parsed{from};
+	const version_info to_parsed{to};
+
+	auto to_version_iter = version_map.find(to_parsed);
 	if(to_version_iter == version_map.end()) {
 		send_error("Could not find requested version " + to + " of the addon '" + name +
 					"'.", req.sock);
@@ -1001,7 +987,13 @@ void server::handle_request_campaign(const server::request& req)
 	auto full_pack_path = addon["filename"].str() + '/' + to_version_iter->second["filename"].str();
 	const int full_pack_size = filesystem::file_size(full_pack_path);
 
-	if(!from.empty() && version_map.count(version_info{from}) != 0) {
+	// Assert `From < To` before attempting to do build an update sequence, since std::distance(A, B)
+	// requires A <= B to avoid UB with std::map (which doesn't support random access iterators) and
+	// we're going to be using that a lot next. We also can't do anything fancy with downgrades anyway,
+	// and same-version downloads can be regarded as though no From version was specified in order to
+	// keep things simple.
+
+	if(!from.empty() && from_parsed < to_parsed && version_map.count(from_parsed) != 0) {
 		// Build a sequence of updates beginning from the client's old version to the
 		// requested version. Every pair of incrementing versions on the server should
 		// have an update pack written to disk during the original upload(s).
@@ -1013,7 +1005,7 @@ void server::handle_request_campaign(const server::request& req)
 		int delivery_size = 0;
 		bool force_use_full = false;
 
-		auto start_point = version_map.find(version_info{from}); // Already known to exist
+		auto start_point = version_map.find(from_parsed); // Already known to exist
 		auto end_point = std::next(to_version_iter, 1); // May be end()
 
 		if(std::distance(start_point, end_point) <= 1) {
@@ -1068,7 +1060,7 @@ void server::handle_request_campaign(const server::request& req)
 			simple_wml::document doc(wml_text.c_str(), simple_wml::INIT_STATIC);
 			doc.compress();
 
-			LOG_CS << req << "Sending add-on '" << name << "' version: " << from << " -> " << to << " (delta))\n";
+			LOG_CS << req << "Sending add-on '" << name << "' version: " << from << " -> " << to << " (delta)\n";
 
 			boost::system::error_code ec;
 			coro_send_doc(req.sock, doc, req.yield[ec]);
@@ -1171,9 +1163,9 @@ ADDON_CHECK_STATUS server::validate_addon(const server::request& req, config*& e
 
 	const config& upload = req.cfg;
 
-	const config* data =  optional_wml_child(upload, "data");
-	const config* removelist = optional_wml_child(upload, "removelist");
-	const config* addlist = optional_wml_child(upload, "addlist");
+	const auto data = upload.optional_child("data");
+	const auto removelist = upload.optional_child("removelist");
+	const auto addlist = upload.optional_child("addlist");
 
 	const bool is_upload_pack = have_wml(removelist) || have_wml(addlist);
 
@@ -1304,17 +1296,15 @@ ADDON_CHECK_STATUS server::validate_addon(const server::request& req, config*& e
 		return ADDON_CHECK_STATUS::NO_EMAIL;
 	}
 
-	std::vector<std::string> badnames;
-
-	if(multi_find_illegal_names(badnames, {data, addlist, removelist})) {
-		error_data = utils::join(badnames, "\n");
-		LOG_CS << "Validation error: invalid filenames in add-on pack (" << badnames.size() << " entries)\n";
+	if(const auto badnames = multi_find_illegal_names(data, addlist, removelist)) {
+		error_data = utils::join(*badnames, "\n");
+		LOG_CS << "Validation error: invalid filenames in add-on pack (" << badnames->size() << " entries)\n";
 		return ADDON_CHECK_STATUS::ILLEGAL_FILENAME;
 	}
 
-	if(multi_find_case_conflicts(badnames, {data, addlist, removelist})) {
-		error_data = utils::join(badnames, "\n");
-		LOG_CS << "Validation error: case conflicts in add-on pack (" << badnames.size() << " entries)\n";
+	if(const auto badnames = multi_find_case_conflicts(data, addlist, removelist)) {
+		error_data = utils::join(*badnames, "\n");
+		LOG_CS << "Validation error: case conflicts in add-on pack (" << badnames->size() << " entries)\n";
 		return ADDON_CHECK_STATUS::FILENAME_CASE_CONFLICT;
 	}
 
@@ -1347,9 +1337,9 @@ void server::handle_upload(const server::request& req)
 
 	LOG_CS << req << "Processing add-on '" << name << "'...\n";
 
-	const config* const full_pack    = optional_wml_child(upload, "data");
-	const config* const delta_remove = optional_wml_child(upload, "removelist");
-	const config* const delta_add    = optional_wml_child(upload, "addlist");
+	const auto full_pack    = upload.optional_child("data");
+	const auto delta_remove = upload.optional_child("removelist");
+	const auto delta_add    = upload.optional_child("addlist");
 
 	const bool is_delta_upload = have_wml(delta_remove) || have_wml(delta_add);
 	const bool is_existing_upload = addon_ptr != nullptr;

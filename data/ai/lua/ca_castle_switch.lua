@@ -20,7 +20,7 @@ local function get_reachable_enemy_leaders(unit, avoid_map)
     for _,e in ipairs(potential_enemy_leaders) do
         -- Cannot use AH.find_path_with_avoid() here as there might be enemies all around the enemy leader
         if (not avoid_map:get(e.x, e.y)) then
-            local path, cost = wesnoth.find_path(unit, e.x, e.y, { ignore_units = true, viewing_side = 0 })
+            local path, cost = wesnoth.find_path(unit, e.x, e.y, { ignore_units = true, ignore_visibility = true })
             if cost < AH.no_path then
                 table.insert(enemy_leaders, e)
             end

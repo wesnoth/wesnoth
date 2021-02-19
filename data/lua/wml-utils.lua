@@ -166,14 +166,14 @@ function utils.parenthetical_split(str)
 end
 
 --note: when using these, make sure that nothing can throw over the call to end_var_scope
-function utils.start_var_scope(name)
+local function start_var_scope(name)
 	local var = wml.array_variables[name] --containers and arrays
 	if #var == 0 then var = wml.variables[name] end --scalars (and nil/empty)
 	wml.variables[name] = nil
 	return var
 end
 
-function utils.end_var_scope(name, var)
+local function end_var_scope(name, var)
 	wml.variables[name] = nil
 	if type(var) == "table" then
 		wml.array_variables[name] = var
@@ -182,8 +182,43 @@ function utils.end_var_scope(name, var)
 	end
 end
 
+function utils.scoped_var(name)
+	local orig = start_var_scope(name)
+	return setmetatable({
+		set = function(self, new)
+			if type(new) == "table" then
+				wml.array_variables[name] = new
+			else
+				wml.variables[name] = new
+			end
+		end,
+		get = function(self)
+			local val = wml.array_variables[name]
+			if #val == 0 then val = wml.variables[name] end
+			return val
+		end
+	}, {
+		__metatable = "scoped WML variable",
+		__close = function(self)
+			end_var_scope(name, orig)
+		end,
+		__index = function(self, key)
+			if key == '__original' then
+				return orig
+			end
+		end,
+		__newindex = function(self, key, val)
+			if key == '__original' then
+				error("scoped variable '__original' value is read-only", 1)
+			end
+		end
+	})
+end
+
 utils.trim = wesnoth.deprecate_api('wml_utils.trim', 'stringx.trim', 1, nil, stringx.trim)
 utils.parenthetical_split = wesnoth.deprecate_api('wml_utils.parenthetical_split', 'stringx.quoted_split or stringx.split', 1, nil, utils.parenthetical_split)
 utils.split = wesnoth.deprecate_api('wml_utils.split', 'stringx.split', 1, nil, utils.split)
+utils.start_var_scope = wesnoth.deprecate_api('wml_utils.start_var_scope', 'wml_utils.scoped_var', 1, nil, start_var_scope, 'Assign the scoped_var to a to-be-closed local variable.')
+utils.end_var_scope = wesnoth.deprecate_api('wml_utils.end_var_scope', 'wml_utils.scoped_var', 1, nil, end_var_scope, 'Assign the scoped_var to a to-be-closed local variable.')
 
 return utils

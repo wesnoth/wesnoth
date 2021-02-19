@@ -721,7 +721,7 @@ void pango_text::rerender(const bool force)
 				auto end_of_line = std::find(start_of_line, text_.cend(), '\n');
 
 				auto part_layout = std::unique_ptr<PangoLayout, std::function<void(void*)>> { pango_layout_new(context_.get()), g_object_unref};
-				auto line = utils::string_view(&*start_of_line, std::distance(start_of_line, end_of_line));
+				auto line = std::string_view(&*start_of_line, std::distance(start_of_line, end_of_line));
 				set_markup(line, *part_layout);
 				copy_layout_properties(*layout_, *part_layout);
 
@@ -757,7 +757,7 @@ void pango_text::rerender(const bool force)
 	}
 }
 
-bool pango_text::set_markup(utils::string_view text, PangoLayout& layout) {
+bool pango_text::set_markup(std::string_view text, PangoLayout& layout) {
 	char* raw_text;
 	std::string semi_escaped;
 	bool valid = validate_markup(text, &raw_text, semi_escaped);
@@ -767,7 +767,7 @@ bool pango_text::set_markup(utils::string_view text, PangoLayout& layout) {
 
 	if(valid) {
 		if(link_aware_) {
-			std::string formatted_text = format_links(text.to_string());
+			std::string formatted_text = format_links(text);
 			pango_layout_set_markup(&layout, formatted_text.c_str(), formatted_text.size());
 		} else {
 			pango_layout_set_markup(&layout, text.data(), text.size());
@@ -776,7 +776,7 @@ bool pango_text::set_markup(utils::string_view text, PangoLayout& layout) {
 		ERR_GUI_L << "pango_text::" << __func__
 			<< " text '" << text
 			<< "' has broken markup, set to normal text.\n";
-		set_text(_("The text contains invalid Pango markup: ") + text.to_string(), false);
+		set_text(_("The text contains invalid Pango markup: ") + std::string(text), false);
 	}
 
 	return valid;
@@ -786,41 +786,41 @@ bool pango_text::set_markup(utils::string_view text, PangoLayout& layout) {
  * Replaces all instances of URLs in a given string with formatted links
  * and returns the result.
  */
-std::string pango_text::format_links(const std::string& text) const
+std::string pango_text::format_links(std::string_view text) const
 {
-	const std::string delim = " \n\r\t";
-	std::string result = "";
+	static const std::string delim = " \n\r\t";
+	std::ostringstream result;
 
-	int last_delim = -1;
-	for (std::size_t index = 0; index < text.size(); ++index) {
-		if (delim.find(text[index]) != std::string::npos) {
+	std::size_t last_delim = -1;
+	for(std::size_t index = 0; index < text.size(); ++index) {
+		if(delim.find(text[index]) != std::string::npos) {
 			// Token starts from after the last delimiter up to (but not including) this delimiter
-			std::string token = text.substr(last_delim + 1, index - last_delim - 1);
+			auto token = text.substr(last_delim + 1, index - last_delim - 1);
 
-			if (looks_like_url(token)) {
-				result += format_as_link(token, link_color_) + text[index];
+			if(looks_like_url(token)) {
+				result << format_as_link(std::string(token), link_color_) << text[index];
 			} else {
-				result += token + text[index];
+				result << token << text[index];
 			}
 
 			last_delim = index;
 		}
 	}
 
-	if (last_delim < static_cast<int>(text.size()) - 1) {
-		std::string token = text.substr(last_delim + 1, text.size() - last_delim - 1);
+	if(last_delim < text.size() - 1) {
+		auto token = text.substr(last_delim + 1, text.size() - last_delim - 1);
 
 		if(looks_like_url(token)) {
-			result += format_as_link(token, link_color_);
+			result << format_as_link(std::string(token), link_color_);
 		} else {
-			result += token;
+			result << token;
 		}
 	}
 
-	return result;
+	return result.str();
 }
 
-bool pango_text::validate_markup(utils::string_view text, char** raw_text, std::string& semi_escaped) const
+bool pango_text::validate_markup(std::string_view text, char** raw_text, std::string& semi_escaped) const
 {
 	if(pango_parse_markup(text.data(), text.size(),
 		0, nullptr, raw_text, nullptr, nullptr)) {
@@ -835,7 +835,7 @@ bool pango_text::validate_markup(utils::string_view text, char** raw_text, std::
 	 * So only try to recover from broken ampersands, by simply replacing them
 	 * with the escaped version.
 	 */
-	semi_escaped = semi_escape_text(text.to_string());
+	semi_escaped = semi_escape_text(std::string(text));
 
 	/*
 	 * If at least one ampersand is replaced the semi-escaped string

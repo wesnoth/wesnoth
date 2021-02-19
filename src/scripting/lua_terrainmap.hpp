@@ -33,7 +33,7 @@ public:
 	using terrain_code = t_translation::terrain_code;
 	using terrain_map = t_translation::ter_map;
 	using starting_positions = t_translation::starting_positions;
-	explicit mapgen_gamemap(utils::string_view data);
+	explicit mapgen_gamemap(std::string_view data);
 	mapgen_gamemap(int w, int h, terrain_code);
 
 	std::string to_string() const;

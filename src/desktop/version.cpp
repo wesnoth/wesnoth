@@ -295,7 +295,7 @@ std::string os_version()
 				}
 				break;
 			} // else fallback to default
-			FALLTHROUGH;
+			[[fallthrough]];
 		default:
 			if(v.wProductType != VER_NT_WORKSTATION) {
 				version = "Server";

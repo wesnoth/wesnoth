@@ -28,8 +28,7 @@
 #include "resources.hpp"
 #include "units/unit.hpp"
 #include "units/map.hpp"
-
-#include <boost/range/adaptor/reversed.hpp>
+#include "utils/ranges.hpp"
 
 namespace wb
 {
@@ -69,7 +68,7 @@ void mapbuilder::pre_build()
 		//Units will be restored to the unit map by destruction of removers_
 
 		if(!on_current_side && !u.is_visible_to_team(resources::gameboard->teams()[viewer_team()], false)) {
-			removers_.push_back(new temporary_unit_remover(resources::gameboard->units(), u.get_location()));
+			removers_.emplace_back(new temporary_unit_remover(resources::gameboard->units(), u.get_location()));
 
 			//Don't do anything else to the removed unit!
 			continue;
@@ -78,7 +77,7 @@ void mapbuilder::pre_build()
 		//Reset movement points, to be restored by destruction of resetters_
 
 		//restore movement points only to units not on the current side
-		resetters_.push_back(new unit_movement_resetter(u,!on_current_side));
+		resetters_.emplace_back(new unit_movement_resetter(u,!on_current_side));
 		//make sure current side's units are not reset to full moves on first turn
 		if(on_current_side) {
 			acted_this_turn_.insert(&u);
@@ -180,7 +179,7 @@ void mapbuilder::post_visit_team(std::size_t turn)
 
 	// Go backwards through the actions of this turn to identify
 	// which ones are moves that end a turn.
-	for(action_ptr action : boost::adaptors::reverse(applied_actions_this_turn_)) {
+	for(action_ptr action : utils::reversed_view(applied_actions_this_turn_)) {
 		move_ptr move = std::dynamic_pointer_cast<class move>(action);
 		if(move) {
 			move->set_turn_number(0);
@@ -200,7 +199,7 @@ void mapbuilder::post_visit_team(std::size_t turn)
 void mapbuilder::restore_normal_map()
 {
 	//applied_actions_ contain only the actions that we applied to the unit map
-	for(action_ptr act : boost::adaptors::reverse(applied_actions_)) {
+	for(action_ptr act : utils::reversed_view(applied_actions_)) {
 		act->remove_temp_modifier(unit_map_);
 	}
 }

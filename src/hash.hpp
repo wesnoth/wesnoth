@@ -18,7 +18,6 @@
 #include <cstdint>
 #include <string>
 
-#include "global.hpp"
 #include "exceptions.hpp"
 
 // Not configurable. The size (64) is both hard-, and implicitly-coded in crypt_blowfish

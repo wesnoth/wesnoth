@@ -15,16 +15,6 @@
 #pragma once
 
 #ifdef _MSC_VER
-
-// Enable C99 support for lua
-#define STDC99
-
-#if _MSVC_LANG > 201402	// fallthrough only supported when MSVC targets later than C++14
-#define FALLTHROUGH [[fallthrough]]
-#else
-#define FALLTHROUGH
-#endif
-
 #endif //_MSC_VER
 
 #ifdef NDEBUG
@@ -45,17 +35,7 @@
 #endif
 
 #if defined(__clang__)
-
-// All supported versions of clang have these
-#define FALLTHROUGH [[clang::fallthrough]]
-
 #endif
 
 #if defined(__GNUC__) && !defined(__clang__)
-// Fallthrough is supported from GCC 7 up
-#if __GNUC__ >= 7
-#define FALLTHROUGH [[fallthrough]]
-#else
-#define FALLTHROUGH
-#endif
 #endif

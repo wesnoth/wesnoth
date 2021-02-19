@@ -51,7 +51,7 @@ function ca_fast_combat_leader:evaluation(cfg, data)
     end
 
     -- Exclude hidden enemies, except if attack_hidden_enemies=yes is set in [micro_ai] tag
-    local viewing_side = wesnoth.current.side
+    local viewing_side, ignore_visibility = wesnoth.current.side, false
     if (not cfg.attack_hidden_enemies) then
         local hidden_enemies = AH.get_live_units {
             { "filter_side", { { "enemy_of", { side = wesnoth.current.side } } } },
@@ -62,7 +62,7 @@ function ca_fast_combat_leader:evaluation(cfg, data)
             enemy_map:remove(e.x, e.y)
         end
     else
-        viewing_side = 0
+        ignore_visibility = true
     end
 
     local aggression = ai.aspects.aggression
@@ -119,7 +119,7 @@ function ca_fast_combat_leader:evaluation(cfg, data)
         end
     end
 
-    local attacks = AH.get_attacks({ leader }, { include_occupied = cfg.include_occupied_attack_hexes, viewing_side = viewing_side })
+    local attacks = AH.get_attacks({ leader }, { include_occupied = cfg.include_occupied_attack_hexes, viewing_side = viewing_side, ignore_visibility = ignore_visibility })
 
     if (#attacks > 0) then
         local max_rating, best_target, best_dst = - math.huge

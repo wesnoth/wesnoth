@@ -21,14 +21,11 @@
 
 #include "log.hpp"
 
-#include <boost/date_time.hpp>
-
 #include <map>
 #include <sstream>
 #include <ctime>
 #include <mutex>
-
-#include "global.hpp"
+#include <iomanip>
 
 namespace {
 

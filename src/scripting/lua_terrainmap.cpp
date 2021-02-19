@@ -15,6 +15,7 @@
 #include "scripting/lua_terrainfilter.hpp"
 
 #include "formatter.hpp"
+#include "global.hpp"
 #include "log.hpp"
 #include "map/location.hpp"
 #include "map/map.hpp"
@@ -32,7 +33,7 @@ static lg::log_domain log_scripting_lua("scripting/lua");
 static const char terrinmapKey[] = "terrainmap";
 static const char maplocationKey[] = "special_locations";
 
-using utils::string_view;
+using std::string_view;
 
 ////////  SPECIAL LOCATION  ////////
 
@@ -118,7 +119,7 @@ int impl_slocs_set(lua_State* L)
 
 ////////  MAP  ////////
 
-mapgen_gamemap::mapgen_gamemap(utils::string_view s)
+mapgen_gamemap::mapgen_gamemap(std::string_view s)
 	: tiles_()
 	, starting_positions_()
 {

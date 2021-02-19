@@ -49,7 +49,7 @@ char itoa(unsigned value, const std::string& map)
 	return map[value & 0x3f];
 }
 
-std::vector<uint8_t> generic_decode_be(utils::string_view in, const std::vector<int>& atoi_map)
+std::vector<uint8_t> generic_decode_be(std::string_view in, const std::vector<int>& atoi_map)
 {
 	const int last_char = in.find_last_not_of("=");
 	const int num_chars = last_char + 1;
@@ -83,7 +83,7 @@ std::vector<uint8_t> generic_decode_be(utils::string_view in, const std::vector<
 	return out;
 }
 
-std::vector<uint8_t> generic_decode_le(utils::string_view in, const std::vector<int>& atoi_map)
+std::vector<uint8_t> generic_decode_le(std::string_view in, const std::vector<int>& atoi_map)
 {
 	const int last_char = in.find_last_not_of("=");
 	const int length = last_char * 6 / 8;
@@ -212,7 +212,7 @@ std::string generic_encode_le(utils::byte_string_view in, const std::string& ito
 }
 
 namespace base64 {
-std::vector<uint8_t> decode(utils::string_view in)
+std::vector<uint8_t> decode(std::string_view in)
 {
 	return generic_decode_be(in, base64_atoi_map());
 }
@@ -222,7 +222,7 @@ std::string encode(utils::byte_string_view bytes)
 }
 }
 namespace crypt64{
-std::vector<uint8_t> decode(utils::string_view in)
+std::vector<uint8_t> decode(std::string_view in)
 {
 	return generic_decode_le(in, crypt64_atoi_map());
 }

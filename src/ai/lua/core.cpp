@@ -433,20 +433,31 @@ static int cfun_ai_get_leader_goal(lua_State *L)
 	return 1;
 }
 
+namespace
+{
+// TODO: name this something better
+void visit_helper(lua_State* L, const utils::variant<bool, std::vector<std::string>>& input)
+{
+	utils::visit(
+		[L](const auto& v) {
+			if constexpr(utils::decayed_is_same<bool, decltype(v)>) {
+				lua_pushboolean(L, v);
+			} else {
+				lua_createtable(L, v.size(), 0);
+				for(const std::string& str : v) {
+					lua_pushlstring(L, str.c_str(), str.size());
+					lua_rawseti(L, -2, lua_rawlen(L, -2) + 1);
+				}
+			}
+		},
+		input);
+}
+} // namespace
+
 static int cfun_ai_get_leader_ignores_keep(lua_State *L)
 {
 	DEPRECATED_ASPECT_MESSAGE("leader_ignores_keep");
-	auto leader_ignores_keep = get_readonly_context(L).get_leader_ignores_keep();
-	if (utils::variant_index(leader_ignores_keep) == 0) {
-		lua_pushboolean(L, utils::get<bool>(leader_ignores_keep));
-	} else {
-		std::vector<std::string> strlist = utils::get<std::vector<std::string>>(leader_ignores_keep);
-		lua_createtable(L, strlist.size(), 0);
-		for(const std::string& str : strlist) {
-			lua_pushlstring(L, str.c_str(), str.size());
-			lua_rawseti(L, -2, lua_rawlen(L, -2) + 1);
-		}
-	}
+	visit_helper(L, get_readonly_context(L).get_leader_ignores_keep());
 	return 1;
 }
 
@@ -461,34 +472,14 @@ static int cfun_ai_get_leader_value(lua_State *L)
 static int cfun_ai_get_passive_leader(lua_State *L)
 {
 	DEPRECATED_ASPECT_MESSAGE("passive_leader");
-	auto passive_leader = get_readonly_context(L).get_passive_leader();
-	if (utils::variant_index(passive_leader) == 0) {
-		lua_pushboolean(L, utils::get<bool>(passive_leader));
-	} else {
-		std::vector<std::string> strlist = utils::get<std::vector<std::string>>(passive_leader);
-		lua_createtable(L, strlist.size(), 0);
-		for(const std::string& str : strlist) {
-			lua_pushlstring(L, str.c_str(), str.size());
-			lua_rawseti(L, -2, lua_rawlen(L, -2) + 1);
-		}
-	}
+	visit_helper(L, get_readonly_context(L).get_passive_leader());
 	return 1;
 }
 
 static int cfun_ai_get_passive_leader_shares_keep(lua_State *L)
 {
 	DEPRECATED_ASPECT_MESSAGE("passive_leader_shares_keep");
-	auto passive_leader_shares_keep = get_readonly_context(L).get_passive_leader_shares_keep();
-	if (utils::variant_index(passive_leader_shares_keep) == 0) {
-		lua_pushboolean(L, utils::get<bool>(passive_leader_shares_keep));
-	} else {
-		std::vector<std::string> strlist = utils::get<std::vector<std::string>>(passive_leader_shares_keep);
-		lua_createtable(L, strlist.size(), 0);
-		for(const std::string& str : strlist) {
-			lua_pushlstring(L, str.c_str(), str.size());
-			lua_rawseti(L, -2, lua_rawlen(L, -2) + 1);
-		}
-	}
+	visit_helper(L, get_readonly_context(L).get_passive_leader_shares_keep());
 	return 1;
 }
 

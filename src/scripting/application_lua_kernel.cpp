@@ -183,8 +183,6 @@ application_lua_kernel::thread * application_lua_kernel::load_script_from_string
 			context += " a syntax error";
 		} else if(errcode == LUA_ERRMEM){
 			context += " a memory error";
-		} else if(errcode == LUA_ERRGCMM) {
-			context += " an error in garbage collection metamethod";
 		} else {
 			context += " an unknown error";
 		}
@@ -279,7 +277,7 @@ application_lua_kernel::request_list application_lua_kernel::thread::run_script(
 	}
 
 	// Now we have to create the context object. It is arranged as a table of boost functions.
-	std::shared_ptr<lua_context_backend> this_context_backend = std::make_shared<lua_context_backend> (lua_context_backend());
+	auto this_context_backend = std::make_shared<lua_context_backend>();
 	lua_newtable(T_); // this will be the context table
 	for (const std::string & key : ctxt.callbacks_ | boost::adaptors::map_keys ) {
 		lua_pushstring(T_, key.c_str());
@@ -301,7 +299,8 @@ application_lua_kernel::request_list application_lua_kernel::thread::run_script(
 	}
 
 	// Now we resume the function, calling the coroutine with the three arguments (events, context, info).
-	lua_resume(T_, nullptr, 3);
+	int numres = 0;
+	lua_resume(T_, nullptr, 3, &numres);
 
 	started_ = true;
 

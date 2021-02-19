@@ -13,7 +13,6 @@
 
 #pragma once
 
-#include "global.hpp"
 #include "utils/const_clone.hpp"
 
 #include <SDL2/SDL.h>

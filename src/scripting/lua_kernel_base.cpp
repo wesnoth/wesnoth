@@ -129,6 +129,28 @@ int lua_kernel_base::intf_print(lua_State* L)
 	return 0;
 }
 
+static void impl_warn(void* p, const char* msg, int tocont) {
+	static const char*const prefix = "Warning:\n  ";
+	static std::ostringstream warning(prefix);
+	warning.seekp(0, std::ios::end);
+	warning << msg << ' ';
+	if(!tocont) {
+		auto L = reinterpret_cast<lua_State*>(p);
+		luaW_getglobal(L, "debug", "traceback");
+		lua_push(L, warning.str());
+		lua_pushinteger(L, 2);
+		lua_call(L, 2, 1);
+		auto& lk = lua_kernel_base::get_lua_kernel<lua_kernel_base>(L);
+		lk.add_log_to_console(luaL_checkstring(L, -1));
+		warning.str(prefix);
+	}
+}
+
+void lua_kernel_base::add_log_to_console(const std::string& msg) {
+	cmd_log_ << msg << "\n";
+	DBG_LUA << "'" << msg << "'\n";
+}
+
 /**
  * Replacement load function. Mostly the same as regular load, but disallows loading binary chunks
  * due to CVE-2018-1999023.
@@ -328,6 +350,7 @@ static int intf_deprecated_message(lua_State* L) {
 		lua_push(L, msg);
 		return lua_error(L);
 	}
+	lua_warning(L, msg.c_str(), false);
 	return 0;
 }
 
@@ -485,6 +508,7 @@ lua_kernel_base::lua_kernel_base()
 	lua_setglobal(L, "std_print"); //storing original impl as 'std_print'
 	lua_settop(L, 0); //clear stack, just to be sure
 
+	lua_setwarnf(L, &::impl_warn, L);
 	lua_pushcfunction(L, &dispatch<&lua_kernel_base::intf_print>);
 	lua_setglobal(L, "print");
 
@@ -534,7 +558,7 @@ lua_kernel_base::lua_kernel_base()
 	cmd_log_ << "Adding game_config table...\n";
 
 	lua_getglobal(L, "wesnoth");
-	lua_newuserdata(L, 0);
+	lua_newuserdatauv(L, 0, 0);
 	lua_createtable(L, 0, 3);
 	lua_pushcfunction(L, &dispatch<&lua_kernel_base::impl_game_config_get>);
 	lua_setfield(L, -2, "__index");
@@ -659,8 +683,6 @@ bool lua_kernel_base::protected_call(lua_State * L, int nArgs, int nRets, error_
 			context += "Lua error in attached debugger: ";
 		} else if (errcode == LUA_ERRMEM) {
 			context += "Lua out of memory error: ";
-		} else if (errcode == LUA_ERRGCMM) {
-			context += "Lua error in garbage collection metamethod: ";
 		} else {
 			context += "unknown lua error: ";
 		}
@@ -694,8 +716,6 @@ bool lua_kernel_base::load_string(char const * prog, const std::string& name, er
 			context += " a syntax error";
 		} else if(errcode == LUA_ERRMEM){
 			context += " a memory error";
-		} else if(errcode == LUA_ERRGCMM) {
-			context += " an error in garbage collection metamethod";
 		} else {
 			context += " an unknown error";
 		}
@@ -877,6 +897,7 @@ int lua_kernel_base::impl_game_config_get(lua_State* L)
 	return_string_attrib("version", game_config::wesnoth_version.str());
 	return_bool_attrib("debug", game_config::debug);
 	return_bool_attrib("debug_lua", game_config::debug_lua);
+	return_bool_attrib("strict_lua", game_config::strict_lua);
 	return_bool_attrib("mp_debug", game_config::mp_debug);
 	return 0;
 }

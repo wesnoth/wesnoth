@@ -21,14 +21,15 @@
 #include "utils/make_enum.hpp"
 
 #include <map>
+#include <optional>
 #include <vector>
 
 // class player;
 
 namespace wesnothd
 {
-typedef std::vector<socket_ptr> user_vector;
-typedef std::vector<socket_ptr> side_vector;
+typedef std::vector<player_iterator> user_vector;
+typedef std::vector<std::optional<player_iterator>> side_vector;
 class server;
 
 class game
@@ -41,7 +42,7 @@ public:
 	);
 
 	game(wesnothd::server& server, player_connections& player_connections,
-			const socket_ptr& host,
+			player_iterator host,
 			const std::string& name = "",
 			bool save_replays = false,
 			const std::string& replay_save_path = "");
@@ -68,25 +69,25 @@ public:
 		return name_;
 	}
 
-	bool is_owner(const socket_ptr& player) const
+	bool is_owner(player_iterator player) const
 	{
 		return (player == owner_);
 	}
 
-	bool is_member(const socket_ptr& player) const
+	bool is_member(player_iterator player) const
 	{
 		return is_player(player) || is_observer(player);
 	}
 
 	bool allow_observers() const;
-	bool is_observer(const socket_ptr& player) const;
-	bool is_player(const socket_ptr& player) const;
+	bool is_observer(player_iterator player) const;
+	bool is_player(player_iterator player) const;
 
 	/** Checks whether the connection's ip address or username is banned. */
-	bool player_is_banned(const socket_ptr& player, const std::string& name) const;
+	bool player_is_banned(player_iterator player, const std::string& name) const;
 
 	/** when the host sends the new scenario of a mp campaign */
-	void new_scenario(const socket_ptr& player);
+	void new_scenario(player_iterator player);
 
 	bool level_init() const
 	{
@@ -153,36 +154,36 @@ public:
 	 * Mute an observer or give a message of all currently muted observers if no
 	 * name is given.
 	 */
-	void mute_observer(const simple_wml::node& mute, const socket_ptr& muter);
+	void mute_observer(const simple_wml::node& mute, player_iterator muter);
 
-	void unmute_observer(const simple_wml::node& unmute, const socket_ptr& unmuter);
+	void unmute_observer(const simple_wml::node& unmute, player_iterator unmuter);
 
 	/**
 	 * Kick a member by name.
 	 *
-	 * @return                    The network handle of the removed member if
-	 *                            successful, null pointer otherwise.
+	 * @return                    The iterator to the removed member if
+	 *                            successful, empty optional otherwise.
 	 */
-	socket_ptr kick_member(const simple_wml::node& kick, const socket_ptr& kicker);
+	std::optional<player_iterator> kick_member(const simple_wml::node& kick, player_iterator kicker);
 
 	/**
 	 * Ban and kick a user by name.
 	 *
 	 * The user does not need to be in this game but logged in.
 	 *
-	 * @return                    The network handle of the banned player if he
-	 *                            was in this game, null pointer otherwise.
+	 * @return                    The iterator to the banned player if he
+	 *                            was in this game, empty optional otherwise.
 	 */
-	socket_ptr ban_user(const simple_wml::node& ban, const socket_ptr& banner);
+	std::optional<player_iterator> ban_user(const simple_wml::node& ban, player_iterator banner);
 
-	void unban_user(const simple_wml::node& unban, const socket_ptr& unbanner);
+	void unban_user(const simple_wml::node& unban, player_iterator unbanner);
 
 	/**
 	 * Add a user to the game.
 	 *
 	 * @return                    True iff the user successfully joined the game.
 	 */
-	bool add_player(const socket_ptr& player, bool observer = false);
+	bool add_player(player_iterator player, bool observer = false);
 
 	/**
 	 * Removes a user from the game.
@@ -191,12 +192,12 @@ public:
 	 *                            no more players or the host left on a not yet
 	 *                            started game.
 	 */
-	bool remove_player(const socket_ptr& player, const bool disconnect = false, const bool destruct = false);
+	bool remove_player(player_iterator player, const bool disconnect = false, const bool destruct = false);
 
 	/** Adds players and observers into one vector and returns that. */
 	const user_vector all_game_users() const;
 
-	void start_game(const socket_ptr& starter);
+	void start_game(player_iterator starter);
 
 	// this is performed just before starting and before [start_game] signal
 	// send scenario_diff's specific to each client so that they locally
@@ -206,7 +207,7 @@ public:
 	void update_game();
 
 	/** A user (player only?) asks for the next scenario to advance to. */
-	void load_next_scenario(const socket_ptr& user); // const
+	void load_next_scenario(player_iterator user); // const
 
 	// iceiceice: I unmarked this const because I want to send and record server messages when I fail to tweak sides
 	// properly
@@ -215,9 +216,9 @@ public:
 	void update_side_data();
 
 	/** Let's a player owning a side give it to another player or observer. */
-	void transfer_side_control(const socket_ptr& sock, const simple_wml::node& cfg);
+	void transfer_side_control(player_iterator player, const simple_wml::node& cfg);
 
-	void process_message(simple_wml::document& data, const socket_ptr& user);
+	void process_message(simple_wml::document& data, player_iterator);
 
 	/**
 	 * Handles [end_turn], repackages [commands] with private [speak]s in them
@@ -228,12 +229,12 @@ public:
 	 *
 	 * @returns                   True if the turn ended.
 	 */
-	bool process_turn(simple_wml::document& data, const socket_ptr& user);
+	bool process_turn(simple_wml::document& data, player_iterator user);
 
 	/** Handles incoming [whiteboard] data. */
-	void process_whiteboard(simple_wml::document& data, const socket_ptr& user);
+	void process_whiteboard(simple_wml::document& data, player_iterator user);
 	/** Handles incoming [change_turns_wml] data. */
-	void process_change_turns_wml(simple_wml::document& data, const socket_ptr& user);
+	void process_change_turns_wml(simple_wml::document& data, player_iterator user);
 
 	/**
 	 * Set the description to the number of available slots.
@@ -242,30 +243,30 @@ public:
 	 */
 	bool describe_slots();
 
-	void send_server_message_to_all(const char* message, const socket_ptr& exclude = socket_ptr());
-	void send_server_message_to_all(const std::string& message, const socket_ptr& exclude = socket_ptr())
+	void send_server_message_to_all(const char* message, std::optional<player_iterator> exclude = {});
+	void send_server_message_to_all(const std::string& message, std::optional<player_iterator> exclude = {})
 	{
 		send_server_message_to_all(message.c_str(), exclude);
 	}
 
 	void send_server_message(
-			const char* message, const socket_ptr& sock = socket_ptr(), simple_wml::document* doc = nullptr) const;
+			const char* message, std::optional<player_iterator> player = {}, simple_wml::document* doc = nullptr) const;
 	void send_server_message(
-			const std::string& message, const socket_ptr& sock = socket_ptr(), simple_wml::document* doc = nullptr) const
+			const std::string& message, std::optional<player_iterator> player = {}, simple_wml::document* doc = nullptr) const
 	{
-		send_server_message(message.c_str(), sock, doc);
+		send_server_message(message.c_str(), player, doc);
 	}
 
 	/** Send data to all players in this game except 'exclude'. */
-	void send_and_record_server_message(const char* message, const socket_ptr& exclude = socket_ptr());
-	void send_and_record_server_message(const std::string& message, const socket_ptr& exclude = socket_ptr())
+	void send_and_record_server_message(const char* message, std::optional<player_iterator> exclude = {});
+	void send_and_record_server_message(const std::string& message, std::optional<player_iterator> exclude = {})
 	{
 		send_and_record_server_message(message.c_str(), exclude);
 	}
 
 	template<typename Container>
-	void send_to_players(simple_wml::document& data, const Container& players, socket_ptr exclude = socket_ptr());
-	void send_data(simple_wml::document& data, const socket_ptr& exclude = socket_ptr(), std::string packet_type = "");
+	void send_to_players(simple_wml::document& data, const Container& players, std::optional<player_iterator> exclude = {});
+	void send_data(simple_wml::document& data, std::optional<player_iterator> exclude = {}, std::string packet_type = "");
 
 	void clear_history();
 	void record_data(std::unique_ptr<simple_wml::document> data);
@@ -318,7 +319,7 @@ public:
 
 	void set_termination_reason(const std::string& reason);
 
-	void handle_choice(const simple_wml::node& data, const socket_ptr& user);
+	void handle_choice(const simple_wml::node& data, player_iterator user);
 
 	void handle_random_choice(const simple_wml::node& data);
 
@@ -334,7 +335,7 @@ public:
 	/**
 	 * Function which returns true iff 'player' controls any of the sides spcified in 'sides'.
 	 */
-	bool controls_side(const std::vector<int>& sides, const socket_ptr& player) const;
+	bool controls_side(const std::vector<int>& sides, player_iterator player) const;
 
 	bool is_reload() const;
 
@@ -348,23 +349,23 @@ private:
 		return nsides_ ? (current_side_index_ % nsides_) : 0;
 	}
 
-	const socket_ptr current_player() const
+	std::optional<player_iterator> current_player() const
 	{
-		return (nsides_ ? sides_[current_side()] : socket_ptr());
+		return sides_[current_side()];
 	}
 
-	bool is_current_player(const socket_ptr& player) const
+	bool is_current_player(player_iterator player) const
 	{
 		return (current_player() == player);
 	}
 
-	bool is_muted_observer(const socket_ptr& player) const;
+	bool is_muted_observer(player_iterator player) const;
 	bool all_observers_muted() const
 	{
 		return all_observers_muted_;
 	}
 
-	void send_muted_observers(const socket_ptr& user) const;
+	void send_muted_observers(player_iterator user) const;
 
 	bool send_taken_side(simple_wml::document& cfg, const simple_wml::node* side) const;
 
@@ -377,21 +378,21 @@ private:
 	 * First we look for a side where save_id= or current_player= matches the
 	 * new user's name then we search for the first controller="network" side.
 	 */
-	bool take_side(const socket_ptr& user);
+	bool take_side(player_iterator user);
 
 	/**
 	 * Send [change_controller] message to tell all clients the new controller's name
 	 * or controller type (human or ai).
 	 */
 	void change_controller(const std::size_t side_num,
-			const socket_ptr& sock,
+			player_iterator sock,
 			const std::string& player_name,
 			const bool player_left = true);
 	std::unique_ptr<simple_wml::document> change_controller_type(const std::size_t side_num,
-			const socket_ptr& sock,
+			player_iterator player,
 			const std::string& player_name);
-	void transfer_ai_sides(const socket_ptr& player);
-	void send_leave_game(const socket_ptr& user) const;
+	void transfer_ai_sides(player_iterator player);
+	void send_leave_game(player_iterator user) const;
 
 	/**
 	 * @param data the data to be sent to the sides.
@@ -400,24 +401,24 @@ private:
 	 */
 	void send_data_sides(simple_wml::document& data,
 			const simple_wml::string_span& sides,
-			const socket_ptr& exclude = socket_ptr());
+			std::optional<player_iterator> exclude = {});
 
 	void send_data_observers(
-			simple_wml::document& data, const socket_ptr& exclude = socket_ptr(), std::string packet_type = "") const;
+			simple_wml::document& data, std::optional<player_iterator> exclude = {}, std::string packet_type = "") const;
 
 	/**
 	 * Send [observer] tags of all the observers in the game to the user or
 	 * everyone if none given.
 	 */
-	void send_observerjoins(const socket_ptr& sock = socket_ptr());
-	void send_observerquit(const socket_ptr& observer);
-	void send_history(const socket_ptr& sock) const;
+	void send_observerjoins(std::optional<player_iterator> player = {});
+	void send_observerquit(player_iterator observer);
+	void send_history(player_iterator sock) const;
 
 	/** In case of a host transfer, notify the new host about its status. */
 	void notify_new_host();
 
 	/** Shortcut to a convenience function for finding a user by name. */
-	socket_ptr find_user(const simple_wml::string_span& name);
+	std::optional<player_iterator> find_user(const simple_wml::string_span& name);
 
 	bool observers_can_label() const
 	{
@@ -429,13 +430,13 @@ private:
 		return true;
 	}
 
-	bool is_legal_command(const simple_wml::node& command, const socket_ptr& user);
+	bool is_legal_command(const simple_wml::node& command, player_iterator user);
 
 	/**
 	 * Checks whether a user has the same IP as any other members of this game.
 	 * @return  A comma separated string of members with matching IPs.
 	 */
-	std::string has_same_ip(const socket_ptr& user) const;
+	std::string has_same_ip(player_iterator user) const;
 
 	/**
 	 * Function which should be called every time a player ends their turn
@@ -451,16 +452,13 @@ private:
 	 *
 	 * Only sends data if the game is initialized but not yet started.
 	 */
-	void send_user_list(const socket_ptr& exclude = socket_ptr());
+	void send_user_list(std::optional<player_iterator> exclude = {});
 
 	/** Returns the name of the user or "(unfound)". */
-	std::string username(const socket_ptr& pl) const;
+	std::string username(player_iterator pl) const;
 
 	/** Returns a comma separated list of user names. */
-	std::string list_users(user_vector users, const std::string& func) const;
-
-	/** Function to log when we don't find a connection in player_info_. */
-	void missing_user(socket_ptr socket, const std::string& func) const;
+	std::string list_users(user_vector users) const;
 
 	/** calculates the initial value for sides_, side_controllerds_, nsides_*/
 	void reset_sides();
@@ -489,7 +487,7 @@ private:
 	std::string password_;
 
 	/** The game host or later owner (if the host left). */
-	socket_ptr owner_;
+	player_iterator owner_;
 
 	/** A vector of players (members owning a side). */
 	user_vector players_;
@@ -544,7 +542,7 @@ private:
 	 * keep track of those players because processing certain
 	 * input from those side wil lead to error (oos)
 	 */
-	std::set<socket_ptr> players_not_advanced_;
+	std::set<const player_record*> players_not_advanced_;
 
 	std::string termination_;
 

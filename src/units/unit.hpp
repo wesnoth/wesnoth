@@ -24,7 +24,6 @@
 #include "utils/variant.hpp"
 
 #include <boost/dynamic_bitset_fwd.hpp>
-#include <boost/variant.hpp>
 
 #include <bitset>
 #include <optional>
@@ -1179,7 +1178,10 @@ public:
 	};
 
 	/** Visitor helper class to parse the upkeep value from a config. */
-	class upkeep_parser_visitor : public boost::static_visitor<upkeep_t>
+	class upkeep_parser_visitor
+#ifdef USING_BOOST_VARIANT
+		: public boost::static_visitor<upkeep_t>
+#endif
 	{
 	public:
 		template<typename N>
@@ -1198,7 +1200,7 @@ public:
 			throw std::invalid_argument(b.str());
 		}
 
-		upkeep_t operator()(boost::blank) const
+		upkeep_t operator()(utils::monostate) const
 		{
 			return upkeep_full();
 		}
@@ -1647,6 +1649,43 @@ public:
 		return get_ability_bool(tag_name, loc_);
 	}
 
+	/** Checks whether this unit currently possesses a given ability used like weapon
+	 * @return True if the ability @a tag_name is active.
+	 * @param special the const config to one of abilities @a tag_name checked.
+	 * @param tag_name name of ability type checked.
+	 * @param loc location of the unit checked.
+	 */
+	bool get_self_ability_bool(const config& special, const std::string& tag_name, const map_location& loc) const;
+	/** Checks whether this unit currently possesses a given ability of leadership type
+	 * @return True if the ability @a tag_name is active.
+	 * @param special the const config to one of abilities @a tag_name checked.
+	 * @param tag_name name of ability type checked.
+	 * @param loc location of the unit checked.
+	 * @param weapon the attack used by unit checked in this function.
+	 * @param opp_weapon the attack used by opponent to unit checked.
+	 */
+	bool get_self_ability_bool_weapon(const config& special, const std::string& tag_name, const map_location& loc, const_attack_ptr weapon = nullptr, const_attack_ptr opp_weapon = nullptr) const;
+	/** Checks whether this unit is affected by a given ability  used like weapon
+	 * @return True if the ability @a tag_name is active.
+	 * @param special the const config to one of abilities @a tag_name checked.
+	 * @param tag_name name of ability type checked.
+	 * @param loc location of the unit checked.
+	 * @param from unit adjacent to @a this is checked in case of [affect_adjacent] abilities.
+	 * @param dir direction to research a unit adjacent to @a this.
+	 */
+	bool get_adj_ability_bool(const config& special, const std::string& tag_name, int dir, const map_location& loc, const unit& from) const;
+	/** Checks whether this unit is affected by a given ability of leadership type
+	 * @return True if the ability @a tag_name is active.
+	 * @param special the const config to one of abilities @a tag_name checked.
+	 * @param tag_name name of ability type checked.
+	 * @param loc location of the unit checked.
+	 * @param from unit adjacent to @a this is checked in case of [affect_adjacent] abilities.
+	 * @param dir direction to research a unit adjacent to @a this.
+	 * @param weapon the attack used by unit checked in this function.
+	 * @param opp_weapon the attack used by opponent to unit checked.
+	 */
+	bool get_adj_ability_bool_weapon(const config& special, const std::string& tag_name, int dir, const map_location& loc, const unit& from, const_attack_ptr weapon=nullptr, const_attack_ptr opp_weapon = nullptr) const;
+
 	/**
 	 * Gets the unit's active abilities of a particular type if it were on a specified location.
 	 * @param tag_name The type of ability to check for
@@ -1671,6 +1710,10 @@ public:
 	{
 		return get_abilities_weapons(tag_name, loc_, weapon, opp_weapon);
 	}
+
+	const config &abilities() const { return abilities_; }
+
+	const std::set<std::string>& checking_tags() const { return checking_tags_; };
 
 	/**
 	 * Gets the names and descriptions of this unit's abilities. Location-independent variant
@@ -1721,6 +1764,8 @@ public:
 
 
 private:
+
+	const std::set<std::string> checking_tags_{"damage", "chance_to_hit", "berserk", "swarm", "drains", "heal_on_hit", "plague", "slow", "petrifies", "firststrike", "poison"};
 	/**
 	 * Check if an ability is active.
 	 * @param ability The type (tag name) of the ability

@@ -420,113 +420,7 @@ Playing
 Controls
 ~~~~~~~~
 
-These are the default control keys. Key setup might differ depending on the
-platform used. For example you will often have to use the command key instead
-of the control key when you are using MacOSX. You can change most hotkeys to
-your taste using the Preferences menu.
-
-.General controls and hotkeys
-`--------------`--------------------------------------------------------------
-F1             The Battle for Wesnoth Help
-Arrow keys     Scroll
-Left click     Select unit, move unit
-Right click    Context menu, cancel action
-Middle click   Center on pointer location
-Escape         Exit game, exit menu, cancel message
-
-Ctrl+s         Save game
-Ctrl+o         Load game
-Ctrl+p         Go to Preferences menu
-Ctrl+q         Quit game
-Ctrl+f         Toggle full screen/windowed mode
-Ctrl+Alt+m     Toggle muting of game sounds
-
-+              Zoom in
--              Zoom out
-0              Reset zoom to default
-Ctrl+e         Toggle ellipses
-Ctrl+g         Toggle grid
-
-Ctrl+a         Toggle accelerated game mode
-Holding Shift  Toggle between accelerated and normal game mode while pressed (temporary!)
-
-Ctrl+j         Show scenario objectives
-s              Show statistics
-Alt+s          Show status table
-Alt+u          Show unit list
-
-l              Move to leader unit
-
-Shift+s        Update shroud now
-------------------------------------------------------------------------------
-
-.Unit and turn specific hotkeys
-`--------------`--------------------------------------------------------------
-Ctrl+r         Recruit unit
-Ctrl+Alt+r     Repeat last recruit
-Alt+r          Recall unit
-
-Ctrl+n         Rename unit
-d              Show the description of the currently selected unit
-
-t              Continue interrupted unit move
-u              Undo last move (only deterministic moves can be undone)
-r              Redo move
-n              Cycle through units that have movement left
-Shift+n        Cycle through units that have movement left, in reverse order
-
-Ctrl+v         Show enemy moves (where the enemy can move next turn)
-Ctrl+b         Show potential enemy moves, if your units were not on the map
-1-7            Show how far currently selected unit can move in that many turns
-
-Space          End unit turn and cycle to next unit that has movement left
-Shift+Space    Make currently selected unit hold position (end its movement)
-Ctrl+Space     End this player's turn
-------------------------------------------------------------------------------
-
-.Whiteboard specific hotkeys
-`--------------`--------------------------------------------------------------
-p              Toggle planning mode
-y              Execute planned action
-h              Delete planned action
-Page Down      Move action down in the queue
-Page Up        Move action up in the queue
-Ctrl+y         Execute all actions
-i              Suppose dead
-------------------------------------------------------------------------------
-
-.Multiplayer specific hotkeys
-`--------------`--------------------------------------------------------------
-m              Message another player (in multiplayer)
-Ctrl+m         Message your allies (in multiplayer)
-Alt+m          Message everyone in the game (in multiplayer)
-Alt+c          View chat log
-Ctrl+x         Clear messages
-------------------------------------------------------------------------------
-
-.Miscellaneous hotkeys
-`--------------`--------------------------------------------------------------
-Ctrl+c         Clear onscreen labels
-/              Search (find label or unit by name)
-Alt+l          Attach a text label to a terrain hex
-Ctrl+l         Set team label
-
-:              https://wiki.wesnoth.org/CommandMode[Command mode]
-F5             Refresh Cache
-Shift+c        Create Unit (Debug!)
-f              Run AI formula
-------------------------------------------------------------------------------
-
-Some keys on MacOSX require more than replacing Ctrl by Cmd. Here is a list of
-those:
-
-.Miscellaneous hotkeys
-`--------------`--------------------------------------------------------------
-Cmd+w           Quit game
-Cmd+,           Go to Preferences menu
-Ctrl+F5         Refresh Cache
-Option+Space    End this player's turn
-------------------------------------------------------------------------------
+To view and change the hotkey settings open the Preferences menu and choose the Hotkeys tab.
 
 Gold
 ~~~~
@@ -946,43 +840,49 @@ On the top of the energy bar shown next to each unit of yours is an
 orb. This orb is:
 
 .Orbs
-`------`------------------------------------------`-----------------------------
-Orb    Image                                      Description
---------------------------------------------------------------------------------
-Green  image:images/orb-green.jpg["Green orb"]    If you control the unit and \
-                                                  it hasn't moved this turn
-Yellow image:images/orb-yellow.jpg["Yellow orb"]  If you control the unit and \
-                                                  it has moved this turn, but \
-                                                  could still move further or \
-                                                  attack
-Red    image:images/orb-red.jpg["Red orb"]        If you control the unit, but \
-                                                  it can no longer move or \
-                                                  attack, or the user ended \
-                                                  the unit's turn
-Blue   image:images/orb-blue.jpg["Blue orb"]      If the unit is an ally you \
-                                                  do not control
--      image:images/orb-none.jpg["No orb"]        Enemy units have no orb on \
-                                                  the top of their energy bar
---------------------------------------------------------------------------------
+`--------------`-------------------------------------------------`-----------------------------
+Orb            Image                                             Description
+-----------------------------------------------------------------------------------------------
+Green          image:images/orb-green.jpg["Green orb"]           If you control the unit and \
+                                                                 it hasn't moved this turn
+Yellow         image:images/orb-yellow.jpg["Yellow orb"]         If you control the unit and \
+                                                                 it has moved this turn, but \
+                                                                 could still move further or \
+                                                                 attack
+Red            image:images/orb-red.jpg["Red orb"]               If you control the unit, but \
+                                                                 it can no longer move or \
+                                                                 attack, or the user ended \
+                                                                 the unit's turn
+Red and yellow image:images/orb-disengaged.png["Two color orb"]  If you control the unit and \
+                                                                 it has attacked this turn, and \
+                                                                 could still move further but \
+                                                                 could not attack again
+Blue           image:images/orb-blue.jpg["Blue orb"]             If the unit is an ally you \
+                                                                 do not control. On the ally's \
+                                                                 own turn these will be shown \
+                                                                 with green, yellow and red orbs
+-              image:images/orb-none.jpg["No orb"]               Enemy units have no orb on \
+                                                                 the top of their energy bar
+-----------------------------------------------------------------------------------------------
 
 Ellipses, Team Colors, and Hero Icons
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Below each unit there will normally be a colored ellipses or base. The
-color identifies its team; in a campaign game, the human-player color is
-red. The team color will also show up in parts of the unit's clothing,
-or possibly on a shield insignia.
+color identifies its team. The team color will also show up in parts of
+the unit's clothing, or possibly on a shield insignia.
 
 Usually the ellipse will be a solid disk. On level 0 units,
 you will see an ellipse that has broken lines. This indicates
 that the unit has no Zone of Control.
 
-Some campaigns use a star-shaped base to indicate leaders and heroes
-(units which are somehow special and for example not allowed to die in
-the course of the scenario); others use a silver crown icon above the
-energy bar to mark heroes. Still others have no specific hero indicator
-at all. Which (if any) is used is a stylistic choice left to campaign
-designers.
+Units that can recruit will always have a star-shaped base. Other units
+normally have an elliptic base.
+
+Some campaigns use a smaller star-shaped base and a silver crown icon
+above the energy bar to indicate heroes (units which are somehow special
+and for example not allowed to die in the course of the scenario).
+Whether to do this is a stylistic choice left to campaign designers.
 
 Fighting
 ~~~~~~~~

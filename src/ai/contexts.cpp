@@ -1198,19 +1198,18 @@ bool readonly_context_impl::is_active(const std::string &time_of_day, const std:
 	return true;
 }
 
-bool readonly_context_impl::applies_to_leader(const utils::variant<bool, std::vector<std::string>> &aspect_value, const std::string &id) const
+bool readonly_context_impl::applies_to_leader(
+	const utils::variant<bool, std::vector<std::string>>& aspect_value, const std::string& id) const
 {
-	if (utils::variant_index(aspect_value) == 0) {
-		return utils::get<bool>(aspect_value);
-	} else {
-		std::vector<std::string> aspect_ids = utils::get<std::vector<std::string>>(aspect_value);
-		for(std::vector<std::string>::const_iterator aspect_id = aspect_ids.begin(); aspect_id != aspect_ids.end() ; ++aspect_id ) {
-			if(*aspect_id == id) {
-				return true;
+	return utils::visit(
+		[&id](const auto& v) {
+			if constexpr(utils::decayed_is_same<bool, decltype(v)>) {
+				return v;
+			} else {
+				return utils::contains(v, id);
 			}
-		}
-	}
-	return false;
+		},
+		aspect_value);
 }
 
 bool readonly_context_impl::is_keep_ignoring_leader(const std::string &id) const

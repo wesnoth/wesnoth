@@ -19,8 +19,6 @@
 #include "units/unit.hpp"
 #include "units/ptr.hpp"
 
-#include <boost/swap.hpp>
-
 fake_unit_ptr::fake_unit_ptr() : unit_(), my_manager_(nullptr) {}
 fake_unit_ptr::fake_unit_ptr(const internal_ptr & u) : unit_(u), my_manager_(nullptr) {}
 fake_unit_ptr::fake_unit_ptr(const internal_ptr & u, fake_unit_manager * mgr) : unit_(u), my_manager_(nullptr)
@@ -40,7 +38,7 @@ fake_unit_ptr::fake_unit_ptr(fake_unit_ptr && ptr)
 }
 
 void fake_unit_ptr::swap (fake_unit_ptr & o) {
-	boost::swap(unit_, o.unit_);
+	std::swap(unit_, o.unit_);
 	std::swap(my_manager_, o.my_manager_);
 }
 

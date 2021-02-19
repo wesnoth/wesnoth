@@ -9,20 +9,17 @@ local M = wesnoth.map
 -- development releases, but it is of course easily possible to copy a function
 -- from a previous release directly into an add-on if it is needed there.
 --
--- Invisible units ('viewing_side' parameter):
+-- Invisible units ('viewing_side' and 'ignore_visibility' parameters):
 -- With their default settings, the ai_helper functions use the vision a player of
 -- the respective side would see, that is, they assume no knowledge of invisible
--- units. This can be influenced with the 'viewing_side' parameter, which works
--- in the same way as it does in wesnoth.find_reach() and wesnoth.find_path():
---   - If set to a valid side number, vision for that side is used
---   - If set to an invalid side number (e.g. 0), all units on the map are seen
---   - If omitted and a function takes a a parameter linked to a specific side,
---     such as a side number or a unit, as input, vision of that side is used. In
---     this case, viewing_side is passed as part of the optional @cfg configuration
---     table and can be passed from function to function.
---   - If omitted and the function takes no such input, viewing_side is made a
---     required parameter in order to avoid mismatches between the default values
---     of different functions.
+-- units. This can be influenced with the 'viewing_side' and 'ignore_visibility' parameters,
+-- which work in the same way as they do in wesnoth.find_reach() and wesnoth.find_path():
+--   - If 'viewing_side' is set, vision for that side is used. It must be set to a valid side number.
+--   - If 'ignore_visibility' is set to true, all units on the map are seen and shroud is ignored.
+--       This overrides 'viewing_side'.
+--   - If neither parameter is given and a function takes a parameter linked to a specific side,
+--     such as a side number or a unit, as input, vision of that side is used.
+--   - For some functions that take no other side-related input, 'viewing_side' is made a required parameter.
 --
 -- Path finding:
 -- All ai_helper functions disregard shroud for path finding (while still ignoring
@@ -1066,6 +1063,16 @@ end
 
 --------- Unit related helper functions ----------
 
+function ai_helper.check_viewing_side(viewing_side, function_str)
+    -- Check that viewing_side is valid and set to an existing side
+    if (not viewing_side) then
+        error('ai_helper: missing required parameter viewing_side', 2)
+    end
+    if (type(viewing_side) ~= 'number') or (not wesnoth.sides[viewing_side]) then
+        error('ai_helper: parameter viewing_side must be a valid side number', 2)
+    end
+end
+
 function ai_helper.is_passive_leader(aspect_value, id)
     if (type(aspect_value) == 'boolean') then return aspect_value end
 
@@ -1110,25 +1117,19 @@ function ai_helper.get_visible_units(viewing_side, filter)
     -- Get units that are visible to side @viewing_side
     --
     -- Required parameters:
-    -- @viewing_side: see comments at beginning of this file
+    -- @viewing_side: must be set to a valid side number. If visibility is to be
+    --   ignored, use wesnoth.get_units() instead.
     --
     -- Optional parameters:
     -- @filter: Standard unit filter WML table for the units
     --   Example 1: { type = 'Orcish Grunt' }
     --   Example 2: { { "filter_location", { x = 10, y = 12, radius = 5 } } }
 
-    if (not viewing_side) then
-        error('ai_helper.get_visible_units() is missing required parameter viewing_side.', 2)
-    end
-    if (type(viewing_side) ~= 'number') then
-        error('ai_helper.get_visible_units(): parameter viewing_side must be a number., 2')
-    end
+    ai_helper.check_viewing_side(viewing_side)
 
     local filter_plus_vision = {}
     if filter then filter_plus_vision = ai_helper.table_copy(filter) end
-    if wesnoth.sides[viewing_side] then
-        table.insert(filter_plus_vision, { "filter_vision", { side = viewing_side, visible = 'yes' } })
-    end
+    table.insert(filter_plus_vision, { "filter_vision", { side = viewing_side, visible = 'yes' } })
 
     local units = {}
     local all_units = wesnoth.units.find_on_map()
@@ -1145,21 +1146,14 @@ function ai_helper.is_visible_unit(viewing_side, unit)
     -- Check whether @unit exists and is visible to side @viewing_side.
     --
     -- Required parameters:
-    -- @viewing_side: see comments at beginning of this file.
+    -- @viewing_side: must be set to a valid side number
     -- @unit: unit proxy table
 
-    if (not viewing_side) then
-        error('ai_helper.is_visible_unit() is missing required parameter viewing_side.', 2)
-    end
-    if (type(viewing_side) ~= 'number') then
-        error('ai_helper.is_visible_unit(): parameter viewing_side must be a number.', 2)
-    end
+    ai_helper.check_viewing_side(viewing_side)
 
     if (not unit) then return false end
 
-    if wesnoth.sides[viewing_side]
-        and unit:matches({ { "filter_vision", { side = viewing_side, visible = 'no' } } })
-    then
+    if unit:matches({ { "filter_vision", { side = viewing_side, visible = 'no' } } }) then
         return false
     end
 
@@ -1170,7 +1164,7 @@ function ai_helper.get_attackable_enemies(filter, side, cfg)
     -- Attackable enemies are defined as being being
     --   - enemies of the side defined in @side,
     --   - not petrified
-    --   - and visible to the side defined in @cfg.viewing_side.
+    --   - and visible to the side as defined in @cfg.viewing_side and @cfg.ignore_visibility.
     --   - have at least one adjacent hex that is not inside an area to avoid
     -- For speed reasons, this is done separately, rather than calling ai_helper.get_visible_units().
     --
@@ -1181,15 +1175,18 @@ function ai_helper.get_attackable_enemies(filter, side, cfg)
     -- @side: side number, if side other than current side is to be considered
     -- @cfg: table with optional configuration parameters:
     --   viewing_side: see comments at beginning of this file. Defaults to @side.
+    --   ignore_visibility: see comments at beginning of this file. Defaults to nil.
     --   avoid_map: if given, an enemy is included only if it does not have at least one
     --     adjacent hex outside of avoid_map
 
     side = side or wesnoth.current.side
     local viewing_side = cfg and cfg.viewing_side or side
+    ai_helper.check_viewing_side(viewing_side)
+    local ignore_visibility = cfg and cfg.ignore_visibility
 
     local filter_plus_vision = {}
     if filter then filter_plus_vision = ai_helper.table_copy(filter) end
-    if wesnoth.sides[viewing_side] then
+    if (not ignore_visibility) then
         table.insert(filter_plus_vision, { "filter_vision", { side = viewing_side, visible = 'yes' } })
     end
 
@@ -1220,21 +1217,24 @@ function ai_helper.get_attackable_enemies(filter, side, cfg)
 end
 
 function ai_helper.is_attackable_enemy(unit, side, cfg)
-    -- Check if @unit exists, is an enemy of @side, is visible to the side defined
-    -- in @cfg.viewing_side and is not petrified.
+    -- Check if @unit exists, is an enemy of @side, is visible to the side as defined
+    -- by @cfg.viewing_side and @cfg.ignore_visibility and is not petrified.
     --
     -- Optional parameters:
     -- @side: side number, defaults to current side.
     -- @cfg: table with optional configuration parameters:
     --   viewing_side: see comments at beginning of this file. Defaults to @side.
+    --   ignore_visibility: see comments at beginning of this file. Defaults to nil.
 
     side = side or wesnoth.current.side
     local viewing_side = cfg and cfg.viewing_side or side
+    ai_helper.check_viewing_side(viewing_side)
+    local ignore_visibility = cfg and cfg.ignore_visibility
 
     if (not unit)
         or (not wesnoth.sides.is_enemy(side, unit.side))
         or unit.status.petrified
-        or (not ai_helper.is_visible_unit(viewing_side, unit))
+        or ((not ignore_visibility) and (not ai_helper.is_visible_unit(viewing_side, unit)))
     then
         return false
     end
@@ -1251,6 +1251,7 @@ function ai_helper.get_closest_enemy(loc, side, cfg)
     -- @side: number of side for which to find enemy; defaults to current side
     -- @cfg: table with optional configuration parameters:
     --   viewing_side: see comments at beginning of this file. Defaults to @side.
+    --   ignore_visibility: see comments at beginning of this file. Defaults to nil.
 
     side = side or wesnoth.current.side
 
@@ -1443,6 +1444,7 @@ function ai_helper.next_hop(unit, x, y, cfg)
     -- @cfg: standard extra options for wesnoth.find_path()
     --   including:
     --     viewing_side: see comments at beginning of this file. Defaults to side of @unit
+    --     ignore_visibility: see comments at beginning of this file. Defaults to nil.
     --   plus:
     --     ignore_own_units: if set to true, then own units that can move out of the way are ignored
     --     path: if given, find the next hop along this path, rather than doing new path finding
@@ -1454,6 +1456,10 @@ function ai_helper.next_hop(unit, x, y, cfg)
     --       the ideal next_hop goal (defined as where the unit could get if there were no allied units
     --       in the way) as possible. Setting 'fan_out=false' restores the old behavior. The main
     --       disadvantage of the new method is that it needs to do more path finding and therefore takes longer.
+
+    local viewing_side = cfg and cfg.viewing_side or unit.side
+    ai_helper.check_viewing_side(viewing_side)
+    local ignore_visibility = cfg and cfg.ignore_visibility
 
     local path, cost
     if cfg and cfg.path then
@@ -1478,6 +1484,9 @@ function ai_helper.next_hop(unit, x, y, cfg)
                 local unit_in_way
                 if (not cfg) or (not cfg.ignore_units) then
                     unit_in_way = wesnoth.units.get(path[i][1], path[i][2])
+                    if unit_in_way and (not ignore_visibility) and (not ai_helper.is_visible_unit(viewing_side, unit_in_way)) then
+                        unit_in_way = nil
+                    end
 
                     -- If ignore_own_units is set, ignore own side units that can move out of the way
                     if cfg and cfg.ignore_own_units then
@@ -1528,10 +1537,12 @@ function ai_helper.next_hop(unit, x, y, cfg)
             inverse_reach_map:insert(r[1], r[2], inverse_cost)
         end
 
-        local units = ai_helper.get_visible_units(
-            cfg and cfg.viewing_side or unit.side,
-            { { "not", { id = unit.id } }
-        })
+        local units
+        if ignore_visibility then
+            units = wesnoth.units.find_on_map({ { "not", { id = unit.id } } })
+        else
+            units = ai_helper.get_visible_units(viewing_side, { { "not", { id = unit.id } } })
+        end
         local unit_map = LS.create()
         for _,u in ipairs(units) do unit_map:insert(u.x, u.y, u.id) end
 
@@ -1564,15 +1575,20 @@ function ai_helper.can_reach(unit, x, y, cfg)
     --   ignore_units: if true, ignore both own and enemy units
     --   exclude_occupied: if true, exclude hex if there's a unit there, irrespective of value of 'ignore_units'
     --   viewing_side: see comments at beginning of this file. Defaults to side of @unit
+    --   ignore_visibility: see comments at beginning of this file. Defaults to nil.
 
     cfg = cfg or {}
     local viewing_side = cfg.viewing_side or unit.side
+    ai_helper.check_viewing_side(viewing_side)
+    local ignore_visibility = cfg and cfg.ignore_visibility
 
-    -- Is there a unit at the goal hex?
+    -- Is there a visible unit at the goal hex?
     local unit_in_way = wesnoth.units.get(x, y)
-    if (cfg.exclude_occupied)
-      and unit_in_way and ai_helper.is_visible_unit(viewing_side, unit_in_way)
-    then
+    if unit_in_way and (not ignore_visibility) and (not ai_helper.is_visible_unit(viewing_side, unit_in_way)) then
+        unit_in_way = nil
+    end
+
+    if (cfg.exclude_occupied) and unit_in_way then
         return false
     end
 
@@ -1580,10 +1596,7 @@ function ai_helper.can_reach(unit, x, y, cfg)
     -- or a unit of own side that cannot move away (this might be slow, don't know)
     if (not cfg.ignore_units) then
         -- If there's a unit at the goal that's not on own side (even ally), return false
-        if unit_in_way
-            and (unit_in_way.side ~= unit.side)
-            and ai_helper.is_visible_unit(viewing_side, unit_in_way)
-        then
+        if unit_in_way and (unit_in_way.side ~= unit.side) then
             return false
         end
 
@@ -1619,12 +1632,15 @@ function ai_helper.get_reachmap(unit, cfg)
     -- @cfg: table with optional configuration parameters:
     --   moves: if set to 'max', unit MP is set to max_moves before calculation
     --   viewing_side: see comments at beginning of this file. Defaults to side of @unit
+    --   ignore_visibility: see comments at beginning of this file. Defaults to nil.
     --   exclude_occupied: if true, exclude hexes that have units on them; defaults to
     --     false, in which case hexes with own units with moves > 0 are included
     --   avoid_map: location set of hexes to be excluded
     --   plus all other parameters to wesnoth.find_reach
 
     local viewing_side = cfg and cfg.viewing_side or unit.side
+    ai_helper.check_viewing_side(viewing_side)
+    local ignore_visibility = cfg and cfg.ignore_visibility
 
     local old_moves = unit.moves
     if cfg and (cfg.moves == 'max') then unit.moves = unit.max_moves end
@@ -1637,7 +1653,14 @@ function ai_helper.get_reachmap(unit, cfg)
             is_available = false
         else
             local unit_in_way = wesnoth.units.get(loc[1], loc[2])
-            if unit_in_way and (unit_in_way.id ~= unit.id) and ai_helper.is_visible_unit(viewing_side, unit_in_way) then
+            if unit_in_way and (unit_in_way.id == unit.id) then
+                unit_in_way = nil
+            end
+            if unit_in_way and (not ignore_visibility) and (not ai_helper.is_visible_unit(viewing_side, unit_in_way)) then
+                unit_in_way = nil
+            end
+
+            if unit_in_way then
                 if cfg and cfg.exclude_occupied then
                     is_available = false
                 elseif (unit_in_way.side ~= unit.side) or (unit_in_way.moves == 0) then
@@ -1668,7 +1691,7 @@ end
 
 function ai_helper.find_path_with_shroud(unit, x, y, cfg)
     -- Same as wesnoth.find_path, just that it works under shroud as well while still
-    -- ignoring invisible units. It does this by using viewing_side=0 and taking
+    -- ignoring invisible units. It does this by using ignore_visibility=true and taking
     -- invisible units off the map for the path finding process.
     --
     -- Notes on some of the optional parameters that can be passed in @cfg:
@@ -1676,19 +1699,23 @@ function ai_helper.find_path_with_shroud(unit, x, y, cfg)
     --    for determining which units are hidden and need to be extracted, as that
     --    is what the path_finder code uses. If set to an invalid side, we can use
     --    default path finding as shroud is ignored then anyway.
+    --  - ignore_visibility: see comments at beginning of this file. Defaults to nil.
+    --      This applies to the units only in this function, as it always ignores shroud.
     --  - ignore_units: if true, hidden units do not need to be extracted because
     --    all units are ignored anyway
 
     local viewing_side = (cfg and cfg.viewing_side) or unit.side
+    ai_helper.check_viewing_side(viewing_side)
+    local ignore_visibility = cfg and cfg.ignore_visibility
 
     local path, cost
-    if wesnoth.sides[viewing_side] and wesnoth.sides[viewing_side].shroud then
+    if wesnoth.sides[viewing_side].shroud then
         local extracted_units = {}
         if (not cfg) or (not cfg.ignore_units) then
             local all_units = wesnoth.units.find_on_map()
             for _,u in ipairs(all_units) do
-                if (u.side ~= viewing_side)
-                    and (not ai_helper.is_visible_unit(viewing_side, u))
+                if (u.id ~= unit.id) and (u.side ~= viewing_side)
+                    and (not ignore_visibility) and (not ai_helper.is_visible_unit(viewing_side, u))
                 then
                     u:extract()
                     table.insert(extracted_units, u)
@@ -1698,7 +1725,7 @@ function ai_helper.find_path_with_shroud(unit, x, y, cfg)
 
         local cfg_copy = {}
         if cfg then cfg_copy = ai_helper.table_copy(cfg) end
-        cfg_copy.viewing_side = 0
+        cfg_copy.ignore_visibility = true
         path, cost = wesnoth.find_path(unit, x, y, cfg_copy)
 
         for _,extracted_unit in ipairs(extracted_units) do
@@ -1943,10 +1970,13 @@ function ai_helper.move_unit_out_of_way(ai, unit, cfg)
     --   dx, dy: the direction in which moving out of the way is preferred
     --   labels: if set, display labels of the rating for each hex the unit can reach
     --   viewing_side: see comments at beginning of this file. Defaults to side of @unit.
+    --   ignore_visibility: see comments at beginning of this file. Defaults to nil.
     --   all other optional parameters to wesnoth.find_reach()
 
     cfg = cfg or {}
     local viewing_side = cfg.viewing_side or unit.side
+    ai_helper.check_viewing_side(viewing_side)
+    local ignore_visibility = cfg and cfg.ignore_visibility
 
     local dx, dy
     if cfg.dx and cfg.dy then
@@ -1961,7 +1991,7 @@ function ai_helper.move_unit_out_of_way(ai, unit, cfg)
     for _,loc in ipairs(reach) do
         local unit_in_way = wesnoth.units.get(loc[1], loc[2])
         if (not unit_in_way)       -- also excludes current hex
-            or (not ai_helper.is_visible_unit(viewing_side, unit_in_way))
+            or ((not ignore_visibility) and (not ai_helper.is_visible_unit(viewing_side, unit_in_way)))
         then
             local rating = loc[3]  -- also disfavors hexes next to visible enemy units for which loc[3] = 0
 
@@ -2009,9 +2039,12 @@ function ai_helper.movefull_outofway_stopunit(ai, unit, x, y, cfg)
     --
     -- @cfg: table with optional configuration parameters:
     --   viewing_side: see comments at beginning of this file. Defaults to side of @unit
+    --   ignore_visibility: see comments at beginning of this file. Defaults to nil.
     --   all other optional parameters to ai_helper.move_unit_out_of_way() and wesnoth.find_path()
 
     local viewing_side = cfg and cfg.viewing_side or unit.side
+    ai_helper.check_viewing_side(viewing_side)
+    local ignore_visibility = cfg and cfg.ignore_visibility
 
     if (type(x) ~= 'number') then
         if x[1] then
@@ -2026,7 +2059,7 @@ function ai_helper.movefull_outofway_stopunit(ai, unit, x, y, cfg)
     if (cost <= unit.moves) then
         local unit_in_way = wesnoth.units.get(x, y)
         if unit_in_way and (unit_in_way ~= unit)
-            and ai_helper.is_visible_unit(viewing_side, unit_in_way)
+            and (ignore_visibility or ai_helper.is_visible_unit(viewing_side, unit_in_way))
         then
             ai_helper.move_unit_out_of_way(ai, unit_in_way, cfg)
         end
@@ -2043,15 +2076,15 @@ end
 ---------- Attack related helper functions --------------
 
 function ai_helper.get_attacks(units, cfg)
-    -- Get all attacks the units stored in @units can do. Invisible enemies are
-    -- excluded unless option @cfg.viewing_side=0 is used.
+    -- Get all attacks the units stored in @units can do. Enemies invisible to the side
+    -- of @units are excluded, unless option @cfg.ignore_visibility=true is used.
     --
     -- This includes a variety of configurable options, passed in the @cfg table
     -- @cfg: table with optional configuration parameters:
     --   moves: "current" (default for units on current side) or "max" (always used for units on other sides)
     --   include_occupied (false): if set, also include hexes occupied by own-side units that can move away
     --   simulate_combat (false): if set, also simulate the combat and return result (this is slow; only set if needed)
-    --   viewing_side: see comments at beginning of this file. Defaults to side of @units
+    --   ignore_visibility: see comments at beginning of this file. Defaults to side of @units
     --   all other optional parameters to wesnoth.find_reach()
     --
     -- Returns {} if no attacks can be done, otherwise table with fields:
@@ -2067,7 +2100,7 @@ function ai_helper.get_attacks(units, cfg)
     if (not units[1]) then return attacks end
 
     local side = units[1].side  -- all units need to be on same side
-    local viewing_side = cfg and cfg.viewing_side or side
+    local ignore_visibility = cfg and cfg.ignore_visibility
 
     -- 'moves' can be either "current" or "max"
     -- For unit on current side: use "current" by default, or override by cfg.moves
@@ -2098,7 +2131,7 @@ function ai_helper.get_attacks(units, cfg)
         if (unit.side == side) then
             my_unit_map:insert(unit.x, unit.y, i)
         else
-            if ai_helper.is_visible_unit(viewing_side, unit) then
+            if ignore_visibility or ai_helper.is_visible_unit(side, unit) then
                 other_unit_map:insert(unit.x, unit.y, i)
             end
         end
@@ -2157,7 +2190,9 @@ function ai_helper.get_attacks(units, cfg)
                         for _,uiw_loc in ipairs(uiw_reach) do
                             -- Unit in the way of the unit in the way
                             local uiw_uiw = wesnoth.units.get(uiw_loc[1], uiw_loc[2])
-                            if (not uiw_uiw) or (not ai_helper.is_visible_unit(viewing_side, uiw_uiw)) then
+                            if (not uiw_uiw)
+                                or ((not ignore_visibility) and (not ai_helper.is_visible_unit(side, uiw_uiw)))
+                            then
                                 add_target = true
                                 break
                             end

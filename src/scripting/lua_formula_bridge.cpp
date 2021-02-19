@@ -13,8 +13,6 @@
 
 #include "scripting/lua_formula_bridge.hpp"
 
-#include "boost/variant/static_visitor.hpp"
-
 #include "game_board.hpp"
 #include "scripting/game_lua_kernel.hpp"
 #include "scripting/lua_unit.hpp"

@@ -248,7 +248,7 @@ private:
 	 *
 	 * @return 					true if e1 and e2 conflict, false if not
 	 */
-	bool conflicts(const elem& elem1, const elem& elem2, bool directonly=false) const;
+	bool does_conflict(const elem& elem1, const elem& elem2, bool directonly=false) const;
 
 	/**
 	 * Decides whether e1 requires e2
@@ -260,7 +260,7 @@ private:
 	 *
 	 * @return 			true if e2 is required by e1, false if not
 	 */
-	bool requires(const elem& elem1, const elem& elem2) const;
+	bool does_require(const elem& elem1, const elem& elem2) const;
 
 	/**
 	 * Get the list of modifications required by a certain component

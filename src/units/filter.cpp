@@ -194,7 +194,10 @@ struct unit_filter_attribute_literal : public unit_filter_base
 	F f_;
 };
 
-class contains_dollar_visitor : public boost::static_visitor<bool>
+class contains_dollar_visitor
+#ifdef USING_BOOST_VARIANT
+	: public boost::static_visitor<bool>
+#endif
 {
 public:
 	contains_dollar_visitor() {}

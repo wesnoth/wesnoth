@@ -286,6 +286,12 @@ void set_show_partial_orb(bool show_orb) {
 	prefs["show_partial_orb"] = show_orb;
 }
 
+bool show_disengaged_orb() {
+	return get("show_disengaged_orb", game_config::show_disengaged_orb);
+}
+void set_show_disengaged_orb(bool show_orb) {
+	prefs["show_disengaged_orb"] = show_orb;
+}
 
 static std::string fix_orb_color_name(const std::string& color) {
 	if (color.substr(0,4) == "orb_") {
@@ -356,6 +362,16 @@ std::string partial_color() {
 }
 void set_partial_color(const std::string& color_id) {
 	prefs["partial_orb_color"] = color_id;
+}
+
+std::string disengaged_color() {
+	std::string disengaged_color = get("disengaged_orb_color");
+	if (disengaged_color.empty())
+		return game_config::colors::disengaged_orb_color;
+	return fix_orb_color_name(disengaged_color);
+}
+void set_disengaged_color(const std::string& color_id) {
+	prefs["disengaged_orb_color"] = color_id;
 }
 
 bool scroll_to_action()

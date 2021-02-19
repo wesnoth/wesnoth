@@ -45,7 +45,6 @@
 #define __LONG_LONG_SUPPORTED
 #endif
 
-#include "global.hpp"
 #include <optional>
 
 #include <cstdlib>
