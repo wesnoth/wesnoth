@@ -84,16 +84,20 @@ function methods:clear()
 	self.values = {}
 end
 
-function methods:get(x, y)
-	return self.values[index(x, y)]
+function methods:get(...)
+	local loc = wesnoth.map.read_location(...)
+	return self.values[index(loc.x, loc.y)]
 end
 
-function methods:insert(x, y, v)
-	self.values[index(x, y)] = v or true
+function methods:insert(...)
+	local loc, n = wesnoth.map.read_location(...)
+	local v = select(n + 1, ...)
+	self.values[index(loc.x, loc.y)] = v or true
 end
 
-function methods:remove(x, y)
-	self.values[index(x, y)] = nil
+function methods:remove(...)
+	local loc = wesnoth.map.read_location(...)
+	self.values[index(loc.x, loc.y)] = nil
 end
 
 function methods:clone()

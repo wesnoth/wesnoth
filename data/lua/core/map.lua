@@ -5,6 +5,23 @@ function wesnoth.map.split_terrain_code(code)
 	return table.unpack(code:split('^', {remove_empty = false}))
 end
 
+function wesnoth.map.read_location(...)
+	local x, y = ...
+	if y == nil then
+		if type(x.x) == 'number' and type(x.y) == 'number' then
+			x, y = x.x, x.y
+		elseif type(x[1]) == 'number' and type(x[2]) == 'number' then
+			x, y = table.unpack(x)
+		else
+			return nil, 0
+		end
+		return {x = x, y = y}, 1
+	elseif type(x) == 'number' or type(y) == 'number' then
+		return {x = x, y = y}, 2
+	end
+	return nil, 0
+end
+
 if wesnoth.kernel_type() ~= "Application Lua Kernel" then
 	-- possible terrain string inputs:
 	-- A        A^       A^B      ^        ^B
