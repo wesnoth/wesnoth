@@ -26,6 +26,8 @@
    * Added information about the build's (not runtime) target CPU architecture to the game version info dialog and --report.
    * Added terminal-style command history browsing with up-down keys for in-game consoles used by debug mode, ai and search floating textboxes.
  ### WML Engine
+   * Extent 'special_id_active' and 'special_type_active' to abilities used like weapon and to [leadership] abilities.
+   * abilities used like weapon can call [leading_anim] now.
  ### Miscellaneous and Bug Fixes
    * Fixed display zoom not being taken into account when using the `x`, `y`, `directional_x` and `directional_y` attributes in unit animations.
 
