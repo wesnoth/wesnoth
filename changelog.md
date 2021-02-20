@@ -17,7 +17,8 @@
  ### Packaging
  ### Terrain
  ### Translations
-   * Updated translations: British English, Catalan, Czech, French, Portuguese (Brazil)
+   * Updated translations: British English, Catalan, Czech, French, Portuguese (Brazil),
+     Turkish
  ### Units
    * update footpad sprite
    * north-facing frames for dunefolk skirmisher, loyalist bowman, and troll whelp
