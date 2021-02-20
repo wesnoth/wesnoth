@@ -106,7 +106,7 @@ std::unique_ptr<editor_action> mouse_action::key_event(
 	|| event.key.keysym.sym == SDLK_DELETE) {
 		int res = event.key.keysym.sym - '0';
 		if (res > gamemap::MAX_PLAYERS || event.key.keysym.sym == SDLK_DELETE) res = 0;
-		const std::string* old_id = disp.map().is_starting_position(previous_move_hex_);
+		const std::string* old_id = disp.map().is_special_location(previous_move_hex_);
 		if (res == 0 && old_id != nullptr) {
 			a = std::make_unique<editor_action_starting_position>(map_location(), *old_id);
 		} else if (res > 0 && (old_id == nullptr || *old_id == std::to_string(res))) {
@@ -402,7 +402,7 @@ std::unique_ptr<editor_action> mouse_action_starting_position::up_left(editor_di
 	if (!disp.map().on_board(hex)) {
 		return nullptr;
 	}
-	auto player_starting_at_hex = disp.map().is_starting_position(hex);
+	auto player_starting_at_hex = disp.map().is_special_location(hex);
 
 	if (has_ctrl_modifier()) {
 		if (player_starting_at_hex) {
@@ -437,7 +437,7 @@ std::unique_ptr<editor_action> mouse_action_starting_position::click_left(editor
 std::unique_ptr<editor_action> mouse_action_starting_position::up_right(editor_display& disp, int x, int y)
 {
 	map_location hex = disp.hex_clicked_on(x, y);
-	auto player_starting_at_hex = disp.map().is_starting_position(hex);
+	auto player_starting_at_hex = disp.map().is_special_location(hex);
 	if (player_starting_at_hex != nullptr) {
 		return std::make_unique<editor_action_starting_position>(map_location(), *player_starting_at_hex);
 	} else {

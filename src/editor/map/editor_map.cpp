@@ -84,20 +84,20 @@ editor_map::~editor_map()
 void editor_map::sanity_check()
 {
 	int errors = 0;
-	if (total_width() != tiles_.w) {
-		ERR_ED << "total_width is " << total_width() << " but tiles_.size() is " << tiles_.w << std::endl;
+	if (total_width() != tiles().w) {
+		ERR_ED << "total_width is " << total_width() << " but tiles().size() is " << tiles().w << std::endl;
 		++errors;
 	}
-	if (total_height() != tiles_.h) {
-		ERR_ED << "total_height is " << total_height() << " but tiles_[0].size() is " << tiles_.h << std::endl;
+	if (total_height() != tiles().h) {
+		ERR_ED << "total_height is " << total_height() << " but tiles()[0].size() is " << tiles().h << std::endl;
 		++errors;
 	}
 	if (w() + 2 * border_size() != total_width()) {
-		ERR_ED << "h is " << h_ << " and border_size is " << border_size() << " but total_width is " << total_width() << std::endl;
+		ERR_ED << "h is " << h() << " and border_size is " << border_size() << " but total_width is " << total_width() << std::endl;
 		++errors;
 	}
 	if (h() + 2 * border_size() != total_height()) {
-		ERR_ED << "w is " << w_ << " and border_size is " << border_size() << " but total_height is " << total_height() << std::endl;
+		ERR_ED << "w is " << w() << " and border_size is " << border_size() << " but total_height is " << total_height() << std::endl;
 		++errors;
 	}
 	for (const map_location& loc : selection_) {
@@ -137,7 +137,7 @@ std::set<map_location> editor_map::set_starting_position_labels(display& disp)
 	std::string label;
 
 
-	for (const auto& pair : starting_positions_.left) {
+	for (const auto& pair : special_locations().left) {
 
 		bool is_number = std::find_if(pair.first.begin(), pair.first.end(), [](char c) { return !std::isdigit(c); }) == pair.first.end();
 		if (is_number) {
@@ -246,8 +246,8 @@ void editor_map::resize(int width, int height, int x_offset, int y_offset,
 
 	// fix the starting positions
 	if(x_offset || y_offset) {
-		for (auto it = starting_positions_.left.begin(); it != starting_positions_.left.end(); ++it) {
-			starting_positions_.left.modify_data(it, [=](t_translation::coordinate & loc) { loc.add(-x_offset, -y_offset); });
+		for (auto it = special_locations().left.begin(); it != special_locations().left.end(); ++it) {
+			special_locations().left.modify_data(it, [=](t_translation::coordinate & loc) { loc.add(-x_offset, -y_offset); });
 		}
 	}
 
@@ -298,130 +298,122 @@ bool editor_map::same_size_as(const gamemap& other) const
 
 void editor_map::expand_right(int count, const t_translation::terrain_code & filler)
 {
-	t_translation::ter_map tiles_new(tiles_.w + count, tiles_.h);
-	w_ += count;
-	for (int x = 0, x_end = tiles_.w; x != x_end; ++x) {
-		for (int y = 0, y_end = tiles_.h; y != y_end; ++y) {
-			tiles_new.get(x, y) = tiles_.get(x, y);
+	t_translation::ter_map tiles_new(tiles().w + count, tiles().h);
+	for (int x = 0, x_end = tiles().w; x != x_end; ++x) {
+		for (int y = 0, y_end = tiles().h; y != y_end; ++y) {
+			tiles_new.get(x, y) = tiles().get(x, y);
 		}
 	}
-	for (int x = tiles_.w, x_end = tiles_.w + count; x != x_end; ++x) {
-		for (int y = 0, y_end = tiles_.h; y != y_end; ++y) {
-			tiles_new.get(x, y) = filler == t_translation::NONE_TERRAIN ? tiles_.get(tiles_.w - 1, y) : filler;
+	for (int x = tiles().w, x_end = tiles().w + count; x != x_end; ++x) {
+		for (int y = 0, y_end = tiles().h; y != y_end; ++y) {
+			tiles_new.get(x, y) = filler == t_translation::NONE_TERRAIN ? tiles().get(tiles().w - 1, y) : filler;
 		}
 	}
-	tiles_ = std::move(tiles_new);
+	tiles() = std::move(tiles_new);
 }
 
 void editor_map::expand_left(int count, const t_translation::terrain_code & filler)
 {
-	t_translation::ter_map tiles_new(tiles_.w + count, tiles_.h);
-	w_ += count;
-	for (int x = 0, x_end = tiles_.w; x != x_end; ++x) {
-		for (int y = 0, y_end = tiles_.h; y != y_end; ++y) {
-			tiles_new.get(x + count, y) = tiles_.get(x, y);
+	t_translation::ter_map tiles_new(tiles().w + count, tiles().h);
+	for (int x = 0, x_end = tiles().w; x != x_end; ++x) {
+		for (int y = 0, y_end = tiles().h; y != y_end; ++y) {
+			tiles_new.get(x + count, y) = tiles().get(x, y);
 		}
 	}
 	for (int x = 0, x_end = count; x != x_end; ++x) {
-		for (int y = 0, y_end = tiles_.h; y != y_end; ++y) {
-			tiles_new.get(x, y) = filler == t_translation::NONE_TERRAIN ? tiles_.get(0, y) : filler;
+		for (int y = 0, y_end = tiles().h; y != y_end; ++y) {
+			tiles_new.get(x, y) = filler == t_translation::NONE_TERRAIN ? tiles().get(0, y) : filler;
 		}
 	}
-	tiles_ = std::move(tiles_new);
+	tiles() = std::move(tiles_new);
 }
 
 void editor_map::expand_top(int count, const t_translation::terrain_code & filler)
 {
-	t_translation::ter_map tiles_new(tiles_.w, tiles_.h + count);
-	h_ += count;
-	for (int x = 0, x_end = tiles_.w; x != x_end; ++x) {
-		for (int y = 0, y_end = tiles_.h; y != y_end; ++y) {
-			tiles_new.get(x, y + count) = tiles_.get(x, y);
+	t_translation::ter_map tiles_new(tiles().w, tiles().h + count);
+	for (int x = 0, x_end = tiles().w; x != x_end; ++x) {
+		for (int y = 0, y_end = tiles().h; y != y_end; ++y) {
+			tiles_new.get(x, y + count) = tiles().get(x, y);
 		}
 	}
-	for (int x = 0, x_end = tiles_.w; x != x_end; ++x) {
+	for (int x = 0, x_end = tiles().w; x != x_end; ++x) {
 		for (int y = 0, y_end = count; y != y_end; ++y) {
-			tiles_new.get(x, y) = filler == t_translation::NONE_TERRAIN ? tiles_.get(x, 0) : filler;
+			tiles_new.get(x, y) = filler == t_translation::NONE_TERRAIN ? tiles().get(x, 0) : filler;
 		}
 	}
-	tiles_ = std::move(tiles_new);
+	tiles() = std::move(tiles_new);
 }
 
 void editor_map::expand_bottom(int count, const t_translation::terrain_code & filler)
 {
-	t_translation::ter_map tiles_new(tiles_.w, tiles_.h + count);
-	h_ += count;
-	for (int x = 0, x_end = tiles_.w; x != x_end; ++x) {
-		for (int y = 0, y_end = tiles_.h; y != y_end; ++y) {
-			tiles_new.get(x, y) = tiles_.get(x, y);
+	t_translation::ter_map tiles_new(tiles().w, tiles().h + count);
+	for (int x = 0, x_end = tiles().w; x != x_end; ++x) {
+		for (int y = 0, y_end = tiles().h; y != y_end; ++y) {
+			tiles_new.get(x, y) = tiles().get(x, y);
 		}
 	}
-	for (int x = 0, x_end = tiles_.w; x != x_end; ++x) {
-		for (int y = tiles_.h, y_end = tiles_.h + count; y != y_end; ++y) {
-			tiles_new.get(x, y) = filler == t_translation::NONE_TERRAIN ? tiles_.get(x, tiles_.h - 1) : filler;
+	for (int x = 0, x_end = tiles().w; x != x_end; ++x) {
+		for (int y = tiles().h, y_end = tiles().h + count; y != y_end; ++y) {
+			tiles_new.get(x, y) = filler == t_translation::NONE_TERRAIN ? tiles().get(x, tiles().h - 1) : filler;
 		}
 	}
-	tiles_ = std::move(tiles_new);
+	tiles() = std::move(tiles_new);
 }
 
 void editor_map::shrink_right(int count)
 {
-	if(count < 0 || count > tiles_.w) {
+	if(count < 0 || count > tiles().w) {
 		throw editor_map_operation_exception();
 	}
-	t_translation::ter_map tiles_new(tiles_.w - count, tiles_.h);
+	t_translation::ter_map tiles_new(tiles().w - count, tiles().h);
 	for (int x = 0, x_end = tiles_new.w; x != x_end; ++x) {
 		for (int y = 0, y_end = tiles_new.h; y != y_end; ++y) {
-			tiles_new.get(x, y) = tiles_.get(x, y);
+			tiles_new.get(x, y) = tiles().get(x, y);
 		}
 	}
-	w_ -= count;
-	tiles_ = std::move(tiles_new);
+	tiles() = std::move(tiles_new);
 }
 
 void editor_map::shrink_left(int count)
 {
-	if (count < 0 || count > tiles_.w) {
+	if (count < 0 || count > tiles().w) {
 		throw editor_map_operation_exception();
 	}
-	t_translation::ter_map tiles_new(tiles_.w - count, tiles_.h);
+	t_translation::ter_map tiles_new(tiles().w - count, tiles().h);
 	for (int x = 0, x_end = tiles_new.w; x != x_end; ++x) {
 		for (int y = 0, y_end = tiles_new.h; y != y_end; ++y) {
-			tiles_new.get(x, y) = tiles_.get(x + count, y);
+			tiles_new.get(x, y) = tiles().get(x + count, y);
 		}
 	}
-	w_ -= count;
-	tiles_ = std::move(tiles_new);
+	tiles() = std::move(tiles_new);
 }
 
 void editor_map::shrink_top(int count)
 {
-	if (count < 0 || count > tiles_.h) {
+	if (count < 0 || count > tiles().h) {
 		throw editor_map_operation_exception();
 	}
-	t_translation::ter_map tiles_new(tiles_.w, tiles_.h - count);
+	t_translation::ter_map tiles_new(tiles().w, tiles().h - count);
 	for (int x = 0, x_end = tiles_new.w; x != x_end; ++x) {
 		for (int y = 0, y_end = tiles_new.h; y != y_end; ++y) {
-			tiles_new.get(x, y) = tiles_.get(x, y + count);
+			tiles_new.get(x, y) = tiles().get(x, y + count);
 		}
 	}
-	h_ -= count;
-	tiles_ = std::move(tiles_new);
+	tiles() = std::move(tiles_new);
 }
 
 void editor_map::shrink_bottom(int count)
 {
-	if (count < 0 || count > tiles_.h) {
+	if (count < 0 || count > tiles().h) {
 		throw editor_map_operation_exception();
 	}
-	t_translation::ter_map tiles_new(tiles_.w, tiles_.h - count);
+	t_translation::ter_map tiles_new(tiles().w, tiles().h - count);
 	for (int x = 0, x_end = tiles_new.w; x != x_end; ++x) {
 		for (int y = 0, y_end = tiles_new.h; y != y_end; ++y) {
-			tiles_new.get(x, y) = tiles_.get(x, y);
+			tiles_new.get(x, y) = tiles().get(x, y);
 		}
 	}
-	h_ -= count;
-	tiles_ = std::move(tiles_new);
+	tiles() = std::move(tiles_new);
 }
 
 

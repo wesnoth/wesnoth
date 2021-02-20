@@ -65,3 +65,45 @@ if wesnoth.kernel_type() ~= "Application Lua Kernel" then
 		end
 	end
 end
+
+if wesnoth.kernel_type() == "Game Lua Kernel" then
+	wesnoth.terrain_mask = wesnoth.deprecate_api('wesnoth.terrain_mask', 'wesnoth.current.map:terrain_mask', 1, nil, function(...)
+		wesnoth.current.map:terrain_mask(...)
+	end)
+	wesnoth.get_terrain = wesnoth.deprecate_api('wesnoth.get_terrain', 'wesnoth.current.map[loc]', 1, nil, function(x, y)
+		local loc = wesnoth.map.read_location(x, y)
+		if loc == nil then error('get_terrain: expected location') end
+		return wesnoth.current.map[loc]
+	end)
+	wesnoth.set_terrain = wesnoth.deprecate_api('wesnoth.set_terrain', 'wesnoth.current.map[loc]=', 1, nil, function(...)
+		local loc, n = wesnoth.map.read_location(...)
+		if n == 0 then error('set_terrain: expected location') end
+		local new_ter, mode, replace_if_failed = select(n + 1, ...)
+		if new_ter == '' or type(new_ter) ~= 'string' then error('set_terrain: expected terrain string') end
+		if replace_if_failed then
+			mode = mode or 'both'
+			new_ter = wesnoth.map.replace_if_failed(new_ter, mode, true)
+		elseif mode == 'both' or mode == 'base' or mode == 'overlay' then
+			new_ter = wesnoth.map['replace_' .. mode](new_ter)
+		else
+			error('set_terrain: invalid mode')
+		end
+		wesnoth.current.map[loc] = new_ter
+	end)
+	wesnoth.get_map_size = wesnoth.deprecate_api('wesnoth.get_map_size', 'wesnoth.current.map.playable_width,playable_height,border_size', 1, nil, function()
+		local m = wesnoth.current.map
+		return m.playable_width, m.playable_height, m.border_size
+	end)
+	wesnoth.special_locations = wesnoth.deprecate_api('wesnoth.special_locations', 'wesnoth.current.map:special_locations', 1, nil, setmetatable({}, {
+		__index = function(_, k) return wesnoth.current.map.special_locations[k] end,
+		__newindex = function(_, k, v) wesnoth.current.map.special_locations[k] = v end,
+		__len = function(_)
+			local n = 0
+			for k,v in pairs(wesnoth.current.map.special_locations) do
+				n = n + 1
+			end
+			return n
+		end,
+		__pairs = function(_) return pairs(wesnoth.current.map.special_locations) end,
+	}), 'Note: the length operator has been removed')
+end

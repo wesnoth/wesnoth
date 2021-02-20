@@ -23,6 +23,143 @@ class config;
 
 //class terrain_type_data; Can't forward declare because of enum
 
+// This could be moved to a separate file pair...
+class gamemap_base
+{
+public:
+	using terrain_code = t_translation::terrain_code;
+	using terrain_map = t_translation::ter_map;
+	using location_map = t_translation::starting_positions;
+	virtual ~gamemap_base();
+
+	/** The default border style for a map. */
+	static const int default_border = 1;
+
+	/**
+	 * Maximum number of players supported.
+	 *
+	 * Warning: when you increase this, you need to add
+	 * more definitions to the team_colors.cfg file.
+	 */
+	static const int MAX_PLAYERS = 9;
+
+	std::string to_string() const;
+
+	/** Effective map width. */
+	int w() const { return total_width() - 2 * border_size(); }
+
+	/** Effective map height. */
+	int h() const { return total_height() - 2 * border_size(); }
+
+	/** Size of the map border. */
+	int border_size() const { return default_border; }
+
+	/** Real width of the map, including borders. */
+	int total_width()  const { return tiles_.w; }
+
+	/** Real height of the map, including borders */
+	int total_height() const { return tiles_.h; }
+
+	/** Tell if the map is of 0 size. */
+	bool empty() const
+	{
+		return w() <= 0 || h() <= 0;
+	}
+
+	/**
+	 * Tell if a location is on the map.
+	 */
+	bool on_board(const map_location& loc) const;
+	bool on_board_with_border(const map_location& loc) const;
+
+	/**
+	 * Clobbers over the terrain at location 'loc', with the given terrain.
+	 * Uses mode and replace_if_failed like merge_terrains().
+	 */
+	virtual void set_terrain(const map_location& loc, const terrain_code & terrain, const terrain_type_data::merge_mode mode = terrain_type_data::BOTH, bool replace_if_failed = false) = 0;
+
+	/**
+	 * Looks up terrain at a particular location.
+	 *
+	 * Hexes off the map may be looked up, and their 'emulated' terrain will
+	 * also be returned.  This allows proper drawing of the edges of the map.
+	 */
+	terrain_code get_terrain(const map_location& loc) const;
+
+	location_map& special_locations() { return starting_positions_; }
+	const location_map& special_locations() const { return starting_positions_; }
+	const std::vector<map_location> starting_positions() const;
+
+	void set_special_location(const std::string& id, const map_location& loc);
+	map_location special_location(const std::string& id) const;
+
+	/** Manipulate starting positions of the different sides. */
+	void set_starting_position(int side, const map_location& loc);
+	map_location starting_position(int side) const;
+
+	/** Counts the number of sides that have valid starting positions on this map */
+	int num_valid_starting_positions() const;
+	/** returns the side number of the side starting at position loc, 0 if no such side exists. */
+	int is_starting_position(const map_location& loc) const;
+	/** returns the name of the special location at position loc, null if no such location exists. */
+	const std::string* is_special_location(const map_location& loc) const;
+
+	/** Parses ranges of locations into a vector of locations, using this map's dimensions as bounds. */
+	std::vector<map_location> parse_location_range(const std::string& xvals, const std::string &yvals, bool with_border = false) const;
+
+	struct overlay_rule
+	{
+		t_translation::ter_list old_;
+		t_translation::ter_list new_;
+		terrain_type_data::merge_mode mode_;
+		std::optional<t_translation::terrain_code> terrain_;
+		bool use_old_;
+		bool replace_if_failed_;
+
+		overlay_rule()
+			: old_()
+			, new_()
+			, mode_(terrain_type_data::BOTH)
+			, terrain_()
+			, use_old_(false)
+			, replace_if_failed_(false)
+		{
+
+		}
+	};
+
+	/** Overlays another map onto this one at the given position. */
+	void overlay(const gamemap_base& m, map_location loc, const std::vector<overlay_rule>& rules = std::vector<overlay_rule>(), bool is_odd = false, bool ignore_special_locations = false);
+
+	template<typename F>
+	void for_each_loc(const F& f) const
+	{
+		for(int x = 0; x < total_width(); ++x) {
+			for(int y = 0; y < total_height(); ++y) {
+				f(map_location{x, y , wml_loc()});
+			}
+		}
+	}
+	//Doesn't include border.
+	template<typename F>
+	void for_each_walkable_loc(const F& f) const
+	{
+		for(int x = 0; x < w(); ++x) {
+			for(int y = 0; y < h(); ++y) {
+				f(map_location{x, y});
+			}
+		}
+	}
+protected:
+	gamemap_base() = default;
+	gamemap_base(int w, int h, terrain_code default_ter = terrain_code());
+	terrain_map& tiles() {return tiles_;}
+	const terrain_map& tiles() const {return tiles_;}
+private:
+	terrain_map tiles_;
+	location_map starting_positions_;
+};
+
 /**
  * Encapsulates the map of the game.
  *
@@ -30,7 +167,7 @@ class config;
  * Each type of terrain is represented by a multiletter terrain code.
  * @todo Update for new map-format.
  */
-class gamemap
+class gamemap : public gamemap_base
 {
 public:
 
@@ -75,114 +212,25 @@ public:
 	 */
 	gamemap(const std::string& data); // throw(incorrect_map_format_error)
 
-	virtual ~gamemap();
-
 	void read(const std::string& data, const bool allow_invalid = true);
 
 	std::string write() const;
 
-	struct overlay_rule
-	{
-		t_translation::ter_list old_;
-		t_translation::ter_list new_;
-		terrain_type_data::merge_mode mode_;
-		std::optional<t_translation::terrain_code> terrain_;
-		bool use_old_;
-		bool replace_if_failed_;
-
-		overlay_rule()
-			: old_()
-			, new_()
-			, mode_(terrain_type_data::BOTH)
-			, terrain_()
-			, use_old_(false)
-			, replace_if_failed_(false)
-		{
-
-		}
-	};
-
-	/** Overlays another map onto this one at the given position. */
-	void overlay(const gamemap& m, map_location loc, const std::vector<overlay_rule>& rules = std::vector<overlay_rule>(), bool is_odd = false, bool ignore_special_locations = false);
-
-	static void overlay_impl(
-			// const but changed via set_terrain
-			const t_translation::ter_map& m1,
-			t_translation::starting_positions& m1_st,
-			const t_translation::ter_map& m2,
-			const t_translation::starting_positions& m2_st,
-			std::function<void (const map_location&, const t_translation::terrain_code&, terrain_type_data::merge_mode, bool)> set_terrain,
-			map_location loc,
-			const std::vector<overlay_rule>& rules,
-			bool is_odd,
-			bool ignore_special_locations);
-
-	/** Effective map width, in hexes. */
-	int w() const { return w_; }
-
-	/** Effective map height, in hexes. */
-	int h() const { return h_; }
-
-	/** Size of the map border. */
-	int border_size() const { return default_border; }
-
-	/** Real width of the map, including borders. */
-	int total_width()  const { return tiles_.w; }
-
-	/** Real height of the map, including borders */
-	int total_height() const { return tiles_.h; }
-
 	const t_translation::terrain_code operator[](const map_location& loc) const
 	{
-		return tiles_.get(loc.x + border_size(), loc.y + border_size());
+		return tiles().get(loc.x + border_size(), loc.y + border_size());
 	}
 private:
 	//private method, use set_terrain instead which also updates villages_.
 	t_translation::terrain_code& operator[](const map_location& loc)
 	{
-		return tiles_.get(loc.x + border_size(), loc.y + border_size());
+		return tiles().get(loc.x + border_size(), loc.y + border_size());
 	}
 public:
-
-	/**
-	 * Looks up terrain at a particular location.
-	 *
-	 * Hexes off the map may be looked up, and their 'emulated' terrain will
-	 * also be returned.  This allows proper drawing of the edges of the map.
-	 */
-	t_translation::terrain_code get_terrain(const map_location& loc) const;
+	void set_terrain(const map_location& loc, const terrain_code & terrain, const terrain_type_data::merge_mode mode = terrain_type_data::BOTH, bool replace_if_failed = false) override;
 
 	/** Writes the terrain at loc to cfg. */
 	void write_terrain(const map_location &loc, config& cfg) const;
-
-
-	/** Manipulate starting positions of the different sides. */
-	void set_starting_position(int side, const map_location& loc);
-	map_location starting_position(int side) const;
-
-	void set_special_location(const std::string& id, const map_location& loc);
-	map_location special_location(const std::string& id) const;
-
-
-	/** returns the side number of the side starting at position loc, 0 if no such side exists. */
-	const std::string* is_starting_position(const map_location& loc) const;
-	int num_valid_starting_positions() const;
-
-
-	/**
-	 * Tell if a location is on the map.
-	 *
-	 * Should be called before indexing using [].
-	 * @todo inline for performance? -- Ilor
-	 */
-	bool on_board(const map_location& loc) const;
-	bool on_board_with_border(const map_location& loc) const;
-
-	/** Tell if the map is of 0 size. */
-	bool empty() const
-	{
-		return w_ == 0 || h_ == 0;
-	}
 
 	/** Return a list of the locations of villages on the map. */
 	const std::vector<map_location>& villages() const { return villages_; }
@@ -192,55 +240,6 @@ public:
 
 	/** Gets the list of terrains. */
 	const t_translation::ter_list& get_terrain_list() const;
-
-	/**
-	 * Clobbers over the terrain at location 'loc', with the given terrain.
-	 * Uses mode and replace_if_failed like merge_terrains().
-	 */
-	void set_terrain(const map_location& loc, const t_translation::terrain_code & terrain, const terrain_type_data::merge_mode mode=terrain_type_data::BOTH, bool replace_if_failed = false);
-
-	/**
-	 * Maximum number of players supported.
-	 *
-	 * Warning: when you increase this, you need to add
-	 * more definitions to the team_colors.cfg file.
-	 */
-	enum { MAX_PLAYERS = 9 };
-
-	/** The default border style for a map. */
-	static const int default_border = 1;
-
-	/** Parses ranges of locations into a vector of locations, using this map's dimensions as bounds. */
-	std::vector<map_location> parse_location_range(const std::string& xvals,
-	const std::string &yvals, bool with_border = false) const;
-
-	using starting_positions = t_translation::starting_positions;
-	const starting_positions& special_locations() const { return starting_positions_; }
-
-	template<typename F>
-	void for_each_loc(const F& f) const
-	{
-		for (int x = -border_size(); x < w() + border_size(); ++x) {
-			for (int y = -border_size(); y < h() + border_size(); ++y) {
-				f({ x, y });
-			}
-		}
-	}
-	//Doesn't include border.
-	template<typename F>
-	void for_each_walkable_loc(const F& f) const
-	{
-		for (int x = 0; x < w(); ++x) {
-			for (int y = 0; y < h(); ++y) {
-				f({ x, y });
-			}
-		}
-	}
-
-protected:
-	t_translation::ter_map tiles_;
-
-	starting_positions starting_positions_;
 
 private:
 
@@ -255,8 +254,4 @@ private:
 
 protected:
 	std::vector<map_location> villages_;
-
-	/** Sizes of the map area. */
-	int w_;
-	int h_;
 };

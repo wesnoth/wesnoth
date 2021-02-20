@@ -237,7 +237,7 @@ mapgen_lua_kernel::mapgen_lua_kernel(const config* vars)
 	assert(lua_gettop(L) == 0);
 
 
-	cmd_log_ << lua_terrainmap::register_metatables(L);
+	cmd_log_ << lua_terrainmap::register_metatables(L, true);
 	cmd_log_ << lua_terrainfilter::register_metatables(L);
 }
 
