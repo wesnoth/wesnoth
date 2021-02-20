@@ -31,6 +31,7 @@
    * abilities used like weapon can call [leading_anim] now.
  ### Miscellaneous and Bug Fixes
    * Fixed display zoom not being taken into account when using the `x`, `y`, `directional_x` and `directional_y` attributes in unit animations.
+   * Fixed a warning message and the AI leader potentially not moving when it cannot reach a keep because it's occupied by an allied unit
 
 ## Version 1.15.9
  ### Add-ons server
