@@ -676,7 +676,7 @@ return {
 						T.column {
 							horizontal_alignment = "right",
 							T.button {
-								label = "OK",
+								label = wesnoth.textdomain("wesnoth")("Close"),
 								id = "ok",
 							}
 						}
