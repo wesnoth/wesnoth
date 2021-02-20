@@ -137,3 +137,6 @@ if wesnoth.kernel_type() == "Mapgen Lua Kernel" then
 		return wesnoth.map.find_in_radius(map, locs, radius, filter)
 	end, 'The filter is now the last parameter, instead of the radius')
 end
+
+wesnoth.map.tiles_adjacent = wesnoth.deprecate_api('wesnoth.map.tiles_adjacent', 'wesnoth.map.are_hexes_adjacent', 1, nil, wesnoth.map.are_hexes_adjacent)
+wesnoth.map.get_adjacent_tiles = wesnoth.deprecate_api('wesnoth.map.get_adjacent_tiles', 'wesnoth.map.get_adjacent_hexes', 1, nil, wesnoth.map.get_adjacent_hexes)
