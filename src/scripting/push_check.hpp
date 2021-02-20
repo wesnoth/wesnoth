@@ -271,7 +271,7 @@ namespace lua_check_impl
 	std::enable_if_t<std::is_integral_v<T> && !std::is_same_v<T, bool>, void>
 	lua_push(lua_State *L, T val)
 	{
-		lua_pushnumber(L, val);
+		lua_pushinteger(L, val);
 	}
 
 	//std::pair
