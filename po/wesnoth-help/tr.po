@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: wesnoth-help\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2021-02-14 16:35-0300\n"
-"PO-Revision-Date: 2020-08-05 03:31+0300\n"
+"PO-Revision-Date: 2021-02-16 16:50+0300\n"
 "Last-Translator: Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>\n"
 "Language-Team: Turkish\n"
 "Language: tr\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.8.11\n"
+"X-Generator: Poedit 2.2.1\n"
 
 #. [time]: id=underground
 #. [editor_times]: id=underground
@@ -61,13 +61,13 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:39
 #: data/core/macros/abilities.cfg:28
 msgid "heals +8"
-msgstr " tedavi +8"
+msgstr "tedavi +8"
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:40
 #: data/core/macros/abilities.cfg:29
 msgid "female^heals +8"
-msgstr " +8 tedavi"
+msgstr "+8 tedavi"
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:41
@@ -102,10 +102,8 @@ msgstr "Arazi Düzenleyici"
 #. [section]: id=editor_mode_scenario
 #. [topic]: id=..editor_mode_scenario
 #: data/core/editor/help.cfg:20 data/core/editor/help.cfg:269
-#, fuzzy
-#| msgid "Map/Scenario Editor"
 msgid "Scenario Editor"
-msgstr "Harita / Senaryo Düzenleyici"
+msgstr "Senaryo Düzenleyici"
 
 #. [topic]: id=editor_tool_paint
 #: data/core/editor/help.cfg:28
@@ -131,26 +129,41 @@ msgid ""
 "\n"
 "The selected brush changes the size of the tool:"
 msgstr ""
+"Harita üzerinde arazi altıgenlerini boyar. \n"
+"\n"
+"Boyama aracı, fırça boyutlarını ve arazi paletini kullanır. \n"
+"\n"
+"<bold>text='Klavye Değiştiricileri '</bold>\n"
+"\n"
+"• Shift+fare tıklaması: Bir temel arazi seçilirse, kaplamayı değiştirmeden "
+"araziyi değiştirir. Bir kaplama seçilirse, araziyi değiştirmeden kaplamayı "
+"değiştirir. \n"
+"• Control+fare tıklaması: Fare imlecinin altındaki araziyi, arazi paletinde "
+"seçilmiş gibi seçer (hem araziyi hem de kaplamayı seçer).\n"
+"\n"
+"<bold>text='Fırça Boyutları'</bold>\n"
+"\n"
+"Seçili fırça, aracın boyutunu değiştirir:"
 
 #. [topic]: id=editor_tool_paint
 #: data/core/editor/help.cfg:41
 msgid "Paint single hexes."
-msgstr ""
+msgstr "Tekli altıgenleri boyar."
 
 #. [topic]: id=editor_tool_paint
 #: data/core/editor/help.cfg:42
 msgid "Paint seven hexes at a time."
-msgstr ""
+msgstr "Bir seferde yedi altıgen boyar."
 
 #. [topic]: id=editor_tool_paint
 #: data/core/editor/help.cfg:43
 msgid "Paint nineteen hexes at a time."
-msgstr ""
+msgstr "Bir seferde on dokuz altıgen boyar."
 
 #. [topic]: id=editor_tool_paint
 #: data/core/editor/help.cfg:44 data/core/editor/help.cfg:45
 msgid "Paint three hexes in a line."
-msgstr ""
+msgstr "Yanyana üç altıgeni boyar."
 
 #. [topic]: id=editor_tool_fill
 #: data/core/editor/help.cfg:52
@@ -172,6 +185,17 @@ msgid ""
 "• Control+mouse click: Select the terrain under the mouse cursor, as if it "
 "had been selected on the terrain palette (picks up both base and overlay)."
 msgstr ""
+"Sürekli arazi bölgelerini farklı bir bölgeyle doldurur.\n"
+"\n"
+"Doldurma aracı arazi paletini kullanır. \n"
+"\n"
+"<bold>text='Klavye Değiştiricileri '</bold>\n"
+"\n"
+"• Shift+fare tıklaması: Bir temel arazi seçilirse, kaplamayı değiştirmeden "
+"araziyi değiştirir. Bir kaplama seçilirse, araziyi değiştirmeden kaplamayı "
+"değiştirir. \n"
+"• Control+fare tıklaması: Fare imlecinin altındaki araziyi, arazi paletinde "
+"seçilmiş gibi seçer (hem araziyi hem de kaplamayı seçer)."
 
 #. [topic]: id=editor_tool_select
 #: data/core/editor/help.cfg:67
@@ -194,31 +218,43 @@ msgid ""
 "\n"
 "The selected brush changes the size of the tool:"
 msgstr ""
+"Menü çubuğunun altındaki kes, kopyala ve seçimi-doldur düğmeleriyle kullanım "
+"için bir dizi altıgen alan seçer. \n"
+"\n"
+"<bold>text='Klavye Değiştiricileri '</bold>\n"
+"\n"
+"• Shift+fare tıklaması: ‘Sihirli Değnek’ kipi, fare imlecinin altındaki "
+"altıgeni ve aynı arazi türündeki bitişik altıgenleri seçer\n"
+"• Control+fare tıklaması: Altıgenlerin seçimini kaldır .\n"
+"\n"
+"<bold>text='Fırça Boyutları'</bold>\n"
+"\n"
+"Seçili fırça, aracın boyutunu değiştirir:"
 
 #. [topic]: id=editor_tool_select
 #: data/core/editor/help.cfg:78
 msgid "Select single hexes."
-msgstr ""
+msgstr "Tekli altıgenleri seçer."
 
 #. [topic]: id=editor_tool_select
 #: data/core/editor/help.cfg:79
 msgid "Select seven hexes at a time."
-msgstr ""
+msgstr "Bir seferde yedi altıgen seçer."
 
 #. [topic]: id=editor_tool_select
 #: data/core/editor/help.cfg:80
 msgid "Select nineteen hexes at a time."
-msgstr ""
+msgstr "Bir seferde on dokuz altıgen seçer."
 
 #. [topic]: id=editor_tool_select
 #: data/core/editor/help.cfg:81 data/core/editor/help.cfg:82
 msgid "Select three hexes in a line."
-msgstr ""
+msgstr "Yanyana üç altıgen seçer."
 
 #. [topic]: id=editor_tool_paste
 #: data/core/editor/help.cfg:89
 msgid "Clipboard and Paste Tool"
-msgstr ""
+msgstr "Pano ve Yapıştır Aracı"
 
 #. [topic]: id=editor_tool_paste
 #: data/core/editor/help.cfg:90
@@ -235,33 +271,42 @@ msgid ""
 "\n"
 "The paste tool also has some clipboard-manipulation functions:"
 msgstr ""
+"Araziyi döndürün, çevirin ve panoya yapıştırın\n"
+"\n"
+"Altıgenler <ref>dst='editor_tool_select' text='Seçim Aracı'</ref> "
+"kullanılarak kesilip panoya yapıştırılabilir.\n"
+"\n"
+"Yapıştırma aracı, fareyle tıklatılarak yapıştırılabilen panonun ana "
+"hatlarını gösterir. Yalnızca ana hat gösterilir, ancak hem Control+Z'ye hem "
+"de oyun içi geri alma işleviyle aynı tuşa bağlı olan geri alma işlevi ile "
+"hatalar düzeltilebilir. \n"
+"\n"
+"Yapıştır aracının ek olarak pano işleme işlevleri de vardır:"
 
 #. [topic]: id=editor_tool_paste
 #: data/core/editor/help.cfg:97
 msgid "Rotate clockwise by 60°."
-msgstr ""
+msgstr "Saat yönünde 60 ° döndürür."
 
 #. [topic]: id=editor_tool_paste
 #: data/core/editor/help.cfg:98
 msgid "Rotate counter-clockwise by 60°."
-msgstr ""
+msgstr "Saatin ters yönünde 60 ° döndürür."
 
 #. [topic]: id=editor_tool_paste
 #: data/core/editor/help.cfg:99
 msgid "Flip horizontally"
-msgstr ""
+msgstr "Yatay olarak çevir"
 
 #. [topic]: id=editor_tool_paste
 #: data/core/editor/help.cfg:100
 msgid "Flip vertically"
-msgstr ""
+msgstr "Düşey olarak çevir"
 
 #. [topic]: id=editor_tool_starting
 #: data/core/editor/help.cfg:107
-#, fuzzy
-#| msgid "Starting Positions Howto"
 msgid "Starting Locations Tool"
-msgstr "Balangıç Konumları NASIL"
+msgstr "Başlangıç Konumları Aracı"
 
 #. [topic]: id=editor_tool_starting
 #: data/core/editor/help.cfg:109
@@ -296,6 +341,36 @@ msgid ""
 "location for placing with a subsequent mouse click, as if it was selected in "
 "the editor palette."
 msgstr ""
+"Liderlerin başlangıç konumlarını tanımlar. \n"
+"\n"
+"Bu araç, liderlerin öntanımlı başlangıç konumlarını ayarlar ve özel "
+"konumları adlandırır.  Bu konum türleri hem <ref>dst='..editor_mode_terrain' "
+"text='Arazi Düzenleyici'</ref> hem de <ref>dst='..editor_mode_scenario' "
+"text='Senaryo Düzenleyici'</ref> kipleri için etkin olur. Konum adları, "
+"düzenleyici paletinde bir liste olarak gösterilir, haritaya tıklamak o adı "
+"bir altıgene yerleştirir, her konum yalnızca tek bir altıgene "
+"yerleştirilebilir ve düzenleyici, altıgen başına yalnızca bir konuma izin "
+"verir. \n"
+"\n"
+"Adlandırılmış özel konumlar eklemek için, düzenleyici paletinin altındaki "
+"\"Ekle\" yi tıklayın ve adı girin. Bu adlar bir harfle başlar, sayılar ve "
+"alt çizgiler içerebilir.\n"
+"\n"
+"\"Ekle\" ye tıklanarak ve örneğin \"10\" gibi bir numara girilerek bir "
+"haritaya dokuzdan fazla ekip eklenebilir. Kullanıcı arayüzü bunu otomatik "
+"olarak \"Oyuncu 10\" olarak gösterecektir. \n"
+"\n"
+"Adlandırılan konumlara Standart Konum Filtresinin <italic>text='location_id "
+"='</italic> etiketi kullanılarak WML'den erişilebilir. Oyuncu başlangıcına, "
+"<italic>text='location_id = 1'</italic>, <italic>text='location_id = 2'</"
+"italic>, vb. kullanılarak WML'den de erişilebilir — numaranın önüne \"Oyuncu"
+"\" eklemeden yalnızca sayıyı kullanın.\n"
+"\n"
+"<bold>text='Klavye Değiştiricileri '</bold>\n"
+"\n"
+"• Konuma sahip bir altıgene Control+fare tıklaması: Düzenleyici paletinde "
+"seçilmiş gibi, sonraki bir fare tıklamasıyla yerleştirmek üzere bu konumu "
+"seçer."
 
 #. [topic]: id=editor_tool_label
 #: data/core/editor/help.cfg:129
@@ -315,11 +390,21 @@ msgid ""
 "This tool is only available in Scenario Mode; the decorations are "
 "implemented in the scenario using WML’s <italic>text='[label]'</italic> tag."
 msgstr ""
+"Haritaya metin etiketleri yerleştirmek için: \n"
+"\n"
+"• Sol tıklama, yeni bir etiket oluşturmak veya mevcut bir etiketi düzenlemek "
+"için bir iletişim kutusu açar.\n"
+"• Sağ tıklama siler.\n"
+"• Farenin sol tuşu ile sürükleyip bırakarak etiketlerin yeri "
+"değiştirilebilir.\n"
+"\n"
+"Bu araç yalnızca Senaryo Kipinde mevcuttur; dekorlar senaryoda WML’nin "
+"<italic>text='[label]'</italic> etiketi kullanılarak uygulanır."
 
 #. [topic]: id=editor_tool_scenery
 #: data/core/editor/help.cfg:145
 msgid "Item Tool (Scenery Tool)"
-msgstr ""
+msgstr "Öğe Aracı (Dekor Aracı)"
 
 #. [topic]: id=editor_tool_scenery
 #: data/core/editor/help.cfg:146
@@ -335,6 +420,17 @@ msgid ""
 "of the terrain and are implemented in the scenario using WML’s "
 "<italic>text='[item]'</italic> tag."
 msgstr ""
+"Öğe Aracı yel değirmenleri, kitaplıklar ve dikili taşlar gibi süslemelerin "
+"yerleştirilmesini sağlar. Aynı altıgen üzerine birden fazla öğe "
+"yerleştirilebilir.\n"
+"\n"
+"<bold>text='Bilginize:'</bold> Araç, öğelerin yerleştirildikten sonra "
+"silinmesini ve geri alınmasını desteklemez. Yanlışlar şu anda yalnızca "
+"oluşturulan WML dosyası düzenlenerek düzeltilebilir. \n"
+"\n"
+"Bu araç yalnızca Senaryo Kipinde mevcuttur; süslemeler arazinin bir parçası "
+"değildir ve senaryoda WML’nin <italic>text='[öğe]'</italic> etiketi "
+"kullanılarak uygulanır."
 
 #. [topic]: id=editor_tool_village
 #: data/core/editor/help.cfg:159
@@ -355,6 +451,16 @@ msgid ""
 "stored by adding WML <italic>text='[village]'</italic> tags to the "
 "appropriate <italic>text='[side]'</italic>."
 msgstr ""
+"Bu araç, bir senaryonun başlangıcında köylere sahip atar. Köyler öncelikle "
+"<ref>dst='editor_tool_paint' text='Boyama Aracı'</ref> ile araziye "
+"yerleştirilmelidir. \n"
+"\n"
+"• Sol tıklama köyün sahibini seçili taraf yapar.\n"
+"• Sağ tıklama köyü sahipsiz bırakır.\n"
+"\n"
+"Bu araç yalnızca Senaryo Kipinde mevcut olup sahiplik bilgileri, uygun "
+"<italic>text='[side]'</italic> tarafına WML <italic>text='[village]'</"
+"italic> etiketleri eklenerek saklanır."
 
 #. [topic]: id=editor_tool_unit
 #: data/core/editor/help.cfg:174
@@ -375,6 +481,16 @@ msgid ""
 "<italic>text='[unit]'</italic> tags to the appropriate "
 "<italic>text='[side]'</italic>."
 msgstr ""
+"Seçili tarafa ait birimleri yerleştirin.\n"
+"\n"
+"• Sol tıklama birimi yerleştirir.\n"
+"• Sol sürükle-bırak, evvelce yerleştirilmiş bir birimin yerini değiştirir.\n"
+"• Bir birim içeren altıgenlerde sağ tıklama menüsüne çeşitli işlemler "
+"eklenir.\n"
+"\n"
+"Bu araç yalnızca Senaryo Kipinde kullanılabilir. Uygun tarafa "
+"(<italic>text='[side]'</italic>) birimleri yani, WML <italic>text='[unit]'</"
+"italic> etiketlerini ekler."
 
 #. [topic]: id=editor_named_area
 #: data/core/editor/help.cfg:190
@@ -407,11 +523,33 @@ msgid ""
 "name implies time, it is now more generic and can be used for other purposes "
 "without needing to change the time-of-day schedule in the area."
 msgstr ""
+"Bu araç, süzgecin <italic>text='area='</italic> özniteliğindeki alan "
+"kimliğini kullanarak, WML betiklerinin Standart Konum Süzgeçlerinde (Wiki'de "
+"ayrıntılı olarak açıklanan bir kavram) kullanılabilecek altıgen kümelerini "
+"oluşturur. Örneğin:\n"
+"\n"
+"• bu altıgen kümelerine bir yerel zaman dilimi atanması\n"
+"•Bir birim onlara doğru hareket ettiğinde bir olayı tetikleyen altıgen "
+"kümesinin seçilmesi\n"
+"\n"
+"Aracı kullanmak için:\n"
+"\n"
+"• <ref>dst='editor_tool_select' text='Seçim Aracı'</ref>nı kullanarak "
+"altıgenleri seç\n"
+"• Alanlar menüsünde Yeni Alan Ekle'yi seç\n"
+"• ardından Alanlar menüsünde Seçimi Alana Kaydet'i seç\n"
+"• ardından Alanlar menüsünde Seçili Alanı Yeniden Adlandır'ı ve alan için "
+"bir ad seçin\n"
+"\n"
+"Bu araç yalnızca Senaryo Kipinde mevcut olup; senaryoya WML  "
+"<italic>text='[time_area]'</italic> etiketleri ekler. Etiketin adı zamanı "
+"ifade etse de, artık daha geneldir ve bölgedeki günün saati zamanlamasını "
+"değiştirmeye gerek kalmadan başka amaçlar için kullanılabilir."
 
 #. [topic]: id=editor_playlist
 #: data/core/editor/help.cfg:212
 msgid "Playlist Manager"
-msgstr "Oynatma Listesi Yöneticisi"
+msgstr "Çalma Listesi Yöneticisi"
 
 #. [topic]: id=editor_playlist
 #: data/core/editor/help.cfg:213
@@ -422,6 +560,11 @@ msgid ""
 "This tool is only available in Scenario Mode; it adds WML "
 "<italic>text='[music]'</italic> tags to the scenario."
 msgstr ""
+"Düzenleyicinin bildiği müzik parçalarının bir listesini, bunları "
+"etkinleştirmek için onay kutuları ile birlikte gösterir. \n"
+"\n"
+"Bu araç yalnızca Senaryo Kipinde mevcut olup senaryoya WML "
+"<italic>text='[music]'</italic> etiketleri ekler."
 
 #. [topic]: id=..editor
 #: data/core/editor/help.cfg:223
@@ -463,6 +606,38 @@ msgid ""
 "it is one of the main blockers for the 1.16 release, however in 1.14 its "
 "quality is far below that of the game and the terrain mode."
 msgstr ""
+"Wesnoth’un Harita ve Senaryo Düzenleyicisi, kullanıcıların her Wesnoth "
+"senaryosunun üzerinde yer aldığı haritaları oluşturmasına ve düzenlemesine "
+"olanak tanır. Ayrıca, temel bir senaryo oluşturmak için sınırlı sayıda "
+"özellik sağlar.\n"
+"\n"
+"Düzenleyici, başlık ekranındaki  <italic>text='Harita Düzenleyici'</italic> "
+"seçeneğinden başlatılabilir.\n"
+"\n"
+"<header>text='Kiplerin Düzenlenmesi'</header>\n"
+"\n"
+"Düzenleyicide iki çalışma kipi bulunur: arazi kipi ve senaryo kipi.\n"
+"\n"
+" <ref>dst='..editor_mode_terrain' text='Arazi Kipi'</ref>, "
+"<ref>dst='editor_tool_paint' text='boya'</ref>, <ref>dst='editor_tool_fill' "
+"text='doldur'</ref>, <ref>dst='editor_tool_select' text='seç (ve kopyala)'</"
+"ref> ve <ref>dst='editor_tool_paste' text='yapıştır'</ref> araçlarına sahip "
+"basit bir boyama uygulamasına benzer. Ayrıca liderlerin "
+"<ref>dst='editor_tool_starting' text='başlangıç konumlarını'</ref> ayarlamak "
+"için de bir araca sahiptir.\n"
+"\n"
+"<ref>dst='..editor_mode_scenario' text='Senaryo Kipi'</ref>, arazi kipindeki "
+"araçların yanında <ref>dst='editor_tool_label' text='etiketler'</ref>, "
+"<ref>dst='editor_tool_scenery' text='dekor öğeleri'</ref>, lider ve "
+"<ref>dst='editor_tool_unit' text='birimler'</ref>i, ve senaryonun "
+"başlangıcında <ref>dst='editor_tool_village' text='köy sahipliği'</ref>nin "
+"atanması gibi araçlar içerir.  Ayrıca, müzik için bir  "
+"<ref>dst='editor_playlist' text='çalma listesi yöneticisi'</ref> de "
+"mevcuttur.\n"
+"\n"
+"<bold>text='Uyarı: 1.14 sürümünde Senaryo kipi hatalıdır.'</bold> Senaryo "
+"kipinin geliştirilmesi, 1.16 sürümünün ana engelleyicilerinden biri olup "
+"1.14'teki kalitesi oyunun ve arazi kipinin çok altındadır."
 
 #. [topic]: id=..editor
 #: data/core/editor/help.cfg:238
@@ -489,6 +664,27 @@ msgid ""
 "have their own terrains will need that add-on to tell the editor about their "
 "terrains."
 msgstr ""
+"<header>text='Anlaşılmayan *Şeyler*'</header>\n"
+"\n"
+"• Oyun içinde oluşturulanla tamamen aynı harita\n"
+"\n"
+"Harita, oyunda tam olarak düzenleyicideki gibi görünmeyecektir, çünkü bu "
+"arazi kurallarına bağlıdır. Örneğin, birçok dağ altıgeni bir arada "
+"kümelendiğinde, arazi kuralları onları sıradağlara dönüştürür ve birden çok "
+"altıgeni kapsayan büyük grafikler halinde birleştirmeye çalışır. \n"
+"\n"
+"• Olay işleyicileri ve kodlama\n"
+"\n"
+"Harita Düzenleyici, senaryonun olay işleyicilerini kodlamanıza yardımcı "
+"olacak bir araç değildir. \n"
+"\n"
+"• Sonsuz Geriye Uyumluluk\n"
+"\n"
+"Düzenleyici, Wesnoth'un eski sürümlerindeki haritaların çoğunu yükleyebilir, "
+"ancak hepsini değil. 1.3.2 ve sonraki sürüm haritalar desteklenir ancak, "
+"artık Wesnoth'un yerleşiği olmayan arazileri kullanmadıkları sürece. Kendi "
+"arazilerine sahip eklentilerin düzenleyiciye arazileri hakkında bilgi vermek "
+"için bu eklentiye ihtiyacı olacaktır."
 
 #. [topic]: id=..editor_mode_terrain
 #: data/core/editor/help.cfg:258
@@ -504,6 +700,15 @@ msgid ""
 "resulting map can be found in the “Custom Maps” game type of the multiplayer "
 "“Create Game” dialog."
 msgstr ""
+"Arazi düzenleyici işlevsel olarak, basit bir boyama uygulamasına benzer. \n"
+"\n"
+"Sağ taraftaki kenar çubuğu, yukarıdan aşağıya mini haritayı, araç setini "
+"(her aracın sayfalarına bakın), araç seçeneklerini ve "
+"<ref>dst='editor_palette' text='Palet'</ref>'i içerir.\n"
+"\n"
+"“Haritayı Farklı Kaydet” kullanılarak öntanımlı dizine kaydedildiğinde, "
+"ortaya çıkan harita çok oyunculu “Oyun Oluştur” iletişim kutusunun “Özel "
+"Haritalar” oyun türünde bulunabilir."
 
 #. [topic]: id=..editor_mode_scenario
 #: data/core/editor/help.cfg:270
@@ -513,6 +718,10 @@ msgid ""
 "additional WML to be written using a different tool; the scenario editor "
 "does not support scripting the scenario’s events."
 msgstr ""
+"Senaryo düzenleyici kipi, alanlar ve dekor öğeleri gibi haritayla ilgili "
+"bazı WML özellikleri için destek sağlar. Çoğu senaryo yine de farklı bir "
+"araç kullanılarak yazılacak ek bir WML gerektirecektir; senaryo "
+"düzenleyicisi, senaryonun olaylarını kodlamayı desteklemez."
 
 #. [topic]: id=..editor_mode_scenario
 #: data/core/editor/help.cfg:272
@@ -524,6 +733,13 @@ msgid ""
 "• In scenario mode the “Areas” and “Side” menus are enabled.\n"
 "• In terrain-only mode the “Areas” and “Side” menus are grayed-out."
 msgstr ""
+"<header>text='Düzenleyicinin senaryo kipinde olup olmadığına bakılması'</"
+"header>\n"
+"\n"
+"Düzenleyicinin hangi kipte olduğunu menü çubuğuna bakarak anlayabilirsiniz.\n"
+"\n"
+"• Senaryo kipinde “Alanlar” ve “Taraf” menüleri etkindir.\n"
+"• Arazi kipinde “Alanlar” ve “Taraf” menüleri gri renktedir."
 
 #. [topic]: id=..editor_mode_scenario
 #: data/core/editor/help.cfg:279
@@ -539,6 +755,17 @@ msgid ""
 "To load a map that was created in the scenario editor, use “Load Map” from "
 "the “File” menu, and select the .cfg file (not a .map file)."
 msgstr ""
+"<header>text='Senaryo kipine giriş'</header>\n"
+"\n"
+"Senaryo kipinde yeni bir harita başlatmak için “Dosya” menüsünden “Yeni "
+"Senaryo” seçin.\n"
+"\n"
+"Bir haritayı zaten arazi kipinde düzenliyorsanız, “Dosya” menüsünden "
+"“Senaryoyu Farklı Kaydet”  seçeneğini kullanın; bu senaryo kipine geçirir.\n"
+"\n"
+"Senaryo düzenleyicide oluşturulan bir haritayı yüklemek için, “Dosya” "
+"menüsünden “Haritayı Yükle” seçeneğini kullanın ve .cfg dosyasını seçin "
+"(bir .map dosyası değil)."
 
 #. [topic]: id=..editor_mode_scenario
 #: data/core/editor/help.cfg:287
@@ -558,11 +785,27 @@ msgid ""
 "editor may follow the link and open the corresponding .map in terrain-only "
 "mode, as if the .map file was chosen in the file selector."
 msgstr ""
+"<header>text='Dosyalar: .map ve .cfg'</header>\n"
+"\n"
+"Harita düzenleyici, tek bir dosya kaydeder, bu ya bir .map (arazi kipi için) "
+"ya da bir .cfg (senaryo kipi için) dosyasıdır. Senaryo kipinde arazi "
+"haritası .cfg dosyasının içine kaydedilir; ayrı bir .map dosyası olmaz. "
+"Arazi kipinde düzenlemeye başlarsanız ve ardından senaryo kipine geçerseniz, "
+"diskte eski .map dosyası kalabilir, ancak bu, senaryo düzenleyicisi "
+"tarafından güncellenmez.\n"
+"\n"
+".cfg dosyasının yüklenmesi, .cfg dosyasının içeriğine bağlı olarak farklı "
+"sonuçlara sahiptir. Senaryo düzenleyicisi tarafından oluşturulan .cfg "
+"dosyaları için, .cfg dosyası senaryo düzenleyicisinde açılır. Ancak, ayrı "
+"bir .map dosyası kullanan (senaryo düzenleyicisi tarafından oluşturulmamış) ."
+"cfg dosyaları için, düzenleyici bağlantıyı izleyebilir ve karşılık gelen ."
+"map dosyasını dosya seçiciden seçilmiş bir .map dosyası gibi arazi kipindeki "
+"bir .map dosyası olarak açabilir."
 
 #. [topic]: id=editor_separate_events_file
 #: data/core/editor/help.cfg:299
 msgid "Using a separate file for WML events"
-msgstr ""
+msgstr "WML olayları için ayrı bir dosya kullanımı"
 
 #. [topic]: id=editor_separate_events_file
 #: data/core/editor/help.cfg:300
@@ -616,6 +859,55 @@ msgid ""
 "  ◦ inside the [scenario] element, use “map_file=\"map_from_01.cfg\"” to "
 "load that file"
 msgstr ""
+"Bir .cfg dosyasını yüklerken, senaryo düzenleyicisi kendisinde oluşturulan "
+"dosyaları anlar, ancak elle düzenlenen dosyalarda sorun yaşama olasılığı "
+"yüksektir. \n"
+"\n"
+"Senaryo düzenleyicisi tarafından oluşturulan dosyalarda açılış [scenario] ve "
+"kapanış [/scenario] etiketleri yoktur. Bir seferberlik (veya bir eklenti) "
+"oluşturuyorsanız, bu etiketlerin eklenmesi gerekir;"
+"<ref>dst='editor_map_format' text='harita dosyasının biçimi'</ref> "
+"belgelerinde bununla ilgili daha fazla ayrıntı vardır.\n"
+"\n"
+"Bir iş akışı, düzenleyici tarafından oluşturulan dosyayı dahil etmek için "
+"WML ön işlemcisini kullanan .cfg uzantısına sahip ayrı bir WML dosyası "
+"oluşturmaktır. Bu ayrı dosya hem [scenario] etiketini hem de olaylar gibi "
+"elle düzenlenmiş WML'leri içerir. Bu iş akışıyla, eklentinin dosya yapısı "
+"şöyle görünebilir \n"
+"\n"
+"<header>text='Wesnoth 1.14 için'</header>\n"
+"\n"
+"• _main.cfg:\n"
+"  ◦ “scenarios” dizinini içermesi için use “{./scenarios}” kullan\n"
+"• maps/map_from_01.cfg\n"
+"  ◦ Bu dosya senaryo düzenleyicide oluşturulur\n"
+"• scenarios/01_Forest.cfg, açılış [scenario] etiketi yerine bu dört satırı "
+"koy:\n"
+"  ◦ [scenario]\n"
+"  ◦     {~add-ons/NAME_OF_ADD_ON/maps/map_from_01.cfg}\n"
+"  ◦ [/scenario]\n"
+"  ◦ [+scenario]\n"
+"\n"
+"Bu satırların ilk üçü, senaryo tarafından oluşturulan dosyayı bir [scenario] "
+"etiketinin içine ekler. Dördüncü satırdaki \"+\" işareti, iki senaryo "
+"etiketinin birleştirileceği ve ikincisindeki özniteliklerin birincideki "
+"öznitelikleri geçersiz kıldığı anlamına gelir. \n"
+"\n"
+"<header>text='1.16 ve sonrası'</header>\n"
+"\n"
+"Eklentiniz yalnızca 1.16 ve sonraki sürümlerde kullanılacaksa, .cfg "
+"dosyalarını map_file aracılığıyla yüklemek ve eklenti adının .cfg "
+"dosyalarında tekrarlanmasını önlemek için yeni özellikler vardır.\n"
+"\n"
+"• _main.cfg:\n"
+"  ◦ eklenti dizinlerini ikil yola eklemek için “[binary_path]” kullan, "
+"böylece “map_file” araması “maps” dizininde yapılır.\n"
+"  ◦  “scenarios” dizinini içermek için “{./scenarios}” kullan\n"
+"• maps/map_from_01.cfg\n"
+"  ◦ bu dosya senaryo düzenleyicide oluşturulur\n"
+"• scenarios/01_Forest.cfg\n"
+"  ◦  [scenario] içinde, bu dosyayı yüklemek için “map_file=\"map_from_01.cfg"
+"\"” kullan"
 
 #. [topic]: id=editor_masks
 #: data/core/editor/help.cfg:338
@@ -628,14 +920,12 @@ msgid ""
 "Masks can be applied to a base map for reusal in several scenarios playing "
 "at the same locations."
 msgstr ""
-"Maskeler, çeşitli senaryolarda aynı yerlerde yeniden kullanım için bir temel "
+"Maskeler, çeşitli senaryolarda aynı yerlerde yeniden kullanım için temel "
 "haritaya uygulanabilir."
 
 #. [topic]: id=editor_time_schedule
 #. Time of Day and Schedule Editor, please use a short string as it will be used in the left-hand pane of the help browser
 #: data/core/editor/help.cfg:347
-#, fuzzy
-#| msgid "Time Schedule Editor"
 msgid "ToD and Schedule Editor"
 msgstr "Zaman Çizelgesi Düzenleyicisi"
 
@@ -651,6 +941,14 @@ msgid ""
 "In scenario mode, the button accesses an editor for individual schedules for "
 "<ref>dst='editor_named_area' text='time areas'</ref>."
 msgstr ""
+"Ekranın sağ üst tarafındaki bu düğme, günün saati gösterimine ve zaman "
+"planlayıcısına erişir. \n"
+"\n"
+"Arazi kipinde bu, günün farklı saatlerine göre renklendirilmiş bir harita "
+"görüntüler.\n"
+"\n"
+"Senaryo kipinde düğme,  <ref>dst='editor_named_area' text='zaman alanları'</"
+"ref> için ayrı bir zaman planlayıcısına erişir."
 
 #. [topic]: id=editor_palette
 #: data/core/editor/help.cfg:359
@@ -673,31 +971,42 @@ msgid ""
 "this is the leftmost of the four buttons at the top of the palette, and the "
 "graphic changes depending on what is selected. Examples:"
 msgstr ""
+"Düzenleyici paleti, o anda seçili olan araçla kullanabileceğiniz "
+"uygulanabilir öğeleri içerir. Örneğin, Boyama aracı mevcut tüm arazilerin "
+"tam bir listesini gösterecek ve birim aracı, mevcut birimlerin bir listesini "
+"sağlayacaktır. Başlangıç Konumları Aracını kullanırken, palet “Oyuncu 1”, "
+"“Oyuncu 2”, vb. listesine dönüşür.\n"
+"\n"
+"<bold>text='Süzgeç'</bold>\n"
+"\n"
+"Mevcut öğelerin yalnızca bir alt kümesini gösteren bir süzme işlevi vardır — "
+"bu, paletin tepesindeki dört düğmenin en solundakidir ve grafik, neyin "
+"seçildiğine bağlı olarak değişir. Örnekler:"
 
 #. [topic]: id=editor_palette
 #: data/core/editor/help.cfg:366
 msgid "Show all kinds of terrain"
-msgstr ""
+msgstr "Tüm arazi türlerini göster"
 
 #. [topic]: id=editor_palette
 #: data/core/editor/help.cfg:367
 msgid "Show only water terrains"
-msgstr ""
+msgstr "Yalnız sulu arazileri göster"
 
 #. [topic]: id=editor_palette
 #: data/core/editor/help.cfg:368
 msgid "Show only villages"
-msgstr ""
+msgstr "Yalnız köyleri göster"
 
 #. [topic]: id=editor_map_format
 #: data/core/editor/help.cfg:379
 msgid "Wesnoth Map Format"
-msgstr "Vesnot Harita Düzenleyici"
+msgstr "Vesnot Harita Biçemi"
 
 #. [topic]: id=editor_map_format
 #: data/core/editor/help.cfg:380
 msgid "Wesnoth stores its maps in human readable plain text files."
-msgstr ""
+msgstr "Haritalar insan tarafından okunabilir düz metin dosyalarında saklanır."
 
 #. [topic]: id=editor_map_format
 #: data/core/editor/help.cfg:382
@@ -729,6 +1038,32 @@ msgid ""
 "The <italic>text='map_file'</italic> method is preferred over using a "
 "preprocessor include."
 msgstr ""
+"<header>text='Ayrı Dosya'</header>\n"
+"\n"
+"Bir harita dosyası, virgülle ayrılmış arazi kodu dizelerine sahip "
+"satırlardan oluşur. Harita sözdizimi tarafından sağlanan tek arazi dışı "
+"bilgi, <ref>dst='editor_tool_starting' text='Başlangıç Konumları Aracı'</"
+"ref> tarafından oluşturulan konumlar kümesidir. Dosyalar, not defteri gibi "
+"genel amaçlı bir metin düzenleyici ile düzenlenebilir.\n"
+"\n"
+"Bu dosyalar doğrudan çok oyunculu oyunlar için kullanılabilir, oyuncu sayısı "
+"otomatik olarak başlangıç pozisyonlarının sayısına göre belirlenir. "
+"Öntanımlı dizine kaydedildiğinde, harita çok oyunculu “Oyun Oluştur” "
+"iletişim kutusunun “Özel Haritalar” oyun türünde bulunabilir; yeni "
+"oluşturulan bir haritayı listede görmek için önbelleği yenilemeniz (başlık "
+"ekranında F5'e basın) gerekebilir. \n"
+"\n"
+"Bu dosyalar bir senaryonun .cfg dosyasında kullanılabilir ve senaryonun "
+"WML'si ekipler, özel etkinlikler ve karmaşık taraf kurulumları gibi ek "
+"bilgiler sağlar. .cfg dosyası, harita dosyasını şunlardan biriyle yükler: \n"
+"\n"
+"• map_file=maps/01_First_Map.map <italic>text='— Wesnoth 1.14 itibariyle "
+"desteklenir'</italic>\n"
+"• map_data=\"{maps/01_First_Map.map}\" <italic>text='— bir WML önişlemci "
+"içererek'</italic>\n"
+"\n"
+"<italic>text='map_file'</italic> yöntemi, önişlemci içeren yönteme tercih "
+"edililir."
 
 #. [topic]: id=editor_map_format
 #: data/core/editor/help.cfg:395
@@ -749,6 +1084,21 @@ msgid ""
 "this is rarely-used code. Maps opened this way are marked (E) in the Window "
 "menu."
 msgstr ""
+"<header>text='Gömülü'</header>\n"
+"\n"
+"Harita verileri, bir senaryonun .cfg dosyasının bir parçası olarak, doğrudan "
+"<italic>text='map_data'</italic> özniteliğinde saklanabilir. Başka bir "
+"deyişle, önişlemciyle içerme yöntemi kullanılırken harita verisi "
+"önişlemcinin bunu dahil edeceği yerde saklanabilir.\n"
+"\n"
+"<header>text='Arazi Kipinde Gömülü Biçim Kullanımı'</header>\n"
+"\n"
+"Haritayı düzenliyorsanız ve Senaryo Kipi desteğini kullanmıyorsanız, "
+"düzenleyicide açmadan önce verileri yerel bir harita dosyasına taşımak "
+"gereksizdir. Bu dönüştürme önerilir: Düzenleyici, dosyadaki diğer her şeyi "
+"el değmeden bırakırken map_data içeriğinin düzenlenmesini destekler, ancak "
+"bu nadiren kullanılan bir koddur. Bu şekilde açılan haritalar Pencere "
+"menüsünde (E) işaretlidir."
 
 #. [topic]: id=editor_map_format
 #: data/core/editor/help.cfg:403
@@ -762,6 +1112,14 @@ msgid ""
 "<ref>dst='editor_separate_events_file' text='using a separate .cfg file'</"
 "ref> for the hand-edited parts."
 msgstr ""
+"<header>text='Senaryo Düzenleyicisiyle oluşturulan Dosyalar'</header>\n"
+"\n"
+"Senaryo kipinde, düzenleyici verileri, gömülü harita verilerini içeren bir ."
+"cfg dosyası olarak kaydeder. Bir .cfg dosyasını yüklerken, senaryo "
+"düzenleyicisi kendisinde oluşturulan dosyalarda sorun çıkarmaz, ancak elle "
+"düzenlenen dosyalarda büyük olasılıkla sorun çıkarabilir; elle düzenlenen "
+"parçalarla ilgili sorunlar <ref>dst='editor_separate_events_file' text='ayrı "
+"bir .cfg dosyası kullanarak'</ref> seçeneği ile önlenebilir."
 
 #. [topic]: id=editor_map_format
 #: data/core/editor/help.cfg:407
@@ -784,6 +1142,25 @@ msgid ""
 "needs the [scenario]...[/scenario] (or [multiplayer]...[/multiplayer]) tags "
 "to know which WML is part of each scenario."
 msgstr ""
+"<header>text='[scenario] etiketinin kullanıldığı senaryo dosyaları'</"
+"header>\n"
+"\n"
+"Senaryo düzenleyicisi tarafından oluşturulan dosyalar bir WML senaryo "
+"öğesinin içeriğine sahiptir ancak açılış [scenario] ve kapanış [/scenario] "
+"etiketlerini içermez. Oyun, userdata dizininin  editor/scenarios alt "
+"dizinindeki her .cfg dosyasını, otomatik olarak \"Özel Senaryolar\" "
+"listesine dahil etmek üzere bir senaryo olarak yüklemeye çalışır "
+"(yüklenemeyen dosyalar yok sayılır). Bu dizindeki her dosya ayrı bir öğedir "
+"- senaryo olarak çözümlenemeyen dosyalar yok sayılır ve bu dosyalar "
+"[scenario][/scenario] etiketlerini içermemelidir.\n"
+"\n"
+"Bir senaryo bir seferberliğin veya bir eklentinin parçası olduğunda bunun "
+"tam tersi geçerlidir. Tipik olarak her senaryonun kendi .cfg dosyası vardır, "
+"ancak bu gereksizdir - bir eklentideki tüm WML'ler önişlemci tarafından "
+"birleştirilir, eklentinin ayrı dosyalar halinde olup olmasının bir önemi "
+"yoktur. Motorun, hangi WML'nin hangi senaryonun parçası olduğunu bilmek için "
+"[scenario] ... [/scenario] (veya [multiplayer] ... [/multiplayer]) "
+"etiketlerine ihtiyacı vardır."
 
 #. [time]: id=deep_underground
 #. [editor_times]: id=deep_underground
@@ -2762,22 +3139,21 @@ msgstr ""
 #. [topic]: id=orbs
 #: data/core/help.cfg:383
 msgid " green if it hasn’t moved this turn,"
-msgstr "yeşil; birim o el hiç hareket etmemişse yeşildir,"
+msgstr " yeşil; birim o el hiç hareket etmemişse yeşildir,"
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:384
 msgid " yellow if it has moved, but could still move further or attack, or"
 msgstr ""
-" sarı; birim hareket etmiş ama devam edebilecek veya saldırabilecekse "
-"sarıdır,"
+" sarı; birim hareket etmiş ama devam edebilecek veya saldırabilecekse sarıdır"
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:385
 msgid ""
 " red if it can no longer move or attack, or the user ended the unit’s turn."
 msgstr ""
-"kırmızı; birim artık hareket edemez veya saldıramazsa veya kullanıcı birimin "
-"sırasını sonlandırırsa kırmızı olur."
+" kırmızı; birim artık hareket edemez veya saldıramazsa veya kullanıcı "
+"birimin sırasını sonlandırırsa kırmızı olur."
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:386
@@ -4176,7 +4552,7 @@ msgstr "ilaç verir"
 #. [heals]: id=curing
 #: data/core/macros/abilities.cfg:48
 msgid "female^cures"
-msgstr " ilaç verir"
+msgstr "ilaç verir"
 
 #. [heals]: id=curing
 #: data/core/macros/abilities.cfg:49
@@ -4195,7 +4571,7 @@ msgstr "iyileşir"
 #. [regenerate]: id=regenerates
 #: data/core/macros/abilities.cfg:71
 msgid "female^regenerates"
-msgstr " iyileşir"
+msgstr "iyileşir"
 
 #. [regenerate]: id=regenerates
 #: data/core/macros/abilities.cfg:72
@@ -4204,7 +4580,7 @@ msgid ""
 "the poison instead of healing."
 msgstr ""
 "Bu birim her el 8 YP’ye kadar iyileşir. Eğer zehirlenmiş ise, o el iyileşme "
-"yerine sadece zehirden kurtulur"
+"yerine sadece zehirden kurtulur."
 
 #. [resistance]: id=steadfast
 #: data/core/macros/abilities.cfg:91
@@ -4214,7 +4590,7 @@ msgstr "sarsılmaz"
 #. [resistance]: id=steadfast
 #: data/core/macros/abilities.cfg:92
 msgid "female^steadfast"
-msgstr " sarsılmaz"
+msgstr "sarsılmaz"
 
 #. [resistance]: id=steadfast
 #: data/core/macros/abilities.cfg:93
@@ -4233,7 +4609,7 @@ msgstr "liderlik"
 #. [leadership]: id=leadership
 #: data/core/macros/abilities.cfg:107
 msgid "female^leadership"
-msgstr " liderlik"
+msgstr "liderlik"
 
 #. [leadership]: id=leadership
 #: data/core/macros/abilities.cfg:108
@@ -4261,7 +4637,7 @@ msgstr "avcı"
 #. [skirmisher]: id=skirmisher
 #: data/core/macros/abilities.cfg:126
 msgid "female^skirmisher"
-msgstr " avcı"
+msgstr "avcı"
 
 #. [skirmisher]: id=skirmisher
 #: data/core/macros/abilities.cfg:127
@@ -4280,7 +4656,7 @@ msgstr "aydınlatır"
 #. [illuminates]: id=illumination
 #: data/core/macros/abilities.cfg:141
 msgid "female^illuminates"
-msgstr " aydınlatır"
+msgstr "aydınlatır"
 
 #. [illuminates]: id=illumination
 #: data/core/macros/abilities.cfg:142
@@ -4305,7 +4681,7 @@ msgstr "ışınlanma"
 #. [teleport]: id=teleport
 #: data/core/macros/abilities.cfg:155
 msgid "female^teleport"
-msgstr " ışınlanır"
+msgstr "ışınlanır"
 
 #. [teleport]: id=teleport
 #: data/core/macros/abilities.cfg:156
@@ -4324,7 +4700,7 @@ msgstr "pusu"
 #. [hides]: id=ambush
 #: data/core/macros/abilities.cfg:186
 msgid "female^ambush"
-msgstr " gizlenir"
+msgstr "gizlenir"
 
 #. [hides]: id=ambush
 #: data/core/macros/abilities.cfg:187
@@ -4369,7 +4745,7 @@ msgstr "gizlenir"
 #. [hides]: id=concealment
 #: data/core/macros/abilities.cfg:224
 msgid "female^concealment"
-msgstr " saklanır"
+msgstr "saklanır"
 
 #. [hides]: id=concealment
 #: data/core/macros/abilities.cfg:225
@@ -4396,7 +4772,7 @@ msgstr "dalış"
 #. [hides]: id=submerge
 #: data/core/macros/abilities.cfg:243
 msgid "female^submerge"
-msgstr " dalar"
+msgstr "dalar"
 
 #. [hides]: id=submerge
 #: data/core/macros/abilities.cfg:244
@@ -4421,7 +4797,7 @@ msgstr "beslenme"
 #. [dummy]: id=feeding
 #: data/core/macros/abilities.cfg:262
 msgid "female^feeding"
-msgstr " beslenir"
+msgstr "beslenir"
 
 #. [dummy]: id=feeding
 #: data/core/macros/abilities.cfg:263
@@ -4897,8 +5273,8 @@ msgid ""
 " This unit can use one move to teleport between any two empty villages "
 "controlled by its side."
 msgstr ""
-"Bu birim tarafının sahip olduğu iki boş köy arasında ışınlanarak ve ışınlama "
-"sırasında sadece 1 HP kullanarak hareket edebilir."
+" Bu birim tarafının sahip olduğu iki boş köy arasında ışınlanarak ve "
+"ışınlama sırasında sadece 1 HP kullanarak hareket edebilir."
 
 #: data/core/macros/special-notes.cfg:44
 msgid ""
@@ -5031,9 +5407,9 @@ msgid ""
 " This unit has a defense cap on certain terrain types — it cannot achieve a "
 "higher defense rating on mixed terrains with such terrain types."
 msgstr ""
-"Bu birim bazı arazi türlerinde bir savunma kapasitesine sahiptir — böyle bir "
-"arazi türünü içeren karma arazilerde bu birim daha yüksek bir savunma oranı "
-"elde edemez."
+" Bu birim bazı arazi türlerinde bir savunma kapasitesine sahiptir — böyle "
+"bir arazi türünü içeren karma arazilerde bu birim daha yüksek bir savunma "
+"oranı elde edemez."
 
 #. [trait]: id=loyal
 #: data/core/macros/traits.cfg:8
@@ -5450,7 +5826,7 @@ msgstr "yabani"
 #. [trait]: id=feral
 #: data/core/macros/traits.cfg:257
 msgid "Receives only 50% defense in land-based villages"
-msgstr "Karasal köylerde sadece %50 savunma alır."
+msgstr "Karasal köylerde sadece %50 savunma alır"
 
 #. [trait]: id=feral
 #: data/core/macros/traits.cfg:258
@@ -5567,7 +5943,7 @@ msgid ""
 "suffer from a 1 point decrease in movement and melee damage."
 msgstr ""
 "<italic>text='Yaşlı'</italic> birimlerin yaşam puanında 8,  hareketinde ve "
-"yakın dövüş hasarında ise 1 puanlık bir düşüş vardır"
+"yakın dövüş hasarında ise 1 puanlık bir düşüş vardır."
 
 #: data/core/units.cfg:11
 msgid ""
@@ -6047,7 +6423,7 @@ msgstr ""
 "olduklarından ve ork kardeşlerinin kendilerine ne kadar bağımlı olduklarını "
 "bildiklerinden hepsi bunu başaramaz. Gerçek orkların kaba kuvvetini "
 "gerektiren işler haricinde, orklar tarafından ihtiyaç duyulan el emeğinin "
-"büyük bölümünü onlar gerçekleştirir. "
+"büyük bölümünü onlar gerçekleştirir."
 
 #. [race]: id=gryphon
 #: data/core/units.cfg:168
