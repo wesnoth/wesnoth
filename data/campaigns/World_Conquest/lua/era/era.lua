@@ -138,11 +138,9 @@ function wc2_era.create_random_faction(id)
 	local i_heroes2 = wesnoth.random(#wc2_era.standard_factions)
 	local i_commanders = wesnoth.random(#wc2_era.standard_factions)
 
-	stringx.map_split(wc2_era.standard_factions[i_deserters1].recruits, deserters_set)
-	stringx.map_split(wc2_era.standard_factions[i_deserters2].recruits, deserters_set)
-	stringx.map_split(wc2_era.standard_factions[i_heroes1].recruits, heros_set)
-	stringx.map_split(wc2_era.standard_factions[i_heroes2].recruits, heros_set)
-	stringx.map_split(wc2_era.standard_factions[i_commanders].recruits, commanders_set)
+	deserters_set = stringx.map_split(wc2_era.standard_factions[i_deserters1].recruits .. ',' .. wc2_era.standard_factions[i_deserters2].recruits)
+	heroes_set = stringx.map_split(wc2_era.standard_factions[i_heroes1].recruits .. ',' .. wc2_era.standard_factions[i_heroes2].recruits)
+	commanders_set = stringx.map_split(wc2_era.standard_factions[i_commanders].recruits)
 
 	local faction = {
 		id = "custom_random",
