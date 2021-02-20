@@ -273,7 +273,7 @@ function wesnoth.wml_actions.wc2_enemy(cfg)
 	}
 	if unit.name == "" then
 		-- give names to undead
-		unit.name = wc2_random_names.generate()
+		unit.name = wc2_random_names()
 	end
 	unit:to_map()
 	wesnoth.wml_actions.set_recruit {

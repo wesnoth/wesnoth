@@ -20,7 +20,7 @@ function wesnoth.wml_actions.wc2_place_bonus(cfg)
 	-- Note: although the numbrs of options passed to helper.rand might depend on the langauge
 	--       the number of thimes random is called does not (random is called even if there is
 	--       only one option), so this doesn't cause OOS.
-	local name1 = wc2_random_names.generate()
+	local name1 = wc2_random_names()
 	local name_options = c_scenery.names or { _"place" }
 	local name2 = tostring(name_options[wesnoth.random(#name_options)])
 
