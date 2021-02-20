@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.14\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-01-16 14:18 UTC\n"
+"POT-Creation-Date: 2021-02-20 21:40 UTC\n"
 "PO-Revision-Date: 2020-12-18 23:19+0100\n"
 "Last-Translator: German translation team <irc://irc.freenode.net/#wesnoth-"
 "de>\n"
@@ -142,11 +142,11 @@ msgstr "Südwacht"
 msgid "Urza Mathin"
 msgstr "Urza Mathin"
 
-#. [side]: type=Bandit, id=Urza Mathin
-#. [side]: type=Outlaw, id=Urza Nalmath
+#. [side]: type=Outlaw, id=Urza Afalas
 #. [side]: type=Rogue, id=Urza Fastik
 #. [side]: type=Outlaw, id=Jera Ilras
-#. [side]: type=Outlaw, id=Urza Afalas
+#. [side]: type=Outlaw, id=Urza Nalmath
+#. [side]: type=Bandit, id=Urza Mathin
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:61
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:65
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:60
@@ -1590,12 +1590,12 @@ msgstr "Tal der Tränen"
 msgid "Mal A’kai"
 msgstr "Mal A’kai"
 
-#. [side]: type=Dark Adept, type=Dark Sorcerer, type=Dark Sorcerer, id=Mal A'kai
 #. [side]
 #. [side]: type=Lich, id=Mal M'Brin
 #. [side]: type=Ancient Lich, id=Mal M'Brin
 #. [side]: type=Soulless, id=Groth
 #. [side]: type=Lich, id=Mal Tera
+#. [side]: type=Dark Adept, type=Dark Sorcerer, type=Dark Sorcerer, id=Mal A'kai
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:66
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:90
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:91
@@ -1829,8 +1829,8 @@ msgid "Mebrin! Are you there? We have come to seek your aid!"
 msgstr "Mebrin! Bist du daheim? Wir sind hier, um deine Hilfe zu erbitten."
 
 #. [message]: speaker=Kramak
-#. [message]: speaker=narrator
 #. [message]: speaker=Ethiliel
+#. [message]: speaker=narrator
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:645
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:656
 #: data/campaigns/The_South_Guard/scenarios/07a_Return_to_Kerlath.cfg:238
@@ -2446,48 +2446,56 @@ msgstr ""
 "verlieren. Und ich finde schon ’nen Weg hier raus, wenn die Zeit reif ist."
 
 #. [message]: speaker=narrator
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:889
+#. All of Urza Afalas’s units have been transferred to the player’s side. The troops who attacked or were recruited last turn can’t attack this turn; the others can. The “disengaged” orb is the one used for Under the Burning Sun’s disengage ability.
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:890
+#, fuzzy
+#| msgid ""
+#| "Urza Afalas’s troops are exhausted from battle and cannot attack this "
+#| "turn, but are still able to withdraw and reposition themselves."
 msgid ""
-"Urza Afalas’s troops are exhausted from battle and cannot attack this turn, "
-"but are still able to withdraw and reposition themselves."
+"Many of Urza Afalas’s troops are exhausted from battle and cannot attack "
+"this turn, but are still able to withdraw and reposition themselves.\n"
+"\n"
+"Units that can move but can’t attack are shown with the <i>disengaged</i> "
+"orb."
 msgstr ""
 "Die Banditen sind vom Kampf erschöpft und können erst in der nächsten Runde "
 "angreifen – Nutzt diese runde, um sie neu zu gruppieren."
 
 #. [message]: speaker=Urza Afalas
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:921
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:924
 msgid "I pay for my crimes, but without me, you cannot fight the undead..."
 msgstr "So zahl ich denn für meinen Übermut … Nur tut das leider keinem gut …"
 
 #. [message]: speaker=Urza Afalas
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:934
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:937
 msgid "Fools! That lich will be the death of us all! Now we are all doomed!"
 msgstr ""
 "Narren! Ihr habt auch euren Untergang besiegelt! Der Lich bringt über ALLE "
 "Tod!"
 
 #. [unit]: type=Water Serpent, id=Beast of the Lake
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:963
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:966
 msgid "Beast of the Lake"
 msgstr "Seeungeheuer"
 
 #. [message]: speaker=Beast of the Lake
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:973
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:976
 msgid "Graar!"
 msgstr "Grrraaah~"
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:992
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:995
 msgid "Ouch! Did anyone feel that?"
 msgstr "Moment! Habt ihr das auch gerade gespürt?"
 
 #. [message]: speaker=Sir Gerrick
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:996
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:999
 msgid "Aye, I felt it too. A dreadful chill of perverse origin."
 msgstr "Ja. So ein Schauer der einem über’n Rücken läuft."
 
 #. [message]: speaker=Ethiliel
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:1000
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:1003
 msgid ""
 "It is the work of the undead. They have begun to cast a spell on us to drain "
 "our energy and trap us in these forests. We must hurry before they complete "
@@ -2499,17 +2507,17 @@ msgstr ""
 "werden sie uns besiegen."
 
 #. [message]: speaker=Minister Hylas
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:1012
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:1015
 msgid "Foul magic pervades these forests."
 msgstr "Dunkle Magie umlegt Wald."
 
 #. [message]: speaker=Ethiliel
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:1016
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:1019
 msgid "The spell grows stronger by the moment."
 msgstr "Der Bannkreis wird immer stärker."
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:1028
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:1031
 msgid ""
 "The darkness is so heavy... I do not know how much longer I can go on..."
 msgstr ""
@@ -2517,12 +2525,12 @@ msgstr ""
 "durchmache …"
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:1041
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:1044
 msgid "It is... so cold..."
 msgstr "Es ist … so … kalt …"
 
 #. [message]: speaker=Ethiliel
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:1045
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:1048
 msgid ""
 "The undead have ensnared us in their spell... we will not be able to escape "
 "now..."
@@ -2530,14 +2538,14 @@ msgstr ""
 "Sie haben uns in Ihrem Bannkreis gefangen … Wir können nicht mehr fliehen …"
 
 #. [message]: speaker=Sir Gerrick
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:1068
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:1071
 msgid "Well! That was easier than I thought it would be."
 msgstr ""
 "War einfacher, als ich dachte! Der Mebrin hatte wohl als Lich noch nicht so "
 "viel Erfahrung."
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:1073
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:1076
 msgid ""
 "Indeed. The lich has fallen. Looks like the corrupted sage was no match for "
 "us!"
@@ -2546,7 +2554,7 @@ msgstr ""
 "viel Erfahrung."
 
 #. [message]: speaker=Urza Afalas
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:1077
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:1080
 msgid ""
 "I’m afraid it is not so. This was merely a phantom of the true Mebrin. He "
 "resides in catacombs deep underneath the castle, but they cannot be entered "
@@ -2559,7 +2567,7 @@ msgstr ""
 "Barriere zu brechen."
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:1082
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:1085
 msgid ""
 "What?! You knew this all along and yet you still brought us here? You misled "
 "us!"
@@ -2568,7 +2576,7 @@ msgstr ""
 "nun lässt du verlauten, wir können sie nicht erreichen?"
 
 #. [message]: speaker=Urza Afalas
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:1086
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:1089
 msgid ""
 "If I had told you, you and the elves would have killed me! I had no choice!"
 msgstr ""
@@ -2577,12 +2585,12 @@ msgstr ""
 "schon tot!"
 
 #. [message]: speaker=Sir Gerrick
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:1090
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:1093
 msgid "Perhaps we should correct that error now."
 msgstr "Ein Segen, den wir gleich herbeiführen sollten!"
 
 #. [message]: speaker=Urza Afalas
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:1094
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:1097
 msgid ""
 "Then you would surely be lost in these woods, hounded by the undead and made "
 "into their slaves. I can lead you and your men back to the lands of Wesnoth, "
@@ -2593,7 +2601,7 @@ msgstr ""
 "nach Wesnoth führen … sofern ihr mir Begnadigung gewährt."
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:1099
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:1102
 msgid ""
 "Ethiliel could have dispelled these magical wards if we had not fallen for "
 "your lies! But I foolishly spurned her advice and all the aid she had "
@@ -2608,12 +2616,12 @@ msgstr ""
 "Heimat an, wenn Mebrin nicht vernichtet wird!"
 
 #. [message]: speaker=Urza Afalas
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:1103
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:1106
 msgid "You would never make it back on your own."
 msgstr "Ihr würdet es niemals allein zurückschaffen."
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:1107
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:1110
 msgid ""
 "Bah, it is not like we have a choice. Very well, you will lead us back to "
 "Westin, and we will grant your pardon so long as you do not try any more "
@@ -2621,7 +2629,7 @@ msgid ""
 msgstr "Einem feigen Lügenbold sind wir auf Gedeih und Verderb preisgegeben!"
 
 #. [message]: speaker=Urza Afalas
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:1111
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:1114
 msgid ""
 "I know that Mebrin intends to lead the undead to Westin and raze the city. "
 "While his power is great and his army vast, we have fought the undead before "
@@ -2632,12 +2640,12 @@ msgstr ""
 "geben … Deoran, bedenkt—"
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:1116
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:1119
 msgid "That’s <i>Sir</i> Deoran to the likes of you!"
 msgstr "Für deinesgleichen heißt es immer noch <i>Kommandant</i> Deoran!"
 
 #. [message]: speaker=Urza Afalas
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:1120
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:1123
 msgid ""
 "Yes, yes, Sir Deoran! If we fight against the undead on open plains or in "
 "the forests, we will surely be slaughtered. But, if we prepare our defenses "
@@ -2651,7 +2659,7 @@ msgstr ""
 "Stadt unvorbereitet trifft, wird’s dort ein Mordsgemetzel geben …"
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:1125
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:1128
 msgid ""
 "Then we shall retreat towards Westin and prepare for the oncoming battle. I "
 "pray our only chance at victory was not lost today."
@@ -2661,17 +2669,17 @@ msgstr ""
 "Chance auf Sieg hier und heut’ verspielt haben …"
 
 #. [message]: speaker=Sir Gerrick
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:1142
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:1145
 msgid "Now to defeat those bandits!"
 msgstr "Und jetzt nehmen wir uns die Banditen vor!"
 
 #. [message]: speaker=Sir Gerrick
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:1173
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:1176
 msgid "We have beaten them both, outlaws and undead!"
 msgstr "Das war’s denn wohl … Lebende und tote Unholde sind niedergerungen!"
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:1178
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:1181
 msgid ""
 "We should make haste to return to Wesnoth. I think the fall harvest should "
 "be soon!"
@@ -2681,7 +2689,7 @@ msgstr ""
 "und der König—"
 
 #. [message]: speaker=Ethiliel
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:1182
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:1185
 msgid ""
 "Do not be so hasty. Powerful mages are not so easily defeated, and those "
 "skilled in the dark arts are especially adept at misdirection. There are "
@@ -2695,12 +2703,12 @@ msgstr ""
 "uns ins Dunkel begeben und es von innen her auszumerzen."
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:1186
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:1189
 msgid "Very well, but where is the entrance?"
 msgstr "Nun gut, aber wo ist der Eingang?"
 
 #. [message]: speaker=Ethiliel
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:1190
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:1193
 msgid ""
 "There are strong magical wards that have hidden the way and bar our entry, "
 "but I am capable of dispelling them. It will take some time so stand back "
@@ -2711,7 +2719,7 @@ msgstr ""
 "dunklen Hindernisse passieren und in die Festung eindringen können."
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:1194
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:1197
 msgid ""
 "Indeed. We will leave you to your work and prepare ourselves for the coming "
 "battle."
