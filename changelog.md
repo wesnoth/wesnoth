@@ -393,6 +393,7 @@
      * Fix missing portraits for Shynal
    * Tutorial:
      * Redraw S2 and reduce difficulty
+   * Wings of Victory has been removed.
  ### Editor
  ### Language and i18n
    * Updated translations: Ancient Greek, Chinese (Traditional), Czech, Dutch,
