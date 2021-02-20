@@ -1118,7 +1118,7 @@ function ai_helper.get_visible_units(viewing_side, filter)
     --
     -- Required parameters:
     -- @viewing_side: must be set to a valid side number. If visibility is to be
-    --   ignored, use wesnoth.get_units() instead.
+    --   ignored, use wesnoth.units.find_on_map() instead.
     --
     -- Optional parameters:
     -- @filter: Standard unit filter WML table for the units

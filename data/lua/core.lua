@@ -431,8 +431,8 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 			}
 		elseif getmetatable(ctx) == "side" then
 			return {
-				get = function(path) return wesnoth.get_side_variable(ctx.side, path) end,
-				set = function(path, val) wesnoth.set_side_variable(ctx.side, path, val) end,
+				get = function(path) return wesnoth.sides[ctx.side].variables[path] end,
+				set = function(path, val) wesnoth.sides[ctx.side].variables[path] = val end,
 			}
 		elseif getmetatable(ctx) == "unit variables" or getmetatable(ctx) == "side variables" then
 			return {
