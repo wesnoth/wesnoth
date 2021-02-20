@@ -4,7 +4,7 @@ random_names.list = _"Aban,Abidin,Acacalide,Acimaëli,Acratoforo,Actarof,Adham,A
 
 function random_names.generate()
 	if type(random_names.list) ~= "table" then
-		random_names.list = stringx.splitandom_names.list))
+		random_names.list = stringx.split(tostring(random_names.list))
 	end
 	return random_names.list[wesnoth.random(#random_names.list)]
 end
