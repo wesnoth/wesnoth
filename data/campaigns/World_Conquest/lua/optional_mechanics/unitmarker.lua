@@ -27,7 +27,7 @@ function wesnoth.effects.wc2_unitmarker(u, cfg)
 end
 
 function wesnoth.wml_actions.wc2_toggle_overlay(cfg)
-	local units = wesnoth.get_units(cfg)
+	local units = wesnoth.units.find_on_map(cfg)
 	for i, u in ipairs(units) do
 		local overlay_nr = u.variables["mods.wc2_unitmarker"]
 		if overlay_nr ~= nil then
@@ -54,7 +54,7 @@ wc2_utils.menu_item {
 		if wml.variables.wc2_config_enable_unitmarker == false then
 			return false
 		end
-		local u = wesnoth.get_unit(x, y)
+		local u = wesnoth.units.get(x, y)
 		return u and u.side == wesnoth.current.side
 	end,
 	handler = function(cx)

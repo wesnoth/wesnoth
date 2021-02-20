@@ -74,7 +74,7 @@ function wc2_heroes.place(t, side, x, y, is_commander)
 		modifications,
 		is_commander and wc2_heroes.commander_overlay_object() or wc2_heroes.hero_overlay_object()
 	)
-	local u = wesnoth.create_unit {
+	local u = wesnoth.units.create {
 		type = t,
 		side = side,
 		random_traits = false,

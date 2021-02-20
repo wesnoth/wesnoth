@@ -142,7 +142,7 @@ function wesnoth.wml_actions.wc2_show_wocopedia(cfg)
 				}
 
 				for p_wml in wml.child_range(faction_info, "pair") do
-					local p = wc2_utils.split_to_array(p_wml.types)
+					local p = stringx.split(p_wml.types)
 					local ut1 = wesnoth.unit_types[p[1]] or error("invald unit type" .. tostring(p[1]))
 					local ut2 = wesnoth.unit_types[p[2]] or error("invald unit type" .. tostring(p[2]))
 
@@ -160,7 +160,7 @@ function wesnoth.wml_actions.wc2_show_wocopedia(cfg)
 
 				if faction_wml then
 					local random_leaders = {}
-					for i,v in ipairs(wc2_utils.split_to_array(faction_wml.random_leader)) do
+					for i,v in ipairs(stringx.split(faction_wml.random_leader)) do
 						table.insert(random_leaders, wesnoth.unit_types[v].name)
 					end
 					random_leaders = wesnoth.format_conjunct_list("", random_leaders)
@@ -187,7 +187,7 @@ function wesnoth.wml_actions.wc2_show_wocopedia(cfg)
 				local artifact_icon = artifact.icon or ""
 				local artifact_name = artifact.name or ""
 				local artifact_desc = artifact.description or ""
-				local not_available = wc2_utils.split_to_set(artifact.not_available or "")
+				local not_available = stringx.map_split(artifact.not_available or "")
 
 				if not_available.player then
 					artifact_name = artifact_name .. str_not_for_players
@@ -251,7 +251,7 @@ wc2_utils.menu_item {
 	image= "help/closed_section.png~SCALE(18,17)",
 	synced = false,
 	filter = function(x, y)
-		local u = wesnoth.get_unit(x, y)
+		local u = wesnoth.units.get(x, y)
 		if wc2_artifacts.is_item_at(x, y) then
 			return false
 		end

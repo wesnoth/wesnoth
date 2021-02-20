@@ -138,7 +138,7 @@ end
 -- Similar to the usual apply_to=overlay effect but does not add overlays the the unit already has.
 function wesnoth.effects.wc2_overlay(u, cfg)
 	if cfg.add then
-		local to_add_old = wc2_utils.split_to_array(cfg.add)
+		local to_add_old = stringx.split(cfg.add)
 		local to_add_new = {}
 		local current = u.overlays
 		for i1,v1 in ipairs(to_add_old) do
