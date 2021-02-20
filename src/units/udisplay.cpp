@@ -657,7 +657,6 @@ void unit_attack(display * disp, game_board & board,
 
 	animator.add_animation(defender.shared_from_this(), defender_anim, def->get_location(), true, text, {255, 0, 0});
 
-
 	for(const unit_ability& ability : attacker.get_abilities_weapons("leadership", weapon, secondary_attack)) {
 		if(ability.teacher_loc == a) {
 			continue;
