@@ -124,3 +124,16 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 	end)
 	wesnoth.match_location = wesnoth.deprecate_api('wesnoth.match_location', 'wesnoth.map.matches', 1, nil, wesnoth.map.matches)
 end
+
+if wesnoth.kernel_type() == "Mapgen Lua Kernel" then
+	-- More map module stuff
+	wesnoth.create_filter = wesnoth.deprecate_api('wesnoth.create_filter', 'wesnoth.map.filter', 1, nil, wesnoth.map.filter)
+	wesnoth.create_map = wesnoth.deprecate_api('wesnoth.create_map', 'wesnoth.map.create', 1, nil, wesnoth.map.create)
+	wesnoth.default_generate_height_map = wesnoth.deprecate_api('wesnoth.default_generate_height_map', 'wesnoth.map.generate_height_map', 1, nil, wesnoth.map.generate_height_map)
+	wesnoth.generate_default_map = wesnoth.deprecate_api('wesnoth.generate_default_map', 'wesnoth.map.generate', 1, nil, wesnoth.map.generate)
+	-- These were originally only on the map metatable, so the deprecated versions also need to be in the map module
+	wesnoth.map.get_locations = wesnoth.deprecate_api('map:get_locations', 'map:find', 1, nil, wesnoth.map.find)
+	wesnoth.map.get_tiles_radius = wesnoth.deprecate_api('map:get_tiles_radius', 'map:find_in_radius', 1, nil, function(map, locs, filter, radius)
+		return wesnoth.map.find_in_radius(map, locs, radius, filter)
+	end, 'The filter is now the last parameter, instead of the radius')
+end

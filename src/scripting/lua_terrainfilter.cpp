@@ -184,6 +184,11 @@ static int luaW_push_locationset(lua_State* L, const std::set<map_location>& loc
 static std::set<map_location> luaW_to_locationset(lua_State* L, int index)
 {
 	std::set<map_location> res;
+	map_location single;
+	if(luaW_tolocation(L, index, single)) {
+		res.insert(single);
+		return res;
+	}
 	lua_pushvalue(L, index);
 	size_t len = lua_rawlen(L, -1);
 	for(size_t i = 0; i != len; ++i) {
@@ -734,10 +739,10 @@ int intf_mg_get_locations(lua_State* L)
 int intf_mg_get_tiles_radius(lua_State* L)
 {
 	gamemap_base& m = luaW_checkterrainmap(L, 1);
-	lua_mapgen::filter& f = luaW_check_mgfilter(L, 3);
 	location_set s = luaW_to_locationset(L, 2);
+	int r = luaL_checkinteger(L, 3);
+	lua_mapgen::filter& f = luaW_check_mgfilter(L, 4);
 	location_set res;
-	int r = luaL_checkinteger(L, 4);
 	get_tiles_radius(std::move(s), r, res,
 		[&](const map_location& l) {
 			return m.on_board_with_border(l);

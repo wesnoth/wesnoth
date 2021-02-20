@@ -4068,7 +4068,7 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 	cmd_log_ << lua_unit_type::register_table(L);
 
 	// Create the unit_types table
-	cmd_log_ << lua_terrainmap::register_metatables(L, false);
+	cmd_log_ << lua_terrainmap::register_metatables(L);
 
 	// Create the ai elements table.
 	cmd_log_ << "Adding ai elements table...\n";

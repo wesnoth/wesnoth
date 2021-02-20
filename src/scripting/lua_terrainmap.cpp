@@ -491,7 +491,7 @@ static int impl_replace_if_failed_tostring(lua_State* L)
 }
 
 namespace lua_terrainmap {
-	std::string register_metatables(lua_State* L, bool use_tf)
+	std::string register_metatables(lua_State* L)
 	{
 		std::ostringstream cmd_out;
 
@@ -506,13 +506,6 @@ namespace lua_terrainmap {
 		lua_setfield(L, -2, "__newindex");
 		lua_pushstring(L, terrainmapKey);
 		lua_setfield(L, -2, "__metatable");
-		// terrainmap methods
-		if(use_tf) {
-			lua_pushcfunction(L, intf_mg_get_locations);
-			lua_setfield(L, -2, "get_locations");
-			lua_pushcfunction(L, intf_mg_get_tiles_radius);
-			lua_setfield(L, -2, "get_tiles_radius");
-		}
 		
 		luaL_newmetatable(L, mapReplaceIfFailedKey);
 		lua_pushcfunction(L, impl_replace_if_failed_tostring);

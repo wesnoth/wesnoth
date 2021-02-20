@@ -222,10 +222,6 @@ mapgen_lua_kernel::mapgen_lua_kernel(const config* vars)
 	static luaL_Reg const callbacks[] {
 		{ "find_path",           &intf_find_path           },
 		{ "random",              &intf_random              },
-		{ "create_filter",       &intf_terrainfilter_create },
-		{ "create_map",          &intf_terrainmap_create    },
-		{ "default_generate_height_map", &intf_default_generate_height_map },
-		{ "generate_default_map",        &intf_default_generate            },
 		{ "get_variable", &dispatch<&mapgen_lua_kernel::intf_get_variable> },
 		{ nullptr, nullptr }
 	};
@@ -236,8 +232,25 @@ mapgen_lua_kernel::mapgen_lua_kernel(const config* vars)
 	lua_pop(L, 1);
 	assert(lua_gettop(L) == 0);
 
+	static luaL_Reg const map_callbacks[] {
+		// Map methods
+		{ "find",                &intf_mg_get_locations            },
+		{ "find_in_radius",      &intf_mg_get_tiles_radius         },
+		// Static functions
+		{ "filter",              &intf_terrainfilter_create        },
+		{ "create",              &intf_terrainmap_create           },
+		{ "generate_height_map", &intf_default_generate_height_map },
+		{ "generate",            &intf_default_generate            },
+		{ nullptr, nullptr }
+	};
 
-	cmd_log_ << lua_terrainmap::register_metatables(L, true);
+	luaW_getglobal(L, "wesnoth", "map");
+	assert(lua_istable(L,-1));
+	luaL_setfuncs(L, map_callbacks, 0);
+	lua_pop(L, 1);
+	assert(lua_gettop(L) == 0);
+
+	cmd_log_ << lua_terrainmap::register_metatables(L);
 	cmd_log_ << lua_terrainfilter::register_metatables(L);
 }
 
