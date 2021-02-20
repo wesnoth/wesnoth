@@ -6,7 +6,7 @@ local wc2_invest = {}
 function wc2_invest.add_items(side_num, num_items)
 	local side = wesnoth.sides[side_num]
 	local items_left = stringx.split(side.variables["wc2.items_left"])
-	local items_available = stringx.split(side.variables["wc2.items"])
+	local items_available = stringx.split(side.variables["wc2.items"] or "")
 	for j = 1, num_items do
 		local i = wesnoth.random(#items_left)
 		table.insert(items_available, items_left[i])
@@ -117,7 +117,7 @@ function wc2_invest.do_item(t)
 	local leaders = wesnoth.units.find_on_map { side = side_num, canrecruit = true }
 	local x,y = leaders[1].x, leaders[1].y
 	
-	local items_available = stringx.split(side.variables["wc2.items"], {}, tonumber)
+	local items_available = stringx.split(side.variables["wc2.items"])
 	local i = find_index(items_available, tostring(t))
 	if i == nil then
 		error("wc2 invest: invalid item pick '" .. t .. "' (" .. type(t) ..")")

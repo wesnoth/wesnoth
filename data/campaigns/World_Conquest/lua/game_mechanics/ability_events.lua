@@ -41,7 +41,7 @@ on_event("attack_end", function(cx)
 	if not u then
 		return
 	end
-	if not u:matches { wml.tag.has_attack { special_active = "wc2_disengage"} } then
+	if not u:matches { wml.tag.has_attack { special_id_active = "wc2_disengage"} } then
 		--IMPORTANT: using 'special_active' like this is only guaranteed to work if
 		--           the attack has a [filter_self] or a simlar filter tag, otherwise it might
 		--           also fire when another attack that is not the currently used attack has

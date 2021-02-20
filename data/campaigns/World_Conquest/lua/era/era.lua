@@ -251,7 +251,10 @@ function wc2_era.expand_hero_types(types_str)
 				table.insert(types_res, v)
 			elseif wc2_era.hero_types[v] then
 				local group =  wc2_era.hero_types[v]
-				stringx.split(group.types, types_new)
+				local these_types = stringx.split(group.types)
+				for j,type in ipairs(these_types) do
+					table.insert(types_new, type)
+				end
 			else
 				wesnoth.message("WCII ERROR", "unknown deserter group: '" .. v .. "'")
 			end

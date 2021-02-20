@@ -161,7 +161,7 @@ function enemy.do_recall(cfg, group_id, loc)
 	local side_variables = wesnoth.sides[side_num].variables
 
 	local group = wml.variables[("wc2_enemy_army.group[%d]"):format(group_id)]
-	local to_recall = stringx.split(side_variables["wc2.to_recall"])
+	local to_recall = stringx.split(side_variables["wc2.to_recall"] or "")
 	local function recall_level(level)
 		local amount = wml.get_child(cfg, "recall")["level" .. level] or 0
 		local types =  stringx.split(wml.get_child(group, "recall")["level" .. level] or "")
