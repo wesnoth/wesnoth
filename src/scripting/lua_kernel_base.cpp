@@ -242,11 +242,16 @@ static int intf_name_generator(lua_State *L)
 						return lua_error(L);
 					}
 					if(lua_isstring(L, -1)) {
-						data[lua_tostring(L,-2)] = utils::split(lua_tostring(L,-1),'|');
+						auto& productions = data[lua_tostring(L,-2)] = utils::split(luaW_checktstring(L,-1).str(), '|');
+						if(productions.size() > 1) {
+							deprecated_message("wesnoth.name_generator('cfg', {nonterminal = 'a|b'})", DEP_LEVEL::INDEFINITE, "1.17", "Non-terminals should now be assigned an array of productions instead of a single string containing productions separated by | - but a single string is fine if it's only one production");
+						}
 					} else if(lua_istable(L, -1)) {
-						data[lua_tostring(L,-2)] = lua_check<std::vector<std::string>>(L, -1);
+						const auto& split = lua_check<std::vector<t_string>>(L, -1);
+						auto& productions = data[lua_tostring(L,-2)];
+						std::transform(split.begin(), split.end(), std::back_inserter(productions), std::mem_fn(&t_string::str));
 					} else {
-						lua_pushstring(L, "CFG generator: invalid noterminal value (must be a string or list of strings)");
+						lua_pushstring(L, "CFG generator: invalid nonterminal value (must be a string or list of strings)");
 						return lua_error(L);
 					}
 				}
