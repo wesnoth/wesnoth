@@ -883,3 +883,4 @@ wesnoth.format_conjunct_list = wesnoth.deprecate_api('wesnoth.format_conjunct_li
 wesnoth.format_disjunct_list = wesnoth.deprecate_api('wesnoth.format_disjunct_list', 'stringx.format_disjunct_list', 1, nil, stringx.format_disjunct_list)
 -- Other
 unpack = wesnoth.deprecate_api('unpack', 'table.unpack', 3, '1.17', table.unpack)
+math.pow = wesnoth.deprecate_api('math.pow', '^', 3, '1.17', function(a,b) return a ^ b end)
