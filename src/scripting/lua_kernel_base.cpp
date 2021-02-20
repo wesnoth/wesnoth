@@ -226,7 +226,7 @@ static int intf_name_generator(lua_State *L)
 			if(lua_istable(L, 2)) {
 				input = lua_check<std::vector<std::string>>(L, 2);
 			} else {
-				input = utils::parenthetical_split(luaL_checkstring(L, 2), ',');
+				input = utils::parenthetical_split(luaW_checktstring(L, 2), ',');
 			}
 			int chain_sz = luaL_optinteger(L, 3, 2);
 			int max_len = luaL_optinteger(L, 4, 12);
@@ -254,7 +254,7 @@ static int intf_name_generator(lua_State *L)
 					gen = new(L) context_free_grammar_generator(data);
 				}
 			} else {
-				gen = new(L) context_free_grammar_generator(luaL_checkstring(L, 2));
+				gen = new(L) context_free_grammar_generator(luaW_checktstring(L, 2));
 			}
 			if(gen) {
 				assert(static_cast<void*>(gen) == dynamic_cast<context_free_grammar_generator*>(gen));
