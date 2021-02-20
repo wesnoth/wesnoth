@@ -96,9 +96,7 @@ inline void isort_dir_entries(std::vector<std::string>& entries)
 
 } // unnamed namespace
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 
 REGISTER_DIALOG(file_dialog)
@@ -745,4 +743,3 @@ void file_dialog::on_file_delete_cmd()
 }
 
 } // namespace dialogs
-} // namespace gui2

@@ -18,9 +18,7 @@
 
 class game_classification;
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 /** Dialog to display 'The End' at the end of a campaign. */
 class outro : public modal_dialog
@@ -63,4 +61,3 @@ private:
 };
 
 } // namespace dialogs
-} // namespace gui2

@@ -62,9 +62,7 @@ static lg::log_domain log_config("config");
 #define ERR_CF LOG_STREAM(err, log_config)
 #define WRN_CF LOG_STREAM(warn, log_config)
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 
 REGISTER_DIALOG(title_screen)
@@ -485,4 +483,3 @@ void title_screen::button_callback_cores()
 }
 
 } // namespace dialogs
-} // namespace gui2

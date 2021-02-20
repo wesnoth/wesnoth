@@ -18,16 +18,14 @@
 #include "gui/dialogs/modal_dialog.hpp"
 #include "units/map.hpp"
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 
 /**
  * @ingroup GUIWindowDefinitionWML
- * 
+ *
  * This shows the dialog for attacking units.
- * Key               |Type          |Mandatory|Description  
+ * Key               |Type          |Mandatory|Description
  * ------------------|--------------|---------|-----------
  * attacker_portrait | @ref image   |no       |Shows the portrait of the attacking unit.
  * attacker_icon     | @ref image   |no       |Shows the icon of the attacking unit.
@@ -83,4 +81,3 @@ private:
 };
 
 } // namespace dialogs
-} // namespace gui2

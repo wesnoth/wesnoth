@@ -30,9 +30,7 @@
 
 #define ERR_ED LOG_STREAM_INDENT(err, editor)
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 
 REGISTER_DIALOG(editor_generate_map)
@@ -127,4 +125,3 @@ std::optional<uint32_t> editor_generate_map::get_seed()
 }
 
 } // namespace dialogs
-} // namespace gui2

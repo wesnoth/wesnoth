@@ -26,9 +26,7 @@
 #include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/window.hpp"
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 
 REGISTER_DIALOG(mp_login)
@@ -81,4 +79,3 @@ void mp_login::post_show(window& /*win*/) {
 }
 
 } // namespace dialogs
-} // namespace gui2

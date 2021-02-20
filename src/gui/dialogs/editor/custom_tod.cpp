@@ -32,9 +32,7 @@
 
 #include <functional>
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 
 static custom_tod::string_pair tod_getter_image(const time_of_day& tod)
@@ -307,4 +305,3 @@ void custom_tod::post_show(window& /*window*/)
 }
 
 } // namespace dialogs
-} // namespace gui2

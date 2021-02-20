@@ -27,9 +27,7 @@
 #include "gui/widgets/window.hpp"
 #include "deprecation.hpp"
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 
 mp_options_helper::mp_options_helper(window& window, ng::create_engine& create_engine)
@@ -339,4 +337,3 @@ config mp_options_helper::get_options_config()
 }
 
 } // namespace dialogs
-} // namespace gui2 // namespace gui2

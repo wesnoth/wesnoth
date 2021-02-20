@@ -16,16 +16,14 @@
 
 #include "gui/dialogs/modal_dialog.hpp"
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 
 /**
  * @ingroup GUIWindowDefinitionWML
- * 
+ *
  * Dialog for renaming units in-game.
- * Key               |Type          |Mandatory|Description  
+ * Key               |Type          |Mandatory|Description
  * ------------------|--------------|---------|-----------
  * name              | text_box     |yes      |Input field for the unit name.
  */
@@ -73,4 +71,3 @@ private:
 	bool disallow_empty_;
 };
 } // namespace dialogs
-} // namespace gui2

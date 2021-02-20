@@ -23,9 +23,7 @@
 
 #include <boost/algorithm/string/trim.hpp>
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 
 REGISTER_DIALOG(edit_text)
@@ -59,4 +57,3 @@ void edit_text::on_text_change()
 }
 
 } // namespace dialogs
-} // namespace gui2

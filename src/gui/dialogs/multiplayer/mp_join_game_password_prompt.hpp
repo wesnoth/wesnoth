@@ -16,16 +16,14 @@
 
 #include "gui/dialogs/modal_dialog.hpp"
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 
 /**
  * @ingroup GUIWindowDefinitionWML
- * 
+ *
  * Dialog for entering a password for joining a password-protected MP game.
- * Key               |Type          |Mandatory|Description  
+ * Key               |Type          |Mandatory|Description
  * ------------------|--------------|---------|-----------
  * password          | text_box     |yes      |Input field for the game password.
  */
@@ -52,4 +50,3 @@ private:
 };
 
 } // namespace dialogs
-} // namespace gui2

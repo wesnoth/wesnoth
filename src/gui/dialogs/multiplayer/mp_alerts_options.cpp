@@ -32,9 +32,7 @@
 
 #include "gettext.hpp"
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 
 static toggle_button * setup_pref_toggle_button(const std::string & id, bool def, window & window)
@@ -129,4 +127,3 @@ void mp_alerts_options::post_show(window& /*window*/)
 }
 
 } // namespace dialogs
-} // namespace gui2

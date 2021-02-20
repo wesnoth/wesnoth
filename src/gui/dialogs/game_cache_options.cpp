@@ -33,9 +33,7 @@
 
 #include "gettext.hpp"
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 
 REGISTER_DIALOG(game_cache_options)
@@ -158,4 +156,3 @@ bool game_cache_options::purge_cache()
 }
 
 } // namespace dialogs
-} // namespace gui2

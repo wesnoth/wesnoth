@@ -24,9 +24,7 @@
 #include "gui/widgets/window.hpp"
 #include "tstring.hpp"
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 
 REGISTER_DIALOG(install_dependencies)
@@ -43,5 +41,4 @@ void install_dependencies::pre_show(window& window)
 	find_widget<addon_list>(&window, "dependencies", false).set_addons(addons_);
 }
 
-}
 }

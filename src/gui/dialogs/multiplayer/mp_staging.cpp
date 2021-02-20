@@ -41,9 +41,7 @@
 #include "units/types.hpp"
 #include "wesnothd_connection.hpp"
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 
 REGISTER_DIALOG(mp_staging)
@@ -590,4 +588,3 @@ void mp_staging::post_show(window& window)
 }
 
 } // namespace dialogs
-} // namespace gui2

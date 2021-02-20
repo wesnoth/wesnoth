@@ -20,16 +20,14 @@
 namespace game_events {class manager; }
 class display_context;
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 
 /**
  * @ingroup GUIWindowDefinitionWML
- * 
+ *
  * This shows the gamestate inspector.
- * Key               |Type          |Mandatory|Description  
+ * Key               |Type          |Mandatory|Description
  * ------------------|--------------|---------|-----------
  * inspector_name    | control      |yes      |Name of the inspector.
  * stuff_list        | control      |yes      |List of various stuff that can be viewed.
@@ -62,4 +60,3 @@ private:
 	const display_context& dc_;
 };
 } // namespace dialogs
-} // namespace gui2

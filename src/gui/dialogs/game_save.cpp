@@ -22,9 +22,7 @@
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/settings.hpp"
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 
 REGISTER_DIALOG(game_save)
@@ -67,4 +65,3 @@ game_save_oos::game_save_oos(bool& ignore_all,
 }
 
 } // namespace dialogs
-} // namespace gui2

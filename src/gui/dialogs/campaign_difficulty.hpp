@@ -19,9 +19,7 @@
 
 #include <vector>
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 
 /**
@@ -32,9 +30,9 @@ config generate_difficulty_config(const config& source);
 
 /**
  * @ingroup GUIWindowDefinitionWML
- * 
+ *
  * The campaign mode difficulty menu.
- * Key               |Type          |Mandatory|Description  
+ * Key               |Type          |Mandatory|Description
  * ------------------|--------------|---------|-----------
  * title             | @ref label   |yes      |Dialog title label.
  * message           | scroll_label |no       |Text label displaying a description or instructions.
@@ -75,4 +73,3 @@ private:
 	virtual void post_show(window& window) override;
 };
 } // namespace dialogs
-} // namespace gui2

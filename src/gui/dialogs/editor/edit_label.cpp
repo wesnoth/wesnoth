@@ -23,9 +23,7 @@
 
 #include <functional>
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 
 REGISTER_DIALOG(editor_edit_label)
@@ -68,4 +66,3 @@ void editor_edit_label::save_color_component(uint8_t color_t::* component, const
 	color_store.*component = value;
 }
 } // namespace dialogs
-} // namespace gui2

@@ -61,9 +61,7 @@ static lg::log_domain log_lobby("lobby");
 #define ERR_LB LOG_STREAM(err, log_lobby)
 #define SCOPE_LB log_scope2(log_lobby, __func__)
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 
 REGISTER_DIALOG(mp_lobby)
@@ -1203,4 +1201,3 @@ void mp_lobby::skip_replay_changed_callback()
 }
 
 } // namespace dialogs
-} // namespace gui2

@@ -22,9 +22,7 @@
 #include "gui/widgets/listbox.hpp"
 #include "gettext.hpp"
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 
 REGISTER_DIALOG(depcheck_select_new)
@@ -81,4 +79,3 @@ void depcheck_select_new::post_show(window& window)
 	}
 }
 } // namespace dialogs
-} // namespace gui2

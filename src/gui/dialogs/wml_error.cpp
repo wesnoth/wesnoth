@@ -129,9 +129,7 @@ std::string format_file_list(const std::vector<std::string>& files_original)
 }
 }
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 
 REGISTER_DIALOG(wml_error)
@@ -201,4 +199,3 @@ void wml_error::copy_report_callback()
 }
 
 } // end namespace dialogs
-} // end namespace gui2

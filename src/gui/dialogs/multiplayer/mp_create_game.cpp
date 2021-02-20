@@ -53,9 +53,7 @@ static lg::log_domain log_mp_create("mp/create");
 #define WRN_MP LOG_STREAM(warn, log_mp_create)
 #define ERR_MP LOG_STREAM(err, log_mp_create)
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 
 // Special retval value for loading a game
@@ -959,4 +957,3 @@ void mp_create_game::post_show(window& window)
 }
 
 } // namespace dialogs
-} // namespace gui2

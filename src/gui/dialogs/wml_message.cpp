@@ -24,9 +24,7 @@
 #include "gui/widgets/text_box.hpp"
 #include "gui/widgets/window.hpp"
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 
 void wml_message_base::set_input(const std::string& caption,
@@ -186,4 +184,3 @@ int show_wml_message(const std::string& title,
 }
 
 } // namespace dialogs
-} // namespace gui2

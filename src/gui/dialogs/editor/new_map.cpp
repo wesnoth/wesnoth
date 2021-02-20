@@ -17,9 +17,7 @@
 
 #include "gui/widgets/settings.hpp"
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 
 REGISTER_DIALOG(editor_new_map)
@@ -33,4 +31,3 @@ editor_new_map::editor_new_map(const t_string& title, int& width, int& height)
 }
 
 } // namespace dialogs
-} // namespace gui2

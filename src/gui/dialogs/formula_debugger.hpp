@@ -21,16 +21,14 @@ namespace wfl
 class formula_debugger;
 }
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 
 /**
  * @ingroup GUIWindowDefinitionWML
- * 
+ *
  * This shows the debugger for the formulas.
- * Key               |Type          |Mandatory|Description  
+ * Key               |Type          |Mandatory|Description
  * ------------------|--------------|---------|-----------
  * stack             | control      |yes      |A stack.
  * execution         | control      |yes      |Execution trace label.
@@ -69,4 +67,3 @@ private:
 };
 
 } // namespace dialogs
-} // namespace gui2

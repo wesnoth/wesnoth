@@ -16,16 +16,14 @@
 
 #include "gui/dialogs/modal_dialog.hpp"
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 
 /**
  * @ingroup GUIWindowDefinitionWML
- * 
+ *
  * Dialog for providing the name of a new folder to create. Used by the file dialog.
- * Key               |Type          |Mandatory|Description  
+ * Key               |Type          |Mandatory|Description
  * ------------------|--------------|---------|-----------
  * name              | text_box     |yes      |Input field for the new folder name.
  */
@@ -77,4 +75,3 @@ public:
 };
 
 } // namespace dialogs
-} // namespace gui2

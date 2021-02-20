@@ -44,9 +44,7 @@ static lg::log_domain log_chat_log("chat_log");
 #define WRN_CHAT_LOG LOG_STREAM(warn, log_chat_log)
 #define ERR_CHAT_LOG LOG_STREAM(err, log_chat_log)
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 
 REGISTER_DIALOG(chat_log)
@@ -437,4 +435,3 @@ void chat_log::pre_show(window& window)
 }
 
 } // namespace dialogs
-} // namespace gui2

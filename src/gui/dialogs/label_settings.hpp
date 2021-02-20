@@ -20,9 +20,7 @@
 
 #include <map>
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 class label_settings : public modal_dialog
 {
@@ -51,4 +49,3 @@ private:
 	void toggle_category(widget& box, const std::string& category);
 };
 } // namespace dialogs
-} // namespace gui2

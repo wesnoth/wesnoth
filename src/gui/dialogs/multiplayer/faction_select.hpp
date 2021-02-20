@@ -20,9 +20,7 @@
 #include <string>
 #include <vector>
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 
 class faction_select : public modal_dialog
@@ -66,4 +64,3 @@ private:
 };
 
 } // namespace dialogs
-} // namespace gui2

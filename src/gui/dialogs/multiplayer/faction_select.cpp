@@ -34,9 +34,7 @@
 
 #include <functional>
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 
 REGISTER_DIALOG(faction_select)
@@ -239,4 +237,3 @@ void faction_select::post_show(window& /*window*/)
 }
 
 } // namespace dialogs
-} // namespace gui2

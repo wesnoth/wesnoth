@@ -27,9 +27,7 @@ class display;
 class team;
 struct team_data;
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 
 class game_stats : public modal_dialog
@@ -72,4 +70,3 @@ private:
 };
 
 } // namespace dialogs
-} // namespace gui2

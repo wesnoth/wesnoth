@@ -60,9 +60,7 @@
 #include <functional>
 #include <numeric>
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 namespace
 {
@@ -1093,4 +1091,3 @@ void preferences_dialog::post_show(window& /*window*/)
 }
 
 } // namespace dialogs
-} // namespace gui2

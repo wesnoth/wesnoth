@@ -37,9 +37,7 @@
 
 #include <iomanip>
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 
 REGISTER_DIALOG(attack_predictions)
@@ -400,4 +398,3 @@ hp_probability_vector attack_predictions::get_hitpoint_probabilities(const std::
 }
 
 } // namespace dialogs
-} // namespace gui2

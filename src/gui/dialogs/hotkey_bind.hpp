@@ -20,9 +20,7 @@
 
 #include <string>
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 
 class hotkey_bind : public modal_dialog
@@ -50,4 +48,3 @@ private:
 };
 
 } // namespace dialogs
-} // namespace gui2

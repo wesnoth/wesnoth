@@ -26,9 +26,7 @@
 
 #include <functional>
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 
 REGISTER_DIALOG(core_selection)
@@ -95,4 +93,3 @@ void core_selection::post_show(window& window)
 }
 
 } // namespace dialogs
-} // namespace gui2

@@ -23,9 +23,7 @@
 #include "language.hpp"
 #include "preferences/general.hpp"
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 
 /**
@@ -70,4 +68,3 @@ void language_selection::post_show(window& window)
 }
 
 } // namespace dialogs
-} // namespace gui2

@@ -16,16 +16,14 @@
 
 #include "gui/dialogs/modal_dialog.hpp"
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 
 /**
  * @ingroup GUIWindowDefinitionWML
- * 
+ *
  * WML preprocessor/parser error report dialog.
- * Key               |Type          |Mandatory|Description  
+ * Key               |Type          |Mandatory|Description
  * ------------------|--------------|---------|-----------
  * summary           | control      |yes      |Label used for displaying a brief summary of the error(s).
  * files             | control      |yes      |Label used to display the list of affected add-ons or files, if applicable. It is hidden otherwise. It is recommended to place it after the summary label.
@@ -81,4 +79,3 @@ private:
 };
 
 } // end namespace dialogs
-} // end namespace gui2

@@ -16,14 +16,12 @@
 
 #include "gui/dialogs/modal_dialog.hpp"
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 
 /**
  * @ingroup GUIWindowDefinitionWML
- * 
+ *
  * This shows the dialog to confirm surrender and/or quitting the game.
  */
 class surrender_quit : public modal_dialog
@@ -39,4 +37,3 @@ private:
 	virtual const std::string& window_id() const override;
 };
 } // namespace dialogs
-} // namespace gui2

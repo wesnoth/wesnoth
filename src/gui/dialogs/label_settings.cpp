@@ -32,9 +32,7 @@
 
 #include <vector>
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 REGISTER_DIALOG(label_settings)
 
@@ -143,4 +141,3 @@ void label_settings::toggle_category(widget& box, const std::string& category)
 }
 
 } // namespace dialogs
-} // namespace gui2

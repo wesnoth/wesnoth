@@ -16,16 +16,14 @@
 
 #include "gui/dialogs/modal_dialog.hpp"
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 
 /**
  * @ingroup GUIWindowDefinitionWML
- * 
+ *
  * Dialog for editing gamemap labels.
- * Key               |Type           |Mandatory|Description  
+ * Key               |Type           |Mandatory|Description
  * ------------------|---------------|---------|-----------
  * title             | @ref label    |yes      |Dialog title label.
  * label             | @ref text_box |yes      |Input field for the map label.
@@ -58,4 +56,3 @@ private:
 	virtual const std::string& window_id() const override;
 };
 } // namespace dialogs
-} // namespace gui2

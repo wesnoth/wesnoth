@@ -58,9 +58,7 @@
 #include <sstream>
 #include <stdexcept>
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 
 namespace {
@@ -973,4 +971,3 @@ bool addon_manager::exit_hook(window& window)
 }
 
 } // namespace dialogs
-} // namespace gui2

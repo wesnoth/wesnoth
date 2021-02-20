@@ -16,16 +16,14 @@
 
 #include "gui/dialogs/modal_dialog.hpp"
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 
 /**
  * @ingroup GUIWindowDefinitionWML
- * 
+ *
  * A Preferences subdialog permitting to configure the sounds and notifications generated in response to various mp lobby / game events.
- * Key               |Type           |Mandatory|Description  
+ * Key               |Type           |Mandatory|Description
  * ------------------|---------------|---------|-----------
  * _label            | @ref label    |yes      |Item name.
  * _sound            | toggle_button |yes      |Toggles whether to play the item sound.
@@ -57,4 +55,3 @@ private:
 };
 
 } // namespace dialogs
-} // namespace gui2

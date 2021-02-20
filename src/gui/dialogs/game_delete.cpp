@@ -17,9 +17,7 @@
 #include "preferences/game.hpp"
 #include "gui/widgets/settings.hpp"
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 
 REGISTER_DIALOG(game_delete)
@@ -53,4 +51,3 @@ game_delete::game_delete()
 }
 
 } // namespace dialogs
-} // namespace gui2

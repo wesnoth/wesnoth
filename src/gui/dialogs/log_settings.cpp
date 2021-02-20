@@ -26,9 +26,7 @@
 
 #include "log.hpp"
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 
 REGISTER_DIALOG(log_settings)
@@ -157,4 +155,3 @@ void log_settings::set_logger(const std::string log_domain)
 }
 
 } // namespace dialogs
-} // namespace gui2

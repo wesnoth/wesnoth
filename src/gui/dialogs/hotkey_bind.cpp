@@ -20,9 +20,7 @@
 
 #include <SDL2/SDL.h>
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 
 REGISTER_DIALOG(hotkey_bind)
@@ -53,4 +51,3 @@ void hotkey_bind::sdl_event_callback(const SDL_Event &event)
 
 
 } // namespace dialogs
-} // namespace gui2

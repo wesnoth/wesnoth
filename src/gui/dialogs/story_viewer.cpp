@@ -29,9 +29,7 @@
 #include "sound.hpp"
 #include "variable.hpp"
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 
 // Helper function to get the canvas shape data for the shading under the title area until
@@ -497,4 +495,3 @@ void story_viewer::flag_stack_as_dirty()
 }
 
 } // namespace dialogs
-} // namespace gui2

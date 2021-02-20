@@ -16,9 +16,7 @@
 #include "gui/dialogs/modal_dialog.hpp"
 #include "units/ptr.hpp"
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 
 class unit_advance : public modal_dialog
@@ -49,4 +47,3 @@ private:
 };
 
 } // namespace dialogs
-} // namespace gui2

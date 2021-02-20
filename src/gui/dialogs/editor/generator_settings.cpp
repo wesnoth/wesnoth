@@ -24,9 +24,7 @@
 
 #include <functional>
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 
 static int max_coastal = 5;
@@ -91,4 +89,3 @@ void generator_settings::adjust_minimum_size_by_players()
 }
 
 } // namespace dialogs
-} // namespace gui2

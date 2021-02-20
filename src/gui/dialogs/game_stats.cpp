@@ -41,9 +41,7 @@
 static lg::log_domain log_display("display");
 #define LOG_DP LOG_STREAM(info, log_display)
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 
 REGISTER_DIALOG(game_stats)
@@ -267,4 +265,3 @@ void game_stats::post_show(window& window)
 }
 
 } // namespace dialogs
-} // namespace gui2

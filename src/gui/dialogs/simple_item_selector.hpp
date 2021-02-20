@@ -18,16 +18,14 @@
 
 #include <vector>
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 
 /**
  * @ingroup GUIWindowDefinitionWML
- * 
+ *
  * A simple one-column listbox with OK and Cancel buttons.
- * Key               |Type          |Mandatory|Description  
+ * Key               |Type          |Mandatory|Description
  * ------------------|--------------|---------|-----------
  * title             | @ref label   |yes      |Dialog title label.
  * message           | control      |yes      |Text label displaying a description or instructions.
@@ -110,4 +108,3 @@ private:
 	virtual void post_show(window& window) override;
 };
 } // namespace dialogs
-} // namespace gui2
