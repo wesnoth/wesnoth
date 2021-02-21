@@ -309,10 +309,38 @@ template<class SocketPtr> void server_base::coro_send_doc(SocketPtr socket, simp
 template void server_base::coro_send_doc<socket_ptr>(socket_ptr socket, simple_wml::document& doc, boost::asio::yield_context yield);
 template void server_base::coro_send_doc<tls_socket_ptr>(tls_socket_ptr socket, simple_wml::document& doc, boost::asio::yield_context yield);
 
+template<class SocketPtr> void coro_send_file_userspace(SocketPtr socket, const std::string& filename, boost::asio::yield_context yield)
+{
+	std::size_t filesize { std::size_t(filesystem::file_size(filename)) };
+	union DataSize
+	{
+		uint32_t size;
+		char buf[4];
+	} data_size {};
+	data_size.size = htonl(filesize);
+
+	async_write(*socket, boost::asio::buffer(data_size.buf), yield);
+
+	auto ifs { filesystem::istream_file(filename) };
+	ifs->seekg(0);
+	while(ifs->good()) {
+		char buf[16384];
+		ifs->read(buf, sizeof(buf));
+		async_write(*socket, boost::asio::buffer(buf, ifs->gcount()), yield);
+	}
+}
+
 #ifdef HAVE_SENDFILE
 
 template<class SocketPtr> void server_base::coro_send_file(SocketPtr socket, const std::string& filename, boost::asio::yield_context yield)
 {
+	// We fallback to userspace if using TLS socket because sendfile is not aware of TLS state
+	// TODO: keep in mind possibility of using KTLS instead. This seem to be available only in openssl3 branch for now
+	if constexpr (utils::decayed_is_same<tls_socket_ptr, decltype(socket)>) {
+		coro_send_file_userspace(socket, filename, yield);
+		return;
+	} else {
+
 	std::size_t filesize { std::size_t(filesystem::file_size(filename)) };
 	int in_file { open(filename.c_str(), O_RDONLY) };
 	off_t offset { 0 };
@@ -364,12 +392,17 @@ template<class SocketPtr> void server_base::coro_send_file(SocketPtr socket, con
 
 		// Loop around to try calling sendfile again.
 	}
+	}
 }
 
 #elif defined(_WIN32)
 
 template<class SocketPtr> void server_base::coro_send_file(SocketPtr socket, const std::string& filename, boost::asio::yield_context yield)
 {
+	if constexpr (utils::decayed_is_same<tls_socket_ptr, decltype(socket)>) {
+		coro_send_file_userspace(socket, filename, yield);
+		return;
+	} else {
 
 	OVERLAPPED overlap;
 	std::vector<boost::asio::const_buffer> buffers;
@@ -425,19 +458,20 @@ template<class SocketPtr> void server_base::coro_send_file(SocketPtr socket, con
 			throw std::runtime_error("TransmitFile failed");
 		}
 	}
+	}
 }
 
 #else
 
 template<class SocketPtr> void server_base::coro_send_file(SocketPtr socket, const std::string& filename, boost::asio::yield_context yield)
 {
-// TODO: Implement this for systems without sendfile()
-	assert(false && "Not implemented yet");
+	coro_send_file_userspace(socket, filename, yield);
 }
 
 #endif
 
 template void server_base::coro_send_file<socket_ptr>(socket_ptr socket, const std::string& filename, boost::asio::yield_context yield);
+template void server_base::coro_send_file<tls_socket_ptr>(tls_socket_ptr socket, const std::string& filename, boost::asio::yield_context yield);
 
 template<class SocketPtr> std::unique_ptr<simple_wml::document> server_base::coro_receive_doc(SocketPtr socket, boost::asio::yield_context yield)
 {

@@ -1164,16 +1164,11 @@ void server::handle_request_campaign(const server::request& req)
 		}
 
 		LOG_CS << req << "Sending add-on '" << name << "' version: " << to << " size: " << full_pack_size / 1024 << " KiB\n";
-		if(auto sock = utils::get_if<socket_ptr>(&req.sock)) {
+		utils::visit([this, &req, &full_pack_path](auto&& socket) {
 			boost::system::error_code ec;
-			coro_send_file(*sock, full_pack_path, req.yield[ec]);
-			if(check_error(ec, *sock)) return;
-		} else {
-			// FIXME: need to decide what to do about sending addons over TLS.
-			// sendfile is low level api so either drop TLS for this part
-			// or don't use sendfile at all.
-			ERR_CS << "Not sending addon over TLS yet\n";
-		}
+			coro_send_file(socket, full_pack_path, req.yield[ec]);
+			if(check_error(ec, socket)) return;
+		}, req.sock);
 	}
 
 	// Clients doing upgrades or some other specific thing shouldn't bump
@@ -1225,13 +1220,11 @@ void server::handle_request_campaign_hash(const server::request& req)
 		}
 
 		LOG_CS << req << "Sending add-on hash index for '" << req.cfg["name"] << "' size: " << file_size / 1024 << " KiB\n";
-		if(auto sock = utils::get_if<socket_ptr>(&req.sock)) {
+		utils::visit([this, &path, &req](auto&& socket) {
 			boost::system::error_code ec;
-			coro_send_file(*sock, path, req.yield[ec]);
-			if(check_error(ec, *sock)) return;
-		} else {
-			ERR_CS << "No sendfile over TLS\n";
-		}
+			coro_send_file(socket, path, req.yield[ec]);
+			if(check_error(ec, socket)) return;
+		}, req.sock);
 	}
 }
 
