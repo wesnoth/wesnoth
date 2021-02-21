@@ -54,6 +54,12 @@ static std::vector<char*> gArgs;
 	[[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://www.wesnoth.org/"]];
 }
 
+- (IBAction) openChangelog:(id)sender
+{
+	(void) sender;
+	[[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://github.com/wesnoth/wesnoth/blob/master/changelog.md"]];
+}
+
 /* Called when the internal event loop has just started running */
 - (void) applicationDidFinishLaunching: (NSNotification *) note
 {
