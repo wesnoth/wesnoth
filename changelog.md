@@ -2,6 +2,8 @@
  ### Add-ons client
  ### Add-ons server
  ### Campaigns
+    * Delfador's Memoirs
+     * Adjust campaign difficulty
  ### Editor
  ### Multiplayer
  ### Packaging
