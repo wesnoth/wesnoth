@@ -501,7 +501,7 @@ void* operator new(std::size_t sz, lua_State *L, int nuv)
 	return lua_newuserdatauv(L, sz, nuv);
 }
 
-void operator delete(void*, lua_State *L, int nuv)
+void operator delete(void*, lua_State *L, int)
 {
 	// Not sure if this is needed since it's a no-op
 	// It's only called if a constructor throws while using the above operator new
