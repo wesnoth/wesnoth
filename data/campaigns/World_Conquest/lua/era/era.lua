@@ -283,7 +283,10 @@ function wc2_era.expand_hero_names(types_str, only_unitnames)
 				if group.name and not only_unitnames then
 					table.insert(names_res, group.name)
 				else
-					stringx.split(group.types, types_new)
+					local these_types = stringx.split(group.types)
+					for j,type in ipairs(these_types) do
+						table.insert(types_new, type)
+					end
 				end
 			end
 		end
