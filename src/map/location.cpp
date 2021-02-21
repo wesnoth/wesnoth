@@ -546,13 +546,9 @@ std::size_t distance_between(const map_location& a, const map_location& b)
 {
 	const std::size_t hdistance = std::abs(a.x - b.x);
 
-	const std::size_t vpenalty = ( (((a.x & 1)==0) && ((b.x & 1)==1) && (a.y < b.y))
-		|| (((b.x & 1)==0) && ((a.x & 1)==1) && (b.y < a.y)) ) ? 1 : 0;
-
-/* Don't want to include util.hpp in this header
 	const std::size_t vpenalty = ( (is_even(a.x) && is_odd(b.x) && (a.y < b.y))
 		|| (is_even(b.x) && is_odd(a.x) && (b.y < a.y)) ) ? 1 : 0;
-*/
+
 	// For any non-negative integer i, i - i/2 - i%2 == i/2
 	// previously returned (hdistance + vdistance - vsavings)
 	// = hdistance + vdistance - minimum(vdistance,hdistance/2+hdistance%2)
