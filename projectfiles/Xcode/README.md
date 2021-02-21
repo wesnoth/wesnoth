@@ -49,9 +49,8 @@ When compiling Wesnoth for an official release, the following steps should be ta
  * Compile translations as it is described in **Translations** section.
  * Now you can open `The Battle for Wesnoth.xcodeproj` file in Xcode.
  * Update version numbers in Info.plist (if not already done by the release manager).
- * Update the changelog in `SDLMain.nib` with `changelog.md`.
  * Create `dist` file using `touch /PATH/TO/PROJECT/data/dist`.
- * You must increment the build number before creating each distribution package. If you don't know the previous build number, the best way is to proceed with steps for one of the packages using build number 1 and wait until you get an error message that the notarization step failed. The current build number is contained there.
+ * You must increment the build number before creating Mac AppStore package. If you don't know the previous build number, the best way is to proceed with steps for one of the packages using build number 1 and wait until you get an error message that the notarization step failed. The current build number is contained there.
 
 ### Packaging - SteamStore
  * Find and edit `dist` file in path `/PATH/TO/PROJECT/data/dist`. For Steam it must contain `Steam`.
