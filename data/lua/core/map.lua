@@ -249,6 +249,7 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 		return wesnoth.map.find{gives_income = true, wml.tag["and"](cfg)}
 	end)
 	wesnoth.match_location = wesnoth.deprecate_api('wesnoth.match_location', 'wesnoth.map.matches', 1, nil, wesnoth.map.matches)
+	wesnoth.get_terrain_info = wesnoth.deprecate_api('wesnoth.get_terrain_info', 'wesnoth.terrain_types', 1, nil, function(t) return wesnoth.terrain_types[t] end)
 end
 
 if wesnoth.kernel_type() == "Mapgen Lua Kernel" then

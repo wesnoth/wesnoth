@@ -92,7 +92,7 @@ class game_lua_kernel : public lua_kernel_base
 	int intf_unit_ability(lua_State *L);
 	int intf_view_locked(lua_State *L);
 	int intf_lock_view(lua_State *L);
-	int intf_get_terrain_info(lua_State *L);
+	int impl_get_terrain_info(lua_State *L);
 	int intf_get_time_of_day(lua_State *L);
 	int intf_get_max_liminal_bonus(lua_State *L);
 	int intf_get_village_owner(lua_State *L);

@@ -868,9 +868,9 @@ int game_lua_kernel::intf_lock_view(lua_State *L)
  * - Arg 1: terrain code string.
  * - Ret 1: table.
  */
-int game_lua_kernel::intf_get_terrain_info(lua_State *L)
+int game_lua_kernel::impl_get_terrain_info(lua_State *L)
 {
-	char const *m = luaL_checkstring(L, 1);
+	char const *m = luaL_checkstring(L, 2);
 	t_translation::terrain_code t = t_translation::read_terrain_code(m);
 	if (t == t_translation::NONE_TERRAIN) return 0;
 	const terrain_type& info = board().map().tdata()->get_terrain_info(t);
@@ -4037,7 +4037,6 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 		{ "get_all_vars",              &dispatch<&game_lua_kernel::intf_get_all_vars               >        },
 		{ "get_end_level_data",        &dispatch<&game_lua_kernel::intf_get_end_level_data         >        },
 		{ "get_sound_source",          &dispatch<&game_lua_kernel::intf_get_sound_source           >        },
-		{ "get_terrain_info",          &dispatch<&game_lua_kernel::intf_get_terrain_info           >        },
 		{ "get_time_of_day",           &dispatch<&game_lua_kernel::intf_get_time_of_day            >        },
 		{ "get_max_liminal_bonus",     &dispatch<&game_lua_kernel::intf_get_max_liminal_bonus      >        },
 		{ "get_variable",              &dispatch<&game_lua_kernel::intf_get_variable               >        },
@@ -4105,6 +4104,19 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 
 	// Create the unit_types table
 	cmd_log_ << lua_terrainmap::register_metatables(L);
+
+	// Create the unit_types table
+	cmd_log_ << "Adding terrain_types table...\n";
+	lua_getglobal(L, "wesnoth");
+	lua_newuserdatauv(L, 0, 0);
+	lua_createtable(L, 0, 2);
+	lua_pushcfunction(L, &dispatch<&game_lua_kernel::impl_get_terrain_info>);
+	lua_setfield(L, -2, "__index");
+	lua_pushstring(L, "terrain types");
+	lua_setfield(L, -2, "__metatable");
+	lua_setmetatable(L, -2);
+	lua_setfield(L, -2, "terrain_types");
+	lua_pop(L, 1);
 
 	// Create the ai elements table.
 	cmd_log_ << "Adding ai elements table...\n";
