@@ -932,7 +932,7 @@ void lua_kernel_base::load_core()
 	lua_settop(L, 0);
 	cmd_log_ << "Loading core...\n";
 	luaW_getglobal(L, "wesnoth", "require");
-	lua_pushstring(L, "lua/core.lua");
+	lua_pushstring(L, "lua/core");
 	if(!protected_call(1, 1)) {
 		cmd_log_ << "Error: Failed to load core.\n";
 	}
