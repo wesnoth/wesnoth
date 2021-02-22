@@ -56,11 +56,11 @@ private:
 
 	/**
 	 * Add a row to the Hits table
-	 * @param type 
+	 * @param type
 	 * @param more_is_better True for "Inflicted" and false for "Taken". Affects coloring.
-	 * @param by_cth 
-	 * @param turn_by_cth 
-	 * @param show_this_turn 
+	 * @param by_cth
+	 * @param turn_by_cth
+	 * @param show_this_turn
 	 */
 	void add_hits_row(
 		const std::string& type,

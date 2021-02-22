@@ -26,9 +26,9 @@ namespace dialogs
 
 /**
  * @ingroup GUIWindowDefinitionWML
- * 
+ *
  * This shows the dialog to resize the current map.
- * Key               |Type              |Mandatory|Description  
+ * Key               |Type              |Mandatory|Description
  * ------------------|------------------|---------|-----------
  * old_width         | @ref label       |no       |Shows the old width of the map.
  * old_height        | @ref label       |no       |Shows the old height of the map.

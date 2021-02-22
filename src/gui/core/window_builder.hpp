@@ -142,7 +142,7 @@ public:
 	}
 
 	/**
-	 * Key                 |Type                                    |Default  |Description  
+	 * Key                 |Type                                    |Default  |Description
 	 * --------------------|----------------------------------------|---------|-------------
 	 * window_width        | @ref guivartype_unsigned "unsigned"    |0        |Width of the application window.
 	 * window_height       | @ref guivartype_unsigned "unsigned"    |0        |Height of the application window.
@@ -163,16 +163,16 @@ public:
 	 * tooltip             | @ref guivartype_section "section"      |mandatory|Information regarding the tooltip for this window.
 	 * helptip             | @ref guivartype_section "section"      |mandatory|Information regarding the helptip for this window.
 	 * grid                | @ref guivartype_grid "grid"            |mandatory|The grid with the widgets to show.
-	 * 
+	 *
 	 * A linked_group section has the following fields and needs to have at least one size fixed:
-	 * Key                 |Type                                    |Default  |Description  
+	 * Key                 |Type                                    |Default  |Description
 	 * --------------------|----------------------------------------|---------|-------------
 	 * id                  | @ref guivartype_string "string"        |mandatory|The unique id of the group (unique in this window).
 	 * fixed_width         | @ref guivartype_bool "bool"            |false    |Should widget in this group have the same width.
 	 * fixed_height        | @ref guivartype_bool "bool"            |false    |Should widget in this group have the same height.
-	 * 
+	 *
 	 * A tooltip and helptip section have the following field; more fields will probably be added later on:
-	 * Key                 |Type                                    |Default  |Description  
+	 * Key                 |Type                                    |Default  |Description
 	 * --------------------|----------------------------------------|---------|-------------
 	 * id                  | @ref guivartype_string "string"        |mandatory|The id of the tip to show.
 	 */

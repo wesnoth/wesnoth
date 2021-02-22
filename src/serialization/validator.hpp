@@ -48,7 +48,7 @@ public:
 	 * @param parent      The parent config
 	 * @param start_line  Line in file
 	 * @param file        Name of file
-	 * @param addition    
+	 * @param addition
 	 */
 	virtual void open_tag(const std::string & name,
 						  const config& parent,

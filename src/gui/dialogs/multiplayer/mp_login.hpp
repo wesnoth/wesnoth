@@ -25,9 +25,9 @@ namespace dialogs
 
 /**
  * @ingroup GUIWindowDefinitionWML
- * 
+ *
  * This shows the dialog to log in to the MP server.
- * Key               |Type           |Mandatory|Description  
+ * Key               |Type           |Mandatory|Description
  * ------------------|---------------|---------|-----------
  * user_name         | text_box      |yes      |The login user name.
  * password          | text_box      |yes      |The password.

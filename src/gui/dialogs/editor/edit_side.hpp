@@ -27,9 +27,9 @@ namespace dialogs
 
 /**
  * @ingroup GUIWindowDefinitionWML
- * 
+ *
  * Dialog for editing gamemap sides.
- * Key               |Type           |Mandatory|Description  
+ * Key               |Type           |Mandatory|Description
  * ------------------|---------------|---------|-----------
  * title             | @ref label    |yes      |Dialog title label.
  * label             | @ref text_box |yes      |Input field for the id.

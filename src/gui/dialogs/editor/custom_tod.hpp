@@ -28,9 +28,9 @@ namespace dialogs
 
 /**
  * @ingroup GUIWindowDefinitionWML
- * 
+ *
  * This shows the dialog to modify tod schedules.
- * Key               |Type          |Mandatory|Description  
+ * Key               |Type          |Mandatory|Description
  * ------------------|--------------|---------|-----------
  * current_tod_name  | text_box     |yes      |The name of the time of day(ToD).
  * current_tod_id    | text_box     |yes      |The id of the time of day(ToD).

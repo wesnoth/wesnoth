@@ -37,10 +37,10 @@ namespace dialogs
 
 /**
  * @ingroup GUIWindowDefinitionWML
- * 
+ *
  * Shows the list of addons on the server available for installation.
  * This dialog is under construction and only used with --new-widgets.
- * Key               |Type          |Mandatory|Description  
+ * Key               |Type          |Mandatory|Description
  * ------------------|--------------|---------|-----------
  * addons            | @ref listbox |yes      |A listbox that will contain the info about all addons on the server.
  * name              | control      |no       |The name of the addon.

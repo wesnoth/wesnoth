@@ -34,7 +34,7 @@ public:
 
 	/**
 	 * Retrieves the player's hashed password from the phpbb forum database and checks if it matches the hashed password sent by the client.
-	 * 
+	 *
 	 * @param name The username used to login.
 	 * @param password The hashed password sent by the client.
 	 * @param seed The nonce created for this login attempt.
@@ -53,7 +53,7 @@ public:
 
 	/**
 	 * Sets the last login time to the current time.
-	 * 
+	 *
 	 * @param name The player's username.
 	 */
 	void user_logged_in(const std::string& name);
@@ -87,7 +87,7 @@ public:
 
 	/**
 	 * Sets or unsets whether the player should be considered a moderator in the extra table.
-	 * 
+	 *
 	 * @param name The player's username.
 	 * @param is_moderator The moderator value to set.
 	 */
@@ -123,7 +123,7 @@ public:
 	/**
 	 * Runs an asynchronous query to fetch the user's game history data.
 	 * The result is then posted back to the main boost::asio thread to be sent to the requesting player.
-	 * 
+	 *
 	 * @param io_service The boost io_service to use to post the query results back to the main boost::asio thread.
 	 * @param s_base The server instance the player is connected to.
 	 * @param player_socket The socket use to communicate with the player's client.
@@ -134,7 +134,7 @@ public:
 
 	/**
 	 * Inserts game related information.
-	 * 
+	 *
 	 * @param uuid The value returned by @ref get_uuid().
 	 * @param game_id The game's db_id.
 	 * @param version The version of wesnothd running this game.
@@ -148,7 +148,7 @@ public:
 
 	/**
 	 * Update the game related information when the game ends.
-	 * 
+	 *
 	 * @param uuid The value returned by @ref get_uuid().
 	 * @param game_id The game's db_id.
 	 * @param replay_location The location of the game's publicly available replay.
@@ -157,7 +157,7 @@ public:
 
 	/**
 	 * Inserts player information per side.
-	 * 
+	 *
 	 * @param uuid The value returned by @ref get_uuid().
 	 * @param game_id The game's db_id.
 	 * @param username The username of the player who owns this side.
@@ -172,7 +172,7 @@ public:
 
 	/**
 	 * Inserts information about the content being played.
-	 * 
+	 *
 	 * @param uuid The value returned by @ref get_uuid().
 	 * @param game_id The game's db_id.
 	 * @param type The add-on content's type (ie: era, scenario, etc).
@@ -185,7 +185,7 @@ public:
 
 	/**
 	 * Sets the OOS flag in the database if wesnothd is told by a client it has detected an OOS error.
-	 * 
+	 *
 	 * @param uuid The value returned by @ref get_uuid().
 	 * @param game_id The game's db_id.
 	 */
@@ -194,7 +194,7 @@ public:
 	/**
 	 * A simple test query for running a query asynchronously.
 	 * The main point is that it takes a meaningful amount of time to complete so that it's easy to see that multiple are running at once and are finishing out of order.
-	 * 
+	 *
 	 * @param io_service The boost io_service to use to post the query results back to the main boost::asio thread.
 	 * @param limit How many recursions to make in the query.
 	 */

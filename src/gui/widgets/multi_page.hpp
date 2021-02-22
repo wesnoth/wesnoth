@@ -33,7 +33,7 @@ class generator_base;
 
 /**
  * @ingroup GUIWidgetWML
- * 
+ *
  * A multi page is a control that contains several 'pages' of which only one is visible.
  * The pages can contain the same widgets containing the same 'kind' of data or look completely different.
  * Key          |Type                        |Default  |Description

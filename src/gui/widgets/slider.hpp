@@ -31,7 +31,7 @@ struct builder_slider;
 
 /**
  * @ingroup GUIWidgetWML
- * 
+ *
  * A slider is a control that can select a value by moving a grip on a groove.
  * Key                      |Type                                |Default  |Description
  * -------------------------|------------------------------------|---------|-----------

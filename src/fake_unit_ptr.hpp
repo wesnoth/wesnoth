@@ -78,7 +78,7 @@ public:
 
 private :
 	/** Internal unit pointer. */
-	internal_ptr unit_; 
+	internal_ptr unit_;
 	/** Raw pointer to the manager. */
 	fake_unit_manager * my_manager_;
 

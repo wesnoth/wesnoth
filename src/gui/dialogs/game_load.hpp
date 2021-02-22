@@ -31,9 +31,9 @@ namespace dialogs
 {
 /**
  * @ingroup GUIWindowDefinitionWML
- * 
+ *
  * This shows the dialog to select and load a savegame file.
- * Key               |Type          |Mandatory|Description  
+ * Key               |Type          |Mandatory|Description
  * ------------------|--------------|---------|-----------
  * txtFilter         | text         |yes      |The filter for the listbox items.
  * savegame_list     | @ref listbox |yes      |List of savegames.

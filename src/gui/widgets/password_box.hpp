@@ -37,7 +37,7 @@ namespace implementation
 
 /**
  * @ingroup GUIWidgetWML
- * 
+ *
  * Key          |Type                                |Default  |Description
  * -------------|------------------------------------|---------|-----------
  * label        | @ref guivartype_t_string "t_string"|""       |The initial text of the password box.

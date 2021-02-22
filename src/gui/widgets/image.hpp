@@ -30,9 +30,9 @@ namespace implementation
 
 /**
  * @ingroup GUIWidgetWML
- * 
+ *
  * An image shows a static image.
- * 
+ *
  * The label field of the widget is used as the name of file to show. The widget normally has no event interaction so only one state is defined:
  * * state_enabled - the image is enabled.
  */

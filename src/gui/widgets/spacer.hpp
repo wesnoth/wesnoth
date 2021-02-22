@@ -31,14 +31,14 @@ struct builder_spacer;
 
 /**
  * @ingroup GUIWidgetWML
- * 
+ *
  * An empty widget to either fill in a widget since no empty items are allowed or to reserve a fixed space.
- * 
+ *
  * Since every grid cell needs a widget this is a blank widget.
  * This widget can also be used to 'force' sizes - if either the width or the height is non-zero the spacer functions as a fixed size spacer.
- * 
+ *
  * Since we're a kind of dummy class we're always active, our drawing does nothing.
- * 
+ *
  * Key          |Type                                    |Default  |Description
  * -------------|----------------------------------------|---------|-----------
  * width        | @ref guivartype_f_unsigned "f_unsigned"|0        |The width of the spacer.

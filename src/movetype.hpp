@@ -24,18 +24,18 @@ namespace t_translation { struct terrain_code; }
 /**
  * The basic "size" of the unit - flying, small land, large land, etc.
  * This encompasses terrain costs, defenses, and resistances.
- * 
+ *
  * This class is used for both [movetype] and [unit] configs, which use the
  * same data in their configs for [movement_costs], [defense], etc. However,
  * the data for whether the unit flies is historically held in [movetype]'s
  * "flies" vs [unit]'s "flying".
- * 
+ *
  * Existing behavior of 1.14:
  * * movetype::movetype(const config & cfg) will read only the "flies" key
  * * movetype::merge(const config & cfg, bool overwrite) will read both keys,
  *     with "flying" taking priority if both are supplied
  * * movetype::write() will write only the "flying" key
- * 
+ *
  * @todo make this more logical. Ideas:
  * * for 1.15, support both "flying" and "flies" in [movetype]
  * * for 1.17 or later, drop the "flies"
@@ -56,7 +56,7 @@ public:
 
 		/**
 		 * Returns the value associated with the given terrain.
-		 * 
+		 *
 		 * Calculated values are cached for later queries.
 		 */
 		virtual int value(const t_translation::terrain_code & terrain) const = 0;
@@ -93,7 +93,7 @@ private:
 	/**
 	 * Stores a set of data based on terrain, in some cases with raw pointers to
 	 * other instances of terrain_info (the fallback_).
-	 * 
+	 *
 	 * The data can either be a single instance (in which case it's
 	 * writable and stored in unique_data_) or may have already been shared
 	 * (via make_data_shareable()), in which case it's stored in shared_data_.

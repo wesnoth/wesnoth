@@ -46,7 +46,7 @@ class game_history : public rs_base
     public:
         void read(mariadb::result_set_ref rslt);
         std::unique_ptr<simple_wml::document> to_doc();
-    
+
     private:
         std::vector<result> results;
 };

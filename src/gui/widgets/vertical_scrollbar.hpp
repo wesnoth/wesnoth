@@ -27,13 +27,13 @@ struct builder_vertical_scrollbar;
 
 /**
  * @ingroup GUIWidgetWML
- * 
+ *
  * The definition of a vertical scrollbar.
  * This class is most of the time not used directly.
  * Instead it's used to build other items with scrollbars.
- * 
+ *
  * The resolution for a vertical scrollbar also contains the following keys:
- * Key                      |Type                                |Default  |Description  
+ * Key                      |Type                                |Default  |Description
  * -------------------------|------------------------------------|---------|-------------
  * minimum_positioner_length| @ref guivartype_unsigned "unsigned"|mandatory|The minimum size the positioner is allowed to be. The engine needs to know this in order to calculate the best size for the positioner.
  * maximum_positioner_length| @ref guivartype_unsigned "unsigned"|0        |The maximum size the positioner is allowed to be. If minimum and maximum are the same value the positioner is fixed size. If the maximum is 0 (and the minimum not) there's no maximum.

@@ -19,13 +19,13 @@ namespace gui2 {
 
 /**
  * @ingroup GUICanvasWML
- * 
+ *
  * Definition of a line.
  * When drawing a line it doesn't get blended on the surface but replaces the pixels instead.
  * A blitting flag might be added later if needed.
- * 
+ *
  * Keys:
- * Key          |Type                                    |Default  |Description  
+ * Key          |Type                                    |Default  |Description
  * -------------|----------------------------------------|---------|-----------
  * x1           | @ref guivartype_f_unsigned "f_unsigned"|0        |The x coordinate of the startpoint.
  * y1           | @ref guivartype_f_unsigned "f_unsigned"|0        |The y coordinate of the startpoint.
@@ -34,9 +34,9 @@ namespace gui2 {
  * color        | @ref guivartype_color "color"          |""       |The color of the line.
  * thickness    | @ref guivartype_unsigned "unsigned"    |0        |The thickness of the line; if 0 nothing is drawn.
  * debug        | @ref guivartype_string "string"        |""       |Debug message to show upon creation this message is not stored.
- * 
+ *
  * Variables:
- * Key                |Type                                    |Description  
+ * Key                |Type                                    |Description
  * -------------------|----------------------------------------|-----------
  * width              | @ref guivartype_unsigned "unsigned"    |The width of the canvas.
  * height             | @ref guivartype_unsigned "unsigned"    |The height of the canvas.
@@ -45,11 +45,11 @@ namespace gui2 {
  * text_maximum_height| @ref guivartype_unsigned "unsigned"    |The maximum height available for the text on the widget.
  * text_wrap_mode     | @ref guivartype_int "int"              |When the text doesn't fit in the available width there are several ways to fix that. This variable holds the best method. (NOTE this is a 'hidden' variable meant to copy state from a widget to its canvas so there's no reason to use this variable and thus its values are not listed and might change without further notice.)
  * text_alignment     | @ref guivartype_h_align "h_align"      |The way the text is aligned inside the canvas.
- * 
+ *
  * The size variables are copied to the window and will be determined at runtime.
  * This is needed since the main window can be resized and the dialog needs to resize accordingly.
  * The following variables are available:
- * Key            |Type                                |Description  
+ * Key            |Type                                |Description
  * ---------------|------------------------------------|-----------
  * screen_width   | @ref guivartype_unsigned "unsigned"|The usable width of the Wesnoth main window.
  * screen_height  | @ref guivartype_unsigned "unsigned"|The usable height of the Wesnoth main window.
@@ -60,11 +60,11 @@ namespace gui2 {
  * mouse_y        | @ref guivartype_unsigned "unsigned"|The y coordinate of the mouse pointer.
  * window_width   | @ref guivartype_unsigned "unsigned"|The window width. This value has two meanings during the layout phase. This only applies if automatic placement is not enabled. - When set to 0 it should return the wanted maximum width. If no maximum is wanted it should be set to the '"(screen_width)"'. - When not equal to 0 its value is the best width for the window. When the size should remain unchanged it should be set to '"(window_width)"'.
  * window_height  | @ref guivartype_unsigned "unsigned"|The window height. This value has two meanings during the layout phase. This only applies if automatic placement is not enabled. - When set to 0 it should return the wanted maximum height. If no maximum is wanted it should be set to the '"(screen_height)"'. - When not equal to 0 its value is the best height for the window. When the size should remain unchanged it should be set to '"(window_height)"'.
- * 
+ *
  * Note when drawing the valid coordinates are:
  * * 0 -> width - 1
  * * 0 -> height -1
- * 
+ *
  * Drawing outside this area will result in unpredictable results including crashing. (That should be fixed, when encountered.)
  */
 class line_shape : public canvas::shape {
@@ -102,13 +102,13 @@ private:
 
 /**
  * @ingroup GUICanvasWML
- * 
+ *
  * Definition of a rectangle.
  * When drawing a rectangle it doesn't get blended on the surface but replaces the pixels instead.
  * A blitting flag might be added later if needed.
- * 
+ *
  * Keys:
- * Key                |Type                                    |Default|Description  
+ * Key                |Type                                    |Default|Description
  * -------------------|----------------------------------------|-------|-----------
  * x                  | @ref guivartype_f_unsigned "f_unsigned"|0      |The x coordinate of the top left corner.
  * y                  | @ref guivartype_f_unsigned "f_unsigned"|0      |The y coordinate of the top left corner.
@@ -118,7 +118,7 @@ private:
  * border_color       | @ref guivartype_color "color"          |""     |The color of the border if empty it's not drawn.
  * fill_color         | @ref guivartype_color "color"          |""     |The color of the interior if omitted it's not drawn.
  * debug              | @ref guivartype_string "string"        |""     |Debug message to show upon creation this message is not stored.
- * 
+ *
  * Variables: see line_shape
  */
 class rectangle_shape : public canvas::shape {
@@ -165,11 +165,11 @@ private:
 
 /**
  * @ingroup GUICanvasWML
- * 
+ *
  * Definition of a rounded rectangle shape.
  * When drawing a rounded rectangle it doesn't get blended on the surface but replaces the pixels instead.
  * A blitting flag might be added later if needed.
- * Key             |Type                                    |Default  |Description  
+ * Key             |Type                                    |Default  |Description
  * ----------------|----------------------------------------|---------|-----------
  * x               | @ref guivartype_f_unsigned "f_unsigned"|0        |The x coordinate of the top left corner.
  * y               | @ref guivartype_f_unsigned "f_unsigned"|0        |The y coordinate of the top left corner.
@@ -226,22 +226,22 @@ private:
 
 /**
  * @ingroup GUICanvasWML
- * 
+ *
  * Definition of a circle.
  * When drawing a circle it doesn't get blended on the surface but replaces the pixels instead.
  * A blitting flag might be added later if needed.
- * 
+ *
  * Keys:
- * Key                |Type                                    |Default|Description  
+ * Key                |Type                                    |Default|Description
  * -------------------|----------------------------------------|-------|-----------
  * x                  | @ref guivartype_f_unsigned "f_unsigned"|0      |The x coordinate of the center.
  * y                  | @ref guivartype_f_unsigned "f_unsigned"|0      |The y coordinate of the center.
  * radius             | @ref guivartype_f_unsigned "f_unsigned"|0      |The radius of the circle; if 0 nothing is drawn.
  * color              | @ref guivartype_color "color"          |""     |The color of the circle.
  * debug              | @ref guivartype_string "string"        |""     |Debug message to show upon creation this message is not stored.
- * 
+ *
  * Variables: see line_shape
- * 
+ *
  * Drawing outside the area will result in unpredictable results including crashing. (That should be fixed, when encountered.)
  */
 class circle_shape : public canvas::shape {
@@ -272,9 +272,9 @@ private:
 
 /**
  * @ingroup GUICanvasWML
- * 
+ *
  * Keys:
- * Key                |Type                                      |Default|Description  
+ * Key                |Type                                      |Default|Description
  * -------------------|------------------------------------------|-------|-----------
  * x                  | @ref guivartype_f_unsigned "f_unsigned"  |0      |The x coordinate of the top left corner.
  * y                  | @ref guivartype_f_unsigned "f_unsigned"  |0      |The y coordinate of the top left corner.
@@ -284,15 +284,15 @@ private:
  * vertical_mirror    | @ref guivartype_f_bool "f_bool"          |false  |Mirror the image over the vertical axis.
  * name               | @ref guivartype_string "string"          |""     |The name of the image.
  * debug              | @ref guivartype_string "string"          |""     |Debug message to show upon creation this message is not stored.
- * 
+ *
  * Variables:
- * Key                  |Type                                  |Description  
+ * Key                  |Type                                  |Description
  * ---------------------|--------------------------------------|-----------
  * image_width          | @ref guivartype_unsigned "unsigned"  |The width of the image, either the requested width or the natural width of the image. This value can be used to set the x (or y) value of the image. (This means x and y are evaluated after the width and height.)
  * image_height         | @ref guivartype_unsigned "unsigned"  |The height of the image, either the requested height or the natural height of the image. This value can be used to set the y (or x) value of the image. (This means x and y are evaluated after the width and height.)
  * image_original_width | @ref guivartype_unsigned "unsigned"  |The width of the image as stored on disk, can be used to set x or w (also y and h can be set).
  * image_original_height| @ref guivartype_unsigned "unsigned"  |The height of the image as stored on disk, can be used to set y or h (also x and y can be set).
- * 
+ *
  * Also the general variables are available, see line_shape
  */
 class image_shape : public canvas::shape {
@@ -361,8 +361,8 @@ private:
 
 /**
  * @ingroup GUICanvasWML
- * 
- * Key                |Type                                      |Default  |Description  
+ *
+ * Key                |Type                                      |Default  |Description
  * -------------------|------------------------------------------|---------|-----------
  * x                  | @ref guivartype_f_unsigned "f_unsigned"  |0        |The x coordinate of the top left corner.
  * y                  | @ref guivartype_f_unsigned "f_unsigned"  |0        |The y coordinate of the top left corner.
@@ -380,12 +380,12 @@ private:
  * maximum_width      | @ref guivartype_f_int "f_int"            |-1       |The maximum width the text is allowed to be.
  * maximum_height     | @ref guivartype_f_int "f_int"            |-1       |The maximum height the text is allowed to be.
  * debug              | @ref guivartype_string "string"          |""       |Debug message to show upon creation this message is not stored.
- * 
+ *
  * NOTE alignment could only be done with the formulas, but now with the text_alignment flag as well,
- * older widgets might still use the formulas and not all widgets may expose the text alignment yet and when exposed not use it yet. 
- * 
+ * older widgets might still use the formulas and not all widgets may expose the text alignment yet and when exposed not use it yet.
+ *
  * Variables:
- * Key                |Type                                      |Description  
+ * Key                |Type                                      |Description
  * -------------------|------------------------------------------|-----------
  * text_width         | @ref guivartype_unsigned "unsigned"      |The width of the rendered text.
  * text_height        | @ref guivartype_unsigned "unsigned"      |The height of the rendered text.

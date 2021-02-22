@@ -31,12 +31,12 @@ namespace dialogs
 
 /**
  * @ingroup GUIWindowDefinitionWML
- * 
+ *
  * Dialog displaying the various paths used by the game to locate resource and configuration files.
- * 
+ *
  * There are several item types used to build widget ids in this dialog.
  * All references to TYPE below refer to the following suffixes: datadir, config, userdata, saves, addons, cache.
- * Key               |Type          |Mandatory|Description  
+ * Key               |Type          |Mandatory|Description
  * ------------------|--------------|---------|-----------
  * path_TYPE         | text_box     |yes      |Textbox containing the filesystem path for the given item.
  * copy_TYPE         | @ref button  |yes      |Copies the given item's path to clipboard.
