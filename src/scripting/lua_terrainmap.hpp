@@ -58,6 +58,7 @@ int intf_terrainmap_create(lua_State *L);
 int intf_terrainmap_get(lua_State *L);
 
 int intf_replace_if_failed(lua_State* L);
+int intf_terrainmap_iter(lua_State* L);
 int intf_on_board(lua_State* L);
 int intf_on_border(lua_State* L);
 

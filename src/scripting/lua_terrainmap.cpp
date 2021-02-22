@@ -345,6 +345,80 @@ static int impl_terrainmap_set(lua_State *L)
 	return luaL_argerror(L, 2, err_msg.c_str());
 }
 
+/*
+The map iterator, when called with false as its parameter
+is roughly equivalent to the following Lua function:
+
+function map_iter()
+	local map, x, y = wesnoth.map.get(), 0, 1
+	return function()
+		if x == map.playable_width then
+			if y == map.playable_height then
+				return nil
+			else
+				x, y = 1, y + 1
+			end
+		else
+			x = x + 1
+		end
+		return x, y, map[{x, y}]
+	end
+end
+
+*/
+
+template<bool with_border>
+static int impl_terrainmap_iter(lua_State* L)
+{
+	// Retrieve the upvalues stored with the function
+	gamemap_base& tm = luaW_checkterrainmap(L, lua_upvalueindex(1));
+	map_location prev_loc = luaW_checklocation(L, lua_upvalueindex(2));
+	int w = with_border ? tm.total_width() - 1 : tm.w();
+	int h = with_border ? tm.total_height() - 1 : tm.h();
+	int x, y;
+	
+	// Given the previous location, determine the next one to be returned
+	if(prev_loc.wml_x() == w) {
+		if(prev_loc.wml_y() == h) {
+			lua_pushnil(L);
+			return 1;
+		} else {
+			x = with_border ? 0 : 1;
+			y = prev_loc.wml_y() + 1;
+		}
+	} else {
+		x = prev_loc.wml_x() + 1;
+		y = prev_loc.wml_y();
+	}
+	
+	// Assign the upvalue representing the previous location
+	map_location next_loc(x, y, wml_loc{});
+	luaW_pushlocation(L, next_loc);
+	lua_replace(L, lua_upvalueindex(2));
+	
+	// Return the new location and its terrain code
+	lua_pushinteger(L, x);
+	lua_pushinteger(L, y);
+	luaW_push_terrain(L, tm, next_loc);
+	
+	return 3;
+}
+
+int intf_terrainmap_iter(lua_State* L)
+{
+	luaW_checkterrainmap(L, 1);
+	bool with_border = lua_isboolean(L, 2) ? luaW_toboolean(L, 2) : false;
+	lua_settop(L, 1);
+	luaW_pushlocation(L, map_location(with_border ? -1 : 0, 1, wml_loc{}));
+	
+	if(with_border) {
+		lua_pushcclosure(L, impl_terrainmap_iter<true>, 2);
+	} else {
+		lua_pushcclosure(L, impl_terrainmap_iter<false>, 2);
+	}
+	return 1;
+}
+
 int intf_on_board(lua_State* L)
 {
 	gamemap_base& tm = luaW_checkterrainmap(L, 1);
