@@ -17,7 +17,7 @@ invest_tellunit.dialog_wml = {
 				horizontal_alignment = "left",
 				T.label {
 					definition = "title",
-					label = _"You got",
+					label = _ "You got",
 					id = "title"
 				}
 			}
@@ -27,6 +27,8 @@ invest_tellunit.dialog_wml = {
 				T.grid {
 					T.row {
 						T.column {
+							border = "all",
+							border_size = 5,
 							T.image {
 								id="icon"
 							}
@@ -34,8 +36,10 @@ invest_tellunit.dialog_wml = {
 					},
 					T.row {
 						T.column {
+							border = "all",
+							border_size = 5,
 							T.label {
-								id="name"
+								id = "name"
 							}
 						},
 					},
@@ -44,8 +48,10 @@ invest_tellunit.dialog_wml = {
 		},
 		T.row {
 			T.column {
+				border = "all",
+				border_size = 5,
 				T.button {
-					label = _"OK",
+					label = _ "OK",
 					id = "ok",
 				},
 			},
