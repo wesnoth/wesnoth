@@ -472,7 +472,7 @@ void server::load_config()
 
 std::ostream& operator<<(std::ostream& o, const server::request& r)
 {
-	o << '[' << r.addr << ' ' << r.cmd << "] ";
+	o << (utils::get_if<tls_socket_ptr>(&r.sock) ? "TLS" : "") << '[' << r.addr << ' ' << r.cmd << "] ";
 	return o;
 }
 
