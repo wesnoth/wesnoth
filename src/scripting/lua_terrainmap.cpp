@@ -345,6 +345,25 @@ static int impl_terrainmap_set(lua_State *L)
 	return luaL_argerror(L, 2, err_msg.c_str());
 }
 
+int intf_on_board(lua_State* L)
+{
+	gamemap_base& tm = luaW_checkterrainmap(L, 1);
+	map_location loc = luaW_checklocation(L, 2);
+	bool with_border = luaL_opt(L, luaW_toboolean, 3, false);
+	
+	lua_pushboolean(L, with_border ? tm.on_board_with_border(loc) : tm.on_board(loc));
+	return 1;
+}
+
+int intf_on_border(lua_State* L)
+{
+	gamemap_base& tm = luaW_checkterrainmap(L, 1);
+	map_location loc = luaW_checklocation(L, 2);
+	
+	lua_pushboolean(L, tm.on_board_with_border(loc) && !tm.on_board(loc));
+	return 1;
+}
+
 static std::vector<gamemap::overlay_rule> read_rules_vector(lua_State *L, int index)
 {
 	std::vector<gamemap::overlay_rule> rules;

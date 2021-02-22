@@ -4136,6 +4136,8 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 	static luaL_Reg const map_callbacks[] {
 		// Map methods
 		{"terrain_mask", &intf_terrain_mask},
+		{"on_board", &intf_on_board},
+		{"on_border", &intf_on_border},
 		// Shroud operations
 		{"place_shroud", &dispatch2<&game_lua_kernel::intf_shroud_op, true>},
 		{"remove_shroud", &dispatch2<&game_lua_kernel::intf_shroud_op, false>},
