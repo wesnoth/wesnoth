@@ -1,6 +1,14 @@
 local _ = wesnoth.textdomain 'wesnoth-wc'
 local dialog = wc2_wiki_dialog
 
+local function make_caption(text)
+	return ("<big><b>%s</b></big>"):format(text)
+end
+
+local function help_page_text(caption, description)
+	return caption, ("%s\n\n%s"):format(make_caption(caption), description)
+end
+
 function wesnoth.wml_actions.wc2_show_wocopedia(cfg)
 
 	local show_help_mechanics = cfg.show_mechanics ~= false
@@ -16,40 +24,27 @@ function wesnoth.wml_actions.wc2_show_wocopedia(cfg)
 	local preshow = function(dialog)
 		local str_cat_mechnics = _ "Game Mechanics"
 		local str_des_mechnics = cfg.mechanics_text or
-			_ "<b>Gold</b>:\n" ..
+			make_caption( _ "Game Mechanics") .. "\n\n" ..
+			_ "<b>Gold</b>\n" ..
 			_ "Carryover rate is 15% and split evenly among players. Negative amounts will not carry over. Early finish bonus is superior to village control, but it is not directly related to the carryover amount.\n\n" ..
-			_ "<b>Autorecall</b>:\n" ..
-			_ "Units with trait HEROIC are recalled at the start of each scenario with no cost (up to castle size).\n\n" ..
-			_ "<b>Recall Cost</b>:\n" ..
+			_ "<b>Autorecall</b>\n" ..
+			_ "Units with the <b>heroic</b> trait are recalled at the start of each scenario with no cost (up to castle size).\n\n" ..
+			_ "<b>Recall Cost</b>\n" ..
 			_ "Units costing less than 17 gold are cheaper to recall.\n\n" ..
-			_ "<b>Training</b>:\n" ..
+			_ "<b>Training</b>\n" ..
 			_ "Every time you recruit a new unit, your training levels will be applied. If a unit gains training benefits, you can see them with the trait \"trained\". Each unit’s chance of gaining training benefits is independent of another’s.\n\n" ..
-			_ "<b>Upkeep</b>:\n" ..
-			_ "Units with trait HEROIC or holding any magic ITEM have FREE upkeep.\n\n" ..
-			_ "<b>Bonus Points</b>:\n" ..
+			_ "<b>Upkeep</b>\n" ..
+			_ "Units with the <b>heroic</b> trait or holding any magic <b>item</b> have free upkeep.\n\n" ..
+			_ "<b>Bonus Points</b>\n" ..
 			_ "In every scenario the game generates as many bonus points on the map as there are players in the game, the bonus points can be picked up by player units and either contain artifacts, loyal units, or training.\n\n" ..
-			_ "<b>Army discipline</b>:\n" ..
+			_ "<b>Army discipline</b>\n" ..
 			_ "At scenarios 1 to 3, for each training level players already own, trainers found have 2% to 4% chance to become advanced trainers (provide 2 levels). Becomes irrelevant from scenario 4 onwards because all trainers will always be advanced.\n\n" ..
 			""
-		local str_cat_feedback = _ "Feedback"
-		local str_des_feedback =
-			_ "<b>Feedback</b>:\n" ..
-			_ "For feedback please either post in the World Conquest II thread in the official Wesnoth forum https://r.wesnoth.org/t39651 or file an issue at GitHub https://github.com/gfgtdf/World_Conquest_II/issues .\n\n" ..
-			""
-		local str_cat_abilities = _ "Abilities"
-		local str_des_abilities =
-			_ "Ability <b>Autorecall</b>:\n" ..
-			_ "Units with trait HEROIC are recalled at the start of each scenario with no cost (up to castle size).\n\n" ..
-			""
-		local str_cat_training = _ "Training"
-		local str_des_training = _ "<b>Training</b>\nTraining improves newly recruited units, it has no effect on already recruited units. The following list shows all available training, the training you currently have is marked in green."
-		local str_cat_items = _ "Artifacts"
-		local str_des_items = _ "<b>Items</b>\nItems can be given to units to make them stronger. You can get artifacts in three ways: 1) By choosing an item as your starting bonus; 2) By finding it on a map in a bonus point; 3) By dropping from enemies in later scenarios. Note, however, that not all units can pick up all items."
-		local str_cat_era = _ "Factions"
-		local str_des_era = _ "<b>Factions</b>\n The World Conquest II era consists of factions that are built from pairs of mainline factions. One faction will have a healer available (Drakes, Rebels and Loyalists) and one will not (Orcs, Dwarves and Undead). The recruit list is also organized in pairs so that sometimes you will have to recruit a different unit before you can recruit the units that you want. The available heroes, deserters, and random leaders also depend on your factions; the items you can get do not depend on the faction you choose."
+		local str_cat_feedback, str_des_feedback = help_page_text( _ "Feedback", _ "For feedback please either post in the World Conquest II thread in the official Wesnoth forum &lt;https://r.wesnoth.org/t39651&gt; or file an issue at GitHub &lt;https://github.com/gfgtdf/World_Conquest_II/issues&gt;.")
+		local str_cat_training, str_des_training = help_page_text( _ "Training", _ "Training improves newly recruited units, it has no effect on already recruited units. The following list shows all available training, the training you currently have is marked in green.")
+		local str_cat_items, str_des_items = help_page_text( _ "Items", _ "Items can be given to units to make them stronger. You can get items in three ways: 1) By choosing an item as your starting bonus; 2) By finding it on a map in a bonus point; 3) By dropping from enemies in later scenarios. Note, however, that not all units can pick up all items.")
+		local str_cat_era, str_des_era = help_page_text( _ "Factions" , _ "The World Conquest II era consists of factions that are built from pairs of mainline factions. One faction will have a healer available (Drakes, Rebels and Loyalists) and one will not (Orcs, Dwarves and Undead). The recruit list is also organized in pairs so that sometimes you will have to recruit a different unit before you can recruit the units that you want. The available heroes, deserters, and random leaders also depend on your factions; the items you can get do not depend on the faction you choose.")
 		local str_cat_settings = _ "Settings"
-
-
 
 		local root_node = dialog:find("treeview_topics")
 		local details = dialog:find("details")
@@ -57,7 +52,7 @@ function wesnoth.wml_actions.wc2_show_wocopedia(cfg)
 		function gui.widget.add_help_page(parent_node, args)
 			local node_type = args.node_type or "category"
 			local page_type = args.page_type or "simple"
-			
+
 			local node = parent_node:add_item_of_type(node_type)
 			local details_page = details:add_item_of_type(page_type)
 			if args.title then
@@ -131,7 +126,7 @@ function wesnoth.wml_actions.wc2_show_wocopedia(cfg)
 			}
 
 			page.label_content.marked_up_text = str_des_era
-			
+
 			for i, faction_info in ipairs(wc2_era.factions_wml) do
 				local faction_wml = wml.get_child(era_wml, "multiplayer_side", faction_info.id)
 
@@ -195,7 +190,7 @@ function wesnoth.wml_actions.wc2_show_wocopedia(cfg)
 				if not_available.enemy then
 					artifact_name = artifact_name .. str_not_for_enemies
 				end
-	
+
 				local page_element = page.treeview_artifacts:add_item_of_type("artifact")
 				page_element.image.label = artifact_icon
 				page_element.label_name.label = artifact_name .. "\n" .. artifact_desc
@@ -207,7 +202,7 @@ function wesnoth.wml_actions.wc2_show_wocopedia(cfg)
 				title = str_cat_settings,
 				page_type = "settings",
 			}
-			
+
 			page.checkbox_use_pya.selected = not not wml.variables["wc2_config_enable_pya"]
 			page.checkbox_use_pya.enabled = false
 			page.checkbox_use_markers.selected = not not wml.variables["wc2_config_enable_unitmarker"]

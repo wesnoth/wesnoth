@@ -14,7 +14,7 @@ local function GUI_FORCE_WIDGET_MINIMUM_SIZE(w,h, content)
 							height = h
 						}
 					}
-				} 
+				}
 			},
 			T.layer {
 				T.row {
@@ -25,7 +25,7 @@ local function GUI_FORCE_WIDGET_MINIMUM_SIZE(w,h, content)
 						vertical_grow = "true",
 						content
 					}
-				} 
+				}
 			}
 		}
 	}
@@ -57,11 +57,19 @@ local GUI_HORIZONTAL_SPACER_LINE = T.row {
 	}
 }
 
+local function formula_gui_scale_resolution(size)
+	return ("(max(%d, floor(%d * 265 * 2 / (3 * screen_pitch_microns))))"):format(size, size)
+end
+
 return {
-	maximum_width = 900,
+	automatic_placement = true,
+
+	maximum_width = formula_gui_scale_resolution(1024),
+	maximum_height = formula_gui_scale_resolution(800),
+
 	T.helptip { id = "tooltip_large" }, -- mandatory field
 	T.tooltip { id = "tooltip_large" }, -- mandatory field
-		
+
 	T.linked_group { id = "artifact_icon", fixed_width = true },
 	T.linked_group { id = "artifact_name", fixed_width = true },
 	T.linked_group { id = "recruit_icon", fixed_width = true },
@@ -91,7 +99,8 @@ return {
 						T.column {
 							border = "all",
 							border_size = 5,
-							horizontal_grow = true,
+							grow_factor = 0,
+							horizontal_grow = false,
 							vertical_grow = true,
 							T.tree_view {
 								id = "treeview_topics",
@@ -111,7 +120,17 @@ return {
 													T.grid {
 														T.row {
 															T.column {
+																grow_factor = 0,
+																horizontal_grow = false,
+																T.spacer {
+																	width = 10
+																}
+															},
+															T.column {
 																horizontal_alignment = "left",
+																grow_factor = 1,
+																border = "all",
+																border_size = 5,
 																T.label {
 																	id = "label_topic",
 																},
@@ -130,6 +149,8 @@ return {
 											T.column {
 												grow_factor = 0,
 												horizontal_grow = true,
+												border = "all",
+												border_size = 5,
 												T.toggle_button {
 													id = "tree_view_node_toggle",
 													definition = "tree_view_node",
@@ -144,6 +165,8 @@ return {
 														T.row {
 															T.column {
 																horizontal_alignment = "left",
+																border = "all",
+																border_size = 5,
 																T.label {
 																	id = "label_topic",
 																},
@@ -158,6 +181,9 @@ return {
 							},
 						},
 						T.column {
+							grow_factor = 1,
+							horizontal_grow = true,
+							vertical_grow = true,
 							T.multi_page {
 								id = "details",
 								definition = "default",
@@ -168,9 +194,11 @@ return {
 										T.column {
 											horizontal_grow = true,
 											vertical_grow = true,
-											T.scrollbar_panel { 
-												T.definition { 
-													T.row { 
+											border = "all",
+											border_size = 5,
+											T.scrollbar_panel {
+												T.definition {
+													T.row {
 														T.column {
 															horizontal_grow = true,
 															vertical_grow = true,
@@ -179,7 +207,7 @@ return {
 																definition = "default",
 																horizontal_scrollbar_mode = "never",
 																vertical_scrollbar_mode = "never",
-																indention_step_size = 20,
+																indentation_step_size = 20,
 																T.node {
 																	id = "training_details",
 																	T.node_definition {
@@ -187,6 +215,8 @@ return {
 																			T.column {
 																				grow_factor = 1,
 																				horizontal_alignment = "left",
+																				border = "bottom",
+																				border_size = 10,
 																				T.label {
 																					definition = "default_large",
 																					id = "training_caption",
@@ -213,6 +243,8 @@ return {
 																			T.column {
 																				grow_factor = 1,
 																				horizontal_alignment = "left",
+																				border = "bottom",
+																				border_size = 10,
 																				T.label {
 																					definition = "default_large",
 																					id = "training_caption",
@@ -239,6 +271,8 @@ return {
 																			T.column {
 																				grow_factor = 1,
 																				horizontal_grow = true,
+																				border = "all",
+																				border_size = 5,
 																				T.spacer {
 																					height = 20,
 																					width = 20,
@@ -247,11 +281,11 @@ return {
 																		},
 																	},
 																},
-															} 
-														} 
+															}
+														}
 													}
-												} 
-											} 
+												}
+											}
 										}
 									}
 								},
@@ -261,18 +295,22 @@ return {
 										T.column {
 											horizontal_grow = true,
 											vertical_grow = true,
+											border = "all",
+											border_size = 5,
 											T.scroll_label {
 												id = "label_content",
 												label = "Text",
-											} 
+											}
 										}
 									}
 								},
 								T.page_definition {
 									id="artifacts",
+									horizontal_grow = true,
 									vertical_grow = true,
 									T.row {
 										T.column {
+											horizontal_grow = true,
 											vertical_grow = true,
 											T.grid {
 												--T.row {
@@ -287,22 +325,28 @@ return {
 												--},
 												T.row {
 													T.column {
-														T.scroll_label {
-															vertical_scrollbar_mode = "never",
+														horizontal_grow = true,
+														border = "all",
+														border_size = 5,
+														T.label {
 															id = "desc",
+															wrap = true
 														}
 													}
 												},
 												T.row {
 													T.column {
 														horizontal_grow = true,
+														grow_factor = 0,
+														border = "all",
+														border_size = 5,
 														T.tree_view {
 															vertical_grow = true,
 															id = "treeview_artifacts",
 															definition = "default",
-															horizontal_scrollbar_mode = "never",
-															vertical_scrollbar_mode = "always",
-															indentation_step_size = 35,
+															horizontal_scrollbar_mode = "auto",
+															vertical_scrollbar_mode = "auto",
+															indentation_step_size = 0,
 															T.node {
 																id = "artifact",
 																horizontal_grow = true,
@@ -315,14 +359,22 @@ return {
 																			T.grid {
 																				T.row {
 																					T.column {
+																						horizontal_alignment = "left",
+																						border = "all",
+																						border_size = 5,
 																						T.image {
 																							id="image",
 																							linked_group = "artifact_icon",
 																						}
 																					},
 																					T.column {
+																						horizontal_grow = true,
+																						grow_factor = 1,
+																						border = "all",
+																						border_size = 5,
 																						T.label {
 																							id="label_name",
+																							wrap = true,
 																							linked_group = "artifact_name",
 																						}
 																					},
@@ -533,11 +585,11 @@ return {
 								},
 								T.page_definition {
 									id="settings",
-									vertical_grow = true,
+									vertical_alignment = "top",
 									horizontal_grow = true,
 									T.row {
 										T.column {
-											vertical_grow = true,
+											vertical_alignment = "top",
 											horizontal_grow = true,
 											T.grid {
 												T.row {
@@ -546,9 +598,11 @@ return {
 														grow_factor = 0,
 														vertical_grow = false,
 														horizontal_alignment = "left",
+														border = "all",
+														border_size = 5,
 														T.label {
 															id = "title",
-															label = "<b>Settings</b>\n ",
+															label = "<big><b>" .. _ "Settings" .. "</b></big>\n",
 															use_markup=true,
 														},
 													},
@@ -556,80 +610,106 @@ return {
 												T.row {
 													grow_factor = 0,
 													T.column {
-														horizontal_grow=true,
-														vertical_alignment="top",
+														horizontal_grow = "true",
+														vertical_alignment = "top",
 														grow_factor = 1,
 														T.grid {
 															T.row {
 																T.column {
-																	horizontal_alignment="left",
+																	horizontal_alignment = "left",
+																	border = "all",
+																	border_size = 5,
 																	T.label {
+																		definition = "gold_small",
 																		label = "Use WC2 PYA mod",
 																	}
 																},
 																T.column {
-																	horizontal_alignment="right",
+																	horizontal_alignment = "center",
+																	border = "all",
+																	border_size = 5,
 																	T.toggle_button {
-																		label = "",
+																		definition = "no_label",
 																		id="checkbox_use_pya",
 																	},
 																},
 															},
 															T.row {
 																T.column {
-																	horizontal_alignment="left",
+																	horizontal_alignment = "left",
+																	border = "all",
+																	border_size = 5,
 																	T.label {
+																		definition = "gold_small",
 																		label = "Use WC2 Unitmarkers",
 																	}
 																},
 																T.column {
-																	horizontal_alignment="right",
+																	horizontal_alignment = "center",
+																	border = "all",
+																	border_size = 5,
 																	T.toggle_button {
-																		label = "",
+																		definition = "no_label",
 																		id="checkbox_use_markers",
 																	},
 																},
 															},
 															T.row {
 																T.column {
-																	horizontal_alignment="left",
+																	horizontal_alignment = "left",
+																	border = "all",
+																	border_size = 5,
 																	T.label {
+																		definition = "gold_small",
 																		label = "Use WC2 experimental pickup",
 																	}
 																},
 																T.column {
-																	horizontal_alignment="right",
+																	horizontal_alignment = "center",
+																	border = "all",
+																	border_size = 5,
 																	T.toggle_button {
-																		label = "",
+																		definition = "no_label",
 																		id="checkbox_use_pickup",
 																	},
 																},
 															},
 															T.row {
 																T.column {
-																	horizontal_alignment="left",
+																	horizontal_alignment = "left",
+																	border = "all",
+																	border_size = 5,
 																	T.label {
+																		definition = "gold_small",
 																		label = "Show pickup confirmation",
 																	}
 																},
 																T.column {
-																	horizontal_alignment="right",
+																	horizontal_alignment = "center",
+																	border = "all",
+																	border_size = 5,
 																	T.toggle_button {
-																		label = "",
+																		definition = "no_label",
 																		id="checkbox_show_pickup_confirmation",
 																	},
 																},
 															},
 															T.row {
 																T.column {
-																	horizontal_alignment="left",
+																	horizontal_alignment = "left",
+																	border = "all",
+																	border_size = 5,
 																	T.label {
-																		label = "difficulty",
+																		definition = "gold_small",
+																		label = _ "Difficulty",
 																	}
 																},
 																T.column {
-																	horizontal_alignment="right",
+																	horizontal_alignment = "center",
+																	border = "all",
+																	border_size = 5,
 																	T.label {
+																		definition = "gold_small",
 																		label = "",
 																		id="label_difficulty",
 																	},
@@ -637,14 +717,20 @@ return {
 															},
 															T.row {
 																T.column {
-																	horizontal_alignment="left",
+																	horizontal_alignment = "left",
+																	border = "all",
+																	border_size = 5,
 																	T.label {
+																		definition = "gold_small",
 																		label = "WC2 version",
 																	}
 																},
 																T.column {
-																	horizontal_alignment="right",
+																	horizontal_alignment = "center",
+																	border = "all",
+																	border_size = 5,
 																	T.label {
+																		definition = "gold_small",
 																		label = "",
 																		id="label_version",
 																	},
@@ -675,6 +761,8 @@ return {
 						},
 						T.column {
 							horizontal_alignment = "right",
+							border = "all",
+							border_size = 5,
 							T.button {
 								label = wesnoth.textdomain("wesnoth")("Close"),
 								id = "ok",
