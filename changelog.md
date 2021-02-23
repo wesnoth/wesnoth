@@ -28,6 +28,7 @@
    * Made the preferences dialog larger on HDPI screens; this fixes a usability issue with HDPI font sizes (issue #5185).
  ### WML Engine
    * Extent 'special_id_active' and 'special_type_active' to abilities used like weapon and to [leadership] abilities.
+   * abilities used like weapon can call a [special_anim] similar to [leading_anim] now.
  ### Miscellaneous and Bug Fixes
    * Fixed display zoom not being taken into account when using the `x`, `y`, `directional_x` and `directional_y` attributes in unit animations.
 
