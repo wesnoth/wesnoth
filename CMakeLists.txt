@@ -77,6 +77,7 @@ if(NOT APPLE)
 else()
 	set(CRYPTO_LIBRARY "-framework Security")
 endif()
+find_package(OpenSSL REQUIRED)
 
 find_package(Boost ${BOOST_VERSION} REQUIRED COMPONENTS iostreams
 	program_options regex system thread random coroutine)
