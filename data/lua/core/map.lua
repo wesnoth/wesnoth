@@ -253,6 +253,51 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 end
 
 if wesnoth.kernel_type() == "Mapgen Lua Kernel" then
+	-- Filter support
+	local filter_tags = {
+		terrain =  function(terrain)
+			return { "terrain", terrain }
+		end,
+		all =  function(...)
+			return { "all", ... }
+		end,
+		any =  function(...)
+			return { "any", ... }
+		end,
+		none =  function(...)
+			return { "none", ... }
+		end,
+		notall =  function(...)
+			return { "notall", ... }
+		end,
+		adjacent =  function(f, ad, count)
+			return { "adjacent",  f, adjacent = ad, count = count }
+		end,
+		find_in =  function(terrain)
+			return { "find_in", terrain }
+		end,
+		radius =  function(r, f, f_r)
+			return { "radius", r, f, filter_radius = f_r}
+		end,
+		x =  function(terrain)
+			return { "x", terrain }
+		end,
+		y =  function(terrain)
+			return { "y", terrain }
+		end,
+		is_loc = function(loc)
+			return filter_tags.all(f.x(loc[1]), f.y(loc[2]))
+		end,
+		formula = function(f)
+			return { "formula", f}
+		end,
+	}
+	
+	wesnoth.map.filter_tags = setmetatable({}, {
+		__index = function(_, k) return filter_tags[k] end,
+		__newindex = function() error('wesnoth.map.filter_tags is read-only') end,
+	})
+	
 	-- More map module stuff
 	wesnoth.create_filter = wesnoth.deprecate_api('wesnoth.create_filter', 'wesnoth.map.filter', 1, nil, wesnoth.map.filter)
 	wesnoth.create_map = wesnoth.deprecate_api('wesnoth.create_map', 'wesnoth.map.create', 1, nil, wesnoth.map.create)
