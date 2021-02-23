@@ -2743,6 +2743,14 @@ static int intf_do_unsynced(lua_State *L)
  */
 int game_lua_kernel::intf_get_locations(lua_State *L)
 {
+	if(luaW_isterrainmap(L, 1)) {
+		auto& map = luaW_checkterrainmap(L, 1);
+		if(auto gm = dynamic_cast<gamemap*>(&map); gm != &game_state_.get_disp_context().map()) {
+			return luaL_error(L, "Filters are currently only supported on the active game map");
+		}
+		lua_remove(L, 1);
+	}
+	
 	vconfig filter = luaW_checkvconfig(L, 1);
 
 	std::set<map_location> res;
@@ -2807,6 +2815,14 @@ int game_lua_kernel::intf_get_villages(lua_State *L)
  */
 int game_lua_kernel::intf_match_location(lua_State *L)
 {
+	if(luaW_isterrainmap(L, 1)) {
+		auto& map = luaW_checkterrainmap(L, 1);
+		if(auto gm = dynamic_cast<gamemap*>(&map); gm != &game_state_.get_disp_context().map()) {
+			return luaL_error(L, "Filters are currently only supported on the active game map");
+		}
+		lua_remove(L, 1);
+	}
+	
 	map_location loc = luaW_checklocation(L, 1);
 	vconfig filter = luaW_checkvconfig(L, 2, true);
 
