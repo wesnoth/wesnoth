@@ -718,9 +718,9 @@ static int intf_mg_get_locations_part2(lua_State* L, gamemap_base& m, lua_mapgen
 	return 1;
 
 }
+
 int intf_mg_get_locations(lua_State* L)
 {
-	//todo: create filter form table if needed
 	LOG_LMG <<  "map:get_locations\n";
 	gamemap_base& m = luaW_checkterrainmap(L, 1);
 	if(luaW_is_mgfilter(L, 2)) {
@@ -734,6 +734,24 @@ int intf_mg_get_locations(lua_State* L)
 	else {
 		return luaW_type_error(L, 2, "terrainfilter");
 	}
+}
+
+int intf_mg_match_location(lua_State* L)
+{
+	LOG_LMG <<  "map:match_location\n";
+	gamemap_base& m = luaW_checkterrainmap(L, 1);
+	map_location loc = luaW_checklocation(L, 2);
+	if(luaW_is_mgfilter(L, 3)) {
+		lua_mapgen::filter& f = luaW_check_mgfilter(L, 3);
+		lua_pushboolean(L, f.matches(m, loc));
+	} else if (lua_istable(L, 3)) {
+		lua_mapgen::filter f(L, 3, 0);
+		lua_pushboolean(L, f.matches(m, loc));
+	}
+	else {
+		return luaW_type_error(L, 3, "terrainfilter");
+	}
+	return 1;
 }
 
 int intf_mg_get_tiles_radius(lua_State* L)

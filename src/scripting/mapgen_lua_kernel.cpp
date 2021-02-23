@@ -234,6 +234,7 @@ mapgen_lua_kernel::mapgen_lua_kernel(const config* vars)
 
 	static luaL_Reg const map_callbacks[] {
 		// Map methods
+		{ "matches",             &intf_mg_match_location           },
 		{ "find",                &intf_mg_get_locations            },
 		{ "find_in_radius",      &intf_mg_get_tiles_radius         },
 		// Static functions
