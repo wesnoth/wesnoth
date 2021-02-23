@@ -600,7 +600,7 @@ enum filter_keys { F_AND, F_OR, F_NAND, F_NOR, F_X, F_Y, F_FIND_IN, F_ADJACENT, 
 static const std::unordered_map<std::string, filter_keys> keys {
 	{ "all", F_AND },
 	{ "any", F_OR },
-	{ "not_all", F_NAND },
+	{ "notall", F_NAND },
 	{ "none", F_NOR },
 	{ "x", F_X },
 	{ "y", F_Y },
