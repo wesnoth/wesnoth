@@ -23,7 +23,6 @@
 #include <boost/asio/connect.hpp>
 #include <boost/asio/read.hpp>
 #include <boost/asio/write.hpp>
-#include <boost/asio/ssl/host_name_verification.hpp>
 
 #include <cstdint>
 #include <deque>
@@ -207,7 +206,11 @@ void wesnothd_connection::handle_handshake(const error_code& ec)
 				boost::asio::ssl::verify_fail_if_no_peer_cert
 			);
 
+#if BOOST_VERSION >= 107300
 			socket.set_verify_callback(boost::asio::ssl::host_name_verification(host_));
+#else
+			socket.set_verify_callback(boost::asio::ssl::rfc2818_verification(host_));
+#endif
 
 			socket.async_handshake(boost::asio::ssl::stream_base::client, [this](const error_code& ec) {
 				if(ec) {
