@@ -22,9 +22,7 @@
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 
 REGISTER_DIALOG(folder_create)
@@ -43,4 +41,3 @@ void folder_create::pre_show(window& window)
 }
 
 } // namespace dialogs
-} // namespace gui2

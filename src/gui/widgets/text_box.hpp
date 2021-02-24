@@ -119,9 +119,9 @@ private:
 
 /**
  * @ingroup GUIWidgetWML
- * 
+ *
  * Class for a single line text area.
- * 
+ *
  * The resolution for a text box also contains the following keys:
  * Key          |Type                                    |Default  |Description
  * -------------|----------------------------------------|---------|-----------

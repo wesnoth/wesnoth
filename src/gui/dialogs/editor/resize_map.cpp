@@ -22,9 +22,7 @@
 
 #include <functional>
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 
 REGISTER_DIALOG(editor_resize_map)
@@ -150,4 +148,3 @@ void editor_resize_map::update_expand_direction()
 }
 
 } // namespace dialogs
-} // namespace gui2

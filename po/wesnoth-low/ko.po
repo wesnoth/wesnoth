@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-01-16 14:18 UTC\n"
+"POT-Creation-Date: 2021-02-20 21:40 UTC\n"
 "PO-Revision-Date: 2011-11-10 19:43+0900\n"
 "Last-Translator: mistzone <drier22@gmail.com>\n"
 "Language-Team: none\n"
@@ -400,28 +400,28 @@ msgstr "T’baran"
 #. [side]: id=Wrulf, type=Orcish Warrior
 #. [side]: type=Orcish Warrior, id=Qumseh
 #. [side]: type=Orcish Warrior, id=Graur-Tan
+#. [side]
 #. [modify_side]
 #. [side]: type=Troll Hero, type=Great Troll, id=Grugl
-#. [side]
-#. [side]: type=Saurian Ambusher, id=Shurm
-#. [side]: type=Saurian Ambusher, id=Trigr
 #. [side]: id=Hraurg, type=Saurian Ambusher
 #. [side]: type=Saurian Ambusher, id=Spahr
+#. [side]: type=Saurian Ambusher, id=Shurm
+#. [side]: type=Saurian Ambusher, id=Trigr
 #. [side]: type=Orcish Warlord, id=Urug-Tar
 #. [side]: type=Orcish Warlord, id=Graur-Tan
 #. [side]: type=Troll Warrior, id=Traur
+#. [side]: type=Orcish Warlord, id=Kior-Pur
+#. [side]: type=Orcish Warlord, id=Mbiran
+#. [side]: type=Orcish Warlord, id=Tan-Durr
 #. [side]: type=Saurian Flanker, id=Huurgh
 #. [side]: type=Saurian Oracle, id=Shhar
 #. [side]: type=Troll Warrior, id=Tafrul
 #. [side]: type=Arch Mage, id=Aquagar
 #. [side]: type=Troll Warrior, id=Trigrul
-#. [side]: type=Orcish Warlord, id=Kior-Pur
-#. [side]: type=Orcish Warlord, id=Mbiran
-#. [side]: type=Orcish Warlord, id=Tan-Durr
-#. [side]: type=Saurian Flanker, id=Spahr
-#. [side]: type=Saurian Flanker, id=Hgyr
 #. [side]: type=Elvish Marshal, id=Crintil
 #. [side]: type=Elvish Captain, id=Oblil
+#. [side]: type=Saurian Flanker, id=Spahr
+#. [side]: type=Saurian Flanker, id=Hgyr
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:193
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:229
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:262
@@ -562,7 +562,7 @@ msgstr "Velon의 생존"
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/05_The_Saurian_Treasury.cfg:371
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/06_Acquaintance_in_Need.cfg:225
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:307
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:304
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:305
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/10_Cliffs_of_Thoria.cfg:195
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/11_Battle_of_the_Book.cfg:213
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/14_Human_Alliance.cfg:257
@@ -585,7 +585,7 @@ msgstr "Kalenz의 사망"
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/05_The_Saurian_Treasury.cfg:375
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/06_Acquaintance_in_Need.cfg:229
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:311
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:308
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:309
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/10_Cliffs_of_Thoria.cfg:199
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/11_Battle_of_the_Book.cfg:217
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/14_Human_Alliance.cfg:261
@@ -836,7 +836,7 @@ msgstr "Grugl을 무찌른다"
 #. [objective]: condition=lose
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/02_Hostile_Mountains.cfg:524
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/06_Acquaintance_in_Need.cfg:233
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:316
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:317
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/10_Cliffs_of_Thoria.cfg:207
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/11_Battle_of_the_Book.cfg:221
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/14_Human_Alliance.cfg:265
@@ -1200,8 +1200,8 @@ msgstr "Shurm"
 msgid "Trigr"
 msgstr "Trigr"
 
-#. [objective]: condition=win
 #. [objectives]
+#. [objective]: condition=win
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/04_The_Elvish_Treasury.cfg:168
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/05_The_Saurian_Treasury.cfg:209
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/05_The_Saurian_Treasury.cfg:369
@@ -1286,7 +1286,7 @@ msgstr ""
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/05_The_Saurian_Treasury.cfg:379
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/06_Acquaintance_in_Need.cfg:237
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:315
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:312
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:313
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/10_Cliffs_of_Thoria.cfg:203
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/11_Battle_of_the_Book.cfg:225
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/14_Human_Alliance.cfg:269
@@ -2390,27 +2390,27 @@ msgid "some experienced warriors"
 msgstr "숙련된 전사들"
 
 #. [objective]: condition=win
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:300
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:301
 msgid "Kalenz crosses the river"
 msgstr "Kalenz가 강을 건넌다"
 
 #. [message]: id=Huurgh
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:331
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:332
 msgid "Yess! It’s the elves who stole our gold! The bounty is mine!"
 msgstr "조오오아! 우리 금을 훔쳐간 그 엘프들이다! 현상금은 내꺼야!"
 
 #. [message]: id=Shhar
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:335
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:336
 msgid "I saw them first, fool! The bounty is all mine."
 msgstr "내가 먼저 발견했어, 이 멍청아! 현상금은 전부 내꺼야."
 
 #. [message]: id=Olurf
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:339
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:340
 msgid "What are they talking about?"
 msgstr "저놈들이 무슨 소릴 하는거야?"
 
 #. [message]: id=Landar
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:343
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:344
 msgid ""
 "It would seem the Saurians put a bounty on our heads for having the "
 "effrontery to take our gold back after they stole it. Are you interested?"
@@ -2419,7 +2419,7 @@ msgstr ""
 "건 것 같군. 흥미 있나?"
 
 #. [message]: id=Olurf
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:347
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:348
 msgid ""
 "No, but my axe is interested in some saurian heads! They ha’ been too "
 "friendly with the Orcs for my liking!"
@@ -2428,7 +2428,7 @@ msgstr ""
 "이 되기에는 너무 오크와 가까운 족속이야!"
 
 #. [message]: id=Kalenz
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:351
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:352
 msgid ""
 "Remember, we are here on a mission. We will fight these saurians if we must, "
 "but our mission is to get to Thoria."
@@ -2437,12 +2437,12 @@ msgstr ""
 "Thoria로 향하는 걸세."
 
 #. [message]: id=Landar
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:355
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:356
 msgid "They are far too numerous to risk battle with. Let’s cross the river!"
 msgstr "싸우는 위험을 감수하기엔 놈들의 수가 너무 많아. 강을 건너도록 하지!"
 
 #. [message]: id=Olurf
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:359
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:360
 msgid ""
 "We can outrun them in the woods and mountains beyond the north shore. But "
 "crossing the river without a bridge? We dwarves know water is a very "
@@ -2452,7 +2452,7 @@ msgstr ""
 "을 건넌다고? 우리 드워프들은 물이 엄청나게 위험하다는 걸 잘 안다구!"
 
 #. [message]: id=Cleodil
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:363
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:364
 #, fuzzy
 #| msgid ""
 #| "Indeed, this river is, I believe, Arkan-Thoria. There are fell legends "
@@ -2468,7 +2468,7 @@ msgstr ""
 "강을 건널땐 조심하세요."
 
 #. [message]: id=Kalenz
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:367
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:368
 msgid ""
 "You speak my thought, Cleodil. Close in behind me; I’ll guard you from harm "
 "myself. Look to your weapons as we cross, all! And be wary."
@@ -2477,7 +2477,7 @@ msgstr ""
 "주겠소. 모두 강을 건너면서 무기를 잘 잡고 있도록! 그리고 조심하도록."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:374
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:375
 msgid ""
 "Before Kalenz left the Ka’lian he had ordered $left_behind_kalenz to stay "
 "and guard it."
@@ -2486,7 +2486,7 @@ msgstr ""
 "왔습니다."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:382
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:383
 msgid ""
 "Before Landar left the Ka’lian he had ordered $left_behind_landar to stay "
 "and guard it."
@@ -2495,22 +2495,22 @@ msgstr ""
 "왔습니다."
 
 #. [message]: speaker=unit
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:410
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:411
 msgid "We made it. Onwards to Thoria!"
 msgstr "해냈다! Thoria로 가자!"
 
 #. [message]: id=Olurf
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:414
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:415
 msgid "At last!"
 msgstr "드디어!"
 
 #. [message]: id=Landar
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:418
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:419
 msgid "We’ll need to settle things with these saurians once and for all!"
 msgstr "저 사우리언들과의 악연은 언젠가 완전히 끝을 맺어야겠어!"
 
 #. [message]: id=Cleodil
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:422
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:423
 msgid ""
 "Hasn’t enough blood been shed? I think we can compose matters with them "
 "after the threat of the orcs has been met."
@@ -2519,42 +2519,42 @@ msgstr ""
 "계를 조정할 수 있다고 생각해요."
 
 #. [event]: type=Water Serpent, id=Sealurr, type=Cuttle Fish, id=Kallub, type=Water Serpent, id=Scardeep, type=Cuttle Fish, id=Kalimar, type=Cuttle Fish, id=Alkamar
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:447
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:448
 msgid "Sealurr"
 msgstr "Sealurr"
 
 #. [message]: speaker=unit
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:457
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:458
 msgid "The legends are true! Sea creatures are upon us!"
 msgstr "전설은 사실이었어! 해양 괴물들이 몰려오고 있다!"
 
 #. [event]: type=Water Serpent, id=Sealurr, type=Cuttle Fish, id=Kallub, type=Water Serpent, id=Scardeep, type=Cuttle Fish, id=Kalimar, type=Cuttle Fish, id=Alkamar
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:467
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:468
 msgid "Kallub"
 msgstr "Kallub"
 
 #. [message]: speaker=unit
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:477
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:478
 msgid "They are coming at us from all sides!"
 msgstr "저들은 전방향에서 몰려오고 있어!"
 
 #. [event]: type=Water Serpent, id=Sealurr, type=Cuttle Fish, id=Kallub, type=Water Serpent, id=Scardeep, type=Cuttle Fish, id=Kalimar, type=Cuttle Fish, id=Alkamar
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:488
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:489
 msgid "Scardeep"
 msgstr "Scardeep"
 
 #. [message]: speaker=unit
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:498
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:499
 msgid "Watch for the serpent!"
 msgstr "서펜트를 조심해!"
 
 #. [event]: type=Water Serpent, id=Sealurr, type=Cuttle Fish, id=Kallub, type=Water Serpent, id=Scardeep, type=Cuttle Fish, id=Kalimar, type=Cuttle Fish, id=Alkamar
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:508
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:509
 msgid "Kalimar"
 msgstr "Kalimar"
 
 #. [event]: type=Water Serpent, id=Sealurr, type=Cuttle Fish, id=Kallub, type=Water Serpent, id=Scardeep, type=Cuttle Fish, id=Kalimar, type=Cuttle Fish, id=Alkamar
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:525
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:526
 msgid "Alkamar"
 msgstr "Alkamar"
 
@@ -2706,8 +2706,8 @@ msgstr "엘프와 드워프들은 발걸음을 서둘러서 연기를 향해 달
 msgid "Aquagar"
 msgstr "Aquagar"
 
-#. [part]
 #. [side]: type=Elder Mage, id=Crelanu
+#. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/11_Battle_of_the_Book.cfg:127
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/12_Revelations.cfg:22
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/12_Revelations.cfg:32
@@ -3303,7 +3303,7 @@ msgstr ""
 "다..."
 
 #. [message]: id=Landar
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/13_News_from_the_Front.cfg:152
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/13_News_from_the_Front.cfg:154
 msgid ""
 "Oh, no, I forgot my dose of Crelanu’s invisibility philter. I’ll go back and "
 "get it. I’ll catch up with you later!"
@@ -3312,17 +3312,17 @@ msgstr ""
 "있다가 따라가도록 하지!"
 
 #. [message]: id=Olurf
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/13_News_from_the_Front.cfg:156
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/13_News_from_the_Front.cfg:158
 msgid "Maybe some of my dwarves can escort you..."
 msgstr "우리 드워프 몇을 같이 보내주지..."
 
 #. [message]: id=Kalenz
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/13_News_from_the_Front.cfg:160
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/13_News_from_the_Front.cfg:162
 msgid "Go, Landar, but be careful. We need you."
 msgstr "다녀오게, Landar. 조심하고. 자네가 없으면 안돼."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/13_News_from_the_Front.cfg:174
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/13_News_from_the_Front.cfg:176
 msgid ""
 "Some weeks later, as Kalenz and his companions were working their way "
 "southwards from the high peaks of the Heart Mountains into its foothills..."
@@ -3331,12 +3331,12 @@ msgstr ""
 "해 산기슭에 이르렀을 때..."
 
 #. [unit]: id=Eonihar, type=Elvish Scout
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/13_News_from_the_Front.cfg:189
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/13_News_from_the_Front.cfg:191
 msgid "Eonihar"
 msgstr "Eonihar"
 
 #. [message]: id=Eonihar
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/13_News_from_the_Front.cfg:199
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/13_News_from_the_Front.cfg:201
 #, fuzzy
 #| msgid ""
 #| "At last I have found, you alive and well! We need you back at once! The "
@@ -3349,12 +3349,12 @@ msgstr ""
 "들을 공격했습니다."
 
 #. [message]: id=Kalenz
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/13_News_from_the_Front.cfg:203
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/13_News_from_the_Front.cfg:205
 msgid "This means we are safe for the time being, no?"
 msgstr "그렇다는건 우리가 한동안 안전하다는 얘기가 아닌가?"
 
 #. [message]: id=Eonihar
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/13_News_from_the_Front.cfg:207
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/13_News_from_the_Front.cfg:209
 msgid ""
 "What’s more, King Haldric is dead. His successor wants to renew the treaty "
 "of alliance and has asked for our help."
@@ -3363,23 +3363,23 @@ msgstr ""
 "고 자기들을 도와주기를 원하고 있습니다."
 
 #. [message]: id=Landar
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/13_News_from_the_Front.cfg:227
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/13_News_from_the_Front.cfg:229
 msgid "How convenient! Now they need our help, they come running!"
 msgstr ""
 "편리한 놈들이군! 이제 우리 도움이 필요해지니 한달음에 달려오는 꼴이라니!"
 
 #. [message]: id=Kalenz
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/13_News_from_the_Front.cfg:231
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/13_News_from_the_Front.cfg:233
 msgid "Landar! You’re back! All is well?"
 msgstr "돌아왔군 Landar! 일은 잘 되었는가?"
 
 #. [message]: id=Landar
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/13_News_from_the_Front.cfg:235
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/13_News_from_the_Front.cfg:237
 msgid "Yes, I have the philter of invisibility."
 msgstr "그래, 투명 물약을 가져왔네."
 
 #. [message]: id=Kalenz
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/13_News_from_the_Front.cfg:239
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/13_News_from_the_Front.cfg:241
 msgid ""
 "We face a difficult choice. I know humans did not help us when the orcs "
 "attacked, but the orcs are everybody’s enemy. When humans fall, we’ll be "
@@ -3390,7 +3390,7 @@ msgstr ""
 "되겠지."
 
 #. [message]: id=Eonihar
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/13_News_from_the_Front.cfg:243
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/13_News_from_the_Front.cfg:245
 msgid ""
 "The orcish forces are encamped south of the Great River, and have surrounded "
 "the fortified human settlement at Tath. The humans are sending all their "
@@ -3401,7 +3401,7 @@ msgstr ""
 "결정해야 합니다."
 
 #. [message]: id=Kalenz
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/13_News_from_the_Front.cfg:247
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/13_News_from_the_Front.cfg:249
 msgid ""
 "Go tell the council and the human king that we will be there! Now, let’s "
 "hurry!"
@@ -3444,8 +3444,8 @@ msgid ""
 "With the human-elf alliance revived, our heroes hurried to the battlefield..."
 msgstr "인간-엘프 연맹이 복구되고, 우리의 영웅들은 서둘러 전장으로 향했다..."
 
-#. [part]
 #. [unit]: id=Aldar, type=General
+#. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/14_Human_Alliance.cfg:109
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/15_The_Treaty.cfg:37
 msgid "Aldar"

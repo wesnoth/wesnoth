@@ -41,8 +41,8 @@ namespace lua_common {
 
 }
 
-void* operator new(std::size_t sz, lua_State *L);
-void operator delete(void* p, lua_State *L);
+void* operator new(std::size_t sz, lua_State *L, int nuv = 0);
+void operator delete(void* p, lua_State *L, int nuv);
 
 /**
  * Like luaL_getmetafield, but returns false if key is an empty string

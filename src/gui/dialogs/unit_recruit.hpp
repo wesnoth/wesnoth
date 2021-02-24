@@ -19,9 +19,7 @@
 class unit_type;
 class team;
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 
 class unit_recruit : public modal_dialog
@@ -63,4 +61,3 @@ private:
 };
 
 } // namespace dialogs
-} // namespace gui2

@@ -380,7 +380,7 @@ void saved_game::expand_mp_events()
 		);
 
 		// We don't want the error message below if there is no era (= if this is a sp game).
-		if(!classification_.era_id .empty()) {
+		if(!classification_.era_id.empty()) {
 			mods.emplace_back("era", classification_.era_id);
 		}
 

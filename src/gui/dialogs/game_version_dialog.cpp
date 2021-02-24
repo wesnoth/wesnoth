@@ -49,9 +49,7 @@ const std::string text_feature_off = "<span color='#f00'>&#9679;</span>";
 
 } // end anonymous namespace
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 
 REGISTER_DIALOG(game_version)
@@ -276,4 +274,3 @@ void game_version::generate_plain_text_report()
 }
 
 } // namespace dialogs
-} // namespace gui2

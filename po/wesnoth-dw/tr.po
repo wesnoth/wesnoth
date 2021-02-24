@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-dw\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-01-16 14:17 UTC\n"
-"PO-Revision-Date: 2020-01-19 14:54+0300\n"
+"POT-Creation-Date: 2021-02-20 21:40 UTC\n"
+"PO-Revision-Date: 2021-02-16 09:35+0300\n"
 "Last-Translator: Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>\n"
 "Language-Team: Turkish\n"
 "Language: tr\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"X-Generator: Poedit 1.8.11\n"
+"X-Generator: Poedit 2.2.1\n"
 
 #. [campaign]: id=Dead_Water
 #: data/campaigns/Dead_Water/_main.cfg:13
@@ -231,8 +231,8 @@ msgstr ""
 msgid "Undead Forces"
 msgstr "Yarı Ölü Kuvvetleri"
 
-#. [side]: type=Dark Sorcerer, id=Mal-Kevek
 #. [side]: type=Lich, id=Mal-Kevek
+#. [side]: type=Dark Sorcerer, id=Mal-Kevek
 #: data/campaigns/Dead_Water/scenarios/01_Invasion.cfg:89
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:126
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:39
@@ -1622,9 +1622,12 @@ msgstr "Sevilen Evcil Hayvan"
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/06_Uncharted_Islands.cfg:166
+#, fuzzy
+#| msgid ""
+#| "Uh oh. There is someone else here. Hey! He is being attacked by a cuttle "
+#| "fish!"
 msgid ""
-"Uh oh. There is someone else here. Hey! He is being attacked by a cuttle "
-"fish!"
+"Uh oh. There is someone else here. Hey! He is being attacked by a cuttlefish!"
 msgstr ""
 "Ahh. Burada başka biri var. Hey! O öfkeli bir balık tarafından saldırıya "
 "uğradı!"
@@ -1656,9 +1659,13 @@ msgstr "Kendini hazırla."
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/06_Uncharted_Islands.cfg:199
+#, fuzzy
+#| msgid ""
+#| "Oh no! Look what he has frisking at his heels now. And I thought the "
+#| "cuttle fish was bad!"
 msgid ""
-"Oh no! Look what he has frisking at his heels now. And I thought the cuttle "
-"fish was bad!"
+"Oh no! Look what he has frisking at his heels now. And I thought the "
+"cuttlefish was bad!"
 msgstr ""
 "Oh hayır! Şimdi de zehirliyorlar. Mürekkep balıklarının bu kadar kötü "
 "olduğunu düşünmezdim!"
@@ -1680,10 +1687,15 @@ msgstr "Ama bu yaratıkları sen saldırttın bize."
 
 #. [message]: speaker=Growloff
 #: data/campaigns/Dead_Water/scenarios/06_Uncharted_Islands.cfg:238
+#, fuzzy
+#| msgid ""
+#| "They are my friends. I’ve been so lonely here...and you killed so many of "
+#| "my friends. They could be your friends too. Spare me, and I’ll give you "
+#| "my favorite cuttle fish. His name is Inky."
 msgid ""
 "They are my friends. I’ve been so lonely here...and you killed so many of my "
 "friends. They could be your friends too. Spare me, and I’ll give you my "
-"favorite cuttle fish. His name is Inky."
+"favorite cuttlefish. His name is Inky."
 msgstr ""
 "Onlar benim arkadaşlarım. Burada çok yalnızdım ... ve sen de arkadaşlarımı "
 "öldürdün. Onlar senin de arkadaşların olabilir. Beni bağışla, sana en "
@@ -1710,8 +1722,12 @@ msgstr "Belki evcil bir deniz canavarı kullanabiliriz."
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/06_Uncharted_Islands.cfg:254
+#, fuzzy
+#| msgid ""
+#| "Very well. I will take the cuttle fish. But do not trouble us again, or I "
+#| "shall kill you and all the rest of your pets."
 msgid ""
-"Very well. I will take the cuttle fish. But do not trouble us again, or I "
+"Very well. I will take the cuttlefish. But do not trouble us again, or I "
 "shall kill you and all the rest of your pets."
 msgstr ""
 "Çok iyi. Mürekkep balıklarını alacağım. Ama bizi bir daha rahatsız etme, "
@@ -2546,19 +2562,19 @@ msgstr ""
 #. [unit]: type=Footpad, id=Lyllan
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:451
 msgid "Lyllan"
-msgstr ""
+msgstr "Lillan"
 
 #. [unit]: type=Thug, id=Trudd
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:463
 msgid "Trudd"
-msgstr ""
+msgstr "Trud"
 
 #. [unit]: type=Thug, id=Dorcyn
 #. [unit]: type=Footpad, id=Dorcyn
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:475
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:492
 msgid "Dorcyn"
-msgstr ""
+msgstr "Dorsin"
 
 #. [message]: speaker=Dorcyn
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:500
@@ -2805,27 +2821,27 @@ msgstr ""
 #. [modify_unit]
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:296
 msgid "Mal-Necross"
-msgstr ""
+msgstr "Mal-Nekros"
 
 #. [modify_unit]
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:312
 msgid "Mal-Verloth"
-msgstr ""
+msgstr "Mal-Verlot"
 
 #. [unit]: type=Merman Fighter, id=Nebthun
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:381
 msgid "Nebthun"
-msgstr ""
+msgstr "Nebtün"
 
 #. [unit]: type=Merman Hunter, id=Jarla
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:393
 msgid "Jarla"
-msgstr ""
+msgstr "Jarla"
 
 #. [unit]: type=Merman Brawler, id=Tabomo
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:405
 msgid "Tabomo"
-msgstr ""
+msgstr "Tabono"
 
 #. [message]: speaker=Nebthun
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:414
@@ -2926,7 +2942,7 @@ msgstr "Kesinlikle! Getirin onları!"
 #. [unit]: type=$type_3, id=Carallcyn
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:593
 msgid "Carallcyn"
-msgstr ""
+msgstr "Karalsin"
 
 #. [message]: speaker=Carallcyn
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:599
@@ -3266,10 +3282,15 @@ msgstr "Genç Şah"
 
 #. [unit_type]: id=Merman Young King, race=merman
 #: data/campaigns/Dead_Water/units/Young_King.cfg:20
+#, fuzzy
+#| msgid ""
+#| "A young king with some battle experience will be treated with some "
+#| "respect. Common citizens will be inspired to do their utmost when the "
+#| "king is nearby, but battle-hardened veterens will be less impressed."
 msgid ""
 "A young king with some battle experience will be treated with some respect. "
 "Common citizens will be inspired to do their utmost when the king is nearby, "
-"but battle-hardened veterens will be less impressed."
+"but battle-hardened veterans will be less impressed."
 msgstr ""
 "Savaş tecrübesi olan genç bir şah, biraz saygıyı hakeder. Şahın yanındayken "
 "yurttaşları ellerinden gelenin en iyisini yapmak için canla başla çalışır, "

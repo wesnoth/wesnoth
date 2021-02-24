@@ -28,9 +28,7 @@
 
 #include <functional>
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 
 REGISTER_DIALOG(lobby_player_info)
@@ -239,4 +237,3 @@ void lobby_player_info::do_kick_ban(bool ban)
 }
 
 } // namespace dialogs
-} // namespace gui2

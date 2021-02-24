@@ -31,9 +31,7 @@
 
 #include <sstream>
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 
 REGISTER_DIALOG(end_credits)
@@ -144,4 +142,3 @@ void end_credits::key_press_callback(const SDL_Keycode key)
 }
 
 } // namespace dialogs
-} // namespace gui2

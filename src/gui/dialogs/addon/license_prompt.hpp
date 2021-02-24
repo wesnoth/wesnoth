@@ -16,9 +16,8 @@
 
 #include "gui/dialogs/modal_dialog.hpp"
 
-namespace gui2 {
-namespace dialogs {
-
+namespace gui2::dialogs
+{
 class addon_license_prompt : public modal_dialog
 {
 public:
@@ -35,11 +34,6 @@ public:
 private:
 	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const override;
-
-	/** Inherited from modal_dialog. */
-	virtual void pre_show(window& window) override;
-
-	std::string license_terms_;
 };
 
-}} // end namespace gui2::dialogs
+} // end namespace gui2::dialogs

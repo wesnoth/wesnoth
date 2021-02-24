@@ -66,9 +66,7 @@ inline std::string config_to_string(const config& cfg, std::string only_children
 
 }
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 
 class gamestate_inspector::model
@@ -802,4 +800,3 @@ void gamestate_inspector::pre_show(window& window)
 }
 
 } // namespace dialogs
-} // namespace gui2

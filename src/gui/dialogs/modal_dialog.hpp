@@ -21,9 +21,7 @@
 #include <string>
 #include <vector>
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 /**
  * Registers a window.
@@ -224,7 +222,7 @@ protected:
 	 *                            with ok.
 	 * @param callback_change     When the value of the widget changes this
 	 *                            callback is called.
-	 * @param initial_fire        
+	 * @param initial_fire
 	 *
 	 * @returns                   Pointer to the created widget.
 	 */
@@ -248,7 +246,7 @@ protected:
 	 *                            @ref field::field for more information.
 	 * @param callback_change     When the value of the widget changes this
 	 *                            callback is called.
-	 * @param initial_fire        
+	 * @param initial_fire
 	 *
 	 * @returns                   Pointer to the created widget.
 	 */
@@ -456,4 +454,3 @@ private:
 };
 
 } // namespace dialogs
-} // namespace gui2

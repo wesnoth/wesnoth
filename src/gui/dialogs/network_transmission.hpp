@@ -23,9 +23,7 @@
 #include <atomic>
 #include <future>
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 
 /**
@@ -96,4 +94,3 @@ private:
 };
 
 } // namespace dialogs
-} // namespace gui2

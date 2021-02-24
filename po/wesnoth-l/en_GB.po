@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-01-16 14:18 UTC\n"
+"POT-Creation-Date: 2021-02-20 21:40 UTC\n"
 "PO-Revision-Date: 2020-08-31 11:16+1000\n"
 "Last-Translator: Wedge009 <wedge009@wedge009.net>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
@@ -178,9 +178,9 @@ msgid "Fal Khag"
 msgstr "Fal Khag"
 
 #. [side]: type=Goblin Pillager, id=Fal Khag
+#. [side]: type=Orcish Warlord, id=Vashna
 #. [side]: type=Orcish Warrior, id=Urk Delek
 #. [side]: type=Saurian Oracle, id=Thhsthss
-#. [side]: type=Orcish Warlord, id=Vashna
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:86
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:106
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:131
@@ -548,14 +548,14 @@ msgstr ""
 "troubles yet. I’d better ready our hunting troop when I gets back to the "
 "village, just in case..."
 
-#. [side]: type=Highwayman, id=Baldras
-#. [side]: type=Shadow Lord, id=Helicrom
-#. [side]: type=Bandit_Peasant, id=Baldras
-#. [side]
 #. [side]: type=Bandit, id=Baldras
-#. [side]: type=Highwayman_Peasant, id=Relana
 #. [side]: type=General, id=Lord Maddock
 #. [side]: type=Rogue, id=Hans
+#. [side]: type=Highwayman, id=Baldras
+#. [side]: type=Shadow Lord, id=Helicrom
+#. [side]
+#. [side]: type=Bandit_Peasant, id=Baldras
+#. [side]: type=Highwayman_Peasant, id=Relana
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:44
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:83
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:48
@@ -576,13 +576,13 @@ msgstr "Rebels"
 msgid "Tarwen"
 msgstr "Tarwen"
 
-#. [side]: type=Shock Trooper, id=Linneus
-#. [side]: type=Lieutenant, id=Archarel
-#. [side]: type=Cavalier, id=Tarwen
 #. [side]: type=General, id=Kestrel
 #. [side]: type=Master Bowman, id=Quentin
 #. [side]
+#. [side]: type=Shock Trooper, id=Linneus
+#. [side]: type=Lieutenant, id=Archarel
 #. [side]: type=General, id=Dommel
+#. [side]: type=Cavalier, id=Tarwen
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:60
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:81
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:85
@@ -751,16 +751,20 @@ msgstr ""
 "something to him. Her men be nothing more than thugs."
 
 #. [message]: speaker=Harper
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:395
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:396
+#, fuzzy
+#| msgid ""
+#| "We’ve got to tell the people of Delwyn about this. Ol magistrate Relana "
+#| "will have some ideas."
 msgid ""
-"We’ve got to tell the people of Delwyn about this. Ol magistrate Relana will "
-"have some ideas."
+"We’ve got to tell the people of Delwyn about this. Ol’ magistrate Relana "
+"will have some ideas."
 msgstr ""
 "We’ve got to tell the people of Delwyn about this. Ol magistrate Relana will "
 "have some ideas."
 
 #. [message]: role=Advisor
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:400
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:401
 msgid ""
 "That’s true. Whenever there’s been troubles, we’ve always been the ones to "
 "be helping each other."
@@ -769,7 +773,7 @@ msgstr ""
 "be helping each other."
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:405
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:406
 msgid ""
 "Fine. We’ll go to Delwyn, see what Relana gots to say. With them riders so "
 "eagerly attackin’ us today, I’m thinking Delwyn wills be under threat too."
@@ -778,12 +782,12 @@ msgstr ""
 "eagerly attackin’ us today, I’m thinking Delwyn wills be under threat too."
 
 #. [message]: speaker=Harper
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:410
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:411
 msgid "So we’ll have to fight them Wesnothians again?"
 msgstr "So we’ll have to fight them Wesnothians again?"
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:415
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:416
 msgid ""
 "Alls I can say for certain is we’ve made ourselves enemies of the Crown. "
 "They’ll be hunting fer us now."
@@ -792,27 +796,27 @@ msgstr ""
 "They’ll be hunting fer us now."
 
 #. [message]: speaker=Harper
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:420
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:421
 msgid "Then we’re outlaws."
 msgstr "Then we’re outlaws."
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:425
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:426
 msgid "Aye, outlaws."
 msgstr "Aye, outlaws."
 
 #. [message]: speaker=Reinforcement Knight
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:518
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:519
 msgid "At your order, Captain."
 msgstr "At your order, Captain."
 
 #. [message]: speaker=Tarwen
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:522
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:523
 msgid "Slay them all."
 msgstr "Slay them all."
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:526
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:527
 msgid ""
 "Curses! Their reinforcements has arrived. We’ve gots no chance to fight ‘em "
 "off now..."
@@ -1469,9 +1473,9 @@ msgstr "Plunk!"
 msgid "Hold there, soldier! Can we not come to terms without bloodshed?"
 msgstr "Hold there, soldier! Can we not come to terms without bloodshed?"
 
-#. [message]: type=Spearman
 #. [message]: speaker=unit
 #. [message]: speaker=Lord Maddock
+#. [message]: type=Spearman
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:409
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:850
 #: data/campaigns/Liberty/scenarios/06_The_Hunters.cfg:873
@@ -3081,10 +3085,16 @@ msgstr ""
 "says."
 
 #. [part]
-#: data/campaigns/Liberty/scenarios/08_Epilogue.cfg:46
+#: data/campaigns/Liberty/scenarios/08_Epilogue.cfg:47
+#, fuzzy
+#| msgid ""
+#| "<i>“Baldras, you would’ve been proud. We fought them soldiers off twice, "
+#| "gave them a good ol thrashing they won’t ever forget. But in the end, it "
+#| "weren’t enough. We had to run like criminals before they killed us all.”</"
+#| "i>"
 msgid ""
 "<i>“Baldras, you would’ve been proud. We fought them soldiers off twice, "
-"gave them a good ol thrashing they won’t ever forget. But in the end, it "
+"gave them a good ol’ thrashing they won’t ever forget. But in the end, it "
 "weren’t enough. We had to run like criminals before they killed us all.”</i>"
 msgstr ""
 "<i>“Baldras, you would’ve been proud. We fought them soldiers off twice, "
@@ -3092,10 +3102,17 @@ msgstr ""
 "weren’t enough. We had to run like criminals before they killed us all.”</i>"
 
 #. [part]
-#: data/campaigns/Liberty/scenarios/08_Epilogue.cfg:50
+#: data/campaigns/Liberty/scenarios/08_Epilogue.cfg:51
+#, fuzzy
+#| msgid ""
+#| "<i>“I don’t knows if you and Harper will sees this note, but if you do, "
+#| "I’m expecting ya to come find us. Remember them ol pirate islands we used "
+#| "to hear some of them Elensefar sailors talk about? We be heading there, "
+#| "southwest of the city and past the land’s end. See you in the Three "
+#| "Sisters, old friend. ― Relana”</i>"
 msgid ""
 "<i>“I don’t knows if you and Harper will sees this note, but if you do, I’m "
-"expecting ya to come find us. Remember them ol pirate islands we used to "
+"expecting ya to come find us. Remember them ol’ pirate islands we used to "
 "hear some of them Elensefar sailors talk about? We be heading there, "
 "southwest of the city and past the land’s end. See you in the Three Sisters, "
 "old friend. ― Relana”</i>"
@@ -3107,7 +3124,7 @@ msgstr ""
 "friend. ― Relana”</i>"
 
 #. [part]
-#: data/campaigns/Liberty/scenarios/08_Epilogue.cfg:54
+#: data/campaigns/Liberty/scenarios/08_Epilogue.cfg:55
 msgid ""
 "So they survived! Them islands be a bit far, but I suppose these old bones "
 "has one more adventure left in them..."

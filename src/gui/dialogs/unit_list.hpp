@@ -25,9 +25,7 @@
 
 class display;
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 void show_unit_list(display& gui);
 
@@ -65,4 +63,3 @@ private:
 };
 
 } // namespace dialogs
-} // namespace gui2

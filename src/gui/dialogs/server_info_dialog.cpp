@@ -21,9 +21,7 @@
 #include "gui/widgets/stacked_widget.hpp"
 #include "gui/widgets/window.hpp"
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 
 REGISTER_DIALOG(server_info)
@@ -58,5 +56,4 @@ void server_info::tab_switch_callback()
 	pager.select_layer(std::max<int>(0, tab_bar.get_selected_row()));
 }
 
-}
 }

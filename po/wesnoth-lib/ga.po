@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ga\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-01-16 17:18+0300\n"
+"POT-Creation-Date: 2021-02-20 18:40-0300\n"
 "PO-Revision-Date: 2012-02-21 15:26-0800\n"
 "Last-Translator: Carson Callis aka Mountian_King <tree_rings@rocketmail."
 "com>\n"
@@ -59,10 +59,10 @@ msgstr ""
 msgid "Multiplayer_AI^Dev AI: Default + Poisoning (Formula AI)"
 msgstr ""
 
-#. [terrain_type]: id=zfarmer-fence  # AI-animal-proof fences from first scenario
-#. [terrain_type]: id=farmer-fence  # AI-animal-proof fences from first scenario
 #. [terrain_type]: id=fence
 #. [terrain_type]: id=fence_iron
+#. [terrain_type]: id=farmer-fence  # AI-animal-proof fences from first scenario
+#. [terrain_type]: id=zfarmer-fence  # AI-animal-proof fences from first scenario
 #: data/campaigns/Secrets_of_the_Ancients/utils/terrain-compat.cfg:9
 #: data/campaigns/Secrets_of_the_Ancients/utils/terrain.cfg:5
 #: data/core/terrain.cfg:479 data/core/terrain.cfg:489
@@ -2071,13 +2071,13 @@ msgid ""
 msgstr ""
 
 #. [button]: id=reset_option_values
-#. [button]: id=btn_reset_hotkeys
 #. [button]: id=orb_defaults
+#. [button]: id=btn_reset_hotkeys
 #. [button]: id=revert_to_defaults
 #: data/gui/macros/custom_options_tree.cfg:250
 #: data/gui/window/mp_alerts_options.cfg:227
-#: data/gui/window/preferences/02_hotkeys.cfg:296
-#: data/gui/window/select_orb_colors.cfg:102
+#: data/gui/window/preferences/02_hotkeys.cfg:279
+#: data/gui/window/select_orb_colors.cfg:127
 #, fuzzy
 #| msgid "Default"
 msgid "Defaults"
@@ -2092,9 +2092,9 @@ msgstr "Roghnaigh Imreoir"
 
 #. [toggle_button]: id=sort_0
 #. [label]
-#. [label]: id=name
-#. [toggle_button]: id=sort_1
 #. [toggle_button]: id=sort_name
+#. [toggle_button]: id=sort_1
+#. [label]: id=name
 #: data/gui/widget/addon_list.cfg:78 data/gui/window/campaign_dialog.cfg:216
 #: data/gui/window/game_load.cfg:157 data/gui/window/mp_connect.cfg:159
 #: data/gui/window/terrain_layers.cfg:45 data/gui/window/unit_list.cfg:93
@@ -2160,7 +2160,7 @@ msgstr ""
 #. [button]: id=single_uninstall
 #. [button]: id=uninstall
 #: data/gui/widget/addon_list.cfg:435 data/gui/window/addon_manager.cfg:244
-#: src/gui/dialogs/addon/manager.cpp:840
+#: src/gui/dialogs/addon/manager.cpp:806
 #, fuzzy
 #| msgid "Uninstall Add-ons"
 msgid "Uninstall add-on"
@@ -2171,12 +2171,12 @@ msgstr "Díshuiteáil forlíontáin"
 msgid "Messages waiting"
 msgstr "Teachtaireachtaí ag fanacht"
 
-#. [button]: id=click_dismiss
 #. [button]: id=close_window
+#. [button]: id=click_dismiss
 #. [button]: id=cancel
 #. [button]: id=ok
 #: data/gui/widget/chatbox.cfg:51 data/gui/widget/window_default.cfg:106
-#: data/gui/window/attack_predictions.cfg:304 data/gui/window/chat_log.cfg:200
+#: data/gui/window/attack_predictions.cfg:304 data/gui/window/chat_log.cfg:201
 #: data/gui/window/end_credits.cfg:145
 #: data/gui/window/game_cache_options.cfg:247
 #: data/gui/window/game_stats.cfg:843 data/gui/window/game_version.cfg:652
@@ -2186,11 +2186,11 @@ msgstr "Teachtaireachtaí ag fanacht"
 #: data/gui/window/lobby_player_info.cfg:292
 #: data/gui/window/lua_interpreter.cfg:130 data/gui/window/message.cfg:135
 #: data/gui/window/mp_alerts_options.cfg:242
-#: data/gui/window/preferences.cfg:429
+#: data/gui/window/mp_match_history.cfg:111 data/gui/window/preferences.cfg:430
 #: data/gui/window/screenshot_notification.cfg:214
 #: data/gui/window/server_info.cfg:253
-#: data/gui/window/statistics_dialog.cfg:615
-#: data/gui/window/terrain_layers.cfg:434 data/gui/window/unit_list.cfg:447
+#: data/gui/window/statistics_dialog.cfg:623
+#: data/gui/window/terrain_layers.cfg:434 data/gui/window/unit_list.cfg:446
 msgid "Close"
 msgstr "Dún"
 
@@ -2262,7 +2262,7 @@ msgstr "Ceangail"
 #: data/gui/window/mp_login.cfg:257 data/gui/window/mp_method_selection.cfg:341
 #: data/gui/window/mp_staging.cfg:433
 #: data/gui/window/network_transmission.cfg:111
-#: data/gui/window/select_orb_colors.cfg:124
+#: data/gui/window/select_orb_colors.cfg:149
 #: data/gui/window/simple_item_selector.cfg:158
 #: data/gui/window/sp_options_configure.cfg:117
 #: data/gui/window/surrender_quit.cfg:114 data/gui/window/theme_list.cfg:155
@@ -2309,7 +2309,7 @@ msgstr "Scrios"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [scroll_label]: id=description
 #: data/gui/window/addon_manager.cfg:157
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:577
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:575
 msgid "No description available."
 msgstr "Níl tuairisc ann."
 
@@ -2363,7 +2363,7 @@ msgstr ""
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=dependencies
-#: data/gui/window/addon_manager.cfg:520 src/gui/dialogs/addon/manager.cpp:914
+#: data/gui/window/addon_manager.cfg:520 src/gui/dialogs/addon/manager.cpp:880
 msgid "addon_dependencies^None"
 msgstr ""
 
@@ -2374,7 +2374,7 @@ msgstr "Aistriúcháin:"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=translations
-#: data/gui/window/addon_manager.cfg:554 src/gui/dialogs/addon/manager.cpp:928
+#: data/gui/window/addon_manager.cfg:554 src/gui/dialogs/addon/manager.cpp:894
 msgid "translations^None"
 msgstr "Nialas"
 
@@ -2385,7 +2385,7 @@ msgstr ""
 
 #. [text_box]: id=filter
 #: data/gui/window/addon_manager.cfg:623
-msgid "Filters on addon description, version, type or author."
+msgid "Filters on addon description, version, type or author"
 msgstr ""
 
 #. [label]
@@ -2411,8 +2411,8 @@ msgstr "Forlíontáin"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=details_toggle
-#: data/gui/window/addon_manager.cfg:875 src/gui/dialogs/addon/manager.cpp:472
-#: src/gui/dialogs/addon/manager.cpp:663
+#: data/gui/window/addon_manager.cfg:875 src/gui/dialogs/addon/manager.cpp:438
+#: src/gui/dialogs/addon/manager.cpp:629
 msgid "Addon Details"
 msgstr ""
 
@@ -2433,8 +2433,8 @@ msgstr ""
 msgid "Choose the add-ons you want to remove."
 msgstr ""
 
-#. [button]: id=remove
 #. [button]: id=ok
+#. [button]: id=remove
 #: data/gui/window/addon_uninstall_list.cfg:161
 #: data/gui/window/preferences/05_multiplayer.cfg:289
 msgid "Remove"
@@ -2522,8 +2522,8 @@ msgstr "Teorainn ama"
 msgid "Sort in approximate chronological order of story events"
 msgstr ""
 
-#. [label]: id=mods_header
 #. [label]
+#. [label]: id=mods_header
 #: data/gui/window/campaign_dialog.cfg:281
 #: data/gui/window/mp_create_game.cfg:203
 #, fuzzy
@@ -2609,10 +2609,10 @@ msgstr "Imir feachtas"
 msgid "game^Play"
 msgstr "Imir"
 
-#. [label]: id=title
 #. [slider]: id=enemey_gold_factor
+#. [label]: id=title
 #: data/gui/window/campaign_difficulty.cfg:53
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:259
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:257
 msgid "Difficulty"
 msgstr "Deacracht"
 
@@ -2638,8 +2638,8 @@ msgstr "Leathanach:"
 msgid "Last"
 msgstr "Deireanach"
 
-#. [button]: id=previous_page
 #. [button]: id=previous_tip
+#. [button]: id=previous_page
 #: data/gui/window/chat_log.cfg:105 data/gui/window/title_screen.cfg:190
 msgid "Previous"
 msgstr "Roimhe"
@@ -2651,8 +2651,8 @@ msgstr "Roimhe"
 msgid "Previous page"
 msgstr "Roimhe"
 
-#. [button]: id=next_page
 #. [button]: id=next_tip
+#. [button]: id=next_page
 #: data/gui/window/chat_log.cfg:114 data/gui/window/title_screen.cfg:205
 msgid "Next"
 msgstr "Ar Aghaidh"
@@ -2665,13 +2665,13 @@ msgid "Next page"
 msgstr "Foireann Eile"
 
 #. [button]: id=copy
-#: data/gui/window/chat_log.cfg:186 data/gui/window/gamestate_inspector.cfg:335
+#: data/gui/window/chat_log.cfg:187 data/gui/window/gamestate_inspector.cfg:335
 #: data/gui/window/lua_interpreter.cfg:105 data/gui/window/wml_error.cfg:124
 msgid "clipboard^Copy"
 msgstr ""
 
 #. [button]: id=copy
-#: data/gui/window/chat_log.cfg:187 data/gui/window/lua_interpreter.cfg:106
+#: data/gui/window/chat_log.cfg:188 data/gui/window/lua_interpreter.cfg:106
 #, fuzzy
 #| msgid "Choose the game to load"
 msgid "Copy this log to clipboard"
@@ -2698,7 +2698,7 @@ msgstr "Lódáil Cluiche"
 #: data/gui/window/mp_faction_select.cfg:388
 #: data/gui/window/mp_join_game_password_prompt.cfg:136
 #: data/gui/window/mp_login.cfg:243 data/gui/window/mp_method_selection.cfg:327
-#: data/gui/window/select_orb_colors.cfg:113
+#: data/gui/window/select_orb_colors.cfg:138
 #: data/gui/window/simple_item_selector.cfg:145
 #: data/gui/window/sp_options_configure.cfg:105
 #: data/gui/window/theme_list.cfg:142 data/gui/window/unit_advance.cfg:191
@@ -2708,16 +2708,16 @@ msgstr "Lódáil Cluiche"
 msgid "OK"
 msgstr "Ta go maith"
 
-#. [button]: id=copy_
 #. [button]: id=copy
+#. [button]: id=copy_
 #: data/gui/window/custom_tod.cfg:50 data/gui/window/game_cache_options.cfg:110
 #: data/gui/window/game_version.cfg:46
 #: data/gui/window/screenshot_notification.cfg:33
 msgid "filesystem^Copy"
 msgstr ""
 
-#. [button]: id=copy_
 #. [button]: id=copy
+#. [button]: id=copy_
 #: data/gui/window/custom_tod.cfg:51 data/gui/window/game_cache_options.cfg:111
 #: data/gui/window/game_version.cfg:47
 #: data/gui/window/screenshot_notification.cfg:34
@@ -2726,15 +2726,15 @@ msgstr ""
 msgid "Copy this path to clipboard"
 msgstr "Roghnaigh an cluiche le lódáil"
 
-#. [button]: id=browse_
 #. [button]: id=browse
+#. [button]: id=browse_
 #: data/gui/window/custom_tod.cfg:66 data/gui/window/game_cache_options.cfg:126
 #: data/gui/window/game_version.cfg:62
 msgid "filesystem^Browse"
 msgstr ""
 
-#. [button]: id=browse_
 #. [button]: id=browse
+#. [button]: id=browse_
 #: data/gui/window/custom_tod.cfg:67 data/gui/window/game_cache_options.cfg:127
 #: data/gui/window/game_version.cfg:63
 msgid "Browse this location using a file manager"
@@ -2753,8 +2753,8 @@ msgstr ""
 #: data/gui/window/game_save_message.cfg:92
 #: data/gui/window/game_save_oos.cfg:90
 #: data/gui/window/screenshot_notification.cfg:120
-#: src/gui/dialogs/multiplayer/mp_connect.cpp:204
-#: src/gui/dialogs/unit_recall.cpp:324
+#: src/gui/dialogs/multiplayer/mp_connect.cpp:185
+#: src/gui/dialogs/unit_recall.cpp:322
 msgid "Name:"
 msgstr "Aimn:"
 
@@ -2815,8 +2815,8 @@ msgstr "Scrios"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/depcheck_confirm_change.cfg:40
-#: src/gui/dialogs/addon/manager.cpp:813 src/gui/dialogs/file_dialog.cpp:304
-#: src/gui/dialogs/file_dialog.cpp:730
+#: src/gui/dialogs/addon/manager.cpp:779 src/gui/dialogs/file_dialog.cpp:302
+#: src/gui/dialogs/file_dialog.cpp:728
 msgid "Confirm"
 msgstr ""
 
@@ -2928,7 +2928,7 @@ msgstr "Cuntas:"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/editor_edit_scenario.cfg:170
-#: src/gui/dialogs/multiplayer/lobby.cpp:510
+#: src/gui/dialogs/multiplayer/lobby.cpp:508
 #, fuzzy
 #| msgid "Experience modifier"
 msgid "Experience modifier:"
@@ -3006,7 +3006,7 @@ msgstr ""
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/editor_edit_side.cfg:277
-#: src/gui/dialogs/multiplayer/lobby.cpp:511
+#: src/gui/dialogs/multiplayer/lobby.cpp:509
 #, fuzzy
 #| msgid "Gold per village"
 msgid "Gold per village:"
@@ -3031,7 +3031,7 @@ msgstr ""
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [row]
-#: data/gui/window/editor_edit_side.cfg:373 src/gui/dialogs/game_stats.cpp:71
+#: data/gui/window/editor_edit_side.cfg:373 src/gui/dialogs/game_stats.cpp:69
 msgid "controller^Human"
 msgstr ""
 
@@ -3087,7 +3087,7 @@ msgstr "Gineadóir Léarscáileanna"
 #. [button]: id=random_map_settings
 #: data/gui/window/editor_generate_map.cfg:128
 #: data/gui/window/mp_create_game.cfg:877
-#: src/gui/dialogs/multiplayer/lobby.cpp:509
+#: src/gui/dialogs/multiplayer/lobby.cpp:507
 msgid "Settings"
 msgstr "Socruithe"
 
@@ -3107,15 +3107,15 @@ msgstr "Gin"
 msgid "New Map"
 msgstr "Léarscáil Nua"
 
-#. [label]
 #. [grid]
+#. [label]
 #: data/gui/window/editor_new_map.cfg:55
 #: data/gui/window/generator_settings.cfg:107
 msgid "Width:"
 msgstr "Leithead:"
 
-#. [label]
 #. [grid]
+#. [label]
 #: data/gui/window/editor_new_map.cfg:82
 #: data/gui/window/generator_settings.cfg:109
 msgid "Height:"
@@ -3193,9 +3193,9 @@ msgstr ""
 msgid "Removes the current bookmark"
 msgstr ""
 
-#. [button]: id=server_delete
 #. [button]: id=delete
 #. [button]: id=delete_file
+#. [button]: id=server_delete
 #: data/gui/window/file_dialog.cfg:339 data/gui/window/game_load.cfg:513
 #: data/gui/window/mp_connect.cfg:284
 msgid "Delete"
@@ -3265,8 +3265,8 @@ msgid "Execution trace"
 msgstr "Lorg reatha"
 
 #. [button]: id=cancel
-#. [button]: id=quit_without_surrender
 #. [grid]
+#. [button]: id=quit_without_surrender
 #: data/gui/window/formula_debugger.cfg:234
 #: data/gui/window/surrender_quit.cfg:99 data/gui/window/title_screen.cfg:258
 msgid "Quit"
@@ -3403,8 +3403,8 @@ msgstr ""
 msgid "Open saves folder"
 msgstr ""
 
-#. [grid]
 #. [button]: id=ok
+#. [grid]
 #: data/gui/window/game_load.cfg:614 data/gui/window/title_screen.cfg:253
 msgid "Load"
 msgstr "Lódáil"
@@ -3421,7 +3421,7 @@ msgstr "Sábháil Cluiche"
 #. [button]: id=save
 #: data/gui/window/game_save.cfg:120
 #: data/gui/window/screenshot_notification.cfg:201
-#: src/gui/dialogs/file_dialog.cpp:183
+#: src/gui/dialogs/file_dialog.cpp:181
 #, fuzzy
 #| msgid "Save Map"
 msgid "Save"
@@ -3447,10 +3447,8 @@ msgstr "Forscríobh?"
 msgid "Save already exists. Do you want to overwrite it?"
 msgstr "Sábháil ann cheana. Forscríobh?"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [toggle_button]: id=sort_0
 #: data/gui/window/game_stats.cfg:35 data/gui/window/game_stats.cfg:283
-#: src/hotkey/hotkey_command.cpp:84
 #, fuzzy
 #| msgid "Leader"
 msgid "Leader"
@@ -3466,7 +3464,7 @@ msgstr "Foireann 1"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [toggle_button]: id=sort_2
 #: data/gui/window/game_stats.cfg:63
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:425
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:423
 msgid "Gold"
 msgstr ""
 
@@ -3497,7 +3495,7 @@ msgstr ""
 #. [toggle_button]: id=sort_6
 #: data/gui/window/game_stats.cfg:118 data/gui/window/mp_join_game.cfg:273
 #: data/gui/window/mp_join_game.cfg:286
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:431
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:429
 #, fuzzy
 #| msgid "Welcome"
 msgid "Income"
@@ -3545,7 +3543,7 @@ msgstr "Óir ó gach baile"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=title
-#: data/gui/window/game_stats.cfg:705 src/gui/dialogs/game_stats.cpp:255
+#: data/gui/window/game_stats.cfg:705 src/gui/dialogs/game_stats.cpp:253
 #, fuzzy
 #| msgid "Current room"
 msgid "Current Status"
@@ -3560,14 +3558,14 @@ msgstr "Cósan Uaimhe"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [widget]: id=tab_label
-#: data/gui/window/game_stats.cfg:793 src/gui/dialogs/game_stats.cpp:255
+#: data/gui/window/game_stats.cfg:793 src/gui/dialogs/game_stats.cpp:253
 #, fuzzy
 #| msgid "Editor Settings"
 msgid "Scenario Settings"
 msgstr "Socruithe Eagarthóra"
 
 #. [button]: id=ok
-#: data/gui/window/game_stats.cfg:832 data/gui/window/unit_list.cfg:436
+#: data/gui/window/game_stats.cfg:832 data/gui/window/unit_list.cfg:435
 #, fuzzy
 #| msgid "Scroll speed:"
 msgid "Scroll To"
@@ -3687,8 +3685,8 @@ msgstr "Cigire Staidcluiche"
 msgid "Copy this report to clipboard"
 msgstr "Roghnaigh an cluiche le lódáil"
 
-#. [button]: id=lua
 #. [label]
+#. [button]: id=lua
 #: data/gui/window/gamestate_inspector.cfg:348
 #: data/gui/window/lua_interpreter.cfg:38
 msgid "Lua Console"
@@ -3786,7 +3784,7 @@ msgid "Choose your preferred language:"
 msgstr "Roghnaigh do rogha béarla:"
 
 #. [label]: id=status
-#: data/gui/window/loadscreen.cfg:147
+#: data/gui/window/loadscreen.cfg:175
 #, fuzzy
 #| msgid "Load Game..."
 msgid "Loading..."
@@ -3874,13 +3872,11 @@ msgstr "Comhlíon"
 msgid "Announcements"
 msgstr "Ardroghanna"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [label]: id=title
 #. [grid]
+#. [label]: id=title
 #. [button]: id=show_preferences
 #: data/gui/window/lobby_main.cfg:460 data/gui/window/lobby_main.cfg:655
-#: data/gui/window/preferences.cfg:212 data/gui/window/title_screen.cfg:256
-#: src/hotkey/hotkey_command.cpp:118
+#: data/gui/window/preferences.cfg:213 data/gui/window/title_screen.cfg:256
 msgid "Preferences"
 msgstr "Sainroghanna"
 
@@ -4088,7 +4084,7 @@ msgstr ""
 #. [widget]: id=label
 #. [label]
 #: data/gui/window/mp_alerts_options.cfg:147
-#: data/gui/window/preferences.cfg:346
+#: data/gui/window/preferences.cfg:347
 msgid "Sound"
 msgstr ""
 
@@ -4283,7 +4279,7 @@ msgstr ""
 
 #. [label]
 #: data/gui/window/mp_create_game.cfg:156
-msgid "Allow for mirror matchups when random factions are chosen."
+msgid "Allow for mirror matchups when random factions are chosen"
 msgstr ""
 
 #. [toggle_button]: id=use_map_settings
@@ -4445,7 +4441,7 @@ msgstr ""
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [widget]: id=tab_label
 #. [widget]: id=label
-#: data/gui/window/mp_create_game.cfg:533 data/gui/window/preferences.cfg:291
+#: data/gui/window/mp_create_game.cfg:533 data/gui/window/preferences.cfg:292
 #: data/gui/window/preferences/05_multiplayer.cfg:402
 #: data/gui/window/server_info.cfg:181 src/hotkey/hotkey_command.cpp:38
 #, fuzzy
@@ -4537,7 +4533,7 @@ msgstr "Pasfhocal:"
 #. [text_box]: id=game_password
 #: data/gui/window/mp_create_game.cfg:1004
 msgid ""
-"Set the password that people wanting to join your game as players must enter."
+"Set the password that people wanting to join your game as players must enter"
 msgstr ""
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
@@ -4545,7 +4541,7 @@ msgstr ""
 #: data/gui/window/mp_create_game/default_resolution.cfg:176
 #: data/gui/window/mp_create_game/small_resolution.cfg:181
 #: data/gui/window/mp_create_game/tiny_resolution.cfg:164
-#: src/gui/dialogs/multiplayer/lobby.cpp:512
+#: src/gui/dialogs/multiplayer/lobby.cpp:510
 #, fuzzy
 #| msgid "Map size: "
 msgid "Map size:"
@@ -4566,8 +4562,8 @@ msgstr "Inscne:"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [row]
 #: data/gui/window/mp_faction_select.cfg:176
-#: src/gui/dialogs/multiplayer/faction_select.cpp:141
-#: src/gui/dialogs/multiplayer/mp_staging.cpp:494
+#: src/gui/dialogs/multiplayer/faction_select.cpp:139
+#: src/gui/dialogs/multiplayer/mp_staging.cpp:492
 msgid "Random"
 msgstr ""
 
@@ -4606,8 +4602,8 @@ msgstr "Roghnaigh Taifeach"
 msgid "Starting position:"
 msgstr "Uirlis \"Socraigh Suíomhanna Tosaithe\""
 
-#. [label]
 #. [widget]: id=name
+#. [label]
 #: data/gui/window/mp_host_game_prompt.cfg:40
 #: data/gui/window/mp_method_selection.cfg:273
 msgid "Host Networked Game"
@@ -4655,7 +4651,7 @@ msgstr "Forsheomra"
 #. [label]: id=status_label
 #: data/gui/window/mp_join_game.cfg:491 data/gui/window/mp_staging.cfg:614
 #: data/gui/window/mp_staging.cfg:806
-#: src/gui/dialogs/multiplayer/mp_staging.cpp:510
+#: src/gui/dialogs/multiplayer/mp_staging.cpp:508
 msgid "Waiting for players to join..."
 msgstr ""
 
@@ -4694,11 +4690,11 @@ msgstr "Sábháil pasfhocal do socruithe (glan téacs)"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#. [widget]: id=label
 #. [grid]
+#. [widget]: id=label
 #: data/gui/window/mp_method_selection.cfg:46
-#: data/gui/window/preferences.cfg:364 data/gui/window/title_screen.cfg:252
-#: src/gui/dialogs/game_load.cpp:427
+#: data/gui/window/preferences.cfg:365 data/gui/window/title_screen.cfg:252
+#: src/gui/dialogs/game_load.cpp:382
 msgid "Multiplayer"
 msgstr "Ilimreoir"
 
@@ -4781,28 +4777,28 @@ msgid "Press ESC to skip"
 msgstr ""
 
 #. [widget]: id=label
-#: data/gui/window/preferences.cfg:310
+#: data/gui/window/preferences.cfg:311
 #, fuzzy
 #| msgid "Hotkeys"
 msgid "Hotkeys"
 msgstr "Eochracha Aicearra"
 
 #. [widget]: id=label
-#: data/gui/window/preferences.cfg:328
+#: data/gui/window/preferences.cfg:329
 #, fuzzy
 #| msgid "Refresh Display"
 msgid "Display"
 msgstr "Athnuaigh teaispeáint"
 
 #. [widget]: id=label
-#: data/gui/window/preferences.cfg:382
+#: data/gui/window/preferences.cfg:383
 #, fuzzy
 #| msgid "sound^Advanced Options"
 msgid "Advanced"
 msgstr "Ardroghanna"
 
 #. [button]: id=about
-#: data/gui/window/preferences.cfg:418 data/gui/window/title_screen.cfg:461
+#: data/gui/window/preferences.cfg:419 data/gui/window/title_screen.cfg:461
 msgid "Display the game version and build information"
 msgstr ""
 
@@ -4927,17 +4923,22 @@ msgid "Maximum auto-saves:"
 msgstr "Uasmhéid Uath-Sábháilte: "
 
 #. [column]
-#: data/gui/window/preferences/01_general.cfg:201
+#: data/gui/window/preferences/01_general.cfg:200
+msgid "∞"
+msgstr ""
+
+#. [column]
+#: data/gui/window/preferences/01_general.cfg:202
 msgid "Set maximum number of automatic saves to be retained"
 msgstr ""
 
 #. [button]: id=cachemg
-#: data/gui/window/preferences/01_general.cfg:217
+#: data/gui/window/preferences/01_general.cfg:218
 msgid "Cache"
 msgstr ""
 
 #. [button]: id=cachemg
-#: data/gui/window/preferences/01_general.cfg:218
+#: data/gui/window/preferences/01_general.cfg:219
 #, fuzzy
 #| msgid "Change the sample rate"
 msgid "Manage the game WML cache"
@@ -4945,26 +4946,21 @@ msgstr "Athraigh an ráta samplála."
 
 #. [label]
 #: data/gui/window/preferences/02_hotkeys.cfg:25
-msgid "Categories:"
-msgstr ""
-
-#. [label]
-#: data/gui/window/preferences/02_hotkeys.cfg:53
 msgid "Filter:"
 msgstr "Scagaire:"
 
 #. [text_box]: id=filter
-#: data/gui/window/preferences/02_hotkeys.cfg:67
-msgid "Filters on hotkey description."
+#: data/gui/window/preferences/02_hotkeys.cfg:50
+msgid "Filters on hotkey description"
 msgstr ""
 
 #. [toggle_button]: id=sort_0
-#: data/gui/window/preferences/02_hotkeys.cfg:111
+#: data/gui/window/preferences/02_hotkeys.cfg:94
 msgid "Action"
 msgstr "Gníomhú"
 
 #. [toggle_button]: id=sort_1
-#: data/gui/window/preferences/02_hotkeys.cfg:123
+#: data/gui/window/preferences/02_hotkeys.cfg:106
 #, fuzzy
 #| msgid "Hotkeys"
 msgid "Hotkey"
@@ -4973,51 +4969,51 @@ msgstr "Eochracha Aicearra"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [toggle_button]: id=sort_2
 #. Translate G as the initial letter for Game
-#: data/gui/window/preferences/02_hotkeys.cfg:135
-#: src/gui/dialogs/preferences_dialog.cpp:791
+#: data/gui/window/preferences/02_hotkeys.cfg:118
+#: src/gui/dialogs/preferences_dialog.cpp:775
 msgid "game_hotkeys^G"
 msgstr ""
 
 #. [toggle_button]: id=sort_2
-#: data/gui/window/preferences/02_hotkeys.cfg:136
+#: data/gui/window/preferences/02_hotkeys.cfg:119
 msgid "Available in game"
 msgstr ""
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [toggle_button]: id=sort_3
 #. Translate E as the initial letter for Editor
-#: data/gui/window/preferences/02_hotkeys.cfg:148
-#: src/gui/dialogs/preferences_dialog.cpp:792
+#: data/gui/window/preferences/02_hotkeys.cfg:131
+#: src/gui/dialogs/preferences_dialog.cpp:776
 msgid "editor_hotkeys^E"
 msgstr ""
 
 #. [toggle_button]: id=sort_3
-#: data/gui/window/preferences/02_hotkeys.cfg:149
+#: data/gui/window/preferences/02_hotkeys.cfg:132
 msgid "Available in editor"
 msgstr ""
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [toggle_button]: id=sort_4
 #. Translate T as the initial letter for Title Screen
-#: data/gui/window/preferences/02_hotkeys.cfg:161
-#: src/gui/dialogs/preferences_dialog.cpp:793
+#: data/gui/window/preferences/02_hotkeys.cfg:144
+#: src/gui/dialogs/preferences_dialog.cpp:777
 msgid "titlescreen_hotkeys^T"
 msgstr ""
 
 #. [toggle_button]: id=sort_4
-#: data/gui/window/preferences/02_hotkeys.cfg:162
+#: data/gui/window/preferences/02_hotkeys.cfg:145
 msgid "Available at main menu"
 msgstr ""
 
 #. [button]: id=btn_add_hotkey
-#: data/gui/window/preferences/02_hotkeys.cfg:274
+#: data/gui/window/preferences/02_hotkeys.cfg:257
 #, fuzzy
 #| msgid "Hotkeys"
 msgid "Add Hotkey"
 msgstr "Eochracha Aicearra"
 
 #. [button]: id=btn_clear_hotkey
-#: data/gui/window/preferences/02_hotkeys.cfg:285
+#: data/gui/window/preferences/02_hotkeys.cfg:268
 msgid "Clear Hotkey"
 msgstr "Glan Eochair aicearra"
 
@@ -5368,40 +5364,52 @@ msgid "Browse the screenshots folder using a file manager"
 msgstr ""
 
 #. [label]
-#: data/gui/window/select_orb_colors.cfg:80
+#: data/gui/window/select_orb_colors.cfg:104
 msgid "Choose Orb/Minimap Colors"
 msgstr ""
 
 #. [grid]
-#: data/gui/window/select_orb_colors.cfg:84
+#: data/gui/window/select_orb_colors.cfg:108
 #, fuzzy
 #| msgid "Show Enemy Moves"
 msgid "Show unmoved orb"
 msgstr "Taispeáin Gluaiseachtaí Naimhdeacha"
 
 #. [grid]
-#: data/gui/window/select_orb_colors.cfg:85
+#: data/gui/window/select_orb_colors.cfg:109
 #, fuzzy
 #| msgid "Show team colors"
 msgid "Show partial moved orb"
 msgstr "Taispeáin Dathanna na Foirne"
 
 #. [grid]
-#: data/gui/window/select_orb_colors.cfg:86
+#: data/gui/window/select_orb_colors.cfg:110
+#, fuzzy
+#| msgid "Show Enemy Moves"
+msgid "Show disengaged orb"
+msgstr "Taispeáin Gluaiseachtaí Naimhdeacha"
+
+#. [grid]
+#: data/gui/window/select_orb_colors.cfg:110
+msgid "This uses the colors for partial and moved orbs."
+msgstr ""
+
+#. [grid]
+#: data/gui/window/select_orb_colors.cfg:111
 #, fuzzy
 #| msgid "Show team colors"
 msgid "Show moved orb"
 msgstr "Taispeáin Dathanna na Foirne"
 
 #. [grid]
-#: data/gui/window/select_orb_colors.cfg:87
+#: data/gui/window/select_orb_colors.cfg:112
 #, fuzzy
 #| msgid "Show all lobby joins"
 msgid "Show ally orb"
 msgstr "Taispeáin Comhcheangail Forhalla Uile"
 
 #. [grid]
-#: data/gui/window/select_orb_colors.cfg:88
+#: data/gui/window/select_orb_colors.cfg:113
 #, fuzzy
 #| msgid "Show Enemy Moves"
 msgid "Show enemy orb"
@@ -5433,17 +5441,17 @@ msgstr ""
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=title
-#: data/gui/window/statistics_dialog.cfg:483 src/hotkey/hotkey_command.cpp:121
+#: data/gui/window/statistics_dialog.cfg:490 src/hotkey/hotkey_command.cpp:121
 msgid "Statistics"
 msgstr "Staitistic"
 
 #. [column]
-#: data/gui/window/statistics_dialog.cfg:549
+#: data/gui/window/statistics_dialog.cfg:557
 msgid "Damage"
 msgstr ""
 
 #. [column]
-#: data/gui/window/statistics_dialog.cfg:550
+#: data/gui/window/statistics_dialog.cfg:558
 msgid ""
 "stats dialog^Difference of actual outcome to expected outcome, as a "
 "percentage.\n"
@@ -5454,17 +5462,17 @@ msgid ""
 msgstr ""
 
 #. [column]
-#: data/gui/window/statistics_dialog.cfg:553
+#: data/gui/window/statistics_dialog.cfg:561
 msgid "stats dialog^Ratio of actual to expected"
 msgstr ""
 
 #. [column]
-#: data/gui/window/statistics_dialog.cfg:568
+#: data/gui/window/statistics_dialog.cfg:576
 msgid "Hits"
 msgstr ""
 
 #. [column]
-#: data/gui/window/statistics_dialog.cfg:571
+#: data/gui/window/statistics_dialog.cfg:579
 msgid ""
 "stats dialog^The <i>a priori</i> probability of inflicting/taking at most "
 "this many hits, in percent.\n"
@@ -5711,31 +5719,31 @@ msgid "Moves"
 msgstr ""
 
 #. [label]
-#: data/gui/window/unit_list.cfg:121
+#: data/gui/window/unit_list.cfg:120
 msgid "Status"
 msgstr "Stádas"
 
 #. [toggle_button]: id=sort_3
-#: data/gui/window/unit_list.cfg:135
+#: data/gui/window/unit_list.cfg:134
 msgid "HP"
 msgstr ""
 
 #. [toggle_button]: id=sort_4
 #. [toggle_button]: id=sort_2
-#: data/gui/window/unit_list.cfg:149 data/gui/window/unit_recall.cfg:61
+#: data/gui/window/unit_list.cfg:148 data/gui/window/unit_recall.cfg:61
 msgid "Lvl"
 msgstr ""
 
 #. [toggle_button]: id=sort_5
 #. [toggle_button]: id=sort_3
-#: data/gui/window/unit_list.cfg:163 data/gui/window/unit_recall.cfg:75
+#: data/gui/window/unit_list.cfg:162 data/gui/window/unit_recall.cfg:75
 msgid "XP"
 msgstr ""
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [toggle_button]: id=sort_6
 #. [toggle_button]: id=sort_4
-#: data/gui/window/unit_list.cfg:177 data/gui/window/unit_recall.cfg:89
+#: data/gui/window/unit_list.cfg:176 data/gui/window/unit_recall.cfg:89
 #: src/gui/widgets/unit_preview_pane.cpp:375
 #: src/gui/widgets/unit_preview_pane.cpp:525
 msgid "Traits"
@@ -5743,7 +5751,7 @@ msgstr ""
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/window/unit_list.cfg:368 src/hotkey/hotkey_command.cpp:120
+#: data/gui/window/unit_list.cfg:367 src/hotkey/hotkey_command.cpp:120
 msgid "Unit List"
 msgstr "Liosta Aonad"
 
@@ -5756,7 +5764,7 @@ msgstr "Athainmnigh Aonad"
 
 #. [text_box]: id=filter_box
 #: data/gui/window/unit_recall.cfg:311
-msgid "Search for unit name, unit type name, unit level, or trait."
+msgid "Search for unit name, unit type name, unit level, or trait"
 msgstr ""
 
 #. [button]: id=rename
@@ -5793,36 +5801,40 @@ msgstr "Earcaigh"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/wml_error.cfg:40 src/gui/dialogs/message.cpp:210
-#: src/gui/dialogs/preferences_dialog.cpp:251
+#: src/gui/dialogs/preferences_dialog.cpp:235
 #: src/gui/dialogs/transient_message.cpp:78
 msgid "Error"
 msgstr "Earráid"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=details_heading
-#: data/gui/window/wml_error.cfg:112 src/gui/dialogs/multiplayer/lobby.cpp:242
-#: src/gui/dialogs/multiplayer/lobby.cpp:258 src/gui/dialogs/wml_error.cpp:195
+#: data/gui/window/wml_error.cfg:112 src/gui/dialogs/multiplayer/lobby.cpp:240
+#: src/gui/dialogs/multiplayer/lobby.cpp:256 src/gui/dialogs/wml_error.cpp:160
 msgid "Details:"
 msgstr ""
 
-#: src/build_info.cpp:276
+#: src/build_info.cpp:277
 msgid "feature^Lua console completion"
 msgstr ""
 
-#: src/build_info.cpp:281
+#: src/build_info.cpp:282
 msgid "feature^Legacy bidirectional rendering"
 msgstr ""
 
-#: src/build_info.cpp:288
+#: src/build_info.cpp:289
 msgid "feature^D-Bus notifications back end"
 msgstr ""
 
-#: src/build_info.cpp:297
+#: src/build_info.cpp:298
 msgid "feature^Win32 notifications back end"
 msgstr ""
 
-#: src/build_info.cpp:303
+#: src/build_info.cpp:304
 msgid "feature^Cocoa notifications back end"
+msgstr ""
+
+#: src/build_info.cpp:342 src/desktop/version.cpp:113
+msgid "cpu_architecture^<unknown>"
 msgstr ""
 
 #: src/desktop/paths.cpp:96
@@ -5853,31 +5865,27 @@ msgstr ""
 msgid "filesystem_path_system^Root"
 msgstr ""
 
-#: src/desktop/version.cpp:113
-msgid "cpu_archictecture^<unknown>"
-msgstr ""
-
 #: src/desktop/version.cpp:327
 msgid "operating_system^<unknown>"
 msgstr ""
 
 #. TRANSLATORS: translate the part inside <...> only
-#: src/filesystem.cpp:637
+#: src/filesystem.cpp:635
 msgid "--userdata-dir=<relative path that doesn't start with a period>"
 msgstr ""
 
-#: src/filesystem.cpp:640
+#: src/filesystem.cpp:638
 msgid ""
 "Use an absolute path, or a relative path that starts with a period and a "
 "backslash"
 msgstr ""
 
 #. TRANSLATORS: translate the part inside <...> only
-#: src/filesystem.cpp:705 src/filesystem.cpp:726
+#: src/filesystem.cpp:703 src/filesystem.cpp:724
 msgid "--userdata-dir=<relative path>"
 msgstr ""
 
-#: src/filesystem.cpp:708 src/filesystem.cpp:729
+#: src/filesystem.cpp:706 src/filesystem.cpp:727
 msgid ""
 "Use absolute paths. Relative paths are deprecated because they are "
 "interpreted relative to $HOME"
@@ -5893,7 +5901,7 @@ msgstr ""
 #. other's resources rather than duplicating them. For example,
 #. Swedish (sv) and Danish (da) are such, so Swedish translator could
 #. translate this message as "sv,da", while Danish as "da,sv".
-#: src/filesystem.cpp:1635
+#: src/filesystem.cpp:1633
 msgid "language code for localized resources^en_US"
 msgstr "ga_IE,ga"
 
@@ -6007,596 +6015,596 @@ msgstr ""
 msgid "timespan^$num seconds"
 msgstr ""
 
-#: src/gui/core/canvas.cpp:610
+#: src/gui/core/canvas.cpp:265
 msgid "Line doesn't fit on canvas."
 msgstr "Ní oireann an líne seo ar an gcanbhás."
 
-#: src/gui/core/canvas.cpp:697
+#: src/gui/core/canvas.cpp:319
 msgid "Rectangle doesn't fit on canvas."
 msgstr "Ní oireann an dronuilleog seo ar an gcanbhás."
 
-#: src/gui/core/canvas.cpp:812
+#: src/gui/core/canvas.cpp:400
 #, fuzzy
 #| msgid "Rectangle doesn't fit on canvas."
 msgid "Rounded Rectangle doesn't fit on canvas."
 msgstr "Ní oireann an dronuilleog seo ar an gcanbhás."
 
-#: src/gui/core/canvas.cpp:921 src/gui/core/canvas.cpp:926
-#: src/gui/core/canvas.cpp:931 src/gui/core/canvas.cpp:937
+#: src/gui/core/canvas.cpp:479 src/gui/core/canvas.cpp:484
+#: src/gui/core/canvas.cpp:489 src/gui/core/canvas.cpp:495
 msgid "Circle doesn't fit on canvas."
 msgstr "Ní oireann an ciorcal seo ar an gcanbhás."
 
-#: src/gui/core/canvas.cpp:1037
+#: src/gui/core/canvas.cpp:538
 msgid "Image doesn't fit on canvas."
 msgstr "Ní oireann an íomhá seo ar an gcanbhás."
 
-#: src/gui/core/canvas.cpp:1256
+#: src/gui/core/canvas.cpp:705
 msgid "Text has a font size of 0."
 msgstr "Tá clómhéid 0 ag téacs."
 
-#: src/gui/core/canvas.cpp:1331
+#: src/gui/core/canvas.cpp:780
 msgid "Text doesn't start on canvas."
 msgstr "Ní oireann na téacsanna ar an gcanbhás."
 
-#: src/gui/core/widget_definition.cpp:49
+#: src/gui/core/widget_definition.cpp:30
 msgid "No state or draw section defined."
 msgstr ""
 
-#: src/gui/core/widget_definition.cpp:179 src/gui/core/window_builder.cpp:176
+#: src/gui/core/widget_definition.cpp:69 src/gui/core/window_builder.cpp:142
 msgid "No resolution defined."
 msgstr "Níl taifeach sainithe."
 
-#: src/gui/core/window_builder.cpp:58
+#: src/gui/core/window_builder.cpp:46
 msgid "Linked '$id' group has multiple definitions."
 msgstr ""
 
-#: src/gui/core/window_builder.cpp:317 src/gui/widgets/addon_list.cpp:430
-#: src/gui/widgets/chatbox.cpp:815 src/gui/widgets/listbox.cpp:810
-#: src/gui/widgets/multi_page.cpp:199 src/gui/widgets/panel.cpp:194
-#: src/gui/widgets/scroll_label.cpp:224 src/gui/widgets/scrollbar_panel.cpp:98
-#: src/gui/widgets/size_lock.cpp:125 src/gui/widgets/stacked_widget.cpp:240
-#: src/gui/widgets/toggle_panel.cpp:402 src/gui/widgets/tree_view.cpp:304
+#: src/gui/core/window_builder.cpp:176 src/gui/widgets/addon_list.cpp:430
+#: src/gui/widgets/chatbox.cpp:815 src/gui/widgets/listbox.cpp:731
+#: src/gui/widgets/multi_page.cpp:178 src/gui/widgets/panel.cpp:128
+#: src/gui/widgets/scroll_label.cpp:182 src/gui/widgets/scrollbar_panel.cpp:73
+#: src/gui/widgets/size_lock.cpp:108 src/gui/widgets/stacked_widget.cpp:219
+#: src/gui/widgets/toggle_panel.cpp:325 src/gui/widgets/tree_view.cpp:279
 #: src/gui/widgets/unit_preview_pane.cpp:608
 msgid "No grid defined."
 msgstr "Níl greille shainithe."
 
-#: src/gui/core/window_builder.cpp:433
+#: src/gui/core/window_builder.cpp:230
 #, fuzzy
 msgid "Grid '$grid' row $row must have at least one column."
 msgstr "Tá ort logáil isteach i dtosach."
 
-#: src/gui/core/window_builder.cpp:445
+#: src/gui/core/window_builder.cpp:242
 msgid ""
 "Grid '$grid' row $row has a differing number of columns ($found found, "
 "$expected expected)"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:194
+#: src/gui/dialogs/addon/manager.cpp:160
 #, fuzzy
 #| msgid "Uninstall Add-ons"
 msgid "addons_view^All Add-ons"
 msgstr "Díshuiteáil forlíontáin"
 
-#: src/gui/dialogs/addon/manager.cpp:195
+#: src/gui/dialogs/addon/manager.cpp:161
 msgid "addons_view^Installed"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:196
+#: src/gui/dialogs/addon/manager.cpp:162
 msgid "addons_view^Upgradable"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:197
+#: src/gui/dialogs/addon/manager.cpp:163
 #, fuzzy
 #| msgid "Uninstall Add-ons"
 msgid "addons_view^Publishable"
 msgstr "Díshuiteáil forlíontáin"
 
-#: src/gui/dialogs/addon/manager.cpp:198
+#: src/gui/dialogs/addon/manager.cpp:164
 msgid "addons_view^Not Installed"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:202
+#: src/gui/dialogs/addon/manager.cpp:168
 msgid "addons_of_type^Campaigns"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:203
+#: src/gui/dialogs/addon/manager.cpp:169
 msgid "addons_of_type^Scenarios"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:204
+#: src/gui/dialogs/addon/manager.cpp:170
 msgid "addons_of_type^SP/MP campaigns"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:205
+#: src/gui/dialogs/addon/manager.cpp:171
 msgid "addons_of_type^MP campaigns"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:206
+#: src/gui/dialogs/addon/manager.cpp:172
 msgid "addons_of_type^MP scenarios"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:207
+#: src/gui/dialogs/addon/manager.cpp:173
 msgid "addons_of_type^MP map-packs"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:208
+#: src/gui/dialogs/addon/manager.cpp:174
 msgid "addons_of_type^MP eras"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:209
+#: src/gui/dialogs/addon/manager.cpp:175
 msgid "addons_of_type^MP factions"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:210
+#: src/gui/dialogs/addon/manager.cpp:176
 #, fuzzy
 #| msgid "Choose Resolution"
 msgid "addons_of_type^Modifications"
 msgstr "Roghnaigh Taifeach"
 
-#: src/gui/dialogs/addon/manager.cpp:211
+#: src/gui/dialogs/addon/manager.cpp:177
 msgid "addons_of_type^Cores"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:212
+#: src/gui/dialogs/addon/manager.cpp:178
 msgid "addons_of_type^Resources"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:214
+#: src/gui/dialogs/addon/manager.cpp:180
 msgid "addons_of_type^Other"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:215
+#: src/gui/dialogs/addon/manager.cpp:181
 msgid "addons_of_type^Unknown"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:219
+#: src/gui/dialogs/addon/manager.cpp:185
 msgid "addons_order^Name ($order)"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:222
+#: src/gui/dialogs/addon/manager.cpp:188
 msgid "addons_order^Author ($order)"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:225
+#: src/gui/dialogs/addon/manager.cpp:191
 msgid "addons_order^Size ($order)"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:228
+#: src/gui/dialogs/addon/manager.cpp:194
 msgid "addons_order^Downloads ($order)"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:231
+#: src/gui/dialogs/addon/manager.cpp:197
 msgid "addons_order^Type ($order)"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:234
+#: src/gui/dialogs/addon/manager.cpp:200
 msgid "addons_order^Last updated ($datelike_order)"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:237
+#: src/gui/dialogs/addon/manager.cpp:203
 msgid "addons_order^First uploaded ($datelike_order)"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:261 src/gui/widgets/addon_list.cpp:103
+#: src/gui/dialogs/addon/manager.cpp:227 src/gui/widgets/addon_list.cpp:103
 msgid "addon_state^Not installed"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:262 src/gui/widgets/addon_list.cpp:103
+#: src/gui/dialogs/addon/manager.cpp:228 src/gui/widgets/addon_list.cpp:103
 msgid "addon_state^Published, not installed"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:266 src/gui/widgets/addon_list.cpp:111
+#: src/gui/dialogs/addon/manager.cpp:232 src/gui/widgets/addon_list.cpp:111
 msgid "addon_state^Installed"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:267 src/gui/widgets/addon_list.cpp:111
+#: src/gui/dialogs/addon/manager.cpp:233 src/gui/widgets/addon_list.cpp:111
 msgid "addon_state^Published"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:271
+#: src/gui/dialogs/addon/manager.cpp:237
 msgid "addon_state^Installed, not tracking local version"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:274
+#: src/gui/dialogs/addon/manager.cpp:240
 msgid "addon_state^Published, not tracking local version"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:278
+#: src/gui/dialogs/addon/manager.cpp:244
 msgid "addon_state^Installed ($local_version|), upgradable"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:279
+#: src/gui/dialogs/addon/manager.cpp:245
 msgid "addon_state^Published ($local_version| installed), upgradable"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:285
+#: src/gui/dialogs/addon/manager.cpp:251
 msgid "addon_state^Installed ($local_version|), outdated on server"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:286
+#: src/gui/dialogs/addon/manager.cpp:252
 msgid "addon_state^Published ($local_version| installed), outdated on server"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:292 src/gui/widgets/addon_list.cpp:114
+#: src/gui/dialogs/addon/manager.cpp:258 src/gui/widgets/addon_list.cpp:114
 msgid "addon_state^Installed, not ready to publish"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:293 src/gui/widgets/addon_list.cpp:114
+#: src/gui/dialogs/addon/manager.cpp:259 src/gui/widgets/addon_list.cpp:114
 msgid "addon_state^Ready to publish"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:297 src/gui/widgets/addon_list.cpp:126
+#: src/gui/dialogs/addon/manager.cpp:263 src/gui/widgets/addon_list.cpp:126
 msgid "addon_state^Installed, broken"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:298 src/gui/widgets/addon_list.cpp:126
+#: src/gui/dialogs/addon/manager.cpp:264 src/gui/widgets/addon_list.cpp:126
 msgid "addon_state^Published, broken"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:301 src/gui/widgets/addon_list.cpp:130
+#: src/gui/dialogs/addon/manager.cpp:267 src/gui/widgets/addon_list.cpp:130
 msgid "addon_state^Unknown"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:363
+#: src/gui/dialogs/addon/manager.cpp:329
 #, fuzzy
 #| msgid "Binding"
 msgid "ascending"
 msgstr "Ceangal"
 
 #. TRANSLATORS: Sorting order of dates, oldest first
-#: src/gui/dialogs/addon/manager.cpp:365
+#: src/gui/dialogs/addon/manager.cpp:331
 msgid "oldest to newest"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:368
+#: src/gui/dialogs/addon/manager.cpp:334
 msgid "descending"
 msgstr ""
 
 #. TRANSLATORS: Sorting order of dates, newest first
-#: src/gui/dialogs/addon/manager.cpp:370
+#: src/gui/dialogs/addon/manager.cpp:336
 msgid "newest to oldest"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:469
+#: src/gui/dialogs/addon/manager.cpp:435
 msgid "addons^Back to List"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:481
+#: src/gui/dialogs/addon/manager.cpp:447
 msgid "An error occurred while downloading the add-ons list from the server."
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:517
+#: src/gui/dialogs/addon/manager.cpp:483
 #, fuzzy
 #| msgid "No description available."
 msgid "No Add-ons Available"
 msgstr "Níl tuairisc ann."
 
-#: src/gui/dialogs/addon/manager.cpp:517
+#: src/gui/dialogs/addon/manager.cpp:483
 msgid "There are no add-ons available for download from this server."
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:705
+#: src/gui/dialogs/addon/manager.cpp:671
 msgid ""
 "The following add-on appears to have publishing or version control "
 "information stored locally, and will not be removed:"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:713
+#: src/gui/dialogs/addon/manager.cpp:679
 msgid "The following add-on could not be deleted properly:"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:766
+#: src/gui/dialogs/addon/manager.cpp:732
 msgid "Warning"
 msgstr "Rabhadh"
 
-#: src/gui/dialogs/addon/manager.cpp:767
+#: src/gui/dialogs/addon/manager.cpp:733
 msgid ""
 "The remote version of this add-on is greater or equal to the version being "
 "uploaded. Do you really wish to continue?"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:776
+#: src/gui/dialogs/addon/manager.cpp:742
 msgid "Invalid icon path. Make sure the path points to a valid image."
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:779 src/gui/dialogs/addon/manager.cpp:821
+#: src/gui/dialogs/addon/manager.cpp:745 src/gui/dialogs/addon/manager.cpp:787
 msgid "The server responded with an error:"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:782
+#: src/gui/dialogs/addon/manager.cpp:748
 msgid "The add-on was rejected by the server:"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:797 src/gui/dialogs/addon/manager.cpp:824
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:500
+#: src/gui/dialogs/addon/manager.cpp:763 src/gui/dialogs/addon/manager.cpp:790
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:498
 msgid "Response"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:809
+#: src/gui/dialogs/addon/manager.cpp:775
 msgid ""
 "Deleting '$addon|' will permanently erase its download and upload counts on "
 "the add-ons server. Do you really wish to continue?"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:841
+#: src/gui/dialogs/addon/manager.cpp:807
 #, fuzzy
 #| msgid "Do you really want to delete this game?"
 msgid "Do you want to uninstall '$addon|'?"
 msgstr "An bhfuil tú cinnte gur mhaith leat an cluiche seo a scriosadh?"
 
-#: src/gui/dialogs/addon/manager.cpp:931
+#: src/gui/dialogs/addon/manager.cpp:897
 msgid "url^None"
 msgstr ""
 
-#: src/gui/dialogs/attack_predictions.cpp:116
+#: src/gui/dialogs/attack_predictions.cpp:114
 #, fuzzy
 #| msgid "Choose Resolution"
 msgid "No usable weapon"
 msgstr "Roghnaigh Taifeach"
 
-#: src/gui/dialogs/attack_predictions.cpp:194
+#: src/gui/dialogs/attack_predictions.cpp:192
 msgid "Defender resistance vs"
 msgstr ""
 
-#: src/gui/dialogs/attack_predictions.cpp:196
+#: src/gui/dialogs/attack_predictions.cpp:194
 msgid "Defender vulnerability vs"
 msgstr ""
 
-#: src/gui/dialogs/attack_predictions.cpp:200
+#: src/gui/dialogs/attack_predictions.cpp:198
 msgid "Attacker resistance vs"
 msgstr ""
 
-#: src/gui/dialogs/attack_predictions.cpp:202
+#: src/gui/dialogs/attack_predictions.cpp:200
 msgid "Attacker vulnerability vs"
 msgstr ""
 
-#: src/gui/dialogs/campaign_selection.cpp:404
-#: src/gui/dialogs/multiplayer/lobby.cpp:493
+#: src/gui/dialogs/campaign_selection.cpp:364
+#: src/gui/dialogs/multiplayer/lobby.cpp:491
 #, fuzzy
 #| msgid "Choose Resolution"
 msgid "active_modifications^None"
 msgstr "Roghnaigh Taifeach"
 
-#: src/gui/dialogs/chat_log.cpp:416 src/gui/dialogs/game_cache_options.cpp:105
-#: src/gui/dialogs/game_version_dialog.cpp:182
-#: src/gui/dialogs/gamestate_inspector.cpp:429
-#: src/gui/dialogs/lua_interpreter.cpp:495
-#: src/gui/dialogs/screenshot_notification.cpp:99
-#: src/gui/dialogs/wml_error.cpp:227
+#: src/gui/dialogs/chat_log.cpp:403 src/gui/dialogs/game_cache_options.cpp:67
+#: src/gui/dialogs/game_version_dialog.cpp:153
+#: src/gui/dialogs/gamestate_inspector.cpp:402
+#: src/gui/dialogs/lua_interpreter.cpp:478
+#: src/gui/dialogs/screenshot_notification.cpp:68
+#: src/gui/dialogs/wml_error.cpp:192
 msgid "Clipboard support not found, contact your packager"
 msgstr ""
 
-#: src/gui/dialogs/depcheck_confirm_change.cpp:66
+#: src/gui/dialogs/depcheck_confirm_change.cpp:38
 msgid "$requester requires the following modifications to be enabled:"
 msgstr ""
 
-#: src/gui/dialogs/depcheck_confirm_change.cpp:70
+#: src/gui/dialogs/depcheck_confirm_change.cpp:42
 msgid "$requester requires the following modifications to be disabled:"
 msgstr ""
 
-#: src/gui/dialogs/depcheck_select_new.cpp:69
+#: src/gui/dialogs/depcheck_select_new.cpp:40
 msgid ""
 "The currently chosen scenario is not compatible with your setup.\n"
 "Please select a compatible one."
 msgstr ""
 
-#: src/gui/dialogs/depcheck_select_new.cpp:74
+#: src/gui/dialogs/depcheck_select_new.cpp:45
 msgid ""
 "The currently chosen era is not compatible with your setup.\n"
 "Please select a compatible one."
 msgstr ""
 
-#: src/gui/dialogs/depcheck_select_new.cpp:80
+#: src/gui/dialogs/depcheck_select_new.cpp:51
 msgid ""
 "The currently chosen modification is not compatible with your setup.\n"
 "Please select a compatible one."
 msgstr ""
 
-#: src/gui/dialogs/editor/generator_settings.cpp:71
+#: src/gui/dialogs/editor/generator_settings.cpp:69
 msgid "/1000 tiles"
 msgstr "/1000 tíl"
 
-#: src/gui/dialogs/editor/generator_settings.cpp:74
+#: src/gui/dialogs/editor/generator_settings.cpp:72
 msgid "Coastal"
 msgstr "Cósta"
 
-#: src/gui/dialogs/editor/generator_settings.cpp:74
+#: src/gui/dialogs/editor/generator_settings.cpp:72
 msgid "Inland"
 msgstr "Intíre"
 
-#: src/gui/dialogs/editor/generator_settings.cpp:74
+#: src/gui/dialogs/editor/generator_settings.cpp:72
 msgid "Island"
 msgstr "Oileán"
 
-#: src/gui/dialogs/file_dialog.cpp:107
+#: src/gui/dialogs/file_dialog.cpp:105
 msgid "Find File"
 msgstr ""
 
-#: src/gui/dialogs/file_dialog.cpp:183
+#: src/gui/dialogs/file_dialog.cpp:181
 msgid "Open"
 msgstr ""
 
-#: src/gui/dialogs/file_dialog.cpp:303
+#: src/gui/dialogs/file_dialog.cpp:301
 #, fuzzy
 #| msgid "Save already exists. Do you want to overwrite it?"
 msgid "The file already exists. Do you wish to overwrite it?"
 msgstr "Sábháil ann cheana. Forscríobh?"
 
-#: src/gui/dialogs/file_dialog.cpp:327
+#: src/gui/dialogs/file_dialog.cpp:325
 msgid "The file or folder $path cannot be created."
 msgstr ""
 
-#: src/gui/dialogs/file_dialog.cpp:333
+#: src/gui/dialogs/file_dialog.cpp:331
 msgid "The file or folder $path does not exist."
 msgstr ""
 
-#: src/gui/dialogs/file_dialog.cpp:708
+#: src/gui/dialogs/file_dialog.cpp:706
 msgid ""
 "Could not create a new folder at $path|. Make sure you have the appropriate "
 "permissions to write to this location."
 msgstr ""
 
-#: src/gui/dialogs/file_dialog.cpp:726
+#: src/gui/dialogs/file_dialog.cpp:724
 msgid "The following folder and its contents will be permanently deleted:"
 msgstr ""
 
-#: src/gui/dialogs/file_dialog.cpp:727
+#: src/gui/dialogs/file_dialog.cpp:725
 msgid "The following file will be permanently deleted:"
 msgstr ""
 
-#: src/gui/dialogs/file_dialog.cpp:728
+#: src/gui/dialogs/file_dialog.cpp:726
 #, fuzzy
 #| msgid "Do you really want to delete this game?"
 msgid "Do you wish to continue?"
 msgstr "An bhfuil tú cinnte gur mhaith leat an cluiche seo a scriosadh?"
 
-#: src/gui/dialogs/file_dialog.cpp:740
+#: src/gui/dialogs/file_dialog.cpp:738
 msgid ""
 "Could not delete $path|. Make sure you have the appropriate permissions to "
 "write to this location."
 msgstr ""
 
-#: src/gui/dialogs/folder_create.cpp:60
+#: src/gui/dialogs/folder_create.cpp:39
 msgid "New Bookmark"
 msgstr ""
 
-#: src/gui/dialogs/game_cache_options.cpp:137
+#: src/gui/dialogs/game_cache_options.cpp:99
 #, fuzzy
 #| msgid "Unknown era"
 msgid "dir_size^Unknown"
 msgstr "Aois anaithnid"
 
-#: src/gui/dialogs/game_cache_options.cpp:139
-#: src/gui/dialogs/network_transmission.cpp:87
-#: src/gui/dialogs/network_transmission.cpp:88
-#: src/gui/dialogs/screenshot_notification.cpp:146
+#: src/gui/dialogs/game_cache_options.cpp:101
+#: src/gui/dialogs/network_transmission.cpp:85
+#: src/gui/dialogs/network_transmission.cpp:86
+#: src/gui/dialogs/screenshot_notification.cpp:115
 msgid "unit_byte^B"
 msgstr "B"
 
-#: src/gui/dialogs/game_cache_options.cpp:162
+#: src/gui/dialogs/game_cache_options.cpp:124
 msgid "Cache Cleaned"
 msgstr ""
 
-#: src/gui/dialogs/game_cache_options.cpp:163
+#: src/gui/dialogs/game_cache_options.cpp:125
 msgid "The game data cache has been cleaned."
 msgstr ""
 
-#: src/gui/dialogs/game_cache_options.cpp:165
+#: src/gui/dialogs/game_cache_options.cpp:127
 msgid "The game data cache could not be completely cleaned."
 msgstr ""
 
-#: src/gui/dialogs/game_cache_options.cpp:181
+#: src/gui/dialogs/game_cache_options.cpp:143
 msgid "Cache Purged"
 msgstr ""
 
-#: src/gui/dialogs/game_cache_options.cpp:182
+#: src/gui/dialogs/game_cache_options.cpp:144
 msgid "The game data cache has been purged."
 msgstr ""
 
-#: src/gui/dialogs/game_cache_options.cpp:184
+#: src/gui/dialogs/game_cache_options.cpp:146
 msgid "The game data cache could not be purged."
 msgstr ""
 
-#: src/gui/dialogs/game_load.cpp:167
+#: src/gui/dialogs/game_load.cpp:122
 msgid "game_version^Current Version"
 msgstr ""
 
-#: src/gui/dialogs/game_load.cpp:172
+#: src/gui/dialogs/game_load.cpp:127
 #, fuzzy
 #| msgid "Version "
 msgid "game_version^Wesnoth $version"
 msgstr "Leagan "
 
-#: src/gui/dialogs/game_load.cpp:309
+#: src/gui/dialogs/game_load.cpp:264
 msgid "The selected file is corrupt: "
 msgstr ""
 
-#: src/gui/dialogs/game_load.cpp:381
+#: src/gui/dialogs/game_load.cpp:336
 #, fuzzy
 #| msgid "#(Invalid)"
 msgid "(Invalid)"
 msgstr "#(Neamhbhailí)"
 
-#: src/gui/dialogs/game_load.cpp:418
+#: src/gui/dialogs/game_load.cpp:373
 msgid "Campaign: $campaign_name"
 msgstr "Feachtas: $campaign_name"
 
-#: src/gui/dialogs/game_load.cpp:430
+#: src/gui/dialogs/game_load.cpp:385
 msgid "Tutorial"
 msgstr "Teagaisc"
 
-#: src/gui/dialogs/game_load.cpp:433
+#: src/gui/dialogs/game_load.cpp:388
 msgid "Test scenario"
 msgstr "Misean tástála"
 
-#: src/gui/dialogs/game_load.cpp:443
+#: src/gui/dialogs/game_load.cpp:398
 msgid "Replay"
 msgstr "Athfhéachaint"
 
-#: src/gui/dialogs/game_load.cpp:445
+#: src/gui/dialogs/game_load.cpp:400
 msgid "Turn"
 msgstr "Seal"
 
-#: src/gui/dialogs/game_load.cpp:447
+#: src/gui/dialogs/game_load.cpp:402
 msgid "Scenario start"
 msgstr "Tús Misean"
 
-#: src/gui/dialogs/game_load.cpp:450
+#: src/gui/dialogs/game_load.cpp:405
 msgid "Difficulty: "
 msgstr "Deacracht: "
 
-#: src/gui/dialogs/game_load.cpp:454
+#: src/gui/dialogs/game_load.cpp:409
 msgid "Version: "
 msgstr "Leagan: "
 
-#: src/gui/dialogs/game_load.cpp:459
+#: src/gui/dialogs/game_load.cpp:414
 #, fuzzy
 #| msgid "Choose Resolution"
 msgid "Modifications: "
 msgstr "Roghnaigh Taifeach"
 
-#: src/gui/dialogs/game_stats.cpp:71
+#: src/gui/dialogs/game_stats.cpp:69
 msgid "controller^AI"
 msgstr ""
 
-#: src/gui/dialogs/game_stats.cpp:71
+#: src/gui/dialogs/game_stats.cpp:69
 msgid "controller^Idle"
 msgstr ""
 
-#: src/gui/dialogs/game_stats.cpp:110 src/gui/dialogs/label_settings.cpp:78
+#: src/gui/dialogs/game_stats.cpp:108 src/gui/dialogs/label_settings.cpp:76
 #, fuzzy
 #| msgid "Unknown era"
 msgid "Unknown"
 msgstr "Aois anaithnid"
 
-#: src/gui/dialogs/game_stats.cpp:198 src/gui/dialogs/game_stats.cpp:201
-#: src/gui/dialogs/multiplayer/lobby.cpp:507
+#: src/gui/dialogs/game_stats.cpp:196 src/gui/dialogs/game_stats.cpp:199
+#: src/gui/dialogs/multiplayer/lobby.cpp:505
 msgid "no"
 msgstr "ni hea"
 
-#: src/gui/dialogs/game_stats.cpp:198 src/gui/dialogs/game_stats.cpp:201
-#: src/gui/dialogs/multiplayer/lobby.cpp:507
+#: src/gui/dialogs/game_stats.cpp:196 src/gui/dialogs/game_stats.cpp:199
+#: src/gui/dialogs/multiplayer/lobby.cpp:505
 msgid "yes"
 msgstr "is ea"
 
-#: src/gui/dialogs/game_version_dialog.cpp:133
-#: src/gui/dialogs/title_screen.cpp:260
+#: src/gui/dialogs/game_version_dialog.cpp:104
+#: src/gui/dialogs/title_screen.cpp:194
 #, fuzzy
 #| msgid "Version "
 msgid "Version $version"
 msgstr "Leagan "
 
-#: src/gui/dialogs/game_version_dialog.cpp:137
+#: src/gui/dialogs/game_version_dialog.cpp:108
 msgid "Running on $os"
 msgstr ""
 
-#: src/gui/dialogs/label_settings.cpp:54
+#: src/gui/dialogs/label_settings.cpp:52
 #, fuzzy
 #| msgid "Set Team Label"
 msgid "Team Labels"
 msgstr "Suigh Lípéad Foirne"
 
-#: src/gui/dialogs/label_settings.cpp:84
+#: src/gui/dialogs/label_settings.cpp:82
 msgid "Side $side_number ($name)"
 msgstr ""
 
@@ -6704,375 +6712,371 @@ msgstr "Tús randamach"
 msgid "Downloading lobby data"
 msgstr ""
 
-#: src/gui/dialogs/lua_interpreter.cpp:694
+#: src/gui/dialogs/lua_interpreter.cpp:677
 msgid "The lua console can only be used in debug mode! (Run ':debug' first)"
 msgstr ""
 
-#: src/gui/dialogs/lua_interpreter.cpp:695
+#: src/gui/dialogs/lua_interpreter.cpp:678
 #, fuzzy
 #| msgid "Clean Gray Cobbles"
 msgid "lua console"
 msgstr "Duirleoga Glan"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:108
+#: src/gui/dialogs/multiplayer/lobby.cpp:106
 #, fuzzy
 #| msgid "Selected game"
 msgid "Selected Game"
 msgstr "Cluiche roghnaithe"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:109
+#: src/gui/dialogs/multiplayer/lobby.cpp:107
 msgid "Lobby"
 msgstr "Forsheomra"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:111
+#: src/gui/dialogs/multiplayer/lobby.cpp:109
 #, fuzzy
 #| msgid "Current room"
 msgid "Current Room"
 msgstr "Seomra reatha"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:113
+#: src/gui/dialogs/multiplayer/lobby.cpp:111
 #, fuzzy
 #| msgid "Other games"
 msgid "Other Games"
 msgstr "Cluichí eile"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:120
+#: src/gui/dialogs/multiplayer/lobby.cpp:118
 #, fuzzy
 #| msgid "Do you really want to quit?"
 msgid "Do you really want to log out?"
 msgstr "Scoir - Cinnte?"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:238
+#: src/gui/dialogs/multiplayer/lobby.cpp:236
 msgid "Incompatible User-made Content"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:239
+#: src/gui/dialogs/multiplayer/lobby.cpp:237
 msgid ""
 "This game cannot be joined because the host has out-of-date add-ons that are "
 "incompatible with your version. You might wish to suggest that the host's "
 "add-ons be updated."
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:254
+#: src/gui/dialogs/multiplayer/lobby.cpp:252
 msgid "Missing User-made Content"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:255
+#: src/gui/dialogs/multiplayer/lobby.cpp:253
 msgid ""
 "This game requires one or more user-made addons to be installed or updated "
 "in order to join.\n"
 "Do you want to try to install them?"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:428
+#: src/gui/dialogs/multiplayer/lobby.cpp:426
 msgid "Games: showing $num_shown out of $num_total"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:448
+#: src/gui/dialogs/multiplayer/lobby.cpp:446
 msgid "$game_name (Era: $era_name)"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:478
+#: src/gui/dialogs/multiplayer/lobby.cpp:476
 msgid "era_or_mod^not installed"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:481
+#: src/gui/dialogs/multiplayer/lobby.cpp:479
 #, fuzzy
 #| msgid "Era:"
 msgid "Era"
 msgstr "Aois:"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:488
+#: src/gui/dialogs/multiplayer/lobby.cpp:486
 #, fuzzy
 #| msgid "Choose Resolution"
 msgid "Modifications"
 msgstr "Roghnaigh Taifeach"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:513
+#: src/gui/dialogs/multiplayer/lobby.cpp:511
 #, fuzzy
 #| msgid "Reloaded game"
 msgid "Reloaded:"
 msgstr "Cluiche athlódáilte"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:514
+#: src/gui/dialogs/multiplayer/lobby.cpp:512
 msgid "Shared vision:"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:515
+#: src/gui/dialogs/multiplayer/lobby.cpp:513
 msgid "Shuffle sides:"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:516
+#: src/gui/dialogs/multiplayer/lobby.cpp:514
 #, fuzzy
 #| msgid "Time limit"
 msgid "Time limit:"
 msgstr "Teorainn ama"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:517
+#: src/gui/dialogs/multiplayer/lobby.cpp:515
 #, fuzzy
 #| msgid "Use map settings"
 msgid "Use map settings:"
 msgstr "Úsáid roghanna léarscáile"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:525
+#: src/gui/dialogs/multiplayer/lobby.cpp:523
 msgid ""
 "One or more add-ons need to be installed\n"
 "in order to join this game."
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:550
+#: src/gui/dialogs/multiplayer/lobby.cpp:548
 msgid "Observers allowed"
 msgstr "Breathnóirí ceadaithe"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:553
+#: src/gui/dialogs/multiplayer/lobby.cpp:551
 msgid "Observers not allowed"
 msgstr "Níl breathnóirí ceadaithe"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:812
+#: src/gui/dialogs/multiplayer/lobby.cpp:810
 #, fuzzy
 #| msgid "Lobby"
 msgid "lobby"
 msgstr "Forsheomra"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:1003
+#: src/gui/dialogs/multiplayer/lobby.cpp:1001
 msgid ""
 "Something is wrong with the addon version check database supporting the "
 "multiplayer lobby. Please report this at https://bugs.wesnoth.org."
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/mp_alerts_options.cpp:131
+#: src/gui/dialogs/multiplayer/mp_alerts_options.cpp:104
 msgid ""
 "This build of wesnoth does not include support for desktop notifications, "
 "contact your package manager"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/mp_change_control.cpp:104
+#: src/gui/dialogs/multiplayer/mp_change_control.cpp:83
 msgid "Side $side"
 msgstr "Foireann $side"
 
-#: src/gui/dialogs/multiplayer/mp_connect.cpp:204
+#: src/gui/dialogs/multiplayer/mp_connect.cpp:185
 #, fuzzy
 #| msgid "Server:"
 msgid "Add Server"
 msgstr "Freastalaí:"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:99
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:97
 #, fuzzy
 #| msgid "Scenario start"
 msgid "Scenarios"
 msgstr "Tús Misean"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:100
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:98
 #, fuzzy
 #| msgid "Multiplayer Options"
 msgid "Multiplayer Campaigns"
 msgstr "Roghanna Ilimreora"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:101
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:99
 #, fuzzy
 #| msgid "Start a new single player campaign"
 msgid "Singleplayer Campaigns"
 msgstr "Tosaigh feachtas aonimreora nua"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:102
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:100
 #, fuzzy
 #| msgid "Actions"
 msgid "Custom Maps"
 msgstr "Gníomhuithe"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:103
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:101
 #, fuzzy
 #| msgid "Test scenario"
 msgid "Custom Scenarios"
 msgstr "Misean tástála"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:104
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:102
 #, fuzzy
 #| msgid "Generate Random Map"
 msgid "Random Maps"
 msgstr "Gin Léarscáil Randamach"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:176
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:177
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:174
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:175
 msgid "No games found."
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:244
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:242
 msgid "No eras found."
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:245
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:243
 msgid "No eras found"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:273
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:271
 msgid "Independent: Random factions assigned independently"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:274
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:272
 msgid "No Mirror: No two players will get the same faction"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:275
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:273
 msgid "No Ally Mirror: No two allied players will get the same faction"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:523
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:521
 msgid "No eras available for this game."
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:725
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:723
 msgid "number of players^$min to $max"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:822
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:820
 msgid "The selected game has no sides!"
 msgstr ""
 
 #. TRANSLATORS: This sentence will be followed by some details of the error, most likely the "Map could not be loaded" message from create_engine.cpp
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:829
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:827
 msgid "The selected game cannot be created."
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:901
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:899
 msgid "Choose Starting Scenario"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:901
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:899
 msgid "Select at which point to begin this campaign."
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:210
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:208
 #, fuzzy
 #| msgid "Choose Player"
 msgid "Computer Player"
 msgstr "Roghnaigh Imreoir"
 
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:212
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:210
 #, fuzzy
 #| msgid "(empty list)"
 msgid "Empty slot"
 msgstr "(liosta folamh)"
 
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:214
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:212
 msgid "Reserved for $playername"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:216
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:214
 #, fuzzy
 #| msgid "Vacant slots"
 msgid "Vacant slot"
 msgstr "Sliotáin folamh"
 
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:220
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:218
 msgid "empty"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:248
-#: src/gui/dialogs/multiplayer/mp_staging.cpp:105
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:246
+#: src/gui/dialogs/multiplayer/mp_staging.cpp:103
 #, fuzzy
 #| msgid "Quit Game"
 msgid "this game"
 msgstr "Scoir Cluiche"
 
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:358
-#: src/gui/dialogs/multiplayer/mp_staging.cpp:156
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:356
+#: src/gui/dialogs/multiplayer/mp_staging.cpp:154
 #, fuzzy
 #| msgid "Team 1"
 msgid "Team:"
 msgstr "Foireann 1"
 
-#: src/gui/dialogs/multiplayer/mp_staging.cpp:511
+#: src/gui/dialogs/multiplayer/mp_staging.cpp:509
 msgid "Waiting for players to choose factions..."
 msgstr ""
 
-#: src/gui/dialogs/outro.cpp:47
+#: src/gui/dialogs/outro.cpp:45
 msgid "The End"
 msgstr ""
 
-#: src/gui/dialogs/preferences_dialog.cpp:174
+#: src/gui/dialogs/preferences_dialog.cpp:161
 msgid "friend"
 msgstr "cara"
 
-#: src/gui/dialogs/preferences_dialog.cpp:179
+#: src/gui/dialogs/preferences_dialog.cpp:166
 msgid "ignored"
 msgstr "díbeartha"
 
-#: src/gui/dialogs/preferences_dialog.cpp:233
-#: src/gui/dialogs/preferences_dialog.cpp:293
+#: src/gui/dialogs/preferences_dialog.cpp:220
+#: src/gui/dialogs/preferences_dialog.cpp:277
 msgid "No username specified"
 msgstr ""
 
-#: src/gui/dialogs/preferences_dialog.cpp:251
+#: src/gui/dialogs/preferences_dialog.cpp:235
 msgid "Invalid username"
 msgstr "Ainm úsáideora neamhbhailí"
 
-#: src/gui/dialogs/preferences_dialog.cpp:298
+#: src/gui/dialogs/preferences_dialog.cpp:282
 #, fuzzy
 #| msgid "View and edit your friends and ignores list"
 msgid "Not on friends or ignore lists"
 msgstr "Féach ar agus cuir in eagar do líosta carad agus díbeartach"
 
-#: src/gui/dialogs/preferences_dialog.cpp:827
-#: src/gui/dialogs/preferences_dialog.cpp:897
+#: src/gui/dialogs/preferences_dialog.cpp:811
+#: src/gui/dialogs/preferences_dialog.cpp:881
 msgid "No hotkey selected"
 msgstr ""
 
-#: src/gui/dialogs/preferences_dialog.cpp:858
+#: src/gui/dialogs/preferences_dialog.cpp:842
 msgid ""
 "“<b>$hotkey_sequence|</b>” is in use by “<b>$old_hotkey_action|</b>”.\n"
 "Do you wish to reassign it to “<b>$new_hotkey_action|</b>”?"
 msgstr ""
 
-#: src/gui/dialogs/preferences_dialog.cpp:864
+#: src/gui/dialogs/preferences_dialog.cpp:848
 #, fuzzy
 #| msgid "Hotkeys"
 msgid "Reassign Hotkey"
 msgstr "Eochracha Aicearra"
 
-#: src/gui/dialogs/preferences_dialog.cpp:881
+#: src/gui/dialogs/preferences_dialog.cpp:865
 msgid "All hotkeys have been reset to their default values."
 msgstr ""
 
-#: src/gui/dialogs/preferences_dialog.cpp:881
+#: src/gui/dialogs/preferences_dialog.cpp:865
 #, fuzzy
 #| msgid "Hotkeys"
 msgid "Hotkeys Reset"
 msgstr "Eochracha Aicearra"
 
-#: src/gui/dialogs/preferences_dialog.cpp:1011
-msgid "∞"
-msgstr ""
-
-#: src/gui/dialogs/screenshot_notification.cpp:128
+#: src/gui/dialogs/screenshot_notification.cpp:97
 msgid ""
 "Unsupported image format.\n"
 "\n"
 "Try to save the screenshot as PNG instead."
 msgstr ""
 
-#: src/gui/dialogs/statistics_dialog.cpp:82
+#: src/gui/dialogs/statistics_dialog.cpp:80
 #, fuzzy
 #| msgid "Scenario start"
 msgid "All Scenarios"
 msgstr "Tús Misean"
 
-#: src/gui/dialogs/statistics_dialog.cpp:180
-#: src/gui/dialogs/statistics_dialog.cpp:339
+#: src/gui/dialogs/statistics_dialog.cpp:178
+#: src/gui/dialogs/statistics_dialog.cpp:337
 #, fuzzy
 #| msgid "Turn"
 msgid "This Turn"
 msgstr "Seal"
 
-#: src/gui/dialogs/statistics_dialog.cpp:216
+#: src/gui/dialogs/statistics_dialog.cpp:214
 msgid "Actual hit rates, by chance to hit:"
 msgstr ""
 
-#: src/gui/dialogs/statistics_dialog.cpp:218
+#: src/gui/dialogs/statistics_dialog.cpp:216
 msgid "(no attacks have taken place yet)"
 msgstr ""
 
-#: src/gui/dialogs/statistics_dialog.cpp:326
+#: src/gui/dialogs/statistics_dialog.cpp:324
 msgid ""
 "stats dialog^Difference of actual outcome to expected outcome, as a "
 "percentage.\n"
@@ -7082,103 +7086,103 @@ msgid ""
 "number of hits inflicted/taken."
 msgstr ""
 
-#: src/gui/dialogs/statistics_dialog.cpp:370
+#: src/gui/dialogs/statistics_dialog.cpp:368
 #, fuzzy
 #| msgid "Recruit"
 msgid "Recruits"
 msgstr "Earcaigh"
 
-#: src/gui/dialogs/statistics_dialog.cpp:371
+#: src/gui/dialogs/statistics_dialog.cpp:369
 #, fuzzy
 #| msgid "Recall"
 msgid "Recalls"
 msgstr "Athghair"
 
-#: src/gui/dialogs/statistics_dialog.cpp:372
+#: src/gui/dialogs/statistics_dialog.cpp:370
 #, fuzzy
 #| msgid "sound^Advanced Options"
 msgid "Advancements"
 msgstr "Ardroghanna"
 
-#: src/gui/dialogs/statistics_dialog.cpp:373
+#: src/gui/dialogs/statistics_dialog.cpp:371
 msgid "Losses"
 msgstr ""
 
-#: src/gui/dialogs/statistics_dialog.cpp:374
+#: src/gui/dialogs/statistics_dialog.cpp:372
 #, fuzzy
 #| msgid "Hills"
 msgid "Kills"
 msgstr "Cnocán"
 
-#: src/gui/dialogs/statistics_dialog.cpp:396
-#: src/gui/dialogs/statistics_dialog.cpp:403
+#: src/gui/dialogs/statistics_dialog.cpp:394
+#: src/gui/dialogs/statistics_dialog.cpp:401
 msgid "Inflicted"
 msgstr ""
 
-#: src/gui/dialogs/statistics_dialog.cpp:409
-#: src/gui/dialogs/statistics_dialog.cpp:416
+#: src/gui/dialogs/statistics_dialog.cpp:407
+#: src/gui/dialogs/statistics_dialog.cpp:414
 msgid "Taken"
 msgstr ""
 
-#: src/gui/dialogs/statistics_dialog.cpp:457
+#: src/gui/dialogs/statistics_dialog.cpp:455
 msgid "$count|× $name"
 msgstr ""
 
-#: src/gui/dialogs/title_screen.cpp:176 src/hotkey/hotkey_command.cpp:91
+#: src/gui/dialogs/title_screen.cpp:110 src/hotkey/hotkey_command.cpp:91
 msgid "Screenshot"
 msgstr "Seat den Scáileán"
 
-#: src/gui/dialogs/title_screen.cpp:479
+#: src/gui/dialogs/title_screen.cpp:413
 #, fuzzy
 #| msgid "Choose Theme"
 msgid "Choose Test"
 msgstr "Roghnaigh Téama"
 
-#: src/gui/dialogs/unit_create.cpp:227
+#: src/gui/dialogs/unit_create.cpp:197
 msgid "unit_variation^Default Variation"
 msgstr ""
 
-#: src/gui/dialogs/unit_recall.cpp:225
+#: src/gui/dialogs/unit_recall.cpp:223
 msgid ""
 "This unit cannot be recalled because you will not have enough gold at this "
 "point in your plan."
 msgstr ""
 
-#: src/gui/dialogs/unit_recall.cpp:227
+#: src/gui/dialogs/unit_recall.cpp:225
 msgid "This unit cannot be recalled because you do not have enough gold."
 msgstr ""
 
-#: src/gui/dialogs/unit_recall.cpp:323 src/hotkey/hotkey_command.cpp:96
+#: src/gui/dialogs/unit_recall.cpp:321 src/hotkey/hotkey_command.cpp:96
 msgid "Rename Unit"
 msgstr "Athainmnigh Aonad"
 
-#: src/gui/dialogs/unit_recall.cpp:359
+#: src/gui/dialogs/unit_recall.cpp:357
 msgid "This unit is loyal and requires no upkeep."
 msgstr ""
 
-#: src/gui/dialogs/unit_recall.cpp:360 src/gui/dialogs/unit_recall.cpp:365
-#: src/gui/dialogs/unit_recall.cpp:370
+#: src/gui/dialogs/unit_recall.cpp:358 src/gui/dialogs/unit_recall.cpp:363
+#: src/gui/dialogs/unit_recall.cpp:368
 #, fuzzy
 #| msgid "Do you really want to quit?"
 msgid "Do you really want to dismiss him?"
 msgstr "Scoir - Cinnte?"
 
-#: src/gui/dialogs/unit_recall.cpp:361 src/gui/dialogs/unit_recall.cpp:366
-#: src/gui/dialogs/unit_recall.cpp:371
+#: src/gui/dialogs/unit_recall.cpp:359 src/gui/dialogs/unit_recall.cpp:364
+#: src/gui/dialogs/unit_recall.cpp:369
 #, fuzzy
 #| msgid "Do you really want to quit?"
 msgid "Do you really want to dismiss her?"
 msgstr "Scoir - Cinnte?"
 
-#: src/gui/dialogs/unit_recall.cpp:364
+#: src/gui/dialogs/unit_recall.cpp:362
 msgid "This unit is an experienced one, having advanced levels."
 msgstr ""
 
-#: src/gui/dialogs/unit_recall.cpp:369
+#: src/gui/dialogs/unit_recall.cpp:367
 msgid "This unit is close to advancing a level."
 msgstr ""
 
-#: src/gui/dialogs/unit_recall.cpp:375
+#: src/gui/dialogs/unit_recall.cpp:373
 msgid "Dismiss Unit"
 msgstr ""
 
@@ -7244,22 +7248,22 @@ msgstr ""
 msgid "Copied link!"
 msgstr ""
 
-#: src/gui/widgets/listbox.cpp:920 src/gui/widgets/multi_page.cpp:285
+#: src/gui/widgets/listbox.cpp:746 src/gui/widgets/multi_page.cpp:221
 msgid ""
 "'list_data' must have the same number of columns as the 'list_definition'."
 msgstr ""
 
-#: src/gui/widgets/listbox.cpp:964 src/gui/widgets/listbox.cpp:1069
-#: src/gui/widgets/listbox.cpp:1174 src/gui/widgets/scrollbar_panel.cpp:147
+#: src/gui/widgets/listbox.cpp:790 src/gui/widgets/listbox.cpp:832
+#: src/gui/widgets/listbox.cpp:874 src/gui/widgets/scrollbar_panel.cpp:93
 msgid "No list defined."
 msgstr "Níl liosta sainithe."
 
-#: src/gui/widgets/listbox.cpp:969 src/gui/widgets/listbox.cpp:1074
-#: src/gui/widgets/listbox.cpp:1179
+#: src/gui/widgets/listbox.cpp:795 src/gui/widgets/listbox.cpp:837
+#: src/gui/widgets/listbox.cpp:879
 msgid "A 'list_definition' should contain one row."
 msgstr ""
 
-#: src/gui/widgets/multi_page.cpp:261
+#: src/gui/widgets/multi_page.cpp:197
 msgid "No page defined."
 msgstr "Níl leathanach sainithe."
 
@@ -7281,7 +7285,7 @@ msgstr[4] ""
 msgid "multimenu^None Selected"
 msgstr ""
 
-#: src/gui/widgets/pane.cpp:416
+#: src/gui/widgets/pane.cpp:382
 msgid "Need at least 1 parallel item."
 msgstr ""
 
@@ -7291,35 +7295,35 @@ msgstr ""
 msgid "Invalid size."
 msgstr "Ainm úsáideora neamhbhailí"
 
-#: src/gui/widgets/size_lock.cpp:162
+#: src/gui/widgets/size_lock.cpp:121
 #, fuzzy
 #| msgid "No list defined."
 msgid "No widget defined."
 msgstr "Níl liosta sainithe."
 
-#: src/gui/widgets/slider.cpp:466
+#: src/gui/widgets/slider.cpp:354
 msgid "The number of value_labels and values don't match."
 msgstr ""
 
-#: src/gui/widgets/stacked_widget.cpp:277
+#: src/gui/widgets/stacked_widget.cpp:236
 #, fuzzy
 #| msgid "No stack defined."
 msgid "No stack layers defined."
 msgstr "Níl cruach sainithe."
 
-#: src/gui/widgets/styled_widget.cpp:685
+#: src/gui/widgets/styled_widget.cpp:607
 msgid "Found a widget with a helptip and without a tooltip."
 msgstr ""
 
-#: src/gui/widgets/tree_view.cpp:377
+#: src/gui/widgets/tree_view.cpp:299
 msgid "No nodes defined for a tree view."
 msgstr ""
 
-#: src/gui/widgets/tree_view.cpp:411
+#: src/gui/widgets/tree_view.cpp:333
 msgid "[node]id 'root' is reserved for the implementation."
 msgstr ""
 
-#: src/gui/widgets/tree_view.cpp:415
+#: src/gui/widgets/tree_view.cpp:337
 msgid "No node defined."
 msgstr "Níl nód sainithe."
 
@@ -7383,11 +7387,11 @@ msgstr ""
 msgid "Abilities"
 msgstr ""
 
-#: src/gui/widgets/window.cpp:934
+#: src/gui/widgets/window.cpp:925
 msgid "Click dismiss needs a 'click_dismiss' or 'ok' button."
 msgstr ""
 
-#: src/gui/widgets/window.cpp:959 src/gui/widgets/window.cpp:996
+#: src/gui/widgets/window.cpp:950 src/gui/widgets/window.cpp:987
 #: src/tests/gui/test_gui2.cpp:562
 msgid "Failed to show a dialog, which doesn't fit on the screen."
 msgstr ""
@@ -7532,6 +7536,12 @@ msgstr "Suíomh Coinneála"
 msgid "End Unit Turn"
 msgstr "Chrióchnú Aonad Seal"
 
+#: src/hotkey/hotkey_command.cpp:84
+#, fuzzy
+#| msgid "Scroll speed:"
+msgid "Scroll to Leader"
+msgstr "Luas Scrollú:"
+
 #: src/hotkey/hotkey_command.cpp:85
 msgid "Undo"
 msgstr "An Beart a Chealú"
@@ -7561,8 +7571,10 @@ msgid "Map Screenshot"
 msgstr "Seat den Scáileán Léarscáil"
 
 #: src/hotkey/hotkey_command.cpp:93
-msgid "Accelerated"
-msgstr "Luathaithe"
+#, fuzzy
+#| msgid "Accelerated speed"
+msgid "Toggle Accelerated Speed"
+msgstr "Luas Luathaithe"
 
 #: src/hotkey/hotkey_command.cpp:94
 #, fuzzy
@@ -7641,6 +7653,12 @@ msgstr "Athraigh Foireann (Dífhabhtaigh!)"
 #| msgid "Create Unit (Debug!)"
 msgid "Kill Unit (Debug!)"
 msgstr "Cruthaigh Aonad (Dífhabhtaigh!)"
+
+#: src/hotkey/hotkey_command.cpp:118
+#, fuzzy
+#| msgid "Preferences"
+msgid "Open Preferences Screen"
+msgstr "Sainroghanna"
 
 #: src/hotkey/hotkey_command.cpp:119
 msgid "Scenario Objectives"
@@ -8220,7 +8238,9 @@ msgid "Update Shroud Now"
 msgstr "Nuashonraigh Dorcha Anois"
 
 #: src/hotkey/hotkey_command.cpp:269
-msgid "Continue Move"
+#, fuzzy
+#| msgid "Continue Move"
+msgid "Continue Interrupted Move"
 msgstr "Lean Gluaiseacht"
 
 #: src/hotkey/hotkey_command.cpp:270
@@ -8260,8 +8280,8 @@ msgid "Run Formula"
 msgstr "Rith Foirmle"
 
 #: src/hotkey/hotkey_command.cpp:279
-msgid "Clear Messages"
-msgstr "Glan Teachtaireachtaí"
+msgid "Clear Chat and Errors"
+msgstr ""
 
 #: src/hotkey/hotkey_command.cpp:281
 msgid "Change Language"
@@ -8346,19 +8366,19 @@ msgstr ""
 msgid "Select"
 msgstr "Roghnaigh"
 
-#: src/preferences/game.cpp:879
+#: src/preferences/game.cpp:875
 #, fuzzy
 #| msgid "%H:%M"
 msgid "[%H:%M]"
 msgstr "%H:%M"
 
-#: src/preferences/game.cpp:881
+#: src/preferences/game.cpp:877
 #, fuzzy
 #| msgid "%I:%M %p"
 msgid "[%I:%M %p]"
 msgstr "%I:%M %p"
 
-#: src/terrain/translation.cpp:714
+#: src/terrain/translation.cpp:712
 msgid ""
 "A terrain with a string with more than 4 characters has been found, the "
 "affected terrain is:"
@@ -8395,6 +8415,12 @@ msgid ""
 "The key '$deprecated_key' has been renamed to '$key'. Support for "
 "'$deprecated_key' will be removed in version $removal_version."
 msgstr ""
+
+#~ msgid "Accelerated"
+#~ msgstr "Luathaithe"
+
+#~ msgid "Clear Messages"
+#~ msgstr "Glan Teachtaireachtaí"
 
 #, fuzzy
 #~| msgid "Date"

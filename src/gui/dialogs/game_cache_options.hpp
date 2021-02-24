@@ -25,10 +25,10 @@ namespace dialogs
 
 /**
  * @ingroup GUIWindowDefinitionWML
- * 
+ *
  * A Preferences subdialog including a report on the location and size of the game's WML cache,
  * buttons to copy its path to clipboard or browse to it, and the possibility of clearing stale files from the cache or purging it entirely.
- * Key               |Type          |Mandatory|Description  
+ * Key               |Type          |Mandatory|Description
  * ------------------|--------------|---------|-----------
  * path              | text_box     |yes      |Cache dir path.
  * copy              | @ref button  |yes      |Copies the cache path to clipboard.

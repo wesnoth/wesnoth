@@ -736,7 +736,7 @@ protected:
 	bool dont_show_all_; //const team *viewpoint_;
 	/**
 	 * Position of the top-left corner of the viewport, in pixels.
-	 * 
+	 *
 	 * Dependent on zoom_.. For example, ypos_==72 only means we're one
 	 * hex below the top of the map when zoom_ == 72 (the default value).
 	 */
@@ -984,7 +984,7 @@ public:
 	 * @param x                  The x coordinate.
 	 * @param y                  The y coordinate.
 	 * @param surf               The surface to use.
-	 * @param clip               
+	 * @param clip
 	 */
 	void drawing_buffer_add(const drawing_layer layer,
 			const map_location& loc, int x, int y, const surface& surf,

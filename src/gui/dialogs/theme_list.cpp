@@ -20,9 +20,7 @@
 #include "gui/widgets/window.hpp"
 #include "theme.hpp"
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 
 REGISTER_DIALOG(theme_list)
@@ -72,4 +70,3 @@ void theme_list::post_show(window& window)
 	index_ = list.get_selected_row();
 }
 } // namespace dialogs
-} // namespace gui2

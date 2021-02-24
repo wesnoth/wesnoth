@@ -18,9 +18,7 @@
 
 class display;
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 
 class terrain_layers : public modal_dialog
@@ -46,4 +44,3 @@ private:
 };
 
 } // namespace dialogs
-} // namespace gui2

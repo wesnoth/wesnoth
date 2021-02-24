@@ -31,9 +31,9 @@ class grid;
 
 /**
  * @ingroup GUIWidgetWML
- * 
+ *
  * A viewport is an special widget used to view only a part of the widget it 'holds'.
- * 
+ *
  * List with the viewport specific variables:
  * Key            |Type                                            |Default  |Description
  * ---------------|------------------------------------------------|---------|-----------

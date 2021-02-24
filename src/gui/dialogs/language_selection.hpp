@@ -16,17 +16,15 @@
 
 #include "gui/dialogs/modal_dialog.hpp"
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 
 /**
  * @ingroup GUIWindowDefinitionWML
- * 
+ *
  * This shows the dialog to select the language to use.
  * When the dialog is closed with the OK button it also updates the selected language in the preferences.
- * Key               |Type          |Mandatory|Description  
+ * Key               |Type          |Mandatory|Description
  * ------------------|--------------|---------|-----------
  * language_list     | @ref listbox |yes      |This listbox contains the list with available languages.
  * free to choose    | control      |no       |Show the name of the language in the current row.
@@ -53,4 +51,3 @@ private:
 };
 
 } // namespace dialogs
-} // namespace gui2

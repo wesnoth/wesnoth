@@ -34,9 +34,7 @@
 #include <functional>
 #include <stdexcept>
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 
 REGISTER_DIALOG(screenshot_notification)
@@ -128,4 +126,3 @@ void screenshot_notification::keypress_callback(bool& handled, SDL_Keycode key)
 }
 
 } // namespace dialogs
-} // namespace gui2

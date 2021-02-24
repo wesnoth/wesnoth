@@ -53,9 +53,7 @@ static lg::log_domain log_gameloaddlg{"gui/dialogs/game_load_dialog"};
 #define LOG_GAMELOADDLG   LOG_STREAM(info,  log_gameloaddlg)
 #define DBG_GAMELOADDLG   LOG_STREAM(debug, log_gameloaddlg)
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 
 REGISTER_DIALOG(game_load)
@@ -499,4 +497,3 @@ void game_load::handle_dir_select()
 }
 
 } // namespace dialogs
-} // namespace gui2

@@ -16,9 +16,7 @@
 
 #include "gui/dialogs/modal_dialog.hpp"
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 
 /**
@@ -258,4 +256,3 @@ int show_wml_message(const std::string& title,
 					 const wml_message_input& input);
 
 } // namespace dialogs
-} // namespace gui2

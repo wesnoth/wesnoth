@@ -29,20 +29,20 @@ struct builder_toggle_panel;
 
 /**
  * @ingroup GUIWidgetWML
- * 
+ *
  * Class for a toggle button.
- * 
+ *
  * Quite some code looks like toggle_button maybe we should inherit from that but let's test first.
  * the problem is that the toggle_button has an icon we don't want, but maybe look at refactoring later.
  * but maybe we should also ditch the icon, not sure however since it's handy for checkboxes...
- * 
+ *
  * A toggle panel is an item which can hold multiple other items.
  * The difference between a grid and a panel is that it's possible to define how a panel looks.
  * A grid in an invisible container to just hold the items.
  * The toggle panel is a combination of the panel and a toggle button, it allows a toggle button with its own grid.
- * 
+ *
  * The resolution for a toggle panel also contains the following keys:
- * Key          |Type                                |Default|Description  
+ * Key          |Type                                |Default|Description
  * -------------|------------------------------------|-------|-------------
  * top_border   | @ref guivartype_unsigned "unsigned"|0      |The size which isn't used for the client area.
  * bottom_border| @ref guivartype_unsigned "unsigned"|0      |The size which isn't used for the client area.

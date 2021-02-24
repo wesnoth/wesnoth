@@ -26,9 +26,7 @@
 
 #include <functional>
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 
 REGISTER_DIALOG(formula_debugger)
@@ -153,4 +151,3 @@ void formula_debugger::callback_stepout_button()
 }
 
 } // namespace dialogs
-} // namespace gui2

@@ -23,9 +23,7 @@
 
 #include <algorithm>
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 
 REGISTER_DIALOG(addon_uninstall_list)
@@ -91,4 +89,3 @@ std::vector<std::string> addon_uninstall_list::selected_addons() const
 }
 
 } // namespace dialogs
-} // namespace gui2

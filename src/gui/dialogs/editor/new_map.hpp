@@ -18,15 +18,13 @@
 
 #include "tstring.hpp"
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 
 /**
  * @ingroup GUIWindowDefinitionWML
- * 
- * Key               |Type              |Mandatory|Description  
+ *
+ * Key               |Type              |Mandatory|Description
  * ------------------|------------------|---------|-----------
  * width             | integer_selector |yes      |An integer selector to determine the width of the map to create.
  * height            | integer_selector |yes      |An integer selector to determine the height of the map to create.
@@ -60,4 +58,3 @@ private:
 };
 
 } // namespace dialogs
-} // namespace gui2

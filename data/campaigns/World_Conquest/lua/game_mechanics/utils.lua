@@ -1,22 +1,6 @@
-local on_event = wesnoth.require("on_event")
+local on_event = wesnoth.require "on_event"
 
 local wc2_utils = {}
-
-function wc2_utils.split_to_array(s, res)
-	res = res or {}
-	for part in tostring(s or ""):gmatch("[^%s,][^,]*") do
-		table.insert(res, part)
-	end
-	return res
-end
-
-function wc2_utils.split_to_set(s, res)
-	res = res or {}
-	for part in tostring(s or ""):gmatch("[^%s,][^,]*") do
-		res[part] = true
-	end
-	return res
-end
 
 function wc2_utils.set_to_array(s, res)
 	res = res or {}
@@ -28,7 +12,7 @@ function wc2_utils.set_to_array(s, res)
 end
 
 
-function wc2_utils.remove_dublicates(t)
+function wc2_utils.remove_duplicates(t)
 	local found = {}
 	for i = #t, 1, -1 do
 		local v = t[i]
@@ -44,7 +28,7 @@ end
 function wc2_utils.pick_random(str, generator)
 	local s2 = wml.variables[str]
 	if s2 ~= nil or generator then
-		local array = s2 and wc2_utils.split_to_array(s2) or {}
+		local array = s2 and stringx.split(s2) or {}
 		if #array == 0 and generator then
 			array = generator()
 		end
@@ -76,7 +60,7 @@ function wc2_utils.pick_random_filtered(str, generator, filter)
 		return
 	end
 
-	local array = s2 and wc2_utils.split_to_array(s2) or {}
+	local array = s2 and stringx.split(s2) or {}
 	if #array == 0 and generator then
 		array = generator()
 	end
@@ -207,7 +191,7 @@ function wc2_utils.get_fstring(t, key)
 	else
 		args = {}
 	end
-	return wesnoth.format(t[key], args)
+	return stringx.vformat(t[key], args)
 end
 
 function wc2_utils.get_fstring_all(t)

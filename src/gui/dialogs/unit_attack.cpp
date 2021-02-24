@@ -36,9 +36,7 @@
 
 #include <functional>
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 
 REGISTER_DIALOG(unit_attack)
@@ -178,4 +176,3 @@ void unit_attack::post_show(window& window)
 }
 
 } // namespace dialogs
-} // namespace gui2

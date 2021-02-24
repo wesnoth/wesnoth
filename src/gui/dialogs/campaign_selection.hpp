@@ -21,16 +21,14 @@
 
 #include <boost/dynamic_bitset.hpp>
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 
 /**
  * @ingroup GUIWindowDefinitionWML
- * 
+ *
  * This shows the dialog which allows the user to choose which campaign to play.
- * Key               |Type             |Mandatory|Description  
+ * Key               |Type             |Mandatory|Description
  * ------------------|-----------------|---------|-----------
  * campaign_list     | @ref listbox    |yes      |A listbox that contains all available campaigns.
  * icon              | @ref image      |no       |The icon for the campaign.
@@ -138,4 +136,3 @@ private:
 };
 
 } // namespace dialogs
-} // namespace gui2

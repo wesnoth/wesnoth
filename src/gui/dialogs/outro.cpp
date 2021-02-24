@@ -27,9 +27,7 @@
 
 #include <cmath>
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 REGISTER_DIALOG(outro)
 
@@ -160,4 +158,3 @@ void outro::post_show(window& /*window*/)
 }
 
 } // namespace dialogs
-} // namespace gui2

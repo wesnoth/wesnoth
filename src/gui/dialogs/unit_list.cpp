@@ -38,9 +38,7 @@
 static lg::log_domain log_display("display");
 #define LOG_DP LOG_STREAM(info, log_display)
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 
 REGISTER_DIALOG(unit_list)
@@ -217,4 +215,3 @@ void show_unit_list(display& gui)
 }
 
 } // namespace dialogs
-} // namespace gui2

@@ -108,9 +108,9 @@ end
 
 -- Sets the auro accordingly if unit might have multiple of illumination, darkness or forcefield abilities.
 function wesnoth.effects.wc2_update_aura(u, cfg)
-	local illuminates = wesnoth.match_unit(u, { ability = "illumination" } )
-	local darkens = wesnoth.match_unit(u, { ability = "darkness" } )
-	local forcefield = wesnoth.match_unit(u, { ability = "forcefield" } )
+	local illuminates = wesnoth.units.matches(u, { ability = "illumination" } )
+	local darkens = wesnoth.units.matches(u, { ability = "darkness" } )
+	local forcefield = wesnoth.units.matches(u, { ability = "forcefield" } )
 	local halo = ""
 	if illuminates and darkens then 
 		wesnoth.message("WC2", "Warning illuminates and darkens discovered on a unit")
@@ -138,7 +138,7 @@ end
 -- Similar to the usual apply_to=overlay effect but does not add overlays the the unit already has.
 function wesnoth.effects.wc2_overlay(u, cfg)
 	if cfg.add then
-		local to_add_old = wc2_utils.split_to_array(cfg.add)
+		local to_add_old = stringx.split(cfg.add)
 		local to_add_new = {}
 		local current = u.overlays
 		for i1,v1 in ipairs(to_add_old) do

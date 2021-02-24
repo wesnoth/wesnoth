@@ -56,9 +56,7 @@ static lg::log_domain log_lua_int("lua/interpreter");
 #define WRN_LUA LOG_STREAM(warn, log_lua_int)
 #define ERR_LUA LOG_STREAM(err, log_lua_int)
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 
 REGISTER_DIALOG(lua_interpreter)
@@ -721,4 +719,3 @@ lua_interpreter::lua_interpreter(lua_kernel_base & lk)
 }
 
 } // namespace dialogs
-} // namespace gui2

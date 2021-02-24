@@ -38,16 +38,16 @@ class tree_view_node;
 
 /**
  * @ingroup GUIWidgetWML
- * 
+ *
  * A tree view is a control that holds several items of the same or different types.
  * The items shown are called tree view nodes and when a node has children, these can be shown or hidden.
  * Nodes that contain children need to provide a clickable button in order to fold or unfold the children.
- * 
+ *
  * The following states exist:
  * * state_enabled - the listbox is enabled.
  * * state_disabled - the listbox is disabled.
  * List with the tree view specific variables:
- * Key                      |Type                                            |Default     |Description  
+ * Key                      |Type                                            |Default     |Description
  * -------------------------|------------------------------------------------|------------|-------------
  * vertical_scrollbar_mode  | @ref guivartype_scrollbar_mode "scrollbar_mode"|initial_auto|Determines whether or not to show the scrollbar.
  * horizontal_scrollbar_mode| @ref guivartype_scrollbar_mode "scrollbar_mode"|initial_auto|Determines whether or not to show the scrollbar.
@@ -172,8 +172,8 @@ private:
 	 *                            * negative values reduce height.
 	 *                            * zero leave height as is.
 	 *                            * positive values increase height.
-	 * @param width_modification_pos 
-	 * @param height_modification_pos 
+	 * @param width_modification_pos
+	 * @param height_modification_pos
 	 */
 	void resize_content(const int width_modification,
 						const int height_modification,

@@ -17,16 +17,14 @@
 #include "gui/dialogs/modal_dialog.hpp"
 #include "color.hpp"
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 
 /**
  * @ingroup GUIWindowDefinitionWML
- * 
+ *
  * Dialog for editing gamemap labels.
- * Key               |Type           |Mandatory|Description  
+ * Key               |Type           |Mandatory|Description
  * ------------------|---------------|---------|-----------
  * title             | @ref label    |yes      |Dialog title label.
  * label             | @ref text_box |yes      |Input field for the map label.
@@ -47,7 +45,7 @@ public:
 	 * @param visible_fog         Sets visible_fog_toggle attribute.
 	 * @param visible_shroud      Sets visible_shroud_toggle attribute.
 	 * @param color               Sets slider color.
-	 * @param category            Sets category attribute. 
+	 * @param category            Sets category attribute.
 	 */
 	editor_edit_label(std::string& text,
 					   bool& immutable,
@@ -70,4 +68,3 @@ private:
 	virtual void pre_show(window& window) override;
 };
 } // namespace dialogs
-} // namespace gui2

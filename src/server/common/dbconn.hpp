@@ -38,7 +38,7 @@ class dbconn
 	public:
 		/**
 		 * Initializes the synchronous query connection as well as the account object that has the connection settings.
-		 * 
+		 *
 		 * @param c The config object to read information from.
 		 */
 		dbconn(const config& c);
@@ -60,7 +60,7 @@ class dbconn
 
 		/**
 		 * This is an asynchronous query that is executed on a separate connection to retrieve the game history for the provided player.
-		 * 
+		 *
 		 * @param player_id The forum ID of the player to get the game history for.
 		 * @param offset The offset to provide to the database for where to start returning rows from.
 		 * @return The simple_wml document containing the query results, or simply the @a error attribute if an exception is thrown.
@@ -106,7 +106,7 @@ class dbconn
 
 		/**
 		 * The provided value is updated if a row exists or a new row inserted otherwise.
-		 * 
+		 *
 		 * @param column The column that the value will be put into.
 		 * @param name The player's username.
 		 * @param value The value to be put into the column.
@@ -172,7 +172,7 @@ class dbconn
 
 		/**
 		 * This is used to write out error text when an SQL-related exception occurs.
-		 * 
+		 *
 		 * @param text Some custom text to log.
 		 * @param e The exception that occurred which has information about what went wrong.
 		 */
@@ -186,7 +186,7 @@ class dbconn
 		/**
 		 * Queries can return data with various types that can't be easily fit into a pre-determined structure.
 		 * Therefore for queries that can return multiple rows with multiple columns, a class that extends @ref rs_base handles reading the results.
-		 * 
+		 *
 		 * @param connection The database connecion that will be used to execute the query.
 		 * @param base The class that will handle reading the results.
 		 * @param sql The SQL text to be executed.
@@ -226,7 +226,7 @@ class dbconn
 
 		/**
 		 * Executes a select statement.
-		 * 
+		 *
 		 * @param connection The database connecion that will be used to execute the query.
 		 * @param sql The SQL text to be executed.
 		 * @param args The parameterized values to be inserted into the query.
@@ -237,7 +237,7 @@ class dbconn
 
 		/**
 		 * Executes non-select statements (ie: insert, update, delete).
-		 * 
+		 *
 		 * @param connection The database connecion that will be used to execute the query.
 		 * @param sql The SQL text to be executed.
 		 * @param args The parameterized values to be inserted into the query.
@@ -248,7 +248,7 @@ class dbconn
 
 		/**
 		 * Begins recursively unpacking of the parameter pack in order to be able to call the correct parameterized setters on the query.
-		 * 
+		 *
 		 * @param connection The database connecion that will be used to execute the query.
 		 * @param sql The SQL text to be executed.
 		 * @param args The parameterized values to be inserted into the query.
@@ -259,7 +259,7 @@ class dbconn
 
 		/**
 		 * The next parameter to be added is split off from the parameter pack.
-		 * 
+		 *
 		 * @param stmt The statement that will have parameterized values set on it.
 		 * @param i The index of the current parameterized value.
 		 * @param arg The next parameter to be added.
@@ -271,7 +271,7 @@ class dbconn
 		/**
 		 * Specializations for each type of value to be parameterized.
 		 * There are other parameter setters than those currently implemented, but so far there hasn't been a reason to add them.
-		 * 
+		 *
 		 * @param stmt The statement that will have parameterized values set on it.
 		 * @param i The index of the current parameterized value.
 		 * @param arg The next parameter to be added.

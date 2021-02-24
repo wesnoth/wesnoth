@@ -18,9 +18,7 @@
 
 class lua_kernel_base;
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 
 class lua_interpreter : public modal_dialog
@@ -47,4 +45,3 @@ private:
 };
 
 } // namespace dialogs
-} // namespace gui2

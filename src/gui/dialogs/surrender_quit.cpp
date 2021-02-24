@@ -16,9 +16,7 @@
 #include "../widgets/settings.hpp"
 
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 
 REGISTER_DIALOG(surrender_quit)
@@ -30,4 +28,3 @@ surrender_quit::surrender_quit()
 }
 
 } // namespace dialogs
-} // namespace gui2

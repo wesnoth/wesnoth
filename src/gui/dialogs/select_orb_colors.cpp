@@ -28,9 +28,7 @@
 #include "preferences/general.hpp"
 #include <functional>
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 namespace
 {
@@ -157,4 +155,3 @@ void select_orb_colors::reset_orb_callback()
 }
 
 } // namespace dialogs
-} // namespace gui2

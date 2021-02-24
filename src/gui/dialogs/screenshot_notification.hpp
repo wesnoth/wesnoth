@@ -17,18 +17,16 @@
 #include "gui/dialogs/modal_dialog.hpp"
 #include "sdl/surface.hpp"
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 
 /**
  * @ingroup GUIWindowDefinitionWML
- * 
+ *
  * Notification dialog used after saving a game or map screenshot to display information about it for the user.
- * Key               |Type          |Mandatory|Description  
+ * Key               |Type          |Mandatory|Description
  * ------------------|--------------|---------|-----------
- * path              | text_box     |yes      |Read-only textbox containing the screenshot path. 
+ * path              | text_box     |yes      |Read-only textbox containing the screenshot path.
  * filesize          | @ref label   |no       |Optional label to display the file size.
  * copy              | @ref button  |yes      |Button to copy the path to clipboard.
  * open              | @ref button  |yes      |Button to open the screnshot using the default application.
@@ -67,4 +65,3 @@ private:
 	virtual void pre_show(window& window) override;
 };
 } // namespace dialogs
-} // namespace gui2

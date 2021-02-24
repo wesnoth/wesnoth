@@ -35,7 +35,7 @@ local function wct_difficulty(name, power, enemy_t, heroes, gold, train, exp)
 		heroes = heroes + 1
 	end
 	-- adjust bonus gold for number of players
-	gold = gold * math.pow(2, 3 - nplayers)
+	gold = gold * 2 ^ (3 - nplayers)
 	return wml.tag.command {
 		wml.tag.set_variables {
 			name = "wc2_difficulty",

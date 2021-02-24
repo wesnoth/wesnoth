@@ -21,9 +21,7 @@
 #include "gui/widgets/text_box.hpp"
 #include "gui/widgets/window.hpp"
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 
 REGISTER_DIALOG(editor_edit_scenario)
@@ -56,4 +54,3 @@ void editor_edit_scenario::pre_show(window& win)
 }
 
 } // namespace dialogs
-} // namespace gui2

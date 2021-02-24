@@ -31,11 +31,11 @@ namespace dialogs
 
 /**
  * @ingroup GUIWindowDefinitionWML
- * 
+ *
  * Clock to test the draw events.
- * 
+ *
  * This shows the dialog for keeping track of the drawing events related to the current time. (This window is used for debug purposes only.)
- * Key               |Type              |Mandatory|Description  
+ * Key               |Type              |Mandatory|Description
  * ------------------|------------------|---------|-----------
  * hour_percentage   | progress_bar     |no       |This shows the hours as a percentage, where 24 hours is 100%.
  * minute_percentage | progress_bar     |no       |This shows the minutes as a percentage, where 60 minutes is 100%.

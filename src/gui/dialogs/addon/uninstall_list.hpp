@@ -18,16 +18,14 @@
 
 #include <map>
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 
 /**
  * @ingroup GUIWindowDefinitionWML
- * 
+ *
  * Dialog with a checkbox list for choosing installed add-ons to remove.
- * Key               |Type           |Mandatory|Description  
+ * Key               |Type           |Mandatory|Description
  * ------------------|---------------|---------|-----------
  * addons_list       | @ref listbox  |yes      |A listbox containing add-on selection entries.
  * checkbox          | toggle_button |yes      |A toggle button allowing the user to mark/unmark the add-on.
@@ -67,4 +65,3 @@ private:
 };
 
 } // namespace dialogs
-} // namespace gui2

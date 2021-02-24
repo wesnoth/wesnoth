@@ -40,9 +40,7 @@ static lg::log_domain log_gui("gui/dialogs/mp_change_control");
 #define LOG_GUI LOG_STREAM(info,  log_gui)
 #define DBG_GUI LOG_STREAM(debug, log_gui)
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 
 REGISTER_DIALOG(mp_change_control)
@@ -181,4 +179,3 @@ void mp_change_control::post_show(window& window)
 }
 
 } // namespace dialogs
-} // namespace gui2

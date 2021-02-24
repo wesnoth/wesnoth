@@ -11,7 +11,7 @@ local function wct_map_enemy_themed(race, pet, castle, village, chance)
 	if wesnoth.random(100) > chance then
 		return
 	end
-	local boss = wesnoth.get_units {
+	local boss = wesnoth.units.find_on_map {
 		side="4,5,6,7,8,9",
 		canrecruit=true,
 		race=race,
@@ -76,7 +76,7 @@ local function wct_map_enemy_themed(race, pet, castle, village, chance)
 		y = boss.y,
 		type=pet,
 		side = boss.side,
-		name= wesnoth.format(enemy_pet, { name = boss.name }),
+		name= stringx.vformat(enemy_pet, { name = boss.name }),
 		role = "hero",
 		overlays = "misc/hero-icon.png",
 		wml.tag.modifications {

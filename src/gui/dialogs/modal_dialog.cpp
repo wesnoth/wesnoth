@@ -23,9 +23,7 @@
 #include "scripting/plugins/manager.hpp"
 #include "video.hpp"
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 modal_dialog::modal_dialog()
 	: window_(nullptr)
@@ -272,4 +270,3 @@ void modal_dialog::finalize_fields(window& window, const bool save_fields)
 }
 
 } // namespace dialogs
-} // namespace gui2

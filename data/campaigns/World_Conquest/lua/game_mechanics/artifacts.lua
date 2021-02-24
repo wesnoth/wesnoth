@@ -121,7 +121,7 @@ end
 -- unit picking up artifacts
 on_event("wc2_drop_pickup", function(ec)
 	local item = wc2_dropping.current_item
-	local unit = wesnoth.get_unit(ec.x1, ec.y1)
+	local unit = wesnoth.units.get(ec.x1, ec.y1)
 	if not item.variables.wc2_atrifact_id then
 		return
 	end
@@ -165,7 +165,7 @@ end)
 function artifacts.fresh_artifacts_list(for_type)
 	local res = {} 
 	for i,v in ipairs(artifacts.get_artifact_list()) do
-		if not for_type or not wc2_utils.split_to_set(v.not_available or "")[for_type] then
+		if not for_type or not stringx.map_split(v.not_available or "")[for_type] then
 			table.insert(res, i)
 		end
 	end
@@ -175,7 +175,7 @@ end
 
 -- drop all items a dying unit carries.
 on_event("die", function(event_context)
-	local unit = wesnoth.get_unit(event_context.x1, event_context.y1)
+	local unit = wesnoth.units.get(event_context.x1, event_context.y1)
 	if not unit then
 		return
 	end

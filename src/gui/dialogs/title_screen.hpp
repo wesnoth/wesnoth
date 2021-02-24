@@ -18,9 +18,7 @@
 
 class game_launcher;
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 
 class modeless_dialog;
@@ -30,13 +28,13 @@ extern bool show_debug_clock_button;
 
 /**
  * @ingroup GUIWindowDefinitionWML
- * 
+ *
  * This class implements the title screen.
  *
  * The menu buttons return a result back to the caller with the button pressed.
  * So at the moment it only handles the tips itself.
- * 
- * Key               |Type          |Mandatory|Description  
+ *
+ * Key               |Type          |Mandatory|Description
  * ------------------|--------------|---------|-----------
  * tutorial          | @ref button  |yes      |The button to start the tutorial.
  * campaign          | @ref button  |yes      |The button to start a campaign.
@@ -123,4 +121,3 @@ private:
 };
 
 } // namespace dialogs
-} // namespace gui2

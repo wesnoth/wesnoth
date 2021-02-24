@@ -49,9 +49,7 @@ static std::string get_probability_string(const double prob)
        return ss.str();
 }
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 REGISTER_DIALOG(statistics_dialog)
 
@@ -462,4 +460,3 @@ void statistics_dialog::on_primary_list_select()
 }
 
 } // namespace dialogs
-} // namespace gui2

@@ -14,7 +14,7 @@ local function GUI_FORCE_WIDGET_MINIMUM_SIZE(w,h, content)
 							height = h
 						}
 					}
-				} 
+				}
 			},
 			T.layer {
 				T.row {
@@ -25,7 +25,7 @@ local function GUI_FORCE_WIDGET_MINIMUM_SIZE(w,h, content)
 						vertical_grow = "true",
 						content
 					}
-				} 
+				}
 			}
 		}
 	}
@@ -79,7 +79,9 @@ local dialog_wml = {
 										T.row {
 											T.column {
 												grow_factor = 0,
-												horizontal_grow = true,
+												horizontal_alignment = "left",
+												border = "top,bottom",
+												border_size = 5,
 												T.toggle_button {
 													id = "tree_view_node_toggle",
 													definition = "tree_view_node",
@@ -88,11 +90,14 @@ local dialog_wml = {
 											T.column {
 												grow_factor = 1,
 												horizontal_grow = true,
+												border = "all",
+												border_size = 5,
 												T.grid {
 													T.row {
 														T.column {
 															horizontal_alignment = "left",
 															T.label {
+																definition = "gold",
 																id = "category_name",
 															},
 														},
@@ -198,6 +203,8 @@ local dialog_wml = {
 						T.column { vertical_grow = true, T.grid { T.row {
 						T.column {
 							vertical_grow = true,
+							border = "all",
+							border_size = 5,
 							T.multi_page {
 								id = "details",
 								definition = "default",
@@ -290,6 +297,8 @@ local dialog_wml = {
 						T.row {
 							T.column {
 								horizontal_alignment = "center",
+								border = "all",
+								border_size = 5,
 								T.button {
 									definition = "really_large",
 									label = "Get This Item",

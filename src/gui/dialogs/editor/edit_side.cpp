@@ -22,9 +22,7 @@
 
 #include <functional>
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 
 REGISTER_DIALOG(editor_edit_side)
@@ -76,4 +74,3 @@ void editor_edit_side::post_show(window&)
 }
 
 } // namespace dialogs
-} // namespace gui2

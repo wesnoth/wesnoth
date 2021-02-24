@@ -28,9 +28,7 @@
 
 #include <chrono>
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 using namespace std::chrono_literals;
 
@@ -132,4 +130,3 @@ void network_transmission::post_show(window& /*window*/)
 }
 
 } // namespace dialogs
-} // namespace gui2

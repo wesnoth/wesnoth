@@ -48,9 +48,7 @@
 static lg::log_domain log_display("display");
 #define LOG_DP LOG_STREAM(info, log_display)
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 
 // Index 2 is by-level
@@ -477,4 +475,3 @@ void unit_recall::filter_text_changed(const std::string& text)
 }
 
 } // namespace dialogs
-} // namespace gui2

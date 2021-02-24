@@ -28,9 +28,7 @@
 
 #include <ctime>
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 
 REGISTER_DIALOG(debug_clock)
@@ -171,4 +169,3 @@ bool debug_clock::time::step(const unsigned milliseconds)
 }
 
 } // namespace dialogs
-} // namespace gui2

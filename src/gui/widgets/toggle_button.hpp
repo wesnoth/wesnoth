@@ -28,12 +28,12 @@ namespace implementation
 
 /**
  * @ingroup GUIWidgetWML
- * 
+ *
  * Class for a toggle button.
- * 
+ *
  * A toggle button is a button with two states 'up' and 'down' or 'selected' and 'deselected'.
  * When the mouse is pressed on it the state changes.
- * 
+ *
  * The following states exist:
  * * state_enabled - the button is enabled and not selected.
  * * state_disabled - the button is disabled and not selected.
@@ -41,9 +41,9 @@ namespace implementation
  * * state_enabled_selected - the button is enabled and selected.
  * * state_disabled_selected - the button is disabled and selected.
  * * state_focussed_selected - the mouse is over the button and selected.
- * 
+ *
  * Variables:
- * Key                 |Type                                    |Default  |Description  
+ * Key                 |Type                                    |Default  |Description
  * --------------------|----------------------------------------|---------|-------------
  * icon                | @ref guivartype_string "string"        |""       |The name of the icon file to show.
  * return_value_id     | @ref guivartype_string "string"        |""       |The return value id.

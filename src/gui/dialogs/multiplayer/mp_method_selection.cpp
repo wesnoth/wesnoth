@@ -26,9 +26,7 @@
 #include "gui/widgets/window.hpp"
 #include "preferences/credentials.hpp"
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 
 REGISTER_DIALOG(mp_method_selection)
@@ -67,4 +65,3 @@ void mp_method_selection::post_show(window& window)
 }
 
 } // namespace dialogs
-} // namespace gui2

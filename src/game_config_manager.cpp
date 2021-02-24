@@ -499,7 +499,8 @@ void game_config_manager::load_addons_cfg()
 				"resource",
 				"multiplayer",
 				"scenario",
-				"campaign"
+				"campaign",
+				"test"
 			};
 
 			// Annotate appropriate addon types with addon_id info.

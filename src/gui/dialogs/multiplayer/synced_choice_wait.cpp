@@ -28,9 +28,7 @@
 
 #include <functional>
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 
 REGISTER_DIALOG(synched_choice_wait)
@@ -75,4 +73,3 @@ void synched_choice_wait::handle_generic_event(const std::string& event_name)
 }
 
 } // namespace dialogs
-} // namespace gui2

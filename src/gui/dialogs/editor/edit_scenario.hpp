@@ -16,16 +16,14 @@
 
 #include "gui/dialogs/modal_dialog.hpp"
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 
 /**
  * @ingroup GUIWindowDefinitionWML
- * 
+ *
  * Dialog for editing gamemap scenarios.
- * Key               |Type           |Mandatory|Description  
+ * Key               |Type           |Mandatory|Description
  * ------------------|---------------|---------|-----------
  * title             | @ref label    |yes      |Dialog title label.
  * label             | @ref text_box |yes      |Input field for the map label.
@@ -52,4 +50,3 @@ private:
 	virtual void pre_show(window& window) override;
 };
 } // namespace dialogs
-} // namespace gui2

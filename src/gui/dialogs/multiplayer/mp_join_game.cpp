@@ -52,9 +52,7 @@ static lg::log_domain log_mp_connect_engine("mp/connect/engine");
 #define WRN_MP LOG_STREAM(warn, log_mp_connect_engine)
 #define ERR_MP LOG_STREAM(err, log_mp_connect_engine)
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 
 REGISTER_DIALOG(mp_join_game)
@@ -581,4 +579,3 @@ void mp_join_game::post_show(window& window)
 }
 
 } // namespace dialogs
-} // namespace gui2

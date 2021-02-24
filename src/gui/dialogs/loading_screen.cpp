@@ -65,9 +65,7 @@ static const std::map<loading_stage, std::string> stage_names {
 	{ loading_stage::download_lobby_data, N_("Downloading lobby data") },
 };
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 REGISTER_DIALOG(loading_screen)
 
@@ -200,4 +198,3 @@ void loading_screen::display(std::function<void()> f)
 }
 
 } // namespace dialogs
-} // namespace gui2

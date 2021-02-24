@@ -32,9 +32,7 @@
 #include "sdl/rect.hpp"
 #include <functional>
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 REGISTER_DIALOG(drop_down_menu)
 
@@ -269,4 +267,3 @@ boost::dynamic_bitset<> drop_down_menu::get_toggle_states() const
 }
 
 } // namespace dialogs
-} // namespace gui2

@@ -122,7 +122,7 @@ function wc2_show_invest_dialog_impl(args)
 				local train_message = wc2_training.generate_message(v, current_grade + 1)
 				local train_message_before = wc2_training.generate_message(v, current_grade)
 
-				local title = wesnoth.format(_ "$name Training", { name = training_info.name })
+				local title = stringx.vformat(_ "$name Training", { name = training_info.name })
 				local desc = wc2_training.describe_training_level2(current_grade, #training_info.grade) .. wc2_color.tc_text(" → ") .. wc2_training.describe_training_level2(current_grade + 1, #training_info.grade)
 
 

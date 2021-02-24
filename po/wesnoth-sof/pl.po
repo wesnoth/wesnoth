@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-01-16 14:18 UTC\n"
+"POT-Creation-Date: 2021-02-20 21:40 UTC\n"
 "PO-Revision-Date: 2020-11-02 12:28+0100\n"
 "Last-Translator: Jarom <jaromirb@op.pl>\n"
 "Language-Team: none\n"
@@ -133,8 +133,8 @@ msgid "Rugnur"
 msgstr "Rugnur"
 
 #. [side]: type=Dwarvish Fighter, id=Rugnur
-#. [side]: type=Dwarvish Lord, id=Durstorn
 #. [side]: type=Haldric II, id=Haldric II
+#. [side]: type=Dwarvish Lord, id=Durstorn
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:27
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:45
 #: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:24
@@ -160,8 +160,8 @@ msgstr "Krasnoludy"
 msgid "Haldric II"
 msgstr "Haldric II"
 
-#. [side]: type=Elvish Captain, id=Glildur
 #. [side]: type=Elvish Marshal, id=Glildur
+#. [side]: type=Elvish Captain, id=Glildur
 #. [unit]: type=Elvish Marshal, id=Glildur
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:93
 #: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:36
@@ -171,12 +171,12 @@ msgstr "Haldric II"
 msgid "Glildur"
 msgstr "Glildur"
 
-#. [side]: type=Elvish Captain, id=Glildur
 #. [side]: type=Elvish Marshal, id=Glildur
 #. [side]: type=Elvish Marshal, id=Glinan
 #. [side]: type=Elvish Captain, id=Kalnar
-#. [side]: type=Elvish Marshal, id=Crintil
+#. [side]: type=Elvish Captain, id=Glildur
 #. [side]
+#. [side]: type=Elvish Marshal, id=Crintil
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:113
 #: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:43
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:52
@@ -495,9 +495,9 @@ msgstr ""
 "dopilnuje, byście skończyli na czas. Chcę je dostać, nim nadejdzie kres "
 "mojego panowania."
 
+#. [unit]: type=Dragoon, id=Alanin
 #. [side]
 #. [side]: type=Haldric II, id=Haldric II
-#. [unit]: type=Dragoon, id=Alanin
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:472
 #: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:27
 #: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:19
@@ -517,7 +517,7 @@ msgstr "Zgadza się. Przyjadę razem ze srebrem."
 #| "Hey! You can’t do that — this road is an elvish road. We’re not letting "
 #| "you transport gold and jewels on it without paying a toll."
 msgid ""
-"Hey!  You can’t do that — this road is an elvish road. We’re not letting you "
+"Hey! You can’t do that — this road is an elvish road. We’re not letting you "
 "transport gold and jewels on it without paying a toll."
 msgstr ""
 "Ej tam! Nic z tego, to droga elfów. Nie pozwolimy przewozić tędy złota i "
@@ -738,8 +738,8 @@ msgstr ""
 msgid "Closing the Gates"
 msgstr "Zamykanie bram"
 
-#. [side]
 #. [side]: type=Troll Warrior, id=Harohk
+#. [side]
 #: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:100
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:220
 msgid "Trolls"
@@ -1046,9 +1046,9 @@ msgstr "Poszukiwania runarza"
 msgid "Bragdash Gar"
 msgstr ""
 
-#. [side]: type=Orcish Warrior, id=Bragdash
 #. [side]
 #. [side]: type=Orcish Warlord
+#. [side]: type=Orcish Warrior, id=Bragdash
 #: data/campaigns/Sceptre_of_Fire/scenarios/2p5_Reaching_the_Runecrafter.cfg:38
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:78
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:170
@@ -1221,8 +1221,8 @@ msgstr ""
 msgid "In the Dwarven City"
 msgstr "W krasnoludzkim mieście"
 
-#. [side]: type=Dwarvish Lord, id=Durstorn
 #. [unit]: type=Dwarvish Lord, id=Durstorn
+#. [side]: type=Dwarvish Lord, id=Durstorn
 #: data/campaigns/Sceptre_of_Fire/scenarios/2t_In_the_Dwarven_City.cfg:31
 #: data/campaigns/Sceptre_of_Fire/scenarios/3t_The_Council_Regathers.cfg:31
 #: data/campaigns/Sceptre_of_Fire/scenarios/4t_The_Jeweler.cfg:31
@@ -1863,7 +1863,7 @@ msgstr ""
 #. [message]: speaker=Baglur
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:572
 msgid ""
-"Aye, a cage, and we can't do it on our own, Thursagen. We need your skill "
+"Aye, a cage, and we can't do it on our own, Thursagan. We need your skill "
 "and expertise!"
 msgstr ""
 
@@ -3532,8 +3532,12 @@ msgstr ""
 
 #. [message]: id=Alanin
 #: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:249
+#, fuzzy
+#| msgid ""
+#| "Even though my chances have grown worse, I have to fulfil my duty. I do "
+#| "not owe them any less!"
 msgid ""
-"Even though my chances have grown worse, I have to fulfil my duty. I do not "
+"Even though my chances have grown worse, I have to fulfill my duty. I do not "
 "owe them any less!"
 msgstr ""
 "Nawet jeżeli nasze szanse zmalały, muszę wypełnić mój obowiązek. "
@@ -3928,7 +3932,7 @@ msgstr ""
 
 #. [message]: speaker=Gathor
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:424
-msgid "Nothing!?  Even this magical piece of crap lets me down!"
+msgid "Nothing!? Even this magical piece of crap lets me down!"
 msgstr ""
 
 #. [message]: speaker=narrator
@@ -3945,7 +3949,7 @@ msgstr ""
 #. [message]: speaker=unit
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:528
 msgid ""
-"All these years we stood guard... to protect these tunnels...  and it comes "
+"All these years we stood guard... to protect these tunnels... and it comes "
 "to this..."
 msgstr ""
 
@@ -4053,8 +4057,8 @@ msgstr ""
 #. [message]: speaker=unit
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:932
 msgid ""
-"Ah!  We aren't wandering the bowels o' the earth, this is crafted stone!  "
-"It's very old though..."
+"Ah! We aren't wandering the bowels o' the earth, this is crafted stone! It's "
+"very old though..."
 msgstr ""
 
 #. [message]: speaker=unit
@@ -4090,7 +4094,7 @@ msgstr ""
 #. [message]: speaker=Thursagan
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:1017
 msgid ""
-"Remember what Khrakrahs said, about this being a volcano?  Well, it seems "
+"Remember what Khrakrahs said, about this being a volcano? Well, it seems "
 "we're under the crater, sitting on the magma chamber... I think we should "
 "try to cause it to erupt."
 msgstr ""
@@ -4143,7 +4147,7 @@ msgstr ""
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:1059
 msgid ""
-"Friends, brothers, this is a desperate situation, I need your help.  Can we "
+"Friends, brothers, this is a desperate situation, I need your help. Can we "
 "negotiate pay after we're back to safety?"
 msgstr ""
 
@@ -4198,7 +4202,7 @@ msgstr ""
 #. [message]: speaker=unit
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:1197
 msgid ""
-"It's very hot here, above the lava.  This bridge also seems rather delicate, "
+"It's very hot here, above the lava. This bridge also seems rather delicate, "
 "I'd better not loiter here."
 msgstr ""
 

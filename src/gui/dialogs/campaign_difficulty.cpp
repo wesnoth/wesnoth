@@ -30,9 +30,7 @@
 static lg::log_domain log_wml("wml");
 #define WRN_WML LOG_STREAM(warn, log_wml)
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 
 REGISTER_DIALOG(campaign_difficulty)
@@ -114,4 +112,3 @@ void campaign_difficulty::post_show(window& window)
 	}
 }
 } // namespace dialogs
-} // namespace gui2

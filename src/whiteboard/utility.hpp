@@ -69,8 +69,8 @@ unit* future_visible_unit(map_location hex, int viewer_side = wb::viewer_side())
  * Applies the future unit map and @return a pointer to the unit at hex
  * @retval nullptr if none is visible to the specified viewer side
  * @param on_side Only search for units of this side.
- * @param hex 
- * @param viewer_side 
+ * @param hex
+ * @param viewer_side
  */
 unit* future_visible_unit(int on_side, map_location hex, int viewer_side = wb::viewer_side());
 

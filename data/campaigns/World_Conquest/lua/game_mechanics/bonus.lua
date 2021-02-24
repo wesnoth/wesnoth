@@ -20,7 +20,7 @@ function wesnoth.wml_actions.wc2_place_bonus(cfg)
 	-- Note: although the numbrs of options passed to helper.rand might depend on the langauge
 	--       the number of thimes random is called does not (random is called even if there is
 	--       only one option), so this doesn't cause OOS.
-	local name1 = wc2_random_names.generate()
+	local name1 = wc2_random_names()
 	local name_options = c_scenery.names or { _"place" }
 	local name2 = tostring(name_options[wesnoth.random(#name_options)])
 
@@ -31,7 +31,7 @@ function wesnoth.wml_actions.wc2_place_bonus(cfg)
 	wesnoth.wml_actions.label {
 		x = x,
 		y = y,
-		text = span_font_family(wesnoth.format(_ "$name's $type", {name = name1, type = name2}), "Lucida Sans Unicode")
+		text = span_font_family(stringx.vformat(_ "$name's $type", {name = name1, type = name2}), "Lucida Sans Unicode")
 	}
 end
 
@@ -157,7 +157,7 @@ function bonus.found_artifact(ec, index)
 end
 
 function bonus.found_hero(ec, herotype)
-	local finder = wesnoth.get_unit(ec.x1, ec.y1)
+	local finder = wesnoth.units.get(ec.x1, ec.y1)
 	wesnoth.wml_actions.message {
 		x = ec.x1,
 		y = ec.y1,

@@ -37,9 +37,7 @@
 
 #include "help/help.hpp"
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 
 REGISTER_DIALOG(help_browser)
@@ -106,4 +104,3 @@ void help_browser::on_topic_select()
 }
 
 } // namespace dialogs
-} // namespace gui2

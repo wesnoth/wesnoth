@@ -20,9 +20,7 @@
 #include "storyscreen/controller.hpp"
 #include "storyscreen/part.hpp"
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 
 /** Dialog to view the storyscreen. */
@@ -97,4 +95,3 @@ private:
 };
 
 } // namespace dialogs
-} // namespace gui2

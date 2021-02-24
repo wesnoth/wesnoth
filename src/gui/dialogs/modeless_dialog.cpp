@@ -19,9 +19,7 @@
 #include "gui/widgets/window.hpp"
 #include "video.hpp"
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 
 modeless_dialog::modeless_dialog() : window_(nullptr)
@@ -83,4 +81,3 @@ void modeless_dialog::pre_show(window& /*window*/)
 }
 
 } // namespace dialogs
-} // namespace gui2

@@ -18,9 +18,7 @@
 #include "preferences/game.hpp"
 #include "gui/widgets/settings.hpp"
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 
 REGISTER_DIALOG(mp_host_game_prompt)
@@ -52,4 +50,3 @@ mp_host_game_prompt::mp_host_game_prompt()
 }
 
 } // namespace dialogs
-} // namespace gui2

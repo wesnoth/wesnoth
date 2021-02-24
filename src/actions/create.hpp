@@ -151,7 +151,7 @@ typedef std::tuple<bool /*event modified*/, int /*previous village owner side*/,
  * @param cost the unit's cost.
  * @param is_recall whether the unit was recalled.
  * @param facing the desired facing for the unit, map_location::NDIRECTIONS to determine facing automatically.
- * @param show 
+ * @param show
  * @param fire_event whether to fire events for the unit placement.
  * @param full_movement whether the unit starts with full movement points.
  * @param wml_triggered whether this was triggered via WML.
@@ -183,7 +183,7 @@ void recruit_unit(const unit_type & u_type, int side_num, const map_location & l
  * @param loc the location it was recalled onto.
  * @param from the location it was recalled from.
  * @param facing the desired facing for the unit, map_location::NDIRECTIONS to determine facing automatically.
- * @param show 
+ * @param show
  * @param use_undo if it's possible to undo the recall.
  * @returns false if the recall could not be found in the team's recall list.
  */

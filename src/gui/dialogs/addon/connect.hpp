@@ -16,16 +16,14 @@
 
 #include "gui/dialogs/modal_dialog.hpp"
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 
 /**
  * @ingroup GUIWindowDefinitionWML
- * 
+ *
  * This shows the dialog for managing addons and connecting to the addon server.
- * Key               |Type      |Mandatory|Description  
+ * Key               |Type      |Mandatory|Description
  * ------------------|----------|---------|-----------
  * hostname          | text_box |yes      |This text contains the name of the server to connect to.
  * show_help         | @ref gui::button   |yes      |Thus button shows the in-game help about add-ons management when triggered.
@@ -64,4 +62,3 @@ private:
 };
 
 } // namespace dialogs
-} // namespace gui2

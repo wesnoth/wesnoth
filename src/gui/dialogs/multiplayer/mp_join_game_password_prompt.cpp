@@ -16,9 +16,7 @@
 
 #include "gui/widgets/settings.hpp"
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 
 REGISTER_DIALOG(mp_join_game_password_prompt)
@@ -30,4 +28,3 @@ mp_join_game_password_prompt::mp_join_game_password_prompt(
 }
 
 } // namespace dialogs
-} // namespace gui2

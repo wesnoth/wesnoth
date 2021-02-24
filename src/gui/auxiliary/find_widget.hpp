@@ -99,4 +99,11 @@ T& find_widget(utils::const_clone_ptr<widget, T> widget,
 	return *find_widget<T>(widget, id, must_be_active, true);
 }
 
+template<typename T>
+void on_widget(utils::const_clone_ptr<widget, T> parent, const std::string& id, std::function<void(T&)> func)
+{
+	if(auto widget = find_widget<T>(parent, id, false, false)) {
+		func(*widget);
+	}
+}
 } // namespace gui2

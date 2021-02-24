@@ -41,9 +41,7 @@ static std::string last_chosen_type_id = "";
 static std::string last_variation = "";
 static unit_race::GENDER last_gender = unit_race::MALE;
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 
 REGISTER_DIALOG(unit_create)
@@ -299,4 +297,3 @@ void unit_create::variation_menu_callback()
 }
 
 } // namespace dialogs
-} // namespace gui2

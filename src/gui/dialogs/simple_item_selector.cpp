@@ -23,9 +23,7 @@
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 
 REGISTER_DIALOG(simple_item_selector)
@@ -91,4 +89,3 @@ void simple_item_selector::post_show(window& window)
 }
 
 } // namespace dialogs
-} // namespace gui2

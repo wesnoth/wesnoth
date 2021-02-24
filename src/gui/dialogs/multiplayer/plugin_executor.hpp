@@ -20,9 +20,7 @@
 #include "game_config.hpp"
 #include <memory>
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 
 class plugin_executor
@@ -55,4 +53,3 @@ protected:
 };
 
 } // namespace dialogs
-} // namespace gui2

@@ -19,16 +19,14 @@
 #include <vector>
 
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 
 /**
  * @ingroup GUIWindowDefinitionWML
- * 
+ *
  * Offers a list of compatible items if a currently selected one is incompatible. Currently used for switching era or map.
- * Key               |Type          |Mandatory|Description  
+ * Key               |Type          |Mandatory|Description
  * ------------------|--------------|---------|-----------
  * message           | @ref label   |yes      |displays the details of the required changes
  * itemlist          | @ref listbox |yes      |displays the available items to choose from
@@ -76,4 +74,3 @@ private:
 	int result_;
 };
 } // namespace dialogs
-} // namespace gui2

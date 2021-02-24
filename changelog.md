@@ -13,7 +13,7 @@
  ### User interface
  ### WML Engine
    * Standard Location Filters now support gives_income=yes|no to make it simpler to match villages regardless of owner
-   * abilities used like weapon can call a [teaching_anim] similar to [leading_anim] now.
+   * abilities used like weapon can call a [teaching_anim] instead of [leading_anim] now.
  ### Miscellaneous and Bug Fixes
 
 ## Version 1.15.10
@@ -408,6 +408,7 @@
      * Fix missing portraits for Shynal
    * Tutorial:
      * Redraw S2 and reduce difficulty
+   * Wings of Victory has been removed.
  ### Editor
  ### Language and i18n
    * Updated translations: Ancient Greek, Chinese (Traditional), Czech, Dutch,

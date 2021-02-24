@@ -31,10 +31,10 @@ struct builder_minimap;
 
 /**
  * @ingroup GUIWidgetWML
- * 
+ *
  * The basic minimap class.
  * This minimap can only show a minimap, but it can't be interacted with.
- * 
+ *
  * The following states exist:
  * * state_enabled - the minimap is enabled.
  * A minimap has no extra fields.

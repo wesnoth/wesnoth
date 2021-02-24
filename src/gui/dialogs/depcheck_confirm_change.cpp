@@ -21,9 +21,7 @@
 #include "formula/string_utils.hpp"
 #include "gettext.hpp"
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 
 REGISTER_DIALOG(depcheck_confirm_change)
@@ -54,4 +52,3 @@ depcheck_confirm_change::depcheck_confirm_change(
 	register_label("itemlist", false, list);
 }
 } // namespace dialogs
-} // namespace gui2

@@ -31,15 +31,15 @@ struct builder_scrollbar_panel;
 
 /**
  * @ingroup GUIWidgetWML
- * 
+ *
  * Visible container to hold multiple widgets.
  *
  * This widget can draw items beyond the widgets it holds and in front of them.
  * A panel is always active so these functions return dummy values.
- * 
+ *
  * A panel is a container holding other elements in its grid.
  * It uses the states as layers to draw on.
- * 
+ *
  * Key          |Type                        |Default  |Description
  * -------------|----------------------------|---------|-----------
  * grid         | @ref guivartype_grid "grid"|mandatory|A grid containing the widgets for main widget.

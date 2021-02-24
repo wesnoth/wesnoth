@@ -31,10 +31,10 @@ struct builder_repeating_button;
 
 /**
  * @ingroup GUIWidgetWML
- * 
+ *
  * A repeating_button is a control that can be pushed down and repeat a certain action.
  * Once the button is down every x milliseconds it is down a new down event is triggered.
- * 
+ *
  * The following states exist:
  * * state_enabled - the repeating_button is enabled.
  * * state_disabled - the repeating_button is disabled.

@@ -17,9 +17,7 @@
 
 #include "gui/widgets/settings.hpp"
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 
 REGISTER_DIALOG(sp_options_configure)
@@ -46,4 +44,3 @@ void sp_options_configure::post_show(window& window)
 }
 
 } // namespace dialogs
-} // namespace gui2

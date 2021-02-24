@@ -18,9 +18,7 @@
 
 #include <map>
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 class select_orb_colors : public modal_dialog
 {
@@ -64,4 +62,3 @@ private:
 };
 
 } // namespace dialogs
-} // namespace gui2

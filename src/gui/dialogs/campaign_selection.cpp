@@ -38,9 +38,7 @@
 #include <functional>
 #include "utils/irdya_datetime.hpp"
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 
 REGISTER_DIALOG(campaign_selection)
@@ -465,4 +463,3 @@ void campaign_selection::mod_toggled()
 }
 
 } // namespace dialogs
-} // namespace gui2
