@@ -636,7 +636,7 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 
 	add_simple_anim(animations, cfg, "resistance_anim", "resistance");
 	add_simple_anim(animations, cfg, "leading_anim", "leading");
-	add_simple_anim(animations, cfg, "special_anim", "special");
+	add_simple_anim(animations, cfg, "teaching_anim", "teaching");
 	add_simple_anim(animations, cfg, "recruit_anim", "recruited");
 	add_simple_anim(animations, cfg, "recruiting_anim", "recruiting");
 	add_simple_anim(animations, cfg, "idle_anim", "idling", display::LAYER_UNIT_DEFAULT, false);
