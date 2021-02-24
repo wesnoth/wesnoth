@@ -91,7 +91,7 @@ function wml_actions.harm_unit(cfg)
 				amount,
 				cfg.alignment or "neutral",
 				wesnoth.get_time_of_day( { unit_to_harm.x, unit_to_harm.y, true } ).lawful_bonus,
-				unit_to_harm:resistance( cfg.damage_type or "dummy" ),
+				100 - unit_to_harm:resistance_against( cfg.damage_type or "dummy" ),
 				resistance_multiplier
 			)
 
