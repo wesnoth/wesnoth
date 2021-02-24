@@ -362,6 +362,9 @@ LEVEL_RESULT campaign_controller::play_game()
 
 			//The host should send the complete savegame now that also contains the carryvoer sides start.
 		} else {
+			// clear previous game content information
+			// otherwise it keeps getting appended for each scenario resulting in incorrect data being sent to the server to be stored
+			state_.mp_settings().addons.clear();
 			// Retrieve next scenario data.
 			state_.expand_scenario();
 
