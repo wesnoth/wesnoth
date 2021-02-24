@@ -34,6 +34,7 @@ int intf_get_adjacent_tiles(lua_State*);
 int intf_get_tiles_in_radius(lua_State*);
 int intf_distance_between(lua_State*);
 int intf_get_in_basis_N_NE(lua_State*);
+int intf_get_from_basis_N_NE(lua_State* L);
 int intf_get_relative_dir(lua_State*);
 
 } // end namespace lua_map_location

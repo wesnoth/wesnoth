@@ -231,6 +231,16 @@ int intf_get_in_basis_N_NE(lua_State* L)
 }
 
 /**
+ * Expose map_location get_from_basis_N_NE
+ */
+int intf_get_from_basis_N_NE(lua_State* L)
+{
+	int d_n = luaL_checkinteger(L, 1), d_ne = luaL_checkinteger(L, 2);
+	luaW_pushlocation(L, map_location::from_basis_N_NE(d_n, d_ne));
+	return 1;
+}
+
+/**
  * Expose map_location get_relative_dir
  * - Args 1, 2: Two locations
  * - Ret: The direction of location 2 from location 1

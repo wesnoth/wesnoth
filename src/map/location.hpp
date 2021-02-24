@@ -143,6 +143,7 @@ struct map_location {
 
 	// Express as a vector in the basis N, NE. N, and NE may be obtained by zero.get_direction(NORTH), ...(NORTH_EAST), respectively.
 	std::pair<int,int> get_in_basis_N_NE() const;
+	static map_location from_basis_N_NE(int d_n, int d_ne);
 
 	// Rotates the map_location clockwise in 60 degree increments around a center point. Negative numbers of steps are permitted.
 	map_location rotate_right_around_center(const map_location & center, int k) const;

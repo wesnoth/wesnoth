@@ -548,7 +548,8 @@ lua_kernel_base::lua_kernel_base()
 		{ "get_adjacent_hexes",		&lua_map_location::intf_get_adjacent_tiles		},
 		{ "get_hexes_in_radius",		&lua_map_location::intf_get_tiles_in_radius		},
 		{ "distance_between",		&lua_map_location::intf_distance_between		},
-		{ "get_in_basis_N_NE",		&lua_map_location::intf_get_in_basis_N_NE		},
+		{ "to_basis_N_NE",		    &lua_map_location::intf_get_in_basis_N_NE		},
+		{ "from_basis_N_NE",		&lua_map_location::intf_get_from_basis_N_NE		},
 		{ "get_relative_dir",		&lua_map_location::intf_get_relative_dir		},
 		{ "read_direction",         &lua_map_location::intf_read_direction          },
 		{ nullptr, nullptr }

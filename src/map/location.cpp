@@ -303,6 +303,13 @@ std::pair<int,int> map_location::get_in_basis_N_NE() const {
 	return ret;
 }
 
+map_location map_location::from_basis_N_NE(int d_n, int d_ne) {
+	map_location origin(0,0);
+	origin = origin.get_direction(NORTH, d_n);
+	origin = origin.get_direction(NORTH_EAST, d_ne);
+	return origin;
+}
+
 map_location map_location::rotate_right_around_center(const map_location & center, int k) const {
 	map_location temp(*this);
 	temp.vector_difference_assign(center);
