@@ -363,6 +363,14 @@ bool map_location::matches_range(const std::string& xloc, const std::string &ylo
 	return false;
 }
 
+map_location& map_location::vector_sum_assign(const map_location &a)
+{
+	y += (is_odd(x) && is_odd(a.x)) ? 1 : 0; //add one if both x coords are odd
+	x += a.x;
+	y += a.y;
+	return *this;
+}
+
 map_location map_location::get_direction(map_location::DIRECTION dir, unsigned int n) const
 {
 	if (dir == map_location::NDIRECTIONS) {

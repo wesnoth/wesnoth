@@ -117,17 +117,16 @@ struct map_location {
 		return map_location(*this).vector_sum_assign(a);
 	}
 
-	map_location& vector_sum_assign(const map_location &a)
-	{
-		y += ((x & 1) && (a.x & 1)); //add one if both x coords are odd
-		x += a.x;
-		y += a.y;
-		return *this;
-	}
+	map_location& vector_sum_assign(const map_location &a);
 
 	map_location& vector_difference_assign(const map_location &a)
 	{
 		return vector_sum_assign(a.vector_negation());
+	}
+	
+	map_location vector_difference(const map_location& a)
+	{
+		return vector_sum(a.vector_negation());
 	}
 
 	// Do n step in the direction d
