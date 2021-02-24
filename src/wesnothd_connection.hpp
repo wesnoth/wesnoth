@@ -73,7 +73,6 @@ public:
 	 *
 	 * @param host        Name of the host to connect to
 	 * @param service     Service identifier such as "80" or "http"
-	 * @param tls         Whether we want to use TLS to make connection encrypted
 	 */
 	wesnothd_connection(const std::string& host, const std::string& service);
 
