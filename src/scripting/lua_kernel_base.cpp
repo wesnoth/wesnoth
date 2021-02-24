@@ -550,6 +550,7 @@ lua_kernel_base::lua_kernel_base()
 		{ "distance_between",		&lua_map_location::intf_distance_between		},
 		{ "get_in_basis_N_NE",		&lua_map_location::intf_get_in_basis_N_NE		},
 		{ "get_relative_dir",		&lua_map_location::intf_get_relative_dir		},
+		{ "read_direction",         &lua_map_location::intf_read_direction          },
 		{ nullptr, nullptr }
 	};
 

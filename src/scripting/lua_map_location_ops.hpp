@@ -23,6 +23,7 @@ struct lua_State;
 
 namespace lua_map_location {
 
+int intf_read_direction(lua_State* L);
 int intf_get_direction(lua_State*);
 int intf_vector_sum(lua_State*);
 int intf_vector_diff(lua_State*);

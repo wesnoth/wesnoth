@@ -28,6 +28,17 @@
 
 namespace lua_map_location {
 
+int intf_read_direction(lua_State* L)
+{
+	map_location::DIRECTION dir = map_location::parse_direction(luaL_checkstring(L, 1));
+	if(dir == map_location::NDIRECTIONS) {
+		lua_pushnil(L);
+	} else {
+		lua_push(L, map_location::write_direction(dir));
+	}
+	return 1;
+}
+
 /**
  * Expose map_location::get_direction function to lua
  * Arg 1: a location
