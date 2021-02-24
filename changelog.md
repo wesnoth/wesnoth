@@ -1,23 +1,40 @@
-## Version 1.15.9+dev
+## Version 1.15.10+dev
  ### Add-ons client
  ### Add-ons server
-   * Fixed undefined behavior when servicing requests to downgrade add-ons.
  ### Campaigns
-   * The Rise of Wesnoth
+    * Delfador's Memoirs
      * Adjust campaign difficulty
  ### Editor
  ### Multiplayer
+ ### Packaging
+ ### Terrain
+ ### Translations
+ ### Units
+ ### User interface
+ ### WML Engine
+   * Standard Location Filters now support gives_income=yes|no to make it simpler to match villages regardless of owner
+   * abilities used like weapon can call a [teaching_anim] similar to [leading_anim] now.
+ ### Miscellaneous and Bug Fixes
+
+## Version 1.15.10
+ ### Add-ons server
+   * Fixed undefined behavior when servicing requests to downgrade add-ons.
+ ### Campaigns
+   * Added custom campaign menu backgrounds for several mainline campaigns.
+   * The Rise of Wesnoth
+     * Adjust campaign difficulty
+ ### Multiplayer
    * The Delay Advancements modification has been removed in favor of adding the Plan Unit Advance modification to mainline. Enabling this modification allows each player to choose what their units will level up into in case the advancement happens on an enemy player's turn in an online multiplayer game.
    * Unit advancement that happens on an enemy's turn in online multiplayer games are no longer randomized. Instead, the first advancement listed for the unit is always used.
+   * Disabled World Conquest due to an increasing number of reported bugs and it currently lacking a maintainer. It may be removed entirely in a future release.
  ### Lua API
    * Upgrade to Lua 5.4.2.
    * Added the wesnoth.as_text(...) function as a way to more easily view the contents of a lua table. This is intended as a debugging aid and nothing more.
    * Deprecation warnings can now be viewed in the in-game Lua console, together with a stack trace to the first location that triggered them.
    * There is now a --strict-lua command-line option that disables most deprecated Lua functions; this makes the use of deprecated APIs an error instead of a warning.
- ### Packaging
- ### Terrain
  ### Translations
-   * Updated translations: British English, Catalan, Czech, French, Portuguese (Brazil)
+   * Updated translations: British English, Catalan, Czech, French, Portuguese (Brazil),
+     Turkish
  ### Units
    * update footpad sprite
    * north-facing frames for dunefolk skirmisher, loyalist bowman, and troll whelp
@@ -28,9 +45,10 @@
    * Made the preferences dialog larger on HDPI screens; this fixes a usability issue with HDPI font sizes (issue #5185).
  ### WML Engine
    * Extent 'special_id_active' and 'special_type_active' to abilities used like weapon and to [leadership] abilities.
-   * abilities used like weapon can call a [teaching_anim] similar to [leading_anim] now.
+   * abilities used like weapon can call [leading_anim] now.
  ### Miscellaneous and Bug Fixes
-   * Fixed display zoom not being taken into account when using the `x`, `y`, `directional_x` and `directional_y` attributes in unit animations.
+   * Fixed display zoom not being taken into account when using the `x`, `y`, `directional_x` and `directional_y` attributes in unit animations (issue #5508).
+   * Fixed a warning message and the AI leader potentially not moving when it cannot reach a keep because it's occupied by an allied unit
 
 ## Version 1.15.9
  ### Add-ons server
