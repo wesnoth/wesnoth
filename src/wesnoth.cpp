@@ -771,7 +771,7 @@ static int do_gameloop(const std::vector<std::string>& args)
 
 	game_config_manager config_manager(cmdline_opts);
 
-	gui2::dialogs::loading_screen::display([&res, &config_manager]() {
+	gui2::dialogs::loading_screen::display([&res, &config_manager, &cmdline_opts]() {
 		gui2::dialogs::loading_screen::progress(loading_stage::load_config);
 		res = config_manager.init_game_config(game_config_manager::NO_FORCE_RELOAD);
 
@@ -788,9 +788,11 @@ static int do_gameloop(const std::vector<std::string>& args)
 			return;
 		}
 
-		gui2::dialogs::loading_screen::progress(loading_stage::refresh_addons);
+		if(!game_config::no_addons && !cmdline_opts.noaddons)  {
+			gui2::dialogs::loading_screen::progress(loading_stage::refresh_addons);
 
-		refresh_addon_version_info_cache();
+			refresh_addon_version_info_cache();
+		}
 	});
 
 	if(res == false) {
