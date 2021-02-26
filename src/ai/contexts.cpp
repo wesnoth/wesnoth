@@ -196,6 +196,7 @@ readonly_context_impl::readonly_context_impl(side_context &context, const config
 	recruitment_randomness_(),
 	recruitment_save_gold_(),
 	recursion_counter_(context.get_recursion_count()),
+	retreat_enemy_weight_(),
 	retreat_factor_(),
 	scout_village_targeting_(),
 	simple_targeting_(),
@@ -226,6 +227,7 @@ readonly_context_impl::readonly_context_impl(side_context &context, const config
 	add_known_aspect("recruitment_pattern",recruitment_pattern_);
 	add_known_aspect("recruitment_randomness",recruitment_randomness_);
 	add_known_aspect("recruitment_save_gold",recruitment_save_gold_);
+	add_known_aspect("retreat_enemy_weight",retreat_enemy_weight_);
 	add_known_aspect("retreat_factor",retreat_factor_);
 	add_known_aspect("scout_village_targeting",scout_village_targeting_);
 	add_known_aspect("simple_targeting",simple_targeting_);
@@ -754,6 +756,14 @@ const config readonly_context_impl::get_recruitment_save_gold() const
 		return recruitment_save_gold_->get();
 	}
 	return config();
+}
+
+double readonly_context_impl::get_retreat_enemy_weight() const
+{
+	if (retreat_enemy_weight_) {
+		return retreat_enemy_weight_->get();
+	}
+	return 1;
 }
 
 double readonly_context_impl::get_retreat_factor() const

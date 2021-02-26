@@ -237,6 +237,9 @@ static register_aspect_factory< composite_aspect<config>>
 	recruitment_save_gold__composite_aspect_factory("recruitment_save_gold*composite_aspect");
 
 static register_aspect_factory< composite_aspect<double>>
+	retreat_enemy_weight__composite_aspect_factory("retreat_enemy_weight*composite_aspect");
+
+static register_aspect_factory< composite_aspect<double>>
 	retreat_factor__composite_aspect_factory("retreat_factor*composite_aspect");
 
 static register_aspect_factory< composite_aspect<double>>
@@ -309,6 +312,9 @@ static register_aspect_factory< standard_aspect<int>>
 
 static register_aspect_factory< standard_aspect<config>>
 	recruitment_save_gold__standard_aspect_factory("recruitment_save_gold*standard_aspect");
+
+static register_aspect_factory< standard_aspect<double>>
+	retreat_enemy_weight__standard_aspect_factory("retreat_enemy_weight*standard_aspect");
 
 static register_aspect_factory< standard_aspect<double>>
 	retreat_factor__standard_aspect_factory("retreat_factor*standard_aspect");
@@ -389,6 +395,9 @@ static register_aspect_factory< standard_aspect<config>>
 	recruitment_save_gold__standard_aspect_factory2("recruitment_save_gold*");
 
 static register_aspect_factory< standard_aspect<double>>
+	retreat_enemy_weight__standard_aspect_factory2("retreat_enemy_weight*");
+
+static register_aspect_factory< standard_aspect<double>>
 	retreat_factor__standard_aspect_factory2("retreat_factor*");
 
 static register_aspect_factory< standard_aspect<double>>
@@ -443,6 +452,9 @@ static register_lua_aspect_factory< lua_aspect<utils::variant<bool, std::vector<
 
 static register_lua_aspect_factory< lua_aspect<utils::variant<bool, std::vector<std::string>>>>
 	passive_leader_shares_keep__lua_aspect_factory("passive_leader_shares_keep*lua_aspect");
+
+static register_lua_aspect_factory< lua_aspect<double>>
+	retreat_enemy_weight__lua_aspect_factory("retreat_enemy_weight*lua_aspect");
 
 static register_lua_aspect_factory< lua_aspect<double>>
 	retreat_factor__lua_aspect_factory("retreat_factor*lua_aspect");

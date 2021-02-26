@@ -346,6 +346,10 @@ variant formula_ai::get_value(const std::string& key) const
 		}
 		return variant(vars);
 
+	} else if(key == "retreat_enemy_weight")
+	{
+		return variant(get_retreat_enemy_weight()*1000,variant::DECIMAL_VARIANT);
+
 	} else if(key == "retreat_factor")
 	{
 		return variant(get_retreat_factor()*1000,variant::DECIMAL_VARIANT);

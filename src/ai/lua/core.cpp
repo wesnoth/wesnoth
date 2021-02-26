@@ -498,6 +498,14 @@ static int cfun_ai_get_recruitment_pattern(lua_State *L)
 	return 1;
 }
 
+static int cfun_ai_get_retreat_enemy_weight(lua_State *L)
+{
+	DEPRECATED_ASPECT_MESSAGE("retreat_enemy_weight");
+	double retreat_enemy_weight = get_readonly_context(L).get_retreat_enemy_weight();
+	lua_pushnumber(L, retreat_enemy_weight);
+	return 1;
+}
+
 static int cfun_ai_get_retreat_factor(lua_State *L)
 {
 	DEPRECATED_ASPECT_MESSAGE("retreat_factor");
@@ -904,6 +912,7 @@ static int impl_ai_get(lua_State* L)
 			{ "get_passive_leader", &cfun_ai_get_passive_leader },
 			{ "get_passive_leader_shares_keep", &cfun_ai_get_passive_leader_shares_keep },
 			{ "get_recruitment_pattern", &cfun_ai_get_recruitment_pattern },
+			{ "get_retreat_enemy_weight", &cfun_ai_get_retreat_enemy_weight },
 			{ "get_retreat_factor", &cfun_ai_get_retreat_factor },
 			{ "get_scout_village_targeting", &cfun_ai_get_scout_village_targeting },
 			{ "get_simple_targeting", &cfun_ai_get_simple_targeting },
