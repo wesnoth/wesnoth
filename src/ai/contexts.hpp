@@ -264,6 +264,8 @@ public:
 
 	virtual const config get_recruitment_save_gold() const = 0;
 
+	virtual double get_retreat_factor() const = 0;
+
 	virtual double get_scout_village_targeting() const = 0;
 
 	virtual bool get_simple_targeting() const = 0;
@@ -711,6 +713,11 @@ public:
 	virtual const move_map& get_srcdst() const override
 	{
 		return target_->get_srcdst();
+	}
+
+	virtual double get_retreat_factor() const override
+	{
+		return target_->get_retreat_factor();
 	}
 
 	virtual double get_scout_village_targeting() const override
@@ -1180,6 +1187,8 @@ public:
 
 	virtual const config get_recruitment_save_gold() const override;
 
+	virtual double get_retreat_factor() const override;
+
 	virtual double get_scout_village_targeting() const override;
 
 	virtual bool get_simple_targeting() const override;
@@ -1295,6 +1304,7 @@ private:
 	typesafe_aspect_ptr<int> recruitment_randomness_;
 	typesafe_aspect_ptr<config> recruitment_save_gold_;
 	recursion_counter recursion_counter_;
+	typesafe_aspect_ptr<double> retreat_factor_;
 	typesafe_aspect_ptr<double> scout_village_targeting_;
 	typesafe_aspect_ptr<bool> simple_targeting_;
 	mutable move_map srcdst_;
