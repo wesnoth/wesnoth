@@ -7,39 +7,44 @@ local AH = wesnoth.require "ai/lua/ai_helper.lua"
 local BC = wesnoth.require "ai/lua/battle_calcs.lua"
 local LS = wesnoth.require "location_set"
 
+local function print_dbg(...)
+    local show_debug_info = false -- manually set to true/false depending on whether output is desired
+    if wesnoth.game_config.debug and show_debug_info then
+        std_print('Retreat debug: ', ...)
+    end
+end
+
 local retreat_functions = {}
 
 function retreat_functions.min_hp(unit)
-    -- The minimum hp to retreat is a function of level and terrain defense
-    -- We want to stay longer on good terrain and leave early on very bad terrain
+    -- The minimum hp to retreat is a function of hitpoints and terrain defense
+    -- We want to stay longer on good terrain and leave early on bad terrain
+    -- It can be influenced by the 'retreat_factor' AI aspect
 
-    -- Take caution into account here. We want the multiplier to be:
-    --   1 for default caution (0.25)
-    --   0 for minimal caution <= 0
-    --   2 for caution = 1
-    local caution_factor = ai.aspects.caution
-    if (caution_factor < 0) then caution_factor = 0 end
-    caution_factor = math.sqrt(caution_factor) * 2
+    local retreat_factor = ai.aspects.retreat_factor
 
-    local hp_per_level = (100 - unit:defense_on(wesnoth.get_terrain(unit.x, unit.y)))/15 * caution_factor
-    local level = unit.level
+    -- Leaders are more valuable and should retreat earlier
+    if unit.canrecruit then retreat_factor = retreat_factor * 1.5 end
 
-    -- Leaders are considered to be higher level because of their value
-    if unit.canrecruit then level = level+2 end
+    -- Higher retreat willingness on bad terrain
+    local retreat_factor = retreat_factor * (100 - unit:defense_on(wesnoth.get_terrain(unit.x, unit.y))) / 50
 
-    local min_hp = hp_per_level*(level+2)
+    local min_hp = retreat_factor * unit.max_hitpoints
 
     -- Account for poison damage on next turn
     if unit.status.poisoned then min_hp = min_hp + wesnoth.game_config.poison_amount end
 
-    -- Make sure that units are actually injured (only relevant for low-HP units)
-    -- Want this to be roughly half the units HP at caution=0, close to full HP at caution=1
-    local hp_factor = 0.5 + 0.25 * caution_factor
-    if (hp_factor > 1) then hp_factor = 1 end
-    local max_min_hp = (unit.max_hitpoints - 4) * hp_factor
+    -- Large values of retreat_factor could cause fully healthy units to retreat.
+    -- We require a unit to be down more than 10 HP, or half its HP for units with less than 20 max_HP.
+    local max_hp = unit.max_hitpoints
+    local max_min_hp = math.max(max_hp - 10, max_hp / 2)
     if (min_hp > max_min_hp) then
         min_hp = max_min_hp
     end
+
+    local retreat_str = ''
+    if (unit.hitpoints < min_hp) then retreat_str = '  --> retreat' end
+    print_dbg(string.format('%20s %3d/%-3d HP  threshold: %5.1f HP%s', unit.id, unit.hitpoints, unit.max_hitpoints, min_hp, retreat_str))
 
     return min_hp
 end
