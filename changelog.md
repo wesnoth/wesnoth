@@ -11,6 +11,7 @@
  ### Packaging
  ### Terrain
  ### Translations
+   * Updated translations: Italian
  ### Units
  ### User interface
    * Improved the Load dialog when there are no saved games for the current version, and also when there are corrupted files.
