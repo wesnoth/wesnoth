@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2021-02-20 18:40-0300\n"
-"PO-Revision-Date: 2021-01-26 10:08+1100\n"
+"PO-Revision-Date: 2021-02-22 13:31+1100\n"
 "Last-Translator: Wedge009 <wedge009@wedge009.net>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
 "EnglishGBTranslation>\n"
@@ -3604,10 +3604,8 @@ msgstr "Gold"
 
 #. [color_range]: id=darkblue
 #: data/core/team-colors.cfg:114
-#, fuzzy
-#| msgid "Dark Red"
 msgid "Dark blue"
-msgstr "Dark Red"
+msgstr "Dark blue"
 
 #. [color_range]: id=reef
 #: data/core/team-colors.cfg:123
@@ -4178,10 +4176,8 @@ msgstr "$percent|% of gold carried over to the next scenario."
 
 #. [modification]: id=plan_unit_advance
 #: data/modifications.cfg:6
-#, fuzzy
-#| msgid "XP to advance"
 msgid "Plan Unit Advance"
-msgstr "XP to advance"
+msgstr "Plan Unit Advance"
 
 #. [modification]: id=plan_unit_advance
 #: data/modifications.cfg:7
@@ -4191,13 +4187,15 @@ msgid ""
 "what your units advance to beforehand either for a specific unit or for all "
 "units of the same type."
 msgstr ""
+"When playing a multiplayer game, you do not control what a unit advances to "
+"if it advances on another player's turn. With this modification you can set "
+"what your units advance to beforehand, either for a specific unit or for all "
+"units of the same type."
 
 #. [checkbox]: id=pickadvance_force_choice
 #: data/modifications.cfg:12
-#, fuzzy
-#| msgid "No advancement"
 msgid "Force advancement planning"
-msgstr "No advancement"
+msgstr "Force advancement planning"
 
 #. [checkbox]: id=pickadvance_force_choice
 #: data/modifications.cfg:13
@@ -4207,32 +4205,33 @@ msgid ""
 "\n"
 "Some eras and scenarios may automatically enable this option."
 msgstr ""
+"You will be asked a question on choosing advancement whenever an undecided "
+"unit appears.\n"
+"\n"
+"Some eras and scenarios may automatically enable this option."
 
 #. [lua]: pickadvance.show_dialog_unsynchronized
 #: data/modifications/pick_advance/dialog.lua:30
 #: data/modifications/pick_advance/main.lua:10
-#, fuzzy
-#| msgid "Delay Advancements"
 msgid "Plan Advancement"
-msgstr "Delay Advancements"
+msgstr "Plan Advancement"
 
 #. [lua]: pickadvance.show_dialog_unsynchronized
 #: data/modifications/pick_advance/dialog.lua:67
 msgid ""
 "This advancement is currently the default for all units of the same type"
 msgstr ""
+"This advancement is currently the default for all units of the same type"
 
 #. [lua]: pickadvance.show_dialog_unsynchronized
 #: data/modifications/pick_advance/dialog.lua:129
 msgid "Apply to all units of this type"
-msgstr ""
+msgstr "Apply to all units of this type"
 
 #. [lua]: pickadvance.show_dialog_unsynchronized
 #: data/modifications/pick_advance/dialog.lua:145
-#, fuzzy
-#| msgid "Saved"
 msgid "Save"
-msgstr "Saved"
+msgstr "Save"
 
 #. [lua]: pickadvance.show_dialog_unsynchronized
 #: data/modifications/pick_advance/dialog.lua:154
@@ -4241,10 +4240,8 @@ msgstr "Cancel"
 
 #. [lua]: preshow
 #: data/modifications/pick_advance/dialog.lua:174
-#, fuzzy
-#| msgid "No advancement"
 msgid "No planned advancement"
-msgstr "No advancement"
+msgstr "No planned advancement"
 
 #. [leadership]: id=magical_leadership
 #: data/scenario-test.cfg:339
@@ -4367,7 +4364,7 @@ msgstr "electrical"
 #: data/test/scenarios/swarm_disables_upgrades_with_abilities_adjacent_leadership.cfg:47
 #: data/test/scenarios/swarm_disables_upgrades_with_abilities_adjacent_leadership_fail.cfg:47
 msgid "Alex"
-msgstr ""
+msgstr "Alex"
 
 #. [unit]: id=ben, type=Orcish Warrior
 #: data/test/scenarios/swarm_disables_upgrades_with_abilities_adjacent.cfg:51
@@ -4375,7 +4372,7 @@ msgstr ""
 #: data/test/scenarios/swarm_disables_upgrades_with_abilities_adjacent_leadership.cfg:54
 #: data/test/scenarios/swarm_disables_upgrades_with_abilities_adjacent_leadership_fail.cfg:54
 msgid "Ben"
-msgstr ""
+msgstr "Ben"
 
 #. [action]: id=button-playreplay, type=image
 #: data/themes/_initial.cfg:428
@@ -6842,7 +6839,7 @@ msgstr "No visible sides found."
 
 #: src/gui/dialogs/multiplayer/match_history.cpp:30
 msgid "Match History — $player"
-msgstr ""
+msgstr "Match History — $player"
 
 #: src/gui/dialogs/multiplayer/player_info.cpp:105
 msgid "In game:"
