@@ -183,7 +183,8 @@ def test_batcher(test_list):
             expected_to_pass.append(test)
         else:
             yield [test]
-    yield expected_to_pass
+    if len(expected_to_pass) > 0:
+        yield expected_to_pass
 
 if __name__ == '__main__':
     ap = argparse.ArgumentParser()
