@@ -223,12 +223,12 @@ function retreat_functions.get_retreat_injured_units(healees, regen_amounts, avo
                     enemy_count = enemy_attack_map.units:get(loc[1], loc[2]) or 0
                     local enemy_hp = enemy_attack_map.hitpoints:get(loc[1], loc[2]) or 0
                     local ally_hp = ally_attack_map.hitpoints:get(loc[1], loc[2]) or 0
-                    local hp_diff = ally_hp - enemy_hp
+                    local hp_diff = ally_hp - enemy_hp * math.abs(retreat_enemy_weight)
                     if (hp_diff > 0) then hp_diff = 0 end
 
                     -- The rating is mostly the HP difference, but we still want to
                     -- avoid threatened hexes even if we have the advantage
-                    enemy_rating = (hp_diff - enemy_count) * math.abs(retreat_enemy_weight)
+                    enemy_rating = hp_diff - enemy_count * math.abs(retreat_enemy_weight)
                 end
 
                 if (loc[1] == u.x) and (loc[2] == u.y) and (not u.status.poisoned) then
