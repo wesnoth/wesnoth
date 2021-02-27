@@ -4,6 +4,8 @@
  ### Campaigns
     * Delfador's Memoirs
      * Adjust campaign difficulty
+    * Sceptre of Fire
+     * Adjust campaign difficulty
  ### Editor
  ### Multiplayer
  ### Packaging
