@@ -200,6 +200,8 @@ if __name__ == '__main__':
         help="New timer value to use, instead of 10s as default. The value 0 means no timer, and also skips tests that expect timeout.")
     ap.add_argument("-bt", "--batch-timeout", type=int, default=300,
         help="New timer value to use for batched tests, instead of 300s as default.")
+    ap.add_argument("-bd", "--batch-disable", action="store_true",
+        help="Disable test batching, may be useful if debugging a small subset of tests.")
     ap.add_argument("-s", "--no-strict", dest="strict_mode", action="store_false",
         help="Disable strict mode. By default, we run wesnoth with the option --log-strict=warning to ensure errors result in a failed test.")
     ap.add_argument("-d", "--debug_bin", action="store_true",
@@ -234,7 +236,7 @@ if __name__ == '__main__':
     runner = WesnothRunner(options)
 
     a_test_failed = False
-    for batch in test_batcher(test_list):
+    for batch in [test_list] if options.batch_disable else test_batcher(test_list):
         try:
             runner.run_tests(batch)
         except UnexpectedTestStatusException:
