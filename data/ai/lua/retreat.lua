@@ -129,7 +129,7 @@ function retreat_functions.get_healing_locations()
                     local old_values = healing_locs:get(x, y) or {0, 0}
                     local best_heal = math.max(old_values[0] or heal_amount)
                     local best_cure = math.max(old_values[1] or cure)
-                    healing_locs:insert(u.x, u.y, {best_heal, best_cure})
+                    healing_locs:insert(x, y, {best_heal, best_cure})
                 end
             end
         end
