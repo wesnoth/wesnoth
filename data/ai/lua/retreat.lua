@@ -44,7 +44,7 @@ function retreat_functions.min_hp(unit)
 
     local retreat_str = ''
     if (unit.hitpoints < min_hp) then retreat_str = '  --> retreat' end
-    print_dbg(string.format('%20s %3d/%-3d HP  threshold: %5.1f HP%s', unit.id, unit.hitpoints, unit.max_hitpoints, min_hp, retreat_str))
+    print_dbg(string.format('%-20s %3d/%-3d HP  threshold: %5.1f HP%s', unit.id, unit.hitpoints, unit.max_hitpoints, min_hp, retreat_str))
 
     return min_hp
 end
@@ -104,11 +104,7 @@ function retreat_functions.retreat_injured_units(units, avoid_map)
     end
 end
 
-function retreat_functions.get_healing_locations()
-    local possible_healers = AH.get_live_units {
-        { "filter_side", {{"allied_with", {side = wesnoth.current.side} }} }
-    }
-
+function retreat_functions.get_healing_locations(possible_healers)
     local healing_locs = LS.create()
     for i,u in ipairs(possible_healers) do
         -- Only consider healers that cannot move this turn
@@ -139,11 +135,20 @@ function retreat_functions.get_healing_locations()
 end
 
 function retreat_functions.get_retreat_injured_units(healees, regen_amounts, avoid_map)
-    -- Only retreat to safe locations
-    local enemies = AH.get_attackable_enemies()
-    local enemy_attack_map = BC.get_attack_map(enemies)
+    local retreat_enemy_weight = ai.aspects.retreat_enemy_weight
 
-    local healing_locs = retreat_functions.get_healing_locations()
+    local allies = AH.get_live_units {
+        { "filter_side", { {"allied_with", { side = wesnoth.current.side } } } }
+    }
+    local healing_locs = retreat_functions.get_healing_locations(allies)
+
+    -- These operations are somewhat expensive, don't do them if not necessary
+    local enemy_attack_map, ally_attack_map
+    if (retreat_enemy_weight ~= 0) then
+        local enemies = AH.get_attackable_enemies()
+        enemy_attack_map = BC.get_attack_map(enemies)
+        ally_attack_map = BC.get_attack_map(allies)
+    end
 
     local max_rating, best_loc, best_unit = - math.huge
     for i,u in ipairs(healees) do
@@ -188,12 +193,13 @@ function retreat_functions.get_retreat_injured_units(healees, regen_amounts, avo
         if u.status.slowed then base_rating = base_rating + 4 end
         base_rating = base_rating * 1000
 
+        print_dbg(string.format('check retreat hexes for: %-20s  base_rating = %f8.1', u.id, base_rating))
+
         for j,loc in ipairs(possible_locations) do
             local unit_in_way = wesnoth.units.get(loc[1], loc[2])
             if (not AH.is_visible_unit(wesnoth.current.side, unit_in_way))
                 or ((unit_in_way.moves > 0) and (unit_in_way.side == wesnoth.current.side))
             then
-                local rating = base_rating
                 local heal_score = 0
                 if regen_amounts[i] then
                     heal_score = math.min(regen_amounts[i], u.max_hitpoints - u.hitpoints)
@@ -211,35 +217,58 @@ function retreat_functions.get_retreat_injured_units(healees, regen_amounts, avo
                     end
                 end
 
-                -- Huge penalty for each enemy that can reach location,
-                -- this is the single most important point (and non-linear)
-                local enemy_count = enemy_attack_map.units:get(loc[1], loc[2]) or 0
-                rating = rating - enemy_count * 100000
+                -- Figure out the enemy threat - this is also needed to assess whether rest healing is likely
+                local enemy_rating, enemy_count = 0, 0
+                if (retreat_enemy_weight ~= 0) then
+                    enemy_count = enemy_attack_map.units:get(loc[1], loc[2]) or 0
+                    local enemy_hp = enemy_attack_map.hitpoints:get(loc[1], loc[2]) or 0
+                    local ally_hp = ally_attack_map.hitpoints:get(loc[1], loc[2]) or 0
+                    local hp_diff = ally_hp - enemy_hp
+                    if (hp_diff > 0) then hp_diff = 0 end
 
-                -- Penalty based on terrain defense for unit
-                rating = rating - (100 - u:defense_on(wesnoth.get_terrain(loc[1], loc[2])))/10
+                    -- The rating is mostly the HP difference, but we still want to
+                    -- avoid threatened hexes even if we have the advantage
+                    enemy_rating = (hp_diff - enemy_count) * math.abs(retreat_enemy_weight)
+                end
 
                 if (loc[1] == u.x) and (loc[2] == u.y) and (not u.status.poisoned) then
                     if is_healthy or enemy_count == 0 then
                         -- Bonus if we can rest heal
                         heal_score = heal_score + wesnoth.game_config.rest_heal_amount
                     end
-                elseif unit_in_way then
-                    -- Penalty if a unit has to move out of the way
-                    -- (based on hp of moving unit)
-                    rating = rating + unit_in_way.hitpoints - unit_in_way.max_hitpoints
                 end
 
-                rating = rating + heal_score^2
+                -- Only consider healing locations, except when retreat_enemy_weight is negative
+                if (heal_score > 0) or (retreat_enemy_weight < 0) then
+                    local rating = base_rating + heal_score^2
+                    rating = rating + enemy_rating
 
-                if (rating > max_rating) then
-                    max_rating, best_loc, best_unit = rating, loc, u
+                    -- Penalty based on terrain defense for unit
+                    rating = rating - (100 - u:defense_on(wesnoth.get_terrain(loc[1], loc[2])))/10
+
+                    -- Penalty if a unit has to move out of the way
+                    -- (based on hp of moving unit)
+                    if unit_in_way and ((loc[1] ~= u.x) or (loc[2] ~= u.y)) then
+                        rating = rating + unit_in_way.hitpoints - unit_in_way.max_hitpoints
+                    end
+
+                    print_dbg(string.format('  possible retreat hex: %3d,%-3d  rating = %9.1f  (heal_score = %5.1f,  enemy_rating = %9.1f)', loc[1], loc[2], rating, heal_score, enemy_rating))
+
+                    if (rating > max_rating) then
+                        max_rating, best_loc, best_unit = rating, loc, u
+                    end
                 end
             end
         end
     end
 
-    return best_unit, best_loc, enemy_attack_map.units:get(best_loc[1], best_loc[2]) or 0
+    local threat = 0
+    if best_unit then
+        threat = enemy_attack_map and enemy_attack_map.units:get(best_loc[1], best_loc[2]) or 0
+        print_dbg(string.format('found unit to retreat: %s --> %d,%d', best_unit.id, best_loc[1], best_loc[2]))
+    end
+
+    return best_unit, best_loc, threat
 end
 
 return retreat_functions
