@@ -117,8 +117,8 @@ private:
 	mutable std::string translated_value_;
 	mutable unsigned translation_timestamp_;
 	bool translatable_, last_untranslatable_;
-	static std::vector<std::string> id_to_textdomain;
-	static std::map<std::string, unsigned int> textdomain_to_id;
+	static inline std::vector<std::string> id_to_textdomain;
+	static inline std::map<std::string, unsigned int> textdomain_to_id;
 };
 
 inline std::size_t hash_value(const t_string_base& str) { return str.hash_value(); }
