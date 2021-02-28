@@ -1037,7 +1037,7 @@ int game_lua_kernel::intf_terrain_mask(lua_State *L)
 					lua_pop(L, 1);
 				}
 
-				if(luaW_tableget(L, -1, "mode")) {
+				if(luaW_tableget(L, -1, "layer")) {
 					auto str = luaW_tostring(L, -1);
 					rule.mode_ = str == "base" ? terrain_type_data::BASE : (str == "overlay" ? terrain_type_data::OVERLAY : terrain_type_data::BOTH);
 					lua_pop(L, 1);
