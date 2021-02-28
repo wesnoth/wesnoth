@@ -65,12 +65,6 @@ class TestListParser:
             test_list.append(t)
         return batcher(test_list)
 
-def get_output_filename(args):
-    for i,arg in enumerate(args):
-        if arg == "-u":
-            return "test-output-"+args[i+1]
-    raise RuntimeError("No -u option found!")
-
 def run_with_rerun_for_sdl_video(args, timeout):
     """A wrapper for subprocess.run with a workaround for the issue of travis+18.04
     intermittently failing to initialise SDL.
@@ -79,14 +73,10 @@ def run_with_rerun_for_sdl_video(args, timeout):
     # be enough.
     sdl_retries = 0
     while sdl_retries < 10:
-        # For compatibility with Ubuntu 16.04 LTS, this has to run on Python3.5,
-        # so the capture_output argument is not available.
-        filename = get_output_filename(args)
-        res = subprocess.run(args, timeout=timeout, stdout=open(filename, "w"), stderr=subprocess.STDOUT)
+        res = subprocess.run(args, timeout=timeout, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
         retry = False
-        with open(filename, "r") as output:
-            if "Could not initialize SDL_video" in output.read():
-                retry = True
+        if b"Could not initialize SDL_video" in res.stdout:
+            retry = True
         if not retry:
         	  return res
         sdl_retries += 1
@@ -115,7 +105,10 @@ class WesnothRunner:
         path += "/wesnoth"
         if options.debug_bin:
             path += "-debug"
-        self.common_args = [path]
+        self.common_args = [path, "--nobanner"]
+        if os.name == 'nt':
+            self.common_args.append("--wnoconsole")
+            self.common_args.append("--wnoredirect")
         if options.strict_mode:
             self.common_args.append("--log-strict=warning")
         if options.clean:
@@ -156,11 +149,13 @@ class WesnothRunner:
             print(repr(args))
         try:
             res = run_with_rerun_for_sdl_video(args, timeout)
-        except subprocess.TimeoutExpired:
+        except subprocess.TimeoutExpired as t:
             print("Timed out (killed by Python timeout implementation)")
-            res = subprocess.CompletedProcess(args, UnitTestResult.TIMEOUT.value)
-        if self.verbose > 1:
-            print("Result:", res.returncode)
+            res = subprocess.CompletedProcess(args, UnitTestResult.TIMEOUT.value, t.output)
+        if self.verbose > 0:
+            print(res.stdout.decode('utf-8'))
+            if self.verbose > 1:
+                print("Result:", res.returncode)
         if res.returncode < 0:
             print("Wesnoth exited because of signal", -res.returncode)
             if options.backtrace:
@@ -171,9 +166,8 @@ class WesnothRunner:
             raise UnexpectedTestStatusException()
         returned_result = UnitTestResult(res.returncode)
         if returned_result != expected_result:
-            with open(get_output_filename(args), "r") as output:
-                for line in output.readlines():
-                	print(line)
+            if self.verbose == 0:
+                print(res.stdout.decode('utf-8'))
             print("Failure, Wesnoth returned", returned_result, "but we expected", expected_result)
             raise UnexpectedTestStatusException()
 
