@@ -87,11 +87,12 @@ end
 function ca_goto:execution(cfg, data)
     local units, locs = GO_units, GO_locs
 
-    local enemy_map, enemy_attack_map
+    local enemy_map, enemy_attack_map, avoid_enemies
     if cfg.avoid_enemies then
-        if (type(cfg.avoid_enemies) ~= 'number') then
+        avoid_enemies = tonumber(cfg.avoid_enemies)
+        if (not avoid_enemies) then
             H.wml_error("Goto AI avoid_enemies= requires a number as argument")
-        elseif (cfg.avoid_enemies <= 0) then
+        elseif (avoid_enemies <= 0) then
             H.wml_error("Goto AI avoid_enemies= argument must be >0")
         end
 
@@ -138,10 +139,10 @@ function ca_goto:execution(cfg, data)
                 end
             else  -- Otherwise find the best path to take
                 local path, cost
-                if cfg.avoid_enemies then
+                if avoid_enemies then
                     path, cost = wesnoth.find_path(unit, loc[1], loc[2],
                         function(x, y, current_cost)
-                            return custom_cost(x, y, unit, enemy_map, enemy_attack_map, cfg.avoid_enemies)
+                            return custom_cost(x, y, unit, enemy_map, enemy_attack_map, avoid_enemies)
                         end
                     )
                 else
