@@ -21,6 +21,9 @@ class UnitTestResult(enum.Enum):
     FAIL_WML_EXCEPTION = 6
     FAIL_BY_DEFEAT = 7
     PASS_BY_VICTORY = 8
+    
+    def __str__(self):
+        return str(self.value) + ' ' + self.name
 
 class TestCase:
     """Represents a single line of the wml_test_schedule."""
@@ -166,11 +169,12 @@ class WesnothRunner:
                 gdb_args.extend(args)
                 subprocess.run(gdb_args, timeout=240)
             raise UnexpectedTestStatusException()
-        if res.returncode != expected_result.value:
+        returned_result = UnitTestResult(res.returncode)
+        if returned_result != expected_result:
             with open(get_output_filename(args), "r") as output:
                 for line in output.readlines():
                 	print(line)
-            print("Failure, Wesnoth returned", res.returncode, "but we expected", expected_result.value)
+            print("Failure, Wesnoth returned", returned_result, "but we expected", expected_result)
             raise UnexpectedTestStatusException()
 
 def test_batcher(test_list):
