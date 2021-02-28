@@ -406,7 +406,7 @@ static int process_command_args(const commandline_options& cmdline_opts)
 		}
 
 		game_config::path = filesystem::normalize_path(game_config::path, true, true);
-		std::cerr << "Overriding data directory with " << game_config::path << std::endl;
+		if(!cmdline_opts.nobanner) std::cerr << "Overriding data directory with " << game_config::path << std::endl;
 
 		if(!filesystem::is_directory(game_config::path)) {
 			std::cerr << "Could not find directory '" << game_config::path << "'\n";
@@ -962,6 +962,15 @@ int main(int argc, char** argv)
 {
 	auto args = read_argv(argc, argv);
 	assert(!args.empty());
+	
+	// --nobanner needs to be detected before the main command-line parsing happens
+	bool nobanner = false;
+	for(const auto& arg : args) {
+		if(arg == "--nobanner") {
+			nobanner = true;
+			break;
+		}
+	}
 
 #ifdef _WIN32
 	// Some switches force a Windows console to be attached to the process even
@@ -1032,9 +1041,11 @@ int main(int argc, char** argv)
 	SDL_StartTextInput();
 
 	try {
-		std::cerr << "Battle for Wesnoth v" << game_config::revision  << " " << game_config::build_arch() << '\n';
-		const std::time_t t = std::time(nullptr);
-		std::cerr << "Started on " << ctime(&t) << "\n";
+		if(!nobanner) {
+			std::cerr << "Battle for Wesnoth v" << game_config::revision  << " " << game_config::build_arch() << '\n';
+			const std::time_t t = std::time(nullptr);
+			std::cerr << "Started on " << ctime(&t) << "\n";
+		}
 
 		const std::string& exe_dir = filesystem::get_exe_dir();
 		if(!exe_dir.empty()) {
@@ -1060,7 +1071,7 @@ int main(int argc, char** argv)
 			}
 
 			if(!auto_dir.empty()) {
-				std::cerr << "Automatically found a possible data directory at " << filesystem::sanitize_path(auto_dir) << '\n';
+				if(!nobanner) std::cerr << "Automatically found a possible data directory at " << filesystem::sanitize_path(auto_dir) << '\n';
 				game_config::path = auto_dir;
 			}
 		}
