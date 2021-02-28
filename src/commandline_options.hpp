@@ -145,6 +145,8 @@ public:
 	bool nodelay;
 	/** True if --nogui was given on the command line. Disables GUI. */
 	bool nogui;
+	/** True if --nobanner was given on the command line. Disables startup banner. */
+	bool nobanner;
 	/** True if --nomusic was given on the command line. Disables music. */
 	bool nomusic;
 	/** True if --nosound was given on the command line. Disables sound. */
