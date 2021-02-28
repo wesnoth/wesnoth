@@ -141,6 +141,25 @@
 			</CustomListItems>
 		</Expand>
 	</Type>
+	<Type Name="map_location">
+		<DisplayString>wml({x + 1}, {y + 1})</DisplayString>
+	</Type>
+	<Type Name="t_translation::terrain_code">
+		<DisplayString Condition="base == 0 &amp;&amp; overlay == 4294967295">empty</DisplayString>
+		<DisplayString Condition="overlay == 4294967295">{((char*)&amp;base) + 3,[!!((char*)&amp;base)[3]]sb}{((char*)&amp;base) + 2,[!!((char*)&amp;base)[2]]sb}{((char*)&amp;base) + 1,[!!((char*)&amp;base)[1]]sb}{((char*)&amp;base) + 0,[!!((char*)&amp;base)[0]]sb}</DisplayString>
+		<DisplayString Condition="overlay != 4294967295">{((char*)&amp;base) + 3,[!!((char*)&amp;base)[3]]sb}{((char*)&amp;base) + 2,[!!((char*)&amp;base)[2]]sb}{((char*)&amp;base) + 1,[!!((char*)&amp;base)[1]]sb}{((char*)&amp;base) + 0,[!!((char*)&amp;base)[0]]sb}^{((char*)&amp;overlay) + 3,[!!((char*)&amp;overlay)[3]]sb}{((char*)&amp;overlay) + 2,[!!((char*)&amp;overlay)[2]]sb}{((char*)&amp;overlay) + 1,[!!((char*)&amp;overlay)[1]]sb}{((char*)&amp;overlay) + 0,[!!((char*)&amp;overlay)[0]]sb}</DisplayString>
+	</Type>
+	<Type Name="t_translation::ter_map">
+		<DisplayString>{{w = {w}, h = {h}}}</DisplayString>
+		<Expand>
+			<ArrayItems>
+				<Direction>Backward</Direction>
+				<Rank>2</Rank>
+				<Size>$i ? w : h</Size>
+				<ValuePointer>data._Mypair._Myval2._Myfirst</ValuePointer>
+			</ArrayItems>
+		</Expand>
+	</Type>
 	<Type Name="vconfig">
 		<DisplayString>test</DisplayString>
 	</Type>
