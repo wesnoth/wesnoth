@@ -156,7 +156,7 @@ class WesnothRunner:
             print(repr(args))
         try:
             res = run_with_rerun_for_sdl_video(args, timeout)
-        except subprocess.TimeoutExpired as e:
+        except subprocess.TimeoutExpired:
             print("Timed out (killed by Python timeout implementation)")
             res = subprocess.CompletedProcess(args, UnitTestResult.TIMEOUT.value)
         if self.verbose > 1:
