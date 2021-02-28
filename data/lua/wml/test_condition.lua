@@ -11,6 +11,15 @@ local extra_templates = {
 		args.actual = tostring(wml.variables[cfg.name])
 		return 'Note: The variable $varname currently has the value $actual.'
 	end,
+	have_location = function(cfg, args)
+		if type(cfg.x) == 'number' and type(cfg.y) == 'number' and cfg.terrain then
+			args.x = cfg.x
+			args.y = cfg.y
+			args.terrain = wesnoth.get_terrain(cfg.x, cfg.y)
+			return 'Note: ($x,$y) has terrain $terrain.'
+		end
+		return ''
+	end,
 }
 
 local function stringize(tag, cfg, parse)
