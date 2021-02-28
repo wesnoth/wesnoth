@@ -465,12 +465,19 @@ std::string log_file_path()
 	return "";
 }
 
-void early_log_file_setup()
+static bool disable_redirect;
+
+void early_log_file_setup(bool disable)
 {
 	if(lfm) {
 		return;
 	}
 
+	if(disable) {
+		disable_redirect = true;
+		return;
+	}
+	
 	lfm.reset(new log_file_manager());
 }
 
@@ -491,8 +498,9 @@ bool using_own_console()
 
 void finish_log_file_setup()
 {
+	if(disable_redirect) return;
 	// Make sure the LFM is actually set up just in case.
-	early_log_file_setup();
+	early_log_file_setup(false);
 
 	if(lfm->console_enabled()) {
 		// Nothing to do if running in console mode.

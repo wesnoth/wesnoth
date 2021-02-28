@@ -60,6 +60,14 @@ bad_commandline_tuple::bad_commandline_tuple(const std::string& str,
 {
 }
 
+
+#ifdef _WIN32
+#define IMPLY_WCONSOLE " Implies --wconsole."
+#else
+#define IMPLY_WCONSOLE
+#endif // _WIN32
+		 
+
 commandline_options::commandline_options(const std::vector<std::string>& args)
 	: bunzip2()
 	, bzip2()
@@ -173,7 +181,7 @@ commandline_options::commandline_options(const std::vector<std::string>& args)
 		("config-path", "prints the path of the userdata directory and exits. DEPRECATED: use userdata-path instead.")
 		("core", po::value<std::string>(), "overrides the loaded core with the one whose id is specified.")
 		("data-dir", po::value<std::string>(), "overrides the data directory with the one specified.")
-		("data-path", "prints the path of the data directory and exits.")
+		("data-path", "prints the path of the data directory and exits." IMPLY_WCONSOLE)
 		("debug,d", "enables additional command mode options in-game.")
 		("debug-lua", "enables some Lua debugging mechanisms")
 		("strict-lua", "disallow deprecated Lua API calls")
@@ -184,7 +192,7 @@ commandline_options::commandline_options(const std::vector<std::string>& args)
 		("editor,e", po::value<std::string>()->implicit_value(std::string()), "starts the in-game map editor directly. If file <arg> is specified, equivalent to -e --load <arg>.")
 		("gunzip", po::value<std::string>(), "decompresses a file (<arg>.gz) in gzip format and stores it without the .gz suffix. <arg>.gz will be removed.")
 		("gzip", po::value<std::string>(), "compresses a file (<arg>) in gzip format, stores it as <arg>.gz and removes <arg>.")
-		("help,h", "prints this message and exits.")
+		("help,h", "prints this message and exits." IMPLY_WCONSOLE)
 		("language,L", po::value<std::string>(), "uses language <arg> (symbol) this session. Example: --language ang_GB@latin")
 		("load,l", po::value<std::string>(), "loads the save <arg> from the standard save game directory. When launching the map editor via -e, the map <arg> is loaded, relative to the current directory. If it is a directory, the editor will start with a load map dialog opened there.")
 		("noaddons", "disables the loading of all add-ons.")
@@ -194,22 +202,10 @@ commandline_options::commandline_options(const std::vector<std::string>& args)
 		("nosound", "runs the game without sounds and music.")
 		("password", po::value<std::string>(), "uses <password> when connecting to a server, ignoring other preferences.")
 		("plugin", po::value<std::string>(), "(experimental) load a script which defines a wesnoth plugin. similar to --script below, but Lua file should return a function which will be run as a coroutine and periodically woken up with updates.")
-		("render-image", po::value<two_strings>()->multitoken(), "takes two arguments: <image> <output>. Like screenshot, but instead of a map, takes a valid Wesnoth 'image path string' with image path functions, and writes it to a .png file."
-#ifdef _WIN32
-		 " Implies --wconsole."
-#endif // _WIN32
-		 )
-		("report,R", "initializes game directories, prints build information suitable for use in bug reports, and exits."
-#ifdef _WIN32
-		 " Implies --wconsole."
-#endif // _WIN32
-		 )
+		("render-image", po::value<two_strings>()->multitoken(), "takes two arguments: <image> <output>. Like screenshot, but instead of a map, takes a valid Wesnoth 'image path string' with image path functions, and writes it to a .png file." IMPLY_WCONSOLE)
+		("report,R", "initializes game directories, prints build information suitable for use in bug reports, and exits." IMPLY_WCONSOLE)
 		("rng-seed", po::value<unsigned int>(), "seeds the random number generator with number <arg>. Example: --rng-seed 0")
-		("screenshot", po::value<two_strings>()->multitoken(), "takes two arguments: <map> <output>. Saves a screenshot of <map> to <output> without initializing a screen. Editor must be compiled in for this to work."
-#ifdef _WIN32
-		 " Implies --wconsole."
-#endif // _WIN32
-		 )
+		("screenshot", po::value<two_strings>()->multitoken(), "takes two arguments: <map> <output>. Saves a screenshot of <map> to <output> without initializing a screen. Editor must be compiled in for this to work." IMPLY_WCONSOLE)
 		("script", po::value<std::string>(), "(experimental) file containing a Lua script to control the client")
 		("server,s", po::value<std::string>()->implicit_value(std::string()), "connects to the host <arg> if specified or to the first host in your preferences.")
 		("strict-validation", "makes validation errors fatal")
@@ -218,13 +214,15 @@ commandline_options::commandline_options(const std::vector<std::string>& args)
 		("userconfig-dir", po::value<std::string>(), "sets the path of the user config directory to $HOME/<arg> or My Documents\\My Games\\<arg> for Windows. You can specify also an absolute path outside the $HOME or My Documents\\My Games directory. Defaults to $HOME/.config/wesnoth on X11 and to the userdata-dir on other systems.")
 		("userconfig-path", "prints the path of the user config directory and exits.")
 		("userdata-dir", po::value<std::string>(), "sets the path of the userdata directory to $HOME/<arg> or My Documents\\My Games\\<arg> for Windows. You can specify also an absolute path outside the $HOME or My Documents\\My Games directory.")
-		("userdata-path", "prints the path of the userdata directory and exits.")
+		("userdata-path", "prints the path of the userdata directory and exits." IMPLY_WCONSOLE)
 		("username", po::value<std::string>(), "uses <username> when connecting to a server, ignoring other preferences.")
 		("validcache", "assumes that the cache is valid. (dangerous)")
 		("version,v", "prints the game's version number and exits.")
 		("with-replay", "replays the file loaded with the --load option.")
 #ifdef _WIN32
 		("wconsole", "attaches a console window on startup (Windows only). Implied by any option that prints something and exits.")
+		("wnoconsole", "don't attach a console window on startup (Windows only). Overrides options that imply --wconsole.")
+		("wnoredirect", "disables standard redirection of logging to a file (Windows only), allowing the output to be piped to another command")
 #endif // _WIN32
 		;
 
@@ -248,7 +246,7 @@ commandline_options::commandline_options(const std::vector<std::string>& args)
 
 	po::options_description logging_opts("Logging options");
 	logging_opts.add_options()
-		("logdomains", po::value<std::string>()->implicit_value(std::string()), "lists defined log domains (only the ones containing <arg> filter if such is provided) and exits.")
+		("logdomains", po::value<std::string>()->implicit_value(std::string()), "lists defined log domains (only the ones containing <arg> filter if such is provided) and exits." IMPLY_WCONSOLE)
 		("log-error", po::value<std::string>(), "sets the severity level of the specified log domain(s) to 'error'. <arg> should be given as a comma-separated list of domains, wildcards are allowed. Example: --log-error=network,gui/*,engine/enemies")
 		("log-warning", po::value<std::string>(), "sets the severity level of the specified log domain(s) to 'warning'. Similar to --log-error.")
 		("log-info", po::value<std::string>(), "sets the severity level of the specified log domain(s) to 'info'. Similar to --log-error.")
@@ -289,14 +287,14 @@ commandline_options::commandline_options(const std::vector<std::string>& args)
 	po::options_description parsing_opts("WML parsing options");
 	parsing_opts.add_options()
 		("use-schema,S", po::value<std::string>(), "specify a schema to validate WML against (defaults to the core schema)")
-		("validate,V", po::value<std::string>(), "validate a specified WML file against a schema")
+		("validate,V", po::value<std::string>(), "validate a specified WML file against a schema" IMPLY_WCONSOLE)
 		("validate-addon", po::value<std::string>(), "validate the specified addon's WML against the schema. Requires the user to play the campaign (in the GUI) to trigger the validation.")
 		("validate-core", "validate the core WML against the schema")
-		("validate-schema", po::value<std::string>(), "validate a specified WML schema")
-		("diff,D", po::value<two_strings>()->multitoken(), "diff two preprocessed WML documents")
+		("validate-schema", po::value<std::string>(), "validate a specified WML schema" IMPLY_WCONSOLE)
+		("diff,D", po::value<two_strings>()->multitoken(), "diff two preprocessed WML documents" IMPLY_WCONSOLE)
 		("output,o", po::value<std::string>(), "output to specified file")
-		("patch,P", po::value<two_strings>()->multitoken(), "apply a patch to a preprocessed WML document")
-		("preprocess,p", po::value<two_strings>()->multitoken(), "requires two arguments: <file/folder> <target directory>. Preprocesses a specified file/folder. The preprocessed file(s) will be written in the specified target directory: a plain cfg file and a processed cfg file.")
+		("patch,P", po::value<two_strings>()->multitoken(), "apply a patch to a preprocessed WML document" IMPLY_WCONSOLE)
+		("preprocess,p", po::value<two_strings>()->multitoken(), "requires two arguments: <file/folder> <target directory>. Preprocesses a specified file/folder. The preprocessed file(s) will be written in the specified target directory: a plain cfg file and a processed cfg file." IMPLY_WCONSOLE)
 		("preprocess-defines", po::value<std::string>(), "comma separated list of defines to be used by '--preprocess' command. If 'SKIP_CORE' is in the define list the data/core won't be preprocessed. Example: --preprocess-defines=FOO,BAR")
 		("preprocess-input-macros", po::value<std::string>(), "used only by the '--preprocess' command. Specifies source file <arg> that contains [preproc_define]s to be included before preprocessing.")
 		("preprocess-output-macros", po::value<std::string>()->implicit_value(std::string()), "used only by the '--preprocess' command. Will output all preprocessed macros in the target file <arg>. If the file is not specified the output will be file '_MACROS_.cfg' in the target directory of preprocess's command.")
