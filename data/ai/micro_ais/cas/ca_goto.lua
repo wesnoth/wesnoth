@@ -150,10 +150,10 @@ function ca_goto:execution(cfg, data)
                 end
             else  -- Otherwise find the best path to take
                 local path, cost
-                if GO_avoid_map or avoid_enemies then
+                if avoid_enemies then
                     path, cost = wesnoth.find_path(unit, loc[1], loc[2], {
                         calculate = function(x, y, current_cost)
-                            return custom_cost(x, y, unit, GO_avoid_map, enemy_map, enemy_attack_map, cfg.avoid_enemies)
+                            return custom_cost(x, y, unit, GO_avoid_map, enemy_map, enemy_attack_map, avoid_enemies)
                         end
                     })
                 else
@@ -166,7 +166,8 @@ function ca_goto:execution(cfg, data)
                             enemy_at_goal = nil
                         end
                     end
-                    path, cost = AH.find_path_with_shroud(unit, loc[1], loc[2], { ignore_units = cfg.ignore_units })
+                    path, cost = AH.find_path_with_avoid(unit, loc[1], loc[2], GO_avoid_map, { ignore_enemies = cfg.ignore_units })
+
                     if enemy_at_goal then
                         enemy_at_goal:to_map()
                         --- Give massive penalty for this goal hex
@@ -207,7 +208,7 @@ function ca_goto:execution(cfg, data)
     -- rather than using ai_helper.next_hop for standard pathfinding
     -- Also, straight-line does not produce a path, so we do that first
     if not best_path then
-        best_path = AH.find_path_with_shroud(best_unit, closest_hex[1], closest_hex[2])
+        best_path = AH.find_path_with_avoid(best_unit, closest_hex[1], closest_hex[2], GO_avoid_map)
     end
 
     -- Now go through the hexes along that path, use normal path finding
@@ -215,7 +216,7 @@ function ca_goto:execution(cfg, data)
     -- the unit can actually get to
     closest_hex = best_path[1]
     for i = 2,#best_path do
-        local sub_path, sub_cost = AH.find_path_with_shroud(best_unit, best_path[i][1], best_path[i][2])
+        local sub_path, sub_cost = AH.find_path_with_avoid(best_unit, best_path[i][1], best_path[i][2], GO_avoid_map)
         if sub_cost <= best_unit.moves then
             local unit_in_way = wesnoth.units.get(best_path[i][1], best_path[i][2])
             if (not AH.is_visible_unit(wesnoth.current.side, unit_in_way)) then
