@@ -288,10 +288,15 @@ if __name__ == '__main__':
     runner = WesnothRunner(options)
 
     for batch in test_list:
-        try:
-            runner.run_tests(batch, test_summary)
-        except UnexpectedTestStatusException as e:
-            pass
+        while len(batch) > 0:
+            last_passed_count = test_summary.passed
+            try:
+                runner.run_tests(batch, test_summary)
+                batch = []
+            except UnexpectedTestStatusException as e:
+                just_passed = test_summary.passed - last_passed_count
+                batch = batch[just_passed + 1 :]
+                test_summary.skip_test(-len(batch))
 
     print("Result:", test_summary.passed, "of", test_summary.total, "tests passed")
 
