@@ -134,6 +134,9 @@ class WesnothRunner:
             args.append("-u")
             args.append(test.name)
         if self.timeout == 0:
+            if test.status == UnitTestResult.TIMEOUT:
+                print('Skipping test', test_list[0].name, 'because timeout is disabled')
+                return
             timeout = None
         else:
             if len(test_list) == 1:
