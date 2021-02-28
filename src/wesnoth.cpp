@@ -641,7 +641,6 @@ static void check_fpu()
 	if(_controlfp_s(&f_control, 0, 0) == 0) {
 		uint32_t unused;
 		uint32_t rounding_mode = f_control & _MCW_RC;
-		uint32_t precision_mode = f_control & _MCW_PC;
 
 		if(rounding_mode != _RC_NEAR) {
 			std::cerr << "Floating point rounding mode is currently '"
@@ -660,6 +659,7 @@ static void check_fpu()
 		}
 
 #ifndef _M_AMD64
+		uint32_t precision_mode = f_control & _MCW_PC;
 		if(precision_mode != _PC_53) {
 			std::cerr << "Floating point precision mode is currently '"
 				<< ((precision_mode == _PC_53)
