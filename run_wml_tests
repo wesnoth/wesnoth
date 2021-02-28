@@ -34,6 +34,30 @@ class TestCase:
     def __str__(self):
         return "TestCase<{status}, {name}>".format(status=self.status, name=self.name)
 
+class TestResultAccumulator:
+    passed = 0
+    skipped = 0
+    failed = 0
+    crashed = 0
+    
+    def __init__(self, total):
+        self.total = total
+    
+    def pass_test(self, n = 1):
+        self.passed = self.passed + n
+    
+    def skip_test(self, n = 1):
+        self.skipped = self.skipped + n
+    
+    def fail_test(self, n = 1):
+        self.failed = self.failed + n
+    
+    def crash_test(self, n = 1):
+        self.crashed = self.failed + n
+    
+    def __bool_(self):
+        return self.passed + self.skipped == self.total
+
 class TestListParser:
     """Each line in the list of tests should be formatted:
         <expected return code><space><name of unit test scenario>
@@ -63,7 +87,7 @@ class TestListParser:
             if self.verbose > 1:
                 print(t)
             test_list.append(t)
-        return batcher(test_list)
+        return batcher(test_list), TestResultAccumulator(len(test_list))
 
 def run_with_rerun_for_sdl_video(args, timeout):
     """A wrapper for subprocess.run with a workaround for the issue of travis+18.04
@@ -120,7 +144,7 @@ class WesnothRunner:
         if self.verbose > 1:
             print("Options that will be used for all Wesnoth instances:", repr(self.common_args))
 
-    def run_tests(self, test_list):
+    def run_tests(self, test_list, test_summary):
         """Run all of the tests in a single instance of Wesnoth"""
         if len(test_list) == 0:
             raise ValueError("Running an empty test list")
@@ -135,6 +159,7 @@ class WesnothRunner:
             args.append(test.name)
         if self.timeout == 0:
             if test.status == UnitTestResult.TIMEOUT:
+                test_summary.skip_test()
                 print('Skipping test', test_list[0].name, 'because timeout is disabled')
                 return
             timeout = None
@@ -159,6 +184,14 @@ class WesnothRunner:
             print(res.stdout.decode('utf-8'))
             if self.verbose > 1:
                 print("Result:", res.returncode)
+        returned_result = UnitTestResult(res.returncode)
+        num_passed = 0
+        if test_list[0].status == UnitTestResult.PASS:
+            num_passed = res.stdout.count(b"PASS TEST")
+            test_summary.pass_test(num_passed)
+        elif returned_result == expected_result:
+            num_passed = 1
+            test_summary.pass_test()
         if res.returncode < 0:
             print("Wesnoth exited because of signal", -res.returncode)
             if options.backtrace:
@@ -166,12 +199,15 @@ class WesnothRunner:
                 gdb_args = ["gdb", "-q", "-batch", "-ex", "start", "-ex", "continue", "-ex", "bt", "-ex", "quit", "--args"]
                 gdb_args.extend(args)
                 subprocess.run(gdb_args, timeout=240)
+            test_summary.crash_test()
+            test_summary.skip_test(len(test_list) - num_passed - 1)
             raise UnexpectedTestStatusException()
-        returned_result = UnitTestResult(res.returncode)
         if returned_result != expected_result:
             if self.verbose == 0:
                 print(res.stdout.decode('utf-8'))
             print("Failure, Wesnoth returned", returned_result, "but we expected", expected_result)
+            test_summary.fail_test()
+            test_summary.skip_test(len(test_list) - num_passed - 1)
             raise UnexpectedTestStatusException()
 
 def test_batcher(test_list):
@@ -248,15 +284,26 @@ if __name__ == '__main__':
         print(repr(options))
 
     batcher = test_nobatcher if options.batch_disable else test_batcher
-    test_list = TestListParser(options).get(batcher)
+    test_list, test_summary = TestListParser(options).get(batcher)
     runner = WesnothRunner(options)
 
-    a_test_failed = False
     for batch in test_list:
         try:
-            runner.run_tests(batch)
-        except UnexpectedTestStatusException:
-            a_test_failed = True
+            runner.run_tests(batch, test_summary)
+        except UnexpectedTestStatusException as e:
+            pass
 
-    if a_test_failed:
+    print("Result:", test_summary.passed, "of", test_summary.total, "tests passed")
+
+    if test_summary.passed != test_summary.total:
+        breakdown = ["{0} passed".format(test_summary.passed)]
+        if test_summary.failed > 0:
+            breakdown.append("{0} failed".format(test_summary.failed))
+        if test_summary.crashed > 0:
+            breakdown.append("{0} crashed".format(test_summary.crashed))
+        if test_summary.skipped > 0:
+            breakdown.append("{0} skipped".format(test_summary.skipped))
+        print("    ({0})".format(', '.join(breakdown)))
+
+    if not test_summary:
         sys.exit(1)
