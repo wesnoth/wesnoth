@@ -211,9 +211,11 @@ function ca_goto:execution(cfg, data)
     end
 
     -- Now go through the hexes along that path, use normal path finding
+    -- We cannot ignore units in this case though, as we need to determine which hexes
+    -- the unit can actually get to
     closest_hex = best_path[1]
     for i = 2,#best_path do
-        local sub_path, sub_cost = AH.find_path_with_shroud(best_unit, best_path[i][1], best_path[i][2], cfg)
+        local sub_path, sub_cost = AH.find_path_with_shroud(best_unit, best_path[i][1], best_path[i][2])
         if sub_cost <= best_unit.moves then
             local unit_in_way = wesnoth.units.get(best_path[i][1], best_path[i][2])
             if (not AH.is_visible_unit(wesnoth.current.side, unit_in_way)) then
