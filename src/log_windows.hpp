@@ -57,7 +57,7 @@ std::string log_file_path();
  * horribly wrong as soon as we try to use the logging facilities internally
  * for debug messages.
  */
-void early_log_file_setup();
+void early_log_file_setup(bool disable);
 
 /**
  * Relocates the stdout+stderr log file to the user data directory.

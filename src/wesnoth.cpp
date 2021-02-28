@@ -87,6 +87,7 @@
 
 #include <boost/iostreams/filtering_stream.hpp> // for filtering_stream
 #include <boost/program_options/errors.hpp>     // for error
+#include <optional>
 
 #include <algorithm> // for transform
 #include <cerrno>    // for ENOMEM
@@ -973,6 +974,9 @@ int main(int argc, char** argv)
 	}
 
 #ifdef _WIN32
+	bool log_redirect = true, native_console_implied = false;
+	// This is optional<bool> instead of tribool because value_or() is exactly the required semantic
+	std::optional<bool> native_console_force;
 	// Some switches force a Windows console to be attached to the process even
 	// if Wesnoth is an IMAGE_SUBSYSTEM_WINDOWS_GUI executable because they
 	// turn it into a CLI application. Also, --wconsole in particular attaches
@@ -994,7 +998,7 @@ int main(int argc, char** argv)
 		// care about -- we just want to see if the switch is there.
 		static const std::set<std::string> wincon_arg_switches = {
 			"-D", "--diff", "-p", "--preprocess", "-P", "--patch", "--render-image",
-			 "--screenshot", "-V", "--validate", "--validate-addon", "--validate-schema",
+			 "--screenshot", "-V", "--validate", "--validate-schema",
 		};
 
 		auto switch_matches_arg = [&arg](const std::string& sw) {
@@ -1004,12 +1008,22 @@ int main(int argc, char** argv)
 
 		if(wincon_switches.find(arg) != wincon_switches.end() ||
 			std::find_if(wincon_arg_switches.begin(), wincon_arg_switches.end(), switch_matches_arg) != wincon_arg_switches.end()) {
-			lg::enable_native_console_output();
-			break;
+			native_console_implied = true;
+		}
+		
+		if(arg == "--wnoconsole") {
+			native_console_force = false;
+		} else if(arg == "--wconsole") {
+			native_console_force = true;
+		} else if(arg == "--wnoredirect") {
+			log_redirect = false;
 		}
 	}
 
-	lg::early_log_file_setup();
+	if(native_console_force.value_or(native_console_implied)) {
+		lg::enable_native_console_output();
+	}
+	lg::early_log_file_setup(!log_redirect);
 #endif
 
 	if(SDL_Init(SDL_INIT_TIMER) < 0) {
