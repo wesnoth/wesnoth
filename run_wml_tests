@@ -44,7 +44,7 @@ class TestListParser:
         self.verbose = options.verbose
         self.filename = options.list
 
-    def get(self):
+    def get(self, batcher):
         status_name_re = re.compile(r"^(\d+) ([\w-]+)$")
         test_list = []
         for line in open(self.filename, mode="rt"):
@@ -60,7 +60,7 @@ class TestListParser:
             if self.verbose > 1:
                 print(t)
             test_list.append(t)
-        return test_list
+        return batcher(test_list)
 
 def get_output_filename(args):
     for i,arg in enumerate(args):
@@ -186,6 +186,12 @@ def test_batcher(test_list):
     if len(expected_to_pass) > 0:
         yield expected_to_pass
 
+def test_nobatcher(test_list):
+    """A generator function that provides the same API as test_batcher but
+    emits the tests one at a time."""
+    for test in test_list:
+        yield [test]
+
 if __name__ == '__main__':
     ap = argparse.ArgumentParser()
     # The options that are mandatory to support (because they're used in the Travis script)
@@ -232,11 +238,12 @@ if __name__ == '__main__':
     if options.verbose > 1:
         print(repr(options))
 
-    test_list = TestListParser(options).get()
+    batcher = test_nobatcher if options.batch_disable else test_batcher
+    test_list = TestListParser(options).get(batcher)
     runner = WesnothRunner(options)
 
     a_test_failed = False
-    for batch in [test_list] if options.batch_disable else test_batcher(test_list):
+    for batch in test_list:
         try:
             runner.run_tests(batch)
         except UnexpectedTestStatusException:
