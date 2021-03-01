@@ -1122,23 +1122,33 @@ void unit_type_data::set_config(const game_config_view& cfg)
 
 		struct ter_defs_to_movetype
 		{
-			/** The data to read from is in [terrain_defaults][subtag] */
+			/** The data to read from is in [terrain_defaults][subtag], and corresponds to [movetype][subtag] */
 			std::string subtag;
+			/** Deprecated names used in 1.14.0's [terrain_defaults]. For [defense] the name didn't change. */
+			std::string alias;
 			int default_val;
 		};
 		const std::array<ter_defs_to_movetype, 4> terrain_info_tags{
-			ter_defs_to_movetype{{"movement_costs"}, movetype::UNREACHABLE},
-			ter_defs_to_movetype{{"vision_costs"}, movetype::UNREACHABLE},
-			ter_defs_to_movetype{{"jamming_costs"}, movetype::UNREACHABLE},
-			ter_defs_to_movetype{{"defense"}, 100}
+			ter_defs_to_movetype{{"movement_costs"}, {"movement"}, movetype::UNREACHABLE},
+			ter_defs_to_movetype{{"vision_costs"}, {"vision"}, movetype::UNREACHABLE},
+			ter_defs_to_movetype{{"jamming_costs"}, {"jamming"}, movetype::UNREACHABLE},
+			ter_defs_to_movetype{{"defense"}, {"defense"}, 100}
 		};
 
 		for(const auto& cost_type : terrain_info_tags) {
-			if(!terrain.has_child(cost_type.subtag)) {
+			const std::string* src_tag = nullptr;
+			if(terrain.has_child(cost_type.subtag)) {
+				src_tag = &cost_type.subtag;
+			}
+			else if(terrain.has_child(cost_type.alias)) {
+				// Check for the deprecated name, no deprecation warnings are printed.
+				src_tag = &cost_type.alias;
+			}
+			if(!src_tag) {
 				continue;
 			}
 
-			const config& info = terrain.child(cost_type.subtag);
+			const config& info = terrain.child(*src_tag);
 
 			for(const config::attribute& attr : info.attribute_range()) {
 				const std::string& mt = attr.first;
