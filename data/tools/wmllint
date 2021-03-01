@@ -1889,6 +1889,7 @@ to be called on their own".format(filename, num))
     in_name_generator = False
     in_candidate_action = False
     in_lua = False
+    in_lua_args = False
     storeid = None
     storevar = None
     ignoreable = False
@@ -1904,8 +1905,13 @@ to be called on their own".format(filename, num))
         elif "[/lua]" in lines[i]:
             in_lua = False
         if in_lua:
-            # As far as I can tell none of the below tests make sense inside of a lua tag
-            continue
+            if has_opening_tag(lines[i], "args"):
+                in_lua_args = True
+            elif "[/args]" in lines[i]:
+                in_lua_args = False
+            if not in_lua_args:
+                # As far as I can tell none of the below tests make sense inside of a lua tag
+                continue
         if '[' in lines[i]:
             preamble_seen = True
         # This logic looks odd because a scenario can be conditionally
