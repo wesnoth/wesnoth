@@ -20,6 +20,7 @@
  ### WML Engine
    * Standard Location Filters now support gives_income=yes|no to make it simpler to match villages regardless of owner
  ### Miscellaneous and Bug Fixes
+   * Added support for 1.14’s tag names in `[terrain_defaults]` (issue #5308).
 
 ## Version 1.15.10
  ### Add-ons server
