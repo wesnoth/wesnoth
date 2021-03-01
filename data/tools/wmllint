@@ -2732,6 +2732,15 @@ def maptransform(filename, baseline, inmap, y):
     for i in range(len(inmap[y])):
         for (old, new) in mapchanges:
             inmap[y][i] = inmap[y][i].replace(old, new)
+        # this change needs to be hardcoded here because it's tricky
+        # we're converting from a terrain without overlays to a terrain +
+        # overlay code
+        # since we don't support having two overlays, skip and print a warning
+        if "Xol^" in inmap[y][i]:
+            print("{}, line {}: Xol (enlightened wall) terrain with overlays \
+must be converted manually".format(filename, baseline + y + 1))
+        elif "Xol" in inmap[y][i]:
+            inmap[y][i] = inmap[y][i].replace("Xol", "Xos^Efs")
 
 # Generic machinery starts here
 
