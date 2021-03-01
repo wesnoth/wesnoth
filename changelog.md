@@ -13,6 +13,7 @@
  ### Translations
    * Updated translations: British English, Italian
  ### Units
+   * Beast-rider Walking Corpse variation (for UtBS Quenoth Tauroch line, but generally available)
  ### User interface
    * Improved the Load dialog when there are no saved games for the current version, and also when there are corrupted files.
    * Re-added the pop-up when there are no saved games at all (issue #5517).
