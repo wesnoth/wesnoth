@@ -6,6 +6,8 @@
      * Adjust campaign difficulty
     * Sceptre of Fire
      * Adjust campaign difficulty
+    * Secrets of the Ancients
+     * Adjust campaign difficulty
     * Son of the Black Eye
      * Adjust campaign difficulty
  ### Editor
