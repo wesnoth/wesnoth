@@ -27,6 +27,7 @@
 #include "serialization/string_utils.hpp"
 
 #include <chrono>
+#include <thread>
 
 namespace gui2::dialogs
 {
