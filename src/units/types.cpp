@@ -885,12 +885,8 @@ void patch_movetype(movetype& mt,
 	config mt_cfg;
 	mt.write(mt_cfg);
 
-	// original_cfg can be blank, if a movetype similar to "none" exists.
-	// "none" is a real movetype defined in units.cfg for units that shouldn't
-	// be able to move.
-	const auto& original_cfg = mt_cfg.child(type_to_patch);
-	if(!replace && original_cfg.has_attribute(new_key)) {
-		// Don't replace if the key already exists in the config (even if empty).
+	if(!replace && mt_cfg.child_or_empty(type_to_patch).has_attribute(new_key)) {
+		// Don't replace if this type already exists in the config
 		return;
 	}
 
