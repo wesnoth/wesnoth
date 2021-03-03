@@ -987,6 +987,7 @@ function wesnoth.wml_actions.store_unit_defense_on(cfg)
 	wml.variables[cfg.variable or "terrain_defense"] = defense
 end
 
+local specloc_mods = {merge = true, ignore = true, replace = true, append = true}
 function wml_actions.terrain_mask(cfg)
 	cfg = wml.parsed(cfg)
 
@@ -1014,6 +1015,14 @@ function wml_actions.terrain_mask(cfg)
 		local new_loc = wesnoth.map.get_direction({x, y}, "nw")
 		x, y = new_loc[1], new_loc[2]
 	end
+	local spec_locs = cfg.special_locations
+	-- Backwards compatibility with older 1.15.x, but without a deprecation notice because this was undocumented
+	if spec_locs == nil and cfg.ignore_special_locations ~= nil then
+		spec_locs = cfg.ignore_special_locations and 'ignore' or 'merge'
+	end
+	if not specloc_mods[spec_locs] then
+		wml.error("[terrain_mask]: Invalid special_locations= mode. Must be one of 'merge', 'ignore', 'replace', 'append'.")
+	end
 	local rules = {}
 	for rule in wml.child_range(cfg, 'rule') do
 		rules[#rules + 1] = rule
@@ -1024,7 +1033,7 @@ function wml_actions.terrain_mask(cfg)
 	wesnoth.current.map:terrain_mask({x, y}, mask, {
 		is_odd = is_odd,
 		rules = rules,
-		ignore_special_locations = cfg.ignore_special_locations,
+		special_locations = spec_locs,
 	})
 end
 

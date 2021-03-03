@@ -19,6 +19,7 @@ class config;
 #include "map/location.hpp"
 #include "terrain/translation.hpp"
 #include "terrain/type_data.hpp"
+#include "utils/make_enum.hpp"
 #include <optional>
 
 //class terrain_type_data; Can't forward declare because of enum
@@ -30,6 +31,7 @@ public:
 	using terrain_code = t_translation::terrain_code;
 	using terrain_map = t_translation::ter_map;
 	using location_map = t_translation::starting_positions;
+	MAKE_ENUM(speclocs_merge_t, (MERGE, "merge"), (IGNORE, "ignore"), (REPLACE, "replace"), (APPEND, "append"));
 	virtual ~gamemap_base();
 
 	/** The default border style for a map. */
@@ -129,7 +131,7 @@ public:
 	};
 
 	/** Overlays another map onto this one at the given position. */
-	void overlay(const gamemap_base& m, map_location loc, const std::vector<overlay_rule>& rules = std::vector<overlay_rule>(), bool is_odd = false, bool ignore_special_locations = false);
+	void overlay(const gamemap_base& m, map_location loc, const std::vector<overlay_rule>& rules = std::vector<overlay_rule>(), bool is_odd = false, speclocs_merge_t locs_merge = speclocs_merge_t::MERGE);
 
 	template<typename F>
 	void for_each_loc(const F& f) const

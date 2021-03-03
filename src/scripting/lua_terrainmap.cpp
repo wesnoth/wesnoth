@@ -502,7 +502,7 @@ int intf_terrain_mask(lua_State *L)
 	map_location loc = luaW_checklocation(L, 2);
 
 	bool is_odd = false;
-	bool ignore_special_locations = false;
+	gamemap::speclocs_merge_t special_locations = gamemap::speclocs_merge_t::MERGE;
 	std::vector<gamemap::overlay_rule> rules;
 
 	if(lua_istable(L, 4)) {

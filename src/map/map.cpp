@@ -211,7 +211,7 @@ std::string gamemap::write() const
 	return t_translation::write_game_map(tiles(), special_locations(), t_translation::coordinate{ border_size(), border_size() }) + "\n";
 }
 
-void gamemap_base::overlay(const gamemap_base& m, map_location loc, const std::vector<overlay_rule>& rules, bool m_is_odd, bool ignore_special_locations)
+void gamemap_base::overlay(const gamemap_base& m, map_location loc, const std::vector<overlay_rule>& rules, bool m_is_odd, speclocs_merge_t locs_merge)
 {
 	int xpos = loc.wml_x();
 	int ypos = loc.wml_y();
@@ -270,7 +270,7 @@ void gamemap_base::overlay(const gamemap_base& m, map_location loc, const std::v
 		}
 	}
 
-	if (!ignore_special_locations) {
+	if(locs_merge == speclocs_merge_t::MERGE || locs_merge == speclocs_merge_t::APPEND) {
 		for(auto& pair : m.special_locations().left) {
 
 			int x = pair.second.wml_x();
@@ -289,9 +289,14 @@ void gamemap_base::overlay(const gamemap_base& m, map_location loc, const std::v
 			int y_new = y + ((x & 1 ) ? yoffset_odd : yoffset_even);
 			map_location pos_new = map_location(x_new, y_new, wml_loc());
 
-			starting_positions_.left.erase(pair.first);
-			starting_positions_.insert(location_map::value_type(pair.first, t_translation::coordinate(pos_new.x, pos_new.y)));
+			// merge mode - overwrite if exists; append mode - skip if exists
+			if(locs_merge == speclocs_merge_t::MERGE || !starting_positions_.left.contains(pair.first)) {
+				starting_positions_.left.erase(pair.first);
+				starting_positions_.insert(location_map::value_type(pair.first, t_translation::coordinate(pos_new.x, pos_new.y)));
+			}
 		}
+	} else if(locs_merge == speclocs_merge_t::REPLACE) {
+		starting_positions_ = m.special_locations();
 	}
 }
 t_translation::terrain_code gamemap_base::get_terrain(const map_location& loc) const
