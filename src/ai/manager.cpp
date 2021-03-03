@@ -254,6 +254,8 @@ const std::string holder::get_ai_overview()
 	s << "recruitment_randomness:  " << this->ai_->get_recruitment_randomness() << std::endl;
 	s << "recruitment_save_gold:  " << std::endl << "----config begin----" << std::endl;
 	s << this->ai_->get_recruitment_save_gold() << "-----config end-----" << std::endl;
+	s << "retreat_enemy_weight:  " << this->ai_->get_retreat_enemy_weight() << std::endl;
+	s << "retreat_factor:  " << this->ai_->get_retreat_factor() << std::endl;
 	s << "scout_village_targeting:  " << this->ai_->get_scout_village_targeting() << std::endl;
 	s << "simple_targeting:  " << cfg["simple_targeting"] << std::endl;
 	s << "support_villages:  " << cfg["support_villages"] << std::endl;
