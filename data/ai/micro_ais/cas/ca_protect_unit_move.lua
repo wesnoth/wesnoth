@@ -6,7 +6,7 @@ local F = wesnoth.require "functional"
 local function get_protected_units(cfg)
     local units = {}
     for u in wml.child_range(cfg, "unit") do
-        table.insert(units, AH.get_units_with_moves { id = u.id }[1])
+        table.insert(units, AH.get_units_with_moves { id = u.id, side = wesnoth.current.side }[1])
     end
     return units
 end
