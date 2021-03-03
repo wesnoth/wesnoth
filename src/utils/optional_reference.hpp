@@ -26,7 +26,7 @@ namespace utils
  * the interace messy, as to access the referenced object you need an extra get() call to
  * access the value stored in the reference wrapper.
  *
- * This does not rebind operator=() as boost::optional does. Instead, assigning a value
+ * This does not rebind operator=() as std::optional does. Instead, assigning a value
  * to this object will simply change the object to which it points. To change the value
  * of the referred to object, use value() or one of the other operators.
  *

@@ -2814,7 +2814,7 @@ void display::refresh_report(const std::string& report_name, const config * new_
 
 	// Now we will need the config. Generate one if needed.
 
-	boost::optional <events::mouse_handler &> mhb = boost::none;
+	utils::optional_reference<events::mouse_handler> mhb = std::nullopt;
 
 	if (resources::controller) {
 		mhb = resources::controller->get_mouse_handler_base();

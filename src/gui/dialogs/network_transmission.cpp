@@ -73,12 +73,12 @@ void network_transmission::pump_monitor::process(events::pump_info&)
 			poller_.get();
 		}
 
-		window_.get().set_retval(retval::OK);
+		window_->set_retval(retval::OK);
 		return;
 	}
 
 	if(total_) {
-		find_widget<progress_bar>(&(window_.get()), "progress", false)
+		find_widget<progress_bar>(window_.ptr(), "progress", false)
 			.set_percentage((completed_ * 100.) / total_);
 
 		std::ostringstream ss;
@@ -86,7 +86,7 @@ void network_transmission::pump_monitor::process(events::pump_info&)
 			<< utils::si_string(completed_, true, _("unit_byte^B")) << "/"
 			<< utils::si_string(total_, true, _("unit_byte^B"));
 
-		find_widget<label>(&(window_.get()), "numeric_progress", false)
+		find_widget<label>(window_.ptr(), "numeric_progress", false)
 			.set_label(ss.str());
 	}
 }
@@ -118,7 +118,7 @@ void network_transmission::pre_show(window& window)
 
 void network_transmission::post_show(window& /*window*/)
 {
-	pump_monitor_.window_.reset();
+	pump_monitor_.window_ = std::nullopt;
 
 	if(get_retval() == retval::CANCEL) {
 		// We need to wait for the current polling loop to conclude before exiting so we don't invalidate
