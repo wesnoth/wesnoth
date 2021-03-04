@@ -37,7 +37,7 @@ f = {
 }
 
 function get_locations(t)
-	local filter = wesnoth.create_filter(t.filter, t.filter_extra or {})
+	local filter = wesnoth.map.filter(t.filter, t.filter_extra or {})
 	return map:get_locations(filter, t.locs)
 end
 
@@ -46,7 +46,7 @@ function set_terrain_impl(data)
 	local nlocs_total = 0
 	for i = 1, #data do
 		if data[i].filter then
-			local f = wesnoth.create_filter(data[i].filter, data[i].known or {})
+			local f = wesnoth.map.filter(data[i].filter, data[i].known or {})
 			locs[i] = map:get_locations(f, data[i].locs)
 		else
 			locs[i] = data[i].locs
@@ -68,7 +68,7 @@ function set_terrain_impl(data)
 		for j = 1, num_tiles do
 			local loc = locs[i][j]
 			if chance >= 1000 or chance >= wesnoth.random(1000) then
-				map:set_terrain(loc, helper.rand(terrains), layer)
+				map[loc] = wesnoth.map['replace_' .. layer](helper.rand(terrains))
 				nlocs_changed = nlocs_changed + 1
 			end
 		end

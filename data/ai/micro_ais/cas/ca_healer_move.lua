@@ -41,7 +41,7 @@ function ca_healer_move:evaluation(cfg, data)
         -- Also, they cannot be on a healing location or regenerate
         if (healee.moves == 0) then
             if (not healee:matches { ability = "regenerates" }) then
-                local healing = wesnoth.get_terrain_info(wesnoth.get_terrain(healee.x, healee.y)).healing
+                local healing = wesnoth.terrain_types[wesnoth.current.map[healee]].healing
                 if (healing == 0) then
                     local is_healee = true
                     for _,healer in ipairs(healers_noMP) do
@@ -100,8 +100,8 @@ function ca_healer_move:evaluation(cfg, data)
                 rating = rating - enemies_in_reach * 1000
 
                 -- All else being more or less equal, prefer villages and strong terrain
-                local terrain = wesnoth.get_terrain(x, y)
-                local is_village = wesnoth.get_terrain_info(terrain).village
+                local terrain = wesnoth.current.map[{x, y}]
+                local is_village = wesnoth.terrain_types[terrain].village
                 if is_village then rating = rating + 2 end
 
                 local defense = healer:defense_on(terrain)

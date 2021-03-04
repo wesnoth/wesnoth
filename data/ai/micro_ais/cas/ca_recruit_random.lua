@@ -11,13 +11,12 @@ function ca_recruit_random:evaluation(cfg)
 
     -- Check if leader is on keep
     local leader = wesnoth.units.find_on_map { side = wesnoth.current.side, canrecruit = 'yes' }[1]
-    if (not leader) or (not wesnoth.get_terrain_info(wesnoth.get_terrain(leader.x, leader.y)).keep) then
+    if (not leader) or (not wesnoth.terrain_types[wesnoth.current.map[leader]).keep] then
         return 0
     end
 
     -- Find all connected castle hexes
     local castle_map = LS.of_pairs({ { leader.x, leader.y } })
-    local width, height, border = wesnoth.get_map_size()
     local new_castle_hex_found = true
 
     while new_castle_hex_found do
@@ -26,11 +25,8 @@ function ca_recruit_random:evaluation(cfg)
 
         castle_map:iter(function(x, y)
             for xa,ya in H.adjacent_tiles(x, y) do
-                if (not castle_map:get(xa, ya))
-                    and (xa >= 1) and (xa <= width)
-                    and (ya >= 1) and (ya <= height)
-                then
-                    local is_castle = wesnoth.get_terrain_info(wesnoth.get_terrain(xa, ya)).castle
+                if (not castle_map:get(xa, ya)) and wesnoth.current.map:on_board(xa, ya) then
+                    local is_castle = wesnoth.terrain_types[wesnoth.current.map[{xa, ya}]].castle
 
                     if is_castle then
                         table.insert(new_hexes, { xa, ya })

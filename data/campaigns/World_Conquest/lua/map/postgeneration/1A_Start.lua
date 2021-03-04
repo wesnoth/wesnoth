@@ -65,7 +65,7 @@ function world_conquest_tek_map_decoration_1()
 
 	while #terrain_to_change > 0 and wesnoth.random(2) == 1 do
 		local i = wesnoth.random(#terrain_to_change)
-		map:set_terrain(terrain_to_change[i], "Wwf")
+		map[terrain_to_change[i]] = "Wwf"
 		terrain_to_change = wct_store_possible_encampment_ford()
 	end
 

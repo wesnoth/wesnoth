@@ -20,7 +20,8 @@ if ca_castle_switch then
     params.leader_takes_village = (function(leader)
             local castle_switch_score = ca_castle_switch:evaluation({}, dummy_engine.data, nil, leader)
             if castle_switch_score > 0 then
-                local take_village = #(wesnoth.get_villages {
+                local take_village = #(wesnoth.map.find {
+                    gives_income = true,
                     x = dummy_engine.data.CS_leader_target[1],
                     y = dummy_engine.data.CS_leader_target[2]
                 }) > 0

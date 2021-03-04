@@ -181,14 +181,11 @@ local function humans_can_recruit()
 end
 -- return true if any keeps exist
 local function map_has_keeps()
-	local width,height,_ = wesnoth.get_map_size()
-	for x = 1, width do
-		for y = 1, height do
-			local terr = wesnoth.get_terrain(x, y)
-			local info = wesnoth.get_terrain_info(terr)
-			if info.keep then
-				return true
-			end
+	for x, y in wesnoth.current.map:iter() do
+		local terr = wesnoth.current.map[{x, y}]
+		local info = wesnoth.terrain_types[terr]
+		if info.keep then
+			return true
 		end
 	end
 end

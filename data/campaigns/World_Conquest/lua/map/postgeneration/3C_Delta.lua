@@ -58,7 +58,7 @@ function world_conquest_tek_map_constructor_delta()
 		-- note: the reason why i didnt add support for lua functions yet is that i
 		--       might want lua filter objects to be serializable.
 		if is_in_octaegon(loc[1], loc[2]) then
-			map:set_terrain(loc, "Wwf")
+			map[loc] = "Wwf"
 		end
 	end
 end

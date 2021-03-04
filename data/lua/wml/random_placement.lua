@@ -11,7 +11,7 @@ wesnoth.wml_actions.random_placement = function(cfg)
 	local allow_less = cfg.allow_less == true
 	local variable_previous <close> = utils.scoped_var(variable)
 	local math_abs = math.abs
-	local locs = wesnoth.get_locations(filter)
+	local locs = wesnoth.map.find(filter)
 	if type(num_items) == "string" then
 		if num_items:match('^%s*%(.*%)%s*$') then
 			local params = {size = #locs}
@@ -40,7 +40,7 @@ wesnoth.wml_actions.random_placement = function(cfg)
 		wml.variables[variable .. ".x"] = point[1]
 		wml.variables[variable .. ".y"] = point[2]
 		wml.variables[variable .. ".n"] = i
-		wml.variables[variable .. ".terrain"] = wesnoth.get_terrain(point[1], point[2])
+		wml.variables[variable .. ".terrain"] = wesnoth.current.map[point]
 		if distance < 0 then
 			-- optimisation: nothing to do for distance < 0
 		elseif distance == 0 then

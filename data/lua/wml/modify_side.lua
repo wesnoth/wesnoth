@@ -61,16 +61,16 @@ function wesnoth.wml_actions.modify_side(cfg)
 			side.shroud = cfg.shroud
 		end
 		if cfg.reset_maps then
-			wesnoth.place_shroud(side.side, "all")
+			wesnoth.map.remove_shroud(side.side, "all")
 		end
 		if cfg.fog ~= nil then
 			side.fog = cfg.fog
 		end
 		if cfg.reset_view then
-			wesnoth.add_fog(side.side, {}, true)
+			wesnoth.map.place_fog(side.side, {}, true)
 		end
 		if cfg.shroud_data then
-			wesnoth.remove_shroud(side.side, cfg.shroud_data)
+			wesnoth.map.remove_shroud(side.side, cfg.shroud_data)
 		end
 
 		if cfg.share_vision then

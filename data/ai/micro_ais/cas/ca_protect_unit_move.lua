@@ -47,7 +47,7 @@ function ca_protect_unit_move:execution(cfg, data)
 
     local terrain_defense_map = LS.create()
     reach_map:iter(function(x, y, data)
-        terrain_defense_map:insert(x, y, unit:defense_on(wesnoth.get_terrain(x, y)))
+        terrain_defense_map:insert(x, y, unit:defense_on(wesnoth.current.map[{x, y}]))
     end)
 
     local goal_distance_map = LS.create()

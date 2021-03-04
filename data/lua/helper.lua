@@ -72,20 +72,13 @@ end
 -- Not deprecated because, unlike wesnoth.map.get_adjacent_tiles,
 -- this verifies that the locations are on the map.
 function helper.adjacent_tiles(x, y, with_borders)
-	local x1,y1,x2,y2,b = 1,1,wesnoth.get_map_size()
-	if with_borders then
-		x1 = x1 - b
-		y1 = y1 - b
-		x2 = x2 + b
-		y2 = y2 + b
-	end
 	local adj = {wesnoth.map.get_adjacent_tiles(x, y)}
 	local i = 0
 	return function()
 		while i < #adj do
 			i = i + 1
 			local u, v = adj[i][1], adj[i][2]
-			if u >= x1 and u <= x2 and v >= y1 and v <= y2 then
+			if wesnoth.current.map:on_board(u, v, with_borders) then
 				return u, v
 			end
 		end

@@ -241,7 +241,7 @@ std::unique_ptr<editor_action> editor_action_starting_position::perform(map_cont
 {
 	std::unique_ptr<editor_action> undo;
 
-	const std::string* old_loc_id = mc.map().is_starting_position(loc_);
+	const std::string* old_loc_id = mc.map().is_special_location(loc_);
 	map_location old_loc = mc.map().special_location(loc_id_);
 
 	if(old_loc_id != nullptr) {
@@ -271,7 +271,7 @@ std::unique_ptr<editor_action> editor_action_starting_position::perform(map_cont
 
 void editor_action_starting_position::perform_without_undo(map_context& mc) const
 {
-	const std::string* old_id = mc.map().is_starting_position(loc_);
+	const std::string* old_id = mc.map().is_special_location(loc_);
 	if(old_id != nullptr) {
 		mc.map().set_special_location(*old_id, map_location());
 	}

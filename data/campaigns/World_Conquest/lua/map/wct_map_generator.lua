@@ -44,7 +44,7 @@ local function run_postgeneration(map_data, id, scenario_content, nplayers, nhum
 		nhumanplayers = nhumanplayer,
 		scenario = scenario_content,
 	}
-	_G.map = wesnoth.create_map(map_data)
+	_G.map = wesnoth.map.create(map_data)
 	_G.total_tiles = _G.map.width * _G.map.height
 	_G.prestart_event = scenario_content.event[1]
 	_G.print_time = function(msg)

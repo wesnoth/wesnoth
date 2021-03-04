@@ -15,7 +15,7 @@ local extra_templates = {
 		if type(cfg.x) == 'number' and type(cfg.y) == 'number' and cfg.terrain then
 			args.x = cfg.x
 			args.y = cfg.y
-			args.terrain = wesnoth.get_terrain(cfg.x, cfg.y)
+			args.terrain = wesnoth.current.map[{cfg.x, cfg.y}]
 			return 'Note: ($x,$y) has terrain $terrain.'
 		end
 		return ''

@@ -27,7 +27,7 @@ function retreat_functions.min_hp(unit)
     if unit.canrecruit then retreat_factor = retreat_factor * 1.5 end
 
     -- Higher retreat willingness on bad terrain
-    local retreat_factor = retreat_factor * (100 - unit:defense_on(wesnoth.get_terrain(unit.x, unit.y))) / 50
+    local retreat_factor = retreat_factor * (100 - unit:defense_on(wesnoth.current.map[unit])) / 50
 
     local min_hp = retreat_factor * unit.max_hitpoints
 
@@ -160,7 +160,7 @@ function retreat_functions.get_retreat_injured_units(healees, regen_amounts, avo
             local location_subset = {}
             for j,loc in ipairs(possible_locations) do
                 if (not avoid_map) or (not avoid_map:get(loc[1], loc[2])) then
-                    local heal_amount = wesnoth.get_terrain_info(wesnoth.get_terrain(loc[1], loc[2])).healing or 0
+                    local heal_amount = wesnoth.terrain_types[wesnoth.current.map[loc]].healing or 0
                     if heal_amount == true then
                         -- handle deprecated syntax
                         -- TODO: remove this when removed from game
@@ -244,7 +244,7 @@ function retreat_functions.get_retreat_injured_units(healees, regen_amounts, avo
                     rating = rating + enemy_rating
 
                     -- Penalty based on terrain defense for unit
-                    rating = rating - (100 - u:defense_on(wesnoth.get_terrain(loc[1], loc[2])))/10
+                    rating = rating - (100 - u:defense_on(wesnoth.current.map[loc]))/10
 
                     -- Penalty if a unit has to move out of the way
                     -- (based on hp of moving unit)

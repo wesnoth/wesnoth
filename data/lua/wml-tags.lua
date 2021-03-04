@@ -233,10 +233,10 @@ end
 
 function wml_actions.store_map_dimensions(cfg)
 	local var = cfg.variable or "map_size"
-	local w, h, b = wesnoth.get_map_size()
-	wml.variables[var .. ".width"] = w
-	wml.variables[var .. ".height"] = h
-	wml.variables[var .. ".border_size"] = b
+	local map = wesnoth.current.map
+	wml.variables[var .. ".width"] = map.playable_width
+	wml.variables[var .. ".height"] = map.playable_height
+	wml.variables[var .. ".border_size"] = map.border_size
 end
 
 function wml_actions.unit_worth(cfg)
@@ -305,7 +305,7 @@ function wml_actions.volume(cfg)
 end
 
 function wml_actions.scroll_to(cfg)
-	local loc = wesnoth.get_locations( cfg )[1]
+	local loc = wesnoth.map.find( cfg )[1]
 	if not loc then return end
 	if not utils.optional_side_filter(cfg) then return end
 	wesnoth.interface.scroll_to_hex(loc[1], loc[2], cfg.check_fogged, cfg.immediate)
@@ -417,14 +417,14 @@ end
 function wml_actions.store_locations(cfg)
 	-- the variable can be mentioned in a [find_in] subtag, so it
 	-- cannot be cleared before the locations are recovered
-	local locs = wesnoth.get_locations(cfg)
+	local locs = wesnoth.map.find(cfg)
 	local writer = utils.vwriter.init(cfg, "location")
 	for i, loc in ipairs(locs) do
 		local x, y = loc[1], loc[2]
-		local t = wesnoth.get_terrain(x, y)
+		local t = wesnoth.current.map[{x, y}]
 		local res = { x = x, y = y, terrain = t }
-		if wesnoth.get_terrain_info(t).village then
-			res.owner_side = wesnoth.get_village_owner(x, y) or 0
+		if wesnoth.terrain_types[t].village then
+			res.owner_side = wesnoth.map.get_owner(x, y) or 0
 		end
 		utils.vwriter.write(writer, res)
 	end
@@ -475,7 +475,7 @@ function wml_actions.store_reachable_locations(cfg)
 
 	if location_filter then
 		reach = reach:filter(function(x, y)
-			return wesnoth.match_location(x, y, location_filter)
+			return wesnoth.map.matches(x, y, location_filter)
 		end)
 	end
 	reach:to_wml_var(variable)
@@ -505,19 +505,26 @@ function wml_actions.capture_village(cfg)
 		side = wesnoth.sides.find(filter_side)[1]
 		if side then side = side.side end
 	end
-	local locs = wesnoth.get_locations(cfg)
+	local locs = wesnoth.map.find(cfg)
 
 	for i, loc in ipairs(locs) do
-		wesnoth.set_village_owner(loc[1], loc[2], side, fire_event)
+		wesnoth.map.set_owner(loc[1], loc[2], side, fire_event)
 	end
 end
 
 function wml_actions.terrain(cfg)
 	local terrain = cfg.terrain or wml.error("[terrain] missing required terrain= attribute")
+	local layer = cfg.layer or 'both'
+	if layer ~= 'both' and layer ~= 'overlay' and layer ~= 'base' then
+		wml.error('[terrain] invalid layer=')
+	end
 	cfg = wml.shallow_parsed(cfg)
 	cfg.terrain = nil
-	for i, loc in ipairs(wesnoth.get_locations(cfg)) do
-		wesnoth.set_terrain(loc[1], loc[2], terrain, cfg.layer, cfg.replace_if_failed)
+	for i, loc in ipairs(wesnoth.map.find(cfg)) do
+		local replacement = cfg.replace_if_failed
+			and wesnoth.map.replace_if_failed(terrain, layer)
+			or wesnoth.map['replace_' .. layer](terrain)
+		wesnoth.current.map[loc] = replacement
 	end
 end
 
@@ -529,7 +536,7 @@ function wml_actions.delay(cfg)
 end
 
 function wml_actions.floating_text(cfg)
-	local locs = wesnoth.get_locations(cfg)
+	local locs = wesnoth.map.find(cfg)
 	local text = cfg.text or wml.error("[floating_text] missing required text= attribute")
 
 	for i, loc in ipairs(locs) do
@@ -654,10 +661,9 @@ function wml_actions.store_starting_location(cfg)
 	for _, side in ipairs(wesnoth.sides.find(cfg)) do
 		local loc = side.starting_location
 		if loc then
-			local terrain = wesnoth.get_terrain(loc[1], loc[2])
-			local result = { x = loc[1], y = loc[2], terrain = terrain }
-			if wesnoth.get_terrain_info(terrain).village then
-				result.owner_side = wesnoth.get_village_owner(loc[1], loc[2]) or 0
+			local result = { x = loc[1], y = loc[2], terrain = wesnoth.current.map[loc] }
+			if wesnoth.terrain_types[result.terrain].village then
+				result.owner_side = wesnoth.map.get_owner(loc) or 0
 			end
 			utils.vwriter.write(writer, result)
 		end
@@ -665,14 +671,14 @@ function wml_actions.store_starting_location(cfg)
 end
 
 function wml_actions.store_villages( cfg )
-	local villages = wesnoth.get_villages( cfg )
+	local villages = wesnoth.map.find{gives_income = true, wml.tag['and'](cfg)}
 	local writer = utils.vwriter.init(cfg, "location")
 	for index, village in ipairs( villages ) do
 		utils.vwriter.write(writer, {
 			x = village[1],
 			y = village[2],
-			terrain = wesnoth.get_terrain( village[1], village[2] ),
-			owner_side = wesnoth.get_village_owner( village[1], village[2] ) or 0
+			terrain = wesnoth.current.map[village],
+			owner_side = wesnoth.map.get_owner(village) or 0
 		})
 	end
 end
@@ -714,17 +720,17 @@ end
 
 function wml_actions.place_shroud(cfg)
 	local sides = utils.get_sides(cfg)
-	local tiles = wesnoth.get_locations(cfg)
+	local tiles = wesnoth.map.find(cfg)
 	for i,side in ipairs(sides) do
-		wesnoth.place_shroud(side.side, tiles)
+		wesnoth.map.place_shroud(side.side, tiles)
 	end
 end
 
 function wml_actions.remove_shroud(cfg)
 	local sides = utils.get_sides(cfg)
-	local tiles = wesnoth.get_locations(cfg)
+	local tiles = wesnoth.map.find(cfg)
 	for i,side in ipairs(sides) do
-		wesnoth.remove_shroud(side.side, tiles)
+		wesnoth.map.remove_shroud(side.side, tiles)
 	end
 end
 
@@ -732,7 +738,7 @@ function wml_actions.time_area(cfg)
 	if cfg.remove then
 		wml_actions.remove_time_area(cfg)
 	else
-		wesnoth.add_time_area(cfg)
+		wesnoth.map.place_area(cfg)
 	end
 end
 
@@ -740,7 +746,7 @@ function wml_actions.remove_time_area(cfg)
 	local id = cfg.id or wml.error("[remove_time_area] missing required id= key")
 
 	for _,w in ipairs(id:split()) do
-		wesnoth.remove_time_area(w)
+		wesnoth.map.remove_area(w)
 	end
 end
 
@@ -792,7 +798,7 @@ end
 
 function wml_actions.label( cfg )
 	local new_cfg = wml.parsed( cfg )
-	for index, location in ipairs( wesnoth.get_locations( cfg ) ) do
+	for index, location in ipairs( wesnoth.map.find( cfg ) ) do
 		new_cfg.x, new_cfg.y = location[1], location[2]
 		wesnoth.label( new_cfg )
 	end
@@ -823,14 +829,6 @@ function wml_actions.unsynced(cfg)
 	end)
 end
 
-local function on_board(x, y)
-	if type(x) ~= "number" or type(y) ~= "number" then
-		return false
-	end
-	local w, h = wesnoth.get_map_size()
-	return x >= 1 and y >= 1 and x <= w and y <= h
-end
-
 wml_actions.unstore_unit = function(cfg)
 	local variable = cfg.variable or wml.error("[unstore_unit] missing required 'variable' attribute")
 	local unit_cfg = wml.variables[variable] or wml.error("[unstore_unit]: variable '" .. variable .. "' doesn't exist")
@@ -847,7 +845,7 @@ wml_actions.unstore_unit = function(cfg)
 		x,y = table.unpack(wesnoth.special_locations[cfg.location_id])
 	end
 	wesnoth.add_known_unit(unit.type)
-	if on_board(x, y) then
+	if wesnoth.current.map:on_board(x, y) then
 		if cfg.find_vacant then
 			x,y = wesnoth.find_vacant_tile(x, y, check_passability and unit)
 		end
@@ -916,21 +914,21 @@ local function parse_fog_cfg(cfg)
 	local ssf = wml.get_child(cfg, "filter_side")
 	local sides = wesnoth.sides.find(ssf or {})
 	-- Location filter
-	local locs = wesnoth.get_locations(cfg)
+	local locs = wesnoth.map.find(cfg)
 	return locs, sides
 end
 
 function wml_actions.lift_fog(cfg)
 	local locs, sides = parse_fog_cfg(cfg)
 	for i = 1, #sides do
-		wesnoth.remove_fog(sides[i].side, locs, not cfg.multiturn)
+		wesnoth.map.remove_fog(sides[i].side, locs, not cfg.multiturn)
 	end
 end
 
 function wml_actions.reset_fog(cfg)
 	local locs, sides = parse_fog_cfg(cfg)
 	for i = 1, #sides do
-		wesnoth.add_fog(sides[i].side, locs, cfg.reset_view)
+		wesnoth.map.place_fog(sides[i].side, locs, cfg.reset_view)
 	end
 end
 
@@ -967,9 +965,9 @@ function wesnoth.wml_actions.store_unit_defense(cfg)
 	if terrain then
 		defense = unit:chance_to_be_hit(terrain)
 	elseif cfg.loc_x and cfg.loc_y then
-		defense = unit:chance_to_be_hit(wesnoth.get_terrain(cfg.loc_x, cfg.loc_y))
+		defense = unit:chance_to_be_hit(wesnoth.current.map[{cfg.loc_x, cfg.loc_y}])
 	else
-		defense = unit:chance_to_be_hit(wesnoth.get_terrain(unit.x, unit.y))
+		defense = unit:chance_to_be_hit(wesnoth.current.map[unit])
 	end
 	wml.variables[cfg.variable or "terrain_defense"] = defense
 end
@@ -982,9 +980,9 @@ function wesnoth.wml_actions.store_unit_defense_on(cfg)
 	if terrain then
 		defense = unit:defense_on(terrain)
 	elseif cfg.loc_x and cfg.loc_y then
-		defense = unit:defense_on(wesnoth.get_terrain(cfg.loc_x, cfg.loc_y))
+		defense = unit:defense_on(wesnoth.current.map[{cfg.loc_x, cfg.loc_y}])
 	else
-		defense = unit:defense_on(wesnoth.get_terrain(unit.x, unit.y))
+		defense = unit:defense_on(wesnoth.current.map[unit])
 	end
 	wml.variables[cfg.variable or "terrain_defense"] = defense
 end
@@ -1023,7 +1021,7 @@ function wml_actions.terrain_mask(cfg)
 	if cfg.mask_file then
 		mask = wesnoth.read_file(cfg.mask_file)
 	end
-	wesnoth.terrain_mask({x, y}, mask, {
+	wesnoth.current.map:terrain_mask({x, y}, mask, {
 		is_odd = is_odd,
 		rules = rules,
 		ignore_special_locations = cfg.ignore_special_locations,

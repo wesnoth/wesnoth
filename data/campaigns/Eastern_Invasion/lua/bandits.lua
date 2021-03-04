@@ -17,7 +17,7 @@ function wml_actions.spread_bandit_villages(cfg)
 	vars.boss_found = false
 	vars.bandit_types = types
 
-	local villages = wesnoth.get_villages(cfg)
+	local villages = wesnoth.map.find{gives_income = true, wml.tag['and'](cfg)}
 
 	-- Shouldn't happen in the scenario, but a failsafe is always nice.
 	if count > #villages then count = #villages end
@@ -45,7 +45,7 @@ local function bandits_found(x,y)
 		local radius = 1
 		local locs
 		repeat
-			locs = wesnoth.get_locations({T["not"] { T.filter {} } , T["and"] { x = x, y = y, radius = radius } })
+			locs = wesnoth.map.find({T["not"] { T.filter {} } , T["and"] { x = x, y = y, radius = radius } })
 			radius = radius + 1
 		until locs[1]
 
@@ -62,7 +62,7 @@ local function bandits_found(x,y)
 
 		if rand3 <= boss_chance or #bandit_villages < 3 then
 			vars.boss_found = true
-			local loc = wesnoth.get_locations({T["not"] { T.filter {} } , T["and"] { x = x, y = y, radius = 2 } })[1]
+			local loc = wesnoth.map.find({T["not"] { T.filter {} } , T["and"] { x = x, y = y, radius = 2 } })[1]
 			wesnoth.fire_event("boss_found", x, y, loc[1], loc[2])
 		end
 	end

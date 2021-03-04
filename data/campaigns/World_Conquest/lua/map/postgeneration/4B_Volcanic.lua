@@ -281,7 +281,7 @@ function world_conquest_tek_map_repaint_4b()
 	local r = helper.rand(tostring(total_tiles // 600) .. ".." .. tostring(total_tiles // 300))
 
 	for mush_i = 1, math.min(r, #terrain_to_change) do
-		map:set_terrain(terrain_to_change[mush_i], "Hhd^Uf")
+		map[terrain_to_change[mush_i]] = "Hhd^Uf"
 	end
 	-- chances of few orcish castles
 	wct_possible_map4_castle("Co", 2)
@@ -356,11 +356,11 @@ function world_conquest_tek_map_repaint_4b()
 
 	helper.shuffle(terrain_to_change)
 	for i = 1, #terrain_to_change // wesnoth.random(3, 4) do
-		map:set_terrain(terrain_to_change[i], "Ds^Esd")
+		map[terrain_to_change[i]] = "Ds^Esd"
 	end
 	helper.shuffle(terrain_to_change)
 	for i = 1, #terrain_to_change // 6 do
-		map:set_terrain(terrain_to_change[i], "Ds^Es")
+		map[terrain_to_change[i]] = "Ds^Es"
 	end
 	set_terrain { "Dd^Es",
 		f.terrain("Dd"),

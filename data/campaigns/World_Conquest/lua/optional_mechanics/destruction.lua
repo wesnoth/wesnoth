@@ -18,36 +18,26 @@ local ice = {
 
 --replaces terrain fo the wct  custom terrain mod.
 local function wct_map_custom_ruin_village(loc)
-	local function matches_terrain(filter)
-		filter.x = cx.x1
-		filter.y = cx.y1
-		return wesnoth.get_locations({ x = loc[1], y = loc[2], terrain = filter}) > 0
-	end
+	local map = wesnoth.current.map
+	loc = wesnoth.map.get(loc)
 	-- TODO: enable once https://github.com/wesnoth/wesnoth/issues/4894 is fixed.
 	if false then
-		if matches_terrain("*^Vh,*^Vha") then
-			wesnoth.set_terrain(loc, "*^Vhr", "overlay")
+		if loc:matches{terrain = "*^Vh,*^Vha"} then
+			map[loc] = "^Vhr"
 		end
-		if matches_terrain("*^Vhc,*^Vhca") then
-			wesnoth.set_terrain(loc, "*^Vhr", "overlay")
+		if loc:matches{terrain = "*^Vhc,*^Vhca"} then
+			map[loc] = "^Vhr"
 		end
 	end
 end
 
 on_event("die", function(cx)
-	local loc = { cx.x1, cx.y1 }
-	local function matches(filter)
-		filter.x = cx.x1
-		filter.y = cx.y1
-		return #wesnoth.get_locations(filter) > 0
-	end
-	local function matches_terrain(filter)
-		return #wesnoth.get_locations({ x = cx.x1, y = cx.y1, terrain = filter}) > 0
-	end
+	local map = wesnoth.current.map
+	local loc = wesnoth.map.get(cx.x1, cx.y1)
 	if wml.variables.wc2_config_enable_terrain_destruction == false then
 		return
 	end
-	if not matches_terrain("K*^*,C*^*,*^Fet,G*^F*,G*^Uf,A*,*^B*,Rrc,Iwr,*^Vhh,*^Vh*,*^Fda*") then
+	if not loc:matches{terrain = "K*^*,C*^*,*^Fet,G*^F*,G*^Uf,A*,*^B*,Rrc,Iwr,*^Vhh,*^Vh*,*^Fda*"} then
 		return
 	end
 	local function item(image)
@@ -58,43 +48,43 @@ on_event("die", function(cx)
 			z_order = -10,
 		}
 	end
-	if matches_terrain("Kh,Kha,Kh^Vov,Kha^Vov") then
-		wesnoth.set_terrain(loc, "Khr", "base")
+	if loc:matches{terrain = "Kh,Kha,Kh^Vov,Kha^Vov"} then
+		map[loc] = "Khr^"
 
-	elseif matches_terrain("Ch,Cha") then
-		wesnoth.set_terrain(loc, "Chr^Es")
+	elseif loc:matches{terrain = "Ch,Cha"} then
+		map[loc] = "Chr^Es"
 
 		-- only without custom activated
-	elseif matches_terrain("Ch^Vh,Ch^Vhc") then
-		wesnoth.set_terrain(loc, "Chr", "base")
+	elseif loc:matches{terrain = "Ch^Vh,Ch^Vhc"} then
+		map[loc] = "Chr^"
 
-	elseif matches_terrain("Cd") then
-		wesnoth.set_terrain(loc, "Cdr^Es")
+	elseif loc:matches{terrain = "Cd"} then
+		map[loc] = "Cdr^Es"
 
-	elseif matches_terrain("Cd^Vd") then
-		wesnoth.set_terrain(loc, "Cdr", "base")
+	elseif loc:matches{terrain = "Cd^Vd"} then
+		map[loc] = "Cdr^"
 
-	elseif matches_terrain("Kd") then
-		wesnoth.set_terrain(loc, "Kdr^Es")
+	elseif loc:matches{terrain = "Kd"} then
+		map[loc] = "Kdr^Es"
 
-	elseif matches_terrain("Gg^Fmf,Gg^Fdf,Gg^Fp,Gg^Uf,Gs^Fmf,Gs^Fdf,Gs^Fp,Gs^Uf") then
-		wesnoth.set_terrain(loc, "Gll", "base")
+	elseif loc:matches{terrain = "Gg^Fmf,Gg^Fdf,Gg^Fp,Gg^Uf,Gs^Fmf,Gs^Fdf,Gs^Fp,Gs^Uf"} then
+		map[loc] = "Gll^"
 
-	elseif matches_terrain("Cv^Fds") then
-		wesnoth.set_terrain(loc, "Cv^Fdw")
+	elseif loc:matches{terrain = "Cv^Fds"} then
+		map[loc] "Cv^Fdw"
 
-	elseif matches_terrain("Rr^Fet,Cv^Fet") then
-		wesnoth.set_terrain(loc, "Rr^Fetd", "overlay")
+	elseif loc:matches{terrain = "Rr^Fet,Cv^Fet"} then
+		map[loc] = "^Fetd"
 
-	elseif matches_terrain("Aa") then
+	elseif loc:matches{terrain = "Aa"} then
 		item(snow[wesnoth.random(#snow)])
-	elseif matches_terrain("Ai") then
+	elseif loc:matches{terrain = "Ai"} then
 		item(ice[wesnoth.random(#ice)])
-	elseif matches_terrain("Ww^Bsb|,Ww^Bsb/,Ww^Bsb\\,Wwt^Bsb|,Wwt^Bsb/,Wwt^Bsb\\,Wwg^Bsb|,Wwg^Bsb/,Wwg^Bsb\\") then
-		wesnoth.set_terrain(loc, "Wwf^Edt")
+	elseif loc:matches{terrain = "Ww^Bsb|,Ww^Bsb/,Ww^Bsb\\,Wwt^Bsb|,Wwt^Bsb/,Wwt^Bsb\\,Wwg^Bsb|,Wwg^Bsb/,Wwg^Bsb\\"} then
+		map[loc] = "Wwf^Edt"
 		wesnoth.play_sound("water-blast.wav")
 		item("scenery/castle-ruins.png")
-	elseif matches_terrain("Rrc") then
+	elseif loc:matches{terrain = "Rrc"} then
 		if wesnoth.variables["bonus.theme"] == "paradise" then
 			wesnoth.wml_actions.remove_item {
 				x = cx.x1,
@@ -102,33 +92,33 @@ on_event("die", function(cx)
 				image = "wc2_citadel_leanto"
 			}
 			item("scenery/trash.png")
-			wesnoth.set_terrain(loc, "Rrc^Edt")
+			map[loc] = "Rrc^Edt"
 		end
-	elseif matches_terrain("Iwr") then
+	elseif loc:matches{terrain = "Iwr"} then
 		wesnoth.wml_actions.remove_item {
 			x = cx.x1,
 			y = cx.y1,
 			image = "wc2_dock_ship"
 		}
 		item("scenery/trash.png")
-		wesnoth.set_terrain(loc, "Iwr^Edt")
-	elseif matches_terrain("*^Vh,**^Vhc,*^Vha,**^Vhca,*^Fda") then
+		map[loc] = "Iwr^Edt"
+	elseif loc:matches{terrain = "*^Vh,**^Vhc,*^Vha,**^Vhca,*^Fda"} then
 		wct_map_custom_ruin_village(loc)
-		if matches_terrain("Ch^V*") then
-			wesnoth.set_terrain(loc, "Chr", "base")
+		if loc:matches{terrain = "Ch^V*"} then
+			map[loc] = "Chr^"
 		end
 		--  TODO: enable once https://github.com/wesnoth/wesnoth/issues/4894 is fixed.
 		if false then
-			if matches_terrain("*^Fda") then
-				wesnoth.set_terrain(loc, "*^Fdw", "overlay")
+			if loc:matches{terrain = "*^Fda"} then
+				map[loc] = "^Fdw"
 			end
 		end
 	else
-		if matches_terrain("*^Vhh,*^Vhha") then
-			wesnoth.set_terrain(loc, "*^Vhhr", "overlay")
+		if loc:matches{terrain = "*^Vhh,*^Vhha"} then
+			map[loc] = "^Vhhr"
 		end
-		if matches_terrain("*^Bw|,*^Bw/,*^Bw\\") then
-			wesnoth.set_terrain(loc, wesnoth.get_terrain(loc) .. "r")
+		if loc:matches{terrain = "*^Bw|,*^Bw/,*^Bw\\"} then
+			map[loc] = map[loc] .. "r"
 		end
 	end
 end)

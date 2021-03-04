@@ -69,11 +69,8 @@ end
 
 function ai_helper.clear_labels()
     -- Clear all labels on a map
-    local width, height = wesnoth.get_map_size()
-    for x = 1,width do
-        for y = 1,height do
-            wesnoth.label { x = x, y = y, text = "" }
-        end
+    for x, y in wesnoth.current.map:iter(true) do
+        wesnoth.label { x = x, y = y, text = "" }
     end
 end
 
@@ -667,8 +664,7 @@ function ai_helper.get_named_loc_xy(param_core, cfg, required_for)
     if (param_core ~= '') then param_x, param_y = param_core .. '_x', param_core .. '_y' end
     local x, y = cfg[param_x], cfg[param_y]
     if x and y then
-        local width, height = wesnoth.get_map_size()
-        if (x < 1) or (x > width) or (y < 1) or (y > height) then
+        if not wesnoth.current.map:on_board(x, y) then
             wml.error("Location is not on map: " .. param_x .. ',' .. param_y .. ' = ' .. x .. ',' .. y)
         end
 
@@ -729,7 +725,7 @@ function ai_helper.get_multi_named_locs_xy(param_core, cfg, required_for)
 end
 
 function ai_helper.get_locations_no_borders(location_filter)
-    -- Returns the same locations array as wesnoth.get_locations(location_filter),
+    -- Returns the same locations array as wesnoth.map.find(location_filter),
     -- but excluding hexes on the map border.
     --
     -- This is faster than alternative methods, at least with the current
@@ -738,7 +734,7 @@ function ai_helper.get_locations_no_borders(location_filter)
 
     local old_include_borders = location_filter.include_borders
     location_filter.include_borders = false
-    local locs = wesnoth.get_locations(location_filter)
+    local locs = wesnoth.map.find(location_filter)
     location_filter.include_borders = old_include_borders
     return locs
 end
@@ -752,14 +748,14 @@ function ai_helper.get_closest_location(hex, location_filter, unit)
 
     -- Find the maximum distance from 'hex' that's possible on the map
     local max_distance = 0
-    local width, height = wesnoth.get_map_size()
-    local to_top_left = M.distance_between(hex[1], hex[2], 0, 0)
+    local map = wesnoth.current.map
+    local to_top_left = M.distance_between(hex, 0, 0)
     if (to_top_left > max_distance) then max_distance = to_top_left end
-    local to_top_right = M.distance_between(hex[1], hex[2], width+1, 0)
+    local to_top_right = M.distance_between(hex, map.width-1, 0)
     if (to_top_right > max_distance) then max_distance = to_top_right end
-    local to_bottom_left = M.distance_between(hex[1], hex[2], 0, height+1)
+    local to_bottom_left = M.distance_between(hex, 0, map.height-1)
     if (to_bottom_left > max_distance) then max_distance = to_bottom_left end
-    local to_bottom_right = M.distance_between(hex[1], hex[2], width+1, height+1)
+    local to_bottom_right = M.distance_between(hex, map.width-1, map.height-1)
     if (to_bottom_right > max_distance) then max_distance = to_bottom_right end
 
     -- If the hex is supposed to be passable for a unit, it cannot be on the map border
@@ -782,11 +778,11 @@ function ai_helper.get_closest_location(hex, location_filter, unit)
             }
         end
 
-        local locs = wesnoth.get_locations(loc_filter)
+        local locs = wesnoth.map.find(loc_filter)
 
         if unit then
             for _,loc in ipairs(locs) do
-                local movecost = unit:movement(wesnoth.get_terrain(loc[1], loc[2]))
+                local movecost = unit:movement(wesnoth.current.map[loc])
                 if (movecost <= unit.max_moves) then return loc end
             end
         else
@@ -812,7 +808,7 @@ function ai_helper.get_passable_locations(location_filter, unit)
     if unit then
         local locs = {}
         for _,loc in ipairs(all_locs) do
-            local movecost = unit:movement(wesnoth.get_terrain(loc[1], loc[2]))
+            local movecost = unit:movement(wesnoth.current.map[loc])
             if (movecost <= unit.max_moves) then table.insert(locs, loc) end
         end
         return locs
@@ -828,7 +824,7 @@ function ai_helper.get_healing_locations(location_filter)
 
     local locs = {}
     for _,loc in ipairs(all_locs) do
-        if wesnoth.get_terrain_info(wesnoth.get_terrain(loc[1],loc[2])).healing > 0 then
+        if wesnoth.terrain_types[wesnoth.current.map[loc]].healing > 0 then
             table.insert(locs, loc)
         end
     end
@@ -847,20 +843,17 @@ function ai_helper.distance_map(units, map)
         map:iter(function(x, y, data)
             local dist = 0
             for _,unit in ipairs(units) do
-                dist = dist + M.distance_between(unit.x, unit.y, x, y)
+                dist = dist + M.distance_between(unit, x, y)
             end
             DM:insert(x, y, dist)
         end)
     else
-        local width, height = wesnoth.get_map_size()
-        for x = 1,width do
-            for y = 1,height do
-                local dist = 0
-                for _,unit in ipairs(units) do
-                    dist = dist + M.distance_between(unit.x, unit.y, x, y)
-                end
-                DM:insert(x, y, dist)
+        for x, y in wesnoth.current.map:iter() do
+            local dist = 0
+            for _,unit in ipairs(units) do
+                dist = dist + M.distance_between(unit, x, y)
             end
+            DM:insert(x, y, dist)
         end
     end
 
@@ -877,20 +870,17 @@ function ai_helper.inverse_distance_map(units, map)
         map:iter(function(x, y, data)
             local dist = 0
             for _,unit in ipairs(units) do
-                dist = dist + 1. / (M.distance_between(unit.x, unit.y, x, y) + 1)
+                dist = dist + 1. / (M.distance_between(unit, x, y) + 1)
             end
             IDM:insert(x, y, dist)
         end)
     else
-        local width, height = wesnoth.get_map_size()
-        for x = 1,width do
-            for y = 1,height do
-                local dist = 0
-                for _,unit in ipairs(units) do
-                    dist = dist + 1. / (M.distance_between(unit.x, unit.y, x, y) + 1)
-                end
-                IDM:insert(x, y, dist)
+        for x, y in wesnoth.current.map:iter() do
+            local dist = 0
+            for _,unit in ipairs(units) do
+                dist = dist + 1. / (M.distance_between(unit, x, y) + 1)
             end
+            IDM:insert(x, y, dist)
         end
     end
 
@@ -998,8 +988,8 @@ function ai_helper.xyoff(x, y, ori, hex)
 end
 
 function ai_helper.split_location_list_to_strings(list)
-    -- Convert a list of locations @list as returned by wesnoth.get_locations into a pair of strings
-    -- suitable for passing in as x,y coordinate lists to wesnoth.get_locations.
+    -- Convert a list of locations @list as returned by wesnoth.map.find into a pair of strings
+    -- suitable for passing in as x,y coordinate lists to wesnoth.map.find.
     -- Could alternatively convert to a WML table and use the find_in argument, but this is simpler.
     local locsx, locsy = {}, {}
     for i,loc in ipairs(list) do
@@ -1022,7 +1012,7 @@ function ai_helper.get_avoid_map(ai, avoid_tag, use_ai_aspect, default_avoid_tag
     --    @use_ai_aspect == false or the default AI aspect is not set.
 
     if avoid_tag then
-        return LS.of_pairs(wesnoth.get_locations(avoid_tag))
+        return LS.of_pairs(wesnoth.map.find(avoid_tag))
     end
 
     if use_ai_aspect then
@@ -1054,7 +1044,7 @@ function ai_helper.get_avoid_map(ai, avoid_tag, use_ai_aspect, default_avoid_tag
 
     -- If we got here, that means neither @avoid_tag nor the default AI [avoid] aspect were used
     if default_avoid_tag then
-        return LS.of_pairs(wesnoth.get_locations(default_avoid_tag))
+        return LS.of_pairs(wesnoth.map.find(default_avoid_tag))
     else
         return LS.create()
     end
@@ -1526,12 +1516,12 @@ function ai_helper.next_hop(unit, x, y, cfg)
         unit:to_map(old_x, old_y)
         unit_in_way:to_map()
 
-        local terrain = wesnoth.get_terrain(next_hop_ideal[1], next_hop_ideal[2])
+        local terrain = wesnoth.current.map[next_hop_ideal]
         local move_cost_endpoint = unit:movement_on(terrain)
         local inverse_reach_map = LS.create()
         for _,r in pairs(inverse_reach) do
             -- We want the moves left for moving into the opposite direction in which the reach map was calculated
-            local terrain = wesnoth.get_terrain(r[1], r[2])
+            local terrain = wesnoth.current.map[r]
             local move_cost = unit:movement_on(terrain)
             local inverse_cost = r[3] + move_cost - move_cost_endpoint
             inverse_reach_map:insert(r[1], r[2], inverse_cost)
@@ -1754,7 +1744,7 @@ function ai_helper.custom_cost_with_avoid(x, y, prev_cost, unit, avoid_map, ally
     end
 
     local max_moves = unit.max_moves
-    local terrain = wesnoth.get_terrain(x, y)
+    local terrain = wesnoth.current.map[{x, y}]
     local move_cost = unit:movement_on(terrain)
 
     if (move_cost > max_moves) then

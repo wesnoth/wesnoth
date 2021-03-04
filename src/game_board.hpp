@@ -16,6 +16,8 @@
 
 #include "display_context.hpp"
 #include "team.hpp"
+#include "terrain/translation.hpp"
+#include "terrain/type_data.hpp"
 #include "units/map.hpp"
 #include "units/id.hpp"
 #include <optional>
@@ -157,8 +159,8 @@ public:
 	bool try_add_unit_to_recall_list(const map_location& loc, const unit_ptr u);
 	std::optional<std::string> replace_map(const gamemap & r);
 
-	bool change_terrain(const map_location &loc, const std::string &t,
-	                    const std::string & mode, bool replace_if_failed); //used only by lua and debug commands
+	bool change_terrain(const map_location &loc, const std::string &t, const std::string & mode, bool replace_if_failed); //used only by lua and debug commands
+	bool change_terrain(const map_location &loc, const t_translation::terrain_code &t, terrain_type_data::merge_mode& mode, bool replace_if_failed); //used only by lua and debug commands
 
 	// Global accessor from unit.hpp
 
