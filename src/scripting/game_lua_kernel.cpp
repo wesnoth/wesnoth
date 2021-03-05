@@ -3964,7 +3964,6 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 	// Put some callback functions in the scripting environment.
 	static luaL_Reg const callbacks[] {
 		{ "add_known_unit",           &intf_add_known_unit           },
-		{ "eval_conditional",         &intf_eval_conditional         },
 		{ "get_era",                  &intf_get_era                  },
 		{ "get_resource",             &intf_get_resource             },
 		{ "get_traits",               &intf_get_traits               },
@@ -3986,11 +3985,9 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 		{ "find_vision_range",         &dispatch<&game_lua_kernel::intf_find_vision_range          >        },
 		{ "fire_event",                &dispatch2<&game_lua_kernel::intf_fire_event, false         >        },
 		{ "fire_event_by_id",          &dispatch2<&game_lua_kernel::intf_fire_event, true          >        },
-		{ "get_all_vars",              &dispatch<&game_lua_kernel::intf_get_all_vars               >        },
 		{ "get_end_level_data",        &dispatch<&game_lua_kernel::intf_get_end_level_data         >        },
 		{ "get_time_of_day",           &dispatch<&game_lua_kernel::intf_get_time_of_day            >        },
 		{ "get_max_liminal_bonus",     &dispatch<&game_lua_kernel::intf_get_max_liminal_bonus      >        },
-		{ "get_variable",              &dispatch<&game_lua_kernel::intf_get_variable               >        },
 		{ "log_replay",                &dispatch<&game_lua_kernel::intf_log_replay                 >        },
 		{ "log",                       &dispatch<&game_lua_kernel::intf_log                        >        },
 		{ "message",                   &dispatch<&game_lua_kernel::intf_message                    >        },
@@ -4003,7 +4000,6 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 		{ "set_end_campaign_credits",  &dispatch<&game_lua_kernel::intf_set_end_campaign_credits   >        },
 		{ "set_end_campaign_text",     &dispatch<&game_lua_kernel::intf_set_end_campaign_text      >        },
 		{ "set_next_scenario",         &dispatch<&game_lua_kernel::intf_set_next_scenario          >        },
-		{ "set_variable",              &dispatch<&game_lua_kernel::intf_set_variable               >        },
 		{ "simulate_combat",           &dispatch<&game_lua_kernel::intf_simulate_combat            >        },
 		{ "synchronize_choice",        &intf_synchronize_choice                                             },
 		{ "synchronize_choices",       &intf_synchronize_choices                                            },
@@ -4087,10 +4083,18 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 	lua_setfield(L, -2, "current");
 	lua_pop(L, 1);
 
-	// Add tovconfig to the WML module
+	// Add functions to the WML module
 	lua_getglobal(L, "wml");
-	lua_pushcfunction(L, &lua_common::intf_tovconfig);
-	lua_setfield(L, -2, "tovconfig");
+	static luaL_Reg const wml_callbacks[] {
+		{"tovconfig", &lua_common::intf_tovconfig},
+		{"eval_conditional", &intf_eval_conditional},
+		// These aren't actually part of the API - they're used internally by the variable metatable.
+		{ "get_variable", &dispatch<&game_lua_kernel::intf_get_variable>},
+		{ "set_variable", &dispatch<&game_lua_kernel::intf_set_variable>},
+		{ "get_all_vars", &dispatch<&game_lua_kernel::intf_get_all_vars>},
+		{ nullptr, nullptr }
+	};
+	luaL_setfuncs(L, wml_callbacks, 0);
 	lua_pop(L, 1);
 
 	// Add functions to the map module
