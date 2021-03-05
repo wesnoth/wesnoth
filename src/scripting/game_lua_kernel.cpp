@@ -699,9 +699,11 @@ int game_lua_kernel::intf_set_variable(lua_State *L)
 int game_lua_kernel::intf_create_side(lua_State *L)
 {
 	config cfg = luaW_checkconfig(L, 1);
+	cfg["side"] = teams().size() + 1;
 	game_state_.add_side_wml(cfg);
+	lua_pushinteger(L, teams().size());
 
-	return 0;
+	return 1;
 }
 
 int game_lua_kernel::intf_set_menu_item(lua_State *L)
@@ -4001,7 +4003,6 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 		{ "set_time_of_day",           &dispatch<&game_lua_kernel::intf_set_time_of_day            >        },
 		{ "set_end_campaign_credits",  &dispatch<&game_lua_kernel::intf_set_end_campaign_credits   >        },
 		{ "set_end_campaign_text",     &dispatch<&game_lua_kernel::intf_set_end_campaign_text      >        },
-		{ "create_side",               &dispatch<&game_lua_kernel::intf_create_side                >        },
 		{ "set_next_scenario",         &dispatch<&game_lua_kernel::intf_set_next_scenario          >        },
 		{ "set_variable",              &dispatch<&game_lua_kernel::intf_set_variable               >        },
 		{ "simulate_combat",           &dispatch<&game_lua_kernel::intf_simulate_combat            >        },
@@ -4179,6 +4180,7 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 		// Static functions
 		{ "find", &dispatch<&game_lua_kernel::intf_get_sides> },
 		{ "get", &dispatch<&game_lua_kernel::intf_get_side> },
+		{ "create", &dispatch<&game_lua_kernel::intf_create_side> },
 		{ nullptr, nullptr }
 	};
 	std::vector<lua_cpp::Reg> const cpp_side_callbacks {

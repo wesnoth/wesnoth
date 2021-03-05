@@ -43,4 +43,5 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 	wesnoth.delete_ai_component = wesnoth.deprecate_api('wesnoth.delete_ai_component', 'wesnoth.sides.delete_ai_component', 1, nil, wesnoth.sides.delete_ai_component)
 	wesnoth.change_ai_component = wesnoth.deprecate_api('wesnoth.change_ai_component', 'wesnoth.sides.change_ai_component', 1, nil, wesnoth.sides.change_ai_component)
 	wesnoth.get_sides = wesnoth.deprecate_api('wesnoth.get_sides', 'wesnoth.sides.find', 1, nil, wesnoth.sides.find)
+	wesnoth.create_side = wesnoth.deprecate_api('wesnoth.create_side', 'wesnoth.sides.create', 1, nil, wesnoth.sides.create)
 end
