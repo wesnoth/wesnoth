@@ -1,6 +1,6 @@
 --! #textdomain wesnoth
 
-example_ca = {}
+local example_ca = {}
 
 function example_ca:evaluation()
     wesnoth.message("External CA evaluation says hi.")

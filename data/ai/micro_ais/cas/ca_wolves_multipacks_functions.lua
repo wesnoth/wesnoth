@@ -78,7 +78,7 @@ function wolves_multipacks_functions.assign_packs(cfg)
     -- At the beginning of the scenario, this means all wolves
     while (#nopack_wolves > 0) do
         -- Find the first available pack number
-        new_pack_number = 1
+        local new_pack_number = 1
         while packs[new_pack_number] do new_pack_number = new_pack_number + 1 end
 
         -- If there are <=pack_size wolves left, that's the pack

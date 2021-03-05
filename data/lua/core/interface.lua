@@ -12,7 +12,7 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 		local from_x, from_y = moving_unit.x, moving_unit.y
 
 		wesnoth.interface.scroll_to_hex(from_x, from_y)
-		to_x, to_y = wesnoth.find_vacant_tile(x, y, moving_unit)
+		to_x, to_y = wesnoth.find_vacant_tile(to_x, to_y, moving_unit)
 
 		if to_x < from_x then
 			moving_unit.facing = "sw"
@@ -21,17 +21,17 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 		end
 		moving_unit:extract()
 
-		wml_actions.move_unit_fake{
+		wesnoth.wml_actions.move_unit_fake{
 			type      = moving_unit.type,
 			gender    = moving_unit.gender,
-			variation = moving.variation,
+			variation = moving_unit.variation,
 			side      = moving_unit.side,
 			x         = from_x .. ',' .. to_x,
 			y         = from_y .. ',' .. to_y
 		}
 
 		moving_unit:to_map(to_x, to_y)
-		wml_actions.redraw{}
+		wesnoth.wml_actions.redraw{}
 	end
 	
 	wesnoth.delay = wesnoth.deprecate_api('wesnoth.delay', 'wesnoth.interface.delay', 1, nil, wesnoth.interface.delay)

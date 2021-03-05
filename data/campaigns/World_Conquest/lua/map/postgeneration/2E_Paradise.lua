@@ -85,7 +85,7 @@ function world_conquest_tek_map_repaint_2e()
 		layer = "overlay",
 	}
 
-	local max_yards = map.height * map_data.width // 300
+	local max_yards = map.height * map.width // 300
 	local nyards = tonumber(helper.rand("1,0.." .. max_yards))
 	for i = 1, nyards do
 		local yard_dir = "n,nw,ne"

@@ -149,7 +149,7 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 		return wesnoth.map.is_shrouded(side, self.x, self.y)
 	end
 	
-	function hex_mt:set_fogged(side, val)
+	function hex_mt:set_shrouded(side, val)
 		if val then
 			wesnoth.map.place_shroud(side, {val})
 		else

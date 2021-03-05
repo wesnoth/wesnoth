@@ -56,7 +56,7 @@ function ca_recruit_random:evaluation(cfg)
 
     -- Go through all the types listed in [probability] tags (which can be comma-separated lists)
     for prob in wml.child_range(cfg, "probability") do
-        types = AH.split(prob.type, ",")
+        local types = AH.split(prob.type, ",")
         for _,typ in ipairs(types) do  -- 'type' is a reserved keyword in Lua
             -- If this type is in the recruit list, add it
             for _,recruit in ipairs(wesnoth.sides[wesnoth.current.side].recruit) do

@@ -48,10 +48,6 @@ type_infos = {
 			reply=_"Looks like we fished some tasty help.",
 		} }
 	},
-	["Mage"] = { 
-		image="units/human-magi/mage.png",
-		name="Mage",
-	},
 	["Elvish Fighter"] = { 
 		founddialogue=_"Need a friendly blade?",
 		image="units/elves-wood/fighter.png",

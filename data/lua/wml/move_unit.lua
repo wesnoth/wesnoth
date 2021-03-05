@@ -23,7 +23,7 @@ local function path_locs(path)
 							wml.error("Invalid direction:count in move_unit: " .. error_dir)
 						end
 					end
-					next_loc = wesnoth.map.get_direction(last.x, last.y, dir, count)
+					local next_loc = wesnoth.map.get_direction(last.x, last.y, dir, count)
 					coroutine.yield(next_loc[1], next_loc[2])
 					last.x, last.y = next_loc[1], next_loc[2]
 				end

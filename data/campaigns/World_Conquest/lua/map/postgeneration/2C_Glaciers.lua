@@ -158,7 +158,7 @@ function world_conquest_tek_map_decoration_2c()
 	for i = 1, math.min(r, #icepack_candiates) do
 		local loc = icepack_candiates[i]
 		table.insert(prestart_event, wml.tag.item {
-			image = "scenery/icepack-1.png"
+			image = "scenery/icepack-1.png",
 			x = loc[1],
 			y = loc[2],
 		})

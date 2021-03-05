@@ -22,7 +22,7 @@ function locset_meta:__index(loc)
 	if type(loc) == 'string' then
 		return methods[loc]
 	elseif loc.x and loc.y then
-		return self:get(loc.x, lov.y)
+		return self:get(loc.x, loc.y)
 	else
 		return self:get(loc[1], loc[2])
 	end

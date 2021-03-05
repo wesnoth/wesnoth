@@ -67,7 +67,7 @@ local function plugin()
 
   context.create({})
 
-  ready = nil
+  local ready = nil
   repeat
     events, context, info = coroutine.yield()
     for i,v in ipairs(events) do
