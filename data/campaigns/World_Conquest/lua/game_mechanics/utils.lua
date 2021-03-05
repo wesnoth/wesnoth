@@ -121,43 +121,7 @@ function wc2_utils.has_no_advances(u)
 	return #u.advances_to == 0
 end
 
-local global_vars = setmetatable({}, {
-	__index = function(self, namespace)
-		return setmetatable({}, {
-			__index = function(self, name)
-				wml.variables.lua_global_variable = nil
-				wesnoth.unsynced(function()
-					wesnoth.wml_actions.get_global_variable {
-						namespace = namespace,
-						to_local = "lua_global_variable",
-						from_global = name,
-						immediate = true,
-					}
-				end)
-				local res = wml.variables.lua_global_variable
-				wml.variables.lua_global_variable = nil
-				if res == "" then
-					return nil
-				end
-				return res
-			end,
-			__newindex = function(self, name, val)
-				wml.variables.lua_global_variable = val
-				wesnoth.unsynced(function()
-					wesnoth.wml_actions.set_global_variable {
-						namespace = namespace,
-						from_local = "lua_global_variable",
-						to_global = name,
-						immediate = true,
-					}
-				end)
-				wml.variables.lua_global_variable = nil
-			end,
-		})
-	end
-})
-
-wc2_utils.global_vars = global_vars.wc2
+wc2_utils.global_vars = wesnoth.experimental.wml.global_vars.wc2
 
 if rawget(_G, "wc2_menu_filters") == nil then
 	wc2_menu_filters = {}

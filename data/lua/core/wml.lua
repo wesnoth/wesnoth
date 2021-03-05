@@ -294,8 +294,11 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 		elseif type(ctx) == 'number' and ctx > 0 and ctx <= #wesnoth.sides then
 			return resolve_variable_context(wesnoth.sides[ctx])
 		elseif type(ctx) == 'string' then
-			-- TODO: Treat it as a namespace for a global (persistent) variable
-			-- (Need Lua API for accessing them first, though.)
+			-- Treat it as a namespace for a global (persistent) variable
+			return {
+				get = function(path) return wesnoth.experimental.wml.global_vars[ctx][path] end,
+				set = function(path, val) wesnoth.experimental.wml.global_vars[ctx][path] = val end,
+			}
 		elseif getmetatable(ctx) == "unit" then
 			return {
 				get = function(path) return ctx.variables[path] end,
@@ -312,6 +315,7 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 				set = function(path, val) ctx[path] = val end,
 			}
 		end
+		-- TODO: Once the global variables API is no longer experimental, add it as a supported context type in this error message.
 		error(string.format("Invalid context for %s: expected nil, side, or unit", err_hint), 3)
 	end
 
@@ -359,6 +363,54 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 			wml.array_access.set(key, value)
 		end
 	})
+	
+	--[========[Global persistent variables]========]
+	local ns_key, global_temp = '$ns$', "lua_global_variable"
+	local global_vars_ns = {}
+	local global_vars_mt = {
+		__index = function(self, namespace)
+			setmetatable({[ns_key] = namespace}, global_vars_ns)
+		end
+	}
+	
+	function global_vars_ns.__index(self, name)
+		local U = wesnoth.require "wml-utils"
+		local var <close> = U.scoped_var(global_temp)
+		wesnoth.unsynced(function()
+			wesnoth.wml_actions.get_global_variable {
+				namespace = self[ns_key],
+				to_local = global_temp,
+				from_global = name,
+				immediate = true,
+			}
+		end)
+		local res = var:get()
+		if res == "" then
+			return nil
+		end
+		return res
+	end
+	
+	function global_vars_ns.__newindex(self, name, val)
+		local U = wesnoth.require "wml-utils"
+		local var <close> = U.scoped_var(global_temp)
+		var:set(val)
+		wesnoth.unsynced(function()
+			wesnoth.wml_actions.set_global_variable {
+				namespace = self[ns_key],
+				from_local = global_temp,
+				to_global = name,
+				immediate = true,
+			}
+		end)
+	end
+	
+	-- Make sure wesnoth.experimental.wml actually exists
+	-- It's done this way so it doesn't break if we later need to add things here from C++
+	wesnoth.experimental = wesnoth.experimental or {}
+	wesnoth.experimental.wml = wesnoth.experimental.wml or {}
+	
+	wesnoth.experimental.wml.global_vars = setmetatable({}, global_vars_mt)
 else
 	--[========[Backwards compatibility for wml.tovconfig]========]
 	local fake_vconfig_mt = {
