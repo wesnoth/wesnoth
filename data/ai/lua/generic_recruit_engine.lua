@@ -343,7 +343,7 @@ return {
                 { "and", params.filter_own }
             }[1]
 
-            if (not leader) or (not wesnoth.terrain_types[wesnoth.current.map[leader]).keep] then
+            if (not leader) or (not wesnoth.terrain_types[wesnoth.current.map[leader]].keep) then
                 return 0
             end
 
