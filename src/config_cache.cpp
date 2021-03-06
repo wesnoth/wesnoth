@@ -198,6 +198,8 @@ void config_cache::read_cache(const std::string& file_path, config& cfg, abstrac
 				ERR_CACHE << "cache checksum is corrupt" << std::endl;
 			} catch(const filesystem::io_exception&) {
 				ERR_CACHE << "error reading cache checksum" << std::endl;
+			} catch(const std::ios_base::failure&) {
+				ERR_CACHE << "error reading cache checksum" << std::endl;
 			}
 		}
 
