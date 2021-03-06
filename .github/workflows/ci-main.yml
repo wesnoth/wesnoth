@@ -321,13 +321,13 @@ jobs:
         with:
           submodules: "recursive"
 
-      - name: Cache object files
-        uses: actions/cache@v2
-        env:
-          cache-name: windows-release-cache-master
-        with:
-          path: D:/a/wesnoth/vcpkg
-          key: windows-master-N003
+#      - name: Cache object files
+#        uses: actions/cache@v2
+#        env:
+#          cache-name: windows-release-cache-master
+#        with:
+#          path: D:/a/wesnoth/vcpkg
+#          key: windows-master-N003
 
       - name: Add msbuild to PATH
         uses: microsoft/setup-msbuild@v1.0.2
@@ -354,13 +354,13 @@ jobs:
         with:
           submodules: "recursive"
 
-      - name: Cache object files
-        uses: actions/cache@v2
-        env:
-          cache-name: windows-debug-cache-master
-        with:
-          path: D:/a/wesnoth/vcpkg
-          key: windows-master-N003
+#      - name: Cache object files
+#        uses: actions/cache@v2
+#        env:
+#          cache-name: windows-debug-cache-master
+#        with:
+#          path: D:/a/wesnoth/vcpkg
+#          key: windows-master-N003
 
       - name: Add msbuild to PATH
         uses: microsoft/setup-msbuild@v1.0.2
