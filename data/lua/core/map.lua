@@ -138,6 +138,9 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 			self.y = val
 		elseif key == 'info' then
 			error('hex.info is read-only', 1)
+		else
+			-- If it's not a known key, just set it
+			rawset(self, key, val)
 		end
 	end
 	
