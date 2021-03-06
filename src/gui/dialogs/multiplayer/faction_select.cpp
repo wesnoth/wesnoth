@@ -32,11 +32,9 @@
 #include "preferences/game.hpp"	// for encountered_units
 #include "units/types.hpp"
 
-#include "utils/functional.hpp"
+#include <functional>
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 
 REGISTER_DIALOG(faction_select)
@@ -69,17 +67,17 @@ void faction_select::pre_show(window& window)
 	gender_toggle_.set_member_states("random");
 
 	gender_toggle_.set_callback_on_value_change(
-		std::bind(&faction_select::on_gender_select, this, std::ref(window)));
+		std::bind(&faction_select::on_gender_select, this));
 
 	//
 	// Set up leader menu button
 	//
 	connect_signal_notify_modified(find_widget<menu_button>(&window, "leader_menu", false),
-		std::bind(&faction_select::on_leader_select, this, std::ref(window)));
+		std::bind(&faction_select::on_leader_select, this));
 
 	// Leader's profile button
 	find_widget<button>(&window, "type_profile", false).connect_click_handler(
-		std::bind(&faction_select::profile_button_callback, this, std::ref(window)));
+		std::bind(&faction_select::profile_button_callback, this));
 
 	//
 	// Set up faction list
@@ -89,7 +87,7 @@ void faction_select::pre_show(window& window)
 	window.keyboard_capture(&list);
 
 	connect_signal_notify_modified(list,
-		std::bind(&faction_select::on_faction_select, this, std::ref(window)));
+		std::bind(&faction_select::on_faction_select, this));
 
 	for(const config *s : flg_manager_.choosable_factions()) {
 		const config& side = *s;
@@ -112,12 +110,12 @@ void faction_select::pre_show(window& window)
 
 	list.select_row(flg_manager_.current_faction_index());
 
-	on_faction_select(window);
+	on_faction_select();
 }
 
-void faction_select::on_faction_select(window& window)
+void faction_select::on_faction_select()
 {
-	const int selected_row = find_widget<listbox>(&window, "faction_list", false).get_selected_row();
+	const int selected_row = find_widget<listbox>(get_window(), "faction_list", false).get_selected_row();
 
 	if(selected_row == -1) {
 		return;
@@ -146,12 +144,12 @@ void faction_select::on_faction_select(window& window)
 		}
 	}
 
-	menu_button& leader_dropdown = find_widget<menu_button>(&window, "leader_menu", false);
+	menu_button& leader_dropdown = find_widget<menu_button>(get_window(), "leader_menu", false);
 
 	leader_dropdown.set_values(leaders, std::min<int>(leaders.size() - 1, previous_leader_selection));
 	leader_dropdown.set_active(leaders.size() > 1 && !flg_manager_.is_saved_game());
 
-	on_leader_select(window);
+	on_leader_select();
 
 	// Print recruits
 	const std::vector<std::string> recruit_list = utils::split(flg_manager_.current_faction()["recruit"]);
@@ -167,12 +165,12 @@ void faction_select::on_faction_select(window& window)
 		return translation::compare(s1, s2) < 0;
 	});
 
-	find_widget<styled_widget>(&window, "recruits", false).set_label(utils::join(recruit_names, "\n"));
+	find_widget<styled_widget>(get_window(), "recruits", false).set_label(utils::join(recruit_names, "\n"));
 }
 
-void faction_select::on_leader_select(window& window)
+void faction_select::on_leader_select()
 {
-	flg_manager_.set_current_leader(find_widget<menu_button>(&window, "leader_menu", false).get_value());
+	flg_manager_.set_current_leader(find_widget<menu_button>(get_window(), "leader_menu", false).get_value());
 
 	// TODO: should we decouple this from the flg manager and instead just check the unit type directly?
 	// If that's done so, we'd need to come up with a different check for Random availability.
@@ -181,17 +179,17 @@ void faction_select::on_leader_select(window& window)
 		return std::find(genders.begin(), genders.end(), gender) != genders.end();
 	});
 
-	update_leader_image(window);
+	update_leader_image();
 
 	// Disable the profile button if leader_type is dash or "Random"
-	button& profile_button = find_widget<button>(&window, "type_profile", false);
-	const std::string& leader_type = find_widget<menu_button>(&window, "leader_menu", false).get_value_string();
+	button& profile_button = find_widget<button>(get_window(), "type_profile", false);
+	const std::string& leader_type = find_widget<menu_button>(get_window(), "leader_menu", false).get_value_string();
 	profile_button.set_active(unit_types.find(leader_type) != nullptr);
 }
 
-void faction_select::profile_button_callback(window& window)
+void faction_select::profile_button_callback()
 {
-	const std::string& leader_type = find_widget<menu_button>(&window, "leader_menu", false).get_value_string();
+	const std::string& leader_type = find_widget<menu_button>(get_window(), "leader_menu", false).get_value_string();
 	const unit_type* ut = unit_types.find(leader_type);
 	if(ut != nullptr) {
 		preferences::encountered_units().insert(ut->id());
@@ -200,14 +198,14 @@ void faction_select::profile_button_callback(window& window)
 	}
 }
 
-void faction_select::on_gender_select(window& window)
+void faction_select::on_gender_select()
 {
 	flg_manager_.set_current_gender(gender_toggle_.get_active_member_value());
 
-	update_leader_image(window);
+	update_leader_image();
 }
 
-void faction_select::update_leader_image(window& window)
+void faction_select::update_leader_image()
 {
 	std::string leader_image = ng::random_enemy_picture;
 
@@ -216,7 +214,7 @@ void faction_select::update_leader_image(window& window)
 		leader_image = formatter() << utg.image() << "~RC(" << utg.flag_rgb() << ">" << tc_color_ << ")" << "~SCALE_INTO_SHARP(144,144)";
 	}
 
-	find_widget<image>(&window, "leader_image", false).set_label(leader_image);
+	find_widget<image>(get_window(), "leader_image", false).set_label(leader_image);
 }
 
 void faction_select::post_show(window& /*window*/)
@@ -239,4 +237,3 @@ void faction_select::post_show(window& /*window*/)
 }
 
 } // namespace dialogs
-} // namespace gui2

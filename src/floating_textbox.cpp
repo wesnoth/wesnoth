@@ -33,7 +33,8 @@ namespace gui{
 		check_(nullptr),
 		mode_(TEXTBOX_NONE),
 		label_string_(),
-		label_(0)
+		label_(0),
+		command_history_()
 	{}
 
 	void floating_textbox::close(game_display& gui)
@@ -142,5 +143,19 @@ namespace gui{
 					events::chat_handler::MESSAGE_PRIVATE, false);
 		}
 		box_->set_text(text);
+	}
+
+	void floating_textbox::memorize_command(const std::string& command)
+	{
+		if(command.empty()) {
+			return;
+		}
+
+		auto prev = std::find(command_history_.begin(), command_history_.end(), command);
+
+		if(prev != command_history_.end()) {
+			command_history_.erase(prev);
+		}
+		command_history_.emplace_back(command);
 	}
 }

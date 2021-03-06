@@ -21,7 +21,6 @@
 #include "map_settings.hpp"
 
 #include "serialization/string_utils.hpp"
-#include "utils/general.hpp"
 
 namespace settings {
 
@@ -34,22 +33,22 @@ int get_turns(const std::string& value)
 		return turns_max;
 	}
 
-	return utils::clamp<int>(lexical_cast_default<int>(value, turns_default), turns_min, turns_max);
+	return std::clamp<int>(lexical_cast_default<int>(value, turns_default), turns_min, turns_max);
 }
 
 int get_village_gold(const std::string& value, const game_classification* classification)
 {
-	return utils::clamp<int>(lexical_cast_default<int>(value, ((classification && !classification->is_normal_mp_game()) ? 1 : 2)), 1, 5);
+	return std::clamp<int>(lexical_cast_default<int>(value, ((classification && !classification->is_normal_mp_game()) ? 1 : 2)), 1, 5);
 }
 
 int get_village_support(const std::string& value)
 {
-	return utils::clamp<int>(lexical_cast_default<int>(value, 1), 0, 4);
+	return std::clamp<int>(lexical_cast_default<int>(value, 1), 0, 4);
 }
 
 int get_xp_modifier(const std::string& value)
 {
-	return utils::clamp<int>(lexical_cast_default<int>(value, 70), 30, 200);
+	return std::clamp<int>(lexical_cast_default<int>(value, 70), 30, 200);
 }
 
 } // end namespace settings

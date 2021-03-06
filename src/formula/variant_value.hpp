@@ -161,7 +161,7 @@ public:
 	virtual boost::iterator_range<variant_iterator> make_iterator() const;
 
 	/**
-	 * Implements the dereference functionality of @ref variant_iterator
+	 * Implements the dereference functionality of variant_iterator
 	 * for a value of this type.
 	 *
 	 * @param iter The opaque reference that was passed to the variant_iterator by @ref make_iterator.
@@ -169,7 +169,7 @@ public:
 	virtual variant deref_iterator(const boost::any& iter) const;
 
 	/**
-	 * Implements the increment functionality of @ref variant_iterator
+	 * Implements the increment functionality of variant_iterator
 	 * for a value of this type.
 	 *
 	 * The parameter is an opaque reference that was passed to the variant_iterator by @ref make_iterator.
@@ -177,7 +177,7 @@ public:
 	virtual void iterator_inc(boost::any&) const {}
 
 	/**
-	 * Implements the decrement functionality of @ref variant_iterator
+	 * Implements the decrement functionality of variant_iterator
 	 * for a value of this type.
 	 *
 	 * The parameter is an opaque reference that was passed to the variant_iterator by @ref make_iterator.
@@ -185,7 +185,7 @@ public:
 	virtual void iterator_dec(boost::any&) const {}
 
 	/**
-	 * Implements the equality functionality of @ref variant_iterator
+	 * Implements the equality functionality of variant_iterator
 	 * for a value of this type.
 	 *
 	 * Note that this is only called if the two iterators are already known to be of the same type.
@@ -433,7 +433,7 @@ public:
 		: container_(container)
 	{
 		// NOTE: add more conditions if this changes.
-		static_assert((std::is_same<variant_vector, T>::value || std::is_same<variant_map_raw, T>::value),
+		static_assert((std::is_same_v<variant_vector, T> || std::is_same_v<variant_map_raw, T>),
 			"variant_container only accepts vector or map specifications.");
 	}
 

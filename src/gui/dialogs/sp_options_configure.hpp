@@ -20,9 +20,7 @@
 #include "game_initialization/create_engine.hpp"
 #include "game_initialization/configure_engine.hpp"
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 
 class sp_options_configure : public modal_dialog, private plugin_executor
@@ -86,4 +84,3 @@ private:
 };
 
 } // namespace dialogs
-} // namespace gui2

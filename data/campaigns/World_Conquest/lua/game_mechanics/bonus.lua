@@ -20,7 +20,7 @@ function wesnoth.wml_actions.wc2_place_bonus(cfg)
 	-- Note: although the numbrs of options passed to helper.rand might depend on the langauge
 	--       the number of thimes random is called does not (random is called even if there is
 	--       only one option), so this doesn't cause OOS.
-	local name1 = wc2_random_names.generate()
+	local name1 = wc2_random_names()
 	local name_options = c_scenery.names or { _"place" }
 	local name2 = tostring(name_options[wesnoth.random(#name_options)])
 
@@ -31,13 +31,13 @@ function wesnoth.wml_actions.wc2_place_bonus(cfg)
 	wesnoth.wml_actions.label {
 		x = x,
 		y = y,
-		text = span_font_family(wesnoth.format(_ "$name's $type", {name = name1, type = name2}), "Lucida Sans Unicode")
+		text = span_font_family(stringx.vformat(_ "$name's $type", {name = name1, type = name2}), "Lucida Sans Unicode")
 	}
 end
 
 function bonus.place_item(x, y, image)
 	if image == "campfire" then
-		wesnoth.set_terrain(x, y, "*^Ecf", "overlay")
+		wesnoth.current.map[{x, y}] = "^Ecf"
 		image = nil
 	else
 		image = image or "scenery/lighthouse.png"
@@ -134,7 +134,7 @@ end
 function bonus.get_random_hero(x, y)
 	return wc2_utils.pick_random_filtered("wc2.random_heroes", wc2_era.generate_bonus_heroes, function(unittypeid)
 		for _, sf in ipairs(wc2_era.spawn_filters) do
-			if sf.types[unittypeid] and not wesnoth.match_location(x, y, sf.filter_location) then
+			if sf.types[unittypeid] and not wesnoth.map.matches(x, y, sf.filter_location) then
 				return false
 			end
 		end
@@ -157,7 +157,7 @@ function bonus.found_artifact(ec, index)
 end
 
 function bonus.found_hero(ec, herotype)
-	local finder = wesnoth.get_unit(ec.x1, ec.y1)
+	local finder = wesnoth.units.get(ec.x1, ec.y1)
 	wesnoth.wml_actions.message {
 		x = ec.x1,
 		y = ec.y1,

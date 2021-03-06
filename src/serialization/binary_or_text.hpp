@@ -13,8 +13,6 @@
    See the COPYING file for more details.
 */
 
-/** @file */
-
 #pragma once
 
 #include "config.hpp"
@@ -40,8 +38,7 @@ public:
 	void close_child(const std::string &key);
 	bool good() const;
 
-	/// This template function will work with any type that can be assigned to
-	/// an attribute_value.
+	/** This template function will work with any type that can be assigned to an attribute_value. */
 	template <typename T>
 	void write_key_val(const std::string &key, const T &value)
 	{

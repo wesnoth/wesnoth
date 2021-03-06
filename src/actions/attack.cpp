@@ -25,6 +25,7 @@
 #include "ai/lua/aspect_advancements.hpp"
 #include "formula/callable_objects.hpp"
 #include "formula/formula.hpp"
+#include "game_classification.hpp"
 #include "game_config.hpp"
 #include "game_data.hpp"
 #include "game_events/pump.hpp"
@@ -50,6 +51,7 @@
 #include "units/udisplay.hpp"
 #include "units/unit.hpp"
 #include "units/types.hpp"
+#include <optional>
 #include "whiteboard/manager.hpp"
 #include "wml_exception.hpp"
 
@@ -135,7 +137,7 @@ battle_context_unit_stats::battle_context_unit_stats(nonempty_unit_const_ptr up,
 
 	// Get the weapon characteristics as appropriate.
 	auto ctx = weapon->specials_context(up, oppp, u_loc, opp_loc, attacking, opp_weapon);
-	boost::optional<decltype(ctx)> opp_ctx;
+	std::optional<decltype(ctx)> opp_ctx;
 
 	if(opp_weapon) {
 		opp_ctx.emplace(opp_weapon->specials_context(oppp, up, opp_loc, u_loc, !attacking, weapon));
@@ -177,7 +179,7 @@ battle_context_unit_stats::battle_context_unit_stats(nonempty_unit_const_ptr up,
 	signed int cth = opp.defense_modifier(resources::gameboard->map().get_terrain(opp_loc)) + weapon->accuracy()
 		- (opp_weapon ? opp_weapon->parry() : 0);
 
-	cth = utils::clamp(cth, 0, 100);
+	cth = std::clamp(cth, 0, 100);
 
 	unit_ability_list cth_specials = weapon->get_special_ability("chance_to_hit");
 	unit_abilities::effect cth_effects(cth_specials, cth, backstab_pos, weapon);
@@ -188,7 +190,7 @@ battle_context_unit_stats::battle_context_unit_stats(nonempty_unit_const_ptr up,
 		cth = 0;
 	}
 
-	chance_to_hit = utils::clamp(cth, 0, 100);
+	chance_to_hit = std::clamp(cth, 0, 100);
 
 	// Compute base damage done with the weapon.
 	int base_damage = weapon->modified_damage(backstab_pos);
@@ -297,7 +299,7 @@ battle_context_unit_stats::battle_context_unit_stats(const unit_type* u_type,
 
 	// Get the weapon characteristics as appropriate.
 	auto ctx = weapon->specials_context(*u_type, map_location::null_location(), attacking);
-	boost::optional<decltype(ctx)> opp_ctx;
+	std::optional<decltype(ctx)> opp_ctx;
 
 	if(opp_weapon) {
 		opp_ctx.emplace(opp_weapon->specials_context(*opp_type, map_location::null_location(), !attacking));
@@ -323,13 +325,13 @@ battle_context_unit_stats::battle_context_unit_stats(const unit_type* u_type,
 	}
 
 	signed int cth = 100 - opp_terrain_defense + weapon->accuracy() - (opp_weapon ? opp_weapon->parry() : 0);
-	cth = utils::clamp(cth, 0, 100);
+	cth = std::clamp(cth, 0, 100);
 
 	unit_ability_list cth_specials = weapon->get_specials("chance_to_hit");
 	unit_abilities::effect cth_effects(cth_specials, cth, backstab_pos, weapon);
 	cth = cth_effects.get_composite_value();
 
-	chance_to_hit = utils::clamp(cth, 0, 100);
+	chance_to_hit = std::clamp(cth, 0, 100);
 
 	int base_damage = weapon->modified_damage(backstab_pos);
 	int damage_multiplier = 100;
@@ -860,10 +862,12 @@ attack::attack(const map_location& attacker,
 	, OOS_error_(false)
 
 	//new experimental prng mode.
-	, use_prng_(preferences::get("use_prng") == "yes" && randomness::generator->is_networked() == false)
+	, use_prng_(resources::classification->random_mode == "biased" && randomness::generator->is_networked() == false)
+	, prng_attacker_()
+	, prng_defender_()
 {
 	if(use_prng_) {
-		std::cerr << "Using experimental PRNG for combat\n";
+		LOG_NG << "Using experimental PRNG for combat\n";
 	}
 }
 
@@ -877,7 +881,7 @@ void attack::fire_event(const std::string& n)
 	config& d_weapon_cfg = ev_data.add_child("second");
 
 	// Need these to ensure weapon filters work correctly
-	boost::optional<attack_type::specials_context_t> a_ctx, d_ctx;
+	std::optional<attack_type::specials_context_t> a_ctx, d_ctx;
 
 	if(a_stats_->weapon != nullptr && a_.valid()) {
 		if(d_stats_->weapon != nullptr && d_.valid()) {
@@ -1098,7 +1102,7 @@ bool attack::perform_hit(bool attacker_turn, statistics::attack_context& stats)
 			damage,
 			*attacker_stats->weapon, defender_stats->weapon,
 			abs_n, float_text.str(), drains_damage, "",
-			&extra_hit_sounds
+			&extra_hit_sounds, attacker_turn
 		);
 	}
 
@@ -1421,7 +1425,7 @@ void attack::perform()
 	// Play the pre-fight animation
 	unit_display::unit_draw_weapon(a_.loc_, a_.get_unit(), a_stats_->weapon, d_stats_->weapon, d_.loc_, d_.get_unit_ptr());
 
-	for(;;) {
+	while(true) {
 		DBG_NG << "start of attack loop...\n";
 		++abs_n_attack_;
 
@@ -1646,9 +1650,7 @@ bool backstab_check(const map_location& attacker_loc,
 		return false; // No defender
 	}
 
-	adjacent_loc_array_t adj;
-	get_adjacent_tiles(defender_loc, adj.data());
-
+	const auto adj = get_adjacent_tiles(defender_loc);
 	unsigned i;
 
 	for(i = 0; i < adj.size(); ++i) {

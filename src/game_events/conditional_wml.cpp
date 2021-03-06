@@ -84,7 +84,7 @@ namespace builtin_conditions {
 	bool have_location(const vconfig& cfg)
 	{
 		std::set<map_location> res;
-		terrain_filter(cfg, resources::filter_con).get_locations(res);
+		terrain_filter(cfg, resources::filter_con, false).get_locations(res);
 
 		std::vector<std::pair<int,int>> counts = cfg.has_attribute("count")
 		? utils::parse_ranges(cfg["count"]) : default_counts;
@@ -152,19 +152,15 @@ namespace { // Support functions
 			return false;
 		}
 
-		vconfig::all_children_iterator cond_end = cond.ordered_end();
-		static const std::set<std::string> skip =
+		static const std::set<std::string> skip
 			{"then", "else", "elseif", "not", "and", "or", "do"};
 
-		for(vconfig::all_children_iterator it = cond.ordered_begin(); it != cond_end; ++it) {
-			std::string key = it.get_key();
-			bool result = true;
+		for(const auto& [key, filter] : cond.all_ordered()) {
 			if(std::find(skip.begin(), skip.end(), key) == skip.end()) {
 				assert(resources::lua_kernel);
-				result = resources::lua_kernel->run_wml_conditional(key, it.get_child());
-			}
-			if (!result) {
-				return false;
+				if(!resources::lua_kernel->run_wml_conditional(key, filter)) {
+					return false;
+				}
 			}
 		}
 
@@ -179,30 +175,21 @@ bool conditional_passed(const vconfig& cond)
 	bool matches = internal_conditional_passed(cond);
 
 	// Handle [and], [or], and [not] with in-order precedence
-	vconfig::all_children_iterator cond_i = cond.ordered_begin();
-	vconfig::all_children_iterator cond_end = cond.ordered_end();
-	while(cond_i != cond_end)
-	{
-		const std::string& cond_name = cond_i.get_key();
-		const vconfig& cond_filter = cond_i.get_child();
-
+	for(const auto& [key, filter] : cond.all_ordered()) {
 		// Handle [and]
-		if(cond_name == "and")
-		{
-			matches = matches && conditional_passed(cond_filter);
+		if(key == "and") {
+			matches = matches && conditional_passed(filter);
 		}
 		// Handle [or]
-		else if(cond_name == "or")
-		{
-			matches = matches || conditional_passed(cond_filter);
+		else if(key == "or") {
+			matches = matches || conditional_passed(filter);
 		}
 		// Handle [not]
-		else if(cond_name == "not")
-		{
-			matches = matches && !conditional_passed(cond_filter);
+		else if(key == "not") {
+			matches = matches && !conditional_passed(filter);
 		}
-		++cond_i;
 	}
+
 	return matches;
 }
 

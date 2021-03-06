@@ -12,12 +12,11 @@
    See the COPYING file for more details.
 */
 
-/** @file */
-
 #pragma once
 
 #include "config.hpp"
 #include "terrain/translation.hpp"
+#include "utils/make_enum.hpp"
 
 #include <utility>
 
@@ -166,6 +165,8 @@ namespace preferences {
 	std::string moved_color();
 	void set_moved_color(const std::string& color_id);
 
+	std::string disengaged_color();
+	void set_disengaged_color(const std::string& color_id);
 
 	bool show_allied_orb();
 	void set_show_allied_orb(bool show_orb);
@@ -182,6 +183,8 @@ namespace preferences {
 	bool show_partial_orb();
 	void set_show_partial_orb(bool show_orb);
 
+	bool show_disengaged_orb();
+	void set_show_disengaged_orb(bool show_orb);
 
 	bool use_color_cursors();
 	void _set_color_cursors(bool value);
@@ -244,5 +247,17 @@ namespace preferences {
 
 	bool damage_prediction_allow_monte_carlo_simulation();
 	void set_damage_prediction_allow_monte_carlo_simulation(bool value);
+
+	std::string addon_manager_saved_order_name();
+	void set_addon_manager_saved_order_name(const std::string& value);
+
+	// Sorting for GUI2 listboxes
+	MAKE_ENUM(SORT_ORDER,
+		(NONE, "none")
+		(ASCENDING, "ascending")
+		(DESCENDING, "descending")
+	)
+	SORT_ORDER addon_manager_saved_order_direction();
+	void set_addon_manager_saved_order_direction(SORT_ORDER value);
 
 } // end namespace preferences

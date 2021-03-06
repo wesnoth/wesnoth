@@ -704,6 +704,9 @@
     <ClCompile Include="..\..\src\gui\dialogs\addon\install_dependencies.cpp">
       <Filter>Gui\Dialogs\Addon</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\gui\dialogs\addon\license_prompt.cpp">
+      <Filter>Gui\Dialogs\Addon</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\src\gui\dialogs\addon\manager.cpp">
       <Filter>Gui\Dialogs\Addon</Filter>
     </ClCompile>
@@ -732,9 +735,6 @@
       <Filter>Gui\Dialogs\Editor</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\gui\dialogs\editor\resize_map.cpp">
-      <Filter>Gui\Dialogs\Editor</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\gui\dialogs\editor\set_starting_position.cpp">
       <Filter>Gui\Dialogs\Editor</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\gui\dialogs\multiplayer\faction_select.cpp">
@@ -1587,6 +1587,15 @@
     <ClCompile Include="..\..\src\scripting\lua_color.cpp">
       <Filter>Scripting</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\units\orb_status.cpp">
+      <Filter>Units</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\preferences\advanced.cpp">
+      <Filter>Preferences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\dialogs\multiplayer\match_history.cpp">
+      <Filter>Gui\Dialogs\Multiplayer</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\addon\client.hpp">
@@ -2147,6 +2156,9 @@
     <ClInclude Include="..\..\src\gui\dialogs\addon\install_dependencies.hpp">
       <Filter>Gui\Dialogs\Addon</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\gui\dialogs\addon\license_prompt.hpp">
+      <Filter>Gui\Dialogs\Addon</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\src\gui\dialogs\addon\manager.hpp">
       <Filter>Gui\Dialogs\Addon</Filter>
     </ClInclude>
@@ -2175,9 +2187,6 @@
       <Filter>Gui\Dialogs\Editor</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\gui\dialogs\editor\resize_map.hpp">
-      <Filter>Gui\Dialogs\Editor</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\gui\dialogs\editor\set_starting_position.hpp">
       <Filter>Gui\Dialogs\Editor</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\gui\dialogs\multiplayer\faction_select.hpp">
@@ -2478,9 +2487,6 @@
       <Filter>utils</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\utils\context_free_grammar_generator.hpp">
-      <Filter>utils</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\utils\functional.hpp">
       <Filter>utils</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\utils\general.hpp">
@@ -3083,6 +3089,15 @@
     </ClInclude>
     <ClInclude Include="..\..\src\scripting\lua_color.hpp">
       <Filter>Scripting</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\units\orb_status.hpp">
+      <Filter>Units</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\preferences\advanced.hpp">
+      <Filter>Preferences</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\dialogs\multiplayer\match_history.hpp">
+      <Filter>Gui\Dialogs\Multiplayer</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

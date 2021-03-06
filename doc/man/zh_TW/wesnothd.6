@@ -161,7 +161,7 @@ being used from logging in. (default: false)
 .RS
 .TP 
 \fBname\fP
-用於參照封禁時間的名字。
+名稱禁止引用時間。
 .TP 
 \fBtime\fP
 時間長度定義。 格式為：%d[%s[%d%s[...]]]
@@ -172,12 +172,10 @@ being used from logging in. (default: false)
 \fB[proxy]\fP 這個標簽告訴伺服器扮演代理伺服器角色，把使用者連接重定向到另一台伺服器。與\fB[redirect]\fP接受一樣的參數。
 .RE
 .P
-\fB[user_handler]\fP Configures the user handler. Available keys vary depending
-on which user handler is set with the \fBuser_handler\fP key. If no
-\fB[user_handler]\fP section is present in the configuration the server will
-run without any nick registration service. All additional tables that are
-needed for the \fBforum_user_handler\fP to function can be found in
-table_definitions.sql in the Wesnoth source repository.
+\fB[user_handler]\fP
+設定使用者處理程序。可設置的主鍵取決於通過\fBuser_handler\fP設置的用戶資料處理器是哪一個。如果設定檔案中沒有
+\fB[user_handler]\fP ，則伺服器在運行中將不提供任何暱稱註冊服務。在韋諾原始碼儲存庫中的 table_definitions.sql
+可以找到 \fBforum_user_handler\fP 中所運作的所有資源列表。
 .RS
 .TP 
 \fBdb_host\fP

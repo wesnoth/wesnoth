@@ -17,9 +17,7 @@
 #include "gui/dialogs/modal_dialog.hpp"
 class game_config_view;
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 
 /** Help browser dialog. */
@@ -41,8 +39,7 @@ private:
 	/** Inherited from modal_dialog. */
 	virtual void pre_show(window& window) override;
 
-	void on_topic_select(window& window);
+	void on_topic_select();
 };
 
 } // namespace dialogs
-} // namespace gui2

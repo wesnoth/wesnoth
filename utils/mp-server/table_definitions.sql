@@ -74,6 +74,7 @@ create table game_info
     PUBLIC           BIT(1) NOT NULL,
     PRIMARY KEY (INSTANCE_UUID, GAME_ID)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+CREATE INDEX START_TIME_IDX ON game_info(START_TIME);
 
 -- information about the players in a particular game present in game_info
 -- this is accurate at the start of the game, but is not currently updated if a side changes owners, someone disconnects, etc
@@ -81,7 +82,6 @@ create table game_info
 -- SIDE_NUMBER: the side controlled by USER_ID
 -- IS_HOST: if USER_ID is the game's host
 -- FACTION: the faction being played by this side
--- STATUS: the status of the side, currently only updated at game end
 -- CLIENT_VERSION: the version of the wesnoth client used to connect
 -- CLIENT_SOURCE: where the wesnoth client was downloaded from - SourceForge, Steam, etc
 create table game_player_info
@@ -97,10 +97,12 @@ create table game_player_info
     USER_NAME      VARCHAR(255) NOT NULL DEFAULT '',
     PRIMARY KEY (INSTANCE_UUID, GAME_ID, SIDE_NUMBER)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+CREATE INDEX USER_ID_IDX ON game_player_info(USER_ID);
 
 -- information about the scenario/era/modifications for the game
 -- TYPE: one of era/scenario/modification
 -- ID: the id of the content
+-- NAME: the content's user-visible name
 -- SOURCE: the id of the add-on that the particular content came from
 -- VERSION: the version of the source add-on
 create table game_content_info
@@ -109,6 +111,7 @@ create table game_content_info
     GAME_ID           INT UNSIGNED NOT NULL,
     TYPE              VARCHAR(255) NOT NULL,
     ID                VARCHAR(255) NOT NULL,
+    NAME              VARCHAR(255),
     SOURCE            VARCHAR(255) NOT NULL,
     VERSION           VARCHAR(255) NOT NULL,
     PRIMARY KEY (INSTANCE_UUID, GAME_ID, TYPE, ID)

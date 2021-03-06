@@ -42,7 +42,6 @@ namespace ai { class side_context; }  // lines 38-38
 namespace events { class generic_event; }
 namespace events { class observer; }
 
-
 namespace ai
 {
 
@@ -64,15 +63,11 @@ public:
 
 	void modify_ai(const config& cfg);
 
-
 	void append_ai(const config& cfg);
-
 
 	const std::string get_ai_overview();
 
-
 	const std::string get_ai_structure();
-
 
 	const std::string get_ai_identifier() const;
 
@@ -80,7 +75,6 @@ public:
 
 private:
 	void init( side_number side );
-
 
 	composite_ai_ptr ai_;
 	std::unique_ptr<side_context> side_context_;
@@ -108,7 +102,6 @@ public:
 private:
 	int number_;
 	std::string command_;
-
 };
 
 /**
@@ -132,7 +125,6 @@ public:
 	static const std::string AI_TYPE_DFOOL_AI;
 	static const std::string AI_TYPE_AI2;
 	static const std::string AI_TYPE_DEFAULT;
-
 
 	// =======================================================================
 	// CONSTRUCTORS AND DESTRUCTORS
@@ -163,13 +155,11 @@ public:
 	// LIFECYCLE
 	// =======================================================================
 
-
 	/**
 	 * Adds observer of game events.
 	 * Should be called in playsingle_controller 's constructor.
 	 */
 	void add_observer( events::observer* event_observer);
-
 
 	/**
 	 * Removes an observer of game events.
@@ -177,18 +167,15 @@ public:
 	 */
 	void remove_observer( events::observer* event_observer );
 
-
 	/**
 	 * Adds observer of game events except ai_user_interact event and ai_sync_network event
 	 */
 	void add_gamestate_observer( events::observer* event_observer);
 
-
 	/**
 	 * Removes an observer of game events except ai_user_interact event and ai_sync_network event
 	 */
 	void remove_gamestate_observer( events::observer* event_observer );
-
 
 	/**
 	 * Notifies all observers of 'ai_user_interact' event.
@@ -205,60 +192,50 @@ public:
 	 */
 	void raise_sync_network();
 
-
 	/**
 	 * Notifies all observers of 'ai_gamestate_changed' event.
 	 */
 	void raise_gamestate_changed();
-
 
 	/**
 	 * Notifies all observers of 'ai_tod_changed' event.
 	 */
 	void raise_tod_changed();
 
-
 	/**
 	 * Notifies all observers of 'ai_recruit_list_changed' event.
 	 */
 	void raise_recruit_list_changed();
-
 
 	/**
 	 * Notifies all observers of 'ai_turn_started' event.
 	 */
 	void raise_turn_started();
 
-
 	/**
 	 * Notifies all observers of 'ai_map_changed' event.
 	 */
 	void raise_map_changed();
-
 
 	/**
 	 * Adds an observer of 'ai_map_changed' event.
 	 */
 	void add_map_changed_observer( events::observer* event_observer );
 
-
 	/**
 	 * Adds an observer of 'ai_recruit_list_changed' event.
 	 */
 	void add_recruit_list_changed_observer( events::observer* event_observer );
-
 
 	/**
 	 * Adds an observer of 'ai_turn_started' event.
 	 */
 	void add_turn_started_observer( events::observer* event_observer );
 
-
 	/**
 	 * Adds an observer of 'ai_tod_changed' event.
 	 */
 	void add_tod_changed_observer( events::observer* event_observer );
-
 
 	/**
 	 * Deletes an observer of 'ai_map_changed' event.
@@ -266,24 +243,20 @@ public:
 	void remove_map_changed_observer( events::observer* event_observer );
 
 
-
 	/**
 	 * Deletes an observer of 'ai_recruit_list_changed' event.
 	 */
 	void remove_recruit_list_changed_observer( events::observer* event_observer );
-
 
 	/**
 	 * Deletes an observer of 'ai_turn_started' event.
 	 */
 	void remove_turn_started_observer( events::observer* event_observer );
 
-
 	/**
 	 * Deletes an observer of 'ai_tod_changed' event.
 	 */
 	void remove_tod_changed_observer( events::observer* event_observer );
-
 
 public:
 
@@ -302,7 +275,6 @@ public:
 	 */
 	const std::string evaluate_command( side_number side, const std::string& str );
 
-
 	// =======================================================================
 	// ADD, CREATE AIs, OR LIST AI TYPES
 	// =======================================================================
@@ -318,7 +290,6 @@ public:
 	 */
 	bool add_ai_for_side_from_file( side_number side, const std::string& file, bool replace = true );
 
-
 	/**
 	 * Adds active AI for specified @a side from @a cfg.
 	 * @note Running this command may invalidate references previously returned
@@ -329,7 +300,6 @@ public:
 	 * @return true if successful.
 	 */
 	bool add_ai_for_side_from_config(side_number side, const config &cfg, bool replace = true);
-
 
 	// =======================================================================
 	// REMOVE
@@ -343,7 +313,6 @@ public:
 	 */
 	void remove_ai_for_side( side_number side );
 
-
 	/**
 	 * Removes all AIs from @a side.
 	 * @note Running this command may invalidate references previously returned
@@ -351,7 +320,6 @@ public:
 	 * @param side side number (1-based, as in game_info).
 	 */
 	void remove_all_ais_for_side( side_number side );
-
 
 	/**
 	 * Clears all the AIs.
@@ -366,7 +334,6 @@ public:
 	// GET active AI parameters
 	// =======================================================================
 
-
 	/**
 	 * Gets AI info for active AI of the given @a side.
 	 * @param side side number (1-based).
@@ -374,14 +341,12 @@ public:
 	 */
 	game_info& get_active_ai_info_for_side( side_number side );
 
-
 	/**
 	 * Gets AI Overview for active AI of the given @a side
 	 * @param side side number (1-based)
 	 * @return an ai overview
 	 */
 	std::string get_active_ai_overview_for_side( side_number side );
-
 
 	/**
 	 * Gets AI Structure for active AI of the given @a side
@@ -412,7 +377,6 @@ public:
 	 */
 	config to_config( side_number side );
 
-
 	/**
 	 * Gets global AI-game info
 	 * @return a reference to the AI-game info.
@@ -420,7 +384,6 @@ public:
 	game_info& get_ai_info();
 
 	const ai::unit_advancements_aspect& get_advancement_aspect_for_side(side_number side);
-
 
 	// =======================================================================
 	// SET active AI parameters
@@ -454,7 +417,6 @@ public:
 	 */
 	void play_turn(side_number side);
 
-
 private:
 
 	typedef std::map< side_number, std::stack< holder >> AI_map_of_stacks;
@@ -476,7 +438,6 @@ private:
 	AI_map_of_stacks ai_map_;
 
 	static manager* singleton_;
-
 
 	// =======================================================================
 	// EVALUATION
@@ -502,7 +463,6 @@ private:
 	// AI STACKS
 	// =======================================================================
 
-
 	/**
 	 * Gets the AI stack for the specified side, create it if it doesn't exist.
 	 */
@@ -511,7 +471,6 @@ private:
 	// =======================================================================
 	// AI HOLDERS
 	// =======================================================================
-
 
 	/**
 	 * Gets active holder for specified @a side.
@@ -531,7 +490,6 @@ private:
 	 * @note This reference may become invalid after specific manager operations.
 	 */
 	ai_composite& get_active_ai_for_side( side_number side );
-
 
 	friend class ::game_launcher;
 };

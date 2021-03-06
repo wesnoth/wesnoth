@@ -1,7 +1,7 @@
 {
     "app-id": "org.wesnoth.Wesnoth",
     "runtime": "org.freedesktop.Platform",
-    "runtime-version": "19.08",
+    "runtime-version": "20.08",
     "sdk": "org.freedesktop.Sdk",
     "finish-args": [
         "--device=dri",
@@ -39,7 +39,7 @@
                 }
             ],
             "build-commands": [
-                "./bootstrap.sh --prefix=/app --with-libraries=filesystem,locale,iostreams,program_options,regex,random,thread",
+                "./bootstrap.sh --prefix=/app --with-libraries=filesystem,locale,iostreams,program_options,regex,random,thread,coroutine,context",
                 "./b2 -j$FLATPAK_BUILDER_N_JOBS install cxxflags='-fPIE -fstack-protector-strong' define=_FORTIFY_SOURCE=2 link=static variant=release address-model=64 --layout=system"
 ]
         },

@@ -28,6 +28,14 @@ struct builder_progress_bar;
 
 // ------------ WIDGET -----------{
 
+/**
+ * @ingroup GUIWidgetWML
+ *
+ * This object shows the progress of a certain action, or the value state of a certain item.
+ *
+ * The following states exist:
+ * * state_enabled - the progress bar is enabled.
+ */
 class progress_bar : public styled_widget
 {
 public:
@@ -102,7 +110,7 @@ struct builder_progress_bar : public builder_styled_widget
 
 	using builder_styled_widget::build;
 
-	widget* build() const;
+	virtual widget* build() const override;
 };
 
 } // namespace implementation

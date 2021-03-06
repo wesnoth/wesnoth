@@ -12,7 +12,6 @@
    See the COPYING file for more details.
 */
 
-#include "global.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
 #include "filesystem.hpp"
@@ -23,6 +22,7 @@
 #include <iterator>
 #include <fstream>
 #include <locale>
+#include <map>
 #include <mutex>
 #include <boost/locale.hpp>
 #include <set>
@@ -83,7 +83,6 @@ namespace
 	};
 	class wesnoth_message_format : public bl::message_format<char>
 	{
-		using po_catalog = spirit_po::catalog<>;
 	public:
 		wesnoth_message_format(std::locale base, const std::set<std::string>& domains, const std::set<std::string>& paths)
 			: base_loc_(base)
@@ -133,7 +132,7 @@ namespace
 				try {
 					filesystem::scoped_istream po_file = filesystem::istream_file(path);
 					po_file->exceptions(std::ios::badbit);
-					const po_catalog& cat = po_catalog::from_istream(*po_file);
+					const auto& cat = spirit_po::default_catalog::from_istream(*po_file);
 					extra_messages_.emplace(get_base().domain(domain), cat);
 				} catch(const spirit_po::catalog_exception& e) {
 					throw_po_error(lang_name_long, domain, e.what());
@@ -207,7 +206,7 @@ namespace
 		}
 
 		std::locale base_loc_;
-		std::map<int, po_catalog> extra_messages_;
+		std::map<int, spirit_po::default_catalog> extra_messages_;
 	};
 	struct translation_manager
 	{
@@ -391,12 +390,12 @@ namespace translation
 
 std::string dgettext(const char* domain, const char* msgid)
 {
-	std::lock_guard<std::mutex> lock(get_mutex());
+	std::lock_guard lock(get_mutex());
 	return bl::dgettext(domain, msgid, get_manager().get_locale());
 }
 std::string egettext(char const *msgid)
 {
-	std::lock_guard<std::mutex> lock(get_mutex());
+	std::lock_guard lock(get_mutex());
 	return msgid[0] == '\0' ? msgid : bl::gettext(msgid, get_manager().get_locale());
 }
 
@@ -416,7 +415,7 @@ std::string dsgettext (const char * domainname, const char *msgid)
 std::string dsngettext (const char * domainname, const char *singular, const char *plural, int n)
 {
 	//TODO: only the next line needs to be in the lock.
-	std::lock_guard<std::mutex> lock(get_mutex());
+	std::lock_guard lock(get_mutex());
 	std::string msgval = bl::dngettext(domainname, singular, plural, n, get_manager().get_locale());
 	if (msgval == singular) {
 		const char* firsthat = std::strchr (singular, '^');
@@ -431,7 +430,7 @@ std::string dsngettext (const char * domainname, const char *singular, const cha
 void bind_textdomain(const char* domain, const char* directory, const char* /*encoding*/)
 {
 	LOG_G << "adding textdomain '" << domain << "' in directory '" << directory << "'\n";
-	std::lock_guard<std::mutex> lock(get_mutex());
+	std::lock_guard lock(get_mutex());
 	get_manager().add_messages_domain(domain);
 	get_manager().add_messages_path(directory);
 	get_manager().update_locale();
@@ -440,7 +439,7 @@ void bind_textdomain(const char* domain, const char* directory, const char* /*en
 void set_default_textdomain(const char* domain)
 {
 	LOG_G << "set_default_textdomain: '" << domain << "'\n";
-	std::lock_guard<std::mutex> lock(get_mutex());
+	std::lock_guard lock(get_mutex());
 	get_manager().set_default_messages_domain(domain);
 }
 
@@ -450,13 +449,13 @@ void set_language(const std::string& language, const std::vector<std::string>* /
 	// why should we need alternates? which languages we support should only be related
 	// to which languages we ship with and not which the os supports
 	LOG_G << "setting language to  '" << language << "' \n";
-	std::lock_guard<std::mutex> lock(get_mutex());
+	std::lock_guard lock(get_mutex());
 	get_manager().set_language(language);
 }
 
 int compare(const std::string& s1, const std::string& s2)
 {
-	std::lock_guard<std::mutex> lock(get_mutex());
+	std::lock_guard lock(get_mutex());
 
 	try {
 		return std::use_facet<std::collate<char>>(get_manager().get_locale()).compare(s1.c_str(), s1.c_str() + s1.size(), s2.c_str(), s2.c_str() + s2.size());
@@ -479,7 +478,7 @@ int icompare(const std::string& s1, const std::string& s2)
 	// https://github.com/wesnoth/wesnoth/issues/2094
 	return compare(ascii_to_lowercase(s1), ascii_to_lowercase(s2));
 #else
-	std::lock_guard<std::mutex> lock(get_mutex());
+	std::lock_guard lock(get_mutex());
 
 	try {
 		return std::use_facet<bl::collator<char>>(get_manager().get_locale()).compare(
@@ -507,7 +506,7 @@ int icompare(const std::string& s1, const std::string& s2)
 std::string strftime(const std::string& format, const std::tm* time)
 {
 	std::basic_ostringstream<char> dummy;
-	std::lock_guard<std::mutex> lock(get_mutex());
+	std::lock_guard lock(get_mutex());
 	dummy.imbue(get_manager().get_locale());	// TODO: Calling imbue() with hard-coded locale appears to work with put_time in glibc, but not with get_locale()...
 	// Revert to use of boost (from 1.14) instead of std::put_time() because the latter does not appear to handle locale properly in Linux
 	dummy << bl::as::ftime(format) << mktime(const_cast<std::tm*>(time));
@@ -517,7 +516,7 @@ std::string strftime(const std::string& format, const std::tm* time)
 
 bool ci_search(const std::string& s1, const std::string& s2)
 {
-	std::lock_guard<std::mutex> lock(get_mutex());
+	std::lock_guard lock(get_mutex());
 	const std::locale& locale = get_manager().get_locale();
 
 	std::string ls1 = bl::to_lower(s1, locale);
@@ -529,7 +528,7 @@ bool ci_search(const std::string& s1, const std::string& s2)
 
 const boost::locale::info& get_effective_locale_info()
 {
-	std::lock_guard<std::mutex> lock(get_mutex());
+	std::lock_guard lock(get_mutex());
 	return std::use_facet<boost::locale::info>(get_manager().get_locale());
 }
 }

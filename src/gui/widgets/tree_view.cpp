@@ -22,7 +22,7 @@
 #include "gui/core/window_builder/helper.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
-#include "utils/functional.hpp"
+#include <functional>
 #include "wml_exception.hpp"
 
 #define LOG_SCOPE_HEADER get_control_type() + " [" + id() + "] " + __func__
@@ -43,7 +43,7 @@ tree_view::tree_view(const implementation::builder_tree_view& builder)
 	, selected_item_(nullptr)
 {
 	connect_signal<event::LEFT_BUTTON_DOWN>(
-		std::bind(&tree_view::signal_handler_left_button_down, this, _2), event::dispatcher::back_pre_child);
+		std::bind(&tree_view::signal_handler_left_button_down, this, std::placeholders::_2), event::dispatcher::back_pre_child);
 }
 
 tree_view::~tree_view()
@@ -82,7 +82,7 @@ std::pair<tree_view_node::ptr_t, int> tree_view::remove_node(tree_view_node* nod
 		resize_content(0, -node_size.y);
 	}
 
-	return std::make_pair(std::move(old_node), position);
+	return std::pair(std::move(old_node), position);
 }
 
 void tree_view::clear()
@@ -119,7 +119,7 @@ void tree_view::layout_children()
 
 void tree_view::resize_content(const int width_modification,
 		const int height_modification,
-		const int width__modification_pos,
+		const int width_modification_pos,
 		const int height_modification_pos)
 {
 	DBG_GUI_L << LOG_HEADER << " current size " << content_grid()->get_size() << " width_modification "
@@ -128,7 +128,7 @@ void tree_view::resize_content(const int width_modification,
 	if(content_resize_request(
 		width_modification,
 		height_modification,
-		width__modification_pos,
+		width_modification_pos,
 		height_modification_pos
 	)) {
 		// Calculate new size.
@@ -267,31 +267,6 @@ tree_view_definition::tree_view_definition(const config& cfg)
 	load_resolutions<resolution>(cfg);
 }
 
-/*WIKI
- * @page = GUIWidgetDefinitionWML
- * @order = 1_tree_view
- *
- * == Tree view ==
- *
- * @macro = tree_view_description
- *
- * The documentation is not written yet.
- *
- * The following states exist:
- * * state_enabled, the listbox is enabled.
- * * state_disabled, the listbox is disabled.
- * @begin{parent}{name="gui/"}
- * @begin{tag}{name="ree_view_definition"}{min=0}{max=-1}{super="generic/widget_definition"}
- * @begin{tag}{name="resolution"}{min=0}{max=-1}{super="generic/widget_definition/resolution"}
- * @allow{link}{name="gui/window/resolution/grid"}
- * @begin{tag}{name="state_enabled"}{min=0}{max=1}{super="generic/state"}
- * @end{tag}{name="state_enabled"}
- * @begin{tag}{name="state_disabled"}{min=0}{max=1}{super="generic/state"}
- * @end{tag}{name="state_disabled"}
- * @end{tag}{name="resolution"}
- * @end{tag}{name="ree_view_definition"}
- * @end{parent}{name="gui/"}
- */
 tree_view_definition::resolution::resolution(const config& cfg)
 	: resolution_definition(cfg)
 	, grid(nullptr)
@@ -307,59 +282,6 @@ tree_view_definition::resolution::resolution(const config& cfg)
 }
 
 // }---------- BUILDER -----------{
-
-/*WIKI_MACRO
- * @begin{macro}{tree_view_description}
- *
- *        A tree view is a styled_widget that holds several items of the same or
- *        different types. The items shown are called tree view nodes and when
- *        a node has children, these can be shown or hidden. Nodes that contain
- *        children need to provide a clickable button in order to fold or
- *        unfold the children.
- * @end{macro}
- */
-
-/*WIKI
- * @page = GUIWidgetInstanceWML
- * @order = 2_tree_view
- *
- * == Tree view ==
- * @begin{parent}{name="gui/window/resolution/grid/row/column/"}
- * @begin{tag}{name="tree_view"}{min=0}{max=-1}{super="generic/widget_instance"}
- * @macro = tree_view_description
- *
- * List with the tree view specific variables:
- * @begin{table}{config}
- *     vertical_scrollbar_mode & scrollbar_mode & initial_auto &
- *                                     Determines whether or not to show the
- *                                     scrollbar. $
- *     horizontal_scrollbar_mode & scrollbar_mode & initial_auto &
- *                                     Determines whether or not to show the
- *                                     scrollbar. $
- *
- *     indentation_step_size & unsigned & 0 &
- *                                     The number of pixels every level of
- *                                     nodes is indented from the previous
- *                                     level. $
- *
- *     node & section &  &             The tree view can contain multiple node
- *                                     sections. This part needs more
- *                                     documentation. $
- * @end{table}
- * @begin{tag}{name="node"}{min=0}{max=-1}
- * @begin{table}{config}
- *     id & string & "" &  $
- * @end{table}
- * @begin{tag}{name="node_definition"}{min=0}{max=-1}{super="gui/window/resolution/grid"}
- * @begin{table}{config}
- *     return_value_id & string & "" &  $
- * @end{table}
- * @end{tag}{name="node_definition"}
- * @end{tag}{name="node"}
- * @end{tag}{name="tree_view"}
- * @end{parent}{name="gui/window/resolution/grid/row/column/"}
- * NOTE more documentation and examples are needed.
- */ // TODO annotate node
 
 namespace implementation
 {
@@ -395,7 +317,7 @@ widget* builder_tree_view::build() const
 	const auto conf = widget->cast_config_to<tree_view_definition>();
 	assert(conf);
 
-	widget->init_grid(conf->grid);
+	widget->init_grid(*conf->grid);
 	widget->finalize_setup();
 
 	return widget;

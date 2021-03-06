@@ -39,7 +39,7 @@
 
 #include "gettext.hpp"
 
-#include "utils/functional.hpp"
+#include <functional>
 
 namespace
 {
@@ -49,37 +49,8 @@ const std::string text_feature_off = "<span color='#f00'>&#9679;</span>";
 
 } // end anonymous namespace
 
-namespace gui2
+namespace gui2::dialogs
 {
-namespace dialogs
-{
-
-/*WIKI
- * @page = GUIWindowDefinitionWML
- * @order = 2_game_version
- *
- * == Game paths ==
- *
- * Dialog displaying the various paths used by the game to locate
- * resource and configuration files.
- *
- * There are several item types used to build widget ids in this dialog.
- * All references to TYPE below refer to the following suffixes:
- * datadir, config, userdata, saves, addons, cache.
- *
- * @begin{table}{dialog_widgets}
- *
- * path_TYPE & & text_box & m &
- *        Textbox containing the filesystem path for the given item. $
- *
- * copy_TYPE & & button & m &
- *        Copies the given item's path to clipboard. $
- *
- * browse_TYPE & & button & m &
- *        Launches the default file browser on the given item's path. $
- *
- * @end{table}
- */
 
 REGISTER_DIALOG(game_version)
 
@@ -129,7 +100,7 @@ void game_version::pre_show(window& window)
 	//
 
 	styled_widget& version_label = find_widget<styled_widget>(&window, "version", false);
-	i18n_syms["version"] = game_config::revision;
+	i18n_syms["version"] = game_config::revision + " " + game_config::build_arch();
 	version_label.set_label(VGETTEXT("Version $version", i18n_syms));
 
 	styled_widget& os_label = find_widget<styled_widget>(&window, "os", false);
@@ -219,7 +190,7 @@ void game_version::pre_show(window& window)
 		if(!dep[2].empty()) {
 			list_data["dep_rt_version"]["label"] = dep[2];
 		} else {
-			list_data["dep_rt_version"]["label"] = _("version^N/A");
+			list_data["dep_rt_version"]["label"] = font::unicode_em_dash;
 		}
 
 		deps_listbox.add_row(list_data);
@@ -269,15 +240,15 @@ void game_version::pre_show(window& window)
 	VALIDATE(tab_count == pager.get_layer_count(), "Tab bar and container size mismatch");
 
 	connect_signal_notify_modified(tab_bar,
-		std::bind(&game_version::tab_switch_callback, this, std::ref(window)));
+		std::bind(&game_version::tab_switch_callback, this));
 }
 
-void game_version::tab_switch_callback(window& window)
+void game_version::tab_switch_callback()
 {
 	stacked_widget& pager
-			= find_widget<stacked_widget>(&window, "tabs_container", false);
+			= find_widget<stacked_widget>(get_window(), "tabs_container", false);
 	listbox& tab_bar
-			= find_widget<listbox>(&window, "tab_bar", false);
+			= find_widget<listbox>(get_window(), "tab_bar", false);
 
 	pager.select_layer(std::max<int>(0, tab_bar.get_selected_row()));
 }
@@ -303,4 +274,3 @@ void game_version::generate_plain_text_report()
 }
 
 } // namespace dialogs
-} // namespace gui2

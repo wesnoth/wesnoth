@@ -34,6 +34,7 @@
 #include "gui/dialogs/message.hpp"
 #include "gui/dialogs/multiplayer/mp_host_game_prompt.hpp"
 #include "gui/dialogs/multiplayer/mp_method_selection.hpp"
+#include "gui/dialogs/preferences_dialog.hpp"
 #include "gui/dialogs/screenshot_notification.hpp"
 #include "gui/dialogs/simple_item_selector.hpp"
 #include "log.hpp"
@@ -52,83 +53,17 @@
 #include "hotkey/hotkey_command.hpp"
 #include "sdl/surface.hpp"
 #include "sdl/utils.hpp"
-#include "utils/functional.hpp"
 #include "video.hpp"
 
 #include <algorithm>
+#include <functional>
 
 static lg::log_domain log_config("config");
 #define ERR_CF LOG_STREAM(err, log_config)
 #define WRN_CF LOG_STREAM(warn, log_config)
 
-namespace gui2
+namespace gui2::dialogs
 {
-namespace dialogs
-{
-
-/*WIKI
- * @page = GUIWindowDefinitionWML
- * @order = 2_title_screen
- *
- * == Title screen ==
- *
- * This shows the title screen.
- *
- * @begin{table}{dialog_widgets}
- * tutorial & & button & o &
- *         The button to start the tutorial. $
- *
- * campaign & & button & o &
- *         The button to start a campaign. $
- *
- * multiplayer & & button & o &
- *         The button to start multiplayer mode. $
- *
- * load & & button & o &
- *         The button to load a saved game. $
- *
- * editor & & button & o &
- *         The button to start the editor. $
- *
- * addons & & button & o &
- *         The button to start managing the addons. $
- *
- * language & & button & o &
- *         The button to select the game language. $
- *
- * credits & & button & o &
- *         The button to show Wesnoth's contributors. $
- *
- * quit & & button & m &
- *         The button to quit Wesnoth. $
- *
- * tips & & multi_page & o &
- *         A multi_page to hold all tips, when this widget is used the area of
- *         the tips doesn't need to be resized when the next or previous button
- *         is pressed. $
- *
- * -tip & & label & o &
- *         Shows the text of the current tip. $
- *
- * -source & & label & o &
- *         The source (the one who's quoted or the book referenced) of the
- *         current tip. $
- *
- * next_tip & & button & o &
- *         The button show the next tip of the day. $
- *
- * previous_tip & & button & o &
- *         The button show the previous tip of the day. $
- *
- * logo & & image & o &
- *         The Wesnoth logo. $
- *
- * revision_number & & styled_widget & o &
- *         A widget to show the version number when the version number is
- *         known. $
- *
- * @end{table}
- */
 
 REGISTER_DIALOG(title_screen)
 
@@ -168,12 +103,12 @@ static void launch_lua_console()
 	gui2::dialogs::lua_interpreter::display(gui2::dialogs::lua_interpreter::APP);
 }
 
-static void make_screenshot(window& win)
+static void make_screenshot()
 {
-	surface screenshot = win.video().getSurface().clone();
+	surface screenshot = CVideo::get_singleton().getSurface().clone();
 	if(screenshot) {
 		std::string filename = filesystem::get_screenshot_dir() + "/" + _("Screenshot") + "_";
-		filename = filesystem::get_next_filename(filename, ".png");
+		filename = filesystem::get_next_filename(filename, ".jpg");
 		gui2::dialogs::screenshot_notification::display(filename, screenshot);
 	}
 }
@@ -214,11 +149,11 @@ void title_screen::pre_show(window& win)
 
 #ifdef DEBUG_TOOLTIP
 	win.connect_signal<event::SDL_MOUSE_MOTION>(
-			std::bind(debug_tooltip, std::ref(win), _3, _5),
+			std::bind(debug_tooltip, std::ref(win), std::placeholders::_3, std::placeholders::_5),
 			event::dispatcher::front_child);
 #endif
 
-	win.connect_signal<event::SDL_VIDEO_RESIZE>(std::bind(&title_screen::on_resize, this, std::ref(win)));
+	win.connect_signal<event::SDL_VIDEO_RESIZE>(std::bind(&title_screen::on_resize, this));
 
 	//
 	// General hotkeys
@@ -227,13 +162,13 @@ void title_screen::pre_show(window& win)
 		std::bind(&gui2::window::set_retval, std::ref(win), RELOAD_GAME_DATA, true));
 
 	win.register_hotkey(hotkey::TITLE_SCREEN__TEST,
-		std::bind(&title_screen::hotkey_callback_select_tests, this, std::ref(win)));
+		std::bind(&title_screen::hotkey_callback_select_tests, this));
 
 	// A wrapper is needed here since the relevant display function is overloaded, and
 	// since the wrapper's signature doesn't exactly match what register_hotkey expects.
 	win.register_hotkey(hotkey::LUA_CONSOLE, std::bind(&launch_lua_console));
 
-	win.register_hotkey(hotkey::HOTKEY_SCREENSHOT, std::bind(&make_screenshot, std::ref(win)));
+	win.register_hotkey(hotkey::HOTKEY_SCREENSHOT, std::bind(&make_screenshot));
 
 	//
 	// Background and logo images
@@ -289,14 +224,14 @@ void title_screen::pre_show(window& win)
 			tip_pages->add_page(page);
 		}
 
-		update_tip(win, true);
+		update_tip(true);
 	}
 
 	register_button(win, "next_tip", hotkey::TITLE_SCREEN__NEXT_TIP,
-		std::bind(&title_screen::update_tip, this, std::ref(win), true));
+		std::bind(&title_screen::update_tip, this, true));
 
 	register_button(win, "previous_tip", hotkey::TITLE_SCREEN__PREVIOUS_TIP,
-		std::bind(&title_screen::update_tip, this, std::ref(win), false));
+		std::bind(&title_screen::update_tip, this, false));
 
 	//
 	// Help
@@ -316,14 +251,6 @@ void title_screen::pre_show(window& win)
 	register_button(win, "about", hotkey::HOTKEY_NULL, std::bind(&game_version::display<>));
 
 	//
-	// Tutorial
-	//
-	register_button(win, "tutorial", hotkey::TITLE_SCREEN__TUTORIAL, [this, &win]() {
-		game_.set_tutorial();
-		win.set_retval(LAUNCH_GAME);
-	});
-
-	//
 	// Campaign
 	//
 	register_button(win, "campaign", hotkey::TITLE_SCREEN__CAMPAIGN, [this, &win]() {
@@ -340,7 +267,7 @@ void title_screen::pre_show(window& win)
 	// Multiplayer
 	//
 	register_button(win, "multiplayer", hotkey::TITLE_SCREEN__MULTIPLAYER,
-		std::bind(&title_screen::button_callback_multiplayer, this, std::ref(win)));
+		std::bind(&title_screen::button_callback_multiplayer, this));
 
 	//
 	// Load game
@@ -348,20 +275,18 @@ void title_screen::pre_show(window& win)
 	register_button(win, "load", hotkey::HOTKEY_LOAD_GAME, [this, &win]() {
 		if(game_.load_game()) {
 			win.set_retval(LAUNCH_GAME);
-		} else {
-			game_.clear_loaded_game();
 		}
 	});
 
 	//
 	// Addons
 	//
-	register_button(win, "addons", hotkey::TITLE_SCREEN__ADDONS, []() {
+	register_button(win, "addons", hotkey::TITLE_SCREEN__ADDONS, [&win]() {
 		// NOTE: we need the help_manager to get access to the Add-ons section in the game help!
 		help::help_manager help_manager(&game_config_manager::get()->game_config());
 
 		if(manage_addons()) {
-			game_config_manager::get()->reload_changed_game_config();
+			win.set_retval(RELOAD_GAME_DATA);
 		}
 	});
 
@@ -382,11 +307,7 @@ void title_screen::pre_show(window& win)
 	register_button(win, "language", hotkey::HOTKEY_LANGUAGE, [this, &win]() {
 		try {
 			if(game_.change_language()) {
-				t_string::reset_translations();
-				::image::flush_cache();
-				sound::flush_cache();
-				font::load_font_config();
-				on_resize(win);
+				on_resize();
 			}
 		} catch(const std::runtime_error& e) {
 			gui2::show_error_message(e.what());
@@ -396,7 +317,9 @@ void title_screen::pre_show(window& win)
 	//
 	// Preferences
 	//
-	register_button(win, "preferences", hotkey::HOTKEY_PREFERENCES, [this]() { game_.show_preferences(); });
+	register_button(win, "preferences", hotkey::HOTKEY_PREFERENCES, []() {
+		gui2::dialogs::preferences_dialog::display();
+	});
 
 	//
 	// Credits
@@ -422,14 +345,14 @@ void title_screen::pre_show(window& win)
 	}
 }
 
-void title_screen::on_resize(window& win)
+void title_screen::on_resize()
 {
-	win.set_retval(REDRAW_BACKGROUND);
+	set_retval(REDRAW_BACKGROUND);
 }
 
-void title_screen::update_tip(window& win, const bool previous)
+void title_screen::update_tip(const bool previous)
 {
-	multi_page* tip_pages = find_widget<multi_page>(&win, "tips", false, false);
+	multi_page* tip_pages = find_widget<multi_page>(get_window(), "tips", false, false);
 	if(tip_pages == nullptr) {
 		return;
 	}
@@ -459,7 +382,7 @@ void title_screen::update_tip(window& win, const bool previous)
 	 * Not entirely sure why, but since we plan to move to SDL2 that change
 	 * will probably fix this issue automatically.
 	 */
-	win.set_is_dirty(true);
+	get_window()->set_is_dirty(true);
 }
 
 void title_screen::show_debug_clock_window()
@@ -474,7 +397,7 @@ void title_screen::show_debug_clock_window()
 	}
 }
 
-void title_screen::hotkey_callback_select_tests(window& window)
+void title_screen::hotkey_callback_select_tests()
 {
 	game_config_manager::get()->load_game_config_for_create(false, true);
 
@@ -493,11 +416,11 @@ void title_screen::hotkey_callback_select_tests(window& window)
 	int choice = dlg.selected_index();
 	if(choice >= 0) {
 		game_.set_test(options[choice]);
-		window.set_retval(LAUNCH_GAME);
+		set_retval(LAUNCH_GAME);
 	}
 }
 
-void title_screen::button_callback_multiplayer(window& window)
+void title_screen::button_callback_multiplayer()
 {
 	while(true) {
 		gui2::dialogs::mp_method_selection dlg;
@@ -507,29 +430,29 @@ void title_screen::button_callback_multiplayer(window& window)
 			return;
 		}
 
-		const int res = dlg.get_choice();
+		const auto res = dlg.get_choice();
 
-		if(res == 2 && preferences::mp_server_warning_disabled() < 2) {
+		if(res == decltype(dlg)::choice::HOST && preferences::mp_server_warning_disabled() < 2) {
 			if(!gui2::dialogs::mp_host_game_prompt::execute()) {
 				continue;
 			}
 		}
 
 		switch(res) {
-		case 0:
+		case decltype(dlg)::choice::JOIN:
 			game_.select_mp_server(preferences::builtin_servers_list().front().address);
-			window.set_retval(MP_CONNECT);
+			get_window()->set_retval(MP_CONNECT);
 			break;
-		case 1:
+		case decltype(dlg)::choice::CONNECT:
 			game_.select_mp_server("");
-			window.set_retval(MP_CONNECT);
+			get_window()->set_retval(MP_CONNECT);
 			break;
-		case 2:
+		case decltype(dlg)::choice::HOST:
 			game_.select_mp_server("localhost");
-			window.set_retval(MP_HOST);
+			get_window()->set_retval(MP_HOST);
 			break;
-		case 3:
-			window.set_retval(MP_LOCAL);
+		case decltype(dlg)::choice::LOCAL:
+			get_window()->set_retval(MP_LOCAL);
 			break;
 		}
 
@@ -555,9 +478,8 @@ void title_screen::button_callback_cores()
 		const std::string& core_id = cores[core_dlg.get_choice()]["id"];
 
 		preferences::set_core_id(core_id);
-		game_config_manager::get()->reload_changed_game_config();
+		get_window()->set_retval(RELOAD_GAME_DATA);
 	}
 }
 
 } // namespace dialogs
-} // namespace gui2

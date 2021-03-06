@@ -15,16 +15,19 @@
 
 #pragma once
 
+#include "addon/validation.hpp"
 #include "server/campaignd/blacklist.hpp"
 #include "server/common/server_base.hpp"
 #include "server/common/simple_wml.hpp"
 
-#include "utils/functional.hpp"
-#include <unordered_map>
-#include <unordered_set>
-#include <boost/asio/steady_timer.hpp>
+#include <boost/asio/basic_waitable_timer.hpp>
 
 #include <chrono>
+#include <functional>
+#include <iosfwd>
+#include <set>
+#include <unordered_map>
+#include <unordered_set>
 
 namespace campaignd {
 
@@ -34,13 +37,13 @@ namespace campaignd {
 class server : public server_base
 {
 public:
-	explicit server(const std::string& cfg_file);
+	explicit server(const std::string& cfg_file,
+					unsigned short port = 0);
 	server(const config& server) = delete;
 	~server();
 
 	server& operator=(const config& server) = delete;
 
-private:
 	/**
 	 * Client request information object.
 	 *
@@ -57,28 +60,45 @@ private:
 		const std::string addr;
 
 		/**
+		 * context of the coroutine the request is executed in
+		 * async operations on @a sock can use it instead of a handler.
+		 */
+		boost::asio::yield_context yield;
+
+		/**
 		 * Constructor.
 		 *
 		 * @param reqcmd  Request command.
 		 * @param reqcfg  Request WML body.
 		 * @param reqsock Client socket that initiated the request.
+		 * @param yield The function will suspend on write operation using this yield context
 		 *
 		 * @note Neither @a reqcmd nor @a reqcfg are copied into instances, so
 		 *       they are required to exist for as long as every @a request
-		 *       instance that uses them.
+		 *       instance that uses them. Furthermore, @a reqcfg MUST NOT REFER
+		 *       TO A CONST OBJECT, since some code may modify it directly for
+		 *       performance reasons.
 		 */
 		request(const std::string& reqcmd,
-				const config& reqcfg,
-				socket_ptr reqsock)
+				config& reqcfg,
+				socket_ptr reqsock,
+				boost::asio::yield_context yield)
 			: cmd(reqcmd)
 			, cfg(reqcfg)
 			, sock(reqsock)
 			, addr(client_address(sock))
+			, yield(yield)
 		{}
 	};
 
+	friend std::ostream& operator<<(std::ostream& o, const request& r);
+
+private:
+
 	typedef std::function<void (server*, const request& req)> request_handler;
 	typedef std::map<std::string, request_handler> request_handlers_table;
+
+	std::set<std::string> capabilities_;
 
 	/**The hash map of addons metadata*/
 	std::unordered_map<std::string, config> addons_;
@@ -93,6 +113,8 @@ private:
 	int compress_level_; /**< Used for add-on archives. */
 	time_t update_pack_lifespan_;
 
+	bool strict_versions_;
+
 	/** Default upload size limit in bytes. */
 	static const std::size_t default_document_size_limit = 100 * 1024 * 1024;
 
@@ -100,6 +122,9 @@ private:
 	request_handlers_table handlers_;
 
 	std::string feedback_url_format_;
+
+	std::string web_url_;
+	std::string license_notice_;
 
 	blacklist blacklist_;
 	std::string blacklist_file_;
@@ -109,7 +134,6 @@ private:
 	boost::asio::basic_waitable_timer<std::chrono::steady_clock> flush_timer_;
 
 	void handle_new_client(socket_ptr socket);
-	void handle_request(socket_ptr socket, std::shared_ptr<simple_wml::document> doc);
 
 #ifndef _WIN32
 	void handle_read_from_fifo(const boost::system::error_code& error, std::size_t bytes_transferred);
@@ -148,6 +172,30 @@ private:
 
 	void delete_addon(const std::string& id);
 
+	void mark_dirty(const std::string& addon)
+	{
+		dirty_addons_.emplace(addon);
+	}
+
+	/**
+	 * Performs validation on an incoming add-on.
+	 *
+	 * @param req              Server request info, containing either a full
+	 *                         WML pack, or a delta update pack.
+	 * @param existing_addon   Used to store a pointer to the existing add-on
+	 *                         WML on the server if the add-on already exists.
+	 *                         nullptr is stored otherwise.
+	 * @param error_data       Used to store extra error data for status codes
+	 *                         other than ADDON_CHECK_STATUS::SUCCESS. Cleared
+	 *                         otherwise.
+	 *
+	 * @return ADDON_CHECK_STATUS::SUCCESS if the validation checks pass, a
+	 *         more relevant value otherwise.
+	 */
+	ADDON_CHECK_STATUS validate_addon(const server::request& req,
+									  config*& existing_addon,
+									  std::string& error_data);
+
 	/** Retrieves the contents of the [server_info] WML node. */
 	const config& server_info() const { return cfg_.child("server_info"); }
 
@@ -173,6 +221,7 @@ private:
 	 */
 	void register_handlers();
 
+	void handle_server_id(const request&);
 	void handle_request_campaign_list(const request&);//#TODO: rename with 'addon' later?
 	void handle_request_campaign(const request&);
 	void handle_request_campaign_hash(const request&);
@@ -203,12 +252,13 @@ private:
 	 * Send a client an error message.
 	 *
 	 * The WML sent consists of a document containing a single @p [error] child
-	 * with a @a message attribute holding the value of @a msg, and an
-	 * @a extra_data attribute holding the value of @a extra_data. In addition
-	 * to sending the error to the client, a line with the client IP and
-	 * message is recorded to the server log.
+	 * with a @a message attribute holding the value of @a msg, an
+	 * @a extra_data attribute holding the value of @a extra_data, and a
+	 * @a status_code attribute holding the value of @a status_code. In
+	 * addition to sending the error to the client, a line with the client IP
+	 * and message is recorded to the server log.
 	 */
-	void send_error(const std::string& msg, const std::string& extra_data, socket_ptr sock);
+	void send_error(const std::string& msg, const std::string& extra_data, unsigned int status_code, socket_ptr sock);
 };
 
 } // end namespace campaignd

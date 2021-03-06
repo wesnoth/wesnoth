@@ -58,15 +58,7 @@ struct addon_info_translation
 
 	addon_info_translation(const addon_info_translation&) = default;
 
-	addon_info_translation& operator=(const addon_info_translation& o)
-	{
-		if(this != &o) {
-			this->supported = o.supported;
-			this->title = o.title;
-			this->description = o.description;
-		}
-		return *this;
-	}
+	addon_info_translation& operator=(const addon_info_translation& o) = default;
 
 	void read(const config& cfg);
 
@@ -86,7 +78,8 @@ struct addon_info
 
 	std::string icon;
 
-	version_info version;
+	version_info current_version;
+	std::set<version_info, std::greater<version_info>> versions;
 
 	std::string author;
 
@@ -117,8 +110,8 @@ struct addon_info
 
 	addon_info()
 		: id(), title(), description(), icon()
-		, version(), author(), size(), downloads()
-		, uploads(), type(), tags(), locales()
+		, current_version(), versions(), author(), size()
+		, downloads(), uploads(), type(), tags(), locales()
 		, core()
 		, depends()
 		, feedback_url()
@@ -130,8 +123,8 @@ struct addon_info
 
 	explicit addon_info(const config& cfg)
 		: id(), title(), description(), icon()
-		, version(), author(), size(), downloads()
-		, uploads(), type(), tags(), locales()
+		, current_version(), versions(), author(), size()
+		, downloads(), uploads(), type(), tags(), locales()
 		, core()
 		, depends()
 		, feedback_url()
@@ -145,30 +138,7 @@ struct addon_info
 
 	addon_info(const addon_info&) = default;
 
-	addon_info& operator=(const addon_info& o) {
-		if(this != &o) {
-			this->id = o.id;
-			this->title = o.title;
-			this->description = o.description;
-			this->icon = o.icon;
-			this->version = o.version;
-			this->author = o.author;
-			this->size = o.size;
-			this->downloads = o.downloads;
-			this->uploads = o.uploads;
-			this->type = o.type;
-			this->tags = o.tags;
-			this->locales = o.locales;
-			this->core = o.core;
-			this->depends = o.depends;
-			this->feedback_url = o.feedback_url;
-			this->updated = o.updated;
-			this->created = o.created;
-			this->local_only = o.local_only;
-			this->info_translations = o.info_translations;
-		}
-		return *this;
-	}
+	addon_info& operator=(const addon_info& o) = default;
 
 	void read(const config& cfg);
 

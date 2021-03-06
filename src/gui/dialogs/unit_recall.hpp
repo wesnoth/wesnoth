@@ -34,10 +34,8 @@ namespace dialogs
 
 class unit_recall : public modal_dialog
 {
-	typedef std::vector<unit_const_ptr> recalls_ptr_vector;
-
 public:
-	unit_recall(recalls_ptr_vector& recall_list, team& team);
+	unit_recall(std::vector<unit_const_ptr>& recall_list, team& team);
 
 	int get_selected_index() const
 	{
@@ -45,7 +43,7 @@ public:
 	}
 
 private:
-	recalls_ptr_vector& recall_list_;
+	std::vector<unit_const_ptr>& recall_list_;
 
 	team& team_;
 
@@ -55,10 +53,10 @@ private:
 	std::vector<std::string> last_words_;
 
 	/** Callbacks */
-	void list_item_clicked(window& window);
-	void filter_text_changed(text_box_base* textbox, const std::string& text);
-	void rename_unit(window& window);
-	void dismiss_unit(window& window);
+	void list_item_clicked();
+	void filter_text_changed(const std::string& text);
+	void rename_unit();
+	void dismiss_unit();
 	void show_help();
 
 	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */

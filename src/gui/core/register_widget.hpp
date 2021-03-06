@@ -22,7 +22,7 @@
  * Call this function to register a widget. Use this macro in the
  * implementation, inside the gui2 namespace.
  *
- * See @ref register_widget for more information.
+ * See @ref gui2::register_widget for more information.
  *
  * @note When the type is foo_definition, the id "foo" and no special key best
  * use RESISTER_WIDGET(foo) instead.

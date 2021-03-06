@@ -54,8 +54,8 @@ function ca_spread_poison:evaluation(cfg, data, filter_own)
             local cant_poison = defender.status.poisoned or defender.status.unpoisonable
 
             -- For now, we also simply don't poison units on healing locations (unless standard combat CA does it)
-            local defender_terrain = wesnoth.get_terrain(defender.x, defender.y)
-            local healing = wesnoth.get_terrain_info(defender_terrain).healing
+            local defender_terrain = wesnoth.current.map[defender]
+            local healing = wesnoth.terrain_types[defender_terrain].healing
 
             -- Also, poisoning units that would level up through the attack or could level on their turn as a result is very bad
             local about_to_level = defender.max_experience - defender.experience <= (attacker.level * 2 * wesnoth.game_config.combat_experience)

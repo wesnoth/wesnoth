@@ -28,7 +28,7 @@
 
 #include "formula/string_utils.hpp"
 
-#include <boost/regex.hpp>
+#include <regex>
 
 static bool is_positive_integer(const std::string& str) {
 	return str != "0" && std::find_if(str.begin(), str.end(), [](char c) { return !std::isdigit(c); }) == str.end();
@@ -50,7 +50,7 @@ public:
 		}
 
 	};
-	location_palette_item(CVideo& video, editor::location_palette& parent)
+	location_palette_item(CVideo& video, editor::location_palette* parent)
 		: gui::widget(video, true)
 		, parent_(parent)
 	{
@@ -78,7 +78,7 @@ public:
 		if (!(hit(e.x, e.y)))
 			return;
 		if (e.button == SDL_BUTTON_LEFT) {
-			parent_.select_item(id_);
+			parent_->select_item(id_);
 		}
 		if (e.button == SDL_BUTTON_RIGHT) {
 			//TODO: add a context menu with the following options:
@@ -131,7 +131,7 @@ private:
 	std::string id_;
 	std::string desc_;
 	state_t state_;
-	editor::location_palette& parent_;
+	editor::location_palette* parent_;
 };
 
 class location_palette_button : public gui::button
@@ -263,8 +263,8 @@ void location_palette::adjust_size(const SDL_Rect& target)
 		button_add_.reset(new location_palette_button(video(), SDL_Rect{ target.x , bottom -= button_y, target.w - 10, button_height }, _("Add"), [this]() {
 			std::string newid;
 			if (gui2::dialogs::edit_text::execute(_("New Location Identifier"), "", newid)) {
-				static const boost::regex valid_id("[a-zA-Z0-9_]+");
-				if(boost::regex_match(newid, valid_id)) {
+				static const std::regex valid_id("[a-zA-Z0-9_]+");
+				if(std::regex_match(newid, valid_id)) {
 					add_item(newid);
 				}
 				else {
@@ -291,10 +291,8 @@ void location_palette::adjust_size(const SDL_Rect& target)
 	// If that happens, no items will fit and we'll have a negative number here.
 	// Just skip it in that case.
 	if(items_fitting > 0 && num_visible_items() != items_fitting) {
-		location_palette_item lpi(disp_.video(), *this);
-		//Why does this need a pointer to a non-const as second paraeter?
-		//TODO: we should write our own ptr_vector class, boost::ptr_vector has a lot of flaws.
-		buttons_.resize(items_fitting, &lpi);
+		location_palette_item lpi(disp_.video(), this);
+		buttons_.resize(items_fitting, lpi);
 	}
 
 	set_location(target);
@@ -419,8 +417,7 @@ void location_palette::add_item(const std::string& id)
 	const auto itor = std::upper_bound(items_.begin(), items_.end(), id, loc_id_comp);
 	if(itor == items_.begin() || *(itor - 1) != id) {
 		pos = std::distance(items_.begin(), items_.insert(itor, id));
-	}
-	else {
+	} else {
 		pos = std::distance(items_.begin(), itor);
 	}
 	selected_item_ = id;

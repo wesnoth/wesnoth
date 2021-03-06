@@ -26,6 +26,8 @@
 #include "units/unit.hpp"
 #include "units/types.hpp"
 
+#include <cmath>
+
 static lg::log_domain log_engine("engine");
 #define DBG_NG LOG_STREAM(debug, log_engine)
 #define ERR_NG LOG_STREAM(err, log_engine)
@@ -128,7 +130,7 @@ static void write_str_int_map(config_writer &out, const stats::str_int_map& m)
 		m.begin(), m.end(),
 		std::inserter(rev, rev.begin()),
 		[](const stats::str_int_map::value_type p) {
-			return std::make_pair(p.second, p.first);
+			return std::pair(p.second, p.first);
 		}
 	);
 	reverse_map::const_iterator i = rev.begin(), j;
@@ -839,4 +841,3 @@ std::ostream& operator<<(std::ostream& outstream, const statistics::stats::hitra
 	outstream << "[" << by_cth.hits << "/" << by_cth.strikes << "]";
 	return outstream;
 }
-

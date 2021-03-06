@@ -16,6 +16,7 @@
 #include "server/common/dbconn.hpp"
 #include "server/common/resultsets/tournaments.hpp"
 #include "server/common/resultsets/ban_check.hpp"
+#include "server/common/resultsets/game_history.hpp"
 #include "log.hpp"
 
 static lg::log_domain log_sql_handler("sql_executor");
@@ -36,11 +37,10 @@ dbconn::dbconn(const config& c)
 {
 	try
 	{
-		// NOTE: settings put on the connection, rather than the account, are NOT kept if a reconnect occurs!
 		account_ = mariadb::account::create(c["db_host"].str(), c["db_user"].str(), c["db_password"].str());
 		account_->set_connect_option(mysql_option::MYSQL_SET_CHARSET_NAME, std::string("utf8mb4"));
 		account_->set_schema(c["db_name"].str());
-		// initialize sync query connection
+		// initialize the connection used to run synchronous queries.
 		connection_ = create_connection();
 	}
 	catch(const mariadb::exception::base& e)
@@ -64,7 +64,6 @@ mariadb::connection_ref dbconn::create_connection()
 //
 // queries
 //
-/* simple test async query that will taken a noticeable amount of time to complete */
 int dbconn::async_test_query(int limit)
 {
 	std::string sql = "with recursive TEST(T) as "
@@ -111,6 +110,69 @@ std::string dbconn::get_tournaments()
 	}
 }
 
+std::unique_ptr<simple_wml::document> dbconn::get_game_history(int player_id, int offset)
+{
+	try
+	{
+		std::string game_history_query = "select "
+"  game.GAME_NAME, "
+"  game.RELOAD, "
+"  game.START_TIME, "
+"  GROUP_CONCAT(CONCAT(player.USER_NAME, ':', player.FACTION)) as PLAYERS, "
+"  IFNULL(scenario.NAME, '') as SCENARIO_NAME, "
+"  IFNULL(scenario.ID, '') as SCENARIO_ID, "
+"  IFNULL(era.NAME, '') as ERA_NAME, "
+"  IFNULL(era.ID, '') as ERA_ID, "
+"  IFNULL(GROUP_CONCAT(distinct mods.NAME, '') as MODIFICATION_NAMES, "
+"  IFNULL(GROUP_CONCAT(distinct mods.ID), '') as MODIFICATION_IDS, "
+"  case "
+"  when game.PUBLIC = 1 "
+"  then concat('https://replays.wesnoth.org/', substring(game.INSTANCE_VERSION, 1, 4), '/', year(game.END_TIME), '/', lpad(month(game.END_TIME), 2, '0'), '/', lpad(day(game.END_TIME), 2, '0'), '/', game.REPLAY_NAME) "
+"  else '' "
+"  end as REPLAY_URL "
+"from "+db_game_info_table_+" game "
+"inner join "+db_game_player_info_table_+" player "
+"   on exists "
+"  ( "
+"    select 1 "
+"    from "+db_game_player_info_table_+" player1 "
+"    where game.INSTANCE_UUID = player1.INSTANCE_UUID "
+"      and game.GAME_ID = player1.GAME_ID "
+"      and player1.USER_ID = ? "
+"  ) "
+"  and game.INSTANCE_UUID = player.INSTANCE_UUID "
+"  and game.GAME_ID = player.GAME_ID "
+"  and player.USER_ID != -1 "
+"  and game.END_TIME is not NULL "
+"inner join "+db_game_content_info_table_+" scenario "
+"   on scenario.TYPE = 'scenario' "
+"  and scenario.INSTANCE_UUID = game.INSTANCE_UUID "
+"  and scenario.GAME_ID = game.GAME_ID "
+"inner join "+db_game_content_info_table_+" era "
+"   on era.TYPE = 'era' "
+"  and era.INSTANCE_UUID = game.INSTANCE_UUID "
+"  and era.GAME_ID = game.GAME_ID "
+"left join "+db_game_content_info_table_+" mods "
+"   on mods.TYPE = 'modification' "
+"  and mods.INSTANCE_UUID = game.INSTANCE_UUID "
+"  and mods.GAME_ID = game.GAME_ID "
+"group by game.INSTANCE_UUID, game.GAME_ID "
+"order by game.START_TIME desc "
+"limit 11 offset ? ";
+
+		game_history gh;
+		get_complex_results(create_connection(), gh, game_history_query, player_id, offset);
+		return gh.to_doc();
+	}
+	catch(const mariadb::exception::base& e)
+	{
+		log_sql_exception("Could not retrieve the game history for forum ID `"+std::to_string(player_id)+"`!", e);
+		auto doc = std::make_unique<simple_wml::document>();
+		doc->set_attr("error", "Error retrieving game history.");
+		return doc;
+	}
+}
+
 bool dbconn::user_exists(const std::string& name)
 {
 	try
@@ -121,6 +183,19 @@ bool dbconn::user_exists(const std::string& name)
 	{
 		log_sql_exception("Unable to check if user row for '"+name+"' exists!", e);
 		return false;
+	}
+}
+
+long dbconn::get_forum_id(const std::string& name)
+{
+	try
+	{
+		return get_single_long(connection_, "SELECT IFNULL((SELECT user_id FROM `"+db_users_table_+"` WHERE UPPER(username)=UPPER(?)), 0)", name);
+	}
+	catch(const mariadb::exception::base& e)
+	{
+		log_sql_exception("Unable to get user_id for '"+name+"'!", e);
+		return 0;
 	}
 }
 
@@ -244,12 +319,12 @@ void dbconn::insert_game_player_info(const std::string& uuid, int game_id, const
 		log_sql_exception("Failed to insert game player info row for UUID `"+uuid+"` and game ID `"+std::to_string(game_id)+"`", e);
 	}
 }
-void dbconn::db_insert_game_content_info(const std::string& uuid, int game_id, const std::string& type, const std::string& id, const std::string& source, const std::string& version)
+void dbconn::insert_game_content_info(const std::string& uuid, int game_id, const std::string& type, const std::string& name, const std::string& id, const std::string& source, const std::string& version)
 {
 	try
 	{
-		modify(connection_, "INSERT INTO `"+db_game_content_info_table_+"`(INSTANCE_UUID, GAME_ID, TYPE, ID, SOURCE, VERSION) VALUES(?, ?, ?, ?, ?, ?)",
-			uuid, game_id, type, id, source, version);
+		modify(connection_, "INSERT INTO `"+db_game_content_info_table_+"`(INSTANCE_UUID, GAME_ID, TYPE, NAME, ID, SOURCE, VERSION) VALUES(?, ?, ?, ?, ?, ?, ?)",
+			uuid, game_id, type, name, id, source, version);
 	}
 	catch(const mariadb::exception::base& e)
 	{
@@ -270,8 +345,7 @@ void dbconn::set_oos_flag(const std::string& uuid, int game_id)
 }
 
 //
-// queries can return data with various types that can't be easily fit into a pre-determined structure
-// therefore for queries that can return multiple rows of multiple columns, implement a class to define how the results should be read
+// handle complex query results
 //
 template<typename... Args>
 void dbconn::get_complex_results(mariadb::connection_ref connection, rs_base& base, const std::string& sql, Args&&... args)
@@ -280,7 +354,7 @@ void dbconn::get_complex_results(mariadb::connection_ref connection, rs_base& ba
 	base.read(rslt);
 }
 //
-// get single values
+// handle single values
 //
 template<typename... Args>
 std::string dbconn::get_single_string(mariadb::connection_ref connection, const std::string& sql, Args&&... args)
@@ -302,9 +376,12 @@ long dbconn::get_single_long(mariadb::connection_ref connection, const std::stri
 	if(rslt->next())
 	{
 		// mariadbpp checks for strict integral equivalence, but we don't care
-		// so check the type beforehand, call the associated getter, and let it silently get upcast to an int if needed
+		// so check the type beforehand, call the associated getter, and let it silently get upcast to a long if needed
+		// subselects also apparently return a decimal
 		switch(rslt->column_type(0))
 		{
+			case mariadb::value::type::decimal:
+				return static_cast<long>(rslt->get_decimal(0).float32());
 			case mariadb::value::type::unsigned8:
 			case mariadb::value::type::signed8:
 				return rslt->get_signed8(0);
@@ -367,9 +444,9 @@ int dbconn::modify(mariadb::connection_ref connection, const std::string& sql, A
 	}
 }
 
-//
-// start of recursive unpacking of variadic template in order to be able to call correct parameterized setters on query
-//
+
+
+
 template<typename... Args>
 mariadb::statement_ref dbconn::query(mariadb::connection_ref connection, const std::string& sql, Args&&... args)
 {
@@ -377,15 +454,14 @@ mariadb::statement_ref dbconn::query(mariadb::connection_ref connection, const s
 	prepare(stmt, 0, args...);
 	return stmt;
 }
-// split off the next parameter
+
 template<typename Arg, typename... Args>
 void dbconn::prepare(mariadb::statement_ref stmt, int i, Arg arg, Args&&... args)
 {
 	i = prepare(stmt, i, arg);
 	prepare(stmt, i, args...);
 }
-// template specialization for supported parameter types
-// there are other parameter setters, but so far there hasn't been a reason to add them
+
 template<>
 int dbconn::prepare(mariadb::statement_ref stmt, int i, int arg)
 {
@@ -410,7 +486,7 @@ int dbconn::prepare(mariadb::statement_ref stmt, int i, std::string arg)
 	stmt->set_string(i++, arg);
 	return i;
 }
-// no more parameters, nothing left to do
+
 void dbconn::prepare(mariadb::statement_ref, int){}
 
 #endif //HAVE_MYSQLPP

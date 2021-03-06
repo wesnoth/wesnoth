@@ -14,7 +14,7 @@
 #include "playturn_network_adapter.hpp"
 #include "log.hpp"
 
-#include "utils/functional.hpp"
+#include <functional>
 #include <iostream>
 #include <cassert>
 
@@ -168,5 +168,5 @@ static bool read_config(config& src, config& dst)
 
 playturn_network_adapter::source_type playturn_network_adapter::get_source_from_config(config& cfg)
 {
-	return std::bind(read_config, std::ref(cfg), _1);
+	return std::bind(read_config, std::ref(cfg), std::placeholders::_1);
 }

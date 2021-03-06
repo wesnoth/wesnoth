@@ -18,9 +18,7 @@
 
 #include <map>
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 class select_orb_colors : public modal_dialog
 {
@@ -35,14 +33,21 @@ public:
 	DEFINE_SIMPLE_DISPLAY_WRAPPER(select_orb_colors)
 
 private:
+	void setup_orb_toggle(const std::string& base_id, bool& shown);
 	void setup_orb_group(const std::string& base_id, bool& shown, const std::string& initial);
 
+	void reset_orb_toggle(const std::string& base_id, bool& shown);
 	void reset_orb_group(const std::string& base_id, bool& shown, const std::string& initial);
 
 	void toggle_orb_callback(bool& storage);
 	void reset_orb_callback();
 
-	bool show_unmoved_, show_partial_, show_moved_, show_ally_, show_enemy_;
+	bool show_unmoved_;
+	bool show_partial_;
+	bool show_disengaged_;
+	bool show_moved_;
+	bool show_ally_;
+	bool show_enemy_;
 
 	std::map<std::string, group<std::string>> groups_;
 
@@ -57,4 +62,3 @@ private:
 };
 
 } // namespace dialogs
-} // namespace gui2

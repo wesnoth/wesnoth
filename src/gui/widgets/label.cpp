@@ -25,11 +25,12 @@
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 
+#include "cursor.hpp"
 #include "desktop/clipboard.hpp"
 #include "desktop/open.hpp"
 #include "gettext.hpp"
 
-#include "utils/functional.hpp"
+#include <functional>
 #include <string>
 #include <sstream>
 
@@ -43,46 +44,40 @@ REGISTER_WIDGET(label)
 label::label(const implementation::builder_label& builder)
 	: styled_widget(builder, type())
 	, state_(ENABLED)
-	, can_wrap_(false)
-	, characters_per_line_(0)
-	, link_aware_(false)
+	, can_wrap_(builder.wrap)
+	, characters_per_line_(builder.characters_per_line)
+	, link_aware_(builder.link_aware)
 	, link_color_(color_t::from_hex_string("ffff00"))
-	, can_shrink_(false)
-	, text_alpha_(255)
+	, can_shrink_(builder.can_shrink)
+	, text_alpha_(ALPHA_OPAQUE)
 {
-	connect_signal<event::LEFT_BUTTON_CLICK>(std::bind(&label::signal_handler_left_button_click, this, _2, _3));
-	connect_signal<event::RIGHT_BUTTON_CLICK>(std::bind(&label::signal_handler_right_button_click, this, _2, _3));
+	connect_signal<event::LEFT_BUTTON_CLICK>(
+		std::bind(&label::signal_handler_left_button_click, this, std::placeholders::_3));
+	connect_signal<event::RIGHT_BUTTON_CLICK>(
+		std::bind(&label::signal_handler_right_button_click, this, std::placeholders::_3));
+	connect_signal<event::MOUSE_MOTION>(
+		std::bind(&label::signal_handler_mouse_motion, this, std::placeholders::_3, std::placeholders::_5));
+	connect_signal<event::MOUSE_LEAVE>(
+		std::bind(&label::signal_handler_mouse_leave, this, std::placeholders::_3));
 }
 
-bool label::can_wrap() const
+void label::update_canvas()
 {
-	return can_wrap_ || characters_per_line_ != 0;
-}
-
-unsigned label::get_characters_per_line() const
-{
-	return characters_per_line_;
-}
-
-bool label::get_link_aware() const
-{
-	return link_aware_;
-}
-
-color_t label::get_link_color() const
-{
-	return link_color_;
-}
-
-void label::set_text_alpha(unsigned short alpha)
-{
-	text_alpha_ = alpha;
+	// Inherit.
+	styled_widget::update_canvas();
 
 	for(auto& tmp : get_canvases()) {
 		tmp.set_variable("text_alpha", wfl::variant(text_alpha_));
 	}
+}
 
-	set_is_dirty(true);
+void label::set_text_alpha(unsigned short alpha)
+{
+	if(alpha != text_alpha_) {
+		text_alpha_ = alpha;
+		update_canvas();
+		set_is_dirty(true);
+	}
 }
 
 void label::set_active(const bool active)
@@ -92,45 +87,22 @@ void label::set_active(const bool active)
 	}
 }
 
-bool label::get_active() const
-{
-	return state_ != DISABLED;
-}
-
-unsigned label::get_state() const
-{
-	return state_;
-}
-
-bool label::disable_click_dismiss() const
-{
-	return false;
-}
-
-void label::set_characters_per_line(const unsigned characters_per_line)
-{
-	characters_per_line_ = characters_per_line;
-}
-
 void label::set_link_aware(bool link_aware)
 {
-	if(link_aware == link_aware_) {
-		return;
+	if(link_aware != link_aware_) {
+		link_aware_ = link_aware;
+		update_canvas();
+		set_is_dirty(true);
 	}
-
-	link_aware_ = link_aware;
-	update_canvas();
-	set_is_dirty(true);
 }
 
 void label::set_link_color(const color_t& color)
 {
-	if(color == link_color_) {
-		return;
+	if(color != link_color_) {
+		link_color_ = color;
+		update_canvas();
+		set_is_dirty(true);
 	}
-	link_color_ = color;
-	update_canvas();
-	set_is_dirty(true);
 }
 
 void label::set_state(const state_t state)
@@ -141,7 +113,7 @@ void label::set_state(const state_t state)
 	}
 }
 
-void label::signal_handler_left_button_click(const event::ui_event /* event */, bool & handled)
+void label::signal_handler_left_button_click(bool& handled)
 {
 	DBG_GUI_E << "label click" << std::endl;
 
@@ -154,7 +126,6 @@ void label::signal_handler_left_button_click(const event::ui_event /* event */, 
 		handled = true;
 		return;
 	}
-
 
 	point mouse = get_mouse_position();
 
@@ -169,7 +140,7 @@ void label::signal_handler_left_button_click(const event::ui_event /* event */, 
 
 	DBG_GUI_E << "Clicked Link:\"" << link << "\"\n";
 
-	const int res = show_message(_("Do you want to open this link?"), link, dialogs::message::yes_no_buttons);
+	const int res = show_message(_("Open link?"), link, dialogs::message::yes_no_buttons);
 	if(res == gui2::retval::OK) {
 		desktop::open_object(link);
 	}
@@ -177,7 +148,7 @@ void label::signal_handler_left_button_click(const event::ui_event /* event */, 
 	handled = true;
 }
 
-void label::signal_handler_right_button_click(const event::ui_event /* event */, bool & handled)
+void label::signal_handler_right_button_click(bool& handled)
 {
 	DBG_GUI_E << "label right click" << std::endl;
 
@@ -205,6 +176,51 @@ void label::signal_handler_right_button_click(const event::ui_event /* event */,
 	handled = true;
 }
 
+void label::signal_handler_mouse_motion(bool& handled, const point& coordinate)
+{
+	DBG_GUI_E << "label mouse motion" << std::endl;
+
+	if(!get_link_aware()) {
+		return; // without marking event as "handled"
+	}
+
+	point mouse = coordinate;
+
+	mouse.x -= get_x();
+	mouse.y -= get_y();
+
+	update_mouse_cursor(!get_label_link(mouse).empty());
+
+	handled = true;
+}
+
+void label::signal_handler_mouse_leave(bool& handled)
+{
+	DBG_GUI_E << "label mouse leave" << std::endl;
+
+	if(!get_link_aware()) {
+		return; // without marking event as "handled"
+	}
+
+	// We left the widget, so just unconditionally reset the cursor
+	update_mouse_cursor(false);
+
+	handled = true;
+}
+
+void label::update_mouse_cursor(bool enable)
+{
+	// Someone else may set the mouse cursor for us to something unusual (e.g.
+	// the WAIT cursor) so we ought to mess with that only if it's set to
+	// NORMAL or HYPERLINK.
+
+	if(enable && cursor::get() == cursor::NORMAL) {
+		cursor::set(cursor::HYPERLINK);
+	} else if(!enable && cursor::get() == cursor::HYPERLINK) {
+		cursor::set(cursor::NORMAL);
+	}
+}
+
 // }---------- DEFINITION ---------{
 
 label_definition::label_definition(const config& cfg)
@@ -215,47 +231,8 @@ label_definition::label_definition(const config& cfg)
 	load_resolutions<resolution>(cfg);
 }
 
-/*WIKI
- * @page = GUIWidgetDefinitionWML
- * @order = 1_label
- *
- * == Label ==
- *
- * @macro = label_description
- *
- * Although the label itself has no event interaction it still has two states.
- * The reason is that labels are often used as visual indication of the state
- * of the widget it labels.
- *
- * Note: The above is outdated, if "link_aware" is enabled then there is interaction.
- *
- *
- * The following states exist:
- * * state_enabled, the label is enabled.
- * * state_disabled, the label is disabled.
- * @begin{parent}{name="gui/"}
- * @begin{tag}{name="label_definition"}{min=0}{max=-1}{super="generic/widget_definition"}
- * @begin{tag}{name="resolution"}{min=0}{max=-1}{super="generic/widget_definition/resolution"}
- * @begin{table}{config}
- *     link_aware & f_bool & false & Whether the label is link aware. This means
- *                                     it is rendered with links highlighted,
- *                                     and responds to click events on those
- *                                     links. $
- *     link_color & string & #ffff00 & The color to render links with. This
- *                                     string will be used verbatim in pango
- *                                     markup for each link. $
- * @end{table}
- * @begin{tag}{name="state_enabled"}{min=0}{max=1}{super="generic/state"}
- * @end{tag}{name="state_enabled"}
- * @begin{tag}{name="state_disabled"}{min=0}{max=1}{super="generic/state"}
- * @end{tag}{name="state_disabled"}
- * @end{tag}{name="resolution"}
- * @end{tag}{name="label_definition"}
- * @end{parent}{name="gui/"}
- */
 label_definition::resolution::resolution(const config& cfg)
 	: resolution_definition(cfg)
-	, link_aware(cfg["link_aware"].to_bool(false))
 	, link_color(cfg["link_color"].empty() ? color_t::from_hex_string("ffff00") : color_t::from_rgba_string(cfg["link_color"].str()))
 {
 	// Note the order should be the same as the enum state_t is label.hpp.
@@ -264,43 +241,6 @@ label_definition::resolution::resolution(const config& cfg)
 }
 
 // }---------- BUILDER -----------{
-
-/*WIKI_MACRO
- * @begin{macro}{label_description}
- *
- *        A label displays a text, the text can be wrapped but no scrollbars
- *        are provided.
- * @end{macro}
- */
-
-/*WIKI
- * @page = GUIWidgetInstanceWML
- * @order = 2_label
- * @begin{parent}{name="gui/window/resolution/grid/row/column/"}
- * @begin{tag}{name="label"}{min=0}{max=-1}{super="generic/widget_instance"}
- * == Label ==
- *
- * @macro = label_description
- *
- * List with the label specific variables:
- * @begin{table}{config}
- *     wrap & bool & false &      Is wrapping enabled for the label. $
- *     characters_per_line & unsigned & 0 &
- *                                Sets the maximum number of characters per
- *                                line. The amount is an approximate since the
- *                                width of a character differs. E.g. iii is
- *                                smaller than MMM. When the value is non-zero
- *                                it also implies can_wrap is true.
- *                                When having long strings wrapping them can
- *                                increase readability, often 66 characters per
- *                                line is considered the optimum for a one
- *                                column text.
- *     text_alignment & h_align & "left" &
- *                                How is the text aligned in the label. $
- * @end{table}
- * @end{tag}{name="label"}
- * @end{parent}{name="gui/window/resolution/grid/row/column/"}
- */
 
 namespace implementation
 {
@@ -311,6 +251,7 @@ builder_label::builder_label(const config& cfg)
 	, characters_per_line(cfg["characters_per_line"])
 	, text_alignment(decode_text_alignment(cfg["text_alignment"]))
 	, can_shrink(cfg["can_shrink"].to_bool(false))
+	, link_aware(cfg["link_aware"].to_bool(false))
 {
 }
 
@@ -321,12 +262,7 @@ widget* builder_label::build() const
 	const auto conf = lbl->cast_config_to<label_definition>();
 	assert(conf);
 
-	lbl->set_can_wrap(wrap);
-	lbl->set_characters_per_line(characters_per_line);
 	lbl->set_text_alignment(text_alignment);
-	lbl->set_text_alpha(ALPHA_OPAQUE);
-	lbl->set_can_shrink(can_shrink);
-	lbl->set_link_aware(conf->link_aware);
 	lbl->set_link_color(conf->link_color);
 
 	DBG_GUI_G << "Window builder: placed label '" << id << "' with definition '"

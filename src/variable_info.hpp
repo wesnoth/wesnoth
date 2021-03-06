@@ -98,8 +98,8 @@ public:
 	variable_info_mutable(const std::string& name, config& game_vars)
 		: variable_info<V>(name, game_vars)
 	{
-		static_assert(!std::is_same<
-			variable_info_implementation::vi_policy_const, std::remove_const_t<V>>::value,
+		static_assert(!std::is_same_v<
+			variable_info_implementation::vi_policy_const, std::remove_const_t<V>>,
 			"variable_info_mutable cannot be specialized with 'vi_policy_const'"
 		);
 	}

@@ -19,8 +19,10 @@
 #include "tstring.hpp"
 
 #include <atomic>
+#include <chrono>
 #include <future>
 #include <map>
+#include <optional>
 #include <vector>
 
 namespace cursor
@@ -63,6 +65,7 @@ enum class loading_stage
 
 namespace gui2
 {
+class drawing;
 class label;
 class window;
 
@@ -98,20 +101,19 @@ private:
 
 	static loading_screen* singleton_;
 
-	int animation_counter_;
 	std::function<void()> load_func_;
 	std::future<void> worker_result_;
 	std::unique_ptr<cursor::setter> cursor_setter_;
 
 	label* progress_stage_label_;
-	label* animation_label_;
+	drawing* animation_;
+
+	std::optional<decltype(std::chrono::steady_clock::now())> animation_start_;
 
 	std::atomic<loading_stage> current_stage_;
 
 	using stage_map = std::map<loading_stage, t_string>;
 	stage_map visible_stages_;
-
-	std::vector<t_string> animation_stages_;
 	stage_map::const_iterator current_visible_stage_;
 };
 

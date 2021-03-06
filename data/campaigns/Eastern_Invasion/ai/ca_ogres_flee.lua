@@ -18,8 +18,6 @@ function ca_ogres_flee:execution()
         formula = 'movement_left = 0'
     }
 
-    local width, height = wesnoth.get_map_size()
-
     -- Need the enemy map and enemy attack map if avoid_enemies is set
     local enemies = wesnoth.units.find_on_map {  { "filter_side", { {"enemy_of", {side = wesnoth.current.side} } } } }
     local enemy_attack_map = BC.get_attack_map(enemies)
@@ -33,11 +31,12 @@ function ca_ogres_flee:execution()
             if (not unit_in_way) or (unit_in_way == u) then
 
                 -- First rating is distance from a map edge
+                local map = wesnoth.current.map
                 local dist_left = r[1] - 1
-                local dist_right = width - r[1]
+                local dist_right = map.playable_width - r[1]
                 local dist_top_left = M.distance_between(r[1], r[2], 4, 1)
                 local dist_top_right = M.distance_between(r[1], r[2], 40, 1)
-                local dist_bottom = height - r[2]
+                local dist_bottom = map.playable_height - r[2]
                 local dist = math.min(dist_left, dist_right, dist_top_left, dist_top_right, dist_bottom)
 
                 local rating = - dist

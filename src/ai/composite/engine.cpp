@@ -75,7 +75,6 @@ void engine::parse_engine_from_config( readonly_context &context, const config &
 	}
 }
 
-
 void engine::parse_goal_from_config( readonly_context &context, const config &cfg, std::back_insert_iterator<std::vector< goal_ptr >> b )
 {
 	engine_ptr eng = context.get_engine_by_cfg(cfg);
@@ -84,7 +83,6 @@ void engine::parse_goal_from_config( readonly_context &context, const config &cf
 		eng->do_parse_goal_from_config(cfg, b);
 	}
 }
-
 
 void engine::parse_stage_from_config( ai_context &context, const config &cfg, std::back_insert_iterator<std::vector< stage_ptr >> b )
 {
@@ -100,7 +98,6 @@ void engine::do_parse_aspect_from_config( const config &/*cfg*/, const std::stri
 
 }
 
-
 void engine::do_parse_candidate_action_from_config( rca_context &/*context*/, const config &/*cfg*/, std::back_insert_iterator<std::vector< candidate_action_ptr >> /*b*/ ){
 
 }
@@ -109,11 +106,9 @@ void engine::do_parse_engine_from_config( const config &/*cfg*/, std::back_inser
 
 }
 
-
 void engine::do_parse_goal_from_config( const config &/*cfg*/, std::back_insert_iterator<std::vector< goal_ptr >> /*b*/ ){
 
 }
-
 
 void engine::do_parse_stage_from_config( ai_context &/*context*/, const config &/*cfg*/, std::back_insert_iterator<std::vector< stage_ptr >> /*b*/ )
 {
@@ -157,6 +152,5 @@ bool engine_factory::is_duplicate(const std::string& name)
 	}
 	return false;
 }
-
 
 } //end of namespace ai

@@ -17,29 +17,8 @@
 
 #include "gui/widgets/settings.hpp"
 
-namespace gui2
+namespace gui2::dialogs
 {
-namespace dialogs
-{
-
-/*WIKI
- * @page = GUIWindowDefinitionWML
- * @order = 2_editor_new_map
- *
- * == Editor new map ==
- *
- * This shows the dialog to generate a new map in the editor.
- *
- * @begin{table}{dialog_widgets}
- *
- * width & & integer_selector & m &
- *        An integer selector to determine the width of the map to create. $
- *
- * height & & integer_selector & m &
- *        An integer selector to determine the height of the map to create. $
- *
- * @end{table}
- */
 
 REGISTER_DIALOG(editor_new_map)
 
@@ -52,4 +31,3 @@ editor_new_map::editor_new_map(const t_string& title, int& width, int& height)
 }
 
 } // namespace dialogs
-} // namespace gui2

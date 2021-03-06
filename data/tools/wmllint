@@ -14,7 +14,7 @@
 # While the script is at it, it checks for various incorrect and dodgy WML
 # constructs, including:
 #   * unbalanced tags
-#   * strings that need a translation mark and should not have them
+#   * strings that need a translation mark and do not have them
 #   * strings that have a translation mark and should not
 #   * translatable strings containing macro references
 #   * filter references by id= not matched by an actual unit
@@ -122,11 +122,6 @@
 # Note that this will also disable stack-based validation on the span
 # of lines they enclose.
 #
-# You can suppress warnings about newlines in messages (and attempts to
-# repair them) with "wmllint: display on", and re-enable them with
-# "wmllint: display off".  The repair attempts (only) may also be
-# suppressed with the --stringfreeze option.
-#
 # A special comment "# wmllint: notecheck off" will disable checking unit types
 # for consistency between abilities/weapon specials and usage of special notes
 # macros in their descriptions.
@@ -167,6 +162,15 @@
 # -nozoc, -leader and -leader-nozoc variations of your ellipse need to be added).
 # You can disable this sanity check for the current line with the comment
 # "# wmllint: no ellipsecheck".
+#
+# In the 1.13 development series, the ability to implement custom conditional
+# tags by using Lua was added. wmllint, of course, doesn't handle Lua files,
+# so to avoid having them incorrectly recognized as "illegal child of [if]"
+# you can declare them with this magic comment:
+# # wmllint: conditional tag <tag_name>
+# Do not surround <tag_name> with square braces, because wmllint will do so
+# automatically; on the other hand, you can specify multiple tags to be
+# recognized as a comma-separated list.
 #
 #                              DEVELOPER INFORMATION
 #
@@ -1122,6 +1126,12 @@ storedids = {}
 # magic comment, "#wmllint: usagetype[s]".
 usage_types = ["scout", "fighter", "mixed fighter", "archer", "healer"]
 
+# Since 1.13, UMC authors can define their own conditional tags in Lua
+# This list can be populated by using the magic comment
+# # wmllint: conditional tag <tag_name>
+# It will be then used by local_sanity_check()
+custom_conditionals = []
+
 # These are accumulated by sanity_check() and examined by consistency_check()
 unit_types = []
 derived_units = []
@@ -1318,6 +1328,16 @@ def local_sanity_check(filename, nav, key, prefix, value, comment):
     if ancestors:
         parent = ancestors[-1]
         ancestors = ancestors[:-1]
+    # Magic comment for adding custom conditional tags
+    # Placed here rather than in global_sanity_check(), because
+    # local_sanity_check() is used first
+    # Do not use square braces while listing the new tags
+    # they'll be automatically added by the code below
+    # this is done to prevent possible interactions with other parts of the code
+    m = re.search("# *wmllint: conditional tag +(.*)", nav.text)
+    if m:
+        for new_conditional in m.group(1).split(","):
+            custom_conditionals.append("[" + new_conditional.strip() + "]")
     # Check for things marked translated that aren't strings or name generators
     if "_" in nav.text and not ignored:
         m = re.search(r'[=(]\s*_\s+("|<<)?', nav.text)
@@ -1331,8 +1351,8 @@ def local_sanity_check(filename, nav, key, prefix, value, comment):
         else:
             actual_tag = nav.element
         if actual_tag not in ("[part]", "[background_layer]", "[image]", "[insert_tag]",
-                              "[if]", "[then]", "[else]", "[switch]", "[case]",
-                              "[variable]", "[deprecated_message]"):
+                              "[if]", "[then]", "[elseif]", "[else]", "[switch]", "[case]",
+                              "[variable]", "[deprecated_message]", "[wml_message]"):
             print(errlead + '%s not permitted within [part] tag' % nav.element)
     # Most tags are not permitted inside [if]
     if (len(ancestors) >= 1 and parent == "[if]") or \
@@ -1340,7 +1360,11 @@ def local_sanity_check(filename, nav, key, prefix, value, comment):
         if isOpener(nav.element) and nav.element not in ("[and]",
                            "[else]", "[elseif]", "[frame]", "[have_location]",
                            "[have_unit]", "[not]", "[or]", "[then]", "[lua]",
-                           "[variable]") and not nav.element.endswith("_frame]") and not nav.element.startswith("[filter"):
+                           "[variable]", "[true]", "[false]", "[found_item]",
+                           "[proceed_to_next_scenario]") \
+                           and not nav.element.endswith("_frame]") \
+                           and not nav.element.startswith("[filter") and \
+                           nav.element not in custom_conditionals:
             print(errlead + 'illegal child of [if]:', nav.element)
     # Check for fluky credit parts
     if parent == "[entry]":
@@ -1479,7 +1503,6 @@ def global_sanity_check(filename, lines):
             continue
         elif "wmllint: notecheck on" in nav.text:
             notecheck = True
-        #print("Element = %s, text = %s" % (nav.element, repr(nav.text)))
         if nav.element == "[unit_type]":
             unit_race = ""
             unit_id = ""
@@ -1498,8 +1521,6 @@ def global_sanity_check(filename, lines):
             defense_cap_note_needed = False
             continue
         elif nav.element == "[/unit_type]":
-            #print('"%s", %d: unit has traits %s and notes %s' \
-            #      % (filename, in_unit_type, traits, notes))
             if unit_id and unit_usage:
                 usage[unit_id] = unit_usage
             if unit_id and temp_movetypes:
@@ -1587,26 +1608,22 @@ def global_sanity_check(filename, lines):
                 elif key == "hitpoints":
                     hitpoints_specified = True
                 elif key == "usage":
-                    assert(unit_id)
-                    usage[unit_id] = value
+                    unit_usage = value
                 elif key == "movement_type":
                     if '{' not in value:
-                        assert(unit_id)
-                        unit_movetypes.append((unit_id, filename, nav.lineno + 1, value))
+                        temp_movetypes.append((filename, nav.lineno + 1, value))
                     if value == "undeadspirit":
                         spirit_note_needed = True
                     elif value == "mounted":
                         defense_cap_note_needed = True
                 elif key == "race":
                     if '{' not in value:
-                        assert(unit_id or base_unit)
                         unit_race = value
-                        unit_races.append((unit_id, filename, nav.lineno + 1, unit_race))
+                        temp_races.append((filename, nav.lineno + 1, unit_race))
                 elif key == "advances_to":
-                    assert(unit_id or base_unit)
                     advancements = value
                     if advancements.strip() != "null":
-                        advances.append((unit_id, filename, nav.lineno + 1, advancements))
+                        temp_advances.append((filename, nav.lineno + 1, advancements))
                 elif key == "type" and value == "arcane" and "[attack]" in nav.ancestors():
                     arcane_note_needed = True
                 elif "[defense]" in nav.ancestors() and re.match(r"\-\d+",value):
@@ -1671,40 +1688,41 @@ def global_sanity_check(filename, lines):
         if line.startswith("#endif"):
             ifdef_stack.pop()
             continue
-        if "[generator]" in line:
+        precomment = line.split("#")[0]
+        if "[generator]" in precomment:
             in_generator = True
             continue
-        elif "[/generator]" in line:
+        elif "[/generator]" in precomment:
             in_generator = False
             continue
         # do not use has_opening_tag() here, otherwise a [+side] tag
         # will make the sidecount variable incorrect
-        elif "[side]" in line:
+        elif "[side]" in precomment:
             in_side = True
             sidecount += 1
             continue
-        elif "[/side]" in line:
+        elif "[/side]" in precomment:
             if recruit or recruitment_pattern:
                 sides.append((filename, recruit, recruitment_pattern))
             in_side = False
             recruit = {}
             recruitment_pattern = {}
             continue
-        elif in_side and has_opening_tag(line, "ai"):
+        elif in_side and has_opening_tag(precomment, "ai"):
             in_ai = True
             continue
-        elif in_side and has_opening_tag(line, "unit"):
+        elif in_side and has_opening_tag(precomment, "unit"):
             in_subunit = True
             continue
-        elif in_side and "[/ai]" in line:
+        elif in_side and "[/ai]" in precomment:
             in_ai = False
             continue
-        elif in_side and "[/unit]" in line:
+        elif in_side and "[/unit]" in precomment:
             in_subunit = False
             continue
         if "wmllint: skip-side" in line:
             sidecount += 1
-        if not in_side or in_subunit or '=' not in line:
+        if not in_side or in_subunit or '=' not in precomment:
             continue
         try:
             (key, prefix, value, comment) = parse_attribute(line)
@@ -1779,13 +1797,14 @@ def global_sanity_check(filename, lines):
     # Because we can't be sure about what the UMC author wants to do, just warn
     in_campaign = False
     for num, line in enumerate(lines, start=1):
-        if "[campaign]" in line:
+        precomment = line.split("#")[0]
+        if "[campaign]" in precomment:
             in_campaign = True
             continue
-        if "[/campaign]" in line:
+        if "[/campaign]" in precomment:
             in_campaign = False
             continue
-        if has_opening_tag(line, "advancefrom"):
+        if has_opening_tag(precomment, "advancefrom"):
             print("{}, line {}: [advancefrom] needs to be manually updated to \
 [modify_unit_type] and moved into the _main.cfg file".format(filename, num))
         if in_campaign:
@@ -1869,6 +1888,8 @@ to be called on their own".format(filename, num))
     in_map_generator = False
     in_name_generator = False
     in_candidate_action = False
+    in_lua = False
+    in_lua_args = False
     storeid = None
     storevar = None
     ignoreable = False
@@ -1879,6 +1900,18 @@ to be called on their own".format(filename, num))
     translation_mark = re.compile(r'_ *"')
     name_generator_re = re.compile(r"name_generator\s*=\s*_\s*<<")
     for i in range(len(lines)):
+        if has_opening_tag(lines[i], "lua"):
+            in_lua = True
+        elif "[/lua]" in lines[i]:
+            in_lua = False
+        if in_lua:
+            if has_opening_tag(lines[i], "args"):
+                in_lua_args = True
+            elif "[/args]" in lines[i]:
+                in_lua_args = False
+            if not in_lua_args:
+                # As far as I can tell none of the below tests make sense inside of a lua tag
+                continue
         if '[' in lines[i]:
             preamble_seen = True
         # This logic looks odd because a scenario can be conditionally
@@ -2154,9 +2187,13 @@ to be called on their own".format(filename, num))
                         present.append(args[1])
                 elif macname == 'CLEAR_VARIABLE':
                     (args, optional_args, brack, paren) = parse_macroref(0, leadmac.string)
-                    for arg in [x.lstrip() for x in args[1].split(',')]:
-                        if arg in storedids:
-                            del storedids[arg]
+                    # having CLEAR_VARIABLE on a line and its arguments in the following lines
+                    # leads to an args list with length 1
+                    # skip the check and avoid a crash if that's the case
+                    if len(args) > 1:
+                        for arg in [x.lstrip() for x in args[1].split(',')]:
+                            if arg in storedids:
+                                del storedids[arg]
                 elif macname in whomacros:
                     (args, optional_args, brack, paren) = parse_macroref(0, leadmac.string)
                     present.append(args[whomacros[macname]])
@@ -2206,9 +2243,6 @@ to be called on their own".format(filename, num))
                 if '{' in value and "+" not in value and value.find('{') > value.find("_"):
                     print('"%s", line %d: macro reference in translatable string'\
                           % (filename, i+1))
-                #if future and re.search("[.,!?]  ", lines[i]):
-                #    print('"%s", line %d: extraneous space in translatable string'\
-                #          % (filename, i+1))
             # Check correctness of translation marks and descriptions
             if key.startswith("#"): # FIXME: parse_attribute is confused.
                 pass
@@ -2404,7 +2438,6 @@ def consistency_check():
             print('"%s", line %d: %s has unknown advancements %s' \
                   % (filename, lineno, unit_id, bad_advancements))
     # Check next-scenario pointers
-    #print("Scenario ID map", scenario_to_filename)
     for (filename, lineno, value) in nextrefs:
         if value not in scenario_to_filename:
             print('"%s", line %d: unresolved scenario reference %s' % \
@@ -2455,6 +2488,7 @@ def hack_syntax(filename, lines):
 
     # Ensure that every attack has a translatable description.
     in_filter_wml = False
+    attack_left_open = False
     for i in range(len(lines)):
         if "no-syntax-rewrite" in lines[i]:
 
@@ -2470,7 +2504,14 @@ def hack_syntax(filename, lines):
                 if lines[j].strip().startswith("description"):
                     have_description = True
                 j += 1
-            if not have_description:
+                # unterminated [attack] tags, for example embedded in a macro,
+                # lead to a crash. Print an error message, skip this loop
+                # and the following one
+                if j >= len(lines):
+                    print("{}, line {}: [attack] tag not closed in this file".format(filename, i+1))
+                    attack_left_open = True
+                    break
+            if (not have_description) and (not attack_left_open):
                 j = i
                 while '[/attack]' not in lines[j]:
                     fields = lines[j].strip().split('#')
@@ -2680,7 +2721,6 @@ def hack_syntax(filename, lines):
                             if side_one_tag_needs_side_one:
                                 if verbose:
                                     print('"%s", line %d: [%s] without "side" attribute is now applied to all sides'%(filename, i+1, tag))
-                                #lines.insert(i, leader(precomment) + baseindent + "side=1\n")
                             in_side_one_tag = False
                             side_one_tag_needs_side_one = True
                             break
@@ -2692,6 +2732,15 @@ def maptransform(filename, baseline, inmap, y):
     for i in range(len(inmap[y])):
         for (old, new) in mapchanges:
             inmap[y][i] = inmap[y][i].replace(old, new)
+        # this change needs to be hardcoded here because it's tricky
+        # we're converting from a terrain without overlays to a terrain +
+        # overlay code
+        # since we don't support having two overlays, skip and print a warning
+        if "Xol^" in inmap[y][i]:
+            print("{}, line {}: Xol (enlightened wall) terrain with overlays \
+must be converted manually".format(filename, baseline + y + 1))
+        elif "Xol" in inmap[y][i]:
+            inmap[y][i] = inmap[y][i].replace("Xol", "Xos^Efs")
 
 # Generic machinery starts here
 
@@ -2766,6 +2815,7 @@ def translator(filename, mapxforms, textxform):
     cont = False
     validate = True
     unbalanced = False
+    in_lua_code = False
     newdata = []
     refname = None
     while mfile:
@@ -2781,9 +2831,8 @@ def translator(filename, mapxforms, textxform):
             if refname == refname.upper():
                 pass
             elif 'mask=' in line and not (refname.endswith("}") or refname.endswith(".mask")):
-                print('"%s", line %d: fatal error, mask file without .mask extension (%s)' \
+                print('"%s", line %d: mask file without .mask extension or not a mask file (%s)' \
                       % (filename, lineno+1, refname))
-                sys.exit(1)
         # Exclude map_data= lines that are just 1 line without
         # continuation, or which contain {}.  The former are
         # pathological and the parse won't handle them, the latter
@@ -2846,10 +2895,12 @@ def translator(filename, mapxforms, textxform):
                     else:
                         fields = [x for x in line]
                     outmap.append(fields)
-                    if not maskwarn and maptype == 'map' and "_f" in line:
-                        print('"%s", line %d: warning, fog in map file' \
-                              % (filename, lineno+1))
-                        maskwarn = True
+                    if not maskwarn and maptype == 'map':
+                        terrain_strings = (f.split()[-1] for f in fields)
+                        if any(re.search('_s|_f(?!me)', t) for t in terrain_strings):
+                            print('"%s", line %d: warning, fog or shroud in map file' \
+                                  % (filename, lineno+1))
+                            maskwarn = True
             # Deduce the map type
             if not map_only:
                 if maptype == "map":
@@ -2895,7 +2946,7 @@ def translator(filename, mapxforms, textxform):
             # Now do warnings based on the state of the tag stack.
             # the regex check for "path=" is needed due to [modify_ai]
             # which uses square braces in its syntax
-            if not unbalanced and not re.match(r"\s*path\=", destringed):
+            if not unbalanced and not in_lua_code and not re.match(r"\s*path\=", destringed):
                 for instance in re.finditer(r"\[\/?\+?([a-z][a-z_]*[a-z])\]", destringed):
                     tag = instance.group(1)
                     closer = instance.group(0)[1] == '/'
@@ -2924,6 +2975,14 @@ def translator(filename, mapxforms, textxform):
                 unbalanced = True
             if "wmllint: unbalanced-off" in comment:
                 unbalanced = False
+            # single line of Lua code, skip
+            if re.match(r"\s*?code\s?=\s?<<.*>>", destringed):
+                continue
+            # multiline Lua block
+            if re.match(r"\s*?code\s?=\s?<<.*", destringed):
+                in_lua_code = True
+            if in_lua_code and re.match(r".*?>>\s*$", destringed):
+                in_lua_code = False
             if "wmllint: match" in comment:
                 comment = comment.strip()
                 try:
@@ -2956,28 +3015,6 @@ def translator(filename, mapxforms, textxform):
     else:
         # Map or mask -- just run everything together
         transformed = "".join(newdata)
-    # Simple check for unbalanced macro calls
-    linecount = 1
-    quotecount = 0
-    display_state = False
-    singleline = False
-    for i in range(len(transformed)):
-        if transformed[i] == '\n':
-            if singleline:
-                singleline = False
-                if not display_state and quotecount % 2 and transformed[i:i+2] != "\n\n" and transformed[i-1:i+1] != "\n\n":
-                    print('"%s", line %d: nonstandard word-wrap style within message' % (filename, linecount))
-            linecount += 1
-        elif transformed[i-7:i] == "message" and transformed[i] == '=':
-            singleline = True
-        elif re.match(" *wmllint: *display +on", transformed[i:]):
-            display_state = True
-        elif re.match(" *wmllint: *display +off", transformed[i:]):
-            display_state = False
-        elif transformed[i] == '"' and not display_state:
-            quotecount += 1
-            if quotecount % 2 == 0:
-                singleline = False
     # Return None if the transformation functions made no changes.
     if "".join(unmodified) != transformed:
         return transformed
@@ -3110,14 +3147,11 @@ def spellcheck(fn, d):
             local_spellings += declared_spellings.get(up,[])
             up = os.path.dirname(up)
     local_spellings = [w for w in local_spellings if not d.check(w)]
-    #if local_spellings:
-    #    print("%s: inherited local spellings: %s" % (fn, local_spellings))
     for word in local_spellings:
         d.add_to_session(word)
 
     # Process this individual file
     for nav in WmllintIterator(filename=fn):
-        #print("element=%s, text=%s" % (nav.element, repr(nav.text)))
         # Recognize local spelling exceptions
         if not nav.element and "#" in nav.text:
             comment = nav.text[nav.text.index("#"):]
@@ -3130,8 +3164,6 @@ def spellcheck(fn, d):
                         local_spellings.append(word)
                     else:
                         nav.printError("spelling '%s' already declared" % word)
-    #if local_spellings:
-    #    print("%s: with this file's local spellings: %s" % (fn,local_spellings))
 
     for nav in WmllintIterator(filename=fn):
         # Spell-check message and story parts
@@ -3156,8 +3188,6 @@ def spellcheck(fn, d):
             if value and not d.check(value):
                 d.add_to_session(value)
                 local_spellings.append(value)
-    #if local_spellings:
-    #    print("%s: slated for removal: %s" % (fn, local_spellings))
     for word in local_spellings:
         try:
             d.remove_from_session(word)
@@ -3435,7 +3465,6 @@ In your case, your system interprets your arguments as:
                 failed_any_dirs = True
                 print("wmllint: skipping non-existent path %s" % directory)
                 continue
-            ofp = None
             for fn in allcfgfiles(directory):
                 if verbose >= 2:
                     print(fn + ":")
@@ -3509,7 +3538,6 @@ In your case, your system interprets your arguments as:
                             failed_any_dirs = True
                             print("wmllint: skipping non-existent path %s" % directory)
                             continue
-                        ofp = None
                         for fn in allcfgfiles(directory):
                             if verbose >= 2:
                                 print(fn + ":")

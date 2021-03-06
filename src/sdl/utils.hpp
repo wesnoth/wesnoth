@@ -12,8 +12,6 @@
    See the COPYING file for more details.
 */
 
-/** @file */
-
 #pragma once
 
 #include "color_range.hpp"
@@ -318,6 +316,7 @@ SDL_Rect get_non_transparent_portion(const surface &surf);
  * @param surf_lock      The locked surface to make sure the pointers are valid.
  * @param x              The position in the row of the pixel.
  * @param y              The row of the pixel.
+ * @param pixel          The pixel value.
  */
 void put_pixel(const surface& surf, surface_lock& surf_lock, int x, int y, uint32_t pixel);
 uint32_t get_pixel(const surface& surf, const const_surface_lock& surf_lock, int x, int y);

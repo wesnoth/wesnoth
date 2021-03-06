@@ -35,8 +35,6 @@
 #include "units/types.hpp"
 #include "whiteboard/side_actions.hpp"
 
-#include <boost/dynamic_bitset.hpp>
-
 static lg::log_domain log_engine("engine");
 #define DBG_NG LOG_STREAM(debug, log_engine)
 #define LOG_NG LOG_STREAM(info, log_engine)
@@ -558,13 +556,13 @@ public:
 	{
 	}
 
-	/// We are in a game with no mp server and need to do this choice locally
+	/** We are in a game with no mp server and need to do this choice locally */
 	virtual config local_choice() const
 	{
 		return config{"controller", new_controller_, "is_local", true};
 	}
 
-	/// tThe request which is sent to the mp server.
+	/** The request which is sent to the mp server. */
 	virtual config request() const
 	{
 		return config{

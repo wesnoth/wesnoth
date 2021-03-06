@@ -25,7 +25,7 @@
 
 #include <ostream>
 #include <string>
-#include "utils/functional.hpp"
+#include <functional>
 
 #include "lua/lauxlib.h"
 #include "lua/lua.h"
@@ -222,10 +222,6 @@ mapgen_lua_kernel::mapgen_lua_kernel(const config* vars)
 	static luaL_Reg const callbacks[] {
 		{ "find_path",           &intf_find_path           },
 		{ "random",              &intf_random              },
-		{ "create_filter",       &intf_terainfilter_create },
-		{ "create_map",          &intf_terainmap_create    },
-		{ "default_generate_height_map", &intf_default_generate_height_map },
-		{ "generate_default_map",        &intf_default_generate            },
 		{ "get_variable", &dispatch<&mapgen_lua_kernel::intf_get_variable> },
 		{ nullptr, nullptr }
 	};
@@ -236,6 +232,23 @@ mapgen_lua_kernel::mapgen_lua_kernel(const config* vars)
 	lua_pop(L, 1);
 	assert(lua_gettop(L) == 0);
 
+	static luaL_Reg const map_callbacks[] {
+		// Map methods
+		{ "find",                &intf_mg_get_locations            },
+		{ "find_in_radius",      &intf_mg_get_tiles_radius         },
+		// Static functions
+		{ "filter",              &intf_terrainfilter_create        },
+		{ "create",              &intf_terrainmap_create           },
+		{ "generate_height_map", &intf_default_generate_height_map },
+		{ "generate",            &intf_default_generate            },
+		{ nullptr, nullptr }
+	};
+
+	luaW_getglobal(L, "wesnoth", "map");
+	assert(lua_istable(L,-1));
+	luaL_setfuncs(L, map_callbacks, 0);
+	lua_pop(L, 1);
+	assert(lua_gettop(L) == 0);
 
 	cmd_log_ << lua_terrainmap::register_metatables(L);
 	cmd_log_ << lua_terrainfilter::register_metatables(L);
@@ -243,9 +256,9 @@ mapgen_lua_kernel::mapgen_lua_kernel(const config* vars)
 
 void mapgen_lua_kernel::run_generator(const char * prog, const config & generator)
 {
-	load_string(prog, "", std::bind(&lua_kernel_base::throw_exception, this, _1, _2));
+	load_string(prog, "", std::bind(&lua_kernel_base::throw_exception, this, std::placeholders::_1, std::placeholders::_2));
 	luaW_pushconfig(mState, generator);
-	protected_call(1, 1, std::bind(&lua_kernel_base::throw_exception, this, _1, _2));
+	protected_call(1, 1, std::bind(&lua_kernel_base::throw_exception, this, std::placeholders::_1, std::placeholders::_2));
 }
 
 void mapgen_lua_kernel::user_config(const char * prog, const config & generator)
@@ -261,7 +274,7 @@ int mapgen_lua_kernel::intf_get_variable(lua_State *L)
 	variable_access_const v(m, vars_ ? *vars_ : empty_cfg);
 	return luaW_pushvariable(L, v) ? 1 : 0;
 }
-std::string mapgen_lua_kernel::create_map(const char * prog, const config & generator, boost::optional<uint32_t> seed) // throws game::lua_error
+std::string mapgen_lua_kernel::create_map(const char * prog, const config & generator, std::optional<uint32_t> seed) // throws game::lua_error
 {
 	random_seed_ = seed;
 	default_rng_ = std::mt19937(get_random_seed());
@@ -277,7 +290,7 @@ std::string mapgen_lua_kernel::create_map(const char * prog, const config & gene
 	return lua_tostring(mState, -1);
 }
 
-config mapgen_lua_kernel::create_scenario(const char * prog, const config & generator, boost::optional<uint32_t> seed) // throws game::lua_error
+config mapgen_lua_kernel::create_scenario(const char * prog, const config & generator, std::optional<uint32_t> seed) // throws game::lua_error
 {
 	random_seed_ = seed;
 	default_rng_ = std::mt19937(get_random_seed());
@@ -300,8 +313,8 @@ config mapgen_lua_kernel::create_scenario(const char * prog, const config & gene
 
 uint32_t mapgen_lua_kernel::get_random_seed()
 {
-	if(uint32_t* pint = random_seed_.get_ptr()) {
-		return (*pint)++;
+	if(random_seed_) {
+		return (*random_seed_)++;
 	}
 	else {
 		return lua_kernel_base::get_random_seed();

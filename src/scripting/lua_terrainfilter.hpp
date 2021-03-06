@@ -18,6 +18,7 @@
 #include <memory>
 #include <map>
 #include <set>
+#include "map/map.hpp"
 
 #include "scripting/lua_common.hpp"
 struct lua_State;
@@ -29,9 +30,11 @@ namespace lua_mapgen
 	class filter
 	{
 	public:
-		/// @a a lua table with the folllowing attributes
-		/// [1]: the filter table,
-		/// [2]: attributeslocation_sets
+		/**
+		 * @a a lua table with the following attributes
+		 * [1]: the filter table,
+		 * [2]: attributeslocation_sets
+		 */
 		explicit filter(lua_State* L, int data_index, int res_index = 0);
 
 		//impl_ may contain pointers to known_sets_, copycontructing this will result in segfaults.
@@ -43,7 +46,7 @@ namespace lua_mapgen
 
 		~filter();
 
-		bool matches(const mapgen_gamemap& m, map_location l);
+		bool matches(const gamemap_base& m, map_location l);
 		//todo: add a clear cache function.
 	private:
 		std::map<std::string, std::set<map_location>> known_sets_;
@@ -61,7 +64,7 @@ lua_mapgen::filter& luaW_check_mgfilter(lua_State *L, int index);
 
 void lua_mgfilter_setmetatable(lua_State *L);
 
-int intf_terainfilter_create(lua_State *L);
+int intf_terrainfilter_create(lua_State *L);
 
 int intf_mg_get_locations(lua_State* L);
 int intf_mg_get_tiles_radius(lua_State* L);

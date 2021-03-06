@@ -26,34 +26,10 @@
 #include "gettext.hpp"
 
 
-#include "utils/functional.hpp"
+#include <functional>
 
-namespace gui2
+namespace gui2::dialogs
 {
-namespace dialogs
-{
-
-/*WIKI
- * @page = GUIWindowDefinitionWML
- * @order = 2_theme_list
- *
- * == Theme list ==
- *
- * Dialog for selecting a GUI theme.
- *
- * @begin{table}{dialog_widgets}
- *
- * themes & & listbox & m &
- *         Listbox displaying user choices. $
- *
- * -name & & styled_widget & m &
- *         Widget which shows a theme item name. $
- *
- * -description & & styled_widget & m &
- *         Widget which shows a theme item description. $
- *
- * @end{table}
- */
 
 REGISTER_DIALOG(synched_choice_wait)
 
@@ -97,4 +73,3 @@ void synched_choice_wait::handle_generic_event(const std::string& event_name)
 }
 
 } // namespace dialogs
-} // namespace gui2

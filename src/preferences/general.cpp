@@ -31,7 +31,6 @@
 #include "sdl/point.hpp"
 #include "serialization/parser.hpp"
 #include "sound.hpp"
-#include "utils/general.hpp"
 #include "video.hpp" // non_interactive()
 #include "game_config_view.hpp"
 
@@ -287,6 +286,12 @@ void set_show_partial_orb(bool show_orb) {
 	prefs["show_partial_orb"] = show_orb;
 }
 
+bool show_disengaged_orb() {
+	return get("show_disengaged_orb", game_config::show_disengaged_orb);
+}
+void set_show_disengaged_orb(bool show_orb) {
+	prefs["show_disengaged_orb"] = show_orb;
+}
 
 static std::string fix_orb_color_name(const std::string& color) {
 	if (color.substr(0,4) == "orb_") {
@@ -357,6 +362,16 @@ std::string partial_color() {
 }
 void set_partial_color(const std::string& color_id) {
 	prefs["partial_orb_color"] = color_id;
+}
+
+std::string disengaged_color() {
+	std::string disengaged_color = get("disengaged_orb_color");
+	if (disengaged_color.empty())
+		return game_config::colors::disengaged_orb_color;
+	return fix_orb_color_name(disengaged_color);
+}
+void set_disengaged_color(const std::string& color_id) {
+	prefs["disengaged_orb_color"] = color_id;
 }
 
 bool scroll_to_action()
@@ -443,7 +458,7 @@ int font_scaling()
 
 void set_font_scaling(int scale)
 {
-	prefs["font_scale"] = utils::clamp(scale, min_font_scaling, max_font_scaling);
+	prefs["font_scale"] = std::clamp(scale, min_font_scaling, max_font_scaling);
 }
 
 int font_scaled(int size)
@@ -729,7 +744,7 @@ namespace {
 
 int scroll_speed()
 {
-	const int value = utils::clamp<int>(lexical_cast_default<int>(get("scroll"), 50), 1, 100);
+	const int value = std::clamp<int>(lexical_cast_default<int>(get("scroll"), 50), 1, 100);
 	scroll = value/100.0;
 
 	return value;
@@ -934,5 +949,26 @@ void set_damage_prediction_allow_monte_carlo_simulation(bool value)
 {
 	set("damage_prediction_allow_monte_carlo_simulation", value);
 }
+
+std::string addon_manager_saved_order_name()
+{
+	return get("addon_manager_saved_order_name");
+}
+
+void set_addon_manager_saved_order_name(const std::string& value)
+{
+	set("addon_manager_saved_order_name", value);
+}
+
+SORT_ORDER addon_manager_saved_order_direction()
+{
+	return SORT_ORDER::string_to_enum(get("addon_manager_saved_order_direction"), SORT_ORDER::NONE);
+}
+
+void set_addon_manager_saved_order_direction(SORT_ORDER value)
+{
+	set("addon_manager_saved_order_direction", SORT_ORDER::enum_to_string(value));
+}
+
 
 } // end namespace preferences

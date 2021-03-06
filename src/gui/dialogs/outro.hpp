@@ -18,9 +18,7 @@
 
 class game_classification;
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 /** Dialog to display 'The End' at the end of a campaign. */
 class outro : public modal_dialog
@@ -49,7 +47,7 @@ private:
 	/** Inherited from modal_dialog. */
 	virtual void post_show(window& window) override;
 
-	void draw_callback(window& window);
+	void draw_callback();
 
 	std::vector<std::string> text_;
 	std::vector<std::string>::iterator current_text_;
@@ -63,4 +61,3 @@ private:
 };
 
 } // namespace dialogs
-} // namespace gui2

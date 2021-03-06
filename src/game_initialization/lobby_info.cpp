@@ -182,19 +182,19 @@ bool lobby_info::process_gamelist_diff_impl(const config& data)
 
 			// Had a game with that id, so update it and mark it as such
 			current_i->second = game_info(c, installed_addons_);
-			current_i->second.display_status = game_info::UPDATED;
+			current_i->second.display_status = game_info::disp_status::UPDATED;
 		} else if(diff_result == "deleted") {
 			if(current_i == games_by_id_.end()) {
 				WRN_LB << "Would have to delete a game that I don't have: " << game_id << std::endl;
 				continue;
 			}
 
-			if(current_i->second.display_status == game_info::NEW) {
+			if(current_i->second.display_status == game_info::disp_status::NEW) {
 				// This means the game never made it through to the user interface,
 				// so just deleting it is fine.
 				games_by_id_.erase(current_i);
 			} else {
-				current_i->second.display_status = game_info::DELETED;
+				current_i->second.display_status = game_info::disp_status::DELETED;
 			}
 		}
 	}
@@ -237,10 +237,10 @@ void lobby_info::process_userlist()
 		}
 
 		switch(ui.relation) {
-		case user_info::FRIEND:
+		case user_info::user_relation::FRIEND:
 			g->has_friends = true;
 			break;
-		case user_info::IGNORED:
+		case user_info::user_relation::IGNORED:
 			g->has_ignored = true;
 			break;
 		default:
@@ -257,10 +257,10 @@ void lobby_info::sync_games_display_status()
 	auto i = games_by_id_.begin();
 
 	while(i != games_by_id_.end()) {
-		if(i->second.display_status == game_info::DELETED) {
+		if(i->second.display_status == game_info::disp_status::DELETED) {
 			i = games_by_id_.erase(i);
 		} else {
-			i->second.display_status = game_info::CLEAN;
+			i->second.display_status = game_info::disp_status::CLEAN;
 			++i;
 		}
 	}

@@ -12,8 +12,6 @@
    See the COPYING file for more details.
 */
 
-/** @file */
-
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
 #include "widgets/scrollarea.hpp"

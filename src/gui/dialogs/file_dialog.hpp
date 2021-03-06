@@ -213,17 +213,17 @@ private:
 	/** Handles dialog exit events and decides whether to proceed or not. */
 	bool on_exit(window& window);
 	/** Handles file/directory selection on single-click. */
-	void on_row_selected(window& window);
+	void on_row_selected();
 	/** Handles selection or deselection of bookmarks. */
-	void on_bookmark_selected(window& window);
+	void on_bookmark_selected();
 	/** Handles Add Bookmark button press events. */
-	void on_bookmark_add_cmd(window& window);
+	void on_bookmark_add_cmd();
 	/** Handles Remove Bookmark button press events. */
-	void on_bookmark_del_cmd(window& window);
+	void on_bookmark_del_cmd();
 	/** Handles New Folder button press events. */
-	void on_dir_create_cmd(window& window);
+	void on_dir_create_cmd();
 	/** Handles Delete button press events. */
-	void on_file_delete_cmd(window& window);
+	void on_file_delete_cmd();
 
 	/**
 	 * Processes file view selection in reaction to row double-click events.
@@ -234,7 +234,7 @@ private:
 	 * @returns Whether to exit the dialog successfully (@a true) or continue
 	 *          (@a false).
 	 */
-	bool process_fileview_submit(window& window);
+	bool process_fileview_submit();
 
 	/**
 	 * Processes textbox input in reaction to OK button/Enter key events.
@@ -245,14 +245,14 @@ private:
 	 * @returns Whether to exit the dialog successfully (@a true) or continue
 	 *          (@a false).
 	 */
-	bool process_textbox_submit(window& window);
+	bool process_textbox_submit();
 
-	bool process_submit_common(window& window, const std::string& name);
+	bool process_submit_common(const std::string& name);
 
 	/**
 	 * Updates the bookmarks bar state to reflect the internal state.
 	 */
-	void sync_bookmarks_bar(window& window);
+	void sync_bookmarks_bar();
 
 	std::string get_filelist_selection(class listbox& filelist);
 
@@ -280,7 +280,7 @@ private:
 	 * @returns @a true if the selection does not refer to an existing file or the
 	 *          user accepted the overwrite prompt; @a false otherwise.
 	 */
-	bool confirm_overwrite(window& window, SELECTION_TYPE stype);
+	bool confirm_overwrite(SELECTION_TYPE stype);
 
 	/**
 	 * Updates the internal state and returns the type of the selection.
@@ -296,7 +296,7 @@ private:
 	/**
 	 * Updates the dialog contents to match the internal state.
 	 */
-	void refresh_fileview(window& window);
+	void refresh_fileview();
 
 	/**
 	 * Row building helper for refresh_fileview().

@@ -206,16 +206,16 @@ static register_aspect_factory< composite_aspect<double>>
 static register_aspect_factory< composite_aspect<config>>
 	leader_goal__composite_aspect_factory("leader_goal*composite_aspect");
 
-static register_aspect_factory< composite_aspect<boost::variant<bool, std::vector<std::string>>>>
+static register_aspect_factory< composite_aspect<utils::variant<bool, std::vector<std::string>>>>
 	leader_igores_keep__composite_aspect_factory("leader_ignores_keep*composite_aspect");
 
 static register_aspect_factory< composite_aspect<double>>
 	leader_value__composite_aspect_factory("leader_value*composite_aspect");
 
-static register_aspect_factory< composite_aspect<boost::variant<bool, std::vector<std::string>>>>
+static register_aspect_factory< composite_aspect<utils::variant<bool, std::vector<std::string>>>>
 	passive_leader__composite_aspect_factory("passive_leader*composite_aspect");
 
-static register_aspect_factory< composite_aspect<boost::variant<bool, std::vector<std::string>>>>
+static register_aspect_factory< composite_aspect<utils::variant<bool, std::vector<std::string>>>>
 	passive_leader_shares_keep__composite_aspect_factory("passive_leader_shares_keep*composite_aspect");
 
 static register_aspect_factory< composite_aspect<double>>
@@ -224,10 +224,10 @@ static register_aspect_factory< composite_aspect<double>>
 static register_aspect_factory< composite_aspect<config>>
 	recruitment_instructions__composite_aspect_factory("recruitment_instructions*composite_aspect");
 
-static register_aspect_factory< composite_aspect< std::vector<std::string>> >
+static register_aspect_factory< composite_aspect< std::vector<std::string>>>
 	recruitment_more__composite_aspect_factory("recruitment_more*composite_aspect");
 
-static register_aspect_factory< composite_aspect< std::vector<std::string>> >
+static register_aspect_factory< composite_aspect< std::vector<std::string>>>
 	recruitment_pattern__composite_aspect_factory("recruitment_pattern*composite_aspect");
 
 static register_aspect_factory< composite_aspect<int>>
@@ -235,6 +235,12 @@ static register_aspect_factory< composite_aspect<int>>
 
 static register_aspect_factory< composite_aspect<config>>
 	recruitment_save_gold__composite_aspect_factory("recruitment_save_gold*composite_aspect");
+
+static register_aspect_factory< composite_aspect<double>>
+	retreat_enemy_weight__composite_aspect_factory("retreat_enemy_weight*composite_aspect");
+
+static register_aspect_factory< composite_aspect<double>>
+	retreat_factor__composite_aspect_factory("retreat_factor*composite_aspect");
 
 static register_aspect_factory< composite_aspect<double>>
 	scout_village_targeting__composite_aspect_factory("scout_village_targeting*composite_aspect");
@@ -277,16 +283,16 @@ static register_aspect_factory< standard_aspect<double>>
 static register_aspect_factory< standard_aspect<config>>
 	leader_goal__standard_aspect_factory("leader_goal*standard_aspect");
 
-static register_aspect_factory< standard_aspect<boost::variant<bool, std::vector<std::string>>>>
+static register_aspect_factory< standard_aspect<utils::variant<bool, std::vector<std::string>>>>
 	leader_ignores_keep__standard_aspect_factory("leader_ignores_keep*standard_aspect");
 
 static register_aspect_factory< standard_aspect<double>>
 	leader_value__standard_aspect_factory("leader_value*standard_aspect");
 
-static register_aspect_factory< standard_aspect<boost::variant<bool, std::vector<std::string>>>>
+static register_aspect_factory< standard_aspect<utils::variant<bool, std::vector<std::string>>>>
 	passive_leader__standard_aspect_factory("passive_leader*standard_aspect");
 
-static register_aspect_factory< standard_aspect<boost::variant<bool, std::vector<std::string>>>>
+static register_aspect_factory< standard_aspect<utils::variant<bool, std::vector<std::string>>>>
 	passive_leader_shares_keep__standard_aspect_factory("passive_leader_shares_keep*standard_aspect");
 
 static register_aspect_factory< standard_aspect<double>>
@@ -295,10 +301,10 @@ static register_aspect_factory< standard_aspect<double>>
 static register_aspect_factory< default_recruitment::recruitment_aspect >
 	recruitment_instructions__standard_aspect_factory("recruitment_instructions*standard_aspect");
 
-static register_aspect_factory< standard_aspect< std::vector<std::string>> >
+static register_aspect_factory< standard_aspect< std::vector<std::string>>>
 	recruitment_more__standard_aspect_factory("recruitment_more*standard_aspect");
 
-static register_aspect_factory< standard_aspect< std::vector<std::string>> >
+static register_aspect_factory< standard_aspect< std::vector<std::string>>>
 	recruitment_pattern__standard_aspect_factory("recruitment_pattern*standard_aspect");
 
 static register_aspect_factory< standard_aspect<int>>
@@ -306,6 +312,12 @@ static register_aspect_factory< standard_aspect<int>>
 
 static register_aspect_factory< standard_aspect<config>>
 	recruitment_save_gold__standard_aspect_factory("recruitment_save_gold*standard_aspect");
+
+static register_aspect_factory< standard_aspect<double>>
+	retreat_enemy_weight__standard_aspect_factory("retreat_enemy_weight*standard_aspect");
+
+static register_aspect_factory< standard_aspect<double>>
+	retreat_factor__standard_aspect_factory("retreat_factor*standard_aspect");
 
 static register_aspect_factory< standard_aspect<double>>
 	scout_village_targeting__standard_aspect_factory("scout_village_targeting*standard_aspect");
@@ -352,16 +364,16 @@ static register_aspect_factory< standard_aspect<double>>
 static register_aspect_factory< standard_aspect<config>>
 	leader_goal__standard_aspect_factory2("leader_goal*");
 
-static register_aspect_factory< standard_aspect<boost::variant<bool, std::vector<std::string>>>>
+static register_aspect_factory< standard_aspect<utils::variant<bool, std::vector<std::string>>>>
 	leader_ignores_keep__standard_aspect_factory2("leader_ignores_keep*");
 
 static register_aspect_factory< standard_aspect<double>>
 	leader_value__standard_aspect_factory2("leader_value*");
 
-static register_aspect_factory< standard_aspect<boost::variant<bool, std::vector<std::string>>>>
+static register_aspect_factory< standard_aspect<utils::variant<bool, std::vector<std::string>>>>
 	passive_leader__standard_aspect_factory2("passive_leader*");
 
-static register_aspect_factory< standard_aspect<boost::variant<bool, std::vector<std::string>>>>
+static register_aspect_factory< standard_aspect<utils::variant<bool, std::vector<std::string>>>>
 	passive_leader_shares_keep__standard_aspect_factory2("passive_leader_shares_keep*");
 
 static register_aspect_factory< standard_aspect<double>>
@@ -370,10 +382,10 @@ static register_aspect_factory< standard_aspect<double>>
 static register_aspect_factory< default_recruitment::recruitment_aspect >
 	recruitment_instructions__standard_aspect_factory2("recruitment_instructions*");
 
-static register_aspect_factory< standard_aspect< std::vector<std::string>> >
+static register_aspect_factory< standard_aspect< std::vector<std::string>>>
 	recruitment_more__standard_aspect_factory2("recruitment_more*");
 
-static register_aspect_factory< standard_aspect< std::vector<std::string>> >
+static register_aspect_factory< standard_aspect< std::vector<std::string>>>
 	recruitment_pattern__standard_aspect_factory2("recruitment_pattern*");
 
 static register_aspect_factory< standard_aspect<int>>
@@ -381,6 +393,12 @@ static register_aspect_factory< standard_aspect<int>>
 
 static register_aspect_factory< standard_aspect<config>>
 	recruitment_save_gold__standard_aspect_factory2("recruitment_save_gold*");
+
+static register_aspect_factory< standard_aspect<double>>
+	retreat_enemy_weight__standard_aspect_factory2("retreat_enemy_weight*");
+
+static register_aspect_factory< standard_aspect<double>>
+	retreat_factor__standard_aspect_factory2("retreat_factor*");
 
 static register_aspect_factory< standard_aspect<double>>
 	scout_village_targeting__standard_aspect_factory2("scout_village_targeting*");
@@ -423,17 +441,23 @@ static register_lua_aspect_factory< lua_aspect<double>>
 static register_lua_aspect_factory< lua_aspect<config>>
 	leader_goal__lua_aspect_factory("leader_goal*lua_aspect");
 
-static register_lua_aspect_factory< lua_aspect<boost::variant<bool, std::vector<std::string>>>>
+static register_lua_aspect_factory< lua_aspect<utils::variant<bool, std::vector<std::string>>>>
 	leader_ignores_keep__lua_aspect_factory("leader_ignores_keep*lua_aspect");
 
 static register_lua_aspect_factory< lua_aspect<double>>
 	leader_value__lua_aspect_factory("leader_value*lua_aspect");
 
-static register_lua_aspect_factory< lua_aspect<boost::variant<bool, std::vector<std::string>>>>
+static register_lua_aspect_factory< lua_aspect<utils::variant<bool, std::vector<std::string>>>>
 	passive_leader__lua_aspect_factory("passive_leader*lua_aspect");
 
-static register_lua_aspect_factory< lua_aspect<boost::variant<bool, std::vector<std::string>>>>
+static register_lua_aspect_factory< lua_aspect<utils::variant<bool, std::vector<std::string>>>>
 	passive_leader_shares_keep__lua_aspect_factory("passive_leader_shares_keep*lua_aspect");
+
+static register_lua_aspect_factory< lua_aspect<double>>
+	retreat_enemy_weight__lua_aspect_factory("retreat_enemy_weight*lua_aspect");
+
+static register_lua_aspect_factory< lua_aspect<double>>
+	retreat_factor__lua_aspect_factory("retreat_factor*lua_aspect");
 
 static register_lua_aspect_factory< lua_aspect<double>>
 	scout_village_targeting__lua_aspect_factory("scout_village_targeting*lua_aspect");
@@ -450,7 +474,7 @@ static register_lua_aspect_factory< lua_aspect<double>>
 static register_lua_aspect_factory< lua_aspect<int>>
 	villages_per_scout__lua_aspect_factory("villages_per_scout*lua_aspect");
 
-static register_lua_aspect_factory< lua_aspect< std::vector<std::string>> >
+static register_lua_aspect_factory< lua_aspect< std::vector<std::string>>>
 	recruitment_pattern__lua_aspect_factory("recruitment_pattern*lua_aspect");
 
 

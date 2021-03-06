@@ -52,6 +52,16 @@ function wesnoth.wml_actions.set_variable(cfg, variables)
 		variables[name] = math.abs(tonumber(variables[name]) or 0)
 	end
 
+	if cfg.reverse then
+		if type(variables[name]) == 'string' then
+			variables[name] = string.reverse(variables[name])
+		elseif type(variables[name]) == 'number' or getmetatable(variables[name]) == 'translatable string' then
+			variables[name] = string.reverse(tostring(variables[name]))
+		else
+			wml.error(string.format('Cannot reverse value %s', tostring(variables[name])))
+		end
+	end
+
 	if cfg.root then
 		local root = tonumber(cfg.root)
 		local root_fcn
@@ -113,6 +123,24 @@ function wesnoth.wml_actions.set_variable(cfg, variables)
 	if cfg.fpart then
 		local ivalue, fvalue = math.modf(tonumber(cfg.fpart) or 0)
 		variables[name] = fvalue
+	end
+	
+	-- similarly, min and max operate on the list assigned to the variable
+	-- and do not consider value already contained in the variable
+	if cfg.min then
+		local values = cfg.min:split()
+		for i = 1, #values do
+			values[i] = tonumber(values[i])
+		end
+		variables[name] = math.min(table.unpack(values))
+	end
+	
+	if cfg.max then
+		local values = cfg.max:split()
+		for i = 1, #values do
+			values[i] = tonumber(values[i])
+		end
+		variables[name] = math.max(table.unpack(values))
 	end
 
 	if cfg.string_length ~= nil then

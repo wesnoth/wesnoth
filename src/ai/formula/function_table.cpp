@@ -12,7 +12,6 @@
    See the COPYING file for more details.
 */
 
-
 #include <queue>
 #include <set>
 #include <utility>
@@ -28,6 +27,7 @@
 #include "attack_prediction.hpp"
 #include "filesystem.hpp"
 #include "game_board.hpp"
+#include "global.hpp"
 #include "display.hpp"
 #include "log.hpp"
 #include "map/label.hpp"
@@ -90,7 +90,6 @@ class unit_adapter {
 			}
 		}
 
-
 	private:
 		const unit_type *unit_type_;
 		const unit* unit_;
@@ -111,7 +110,6 @@ class unit_adapter {
 	};																												 \
 																													   \
 	variant name##_function::execute(const formula_callable& variables, formula_debugger* fdb) const
-
 
 DEFINE_FAI_FUNCTION(distance_to_nearest_unowned_village, 1, 1)
 {
@@ -445,14 +443,11 @@ DEFINE_WFL_FUNCTION(castle_locs, 1, 1)
 
 				visited_locs.insert(loc);
 
-				adjacent_loc_array_t adj;
-				get_adjacent_tiles(loc, adj.data());
-
-				for(unsigned n = 0; n < adj.size(); ++n) {
-					if (resources::gameboard->map().on_board(adj[n]) && visited_locs.find( adj[n] ) == visited_locs.end() ) {
-						if (resources::gameboard->map().get_terrain_info(adj[n]).is_keep() ||
-								resources::gameboard->map().get_terrain_info(adj[n]).is_castle() ) {
-							queued_locs.push(adj[n]);
+				for(const map_location& adj : get_adjacent_tiles(loc)) {
+					if (resources::gameboard->map().on_board(adj) && visited_locs.find( adj ) == visited_locs.end() ) {
+						if (resources::gameboard->map().get_terrain_info(adj).is_keep() ||
+								resources::gameboard->map().get_terrain_info(adj).is_castle() ) {
+							queued_locs.push(adj);
 						}
 					}
 				}
@@ -798,10 +793,11 @@ DEFINE_FAI_FUNCTION(simplest_path, 2, 3)
 	}
 
 	for (std::vector<map_location>::const_iterator loc_iter = route.steps.begin() + 1 ; loc_iter !=route.steps.end(); ++loc_iter) {
-		if (unit_it->movement_cost((resources::gameboard->map())[*loc_iter]) < movetype::UNREACHABLE )
+		if(unit_it->movement_cost(static_cast<const game_board*>(resources::gameboard)->map()[*loc_iter]) < movetype::UNREACHABLE) {
 			locations.emplace_back(std::make_shared<location_callable>(*loc_iter));
-		else
+		} else {
 			break;
+		}
 	}
 
 	return variant(locations);
@@ -931,7 +927,6 @@ DEFINE_FAI_FUNCTION(debug_label, 2, 2)
 	return variant(result);
 }
 
-
 DEFINE_WFL_FUNCTION(is_village, 2, 3)
 {
 	const gamemap& m = args()[0]->evaluate(variables, add_debug_info(fdb, 0, "is_village:map")).convert_to<gamemap_callable>()->get_gamemap();
@@ -1046,7 +1041,7 @@ namespace {
 			}
 		}
 
-		return std::make_pair(highest_melee_damage, highest_ranged_damage);
+		return std::pair(highest_melee_damage, highest_ranged_damage);
 	}
 }
 

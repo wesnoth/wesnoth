@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.14\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2020-10-17 01:28-0300\n"
+"POT-Creation-Date: 2021-02-20 18:40-0300\n"
 "PO-Revision-Date: 2020-08-10 20:11+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
@@ -172,97 +172,89 @@ msgid "Load Recent"
 msgstr "载入最近文件"
 
 #. [menu]: id=menu-editor-map
-#: data/themes/editor.cfg:90
+#: data/themes/editor.cfg:80
 msgid "Map"
 msgstr "地图"
 
 #. [menu]: id=menu-unit-facing
-#: data/themes/editor.cfg:98
+#: data/themes/editor.cfg:88
 msgid "Unit Facing"
 msgstr "单位面向"
 
 #. [menu]: id=menu-editor-transitions
-#: data/themes/editor.cfg:104
+#: data/themes/editor.cfg:94
 msgid "Transition Update"
 msgstr "渐变"
 
 #. [menu]: id=menu-editor-window
-#: data/themes/editor.cfg:111
+#: data/themes/editor.cfg:101
 msgid "Window"
 msgstr "窗口"
 
 #. [menu]: id=menu-editor-areas
-#: data/themes/editor.cfg:120
+#: data/themes/editor.cfg:110
 msgid "Areas"
 msgstr "区域"
 
 #. [menu]: id=menu-editor-local-time
-#: data/themes/editor.cfg:128
+#: data/themes/editor.cfg:118
 msgid "Assign Local Time"
 msgstr "指定本地时间"
 
 #. [menu]: id=menu-editor-local-schedule
-#: data/themes/editor.cfg:134
+#: data/themes/editor.cfg:124
 msgid "Assign Local Time Schedule"
 msgstr "指定本地日程表"
 
 #. [menu]: id=menu-editor-side
-#: data/themes/editor.cfg:142
+#: data/themes/editor.cfg:132
 msgid "Side"
 msgstr "阵营"
 
 #. [label]: id=villages-icon
-#: data/themes/editor.cfg:159
+#: data/themes/editor.cfg:149
 msgid "villages"
 msgstr "村庄"
 
 #. [label]: id=units-icon
-#: data/themes/editor.cfg:175
+#: data/themes/editor.cfg:165
 msgid "units"
 msgstr "单位"
 
 #. [menu]: id=switch_time
-#: data/themes/editor.cfg:454
+#: data/themes/editor.cfg:444
 msgid "Time Schedule Menu"
 msgstr "日程表菜单"
 
 #. [menu]: id=menu-playlist
-#: data/themes/editor.cfg:465
+#: data/themes/editor.cfg:455
 msgid "Playlist"
 msgstr "播放列表"
 
 #. [menu]: id=menu-editor-schedule
-#: data/themes/editor.cfg:471
+#: data/themes/editor.cfg:461
 msgid "Assign Time Schedule"
 msgstr "指定日程表"
 
-#: src/editor/action/mouse/mouse_action_unit.cpp:68
-msgid "(Unknown unit type: $type)"
-msgstr "（未知的单位类型：$type）"
-
-#: src/editor/action/mouse/mouse_action_unit.cpp:72
+#: src/editor/action/mouse/mouse_action_unit.cpp:61
 msgid "Identifier: "
 msgstr "标识符："
 
-#: src/editor/action/mouse/mouse_action_unit.cpp:73
+#: src/editor/action/mouse/mouse_action_unit.cpp:63
 msgid "Name: "
 msgstr "名字："
 
-#: src/editor/action/mouse/mouse_action_unit.cpp:74
+#: src/editor/action/mouse/mouse_action_unit.cpp:65
 msgid "Type: "
 msgstr "类型："
 
-#: src/editor/action/mouse/mouse_action_unit.cpp:75
+#: src/editor/action/mouse/mouse_action_unit.cpp:66
 msgid "Level: "
 msgstr "等级："
 
-#: src/editor/action/mouse/mouse_action_unit.cpp:76
+#: src/editor/action/mouse/mouse_action_unit.cpp:67
 msgid "Cost: "
 msgstr "花费："
-
-#: src/editor/action/mouse/mouse_action_unit.cpp:77
-msgid "Recruit: "
-msgstr "征募："
 
 #: src/editor/controller/editor_controller.cpp:179
 msgid "Fatal error"
@@ -288,123 +280,123 @@ msgstr "你真的要退出吗？下列地图已被修改，上次保存之后所
 msgid "No editor time-of-day found."
 msgstr "未找到编辑器的时段设置。"
 
-#: src/editor/controller/editor_controller.cpp:1148
+#: src/editor/controller/editor_controller.cpp:1135
 msgid "Change Unit ID"
 msgstr "变更单位ID"
 
-#: src/editor/controller/editor_controller.cpp:1149
+#: src/editor/controller/editor_controller.cpp:1136
 msgid "ID:"
 msgstr "ID："
 
-#: src/editor/controller/editor_controller.cpp:1165
+#: src/editor/controller/editor_controller.cpp:1152
 msgid "Rename Unit"
 msgstr "单位重命名"
 
-#: src/editor/controller/editor_controller.cpp:1166
+#: src/editor/controller/editor_controller.cpp:1153
 msgid "Name:"
 msgstr "名字："
 
-#: src/editor/map/context_manager.cpp:203
+#: src/editor/map/context_manager.cpp:208
 msgid "Load Map"
 msgstr "载入地图"
 
-#: src/editor/map/context_manager.cpp:271 src/editor/map/map_context.cpp:852
+#: src/editor/map/context_manager.cpp:276 src/editor/map/map_context.cpp:851
 msgid "New Map"
 msgstr "新建地图"
 
-#: src/editor/map/context_manager.cpp:284 src/editor/map/map_context.cpp:852
+#: src/editor/map/context_manager.cpp:289 src/editor/map/map_context.cpp:851
 msgid "New Scenario"
 msgstr "新建场景"
 
-#: src/editor/map/context_manager.cpp:340
+#: src/editor/map/context_manager.cpp:345
 msgid "No Recent Files"
 msgstr "没有最近文件"
 
-#: src/editor/map/context_manager.cpp:378
+#: src/editor/map/context_manager.cpp:383
 msgid "Unnamed Area"
 msgstr "未命名区域"
 
-#: src/editor/map/context_manager.cpp:409
+#: src/editor/map/context_manager.cpp:414
 msgid "New Side"
 msgstr "新阵营"
 
-#: src/editor/map/context_manager.cpp:465
+#: src/editor/map/context_manager.cpp:470
 msgid "Apply Mask"
 msgstr "应用遮罩"
 
-#: src/editor/map/context_manager.cpp:474
+#: src/editor/map/context_manager.cpp:479
 msgid "Error loading mask"
 msgstr "载入遮罩时发生错误"
 
-#: src/editor/map/context_manager.cpp:494
+#: src/editor/map/context_manager.cpp:499
 msgid "Identifier:"
 msgstr "标识符："
 
-#: src/editor/map/context_manager.cpp:494
+#: src/editor/map/context_manager.cpp:499
 msgid "Rename Area"
 msgstr "区域重命名"
 
-#: src/editor/map/context_manager.cpp:508
+#: src/editor/map/context_manager.cpp:513
 msgid "Choose Target Map"
 msgstr "选择目标地图"
 
-#: src/editor/map/context_manager.cpp:517
-#: src/editor/map/context_manager.cpp:926
+#: src/editor/map/context_manager.cpp:522
+#: src/editor/map/context_manager.cpp:931
 msgid "Error loading map"
 msgstr "载入地图时发生错误"
 
-#: src/editor/map/context_manager.cpp:643
+#: src/editor/map/context_manager.cpp:648
 msgid "Save Map As"
 msgstr "地图另存为"
 
-#: src/editor/map/context_manager.cpp:664
+#: src/editor/map/context_manager.cpp:669
 msgid "Save Scenario As"
 msgstr "场景另存为"
 
-#: src/editor/map/context_manager.cpp:696
+#: src/editor/map/context_manager.cpp:701
 msgid "No random map generators found."
 msgstr "未找到随机地图生成器。"
 
-#: src/editor/map/context_manager.cpp:709
 #: src/editor/map/context_manager.cpp:714
+#: src/editor/map/context_manager.cpp:719
 msgid "Map creation failed."
 msgstr "地图创建失败。"
 
-#: src/editor/map/context_manager.cpp:729
+#: src/editor/map/context_manager.cpp:734
 msgid "Unsaved Changes"
 msgstr "未保存的更改"
 
-#: src/editor/map/context_manager.cpp:730
+#: src/editor/map/context_manager.cpp:735
 msgid "Do you want to discard all changes made to the map since the last save?"
 msgstr "你要放弃上次保存之后对地图所作的全部修改吗？"
 
-#: src/editor/map/context_manager.cpp:786
+#: src/editor/map/context_manager.cpp:791
 msgid "This scenario is already open."
 msgstr "此场景已打开。"
 
-#: src/editor/map/context_manager.cpp:809
-#: src/editor/map/context_manager.cpp:872
+#: src/editor/map/context_manager.cpp:814
+#: src/editor/map/context_manager.cpp:877
 msgid "This map is already open."
 msgstr "此地图已打开。"
 
-#: src/editor/map/context_manager.cpp:833
+#: src/editor/map/context_manager.cpp:838
 msgid "Scenario saved."
 msgstr "场景已保存。"
 
-#: src/editor/map/context_manager.cpp:848
+#: src/editor/map/context_manager.cpp:853
 msgid "Map saved."
 msgstr "地图已保存。"
 
-#: src/editor/map/context_manager.cpp:905
+#: src/editor/map/context_manager.cpp:910
 msgid "Loaded embedded map data"
 msgstr "已载入嵌入的地图数据"
 
-#: src/editor/map/context_manager.cpp:906
-#: src/editor/map/context_manager.cpp:919
+#: src/editor/map/context_manager.cpp:911
+#: src/editor/map/context_manager.cpp:924
 msgid "Map loaded from scenario"
 msgstr "已从场景中载入地图"
 
-#: src/editor/map/context_manager.cpp:916
+#: src/editor/map/context_manager.cpp:921
 msgid ""
 "Loaded referenced map file:\n"
 "$new"
@@ -412,38 +404,38 @@ msgstr ""
 "已载入被引用的地图文件：\n"
 "$new"
 
-#: src/editor/map/editor_map.cpp:148
+#: src/editor/map/editor_map.cpp:144
 #: src/editor/palette/location_palette.cpp:119
 msgid "Player $side_num"
 msgstr "玩家$side_num"
 
-#: src/editor/map/editor_map.cpp:283
+#: src/editor/map/editor_map.cpp:279
 msgid "The size of the target map is different from the current map"
 msgstr "目标地图的尺寸与当前地图不同"
 
-#: src/editor/map/map_context.cpp:146
+#: src/editor/map/map_context.cpp:145
 msgid "File not found"
 msgstr "未找到文件"
 
-#: src/editor/map/map_context.cpp:153
+#: src/editor/map/map_context.cpp:152
 msgid "Empty file"
 msgstr "空文件"
 
-#: src/editor/map/map_context.cpp:209
+#: src/editor/map/map_context.cpp:208
 msgid ""
 "The map file looks like a scenario, but the map_data value does not point to "
 "an existing file"
 msgstr "此地图文件看起来像是一幕场景，但是map_data的值指向了一个不存在的文件"
 
-#: src/editor/map/map_context.cpp:618
+#: src/editor/map/map_context.cpp:617
 msgid "Could not save the scenario: $msg"
 msgstr "无法保存场景：$msg"
 
-#: src/editor/map/map_context.cpp:653
+#: src/editor/map/map_context.cpp:652
 msgid "Could not save into scenario"
 msgstr "无法保存到场景"
 
-#: src/editor/map/map_context.cpp:663
+#: src/editor/map/map_context.cpp:662
 msgid "Could not save the map: $msg"
 msgstr "无法保存地图：$msg"
 
@@ -510,25 +502,29 @@ msgstr ""
 msgid "Ctrl + click: copy terrain"
 msgstr ""
 
-#: src/gui/dialogs/editor/custom_tod.cpp:140
+#: src/gui/dialogs/editor/custom_tod.cpp:92
 msgid "Clipboard support not found, contact your packager"
 msgstr "未找到剪贴板支持，请联系你的打包者"
 
-#: src/gui/dialogs/editor/custom_tod.cpp:204
+#: src/gui/dialogs/editor/custom_tod.cpp:156
 msgid "Choose File"
 msgstr "选择文件"
 
-#: src/gui/dialogs/editor/custom_tod.cpp:205
+#: src/gui/dialogs/editor/custom_tod.cpp:157
 msgid "Select"
 msgstr "选择"
 
-#: src/gui/dialogs/editor/set_starting_position.cpp:84
-msgid "player^None"
-msgstr "无"
+#~ msgid "player^None"
+#~ msgstr "无"
 
-#: src/gui/dialogs/editor/set_starting_position.cpp:97
-msgid "Player $player_number"
-msgstr "玩家$player_number"
+#~ msgid "Player $player_number"
+#~ msgstr "玩家$player_number"
+
+#~ msgid "(Unknown unit type: $type)"
+#~ msgstr "（未知的单位类型：$type）"
+
+#~ msgid "Recruit: "
+#~ msgstr "征募："
 
 #~ msgid "FG: "
 #~ msgstr "前景："

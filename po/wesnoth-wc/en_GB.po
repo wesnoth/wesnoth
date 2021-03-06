@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2020-10-17 04:28 UTC\n"
-"PO-Revision-Date: 2020-09-24 23:49+1000\n"
+"POT-Creation-Date: 2021-02-20 21:40 UTC\n"
+"PO-Revision-Date: 2021-02-22 13:57+1100\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "Language: en_GB\n"
@@ -12,6 +12,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 2.3\n"
+
+#. [advancement]: id=amla_default
+#: data/campaigns/World_Conquest/era/campaign/heroes.cfg:142
+msgid "Max HP bonus +6%"
+msgstr "Max HP bonus +6%"
 
 #: data/campaigns/World_Conquest/era/campaign/strings.cfg:4
 msgid "heroic"
@@ -1696,47 +1701,47 @@ msgstr ""
 "Zzupde"
 
 #. [lua]: training.describe_training_level
-#: data/campaigns/World_Conquest/lua/game_mechanics/training.lua:113
+#: data/campaigns/World_Conquest/lua/game_mechanics/training.lua:111
 msgid "$name Training Maximum Level"
 msgstr "$name Training Maximum Level"
 
 #. [lua]: training.describe_training_level
-#: data/campaigns/World_Conquest/lua/game_mechanics/training.lua:117
+#: data/campaigns/World_Conquest/lua/game_mechanics/training.lua:115
 msgid "$name Training level $level"
 msgstr "$name Training level $level"
 
 #. [lua]: training.describe_training_level2
-#: data/campaigns/World_Conquest/lua/game_mechanics/training.lua:126
+#: data/campaigns/World_Conquest/lua/game_mechanics/training.lua:124
 msgid "Maximum Level"
 msgstr "Maximum Level"
 
 #. [lua]: training.describe_training_level2
-#: data/campaigns/World_Conquest/lua/game_mechanics/training.lua:128
+#: data/campaigns/World_Conquest/lua/game_mechanics/training.lua:126
 msgid "level $level"
 msgstr "level $level"
 
 #. [lua]: training.generate_message
-#: data/campaigns/World_Conquest/lua/game_mechanics/training.lua:145
+#: data/campaigns/World_Conquest/lua/game_mechanics/training.lua:143
 msgid "$chance| chance to $arrow $desc"
 msgstr "$chance| chance to $arrow $desc"
 
 #. [lua]: training.apply
-#: data/campaigns/World_Conquest/lua/game_mechanics/training.lua:221
+#: data/campaigns/World_Conquest/lua/game_mechanics/training.lua:219
 msgid "trained"
 msgstr "trained"
 
 #. [lua]: training.apply
-#: data/campaigns/World_Conquest/lua/game_mechanics/training.lua:222
+#: data/campaigns/World_Conquest/lua/game_mechanics/training.lua:220
 msgid "female^trained"
 msgstr "trained"
 
 #. [lua]: training.describe_bonus
-#: data/campaigns/World_Conquest/lua/game_mechanics/training.lua:274
+#: data/campaigns/World_Conquest/lua/game_mechanics/training.lua:272
 msgid "Nothing to learn here"
 msgstr "Nothing to learn here"
 
 #. [lua]: training.describe_bonus
-#: data/campaigns/World_Conquest/lua/game_mechanics/training.lua:276
+#: data/campaigns/World_Conquest/lua/game_mechanics/training.lua:274
 msgid "From $level_before to $level_after"
 msgstr "From $level_before to $level_after"
 
@@ -2644,6 +2649,73 @@ msgstr "Random"
 msgid "Special Overlay"
 msgstr "Special Overlay"
 
+#. [chance]
+#: data/campaigns/World_Conquest/resources/data/training.cfg:308
+msgid "$range|: $special|"
+msgstr "$range|: $special|"
+
+#. [chance]
+#: data/campaigns/World_Conquest/resources/data/training.cfg:522
+msgid "+$boost| moves"
+msgstr "+$boost| moves"
+
+#. [chance]
+#: data/campaigns/World_Conquest/resources/data/training.cfg:536
+msgid "$range|: +$boost| damage"
+msgstr "$range|: +$boost| damage"
+
+#. [chance]
+#: data/campaigns/World_Conquest/resources/data/training.cfg:552
+msgid "$range|: +1 damage per level"
+msgstr "$range|: +1 damage per level"
+
+#. [chance]
+#: data/campaigns/World_Conquest/resources/data/training.cfg:568
+msgid "+$hitpoints| hitpoints"
+msgstr "+$hitpoints| hit-points"
+
+#. [chance]
+#: data/campaigns/World_Conquest/resources/data/training.cfg:583
+msgid "+$hitpoints| hitpoints per level"
+msgstr "+$hitpoints| hit-points per level"
+
+#. [chance]
+#: data/campaigns/World_Conquest/resources/data/training.cfg:599
+msgid "$value| XP to advance"
+msgstr "$value| XP to advance"
+
+#. [chance]
+#: data/campaigns/World_Conquest/resources/data/training.cfg:623
+msgid "Village/Castle: +5 defense"
+msgstr "Village/Castle: +5 defence"
+
+#. [chance]
+#: data/campaigns/World_Conquest/resources/data/training.cfg:655
+msgid ""
+"$terrain|: +$def| defense and full movement, +$res| resistance vs $dmg_type|"
+msgstr ""
+"$terrain|: +$def| defence and full movement, +$res| resistance vs $dmg_type|"
+
+#. [chance]
+#: data/campaigns/World_Conquest/resources/data/training.cfg:684
+msgid "$terrain|: +10 defense and full movement"
+msgstr "$terrain|: +10 defence and full movement"
+
+#. [chance]
+#: data/campaigns/World_Conquest/resources/data/training.cfg:695
+msgid "+moves defense"
+msgstr "+moves defence"
+
+#. [chance]
+#: data/campaigns/World_Conquest/resources/data/training.cfg:705
+msgid "melee: optional charge"
+msgstr "melee: optional charge"
+
+#. [chance]
+#: data/campaigns/World_Conquest/resources/data/training.cfg:730
+msgid "$range|: arcane and +25% damage"
+msgstr "$range|: arcane and +25% damage"
+
 #: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:4
 msgid "Adamant armor"
 msgstr "Adamant armour"
@@ -3305,6 +3377,46 @@ msgid ""
 msgstr ""
 "I haven’t lived centuries fighting others’ battles, but I could combat "
 "boredom teaching your men a couple of things about dark techniques."
+
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:5
+msgid "World Conquest 1p"
+msgstr "World Conquest 1p"
+
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:8
+msgid "World Conquest 2p"
+msgstr "World Conquest 2p"
+
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:11
+msgid "World Conquest 3p"
+msgstr "World Conquest 3p"
+
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:14
+msgid ""
+"A randomly generated campaign for 1 player. It has 6 level of difficulties.\n"
+"(Expert level, 5 scenarios.)"
+msgstr ""
+"A randomly generated campaign for 1 player. It has 6 level of difficulties.\n"
+"(Expert level, 5 scenarios.)"
+
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:18
+msgid ""
+"A randomly generated cooperative campaign for 2 players. It has 6 level of "
+"difficulties.\n"
+"(Expert level, 5 scenarios.)"
+msgstr ""
+"A randomly generated co-operative campaign for 2 players. It has 6 level of "
+"difficulties.\n"
+"(Expert level, 5 scenarios.)"
+
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:22
+msgid ""
+"A randomly generated cooperative campaign for 3 players. It has 6 level of "
+"difficulties.\n"
+"(Expert level, 5 scenarios.)"
+msgstr ""
+"A randomly generated co-operative campaign for 3 players. It has 6 level of "
+"difficulties.\n"
+"(Expert level, 5 scenarios.)"
 
 #~ msgid "Ok"
 #~ msgstr "OK"

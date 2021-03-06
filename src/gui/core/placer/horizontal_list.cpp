@@ -30,7 +30,7 @@ namespace implementation
 placer_horizontal_list::placer_horizontal_list(const unsigned maximum_rows)
 	: maximum_rows_(maximum_rows)
 	, rows_(maximum_rows, 0)
-	, columns_(1, std::make_pair(0, 0))
+	, columns_(1, std::pair(0, 0))
 	, row_(0)
 	, column_(0)
 {

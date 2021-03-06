@@ -14,8 +14,6 @@
 
 #pragma once
 
-#include "global.hpp"
-
 #include <string>
 #include <map>
 #include <exception>

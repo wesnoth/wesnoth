@@ -64,10 +64,7 @@ class map_context;
 class map_fragment;
 class mouse_action;
 
-/** Action pointer typedef. */
-using editor_action_ptr = std::unique_ptr<editor_action>;
-
 /** Action stack typedef. */
-using action_stack = std::deque<editor_action_ptr>;
+using action_stack = std::deque<std::unique_ptr<editor_action>>;
 
 } //end namespace editor

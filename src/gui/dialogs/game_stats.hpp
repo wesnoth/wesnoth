@@ -27,9 +27,7 @@ class display;
 class team;
 struct team_data;
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 
 class game_stats : public modal_dialog
@@ -59,7 +57,7 @@ private:
 
 	unit_const_ptr get_leader(const int side);
 
-	void on_tab_select(window& window);
+	void on_tab_select();
 
 	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const override;
@@ -72,4 +70,3 @@ private:
 };
 
 } // namespace dialogs
-} // namespace gui2

@@ -95,6 +95,9 @@ o modo de comando).
 \fB\-\-debug\-lua\fP
 habilita alguns mecanismos de deb da Lua
 .TP 
+\fB\-\-strict\-lua\fP
+disallow deprecated Lua API calls
+.TP 
 \fB\-D,\-\-diff\fP\fI\ left\-file\fP\fB\ \fP\fIright\-file\fP
 diffs the two WML files; does not preprocess them first (to do that, run
 them through \fB\-p\fP first). Outputs the diff as DiffWML on standard output or
@@ -138,7 +141,7 @@ a maioria dos domains, mas \fBdeprecation\fP vai para por padrão \fBnone\fP a n
 ser que seja combinado com a opção \fB\-d\fP.
 .TP 
 \fB\-\-log\-precise\fP
-mostra as timestamps nos logfiles com mais precisão.
+mostra as timestamps no log de saída com mais precisão.
 .TP 
 \fB\-\-log\-strict\fP
 define o nível strict para o logger. Qualquer mensagem enviada para os log
@@ -234,21 +237,6 @@ macros no arquivo alvo. Se o arquivo não for especificado, o resultado será
 arquvio '_MACROS_.cfg' no diretório alvo do comando do pré\-processador. O
 arquivo resultante pode ser passado para \fB\-\-preprocess\-input\-macros\fP.  Esta
 opção deve ser digitada antes do comando \fB\-\-preprocess\fP.
-.TP 
-\fB\-\-proxy\fP
-permite a utilização de proxy para conexões em rede.
-.TP 
-\fB\-\-proxy\-address\fP\fI\ address\fP
-especifica o \fIaddress\fP da proxy.
-.TP 
-\fB\-\-proxy\-port\fP\fI\ port\fP
-especifica a \fIport\fP da proxy.
-.TP 
-\fB\-\-proxy\-user\fP\fI\ username\fP
-especifica \fIusername\fP para logar no proxy.
-.TP 
-\fB\-\-proxy\-password\fP\fI\ password\fP
-especifica \fIpassword\fP para logar no proxy.
 .TP 
 \fB\-r\ \fP\fIX\fP\fBx\fP\fIY\fP\fB,\ \-\-resolution\ \fP\fIX\fP\fBx\fP\fIY\fP
 define a resolução da tela. Exemplo: \fB\-r\fP \fB800x600\fP.
@@ -419,12 +407,12 @@ O status de saída normal é 0.  Um status de saída 1 indica que um (SDL,
 vídeo, fontes, etc) erro de inicialização. Um status de saída 2 indica um
 erro com as opções de linha de comando.
 .br
-When running unit tests (with\fB\ \-u\fP), the exit status is different. An exit
-status of 0 indicates that the test passed, and 1 indicates that the test
-failed. An exit status of 3 indicates that the test passed, but produced an
-invalid replay file. An exit status of 4 indicates that the test passed, but
-the replay produced errors. These latter two are only returned if
-\fB\-\-noreplaycheck\fP is not passed.
+Quando rodando testes de unidades (with\fB\ \-u\fP), o status da saída é
+diferente. Um status de saída de 0 indica que o teste passou, e 1 que o
+teste falhou. Um status de saída de 3 indica que o teste passou, mas
+produziu um arquivo de replay inválido. Um status de saída de 4 indica que o
+teste passou, mas o replay produziu erros. Estes dois últimos só voltam se
+\fB\-\-noreplaycheck\fP não passar.
 .
 .SH AUTOR
 .

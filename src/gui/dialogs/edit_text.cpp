@@ -23,26 +23,8 @@
 
 #include <boost/algorithm/string/trim.hpp>
 
-namespace gui2
+namespace gui2::dialogs
 {
-namespace dialogs
-{
-
-/*WIKI
- * @page = GUIWindowDefinitionWML
- * @order = 2_rename_unit
- *
- * == Rename unit ==
- *
- * Dialog for renaming units in-game.
- *
- * @begin{table}{dialog_widgets}
- *
- * name & & text_box & m &
- *         Input field for the unit name. $
- *
- * @end{table}
- */
 
 REGISTER_DIALOG(edit_text)
 
@@ -75,4 +57,3 @@ void edit_text::on_text_change()
 }
 
 } // namespace dialogs
-} // namespace gui2

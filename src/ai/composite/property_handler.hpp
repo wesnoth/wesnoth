@@ -19,7 +19,7 @@
 
 #pragma once
 
-#include "utils/functional.hpp"
+#include <functional>
 #include "config.hpp"
 #include "ai/composite/component.hpp"
 
@@ -53,7 +53,6 @@ private:
 	path_element element_;
 };
 
-
 class component;
 
 class base_property_handler {
@@ -78,7 +77,6 @@ public:
 
 	vector_property_handler(const std::string &property, ptr_vector &values, std::function<void(ptr_vector&, const config&)> &construction_factory)
 		: factory_(construction_factory), property_(property), values_(values){}
-
 
         component* handle_get(const path_element &child)
 	{
@@ -130,7 +128,6 @@ public:
 		return false;
 	}
 
-
 	std::vector<component*> handle_get_children()
 	{
 		std::vector<component*> children;
@@ -166,8 +163,6 @@ private:
 	ptr_vector &values_;
 
 };
-
-
 
 template<typename T>
 class facets_property_handler : public vector_property_handler<T> {
@@ -213,8 +208,6 @@ private:
 	ptr& default_;
 };
 
-
-
 template<typename T>
 class aspect_property_handler : public base_property_handler {
 public:
@@ -225,7 +218,6 @@ public:
 		: property_(property), aspects_(aspects), factory_(construction_factory)
 	{
 	}
-
 
         component* handle_get(const path_element &child)
 	{
@@ -267,7 +259,6 @@ public:
 		return false;
 	}
 
-
 	std::vector<component*> handle_get_children()
 	{
 		std::vector<component*> children;
@@ -284,7 +275,6 @@ private:
 	std::function<void(aspect_map&, const config&, std::string)> factory_;
 
 };
-
 
 template<typename X>
 static inline void register_vector_property(property_handler_map& property_handlers, const std::string& property,

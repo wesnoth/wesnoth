@@ -59,7 +59,7 @@ bool notspace(const char c)
 	return !portable_isspace(c);
 }
 
-void trim(string_view& s)
+void trim(std::string_view& s)
 {
 	s.remove_prefix(std::min(s.find_first_not_of(" \t\r\n"), s.size()));
 	if(s.empty()) {
@@ -72,26 +72,26 @@ void trim(string_view& s)
 
 /**
  * Splits a (comma-)separated string into a vector of pieces.
- * @param[in]  val    A (comma-)separated string.
- * @param[in]  c      The separator character (usually a comma).
+ * @param[in]  s      A (comma-)separated string.
+ * @param[in]  sep    The separator character (usually a comma).
  * @param[in]  flags  Flags controlling how the split is done.
  *                    This is a bit field with two settings (both on by default):
  *                    REMOVE_EMPTY causes empty pieces to be skipped/removed.
  *                    STRIP_SPACES causes the leading and trailing spaces of each piece to be ignored/stripped.
  */
-std::vector<std::string> split(string_view s, const char sep, const int flags)
+std::vector<std::string> split(std::string_view s, const char sep, const int flags)
 {
 	std::vector<std::string> res;
-	split_foreach(s, sep, flags, [&](string_view item) {
+	split_foreach(s, sep, flags, [&](std::string_view item) {
 		res.emplace_back(item);
 	});
 	return res;
 }
 
-std::set<std::string> split_set(string_view s, char sep, const int flags)
+std::set<std::string> split_set(std::string_view s, char sep, const int flags)
 {
 	std::set<std::string> res;
-	split_foreach(s, sep, flags, [&](string_view item) {
+	split_foreach(s, sep, flags, [&](std::string_view item) {
 		res.emplace(item);
 	});
 	return res;
@@ -656,7 +656,7 @@ bool word_completion(std::string& text, std::vector<std::string>& wordlist) {
 	{
 		if (word->size() < semiword.size()
 		|| !std::equal(semiword.begin(), semiword.end(), word->begin(),
-				chars_equal_insensitive))
+				utils::chars_equal_insensitive))
 		{
 			continue;
 		}
@@ -815,9 +815,9 @@ std::pair<int, int> parse_range(const std::string& str)
 	std::pair<int,int> res {0,0};
 	try {
 		if (b == "infinity") {
-			res = std::make_pair(std::stoi(a), std::numeric_limits<int>::max());
+			res = std::pair(std::stoi(a), std::numeric_limits<int>::max());
 		} else {
-			res = std::make_pair(std::stoi(a), std::stoi(b));
+			res = std::pair(std::stoi(a), std::stoi(b));
 		}
 
 		if (res.second < res.first) {

@@ -20,7 +20,6 @@
 #include "gui/core/window_builder.hpp"
 
 class config;
-class game_config_view;
 namespace gui2
 {
 namespace implementation
@@ -31,10 +30,14 @@ struct builder_minimap;
 // ------------ WIDGET -----------{
 
 /**
- * The basic minimap class.
+ * @ingroup GUIWidgetWML
  *
- * This minimap can only show a minimap, but it can't be interacted with. For
- * that the tminimap_interactive class will be created.
+ * The basic minimap class.
+ * This minimap can only show a minimap, but it can't be interacted with.
+ *
+ * The following states exist:
+ * * state_enabled - the minimap is enabled.
+ * A minimap has no extra fields.
  */
 class minimap : public styled_widget
 {
@@ -75,21 +78,9 @@ public:
 		return map_data_;
 	}
 
-	void set_config(const ::game_config_view* terrain)
-	{
-		terrain_ = terrain;
-	}
-
 private:
 	/** The map data to be used to generate the map. */
 	std::string map_data_;
-
-	/**
-	 * The config object with the terrain data.
-	 *
-	 * This config must be set before the object can be drawn.
-	 */
-	const ::game_config_view* terrain_;
 
 	/**
 	 * Gets the image for the minimap.
@@ -138,7 +129,7 @@ struct builder_minimap : public builder_styled_widget
 
 	using builder_styled_widget::build;
 
-	widget* build() const;
+	virtual widget* build() const override;
 };
 
 } // namespace implementation

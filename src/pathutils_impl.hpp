@@ -11,8 +11,6 @@
    See the COPYING file for more details.
 */
 
-/** @file */
-
 #pragma once
 
 #include "map/location.hpp"
@@ -20,7 +18,7 @@
 
 /**
  * Function that will add to @a result all elements of @a locs, plus all
- * on-board (that is: all locs that match @pred1) locations matching @a pred2
+ * on-board (that is: all locs that match @a pred1) locations matching @a pred2
  * that are connected to elements of
  * locs by a chain of at most @a radius tiles, each of which matches @a pred2.
  * @a result must be a std::set of locations.
@@ -42,10 +40,7 @@ void get_tiles_radius(std::set<map_location>&& locs, size_t radius, std::set<map
 
 		result.insert(it, it_end);
 		for(; it != it_end; ++it) {
-			adjacent_loc_array_t adj;
-			get_adjacent_tiles(*it, adj.data());
-			for(size_t i = 0; i < adj.size(); ++i) {
-				const map_location& loc = adj[i];
+			for(const map_location& loc : get_adjacent_tiles(*it)) {
 				if( pred1(loc) ) {
 					if( !result.count(loc) && !filtered_out.count(loc) ) {
 						if( pred2(loc) ) {

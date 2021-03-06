@@ -95,7 +95,7 @@ int intf_textdomain(lua_State *L)
 	std::size_t l;
 	char const *m = luaL_checklstring(L, 1, &l);
 
-	void *p = lua_newuserdata(L, l + 1);
+	void *p = lua_newuserdatauv(L, l + 1, 0);
 	memcpy(p, m, l + 1);
 
 	luaL_setmetatable(L, gettextKey);
@@ -496,12 +496,12 @@ std::string register_vconfig_metatable(lua_State *L)
 
 } // end namespace lua_common
 
-void* operator new(std::size_t sz, lua_State *L)
+void* operator new(std::size_t sz, lua_State *L, int nuv)
 {
-	return lua_newuserdata(L, sz);
+	return lua_newuserdatauv(L, sz, nuv);
 }
 
-void operator delete(void*, lua_State *L)
+void operator delete(void*, lua_State *L, int)
 {
 	// Not sure if this is needed since it's a no-op
 	// It's only called if a constructor throws while using the above operator new
@@ -538,12 +538,15 @@ void luaW_pushtstring(lua_State *L, const t_string& v)
 
 
 namespace {
-	struct luaW_pushscalar_visitor : boost::static_visitor<>
+	struct luaW_pushscalar_visitor
+#ifdef USING_BOOST_VARIANT
+		: boost::static_visitor<>
+#endif
 	{
 		lua_State *L;
 		luaW_pushscalar_visitor(lua_State *l): L(l) {}
 
-		void operator()(const boost::blank&) const
+		void operator()(const utils::monostate&) const
 		{ lua_pushnil(L); }
 		void operator()(bool b) const
 		{ lua_pushboolean(L, b); }
@@ -948,7 +951,7 @@ bool luaW_checkvariable(lua_State *L, variable_access_create& v, int n)
 				if (luaW_toconfig(L, n, cfg)) {
 					return true;
 				}
-				FALLTHROUGH;
+				[[fallthrough]];
 			}
 		default:
 		default_explicit:
@@ -975,24 +978,24 @@ bool luaW_tableget(lua_State *L, int index, const char* key)
 	return true;
 }
 
-utils::string_view luaW_tostring(lua_State *L, int index)
+std::string_view luaW_tostring(lua_State *L, int index)
 {
 	size_t len = 0;
 	const char* str = lua_tolstring(L, index, &len);
 	if(!str) {
 		throw luaL_error (L, "not a string");
 	}
-	return utils::string_view(str, len);
+	return std::string_view(str, len);
 }
 
-utils::string_view luaW_tostring_or_default(lua_State *L, int index, utils::string_view def)
+std::string_view luaW_tostring_or_default(lua_State *L, int index, std::string_view def)
 {
 	size_t len = 0;
 	const char* str = lua_tolstring(L, index, &len);
 	if(!str) {
 		return def;
 	}
-	return utils::string_view(str, len);
+	return std::string_view(str, len);
 }
 
 void chat_message(const std::string& caption, const std::string& msg)

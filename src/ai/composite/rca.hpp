@@ -41,7 +41,6 @@ public:
 	 */
 	virtual ~candidate_action();
 
-
 	/**
 	 * Evaluate the candidate action, resetting the internal state of the action
 	 * @return the score
@@ -75,18 +74,15 @@ public:
 	 */
 	double get_score() const;
 
-
 	/**
 	 * Get the upper bound of the score of the candidate action without re-evaluation
 	 */
 	double get_max_score() const;
 
-
 	/**
 	 * Get the unit filter for allowed units for this candidate action
 	 */
 	std::shared_ptr<unit_filter> get_filter_own() const;
-
 
 	/**
 	 * Flag indicating whether unit may be used by this candidate action
@@ -112,7 +108,6 @@ public:
 
 	int get_recursion_count() const;
 
-
 	/**
 	 * serialize
 	 */
@@ -128,27 +123,19 @@ private:
 
 	bool enabled_;
 
-
 	std::string engine_;
-
 
 	double score_;
 
-
 	double max_score_;
-
 
 	std::shared_ptr<unit_filter> filter_own_;
 
-
 	std::string id_;
-
 
 	std::string name_;
 
-
 	std::string type_;
-
 
 	bool to_be_removed_;
 
@@ -186,7 +173,6 @@ public:
 
 	virtual ~candidate_action_factory() {}
 };
-
 
 template<class CANDIDATE_ACTION>
 class register_candidate_action_factory : public candidate_action_factory {

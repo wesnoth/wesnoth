@@ -105,8 +105,12 @@ bool wmi_manager::fire_item(
 /**
  * Returns the menu items that can be shown for the given location.
  *
+ * @param hex               The current hex.
  * @param[out] items        Pointers to applicable menu items will be pushed onto @a items.
  * @param[out] descriptions Menu item text will be pushed onto @a descriptions (in the same order as @a items).
+ * @param fc                Used to check whether the menu's filter matches.
+ * @param gamedata          Used to check whether to show if selecting is required.
+ * @param units             Used to highlight a unit if needed.
  */
 void wmi_manager::get_items(const map_location& hex,
 		std::vector<std::shared_ptr<const wml_menu_item>>& items,
@@ -200,11 +204,8 @@ void wmi_manager::to_config(config& cfg) const
  */
 void wmi_manager::set_item(const std::string& id, const vconfig& menu_item)
 {
-	auto iter = wml_menu_items_.begin();
-	bool success;
-
 	// First, try to insert a brand new menu item.
-	std::tie(iter, success) = wml_menu_items_.emplace(id, std::make_shared<wml_menu_item>(id, menu_item));
+	auto [iter, success] = wml_menu_items_.emplace(id, std::make_shared<wml_menu_item>(id, menu_item));
 
 	// If an entry already exists, reset it.
 	if(!success) {

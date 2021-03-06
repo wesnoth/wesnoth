@@ -44,7 +44,7 @@
 #include "game_version.hpp"                  // for do_version_check, etc
 #include "picture.hpp"
 
-#include "utils/functional.hpp"
+#include <functional>
 #include "utils/name_generator.hpp"
 #include "utils/markov_generator.hpp"
 #include "utils/context_free_grammar_generator.hpp"
@@ -129,6 +129,28 @@ int lua_kernel_base::intf_print(lua_State* L)
 	return 0;
 }
 
+static void impl_warn(void* p, const char* msg, int tocont) {
+	static const char*const prefix = "Warning:\n  ";
+	static std::ostringstream warning(prefix);
+	warning.seekp(0, std::ios::end);
+	warning << msg << ' ';
+	if(!tocont) {
+		auto L = reinterpret_cast<lua_State*>(p);
+		luaW_getglobal(L, "debug", "traceback");
+		lua_push(L, warning.str());
+		lua_pushinteger(L, 2);
+		lua_call(L, 2, 1);
+		auto& lk = lua_kernel_base::get_lua_kernel<lua_kernel_base>(L);
+		lk.add_log_to_console(luaL_checkstring(L, -1));
+		warning.str(prefix);
+	}
+}
+
+void lua_kernel_base::add_log_to_console(const std::string& msg) {
+	cmd_log_ << msg << "\n";
+	DBG_LUA << "'" << msg << "'\n";
+}
+
 /**
  * Replacement load function. Mostly the same as regular load, but disallows loading binary chunks
  * due to CVE-2018-1999023.
@@ -204,7 +226,7 @@ static int intf_name_generator(lua_State *L)
 			if(lua_istable(L, 2)) {
 				input = lua_check<std::vector<std::string>>(L, 2);
 			} else {
-				input = utils::parenthetical_split(luaL_checkstring(L, 2), ',');
+				input = utils::parenthetical_split(luaW_checktstring(L, 2), ',');
 			}
 			int chain_sz = luaL_optinteger(L, 3, 2);
 			int max_len = luaL_optinteger(L, 4, 12);
@@ -220,11 +242,16 @@ static int intf_name_generator(lua_State *L)
 						return lua_error(L);
 					}
 					if(lua_isstring(L, -1)) {
-						data[lua_tostring(L,-2)] = utils::split(lua_tostring(L,-1),'|');
+						auto& productions = data[lua_tostring(L,-2)] = utils::split(luaW_checktstring(L,-1).str(), '|');
+						if(productions.size() > 1) {
+							deprecated_message("wesnoth.name_generator('cfg', {nonterminal = 'a|b'})", DEP_LEVEL::INDEFINITE, "1.17", "Non-terminals should now be assigned an array of productions instead of a single string containing productions separated by | - but a single string is fine if it's only one production");
+						}
 					} else if(lua_istable(L, -1)) {
-						data[lua_tostring(L,-2)] = lua_check<std::vector<std::string>>(L, -1);
+						const auto& split = lua_check<std::vector<t_string>>(L, -1);
+						auto& productions = data[lua_tostring(L,-2)];
+						std::transform(split.begin(), split.end(), std::back_inserter(productions), std::mem_fn(&t_string::str));
 					} else {
-						lua_pushstring(L, "CFG generator: invalid noterminal value (must be a string or list of strings)");
+						lua_pushstring(L, "CFG generator: invalid nonterminal value (must be a string or list of strings)");
 						return lua_error(L);
 					}
 				}
@@ -232,7 +259,7 @@ static int intf_name_generator(lua_State *L)
 					gen = new(L) context_free_grammar_generator(data);
 				}
 			} else {
-				gen = new(L) context_free_grammar_generator(luaL_checkstring(L, 2));
+				gen = new(L) context_free_grammar_generator(luaW_checktstring(L, 2));
 			}
 			if(gen) {
 				assert(static_cast<void*>(gen) == dynamic_cast<context_free_grammar_generator*>(gen));
@@ -328,6 +355,7 @@ static int intf_deprecated_message(lua_State* L) {
 		lua_push(L, msg);
 		return lua_error(L);
 	}
+	lua_warning(L, msg.c_str(), false);
 	return 0;
 }
 
@@ -485,6 +513,7 @@ lua_kernel_base::lua_kernel_base()
 	lua_setglobal(L, "std_print"); //storing original impl as 'std_print'
 	lua_settop(L, 0); //clear stack, just to be sure
 
+	lua_setwarnf(L, &::impl_warn, L);
 	lua_pushcfunction(L, &dispatch<&lua_kernel_base::intf_print>);
 	lua_setglobal(L, "print");
 
@@ -515,8 +544,9 @@ lua_kernel_base::lua_kernel_base()
 		{ "vector_diff",			&lua_map_location::intf_vector_diff			},
 		{ "vector_negation",		&lua_map_location::intf_vector_negation			},
 		{ "rotate_right_around_center",	&lua_map_location::intf_rotate_right_around_center	},
-		{ "tiles_adjacent",		&lua_map_location::intf_tiles_adjacent			},
-		{ "get_adjacent_tiles",		&lua_map_location::intf_get_adjacent_tiles		},
+		{ "are_hexes_adjacent",		&lua_map_location::intf_tiles_adjacent			},
+		{ "get_adjacent_hexes",		&lua_map_location::intf_get_adjacent_tiles		},
+		{ "get_hexes_in_radius",		&lua_map_location::intf_get_tiles_in_radius		},
 		{ "distance_between",		&lua_map_location::intf_distance_between		},
 		{ "get_in_basis_N_NE",		&lua_map_location::intf_get_in_basis_N_NE		},
 		{ "get_relative_dir",		&lua_map_location::intf_get_relative_dir		},
@@ -534,7 +564,7 @@ lua_kernel_base::lua_kernel_base()
 	cmd_log_ << "Adding game_config table...\n";
 
 	lua_getglobal(L, "wesnoth");
-	lua_newuserdata(L, 0);
+	lua_newuserdatauv(L, 0, 0);
 	lua_createtable(L, 0, 3);
 	lua_pushcfunction(L, &dispatch<&lua_kernel_base::impl_game_config_get>);
 	lua_setfield(L, -2, "__index");
@@ -584,7 +614,7 @@ lua_kernel_base::lua_kernel_base()
 		//run "ilua.set_strict()"
 		lua_pushstring(L, "set_strict");
 		lua_gettable(L, -2);
-		if (!this->protected_call(0,0, std::bind(&lua_kernel_base::log_error, this, _1, _2))) {
+		if (!this->protected_call(0,0, std::bind(&lua_kernel_base::log_error, this, std::placeholders::_1, std::placeholders::_2))) {
 			cmd_log_ << "Failed to activate strict mode.\n";
 		} else {
 			cmd_log_ << "Activated strict mode.\n";
@@ -630,13 +660,13 @@ void lua_kernel_base::throw_exception(char const * msg, char const * context)
 
 bool lua_kernel_base::protected_call(int nArgs, int nRets)
 {
-	error_handler eh = std::bind(&lua_kernel_base::log_error, this, _1, _2 );
+	error_handler eh = std::bind(&lua_kernel_base::log_error, this, std::placeholders::_1, std::placeholders::_2 );
 	return this->protected_call(nArgs, nRets, eh);
 }
 
 bool lua_kernel_base::load_string(char const * prog, const std::string& name)
 {
-	error_handler eh = std::bind(&lua_kernel_base::log_error, this, _1, _2 );
+	error_handler eh = std::bind(&lua_kernel_base::log_error, this, std::placeholders::_1, std::placeholders::_2 );
 	return this->load_string(prog, name, eh);
 }
 
@@ -659,8 +689,6 @@ bool lua_kernel_base::protected_call(lua_State * L, int nArgs, int nRets, error_
 			context += "Lua error in attached debugger: ";
 		} else if (errcode == LUA_ERRMEM) {
 			context += "Lua out of memory error: ";
-		} else if (errcode == LUA_ERRGCMM) {
-			context += "Lua error in garbage collection metamethod: ";
 		} else {
 			context += "unknown lua error: ";
 		}
@@ -694,8 +722,6 @@ bool lua_kernel_base::load_string(char const * prog, const std::string& name, er
 			context += " a syntax error";
 		} else if(errcode == LUA_ERRMEM){
 			context += " a memory error";
-		} else if(errcode == LUA_ERRGCMM) {
-			context += " an error in garbage collection metamethod";
 		} else {
 			context += " an unknown error";
 		}
@@ -723,7 +749,7 @@ void lua_kernel_base::run_lua_tag(const config& cfg)
 void lua_kernel_base::throwing_run(const char * prog, const std::string& name, int nArgs, bool in_interpreter)
 {
 	cmd_log_ << "$ " << prog << "\n";
-	error_handler eh = std::bind(&lua_kernel_base::throw_exception, this, _1, _2 );
+	error_handler eh = std::bind(&lua_kernel_base::throw_exception, this, std::placeholders::_1, std::placeholders::_2 );
 	this->load_string(prog, name, eh);
 	if(in_interpreter) {
 		lua_getfield(mState, LUA_REGISTRYINDEX, Interp);
@@ -751,7 +777,7 @@ void lua_kernel_base::interactive_run(char const * prog) {
 	experiment += prog;
 	int top = lua_gettop(mState);
 
-	error_handler eh = std::bind(&lua_kernel_base::throw_exception, this, _1, _2 );
+	error_handler eh = std::bind(&lua_kernel_base::throw_exception, this, std::placeholders::_1, std::placeholders::_2 );
 	luaW_getglobal(mState, "ilua", "_pretty_print");
 
 	try {
@@ -843,7 +869,7 @@ int lua_kernel_base::intf_require(lua_State* L)
 	}
 	DBG_LUA << "require: loaded a file, now calling it\n";
 
-	if (!this->protected_call(L, 0, 1, std::bind(&lua_kernel_base::log_error, this, _1, _2))) {
+	if (!this->protected_call(L, 0, 1, std::bind(&lua_kernel_base::log_error, this, std::placeholders::_1, std::placeholders::_2))) {
 		// historically if wesnoth.require fails it just yields nil and some logging messages, not a lua error
 		return 0;
     }
@@ -877,6 +903,7 @@ int lua_kernel_base::impl_game_config_get(lua_State* L)
 	return_string_attrib("version", game_config::wesnoth_version.str());
 	return_bool_attrib("debug", game_config::debug);
 	return_bool_attrib("debug_lua", game_config::debug_lua);
+	return_bool_attrib("strict_lua", game_config::strict_lua);
 	return_bool_attrib("mp_debug", game_config::mp_debug);
 	return 0;
 }
@@ -906,7 +933,7 @@ void lua_kernel_base::load_core()
 	lua_settop(L, 0);
 	cmd_log_ << "Loading core...\n";
 	luaW_getglobal(L, "wesnoth", "require");
-	lua_pushstring(L, "lua/core.lua");
+	lua_pushstring(L, "lua/core");
 	if(!protected_call(1, 1)) {
 		cmd_log_ << "Error: Failed to load core.\n";
 	}

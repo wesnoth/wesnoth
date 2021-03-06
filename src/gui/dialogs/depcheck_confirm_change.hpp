@@ -18,11 +18,20 @@
 #include <vector>
 #include <string>
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 
+/**
+ * @ingroup GUIWindowDefinitionWML
+ *
+ * Asks the user to confirm a change required to proceed. Currently used for enabling/disabling modifications.
+ * Key               |Type          |Mandatory|Description
+ * ------------------|--------------|---------|-----------
+ * message           | @ref label   |yes      |displays the details of the required changes
+ * itemlist          | scroll_label |yes      |displays the list of affected items
+ * cancel            | @ref button  |yes      |refuse to apply changes
+ * ok                | @ref button  |yes      |agree to apply changes
+ */
 class depcheck_confirm_change : public modal_dialog
 {
 public:
@@ -47,4 +56,3 @@ protected:
 };
 
 } // namespace dialogs
-} // namespace gui2

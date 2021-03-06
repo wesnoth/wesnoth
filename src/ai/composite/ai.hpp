@@ -28,24 +28,20 @@ namespace ai {
 class ai_composite : public ai_context, public virtual default_ai_context_proxy, public component {
 public:
 
-
 	/**
 	 * Constructor
 	 */
 	ai_composite( default_ai_context &context, const config &cfg );
-
 
 	/**
 	 * Destructor
 	 */
 	virtual ~ai_composite();
 
-
 	/**
 	 * Play the turn
 	 */
 	void play_turn();
-
 
 	/**
 	 * Evaluate command (using fai)
@@ -57,7 +53,6 @@ public:
 	 */
 	virtual void new_turn();
 
-
 	std::string describe_self() const;
 
 	/**
@@ -65,30 +60,21 @@ public:
 	 */
 	virtual config to_config() const;
 
-
 	int get_recursion_count() const;
-
 
 	void switch_side(side_number side);
 
-
 	virtual bool add_goal(const config &cfg);
-
 
 	virtual bool add_stage(const config &cfg);
 
-
 	void create_stage(std::vector<stage_ptr> &stages, const config &cfg);
-
 
 	void create_goal(std::vector<goal_ptr> &goals, const config &cfg);
 
-
 	void create_engine(std::vector<engine_ptr> &engines, const config &cfg);
 
-
 	void replace_aspect(std::map<std::string,aspect_ptr> &aspects, const config &cfg, std::string id);
-
 
 	void on_create();
 
@@ -96,7 +82,6 @@ public:
 	 * unwrap
 	 */
 	virtual ai_context& get_ai_context();
-
 
 	virtual std::string get_id() const;
 	virtual std::string get_name() const;
@@ -111,12 +96,10 @@ protected:
 	 */
 	const config &cfg_;
 
-
 	/**
 	 * Stages of the composite AI
 	 */
 	std::vector< stage_ptr > stages_;
-
 
 	/**
 	 * Recursion counter

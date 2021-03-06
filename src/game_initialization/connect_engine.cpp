@@ -44,7 +44,9 @@ static lg::log_domain log_mp_connect_engine("mp/connect/engine");
 static lg::log_domain log_network("network");
 #define LOG_NW LOG_STREAM(info, log_network)
 
-static const std::array<std::string, 5> controller_names {{
+namespace
+{
+const std::array<std::string, 5> controller_names {{
 	"human",
 	"human",
 	"ai",
@@ -52,14 +54,21 @@ static const std::array<std::string, 5> controller_names {{
 	"reserved"
 }};
 
+const std::set<std::string> children_to_swap {
+	"village",
+	"unit",
+	"ai"
+};
+} // end anon namespace
+
 namespace ng {
 
-connect_engine::connect_engine(saved_game& state, const bool first_scenario, mp_campaign_info* campaign_info)
+connect_engine::connect_engine(saved_game& state, const bool first_scenario, mp_game_metadata* metadata)
 	: level_()
 	, state_(state)
 	, params_(state.mp_settings())
-	, default_controller_(campaign_info ? CNTR_NETWORK : CNTR_LOCAL)
-	, campaign_info_(campaign_info)
+	, default_controller_(metadata ? CNTR_NETWORK : CNTR_LOCAL)
+	, mp_metadata_(metadata)
 	, first_scenario_(first_scenario)
 	, force_lock_settings_()
 	, side_engines_()
@@ -189,9 +198,7 @@ connect_engine::connect_engine(saved_game& state, const bool first_scenario, mp_
 	// Create side engines.
 	int index = 0;
 	for(const config& s : sides) {
-		side_engines_.emplace_back(new side_engine(s, *this, index));
-
-		index++;
+		side_engines_.emplace_back(new side_engine(s, *this, index++));
 	}
 
 	if(first_scenario_) {
@@ -232,7 +239,7 @@ void connect_engine::import_user(const config& data, const bool observer, int si
 {
 	const std::string& username = data["name"];
 	assert(!username.empty());
-	if(campaign_info_) {
+	if(mp_metadata_) {
 		connected_users_rw().insert(username);
 	}
 
@@ -355,39 +362,18 @@ bool connect_engine::can_start_game() const
 
 void connect_engine::send_to_server(const config& cfg) const
 {
-	if(campaign_info_) {
-		campaign_info_->connection.send_data(cfg);
+	if(mp_metadata_) {
+		mp_metadata_->connection.send_data(cfg);
 	}
-}
-
-bool connect_engine::receive_from_server(config& dst) const
-{
-	if(campaign_info_) {
-		return campaign_info_->connection.receive_data(dst);
-	}
-	else {
-		return false;
-	}
-}
-
-std::vector<std::string> side_engine::get_children_to_swap()
-{
-	std::vector<std::string> children;
-
-	children.push_back("village");
-	children.push_back("unit");
-	children.push_back("ai");
-
-	return children;
 }
 
 std::multimap<std::string, config> side_engine::get_side_children()
 {
 	std::multimap<std::string, config> children;
 
-	for(const std::string& children_to_swap : get_children_to_swap()) {
-		for(const config& child : cfg_.child_range(children_to_swap)) {
-			children.emplace(children_to_swap, child);
+	for(const std::string& to_swap : children_to_swap) {
+		for(const config& child : cfg_.child_range(to_swap)) {
+			children.emplace(to_swap, child);
 		}
 	}
 
@@ -396,7 +382,7 @@ std::multimap<std::string, config> side_engine::get_side_children()
 
 void side_engine::set_side_children(std::multimap<std::string, config> children)
 {
-	for(const std::string& children_to_remove : get_children_to_swap()) {
+	for(const std::string& children_to_remove : children_to_swap) {
 		cfg_.clear_children(children_to_remove);
 	}
 
@@ -451,31 +437,22 @@ void connect_engine::start_game()
 
 		// Fisher-Yates shuffle.
 		for(int i = playable_sides.size(); i > 1; i--) {
-			int j_side = playable_sides[rng.get_next_random() % i];
-			int i_side = playable_sides[i - 1];
+			const int j_side = playable_sides[rng.get_next_random() % i];
+			const int i_side = playable_sides[i - 1];
 
 			if(i_side == j_side) continue; //nothing to swap
 
 			// First we swap everything about a side with another
-			side_engine_ptr tmp_side = side_engines_[j_side];
-			side_engines_[j_side] = side_engines_[i_side];
-			side_engines_[i_side] = tmp_side;
+			std::swap(side_engines_[j_side], side_engines_[i_side]);
 
-			// Some 'child' variables such as village ownership and
-			// initial side units need to be swapped over as well
+			// Some 'child' variables such as village ownership and initial side units need to be swapped over as well
 			std::multimap<std::string, config> tmp_side_children = side_engines_[j_side]->get_side_children();
 			side_engines_[j_side]->set_side_children(side_engines_[i_side]->get_side_children());
 			side_engines_[i_side]->set_side_children(tmp_side_children);
 
-			// Then we revert the swap for fields that are unique to
-			// player control and the team they selected
-			int tmp_index = side_engines_[j_side]->index();
-			side_engines_[j_side]->set_index(side_engines_[i_side]->index());
-			side_engines_[i_side]->set_index(tmp_index);
-
-			int tmp_team = side_engines_[j_side]->team();
-			side_engines_[j_side]->set_team(side_engines_[i_side]->team());
-			side_engines_[i_side]->set_team(tmp_team);
+			// Then we revert the swap for fields that are unique to player control and the team they selected
+			std::swap(side_engines_[j_side]->index_, side_engines_[i_side]->index_);
+			std::swap(side_engines_[j_side]->team_,  side_engines_[i_side]->team_);
 		}
 	}
 
@@ -618,7 +595,7 @@ void connect_engine::leave_game()
 
 std::pair<bool, bool> connect_engine::process_network_data(const config& data)
 {
-	std::pair<bool, bool> result(std::make_pair(false, true));
+	std::pair<bool, bool> result(false, true);
 
 	if(data.child("leave_game")) {
 		result.first = true;
@@ -838,7 +815,7 @@ void connect_engine::load_previous_sides_users()
 	//Do this in an extra loop to make sure we import each user only once.
 	for(const std::string& name : names)
 	{
-		if(connected_users().find(name) != connected_users().end() || !campaign_info_) {
+		if(connected_users().find(name) != connected_users().end() || !mp_metadata_) {
 			import_user(name, false);
 		}
 	}
@@ -853,8 +830,8 @@ void connect_engine::update_side_controller_options()
 
 const std::set<std::string>& connect_engine::connected_users() const
 {
-	if(campaign_info_) {
-		return campaign_info_->connected_players;
+	if(mp_metadata_) {
+		return mp_metadata_->connected_players;
 	}
 
 	static std::set<std::string> empty;
@@ -863,8 +840,8 @@ const std::set<std::string>& connect_engine::connected_users() const
 
 std::set<std::string>& connect_engine::connected_users_rw()
 {
-	assert(campaign_info_);
-	return campaign_info_->connected_players;
+	assert(mp_metadata_);
+	return mp_metadata_->connected_players;
 }
 
 side_engine::side_engine(const config& cfg, connect_engine& parent_engine, const int index)
@@ -893,7 +870,7 @@ side_engine::side_engine(const config& cfg, connect_engine& parent_engine, const
 	, color_id_(color_options_.at(color_))
 {
 
-	// Save default attributes that could be overwirtten by the faction, so that correct faction lists would be
+	// Save default attributes that could be overwritten by the faction, so that correct faction lists would be
 	// initialized by flg_manager when the new side config is sent over network.
 	cfg_.add_child("default_faction", config {
 		"type",    cfg_["type"],
@@ -927,7 +904,7 @@ side_engine::side_engine(const config& cfg, connect_engine& parent_engine, const
 	update_controller_options();
 
 	// Tweak the controllers.
-	if(parent_.state_.classification().campaign_type == game_classification::CAMPAIGN_TYPE::SCENARIO && cfg_["controller"].blank()) {
+	if(parent_.state_.classification().is_scenario() && cfg_["controller"].blank()) {
 		cfg_["controller"] = "ai";
 	}
 
@@ -1031,7 +1008,7 @@ config side_engine::new_config() const
 
 	// This function (new_config) is only meant to be called by the host's machine, which is why this check
 	// works. It essentially certifies that whatever side has the player_id that matches the host's login
-	// will be flagged. The reason we cannot check mp_campaign_info::is_host is because that flag is *always*
+	// will be flagged. The reason we cannot check mp_game_metadata::is_host is because that flag is *always*
 	// true on the host's machine, meaning this flag would be set to true for every side.
 	res["is_host"] = player_id_ == preferences::login();
 
@@ -1290,7 +1267,7 @@ void side_engine::update_controller_options()
 	controller_options_.clear();
 
 	// Default options.
-	if(parent_.campaign_info_) {
+	if(parent_.mp_metadata_) {
 		add_controller_option(CNTR_NETWORK, _("Network Player"), "human");
 	}
 
@@ -1378,9 +1355,7 @@ void side_engine::set_controller_commandline(const std::string& controller_name)
 void side_engine::add_controller_option(ng::controller controller,
 		const std::string& name, const std::string& controller_value)
 {
-	if(controller_lock_ && !cfg_["controller"].empty() &&
-		cfg_["controller"] != controller_value) {
-
+	if(controller_lock_ && !cfg_["controller"].empty() && cfg_["controller"] != controller_value) {
 		return;
 	}
 

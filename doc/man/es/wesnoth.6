@@ -101,6 +101,9 @@ el modo de comandos).
 \fB\-\-debug\-lua\fP
 habilita algunos mecanismos de depuración de Lua
 .TP 
+\fB\-\-strict\-lua\fP
+disallow deprecated Lua API calls
+.TP 
 \fB\-D,\-\-diff\fP\fI\ left\-file\fP\fB\ \fP\fIright\-file\fP
 diffs the two WML files; does not preprocess them first (to do that, run
 them through \fB\-p\fP first). Outputs the diff as DiffWML on standard output or
@@ -147,7 +150,8 @@ omisión se utiliza el nivel \fBwarning\fP para la mayoría de los dominios, per
 opción \fB\-d\fP.
 .TP 
 \fB\-\-log\-precise\fP
-muestra los marcadores de tiempo del archivo de registro con mayor precisión
+muestra los marcadores de tiempo del archivo de registro con mayor
+precisión.
 .TP 
 \fB\-\-log\-strict\fP
 establece el nivel de precisión del registro. Cualquier mensaje enviado a
@@ -247,21 +251,6 @@ preprocess. El archivo de salida puede ser enviado a
 \fB\-\-preprocess\-input\-macros\fP. Esta opción debe preceder al comando
 \fB\-\-preprocess\fP.
 .TP 
-\fB\-\-proxy\fP
-habilita el uso de proxy para conexiones de red.
-.TP 
-\fB\-\-proxy\-address\fP\fI\ address\fP
-especifica la  \fIaddress\fP para el proxy.
-.TP 
-\fB\-\-proxy\-port\fP\fI\ port\fP
-especifica el  \fIport\fP para el proxy.
-.TP 
-\fB\-\-proxy\-user\fP\fI\ username\fP
-especifica el \fIusername\fP para iniciar sesión en el proxy.
-.TP 
-\fB\-\-proxy\-password\fP\fI\ password\fP
-especifica la \fIpassword\fP para iniciar sesión en el proxy.
-.TP 
 \fB\-r\ \fP\fIX\fP\fBx\fP\fIY\fP\fB,\ \-\-resolution\ \fP\fIX\fP\fBx\fP\fIY\fP
 establece la resolución de la pantalla. Por ejemplo: \fB\-r\fP \fB800x600\fP.
 .TP 
@@ -311,7 +300,7 @@ Los valores válidos van desde 0 hasta 100.
 .TP 
 \fB\-u,\ \-\-unit\fP\fI\ scenario\-id\fP
 ejecuta el escenario de prueba especificado para testar una unidad. Implica
-\fB\-\-nogui.\fP
+\fB\-\-nogui\fP.
 .TP 
 \fB\-\-unsafe\-scripts\fP
 pone al paquete \fBpackage\fP como disponible para los scripts de lua, de este

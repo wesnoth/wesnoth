@@ -16,13 +16,9 @@
 
 #include "gui/core/widget_definition.hpp"
 #include "gui/core/window_builder.hpp"
-
 #include "gui/dialogs/drop_down_menu.hpp"
-
 #include "gui/widgets/styled_widget.hpp"
 #include "gui/widgets/selectable_item.hpp"
-
-#include <boost/dynamic_bitset.hpp>
 
 class config;
 
@@ -36,7 +32,30 @@ namespace implementation
 // ------------ WIDGET -----------{
 
 /**
- * Simple push button.
+ * @ingroup GUIWidgetWML
+ *
+ * A menu_button is a styled_widget to choose an element from a list of elements.
+ *
+ * When a menu_button has a return value it sets the return value for the window.
+ * Normally this closes the window and returns this value to the caller.
+ * The return value can either be defined by the user or determined from the id of the menu_button.
+ * The return value has a higher precedence as the one defined by the id.
+ * (Of course it's weird to give a menu_button an id and then override its return value.)
+ *
+ * When the menu_button doesn't have a standard id, but you still want to use the return value of that id, use return_value_id instead.
+ * This has a higher precedence as return_value.
+ *
+ * List with the menu_button specific variables:
+ * Key            |Type                                |Default  |Description
+ * ---------------|------------------------------------|---------|-----------
+ * return_value_id| @ref guivartype_string "string"    |""       |The return value id.
+ * return_value   | @ref guivartype_int "int"          |0        |The return value.
+ *
+ * The following states exist:
+ * * state_enabled - the menu_button is enabled.
+ * * state_disabled - the menu_button is disabled.
+ * * state_pressed - the left mouse menu_button is down.
+ * * state_focused - the mouse is over the menu_button.
  */
 class menu_button : public styled_widget, public selectable_item
 {
@@ -166,7 +185,7 @@ public:
 
 	using builder_styled_widget::build;
 
-	widget* build() const;
+	virtual widget* build() const override;
 
 private:
 	std::vector<::config> options_;

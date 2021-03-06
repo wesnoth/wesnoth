@@ -29,7 +29,7 @@
 #include "gui/widgets/window.hpp"
 #include "team.hpp"
 #include "units/types.hpp"
-#include "utils/functional.hpp"
+#include <functional>
 
 #include <iomanip>
 #include <iostream>
@@ -49,9 +49,7 @@ static std::string get_probability_string(const double prob)
        return ss.str();
 }
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 REGISTER_DIALOG(statistics_dialog)
 
@@ -90,7 +88,7 @@ void statistics_dialog::pre_show(window& window)
 	scenario_menu.set_values(menu_items, selection_index_);
 
 	connect_signal_notify_modified(scenario_menu,
-		std::bind(&statistics_dialog::on_scenario_select, this, std::ref(window)));
+		std::bind(&statistics_dialog::on_scenario_select, this));
 
 	//
 	// Set up primary stats list
@@ -98,9 +96,9 @@ void statistics_dialog::pre_show(window& window)
 	listbox& stat_list = find_widget<listbox>(&window, "stats_list_main", false);
 
 	connect_signal_notify_modified(stat_list,
-		std::bind(&statistics_dialog::on_primary_list_select, this, std::ref(window)));
+		std::bind(&statistics_dialog::on_primary_list_select, this));
 
-	update_lists(window);
+	update_lists();
 }
 
 inline const statistics::stats& statistics_dialog::current_stats()
@@ -108,9 +106,9 @@ inline const statistics::stats& statistics_dialog::current_stats()
 	return selection_index_ == 0 ? campaign_ : *scenarios_[selection_index_ - 1].second;
 }
 
-void statistics_dialog::add_stat_row(window& window, const std::string& type, const statistics::stats::str_int_map& value, const bool has_cost)
+void statistics_dialog::add_stat_row(const std::string& type, const statistics::stats::str_int_map& value, const bool has_cost)
 {
-	listbox& stat_list = find_widget<listbox>(&window, "stats_list_main", false);
+	listbox& stat_list = find_widget<listbox>(get_window(), "stats_list_main", false);
 
 	std::map<std::string, string_map> data;
 	string_map item;
@@ -145,7 +143,6 @@ static std::ostream& write_actual_and_expected(std::ostream& str, const long lon
 }
 
 void statistics_dialog::add_damage_row(
-		window& window,
 		const std::string& type,
 		const long long& damage,
 		const long long& expected,
@@ -153,7 +150,7 @@ void statistics_dialog::add_damage_row(
 		const long long& turn_expected,
 		const bool show_this_turn)
 {
-	listbox& damage_list = find_widget<listbox>(&window, "stats_list_damage", false);
+	listbox& damage_list = find_widget<listbox>(get_window(), "stats_list_damage", false);
 
 	std::map<std::string, string_map> data;
 	string_map item;
@@ -177,7 +174,7 @@ void statistics_dialog::add_damage_row(
 	data.emplace("overall_score", item);
 
 	if(show_this_turn) {
-		label& this_turn_header = find_widget<label>(&window, "damage_this_turn_header", false);
+		label& this_turn_header = find_widget<label>(get_window(), "damage_this_turn_header", false);
 		this_turn_header.set_label(_("This Turn"));
 
 		item["label"] = damage_str(turn_damage, turn_expected);
@@ -186,8 +183,8 @@ void statistics_dialog::add_damage_row(
 		item["label"] = "";
 		data.emplace("this_turn_score", item);
 	} else {
-		// TODO: Setting the label to "" causes "This Turn" not to be drawn when changing back to the current scenraio view, so set the label to " " (a single space) instead.
-		label& this_turn_header = find_widget<label>(&window, "damage_this_turn_header", false);
+		// TODO: Setting the label to "" causes "This Turn" not to be drawn when changing back to the current scenario view, so set the label to " " (a single space) instead.
+		label& this_turn_header = find_widget<label>(get_window(), "damage_this_turn_header", false);
 		this_turn_header.set_label(" ");
 	}
 
@@ -307,14 +304,13 @@ static hitrate_table_element tally(const statistics::stats::hitrate_map& by_cth,
 }
 
 void statistics_dialog::add_hits_row(
-		window& window,
 		const std::string& type,
 		const bool more_is_better,
 		const statistics::stats::hitrate_map& by_cth,
 		const statistics::stats::hitrate_map& turn_by_cth,
 		const bool show_this_turn)
 {
-	listbox& hits_list = find_widget<listbox>(&window, "stats_list_hits", false);
+	listbox& hits_list = find_widget<listbox>(get_window(), "stats_list_hits", false);
 
 	std::map<std::string, string_map> data;
 	string_map item;
@@ -337,7 +333,7 @@ void statistics_dialog::add_hits_row(
 	data.emplace("overall_score", string_map { { "label", element.pvalue_str } });
 
 	if(show_this_turn) {
-		label& this_turn_header = find_widget<label>(&window, "hits_this_turn_header", false);
+		label& this_turn_header = find_widget<label>(get_window(), "hits_this_turn_header", false);
 		this_turn_header.set_label(_("This Turn"));
 
 		element = tally(turn_by_cth, more_is_better);
@@ -348,20 +344,20 @@ void statistics_dialog::add_hits_row(
 		// Don't set the tooltip; it's set in WML.
 		data.emplace("this_turn_score", string_map { { "label", element.pvalue_str } });
 	} else {
-		// TODO: Setting the label to "" causes "This Turn" not to be drawn when changing back to the current scenraio view, so set the label to " " (a single space) instead.
-		label& this_turn_header = find_widget<label>(&window, "hits_this_turn_header", false);
+		// TODO: Setting the label to "" causes "This Turn" not to be drawn when changing back to the current scenario view, so set the label to " " (a single space) instead.
+		label& this_turn_header = find_widget<label>(get_window(), "hits_this_turn_header", false);
 		this_turn_header.set_label(" ");
 	}
 
 	hits_list.add_row(data);
 }
 
-void statistics_dialog::update_lists(window& window)
+void statistics_dialog::update_lists()
 {
 	//
 	// Update primary stats list
 	//
-	listbox& stat_list = find_widget<listbox>(&window, "stats_list_main", false);
+	listbox& stat_list = find_widget<listbox>(get_window(), "stats_list_main", false);
 	const int last_selected_stat_row = stat_list.get_selected_row();
 
 	stat_list.clear();
@@ -369,11 +365,11 @@ void statistics_dialog::update_lists(window& window)
 
 	const statistics::stats& stats = current_stats();
 
-	add_stat_row(window, _("Recruits"),     stats.recruits);
-	add_stat_row(window, _("Recalls"),      stats.recalls);
-	add_stat_row(window, _("Advancements"), stats.advanced_to, false);
-	add_stat_row(window, _("Losses"),       stats.deaths);
-	add_stat_row(window, _("Kills"),        stats.killed);
+	add_stat_row(_("Recruits"),     stats.recruits);
+	add_stat_row(_("Recalls"),      stats.recalls);
+	add_stat_row(_("Advancements"), stats.advanced_to, false);
+	add_stat_row(_("Losses"),       stats.deaths);
+	add_stat_row(_("Kills"),        stats.killed);
 
 	// Reselect previously selected row. Do this *before* calling on_primary_list_select.
 	if(last_selected_stat_row != -1) {
@@ -381,65 +377,65 @@ void statistics_dialog::update_lists(window& window)
 	}
 
 	// Update unit count list
-	on_primary_list_select(window);
+	on_primary_list_select();
 
 	//
 	// Update damage stats list
 	//
 	const bool show_this_turn = selection_index_ == scenarios_.size();
 
-	listbox& damage_list = find_widget<listbox>(&window, "stats_list_damage", false);
+	listbox& damage_list = find_widget<listbox>(get_window(), "stats_list_damage", false);
 
 	damage_list.clear();
 
-	listbox& hits_list = find_widget<listbox>(&window, "stats_list_hits", false);
+	listbox& hits_list = find_widget<listbox>(get_window(), "stats_list_hits", false);
 	hits_list.clear();
 
-	add_damage_row(window, _("Inflicted"),
+	add_damage_row(_("Inflicted"),
 		stats.damage_inflicted,
 		stats.expected_damage_inflicted,
 		stats.turn_damage_inflicted,
 		stats.turn_expected_damage_inflicted,
 		show_this_turn
 	);
-	add_hits_row(window, _("Inflicted"), true,
+	add_hits_row(_("Inflicted"), true,
 		stats.by_cth_inflicted,
 		stats.turn_by_cth_inflicted,
 		show_this_turn
 	);
 
-	add_damage_row(window, _("Taken"),
+	add_damage_row(_("Taken"),
 		stats.damage_taken,
 		stats.expected_damage_taken,
 		stats.turn_damage_taken,
 		stats.turn_expected_damage_taken,
 		show_this_turn
 	);
-	add_hits_row(window, _("Taken"), false,
+	add_hits_row(_("Taken"), false,
 		stats.by_cth_taken,
 		stats.turn_by_cth_taken,
 		show_this_turn
 	);
 }
 
-void statistics_dialog::on_scenario_select(window& window)
+void statistics_dialog::on_scenario_select()
 {
-	const std::size_t new_index = find_widget<menu_button>(&window, "scenario_menu", false).get_value();
+	const std::size_t new_index = find_widget<menu_button>(get_window(), "scenario_menu", false).get_value();
 
 	if(selection_index_ != new_index) {
 		selection_index_ = new_index;
-		update_lists(window);
+		update_lists();
 	}
 }
 
-void statistics_dialog::on_primary_list_select(window& window)
+void statistics_dialog::on_primary_list_select()
 {
-	const int selected_row = find_widget<listbox>(&window, "stats_list_main", false).get_selected_row();
+	const int selected_row = find_widget<listbox>(get_window(), "stats_list_main", false).get_selected_row();
 	if(selected_row == -1) {
 		return;
 	}
 
-	listbox& unit_list = find_widget<listbox>(&window, "stats_list_units", false);
+	listbox& unit_list = find_widget<listbox>(get_window(), "stats_list_units", false);
 
 	unit_list.clear();
 
@@ -464,4 +460,3 @@ void statistics_dialog::on_primary_list_select(window& window)
 }
 
 } // namespace dialogs
-} // namespace gui2

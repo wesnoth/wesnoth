@@ -12,16 +12,13 @@
    See the COPYING file for more details.
 */
 
-/** @file */
-
 #pragma once
 
 #include "config.hpp"
+#include "game_version.hpp"
 #include "gettext.hpp"
 #include "utils/make_enum.hpp"
-#include "game_version.hpp"
-
-#include <boost/optional.hpp>
+#include <optional>
 
 struct mp_game_settings
 {
@@ -83,13 +80,14 @@ struct mp_game_settings
 	struct addon_content
 	{
 		std::string id;
+		std::string name;
 		std::string type;
 	};
 
 	struct addon_version_info
 	{
-		boost::optional<version_info> version;
-		boost::optional<version_info> min_version;
+		std::optional<version_info> version;
+		std::optional<version_info> min_version;
 		std::string name;
 		bool required;
 		std::vector<addon_content> content;
@@ -98,7 +96,8 @@ struct mp_game_settings
 		void write(config &) const;
 	};
 
-	std::map<std::string, addon_version_info> addons; // the key is the addon_id
+	/** the key is the addon_id */
+	std::map<std::string, addon_version_info> addons;
 
 	/**
 	 * Takes a config with addon metadata (id, name, version, min_version) and adds

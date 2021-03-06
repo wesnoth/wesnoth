@@ -240,7 +240,7 @@ user_choice_manager::user_choice_manager(const std::string &name, const mp_sync:
 		assert(!t.is_empty());
 		if(side != current_side_)
 		{
-			synced_context::set_is_simultaneously();
+			synced_context::set_is_simultaneous();
 		}
 	}
 
@@ -330,7 +330,7 @@ void user_choice_manager::update_local_choice()
 		"waiting for $desc from side $sides",
 		"waiting for $desc from sides $sides",
 		sides_str.size(),
-		{std::make_pair("desc", uch_.description()), std::make_pair("sides", utils::format_conjunct_list("", sides_str))}
+		{std::pair("desc", uch_.description()), std::pair("sides", utils::format_conjunct_list("", sides_str))}
 	);
 	if(local_choice_prev != local_choice_) {
 		changed_event_.notify_observers();
@@ -358,7 +358,7 @@ void user_choice_manager::ask_local_choice()
 	//send data to others.
 	//but if there wasn't any data sent during this turn, we don't want to begin with that now.
 	//TODO: we should send user choices during nonundoable actions immediately.
-	if(synced_context::is_simultaneously() || current_side_ != local_choice_)
+	if(synced_context::is_simultaneous() || current_side_ != local_choice_)
 	{
 		synced_context::send_user_choice();
 	}

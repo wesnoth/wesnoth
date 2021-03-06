@@ -30,10 +30,23 @@ namespace implementation
 // ------------ WIDGET -----------{
 
 /**
- * A widget to draw upon.
+ * @ingroup GUIWidgetWML
  *
- * This widget has a fixed size like the spacer, but allows the user to
- * manual draw items. The widget is display only.
+ * A drawing is widget with a fixed size and gives access to the canvas of the widget in the window instance.
+ * It has a fixed size like the spacer, but allows the user to manually draw items.
+ * This widget is display only.
+ *
+ * The widget normally has no event interaction so only one state is defined:
+ * * state_enabled - the drawing is enabled. The state is a dummy since the things really drawn are placed in the window instance.
+ *
+ * If either the width or the height is not zero the drawing functions as a fixed size drawing.
+ * Key          |Type                                    |Default  |Description
+ * -------------|----------------------------------------|---------|-----------
+ * width        | @ref guivartype_f_unsigned "f_unsigned"|0        |The width of the drawing.
+ * height       | @ref guivartype_f_unsigned "f_unsigned"|0        |The height of the drawing.
+ * draw         | @ref guivartype_config "config"        |mandatory|The config containing the drawing.
+ *
+ * The variables available are the same as for the window resolution see @ref builder_window::window_resolution for the list of items.
  */
 class drawing : public styled_widget
 {
@@ -135,7 +148,7 @@ struct builder_drawing : public builder_styled_widget
 
 	using builder_styled_widget::build;
 
-	widget* build() const;
+	virtual widget* build() const override;
 
 	/** The width of the widget. */
 	typed_formula<unsigned> width;

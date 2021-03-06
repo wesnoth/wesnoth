@@ -42,8 +42,8 @@ end
 -- colors in the mp setup screen, we have to remember those settings and
 -- set the teams color in later scenarios acccordingly.
 function wesnoth.wml_actions.wc2_fix_colors(cfg)
-	local player_sides = wesnoth.get_sides(wml.get_child(cfg, "player_sides"))
-	local other_sides = wesnoth.get_sides { { "not", wml.get_child(cfg, "player_sides") } }
+	local player_sides = wesnoth.sides.find(wml.get_child(cfg, "player_sides"))
+	local other_sides = wesnoth.sides.find { { "not", wml.get_child(cfg, "player_sides") } }
 	local available_colors = { "red", "blue", "green", "purple", "black", "brown", "orange", "white", "teal" }
 	local taken_colors = {}
 

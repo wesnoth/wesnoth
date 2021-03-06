@@ -26,9 +26,7 @@
 
 #include "log.hpp"
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 
 REGISTER_DIALOG(log_settings)
@@ -90,16 +88,15 @@ void log_settings::pre_show(window& window)
 	}
 
 	text_box* filter = find_widget<text_box>(&window, "filter_box", false, true);
-	filter->set_text_changed_callback(std::bind(&log_settings::filter_text_changed, this, _1, _2));
+	filter->set_text_changed_callback(std::bind(&log_settings::filter_text_changed, this, std::placeholders::_2));
 
 	window.keyboard_capture(filter);
 	window.add_to_keyboard_chain(&logger_box);
 }
 
-void log_settings::filter_text_changed(text_box_base* textbox, const std::string& text)
+void log_settings::filter_text_changed(const std::string& text)
 {
-	window& window = *textbox->get_window();
-	listbox& list = find_widget<listbox>(&window, "logger_listbox", false);
+	listbox& list = find_widget<listbox>(get_window(), "logger_listbox", false);
 
 	const std::vector<std::string> words = utils::split(text, ' ');
 
@@ -158,4 +155,3 @@ void log_settings::set_logger(const std::string log_domain)
 }
 
 } // namespace dialogs
-} // namespace gui2

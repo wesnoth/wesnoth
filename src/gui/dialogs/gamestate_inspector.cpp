@@ -43,7 +43,7 @@
 #include "filter_context.hpp"
 
 #include <vector>
-#include "utils/functional.hpp"
+#include <functional>
 
 namespace
 {
@@ -66,35 +66,8 @@ inline std::string config_to_string(const config& cfg, std::string only_children
 
 }
 
-namespace gui2
+namespace gui2::dialogs
 {
-namespace dialogs
-{
-
-/*WIKI
- * @page = GUIWindowDefinitionWML
- * @order = 2_gamestate_inspector
- *
- * == Gamestate inspector ==
- *
- * This shows the gamestate inspector
- *
- * @begin{table}{dialog_widgets}
- *
- * inspector_name & & styled_widget & m &
- *         Name of the inspector. $
- *
- * stuff_list & & styled_widget & m &
- *         List of various stuff that can be viewed. $
- *
- * inspect & & styled_widget & m &
- *         The state of the variable or event. $
- *
- * copy & & button & m &
- *         A button to copy the state to clipboard. $
- *
- * @end{table}
- */
 
 class gamestate_inspector::model
 {
@@ -380,14 +353,14 @@ public:
 	void set_node_callback(const std::vector<int>& node_path, void (C::* fcn)(tree_view_node&))
 	{
 		C& sub_controller = *get_controller<C>();
-		callbacks.emplace(node_path, std::bind(fcn, sub_controller, _1));
+		callbacks.emplace(node_path, std::bind(fcn, sub_controller, std::placeholders::_1));
 	}
 
 	template<typename C, typename T>
 	void set_node_callback(const std::vector<int>& node_path, void (C::* fcn)(tree_view_node&, T), T param)
 	{
 		C& sub_controller = *get_controller<C>();
-		callbacks.emplace(node_path, std::bind(fcn, sub_controller, _1, param));
+		callbacks.emplace(node_path, std::bind(fcn, sub_controller, std::placeholders::_1, param));
 	}
 
 	void bind(window& window)
@@ -399,7 +372,7 @@ public:
 		auto right_button = find_widget<button>(&window, "page_right", false, true);
 
 		connect_signal_notify_modified(*stuff_list,
-			std::bind(&gamestate_inspector::controller::handle_stuff_list_item_clicked, this, _1));
+			std::bind(&gamestate_inspector::controller::handle_stuff_list_item_clicked, this, std::placeholders::_1));
 
 		connect_signal_mouse_left_click(
 				*copy_button,
@@ -827,4 +800,3 @@ void gamestate_inspector::pre_show(window& window)
 }
 
 } // namespace dialogs
-} // namespace gui2

@@ -24,10 +24,9 @@
 #include "map/map.hpp"
 #include "map/exception.hpp"
 #include "sdl/rect.hpp"
-#include "terrain/type_data.hpp"
 #include "../../minimap.hpp" // We want the file in src/
 
-#include "utils/functional.hpp"
+#include <functional>
 
 #include <algorithm>
 
@@ -50,7 +49,6 @@ REGISTER_WIDGET(minimap)
 minimap::minimap(const implementation::builder_minimap& builder)
 	: styled_widget(builder, type())
 	, map_data_()
-	, terrain_(nullptr)
 {
 }
 
@@ -120,15 +118,6 @@ struct value_type
  */
 static const size_t cache_max_size = 100;
 
-/**
- * The terrain used to create the cache.
- *
- * If another terrain config is used the cache needs to be cleared, this
- * normally doesn't happen a lot so the clearing of the cache is rather
- * unusual.
- */
-static const ::game_config_view* terrain = nullptr;
-
 /** The cache. */
 typedef std::map<key_type, value_type> tcache;
 static tcache cache;
@@ -179,20 +168,6 @@ bool minimap::disable_click_dismiss() const
 
 const surface minimap::get_image(const int w, const int h) const
 {
-	if(!terrain_) {
-		return nullptr;
-	}
-
-	if(terrain_ != terrain) {
-#ifdef DEBUG_MINIMAP_CACHE
-		std::cerr << "\nFlush cache.\n";
-#else
-		DBG_GUI_D << "Flushing the minimap cache.\n";
-#endif
-		terrain = terrain_;
-		cache.clear();
-	}
-
 	const key_type key(w, h, map_data_);
 	tcache::iterator itor = cache.find(key);
 
@@ -210,7 +185,7 @@ const surface minimap::get_image(const int w, const int h) const
 
 	try
 	{
-		const gamemap map(std::make_shared<terrain_type_data>(*terrain_), map_data_);
+		const gamemap map(map_data_);
 		const surface surf = image::getMinimap(w, h, map, nullptr, nullptr, true);
 		cache.emplace(key, value_type(surf));
 #ifdef DEBUG_MINIMAP_CACHE
@@ -232,10 +207,6 @@ void minimap::impl_draw_background(surface& frame_buffer,
 									int x_offset,
 									int y_offset)
 {
-	if(!terrain_)
-		return;
-	assert(terrain_);
-
 	DBG_GUI_D << LOG_HEADER << " size "
 			  << calculate_blitting_rectangle(x_offset, y_offset) << ".\n";
 
@@ -262,25 +233,6 @@ minimap_definition::minimap_definition(const config& cfg)
 	load_resolutions<resolution>(cfg);
 }
 
-/*WIKI
- * @page = GUIWidgetDefinitionWML
- * @order = 1_minimap
- *
- * == Minimap ==
- *
- * @macro = minimap_description
- *
- * The following states exist:
- * * state_enabled, the minimap is enabled.
- * @begin{parent}{name="gui/"}
- * @begin{tag}{name="minimap_definition"}{min=0}{max=-1}{super="generic/widget_definition"}
- * @begin{tag}{name="resolution"}{min=0}{max=-1}{super="generic/widget_definition/resolution"}
- * @begin{tag}{name="state_enabled"}{min=0}{max=1}{super="generic/state"}
- * @end{tag}{name="state_enabled"}
- * @end{tag}{name="resolution"}
- * @end{tag}{name="minimap_definition"}
- * @end{parent}{name="gui/"}
- */
 minimap_definition::resolution::resolution(const config& cfg)
 	: resolution_definition(cfg)
 {
@@ -289,30 +241,6 @@ minimap_definition::resolution::resolution(const config& cfg)
 }
 
 // }---------- BUILDER -----------{
-
-/*WIKI_MACRO
- * @begin{macro}{minimap_description}
- *
- *        A minimap to show the gamemap, this only shows the map and has no
- *        interaction options. This version is used for map previews, there
- *        will be a another version which allows interaction.
- * @end{macro}
- */
-
-/*WIKI
- * @page = GUIWidgetInstanceWML
- * @order = 2_minimap
- *
- * == Minimap ==
- *
- * @macro = minimap_description
- *
- * A minimap has no extra fields.
- * @begin{parent}{name="gui/window/resolution/grid/row/column/"}
- * @begin{tag}{name="minimap"}{min=0}{max=-1}{super="generic/widget_instance"}
- * @end{tag}{name="minimap"}
- * @end{parent}{name="gui/window/resolution/grid/row/column/"}
- */
 
 namespace implementation
 {

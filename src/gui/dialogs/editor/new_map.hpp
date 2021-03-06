@@ -18,11 +18,17 @@
 
 #include "tstring.hpp"
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 
+/**
+ * @ingroup GUIWindowDefinitionWML
+ *
+ * Key               |Type              |Mandatory|Description
+ * ------------------|------------------|---------|-----------
+ * width             | integer_selector |yes      |An integer selector to determine the width of the map to create.
+ * height            | integer_selector |yes      |An integer selector to determine the height of the map to create.
+ */
 class editor_new_map : public modal_dialog
 {
 public:
@@ -33,12 +39,12 @@ public:
 	 * @param [in, out] width     The parameter's usage is:
 	 *                            - Input: The initial width of the map.
 	 *                            - Output: The selected width of the map if
-	 *                              the dialog returns @ref retval::OK
+	 *                              the dialog returns retval::OK
 	 *                              undefined otherwise.
 	 * @param [in, out] height    The parameter's usage is:
 	 *                            - Input: The initial height of the map.
 	 *                            - Output: The selected height of the map if
-	 *                              the dialog returns @ref retval::OK
+	 *                              the dialog returns retval::OK
 	 *                              undefined otherwise.
 	 */
 	editor_new_map(const t_string& title, int& width, int& height);
@@ -52,4 +58,3 @@ private:
 };
 
 } // namespace dialogs
-} // namespace gui2

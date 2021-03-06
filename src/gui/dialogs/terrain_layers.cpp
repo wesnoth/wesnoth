@@ -24,9 +24,7 @@
 #include "gui/widgets/window.hpp"
 #include "picture.hpp"
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 
 REGISTER_DIALOG(terrain_layers)
@@ -151,4 +149,3 @@ void terrain_layers::pre_show(window& window)
 }
 
 } // namespace dialogs
-} // namespace gui2

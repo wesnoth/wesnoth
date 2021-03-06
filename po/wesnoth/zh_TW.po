@@ -1,5 +1,5 @@
 # The Battle for Wesnoth - Traditional Chinese Translations
-# Copyright (C) 2005-2019 Wesnoth development team
+# Copyright (C) 2005-2020 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 # 楊綮銘 <steven2880@gmail.com>, 2008.
 # 李昆融 <likwueron@gmail.com>, 2018.
@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.14\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2020-10-17 01:28-0300\n"
-"PO-Revision-Date: 2020-02-10 00:55+0800\n"
+"POT-Creation-Date: 2021-02-20 18:40-0300\n"
+"PO-Revision-Date: 2020-12-21 15:55+0800\n"
 "Last-Translator: 楊綮銘 <steven2880@gmail.com>\n"
 "Language-Team: Wesnoth Traditional Chinese Team\n"
 "Language: zh_TW\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n>1);\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Generator: Poedit 2.2.4\n"
+"X-Generator: Poedit 2.4.2\n"
 
 #. [multiplayer_side]: id=Custom
 #: data/_main.cfg:22
@@ -205,29 +205,11 @@ msgstr ""
 "在遊戲聊天室內顯示不再維護的API警告。若關閉此選項，訊息會保留於日誌記錄中。此"
 "外，不再維護記錄域控制訊息的顯示數量。"
 
-#. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:172
-msgid "Use experimental PRNG combat"
-msgstr "在戰鬥中使用測試版的 PRNG"
-
-#. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:173
-msgid ""
-"Enables more determinstic chance-to-hit calculations. This is an "
-"experimental feature designed to bring the observed hit/miss rate more in "
-"line with the displayed percentages.\n"
-"\n"
-"Note: this option only affects singleplayer, and the ‘Save random seed’ "
-"option must also be enabled when creating a game for this to work."
-msgstr ""
-"開啟具有更準確的命中率計算模式。這是一個測試版的功能，是為了讓遇到的命中/閃避"
-"率和顯示的百分比更接近而設計的。"
-
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [unstore_unit]
 #. [lua]: set_status
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:365
-#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1074
+#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1078
 msgid "poisoned"
 msgstr "中毒"
 
@@ -245,13 +227,6 @@ msgstr "帶走金幣："
 #: data/lua/wml/objectives.lua:39 src/map_command_handler.hpp:337
 msgid "Notes:"
 msgstr "備註："
-
-#. [advancement]: id=amla_default
-#: data/campaigns/World_Conquest/era/campaign/heroes.cfg:142
-#, fuzzy
-#| msgid "Max HP bonus +3, Max XP +20%"
-msgid "Max HP bonus +6%"
-msgstr "最大生命值奬勵+3,最大經驗值+20%"
 
 #. [lua]: wc_ii_generate_scenario
 #. [lua]: wct_store_possible_encampment_ford
@@ -349,76 +324,6 @@ msgstr "敵人(敵方)"
 #. [lua]: add_player_side
 #: data/campaigns/World_Conquest/lua/map/scenario_utils/side_definitions.lua:61
 msgid "Allies"
-msgstr ""
-
-#. [chance]
-#: data/campaigns/World_Conquest/resources/data/training.cfg:305
-msgid "$range|: $special|"
-msgstr ""
-
-#. [chance]
-#: data/campaigns/World_Conquest/resources/data/training.cfg:519
-msgid "+$boost| moves"
-msgstr ""
-
-#. [chance]
-#: data/campaigns/World_Conquest/resources/data/training.cfg:533
-msgid "$range|: +$boost| damage"
-msgstr ""
-
-#. [chance]
-#: data/campaigns/World_Conquest/resources/data/training.cfg:549
-msgid "$range|: +1 damage per level"
-msgstr ""
-
-#. [chance]
-#: data/campaigns/World_Conquest/resources/data/training.cfg:565
-msgid "+$hitpoints| hitpoints"
-msgstr ""
-
-#. [chance]
-#: data/campaigns/World_Conquest/resources/data/training.cfg:580
-msgid "+$hitpoints| hitpoints per level"
-msgstr ""
-
-#. [chance]
-#: data/campaigns/World_Conquest/resources/data/training.cfg:596
-#, fuzzy
-#| msgid "XP to advance"
-msgid "$value| XP to advance"
-msgstr "升級所需經驗值"
-
-#. [chance]
-#: data/campaigns/World_Conquest/resources/data/training.cfg:620
-msgid "Village/Castle: +5 defense"
-msgstr ""
-
-#. [chance]
-#: data/campaigns/World_Conquest/resources/data/training.cfg:652
-msgid ""
-"$terrain|: +$def| defense and full movement, +$res| resistance vs $dmg_type|"
-msgstr ""
-
-#. [chance]
-#: data/campaigns/World_Conquest/resources/data/training.cfg:681
-msgid "$terrain|: +10 defense and full movement"
-msgstr ""
-
-#. [chance]
-#: data/campaigns/World_Conquest/resources/data/training.cfg:692
-#, fuzzy
-#| msgid "Be more defensive"
-msgid "+moves defense"
-msgstr "更注重防守"
-
-#. [chance]
-#: data/campaigns/World_Conquest/resources/data/training.cfg:702
-msgid "melee: optional charge"
-msgstr ""
-
-#. [chance]
-#: data/campaigns/World_Conquest/resources/data/training.cfg:727
-msgid "$range|: arcane and +25% damage"
 msgstr ""
 
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:147
@@ -543,38 +448,6 @@ msgstr "抗性"
 msgid "strike"
 msgstr "輸出"
 
-#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:4
-msgid "World Conquest 1p"
-msgstr ""
-
-#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:7
-msgid "World Conquest 2p"
-msgstr ""
-
-#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:10
-msgid "World Conquest 3p"
-msgstr ""
-
-#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:13
-msgid ""
-"A randomly generated campaign for 1 player. It has 6 level of difficulties.\n"
-"(Expert level, 5 scenarios.)"
-msgstr ""
-
-#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:17
-msgid ""
-"A randomly generated cooperative campaign for 2 players. It has 6 level of "
-"difficulties.\n"
-"(Expert level, 5 scenarios.)"
-msgstr ""
-
-#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:21
-msgid ""
-"A randomly generated cooperative campaign for 3 players. It has 6 level of "
-"difficulties.\n"
-"(Expert level, 5 scenarios.)"
-msgstr ""
-
 #. [about]
 #: data/core/about.cfg:4
 msgid "Programming"
@@ -636,280 +509,280 @@ msgid "Bots"
 msgstr "電腦"
 
 #. [about]
-#: data/core/about_i18n.cfg:4
+#: data/core/about_i18n.cfg:6
 msgid "Afrikaans Translation"
 msgstr "南非荷蘭語翻譯"
 
 #. [about]
-#: data/core/about_i18n.cfg:24
+#: data/core/about_i18n.cfg:26
 #, fuzzy
 #| msgid "Greek Translation"
 msgid "Ancient Greek Translation"
 msgstr "希臘文翻譯"
 
 #. [about]
-#: data/core/about_i18n.cfg:32
+#: data/core/about_i18n.cfg:34
 msgid "Arabic Translation"
 msgstr "阿拉伯語翻譯"
 
 #. [about]
-#: data/core/about_i18n.cfg:40
+#: data/core/about_i18n.cfg:42
 msgid "Asturian Translation"
 msgstr "阿斯圖里亞斯語翻譯"
 
 #. [about]
-#: data/core/about_i18n.cfg:46
+#: data/core/about_i18n.cfg:48
 msgid "Basque Translation"
 msgstr "巴斯克語翻譯"
 
 #. [about]
-#: data/core/about_i18n.cfg:59
+#: data/core/about_i18n.cfg:61
 msgid "Bulgarian Translation"
 msgstr "保加利亞文翻譯"
 
 #. [about]
-#: data/core/about_i18n.cfg:82
+#: data/core/about_i18n.cfg:84
 msgid "Catalan Translation"
 msgstr "加泰羅尼亞語翻譯"
 
 #. [about]
-#: data/core/about_i18n.cfg:128
+#: data/core/about_i18n.cfg:130
 msgid "Chinese Translation"
 msgstr "簡體中文翻譯"
 
 #. [about]
-#: data/core/about_i18n.cfg:219
+#: data/core/about_i18n.cfg:221
 msgid "Chinese (Taiwan) Translation"
 msgstr "繁體中文翻譯"
 
 #. [about]
-#: data/core/about_i18n.cfg:232
+#: data/core/about_i18n.cfg:234
 msgid "Croatian Translation"
 msgstr "克羅地亞語翻譯"
 
 #. [about]
-#: data/core/about_i18n.cfg:242
+#: data/core/about_i18n.cfg:244
 msgid "Czech Translation"
 msgstr "捷克文翻譯"
 
 #. [about]
-#: data/core/about_i18n.cfg:311
+#: data/core/about_i18n.cfg:313
 msgid "Danish Translation"
 msgstr "丹麥文翻譯"
 
 #. [about]
-#: data/core/about_i18n.cfg:342
+#: data/core/about_i18n.cfg:344
 msgid "Dutch Translation"
 msgstr "荷蘭文翻譯"
 
 #. [about]
-#: data/core/about_i18n.cfg:413
+#: data/core/about_i18n.cfg:415
 msgid "English (GB) Translation"
 msgstr "英文（英國）翻譯"
 
 #. [about]
-#: data/core/about_i18n.cfg:438
+#: data/core/about_i18n.cfg:440
 msgid "English (Shaw) Translation"
 msgstr "英文（蕭氏字母表）翻譯"
 
 #. [about]
-#: data/core/about_i18n.cfg:456
+#: data/core/about_i18n.cfg:458
 msgid "Esperanto Translation"
 msgstr "世界語翻譯"
 
 #. [about]
-#: data/core/about_i18n.cfg:475
+#: data/core/about_i18n.cfg:477
 msgid "Estonian Translation"
 msgstr "愛沙尼亞語翻譯"
 
 #. [about]
-#: data/core/about_i18n.cfg:485
+#: data/core/about_i18n.cfg:487
 msgid "Filipino Translation"
 msgstr "菲律賓文翻譯"
 
 #. [about]
-#: data/core/about_i18n.cfg:495
+#: data/core/about_i18n.cfg:497
 msgid "Finnish Translation"
 msgstr "芬蘭文翻譯"
 
 #. [about]
-#: data/core/about_i18n.cfg:544
+#: data/core/about_i18n.cfg:546
 msgid "French Translation"
 msgstr "法文翻譯"
 
 #. [about]
-#: data/core/about_i18n.cfg:706
+#: data/core/about_i18n.cfg:708
 msgid "Friulian Translation"
 msgstr "弗留利語翻譯"
 
 #. [about]
-#: data/core/about_i18n.cfg:713
+#: data/core/about_i18n.cfg:715
 msgid "Galician Translation"
 msgstr "加利西亞語翻譯"
 
 #. [about]
-#: data/core/about_i18n.cfg:749
+#: data/core/about_i18n.cfg:751
 msgid "German Translation"
 msgstr "德文翻譯"
 
 #. [about]
-#: data/core/about_i18n.cfg:854
+#: data/core/about_i18n.cfg:856
 msgid "Greek Translation"
 msgstr "希臘文翻譯"
 
 #. [about]
-#: data/core/about_i18n.cfg:897
+#: data/core/about_i18n.cfg:899
 msgid "Hebrew Translation"
 msgstr "希伯來文翻譯"
 
 #. [about]
-#: data/core/about_i18n.cfg:910
+#: data/core/about_i18n.cfg:912
 msgid "Hungarian Translation"
 msgstr "匈牙利文翻譯"
 
 #. [about]
-#: data/core/about_i18n.cfg:971
+#: data/core/about_i18n.cfg:973
 msgid "Icelandic Translation"
 msgstr "冰島翻譯"
 
 #. [about]
-#: data/core/about_i18n.cfg:981
+#: data/core/about_i18n.cfg:983
 msgid "Indonesian Translation"
 msgstr "印度尼西亞語翻譯"
 
 #. [about]
-#: data/core/about_i18n.cfg:1004
+#: data/core/about_i18n.cfg:1006
 msgid "Irish Translation"
 msgstr "愛爾蘭翻譯"
 
 #. [about]
-#: data/core/about_i18n.cfg:1011
+#: data/core/about_i18n.cfg:1013
 msgid "Italian Translation"
 msgstr "義大利文翻譯"
 
 #. [about]
-#: data/core/about_i18n.cfg:1058
+#: data/core/about_i18n.cfg:1060
 msgid "Japanese Translation"
 msgstr "日文翻譯"
 
 #. [about]
-#: data/core/about_i18n.cfg:1151
+#: data/core/about_i18n.cfg:1153
 msgid "Korean Translation"
 msgstr "韓文翻譯"
 
 #. [about]
-#: data/core/about_i18n.cfg:1159
+#: data/core/about_i18n.cfg:1161
 msgid "Latin Translation"
 msgstr "拉丁文翻譯"
 
 #. [about]
-#: data/core/about_i18n.cfg:1185
+#: data/core/about_i18n.cfg:1187
 msgid "Latvian Translation"
 msgstr "拉脫維亞語翻譯"
 
 #. [about]
-#: data/core/about_i18n.cfg:1200
+#: data/core/about_i18n.cfg:1202
 msgid "Lithuanian Translation"
 msgstr "立陶宛語翻譯"
 
 #. [about]
-#: data/core/about_i18n.cfg:1225
+#: data/core/about_i18n.cfg:1227
 msgid "Macedonian Translation"
 msgstr "馬其頓語翻譯"
 
 #. [about]
-#: data/core/about_i18n.cfg:1232
+#: data/core/about_i18n.cfg:1234
 msgid "Marathi Translation"
 msgstr "馬拉地翻譯"
 
 #. [about]
-#: data/core/about_i18n.cfg:1241
+#: data/core/about_i18n.cfg:1243
 msgid "Norwegian Translation"
 msgstr "挪威文翻譯"
 
 #. [about]
-#: data/core/about_i18n.cfg:1266
+#: data/core/about_i18n.cfg:1268
 msgid "Old English Translation"
 msgstr "古英文翻譯"
 
 #. [about]
-#: data/core/about_i18n.cfg:1284
+#: data/core/about_i18n.cfg:1286
 msgid "Polish Translation"
 msgstr "波蘭文翻譯"
 
 #. [about]
-#: data/core/about_i18n.cfg:1340
+#: data/core/about_i18n.cfg:1342
 msgid "Portuguese Translation"
 msgstr "葡萄牙文翻譯"
 
 #. [about]
-#: data/core/about_i18n.cfg:1354
+#: data/core/about_i18n.cfg:1356
 msgid "Portuguese (Brazil) Translation"
 msgstr "葡萄牙文（巴西）翻譯"
 
 #. [about]
-#: data/core/about_i18n.cfg:1412
+#: data/core/about_i18n.cfg:1414
 msgid "Romanian Translation"
 msgstr "羅馬尼亞語翻譯"
 
 #. [about]
-#: data/core/about_i18n.cfg:1420
+#: data/core/about_i18n.cfg:1422
 msgid "Russian Translation"
 msgstr "俄羅斯文翻譯"
 
 #. [about]
-#: data/core/about_i18n.cfg:1515
+#: data/core/about_i18n.cfg:1517
 msgid "Scottish Gaelic Translation"
 msgstr "蘇格蘭蓋爾語翻譯"
 
 #. [about]
-#: data/core/about_i18n.cfg:1524
+#: data/core/about_i18n.cfg:1526
 msgid "Serbian Translation"
 msgstr "塞爾維亞語翻譯"
 
 #. [about]
-#: data/core/about_i18n.cfg:1543
+#: data/core/about_i18n.cfg:1545
 msgid "Slovak Translation"
 msgstr "斯洛伐克語翻譯"
 
 #. [about]
-#: data/core/about_i18n.cfg:1572
+#: data/core/about_i18n.cfg:1574
 msgid "Slovenian Translation"
 msgstr "斯洛文尼亞語翻譯"
 
 #. [about]
-#: data/core/about_i18n.cfg:1588
+#: data/core/about_i18n.cfg:1590
 msgid "Spanish Translation"
 msgstr "西班牙文翻譯"
 
 #. [about]
-#: data/core/about_i18n.cfg:1670
+#: data/core/about_i18n.cfg:1672
 msgid "Swedish Translation"
 msgstr "瑞典語翻譯"
 
 #. [about]
-#: data/core/about_i18n.cfg:1715
+#: data/core/about_i18n.cfg:1717
 msgid "Turkish Translation"
 msgstr "土耳其文翻譯"
 
 #. [about]
-#: data/core/about_i18n.cfg:1740
+#: data/core/about_i18n.cfg:1742
 msgid "Ukrainian Translation"
 msgstr "烏克蘭文翻譯"
 
 #. [about]
-#: data/core/about_i18n.cfg:1756
+#: data/core/about_i18n.cfg:1758
 msgid "Valencian (southern Catalan) Translation"
 msgstr "巴倫西亞語（南加泰隆尼亞語）翻譯"
 
 #. [about]
-#: data/core/about_i18n.cfg:1769
+#: data/core/about_i18n.cfg:1771
 msgid "Vietnamese Translation"
 msgstr "越南語翻譯團隊"
 
 #. [about]
 #. Real Acadèmia de Cultura Valenciana
-#: data/core/about_i18n.cfg:1789
+#: data/core/about_i18n.cfg:1791
 msgid "RACV’s Translation"
 msgstr "RACV的翻譯"
 
@@ -1120,7 +993,7 @@ msgstr "符文錘"
 
 #. [object]
 #. [item]: id=holly-water
-#: data/core/editor/items.cfg:282 data/core/macros/items.cfg:278
+#: data/core/editor/items.cfg:282 data/core/macros/items.cfg:283
 msgid "Holy Water"
 msgstr "聖水"
 
@@ -1162,7 +1035,7 @@ msgstr "灰藥水"
 
 #. [object]: id={ID}
 #. [item]: id=potion-poison
-#: data/core/editor/items.cfg:336 data/core/macros/items.cfg:242
+#: data/core/editor/items.cfg:336 data/core/macros/items.cfg:246
 msgid "Poison"
 msgstr "毒藥"
 
@@ -1233,7 +1106,7 @@ msgstr "石板"
 
 #. [object]
 #. [item]: id=storm-trident
-#: data/core/editor/items.cfg:420 data/core/macros/items.cfg:518
+#: data/core/editor/items.cfg:420 data/core/macros/items.cfg:529
 msgid "Storm Trident"
 msgstr "風暴三叉戟"
 
@@ -1586,8 +1459,8 @@ msgstr "$temp_i ($side_i_leader.name|) 陣營"
 #. [value]
 #: data/core/macros/ai_controller.cfg:296
 #: data/core/macros/ai_controller.cfg:438
-#: data/core/macros/ai_controller.cfg:840
-#: data/core/macros/ai_controller.cfg:931
+#: data/core/macros/ai_controller.cfg:838
+#: data/core/macros/ai_controller.cfg:929
 msgid "Back"
 msgstr "返回"
 
@@ -1656,7 +1529,7 @@ msgid "Clear all orders"
 msgstr "取消所有指令"
 
 #. [do]
-#: data/core/macros/ai_controller.cfg:766
+#: data/core/macros/ai_controller.cfg:765
 msgid ""
 "Objective: $ai_controller.side_$ally_side|_current_settings."
 "currently_doing_objective_description\n"
@@ -1669,45 +1542,45 @@ msgstr ""
 "currently_doing_behaviour_description"
 
 #. [literal]
-#: data/core/macros/ai_controller.cfg:783
+#: data/core/macros/ai_controller.cfg:781
 msgid "Set objective..."
 msgstr "設定目標..."
 
 #. [literal]
-#: data/core/macros/ai_controller.cfg:874
+#: data/core/macros/ai_controller.cfg:872
 msgid "Set behavior..."
 msgstr "設定行徑..."
 
 #. [literal]
-#: data/core/macros/ai_controller.cfg:979
+#: data/core/macros/ai_controller.cfg:977
 msgid "Exit"
 msgstr "離開"
 
-#: data/core/macros/ai_controller.cfg:1116
+#: data/core/macros/ai_controller.cfg:1114
 msgid "Set special orders..."
 msgstr "設定特殊指令..."
 
-#: data/core/macros/ai_controller.cfg:1117
+#: data/core/macros/ai_controller.cfg:1115
 msgid "Move leader to..."
 msgstr "移動首領到..."
 
-#: data/core/macros/ai_controller.cfg:1118
+#: data/core/macros/ai_controller.cfg:1116
 msgid "Right-click to select a location to move leader to"
 msgstr "右鍵點選首領至移動的地點"
 
-#: data/core/macros/ai_controller.cfg:1119
+#: data/core/macros/ai_controller.cfg:1117
 msgid "Move leader here"
 msgstr "移動首領到這裡"
 
-#: data/core/macros/ai_controller.cfg:1120
+#: data/core/macros/ai_controller.cfg:1118
 msgid "moving leader to $x1|,$y1|."
 msgstr "移動首領至 $x1|,$y1|。"
 
-#: data/core/macros/ai_controller.cfg:1121
+#: data/core/macros/ai_controller.cfg:1119
 msgid "Clear special orders"
 msgstr "取消特殊指令"
 
-#: data/core/macros/ai_controller.cfg:1122
+#: data/core/macros/ai_controller.cfg:1120
 msgid ""
 "Special: $ai_controller.side_$ally_side|_current_settings."
 "currently_doing_special_description"
@@ -1716,26 +1589,26 @@ msgstr ""
 "currently_doing_special_description"
 
 #. [else]
-#: data/core/macros/deprecated-utils.cfg:34
+#: data/core/macros/deprecated-utils.cfg:35
 msgid "This unit has been renamed to: "
 msgstr "這個單位已重新命名為："
 
 #. [lua]: generate_objectives
-#: data/core/macros/deprecated-utils.cfg:51 data/lua/wml/objectives.lua:106
+#: data/core/macros/deprecated-utils.cfg:52 data/lua/wml/objectives.lua:106
 msgid "Early finish bonus."
 msgstr "時效奬勵。"
 
 #. [lua]: generate_objectives
-#: data/core/macros/deprecated-utils.cfg:55 data/lua/wml/objectives.lua:109
+#: data/core/macros/deprecated-utils.cfg:56 data/lua/wml/objectives.lua:109
 msgid "No early finish bonus."
 msgstr "無時效奬勵。"
 
 #. [lua]: generate_objectives
-#: data/core/macros/deprecated-utils.cfg:59 data/lua/wml/objectives.lua:117
+#: data/core/macros/deprecated-utils.cfg:60 data/lua/wml/objectives.lua:117
 msgid "No gold carried over to the next scenario."
 msgstr "沒有剩餘金幣帶到下一個章節。"
 
-#: data/core/macros/deprecated-utils.cfg:63
+#: data/core/macros/deprecated-utils.cfg:64
 msgid ""
 "\n"
 "100% of finishing gold carried over to the next scenario."
@@ -1743,7 +1616,7 @@ msgstr ""
 "\n"
 "100% 的金幣會帶到下一個章節。"
 
-#: data/core/macros/deprecated-utils.cfg:68
+#: data/core/macros/deprecated-utils.cfg:69
 msgid ""
 "\n"
 "40% of finishing gold carried over to the next scenario."
@@ -1751,7 +1624,7 @@ msgstr ""
 "\n"
 "40% 的金幣會帶到下一個章節。"
 
-#: data/core/macros/deprecated-utils.cfg:73
+#: data/core/macros/deprecated-utils.cfg:74
 msgid ""
 "\n"
 "20% of finishing gold carried over to the next scenario."
@@ -1760,68 +1633,68 @@ msgstr ""
 "20% 的金幣會帶到下一個章節。"
 
 #. [message]: speaker=narrator
-#: data/core/macros/items.cfg:21
+#: data/core/macros/items.cfg:23
 msgid "You have come across a wishing well. What would you like to wish for?"
 msgstr "您經過了一個許願井。你想許個什麽様的願望？"
 
 #. [option]
-#: data/core/macros/items.cfg:24
+#: data/core/macros/items.cfg:26
 msgid "A swift victory"
 msgstr "快速勝利"
 
 #. [message]: speaker=unit
-#: data/core/macros/items.cfg:32
+#: data/core/macros/items.cfg:34
 msgid ""
 "With this golden coin, I wish that this battle end in a swift and safe "
 "victory."
 msgstr "憑着這枚金幣，我希望這場戰鬥能快速而安全的勝出。"
 
 #. [option]
-#: data/core/macros/items.cfg:38
+#: data/core/macros/items.cfg:40
 msgid "Lots of gold"
 msgstr "許多金幣"
 
 #. [message]: speaker=unit
-#: data/core/macros/items.cfg:46
+#: data/core/macros/items.cfg:48
 msgid "I wish this single gold coin be returned ten-fold to me."
 msgstr "我希望這一個金幣能變成十個。"
 
 #. [option]
-#: data/core/macros/items.cfg:52
+#: data/core/macros/items.cfg:54
 msgid "Peace throughout Wesnoth."
 msgstr "和平遍及韋諾。"
 
 #. [message]: speaker=unit
-#: data/core/macros/items.cfg:60
+#: data/core/macros/items.cfg:62
 msgid "The only thing worth wishing for is peace throughout the land."
 msgstr "唯一值得許願的是讓和平遍及這片土地。"
 
 #. [option]
-#: data/core/macros/items.cfg:66
+#: data/core/macros/items.cfg:68
 msgid "Don’t make a wish."
 msgstr "別許願。"
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:204
+#: data/core/macros/items.cfg:207
 msgid "Potion of Healing"
 msgstr "治療藥劑"
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:207
+#: data/core/macros/items.cfg:210
 msgid "A feeling of well-being overwhelms the drinker."
 msgstr "飲用者心裏充滿幸福。"
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:208
+#: data/core/macros/items.cfg:211
 msgid "You are not worthy of healing."
 msgstr "您不需要治療。"
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:245
+#: data/core/macros/items.cfg:249
 msgid "Poison is seeping through the veins of this unit at this very moment."
 msgstr "毒素此刻正滲透到這個單位的全身。"
 
-#: data/core/macros/items.cfg:273
+#: data/core/macros/items.cfg:278
 msgid ""
 "Sprinkling this water on melee weapons grants them the <i>arcane</i> damage "
 "type until the end of the current scenario. Should $unit.name use it?"
@@ -1829,115 +1702,115 @@ msgstr ""
 "近戰武器淋上這種液體後，傷害類型將變為“秘法”，直到此章節結束。要讓 $unit."
 "name 使用嗎？"
 
-#: data/core/macros/items.cfg:274
+#: data/core/macros/items.cfg:279
 msgid "holy water^Take it"
 msgstr "取走聖水"
 
-#: data/core/macros/items.cfg:275
+#: data/core/macros/items.cfg:280
 msgid "holy water^Leave it"
 msgstr "留下聖水"
 
-#: data/core/macros/items.cfg:276
+#: data/core/macros/items.cfg:281
 msgid "$unit.name has no need for this Holy Water! Let another take it."
 msgstr "$unit.name 已經不需要聖水！讓別人享用吧。"
 
 #. [object]
-#: data/core/macros/items.cfg:281
+#: data/core/macros/items.cfg:286
 msgid ""
 "This water will make melee weapons have the <i>arcane</i> damage type until "
 "the end of the current scenario."
 msgstr "這瓶水將讓單位的近戰武器類型變為<i>秘法</i>直到下一章開始."
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:310
+#: data/core/macros/items.cfg:316
 msgid "Potion of Strength"
 msgstr "力量藥劑"
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:313
+#: data/core/macros/items.cfg:319
 msgid "Strength is given to the drinker."
 msgstr "飲用者獲得力量。"
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:353
+#: data/core/macros/items.cfg:360
 msgid "Potion of Decay"
 msgstr "衰退藥劑"
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:356
+#: data/core/macros/items.cfg:363
 msgid "This poor unit drank something really bad."
 msgstr "這個可憐的傢伙喝了一些不好的東西。"
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:390
+#: data/core/macros/items.cfg:398
 msgid "Ring of Regeneration"
 msgstr "恢復戒指"
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:393
+#: data/core/macros/items.cfg:401
 msgid "This ring will heal the bearer a little each turn."
 msgstr "戒指會讓持有人每回合恢復一些生命值。"
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:429
+#: data/core/macros/items.cfg:438
 msgid "Ring of Slowness"
 msgstr "遲緩戒指"
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:432
+#: data/core/macros/items.cfg:441
 msgid "The bearer of this ring is slowed."
 msgstr "戒指持有人行動變慢。"
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:466
+#: data/core/macros/items.cfg:476
 msgid "Staff of Swiftness"
 msgstr "疾速法杖"
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:469
+#: data/core/macros/items.cfg:479
 msgid "This staff will grant the bearer swift movement."
 msgstr "法杖讓持有者加速移動。"
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:470
+#: data/core/macros/items.cfg:480
 msgid "Only magical beings can wield such an object."
 msgstr "只有懂得魔法的人才可以使用本物品。"
 
-#: data/core/macros/items.cfg:513
+#: data/core/macros/items.cfg:524
 msgid "Should $unit.name pick up the trident?"
 msgstr "讓 $unit.name 拿起三叉戟嗎？"
 
-#: data/core/macros/items.cfg:514
+#: data/core/macros/items.cfg:525
 msgid "storm trident^Take it"
 msgstr "取走風暴三叉戟"
 
-#: data/core/macros/items.cfg:515
+#: data/core/macros/items.cfg:526
 msgid "storm trident^Leave it"
 msgstr "留下風暴三叉戟"
 
-#: data/core/macros/items.cfg:516
+#: data/core/macros/items.cfg:527
 msgid ""
 "$unit.name cannot use this Storm Trident! Let one of the merfolk who can "
 "wield it have it."
 msgstr "$unit.name 無法使用風暴三戟！讓能夠使用它的人魚擁有它吧。"
 
 #. [object]
-#: data/core/macros/items.cfg:521
+#: data/core/macros/items.cfg:532
 msgid ""
 "This trident gives merfolk the power to throw lightning at their enemies."
 msgstr "這個三叉戟讓人魚使用能向敵人射出閃電。"
 
 #. [effect]: type=fire
-#: data/core/macros/items.cfg:525
+#: data/core/macros/items.cfg:536
 msgid "storm trident"
 msgstr "風暴三叉戟"
 
 #. [effect]: type=fire
-#: data/core/macros/items.cfg:548
+#: data/core/macros/items.cfg:560
 msgid "sceptre of fire"
 msgstr "聖火權杖"
 
-#: data/core/macros/names.cfg:18
+#: data/core/macros/names.cfg:19
 msgid ""
 "Egar,Elch,Ga’ash,Gadé Ihn,Gakré Ohm,Galeck,Galsh,Garadin,Garchin,Gark,Garlan,"
 "Garlin Ohn,Garrutin,Gart’lo,Garushi,Gashinar,Gashol,Gaushii,Gaustun,Gegchi,"
@@ -1959,7 +1832,7 @@ msgstr ""
 "Merritos Gark,Morusté,Murr,Omataké,Reshan,Vashitt,Velnick,Veralon,Veramo,"
 "Verath,Verditt,Verkon,Verlinn,Vermad,Vertick,Vladnir"
 
-#: data/core/macros/names.cfg:19
+#: data/core/macros/names.cfg:20
 msgid ""
 "Alen Ka,Alinash Mal,Ashirt,Auginet Ka,Auuglann,Damell,Dell,Demla,Dinsill,"
 "Eshi,Olath,Omage,Omagrra,Orra Ka,Orridan,Orrida,Oshibi,Vallin,Valnirra,"
@@ -1970,7 +1843,7 @@ msgstr ""
 "Valnitt,Velisk,Verra,Vellin Ka,Veshtar,Vushtin"
 
 #. Generator for male drake names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
-#: data/core/macros/names.cfg:21
+#: data/core/macros/names.cfg:22
 msgid ""
 "\n"
 "main={prefix}{suffix}|{prefix}’{suffix}|{prefix}{suffix} {short_name}\n"
@@ -1989,7 +1862,7 @@ msgstr ""
 "ritos|rusté|shitt|nick|rath|ditt|kon|mad|tick|nir\n"
 
 #. Generator for female drake names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
-#: data/core/macros/names.cfg:28
+#: data/core/macros/names.cfg:29
 msgid ""
 "\n"
 "main={prefix}{suffix}|{prefix}{suffix} {short_name}\n"
@@ -2003,7 +1876,7 @@ msgstr ""
 "suffix=en|nash|irt|glann|ll|ge|lin|nitt|tin|tar|lisk|rida|grra|sill|la|mell\n"
 "short_name=Mal|Ka|Emth|Dar|Eshi\n"
 
-#: data/core/macros/names.cfg:37
+#: data/core/macros/names.cfg:38
 msgid ""
 "Aigaithas,Aigaithil,Aigaithing,Aigaithol,Aigalas,Aigaling,Aigalis,Aigalol,"
 "Aigalsil,Aigatas,Aigatis,Aigatlos,Aigatsil,Aigatsol,Aigatus,Aigcatas,"
@@ -2094,7 +1967,7 @@ msgstr ""
 "Triththaas,Triththail,Triththaing,Triththasol,Triththaus"
 
 #. Generator for male dwarf names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
-#: data/core/macros/names.cfg:39
+#: data/core/macros/names.cfg:40
 msgid ""
 "\n"
 "main={long_name}\n"
@@ -2115,126 +1988,126 @@ msgstr ""
 "suffix=sil|fur|bor|bus|bur|bor|gos|dor|rin|dur|ing|ras|this|tis|rol|sol|las|"
 "til|til|tol|los|rol|sol|ril|sil|as|us|lil|fur|mur|fur\n"
 "centre=lal|mal|ra|dur|thal|thas|ma|gal|thau|ga|ith|ma|cat|la|ral|dur|bur\n"
-
-#: data/core/macros/names.cfg:50
-msgid ""
-"Amadrieriand,Amáril,Amelad,Ameldor,Amendel,Ameng,Amilmaldur,Amilmalith,"
-"Amilmandir,Amind,Amiol,Amiorion,Amithrarion,Amóldor,Amorfimir,Amorfir,Amowyn,"
-"Amulas,Amundil,Anán,Anebrin,Anebrir,Anémbor,Anénduil,Anerion,Anilad,Anil-"
-"Gawyn,Anilmambor,Anilmariand,Anior,Anithranduil,Anol,Anon,Anorfing,Anundil,"
-"Belán,Belandil,Belarandel,Belel,Belén,Belil-Gandil,Belilmand,Belilmang,"
-"Beliondil,Beliril,Belithraldor,Belithrawyn,Belólad,Belómir,Belondel,Belyrion,"
-"Cadriembor,Cadrieriand,Cálad,Caladrielas,Calándel,Caldur,Cáldur,Calebrindel,"
-"Calebrindir,Calénduil,Calil-Gandir,Calil-Gawyn,Calioriand,Caliril,Calónduil,"
-"Caloril,Cándir,Canduil,Caraldur,Carang,Célad,Celadrieriand,Celang,Celaral,"
-"Celarandil,Celáriand,Celebririon,Celelas,Celendel,Celér,Celilmalas,Celiondir,"
-"Celior,Celiorion,Celong,Celór,Celóril,Celorion,Celundir,Celuwyn,Celyndel,"
-"Cénduil,Cindil,Ciong,Cithralad,Cithraldur,Cithrand,Cithrandel,Cithraril,Col,"
-"Corfil,Corfildur,Cówyn,Cun,Cundir,Cylas,Delán,Delánd,Delandel,Delaraldur,"
-"Deláril,Delawyn,Deléng,Delilmaldor,Deliol,Delithrar,Deliwyn,Delóldor,"
-"Delorfilad,Delorfilith,Delorion,Delundil,Eäradriendel,Eäradrier,Eäránduil,"
-"Eäraralad,Eärebrindel,Eäréldor,Eäreng,Eärérion,Eärithrandil,Eäromir,"
-"Eärorfiriand,Eäryldur,Eäryriand,Eladrieng,Elálith,Elánd,Elándil,Elebrildor,"
-"Elebrindel,Elebriril,Elélas,Elémbor,Elemir,Elen,Elil-Garil,Elilmaldur,"
-"Eliomir,Eliondil,Elolas,Elólas,Elor,Elorfilad,Elradrien,Elralith,Elran,"
-"Elreldur,Elrilmand,Elrioldor,Elriolith,Elrithralith,Elrithranduil,Elrorfir,"
-"Elval,Elvandir,Elvaramir,Elváwyn,Elvebrind,Elvebrindel,Elvélith,Elvémir,"
-"Elverion,Elvil-Garion,Elvilmaldur,Elvilmaril,Elvioldur,Elvombor,Elvónduil,"
-"Elvorfimir,Elvorfiriand,Elvorfiril,Elvóriand,Elvund,Elyldor,Elyrion,Eowambor,"
-"Eowanduil,Eowar,Eowaraldor,Eowaran,Eowarar,Eowariand,Eowarion,Eowebrind,"
-"Eowémir,Eowil-Garion,Eowimbor,Eowiomir,Eowithrawyn,Eowóldur,Eoworfildor,"
-"Eowówyn,Eowylas,Fadriendel,Fandel,Farandir,Fáwyn,Fendel,Fer,Filman,Fioril,"
-"Fithraril,Forfilas,Fyrion,Gadriendil,Gadrieng,Galadrieldor,Galálad,Galálas,"
-"Galalith,Galar,Galelas,Galeldur,Galelith,Galémbor,Galithrariand,Galoldur,"
-"Galuldur,Galur,Galurion,Gambor,Gán,Ganduil,Garaldor,Gararil,Gelad,Géril,Gil-"
-"Gandel,Gil-Gang,Giombor,Githral,Githralad,Gladriendil,Glal,Glámbor,Glandil,"
-"Glarang,Glararil,Glilmal,Glimir,Glior,Glólas,Gloldor,Glómir,Glon,Glul,Golad,"
-"Gor,Gumbor,Gyl,Gymbor,Gyn,Harariand,Háriand,Hebril,Hemir,Hénduil,Hilas,Hil-"
-"Garion,Hilmariand,Hiong,Hirion,Hithrandel,Horfilad,Horfindel,Hundel,Hymir,"
-"Hyrion,Hywyn,Isadrieng,Isándir,Isarandel,Isarar,Iselas,Isér,Isilmandel,"
-"Isirion,Isithral,Isól,Isóndel,Isóng,Isorfilad,Isorfindir,Isuwyn,Isyndel,"
-"Legal,Legaran,Legémir,Legéril,Legilad,Legil-Gal,Legiondel,Legithralith,"
-"Legorfindil,Legorfirion,Legówyn,Legyl,Legyn,Linduilas,Lómadrieril,Lómarand,"
-"Lómariand,Lómebrilad,Lómebrind,Lómémbor,Lómilmaril,Lómiriand,Lómorfindil,"
-"Lómowyn,Madrieril,Maldur,Mánduil,Maraldur,Mebrin,Méng,Mérion,Miolith,Miomir,"
-"Mithrand,Mondir,Móndir,Morfilas,Morfin,Morfiriand,Mylith,Nadrieldor,Nalith,"
-"Nán,Nél,Nil-Galas,Nil-Galith,Nil-Gar,Nilmar,Nóndel,Norfildor,Norfilith,"
-"Norfindil,Norfindir,Numbor,Nyldur,Padrieriand,Padrieril,Pamir,Paraldor,"
-"Parariand,Pilmalad,Pindir,Pór,Porfildur,Pumbor,Pyldur,Rebrir,Réndir,"
-"Rilmandil,Rithrandil,Ról,Róldor,Roldur,Róldur,Rorfilad,Rorfindil,Rówyn,Ryn,"
-"Sadrielas,Sebrin,Sebriril,Sénd,Sil-Gal,Sólad,Sorfind,Sóriand,Tadriendir,"
-"Taral,Taraldur,Táriand,Tendel,Téwyn,Thradrieriand,Thrambor,Thraral,Threbring,"
-"Thrélad,Thréldur,Thril-Gamir,Thril-Gandir,Thril-Gar,Thrilmandel,Thrimir,"
-"Thrion,Thrithran,Throlas,Thrón,Thróng,Thrund,Thryriand,Til-Gan,Tilmalad,"
-"Tilmalas,Tinandir,Tinarambor,Tinarariand,Tinén,Tinil-Ganduil,Tinilmand,"
-"Tinilmawyn,Tinimir,Tinindil,Tinithrar,Tinoldor,Tinond,Tinorfind,Tinorfiriand,"
-"Tinóriand,Tinowyn,Tinun,Tinyl,Tion,Tolas,Torfildur,Tówyn,Tylad,Unadrieldor,"
-"Unadrier,Unál,Unalas,Unálas,Unaraldur,Unaril,Unárion,Unebrin,Unebrind,"
-"Uneldor,Unil,Unil-Gan,Uniolith,Unioril,Unólith,Unombor,Unóndel,Unondir,"
-"Unorfildor,Unorfiril,Unorfiwyn,Unulad,Uradrielas,Uradrierion,Urálas,Urálith,"
-"Urambor,Urér,Uril-Gambor,Urilmalith,Uróldor,Urorfildor,Urul,Urymir,Válad,Ván,"
-"Vándel,Vandir,Varalas,Vararion,Vebril,Vebrilas,Vebrinduil,Vel,Vilith,Vol,"
-"Vólas,Vóldur,Vondel,Vorfin,Vorfindil,Vulas,Vuldur,Vunduil,Vylas,Vyldor"
-msgstr ""
-"Amadrieriand,Amáril,Amelad,Ameldor,Amendel,Ameng,Amilmaldur,Amilmalith,"
-"Amilmandir,Amind,Amiol,Amiorion,Amithrarion,Amóldor,Amorfimir,Amorfir,Amowyn,"
-"Amulas,Amundil,Anán,Anebrin,Anebrir,Anémbor,Anénduil,Anerion,Anilad,Anil-"
-"Gawyn,Anilmambor,Anilmariand,Anior,Anithranduil,Anol,Anon,Anorfing,Anundil,"
-"Belán,Belandil,Belarandel,Belel,Belén,Belil-Gandil,Belilmand,Belilmang,"
-"Beliondil,Beliril,Belithraldor,Belithrawyn,Belólad,Belómir,Belondel,Belyrion,"
-"Cadriembor,Cadrieriand,Cálad,Caladrielas,Calándel,Caldur,Cáldur,Calebrindel,"
-"Calebrindir,Calénduil,Calil-Gandir,Calil-Gawyn,Calioriand,Caliril,Calónduil,"
-"Caloril,Cándir,Canduil,Caraldur,Carang,Célad,Celadrieriand,Celang,Celaral,"
-"Celarandil,Celáriand,Celebririon,Celelas,Celendel,Celér,Celilmalas,Celiondir,"
-"Celior,Celiorion,Celong,Celór,Celóril,Celorion,Celundir,Celuwyn,Celyndel,"
-"Cénduil,Cindil,Ciong,Cithralad,Cithraldur,Cithrand,Cithrandel,Cithraril,Col,"
-"Corfil,Corfildur,Cówyn,Cun,Cundir,Cylas,Delán,Delánd,Delandel,Delaraldur,"
-"Deláril,Delawyn,Deléng,Delilmaldor,Deliol,Delithrar,Deliwyn,Delóldor,"
-"Delorfilad,Delorfilith,Delorion,Delundil,Eäradriendel,Eäradrier,Eäránduil,"
-"Eäraralad,Eärebrindel,Eäréldor,Eäreng,Eärérion,Eärithrandil,Eäromir,"
-"Eärorfiriand,Eäryldur,Eäryriand,Eladrieng,Elálith,Elánd,Elándil,Elebrildor,"
-"Elebrindel,Elebriril,Elélas,Elémbor,Elemir,Elen,Elil-Garil,Elilmaldur,"
-"Eliomir,Eliondil,Elolas,Elólas,Elor,Elorfilad,Elradrien,Elralith,Elran,"
-"Elreldur,Elrilmand,Elrioldor,Elriolith,Elrithralith,Elrithranduil,Elrorfir,"
-"Elval,Elvandir,Elvaramir,Elváwyn,Elvebrind,Elvebrindel,Elvélith,Elvémir,"
-"Elverion,Elvil-Garion,Elvilmaldur,Elvilmaril,Elvioldur,Elvombor,Elvónduil,"
-"Elvorfimir,Elvorfiriand,Elvorfiril,Elvóriand,Elvund,Elyldor,Elyrion,Eowambor,"
-"Eowanduil,Eowar,Eowaraldor,Eowaran,Eowarar,Eowariand,Eowarion,Eowebrind,"
-"Eowémir,Eowil-Garion,Eowimbor,Eowiomir,Eowithrawyn,Eowóldur,Eoworfildor,"
-"Eowówyn,Eowylas,Fadriendel,Fandel,Farandir,Fáwyn,Fendel,Fer,Filman,Fioril,"
-"Fithraril,Forfilas,Fyrion,Gadriendil,Gadrieng,Galadrieldor,Galálad,Galálas,"
-"Galalith,Galar,Galelas,Galeldur,Galelith,Galémbor,Galithrariand,Galoldur,"
-"Galuldur,Galur,Galurion,Gambor,Gán,Ganduil,Garaldor,Gararil,Gelad,Géril,Gil-"
-"Gandel,Gil-Gang,Giombor,Githral,Githralad,Gladriendil,Glal,Glámbor,Glandil,"
-"Glarang,Glararil,Glilmal,Glimir,Glior,Glólas,Gloldor,Glómir,Glon,Glul,Golad,"
-"Gor,Gumbor,Gyl,Gymbor,Gyn,Harariand,Háriand,Hebril,Hemir,Hénduil,Hilas,Hil-"
-"Garion,Hilmariand,Hiong,Hirion,Hithrandel,Horfilad,Horfindel,Hundel,Hymir,"
-"Hyrion,Hywyn,Isadrieng,Isándir,Isarandel,Isarar,Iselas,Isér,Isilmandel,"
-"Isirion,Isithral,Isól,Isóndel,Isóng,Isorfilad,Isorfindir,Isuwyn,Isyndel,"
-"Legal,Legaran,Legémir,Legéril,Legilad,Legil-Gal,Legiondel,Legithralith,"
-"Legorfindil,Legorfirion,Legówyn,Legyl,Legyn,Linduilas,Lómadrieril,Lómarand,"
-"Lómariand,Lómebrilad,Lómebrind,Lómémbor,Lómilmaril,Lómiriand,Lómorfindil,"
-"Lómowyn,Madrieril,Maldur,Mánduil,Maraldur,Mebrin,Méng,Mérion,Miolith,Miomir,"
-"Mithrand,Mondir,Móndir,Morfilas,Morfin,Morfiriand,Mylith,Nadrieldor,Nalith,"
-"Nán,Nél,Nil-Galas,Nil-Galith,Nil-Gar,Nilmar,Nóndel,Norfildor,Norfilith,"
-"Norfindil,Norfindir,Numbor,Nyldur,Padrieriand,Padrieril,Pamir,Paraldor,"
-"Parariand,Pilmalad,Pindir,Pór,Porfildur,Pumbor,Pyldur,Rebrir,Réndir,"
-"Rilmandil,Rithrandil,Ról,Róldor,Roldur,Róldur,Rorfilad,Rorfindil,Rówyn,Ryn,"
-"Sadrielas,Sebrin,Sebriril,Sénd,Sil-Gal,Sólad,Sorfind,Sóriand,Tadriendir,"
-"Taral,Taraldur,Táriand,Tendel,Téwyn,Thradrieriand,Thrambor,Thraral,Threbring,"
-"Thrélad,Thréldur,Thril-Gamir,Thril-Gandir,Thril-Gar,Thrilmandel,Thrimir,"
-"Thrion,Thrithran,Throlas,Thrón,Thróng,Thrund,Thryriand,Til-Gan,Tilmalad,"
-"Tilmalas,Tinandir,Tinarambor,Tinarariand,Tinén,Tinil-Ganduil,Tinilmand,"
-"Tinilmawyn,Tinimir,Tinindil,Tinithrar,Tinoldor,Tinond,Tinorfind,Tinorfiriand,"
-"Tinóriand,Tinowyn,Tinun,Tinyl,Tion,Tolas,Torfildur,Tówyn,Tylad,Unadrieldor,"
-"Unadrier,Unál,Unalas,Unálas,Unaraldur,Unaril,Unárion,Unebrin,Unebrind,"
-"Uneldor,Unil,Unil-Gan,Uniolith,Unioril,Unólith,Unombor,Unóndel,Unondir,"
-"Unorfildor,Unorfiril,Unorfiwyn,Unulad,Uradrielas,Uradrierion,Urálas,Urálith,"
-"Urambor,Urér,Uril-Gambor,Urilmalith,Uróldor,Urorfildor,Urul,Urymir,Válad,Ván,"
-"Vándel,Vandir,Varalas,Vararion,Vebril,Vebrilas,Vebrinduil,Vel,Vilith,Vol,"
-"Vólas,Vóldur,Vondel,Vorfin,Vorfindil,Vulas,Vuldur,Vunduil,Vylas,Vyldor"
 
 #: data/core/macros/names.cfg:51
+msgid ""
+"Amadrieriand,Amáril,Amelad,Ameldor,Amendel,Ameng,Amilmaldur,Amilmalith,"
+"Amilmandir,Amind,Amiol,Amiorion,Amithrarion,Amóldor,Amorfimir,Amorfir,Amowyn,"
+"Amulas,Amundil,Anán,Anebrin,Anebrir,Anémbor,Anénduil,Anerion,Anilad,Anil-"
+"Gawyn,Anilmambor,Anilmariand,Anior,Anithranduil,Anol,Anon,Anorfing,Anundil,"
+"Belán,Belandil,Belarandel,Belel,Belén,Belil-Gandil,Belilmand,Belilmang,"
+"Beliondil,Beliril,Belithraldor,Belithrawyn,Belólad,Belómir,Belondel,Belyrion,"
+"Cadriembor,Cadrieriand,Cálad,Caladrielas,Calándel,Caldur,Cáldur,Calebrindel,"
+"Calebrindir,Calénduil,Calil-Gandir,Calil-Gawyn,Calioriand,Caliril,Calónduil,"
+"Caloril,Cándir,Canduil,Caraldur,Carang,Célad,Celadrieriand,Celang,Celaral,"
+"Celarandil,Celáriand,Celebririon,Celelas,Celendel,Celér,Celilmalas,Celiondir,"
+"Celior,Celiorion,Celong,Celór,Celóril,Celorion,Celundir,Celuwyn,Celyndel,"
+"Cénduil,Cindil,Ciong,Cithralad,Cithraldur,Cithrand,Cithrandel,Cithraril,Col,"
+"Corfil,Corfildur,Cówyn,Cun,Cundir,Cylas,Delán,Delánd,Delandel,Delaraldur,"
+"Deláril,Delawyn,Deléng,Delilmaldor,Deliol,Delithrar,Deliwyn,Delóldor,"
+"Delorfilad,Delorfilith,Delorion,Delundil,Eäradriendel,Eäradrier,Eäránduil,"
+"Eäraralad,Eärebrindel,Eäréldor,Eäreng,Eärérion,Eärithrandil,Eäromir,"
+"Eärorfiriand,Eäryldur,Eäryriand,Eladrieng,Elálith,Elánd,Elándil,Elebrildor,"
+"Elebrindel,Elebriril,Elélas,Elémbor,Elemir,Elen,Elil-Garil,Elilmaldur,"
+"Eliomir,Eliondil,Elolas,Elólas,Elor,Elorfilad,Elradrien,Elralith,Elran,"
+"Elreldur,Elrilmand,Elrioldor,Elriolith,Elrithralith,Elrithranduil,Elrorfir,"
+"Elval,Elvandir,Elvaramir,Elváwyn,Elvebrind,Elvebrindel,Elvélith,Elvémir,"
+"Elverion,Elvil-Garion,Elvilmaldur,Elvilmaril,Elvioldur,Elvombor,Elvónduil,"
+"Elvorfimir,Elvorfiriand,Elvorfiril,Elvóriand,Elvund,Elyldor,Elyrion,Eowambor,"
+"Eowanduil,Eowar,Eowaraldor,Eowaran,Eowarar,Eowariand,Eowarion,Eowebrind,"
+"Eowémir,Eowil-Garion,Eowimbor,Eowiomir,Eowithrawyn,Eowóldur,Eoworfildor,"
+"Eowówyn,Eowylas,Fadriendel,Fandel,Farandir,Fáwyn,Fendel,Fer,Filman,Fioril,"
+"Fithraril,Forfilas,Fyrion,Gadriendil,Gadrieng,Galadrieldor,Galálad,Galálas,"
+"Galalith,Galar,Galelas,Galeldur,Galelith,Galémbor,Galithrariand,Galoldur,"
+"Galuldur,Galur,Galurion,Gambor,Gán,Ganduil,Garaldor,Gararil,Gelad,Géril,Gil-"
+"Gandel,Gil-Gang,Giombor,Githral,Githralad,Gladriendil,Glal,Glámbor,Glandil,"
+"Glarang,Glararil,Glilmal,Glimir,Glior,Glólas,Gloldor,Glómir,Glon,Glul,Golad,"
+"Gor,Gumbor,Gyl,Gymbor,Gyn,Harariand,Háriand,Hebril,Hemir,Hénduil,Hilas,Hil-"
+"Garion,Hilmariand,Hiong,Hirion,Hithrandel,Horfilad,Horfindel,Hundel,Hymir,"
+"Hyrion,Hywyn,Isadrieng,Isándir,Isarandel,Isarar,Iselas,Isér,Isilmandel,"
+"Isirion,Isithral,Isól,Isóndel,Isóng,Isorfilad,Isorfindir,Isuwyn,Isyndel,"
+"Legal,Legaran,Legémir,Legéril,Legilad,Legil-Gal,Legiondel,Legithralith,"
+"Legorfindil,Legorfirion,Legówyn,Legyl,Legyn,Linduilas,Lómadrieril,Lómarand,"
+"Lómariand,Lómebrilad,Lómebrind,Lómémbor,Lómilmaril,Lómiriand,Lómorfindil,"
+"Lómowyn,Madrieril,Maldur,Mánduil,Maraldur,Mebrin,Méng,Mérion,Miolith,Miomir,"
+"Mithrand,Mondir,Móndir,Morfilas,Morfin,Morfiriand,Mylith,Nadrieldor,Nalith,"
+"Nán,Nél,Nil-Galas,Nil-Galith,Nil-Gar,Nilmar,Nóndel,Norfildor,Norfilith,"
+"Norfindil,Norfindir,Numbor,Nyldur,Padrieriand,Padrieril,Pamir,Paraldor,"
+"Parariand,Pilmalad,Pindir,Pór,Porfildur,Pumbor,Pyldur,Rebrir,Réndir,"
+"Rilmandil,Rithrandil,Ról,Róldor,Roldur,Róldur,Rorfilad,Rorfindil,Rówyn,Ryn,"
+"Sadrielas,Sebrin,Sebriril,Sénd,Sil-Gal,Sólad,Sorfind,Sóriand,Tadriendir,"
+"Taral,Taraldur,Táriand,Tendel,Téwyn,Thradrieriand,Thrambor,Thraral,Threbring,"
+"Thrélad,Thréldur,Thril-Gamir,Thril-Gandir,Thril-Gar,Thrilmandel,Thrimir,"
+"Thrion,Thrithran,Throlas,Thrón,Thróng,Thrund,Thryriand,Til-Gan,Tilmalad,"
+"Tilmalas,Tinandir,Tinarambor,Tinarariand,Tinén,Tinil-Ganduil,Tinilmand,"
+"Tinilmawyn,Tinimir,Tinindil,Tinithrar,Tinoldor,Tinond,Tinorfind,Tinorfiriand,"
+"Tinóriand,Tinowyn,Tinun,Tinyl,Tion,Tolas,Torfildur,Tówyn,Tylad,Unadrieldor,"
+"Unadrier,Unál,Unalas,Unálas,Unaraldur,Unaril,Unárion,Unebrin,Unebrind,"
+"Uneldor,Unil,Unil-Gan,Uniolith,Unioril,Unólith,Unombor,Unóndel,Unondir,"
+"Unorfildor,Unorfiril,Unorfiwyn,Unulad,Uradrielas,Uradrierion,Urálas,Urálith,"
+"Urambor,Urér,Uril-Gambor,Urilmalith,Uróldor,Urorfildor,Urul,Urymir,Válad,Ván,"
+"Vándel,Vandir,Varalas,Vararion,Vebril,Vebrilas,Vebrinduil,Vel,Vilith,Vol,"
+"Vólas,Vóldur,Vondel,Vorfin,Vorfindil,Vulas,Vuldur,Vunduil,Vylas,Vyldor"
+msgstr ""
+"Amadrieriand,Amáril,Amelad,Ameldor,Amendel,Ameng,Amilmaldur,Amilmalith,"
+"Amilmandir,Amind,Amiol,Amiorion,Amithrarion,Amóldor,Amorfimir,Amorfir,Amowyn,"
+"Amulas,Amundil,Anán,Anebrin,Anebrir,Anémbor,Anénduil,Anerion,Anilad,Anil-"
+"Gawyn,Anilmambor,Anilmariand,Anior,Anithranduil,Anol,Anon,Anorfing,Anundil,"
+"Belán,Belandil,Belarandel,Belel,Belén,Belil-Gandil,Belilmand,Belilmang,"
+"Beliondil,Beliril,Belithraldor,Belithrawyn,Belólad,Belómir,Belondel,Belyrion,"
+"Cadriembor,Cadrieriand,Cálad,Caladrielas,Calándel,Caldur,Cáldur,Calebrindel,"
+"Calebrindir,Calénduil,Calil-Gandir,Calil-Gawyn,Calioriand,Caliril,Calónduil,"
+"Caloril,Cándir,Canduil,Caraldur,Carang,Célad,Celadrieriand,Celang,Celaral,"
+"Celarandil,Celáriand,Celebririon,Celelas,Celendel,Celér,Celilmalas,Celiondir,"
+"Celior,Celiorion,Celong,Celór,Celóril,Celorion,Celundir,Celuwyn,Celyndel,"
+"Cénduil,Cindil,Ciong,Cithralad,Cithraldur,Cithrand,Cithrandel,Cithraril,Col,"
+"Corfil,Corfildur,Cówyn,Cun,Cundir,Cylas,Delán,Delánd,Delandel,Delaraldur,"
+"Deláril,Delawyn,Deléng,Delilmaldor,Deliol,Delithrar,Deliwyn,Delóldor,"
+"Delorfilad,Delorfilith,Delorion,Delundil,Eäradriendel,Eäradrier,Eäránduil,"
+"Eäraralad,Eärebrindel,Eäréldor,Eäreng,Eärérion,Eärithrandil,Eäromir,"
+"Eärorfiriand,Eäryldur,Eäryriand,Eladrieng,Elálith,Elánd,Elándil,Elebrildor,"
+"Elebrindel,Elebriril,Elélas,Elémbor,Elemir,Elen,Elil-Garil,Elilmaldur,"
+"Eliomir,Eliondil,Elolas,Elólas,Elor,Elorfilad,Elradrien,Elralith,Elran,"
+"Elreldur,Elrilmand,Elrioldor,Elriolith,Elrithralith,Elrithranduil,Elrorfir,"
+"Elval,Elvandir,Elvaramir,Elváwyn,Elvebrind,Elvebrindel,Elvélith,Elvémir,"
+"Elverion,Elvil-Garion,Elvilmaldur,Elvilmaril,Elvioldur,Elvombor,Elvónduil,"
+"Elvorfimir,Elvorfiriand,Elvorfiril,Elvóriand,Elvund,Elyldor,Elyrion,Eowambor,"
+"Eowanduil,Eowar,Eowaraldor,Eowaran,Eowarar,Eowariand,Eowarion,Eowebrind,"
+"Eowémir,Eowil-Garion,Eowimbor,Eowiomir,Eowithrawyn,Eowóldur,Eoworfildor,"
+"Eowówyn,Eowylas,Fadriendel,Fandel,Farandir,Fáwyn,Fendel,Fer,Filman,Fioril,"
+"Fithraril,Forfilas,Fyrion,Gadriendil,Gadrieng,Galadrieldor,Galálad,Galálas,"
+"Galalith,Galar,Galelas,Galeldur,Galelith,Galémbor,Galithrariand,Galoldur,"
+"Galuldur,Galur,Galurion,Gambor,Gán,Ganduil,Garaldor,Gararil,Gelad,Géril,Gil-"
+"Gandel,Gil-Gang,Giombor,Githral,Githralad,Gladriendil,Glal,Glámbor,Glandil,"
+"Glarang,Glararil,Glilmal,Glimir,Glior,Glólas,Gloldor,Glómir,Glon,Glul,Golad,"
+"Gor,Gumbor,Gyl,Gymbor,Gyn,Harariand,Háriand,Hebril,Hemir,Hénduil,Hilas,Hil-"
+"Garion,Hilmariand,Hiong,Hirion,Hithrandel,Horfilad,Horfindel,Hundel,Hymir,"
+"Hyrion,Hywyn,Isadrieng,Isándir,Isarandel,Isarar,Iselas,Isér,Isilmandel,"
+"Isirion,Isithral,Isól,Isóndel,Isóng,Isorfilad,Isorfindir,Isuwyn,Isyndel,"
+"Legal,Legaran,Legémir,Legéril,Legilad,Legil-Gal,Legiondel,Legithralith,"
+"Legorfindil,Legorfirion,Legówyn,Legyl,Legyn,Linduilas,Lómadrieril,Lómarand,"
+"Lómariand,Lómebrilad,Lómebrind,Lómémbor,Lómilmaril,Lómiriand,Lómorfindil,"
+"Lómowyn,Madrieril,Maldur,Mánduil,Maraldur,Mebrin,Méng,Mérion,Miolith,Miomir,"
+"Mithrand,Mondir,Móndir,Morfilas,Morfin,Morfiriand,Mylith,Nadrieldor,Nalith,"
+"Nán,Nél,Nil-Galas,Nil-Galith,Nil-Gar,Nilmar,Nóndel,Norfildor,Norfilith,"
+"Norfindil,Norfindir,Numbor,Nyldur,Padrieriand,Padrieril,Pamir,Paraldor,"
+"Parariand,Pilmalad,Pindir,Pór,Porfildur,Pumbor,Pyldur,Rebrir,Réndir,"
+"Rilmandil,Rithrandil,Ról,Róldor,Roldur,Róldur,Rorfilad,Rorfindil,Rówyn,Ryn,"
+"Sadrielas,Sebrin,Sebriril,Sénd,Sil-Gal,Sólad,Sorfind,Sóriand,Tadriendir,"
+"Taral,Taraldur,Táriand,Tendel,Téwyn,Thradrieriand,Thrambor,Thraral,Threbring,"
+"Thrélad,Thréldur,Thril-Gamir,Thril-Gandir,Thril-Gar,Thrilmandel,Thrimir,"
+"Thrion,Thrithran,Throlas,Thrón,Thróng,Thrund,Thryriand,Til-Gan,Tilmalad,"
+"Tilmalas,Tinandir,Tinarambor,Tinarariand,Tinén,Tinil-Ganduil,Tinilmand,"
+"Tinilmawyn,Tinimir,Tinindil,Tinithrar,Tinoldor,Tinond,Tinorfind,Tinorfiriand,"
+"Tinóriand,Tinowyn,Tinun,Tinyl,Tion,Tolas,Torfildur,Tówyn,Tylad,Unadrieldor,"
+"Unadrier,Unál,Unalas,Unálas,Unaraldur,Unaril,Unárion,Unebrin,Unebrind,"
+"Uneldor,Unil,Unil-Gan,Uniolith,Unioril,Unólith,Unombor,Unóndel,Unondir,"
+"Unorfildor,Unorfiril,Unorfiwyn,Unulad,Uradrielas,Uradrierion,Urálas,Urálith,"
+"Urambor,Urér,Uril-Gambor,Urilmalith,Uróldor,Urorfildor,Urul,Urymir,Válad,Ván,"
+"Vándel,Vandir,Varalas,Vararion,Vebril,Vebrilas,Vebrinduil,Vel,Vilith,Vol,"
+"Vólas,Vóldur,Vondel,Vorfin,Vorfindil,Vulas,Vuldur,Vunduil,Vylas,Vyldor"
+
+#: data/core/macros/names.cfg:52
 msgid ""
 "Amadrielia,Amadrielindë,Amadriendra,Amadriewen,Amarang,Amebrilindë,Amedë,"
 "Améthien,Amewien,Amil-Gadith,Amil-Garith,Amilmadia,Amiolith,Amionia,"
@@ -2367,7 +2240,7 @@ msgstr ""
 "Vówien"
 
 #. Generator for male elf names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
-#: data/core/macros/names.cfg:53
+#: data/core/macros/names.cfg:54
 msgid ""
 "\n"
 "main={generated_prefix}{consonnant}{suffix}|{prefix}{centre}{suffix}\n"
@@ -2400,7 +2273,7 @@ msgstr ""
 "nim|nol|bris|lad|rier|ra|fil|thran|man\n"
 
 #. Generator for female elf names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
-#: data/core/macros/names.cfg:67
+#: data/core/macros/names.cfg:68
 msgid ""
 "\n"
 "main={generated_prefix_v}{centre_v}{suffix_v}|{generated_prefix_c}{centre_c}"
@@ -2444,16 +2317,16 @@ msgstr ""
 "short_centre_c=enn|all|an|ith|el|il|am|ol|arth|ól|ár|ir|if|im|ion|iw|én|un|"
 "iw\n"
 
-#: data/core/macros/names.cfg:87
+#: data/core/macros/names.cfg:88
 msgid "Graa,Greaa,Gree,Kaaa,Kassshh,Kessshh,Korro,Kraa,Kuu,Kzaaa,Kzuuu"
 msgstr "Graa,Greaa,Gree,Kaaa,Kassshh,Kessshh,Korro,Kraa,Kuu,Kzaaa,Kzuuu"
 
-#: data/core/macros/names.cfg:88
+#: data/core/macros/names.cfg:89
 msgid "Kaasa,Kayya,Keyya,Kiira,Korra"
 msgstr "Kaasa,Kayya,Keyya,Kiira,Korra"
 
 #. Generator for male gryphon names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
-#: data/core/macros/names.cfg:90
+#: data/core/macros/names.cfg:91
 msgid ""
 "\n"
 "main={prefix}{suffix}|{prefix}{centre}{suffix}\n"
@@ -2468,7 +2341,7 @@ msgstr ""
 "centre=arr|aash|eez|ozz\n"
 
 #. Generator for female gryphon names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
-#: data/core/macros/names.cfg:97
+#: data/core/macros/names.cfg:98
 msgid ""
 "\n"
 "main={prefix}{suffix}|{prefix}{centre}{suffix}\n"
@@ -2481,106 +2354,106 @@ msgstr ""
 "prefix=Kaa|Ka|Ke|Kuu|Ko\n"
 "suffix=sa|yya|ra|rra\n"
 "centre=err|aash|eez|azz\n"
-
-#: data/core/macros/names.cfg:106
-msgid ""
-"Addraecyn,Addraenvan,Addraer,Addraercyn,Addraryn,Addreddry,Addredry,"
-"Addregwyn,Addrenyc,Addreoddry,Addreoddyn,Addreonyc,Addreorcyn,Addreran,"
-"Addribryn,Addriddyn,Addrocyn,Addroryn,Addrunvan,Addrurcyn,Addryllyn,"
-"Addrynvan,Aethacyn,Aethadry,Aethaec,Aethaeran,Aethaeryn,Aethagwyn,Aethanry,"
-"Aetharcyn,Aethec,Aethellyn,Aethenvan,Aetheoc,Aetheollyn,Aetheonyc,Aetheorcyn,"
-"Aethercyn,Aetherraent,Aethibryn,Aethiddry,Aethircyn,Aethobryn,Aethoddyn,"
-"Aethonnyn,Aethuc,Aethudry,Aethugwyn,Aethun,Aethunry,Aethydry,Aethynyc,Blac,"
-"Bladoc,Blaec,Blaedry,Blanry,Blebryn,Bledoc,Blemyr,Blennyn,Blenvan,Bleollyn,"
-"Blercyn,Blidd,Bliddry,Blillyn,Blinvan,Blollyn,Blubryn,Blucyn,Bludry,Blullyn,"
-"Bluran,Blybryn,Blydd,Blygwyn,Blymyr,Blyr,Bucyn,Cac,Cadry,Caebryn,Caedry,"
-"Caeran,Caercyn,Car,Carac,Caraddry,Caradoc,Caraedry,Caraennyn,Cararyn,Caredd,"
-"Careddry,Caregwyn,Caren,Careobryn,Careogwyn,Careonvan,Careorraent,Careoryn,"
-"Carercyn,Caric,Cariddry,Carocyn,Caroddyn,Caror,Caroran,Carraent,Carudoc,"
-"Carullyn,Carygwyn,Caryn,Cebryn,Cemyr,Cennyn,Ceoc,Ceoddry,Ceoddyn,Ceomyr,"
-"Ceonnyn,Ceonry,Ceoryn,Cicyn,Cin,Cinry,Coc,Convan,Corcyn,Cubryn,Cunry,Curyn,"
-"Cynyc,Cyryn,Dac,Dadd,Dadoc,Daeddry,Daedoc,Daellyn,Demyr,Denvan,Deodd,Deollyn,"
-"Deonyc,Derraent,Dibryn,Dinnyn,Dircyn,Dycyn,Dyddyn,Gaddry,Gaebryn,Gaedry,"
-"Gaercyn,Gagwyn,Gan,Gannyn,Gar,Gecyn,Geddyn,Gegwyn,Geodry,Ginvan,Glacyn,"
-"Gladoc,Glaercyn,Glarraent,Gleddry,Gleoddyn,Gleran,Gliddyn,Glillyn,Glinry,"
-"Glircyn,Gloddry,Gloddyn,Glonry,Glonvan,Glumyr,Glun,Glunry,Glunvan,Glyc,Glydd,"
-"Glydoc,Glynry,Glynvan,Glyran,Goc,Gor,Gubryn,Gudd,Gullyn,Gumyr,Gur,Gwadoc,"
-"Gwaec,Gwaeddyn,Gwan,Gweddyn,Gwegwyn,Gwellyn,Gwennyn,Gwenyc,Gweocyn,Gweodd,"
-"Gweodoc,Gweodry,Gweogwyn,Gweoran,Gwidoc,Gwilam,Gwodd,Gwoddyn,Gwollyn,Gwor,"
-"Gwucyn,Gwudoc,Gwumyr,Gwuran,Gwybryn,Gwycyn,Gwyddry,Gwydoc,Gwymyr,Gwynnyn,"
-"Gydoc,Gyllyn,Gymyr,Haldar,Labryn,Ladoc,Laellyn,Lan,Lannyn,Laran,Lec,Lemyr,"
-"Lenvan,Leogwyn,Lercyn,Ligwyn,Lin,Liryn,Lonnyn,Lorraent,Luddry,Ludoc,Lunnyn,"
-"Lunvan,Lurraent,Mac,Maddyn,Maennyn,Manry,Manyc,Marcyn,Mec,Menvan,Meollyn,"
-"Meon,Meonnyn,Meorraent,Middry,Midry,Mimyr,Modd,Moddry,Monry,Moran,Morcyn,"
-"Mubryn,Mudoc,Mugwyn,Murcyn,Mydoc,Mygwyn,Myn,Myrraent,Owac,Owadd,Owaddyn,"
-"Owaecyn,Owaedry,Owain,Owarcyn,Owaryn,Owecyn,Owedry,Oweomyr,Oweor,Oweorcyn,"
-"Oweran,Owercyn,Owidry,Owinvan,Owinyc,Owodd,Owoddry,Owogwyn,Owollyn,Oworan,"
-"Oworcyn,Oworraent,Owuddry,Owuddyn,Owugwyn,Owur,Owyran,Rabryn,Radd,Ranvan,Rar,"
-"Reoddyn,Reodry,Rhaecyn,Rhaedoc,Rhaemyr,Rhaerraent,Rhanry,Rharcyn,Rhenry,"
-"Rhenvan,Rhenyc,Rheodd,Rheoddyn,Rheollyn,Rheor,Rheoran,Rheorraent,Rheran,"
-"Rherraent,Rhobryn,Rhodry,Rhollyn,Rhonvan,Rhubryn,Rhugwyn,Rhunyc,Rhur,Rhygwyn,"
-"Rhyllyn,Rhynyc,Rhyrcyn,Rhyrraent,Rocyn,Roddyn,Romyr,Ron,Ronry,Rubryn,Ruddry,"
-"Rumyr,Run,Rurcyn,Rybryn,Rycyn,Ryddry,Rygwyn,Rynnyn,Rynry,Saec,Saellyn,Saemyr,"
-"Saenvan,Saercyn,Sanyc,Saran,Sarraent,Secyn,Seddyn,Sedry,Sellyn,Sennyn,"
-"Seoddry,Seorcyn,Sercyn,Siddry,Simyr,Siryn,Sodd,Sodry,Soran,Suc,Sudd,Surcyn,"
-"Sydd,Syran,Syryn,Tabryn,Taec,Taedd,Taedoc,Taemyr,Taenvan,Taercyn,Tanry,"
-"Tarcyn,Teddyn,Tegwyn,Ten,Tennyn,Tenvan,Teobryn,Teoddyn,Teor,Teorcyn,Terraent,"
-"Tinry,Tinvan,Tiryn,Todd,Tudd,Tuddry,Tudoc,Tunvan,Turraent,Tyddyn,Vaddyn,"
-"Vaeddyn,Vaedry,Vaennyn,Varcyn,Ven,Vennyn,Veocyn,Veoddyn,Veodry,Veogwyn,"
-"Veomyr,Vinvan,Vinyc,Virraent,Vobryn,Vogwyn,Vonry,Vuddyn,Vugwyn,Vyc,Vygwyn,"
-"Vyrcyn,Yracyn,Yraec,Yran,Yrannyn,Yranvan,Yraryn,Yredd,Yreddyn,Yregwyn,Yreryn,"
-"Yrinvan,Yrirraent,Yroddry,Yrullyn,Yrumyr,Yrunnyn,Yrunvan,Yryllyn,Yrymyr,"
-"Yrynyc,Yryrcyn"
-msgstr ""
-"Addraecyn,Addraenvan,Addraer,Addraercyn,Addraryn,Addreddry,Addredry,"
-"Addregwyn,Addrenyc,Addreoddry,Addreoddyn,Addreonyc,Addreorcyn,Addreran,"
-"Addribryn,Addriddyn,Addrocyn,Addroryn,Addrunvan,Addrurcyn,Addryllyn,"
-"Addrynvan,Aethacyn,Aethadry,Aethaec,Aethaeran,Aethaeryn,Aethagwyn,Aethanry,"
-"Aetharcyn,Aethec,Aethellyn,Aethenvan,Aetheoc,Aetheollyn,Aetheonyc,Aetheorcyn,"
-"Aethercyn,Aetherraent,Aethibryn,Aethiddry,Aethircyn,Aethobryn,Aethoddyn,"
-"Aethonnyn,Aethuc,Aethudry,Aethugwyn,Aethun,Aethunry,Aethydry,Aethynyc,Blac,"
-"Bladoc,Blaec,Blaedry,Blanry,Blebryn,Bledoc,Blemyr,Blennyn,Blenvan,Bleollyn,"
-"Blercyn,Blidd,Bliddry,Blillyn,Blinvan,Blollyn,Blubryn,Blucyn,Bludry,Blullyn,"
-"Bluran,Blybryn,Blydd,Blygwyn,Blymyr,Blyr,Bucyn,Cac,Cadry,Caebryn,Caedry,"
-"Caeran,Caercyn,Car,Carac,Caraddry,Caradoc,Caraedry,Caraennyn,Cararyn,Caredd,"
-"Careddry,Caregwyn,Caren,Careobryn,Careogwyn,Careonvan,Careorraent,Careoryn,"
-"Carercyn,Caric,Cariddry,Carocyn,Caroddyn,Caror,Caroran,Carraent,Carudoc,"
-"Carullyn,Carygwyn,Caryn,Cebryn,Cemyr,Cennyn,Ceoc,Ceoddry,Ceoddyn,Ceomyr,"
-"Ceonnyn,Ceonry,Ceoryn,Cicyn,Cin,Cinry,Coc,Convan,Corcyn,Cubryn,Cunry,Curyn,"
-"Cynyc,Cyryn,Dac,Dadd,Dadoc,Daeddry,Daedoc,Daellyn,Demyr,Denvan,Deodd,Deollyn,"
-"Deonyc,Derraent,Dibryn,Dinnyn,Dircyn,Dycyn,Dyddyn,Gaddry,Gaebryn,Gaedry,"
-"Gaercyn,Gagwyn,Gan,Gannyn,Gar,Gecyn,Geddyn,Gegwyn,Geodry,Ginvan,Glacyn,"
-"Gladoc,Glaercyn,Glarraent,Gleddry,Gleoddyn,Gleran,Gliddyn,Glillyn,Glinry,"
-"Glircyn,Gloddry,Gloddyn,Glonry,Glonvan,Glumyr,Glun,Glunry,Glunvan,Glyc,Glydd,"
-"Glydoc,Glynry,Glynvan,Glyran,Goc,Gor,Gubryn,Gudd,Gullyn,Gumyr,Gur,Gwadoc,"
-"Gwaec,Gwaeddyn,Gwan,Gweddyn,Gwegwyn,Gwellyn,Gwennyn,Gwenyc,Gweocyn,Gweodd,"
-"Gweodoc,Gweodry,Gweogwyn,Gweoran,Gwidoc,Gwilam,Gwodd,Gwoddyn,Gwollyn,Gwor,"
-"Gwucyn,Gwudoc,Gwumyr,Gwuran,Gwybryn,Gwycyn,Gwyddry,Gwydoc,Gwymyr,Gwynnyn,"
-"Gydoc,Gyllyn,Gymyr,Haldar,Labryn,Ladoc,Laellyn,Lan,Lannyn,Laran,Lec,Lemyr,"
-"Lenvan,Leogwyn,Lercyn,Ligwyn,Lin,Liryn,Lonnyn,Lorraent,Luddry,Ludoc,Lunnyn,"
-"Lunvan,Lurraent,Mac,Maddyn,Maennyn,Manry,Manyc,Marcyn,Mec,Menvan,Meollyn,"
-"Meon,Meonnyn,Meorraent,Middry,Midry,Mimyr,Modd,Moddry,Monry,Moran,Morcyn,"
-"Mubryn,Mudoc,Mugwyn,Murcyn,Mydoc,Mygwyn,Myn,Myrraent,Owac,Owadd,Owaddyn,"
-"Owaecyn,Owaedry,Owain,Owarcyn,Owaryn,Owecyn,Owedry,Oweomyr,Oweor,Oweorcyn,"
-"Oweran,Owercyn,Owidry,Owinvan,Owinyc,Owodd,Owoddry,Owogwyn,Owollyn,Oworan,"
-"Oworcyn,Oworraent,Owuddry,Owuddyn,Owugwyn,Owur,Owyran,Rabryn,Radd,Ranvan,Rar,"
-"Reoddyn,Reodry,Rhaecyn,Rhaedoc,Rhaemyr,Rhaerraent,Rhanry,Rharcyn,Rhenry,"
-"Rhenvan,Rhenyc,Rheodd,Rheoddyn,Rheollyn,Rheor,Rheoran,Rheorraent,Rheran,"
-"Rherraent,Rhobryn,Rhodry,Rhollyn,Rhonvan,Rhubryn,Rhugwyn,Rhunyc,Rhur,Rhygwyn,"
-"Rhyllyn,Rhynyc,Rhyrcyn,Rhyrraent,Rocyn,Roddyn,Romyr,Ron,Ronry,Rubryn,Ruddry,"
-"Rumyr,Run,Rurcyn,Rybryn,Rycyn,Ryddry,Rygwyn,Rynnyn,Rynry,Saec,Saellyn,Saemyr,"
-"Saenvan,Saercyn,Sanyc,Saran,Sarraent,Secyn,Seddyn,Sedry,Sellyn,Sennyn,"
-"Seoddry,Seorcyn,Sercyn,Siddry,Simyr,Siryn,Sodd,Sodry,Soran,Suc,Sudd,Surcyn,"
-"Sydd,Syran,Syryn,Tabryn,Taec,Taedd,Taedoc,Taemyr,Taenvan,Taercyn,Tanry,"
-"Tarcyn,Teddyn,Tegwyn,Ten,Tennyn,Tenvan,Teobryn,Teoddyn,Teor,Teorcyn,Terraent,"
-"Tinry,Tinvan,Tiryn,Todd,Tudd,Tuddry,Tudoc,Tunvan,Turraent,Tyddyn,Vaddyn,"
-"Vaeddyn,Vaedry,Vaennyn,Varcyn,Ven,Vennyn,Veocyn,Veoddyn,Veodry,Veogwyn,"
-"Veomyr,Vinvan,Vinyc,Virraent,Vobryn,Vogwyn,Vonry,Vuddyn,Vugwyn,Vyc,Vygwyn,"
-"Vyrcyn,Yracyn,Yraec,Yran,Yrannyn,Yranvan,Yraryn,Yredd,Yreddyn,Yregwyn,Yreryn,"
-"Yrinvan,Yrirraent,Yroddry,Yrullyn,Yrumyr,Yrunnyn,Yrunvan,Yryllyn,Yrymyr,"
-"Yrynyc,Yryrcyn"
 
 #: data/core/macros/names.cfg:107
+msgid ""
+"Addraecyn,Addraenvan,Addraer,Addraercyn,Addraryn,Addreddry,Addredry,"
+"Addregwyn,Addrenyc,Addreoddry,Addreoddyn,Addreonyc,Addreorcyn,Addreran,"
+"Addribryn,Addriddyn,Addrocyn,Addroryn,Addrunvan,Addrurcyn,Addryllyn,"
+"Addrynvan,Aethacyn,Aethadry,Aethaec,Aethaeran,Aethaeryn,Aethagwyn,Aethanry,"
+"Aetharcyn,Aethec,Aethellyn,Aethenvan,Aetheoc,Aetheollyn,Aetheonyc,Aetheorcyn,"
+"Aethercyn,Aetherraent,Aethibryn,Aethiddry,Aethircyn,Aethobryn,Aethoddyn,"
+"Aethonnyn,Aethuc,Aethudry,Aethugwyn,Aethun,Aethunry,Aethydry,Aethynyc,Blac,"
+"Bladoc,Blaec,Blaedry,Blanry,Blebryn,Bledoc,Blemyr,Blennyn,Blenvan,Bleollyn,"
+"Blercyn,Blidd,Bliddry,Blillyn,Blinvan,Blollyn,Blubryn,Blucyn,Bludry,Blullyn,"
+"Bluran,Blybryn,Blydd,Blygwyn,Blymyr,Blyr,Bucyn,Cac,Cadry,Caebryn,Caedry,"
+"Caeran,Caercyn,Car,Carac,Caraddry,Caradoc,Caraedry,Caraennyn,Cararyn,Caredd,"
+"Careddry,Caregwyn,Caren,Careobryn,Careogwyn,Careonvan,Careorraent,Careoryn,"
+"Carercyn,Caric,Cariddry,Carocyn,Caroddyn,Caror,Caroran,Carraent,Carudoc,"
+"Carullyn,Carygwyn,Caryn,Cebryn,Cemyr,Cennyn,Ceoc,Ceoddry,Ceoddyn,Ceomyr,"
+"Ceonnyn,Ceonry,Ceoryn,Cicyn,Cin,Cinry,Coc,Convan,Corcyn,Cubryn,Cunry,Curyn,"
+"Cynyc,Cyryn,Dac,Dadd,Dadoc,Daeddry,Daedoc,Daellyn,Demyr,Denvan,Deodd,Deollyn,"
+"Deonyc,Derraent,Dibryn,Dinnyn,Dircyn,Dycyn,Dyddyn,Gaddry,Gaebryn,Gaedry,"
+"Gaercyn,Gagwyn,Gan,Gannyn,Gar,Gecyn,Geddyn,Gegwyn,Geodry,Ginvan,Glacyn,"
+"Gladoc,Glaercyn,Glarraent,Gleddry,Gleoddyn,Gleran,Gliddyn,Glillyn,Glinry,"
+"Glircyn,Gloddry,Gloddyn,Glonry,Glonvan,Glumyr,Glun,Glunry,Glunvan,Glyc,Glydd,"
+"Glydoc,Glynry,Glynvan,Glyran,Goc,Gor,Gubryn,Gudd,Gullyn,Gumyr,Gur,Gwadoc,"
+"Gwaec,Gwaeddyn,Gwan,Gweddyn,Gwegwyn,Gwellyn,Gwennyn,Gwenyc,Gweocyn,Gweodd,"
+"Gweodoc,Gweodry,Gweogwyn,Gweoran,Gwidoc,Gwilam,Gwodd,Gwoddyn,Gwollyn,Gwor,"
+"Gwucyn,Gwudoc,Gwumyr,Gwuran,Gwybryn,Gwycyn,Gwyddry,Gwydoc,Gwymyr,Gwynnyn,"
+"Gydoc,Gyllyn,Gymyr,Haldar,Labryn,Ladoc,Laellyn,Lan,Lannyn,Laran,Lec,Lemyr,"
+"Lenvan,Leogwyn,Lercyn,Ligwyn,Lin,Liryn,Lonnyn,Lorraent,Luddry,Ludoc,Lunnyn,"
+"Lunvan,Lurraent,Mac,Maddyn,Maennyn,Manry,Manyc,Marcyn,Mec,Menvan,Meollyn,"
+"Meon,Meonnyn,Meorraent,Middry,Midry,Mimyr,Modd,Moddry,Monry,Moran,Morcyn,"
+"Mubryn,Mudoc,Mugwyn,Murcyn,Mydoc,Mygwyn,Myn,Myrraent,Owac,Owadd,Owaddyn,"
+"Owaecyn,Owaedry,Owain,Owarcyn,Owaryn,Owecyn,Owedry,Oweomyr,Oweor,Oweorcyn,"
+"Oweran,Owercyn,Owidry,Owinvan,Owinyc,Owodd,Owoddry,Owogwyn,Owollyn,Oworan,"
+"Oworcyn,Oworraent,Owuddry,Owuddyn,Owugwyn,Owur,Owyran,Rabryn,Radd,Ranvan,Rar,"
+"Reoddyn,Reodry,Rhaecyn,Rhaedoc,Rhaemyr,Rhaerraent,Rhanry,Rharcyn,Rhenry,"
+"Rhenvan,Rhenyc,Rheodd,Rheoddyn,Rheollyn,Rheor,Rheoran,Rheorraent,Rheran,"
+"Rherraent,Rhobryn,Rhodry,Rhollyn,Rhonvan,Rhubryn,Rhugwyn,Rhunyc,Rhur,Rhygwyn,"
+"Rhyllyn,Rhynyc,Rhyrcyn,Rhyrraent,Rocyn,Roddyn,Romyr,Ron,Ronry,Rubryn,Ruddry,"
+"Rumyr,Run,Rurcyn,Rybryn,Rycyn,Ryddry,Rygwyn,Rynnyn,Rynry,Saec,Saellyn,Saemyr,"
+"Saenvan,Saercyn,Sanyc,Saran,Sarraent,Secyn,Seddyn,Sedry,Sellyn,Sennyn,"
+"Seoddry,Seorcyn,Sercyn,Siddry,Simyr,Siryn,Sodd,Sodry,Soran,Suc,Sudd,Surcyn,"
+"Sydd,Syran,Syryn,Tabryn,Taec,Taedd,Taedoc,Taemyr,Taenvan,Taercyn,Tanry,"
+"Tarcyn,Teddyn,Tegwyn,Ten,Tennyn,Tenvan,Teobryn,Teoddyn,Teor,Teorcyn,Terraent,"
+"Tinry,Tinvan,Tiryn,Todd,Tudd,Tuddry,Tudoc,Tunvan,Turraent,Tyddyn,Vaddyn,"
+"Vaeddyn,Vaedry,Vaennyn,Varcyn,Ven,Vennyn,Veocyn,Veoddyn,Veodry,Veogwyn,"
+"Veomyr,Vinvan,Vinyc,Virraent,Vobryn,Vogwyn,Vonry,Vuddyn,Vugwyn,Vyc,Vygwyn,"
+"Vyrcyn,Yracyn,Yraec,Yran,Yrannyn,Yranvan,Yraryn,Yredd,Yreddyn,Yregwyn,Yreryn,"
+"Yrinvan,Yrirraent,Yroddry,Yrullyn,Yrumyr,Yrunnyn,Yrunvan,Yryllyn,Yrymyr,"
+"Yrynyc,Yryrcyn"
+msgstr ""
+"Addraecyn,Addraenvan,Addraer,Addraercyn,Addraryn,Addreddry,Addredry,"
+"Addregwyn,Addrenyc,Addreoddry,Addreoddyn,Addreonyc,Addreorcyn,Addreran,"
+"Addribryn,Addriddyn,Addrocyn,Addroryn,Addrunvan,Addrurcyn,Addryllyn,"
+"Addrynvan,Aethacyn,Aethadry,Aethaec,Aethaeran,Aethaeryn,Aethagwyn,Aethanry,"
+"Aetharcyn,Aethec,Aethellyn,Aethenvan,Aetheoc,Aetheollyn,Aetheonyc,Aetheorcyn,"
+"Aethercyn,Aetherraent,Aethibryn,Aethiddry,Aethircyn,Aethobryn,Aethoddyn,"
+"Aethonnyn,Aethuc,Aethudry,Aethugwyn,Aethun,Aethunry,Aethydry,Aethynyc,Blac,"
+"Bladoc,Blaec,Blaedry,Blanry,Blebryn,Bledoc,Blemyr,Blennyn,Blenvan,Bleollyn,"
+"Blercyn,Blidd,Bliddry,Blillyn,Blinvan,Blollyn,Blubryn,Blucyn,Bludry,Blullyn,"
+"Bluran,Blybryn,Blydd,Blygwyn,Blymyr,Blyr,Bucyn,Cac,Cadry,Caebryn,Caedry,"
+"Caeran,Caercyn,Car,Carac,Caraddry,Caradoc,Caraedry,Caraennyn,Cararyn,Caredd,"
+"Careddry,Caregwyn,Caren,Careobryn,Careogwyn,Careonvan,Careorraent,Careoryn,"
+"Carercyn,Caric,Cariddry,Carocyn,Caroddyn,Caror,Caroran,Carraent,Carudoc,"
+"Carullyn,Carygwyn,Caryn,Cebryn,Cemyr,Cennyn,Ceoc,Ceoddry,Ceoddyn,Ceomyr,"
+"Ceonnyn,Ceonry,Ceoryn,Cicyn,Cin,Cinry,Coc,Convan,Corcyn,Cubryn,Cunry,Curyn,"
+"Cynyc,Cyryn,Dac,Dadd,Dadoc,Daeddry,Daedoc,Daellyn,Demyr,Denvan,Deodd,Deollyn,"
+"Deonyc,Derraent,Dibryn,Dinnyn,Dircyn,Dycyn,Dyddyn,Gaddry,Gaebryn,Gaedry,"
+"Gaercyn,Gagwyn,Gan,Gannyn,Gar,Gecyn,Geddyn,Gegwyn,Geodry,Ginvan,Glacyn,"
+"Gladoc,Glaercyn,Glarraent,Gleddry,Gleoddyn,Gleran,Gliddyn,Glillyn,Glinry,"
+"Glircyn,Gloddry,Gloddyn,Glonry,Glonvan,Glumyr,Glun,Glunry,Glunvan,Glyc,Glydd,"
+"Glydoc,Glynry,Glynvan,Glyran,Goc,Gor,Gubryn,Gudd,Gullyn,Gumyr,Gur,Gwadoc,"
+"Gwaec,Gwaeddyn,Gwan,Gweddyn,Gwegwyn,Gwellyn,Gwennyn,Gwenyc,Gweocyn,Gweodd,"
+"Gweodoc,Gweodry,Gweogwyn,Gweoran,Gwidoc,Gwilam,Gwodd,Gwoddyn,Gwollyn,Gwor,"
+"Gwucyn,Gwudoc,Gwumyr,Gwuran,Gwybryn,Gwycyn,Gwyddry,Gwydoc,Gwymyr,Gwynnyn,"
+"Gydoc,Gyllyn,Gymyr,Haldar,Labryn,Ladoc,Laellyn,Lan,Lannyn,Laran,Lec,Lemyr,"
+"Lenvan,Leogwyn,Lercyn,Ligwyn,Lin,Liryn,Lonnyn,Lorraent,Luddry,Ludoc,Lunnyn,"
+"Lunvan,Lurraent,Mac,Maddyn,Maennyn,Manry,Manyc,Marcyn,Mec,Menvan,Meollyn,"
+"Meon,Meonnyn,Meorraent,Middry,Midry,Mimyr,Modd,Moddry,Monry,Moran,Morcyn,"
+"Mubryn,Mudoc,Mugwyn,Murcyn,Mydoc,Mygwyn,Myn,Myrraent,Owac,Owadd,Owaddyn,"
+"Owaecyn,Owaedry,Owain,Owarcyn,Owaryn,Owecyn,Owedry,Oweomyr,Oweor,Oweorcyn,"
+"Oweran,Owercyn,Owidry,Owinvan,Owinyc,Owodd,Owoddry,Owogwyn,Owollyn,Oworan,"
+"Oworcyn,Oworraent,Owuddry,Owuddyn,Owugwyn,Owur,Owyran,Rabryn,Radd,Ranvan,Rar,"
+"Reoddyn,Reodry,Rhaecyn,Rhaedoc,Rhaemyr,Rhaerraent,Rhanry,Rharcyn,Rhenry,"
+"Rhenvan,Rhenyc,Rheodd,Rheoddyn,Rheollyn,Rheor,Rheoran,Rheorraent,Rheran,"
+"Rherraent,Rhobryn,Rhodry,Rhollyn,Rhonvan,Rhubryn,Rhugwyn,Rhunyc,Rhur,Rhygwyn,"
+"Rhyllyn,Rhynyc,Rhyrcyn,Rhyrraent,Rocyn,Roddyn,Romyr,Ron,Ronry,Rubryn,Ruddry,"
+"Rumyr,Run,Rurcyn,Rybryn,Rycyn,Ryddry,Rygwyn,Rynnyn,Rynry,Saec,Saellyn,Saemyr,"
+"Saenvan,Saercyn,Sanyc,Saran,Sarraent,Secyn,Seddyn,Sedry,Sellyn,Sennyn,"
+"Seoddry,Seorcyn,Sercyn,Siddry,Simyr,Siryn,Sodd,Sodry,Soran,Suc,Sudd,Surcyn,"
+"Sydd,Syran,Syryn,Tabryn,Taec,Taedd,Taedoc,Taemyr,Taenvan,Taercyn,Tanry,"
+"Tarcyn,Teddyn,Tegwyn,Ten,Tennyn,Tenvan,Teobryn,Teoddyn,Teor,Teorcyn,Terraent,"
+"Tinry,Tinvan,Tiryn,Todd,Tudd,Tuddry,Tudoc,Tunvan,Turraent,Tyddyn,Vaddyn,"
+"Vaeddyn,Vaedry,Vaennyn,Varcyn,Ven,Vennyn,Veocyn,Veoddyn,Veodry,Veogwyn,"
+"Veomyr,Vinvan,Vinyc,Virraent,Vobryn,Vogwyn,Vonry,Vuddyn,Vugwyn,Vyc,Vygwyn,"
+"Vyrcyn,Yracyn,Yraec,Yran,Yrannyn,Yranvan,Yraryn,Yredd,Yreddyn,Yregwyn,Yreryn,"
+"Yrinvan,Yrirraent,Yroddry,Yrullyn,Yrumyr,Yrunnyn,Yrunvan,Yryllyn,Yrymyr,"
+"Yrynyc,Yryrcyn"
+
+#: data/core/macros/names.cfg:108
 msgid ""
 "Alabrylla,Alaebrylla,Alaeniver,Alalla,Alalonna,Alaryan,Aleacla,Aleaniver,"
 "Aleara,Alearka,Alena,Alengwen,Alilonna,Alingwen,Alolla,Alolonna,Alora,"
@@ -2675,7 +2548,7 @@ msgstr ""
 "Ysycla,Ysylla,Ysylyan,Ysyrka,Ysyssa"
 
 #. Generator for male Wesnothian human names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
-#: data/core/macros/names.cfg:109
+#: data/core/macros/names.cfg:110
 msgid ""
 "\n"
 "main={generated_prefix_c}{suffix_c}|{generated_prefix_v}{suffix_v}|{prefix_c}"
@@ -2714,7 +2587,7 @@ msgstr ""
 "centre_v=rae|ra|thar|gwy\n"
 
 #. Generator for female Wesnothian human names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
-#: data/core/macros/names.cfg:125
+#: data/core/macros/names.cfg:126
 msgid ""
 "\n"
 "main={generated_prefix_c}{suffix_c}|{generated_prefix_v}{suffix_v}|{prefix_c}"
@@ -2751,160 +2624,160 @@ msgstr ""
 "suffix_v=wyn|nna|lla|ra|la|wyan|ssa|ka|ven\n"
 "centre_c=il|ing|ol|ur|ung|ean|eal|ong|al|iv\n"
 "centre_v=na|lla|na|ry|li|ni|ri|rae|bry\n"
-
-#: data/core/macros/names.cfg:143
-msgid ""
-"Aban,Abbas,Abbud,Abdul-ʿAdl,Abdul-Ahad,Abdul-Alim,Abdul-Aliyy,Abdul-Azim,"
-"Abdul-Aziz,Abdul-Badi,Abdul-Baʿith,Abdul-Baqi,Abdul-Bari,Abdul-Barr,Abdul-"
-"Basir,Abdul-Basit,Abdul-Fattah,Abdul-Ghaffar,Abdul-Ghafur,Abdul-Ghani,Abdul-"
-"Hadi,Abdul-Hafiz,Abdul-Hakam,Abdul-Hakim,Abdul-Halim,Abdul-Hamid,Abdul-Haqq,"
-"Abdul-Hasib,Abdul-Hayy,Abdul-Jabbar,Abdul-Jalil,Abdul-Karim,Abdul-Khabir,"
-"Abdul-Khaliq,Abdul-Latif,Abdul-Malik,Abdul-Majid,Abdul-Matin,Abdul-Mubdiʾ,"
-"Abdul-Mughni,Abdul-Muhaimin,Abdul-Muhsi,Abdul-Muhyi,Abdul-Muʿid,Abdul-Muʿizz,"
-"Abdul-Mujib,Abdul-Mumin,Abdul-Muqaddim,Abdul-Muqtadir,Abdul-Musawwir,Abdul-"
-"Mutaʿal,Abdul-Nafi,Abdul-Nasser,Abdul-Nasir,Abdul-Nur,Abdul-Qadir,Abdul-"
-"Qahhar,Abdul-Qawi,Abdul-Qayyum,Abdul-Quddus,Abdul-Rafi,Abdul-Rahim,Abdul-"
-"Rahman,Abdul-Rashid,Abdul-Raʿuf,Abdul-Razzaq,Abdul-Shakur,Abdul-Tawwab,Abdul-"
-"Wadud,Abdul-Wahhab,Abdul-Wahid,Abdul-Wajid,Abdul-Wakil,Abdul-Wali,Abdul-"
-"Waliy,Abdul-Warith,Abdul-Zahir,Abdullah,ʿAbid,ʿAbidin,Abu Bakr,Aby al-Khayr,"
-"Adil,Adham,Adib,ʿAdli,ʿAdnan,ʿAfif,Ahmad,ʿAjib,ʿAkif,Akil,Akram,Alaʾ,Alaʾ al-"
-"Din,Alʿ Abbas,Aladdin,al-Bara,al-Hakam,al-Harith,Alhasan,Alhusain,Ali,Alim,"
-"Almahdi,al-Safi,Altaf,Altair,al-Tayyib,al-Tijani,al-Tufail,Amid,ʿAmid,Amin,"
-"Amir,ʿAmir,Amjad,ʿAmmar,ʿAmro,Anas,Anis,ʿAntarah,Anwar,ʿAqil,Arfan,Arif,"
-"ʿArif,Asad,Asʿad,Asadel,Ashraf,Asif,ʿAsim,Aswad,Ataʿ,Ataʿ Allah,Ataʿ al-"
-"Rahman,Athil,Athir,ʿAtif,ʿAwad,ʿAwf,Aws,Awwab,Ayham,Ayman,Ayser,Ayyub,Aza,"
-"ʿAzab,Azhar,Azim,ʿAziz,ʿAzzam,Badi,Badi al-Zaman,Badr,Badr al-Din,Badri,"
-"Bahaʿ,Bahiyy al-Din,Bahij,Bahir,Bakr,Bakri,Baligh,Bandar,Barakah,Barir,"
-"Bashshar,Basil,Basim,Bassam,Bayezid,Bayhas,Bilal,Bishr,Boulos,Budail,Burhan,"
-"Bushr,Butrus,Dabir,Dani,Darwish,Daʿud,Dhakir,Dhakiy,Dhakwan,Dhul Fiqar,Dirar,"
-"Diya,Diya al-Din,Duqaq,Fadi,Fadil,Fadl,Fadl Allah,Fahd,Fahad,Fahmi,Faisal,"
-"Faʿiz,Fakhir,Fakhr al-Din,Fakhri,Fakih,Falah,Falih,Faraj,Farhan,Farid,Fariq,"
-"Fariq,Faris,Faruq,Fath,Fathi,Fatih,Fatin,Fawwaz,Fawzan,Fawzi,Fayyad,Ferran,"
-"Fida,Fikri,Firas,Fuʿad,Fudail,Gamal,Ghayth,Ghali,Ghalib,Ghanim,Ghassan,"
-"Ghawth,Ghazwan,Ghiyath,Habbab,Habib,Haddad,Hadi,Hafiz,Hakem,Hakim,Halim,"
-"Hamal,Hamas,Hamdan,Hamdi,Hamid,Hamim,Hamzah,Hana,Hanaʾi,Hanbal,Hani,Hanif,"
-"Hannad,Haris,Harith,Harun,Hashim,Hassan,Hatim,Haydar,Haytham,Hayyan,Hazim,"
-"Hilal,Hilmi,Hisham,Hud,Hudad,Hudhafah,Hudhayfah,Humam,Hussein,Husam,Husam al-"
-"Din,Ibrahim,ʿId,Idris,Ihsan,Ihtisham,ʿIkrimah,Ilias,ʿImad,Imad al-Din,Imran,"
-"Imtiyaz,Inʿam,Iqbal,ʿIrfan,ʿIsa,ʿIsam,Ishaq,Ismaʿil,Iyad,Iyas,Izz al-Din,"
-"Jabbar,Jabr,Jabir,Jad Allah,Jaʿfar,Jal,Jalal,Jalal al-Din,Jalil,Jamal,Jamal "
-"al-Din,Jamil,Jarir,Jasim,Jaul,Jaun,Jawad,Jawdah,Jawhar,Jibran,Jibril,Jubair,"
-"Jul,Jumah,Junayd,Juwain,Kadar,Kadin,Kadir,Kahil,Kaliq,Kamal,Kamil,Karam,"
-"Kardal,Karif,Karim,Kasib,Kasim,Katib,Kazim,Khalaf,Khaldun,Khalid,Khalil,"
-"Khalil al-Allah,Khalis,Khatib,Khair al-Din,Khairi,Khoury,Khulus,Khuzaymah,"
-"Kutaiba,Labib,Lablab,Latif,Layth,LuʿayLubayd,Luqman,Lut,Lutfi,Maʿd,Madani,"
-"Mahbub,Mahdi,Mahfuz,Mahir,Mahjub,Mahmud,Mahrus,Maimun,Majd,Majdy,Majd al-Din,"
-"Majid,Makin,Malik,Mamduh,Maʿmun,Maʿin,Mandhur,Mansur,Marghub,Marid,Maʿruf,"
-"Marwan,Marzuq,Mashʿal,Mashhur,Masrur,Masʿud,Masun,Maysarah,Mazhar,Mazin,"
-"Mehmed,Mihran,Mihyar,Mikaʾil,Miqdad,Misbah,Mishʿal,Miyaz,Muʾadh,Muʾawiyah,"
-"Muʾayyad,Mubarak,Mubin,Mudar,Muddaththir,Mufid,Muflih,Muhab,Muhayr,Muhammad,"
-"Muhanna,Muhannad,Muhib,Muhibb,Muhsin,Muhtadi,Muhyi al-Din,Muʿin,Muʿizz,Mujab,"
-"Mujahid,Mukarram,Mukhlis,Mukhtar,Mulham,Mulhim,Muʿmmar,Muʿmin,Mumtaz,Munahid,"
-"Mundhir,Munib,Munif,Munir,Muʿnis,Munjid,Munsif,Muntasir,Murad,Murid,Murshid,"
-"Murtada,Musa,Musʿab,Musaʿid,Mushtaq,Muslih,Muslim,Mutafa,Mutaʾ,Muʿtasim,"
-"Mutawalli,Muʿtazz,Muthanna,Muti,Muwaffaq,Muyassar,Muzaffar,Mussammil,Nabhan,"
-"Nabighah,Nabih,Nabil,Nadhir,Nadim,Nadir,Nafiʾ,Nahid,Naʾil,Naʾim,Naji,Najib,"
-"Najid,Najjar,Najm al-Din,Naʿaman,Namir,Nashʿah,Nashʿat,Nashwan,Nasib,Nasih,"
-"Nasim,Nasir,Nasir al-Din,Nasr,Nasri,Nasuh,Nawaf,Nawfal,Nayif,Nazih,Nazim,"
-"Nazmi,Nibras,Nidal,Nijad,Nimr,Nizar,Nuʿaym,Nuh,Nuhayd,Numair,Nuʿman,Nur al-"
-"Din,Nuri,Nusrah,Nusrat,Omar,Orhan,Osman,Qasim,Qays,Qudamah,Qusay,Qatadah,"
-"Qutaybah,Qutb,Qutuz,Rabah,Rabi,Radi,Rafi,Rafid,Rafiq,Raghib,Rahman,Raʿid,"
-"Raʿif,Rais,Rajaa,Rajab,Raji,Rajih,Rakin,Rami,Ramih,Ramiz,Ramzi,Rani,Rashad,"
-"Rashid,Rasil,Rasin,Rasmi,Rasul,Ratib,Raʿuf,Rayhan,Rayyan,Razin,Ridha,Ridwan,"
-"Rihab,Riyad,Rizq,Ruhi,Rushd,Rushdi,Ruwayd,Saad,Saʿadah,Sab,Sabih,Sabir,Sabri,"
-"Saʿd,Saʿd al-Din,Sadad,Sadid,Sadiq,Saʿdun,Saʿid,Safi,Safiy,Safiy al-Din,"
-"Safuh,Safwah,Safwat,Safwan,Sahib,Sahir,Sahl,Saʾib,Saif,Saif al-Din,Sajid,"
-"Sajjad,Sakhr,Salah,Salah al-Din,Salamah,Salih,Salim,Salman,Sami,Samih,Samir,"
-"Samman,Saqr,Sariyah,Sati,Saud,Sayyid,Shaʿban,Shadi,Shadin,Shafi,Shafiq,"
-"Shahid,Shahin,Shahir,Shakib,Shakir,Shams al-Din,Shamal,Shamil,Shamim,Sharaf,"
-"Sharif,Shawqi,Shihab,Shihab al-Din,Shihad,Shuʿayb,Shukri,Shumayl,Siddiq,"
-"Sinan,Siraj,Siraj al-Din,Sofian,Subhi,Sufyan,Suhayb,Suhayl,Suhaym,Sulaiman,"
-"Sumrah,Suraqah,Suʿud,Tahir,Tahsin,Taym Allah,Taj,Taj al-Din,Talal,Talib,"
-"Tamim,Tamir,Tamam,Tammam,Taqiy,Tarif,Tariq,Taslim,Tawfiq,Tawhid,Taymullah,"
-"Taysir,Tayyib,Thabit,Thamir,Thaqib,Thawab,Thawban,ʿUbaidah,Ubaid,Ubayy,"
-"ʿUdayl,ʿUday,ʿUmar,Umarah,Umair,ʾaUrwah,Usaym,Usama,ʿUtbah,Uthal,Uthman,"
-"Waddah,Wadi,Wadid,Wafiq,Wahab,Wahhab,Wahid,Waʾil,Wajdi,Wajid,Wajih,Wakil,"
-"Walid,Walif,Waliy Allah,Waliy al-Din,Waqar,Waqqas,Ward,Wasif,Wasil,Wasim,"
-"Wazir,Yahya,Yaman,Yaʿqub,Yasar,Yasin,Yasir,Yazan,Yazid,Yunus,Yushua,Yusri,"
-"Yusuf,Zafar,Zafir,Zahid,Zahir,Zayd,Zaim,Zayn,Zarif,Zakarriya,Zaki,Zakwan,"
-"Ziyad,Zubayr,Zuhayr"
-msgstr ""
-"Aban,Abbas,Abbud,Abdul-ʿAdl,Abdul-Ahad,Abdul-Alim,Abdul-Aliyy,Abdul-Azim,"
-"Abdul-Aziz,Abdul-Badi,Abdul-Baʿith,Abdul-Baqi,Abdul-Bari,Abdul-Barr,Abdul-"
-"Basir,Abdul-Basit,Abdul-Fattah,Abdul-Ghaffar,Abdul-Ghafur,Abdul-Ghani,Abdul-"
-"Hadi,Abdul-Hafiz,Abdul-Hakam,Abdul-Hakim,Abdul-Halim,Abdul-Hamid,Abdul-Haqq,"
-"Abdul-Hasib,Abdul-Hayy,Abdul-Jabbar,Abdul-Jalil,Abdul-Karim,Abdul-Khabir,"
-"Abdul-Khaliq,Abdul-Latif,Abdul-Malik,Abdul-Majid,Abdul-Matin,Abdul-Mubdiʾ,"
-"Abdul-Mughni,Abdul-Muhaimin,Abdul-Muhsi,Abdul-Muhyi,Abdul-Muʿid,Abdul-Muʿizz,"
-"Abdul-Mujib,Abdul-Mumin,Abdul-Muqaddim,Abdul-Muqtadir,Abdul-Musawwir,Abdul-"
-"Mutaʿal,Abdul-Nafi,Abdul-Nasser,Abdul-Nasir,Abdul-Nur,Abdul-Qadir,Abdul-"
-"Qahhar,Abdul-Qawi,Abdul-Qayyum,Abdul-Quddus,Abdul-Rafi,Abdul-Rahim,Abdul-"
-"Rahman,Abdul-Rashid,Abdul-Raʿuf,Abdul-Razzaq,Abdul-Shakur,Abdul-Tawwab,Abdul-"
-"Wadud,Abdul-Wahhab,Abdul-Wahid,Abdul-Wajid,Abdul-Wakil,Abdul-Wali,Abdul-"
-"Waliy,Abdul-Warith,Abdul-Zahir,Abdullah,ʿAbid,ʿAbidin,Abu Bakr,Aby al-Khayr,"
-"Adil,Adham,Adib,ʿAdli,ʿAdnan,ʿAfif,Ahmad,ʿAjib,ʿAkif,Akil,Akram,Alaʾ,Alaʾ al-"
-"Din,Alʿ Abbas,Aladdin,al-Bara,al-Hakam,al-Harith,Alhasan,Alhusain,Ali,Alim,"
-"Almahdi,al-Safi,Altaf,Altair,al-Tayyib,al-Tijani,al-Tufail,Amid,ʿAmid,Amin,"
-"Amir,ʿAmir,Amjad,ʿAmmar,ʿAmro,Anas,Anis,ʿAntarah,Anwar,ʿAqil,Arfan,Arif,"
-"ʿArif,Asad,Asʿad,Asadel,Ashraf,Asif,ʿAsim,Aswad,Ataʿ,Ataʿ Allah,Ataʿ al-"
-"Rahman,Athil,Athir,ʿAtif,ʿAwad,ʿAwf,Aws,Awwab,Ayham,Ayman,Ayser,Ayyub,Aza,"
-"ʿAzab,Azhar,Azim,ʿAziz,ʿAzzam,Badi,Badi al-Zaman,Badr,Badr al-Din,Badri,"
-"Bahaʿ,Bahiyy al-Din,Bahij,Bahir,Bakr,Bakri,Baligh,Bandar,Barakah,Barir,"
-"Bashshar,Basil,Basim,Bassam,Bayezid,Bayhas,Bilal,Bishr,Boulos,Budail,Burhan,"
-"Bushr,Butrus,Dabir,Dani,Darwish,Daʿud,Dhakir,Dhakiy,Dhakwan,Dhul Fiqar,Dirar,"
-"Diya,Diya al-Din,Duqaq,Fadi,Fadil,Fadl,Fadl Allah,Fahd,Fahad,Fahmi,Faisal,"
-"Faʿiz,Fakhir,Fakhr al-Din,Fakhri,Fakih,Falah,Falih,Faraj,Farhan,Farid,Fariq,"
-"Fariq,Faris,Faruq,Fath,Fathi,Fatih,Fatin,Fawwaz,Fawzan,Fawzi,Fayyad,Ferran,"
-"Fida,Fikri,Firas,Fuʿad,Fudail,Gamal,Ghayth,Ghali,Ghalib,Ghanim,Ghassan,"
-"Ghawth,Ghazwan,Ghiyath,Habbab,Habib,Haddad,Hadi,Hafiz,Hakem,Hakim,Halim,"
-"Hamal,Hamas,Hamdan,Hamdi,Hamid,Hamim,Hamzah,Hana,Hanaʾi,Hanbal,Hani,Hanif,"
-"Hannad,Haris,Harith,Harun,Hashim,Hassan,Hatim,Haydar,Haytham,Hayyan,Hazim,"
-"Hilal,Hilmi,Hisham,Hud,Hudad,Hudhafah,Hudhayfah,Humam,Hussein,Husam,Husam al-"
-"Din,Ibrahim,ʿId,Idris,Ihsan,Ihtisham,ʿIkrimah,Ilias,ʿImad,Imad al-Din,Imran,"
-"Imtiyaz,Inʿam,Iqbal,ʿIrfan,ʿIsa,ʿIsam,Ishaq,Ismaʿil,Iyad,Iyas,Izz al-Din,"
-"Jabbar,Jabr,Jabir,Jad Allah,Jaʿfar,Jal,Jalal,Jalal al-Din,Jalil,Jamal,Jamal "
-"al-Din,Jamil,Jarir,Jasim,Jaul,Jaun,Jawad,Jawdah,Jawhar,Jibran,Jibril,Jubair,"
-"Jul,Jumah,Junayd,Juwain,Kadar,Kadin,Kadir,Kahil,Kaliq,Kamal,Kamil,Karam,"
-"Kardal,Karif,Karim,Kasib,Kasim,Katib,Kazim,Khalaf,Khaldun,Khalid,Khalil,"
-"Khalil al-Allah,Khalis,Khatib,Khair al-Din,Khairi,Khoury,Khulus,Khuzaymah,"
-"Kutaiba,Labib,Lablab,Latif,Layth,LuʿayLubayd,Luqman,Lut,Lutfi,Maʿd,Madani,"
-"Mahbub,Mahdi,Mahfuz,Mahir,Mahjub,Mahmud,Mahrus,Maimun,Majd,Majdy,Majd al-Din,"
-"Majid,Makin,Malik,Mamduh,Maʿmun,Maʿin,Mandhur,Mansur,Marghub,Marid,Maʿruf,"
-"Marwan,Marzuq,Mashʿal,Mashhur,Masrur,Masʿud,Masun,Maysarah,Mazhar,Mazin,"
-"Mehmed,Mihran,Mihyar,Mikaʾil,Miqdad,Misbah,Mishʿal,Miyaz,Muʾadh,Muʾawiyah,"
-"Muʾayyad,Mubarak,Mubin,Mudar,Muddaththir,Mufid,Muflih,Muhab,Muhayr,Muhammad,"
-"Muhanna,Muhannad,Muhib,Muhibb,Muhsin,Muhtadi,Muhyi al-Din,Muʿin,Muʿizz,Mujab,"
-"Mujahid,Mukarram,Mukhlis,Mukhtar,Mulham,Mulhim,Muʿmmar,Muʿmin,Mumtaz,Munahid,"
-"Mundhir,Munib,Munif,Munir,Muʿnis,Munjid,Munsif,Muntasir,Murad,Murid,Murshid,"
-"Murtada,Musa,Musʿab,Musaʿid,Mushtaq,Muslih,Muslim,Mutafa,Mutaʾ,Muʿtasim,"
-"Mutawalli,Muʿtazz,Muthanna,Muti,Muwaffaq,Muyassar,Muzaffar,Mussammil,Nabhan,"
-"Nabighah,Nabih,Nabil,Nadhir,Nadim,Nadir,Nafiʾ,Nahid,Naʾil,Naʾim,Naji,Najib,"
-"Najid,Najjar,Najm al-Din,Naʿaman,Namir,Nashʿah,Nashʿat,Nashwan,Nasib,Nasih,"
-"Nasim,Nasir,Nasir al-Din,Nasr,Nasri,Nasuh,Nawaf,Nawfal,Nayif,Nazih,Nazim,"
-"Nazmi,Nibras,Nidal,Nijad,Nimr,Nizar,Nuʿaym,Nuh,Nuhayd,Numair,Nuʿman,Nur al-"
-"Din,Nuri,Nusrah,Nusrat,Omar,Orhan,Osman,Qasim,Qays,Qudamah,Qusay,Qatadah,"
-"Qutaybah,Qutb,Qutuz,Rabah,Rabi,Radi,Rafi,Rafid,Rafiq,Raghib,Rahman,Raʿid,"
-"Raʿif,Rais,Rajaa,Rajab,Raji,Rajih,Rakin,Rami,Ramih,Ramiz,Ramzi,Rani,Rashad,"
-"Rashid,Rasil,Rasin,Rasmi,Rasul,Ratib,Raʿuf,Rayhan,Rayyan,Razin,Ridha,Ridwan,"
-"Rihab,Riyad,Rizq,Ruhi,Rushd,Rushdi,Ruwayd,Saad,Saʿadah,Sab,Sabih,Sabir,Sabri,"
-"Saʿd,Saʿd al-Din,Sadad,Sadid,Sadiq,Saʿdun,Saʿid,Safi,Safiy,Safiy al-Din,"
-"Safuh,Safwah,Safwat,Safwan,Sahib,Sahir,Sahl,Saʾib,Saif,Saif al-Din,Sajid,"
-"Sajjad,Sakhr,Salah,Salah al-Din,Salamah,Salih,Salim,Salman,Sami,Samih,Samir,"
-"Samman,Saqr,Sariyah,Sati,Saud,Sayyid,Shaʿban,Shadi,Shadin,Shafi,Shafiq,"
-"Shahid,Shahin,Shahir,Shakib,Shakir,Shams al-Din,Shamal,Shamil,Shamim,Sharaf,"
-"Sharif,Shawqi,Shihab,Shihab al-Din,Shihad,Shuʿayb,Shukri,Shumayl,Siddiq,"
-"Sinan,Siraj,Siraj al-Din,Sofian,Subhi,Sufyan,Suhayb,Suhayl,Suhaym,Sulaiman,"
-"Sumrah,Suraqah,Suʿud,Tahir,Tahsin,Taym Allah,Taj,Taj al-Din,Talal,Talib,"
-"Tamim,Tamir,Tamam,Tammam,Taqiy,Tarif,Tariq,Taslim,Tawfiq,Tawhid,Taymullah,"
-"Taysir,Tayyib,Thabit,Thamir,Thaqib,Thawab,Thawban,ʿUbaidah,Ubaid,Ubayy,"
-"ʿUdayl,ʿUday,ʿUmar,Umarah,Umair,ʾaUrwah,Usaym,Usama,ʿUtbah,Uthal,Uthman,"
-"Waddah,Wadi,Wadid,Wafiq,Wahab,Wahhab,Wahid,Waʾil,Wajdi,Wajid,Wajih,Wakil,"
-"Walid,Walif,Waliy Allah,Waliy al-Din,Waqar,Waqqas,Ward,Wasif,Wasil,Wasim,"
-"Wazir,Yahya,Yaman,Yaʿqub,Yasar,Yasin,Yasir,Yazan,Yazid,Yunus,Yushua,Yusri,"
-"Yusuf,Zafar,Zafir,Zahid,Zahir,Zayd,Zaim,Zayn,Zarif,Zakarriya,Zaki,Zakwan,"
-"Ziyad,Zubayr,Zuhayr"
 
 #: data/core/macros/names.cfg:144
+msgid ""
+"Aban,Abbas,Abbud,Abdul-ʿAdl,Abdul-Ahad,Abdul-Alim,Abdul-Aliyy,Abdul-Azim,"
+"Abdul-Aziz,Abdul-Badi,Abdul-Baʿith,Abdul-Baqi,Abdul-Bari,Abdul-Barr,Abdul-"
+"Basir,Abdul-Basit,Abdul-Fattah,Abdul-Ghaffar,Abdul-Ghafur,Abdul-Ghani,Abdul-"
+"Hadi,Abdul-Hafiz,Abdul-Hakam,Abdul-Hakim,Abdul-Halim,Abdul-Hamid,Abdul-Haqq,"
+"Abdul-Hasib,Abdul-Hayy,Abdul-Jabbar,Abdul-Jalil,Abdul-Karim,Abdul-Khabir,"
+"Abdul-Khaliq,Abdul-Latif,Abdul-Malik,Abdul-Majid,Abdul-Matin,Abdul-Mubdiʾ,"
+"Abdul-Mughni,Abdul-Muhaimin,Abdul-Muhsi,Abdul-Muhyi,Abdul-Muʿid,Abdul-Muʿizz,"
+"Abdul-Mujib,Abdul-Mumin,Abdul-Muqaddim,Abdul-Muqtadir,Abdul-Musawwir,Abdul-"
+"Mutaʿal,Abdul-Nafi,Abdul-Nasser,Abdul-Nasir,Abdul-Nur,Abdul-Qadir,Abdul-"
+"Qahhar,Abdul-Qawi,Abdul-Qayyum,Abdul-Quddus,Abdul-Rafi,Abdul-Rahim,Abdul-"
+"Rahman,Abdul-Rashid,Abdul-Raʿuf,Abdul-Razzaq,Abdul-Shakur,Abdul-Tawwab,Abdul-"
+"Wadud,Abdul-Wahhab,Abdul-Wahid,Abdul-Wajid,Abdul-Wakil,Abdul-Wali,Abdul-"
+"Waliy,Abdul-Warith,Abdul-Zahir,Abdullah,ʿAbid,ʿAbidin,Abu Bakr,Aby al-Khayr,"
+"Adil,Adham,Adib,ʿAdli,ʿAdnan,ʿAfif,Ahmad,ʿAjib,ʿAkif,Akil,Akram,Alaʾ,Alaʾ al-"
+"Din,Alʿ Abbas,Aladdin,al-Bara,al-Hakam,al-Harith,Alhasan,Alhusain,Ali,Alim,"
+"Almahdi,al-Safi,Altaf,Altair,al-Tayyib,al-Tijani,al-Tufail,Amid,ʿAmid,Amin,"
+"Amir,ʿAmir,Amjad,ʿAmmar,ʿAmro,Anas,Anis,ʿAntarah,Anwar,ʿAqil,Arfan,Arif,"
+"ʿArif,Asad,Asʿad,Asadel,Ashraf,Asif,ʿAsim,Aswad,Ataʿ,Ataʿ Allah,Ataʿ al-"
+"Rahman,Athil,Athir,ʿAtif,ʿAwad,ʿAwf,Aws,Awwab,Ayham,Ayman,Ayser,Ayyub,Aza,"
+"ʿAzab,Azhar,Azim,ʿAziz,ʿAzzam,Badi,Badi al-Zaman,Badr,Badr al-Din,Badri,"
+"Bahaʿ,Bahiyy al-Din,Bahij,Bahir,Bakr,Bakri,Baligh,Bandar,Barakah,Barir,"
+"Bashshar,Basil,Basim,Bassam,Bayezid,Bayhas,Bilal,Bishr,Boulos,Budail,Burhan,"
+"Bushr,Butrus,Dabir,Dani,Darwish,Daʿud,Dhakir,Dhakiy,Dhakwan,Dhul Fiqar,Dirar,"
+"Diya,Diya al-Din,Duqaq,Fadi,Fadil,Fadl,Fadl Allah,Fahd,Fahad,Fahmi,Faisal,"
+"Faʿiz,Fakhir,Fakhr al-Din,Fakhri,Fakih,Falah,Falih,Faraj,Farhan,Farid,Fariq,"
+"Fariq,Faris,Faruq,Fath,Fathi,Fatih,Fatin,Fawwaz,Fawzan,Fawzi,Fayyad,Ferran,"
+"Fida,Fikri,Firas,Fuʿad,Fudail,Gamal,Ghayth,Ghali,Ghalib,Ghanim,Ghassan,"
+"Ghawth,Ghazwan,Ghiyath,Habbab,Habib,Haddad,Hadi,Hafiz,Hakem,Hakim,Halim,"
+"Hamal,Hamas,Hamdan,Hamdi,Hamid,Hamim,Hamzah,Hana,Hanaʾi,Hanbal,Hani,Hanif,"
+"Hannad,Haris,Harith,Harun,Hashim,Hassan,Hatim,Haydar,Haytham,Hayyan,Hazim,"
+"Hilal,Hilmi,Hisham,Hud,Hudad,Hudhafah,Hudhayfah,Humam,Hussein,Husam,Husam al-"
+"Din,Ibrahim,ʿId,Idris,Ihsan,Ihtisham,ʿIkrimah,Ilias,ʿImad,Imad al-Din,Imran,"
+"Imtiyaz,Inʿam,Iqbal,ʿIrfan,ʿIsa,ʿIsam,Ishaq,Ismaʿil,Iyad,Iyas,Izz al-Din,"
+"Jabbar,Jabr,Jabir,Jad Allah,Jaʿfar,Jal,Jalal,Jalal al-Din,Jalil,Jamal,Jamal "
+"al-Din,Jamil,Jarir,Jasim,Jaul,Jaun,Jawad,Jawdah,Jawhar,Jibran,Jibril,Jubair,"
+"Jul,Jumah,Junayd,Juwain,Kadar,Kadin,Kadir,Kahil,Kaliq,Kamal,Kamil,Karam,"
+"Kardal,Karif,Karim,Kasib,Kasim,Katib,Kazim,Khalaf,Khaldun,Khalid,Khalil,"
+"Khalil al-Allah,Khalis,Khatib,Khair al-Din,Khairi,Khoury,Khulus,Khuzaymah,"
+"Kutaiba,Labib,Lablab,Latif,Layth,LuʿayLubayd,Luqman,Lut,Lutfi,Maʿd,Madani,"
+"Mahbub,Mahdi,Mahfuz,Mahir,Mahjub,Mahmud,Mahrus,Maimun,Majd,Majdy,Majd al-Din,"
+"Majid,Makin,Malik,Mamduh,Maʿmun,Maʿin,Mandhur,Mansur,Marghub,Marid,Maʿruf,"
+"Marwan,Marzuq,Mashʿal,Mashhur,Masrur,Masʿud,Masun,Maysarah,Mazhar,Mazin,"
+"Mehmed,Mihran,Mihyar,Mikaʾil,Miqdad,Misbah,Mishʿal,Miyaz,Muʾadh,Muʾawiyah,"
+"Muʾayyad,Mubarak,Mubin,Mudar,Muddaththir,Mufid,Muflih,Muhab,Muhayr,Muhammad,"
+"Muhanna,Muhannad,Muhib,Muhibb,Muhsin,Muhtadi,Muhyi al-Din,Muʿin,Muʿizz,Mujab,"
+"Mujahid,Mukarram,Mukhlis,Mukhtar,Mulham,Mulhim,Muʿmmar,Muʿmin,Mumtaz,Munahid,"
+"Mundhir,Munib,Munif,Munir,Muʿnis,Munjid,Munsif,Muntasir,Murad,Murid,Murshid,"
+"Murtada,Musa,Musʿab,Musaʿid,Mushtaq,Muslih,Muslim,Mutafa,Mutaʾ,Muʿtasim,"
+"Mutawalli,Muʿtazz,Muthanna,Muti,Muwaffaq,Muyassar,Muzaffar,Mussammil,Nabhan,"
+"Nabighah,Nabih,Nabil,Nadhir,Nadim,Nadir,Nafiʾ,Nahid,Naʾil,Naʾim,Naji,Najib,"
+"Najid,Najjar,Najm al-Din,Naʿaman,Namir,Nashʿah,Nashʿat,Nashwan,Nasib,Nasih,"
+"Nasim,Nasir,Nasir al-Din,Nasr,Nasri,Nasuh,Nawaf,Nawfal,Nayif,Nazih,Nazim,"
+"Nazmi,Nibras,Nidal,Nijad,Nimr,Nizar,Nuʿaym,Nuh,Nuhayd,Numair,Nuʿman,Nur al-"
+"Din,Nuri,Nusrah,Nusrat,Omar,Orhan,Osman,Qasim,Qays,Qudamah,Qusay,Qatadah,"
+"Qutaybah,Qutb,Qutuz,Rabah,Rabi,Radi,Rafi,Rafid,Rafiq,Raghib,Rahman,Raʿid,"
+"Raʿif,Rais,Rajaa,Rajab,Raji,Rajih,Rakin,Rami,Ramih,Ramiz,Ramzi,Rani,Rashad,"
+"Rashid,Rasil,Rasin,Rasmi,Rasul,Ratib,Raʿuf,Rayhan,Rayyan,Razin,Ridha,Ridwan,"
+"Rihab,Riyad,Rizq,Ruhi,Rushd,Rushdi,Ruwayd,Saad,Saʿadah,Sab,Sabih,Sabir,Sabri,"
+"Saʿd,Saʿd al-Din,Sadad,Sadid,Sadiq,Saʿdun,Saʿid,Safi,Safiy,Safiy al-Din,"
+"Safuh,Safwah,Safwat,Safwan,Sahib,Sahir,Sahl,Saʾib,Saif,Saif al-Din,Sajid,"
+"Sajjad,Sakhr,Salah,Salah al-Din,Salamah,Salih,Salim,Salman,Sami,Samih,Samir,"
+"Samman,Saqr,Sariyah,Sati,Saud,Sayyid,Shaʿban,Shadi,Shadin,Shafi,Shafiq,"
+"Shahid,Shahin,Shahir,Shakib,Shakir,Shams al-Din,Shamal,Shamil,Shamim,Sharaf,"
+"Sharif,Shawqi,Shihab,Shihab al-Din,Shihad,Shuʿayb,Shukri,Shumayl,Siddiq,"
+"Sinan,Siraj,Siraj al-Din,Sofian,Subhi,Sufyan,Suhayb,Suhayl,Suhaym,Sulaiman,"
+"Sumrah,Suraqah,Suʿud,Tahir,Tahsin,Taym Allah,Taj,Taj al-Din,Talal,Talib,"
+"Tamim,Tamir,Tamam,Tammam,Taqiy,Tarif,Tariq,Taslim,Tawfiq,Tawhid,Taymullah,"
+"Taysir,Tayyib,Thabit,Thamir,Thaqib,Thawab,Thawban,ʿUbaidah,Ubaid,Ubayy,"
+"ʿUdayl,ʿUday,ʿUmar,Umarah,Umair,ʾaUrwah,Usaym,Usama,ʿUtbah,Uthal,Uthman,"
+"Waddah,Wadi,Wadid,Wafiq,Wahab,Wahhab,Wahid,Waʾil,Wajdi,Wajid,Wajih,Wakil,"
+"Walid,Walif,Waliy Allah,Waliy al-Din,Waqar,Waqqas,Ward,Wasif,Wasil,Wasim,"
+"Wazir,Yahya,Yaman,Yaʿqub,Yasar,Yasin,Yasir,Yazan,Yazid,Yunus,Yushua,Yusri,"
+"Yusuf,Zafar,Zafir,Zahid,Zahir,Zayd,Zaim,Zayn,Zarif,Zakarriya,Zaki,Zakwan,"
+"Ziyad,Zubayr,Zuhayr"
+msgstr ""
+"Aban,Abbas,Abbud,Abdul-ʿAdl,Abdul-Ahad,Abdul-Alim,Abdul-Aliyy,Abdul-Azim,"
+"Abdul-Aziz,Abdul-Badi,Abdul-Baʿith,Abdul-Baqi,Abdul-Bari,Abdul-Barr,Abdul-"
+"Basir,Abdul-Basit,Abdul-Fattah,Abdul-Ghaffar,Abdul-Ghafur,Abdul-Ghani,Abdul-"
+"Hadi,Abdul-Hafiz,Abdul-Hakam,Abdul-Hakim,Abdul-Halim,Abdul-Hamid,Abdul-Haqq,"
+"Abdul-Hasib,Abdul-Hayy,Abdul-Jabbar,Abdul-Jalil,Abdul-Karim,Abdul-Khabir,"
+"Abdul-Khaliq,Abdul-Latif,Abdul-Malik,Abdul-Majid,Abdul-Matin,Abdul-Mubdiʾ,"
+"Abdul-Mughni,Abdul-Muhaimin,Abdul-Muhsi,Abdul-Muhyi,Abdul-Muʿid,Abdul-Muʿizz,"
+"Abdul-Mujib,Abdul-Mumin,Abdul-Muqaddim,Abdul-Muqtadir,Abdul-Musawwir,Abdul-"
+"Mutaʿal,Abdul-Nafi,Abdul-Nasser,Abdul-Nasir,Abdul-Nur,Abdul-Qadir,Abdul-"
+"Qahhar,Abdul-Qawi,Abdul-Qayyum,Abdul-Quddus,Abdul-Rafi,Abdul-Rahim,Abdul-"
+"Rahman,Abdul-Rashid,Abdul-Raʿuf,Abdul-Razzaq,Abdul-Shakur,Abdul-Tawwab,Abdul-"
+"Wadud,Abdul-Wahhab,Abdul-Wahid,Abdul-Wajid,Abdul-Wakil,Abdul-Wali,Abdul-"
+"Waliy,Abdul-Warith,Abdul-Zahir,Abdullah,ʿAbid,ʿAbidin,Abu Bakr,Aby al-Khayr,"
+"Adil,Adham,Adib,ʿAdli,ʿAdnan,ʿAfif,Ahmad,ʿAjib,ʿAkif,Akil,Akram,Alaʾ,Alaʾ al-"
+"Din,Alʿ Abbas,Aladdin,al-Bara,al-Hakam,al-Harith,Alhasan,Alhusain,Ali,Alim,"
+"Almahdi,al-Safi,Altaf,Altair,al-Tayyib,al-Tijani,al-Tufail,Amid,ʿAmid,Amin,"
+"Amir,ʿAmir,Amjad,ʿAmmar,ʿAmro,Anas,Anis,ʿAntarah,Anwar,ʿAqil,Arfan,Arif,"
+"ʿArif,Asad,Asʿad,Asadel,Ashraf,Asif,ʿAsim,Aswad,Ataʿ,Ataʿ Allah,Ataʿ al-"
+"Rahman,Athil,Athir,ʿAtif,ʿAwad,ʿAwf,Aws,Awwab,Ayham,Ayman,Ayser,Ayyub,Aza,"
+"ʿAzab,Azhar,Azim,ʿAziz,ʿAzzam,Badi,Badi al-Zaman,Badr,Badr al-Din,Badri,"
+"Bahaʿ,Bahiyy al-Din,Bahij,Bahir,Bakr,Bakri,Baligh,Bandar,Barakah,Barir,"
+"Bashshar,Basil,Basim,Bassam,Bayezid,Bayhas,Bilal,Bishr,Boulos,Budail,Burhan,"
+"Bushr,Butrus,Dabir,Dani,Darwish,Daʿud,Dhakir,Dhakiy,Dhakwan,Dhul Fiqar,Dirar,"
+"Diya,Diya al-Din,Duqaq,Fadi,Fadil,Fadl,Fadl Allah,Fahd,Fahad,Fahmi,Faisal,"
+"Faʿiz,Fakhir,Fakhr al-Din,Fakhri,Fakih,Falah,Falih,Faraj,Farhan,Farid,Fariq,"
+"Fariq,Faris,Faruq,Fath,Fathi,Fatih,Fatin,Fawwaz,Fawzan,Fawzi,Fayyad,Ferran,"
+"Fida,Fikri,Firas,Fuʿad,Fudail,Gamal,Ghayth,Ghali,Ghalib,Ghanim,Ghassan,"
+"Ghawth,Ghazwan,Ghiyath,Habbab,Habib,Haddad,Hadi,Hafiz,Hakem,Hakim,Halim,"
+"Hamal,Hamas,Hamdan,Hamdi,Hamid,Hamim,Hamzah,Hana,Hanaʾi,Hanbal,Hani,Hanif,"
+"Hannad,Haris,Harith,Harun,Hashim,Hassan,Hatim,Haydar,Haytham,Hayyan,Hazim,"
+"Hilal,Hilmi,Hisham,Hud,Hudad,Hudhafah,Hudhayfah,Humam,Hussein,Husam,Husam al-"
+"Din,Ibrahim,ʿId,Idris,Ihsan,Ihtisham,ʿIkrimah,Ilias,ʿImad,Imad al-Din,Imran,"
+"Imtiyaz,Inʿam,Iqbal,ʿIrfan,ʿIsa,ʿIsam,Ishaq,Ismaʿil,Iyad,Iyas,Izz al-Din,"
+"Jabbar,Jabr,Jabir,Jad Allah,Jaʿfar,Jal,Jalal,Jalal al-Din,Jalil,Jamal,Jamal "
+"al-Din,Jamil,Jarir,Jasim,Jaul,Jaun,Jawad,Jawdah,Jawhar,Jibran,Jibril,Jubair,"
+"Jul,Jumah,Junayd,Juwain,Kadar,Kadin,Kadir,Kahil,Kaliq,Kamal,Kamil,Karam,"
+"Kardal,Karif,Karim,Kasib,Kasim,Katib,Kazim,Khalaf,Khaldun,Khalid,Khalil,"
+"Khalil al-Allah,Khalis,Khatib,Khair al-Din,Khairi,Khoury,Khulus,Khuzaymah,"
+"Kutaiba,Labib,Lablab,Latif,Layth,LuʿayLubayd,Luqman,Lut,Lutfi,Maʿd,Madani,"
+"Mahbub,Mahdi,Mahfuz,Mahir,Mahjub,Mahmud,Mahrus,Maimun,Majd,Majdy,Majd al-Din,"
+"Majid,Makin,Malik,Mamduh,Maʿmun,Maʿin,Mandhur,Mansur,Marghub,Marid,Maʿruf,"
+"Marwan,Marzuq,Mashʿal,Mashhur,Masrur,Masʿud,Masun,Maysarah,Mazhar,Mazin,"
+"Mehmed,Mihran,Mihyar,Mikaʾil,Miqdad,Misbah,Mishʿal,Miyaz,Muʾadh,Muʾawiyah,"
+"Muʾayyad,Mubarak,Mubin,Mudar,Muddaththir,Mufid,Muflih,Muhab,Muhayr,Muhammad,"
+"Muhanna,Muhannad,Muhib,Muhibb,Muhsin,Muhtadi,Muhyi al-Din,Muʿin,Muʿizz,Mujab,"
+"Mujahid,Mukarram,Mukhlis,Mukhtar,Mulham,Mulhim,Muʿmmar,Muʿmin,Mumtaz,Munahid,"
+"Mundhir,Munib,Munif,Munir,Muʿnis,Munjid,Munsif,Muntasir,Murad,Murid,Murshid,"
+"Murtada,Musa,Musʿab,Musaʿid,Mushtaq,Muslih,Muslim,Mutafa,Mutaʾ,Muʿtasim,"
+"Mutawalli,Muʿtazz,Muthanna,Muti,Muwaffaq,Muyassar,Muzaffar,Mussammil,Nabhan,"
+"Nabighah,Nabih,Nabil,Nadhir,Nadim,Nadir,Nafiʾ,Nahid,Naʾil,Naʾim,Naji,Najib,"
+"Najid,Najjar,Najm al-Din,Naʿaman,Namir,Nashʿah,Nashʿat,Nashwan,Nasib,Nasih,"
+"Nasim,Nasir,Nasir al-Din,Nasr,Nasri,Nasuh,Nawaf,Nawfal,Nayif,Nazih,Nazim,"
+"Nazmi,Nibras,Nidal,Nijad,Nimr,Nizar,Nuʿaym,Nuh,Nuhayd,Numair,Nuʿman,Nur al-"
+"Din,Nuri,Nusrah,Nusrat,Omar,Orhan,Osman,Qasim,Qays,Qudamah,Qusay,Qatadah,"
+"Qutaybah,Qutb,Qutuz,Rabah,Rabi,Radi,Rafi,Rafid,Rafiq,Raghib,Rahman,Raʿid,"
+"Raʿif,Rais,Rajaa,Rajab,Raji,Rajih,Rakin,Rami,Ramih,Ramiz,Ramzi,Rani,Rashad,"
+"Rashid,Rasil,Rasin,Rasmi,Rasul,Ratib,Raʿuf,Rayhan,Rayyan,Razin,Ridha,Ridwan,"
+"Rihab,Riyad,Rizq,Ruhi,Rushd,Rushdi,Ruwayd,Saad,Saʿadah,Sab,Sabih,Sabir,Sabri,"
+"Saʿd,Saʿd al-Din,Sadad,Sadid,Sadiq,Saʿdun,Saʿid,Safi,Safiy,Safiy al-Din,"
+"Safuh,Safwah,Safwat,Safwan,Sahib,Sahir,Sahl,Saʾib,Saif,Saif al-Din,Sajid,"
+"Sajjad,Sakhr,Salah,Salah al-Din,Salamah,Salih,Salim,Salman,Sami,Samih,Samir,"
+"Samman,Saqr,Sariyah,Sati,Saud,Sayyid,Shaʿban,Shadi,Shadin,Shafi,Shafiq,"
+"Shahid,Shahin,Shahir,Shakib,Shakir,Shams al-Din,Shamal,Shamil,Shamim,Sharaf,"
+"Sharif,Shawqi,Shihab,Shihab al-Din,Shihad,Shuʿayb,Shukri,Shumayl,Siddiq,"
+"Sinan,Siraj,Siraj al-Din,Sofian,Subhi,Sufyan,Suhayb,Suhayl,Suhaym,Sulaiman,"
+"Sumrah,Suraqah,Suʿud,Tahir,Tahsin,Taym Allah,Taj,Taj al-Din,Talal,Talib,"
+"Tamim,Tamir,Tamam,Tammam,Taqiy,Tarif,Tariq,Taslim,Tawfiq,Tawhid,Taymullah,"
+"Taysir,Tayyib,Thabit,Thamir,Thaqib,Thawab,Thawban,ʿUbaidah,Ubaid,Ubayy,"
+"ʿUdayl,ʿUday,ʿUmar,Umarah,Umair,ʾaUrwah,Usaym,Usama,ʿUtbah,Uthal,Uthman,"
+"Waddah,Wadi,Wadid,Wafiq,Wahab,Wahhab,Wahid,Waʾil,Wajdi,Wajid,Wajih,Wakil,"
+"Walid,Walif,Waliy Allah,Waliy al-Din,Waqar,Waqqas,Ward,Wasif,Wasil,Wasim,"
+"Wazir,Yahya,Yaman,Yaʿqub,Yasar,Yasin,Yasir,Yazan,Yazid,Yunus,Yushua,Yusri,"
+"Yusuf,Zafar,Zafir,Zahid,Zahir,Zayd,Zaim,Zayn,Zarif,Zakarriya,Zaki,Zakwan,"
+"Ziyad,Zubayr,Zuhayr"
+
+#: data/core/macros/names.cfg:145
 msgid ""
 "Abiha,Afaf,A'isha,Ajda,Aliya,Amira,Ashraqat,Atikah,Azra,Boutheina,Bushra,"
 "Chaima,Cynthia,Dalal,Dalia,Eliana,Esma,Farida,Fatima,Feyrouz,Habiba,Hafsa,"
@@ -2918,7 +2791,7 @@ msgid ""
 msgstr ""
 
 #. Generator for male dunefolk human names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
-#: data/core/macros/names.cfg:146
+#: data/core/macros/names.cfg:147
 msgid ""
 "\n"
 "main={name_long}|{prefix}{suffix}|{name_mid}{connector}{name_mid}\n"
@@ -2949,7 +2822,7 @@ msgstr ""
 "centre=ʿ|ʾ|hi|sa|kar|da|na|ja|tay|ki|hai|saw\n"
 
 #. Generator for female dunefolk human names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
-#: data/core/macros/names.cfg:157
+#: data/core/macros/names.cfg:158
 msgid ""
 "\n"
 "main={name_long}|{prefix}{suffix}|{name_mid}{connector}{surname}\n"
@@ -3005,7 +2878,7 @@ msgstr ""
 "riya|ail|air|ah|en|in|ayd|ud|rah|wah|nan|as|ir|ba|ni|yad|ras|zuq|hid|mal|"
 "kib\n"
 
-#: data/core/macros/names.cfg:177
+#: data/core/macros/names.cfg:179
 msgid ""
 "Amprixta,Anexir,Anitraz,Arix,Axiz,Bzz’Kza,Chamil,Cleezi,Clezz,Fazzis,"
 "Fizztrax,Flixta,Flizzil,Frikes,Frizzle,Hasz,Heffez,Hertrazzir,Hesz,Hezzir,"
@@ -3030,7 +2903,7 @@ msgstr ""
 "Zilrix,Zizzasz,Zslap,Zzalkz,Zzupde"
 
 #. Generator for saurian names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
-#: data/core/macros/names.cfg:179
+#: data/core/macros/names.cfg:181
 msgid ""
 "\n"
 "main={prefix}{suffix}|{prefix}{centre}{suffix}\n"
@@ -3048,7 +2921,7 @@ msgstr ""
 "suffix=ta|ir|az|ix|za|trax|il|le|esz|izs|ezz|irr|asch|ez|is|iss|azz\n"
 "centre=ix|’Kza|tra|na|an|ex|ssa|zzi|’Usz\n"
 
-#: data/core/macros/names.cfg:188
+#: data/core/macros/names.cfg:190
 msgid ""
 "Absu,Abzu,Aigaion,Alastyn,Apalala,Apam,Apsu,Aremata,Atlahua,Atlaua,Barinthus,"
 "Dhakhan,Dylan,Elcmar,Ember,Enki,Faro,Habaek,Ikatere,Jamm,Jin,Kinilau,Kulullu,"
@@ -3066,7 +2939,7 @@ msgstr ""
 "Tanaoa,Tangaloa,Tangaroa,Thaumas,Tikitiki,Tini,Tinilau,Tinirau,Toniwha,"
 "Triton,Vizi,Vodnik,Vourukasa"
 
-#: data/core/macros/names.cfg:189
+#: data/core/macros/names.cfg:191
 msgid ""
 "Aglaopheme,Amphitrite,Aphrodite,Ariel,Atargatis,Calypso,Delphine,Derceto,"
 "Diktynna,Electra,Galatea,Himeropa,Jengu,Leucosia,Ligia,Lori Lamaris,Mama "
@@ -3079,7 +2952,7 @@ msgstr ""
 "Maris,Thelxiepia,Tirgata,Vatea,Ved-Ava,Veen emo,Vete-ema"
 
 #. Generator for merman names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
-#: data/core/macros/names.cfg:191
+#: data/core/macros/names.cfg:193
 msgid ""
 "\n"
 "main={prefix}{suffix}|{prefix}{centre}{suffix}\n"
@@ -3098,7 +2971,7 @@ msgstr ""
 "centre=la|ma|ri|sei|te|ka|li|cer|tu|ni|ki|na|ga|si\n"
 
 #. Generator for mermaid names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
-#: data/core/macros/names.cfg:198
+#: data/core/macros/names.cfg:200
 msgid ""
 "\n"
 "main={prefix}{suffix}|{prefix}{centre}{suffix}\n"
@@ -3114,7 +2987,7 @@ msgstr ""
 "suffix=me|pe|gia|noe|dna|la|ris|ta|tea|va|mo|pe|riam|riel|na|ra|tea\n"
 "centre=ophe|phri|tri|phro|di|si|xie|ce|ty|la|me|ro|co|mar|ran|then|la|ga\n"
 
-#: data/core/macros/names.cfg:207
+#: data/core/macros/names.cfg:209
 msgid ""
 "Abraxas,Aleiss,Amail,Axmail,Blanal,Bleii,Blo,Bress,Briss,Gaxmol,Griam,Griss,"
 "Grissileii,Hailoss,Hainoss,Harxos,Huzel,Inaloss,Ineii,Issal,Klezel,Kras,"
@@ -3130,7 +3003,7 @@ msgstr ""
 "Sekol,Silas,Skell,Skepz,Slell,Snol,Soill,Sorkol,Srell,Trixoz,Vilail,Vissal,"
 "Vlanis,Xabrak,Xamalel,Xinas,Xnamos,Xopkon,Zalsp,Zlek,Zpsek,Zsekp"
 
-#: data/core/macros/names.cfg:208
+#: data/core/macros/names.cfg:210
 msgid ""
 "Aliasse,Amailis,Axmailia,Blai,Blanalai,Bli,Bliana,Brassas,Brissal,Gaxmail,"
 "Griama,Grissa,Grissilai,Haila,Haina,Harxias,Huzi,Inai,Inalai,Issalai,Klez,"
@@ -3149,7 +3022,7 @@ msgstr ""
 "Zsekp"
 
 #. Generator for male naga names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
-#: data/core/macros/names.cfg:210
+#: data/core/macros/names.cfg:212
 msgid ""
 "\n"
 "main={prefix}{suffix}\n"
@@ -3168,7 +3041,7 @@ msgstr ""
 "iaz|on|sal|ol|kil|oz|ail|al|nis|rak|lel|nas|kon|ekp\n"
 
 #. Generator for female naga names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
-#: data/core/macros/names.cfg:216
+#: data/core/macros/names.cfg:218
 msgid ""
 "\n"
 "main={prefix}{suffix}\n"
@@ -3186,7 +3059,7 @@ msgstr ""
 "suffix=asse|mailia|ilis|ana|ama|ssa|ssilai|zi|xias|lai|maissa|bra|lin|lina|"
 "na|bra|aa|lia|lai|laila|na|pkne|alsp|ekp\n"
 
-#: data/core/macros/names.cfg:224
+#: data/core/macros/names.cfg:226
 msgid ""
 "Akoark,Akort,Akzalk,Arkarm,Barkuk,Blokkar,Borkuk,Bukkak,Bulruk,Corkkar,"
 "Delkkak,Garkuk,Gnukk,Goruk,Grak,Gurk,Gurm,Kalknix,Karak,Karbuk,Kargnak,"
@@ -3203,7 +3076,7 @@ msgstr ""
 "Urkark"
 
 #. Generator for ogre names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
-#: data/core/macros/names.cfg:226
+#: data/core/macros/names.cfg:228
 msgid ""
 "\n"
 "main={prefix}{suffix}\n"
@@ -3217,7 +3090,7 @@ msgstr ""
 "Ker|Kil|King|Kor|Kru|Kur|Mar|Mer|Nal|Trak|Urk\n"
 "suffix=ark|ort|alk|arm|kuk|kak|ukk|nak|ta|k|rok|rar|kon|gak|nik\n"
 
-#: data/core/macros/names.cfg:234
+#: data/core/macros/names.cfg:236
 msgid ""
 "Badush,Bagar,Bagdish,Barag,Barbag,Bart,Bashnak,Bidish,Bidush,Bik,Bilg,Bilo,"
 "Binak,Bink,Biol,Birt,Bogar,Bogdish,Bogdush,Bogor,Bok,Bolg,Bong,Borg,Bork,"
@@ -3286,7 +3159,7 @@ msgstr ""
 "Vrurg,Vrurt,Vruurk,Vudish,Vuk,Vulg,Vulo,Vunak,Vurag,Vurbag,Vurg,Vushnak"
 
 #. Generator for orc names
-#: data/core/macros/names.cfg:236
+#: data/core/macros/names.cfg:238
 msgid ""
 "\n"
 "main={starting_consonnant}{vowel}{consonnant}{vowel}{ending_consonnant}|"
@@ -3314,7 +3187,7 @@ msgstr ""
 "ending_consonnant=b|g|r|sh|k\n"
 "ending_vowel=o|u\n"
 
-#: data/core/macros/names.cfg:248
+#: data/core/macros/names.cfg:250
 msgid ""
 "Äg,Agh,Bog Äh,Borb,Brag,Brag Goh,Brok,Dak,Drog,Frok,Ga,Gah,Gark,Gnarf,Grar,"
 "Grokk,Grumph,Gulk,Hak,Hask,Hoth,Hug Bah,Hu Kah,Kak,Krak,Krug,Kub,Kuh,Lok,Luk,"
@@ -3327,7 +3200,7 @@ msgstr ""
 "Torg,Trok,Tsok,Tuh,Tuk Ruh,Ugg,Üh,Urg,Urgh,Urk,Vak,Zog,Zuug"
 
 #. Generator for troll names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
-#: data/core/macros/names.cfg:250
+#: data/core/macros/names.cfg:252
 msgid ""
 "\n"
 "main={short_name}|{short_name}|{short_name}|{short_name} {short_name}\n"
@@ -3347,7 +3220,7 @@ msgstr ""
 "beginning=Ä|Ü|A|U\n"
 "suffix=rb|g|gh|k|rf|kk|r|g|th|h|rg\n"
 
-#: data/core/macros/names.cfg:261
+#: data/core/macros/names.cfg:263
 msgid ""
 "Bludebalmen,Boladrumbadrum,Bolwuldelman,Bombempomgontor,Bomtanbomkenton,"
 "Bomtanbomtonum,Bregalad,Bremdebubde,Brenbasnudnem,Brendumadoak,"
@@ -3376,7 +3249,7 @@ msgstr ""
 "Tumtumgamtomtom,Wonrunmaldin,Wudadoonopl"
 
 #. Generator for wose names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
-#: data/core/macros/names.cfg:263
+#: data/core/macros/names.cfg:265
 msgid ""
 "\n"
 "main={prefix}{centre}{centre}{suffix}|{prefix}{centre}{centre}{centre}"
@@ -3402,7 +3275,7 @@ msgstr ""
 "suffix=men|drum|tor|num|lad|de|ak|lol|dum|tam|nur|dium|deum|bil|rook|relm|"
 "dium|numm|dan|doom|tum|din\n"
 
-#: data/core/macros/names.cfg:272
+#: data/core/macros/names.cfg:275
 msgid ""
 "Bal,Cam,Corn,Del,Earl,El,Fox,Fren,Gel,Hel,Hex,Hol,Hox,Il,Kin,Nam,Nes,New,Ol,"
 "Old,Olf,Oul,Ox,Rock,Rook,Sal,Sam,Sed,Sel,Sen,Sil,Tal,Water,Wet,York"
@@ -3411,7 +3284,7 @@ msgstr ""
 "Old,Olf,Oul,Ox,Rock,Rook,Sal,Sam,Sed,Sel,Sen,Sil,Tal,Water,Wet,York"
 
 #. Generator for the base names of features assigned by the random map generator; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
-#: data/core/macros/names.cfg:274
+#: data/core/macros/names.cfg:277
 msgid ""
 "\n"
 "main={prefix}{middle}{suffix}\n"
@@ -3426,33 +3299,33 @@ msgstr ""
 "suffix=l|m|rn|x|w|ld|ck|k|rk\n"
 
 #. [objective]: condition=lose
-#: data/core/macros/objective-utils.cfg:6
+#: data/core/macros/objective-utils.cfg:7
 msgid "Turns run out"
 msgstr "回合數用盡"
 
-#: data/core/macros/objective-utils.cfg:14
+#: data/core/macros/objective-utils.cfg:20
 msgid "(early finish bonus)"
 msgstr "（時效獎勵）"
 
-#: data/core/macros/objective-utils.cfg:22
+#: data/core/macros/objective-utils.cfg:25
 msgid "Alternative objective:"
 msgstr "替代目標："
 
-#: data/core/macros/objective-utils.cfg:26
+#: data/core/macros/objective-utils.cfg:30
 msgid "Bonus objective:"
 msgstr "獎勵目標："
 
-#: data/core/macros/objective-utils.cfg:30
+#: data/core/macros/objective-utils.cfg:35
 msgid "Optional objective:"
 msgstr "選擇性目標："
 
 #. [note]: description=<b>
-#: data/core/macros/objective-utils.cfg:52
+#: data/core/macros/objective-utils.cfg:60
 msgid "This is the last scenario."
 msgstr "這是最後一個章節。"
 
 #. [note]: description=<b>
-#: data/core/macros/objective-utils.cfg:58
+#: data/core/macros/objective-utils.cfg:67
 msgid "No turn limit"
 msgstr "沒有回合限制"
 
@@ -3632,13 +3505,13 @@ msgid "Weight of Revenge"
 msgstr "復仇之重"
 
 #. [message]: speaker=narrator
-#: data/core/macros/utils.cfg:651
+#: data/core/macros/utils.cfg:659
 msgid "You retrieve $amount_gold pieces of gold."
 msgstr "你獲得了 $amount_gold 枚金幣。"
 
 #. [color_range]: id=red
 #. [color_range]: id=1
-#: data/core/team-colors.cfg:14 data/core/team-colors.cfg:239
+#: data/core/team-colors.cfg:14 data/core/team-colors.cfg:246
 msgid "Red"
 msgstr "紅"
 
@@ -3654,7 +3527,7 @@ msgstr "深紅"
 
 #. [color_range]: id=blue
 #. [color_range]: id=2
-#: data/core/team-colors.cfg:33 data/core/team-colors.cfg:245
+#: data/core/team-colors.cfg:33 data/core/team-colors.cfg:252
 msgid "Blue"
 msgstr "藍"
 
@@ -3665,7 +3538,7 @@ msgstr "亮藍"
 
 #. [color_range]: id=green
 #. [color_range]: id=3
-#: data/core/team-colors.cfg:46 data/core/team-colors.cfg:251
+#: data/core/team-colors.cfg:46 data/core/team-colors.cfg:258
 msgid "Green"
 msgstr "綠"
 
@@ -3676,25 +3549,25 @@ msgstr "亮綠"
 
 #. [color_range]: id=purple
 #. [color_range]: id=4
-#: data/core/team-colors.cfg:59 data/core/team-colors.cfg:257
+#: data/core/team-colors.cfg:59 data/core/team-colors.cfg:264
 msgid "Purple"
 msgstr "紫"
 
 #. [color_range]: id=black
 #. [color_range]: id=5
-#: data/core/team-colors.cfg:66 data/core/team-colors.cfg:269
+#: data/core/team-colors.cfg:66 data/core/team-colors.cfg:276
 msgid "Black"
 msgstr "黑"
 
 #. [color_range]: id=brown
 #. [color_range]: id=6
-#: data/core/team-colors.cfg:73 data/core/team-colors.cfg:281
+#: data/core/team-colors.cfg:73 data/core/team-colors.cfg:288
 msgid "Brown"
 msgstr "棕"
 
 #. [color_range]: id=orange
 #. [color_range]: id=7
-#: data/core/team-colors.cfg:80 data/core/team-colors.cfg:263
+#: data/core/team-colors.cfg:80 data/core/team-colors.cfg:270
 msgid "Orange"
 msgstr "橙"
 
@@ -3705,13 +3578,13 @@ msgstr "亮橘"
 
 #. [color_range]: id=white
 #. [color_range]: id=8
-#: data/core/team-colors.cfg:93 data/core/team-colors.cfg:275
+#: data/core/team-colors.cfg:93 data/core/team-colors.cfg:282
 msgid "White"
 msgstr "白"
 
 #. [color_range]: id=teal
 #. [color_range]: id=9
-#: data/core/team-colors.cfg:100 data/core/team-colors.cfg:287
+#: data/core/team-colors.cfg:100 data/core/team-colors.cfg:294
 msgid "Teal"
 msgstr "青"
 
@@ -3720,107 +3593,114 @@ msgstr "青"
 msgid "color^Gold"
 msgstr "金幣"
 
+#. [color_range]: id=darkblue
+#: data/core/team-colors.cfg:114
+#, fuzzy
+#| msgid "Dark Red"
+msgid "Dark blue"
+msgstr "深紅"
+
 #. [color_range]: id=reef
-#: data/core/team-colors.cfg:116
+#: data/core/team-colors.cfg:123
 msgid "Reef"
 msgstr "礁石"
 
 #. [color_range]: id=shallow_water
-#: data/core/team-colors.cfg:122
+#: data/core/team-colors.cfg:129
 msgid "Shallow water"
 msgstr "淺水區"
 
 #. [color_range]: id=deep_water
-#: data/core/team-colors.cfg:128
+#: data/core/team-colors.cfg:135
 msgid "Deep water"
 msgstr "深水區"
 
 #. [color_range]: id=swamp_water
-#: data/core/team-colors.cfg:134
+#: data/core/team-colors.cfg:141
 msgid "Swamp water"
 msgstr "沼澤區"
 
 #. [color_range]: id=flat
-#: data/core/team-colors.cfg:140
+#: data/core/team-colors.cfg:147
 msgid "Flat"
 msgstr "平原"
 
 #. [color_range]: id=hills
-#: data/core/team-colors.cfg:146
+#: data/core/team-colors.cfg:153
 msgid "Hills"
 msgstr "丘陵"
 
 #. [color_range]: id=mountains
-#: data/core/team-colors.cfg:152
+#: data/core/team-colors.cfg:159
 msgid "Mountains"
 msgstr "山嶺"
 
 #. [color_range]: id=forest
-#: data/core/team-colors.cfg:158
+#: data/core/team-colors.cfg:165
 msgid "Forest"
 msgstr "森林"
 
 #. [color_range]: id=sand
-#: data/core/team-colors.cfg:164
+#: data/core/team-colors.cfg:171
 msgid "Sand"
 msgstr "沙地"
 
 #. [color_range]: id=frozen
-#: data/core/team-colors.cfg:170
+#: data/core/team-colors.cfg:177
 msgid "Frozen"
 msgstr "冰凍的"
 
 #. [color_range]: id=cave
-#: data/core/team-colors.cfg:176
+#: data/core/team-colors.cfg:183
 msgid "Cave"
 msgstr "洞穴"
 
 #. [color_range]: id=fungus
-#: data/core/team-colors.cfg:182
+#: data/core/team-colors.cfg:189
 msgid "Fungus"
 msgstr "菇類"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=village
-#: data/core/team-colors.cfg:188 src/terrain/terrain.cpp:187
+#: data/core/team-colors.cfg:195 src/terrain/terrain.cpp:187
 msgid "Village"
 msgstr "村莊"
 
 #. [color_range]: id=castle
-#: data/core/team-colors.cfg:194
+#: data/core/team-colors.cfg:201
 msgid "Castle"
 msgstr "城堡"
 
 #. [color_range]: id=keep
-#: data/core/team-colors.cfg:200
+#: data/core/team-colors.cfg:207
 msgid "Keep"
 msgstr "主堡"
 
 #. [color_range]: id=rails
-#: data/core/team-colors.cfg:206
+#: data/core/team-colors.cfg:213
 msgid "Rail"
 msgstr "軌道"
 
 #. [color_range]: id=unwalkable
-#: data/core/team-colors.cfg:212
+#: data/core/team-colors.cfg:219
 msgid "Unwalkable"
 msgstr "無法行走的"
 
 #. [color_range]: id=impassable
-#: data/core/team-colors.cfg:218
+#: data/core/team-colors.cfg:225
 msgid "Impassable"
 msgstr "無法通過的山嶺"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=fog
-#: data/core/team-colors.cfg:224 src/game_initialization/lobby_data.cpp:439
+#: data/core/team-colors.cfg:231 src/game_initialization/lobby_data.cpp:450
 msgid "Fog"
 msgstr "迷霧"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=shroud
-#: data/core/team-colors.cfg:230 src/game_initialization/lobby_data.cpp:442
-#: src/game_initialization/lobby_data.cpp:445
+#: data/core/team-colors.cfg:237 src/game_initialization/lobby_data.cpp:453
+#: src/game_initialization/lobby_data.cpp:456
 msgid "Shroud"
 msgstr "戰場黑幕"
 
@@ -4223,37 +4103,37 @@ msgstr ""
 "DroidSansJapanese.ttf,Junicode-Regular.ttf"
 
 #. [lua]: wml_actions.deprecated_message
-#: data/lua/wml-tags.lua:899
+#: data/lua/wml-tags.lua:905
 msgid "Invalid deprecation level (should be 1-4)"
 msgstr "不正確的不維護等級(應為1到4)"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1074
+#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1078
 msgid "female^poisoned"
 msgstr "中毒"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:128 src/actions/attack.cpp:1081
+#: data/lua/wml/harm_unit.lua:128 src/actions/attack.cpp:1085
 msgid "female^slowed"
 msgstr "緩速"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:128 src/actions/attack.cpp:1081
+#: data/lua/wml/harm_unit.lua:128 src/actions/attack.cpp:1085
 msgid "slowed"
 msgstr "緩速"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:129 src/actions/attack.cpp:1087
+#: data/lua/wml/harm_unit.lua:129 src/actions/attack.cpp:1091
 msgid "female^petrified"
 msgstr "石化"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:129 src/actions/attack.cpp:1087
+#: data/lua/wml/harm_unit.lua:129 src/actions/attack.cpp:1091
 msgid "petrified"
 msgstr "石化"
 
@@ -4269,14 +4149,14 @@ msgstr "無法行走的"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: wesnoth.wml_actions.message
-#: data/lua/wml/message.lua:433 src/scripting/game_lua_kernel.cpp:2899
-#: src/scripting/game_lua_kernel.cpp:2934
+#: data/lua/wml/message.lua:433 src/scripting/game_lua_kernel.cpp:2897
+#: src/scripting/game_lua_kernel.cpp:2932
 msgid "input"
 msgstr "輸入"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:36 src/game_initialization/mp_game_utils.cpp:77
+#: data/lua/wml/objectives.lua:36 src/game_initialization/mp_game_utils.cpp:74
 msgid "Victory:"
 msgstr "勝利："
 
@@ -4302,12 +4182,75 @@ msgstr[1] "(只剩下%d回合)"
 msgid "$percent|% of gold carried over to the next scenario."
 msgstr "%d%% 金幣將帶到下一個章節。"
 
-#. [modification]: id=delay_advancements, type=hybrid
-#: data/modifications.cfg:3
+#. [modification]: id=plan_unit_advance
+#: data/modifications.cfg:6
+#, fuzzy
+#| msgid "XP to advance"
+msgid "Plan Unit Advance"
+msgstr "升級所需經驗值"
+
+#. [modification]: id=plan_unit_advance
+#: data/modifications.cfg:7
+msgid ""
+"When playing a multiplayer game, you do not control what a unit advances if "
+"they advances on another player's turn. With this modification you can set "
+"what your units advance to beforehand either for a specific unit or for all "
+"units of the same type."
+msgstr ""
+
+#. [checkbox]: id=pickadvance_force_choice
+#: data/modifications.cfg:12
+#, fuzzy
+#| msgid "No advancement"
+msgid "Force advancement planning"
+msgstr "無法升級"
+
+#. [checkbox]: id=pickadvance_force_choice
+#: data/modifications.cfg:13
+msgid ""
+"You will be asked a question on choosing advancement whenever an undecided "
+"unit appears.\n"
+"\n"
+"Some eras and scenarios may automatically enable this option."
+msgstr ""
+
+#. [lua]: pickadvance.show_dialog_unsynchronized
+#: data/modifications/pick_advance/dialog.lua:30
+#: data/modifications/pick_advance/main.lua:10
 #, fuzzy
 #| msgid "Advancements:"
-msgid "Delay Advancements"
+msgid "Plan Advancement"
 msgstr "可升級為："
+
+#. [lua]: pickadvance.show_dialog_unsynchronized
+#: data/modifications/pick_advance/dialog.lua:67
+msgid ""
+"This advancement is currently the default for all units of the same type"
+msgstr ""
+
+#. [lua]: pickadvance.show_dialog_unsynchronized
+#: data/modifications/pick_advance/dialog.lua:129
+msgid "Apply to all units of this type"
+msgstr ""
+
+#. [lua]: pickadvance.show_dialog_unsynchronized
+#: data/modifications/pick_advance/dialog.lua:145
+#, fuzzy
+#| msgid "Saved"
+msgid "Save"
+msgstr "已儲存"
+
+#. [lua]: pickadvance.show_dialog_unsynchronized
+#: data/modifications/pick_advance/dialog.lua:154
+msgid "Cancel"
+msgstr "取消"
+
+#. [lua]: preshow
+#: data/modifications/pick_advance/dialog.lua:174
+#, fuzzy
+#| msgid "No advancement"
+msgid "No planned advancement"
+msgstr "無法升級"
 
 #. [leadership]: id=magical_leadership
 #: data/scenario-test.cfg:339
@@ -4447,14 +4390,30 @@ msgid "female^aura of death ("
 msgstr "活力"
 
 #. [language]
-#: data/scenario-test.cfg:4395
+#: data/scenario-test.cfg:4396
 msgid "very long"
 msgstr "非常長"
 
 #. [language]
-#: data/scenario-test.cfg:4396
+#: data/scenario-test.cfg:4397
 msgid "electrical"
 msgstr "電子"
+
+#. [unit]: id=alex, type=Elvish Hero
+#: data/test/scenarios/swarm_disables_upgrades_with_abilities_adjacent.cfg:44
+#: data/test/scenarios/swarm_disables_upgrades_with_abilities_adjacent_fail.cfg:44
+#: data/test/scenarios/swarm_disables_upgrades_with_abilities_adjacent_leadership.cfg:47
+#: data/test/scenarios/swarm_disables_upgrades_with_abilities_adjacent_leadership_fail.cfg:47
+msgid "Alex"
+msgstr ""
+
+#. [unit]: id=ben, type=Orcish Warrior
+#: data/test/scenarios/swarm_disables_upgrades_with_abilities_adjacent.cfg:51
+#: data/test/scenarios/swarm_disables_upgrades_with_abilities_adjacent_fail.cfg:51
+#: data/test/scenarios/swarm_disables_upgrades_with_abilities_adjacent_leadership.cfg:54
+#: data/test/scenarios/swarm_disables_upgrades_with_abilities_adjacent_leadership_fail.cfg:54
+msgid "Ben"
+msgstr ""
 
 #. [action]: id=button-playreplay, type=image
 #: data/themes/_initial.cfg:428
@@ -5431,43 +5390,43 @@ msgstr ""
 msgid "waiting for^an advancement choice"
 msgstr "升級選擇"
 
-#: src/actions/attack.cpp:604 src/actions/attack.cpp:1364
+#: src/actions/attack.cpp:606 src/actions/attack.cpp:1368
 msgid "An invalid attacker weapon got selected."
 msgstr "選擇了無效的進攻武器。"
 
-#: src/actions/create.cpp:339
+#: src/actions/create.cpp:340
 msgid "You do not have a leader to recall with."
 msgstr "您沒有指揮官來招回單位。"
 
-#: src/actions/create.cpp:343
+#: src/actions/create.cpp:344
 msgid "None of your leaders are able to recall that unit."
 msgstr "您的指揮官沒有能招回的單位。"
 
-#: src/actions/create.cpp:347
+#: src/actions/create.cpp:348
 msgid "You must have a leader on a keep who is able to recall that unit."
 msgstr "您的指揮官必須在主堡裏才能招回單位。"
 
-#: src/actions/create.cpp:351
+#: src/actions/create.cpp:352
 msgid "There are no vacant castle tiles in which to recall the unit."
 msgstr "城堡內沒有空位，無法招回單位。"
 
-#: src/actions/create.cpp:361 src/actions/create.cpp:497
+#: src/actions/create.cpp:362 src/actions/create.cpp:498
 msgid "An unrecognized error has occurred."
 msgstr "發生了無法辨識的錯誤。"
 
-#: src/actions/create.cpp:475
+#: src/actions/create.cpp:476
 msgid "You do not have a leader to recruit with."
 msgstr "您沒有指揮官來招募單位。"
 
-#: src/actions/create.cpp:479
+#: src/actions/create.cpp:480
 msgid "None of your leaders are able to recruit this unit."
 msgstr "您的指揮官沒有能招募的單位。"
 
-#: src/actions/create.cpp:483
+#: src/actions/create.cpp:484
 msgid "You must have a leader on a keep who is able to recruit the unit."
 msgstr "您的指揮官必須在主堡裏才能招募單位。"
 
-#: src/actions/create.cpp:487
+#: src/actions/create.cpp:488
 msgid "There are no vacant castle tiles in which to recruit the unit."
 msgstr "城堡內沒有空位，無法招募單位。"
 
@@ -5479,71 +5438,71 @@ msgstr "治癒"
 msgid "female^cured"
 msgstr "治癒"
 
-#: src/actions/move.cpp:622
+#: src/actions/move.cpp:610
 msgid "Ambushed!"
 msgstr "遭到伏撃！"
 
-#: src/actions/move.cpp:1130
+#: src/actions/move.cpp:1110
 msgid "Failed teleport! Exit not empty"
 msgstr "傳送失敗！出口堵塞"
 
-#: src/actions/move.cpp:1146
+#: src/actions/move.cpp:1126
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
 msgstr[0] "1個同盟單位"
 msgstr[1] "$friends個同盟單位"
 
-#: src/actions/move.cpp:1147
+#: src/actions/move.cpp:1127
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
 msgstr[0] "被1個敵方單位發現"
 msgstr[1] "$enemies個敵方單位"
 
-#: src/actions/move.cpp:1148
+#: src/actions/move.cpp:1128
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
 msgstr "發現非我方控制單位！（$friendphrase, $enemyphrase）"
 
-#: src/actions/move.cpp:1152
+#: src/actions/move.cpp:1132
 msgid "Enemy unit sighted!"
 msgid_plural "$enemies enemy units sighted!"
 msgstr[0] "發現敵方單位！"
 msgstr[1] "發現$enemies個敵方單位！"
 
-#: src/actions/move.cpp:1156
+#: src/actions/move.cpp:1136
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
 msgstr[0] "發現同盟單位"
 msgstr[1] "發現$friends個同盟單位"
 
-#: src/actions/move.cpp:1171
+#: src/actions/move.cpp:1151
 msgid "(press $hotkey to keep moving)"
 msgstr "（按 $hotkey 鍵繼續移動）"
 
-#: src/addon/client.cpp:71
+#: src/addon/client.cpp:74
 msgid "Connecting to $server_address|..."
 msgstr "正在連接到 $server_address|..."
 
-#: src/addon/client.cpp:85
+#: src/addon/client.cpp:119
 msgid "Downloading list of add-ons..."
 msgstr "下載模組清單..."
 
-#: src/addon/client.cpp:99
+#: src/addon/client.cpp:140
 msgid "Requesting distribution terms..."
 msgstr "請求來源..."
 
-#: src/addon/client.cpp:123
+#: src/addon/client.cpp:164
 msgid ""
 "The add-on <i>$addon_title</i> has an invalid id '$addon_id' and cannot be "
 "published."
 msgstr "此模組<i>$addon_title</i>使用無效的模組Id '$addon_id' 故無法發佈。"
 
-#: src/addon/client.cpp:149
+#: src/addon/client.cpp:190
 msgid ""
 "The add-on <i>$addon_title</i> has a file or directory containing invalid "
 "characters and cannot be published."
 msgstr "此模組<i>$addon_title</i>的檔案或資料夾包含無法使用的字元故無法發佈。"
 
-#: src/addon/client.cpp:157
+#: src/addon/client.cpp:198
 msgid ""
 "The add-on <i>$addon_title</i> has an invalid file or directory name and "
 "cannot be published. File or directory names may not contain '..' or end "
@@ -5558,7 +5517,7 @@ msgstr ""
 "\n"
 "&quot; * / : &lt; &gt; ? \\ | ~"
 
-#: src/addon/client.cpp:168
+#: src/addon/client.cpp:209
 msgid ""
 "The add-on <i>$addon_title</i> contains files or directories with case "
 "conflicts. File or directory names may not be differently-cased versions of "
@@ -5567,39 +5526,37 @@ msgstr ""
 "此模組<i>$addon_title</i>的檔案或資料夾有大小寫衝突。其名稱不可同名但大小寫不"
 "同的版本。"
 
-#: src/addon/client.cpp:183
+#: src/addon/client.cpp:224
 #, fuzzy
-#| msgid "Sending add-on <i>$addon_title</i>..."
-msgid ""
-"Requesting the older version composition for the add-on <i>$addon_title</"
-"i>..."
-msgstr "正在傳送模組 <i>$addon_title</i>..."
+#| msgid "Requesting distribution terms..."
+msgid "Requesting file index..."
+msgstr "請求來源..."
 
-#: src/addon/client.cpp:199
+#: src/addon/client.cpp:240
 #, fuzzy
 #| msgid "Sending add-on <i>$addon_title</i>..."
 msgid "Sending an update pack for the add-on <i>$addon_title</i>..."
 msgstr "正在傳送模組 <i>$addon_title</i>..."
 
-#: src/addon/client.cpp:220
+#: src/addon/client.cpp:261
 msgid "Sending add-on <i>$addon_title</i>..."
 msgstr "正在傳送模組 <i>$addon_title</i>..."
 
-#: src/addon/client.cpp:253
+#: src/addon/client.cpp:294
 msgid "Removing add-on <i>$addon_title</i> from the server..."
 msgstr "正在從伺服器移除模組 <i>$addon_title</i>..."
 
-#: src/addon/client.cpp:281
+#: src/addon/client.cpp:323
 msgid "Downloading add-on <i>$addon_title</i>..."
 msgstr "正在下載模組 <i>$addon_title</i>..."
 
-#: src/addon/client.cpp:333 src/addon/client.cpp:359
+#: src/addon/client.cpp:342 src/addon/client.cpp:368
 msgid ""
 "The add-on <i>$addon_title</i> has an invalid file or directory name and "
 "cannot be installed."
 msgstr "此模組 <i>$addon_title</i> 的檔案或資料夾名稱錯誤導致無法安裝。"
 
-#: src/addon/client.cpp:338 src/addon/client.cpp:364
+#: src/addon/client.cpp:347 src/addon/client.cpp:373
 msgid ""
 "The add-on <i>$addon_title</i> has file or directory names with case "
 "conflicts. This may cause problems."
@@ -5607,11 +5564,11 @@ msgstr ""
 "此模組 <i>$addon_title</i> 的檔案或資料夾的名稱大小寫衝突。這可能會導致錯誤發"
 "生。"
 
-#: src/addon/client.cpp:408
+#: src/addon/client.cpp:406
 msgid "The server responded with an error:"
 msgstr "伺服器回應錯誤："
 
-#: src/addon/client.cpp:458
+#: src/addon/client.cpp:456
 msgid ""
 "The selected add-on has the following dependency, which is not currently "
 "installed or available from the server. Do you wish to continue?"
@@ -5623,11 +5580,11 @@ msgstr[0] ""
 msgstr[1] ""
 "這些模組必須仰賴這個來源以下的附加模組，這些目前未安裝，您要安裝嗎？"
 
-#: src/addon/client.cpp:467
+#: src/addon/client.cpp:465
 msgid "Broken Dependencies"
 msgstr "來源已損毀"
 
-#: src/addon/client.cpp:507
+#: src/addon/client.cpp:505
 msgid ""
 "The following dependency could not be installed. Do you still wish to "
 "continue?"
@@ -5637,109 +5594,109 @@ msgid_plural ""
 msgstr[0] "這個來源已無法安裝，您依然要繼續嗎？"
 msgstr[1] "這些來源已無法安裝，您依然要繼續嗎？"
 
-#: src/addon/client.cpp:511
+#: src/addon/client.cpp:509
 msgid "Dependencies Installation Failed"
 msgstr "來源安裝失敗"
 
-#: src/addon/client.cpp:534
+#: src/addon/client.cpp:532
 msgid ""
 "The add-on '$addon|' is already installed and contains additional "
 "information that will be permanently lost if you continue:"
 msgstr ""
 "這個模組 '$addon|' 已經安裝且包含額外資訊，如果繼續將永久遺失相關資料："
 
-#: src/addon/client.cpp:538
+#: src/addon/client.cpp:536
 msgid "Publishing information file (.pbl)"
 msgstr "發佈訊息檔 (.pbl)"
 
-#: src/addon/client.cpp:542
+#: src/addon/client.cpp:540
 msgid "Version control system (VCS) information"
 msgstr "版本控制系統 (VCS) 資訊"
 
-#: src/addon/client.cpp:546
+#: src/addon/client.cpp:544
 msgid "Do you really wish to continue?"
 msgstr "您想繼續嗎？"
 
-#: src/addon/client.cpp:548 src/addon/manager_ui.cpp:174
-#: src/game_initialization/multiplayer.cpp:231
+#: src/addon/client.cpp:546 src/addon/manager_ui.cpp:172
+#: src/game_initialization/multiplayer.cpp:361
 msgid "Confirm"
 msgstr "確認"
 
-#: src/addon/client.cpp:668
+#: src/addon/client.cpp:685
 msgid "Add-ons Manager"
 msgstr "模組管理員"
 
-#: src/addon/info.cpp:244
+#: src/addon/info.cpp:252
 msgid "addon_type^Campaign"
 msgstr "戰役"
 
-#: src/addon/info.cpp:246
+#: src/addon/info.cpp:254
 msgid "addon_type^Scenario"
 msgstr "章節"
 
-#: src/addon/info.cpp:248
+#: src/addon/info.cpp:256
 msgid "addon_type^SP/MP Campaign"
 msgstr "多人遊戲戰役"
 
-#: src/addon/info.cpp:250
+#: src/addon/info.cpp:258
 msgid "addon_type^MP era"
 msgstr "多人遊戲時代"
 
-#: src/addon/info.cpp:252
+#: src/addon/info.cpp:260
 msgid "addon_type^MP faction"
 msgstr "多人遊戲陣營"
 
-#: src/addon/info.cpp:254
+#: src/addon/info.cpp:262
 msgid "addon_type^MP map-pack"
 msgstr "多人遊戲地圖"
 
-#: src/addon/info.cpp:256
+#: src/addon/info.cpp:264
 msgid "addon_type^MP scenario"
 msgstr "多人遊戲章節"
 
-#: src/addon/info.cpp:258
+#: src/addon/info.cpp:266
 msgid "addon_type^MP campaign"
 msgstr "多人遊戲戰役"
 
-#: src/addon/info.cpp:260
+#: src/addon/info.cpp:268
 msgid "addon_type^Modification"
 msgstr "資料改動"
 
-#: src/addon/info.cpp:262
+#: src/addon/info.cpp:270
 msgid "addon_type^Core"
 msgstr "核心"
 
-#: src/addon/info.cpp:264
+#: src/addon/info.cpp:272
 msgid "addon_type^Resources"
 msgstr "資源"
 
-#: src/addon/info.cpp:266
+#: src/addon/info.cpp:274
 msgid "addon_type^Other"
 msgstr "其他"
 
-#: src/addon/info.cpp:268
+#: src/addon/info.cpp:276
 msgid "addon_type^(unknown)"
 msgstr "（未知）"
 
-#: src/addon/info.cpp:305
+#: src/addon/info.cpp:313
 msgid "unit_byte^B"
 msgstr "B"
 
-#: src/addon/manager_ui.cpp:82 src/addon/manager_ui.cpp:293
+#: src/addon/manager_ui.cpp:82 src/addon/manager_ui.cpp:291
 msgid "Network communication error."
 msgstr "網絡通訊錯誤。"
 
-#: src/addon/manager_ui.cpp:85 src/addon/manager_ui.cpp:296
+#: src/addon/manager_ui.cpp:85 src/addon/manager_ui.cpp:294
 msgid "Remote host disconnected."
 msgstr "遠程主機關閉。"
 
-#: src/addon/manager_ui.cpp:88 src/addon/manager_ui.cpp:299
+#: src/addon/manager_ui.cpp:88 src/addon/manager_ui.cpp:297
 msgid ""
 "A problem occurred when trying to create the files necessary to install this "
 "add-on."
 msgstr "安裝這個模組時發生錯誤。"
 
-#: src/addon/manager_ui.cpp:97 src/addon/manager_ui.cpp:308
+#: src/addon/manager_ui.cpp:97 src/addon/manager_ui.cpp:306
 msgid ""
 "A local file with add-on publishing information could not be read.\n"
 "\n"
@@ -5751,7 +5708,7 @@ msgstr ""
 "檔案： $path\n"
 "錯誤訊息： $msg"
 
-#: src/addon/manager_ui.cpp:105 src/addon/manager_ui.cpp:314
+#: src/addon/manager_ui.cpp:105 src/addon/manager_ui.cpp:312
 msgid "The add-ons server address specified is not valid."
 msgstr "模組伺服器位址格式錯誤。"
 
@@ -5759,13 +5716,13 @@ msgstr "模組伺服器位址格式錯誤。"
 msgid "You have no add-ons installed."
 msgstr "您沒有安裝任何模組。"
 
-#: src/addon/manager_ui.cpp:169
+#: src/addon/manager_ui.cpp:167
 msgid "Are you sure you want to remove the following installed add-on?"
 msgid_plural "Are you sure you want to remove the following installed add-ons?"
 msgstr[0] "您確定要移除模組？"
 msgstr[1] "您確定要移除模組？"
 
-#: src/addon/manager_ui.cpp:195
+#: src/addon/manager_ui.cpp:193
 msgid ""
 "The following add-on appears to have publishing or version control "
 "information stored locally, and will not be removed:"
@@ -5777,69 +5734,205 @@ msgstr[0] ""
 msgstr[1] ""
 "下列模組似乎在本機中儲存了發布信息或是版本控制信息，因此將不會被移除："
 
-#: src/addon/manager_ui.cpp:205
+#: src/addon/manager_ui.cpp:203
 msgid "The following add-on could not be deleted properly:"
 msgid_plural "The following add-ons could not be deleted properly:"
 msgstr[0] "無法移除模組:"
 msgstr[1] "無法移除模組:"
 
-#: src/addon/manager_ui.cpp:212
+#: src/addon/manager_ui.cpp:210
 msgid "Add-on Deleted"
 msgid_plural "Add-ons Deleted"
 msgstr[0] "模組已移除"
 msgstr[1] "模組已移除"
 
-#: src/addon/manager_ui.cpp:214
+#: src/addon/manager_ui.cpp:212
 msgid "The following add-on was successfully deleted:"
 msgid_plural "The following add-ons were successfully deleted:"
 msgstr[0] "以下附加模組有錯誤，無法讀取："
 msgstr[1] "以下附加模組有錯誤，無法讀取："
 
-#: src/addon/manager_ui.cpp:270
+#: src/addon/manager_ui.cpp:268
 msgid "An error occurred while downloading the add-ons list from the server."
 msgstr "與伺服器模組清單通訊錯誤。"
 
-#: src/addon/manager_ui.cpp:284
+#: src/addon/manager_ui.cpp:282
 msgid "Could not find an add-on matching id $addon_id on the add-on server."
 msgstr "無法在這個伺服器找到符合id為$addon_id的模組。"
 
-#: src/chat_command_handler.cpp:111
+#: src/addon/validation.cpp:448
+msgid "Success."
+msgstr ""
+
+#: src/addon/validation.cpp:452
+msgid "Incorrect add-on passphrase."
+msgstr ""
+
+#: src/addon/validation.cpp:456
+msgid "Upload denied. Please contact the server administration for assistance."
+msgstr ""
+
+#: src/addon/validation.cpp:460
+msgid "Attempted to upload an update pack for a non-existent add-on."
+msgstr ""
+
+#: src/addon/validation.cpp:469
+msgid "No add-on data was supplied by the client."
+msgstr ""
+
+#: src/addon/validation.cpp:473
+#, fuzzy
+#| msgid "Invalid location"
+msgid "Invalid upload pack."
+msgstr "無效位置"
+
+#: src/addon/validation.cpp:477
+#, fuzzy
+#| msgid "Invalid tag name"
+msgid "Invalid add-on name."
+msgstr "無效標籤名"
+
+#: src/addon/validation.cpp:481
+msgid "Formatting character in add-on name."
+msgstr ""
+
+#: src/addon/validation.cpp:485
+msgid ""
+"The add-on contains files or directories with illegal names.\n"
+"\n"
+"Names containing whitespace, control characters, or any of the following "
+"symbols are not allowed:\n"
+"\n"
+"    \" * / : < > ? \\ | ~\n"
+"\n"
+"Additionally, names may not be longer than 255 characters, contain '..', or "
+"end with '.'."
+msgstr ""
+
+#: src/addon/validation.cpp:495
+#, fuzzy
+#| msgid ""
+#| "The add-on <i>$addon_title</i> contains files or directories with case "
+#| "conflicts. File or directory names may not be differently-cased versions "
+#| "of the same string."
+msgid ""
+"The add-on contains files or directories with case conflicts.\n"
+"\n"
+"Names in the same directory may not be differently-cased versions of each "
+"other."
+msgstr ""
+"此模組<i>$addon_title</i>的檔案或資料夾有大小寫衝突。其名稱不可同名但大小寫不"
+"同的版本。"
+
+#: src/addon/validation.cpp:501
+msgid "The add-on name contains an invalid UTF-8 sequence."
+msgstr ""
+
+#: src/addon/validation.cpp:510
+#, fuzzy
+#| msgid "No add-ons to update"
+msgid "No add-on title specified."
+msgstr "沒有要更新的模組"
+
+#: src/addon/validation.cpp:514
+msgid "No add-on author/maintainer name specified."
+msgstr ""
+
+#: src/addon/validation.cpp:518
+msgid "No add-on version specified."
+msgstr ""
+
+#: src/addon/validation.cpp:522
+#, fuzzy
+#| msgid "No description available."
+msgid "No add-on description specified."
+msgstr "沒有資料。"
+
+#: src/addon/validation.cpp:526
+msgid "No add-on author/maintainer email specified."
+msgstr ""
+
+#: src/addon/validation.cpp:530
+msgid "Missing passphrase."
+msgstr ""
+
+#: src/addon/validation.cpp:534
+msgid "Formatting character in add-on title."
+msgstr ""
+
+#: src/addon/validation.cpp:538
+#, fuzzy
+#| msgid "Invalid unit type"
+msgid "Invalid or unspecified add-on type."
+msgstr "無效單位類型"
+
+#: src/addon/validation.cpp:542
+msgid "Version number not greater than the latest uploaded version."
+msgstr ""
+
+#: src/addon/validation.cpp:546
+msgid "The add-on publish information contains an invalid UTF-8 sequence."
+msgstr ""
+
+#: src/addon/validation.cpp:555
+msgid "Unspecified server error."
+msgstr ""
+
+#: src/addon/validation.cpp:559
+msgid "Server is in read-only mode."
+msgstr ""
+
+#: src/addon/validation.cpp:563
+#, fuzzy
+#| msgid "You have no add-ons installed."
+msgid "Corrupted server add-ons list."
+msgstr "您沒有安裝任何模組。"
+
+#: src/addon/validation.cpp:567
+msgid "Empty add-on version list on the server."
+msgstr ""
+
+#: src/addon/validation.cpp:577
+msgid "Unspecified validation failure."
+msgstr ""
+
+#: src/chat_command_handler.cpp:112
 msgid "Added to ignore list: $nick"
 msgstr "已加入黑名單：$nick"
 
-#: src/chat_command_handler.cpp:111
+#: src/chat_command_handler.cpp:112
 msgid "ignores list"
 msgstr "黑名單"
 
-#: src/chat_command_handler.cpp:115 src/chat_command_handler.cpp:134
+#: src/chat_command_handler.cpp:116 src/chat_command_handler.cpp:135
 msgid "Invalid username: $nick"
 msgstr "名稱錯誤：$nick"
 
-#: src/chat_command_handler.cpp:130
+#: src/chat_command_handler.cpp:131
 msgid "Added to friends list: $nick"
 msgstr "已加入好友清單：$nick"
 
-#: src/chat_command_handler.cpp:130
+#: src/chat_command_handler.cpp:131
 msgid "friends list"
 msgstr "好友名單"
 
-#: src/chat_command_handler.cpp:146
+#: src/chat_command_handler.cpp:147
 msgid "Removed from list: $nick"
 msgstr "從清單移除：$nick"
 
-#: src/chat_command_handler.cpp:146
+#: src/chat_command_handler.cpp:147
 msgid "friends and ignores list"
 msgstr "好友與黑名單"
 
-#: src/chat_command_handler.cpp:158
+#: src/chat_command_handler.cpp:157
 msgid "version"
 msgstr "版本"
 
-#: src/chat_command_handler.cpp:170
+#: src/chat_command_handler.cpp:169
 msgid "nick registration"
 msgstr "註冊暱稱"
 
-#: src/chat_command_handler.cpp:170
+#: src/chat_command_handler.cpp:169
 msgid "requesting information for user $nick"
 msgstr "查看 $nick 玩家的資訊"
 
@@ -5847,7 +5940,7 @@ msgstr "查看 $nick 玩家的資訊"
 msgid "(A) — admin command"
 msgstr "(A) - 管理者指令"
 
-#: src/chat_command_handler.hpp:58 src/menu_events.cpp:1207
+#: src/chat_command_handler.hpp:58 src/menu_events.cpp:1193
 msgid "(admin only)"
 msgstr "（只限管理者）"
 
@@ -5867,7 +5960,7 @@ msgstr "禁止並踢出一個玩家或觀察者。如果他不在遊戲中，則
 #: src/chat_command_handler.hpp:83 src/chat_command_handler.hpp:85
 #: src/chat_command_handler.hpp:87 src/chat_command_handler.hpp:108
 #: src/chat_command_handler.hpp:110 src/chat_command_handler.hpp:112
-#: src/chat_command_handler.hpp:116
+#: src/chat_command_handler.hpp:118
 msgid "<nickname>"
 msgstr "<暱稱>"
 
@@ -5946,71 +6039,79 @@ msgid "Remove a nickname from your ignores or friends list."
 msgstr "將玩家從您的好友名單或黑名單中去除。"
 
 #: src/chat_command_handler.hpp:114
+msgid "<N>"
+msgstr ""
+
+#: src/chat_command_handler.hpp:114
+msgid "Get a random number between 1 and N visible in the game setup lobby."
+msgstr ""
+
+#: src/chat_command_handler.hpp:116
 msgid "Display version information."
 msgstr "顯示版本資訊。"
 
-#: src/chat_command_handler.hpp:116
+#: src/chat_command_handler.hpp:118
 msgid "Request information about a nickname."
 msgstr "查看一名玩家的資訊。"
 
-#: src/chat_command_handler.hpp:118 src/chat_command_handler.hpp:121
-#: src/chat_command_handler.hpp:123
+#: src/chat_command_handler.hpp:120 src/chat_command_handler.hpp:123
+#: src/chat_command_handler.hpp:125
 msgid "<room>"
 msgstr "<遊戲>"
 
-#: src/chat_command_handler.hpp:118
+#: src/chat_command_handler.hpp:120
 msgid "Join a room."
 msgstr "加入遊戲。"
 
-#: src/chat_command_handler.hpp:121
+#: src/chat_command_handler.hpp:123
 msgid "Part a room."
 msgstr "部份遊戲。"
 
-#: src/chat_command_handler.hpp:123
+#: src/chat_command_handler.hpp:125
 msgid "List room members."
 msgstr "成員清單。"
 
-#: src/chat_command_handler.hpp:125
+#: src/chat_command_handler.hpp:127
 msgid "List available rooms."
 msgstr "可加入遊戲列表。"
 
-#: src/chat_command_handler.hpp:127
+#: src/chat_command_handler.hpp:129
 msgid "<room> <msg>"
 msgstr "<遊戲> <訊息>"
 
-#: src/chat_command_handler.hpp:127
+#: src/chat_command_handler.hpp:129
 msgid "Room message."
 msgstr "遊戲訊息。"
 
-#: src/chat_command_handler.hpp:129
+#: src/chat_command_handler.hpp:131
 msgid "<room> <type> [value]"
 msgstr "<遊戲> <類型> [值]"
 
-#: src/chat_command_handler.hpp:129
+#: src/chat_command_handler.hpp:131
 msgid "Room query."
 msgstr "遊戲查詢。"
 
-#: src/chat_events.cpp:61
+#: src/chat_events.cpp:59
 msgid "Unknown debug level: '$level'."
 msgstr "未知調式級別：'$level'。"
 
-#: src/chat_events.cpp:63 src/chat_events.cpp:72
+#: src/chat_events.cpp:61 src/chat_events.cpp:70
 msgid "error"
 msgstr "錯誤"
 
-#: src/chat_events.cpp:70
+#: src/chat_events.cpp:68
 msgid "Unknown debug domain: '$domain'."
 msgstr "未知調試域：'$domain'。"
 
-#: src/chat_events.cpp:80
+#: src/chat_events.cpp:78
 msgid "Switched domain: '$domain' to level: '$level'."
 msgstr "域已切換：'$domain' 切换到 '$level' 級別。"
 
-#: src/chat_events.cpp:152
+#: src/chat_events.cpp:153
 msgid "whisper to $receiver"
 msgstr "對 $receiver 發出悄悄話"
 
-#: src/chat_events.cpp:159
+#: src/chat_events.cpp:160
 msgid "whisper: $sender"
 msgstr "悄悄話：$sender"
 
@@ -6042,7 +6143,7 @@ msgstr "不正確的不維護等級 $level (應為1到4)"
 msgid "Chat message"
 msgstr "聊天訊息"
 
-#: src/desktop/windows_tray_notification.cpp:125 src/game_config.cpp:575
+#: src/desktop/windows_tray_notification.cpp:125 src/game_config.cpp:578
 msgid "The Battle for Wesnoth"
 msgstr "The Battle for Wesnoth"
 
@@ -6074,101 +6175,101 @@ msgstr "%b %d"
 msgid "%b %d %Y"
 msgstr "%b %d %Y"
 
-#: src/game_config.cpp:523
+#: src/game_config.cpp:526
 msgid "Invalid color in range: "
 msgstr "無效的色彩範圍："
 
-#: src/game_config_manager.cpp:237 src/game_config_manager.cpp:246
-#: src/game_config_manager.cpp:258
+#: src/game_config_manager.cpp:253 src/game_config_manager.cpp:263
+#: src/game_config_manager.cpp:275
 msgid "Error validating data core."
 msgstr "驗證資料核心時發生錯誤。"
 
-#: src/game_config_manager.cpp:238
+#: src/game_config_manager.cpp:254
 msgid "Found a core without id attribute."
 msgstr "找到一個不含Id的核心。"
 
-#: src/game_config_manager.cpp:239 src/game_config_manager.cpp:249
-#: src/game_config_manager.cpp:262
+#: src/game_config_manager.cpp:255 src/game_config_manager.cpp:266
+#: src/game_config_manager.cpp:279
 msgid "Skipping the core."
 msgstr "略過核心中。"
 
 # 這是指遊戲編譯時的id嗎？
-#: src/game_config_manager.cpp:247 src/game_config_manager.cpp:259
-#: src/game_config_manager.cpp:282
+#: src/game_config_manager.cpp:264 src/game_config_manager.cpp:276
+#: src/game_config_manager.cpp:299
 msgid "Core ID: "
 msgstr "核心ID："
 
-#: src/game_config_manager.cpp:248
+#: src/game_config_manager.cpp:265
 msgid "The ID is already in use."
 msgstr "這個ID已被使用。"
 
-#: src/game_config_manager.cpp:260
+#: src/game_config_manager.cpp:277
 msgid "Core Path: "
 msgstr "核心路徑："
 
-#: src/game_config_manager.cpp:261
+#: src/game_config_manager.cpp:278
 msgid "File not found."
 msgstr "找不到檔案。"
 
-#: src/game_config_manager.cpp:281 src/game_config_manager.cpp:293
+#: src/game_config_manager.cpp:298 src/game_config_manager.cpp:310
 msgid "Error loading core data."
 msgstr "載入核心時發生錯誤。"
 
-#: src/game_config_manager.cpp:283
+#: src/game_config_manager.cpp:300
 msgid "Error loading the core with named id."
 msgstr "載入指定 id 核心時出現錯誤。"
 
-#: src/game_config_manager.cpp:284
+#: src/game_config_manager.cpp:301
 msgid "Falling back to the default core."
 msgstr "退回使用預設核心。"
 
-#: src/game_config_manager.cpp:294
+#: src/game_config_manager.cpp:311
 msgid "Can't locate the default core."
 msgstr "找不到預設核心。"
 
-#: src/game_config_manager.cpp:295
+#: src/game_config_manager.cpp:312
 msgid "The game will now exit."
 msgstr "遊戲即將結束。"
 
-#: src/game_config_manager.cpp:346
+#: src/game_config_manager.cpp:361
 msgid ""
 "Error loading custom game configuration files. The game will try without "
 "loading add-ons."
 msgstr "載入自訂的遊戲設置時發生錯誤。遊戲將試著排除模組啟動。"
 
-#: src/game_config_manager.cpp:353
+#: src/game_config_manager.cpp:368
 msgid ""
 "Error loading custom game configuration files. The game will fallback to the "
 "default core files."
 msgstr "載入自訂的遊戲設置時發生錯誤。遊戲將採用預設的設置。"
 
-#: src/game_config_manager.cpp:362
+#: src/game_config_manager.cpp:377
 msgid ""
 "Error loading default core game configuration files. The game will now exit."
 msgstr "載入預設遊戲核心時出錯，遊戲將跳出。"
 
-#: src/game_config_manager.cpp:514
+#: src/game_config_manager.cpp:529
 msgid "Use [modify_unit_type]\n"
 msgstr ""
 
-#: src/game_config_manager.cpp:538
+#: src/game_config_manager.cpp:568
 msgid "instead, use the macro with the same name in the [campaign] tag"
 msgstr ""
 
-#: src/game_config_manager.cpp:586
+#: src/game_config_manager.cpp:619
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
 msgstr[0] "以下附加模組有錯誤且無法讀取："
 msgstr[1] "以下附加模組有錯誤且無法讀取："
 
-#: src/game_config_manager.cpp:590
+#: src/game_config_manager.cpp:623
 msgid "Please report this to the author or maintainer of this add-on."
 msgid_plural ""
 "Please report this to the respective authors or maintainers of these add-ons."
 msgstr[0] "請向此作者或管理員回報這個模組。"
 msgstr[1] "請向此作者或管理員回報這些模組。"
 
-#: src/game_events/pump.cpp:476 src/game_launcher.cpp:951
+#: src/game_events/pump.cpp:476 src/game_launcher.cpp:922
 msgid "Error: "
 msgstr "錯誤："
 
@@ -6188,53 +6289,53 @@ msgstr "資訊："
 msgid "$login|’s game"
 msgstr "$login 的遊戲"
 
-#: src/game_initialization/connect_engine.cpp:89
+#: src/game_initialization/connect_engine.cpp:98
 msgid "Team"
 msgstr "團隊"
 
-#: src/game_initialization/connect_engine.cpp:995
+#: src/game_initialization/connect_engine.cpp:972
 msgid "Anonymous player"
 msgstr "匿名玩家"
 
-#: src/game_initialization/connect_engine.cpp:1000
-#: src/game_initialization/connect_engine.cpp:1298
+#: src/game_initialization/connect_engine.cpp:977
+#: src/game_initialization/connect_engine.cpp:1275
 msgid "Computer Player"
 msgstr "電腦玩家"
 
-#: src/game_initialization/connect_engine.cpp:1042
+#: src/game_initialization/connect_engine.cpp:1019
 msgid "$playername $side"
 msgstr "$playername $side"
 
-#: src/game_initialization/connect_engine.cpp:1294
+#: src/game_initialization/connect_engine.cpp:1271
 msgid "Network Player"
 msgstr "網絡玩家"
 
-#: src/game_initialization/connect_engine.cpp:1297
+#: src/game_initialization/connect_engine.cpp:1274
 msgid "Local Player"
 msgstr "本機玩家"
 
-#: src/game_initialization/connect_engine.cpp:1299
+#: src/game_initialization/connect_engine.cpp:1276
 msgid "Nobody"
 msgstr "沒有人"
 
-#: src/game_initialization/connect_engine.cpp:1302
+#: src/game_initialization/connect_engine.cpp:1279
 msgid "Reserved"
 msgstr "保留"
 
-#: src/game_initialization/create_engine.cpp:73
-#: src/game_initialization/create_engine.cpp:663
+#: src/game_initialization/create_engine.cpp:72
+#: src/game_initialization/create_engine.cpp:661
 msgid "Map could not be loaded: "
 msgstr "地圖無法載入："
 
-#: src/game_initialization/create_engine.cpp:77
+#: src/game_initialization/create_engine.cpp:76
 msgid "Map could not be loaded."
 msgstr "地圖無法載入。"
 
-#: src/game_initialization/create_engine.cpp:94
+#: src/game_initialization/create_engine.cpp:93
 msgid "not available."
 msgstr "無法使用。"
 
-#: src/game_initialization/create_engine.cpp:149
+#: src/game_initialization/create_engine.cpp:148
 msgid "Custom map."
 msgstr "自訂地圖。"
 
@@ -6287,64 +6388,64 @@ msgstr "找不到 $faction 的首領類型"
 msgid "Cannot obtain genders for invalid leader $leader"
 msgstr "無法獲得有效領袖 $leader"
 
-#: src/game_initialization/lobby_data.cpp:224
+#: src/game_initialization/lobby_data.cpp:227
 msgid "Missing addon: $name"
 msgstr "丟失的模組：$name"
 
-#: src/game_initialization/lobby_data.cpp:226
+#: src/game_initialization/lobby_data.cpp:229
 msgid "Missing addon: $id"
 msgstr "丟失的模組：$id"
 
-#: src/game_initialization/lobby_data.cpp:258
+#: src/game_initialization/lobby_data.cpp:261
 msgid "Unknown era"
 msgstr "未知時代"
 
-#: src/game_initialization/lobby_data.cpp:325
-#: src/game_initialization/lobby_data.cpp:358
+#: src/game_initialization/lobby_data.cpp:328
+#: src/game_initialization/lobby_data.cpp:362
 msgid "scenario_abbreviation^S"
 msgstr "S"
 
-#: src/game_initialization/lobby_data.cpp:344
+#: src/game_initialization/lobby_data.cpp:348
 msgid "Remote scenario"
 msgstr "控制章節"
 
-#: src/game_initialization/lobby_data.cpp:366
-#: src/game_initialization/lobby_data.cpp:389
+#: src/game_initialization/lobby_data.cpp:369
+#: src/game_initialization/lobby_data.cpp:395
 msgid "campaign_abbreviation^C"
 msgstr "C"
 
-#: src/game_initialization/lobby_data.cpp:394
+#: src/game_initialization/lobby_data.cpp:401
 msgid "Unknown scenario"
 msgstr "未知章節"
 
-#: src/game_initialization/lobby_data.cpp:404
+#: src/game_initialization/lobby_data.cpp:415
 msgid "Reloaded game"
 msgstr "已載入的遊戲"
 
-#: src/game_initialization/lobby_data.cpp:419
+#: src/game_initialization/lobby_data.cpp:430
 msgid "Vacant Slot:"
 msgid_plural "Vacant Slots:"
 msgstr[0] "空位："
 msgstr[1] "空位："
 
-#: src/game_initialization/lobby_data.cpp:421
+#: src/game_initialization/lobby_data.cpp:432
 msgid "mp_game_available_slots^Full"
 msgstr "已滿"
 
-#: src/game_initialization/lobby_data.cpp:432
-#: src/game_initialization/lobby_data.cpp:434 src/savegame.cpp:645
+#: src/game_initialization/lobby_data.cpp:443
+#: src/game_initialization/lobby_data.cpp:445 src/savegame.cpp:648
 msgid "Turn"
 msgstr "回合"
 
-#: src/game_initialization/lobby_data.cpp:447
+#: src/game_initialization/lobby_data.cpp:458
 msgid "vision^none"
 msgstr "無"
 
-#: src/game_initialization/lobby_data.cpp:456
+#: src/game_initialization/lobby_data.cpp:467
 msgid "time limit^none"
 msgstr "無"
 
-#: src/game_initialization/lobby_data.cpp:500
+#: src/game_initialization/lobby_data.cpp:511
 msgid ""
 "The host's version of <i>$addon</i> is incompatible. They have version <b>"
 "$host_ver</b> while you have version <b>$local_ver</b>."
@@ -6352,7 +6453,7 @@ msgstr ""
 "與主機的<i>$addon</i>版本不相容。他們使用<b>$host_ver</b>版，而你使用<b>"
 "$local_ver</b>版。"
 
-#: src/game_initialization/lobby_data.cpp:514
+#: src/game_initialization/lobby_data.cpp:525
 msgid ""
 "Your version of <i>$addon</i> is incompatible. You have version <b>"
 "$local_ver</b> while the host has version <b>$host_ver</b>."
@@ -6360,33 +6461,29 @@ msgstr ""
 "與你的<i>$addon</i>版本不相容。你使用<b>$local_ver</b>版，而他們使用<b>"
 "$host_ver</b>版。"
 
-#: src/game_initialization/mp_game_utils.cpp:79
+#: src/game_initialization/mp_game_utils.cpp:76
 msgid "Defeat enemy leader(s)"
 msgstr "擊敗敵人首領"
 
-#: src/game_initialization/mp_game_utils.cpp:104
+#: src/game_initialization/mp_game_utils.cpp:101
 msgid "Cannot find era $era"
 msgstr "無法找到 $era"
 
-#: src/game_initialization/mp_game_utils.cpp:143
-msgid "Connection timed out"
-msgstr "連線愈時"
-
-#: src/game_initialization/multiplayer.cpp:74
+#: src/game_initialization/multiplayer.cpp:236
 msgid "Invalid address specified for multiplayer server"
 msgstr ""
 
-#: src/game_initialization/multiplayer.cpp:121
+#: src/game_initialization/multiplayer.cpp:271
 msgid ""
 "The server accepts versions '$required_version', but you are using version "
 "'$your_version'"
 msgstr "本伺服器需要版本 '$required_version'，但您的版本是 '$your_version'"
 
-#: src/game_initialization/multiplayer.cpp:131
+#: src/game_initialization/multiplayer.cpp:284
 msgid "Server-side redirect loop"
 msgstr "伺服器檔頭轉址"
 
-#: src/game_initialization/multiplayer.cpp:204
+#: src/game_initialization/multiplayer.cpp:334
 msgid ""
 "The nickname ‘$nick’ is inactive. You cannot claim ownership of this "
 "nickname until you activate your account via email or ask an administrator "
@@ -6395,29 +6492,29 @@ msgstr ""
 "此帳號 ‘$nick’ 尚未啟用。你必須使用電子郵件或直接請管理員來幫你啟用，否則無法"
 "取得此帳號的使用權。"
 
-#: src/game_initialization/multiplayer.cpp:213
+#: src/game_initialization/multiplayer.cpp:343
 msgid "Do you want to continue?"
 msgstr "您想儲存遊戲嗎？"
 
-#: src/game_initialization/multiplayer.cpp:215
+#: src/game_initialization/multiplayer.cpp:345
 msgid "Warning"
 msgstr "警告"
 
-#: src/game_initialization/multiplayer.cpp:258
-#: src/game_initialization/multiplayer.cpp:274
-#: src/game_initialization/multiplayer.cpp:277
+#: src/game_initialization/multiplayer.cpp:387
+#: src/game_initialization/multiplayer.cpp:408
+#: src/game_initialization/multiplayer.cpp:411
 msgid "Bad data received from server"
 msgstr "從伺服器收到損毀的資料"
 
-#: src/game_initialization/multiplayer.cpp:312
+#: src/game_initialization/multiplayer.cpp:446
 msgid "You must login first."
 msgstr "您必須先登入。"
 
-#: src/game_initialization/multiplayer.cpp:314
+#: src/game_initialization/multiplayer.cpp:448
 msgid "The nickname ‘$nick’ is already taken."
 msgstr "此帳號 '$nick' 已被使用。"
 
-#: src/game_initialization/multiplayer.cpp:316
+#: src/game_initialization/multiplayer.cpp:450
 msgid ""
 "The nickname ‘$nick’ contains invalid characters. Only alpha-numeric "
 "characters (one at minimum), underscores and hyphens are allowed."
@@ -6425,110 +6522,130 @@ msgstr ""
 "此帳號 '$nick' 包含無效字元，只能與用數字與英文字母（最少一個數字或字母）、底"
 "線和連字號(-)。"
 
-#: src/game_initialization/multiplayer.cpp:320
+#: src/game_initialization/multiplayer.cpp:454
 msgid "The nickname ‘$nick’ is too long. Nicks must be 20 characters or less."
 msgstr "此帳號 '$nick' 太長，匿稱必須小於20個字元。"
 
-#: src/game_initialization/multiplayer.cpp:322
+#: src/game_initialization/multiplayer.cpp:456
 msgid "The nickname ‘$nick’ is reserved and cannot be used by players."
 msgstr "此帳號 '$nick' 已被保留，無法被玩家使用。"
 
-#: src/game_initialization/multiplayer.cpp:324
+#: src/game_initialization/multiplayer.cpp:458
 msgid "The nickname ‘$nick’ is not registered on this server."
 msgstr "此帳號 '$nick' 尚未在本伺服器註冊。"
 
-#: src/game_initialization/multiplayer.cpp:325
+#: src/game_initialization/multiplayer.cpp:459
 msgid " This server disallows unregistered nicknames."
 msgstr "本伺服器不允許使用沒有註冊的帳號"
 
-#: src/game_initialization/multiplayer.cpp:328
+#: src/game_initialization/multiplayer.cpp:462
 msgid "The nickname ‘$nick’ is banned on this server’s forums for $duration|."
 msgstr "這個帳號 '$nick' 已經被伺服器的論壇封鎖：$duration|。"
 
-#: src/game_initialization/multiplayer.cpp:330
+#: src/game_initialization/multiplayer.cpp:464
 msgid "The nickname ‘$nick’ is banned on this server’s forums."
 msgstr "這個帳號 '$nick' 已經被伺服器的論壇封鎖。"
 
-#: src/game_initialization/multiplayer.cpp:334
+#: src/game_initialization/multiplayer.cpp:468
 msgid "Your IP address is banned on this server’s forums for $duration|."
 msgstr "您的 IP 位址已經被伺服器的論壇封鎖：$duration|。"
 
-#: src/game_initialization/multiplayer.cpp:336
+#: src/game_initialization/multiplayer.cpp:470
 msgid "Your IP address is banned on this server’s forums."
 msgstr "您的 IP 位址已經被伺服器的論壇封鎖。"
 
-#: src/game_initialization/multiplayer.cpp:340
+#: src/game_initialization/multiplayer.cpp:474
 msgid ""
 "The email address for the nickname ‘$nick’ is banned on this server’s forums "
 "for $duration|."
 msgstr "這個帳號 '$nick' 所使用的 e-mail 已經被伺服器的論壇封鎖：$duration|。"
 
-#: src/game_initialization/multiplayer.cpp:342
+#: src/game_initialization/multiplayer.cpp:476
 msgid ""
 "The email address for the nickname ‘$nick’ is banned on this server’s forums."
 msgstr "這個帳號 '$nick' 所使用的 e-mail 已經被伺服器的論壇封鎖。"
 
-#: src/game_initialization/multiplayer.cpp:345
-#: src/game_initialization/multiplayer.cpp:347
+#: src/game_initialization/multiplayer.cpp:479
+#: src/game_initialization/multiplayer.cpp:481
 msgid "The nickname ‘$nick’ is registered on this server."
 msgstr "這個帳號 '$nick' 已經在本伺服器註冊。"
 
-#: src/game_initialization/multiplayer.cpp:348
+#: src/game_initialization/multiplayer.cpp:482
 msgid ""
 "WARNING: There is already a client using this nickname, logging in will "
 "cause that client to be kicked!"
 msgstr "警告：已經有玩家使用這個帳戶登入。如果繼續登入將擠掉先前使用者！"
 
-#: src/game_initialization/multiplayer.cpp:351
+#: src/game_initialization/multiplayer.cpp:485
 msgid ""
 "Error in the login procedure (the server had no seed for your connection)."
 msgstr "登入錯誤（伺服器沒有連結）。"
 
-#: src/game_initialization/multiplayer.cpp:353
+#: src/game_initialization/multiplayer.cpp:487
 msgid "The password you provided was incorrect."
 msgstr "您輸入的密碼錯誤。"
 
-#: src/game_initialization/multiplayer.cpp:355
+#: src/game_initialization/multiplayer.cpp:489
 msgid "You have made too many login attempts."
 msgstr "您嘗試登入太多次了。"
 
-#: src/game_initialization/playcampaign.cpp:63
+#: src/game_initialization/playcampaign.cpp:75
+msgid "Scenario Report"
+msgstr "章節報告"
+
+#: src/game_initialization/playcampaign.cpp:77
+msgid "Victory"
+msgstr "勝利"
+
+#: src/game_initialization/playcampaign.cpp:78
+msgid "You have emerged victorious!"
+msgstr "您贏得了勝利！"
+
+#: src/game_initialization/playcampaign.cpp:80
+msgid "Defeat"
+msgstr "慘敗"
+
+#: src/game_initialization/playcampaign.cpp:81
+msgid "You have been defeated!"
+msgstr "您被打敗了！"
+
+#: src/game_initialization/playcampaign.cpp:117
 msgid "Remaining gold: "
 msgstr "所剩金幣： "
 
-#: src/game_initialization/playcampaign.cpp:67
+#: src/game_initialization/playcampaign.cpp:121
 msgid "Turns finished early: "
 msgstr "提早結束回合數： "
 
-#: src/game_initialization/playcampaign.cpp:68
+#: src/game_initialization/playcampaign.cpp:122
 msgid " per turn"
 msgstr " 金幣/回合"
 
-#: src/game_initialization/playcampaign.cpp:68
+#: src/game_initialization/playcampaign.cpp:122
 msgid "Early finish bonus: "
 msgstr "提早結束奬勵： "
 
-#: src/game_initialization/playcampaign.cpp:69
+#: src/game_initialization/playcampaign.cpp:123
 msgid "Total bonus: "
 msgstr "總奬勵： "
 
-#: src/game_initialization/playcampaign.cpp:71
+#: src/game_initialization/playcampaign.cpp:126
 msgid "Total gold: "
 msgstr "總金幣： "
 
-#: src/game_initialization/playcampaign.cpp:74
+#: src/game_initialization/playcampaign.cpp:130
 msgid "Carryover percentage: "
 msgstr "金幣轉移比例："
 
-#: src/game_initialization/playcampaign.cpp:77
+#: src/game_initialization/playcampaign.cpp:134
 msgid "Bonus gold: "
 msgstr "奬勵金幣: "
 
-#: src/game_initialization/playcampaign.cpp:79
+#: src/game_initialization/playcampaign.cpp:136
 msgid "Retained gold: "
 msgstr "所剩金幣： "
 
-#: src/game_initialization/playcampaign.cpp:92
+#: src/game_initialization/playcampaign.cpp:149
 msgid ""
 "You will start the next scenario with $gold on top of the defined minimum "
 "starting gold."
@@ -6538,7 +6655,7 @@ msgid_plural ""
 msgstr[0] "您將以 $gold 枚金幣開始下一章節。不會是遊戲預設資金。"
 msgstr[1] "您將以 $gold 枚金幣開始下一章節。不會是遊戲預設資金。"
 
-#: src/game_initialization/playcampaign.cpp:100
+#: src/game_initialization/playcampaign.cpp:156
 msgid ""
 "You will start the next scenario with the defined minimum starting gold."
 msgid_plural ""
@@ -6546,7 +6663,7 @@ msgid_plural ""
 msgstr[0] "您將在下一個章節中以預設資金開始遊戲。"
 msgstr[1] "您將在下一個章節中以預設資金開始遊戲。"
 
-#: src/game_initialization/playcampaign.cpp:108
+#: src/game_initialization/playcampaign.cpp:163
 msgid ""
 "You will start the next scenario with $gold or its defined minimum starting "
 "gold, whichever is higher."
@@ -6556,95 +6673,75 @@ msgid_plural ""
 msgstr[0] "您將以 $gold 枚金幣和預設資金中較高那個開始下一章節。"
 msgstr[1] "您將以 $gold 枚金幣和預設資金中較高那個開始下一章節。"
 
-#: src/game_initialization/playcampaign.cpp:138
-msgid "Scenario Report"
-msgstr "章節報告"
-
-#: src/game_initialization/playcampaign.cpp:140
-msgid "Victory"
-msgstr "勝利"
-
-#: src/game_initialization/playcampaign.cpp:141
-msgid "You have emerged victorious!"
-msgstr "您贏得了勝利！"
-
-#: src/game_initialization/playcampaign.cpp:143
-msgid "Defeat"
-msgstr "慘敗"
-
-#: src/game_initialization/playcampaign.cpp:144
-msgid "You have been defeated!"
-msgstr "您被打敗了！"
-
-#: src/game_initialization/playcampaign.cpp:297 src/game_launcher.cpp:904
+#: src/game_initialization/playcampaign.cpp:290 src/game_launcher.cpp:875
 msgid "The game could not be loaded: "
 msgstr "無法加載遊戲： "
 
-#: src/game_initialization/playcampaign.cpp:303 src/game_launcher.cpp:906
+#: src/game_initialization/playcampaign.cpp:296 src/game_launcher.cpp:877
 msgid "Error while playing the game: "
 msgstr "遊戲執行出錯： "
 
-#: src/game_initialization/playcampaign.cpp:306 src/game_launcher.cpp:943
+#: src/game_initialization/playcampaign.cpp:299 src/game_launcher.cpp:914
 msgid "The game map could not be loaded: "
 msgstr "無法加載遊戲地圖： "
 
-#: src/game_initialization/playcampaign.cpp:309 src/game_launcher.cpp:908
-#: src/game_launcher.cpp:1038
+#: src/game_initialization/playcampaign.cpp:302 src/game_launcher.cpp:879
+#: src/game_launcher.cpp:995
 msgid "Map generator error: "
 msgstr "地圖產生器錯誤："
 
-#: src/game_initialization/playcampaign.cpp:311
+#: src/game_initialization/playcampaign.cpp:304
 msgid "Error while reading the WML: "
 msgstr "讀取 WML 檔案時出錯："
 
-#: src/game_initialization/playcampaign.cpp:348
-#: src/playsingle_controller.cpp:309
+#: src/game_initialization/playcampaign.cpp:349
+#: src/playsingle_controller.cpp:321
 msgid "Game Over"
 msgstr "遊戲結束"
 
-#: src/game_initialization/playcampaign.cpp:349
+#: src/game_initialization/playcampaign.cpp:350
 msgid "This scenario has ended. Do you want to continue the campaign?"
 msgstr "這個章節已經結束了。您想繼續嗎?"
 
-#: src/game_initialization/playcampaign.cpp:417
+#: src/game_initialization/playcampaign.cpp:415
 msgid "Unknown scenario: '$scenario|'"
 msgstr "未知章節： '$scenario|'"
 
-#: src/game_initialization/singleplayer.cpp:42
+#: src/game_initialization/singleplayer.cpp:43
 msgid "No campaigns are available."
 msgstr "沒有可選戰役。"
 
-#: src/game_launcher.cpp:685 src/game_launcher.cpp:703
+#: src/game_launcher.cpp:680 src/game_launcher.cpp:699
 msgid "The file you have tried to load is corrupt"
 msgstr "您想載入的文件已損壞"
 
-#: src/game_launcher.cpp:688 src/game_launcher.cpp:706
-#: src/hotkey/hotkey_handler_sp.cpp:315 src/savegame.cpp:156
-#: src/savegame.cpp:311
+#: src/game_launcher.cpp:682 src/game_launcher.cpp:701
+#: src/hotkey/hotkey_handler_sp.cpp:315 src/savegame.cpp:154
+#: src/savegame.cpp:304
 msgid "The file you have tried to load is corrupt: '"
 msgstr "您試圖載入的文件已損壞：'"
 
-#: src/game_launcher.cpp:696
+#: src/game_launcher.cpp:691
 msgid "File I/O Error while reading the game"
 msgstr "當讀取遊戲時發生文件 I/O 錯誤"
 
-#: src/game_launcher.cpp:698
+#: src/game_launcher.cpp:693
 msgid "File I/O Error while reading the game: '"
 msgstr "當讀取遊戲時發生文件 I/O 錯誤：'"
 
-#: src/game_launcher.cpp:902
+#: src/game_launcher.cpp:873
 msgid "Error while starting server: "
 msgstr "遊戲執行錯誤："
 
-#: src/game_launcher.cpp:924
+#: src/game_launcher.cpp:895
 msgid "Connection failed: "
 msgstr "連線失敗："
 
-#: src/generators/default_map_generator_job.cpp:715
+#: src/generators/default_map_generator_job.cpp:706
 msgid "Random maps with an odd width aren't supported."
 msgstr "不支援奇數寬度的隨機地圖。"
 
-#: src/generators/default_map_generator_job.cpp:978
+#: src/generators/default_map_generator_job.cpp:969
 msgid ""
 "No valid castle location found. Too many or too few mountain hexes? (please "
 "check the 'max hill size' parameter)"
@@ -6656,7 +6753,7 @@ msgstr ""
 msgid "Linked group '$id' needs a 'fixed_width' or 'fixed_height' key."
 msgstr "連結群組 '$id' 需要有 'fixed_width' 或 'fixed_height' 的鍵值。"
 
-#: src/gui/dialogs/addon/install_dependencies.cpp:38
+#: src/gui/dialogs/addon/install_dependencies.cpp:36
 msgid ""
 "The selected add-on has the following dependency, which is outdated or not "
 "currently installed. Do you wish to install it before continuing?"
@@ -6668,47 +6765,51 @@ msgstr[0] ""
 msgstr[1] ""
 "選中的模組有以下依賴模組，但它目前是舊版或尚未安裝。您希望安裝它並繼續嗎？"
 
-#: src/gui/dialogs/game_stats.hpp:43
+#: src/gui/dialogs/game_stats.hpp:41
 msgid "No visible sides found."
 msgstr "找不到可見的陣營。"
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:110
+#: src/gui/dialogs/multiplayer/match_history.cpp:30
+msgid "Match History — $player"
+msgstr ""
+
+#: src/gui/dialogs/multiplayer/player_info.cpp:105
 msgid "In game:"
 msgstr "遊戲："
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:112
+#: src/gui/dialogs/multiplayer/player_info.cpp:107
 msgid "(observing)"
 msgstr "（觀察中）"
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:114
+#: src/gui/dialogs/multiplayer/player_info.cpp:109
 msgid "(playing)"
 msgstr "（遊戲中）"
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:117
+#: src/gui/dialogs/multiplayer/player_info.cpp:112
 msgid "In lobby"
 msgstr "在大廳"
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:146
+#: src/gui/dialogs/multiplayer/player_info.cpp:141
 msgid "On friends list"
 msgstr "在好友清單"
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:151
+#: src/gui/dialogs/multiplayer/player_info.cpp:146
 msgid "On ignores list"
 msgstr "在黑名單"
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:156
+#: src/gui/dialogs/multiplayer/player_info.cpp:151
 msgid "Neither a friend nor ignored"
 msgstr "不在好友或黑名單中"
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:161
+#: src/gui/dialogs/multiplayer/player_info.cpp:156
 msgid "You"
 msgstr "你"
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:164
+#: src/gui/dialogs/multiplayer/player_info.cpp:159
 msgid "Error"
 msgstr "錯誤"
 
-#: src/gui/dialogs/unit_list.hpp:45
+#: src/gui/dialogs/unit_list.hpp:40
 msgid "No units found."
 msgstr "沒有找到此單位。"
 
@@ -6724,121 +6825,121 @@ msgstr "是"
 msgid "Reference to unknown topic: "
 msgstr "引用未知主題： "
 
-#: src/help/help_impl.cpp:355
+#: src/help/help_impl.cpp:354
 msgid "Only available during a scenario."
 msgstr "僅在章節中可用。"
 
-#: src/help/help_impl.cpp:356 src/help/help_impl.cpp:392
+#: src/help/help_impl.cpp:355 src/help/help_impl.cpp:391
 msgid "Time of Day Schedule"
 msgstr "時段排程"
 
-#: src/help/help_impl.cpp:383
+#: src/help/help_impl.cpp:382
 msgid "Lawful Bonus:"
 msgstr "守序加成："
 
-#: src/help/help_impl.cpp:384
+#: src/help/help_impl.cpp:383
 msgid "Neutral Bonus:"
 msgstr "中立加成："
 
-#: src/help/help_impl.cpp:385
+#: src/help/help_impl.cpp:384
 msgid "Chaotic Bonus:"
 msgstr "渾沌加成："
 
-#: src/help/help_impl.cpp:386
+#: src/help/help_impl.cpp:385
 msgid "Liminal Bonus:"
 msgstr "閾界加成："
 
-#: src/help/help_impl.cpp:387
+#: src/help/help_impl.cpp:386
 msgid "Schedule"
 msgstr "排程"
 
-#: src/help/help_impl.cpp:479
+#: src/help/help_impl.cpp:478
 msgid "<header>text='Units with this special attack'</header>"
 msgstr "<header>text='擁有此效果的單位'</header>"
 
-#: src/help/help_impl.cpp:543
+#: src/help/help_impl.cpp:542
 msgid "<header>text='Units with this ability'</header>"
 msgstr "<header>text='擁有這個技能的單位'</header>"
 
-#: src/help/help_impl.cpp:573
+#: src/help/help_impl.cpp:572
 msgid "Era:"
 msgstr "時代："
 
-#: src/help/help_impl.cpp:581
+#: src/help/help_impl.cpp:580
 msgid "Factions"
 msgstr "陣營"
 
-#: src/help/help_impl.cpp:629
+#: src/help/help_impl.cpp:628
 msgid "Races: "
 msgstr "種族："
 
-#: src/help/help_impl.cpp:638 src/help/help_impl.cpp:1002
+#: src/help/help_impl.cpp:637 src/help/help_impl.cpp:1001
 msgid "Alignments: "
 msgstr "立場："
 
-#: src/help/help_impl.cpp:645
+#: src/help/help_impl.cpp:644
 msgid "Leaders"
 msgstr "首領"
 
-#: src/help/help_impl.cpp:654
+#: src/help/help_impl.cpp:653
 msgid "Recruits"
 msgstr "招募"
 
-#: src/help/help_impl.cpp:716 src/units/types.cpp:488
+#: src/help/help_impl.cpp:715 src/units/types.cpp:488
 msgid "No description available."
 msgstr "沒有資料。"
 
-#: src/help/help_impl.cpp:720 src/help/help_impl.cpp:722
+#: src/help/help_impl.cpp:719 src/help/help_impl.cpp:721
 msgid "Availability: "
 msgstr "可得性："
 
-#: src/help/help_impl.cpp:720
+#: src/help/help_impl.cpp:719
 msgid "Must-have"
 msgstr "被動"
 
-#: src/help/help_impl.cpp:722
+#: src/help/help_impl.cpp:721
 msgid "Unavailable"
 msgstr "不可用"
 
-#: src/help/help_impl.cpp:802 src/help/help_impl.cpp:979
+#: src/help/help_impl.cpp:801 src/help/help_impl.cpp:978
 msgid "race^Miscellaneous"
 msgstr "其它"
 
-#: src/help/help_impl.cpp:1002 src/reports.cpp:377
+#: src/help/help_impl.cpp:1001 src/reports.cpp:377
 msgid "Alignment: "
 msgstr "立場："
 
 #. TRANSLATORS: this is expected to say "[Dunefolk are] a group of units, all of whom are Humans",
 #. or "[Quenoth Elves are] a group of units, all of whom are Elves".
-#: src/help/help_impl.cpp:1021
+#: src/help/help_impl.cpp:1020
 msgid ""
 "This is a group of units, all of whom are <ref>dst='$topic_id' "
 "text='$help_taxonomy'</ref>"
 msgstr ""
 
-#: src/help/help_impl.cpp:1026
+#: src/help/help_impl.cpp:1025
 #, fuzzy
 #| msgid "<header>text='Units with this ability'</header>"
 msgid "<header>text='Subgroups of units within this group'</header>"
 msgstr "<header>text='擁有這個技能的單位'</header>"
 
-#: src/help/help_impl.cpp:1028
+#: src/help/help_impl.cpp:1027
 #, fuzzy
 #| msgid "<header>text='Units of this race'</header>"
 msgid "<header>text='Groups of units within this race'</header>"
 msgstr "<header>text='這個種族的單位'</header>"
 
-#: src/help/help_impl.cpp:1037
+#: src/help/help_impl.cpp:1036
 #, fuzzy
 #| msgid "<header>text='Units of this race'</header>"
 msgid "<header>text='Units of this group'</header>"
 msgstr "<header>text='這個種族的單位'</header>"
 
-#: src/help/help_impl.cpp:1039
+#: src/help/help_impl.cpp:1038
 msgid "<header>text='Units of this race'</header>"
 msgstr "<header>text='這個種族的單位'</header>"
 
-#: src/help/help_impl.cpp:1360
+#: src/help/help_impl.cpp:1359
 msgid "corrupted original file"
 msgstr "原始文件出錯"
 
@@ -6866,11 +6967,11 @@ msgstr "加速已啟用！"
 msgid "Accelerated speed disabled!"
 msgstr "加速已關閉！"
 
-#: src/hotkey/hotkey_handler.cpp:421
+#: src/hotkey/hotkey_handler.cpp:422
 msgid "Back to Turn "
 msgstr "回到上一回合"
 
-#: src/hotkey/hotkey_handler.cpp:427
+#: src/hotkey/hotkey_handler.cpp:428
 msgid "Back to Start"
 msgstr "回到初始"
 
@@ -6878,11 +6979,11 @@ msgstr "回到初始"
 msgid "(press $hotkey to deactivate)"
 msgstr "（按 $hotkey 來取消）"
 
-#: src/hotkey/hotkey_handler_sp.cpp:145 src/menu_events.cpp:2068
+#: src/hotkey/hotkey_handler_sp.cpp:145 src/menu_events.cpp:2094
 msgid "Planning mode activated!"
 msgstr "計劃模式已開啟！"
 
-#: src/hotkey/hotkey_handler_sp.cpp:147 src/menu_events.cpp:2071
+#: src/hotkey/hotkey_handler_sp.cpp:147 src/menu_events.cpp:2097
 msgid "Planning mode deactivated!"
 msgstr "計劃模式已關閉！"
 
@@ -6985,34 +7086,34 @@ msgid_plural "Aliases:"
 msgstr[0] "命令："
 msgstr[1] "命令："
 
-#: src/menu_events.cpp:178
+#: src/menu_events.cpp:164
 msgid "Save Map As"
 msgstr "地圖另存為"
 
-#: src/menu_events.cpp:189
+#: src/menu_events.cpp:175
 msgid "Map saved."
 msgstr "地圖已儲存。"
 
-#: src/menu_events.cpp:193
+#: src/menu_events.cpp:179
 msgid "Could not save the map: $msg"
 msgstr "無法儲存地圖: $msg"
 
-#: src/menu_events.cpp:221
+#: src/menu_events.cpp:207
 msgid "Message:"
 msgstr "訊息："
 
-#: src/menu_events.cpp:223
+#: src/menu_events.cpp:209
 msgid "Send to observers only"
 msgstr "僅發送給觀察者"
 
-#: src/menu_events.cpp:224
+#: src/menu_events.cpp:210
 msgid "Send to allies only"
 msgstr "僅發送給同盟"
 
 #. TRANSLATORS: An error that should never happen, might happen when loading an old savegame. If there are
 #. any units that the player can recruit then their standard recruitment dialog will be shown after this
 #. error message, otherwise they'll get the "You have no units available to recruit." error after this one.
-#: src/menu_events.cpp:280
+#: src/menu_events.cpp:266
 msgid "Error: there’s an unknown unit type on your recruit list: $unknown_ids"
 msgid_plural ""
 "Error: there are several unknown unit types on your recruit list: "
@@ -7020,38 +7121,38 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/menu_events.cpp:288
+#: src/menu_events.cpp:274
 msgid "You have no units available to recruit."
 msgstr "您沒有可供招募的單位。"
 
-#: src/menu_events.cpp:298
+#: src/menu_events.cpp:284
 msgid "No unit recruited."
 msgstr "未招募單位。"
 
-#: src/menu_events.cpp:323
+#: src/menu_events.cpp:309
 msgid "Internal error. Please report this as a bug! Details:\n"
 msgstr "內部錯誤：請回報此錯誤！詳細說明：\n"
 
-#: src/menu_events.cpp:329
+#: src/menu_events.cpp:315
 msgid "You cannot recruit a $unit_type_name at this time."
 msgstr "您目前無法招募 $unit_type_name。"
 
 #. TRANSLATORS: "plan" refers to Planning Mode
-#: src/menu_events.cpp:343
+#: src/menu_events.cpp:329
 msgid ""
 "At this point in your plan, you will not have enough gold to recruit this "
 "unit."
 msgstr "依照您的計畫，目前您沒有足夠的金幣招募該單位。"
 
-#: src/menu_events.cpp:345
+#: src/menu_events.cpp:331
 msgid "You do not have enough gold to recruit this unit."
 msgstr "您沒有足夠的金幣招募該單位。"
 
-#: src/menu_events.cpp:388
+#: src/menu_events.cpp:374
 msgid "You are separated from your soldiers and may not recall them."
 msgstr "您與您的單位已分離，因此不能招回他們。"
 
-#: src/menu_events.cpp:409
+#: src/menu_events.cpp:395
 msgid ""
 "There are no troops available to recall.\n"
 "(You must have veteran survivors from a previous scenario.)"
@@ -7059,85 +7160,85 @@ msgstr ""
 "沒有可以招回的單位\n"
 "（只能招回上一章節存活下來的單位。）"
 
-#: src/menu_events.cpp:413
+#: src/menu_events.cpp:399
 msgid "You currently can't recall at the highlighted location."
 msgstr "您不能在重點位置進行招回。"
 
-#: src/menu_events.cpp:425
+#: src/menu_events.cpp:411
 msgid "No unit recalled."
 msgstr "未招回單位。"
 
-#: src/menu_events.cpp:442
+#: src/menu_events.cpp:428
 msgid "You must have at least 1 gold piece to recall a unit."
 msgid_plural "You must have at least $cost gold pieces to recall this unit."
 msgstr[0] "要招回一個單位，您至少需要有1個金幣。"
 msgstr[1] "要招回一個單位，你至少需要有 $cost 個金幣。"
 
-#: src/menu_events.cpp:588
+#: src/menu_events.cpp:574
 msgid "You cannot end your turn yet!"
 msgstr "您還不可以結束自己的回合！"
 
-#: src/menu_events.cpp:603
+#: src/menu_events.cpp:589
 msgid ""
 "You have not started your turn yet. Do you really want to end your turn?"
 msgstr "您在這回合還沒有任何動作。您確定想結束本回合嗎？"
 
-#: src/menu_events.cpp:612
+#: src/menu_events.cpp:598
 msgid "Some units have movement left. Do you really want to end your turn?"
 msgstr "有些單位還可以動作。您確定要結束本回合嗎？"
 
-#: src/menu_events.cpp:621
+#: src/menu_events.cpp:607
 msgid "Some units have not moved. Do you really want to end your turn?"
 msgstr "有些單位還沒有動作。您確定要結束本回合嗎？"
 
-#: src/menu_events.cpp:678
+#: src/menu_events.cpp:664
 msgid "Rename Unit"
 msgstr "重新命名單位"
 
-#: src/menu_events.cpp:679
+#: src/menu_events.cpp:665
 msgid "Name:"
 msgstr "名稱："
 
-#: src/menu_events.cpp:856
+#: src/menu_events.cpp:842
 msgid "Clear Labels"
 msgstr "清除標籤"
 
-#: src/menu_events.cpp:857
+#: src/menu_events.cpp:843
 msgid "Are you sure you want to clear map labels?"
 msgstr "您確定要清除地圖標籤嗎？"
 
-#: src/menu_events.cpp:1058
+#: src/menu_events.cpp:1044
 msgid "Search"
 msgstr "搜索"
 
-#: src/menu_events.cpp:1198
+#: src/menu_events.cpp:1184
 msgid "(D) — debug only, (N) — network only, (A) — admin only"
 msgstr "(D) - 偵錯專用, (N) - 網路專用, (A) - 管理者專用"
 
-#: src/menu_events.cpp:1205
+#: src/menu_events.cpp:1191
 msgid "(debug command)"
 msgstr "（偵錯指令）"
 
-#: src/menu_events.cpp:1206
+#: src/menu_events.cpp:1192
 msgid "(network only)"
 msgstr "（只限網路）"
 
-#: src/menu_events.cpp:1208
+#: src/menu_events.cpp:1194
 msgid "(not during other events)"
 msgstr "(不在其它事件流程中)"
 
-#: src/menu_events.cpp:1237
+#: src/menu_events.cpp:1223
 msgid "Refresh gui."
 msgstr "重整介面。"
 
-#: src/menu_events.cpp:1238
+#: src/menu_events.cpp:1224
 msgid "Switch a side to/from AI control."
 msgstr "切換一陣營由AI控制。"
 
 #. TRANSLATORS: These are the arguments accepted by the "droid" command,
 #. which must be a side-number and then optionally one of "on", "off" or "full".
 #. As with the command's name, "on", "off" and "full" are hardcoded, and shouldn't change in the translation.
-#: src/menu_events.cpp:1242
+#: src/menu_events.cpp:1228
 #, fuzzy
 #| msgid ""
 #| "[<side> [on/off]]\n"
@@ -7150,333 +7251,345 @@ msgstr ""
 "[<陣營> [on/off]]\n"
 "“on” = 啟動AI控制，“off” = 該陣營由玩家控制"
 
-#: src/menu_events.cpp:1243
+#: src/menu_events.cpp:1229
 msgid "Change terrain type of current hex"
 msgstr ""
 
 #. TRANSLATORS: [both|base|overlay] are hardcoded literal arguments and shouldn't be translated.
-#: src/menu_events.cpp:1245
+#: src/menu_events.cpp:1231
 msgid "<terrain type> [both|base|overlay]"
 msgstr ""
 
-#: src/menu_events.cpp:1246
+#: src/menu_events.cpp:1232
 msgid "Switch a side to/from idle state."
 msgstr "切換一陣營至閒置狀態。"
 
 #. TRANSLATORS: These are the arguments accepted by the "idle" command,
 #. which must be a side-number and then optionally "on" or "off".
 #. As with the command's name, "on" and "off" are hardcoded, and shouldn't change in the translation.
-#: src/menu_events.cpp:1250
+#: src/menu_events.cpp:1236
 msgid "command_idle^[<side> [on/off]]"
 msgstr "[<陣營> [on/off]]"
 
-#: src/menu_events.cpp:1251
+#: src/menu_events.cpp:1237
 msgid "Change the in-game theme."
 msgstr "改變遊戲中的主題。"
 
-#: src/menu_events.cpp:1253
+#: src/menu_events.cpp:1239
 msgid "<side> <nickname>"
 msgstr "<陣營> <暱稱>"
 
-#: src/menu_events.cpp:1253
+#: src/menu_events.cpp:1239
 msgid "Assign control of a side to a different player or observer."
 msgstr "將其中一方控制權給予另一玩家或觀察者。"
 
-#: src/menu_events.cpp:1254
+#: src/menu_events.cpp:1240
 msgid "Query the controller status of a side."
 msgstr "詢問一陣營的控制狀態。"
 
-#: src/menu_events.cpp:1255
+#: src/menu_events.cpp:1241
 msgid "<side>"
 msgstr "<陣營>"
 
-#: src/menu_events.cpp:1256
+#: src/menu_events.cpp:1242
 msgid "Clear chat history."
 msgstr "清除聊天記錄。"
 
-#: src/menu_events.cpp:1257
+#: src/menu_events.cpp:1243
 msgid "Debug foreground terrain."
 msgstr "偵錯前景地形。"
 
-#: src/menu_events.cpp:1259
+#: src/menu_events.cpp:1245
 msgid "Debug layers from terrain under the mouse."
 msgstr "偵錯滑鼠游標所指的地形圖層。"
 
-#: src/menu_events.cpp:1260
+#: src/menu_events.cpp:1246
 msgid "Show fps (Frames Per Second)."
 msgstr "顯示 FPS（每秒顯示影格數）。"
 
-#: src/menu_events.cpp:1262
+#: src/menu_events.cpp:1248
 msgid "Save game."
 msgstr "儲存遊戲。"
 
-#: src/menu_events.cpp:1264
+#: src/menu_events.cpp:1250
 msgid "Quit game."
 msgstr "退出遊戲。"
 
-#: src/menu_events.cpp:1267
+#: src/menu_events.cpp:1253
 msgid "Save and quit."
 msgstr "儲存並離開。"
 
-#: src/menu_events.cpp:1269
+#: src/menu_events.cpp:1255
 msgid "Ignore replay errors."
 msgstr "忽略錯誤回報。"
 
-#: src/menu_events.cpp:1270
+#: src/menu_events.cpp:1256
 msgid "Disable autosaves."
 msgstr "停止自動儲存。"
 
-#: src/menu_events.cpp:1272
+#: src/menu_events.cpp:1258
 msgid "<id>"
 msgstr "<ID>"
 
-#: src/menu_events.cpp:1272
+#: src/menu_events.cpp:1258
 msgid "Advance to the next scenario, or scenario identified by 'id'"
 msgstr "進入下一個章節或選取章節"
 
-#: src/menu_events.cpp:1274
+#: src/menu_events.cpp:1260
 msgid "Choose next scenario"
 msgstr "選擇下一個章節"
 
-#: src/menu_events.cpp:1277
+#: src/menu_events.cpp:1263
 msgid ""
 "Change turn number (and time of day), or increase by one if no number is "
 "specified."
 msgstr "改變回合數（還有時段），如果不設定，則為預設回合數。"
 
-#: src/menu_events.cpp:1277
+#: src/menu_events.cpp:1263
 msgid "[turn]"
 msgstr "[回合]"
 
-#: src/menu_events.cpp:1280
+#: src/menu_events.cpp:1266
 msgid ""
 "Change turn limit, or turn the turn limit off if no number is specified or "
 "it’s −1."
 msgstr "改變回合數上限，如果值為-1，則回合數無上限。"
 
-#: src/menu_events.cpp:1280
+#: src/menu_events.cpp:1266
 msgid "[limit]"
 msgstr "[時間限制]"
 
-#: src/menu_events.cpp:1282
+#: src/menu_events.cpp:1268
 msgid "Turn debug mode on."
 msgstr "開啟除錯模式。"
 
-#: src/menu_events.cpp:1283
+#: src/menu_events.cpp:1269
 msgid "Turn debug mode off."
 msgstr "關閉除錯模式。"
 
-#: src/menu_events.cpp:1285 src/menu_events.cpp:1289
+#: src/menu_events.cpp:1271 src/menu_events.cpp:1275
 msgid "<command>[;<command>...]"
 msgstr "<指令>[;<指令>...]"
 
-#: src/menu_events.cpp:1285
+#: src/menu_events.cpp:1271
 msgid "Execute a Lua statement."
 msgstr "執行 Lua 狀態。"
 
-#: src/menu_events.cpp:1287
+#: src/menu_events.cpp:1273
 msgid "Grant higher privileges to Lua scripts."
 msgstr "給與 Lua 腳本更高權限。"
 
-#: src/menu_events.cpp:1288
+#: src/menu_events.cpp:1274
 msgid "Set the command used by the custom command hotkey"
 msgstr "自定指令的快捷鍵"
 
-#: src/menu_events.cpp:1291
+#: src/menu_events.cpp:1277
 msgid "Invoke a dialog allowing changing control of MP sides."
 msgstr "顯示一個多人遊戲陣營的畫面。"
 
-#: src/menu_events.cpp:1292
+#: src/menu_events.cpp:1278
 msgid "Launch the gamestate inspector"
 msgstr "啟動遊戲狀態檢視器"
 
-#: src/menu_events.cpp:1294
+#: src/menu_events.cpp:1280
 msgid "<name>[=<command>]"
 msgstr "<名字>[=<指令>]"
 
-#: src/menu_events.cpp:1294
+#: src/menu_events.cpp:1280
 msgid "Set or show alias to a command"
 msgstr "設定或顯示指令的名稱"
 
-#: src/menu_events.cpp:1296 src/menu_events.cpp:1301
+#: src/menu_events.cpp:1282 src/menu_events.cpp:1287
 msgid "<var>=<value>"
 msgstr "<變數>=<值>"
 
-#: src/menu_events.cpp:1296
+#: src/menu_events.cpp:1282
 msgid "Set a scenario variable."
 msgstr "設定遊戲變數。"
 
-#: src/menu_events.cpp:1297
+#: src/menu_events.cpp:1283
 msgid "<var>"
 msgstr "<變數>"
 
-#: src/menu_events.cpp:1297
+#: src/menu_events.cpp:1283
 msgid "Show a scenario variable."
 msgstr "顯示遊戲變數。"
 
 #. TRANSLATORS: Do not translate the word "advances"; it is a hardcoded literal argument.
-#: src/menu_events.cpp:1300
+#: src/menu_events.cpp:1286
 msgid ""
 "Modify a unit variable. (Only top level keys are supported, and "
 "advances=<number>.)"
 msgstr "修改一個單位的數值。（只支援最大數，進階=<數值>。）"
 
-#: src/menu_events.cpp:1307
+#: src/menu_events.cpp:1293
 msgid "Discover all units in help."
 msgstr "在說明中已探索所有單位。"
 
-#: src/menu_events.cpp:1308
+#: src/menu_events.cpp:1294
 msgid "'Undiscover' all units in help."
 msgstr "在說明中設定所有單位為未探索。"
 
-#: src/menu_events.cpp:1309
+#: src/menu_events.cpp:1295
 msgid "<unit type id>"
 msgstr "<單位類型 ID>"
 
-#: src/menu_events.cpp:1309
+#: src/menu_events.cpp:1295
 msgid "Create a unit."
 msgstr "創造一個單位。"
 
-#: src/menu_events.cpp:1310
+#: src/menu_events.cpp:1296
 msgid "Toggle fog for the current player."
 msgstr "為當前玩家設置戰爭迷霧。"
 
-#: src/menu_events.cpp:1311
+#: src/menu_events.cpp:1297
 msgid "Toggle shroud for the current player."
 msgstr "為目前玩家設定戰場黑幕。"
 
-#: src/menu_events.cpp:1312
+#: src/menu_events.cpp:1298
 msgid "<amount>"
 msgstr "<數量>"
 
-#: src/menu_events.cpp:1312
+#: src/menu_events.cpp:1298
 msgid "Give gold to the current player."
 msgstr "給玩家金幣。"
 
-#: src/menu_events.cpp:1313
+#: src/menu_events.cpp:1299
 msgid "<event name>"
 msgstr "<事件名稱>"
 
-#: src/menu_events.cpp:1313
+#: src/menu_events.cpp:1299
 msgid "Fire a game event."
 msgstr "觸發遊戲事件。"
 
-#: src/menu_events.cpp:1316
+#: src/menu_events.cpp:1302
 msgid "Toggle overlaying of x,y coordinates on hexes."
 msgstr "顯示格狀地形X,Y座標。"
 
-#: src/menu_events.cpp:1319
+#: src/menu_events.cpp:1305
 msgid "Toggle overlaying of terrain codes on hexes."
 msgstr "顯示格狀地形編碼。"
 
-#: src/menu_events.cpp:1322
+#: src/menu_events.cpp:1308
 msgid "Toggle overlaying of number of bitmaps on hexes."
 msgstr "切換多種格狀地圖上的點陣圖。"
 
-#: src/menu_events.cpp:1324
+#: src/menu_events.cpp:1310
 msgid "Toggle planning mode."
 msgstr "切換模式。"
 
-#: src/menu_events.cpp:1327
+#: src/menu_events.cpp:1313
 msgid "Access whiteboard options dialog."
 msgstr "進入選項對話框。"
 
-#: src/menu_events.cpp:1447
+#: src/menu_events.cpp:1433
 msgid "Could not find label or unit containing the string ‘$search’."
 msgstr "無法找到含有‘$search’字串的標籤或單位。"
 
-#: src/menu_events.cpp:1493
+#: src/menu_events.cpp:1480
 msgid "Can't droid invalid side: '$side'."
 msgstr "無法關閉/啟用無效陣營：'$side'。"
 
-#: src/menu_events.cpp:1496
+#: src/menu_events.cpp:1483
 msgid "Can't droid networked side: '$side'."
 msgstr "無法關閉/啟用網絡陣營：'$side'。"
 
-#: src/menu_events.cpp:1506 src/menu_events.cpp:1538
+#: src/menu_events.cpp:1497 src/menu_events.cpp:1513 src/menu_events.cpp:1545
+msgid ""
+"It is not allowed to change a side from AI to human control when it's not "
+"your turn."
+msgstr ""
+
+#: src/menu_events.cpp:1507 src/menu_events.cpp:1563
 msgid "Side '$side' controller is now controlled by: AI."
 msgstr "陣營 '$side' 現在由 AI 控制。"
 
-#: src/menu_events.cpp:1508
+#: src/menu_events.cpp:1509
 msgid "Side '$side' is already droided."
 msgstr "陣營 '$side' 之前已經被託管了。"
 
-#: src/menu_events.cpp:1515 src/menu_events.cpp:1533
+#: src/menu_events.cpp:1523 src/menu_events.cpp:1555
 msgid "Side '$side' controller is now controlled by: human."
 msgstr "陣營 '$side' 現在由人類控制。"
 
-#: src/menu_events.cpp:1517
+#: src/menu_events.cpp:1525
 #, fuzzy
 #| msgid "Side '$side' is already droided."
 msgid "Side '$side' is already not droided."
 msgstr "陣營 '$side' 之前已經被託管了。"
 
-#: src/menu_events.cpp:1524
+#: src/menu_events.cpp:1529
+msgid ""
+"It is not allowed to change a side from human to AI control when it's not "
+"your turn."
+msgstr ""
+
+#: src/menu_events.cpp:1539
 #, fuzzy
 #| msgid "Side '$side' controller is now controlled by: AI."
 msgid "Side '$side' controller is now fully controlled by: AI."
 msgstr "陣營 '$side' 現在由 AI 控制。"
 
-#: src/menu_events.cpp:1526
+#: src/menu_events.cpp:1541
 #, fuzzy
 #| msgid "Side '$side' is already droided."
 msgid "Side '$side' is already fully AI controlled."
 msgstr "陣營 '$side' 之前已經被託管了。"
 
-#: src/menu_events.cpp:1541
+#: src/menu_events.cpp:1566
 msgid ""
 "Invalid action provided for side '$side'. Valid actions are: on, off, full."
 msgstr ""
 
-#: src/menu_events.cpp:1583
+#: src/menu_events.cpp:1608
 msgid "Can't idle invalid side: '$side'."
 msgstr "無法閒置無效陣營：'$side'。"
 
-#: src/menu_events.cpp:1588
+#: src/menu_events.cpp:1613
 msgid "Can't idle networked side: '$side'."
 msgstr "無法閒置網路陣營：'$side'。"
 
-#: src/menu_events.cpp:1593
+#: src/menu_events.cpp:1618
 msgid "Can't idle local ai side: '$side'."
 msgstr "無法閒置本地AI陣營： '$side'。"
 
-#: src/menu_events.cpp:1653
+#: src/menu_events.cpp:1679
 msgid "Can't change control of invalid side: '$side'."
 msgstr "無法改變無效陣營的控制權：'$side'。"
 
-#: src/menu_events.cpp:1663
+#: src/menu_events.cpp:1689
 msgid "Can't change control of out-of-bounds side: '$side'."
 msgstr "無法改變超出範圍陣營的控制權：'$side'。"
 
-#: src/menu_events.cpp:1680
+#: src/menu_events.cpp:1706
 msgid "Can't query control of invalid side: '$side'."
 msgstr "無法查詢無效陣營的控制權：'$side'。"
 
-#: src/menu_events.cpp:1687
+#: src/menu_events.cpp:1713
 msgid "Can't query control of out-of-bounds side: '$side'."
 msgstr "無法查詢超出範圍陣營的控制權：'$side'。"
 
-#: src/menu_events.cpp:1808
+#: src/menu_events.cpp:1834
 msgid "Choose Scenario (Debug!)"
 msgstr "選擇章節（Debug！）"
 
-#: src/menu_events.cpp:1844
+#: src/menu_events.cpp:1870
 msgid "Debug mode activated!"
 msgstr "除錯模式已開啟！"
 
-#: src/menu_events.cpp:1847
+#: src/menu_events.cpp:1873
 msgid "Debug mode not available in network games"
 msgstr "在除錯模式下無法執行連線遊戲"
 
-#: src/menu_events.cpp:1854
+#: src/menu_events.cpp:1880
 msgid "Debug mode deactivated!"
 msgstr "除錯模式已關閉！"
 
-#: src/menu_events.cpp:1874
+#: src/menu_events.cpp:1900
 msgid "WARNING! Unsafe Lua Mode"
 msgstr "警告！不安全的Lua腳本模式"
 
-#: src/menu_events.cpp:1875
+#: src/menu_events.cpp:1901
 msgid ""
 "Executing Lua code in in this manner opens your computer to potential "
 "security breaches from any malicious add-ons or other programs you may have "
@@ -7488,55 +7601,55 @@ msgstr ""
 "\n"
 "除非你了解風險，否則請不要繼續。"
 
-#: src/menu_events.cpp:1880
+#: src/menu_events.cpp:1906
 msgid "Unsafe mode enabled!"
 msgstr "不安全模式已開啟！"
 
-#: src/menu_events.cpp:1929
+#: src/menu_events.cpp:1955
 msgid "Variable not found"
 msgstr "找不到變數"
 
-#: src/menu_events.cpp:1975
+#: src/menu_events.cpp:2001
 msgid ""
 "Invalid alignment: '$alignment', needs to be one of lawful, neutral, "
 "chaotic, or liminal."
 msgstr "無效陣營： '$alignment'，應該為守序、中立、混亂或邊緣。"
 
-#: src/menu_events.cpp:2001
+#: src/menu_events.cpp:2027
 msgid "Do you wish to clear all of your discovered units from help?"
 msgstr "你希望刪除說明裡的所有已發現的單位嗎？"
 
-#: src/menu_events.cpp:2015
+#: src/menu_events.cpp:2041
 msgid "Invalid unit type"
 msgstr "無效單位類型"
 
-#: src/menu_events.cpp:2022
+#: src/menu_events.cpp:2048
 msgid "Invalid location"
 msgstr "無效位置"
 
-#: src/menu_events.cpp:2095 src/menu_events.cpp:2121
+#: src/menu_events.cpp:2121 src/menu_events.cpp:2147
 msgid "prompt^Command:"
 msgstr "指令："
 
-#: src/mouse_events.cpp:1190
+#: src/mouse_events.cpp:1185
 msgid ""
 "You cannot move your leader away from the keep with some planned recruits or "
 "recalls left."
 msgstr "您的領袖必須在主堡裏才能招募或招回單位。"
 
-#: src/mouse_events.cpp:1285
+#: src/mouse_events.cpp:1280
 msgid "This unit has no usable weapons."
 msgstr "此單位沒有可用武器。"
 
-#: src/mp_game_settings.hpp:74
+#: src/mp_game_settings.hpp:71
 msgid "Independent"
 msgstr "獨立"
 
-#: src/mp_game_settings.hpp:75
+#: src/mp_game_settings.hpp:72
 msgid "No Mirror"
 msgstr "不使用鏡像"
 
-#: src/mp_game_settings.hpp:76
+#: src/mp_game_settings.hpp:73
 msgid "No Ally Mirror"
 msgstr "不使用盟友鏡像"
 
@@ -7573,7 +7686,7 @@ msgstr "$name 取得控制權"
 msgid "Turn changed"
 msgstr "交換回合"
 
-#: src/pathfind/pathfind.cpp:747
+#: src/pathfind/pathfind.cpp:743
 msgid "Terrain with a movement cost less than 1 encountered."
 msgstr "遇到消耗移動力小於1的地形。"
 
@@ -7584,39 +7697,39 @@ msgstr "遇到消耗移動力小於1的地形。"
 msgid "waiting for^a global variable"
 msgstr "等待連線數據"
 
-#: src/play_controller.cpp:255
+#: src/play_controller.cpp:245
 msgid "time left for current turn"
 msgstr "本回合剩餘時間"
 
-#: src/play_controller.cpp:257
+#: src/play_controller.cpp:247
 msgid "current local time"
 msgstr "當地時間"
 
-#: src/play_controller.cpp:1028
+#: src/play_controller.cpp:1073
 msgid ""
 "The game is out of sync. It might not make much sense to continue. Do you "
 "want to save your game?"
 msgstr "這款遊戲無法同步下去，再繼續下去也不會多好玩，您想儲存遊戲嗎？"
 
-#: src/play_controller.cpp:1029
+#: src/play_controller.cpp:1074
 msgid "Error details:"
 msgstr "錯誤詳細訊息："
 
-#: src/play_controller.cpp:1317
+#: src/play_controller.cpp:1368
 msgid "No objectives available"
 msgstr "無有效目標"
 
-#: src/playmp_controller.cpp:151
+#: src/playmp_controller.cpp:158
 msgid "Undoing moves not yet transmitted to the server."
 msgstr "取消還沒傳送至伺服器的移動。"
 
-#: src/playmp_controller.cpp:264 src/playsingle_controller.cpp:349
+#: src/playmp_controller.cpp:272 src/playsingle_controller.cpp:366
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
 "want to save the game?"
 msgstr "網路連線已中斷，將無法進行遊戲。您要儲存此遊戲嗎？"
 
-#: src/playmp_controller.cpp:266 src/playsingle_controller.cpp:351
+#: src/playmp_controller.cpp:276 src/playsingle_controller.cpp:370
 msgid ""
 "\n"
 "Do you want to save the game?"
@@ -7624,7 +7737,7 @@ msgstr ""
 "\n"
 "您確定要儲存遊戲嗎？"
 
-#: src/playmp_controller.cpp:266 src/playsingle_controller.cpp:351
+#: src/playmp_controller.cpp:276 src/playsingle_controller.cpp:370
 msgid ""
 "This game has been ended.\n"
 "Reason: "
@@ -7632,7 +7745,7 @@ msgstr ""
 "此遊戲已經結束。\n"
 "原因："
 
-#: src/playmp_controller.cpp:369
+#: src/playmp_controller.cpp:385
 msgid ""
 "The game is out of sync, and cannot continue. There are a number of reasons "
 "this could happen: this can occur if you or another player have modified "
@@ -7646,7 +7759,7 @@ msgstr ""
 "\n"
 "您想要儲存錯誤訊息嗎?"
 
-#: src/playmp_controller.cpp:412
+#: src/playmp_controller.cpp:430
 msgid ""
 "This side is in an idle state. To proceed with the game, it must be assigned "
 "to another controller. You may use :droid, :control or :give_control for "
@@ -7655,11 +7768,11 @@ msgstr ""
 "此陣營處於閒置狀態。欲進行遊戲，必須指定一位控制者。您可以使用如 :droid (AI控"
 "制)、:control (自己控制)或是 :give_control (交由指定玩家控制)。"
 
-#: src/playsingle_controller.cpp:153
+#: src/playsingle_controller.cpp:148
 msgid "Game Error"
 msgstr "遊戲錯誤"
 
-#: src/playsingle_controller.cpp:154
+#: src/playsingle_controller.cpp:149
 msgid ""
 "This multiplayer game uses an alternative random mode, if you don't know "
 "what this message means, then most likely someone is cheating or someone "
@@ -7668,53 +7781,53 @@ msgstr ""
 "此多人連線遊戲使用替代隨機模式，若您不了解此訊息的意思，那有可能是有人在做"
 "弊，或是重新載入損壞的遊戲。"
 
-#: src/playsingle_controller.cpp:309
+#: src/playsingle_controller.cpp:321
 msgid "The game is over."
 msgstr "本遊戲已結束。"
 
-#: src/playsingle_controller.cpp:442
+#: src/playsingle_controller.cpp:470
 msgid "It is now $name|’s turn"
 msgstr "輪到 $name| 了"
 
-#: src/playturn.cpp:277
+#: src/playturn.cpp:278
 msgid "Give control to their ally $player"
 msgstr "交由他的盟友$player控制"
 
-#: src/playturn.cpp:286
+#: src/playturn.cpp:287
 msgid "Give control to observer $player"
 msgstr "交由觀察者$player控制"
 
-#: src/playturn.cpp:291
+#: src/playturn.cpp:292
 msgid "Replace with AI"
 msgstr "用AI替換"
 
-#: src/playturn.cpp:292
+#: src/playturn.cpp:293
 msgid "Replace with local player"
 msgstr "用本機玩家替換"
 
-#: src/playturn.cpp:293
+#: src/playturn.cpp:294
 msgid "Set side to idle"
 msgstr "讓該陣營閒置"
 
-#: src/playturn.cpp:294
+#: src/playturn.cpp:295
 msgid "Save and abort game"
 msgstr "儲存並退出遊戲"
 
-#: src/playturn.cpp:298
+#: src/playturn.cpp:299
 msgid ""
 "$player who controlled side $side_drop has left the game. What do you want "
 "to do?"
 msgstr "控制 $side_drop 陣營的 $player 已經離開遊戲，您想要怎麼做？"
 
-#: src/quit_confirmation.cpp:59
+#: src/quit_confirmation.cpp:55
 msgid "Quit"
 msgstr "退出"
 
-#: src/quit_confirmation.cpp:94
+#: src/quit_confirmation.cpp:90
 msgid "Do you really want to quit?"
 msgstr "您確定想要離開嗎？"
 
-#: src/reports.cpp:172 src/savegame.cpp:420
+#: src/reports.cpp:172 src/savegame.cpp:419
 msgid "Name: "
 msgstr "名稱："
 
@@ -7782,215 +7895,211 @@ msgstr "本單位已被石化。不能攻撃或移動它。"
 msgid "Ability: "
 msgstr "能力："
 
-#: src/reports.cpp:426 src/reports.cpp:950
+#: src/reports.cpp:426 src/reports.cpp:953
 msgid " (inactive)"
 msgstr "（遲緩）"
 
-#: src/reports.cpp:486
+#: src/reports.cpp:489
 msgid "Resistances: "
 msgstr "抗性："
 
-#: src/reports.cpp:488
+#: src/reports.cpp:491
 msgid "(Att / Def)"
 msgstr "（攻擊/防禦）"
 
-#: src/reports.cpp:519
+#: src/reports.cpp:522
 msgid "Experience Modifier: "
 msgstr "經驗值修正："
 
-#: src/reports.cpp:569
+#: src/reports.cpp:572
 msgid "Terrain: "
 msgstr "地形："
 
-#: src/reports.cpp:586
+#: src/reports.cpp:589
 msgid "maximum^max."
 msgstr "最大。"
 
-#: src/reports.cpp:586
+#: src/reports.cpp:589
 msgid "minimum^min."
 msgstr "最小。"
 
-#: src/reports.cpp:591
+#: src/reports.cpp:594
 msgid "Defense: "
 msgstr "防禦："
 
-#: src/reports.cpp:625 src/reports.cpp:626
+#: src/reports.cpp:628 src/reports.cpp:629
 msgid "vision:"
 msgstr "視野："
 
-#: src/reports.cpp:630 src/reports.cpp:631
+#: src/reports.cpp:633 src/reports.cpp:634
 msgid "jamming:"
 msgstr "干擾："
 
-#: src/reports.cpp:660
+#: src/reports.cpp:663
 msgid "Movement Costs:"
 msgstr "移動點數消耗："
 
-#: src/reports.cpp:785 src/reports.cpp:1039 src/reports.cpp:1051
+#: src/reports.cpp:788 src/reports.cpp:1042 src/reports.cpp:1054
 msgid "Weapon: "
 msgstr "武器："
 
-#: src/reports.cpp:786 src/reports.cpp:1040
+#: src/reports.cpp:789 src/reports.cpp:1043
 msgid "Damage: "
 msgstr "傷害："
 
-#: src/reports.cpp:790
+#: src/reports.cpp:793
 msgid "Base damage: "
 msgstr "基礎傷害："
 
-#: src/reports.cpp:792 src/reports.cpp:826 src/reports.cpp:836
+#: src/reports.cpp:795 src/reports.cpp:829 src/reports.cpp:839
 msgid "With specials: "
 msgstr "特殊："
 
-#: src/reports.cpp:795
+#: src/reports.cpp:798
 msgid "Time of day: "
 msgstr "時刻："
 
-#: src/reports.cpp:799
+#: src/reports.cpp:802
 msgid "Leadership: "
 msgstr "領導："
 
-#: src/reports.cpp:803
+#: src/reports.cpp:806
 msgid "Slowed: "
 msgstr "減速："
 
-#: src/reports.cpp:807
+#: src/reports.cpp:810
 msgid "Attacks: "
 msgstr "攻撃："
 
-#: src/reports.cpp:811
+#: src/reports.cpp:814
 msgid "Max swarm bonus: "
 msgstr "最大連擊奬勵："
 
-#: src/reports.cpp:812 src/reports.cpp:831
+#: src/reports.cpp:815 src/reports.cpp:834
 msgid "Swarm: "
 msgstr "連撃："
 
-#: src/reports.cpp:813 src/reports.cpp:824 src/reports.cpp:835
+#: src/reports.cpp:816 src/reports.cpp:827 src/reports.cpp:838
 msgid "Base attacks: "
 msgstr "基礎攻擊："
 
-#: src/reports.cpp:819
+#: src/reports.cpp:822
 msgid "Specials: "
 msgstr "特殊："
 
-#: src/reports.cpp:829
+#: src/reports.cpp:832
 msgid "Subject to swarm: "
 msgstr "有效連擊："
 
-#: src/reports.cpp:856
+#: src/reports.cpp:859
 msgid "Weapon range: "
 msgstr "武器攻撃範圍："
 
-#: src/reports.cpp:857
+#: src/reports.cpp:860
 msgid "Damage type: "
 msgstr "傷害類型："
 
-#: src/reports.cpp:858
+#: src/reports.cpp:861
 msgid "Damage versus: "
 msgstr "傷害目標："
 
-#: src/reports.cpp:917
+#: src/reports.cpp:920
 msgid "Accuracy:"
 msgstr "命中："
 
-#: src/reports.cpp:922
+#: src/reports.cpp:925
 msgid "Parry:"
 msgstr "格檔："
 
-#: src/reports.cpp:948
+#: src/reports.cpp:951
 msgid "Weapon special: "
 msgstr "武器效果："
 
-#: src/reports.cpp:1023
+#: src/reports.cpp:1026
 msgid "weapon^None"
 msgstr "無"
 
-#: src/reports.cpp:1052
+#: src/reports.cpp:1055
 msgid "Total damage"
 msgstr "總傷害輸出"
 
-#: src/reports.cpp:1116
+#: src/reports.cpp:1119
 msgid "Attack"
 msgid_plural "Attacks"
 msgstr[0] "攻撃"
 msgstr[1] "攻撃"
 
 #. TRANSLATORS: This string is shown in the sidebar beneath the word "Attacks" when a unit can attack multiple times per turn
-#: src/reports.cpp:1124
+#: src/reports.cpp:1127
 msgid "Remaining: $left/$max"
 msgstr ""
 
-#: src/reports.cpp:1128
+#: src/reports.cpp:1131
 #, fuzzy
 #| msgid "This is not a multiplayer save."
 msgid "This unit can attack multiple times per turn."
 msgstr "這不是多人對戰的存檔。"
 
-#: src/reports.cpp:1220
+#: src/reports.cpp:1223
 msgid "Time of day schedule:"
 msgstr "時段排程："
 
-#: src/reports.cpp:1270
+#: src/reports.cpp:1273
 msgid "Time of day:"
 msgstr "時段："
 
-#: src/reports.cpp:1271 src/reports.cpp:1325
+#: src/reports.cpp:1274 src/reports.cpp:1328
 msgid "Lawful units: "
 msgstr "守序單位："
 
-#: src/reports.cpp:1273 src/reports.cpp:1327
+#: src/reports.cpp:1276 src/reports.cpp:1330
 msgid "Neutral units: "
 msgstr "中立單位："
 
-#: src/reports.cpp:1274 src/reports.cpp:1328
+#: src/reports.cpp:1277 src/reports.cpp:1331
 msgid "Chaotic units: "
 msgstr "渾沌單位："
 
-#: src/reports.cpp:1276 src/reports.cpp:1330
+#: src/reports.cpp:1279 src/reports.cpp:1333
 msgid "Liminal units: "
 msgstr "閾界單位："
 
-#: src/reports.cpp:1389
+#: src/reports.cpp:1392
 msgid "Turn Number"
 msgstr "回合數"
 
-#: src/reports.cpp:1391
-#, fuzzy
-#| msgid ""
-#| "When the game reaches the number of turns indicated by the second number, "
-#| "it will end."
+#: src/reports.cpp:1394
 msgid ""
 "When the game exceeds the number of turns indicated by the second number, it "
 "will end."
-msgstr "當遊戲回合數達第二個數字時，遊戲結束。"
+msgstr "當遊戲進行的回合數超過任務目標的回合數時，遊戲就會結束。"
 
-#: src/reports.cpp:1416
+#: src/reports.cpp:1419
 msgid "Gold"
 msgstr "金幣"
 
-#: src/reports.cpp:1416
+#: src/reports.cpp:1419
 msgid ""
 "The amount of gold currently available to recruit and maintain your army."
 msgstr "目前持有可供招募及維持軍隊的金幣。"
 
-#: src/reports.cpp:1435
+#: src/reports.cpp:1438
 msgid "The fraction of known villages that your side has captured."
 msgstr "您的陣營佔領的村莊比例。"
 
-#: src/reports.cpp:1435
+#: src/reports.cpp:1438
 msgid "Villages"
 msgstr "村莊"
 
-#: src/reports.cpp:1440
+#: src/reports.cpp:1443
 msgid "The total number of units on your side."
 msgstr "您陣營的單位總數。"
 
-#: src/reports.cpp:1440
+#: src/reports.cpp:1443
 msgid "Units"
 msgstr "部隊"
 
-#: src/reports.cpp:1450
+#: src/reports.cpp:1453
 msgid ""
 "The expenses incurred at the end of every turn to maintain your army. The "
 "first number is the amount of gold that will be deducted. It is equal to the "
@@ -8002,15 +8111,15 @@ msgstr ""
 "於村莊無法負荷的單位等級。第二個數字是總維護費，這包含因佔領村莊而減免的部份"
 "——換句話說，如果你失去所有村莊，你就必須支付這麼多的金幣。"
 
-#: src/reports.cpp:1450
+#: src/reports.cpp:1453
 msgid "Upkeep"
 msgstr "支出"
 
-#: src/reports.cpp:1487
+#: src/reports.cpp:1490
 msgid "Net Income"
 msgstr "淨收入"
 
-#: src/reports.cpp:1487
+#: src/reports.cpp:1490
 msgid ""
 "The net amount of gold you gain or lose each turn, taking into account "
 "income from controlled villages and payment of upkeep."
@@ -8018,23 +8127,23 @@ msgstr ""
 "每回合你所獲得或失去的金幣數量，透過你所控制村莊的收入及支出的開銷將會計算出"
 "該數量"
 
-#: src/reports.cpp:1655
+#: src/reports.cpp:1658
 msgid "Observers:"
 msgstr "觀察者："
 
-#: src/reports.cpp:1697
+#: src/reports.cpp:1700
 msgid "Clock"
 msgstr "時鐘"
 
-#: src/reports.cpp:1708
+#: src/reports.cpp:1711
 msgid "Battery"
 msgstr "電池"
 
-#: src/reports.cpp:1736
+#: src/reports.cpp:1739
 msgid "Countdown until your turn automatically ends."
 msgstr "倒數結束時，您的回合自動結束。"
 
-#: src/reports.cpp:1736
+#: src/reports.cpp:1739
 msgid "Turn Countdown"
 msgstr "回合倒數"
 
@@ -8047,154 +8156,154 @@ msgid "%a %b %d %H:%M %Y"
 msgstr "%a %b %d %H:%M %Y"
 
 #. TRANSLATORS: This string is used as part of a filename, as in, "HttT-The Elves Besieged replay.gz"
-#: src/save_index.cpp:261 src/savegame.cpp:572
+#: src/save_index.cpp:261 src/savegame.cpp:574
 msgid "replay"
 msgstr "遊戲錄影"
 
-#: src/save_index.cpp:345 src/savegame.cpp:72 src/savegame.cpp:608
-#: src/savegame.cpp:610
+#: src/save_index.cpp:345 src/savegame.cpp:71 src/savegame.cpp:610
+#: src/savegame.cpp:612
 msgid "Auto-Save"
 msgstr "自動存檔"
 
-#: src/savegame.cpp:206 src/savegame.cpp:210
+#: src/savegame.cpp:205 src/savegame.cpp:207
 msgid "Warning: The file you have tried to load is corrupt. Loading anyway.\n"
 msgstr "警告：您試圖載入的文件已損壞。繼續嘗試載入。\n"
 
-#: src/savegame.cpp:257
+#: src/savegame.cpp:251
 msgid ""
 "This save is from an old, unsupported version ($version_number|) and cannot "
 "be loaded."
 msgstr ""
 "這個存檔是由一個早期版本儲存的（$version_number|），現在的版本無法載入。"
 
-#: src/savegame.cpp:265
+#: src/savegame.cpp:260
 msgid ""
 "This save is from a different version of the game ($version_number|). Do you "
 "wish to try to load it?"
 msgstr "這個存檔來自於不同版本的遊戲（$version_number|）。您仍然要載入嗎？"
 
-#: src/savegame.cpp:268 src/savegame.cpp:317
+#: src/savegame.cpp:263 src/savegame.cpp:309
 msgid "Load Game"
 msgstr "載入遊戲"
 
-#: src/savegame.cpp:317
+#: src/savegame.cpp:309
 msgid "Replays are not supported in multiplayer mode."
 msgstr "多人連線不支援紀錄檔。"
 
-#: src/savegame.cpp:324
+#: src/savegame.cpp:316
 msgid "This is not a multiplayer save."
 msgstr "這不是多人對戰的存檔。"
 
-#: src/savegame.cpp:352
+#: src/savegame.cpp:350
 msgid "The game could not be saved: "
 msgstr "無法儲存遊戲： "
 
-#: src/savegame.cpp:420
+#: src/savegame.cpp:419
 msgid "Save already exists. Do you want to overwrite it?"
 msgstr "檔案已存在，要覆蓋嗎？"
 
-#: src/savegame.cpp:421
+#: src/savegame.cpp:420
 msgid "Overwrite?"
 msgstr "覆蓋？"
 
-#: src/savegame.cpp:429
+#: src/savegame.cpp:427
 msgid ""
 "Save names should not end on '.gz' or '.bz2'. Please remove the extension."
 msgstr "檔案名稱不能包含 '.gz' 或 '.bz2'。請選擇一個不同的名字。"
 
-#: src/savegame.cpp:477
+#: src/savegame.cpp:474
 msgid "Saved"
 msgstr "已儲存"
 
-#: src/savegame.cpp:477
+#: src/savegame.cpp:474
 msgid "The game has been saved."
 msgstr "遊戲已儲存。"
 
-#: src/savegame.cpp:507 src/savegame.cpp:527
+#: src/savegame.cpp:506 src/savegame.cpp:526
 msgid "Could not write to file"
 msgstr "無法寫入文件"
 
-#: src/savegame.cpp:562
+#: src/savegame.cpp:563
 msgid "Save Replay"
 msgstr "儲存遊戲錄影"
 
-#: src/savegame.cpp:590
+#: src/savegame.cpp:592
 msgid "Could not auto save the game. Please save the game manually."
 msgstr "不能自動存儲目前遊戲，請手動存檔。"
 
-#: src/savegame.cpp:638
+#: src/savegame.cpp:642
 msgid "Save Game"
 msgstr "儲存遊戲"
 
-#: src/savegame.cpp:652
+#: src/savegame.cpp:656
 msgid "Game state is corrupted"
 msgstr "遊戲狀態毀損"
 
-#: src/serialization/parser.cpp:157
+#: src/serialization/parser.cpp:155
 msgid "Unexpected characters at line start"
 msgstr "啟始處出現非預期字元"
 
-#: src/serialization/parser.cpp:184
+#: src/serialization/parser.cpp:182
 msgid "Missing closing tag for tag [$tag]"
 msgstr "[$tag] 標籤遺失其結束標籤"
 
-#: src/serialization/parser.cpp:185
+#: src/serialization/parser.cpp:183
 msgid "expected at $pos"
 msgstr "預期在 $pos"
 
-#: src/serialization/parser.cpp:186 src/serialization/parser.cpp:273
+#: src/serialization/parser.cpp:184 src/serialization/parser.cpp:271
 msgid "opened at $pos"
 msgstr "在 $pos 開啟"
 
-#: src/serialization/parser.cpp:204
+#: src/serialization/parser.cpp:202
 msgid "Unterminated [element] tag"
 msgstr "未終止的 [element] 標籤"
 
-#: src/serialization/parser.cpp:220 src/serialization/parser.cpp:288
+#: src/serialization/parser.cpp:218 src/serialization/parser.cpp:286
 msgid "Invalid tag name"
 msgstr "無效標籤名"
 
-#: src/serialization/parser.cpp:226
+#: src/serialization/parser.cpp:224
 msgid "Unterminated [+element] tag"
 msgstr "未終止的 [+element] 標籤"
 
-#: src/serialization/parser.cpp:250
+#: src/serialization/parser.cpp:248
 msgid "Invalid closing tag name"
 msgstr "無效的結束標籤名"
 
-#: src/serialization/parser.cpp:256
+#: src/serialization/parser.cpp:254
 msgid "Unterminated closing tag"
 msgstr "未終止的結束標籤"
 
-#: src/serialization/parser.cpp:260
+#: src/serialization/parser.cpp:258
 msgid "Unexpected closing tag"
 msgstr "非預期的結束標籤"
 
-#: src/serialization/parser.cpp:272
+#: src/serialization/parser.cpp:270
 msgid "Found invalid closing tag [/$tag2] for tag [$tag1]"
 msgstr "發現 [$tag1] 標籤有一無效結束標籤 [/$tag2]"
 
-#: src/serialization/parser.cpp:274
+#: src/serialization/parser.cpp:272
 msgid "closed at $pos"
 msgstr "在 $pos 關閉"
 
-#: src/serialization/parser.cpp:310 src/serialization/parser.cpp:326
+#: src/serialization/parser.cpp:308 src/serialization/parser.cpp:324
 msgid "Empty variable name"
 msgstr "空變數名"
 
-#: src/serialization/parser.cpp:318
+#: src/serialization/parser.cpp:316
 msgid "Unexpected characters after variable name (expected , or =)"
 msgstr "變數名稱後出現非預期字元（預期為 , 或 =）"
 
-#: src/serialization/parser.cpp:365 src/serialization/parser.cpp:405
+#: src/serialization/parser.cpp:363 src/serialization/parser.cpp:403
 msgid "Unterminated quoted string"
 msgstr "未終止的帶引號字串"
 
-#: src/serialization/parser.cpp:472
+#: src/serialization/parser.cpp:470
 msgid "at $pos"
 msgstr "在$pos"
 
-#: src/serialization/parser.cpp:485
+#: src/serialization/parser.cpp:483
 msgid "Value: '$value' Previous: '$previous_value'"
 msgstr "數值： '$value' 先前數值： '$previous_value'"
 
@@ -8272,34 +8381,34 @@ msgstr "Y"
 msgid "infix_binary^i"
 msgstr "i"
 
-#: src/synced_commands.cpp:410
+#: src/synced_commands.cpp:409
 msgid "(unknown player)"
 msgstr "（未知玩家）"
 
-#: src/synced_commands.cpp:415
+#: src/synced_commands.cpp:414
 msgid "The :$command debug command was used during $player’s turn"
 msgstr "玩家 $player 在他的回合使用除錯指令： $command"
 
-#: src/synced_commands.cpp:423
+#: src/synced_commands.cpp:422
 msgid ""
 "A player used a debug command during the game. If this is unexpected, it is "
 "possible the player in question is cheating."
 msgstr ""
 "一位玩家在遊戲中使用除錯指令。如果這沒事先溝通過，那他很有可能是在作弊。"
 
-#: src/synced_commands.cpp:425
+#: src/synced_commands.cpp:424
 msgid "Details:"
 msgstr "詳細信息："
 
-#: src/synced_commands.cpp:428
+#: src/synced_commands.cpp:427
 msgid "Do you wish to save the game before continuing?"
 msgstr "你希望在繼續遊戲前存檔嗎？"
 
-#: src/synced_commands.cpp:430
+#: src/synced_commands.cpp:429
 msgid "Debug Command Used"
 msgstr "除錯指令已被使用"
 
-#: src/synced_commands.cpp:536
+#: src/synced_commands.cpp:535
 msgid "A unit was created using debug mode during $player’s turn"
 msgstr "此單位是$player的回合透過除錯模式建立的"
 
@@ -8312,13 +8421,13 @@ msgstr[1] "等待 $sides 陣營的 $desc"
 #. TRANSLATORS: In networked games, this text is shown for other clients,
 #. while they wait for an action from another player.
 #. This text will be embedded into a sentence.
-#: src/synced_user_choice.hpp:42
+#: src/synced_user_choice.hpp:44
 msgid "waiting for^input"
 msgstr "輸入"
 
 #. TRANSLATORS: $color_id is the internal identifier of a side color, for example, 'lightred'.
 #. Translate the quotation marks only; leave "color_id" untranslated, as it's a variable name.
-#: src/team.cpp:995
+#: src/team.cpp:993
 msgid "“$color_id”"
 msgstr ""
 
@@ -8334,11 +8443,11 @@ msgstr "敵方村莊"
 msgid "Owned village"
 msgstr "我方村莊"
 
-#: src/theme.cpp:316
+#: src/theme.cpp:314
 msgid "border_size should be between 0.0 and 0.5."
 msgstr "border_size 應設為0.0到0.5之間的數值。"
 
-#: src/theme.cpp:566 src/theme.cpp:571
+#: src/theme.cpp:564 src/theme.cpp:569
 msgid "Hotkey(s): "
 msgstr "快捷鍵："
 
@@ -8419,15 +8528,15 @@ msgid_plural "<span color=\"$color\">$number_or_percent</span> movement points"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span> 行動數"
 msgstr[1] "<span color=\"$color\">$number_or_percent</span> 行動數"
 
-#: src/units/helper.cpp:66
+#: src/units/helper.cpp:59
 msgid "Level: "
 msgstr "等級："
 
-#: src/units/helper.cpp:69
+#: src/units/helper.cpp:62
 msgid "Advancements:"
 msgstr "可升級為："
 
-#: src/units/helper.cpp:82
+#: src/units/helper.cpp:75
 msgid "No advancement"
 msgstr "無法升級"
 
@@ -8447,44 +8556,44 @@ msgstr "混亂"
 msgid "female^liminal"
 msgstr "閾界"
 
-#: src/units/unit.cpp:1871
+#: src/units/unit.cpp:1823
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/units/unit.cpp:1877
+#: src/units/unit.cpp:1829
 msgid "<span color=\"$color\">$number_or_percent</span> HP"
 msgstr "<span color=\"$color\">$number_or_percent</span> HP"
 
-#: src/units/unit.cpp:1887
+#: src/units/unit.cpp:1839
 msgid "<span color=\"$color\">$number_or_percent</span> move"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> moves"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span> 行動數"
 msgstr[1] "<span color=\"$color\">$number_or_percent</span> 行動數"
 
-#: src/units/unit.cpp:1893
+#: src/units/unit.cpp:1845
 msgid "<span color=\"$color\">$number_or_percent</span> vision"
 msgstr "<span color=\"$color\">$number_or_percent</span> 視野"
 
-#: src/units/unit.cpp:1897
+#: src/units/unit.cpp:1849
 msgid "<span color=\"$color\">$number_or_percent</span> jamming"
 msgstr "<span color=\"$color\">$number_or_percent</span> 干擾"
 
-#: src/units/unit.cpp:1902
+#: src/units/unit.cpp:1854
 msgid "<span color=\"$color\">$number_or_percent</span> XP to advance"
 msgstr "<span color=\"$color\">$number_or_percent</span> 升級所需經驗值"
 
-#: src/units/unit.cpp:1906
+#: src/units/unit.cpp:1858
 msgid "<span color=\"$color\">$number_or_percent</span> attack per turn"
 msgid_plural ""
 "<span color=\"$color\">$number_or_percent</span> attacks per turn"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span> 每回合攻擊數"
 msgstr[1] "<span color=\"$color\">$number_or_percent</span> 每回合攻擊數"
 
-#: src/units/unit.cpp:1913
+#: src/units/unit.cpp:1865
 msgid "<span color=\"$color\">$number_or_percent</span> cost to recall"
 msgstr "<span color=\"$color\">$number_or_percent</span> 徵召費用"
 
-#: src/units/unit.cpp:2334
+#: src/units/unit.cpp:2287
 msgid "$effect_description per level"
 msgstr "每級 $effect_description"
 
@@ -8508,7 +8617,7 @@ msgstr "$year BF"
 msgid "$year AF"
 msgstr "$year AF"
 
-#: src/wesnothd_connection.cpp:418
+#: src/wesnothd_connection.cpp:422
 msgid "Disconnected from server."
 msgstr "伺服器斷線。"
 
@@ -8532,11 +8641,34 @@ msgstr "對 $player 隱藏計劃"
 msgid "Whiteboard Options"
 msgstr "白板選項"
 
-#~ msgid "Cancel"
-#~ msgstr "取消"
+#, fuzzy
+#~| msgid "Max HP bonus +3, Max XP +20%"
+#~ msgid "Max HP bonus +6%"
+#~ msgstr "最大生命值奬勵+3,最大經驗值+20%"
 
-#~ msgid "Battle for Wesnoth"
-#~ msgstr "Battle for Wesnoth"
+#, fuzzy
+#~| msgid "XP to advance"
+#~ msgid "$value| XP to advance"
+#~ msgstr "升級所需經驗值"
+
+#, fuzzy
+#~| msgid "Be more defensive"
+#~ msgid "+moves defense"
+#~ msgstr "更注重防守"
+
+#~ msgid "Use experimental PRNG combat"
+#~ msgstr "在戰鬥中使用測試版的 PRNG"
+
+#~ msgid ""
+#~ "Enables more determinstic chance-to-hit calculations. This is an "
+#~ "experimental feature designed to bring the observed hit/miss rate more in "
+#~ "line with the displayed percentages.\n"
+#~ "\n"
+#~ "Note: this option only affects singleplayer, and the ‘Save random seed’ "
+#~ "option must also be enabled when creating a game for this to work."
+#~ msgstr ""
+#~ "開啟具有更準確的命中率計算模式。這是一個測試版的功能，是為了讓遇到的命中/"
+#~ "閃避率和顯示的百分比更接近而設計的。"
 
 #~ msgid "Graphics scaling options"
 #~ msgstr "圖像縮放選項"
@@ -8662,6 +8794,9 @@ msgstr "白板選項"
 
 #~ msgid "Request a list of details you can set for your registered nickname."
 #~ msgstr "取得您註冊帳號的詳細資訊。"
+
+#~ msgid "Connection timed out"
+#~ msgstr "連線愈時"
 
 #~ msgid "No Saved Games"
 #~ msgstr "沒有存檔"
@@ -8913,11 +9048,6 @@ msgstr "白板選項"
 #~| msgid "Screenshot"
 #~ msgid "Screenshots..."
 #~ msgstr "螢幕截圖"
-
-#, fuzzy
-#~| msgid "Saved"
-#~ msgid "Save"
-#~ msgstr "已儲存"
 
 #~ msgid "Close"
 #~ msgstr "關閉"
@@ -10090,6 +10220,9 @@ msgstr "白板選項"
 #~ msgid "There are no players on your friends or ignore list."
 #~ msgstr "您的好友名單和黑名單是空的."
 
+#~ msgid "Battle for Wesnoth"
+#~ msgstr "Battle for Wesnoth"
+
 #~ msgid "save_compression_short^gzip"
 #~ msgstr "gzip"
 
@@ -10903,9 +11036,6 @@ msgstr "白板選項"
 #~ "will not be offered for updating."
 #~ msgstr[0] "一個舊模組附加的資訊。此模組將不會在升級。"
 #~ msgstr[1] "一些舊模組附加的資訊。這些模組將不會在升級。"
-
-#~ msgid "No add-ons to update"
-#~ msgstr "沒有要更新的模組"
 
 #~ msgid "Update add-ons"
 #~ msgstr "更新模組"

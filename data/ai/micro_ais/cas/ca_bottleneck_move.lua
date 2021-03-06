@@ -21,41 +21,38 @@ local function bottleneck_is_my_territory(map, enemy_map)
     local dummy_unit = unit:clone()
 
     local territory_map = LS.create()
-    local width, height = wesnoth.get_map_size()
-    for x = 1,width do
-        for y = 1,height do
-            -- The hex might have been covered already previously
-            if (not territory_map:get(x,y)) then
-                dummy_unit.x, dummy_unit.y = x, y
+    for x, y in wesnoth.current.map:iter() do
+        -- The hex might have been covered already previously
+        if (not territory_map:get(x,y)) then
+            dummy_unit.x, dummy_unit.y = x, y
 
-                -- Find lowest movement cost to own front-line hexes
-                local min_cost, best_path = math.huge
-                map:iter(function(xm, ym, v)
-                    local path, cost = AH.find_path_with_shroud(dummy_unit, xm, ym, { ignore_units = true })
-                    if (cost < min_cost) then
-                       min_cost, best_path = cost, path
-                    end
-                end)
+            -- Find lowest movement cost to own front-line hexes
+            local min_cost, best_path = math.huge
+            map:iter(function(xm, ym, v)
+                local path, cost = AH.find_path_with_shroud(dummy_unit, xm, ym, { ignore_units = true })
+                if (cost < min_cost) then
+                    min_cost, best_path = cost, path
+                end
+            end)
 
-                -- And the same to the enemy front line
-                local min_cost_enemy, best_path_enemy = math.huge
-                enemy_map:iter(function(xm, ym, v)
-                    local path, cost = AH.find_path_with_shroud(dummy_unit, xm, ym, { ignore_units = true })
-                    if (cost < min_cost_enemy) then
-                       min_cost_enemy, best_path_enemy = cost, path
-                    end
-                end)
+            -- And the same to the enemy front line
+            local min_cost_enemy, best_path_enemy = math.huge
+            enemy_map:iter(function(xm, ym, v)
+                local path, cost = AH.find_path_with_shroud(dummy_unit, xm, ym, { ignore_units = true })
+                if (cost < min_cost_enemy) then
+                    min_cost_enemy, best_path_enemy = cost, path
+                end
+            end)
 
-                -- We can set the flags for the hexes along the entire path
-                -- for efficiency reasons (this is pretty slow, esp. on large maps)
-                if (min_cost < min_cost_enemy) then
-                    for _,step in ipairs(best_path) do
-                        territory_map:insert(step[1], step[2], true)
-                    end
-                else  -- We do need to use 0's in this case though, false won't work
-                    for _,step in ipairs(best_path_enemy) do
-                        territory_map:insert(step[1], step[2], 0)
-                    end
+            -- We can set the flags for the hexes along the entire path
+            -- for efficiency reasons (this is pretty slow, esp. on large maps)
+            if (min_cost < min_cost_enemy) then
+                for _,step in ipairs(best_path) do
+                    territory_map:insert(step[1], step[2], true)
+                end
+            else  -- We do need to use 0's in this case though, false won't work
+                for _,step in ipairs(best_path_enemy) do
+                    territory_map:insert(step[1], step[2], 0)
                 end
             end
         end

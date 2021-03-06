@@ -44,7 +44,7 @@
 #include "game_data.hpp"
 #include "game_state.hpp"
 
-#include "utils/functional.hpp"
+#include <functional>
 #include "serialization/string_utils.hpp"
 
 #include <boost/preprocessor/cat.hpp>
@@ -52,16 +52,12 @@
 #include <map>
 #include <utility>
 #include <vector>
-#include <boost/optional.hpp>
 
 #include "lua/lauxlib.h"                // for luaL_checkinteger, etc
 #include "lua/lua.h"                    // for lua_setfield, etc
 
 static lg::log_domain log_scripting_lua("scripting/lua");
 #define ERR_LUA LOG_STREAM(err, log_scripting_lua)
-
-
-
 
 static gui2::widget* find_child_by_index(gui2::widget& w, int i)
 {
@@ -117,12 +113,12 @@ using tsetters = std::map<std::string, std::vector<std::function<bool(lua_State*
 static tsetters setters;
 
 #define WIDGET_GETTER4(name, value_type, widgt_type, id) \
-/* use a class memeber for L to supress unused praemter wanring */ \
+/* use a class member for L to surpress unused parameter wanring */ \
 struct BOOST_PP_CAT(getter_, id) { value_type do_it(widgt_type& w); lua_State* L; }; \
 struct BOOST_PP_CAT(getter_adder_, id) { \
 	BOOST_PP_CAT(getter_adder_, id) () \
 	{ \
-		utils::split_foreach(name, ',', 0, [](utils::string_view name_part){\
+		utils::split_foreach(name, ',', 0, [](std::string_view name_part){\
 			getters[std::string(name_part)].push_back([](lua_State* L, gui2::widget& w) { \
 				if(widgt_type* pw = dynamic_cast<widgt_type*>(&w)) { \
 					lua_push(L, BOOST_PP_CAT(getter_, id){L}.do_it(*pw)); \
@@ -142,7 +138,7 @@ struct BOOST_PP_CAT(setter_, id) { void do_it(widgt_type& w, const value_type& v
 struct BOOST_PP_CAT(setter_adder_, id) { \
 	BOOST_PP_CAT(setter_adder_, id) ()\
 	{ \
-		utils::split_foreach(name, ',', 0, [](utils::string_view name_part){\
+		utils::split_foreach(name, ',', 0, [](std::string_view name_part){\
 			setters[std::string(name_part)].push_back([](lua_State* L, int idx, gui2::widget& w) { \
 				if(widgt_type* pw = dynamic_cast<widgt_type*>(&w)) { \
 					BOOST_PP_CAT(setter_, id){L}.do_it(*pw, lua_check<value_type>(L, idx)); \
@@ -159,10 +155,9 @@ void BOOST_PP_CAT(setter_, id)::do_it(widgt_type& w, const value_type& value)
 
 /**
  * @param name: string  comma seperated list
- * @param type: the type of the attribute, for exmaple int or std::string
- * @param widgt_type: the type of the widget, for exmaple gui2::listbox
+ * @param value_type: the type of the attribute, for example int or std::string
+ * @param widgt_type: the type of the widget, for example gui2::listbox
  */
-
 #define WIDGET_GETTER(name, value_type, widgt_type) WIDGET_GETTER4(name, value_type, widgt_type, __LINE__)
 
 #define WIDGET_SETTER(name, value_type, widgt_type) WIDGET_SETTER4(name, value_type, widgt_type, __LINE__)
@@ -174,16 +169,6 @@ WIDGET_GETTER("value_compat,selected_index", int, gui2::listbox)
 {
 	return w.get_selected_row() + 1;
 }
-
-/* idea
-WIDGET_GETTER("selected_widget", gui2::widget, gui2::listbox)
-{
-	if(w.get_selected_row() >= w.get_item_count()) {
-		throw std::invalid_argument("widget has no selected item");
-	}
-	return w.get_row_grid(w.get_selected_row());
-}
-*/
 
 WIDGET_SETTER("value_compat,selected_index", int, gui2::listbox)
 {
@@ -256,6 +241,26 @@ WIDGET_SETTER("value_compat,value", int, gui2::slider)
 	w.set_value(value);
 }
 
+WIDGET_GETTER("max_value", int, gui2::slider)
+{
+	return w.get_maximum_value();
+}
+
+WIDGET_SETTER("max_value", int, gui2::slider)
+{
+	w.set_value_range(w.get_minimum_value(), value);
+}
+
+WIDGET_GETTER("min_value", int, gui2::slider)
+{
+	return w.get_minimum_value();
+}
+
+WIDGET_SETTER("min_value", int, gui2::slider)
+{
+	w.set_value_range(value, w.get_maximum_value());
+}
+
 WIDGET_GETTER("value_compat,percentage", int, gui2::progress_bar)
 {
 	return w.get_percentage();
@@ -318,7 +323,7 @@ WIDGET_SETTER("use_markup", bool, gui2::styled_widget)
 //TODO: while i think this shortcut is useful, i'm not that happy about
 //      the name since  it changes 'label' and not 'text', the first one
 //      is the label that is part of most widgets (like checkboxes), the
-//      later is sepcific to input textboxes.
+//      later is specific to input textboxes.
 WIDGET_SETTER("marked_up_text", t_string, gui2::styled_widget)
 {
 	w.set_use_markup(true);
@@ -339,7 +344,7 @@ WIDGET_SETTER("tooltip", t_string, gui2::styled_widget)
 WIDGET_SETTER("callback", lua_index_raw, gui2::widget)
 {
 	if(!luaW_getglobal(L, "gui", "widget", "set_callback")) {
-		ERR_LUA << "gui.widget.set_callback didnt exist\n";
+		ERR_LUA << "gui.widget.set_callback didn't exist\n";
 	}
 	luaW_pushwidget(L, w);
 	lua_pushvalue(L, value.index);
@@ -409,7 +414,7 @@ WIDGET_GETTER("type", std::string, gui2::widget)
 }
 
 ///////////////////////////////////////////////////////
-////////////////////// CALLBACLS //////////////////////
+////////////////////// CALLBACKS //////////////////////
 ///////////////////////////////////////////////////////
 namespace {
 
@@ -422,7 +427,7 @@ void dialog_callback(lua_State* L, lua_ptr<gui2::widget>& wp, const std::string&
 	}
 	gui2::window* wd = w->get_window();
 	if(!wd) {
-		ERR_LUA << "canot find window in eidgte callback\n";
+		ERR_LUA << "cannot find window in widget callback\n";
 		return;
 	}
 	luaW_callwidgetcallback(L, w, wd, id);
@@ -471,8 +476,6 @@ WIDGET_SETTER("on_button_click", lua_index_raw, gui2::widget)
 
 }
 
-
-
 namespace lua_widget {
 
 int impl_widget_get(lua_State* L)
@@ -486,7 +489,7 @@ int impl_widget_get(lua_State* L)
 		}
 
 	}
-	utils::string_view str = lua_check<utils::string_view>(L, 2);
+	std::string_view str = lua_check<std::string_view>(L, 2);
 
 	tgetters::iterator it = getters.find(std::string(str));
 	if(it != getters.end()) {
@@ -503,14 +506,14 @@ int impl_widget_get(lua_State* L)
 		luaW_pushwidget(L, *pwidget);
 		return 1;
 	}
-	ERR_LUA << "invalid propertly of '" <<  typeid(w).name()<< "' widget :" << str << "\n";
-	return luaL_argerror(L, 2, "invalid propertly of widget");
+	ERR_LUA << "invalid property of '" <<  typeid(w).name()<< "' widget :" << str << "\n";
+	return luaL_argerror(L, 2, "invalid property of widget");
 }
 
 int impl_widget_set(lua_State* L)
 {
 	gui2::widget& w = luaW_checkwidget(L, 1);
-	utils::string_view str = lua_check<utils::string_view>(L, 2);
+	std::string_view str = lua_check<std::string_view>(L, 2);
 
 
 	tsetters::iterator it = setters.find(std::string(str));
@@ -520,13 +523,13 @@ int impl_widget_set(lua_State* L)
 				return 0;
 			}
 		}
-		ERR_LUA << "none of "<< it->second.size() << " setters macthed\n";
+		ERR_LUA << "none of "<< it->second.size() << " setters matched\n";
 	}
 	else {
-		ERR_LUA << "unknown peopertly id : " << str << " #known properties="  << setters.size() << "\n";
+		ERR_LUA << "unknown property id : " << str << " #known properties="  << setters.size() << "\n";
 
 	}
-	ERR_LUA << "invalid modifiable propertly of '" <<  typeid(w).name()<< "' widget:" << str << "\n";
-	return luaL_argerror(L, 2, "invalid modifiable propertly of widget");
+	ERR_LUA << "invalid modifiable property of '" <<  typeid(w).name()<< "' widget:" << str << "\n";
+	return luaL_argerror(L, 2, "invalid modifiable property of widget");
 }
 }

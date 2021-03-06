@@ -16,15 +16,25 @@
 
 #include "gui/dialogs/modal_dialog.hpp"
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 
+/**
+ * @ingroup GUIWindowDefinitionWML
+ *
+ * This shows the dialog to select the kind of MP game the user wants to play.
+ * Key               |Type          |Mandatory|Description
+ * ------------------|--------------|---------|-----------
+ * user_name         | text_box     |yes      |This text contains the name the user on the MP server. This widget will get a fixed maximum length by the engine.
+ * method_list       | @ref listbox |yes      |The list with possible game methods.
+ */
 class mp_method_selection : public modal_dialog
 {
 public:
-	mp_method_selection() : user_name_(), choice_(-1)
+	/** Corresponds to each connection option. */
+	enum class choice { JOIN = 0, CONNECT, HOST, LOCAL };
+
+	mp_method_selection() : user_name_(), choice_()
 	{
 	}
 
@@ -33,7 +43,7 @@ public:
 		return user_name_;
 	}
 
-	int get_choice() const
+	choice get_choice() const
 	{
 		return choice_;
 	}
@@ -43,7 +53,7 @@ private:
 	std::string user_name_;
 
 	/** The selected method to `connect' to the MP server. */
-	int choice_;
+	choice choice_;
 
 	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const override;
@@ -56,4 +66,3 @@ private:
 };
 
 } // namespace dialogs
-} // namespace gui2

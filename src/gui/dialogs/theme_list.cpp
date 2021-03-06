@@ -20,32 +20,8 @@
 #include "gui/widgets/window.hpp"
 #include "theme.hpp"
 
-namespace gui2
+namespace gui2::dialogs
 {
-namespace dialogs
-{
-
-/*WIKI
- * @page = GUIWindowDefinitionWML
- * @order = 2_theme_list
- *
- * == Theme list ==
- *
- * Dialog for selecting a GUI theme.
- *
- * @begin{table}{dialog_widgets}
- *
- * themes & & listbox & m &
- *         Listbox displaying user choices. $
- *
- * -name & & styled_widget & m &
- *         Widget which shows a theme item name. $
- *
- * -description & & styled_widget & m &
- *         Widget which shows a theme item description. $
- *
- * @end{table}
- */
 
 REGISTER_DIALOG(theme_list)
 
@@ -94,4 +70,3 @@ void theme_list::post_show(window& window)
 	index_ = list.get_selected_row();
 }
 } // namespace dialogs
-} // namespace gui2

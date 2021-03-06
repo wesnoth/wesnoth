@@ -16,16 +16,13 @@
 #include "gui/dialogs/modal_dialog.hpp"
 #include "units/ptr.hpp"
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 
 class unit_advance : public modal_dialog
 {
-	typedef std::vector<unit_const_ptr> unit_ptr_vector;
 public:
-	unit_advance(const unit_ptr_vector& samples, std::size_t real);
+	unit_advance(const std::vector<unit_const_ptr>& samples, std::size_t real);
 
 	int get_selected_index() const
 	{
@@ -40,14 +37,13 @@ private:
 	virtual void pre_show(window& window) override;
 	virtual void post_show(window& window) override;
 
-	void list_item_clicked(window& window);
+	void list_item_clicked();
 
 	void show_help();
 
-	const unit_ptr_vector& previews_;
+	const std::vector<unit_const_ptr>& previews_;
 
 	std::size_t selected_index_, last_real_advancement_;
 };
 
 } // namespace dialogs
-} // namespace gui2

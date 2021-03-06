@@ -7,7 +7,7 @@ local MAISD = wesnoth.require "ai/micro_ais/micro_ai_self_data.lua"
 local M = wesnoth.map
 
 local function custom_cost(x, y, unit, avoid_map, enemy_map, enemy_attack_map, multiplier)
-    local terrain = wesnoth.get_terrain(x, y)
+    local terrain = wesnoth.current.map[{x, y}]
     local move_cost = unit:movement(terrain)
 
     if avoid_map and avoid_map:get(x, y) then
@@ -98,11 +98,12 @@ end
 function ca_goto:execution(cfg, data)
     local units, locs = GO_units, GO_locs
 
-    local enemy_map, enemy_attack_map
+    local enemy_map, enemy_attack_map, avoid_enemies
     if cfg.avoid_enemies then
-        if (type(cfg.avoid_enemies) ~= 'number') then
+        avoid_enemies = tonumber(cfg.avoid_enemies)
+        if (not avoid_enemies) then
             wml.error("Goto AI avoid_enemies= requires a number as argument")
-        elseif (cfg.avoid_enemies <= 0) then
+        elseif (avoid_enemies <= 0) then
             wml.error("Goto AI avoid_enemies= argument must be >0")
         end
 
@@ -149,10 +150,10 @@ function ca_goto:execution(cfg, data)
                 end
             else  -- Otherwise find the best path to take
                 local path, cost
-                if GO_avoid_map or cfg.avoid_enemies then
+                if avoid_enemies then
                     path, cost = wesnoth.find_path(unit, loc[1], loc[2], {
                         calculate = function(x, y, current_cost)
-                            return custom_cost(x, y, unit, GO_avoid_map, enemy_map, enemy_attack_map, cfg.avoid_enemies)
+                            return custom_cost(x, y, unit, GO_avoid_map, enemy_map, enemy_attack_map, avoid_enemies)
                         end
                     })
                 else
@@ -165,7 +166,8 @@ function ca_goto:execution(cfg, data)
                             enemy_at_goal = nil
                         end
                     end
-                    path, cost = AH.find_path_with_shroud(unit, loc[1], loc[2], { ignore_units = cfg.ignore_units })
+                    path, cost = AH.find_path_with_avoid(unit, loc[1], loc[2], GO_avoid_map, { ignore_enemies = cfg.ignore_units })
+
                     if enemy_at_goal then
                         enemy_at_goal:to_map()
                         --- Give massive penalty for this goal hex
@@ -206,13 +208,15 @@ function ca_goto:execution(cfg, data)
     -- rather than using ai_helper.next_hop for standard pathfinding
     -- Also, straight-line does not produce a path, so we do that first
     if not best_path then
-        best_path = AH.find_path_with_shroud(best_unit, closest_hex[1], closest_hex[2])
+        best_path = AH.find_path_with_avoid(best_unit, closest_hex[1], closest_hex[2], GO_avoid_map)
     end
 
     -- Now go through the hexes along that path, use normal path finding
+    -- We cannot ignore units in this case though, as we need to determine which hexes
+    -- the unit can actually get to
     closest_hex = best_path[1]
     for i = 2,#best_path do
-        local sub_path, sub_cost = AH.find_path_with_shroud(best_unit, best_path[i][1], best_path[i][2], cfg)
+        local sub_path, sub_cost = AH.find_path_with_avoid(best_unit, best_path[i][1], best_path[i][2], GO_avoid_map)
         if sub_cost <= best_unit.moves then
             local unit_in_way = wesnoth.units.get(best_path[i][1], best_path[i][2])
             if (not AH.is_visible_unit(wesnoth.current.side, unit_in_way)) then
@@ -223,9 +227,12 @@ function ca_goto:execution(cfg, data)
         end
     end
 
+    local remove_movement = cfg.remove_movement
+    if (remove_movement == nil) then remove_movement = true end
+
     if closest_hex then
         AH.checked_move_full(ai, best_unit, closest_hex[1], closest_hex[2])
-    else
+    elseif remove_movement then
         AH.checked_stopunit_moves(ai, best_unit)
     end
 

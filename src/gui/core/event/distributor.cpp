@@ -25,7 +25,7 @@
 #include "gui/widgets/text_box_base.hpp"
 #include "sdl/userevent.hpp"
 
-#include "utils/functional.hpp"
+#include <functional>
 
 namespace gui2
 {
@@ -82,35 +82,35 @@ mouse_motion::mouse_motion(widget& owner,
 	owner.connect_signal<event::SDL_MOUSE_MOTION>(
 			std::bind(&mouse_motion::signal_handler_sdl_mouse_motion,
 						this,
-						_2,
-						_3,
-						_5),
+						std::placeholders::_2,
+						std::placeholders::_3,
+						std::placeholders::_5),
 			queue_position);
 
 	owner.connect_signal<event::SDL_TOUCH_MOTION>(
 			std::bind(&mouse_motion::signal_handler_sdl_touch_motion,
 						this,
-						_2,
-						_3,
-						_5,
-						_6),
+						std::placeholders::_2,
+						std::placeholders::_3,
+						std::placeholders::_5,
+						std::placeholders::_6),
 			queue_position);
 
 	owner_.connect_signal<event::SDL_WHEEL_UP>(std::bind(
-			&mouse_motion::signal_handler_sdl_wheel, this, _2, _3, _5));
+			&mouse_motion::signal_handler_sdl_wheel, this, std::placeholders::_2, std::placeholders::_3, std::placeholders::_5));
 	owner_.connect_signal<event::SDL_WHEEL_DOWN>(std::bind(
-			&mouse_motion::signal_handler_sdl_wheel, this, _2, _3, _5));
+			&mouse_motion::signal_handler_sdl_wheel, this, std::placeholders::_2, std::placeholders::_3, std::placeholders::_5));
 	owner_.connect_signal<event::SDL_WHEEL_LEFT>(std::bind(
-			&mouse_motion::signal_handler_sdl_wheel, this, _2, _3, _5));
+			&mouse_motion::signal_handler_sdl_wheel, this, std::placeholders::_2, std::placeholders::_3, std::placeholders::_5));
 	owner_.connect_signal<event::SDL_WHEEL_RIGHT>(std::bind(
-			&mouse_motion::signal_handler_sdl_wheel, this, _2, _3, _5));
+			&mouse_motion::signal_handler_sdl_wheel, this, std::placeholders::_2, std::placeholders::_3, std::placeholders::_5));
 
 	owner.connect_signal<event::SHOW_HELPTIP>(
 			std::bind(&mouse_motion::signal_handler_show_helptip,
 						this,
-						_2,
-						_3,
-						_5),
+						std::placeholders::_2,
+						std::placeholders::_3,
+						std::placeholders::_5),
 			queue_position);
 }
 
@@ -379,16 +379,16 @@ mouse_button::mouse_button(const mouse_button_event_types& events, widget& owner
 		owner_.connect_signal<event::SDL_LEFT_BUTTON_DOWN>(
 				std::bind(&mouse_button::signal_handler_sdl_button_down,
 							this,
-							_2,
-							_3,
-							_5),
+							std::placeholders::_2,
+							std::placeholders::_3,
+							std::placeholders::_5),
 				queue_position);
 		owner_.connect_signal<event::SDL_LEFT_BUTTON_UP>(
 				std::bind(&mouse_button::signal_handler_sdl_button_up,
 							this,
-							_2,
-							_3,
-							_5),
+							std::placeholders::_2,
+							std::placeholders::_3,
+							std::placeholders::_5),
 				queue_position);
 		break;
 	}
@@ -396,16 +396,16 @@ mouse_button::mouse_button(const mouse_button_event_types& events, widget& owner
 		owner_.connect_signal<event::SDL_MIDDLE_BUTTON_DOWN>(
 				std::bind(&mouse_button::signal_handler_sdl_button_down,
 							this,
-							_2,
-							_3,
-							_5),
+							std::placeholders::_2,
+							std::placeholders::_3,
+							std::placeholders::_5),
 				queue_position);
 		owner_.connect_signal<event::SDL_MIDDLE_BUTTON_UP>(
 				std::bind(&mouse_button::signal_handler_sdl_button_up,
 							this,
-							_2,
-							_3,
-							_5),
+							std::placeholders::_2,
+							std::placeholders::_3,
+							std::placeholders::_5),
 				queue_position);
 		break;
 	}
@@ -413,16 +413,16 @@ mouse_button::mouse_button(const mouse_button_event_types& events, widget& owner
 		owner_.connect_signal<event::SDL_RIGHT_BUTTON_DOWN>(
 				std::bind(&mouse_button::signal_handler_sdl_button_down,
 							this,
-							_2,
-							_3,
-							_5),
+							std::placeholders::_2,
+							std::placeholders::_3,
+							std::placeholders::_5),
 				queue_position);
 		owner_.connect_signal<event::SDL_RIGHT_BUTTON_UP>(
 				std::bind(&mouse_button::signal_handler_sdl_button_up,
 							this,
-							_2,
-							_3,
-							_5),
+							std::placeholders::_2,
+							std::placeholders::_3,
+							std::placeholders::_5),
 				queue_position);
 		break;
 	}
@@ -631,16 +631,16 @@ distributor::distributor(widget& owner,
 	}
 
 	owner_.connect_signal<event::SDL_KEY_DOWN>(std::bind(
-			&distributor::signal_handler_sdl_key_down, this, _5, _6, _7));
+			&distributor::signal_handler_sdl_key_down, this, std::placeholders::_5, std::placeholders::_6, std::placeholders::_7));
 
 	owner_.connect_signal<event::SDL_TEXT_INPUT>(std::bind(
-			&distributor::signal_handler_sdl_text_input, this, _5, _6, _7));
+			&distributor::signal_handler_sdl_text_input, this, std::placeholders::_5, std::placeholders::_6, std::placeholders::_7));
 
 	owner_.connect_signal<event::SDL_TEXT_EDITING>(std::bind(
-			&distributor::signal_handler_sdl_text_editing, this, _5, _6, _7));
+			&distributor::signal_handler_sdl_text_editing, this, std::placeholders::_5, std::placeholders::_6, std::placeholders::_7));
 
 	owner_.connect_signal<event::NOTIFY_REMOVAL>(std::bind(
-			&distributor::signal_handler_notify_removal, this, _1, _2));
+			&distributor::signal_handler_notify_removal, this, std::placeholders::_1, std::placeholders::_2));
 
 	initialize_state();
 }
@@ -648,16 +648,16 @@ distributor::distributor(widget& owner,
 distributor::~distributor()
 {
 	owner_.disconnect_signal<event::SDL_KEY_DOWN>(std::bind(
-			&distributor::signal_handler_sdl_key_down, this, _5, _6, _7));
+			&distributor::signal_handler_sdl_key_down, this, std::placeholders::_5, std::placeholders::_6, std::placeholders::_7));
 
 	owner_.disconnect_signal<event::SDL_TEXT_INPUT>(std::bind(
-			&distributor::signal_handler_sdl_text_input, this, _5, _6, _7));
+			&distributor::signal_handler_sdl_text_input, this, std::placeholders::_5, std::placeholders::_6, std::placeholders::_7));
 
 	owner_.disconnect_signal<event::SDL_TEXT_EDITING>(std::bind(
-			&distributor::signal_handler_sdl_text_editing, this, _5, _6, _7));
+			&distributor::signal_handler_sdl_text_editing, this, std::placeholders::_5, std::placeholders::_6, std::placeholders::_7));
 
 	owner_.disconnect_signal<event::NOTIFY_REMOVAL>(std::bind(
-			&distributor::signal_handler_notify_removal, this, _1, _2));
+			&distributor::signal_handler_notify_removal, this, std::placeholders::_1, std::placeholders::_2));
 }
 
 void distributor::initialize_state()

@@ -25,7 +25,7 @@
 #include "gui/widgets/window.hpp"
 #include "sound.hpp"
 
-#include "utils/functional.hpp"
+#include <functional>
 
 #define LOG_SCOPE_HEADER get_control_type() + " [" + id() + "] " + __func__
 #define LOG_HEADER LOG_SCOPE_HEADER + ':'
@@ -48,26 +48,26 @@ menu_button::menu_button(const implementation::builder_menu_button& builder)
 	values_.emplace_back("label", this->get_label());
 
 	connect_signal<event::MOUSE_ENTER>(
-		std::bind(&menu_button::signal_handler_mouse_enter, this, _2, _3));
+		std::bind(&menu_button::signal_handler_mouse_enter, this, std::placeholders::_2, std::placeholders::_3));
 
 	connect_signal<event::MOUSE_LEAVE>(
-		std::bind(&menu_button::signal_handler_mouse_leave, this, _2, _3));
+		std::bind(&menu_button::signal_handler_mouse_leave, this, std::placeholders::_2, std::placeholders::_3));
 
 	connect_signal<event::LEFT_BUTTON_DOWN>(
-		std::bind(&menu_button::signal_handler_left_button_down, this, _2, _3));
+		std::bind(&menu_button::signal_handler_left_button_down, this, std::placeholders::_2, std::placeholders::_3));
 
 	connect_signal<event::LEFT_BUTTON_UP>(
-		std::bind(&menu_button::signal_handler_left_button_up, this, _2, _3));
+		std::bind(&menu_button::signal_handler_left_button_up, this, std::placeholders::_2, std::placeholders::_3));
 
 	connect_signal<event::LEFT_BUTTON_CLICK>(
-		std::bind(&menu_button::signal_handler_left_button_click, this, _2, _3));
+		std::bind(&menu_button::signal_handler_left_button_click, this, std::placeholders::_2, std::placeholders::_3));
 
 	connect_signal<event::SDL_WHEEL_UP>(
-		std::bind(&menu_button::signal_handler_sdl_wheel_up, this, _2, _3),
+		std::bind(&menu_button::signal_handler_sdl_wheel_up, this, std::placeholders::_2, std::placeholders::_3),
 		event::dispatcher::back_post_child);
 
 	connect_signal<event::SDL_WHEEL_DOWN>(
-		std::bind(&menu_button::signal_handler_sdl_wheel_down, this, _2, _3),
+		std::bind(&menu_button::signal_handler_sdl_wheel_down, this, std::placeholders::_2, std::placeholders::_3),
 		event::dispatcher::back_post_child);
 }
 
@@ -141,8 +141,7 @@ void menu_button::signal_handler_left_button_click(const event::ui_event event, 
 	sound::play_UI_sound(settings::sound_button_click);
 
 	// If a button has a retval do the default handling.
-	dialogs::drop_down_menu droplist(this->get_rectangle(), this->values_, this->selected_, this->get_use_markup(), this->keep_open_,
-		nullptr);
+	dialogs::drop_down_menu droplist(this, values_, selected_, keep_open_);
 
 	if(droplist.show()) {
 		const int selected = droplist.selected_item();
@@ -225,34 +224,6 @@ menu_button_definition::menu_button_definition(const config& cfg)
 	load_resolutions<resolution>(cfg);
 }
 
-/*WIKI
- * @page = GUIWidgetDefinitionWML
- * @order = 1_menu_button
- *
- * == menu_button ==
- *
- * @macro = menu_button_description
- *
- * The following states exist:
- * * state_enabled, the menu_button is enabled.
- * * state_disabled, the menu_button is disabled.
- * * state_pressed, the left mouse menu_button is down.
- * * state_focused, the mouse is over the menu_button.
- * @begin{parent}{name="gui/"}
- * @begin{tag}{name="menu_button_definition"}{min=0}{max=-1}{super="generic/widget_definition"}
- * @begin{tag}{name="resolution"}{min=0}{max=-1}{super="generic/widget_definition/resolution"}
- * @begin{tag}{name="state_enabled"}{min=0}{max=1}{super="generic/state"}
- * @end{tag}{name="state_enabled"}
- * @begin{tag}{name="state_disabled"}{min=0}{max=1}{super="generic/state"}
- * @end{tag}{name="state_disabled"}
- * @begin{tag}{name="state_pressed"}{min=0}{max=1}{super="generic/state"}
- * @end{tag}{name="state_pressed"}
- * @begin{tag}{name="state_focused"}{min=0}{max=1}{super="generic/state"}
- * @end{tag}{name="state_focused"}
- * @end{tag}{name="resolution"}
- * @end{tag}{name="menu_button_definition"}
- * @end{parent}{name="gui/"}
- */
 menu_button_definition::resolution::resolution(const config& cfg)
 	: resolution_definition(cfg)
 {
@@ -264,43 +235,6 @@ menu_button_definition::resolution::resolution(const config& cfg)
 }
 
 // }---------- BUILDER -----------{
-
-/*WIKI_MACRO
- * @begin{macro}{menu_button_description}
- *
- *        A menu_button is a styled_widget to choose an element from a list of elements.
- * @end{macro}
- */
-
-/*WIKI
- * @page = GUIWidgetInstanceWML
- * @order = 2_menu_button
- * @begin{parent}{name="gui/window/resolution/grid/row/column/"}
- * @begin{tag}{name="menu_button"}{min=0}{max=-1}{super="generic/widget_instance"}
- * == menu_button ==
- *
- * @macro = menu_button_description
- *
- * Instance of a menu_button. When a menu_button has a return value it sets the
- * return value for the window. Normally this closes the window and returns
- * this value to the caller. The return value can either be defined by the
- * user or determined from the id of the menu_button. The return value has a
- * higher precedence as the one defined by the id. (Of course it's weird to
- * give a menu_button an id and then override its return value.)
- *
- * When the menu_button doesn't have a standard id, but you still want to use the
- * return value of that id, use return_value_id instead. This has a higher
- * precedence as return_value.
- *
- * List with the menu_button specific variables:
- * @begin{table}{config}
- *     return_value_id & string & "" &   The return value id. $
- *     return_value & int & 0 &          The return value. $
- *
- * @end{table}
- * @end{tag}{name="menu_button"}
- * @end{parent}{name="gui/window/resolution/grid/row/column/"}
- */
 
 namespace implementation
 {

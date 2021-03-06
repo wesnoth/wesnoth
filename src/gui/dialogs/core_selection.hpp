@@ -18,17 +18,27 @@
 
 class config;
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 
+/**
+ * @ingroup GUIWindowDefinitionWML
+ *
+ * This shows the dialog which allows the user to choose which core to play.
+ * Key               |Type          |Mandatory|Description
+ * ------------------|--------------|---------|-----------
+ * core_list         | @ref listbox |yes      |A listbox that contains all available cores.
+ * icon              | @ref image   |no       |The icon for the core.
+ * name              | control      |no       |The name of the core.
+ * core_details      | multi_page   |yes      |A multi page widget that shows more details for the selected core.
+ * image             | @ref image   |no       |The image for the core.
+ * description       | control      |no       |The description of the core.
+ */
 class core_selection : public modal_dialog
 {
 public:
 	explicit core_selection(const std::vector<config>& cores, int choice)
 		: cores_(cores), choice_(choice)
-
 	{
 	}
 
@@ -41,7 +51,7 @@ public:
 
 private:
 	/** Called when another core is selected. */
-	void core_selected(window& window);
+	void core_selected() const;
 
 	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const override;
@@ -60,4 +70,3 @@ private:
 };
 
 } // namespace dialogs
-} // namespace gui2

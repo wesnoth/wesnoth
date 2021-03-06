@@ -29,13 +29,21 @@ struct builder_viewport;
 
 class grid;
 
+/**
+ * @ingroup GUIWidgetWML
+ *
+ * A viewport is an special widget used to view only a part of the widget it 'holds'.
+ *
+ * List with the viewport specific variables:
+ * Key            |Type                                            |Default  |Description
+ * ---------------|------------------------------------------------|---------|-----------
+ * grow_direction | @ref guivartype_grow_direction "grow_direction"|mandatory|The direction in which new items grow.
+ * parallel_items | @ref guivartype_unsigned "unsigned"            |mandatory|The number of items that are growing in parallel.
+ * item_definition| @ref guivartype_section "section"              |mandatory|The definition of a new item.
+ */
 class viewport : public widget
 {
 	friend struct viewport_implementation;
-
-public:
-	/** @deprecated use the second overload. */
-	explicit viewport(widget& widget);
 
 private:
 	viewport(const implementation::builder_viewport& builder,
@@ -107,9 +115,9 @@ struct builder_viewport : public builder_widget
 {
 	explicit builder_viewport(const config& cfg);
 
-	widget* build() const;
+	virtual widget* build() const override;
 
-	widget* build(const replacements_map& replacements) const;
+	virtual widget* build(const replacements_map& replacements) const override;
 
 	builder_widget_ptr widget_;
 };

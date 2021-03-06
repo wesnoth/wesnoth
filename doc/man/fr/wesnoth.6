@@ -100,6 +100,9 @@ d'informations).
 \fB\-\-debug\-lua\fP
 active certains mécanismes de débogage pour Lua.
 .TP 
+\fB\-\-strict\-lua\fP
+disallow deprecated Lua API calls
+.TP 
 \fB\-D,\-\-diff\fP\fI\ left\-file\fP\fB\ \fP\fIright\-file\fP
 diffs the two WML files; does not preprocess them first (to do that, run
 them through \fB\-p\fP first). Outputs the diff as DiffWML on standard output or
@@ -246,21 +249,6 @@ prétraitées sera envoyée dans le fichier cible. Si le fichier n'est pas
 spécifié, la sortie sera envoyée dans «\ _MACROS_.cfg\ » situé dans le
 répertoire cible de la commande du préprocesseur.  Cette commande doit être
 saisie avant \fB\-\-preprocess\fP.
-.TP 
-\fB\-\-proxy\fP
-active l'utilisation d'un proxy pour les connexions au réseau.
-.TP 
-\fB\-\-proxy\-address\fP\fI\ addresse\fP
-indique l'\fIaddresse\fP du proxy.
-.TP 
-\fB\-\-proxy\-port\fP\fI\ port\fP
-indique le \fIport\fP du proxy.
-.TP 
-\fB\-\-proxy\-user\fP\fI\ nom d'utilisateur\fP
-indique le \fInom d'utilisateur\fP du proxy.
-.TP 
-\fB\-\-proxy\-password\fP\fI\ mot de passe\fP
-indique le \fImot de passe\fP du proxy.
 .TP 
 \fB\-r\ \fP\fIX\fP\fBx\fP\fIY\fP\fB,\ \-\-resolution\fP\ \fIX\fP\fBx\fP\fIY\fP
 Définit la résolution de l'écran. Exemple\ : \fB\-r\fP \fB800x600\fP.

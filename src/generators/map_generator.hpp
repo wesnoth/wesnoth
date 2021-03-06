@@ -12,16 +12,14 @@
    See the COPYING file for more details.
 */
 
-/** @file */
-
 #pragma once
 
 class config;
 
 #include "exceptions.hpp"
 #include "map/location.hpp"
+#include <optional>
 
-#include <boost/optional.hpp>
 #include <cstdint>
 
 struct mapgen_exception : public game::error
@@ -65,7 +63,7 @@ public:
 	 * Creates a new map and returns it.
 	 * args may contain arguments to the map generator.
 	 */
-	virtual std::string create_map(boost::optional<uint32_t> randomseed = boost::none) = 0;
+	virtual std::string create_map(std::optional<uint32_t> randomseed = {}) = 0;
 
-	virtual config create_scenario(boost::optional<uint32_t> randomseed = boost::none);
+	virtual config create_scenario(std::optional<uint32_t> randomseed = {});
 };

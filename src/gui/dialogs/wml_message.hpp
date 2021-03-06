@@ -16,9 +16,7 @@
 
 #include "gui/dialogs/modal_dialog.hpp"
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 
 /**
@@ -199,10 +197,12 @@ private:
  */
 struct wml_message_options
 {
-	/// A list of options to select in the dialog.
+	/** A list of options to select in the dialog. */
 	std::vector<wml_message_option> option_list;
-	/// The initially chosen option.
-	/// Will be set to the chosen option when the dialog closes.
+	/**
+	 * The initially chosen option.
+	 * Will be set to the chosen option when the dialog closes.
+	 */
 	mutable int chosen_option;
 };
 
@@ -211,15 +211,19 @@ struct wml_message_options
  */
 struct wml_message_input
 {
-	/// The caption for the optional input text box.
-	/// If empty, there is no input box.
+	/**
+	 * The caption for the optional input text box.
+	 * If empty, there is no input box.
+	 */
 	std::string caption;
-	/// The initial text value.
-	/// Will be set to the result.
+	/**
+	 * The initial text value.
+	 * Will be set to the result.
+	 */
 	mutable std::string text;
-	/// The maximum length of the text.
+	/** The maximum length of the text. */
 	unsigned maximum_length;
-	/// True when [text_input] appeared in [message]
+	/** True when [text_input] appeared in [message] */
 	bool text_input_was_specified;
 };
 
@@ -228,9 +232,9 @@ struct wml_message_input
  */
 struct wml_message_portrait
 {
-	/// Filename of the portrait.
+	/** Filename of the portrait. */
 	std::string portrait;
-	/// Does the portrait need to be mirrored?
+	/** Does the portrait need to be mirrored? */
 	bool mirror;
 };
 
@@ -252,4 +256,3 @@ int show_wml_message(const std::string& title,
 					 const wml_message_input& input);
 
 } // namespace dialogs
-} // namespace gui2

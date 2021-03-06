@@ -116,6 +116,8 @@ void replay_recorder_base::append_config(config& data)
 		config* new_config = new config();
 		new_config->swap(command);
 		commands_.push_back(new_config);
+
+
 	}
 }
 

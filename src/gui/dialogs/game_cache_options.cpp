@@ -29,50 +29,12 @@
 #include "gui/widgets/text_box.hpp"
 #include "gui/widgets/window.hpp"
 
-#include "utils/functional.hpp"
+#include <functional>
 
 #include "gettext.hpp"
 
-namespace gui2
+namespace gui2::dialogs
 {
-namespace dialogs
-{
-
-/*WIKI
- * @page = GUIWindowDefinitionWML
- * @order = 2_game_cache_options
- *
- * == Game cache options ==
- *
- * A Preferences subdialog including a report on the location and size of the
- * game's WML cache, buttons to copy its path to clipboard or browse to it,
- * and the possibility of clearing stale files from the cache or purging it
- * entirely.
- *
- * @begin{table}{dialog_widgets}
- *
- * path & & text_box & m &
- *        Cache dir path. $
- *
- * copy & & button & m &
- *        Copies the cache path to clipboard. $
- *
- * browse & & button & m &
- *        Browses to the cache path using the platform's file management
- *        application. $
- *
- * size & & label & m &
- *        Current total size of the cache dir's contents. $
- *
- * clean & & button & m &
- *        Cleans the cache, erasing stale files not used by the Wesnoth
- *        version presently running the dialog. $
- *
- * purge & & button & m &
- *        Purges the cache in its entirety. $
- *
- * @end{table}
- */
 
 REGISTER_DIALOG(game_cache_options)
 
@@ -194,4 +156,3 @@ bool game_cache_options::purge_cache()
 }
 
 } // namespace dialogs
-} // namespace gui2

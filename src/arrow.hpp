@@ -36,13 +36,13 @@ public:
 	arrow(bool hidden = false);
 	virtual ~arrow();
 
-	///Sets the arrow's visibility
+	/** Sets the arrow's visibility */
 	void hide();
 	void show();
 
 	virtual void set_path(const arrow_path_t& path);
 
-	///invalidates and clears the present path, forgets the previous path, clears the symbols map
+	/** invalidates and clears the present path, forgets the previous path, clears the symbols map */
 	virtual void reset();
 
 	/**
@@ -62,7 +62,7 @@ public:
 	 */
 	std::string get_style() const {return style_;}
 	void set_style(const std::string& style);
-	///If you add more styles, you should look at move::update_arrow_style()
+	/** If you add more styles, you should look at move::update_arrow_style() */
 	static const std::string STYLE_STANDARD;
 	static const std::string STYLE_HIGHLIGHTED;
 	static const std::string STYLE_FOCUS;
@@ -75,9 +75,9 @@ public:
 
 	virtual void draw_hex(const map_location& hex);
 
-	/// Checks that the path is not of length 0 or 1
+	/** Checks that the path is not of length 0 or 1 */
 	static bool valid_path(const arrow_path_t& path);
-	/// Invalidates every hex along the given path
+	/** Invalidates every hex along the given path */
 	static void invalidate_arrow_path(const arrow_path_t& path);
 
 	virtual void notify_arrow_changed();
@@ -93,7 +93,7 @@ protected:
 	display::drawing_layer layer_;
 
 	std::string color_;
-	/// represents the subdirectory that holds images for this arrow style
+	/** represents the subdirectory that holds images for this arrow style */
 	std::string style_;
 
 	arrow_path_t path_;

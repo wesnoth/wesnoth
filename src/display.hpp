@@ -64,7 +64,7 @@ namespace wb {
 
 #include <boost/circular_buffer.hpp>
 
-#include "utils/functional.hpp"
+#include <functional>
 #include <chrono>
 #include <cstdint>
 #include <deque>
@@ -82,9 +82,11 @@ public:
 			reports & reports_object,
 			const config& theme_cfg, const config& level, bool auto_join=true);
 	virtual ~display();
-	/// Returns the display object if a display object exists. Otherwise it returns nullptr.
-	/// the display object represents the game gui which handles themewml and drawing the map.
-	/// A display object only exists during a game or while the mapeditor is running.
+	/**
+	 * Returns the display object if a display object exists. Otherwise it returns nullptr.
+	 * the display object represents the game gui which handles themewml and drawing the map.
+	 * A display object only exists during a game or while the mapeditor is running.
+	 */
 	static display* get_singleton() { return singleton_ ;}
 
 	bool show_everything() const { return !dont_show_all_ && !is_blindfolded(); }
@@ -560,8 +562,6 @@ public:
 	/** Expose the event, so observers can be notified about map scrolling. */
 	events::generic_event &scroll_event() const { return scroll_event_; }
 
-	events::generic_event& complete_redraw_event() { return complete_redraw_event_; }
-
 	/** Check if a tile is fully visible on screen. */
 	bool tile_fully_on_screen(const map_location& loc) const;
 
@@ -659,7 +659,7 @@ protected:
 	std::weak_ptr<wb::manager> wb_;
 
 	typedef std::map<map_location, std::string> exclusive_unit_draw_requests_t;
-	/// map of hexes where only one unit should be drawn, the one identified by the associated id string
+	/** map of hexes where only one unit should be drawn, the one identified by the associated id string */
 	exclusive_unit_draw_requests_t exclusive_unit_draw_requests_;
 
 	map_location get_middle_location() const;
@@ -734,18 +734,22 @@ protected:
 	CVideo& screen_;
 	std::size_t currentTeam_;
 	bool dont_show_all_; //const team *viewpoint_;
-	/// Position of the top-left corner of the viewport, in pixels.
-	///
-	/// Dependent on zoom_.. For example, ypos_==72 only means we're one
-	/// hex below the top of the map when zoom_ == 72 (the default value).
+	/**
+	 * Position of the top-left corner of the viewport, in pixels.
+	 *
+	 * Dependent on zoom_.. For example, ypos_==72 only means we're one
+	 * hex below the top of the map when zoom_ == 72 (the default value).
+	 */
 	int xpos_, ypos_;
 	bool view_locked_;
 	theme theme_;
-	/// The current zoom, in pixels (on screen) per 72 pixels (in the
-	/// graphic assets), i.e., 72 means 100%.
+	/**
+	 * The current zoom, in pixels (on screen) per 72 pixels (in the
+	 * graphic assets), i.e., 72 means 100%.
+	 */
 	static unsigned int zoom_;
 	int zoom_index_;
-	/// The previous value of zoom_.
+	/** The previous value of zoom_. */
 	static unsigned int last_zoom_;
 	const std::unique_ptr<fake_unit_manager> fake_unit_man_;
 	const std::unique_ptr<terrain_builder> builder_;
@@ -765,12 +769,6 @@ protected:
 
 	/** Event raised when the map is being scrolled */
 	mutable events::generic_event scroll_event_;
-
-	/**
-	 * notify observers that the screen has been redrawn completely
-	 * atm this is used for replay_controller to add replay controls to the standard theme
-	 */
-	events::generic_event complete_redraw_event_;
 
 	boost::circular_buffer<unsigned> frametimes_; // in milliseconds
 	unsigned int fps_counter_;
@@ -983,6 +981,10 @@ public:
 	 * @param layer              The layer to draw on.
 	 * @param loc                The hex the image belongs to, needed for the
 	 *                           drawing order.
+	 * @param x                  The x coordinate.
+	 * @param y                  The y coordinate.
+	 * @param surf               The surface to use.
+	 * @param clip
 	 */
 	void drawing_buffer_add(const drawing_layer layer,
 			const map_location& loc, int x, int y, const surface& surf,

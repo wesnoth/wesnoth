@@ -45,7 +45,7 @@ function muff_toras_move:execution()
         end
 
         -- All else being equal, go with good terrain
-        local hit_chance = muff_toras:defense(wesnoth.get_terrain(x, y))
+        local hit_chance = muff_toras:defense(wesnoth.current.map[{x, y}])
         rating = rating - hit_chance
 
         -- Finally, we want to run away from enemies if there are no other factors.
@@ -62,7 +62,7 @@ function muff_toras_move:execution()
         return rating
     end)
 
-    if ((go_to[1] ~= muff_toras.x) or (go_to[2] ~= muff_toras.y)) then
+    if go_to and ((go_to[1] ~= muff_toras.x) or (go_to[2] ~= muff_toras.y)) then
         AH.robust_move_and_attack(ai, muff_toras, go_to)
     end
 

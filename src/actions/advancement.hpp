@@ -23,11 +23,12 @@ class  team;
 class  unit;
 class  config;
 
+#include "map/location.hpp"
+#include "units/attack_type.hpp"
 #include "units/ptr.hpp"
 #include "units/race.hpp"
-#include "units/attack_type.hpp"
+#include "utils/variant.hpp"
 
-#include <map/location.hpp>
 #include <string>
 #include <vector>
 
@@ -62,7 +63,7 @@ unit_ptr get_advanced_unit(const unit &u, const std::string &advance_to);
  */
 unit_ptr get_amla_unit(const unit &u, const config &mod_option);
 
-using advancement_option = boost::variant<std::string /*change type*/, const config* /*apply amla*/>;
+using advancement_option = utils::variant<std::string /*change type*/, const config* /*apply amla*/>;
 
 /**
  * Function which will advance the unit at @a loc to 'advance_to'.

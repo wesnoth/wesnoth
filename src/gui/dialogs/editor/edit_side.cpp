@@ -20,35 +20,10 @@
 #include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/settings.hpp"
 
-#include "utils/functional.hpp"
+#include <functional>
 
-namespace gui2
+namespace gui2::dialogs
 {
-namespace dialogs
-{
-
-/*WIKI
- * @page = GUIWindowDefinitionWML
- * @order = 2_edit_side
- *
- * == Edit side ==
- *
- * Dialog for editing gamemap sides.
- *
- * @begin{table}{dialog_widgets}
- *
- * title & & label & m &
- *         Dialog title label. $
- *
- * id & & text_box & m &
- *         Input field for the id. $
- *
- * team_only_toggle & & toggle_button & m &
- *         Checkbox for whether to make the label visible to the player's team
- *         only or not. $
- *
- * @end{table}
- */
 
 REGISTER_DIALOG(editor_edit_side)
 
@@ -99,4 +74,3 @@ void editor_edit_side::post_show(window&)
 }
 
 } // namespace dialogs
-} // namespace gui2

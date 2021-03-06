@@ -16,22 +16,29 @@
 
 #include "gui/dialogs/modal_dialog.hpp"
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 
-/** Addon connect dialog. */
+/**
+ * @ingroup GUIWindowDefinitionWML
+ *
+ * This shows the dialog for managing addons and connecting to the addon server.
+ * Key               |Type      |Mandatory|Description
+ * ------------------|----------|---------|-----------
+ * hostname          | text_box |yes      |This text contains the name of the server to connect to.
+ * show_help         | @ref gui::button   |yes      |Thus button shows the in-game help about add-ons management when triggered.
+ * free to choose (2)| button   |no       |This button closes the dialog to display a dialog for removing installed add-ons.
+ */
 class addon_connect : public modal_dialog
 {
 public:
 	/**
 	 * Constructor.
 	 *
-	 * @param [in, out]host_name  The parameter's usage is:
+	 * @param host_name           The parameter's usage is:
 	 *                            - Input: The initial value for the host_name.
 	 *                            - Output :The final value of the host_name if
-	 *                              the dialog returns @ref retval::OK or 3
+	 *                              the dialog returns retval::OK or 3
 	 *                              undefined otherwise.
 	 * @param allow_remove        Sets @ref allow_remove_.
 	 */
@@ -42,7 +49,7 @@ private:
 	/** Enable the addon remove button? */
 	bool allow_remove_;
 
-	void help_button_callback(window& window);
+	void help_button_callback();
 
 	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const override;
@@ -55,4 +62,3 @@ private:
 };
 
 } // namespace dialogs
-} // namespace gui2

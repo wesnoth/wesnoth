@@ -11,26 +11,27 @@
    See the COPYING file for more details.
 */
 
+#include "chat_command_handler.hpp"
+
+#include "chat_events.hpp"
+#include "game_initialization/multiplayer.hpp"
+#include "game_version.hpp"
 #include "gui/dialogs/preferences_dialog.hpp"
 #include "map_command_handler.hpp"
-#include "chat_command_handler.hpp"
-#include "chat_events.hpp"
-#include "preferences/game.hpp"
 #include "preferences/display.hpp"
-#include "game_config_manager.hpp"
+#include "preferences/game.hpp"
 
 namespace events {
 
 bool chat_command_handler::is_enabled(const map_command_handler<chat_command_handler>::command& c) const
 {
-	return !(c.has_flag('A') && !preferences::is_authenticated());
+	return !(c.has_flag('A') && !mp::logged_in_as_moderator());
 }
 
 void chat_command_handler::print(const std::string& title, const std::string& message)
 {
 	chat_handler_.add_chat_message(std::time(nullptr), title, 0, message);
 }
-
 
 void chat_command_handler::do_emote()
 {
@@ -149,9 +150,7 @@ void chat_command_handler::do_remove()
 
 void chat_command_handler::do_display()
 {
-	// TODO: add game config argument to chat_command_handler?
-	gui2::dialogs::preferences_dialog::display(game_config_manager::get()->game_config(),
-		preferences::VIEW_FRIENDS);
+	gui2::dialogs::preferences_dialog::display(preferences::VIEW_FRIENDS);
 }
 
 void chat_command_handler::do_version() {

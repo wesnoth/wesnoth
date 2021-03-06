@@ -96,6 +96,9 @@ https://wiki.wesnoth.org/CommandMode/ru дальнейших сведений о
 \fB\-\-debug\-lua\fP
 включить некоторые механизмы отладки Lua
 .TP 
+\fB\-\-strict\-lua\fP
+disallow deprecated Lua API calls
+.TP 
 \fB\-D,\-\-diff\fP\fI\ left\-file\fP\fB\ \fP\fIright\-file\fP
 diffs the two WML files; does not preprocess them first (to do that, run
 them through \fB\-p\fP first). Outputs the diff as DiffWML on standard output or
@@ -238,21 +241,6 @@ https://wiki.wesnoth.org/PreprocessorRef#Command\-line_preprocessor.
 \&'_MACROS_.cfg' в целевом каталоге команды обработчика. Файл вывода можно
 передать с помощью \fB\-\-preprocess\-input\-macros\fP.   Этот ключ необходимо
 указать до команды \fB\-\-preprocess\fP.
-.TP 
-\fB\-\-proxy\fP
-включить использование прокси сервера для подключения к сети.
-.TP 
-\fB\-\-proxy\-address\fP\fI\ адрес\fP
-задать \fIадрес\fP прокси.
-.TP 
-\fB\-\-proxy\-port\fP\fI\ порт\fP
-задать \fIпорт\fP прокси.
-.TP 
-\fB\-\-proxy\-user\fP\fI\ имя пользователя\fP
-задать \fIимя пользователя\fP для входа в прокси.
-.TP 
-\fB\-\-proxy\-password\fP\fI\ пароль\fP
-задать \fIпароль\fP для входа в прокси.
 .TP 
 \fB\-r\ \fP\fIX\fP\fBx\fP\fIY\fP\fB,\ \-\-resolution\ \fP\fIX\fP\fBx\fP\fIY\fP
 установить разрешение экрана. Пример: \fB\-r\fP \fB800x600\fP.

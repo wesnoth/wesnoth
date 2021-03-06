@@ -24,7 +24,7 @@
 #include "gui/widgets/toggle_panel.hpp"
 #include "gui/widgets/tree_view.hpp"
 #include "sdl/rect.hpp"
-#include "utils/functional.hpp"
+#include <functional>
 
 #define LOG_SCOPE_HEADER get_control_type() + " [" + get_tree_view().id() + "] " + __func__
 #define LOG_HEADER LOG_SCOPE_HEADER + ':'
@@ -75,10 +75,10 @@ tree_view_node::tree_view_node(const std::string& id,
 			toggle_widget->set_visible(widget::visibility::hidden);
 
 			toggle_widget->connect_signal<event::LEFT_BUTTON_CLICK>(
-				std::bind(&tree_view_node::signal_handler_left_button_click, this, _2));
+				std::bind(&tree_view_node::signal_handler_left_button_click, this, std::placeholders::_2));
 
 			toggle_widget->connect_signal<event::LEFT_BUTTON_CLICK>(
-				std::bind(&tree_view_node::signal_handler_left_button_click, this, _2),
+				std::bind(&tree_view_node::signal_handler_left_button_click, this, std::placeholders::_2),
 				event::dispatcher::back_post_child);
 
 			if(unfolded_) {
@@ -91,11 +91,11 @@ tree_view_node::tree_view_node(const std::string& id,
 
 		if(label_) {
 			label_widget->connect_signal<event::LEFT_BUTTON_CLICK>(
-				std::bind(&tree_view_node::signal_handler_label_left_button_click, this, _2, _3, _4),
+				std::bind(&tree_view_node::signal_handler_label_left_button_click, this, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4),
 				event::dispatcher::front_child);
 
 			label_widget->connect_signal<event::LEFT_BUTTON_CLICK>(
-				std::bind(&tree_view_node::signal_handler_label_left_button_click, this, _2, _3, _4),
+				std::bind(&tree_view_node::signal_handler_label_left_button_click, this, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4),
 				event::dispatcher::front_pre_child);
 
 			if(!get_tree_view().selected_item_) {

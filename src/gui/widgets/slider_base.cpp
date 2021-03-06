@@ -19,7 +19,7 @@
 #include "gui/core/log.hpp"
 #include "gui/widgets/window.hpp" // Needed for invalidate_layout()
 
-#include "utils/functional.hpp"
+#include <functional>
 #include "utils/math.hpp"
 
 #define LOG_SCOPE_HEADER get_control_type() + " [" + id() + "] " + __func__
@@ -51,15 +51,15 @@ slider_base::slider_base(const implementation::builder_styled_widget& builder, c
 	, snap_(true)
 {
 	connect_signal<event::MOUSE_ENTER>(
-		std::bind(&slider_base::signal_handler_mouse_enter, this, _2, _3, _4));
+		std::bind(&slider_base::signal_handler_mouse_enter, this, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4));
 	connect_signal<event::MOUSE_MOTION>(
-		std::bind(&slider_base::signal_handler_mouse_motion, this, _2, _3, _4, _5));
+		std::bind(&slider_base::signal_handler_mouse_motion, this, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4, std::placeholders::_5));
 	connect_signal<event::MOUSE_LEAVE>(
-		std::bind(&slider_base::signal_handler_mouse_leave, this, _2, _3));
+		std::bind(&slider_base::signal_handler_mouse_leave, this, std::placeholders::_2, std::placeholders::_3));
 	connect_signal<event::LEFT_BUTTON_DOWN>(
-		std::bind(&slider_base::signal_handler_left_button_down, this, _2, _3));
+		std::bind(&slider_base::signal_handler_left_button_down, this, std::placeholders::_2, std::placeholders::_3));
 	connect_signal<event::LEFT_BUTTON_UP>(
-		std::bind(&slider_base::signal_handler_left_button_up, this, _2, _3));
+		std::bind(&slider_base::signal_handler_left_button_up, this, std::placeholders::_2, std::placeholders::_3));
 }
 
 void slider_base::scroll(const scroll_mode scroll)
@@ -132,7 +132,7 @@ unsigned slider_base::get_state() const
 void slider_base::set_slider_position(int item_position)
 {
 	// Set the value always execute since we update a part of the state.
-	item_position_ = utils::clamp(item_position, 0, item_last_);
+	item_position_ = std::clamp(item_position, 0, item_last_);
 
 	// Determine the pixel offset of the item position.
 	positioner_offset_ = rounded_division(item_position_, max_offset(), item_last_) + offset_before();
@@ -176,7 +176,7 @@ void slider_base::recalculate()
 void slider_base::move_positioner(int new_offset)
 {
 	int max_offset = this->max_offset();
-	new_offset = utils::clamp(new_offset, 0, max_offset);
+	new_offset = std::clamp(new_offset, 0, max_offset);
 
 	slider_base::slider_position_t final_offset = {new_offset, max_offset};
 	update_slider_position(final_offset);

@@ -31,26 +31,30 @@ struct help_manager {
 };
 
 struct section;
-/// Open a help dialog using a toplevel other than the default. This
-/// allows for complete customization of the contents, although not in a
-/// very easy way.
+/**
+ * Open a help dialog using a toplevel other than the default. This
+ * allows for complete customization of the contents, although not in a
+ * very easy way.
+ */
 void show_help(const section &toplevel, const std::string& show_topic="",
 			   int xloc=-1, int yloc=-1);
 
-/// Open the help browser. The help browser will have the topic with id
-/// show_topic open if it is not the empty string. The default topic
-/// will be shown if show_topic is the empty string.
+/**
+ * Open the help browser. The help browser will have the topic with id
+ * show_topic open if it is not the empty string. The default topic
+ * will be shown if show_topic is the empty string.
+ */
 void show_help(const std::string& show_topic="", int xloc=-1, int yloc=-1);
 
-/// wrapper to add unit prefix and hiding symbol
+/** wrapper to add unit prefix and hiding symbol */
 void show_unit_help(const std::string& unit_id, bool has_variations=false,
 				bool hidden = false, int xloc=-1, int yloc=-1);
 
-/// wrapper to add variation prefix and hiding symbol
+/** wrapper to add variation prefix and hiding symbol */
 void show_variation_help(const std::string &unit_id, const std::string &variation,
 				bool hidden = false, int xloc=-1, int yloc=-1);
 
-/// wrapper to add terrain prefix and hiding symbol
+/** wrapper to add terrain prefix and hiding symbol */
 void show_terrain_help(const std::string& unit_id, bool hidden = false,
 				int xloc = -1, int yloc = -1);
 

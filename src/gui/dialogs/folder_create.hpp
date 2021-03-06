@@ -16,11 +16,17 @@
 
 #include "gui/dialogs/modal_dialog.hpp"
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 
+/**
+ * @ingroup GUIWindowDefinitionWML
+ *
+ * Dialog for providing the name of a new folder to create. Used by the file dialog.
+ * Key               |Type          |Mandatory|Description
+ * ------------------|--------------|---------|-----------
+ * name              | text_box     |yes      |Input field for the new folder name.
+ */
 class folder_create : public modal_dialog
 {
 public:
@@ -31,7 +37,7 @@ public:
 	 *                            The parameter's usage is:
 	 *                            - Input: A suggested folder name.
 	 *                            - Output: The folder name the user actually
-	 *                              entered if the dialog returns @ref
+	 *                              entered if the dialog returns
 	 *                              retval::OK; undefined otherwise.
 	 */
 	folder_create(std::string& folder_name);
@@ -69,4 +75,3 @@ public:
 };
 
 } // namespace dialogs
-} // namespace gui2

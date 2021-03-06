@@ -13,9 +13,6 @@
    See the COPYING file for more details.
 */
 
-/** @file */
-
-#include "global.hpp"
 #include "serialization/tokenizer.hpp"
 #include "wesconfig.h"
 
@@ -58,7 +55,7 @@ const token &tokenizer::next_token()
 	token_.value.clear();
 
 	// Dump spaces and inlined comments
-	for(;;)
+	while(true)
 	{
 		while (is_space(current_)) {
 			next_char_fast();
@@ -134,7 +131,7 @@ const token &tokenizer::next_token()
 			token_.value = current_;
 			break;
 		}
-		FALLTHROUGH;
+		[[fallthrough]];
 
 	default:
 		if (is_alnum(current_) || current_ == '$') {

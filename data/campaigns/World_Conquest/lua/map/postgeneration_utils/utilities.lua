@@ -76,7 +76,7 @@ function world_conquest_tek_map_dirt(mushrooms)
 	local terrain_to_change = wct_store_possible_muddy_swamps()
 	while #terrain_to_change > 0 do
 		for i, v in ipairs(terrain_to_change) do
-			map:set_terrain(v, "Sm")
+			map[v] = "Sm"
 		end
 		terrain_to_change = wct_store_possible_muddy_swamps()
 	end
@@ -192,7 +192,7 @@ function wct_possible_map4_castle(terrain, value)
 	local terrain_to_change = wct_store_possible_map4_castle(value)
 	while #terrain_to_change > 0 and wesnoth.random(value + 1) == 1 do
 		local loc = terrain_to_change[wesnoth.random(#terrain_to_change)]
-		map:set_terrain(loc, terrain)
+		map[loc] = terrain
 		terrain_to_change = wct_store_possible_map4_castle(value)
 	end
 end
@@ -221,7 +221,7 @@ function wct_road_to_village(road, village)
 	local terrain_to_change = wct_store_possible_roads(village)
 	while #terrain_to_change > 0 do
 		local loc = terrain_to_change[wesnoth.random(#terrain_to_change)]
-		map:set_terrain(loc, road)
+		map[loc] = road
 		terrain_to_change = wct_store_possible_roads(village)
 	end
 end
@@ -234,7 +234,7 @@ function wct_iterate_roads_to(get_next, radius, terrain)
 		local locs = get_next(r)
 		while #locs > 0 do
 			local loc = locs[wesnoth.random(#locs)]
-			map:set_terrain(loc, terrain)
+			map[loc] = terrain
 			locs = get_next(r)
 		end
 	end
@@ -249,7 +249,7 @@ end
 function wct_iterate_roads_to_2(f_validpath, f_src, f_dest, terrain_road, radius)
 	local src_tiles = map:get_locations(f_src)
 	local dest_tiles = map:get_locations(f_dest)
-	local filter_path = wesnoth.create_filter(f_validpath)
+	local filter_path = wesnoth.map.filter(f_validpath)
 	local map = _G.map
 
 	local function filter_path_function(x, y)
@@ -282,7 +282,7 @@ function wct_iterate_roads_to_2(f_validpath, f_src, f_dest, terrain_road, radius
 					if (dist_ad or 999) < dist then
 						next_locs[#next_locs + 1] = loc_ad
 					end
-					if dist_ad and map:get_terrain(loc_ad) == terrain_road then
+					if dist_ad and map[loc_ad] == terrain_road then
 						--we merged with another path. 
 						goto path_found
 					end
@@ -294,7 +294,7 @@ function wct_iterate_roads_to_2(f_validpath, f_src, f_dest, terrain_road, radius
 			::path_found::
 			wesnoth.log("debug", "generated path: " .. debug_wml(path))
 			for i, ploc in ipairs(path) do
-				map:set_terrain(ploc, terrain_road)
+				map[ploc] = terrain_road
 			end
 		end
 	end
@@ -310,7 +310,7 @@ function wct_break_walls(wall, terrain)
 	local terrain_to_change = wct_store_broken_wall_candidates(wall)
 	while #terrain_to_change > 0 do
 		local loc = terrain_to_change[wesnoth.random(#terrain_to_change)]
-		map:set_terrain(loc, helper.rand(terrain))
+		map[loc] = helper.rand(terrain)
 		terrain_to_change = wct_store_broken_wall_candidates(wall)
 	end
 end

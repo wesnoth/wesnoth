@@ -34,38 +34,10 @@
 #include "color.hpp"
 #include "units/unit.hpp"
 
-#include "utils/functional.hpp"
+#include <functional>
 
-namespace gui2
+namespace gui2::dialogs
 {
-namespace dialogs
-{
-
-/*WIKI
- * @page = GUIWindowDefinitionWML
- * @order = 2_unit_attack
- *
- * == Unit attack ==
- *
- * This shows the dialog for attacking units.
- *
- * @begin{table}{dialog_widgets}
- *                                     $
- * attacker_icon     & & image   & o & Shows the icon of the attacking unit. $
- * attacker_name     & & styled_widget & o & Shows the name of the attacking unit. $
- *
- * defender_portrait & & image   & o & Shows the portrait of the defending unit.
- *                                     $
- * defender_icon     & & image   & o & Shows the icon of the defending unit. $
- * defender_name     & & styled_widget & o & Shows the name of the defending unit. $
- *
- *
- * weapon_list       & & listbox & m & The list with weapons to choose from. $
- * -attacker_weapon  & & styled_widget & o & The weapon for the attacker to use. $
- * -defender_weapon  & & styled_widget & o & The weapon for the defender to use. $
- *
- * @end{table}
- */
 
 REGISTER_DIALOG(unit_attack)
 
@@ -81,9 +53,9 @@ unit_attack::unit_attack(const unit_map::iterator& attacker_itor,
 {
 }
 
-void unit_attack::damage_calc_callback(window& window)
+void unit_attack::damage_calc_callback()
 {
-	const std::size_t index = find_widget<listbox>(&window, "weapon_list", false).get_selected_row();
+	const std::size_t index = find_widget<listbox>(get_window(), "weapon_list", false).get_selected_row();
 	attack_predictions::display(weapons_[index], attacker_itor_.get_shared_ptr(), defender_itor_.get_shared_ptr());
 }
 
@@ -91,7 +63,7 @@ void unit_attack::pre_show(window& window)
 {
 	connect_signal_mouse_left_click(
 			find_widget<button>(&window, "damage_calculation", false),
-			std::bind(&unit_attack::damage_calc_callback, this, std::ref(window)));
+			std::bind(&unit_attack::damage_calc_callback, this));
 
 	find_widget<unit_preview_pane>(&window, "attacker_pane", false)
 		.set_displayed_unit(*attacker_itor_);
@@ -204,4 +176,3 @@ void unit_attack::post_show(window& window)
 }
 
 } // namespace dialogs
-} // namespace gui2

@@ -17,7 +17,7 @@
 #include "random.hpp"
 #include "mt_rng.hpp"
 
-#include "utils/functional.hpp"
+#include <functional>
 
 /*
 todo: use a boost::random based solution.

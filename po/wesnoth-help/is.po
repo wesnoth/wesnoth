@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.7.0-dev\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2020-10-17 01:28-0300\n"
+"POT-Creation-Date: 2021-02-20 18:40-0300\n"
 "PO-Revision-Date: 2009-06-15 15:08-0000\n"
 "Last-Translator: Gabríel A. Pétursson <gabrielp@simnet.is>\n"
 "Language-Team: \n"
@@ -23,7 +23,7 @@ msgstr ""
 #. [time]: id=underground
 #. [editor_times]: id=underground
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:495
-#: data/core/editor/time-of-day.cfg:41 data/core/macros/schedules.cfg:109
+#: data/core/editor/time-of-day.cfg:41 data/core/macros/schedules.cfg:113
 msgid "Underground"
 msgstr "Neðanjarðar"
 
@@ -165,13 +165,13 @@ msgstr ""
 
 #. [hides]: id=ambush
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:14
-#: data/core/macros/abilities.cfg:251
+#: data/core/macros/abilities.cfg:250
 msgid "ambush"
 msgstr "fyrirsát"
 
 #. [damage]: id=backstab
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:17
-#: data/core/macros/abilities.cfg:352
+#: data/core/macros/abilities.cfg:372
 msgid "backstab"
 msgstr "bakstunga"
 
@@ -185,13 +185,13 @@ msgstr "Hellir"
 
 #. [damage]: id=charge
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:26
-#: data/core/macros/abilities.cfg:448
+#: data/core/macros/abilities.cfg:468
 msgid "charge"
 msgstr "áhlaup"
 
 #. [hides]: id=concealment
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:29
-#: data/core/macros/abilities.cfg:289
+#: data/core/macros/abilities.cfg:309
 msgid "concealment"
 msgstr "leynd"
 
@@ -204,13 +204,13 @@ msgid "cures"
 msgstr "heilar"
 
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:35
-#: src/help/help_topic_generators.cpp:702
+#: src/help/help_topic_generators.cpp:701
 msgid "Defense"
 msgstr "Vörn"
 
 #. [drains]: id=drains
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:38
-#: data/core/macros/abilities.cfg:461
+#: data/core/macros/abilities.cfg:481
 msgid "drains"
 msgstr "tæmir"
 
@@ -222,13 +222,13 @@ msgstr "óttalaus"
 
 #. [dummy]: id=feeding
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:44
-#: data/core/macros/abilities.cfg:328
+#: data/core/macros/abilities.cfg:348
 msgid "feeding"
 msgstr "nærist"
 
 #. [dummy]: id=feeding
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:47
-#: data/core/macros/abilities.cfg:330
+#: data/core/macros/abilities.cfg:350
 #, fuzzy
 #| msgid ""
 #| " This unit gains 1 hitpoint added to its maximum whenever it kills a "
@@ -273,25 +273,25 @@ msgstr "Hólar"
 
 #. [illuminates]: id=illumination
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:80
-#: data/core/macros/abilities.cfg:206
+#: data/core/macros/abilities.cfg:205
 msgid "illuminates"
 msgstr "lýsir"
 
 #. [leadership]: id=leadership
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:83
-#: data/core/macros/abilities.cfg:172
+#: data/core/macros/abilities.cfg:171
 msgid "leadership"
 msgstr "leiðtogi"
 
 #. [chance_to_hit]: id=magical
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:86
-#: data/core/macros/abilities.cfg:426
+#: data/core/macros/abilities.cfg:446
 msgid "magical"
 msgstr "galdrar"
 
 #. [chance_to_hit]: id=marksman
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:89
-#: data/core/macros/abilities.cfg:413
+#: data/core/macros/abilities.cfg:433
 msgid "marksman"
 msgstr "skytta"
 
@@ -301,20 +301,20 @@ msgstr "Sveppalundur"
 
 #. [hides]: id=nightstalk
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:95
-#: data/core/macros/abilities.cfg:270 data/core/macros/abilities.cfg:271
+#: data/core/macros/abilities.cfg:290 data/core/macros/abilities.cfg:291
 msgid "nightstalk"
 msgstr "næturveiði"
 
 #. [plague]: id=plague({TYPE}), type={TYPE}
 #. [plague]: id=plague, type=Walking Corpse
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:98
-#: data/core/macros/abilities.cfg:371 data/core/macros/abilities.cfg:382
+#: data/core/macros/abilities.cfg:391 data/core/macros/abilities.cfg:402
 msgid "plague"
 msgstr "plága"
 
 #. [poison]: id=poison
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:101
-#: data/core/macros/abilities.cfg:481
+#: data/core/macros/abilities.cfg:501
 msgid "poison"
 msgstr "eitrun"
 
@@ -325,7 +325,7 @@ msgid "regenerates"
 msgstr "endurskapar"
 
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:107
-#: src/help/help_topic_generators.cpp:663
+#: src/help/help_topic_generators.cpp:662
 msgid "Resistances"
 msgstr "Mótstöður"
 
@@ -335,13 +335,13 @@ msgstr "Sandur"
 
 #. [skirmisher]: id=skirmisher
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:113
-#: data/core/macros/abilities.cfg:191
+#: data/core/macros/abilities.cfg:190
 msgid "skirmisher"
 msgstr "truflar"
 
 #. [slow]: id=slow
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:116
-#: data/core/macros/abilities.cfg:393
+#: data/core/macros/abilities.cfg:413
 msgid "slows"
 msgstr "hægir"
 
@@ -352,13 +352,13 @@ msgid "steadfast"
 msgstr "staðfastur"
 
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:122
-#: src/help/help_topic_generators.cpp:582
+#: src/help/help_topic_generators.cpp:581
 msgid "Strikes"
 msgstr "Högg"
 
 #. [hides]: id=submerge
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:125
-#: data/core/macros/abilities.cfg:308
+#: data/core/macros/abilities.cfg:328
 msgid "submerge"
 msgstr "kafar"
 
@@ -368,7 +368,7 @@ msgstr "Mýri"
 
 #. [teleport]: id=teleport
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:131
-#: data/core/macros/abilities.cfg:220
+#: data/core/macros/abilities.cfg:219
 msgid "teleport"
 msgstr "fjarfluttur"
 
@@ -389,14 +389,15 @@ msgstr ""
 
 #. [section]: id=editor_mode_terrain
 #. [topic]: id=..editor_mode_terrain
-#: data/core/editor/help.cfg:13 data/core/editor/help.cfg:274
+#: data/core/editor/help.cfg:13 data/core/editor/help.cfg:257
 #, fuzzy
 #| msgid "Terrain Modifiers"
 msgid "Terrain Editor"
 msgstr "Landslags Áhrifavaldar"
 
 #. [section]: id=editor_mode_scenario
-#: data/core/editor/help.cfg:20
+#. [topic]: id=..editor_mode_scenario
+#: data/core/editor/help.cfg:20 data/core/editor/help.cfg:269
 #, fuzzy
 #| msgid "Terrain Modifiers"
 msgid "Scenario Editor"
@@ -557,16 +558,17 @@ msgid "Starting Locations Tool"
 msgstr ""
 
 #. [topic]: id=editor_tool_starting
-#: data/core/editor/help.cfg:108
+#: data/core/editor/help.cfg:109
 msgid ""
-"Defines the side leader starting position\n"
+"Defines the side leader starting position.\n"
 "\n"
 "This tool sets the side leaders’ default starting locations, and named "
 "special locations. Both types of location are enabled in both <ref>dst='.."
-"editor_mode_terrain' text='Terrain Editor'</ref> and Scenario Editor modes. "
-"The location names are shown as a list in the editor palette, clicking on "
-"the map will place that name on a hex, each location can only be placed on a "
-"single hex, and the editor will only allow one location per hex.\n"
+"editor_mode_terrain' text='Terrain Editor'</ref> and <ref>dst='.."
+"editor_mode_scenario' text='Scenario Editor'</ref> modes. The location names "
+"are shown as a list in the editor palette, clicking on the map will place "
+"that name on a hex, each location can only be placed on a single hex, and "
+"the editor will only allow one location per hex.\n"
 "\n"
 "To add named special locations, click “Add” at the bottom of the editor "
 "palette, and enter the name. These names must start with a letter and may "
@@ -590,91 +592,138 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=editor_tool_label
-#: data/core/editor/help.cfg:127
+#: data/core/editor/help.cfg:129
 msgid "Label Tool"
 msgstr ""
 
 #. [topic]: id=editor_tool_label
-#. [topic]: id=editor_tool_item
-#. [topic]: id=editor_tool_village
-#. [topic]: id=editor_tool_unit
-#. [topic]: id=editor_time_schedule
-#: data/core/editor/help.cfg:128 data/core/editor/help.cfg:136
-#: data/core/editor/help.cfg:154 data/core/editor/help.cfg:162
-#: data/core/editor/help.cfg:295
-msgid "TODO"
-msgstr ""
-
-#. [topic]: id=editor_tool_item
-#: data/core/editor/help.cfg:135
-msgid "Item Tool"
-msgstr ""
-
-#. [topic]: id=editor_tool_soundsource
-#: data/core/editor/help.cfg:143
-msgid "Soundsource Tool"
-msgstr ""
-
-#. [topic]: id=editor_tool_soundsource
-#: data/core/editor/help.cfg:144
+#: data/core/editor/help.cfg:130
 msgid ""
-"Places Soundsources on your maps!\n"
+"Put text labels on the map.\n"
 "\n"
-"This tool has not been implemented yet."
+"• Left-click will open a dialog box to create a new label or edit an "
+"existing one.\n"
+"• Right-click deletes.\n"
+"• Drag-and-drop with the left mouse button moves labels.\n"
+"\n"
+"This tool is only available in Scenario Mode; the decorations are "
+"implemented in the scenario using WML’s <italic>text='[label]'</italic> tag."
+msgstr ""
+
+#. [topic]: id=editor_tool_scenery
+#: data/core/editor/help.cfg:145
+msgid "Item Tool (Scenery Tool)"
+msgstr ""
+
+#. [topic]: id=editor_tool_scenery
+#: data/core/editor/help.cfg:146
+msgid ""
+"The Item Tool allows placing decorations such as windmills, bookcases and "
+"monoliths. Multiple items can be placed on the same hex.\n"
+"\n"
+"<bold>text='Note:'</bold> the tool doesn’t support deleting items once "
+"placed, nor does it support undo. Mistakes can currently only be fixed by "
+"editing the generated WML file.\n"
+"\n"
+"This tool is only available in Scenario Mode; the decorations are not part "
+"of the terrain and are implemented in the scenario using WML’s "
+"<italic>text='[item]'</italic> tag."
 msgstr ""
 
 #. [topic]: id=editor_tool_village
-#: data/core/editor/help.cfg:153
+#: data/core/editor/help.cfg:159
 msgid "Village Ownership Tool"
 msgstr ""
 
+#. [topic]: id=editor_tool_village
+#: data/core/editor/help.cfg:160
+msgid ""
+"This tool assigns ownership of villages at the start of a scenario. The "
+"villages must first be placed on the terrain with the "
+"<ref>dst='editor_tool_paint' text='Paint Tool'</ref>.\n"
+"\n"
+"• Left-click will assign the village to the currently-selected side.\n"
+"• Right-click will set the village back to unowned.\n"
+"\n"
+"This tool is only available in Scenario Mode; ownership information is "
+"stored by adding WML <italic>text='[village]'</italic> tags to the "
+"appropriate <italic>text='[side]'</italic>."
+msgstr ""
+
 #. [topic]: id=editor_tool_unit
-#: data/core/editor/help.cfg:161
+#: data/core/editor/help.cfg:174
 msgid "Unit Tool"
 msgstr ""
 
+#. [topic]: id=editor_tool_unit
+#: data/core/editor/help.cfg:175
+msgid ""
+"Place units belonging to the currently-selected side.\n"
+"\n"
+"• Left-click will place a unit.\n"
+"• Left drag-and-drop will move an already-placed unit.\n"
+"• Various operations are added to the right-click menu when the hex contains "
+"a unit.\n"
+"\n"
+"This tool is only available in Scenario Mode; it adds WML "
+"<italic>text='[unit]'</italic> tags to the appropriate "
+"<italic>text='[side]'</italic>."
+msgstr ""
+
 #. [topic]: id=editor_named_area
-#: data/core/editor/help.cfg:169
+#: data/core/editor/help.cfg:190
 msgid "Named Areas"
 msgstr ""
 
 #. [topic]: id=editor_named_area
-#: data/core/editor/help.cfg:170
+#: data/core/editor/help.cfg:191
 msgid ""
-"This tool can create [time_area]s, unlike the name suggests these do not "
-"need to have a specific time zone assigned to them.\n"
-"    [time_area]s are sets of tiles which can be addressed during scenario "
-"scripting by a their id. [time_area]s can optionally have a custom\n"
-"    time zone assigned to them. The simplest way to address a [time_area] "
-"via scenario scripting is the `area=` attribute in standard location "
-"filters.\n"
+"This tool create sets of tiles that can be used in WML scripts’ Standard "
+"Location Filters (a concept explained in detail on the Wiki), by using the "
+"area’s id in the filter’s <italic>text='area='</italic> attribute. For "
+"example:\n"
 "\n"
-"This tool can be used to abstract between the implementation of an effect "
-"and the map specific setting.\n"
-"This is a very powerful mechanism since it allows generic scenario code to "
-"work with different maps providing the needed named locations."
+"• assigning a local time zone to this set of hexes\n"
+"• filtering the set of hexes which trigger an event when a unit moves on to "
+"them\n"
+"\n"
+"To use the tool:\n"
+"\n"
+"• select hexes using the <ref>dst='editor_tool_select' text='select tool'</"
+"ref>\n"
+"• in the Areas menu, select Add New Area\n"
+"• then in the Areas menu, select Save Selection to Area\n"
+"• then in the Areas menu, select Rename Selected Area and choose a name for "
+"the area\n"
+"\n"
+"This tool is only available in Scenario Mode; it adds WML "
+"<italic>text='[time_area]'</italic> tags to the scenario. Although the tag’s "
+"name implies time, it is now more generic and can be used for other purposes "
+"without needing to change the time-of-day schedule in the area."
 msgstr ""
 
 #. [topic]: id=editor_playlist
-#: data/core/editor/help.cfg:182
+#: data/core/editor/help.cfg:212
 msgid "Playlist Manager"
 msgstr ""
 
 #. [topic]: id=editor_playlist
-#: data/core/editor/help.cfg:183
+#: data/core/editor/help.cfg:213
 msgid ""
-"Saves a list of music tracks defining a random playlist to the scenario.\n"
+"Shows a list of music tracks known to the editor, with toggle-boxes to "
+"enable them.\n"
 "\n"
-"Have a look at the addon server for easy to use additional music tracks."
+"This tool is only available in Scenario Mode; it adds WML "
+"<italic>text='[music]'</italic> tags to the scenario."
 msgstr ""
 
 #. [topic]: id=..editor
-#: data/core/editor/help.cfg:192
+#: data/core/editor/help.cfg:223
 msgid "Map/Scenario Editor"
 msgstr ""
 
 #. [topic]: id=..editor
-#: data/core/editor/help.cfg:194
+#: data/core/editor/help.cfg:224
 msgid ""
 "Wesnoth’s Map and Scenario Editor allows users to create and edit the maps "
 "on which every Wesnoth scenario takes place. It also provides a limited set "
@@ -683,32 +732,51 @@ msgid ""
 "The editor can be launched from the <italic>text='Map Editor'</italic> "
 "option at the title screen.\n"
 "\n"
-"<header>text='What you get'</header>\n"
+"<header>text='Editing Modes'</header>\n"
 "\n"
-"• <ref>dst='..editor_mode_terrain' text='Terrain Editor'</ref>\n"
-"An easy to use map editor, similar to simple paint applications.\n"
+"The editor features two modes of operation: terrain mode and scenario mode.\n"
 "\n"
-"• Scenario Editor\n"
+"The <ref>dst='..editor_mode_terrain' text='Terrain Mode'</ref> is similar to "
+"a simple paint application, with tools to <ref>dst='editor_tool_paint' "
+"text='paint'</ref>, <ref>dst='editor_tool_fill' text='fill'</ref>, "
+"<ref>dst='editor_tool_select' text='select (and copy)'</ref>, and "
+"<ref>dst='editor_tool_paste' text='paste'</ref>. It also has the tool for "
+"setting the leaders’ <ref>dst='editor_tool_starting' text='starting "
+"locations'</ref>.\n"
 "\n"
-"• <ref>dst='editor_playlist' text='Playlist Manager'</ref>\n"
-"Predefine the scenario’s music track playlist.\n"
+"The <ref>dst='..editor_mode_scenario' text='Scenario Mode'</ref>, in "
+"addition to the tools available in terrain mode, adds support for adding "
+"<ref>dst='editor_tool_label' text='labels'</ref>, "
+"<ref>dst='editor_tool_scenery' text='scenery items'</ref>, "
+"<ref>dst='editor_tool_unit' text='units'</ref> in addition to the leader, "
+"and assigning <ref>dst='editor_tool_village' text='village ownership'</ref> "
+"at the start of the scenario. There’s also a <ref>dst='editor_playlist' "
+"text='playlist manager'</ref> for the music.\n"
 "\n"
-"• Time Schedule Editor\n"
-"\n"
+"<bold>text='Warning: the Scenario Mode is buggy in 1.14.'</bold> Improving "
+"it is one of the main blockers for the 1.16 release, however in 1.14 its "
+"quality is far below that of the game and the terrain mode."
+msgstr ""
+
+#. [topic]: id=..editor
+#: data/core/editor/help.cfg:238
+msgid ""
 "<header>text='What you do *not* get'</header>\n"
 "\n"
-"• What-you-see-is-what-you-get\n"
-"The editor is not a WYSIWYG application.\n"
+"• Exactly the same map rendering as in-game\n"
 "\n"
-"Because which exact graphic tile represents a terrain in the map depends on "
-"all terrain rules loaded (which is different between the editor and each "
-"other use case) the map won’t look exactly the same.\n"
+"The map won’t look exactly the same in the game as it does in the editor, "
+"because this depends on the terrain rules. For example, when many mountain "
+"hexes are clustered together the terrain rules will try to combine them into "
+"mountain ranges and large graphics spanning multiple hexes.\n"
 "\n"
 "• Event handlers and scripting\n"
+"\n"
 "The editor is not a tool to help you scripting the scenario’s event "
 "handlers.\n"
 "\n"
 "• Infinite Backwards Compatibility\n"
+"\n"
 "The editor can load most maps from older versions of Wesnoth, but not all. "
 "Maps from 1.3.2 and later will normally be supported, unless they use "
 "terrains which are no longer in mainline Wesnoth. Maps from add-ons which "
@@ -716,113 +784,174 @@ msgid ""
 "terrains."
 msgstr ""
 
-#. [topic]: id=..editor
-#: data/core/editor/help.cfg:223
-msgid ""
-"<header>text='Basic Concepts'</header>\n"
-"• <ref>dst='editor_modes' text='Editing Modes'</ref>\n"
-"• <ref>dst='editor_toolkit' text='Editor Toolkit'</ref>\n"
-"• <ref>dst='editor_palette' text='Editor Palette'</ref>\n"
-"• The clipboard is described in the <ref>dst='editor_tool_paste' text='Paste "
-"Tool'</ref>"
-msgstr ""
-
-#. [topic]: id=editor_modes
-#: data/core/editor/help.cfg:233
-msgid "Editing Modes"
-msgstr ""
-
-#. [topic]: id=editor_modes
-#: data/core/editor/help.cfg:234
-msgid ""
-"The editor features two modes of operation:\n"
-"\n"
-"<header>text='Terrain-only Mode'</header>\n"
-"\n"
-"Allows only the composing of the terrain map itself and the definition of "
-"leader starting positions.\n"
-"\n"
-"When saved using “Save Map As” and saving to the default directory, the "
-"produced map can be found in the “User Maps” game type of the create "
-"multiplayer game dialog.\n"
-"\n"
-"<header>text='Scenario Mode'</header>\n"
-"\n"
-"The Scenario mode allows several extra tools to be used, such as the Unit "
-"tool. At least one side must be defined in order to use these tools, "
-"however.\n"
-"\n"
-"In this mode, terrain data is stored in the map_data attribute and saved "
-"into a file with any applicable WML."
-msgstr ""
-
-#. [topic]: id=editor_toolkit
-#: data/core/editor/help.cfg:251
-msgid "Editor Tools"
-msgstr ""
-
-#. [topic]: id=editor_toolkit
-#: data/core/editor/help.cfg:252
-msgid ""
-"The editor provides several tools for editing your maps and scenarios. At "
-"all times, one of the editor tools is active. The active tool’s context "
-"determines the content of the editor palette and context menu.\n"
-"\n"
-"These tools are available in both terrain-only mode and scenario mode:\n"
-"\n"
-"• <ref>dst='editor_tool_paint' text='Paint Tool'</ref>\n"
-"• <ref>dst='editor_tool_fill' text='Fill Tool'</ref>\n"
-"• <ref>dst='editor_tool_select' text='Select Tool'</ref>\n"
-"• <ref>dst='editor_tool_paste' text='Paste Tool'</ref>\n"
-"• <ref>dst='editor_tool_starting' text='Starting Locations Tool'</ref>\n"
-"\n"
-"These tools are only available in scenario mode:\n"
-"\n"
-"• <ref>dst='editor_tool_label' text='Label Tool'</ref>\n"
-"• <ref>dst='editor_tool_item' text='Item Tool'</ref>\n"
-"• <ref>dst='editor_tool_soundsource' text='Soundsource Tool'</ref>\n"
-"• <ref>dst='editor_tool_village' text='Village Tool'</ref>\n"
-"• <ref>dst='editor_tool_unit' text='Unit Tool'</ref>"
-msgstr ""
-
 #. [topic]: id=..editor_mode_terrain
-#: data/core/editor/help.cfg:275
+#: data/core/editor/help.cfg:258
 msgid ""
 "The terrain editor’s functionality is similar to a simple paint "
 "application.\n"
 "\n"
-"The right-hand sidebar contains, from top to bottom, the mini-map, "
-"<ref>dst='editor_toolkit' text='Toolkit'</ref>, tool options, and "
+"The right-hand sidebar contains, from top to bottom, the mini-map, the "
+"toolkit (see the pages for each tool), tool options, and "
 "<ref>dst='editor_palette' text='Palette'</ref>.\n"
 "\n"
-"To get started, refer to the <ref>dst='editor_tool_paint' text='Paint Tool'</"
-"ref>’s page."
+"When saved using “Save Map As” and saving to the default directory, the "
+"resulting map can be found in the “Custom Maps” game type of the multiplayer "
+"“Create Game” dialog."
+msgstr ""
+
+#. [topic]: id=..editor_mode_scenario
+#: data/core/editor/help.cfg:270
+msgid ""
+"The scenario editor mode adds support for some map-related WML features, "
+"such as areas and scenery items. Most scenarios will still require "
+"additional WML to be written using a different tool; the scenario editor "
+"does not support scripting the scenario’s events."
+msgstr ""
+
+#. [topic]: id=..editor_mode_scenario
+#: data/core/editor/help.cfg:272
+msgid ""
+"<header>text='Checking whether the editor is in scenario mode'</header>\n"
+"\n"
+"You can check which mode the editor is in by looking at the menu bar.\n"
+"\n"
+"• In scenario mode the “Areas” and “Side” menus are enabled.\n"
+"• In terrain-only mode the “Areas” and “Side” menus are grayed-out."
+msgstr ""
+
+#. [topic]: id=..editor_mode_scenario
+#: data/core/editor/help.cfg:279
+msgid ""
+"<header>text='Entering scenario mode'</header>\n"
+"\n"
+"To start a new map in scenario mode, choose “New Scenario” from the “File” "
+"menu.\n"
+"\n"
+"If you’re already editing a map in terrain mode, use “Save Scenario As” from "
+"the “File” menu; this will switch to scenario mode.\n"
+"\n"
+"To load a map that was created in the scenario editor, use “Load Map” from "
+"the “File” menu, and select the .cfg file (not a .map file)."
+msgstr ""
+
+#. [topic]: id=..editor_mode_scenario
+#: data/core/editor/help.cfg:287
+msgid ""
+"<header>text='The files: .map and .cfg'</header>\n"
+"\n"
+"The map editor saves exactly one file, either a .map (for terrain mode) or "
+"a .cfg (for scenario mode). In scenario mode the terrain map is saved inside "
+"the .cfg file; there is no separate .map file. If you start editing in "
+"terrain mode and then switch to scenaro mode then an old .map file might "
+"remain, but this is not updated by the scenario editor.\n"
+"\n"
+"Loading a .cfg file has different results depending on the contents of the ."
+"cfg file. For .cfg files that were created by the scenario editor, it will "
+"open the .cfg in the scenario editor. However, for .cfg files that use a "
+"separate .map file (which can't be created by the scenario editor), the "
+"editor may follow the link and open the corresponding .map in terrain-only "
+"mode, as if the .map file was chosen in the file selector."
+msgstr ""
+
+#. [topic]: id=editor_separate_events_file
+#: data/core/editor/help.cfg:299
+msgid "Using a separate file for WML events"
+msgstr ""
+
+#. [topic]: id=editor_separate_events_file
+#: data/core/editor/help.cfg:300
+msgid ""
+"When loading a .cfg file, the scenario editor understands files created by "
+"the scenario editor, but is likely to have difficulty with files that have "
+"been edited by hand.\n"
+"\n"
+"Files created by the scenario editor omit the opening [scenario] and closing "
+"[/scenario] tags. If you are creating a campaign (or other add-on), then "
+"those tags need to be added; there is more detail about this in the "
+"<ref>dst='editor_map_format' text='map file format'</ref> documentation.\n"
+"\n"
+"One workflow is to create a separate WML file, also with the .cfg extension, "
+"which uses the WML preprocessor to include the editor-created file. This "
+"separate file contains both the [scenario] tag and any hand-edited WML such "
+"as events. With this workflow, the add-on’s file structure could look like "
+"this:\n"
+"\n"
+"<header>text='For Wesnoth 1.14'</header>\n"
+"\n"
+"• _main.cfg:\n"
+"  ◦ use “{./scenarios}” to include the “scenarios” directory\n"
+"• maps/map_from_01.cfg\n"
+"  ◦ this is the file created by the scenario editor\n"
+"• scenarios/01_Forest.cfg, instead of the opening [scenario] tag put in "
+"these four lines:\n"
+"  ◦ [scenario]\n"
+"  ◦     {~add-ons/NAME_OF_ADD_ON/maps/map_from_01.cfg}\n"
+"  ◦ [/scenario]\n"
+"  ◦ [+scenario]\n"
+"\n"
+"The first three of those lines insert the scenario-generated file inside a "
+"[scenario] tag. The ‘+’ sign on the fourth line means that two scenario tags "
+"will be combined, with attributes in the second one overriding attributes in "
+"the first one.\n"
+"\n"
+"<header>text='1.16 and later'</header>\n"
+"\n"
+"If your add-on will only be used on 1.16 and later, there are new features "
+"to load .cfg files via map_file, and to avoid repeating the add-on’s name "
+"within the .cfg files.\n"
+"\n"
+"• _main.cfg:\n"
+"  ◦ use “[binary_path]” to add add-on’s directories to the binary path, "
+"which makes “map_file” search the “maps” directory.\n"
+"  ◦ use “{./scenarios}” to include the “scenarios” directory\n"
+"• maps/map_from_01.cfg\n"
+"  ◦ this is the file created by the scenario editor\n"
+"• scenarios/01_Forest.cfg\n"
+"  ◦ inside the [scenario] element, use “map_file=\"map_from_01.cfg\"” to "
+"load that file"
 msgstr ""
 
 #. [topic]: id=editor_masks
-#: data/core/editor/help.cfg:286
+#: data/core/editor/help.cfg:338
 msgid "Editor Mask Usage"
 msgstr ""
 
 #. [topic]: id=editor_masks
-#: data/core/editor/help.cfg:287
+#: data/core/editor/help.cfg:339
 msgid ""
 "Masks can be applied to a base map for reusal in several scenarios playing "
 "at the same locations."
 msgstr ""
 
 #. [topic]: id=editor_time_schedule
-#: data/core/editor/help.cfg:294
-msgid "Time Schedule Editor"
+#. Time of Day and Schedule Editor, please use a short string as it will be used in the left-hand pane of the help browser
+#: data/core/editor/help.cfg:347
+#, fuzzy
+#| msgid "Time of Day"
+msgid "ToD and Schedule Editor"
+msgstr "Tími dags"
+
+#. [topic]: id=editor_time_schedule
+#: data/core/editor/help.cfg:348
+msgid ""
+"This button at the top-right of the screen accesses the time-of-day preview "
+"and the schedule editor.\n"
+"\n"
+"In terrain mode, this displays the map as it will be recolored at different "
+"times of day.\n"
+"\n"
+"In scenario mode, the button accesses an editor for individual schedules for "
+"<ref>dst='editor_named_area' text='time areas'</ref>."
 msgstr ""
 
 #. [topic]: id=editor_palette
-#: data/core/editor/help.cfg:302
+#: data/core/editor/help.cfg:359
 msgid "Editor Palette"
 msgstr ""
 
 #. [topic]: id=editor_palette
-#: data/core/editor/help.cfg:303
+#. the “Player 1”, “Player 2”, ... list is translated using "Player $side_num" in the wesnoth-editor textdomain
+#: data/core/editor/help.cfg:361
 msgid ""
 "The editor palette contains the applicable items you may use with the "
 "currently selected tool. For example, the Paint tool will display a full "
@@ -838,40 +967,40 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=editor_palette
-#: data/core/editor/help.cfg:308
+#: data/core/editor/help.cfg:366
 msgid "Show all kinds of terrain"
 msgstr ""
 
 #. [topic]: id=editor_palette
-#: data/core/editor/help.cfg:309
+#: data/core/editor/help.cfg:367
 msgid "Show only water terrains"
 msgstr ""
 
 #. [topic]: id=editor_palette
-#: data/core/editor/help.cfg:310
+#: data/core/editor/help.cfg:368
 msgid "Show only villages"
 msgstr ""
 
-#. [topic]: id=map_format
-#: data/core/editor/help.cfg:320
+#. [topic]: id=editor_map_format
+#: data/core/editor/help.cfg:379
 msgid "Wesnoth Map Format"
 msgstr ""
 
-#. [topic]: id=map_format
-#: data/core/editor/help.cfg:321
+#. [topic]: id=editor_map_format
+#: data/core/editor/help.cfg:380
 msgid "Wesnoth stores its maps in human readable plain text files."
 msgstr ""
 
-#. [topic]: id=map_format
-#: data/core/editor/help.cfg:323
+#. [topic]: id=editor_map_format
+#: data/core/editor/help.cfg:382
 msgid ""
 "<header>text='Native'</header>\n"
 "\n"
 "A map file consists of rows with comma separated terrain code strings. The "
-"only non-terrain information provided by the map syntax are the locations "
-"created by the <ref>dst='editor_tool_starting' text='Starting Locations "
-"Tool'</ref>. The files can be edited with a general purpose text editor like "
-"notepad.\n"
+"only non-terrain information provided by the map syntax is the set of "
+"locations created by the <ref>dst='editor_tool_starting' text='Starting "
+"Locations Tool'</ref>. The files can be edited with a general purpose text "
+"editor like notepad.\n"
 "\n"
 "These files can be used directly for multiplayer games, the number of "
 "players is automatically determined by the number of starting positions. "
@@ -893,8 +1022,8 @@ msgid ""
 "preprocessor include."
 msgstr ""
 
-#. [topic]: id=map_format
-#: data/core/editor/help.cfg:336
+#. [topic]: id=editor_map_format
+#: data/core/editor/help.cfg:395
 msgid ""
 "<header>text='Embedded'</header>\n"
 "\n"
@@ -903,7 +1032,7 @@ msgid ""
 "that the preprocessor would include it when using the preprocessor-include "
 "method.\n"
 "\n"
-"<bold>text='Using Embedded Format in Terrain Mode'</bold>\n"
+"<header>text='Using Embedded Format in Terrain Mode'</header>\n"
 "\n"
 "If you are editing the map and not using the Scenario Mode support, then "
 "it’s trivial to move the data to a native map file before opening it in the "
@@ -913,23 +1042,50 @@ msgid ""
 "menu."
 msgstr ""
 
-#. [topic]: id=map_format
-#: data/core/editor/help.cfg:344
+#. [topic]: id=editor_map_format
+#: data/core/editor/help.cfg:403
 msgid ""
-"<bold>text='Using Embedded Format in Scenario Mode'</bold>\n"
+"<header>text='Files created by the Scenario Editor'</header>\n"
 "\n"
-"TODO: add documentation about the scenario mode."
+"In scenario mode, the editor saves the data as a .cfg file with embedded map "
+"data. When loading a .cfg file, the scenario editor understands files "
+"created by the scenario editor itself, but is likely to have difficulty with "
+"files that have been edited by hand; problems can be avoided by "
+"<ref>dst='editor_separate_events_file' text='using a separate .cfg file'</"
+"ref> for the hand-edited parts."
+msgstr ""
+
+#. [topic]: id=editor_map_format
+#: data/core/editor/help.cfg:407
+msgid ""
+"<header>text='Which scenario files use the [scenario] tag'</header>\n"
+"\n"
+"Files created by the scenario editor have the contents of a WML scenario "
+"element, but don’t include the opening [scenario] and closing [/scenario] "
+"tags. For each .cfg file in the userdata folder’s editor/scenarios "
+"subfolder, the game will automatically try to load a scenario from it to "
+"include in the “Custom Scenarios” list (files that fail to load are "
+"ignored). In this folder each file is a separate item - files that fail to "
+"parse as a scenario are ignored, and files must not contain the [scenario][/"
+"scenario] tags.\n"
+"\n"
+"The opposite applies when a scenario is part of a campaign or other add-on. "
+"Typically each scenario has its own .cfg file, however this is unnecessary - "
+"all of the WML in an add-on will be combined by the preprocessor, it doesn’t "
+"matter whether the add-on is written as separate files or not. The engine "
+"needs the [scenario]...[/scenario] (or [multiplayer]...[/multiplayer]) tags "
+"to know which WML is part of each scenario."
 msgstr ""
 
 #. [time]: id=deep_underground
 #. [editor_times]: id=deep_underground
-#: data/core/editor/time-of-day.cfg:47 data/core/macros/schedules.cfg:121
+#: data/core/editor/time-of-day.cfg:47 data/core/macros/schedules.cfg:127
 msgid "Deep Underground"
 msgstr "Djúpt neðanjarðar"
 
 #. [time]: id=indoors
 #. [editor_times]: id=indoors
-#: data/core/editor/time-of-day.cfg:53 data/core/macros/schedules.cfg:101
+#: data/core/editor/time-of-day.cfg:53 data/core/macros/schedules.cfg:104
 msgid "Indoors"
 msgstr ""
 
@@ -948,12 +1104,12 @@ msgstr ""
 
 #. [section]: id=calendar
 #. [topic]: id=..calendar
-#: data/core/encyclopedia/calendar.cfg:5 data/core/encyclopedia/calendar.cfg:12
+#: data/core/encyclopedia/calendar.cfg:5 data/core/encyclopedia/calendar.cfg:13
 msgid "Calendar"
 msgstr ""
 
 #. [topic]: id=..calendar
-#: data/core/encyclopedia/calendar.cfg:13
+#: data/core/encyclopedia/calendar.cfg:14
 msgid ""
 "Each year in the Wesnoth calendar is composed of 12 months. These are, in "
 "order:\n"
@@ -1323,9 +1479,9 @@ msgstr "Leikspilun"
 #. #-#-#-#-#  wesnoth-help.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [section]: id=traits_section
 #. [topic]: id=..traits_section
-#: data/core/help.cfg:29 data/core/help.cfg:455
-#: src/help/help_topic_generators.cpp:439
-#: src/help/help_topic_generators.cpp:462
+#: data/core/help.cfg:29 data/core/help.cfg:529
+#: src/help/help_topic_generators.cpp:438
+#: src/help/help_topic_generators.cpp:461
 msgid "Traits"
 msgstr "Einkenni"
 
@@ -1355,19 +1511,19 @@ msgstr ""
 
 #. [section]: id=terrains_section
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:70 data/core/help.cfg:470
+#: data/core/help.cfg:70 data/core/help.cfg:544
 msgid "Terrains"
 msgstr "Jarðir"
 
 #. [section]: id=addons
 #. [topic]: id=..addons
-#: data/core/help.cfg:78 data/core/help.cfg:523
+#: data/core/help.cfg:78 data/core/help.cfg:597
 msgid "Add-ons"
 msgstr ""
 
 #. [section]: id=commands
 #. [topic]: id=..commands
-#: data/core/help.cfg:84 data/core/help.cfg:596
+#: data/core/help.cfg:84 data/core/help.cfg:670
 msgid "Commands"
 msgstr "Skipanir"
 
@@ -2017,13 +2173,33 @@ msgstr ""
 "eða með handstýrði breytinga með því að fara í 'uppfæra þoku núna (eða ljúka "
 "umferðinni) og þannig geyma eiginleikan að gera afgert hreyfingar."
 
+#. [topic]: id=shroud_and_fog
+#: data/core/help.cfg:282
+#, fuzzy
+msgid "<header>text='Multiplayer and undo'</header>"
+msgstr ""
+"\n"
+"\n"
+"<header>text=Meiðsl</header>"
+
+#. [topic]: id=shroud_and_fog
+#: data/core/help.cfg:284
+msgid ""
+"In multiplayer games, moves that have been sent to the network can’t be "
+"undone; the game delays sending data to try to preserve your undo ability. "
+"When discussing with teammates, remember that the other players are usually "
+"looking at a snapshot from the time of the last combat or fog-revealing "
+"move. Chat messages and map labels are sent immediately, however they don’t "
+"cause the undoable moves to be sent."
+msgstr ""
+
 #. [topic]: id=saveload
-#: data/core/help.cfg:287
+#: data/core/help.cfg:291
 msgid "Save-loading"
 msgstr ""
 
 #. [topic]: id=saveload
-#: data/core/help.cfg:288
+#: data/core/help.cfg:292
 msgid ""
 "Random numbers are part of Wesnoth, attacks can fail and units can die due "
 "to bad luck — this is an expected part of the game. Going back to a previous "
@@ -2033,7 +2209,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=saveload
-#: data/core/help.cfg:290
+#: data/core/help.cfg:294
 msgid ""
 "One of the challenges of the game is to work out how to protect your heroes. "
 "Small risks quickly build up: if you have five important units, and they "
@@ -2043,7 +2219,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=saveload
-#: data/core/help.cfg:293
+#: data/core/help.cfg:297
 msgid ""
 "Small risks build up for your non-hero units too. While the story and "
 "dialogue usually aim to give you some emotional bond with your troops, the "
@@ -2054,7 +2230,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=saveload
-#: data/core/help.cfg:295
+#: data/core/help.cfg:299
 msgid ""
 "The difficulty levels are balanced assuming that the player won’t save-load. "
 "In the mainline campaigns, harder difficulties generally have more enemies "
@@ -2064,19 +2240,19 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=saveload
-#: data/core/help.cfg:297
+#: data/core/help.cfg:301
 msgid ""
 "That said, it’s a game; the best way to play it is whichever way gives you "
 "the most enjoyment."
 msgstr ""
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:304
+#: data/core/help.cfg:308
 msgid "Learning from Losses"
 msgstr ""
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:305
+#: data/core/help.cfg:309
 msgid ""
 "<italic>text='Why did I lose that scenario?'</italic>\n"
 "\n"
@@ -2085,7 +2261,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:307
+#: data/core/help.cfg:311
 msgid ""
 "\n"
 "\n"
@@ -2096,7 +2272,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:309
+#: data/core/help.cfg:313
 msgid ""
 "\n"
 "\n"
@@ -2104,7 +2280,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:311
+#: data/core/help.cfg:315
 msgid ""
 "\n"
 "\n"
@@ -2113,7 +2289,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:313
+#: data/core/help.cfg:317
 msgid ""
 "\n"
 "\n"
@@ -2123,7 +2299,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:315
+#: data/core/help.cfg:319
 msgid ""
 "\n"
 "\n"
@@ -2134,7 +2310,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:317
+#: data/core/help.cfg:321
 msgid ""
 "\n"
 "\n"
@@ -2151,7 +2327,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:319
+#: data/core/help.cfg:323
 msgid ""
 "\n"
 "\n"
@@ -2164,7 +2340,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:321
+#: data/core/help.cfg:325
 #, fuzzy
 msgid ""
 "\n"
@@ -2176,7 +2352,7 @@ msgstr ""
 "<header>text=Meiðsl</header>"
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:323
+#: data/core/help.cfg:327
 msgid ""
 "\n"
 "\n"
@@ -2185,7 +2361,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:325
+#: data/core/help.cfg:329
 msgid ""
 "\n"
 "\n"
@@ -2195,7 +2371,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:327
+#: data/core/help.cfg:331
 msgid ""
 "\n"
 "\n"
@@ -2208,7 +2384,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:329
+#: data/core/help.cfg:333
 msgid ""
 "\n"
 "\n"
@@ -2227,7 +2403,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:331
+#: data/core/help.cfg:335
 msgid ""
 "\n"
 "\n"
@@ -2239,7 +2415,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:333
+#: data/core/help.cfg:337
 msgid ""
 "\n"
 "\n"
@@ -2251,12 +2427,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=combat
-#: data/core/help.cfg:342
+#: data/core/help.cfg:346
 msgid "Combat"
 msgstr "Einvígi"
 
 #. [topic]: id=combat
-#: data/core/help.cfg:343
+#: data/core/help.cfg:347
 #, fuzzy
 msgid ""
 "\n"
@@ -2268,7 +2444,7 @@ msgstr ""
 "<header>text=Meiðsl</header>"
 
 #. [topic]: id=combat
-#: data/core/help.cfg:343
+#: data/core/help.cfg:347
 #, fuzzy
 msgid ""
 "Combat in <italic>text='Battle for Wesnoth'</italic> always takes place "
@@ -2294,7 +2470,7 @@ msgstr ""
 "vopn eins og boga, spjót og eldhnetti."
 
 #. [topic]: id=combat
-#: data/core/help.cfg:345
+#: data/core/help.cfg:349
 #, fuzzy
 msgid ""
 "\n"
@@ -2318,7 +2494,7 @@ msgstr ""
 "árásir (en hver árás sem hittir gerir 9 í skaða)."
 
 #. [topic]: id=combat
-#: data/core/help.cfg:347
+#: data/core/help.cfg:351
 #, fuzzy
 msgid ""
 "\n"
@@ -2330,7 +2506,7 @@ msgstr ""
 "<header>text=Meiðsl</header>"
 
 #. [topic]: id=combat
-#: data/core/help.cfg:349
+#: data/core/help.cfg:353
 msgid ""
 "\n"
 "\n"
@@ -2344,7 +2520,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=combat
-#: data/core/help.cfg:351
+#: data/core/help.cfg:355
 msgid ""
 "\n"
 "\n"
@@ -2356,7 +2532,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=combat
-#: data/core/help.cfg:353
+#: data/core/help.cfg:357
 msgid ""
 "\n"
 "\n"
@@ -2367,7 +2543,7 @@ msgstr ""
 "<header>text=Meiðsl</header>"
 
 #. [topic]: id=combat
-#: data/core/help.cfg:355
+#: data/core/help.cfg:359
 msgid ""
 "\n"
 "\n"
@@ -2381,7 +2557,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=combat
-#: data/core/help.cfg:357
+#: data/core/help.cfg:361
 msgid ""
 "\n"
 "\n"
@@ -2392,12 +2568,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=damage_types_and_resistance
-#: data/core/help.cfg:365
+#: data/core/help.cfg:369
 msgid "Damage Types and Resistance"
 msgstr "Tegund meiðsla og Móstöður"
 
 #. [topic]: id=damage_types_and_resistance
-#: data/core/help.cfg:366
+#: data/core/help.cfg:370
 #, fuzzy
 msgid ""
 "\n"
@@ -2417,7 +2593,7 @@ msgstr ""
 "hljóta 100% meiri meiðsla þegar laminn með þeirri tegund af skaða."
 
 #. [topic]: id=damage_types_and_resistance
-#: data/core/help.cfg:366
+#: data/core/help.cfg:370
 #, fuzzy
 msgid ""
 "In Wesnoth, there are three types of damage usually associated with physical "
@@ -2434,7 +2610,7 @@ msgstr ""
 "hljóa af árásum af mismunandi gerð."
 
 #. [topic]: id=damage_types_and_resistance
-#: data/core/help.cfg:368
+#: data/core/help.cfg:372
 #, fuzzy
 msgid ""
 "\n"
@@ -2450,7 +2626,7 @@ msgstr ""
 "viðkvæmar gagnvart yfirnáttúrulegum skaða."
 
 #. [topic]: id=damage_types_and_resistance
-#: data/core/help.cfg:370
+#: data/core/help.cfg:374
 msgid ""
 "\n"
 "\n"
@@ -2464,59 +2640,121 @@ msgstr ""
 "líka við ef varnaraðilinn hefur 100% mótsstöðu gagnvart skaða tegundinni."
 
 #. [topic]: id=orbs
-#: data/core/help.cfg:378
-msgid "Orbs"
-msgstr "Hnettir"
-
-#. [topic]: id=orbs
-#: data/core/help.cfg:379
-msgid ""
-"On top of the energy bar shown next to each unit of yours is an orb. For "
-"units you control, this orb is:"
-msgstr ""
-"Á toppi lífspunkta línurnar sýnda hliðin á einingu þinni er hnöttur. Fyrir "
-"einingar sem þú stjórnar, er hnötturinn:"
-
-#. [topic]: id=orbs
-#: data/core/help.cfg:381
-#, fuzzy
-msgid " green if it hasn’t moved this turn,"
-msgstr "grænn ef það hefur ekki fært sig þessa umferð,"
-
-#. [topic]: id=orbs
 #: data/core/help.cfg:382
-#, fuzzy
-msgid " yellow if it has moved, but could still move further or attack, or"
+msgid "Orbs and ellipses"
 msgstr ""
-"gulur ef það hefur fært sig, en getur enn fært sig lengra eða gert árás, eða"
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:383
 msgid ""
-" red if it can no longer move or attack, or the user ended the unit’s turn."
+"There are colored indicators above the energy bars of some units, consisting "
+"of a colored orb (and sometimes a <ref>dst='crowns' text='crown'</ref>)."
 msgstr ""
 
 #. [topic]: id=orbs
-#: data/core/help.cfg:384
-#, fuzzy
-msgid " blue if the unit is an ally you do not control."
+#. The help page has a set of images above this paragraph, in the same order as the bullet points
+#: data/core/help.cfg:395
+msgid ""
+"The orbs show whether the unit can move or attack. The statuses and their "
+"standard colors are:\n"
+"• <bold>text='Green'</bold> if it has neither moved nor attacked this turn.\n"
+"• <bold>text='Yellow'</bold> if it has moved (or attacked), and can still "
+"attack. It might still be able to move further too.\n"
+"• <bold>text='Red'</bold> if it can neither move further nor attack again "
+"this turn.\n"
+"    • Red is also used after the ‘end unit turn’ command, and,\n"
+"    • when a unit is in the middle of a multi-turn move (has been told to "
+"move further than it can in the current turn).\n"
+"• <bold>text='Red and yellow'</bold> if it has moved (or attacked), can "
+"still move further, but it can no longer attack.\n"
+"    • This can happen due to campaign-specific events or abilities, for "
+"example the <italic>text='disengage'</italic> ability in the campaign "
+"<italic>text='Under the Burning Suns'</italic>.\n"
+"• <bold>text='Blue'</bold> for allied units, except during that ally’s own "
+"turn.\n"
+"    • During the ally’s own turn, their units will be shown with the green/"
+"yellow/red/white colors; however their moves, and the corresponding orb "
+"changes, are delayed as explained in <ref>dst='shroud_and_fog' text='Shroud "
+"and Fog of War'</ref>.\n"
+"• Enemy units normally don’t have orbs, however these can be enabled in the "
+"advanced preference “Customize orb colors”."
 msgstr ""
-"Hnötturinn er blár ef einingin er vinveitt enn ekki undir þinni stjórn."
 
 #. [topic]: id=orbs
-#: data/core/help.cfg:385
+#: data/core/help.cfg:407
 #, fuzzy
-msgid " Enemy units have no orb on top of their energy bar."
+msgid "<header>text='Ellipses'</header>"
 msgstr ""
-"óvinveittar einingar hafa engan hnött á toppi lífspunkta línunni sinni."
+"\n"
+"\n"
+"<header>text=Meiðsl</header>"
+
+#. [topic]: id=orbs
+#: data/core/help.cfg:410
+msgid ""
+"A team-colored shape is drawn on the ground under each unit. This is called "
+"the “ellipse”, although some units’ ellipses are not elliptical."
+msgstr ""
+
+#. [topic]: id=orbs
+#. The help page has a set of images above this paragraph, in the same order as the bullet points
+#: data/core/help.cfg:421
+msgid ""
+"• Most units have a circular ellipse.\n"
+"• Units that can recruit have a seven-pointed star.\n"
+"• <ref>dst='crowns' text='Hero units'</ref> have a smaller variant of the "
+"seven-pointed star, these units can’t recruit.\n"
+"• Units without a <ref>dst='movement' text='zone of control'</ref> have a "
+"broken outline version of the shape.\n"
+"• Some campaigns start with a level zero leader. Able to recruit but lacking "
+"a ZoC, these units have a broken outline version of the seven-pointed star."
+msgstr ""
+
+#. [topic]: id=crowns
+#: data/core/help.cfg:432
+msgid "Crowns and loyal markers"
+msgstr ""
+
+#. [topic]: id=crowns
+#: data/core/help.cfg:433
+msgid ""
+"Some units have an additional marker superimposed on their <ref>dst='orbs' "
+"text='orb'</ref>, and a corresponding shape to their <ref>dst='orbs' "
+"text='ellipses'</ref>:"
+msgstr ""
+
+#. [topic]: id=crowns
+#. The help page has a set of images above this paragraph, in the same order as the first set of bullet points, showing what the "loyal icon" is and the difference between "silver" and "blueish-silver".
+#: data/core/help.cfg:448
+msgid ""
+"• Leaders are shown with a <bold>text='gold crown'</bold>.\n"
+"• Heroes have a <bold>text='blueish-silver crown'</bold>.\n"
+"• Expendable leaders are shown with a <bold>text='silver crown'</bold>.\n"
+"• <ref>dst='traits_loyal' text='Loyal units'</ref> have the "
+"<bold>text='loyal icon'</bold>.\n"
+"\n"
+"Of these categories, only leaders are built into the basic game rules. The "
+"others are found in campaigns, and are characters that form part of the "
+"narration. The exact rules for them are set by their campaign, which might "
+"deviate from these standard expectations about them:\n"
+"\n"
+"• The death of any hero leads to immediate defeat.\n"
+"• The death of an expendable leader doesn’t lead to immediate defeat, even "
+"though they can recruit.\n"
+"• All of these units have the main advantage of the loyal trait, that they "
+"cost no upkeep.\n"
+"• Losing any of these units causes a disadvantage for the remainder of the "
+"campaign, assuming it doesn’t end immediately.\n"
+"• These units will never occur as random recruits."
+msgstr ""
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:392
+#: data/core/help.cfg:466
 msgid "Time of Day"
 msgstr "Tími dags"
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:393
+#: data/core/help.cfg:467
 #, fuzzy
 msgid ""
 "The time of day affects the damage of certain units as follows:\n"
@@ -2537,7 +2775,7 @@ msgstr ""
 "veikari né sterkari. "
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:398
+#: data/core/help.cfg:472
 #, fuzzy
 msgid ""
 "\n"
@@ -2556,21 +2794,21 @@ msgstr ""
 #. [time]: id=dawn
 #. [topic]: id=time_of_day
 #. [time]: id=dawn_hour
-#: data/core/help.cfg:402 data/core/macros/schedules.cfg:14
-#: data/core/macros/schedules.cfg:275 data/test/maps/pathfind_1.cfg:64
+#: data/core/help.cfg:476 data/core/macros/schedules.cfg:16
+#: data/core/macros/schedules.cfg:290 data/test/maps/pathfind_1.cfg:64
 msgid "Dawn"
 msgstr "Dögun"
 
 #. [time]: id=morning
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:403 data/core/macros/schedules.cfg:26
+#: data/core/help.cfg:477 data/core/macros/schedules.cfg:28
 #: data/test/maps/pathfind_1.cfg:75
 msgid "Morning"
 msgstr "Morgunn"
 
 #. [time]: id=afternoon
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:404 data/core/macros/schedules.cfg:44
+#: data/core/help.cfg:478 data/core/macros/schedules.cfg:46
 #: data/test/maps/pathfind_1.cfg:86
 msgid "Afternoon"
 msgstr "Síðdegi"
@@ -2578,27 +2816,27 @@ msgstr "Síðdegi"
 #. [time]: id=dusk
 #. [topic]: id=time_of_day
 #. [time]: id=dusk_hour
-#: data/core/help.cfg:405 data/core/macros/schedules.cfg:53
-#: data/core/macros/schedules.cfg:396 data/test/maps/pathfind_1.cfg:97
+#: data/core/help.cfg:479 data/core/macros/schedules.cfg:55
+#: data/core/macros/schedules.cfg:411 data/test/maps/pathfind_1.cfg:97
 msgid "Dusk"
 msgstr "Rökkur"
 
 #. [time]: id=first_watch
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:406 data/core/macros/schedules.cfg:65
+#: data/core/help.cfg:480 data/core/macros/schedules.cfg:67
 #: data/test/maps/pathfind_1.cfg:108
 msgid "First Watch"
 msgstr "Fyrsta vakt"
 
 #. [time]: id=second_watch
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:407 data/core/macros/schedules.cfg:89
+#: data/core/help.cfg:481 data/core/macros/schedules.cfg:91
 #: data/test/maps/pathfind_1.cfg:119
 msgid "Second Watch"
 msgstr "Seinni vakt"
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:409
+#: data/core/help.cfg:483
 #, fuzzy
 #| msgid ""
 #| "Keep in mind that some scenarios take place underground, where it is "
@@ -2611,21 +2849,21 @@ msgstr ""
 "nótt!"
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:411
+#: data/core/help.cfg:485
 msgid ""
 "Some underground locations are illuminated. They are perpetually "
 "intermediate between day and night.\n"
 msgstr ""
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:413
+#: data/core/help.cfg:487
 msgid ""
 "Some role-playing scenarios take place indoors — these regions are similarly "
 "intermediate.\n"
 msgstr ""
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:415
+#: data/core/help.cfg:489
 msgid ""
 "Finally, units with the <ref>dst='ability_illuminationilluminates' "
 "text='illuminates'</ref> ability and terrain features such as "
@@ -2634,12 +2872,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=healing
-#: data/core/help.cfg:422
+#: data/core/help.cfg:496
 msgid "Healing"
 msgstr "Lækning"
 
 #. [topic]: id=healing
-#: data/core/help.cfg:423
+#: data/core/help.cfg:497
 #, fuzzy
 msgid ""
 "\n"
@@ -2653,7 +2891,7 @@ msgstr ""
 "sig um 2 lífspunkta í næstu umferð."
 
 #. [topic]: id=healing
-#: data/core/help.cfg:423
+#: data/core/help.cfg:497
 msgid ""
 "In combat, your units will inevitably take damage. There are several ways to "
 "heal your units. However, with the exception of resting, these do not stack; "
@@ -2661,7 +2899,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=healing
-#: data/core/help.cfg:425
+#: data/core/help.cfg:499
 #, fuzzy
 msgid ""
 "\n"
@@ -2673,7 +2911,7 @@ msgstr ""
 "Þorp: Einingar sem hefja umferð í þorpi læknast um 8 lífstig."
 
 #. [topic]: id=healing
-#: data/core/help.cfg:426
+#: data/core/help.cfg:500
 #, fuzzy
 msgid ""
 "\n"
@@ -2685,7 +2923,7 @@ msgstr ""
 "Þorp: Einingar sem hefja umferð í þorpi læknast um 8 lífstig."
 
 #. [topic]: id=healing
-#: data/core/help.cfg:427
+#: data/core/help.cfg:501
 msgid ""
 "\n"
 "• <bold>text='Healing units'</bold>: Units with the "
@@ -2696,7 +2934,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=healing
-#: data/core/help.cfg:428
+#: data/core/help.cfg:502
 msgid ""
 "\n"
 "• <bold>text='Curing units'</bold>: Units with the "
@@ -2706,7 +2944,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=healing
-#: data/core/help.cfg:429
+#: data/core/help.cfg:503
 msgid ""
 "\n"
 "• <bold>text='Advancement'</bold>: When a unit <ref>dst='advancement' "
@@ -2715,7 +2953,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=healing
-#: data/core/help.cfg:430
+#: data/core/help.cfg:504
 msgid ""
 "\n"
 "\n"
@@ -2731,7 +2969,7 @@ msgstr ""
 "einingar til fulls á milli leikja(í herferð t.d.)"
 
 #. [topic]: id=healing
-#: data/core/help.cfg:432
+#: data/core/help.cfg:506
 msgid ""
 "\n"
 "\n"
@@ -2739,7 +2977,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=healing
-#: data/core/help.cfg:434
+#: data/core/help.cfg:508
 msgid ""
 "\n"
 "\n"
@@ -2751,12 +2989,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=wrap_up
-#: data/core/help.cfg:442
+#: data/core/help.cfg:516
 msgid "Wrap Up"
 msgstr "Samantekt"
 
 #. [topic]: id=wrap_up
-#: data/core/help.cfg:443
+#: data/core/help.cfg:517
 msgid ""
 "This concludes the fundamentals of Wesnoth. You might want to read up on "
 "basic strategy, or familiarize yourself with <ref>dst='..traits_section' "
@@ -2766,12 +3004,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=license
-#: data/core/help.cfg:448
+#: data/core/help.cfg:522
 msgid "License"
 msgstr "Leyfi"
 
 #. [topic]: id=..traits_section
-#: data/core/help.cfg:457
+#: data/core/help.cfg:531
 #, fuzzy
 msgid ""
 "\n"
@@ -2787,7 +3025,7 @@ msgstr ""
 "handahófi þegar eining er keypt."
 
 #. [topic]: id=..traits_section
-#: data/core/help.cfg:457
+#: data/core/help.cfg:531
 msgid ""
 "Traits are modifications that change a unit’s attributes slightly. They are "
 "usually randomly assigned to a unit when it is recruited. The traits "
@@ -2796,7 +3034,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..traits_section
-#: data/core/help.cfg:459
+#: data/core/help.cfg:533
 msgid ""
 "\n"
 "\n"
@@ -2807,7 +3045,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..traits_section
-#: data/core/help.cfg:461
+#: data/core/help.cfg:535
 msgid ""
 "\n"
 "\n"
@@ -2821,7 +3059,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:471
+#: data/core/help.cfg:545
 msgid ""
 "\n"
 "\n"
@@ -2830,7 +3068,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:471
+#: data/core/help.cfg:545
 #, fuzzy
 #| msgid ""
 #| "Game maps feature a variety of terrains that affect both unit movement "
@@ -2845,7 +3083,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:473
+#: data/core/help.cfg:547
 #, fuzzy
 msgid ""
 "\n"
@@ -2857,7 +3095,7 @@ msgstr ""
 "<header>text=Meiðsl</header>"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:475
+#: data/core/help.cfg:549
 msgid ""
 "\n"
 "\n"
@@ -2868,7 +3106,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:479
+#: data/core/help.cfg:553
 msgid ""
 "\n"
 "\n"
@@ -2878,7 +3116,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:481
+#: data/core/help.cfg:555
 #, fuzzy
 msgid ""
 "\n"
@@ -2890,7 +3128,7 @@ msgstr ""
 "<header>text=Meiðsl</header>"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:483
+#: data/core/help.cfg:557
 msgid ""
 "\n"
 "\n"
@@ -2904,7 +3142,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:487
+#: data/core/help.cfg:561
 msgid ""
 "\n"
 "\n"
@@ -2919,7 +3157,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:491
+#: data/core/help.cfg:565
 msgid ""
 "\n"
 "\n"
@@ -2930,7 +3168,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:495
+#: data/core/help.cfg:569
 msgid ""
 "\n"
 "\n"
@@ -2941,7 +3179,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:499
+#: data/core/help.cfg:573
 msgid ""
 "\n"
 "\n"
@@ -2951,7 +3189,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:501
+#: data/core/help.cfg:575
 msgid ""
 "\n"
 "\n"
@@ -2962,7 +3200,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:503
+#: data/core/help.cfg:577
 #, fuzzy
 msgid ""
 "\n"
@@ -2974,7 +3212,7 @@ msgstr ""
 "<header>text=Meiðsl</header>"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:505
+#: data/core/help.cfg:579
 msgid ""
 "\n"
 "\n"
@@ -2984,7 +3222,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:507
+#: data/core/help.cfg:581
 msgid ""
 "\n"
 "\n"
@@ -2995,7 +3233,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:509
+#: data/core/help.cfg:583
 msgid ""
 "\n"
 "\n"
@@ -3004,7 +3242,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:511
+#: data/core/help.cfg:585
 #, fuzzy
 msgid ""
 "\n"
@@ -3017,7 +3255,7 @@ msgstr ""
 "<header>text=Meiðsl</header>"
 
 #. [topic]: id=..addons
-#: data/core/help.cfg:524
+#: data/core/help.cfg:598
 msgid ""
 "The degree of customization offered by the Wesnoth engine allows players to "
 "create their own game content, including new scenarios, campaigns, and much "
@@ -3026,12 +3264,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:534
+#: data/core/help.cfg:608
 msgid "Using Add-ons"
 msgstr ""
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:535
+#: data/core/help.cfg:609
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -3047,14 +3285,14 @@ msgstr ""
 "<header>text=Meiðsl</header>"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:535
+#: data/core/help.cfg:609
 msgid ""
 "The game supports different types of add-on content, which are not all "
 "available in every gameplay mode."
 msgstr ""
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:537
+#: data/core/help.cfg:611
 msgid ""
 "\n"
 "\n"
@@ -3065,7 +3303,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:539
+#: data/core/help.cfg:613
 #, fuzzy
 msgid ""
 "\n"
@@ -3077,7 +3315,7 @@ msgstr ""
 "<header>text=Meiðsl</header>"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:541
+#: data/core/help.cfg:615
 msgid ""
 "\n"
 "\n"
@@ -3087,7 +3325,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:543
+#: data/core/help.cfg:617
 #, fuzzy
 msgid ""
 "\n"
@@ -3099,7 +3337,7 @@ msgstr ""
 "<header>text=Meiðsl</header>"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:545
+#: data/core/help.cfg:619
 msgid ""
 "\n"
 "\n"
@@ -3114,7 +3352,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:549
+#: data/core/help.cfg:623
 msgid ""
 "\n"
 "\n"
@@ -3123,7 +3361,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:551
+#: data/core/help.cfg:625
 #, fuzzy
 msgid ""
 "\n"
@@ -3135,7 +3373,7 @@ msgstr ""
 "<header>text=Meiðsl</header>"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:553
+#: data/core/help.cfg:627
 msgid ""
 "\n"
 "\n"
@@ -3145,7 +3383,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:555
+#: data/core/help.cfg:629
 #, fuzzy
 msgid ""
 "\n"
@@ -3157,7 +3395,7 @@ msgstr ""
 "<header>text=Meiðsl</header>"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:557
+#: data/core/help.cfg:631
 msgid ""
 "\n"
 "\n"
@@ -3171,7 +3409,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:561
+#: data/core/help.cfg:635
 #, fuzzy
 msgid ""
 "\n"
@@ -3183,7 +3421,7 @@ msgstr ""
 "<header>text=Meiðsl</header>"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:563
+#: data/core/help.cfg:637
 msgid ""
 "\n"
 "\n"
@@ -3195,12 +3433,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=installing_addons
-#: data/core/help.cfg:572
+#: data/core/help.cfg:646
 msgid "Installing Add-ons"
 msgstr ""
 
 #. [topic]: id=installing_addons
-#: data/core/help.cfg:573
+#: data/core/help.cfg:647
 msgid ""
 "User-made add-ons can be obtained and updated through the <italic>text='Add-"
 "ons'</italic> option in the main menu. After connecting to the add-ons "
@@ -3226,12 +3464,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=removing_addons
-#: data/core/help.cfg:586
+#: data/core/help.cfg:660
 msgid "Removing Add-ons"
 msgstr ""
 
 #. [topic]: id=removing_addons
-#: data/core/help.cfg:587
+#: data/core/help.cfg:661
 msgid ""
 "To remove add-ons, choose <bold>text='Remove Add-ons'</bold> in the add-ons "
 "server connection dialog. You will be presented with options to remove any "
@@ -3245,7 +3483,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:602
+#: data/core/help.cfg:676
 #, fuzzy
 #| msgid "General commands"
 msgid "General Commands"
@@ -3254,7 +3492,7 @@ msgstr "Almennar skipanir"
 #. [topic]: id=general_commands
 #. [topic]: id=mp_commands
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:604 data/core/help.cfg:647 data/core/help.cfg:685
+#: data/core/help.cfg:677 data/core/help.cfg:719 data/core/help.cfg:757
 msgid ""
 "These commands can either be issued via the command line by prefixing them "
 "with ':' (as shown here) or via the chat by prefixing them with '/' (press "
@@ -3263,7 +3501,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:606
+#: data/core/help.cfg:679
 msgid ""
 "\n"
 "Clear chat messages.\n"
@@ -3274,7 +3512,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:609
+#: data/core/help.cfg:682
 msgid ""
 "\n"
 "Switch debug mode on (does not work in multiplayer). See "
@@ -3284,12 +3522,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:613
+#: data/core/help.cfg:686
 msgid ""
 "\n"
 "Switch a side between human and AI control. The second parameter can be "
 "‘off’ to bring the side under human control, ‘on’ to watch the AI make its "
-"moves, or ‘full’ to make the AI’s turn behave similarily to another player‘s "
+"moves, or ‘full’ to make the AI’s turn behave similarly to another player‘s "
 "turn. If no second parameter is supplied, it toggles between ‘on’ and ‘off’. "
 "Defaults to toggling the currently active side if no parameters are "
 "supplied.\n"
@@ -3297,7 +3535,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:616
+#: data/core/help.cfg:689
 msgid ""
 "\n"
 "Display the controller status of a side.\n"
@@ -3305,7 +3543,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:619
+#: data/core/help.cfg:692
 msgid ""
 "\n"
 "Toggle the display of the current frames per second.\n"
@@ -3316,7 +3554,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:622
+#: data/core/help.cfg:695
 msgid ""
 "\n"
 "Switch a log domain to a different log level.\n"
@@ -3324,7 +3562,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:625
+#: data/core/help.cfg:698
 msgid ""
 "\n"
 "Redraws the screen and reloads any image files that have been changed.\n"
@@ -3335,7 +3573,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:628
+#: data/core/help.cfg:701
 msgid ""
 "\n"
 "Bring up theme selection menu.\n"
@@ -3346,7 +3584,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:631
+#: data/core/help.cfg:704
 msgid ""
 "\n"
 "Quit the scenario (without prompting).\n"
@@ -3357,7 +3595,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:634
+#: data/core/help.cfg:707
 msgid ""
 "\n"
 "Save the game (without prompting).\n"
@@ -3368,7 +3606,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:637
+#: data/core/help.cfg:710
 msgid ""
 "\n"
 "Save the game and quit the scenario (without prompting)."
@@ -3377,14 +3615,14 @@ msgstr ""
 "Vistar leik og lokar svo (án aðspurnar)."
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:646
+#: data/core/help.cfg:718
 #, fuzzy
 #| msgid "Multiplayer commands"
 msgid "Multiplayer Commands"
 msgstr "Fjölspilunarskipanir"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:649
+#: data/core/help.cfg:721
 #, fuzzy
 msgid ""
 "\n"
@@ -3399,7 +3637,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:652
+#: data/core/help.cfg:724
 msgid ""
 "\n"
 "Change the controller for side (write here the number of the side) to "
@@ -3412,7 +3650,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:655
+#: data/core/help.cfg:727
 msgid ""
 "\n"
 "Launch a dialog to assist the host in changing the human controllers of "
@@ -3421,7 +3659,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:658
+#: data/core/help.cfg:730
 msgid ""
 "\n"
 "Toggle the idle state for a side. The host may make a side idle after a "
@@ -3430,7 +3668,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:661
+#: data/core/help.cfg:733
 #, fuzzy
 msgid ""
 "\n"
@@ -3446,7 +3684,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:664
+#: data/core/help.cfg:736
 #, fuzzy
 msgid ""
 "\n"
@@ -3459,7 +3697,7 @@ msgstr ""
 "stjórna liði í leiknum sem þú ert í."
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:667
+#: data/core/help.cfg:739
 msgid ""
 "\n"
 "Mute a specific observer. If no username is supplied the muted usernames are "
@@ -3472,7 +3710,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:670
+#: data/core/help.cfg:742
 #, fuzzy
 msgid ""
 "\n"
@@ -3483,7 +3721,7 @@ msgstr ""
 "Þaggar niður í eða leyfir áhorfendum að tala. Fer á milli Á/Af."
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:673
+#: data/core/help.cfg:745
 #, fuzzy
 msgid ""
 "\n"
@@ -3497,7 +3735,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:676
+#: data/core/help.cfg:748
 #, fuzzy
 msgid ""
 "\n"
@@ -3510,14 +3748,14 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:684
+#: data/core/help.cfg:756
 #, fuzzy
 #| msgid "Debug mode commands"
 msgid "Debug Mode Commands"
 msgstr "Aflúsunarhamsskipanir"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:687
+#: data/core/help.cfg:759
 msgid ""
 "\n"
 "Brings up a menu for choosing a scenario to immediately advance to in a "
@@ -3526,7 +3764,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:690
+#: data/core/help.cfg:762
 msgid ""
 "\n"
 "Create a unit of the specified type on the selected hex.\n"
@@ -3537,7 +3775,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:693
+#: data/core/help.cfg:765
 msgid ""
 "\n"
 "Toggle fog/shroud for the current side.\n"
@@ -3545,7 +3783,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:696
+#: data/core/help.cfg:768
 msgid ""
 "\n"
 "Adds the specified amount to the current side’s gold.\n"
@@ -3556,7 +3794,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:699
+#: data/core/help.cfg:771
 msgid ""
 "\n"
 "Immediately advances to the next scenario in a campaign.\n"
@@ -3567,7 +3805,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:702
+#: data/core/help.cfg:774
 msgid ""
 "\n"
 "Manually set a gamestate variable to value.\n"
@@ -3575,7 +3813,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:705
+#: data/core/help.cfg:777
 msgid ""
 "\n"
 "Show a gamestate variable.\n"
@@ -3583,7 +3821,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:708
+#: data/core/help.cfg:780
 msgid ""
 "\n"
 "Manually fire the specified event.\n"
@@ -3591,7 +3829,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:711
+#: data/core/help.cfg:783
 #, fuzzy
 msgid ""
 "\n"
@@ -3603,7 +3841,7 @@ msgstr ""
 "Breytir silgreindan eiginleika valda einingu. Til dæmis: :unit hitpoints=100"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:714
+#: data/core/help.cfg:786
 msgid ""
 "\n"
 "Makes the selected unit level up N times. Example: :unit advances=2"
@@ -3782,18 +4020,13 @@ msgstr ""
 " Ef óvinur skotmarksins er hinum megin við skotmarkið meðan ráðist er á það, "
 "má þessi eining bakstinga, sem gerir tvöfaldan skaða."
 
-#. [chance_to_hit]: id=diversion
-#: data/core/macros/abilities.cfg:121
-msgid "This is inactive for now."
-msgstr ""
-
 #. [leadership]: id=leadership
-#: data/core/macros/abilities.cfg:173
+#: data/core/macros/abilities.cfg:172
 msgid "female^leadership"
 msgstr "leiðtogi"
 
 #. [leadership]: id=leadership
-#: data/core/macros/abilities.cfg:174
+#: data/core/macros/abilities.cfg:173
 #, fuzzy
 #| msgid ""
 #| "Leadership:\n"
@@ -3823,12 +4056,12 @@ msgstr ""
 "sinnum munin á styrkleikastigunum á leiðtoga og óbreyttri einingu."
 
 #. [skirmisher]: id=skirmisher
-#: data/core/macros/abilities.cfg:192
+#: data/core/macros/abilities.cfg:191
 msgid "female^skirmisher"
 msgstr "truflar"
 
 #. [skirmisher]: id=skirmisher
-#: data/core/macros/abilities.cfg:193
+#: data/core/macros/abilities.cfg:192
 #, fuzzy
 #| msgid ""
 #| "Skirmisher:\n"
@@ -3843,12 +4076,12 @@ msgstr ""
 "með því að ráðast á særða og veikburða aftast. Hundsar stjórnsvæði."
 
 #. [illuminates]: id=illumination
-#: data/core/macros/abilities.cfg:207
+#: data/core/macros/abilities.cfg:206
 msgid "female^illuminates"
 msgstr "lýsir"
 
 #. [illuminates]: id=illumination
-#: data/core/macros/abilities.cfg:208
+#: data/core/macros/abilities.cfg:207
 #, fuzzy
 #| msgid ""
 #| "Illuminates:\n"
@@ -3872,12 +4105,12 @@ msgstr ""
 "nóttinni, og dagur sé á kvöldinu."
 
 #. [teleport]: id=teleport
-#: data/core/macros/abilities.cfg:221
+#: data/core/macros/abilities.cfg:220
 msgid "female^teleport"
 msgstr "fjarflutt"
 
 #. [teleport]: id=teleport
-#: data/core/macros/abilities.cfg:222
+#: data/core/macros/abilities.cfg:221
 #, fuzzy
 #| msgid ""
 #| "Teleport:\n"
@@ -3892,12 +4125,12 @@ msgstr ""
 "eiganda einingarinnar."
 
 #. [hides]: id=ambush
-#: data/core/macros/abilities.cfg:252
+#: data/core/macros/abilities.cfg:251
 msgid "female^ambush"
 msgstr "fyrirsát"
 
 #. [hides]: id=ambush
-#: data/core/macros/abilities.cfg:253
+#: data/core/macros/abilities.cfg:252
 #, fuzzy
 #| msgid ""
 #| "Ambush:\n"
@@ -3920,8 +4153,45 @@ msgstr ""
 "standi við hlið hennar. Allar óvina einingar sem uppgvöta þessa einingu "
 "missa tafarlaust alla hreyfipunkta sína."
 
+#. [hides]: id=burrow
+#: data/core/macros/abilities.cfg:269
+msgid "burrow"
+msgstr ""
+
+#. [hides]: id=burrow
+#: data/core/macros/abilities.cfg:270
+#, fuzzy
+#| msgid "female^slow"
+msgid "female^burrow"
+msgstr "hæg"
+
+#. [hides]: id=burrow
+#: data/core/macros/abilities.cfg:271
+#, fuzzy
+#| msgid ""
+#| "Ambush:\n"
+#| "This unit can hide in forest, and remain undetected by its enemies.\n"
+#| "\n"
+#| "Enemy units cannot see this unit while it is in forest, except if they "
+#| "have units next to it. Any enemy unit that first discovers this unit "
+#| "immediately loses all its remaining movement."
+msgid ""
+"This unit can hide in forest or sand if it is resting (has not moved for a "
+"turn), and remain undetected by its enemies.\n"
+"\n"
+"Enemy units cannot see this unit while it is resting in forest or sand, "
+"except if they have units next to it. Any enemy unit that first discovers "
+"this unit immediately loses all its remaining movement."
+msgstr ""
+"Fyrirsát:\n"
+"Þessi eining getur falið sig í skógi, óséð af óvinum sínum.\n"
+"\n"
+"Óvina einingar geta ekki séð þessa einingu þegar hún er í skógi, nema þeir "
+"standi við hlið hennar. Allar óvina einingar sem uppgvöta þessa einingu "
+"missa tafarlaust alla hreyfipunkta sína."
+
 #. [hides]: id=nightstalk
-#: data/core/macros/abilities.cfg:272
+#: data/core/macros/abilities.cfg:292
 #, fuzzy
 #| msgid ""
 #| "Nightstalk:\n"
@@ -3945,12 +4215,12 @@ msgstr ""
 "hreyfipunkta sína."
 
 #. [hides]: id=concealment
-#: data/core/macros/abilities.cfg:290
+#: data/core/macros/abilities.cfg:310
 msgid "female^concealment"
 msgstr "leynd"
 
 #. [hides]: id=concealment
-#: data/core/macros/abilities.cfg:291
+#: data/core/macros/abilities.cfg:311
 #, fuzzy
 #| msgid ""
 #| "Concealment:\n"
@@ -3978,12 +4248,12 @@ msgstr ""
 "hreyfipunkta sína."
 
 #. [hides]: id=submerge
-#: data/core/macros/abilities.cfg:309
+#: data/core/macros/abilities.cfg:329
 msgid "female^submerge"
 msgstr "kafar"
 
 #. [hides]: id=submerge
-#: data/core/macros/abilities.cfg:310
+#: data/core/macros/abilities.cfg:330
 #, fuzzy
 #| msgid ""
 #| "Submerge:\n"
@@ -4007,17 +4277,17 @@ msgstr ""
 "alla hreyfipunkta sína."
 
 #. [dummy]: id=feeding
-#: data/core/macros/abilities.cfg:329
+#: data/core/macros/abilities.cfg:349
 msgid "female^feeding"
 msgstr "nærist"
 
 #. [berserk]: id=berserk
-#: data/core/macros/abilities.cfg:341
+#: data/core/macros/abilities.cfg:361
 msgid "berserk"
 msgstr "berserk"
 
 #. [berserk]: id=berserk
-#: data/core/macros/abilities.cfg:342
+#: data/core/macros/abilities.cfg:362
 #, fuzzy
 #| msgid ""
 #| "Berserk:\n"
@@ -4033,7 +4303,7 @@ msgstr ""
 "eða þar til 30 umferðir hafa átt sér stað."
 
 #. [damage]: id=backstab
-#: data/core/macros/abilities.cfg:353
+#: data/core/macros/abilities.cfg:373
 #, fuzzy
 #| msgid ""
 #| "Backstab:\n"
@@ -4051,7 +4321,7 @@ msgstr ""
 "ekki óbardaga hæf (breytt í stein eða öðruvísi lömuð)."
 
 #. [plague]: id=plague({TYPE}), type={TYPE}
-#: data/core/macros/abilities.cfg:372
+#: data/core/macros/abilities.cfg:392
 #, fuzzy
 #| msgid ""
 #| "Plague:\n"
@@ -4069,7 +4339,7 @@ msgstr ""
 "einingar eða einingar inní þorpum."
 
 #. [plague]: id=plague, type=Walking Corpse
-#: data/core/macros/abilities.cfg:383
+#: data/core/macros/abilities.cfg:403
 #, fuzzy
 #| msgid ""
 #| "Plague:\n"
@@ -4087,7 +4357,7 @@ msgstr ""
 "einingar eða einingar inní þorpum."
 
 #. [slow]: id=slow
-#: data/core/macros/abilities.cfg:394
+#: data/core/macros/abilities.cfg:414
 #, fuzzy
 #| msgid ""
 #| "Slow:\n"
@@ -4108,13 +4378,13 @@ msgstr ""
 "eru valdar."
 
 #. [petrifies]: id=petrifies
-#: data/core/macros/abilities.cfg:403
+#: data/core/macros/abilities.cfg:423
 #, fuzzy
 msgid "petrifies"
 msgstr "Högg"
 
 #. [petrifies]: id=petrifies
-#: data/core/macros/abilities.cfg:404
+#: data/core/macros/abilities.cfg:424
 #, fuzzy
 msgid ""
 "This attack petrifies the target, turning it to stone. Units that have been "
@@ -4125,7 +4395,7 @@ msgstr ""
 "mega ekki hreyfa sig né gera árásir."
 
 #. [chance_to_hit]: id=marksman
-#: data/core/macros/abilities.cfg:414
+#: data/core/macros/abilities.cfg:434
 #, fuzzy
 #| msgid ""
 #| "Marksman:\n"
@@ -4139,7 +4409,7 @@ msgstr ""
 "líkur á að hitta."
 
 #. [chance_to_hit]: id=magical
-#: data/core/macros/abilities.cfg:427
+#: data/core/macros/abilities.cfg:447
 #, fuzzy
 #| msgid ""
 #| "Magical:\n"
@@ -4154,12 +4424,12 @@ msgstr ""
 "skotmarks líður."
 
 #. [swarm]: id=swarm
-#: data/core/macros/abilities.cfg:438
+#: data/core/macros/abilities.cfg:458
 msgid "swarm"
 msgstr "svarmur"
 
 #. [swarm]: id=swarm
-#: data/core/macros/abilities.cfg:439
+#: data/core/macros/abilities.cfg:459
 #, fuzzy
 #| msgid ""
 #| "Swarm:\n"
@@ -4180,7 +4450,7 @@ msgstr ""
 "af lífspunktum sínum eftir, getur hún eingöngu gert 3 árásir."
 
 #. [damage]: id=charge
-#: data/core/macros/abilities.cfg:449
+#: data/core/macros/abilities.cfg:469
 #, fuzzy
 #| msgid ""
 #| "Charge:\n"
@@ -4197,7 +4467,7 @@ msgstr ""
 "skotmarksins."
 
 #. [drains]: id=drains
-#: data/core/macros/abilities.cfg:462
+#: data/core/macros/abilities.cfg:482
 #, fuzzy
 #| msgid ""
 #| "Drain:\n"
@@ -4212,14 +4482,14 @@ msgstr ""
 "helmingin af skaðanum sem hún olli. (gerir 4 í skaða, læknar sjálfa sig um 2)"
 
 #. [firststrike]: id=firststrike
-#: data/core/macros/abilities.cfg:471
+#: data/core/macros/abilities.cfg:491
 #, fuzzy
 #| msgid "firststrike"
 msgid "first strike"
 msgstr "fyrsta högg"
 
 #. [firststrike]: id=firststrike
-#: data/core/macros/abilities.cfg:472
+#: data/core/macros/abilities.cfg:492
 #, fuzzy
 #| msgid ""
 #| "First Strike:\n"
@@ -4232,7 +4502,7 @@ msgstr ""
 "Þessi eining fær alltaf að eiga fyrsta höggið, líka ef hún er í vörn"
 
 #. [poison]: id=poison
-#: data/core/macros/abilities.cfg:482
+#: data/core/macros/abilities.cfg:502
 #, fuzzy
 #| msgid ""
 #| "Poison:\n"
@@ -4256,224 +4526,224 @@ msgstr ""
 
 #. [time]: id=midday
 #. [time]: id=midday_hour
-#: data/core/macros/schedules.cfg:35 data/core/macros/schedules.cfg:329
+#: data/core/macros/schedules.cfg:37 data/core/macros/schedules.cfg:344
 msgid "Midday"
 msgstr ""
 
 #. [time]: id=midnight
 #. [time]: id=midnight_hour
-#: data/core/macros/schedules.cfg:77 data/core/macros/schedules.cfg:191
+#: data/core/macros/schedules.cfg:79 data/core/macros/schedules.cfg:206
 msgid "Midnight"
 msgstr ""
 
 #. [time]: id=second_watch_hour1
-#: data/core/macros/schedules.cfg:203
+#: data/core/macros/schedules.cfg:218
 #, fuzzy
 #| msgid "Second Watch"
 msgid "Second Watch — First Hour"
 msgstr "Seinni vakt"
 
 #. [time]: id=second_watch_hour2
-#: data/core/macros/schedules.cfg:215
+#: data/core/macros/schedules.cfg:230
 #, fuzzy
 #| msgid "Second Watch"
 msgid "Second Watch — Second Hour"
 msgstr "Seinni vakt"
 
 #. [time]: id=second_watch_hour3
-#: data/core/macros/schedules.cfg:227
+#: data/core/macros/schedules.cfg:242
 #, fuzzy
 #| msgid "Second Watch"
 msgid "Second Watch — Third Hour"
 msgstr "Seinni vakt"
 
 #. [time]: id=second_watch_hour4
-#: data/core/macros/schedules.cfg:239
+#: data/core/macros/schedules.cfg:254
 #, fuzzy
 #| msgid "Second Watch"
 msgid "Second Watch — Fourth Hour"
 msgstr "Seinni vakt"
 
 #. [time]: id=second_watch_hour5
-#: data/core/macros/schedules.cfg:251
+#: data/core/macros/schedules.cfg:266
 #, fuzzy
 #| msgid "Second Watch"
 msgid "Second Watch — Fifth Hour"
 msgstr "Seinni vakt"
 
 #. [time]: id=second_watch_hour6
-#: data/core/macros/schedules.cfg:263
+#: data/core/macros/schedules.cfg:278
 #, fuzzy
 #| msgid "Second Watch"
 msgid "Second Watch — Sixth Hour"
 msgstr "Seinni vakt"
 
 #. [time]: id=morning_hour1
-#: data/core/macros/schedules.cfg:287
+#: data/core/macros/schedules.cfg:302
 msgid "Morning — First Hour"
 msgstr ""
 
 #. [time]: id=morning_hour2
-#: data/core/macros/schedules.cfg:299
+#: data/core/macros/schedules.cfg:314
 msgid "Morning — Second Hour"
 msgstr ""
 
 #. [time]: id=morning_hour3
-#: data/core/macros/schedules.cfg:311
+#: data/core/macros/schedules.cfg:326
 msgid "Morning — Third Hour"
 msgstr ""
 
 #. [time]: id=morning_hour4
-#: data/core/macros/schedules.cfg:320
+#: data/core/macros/schedules.cfg:335
 msgid "Morning — Fourth Hour"
 msgstr ""
 
 #. [time]: id=afternoon_hour1
-#: data/core/macros/schedules.cfg:338
+#: data/core/macros/schedules.cfg:353
 msgid "Afternoon — First Hour"
 msgstr ""
 
 #. [time]: id=afternoon_hour2
-#: data/core/macros/schedules.cfg:347
+#: data/core/macros/schedules.cfg:362
 msgid "Afternoon — Second Hour"
 msgstr ""
 
 #. [time]: id=afternoon_hour3
-#: data/core/macros/schedules.cfg:356
+#: data/core/macros/schedules.cfg:371
 msgid "Afternoon — Third Hour"
 msgstr ""
 
 #. [time]: id=afternoon_hour4
-#: data/core/macros/schedules.cfg:365
+#: data/core/macros/schedules.cfg:380
 msgid "Afternoon — Fourth Hour"
 msgstr ""
 
 #. [time]: id=afternoon_hour5
-#: data/core/macros/schedules.cfg:374
+#: data/core/macros/schedules.cfg:389
 msgid "Afternoon — Fifth Hour"
 msgstr ""
 
 #. [time]: id=afternoon_hour6
-#: data/core/macros/schedules.cfg:385
+#: data/core/macros/schedules.cfg:400
 msgid "Afternoon — Sixth Hour"
 msgstr ""
 
 #. [time]: id=first_watch_hour1
-#: data/core/macros/schedules.cfg:408
+#: data/core/macros/schedules.cfg:423
 msgid "First Watch — First Hour"
 msgstr ""
 
 #. [time]: id=first_watch_hour2
-#: data/core/macros/schedules.cfg:420
+#: data/core/macros/schedules.cfg:435
 msgid "First Watch — Second Hour"
 msgstr ""
 
 #. [time]: id=first_watch_hour3
-#: data/core/macros/schedules.cfg:432
+#: data/core/macros/schedules.cfg:447
 msgid "First Watch — Third Hour"
 msgstr ""
 
 #. [time]: id=first_watch_hour4
-#: data/core/macros/schedules.cfg:444
+#: data/core/macros/schedules.cfg:459
 msgid "First Watch — Fourth Hour"
 msgstr ""
 
 #. [time]: id=dawn1
-#: data/core/macros/schedules.cfg:498
+#: data/core/macros/schedules.cfg:514
 #, fuzzy
 #| msgid "First Watch"
 msgid "First Dawn"
 msgstr "Fyrsta vakt"
 
 #. [time]: id=dawn2
-#: data/core/macros/schedules.cfg:509
+#: data/core/macros/schedules.cfg:525
 #, fuzzy
 #| msgid "Second Watch"
 msgid "Second Dawn"
 msgstr "Seinni vakt"
 
 #. [time]: id=morning1
-#: data/core/macros/schedules.cfg:520
+#: data/core/macros/schedules.cfg:536
 #, fuzzy
 #| msgid "Morning"
 msgid "First Morning"
 msgstr "Morgunn"
 
 #. [time]: id=morning2
-#: data/core/macros/schedules.cfg:532
+#: data/core/macros/schedules.cfg:548
 #, fuzzy
 #| msgid "Morning"
 msgid "Second Morning"
 msgstr "Morgunn"
 
 #. [time]: id=midday1
-#: data/core/macros/schedules.cfg:544
+#: data/core/macros/schedules.cfg:560
 #, fuzzy
 #| msgid "First Watch"
 msgid "First Midday"
 msgstr "Fyrsta vakt"
 
 #. [time]: id=midday2
-#: data/core/macros/schedules.cfg:556
+#: data/core/macros/schedules.cfg:572
 #, fuzzy
 #| msgid "Second Watch"
 msgid "Second Midday"
 msgstr "Seinni vakt"
 
 #. [time]: id=afternoon1
-#: data/core/macros/schedules.cfg:568
+#: data/core/macros/schedules.cfg:584
 #, fuzzy
 #| msgid "Afternoon"
 msgid "First Afternoon"
 msgstr "Síðdegi"
 
 #. [time]: id=afternoon2
-#: data/core/macros/schedules.cfg:580
+#: data/core/macros/schedules.cfg:596
 #, fuzzy
 #| msgid "Afternoon"
 msgid "Second Afternoon"
 msgstr "Síðdegi"
 
 #. [time]: id=dusk1
-#: data/core/macros/schedules.cfg:592
+#: data/core/macros/schedules.cfg:608
 #, fuzzy
 #| msgid "firststrike"
 msgid "First Dusk"
 msgstr "fyrsta högg"
 
 #. [time]: id=dusk2
-#: data/core/macros/schedules.cfg:603
+#: data/core/macros/schedules.cfg:619
 #, fuzzy
 #| msgid "Second Watch"
 msgid "Second Dusk"
 msgstr "Seinni vakt"
 
 #. [time]: id=short_dark
-#: data/core/macros/schedules.cfg:614
+#: data/core/macros/schedules.cfg:630
 msgid "The Short Dark"
 msgstr ""
 
 #. [time]: id=long_dark1
-#: data/core/macros/schedules.cfg:626
+#: data/core/macros/schedules.cfg:642
 msgid "The Long Dark (1)"
 msgstr ""
 
 #. [time]: id=long_dark2
-#: data/core/macros/schedules.cfg:638
+#: data/core/macros/schedules.cfg:654
 msgid "The Long Dark (2)"
 msgstr ""
 
 #. [time]: id=long_dark3
-#: data/core/macros/schedules.cfg:650
+#: data/core/macros/schedules.cfg:666
 msgid "The Long Dark (3)"
 msgstr ""
 
 #. [time]: id=long_dark4
-#: data/core/macros/schedules.cfg:664
+#: data/core/macros/schedules.cfg:680
 msgid "The Long Dark (4)"
 msgstr ""
 
-#: data/core/macros/special-notes.cfg:6 src/help/help_topic_generators.cpp:565
+#: data/core/macros/special-notes.cfg:6 src/help/help_topic_generators.cpp:564
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -4485,7 +4755,7 @@ msgstr ""
 "\n"
 "Athugasemd:"
 
-#: data/core/macros/special-notes.cfg:15
+#: data/core/macros/special-notes.cfg:17
 #, fuzzy
 #| msgid ""
 #| " Spirits have very unusual resistances to damage, and move quite slowly "
@@ -4497,25 +4767,25 @@ msgstr ""
 " Andar búa yfir óeðlilegri mótstöðu til skaða og ferðast frekar hægt yfir "
 "opin vötn."
 
-#: data/core/macros/special-notes.cfg:18
+#: data/core/macros/special-notes.cfg:20
 msgid ""
 "This unit’s arcane attack deals tremendous damage to magical creatures, and "
 "even some to mundane creatures."
 msgstr ""
 
-#: data/core/macros/special-notes.cfg:21
+#: data/core/macros/special-notes.cfg:23
 #, fuzzy
 #| msgid " This unit is capable of basic healing."
 msgid "This unit is capable of basic healing."
 msgstr " Þessi eining getur læknað lítillega."
 
-#: data/core/macros/special-notes.cfg:24
+#: data/core/macros/special-notes.cfg:26
 #, fuzzy
 #| msgid " This unit is capable of basic healing."
 msgid "This unit is capable of rapid healing."
 msgstr " Þessi eining getur læknað lítillega."
 
-#: data/core/macros/special-notes.cfg:27
+#: data/core/macros/special-notes.cfg:29
 #, fuzzy
 #| msgid ""
 #| " This unit is capable of healing those around it, and curing them of "
@@ -4525,7 +4795,7 @@ msgid ""
 msgstr ""
 " Þessi eining getur læknað þá sem standa næst sér, og læknað þá af eitri."
 
-#: data/core/macros/special-notes.cfg:30
+#: data/core/macros/special-notes.cfg:32
 #, fuzzy
 #| msgid ""
 #| " This unit is capable of neutralizing the effects of poison in units "
@@ -4535,7 +4805,7 @@ msgid ""
 "it."
 msgstr " Þessi eining getur læknað eituráhrif af einingum nærri sér."
 
-#: data/core/macros/special-notes.cfg:33
+#: data/core/macros/special-notes.cfg:35
 #, fuzzy
 #| msgid ""
 #| " This unit regenerates, which allows it to heal as though always "
@@ -4547,7 +4817,7 @@ msgstr ""
 " Þessi eining endurskapar sig, sem leyfir henni að lækna sig alltaf eins og "
 "hún væri í þorpi. "
 
-#: data/core/macros/special-notes.cfg:36
+#: data/core/macros/special-notes.cfg:38
 #, fuzzy
 #| msgid ""
 #| " The steadiness of this unit reduces damage from some attacks, but only "
@@ -4559,7 +4829,7 @@ msgstr ""
 " Staðfesta þessarar einingar dregur úr meiðslum frá sumum árásum, enn bara "
 "þegar hún verst."
 
-#: data/core/macros/special-notes.cfg:39
+#: data/core/macros/special-notes.cfg:41
 #, fuzzy
 #| msgid ""
 #| " The leadership of this unit enables adjacent units of the same side to "
@@ -4572,7 +4842,7 @@ msgstr ""
 " Leiðtogahæfileikar þessarar einingar leyfa öðrum samliggjandi einingum að "
 "gera meiri skaða í bardaga, séu þær á lægra styrkleikastigi."
 
-#: data/core/macros/special-notes.cfg:42
+#: data/core/macros/special-notes.cfg:44
 #, fuzzy
 #| msgid ""
 #| " This unit’s skill at skirmishing allows it to ignore enemies’ zones of "
@@ -4584,13 +4854,13 @@ msgstr ""
 " Þessi eining er góð í að trufla óvini og getur hlaupið í gegnum stjórnsvæði "
 "óvinanna óhindrað."
 
-#: data/core/macros/special-notes.cfg:45
+#: data/core/macros/special-notes.cfg:47
 #, fuzzy
 #| msgid " Illumination increases the lighting level in adjacent areas."
 msgid "Illumination increases the lighting level in adjacent areas."
 msgstr " Lýsing eykur ljósstyrk í nærliggjandi svæði."
 
-#: data/core/macros/special-notes.cfg:48
+#: data/core/macros/special-notes.cfg:50
 #, fuzzy
 #| msgid ""
 #| " This unit can use one move to teleport between any two empty villages "
@@ -4602,7 +4872,7 @@ msgstr ""
 " Þessi eining getur fjarflutt sig á milli hvaða tveggja þorpa sem er sem "
 "eigandi einingarinnar á, séu þorpin tóm."
 
-#: data/core/macros/special-notes.cfg:51
+#: data/core/macros/special-notes.cfg:53
 #, fuzzy
 #| msgid ""
 #| " In woodlands, this unit’s ambush skill renders it invisible to enemies "
@@ -4614,7 +4884,7 @@ msgstr ""
 " Í skóglendi, getur þessi eining verið ósýnileg fyrir óvinum sínum, nema "
 "þeir standi við hana eða hún sýnir sig með því að gera árás."
 
-#: data/core/macros/special-notes.cfg:54
+#: data/core/macros/special-notes.cfg:56
 #, fuzzy
 #| msgid ""
 #| " This unit is able to hide at night, leaving no trace of its presence."
@@ -4623,7 +4893,7 @@ msgstr ""
 " Þessi eining getur falið sig að nóttu til, skiljandi engin ummerki eftir um "
 "nærveru sína."
 
-#: data/core/macros/special-notes.cfg:57
+#: data/core/macros/special-notes.cfg:59
 #, fuzzy
 #| msgid ""
 #| " This unit can hide in villages (with the exception of water villages), "
@@ -4635,7 +4905,7 @@ msgstr ""
 " Þessi eining getur falið sig í þorpum (nema neðansjávar þorpum) og verið "
 "ósýnileg óvinum sínum, nema þeir standi við hana."
 
-#: data/core/macros/special-notes.cfg:60
+#: data/core/macros/special-notes.cfg:62
 #, fuzzy
 #| msgid ""
 #| " This unit can move unseen in deep water, requiring no air from the "
@@ -4646,7 +4916,7 @@ msgstr ""
 " Þessi eining getur ferðast óseð um djúpt vatn, þurfandi ekkert loft frá "
 "yfirborðinu."
 
-#: data/core/macros/special-notes.cfg:63
+#: data/core/macros/special-notes.cfg:65
 #, fuzzy
 #| msgid ""
 #| " This unit gains 1 hitpoint added to its maximum whenever it kills a "
@@ -4658,7 +4928,7 @@ msgstr ""
 " Þessi eining fær 1 auka lífspunkt ofan á hámark lífspunkta sína í hvert "
 "skipti sem hún drepur einingu."
 
-#: data/core/macros/special-notes.cfg:66
+#: data/core/macros/special-notes.cfg:68
 #, fuzzy
 #| msgid ""
 #| " Whenever its berserk attack is used, this unit continues to push the "
@@ -4670,7 +4940,7 @@ msgstr ""
 " Hvert skipti sem notast er við berserk mun einingin þrýsta einvígið þar til "
 "annar hvor liggur dauður niðri."
 
-#: data/core/macros/special-notes.cfg:69
+#: data/core/macros/special-notes.cfg:71
 #, fuzzy
 #| msgid ""
 #| " If there is an enemy of the target on the opposite side of the target "
@@ -4684,7 +4954,7 @@ msgstr ""
 " Ef óvinur skotmarksins er hinum megin við skotmarkið meðan ráðist er á það, "
 "má þessi eining bakstinga, sem gerir tvöfaldan skaða."
 
-#: data/core/macros/special-notes.cfg:72
+#: data/core/macros/special-notes.cfg:74
 #, fuzzy
 #| msgid ""
 #| " Foes who lose their life to the plague will rise again in unlife, unless "
@@ -4696,7 +4966,7 @@ msgstr ""
 " Óvinir sem missa líf sitt til plágurnar, munu rísa aftur í Ódauða, nema "
 "þeir standi í þorpum."
 
-#: data/core/macros/special-notes.cfg:75
+#: data/core/macros/special-notes.cfg:77
 #, fuzzy
 #| msgid ""
 #| " This unit is able to slow its enemies, halving their movement speed and "
@@ -4708,7 +4978,7 @@ msgstr ""
 " Þessi eining hægir á óvinum sínum, minkandi hreyfigetu þeirra og skaða um "
 "helming þar til skotmörkin enda lotu."
 
-#: data/core/macros/special-notes.cfg:78
+#: data/core/macros/special-notes.cfg:80
 #, fuzzy
 #| msgid ""
 #| " The ability to turn the living to stone makes this unit extremely "
@@ -4719,7 +4989,7 @@ msgstr ""
 " Hæfileikinn til að geta breytt lifandi verum í stein gerir þessa einingu "
 "mjög hættulega."
 
-#: data/core/macros/special-notes.cfg:81
+#: data/core/macros/special-notes.cfg:83
 #, fuzzy
 #| msgid ""
 #| " This unit’s marksmanship gives it a high chance of hitting targeted "
@@ -4731,7 +5001,7 @@ msgstr ""
 " Hittni þessarar einingar leyfir henni að hitta andstæðing sinn nokkuð oft "
 "og vel, enn bara á sókninni."
 
-#: data/core/macros/special-notes.cfg:84
+#: data/core/macros/special-notes.cfg:86
 #, fuzzy
 #| msgid ""
 #| " The unit has magical attacks, which always have a high chance of hitting "
@@ -4743,7 +5013,7 @@ msgstr ""
 " Þessi eining hefur galdra árásir, sem hafa alltaf góðar líkur á að hitta "
 "óvinin."
 
-#: data/core/macros/special-notes.cfg:87
+#: data/core/macros/special-notes.cfg:89
 #, fuzzy
 #| msgid ""
 #| " The swarming attacks of this unit become less deadly whenever its "
@@ -4755,7 +5025,7 @@ msgstr ""
 " Svarmandi árásir þessarar einingar verða máttminni hvenær sem þessi eining "
 "er slösuð. "
 
-#: data/core/macros/special-notes.cfg:90
+#: data/core/macros/special-notes.cfg:92
 #, fuzzy
 #| msgid ""
 #| " Using a charging attack doubles both damage dealt and received; this "
@@ -4767,7 +5037,7 @@ msgstr ""
 " Beitandi áhlaupi, getur þessi eining gert tvöfaldan skaða enn fær á sig "
 "tvöfaldan skaða; hefur ekki áhrif þegar þessi eining er í vörn."
 
-#: data/core/macros/special-notes.cfg:93
+#: data/core/macros/special-notes.cfg:95
 #, fuzzy
 #| msgid ""
 #| " During battle, this unit can drain life from victims to renew its own "
@@ -4778,7 +5048,7 @@ msgstr ""
 " Í bardaga, getur þessi eining tæmt líf úr óvinum sínum til að auka við sitt "
 "eigið."
 
-#: data/core/macros/special-notes.cfg:96
+#: data/core/macros/special-notes.cfg:98
 #, fuzzy
 #| msgid ""
 #| " The length of this unit’s weapon allows it to strike first in melee, "
@@ -4790,7 +5060,7 @@ msgstr ""
 " Lengd vopn þessarar einingar, leyfir þeim að eiga alltaf fyrsta höggið, "
 "líka í vörn."
 
-#: data/core/macros/special-notes.cfg:99
+#: data/core/macros/special-notes.cfg:101
 #, fuzzy
 #| msgid ""
 #| " The victims of this unit’s poison will continually take damage until "
@@ -4802,14 +5072,14 @@ msgstr ""
 " Fórnarlömb eiturárásar þessarar einingar munu taka skaða á sig þar til þau "
 "eru læknuð af þorpi eða einingu sem heilar."
 
-#: data/core/macros/special-notes.cfg:102
+#: data/core/macros/special-notes.cfg:104
 msgid ""
 "This unit has a defense cap on certain terrain types — it cannot achieve a "
 "higher defense rating on mixed terrains with such terrain types."
 msgstr ""
 
 #. [special_note]
-#: data/core/macros/special-notes.cfg:156
+#: data/core/macros/special-notes.cfg:160
 #, fuzzy
 #| msgid ""
 #| " This unit regenerates, which allows it to heal as though always "
@@ -4822,7 +5092,7 @@ msgstr ""
 "hún væri í þorpi. "
 
 #. [special_note]
-#: data/core/macros/special-notes.cfg:300
+#: data/core/macros/special-notes.cfg:304
 #, fuzzy
 #| msgid ""
 #| " If there is an enemy of the target on the opposite side of the target "
@@ -6263,8 +6533,8 @@ msgid ""
 "particularly greater spirits or death knights, who possess a high degree of "
 "inherent will. In these cases, necromancy becomes a battle of resolve "
 "between mage and minion. The necromancer must maintain a delicate balance "
-"between control over their servants and alloting them free will — the source "
-"of their individual powers.\n"
+"between control over their servants and allotting them free will — the "
+"source of their individual powers.\n"
 "\n"
 "Necromancy is almost solely limited to humans. Even the legends of magically "
 "apt races like elves and merfolk tell of very few of their kind who have "
@@ -6374,83 +6644,83 @@ msgstr "Bardaginn um Wesnoth Hjálp"
 msgid "Parse error when parsing help text:"
 msgstr ""
 
-#: src/help/help_topic_generators.cpp:64
+#: src/help/help_topic_generators.cpp:63
 msgid "Best of"
 msgstr ""
 
-#: src/help/help_topic_generators.cpp:64
+#: src/help/help_topic_generators.cpp:63
 msgid "Worst of"
 msgstr ""
 
-#: src/help/help_topic_generators.cpp:157
+#: src/help/help_topic_generators.cpp:156
 #, fuzzy
 #| msgid "Terrain"
 msgid "Base Terrain: "
 msgstr "Jörð"
 
-#: src/help/help_topic_generators.cpp:177
+#: src/help/help_topic_generators.cpp:176
 #, fuzzy
 #| msgid "Movement Cost"
 msgid "Movement properties: "
 msgstr "Kostnaður Hreyfingar"
 
-#: src/help/help_topic_generators.cpp:181
+#: src/help/help_topic_generators.cpp:180
 msgid "Defense properties: "
 msgstr ""
 
-#: src/help/help_topic_generators.cpp:261
+#: src/help/help_topic_generators.cpp:260
 #, fuzzy
 #| msgid "level"
 msgid "Level"
 msgstr "eflingarstig"
 
-#: src/help/help_topic_generators.cpp:322
+#: src/help/help_topic_generators.cpp:321
 msgid "Advances from: "
 msgstr "Eflist frá: "
 
-#: src/help/help_topic_generators.cpp:324
+#: src/help/help_topic_generators.cpp:323
 #, fuzzy
 #| msgid "Advances from: "
 msgid "Advances to: "
 msgstr "Eflist frá: "
 
-#: src/help/help_topic_generators.cpp:353
+#: src/help/help_topic_generators.cpp:352
 #, fuzzy
 #| msgid "Terrain"
 msgid "Base unit: "
 msgstr "Jörð"
 
-#: src/help/help_topic_generators.cpp:358
+#: src/help/help_topic_generators.cpp:357
 #, fuzzy
 #| msgid "Terrain"
 msgid "Base units: "
 msgstr "Jörð"
 
-#: src/help/help_topic_generators.cpp:376
+#: src/help/help_topic_generators.cpp:375
 #, fuzzy
 msgid "Variations: "
 msgstr "Klíka"
 
-#: src/help/help_topic_generators.cpp:400
+#: src/help/help_topic_generators.cpp:399
 msgid "race^Miscellaneous"
 msgstr "Annað"
 
-#: src/help/help_topic_generators.cpp:402
+#: src/help/help_topic_generators.cpp:401
 msgid "Race: "
 msgstr "Ætt: "
 
-#: src/help/help_topic_generators.cpp:472
+#: src/help/help_topic_generators.cpp:471
 msgid "Abilities: "
 msgstr "Hæfileikar: "
 
-#: src/help/help_topic_generators.cpp:498
+#: src/help/help_topic_generators.cpp:497
 msgid "Ability Upgrades: "
 msgstr "Uppfærlsa hæfileika: "
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:528
+#: src/help/help_topic_generators.cpp:527
 #, fuzzy
 #| msgid "HP: "
 msgid "HP:"
@@ -6459,7 +6729,7 @@ msgstr "HP: "
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:532
+#: src/help/help_topic_generators.cpp:531
 #, fuzzy
 #| msgid "Moves: "
 msgid "Moves:"
@@ -6468,14 +6738,14 @@ msgstr "Hreyfipunktar: "
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:537
+#: src/help/help_topic_generators.cpp:536
 msgid "Vision:"
 msgstr ""
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:543
+#: src/help/help_topic_generators.cpp:542
 #, fuzzy
 msgid "Jamming:"
 msgstr "svarmur"
@@ -6483,7 +6753,7 @@ msgstr "svarmur"
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:548
+#: src/help/help_topic_generators.cpp:547
 #, fuzzy
 #| msgid "Cost: "
 msgid "Cost:"
@@ -6492,7 +6762,7 @@ msgstr "Kostnaður: "
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:552
+#: src/help/help_topic_generators.cpp:551
 #, fuzzy
 #| msgid "Alignment: "
 msgid "Alignment:"
@@ -6501,67 +6771,99 @@ msgstr "Stilling: "
 #. TRANSLATORS: This string is used in the help page of a single unit.  It uses
 #. non-breaking spaces to prevent unpleasant line breaks (issue #3256).  In the
 #. translation use non-breaking spaces as appropriate for the target language.
-#: src/help/help_topic_generators.cpp:559
+#: src/help/help_topic_generators.cpp:558
 #, fuzzy
 #| msgid "Required XP: "
 msgid "Required XP:"
 msgstr "Nauðsynleg Reynsla: "
 
-#: src/help/help_topic_generators.cpp:574
+#: src/help/help_topic_generators.cpp:573
 msgid "unit help^Attacks"
 msgstr "Árásir"
 
-#: src/help/help_topic_generators.cpp:581
+#: src/help/help_topic_generators.cpp:580
 msgid "unit help^Name"
 msgstr "Nafn"
 
-#: src/help/help_topic_generators.cpp:583
+#: src/help/help_topic_generators.cpp:582
 msgid "Range"
 msgstr "Skotmál"
 
-#: src/help/help_topic_generators.cpp:584
+#: src/help/help_topic_generators.cpp:583
 msgid "Type"
 msgstr "Tegund"
 
-#: src/help/help_topic_generators.cpp:585
+#: src/help/help_topic_generators.cpp:584
 msgid "Special"
 msgstr "Sérstakt"
 
-#: src/help/help_topic_generators.cpp:667
+#: src/help/help_topic_generators.cpp:666
 msgid "Attack Type"
 msgstr "Tegund árásar"
 
-#: src/help/help_topic_generators.cpp:668
+#: src/help/help_topic_generators.cpp:667
 msgid "Resistance"
 msgstr "Mótstaða"
 
-#: src/help/help_topic_generators.cpp:697
+#: src/help/help_topic_generators.cpp:696
 #, fuzzy
 #| msgid "Terrain Modifiers"
 msgid "Terrain Modifiers"
 msgstr "Landslags Áhrifavaldar"
 
-#: src/help/help_topic_generators.cpp:701
+#: src/help/help_topic_generators.cpp:700
 msgid "Terrain"
 msgstr "Jörð"
 
-#: src/help/help_topic_generators.cpp:703
+#: src/help/help_topic_generators.cpp:702
 msgid "Movement Cost"
 msgstr "Kostnaður Hreyfingar"
 
-#: src/help/help_topic_generators.cpp:707
+#: src/help/help_topic_generators.cpp:706
 #, fuzzy
 #| msgid "Defense"
 msgid "Defense Cap"
 msgstr "Vörn"
 
-#: src/help/help_topic_generators.cpp:712
+#: src/help/help_topic_generators.cpp:711
 msgid "Vision Cost"
 msgstr ""
 
-#: src/help/help_topic_generators.cpp:716
+#: src/help/help_topic_generators.cpp:715
 msgid "Jamming Cost"
 msgstr ""
+
+#, fuzzy
+#~ msgid "• <bold>text='Green'</bold> if it hasn’t moved this turn."
+#~ msgstr "grænn ef það hefur ekki fært sig þessa umferð,"
+
+#, fuzzy
+#~ msgid ""
+#~ "• <bold>text='Yellow'</bold> if it has moved, but could still move "
+#~ "further or attack."
+#~ msgstr ""
+#~ "gulur ef það hefur fært sig, en getur enn fært sig lengra eða gert árás, "
+#~ "eða"
+
+#~ msgid "Orbs"
+#~ msgstr "Hnettir"
+
+#~ msgid ""
+#~ "On top of the energy bar shown next to each unit of yours is an orb. For "
+#~ "units you control, this orb is:"
+#~ msgstr ""
+#~ "Á toppi lífspunkta línurnar sýnda hliðin á einingu þinni er hnöttur. "
+#~ "Fyrir einingar sem þú stjórnar, er hnötturinn:"
+
+#, fuzzy
+#~ msgid " blue if the unit is an ally you do not control."
+#~ msgstr ""
+#~ "Hnötturinn er blár ef einingin er vinveitt enn ekki undir þinni stjórn."
+
+#, fuzzy
+#~ msgid " Enemy units have no orb on top of their energy bar."
+#~ msgstr ""
+#~ "óvinveittar einingar hafa engan hnött á toppi lífspunkta línunni sinni."
 
 #, fuzzy
 #~ msgid ""

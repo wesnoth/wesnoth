@@ -33,7 +33,7 @@ namespace ucs4
 		iterator_base(const string_type& str)
 			: current_char(0)
 			, string_end(str.end())
-			, current_substr(std::make_pair(str.begin(), str.begin()))
+			, current_substr(str.begin(), str.begin())
 		{
 			update();
 		}
@@ -41,7 +41,7 @@ namespace ucs4
 		iterator_base(typename string_type::const_iterator const& begin, typename string_type::const_iterator const& end)
 			: current_char(0)
 			, string_end(end)
-			, current_substr(std::make_pair(begin, begin))
+			, current_substr(begin, begin)
 		{
 			update();
 		}

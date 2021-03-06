@@ -27,9 +27,7 @@
 
 #include <cmath>
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 REGISTER_DIALOG(outro)
 
@@ -51,34 +49,38 @@ outro::outro(const game_classification& info)
 
 	// We only show the end text and the title if credits were turned off
 	if(info.end_credits) {
-		for(const auto& about : about::get_campaign_credits(info.campaign)->sections) {
-			if(about.names.empty()) {
-				continue;
-			}
+		const auto campaign_credits = about::get_campaign_credits(info.campaign);
 
-			// Split the names into chunks of 5. Use float for proper ceil function!
-			static const float chunk_size = 5.0;
-
-			const unsigned num_names = about.names.size();
-			const unsigned num_chunks = std::ceil(num_names / chunk_size);
-
-			for(std::size_t i = 0; i < num_chunks; ++i) {
-				std::stringstream ss;
-
-				// Only include section title on first chunk
-				if(i == 0) {
-					ss << about.title << "\n\n";
+		if(campaign_credits != about::get_credits_data().end()) {
+			for(const auto& about : campaign_credits->sections) {
+				if(about.names.empty()) {
+					continue;
 				}
 
-				for(std::size_t k = i * chunk_size; k < std::min<unsigned>((i + 1) * chunk_size, num_names); ++k) {
-					ss << "<span size='xx-small'>" << about.names[k].first << "</span>\n";
+				// Split the names into chunks of 5. Use float for proper ceil function!
+				static const float chunk_size = 5.0;
+
+				const unsigned num_names = about.names.size();
+				const unsigned num_chunks = std::ceil(num_names / chunk_size);
+
+				for(std::size_t i = 0; i < num_chunks; ++i) {
+					std::stringstream ss;
+
+					// Only include section title on first chunk
+					if(i == 0) {
+						ss << about.title << "\n\n";
+					}
+
+					for(std::size_t k = i * chunk_size; k < std::min<unsigned>((i + 1) * chunk_size, num_names); ++k) {
+						ss << "<span size='xx-small'>" << about.names[k].first << "</span>\n";
+					}
+
+					// Clean up the trailing newline
+					std::string section_text = ss.str();
+					section_text.pop_back();
+
+					text_.push_back(std::move(section_text));
 				}
-
-				// Clean up the trailing newline
-				std::string section_text = ss.str();
-				section_text.pop_back();
-
-				text_.push_back(std::move(section_text));
 			}
 		}
 	}
@@ -95,10 +97,10 @@ void outro::pre_show(window& window)
 	window.set_enter_disabled(true);
 	window.get_canvas(0).set_variable("outro_text", wfl::variant(*current_text_));
 
-	connect_signal_on_draw(window, std::bind(&outro::draw_callback, this, std::ref(window)));
+	connect_signal_on_draw(window, std::bind(&outro::draw_callback, this));
 }
 
-void outro::draw_callback(window& window)
+void outro::draw_callback()
 {
 	/* If we've faded fully in...
 	 *
@@ -115,7 +117,7 @@ void outro::draw_callback(window& window)
 		return;
 	}
 
-	canvas& window_canvas = window.get_canvas(0);
+	canvas& window_canvas = get_window()->get_canvas(0);
 
 	// If we've faded fully out...
 	if(!fading_in_ && fade_step_ < 0) {
@@ -123,7 +125,7 @@ void outro::draw_callback(window& window)
 
 		// ...and we've just showed the last text bit, close the window.
 		if(current_text_ == text_.end()) {
-			window.close();
+			get_window()->close();
 			return;
 		}
 
@@ -140,7 +142,7 @@ void outro::draw_callback(window& window)
 	window_canvas.set_variable("fade_step", wfl::variant(fade_step_));
 	window_canvas.set_is_dirty(true);
 
-	window.set_is_dirty(true);
+	get_window()->set_is_dirty(true);
 
 	if(fading_in_) {
 		fade_step_++;
@@ -156,4 +158,3 @@ void outro::post_show(window& /*window*/)
 }
 
 } // namespace dialogs
-} // namespace gui2

@@ -21,8 +21,8 @@
  * of your .cpp file:
  *
  * static lg::log_domain log_display("display");
- * #define ERR_DP LOG_STREAM(err, log_display)
- * #define LOG_DP LOG_STREAM(info, log_display)
+ * \#define ERR_DP LOG_STREAM(err, log_display)
+ * \#define LOG_DP LOG_STREAM(info, log_display)
  *
  * Then stream logging info to ERR_DP, or LOG_DP, as if it were an ostream like std::cerr.
  * (In general it will actually be std::cerr at runtime when logging is enabled.)
@@ -33,7 +33,7 @@
  * design of the logger, this will result in all of the loggers (in fact std::cerr) being
  * imbued with std::hex. Please use a formatter instead.
  *
- * #include "formatter.hpp"
+ * \#include "formatter.hpp"
  *
  * LOG_DP << (formatter() << "The random seed is: '" << std::hex << seed << "'\n").str();
  *
@@ -43,8 +43,6 @@
  */
 
 #pragma once
-
-#include "global.hpp"
 
 #ifndef __func__
  #ifdef __FUNCTION__
@@ -169,13 +167,17 @@ class scope_logger
 	const log_domain& domain_;
 	std::string str_;
 public:
-	scope_logger(const log_domain& domain, const char* str) :
-		domain_(domain)
+	scope_logger(const log_domain& domain, const char* str)
+		: ticks_(0)
+		, domain_(domain)
+		, str_()
 	{
 		if (!debug().dont_log(domain)) do_log_entry(str);
 	}
-	scope_logger(const log_domain& domain, const std::string& str) :
-		domain_(domain)
+	scope_logger(const log_domain& domain, const std::string& str)
+		: ticks_(0)
+		, domain_(domain)
+		, str_()
 	{
 		if (!debug().dont_log(domain)) do_log_entry(str);
 	}

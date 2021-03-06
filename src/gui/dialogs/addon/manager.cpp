@@ -27,6 +27,7 @@
 #include "gettext.hpp"
 #include "gui/auxiliary/filter.hpp"
 #include "gui/auxiliary/find_widget.hpp"
+#include "gui/dialogs/addon/license_prompt.hpp"
 #include "gui/dialogs/message.hpp"
 #include "gui/dialogs/transient_message.hpp"
 #include "gui/widgets/button.hpp"
@@ -51,48 +52,14 @@
 
 #include "config.hpp"
 
-#include "utils/functional.hpp"
+#include <functional>
 
 #include <iomanip>
 #include <sstream>
 #include <stdexcept>
 
-namespace gui2
+namespace gui2::dialogs
 {
-namespace dialogs
-{
-
-/*WIKI
- * @page = GUIWindowDefinitionWML
- * @order = 2_addon_list
- *
- * == Addon list ==
- *
- * This shows the dialog with the addons to install. This dialog is under
- * construction and only used with --new-widgets.
- *
- * @begin{table}{dialog_widgets}
- *
- * addons & & listbox & m &
- *        A listbox that will contain the info about all addons on the server. $
- *
- * -name & & styled_widget & o &
- *        The name of the addon. $
- *
- * -version & & styled_widget & o &
- *        The version number of the addon. $
- *
- * -author & & styled_widget & o &
- *        The author of the addon. $
- *
- * -downloads & & styled_widget & o &
- *        The number of times the addon has been downloaded. $
- *
- * -size & & styled_widget & o &
- *        The size of the addon. $
- *
- * @end{table}
- */
 
 namespace {
 	struct filter_transform
@@ -110,7 +77,7 @@ namespace {
 						val.end(),
 						filter.begin(),
 						filter.end(),
-						chars_equal_insensitive)
+						utils::chars_equal_insensitive)
 						!= val.end())
 					{
 						found = true;
@@ -215,25 +182,25 @@ const std::vector<std::pair<ADDON_TYPE, std::string>> addon_manager::type_filter
 };
 
 const std::vector<addon_manager::addon_order> addon_manager::all_orders_{
-	{N_("addons_order^Name ($order)"), 0,
+	{N_("addons_order^Name ($order)"), "name", 0,
 	[](const addon_info& a, const addon_info& b) { return a.title < b.title; },
 	[](const addon_info& a, const addon_info& b) { return a.title > b.title; }},
-	{N_("addons_order^Author ($order)"), 1,
+	{N_("addons_order^Author ($order)"), "author", 1,
 	[](const addon_info& a, const addon_info& b) { return a.author < b.author; },
 	[](const addon_info& a, const addon_info& b) { return a.author > b.author; }},
-	{N_("addons_order^Size ($order)"), 2,
+	{N_("addons_order^Size ($order)"), "size", 2,
 	[](const addon_info& a, const addon_info& b) { return a.size < b.size; },
 	[](const addon_info& a, const addon_info& b) { return a.size > b.size; }},
-	{N_("addons_order^Downloads ($order)"), 3,
+	{N_("addons_order^Downloads ($order)"), "downloads", 3,
 	[](const addon_info& a, const addon_info& b) { return a.downloads < b.downloads; },
 	[](const addon_info& a, const addon_info& b) { return a.downloads > b.downloads; }},
-	{N_("addons_order^Type ($order)"), 4,
+	{N_("addons_order^Type ($order)"), "type", 4,
 	[](const addon_info& a, const addon_info& b) { return a.display_type() < b.display_type(); },
 	[](const addon_info& a, const addon_info& b) { return a.display_type() > b.display_type(); }},
-	{N_("addons_order^Last updated ($datelike_order)"), -1,
+	{N_("addons_order^Last updated ($datelike_order)"), "last_updated", -1,
 	[](const addon_info& a, const addon_info& b) { return a.updated < b.updated; },
 	[](const addon_info& a, const addon_info& b) { return a.updated > b.updated; }},
-	{N_("addons_order^First uploaded ($datelike_order)"), -1,
+	{N_("addons_order^First uploaded ($datelike_order)"), "first_uploaded", -1,
 	[](const addon_info& a, const addon_info& b) { return a.created < b.created; },
 	[](const addon_info& a, const addon_info& b) { return a.created > b.created; }}
 };
@@ -246,11 +213,6 @@ addon_manager::addon_manager(addons_client& client)
 	, tracking_info_()
 	, need_wml_cache_refresh_(false)
 {
-}
-
-void addon_manager::on_filtertext_changed(text_box_base* textbox)
-{
-	apply_filters(*textbox->get_window());
 }
 
 static std::string describe_status_verbose(const addon_tracking_info& state)
@@ -315,24 +277,24 @@ void addon_manager::pre_show(window& window)
 	addon_list& list = find_widget<addon_list>(&window, "addons", false);
 
 	text_box& filter = find_widget<text_box>(&window, "filter", false);
-	filter.set_text_changed_callback(std::bind(&addon_manager::on_filtertext_changed, this, _1));
+	filter.set_text_changed_callback(std::bind(&addon_manager::apply_filters, this));
 
 	list.set_install_function(std::bind(&addon_manager::install_addon,
-		this, std::placeholders::_1, std::ref(window)));
+		this, std::placeholders::_1));
 	list.set_uninstall_function(std::bind(&addon_manager::uninstall_addon,
-		this, std::placeholders::_1, std::ref(window)));
+		this, std::placeholders::_1));
 	list.set_update_function(std::bind(&addon_manager::update_addon,
-		this, std::placeholders::_1, std::ref(window)));
+		this, std::placeholders::_1));
 
 	list.set_publish_function(std::bind(&addon_manager::publish_addon,
-		this, std::placeholders::_1, std::ref(window)));
+		this, std::placeholders::_1));
 	list.set_delete_function(std::bind(&addon_manager::delete_addon,
-		this, std::placeholders::_1, std::ref(window)));
+		this, std::placeholders::_1));
 
-	list.set_modified_signal_handler([this, &window]() { on_addon_select(window); });
+	list.set_modified_signal_handler([this]() { on_addon_select(); });
 
-	fetch_addons_list(window);
-	load_addon_list(window);
+	fetch_addons_list();
+	load_addon_list();
 
 	menu_button& status_filter = find_widget<menu_button>(&window, "install_status_filter", false);
 
@@ -344,7 +306,7 @@ void addon_manager::pre_show(window& window)
 	status_filter.set_values(status_filter_entries);
 
 	connect_signal_notify_modified(status_filter,
-		std::bind(&addon_manager::apply_filters, this, std::ref(window)));
+		std::bind(&addon_manager::apply_filters, this));
 
 	multimenu_button& type_filter = find_widget<multimenu_button>(&window, "type_filter", false);
 
@@ -356,7 +318,7 @@ void addon_manager::pre_show(window& window)
 	type_filter.set_values(type_filter_entries);
 
 	connect_signal_notify_modified(type_filter,
-		std::bind(&addon_manager::apply_filters, this, std::ref(window)));
+		std::bind(&addon_manager::apply_filters, this));
 
 	menu_button& order_dropdown = find_widget<menu_button>(&window, "order_dropdown", false);
 
@@ -377,58 +339,62 @@ void addon_manager::pre_show(window& window)
 	}
 
 	order_dropdown.set_values(order_dropdown_entries);
+	{
+		const std::string saved_order_name = preferences::addon_manager_saved_order_name();
+		const preferences::SORT_ORDER saved_order_direction =
+			static_cast<preferences::SORT_ORDER>(preferences::addon_manager_saved_order_direction());
+
+		if(!saved_order_name.empty()) {
+			auto order_it = std::find_if(all_orders_.begin(), all_orders_.end(),
+				[&saved_order_name](const addon_order& order) {return order.as_preference == saved_order_name;});
+			if(order_it != all_orders_.end()) {
+				int index = 2 * (std::distance(all_orders_.begin(), order_it));
+				addon_list::addon_sort_func func;
+				if(saved_order_direction == preferences::SORT_ORDER::ASCENDING) {
+					func = order_it->sort_func_asc;
+				} else {
+					func = order_it->sort_func_desc;
+					++index;
+				}
+				find_widget<menu_button>(&window, "order_dropdown", false).set_value(index, false);
+				auto& addons = find_widget<addon_list>(&window, "addons", false);
+				addons.set_addon_order(func);
+				addons.select_first_addon();
+			}
+		}
+	}
 
 	connect_signal_notify_modified(order_dropdown,
-		std::bind(&addon_manager::order_addons, this, std::ref(window)));
+		std::bind(&addon_manager::order_addons, this));
 
-	button& url_go_button = find_widget<button>(&window, "url_go", false);
-	button& url_copy_button = find_widget<button>(&window, "url_copy", false);
-	text_box& url_textbox = find_widget<text_box>(&window, "url", false);
+	label& url_label = find_widget<label>(&window, "url", false);
 
-	url_textbox.set_active(false);
-
-	if(!desktop::clipboard::available()) {
-		url_copy_button.set_active(false);
-		url_copy_button.set_tooltip(_("Clipboard support not found, contact your packager"));
-	}
-
-	if(!desktop::open_object_is_supported()) {
-		// No point in displaying the button on platforms that can't do
-		// open_object().
-		url_go_button.set_visible(widget::visibility::invisible);
-	}
+	url_label.set_use_markup(true);
+	url_label.set_link_aware(true);
 
 	connect_signal_mouse_left_click(
 		find_widget<button>(&window, "install", false),
-		std::bind(&addon_manager::install_selected_addon, this, std::ref(window)));
+		std::bind(&addon_manager::install_selected_addon, this));
 
 	connect_signal_mouse_left_click(
 		find_widget<button>(&window, "uninstall", false),
-		std::bind(&addon_manager::uninstall_selected_addon, this, std::ref(window)));
+		std::bind(&addon_manager::uninstall_selected_addon, this));
 
 	connect_signal_mouse_left_click(
 		find_widget<button>(&window, "update", false),
-		std::bind(&addon_manager::update_selected_addon, this, std::ref(window)));
+		std::bind(&addon_manager::update_selected_addon, this));
 
 	connect_signal_mouse_left_click(
 		find_widget<button>(&window, "publish", false),
-		std::bind(&addon_manager::publish_selected_addon, this, std::ref(window)));
+		std::bind(&addon_manager::publish_selected_addon, this));
 
 	connect_signal_mouse_left_click(
 		find_widget<button>(&window, "delete", false),
-		std::bind(&addon_manager::delete_selected_addon, this, std::ref(window)));
+		std::bind(&addon_manager::delete_selected_addon, this));
 
 	connect_signal_mouse_left_click(
 		find_widget<button>(&window, "update_all", false),
-		std::bind(&addon_manager::update_all_addons, this, std::ref(window)));
-
-	connect_signal_mouse_left_click(
-		url_go_button,
-		std::bind(&addon_manager::browse_url_callback, this, std::ref(url_textbox)));
-
-	connect_signal_mouse_left_click(
-		url_copy_button,
-		std::bind(&addon_manager::copy_url_callback, this, std::ref(url_textbox)));
+		std::bind(&addon_manager::update_all_addons, this));
 
 	connect_signal_mouse_left_click(
 		find_widget<button>(&window, "show_help", false),
@@ -440,18 +406,27 @@ void addon_manager::pre_show(window& window)
 		stk->select_layer(0);
 	}
 
-	on_addon_select(window);
+	widget* version_filter_parent = &window;
+	if(stacked_widget* stk = find_widget<stacked_widget>(&window, "main_stack", false, false)) {
+		version_filter_parent = stk->get_layer_grid(1);
+	}
+
+	menu_button& version_filter = find_widget<menu_button>(version_filter_parent, "version_filter", false);
+	connect_signal_notify_modified(version_filter,
+		std::bind(&addon_manager::on_selected_version_change, this));
+
+	on_addon_select();
 
 	window.set_enter_disabled(true);
 
 	window.keyboard_capture(&filter);
 	list.add_list_to_keyboard_chain();
 
-	list.set_callback_order_change(std::bind(&addon_manager::on_order_changed, this, std::ref(window),
+	list.set_callback_order_change(std::bind(&addon_manager::on_order_changed, this,
 		std::placeholders::_1, std::placeholders::_2));
 
 	// Use handle the special addon_list retval to allow installing addons on double click
-	window.set_exit_hook(std::bind(&addon_manager::exit_hook, this, std::ref(window)));
+	window.set_exit_hook(std::bind(&addon_manager::exit_hook, this, std::placeholders::_1));
 }
 
 void addon_manager::toggle_details(button& btn, stacked_widget& stk)
@@ -465,16 +440,16 @@ void addon_manager::toggle_details(button& btn, stacked_widget& stk)
 	}
 }
 
-void addon_manager::fetch_addons_list(window& window)
+void addon_manager::fetch_addons_list()
 {
 	client_.request_addons_list(cfg_);
 	if(!cfg_) {
 		gui2::show_error_message(_("An error occurred while downloading the add-ons list from the server."));
-		window.close();
+		get_window()->close();
 	}
 }
 
-void addon_manager::load_addon_list(window& window)
+void addon_manager::load_addon_list()
 {
 	if(need_wml_cache_refresh_) {
 		refresh_addon_version_info_cache();
@@ -508,7 +483,7 @@ void addon_manager::load_addon_list(window& window)
 		show_transient_message(_("No Add-ons Available"), _("There are no add-ons available for download from this server."));
 	}
 
-	addon_list& list = find_widget<addon_list>(&window, "addons", false);
+	addon_list& list = find_widget<addon_list>(get_window(), "addons", false);
 	list.set_addons(addons_);
 
 	bool has_upgradable_addons = false;
@@ -520,23 +495,23 @@ void addon_manager::load_addon_list(window& window)
 		}
 	}
 
-	find_widget<button>(&window, "update_all", false).set_active(has_upgradable_addons);
+	find_widget<button>(get_window(), "update_all", false).set_active(has_upgradable_addons);
 
-	apply_filters(window);
+	apply_filters();
 }
 
-void addon_manager::reload_list_and_reselect_item(const std::string id, window& window)
+void addon_manager::reload_list_and_reselect_item(const std::string id)
 {
-	load_addon_list(window);
+	load_addon_list();
 
 	// Reselect the add-on.
-	find_widget<addon_list>(&window, "addons", false).select_addon(id);
-	on_addon_select(window);
+	find_widget<addon_list>(get_window(), "addons", false).select_addon(id);
+	on_addon_select();
 }
 
-boost::dynamic_bitset<> addon_manager::get_name_filter_visibility(const window& window) const
+boost::dynamic_bitset<> addon_manager::get_name_filter_visibility() const
 {
-	const text_box& name_filter = find_widget<const text_box>(&window, "filter", false);
+	const text_box& name_filter = find_widget<const text_box>(get_window(), "filter", false);
 	const std::string& text = name_filter.get_value();
 
 	filter_transform filter(utils::split(text, ' '));
@@ -558,9 +533,9 @@ boost::dynamic_bitset<> addon_manager::get_name_filter_visibility(const window& 
 	return res;
 }
 
-boost::dynamic_bitset<> addon_manager::get_status_filter_visibility(const window& window) const
+boost::dynamic_bitset<> addon_manager::get_status_filter_visibility() const
 {
-	const menu_button& status_filter = find_widget<const menu_button>(&window, "install_status_filter", false);
+	const menu_button& status_filter = find_widget<const menu_button>(get_window(), "install_status_filter", false);
 	const ADDON_STATUS_FILTER selection = status_filter_types_[status_filter.get_value()].first;
 
 	boost::dynamic_bitset<> res;
@@ -579,9 +554,9 @@ boost::dynamic_bitset<> addon_manager::get_status_filter_visibility(const window
 	return res;
 }
 
-boost::dynamic_bitset<> addon_manager::get_type_filter_visibility(const window& window) const
+boost::dynamic_bitset<> addon_manager::get_type_filter_visibility() const
 {
-	const multimenu_button& type_filter = find_widget<const multimenu_button>(&window, "type_filter", false);
+	const multimenu_button& type_filter = find_widget<const multimenu_button>(get_window(), "type_filter", false);
 
 	boost::dynamic_bitset<> toggle_states = type_filter.get_toggle_states();
 	if(toggle_states.none()) {
@@ -605,52 +580,56 @@ boost::dynamic_bitset<> addon_manager::get_type_filter_visibility(const window& 
 	}
 }
 
-void addon_manager::apply_filters(window& window)
+void addon_manager::apply_filters()
 {
 	boost::dynamic_bitset<> res =
-		get_status_filter_visibility(window)
-		& get_type_filter_visibility(window)
-		& get_name_filter_visibility(window);
-	find_widget<addon_list>(&window, "addons", false).set_addon_shown(res);
+		get_status_filter_visibility()
+		& get_type_filter_visibility()
+		& get_name_filter_visibility();
+	find_widget<addon_list>(get_window(), "addons", false).set_addon_shown(res);
 }
 
-void addon_manager::order_addons(window& window)
+void addon_manager::order_addons()
 {
-	const menu_button& order_menu = find_widget<const menu_button>(&window, "order_dropdown", false);
+	const menu_button& order_menu = find_widget<const menu_button>(get_window(), "order_dropdown", false);
 	const addon_order& order_struct = all_orders_.at(order_menu.get_value() / 2);
-	listbox::SORT_ORDER order = order_menu.get_value() % 2 == 0 ? listbox::SORT_ASCENDING : listbox::SORT_DESCENDING;
+	preferences::SORT_ORDER order = order_menu.get_value() % 2 == 0 ? preferences::SORT_ORDER::ASCENDING : preferences::SORT_ORDER::DESCENDING;
 	addon_list::addon_sort_func func;
-	if(order == listbox::SORT_ASCENDING) {
+	if(order == preferences::SORT_ORDER::ASCENDING) {
 		func = order_struct.sort_func_asc;
 	} else {
 		func = order_struct.sort_func_desc;
 	}
 
-	find_widget<addon_list>(&window, "addons", false).set_addon_order(func);
+	find_widget<addon_list>(get_window(), "addons", false).set_addon_order(func);
+	preferences::set_addon_manager_saved_order_name(order_struct.as_preference);
+	preferences::set_addon_manager_saved_order_direction(order);
 }
 
-void addon_manager::on_order_changed(window& window, unsigned int sort_column, listbox::SORT_ORDER order)
+void addon_manager::on_order_changed(unsigned int sort_column, preferences::SORT_ORDER order)
 {
-	menu_button& order_menu = find_widget<menu_button>(&window, "order_dropdown", false);
+	menu_button& order_menu = find_widget<menu_button>(get_window(), "order_dropdown", false);
 	auto order_it = std::find_if(all_orders_.begin(), all_orders_.end(),
 		[sort_column](const addon_order& order) {return order.column_index == static_cast<int>(sort_column);});
 	int index = 2 * (std::distance(all_orders_.begin(), order_it));
-	if(order == listbox::SORT_DESCENDING) {
+	if(order == preferences::SORT_ORDER::DESCENDING) {
 		++index;
 	}
 	order_menu.set_value(index);
+	preferences::set_addon_manager_saved_order_name(order_it->as_preference);
+	preferences::set_addon_manager_saved_order_direction(order);
 }
 
-template<void(addon_manager::*fptr)(const addon_info& addon, window& window)>
-void addon_manager::execute_action_on_selected_addon(window& window)
+template<void(addon_manager::*fptr)(const addon_info& addon)>
+void addon_manager::execute_action_on_selected_addon()
 {
 	// Explicitly return to the main page if we're in low-res mode so the list is visible.
-	if(stacked_widget* stk = find_widget<stacked_widget>(&window, "main_stack", false, false)) {
+	if(stacked_widget* stk = find_widget<stacked_widget>(get_window(), "main_stack", false, false)) {
 		stk->select_layer(0);
-		find_widget<button>(&window, "details_toggle", false).set_label(_("Addon Details"));
+		find_widget<button>(get_window(), "details_toggle", false).set_label(_("Addon Details"));
 	}
 
-	addon_list& addons = find_widget<addon_list>(&window, "addons", false);
+	addon_list& addons = find_widget<addon_list>(get_window(), "addons", false);
 	const addon_info* addon = addons.get_selected_addon();
 
 	if(addon == nullptr) {
@@ -658,25 +637,34 @@ void addon_manager::execute_action_on_selected_addon(window& window)
 	}
 
 	try {
-		(this->*fptr)(*addon, window);
+		(this->*fptr)(*addon);
 	} catch(const addons_client::user_exit&) {
 		// User canceled the op.
 	}
 }
 
-void addon_manager::install_addon(const addon_info& addon, window& window)
+void addon_manager::install_addon(const addon_info& addon)
 {
-	addons_client::install_result result = client_.install_addon_with_checks(addons_, addon);
+	addon_info versioned_addon = addon;
+	widget* parent = get_window();
+	if(stacked_widget* stk = find_widget<stacked_widget>(get_window(), "main_stack", false, false)) {
+		parent = stk->get_layer_grid(1);
+	}
+	if(addon.id == find_widget<addon_list>(get_window(), "addons", false).get_selected_addon()->id) {
+		versioned_addon.current_version = find_widget<menu_button>(parent, "version_filter", false).get_value_string();
+	}
+
+	addons_client::install_result result = client_.install_addon_with_checks(addons_, versioned_addon);
 
 	// Take note if any wml_changes occurred
 	need_wml_cache_refresh_ |= result.wml_changed;
 
 	if(result.outcome != addons_client::install_outcome::abort) {
-		reload_list_and_reselect_item(addon.id, window);
+		reload_list_and_reselect_item(addon.id);
 	}
 }
 
-void addon_manager::uninstall_addon(const addon_info& addon, window& window)
+void addon_manager::uninstall_addon(const addon_info& addon)
 {
 	if(have_addon_pbl_info(addon.id) || have_addon_in_vcs_tree(addon.id)) {
 		show_error_message(
@@ -692,11 +680,11 @@ void addon_manager::uninstall_addon(const addon_info& addon, window& window)
 	} else {
 		need_wml_cache_refresh_ = true;
 
-		reload_list_and_reselect_item(addon.id, window);
+		reload_list_and_reselect_item(addon.id);
 	}
 }
 
-void addon_manager::update_addon(const addon_info& addon, window& window)
+void addon_manager::update_addon(const addon_info& addon)
 {
 	/* Currently, the install and update codepaths are the same, so this function simply
 	 * calls the other. Since this might change in the future, I'm leaving this function
@@ -704,10 +692,10 @@ void addon_manager::update_addon(const addon_info& addon, window& window)
 	 *
 	 * - vultraz, 2017-03-12
 	 */
-	install_addon(addon, window);
+	install_addon(addon);
 }
 
-void addon_manager::update_all_addons(window& window)
+void addon_manager::update_all_addons()
 {
 	for(const auto& a : addons_) {
 		if(tracking_info_[a.first].state == ADDON_INSTALLED_UPGRADABLE) {
@@ -726,12 +714,12 @@ void addon_manager::update_all_addons(window& window)
 	}
 
 	if(need_wml_cache_refresh_) {
-		load_addon_list(window);
+		load_addon_list();
 	}
 }
 
 /** Performs all backend and UI actions for publishing the specified add-on. */
-void addon_manager::publish_addon(const addon_info& addon, window& window)
+void addon_manager::publish_addon(const addon_info& addon)
 {
 	std::string server_msg;
 
@@ -755,9 +743,9 @@ void addon_manager::publish_addon(const addon_info& addon, window& window)
 	} else if(!client_.request_distribution_terms(server_msg)) {
 		gui2::show_error_message(
 			_("The server responded with an error:") + "\n" + client_.get_last_server_error());
-	} else if(gui2::show_message(_("Terms"), server_msg, gui2::dialogs::message::ok_cancel_buttons, true) == gui2::retval::OK) {
+	} else if(gui2::dialogs::addon_license_prompt::execute(server_msg)) {
 		if(!client_.upload_addon(addon_id, server_msg, cfg, tracking_info_[addon_id].state == ADDON_INSTALLED_LOCAL_ONLY)) {
-			const std::string& msg = _("The server responded with an error:") +
+			const std::string& msg = _("The add-on was rejected by the server:") +
 			                         "\n\n" + client_.get_last_server_error();
 			const std::string& extra_data = client_.get_last_server_error_data();
 			if (!extra_data.empty()) {
@@ -773,14 +761,14 @@ void addon_manager::publish_addon(const addon_info& addon, window& window)
 			}
 		} else {
 			gui2::show_transient_message(_("Response"), server_msg);
-			fetch_addons_list(window);
-			reload_list_and_reselect_item(addon_id, window);
+			fetch_addons_list();
+			reload_list_and_reselect_item(addon_id);
 		}
 	}
 }
 
 /** Performs all backend and UI actions for taking down the specified add-on. */
-void addon_manager::delete_addon(const addon_info& addon, window& window)
+void addon_manager::delete_addon(const addon_info& addon)
 {
 	const std::string addon_id = addon.id;
 	const std::string& text = VGETTEXT(
@@ -800,17 +788,17 @@ void addon_manager::delete_addon(const addon_info& addon, window& window)
 	} else {
 		// FIXME: translation needed!
 		gui2::show_transient_message(_("Response"), server_msg);
-		fetch_addons_list(window);
-		reload_list_and_reselect_item(addon_id, window);
+		fetch_addons_list();
+		reload_list_and_reselect_item(addon_id);
 	}
 }
 
 /** Called when the player double-clicks an add-on. */
-void addon_manager::execute_default_action(const addon_info& addon, window& window)
+void addon_manager::execute_default_action(const addon_info& addon)
 {
 	switch(tracking_info_[addon.id].state) {
 		case ADDON_NONE:
-			install_addon(addon, window);
+			install_addon(addon);
 			break;
 		case ADDON_INSTALLED:
 			if(!tracking_info_[addon.id].can_publish) {
@@ -819,16 +807,16 @@ void addon_manager::execute_default_action(const addon_info& addon, window& wind
 					VGETTEXT("Do you want to uninstall '$addon|'?", symbols),
 					gui2::dialogs::message::ok_cancel_buttons);
 				if(res == gui2::retval::OK) {
-					uninstall_addon(addon, window);
+					uninstall_addon(addon);
 				}
 			}
 			break;
 		case ADDON_INSTALLED_UPGRADABLE:
-			update_addon(addon, window);
+			update_addon(addon);
 			break;
 		case ADDON_INSTALLED_LOCAL_ONLY:
 		case ADDON_INSTALLED_OUTDATED:
-			publish_addon(addon, window);
+			publish_addon(addon);
 			break;
 		default:
 			break;
@@ -838,17 +826,6 @@ void addon_manager::execute_default_action(const addon_info& addon, window& wind
 void addon_manager::show_help()
 {
 	help::show_help("installing_addons");
-}
-
-void addon_manager::browse_url_callback(text_box& url_box)
-{
-	/* TODO: ask for confirmation */
-	desktop::open_object(url_box.get_value());
-}
-
-void addon_manager::copy_url_callback(text_box& url_box)
-{
-	desktop::clipboard::copy_to_clipboard(url_box.get_value(), false);
 }
 
 static std::string format_addon_time(std::time_t time)
@@ -868,16 +845,16 @@ static std::string format_addon_time(std::time_t time)
 	return font::unicode_em_dash;
 }
 
-void addon_manager::on_addon_select(window& window)
+void addon_manager::on_addon_select()
 {
-	const addon_info* info = find_widget<addon_list>(&window, "addons", false).get_selected_addon();
+	const addon_info* info = find_widget<addon_list>(get_window(), "addons", false).get_selected_addon();
 
 	if(info == nullptr) {
 		return;
 	}
 
-	widget* parent = &window;
-	if(stacked_widget* stk = find_widget<stacked_widget>(&window, "main_stack", false, false)) {
+	widget* parent = get_window();
+	if(stacked_widget* stk = find_widget<stacked_widget>(get_window(), "main_stack", false, false)) {
 		parent = stk->get_layer_grid(1);
 	}
 
@@ -885,7 +862,7 @@ void addon_manager::on_addon_select(window& window)
 
 	find_widget<styled_widget>(parent, "title", false).set_label(info->display_title_translated_or_original());
 	find_widget<styled_widget>(parent, "description", false).set_label(info->description_translated());
-	find_widget<styled_widget>(parent, "version", false).set_label(info->version.str());
+	menu_button& version_filter = find_widget<menu_button>(parent, "version_filter", false);
 	find_widget<styled_widget>(parent, "author", false).set_label(info->author);
 	find_widget<styled_widget>(parent, "type", false).set_label(info->display_type());
 
@@ -917,18 +894,14 @@ void addon_manager::on_addon_select(window& window)
 	find_widget<styled_widget>(parent, "translations", false).set_label(!languages.empty() ? languages : _("translations^None"));
 
 	const std::string& feedback_url = info->feedback_url;
-
-	if(!feedback_url.empty()) {
-		find_widget<stacked_widget>(parent, "feedback_stack", false).select_layer(1);
-		find_widget<text_box>(parent, "url", false).set_value(feedback_url);
-	} else {
-		find_widget<stacked_widget>(parent, "feedback_stack", false).select_layer(0);
-	}
+	find_widget<label>(parent, "url", false).set_label(!feedback_url.empty() ? feedback_url : _("url^None"));
 
 	bool installed = is_installed_addon_status(tracking_info_[info->id].state);
 	bool updatable = tracking_info_[info->id].state == ADDON_INSTALLED_UPGRADABLE;
 
 	stacked_widget& action_stack = find_widget<stacked_widget>(parent, "action_stack", false);
+	// #TODO: Add tooltips with upload time and pack size
+	std::vector<config> version_filter_entries;
 
 	if(!tracking_info_[info->id].can_publish) {
 		action_stack.select_layer(0);
@@ -943,19 +916,54 @@ void addon_manager::on_addon_select(window& window)
 		}
 
 		find_widget<button>(parent, "uninstall", false).set_active(installed);
+
+		for(const auto& f : info->versions) {
+			version_filter_entries.emplace_back("label", f.str());
+		}
+		version_filter.set_active(true);
 	} else {
 		action_stack.select_layer(1);
 
 		// Always enable the publish button, but disable the delete button if not yet published.
 		find_widget<button>(parent, "publish", false).set_active(true);
 		find_widget<button>(parent, "delete", false).set_active(!info->local_only);
+
+		// Show only the version to be published
+		version_filter_entries.emplace_back("label", info->current_version.str());
+		version_filter.set_active(false);
+	}
+	version_filter.set_values(version_filter_entries);
+}
+
+void addon_manager::on_selected_version_change()
+{
+	widget* parent = get_window();
+	if(stacked_widget* stk = find_widget<stacked_widget>(get_window(), "main_stack", false, false)) {
+		parent = stk->get_layer_grid(1);
+	}
+
+	const addon_info* info = find_widget<addon_list>(get_window(), "addons", false).get_selected_addon();
+
+	if(info == nullptr) {
+		return;
+	}
+
+	if(!tracking_info_[info->id].can_publish && is_installed_addon_status(tracking_info_[info->id].state)) {
+		bool updatable = tracking_info_[info->id].installed_version
+						 != find_widget<menu_button>(parent, "version_filter", false).get_value_string();
+		stacked_widget& action_stack = find_widget<stacked_widget>(parent, "action_stack", false);
+		action_stack.select_layer(0);
+
+		stacked_widget& install_update_stack = find_widget<stacked_widget>(parent, "install_update_stack", false);
+		install_update_stack.select_layer(1);
+		find_widget<button>(parent, "update", false).set_active(updatable);
 	}
 }
 
 bool addon_manager::exit_hook(window& window)
 {
 	if(window.get_retval() == addon_list::DEFAULT_ACTION_RETVAL) {
-		execute_default_action_on_selected_addon(window);
+		execute_default_action_on_selected_addon();
 		return false;
 	}
 
@@ -963,4 +971,3 @@ bool addon_manager::exit_hook(window& window)
 }
 
 } // namespace dialogs
-} // namespace gui2

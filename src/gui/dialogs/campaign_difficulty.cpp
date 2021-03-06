@@ -30,42 +30,8 @@
 static lg::log_domain log_wml("wml");
 #define WRN_WML LOG_STREAM(warn, log_wml)
 
-namespace gui2
+namespace gui2::dialogs
 {
-namespace dialogs
-{
-
-/*WIKI
- * @page = GUIWindowDefinitionWML
- * @order = 2_campaign_difficulty
- *
- * == Campaign difficulty ==
- *
- * The campaign mode difficulty menu.
- *
- * @begin{table}{dialog_widgets}
- *
- * title & & label & m &
- *         Dialog title label. $
- *
- * message & & scroll_label & o &
- *         Text label displaying a description or instructions. $
- *
- * listbox & & listbox & m &
- *         Listbox displaying user choices, defined by WML for each campaign. $
- *
- * -icon & & styled_widget & m &
- *         Widget which shows a listbox item icon, first item markup column. $
- *
- * -label & & styled_widget & m &
- *         Widget which shows a listbox item label, second item markup column. $
- *
- * -description & & styled_widget & m &
- *         Widget which shows a listbox item description, third item markup
- *         column. $
- *
- * @end{table}
- */
 
 REGISTER_DIALOG(campaign_difficulty)
 
@@ -146,4 +112,3 @@ void campaign_difficulty::post_show(window& window)
 	}
 }
 } // namespace dialogs
-} // namespace gui2

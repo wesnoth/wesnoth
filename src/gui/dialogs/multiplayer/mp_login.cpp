@@ -26,39 +26,8 @@
 #include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/window.hpp"
 
-namespace gui2
+namespace gui2::dialogs
 {
-namespace dialogs
-{
-
-/*WIKI
- * @page = GUIWindowDefinitionWML
- * @order = 2_mp_login
- *
- * == Multiplayer connect ==
- *
- * This shows the dialog to log in to the MP server
- *
- * @begin{table}{dialog_widgets}
- *
- * user_name & & text_box & m &
- *         The login user name. $
- *
- * password & & text_box & m &
- *         The password. $
- *
- * remember_password & & toggle_button & o &
- *         A toggle button to offer to remember the password in the
- *         preferences. $
- *
- * change_username & & button & o &
- *         Use a different username. $
- *
- * login_label & & button & o &
- *         Displays the information received from the server. $
- *
- * @end{table}
- */
 
 REGISTER_DIALOG(mp_login)
 
@@ -76,24 +45,24 @@ mp_login::mp_login(const std::string& host, const std::string& label, const bool
 		&preferences::set_remember_password);
 }
 
-void mp_login::load_password(window& win) const
+void mp_login::load_password() const
 {
-	text_box& pwd = find_widget<text_box>(&win, "password", false);
-	pwd.set_value(preferences::password(host_, username_->get_widget_value(win)));
+	text_box& pwd = find_widget<text_box>(get_window(), "password", false);
+	pwd.set_value(preferences::password(host_, username_->get_widget_value(*get_window())));
 }
 
-void mp_login::save_password(window& win) const
+void mp_login::save_password() const
 {
-	password_box& pwd = find_widget<password_box>(&win, "password", false);
-	preferences::set_password(host_, username_->get_widget_value(win), pwd.get_real_value());
+	password_box& pwd = find_widget<password_box>(get_window(), "password", false);
+	preferences::set_password(host_, username_->get_widget_value(*get_window()), pwd.get_real_value());
 }
 
 void mp_login::pre_show(window& win)
 {
 	text_box& login = find_widget<text_box>(&win, "user_name", false);
-	login.connect_signal<event::RECEIVE_KEYBOARD_FOCUS>(std::bind(&mp_login::load_password, this, std::ref(win)));
+	login.connect_signal<event::RECEIVE_KEYBOARD_FOCUS>(std::bind(&mp_login::load_password, this));
 
-	load_password(win);
+	load_password();
 
 	if(focus_password_) {
 		win.keyboard_capture(find_widget<text_box>(&win, "password", false, true));
@@ -103,11 +72,10 @@ void mp_login::pre_show(window& win)
 	win.add_to_tab_order(find_widget<text_box>(&win, "password", false, true));
 }
 
-void mp_login::post_show(window& win) {
+void mp_login::post_show(window& /*win*/) {
 	if(get_retval() == retval::OK) {
-		save_password(win);
+		save_password();
 	}
 }
 
 } // namespace dialogs
-} // namespace gui2

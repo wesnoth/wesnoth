@@ -64,8 +64,10 @@ private: // data
 	const bool animate_;
 	const bool force_scroll_;
 	unit_animator animator_;
-	int wait_until_;	/// The animation potential to wait until. INT_MIN for no wait; INT_MAX to wait for end.
-	unit_ptr shown_unit_;	/// The unit to be (re-)shown after an animation finishes.
+	/** The animation potential to wait until. INT_MIN for no wait; INT_MAX to wait for end. */
+	int wait_until_;
+	/** The unit to be (re-)shown after an animation finishes. */
+	unit_ptr shown_unit_;
 	const std::vector<map_location>& path_;
 	std::size_t current_;
 	fake_unit_ptr temp_unit_ptr_;
@@ -117,7 +119,8 @@ void unit_sheath_weapon( const map_location& loc, unit_ptr u=unit_ptr(), const_a
 void unit_attack(display * disp, game_board & board, //TODO: Would be nice if this could be purely a display function and defer damage dealing to its caller
 	const map_location& a, const map_location& b, int damage,
 	const attack_type& attack, const_attack_ptr secondary_attack,
-	int swing, const std::string& hit_text, int drain_amount, const std::string& att_text, const std::vector<std::string>* extra_hit_sounds=nullptr);
+	int swing, const std::string& hit_text, int drain_amount, const std::string& att_text, const std::vector<std::string>* extra_hit_sounds=nullptr,
+	bool attacking=true);
 
 
 void unit_recruited(const map_location& loc,

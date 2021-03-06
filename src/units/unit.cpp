@@ -24,54 +24,42 @@
 #include "display.hpp"
 #include "formatter.hpp"
 #include "formula/string_utils.hpp" // for VGETTEXT
-#include "game_board.hpp"			// for game_board
-#include "game_config.hpp"			// for add_color_info, etc
+#include "game_board.hpp"           // for game_board
+#include "game_config.hpp"          // for add_color_info, etc
 #include "game_data.hpp"
-#include "game_errors.hpp"		   // for game_error
+#include "game_errors.hpp"         // for game_error
 #include "game_events/manager.hpp" // for add_events
-#include "preferences/game.hpp"	// for encountered_units
-#include "gettext.hpp"			   // for N_
+#include "game_version.hpp"
+#include "gettext.hpp" // for N_
 #include "lexical_cast.hpp"
-#include "log.hpp"						 // for LOG_STREAM, logger, etc
-#include "map/map.hpp"					 // for gamemap
-#include "random.hpp"				 // for generator, rng
-#include "resources.hpp"				 // for units, gameboard, teams, etc
+#include "log.hpp"                       // for LOG_STREAM, logger, etc
+#include "map/map.hpp"                   // for gamemap
+#include "preferences/game.hpp"          // for encountered_units
+#include "random.hpp"                    // for generator, rng
+#include "resources.hpp"                 // for units, gameboard, teams, etc
 #include "scripting/game_lua_kernel.hpp" // for game_lua_kernel
-#include "side_filter.hpp"				 // for side_filter
+#include "side_filter.hpp"               // for side_filter
 #include "synced_context.hpp"
-#include "team.hpp"						 // for team, get_teams, etc
-#include "terrain/filter.hpp"			 // for terrain_filter
-#include "units/abilities.hpp"			 // for effect, filter_base_matches
-#include "units/animation.hpp"			 // for unit_animation
+#include "team.hpp"                      // for team, get_teams, etc
+#include "terrain/filter.hpp"            // for terrain_filter
+#include "units/abilities.hpp"           // for effect, filter_base_matches
+#include "units/animation.hpp"           // for unit_animation
 #include "units/animation_component.hpp" // for unit_animation_component
 #include "units/filter.hpp"
 #include "units/formula_manager.hpp" // for unit_formula_manager
 #include "units/id.hpp"
+#include "units/map.hpp" // for unit_map, etc
 #include "units/types.hpp"
-#include "units/map.hpp"	   // for unit_map, etc
-#include "variable.hpp"		   // for vconfig, etc
-#include "game_version.hpp"
+#include "variable.hpp" // for vconfig, etc
 
-#include "utils/functional.hpp"
-#include <boost/dynamic_bitset.hpp>
-#include <boost/function_output_iterator.hpp>
-
-#ifdef _MSC_VER
-#pragma warning (push)
-#pragma warning (disable: 4510 4610)
-#endif
-#include <boost/range/algorithm.hpp>
-#ifdef _MSC_VER
-#pragma warning (pop)
-#endif
-
-#include <array>
 #include <cassert>                     // for assert
 #include <cstdlib>                     // for rand
 #include <exception>                    // for exception
+#include <functional>
 #include <iterator>                     // for back_insert_iterator, etc
 #include <new>                          // for operator new
 #include <ostream>                      // for operator<<, basic_ostream, etc
+#include <string_view>
 
 namespace t_translation { struct terrain_code; }
 
@@ -84,7 +72,7 @@ static lg::log_domain log_unit("unit");
 namespace
 {
 	// "advance" only kept around for backwards compatibility; only "advancement" should be used
-	const std::array<std::string, 4> ModificationTypes {{ "advancement", "advance", "trait", "object" }};
+	const std::set<std::string_view> ModificationTypes { "advancement", "advance", "trait", "object" };
 
 	/**
 	 * Pointers to units which have data in their internal caches. The
@@ -94,7 +82,7 @@ namespace
 	static std::vector<const unit*> units_with_cache;
 
 	static const std::string leader_crown_path = "misc/leader-crown.png";
-	static std::array<std::string, 60> internalized_attrs {{
+	static const std::set<std::string_view> internalized_attrs {
 		"type",
 		"id",
 		"name",
@@ -156,18 +144,7 @@ namespace
 		"language_name",
 		"image",
 		"image_icon"
-	}};
-
-	struct internalized_attrs_sorter
-	{
-		internalized_attrs_sorter()
-		{
-			std::sort(std::begin(internalized_attrs), std::end(internalized_attrs));
-		}
 	};
-
-	// Sort the array to make set_difference below work.
-	internalized_attrs_sorter sorter;
 
 	void warn_unknown_attribute(const config::const_attr_itors& cfg)
 	{
@@ -199,12 +176,6 @@ namespace
 			WRN_UT << "Unknown attribute '" << cur->first << "' discarded." << std::endl;
 			++cur;
 		}
-	}
-
-	template<typename T>
-	T* copy_or_null(const std::unique_ptr<T>& ptr)
-	{
-		return ptr ? new T(*ptr) : nullptr;
 	}
 } // end anon namespace
 
@@ -250,19 +221,6 @@ static unit_race::GENDER generate_gender(const unit_type& u_type, const config& 
 
 	return generate_gender(u_type, cfg["random_gender"].to_bool());
 }
-
-struct ptr_vector_pushback
-{
-	ptr_vector_pushback(boost::ptr_vector<config>& vec) : vec_(&vec) {}
-
-	void operator()(const config& cfg)
-	{
-		vec_->push_back(new config(cfg));
-	}
-
-	//Don't use reference to be copyable.
-	boost::ptr_vector<config>* vec_;
-};
 
 // Copy constructor
 unit::unit(const unit& o)
@@ -329,9 +287,9 @@ unit::unit(const unit& o)
 	, advancements_(o.advancements_)
 	, description_(o.description_)
 	, special_notes_(o.special_notes_)
-	, usage_(copy_or_null(o.usage_))
-	, halo_(copy_or_null(o.halo_))
-	, ellipse_(copy_or_null(o.ellipse_))
+	, usage_(o.usage_)
+	, halo_(o.halo_)
+	, ellipse_(o.ellipse_)
 	, random_traits_(o.random_traits_)
 	, generate_name_(o.generate_name_)
 	, upkeep_(o.upkeep_)
@@ -415,11 +373,10 @@ unit::unit(unit_ctor_t)
 	, ellipse_()
 	, random_traits_(true)
 	, generate_name_(true)
-	, upkeep_(upkeep_full())
+	, upkeep_(upkeep_full{})
 	, changed_attributes_(0)
 	, invisibility_cache_()
 {
-
 }
 
 void unit::init(const config& cfg, bool use_traits, const vconfig* vcfg)
@@ -475,8 +432,8 @@ void unit::init(const config& cfg, bool use_traits, const vconfig* vcfg)
 	facing_ = map_location::parse_direction(cfg["facing"]);
 	if(facing_ == map_location::NDIRECTIONS) facing_ = static_cast<map_location::DIRECTION>(randomness::rng::default_instance().get_random_int(0, map_location::NDIRECTIONS-1));
 
-	if(const config& mods = cfg.child("modifications")) {
-		modifications_ = mods;
+	for(const config& mods : cfg.child_range("modifications")) {
+		modifications_.append_children(mods);
 	}
 
 	generate_name_ = cfg["generate_name"].to_bool(true);
@@ -598,8 +555,10 @@ void unit::init(const config& cfg, bool use_traits, const vconfig* vcfg)
 	// If cfg specifies [advancement]s, replace this [advancement]s with them.
 	if(cfg.has_child("advancement")) {
 		set_attr_changed(UA_ADVANCEMENTS);
-		this->advancements_.clear();
-		boost::copy(cfg.child_range("advancement"), boost::make_function_output_iterator(ptr_vector_pushback(advancements_)));
+		advancements_.clear();
+		for(const config& adv : cfg.child_range("advancement")) {
+			advancements_.push_back(adv);
+		}
 	}
 
 	// Don't use the unit_type's abilities if this config has its own defined
@@ -608,7 +567,7 @@ void unit::init(const config& cfg, bool use_traits, const vconfig* vcfg)
 		set_attr_changed(UA_ABILITIES);
 		abilities_.clear();
 		for(const config& abilities : cfg_range) {
-			this->abilities_.append(abilities);
+			abilities_.append(abilities);
 		}
 	}
 
@@ -702,7 +661,7 @@ void unit::init(const unit_type& u_type, int side, bool real_unit, unit_race::GE
 	side_ = side;
 	gender_ = gender != unit_race::NUM_GENDERS ? gender : generate_gender(u_type, real_unit);
 	facing_ = static_cast<map_location::DIRECTION>(randomness::rng::default_instance().get_random_int(0, map_location::NDIRECTIONS-1));
-	upkeep_ = upkeep_full();
+	upkeep_ = upkeep_full{};
 
 	// Apply the unit type's data to this unit.
 	advance_to(u_type, real_unit);
@@ -925,7 +884,7 @@ void unit::advance_to(const unit_type& u_type, bool use_traits)
 	advancements_.clear();
 
 	for(const config& advancement : new_type.advancements()) {
-		advancements_.push_back(new config(advancement));
+		advancements_.push_back(advancement);
 	}
 
 	// If unit has specific profile, remember it and keep it after advancing
@@ -969,7 +928,7 @@ void unit::advance_to(const unit_type& u_type, bool use_traits)
 
 	flag_rgb_ = new_type.flag_rgb();
 
-	upkeep_ = upkeep_full();
+	upkeep_ = upkeep_full{};
 	parse_upkeep(new_type.get_cfg()["upkeep"]);
 
 	anim_comp_->reset_after_advance(&new_type);
@@ -1158,9 +1117,6 @@ void unit::set_recruits(const std::vector<std::string>& recruits)
 {
 	unit_types.check_types(recruits);
 	recruit_list_ = recruits;
-	//TODO crab
-	//info_.minimum_recruit_price = 0;
-	//ai::manager::get_singleton().raise_recruit_list_changed();
 }
 
 const std::vector<std::string> unit::advances_to_translated() const
@@ -1393,7 +1349,7 @@ void unit::set_state(const std::string& state, bool value)
 
 bool unit::has_ability_by_id(const std::string& ability) const
 {
-	for(const config::any_child &ab : this->abilities_.all_children_range()) {
+	for(const config::any_child &ab : abilities_.all_children_range()) {
 		if(ab.cfg["id"] == ability) {
 			return true;
 		}
@@ -1405,10 +1361,10 @@ bool unit::has_ability_by_id(const std::string& ability) const
 void unit::remove_ability_by_id(const std::string& ability)
 {
 	set_attr_changed(UA_ABILITIES);
-	config::all_children_iterator i = this->abilities_.ordered_begin();
-	while (i != this->abilities_.ordered_end()) {
+	config::all_children_iterator i = abilities_.ordered_begin();
+	while (i != abilities_.ordered_end()) {
 		if(i->cfg["id"] == ability) {
-			i = this->abilities_.erase(i);
+			i = abilities_.erase(i);
 		} else {
 			++i;
 		}
@@ -1457,15 +1413,15 @@ void unit::write(config& cfg, bool write_all) const
 		}
 	}
 
-	if(halo_.get()) {
+	if(halo_) {
 		cfg["halo"] = *halo_;
 	}
 
-	if(ellipse_.get()) {
+	if(ellipse_) {
 		cfg["ellipse"] = *ellipse_;
 	}
 
-	if(usage_.get()) {
+	if(usage_) {
 		cfg["usage"] = *usage_;
 	}
 
@@ -1581,7 +1537,7 @@ void unit::write(config& cfg, bool write_all) const
 	}
 	if(write_all || get_attr_changed(UA_ADVANCEMENTS)) {
 		cfg.clear_children("advancement");
-		for(const config& advancement : this->advancements_) {
+		for(const config& advancement : advancements_) {
 			if(!advancement.empty()) {
 				cfg.add_child("advancement", advancement);
 			}
@@ -1606,12 +1562,12 @@ int unit::upkeep() const
 		return 0;
 	}
 
-	return boost::apply_visitor(upkeep_value_visitor(*this), upkeep_);
+	return utils::visit(upkeep_value_visitor{*this}, upkeep_);
 }
 
 bool unit::loyal() const
 {
-	return boost::get<upkeep_loyal>(&upkeep_) != nullptr;
+	return utils::holds_alternative<upkeep_loyal>(upkeep_);
 }
 
 int unit::defense_modifier(const t_translation::terrain_code & terrain) const
@@ -1807,11 +1763,7 @@ std::vector<config> unit::get_modification_advances() const
 void unit::set_advancements(std::vector<config> advancements)
 {
 	set_attr_changed(UA_ADVANCEMENTS);
-	this->advancements_.clear();
-	for(config& advancement : advancements) {
-		this->advancements_.push_back(new config());
-		this->advancements_.back().swap(advancement);
-	}
+	advancements_ = advancements;
 }
 
 const std::string& unit::type_id() const
@@ -2077,7 +2029,7 @@ void unit::apply_builtin_effect(std::string apply_to, const config& effect)
 			set_max_experience(utils::apply_modifier(max_experience_, increase, 1));
 		}
 	} else if(apply_to == upkeep_loyal::type()) {
-		upkeep_ = upkeep_loyal();
+		upkeep_ = upkeep_loyal{};
 	} else if(apply_to == "status") {
 		const std::string& add = effect["add"];
 		const std::string& remove = effect["remove"];
@@ -2111,7 +2063,7 @@ void unit::apply_builtin_effect(std::string apply_to, const config& effect)
 					to_append.add_child(ab.key, ab.cfg);
 				}
 			}
-			this->abilities_.append(to_append);
+			abilities_.append(to_append);
 		}
 	} else if(apply_to == "remove_ability") {
 		if(const config& ab_effect = effect.child("abilities")) {
@@ -2180,8 +2132,9 @@ void unit::apply_builtin_effect(std::string apply_to, const config& effect)
 				advancements_.clear();
 			}
 
-			config temp = effect;
-			boost::copy(effect.child_range("advancement"), boost::make_function_output_iterator(ptr_vector_pushback(advancements_)));
+			for(const config& adv : effect.child_range("advancement")) {
+				advancements_.push_back(adv);
+			}
 		}
 	} else if(apply_to == "remove_advancement") {
 		const std::string& types = effect["types"];
@@ -2640,7 +2593,7 @@ void unit::set_image_halo(const std::string& halo)
 {
 	appearance_changed_ = true;
 	anim_comp_->clear_haloes();
-	halo_.reset(new std::string(halo));
+	halo_ = halo;
 }
 
 void unit::parse_upkeep(const config::attribute_value& upkeep)
@@ -2650,16 +2603,16 @@ void unit::parse_upkeep(const config::attribute_value& upkeep)
 	}
 
 	try {
-		upkeep_ = upkeep.apply_visitor(upkeep_parser_visitor());
+		upkeep_ = upkeep.apply_visitor(upkeep_parser_visitor{});
 	} catch(std::invalid_argument& e) {
 		WRN_UT << "Found invalid upkeep=\"" << e.what() <<  "\" in a unit" << std::endl;
-		upkeep_ = upkeep_full();
+		upkeep_ = upkeep_full{};
 	}
 }
 
 void unit::write_upkeep(config::attribute_value& upkeep) const
 {
-	upkeep = boost::apply_visitor(upkeep_type_visitor(), upkeep_);
+	upkeep = utils::visit(upkeep_type_visitor{}, upkeep_);
 }
 
 void unit::clear_changed_attributes()
@@ -2678,7 +2631,7 @@ std::string get_checksum(const unit& u)
 	config wcfg;
 	u.write(unit_config);
 
-	const std::array<std::string, 22> main_keys {{
+	static const std::set<std::string_view> main_keys {
 		"advances_to",
 		"alignment",
 		"cost",
@@ -2701,24 +2654,24 @@ std::string get_checksum(const unit& u)
 		"undead_variation",
 		"upkeep",
 		"zoc"
-	}};
+	};
 
-	for(const std::string& main_key : main_keys) {
+	for(const std::string_view& main_key : main_keys) {
 		wcfg[main_key] = unit_config[main_key];
 	}
 
-	const std::array<std::string, 5> attack_keys {{
+	static const std::set<std::string_view> attack_keys {
 		"name",
 		"type",
 		"range",
 		"damage",
 		"number"
-	}};
+	};
 
 	for(const config& att : unit_config.child_range("attack")) {
 		config& child = wcfg.add_child("attack");
 
-		for(const std::string& attack_key : attack_keys) {
+		for(const std::string_view& attack_key : attack_keys) {
 			child[attack_key] = att[attack_key];
 		}
 
@@ -2747,16 +2700,16 @@ std::string get_checksum(const unit& u)
 		child.recursive_clear_value("name");
 	}
 
-	const std::array<std::string, 6> child_keys {{
+	static const std::set<std::string_view> child_keys {
 		"advance_from",
 		"defense",
 		"movement_costs",
 		"vision_costs",
 		"jamming_costs",
 		"resistance"
-	}};
+	};
 
-	for(const std::string& child_key : child_keys) {
+	for(const std::string_view& child_key : child_keys) {
 		for(const config& c : unit_config.child_range(child_key)) {
 			wcfg.add_child(child_key, c);
 		}

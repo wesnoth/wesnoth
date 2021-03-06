@@ -127,12 +127,10 @@ bool uninstall_local_addons()
 		if(have_addon_install_info(id)) {
 			// _info.cfg may have the add-on's title starting with 1.11.7,
 			// if the add-on was downloading using the revised _info.cfg writer.
-			config cfg;
-			get_addon_install_info(id, cfg);
+			config info_cfg;
+			get_addon_install_info(id, info_cfg);
 
-			const config& info_cfg = cfg.child("info");
-
-			if(info_cfg) {
+			if(!info_cfg.empty()) {
 				title = info_cfg["title"].str();
 			}
 		}

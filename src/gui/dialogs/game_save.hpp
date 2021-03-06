@@ -16,11 +16,18 @@
 
 #include "gui/dialogs/modal_dialog.hpp"
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 
+/**
+ * @ingroup GUIWindowDefinitionWML
+ *
+ * This shows the dialog to create a savegame file.
+ * Key               |Type          |Mandatory|Description
+ * ------------------|--------------|---------|-----------
+ * lblTitle          | @ref label   |yes      |The title of the window.
+ * txtFilename       | text_box     |yes      |The name of the savefile.
+ */
 class game_save : public modal_dialog
 {
 public:
@@ -62,4 +69,3 @@ private:
 	virtual const std::string& window_id() const override;
 };
 } // namespace dialogs
-} // namespace gui2

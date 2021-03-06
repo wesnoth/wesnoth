@@ -26,7 +26,7 @@
 #include "lexical_cast.hpp"
 #include "sdl/rect.hpp"
 
-#include "utils/functional.hpp"
+#include <functional>
 
 #define LOG_SCOPE_HEADER "pane [" + id() + "] " + __func__
 #define LOG_HEADER LOG_SCOPE_HEADER + ':'
@@ -104,19 +104,6 @@ struct pane_implementation
 	}
 };
 
-pane::pane(const builder_grid_ptr item_builder)
-	: widget()
-	, items_()
-	, item_builder_(item_builder)
-	, item_id_generator_(0)
-	, placer_(placer_base::build(placer_base::grow_direction::vertical, 1))
-{
-	connect_signal<event::REQUEST_PLACEMENT>(
-			std::bind(
-					&pane::signal_handler_request_placement, this, _1, _2, _3),
-			event::dispatcher::back_pre_child);
-}
-
 pane::pane(const implementation::builder_pane& builder)
 	: widget(builder)
 	, items_()
@@ -126,7 +113,7 @@ pane::pane(const implementation::builder_pane& builder)
 {
 	connect_signal<event::REQUEST_PLACEMENT>(
 			std::bind(
-					&pane::signal_handler_request_placement, this, _1, _2, _3),
+					&pane::signal_handler_request_placement, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3),
 			event::dispatcher::back_pre_child);
 }
 
@@ -381,40 +368,6 @@ void pane::signal_handler_request_placement(dispatcher& dispatcher,
 }
 
 // }---------- BUILDER -----------{
-
-/*WIKI_MACRO
- * @begin{macro}{pane_description}
- *
- *        A pane is a container where new members can be added and removed
- *        during run-time.
- * @end{macro}
- */
-
-/*WIKI
- * @page = GUIWidgetInstanceWML
- * @order = 2_viewport
- * @begin{parent}{name="gui/window/resolution/grid/row/column/"}
- * @begin{tag}{name="pane"}{min=0}{max=-1}{super="generic/widget_instance"}
- * == Label ==
- *
- * @macro = viewport_description
- *
- * List with the label specific variables:
- * @begin{table}{config}
- *     grow_direction & grow_direction & &
- *                                The direction in which new items grow. $
- *     parallel_items & unsigned & &
- *                                The number of items that are growing in
- *                                parallel. $
- *     item_definition & section & &
- *                                The definition of a new item. $
- * @end{table}
- *
- * @begin{tag}{name="item_definition"}{min=1}{max=1}{super="gui/window/resolution/grid"}
- * @end{tag}{name="item_definition"}
- * @end{tag}{name="pane"}
- * @end{parent}{name="gui/window/resolution/grid/row/column/"}
- */
 
 namespace implementation
 {

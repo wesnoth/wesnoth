@@ -246,7 +246,7 @@ action::error recall::check_validity() const
 	return OK;
 }
 
-///@todo Find a better way to serialize unit_ because underlying_id isn't cutting it
+/** @todo Find a better way to serialize unit_ because underlying_id isn't cutting it */
 config recall::to_config() const
 {
 	config final_cfg = action::to_config();

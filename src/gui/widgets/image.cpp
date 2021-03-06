@@ -24,7 +24,7 @@
 #include "gui/core/register_widget.hpp"
 #include "gui/widgets/settings.hpp"
 
-#include "utils/functional.hpp"
+#include <functional>
 
 #define LOG_SCOPE_HEADER get_control_type() + " [" + id() + "] " + __func__
 #define LOG_HEADER LOG_SCOPE_HEADER + ':'
@@ -105,29 +105,6 @@ image_definition::image_definition(const config& cfg)
 	load_resolutions<resolution>(cfg);
 }
 
-/*WIKI
- * @page = GUIWidgetDefinitionWML
- * @order = 1_image
- *
- * == Image ==
- *
- * @macro = image_description
- *
- * The definition of an image. The label field of the widget is used as the
- * name of file to show. The widget normally has no event interaction so only
- * one state is defined.
- *
- * The following states exist:
- * * state_enabled, the image is enabled.
- * @begin{parent}{name="gui/"}
- * @begin{tag}{name="image_definition"}{min=0}{max=-1}{super="generic/widget_definition"}
- * @begin{tag}{name="resolution"}{min=0}{max=-1}{super="generic/widget_definition/resolution"}
- * @begin{tag}{name="state_enabled"}{min=0}{max=1}{super="generic/state"}
- * @end{tag}{name="state_enabled"}
- * @end{tag}{name="resolution"}
- * @end{tag}{name="image_definition"}
- * @end{parent}{name="gui/"}
- */
 image_definition::resolution::resolution(const config& cfg)
 	: resolution_definition(cfg)
 {
@@ -136,27 +113,6 @@ image_definition::resolution::resolution(const config& cfg)
 }
 
 // }---------- BUILDER -----------{
-
-/*WIKI_MACRO
- * @begin{macro}{image_description}
- * An image shows a static image.
- * @end{macro}
- */
-
-/*WIKI
- * @page = GUIWidgetInstanceWML
- * @order = 2_image
- *
- * == Image ==
- *
- * @macro = image_description
- *
- * An image has no extra fields.
- * @begin{parent}{name="gui/window/resolution/grid/row/column/"}
- * @begin{tag}{name="image"}{min=0}{max=-1}{super="generic/widget_instance"}
- * @end{tag}{name="image"}
- * @end{parent}{name="gui/window/resolution/grid/row/column/"}
- */
 
 namespace implementation
 {

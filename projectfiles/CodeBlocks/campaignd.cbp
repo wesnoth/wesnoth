@@ -38,8 +38,8 @@
 			<Add option="-Wunused-parameter" />
 			<Add option="-DHAVE_PYTHON" />
 			<Add option="-DUSE_GZIP" />
-			<Add option="-D_WIN32_WINNT=0x0501" />
-			<Add option="-D_WIN32_IE=0x0501" />
+			<Add option="-D_WIN32_WINNT=0x0601" />
+			<Add option="-D_WIN32_IE=0x0601" />
 			<Add directory="../../src" />
 		</Compiler>
 		<Linker>
@@ -61,6 +61,8 @@
 			<Add library="libboost_regex" />
 			<Add library="libboost_system" />
 			<Add library="libboost_thread" />
+			<Add library="libboost_coroutine"/>
+			<Add library="libboost_context"/>
 			<Add library="libboost_timer" />
 			<Add library="libboost_zlib" />
 			<Add library="libole32" />
@@ -82,6 +84,8 @@
 		<Unit filename="../../src/color.cpp" />
 		<Unit filename="../../src/color.hpp" />
 		<Unit filename="../../src/color_range.cpp" />
+		<Unit filename="../../src/commandline_argv.cpp" />
+		<Unit filename="../../src/commandline_argv.hpp" />
 		<Unit filename="../../src/config.cpp" />
 		<Unit filename="../../src/config.hpp" />
 		<Unit filename="../../src/config_attribute_value.cpp" />
@@ -131,11 +135,15 @@
 		<Unit filename="../../src/serialization/unicode.hpp" />
 		<Unit filename="../../src/server/campaignd/addon_utils.cpp" />
 		<Unit filename="../../src/server/campaignd/addon_utils.hpp" />
+		<Unit filename="../../src/server/campaignd/auth.cpp" />
+		<Unit filename="../../src/server/campaignd/auth.hpp" />
 		<Unit filename="../../src/server/campaignd/blacklist.cpp" />
 		<Unit filename="../../src/server/campaignd/blacklist.hpp" />
 		<Unit filename="../../src/server/campaignd/control.hpp" />
 		<Unit filename="../../src/server/campaignd/fs_commit.cpp" />
 		<Unit filename="../../src/server/campaignd/fs_commit.hpp" />
+		<Unit filename="../../src/server/campaignd/options.cpp" />
+		<Unit filename="../../src/server/campaignd/options.hpp" />
 		<Unit filename="../../src/server/campaignd/server.cpp" />
 		<Unit filename="../../src/server/campaignd/server.hpp" />
 		<Unit filename="../../src/server/common/server_base.cpp" />
@@ -144,7 +152,6 @@
 		<Unit filename="../../src/server/common/simple_wml.hpp" />
 		<Unit filename="../../src/server/common/user_handler.cpp" />
 		<Unit filename="../../src/server/common/user_handler.hpp" />
-		<Unit filename="../../src/server/common/send_receive_wml_helpers.ipp" />
 		<Unit filename="../../src/tstring.cpp" />
 		<Unit filename="../../src/tstring.hpp" />
 		<Unit filename="../../src/util.hpp" />

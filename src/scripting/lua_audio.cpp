@@ -98,7 +98,7 @@ static int impl_music_get(lua_State* L) {
 	if(strcmp(m, "current_i") == 0) {
 		auto current_index = sound::get_current_track_index();
 		if(current_index) {
-			lua_pushinteger(L, current_index.get() + 1);
+			lua_pushinteger(L, *current_index + 1);
 		} else {
 			lua_pushnil(L);
 		}
@@ -234,7 +234,7 @@ static int intf_music_commit(lua_State*) {
 
 static int impl_track_get(lua_State* L) {
 	lua_music_track* track = get_track(L, 1);
-	if(track == nullptr || !track->valid()) {
+	if(track == nullptr) {
 		return luaL_error(L, "Error: Attempted to access an invalid music track.\n");
 	}
 	const char* m = luaL_checkstring(L, 2);
@@ -305,7 +305,7 @@ namespace lua_audio {
 	std::string register_table(lua_State* L) {
 		// The music playlist metatable
 		lua_getglobal(L, "wesnoth");
-		lua_newuserdata(L, 0);
+		lua_newuserdatauv(L, 0, 0);
 		lua_createtable(L, 0, 4);
 		static luaL_Reg pl_callbacks[] {
 			{ "__index", impl_music_get },

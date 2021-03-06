@@ -67,20 +67,20 @@ public:
 	{
 		return stream_.str();
 	}
-	
+
 	// Support manipulators
 	formatter& operator<<(std::ostream&(*fn)(std::ostream&)) &
 	{
 		fn(stream_);
 		return *this;
 	}
-	
+
 	formatter&& operator<<(std::ostream&(*fn)(std::ostream&)) &&
 	{
 		fn(stream_);
 		return std::move(*this);
 	}
-	
+
 	formatter& operator<<(std::ios_base&(*fn)(std::ios_base&)) &
 	{
 		fn(stream_);

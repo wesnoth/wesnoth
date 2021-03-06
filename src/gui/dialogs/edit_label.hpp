@@ -16,11 +16,19 @@
 
 #include "gui/dialogs/modal_dialog.hpp"
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 
+/**
+ * @ingroup GUIWindowDefinitionWML
+ *
+ * Dialog for editing gamemap labels.
+ * Key               |Type           |Mandatory|Description
+ * ------------------|---------------|---------|-----------
+ * title             | @ref label    |yes      |Dialog title label.
+ * label             | @ref text_box |yes      |Input field for the map label.
+ * team_only_toggle  | toggle_button |yes      |Checkbox for whether to make the label visible to the player's team only or not.
+ */
 class edit_label : public modal_dialog
 {
 public:
@@ -30,14 +38,13 @@ public:
 	 * @param [in, out] label     The parameter's usage is:
 	 *                            - Input: The initial value of the label.
 	 *                            - Output: The label text the user entered if
-	 *                              the dialog returns @ref retval::OK
+	 *                              the dialog returns retval::OK
 	 *                              undefined otherwise.
 	 * @param [in, out] team_only The parameter's usage is:
 	 *                            - Input: The initial value of the team only
 	 *                              toggle.
 	 *                            - Output: The final value of the team only
-	 *                              toggle if the dialog returns @ref
-	 *                              retval::OK undefined otherwise.
+	 *                              toggle if the dialog returns retval::OK undefined otherwise.
 	 */
 	edit_label(std::string& label, bool& team_only);
 
@@ -49,4 +56,3 @@ private:
 	virtual const std::string& window_id() const override;
 };
 } // namespace dialogs
-} // namespace gui2

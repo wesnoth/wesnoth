@@ -150,5 +150,3 @@ public:
 private:
 	tcodeToTerrain_t::const_iterator find_or_create(t_translation::terrain_code) const;
 };
-
-typedef std::shared_ptr<terrain_type_data> ter_data_cache;

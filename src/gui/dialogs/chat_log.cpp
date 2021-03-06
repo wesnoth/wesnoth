@@ -33,7 +33,7 @@
 #include "replay.hpp"
 #include "gettext.hpp"
 
-#include "utils/functional.hpp"
+#include <functional>
 #include "utils/iterable_pair.hpp"
 
 #include <vector>
@@ -44,21 +44,8 @@ static lg::log_domain log_chat_log("chat_log");
 #define WRN_CHAT_LOG LOG_STREAM(warn, log_chat_log)
 #define ERR_CHAT_LOG LOG_STREAM(err, log_chat_log)
 
-namespace gui2
+namespace gui2::dialogs
 {
-namespace dialogs
-{
-
-/*WIKI
- * @page = GUIWindowDefinitionWML
- * @order = 3_chat_log
- *
- * == Settings manager ==
- *
- * This shows the settings manager
- *
- */
-
 
 REGISTER_DIALOG(chat_log)
 
@@ -288,7 +275,7 @@ public:
 
 		LOG_CHAT_LOG << "First " << first << ", last " << last << '\n';
 
-		return std::make_pair(first, last);
+		return std::pair(first, last);
 	}
 
 	void update_view_from_model(bool select_last_page = false)
@@ -434,7 +421,7 @@ chat_log::chat_log(const vconfig& cfg, const replay& r) : view_()
 	LOG_CHAT_LOG << "Exiting chat_log::chat_log" << std::endl;
 }
 
-std::shared_ptr<chat_log::view> chat_log::get_view()
+std::shared_ptr<chat_log::view> chat_log::get_view() const
 {
 	return view_;
 }
@@ -448,4 +435,3 @@ void chat_log::pre_show(window& window)
 }
 
 } // namespace dialogs
-} // namespace gui2

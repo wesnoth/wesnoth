@@ -284,7 +284,7 @@ public:
 		, callback_load_value_(callback_load_value)
 		, callback_save_value_(callback_save_value)
 	{
-		static_assert(!std::is_same<styled_widget, W>::value, "Second template argument cannot be styled_widget");
+		static_assert(!std::is_same_v<styled_widget, W>, "Second template argument cannot be styled_widget");
 	}
 
 	/**
@@ -308,7 +308,7 @@ public:
 		, callback_load_value_(nullptr)
 		, callback_save_value_(nullptr)
 	{
-		static_assert(!std::is_same<styled_widget, W>::value, "Second template argument cannot be styled_widget");
+		static_assert(!std::is_same_v<styled_widget, W>, "Second template argument cannot be styled_widget");
 	}
 
 	/**
@@ -335,7 +335,7 @@ public:
 		, callback_load_value_(nullptr)
 		, callback_save_value_(nullptr)
 	{
-		static_assert(std::is_same<styled_widget, W>::value, "Second template argument must be styled_widget");
+		static_assert(std::is_same_v<styled_widget, W>, "Second template argument must be styled_widget");
 	}
 
 	/** Inherited from field_base. */
@@ -578,7 +578,7 @@ private:
 					callback_change_(*widget);
 				}
 
-				connect_signal_notify_modified(*widget, std::bind(callback_change_, _1));
+				connect_signal_notify_modified(*widget, std::bind(callback_change_, std::placeholders::_1));
 			}
 		}
 	}

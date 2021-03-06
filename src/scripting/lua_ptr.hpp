@@ -27,7 +27,7 @@ private:
    std::shared_ptr<T*> self_;
 };
 
-/// Tmust inherit enable_lua_ptr<T>
+/** Tmust inherit enable_lua_ptr<T> */
 template<typename T>
 class lua_ptr
 {

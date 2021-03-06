@@ -21,36 +21,8 @@
 #include "formula/string_utils.hpp"
 #include "gettext.hpp"
 
-namespace gui2
+namespace gui2::dialogs
 {
-namespace dialogs
-{
-
-/*WIKI
- * @page = GUIWindowDefinitionWML
- * @order = 2_depcheck_confirm_change
- *
- * == SP/MP Dependency Check: Confirm Change ==
- *
- * Asks the user to confirm a change required to proceed. Currently used
- * for enabling/disabling modifications
- *
- * @begin{table}{dialog_widgets}
- *
- * message & & label & m &
- * 		displays the details of the required changes $
- *
- * itemlist & & scroll_label & m &
- * 		displays the list of affected items $
- *
- * cancel & & button & m &
- * 		refuse to apply changes $
- *
- * ok & & button & m &
- * 		agree to apply changes $
- *
- * @end{table}
- */
 
 REGISTER_DIALOG(depcheck_confirm_change)
 
@@ -80,4 +52,3 @@ depcheck_confirm_change::depcheck_confirm_change(
 	register_label("itemlist", false, list);
 }
 } // namespace dialogs
-} // namespace gui2

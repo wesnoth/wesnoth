@@ -13,8 +13,6 @@
    See the COPYING file for more details.
 */
 
-/** @file */
-
 #pragma once
 
 #include "map/location.hpp"
@@ -98,8 +96,7 @@
  */
 class unit_map
 {
-	/// The pointer to the unit and a reference counter to record the number of extant iterators
-	/// pointing to this unit.
+	/** The pointer to the unit and a reference counter to record the number of extant iteratorspointing to this unit. */
 	struct unit_pod
 	{
 		unit_pod()
@@ -351,8 +348,10 @@ public:
 
 		friend class unit_map;
 
-		iterator_type i_;      /// local iterator
-		container_type* tank_; /// the unit_map for i_
+		/** local iterator */
+		iterator_type i_;
+		/** the unit_map for i_ */
+		container_type* tank_;
 	};
 
 	// ~~~ End iterator code ~~~

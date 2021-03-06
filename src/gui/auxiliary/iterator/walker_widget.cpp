@@ -16,7 +16,6 @@
 
 #include "gui/auxiliary/iterator/walker_widget.hpp"
 
-#include "global.hpp"
 #include "gui/widgets/widget.hpp"
 
 #include <cassert>
@@ -46,7 +45,7 @@ walker_base::state_t widget::next(const level level)
 				widget_ = nullptr;
 				return invalid;
 			}
-			FALLTHROUGH;
+			[[fallthrough]];
 		case internal:
 		case child:
 			break;

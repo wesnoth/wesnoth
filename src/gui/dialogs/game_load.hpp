@@ -29,15 +29,28 @@ class text_box_base;
 
 namespace dialogs
 {
+/**
+ * @ingroup GUIWindowDefinitionWML
+ *
+ * This shows the dialog to select and load a savegame file.
+ * Key               |Type          |Mandatory|Description
+ * ------------------|--------------|---------|-----------
+ * txtFilter         | text         |yes      |The filter for the listbox items.
+ * savegame_list     | @ref listbox |yes      |List of savegames.
+ * filename          | control      |yes      |Name of the savegame.
+ * date              | control      |no       |Date the savegame was created.
+ * preview_pane      | widget       |yes      |Container widget or grid that contains the items for a preview. The visible status of this container depends on whether or not something is selected.
+ * minimap           | @ref minimap |yes      |Minimap of the selected savegame.
+ * imgLeader         | @ref image   |yes      |The image of the leader in the selected savegame.
+ * lblScenario       | @ref label   |yes      |The name of the scenario of the selected savegame.
+ * lblSummary        | @ref label   |yes      |Summary of the selected savegame.
+ */
 class game_load : public modal_dialog
 {
 public:
 	game_load(const game_config_view& cache_config, savegame::load_game_metadata& data);
 
-	static bool execute(const game_config_view& cache_config, savegame::load_game_metadata& data)
-	{
-		return game_load(cache_config, data).show();
-	}
+	static bool execute(const game_config_view& cache_config, savegame::load_game_metadata& data);
 
 private:
 	/** Inherited from modal_dialog. */
@@ -49,18 +62,19 @@ private:
 	void set_save_dir_list(menu_button& dir_list);
 
 	/** Update (both internally and visually) the list of games. */
-	void populate_game_list(window& window);
+	void populate_game_list();
 
-	void filter_text_changed(text_box_base* textbox, const std::string& text);
+	void filter_text_changed(const std::string& text);
 	void browse_button_callback();
-	void delete_button_callback(window& window);
-	void handle_dir_select(window& window);
+	void delete_button_callback();
+	void handle_dir_select();
 
-	void display_savegame_internal(window& window);
-	void display_savegame(window& window);
+	/** Part of display_savegame that might throw a config::error if the savegame data is corrupt. */
+	void display_savegame_internal(const savegame::save_info& game);
+	void display_savegame();
 	void evaluate_summary_string(std::stringstream& str, const config& cfg_summary);
 
-	void key_press_callback(window& window, const SDL_Keycode key);
+	void key_press_callback(const SDL_Keycode key);
 
 	std::string& filename_;
 	std::shared_ptr<savegame::save_index_class>& save_index_manager_;

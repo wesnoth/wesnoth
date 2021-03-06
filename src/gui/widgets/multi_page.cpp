@@ -24,7 +24,7 @@
 
 #include "gettext.hpp"
 
-#include "utils/functional.hpp"
+#include <functional>
 
 namespace gui2
 {
@@ -43,7 +43,7 @@ multi_page::multi_page(const implementation::builder_multi_page& builder)
 grid& multi_page::add_page(const string_map& item)
 {
 	assert(generator_);
-	grid& page = generator_->create_item(-1, page_builders_.begin()->second, item, nullptr);
+	grid& page = generator_->create_item(-1, *page_builders_.begin()->second, item, nullptr);
 
 	return page;
 }
@@ -53,14 +53,14 @@ grid& multi_page::add_page(const std::string& type, int insert_pos, const string
 	assert(generator_);
 	auto it_builder = page_builders_.find(type);
 	VALIDATE(it_builder != page_builders_.end(), "invalid page type '" + type + "'");
-	return generator_->create_item(insert_pos, it_builder->second, item, nullptr);
+	return generator_->create_item(insert_pos, *it_builder->second, item, nullptr);
 }
 
 grid& multi_page::add_page(
 	const std::map<std::string /* widget id */, string_map>& data)
 {
 	assert(generator_);
-	grid& page = generator_->create_item(-1, page_builders_.begin()->second, data, nullptr);
+	grid& page = generator_->create_item(-1, *page_builders_.begin()->second, data, nullptr);
 
 	return page;
 }
@@ -71,7 +71,7 @@ grid& multi_page::add_page(
 	assert(generator_);
 	auto it_builder = page_builders_.find(type);
 	VALIDATE(it_builder != page_builders_.end(), "invalid page type '" + type + "'");
-	return generator_->create_item(insert_pos, it_builder->second, data, nullptr);
+	return generator_->create_item(insert_pos, *it_builder->second, data, nullptr);
 }
 
 void multi_page::remove_page(const unsigned page, unsigned count)
@@ -143,7 +143,7 @@ unsigned multi_page::get_state() const
 void multi_page::finalize(const std::vector<string_map>& page_data)
 {
 	assert(generator_);
-	generator_->create_items(-1, page_builders_.begin()->second, page_data, nullptr);
+	generator_->create_items(-1, *page_builders_.begin()->second, page_data, nullptr);
 	swap_grid(nullptr, &get_grid(), generator_, "_content_grid");
 }
 
@@ -171,27 +171,6 @@ multi_page_definition::multi_page_definition(const config& cfg)
 	load_resolutions<resolution>(cfg);
 }
 
-/*WIKI
- * @page = GUIWidgetDefinitionWML
- * @order = 1_multi_page
- *
- * == Multi page ==
- *
- * @begin{parent}{name="gui/"}
- * @begin{tag}{name="multi_page_definition"}{min=0}{max=-1}{super="generic/widget_definition"}
- * @macro = multi_page_description
- *
- * @begin{tag}{name="resolution"}{min=0}{max=-1}{super="generic/widget_definition/resolution"}
- * @begin{table}{config}
- *     grid & grid & &                    A grid containing the widgets for main
- *                                     widget. $
- * @end{table}
- * @allow{link}{name="gui/window/resolution/grid"}
- * @end{tag}{name="resolution"}
- * @end{tag}{name="multi_page_definition"}
- * @end{parent}{name="gui/"}
- * A multipage has no states.
- */
 multi_page_definition::resolution::resolution(const config& cfg)
 	: resolution_definition(cfg), grid(nullptr)
 {
@@ -202,49 +181,6 @@ multi_page_definition::resolution::resolution(const config& cfg)
 }
 
 // }---------- BUILDER -----------{
-
-/*WIKI_MACRO
- * @begin{macro}{multi_page_description}
- *
- *        A multi page is a styled_widget that contains several 'pages' of which
- *        only one is visible. The pages can contain the same widgets containing
- *        the same 'kind' of data or look completely different.
- * @end{macro}
- */
-
-/*WIKI
- * @page = GUIWidgetInstanceWML
- * @order = 2_multi_page
- * @begin{parent}{name="gui/window/resolution/grid/row/column/"}
- * @begin{tag}{name="multi_page"}{min=0}{max=-1}{super="generic/widget_instance"}
- * == Multi page ==
- *
- * @macro = multi_page_description
- *
- * List with the multi page specific variables:
- * @begin{table}{config}
- *     page_definition & section & &   This defines how a multi page item
- *                                     looks. It must contain the grid
- *                                     definition for at least one page. $
- *
- *     page_data & section & [] &      A grid alike section which stores the
- *                                     initial data for the multi page. Every
- *                                     row must have the same number of columns
- *                                     as the 'page_definition'. $
- *     horizontal_scrollbar_mode & scrollbar_mode & initial_auto &
- *                                     Determines whether or not to show the
- *                                     scrollbar.
- *     vertical_scrollbar_mode & scrollbar_mode & initial_auto &
- *                                     Determines whether or not to show the
- *                                     scrollbar.
- * @end{table}
- * @begin{tag}{name="page_definition"}{min=0}{max=1}{super="gui/window/resolution/grid"}
- * @end{tag}{name="page_definition"}
- * @begin{tag}{name="page_data"}{min=0}{max=1}{super="gui/window/resolution/grid"}
- * @end{tag}{name="page_data"}
- * @end{tag}{name="multi_page"}
- * @end{parent}{name="gui/window/resolution/grid/row/column/"}
- */
 
 namespace implementation
 {
@@ -299,7 +235,7 @@ widget* builder_multi_page::build() const
 	const auto conf = widget->cast_config_to<multi_page_definition>();
 	assert(conf);
 
-	widget->init_grid(conf->grid);
+	widget->init_grid(*conf->grid);
 
 	widget->finalize(data);
 

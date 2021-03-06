@@ -15,8 +15,8 @@
 #include "preferences/lobby.hpp"
 #include "preferences/game.hpp"
 
-namespace preferences {
-
+namespace preferences
+{
 bool whisper_friends_only()
 {
 	return preferences::get("lobby_whisper_friends_only", false);
@@ -35,16 +35,6 @@ bool auto_open_whisper_windows()
 bool playerlist_group_players()
 {
 	return preferences::get("lobby_playerlist_group_players", true);
-}
-
-bool filter_lobby()
-{
-	return preferences::get("filter_lobby", false);
-}
-
-void set_filter_lobby(bool value)
-{
-	preferences::set("filter_lobby", value);
 }
 
 bool fi_invert()
@@ -77,14 +67,14 @@ void set_fi_friends_in_game(bool value)
 	preferences::set("fi_friends_in_game", value);
 }
 
-std::string fi_text()
+bool fi_blocked_in_game()
 {
-	return preferences::get("fi_text");
+	return preferences::get("fi_blocked_in_game", false);
 }
 
-void set_fi_text(const std::string& search_string)
+void set_fi_blocked_in_game(bool value)
 {
-	preferences::set("fi_text", search_string);
+	preferences::set("fi_blocked_in_game", value);
 }
 
-} //end namespace preferences
+} // end namespace preferences

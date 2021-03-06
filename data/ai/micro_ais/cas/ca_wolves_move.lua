@@ -65,16 +65,16 @@ function ca_wolves_move:execution(cfg)
     table.sort(wolves, function(a, b)
         return M.distance_between(a.x, a.y, target.x, target.y) > M.distance_between(b.x, b.y, target.x, target.y)
     end)
-
+    
     -- First wolf moves toward target, but tries to stay away from map edges
-    local width, height = wesnoth.get_map_size()
     local wolf1 = AH.find_best_move(wolves[1], function(x, y)
         local dist_1t = M.distance_between(x, y, target.x, target.y)
         local rating = - dist_1t
+        local map = wesnoth.current.map
         if (x <= 5) then rating = rating - (6 - x) / 1.4 end
         if (y <= 5) then rating = rating - (6 - y) / 1.4 end
-        if (width - x <= 5) then rating = rating - (6 - (width - x)) / 1.4 end
-        if (height - y <= 5) then rating = rating - (6 - (height - y)) / 1.4 end
+        if (map.playable_width - x <= 5) then rating = rating - (6 - (map.playable_width - x)) / 1.4 end
+        if (map.playable_height - y <= 5) then rating = rating - (6 - (map.playable_height - y)) / 1.4 end
 
        -- Hexes that avoid_type units can reach get a massive penalty
        if avoid_enemies_map:get(x, y) then rating = rating - 1000 end

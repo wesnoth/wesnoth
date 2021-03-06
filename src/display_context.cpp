@@ -27,11 +27,7 @@ const team& display_context::get_team(int side) const
 
 bool display_context::would_be_discovered(const map_location & loc, int side_num, bool see_all)
 {
-	adjacent_loc_array_t adjs;
-	get_adjacent_tiles(loc,adjs.data());
-
-	for (const map_location &u_loc : adjs)
-	{
+	for(const map_location& u_loc : get_adjacent_tiles(loc)) {
 		unit_map::const_iterator u_it = units().find(u_loc);
 		if (!u_it.valid()) {
 			continue;
@@ -71,38 +67,38 @@ unit_const_ptr display_context::get_visible_unit_shared_ptr(const map_location &
 	return u.get_shared_ptr();
 }
 
-bool display_context::unit_can_move(const unit &u) const
+display_context::can_move_result display_context::unit_can_move(const unit& u) const
 {
-	if(!u.attacks_left() && u.movement_left()==0)
-		return false;
+	if(!u.attacks_left() && u.movement_left() == 0)
+		return {false, false};
 
 	// Units with goto commands that have already done their gotos this turn
 	// (i.e. don't have full movement left) should have red globes.
 	if(u.has_moved() && u.has_goto()) {
-		return false;
+		return {false, false};
 	}
 
-	const team &current_team = get_team(u.side());
+	const team& current_team = get_team(u.side());
 
-	adjacent_loc_array_t locs;
-	get_adjacent_tiles(u.get_location(), locs.data());
-	for(unsigned n = 0; n < locs.size(); ++n) {
-		if (map().on_board(locs[n])) {
-			const unit_map::const_iterator i = units().find(locs[n]);
-			if (i.valid() && !i->incapacitated() &&
-			    current_team.is_enemy(i->side())) {
-				return true;
+	can_move_result result = {false, false};
+	for(const map_location& adj : get_adjacent_tiles(u.get_location())) {
+		if (map().on_board(adj)) {
+			if(!result.attack_here) {
+				const unit_map::const_iterator i = units().find(adj);
+				if (i.valid() && !i->incapacitated() && current_team.is_enemy(i->side())) {
+					result.attack_here = true;
+				}
 			}
 
-			if (u.movement_cost(map()[locs[n]]) <= u.movement_left()) {
-				return true;
+			if (!result.move && u.movement_cost(map()[adj]) <= u.movement_left()) {
+				result.move = true;
 			}
 		}
 	}
 
 	// This should probably check if the unit can teleport too
 
-	return false;
+	return result;
 }
 
 orb_status display_context::unit_orb_status(const unit& u) const
@@ -111,9 +107,12 @@ orb_status display_context::unit_orb_status(const unit& u) const
 		return orb_status::moved;
 	if(u.movement_left() == u.total_movement() && u.attacks_left() == u.max_attacks())
 		return orb_status::unmoved;
-	if(unit_can_move(u))
-		return orb_status::partial;
-	return orb_status::moved;
+	auto can_move = unit_can_move(u);
+	if(!can_move)
+		return orb_status::moved;
+	if(can_move.move && u.attacks_left() == 0)
+		return orb_status::disengaged;
+	return orb_status::partial;
 }
 
 int display_context::village_owner(const map_location& loc) const
@@ -139,7 +138,7 @@ bool display_context::is_observer() const
 	return true;
 }
 
-/// Static info getters previously declared at global scope in unit.?pp
+// Static info getters previously declared at global scope in unit.?pp
 
 int display_context::side_units(int side) const
 {

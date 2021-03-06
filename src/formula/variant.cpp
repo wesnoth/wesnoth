@@ -189,7 +189,7 @@ variant variant::operator[](std::size_t n) const
 	must_be(VARIANT_TYPE::TYPE_LIST);
 
 	try {
-		return value_cast<variant_list>()->get_container()[n];
+		return value_cast<variant_list>()->get_container().at(n);
 	} catch(std::out_of_range&) {
 		throw type_error("invalid index");
 	}

@@ -33,6 +33,15 @@ struct builder_stacked_widget;
 
 class generator_base;
 
+/**
+ * @ingroup GUIWidgetWML
+ *
+ * A stacked widget holds several widgets on top of each other.
+ * This can be used for various effects; add an optional overlay to an image, stack it with a spacer to force a minimum size of a widget.
+ * The latter is handy to avoid making a separate definition for a single instance with a fixed size.
+ *
+ * A stacked widget has no states.
+ */
 class stacked_widget : public container_base
 {
 	friend struct stacked_widget_implementation;
@@ -120,10 +129,10 @@ private:
 	/**
 	 * Finishes the building initialization of the widget.
 	 *
-	 * @param widget_builder      The builder to build the contents of the
+	 * @param widget_builders     The builder to build the contents of the
 	 *                            widget.
 	 */
-	void finalize(std::vector<builder_grid_const_ptr> widget_builder);
+	void finalize(const std::vector<builder_grid>& widget_builders);
 
 	/**
 	 * Contains a pointer to the generator.
@@ -205,10 +214,10 @@ struct builder_stacked_widget : public builder_styled_widget
 
 	using builder_styled_widget::build;
 
-	widget* build() const;
+	virtual widget* build() const override;
 
 	/** The builders for all layers of the stack .*/
-	std::vector<builder_grid_const_ptr> stack;
+	std::vector<builder_grid> stack;
 };
 
 } // namespace implementation

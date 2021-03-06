@@ -47,7 +47,7 @@ function ca_transport:execution()
 
     -- First see if a transport is within landing distance
     local landing_site_map = LS.of_pairs(
-        wesnoth.get_locations {
+        wesnoth.map.find {
             terrain = 'W*',
             { "filter_adjacent_location", { terrain = '!, W*' } }
         }
@@ -74,10 +74,10 @@ function ca_transport:execution()
                     if (rating >= -0.05) then
                         for x,y in H.adjacent_tiles(r[1], r[2]) do
                             if (not unit_map:get(x, y)) then
-                                if wesnoth.match_location(x, y, { terrain = "!, W*" }) then
+                                if wesnoth.map.matches(x, y, { terrain = "!, W*" }) then
                                     rating = rating + 1
                                     table.insert(adj_tiles, { x, y, 1. } )
-                                elseif wesnoth.match_location(x, y,
+                                elseif wesnoth.map.matches(x, y,
                                     {
                                         terrain = "W*",
                                         { "filter_adjacent_location", { terrain = "!, W*" } }
@@ -122,7 +122,7 @@ function ca_transport:execution()
 
     -- If we got here, no landing site was found. Do a deep-water move instead
     local deep_water_map = LS.of_pairs(
-        wesnoth.get_locations {
+        wesnoth.map.find {
             terrain = 'Wo',
             { "not", { { "filter_adjacent_location", { terrain = '!, Wo' } } } }
         }

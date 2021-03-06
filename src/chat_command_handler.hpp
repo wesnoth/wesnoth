@@ -110,6 +110,8 @@ protected:
 			_("Add a nickname to your friends list."), _("<nickname>"));
 		register_command("remove", &chat_command_handler::do_remove,
 			_("Remove a nickname from your ignores or friends list."), _("<nickname>"));
+		register_command("roll", &chat_command_handler::do_network_send_req_arg,
+			_("Get a random number between 1 and N visible in the game setup lobby."), _("<N>"));
 		register_command("version", &chat_command_handler::do_version,
 			_("Display version information."));
 		register_command("info", &chat_command_handler::do_info,

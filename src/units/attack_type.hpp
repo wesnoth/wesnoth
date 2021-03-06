@@ -71,26 +71,41 @@ public:
 
 	// In unit_abilities.cpp:
 
-	/// @return True iff the special @a special is active.
-	/// @param simple_check If true, check whether the unit has the special. Else, check whether the special is currently active.
-	/// @param special_id If true, match @a special against the @c id of special tags.
-	/// @param special_tags If true, match @a special against the tag name of special tags.
+	/**
+	 * @return True iff the special @a special is active.
+	 * @param special The special being checked.
+	 * @param simple_check If true, check whether the unit has the special. Else, check whether the special is currently active.
+	 * @param special_id If true, match @a special against the @c id of special tags.
+	 * @param special_tags If true, match @a special against the tag name of special tags.
+	 */
 	bool get_special_bool(const std::string& special, bool simple_check=false, bool special_id=true, bool special_tags=true) const;
 	unit_ability_list get_specials(const std::string& special) const;
 	std::vector<std::pair<t_string, t_string>> special_tooltips(boost::dynamic_bitset<>* active_list = nullptr) const;
 	std::string weapon_specials(bool only_active=false, bool is_backstab=false) const;
 
-	/// Calculates the number of attacks this weapon has, considering specials.
+	/** Calculates the number of attacks this weapon has, considering specials. */
 	void modified_attacks(bool is_backstab, unsigned & min_attacks,
 	                      unsigned & max_attacks) const;
-	/// Returns the damage per attack of this weapon, considering specials.
+	/** Returns the damage per attack of this weapon, considering specials. */
 	int modified_damage(bool is_backstab) const;
-	/// Returns list for weapon like abilitiesfor each ability type.
+	/** Returns list for weapon like abilitiesfor each ability type. */
 	unit_ability_list list_ability(const std::string& ability) const;
-	/// Returns list who contains list_ability and get_specials list for each ability type
+	/** Returns list who contains list_ability and get_specials list for each ability type */
 	unit_ability_list get_special_ability(const std::string& ability) const;
-	///return an boolean value for abilities like poison slow firstrike or petrifies
-	bool bool_ability(const std::string& ability) const;
+	/** used for abilities used like weapon
+	 * @return True if the ability @a special is active.
+	 * @param special The special being checked.
+	 * @param special_id If true, match @a special against the @c id of special tags.
+	 * @param special_tags If true, match @a special against the tag name of special tags.
+	 */
+	bool get_special_ability_bool(const std::string& special, bool special_id=true, bool special_tags=true) const;
+	/** used for abilities used like weapon and true specials
+	 * @return True if the ability @a special is active.
+	 * @param special The special being checked.
+	 * @param special_id If true, match @a special against the @c id of special tags.
+	 * @param special_tags If true, match @a special against the tag name of special tags.
+	 */
+	bool bool_ability(const std::string& special, bool special_id=true, bool special_tags=true) const;
 
 	// In unit_types.cpp:
 
@@ -110,8 +125,71 @@ private:
 
 	// Configured as a bit field, in case that is useful.
 	enum AFFECTS { AFFECT_SELF=1, AFFECT_OTHER=2, AFFECT_EITHER=3 };
+	/** check_self_abilities : return an boolean value for checking of activities of abilities used like weapon
+	 * @return True if the special @a special is active.
+	 * @param cfg the config to one special ability checked.
+	 * @param special The special ability type who is being checked.
+	 */
+	bool check_self_abilities(const config& cfg, const std::string& special) const;
+	/** check_adj_abilities : return an boolean value for checking of activities of abilities used like weapon
+	 * @return True if the special @a special is active.
+	 * @param cfg the config to one special ability checked.
+	 * @param special The special ability type who is being checked.
+	 * @param dir direction to research a unit adjacent to self_.
+	 * @param from unit adjacent to self_ is checked.
+	 */
+	bool check_adj_abilities(const config& cfg, const std::string& special, int dir, const unit& from) const;
 	bool special_active(const config& special, AFFECTS whom, const std::string& tag_name,
 	                    bool include_backstab=true, const std::string& filter_self ="filter_self") const;
+
+	/** check_self_abilities_impl : return an boolean value for checking of activities of abilities used like weapon
+	 * @return True if the special @a tag_name is active.
+	 * @param self_attack the attack used by unit checked in this function.
+	 * @param other_attack the attack used by opponent to unit checked.
+	 * @param special the config to one special ability checked.
+	 * @param u the unit checked.
+	 * @param loc location of the unit checked.
+	 * @param whom determine if unit affected or not by special ability.
+	 * @param tag_name The special ability type who is being checked.
+	 * @param leader_bool If true, [leadership] abilities are checked.
+	 */
+	static bool check_self_abilities_impl(
+		const_attack_ptr self_attack,
+		const_attack_ptr other_attack,
+		const config& special,
+		unit_const_ptr u,
+		const map_location& loc,
+		AFFECTS whom,
+		const std::string& tag_name,
+		bool leader_bool=false
+	);
+
+
+	/** check_adj_abilities_impl : return an boolean value for checking of activities of abilities used like weapon in unit adjacent to fighter
+	 * @return True if the special @a tag_name is active.
+	 * @param self_attack the attack used by unit who fight.
+	 * @param other_attack the attack used by opponent.
+	 * @param special the config to one special ability checked.
+	 * @param u the unit who is or not affected by an abilities owned by @a from.
+	 * @param from unit adjacent to @a u is checked.
+	 * @param dir direction to research a unit adjacent to @a u.
+	 * @param loc location of the unit checked.
+	 * @param whom determine if unit affected or not by special ability.
+	 * @param tag_name The special ability type who is being checked.
+	 * @param leader_bool If true, [leadership] abilities are checked.
+	 */
+	static bool check_adj_abilities_impl(
+		const_attack_ptr self_attack,
+		const_attack_ptr other_attack,
+		const config& special,
+		unit_const_ptr u,
+		const unit& from,
+		int dir,
+		const map_location& loc,
+		AFFECTS whom,
+		const std::string& tag_name,
+		bool leader_bool=false
+	);
 
 	static bool special_active_impl(
 		const_attack_ptr self_attack,
@@ -136,16 +214,16 @@ public:
 	class specials_context_t {
 		std::shared_ptr<const attack_type> parent;
 		friend class attack_type;
-		/// Initialize weapon specials context for listing
+		/** Initialize weapon specials context for listing */
 		explicit specials_context_t(const attack_type& weapon, bool attacking);
-		/// Initialize weapon specials context for a unit type
+		/** Initialize weapon specials context for a unit type */
 		specials_context_t(const attack_type& weapon, const unit_type& self_type, const map_location& loc, bool attacking = true);
-		/// Initialize weapon specials context for a single unit
+		/** Initialize weapon specials context for a single unit */
 		specials_context_t(const attack_type& weapon, const_attack_ptr other_weapon,
 			unit_const_ptr self, unit_const_ptr other,
 			const map_location& self_loc, const map_location& other_loc,
 			bool attacking);
-		/// Initialize weapon specials context for a pair of units
+		/** Initialize weapon specials context for a pair of units */
 		specials_context_t(const attack_type& weapon, unit_const_ptr self, const map_location& loc, bool attacking);
 		specials_context_t(const specials_context_t&) = delete;
 		bool was_moved = false;

@@ -1,7 +1,5 @@
 local _ = wesnoth.textdomain 'wesnoth-wc'
-local on_event = wesnoth.require("on_event")
-local helper = wesnoth.require("helper")
-
+local on_event = wesnoth.require "on_event"
 
 local training = {}
 
@@ -110,11 +108,11 @@ end
 
 function training.describe_training_level(name, level, max_level)
 	if level == max_level then
-		return tostring(wesnoth.format(_ "$name Training Maximum Level", {
+		return tostring(stringx.vformat(_ "$name Training Maximum Level", {
 			name = name
 		}))
 	else
-		return tostring(wesnoth.format(_ "$name Training level $level", {
+		return tostring(stringx.vformat(_ "$name Training level $level", {
 			name = name,
 			level = level
 		}))
@@ -125,7 +123,7 @@ function training.describe_training_level2(level, max_level)
 	if level == max_level then
 		return _ "Maximum Level"
 	else
-		return tostring(wesnoth.format(_ "level $level", {
+		return tostring(stringx.vformat(_ "level $level", {
 			level = level
 		}))
 	end
@@ -140,9 +138,9 @@ function training.generate_message(n_trainer, n_grade)
 	local caption = training.describe_training_level(c_trainer.name, n_grade, #c_trainer.grade - 1)
 	local messages = {}
 	for unused, chance in ipairs(c_grade.chance) do
-		local vchance = chance.variable_substitution ~= false and wesnoth.tovconfig(chance) or chance
+		local vchance = chance.variable_substitution ~= false and wml.tovconfig(chance) or chance
 		if (chance.value or 0) < 100 then
-			local str = wesnoth.format(_ "$chance| chance to $arrow $desc", {
+			local str = stringx.vformat(_ "$chance| chance to $arrow $desc", {
 				chance = ("%d%%"):format(vchance.value),
 				desc = wc2_utils.get_fstring(chance, "info"),
 				arrow = wc2_color.tc_text(" → ")
@@ -165,7 +163,7 @@ function training.give_bonus(side_num, cx, amount, traintype_index)
 	local cur_level = training.get_level(side_num, traintype_index)
 	local new_level = cur_level + amount
 	local teacher = wc2_heroes.place(amount > 1 and traintype.advanced_type or traintype.type, side_num, cx.x1,cx.y1)
-	local u = wesnoth.get_unit(cx.x1, cx.y1)
+	local u = wesnoth.units.get(cx.x1, cx.y1)
 	wc2_utils.facing_each_other(u, teacher)
 
 	wesnoth.wml_actions.sound {
@@ -208,7 +206,7 @@ function training.pick_bonus(side_num)
 end
 
 on_event("recruit", function(event_context)
-	training.apply(wesnoth.get_unit(event_context.x1, event_context.y1))
+	training.apply(wesnoth.units.get(event_context.x1, event_context.y1))
 end)
 
 function training.apply(u)
@@ -225,13 +223,13 @@ function training.apply(u)
 		local level = training.get_level(side, i) or 0
 		for unused, chance in ipairs(training.get_chances(i, level)) do
 			--some effects use expressions like $(5+{GRADE}) so we want variable_substitution there
-			local vchance = wesnoth.tovconfig(chance)
+			local vchance = wml.tovconfig(chance)
 			local filter = wml.get_child(vchance, "filter")
 			local matches_filter = (not filter) or u:matches(filter)
 			if wesnoth.random(100) <= vchance.value and matches_filter then
 				--wesnoth.wml_actions.message { message = "Got it" }
 				table.insert(descriptions, wc2_utils.get_fstring(chance, "info"))
-				for effect in helper.child_range(vchance, "effect") do
+				for effect in wml.child_range(vchance, "effect") do
 					table.insert(trait, {"effect", effect })
 				end
 			end
@@ -248,7 +246,7 @@ function training.apply(u)
 end
 
 function wesnoth.wml_actions.wc2_apply_training(cfg)
-	for i,u in ipairs(wesnoth.get_units(cfg)) do
+	for i,u in ipairs(wesnoth.units.find_on_map(cfg)) do
 		training.apply(u)
 	end
 end
@@ -256,7 +254,7 @@ end
 function wesnoth.wml_actions.wc2_give_random_training(cfg)
 	local side_num = cfg.side
 	local amount = cfg.amount or 1
-	local among = cfg.among and wc2_utils.split_to_array(cfg.among)
+	local among = cfg.among and stringx.split(cfg.among)
 	for i = 1, amount do
 		local traintype = training.find_available(side_num, among)
 		if traintype == nil then error("wc2_give_random_training: everything alerady maxed") end
@@ -273,7 +271,7 @@ function training.describe_bonus(side, traintype)
 	if cur_level == max_level then
 		message = _"Nothing to learn here"
 	else
-		message = wesnoth.format(_"From $level_before to $level_after", {
+		message = stringx.vformat(_"From $level_before to $level_after", {
 			level_before = training.describe_training_level(traintype_data.name, cur_level, max_level),
 			level_after = training.describe_training_level(traintype_data.name, cur_level + 1, max_level)
 		})

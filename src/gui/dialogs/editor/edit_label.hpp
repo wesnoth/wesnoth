@@ -17,11 +17,19 @@
 #include "gui/dialogs/modal_dialog.hpp"
 #include "color.hpp"
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 
+/**
+ * @ingroup GUIWindowDefinitionWML
+ *
+ * Dialog for editing gamemap labels.
+ * Key               |Type           |Mandatory|Description
+ * ------------------|---------------|---------|-----------
+ * title             | @ref label    |yes      |Dialog title label.
+ * label             | @ref text_box |yes      |Input field for the map label.
+ * team_only_toggle  | toggle_button |yes      |Checkbox for whether to make the label visible to the player's team only or not.
+ */
 class editor_edit_label : public modal_dialog
 {
 public:
@@ -31,8 +39,13 @@ public:
 	 * @param[in, out] text       The parameter's usage is:
 	 *                            - Input: The initial value of the label.
 	 *                            - Output: The label text the user entered if
-	 *                              the dialog returns @ref retval::OK
+	 *                              the dialog returns retval::OK
 	 *                              undefined otherwise.
+	 * @param immutable           Sets immutable_toggle attribute.
+	 * @param visible_fog         Sets visible_fog_toggle attribute.
+	 * @param visible_shroud      Sets visible_shroud_toggle attribute.
+	 * @param color               Sets slider color.
+	 * @param category            Sets category attribute.
 	 */
 	editor_edit_label(std::string& text,
 					   bool& immutable,
@@ -55,4 +68,3 @@ private:
 	virtual void pre_show(window& window) override;
 };
 } // namespace dialogs
-} // namespace gui2

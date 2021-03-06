@@ -53,6 +53,7 @@
 0 test_unit_map
 0 unit_spawns_at_nearest_vacant_hex
 0 units_offmap_goto_recall
+0 recall_by_unit_tag
 0 test_move
 5 test_move_fail_1
 5 test_move_fail_2
@@ -105,6 +106,22 @@
 0 events-test_die
 0 test_store_unit_defense_on
 5 test_store_unit_defense_deprecated
+# Terrain mask tests
+0 test_terrain_mask_simple_nop
+0 test_terrain_mask_simple_set
+0 test_terrain_mask_simple_underlay
+0 test_terrain_mask_simple_overlay
+0 test_terrain_mask_simple_name
+0 test_terrain_mask_simple_name_fail
+0 test_terrain_mask_align_odd_on_odd
+0 test_terrain_mask_align_odd_on_even
+0 test_terrain_mask_align_even_on_odd
+0 test_terrain_mask_align_even_on_even
+0 test_terrain_mask_align_raw_on_odd
+0 test_terrain_mask_align_raw_on_even
+0 test_terrain_mask_deprecated_border_no
+0 test_terrain_mask_deprecated_border_yes
+0 test_terrain_mask_rule_basic
 #
 # LUA
 #
@@ -114,6 +131,8 @@
 0 test_wml_actions
 0 test_wml_conditionals
 0 lua_wml_tagnames
+0 test_scoped_vars
+0 as_text
 #
 # Pathfinding
 #
@@ -149,6 +168,7 @@
 0 test_elf_longsighted_cave_vision
 0 test_elf_longsighted_cave_and_hills_vision
 0 test_elf_longsighted_cave_slow_cave_vision
+0 test_resistances
 #
 # Attack calculations & codepath tests
 #
@@ -165,6 +185,12 @@
 0 feeding
 0 swarm_disables_upgrades
 0 swarm_disables_upgrades_with_abilities
+0 swarm_disables_upgrades_with_abilities_fail
+0 swarm_disables_upgrades_with_abilities_adjacent
+0 swarm_disables_upgrades_with_abilities_adjacent_fail
+0 swarm_disables_upgrades_with_abilities_adjacent_leadership
+0 swarm_disables_upgrades_with_abilities_adjacent_leadership_fail
+0 test_force_chance_to_hit_macro
 #
 # Deterministic unit facing tests
 0 recruit_facing_enemy_one

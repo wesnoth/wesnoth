@@ -46,8 +46,6 @@
 #pragma warning(pop)
 #endif
 
-#include <boost/variant/static_visitor.hpp>
-
 #include <stack>
 
 static lg::log_domain log_config("config");
@@ -391,7 +389,7 @@ void parser::parse_variable()
 				buffer += " ";
 			}
 
-			FALLTHROUGH;
+			[[fallthrough]];
 
 		default:
 			buffer += tok_.current_token().value;
@@ -410,7 +408,7 @@ void parser::parse_variable()
 				continue;
 			}
 
-			FALLTHROUGH;
+			[[fallthrough]];
 
 		case token::END:
 			goto finish;
@@ -524,7 +522,10 @@ inline std::string escaped_string(const std::string& value)
 	return escaped_string(value.begin(), value.end());
 }
 
-class write_key_val_visitor : public boost::static_visitor<void>
+class write_key_val_visitor
+#ifdef USING_BOOST_VARIANT
+	: public boost::static_visitor<void>
+#endif
 {
 public:
 	write_key_val_visitor(std::ostream& out, unsigned level, std::string& textdomain, const std::string& key)
@@ -547,7 +548,7 @@ public:
 	// Specialized visitors for things that go in quotes:
 	//
 
-	void operator()(const boost::blank&) const
+	void operator()(const utils::monostate&) const
 	{
 		// Treat blank values as nonexistent which fits better than treating them as empty strings.
 	}

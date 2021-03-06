@@ -28,7 +28,7 @@
 
 #include "sound.hpp"
 
-#include "utils/functional.hpp"
+#include <functional>
 
 #define LOG_SCOPE_HEADER get_control_type() + " [" + id() + "] " + __func__
 #define LOG_HEADER LOG_SCOPE_HEADER + ':'
@@ -47,16 +47,16 @@ button::button(const implementation::builder_button& builder)
 	, retval_(retval::NONE)
 {
 	connect_signal<event::MOUSE_ENTER>(
-			std::bind(&button::signal_handler_mouse_enter, this, _2, _3));
+			std::bind(&button::signal_handler_mouse_enter, this, std::placeholders::_2, std::placeholders::_3));
 	connect_signal<event::MOUSE_LEAVE>(
-			std::bind(&button::signal_handler_mouse_leave, this, _2, _3));
+			std::bind(&button::signal_handler_mouse_leave, this, std::placeholders::_2, std::placeholders::_3));
 
 	connect_signal<event::LEFT_BUTTON_DOWN>(std::bind(
-			&button::signal_handler_left_button_down, this, _2, _3));
+			&button::signal_handler_left_button_down, this, std::placeholders::_2, std::placeholders::_3));
 	connect_signal<event::LEFT_BUTTON_UP>(
-			std::bind(&button::signal_handler_left_button_up, this, _2, _3));
+			std::bind(&button::signal_handler_left_button_up, this, std::placeholders::_2, std::placeholders::_3));
 	connect_signal<event::LEFT_BUTTON_CLICK>(std::bind(
-			&button::signal_handler_left_button_click, this, _2, _3));
+			&button::signal_handler_left_button_click, this, std::placeholders::_2, std::placeholders::_3));
 }
 
 void button::set_active(const bool active)
@@ -154,34 +154,6 @@ button_definition::button_definition(const config& cfg)
 	load_resolutions<resolution>(cfg);
 }
 
-/*WIKI
- * @page = GUIWidgetDefinitionWML
- * @order = 1_button
- *
- * == Button ==
- *
- * @macro = button_description
- *
- * The following states exist:
- * * state_enabled, the button is enabled.
- * * state_disabled, the button is disabled.
- * * state_pressed, the left mouse button is down.
- * * state_focused, the mouse is over the button.
- * @begin{parent}{name="gui/"}
- * @begin{tag}{name="button_definition"}{min=0}{max=-1}{super="generic/widget_definition"}
- * @begin{tag}{name="resolution"}{min=0}{max=-1}{super="generic/widget_definition/resolution"}
- * @begin{tag}{name="state_enabled"}{min=0}{max=1}{super="generic/state"}
- * @end{tag}{name="state_enabled"}
- * @begin{tag}{name="state_disabled"}{min=0}{max=1}{super="generic/state"}
- * @end{tag}{name="state_disabled"}
- * @begin{tag}{name="state_pressed"}{min=0}{max=1}{super="generic/state"}
- * @end{tag}{name="state_pressed"}
- * @begin{tag}{name="state_focused"}{min=0}{max=1}{super="generic/state"}
- * @end{tag}{name="state_focused"}
- * @end{tag}{name="resolution"}
- * @end{tag}{name="button_definition"}
- * @end{parent}{name="gui/"}
- */
 button_definition::resolution::resolution(const config& cfg)
 	: resolution_definition(cfg)
 {
@@ -193,44 +165,6 @@ button_definition::resolution::resolution(const config& cfg)
 }
 
 // }---------- BUILDER -----------{
-
-/*WIKI_MACRO
- * @begin{macro}{button_description}
- *
- *        A button is a styled_widget that can be pushed to start an action or close
- *        a dialog.
- * @end{macro}
- */
-
-/*WIKI
- * @page = GUIWidgetInstanceWML
- * @order = 2_button
- * @begin{parent}{name="gui/window/resolution/grid/row/column/"}
- * @begin{tag}{name="button"}{min=0}{max=-1}{super="generic/widget_instance"}
- * == Button ==
- *
- * @macro = button_description
- *
- * Instance of a button. When a button has a return value it sets the
- * return value for the window. Normally this closes the window and returns
- * this value to the caller. The return value can either be defined by the
- * user or determined from the id of the button. The return value has a
- * higher precedence as the one defined by the id. (Of course it's weird to
- * give a button an id and then override its return value.)
- *
- * When the button doesn't have a standard id, but you still want to use the
- * return value of that id, use return_value_id instead. This has a higher
- * precedence as return_value.
- *
- * List with the button specific variables:
- * @begin{table}{config}
- *     return_value_id & string & "" &   The return value id. $
- *     return_value & int & 0 &          The return value. $
- *
- * @end{table}
- * @end{tag}{name="button"}
- * @end{parent}{name="gui/window/resolution/grid/row/column/"}
- */
 
 namespace implementation
 {

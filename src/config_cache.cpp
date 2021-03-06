@@ -198,6 +198,8 @@ void config_cache::read_cache(const std::string& file_path, config& cfg, abstrac
 				ERR_CACHE << "cache checksum is corrupt" << std::endl;
 			} catch(const filesystem::io_exception&) {
 				ERR_CACHE << "error reading cache checksum" << std::endl;
+			} catch(const std::ios_base::failure&) {
+				ERR_CACHE << "error reading cache checksum" << std::endl;
 			}
 		}
 
@@ -344,7 +346,7 @@ void config_cache::remove_define(const std::string& define)
 bool config_cache::clean_cache()
 {
 	std::vector<std::string> files, dirs;
-	filesystem::get_files_in_dir(filesystem::get_cache_dir(), &files, &dirs, filesystem::ENTIRE_FILE_PATH);
+	filesystem::get_files_in_dir(filesystem::get_cache_dir(), &files, &dirs, filesystem::name_mode::ENTIRE_FILE_PATH);
 
 	LOG_CACHE << "clean_cache(): " << files.size() << " files, "
 			  << dirs.size() << " dirs to check\n";
@@ -364,7 +366,7 @@ bool config_cache::clean_cache()
 bool config_cache::purge_cache()
 {
 	std::vector<std::string> files, dirs;
-	filesystem::get_files_in_dir(filesystem::get_cache_dir(), &files, &dirs, filesystem::ENTIRE_FILE_PATH);
+	filesystem::get_files_in_dir(filesystem::get_cache_dir(), &files, &dirs, filesystem::name_mode::ENTIRE_FILE_PATH);
 
 	LOG_CACHE << "purge_cache(): deleting " << files.size() << " files, "
 			  << dirs.size() << " dirs\n";

@@ -48,12 +48,3 @@ widget* builder_instance::build(const replacements_map& replacements) const
 } // namespace implementation
 
 } // namespace gui2
-
-/*WIKI
- * @page = GUIWidgetInstanceWML
- * @order = 2_instance
- * @begin{parent}{name="gui/window/resolution/grid/row/column/"}
- * @begin{tag}{name="instance"}{min=0}{max=-1}{super="generic/widget_instance"}
- * @end{tag}{name="instance"}
- * @end{parent}{name="gui/window/resolution/grid/row/column/"}
- */

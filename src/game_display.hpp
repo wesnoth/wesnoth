@@ -12,8 +12,6 @@
    See the COPYING file for more details.
 */
 
-/** @file */
-
 #pragma once
 
 class config;
@@ -38,8 +36,7 @@ public:
 			std::weak_ptr<wb::manager> wb,
 			reports & reports_object,
 			const config& theme_cfg,
-			const config& level,
-			bool dummy=false);
+			const config& level);
 
 	~game_display();
 	static game_display* get_singleton()
@@ -185,10 +182,8 @@ public:
 	static int& debug_highlight(const map_location& loc);
 	static void clear_debug_highlights() { debugHighlights_.clear(); }
 
-
 	/** The playing team is the team whose turn it is. */
 	virtual int playing_side() const override { return activeTeam_ + 1; }
-
 
 	std::string current_team_name() const;
 
@@ -213,10 +208,10 @@ public:
 
 	void set_game_mode(const game_mode mode);
 
-	/// Sets whether the screen (map visuals) needs to be rebuilt. This is typically after the map has been changed by wml.
+	/** Sets whether the screen (map visuals) needs to be rebuilt. This is typically after the map has been changed by wml. */
 	void needs_rebuild(bool b);
 
-	/// Rebuilds the screen if needs_rebuild(true) was previously called, and resets the flag.
+	/** Rebuilds the screen if needs_rebuild(true) was previously called, and resets the flag. */
 	bool maybe_rebuild();
 
 private:
@@ -237,9 +232,7 @@ private:
 
 	map_location displayedUnitHex_;
 
-	double sidebarScaling_;
-
-	bool first_turn_, in_game_;
+	bool in_game_;
 
 	const std::unique_ptr<display_chat_manager> chat_man_;
 

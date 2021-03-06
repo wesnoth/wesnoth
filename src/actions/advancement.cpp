@@ -39,6 +39,7 @@
 #include "units/animation_component.hpp"
 #include "units/udisplay.hpp"
 #include "units/helper.hpp" //number_of_possible_advances
+#include "utils/general.hpp"
 #include "whiteboard/manager.hpp"
 
 static lg::log_domain log_engine("engine");
@@ -232,12 +233,11 @@ namespace
 			}
 			else
 			{
-				//we are in the situation, that the unit is owned by a human, but he's not allowed to do this decision.
-				//because it's a mp game and it's not his turn.
-				//note that it doesn't matter whether we call randomness::generator->next_random() or rand().
-				res = randomness::generator->get_random_int(0, nb_options_-1);
+				// we are in the situation, that the unit is owned by a human, but he's not allowed to do this decision.
+				// because it's a mp game and it's not his turn.
+				// default to the first unit listed in the unit's advancements
 			}
-			LOG_NG << "unit at position " << loc_ << "choose advancement number " << res << "\n";
+			LOG_NG << "unit at position " << loc_ << " chose advancement number " << res << "\n";
 			config retv;
 			retv["value"] = res;
 			return retv;
@@ -372,9 +372,16 @@ void advance_unit(map_location loc, const advancement_option &advance_to, bool f
 	std::vector<int> not_seeing = actions::get_sides_not_seeing(*u);
 
 	// Create the advanced unit.
-	bool use_amla = boost::get<std::string>(&advance_to) == nullptr;
-	unit_ptr new_unit = use_amla ? get_amla_unit(*u, *boost::get<const config*>(advance_to)) :
-	                           get_advanced_unit(*u, boost::get<std::string>(advance_to));
+	auto [new_unit, use_amla] = utils::visit(
+		[u](const auto& v) {
+			if constexpr(utils::decayed_is_same<std::string, decltype(v)>) {
+				return std::pair(get_advanced_unit(*u, v), false);
+			} else {
+				return std::pair(get_amla_unit(*u, *v), true);
+			}
+		},
+		advance_to);
+
 	new_unit->set_location(loc);
 	if ( !use_amla )
 	{

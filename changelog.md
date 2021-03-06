@@ -1,13 +1,156 @@
-## Version 1.15.6+dev
+## Version 1.15.10+dev
+ ### Add-ons client
+ ### Add-ons server
+ ### Campaigns
+    * Delfador's Memoirs
+     * Adjust campaign difficulty
+    * Sceptre of Fire
+     * Adjust campaign difficulty
+    * Secrets of the Ancients
+     * Adjust campaign difficulty
+    * Son of the Black Eye
+     * Adjust campaign difficulty
+ ### Editor
+ ### Multiplayer
+ ### Packaging
+ ### Terrain
+ ### Translations
+   * Updated translations: British English, Chinese (Traditional), Italian
+ ### Units
+   * Beast-rider Walking Corpse variation (for UtBS Quenoth Tauroch line, but generally available)
+ ### User interface
+   * Improved the Load dialog when there are no saved games for the current version, and also when there are corrupted files.
+   * Re-added the pop-up when there are no saved games at all (issue #5517).
+ ### WML Engine
+   * Standard Location Filters now support gives_income=yes|no to make it simpler to match villages regardless of owner
+ ### Miscellaneous and Bug Fixes
+   * Added support for 1.14’s tag names in `[terrain_defaults]` (issue #5308).
+
+## Version 1.15.10
+ ### Add-ons server
+   * Fixed undefined behavior when servicing requests to downgrade add-ons.
+ ### Campaigns
+   * Added custom campaign menu backgrounds for several mainline campaigns.
+   * The Rise of Wesnoth
+     * Adjust campaign difficulty
+ ### Multiplayer
+   * The Delay Advancements modification has been removed in favor of adding the Plan Unit Advance modification to mainline. Enabling this modification allows each player to choose what their units will level up into in case the advancement happens on an enemy player's turn in an online multiplayer game.
+   * Unit advancement that happens on an enemy's turn in online multiplayer games are no longer randomized. Instead, the first advancement listed for the unit is always used.
+   * Disabled World Conquest due to an increasing number of reported bugs and it currently lacking a maintainer. It may be removed entirely in a future release.
+ ### Lua API
+   * Upgrade to Lua 5.4.2.
+   * Added the wesnoth.as_text(...) function as a way to more easily view the contents of a lua table. This is intended as a debugging aid and nothing more.
+   * Deprecation warnings can now be viewed in the in-game Lua console, together with a stack trace to the first location that triggered them.
+   * There is now a --strict-lua command-line option that disables most deprecated Lua functions; this makes the use of deprecated APIs an error instead of a warning.
+ ### Translations
+   * Updated translations: British English, Catalan, Czech, French, Portuguese (Brazil),
+     Turkish
+ ### Units
+   * update footpad sprite
+   * north-facing frames for dunefolk skirmisher, loyalist bowman, and troll whelp
+ ### User interface
+   * Added a "disengaged" orb, shown instead of the partially-moved orb for units that can move but can't attack.
+   * Added information about the build's (not runtime) target CPU architecture to the game version info dialog and --report.
+   * Added terminal-style command history browsing with up-down keys for in-game consoles used by debug mode, ai and search floating textboxes.
+   * Made the preferences dialog larger on HDPI screens; this fixes a usability issue with HDPI font sizes (issue #5185).
+ ### WML Engine
+   * Extent 'special_id_active' and 'special_type_active' to abilities used like weapon and to [leadership] abilities.
+   * abilities used like weapon can call [leading_anim] now.
+ ### Miscellaneous and Bug Fixes
+   * Fixed display zoom not being taken into account when using the `x`, `y`, `directional_x` and `directional_y` attributes in unit animations (issue #5508).
+   * Fixed a warning message and the AI leader potentially not moving when it cannot reach a keep because it's occupied by an allied unit
+
+## Version 1.15.9
+ ### Add-ons server
+   * Fixed a regression from 1.15.8 that caused add-on downloads to never bump download counts (issue #5411).
+ ### Campaigns
+   * Dead Water
+     * Reduce campaign difficulty
+ ### Editor
+   * Added help topics for the scenario editor's tools
+   * Added documentation about the files written by the editor
+ ### Multiplayer
+   * Isar’s Cross got map background graphics, mainlined from the Visual Map Pack on 1.14
+ ### Packaging
+   * Boost 1.65 is now required (was 1.59).
+ ### Translations
+   * Updated translations: Catalan, Chinese (Traditional), French, Portuguese (Brazil),
+     Spanish
+ ### Units
+   * New Fauna/monster unit: Horned Scarab
+   * Some standing/bobbing animations now filtered for low HP (depicting exhaustion) (PR #5388)
+ ### User interface
+   * Major campaign menu overhaul including more accessible RNG options (including the experimental PRNG option previously found in Advanced Preferences), a difficulty dropdown replacing the difficulty dialog, and custom backgrounds set using `[campaign] background=` (issue #4543, PR #5358).
+   * The OS version displayed in the game version dialog and --report now includes the runtime CPU architecture.
+   * Improved sidebar area in the MP Lobby.
+   * Improved filter options in the MP Lobby. Labels are clearer and games with blocked players are excluded from the list by default (with an option to unhide said games).
+ ### WML Engine
+   * New `[set_variable]` options: reverse=yes, min=list, max=list
+ ### Miscellaneous and Bug Fixes
+   * Fixed `[terrain_defaults]` and `[resistance_defaults]` (issue #5308).
+   * Fixed being prompted multiple times to select campaign difficulty when loading a game (issue #5392)
+
+## Version 1.15.8
+ ### Add-ons client
+   * Fix potential crashes when working with installed add-ons that have a corrupted _info.cfg file.
+   * Improved license information prompt for uploads.
+ ### Add-ons server
+   * Fixed inability to write files (including the server configuration file) on Windows.
+   * Dropped plain text passphrase migration, unused in production since version 1.12.7 and 1.13.0 (issue #5080).
+   * Uploading add-ons with versions not greater than the latest uploaded version is no longer allowed (issue #5079).
+   * Implemented optional server information query used by connecting clients.
+ ### Campaigns
+   * Dead Water
+     * Reduce campaign difficulty
+   * Eastern Invasion:
+     * Tweak campaign difficulty
+     * S03: fix the initial keep being blocked at the start
+   * Heir to the Throne
+     * Tweak campaign difficulty
+   * The Hammer of Thursagan
+     * Reduce campaign difficulty
+   * The South Guard
+     * Reduce campaign difficulty
+ ### Multiplayer
+   * Added `/roll N` command to multiplayer games and game lobbies which produces a publicly visible random integer number ranged from 1 to N inclusively (issue #5221, PR #5326).
+ ### Packaging
+   * SDL_Image 2.0.2 or later is now required (was 2.0.0).
+ ### Terrain
+ ### Translations
+   * Updated translations: British English, Czech, Italian, Polish, Portuguese (Brazil),
+     Russian, Turkish
+ ### Units
+   * Undead variations for Falcon, Giant Rat, serpents, and Gorer/Tusklet
+ ### User interface
+   * Minor streamlining on the Game Version and Add-ons Manager dialogs.
+   * Text labels now use the hyperlink mouse cursor while hovering links.
+   * Link awareness is now configured on a per-instance basis for labels/scroll labels instead of globally in their definition.
+ ### WML Engine
+   * Add a overwrite_specials option for weapon special abilities to allow the effect of the ability to take precedence over the effect of any identical weapon special.
+ ### Miscellaneous and Bug Fixes
+   * Fixed several possible crashes in wmllint
+   * Screenshots now default to JPG instead of PNG
+   * Fixed screenshot popup sometimes using the wrong path when trying to open the screenshot after saving
+
+## Version 1.15.7
+ ### Add-ons server
+   * Added basic command line options.
+   * Add-on validation status responses can now be translated by the client.
+   * Fixed an issue where incremental downloads would always transmit a delta for updating from the very earliest available version of an add-on to the very latest, instead of using the current and target versions specified by the client.
+   * Incremental downloads are no longer allowed to cheat the download counts.
+ ### Add-ons client
+   * It is now possible to install previous versions of an add-on if present and not expired on the server.
  ### Campaigns
    * A Tale of Two Brothers:
      * S02: Changed the antagonists' motive and dialogue to sound more believable
    * Secrets of the Ancients:
      * Revisions to Bone Captain
      * Scenario 2 uses new Iron Fence terrain, in preparation for potential map revisions.
+     * While the two leaders are separated, only the currently active one learns new zombie types.
    * Sceptre of Fire:
+     * Scenario 2p5: increased the turn limit by 1 and enhanced victory filter conditions
+     * Scenario 4: fixed a bug that prevented resources from spawning and added some small flavor adjustments
      * Some revisions/bugfixes to Scenario 9 "Caverns of Flame"
- ### Lua API
  ### Multiplayer
    * During allies' turns, use orb colors to show which ones can still move (issue #1424). Also enabled for allied AI sides in singleplayer.
  ### Terrain
@@ -16,9 +159,16 @@
    * Updated translations: British English, Catalan, Polish, Portuguese (Brazil)
  ### Units
    * Decreased Icemonax's advancement XP requirement from 26 to 25 to match other dead-end L0 units.
+   * Portrait and animation graphics for some of the new Wesnoth Fauna
+   * Balancing:
+     * Dune Rider xp changed from 42 to 47.
+     * Sunderer line defense on hills changed from 60% to 50%.
+     * Scorcher gold cost changed from 23 to 25.
+     * Dragoon gold cost changed from 27 to 28.
+     * Elvish Rider gold cost changed from 32 to 28.
  ### User interface
+   * Added the installable/upgradable version selection to the add-ons manager via a dropdown list
    * Fixed formatting of hyperlinks when the same URL appears more than once in a block of text
- ### WML Engine
  ### Miscellaneous and Bug Fixes
    * Fixed a rare issue on Windows that could result in wesnoth.exe sticking around waiting for console input after encountering an error despite not being launched with the `--wconsole` option.
    * Fixed a potential crash when drawing many images on the story screens.
@@ -109,17 +259,14 @@
  ### Language and i18n
    * Updated translations: British English, Catalan, Chinese (Simplified), Esperanto,
      French, Hungarian, Polish, Portuguese (Brazil), Russian, Spanish, Turkish
- ### Lua API
  ### Multiplayer
    * A New Land:
      * Peasants can harvest mushrooms (a bug introduced in 1.15.4 was noticed and fixed in PR #5137)
  ### Terrain
    * Made single-hex mushrooms smaller (PR #5136)
- ### Units
  ### User interface
    * Help browser: fix inconsistent behavior for single-clicks opening and closing sections (PR #5110)
    * Added `[race]help_taxonomy=`, creating links between the per-race topic pages.
- ### WML engine
  ### Miscellaneous and bug fixes
    * Minimum required version of OS X is now OS X 10.11 .
    * The "loyal" trait is now displayed in the help browser, even though no normal unit has it.
@@ -271,6 +418,7 @@
      * Fix missing portraits for Shynal
    * Tutorial:
      * Redraw S2 and reduce difficulty
+   * Wings of Victory has been removed.
  ### Editor
  ### Language and i18n
    * Updated translations: Ancient Greek, Chinese (Traditional), Czech, Dutch,
@@ -693,7 +841,25 @@
    * Game bans are now also enforced by username. (PR#4139)
    * Usernames on the host's ignore list are automatically banned. (PR#4143)
 
-## Version 1.14.13+dev
+## Version 1.14.15
+ ### Add-ons client
+   * Fix potential crashes when working with installed add-ons that have a corrupted _info.cfg file.
+ ### Campaigns
+   * Descent into Darkness:
+     * S11: fix low probability case of enemy being unreachable
+     * S11: recall ghosts if available and ensure the player gets one level 2 ghost.
+   * Eastern Invasion:
+     * S03: fix the initial keep being blocked at the start
+ ### Translations
+   * Updated translations: British English, Catalan, Czech, French, German, Italian,
+     Japanese, Polish, Portuguese (Brazil), Russian, Turkish
+ ### User interface
+   * Fixed formatting of hyperlinks when the same URL appears more than once in a block of text
+ ### Miscellaneous and Bug Fixes
+   * Fixed a rare issue on Windows that could result in wesnoth.exe sticking around waiting for console input after encountering an error despite not being launched with the `--wconsole` option.
+   * Removed documentation for network proxy-related command line options previously removed in version 1.13.1 along with libana.
+
+## Version 1.14.14
  ### Add-ons client
    * Add-on titles and descriptions translated to the current language are used when available.
      The original English title is displayed in the UI and considered for search purposes in addition
@@ -703,8 +869,13 @@
      time in the .pbl (PR #4993). Only clients running 1.14.14/1.15.4 or later can read the
      translated values.
  ### Language and i18n
-   * Updated translations: British English, Chinese (Simplified), Esperanto, Italian,
+   * Updated translations: British English, Catalan, Chinese (Simplified),
+     Chinese (Traditional), Czech, Esperanto, French, Hungarian, Italian, Polish,
      Portuguese (Brazil), Russian, Spanish, Turkish
+ ### Multiplayer
+   * 5p - The Wilderlands:
+     * Player 5’s units are sorted when cycling through them with the »n« key.
+     * Map tweaks (changes to some castles & villages, the northern river and embellishments)
  ### User interface
    * Do not list nameless abilities in the Abilities and Ability Upgrades lists in unit
      descriptions in Help (issue #3060).

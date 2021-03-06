@@ -592,7 +592,7 @@ void recall_result::do_check_before()
 			set_error(E_BAD_RECALL_LOCATION);
 			return;
 		}
-		FALLTHROUGH; // If the location was not specified, this counts as "OK".
+		[[fallthrough]]; // If the location was not specified, this counts as "OK".
 	case ::actions::RECRUIT_OK:
 		location_checked_ = true;
 	}
@@ -742,7 +742,7 @@ void recruit_result::do_check_before()
 			set_error(E_BAD_RECRUIT_LOCATION);
 			return;
 		}
-		FALLTHROUGH; // If the location was not specified, this counts as "OK".
+		[[fallthrough]]; // If the location was not specified, this counts as "OK".
 	case ::actions::RECRUIT_OK:
 		location_checked_ = true;
 	}

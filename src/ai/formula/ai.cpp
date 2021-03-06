@@ -51,6 +51,7 @@
 #include "ai/formula/function_table.hpp"           // for ai_function_symbol_table
 #include "ai/game_info.hpp"  // for move_result_ptr, move_map, etc
 #include "ai/formula/candidates.hpp"               // for base_candidate_action, etc
+#include "utils/variant.hpp"
 
 #include <cassert>                     // for assert
 #include <ctime>                       // for time
@@ -64,7 +65,6 @@ static lg::log_domain log_formula_ai("ai/engine/fai");
 #define LOG_AI LOG_STREAM(info, log_formula_ai)
 #define WRN_AI LOG_STREAM(warn, log_formula_ai)
 #define ERR_AI LOG_STREAM(err, log_formula_ai)
-
 
 using namespace wfl;
 
@@ -95,7 +95,6 @@ ca_ptr formula_ai::load_candidate_action_from_config(const config& rc_action)
 int formula_ai::get_recursion_count() const{
 	return recursion_counter_.get_count();
 }
-
 
 formula_ai::formula_ai(readonly_context &context, const config &cfg)
 	:
@@ -150,12 +149,10 @@ formula_ptr formula_ai::create_optional_formula(const std::string& formula_strin
 	}
 }
 
-
 void formula_ai::set_ai_context(ai_context *context)
 {
 	ai_ptr_ = context;
 }
-
 
 std::string formula_ai::evaluate(const std::string& formula_str)
 {
@@ -221,8 +218,7 @@ pathfind::plain_route formula_ai::shortest_path_calculator(const map_location &s
         const map_location::DIRECTION preferred = destination.get_relative_dir(src);
 
         int best_rating = 100;//smaller is better
-        adjacent_loc_array_t adj;
-        get_adjacent_tiles(destination,adj.data());
+		const auto adj = get_adjacent_tiles(destination);
 
         for(std::size_t n = 0; n < adj.size(); ++n) {
                 if(resources::gameboard->map().on_board(adj[n]) == false) {
@@ -264,14 +260,14 @@ pathfind::teleport_map formula_ai::get_allowed_teleports(unit_map::iterator& uni
 
 void formula_ai::add_formula_function(const std::string& name, const_formula_ptr formula, const_formula_ptr precondition, const std::vector<std::string>& args)
 {
-	formula_function_ptr fcn(new user_formula_function(name,formula,precondition,args));
-	function_table_.add_function(name, std::move(fcn));
+	function_table_.add_function(name, std::make_shared<user_formula_function>(name, formula, precondition, args));
 }
 
-namespace {
+namespace
+{
 template<typename Container>
-variant villages_from_set(const Container& villages,
-				          const std::set<map_location>* exclude=nullptr) {
+variant villages_from_set(const Container& villages, const std::set<map_location>* exclude = nullptr)
+{
 	std::vector<variant> vars;
 	for(const map_location& loc : villages) {
 		if(exclude && exclude->count(loc)) {
@@ -282,7 +278,22 @@ variant villages_from_set(const Container& villages,
 
 	return variant(vars);
 }
+
+// TODO: I have no damn idea what to name this function
+variant visit_helper(const utils::variant<bool, std::vector<std::string>>& input)
+{
+	return utils::visit(
+		[](const auto& v) {
+			if constexpr(utils::decayed_is_same<bool, decltype(v)>) {
+				return variant(v);
+			} else {
+				const std::vector<variant> vars(v.begin(), v.end());
+				return variant(vars);
+			}
+		},
+		input);
 }
+} // namespace
 
 variant formula_ai::get_value(const std::string& key) const
 {
@@ -312,17 +323,7 @@ variant formula_ai::get_value(const std::string& key) const
 
 	} else if(key == "leader_ignores_keep")
 	{
-		boost::variant<bool, std::vector<std::string>> leader_ignores_keep = get_leader_ignores_keep();
-		if (leader_ignores_keep.which() == 0) {
-			return variant(boost::get<bool>(leader_ignores_keep));
-		} else {
-			std::vector<std::string> &strlist = boost::get<std::vector<std::string>>(leader_ignores_keep);
-			std::vector<variant> vars;
-			for(const std::string &i : strlist) {
-				vars.emplace_back(i);
-			}
-			return variant(vars);
-		}
+		return visit_helper(get_leader_ignores_keep());
 
 	} else if(key == "leader_value")
 	{
@@ -330,31 +331,11 @@ variant formula_ai::get_value(const std::string& key) const
 
 	} else if(key == "passive_leader")
 	{
-		boost::variant<bool, std::vector<std::string>> passive_leader = get_passive_leader();
-		if (passive_leader.which() == 0) {
-			return variant(boost::get<bool>(passive_leader));
-		} else {
-			std::vector<std::string> &strlist = boost::get<std::vector<std::string>>(passive_leader);
-			std::vector<variant> vars;
-			for(const std::string &i : strlist) {
-				vars.emplace_back(i);
-			}
-			return variant(vars);
-		}
+		return visit_helper(get_passive_leader());
 
 	} else if(key == "passive_leader_shares_keep")
 	{
-		boost::variant<bool, std::vector<std::string>> passive_leader_shares_keep = get_passive_leader_shares_keep();
-		if (passive_leader_shares_keep.which() == 0) {
-			return variant(boost::get<bool>(passive_leader_shares_keep));
-		} else {
-			std::vector<std::string> &strlist = boost::get<std::vector<std::string>>(passive_leader_shares_keep);
-			std::vector<variant> vars;
-			for(const std::string &i : strlist) {
-				vars.emplace_back(i);
-			}
-			return variant(vars);
-		}
+		return visit_helper(get_passive_leader_shares_keep());
 
 	} else if(key == "recruitment_pattern")
 	{
@@ -364,6 +345,14 @@ variant formula_ai::get_value(const std::string& key) const
 			vars.emplace_back(i);
 		}
 		return variant(vars);
+
+	} else if(key == "retreat_enemy_weight")
+	{
+		return variant(get_retreat_enemy_weight()*1000,variant::DECIMAL_VARIANT);
+
+	} else if(key == "retreat_factor")
+	{
+		return variant(get_retreat_factor()*1000,variant::DECIMAL_VARIANT);
 
 	} else if(key == "scout_village_targeting")
 	{
@@ -632,10 +621,8 @@ variant formula_ai::get_keeps() const
 			for(std::size_t y = 0; y != std::size_t(resources::gameboard->map().h()); ++y) {
 				const map_location loc(x,y);
 				if(resources::gameboard->map().is_keep(loc)) {
-					adjacent_loc_array_t adj;
-					get_adjacent_tiles(loc,adj.data());
-					for(std::size_t n = 0; n < adj.size(); ++n) {
-						if(resources::gameboard->map().is_castle(adj[n])) {
+					for(const map_location& adj : get_adjacent_tiles(loc)) {
+						if(resources::gameboard->map().is_castle(adj)) {
 							vars.emplace_back(std::make_shared<location_callable>(loc));
 							break;
 						}
@@ -687,7 +674,6 @@ void formula_ai::on_create(){
 		}
 	}
 
-
 	vars_ = map_formula_callable();
 	if (const config &ai_vars = cfg_.child("vars"))
 	{
@@ -698,9 +684,7 @@ void formula_ai::on_create(){
 		}
 	}
 
-
 }
-
 
 void formula_ai::evaluate_candidate_action(ca_ptr fai_ca)
 {

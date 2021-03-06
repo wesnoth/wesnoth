@@ -14,15 +14,17 @@
 
 #pragma once
 
-#include "editor/editor_main.hpp"       // for EXIT_STATUS
-#include "events.hpp"                   // for event_context
-#include "font/font_config.hpp"         // for manager
-#include "preferences/game.hpp"         // for manager
-#include "hotkey/hotkey_manager.hpp"    // for manager
-#include "picture.hpp"                    // for manager
-#include "saved_game.hpp"               // for saved_game
-#include "sound.hpp"                    // for music_thinker
-#include "game_end_exceptions.hpp"      // for LEVEL_RESULT, etc
+#include "editor/editor_main.hpp"    // for EXIT_STATUS
+#include "events.hpp"                // for event_context
+#include "font/font_config.hpp"      // for manager
+#include "game_end_exceptions.hpp"   // for LEVEL_RESULT, etc
+#include "hotkey/hotkey_manager.hpp" // for manager
+#include "picture.hpp"               // for manager
+#include "preferences/game.hpp"      // for manager
+#include "saved_game.hpp"            // for saved_game
+#include "savegame.hpp"              // for clean_saves, etc
+#include "sound.hpp"                 // for music_thinker
+#include <optional>
 
 #include <string>                       // for string
 #include <vector>                       // for vector
@@ -30,33 +32,33 @@
 class commandline_options;
 class config;
 class CVideo;
-namespace savegame { struct load_game_metadata; }
+
 struct jump_to_campaign_info
 {
-public:
-	jump_to_campaign_info(bool jump, bool skip_story, int difficulty, const std::string& campaign_id,const std::string& scenario_id)
-		: jump_(jump)
-		, skip_story_(skip_story)
-		, difficulty_(difficulty)
-		, campaign_id_(campaign_id)
-		, scenario_id_(scenario_id)
-	{
-	}
-	bool jump_;
-	bool skip_story_;
-	int difficulty_;
-	std::string campaign_id_,scenario_id_;
+	/** Whether the game should immediately start a campaign. */
+	bool jump = false;
+
+	/** Whether the story screen should be skipped. */
+	bool skip_story = false;
+
+	/** The difficulty at which to launch the campaign. */
+	int difficulty = -1;
+
+	/** The ID of the campaign to launch. */
+	std::string campaign_id = "";
+
+	/** The ID of the scenario within the campaign to jump to. */
+	std::string scenario_id = "";
 };
 
 class game_launcher
 {
 public:
-	game_launcher(const commandline_options& cmdline_opts, const char* appname);
+	game_launcher(const commandline_options& cmdline_opts);
 	~game_launcher();
 
-	CVideo& video() { return *video_; }
-
-	enum mp_selection {MP_CONNECT, MP_HOST, MP_LOCAL};
+	enum class mp_mode { CONNECT, HOST, LOCAL };
+	enum class reload_mode { RELOAD_DATA, NO_RELOAD_DATA };
 
 	/**
 	 * Status code after running a unit test, should match the run_wml_tests
@@ -81,51 +83,46 @@ public:
 	bool play_test();
 	bool play_screenshot_mode();
 	bool play_render_image_mode();
-	/// Runs unit tests specified on the command line
+	/** Runs unit tests specified on the command line */
 	unit_test_result unit_test();
 
-	bool is_loading() const;
-	void clear_loaded_game();
+	bool has_load_data() const;
 	bool load_game();
-	void set_tutorial();
 	void set_test(const std::string& id);
 
-	/// Return the ID of the campaign to jump to (skipping the main menu).
+	/** Return the ID of the campaign to jump to (skipping the main menu). */
 	std::string jump_to_campaign_id() const;
 	bool new_campaign();
 	bool goto_campaign();
 	bool goto_multiplayer();
 	bool goto_editor();
 
-	bool jump_to_editor() const { return jump_to_editor_; }
-
 	void select_mp_server(const std::string& server) { multiplayer_server_ = server; }
-	bool play_multiplayer(mp_selection res);
+	bool play_multiplayer(mp_mode mode);
 	bool play_multiplayer_commandline();
 	bool change_language();
 
-	void show_preferences();
-
-	enum RELOAD_GAME_DATA { RELOAD_DATA, NO_RELOAD_DATA };
-	void launch_game(RELOAD_GAME_DATA reload=RELOAD_DATA);
+	void launch_game(reload_mode reload = reload_mode::RELOAD_DATA);
 	void play_replay();
 
 	editor::EXIT_STATUS start_editor() { return start_editor(""); }
 
-	void start_wesnothd();
-
 	const commandline_options & opts() const { return cmdline_opts_; }
-private:
-	game_launcher(const game_launcher&);
-	void operator=(const game_launcher&);
 
-	void mark_completed_campaigns(std::vector<config>& campaigns);
+private:
+	game_launcher(const game_launcher&) = delete;
+	game_launcher& operator=(const game_launcher&) = delete;
+
+	void clear_loaded_game();
+	void start_wesnothd();
 
 	editor::EXIT_STATUS start_editor(const std::string& filename);
 	unit_test_result pass_victory_or_defeat(LEVEL_RESULT res);
 
-	/// Internal to the implementation of unit_test(). If a single instance of
-	/// Wesnoth is running multiple unit tests, this gets called once per test.
+	/**
+	 * Internal to the implementation of unit_test(). If a single instance of
+	 * Wesnoth is running multiple unit tests, this gets called once per test.
+	 */
 	unit_test_result single_unit_test();
 
 	const commandline_options& cmdline_opts_;
@@ -152,5 +149,5 @@ private:
 	jump_to_campaign_info jump_to_campaign_;
 
 	bool jump_to_editor_;
-	std::unique_ptr<savegame::load_game_metadata> load_data_;
+	std::optional<savegame::load_game_metadata> load_data_;
 };

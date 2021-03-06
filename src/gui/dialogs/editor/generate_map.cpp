@@ -26,37 +26,12 @@
 #include "generators/map_generator.hpp"
 #include "lexical_cast.hpp"
 
-#include "utils/functional.hpp"
+#include <functional>
 
 #define ERR_ED LOG_STREAM_INDENT(err, editor)
 
-namespace gui2
+namespace gui2::dialogs
 {
-namespace dialogs
-{
-
-/*WIKI
- * @page = GUIWindowDefinitionWML
- * @order = 2_editor_generate_map
- *
- * == Editor generate map ==
- *
- * This shows the dialog in the editor to select which random generator
- * should be used to generate a map.
- *
- * @begin{table}{dialog_widgets}
- *
- * generators_list & & listbox & m &
- *         Listbox displaying known map generators. $
- *
- * settings & & button & m &
- *         When clicked this button opens the generator settings dialog. $
- *
- * seed_textbox & & text_box & m &
- *         Allows entering a seed for the map generator. $
- *
- * @end{table}
- */
 
 REGISTER_DIALOG(editor_generate_map)
 
@@ -68,16 +43,16 @@ editor_generate_map::editor_generate_map(std::vector<std::unique_ptr<map_generat
 {
 }
 
-void editor_generate_map::do_generator_selected(window& window)
+void editor_generate_map::do_generator_selected()
 {
-	listbox& list = find_widget<listbox>(&window, "generators_list", false);
+	listbox& list = find_widget<listbox>(get_window(), "generators_list", false);
 	const int current = list.get_selected_row();
 
 	if(current == -1 || static_cast<unsigned>(current) > map_generators_.size()) {
 		return; // shouldn't happen!
 	}
 
-	button& settings = find_widget<button>(&window, "settings", false);
+	button& settings = find_widget<button>(get_window(), "settings", false);
 	settings.set_active(map_generators_[current]->allow_user_config());
 
 	current_map_generator_ = current;
@@ -127,11 +102,11 @@ void editor_generate_map::pre_show(window& window)
 		// We need to call this manually because it won't be called by
 		// list.select_row() even if we set the callback before
 		// calling it
-		this->do_generator_selected(window);
+		this->do_generator_selected();
 	}
 
 	connect_signal_notify_modified(list,
-		std::bind(&editor_generate_map::do_generator_selected, this, std::ref(window)));
+		std::bind(&editor_generate_map::do_generator_selected, this));
 
 	button& settings_button = find_widget<button>(&window, "settings", false);
 	connect_signal_mouse_left_click(
@@ -139,15 +114,14 @@ void editor_generate_map::pre_show(window& window)
 			std::bind(&editor_generate_map::do_settings,this));
 }
 
-boost::optional<uint32_t> editor_generate_map::get_seed()
+std::optional<uint32_t> editor_generate_map::get_seed()
 {
 	try {
 		return lexical_cast<uint32_t>(random_seed_);
 	}
 	catch(const bad_lexical_cast& ) {
-		return boost::none;
+		return std::nullopt;
 	}
 }
 
 } // namespace dialogs
-} // namespace gui2

@@ -29,11 +29,10 @@
 #include "serialization/base64.hpp"
 #include "serialization/string_utils.hpp"
 #include "sdl/rect.hpp"
-#include "utils/general.hpp"
 
 #include <SDL2/SDL_image.h>
 
-#include "utils/functional.hpp"
+#include <functional>
 
 #include <boost/algorithm/string.hpp>
 #include <boost/functional/hash_fwd.hpp>
@@ -180,28 +179,25 @@ std::map<surface, surface> reversed_images_;
 
 int red_adjust = 0, green_adjust = 0, blue_adjust = 0;
 
-/** List of colors used by the TC image modification */
-std::vector<std::string> team_colors;
-
 unsigned int zoom = tile_size;
 unsigned int cached_zoom = 0;
 
 const std::string data_uri_prefix = "data:";
 struct parsed_data_URI{
-	explicit parsed_data_URI(utils::string_view data_URI);
-	utils::string_view scheme;
-	utils::string_view mime;
-	utils::string_view base64;
-	utils::string_view data;
+	explicit parsed_data_URI(std::string_view data_URI);
+	std::string_view scheme;
+	std::string_view mime;
+	std::string_view base64;
+	std::string_view data;
 	bool good;
 };
-parsed_data_URI::parsed_data_URI(utils::string_view data_URI)
+parsed_data_URI::parsed_data_URI(std::string_view data_URI)
 {
 	const std::size_t colon = data_URI.find(':');
-	const utils::string_view after_scheme = data_URI.substr(colon + 1);
+	const std::string_view after_scheme = data_URI.substr(colon + 1);
 
 	const std::size_t comma = after_scheme.find(',');
-	const utils::string_view type_info = after_scheme.substr(0, comma);
+	const std::string_view type_info = after_scheme.substr(0, comma);
 
 	const std::size_t semicolon = type_info.find(';');
 
@@ -271,8 +267,8 @@ void locator::parse_arguments()
 		parsed_data_URI parsed{fn};
 
 		if(!parsed.good) {
-			utils::string_view view{ fn };
-			utils::string_view stripped = view.substr(0, view.find(","));
+			std::string_view view{ fn };
+			std::string_view stripped = view.substr(0, view.find(","));
 			ERR_DP << "Invalid data URI: " << stripped << std::endl;
 		}
 
@@ -566,8 +562,8 @@ static surface load_image_data_uri(const image::locator& loc)
 	parsed_data_URI parsed{loc.get_filename()};
 
 	if(!parsed.good) {
-		utils::string_view fn = loc.get_filename();
-		utils::string_view stripped = fn.substr(0, fn.find(","));
+		std::string_view fn = loc.get_filename();
+		std::string_view stripped = fn.substr(0, fn.find(","));
 		ERR_DP << "Invalid data URI: " << stripped << std::endl;
 	} else if(parsed.mime.substr(0, 5) != "image") {
 		ERR_DP << "Data URI not of image MIME type: " << parsed.mime << std::endl;
@@ -707,20 +703,6 @@ void set_color_adjustment(int r, int g, int b)
 	}
 }
 
-void set_team_colors(const std::vector<std::string>* colors)
-{
-	if(colors == nullptr) {
-		team_colors.clear();
-	} else {
-		team_colors = *colors;
-	}
-}
-
-const std::vector<std::string>& get_team_colors()
-{
-	return team_colors;
-}
-
 void set_zoom(unsigned int amount)
 {
 	if(amount != zoom) {
@@ -790,7 +772,7 @@ static surface get_brightened(const locator& i_locator)
 	return brighten_image(image, ftofxp(game_config::hex_brightening));
 }
 
-/// translate type to a simpler one when possible
+/** translate type to a simpler one when possible */
 static TYPE simplify_type(const image::locator& i_locator, TYPE type)
 {
 	switch(type) {
@@ -1037,10 +1019,7 @@ bool exists(const image::locator& i_locator)
 
 	// The insertion will fail if there is already an element in the cache
 	// and this will point to the existing element.
-	auto iter = image_existence_map.begin();
-	bool success;
-
-	std::tie(iter, success) = image_existence_map.emplace(i_locator.get_filename(), false);
+	auto [iter, success] = image_existence_map.emplace(i_locator.get_filename(), false);
 
 	bool& cache = iter->second;
 	if(success) {
@@ -1069,8 +1048,8 @@ static void precache_file_existence_internal(const std::string& dir, const std::
 
 	std::vector<std::string> files_found;
 	std::vector<std::string> dirs_found;
-	filesystem::get_files_in_dir(checked_dir, &files_found, &dirs_found, filesystem::FILE_NAME_ONLY,
-			filesystem::NO_FILTER, filesystem::DONT_REORDER);
+	filesystem::get_files_in_dir(checked_dir, &files_found, &dirs_found, filesystem::name_mode::FILE_NAME_ONLY,
+			filesystem::filter_mode::NO_FILTER, filesystem::reorder_mode::DONT_REORDER);
 
 	for(const auto& f : files_found) {
 		image_existence_map[subdir + f] = true;
@@ -1111,16 +1090,12 @@ save_result save_image(const surface& surf, const std::string& filename)
 		return save_result::no_image;
 	}
 
-#ifdef SDL_IMAGE_VERSION_ATLEAST
-#if SDL_IMAGE_VERSION_ATLEAST(2, 0, 2)
 	if(filesystem::ends_with(filename, ".jpeg") || filesystem::ends_with(filename, ".jpg") || filesystem::ends_with(filename, ".jpe")) {
 		LOG_DP << "Writing a JPG image to " << filename << std::endl;
 
 		const int err = IMG_SaveJPG_RW(surf, filesystem::make_write_RWops(filename).release(), true, 75); // SDL takes ownership of the RWops
 		return err == 0 ? save_result::success : save_result::save_failed;
 	}
-#endif
-#endif
 
 	if(filesystem::ends_with(filename, ".png")) {
 		LOG_DP << "Writing a PNG image to " << filename << std::endl;

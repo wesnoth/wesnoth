@@ -12,8 +12,6 @@
    See the COPYING file for more details.
 */
 
-/** @file */
-
 #pragma once
 
 #include <vector>
@@ -26,7 +24,8 @@
 
 #include "exceptions.hpp"
 #include "map/location.hpp"
-#include "serialization/string_view.hpp"
+
+#include <string_view>
 
 namespace t_translation {
 
@@ -104,7 +103,7 @@ namespace t_translation {
 	 */
 	struct ter_match{
 		ter_match();
-		ter_match(utils::string_view str, const ter_layer filler = NO_LAYER);
+		ter_match(std::string_view str, const ter_layer filler = NO_LAYER);
 		ter_match(const terrain_code& tcode);
 
 		ter_list terrain;
@@ -182,7 +181,7 @@ namespace t_translation {
 	 *
 	 * @return			A single terrain code
 	 */
-	terrain_code read_terrain_code(utils::string_view str, const ter_layer filler = NO_LAYER);
+	terrain_code read_terrain_code(std::string_view str, const ter_layer filler = NO_LAYER);
 
 	/**
 	 * Writes a single terrain code to a string.
@@ -204,7 +203,7 @@ namespace t_translation {
 	 *
 	 * @returns		A vector which contains the terrain codes found in the string
 	 */
-	 ter_list read_list(utils::string_view str, const ter_layer filler = NO_LAYER);
+	 ter_list read_list(std::string_view str, const ter_layer filler = NO_LAYER);
 
 	/**
 	 * Writes a list of terrains to a string, only writes the new format.
@@ -245,17 +244,19 @@ namespace t_translation {
 	 *					the last is stored. The returned value is a map:
 	 *					* first		the starting locations
 	 *					* second	a coordinate structure where the location was found
+	 * @param border_offset
 	 *
 	 * @returns			A 2D vector with the terrains found the vector data is stored
 	 *					like result[x][y] where x the column number is and y the row number.
 	 */
-	ter_map read_game_map(utils::string_view str, starting_positions& positions, coordinate border_offset = coordinate{ 0, 0 });
+	ter_map read_game_map(std::string_view str, starting_positions& positions, coordinate border_offset = coordinate{ 0, 0 });
 
 	/**
 	 * Write a gamemap in to a vector string.
 	 *
 	 * @param map				 A terrain vector, as returned from read_game_map
 	 * @param positions A starting positions map, as returned from read_game_map
+	 * @param border_offset
 	 *
 	 * @returns			A terrain string which can be read with read_game_map.
 	 *					For readability the map is padded to groups of 12 chars,

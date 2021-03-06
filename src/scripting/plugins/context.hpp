@@ -19,7 +19,7 @@
 
 #pragma once
 
-#include "utils/functional.hpp"
+#include <functional>
 
 #include <map>
 #include <string>

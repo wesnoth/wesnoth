@@ -19,7 +19,6 @@
 #include "lexical_cast.hpp"
 #include "log.hpp"                      // for logger, set_strict_severity, etc
 #include "serialization/string_utils.hpp"  // for split
-#include "utils/general.hpp" // for clamp
 
 #include <boost/any.hpp>                // for any
 #include <boost/program_options/cmdline.hpp>
@@ -61,104 +60,105 @@ bad_commandline_tuple::bad_commandline_tuple(const std::string& str,
 {
 }
 
-commandline_options::commandline_options (const std::vector<std::string>& args) :
-	bunzip2(),
-	bzip2(),
-	campaign(),
-	campaign_difficulty(),
-	campaign_scenario(),
-	campaign_skip_story(false),
-	clock(false),
-	core_id(),
-	data_path(false),
-	data_dir(),
-	debug(false),
-	debug_lua(false),
+commandline_options::commandline_options(const std::vector<std::string>& args)
+	: bunzip2()
+	, bzip2()
+	, campaign()
+	, campaign_difficulty()
+	, campaign_scenario()
+	, campaign_skip_story(false)
+	, clock(false)
+	, core_id()
+	, data_path(false)
+	, data_dir()
+	, debug(false)
+	, debug_lua(false)
+	, strict_lua(false)
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
-	debug_dot_domain(),
-	debug_dot_level(),
+	, debug_dot_domain()
+	, debug_dot_level()
 #endif
-	editor(),
-	fps(false),
-	fullscreen(false),
-	gunzip(),
-	gzip(),
-	help(),
-	language(),
-	log(),
-	load(),
-	logdomains(),
-	log_precise_timestamps(false),
-	multiplayer(false),
-	multiplayer_ai_config(),
-	multiplayer_algorithm(),
-	multiplayer_controller(),
-	multiplayer_era(),
-	multiplayer_exit_at_end(),
-	multiplayer_ignore_map_settings(),
-	multiplayer_label(),
-	multiplayer_parm(),
-	multiplayer_repeat(),
-	multiplayer_scenario(),
-	multiplayer_side(),
-	multiplayer_turns(),
-	max_fps(),
-	noaddons(false),
-	nocache(false),
-	nodelay(false),
-	nogui(false),
-	nomusic(false),
-	nosound(false),
-	new_widgets(false),
-	preprocess(false),
-	preprocess_defines(),
-	preprocess_input_macros(),
-	preprocess_output_macros(),
-	preprocess_path(),
-	preprocess_target(),
-	resolution(),
-	rng_seed(),
-	server(),
-	username(),
-	password(),
-	render_image(),
-	render_image_dst(),
-	screenshot(false),
-	screenshot_map_file(),
-	screenshot_output_file(),
-	script_file(),
-	plugin_file(),
-	script_unsafe_mode(false),
-	strict_validation(false),
-	test(),
-	unit_test(),
-	headless_unit_test(false),
-	noreplaycheck(false),
-	mptest(false),
-	userconfig_path(false),
-	userconfig_dir(),
-	userdata_path(false),
-	userdata_dir(),
-	validcache(false),
-	validate_core(false),
-	validate_addon(),
-	validate_schema(),
-	validate_wml(),
-	validate_with(),
-	do_diff(),
-	do_patch(),
-	diff_left(),
-	diff_right(),
-	version(false),
-	report(false),
-	windowed(false),
-	with_replay(false),
-	translation_percent(),
-	args_(args.begin() + 1 , args.end()),
-	args0_(*args.begin()),
-	all_(),
-	visible_(),
-	hidden_()
+	, editor()
+	, fps(false)
+	, fullscreen(false)
+	, gunzip()
+	, gzip()
+	, help()
+	, language()
+	, log()
+	, load()
+	, logdomains()
+	, log_precise_timestamps(false)
+	, multiplayer(false)
+	, multiplayer_ai_config()
+	, multiplayer_algorithm()
+	, multiplayer_controller()
+	, multiplayer_era()
+	, multiplayer_exit_at_end()
+	, multiplayer_ignore_map_settings()
+	, multiplayer_label()
+	, multiplayer_parm()
+	, multiplayer_repeat()
+	, multiplayer_scenario()
+	, multiplayer_side()
+	, multiplayer_turns()
+	, max_fps()
+	, noaddons(false)
+	, nocache(false)
+	, nodelay(false)
+	, nogui(false)
+	, nomusic(false)
+	, nosound(false)
+	, new_widgets(false)
+	, preprocess(false)
+	, preprocess_defines()
+	, preprocess_input_macros()
+	, preprocess_output_macros()
+	, preprocess_path()
+	, preprocess_target()
+	, resolution()
+	, rng_seed()
+	, server()
+	, username()
+	, password()
+	, render_image()
+	, render_image_dst()
+	, screenshot(false)
+	, screenshot_map_file()
+	, screenshot_output_file()
+	, script_file()
+	, plugin_file()
+	, script_unsafe_mode(false)
+	, strict_validation(false)
+	, test()
+	, unit_test()
+	, headless_unit_test(false)
+	, noreplaycheck(false)
+	, mptest(false)
+	, userconfig_path(false)
+	, userconfig_dir()
+	, userdata_path(false)
+	, userdata_dir()
+	, validcache(false)
+	, validate_core(false)
+	, validate_addon()
+	, validate_schema()
+	, validate_wml()
+	, validate_with()
+	, do_diff()
+	, do_patch()
+	, diff_left()
+	, diff_right()
+	, version(false)
+	, report(false)
+	, windowed(false)
+	, with_replay(false)
+	, translation_percent()
+	, args_(args.begin() + 1, args.end())
+	, args0_(*args.begin())
+	, all_()
+	, visible_()
+	, hidden_()
 {
 	// When adding items don't forget to update doc/man/wesnoth.6
 	// Options are sorted alphabetically by --long-option.
@@ -175,6 +175,7 @@ commandline_options::commandline_options (const std::vector<std::string>& args) 
 		("data-path", "prints the path of the data directory and exits.")
 		("debug,d", "enables additional command mode options in-game.")
 		("debug-lua", "enables some Lua debugging mechanisms")
+		("strict-lua", "disallow deprecated Lua API calls")
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
 		("debug-dot-level", po::value<std::string>(), "sets the level of the debug dot files. <arg> should be a comma separated list of levels. These files are used for debugging the widgets especially the for the layout engine. When enabled the engine will produce dot files which can be converted to images with the dot tool. Available levels: size (generate the size info of the widget), state (generate the state info of the widget).")
 		("debug-dot-domain", po::value<std::string>(), "sets the domain of the debug dot files. <arg> should be a comma separated list of domains. See --debug-dot-level for more info. Available domains: show (generate the data when the dialog is about to be shown), layout (generate the data during the layout phase - might result in multiple files). The data can also be generated when the F12 is pressed in a dialog.")
@@ -347,6 +348,8 @@ commandline_options::commandline_options (const std::vector<std::string>& args) 
 		debug = true;
 	if (vm.count("debug-lua"))
 		debug_lua = true;
+	if (vm.count("strict-lua"))
+		strict_lua = true;
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
 	if (vm.count("debug-dot-domain")) {
 		debug_dot_domain = vm["debug-dot-domain"].as<std::string>();
@@ -528,7 +531,7 @@ commandline_options::commandline_options (const std::vector<std::string>& args) 
 	if(vm.count("all-translations"))
 		translation_percent = 0;
 	else if(vm.count("translations-over"))
-		translation_percent = utils::clamp<unsigned int>(vm["translations-over"].as<unsigned int>(), 0, 100);
+		translation_percent = std::clamp<unsigned int>(vm["translations-over"].as<unsigned int>(), 0, 100);
 }
 
 void commandline_options::parse_log_domains_(const std::string &domains_string, const int severity)
@@ -570,7 +573,7 @@ void commandline_options::parse_resolution_ ( const std::string& resolution_stri
 		throw bad_commandline_resolution(resolution_string);
 	}
 
-	resolution = std::make_pair(xres, yres);
+	resolution = std::pair(xres, yres);
 }
 
 std::vector<std::pair<unsigned int,std::string>> commandline_options::parse_to_uint_string_tuples_(const std::vector<std::string> &strings, char separator)

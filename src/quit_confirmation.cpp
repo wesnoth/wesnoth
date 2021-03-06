@@ -21,17 +21,13 @@
 #include "gui/dialogs/surrender_quit.hpp"
 #include "gui/dialogs/message.hpp"
 #include "gui/widgets/retval.hpp"
-
-#include <boost/range/adaptor/reversed.hpp>
-
-std::vector<quit_confirmation*> quit_confirmation::blockers_ = std::vector<quit_confirmation*>();
-bool quit_confirmation::open_ = false;
+#include "utils/ranges.hpp"
 
 bool quit_confirmation::quit()
 {
 	if(!open_) {
 		open_ = true;
-		for(quit_confirmation* blocker : boost::adaptors::reverse(blockers_))
+		for(quit_confirmation* blocker : utils::reversed_view(blockers_))
 		{
 			if(!blocker->prompt_()) {
 				open_ = false;
@@ -66,7 +62,7 @@ bool quit_confirmation::default_prompt()
 	std::size_t humans_notme_cnt = 0;
 
 	if(pmc != nullptr) {
-		for(const auto& t : pmc->get_teams_const()) {
+		for(const auto& t : pmc->get_teams()) {
 			if(t.is_network_human()) {
 				++humans_notme_cnt;
 			}

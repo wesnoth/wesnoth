@@ -61,8 +61,9 @@ public:
 	 * Handles the queued event, according to our WML instructions.
 	 *
 	 * @param[in]     event_info  Information about the event that needs handling.
+	 * @param[in]     lk The lua kernel to run the WML command.
 	 */
-	void handle_event(const queued_event& event_info, game_lua_kernel&);
+	void handle_event(const queued_event& event_info, game_lua_kernel& lk);
 
 	const config& get_config() const
 	{

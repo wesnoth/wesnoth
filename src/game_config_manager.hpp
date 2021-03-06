@@ -14,35 +14,34 @@
 
 #pragma once
 
-#include <boost/optional.hpp>
-
 #include "commandline_options.hpp"
+#include "config.hpp"
 #include "config_cache.hpp"
 #include "filesystem.hpp"
-#include "terrain/type_data.hpp"
-#include "config.hpp"
 #include "game_config_view.hpp"
+#include "terrain/type_data.hpp"
+#include <optional>
 
 class game_classification;
 class game_config_manager
 {
 	friend class game_config_view;
 public:
-	game_config_manager(const commandline_options& cmdline_opts, const bool jump_to_editor);
+	game_config_manager(const commandline_options& cmdline_opts);
 	~game_config_manager();
 	enum FORCE_RELOAD_CONFIG
 	{
-		/// Always reload config
+		/** Always reload config */
 		FORCE_RELOAD,
-		/// Don't reload if the previous defines equal the new defines
+		/** Don't reload if the previous defines equal the new defines */
 		NO_FORCE_RELOAD,
-		/// Don't reload if the previous defines include the new defines
+		/** Don't reload if the previous defines include the new defines */
 		NO_INCLUDE_RELOAD,
 	};
 
 	const game_config_view& game_config() const { return game_config_view_; }
 	const preproc_map& old_defines_map() const { return old_defines_map_; }
-	const ter_data_cache & terrain_types() const { return tdata_; }
+	const std::shared_ptr<terrain_type_data> & terrain_types() const { return tdata_; }
 
 	bool init_game_config(FORCE_RELOAD_CONFIG force_reload);
 	void reload_changed_game_config();
@@ -63,7 +62,7 @@ private:
 	void load_game_config(bool reload_everything);
 
 	void load_game_config_with_loadscreen(FORCE_RELOAD_CONFIG force_reload,
-		game_classification const* classification = nullptr, boost::optional<std::set<std::string>> active_addons = boost::optional<std::set<std::string>>());
+		game_classification const* classification = nullptr, std::optional<std::set<std::string>> active_addons = {});
 
 	// load_game_config() helper functions.
 	void load_addons_cfg();
@@ -71,13 +70,12 @@ private:
 	void set_unit_data();
 
 	const commandline_options& cmdline_opts_;
-	const bool jump_to_editor_;
 
 	config game_config_;
 	game_config_view game_config_view_;
 
 	std::map<std::string, config> addon_cfgs_;
-	boost::optional<std::set<std::string>> active_addons_;
+	std::optional<std::set<std::string>> active_addons_;
 
 	preproc_map old_defines_map_;
 
@@ -85,5 +83,5 @@ private:
 
 	game_config::config_cache& cache_;
 
-	ter_data_cache tdata_;
+	std::shared_ptr<terrain_type_data> tdata_;
 };

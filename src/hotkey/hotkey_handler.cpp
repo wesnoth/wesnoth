@@ -64,7 +64,7 @@ const game_state & play_controller::hotkey_handler::gamestate() const {
 bool play_controller::hotkey_handler::browse() const { return play_controller_.is_browsing(); }
 bool play_controller::hotkey_handler::linger() const { return play_controller_.is_lingering(); }
 
-const team & play_controller::hotkey_handler::viewing_team() const { return play_controller_.get_teams_const()[gui()->viewing_team()]; }
+const team & play_controller::hotkey_handler::viewing_team() const { return play_controller_.get_teams()[gui()->viewing_team()]; }
 bool play_controller::hotkey_handler::viewing_team_is_playing() const { return gui()->viewing_team() == gui()->playing_team(); }
 
 void play_controller::hotkey_handler::objectives(){
@@ -266,7 +266,8 @@ bool play_controller::hotkey_handler::do_execute_command(const hotkey::hotkey_co
 		std::string name = cmd.command.substr(prefixlen);
 		const map_location& hex = mouse_handler_.get_last_hex();
 
-		return gamestate().get_wml_menu_items().fire_item(name, hex, gamestate().gamedata_, gamestate(), gamestate().board_.units_, !press);
+		return gamestate().get_wml_menu_items().fire_item(
+			name, hex, gamestate().gamedata_, gamestate(), play_controller_.get_units(), !press);
 	}
 	return command_executor::do_execute_command(cmd, index, press, release);
 }
@@ -335,7 +336,7 @@ bool play_controller::hotkey_handler::can_execute_command(const hotkey::hotkey_c
 
 	case hotkey::HOTKEY_SURRENDER: {
 		std::size_t humans_notme_cnt = 0;
-		for(const auto& t : play_controller_.get_teams_const()) {
+		for(const auto& t : play_controller_.get_teams()) {
 			if(t.is_network_human()) {
 				++humans_notme_cnt;
 			}
@@ -376,7 +377,7 @@ bool play_controller::hotkey_handler::can_execute_command(const hotkey::hotkey_c
 			menu_handler_.current_unit().valid() &&
 			!(menu_handler_.current_unit()->unrenamable()) &&
 			menu_handler_.current_unit()->side() == gui()->viewing_side() &&
-			play_controller_.get_teams_const()[menu_handler_.current_unit()->side() - 1].is_local_human();
+			play_controller_.get_teams()[menu_handler_.current_unit()->side() - 1].is_local_human();
 
 	default:
 		return false;
@@ -444,7 +445,7 @@ void play_controller::hotkey_handler::expand_wml_commands(std::vector<config>& i
 	std::vector<config> newitems;
 
 	gamestate().get_wml_menu_items().get_items(mouse_handler_.get_last_hex(), wml_commands_, newitems,
-		gamestate(), gamestate().gamedata_, gamestate().board_.units_);
+		gamestate(), gamestate().gamedata_, play_controller_.get_units());
 
 	// Replace this placeholder entry with available menu items.
 	items.insert(pos, newitems.begin(), newitems.end());
@@ -500,8 +501,8 @@ bool play_controller::hotkey_handler::in_context_menu(hotkey::HOTKEY_COMMAND com
 
 		// A quick check to save us having to create the future map and
 		// possibly loop through all units.
-		if ( !play_controller_.get_map_const().is_keep(last_hex)  &&
-		     !play_controller_.get_map_const().is_castle(last_hex) )
+		if ( !play_controller_.get_map().is_keep(last_hex)  &&
+		     !play_controller_.get_map().is_castle(last_hex) )
 			return false;
 
 		wb::future_map future; /* lasts until method returns. */
@@ -549,6 +550,5 @@ hotkey::ACTION_STATE play_controller::hotkey_handler::get_action_state(hotkey::H
 
 void play_controller::hotkey_handler::load_autosave(const std::string& filename)
 {
-	throw savegame::load_game_exception(
-			savegame::load_game_metadata{savegame::save_index_class::default_saves_dir(), filename});
+	throw savegame::load_game_exception({savegame::save_index_class::default_saves_dir(), filename});
 }

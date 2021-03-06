@@ -12,15 +12,21 @@
    See the COPYING file for more details.
 */
 
+#define BOOST_ASIO_NO_DEPRECATED
+
 #include "wesnothd_connection.hpp"
 
 #include "gettext.hpp"
 #include "log.hpp"
 #include "serialization/parser.hpp"
-#include "utils/functional.hpp"
+
+#include <boost/asio/connect.hpp>
+#include <boost/asio/read.hpp>
+#include <boost/asio/write.hpp>
 
 #include <cstdint>
 #include <deque>
+#include <functional>
 
 static lg::log_domain log_network("network");
 #define DBG_NW LOG_STREAM(debug, log_network)
@@ -52,9 +58,9 @@ using boost::system::system_error;
 // main thread
 wesnothd_connection::wesnothd_connection(const std::string& host, const std::string& service)
 	: worker_thread_()
-	, io_service_()
-	, resolver_(io_service_)
-	, socket_(io_service_)
+	, io_context_()
+	, resolver_(io_context_)
+	, socket_(io_context_)
 	, last_error_()
 	, last_error_mutex_()
 	, handshake_finished_()
@@ -70,13 +76,17 @@ wesnothd_connection::wesnothd_connection(const std::string& host, const std::str
 	, bytes_read_(0)
 {
 	MPTEST_LOG;
+#if BOOST_VERSION >= 106600
+	resolver_.async_resolve(host, service,
+#else
 	resolver_.async_resolve(boost::asio::ip::tcp::resolver::query(host, service),
-		std::bind(&wesnothd_connection::handle_resolve, this, _1, _2));
+#endif
+		std::bind(&wesnothd_connection::handle_resolve, this, std::placeholders::_1, std::placeholders::_2));
 
 	// Starts the worker thread. Do this *after* the above async_resolve call or it will just exit immediately!
 	worker_thread_ = std::thread([this]() {
 		try {
-			io_service_.run();
+			io_context_.run();
 		} catch(const boost::system::system_error&) {
 			try {
 				// Attempt to pass the exception on to the handshake promise.
@@ -84,6 +94,7 @@ wesnothd_connection::wesnothd_connection(const std::string& host, const std::str
 			} catch(const std::future_error&) {
 				// Handshake already complete. Do nothing.
 			}
+		} catch(...) {
 		}
 
 		LOG_NW << "wesnothd_connection::io_service::run() returned\n";
@@ -102,7 +113,7 @@ wesnothd_connection::~wesnothd_connection()
 }
 
 // worker thread
-void wesnothd_connection::handle_resolve(const error_code& ec, resolver::iterator iterator)
+void wesnothd_connection::handle_resolve(const error_code& ec, results_type results)
 {
 	MPTEST_LOG;
 	if(ec) {
@@ -110,33 +121,23 @@ void wesnothd_connection::handle_resolve(const error_code& ec, resolver::iterato
 		throw system_error(ec);
 	}
 
-	connect(iterator);
+	boost::asio::async_connect(socket_, results,
+		std::bind(&wesnothd_connection::handle_connect, this, std::placeholders::_1, std::placeholders::_2));
 }
 
 // worker thread
-void wesnothd_connection::connect(resolver::iterator iterator)
-{
-	MPTEST_LOG;
-	socket_.async_connect(*iterator, std::bind(&wesnothd_connection::handle_connect, this, _1, iterator));
-	LOG_NW << "Connecting to " << iterator->endpoint().address() << '\n';
-}
-
-// worker thread
-void wesnothd_connection::handle_connect(const boost::system::error_code& ec, resolver::iterator iterator)
+void wesnothd_connection::handle_connect(const boost::system::error_code& ec, endpoint endpoint)
 {
 	MPTEST_LOG;
 	if(ec) {
-		WRN_NW << "Failed to connect to " << iterator->endpoint().address() << ": " << ec.message() << '\n';
-		socket_.close();
-
-		if(++iterator == resolver::iterator()) {
-			ERR_NW << "Tried all IPs. Giving up" << std::endl;
-			throw system_error(ec);
-		} else {
-			connect(iterator);
-		}
+		ERR_NW << "Tried all IPs. Giving up" << std::endl;
+		throw system_error(ec);
 	} else {
-		LOG_NW << "Connected to " << iterator->endpoint().address() << '\n';
+#if BOOST_VERSION >= 106600
+		LOG_NW << "Connected to " << endpoint.address() << '\n';
+#else
+		LOG_NW << "Connected to " << endpoint->endpoint().address() << '\n';
+#endif
 		handshake();
 	}
 }
@@ -151,7 +152,7 @@ void wesnothd_connection::handshake()
 		[](const error_code& ec, std::size_t) { if(ec) { throw system_error(ec); } });
 
 	boost::asio::async_read(socket_, boost::asio::buffer(&handshake_response_.binary, 4),
-		std::bind(&wesnothd_connection::handle_handshake, this, _1));
+		std::bind(&wesnothd_connection::handle_handshake, this, std::placeholders::_1));
 }
 
 // worker thread
@@ -194,16 +195,23 @@ void wesnothd_connection::send_data(const configr_of& request)
 {
 	MPTEST_LOG;
 
-	// C++11 doesn't allow lambda captuting by moving. This could maybe use std::unique_ptr in c++14;
-	std::shared_ptr<boost::asio::streambuf> buf_ptr(new boost::asio::streambuf());
+#if BOOST_VERSION >= 106600
+	auto buf_ptr = std::make_unique<boost::asio::streambuf>();
+#else
+	auto buf_ptr = std::make_shared<boost::asio::streambuf>();
+#endif
 
 	std::ostream os(buf_ptr.get());
 	write_gz(os, request);
 
-	// TODO: should I capture a shared_ptr for this?
-	io_service_.post([this, buf_ptr]() {
+	// No idea why io_context::post doesn't like this lambda while asio::post does.
+#if BOOST_VERSION >= 106600
+	boost::asio::post(io_context_, [this, buf_ptr = std::move(buf_ptr)]() mutable {
+#else
+	io_context_.post([this, buf_ptr]() {
+#endif
 		DBG_NW << "In wesnothd_connection::send_data::lambda\n";
-		send_queue_.push(buf_ptr);
+		send_queue_.push(std::move(buf_ptr));
 
 		if(send_queue_.size() == 1) {
 			send();
@@ -240,7 +248,7 @@ void wesnothd_connection::stop()
 {
 	// TODO: wouldn't cancel() have the same effect?
 	MPTEST_LOG;
-	io_service_.stop();
+	io_context_.stop();
 }
 
 // worker thread
@@ -249,13 +257,13 @@ std::size_t wesnothd_connection::is_write_complete(const boost::system::error_co
 	MPTEST_LOG;
 	if(ec) {
 		{
-			std::lock_guard<std::mutex> lock(last_error_mutex_);
+			std::lock_guard lock(last_error_mutex_);
 			last_error_ = ec;
 		}
 
 		LOG_NW << __func__ << " Error: " << ec << "\n";
 
-		io_service_.stop();
+		io_context_.stop();
 		return bytes_to_write_ - bytes_transferred;
 	}
 
@@ -273,13 +281,13 @@ void wesnothd_connection::handle_write(const boost::system::error_code& ec, std:
 
 	if(ec) {
 		{
-			std::lock_guard<std::mutex> lock(last_error_mutex_);
+			std::lock_guard lock(last_error_mutex_);
 			last_error_ = ec;
 		}
 
 		LOG_NW << __func__ << " Error: " << ec << "\n";
 
-		io_service_.stop();
+		io_context_.stop();
 		return;
 	}
 
@@ -295,13 +303,13 @@ std::size_t wesnothd_connection::is_read_complete(const boost::system::error_cod
 	MPTEST_LOG;
 	if(ec) {
 		{
-			std::lock_guard<std::mutex> lock(last_error_mutex_);
+			std::lock_guard lock(last_error_mutex_);
 			last_error_ = ec;
 		}
 
 		LOG_NW << __func__ << " Error: " << ec << "\n";
 
-		io_service_.stop();
+		io_context_.stop();
 		return bytes_to_read_ - bytes_transferred;
 	}
 
@@ -336,13 +344,13 @@ void wesnothd_connection::handle_read(const boost::system::error_code& ec, std::
 	bytes_to_read_ = 0;
 	if(last_error_ && ec != boost::asio::error::eof) {
 		{
-			std::lock_guard<std::mutex> lock(last_error_mutex_);
+			std::lock_guard lock(last_error_mutex_);
 			last_error_ = ec;
 		}
 
 		LOG_NW << __func__ << " Error: " << ec << "\n";
 
-		io_service_.stop();
+		io_context_.stop();
 		return;
 	}
 
@@ -352,7 +360,7 @@ void wesnothd_connection::handle_read(const boost::system::error_code& ec, std::
 	if(!data.empty()) { DBG_NW << "Received:\n" << data; }
 
 	{
-		std::lock_guard<std::mutex> lock(recv_queue_mutex_);
+		std::lock_guard lock(recv_queue_mutex_);
 		recv_queue_.emplace(std::move(data));
 		recv_queue_lock_.notify_all();
 	}
@@ -371,14 +379,14 @@ void wesnothd_connection::send()
 	bytes_written_ = 0;
 	payload_size_ = htonl(buf_size);
 
-	boost::asio::streambuf::const_buffers_type gzipped_data = buf.data();
-	std::deque<boost::asio::const_buffer> bufs(gzipped_data.begin(), gzipped_data.end());
-
-	bufs.push_front(boost::asio::buffer(reinterpret_cast<const char*>(&payload_size_), 4));
+	std::deque<boost::asio::const_buffer> bufs {
+		boost::asio::buffer(reinterpret_cast<const char*>(&payload_size_), 4),
+		buf.data()
+	};
 
 	boost::asio::async_write(socket_, bufs,
-		std::bind(&wesnothd_connection::is_write_complete, this, _1, _2),
-		std::bind(&wesnothd_connection::handle_write, this, _1, _2));
+		std::bind(&wesnothd_connection::is_write_complete, this, std::placeholders::_1, std::placeholders::_2),
+		std::bind(&wesnothd_connection::handle_write, this, std::placeholders::_1, std::placeholders::_2));
 }
 
 // worker thread
@@ -387,8 +395,8 @@ void wesnothd_connection::recv()
 	MPTEST_LOG;
 
 	boost::asio::async_read(socket_, read_buf_,
-		std::bind(&wesnothd_connection::is_read_complete, this, _1, _2),
-		std::bind(&wesnothd_connection::handle_read, this, _1, _2));
+		std::bind(&wesnothd_connection::is_read_complete, this, std::placeholders::_1, std::placeholders::_2),
+		std::bind(&wesnothd_connection::handle_read, this, std::placeholders::_1, std::placeholders::_2));
 }
 
 // main thread
@@ -397,7 +405,7 @@ bool wesnothd_connection::receive_data(config& result)
 	MPTEST_LOG;
 
 	{
-		std::lock_guard<std::mutex> lock(recv_queue_mutex_);
+		std::lock_guard lock(recv_queue_mutex_);
 		if(!recv_queue_.empty()) {
 			result.swap(recv_queue_.front());
 			recv_queue_.pop();
@@ -406,7 +414,7 @@ bool wesnothd_connection::receive_data(config& result)
 	}
 
 	{
-		std::lock_guard<std::mutex> lock(last_error_mutex_);
+		std::lock_guard lock(last_error_mutex_);
 		if(last_error_) {
 			std::string user_msg;
 

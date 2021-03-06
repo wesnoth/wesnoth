@@ -16,11 +16,17 @@
 
 #include "gui/dialogs/modal_dialog.hpp"
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 
+/**
+ * @ingroup GUIWindowDefinitionWML
+ *
+ * Dialog for renaming units in-game.
+ * Key               |Type          |Mandatory|Description
+ * ------------------|--------------|---------|-----------
+ * name              | text_box     |yes      |Input field for the unit name.
+ */
 class edit_text : public modal_dialog
 {
 public:
@@ -32,7 +38,7 @@ public:
 	 * @param [in, out] text      The parameter's usage is:
 	 *                            - Input: The initial value of the text field.
 	 *                            - Output: The new unit name the user entered
-	 *                              if the dialog returns @ref retval::OK,
+	 *                              if the dialog returns retval::OK,
 	 *                              undefined otherwise.
 	 * @param disallow_empty      Whether to prevent the user from entering a string that is
 	 *                            empty or consists only of whitespace.
@@ -65,4 +71,3 @@ private:
 	bool disallow_empty_;
 };
 } // namespace dialogs
-} // namespace gui2

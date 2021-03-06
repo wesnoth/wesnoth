@@ -448,8 +448,10 @@ config& replay::get_last_real_command()
 	assert(false && "replay::get_last_real_command called with no existent command.");
 	throw "replay::get_last_real_command called with no existent command.";
 }
-/// fixes a rename command when undoing a earlier command.
-/// @return: true if the command should be removed.
+/**
+ * fixes a rename command when undoing a earlier command.
+ * @return: true if the command should be removed.
+ */
 static bool fix_rename_command(const config& c, config& async_child)
 {
 	if (const config &child = c.child("move"))
@@ -670,7 +672,7 @@ bool replay::add_start_if_not_there_yet()
 	}
 }
 
-static void show_oos_error_error_function(const std::string& message, bool /*heavy*/)
+static void show_oos_error_error_function(const std::string& message)
 {
 	replay::process_error(message);
 }

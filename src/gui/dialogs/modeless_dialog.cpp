@@ -19,9 +19,7 @@
 #include "gui/widgets/window.hpp"
 #include "video.hpp"
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 
 modeless_dialog::modeless_dialog() : window_(nullptr)
@@ -41,7 +39,7 @@ void modeless_dialog::show(const bool allow_interaction, const unsigned /*auto_c
 
 	hide();
 
-	window_.reset(build_window());
+	window_ = build_window();
 
 	post_build(*window_);
 
@@ -59,7 +57,7 @@ void modeless_dialog::hide()
 {
 	if(window_) {
 		// Don't bother if show_mode_ == tooltip, because in that case we didn't add it anyway.
-		if(window_->mode() == window::modeless) {
+		if(window_->mode() == window::show_mode::modeless) {
 			remove_from_window_stack(window_.get());
 		}
 
@@ -67,7 +65,7 @@ void modeless_dialog::hide()
 		window_.reset(nullptr);	}
 }
 
-window* modeless_dialog::build_window() const
+std::unique_ptr<window> modeless_dialog::build_window() const
 {
 	return build(window_id());
 }
@@ -83,4 +81,3 @@ void modeless_dialog::pre_show(window& /*window*/)
 }
 
 } // namespace dialogs
-} // namespace gui2

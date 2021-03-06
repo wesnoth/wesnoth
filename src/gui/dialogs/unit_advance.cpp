@@ -27,16 +27,14 @@
 #include "units/types.hpp"
 #include "help/help.hpp"
 
-#include "utils/functional.hpp"
+#include <functional>
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 
 REGISTER_DIALOG(unit_advance)
 
-unit_advance::unit_advance(const unit_ptr_vector& samples, std::size_t real)
+unit_advance::unit_advance(const std::vector<unit_const_ptr>& samples, std::size_t real)
 	: previews_(samples)
 	, selected_index_(0)
 	, last_real_advancement_(real)
@@ -47,7 +45,7 @@ void unit_advance::pre_show(window& window)
 {
 	listbox& list = find_widget<listbox>(&window, "advance_choice", false);
 
-	connect_signal_notify_modified(list, std::bind(&unit_advance::list_item_clicked, this, std::ref(window)));
+	connect_signal_notify_modified(list, std::bind(&unit_advance::list_item_clicked, this));
 
 	window.keyboard_capture(&list);
 
@@ -88,22 +86,22 @@ void unit_advance::pre_show(window& window)
 		list.add_row(row_data);
 	}
 
-	list_item_clicked(window);
+	list_item_clicked();
 
 	// Disable ESC existing
 	window.set_escape_disabled(true);
 }
 
-void unit_advance::list_item_clicked(window& window)
+void unit_advance::list_item_clicked()
 {
 	const int selected_row
-		= find_widget<listbox>(&window, "advance_choice", false).get_selected_row();
+		= find_widget<listbox>(get_window(), "advance_choice", false).get_selected_row();
 
 	if(selected_row == -1) {
 		return;
 	}
 
-	find_widget<unit_preview_pane>(&window, "advancement_details", false)
+	find_widget<unit_preview_pane>(get_window(), "advancement_details", false)
 		.set_displayed_unit(*previews_[selected_row]);
 }
 
@@ -121,4 +119,3 @@ void unit_advance::post_show(window& window)
 }
 
 } // namespace dialogs
-} // namespace gui2

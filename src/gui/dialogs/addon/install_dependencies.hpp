@@ -18,9 +18,7 @@
 #include "gui/dialogs/modal_dialog.hpp"
 #include <string>
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 
 class install_dependencies : public modal_dialog
@@ -42,5 +40,4 @@ private:
 	addons_list addons_;
 };
 
-}
 }

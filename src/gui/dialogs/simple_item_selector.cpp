@@ -23,41 +23,8 @@
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 
-namespace gui2
+namespace gui2::dialogs
 {
-namespace dialogs
-{
-
-/*WIKI
- * @page = GUIWindowDefinitionWML
- * @order = 2_simple_item_selector
- *
- * == Simple item selector ==
- *
- * A simple one-column listbox with OK and Cancel buttons.
- *
- * @begin{table}{dialog_widgets}
- *
- * title & & label & m &
- *         Dialog title label. $
- *
- * message & & styled_widget & m &
- *         Text label displaying a description or instructions. $
- *
- * listbox & & listbox & m &
- *         Listbox displaying user choices. $
- *
- * -item & & styled_widget & m &
- *         Widget which shows a listbox item label. $
- *
- * ok & & button & m &
- *         OK button. $
- *
- * cancel & & button & m &
- *         Cancel button. $
- *
- * @end{table}
- */
 
 REGISTER_DIALOG(simple_item_selector)
 
@@ -122,4 +89,3 @@ void simple_item_selector::post_show(window& window)
 }
 
 } // namespace dialogs
-} // namespace gui2

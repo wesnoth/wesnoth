@@ -45,7 +45,7 @@
 #include <string>
 #include <utility>
 
-#include "utils/functional.hpp"
+#include <functional>
 #include <boost/range/adaptors.hpp>
 #include <SDL2/SDL.h>
 
@@ -183,15 +183,13 @@ application_lua_kernel::thread * application_lua_kernel::load_script_from_string
 			context += " a syntax error";
 		} else if(errcode == LUA_ERRMEM){
 			context += " a memory error";
-		} else if(errcode == LUA_ERRGCMM) {
-			context += " an error in garbage collection metamethod";
 		} else {
 			context += " an unknown error";
 		}
 
 		throw game::lua_error(msg, context);
 	}
-	if (!lua_kernel_base::protected_call(T, 0, 1, std::bind(&lua_kernel_base::log_error, this, _1, _2))) {
+	if (!lua_kernel_base::protected_call(T, 0, 1, std::bind(&lua_kernel_base::log_error, this, std::placeholders::_1, std::placeholders::_2))) {
 		throw game::lua_error("Error when executing a script to make a lua thread.");
 	}
 	if (!lua_isfunction(T, -1)) {
@@ -208,7 +206,7 @@ application_lua_kernel::thread * application_lua_kernel::load_script_from_file(c
 
 	lua_pushstring(T, file.c_str());
 	lua_fileops::load_file(T);
-	if (!lua_kernel_base::protected_call(T, 0, 1, std::bind(&lua_kernel_base::log_error, this, _1, _2))) {
+	if (!lua_kernel_base::protected_call(T, 0, 1, std::bind(&lua_kernel_base::log_error, this, std::placeholders::_1, std::placeholders::_2))) {
 		throw game::lua_error("Error when executing a file to make a lua thread.");
 	}
 	if (!lua_isfunction(T, -1)) {
@@ -279,11 +277,11 @@ application_lua_kernel::request_list application_lua_kernel::thread::run_script(
 	}
 
 	// Now we have to create the context object. It is arranged as a table of boost functions.
-	std::shared_ptr<lua_context_backend> this_context_backend = std::make_shared<lua_context_backend> (lua_context_backend());
+	auto this_context_backend = std::make_shared<lua_context_backend>();
 	lua_newtable(T_); // this will be the context table
 	for (const std::string & key : ctxt.callbacks_ | boost::adaptors::map_keys ) {
 		lua_pushstring(T_, key.c_str());
-		lua_cpp::push_function(T_, std::bind(&impl_context_backend, _1, this_context_backend, key));
+		lua_cpp::push_function(T_, std::bind(&impl_context_backend, std::placeholders::_1, this_context_backend, key));
 		lua_settable(T_, -3);
 	}
 
@@ -296,12 +294,13 @@ application_lua_kernel::request_list application_lua_kernel::thread::run_script(
 		const std::string & key = v.first;
 		const plugins_context::accessor_function & func = v.second;
 		lua_pushstring(T_, key.c_str());
-		lua_cpp::push_function(T_, std::bind(&impl_context_accessor, _1, this_context_backend, func));
+		lua_cpp::push_function(T_, std::bind(&impl_context_accessor, std::placeholders::_1, this_context_backend, func));
 		lua_settable(T_, -3);
 	}
 
 	// Now we resume the function, calling the coroutine with the three arguments (events, context, info).
-	lua_resume(T_, nullptr, 3);
+	int numres = 0;
+	lua_resume(T_, nullptr, 3, &numres);
 
 	started_ = true;
 

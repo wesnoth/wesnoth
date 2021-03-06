@@ -14,14 +14,11 @@
 #pragma once
 
 #include "game_initialization/connect_engine.hpp"
-#include "game_initialization/lobby_info.hpp"
-#include "game_initialization/multiplayer.hpp"
 #include "gui/dialogs/modal_dialog.hpp"
-#include "gui/dialogs/multiplayer/player_list_helper.hpp"
 #include "gui/dialogs/multiplayer/plugin_executor.hpp"
-#include "mp_game_settings.hpp"
 
 class config;
+class wesnothd_connection;
 
 namespace ai
 {
@@ -30,10 +27,10 @@ namespace ai
 
 namespace gui2
 {
-
 class menu_button;
 class slider;
 class tree_view_node;
+class player_list_helper;
 
 namespace dialogs
 {
@@ -57,7 +54,10 @@ private:
 	/** Inherited from modal_dialog. */
 	virtual void post_show(window& window) override;
 
-	void add_side_node(window& window, ng::side_engine_ptr side);
+	template<typename... T>
+	tree_view_node& add_side_to_team_node(ng::side_engine_ptr side, T&&... params);
+
+	void add_side_node(ng::side_engine_ptr side);
 
 	/**
 	 * Find an appropriate position to insert a side node.
@@ -70,7 +70,7 @@ private:
 	void on_controller_select(ng::side_engine_ptr side, grid& row_grid);
 	void on_ai_select(ng::side_engine_ptr side, menu_button& ai_menu, const bool saved_game);
 	void on_color_select(ng::side_engine_ptr side, grid& row_grid);
-	void on_team_select(window& window, ng::side_engine_ptr side, menu_button& team_menu);
+	void on_team_select(ng::side_engine_ptr side, menu_button& team_menu);
 
 	template<void(ng::side_engine::*fptr)(int)>
 	void on_side_slider_change(ng::side_engine_ptr side, slider& slider);
@@ -78,9 +78,9 @@ private:
 	void select_leader_callback(ng::side_engine_ptr side, grid& row_grid);
 
 	void update_leader_display(ng::side_engine_ptr side, grid& row_grid);
-	void update_status_label_and_buttons(window& window);
+	void update_status_label_and_buttons();
 
-	void network_handler(window& window);
+	void network_handler();
 
 	void set_state_changed()
 	{

@@ -17,10 +17,11 @@
 #include "gui/core/event/dispatcher.hpp"
 
 #include "gui/widgets/widget.hpp"
+#include "utils/ranges.hpp"
 
 #include <SDL2/SDL_events.h>
 
-#include <boost/range/adaptor/reversed.hpp>
+#include <cassert>
 
 namespace gui2
 {
@@ -35,9 +36,7 @@ struct dispatcher_implementation
  *
  * Implements two helper functions as documented in the macro.
  *
- * @param SET                     The set in which the event type needs to be
- *                                eg the @ref gui2::event::set_event or a
- *                                similar set defined in that header.
+ * @param SET                     The set in which the event type needs to be.
  * @param FUNCTION                The function signature to validate the
  *                                implementation function SFINAE against eg the
  *                                @ref gui2::event::signal_function or another
@@ -59,7 +58,7 @@ struct dispatcher_implementation
 	 *                            dispatcher::signal_type<FUNCTION>            \
 	 */                                                                        \
 	template<typename F>                                                       \
-	static std::enable_if_t<std::is_same<F, FUNCTION>::value, dispatcher::signal_type<FUNCTION>>& \
+	static std::enable_if_t<std::is_same_v<F, FUNCTION>, dispatcher::signal_type<FUNCTION>>& \
 	event_signal(dispatcher& dispatcher, const ui_event event)                 \
 	{                                                                          \
 		return dispatcher.QUEUE.queue[event];                                  \
@@ -292,7 +291,7 @@ inline bool fire_event(const ui_event event,
 	bool halt = false;
 
 	/***** ***** ***** Pre ***** ***** *****/
-	for(auto& ritor_widget : boost::adaptors::reverse(event_chain)) {
+	for(auto& ritor_widget : utils::reversed_view(event_chain)) {
 		auto& signal = dispatcher_implementation::event_signal<T>(*ritor_widget.first, ritor_widget.second);
 
 		for(auto& pre_func : signal.pre_child) {

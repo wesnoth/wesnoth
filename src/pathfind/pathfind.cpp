@@ -92,10 +92,8 @@ map_location find_vacant_tile(const map_location& loc, VACANT_TILE_TYPE vacancy,
 			if (pass_check_and_unreachable && distance > 10) continue;
 			//If the hex is empty and we do either no pass check or the hex is reachable, return it.
 			if (units.find(l) == units.end() && !pass_check_and_unreachable) return l;
-			adjacent_loc_array_t adjs;
-			get_adjacent_tiles(l,adjs.data());
-			for (const map_location &l2 : adjs)
-			{
+
+			for(const map_location& l2 : get_adjacent_tiles(l)) {
 				if (!map.on_board(l2)) continue;
 				// Add the tile to be checked if it hasn't already been and
 				// isn't being checked.
@@ -137,11 +135,8 @@ bool enemy_zoc(const team& current_team, const map_location& loc,
                const team& viewing_team, bool see_all)
 {
 	// Check the adjacent tiles.
-	adjacent_loc_array_t locs;
-	get_adjacent_tiles(loc,locs.data());
-	for (unsigned i = 0; i < locs.size(); ++i)
-	{
-		const unit *u = resources::gameboard->get_visible_unit(locs[i], viewing_team, see_all);
+	for(const map_location& adj : get_adjacent_tiles(loc)) {
+		const unit *u = resources::gameboard->get_visible_unit(adj, viewing_team, see_all);
 		if ( u  &&  current_team.is_enemy(u->side())  &&  u->emits_zoc() )
 			return true;
 	}
@@ -359,8 +354,7 @@ static void find_routes(
 		adj_locs.erase(off_board_it, adj_locs.end());
 
 		if ( teleporter ) {
-			std::set<map_location> allowed_teleports;
-			teleports.get_adjacents(allowed_teleports, cur_hex);
+			auto allowed_teleports = teleports.get_adjacents(cur_hex);
 			adj_locs.insert(adj_locs.end(), allowed_teleports.begin(), allowed_teleports.end());
 		}
 		for ( int i = adj_locs.size()-1; i >= 0; --i ) {
@@ -577,6 +571,7 @@ paths::~paths()
  * @param viewer     The unit doing the viewing.
  * @param loc        The location from which the viewing occurs
  *                   (does not have to be the unit's location).
+ * @param jamming_map The relevant "jamming" of the costs being used.
  */
 vision_path::vision_path(const unit& viewer, const map_location& loc,
                          const std::map<map_location, int>& jamming_map)
@@ -602,6 +597,7 @@ vision_path::vision_path(const unit& viewer, const map_location& loc,
  * @param sight_range  The vision() of the unit.
  * @param loc          The location from which the viewing occurs
  *                     (does not have to be the unit's location).
+ * @param jamming_map The relevant "jamming" of the costs being used.
  */
 vision_path::vision_path(const movetype::terrain_costs & view_costs, bool slowed,
                          int sight_range, const map_location & loc,
@@ -616,7 +612,7 @@ vision_path::vision_path(const movetype::terrain_costs & view_costs, bool slowed
 	            destinations, &edges, u.valid() ? &*u : nullptr, nullptr, nullptr, &viewing_team, &jamming_map, nullptr, true);
 }
 
-/// Default destructor
+/** Default destructor */
 vision_path::~vision_path()
 {
 }
@@ -643,7 +639,7 @@ jamming_path::jamming_path(const unit& jammer, const map_location& loc)
 	            0, destinations, nullptr, nullptr, nullptr, nullptr, nullptr);
 }
 
-/// Default destructor
+/** Default destructor */
 jamming_path::~jamming_path()
 {
 }
@@ -672,7 +668,7 @@ marked_route mark_route(const plain_route &rt, bool update_move_cost)
 
 		// move_cost of the next step is irrelevant for the last step
 		assert(last_step || resources::gameboard->map().on_board(*(i+1)));
-		const int move_cost = last_step ? 0 : u.movement_cost((resources::gameboard->map())[*(i+1)]);
+		const int move_cost = last_step ? 0 : u.movement_cost(static_cast<const game_board*>(resources::gameboard)->map()[*(i+1)]);
 
 		const team& viewing_team = resources::gameboard->teams()[display::get_singleton()->viewing_team()];
 
@@ -886,7 +882,7 @@ full_cost_map::full_cost_map(const unit& u, bool force_ignore_zoc,
 	 viewing_team_(viewing_team), see_all_(see_all), ignore_units_(ignore_units)
 {
 	const gamemap& map = resources::gameboard->map();
-	cost_map = std::vector<std::pair<int, int>>(map.w() * map.h(), std::make_pair(-1, 0));
+	cost_map = std::vector<std::pair<int, int>>(map.w() * map.h(), std::pair(-1, 0));
 	add_unit(u);
 }
 
@@ -901,12 +897,13 @@ full_cost_map::full_cost_map(bool force_ignore_zoc,
 	 viewing_team_(viewing_team), see_all_(see_all), ignore_units_(ignore_units)
 {
 	const gamemap& map = resources::gameboard->map();
-	cost_map = std::vector<std::pair<int, int>>(map.w() * map.h(), std::make_pair(-1, 0));
+	cost_map = std::vector<std::pair<int, int>>(map.w() * map.h(), std::pair(-1, 0));
 }
 
 /**
  * Adds a units cost map to cost_map (increments the elements in cost_map)
  * @param u a real existing unit on the map
+ * @param use_max_moves whether to use the unit's max movement or the unit's remaining movement
  */
 void full_cost_map::add_unit(const unit& u, bool use_max_moves)
 {
@@ -965,7 +962,7 @@ std::pair<int, int> full_cost_map::get_pair_at(map_location loc) const
 	assert(cost_map.size() == static_cast<unsigned>(map.w() * map.h()));
 
 	if (!map.on_board(loc)) {
-		return std::make_pair(-1, 0);  // invalid
+		return std::pair(-1, 0);  // invalid
 	}
 
 	return cost_map[loc.x + (loc.y * map.w())];

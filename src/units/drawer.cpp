@@ -14,25 +14,51 @@
 
 #include "units/drawer.hpp"
 
+#include "color.hpp"
 #include "display.hpp"
 #include "display_context.hpp"
 #include "formatter.hpp"
 #include "game_display.hpp"
-#include "preferences/game.hpp"
 #include "halo.hpp"
-#include "map/map.hpp"
 #include "map/location.hpp"
-#include "color.hpp"
+#include "map/map.hpp"
+#include "picture.hpp"
+#include "preferences/game.hpp"
 #include "sdl/surface.hpp"
 #include "team.hpp"
-#include "units/unit.hpp"
 #include "units/animation.hpp"
 #include "units/animation_component.hpp"
 #include "units/frame.hpp"
 #include "units/types.hpp"
+#include "units/unit.hpp"
 
 // Map of different energy bar surfaces and their dimensions.
 static std::map<surface, SDL_Rect> energy_bar_rects;
+
+namespace
+{
+/**
+ * Wrapper which will assemble the image path (including IPF for the color from get_orb_color) for a given orb.
+ * Returns nullptr if the preferences have been configured to hide this orb.
+ */
+std::unique_ptr<image::locator> get_orb_image(orb_status os)
+{
+	if(os == orb_status::disengaged) {
+		if(orb_status_helper::prefs_show_orb(os)) {
+			auto partial_color = orb_status_helper::get_orb_color(orb_status::partial);
+			auto moved_color = orb_status_helper::get_orb_color(orb_status::moved);
+			return std::make_unique<image::locator>(game_config::images::orb_two_color + "~RC(ellipse_red>"
+				+ moved_color + ")~RC(magenta>" + partial_color + ")");
+		}
+		os = orb_status::partial;
+	}
+
+	if(!orb_status_helper::prefs_show_orb(os))
+		return nullptr;
+	auto color = orb_status_helper::get_orb_color(os);
+	return std::make_unique<image::locator>(game_config::images::orb + "~RC(magenta>" + color + ")");
+}
+}
 
 unit_drawer::unit_drawer(display & thedisp) :
 	disp(thedisp),
@@ -253,7 +279,7 @@ void unit_drawer::redraw_unit (const unit & u) const
 		using namespace orb_status_helper;
 		std::unique_ptr<image::locator> orb_img = nullptr;
 		if(viewing_team_ref.is_enemy(side)) {
-			if(preferences::show_enemy_orb() && !u.incapacitated())
+			if(!u.incapacitated())
 				orb_img = get_orb_image(orb_status::enemy);
 		} else if(static_cast<std::size_t>(side) != playing_team + 1) {
 			// We're looking at either the player's own unit or an ally's unit, but either way it
@@ -262,14 +288,12 @@ void unit_drawer::redraw_unit (const unit & u) const
 			auto os = orb_status::moved;
 			if(static_cast<std::size_t>(side) != viewing_team + 1)
 				os = orb_status::allied;
-			if(prefs_show_orb(os))
-				orb_img = get_orb_image(os);
+			orb_img = get_orb_image(os);
 		} else {
 			// We're looking at either the player's own unit, or an ally's unit, during the unit's
 			// owner's turn.
 			auto os = dc.unit_orb_status(u);
-			if(prefs_show_orb(os))
-				orb_img = get_orb_image(os);
+			orb_img = get_orb_image(os);
 		}
 
 		if(orb_img != nullptr) {

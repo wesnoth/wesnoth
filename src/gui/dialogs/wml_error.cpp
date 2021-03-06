@@ -30,7 +30,7 @@
 
 #include "gettext.hpp"
 
-#include "utils/functional.hpp"
+#include <functional>
 
 namespace
 {
@@ -107,12 +107,10 @@ std::string format_file_list(const std::vector<std::string>& files_original)
 		if(have_addon_install_info(base)) {
 			// _info.cfg may have the add-on's title starting with 1.11.7,
 			// if the add-on was downloaded using the revised _info.cfg writer.
-			config cfg;
-			get_addon_install_info(base, cfg);
+			config info_cfg;
+			get_addon_install_info(base, info_cfg);
 
-			const config& info_cfg = cfg.child("info");
-
-			if(info_cfg && !info_cfg["title"].empty()) {
+			if(!info_cfg.empty() && !info_cfg["title"].empty()) {
 				file = info_cfg["title"].str();
 				continue;
 			}
@@ -131,43 +129,8 @@ std::string format_file_list(const std::vector<std::string>& files_original)
 }
 }
 
-namespace gui2
+namespace gui2::dialogs
 {
-namespace dialogs
-{
-
-/*WIKI
- * @page = GUIWindowDefinitionWML
- * @order = 2_wml_error
- *
- * == WML error ==
- *
- * Dialog used to report WML parser or preprocessor errors.
- *
- * @begin{table}{dialog_widgets}
- *
- * summary & & styled_widget & m &
- *         Label used for displaying a brief summary of the error(s). $
- *
- * files & & styled_widget & m &
- *         Label used to display the list of affected add-ons or files, if
- *         applicable. It is hidden otherwise. It is recommended to place it
- *         after the summary label. $
- *
- * post_summary & & styled_widget & m &
- *         Label used for displaying instructions for reporting the error.
- *         It is recommended to place it after the file list label. It may be
- *         hidden if empty. $
- *
- * details & & styled_widget & m &
- *         Full report of the parser or preprocessor error(s) found. $
- *
- * copy & & button & m &
- *         Button that the user can click on to copy the error report to the
- *         system clipboard. $
- *
- * @end{table}
- */
 
 REGISTER_DIALOG(wml_error)
 
@@ -236,4 +199,3 @@ void wml_error::copy_report_callback()
 }
 
 } // end namespace dialogs
-} // end namespace gui2

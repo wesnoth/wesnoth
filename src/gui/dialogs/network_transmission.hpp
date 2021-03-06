@@ -17,15 +17,12 @@
 #include "events.hpp"
 #include "gui/dialogs/modal_dialog.hpp"
 #include "network_asio.hpp"
-
-#include <boost/optional.hpp>
+#include "utils/optional_reference.hpp"
 
 #include <atomic>
 #include <future>
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 
 /**
@@ -61,7 +58,7 @@ private:
 
 		connection_data*& connection_;
 
-		boost::optional<window&> window_;
+		utils::optional_reference<window> window_;
 
 		std::atomic_size_t completed_, total_;
 
@@ -96,4 +93,3 @@ private:
 };
 
 } // namespace dialogs
-} // namespace gui2

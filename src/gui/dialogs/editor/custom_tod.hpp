@@ -26,6 +26,24 @@ class slider;
 namespace dialogs
 {
 
+/**
+ * @ingroup GUIWindowDefinitionWML
+ *
+ * This shows the dialog to modify tod schedules.
+ * Key               |Type          |Mandatory|Description
+ * ------------------|--------------|---------|-----------
+ * current_tod_name  | text_box     |yes      |The name of the time of day(ToD).
+ * current_tod_id    | text_box     |yes      |The id of the time of day(ToD).
+ * current_tod_image | @ref image   |yes      |The image for the time of day(ToD).
+ * current_tod_mask  | @ref image   |yes      |The image mask for the time of day(ToD).
+ * current_tod_sound | @ref label   |yes      |The sound for the time of day(ToD).
+ * next_tod          | @ref button  |yes      |Selects the next ToD.
+ * prev_tod          | @ref button  |yes      |Selects the previous ToD.
+ * lawful_bonus      | @ref slider  |yes      |Sets the Lawful Bonus for the current ToD.
+ * tod_red           | @ref slider  |yes      |Sets the red component of the current ToD.
+ * tod_green         | @ref slider  |yes      |Sets the green component of the current ToD.
+ * tod_blue          | @ref slider  |yes      |Sets the blue component of the current ToD.
+ */
 class custom_tod : public modal_dialog
 {
 public:
@@ -48,25 +66,25 @@ private:
 	virtual void post_show(window& window) override;
 
 	/** Callback for the next tod button */
-	void do_next_tod(window& window);
-	void do_prev_tod(window& window);
+	void do_next_tod();
+	void do_prev_tod();
 
-	void do_new_tod(window& window);
-	void do_delete_tod(window& window);
+	void do_new_tod();
+	void do_delete_tod();
 
 	template<custom_tod::string_pair(*fptr)(const time_of_day&)>
-	void select_file(window& window, const std::string& default_dir);
+	void select_file(const std::string& default_dir);
 
-	void color_slider_callback(window& window);
+	void color_slider_callback();
 
-	void update_tod_display(window& window);
+	void update_tod_display();
 
-	void update_lawful_bonus(window& window);
+	void update_lawful_bonus();
 
 	void set_selected_tod(time_of_day tod);
 	const time_of_day& get_selected_tod() const;
 
-	void update_selected_tod_info(window& window);
+	void update_selected_tod_info();
 
 	void copy_to_clipboard_callback(tod_attribute_getter getter);
 

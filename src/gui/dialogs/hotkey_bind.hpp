@@ -20,9 +20,7 @@
 
 #include <string>
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 
 class hotkey_bind : public modal_dialog
@@ -40,7 +38,7 @@ private:
 
 	hotkey::hotkey_ptr new_binding_;
 
-	void sdl_event_callback(window& win, const SDL_Event &event);
+	void sdl_event_callback(const SDL_Event& event);
 
 	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const override;
@@ -50,4 +48,3 @@ private:
 };
 
 } // namespace dialogs
-} // namespace gui2

@@ -20,7 +20,8 @@ def generate(env):
                   'DISTCC_MMAP',
                   'DISTCC_SAVE_TEMPS',
                   'DISTCC_TCP_CORK',
-                  'DISTCC_SSH'
+                  'DISTCC_SSH',
+                  'SSH_AUTH_SOCK'
                   ]:
             if i in os.environ and i not in env:
                 env['ENV'][i] = os.environ[i]

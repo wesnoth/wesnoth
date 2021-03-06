@@ -21,14 +21,11 @@
 
 #include "log.hpp"
 
-#include <boost/date_time.hpp>
-
 #include <map>
 #include <sstream>
 #include <ctime>
 #include <mutex>
-
-#include "global.hpp"
+#include <iomanip>
 
 namespace {
 
@@ -240,7 +237,7 @@ log_in_progress::log_in_progress(std::ostream& stream)
 
 void log_in_progress::operator|(formatter&& message)
 {
-	std::lock_guard<std::mutex> lock(log_mutex);
+	std::lock_guard lock(log_mutex);
 	for(int i = 0; i < indent; ++i)
 		stream_ << "  ";
 	if(timestamp_) {
@@ -295,4 +292,3 @@ std::stringstream& wml_error()
 }
 
 } // end namespace lg
-

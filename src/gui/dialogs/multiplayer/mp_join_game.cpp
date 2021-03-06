@@ -22,24 +22,25 @@
 #include "game_config.hpp"
 #include "game_config_manager.hpp"
 #include "game_initialization/mp_game_utils.hpp"
-#include "preferences/credentials.hpp"
 #include "gettext.hpp"
 #include "gui/auxiliary/find_widget.hpp"
 #include "gui/core/timer.hpp"
 #include "gui/dialogs/loading_screen.hpp"
 #include "gui/dialogs/multiplayer/faction_select.hpp"
+#include "gui/dialogs/multiplayer/player_list_helper.hpp"
 #include "gui/dialogs/transient_message.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/chatbox.hpp"
-#include "gui/widgets/menu_button.hpp"
 #include "gui/widgets/image.hpp"
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/listbox.hpp"
-#include "gui/widgets/settings.hpp"
+#include "gui/widgets/menu_button.hpp"
 #include "gui/widgets/tree_view.hpp"
 #include "gui/widgets/tree_view_node.hpp"
 #include "log.hpp"
 #include "mp_ui_alerts.hpp"
+#include "preferences/credentials.hpp"
+#include "saved_game.hpp"
 #include "statistics.hpp"
 #include "units/types.hpp"
 #include "utils/scope_exit.hpp"
@@ -51,9 +52,7 @@ static lg::log_domain log_mp_connect_engine("mp/connect/engine");
 #define WRN_MP LOG_STREAM(warn, log_mp_connect_engine)
 #define ERR_MP LOG_STREAM(err, log_mp_connect_engine)
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 
 REGISTER_DIALOG(mp_join_game)
@@ -93,20 +92,12 @@ bool mp_join_game::fetch_game_config()
 	bool has_scenario_and_controllers = false;
 	while(!has_scenario_and_controllers) {
 		config revc;
-		bool data_res = false;
 
 		gui2::dialogs::loading_screen::display([&]() {
 			gui2::dialogs::loading_screen::progress(loading_stage::download_level_data);
 
-			data_res = network_connection_.wait_and_receive_data(revc);
+			network_connection_.wait_and_receive_data(revc);
 		});
-
-		if(!data_res) {
-			// NOTE: there used to be a function after this that would throw wesnothd_error if data_res was false.
-			// However, this block here already handles that case. Dunno if we ever need this exception again.
-			// throw wesnothd_error(_("Connection timed out"));
-			return false;
-		}
 
 		if(const config& err = revc.child("error")) {
 			throw wesnothd_error(err["message"]);
@@ -237,12 +228,13 @@ void mp_join_game::pre_show(window& window)
 	// Set title
 	//
 	label& title = find_widget<label>(&window, "title", false);
-	title.set_label((formatter() << title.get_label() << " " << font::unicode_em_dash << " " << get_scenario()["name"].t_str()).str());
+	// FIXME: very hacky way to get the game name...
+	title.set_label((formatter() << level_.child("multiplayer")["scenario"] << " " << font::unicode_em_dash << " " << get_scenario()["name"].t_str()).str());
 
 	//
 	// Set up sides list
 	//
-	generate_side_list(window);
+	generate_side_list();
 
 	//
 	// Initialize chatbox and game rooms
@@ -263,7 +255,7 @@ void mp_join_game::pre_show(window& window)
 	//
 	// Set up the network handling
 	//
-	update_timer_ = add_timer(game_config::lobby_network_timer, std::bind(&mp_join_game::network_handler, this, std::ref(window)), true);
+	update_timer_ = add_timer(game_config::lobby_network_timer, std::bind(&mp_join_game::network_handler, this), true);
 
 	//
 	// Set up the Lua plugin context
@@ -337,13 +329,13 @@ bool mp_join_game::show_flg_select(int side_num, bool first_time)
 	return true;
 }
 
-void mp_join_game::generate_side_list(window& window)
+void mp_join_game::generate_side_list()
 {
 	if(stop_updates_) {
 		return;
 	}
 
-	tree_view& tree = find_widget<tree_view>(&window, "side_list", false);
+	tree_view& tree = find_widget<tree_view>(get_window(), "side_list", false);
 
 	tree.clear();
 	team_tree_map_.clear();
@@ -464,7 +456,7 @@ void mp_join_game::generate_side_list(window& window)
 					handled = halt = true;
 				};
 
-				connect_signal_mouse_left_click(*select_leader_button, std::bind(handler, _3, _4));
+				connect_signal_mouse_left_click(*select_leader_button, std::bind(handler, std::placeholders::_3, std::placeholders::_4));
 			} else {
 				select_leader_button->set_visible(widget::visibility::hidden);
 			}
@@ -486,11 +478,11 @@ void mp_join_game::close_faction_select_dialog_if_open()
 	}
 }
 
-void mp_join_game::network_handler(window& window)
+void mp_join_game::network_handler()
 {
 	// If the game has already started, close the dialog immediately.
 	if(level_["started"].to_bool()) {
-		window.set_retval(retval::OK);
+		set_retval(retval::OK);
 		return;
 	}
 
@@ -500,7 +492,7 @@ void mp_join_game::network_handler(window& window)
 	}
 
 	// Update chat
-	find_widget<chatbox>(&window, "chat", false).process_network_data(data);
+	find_widget<chatbox>(get_window(), "chat", false).process_network_data(data);
 
 	if(!data["message"].empty()) {
 		gui2::show_transient_message(_("Response") , data["message"]);
@@ -509,16 +501,16 @@ void mp_join_game::network_handler(window& window)
 	if(data["failed"].to_bool()) {
 		close_faction_select_dialog_if_open();
 
-		window.set_retval(retval::CANCEL);
+		set_retval(retval::CANCEL);
 	} else if(data.child("start_game")) {
 		close_faction_select_dialog_if_open();
 
 		level_["started"] = true;
-		window.set_retval(retval::OK);
+		set_retval(retval::OK);
 	} else if(data.child("leave_game")) {
 		close_faction_select_dialog_if_open();
 
-		window.set_retval(retval::CANCEL);
+		set_retval(retval::CANCEL);
 	}
 
 	if(data.child("stop_updates")) {
@@ -527,7 +519,7 @@ void mp_join_game::network_handler(window& window)
 		// TODO: We should catch config::error and then leave the game.
 		level_.apply_diff(c);
 
-		generate_side_list(window);
+		generate_side_list();
 	} else if(const config& change = data.child("change_controller")) {
 		if(config& side_to_change = get_scenario().find_child("side", "side", change["side"])) {
 			side_to_change.merge_with(change);
@@ -539,7 +531,7 @@ void mp_join_game::network_handler(window& window)
 	} else if(data.has_child("scenario") || data.has_child("snapshot") || data.child("next_scenario")) {
 		level_ = first_scenario_ ? data : data.child("next_scenario");
 
-		generate_side_list(window);
+		generate_side_list();
 	}
 
 	if(data.has_child("turn")) {
@@ -587,4 +579,3 @@ void mp_join_game::post_show(window& window)
 }
 
 } // namespace dialogs
-} // namespace gui2

@@ -32,7 +32,7 @@
 #include "menu_events.hpp"
 #include "team.hpp"
 
-#include "utils/functional.hpp"
+#include <functional>
 
 static lg::log_domain log_gui("gui/dialogs/mp_change_control");
 #define ERR_GUI LOG_STREAM(err,   log_gui)
@@ -40,29 +40,8 @@ static lg::log_domain log_gui("gui/dialogs/mp_change_control");
 #define LOG_GUI LOG_STREAM(info,  log_gui)
 #define DBG_GUI LOG_STREAM(debug, log_gui)
 
-namespace gui2
+namespace gui2::dialogs
 {
-namespace dialogs
-{
-
-/*WIKI
- * @page = GUIWindowDefinitionWML
- * @order = 2_mp_change_control
- *
- * == Change control dialog ==
- *
- * This shows the multiplayer change control dialog.
- *
- * @begin{table}{dialog_widgets}
- * sides_list & & listbox & m &
- *         List of sides participating in the MP game. $
- *
- * nicks_list & & listbox & m &
- *         List of nicks of all clients playing or observing the MP game. $
- *
- * @end{table}
- *
- */
 
 REGISTER_DIALOG(mp_change_control)
 
@@ -81,10 +60,10 @@ void mp_change_control::pre_show(window& window)
 	listbox& nicks_list = find_widget<listbox>(&window, "nicks_list", false);
 
 	connect_signal_notify_modified(sides_list,
-		std::bind(&mp_change_control::handle_sides_list_item_clicked, this, std::ref(window)));
+		std::bind(&mp_change_control::handle_sides_list_item_clicked, this));
 
 	connect_signal_notify_modified(nicks_list,
-		std::bind(&mp_change_control::handle_nicks_list_item_clicked, this, std::ref(window)));
+		std::bind(&mp_change_control::handle_nicks_list_item_clicked, this));
 
 	//
 	// Initialize sides list
@@ -147,25 +126,25 @@ void mp_change_control::pre_show(window& window)
 		nicks_list.add_row(data);
 	}
 
-	handle_sides_list_item_clicked(window);
-	handle_nicks_list_item_clicked(window);
+	handle_sides_list_item_clicked();
+	handle_nicks_list_item_clicked();
 }
 
-void mp_change_control::handle_sides_list_item_clicked(window& window)
+void mp_change_control::handle_sides_list_item_clicked()
 {
-	selected_side_ = find_widget<listbox>(&window, "sides_list", false).get_selected_row();
+	selected_side_ = find_widget<listbox>(get_window(), "sides_list", false).get_selected_row();
 
-	highlight_side_nick(window);
+	highlight_side_nick();
 }
 
-void mp_change_control::handle_nicks_list_item_clicked(window& window)
+void mp_change_control::handle_nicks_list_item_clicked()
 {
-	selected_nick_ = find_widget<listbox>(&window, "nicks_list", false).get_selected_row();
+	selected_nick_ = find_widget<listbox>(get_window(), "nicks_list", false).get_selected_row();
 }
 
-void mp_change_control::highlight_side_nick(window& window)
+void mp_change_control::highlight_side_nick()
 {
-	listbox& nicks_list = find_widget<listbox>(&window, "nicks_list", false);
+	listbox& nicks_list = find_widget<listbox>(get_window(), "nicks_list", false);
 	const auto& teams = menu_handler_.board().teams();
 
 	int i = 0;
@@ -200,4 +179,3 @@ void mp_change_control::post_show(window& window)
 }
 
 } // namespace dialogs
-} // namespace gui2

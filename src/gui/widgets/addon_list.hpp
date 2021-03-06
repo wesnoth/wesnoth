@@ -134,7 +134,7 @@ public:
 	void add_list_to_keyboard_chain();
 
 	/** Sets up a callback that will be called when the player changes the sorting order. */
-	void set_callback_order_change(std::function<void(unsigned, listbox::SORT_ORDER)> callback) {
+	void set_callback_order_change(std::function<void(unsigned, preferences::SORT_ORDER)> callback) {
 		get_listbox().set_callback_order_change(callback);
 	}
 
@@ -176,10 +176,10 @@ private:
 
 	void finalize_setup();
 
-	/** Needed because otherwise the add-on with the first ID would be initially selected. */
+public:
+	/** Choose the item at the top of the list (taking account of sort order). */
 	void select_first_addon();
 
-public:
 	/** Static type getter that does not rely on the widget being constructed. */
 	static const std::string& type();
 
@@ -187,7 +187,7 @@ private:
 	/** Inherited from styled_widget, implemented by REGISTER_WIDGET. */
 	virtual const std::string& get_control_type() const override;
 
-	/** See @ref container_::set_self_active. */
+	/** See @ref container_base::set_self_active */
 	void set_self_active(const bool) override
 	{
 		// DO NOTHING
@@ -216,7 +216,7 @@ public:
 
 	using builder_styled_widget::build;
 
-	widget* build() const;
+	virtual widget* build() const override;
 
 private:
 	widget::visibility install_status_visibility_;

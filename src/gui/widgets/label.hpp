@@ -28,7 +28,31 @@ namespace implementation
 
 // ------------ WIDGET -----------{
 
-/** Label showing a text. */
+/**
+ * @ingroup GUIWidgetWML
+ *
+ * A label displays a text, the text can be wrapped but no scrollbars are provided.
+ *
+ * Although the label itself has no event interaction it still has two states.
+ * The reason is that labels are often used as visual indication of the state of the widget it labels.
+ *
+ * Note: The above is outdated, if "link_aware" is enabled then there is interaction.
+ *
+ * The following states exist:
+ * * state_enabled - the label is enabled.
+ * * state_disabled - the label is disabled.
+ *
+ * Key                |Type                                |Default |Description
+ * -------------------|------------------------------------|--------|-------------
+ * link_aware         | @ref guivartype_f_bool "f_bool"    |false   |Whether the label is link aware. This means it is rendered with links highlighted, and responds to click events on those links.
+ * link_color         | @ref guivartype_string "string"    |\#ffff00|The color to render links with. This string will be used verbatim in pango markup for each link.
+ *
+ * The label specific variables:
+ * Key                |Type                                |Default|Description
+ * -------------------|------------------------------------|-------|-------------
+ * wrap               | @ref guivartype_bool "bool"        |false  |Is wrapping enabled for the label.
+ * characters_per_line| @ref guivartype_unsigned "unsigned"|0      |Sets the maximum number of characters per line. The amount is an approximate since the width of a character differs. E.g. iii is smaller than MMM. When the value is non-zero it also implies can_wrap is true. When having long strings wrapping them can increase readability, often 66 characters per line is considered the optimum for a one column text.
+ */
 class label : public styled_widget
 {
 	friend struct implementation::builder_label;
@@ -37,28 +61,58 @@ public:
 	explicit label(const implementation::builder_label& builder);
 
 	/** See @ref widget::can_wrap. */
-	virtual bool can_wrap() const override;
+	virtual bool can_wrap() const override
+	{
+		return can_wrap_ || characters_per_line_ != 0;
+	}
 
 	/** See @ref styled_widget::get_characters_per_line. */
-	virtual unsigned get_characters_per_line() const override;
+	virtual unsigned get_characters_per_line() const override
+	{
+		return characters_per_line_;
+	}
 
 	/** See @ref styled_widget::get_link_aware. */
-	virtual bool get_link_aware() const override;
+	virtual bool get_link_aware() const override
+	{
+		return link_aware_;
+	}
 
 	/** See @ref styled_widget::get_link_aware. */
-	virtual color_t get_link_color() const override;
+	virtual color_t get_link_color() const override
+	{
+		return link_color_;
+	}
 
 	/** See @ref styled_widget::set_active. */
 	virtual void set_active(const bool active) override;
 
 	/** See @ref styled_widget::get_active. */
-	virtual bool get_active() const override;
+	virtual bool get_active() const override
+	{
+		return state_ != DISABLED;
+	}
 
 	/** See @ref styled_widget::get_state. */
-	virtual unsigned get_state() const override;
+	virtual unsigned get_state() const override
+	{
+		return state_;
+	}
 
 	/** See @ref widget::disable_click_dismiss. */
-	bool disable_click_dismiss() const override;
+	bool disable_click_dismiss() const override
+	{
+		return false;
+	}
+
+	/** See @ref widget::can_mouse_focus. */
+	virtual bool can_mouse_focus() const override
+	{
+		return !tooltip().empty() || get_link_aware();
+	}
+
+	/** See @ref styled_widget::update_canvas. */
+	virtual void update_canvas() override;
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
@@ -67,13 +121,14 @@ public:
 		can_wrap_ = wrap;
 	}
 
-	void set_characters_per_line(const unsigned set_characters_per_line);
+	void set_characters_per_line(const unsigned characters_per_line)
+	{
+		characters_per_line_ = characters_per_line;
+	}
 
 	void set_link_aware(bool l);
 
 	void set_link_color(const color_t& color);
-
-	virtual bool can_mouse_focus() const override { return !tooltip().empty(); }
 
 	void set_can_shrink(bool can_shrink)
 	{
@@ -147,12 +202,27 @@ private:
 	/**
 	 * Left click signal handler: checks if we clicked on a hyperlink
 	 */
-	void signal_handler_left_button_click(const event::ui_event event, bool & handled);
+	void signal_handler_left_button_click(bool& handled);
 
 	/**
 	 * Right click signal handler: checks if we clicked on a hyperlink, copied to clipboard
 	 */
-	void signal_handler_right_button_click(const event::ui_event event, bool & handled);
+	void signal_handler_right_button_click(bool& handled);
+
+	/**
+	 * Mouse motion signal handler: checks if the cursor is on a hyperlink
+	 */
+	void signal_handler_mouse_motion(bool& handled, const point& coordinate);
+
+	/**
+	 * Mouse leave signal handler: checks if the cursor left a hyperlink
+	 */
+	void signal_handler_mouse_leave(bool& handled);
+
+	/**
+	 * Implementation detail for (re)setting the hyperlink cursor.
+	 */
+	void update_mouse_cursor(bool enable);
 };
 
 // }---------- DEFINITION ---------{
@@ -166,7 +236,6 @@ struct label_definition : public styled_widget_definition
 	{
 		explicit resolution(const config& cfg);
 
-		bool link_aware;
 		color_t link_color;
 	};
 };
@@ -182,7 +251,7 @@ struct builder_label : public builder_styled_widget
 
 	using builder_styled_widget::build;
 
-	widget* build() const;
+	virtual widget* build() const override;
 
 	bool wrap;
 
@@ -191,6 +260,7 @@ struct builder_label : public builder_styled_widget
 	PangoAlignment text_alignment;
 
 	bool can_shrink;
+	bool link_aware;
 };
 
 } // namespace implementation

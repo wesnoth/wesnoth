@@ -42,9 +42,6 @@ const char UNTRANSLATABLE_PART = 0x02;
 const char TEXTDOMAIN_SEPARATOR = 0x03;
 const char ID_TRANSLATABLE_PART = 0x04;
 const char PLURAL_PART = 0x05;
-
-std::vector<std::string> id_to_textdomain;
-std::map<std::string, unsigned int> textdomain_to_id;
 }
 
 std::size_t t_string_base::hash_value() const

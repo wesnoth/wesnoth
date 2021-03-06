@@ -22,7 +22,7 @@
 #include "gui/core/timer.hpp"
 #include "serialization/unicode.hpp"
 
-#include "utils/functional.hpp"
+#include <functional>
 
 #include <limits>
 
@@ -48,24 +48,24 @@ text_box_base::text_box_base(const implementation::builder_styled_widget& builde
 #ifdef __unix__
 	// pastes on UNIX systems.
 	connect_signal<event::MIDDLE_BUTTON_CLICK>(std::bind(
-			&text_box_base::signal_handler_middle_button_click, this, _2, _3));
+			&text_box_base::signal_handler_middle_button_click, this, std::placeholders::_2, std::placeholders::_3));
 
 #endif
 
 	connect_signal<event::SDL_KEY_DOWN>(std::bind(
-			&text_box_base::signal_handler_sdl_key_down, this, _2, _3, _5, _6));
-	connect_signal<event::SDL_TEXT_INPUT>(std::bind(&text_box_base::handle_commit, this, _3, _5));
-	connect_signal<event::SDL_TEXT_EDITING>(std::bind(&text_box_base::handle_editing, this, _3, _5, _6, _7));
+			&text_box_base::signal_handler_sdl_key_down, this, std::placeholders::_2, std::placeholders::_3, std::placeholders::_5, std::placeholders::_6));
+	connect_signal<event::SDL_TEXT_INPUT>(std::bind(&text_box_base::handle_commit, this, std::placeholders::_3, std::placeholders::_5));
+	connect_signal<event::SDL_TEXT_EDITING>(std::bind(&text_box_base::handle_editing, this, std::placeholders::_3, std::placeholders::_5, std::placeholders::_6, std::placeholders::_7));
 
 	connect_signal<event::RECEIVE_KEYBOARD_FOCUS>(std::bind(
-			&text_box_base::signal_handler_receive_keyboard_focus, this, _2));
+			&text_box_base::signal_handler_receive_keyboard_focus, this, std::placeholders::_2));
 	connect_signal<event::LOSE_KEYBOARD_FOCUS>(
-			std::bind(&text_box_base::signal_handler_lose_keyboard_focus, this, _2));
+			std::bind(&text_box_base::signal_handler_lose_keyboard_focus, this, std::placeholders::_2));
 
 	connect_signal<event::MOUSE_ENTER>(
-			std::bind(&text_box_base::signal_handler_mouse_enter, this, _2, _3));
+			std::bind(&text_box_base::signal_handler_mouse_enter, this, std::placeholders::_2, std::placeholders::_3));
 	connect_signal<event::MOUSE_LEAVE>(
-			std::bind(&text_box_base::signal_handler_mouse_leave, this, _2, _3));
+			std::bind(&text_box_base::signal_handler_mouse_leave, this, std::placeholders::_2, std::placeholders::_3));
 
 	toggle_cursor_timer(true);
 }

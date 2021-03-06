@@ -9,11 +9,11 @@ wesnoth.wml_actions.random_placement = function(cfg)
 	local num_items = cfg.num_items or wml.error("[random_placement] missing required 'num_items' attribute")
 	local variable = cfg.variable or wml.error("[random_placement] missing required 'variable' attribute")
 	local allow_less = cfg.allow_less == true
-	local variable_previous = utils.start_var_scope(variable)
+	local variable_previous <close> = utils.scoped_var(variable)
 	local math_abs = math.abs
-	local locs = wesnoth.get_locations(filter)
+	local locs = wesnoth.map.find(filter)
 	if type(num_items) == "string" then
-		if num_items:match('^%s%(.*%)%s$') then
+		if num_items:match('^%s*%(.*%)%s*$') then
 			local params = {size = #locs}
 			local result = wesnoth.eval_formula(num_items, params)
 			num_items = math.floor(tonumber(result))
@@ -40,7 +40,7 @@ wesnoth.wml_actions.random_placement = function(cfg)
 		wml.variables[variable .. ".x"] = point[1]
 		wml.variables[variable .. ".y"] = point[2]
 		wml.variables[variable .. ".n"] = i
-		wml.variables[variable .. ".terrain"] = wesnoth.get_terrain(point[1], point[2])
+		wml.variables[variable .. ".terrain"] = wesnoth.current.map[point]
 		if distance < 0 then
 			-- optimisation: nothing to do for distance < 0
 		elseif distance == 0 then
@@ -87,11 +87,8 @@ wesnoth.wml_actions.random_placement = function(cfg)
 				utils.set_exiting("none")
 				break
 			elseif action ~= "none" then
-				utils.end_var_scope(variable, variable_previous)
 				return
 			end
 		end
 	end
-	utils.end_var_scope(variable, variable_previous)
-
 end

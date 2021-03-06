@@ -108,7 +108,12 @@ local function preshow(dialog)
             end
 
             local list_item = dialog.unit_list:add_item()
-            list_item.unit_type.label   = afford_color_span_start .. unit_type.name .. " " .. z.sota_variation .. afford_color_span_end
+            if z.sota_name_in_recruit_dialog then
+                list_item.unit_type.label   = afford_color_span_start .. z.sota_name_in_recruit_dialog .. afford_color_span_end
+            else
+                -- the player started the campaign with 1.15.6 or earlier
+                list_item.unit_type.label   = afford_color_span_start .. unit_type.name .. " " .. z.sota_variation .. afford_color_span_end
+            end
             list_item.unit_sprite.label = unit_type.image .. "~RC(magenta>red)"
             list_item.unit_cost.label   = afford_color_span_start .. unit_type.cost .. afford_color_span_end
 

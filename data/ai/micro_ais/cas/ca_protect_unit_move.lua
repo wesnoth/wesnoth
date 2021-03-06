@@ -6,7 +6,7 @@ local F = wesnoth.require "functional"
 local function get_protected_units(cfg)
     local units = {}
     for u in wml.child_range(cfg, "unit") do
-        table.insert(units, AH.get_units_with_moves { id = u.id }[1])
+        table.insert(units, AH.get_units_with_moves { id = u.id, side = wesnoth.current.side }[1])
     end
     return units
 end
@@ -47,7 +47,7 @@ function ca_protect_unit_move:execution(cfg, data)
 
     local terrain_defense_map = LS.create()
     reach_map:iter(function(x, y, data)
-        terrain_defense_map:insert(x, y, unit:defense_on(wesnoth.get_terrain(x, y)))
+        terrain_defense_map:insert(x, y, unit:defense_on(wesnoth.current.map[{x, y}]))
     end)
 
     local goal_distance_map = LS.create()

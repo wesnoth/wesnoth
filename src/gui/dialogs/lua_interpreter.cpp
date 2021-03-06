@@ -37,14 +37,13 @@
 #include "scripting/lua_kernel_base.hpp"
 #include "serialization/string_utils.hpp"
 #include "serialization/unicode.hpp"
-#include "lexical_cast.hpp"
 #include "log.hpp"
 #include "font/pango/escape.hpp"
 
 #include <sstream>
 #include <string>
 #include <vector>
-#include "utils/functional.hpp"
+#include <functional>
 
 #ifdef HAVE_HISTORY
 #include "filesystem.hpp"
@@ -57,21 +56,8 @@ static lg::log_domain log_lua_int("lua/interpreter");
 #define WRN_LUA LOG_STREAM(warn, log_lua_int)
 #define ERR_LUA LOG_STREAM(err, log_lua_int)
 
-namespace gui2
+namespace gui2::dialogs
 {
-namespace dialogs
-{
-
-/*WIKI
- * @page = GUIWindowDefinitionWML
- * @order = 3_lua_interpretter
- *
- * == Settings manager ==
- *
- * This shows the settings manager
- *
- */
-
 
 REGISTER_DIALOG(lua_interpreter)
 
@@ -167,11 +153,14 @@ public:
 	 **/
 	void add_dialog_message(const std::string & msg);
 
-	std::string get_log() const { return log_.str(); } ///< Get the log string
-	std::string get_raw_log() const { return raw_log_.str(); } ///< Get the unescaped log
-	std::string get_name() const { return L_.my_name(); } ///< Get a string describing the name of lua kernel
+	/** Get the log string */
+	std::string get_log() const { return log_.str(); }
+	/** Get the unescaped log */
+	std::string get_raw_log() const { return raw_log_.str(); }
+	/** Get a string describing the name of lua kernel */
+	std::string get_name() const { return L_.my_name(); }
 
-	/// Clear the console log
+	/** Clear the console log */
 	void clear_log() {
 		L_.clear_log();
 		log_.str("");
@@ -230,9 +219,8 @@ public:
 		} catch (...) { std::cerr << "Swallowed an exception when trying to write lua command line history\n";}
 	}
 #endif
-	void add_to_history (const std::string& str) {
+	void add_to_history ([[maybe_unused]] const std::string& str) {
 		prefix_ = "";
-		UNUSED(str);
 #ifdef HAVE_HISTORY
 		add_history(str.c_str());
 #endif
@@ -250,7 +238,7 @@ public:
 		LOG_LUA << "updated prefix\n";
 	}
 
-	std::string search( int direction ) {
+	std::string search([[maybe_unused]] int direction ) {
 #ifdef HAVE_HISTORY
 		LOG_LUA << "searching in direction " << direction << " from position " << where_history() << "\n";
 
@@ -294,7 +282,6 @@ public:
 
 		// reset, set history to the end and prefix_ to empty, and return the current prefix_ for the user to edit
 		end_of_history_ = true;
-		UNUSED(direction);
 		std::string temp = prefix_;
 		prefix_ = "";
 		return temp;
@@ -322,7 +309,7 @@ public:
 
 			std::string result;
 			for (int i = 0; the_list[i]; i++) {
-				result += lexical_cast<std::string, int>(i+history_base);
+				result += std::to_string(i+history_base);
 				result += ": ";
 				result += the_list[i]->line;
 				result += "\n";
@@ -339,7 +326,7 @@ public:
 	// Does history expansion in a command line. A return value of true indicates an error,
 	// the error message will be returned in the string argument. A return value of false
 	// indicates success and that execution should proceed.
-	bool do_history_expansion (std::string & cmd) {
+	bool do_history_expansion ([[maybe_unused]] std::string & cmd) {
 #ifdef HAVE_HISTORY
 		// Do history expansions
 		std::unique_ptr<char[]> cmd_cstr(new char[cmd.length()+1]);
@@ -358,7 +345,6 @@ public:
 		cmd = expansion;
 		free(expansion);
 #endif
-		UNUSED(cmd);
 		return false;
 	}
 };
@@ -406,7 +392,8 @@ public:
 						   const SDL_Keycode key,
 						   window& window);
 
-	void update_view(); ///< Update the view based on the model
+	/** Update the view based on the model */
+	void update_view();
 
 	friend class lua_interpreter;
 };
@@ -467,9 +454,9 @@ void lua_interpreter::controller::bind(window& window)
 			*text_entry,
 			std::bind(&lua_interpreter::controller::input_keypress_callback,
 						this,
-						_3,
-						_4,
-						_5,
+						std::placeholders::_3,
+						std::placeholders::_4,
+						std::placeholders::_5,
 						std::ref(window)));
 
 	copy_button = find_widget<button>(&window, "copy", false, true);
@@ -732,4 +719,3 @@ lua_interpreter::lua_interpreter(lua_kernel_base & lk)
 }
 
 } // namespace dialogs
-} // namespace gui2

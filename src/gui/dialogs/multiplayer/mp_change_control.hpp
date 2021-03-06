@@ -24,11 +24,18 @@ namespace events
 	class menu_handler;
 }
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 
+/**
+ * @ingroup GUIWindowDefinitionWML
+ *
+ * This shows the multiplayer change control dialog.
+ * Key               |Type          |Mandatory|Description
+ * ------------------|--------------|---------|-----------
+ * sides_list        | @ref listbox |yes      |List of sides participating in the MP game.
+ * nicks_list        | @ref listbox |yes      |List of nicks of all clients playing or observing the MP game.
+ */
 class mp_change_control : public modal_dialog
 {
 public:
@@ -46,10 +53,10 @@ private:
 	/** Inherited from modal_dialog. */
 	virtual void post_show(window& window) override;
 
-	void handle_sides_list_item_clicked(window& window);
-	void handle_nicks_list_item_clicked(window& window);
+	void handle_sides_list_item_clicked();
+	void handle_nicks_list_item_clicked();
 
-	void highlight_side_nick(window& window);
+	void highlight_side_nick();
 
 	events::menu_handler& menu_handler_;
 
@@ -64,4 +71,3 @@ private:
 };
 
 } // namespace dialogs
-} // namespace gui2

@@ -21,10 +21,9 @@ function ca_forest_animals_new_rabbit:execution(cfg)
 
     -- Eliminate all holes that have an enemy within 'rabbit_enemy_distance' hexes
     -- We also add a random number to the ones we keep, for selection of the holes later
-    local width, height = wesnoth.get_map_size()
     local holes = {}
     for _,item in ipairs(all_items) do
-        if (item.x > 0) and (item.x <= width) and (item.y > 0) and (item.y <= height) then
+        if wesnoth.current.map:on_board(item) then
             local enemies = AH.get_attackable_enemies {
                 { "filter_location", { x = item.x, y = item.y, radius = rabbit_enemy_distance } }
             }

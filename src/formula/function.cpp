@@ -19,6 +19,7 @@
 #include "formula/debugger.hpp"
 #include "game_config.hpp"
 #include "game_display.hpp"
+#include "global.hpp"
 #include "log.hpp"
 
 #include <boost/math/constants/constants.hpp>
@@ -264,7 +265,7 @@ DEFINE_WFL_FUNCTION(debug_print, 1, 2)
 
 		LOG_SF << str1 << std::endl;
 
-		if(game_config::debug) {
+		if(game_config::debug && game_display::get_singleton()) {
 			game_display::get_singleton()->get_chat_manager().add_chat_message(
 				std::time(nullptr), "WFL", 0, str1, events::chat_handler::MESSAGE_PUBLIC, false);
 		}
@@ -1226,12 +1227,9 @@ DEFINE_WFL_FUNCTION(adjacent_locs, 1, 1)
 		.convert_to<location_callable>()
 		->loc();
 
-	adjacent_loc_array_t adj;
-	get_adjacent_tiles(loc, adj.data());
-
 	std::vector<variant> v;
-	for(unsigned n = 0; n < adj.size(); ++n) {
-		v.emplace_back(std::make_shared<location_callable>(adj[n]));
+	for(const map_location& adj : get_adjacent_tiles(loc)) {
+		v.emplace_back(std::make_shared<location_callable>(adj));
 	}
 
 	return variant(v);

@@ -1,6 +1,6 @@
 ## Compiling Wesnoth on Windows using CodeBlocks
 
-(Last tested using Wesnoth 1.14.5+ on Code::Blocks 16.01)
+(Last tested using Wesnoth 1.15.9+ on Code::Blocks 17.12)
 
 1.  Get a Wesnoth source tarball or Git repository clone. The folder which
     contains the data/, projectfiles/, and src/ subfolders is referred to as
@@ -9,18 +9,16 @@
 2.  Install CodeBlocks from <http://www.codeblocks.org/>.
     MinGW is not needed.
 
-3.  Download and unpack MinGW-w64 from <https://sourceforge.net/projects/mingw-w64/files/Toolchains%20targetting%20Win32/Personal%20Builds/mingw-builds/7.2.0/threads-posix/dwarf/i686-7.2.0-release-posix-dwarf-rt_v5-rev0.7z> or
-    <https://sourceforge.net/projects/mingw-w64/files/Toolchains%20targetting%20Win32/Personal%20Builds/mingw-builds/7.2.0/threads-posix/sjlj/i686-7.2.0-release-posix-sjlj-rt_v5-rev0.7z>.
+3.  Download and unpack MinGW-w64 from <https://sourceforge.net/projects/mingw-w64/files/Toolchains%20targetting%20Win64/Personal%20Builds/mingw-builds/8.1.0/threads-posix/seh/x86_64-8.1.0-release-posix-seh-rt_v6-rev0.7z>.
     Note that the project files in `wesnoth_root/projectfiles/CodeBlocks/` may
     contain a setting to compile with OpenMP support, so you should make sure
     that this option is enabled while installing the compiler (mark the
     checkbox for this when choosing components to install).
 
-    NOTE: You must make sure to download the 32-bit version.
-    Building a 64-bit Wesnoth executable on Windows is currently not supported and will
-    fail with the SDK package provided in the next step.
+    NOTE: You must make sure to download the 64-bit version.
+
 	
-	To resolve out of memory errors when creating debug builds, follow these steps:
+	If you download the 32 bit version and you have out of memory errors when creating debug builds, you can follow these steps:
 	
 	1. If you use 32-bit Windows, run in admin command prompt
 	```
@@ -37,6 +35,8 @@
 	
 	C:\masm32\bineditbin.exe /LARGEADDRESSAWARE cc1plus.exe
 	```
+	
+	If you use the 64-bit version then you cannot use MASM32 since it doesn't have a 64 bit version, which means you cannot make a debug build.
 
 4.  Download the latest `CodeBlocksWinSDK*.zip` package from <http://sourceforge.net/projects/wesnoth/files/SDK/>.
     The package contains the right version/build combination of source headers,

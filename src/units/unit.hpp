@@ -21,11 +21,12 @@
 #include "units/attack_type.hpp"
 #include "units/race.hpp"
 #include "units/alignment.hpp"
+#include "utils/variant.hpp"
+
+#include <boost/dynamic_bitset_fwd.hpp>
 
 #include <bitset>
-#include <boost/dynamic_bitset_fwd.hpp>
-#include <boost/ptr_container/ptr_vector.hpp>
-#include <boost/variant.hpp>
+#include <optional>
 
 class display;
 class team;
@@ -34,21 +35,7 @@ class unit_formula_manager;
 class vconfig;
 struct color_t;
 
-namespace unit_detail
-{
-	template<typename T>
-	const T& get_or_default(const std::unique_ptr<T>& v)
-	{
-		if(v) {
-			return *v;
-		} else {
-			static const T def;
-			return def;
-		}
-	}
-}
-
-/// Data typedef for unit_ability_list.
+/** Data typedef for unit_ability_list. */
 struct unit_ability
 {
 	unit_ability(const config* ability_cfg, map_location student_loc, map_location teacher_loc)
@@ -56,17 +43,21 @@ struct unit_ability
 		, teacher_loc(teacher_loc)
 		, ability_cfg(ability_cfg)
 	{
-
 	}
-	/// Used by the formula in the ability.
-	/// The REAL location of the student (not the 'we are assiming the student is at this position' location)
-	/// once unit_ability_list can contain abilities from different 'students', as it contains abilities from
-	/// a unit aswell from its opponents (abilities with apply_to= opponent)
+
+	/**
+	 * Used by the formula in the ability.
+	 * The REAL location of the student (not the 'we are assuming the student is at this position' location)
+	 * once unit_ability_list can contain abilities from different 'students', as it contains abilities from
+	 * a unit aswell from its opponents (abilities with apply_to= opponent)
+	 */
 	map_location student_loc;
-	/// The location of the teacher, that is the unit who owns the ability tags
-	/// (differnt from student because of [afect_adjacent])
+	/**
+	 * The location of the teacher, that is the unit who owns the ability tags
+	 * (different from student because of [affect_adjacent])
+	 */
 	map_location teacher_loc;
-	/// The contents of the ability tag, never nullptr.
+	/** The contents of the ability tag, never nullptr. */
 	const config* ability_cfg;
 };
 
@@ -111,7 +102,7 @@ public:
 
 	const map_location& loc() const { return loc_; }
 
-	/// Appens the abilities from @a other to @a this, ignores other.loc()
+	/** Appens the abilities from @a other to @a this, ignores other.loc() */
 	void append(const unit_ability_list& other)
 	{
 		std::copy( other.begin(), other.end(), std::back_inserter(cfgs_ ));
@@ -137,6 +128,7 @@ public:
 
 	/** The path to the leader crown overlay. */
 	static const std::string& leader_crown();
+
 private:
 	void init(const config& cfg, bool use_traits = false, const vconfig* vcfg = nullptr);
 
@@ -145,12 +137,13 @@ private:
 	// Copy constructor
 	unit(const unit& u);
 
-
 	struct unit_ctor_t {};
+
 public:
 	//private default ctor, butusing constructor to allow calling make_shared<unit> in create().
 	unit(unit_ctor_t);
 	unit() = delete;
+
 private:
 	enum UNIT_ATTRIBUTE
 	{
@@ -176,16 +169,21 @@ private:
 		UA_UPKEEP,
 		UA_COUNT
 	};
+
 	void set_attr_changed(UNIT_ATTRIBUTE attr)
 	{
 		changed_attributes_[int(attr)] = true;
 	}
+
 	bool get_attacks_changed() const;
+
 	bool get_attr_changed(UNIT_ATTRIBUTE attr) const
 	{
 		return changed_attributes_[int(attr)];
 	}
+
 	void clear_changed_attributes();
+
 public:
 	/** Initializes a unit from a config */
 	static unit_ptr create(const config& cfg, bool use_traits = false, const vconfig* vcfg = nullptr)
@@ -210,13 +208,8 @@ public:
 
 	unit_ptr clone() const
 	{
-		return unit_ptr(std::shared_ptr<unit>(new unit(*this)));
+		return std::shared_ptr<unit>(new unit(*this));
 	}
-
-	//unit_ptr shared_from_this()
-	//{
-	//	return unit_ptr(this);
-	//}
 
 	virtual ~unit();
 
@@ -316,9 +309,8 @@ public:
 	 */
 	std::vector<std::pair<std::string, std::string>> amla_icons() const;
 
-	using advancements_list= boost::ptr_vector<config>;
 	/** The raw, unparsed data for modification advancements. */
-	const advancements_list& modification_advancements() const
+	const std::vector<config>& modification_advancements() const
 	{
 		return advancements_;
 	}
@@ -686,13 +678,13 @@ public:
 	 */
 	std::string usage() const
 	{
-		return unit_detail::get_or_default(usage_);
+		return usage_.value_or("");
 	}
 
 	/** Sets this unit's usage. */
 	void set_usage(const std::string& usage)
 	{
-		usage_.reset(new std::string(usage));
+		usage_ = usage;
 	}
 
 	/**
@@ -822,7 +814,7 @@ public:
 
 	/**
 	 * Heal the unit
-	 * @amount The number of hitpoints to gain
+	 * @param amount The number of hitpoints to gain
 	 */
 	void heal(int amount);
 
@@ -858,14 +850,14 @@ public:
 	 * Built-in status effects known to the engine
 	 */
 	enum state_t {
-		STATE_SLOWED = 0, ///< The unit is slowed - it moves slower and does less damage
-		STATE_POISONED,   ///< The unit is poisoned - it loses health each turn
-		STATE_PETRIFIED,  ///< The unit is petrified - it cannot move or be attacked
-		STATE_UNCOVERED,  ///< The unit is uncovered - it was hiding but has been spotted
-		STATE_NOT_MOVED,  ///< The unit has not moved @todo Explain better
-		STATE_UNHEALABLE, ///< The unit cannot be healed
-		STATE_GUARDIAN,   ///< The unit is a guardian - it won't move unless a target is sighted
-		STATE_UNKNOWN = -1///< A status effect not known to the engine
+		STATE_SLOWED = 0, /** The unit is slowed - it moves slower and does less damage */
+		STATE_POISONED,   /** The unit is poisoned - it loses health each turn */
+		STATE_PETRIFIED,  /** The unit is petrified - it cannot move or be attacked */
+		STATE_UNCOVERED,  /** The unit is uncovered - it was hiding but has been spotted */
+		STATE_NOT_MOVED,  /** The unit has not moved @todo Explain better */
+		STATE_UNHEALABLE, /** The unit cannot be healed */
+		STATE_GUARDIAN,   /** The unit is a guardian - it won't move unless a target is sighted */
+		STATE_UNKNOWN = -1/** A status effect not known to the engine */
 	};
 
 	/**
@@ -963,7 +955,8 @@ public:
 	 *
 	 * @param attack              The attack to consider.
 	 * @param attacker            Whether this unit should be considered the attacker.
-	 * @param loc                 TODO: what does this do?
+	 * @param loc                 The unit's location (to resolve [resistance] abilities)
+	 * @param weapon              The weapon to check for any abilities or weapon specials
 	 *
 	 * @returns                   The expected damage.
 	 */
@@ -1026,6 +1019,8 @@ public:
 	 * @param damage_name The damage type
 	 * @param attacker True if this unit is on the offensive (to resolve [resistance] abilities)
 	 * @param loc The unit's location (to resolve [resistance] abilities)
+	 * @param weapon The weapon to check for any abilities or weapon specials
+	 * @param opp_weapon The opponent's weapon to check for any abilities or weapon specials
 	 */
 	int resistance_against(const std::string& damage_name, bool attacker, const map_location& loc, const_attack_ptr weapon = nullptr, const_attack_ptr opp_weapon = nullptr) const;
 
@@ -1034,6 +1029,7 @@ public:
 	 * @param atk The attack
 	 * @param attacker True if this unit is on the offensive (to resolve [resistance] abilities)
 	 * @param loc The unit's location (to resolve [resistance] abilities)
+	 * @param weapon The weapon to check for any abilities or weapon specials
 	 */
 	int resistance_against(const attack_type& atk, bool attacker, const map_location& loc, const_attack_ptr weapon = nullptr) const
 	{
@@ -1111,7 +1107,7 @@ public:
 	 * Gets the amount of gold this unit costs a side per turn.
 	 *
 	 * This fetches an actual numeric gold value:
-	 * - If @rec can_recruit is true, no upkeep is paid (0 is returned).
+	 * - If can_recruit is true, no upkeep is paid (0 is returned).
 	 * - If a special upkeep flag is set, the associated gold amount is returned (see @ref upkeep_value_visitor).
 	 * - If a numeric value is already set, it is returned directly.
 	 *
@@ -1129,8 +1125,13 @@ public:
 		static std::string type() { static std::string v = "loyal"; return v; }
 	};
 
+	using upkeep_t = utils::variant<upkeep_full, upkeep_loyal, int>;
+
 	/** Visitor helper class to fetch the appropriate upkeep value. */
-	class upkeep_value_visitor : public boost::static_visitor<int>
+	class upkeep_value_visitor
+#ifdef USING_BOOST_VARIANT
+		: public boost::static_visitor<int>
+#endif
 	{
 	public:
 		explicit upkeep_value_visitor(const unit& unit) : u_(unit) {}
@@ -1157,10 +1158,13 @@ public:
 	};
 
 	/** Visitor helper struct to fetch the upkeep type flag if applicable, or the the value otherwise. */
-	struct upkeep_type_visitor : public boost::static_visitor<std::string>
+	struct upkeep_type_visitor
+#ifdef USING_BOOST_VARIANT
+		: public boost::static_visitor<std::string>
+#endif
 	{
 		template<typename T>
-		std::enable_if_t<!std::is_same<int, T>::value, std::string>
+		std::enable_if_t<!std::is_same_v<int, T>, std::string>
 		operator()(T&) const
 		{
 			// Any special upkeep type should have an associated @ref type getter in its helper struct.
@@ -1173,29 +1177,30 @@ public:
 		}
 	};
 
-	using upkeep_t = boost::variant<upkeep_full, upkeep_loyal, int>;
-
 	/** Visitor helper class to parse the upkeep value from a config. */
-	class upkeep_parser_visitor : public boost::static_visitor<upkeep_t>
+	class upkeep_parser_visitor
+#ifdef USING_BOOST_VARIANT
+		: public boost::static_visitor<upkeep_t>
+#endif
 	{
 	public:
 		template<typename N>
-		std::enable_if_t<std::is_arithmetic<N>::value, upkeep_t>
+		std::enable_if_t<std::is_arithmetic_v<N>, upkeep_t>
 		operator()(N n) const
 		{
 			if(n == 0) return upkeep_loyal();
 			if(n < 0) throw std::invalid_argument(std::to_string(n));
-			return n;
+			return static_cast<int>(n);
 		}
 
 		template<typename B>
-		std::enable_if_t<std::is_convertible<B, bool>::value && !std::is_arithmetic<B>::value, upkeep_t>
+		std::enable_if_t<std::is_convertible_v<B, bool> && !std::is_arithmetic_v<B>, upkeep_t>
 		operator()(B b) const
 		{
 			throw std::invalid_argument(b.str());
 		}
 
-		upkeep_t operator()(boost::blank) const
+		upkeep_t operator()(utils::monostate) const
 		{
 			return upkeep_full();
 		}
@@ -1355,7 +1360,7 @@ public:
 		loc_ = loc;
 	}
 
-	/** The current directin this unit is facing within its hex. */
+	/** The current direction this unit is facing within its hex. */
 	map_location::DIRECTION facing() const
 	{
 		return facing_;
@@ -1541,7 +1546,7 @@ public:
 	/** Get the unit's halo image. */
 	std::string image_halo() const
 	{
-		return unit_detail::get_or_default(halo_);
+		return halo_.value_or("");
 	}
 
 	/** Set the unit's halo image. */
@@ -1550,14 +1555,14 @@ public:
 	/** Get the unit's ellipse image. */
 	std::string image_ellipse() const
 	{
-		return unit_detail::get_or_default(ellipse_);
+		return ellipse_.value_or("");
 	}
 
 	/** Set the unit's ellipse image. */
 	void set_image_ellipse(const std::string& ellipse)
 	{
 		appearance_changed_ = true;
-		ellipse_.reset(new std::string(ellipse));
+		ellipse_ = ellipse;
 	}
 
 	/**
@@ -1644,6 +1649,43 @@ public:
 		return get_ability_bool(tag_name, loc_);
 	}
 
+	/** Checks whether this unit currently possesses a given ability used like weapon
+	 * @return True if the ability @a tag_name is active.
+	 * @param special the const config to one of abilities @a tag_name checked.
+	 * @param tag_name name of ability type checked.
+	 * @param loc location of the unit checked.
+	 */
+	bool get_self_ability_bool(const config& special, const std::string& tag_name, const map_location& loc) const;
+	/** Checks whether this unit currently possesses a given ability of leadership type
+	 * @return True if the ability @a tag_name is active.
+	 * @param special the const config to one of abilities @a tag_name checked.
+	 * @param tag_name name of ability type checked.
+	 * @param loc location of the unit checked.
+	 * @param weapon the attack used by unit checked in this function.
+	 * @param opp_weapon the attack used by opponent to unit checked.
+	 */
+	bool get_self_ability_bool_weapon(const config& special, const std::string& tag_name, const map_location& loc, const_attack_ptr weapon = nullptr, const_attack_ptr opp_weapon = nullptr) const;
+	/** Checks whether this unit is affected by a given ability  used like weapon
+	 * @return True if the ability @a tag_name is active.
+	 * @param special the const config to one of abilities @a tag_name checked.
+	 * @param tag_name name of ability type checked.
+	 * @param loc location of the unit checked.
+	 * @param from unit adjacent to @a this is checked in case of [affect_adjacent] abilities.
+	 * @param dir direction to research a unit adjacent to @a this.
+	 */
+	bool get_adj_ability_bool(const config& special, const std::string& tag_name, int dir, const map_location& loc, const unit& from) const;
+	/** Checks whether this unit is affected by a given ability of leadership type
+	 * @return True if the ability @a tag_name is active.
+	 * @param special the const config to one of abilities @a tag_name checked.
+	 * @param tag_name name of ability type checked.
+	 * @param loc location of the unit checked.
+	 * @param from unit adjacent to @a this is checked in case of [affect_adjacent] abilities.
+	 * @param dir direction to research a unit adjacent to @a this.
+	 * @param weapon the attack used by unit checked in this function.
+	 * @param opp_weapon the attack used by opponent to unit checked.
+	 */
+	bool get_adj_ability_bool_weapon(const config& special, const std::string& tag_name, int dir, const map_location& loc, const unit& from, const_attack_ptr weapon=nullptr, const_attack_ptr opp_weapon = nullptr) const;
+
 	/**
 	 * Gets the unit's active abilities of a particular type if it were on a specified location.
 	 * @param tag_name The type of ability to check for
@@ -1668,6 +1710,10 @@ public:
 	{
 		return get_abilities_weapons(tag_name, loc_, weapon, opp_weapon);
 	}
+
+	const config &abilities() const { return abilities_; }
+
+	const std::set<std::string>& checking_tags() const { return checking_tags_; };
 
 	/**
 	 * Gets the names and descriptions of this unit's abilities. Location-independent variant
@@ -1718,6 +1764,8 @@ public:
 
 
 private:
+
+	const std::set<std::string> checking_tags_{"damage", "chance_to_hit", "berserk", "swarm", "drains", "heal_on_hit", "plague", "slow", "petrifies", "firststrike", "poison"};
 	/**
 	 * Check if an ability is active.
 	 * @param ability The type (tag name) of the ability
@@ -1733,6 +1781,7 @@ private:
 	 * @param cfg an ability WML structure
 	 * @param loc The location on which to resolve the ability
 	 * @param from The "other unit" for filter matching
+	 * @param dir The direction the unit is facing
 	 */
 	bool ability_affects_adjacent(const std::string& ability, const config& cfg, int dir, const map_location& loc, const unit& from) const;
 
@@ -1744,7 +1793,10 @@ private:
 	 */
 	bool ability_affects_self(const std::string& ability, const config& cfg, const map_location& loc) const;
 
-	///filters the weapons that condition the use of abilities for combat ([resistance],[leadership] or abilities used like specials(deprecated in two last cases)
+	/**
+	 * filters the weapons that condition the use of abilities for combat ([resistance],[leadership] or abilities used like specials
+	 * (deprecated in two last cases)
+	 */
 	bool ability_affects_weapon(const config& cfg, const_attack_ptr weapon, bool is_opp) const;
 
 public:
@@ -1761,7 +1813,7 @@ public:
 	bool invisible(const map_location& loc, bool see_all = true) const;
 
 	bool is_visible_to_team(const team& team, bool const see_all = true) const;
-	/// Return true if the unit would be visible to team if its location were loc.
+	/** Return true if the unit would be visible to team if its location were loc. */
 	bool is_visible_to_team(const map_location& loc, const team& team, bool const see_all = true) const;
 
 	/**
@@ -1888,14 +1940,14 @@ private:
 	config modifications_;
 	config abilities_;
 
-	advancements_list advancements_;
+	std::vector<config> advancements_;
 
 	t_string description_;
 	std::vector<t_string> special_notes_;
 
-	std::unique_ptr<std::string> usage_;
-	std::unique_ptr<std::string> halo_;
-	std::unique_ptr<std::string> ellipse_;
+	std::optional<std::string> usage_;
+	std::optional<std::string> halo_;
+	std::optional<std::string> ellipse_;
 
 	bool random_traits_;
 	bool generate_name_;

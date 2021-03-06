@@ -233,6 +233,8 @@
 		<Unit filename="../../src/color.hpp" />
 		<Unit filename="../../src/color_range.cpp" />
 		<Unit filename="../../src/color_range.hpp" />
+		<Unit filename="../../src/commandline_argv.cpp" />
+		<Unit filename="../../src/commandline_argv.hpp" />
 		<Unit filename="../../src/commandline_options.cpp" />
 		<Unit filename="../../src/commandline_options.hpp" />
 		<Unit filename="../../src/config.cpp" />
@@ -547,6 +549,8 @@
 		<Unit filename="../../src/gui/dialogs/addon/connect.hpp" />
 		<Unit filename="../../src/gui/dialogs/addon/install_dependencies.cpp" />
 		<Unit filename="../../src/gui/dialogs/addon/install_dependencies.hpp" />
+		<Unit filename="../../src/gui/dialogs/addon/license_prompt.cpp" />
+		<Unit filename="../../src/gui/dialogs/addon/license_prompt.hpp" />
 		<Unit filename="../../src/gui/dialogs/addon/manager.cpp" />
 		<Unit filename="../../src/gui/dialogs/addon/manager.hpp" />
 		<Unit filename="../../src/gui/dialogs/addon/uninstall_list.cpp" />
@@ -589,8 +593,6 @@
 		<Unit filename="../../src/gui/dialogs/editor/new_map.hpp" />
 		<Unit filename="../../src/gui/dialogs/editor/resize_map.cpp" />
 		<Unit filename="../../src/gui/dialogs/editor/resize_map.hpp" />
-		<Unit filename="../../src/gui/dialogs/editor/set_starting_position.cpp" />
-		<Unit filename="../../src/gui/dialogs/editor/set_starting_position.hpp" />
 		<Unit filename="../../src/gui/dialogs/end_credits.cpp" />
 		<Unit filename="../../src/gui/dialogs/end_credits.hpp" />
 		<Unit filename="../../src/gui/dialogs/file_dialog.cpp" />
@@ -637,6 +639,8 @@
 		<Unit filename="../../src/gui/dialogs/multiplayer/faction_select.hpp" />
 		<Unit filename="../../src/gui/dialogs/multiplayer/lobby.cpp" />
 		<Unit filename="../../src/gui/dialogs/multiplayer/lobby.hpp" />
+		<Unit filename="../../src/gui/dialogs/multiplayer/match_history.cpp" />
+		<Unit filename="../../src/gui/dialogs/multiplayer/match_history.hpp" />
 		<Unit filename="../../src/gui/dialogs/multiplayer/mp_alerts_options.cpp" />
 		<Unit filename="../../src/gui/dialogs/multiplayer/mp_alerts_options.hpp" />
 		<Unit filename="../../src/gui/dialogs/multiplayer/mp_change_control.cpp" />
@@ -943,6 +947,8 @@
 		<Unit filename="../../src/playturn.hpp" />
 		<Unit filename="../../src/playturn_network_adapter.cpp" />
 		<Unit filename="../../src/playturn_network_adapter.hpp" />
+		<Unit filename="../../src/preferences/advanced.cpp" />
+		<Unit filename="../../src/preferences/advanced.hpp" />
 		<Unit filename="../../src/preferences/credentials.cpp" />
 		<Unit filename="../../src/preferences/credentials.hpp" />
 		<Unit filename="../../src/preferences/display.cpp" />
@@ -1167,6 +1173,9 @@
 		<Unit filename="../../src/tests/utils/fake_display.hpp" />
 		<Unit filename="../../src/tests/utils/game_config_manager_tests.cpp" />
 		<Unit filename="../../src/tests/utils/game_config_manager_tests.hpp" />
+		<Unit filename="../../src/tests/utils/wml_equivalence.cpp" />
+		<Unit filename="../../src/tests/utils/wml_equivalence.hpp" />
+		<Unit filename="../../src/tests/wml/test_macro_define.cpp" />
 		<Unit filename="../../src/theme.cpp" />
 		<Unit filename="../../src/theme.hpp" />
 		<Unit filename="../../src/time_of_day.cpp" />
@@ -1218,7 +1227,6 @@
 		<Unit filename="../../src/utils/const_clone.hpp" />
 		<Unit filename="../../src/utils/context_free_grammar_generator.cpp" />
 		<Unit filename="../../src/utils/context_free_grammar_generator.hpp" />
-		<Unit filename="../../src/utils/functional.hpp" />
 		<Unit filename="../../src/utils/general.hpp" />
 		<Unit filename="../../src/utils/irdya_datetime.cpp" />
 		<Unit filename="../../src/utils/irdya_datetime.hpp" />

@@ -22,11 +22,9 @@
 #include "gui/widgets/status_label_helper.hpp"
 #include "gettext.hpp"
 
-#include "utils/functional.hpp"
+#include <functional>
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 
 static int max_coastal = 5;
@@ -57,7 +55,7 @@ void generator_settings::pre_show(window& window)
 	// We adjust the minimum values of the width and height sliders when the number of players changes.
 	// This is done because the map generator needs more space to generate more castles for more players.
 	connect_signal_notify_modified(*players_->get_widget(), std::bind(
-		&generator_settings::adjust_minimum_size_by_players, this, std::ref(window)));
+		&generator_settings::adjust_minimum_size_by_players, this));
 
 	gui2::bind_status_label<slider>(&window, "players");
 
@@ -66,7 +64,7 @@ void generator_settings::pre_show(window& window)
 
 	// Update min size initially.
 	// Do this *after* assigning the 'update_*_label_` functions or the game will crash!
-	adjust_minimum_size_by_players(window);
+	adjust_minimum_size_by_players();
 
 	gui2::bind_status_label<slider>(&window, "villages", [](slider& s)->std::string { return formatter() << s.get_value() << _("/1000 tiles"); });
 	gui2::bind_status_label<slider>(&window, "castle_size");
@@ -74,9 +72,9 @@ void generator_settings::pre_show(window& window)
 		return s.get_value() == 0 ? _("Inland") : (s.get_value() < max_coastal ? _("Coastal") : _("Island")); });
 }
 
-void generator_settings::adjust_minimum_size_by_players(window& window)
+void generator_settings::adjust_minimum_size_by_players()
 {
-	const int extra_size = (players_->get_widget_value(window) - 2) * extra_size_per_player;
+	const int extra_size = (players_->get_widget_value(*get_window()) - 2) * extra_size_per_player;
 
 	const auto update_dimension_slider = [&](field_integer* field) {
 		slider& w = dynamic_cast<slider&>(*field->get_widget());
@@ -91,4 +89,3 @@ void generator_settings::adjust_minimum_size_by_players(window& window)
 }
 
 } // namespace dialogs
-} // namespace gui2

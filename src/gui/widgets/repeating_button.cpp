@@ -23,7 +23,7 @@
 #include "gui/widgets/window.hpp"
 #include "sound.hpp"
 
-#include "utils/functional.hpp"
+#include <functional>
 
 #define LOG_SCOPE_HEADER get_control_type() + " [" + id() + "] " + __func__
 #define LOG_HEADER LOG_SCOPE_HEADER + ':'
@@ -42,14 +42,14 @@ repeating_button::repeating_button(const implementation::builder_repeating_butto
 	, repeat_timer_(0)
 {
 	connect_signal<event::MOUSE_ENTER>(std::bind(
-			&repeating_button::signal_handler_mouse_enter, this, _2, _3));
+			&repeating_button::signal_handler_mouse_enter, this, std::placeholders::_2, std::placeholders::_3));
 	connect_signal<event::MOUSE_LEAVE>(std::bind(
-			&repeating_button::signal_handler_mouse_leave, this, _2, _3));
+			&repeating_button::signal_handler_mouse_leave, this, std::placeholders::_2, std::placeholders::_3));
 
 	connect_signal<event::LEFT_BUTTON_DOWN>(std::bind(
-			&repeating_button::signal_handler_left_button_down, this, _2, _3));
+			&repeating_button::signal_handler_left_button_down, this, std::placeholders::_2, std::placeholders::_3));
 	connect_signal<event::LEFT_BUTTON_UP>(std::bind(
-			&repeating_button::signal_handler_left_button_up, this, _2, _3));
+			&repeating_button::signal_handler_left_button_up, this, std::placeholders::_2, std::placeholders::_3));
 }
 
 repeating_button::~repeating_button()
@@ -173,34 +173,6 @@ repeating_button_definition::repeating_button_definition(const config& cfg)
 	load_resolutions<resolution>(cfg);
 }
 
-/*WIKI
- * @page = GUIWidgetDefinitionWML
- * @order = 1_repeating_button
- *
- * == Repeating button ==
- *
- * @macro = repeating_button_description
- *
- * The following states exist:
- * * state_enabled, the repeating_button is enabled.
- * * state_disabled, the repeating_button is disabled.
- * * state_pressed, the left mouse repeating_button is down.
- * * state_focused, the mouse is over the repeating_button.
- * @begin{parent}{name="gui/"}
- * @begin{tag}{name="repeating_button_definition"}{min=0}{max=-1}{super="generic/widget_definition"}
- * @begin{tag}{name="resolution"}{min=0}{max=-1}{super="generic/widget_definition/resolution"}
- * @begin{tag}{name="state_enabled"}{min=0}{max=1}{super="generic/state"}
- * @end{tag}{name="state_enabled"}
- * @begin{tag}{name="state_disabled"}{min=0}{max=1}{super="generic/state"}
- * @end{tag}{name="state_disabled"}
- * @begin{tag}{name="state_pressed"}{min=0}{max=1}{super="generic/state"}
- * @end{tag}{name="state_pressed"}
- * @begin{tag}{name="state_focused"}{min=0}{max=1}{super="generic/state"}
- * @end{tag}{name="state_focused"}
- * @end{tag}{name="resolution"}
- * @end{tag}{name="repeating_button_definition"}
- * @end{parent}{name="gui/"}
- */
 repeating_button_definition::resolution::resolution(const config& cfg)
 	: resolution_definition(cfg)
 {
@@ -213,28 +185,6 @@ repeating_button_definition::resolution::resolution(const config& cfg)
 }
 
 // }---------- BUILDER -----------{
-
-/*WIKI_MACRO
- * @begin{macro}{repeating_button_description}
- *
- *        A repeating_button is a styled_widget that can be pushed down and repeat a
- *        certain action. Once the button is down every x milliseconds it is
- *        down a new down event is triggered.
- * @end{macro}
- */
-
-/*WIKI
- * @page = GUIWidgetInstanceWML
- * @order = 2_repeating_button
- *
- * == Repeating button ==
- *
- * @macro = repeating_button_description
- * @begin{parent}{name="gui/window/resolution/grid/row/column/"}
- * @begin{tag}{name="repeating_button"}{min=0}{max=-1}{super="gui/window/resolution/grid/row/column/button"}
- * @end{tag}{name="repeating_button"}
- * @end{parent}{name="gui/window/resolution/grid/row/column/"}
- */
 
 namespace implementation
 {

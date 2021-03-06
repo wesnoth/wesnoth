@@ -18,7 +18,6 @@
 #include "config.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
-#include "utils/general.hpp"
 #include "utils/math.hpp"
 #include "game_version.hpp"
 #include "wesconfig.h"
@@ -99,6 +98,7 @@ std::vector<server_info> server_list;
 bool
 	debug_impl           = false,
 	debug_lua            = false,
+	strict_lua           = false,
 	editor               = false,
 	ignore_replay_errors = false,
 	mp_debug             = false,
@@ -127,14 +127,14 @@ void set_debug(bool new_debug) {
 }
 
 //
-// Orb display flahs
+// Orb display flags
 //
-bool
-	show_ally_orb,
-	show_enemy_orb,
-	show_moved_orb,
-	show_partial_orb,
-	show_unmoved_orb;
+bool show_ally_orb;
+bool show_disengaged_orb;
+bool show_enemy_orb;
+bool show_moved_orb;
+bool show_partial_orb;
+bool show_unmoved_orb;
 
 //
 // Music constants
@@ -163,17 +163,16 @@ std::map<std::string, std::vector<color_t>> team_rgb_colors;
 
 std::vector<std::string> default_colors;
 
-namespace colors {
-
-std::string
-	moved_orb_color,
-	unmoved_orb_color,
-	partial_orb_color,
-	enemy_orb_color,
-	ally_orb_color,
-	default_color_list;
-
-} // colors
+namespace colors
+{
+std::string ally_orb_color;
+std::string disengaged_orb_color;
+std::string enemy_orb_color;
+std::string moved_orb_color;
+std::string partial_orb_color;
+std::string unmoved_orb_color;
+std::string default_color_list;
+} // namespace colors
 
 //
 // Image constants
@@ -195,6 +194,7 @@ std::string
 	victory_laurel_easy,
 	// orbs and hp/xp bar
 	orb,
+	orb_two_color,
 	energy,
 	// top bar icons
 	battery_icon,
@@ -215,7 +215,7 @@ std::string
 	observer,
 	tod_bright,
 	tod_dark,
-	///@todo de-hardcode this
+	// TODO: de-hardcode this
 	selected_menu   = "buttons/radiobox-pressed.png",
 	deselected_menu = "buttons/radiobox.png",
 	checked_menu    = "buttons/checkbox-pressed.png",
@@ -311,6 +311,7 @@ void load_config(const config &v)
 		partial_orb_color  = i["partial_orb_color"].str();
 		enemy_orb_color    = i["enemy_orb_color"].str();
 		ally_orb_color     = i["ally_orb_color"].str();
+		disengaged_orb_color = i["disengaged_orb_color"].str();
 	} // colors
 
 	show_ally_orb     = v["show_ally_orb"].to_bool(true);
@@ -318,6 +319,7 @@ void load_config(const config &v)
 	show_moved_orb    = v["show_moved_orb"].to_bool(true);
 	show_partial_orb  = v["show_partly_orb"].to_bool(true);
 	show_unmoved_orb  = v["show_unmoved_orb"].to_bool(true);
+	show_disengaged_orb = v["show_disengaged_orb"].to_bool(true);
 
 	if(const config& i = v.child("images")){
 		using namespace game_config::images;
@@ -332,6 +334,7 @@ void load_config(const config &v)
 		victory_laurel_easy = i["victory_laurel_easy"].str();
 
 		orb    = i["orb"].str();
+		orb_two_color = i["orb_two_color"].str();
 		energy = i["energy"].str();
 
 		battery_icon = i["battery_icon"].str();

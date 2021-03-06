@@ -16,11 +16,12 @@
 
 #include "display_context.hpp"
 #include "team.hpp"
+#include "terrain/translation.hpp"
 #include "terrain/type_data.hpp"
 #include "units/map.hpp"
 #include "units/id.hpp"
+#include <optional>
 
-#include <boost/optional.hpp>
 #include <set>
 #include <vector>
 
@@ -46,23 +47,14 @@ namespace events {
  * code at all points in the engine which modify the relevant data.
  *
  **/
-
 class game_board : public display_context
 {
-
 	std::vector<team> teams_;
 	std::vector<std::string> labels_;
 
 	std::unique_ptr<gamemap> map_;
 	n_unit::id_manager unit_id_manager_;
 	unit_map units_;
-
-	//TODO: Remove these when we have refactored enough to make it possible.
-	friend class play_controller;
-	friend class events::mouse_handler;
-	friend class events::menu_handler;
-	friend class game_state;
-	friend class game_lua_kernel;
 
 	/**
 	 * Temporary unit move structs:
@@ -86,7 +78,7 @@ public:
 	n_unit::id_manager& unit_id_manager() { return unit_id_manager_; }
 	// Constructors, trivial dtor, and const accessors
 
-	game_board(const ter_data_cache & tdata, const config & level);
+	game_board(const config& level);
 	virtual ~game_board();
 
 	virtual const std::vector<team>& teams() const override
@@ -107,6 +99,11 @@ public:
 	}
 
 	virtual const gamemap& map() const override
+	{
+		return *map_;
+	}
+
+	gamemap& map()
 	{
 		return *map_;
 	}
@@ -155,15 +152,15 @@ public:
 	// Manipulator from playturn
 
 	void side_drop_to (int side_num, team::CONTROLLER ctrl, team::PROXY_CONTROLLER proxy = team::PROXY_CONTROLLER::PROXY_HUMAN);
-	void side_change_controller (int side_num, bool is_local, const std::string& pname = "");
+	void side_change_controller (int side_num, bool is_local, const std::string& pname, const std::string& controller_type);
 
 	// Manipulator from actionwml
 
 	bool try_add_unit_to_recall_list(const map_location& loc, const unit_ptr u);
-	boost::optional<std::string> replace_map(const gamemap & r);
+	std::optional<std::string> replace_map(const gamemap & r);
 
-	bool change_terrain(const map_location &loc, const std::string &t,
-	                    const std::string & mode, bool replace_if_failed); //used only by lua and debug commands
+	bool change_terrain(const map_location &loc, const std::string &t, const std::string & mode, bool replace_if_failed); //used only by lua and debug commands
+	bool change_terrain(const map_location &loc, const t_translation::terrain_code &t, terrain_type_data::merge_mode& mode, bool replace_if_failed); //used only by lua and debug commands
 
 	// Global accessor from unit.hpp
 
@@ -177,7 +174,7 @@ public:
 	// Wrapped functions from unit_map. These should ultimately provide notification to observers, pathfinding.
 
 	unit_map::iterator find_unit(const map_location & loc) { return units_.find(loc); }
-	/// Calculates whether a team is defeated
+	/** Calculates whether a team is defeated */
 	bool team_is_defeated(const team& t) const;
 };
 

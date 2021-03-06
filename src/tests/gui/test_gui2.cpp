@@ -20,7 +20,6 @@
 #include "config_cache.hpp"
 #include "filesystem.hpp"
 #include "formula/debugger.hpp"
-#include "game_classification.hpp"
 #include "game_config.hpp"
 #include "game_config_view.hpp"
 #include "game_display.hpp"
@@ -34,6 +33,7 @@
 #include "gui/core/layout_exception.hpp"
 #include "gui/dialogs/addon/connect.hpp"
 #include "gui/dialogs/addon/install_dependencies.hpp"
+#include "gui/dialogs/addon/license_prompt.hpp"
 #include "gui/dialogs/addon/manager.hpp"
 #include "gui/dialogs/attack_predictions.hpp"
 #include "gui/dialogs/campaign_difficulty.hpp"
@@ -53,7 +53,6 @@
 #include "gui/dialogs/editor/generator_settings.hpp"
 #include "gui/dialogs/editor/new_map.hpp"
 #include "gui/dialogs/editor/resize_map.hpp"
-#include "gui/dialogs/editor/set_starting_position.hpp"
 #include "gui/dialogs/end_credits.hpp"
 #include "gui/dialogs/file_dialog.hpp"
 #include "gui/dialogs/folder_create.hpp"
@@ -116,7 +115,7 @@
 #include "terrain/type_data.hpp"
 #include "tests/utils/fake_display.hpp"
 //#include "scripting/lua_kernel_base.hpp"
-#include "utils/functional.hpp"
+#include <functional>
 #include "video.hpp"
 #include "wesnothd_connection.hpp"
 #include "wml_exception.hpp"
@@ -415,6 +414,7 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 
 	/* The modal_dialog classes. */
 	test<addon_connect>();
+	test<addon_license_prompt>();
 	//test<addon_manager>();
 	//test<attack_predictions>();
 	test<campaign_difficulty>();
@@ -432,7 +432,6 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 	test<editor_generate_map>();
 	test<editor_new_map>();
 	test<editor_resize_map>();
-	test<editor_set_starting_position>();
 	//test<end_credits>();
 	test<faction_select>();
 	test<file_dialog>();
@@ -577,6 +576,18 @@ struct dialog_tester<addon_connect>
 	addon_connect* create()
 	{
 		return new addon_connect(host_name, true);
+	}
+};
+
+template<>
+struct dialog_tester<addon_license_prompt>
+{
+	std::string license_terms = R"""(Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ante nibh, dignissim ullamcorper tristique eget, condimentum sit amet enim. Aenean dictum pulvinar lacinia. Etiam eleifend, leo sed efficitur consectetur, augue nulla ornare lectus, vitae molestie lacus risus vitae libero. Quisque odio nunc, porttitor eget fermentum sit amet, faucibus eu risus. Praesent sit amet lacus tortor. Suspendisse volutpat quam vitae ipsum fermentum, in vulputate metus egestas. Nulla id consequat ex. Nulla ac dignissim nisl, nec euismod lectus. Duis vitae dolor ornare, convallis justo in, porta dui.
+
+Sed faucibus nibh sit amet ligula porta, non malesuada nibh tristique. Maecenas aliquam diam non eros convallis mattis. Proin rhoncus condimentum leo, sed condimentum magna. Phasellus cursus condimentum lacus, sed sodales lacus. Sed pharetra dictum metus, eget dictum nibh lobortis imperdiet. Nunc tempus sollicitudin bibendum. In porttitor interdum orci. Curabitur vitae nibh vestibulum, condimentum lectus quis, condimentum dui. In quis cursus nisl. Maecenas semper neque eu ipsum aliquam, id porta ligula lacinia. Integer sed blandit ex, eu accumsan magna.)""";
+	addon_license_prompt* create()
+	{
+		return new addon_license_prompt(license_terms);
 	}
 };
 
@@ -828,17 +839,16 @@ template<>
 struct dialog_tester<mp_lobby>
 {
 	config game_config;
-	game_config_view gc_view;
 	wesnothd_connection connection;
 	std::vector<std::string> installed_addons;
 	mp::lobby_info li;
+	int selected_game;
 	dialog_tester() : connection("", ""), li(installed_addons)
 	{
-		gc_view = game_config_view::wrap(game_config);
 	}
 	mp_lobby* create()
 	{
-		return new mp_lobby(gc_view, li, connection);
+		return new mp_lobby(li, connection, selected_game);
 	}
 };
 
@@ -907,7 +917,7 @@ struct dialog_tester<mp_create_game>
 	}
 	mp_create_game* create()
 	{
-		return new mp_create_game(game_config_view_, state, true);
+		return new mp_create_game(state, true);
 	}
 };
 
@@ -1021,16 +1031,6 @@ struct dialog_tester<editor_new_map>
 };
 
 template<>
-struct dialog_tester<editor_set_starting_position>
-{
-	std::vector<map_location> locations;
-	editor_set_starting_position* create()
-	{
-		return new editor_set_starting_position(0, 0, locations);
-	}
-};
-
-template<>
 struct dialog_tester<editor_resize_map>
 {
 	int width = 0;
@@ -1077,7 +1077,7 @@ struct dialog_tester<title_screen>
 	std::vector<std::string> args;
 	commandline_options opts;
 	game_launcher game;
-	dialog_tester() : opts(args), game(opts, "unit_tests") {}
+	dialog_tester() : opts(args), game(opts) {}
 	title_screen* create()
 	{
 		return new title_screen(game);

@@ -474,41 +474,29 @@ void write_locations(const std::vector<map_location>& locs, config& cfg)
 void get_adjacent_tiles(const map_location& a, map_location* res)
 {
 	res->x = a.x;
-	res->y = a.y-1;
+	res->y = a.y - 1;
 	++res;
-	res->x = a.x+1;
-	res->y = a.y - (((a.x & 1)==0) ? 1:0);
+	res->x = a.x + 1;
+	res->y = a.y - (((a.x & 1) == 0) ? 1 : 0);
 	++res;
-	res->x = a.x+1;
-	res->y = a.y + (((a.x & 1)==1) ? 1:0);
-	++res;
-	res->x = a.x;
-	res->y = a.y+1;
-	++res;
-	res->x = a.x-1;
-	res->y = a.y + (((a.x & 1)==1) ? 1:0);
-	++res;
-	res->x = a.x-1;
-	res->y = a.y - (((a.x & 1)==0) ? 1:0);
-/* Changed this when I inlined it to eliminate util.hpp dependency.
-	res->x = a.x;
-	res->y = a.y-1;
-	++res;
-	res->x = a.x+1;
-	res->y = a.y - (is_even(a.x) ? 1:0);
-	++res;
-	res->x = a.x+1;
-	res->y = a.y + (is_odd(a.x) ? 1:0);
+	res->x = a.x + 1;
+	res->y = a.y + (((a.x & 1) == 1) ? 1 : 0);
 	++res;
 	res->x = a.x;
-	res->y = a.y+1;
+	res->y = a.y + 1;
 	++res;
-	res->x = a.x-1;
-	res->y = a.y + (is_odd(a.x) ? 1:0);
+	res->x = a.x - 1;
+	res->y = a.y + (((a.x & 1) == 1) ? 1 : 0);
 	++res;
-	res->x = a.x-1;
-	res->y = a.y - (is_even(a.x) ? 1:0);
-*/
+	res->x = a.x - 1;
+	res->y = a.y - (((a.x & 1) == 0) ? 1 : 0);
+}
+
+std::array<map_location, 6> get_adjacent_tiles(const map_location& center)
+{
+	std::array<map_location, 6> res;
+	get_adjacent_tiles(center, res.data());
+	return res;
 }
 
 bool tiles_adjacent(const map_location& a, const map_location& b)

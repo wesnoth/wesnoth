@@ -37,9 +37,7 @@
 
 #include <iomanip>
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 
 REGISTER_DIALOG(attack_predictions)
@@ -73,7 +71,7 @@ static std::string get_probability_string(const double prob)
 	return ss.str();
 }
 
-void attack_predictions::set_data(window& window, const combatant_data& attacker, const combatant_data& defender)
+void attack_predictions::set_data(window& window, const combatant_data& attacker, const combatant_data& defender) const
 {
 	// Each data widget in this dialog has its id prefixed by either of these identifiers.
 	const std::string widget_id_prefix = attacker.stats_.is_attacker ? "attacker" : "defender";
@@ -128,7 +126,7 @@ void attack_predictions::set_data(window& window, const combatant_data& attacker
 	// Set specials context (for safety, it should not have changed normally).
 	const_attack_ptr weapon = attacker.stats_.weapon, opp_weapon = defender.stats_.weapon;
 	auto ctx = weapon->specials_context(attacker.unit_, defender.unit_, attacker.unit_->get_location(), defender.unit_->get_location(), attacker.stats_.is_attacker, opp_weapon);
-	boost::optional<decltype(ctx)> opp_ctx;
+	std::optional<decltype(ctx)> opp_ctx;
 
 	if(opp_weapon) {
 		opp_ctx.emplace(opp_weapon->specials_context(defender.unit_, attacker.unit_, defender.unit_->get_location(), attacker.unit_->get_location(), defender.stats_.is_attacker, weapon));
@@ -269,7 +267,7 @@ void attack_predictions::set_data(window& window, const combatant_data& attacker
 	set_label_helper("chance_to_hit", ss.str());
 }
 
-void attack_predictions::draw_hp_graph(drawing& hp_graph, const combatant_data& attacker, const combatant_data& defender)
+void attack_predictions::draw_hp_graph(drawing& hp_graph, const combatant_data& attacker, const combatant_data& defender) const
 {
 	// Font size. If you change this, you must update the separator space.
 	// TODO: probably should remove this.
@@ -298,8 +296,7 @@ void attack_predictions::draw_hp_graph(drawing& hp_graph, const combatant_data& 
 	for(const auto& probability : get_hitpoint_probabilities(attacker.combatant_.hp_dist)) {
 
 		// Get the HP and probability.
-		int hp; double prob;
-		std::tie(hp, prob) = probability;
+		auto [hp, prob] = probability;
 
 		color_t row_color;
 
@@ -370,7 +367,7 @@ void attack_predictions::draw_hp_graph(drawing& hp_graph, const combatant_data& 
 	hp_graph.append_drawing_data(cfg);
 }
 
-hp_probability_vector attack_predictions::get_hitpoint_probabilities(const std::vector<double>& hp_dist)
+hp_probability_vector attack_predictions::get_hitpoint_probabilities(const std::vector<double>& hp_dist) const
 {
 	hp_probability_vector res, temp_vec;
 
@@ -385,7 +382,7 @@ hp_probability_vector attack_predictions::get_hitpoint_probabilities(const std::
 	}
 
 	// Then sort by descending probability.
-	std::sort(temp_vec.begin(), temp_vec.end(), [](const hp_probability_t& pair1, const hp_probability_t& pair2) {
+	std::sort(temp_vec.begin(), temp_vec.end(), [](const auto& pair1, const auto& pair2) {
 		return pair1.second > pair2.second;
 	});
 
@@ -393,7 +390,7 @@ hp_probability_vector attack_predictions::get_hitpoint_probabilities(const std::
 	std::copy_n(temp_vec.begin(), std::min<int>(graph_max_rows, temp_vec.size()), std::back_inserter(res));
 
 	// Then, we sort the hitpoint values in descending order.
-	std::sort(res.begin(), res.end(), [](const hp_probability_t& pair1, const hp_probability_t& pair2) {
+	std::sort(res.begin(), res.end(), [](const auto& pair1, const auto& pair2) {
 		return pair1.first > pair2.first;
 	});
 
@@ -401,4 +398,3 @@ hp_probability_vector attack_predictions::get_hitpoint_probabilities(const std::
 }
 
 } // namespace dialogs
-} // namespace gui2

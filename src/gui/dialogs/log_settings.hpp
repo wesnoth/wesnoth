@@ -52,7 +52,7 @@ private:
 	/** Inherited from modal_dialog. */
 	virtual void post_show(window& window) override;
 
-	void filter_text_changed(text_box_base* textbox, const std::string& text);
+	void filter_text_changed(const std::string& text);
 
 	std::vector<std::string> last_words_;
 

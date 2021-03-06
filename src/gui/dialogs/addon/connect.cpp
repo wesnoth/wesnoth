@@ -23,35 +23,10 @@
 #include "gui/widgets/text_box.hpp"
 #include "help/help.hpp"
 
-#include "utils/functional.hpp"
+#include <functional>
 
-namespace gui2
+namespace gui2::dialogs
 {
-namespace dialogs
-{
-
-/*WIKI
- * @page = GUIWindowDefinitionWML
- * @order = 2_addon_connect
- *
- * == Addon connect ==
- *
- * This shows the dialog for managing addons and connecting to the addon server.
- *
- * @begin{table}{dialog_widgets}
- * hostname & & text_box & m &
- *         This text contains the name of the server to connect to. $
- *
- * show_help & & button & m &
- *         Thus button shows the in-game help about add-ons management when
- *         triggered. $
- *
- * & 2 & button & o &
- *         This button closes the dialog to display a dialog for removing
- *         installed add-ons. $
- *
- * @end{table}
- */
 
 REGISTER_DIALOG(addon_connect)
 
@@ -63,7 +38,7 @@ addon_connect::addon_connect(std::string& host_name,
 	register_text("host_name", false, host_name, true);
 }
 
-void addon_connect::help_button_callback(window& /*window*/)
+void addon_connect::help_button_callback()
 {
 	help::show_help("installing_addons");
 }
@@ -75,9 +50,7 @@ void addon_connect::pre_show(window& window)
 
 	connect_signal_mouse_left_click(
 			find_widget<button>(&window, "show_help", false),
-			std::bind(&addon_connect::help_button_callback,
-						this,
-						std::ref(window)));
+			std::bind(&addon_connect::help_button_callback, this));
 }
 
 void addon_connect::post_show(window& window)
@@ -91,4 +64,3 @@ void addon_connect::post_show(window& window)
 }
 
 } // namespace dialogs
-} // namespace gui2

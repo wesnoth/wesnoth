@@ -26,10 +26,10 @@ class vconfig;
 #include "config.hpp"
 #include "variable_info.hpp"
 #include "map/location.hpp"
-#include "serialization/string_view.hpp"
 
-#include <vector>
 #include <string>
+#include <string_view>
+#include <vector>
 
 namespace lua_common {
 	int intf_textdomain(lua_State *L);
@@ -41,8 +41,8 @@ namespace lua_common {
 
 }
 
-void* operator new(std::size_t sz, lua_State *L);
-void operator delete(void* p, lua_State *L);
+void* operator new(std::size_t sz, lua_State *L, int nuv = 0);
+void operator delete(void* p, lua_State *L, int nuv);
 
 /**
  * Like luaL_getmetafield, but returns false if key is an empty string
@@ -100,7 +100,9 @@ void luaW_pushlocation(lua_State *L, const map_location& loc);
 
 /**
  * Converts an optional table or pair of integers to a map location object.
+ * @param L the pointer to the lua interpreter.
  * @param index stack position of the table or first integer.
+ * @param loc the location to write to.
  * @return false if a map location couldn't be matched.
  */
 bool luaW_tolocation(lua_State *L, int index, map_location &loc);
@@ -119,7 +121,9 @@ void luaW_pushconfig(lua_State *L, const config& cfg);
 
 /**
  * Converts an optional table or vconfig to a config object.
+ * @param L the pointer to the lua interpreter.
  * @param index stack position of the table.
+ * @param cfg the config to write the data to.
  * @return false if some attributes had not the proper type.
  * @note If the table has holes in the integer keys or floating-point keys,
  *       some keys will be ignored and the error will go undetected.
@@ -139,6 +143,8 @@ bool luaW_tovconfig(lua_State *L, int index, vconfig &vcfg);
 
 /**
  * Gets an optional vconfig from either a table or a userdata.
+ * @param L the pointer to the lua interpreter.
+ * @param index the location in the current lua execution stack to look at.
  * @param allow_missing true if missing values are allowed; the function
  *        then returns an unconstructed vconfig.
  */
@@ -176,8 +182,8 @@ bool luaW_checkvariable(lua_State *L, variable_access_create& v, int n);
 
 bool luaW_tableget(lua_State *L, int index, const char* key);
 
-utils::string_view luaW_tostring(lua_State *L, int index);
-utils::string_view luaW_tostring_or_default(lua_State *L, int index, utils::string_view def = utils::string_view());
+std::string_view luaW_tostring(lua_State *L, int index);
+std::string_view luaW_tostring_or_default(lua_State *L, int index, std::string_view def = std::string_view());
 
 /**
  * Displays a message in the chat window.
@@ -186,7 +192,10 @@ void chat_message(const std::string& caption, const std::string& msg);
 
 /**
  * Calls a Lua function stored below its @a nArgs arguments at the top of the stack.
+ * @param L the pointer to the lua interpreter.
+ * @param nArgs
  * @param nRets LUA_MULTRET for unbounded return values.
+ * @param allow_wml_error controls where any stack traces are output.
  * @return true if the call was successful and @a nRets return values are available.
  */
 bool luaW_pcall(lua_State *L, int nArgs, int nRets, bool allow_wml_error = false);

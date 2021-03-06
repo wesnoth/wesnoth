@@ -58,7 +58,7 @@ function world_conquest_tek_map_repaint_2e()
 	local terrain_to_change = wct_store_empty_citadel()
 	while #terrain_to_change > 0 do
 		local loc = terrain_to_change[wesnoth.random(#terrain_to_change)]
-		map:set_terrain(loc, "Rr^Vhc")
+		map[loc] = "Rr^Vhc"
 		terrain_to_change = wct_store_empty_citadel()
 	end
 	-- improve roads quality
@@ -137,7 +137,7 @@ function wct_map_yard(directions, counter_directions)
 
 	if #terrain_to_change > 0 then
 		local loc = terrain_to_change[wesnoth.random(#terrain_to_change)]
-		map:set_terrain(loc, "Gg^Eff")
+		map[loc] = "Gg^Eff"
 		set_terrain { "Gg^Eff",
 			f.adjacent( f.is_loc(loc), counter_directions, nil)
 		}
@@ -203,7 +203,7 @@ function wct_map_decoration_3e_leantos()
 	))
 	for i, v in ipairs(terrain_to_change) do
 		if wesnoth.random(3) == 1 then
-			map:set_terrain(v, "Rrc")
+			map[v] = "Rrc"
 
 			table.insert(prestart_event, wml.tag.item {
 				x = v[1],

@@ -92,10 +92,7 @@ class game_lua_kernel : public lua_kernel_base
 	int intf_unit_ability(lua_State *L);
 	int intf_view_locked(lua_State *L);
 	int intf_lock_view(lua_State *L);
-	int intf_get_terrain(lua_State *L);
-	int intf_set_terrain(lua_State *L);
-	int intf_terrain_mask(lua_State *L);
-	int intf_get_terrain_info(lua_State *L);
+	int impl_get_terrain_info(lua_State *L);
 	int intf_get_time_of_day(lua_State *L);
 	int intf_get_max_liminal_bonus(lua_State *L);
 	int intf_get_village_owner(lua_State *L);
@@ -154,7 +151,8 @@ class game_lua_kernel : public lua_kernel_base
 	int intf_remove_event(lua_State *L);
 	int intf_color_adjust(lua_State *L);
 	int intf_delay(lua_State *L);
-	int intf_label(lua_State *L);
+	int intf_label(lua_State *L, bool add);
+	int intf_get_label(lua_State* L);
 	int intf_redraw(lua_State *L);
 	int intf_replace_schedule(lua_State *l);
 	int intf_set_time_of_day(lua_State *L);

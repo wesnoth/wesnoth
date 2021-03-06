@@ -19,12 +19,11 @@
 #include "syncmp_handler.hpp"
 
 class turn_info;
-struct mp_campaign_info;
+struct mp_game_metadata;
 class playmp_controller : public playsingle_controller, public syncmp_handler
 {
 public:
-	playmp_controller(const config& level, saved_game& state_of_game,
-		const ter_data_cache & tdata, mp_campaign_info* mp_info);
+	playmp_controller(const config& level, saved_game& state_of_game, mp_game_metadata* mp_info);
 	virtual ~playmp_controller();
 
 	void maybe_linger() override;
@@ -70,5 +69,5 @@ private:
 	void set_end_scenario_button();
 	void reset_end_scenario_button();
 	void process_network_data(bool chat_only = false);
-	mp_campaign_info* mp_info_;
+	mp_game_metadata* mp_info_;
 };

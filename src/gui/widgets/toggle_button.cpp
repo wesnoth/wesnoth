@@ -23,7 +23,7 @@
 #include "gui/core/window_builder/helper.hpp"
 #include "sound.hpp"
 
-#include "utils/functional.hpp"
+#include <functional>
 
 #define LOG_SCOPE_HEADER get_control_type() + " [" + id() + "] " + __func__
 #define LOG_HEADER LOG_SCOPE_HEADER + ':'
@@ -43,17 +43,17 @@ toggle_button::toggle_button(const implementation::builder_toggle_button& builde
 	, icon_name_()
 {
 	connect_signal<event::MOUSE_ENTER>(std::bind(
-			&toggle_button::signal_handler_mouse_enter, this, _2, _3));
+			&toggle_button::signal_handler_mouse_enter, this, std::placeholders::_2, std::placeholders::_3));
 	connect_signal<event::MOUSE_LEAVE>(std::bind(
-			&toggle_button::signal_handler_mouse_leave, this, _2, _3));
+			&toggle_button::signal_handler_mouse_leave, this, std::placeholders::_2, std::placeholders::_3));
 
 	connect_signal<event::LEFT_BUTTON_CLICK>(std::bind(
-			&toggle_button::signal_handler_left_button_click, this, _2, _3));
+			&toggle_button::signal_handler_left_button_click, this, std::placeholders::_2, std::placeholders::_3));
 	connect_signal<event::LEFT_BUTTON_DOUBLE_CLICK>(std::bind(
 			&toggle_button::signal_handler_left_button_double_click,
 			this,
-			_2,
-			_3));
+			std::placeholders::_2,
+			std::placeholders::_3));
 }
 
 unsigned toggle_button::num_states() const
@@ -201,41 +201,6 @@ toggle_button_definition::toggle_button_definition(const config& cfg)
 	load_resolutions<resolution>(cfg);
 }
 
-/*WIKI
- * @page = GUIWidgetDefinitionWML
- * @order = 1_toggle_button
- *
- * == Toggle button ==
- *
- * The definition of a toggle button.
- *
- * The following states exist:
- * * state_enabled, the button is enabled and not selected.
- * * state_disabled, the button is disabled and not selected.
- * * state_focused, the mouse is over the button and not selected.
- *
- * * state_enabled_selected, the button is enabled and selected.
- * * state_disabled_selected, the button is disabled and selected.
- * * state_focused_selected, the mouse is over the button and selected.
- * @begin{parent}{name="gui/"}
- * @begin{tag}{name="oggle_button_definition"}{min=0}{max=-1}{super="generic/widget_definition"}
- * @begin{tag}{name="resolution"}{min=0}{max=-1}{super="generic/widget_definition/resolution"}
- * @begin{tag}{name="state_enabled"}{min=0}{max=1}{super="generic/state"}
- * @end{tag}{name="state_enabled"}
- * @begin{tag}{name="state_disabled"}{min=0}{max=1}{super="generic/state"}
- * @end{tag}{name="state_disabled"}
- * @begin{tag}{name="state_focused"}{min=0}{max=1}{super="generic/state"}
- * @end{tag}{name="state_focused"}
- * @begin{tag}{name="state_enabled_selected"}{min=0}{max=1}{super="generic/state"}
- * @end{tag}{name="state_enabled_selected"}
- * @begin{tag}{name="state_disabled_selected"}{min=0}{max=1}{super="generic/state"}
- * @end{tag}{name="state_disabled_selected"}
- * @begin{tag}{name="state_focused_selected"}{min=0}{max=1}{super="generic/state"}
- * @end{tag}{name="state_focused_selected"}
- * @end{tag}{name="resolution"}
- * @end{tag}{name="oggle_button_definition"}
- * @end{parent}{name="gui/"}
- */
 toggle_button_definition::resolution::resolution(const config& cfg)
 	: resolution_definition(cfg)
 {
@@ -250,26 +215,6 @@ toggle_button_definition::resolution::resolution(const config& cfg)
 }
 
 // }---------- BUILDER -----------{
-
-/*WIKI
- * @page = GUIToolkitWML
- * @order = 2_toggle_button
- * @begin{parent}{name="gui/window/resolution/grid/row/column/"}
- * @begin{tag}{name="toggle_button"}{min=0}{max=-1}{super="generic/widget_instance"}
- * == Toggle button ==
- *
- * @begin{table}{config}
- *     icon & f_string & "" &          The name of the icon file to show. $
- *     return_value_id & string & "" & The return value id, see
- *                                     [[GUIToolkitWML#Button]] for more
- *                                     information. $
- *     return_value & int & 0 &        The return value, see
- *                                     [[GUIToolkitWML#Button]] for more
- *                                     information. $
- * @end{table}
- * @end{tag}{name="toggle_button"}
- * @end{parent}{name="gui/window/resolution/grid/row/column/"}
- */
 
 namespace implementation
 {

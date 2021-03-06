@@ -203,7 +203,7 @@ void addon_list::set_addons(const addons_list& addons)
 			ss << tracking_info.installed_version.str() << "\n";
 		}
 
-		ss << addon.version.str();
+		ss << (*addon.versions.begin()).str();
 
 		if(special_version_display) {
 			ss.str(colorize_addon_state_string(ss.str(), tracking_info.state, false));
@@ -259,7 +259,7 @@ void addon_list::set_addons(const addons_list& addons)
 
 			if(publish_function_ != nullptr) {
 				connect_signal_mouse_left_click(publish_button,
-					std::bind(&addon_list::addon_action_wrapper, this, publish_function_, std::ref(addon), _3, _4));
+					std::bind(&addon_list::addon_action_wrapper, this, publish_function_, std::ref(addon), std::placeholders::_3, std::placeholders::_4));
 
 				install_button.set_tooltip(_("Publish add-on"));
 			}
@@ -270,7 +270,7 @@ void addon_list::set_addons(const addons_list& addons)
 
 			if(update_function_ != nullptr) {
 				connect_signal_mouse_left_click(update_button,
-					std::bind(&addon_list::addon_action_wrapper, this, update_function_, std::ref(addon), _3, _4));
+					std::bind(&addon_list::addon_action_wrapper, this, update_function_, std::ref(addon), std::placeholders::_3, std::placeholders::_4));
 			}
 		} else {
 			install_update_stack.select_layer(CONTROL_STACK_LAYER_INSTALL);
@@ -279,7 +279,7 @@ void addon_list::set_addons(const addons_list& addons)
 
 			if(install_function_ != nullptr) {
 				connect_signal_mouse_left_click(install_button,
-					std::bind(&addon_list::addon_action_wrapper, this, install_function_, std::ref(addon), _3, _4));
+					std::bind(&addon_list::addon_action_wrapper, this, install_function_, std::ref(addon), std::placeholders::_3, std::placeholders::_4));
 			}
 		}
 
@@ -290,7 +290,7 @@ void addon_list::set_addons(const addons_list& addons)
 
 			if(!is_local && delete_function_ != nullptr) {
 				connect_signal_mouse_left_click(uninstall_button,
-					std::bind(&addon_list::addon_action_wrapper, this, delete_function_, std::ref(addon), _3, _4));
+					std::bind(&addon_list::addon_action_wrapper, this, delete_function_, std::ref(addon), std::placeholders::_3, std::placeholders::_4));
 
 				uninstall_button.set_tooltip(_("Delete add-on from server"));
 			}
@@ -300,7 +300,7 @@ void addon_list::set_addons(const addons_list& addons)
 
 			if(is_installed && uninstall_function_ != nullptr) {
 				connect_signal_mouse_left_click(uninstall_button,
-					std::bind(&addon_list::addon_action_wrapper, this, uninstall_function_, std::ref(addon), _3, _4));
+					std::bind(&addon_list::addon_action_wrapper, this, uninstall_function_, std::ref(addon), std::placeholders::_3, std::placeholders::_4));
 			}
 		}
 
@@ -385,7 +385,7 @@ void addon_list::finalize_setup()
 	list.register_sorting_option(3, [this](const int i) { return addon_vector_[i]->downloads; });
 	list.register_translatable_sorting_option(4, [this](const int i) { return addon_vector_[i]->display_type(); });
 
-	auto order = std::make_pair(0, gui2::listbox::SORT_ASCENDING);
+	auto order = std::pair(0, preferences::SORT_ORDER::ASCENDING);
 	list.set_active_sorting_option(order);
 }
 
@@ -408,16 +408,7 @@ void addon_list::select_first_addon()
 		// Happens in the dialog unit test.
 		return;
 	}
-
-	const addon_info* first_addon = addon_vector_[0];
-
-	for(const addon_info* a : addon_vector_) {
-		if(translation::icompare(a->display_title_full(), first_addon->display_title_full()) < 0) {
-			first_addon = a;
-		}
-	}
-
-	select_addon(first_addon->id);
+	get_listbox().select_row_at(0);
 }
 
 addon_list_definition::addon_list_definition(const config& cfg)
@@ -481,7 +472,7 @@ widget* builder_addon_list::build() const
 	const auto conf = widget->cast_config_to<addon_list_definition>();
 	assert(conf != nullptr);
 
-	widget->init_grid(conf->grid);
+	widget->init_grid(*conf->grid);
 
 	widget->set_install_status_visibility(install_status_visibility_);
 	widget->set_install_buttons_visibility(install_buttons_visibility_);

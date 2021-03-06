@@ -23,6 +23,19 @@ class field_text;
 namespace dialogs
 {
 
+/**
+ * @ingroup GUIWindowDefinitionWML
+ *
+ * This shows the dialog to log in to the MP server.
+ * Key               |Type           |Mandatory|Description
+ * ------------------|---------------|---------|-----------
+ * user_name         | text_box      |yes      |The login user name.
+ * password          | text_box      |yes      |The password.
+ * remember_password | toggle_button |no       |A toggle button to offer to remember the password in the preferences.
+ * password_reminder | @ref button   |no       |Request a password reminder.
+ * change_username   | @ref button   |no       |Use a different username.
+ * login_label       | @ref button   |no       |Displays the information received from the server.
+ */
 class mp_login : public modal_dialog
 {
 public:
@@ -38,8 +51,8 @@ private:
 	/** Inherited from modal_dialog. */
 	virtual void post_show(window& window) override;
 
-	void load_password(window& win) const;
-	void save_password(window& win) const;
+	void load_password() const;
+	void save_password() const;
 
 	const std::string host_;
 	field_text* username_;

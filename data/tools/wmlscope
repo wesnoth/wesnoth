@@ -337,7 +337,7 @@ class CrossRefLister(CrossRef):
     def extracthelp(self, pref, fp):
         "Deliver all macro help comments in HTML form."
         # Bug: finds only the first definition of each macro in scope.
-        doclist = [x for x in self.xref.keys() if self.xref[x][0].docstring.count("\n") > 1]
+        doclist = [x for x in self.xref.keys()]
         doclist.sort(key=lambda element: self.xref[element][0])
         outstr = ""
         filename = None
@@ -364,7 +364,7 @@ class CrossRefLister(CrossRef):
                         line = line.lstrip()
                         if line and line.startswith("#textdomain"):
                             continue
-                        if line and line[0] == '#':
+                        if line and line[0] == '#' and (not line.startswith("#define")):
                             hdr.append(line[1:])
                         else:
                             break
@@ -376,15 +376,25 @@ class CrossRefLister(CrossRef):
                 header = lines.pop(0).split()
                 if lines and not lines[-1]: # Ignore trailing blank lines
                     lines.pop()
-                if not lines: # Ignore definitions without a docstring
-                    continue
                 outstr += "\n<dt id='" + header[0] + "'>\n<code class='noframe'>"
                 outstr += "<span class='macro-name'>" + header[0] + "</span>"
                 if header[1:]:
                     outstr += " <var class='macro-formals'>"+" ".join(header[1:])+"</var>"
+                if entry.optional_args:
+                    outstr += " Optional arguments: <var class='macro-formals'>" + " ".join(entry.optional_args) + "</var>"
                 outstr += "\n</code></dt>\n"
                 outstr += "<dd>\n"
-                outstr += interpret(lines, "macro-explanation")
+                if entry.deprecated:
+                    outstr += "<p class='macro-deprecated'><strong>Deprecated macro.</strong>"
+                    outstr += " <em>Deprecation level: " + entry.deprecation_level + "."
+                    if entry.removal_version:
+                        outstr += " Scheduled for removal in " + entry.removal_version + "."
+                    outstr += "</em></p>\n"
+                if lines:
+                    outstr += interpret(lines, "macro-explanation")
+                else:
+                    # Warn in output about definitions without a docstring
+                    outstr += "<p class='macro-missing-docs'><em>No documentation available for this macro.</em></p>\n"
                 outstr += "</dd>\n"
         outstr += "</dl>\n"
         outstr += "<p class='toplink'>[ <a href='#content'>top</a> ]</p>\n"

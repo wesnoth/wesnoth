@@ -18,7 +18,7 @@
 
 #include <vector>
 
-#include <boost/optional.hpp>
+#include "utils/optional_reference.hpp"
 
 //this module is responsible for outputting textual reports of
 //various game and unit statistics
@@ -45,7 +45,7 @@ public:
 	class context
 	{
 	public:
-		context(const display_context & dc, display & disp, const tod_manager & tod, std::shared_ptr<wb::manager> wb, boost::optional<events::mouse_handler &> mhb) : dc_(dc), disp_(disp), tod_(tod), wb_(wb), mhb_(mhb) {}
+		context(const display_context & dc, display & disp, const tod_manager & tod, std::shared_ptr<wb::manager> wb, utils::optional_reference<events::mouse_handler> mhb) : dc_(dc), disp_(disp), tod_(tod), wb_(wb), mhb_(mhb) {}
 
 		const std::vector<team> & teams() const { return dc_.teams(); }
 		const unit_map & units() const { return dc_.units(); }
@@ -55,14 +55,14 @@ public:
 		display & screen() { return disp_; }
 		const tod_manager & tod() const { return tod_; }
 		std::shared_ptr<wb::manager> wb() { return wb_; }
-		boost::optional<events::mouse_handler&> mhb() { return mhb_; }
+		utils::optional_reference<events::mouse_handler> mhb() { return mhb_; }
 
 	private:
 		const display_context & dc_;
 		display & disp_;
 		const tod_manager & tod_;
 		std::shared_ptr<wb::manager> wb_;
-		boost::optional<events::mouse_handler&> mhb_;
+		utils::optional_reference<events::mouse_handler> mhb_;
 	};
 
 	struct generator

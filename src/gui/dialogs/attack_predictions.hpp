@@ -29,9 +29,7 @@ class drawing;
 
 namespace dialogs
 {
-
-using hp_probability_t = std::pair<int, double>;
-using hp_probability_vector = std::vector<hp_probability_t>;
+using hp_probability_vector = std::vector<std::pair<int, double>>;
 
 class attack_predictions : public modal_dialog
 {
@@ -57,19 +55,19 @@ private:
 
 		const battle_context_unit_stats& stats_;
 		const combatant& combatant_;
-		/// never null
+		/** never null */
 		unit_const_ptr unit_;
 	};
 
-	void set_data(window& window, const combatant_data& attacker, const combatant_data& defender);
+	void set_data(window& window, const combatant_data& attacker, const combatant_data& defender) const;
 
-	hp_probability_vector get_hitpoint_probabilities(const std::vector<double>& hp_dist);
+	hp_probability_vector get_hitpoint_probabilities(const std::vector<double>& hp_dist) const;
 
 	static const unsigned int graph_width;
 	static const unsigned int graph_height;
 	static const unsigned int graph_max_rows;
 
-	void draw_hp_graph(drawing& hp_graph, const combatant_data& attacker, const combatant_data& defender);
+	void draw_hp_graph(drawing& hp_graph, const combatant_data& attacker, const combatant_data& defender) const;
 
 	combatant_data attacker_data_;
 	combatant_data defender_data_;

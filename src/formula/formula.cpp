@@ -175,10 +175,7 @@ formula::formula(const std::string& text, function_symbol_table* symbols)
 					std::string str = std::string(tokens.back().begin, tokens.back().end);
 					files.emplace_back(str , 1);
 
-					std::set<std::string>::iterator pos;
-					bool success;
-
-					std::tie(pos, success) = filenames.insert(str);
+					auto [pos, success] = filenames.insert(str);
 
 					if(success) {
 						filenames_it = pos;

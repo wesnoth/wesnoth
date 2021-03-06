@@ -19,7 +19,7 @@ end
 
 -- happens before training events.
 on_event("recruit", 1, function(ec)
-	local u = wesnoth.get_unit(ec.x1, ec.y1)
+	local u = wesnoth.units.get(ec.x1, ec.y1)
 	if (not u) or (not wc2_scenario.is_human_side(u.side)) then
 		return
 	end
@@ -27,7 +27,7 @@ on_event("recruit", 1, function(ec)
 end)
 
 function wesnoth.wml_actions.wc2_start_units(cfg)
-	local u = wesnoth.get_units({ side = cfg.side, canrecruit = true })[1]
+	local u = wesnoth.units.find_on_map({ side = cfg.side, canrecruit = true })[1]
 	if not u then error("[wc2_start_units] no leader found") end
 	u:add_modification("advancement", { wc2_scenario.experience_penalty() })
 	u:add_modification("trait", wc2_heroes.trait_heroic )
@@ -43,7 +43,7 @@ function wesnoth.wml_actions.wc2_start_units(cfg)
 end
 
 function wesnoth.wml_actions.wc2_store_carryover(cfg)
-	local human_sides = wesnoth.get_sides(wml.get_child(cfg, "sides"))
+	local human_sides = wesnoth.sides.find(wml.get_child(cfg, "sides"))
 	--use an the average amount of villages for this scenario to stay independent of map generator results.
 	local nvillages = cfg.nvillages
 	local turns_left = math.max(wesnoth.game_config.last_turn - wesnoth.current.turn, 0)

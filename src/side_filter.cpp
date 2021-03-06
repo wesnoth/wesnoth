@@ -268,29 +268,21 @@ bool side_filter::match(const team& t) const
 {
 	bool matches = match_internal(t);
 
-	//handle [and], [or], and [not] with in-order precedence
-	vconfig::all_children_iterator cond = cfg_.ordered_begin();
-	vconfig::all_children_iterator cond_end = cfg_.ordered_end();
-	while (cond != cond_end) {
-		const std::string& cond_name = cond.get_key();
-		const vconfig& cond_cfg = cond.get_child();
-
-		//handle [and]
-		if(cond_name == "and")
-		{
-			matches = matches && side_filter(cond_cfg, fc_, flat_).match(t);
+	// Handle [and], [or], and [not] with in-order precedence
+	for(const auto& [key, filter] : cfg_.all_ordered()) {
+		// Handle [and]
+		if(key == "and") {
+			matches = matches && side_filter(filter, fc_, flat_).match(t);
 		}
-		//handle [or]
-		else if(cond_name == "or")
-		{
-			matches = matches || side_filter(cond_cfg, fc_, flat_).match(t);
+		// Handle [or]
+		else if(key == "or") {
+			matches = matches || side_filter(filter, fc_, flat_).match(t);
 		}
-		//handle [not]
-		else if(cond_name == "not")
-		{
-			matches = matches && !side_filter(cond_cfg, fc_, flat_).match(t);
+		// Handle [not]
+		else if(key == "not") {
+			matches = matches && !side_filter(filter, fc_, flat_).match(t);
 		}
-			++cond;
 	}
+
 	return matches;
 }

@@ -14,8 +14,6 @@
 
 #pragma once
 
-#include "mp_game_settings.hpp"
-
 class config;
 class saved_game;
 

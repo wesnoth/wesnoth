@@ -20,7 +20,7 @@ class CVideo;
 #include <vector>
 #include <string>
 
-#include "utils/functional.hpp"
+#include <functional>
 
 /**
  * Implements a quit confirmation dialog.
@@ -53,8 +53,9 @@ private:
 	// noncopyable
 	quit_confirmation(const quit_confirmation&) = delete;
 	const quit_confirmation& operator=(const quit_confirmation&) = delete;
-	static std::vector<quit_confirmation*> blockers_;
-	static bool open_;
+
+	static inline std::vector<quit_confirmation*> blockers_ {};
+	static inline bool open_ = false;
 
 	std::function<bool()> prompt_;
 };

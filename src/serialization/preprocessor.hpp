@@ -13,19 +13,17 @@
    See the COPYING file for more details.
 */
 
-/** @file */
-
 #pragma once
 
+#include "deprecation.hpp"
+#include "exceptions.hpp"
 #include "filesystem.hpp"
+#include "game_version.hpp"
+#include <optional>
+
 #include <iosfwd>
 #include <map>
 #include <vector>
-#include <boost/optional.hpp>
-
-#include "exceptions.hpp"
-#include "game_version.hpp"
-#include "deprecation.hpp"
 
 class config_writer;
 class config;
@@ -61,7 +59,7 @@ struct preproc_define
 			int line,
 			const std::string& loc,
 			const std::string& dep_msg,
-			boost::optional<DEP_LEVEL> dep_lvl, const version_info& dep_ver)
+			std::optional<DEP_LEVEL> dep_lvl, const version_info& dep_ver)
 		: value(val)
 		, arguments(args)
 		, optional_arguments(optargs)
@@ -88,12 +86,12 @@ struct preproc_define
 
 	std::string deprecation_message;
 
-	boost::optional<DEP_LEVEL> deprecation_level = boost::none;
+	std::optional<DEP_LEVEL> deprecation_level;
 
 	version_info deprecation_version;
 
 	bool is_deprecated() const {
-		return deprecation_level != boost::none;
+		return deprecation_level.has_value();
 	}
 
 	void write(config_writer&, const std::string&) const;
@@ -135,6 +133,7 @@ std::ostream& operator<<(std::ostream& stream, const preproc_map::value_type& de
  * Function to use the WML preprocessor on a file.
  *
  * @param defines                 A map of symbols defined.
+ * @param fname                   The file to be preprocessed.
  *
  * @returns                       The resulting preprocessed file data.
  */

@@ -109,7 +109,7 @@ opts.AddVariables(
     BoolVariable('ccache', "Use ccache", False),
     ('ctool', 'Set c compiler command if not using standard compiler.'),
     ('cxxtool', 'Set c++ compiler command if not using standard compiler.'),
-    EnumVariable('cxx_std', 'Target c++ std version', '14', ['14', '17', '20']),
+    EnumVariable('cxx_std', 'Target c++ std version', '17', ['17', '20']),
     ('sanitize', 'Enable clang and GCC sanitizer functionality. A comma separated list of sanitize suboptions must be passed as value.', ''),
     BoolVariable("fast", "Make scons faster at cost of less precise dependency tracking.", False),
     BoolVariable("autorevision", 'Use autorevision tool to fetch current git revision that will be embedded in version string', True),
@@ -129,7 +129,7 @@ for repo in Dir(".").repositories:
   # source code root and supplying this path with -Y option.
   toolpath.append(repo.abspath + "/scons")
 sys.path = toolpath + sys.path
-env = Environment(tools=["tar", "gettext_tool", "install", "python_devel", "scanreplace"], options = opts, toolpath = toolpath)
+env = Environment(tools=["tar", "gettext_tool", "install", "scanreplace"], options = opts, toolpath = toolpath)
 
 if env["lockfile"]:
     print("Creating lockfile")
@@ -185,10 +185,11 @@ if env['distcc']:
 if env['ccache']: env.Tool('ccache')
 
 # boost::asio::post is new with 1.66
+# Ubuntu 18.04 also only has 1.65
 if env["forum_user_handler"]:
     boost_version = "1.66"
 else:
-    boost_version = "1.56"
+    boost_version = "1.65"
 
 
 def SortHelpText(a, b):
@@ -317,7 +318,7 @@ def Warning(message):
 
 from metasconf import init_metasconf
 configure_args = dict(
-    custom_tests = init_metasconf(env, ["cplusplus", "python_devel", "sdl", "boost", "cairo", "pango", "pkgconfig", "gettext_tool", "lua", "gl"]),
+    custom_tests = init_metasconf(env, ["cplusplus", "sdl", "boost", "cairo", "pango", "pkgconfig", "gettext_tool", "lua", "gl"]),
     config_h = "$build_dir/config.h",
     log_file="$build_dir/config.log", conf_dir="$build_dir/sconf_temp")
 
@@ -355,7 +356,9 @@ if env["prereqs"]:
             have_libpthread = conf.CheckLib("pthread")
         return have_libpthread & \
             conf.CheckBoost("system") & \
-            conf.CheckBoost("asio", header_only = True)
+            conf.CheckBoost("asio", header_only = True) & \
+            conf.CheckBoost("context") & \
+            conf.CheckBoost("coroutine")
 
     def have_sdl_other():
         return \
@@ -368,10 +371,11 @@ if env["prereqs"]:
         env["PKG_CONFIG_FLAGS"] = "--dont-define-prefix"
 
     have_server_prereqs = (\
-        conf.CheckCPlusPlus(gcc_version = "5.4") & \
+        conf.CheckCPlusPlus(gcc_version = "7") & \
         conf.CheckBoost("iostreams", require_version = boost_version) & \
         conf.CheckBoostIostreamsGZip() & \
         conf.CheckBoostIostreamsBZip2() & \
+        conf.CheckBoost("program_options", require_version = boost_version) & \
         conf.CheckBoost("random", require_version = boost_version) & \
         conf.CheckBoost("smart_ptr", header_only = True) & \
 	CheckAsio(conf) & \
@@ -404,7 +408,6 @@ if env["prereqs"]:
     have_client_prereqs = have_client_prereqs & conf.CheckCairo(min_version = "1.10")
     have_client_prereqs = have_client_prereqs & conf.CheckPango("cairo", require_version = "1.22.0")
     have_client_prereqs = have_client_prereqs & conf.CheckPKG("fontconfig")
-    have_client_prereqs = have_client_prereqs & conf.CheckBoost("program_options", require_version = boost_version)
     have_client_prereqs = have_client_prereqs & conf.CheckBoost("regex")
     if not have_client_prereqs:
         Warning("Client prerequisites are not met. wesnoth cannot be built.")
@@ -427,6 +430,8 @@ if env["prereqs"]:
         client_env.Append(CPPDEFINES = ["HAVE_FRIBIDI"])
     if env["history"]:
         client_env.Append(CPPDEFINES = ["HAVE_HISTORY"])
+
+    env.Append(CPPDEFINES = ["BOOST_COROUTINES_NO_DEPRECATION_WARNING"])
 
     if env["forum_user_handler"]:
         found_connector = False
@@ -545,6 +550,10 @@ for env in [test_env, client_env, env]:
 # #
 
         debug_flags = env["opt"]+"-DDEBUG -ggdb3"
+        if "mingw" in env["TOOLS"]:
+            debug_flags += " -Wa,-mbig-obj"
+            debug_flags = Split(debug_flags)
+            debug_flags.append("${ '-O3' if TARGET.name == 'gettext.o' else '' }") # workaround for "File too big" errors
 
         if env["glibcxx_debug"] == True:
             glibcxx_debug_flags = "_GLIBCXX_DEBUG _GLIBCXX_DEBUG_PEDANTIC"
@@ -582,7 +591,7 @@ for env in [test_env, client_env, env]:
 
             if env["enable_lto"] == True:
                 rel_comp_flags = rel_comp_flags + " -flto=" + str(env["jobs"])
-                rel_link_flags = rel_comp_flags + " -fuse-ld=gold"
+                rel_link_flags = rel_comp_flags + " -fuse-ld=gold -Wno-stringop-overflow"
         elif "clang" in env["CXX"]:
             if env["pgo_data"] == "generate":
                 rel_comp_flags = rel_comp_flags + " -fprofile-instr-generate=pgo_data/wesnoth-%p.profraw"

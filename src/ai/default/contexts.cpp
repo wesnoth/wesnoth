@@ -38,12 +38,10 @@ static lg::log_domain log_ai("ai/general");
 // =======================================================================
 namespace ai {
 
-
 // default ai context
 default_ai_context::default_ai_context()
 {
 }
-
 
 default_ai_context::~default_ai_context()
 {
@@ -65,23 +63,20 @@ default_ai_context_impl::~default_ai_context_impl()
 {
 }
 
-
 int default_ai_context_impl::count_free_hexes_in_castle(const map_location &loc, std::set<map_location> &checked_hexes)
 {
 	int ret = 0;
 	unit_map &units_ = resources::gameboard->units();
-	adjacent_loc_array_t adj;
-	get_adjacent_tiles(loc,adj.data());
-	for(std::size_t n = 0; n < adj.size(); ++n) {
-		if (checked_hexes.find(adj[n]) != checked_hexes.end())
+	for(const map_location& adj : get_adjacent_tiles(loc)) {
+		if (checked_hexes.find(adj) != checked_hexes.end())
 			continue;
-		checked_hexes.insert(adj[n]);
-		if (resources::gameboard->map().is_castle(adj[n])) {
-			const unit_map::const_iterator u = units_.find(adj[n]);
-			ret += count_free_hexes_in_castle(adj[n], checked_hexes);
+		checked_hexes.insert(adj);
+		if (resources::gameboard->map().is_castle(adj)) {
+			const unit_map::const_iterator u = units_.find(adj);
+			ret += count_free_hexes_in_castle(adj, checked_hexes);
 			if (u == units_.end()
 				|| (current_team().is_enemy(u->side())
-					&& u->invisible(adj[n]))
+					&& u->invisible(adj))
 				|| ((&resources::gameboard->get_team(u->side()) == &current_team())
 					&& u->movement_left() > 0)) {
 				ret += 1;
@@ -91,11 +86,9 @@ int default_ai_context_impl::count_free_hexes_in_castle(const map_location &loc,
 	return ret;
 }
 
-
 default_ai_context& default_ai_context_impl::get_default_ai_context(){
 	return *this;
 }
-
 
 int default_ai_context_impl::rate_terrain(const unit& u, const map_location& loc) const
 {
@@ -149,10 +142,8 @@ std::vector<target> default_ai_context_impl::find_targets(const move_map& enemy_
 			//find the location of enemy threats
 			std::set<map_location> threats;
 
-			adjacent_loc_array_t adj;
-			get_adjacent_tiles(leader->get_location(), adj.data());
-			for(std::size_t n = 0; n < adj.size(); ++n) {
-				std::pair<move_map::const_iterator,move_map::const_iterator> itors = enemy_dstsrc.equal_range(adj[n]);
+			for(const map_location& adj : get_adjacent_tiles(leader->get_location())) {
+				std::pair<move_map::const_iterator,move_map::const_iterator> itors = enemy_dstsrc.equal_range(adj);
 				while(itors.first != itors.second) {
 					if(units_.count(itors.first->second)) {
 						threats.insert(itors.first->second);
@@ -277,18 +268,15 @@ std::vector<target> default_ai_context_impl::find_targets(const move_map& enemy_
 	return targets;
 }
 
-
 const std::vector<target>& default_ai_context_impl::additional_targets() const
 {
 	return additional_targets_;
 }
 
-
 void default_ai_context_impl::add_target(const target& t) const
 {
 	additional_targets_.push_back(t);
 }
-
 
 void default_ai_context_impl::clear_additional_targets() const
 {

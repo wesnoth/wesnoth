@@ -13,19 +13,17 @@
 
 #pragma once
 
-#include "game_initialization/connect_engine.hpp"
-#include "game_initialization/lobby_info.hpp"
-#include "game_initialization/multiplayer.hpp"
 #include "gui/dialogs/modal_dialog.hpp"
-#include "gui/dialogs/multiplayer/player_list_helper.hpp"
 #include "gui/dialogs/multiplayer/plugin_executor.hpp"
-#include "mp_game_settings.hpp"
 
 class config;
+class saved_game;
+class wesnothd_connection;
 
 namespace gui2
 {
 class tree_view_node;
+class player_list_helper;
 
 namespace dialogs
 {
@@ -54,7 +52,7 @@ private:
 	/** @returns false if an error ocurred. */
 	bool show_flg_select(int side_num, bool first_time = false);
 
-	void generate_side_list(window& window);
+	void generate_side_list();
 
 	/**
 	 * Will close the Faction Select dialog if it's open.
@@ -67,7 +65,7 @@ private:
 	 */
 	void close_faction_select_dialog_if_open();
 
-	void network_handler(window& window);
+	void network_handler();
 
 	config& get_scenario();
 

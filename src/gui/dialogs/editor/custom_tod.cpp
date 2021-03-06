@@ -30,58 +30,10 @@
 #include "gui/widgets/slider.hpp"
 #include "gui/widgets/text_box.hpp"
 
-#include "utils/functional.hpp"
+#include <functional>
 
-namespace gui2
+namespace gui2::dialogs
 {
-namespace dialogs
-{
-
-/*WIKI
- * @page = GUIWindowDefinitionWML
- * @order = 2_custom_tod
- *
- * == Custom Schedules ==
- *
- * This shows the dialog to modify tod schedules.
- *
- * @begin{table}{dialog_widgets}
- *
- * current_tod_name & & text_box & m &
- *         The name of the time of day(ToD). $
- *
- * current_tod_id & & text_box & m &
- *         The id of the time of day(ToD). $
- *
- * current_tod_image & & image & m &
- *         The image for the time of day(ToD). $
- *
- * current_tod_mask & & image & m &
- *         The image mask for the time of day(ToD). $
- *
- * current_tod_sonund & & label & m &
- *         The sound for the time of day(ToD). $
- *
- * next_tod & & button & m &
- *         Selects the next ToD. $
- *
- * prev_tod & & button & m &
- *         Selects the previous ToD. $
- *
- * lawful_bonus & & slider & m &
- *         Sets the Lawful Bonus for the current ToD. $
- *
- * tod_red & & slider & m &
- *         Sets the red component of the current ToD. $
- *
- * tod_green & & slider & m &
- *         Sets the green component of the current ToD. $
- *
- * tod_blue & & slider & m &
- *         Sets the blue component of the current ToD. $
- *
- * @end{table}
- */
 
 static custom_tod::string_pair tod_getter_image(const time_of_day& tod)
 {
@@ -143,53 +95,53 @@ void custom_tod::pre_show(window& window)
 
 	connect_signal_mouse_left_click(
 			find_widget<button>(&window, "browse_image", false),
-			std::bind(&custom_tod::select_file<tod_getter_image>, this, std::ref(window), "data/core/images/misc"));
+			std::bind(&custom_tod::select_file<tod_getter_image>, this, "data/core/images/misc"));
 
 	connect_signal_mouse_left_click(
 			find_widget<button>(&window, "browse_mask", false),
-			std::bind(&custom_tod::select_file<tod_getter_mask>,  this, std::ref(window), "data/core/images"));
+			std::bind(&custom_tod::select_file<tod_getter_mask>,  this, "data/core/images"));
 
 	connect_signal_mouse_left_click(
 			find_widget<button>(&window, "browse_sound", false),
-			std::bind(&custom_tod::select_file<tod_getter_sound>, this, std::ref(window), "data/core/sounds/ambient"));
+			std::bind(&custom_tod::select_file<tod_getter_sound>, this, "data/core/sounds/ambient"));
 
 	connect_signal_mouse_left_click(
 			find_widget<button>(&window, "next_tod", false),
-			std::bind(&custom_tod::do_next_tod, this, std::ref(window)));
+			std::bind(&custom_tod::do_next_tod, this));
 
 	connect_signal_mouse_left_click(
 			find_widget<button>(&window, "previous_tod", false),
-			std::bind(&custom_tod::do_prev_tod, this, std::ref(window)));
+			std::bind(&custom_tod::do_prev_tod, this));
 
 	connect_signal_mouse_left_click(
 			find_widget<button>(&window, "new", false),
-			std::bind(&custom_tod::do_new_tod, this, std::ref(window)));
+			std::bind(&custom_tod::do_new_tod, this));
 
 	connect_signal_mouse_left_click(
 			find_widget<button>(&window, "delete", false),
-			std::bind(&custom_tod::do_delete_tod, this, std::ref(window)));
+			std::bind(&custom_tod::do_delete_tod, this));
 
 	connect_signal_notify_modified(
 			find_widget<slider>(&window, "lawful_bonus", false),
-			std::bind(&custom_tod::update_lawful_bonus, this, std::ref(window)));
+			std::bind(&custom_tod::update_lawful_bonus, this));
 
 	connect_signal_notify_modified(
 			*(color_field_r_->get_widget()),
-			std::bind(&custom_tod::color_slider_callback, this, std::ref(window)));
+			std::bind(&custom_tod::color_slider_callback, this));
 
 	connect_signal_notify_modified(
 			*(color_field_g_->get_widget()),
-			std::bind(&custom_tod::color_slider_callback, this, std::ref(window)));
+			std::bind(&custom_tod::color_slider_callback, this));
 
 	connect_signal_notify_modified(
 			*(color_field_b_->get_widget()),
-			std::bind(&custom_tod::color_slider_callback, this, std::ref(window)));
+			std::bind(&custom_tod::color_slider_callback, this));
 
-	update_selected_tod_info(window);
+	update_selected_tod_info();
 }
 
 template<custom_tod::string_pair(*fptr)(const time_of_day&)>
-void custom_tod::select_file(window& window, const std::string& default_dir)
+void custom_tod::select_file(const std::string& default_dir)
 {
 	const string_pair& data = (*fptr)(get_selected_tod());
 
@@ -218,28 +170,28 @@ void custom_tod::select_file(window& window, const std::string& default_dir)
 		}
 	}
 
-	update_selected_tod_info(window);
+	update_selected_tod_info();
 }
 
-void custom_tod::do_next_tod(window& window)
+void custom_tod::do_next_tod()
 {
 	current_tod_ = (current_tod_ + 1) % times_.size();
-	update_selected_tod_info(window);
+	update_selected_tod_info();
 }
 
-void custom_tod::do_prev_tod(window& window)
+void custom_tod::do_prev_tod()
 {
 	current_tod_ = (current_tod_ ? current_tod_ : times_.size()) - 1;
-	update_selected_tod_info(window);
+	update_selected_tod_info();
 }
 
-void custom_tod::do_new_tod(window& window)
+void custom_tod::do_new_tod()
 {
 	times_.insert(times_.begin() + current_tod_, time_of_day());
-	update_selected_tod_info(window);
+	update_selected_tod_info();
 }
 
-void custom_tod::do_delete_tod(window& window)
+void custom_tod::do_delete_tod()
 {
 	assert(times_.begin() + current_tod_ < times_.end());
 
@@ -253,7 +205,7 @@ void custom_tod::do_delete_tod(window& window)
 		}
 	}
 
-	update_selected_tod_info(window);
+	update_selected_tod_info();
 }
 
 const time_of_day& custom_tod::get_selected_tod() const
@@ -265,18 +217,18 @@ const time_of_day& custom_tod::get_selected_tod() const
 	}
 }
 
-void custom_tod::color_slider_callback(window& window)
+void custom_tod::color_slider_callback()
 {
 	time_of_day& current_tod = times_[current_tod_];
 
-	current_tod.color.r = color_field_r_->get_widget_value(window);
-	current_tod.color.g = color_field_g_->get_widget_value(window);
-	current_tod.color.b = color_field_b_->get_widget_value(window);
+	current_tod.color.r = color_field_r_->get_widget_value(*get_window());
+	current_tod.color.g = color_field_g_->get_widget_value(*get_window());
+	current_tod.color.b = color_field_b_->get_widget_value(*get_window());
 
-	update_tod_display(window);
+	update_tod_display();
 }
 
-void custom_tod::update_tod_display(window& window)
+void custom_tod::update_tod_display()
 {
 	display* disp = display::get_singleton();
 	assert(disp && "Display pointer is null!");
@@ -284,7 +236,7 @@ void custom_tod::update_tod_display(window& window)
 	// Prevent a floating slice of window appearing alone over the
 	// theme UI sidebar after redrawing tiles and before we have a
 	// chance to redraw the rest of this window.
-	window.undraw();
+	get_window()->undraw();
 
 	// NOTE: We only really want to re-render the gamemap tiles here.
 	// Redrawing everything is a significantly more expensive task.
@@ -304,38 +256,38 @@ void custom_tod::update_tod_display(window& window)
 	disp->draw(false);
 
 	// NOTE: revert to invalidate_layout if necessary to display the ToD mask image.
-	window.set_is_dirty(true);
+	get_window()->set_is_dirty(true);
 }
 
-void custom_tod::update_lawful_bonus(window& window)
+void custom_tod::update_lawful_bonus()
 {
-	times_[current_tod_].lawful_bonus = find_widget<slider>(&window, "lawful_bonus", false).get_value();
+	times_[current_tod_].lawful_bonus = find_widget<slider>(get_window(), "lawful_bonus", false).get_value();
 }
 
-void custom_tod::update_selected_tod_info(window& window)
+void custom_tod::update_selected_tod_info()
 {
 	const time_of_day& current_tod = get_selected_tod();
 
-	find_widget<text_box>(&window, "tod_name", false).set_value(current_tod.name);
-	find_widget<text_box>(&window, "tod_id", false).set_value(current_tod.id);
+	find_widget<text_box>(get_window(), "tod_name", false).set_value(current_tod.name);
+	find_widget<text_box>(get_window(), "tod_id", false).set_value(current_tod.id);
 
-	find_widget<text_box>(&window, "path_image", false).set_value(current_tod.image);
-	find_widget<text_box>(&window, "path_mask", false).set_value(current_tod.image_mask);
-	find_widget<text_box>(&window, "path_sound", false).set_value(current_tod.sounds);
+	find_widget<text_box>(get_window(), "path_image", false).set_value(current_tod.image);
+	find_widget<text_box>(get_window(), "path_mask", false).set_value(current_tod.image_mask);
+	find_widget<text_box>(get_window(), "path_sound", false).set_value(current_tod.sounds);
 
-	find_widget<image>(&window, "current_tod_image", false).set_image(current_tod.image);
-	find_widget<image>(&window, "current_tod_mask", false).set_image(current_tod.image_mask);
+	find_widget<image>(get_window(), "current_tod_image", false).set_image(current_tod.image);
+	find_widget<image>(get_window(), "current_tod_mask", false).set_image(current_tod.image_mask);
 
-	find_widget<slider>(&window, "lawful_bonus", false).set_value(current_tod.lawful_bonus);
+	find_widget<slider>(get_window(), "lawful_bonus", false).set_value(current_tod.lawful_bonus);
 
-	color_field_r_->set_widget_value(window, current_tod.color.r);
-	color_field_g_->set_widget_value(window, current_tod.color.g);
-	color_field_b_->set_widget_value(window, current_tod.color.b);
+	color_field_r_->set_widget_value(*get_window(), current_tod.color.r);
+	color_field_g_->set_widget_value(*get_window(), current_tod.color.g);
+	color_field_b_->set_widget_value(*get_window(), current_tod.color.b);
 
 	const std::string new_index_str = formatter() << (current_tod_ + 1) << "/" << times_.size();
-	find_widget<label>(&window, "tod_number", false).set_label(new_index_str);
+	find_widget<label>(get_window(), "tod_number", false).set_label(new_index_str);
 
-	update_tod_display(window);
+	update_tod_display();
 }
 
 void custom_tod::copy_to_clipboard_callback(tod_attribute_getter getter)
@@ -343,9 +295,9 @@ void custom_tod::copy_to_clipboard_callback(tod_attribute_getter getter)
 	desktop::clipboard::copy_to_clipboard(getter(get_selected_tod()).second, false);
 }
 
-void custom_tod::post_show(window& window)
+void custom_tod::post_show(window& /*window*/)
 {
-	update_tod_display(window);
+	update_tod_display();
 
 	if(get_retval() == retval::OK) {
 		// TODO: save ToD
@@ -353,4 +305,3 @@ void custom_tod::post_show(window& window)
 }
 
 } // namespace dialogs
-} // namespace gui2

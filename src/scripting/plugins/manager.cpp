@@ -29,8 +29,8 @@ static lg::log_domain log_plugins("plugins");
 #define WRN_PLG LOG_STREAM(warn,  log_plugins)
 #define ERR_PLG LOG_STREAM(err,   log_plugins)
 
-
-struct plugin {
+struct plugin
+{
 	std::string name;
 	std::string source;
 	bool is_file;
@@ -118,7 +118,7 @@ void plugins_manager::start_plugin(std::size_t idx)
 std::size_t plugins_manager::add_plugin(const std::string & name, const std::string & prog)
 {
 	std::size_t idx = plugins_.size();
-	plugins_.push_back(new plugin);
+	plugins_.emplace_back();
 
 	plugin & p = plugins_[idx];
 	p.name = name;
@@ -131,7 +131,7 @@ std::size_t plugins_manager::add_plugin(const std::string & name, const std::str
 std::size_t plugins_manager::load_plugin(const std::string & name, const std::string & filename)
 {
 	std::size_t idx = plugins_.size();
-	plugins_.push_back(new plugin);
+	plugins_.emplace_back();
 
 	plugin & p = plugins_[idx];
 	p.name = name;

@@ -46,7 +46,7 @@ public:
 	/**
 	 * Action cloning
 	 */
-	virtual editor_action* clone() const = 0;
+	virtual std::unique_ptr<editor_action> clone() const = 0;
 
 	/**
 	 * Perform the action, returning an undo action that,
@@ -56,7 +56,7 @@ public:
 	 * undo, call the perform_without_undo function and
 	 * return the undo object.
 	 */
-	virtual editor_action* perform(map_context&) const;
+	virtual std::unique_ptr<editor_action> perform(map_context&) const;
 
 	/**
 	 * Perform the action without creating an undo action.
@@ -129,9 +129,9 @@ struct editor_action_exception : public editor_exception
 		return name;                                                                                                   \
 	}                                                                                                                  \
                                                                                                                        \
-	editor_action_##id* editor_action_##id::clone() const                                                              \
+	std::unique_ptr<editor_action> editor_action_##id::clone() const                                                              \
 	{                                                                                                                  \
-		return new editor_action_##id(*this);                                                                          \
+		return std::make_unique<editor_action_##id>(*this);                                                                          \
 	}                                                                                                                  \
 
 } // end namespace editor

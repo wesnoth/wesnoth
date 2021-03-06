@@ -158,7 +158,7 @@ namespace lua_colors {
 		cmd_out << "Adding wesnoth.colors table...\n";
 
 		lua_getglobal(L, "wesnoth");
-		lua_newuserdata(L, 0);
+		lua_newuserdatauv(L, 0, 0);
 		lua_createtable(L, 0, 2);
 		lua_pushcfunction(L, impl_get_color);
 		lua_setfield(L, -2, "__index");
@@ -171,4 +171,3 @@ namespace lua_colors {
 		return cmd_out.str();
 	}
 }
-

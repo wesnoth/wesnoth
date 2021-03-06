@@ -44,16 +44,16 @@ public:
 
 	side_actions_container();
 
-	//! Tag for action_set's random_access index.
+	/** Tag for action_set's random_access index. */
 	struct chronological{};
 
-	//! Tag for action_set's hashed_non_unique index.
+	/** Tag for action_set's hashed_non_unique index. */
 	struct by_unit{};
 
-	//! Tag for action_set's hashed_non_unique index.
+	/** Tag for action_set's hashed_non_unique index. */
 	struct by_hex{};
 
-	//! Underlying container
+	/** Underlying container */
 	typedef boost::multi_index::multi_index_container <
 		action_ptr,
 		boost::multi_index::indexed_by<

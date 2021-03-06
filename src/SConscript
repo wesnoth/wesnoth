@@ -56,10 +56,6 @@ for environ in [test_env, client_env, env]:
         if not os.path.isabs(env['default_prefs_file']):
             environ.Append(CPPDEFINES = "HAS_RELATIVE_DEFPREF")
 
-# Inject boost::bind patch everywhere
-for environ in [test_env, client_env, env]:
-    environ.Append(CCFLAGS = Split("-include boost-patched/bind/arg.hpp"))
-
 for environ in [test_env, client_env, env]:
     environ.Append(CPPDEFINES = "$EXTRA_DEFINE")
 
@@ -116,7 +112,7 @@ env_lua = env.Clone(
     CPPPATH = ["$CPPPATH", Dir(".").srcnode()],
     CPPDEFINES = ["$CPPDEFINES", env["PLATFORM"] != "win32" and "LUA_USE_POSIX" or []])
 
-env_lua.AppendUnique(CCFLAGS = Split("-Wno-old-style-cast -Wno-useless-cast"))
+env_lua.AppendUnique(CCFLAGS = Split("-Wno-old-style-cast -Wno-useless-cast -Wno-stringop-overflow"))
 # Silence some Clang-specific warnings due to extra parentheses in if statements when comparing.
 # also silence a warning for the lua code
 if "clang" in env["CXX"]:

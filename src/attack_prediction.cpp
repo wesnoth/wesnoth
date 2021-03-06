@@ -42,7 +42,6 @@
 #include "preferences/general.hpp"
 #include "random.hpp"
 #include "serialization/string_utils.hpp"
-#include "utils/general.hpp"
 
 #include <array>
 #include <cfloat>
@@ -255,9 +254,9 @@ public:
 	// Shift rows on this plane (a taking damage).
 	void shift_rows(unsigned dst, unsigned src, unsigned damage, double prob, int drain_constant, int drain_percent);
 
-	/// Move a column (adding it to the destination).
+	/** Move a column (adding it to the destination). */
 	void move_column(unsigned d_plane, unsigned s_plane, unsigned d_col, unsigned s_col);
-	/// Move a row (adding it to the destination).
+	/** Move a row (adding it to the destination). */
 	void move_row(unsigned d_plane, unsigned s_plane, unsigned d_row, unsigned s_row);
 
 	// Move values within a row (or column) to a specified column (or row).
@@ -278,16 +277,16 @@ public:
 		return (a_slowed ? 1 : 0) + (b_slowed ? 2 : 0);
 	}
 
-	/// What is the chance that an indicated combatant (one of them) is at zero?
+	/** What is the chance that an indicated combatant (one of them) is at zero? */
 	double prob_of_zero(bool check_a, bool check_b) const;
-	/// Sums the values in the specified row.
+	/** Sums the values in the specified row. */
 	double row_sum(unsigned plane, unsigned row) const;
-	/// Sums the values in the specified column.
+	/** Sums the values in the specified column. */
 	double col_sum(unsigned plane, unsigned column) const;
-	/// Sums the values in the specified plane.
+	/** Sums the values in the specified plane. */
 	void sum(unsigned plane, std::vector<double>& row_sums, std::vector<double>& col_sums) const;
 
-	/// Returns true if the specified plane might have data in it.
+	/** Returns true if the specified plane might have data in it. */
 	bool plane_used(unsigned p) const
 	{
 		return p < NUM_PLANES && plane_[p] != nullptr;
@@ -330,7 +329,7 @@ private:
 	double& val(unsigned plane, unsigned row, unsigned col);
 	const double& val(unsigned plane, unsigned row, unsigned col) const;
 
-	/// Transfers a portion (value * prob) of one value in the matrix to another.
+	/** Transfers a portion (value * prob) of one value in the matrix to another. */
 	void xfer(unsigned dst_plane,
 			unsigned src_plane,
 			unsigned row_dst,
@@ -338,7 +337,7 @@ private:
 			unsigned row_src,
 			unsigned col_src,
 			double prob);
-	/// Transfers one value in the matrix to another.
+	/** Transfers one value in the matrix to another. */
 	void xfer(unsigned dst_plane,
 			unsigned src_plane,
 			unsigned row_dst,
@@ -655,12 +654,12 @@ void prob_matrix::shift_cols_in_row(unsigned dst,
 		// calculation easier to parse.
 		int col_i = static_cast<int>(cols[col_x]);
 		int drain_amount = col_i * drain_percent / 100 + drain_constant;
-		unsigned newrow = utils::clamp(row_i + drain_amount, 1, max_row);
+		unsigned newrow = std::clamp(row_i + drain_amount, 1, max_row);
 		xfer(dst, src, newrow, 0, row, cols[col_x], prob);
 	}
 
 	// The remaining columns use the specified drainmax.
-	unsigned newrow = utils::clamp(row_i + drainmax, 1, max_row);
+	unsigned newrow = std::clamp(row_i + drainmax, 1, max_row);
 	for(; col_x < cols.size(); ++col_x) {
 		xfer(dst, src, newrow, cols[col_x] - damage, row, cols[col_x], prob);
 	}
@@ -728,12 +727,12 @@ void prob_matrix::shift_rows_in_col(unsigned dst,
 		// calculation easier to parse.
 		int row_i = static_cast<int>(rows[row_x]);
 		int drain_amount = row_i * drain_percent / 100 + drain_constant;
-		unsigned newcol = utils::clamp(col_i + drain_amount, 1, max_col);
+		unsigned newcol = std::clamp(col_i + drain_amount, 1, max_col);
 		xfer(dst, src, 0, newcol, rows[row_x], col, prob);
 	}
 
 	// The remaining rows use the specified drainmax.
-	unsigned newcol = utils::clamp(col_i + drainmax, 1, max_col);
+	unsigned newcol = std::clamp(col_i + drainmax, 1, max_col);
 	for(; row_x < rows.size(); ++row_x) {
 		xfer(dst, src, rows[row_x] - damage, newcol, rows[row_x], col, prob);
 	}
@@ -875,8 +874,7 @@ void prob_matrix::clear()
 			continue;
 		}
 
-		decltype(used_rows_[p].begin()) first_row, last_row;
-		std::tie(first_row, last_row) = std::minmax_element(used_rows_[p].begin(), used_rows_[p].end());
+		auto [first_row, last_row] = std::minmax_element(used_rows_[p].begin(), used_rows_[p].end());
 		for(unsigned int r = *first_row; r <= *last_row; ++r) {
 			for(unsigned int c = 0u; c < cols_; ++c) {
 				plane_[p][r * cols_ + c] = 0.0;
@@ -1238,19 +1236,19 @@ public:
 	// B hits A.  Why can't they just get along?
 	void receive_blow_a(double hit_chance);
 
-	/// What is the chance that one of the combatants is dead?
+	/** What is the chance that one of the combatants is dead? */
 	double dead_prob() const
 	{
 		return prob_of_zero(true, true);
 	}
 
-	/// What is the chance that combatant 'a' is dead?
+	/** What is the chance that combatant 'a' is dead? */
 	double dead_prob_a() const
 	{
 		return prob_of_zero(true, false);
 	}
 
-	/// What is the chance that combatant 'b' is dead?
+	/** What is the chance that combatant 'b' is dead? */
 	double dead_prob_b() const
 	{
 		return prob_of_zero(false, true);
@@ -1527,7 +1525,7 @@ void monte_carlo_combat_matrix::simulate()
 						b_slowed |= a_slows_;
 
 						int drain_amount = (a_drain_percent_ * static_cast<signed>(damage) / 100 + a_drain_constant_);
-						a_hp = utils::clamp(a_hp + drain_amount, 1u, a_max_hp_);
+						a_hp = std::clamp(a_hp + drain_amount, 1u, a_max_hp_);
 
 						b_hp -= damage;
 
@@ -1547,7 +1545,7 @@ void monte_carlo_combat_matrix::simulate()
 						a_slowed |= b_slows_;
 
 						int drain_amount = (b_drain_percent_ * static_cast<signed>(damage) / 100 + b_drain_constant_);
-						b_hp = utils::clamp(b_hp + drain_amount, 1u, b_max_hp_);
+						b_hp = std::clamp(b_hp + drain_amount, 1u, b_max_hp_);
 
 						a_hp -= damage;
 
@@ -1779,7 +1777,7 @@ double calculate_probability_of_debuff(double initial_prob, bool enemy_gives, do
 	// Prob_kill can creep a bit above 100 % if the AI simulates an unit being attacked by multiple units in a row, due to rounding error.
 	// Likewise, it can get slightly negative if the unit already has negative HP.
 	// Simply limit it to suitable range.
-	prob_kill = utils::clamp(prob_kill, 0.0, 1.0);
+	prob_kill = std::clamp(prob_kill, 0.0, 1.0);
 
 	// Probability we are already debuffed and the enemy doesn't hit us.
 	const double prob_already_debuffed_not_touched = initial_prob * (1.0 - prob_touched);

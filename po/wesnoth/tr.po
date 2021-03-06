@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2020-10-17 01:28-0300\n"
-"PO-Revision-Date: 2020-08-05 03:27+0300\n"
+"POT-Creation-Date: 2021-02-20 18:40-0300\n"
+"PO-Revision-Date: 2020-12-14 11:15+0300\n"
 "Last-Translator: Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>\n"
 "Language-Team: Turkish\n"
 "Language: tr\n"
@@ -210,34 +210,11 @@ msgstr ""
 "Kullanımdan kaldırma kayıtları-etki alanı kaç tane ileti gösterileceğini "
 "denetler."
 
-#. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:172
-msgid "Use experimental PRNG combat"
-msgstr "Deneysel YRSÜ çarpışması kullan"
-
-#. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:173
-msgid ""
-"Enables more determinstic chance-to-hit calculations. This is an "
-"experimental feature designed to bring the observed hit/miss rate more in "
-"line with the displayed percentages.\n"
-"\n"
-"Note: this option only affects singleplayer, and the ‘Save random seed’ "
-"option must also be enabled when creating a game for this to work."
-msgstr ""
-"İsabet ihtimallerini daha kararlı hesaplamaya yarar. İsabet/ıska oranlarını "
-"oyunda gösterilen oranlara yaklaştırmak için kullanılan deneysel bir "
-"özelliktir. \n"
-" \n"
-"Not: Bu ayar sadece tek oyunculu oyunları etkiler ve çalışması için oyun "
-"kurarken 'Rastgele dizesini kaydet' seçeneğinin etkinleştirilmiş olması "
-"gerekir."
-
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [unstore_unit]
 #. [lua]: set_status
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:365
-#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1074
+#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1078
 msgid "poisoned"
 msgstr "zehirlenmiş"
 
@@ -255,13 +232,6 @@ msgstr "Aktarılan altın:"
 #: data/lua/wml/objectives.lua:39 src/map_command_handler.hpp:337
 msgid "Notes:"
 msgstr "Notlar:"
-
-#. [advancement]: id=amla_default
-#: data/campaigns/World_Conquest/era/campaign/heroes.cfg:142
-#, fuzzy
-#| msgid "Max swarm bonus: "
-msgid "Max HP bonus +6%"
-msgstr "Azami üşüşme ödülü: "
 
 #. [lua]: wc_ii_generate_scenario
 #. [lua]: wct_store_possible_encampment_ford
@@ -357,74 +327,6 @@ msgstr "Düşman köyü"
 #. [lua]: add_player_side
 #: data/campaigns/World_Conquest/lua/map/scenario_utils/side_definitions.lua:61
 msgid "Allies"
-msgstr ""
-
-#. [chance]
-#: data/campaigns/World_Conquest/resources/data/training.cfg:305
-msgid "$range|: $special|"
-msgstr ""
-
-#. [chance]
-#: data/campaigns/World_Conquest/resources/data/training.cfg:519
-msgid "+$boost| moves"
-msgstr ""
-
-#. [chance]
-#: data/campaigns/World_Conquest/resources/data/training.cfg:533
-msgid "$range|: +$boost| damage"
-msgstr ""
-
-#. [chance]
-#: data/campaigns/World_Conquest/resources/data/training.cfg:549
-msgid "$range|: +1 damage per level"
-msgstr ""
-
-#. [chance]
-#: data/campaigns/World_Conquest/resources/data/training.cfg:565
-msgid "+$hitpoints| hitpoints"
-msgstr ""
-
-#. [chance]
-#: data/campaigns/World_Conquest/resources/data/training.cfg:580
-msgid "+$hitpoints| hitpoints per level"
-msgstr ""
-
-#. [chance]
-#: data/campaigns/World_Conquest/resources/data/training.cfg:596
-msgid "$value| XP to advance"
-msgstr ""
-
-#. [chance]
-#: data/campaigns/World_Conquest/resources/data/training.cfg:620
-msgid "Village/Castle: +5 defense"
-msgstr ""
-
-#. [chance]
-#: data/campaigns/World_Conquest/resources/data/training.cfg:652
-msgid ""
-"$terrain|: +$def| defense and full movement, +$res| resistance vs $dmg_type|"
-msgstr ""
-
-#. [chance]
-#: data/campaigns/World_Conquest/resources/data/training.cfg:681
-msgid "$terrain|: +10 defense and full movement"
-msgstr ""
-
-#. [chance]
-#: data/campaigns/World_Conquest/resources/data/training.cfg:692
-#, fuzzy
-#| msgid "Be more defensive"
-msgid "+moves defense"
-msgstr "Daha savunmacı ol"
-
-#. [chance]
-#: data/campaigns/World_Conquest/resources/data/training.cfg:702
-msgid "melee: optional charge"
-msgstr ""
-
-#. [chance]
-#: data/campaigns/World_Conquest/resources/data/training.cfg:727
-msgid "$range|: arcane and +25% damage"
 msgstr ""
 
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:147
@@ -551,38 +453,6 @@ msgstr "Dirençler"
 msgid "strike"
 msgstr "Vuruşlar"
 
-#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:4
-msgid "World Conquest 1p"
-msgstr ""
-
-#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:7
-msgid "World Conquest 2p"
-msgstr ""
-
-#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:10
-msgid "World Conquest 3p"
-msgstr ""
-
-#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:13
-msgid ""
-"A randomly generated campaign for 1 player. It has 6 level of difficulties.\n"
-"(Expert level, 5 scenarios.)"
-msgstr ""
-
-#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:17
-msgid ""
-"A randomly generated cooperative campaign for 2 players. It has 6 level of "
-"difficulties.\n"
-"(Expert level, 5 scenarios.)"
-msgstr ""
-
-#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:21
-msgid ""
-"A randomly generated cooperative campaign for 3 players. It has 6 level of "
-"difficulties.\n"
-"(Expert level, 5 scenarios.)"
-msgstr ""
-
 #. [about]
 #: data/core/about.cfg:4
 msgid "Programming"
@@ -644,280 +514,280 @@ msgid "Bots"
 msgstr "Botlar"
 
 #. [about]
-#: data/core/about_i18n.cfg:4
+#: data/core/about_i18n.cfg:6
 msgid "Afrikaans Translation"
 msgstr "Afrikaca Tercüme"
 
 #. [about]
-#: data/core/about_i18n.cfg:24
+#: data/core/about_i18n.cfg:26
 #, fuzzy
 #| msgid "Greek Translation"
 msgid "Ancient Greek Translation"
 msgstr "Yunanca Tercüme"
 
 #. [about]
-#: data/core/about_i18n.cfg:32
+#: data/core/about_i18n.cfg:34
 msgid "Arabic Translation"
 msgstr "Arapça Tercüme"
 
 #. [about]
-#: data/core/about_i18n.cfg:40
+#: data/core/about_i18n.cfg:42
 msgid "Asturian Translation"
 msgstr "Asturiasça Tercüme"
 
 #. [about]
-#: data/core/about_i18n.cfg:46
+#: data/core/about_i18n.cfg:48
 msgid "Basque Translation"
 msgstr "Baskça Tercüme"
 
 #. [about]
-#: data/core/about_i18n.cfg:59
+#: data/core/about_i18n.cfg:61
 msgid "Bulgarian Translation"
 msgstr "Bulgarca Tercüme"
 
 #. [about]
-#: data/core/about_i18n.cfg:82
+#: data/core/about_i18n.cfg:84
 msgid "Catalan Translation"
 msgstr "Katalanca Tercüme"
 
 #. [about]
-#: data/core/about_i18n.cfg:128
+#: data/core/about_i18n.cfg:130
 msgid "Chinese Translation"
 msgstr "Çince Tercüme"
 
 #. [about]
-#: data/core/about_i18n.cfg:219
+#: data/core/about_i18n.cfg:221
 msgid "Chinese (Taiwan) Translation"
 msgstr "Çince (Tayvan) Tercüme"
 
 #. [about]
-#: data/core/about_i18n.cfg:232
+#: data/core/about_i18n.cfg:234
 msgid "Croatian Translation"
 msgstr "Hırvatça Tercüme"
 
 #. [about]
-#: data/core/about_i18n.cfg:242
+#: data/core/about_i18n.cfg:244
 msgid "Czech Translation"
 msgstr "Çekçe Tercüme"
 
 #. [about]
-#: data/core/about_i18n.cfg:311
+#: data/core/about_i18n.cfg:313
 msgid "Danish Translation"
 msgstr "Danimarkaca Tercüme"
 
 #. [about]
-#: data/core/about_i18n.cfg:342
+#: data/core/about_i18n.cfg:344
 msgid "Dutch Translation"
 msgstr "Felemenkçe Tercüme"
 
 #. [about]
-#: data/core/about_i18n.cfg:413
+#: data/core/about_i18n.cfg:415
 msgid "English (GB) Translation"
 msgstr "İngilizce (GB) Tercüme"
 
 #. [about]
-#: data/core/about_i18n.cfg:438
+#: data/core/about_i18n.cfg:440
 msgid "English (Shaw) Translation"
 msgstr "İngilizce (Shaw) Tercüme"
 
 #. [about]
-#: data/core/about_i18n.cfg:456
+#: data/core/about_i18n.cfg:458
 msgid "Esperanto Translation"
 msgstr "Esperanto Tercüme"
 
 #. [about]
-#: data/core/about_i18n.cfg:475
+#: data/core/about_i18n.cfg:477
 msgid "Estonian Translation"
 msgstr "Estonyaca Tercüme"
 
 #. [about]
-#: data/core/about_i18n.cfg:485
+#: data/core/about_i18n.cfg:487
 msgid "Filipino Translation"
 msgstr "Filipince Tercüme"
 
 #. [about]
-#: data/core/about_i18n.cfg:495
+#: data/core/about_i18n.cfg:497
 msgid "Finnish Translation"
 msgstr "Fince Tercüme"
 
 #. [about]
-#: data/core/about_i18n.cfg:544
+#: data/core/about_i18n.cfg:546
 msgid "French Translation"
 msgstr "Fransızca Tercüme"
 
 #. [about]
-#: data/core/about_i18n.cfg:706
+#: data/core/about_i18n.cfg:708
 msgid "Friulian Translation"
 msgstr "Firulice Tercüme"
 
 #. [about]
-#: data/core/about_i18n.cfg:713
+#: data/core/about_i18n.cfg:715
 msgid "Galician Translation"
 msgstr "Galiçyaca Tercüme"
 
 #. [about]
-#: data/core/about_i18n.cfg:749
+#: data/core/about_i18n.cfg:751
 msgid "German Translation"
 msgstr "Almanca Tercüme"
 
 #. [about]
-#: data/core/about_i18n.cfg:854
+#: data/core/about_i18n.cfg:856
 msgid "Greek Translation"
 msgstr "Yunanca Tercüme"
 
 #. [about]
-#: data/core/about_i18n.cfg:897
+#: data/core/about_i18n.cfg:899
 msgid "Hebrew Translation"
 msgstr "İbranice Tercüme"
 
 #. [about]
-#: data/core/about_i18n.cfg:910
+#: data/core/about_i18n.cfg:912
 msgid "Hungarian Translation"
 msgstr "Macarca Tercüme"
 
 #. [about]
-#: data/core/about_i18n.cfg:971
+#: data/core/about_i18n.cfg:973
 msgid "Icelandic Translation"
 msgstr "İzlandaca Tercüme"
 
 #. [about]
-#: data/core/about_i18n.cfg:981
+#: data/core/about_i18n.cfg:983
 msgid "Indonesian Translation"
 msgstr "Endonezyaca Tercüme"
 
 #. [about]
-#: data/core/about_i18n.cfg:1004
+#: data/core/about_i18n.cfg:1006
 msgid "Irish Translation"
 msgstr "İrlandaca Tercüme"
 
 #. [about]
-#: data/core/about_i18n.cfg:1011
+#: data/core/about_i18n.cfg:1013
 msgid "Italian Translation"
 msgstr "İtalyanca Tercüme"
 
 #. [about]
-#: data/core/about_i18n.cfg:1058
+#: data/core/about_i18n.cfg:1060
 msgid "Japanese Translation"
 msgstr "Japonca Tercüme"
 
 #. [about]
-#: data/core/about_i18n.cfg:1151
+#: data/core/about_i18n.cfg:1153
 msgid "Korean Translation"
 msgstr "Korece Tercüme"
 
 #. [about]
-#: data/core/about_i18n.cfg:1159
+#: data/core/about_i18n.cfg:1161
 msgid "Latin Translation"
 msgstr "Latince Tercüme"
 
 #. [about]
-#: data/core/about_i18n.cfg:1185
+#: data/core/about_i18n.cfg:1187
 msgid "Latvian Translation"
 msgstr "Letonca Tercüme"
 
 #. [about]
-#: data/core/about_i18n.cfg:1200
+#: data/core/about_i18n.cfg:1202
 msgid "Lithuanian Translation"
 msgstr "Litvanyaca Tercüme"
 
 #. [about]
-#: data/core/about_i18n.cfg:1225
+#: data/core/about_i18n.cfg:1227
 msgid "Macedonian Translation"
 msgstr "Makedonca Tercüme"
 
 #. [about]
-#: data/core/about_i18n.cfg:1232
+#: data/core/about_i18n.cfg:1234
 msgid "Marathi Translation"
 msgstr "Maratice Tercüme"
 
 #. [about]
-#: data/core/about_i18n.cfg:1241
+#: data/core/about_i18n.cfg:1243
 msgid "Norwegian Translation"
 msgstr "Norveççe Tercüme"
 
 #. [about]
-#: data/core/about_i18n.cfg:1266
+#: data/core/about_i18n.cfg:1268
 msgid "Old English Translation"
 msgstr "Eski İngilizce Tercüme"
 
 #. [about]
-#: data/core/about_i18n.cfg:1284
+#: data/core/about_i18n.cfg:1286
 msgid "Polish Translation"
 msgstr "Lehçe Tercüme"
 
 #. [about]
-#: data/core/about_i18n.cfg:1340
+#: data/core/about_i18n.cfg:1342
 msgid "Portuguese Translation"
 msgstr "Portekizce Tercüme"
 
 #. [about]
-#: data/core/about_i18n.cfg:1354
+#: data/core/about_i18n.cfg:1356
 msgid "Portuguese (Brazil) Translation"
 msgstr "Portekizce (Brezilya) Tercüme"
 
 #. [about]
-#: data/core/about_i18n.cfg:1412
+#: data/core/about_i18n.cfg:1414
 msgid "Romanian Translation"
 msgstr "Romanyaca Tercüme"
 
 #. [about]
-#: data/core/about_i18n.cfg:1420
+#: data/core/about_i18n.cfg:1422
 msgid "Russian Translation"
 msgstr "Rusça Tercüme"
 
 #. [about]
-#: data/core/about_i18n.cfg:1515
+#: data/core/about_i18n.cfg:1517
 msgid "Scottish Gaelic Translation"
 msgstr "İskoç Galcesi Tercüme"
 
 #. [about]
-#: data/core/about_i18n.cfg:1524
+#: data/core/about_i18n.cfg:1526
 msgid "Serbian Translation"
 msgstr "Sırpça Tercüme"
 
 #. [about]
-#: data/core/about_i18n.cfg:1543
+#: data/core/about_i18n.cfg:1545
 msgid "Slovak Translation"
 msgstr "Slovakça Tercüme"
 
 #. [about]
-#: data/core/about_i18n.cfg:1572
+#: data/core/about_i18n.cfg:1574
 msgid "Slovenian Translation"
 msgstr "Slovence Tercüme"
 
 #. [about]
-#: data/core/about_i18n.cfg:1588
+#: data/core/about_i18n.cfg:1590
 msgid "Spanish Translation"
 msgstr "İspanyolca Tercüme"
 
 #. [about]
-#: data/core/about_i18n.cfg:1670
+#: data/core/about_i18n.cfg:1672
 msgid "Swedish Translation"
 msgstr "İsveççe Tercüme"
 
 #. [about]
-#: data/core/about_i18n.cfg:1715
+#: data/core/about_i18n.cfg:1717
 msgid "Turkish Translation"
 msgstr "Türkçe Tercüme"
 
 #. [about]
-#: data/core/about_i18n.cfg:1740
+#: data/core/about_i18n.cfg:1742
 msgid "Ukrainian Translation"
 msgstr "Ukraynaca Tercüme"
 
 #. [about]
-#: data/core/about_i18n.cfg:1756
+#: data/core/about_i18n.cfg:1758
 msgid "Valencian (southern Catalan) Translation"
 msgstr "Valensiyaca Tercüme"
 
 #. [about]
-#: data/core/about_i18n.cfg:1769
+#: data/core/about_i18n.cfg:1771
 msgid "Vietnamese Translation"
 msgstr "Vietnamca Tercüme"
 
 #. [about]
 #. Real Acadèmia de Cultura Valenciana
-#: data/core/about_i18n.cfg:1789
+#: data/core/about_i18n.cfg:1791
 msgid "RACV’s Translation"
 msgstr "RACV Çevirisi"
 
@@ -1128,7 +998,7 @@ msgstr "Rünik Çekiç"
 
 #. [object]
 #. [item]: id=holly-water
-#: data/core/editor/items.cfg:282 data/core/macros/items.cfg:278
+#: data/core/editor/items.cfg:282 data/core/macros/items.cfg:283
 msgid "Holy Water"
 msgstr "Okunmuş Su"
 
@@ -1170,7 +1040,7 @@ msgstr "Gri İksir"
 
 #. [object]: id={ID}
 #. [item]: id=potion-poison
-#: data/core/editor/items.cfg:336 data/core/macros/items.cfg:242
+#: data/core/editor/items.cfg:336 data/core/macros/items.cfg:246
 msgid "Poison"
 msgstr "Zehir"
 
@@ -1241,7 +1111,7 @@ msgstr "Taş Yazıt"
 
 #. [object]
 #. [item]: id=storm-trident
-#: data/core/editor/items.cfg:420 data/core/macros/items.cfg:518
+#: data/core/editor/items.cfg:420 data/core/macros/items.cfg:529
 msgid "Storm Trident"
 msgstr "Yıldırım Çatalı"
 
@@ -1597,8 +1467,8 @@ msgstr "$temp_i ($side_i_leader.name|) tarafı"
 #. [value]
 #: data/core/macros/ai_controller.cfg:296
 #: data/core/macros/ai_controller.cfg:438
-#: data/core/macros/ai_controller.cfg:840
-#: data/core/macros/ai_controller.cfg:931
+#: data/core/macros/ai_controller.cfg:838
+#: data/core/macros/ai_controller.cfg:929
 msgid "Back"
 msgstr "Geri"
 
@@ -1667,7 +1537,7 @@ msgid "Clear all orders"
 msgstr "Tüm emirleri sil"
 
 #. [do]
-#: data/core/macros/ai_controller.cfg:766
+#: data/core/macros/ai_controller.cfg:765
 msgid ""
 "Objective: $ai_controller.side_$ally_side|_current_settings."
 "currently_doing_objective_description\n"
@@ -1680,45 +1550,45 @@ msgstr ""
 "currently_doing_behavior_description"
 
 #. [literal]
-#: data/core/macros/ai_controller.cfg:783
+#: data/core/macros/ai_controller.cfg:781
 msgid "Set objective..."
 msgstr "Hedefi belirt..."
 
 #. [literal]
-#: data/core/macros/ai_controller.cfg:874
+#: data/core/macros/ai_controller.cfg:872
 msgid "Set behavior..."
 msgstr "Davranışı belirt..."
 
 #. [literal]
-#: data/core/macros/ai_controller.cfg:979
+#: data/core/macros/ai_controller.cfg:977
 msgid "Exit"
 msgstr "Çıkış"
 
-#: data/core/macros/ai_controller.cfg:1116
+#: data/core/macros/ai_controller.cfg:1114
 msgid "Set special orders..."
 msgstr "Özel emirler ver..."
 
-#: data/core/macros/ai_controller.cfg:1117
+#: data/core/macros/ai_controller.cfg:1115
 msgid "Move leader to..."
 msgstr "Lideri şuraya getir..."
 
-#: data/core/macros/ai_controller.cfg:1118
+#: data/core/macros/ai_controller.cfg:1116
 msgid "Right-click to select a location to move leader to"
 msgstr "Lideri getirecek bir yer seçmek için sağ tıklayın"
 
-#: data/core/macros/ai_controller.cfg:1119
+#: data/core/macros/ai_controller.cfg:1117
 msgid "Move leader here"
 msgstr "Lideri buraya getir"
 
-#: data/core/macros/ai_controller.cfg:1120
+#: data/core/macros/ai_controller.cfg:1118
 msgid "moving leader to $x1|,$y1|."
 msgstr "Lider $x1|,$y1| altıgenine gidiyor"
 
-#: data/core/macros/ai_controller.cfg:1121
+#: data/core/macros/ai_controller.cfg:1119
 msgid "Clear special orders"
 msgstr "Özel emirleri sil"
 
-#: data/core/macros/ai_controller.cfg:1122
+#: data/core/macros/ai_controller.cfg:1120
 msgid ""
 "Special: $ai_controller.side_$ally_side|_current_settings."
 "currently_doing_special_description"
@@ -1727,26 +1597,26 @@ msgstr ""
 "currently_doing_special_description"
 
 #. [else]
-#: data/core/macros/deprecated-utils.cfg:34
+#: data/core/macros/deprecated-utils.cfg:35
 msgid "This unit has been renamed to: "
 msgstr "Bu birimin ismi şuna değişmiştir:"
 
 #. [lua]: generate_objectives
-#: data/core/macros/deprecated-utils.cfg:51 data/lua/wml/objectives.lua:106
+#: data/core/macros/deprecated-utils.cfg:52 data/lua/wml/objectives.lua:106
 msgid "Early finish bonus."
 msgstr "Erken bitirme ödülü var."
 
 #. [lua]: generate_objectives
-#: data/core/macros/deprecated-utils.cfg:55 data/lua/wml/objectives.lua:109
+#: data/core/macros/deprecated-utils.cfg:56 data/lua/wml/objectives.lua:109
 msgid "No early finish bonus."
 msgstr "Erken bitirme ödülü yok. "
 
 #. [lua]: generate_objectives
-#: data/core/macros/deprecated-utils.cfg:59 data/lua/wml/objectives.lua:117
+#: data/core/macros/deprecated-utils.cfg:60 data/lua/wml/objectives.lua:117
 msgid "No gold carried over to the next scenario."
 msgstr "Sonraki senaryoya altın aktarılmayacak."
 
-#: data/core/macros/deprecated-utils.cfg:63
+#: data/core/macros/deprecated-utils.cfg:64
 msgid ""
 "\n"
 "100% of finishing gold carried over to the next scenario."
@@ -1754,7 +1624,7 @@ msgstr ""
 "\n"
 "Artakalan altının %100'ü sonraki senaryoya aktarılır."
 
-#: data/core/macros/deprecated-utils.cfg:68
+#: data/core/macros/deprecated-utils.cfg:69
 msgid ""
 "\n"
 "40% of finishing gold carried over to the next scenario."
@@ -1762,7 +1632,7 @@ msgstr ""
 "\n"
 "Artakalan altının %40’ı sonraki senaryoya aktarılır."
 
-#: data/core/macros/deprecated-utils.cfg:73
+#: data/core/macros/deprecated-utils.cfg:74
 msgid ""
 "\n"
 "20% of finishing gold carried over to the next scenario."
@@ -1771,17 +1641,17 @@ msgstr ""
 "Artakalan altının %20’si sonraki senaryoya aktarılır."
 
 #. [message]: speaker=narrator
-#: data/core/macros/items.cfg:21
+#: data/core/macros/items.cfg:23
 msgid "You have come across a wishing well. What would you like to wish for?"
 msgstr "Bir dilek kuyusuyla karşılaştınız. Ne dilemek istersiniz?"
 
 #. [option]
-#: data/core/macros/items.cfg:24
+#: data/core/macros/items.cfg:26
 msgid "A swift victory"
 msgstr "Çabuk bir zafer"
 
 #. [message]: speaker=unit
-#: data/core/macros/items.cfg:32
+#: data/core/macros/items.cfg:34
 msgid ""
 "With this golden coin, I wish that this battle end in a swift and safe "
 "victory."
@@ -1790,51 +1660,51 @@ msgstr ""
 "diliyorum."
 
 #. [option]
-#: data/core/macros/items.cfg:38
+#: data/core/macros/items.cfg:40
 msgid "Lots of gold"
 msgstr "Bir sürü altın"
 
 #. [message]: speaker=unit
-#: data/core/macros/items.cfg:46
+#: data/core/macros/items.cfg:48
 msgid "I wish this single gold coin be returned ten-fold to me."
 msgstr "Bu altın sikkenin bana on katıyla geri gelmesini diliyorum."
 
 #. [option]
-#: data/core/macros/items.cfg:52
+#: data/core/macros/items.cfg:54
 msgid "Peace throughout Wesnoth."
 msgstr "Vesnot için barış."
 
 #. [message]: speaker=unit
-#: data/core/macros/items.cfg:60
+#: data/core/macros/items.cfg:62
 msgid "The only thing worth wishing for is peace throughout the land."
 msgstr "Dilemeye değer tek şey yurdun her yanında barıştır."
 
 #. [option]
-#: data/core/macros/items.cfg:66
+#: data/core/macros/items.cfg:68
 msgid "Don’t make a wish."
 msgstr "Dilek dilemeyeceğim."
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:204
+#: data/core/macros/items.cfg:207
 msgid "Potion of Healing"
 msgstr "Tedavi İksiri"
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:207
+#: data/core/macros/items.cfg:210
 msgid "A feeling of well-being overwhelms the drinker."
 msgstr "İçenin kendini iyi hissetmesini sağlar."
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:208
+#: data/core/macros/items.cfg:211
 msgid "You are not worthy of healing."
 msgstr "Sen iyileştirmeye değmezsin."
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:245
+#: data/core/macros/items.cfg:249
 msgid "Poison is seeping through the veins of this unit at this very moment."
 msgstr "Şu anda bu birimin damarlarına zehir sızıyor."
 
-#: data/core/macros/items.cfg:273
+#: data/core/macros/items.cfg:278
 msgid ""
 "Sprinkling this water on melee weapons grants them the <i>arcane</i> damage "
 "type until the end of the current scenario. Should $unit.name use it?"
@@ -1842,20 +1712,20 @@ msgstr ""
 "Bu suyu yakın dövüş silahlarına serpmek onlara senaryonun sonuna kadar "
 "<i>gizemli</i> hasar tipini verir. $unit.name kullansın mı?"
 
-#: data/core/macros/items.cfg:274
+#: data/core/macros/items.cfg:279
 msgid "holy water^Take it"
 msgstr "Al"
 
-#: data/core/macros/items.cfg:275
+#: data/core/macros/items.cfg:280
 msgid "holy water^Leave it"
 msgstr "Kalsın"
 
-#: data/core/macros/items.cfg:276
+#: data/core/macros/items.cfg:281
 msgid "$unit.name has no need for this Holy Water! Let another take it."
 msgstr "$unit.name okunmuş suya ihtiyaç duymaz. Başkası alsın."
 
 #. [object]
-#: data/core/macros/items.cfg:281
+#: data/core/macros/items.cfg:286
 msgid ""
 "This water will make melee weapons have the <i>arcane</i> damage type until "
 "the end of the current scenario."
@@ -1864,73 +1734,73 @@ msgstr ""
 "hasar türüne sahip olmasını sağlar."
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:310
+#: data/core/macros/items.cfg:316
 msgid "Potion of Strength"
 msgstr "Güç İksiri"
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:313
+#: data/core/macros/items.cfg:319
 msgid "Strength is given to the drinker."
 msgstr "İçene güç verir."
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:353
+#: data/core/macros/items.cfg:360
 msgid "Potion of Decay"
 msgstr "Çürüme İksiri"
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:356
+#: data/core/macros/items.cfg:363
 msgid "This poor unit drank something really bad."
 msgstr "Bu zavallı birim cidden kötü bir şey içti."
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:390
+#: data/core/macros/items.cfg:398
 msgid "Ring of Regeneration"
 msgstr "İyileşme Yüzüğü"
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:393
+#: data/core/macros/items.cfg:401
 msgid "This ring will heal the bearer a little each turn."
 msgstr "Bu yüzük taşıyanı her turda biraz tedavi edecektir."
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:429
+#: data/core/macros/items.cfg:438
 msgid "Ring of Slowness"
 msgstr "Yavaşlık Yüzüğü"
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:432
+#: data/core/macros/items.cfg:441
 msgid "The bearer of this ring is slowed."
 msgstr "Bu yüzük taşıyan kişiyi yavaşlatır."
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:466
+#: data/core/macros/items.cfg:476
 msgid "Staff of Swiftness"
 msgstr "Çeviklik Asası"
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:469
+#: data/core/macros/items.cfg:479
 msgid "This staff will grant the bearer swift movement."
 msgstr "Bu asa taşıyana çevikleşmiş hareket yeteneği sağlar."
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:470
+#: data/core/macros/items.cfg:480
 msgid "Only magical beings can wield such an object."
 msgstr "Sadece büyücüler böyle bir nesneyi kullanabilir."
 
-#: data/core/macros/items.cfg:513
+#: data/core/macros/items.cfg:524
 msgid "Should $unit.name pick up the trident?"
 msgstr "Çatalı $unit.name alsın mı?"
 
-#: data/core/macros/items.cfg:514
+#: data/core/macros/items.cfg:525
 msgid "storm trident^Take it"
 msgstr "Al"
 
-#: data/core/macros/items.cfg:515
+#: data/core/macros/items.cfg:526
 msgid "storm trident^Leave it"
 msgstr "Kalsın"
 
-#: data/core/macros/items.cfg:516
+#: data/core/macros/items.cfg:527
 msgid ""
 "$unit.name cannot use this Storm Trident! Let one of the merfolk who can "
 "wield it have it."
@@ -1939,22 +1809,22 @@ msgstr ""
 "insanının almasını sağla."
 
 #. [object]
-#: data/core/macros/items.cfg:521
+#: data/core/macros/items.cfg:532
 msgid ""
 "This trident gives merfolk the power to throw lightning at their enemies."
 msgstr "Bu çatal deniz insanlarına düşmanlarına yıldırım fırlatma gücü verir"
 
 #. [effect]: type=fire
-#: data/core/macros/items.cfg:525
+#: data/core/macros/items.cfg:536
 msgid "storm trident"
 msgstr "fırtına çatalı"
 
 #. [effect]: type=fire
-#: data/core/macros/items.cfg:548
+#: data/core/macros/items.cfg:560
 msgid "sceptre of fire"
 msgstr "ateş asası"
 
-#: data/core/macros/names.cfg:18
+#: data/core/macros/names.cfg:19
 msgid ""
 "Egar,Elch,Ga’ash,Gadé Ihn,Gakré Ohm,Galeck,Galsh,Garadin,Garchin,Gark,Garlan,"
 "Garlin Ohn,Garrutin,Gart’lo,Garushi,Gashinar,Gashol,Gaushii,Gaustun,Gegchi,"
@@ -1976,7 +1846,7 @@ msgstr ""
 "Reşnan,Vaştit,Velnik,Veralon,Veramo,Verat,Verdit,Verkon, Verlin,Vermay,"
 "Vertik,Viladnir"
 
-#: data/core/macros/names.cfg:19
+#: data/core/macros/names.cfg:20
 msgid ""
 "Alen Ka,Alinash Mal,Ashirt,Auginet Ka,Auuglann,Damell,Dell,Demla,Dinsill,"
 "Eshi,Olath,Omage,Omagrra,Orra Ka,Orridan,Orrida,Oshibi,Vallin,Valnirra,"
@@ -1987,7 +1857,7 @@ msgstr ""
 "Velip,Verra,Velin Ka,Veştar,Vuştin"
 
 #. Generator for male drake names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
-#: data/core/macros/names.cfg:21
+#: data/core/macros/names.cfg:22
 msgid ""
 "\n"
 "main={prefix}{suffix}|{prefix}’{suffix}|{prefix}{suffix} {short_name}\n"
@@ -2006,7 +1876,7 @@ msgstr ""
 "ruste|şit|nik|rat|dit|kon|mad|tik|nir\n"
 
 #. Generator for female drake names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
-#: data/core/macros/names.cfg:28
+#: data/core/macros/names.cfg:29
 msgid ""
 "\n"
 "main={prefix}{suffix}|{prefix}{suffix} {short_name}\n"
@@ -2020,7 +1890,7 @@ msgstr ""
 "suffix=en|naş|irt|glan|al|ge|lin|nit|tin|tar|lisk|rida|gıra|sil|la|mel\n"
 "şort_name=Mal|Ka|Emt|Dar|Eşi\n"
 
-#: data/core/macros/names.cfg:37
+#: data/core/macros/names.cfg:38
 msgid ""
 "Aigaithas,Aigaithil,Aigaithing,Aigaithol,Aigalas,Aigaling,Aigalis,Aigalol,"
 "Aigalsil,Aigatas,Aigatis,Aigatlos,Aigatsil,Aigatsol,Aigatus,Aigcatas,"
@@ -2111,7 +1981,7 @@ msgstr ""
 "Tritodurus,Tritothatas,Tritot Aylo,Tritot Aynig,Tritotasol,Tritotatus"
 
 #. Generator for male dwarf names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
-#: data/core/macros/names.cfg:39
+#: data/core/macros/names.cfg:40
 msgid ""
 "\n"
 "main={long_name}\n"
@@ -2133,7 +2003,7 @@ msgstr ""
 "tıl|til|tol|los|rol|sol|ril|sil|as|us|lil|für|mur|fur\n"
 "centre=lal|mal|ra|dur|tal|tas|ma|gal|tau|ga|it|ma|kat|la|ral|dur|bur\n"
 
-#: data/core/macros/names.cfg:50
+#: data/core/macros/names.cfg:51
 msgid ""
 "Amadrieriand,Amáril,Amelad,Ameldor,Amendel,Ameng,Amilmaldur,Amilmalith,"
 "Amilmandir,Amind,Amiol,Amiorion,Amithrarion,Amóldor,Amorfimir,Amorfir,Amowyn,"
@@ -2252,7 +2122,7 @@ msgstr ""
 "Vebrilas,Vebrindul,Vel,Vilit,Vol,Volas,Voldur,Vondel,Vorfin,Vorfindil,Vulas,"
 "Vuldur,Vundulil,Vilas,Vildor"
 
-#: data/core/macros/names.cfg:51
+#: data/core/macros/names.cfg:52
 msgid ""
 "Amadrielia,Amadrielindë,Amadriendra,Amadriewen,Amarang,Amebrilindë,Amedë,"
 "Améthien,Amewien,Amil-Gadith,Amil-Garith,Amilmadia,Amiolith,Amionia,"
@@ -2385,7 +2255,7 @@ msgstr ""
 "Vitraniyel,Vifiyel,Vodiya,Vongi,Vorfilya,Vorfing,Vorfirit,Vorfifiyel,Vofiyen"
 
 #. Generator for male elf names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
-#: data/core/macros/names.cfg:53
+#: data/core/macros/names.cfg:54
 msgid ""
 "\n"
 "main={generated_prefix}{consonnant}{suffix}|{prefix}{centre}{suffix}\n"
@@ -2419,7 +2289,7 @@ msgstr ""
 "nim|nol|biris|lad|rier|ra|fil|tran|man\n"
 
 #. Generator for female elf names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
-#: data/core/macros/names.cfg:67
+#: data/core/macros/names.cfg:68
 msgid ""
 "\n"
 "main={generated_prefix_v}{centre_v}{suffix_v}|{generated_prefix_c}{centre_c}"
@@ -2462,17 +2332,17 @@ msgstr ""
 "centre_c=|{şort_centre_c}\n"
 "şort_centre_c=enn|all|an|it|el|il|am|ol|art|öl|ar|ir|if|im|ion|iv|ün|un|üv\n"
 
-#: data/core/macros/names.cfg:87
+#: data/core/macros/names.cfg:88
 msgid "Graa,Greaa,Gree,Kaaa,Kassshh,Kessshh,Korro,Kraa,Kuu,Kzaaa,Kzuuu"
 msgstr ""
 "Garara,Gerere,Gururu,Karara,Kasasa,Kesese,Kororo,Kürürü,Kuşuşu,Kazaza,Kuzuzu"
 
-#: data/core/macros/names.cfg:88
+#: data/core/macros/names.cfg:89
 msgid "Kaasa,Kayya,Keyya,Kiira,Korra"
 msgstr "Kaşasa,Kayıya,Keyiya,Kişira,Korera"
 
 #. Generator for male gryphon names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
-#: data/core/macros/names.cfg:90
+#: data/core/macros/names.cfg:91
 msgid ""
 "\n"
 "main={prefix}{suffix}|{prefix}{centre}{suffix}\n"
@@ -2487,7 +2357,7 @@ msgstr ""
 "centre=ra|şa|ze|zo\n"
 
 #. Generator for female gryphon names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
-#: data/core/macros/names.cfg:97
+#: data/core/macros/names.cfg:98
 msgid ""
 "\n"
 "main={prefix}{suffix}|{prefix}{centre}{suffix}\n"
@@ -2501,7 +2371,7 @@ msgstr ""
 "suffix=sa|ya|ra|re\n"
 "centre=ra|şa|ze|za\n"
 
-#: data/core/macros/names.cfg:106
+#: data/core/macros/names.cfg:107
 msgid ""
 "Addraecyn,Addraenvan,Addraer,Addraercyn,Addraryn,Addreddry,Addredry,"
 "Addregwyn,Addrenyc,Addreoddry,Addreoddyn,Addreonyc,Addreorcyn,Addreran,"
@@ -2599,7 +2469,7 @@ msgstr ""
 "Yurerin,Yurinvan,Yurirent,Yurodri,Yurulin,Yurumir,Yurunin,Yurunvan,Yurilin,"
 "Yurimir,Yurinik,Yurirsin"
 
-#: data/core/macros/names.cfg:107
+#: data/core/macros/names.cfg:108
 msgid ""
 "Alabrylla,Alaebrylla,Alaeniver,Alalla,Alalonna,Alaryan,Aleacla,Aleaniver,"
 "Aleara,Alearka,Alena,Alengwen,Alilonna,Alingwen,Alolla,Alolonna,Alora,"
@@ -2699,7 +2569,7 @@ msgstr ""
 "Yüyla,Yüylüla,Yüylüsan,Yüyürka,Yüyüssa"
 
 #. Generator for male Wesnothian human names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
-#: data/core/macros/names.cfg:109
+#: data/core/macros/names.cfg:110
 msgid ""
 "\n"
 "main={generated_prefix_c}{suffix_c}|{generated_prefix_v}{suffix_v}|{prefix_c}"
@@ -2738,7 +2608,7 @@ msgstr ""
 "centre_v=rae|ra|tar|gvi\n"
 
 #. Generator for female Wesnothian human names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
-#: data/core/macros/names.cfg:125
+#: data/core/macros/names.cfg:126
 msgid ""
 "\n"
 "main={generated_prefix_c}{suffix_c}|{generated_prefix_v}{suffix_v}|{prefix_c}"
@@ -2776,7 +2646,7 @@ msgstr ""
 "centre_c=il|ing|ol|ur|ung|ean|eal|ong|al|iv\n"
 "centre_v=na|lla|na|ri|li|ni|ri|rae|bri\n"
 
-#: data/core/macros/names.cfg:143
+#: data/core/macros/names.cfg:144
 msgid ""
 "Aban,Abbas,Abbud,Abdul-ʿAdl,Abdul-Ahad,Abdul-Alim,Abdul-Aliyy,Abdul-Azim,"
 "Abdul-Aziz,Abdul-Badi,Abdul-Baʿith,Abdul-Baqi,Abdul-Bari,Abdul-Barr,Abdul-"
@@ -2926,7 +2796,7 @@ msgstr ""
 "Yunus,Yuşua,Yusri,Yusuf,Zafar,Zafir,Zahid,Zahir,Zayd,Zaim,Zayn,Zarif,"
 "Zekerriya,Zaki,Zakwan,Ziyad,Zubayr,Zuhayr"
 
-#: data/core/macros/names.cfg:144
+#: data/core/macros/names.cfg:145
 msgid ""
 "Abiha,Afaf,A'isha,Ajda,Aliya,Amira,Ashraqat,Atikah,Azra,Boutheina,Bushra,"
 "Chaima,Cynthia,Dalal,Dalia,Eliana,Esma,Farida,Fatima,Feyrouz,Habiba,Hafsa,"
@@ -2940,7 +2810,7 @@ msgid ""
 msgstr ""
 
 #. Generator for male dunefolk human names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
-#: data/core/macros/names.cfg:146
+#: data/core/macros/names.cfg:147
 msgid ""
 "\n"
 "main={name_long}|{prefix}{suffix}|{name_mid}{connector}{name_mid}\n"
@@ -2971,7 +2841,7 @@ msgstr ""
 "centre=ʿ|ʾ|hi|sa|kar|da|na|ja|tay|ki|hai|sav\n"
 
 #. Generator for female dunefolk human names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
-#: data/core/macros/names.cfg:157
+#: data/core/macros/names.cfg:158
 msgid ""
 "\n"
 "main={name_long}|{prefix}{suffix}|{name_mid}{connector}{surname}\n"
@@ -3027,7 +2897,7 @@ msgstr ""
 "riya|ail|air|ah|en|in|ayd|ud|rah|vah|nan|as|ir|ba|ni|yad|ras|zuk|hid|mal|"
 "kib\n"
 
-#: data/core/macros/names.cfg:177
+#: data/core/macros/names.cfg:179
 msgid ""
 "Amprixta,Anexir,Anitraz,Arix,Axiz,Bzz’Kza,Chamil,Cleezi,Clezz,Fazzis,"
 "Fizztrax,Flixta,Flizzil,Frikes,Frizzle,Hasz,Heffez,Hertrazzir,Hesz,Hezzir,"
@@ -3054,7 +2924,7 @@ msgstr ""
 "Zuzupde"
 
 #. Generator for saurian names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
-#: data/core/macros/names.cfg:179
+#: data/core/macros/names.cfg:181
 msgid ""
 "\n"
 "main={prefix}{suffix}|{prefix}{centre}{suffix}\n"
@@ -3072,7 +2942,7 @@ msgstr ""
 "suffix=ta|ir|az|iks|za|traks|il|le|esz|izs|ezz|irr|aş|ez|is|iss|azz\n"
 "centre=iks|’Kza|tra|na|an|eks|ssa|zzi|’Usz\n"
 
-#: data/core/macros/names.cfg:188
+#: data/core/macros/names.cfg:190
 msgid ""
 "Absu,Abzu,Aigaion,Alastyn,Apalala,Apam,Apsu,Aremata,Atlahua,Atlaua,Barinthus,"
 "Dhakhan,Dylan,Elcmar,Ember,Enki,Faro,Habaek,Ikatere,Jamm,Jin,Kinilau,Kulullu,"
@@ -3090,7 +2960,7 @@ msgstr ""
 "Sakilla,Sinila,Sisitul,Tagaloga,Tanagoga,Tangaloga,Tangaroga,Tagumas,"
 "Tikitiki,Tini,Tinilagu,Tiniragu,Toniva,Triton,Vizi,Vodnik,Vogurukasa"
 
-#: data/core/macros/names.cfg:189
+#: data/core/macros/names.cfg:191
 msgid ""
 "Aglaopheme,Amphitrite,Aphrodite,Ariel,Atargatis,Calypso,Delphine,Derceto,"
 "Diktynna,Electra,Galatea,Himeropa,Jengu,Leucosia,Ligia,Lori Lamaris,Mama "
@@ -3103,7 +2973,7 @@ msgstr ""
 "Maris,Telkipeya,Tirgata,Vatela,Vedava,Veyenemo,Vetenema"
 
 #. Generator for merman names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
-#: data/core/macros/names.cfg:191
+#: data/core/macros/names.cfg:193
 msgid ""
 "\n"
 "main={prefix}{suffix}|{prefix}{centre}{suffix}\n"
@@ -3122,7 +2992,7 @@ msgstr ""
 "centre=la|ma|ri|sei|te|ka|li|cer|tu|ni|ki|na|ga|si\n"
 
 #. Generator for mermaid names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
-#: data/core/macros/names.cfg:198
+#: data/core/macros/names.cfg:200
 msgid ""
 "\n"
 "main={prefix}{suffix}|{prefix}{centre}{suffix}\n"
@@ -3138,7 +3008,7 @@ msgstr ""
 "suffix=me|pe|gia|noe|dna|la|ris|ta|tea|va|mo|pe|riam|riel|na|ra|tea\n"
 "centre=ofe|fri|tri|fro|di|si|ziy|ce|ty|la|me|ro|co|mar|ran|ten|la|ga\n"
 
-#: data/core/macros/names.cfg:207
+#: data/core/macros/names.cfg:209
 msgid ""
 "Abraxas,Aleiss,Amail,Axmail,Blanal,Bleii,Blo,Bress,Briss,Gaxmol,Griam,Griss,"
 "Grissileii,Hailoss,Hainoss,Harxos,Huzel,Inaloss,Ineii,Issal,Klezel,Kras,"
@@ -3155,7 +3025,7 @@ msgstr ""
 "Solilil,Sorkol,Sirelil,Triksoz,Vilalil,Vissal,Vilanis,Kabrak,Şamalel,Kinas,"
 "Sramos,Şopkon,Zalsap,Zelek,Zepsek,Zesekep"
 
-#: data/core/macros/names.cfg:208
+#: data/core/macros/names.cfg:210
 msgid ""
 "Aliasse,Amailis,Axmailia,Blai,Blanalai,Bli,Bliana,Brassas,Brissal,Gaxmail,"
 "Griama,Grissa,Grissilai,Haila,Haina,Harxias,Huzi,Inai,Inalai,Issalai,Klez,"
@@ -3174,7 +3044,7 @@ msgstr ""
 "Zepsek,Zesekep"
 
 #. Generator for male naga names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
-#: data/core/macros/names.cfg:210
+#: data/core/macros/names.cfg:212
 msgid ""
 "\n"
 "main={prefix}{suffix}\n"
@@ -3193,7 +3063,7 @@ msgstr ""
 "on|sal|ol|kil|oz|ail|al|nis|rak|lel|nas|kon|ekp\n"
 
 #. Generator for female naga names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
-#: data/core/macros/names.cfg:216
+#: data/core/macros/names.cfg:218
 msgid ""
 "\n"
 "main={prefix}{suffix}\n"
@@ -3211,7 +3081,7 @@ msgstr ""
 "suffix=asse|mayliya|ilis|ana|ama|ssa|ssilai|zi|xias|lay|mayssa|bra|lin|lina|"
 "na|bra|aa|lia|lay|layla|na|pkne|alsp|ekp\n"
 
-#: data/core/macros/names.cfg:224
+#: data/core/macros/names.cfg:226
 msgid ""
 "Akoark,Akort,Akzalk,Arkarm,Barkuk,Blokkar,Borkuk,Bukkak,Bulruk,Corkkar,"
 "Delkkak,Garkuk,Gnukk,Goruk,Grak,Gurk,Gurm,Kalknix,Karak,Karbuk,Kargnak,"
@@ -3228,7 +3098,7 @@ msgstr ""
 "Trabuk,Trakkon,Urkar,Urkarik"
 
 #. Generator for ogre names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
-#: data/core/macros/names.cfg:226
+#: data/core/macros/names.cfg:228
 msgid ""
 "\n"
 "main={prefix}{suffix}\n"
@@ -3242,7 +3112,7 @@ msgstr ""
 "Ker|Kil|King|Kor|Kru|Kur|Mar|Mer|Nal|Trak|Urk\n"
 "suffix=ark|ort|alk|arm|kuk|kak|ukk|nak|ta|k|rok|rar|kon|gak|nik\n"
 
-#: data/core/macros/names.cfg:234
+#: data/core/macros/names.cfg:236
 msgid ""
 "Badush,Bagar,Bagdish,Barag,Barbag,Bart,Bashnak,Bidish,Bidush,Bik,Bilg,Bilo,"
 "Binak,Bink,Biol,Birt,Bogar,Bogdish,Bogdush,Bogor,Bok,Bolg,Bong,Borg,Bork,"
@@ -3311,7 +3181,7 @@ msgstr ""
 "Vuk,Vulug,Vulo,Vunak,Vurag,Vurbag,Vurg,Vuşnak"
 
 #. Generator for orc names
-#: data/core/macros/names.cfg:236
+#: data/core/macros/names.cfg:238
 msgid ""
 "\n"
 "main={starting_consonnant}{vowel}{consonnant}{vowel}{ending_consonnant}|"
@@ -3339,7 +3209,7 @@ msgstr ""
 "ending_consonnant=b|g|r|ş|k\n"
 "ending_vowel=o|u\n"
 
-#: data/core/macros/names.cfg:248
+#: data/core/macros/names.cfg:250
 msgid ""
 "Äg,Agh,Bog Äh,Borb,Brag,Brag Goh,Brok,Dak,Drog,Frok,Ga,Gah,Gark,Gnarf,Grar,"
 "Grokk,Grumph,Gulk,Hak,Hask,Hoth,Hug Bah,Hu Kah,Kak,Krak,Krug,Kub,Kuh,Lok,Luk,"
@@ -3352,7 +3222,7 @@ msgstr ""
 "Torg,Trok,Tsok,Tuy,Tuk Rut,Ugug,Öh Üh,Ufur,Ufruk,Ururk,Vak,Zog,Zugug"
 
 #. Generator for troll names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
-#: data/core/macros/names.cfg:250
+#: data/core/macros/names.cfg:252
 msgid ""
 "\n"
 "main={short_name}|{short_name}|{short_name}|{short_name} {short_name}\n"
@@ -3372,7 +3242,7 @@ msgstr ""
 "beginning=Ä|Ü|A|U\n"
 "suffix=rb|g|ğ|k|rf|kk|r|g|t|h|rg\n"
 
-#: data/core/macros/names.cfg:261
+#: data/core/macros/names.cfg:263
 msgid ""
 "Bludebalmen,Boladrumbadrum,Bolwuldelman,Bombempomgontor,Bomtanbomkenton,"
 "Bomtanbomtonum,Bregalad,Bremdebubde,Brenbasnudnem,Brendumadoak,"
@@ -3401,7 +3271,7 @@ msgstr ""
 "Vonrunmaldin,Vudadonopol"
 
 #. Generator for wose names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
-#: data/core/macros/names.cfg:263
+#: data/core/macros/names.cfg:265
 msgid ""
 "\n"
 "main={prefix}{centre}{centre}{suffix}|{prefix}{centre}{centre}{centre}"
@@ -3427,7 +3297,7 @@ msgstr ""
 "suffix=men|drum|tor|num|lad|de|ak|lol|dum|tam|nur|dium|deum|bil|rook|relm|"
 "dium|numm|dan|doom|tum|din\n"
 
-#: data/core/macros/names.cfg:272
+#: data/core/macros/names.cfg:275
 msgid ""
 "Bal,Cam,Corn,Del,Earl,El,Fox,Fren,Gel,Hel,Hex,Hol,Hox,Il,Kin,Nam,Nes,New,Ol,"
 "Old,Olf,Oul,Ox,Rock,Rook,Sal,Sam,Sed,Sel,Sen,Sil,Tal,Water,Wet,York"
@@ -3436,7 +3306,7 @@ msgstr ""
 "Ülö,Üfüf,Üfül,Ofof,Rok,Rök,Sül,Söm,Sed,Sül,Sön,Süş,Tal,Şat,Şet,Şork"
 
 #. Generator for the base names of features assigned by the random map generator; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
-#: data/core/macros/names.cfg:274
+#: data/core/macros/names.cfg:277
 msgid ""
 "\n"
 "main={prefix}{middle}{suffix}\n"
@@ -3451,33 +3321,33 @@ msgstr ""
 "suffix=l|m|rn|ks|v|ld|ck|k|rk\n"
 
 #. [objective]: condition=lose
-#: data/core/macros/objective-utils.cfg:6
+#: data/core/macros/objective-utils.cfg:7
 msgid "Turns run out"
 msgstr "El sayısı biterse"
 
-#: data/core/macros/objective-utils.cfg:14
+#: data/core/macros/objective-utils.cfg:20
 msgid "(early finish bonus)"
 msgstr "(Erken bitirme ödülü)"
 
-#: data/core/macros/objective-utils.cfg:22
+#: data/core/macros/objective-utils.cfg:25
 msgid "Alternative objective:"
 msgstr "Alternatif amaç:"
 
-#: data/core/macros/objective-utils.cfg:26
+#: data/core/macros/objective-utils.cfg:30
 msgid "Bonus objective:"
 msgstr "Ek amaç:"
 
-#: data/core/macros/objective-utils.cfg:30
+#: data/core/macros/objective-utils.cfg:35
 msgid "Optional objective:"
 msgstr "İsteğe bağlı amaç:"
 
 #. [note]: description=<b>
-#: data/core/macros/objective-utils.cfg:52
+#: data/core/macros/objective-utils.cfg:60
 msgid "This is the last scenario."
 msgstr "Bu son senaryodur."
 
 #. [note]: description=<b>
-#: data/core/macros/objective-utils.cfg:58
+#: data/core/macros/objective-utils.cfg:67
 msgid "No turn limit"
 msgstr "El sınırı yok"
 
@@ -3657,13 +3527,13 @@ msgid "Weight of Revenge"
 msgstr "İntikamın Ağırlığı"
 
 #. [message]: speaker=narrator
-#: data/core/macros/utils.cfg:651
+#: data/core/macros/utils.cfg:659
 msgid "You retrieve $amount_gold pieces of gold."
 msgstr "$amount_gold altın aldın"
 
 #. [color_range]: id=red
 #. [color_range]: id=1
-#: data/core/team-colors.cfg:14 data/core/team-colors.cfg:239
+#: data/core/team-colors.cfg:14 data/core/team-colors.cfg:246
 msgid "Red"
 msgstr "Kırmızı"
 
@@ -3679,7 +3549,7 @@ msgstr "Koyu Kırmızı"
 
 #. [color_range]: id=blue
 #. [color_range]: id=2
-#: data/core/team-colors.cfg:33 data/core/team-colors.cfg:245
+#: data/core/team-colors.cfg:33 data/core/team-colors.cfg:252
 msgid "Blue"
 msgstr "Mavi"
 
@@ -3690,7 +3560,7 @@ msgstr "Açık mavi"
 
 #. [color_range]: id=green
 #. [color_range]: id=3
-#: data/core/team-colors.cfg:46 data/core/team-colors.cfg:251
+#: data/core/team-colors.cfg:46 data/core/team-colors.cfg:258
 msgid "Green"
 msgstr "Yeşil"
 
@@ -3701,25 +3571,25 @@ msgstr "Parlak yeşil"
 
 #. [color_range]: id=purple
 #. [color_range]: id=4
-#: data/core/team-colors.cfg:59 data/core/team-colors.cfg:257
+#: data/core/team-colors.cfg:59 data/core/team-colors.cfg:264
 msgid "Purple"
 msgstr "Mor"
 
 #. [color_range]: id=black
 #. [color_range]: id=5
-#: data/core/team-colors.cfg:66 data/core/team-colors.cfg:269
+#: data/core/team-colors.cfg:66 data/core/team-colors.cfg:276
 msgid "Black"
 msgstr "Siyah"
 
 #. [color_range]: id=brown
 #. [color_range]: id=6
-#: data/core/team-colors.cfg:73 data/core/team-colors.cfg:281
+#: data/core/team-colors.cfg:73 data/core/team-colors.cfg:288
 msgid "Brown"
 msgstr "Kahverengi"
 
 #. [color_range]: id=orange
 #. [color_range]: id=7
-#: data/core/team-colors.cfg:80 data/core/team-colors.cfg:263
+#: data/core/team-colors.cfg:80 data/core/team-colors.cfg:270
 msgid "Orange"
 msgstr "Turuncu"
 
@@ -3730,13 +3600,13 @@ msgstr "Parlak turuncu"
 
 #. [color_range]: id=white
 #. [color_range]: id=8
-#: data/core/team-colors.cfg:93 data/core/team-colors.cfg:275
+#: data/core/team-colors.cfg:93 data/core/team-colors.cfg:282
 msgid "White"
 msgstr "Beyaz"
 
 #. [color_range]: id=teal
 #. [color_range]: id=9
-#: data/core/team-colors.cfg:100 data/core/team-colors.cfg:287
+#: data/core/team-colors.cfg:100 data/core/team-colors.cfg:294
 msgid "Teal"
 msgstr "Koyu Turkuaz"
 
@@ -3745,107 +3615,114 @@ msgstr "Koyu Turkuaz"
 msgid "color^Gold"
 msgstr "Altın rengi"
 
+#. [color_range]: id=darkblue
+#: data/core/team-colors.cfg:114
+#, fuzzy
+#| msgid "Dark Red"
+msgid "Dark blue"
+msgstr "Koyu Kırmızı"
+
 #. [color_range]: id=reef
-#: data/core/team-colors.cfg:116
+#: data/core/team-colors.cfg:123
 msgid "Reef"
 msgstr "Resif"
 
 #. [color_range]: id=shallow_water
-#: data/core/team-colors.cfg:122
+#: data/core/team-colors.cfg:129
 msgid "Shallow water"
 msgstr "Sığ su"
 
 #. [color_range]: id=deep_water
-#: data/core/team-colors.cfg:128
+#: data/core/team-colors.cfg:135
 msgid "Deep water"
 msgstr "Derin su"
 
 #. [color_range]: id=swamp_water
-#: data/core/team-colors.cfg:134
+#: data/core/team-colors.cfg:141
 msgid "Swamp water"
 msgstr "Bataklık"
 
 #. [color_range]: id=flat
-#: data/core/team-colors.cfg:140
+#: data/core/team-colors.cfg:147
 msgid "Flat"
 msgstr "Çayır"
 
 #. [color_range]: id=hills
-#: data/core/team-colors.cfg:146
+#: data/core/team-colors.cfg:153
 msgid "Hills"
 msgstr "Tepeler"
 
 #. [color_range]: id=mountains
-#: data/core/team-colors.cfg:152
+#: data/core/team-colors.cfg:159
 msgid "Mountains"
 msgstr "Dağlar"
 
 #. [color_range]: id=forest
-#: data/core/team-colors.cfg:158
+#: data/core/team-colors.cfg:165
 msgid "Forest"
 msgstr "Orman"
 
 #. [color_range]: id=sand
-#: data/core/team-colors.cfg:164
+#: data/core/team-colors.cfg:171
 msgid "Sand"
 msgstr "Kum"
 
 #. [color_range]: id=frozen
-#: data/core/team-colors.cfg:170
+#: data/core/team-colors.cfg:177
 msgid "Frozen"
 msgstr "Kar"
 
 #. [color_range]: id=cave
-#: data/core/team-colors.cfg:176
+#: data/core/team-colors.cfg:183
 msgid "Cave"
 msgstr "Mağara"
 
 #. [color_range]: id=fungus
-#: data/core/team-colors.cfg:182
+#: data/core/team-colors.cfg:189
 msgid "Fungus"
 msgstr "Mantar"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=village
-#: data/core/team-colors.cfg:188 src/terrain/terrain.cpp:187
+#: data/core/team-colors.cfg:195 src/terrain/terrain.cpp:187
 msgid "Village"
 msgstr "Köy"
 
 #. [color_range]: id=castle
-#: data/core/team-colors.cfg:194
+#: data/core/team-colors.cfg:201
 msgid "Castle"
 msgstr "Kale"
 
 #. [color_range]: id=keep
-#: data/core/team-colors.cfg:200
+#: data/core/team-colors.cfg:207
 msgid "Keep"
 msgstr "İçkale"
 
 #. [color_range]: id=rails
-#: data/core/team-colors.cfg:206
+#: data/core/team-colors.cfg:213
 msgid "Rail"
 msgstr "Ray"
 
 #. [color_range]: id=unwalkable
-#: data/core/team-colors.cfg:212
+#: data/core/team-colors.cfg:219
 msgid "Unwalkable"
 msgstr "Yürünmez"
 
 #. [color_range]: id=impassable
-#: data/core/team-colors.cfg:218
+#: data/core/team-colors.cfg:225
 msgid "Impassable"
 msgstr "Geçilmez"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=fog
-#: data/core/team-colors.cfg:224 src/game_initialization/lobby_data.cpp:439
+#: data/core/team-colors.cfg:231 src/game_initialization/lobby_data.cpp:450
 msgid "Fog"
 msgstr "Sis"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=shroud
-#: data/core/team-colors.cfg:230 src/game_initialization/lobby_data.cpp:442
-#: src/game_initialization/lobby_data.cpp:445
+#: data/core/team-colors.cfg:237 src/game_initialization/lobby_data.cpp:453
+#: src/game_initialization/lobby_data.cpp:456
 msgid "Shroud"
 msgstr "Örtü"
 
@@ -4245,37 +4122,37 @@ msgstr ""
 "DroidSansFallbackFull.ttf,Junicode-Regular.ttf"
 
 #. [lua]: wml_actions.deprecated_message
-#: data/lua/wml-tags.lua:899
+#: data/lua/wml-tags.lua:905
 msgid "Invalid deprecation level (should be 1-4)"
 msgstr "Geçersiz kullanım dışı bırakma seviyesi (1-4 arası olmalı)"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1074
+#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1078
 msgid "female^poisoned"
 msgstr "zehirlendi"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:128 src/actions/attack.cpp:1081
+#: data/lua/wml/harm_unit.lua:128 src/actions/attack.cpp:1085
 msgid "female^slowed"
 msgstr "yavaşlatıldı"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:128 src/actions/attack.cpp:1081
+#: data/lua/wml/harm_unit.lua:128 src/actions/attack.cpp:1085
 msgid "slowed"
 msgstr "yavaşlatıldı"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:129 src/actions/attack.cpp:1087
+#: data/lua/wml/harm_unit.lua:129 src/actions/attack.cpp:1091
 msgid "female^petrified"
 msgstr "taşlaştı"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:129 src/actions/attack.cpp:1087
+#: data/lua/wml/harm_unit.lua:129 src/actions/attack.cpp:1091
 msgid "petrified"
 msgstr "taşlaştı"
 
@@ -4291,14 +4168,14 @@ msgstr "iyileştirilemez"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: wesnoth.wml_actions.message
-#: data/lua/wml/message.lua:433 src/scripting/game_lua_kernel.cpp:2899
-#: src/scripting/game_lua_kernel.cpp:2934
+#: data/lua/wml/message.lua:433 src/scripting/game_lua_kernel.cpp:2897
+#: src/scripting/game_lua_kernel.cpp:2932
 msgid "input"
 msgstr "girdi"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:36 src/game_initialization/mp_game_utils.cpp:77
+#: data/lua/wml/objectives.lua:36 src/game_initialization/mp_game_utils.cpp:74
 msgid "Victory:"
 msgstr "Galibiyet:"
 
@@ -4324,12 +4201,75 @@ msgstr[1] "(%d el kaldı)"
 msgid "$percent|% of gold carried over to the next scenario."
 msgstr "%%%d Altın bir sonraki senaryoya geçecek"
 
-#. [modification]: id=delay_advancements, type=hybrid
-#: data/modifications.cfg:3
+#. [modification]: id=plan_unit_advance
+#: data/modifications.cfg:6
+#, fuzzy
+#| msgid "No advancement"
+msgid "Plan Unit Advance"
+msgstr "Terfi yok"
+
+#. [modification]: id=plan_unit_advance
+#: data/modifications.cfg:7
+msgid ""
+"When playing a multiplayer game, you do not control what a unit advances if "
+"they advances on another player's turn. With this modification you can set "
+"what your units advance to beforehand either for a specific unit or for all "
+"units of the same type."
+msgstr ""
+
+#. [checkbox]: id=pickadvance_force_choice
+#: data/modifications.cfg:12
+#, fuzzy
+#| msgid "No advancement"
+msgid "Force advancement planning"
+msgstr "Terfi yok"
+
+#. [checkbox]: id=pickadvance_force_choice
+#: data/modifications.cfg:13
+msgid ""
+"You will be asked a question on choosing advancement whenever an undecided "
+"unit appears.\n"
+"\n"
+"Some eras and scenarios may automatically enable this option."
+msgstr ""
+
+#. [lua]: pickadvance.show_dialog_unsynchronized
+#: data/modifications/pick_advance/dialog.lua:30
+#: data/modifications/pick_advance/main.lua:10
 #, fuzzy
 #| msgid "Advancements:"
-msgid "Delay Advancements"
+msgid "Plan Advancement"
 msgstr "Terfiler: "
+
+#. [lua]: pickadvance.show_dialog_unsynchronized
+#: data/modifications/pick_advance/dialog.lua:67
+msgid ""
+"This advancement is currently the default for all units of the same type"
+msgstr ""
+
+#. [lua]: pickadvance.show_dialog_unsynchronized
+#: data/modifications/pick_advance/dialog.lua:129
+msgid "Apply to all units of this type"
+msgstr ""
+
+#. [lua]: pickadvance.show_dialog_unsynchronized
+#: data/modifications/pick_advance/dialog.lua:145
+#, fuzzy
+#| msgid "Saved"
+msgid "Save"
+msgstr "Kaydedildi"
+
+#. [lua]: pickadvance.show_dialog_unsynchronized
+#: data/modifications/pick_advance/dialog.lua:154
+msgid "Cancel"
+msgstr "İptal"
+
+#. [lua]: preshow
+#: data/modifications/pick_advance/dialog.lua:174
+#, fuzzy
+#| msgid "No advancement"
+msgid "No planned advancement"
+msgstr "Terfi yok"
 
 #. [leadership]: id=magical_leadership
 #: data/scenario-test.cfg:339
@@ -4430,14 +4370,30 @@ msgid "female^aura of death ("
 msgstr ""
 
 #. [language]
-#: data/scenario-test.cfg:4395
+#: data/scenario-test.cfg:4396
 msgid "very long"
 msgstr "çok uzun"
 
 #. [language]
-#: data/scenario-test.cfg:4396
+#: data/scenario-test.cfg:4397
 msgid "electrical"
 msgstr "elektrikli"
+
+#. [unit]: id=alex, type=Elvish Hero
+#: data/test/scenarios/swarm_disables_upgrades_with_abilities_adjacent.cfg:44
+#: data/test/scenarios/swarm_disables_upgrades_with_abilities_adjacent_fail.cfg:44
+#: data/test/scenarios/swarm_disables_upgrades_with_abilities_adjacent_leadership.cfg:47
+#: data/test/scenarios/swarm_disables_upgrades_with_abilities_adjacent_leadership_fail.cfg:47
+msgid "Alex"
+msgstr ""
+
+#. [unit]: id=ben, type=Orcish Warrior
+#: data/test/scenarios/swarm_disables_upgrades_with_abilities_adjacent.cfg:51
+#: data/test/scenarios/swarm_disables_upgrades_with_abilities_adjacent_fail.cfg:51
+#: data/test/scenarios/swarm_disables_upgrades_with_abilities_adjacent_leadership.cfg:54
+#: data/test/scenarios/swarm_disables_upgrades_with_abilities_adjacent_leadership_fail.cfg:54
+msgid "Ben"
+msgstr ""
 
 #. [action]: id=button-playreplay, type=image
 #: data/themes/_initial.cfg:428
@@ -5504,43 +5460,43 @@ msgstr ""
 msgid "waiting for^an advancement choice"
 msgstr "bir terfi seçeneği"
 
-#: src/actions/attack.cpp:604 src/actions/attack.cpp:1364
+#: src/actions/attack.cpp:606 src/actions/attack.cpp:1368
 msgid "An invalid attacker weapon got selected."
 msgstr "Geçersiz bir saldırgan silahı seçildi."
 
-#: src/actions/create.cpp:339
+#: src/actions/create.cpp:340
 msgid "You do not have a leader to recall with."
 msgstr "Asker çağıracak bir lideriniz yok."
 
-#: src/actions/create.cpp:343
+#: src/actions/create.cpp:344
 msgid "None of your leaders are able to recall that unit."
 msgstr "Hiçbir liderin asker çağıramıyor."
 
-#: src/actions/create.cpp:347
+#: src/actions/create.cpp:348
 msgid "You must have a leader on a keep who is able to recall that unit."
 msgstr "İçkalede o birimi çağırabilecek bir liderin olmalı."
 
-#: src/actions/create.cpp:351
+#: src/actions/create.cpp:352
 msgid "There are no vacant castle tiles in which to recall the unit."
 msgstr "Birimin çağrılabileceği boş kale bölümü yok."
 
-#: src/actions/create.cpp:361 src/actions/create.cpp:497
+#: src/actions/create.cpp:362 src/actions/create.cpp:498
 msgid "An unrecognized error has occurred."
 msgstr "Tanımlanamayan bir hata oluştu."
 
-#: src/actions/create.cpp:475
+#: src/actions/create.cpp:476
 msgid "You do not have a leader to recruit with."
 msgstr "Asker alabilecek bir liderin yok."
 
-#: src/actions/create.cpp:479
+#: src/actions/create.cpp:480
 msgid "None of your leaders are able to recruit this unit."
 msgstr "Liderinin hiçbiri bu birimi askere alamaz."
 
-#: src/actions/create.cpp:483
+#: src/actions/create.cpp:484
 msgid "You must have a leader on a keep who is able to recruit the unit."
 msgstr "Birimi askere almak için liderin iç kalede olmalı."
 
-#: src/actions/create.cpp:487
+#: src/actions/create.cpp:488
 msgid "There are no vacant castle tiles in which to recruit the unit."
 msgstr "Birimi askere alabileceğin boş kale bölümü yok."
 
@@ -5552,59 +5508,59 @@ msgstr "tedavi edildi"
 msgid "female^cured"
 msgstr "tedavi edildi"
 
-#: src/actions/move.cpp:622
+#: src/actions/move.cpp:610
 msgid "Ambushed!"
 msgstr "Pusuya düştü!"
 
-#: src/actions/move.cpp:1130
+#: src/actions/move.cpp:1110
 msgid "Failed teleport! Exit not empty"
 msgstr "Işınlanamadı! Çıkış boş değil"
 
-#: src/actions/move.cpp:1146
+#: src/actions/move.cpp:1126
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
 msgstr[0] "1 dost"
 msgstr[1] "$friends dost"
 
-#: src/actions/move.cpp:1147
+#: src/actions/move.cpp:1127
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
 msgstr[0] "1 düşman"
 msgstr[1] "$enemies düşman"
 
-#: src/actions/move.cpp:1148
+#: src/actions/move.cpp:1128
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
 msgstr "Birimler göründü! ($friendphrase, $enemyphrase)"
 
-#: src/actions/move.cpp:1152
+#: src/actions/move.cpp:1132
 msgid "Enemy unit sighted!"
 msgid_plural "$enemies enemy units sighted!"
 msgstr[0] "Düşman birimi göründü!"
 msgstr[1] "$enemies düşman birimi göründü!"
 
-#: src/actions/move.cpp:1156
+#: src/actions/move.cpp:1136
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
 msgstr[0] "Dost birim göründü"
 msgstr[1] "$friends dost birim göründü"
 
-#: src/actions/move.cpp:1171
+#: src/actions/move.cpp:1151
 msgid "(press $hotkey to keep moving)"
 msgstr "(devam etmek için $hotkey tuşuna basınız)"
 
-#: src/addon/client.cpp:71
+#: src/addon/client.cpp:74
 msgid "Connecting to $server_address|..."
 msgstr "Bağlanılıyor: $server_adress|..."
 
-#: src/addon/client.cpp:85
+#: src/addon/client.cpp:119
 msgid "Downloading list of add-ons..."
 msgstr "Eklenti listesi indiriliyor..."
 
-#: src/addon/client.cpp:99
+#: src/addon/client.cpp:140
 msgid "Requesting distribution terms..."
 msgstr "Dağıtım şartları isteniyor..."
 
-#: src/addon/client.cpp:123
+#: src/addon/client.cpp:164
 msgid ""
 "The add-on <i>$addon_title</i> has an invalid id '$addon_id' and cannot be "
 "published."
@@ -5612,7 +5568,7 @@ msgstr ""
 "<i>$addon_title</i> eklentisinin  '$addon_id' kimliği geçersiz. Bu yüzden "
 "yayımlanamaz."
 
-#: src/addon/client.cpp:149
+#: src/addon/client.cpp:190
 msgid ""
 "The add-on <i>$addon_title</i> has a file or directory containing invalid "
 "characters and cannot be published."
@@ -5620,7 +5576,7 @@ msgstr ""
 "<i>$addon_title</i> eklentisinin dosya adı veya dizini geçersiz karakterler "
 "içeriyor, bu yüzden yayımlanamaz."
 
-#: src/addon/client.cpp:157
+#: src/addon/client.cpp:198
 msgid ""
 "The add-on <i>$addon_title</i> has an invalid file or directory name and "
 "cannot be published. File or directory names may not contain '..' or end "
@@ -5636,7 +5592,7 @@ msgstr ""
 "\n"
 "&quot; * / : &lt; &gt; ? \\ | ~"
 
-#: src/addon/client.cpp:168
+#: src/addon/client.cpp:209
 msgid ""
 "The add-on <i>$addon_title</i> contains files or directories with case "
 "conflicts. File or directory names may not be differently-cased versions of "
@@ -5646,33 +5602,31 @@ msgstr ""
 "içeriyor. Dosya veya dizin adları aynı dizenin farklı büyüklükteki "
 "karakterlerini kullanarak farklılaştırılamaz."
 
-#: src/addon/client.cpp:183
+#: src/addon/client.cpp:224
 #, fuzzy
-#| msgid "Sending add-on <i>$addon_title</i>..."
-msgid ""
-"Requesting the older version composition for the add-on <i>$addon_title</"
-"i>..."
-msgstr "<i>$addon_title</i> eklentisi gönderiliyor..."
+#| msgid "Requesting distribution terms..."
+msgid "Requesting file index..."
+msgstr "Dağıtım şartları isteniyor..."
 
-#: src/addon/client.cpp:199
+#: src/addon/client.cpp:240
 #, fuzzy
 #| msgid "Sending add-on <i>$addon_title</i>..."
 msgid "Sending an update pack for the add-on <i>$addon_title</i>..."
 msgstr "<i>$addon_title</i> eklentisi gönderiliyor..."
 
-#: src/addon/client.cpp:220
+#: src/addon/client.cpp:261
 msgid "Sending add-on <i>$addon_title</i>..."
 msgstr "<i>$addon_title</i> eklentisi gönderiliyor..."
 
-#: src/addon/client.cpp:253
+#: src/addon/client.cpp:294
 msgid "Removing add-on <i>$addon_title</i> from the server..."
 msgstr "<i>$addon_title</i> eklentisi sunucudan kaldırılıyor..."
 
-#: src/addon/client.cpp:281
+#: src/addon/client.cpp:323
 msgid "Downloading add-on <i>$addon_title</i>..."
 msgstr "<i>$addon_title</i> eklentisi indiriliyor..."
 
-#: src/addon/client.cpp:333 src/addon/client.cpp:359
+#: src/addon/client.cpp:342 src/addon/client.cpp:368
 msgid ""
 "The add-on <i>$addon_title</i> has an invalid file or directory name and "
 "cannot be installed."
@@ -5680,7 +5634,7 @@ msgstr ""
 "<i>$addon_title</i> eklentisinin dosya veya dizin adı geçersiz bu yüzden "
 "kurulamaz."
 
-#: src/addon/client.cpp:338 src/addon/client.cpp:364
+#: src/addon/client.cpp:347 src/addon/client.cpp:373
 msgid ""
 "The add-on <i>$addon_title</i> has file or directory names with case "
 "conflicts. This may cause problems."
@@ -5688,11 +5642,11 @@ msgstr ""
 "<i>$addon_title</i> eklentisinin dosya adı veya dizini büyük-küçük harf "
 "çelişkisi içeriyor. Bu durum sorun yaratabilir."
 
-#: src/addon/client.cpp:408
+#: src/addon/client.cpp:406
 msgid "The server responded with an error:"
 msgstr "Sunucu bir hata ile karşılık verdi:"
 
-#: src/addon/client.cpp:458
+#: src/addon/client.cpp:456
 msgid ""
 "The selected add-on has the following dependency, which is not currently "
 "installed or available from the server. Do you wish to continue?"
@@ -5706,11 +5660,11 @@ msgstr[1] ""
 "Seçilmiş eklentinin destek dosyaları kurulu değil ve bunlar sunucudan "
 "alınamıyor. Devam etmek istiyor musunuz?"
 
-#: src/addon/client.cpp:467
+#: src/addon/client.cpp:465
 msgid "Broken Dependencies"
 msgstr "Bozuk Destek Dosyaları"
 
-#: src/addon/client.cpp:507
+#: src/addon/client.cpp:505
 msgid ""
 "The following dependency could not be installed. Do you still wish to "
 "continue?"
@@ -5720,11 +5674,11 @@ msgid_plural ""
 msgstr[0] "Aşağıdaki destek dosyası kurulamadı. Devam etmek istiyor musunuz?"
 msgstr[1] "Aşağıdaki destek dosyaları kurulamadı. Devam etmek istiyor musunuz?"
 
-#: src/addon/client.cpp:511
+#: src/addon/client.cpp:509
 msgid "Dependencies Installation Failed"
 msgstr "Destek Dosyaları Kurulamadı"
 
-#: src/addon/client.cpp:534
+#: src/addon/client.cpp:532
 msgid ""
 "The add-on '$addon|' is already installed and contains additional "
 "information that will be permanently lost if you continue:"
@@ -5732,92 +5686,92 @@ msgstr ""
 "'$addon|' eklentisi zaten yüklü ve devam ederseniz kalıcı olarak silinecek "
 "ek bilgi içeriyor:"
 
-#: src/addon/client.cpp:538
+#: src/addon/client.cpp:536
 msgid "Publishing information file (.pbl)"
 msgstr "Yayım bilgi dosyası  (.pbl)"
 
-#: src/addon/client.cpp:542
+#: src/addon/client.cpp:540
 msgid "Version control system (VCS) information"
 msgstr "Sürüm denetim sistemi (SDS) bilgisi."
 
-#: src/addon/client.cpp:546
+#: src/addon/client.cpp:544
 msgid "Do you really wish to continue?"
 msgstr "Gerçekten devam etmek istiyor musunuz?"
 
-#: src/addon/client.cpp:548 src/addon/manager_ui.cpp:174
-#: src/game_initialization/multiplayer.cpp:231
+#: src/addon/client.cpp:546 src/addon/manager_ui.cpp:172
+#: src/game_initialization/multiplayer.cpp:361
 msgid "Confirm"
 msgstr "Onay"
 
-#: src/addon/client.cpp:668
+#: src/addon/client.cpp:685
 msgid "Add-ons Manager"
 msgstr "Eklentiler Yöneticisi"
 
-#: src/addon/info.cpp:244
+#: src/addon/info.cpp:252
 msgid "addon_type^Campaign"
 msgstr "Seferberlik"
 
-#: src/addon/info.cpp:246
+#: src/addon/info.cpp:254
 msgid "addon_type^Scenario"
 msgstr "Senaryo"
 
-#: src/addon/info.cpp:248
+#: src/addon/info.cpp:256
 msgid "addon_type^SP/MP Campaign"
 msgstr "ÇO/TO Seferberlik"
 
-#: src/addon/info.cpp:250
+#: src/addon/info.cpp:258
 msgid "addon_type^MP era"
 msgstr "Çağ (ÇO)"
 
-#: src/addon/info.cpp:252
+#: src/addon/info.cpp:260
 msgid "addon_type^MP faction"
 msgstr "Taraf (ÇO)"
 
-#: src/addon/info.cpp:254
+#: src/addon/info.cpp:262
 msgid "addon_type^MP map-pack"
 msgstr "Harita Paketi (ÇO)"
 
-#: src/addon/info.cpp:256
+#: src/addon/info.cpp:264
 msgid "addon_type^MP scenario"
 msgstr "Senaryo (ÇO)"
 
-#: src/addon/info.cpp:258
+#: src/addon/info.cpp:266
 msgid "addon_type^MP campaign"
 msgstr "Seferberlik (ÇO)"
 
-#: src/addon/info.cpp:260
+#: src/addon/info.cpp:268
 msgid "addon_type^Modification"
 msgstr "Değişiklik "
 
-#: src/addon/info.cpp:262
+#: src/addon/info.cpp:270
 msgid "addon_type^Core"
 msgstr "Çekirdek"
 
-#: src/addon/info.cpp:264
+#: src/addon/info.cpp:272
 msgid "addon_type^Resources"
 msgstr "Kaynaklar"
 
-#: src/addon/info.cpp:266
+#: src/addon/info.cpp:274
 msgid "addon_type^Other"
 msgstr "Diğer"
 
-#: src/addon/info.cpp:268
+#: src/addon/info.cpp:276
 msgid "addon_type^(unknown)"
 msgstr "(bilinmiyor)"
 
-#: src/addon/info.cpp:305
+#: src/addon/info.cpp:313
 msgid "unit_byte^B"
 msgstr "B"
 
-#: src/addon/manager_ui.cpp:82 src/addon/manager_ui.cpp:293
+#: src/addon/manager_ui.cpp:82 src/addon/manager_ui.cpp:291
 msgid "Network communication error."
 msgstr "Ağ iletişim hatası."
 
-#: src/addon/manager_ui.cpp:85 src/addon/manager_ui.cpp:296
+#: src/addon/manager_ui.cpp:85 src/addon/manager_ui.cpp:294
 msgid "Remote host disconnected."
 msgstr "Uzak sunucuyla bağlantı koptu."
 
-#: src/addon/manager_ui.cpp:88 src/addon/manager_ui.cpp:299
+#: src/addon/manager_ui.cpp:88 src/addon/manager_ui.cpp:297
 msgid ""
 "A problem occurred when trying to create the files necessary to install this "
 "add-on."
@@ -5825,7 +5779,7 @@ msgstr ""
 "Bu eklentiyi kurmak için gerekli dosyalar oluşturulurken bir sorunla "
 "karşılaşıldı."
 
-#: src/addon/manager_ui.cpp:97 src/addon/manager_ui.cpp:308
+#: src/addon/manager_ui.cpp:97 src/addon/manager_ui.cpp:306
 msgid ""
 "A local file with add-on publishing information could not be read.\n"
 "\n"
@@ -5837,7 +5791,7 @@ msgstr ""
 "Dosya: $path\n"
 "Hata iletisi: $msg"
 
-#: src/addon/manager_ui.cpp:105 src/addon/manager_ui.cpp:314
+#: src/addon/manager_ui.cpp:105 src/addon/manager_ui.cpp:312
 msgid "The add-ons server address specified is not valid."
 msgstr "Eklentinin belirtilen sunucu adresi geçerli değil."
 
@@ -5845,13 +5799,13 @@ msgstr "Eklentinin belirtilen sunucu adresi geçerli değil."
 msgid "You have no add-ons installed."
 msgstr "Kurulu eklenti yok."
 
-#: src/addon/manager_ui.cpp:169
+#: src/addon/manager_ui.cpp:167
 msgid "Are you sure you want to remove the following installed add-on?"
 msgid_plural "Are you sure you want to remove the following installed add-ons?"
 msgstr[0] "Aşağıdaki eklentiyi kaldırmak istediğinizden emin misiniz?"
 msgstr[1] "Aşağıdaki eklentileri kaldırmak istediğinizden emin misiniz?"
 
-#: src/addon/manager_ui.cpp:195
+#: src/addon/manager_ui.cpp:193
 msgid ""
 "The following add-on appears to have publishing or version control "
 "information stored locally, and will not be removed:"
@@ -5865,69 +5819,204 @@ msgstr[1] ""
 "Aşağıdaki eklentilerin yayım veya sürüm denetim bilgileri yerel olarak "
 "kayıtlı görünüyor ve kaldırılmayacak:"
 
-#: src/addon/manager_ui.cpp:205
+#: src/addon/manager_ui.cpp:203
 msgid "The following add-on could not be deleted properly:"
 msgid_plural "The following add-ons could not be deleted properly:"
 msgstr[0] "Aşağıdaki eklenti düzgün silinemedi:"
 msgstr[1] "Aşağıdaki eklentiler düzgün silinemedi:"
 
-#: src/addon/manager_ui.cpp:212
+#: src/addon/manager_ui.cpp:210
 msgid "Add-on Deleted"
 msgid_plural "Add-ons Deleted"
 msgstr[0] "Eklenti silindi"
 msgstr[1] "Eklentiler silindi"
 
-#: src/addon/manager_ui.cpp:214
+#: src/addon/manager_ui.cpp:212
 msgid "The following add-on was successfully deleted:"
 msgid_plural "The following add-ons were successfully deleted:"
 msgstr[0] "Aşağıdaki eklenti başarılı bir şekilde silindi:"
 msgstr[1] "Aşağıdaki eklentiler başarılı bir şekilde silindi:"
 
-#: src/addon/manager_ui.cpp:270
+#: src/addon/manager_ui.cpp:268
 msgid "An error occurred while downloading the add-ons list from the server."
 msgstr "Sunucudan eklentiler listesi indirilirken bir hata oluştu."
 
-#: src/addon/manager_ui.cpp:284
+#: src/addon/manager_ui.cpp:282
 msgid "Could not find an add-on matching id $addon_id on the add-on server."
 msgstr "Eklenti sunucusunda $addon_id ile eşleşen bir eklenti bulunamadı."
 
-#: src/chat_command_handler.cpp:111
+#: src/addon/validation.cpp:448
+msgid "Success."
+msgstr ""
+
+#: src/addon/validation.cpp:452
+msgid "Incorrect add-on passphrase."
+msgstr ""
+
+#: src/addon/validation.cpp:456
+msgid "Upload denied. Please contact the server administration for assistance."
+msgstr ""
+
+#: src/addon/validation.cpp:460
+msgid "Attempted to upload an update pack for a non-existent add-on."
+msgstr ""
+
+#: src/addon/validation.cpp:469
+msgid "No add-on data was supplied by the client."
+msgstr ""
+
+#: src/addon/validation.cpp:473
+#, fuzzy
+#| msgid "Invalid location"
+msgid "Invalid upload pack."
+msgstr "Geçersiz yer"
+
+#: src/addon/validation.cpp:477
+#, fuzzy
+#| msgid "Invalid tag name"
+msgid "Invalid add-on name."
+msgstr "Geçersiz etiket adı"
+
+#: src/addon/validation.cpp:481
+msgid "Formatting character in add-on name."
+msgstr ""
+
+#: src/addon/validation.cpp:485
+msgid ""
+"The add-on contains files or directories with illegal names.\n"
+"\n"
+"Names containing whitespace, control characters, or any of the following "
+"symbols are not allowed:\n"
+"\n"
+"    \" * / : < > ? \\ | ~\n"
+"\n"
+"Additionally, names may not be longer than 255 characters, contain '..', or "
+"end with '.'."
+msgstr ""
+
+#: src/addon/validation.cpp:495
+#, fuzzy
+#| msgid ""
+#| "The add-on <i>$addon_title</i> contains files or directories with case "
+#| "conflicts. File or directory names may not be differently-cased versions "
+#| "of the same string."
+msgid ""
+"The add-on contains files or directories with case conflicts.\n"
+"\n"
+"Names in the same directory may not be differently-cased versions of each "
+"other."
+msgstr ""
+"<i>$addon_title</i> eklentisini Büyük-küçük harf çelişkili dosyalar "
+"içeriyor. Dosya veya dizin adları aynı dizenin farklı büyüklükteki "
+"karakterlerini kullanarak farklılaştırılamaz."
+
+#: src/addon/validation.cpp:501
+msgid "The add-on name contains an invalid UTF-8 sequence."
+msgstr ""
+
+#: src/addon/validation.cpp:510
+msgid "No add-on title specified."
+msgstr ""
+
+#: src/addon/validation.cpp:514
+msgid "No add-on author/maintainer name specified."
+msgstr ""
+
+#: src/addon/validation.cpp:518
+msgid "No add-on version specified."
+msgstr ""
+
+#: src/addon/validation.cpp:522
+#, fuzzy
+#| msgid "No description available."
+msgid "No add-on description specified."
+msgstr "Bu konuda bir açıklama yok."
+
+#: src/addon/validation.cpp:526
+msgid "No add-on author/maintainer email specified."
+msgstr ""
+
+#: src/addon/validation.cpp:530
+msgid "Missing passphrase."
+msgstr ""
+
+#: src/addon/validation.cpp:534
+msgid "Formatting character in add-on title."
+msgstr ""
+
+#: src/addon/validation.cpp:538
+#, fuzzy
+#| msgid "Invalid unit type"
+msgid "Invalid or unspecified add-on type."
+msgstr "Geçersiz birim türü"
+
+#: src/addon/validation.cpp:542
+msgid "Version number not greater than the latest uploaded version."
+msgstr ""
+
+#: src/addon/validation.cpp:546
+msgid "The add-on publish information contains an invalid UTF-8 sequence."
+msgstr ""
+
+#: src/addon/validation.cpp:555
+msgid "Unspecified server error."
+msgstr ""
+
+#: src/addon/validation.cpp:559
+msgid "Server is in read-only mode."
+msgstr ""
+
+#: src/addon/validation.cpp:563
+#, fuzzy
+#| msgid "You have no add-ons installed."
+msgid "Corrupted server add-ons list."
+msgstr "Kurulu eklenti yok."
+
+#: src/addon/validation.cpp:567
+msgid "Empty add-on version list on the server."
+msgstr ""
+
+#: src/addon/validation.cpp:577
+msgid "Unspecified validation failure."
+msgstr ""
+
+#: src/chat_command_handler.cpp:112
 msgid "Added to ignore list: $nick"
 msgstr "Gözardı listenize eklendi: $nick"
 
-#: src/chat_command_handler.cpp:111
+#: src/chat_command_handler.cpp:112
 msgid "ignores list"
 msgstr "gözardı listesi"
 
-#: src/chat_command_handler.cpp:115 src/chat_command_handler.cpp:134
+#: src/chat_command_handler.cpp:116 src/chat_command_handler.cpp:135
 msgid "Invalid username: $nick"
 msgstr "Geçersiz kullanıcı ismi: $nick"
 
-#: src/chat_command_handler.cpp:130
+#: src/chat_command_handler.cpp:131
 msgid "Added to friends list: $nick"
 msgstr "Arkadaş listenize eklendi: $nick"
 
-#: src/chat_command_handler.cpp:130
+#: src/chat_command_handler.cpp:131
 msgid "friends list"
 msgstr "arkadaş listesi"
 
-#: src/chat_command_handler.cpp:146
+#: src/chat_command_handler.cpp:147
 msgid "Removed from list: $nick"
 msgstr "Listenizden kaldırıldı: $nick "
 
-#: src/chat_command_handler.cpp:146
+#: src/chat_command_handler.cpp:147
 msgid "friends and ignores list"
 msgstr "arkadaşlar ve gözardı listesi"
 
-#: src/chat_command_handler.cpp:158
+#: src/chat_command_handler.cpp:157
 msgid "version"
 msgstr "sürüm"
 
-#: src/chat_command_handler.cpp:170
+#: src/chat_command_handler.cpp:169
 msgid "nick registration"
 msgstr "Kullanıcı ismi kaydı"
 
-#: src/chat_command_handler.cpp:170
+#: src/chat_command_handler.cpp:169
 msgid "requesting information for user $nick"
 msgstr "$nick kullanıcısı için bilgi isteniyor"
 
@@ -5935,7 +6024,7 @@ msgstr "$nick kullanıcısı için bilgi isteniyor"
 msgid "(A) — admin command"
 msgstr "(A) — yönetici komutu"
 
-#: src/chat_command_handler.hpp:58 src/menu_events.cpp:1207
+#: src/chat_command_handler.hpp:58 src/menu_events.cpp:1193
 msgid "(admin only)"
 msgstr "(sadece yönetici)"
 
@@ -5959,7 +6048,7 @@ msgstr ""
 #: src/chat_command_handler.hpp:83 src/chat_command_handler.hpp:85
 #: src/chat_command_handler.hpp:87 src/chat_command_handler.hpp:108
 #: src/chat_command_handler.hpp:110 src/chat_command_handler.hpp:112
-#: src/chat_command_handler.hpp:116
+#: src/chat_command_handler.hpp:118
 msgid "<nickname>"
 msgstr "<takma ad>"
 
@@ -6048,71 +6137,79 @@ msgid "Remove a nickname from your ignores or friends list."
 msgstr "Arkadaşlar veya gözardı listenizden kullanıcı adı siler."
 
 #: src/chat_command_handler.hpp:114
+msgid "<N>"
+msgstr ""
+
+#: src/chat_command_handler.hpp:114
+msgid "Get a random number between 1 and N visible in the game setup lobby."
+msgstr ""
+
+#: src/chat_command_handler.hpp:116
 msgid "Display version information."
 msgstr "Sürüm bilgilerini gösterir."
 
-#: src/chat_command_handler.hpp:116
+#: src/chat_command_handler.hpp:118
 msgid "Request information about a nickname."
 msgstr "Bir kullanıcı hakkında bilgi iste."
 
-#: src/chat_command_handler.hpp:118 src/chat_command_handler.hpp:121
-#: src/chat_command_handler.hpp:123
+#: src/chat_command_handler.hpp:120 src/chat_command_handler.hpp:123
+#: src/chat_command_handler.hpp:125
 msgid "<room>"
 msgstr "<oda>"
 
-#: src/chat_command_handler.hpp:118
+#: src/chat_command_handler.hpp:120
 msgid "Join a room."
 msgstr "Odaya katıl."
 
-#: src/chat_command_handler.hpp:121
+#: src/chat_command_handler.hpp:123
 msgid "Part a room."
 msgstr "Bir odayı ayır."
 
-#: src/chat_command_handler.hpp:123
+#: src/chat_command_handler.hpp:125
 msgid "List room members."
 msgstr "Oda üyelerini listele."
 
-#: src/chat_command_handler.hpp:125
+#: src/chat_command_handler.hpp:127
 msgid "List available rooms."
 msgstr " Müsait odaları listele."
 
-#: src/chat_command_handler.hpp:127
+#: src/chat_command_handler.hpp:129
 msgid "<room> <msg>"
 msgstr "<oda> <ileti>"
 
-#: src/chat_command_handler.hpp:127
+#: src/chat_command_handler.hpp:129
 msgid "Room message."
 msgstr "Oda iletisi."
 
-#: src/chat_command_handler.hpp:129
+#: src/chat_command_handler.hpp:131
 msgid "<room> <type> [value]"
 msgstr "<oda> <tür> [değer]"
 
-#: src/chat_command_handler.hpp:129
+#: src/chat_command_handler.hpp:131
 msgid "Room query."
 msgstr "Oda sorgusu"
 
-#: src/chat_events.cpp:61
+#: src/chat_events.cpp:59
 msgid "Unknown debug level: '$level'."
 msgstr "Bilinmeyen hata ayıklama seviyesi: ‘$level’."
 
-#: src/chat_events.cpp:63 src/chat_events.cpp:72
+#: src/chat_events.cpp:61 src/chat_events.cpp:70
 msgid "error"
 msgstr "Hata"
 
-#: src/chat_events.cpp:70
+#: src/chat_events.cpp:68
 msgid "Unknown debug domain: '$domain'."
 msgstr "Bilinmeye hata ayıklama alanı: ‘$domain’."
 
-#: src/chat_events.cpp:80
+#: src/chat_events.cpp:78
 msgid "Switched domain: '$domain' to level: '$level'."
 msgstr "Geçilen alan: ‘$domain’, geçilen seviye: ‘$level’."
 
-#: src/chat_events.cpp:152
+#: src/chat_events.cpp:153
 msgid "whisper to $receiver"
 msgstr "şuna fısılda: $receiver"
 
-#: src/chat_events.cpp:159
+#: src/chat_events.cpp:160
 msgid "whisper: $sender"
 msgstr "fısıldayan: $sender"
 
@@ -6145,7 +6242,7 @@ msgstr "Kullanım dışı bırakma seviyesi $level geçersiz (1-4 arası olmalı
 msgid "Chat message"
 msgstr "Sohbet iletisi"
 
-#: src/desktop/windows_tray_notification.cpp:125 src/game_config.cpp:575
+#: src/desktop/windows_tray_notification.cpp:125 src/game_config.cpp:578
 msgid "The Battle for Wesnoth"
 msgstr "Vesnot Savaşı"
 
@@ -6177,62 +6274,62 @@ msgstr "%d %b"
 msgid "%b %d %Y"
 msgstr "%b %d %Y"
 
-#: src/game_config.cpp:523
+#: src/game_config.cpp:526
 msgid "Invalid color in range: "
 msgstr "Geçersiz renk aralığı:"
 
-#: src/game_config_manager.cpp:237 src/game_config_manager.cpp:246
-#: src/game_config_manager.cpp:258
+#: src/game_config_manager.cpp:253 src/game_config_manager.cpp:263
+#: src/game_config_manager.cpp:275
 msgid "Error validating data core."
 msgstr "Veri çekirdeğini doğrularken hata oluştu."
 
-#: src/game_config_manager.cpp:238
+#: src/game_config_manager.cpp:254
 msgid "Found a core without id attribute."
 msgstr "Kimliksiz bir çekirdek bulundu."
 
-#: src/game_config_manager.cpp:239 src/game_config_manager.cpp:249
-#: src/game_config_manager.cpp:262
+#: src/game_config_manager.cpp:255 src/game_config_manager.cpp:266
+#: src/game_config_manager.cpp:279
 msgid "Skipping the core."
 msgstr "Çekirdeği atlıyor."
 
-#: src/game_config_manager.cpp:247 src/game_config_manager.cpp:259
-#: src/game_config_manager.cpp:282
+#: src/game_config_manager.cpp:264 src/game_config_manager.cpp:276
+#: src/game_config_manager.cpp:299
 msgid "Core ID: "
 msgstr "Çekirdek Kimliği:"
 
-#: src/game_config_manager.cpp:248
+#: src/game_config_manager.cpp:265
 msgid "The ID is already in use."
 msgstr "Kimlik zaten kullanımda."
 
-#: src/game_config_manager.cpp:260
+#: src/game_config_manager.cpp:277
 msgid "Core Path: "
 msgstr "Çekirdek yolu: "
 
-#: src/game_config_manager.cpp:261
+#: src/game_config_manager.cpp:278
 msgid "File not found."
 msgstr "Dosya bulunamadı."
 
-#: src/game_config_manager.cpp:281 src/game_config_manager.cpp:293
+#: src/game_config_manager.cpp:298 src/game_config_manager.cpp:310
 msgid "Error loading core data."
 msgstr "Veri çekirdeğini yüklerken hata oluştu."
 
-#: src/game_config_manager.cpp:283
+#: src/game_config_manager.cpp:300
 msgid "Error loading the core with named id."
 msgstr "Verilen kimliğe ait çekirdeği yüklerken hata oluştu."
 
-#: src/game_config_manager.cpp:284
+#: src/game_config_manager.cpp:301
 msgid "Falling back to the default core."
 msgstr "Varsayılan çekirdeğe dönülüyor."
 
-#: src/game_config_manager.cpp:294
+#: src/game_config_manager.cpp:311
 msgid "Can't locate the default core."
 msgstr "Varsayılan çekirdek bulunamıyor."
 
-#: src/game_config_manager.cpp:295
+#: src/game_config_manager.cpp:312
 msgid "The game will now exit."
 msgstr "Şimdi oyundan çıkılacaktır."
 
-#: src/game_config_manager.cpp:346
+#: src/game_config_manager.cpp:361
 msgid ""
 "Error loading custom game configuration files. The game will try without "
 "loading add-ons."
@@ -6240,7 +6337,7 @@ msgstr ""
 "Özel Oyun yapılandırma dosyaları yüklenirken hata oluştu. Oyun eklentileri "
 "yüklemeden deneyecek."
 
-#: src/game_config_manager.cpp:353
+#: src/game_config_manager.cpp:368
 msgid ""
 "Error loading custom game configuration files. The game will fallback to the "
 "default core files."
@@ -6248,35 +6345,35 @@ msgstr ""
 "Özel Oyun yapılandırma dosyaları yüklenirken hata oluştu. Oyun varsayılan "
 "çekirdek dosyalarına dönecek."
 
-#: src/game_config_manager.cpp:362
+#: src/game_config_manager.cpp:377
 msgid ""
 "Error loading default core game configuration files. The game will now exit."
 msgstr ""
 "Varsayılan çekirdek oyun yapılandırma dosyaları yüklenirken hata oluştu. "
 "Şimdi oyundan çıkılacaktır."
 
-#: src/game_config_manager.cpp:514
+#: src/game_config_manager.cpp:529
 msgid "Use [modify_unit_type]\n"
 msgstr ""
 
-#: src/game_config_manager.cpp:538
+#: src/game_config_manager.cpp:568
 msgid "instead, use the macro with the same name in the [campaign] tag"
 msgstr ""
 
-#: src/game_config_manager.cpp:586
+#: src/game_config_manager.cpp:619
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
 msgstr[0] "Şu eklenti hatalı ve yüklenemedi:"
 msgstr[1] "Şu eklentiler hatalı ve yüklenemedi:"
 
-#: src/game_config_manager.cpp:590
+#: src/game_config_manager.cpp:623
 msgid "Please report this to the author or maintainer of this add-on."
 msgid_plural ""
 "Please report this to the respective authors or maintainers of these add-ons."
 msgstr[0] "Lütfen bunu bu eklentinin yazarı veya bakımcısına bildirin."
 msgstr[1] "Lütfen bunu bu eklentilerin yazarları veya bakımcılarına bildirin."
 
-#: src/game_events/pump.cpp:476 src/game_launcher.cpp:951
+#: src/game_events/pump.cpp:476 src/game_launcher.cpp:922
 msgid "Error: "
 msgstr "Hata: "
 
@@ -6296,53 +6393,53 @@ msgstr "Bilgi: "
 msgid "$login|’s game"
 msgstr "$login kullanıcısının oyunu"
 
-#: src/game_initialization/connect_engine.cpp:89
+#: src/game_initialization/connect_engine.cpp:98
 msgid "Team"
 msgstr "Ekip"
 
-#: src/game_initialization/connect_engine.cpp:995
+#: src/game_initialization/connect_engine.cpp:972
 msgid "Anonymous player"
 msgstr "Anonim oyuncu"
 
-#: src/game_initialization/connect_engine.cpp:1000
-#: src/game_initialization/connect_engine.cpp:1298
+#: src/game_initialization/connect_engine.cpp:977
+#: src/game_initialization/connect_engine.cpp:1275
 msgid "Computer Player"
 msgstr "Bilgisayar Oyuncusu"
 
-#: src/game_initialization/connect_engine.cpp:1042
+#: src/game_initialization/connect_engine.cpp:1019
 msgid "$playername $side"
 msgstr "$playername $side"
 
-#: src/game_initialization/connect_engine.cpp:1294
+#: src/game_initialization/connect_engine.cpp:1271
 msgid "Network Player"
 msgstr "Ağ Oyuncusu"
 
-#: src/game_initialization/connect_engine.cpp:1297
+#: src/game_initialization/connect_engine.cpp:1274
 msgid "Local Player"
 msgstr "Yerel Oyuncu"
 
-#: src/game_initialization/connect_engine.cpp:1299
+#: src/game_initialization/connect_engine.cpp:1276
 msgid "Nobody"
 msgstr "Hiçkimse"
 
-#: src/game_initialization/connect_engine.cpp:1302
+#: src/game_initialization/connect_engine.cpp:1279
 msgid "Reserved"
 msgstr "Kayıtlı"
 
-#: src/game_initialization/create_engine.cpp:73
-#: src/game_initialization/create_engine.cpp:663
+#: src/game_initialization/create_engine.cpp:72
+#: src/game_initialization/create_engine.cpp:661
 msgid "Map could not be loaded: "
 msgstr "Harita yüklenemedi: "
 
-#: src/game_initialization/create_engine.cpp:77
+#: src/game_initialization/create_engine.cpp:76
 msgid "Map could not be loaded."
 msgstr "Harita yüklenemedi."
 
-#: src/game_initialization/create_engine.cpp:94
+#: src/game_initialization/create_engine.cpp:93
 msgid "not available."
 msgstr " Mevcut değil."
 
-#: src/game_initialization/create_engine.cpp:149
+#: src/game_initialization/create_engine.cpp:148
 msgid "Custom map."
 msgstr "Özel harita."
 
@@ -6396,64 +6493,64 @@ msgstr "$faction ekibi için bir lider türü bulunamıyor"
 msgid "Cannot obtain genders for invalid leader $leader"
 msgstr "Geçersiz lider $leader için cinsiyet bulunamıyor"
 
-#: src/game_initialization/lobby_data.cpp:224
+#: src/game_initialization/lobby_data.cpp:227
 msgid "Missing addon: $name"
 msgstr "Kayıp eklenti: $name"
 
-#: src/game_initialization/lobby_data.cpp:226
+#: src/game_initialization/lobby_data.cpp:229
 msgid "Missing addon: $id"
 msgstr "Kayıp eklenti: $id"
 
-#: src/game_initialization/lobby_data.cpp:258
+#: src/game_initialization/lobby_data.cpp:261
 msgid "Unknown era"
 msgstr "Bilinmeyen çağ"
 
-#: src/game_initialization/lobby_data.cpp:325
-#: src/game_initialization/lobby_data.cpp:358
+#: src/game_initialization/lobby_data.cpp:328
+#: src/game_initialization/lobby_data.cpp:362
 msgid "scenario_abbreviation^S"
 msgstr "S"
 
-#: src/game_initialization/lobby_data.cpp:344
+#: src/game_initialization/lobby_data.cpp:348
 msgid "Remote scenario"
 msgstr "Uzak Senaryo"
 
-#: src/game_initialization/lobby_data.cpp:366
-#: src/game_initialization/lobby_data.cpp:389
+#: src/game_initialization/lobby_data.cpp:369
+#: src/game_initialization/lobby_data.cpp:395
 msgid "campaign_abbreviation^C"
 msgstr "C"
 
-#: src/game_initialization/lobby_data.cpp:394
+#: src/game_initialization/lobby_data.cpp:401
 msgid "Unknown scenario"
 msgstr "Bilinmeyen Senaryo"
 
-#: src/game_initialization/lobby_data.cpp:404
+#: src/game_initialization/lobby_data.cpp:415
 msgid "Reloaded game"
 msgstr "Oyun yeniden yüklendi"
 
-#: src/game_initialization/lobby_data.cpp:419
+#: src/game_initialization/lobby_data.cpp:430
 msgid "Vacant Slot:"
 msgid_plural "Vacant Slots:"
 msgstr[0] "Boş yer:"
 msgstr[1] "Boş yerler:"
 
-#: src/game_initialization/lobby_data.cpp:421
+#: src/game_initialization/lobby_data.cpp:432
 msgid "mp_game_available_slots^Full"
 msgstr "Dolu"
 
-#: src/game_initialization/lobby_data.cpp:432
-#: src/game_initialization/lobby_data.cpp:434 src/savegame.cpp:645
+#: src/game_initialization/lobby_data.cpp:443
+#: src/game_initialization/lobby_data.cpp:445 src/savegame.cpp:648
 msgid "Turn"
 msgstr "El"
 
-#: src/game_initialization/lobby_data.cpp:447
+#: src/game_initialization/lobby_data.cpp:458
 msgid "vision^none"
 msgstr "yok"
 
-#: src/game_initialization/lobby_data.cpp:456
+#: src/game_initialization/lobby_data.cpp:467
 msgid "time limit^none"
 msgstr "yok"
 
-#: src/game_initialization/lobby_data.cpp:500
+#: src/game_initialization/lobby_data.cpp:511
 msgid ""
 "The host's version of <i>$addon</i> is incompatible. They have version <b>"
 "$host_ver</b> while you have version <b>$local_ver</b>."
@@ -6461,7 +6558,7 @@ msgstr ""
 "Sunucunun <i>$addon</i> sürümü uyumsuz. Onlarınki <b>$host_ver</b> iken "
 "sizinki <b>$local_ver</b>."
 
-#: src/game_initialization/lobby_data.cpp:514
+#: src/game_initialization/lobby_data.cpp:525
 msgid ""
 "Your version of <i>$addon</i> is incompatible. You have version <b>"
 "$local_ver</b> while the host has version <b>$host_ver</b>."
@@ -6469,33 +6566,29 @@ msgstr ""
 "Sizin <i>$addon</i> sürümünüz uyumsuz. Sizinki <b>$local_ver</b> iken "
 "sunucununki <b>$host_ver</b>."
 
-#: src/game_initialization/mp_game_utils.cpp:79
+#: src/game_initialization/mp_game_utils.cpp:76
 msgid "Defeat enemy leader(s)"
 msgstr "Düşman lider(ler)ini öldür"
 
-#: src/game_initialization/mp_game_utils.cpp:104
+#: src/game_initialization/mp_game_utils.cpp:101
 msgid "Cannot find era $era"
 msgstr "$era çağı bulunamıyor"
 
-#: src/game_initialization/mp_game_utils.cpp:143
-msgid "Connection timed out"
-msgstr "Bağlantı süresi aşıldı"
-
-#: src/game_initialization/multiplayer.cpp:74
+#: src/game_initialization/multiplayer.cpp:236
 msgid "Invalid address specified for multiplayer server"
 msgstr ""
 
-#: src/game_initialization/multiplayer.cpp:121
+#: src/game_initialization/multiplayer.cpp:271
 msgid ""
 "The server accepts versions '$required_version', but you are using version "
 "'$your_version'"
 msgstr "Bu sunucu '$required_version' kabul ediyor ama sizinki '$your_version'"
 
-#: src/game_initialization/multiplayer.cpp:131
+#: src/game_initialization/multiplayer.cpp:284
 msgid "Server-side redirect loop"
 msgstr "Sunucu taraflı yönlendirme döngüsü"
 
-#: src/game_initialization/multiplayer.cpp:204
+#: src/game_initialization/multiplayer.cpp:334
 msgid ""
 "The nickname ‘$nick’ is inactive. You cannot claim ownership of this "
 "nickname until you activate your account via email or ask an administrator "
@@ -6504,29 +6597,29 @@ msgstr ""
 "'$nick' takma adı etkin değil. Hesabınızı e-posta ile etkinleştirmeden veya "
 "bir yöneticiden istemeden bu takma ada sahip olamazsınız."
 
-#: src/game_initialization/multiplayer.cpp:213
+#: src/game_initialization/multiplayer.cpp:343
 msgid "Do you want to continue?"
 msgstr "Devam etmek istiyor musunuz?"
 
-#: src/game_initialization/multiplayer.cpp:215
+#: src/game_initialization/multiplayer.cpp:345
 msgid "Warning"
 msgstr "Uyarı"
 
-#: src/game_initialization/multiplayer.cpp:258
-#: src/game_initialization/multiplayer.cpp:274
-#: src/game_initialization/multiplayer.cpp:277
+#: src/game_initialization/multiplayer.cpp:387
+#: src/game_initialization/multiplayer.cpp:408
+#: src/game_initialization/multiplayer.cpp:411
 msgid "Bad data received from server"
 msgstr "Sunucudan bozuk veri geldi"
 
-#: src/game_initialization/multiplayer.cpp:312
+#: src/game_initialization/multiplayer.cpp:446
 msgid "You must login first."
 msgstr "Önce oturum açmanız lazım."
 
-#: src/game_initialization/multiplayer.cpp:314
+#: src/game_initialization/multiplayer.cpp:448
 msgid "The nickname ‘$nick’ is already taken."
 msgstr "'$nick' kullanıcı adı alınmış."
 
-#: src/game_initialization/multiplayer.cpp:316
+#: src/game_initialization/multiplayer.cpp:450
 msgid ""
 "The nickname ‘$nick’ contains invalid characters. Only alpha-numeric "
 "characters (one at minimum), underscores and hyphens are allowed."
@@ -6534,40 +6627,40 @@ msgstr ""
 "'$nick' geçersiz karakter içeriyor. Sadece harfler, rakamlar, alt çizgi ve "
 "tire imine izin verilmektedir."
 
-#: src/game_initialization/multiplayer.cpp:320
+#: src/game_initialization/multiplayer.cpp:454
 msgid "The nickname ‘$nick’ is too long. Nicks must be 20 characters or less."
 msgstr "'$nick' çok uzun. Oyuncu isimleri 20 karakterden uzun olamaz."
 
-#: src/game_initialization/multiplayer.cpp:322
+#: src/game_initialization/multiplayer.cpp:456
 msgid "The nickname ‘$nick’ is reserved and cannot be used by players."
 msgstr "'$nick' yerleşik bir isim olup oyuncular tarafından kullanılamaz."
 
-#: src/game_initialization/multiplayer.cpp:324
+#: src/game_initialization/multiplayer.cpp:458
 msgid "The nickname ‘$nick’ is not registered on this server."
 msgstr "'$nick' bu sunucuda kayıtlı değil."
 
-#: src/game_initialization/multiplayer.cpp:325
+#: src/game_initialization/multiplayer.cpp:459
 msgid " This server disallows unregistered nicknames."
 msgstr " Kayıtlı olmayan oyuncu adlarına bu sunucuda izin verilmemektedir."
 
-#: src/game_initialization/multiplayer.cpp:328
+#: src/game_initialization/multiplayer.cpp:462
 msgid "The nickname ‘$nick’ is banned on this server’s forums for $duration|."
 msgstr " ‘$nick’  bu sunucunun forumlarında  $duration| süreyle yasaklıdır."
 
-#: src/game_initialization/multiplayer.cpp:330
+#: src/game_initialization/multiplayer.cpp:464
 msgid "The nickname ‘$nick’ is banned on this server’s forums."
 msgstr " ‘$nick’  bu sunucunun forumlarında yasaklıdır."
 
-#: src/game_initialization/multiplayer.cpp:334
+#: src/game_initialization/multiplayer.cpp:468
 msgid "Your IP address is banned on this server’s forums for $duration|."
 msgstr ""
 " IP adresiniz bu sunucunun forumlarında  $duration| süreyle yasaklıdır."
 
-#: src/game_initialization/multiplayer.cpp:336
+#: src/game_initialization/multiplayer.cpp:470
 msgid "Your IP address is banned on this server’s forums."
 msgstr " IP adresiniz bu sunucunun forumlarında yasaklıdır."
 
-#: src/game_initialization/multiplayer.cpp:340
+#: src/game_initialization/multiplayer.cpp:474
 msgid ""
 "The email address for the nickname ‘$nick’ is banned on this server’s forums "
 "for $duration|."
@@ -6575,17 +6668,17 @@ msgstr ""
 " ‘$nick’ adının e-posta adresi bu sunucunun forumlarında  $duration| süreyle "
 "yasaklıdır."
 
-#: src/game_initialization/multiplayer.cpp:342
+#: src/game_initialization/multiplayer.cpp:476
 msgid ""
 "The email address for the nickname ‘$nick’ is banned on this server’s forums."
 msgstr " ‘$nick’ adının e-posta adresi bu sunucunun forumlarında yasaklıdır."
 
-#: src/game_initialization/multiplayer.cpp:345
-#: src/game_initialization/multiplayer.cpp:347
+#: src/game_initialization/multiplayer.cpp:479
+#: src/game_initialization/multiplayer.cpp:481
 msgid "The nickname ‘$nick’ is registered on this server."
 msgstr "Bu sunucuda kayıtlı bir '$nick' zaten var."
 
-#: src/game_initialization/multiplayer.cpp:348
+#: src/game_initialization/multiplayer.cpp:482
 msgid ""
 "WARNING: There is already a client using this nickname, logging in will "
 "cause that client to be kicked!"
@@ -6593,56 +6686,76 @@ msgstr ""
 "UYARI: Bu adı kullanan bir oyuncu zaten var ve oturum açmanız bu oyuncunun "
 "sunucudan atılmasına sebep olacak!"
 
-#: src/game_initialization/multiplayer.cpp:351
+#: src/game_initialization/multiplayer.cpp:485
 msgid ""
 "Error in the login procedure (the server had no seed for your connection)."
 msgstr "Oturum açarken hata oluştu (sunucunun bağlanmanız için kaynağı yok)."
 
-#: src/game_initialization/multiplayer.cpp:353
+#: src/game_initialization/multiplayer.cpp:487
 msgid "The password you provided was incorrect."
 msgstr "Belirttiğiniz parola yanlıştı."
 
-#: src/game_initialization/multiplayer.cpp:355
+#: src/game_initialization/multiplayer.cpp:489
 msgid "You have made too many login attempts."
 msgstr "Çok fazla girme girişiminde bulundunuz."
 
-#: src/game_initialization/playcampaign.cpp:63
+#: src/game_initialization/playcampaign.cpp:75
+msgid "Scenario Report"
+msgstr "Senaryo Raporu"
+
+#: src/game_initialization/playcampaign.cpp:77
+msgid "Victory"
+msgstr "Galibiyet"
+
+#: src/game_initialization/playcampaign.cpp:78
+msgid "You have emerged victorious!"
+msgstr "Galip olarak tamamladın!"
+
+#: src/game_initialization/playcampaign.cpp:80
+msgid "Defeat"
+msgstr "Yenilgi"
+
+#: src/game_initialization/playcampaign.cpp:81
+msgid "You have been defeated!"
+msgstr "Yenildin!"
+
+#: src/game_initialization/playcampaign.cpp:117
 msgid "Remaining gold: "
 msgstr "Kalan altın: "
 
-#: src/game_initialization/playcampaign.cpp:67
+#: src/game_initialization/playcampaign.cpp:121
 msgid "Turns finished early: "
 msgstr "Erken bitirilen eller: "
 
-#: src/game_initialization/playcampaign.cpp:68
+#: src/game_initialization/playcampaign.cpp:122
 msgid " per turn"
 msgstr "el başına"
 
-#: src/game_initialization/playcampaign.cpp:68
+#: src/game_initialization/playcampaign.cpp:122
 msgid "Early finish bonus: "
 msgstr "Erken bitirme ödülü: "
 
-#: src/game_initialization/playcampaign.cpp:69
+#: src/game_initialization/playcampaign.cpp:123
 msgid "Total bonus: "
 msgstr "Toplam ödül: "
 
-#: src/game_initialization/playcampaign.cpp:71
+#: src/game_initialization/playcampaign.cpp:126
 msgid "Total gold: "
 msgstr "Toplam altın: "
 
-#: src/game_initialization/playcampaign.cpp:74
+#: src/game_initialization/playcampaign.cpp:130
 msgid "Carryover percentage: "
 msgstr "Aktarım oranı: "
 
-#: src/game_initialization/playcampaign.cpp:77
+#: src/game_initialization/playcampaign.cpp:134
 msgid "Bonus gold: "
 msgstr "Altın ödülü: "
 
-#: src/game_initialization/playcampaign.cpp:79
+#: src/game_initialization/playcampaign.cpp:136
 msgid "Retained gold: "
 msgstr "Kalan Altın: "
 
-#: src/game_initialization/playcampaign.cpp:92
+#: src/game_initialization/playcampaign.cpp:149
 msgid ""
 "You will start the next scenario with $gold on top of the defined minimum "
 "starting gold."
@@ -6656,7 +6769,7 @@ msgstr[1] ""
 "Sonraki senaryoya tanımlı asgari başlangıç altınının üstüne $gold altınla "
 "başlayacaksınız."
 
-#: src/game_initialization/playcampaign.cpp:100
+#: src/game_initialization/playcampaign.cpp:156
 msgid ""
 "You will start the next scenario with the defined minimum starting gold."
 msgid_plural ""
@@ -6664,7 +6777,7 @@ msgid_plural ""
 msgstr[0] "Sonraki senaryoya belirlenmiş asgari altınla başlayacaksınız."
 msgstr[1] "Sonraki senaryoya belirlenmiş asgari altınla başlayacaksınız."
 
-#: src/game_initialization/playcampaign.cpp:108
+#: src/game_initialization/playcampaign.cpp:163
 msgid ""
 "You will start the next scenario with $gold or its defined minimum starting "
 "gold, whichever is higher."
@@ -6678,95 +6791,75 @@ msgstr[1] ""
 "Sonraki senaryoya ya $gold altınla ya da sonraki senaryonun asgari başlangıç "
 "altınıyla (hangisi yüksekse onunla) başlayacaksınız."
 
-#: src/game_initialization/playcampaign.cpp:138
-msgid "Scenario Report"
-msgstr "Senaryo Raporu"
-
-#: src/game_initialization/playcampaign.cpp:140
-msgid "Victory"
-msgstr "Galibiyet"
-
-#: src/game_initialization/playcampaign.cpp:141
-msgid "You have emerged victorious!"
-msgstr "Galip olarak tamamladın!"
-
-#: src/game_initialization/playcampaign.cpp:143
-msgid "Defeat"
-msgstr "Yenilgi"
-
-#: src/game_initialization/playcampaign.cpp:144
-msgid "You have been defeated!"
-msgstr "Yenildin!"
-
-#: src/game_initialization/playcampaign.cpp:297 src/game_launcher.cpp:904
+#: src/game_initialization/playcampaign.cpp:290 src/game_launcher.cpp:875
 msgid "The game could not be loaded: "
 msgstr "Oyun yüklenemedi: "
 
-#: src/game_initialization/playcampaign.cpp:303 src/game_launcher.cpp:906
+#: src/game_initialization/playcampaign.cpp:296 src/game_launcher.cpp:877
 msgid "Error while playing the game: "
 msgstr "Oyunu oynanırken hata: "
 
-#: src/game_initialization/playcampaign.cpp:306 src/game_launcher.cpp:943
+#: src/game_initialization/playcampaign.cpp:299 src/game_launcher.cpp:914
 msgid "The game map could not be loaded: "
 msgstr "Oyun haritası yüklenemedi: "
 
-#: src/game_initialization/playcampaign.cpp:309 src/game_launcher.cpp:908
-#: src/game_launcher.cpp:1038
+#: src/game_initialization/playcampaign.cpp:302 src/game_launcher.cpp:879
+#: src/game_launcher.cpp:995
 msgid "Map generator error: "
 msgstr "Harita üreteci hatası: "
 
-#: src/game_initialization/playcampaign.cpp:311
+#: src/game_initialization/playcampaign.cpp:304
 msgid "Error while reading the WML: "
 msgstr "WML okunurken hata: "
 
-#: src/game_initialization/playcampaign.cpp:348
-#: src/playsingle_controller.cpp:309
+#: src/game_initialization/playcampaign.cpp:349
+#: src/playsingle_controller.cpp:321
 msgid "Game Over"
 msgstr "Oyun Bitti"
 
-#: src/game_initialization/playcampaign.cpp:349
+#: src/game_initialization/playcampaign.cpp:350
 msgid "This scenario has ended. Do you want to continue the campaign?"
 msgstr "Bu senaryo bitti. Seferberliğe devam etmek istiyor musunuz?"
 
-#: src/game_initialization/playcampaign.cpp:417
+#: src/game_initialization/playcampaign.cpp:415
 msgid "Unknown scenario: '$scenario|'"
 msgstr "Bilinmeyen Senaryo: ‘$scenario|’"
 
-#: src/game_initialization/singleplayer.cpp:42
+#: src/game_initialization/singleplayer.cpp:43
 msgid "No campaigns are available."
 msgstr "İşe yarar bir seferberlik yok."
 
-#: src/game_launcher.cpp:685 src/game_launcher.cpp:703
+#: src/game_launcher.cpp:680 src/game_launcher.cpp:699
 msgid "The file you have tried to load is corrupt"
 msgstr "Yüklemeye çalıştığınız dosya bozuk"
 
-#: src/game_launcher.cpp:688 src/game_launcher.cpp:706
-#: src/hotkey/hotkey_handler_sp.cpp:315 src/savegame.cpp:156
-#: src/savegame.cpp:311
+#: src/game_launcher.cpp:682 src/game_launcher.cpp:701
+#: src/hotkey/hotkey_handler_sp.cpp:315 src/savegame.cpp:154
+#: src/savegame.cpp:304
 msgid "The file you have tried to load is corrupt: '"
 msgstr "Yüklemeye çalıştığınız dosya bozuk: ‘"
 
-#: src/game_launcher.cpp:696
+#: src/game_launcher.cpp:691
 msgid "File I/O Error while reading the game"
 msgstr "Oyunu okunurken dosyada G/Ç hatası"
 
-#: src/game_launcher.cpp:698
+#: src/game_launcher.cpp:693
 msgid "File I/O Error while reading the game: '"
 msgstr "Oyunu okunurken dosyada G/Ç hatası: '"
 
-#: src/game_launcher.cpp:902
+#: src/game_launcher.cpp:873
 msgid "Error while starting server: "
 msgstr "Sunucu başlatılırken hata: "
 
-#: src/game_launcher.cpp:924
+#: src/game_launcher.cpp:895
 msgid "Connection failed: "
 msgstr "Bağlantı başarısız: "
 
-#: src/generators/default_map_generator_job.cpp:715
+#: src/generators/default_map_generator_job.cpp:706
 msgid "Random maps with an odd width aren't supported."
 msgstr "Tek sayılı genişliğe sahip rastgele haritalar desteklenmiyor."
 
-#: src/generators/default_map_generator_job.cpp:978
+#: src/generators/default_map_generator_job.cpp:969
 msgid ""
 "No valid castle location found. Too many or too few mountain hexes? (please "
 "check the 'max hill size' parameter)"
@@ -6780,7 +6873,7 @@ msgstr ""
 "'$id' bağlantılı grubun 'fixed_width' veya 'fixed_height' anahtarına "
 "ihtiyacı var."
 
-#: src/gui/dialogs/addon/install_dependencies.cpp:38
+#: src/gui/dialogs/addon/install_dependencies.cpp:36
 msgid ""
 "The selected add-on has the following dependency, which is outdated or not "
 "currently installed. Do you wish to install it before continuing?"
@@ -6794,47 +6887,51 @@ msgstr[1] ""
 "Seçili eklentinin aşağıdaki bağımlılıkları var ve bunlar kurulmamış veya "
 "eski sürüm. Devam etmeden önce bunları kurmak ister misiniz?"
 
-#: src/gui/dialogs/game_stats.hpp:43
+#: src/gui/dialogs/game_stats.hpp:41
 msgid "No visible sides found."
 msgstr "Görünür bir taraf bulunamadı."
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:110
+#: src/gui/dialogs/multiplayer/match_history.cpp:30
+msgid "Match History — $player"
+msgstr ""
+
+#: src/gui/dialogs/multiplayer/player_info.cpp:105
 msgid "In game:"
 msgstr "Oyunda:"
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:112
+#: src/gui/dialogs/multiplayer/player_info.cpp:107
 msgid "(observing)"
 msgstr "(gözlemliyor)"
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:114
+#: src/gui/dialogs/multiplayer/player_info.cpp:109
 msgid "(playing)"
 msgstr "(oynuyor)"
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:117
+#: src/gui/dialogs/multiplayer/player_info.cpp:112
 msgid "In lobby"
 msgstr "Lobide"
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:146
+#: src/gui/dialogs/multiplayer/player_info.cpp:141
 msgid "On friends list"
 msgstr "Arkadaş listesinde"
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:151
+#: src/gui/dialogs/multiplayer/player_info.cpp:146
 msgid "On ignores list"
 msgstr "Gözardı listesinde"
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:156
+#: src/gui/dialogs/multiplayer/player_info.cpp:151
 msgid "Neither a friend nor ignored"
 msgstr "Ne arkadaş ne de gözardı"
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:161
+#: src/gui/dialogs/multiplayer/player_info.cpp:156
 msgid "You"
 msgstr "Siz"
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:164
+#: src/gui/dialogs/multiplayer/player_info.cpp:159
 msgid "Error"
 msgstr "Hata"
 
-#: src/gui/dialogs/unit_list.hpp:45
+#: src/gui/dialogs/unit_list.hpp:40
 msgid "No units found."
 msgstr "Hiç birim bulunamadı."
 
@@ -6850,121 +6947,121 @@ msgstr "evet"
 msgid "Reference to unknown topic: "
 msgstr "Bilinmeyen bir konuya bağlantı: "
 
-#: src/help/help_impl.cpp:355
+#: src/help/help_impl.cpp:354
 msgid "Only available during a scenario."
 msgstr "Sadece senaryo sırasında var"
 
-#: src/help/help_impl.cpp:356 src/help/help_impl.cpp:392
+#: src/help/help_impl.cpp:355 src/help/help_impl.cpp:391
 msgid "Time of Day Schedule"
 msgstr "Günün Saati Zamanlaması"
 
-#: src/help/help_impl.cpp:383
+#: src/help/help_impl.cpp:382
 msgid "Lawful Bonus:"
 msgstr "Adil Ödülü: "
 
-#: src/help/help_impl.cpp:384
+#: src/help/help_impl.cpp:383
 msgid "Neutral Bonus:"
 msgstr "Tarafsız Ödülü: "
 
-#: src/help/help_impl.cpp:385
+#: src/help/help_impl.cpp:384
 msgid "Chaotic Bonus:"
 msgstr "Kaypak Ödülü: "
 
-#: src/help/help_impl.cpp:386
+#: src/help/help_impl.cpp:385
 msgid "Liminal Bonus:"
 msgstr "İntikalî Ödülü: "
 
-#: src/help/help_impl.cpp:387
+#: src/help/help_impl.cpp:386
 msgid "Schedule"
 msgstr "Program"
 
-#: src/help/help_impl.cpp:479
+#: src/help/help_impl.cpp:478
 msgid "<header>text='Units with this special attack'</header>"
 msgstr "<header>text='Bu özel saldırıya sahip birimler'</header>"
 
-#: src/help/help_impl.cpp:543
+#: src/help/help_impl.cpp:542
 msgid "<header>text='Units with this ability'</header>"
 msgstr "<header>text='Bu yeteneğe sahip birimler'</header>"
 
-#: src/help/help_impl.cpp:573
+#: src/help/help_impl.cpp:572
 msgid "Era:"
 msgstr "Çağ:"
 
-#: src/help/help_impl.cpp:581
+#: src/help/help_impl.cpp:580
 msgid "Factions"
 msgstr "Taraflar"
 
-#: src/help/help_impl.cpp:629
+#: src/help/help_impl.cpp:628
 msgid "Races: "
 msgstr "Irklar: "
 
-#: src/help/help_impl.cpp:638 src/help/help_impl.cpp:1002
+#: src/help/help_impl.cpp:637 src/help/help_impl.cpp:1001
 msgid "Alignments: "
 msgstr "Yönelimler: "
 
-#: src/help/help_impl.cpp:645
+#: src/help/help_impl.cpp:644
 msgid "Leaders"
 msgstr "Liderler:"
 
-#: src/help/help_impl.cpp:654
+#: src/help/help_impl.cpp:653
 msgid "Recruits"
 msgstr "Askere alımlar"
 
-#: src/help/help_impl.cpp:716 src/units/types.cpp:488
+#: src/help/help_impl.cpp:715 src/units/types.cpp:488
 msgid "No description available."
 msgstr "Bu konuda bir açıklama yok."
 
-#: src/help/help_impl.cpp:720 src/help/help_impl.cpp:722
+#: src/help/help_impl.cpp:719 src/help/help_impl.cpp:721
 msgid "Availability: "
 msgstr "Bulunurluk: "
 
-#: src/help/help_impl.cpp:720
+#: src/help/help_impl.cpp:719
 msgid "Must-have"
 msgstr "Olmazsa olmaz"
 
-#: src/help/help_impl.cpp:722
+#: src/help/help_impl.cpp:721
 msgid "Unavailable"
 msgstr " Mevcut değil"
 
-#: src/help/help_impl.cpp:802 src/help/help_impl.cpp:979
+#: src/help/help_impl.cpp:801 src/help/help_impl.cpp:978
 msgid "race^Miscellaneous"
 msgstr "Çeşitli"
 
-#: src/help/help_impl.cpp:1002 src/reports.cpp:377
+#: src/help/help_impl.cpp:1001 src/reports.cpp:377
 msgid "Alignment: "
 msgstr "Yönelim: "
 
 #. TRANSLATORS: this is expected to say "[Dunefolk are] a group of units, all of whom are Humans",
 #. or "[Quenoth Elves are] a group of units, all of whom are Elves".
-#: src/help/help_impl.cpp:1021
+#: src/help/help_impl.cpp:1020
 msgid ""
 "This is a group of units, all of whom are <ref>dst='$topic_id' "
 "text='$help_taxonomy'</ref>"
 msgstr ""
 
-#: src/help/help_impl.cpp:1026
+#: src/help/help_impl.cpp:1025
 #, fuzzy
 #| msgid "<header>text='Units with this ability'</header>"
 msgid "<header>text='Subgroups of units within this group'</header>"
 msgstr "<header>text='Bu yeteneğe sahip birimler'</header>"
 
-#: src/help/help_impl.cpp:1028
+#: src/help/help_impl.cpp:1027
 #, fuzzy
 #| msgid "<header>text='Units of this race'</header>"
 msgid "<header>text='Groups of units within this race'</header>"
 msgstr "<header>text='Bu ırkın birimleri'</header>"
 
-#: src/help/help_impl.cpp:1037
+#: src/help/help_impl.cpp:1036
 #, fuzzy
 #| msgid "<header>text='Units of this race'</header>"
 msgid "<header>text='Units of this group'</header>"
 msgstr "<header>text='Bu ırkın birimleri'</header>"
 
-#: src/help/help_impl.cpp:1039
+#: src/help/help_impl.cpp:1038
 msgid "<header>text='Units of this race'</header>"
 msgstr "<header>text='Bu ırkın birimleri'</header>"
 
-#: src/help/help_impl.cpp:1360
+#: src/help/help_impl.cpp:1359
 msgid "corrupted original file"
 msgstr "özgün dosya bozuk"
 
@@ -6992,11 +7089,11 @@ msgstr "Gazlanmış hız etkinleştirildi!"
 msgid "Accelerated speed disabled!"
 msgstr "Gazlanmış hız kapatıldı!"
 
-#: src/hotkey/hotkey_handler.cpp:421
+#: src/hotkey/hotkey_handler.cpp:422
 msgid "Back to Turn "
 msgstr "Ele Geri Dön:"
 
-#: src/hotkey/hotkey_handler.cpp:427
+#: src/hotkey/hotkey_handler.cpp:428
 msgid "Back to Start"
 msgstr "Başa Dön"
 
@@ -7004,11 +7101,11 @@ msgstr "Başa Dön"
 msgid "(press $hotkey to deactivate)"
 msgstr "(etkisizleştirmek için $hotkey tuşuna basınız)"
 
-#: src/hotkey/hotkey_handler_sp.cpp:145 src/menu_events.cpp:2068
+#: src/hotkey/hotkey_handler_sp.cpp:145 src/menu_events.cpp:2094
 msgid "Planning mode activated!"
 msgstr "Planlama kipi etkin kılındı!"
 
-#: src/hotkey/hotkey_handler_sp.cpp:147 src/menu_events.cpp:2071
+#: src/hotkey/hotkey_handler_sp.cpp:147 src/menu_events.cpp:2097
 msgid "Planning mode deactivated!"
 msgstr "Planlama kipinden çıkıldı!"
 
@@ -7112,34 +7209,34 @@ msgid_plural "Aliases:"
 msgstr[0] "Takma Ad:"
 msgstr[1] "Takma Adlar:"
 
-#: src/menu_events.cpp:178
+#: src/menu_events.cpp:164
 msgid "Save Map As"
 msgstr "Haritayı Farklı Kaydet"
 
-#: src/menu_events.cpp:189
+#: src/menu_events.cpp:175
 msgid "Map saved."
 msgstr "Harita kaydedildi."
 
-#: src/menu_events.cpp:193
+#: src/menu_events.cpp:179
 msgid "Could not save the map: $msg"
 msgstr "Harita kaydedilemedi: $msg"
 
-#: src/menu_events.cpp:221
+#: src/menu_events.cpp:207
 msgid "Message:"
 msgstr "İleti:"
 
-#: src/menu_events.cpp:223
+#: src/menu_events.cpp:209
 msgid "Send to observers only"
 msgstr "Sadece seyircilere gönder"
 
-#: src/menu_events.cpp:224
+#: src/menu_events.cpp:210
 msgid "Send to allies only"
 msgstr "Sadece müttefiklere gönder"
 
 #. TRANSLATORS: An error that should never happen, might happen when loading an old savegame. If there are
 #. any units that the player can recruit then their standard recruitment dialog will be shown after this
 #. error message, otherwise they'll get the "You have no units available to recruit." error after this one.
-#: src/menu_events.cpp:280
+#: src/menu_events.cpp:266
 msgid "Error: there’s an unknown unit type on your recruit list: $unknown_ids"
 msgid_plural ""
 "Error: there are several unknown unit types on your recruit list: "
@@ -7147,26 +7244,26 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/menu_events.cpp:288
+#: src/menu_events.cpp:274
 msgid "You have no units available to recruit."
 msgstr "Askere alabilecek birimin yok."
 
-#: src/menu_events.cpp:298
+#: src/menu_events.cpp:284
 msgid "No unit recruited."
 msgstr "Askere alınmış birim yok."
 
-#: src/menu_events.cpp:323
+#: src/menu_events.cpp:309
 msgid "Internal error. Please report this as a bug! Details:\n"
 msgstr ""
 "Dahili hata. Bunu lütfen bir yazılım hatası (bug) olarak bildirin! "
 "Ayrıntılar:\n"
 
-#: src/menu_events.cpp:329
+#: src/menu_events.cpp:315
 msgid "You cannot recruit a $unit_type_name at this time."
 msgstr "Artık bir $unit_type_name askere alamazsınız."
 
 #. TRANSLATORS: "plan" refers to Planning Mode
-#: src/menu_events.cpp:343
+#: src/menu_events.cpp:329
 msgid ""
 "At this point in your plan, you will not have enough gold to recruit this "
 "unit."
@@ -7174,15 +7271,15 @@ msgstr ""
 "Planladığınız gibi bu noktada, bu birimi askere almak için yeterli altınınız "
 "olmayacak."
 
-#: src/menu_events.cpp:345
+#: src/menu_events.cpp:331
 msgid "You do not have enough gold to recruit this unit."
 msgstr "Bu birimi askere almak için yeterli altınınız yok."
 
-#: src/menu_events.cpp:388
+#: src/menu_events.cpp:374
 msgid "You are separated from your soldiers and may not recall them."
 msgstr "Askerlerinizden ayrı durumdasınız ve onları çağırmanız mümkün değil."
 
-#: src/menu_events.cpp:409
+#: src/menu_events.cpp:395
 msgid ""
 "There are no troops available to recall.\n"
 "(You must have veteran survivors from a previous scenario.)"
@@ -7190,88 +7287,88 @@ msgstr ""
 "Geri çağırılabilecek askeriniz yok\n"
 "(Önceki senaryoda sağ kalmış kıdemlilerin olması lazım.)"
 
-#: src/menu_events.cpp:413
+#: src/menu_events.cpp:399
 msgid "You currently can't recall at the highlighted location."
 msgstr "Belirtilen bölgede birim çağıramazsın."
 
-#: src/menu_events.cpp:425
+#: src/menu_events.cpp:411
 msgid "No unit recalled."
 msgstr "Çağrılmış birim yok."
 
-#: src/menu_events.cpp:442
+#: src/menu_events.cpp:428
 msgid "You must have at least 1 gold piece to recall a unit."
 msgid_plural "You must have at least $cost gold pieces to recall this unit."
 msgstr[0] "Bir birimi tekrar çağırmak için en az 1 altınınız olmalı."
 msgstr[1] "Bu birimi tekrar çağırmak için en az $cost altınınız olmalı."
 
-#: src/menu_events.cpp:588
+#: src/menu_events.cpp:574
 msgid "You cannot end your turn yet!"
 msgstr "Elinizi henüz bitiremezsiniz!"
 
-#: src/menu_events.cpp:603
+#: src/menu_events.cpp:589
 msgid ""
 "You have not started your turn yet. Do you really want to end your turn?"
 msgstr "Daha ele başlamadınız. Gerçekten eli bitirmek istiyor musunuz?"
 
-#: src/menu_events.cpp:612
+#: src/menu_events.cpp:598
 msgid "Some units have movement left. Do you really want to end your turn?"
 msgstr ""
 "Bazı birimlerin hareket hakları kaldı. Gerçekten eli bitirmek istiyor "
 "musunuz?"
 
-#: src/menu_events.cpp:621
+#: src/menu_events.cpp:607
 msgid "Some units have not moved. Do you really want to end your turn?"
 msgstr ""
 "Bazı birimler hiç hareket etmedi. Eli gerçekten bitirmek istiyor musunuz?"
 
-#: src/menu_events.cpp:678
+#: src/menu_events.cpp:664
 msgid "Rename Unit"
 msgstr "Birimin ismini değiştir"
 
-#: src/menu_events.cpp:679
+#: src/menu_events.cpp:665
 msgid "Name:"
 msgstr "İsim:"
 
-#: src/menu_events.cpp:856
+#: src/menu_events.cpp:842
 msgid "Clear Labels"
 msgstr "Etiketleri temizle"
 
-#: src/menu_events.cpp:857
+#: src/menu_events.cpp:843
 msgid "Are you sure you want to clear map labels?"
 msgstr "Harita etiketlerini temizlemek istediğinize emin misiniz?"
 
-#: src/menu_events.cpp:1058
+#: src/menu_events.cpp:1044
 msgid "Search"
 msgstr "Ara"
 
-#: src/menu_events.cpp:1198
+#: src/menu_events.cpp:1184
 msgid "(D) — debug only, (N) — network only, (A) — admin only"
 msgstr "(D) — sadece hata ayıklama, (N) — sadece ağ, (A) — sadece yönetici"
 
-#: src/menu_events.cpp:1205
+#: src/menu_events.cpp:1191
 msgid "(debug command)"
 msgstr "(Hata Ayıklama Kipi Komutları)"
 
-#: src/menu_events.cpp:1206
+#: src/menu_events.cpp:1192
 msgid "(network only)"
 msgstr "(sadece ağ)"
 
-#: src/menu_events.cpp:1208
+#: src/menu_events.cpp:1194
 msgid "(not during other events)"
 msgstr "(başka olaylar sırasında olmaz)"
 
-#: src/menu_events.cpp:1237
+#: src/menu_events.cpp:1223
 msgid "Refresh gui."
 msgstr "Görüntüyü tazeler."
 
-#: src/menu_events.cpp:1238
+#: src/menu_events.cpp:1224
 msgid "Switch a side to/from AI control."
 msgstr "Bir tarafın denetimini YZ'ya verir veya ondan alır."
 
 #. TRANSLATORS: These are the arguments accepted by the "droid" command,
 #. which must be a side-number and then optionally one of "on", "off" or "full".
 #. As with the command's name, "on", "off" and "full" are hardcoded, and shouldn't change in the translation.
-#: src/menu_events.cpp:1242
+#: src/menu_events.cpp:1228
 #, fuzzy
 #| msgid ""
 #| "[<side> [on/off]]\n"
@@ -7284,95 +7381,95 @@ msgstr ""
 "[<taraf> [on/off]]\n"
 "“on” = denetimi YZ'ye verir, “off” = denetimi oyuncuya verir"
 
-#: src/menu_events.cpp:1243
+#: src/menu_events.cpp:1229
 msgid "Change terrain type of current hex"
 msgstr ""
 
 #. TRANSLATORS: [both|base|overlay] are hardcoded literal arguments and shouldn't be translated.
-#: src/menu_events.cpp:1245
+#: src/menu_events.cpp:1231
 msgid "<terrain type> [both|base|overlay]"
 msgstr ""
 
-#: src/menu_events.cpp:1246
+#: src/menu_events.cpp:1232
 msgid "Switch a side to/from idle state."
 msgstr "Bir tarafın denetimini boşa/geri alır"
 
 #. TRANSLATORS: These are the arguments accepted by the "idle" command,
 #. which must be a side-number and then optionally "on" or "off".
 #. As with the command's name, "on" and "off" are hardcoded, and shouldn't change in the translation.
-#: src/menu_events.cpp:1250
+#: src/menu_events.cpp:1236
 msgid "command_idle^[<side> [on/off]]"
 msgstr "[<taraf>[on/off]]"
 
-#: src/menu_events.cpp:1251
+#: src/menu_events.cpp:1237
 msgid "Change the in-game theme."
 msgstr "Oyunun iç temasını değiştirir"
 
-#: src/menu_events.cpp:1253
+#: src/menu_events.cpp:1239
 msgid "<side> <nickname>"
 msgstr "<taraf> <takma ad>"
 
-#: src/menu_events.cpp:1253
+#: src/menu_events.cpp:1239
 msgid "Assign control of a side to a different player or observer."
 msgstr "Bir tarafın denetimini farklı bir seyirci veya oyuncuya verir."
 
-#: src/menu_events.cpp:1254
+#: src/menu_events.cpp:1240
 msgid "Query the controller status of a side."
 msgstr "Bir tarafın denetim durumunu sorgula"
 
-#: src/menu_events.cpp:1255
+#: src/menu_events.cpp:1241
 msgid "<side>"
 msgstr "<taraf>"
 
-#: src/menu_events.cpp:1256
+#: src/menu_events.cpp:1242
 msgid "Clear chat history."
 msgstr "Sohbet geçmişini temizler."
 
-#: src/menu_events.cpp:1257
+#: src/menu_events.cpp:1243
 msgid "Debug foreground terrain."
 msgstr "Arazi ön planını ayıkla."
 
-#: src/menu_events.cpp:1259
+#: src/menu_events.cpp:1245
 msgid "Debug layers from terrain under the mouse."
 msgstr "Farenin altındaki arazinin katmanlarını ayıkla."
 
-#: src/menu_events.cpp:1260
+#: src/menu_events.cpp:1246
 msgid "Show fps (Frames Per Second)."
 msgstr "Saniyedeki kara sayısını gösterir."
 
-#: src/menu_events.cpp:1262
+#: src/menu_events.cpp:1248
 msgid "Save game."
 msgstr "Oyunu kaydeder."
 
-#: src/menu_events.cpp:1264
+#: src/menu_events.cpp:1250
 msgid "Quit game."
 msgstr "Oyundan çıkar."
 
-#: src/menu_events.cpp:1267
+#: src/menu_events.cpp:1253
 msgid "Save and quit."
 msgstr "Kaydedip çıkar."
 
-#: src/menu_events.cpp:1269
+#: src/menu_events.cpp:1255
 msgid "Ignore replay errors."
 msgstr "Yeniden oynatma hatalarını yoksayar."
 
-#: src/menu_events.cpp:1270
+#: src/menu_events.cpp:1256
 msgid "Disable autosaves."
 msgstr "Otokayıtları iptal eder."
 
-#: src/menu_events.cpp:1272
+#: src/menu_events.cpp:1258
 msgid "<id>"
 msgstr "<kimlik>"
 
-#: src/menu_events.cpp:1272
+#: src/menu_events.cpp:1258
 msgid "Advance to the next scenario, or scenario identified by 'id'"
 msgstr "Sonraki senaryoya veya 'kimliği'’ belirtilen senaryoya geçilir"
 
-#: src/menu_events.cpp:1274
+#: src/menu_events.cpp:1260
 msgid "Choose next scenario"
 msgstr "Sonraki senaryoyu seçiniz"
 
-#: src/menu_events.cpp:1277
+#: src/menu_events.cpp:1263
 msgid ""
 "Change turn number (and time of day), or increase by one if no number is "
 "specified."
@@ -7380,11 +7477,11 @@ msgstr ""
 "El sayısını (ve günün vaktini) değiştir veya bir sayı belirtilmemişse 1 "
 "arttır."
 
-#: src/menu_events.cpp:1277
+#: src/menu_events.cpp:1263
 msgid "[turn]"
 msgstr "[el]"
 
-#: src/menu_events.cpp:1280
+#: src/menu_events.cpp:1266
 msgid ""
 "Change turn limit, or turn the turn limit off if no number is specified or "
 "it’s −1."
@@ -7392,68 +7489,68 @@ msgstr ""
 "El sınırını değiştir veya bir sayı belirtilmemişse el sınırını kapat veya -1 "
 "yap."
 
-#: src/menu_events.cpp:1280
+#: src/menu_events.cpp:1266
 msgid "[limit]"
 msgstr "[sınır]"
 
-#: src/menu_events.cpp:1282
+#: src/menu_events.cpp:1268
 msgid "Turn debug mode on."
 msgstr "Hata ayıklama kipine girer."
 
-#: src/menu_events.cpp:1283
+#: src/menu_events.cpp:1269
 msgid "Turn debug mode off."
 msgstr "Hata ayıklama kipinden çıkar."
 
-#: src/menu_events.cpp:1285 src/menu_events.cpp:1289
+#: src/menu_events.cpp:1271 src/menu_events.cpp:1275
 msgid "<command>[;<command>...]"
 msgstr "<komut>[;<komut>...]"
 
-#: src/menu_events.cpp:1285
+#: src/menu_events.cpp:1271
 msgid "Execute a Lua statement."
 msgstr "Bir Lua deyimi çalıştır."
 
-#: src/menu_events.cpp:1287
+#: src/menu_events.cpp:1273
 msgid "Grant higher privileges to Lua scripts."
 msgstr "Lua betiklerine daha yüksek ayrıcalıklar ver."
 
-#: src/menu_events.cpp:1288
+#: src/menu_events.cpp:1274
 msgid "Set the command used by the custom command hotkey"
 msgstr "Komutu kısayol tuşuna atar"
 
-#: src/menu_events.cpp:1291
+#: src/menu_events.cpp:1277
 msgid "Invoke a dialog allowing changing control of MP sides."
 msgstr "ÇO tarafların değişmesini sağlayan bir diyalog aç."
 
-#: src/menu_events.cpp:1292
+#: src/menu_events.cpp:1278
 msgid "Launch the gamestate inspector"
 msgstr "Oyun durumu denetçisini çalıştır"
 
-#: src/menu_events.cpp:1294
+#: src/menu_events.cpp:1280
 msgid "<name>[=<command>]"
 msgstr "<isim>[=<komut>]"
 
-#: src/menu_events.cpp:1294
+#: src/menu_events.cpp:1280
 msgid "Set or show alias to a command"
 msgstr "Bir komuta kısa ad atar veya kısa adı gösterir"
 
-#: src/menu_events.cpp:1296 src/menu_events.cpp:1301
+#: src/menu_events.cpp:1282 src/menu_events.cpp:1287
 msgid "<var>=<value>"
 msgstr "<değişken>=<değer>"
 
-#: src/menu_events.cpp:1296
+#: src/menu_events.cpp:1282
 msgid "Set a scenario variable."
 msgstr "Bir senaryo değişkenine değer atar."
 
-#: src/menu_events.cpp:1297
+#: src/menu_events.cpp:1283
 msgid "<var>"
 msgstr "<değişken>"
 
-#: src/menu_events.cpp:1297
+#: src/menu_events.cpp:1283
 msgid "Show a scenario variable."
 msgstr "Bir senaryo değişkenini gösterir."
 
 #. TRANSLATORS: Do not translate the word "advances"; it is a hardcoded literal argument.
-#: src/menu_events.cpp:1300
+#: src/menu_events.cpp:1286
 msgid ""
 "Modify a unit variable. (Only top level keys are supported, and "
 "advances=<number>.)"
@@ -7461,162 +7558,174 @@ msgstr ""
 "Bir birim değişkeninin değerini değiştirir. (Sadece tepe düzeyde tanımlı "
 "değişkenler desteklenir; advances=<sayı>.)"
 
-#: src/menu_events.cpp:1307
+#: src/menu_events.cpp:1293
 msgid "Discover all units in help."
 msgstr "Yardım kısmındaki bütün birimleri keşfet."
 
-#: src/menu_events.cpp:1308
+#: src/menu_events.cpp:1294
 msgid "'Undiscover' all units in help."
 msgstr "Yardım kısmındaki bütün birimleri unut."
 
-#: src/menu_events.cpp:1309
+#: src/menu_events.cpp:1295
 msgid "<unit type id>"
 msgstr "<birim türü kimliği>"
 
-#: src/menu_events.cpp:1309
+#: src/menu_events.cpp:1295
 msgid "Create a unit."
 msgstr "Bir birim oluşturur."
 
-#: src/menu_events.cpp:1310
+#: src/menu_events.cpp:1296
 msgid "Toggle fog for the current player."
 msgstr "Geçerli oyuncu için savaş dumanını açıp kapar."
 
-#: src/menu_events.cpp:1311
+#: src/menu_events.cpp:1297
 msgid "Toggle shroud for the current player."
 msgstr "Geçerli oyuncu için örtüyü açıp kapar."
 
-#: src/menu_events.cpp:1312
+#: src/menu_events.cpp:1298
 msgid "<amount>"
 msgstr "<miktar>"
 
-#: src/menu_events.cpp:1312
+#: src/menu_events.cpp:1298
 msgid "Give gold to the current player."
 msgstr "Geçerli oyuncuya altın verir."
 
-#: src/menu_events.cpp:1313
+#: src/menu_events.cpp:1299
 msgid "<event name>"
 msgstr "<olay adı>"
 
-#: src/menu_events.cpp:1313
+#: src/menu_events.cpp:1299
 msgid "Fire a game event."
 msgstr "Oyundaki bir olayı ([event]) tetikler."
 
-#: src/menu_events.cpp:1316
+#: src/menu_events.cpp:1302
 msgid "Toggle overlaying of x,y coordinates on hexes."
 msgstr "x,y altıgenindeki kaplamayı açıp kapar."
 
-#: src/menu_events.cpp:1319
+#: src/menu_events.cpp:1305
 msgid "Toggle overlaying of terrain codes on hexes."
 msgstr "Altıgenlerdeki arazi kodları kaplamasını etkinleştirir/siler."
 
-#: src/menu_events.cpp:1322
+#: src/menu_events.cpp:1308
 msgid "Toggle overlaying of number of bitmaps on hexes."
 msgstr "Altıgenlerdeki arazi bit haritası kaplamasını etkinleştirir/siler."
 
-#: src/menu_events.cpp:1324
+#: src/menu_events.cpp:1310
 msgid "Toggle planning mode."
 msgstr "Planlama kipini açar/kapatır."
 
-#: src/menu_events.cpp:1327
+#: src/menu_events.cpp:1313
 msgid "Access whiteboard options dialog."
 msgstr "Beyaz tahta ayar diyaloglarına eriş."
 
-#: src/menu_events.cpp:1447
+#: src/menu_events.cpp:1433
 msgid "Could not find label or unit containing the string ‘$search’."
 msgstr "‘$search’ dizesini içeren etiket veya birim bulunamadı."
 
-#: src/menu_events.cpp:1493
+#: src/menu_events.cpp:1480
 msgid "Can't droid invalid side: '$side'."
 msgstr "Geçersiz ‘$side’ tarafı droid başarısız."
 
-#: src/menu_events.cpp:1496
+#: src/menu_events.cpp:1483
 msgid "Can't droid networked side: '$side'."
 msgstr "Ağdaki ‘$side’ tarafı için droid başarısız."
 
-#: src/menu_events.cpp:1506 src/menu_events.cpp:1538
+#: src/menu_events.cpp:1497 src/menu_events.cpp:1513 src/menu_events.cpp:1545
+msgid ""
+"It is not allowed to change a side from AI to human control when it's not "
+"your turn."
+msgstr ""
+
+#: src/menu_events.cpp:1507 src/menu_events.cpp:1563
 msgid "Side '$side' controller is now controlled by: AI."
 msgstr "'$side' tarafının denetimi artık şunun elinde: YZ."
 
-#: src/menu_events.cpp:1508
+#: src/menu_events.cpp:1509
 msgid "Side '$side' is already droided."
 msgstr "'$side' tarafı zaten droidlenmiş."
 
-#: src/menu_events.cpp:1515 src/menu_events.cpp:1533
+#: src/menu_events.cpp:1523 src/menu_events.cpp:1555
 msgid "Side '$side' controller is now controlled by: human."
 msgstr "'$side' tarafının denetimi artık şunun elinde: insan."
 
-#: src/menu_events.cpp:1517
+#: src/menu_events.cpp:1525
 #, fuzzy
 #| msgid "Side '$side' is already droided."
 msgid "Side '$side' is already not droided."
 msgstr "'$side' tarafı zaten droidlenmiş."
 
-#: src/menu_events.cpp:1524
+#: src/menu_events.cpp:1529
+msgid ""
+"It is not allowed to change a side from human to AI control when it's not "
+"your turn."
+msgstr ""
+
+#: src/menu_events.cpp:1539
 #, fuzzy
 #| msgid "Side '$side' controller is now controlled by: AI."
 msgid "Side '$side' controller is now fully controlled by: AI."
 msgstr "'$side' tarafının denetimi artık şunun elinde: YZ."
 
-#: src/menu_events.cpp:1526
+#: src/menu_events.cpp:1541
 #, fuzzy
 #| msgid "Side '$side' is already droided."
 msgid "Side '$side' is already fully AI controlled."
 msgstr "'$side' tarafı zaten droidlenmiş."
 
-#: src/menu_events.cpp:1541
+#: src/menu_events.cpp:1566
 msgid ""
 "Invalid action provided for side '$side'. Valid actions are: on, off, full."
 msgstr ""
 
-#: src/menu_events.cpp:1583
+#: src/menu_events.cpp:1608
 msgid "Can't idle invalid side: '$side'."
 msgstr "Geçersiz taraf boş bırakılamaz: '$side'."
 
-#: src/menu_events.cpp:1588
+#: src/menu_events.cpp:1613
 msgid "Can't idle networked side: '$side'."
 msgstr "Ağdaki taraf boş bırakılamaz: '$side'."
 
-#: src/menu_events.cpp:1593
+#: src/menu_events.cpp:1618
 msgid "Can't idle local ai side: '$side'."
 msgstr "Yerel yz taraf boş bırakılamaz: '$side'."
 
-#: src/menu_events.cpp:1653
+#: src/menu_events.cpp:1679
 msgid "Can't change control of invalid side: '$side'."
 msgstr "Geçersiz ‘$side’ tarafının denetimi değiştirilemiyor."
 
-#: src/menu_events.cpp:1663
+#: src/menu_events.cpp:1689
 msgid "Can't change control of out-of-bounds side: '$side'."
 msgstr "Kapsamdışı ‘$side’ tarafının denetimi değiştirilemiyor."
 
-#: src/menu_events.cpp:1680
+#: src/menu_events.cpp:1706
 msgid "Can't query control of invalid side: '$side'."
 msgstr "Geçersiz tarafın denetimi sorgulanamıyor: '$side'."
 
-#: src/menu_events.cpp:1687
+#: src/menu_events.cpp:1713
 msgid "Can't query control of out-of-bounds side: '$side'."
 msgstr "Kapsamdışı ‘$side’ tarafının denetimi sorgulanamıyor."
 
-#: src/menu_events.cpp:1808
+#: src/menu_events.cpp:1834
 msgid "Choose Scenario (Debug!)"
 msgstr "Senaryo Seç (Hata Ayıklama!)"
 
-#: src/menu_events.cpp:1844
+#: src/menu_events.cpp:1870
 msgid "Debug mode activated!"
 msgstr "Hata ayıklama kipi etkin kılındı!"
 
-#: src/menu_events.cpp:1847
+#: src/menu_events.cpp:1873
 msgid "Debug mode not available in network games"
 msgstr "Ağlı oyunlarda hata ayıklama kipi etkinleştirilemez."
 
-#: src/menu_events.cpp:1854
+#: src/menu_events.cpp:1880
 msgid "Debug mode deactivated!"
 msgstr "Hata ayıklama kipinden çıkıldı!"
 
-#: src/menu_events.cpp:1874
+#: src/menu_events.cpp:1900
 msgid "WARNING! Unsafe Lua Mode"
 msgstr "UYARI! Güvensiz Lua Kipi"
 
-#: src/menu_events.cpp:1875
+#: src/menu_events.cpp:1901
 msgid ""
 "Executing Lua code in in this manner opens your computer to potential "
 "security breaches from any malicious add-ons or other programs you may have "
@@ -7629,38 +7738,38 @@ msgstr ""
 "\n"
 "Eğer ne yaptığınızı bilmiyorsanız devam etmeyin."
 
-#: src/menu_events.cpp:1880
+#: src/menu_events.cpp:1906
 msgid "Unsafe mode enabled!"
 msgstr "Güvensiz kip açıldı!"
 
-#: src/menu_events.cpp:1929
+#: src/menu_events.cpp:1955
 msgid "Variable not found"
 msgstr "Değişken bulunamadı"
 
-#: src/menu_events.cpp:1975
+#: src/menu_events.cpp:2001
 msgid ""
 "Invalid alignment: '$alignment', needs to be one of lawful, neutral, "
 "chaotic, or liminal."
 msgstr ""
 "Geçersiz yönelim: '$alignment', adil, tarafsız, kaypak veya intikali olmalı."
 
-#: src/menu_events.cpp:2001
+#: src/menu_events.cpp:2027
 msgid "Do you wish to clear all of your discovered units from help?"
 msgstr "Yardım kısmından bütün keşfedilmiş birimler silinsin mi?"
 
-#: src/menu_events.cpp:2015
+#: src/menu_events.cpp:2041
 msgid "Invalid unit type"
 msgstr "Geçersiz birim türü"
 
-#: src/menu_events.cpp:2022
+#: src/menu_events.cpp:2048
 msgid "Invalid location"
 msgstr "Geçersiz yer"
 
-#: src/menu_events.cpp:2095 src/menu_events.cpp:2121
+#: src/menu_events.cpp:2121 src/menu_events.cpp:2147
 msgid "prompt^Command:"
 msgstr "Komut:"
 
-#: src/mouse_events.cpp:1190
+#: src/mouse_events.cpp:1185
 msgid ""
 "You cannot move your leader away from the keep with some planned recruits or "
 "recalls left."
@@ -7668,19 +7777,19 @@ msgstr ""
 "Gerçekleşmemiş askere alımlar veya çağrılar varken lideri içkaleden "
 "çıkaramazsınız."
 
-#: src/mouse_events.cpp:1285
+#: src/mouse_events.cpp:1280
 msgid "This unit has no usable weapons."
 msgstr "Birimin kullanılabilir bir silahı yok."
 
-#: src/mp_game_settings.hpp:74
+#: src/mp_game_settings.hpp:71
 msgid "Independent"
 msgstr "Bağımsız"
 
-#: src/mp_game_settings.hpp:75
+#: src/mp_game_settings.hpp:72
 msgid "No Mirror"
 msgstr "Yansı yok"
 
-#: src/mp_game_settings.hpp:76
+#: src/mp_game_settings.hpp:73
 msgid "No Ally Mirror"
 msgstr "Müttefik yansı yok"
 
@@ -7717,7 +7826,7 @@ msgstr "$name denetimi eline aldı"
 msgid "Turn changed"
 msgstr "El değişti"
 
-#: src/pathfind/pathfind.cpp:747
+#: src/pathfind/pathfind.cpp:743
 msgid "Terrain with a movement cost less than 1 encountered."
 msgstr "Hareket bedeli 1’den küçük arazi saptandı."
 
@@ -7728,15 +7837,15 @@ msgstr "Hareket bedeli 1’den küçük arazi saptandı."
 msgid "waiting for^a global variable"
 msgstr "küresel değişken"
 
-#: src/play_controller.cpp:255
+#: src/play_controller.cpp:245
 msgid "time left for current turn"
 msgstr "El için kalan süre"
 
-#: src/play_controller.cpp:257
+#: src/play_controller.cpp:247
 msgid "current local time"
 msgstr "geçerli yerel saat"
 
-#: src/play_controller.cpp:1028
+#: src/play_controller.cpp:1073
 msgid ""
 "The game is out of sync. It might not make much sense to continue. Do you "
 "want to save your game?"
@@ -7744,19 +7853,19 @@ msgstr ""
 "Oyun eşzamanlanamadı. Devam etmenin pek bir anlamı yok. Oyunu kaydetmek "
 "ister misiniz?"
 
-#: src/play_controller.cpp:1029
+#: src/play_controller.cpp:1074
 msgid "Error details:"
 msgstr "Hata ayrıntıları:"
 
-#: src/play_controller.cpp:1317
+#: src/play_controller.cpp:1368
 msgid "No objectives available"
 msgstr "Hiçbir Amaç yok"
 
-#: src/playmp_controller.cpp:151
+#: src/playmp_controller.cpp:158
 msgid "Undoing moves not yet transmitted to the server."
 msgstr "Geri alınan hareketler henüz sunucuya aktarılmadı."
 
-#: src/playmp_controller.cpp:264 src/playsingle_controller.cpp:349
+#: src/playmp_controller.cpp:272 src/playsingle_controller.cpp:366
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
 "want to save the game?"
@@ -7764,7 +7873,7 @@ msgstr ""
 "Bir ağ bağlantı kopması oluştu ve oyun devam edemeyecek. Oyunu kaydetmek "
 "istiyor musunuz?"
 
-#: src/playmp_controller.cpp:266 src/playsingle_controller.cpp:351
+#: src/playmp_controller.cpp:276 src/playsingle_controller.cpp:370
 msgid ""
 "\n"
 "Do you want to save the game?"
@@ -7772,7 +7881,7 @@ msgstr ""
 "\n"
 "Oyunu kaydetmek ister misiniz?"
 
-#: src/playmp_controller.cpp:266 src/playsingle_controller.cpp:351
+#: src/playmp_controller.cpp:276 src/playsingle_controller.cpp:370
 msgid ""
 "This game has been ended.\n"
 "Reason: "
@@ -7780,7 +7889,7 @@ msgstr ""
 "Oyun bitirildi.\n"
 "Sebep: "
 
-#: src/playmp_controller.cpp:369
+#: src/playmp_controller.cpp:385
 msgid ""
 "The game is out of sync, and cannot continue. There are a number of reasons "
 "this could happen: this can occur if you or another player have modified "
@@ -7797,7 +7906,7 @@ msgstr ""
 "\n"
 "Oyununuz için bir hata günlüğü kaydı ister misiniz?"
 
-#: src/playmp_controller.cpp:412
+#: src/playmp_controller.cpp:430
 msgid ""
 "This side is in an idle state. To proceed with the game, it must be assigned "
 "to another controller. You may use :droid, :control or :give_control for "
@@ -7806,11 +7915,11 @@ msgstr ""
 "Bu taraf boşta. Oyuna devam etmek için başka bir denetleyici atanmalıdır. :"
 "droid, :control veya :give_control kullanabilirsiniz."
 
-#: src/playsingle_controller.cpp:153
+#: src/playsingle_controller.cpp:148
 msgid "Game Error"
 msgstr "Oyun Hatası"
 
-#: src/playsingle_controller.cpp:154
+#: src/playsingle_controller.cpp:149
 msgid ""
 "This multiplayer game uses an alternative random mode, if you don't know "
 "what this message means, then most likely someone is cheating or someone "
@@ -7820,54 +7929,54 @@ msgstr ""
 "anlamını bilmiyorsanız, büyük olasılıkla ya birisi hile yapıyor veya birisi "
 "bozuk bir oyunu yeniden yükledi."
 
-#: src/playsingle_controller.cpp:309
+#: src/playsingle_controller.cpp:321
 msgid "The game is over."
 msgstr "Oyun sona erdi."
 
-#: src/playsingle_controller.cpp:442
+#: src/playsingle_controller.cpp:470
 msgid "It is now $name|’s turn"
 msgstr "Sıra $name|’de"
 
-#: src/playturn.cpp:277
+#: src/playturn.cpp:278
 msgid "Give control to their ally $player"
 msgstr "Denetimi müttefikleri $player'a verir"
 
-#: src/playturn.cpp:286
+#: src/playturn.cpp:287
 msgid "Give control to observer $player"
 msgstr "Denetimi $player gözlemcisine verir"
 
-#: src/playturn.cpp:291
+#: src/playturn.cpp:292
 msgid "Replace with AI"
 msgstr "YZ ile yer değiş"
 
-#: src/playturn.cpp:292
+#: src/playturn.cpp:293
 msgid "Replace with local player"
 msgstr "Yerel oyuncu ile yer değiş"
 
-#: src/playturn.cpp:293
+#: src/playturn.cpp:294
 msgid "Set side to idle"
 msgstr "Tarafı boşa al"
 
-#: src/playturn.cpp:294
+#: src/playturn.cpp:295
 msgid "Save and abort game"
 msgstr "Oyunu kaydet ve terket"
 
-#: src/playturn.cpp:298
+#: src/playturn.cpp:299
 msgid ""
 "$player who controlled side $side_drop has left the game. What do you want "
 "to do?"
 msgstr ""
 "$side_drop tarafını yöneten $player oyunu terketti. Ne yapmak istersiniz?"
 
-#: src/quit_confirmation.cpp:59
+#: src/quit_confirmation.cpp:55
 msgid "Quit"
 msgstr "Çıkış"
 
-#: src/quit_confirmation.cpp:94
+#: src/quit_confirmation.cpp:90
 msgid "Do you really want to quit?"
 msgstr "Çıkmak istediğinize emin misiniz?"
 
-#: src/reports.cpp:172 src/savegame.cpp:420
+#: src/reports.cpp:172 src/savegame.cpp:419
 msgid "Name: "
 msgstr "İsim: "
 
@@ -7939,215 +8048,211 @@ msgstr "Bu birim taşa çevirildi. Artık hareket edemez ve saldıramaz."
 msgid "Ability: "
 msgstr "Yetenek: "
 
-#: src/reports.cpp:426 src/reports.cpp:950
+#: src/reports.cpp:426 src/reports.cpp:953
 msgid " (inactive)"
 msgstr "(etkisiz)"
 
-#: src/reports.cpp:486
+#: src/reports.cpp:489
 msgid "Resistances: "
 msgstr "Dirençler: "
 
-#: src/reports.cpp:488
+#: src/reports.cpp:491
 msgid "(Att / Def)"
 msgstr "(Sald / Sav)"
 
-#: src/reports.cpp:519
+#: src/reports.cpp:522
 msgid "Experience Modifier: "
 msgstr "Tecrübe Niteleyicisi: "
 
-#: src/reports.cpp:569
+#: src/reports.cpp:572
 msgid "Terrain: "
 msgstr "Arazi: "
 
-#: src/reports.cpp:586
+#: src/reports.cpp:589
 msgid "maximum^max."
 msgstr "azami."
 
-#: src/reports.cpp:586
+#: src/reports.cpp:589
 msgid "minimum^min."
 msgstr "asgari."
 
-#: src/reports.cpp:591
+#: src/reports.cpp:594
 msgid "Defense: "
 msgstr "Savunma: "
 
-#: src/reports.cpp:625 src/reports.cpp:626
+#: src/reports.cpp:628 src/reports.cpp:629
 msgid "vision:"
 msgstr "görüş: "
 
-#: src/reports.cpp:630 src/reports.cpp:631
+#: src/reports.cpp:633 src/reports.cpp:634
 msgid "jamming:"
 msgstr "sıkıştırma: "
 
-#: src/reports.cpp:660
+#: src/reports.cpp:663
 msgid "Movement Costs:"
 msgstr "Hareket Bedelleri:"
 
-#: src/reports.cpp:785 src/reports.cpp:1039 src/reports.cpp:1051
+#: src/reports.cpp:788 src/reports.cpp:1042 src/reports.cpp:1054
 msgid "Weapon: "
 msgstr "Silah: "
 
-#: src/reports.cpp:786 src/reports.cpp:1040
+#: src/reports.cpp:789 src/reports.cpp:1043
 msgid "Damage: "
 msgstr "Hasar: "
 
-#: src/reports.cpp:790
+#: src/reports.cpp:793
 msgid "Base damage: "
 msgstr "Temel hasar: "
 
-#: src/reports.cpp:792 src/reports.cpp:826 src/reports.cpp:836
+#: src/reports.cpp:795 src/reports.cpp:829 src/reports.cpp:839
 msgid "With specials: "
 msgstr "Özeller ile: "
 
-#: src/reports.cpp:795
+#: src/reports.cpp:798
 msgid "Time of day: "
 msgstr "Günün saati: "
 
-#: src/reports.cpp:799
+#: src/reports.cpp:802
 msgid "Leadership: "
 msgstr "Liderlik: "
 
-#: src/reports.cpp:803
+#: src/reports.cpp:806
 msgid "Slowed: "
 msgstr "Yavaşlatılmış: "
 
-#: src/reports.cpp:807
+#: src/reports.cpp:810
 msgid "Attacks: "
 msgstr "Saldırılar: "
 
-#: src/reports.cpp:811
+#: src/reports.cpp:814
 msgid "Max swarm bonus: "
 msgstr "Azami üşüşme ödülü: "
 
-#: src/reports.cpp:812 src/reports.cpp:831
+#: src/reports.cpp:815 src/reports.cpp:834
 msgid "Swarm: "
 msgstr "Üşüşme: "
 
-#: src/reports.cpp:813 src/reports.cpp:824 src/reports.cpp:835
+#: src/reports.cpp:816 src/reports.cpp:827 src/reports.cpp:838
 msgid "Base attacks: "
 msgstr "Temel saldırılar: "
 
-#: src/reports.cpp:819
+#: src/reports.cpp:822
 msgid "Specials: "
 msgstr "Özeller: "
 
-#: src/reports.cpp:829
+#: src/reports.cpp:832
 msgid "Subject to swarm: "
 msgstr "Üşüşülecek hedef: "
 
-#: src/reports.cpp:856
+#: src/reports.cpp:859
 msgid "Weapon range: "
 msgstr "Silah menzili: "
 
-#: src/reports.cpp:857
+#: src/reports.cpp:860
 msgid "Damage type: "
 msgstr "Hasar türü: "
 
-#: src/reports.cpp:858
+#: src/reports.cpp:861
 msgid "Damage versus: "
 msgstr "Aleyhinde hasar: "
 
-#: src/reports.cpp:917
+#: src/reports.cpp:920
 msgid "Accuracy:"
 msgstr "İsabetlilik:"
 
-#: src/reports.cpp:922
+#: src/reports.cpp:925
 msgid "Parry:"
 msgstr "Savuştur:"
 
-#: src/reports.cpp:948
+#: src/reports.cpp:951
 msgid "Weapon special: "
 msgstr "Silah özel: "
 
-#: src/reports.cpp:1023
+#: src/reports.cpp:1026
 msgid "weapon^None"
 msgstr "Hiç"
 
-#: src/reports.cpp:1052
+#: src/reports.cpp:1055
 msgid "Total damage"
 msgstr "Toplam hasar"
 
-#: src/reports.cpp:1116
+#: src/reports.cpp:1119
 msgid "Attack"
 msgid_plural "Attacks"
 msgstr[0] "Saldırı"
 msgstr[1] "Saldırılar"
 
 #. TRANSLATORS: This string is shown in the sidebar beneath the word "Attacks" when a unit can attack multiple times per turn
-#: src/reports.cpp:1124
+#: src/reports.cpp:1127
 msgid "Remaining: $left/$max"
 msgstr ""
 
-#: src/reports.cpp:1128
+#: src/reports.cpp:1131
 #, fuzzy
 #| msgid "This is not a multiplayer save."
 msgid "This unit can attack multiple times per turn."
 msgstr "Bu çok oyunculu bir oyun kaydı değil."
 
-#: src/reports.cpp:1220
+#: src/reports.cpp:1223
 msgid "Time of day schedule:"
 msgstr "Günün saati zamanlaması: "
 
-#: src/reports.cpp:1270
+#: src/reports.cpp:1273
 msgid "Time of day:"
 msgstr "Günün saati: "
 
-#: src/reports.cpp:1271 src/reports.cpp:1325
+#: src/reports.cpp:1274 src/reports.cpp:1328
 msgid "Lawful units: "
 msgstr "Adil birimler: "
 
-#: src/reports.cpp:1273 src/reports.cpp:1327
+#: src/reports.cpp:1276 src/reports.cpp:1330
 msgid "Neutral units: "
 msgstr "Tarafsız birimler: "
 
-#: src/reports.cpp:1274 src/reports.cpp:1328
+#: src/reports.cpp:1277 src/reports.cpp:1331
 msgid "Chaotic units: "
 msgstr "Kaypak birimler: "
 
-#: src/reports.cpp:1276 src/reports.cpp:1330
+#: src/reports.cpp:1279 src/reports.cpp:1333
 msgid "Liminal units: "
 msgstr "İntikalî birimler: "
 
-#: src/reports.cpp:1389
+#: src/reports.cpp:1392
 msgid "Turn Number"
 msgstr "El Numarası"
 
-#: src/reports.cpp:1391
-#, fuzzy
-#| msgid ""
-#| "When the game reaches the number of turns indicated by the second number, "
-#| "it will end."
+#: src/reports.cpp:1394
 msgid ""
 "When the game exceeds the number of turns indicated by the second number, it "
 "will end."
-msgstr "Oyun 2. sayının belirttiği tur sayısına erince sona erecektir."
+msgstr "Oyun 2. sayının belirttiği tur sayısını aşınca sona erecektir."
 
-#: src/reports.cpp:1416
+#: src/reports.cpp:1419
 msgid "Gold"
 msgstr "Altın"
 
-#: src/reports.cpp:1416
+#: src/reports.cpp:1419
 msgid ""
 "The amount of gold currently available to recruit and maintain your army."
 msgstr "Askere alım ve ordunun bakımı için mevcut altın miktarı."
 
-#: src/reports.cpp:1435
+#: src/reports.cpp:1438
 msgid "The fraction of known villages that your side has captured."
 msgstr "Tarafınızın ele geçirdiği bilinen köylerin oranı"
 
-#: src/reports.cpp:1435
+#: src/reports.cpp:1438
 msgid "Villages"
 msgstr "Köyler"
 
-#: src/reports.cpp:1440
+#: src/reports.cpp:1443
 msgid "The total number of units on your side."
 msgstr "Tarafınızdaki toplam birim sayısı."
 
-#: src/reports.cpp:1440
+#: src/reports.cpp:1443
 msgid "Units"
 msgstr "Birimler"
 
-#: src/reports.cpp:1450
+#: src/reports.cpp:1453
 msgid ""
 "The expenses incurred at the end of every turn to maintain your army. The "
 "first number is the amount of gold that will be deducted. It is equal to the "
@@ -8160,15 +8265,15 @@ msgstr ""
 "toplamdır. İkinci sayı ise köy gelirlerinin kapattıkları da dahil toplam "
 "bakım masrafı — yani köyleriniz olmasaydı eksilecek altın miktarı."
 
-#: src/reports.cpp:1450
+#: src/reports.cpp:1453
 msgid "Upkeep"
 msgstr "Gider"
 
-#: src/reports.cpp:1487
+#: src/reports.cpp:1490
 msgid "Net Income"
 msgstr "Net Gelir"
 
-#: src/reports.cpp:1487
+#: src/reports.cpp:1490
 msgid ""
 "The net amount of gold you gain or lose each turn, taking into account "
 "income from controlled villages and payment of upkeep."
@@ -8176,23 +8281,23 @@ msgstr ""
 "Elinizde bulunan köylerden her el kazandığınız net altın miktarı, ya da "
 "birim bakımı için her el kaybettiğiniz altın miktarı."
 
-#: src/reports.cpp:1655
+#: src/reports.cpp:1658
 msgid "Observers:"
 msgstr "Seyirciler:"
 
-#: src/reports.cpp:1697
+#: src/reports.cpp:1700
 msgid "Clock"
 msgstr "Saat"
 
-#: src/reports.cpp:1708
+#: src/reports.cpp:1711
 msgid "Battery"
 msgstr "Pil"
 
-#: src/reports.cpp:1736
+#: src/reports.cpp:1739
 msgid "Countdown until your turn automatically ends."
 msgstr "Elinizin kendiliğinden bitmesine geri sayım."
 
-#: src/reports.cpp:1736
+#: src/reports.cpp:1739
 msgid "Turn Countdown"
 msgstr "El geri sayımı"
 
@@ -8205,20 +8310,20 @@ msgid "%a %b %d %H:%M %Y"
 msgstr "%d %b %y %a %H:%M"
 
 #. TRANSLATORS: This string is used as part of a filename, as in, "HttT-The Elves Besieged replay.gz"
-#: src/save_index.cpp:261 src/savegame.cpp:572
+#: src/save_index.cpp:261 src/savegame.cpp:574
 msgid "replay"
 msgstr "tekrar"
 
-#: src/save_index.cpp:345 src/savegame.cpp:72 src/savegame.cpp:608
-#: src/savegame.cpp:610
+#: src/save_index.cpp:345 src/savegame.cpp:71 src/savegame.cpp:610
+#: src/savegame.cpp:612
 msgid "Auto-Save"
 msgstr "Otomatik Kayıt"
 
-#: src/savegame.cpp:206 src/savegame.cpp:210
+#: src/savegame.cpp:205 src/savegame.cpp:207
 msgid "Warning: The file you have tried to load is corrupt. Loading anyway.\n"
 msgstr "Uyarı: Yüklemeye çalıştığınız dosya bozuk. Yine de yükleniyor.\n"
 
-#: src/savegame.cpp:257
+#: src/savegame.cpp:251
 msgid ""
 "This save is from an old, unsupported version ($version_number|) and cannot "
 "be loaded."
@@ -8226,7 +8331,7 @@ msgstr ""
 "Bu kayıtlı oyun desteklenmeyen ($version_number|) bir sürümden ve "
 "yüklenemedi."
 
-#: src/savegame.cpp:265
+#: src/savegame.cpp:260
 msgid ""
 "This save is from a different version of the game ($version_number|). Do you "
 "wish to try to load it?"
@@ -8234,128 +8339,128 @@ msgstr ""
 "Bu kayıtlı oyun farklı bir sürümden ($version_number|). Yüklemeyi denemek "
 "istiyor musunuz?"
 
-#: src/savegame.cpp:268 src/savegame.cpp:317
+#: src/savegame.cpp:263 src/savegame.cpp:309
 msgid "Load Game"
 msgstr "Oyun Yükle"
 
-#: src/savegame.cpp:317
+#: src/savegame.cpp:309
 msgid "Replays are not supported in multiplayer mode."
 msgstr "Çok oyunculu kipte yeniden oynatmalar desteklenmiyor."
 
-#: src/savegame.cpp:324
+#: src/savegame.cpp:316
 msgid "This is not a multiplayer save."
 msgstr "Bu çok oyunculu bir oyun kaydı değil."
 
-#: src/savegame.cpp:352
+#: src/savegame.cpp:350
 msgid "The game could not be saved: "
 msgstr "Oyun kaydedilemedi: "
 
-#: src/savegame.cpp:420
+#: src/savegame.cpp:419
 msgid "Save already exists. Do you want to overwrite it?"
 msgstr "Kayıt zaten mevcut. Üzerine yazmak istiyor musun?"
 
-#: src/savegame.cpp:421
+#: src/savegame.cpp:420
 msgid "Overwrite?"
 msgstr "Üzerine yazılsın mı?"
 
-#: src/savegame.cpp:429
+#: src/savegame.cpp:427
 msgid ""
 "Save names should not end on '.gz' or '.bz2'. Please remove the extension."
 msgstr "Kayıt isimleri ‘.gz’ veya '.bz2.' ile bitemez. Lütfen uzantıyı silin."
 
-#: src/savegame.cpp:477
+#: src/savegame.cpp:474
 msgid "Saved"
 msgstr "Kaydedildi"
 
-#: src/savegame.cpp:477
+#: src/savegame.cpp:474
 msgid "The game has been saved."
 msgstr "Oyun kaydedildi."
 
-#: src/savegame.cpp:507 src/savegame.cpp:527
+#: src/savegame.cpp:506 src/savegame.cpp:526
 msgid "Could not write to file"
 msgstr "Dosyaya yazılamadı"
 
-#: src/savegame.cpp:562
+#: src/savegame.cpp:563
 msgid "Save Replay"
 msgstr "Oyun Tekrarını Kaydet"
 
-#: src/savegame.cpp:590
+#: src/savegame.cpp:592
 msgid "Could not auto save the game. Please save the game manually."
 msgstr "Oyun otomatik kaydedilemedi. Lütfen elle kaydedin."
 
-#: src/savegame.cpp:638
+#: src/savegame.cpp:642
 msgid "Save Game"
 msgstr "Oyunu Kaydet"
 
-#: src/savegame.cpp:652
+#: src/savegame.cpp:656
 msgid "Game state is corrupted"
 msgstr "Oyun durumu bozulmuş"
 
-#: src/serialization/parser.cpp:157
+#: src/serialization/parser.cpp:155
 msgid "Unexpected characters at line start"
 msgstr "Satır başlangıcında beklenmedik karakterler"
 
-#: src/serialization/parser.cpp:184
+#: src/serialization/parser.cpp:182
 msgid "Missing closing tag for tag [$tag]"
 msgstr "[$tag] etiketi için kapama etiketi kayıp"
 
-#: src/serialization/parser.cpp:185
+#: src/serialization/parser.cpp:183
 msgid "expected at $pos"
 msgstr "$pos da bekleniyor"
 
-#: src/serialization/parser.cpp:186 src/serialization/parser.cpp:273
+#: src/serialization/parser.cpp:184 src/serialization/parser.cpp:271
 msgid "opened at $pos"
 msgstr "$pos da açıldı"
 
-#: src/serialization/parser.cpp:204
+#: src/serialization/parser.cpp:202
 msgid "Unterminated [element] tag"
 msgstr "Sonlandırılmamış [element] etiketi"
 
-#: src/serialization/parser.cpp:220 src/serialization/parser.cpp:288
+#: src/serialization/parser.cpp:218 src/serialization/parser.cpp:286
 msgid "Invalid tag name"
 msgstr "Geçersiz etiket adı"
 
-#: src/serialization/parser.cpp:226
+#: src/serialization/parser.cpp:224
 msgid "Unterminated [+element] tag"
 msgstr "Sonlandırılmamış [+element] etiketi"
 
-#: src/serialization/parser.cpp:250
+#: src/serialization/parser.cpp:248
 msgid "Invalid closing tag name"
 msgstr "Geçersiz kapama etiketi adı"
 
-#: src/serialization/parser.cpp:256
+#: src/serialization/parser.cpp:254
 msgid "Unterminated closing tag"
 msgstr "Sonlandırılmamış kapama etiketi"
 
-#: src/serialization/parser.cpp:260
+#: src/serialization/parser.cpp:258
 msgid "Unexpected closing tag"
 msgstr "Beklenmedik kapama etiketi"
 
-#: src/serialization/parser.cpp:272
+#: src/serialization/parser.cpp:270
 msgid "Found invalid closing tag [/$tag2] for tag [$tag1]"
 msgstr "[$tag1] için geçersiz kapama etiketi [/$tag2] bulundu"
 
-#: src/serialization/parser.cpp:274
+#: src/serialization/parser.cpp:272
 msgid "closed at $pos"
 msgstr "Şurada kapatıldı: $pos "
 
-#: src/serialization/parser.cpp:310 src/serialization/parser.cpp:326
+#: src/serialization/parser.cpp:308 src/serialization/parser.cpp:324
 msgid "Empty variable name"
 msgstr "Boş değişken adı"
 
-#: src/serialization/parser.cpp:318
+#: src/serialization/parser.cpp:316
 msgid "Unexpected characters after variable name (expected , or =)"
 msgstr "Değişken adından sonra beklenmedik karakterler (beklenen , veya =)"
 
-#: src/serialization/parser.cpp:365 src/serialization/parser.cpp:405
+#: src/serialization/parser.cpp:363 src/serialization/parser.cpp:403
 msgid "Unterminated quoted string"
 msgstr "Sonlandırılmamış tırnaklı dize"
 
-#: src/serialization/parser.cpp:472
+#: src/serialization/parser.cpp:470
 msgid "at $pos"
 msgstr "$pos da"
 
-#: src/serialization/parser.cpp:485
+#: src/serialization/parser.cpp:483
 msgid "Value: '$value' Previous: '$previous_value'"
 msgstr "Değer: '$value' Önceki: '$previous_value'"
 
@@ -8433,15 +8538,15 @@ msgstr "Y"
 msgid "infix_binary^i"
 msgstr "i"
 
-#: src/synced_commands.cpp:410
+#: src/synced_commands.cpp:409
 msgid "(unknown player)"
 msgstr "(bilinmeyen oyuncu)"
 
-#: src/synced_commands.cpp:415
+#: src/synced_commands.cpp:414
 msgid "The :$command debug command was used during $player’s turn"
 msgstr "$player oyuncusunun elinde :$command hata ayıklama komutu kullanıldı"
 
-#: src/synced_commands.cpp:423
+#: src/synced_commands.cpp:422
 msgid ""
 "A player used a debug command during the game. If this is unexpected, it is "
 "possible the player in question is cheating."
@@ -8449,19 +8554,19 @@ msgstr ""
 "Bir oyuncu oyun sırasında hata ayıklama komutu kullandı. Eğer bu beklenmedik "
 "bir şey ise oyuncunun hile yapıyor olması olası."
 
-#: src/synced_commands.cpp:425
+#: src/synced_commands.cpp:424
 msgid "Details:"
 msgstr "Ayrıntılar:"
 
-#: src/synced_commands.cpp:428
+#: src/synced_commands.cpp:427
 msgid "Do you wish to save the game before continuing?"
 msgstr "Devam etmeden önce oyunu kaydetmek ister misiniz?"
 
-#: src/synced_commands.cpp:430
+#: src/synced_commands.cpp:429
 msgid "Debug Command Used"
 msgstr "Kullanılan Hata Ayıklama Kipi Komutu"
 
-#: src/synced_commands.cpp:536
+#: src/synced_commands.cpp:535
 msgid "A unit was created using debug mode during $player’s turn"
 msgstr ""
 "$player oyuncusunun elinde hata ayıklama kipi kullanılarak  bir birim "
@@ -8476,13 +8581,13 @@ msgstr[1] "$sides taraflarından $desc bekleniyor"
 #. TRANSLATORS: In networked games, this text is shown for other clients,
 #. while they wait for an action from another player.
 #. This text will be embedded into a sentence.
-#: src/synced_user_choice.hpp:42
+#: src/synced_user_choice.hpp:44
 msgid "waiting for^input"
 msgstr "girdi"
 
 #. TRANSLATORS: $color_id is the internal identifier of a side color, for example, 'lightred'.
 #. Translate the quotation marks only; leave "color_id" untranslated, as it's a variable name.
-#: src/team.cpp:995
+#: src/team.cpp:993
 msgid "“$color_id”"
 msgstr ""
 
@@ -8498,11 +8603,11 @@ msgstr "Düşman köyü"
 msgid "Owned village"
 msgstr "Bizim köy"
 
-#: src/theme.cpp:316
+#: src/theme.cpp:314
 msgid "border_size should be between 0.0 and 0.5."
 msgstr "border_size 0.0 ila 0.5 arasında olmalıdır."
 
-#: src/theme.cpp:566 src/theme.cpp:571
+#: src/theme.cpp:564 src/theme.cpp:569
 msgid "Hotkey(s): "
 msgstr "kısayol tuşları: "
 
@@ -8583,15 +8688,15 @@ msgid_plural "<span color=\"$color\">$number_or_percent</span> movement points"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span> hareket sayısı"
 msgstr[1] "<span color=\"$color\">$number_or_percent</span> hareket sayıları"
 
-#: src/units/helper.cpp:66
+#: src/units/helper.cpp:59
 msgid "Level: "
 msgstr "Seviye: "
 
-#: src/units/helper.cpp:69
+#: src/units/helper.cpp:62
 msgid "Advancements:"
 msgstr "Terfiler: "
 
-#: src/units/helper.cpp:82
+#: src/units/helper.cpp:75
 msgid "No advancement"
 msgstr "Terfi yok"
 
@@ -8611,44 +8716,44 @@ msgstr "kaypak"
 msgid "female^liminal"
 msgstr "intikalî"
 
-#: src/units/unit.cpp:1871
+#: src/units/unit.cpp:1823
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/units/unit.cpp:1877
+#: src/units/unit.cpp:1829
 msgid "<span color=\"$color\">$number_or_percent</span> HP"
 msgstr "<span color=\"$color\">$number_or_percent</span> YP"
 
-#: src/units/unit.cpp:1887
+#: src/units/unit.cpp:1839
 msgid "<span color=\"$color\">$number_or_percent</span> move"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> moves"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span> hareket"
 msgstr[1] "<span color=\"$color\">$number_or_percent</span> hareket"
 
-#: src/units/unit.cpp:1893
+#: src/units/unit.cpp:1845
 msgid "<span color=\"$color\">$number_or_percent</span> vision"
 msgstr "<span color=\"$color\">$number_or_percent</span> görüş"
 
-#: src/units/unit.cpp:1897
+#: src/units/unit.cpp:1849
 msgid "<span color=\"$color\">$number_or_percent</span> jamming"
 msgstr "<span color=\"$color\">$number_or_percent</span> sıkıştırma"
 
-#: src/units/unit.cpp:1902
+#: src/units/unit.cpp:1854
 msgid "<span color=\"$color\">$number_or_percent</span> XP to advance"
 msgstr "<span color=\"$color\">$number_or_percent</span> ilerleme için TP"
 
-#: src/units/unit.cpp:1906
+#: src/units/unit.cpp:1858
 msgid "<span color=\"$color\">$number_or_percent</span> attack per turn"
 msgid_plural ""
 "<span color=\"$color\">$number_or_percent</span> attacks per turn"
 msgstr[0] "El başına <span color=\"$color\">$number_or_percent</span> saldırı"
 msgstr[1] "El başına <span color=\"$color\">$number_or_percent</span> saldırı"
 
-#: src/units/unit.cpp:1913
+#: src/units/unit.cpp:1865
 msgid "<span color=\"$color\">$number_or_percent</span> cost to recall"
 msgstr "<span color=\"$color\">$number_or_percent</span> çağırma bedeli"
 
-#: src/units/unit.cpp:2334
+#: src/units/unit.cpp:2287
 msgid "$effect_description per level"
 msgstr "seviye başına $effect_description"
 
@@ -8672,7 +8777,7 @@ msgstr "$year DÖ"
 msgid "$year AF"
 msgstr "$year DS"
 
-#: src/wesnothd_connection.cpp:418
+#: src/wesnothd_connection.cpp:422
 msgid "Disconnected from server."
 msgstr "Sunucudan kopuldu."
 
@@ -8696,13 +8801,34 @@ msgstr "Planları $player için gizle"
 msgid "Whiteboard Options"
 msgstr "Beyaztahta Ayarları"
 
-#~ msgid "Cancel"
-#~ msgstr "İptal"
+#, fuzzy
+#~| msgid "Max swarm bonus: "
+#~ msgid "Max HP bonus +6%"
+#~ msgstr "Azami üşüşme ödülü: "
 
 #, fuzzy
-#~| msgid "The Battle for Wesnoth"
-#~ msgid "Battle for Wesnoth"
-#~ msgstr "Vesnot Savaşı"
+#~| msgid "Be more defensive"
+#~ msgid "+moves defense"
+#~ msgstr "Daha savunmacı ol"
+
+#~ msgid "Use experimental PRNG combat"
+#~ msgstr "Deneysel YRSÜ çarpışması kullan"
+
+#~ msgid ""
+#~ "Enables more determinstic chance-to-hit calculations. This is an "
+#~ "experimental feature designed to bring the observed hit/miss rate more in "
+#~ "line with the displayed percentages.\n"
+#~ "\n"
+#~ "Note: this option only affects singleplayer, and the ‘Save random seed’ "
+#~ "option must also be enabled when creating a game for this to work."
+#~ msgstr ""
+#~ "İsabet ihtimallerini daha kararlı hesaplamaya yarar. İsabet/ıska "
+#~ "oranlarını oyunda gösterilen oranlara yaklaştırmak için kullanılan "
+#~ "deneysel bir özelliktir. \n"
+#~ " \n"
+#~ "Not: Bu ayar sadece tek oyunculu oyunları etkiler ve çalışması için oyun "
+#~ "kurarken 'Rastgele dizesini kaydet' seçeneğinin etkinleştirilmiş olması "
+#~ "gerekir."
 
 #~ msgid "Graphics scaling options"
 #~ msgstr "Grafik ölçeklendirme seçenekleri"
@@ -8830,6 +8956,9 @@ msgstr "Beyaztahta Ayarları"
 
 #~ msgid "Request a list of details you can set for your registered nickname."
 #~ msgstr "Kayıtlı isminiz için atayabileceğiniz ayrıntıların listesini iste."
+
+#~ msgid "Connection timed out"
+#~ msgstr "Bağlantı süresi aşıldı"
 
 #~ msgid "No Saved Games"
 #~ msgstr "Kayıtlı Oyun Yok"

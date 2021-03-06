@@ -81,7 +81,6 @@ public:
 	static component* get_component(component *root, const std::string &path);
 };
 
-
 } //end of namespace ai
 
 std::ostream &operator<<(std::ostream &o, const ai::path_element &e);

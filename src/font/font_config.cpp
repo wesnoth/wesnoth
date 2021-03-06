@@ -243,7 +243,7 @@ manager::manager()
 	for(const std::string& path : filesystem::get_binary_paths("fonts")) {
 		std::vector<std::string> files;
 		if(filesystem::is_directory(path)) {
-			filesystem::get_files_in_dir(path, &files, nullptr, filesystem::ENTIRE_FILE_PATH);
+			filesystem::get_files_in_dir(path, &files, nullptr, filesystem::name_mode::ENTIRE_FILE_PATH);
 		}
 		for(const std::string& file : files) {
 			if(is_valid_font_file(file))
@@ -266,7 +266,7 @@ manager::~manager()
 	for(const std::string& path : filesystem::get_binary_paths("fonts")) {
 		std::vector<std::string> files;
 		if(filesystem::is_directory(path))
-			filesystem::get_files_in_dir(path, &files, nullptr, filesystem::ENTIRE_FILE_PATH);
+			filesystem::get_files_in_dir(path, &files, nullptr, filesystem::name_mode::ENTIRE_FILE_PATH);
 		for(const std::string& file : files) {
 			if(is_valid_font_file(file))
 			{

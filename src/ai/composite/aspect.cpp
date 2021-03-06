@@ -42,7 +42,6 @@ aspect::aspect(readonly_context &context, const config &cfg, const std::string &
 		DBG_AI_ASPECT << "aspect has time_of_day=["<<time_of_day_<<"], turns=["<<turns_<<"]" << std::endl;
 	}
 
-
 aspect::~aspect()
 	{
 		manager& manager = manager::get_singleton();

@@ -21,35 +21,10 @@
 #include "gui/widgets/text_box.hpp"
 #include "gui/widgets/window.hpp"
 
-#include "utils/functional.hpp"
+#include <functional>
 
-namespace gui2
+namespace gui2::dialogs
 {
-namespace dialogs
-{
-
-/*WIKI
- * @page = GUIWindowDefinitionWML
- * @order = 2_edit_label
- *
- * == Edit label ==
- *
- * Dialog for editing gamemap labels.
- *
- * @begin{table}{dialog_widgets}
- *
- * title & & label & m &
- *         Dialog title label. $
- *
- * label & & text_box & m &
- *         Input field for the map label. $
- *
- * team_only_toggle & & toggle_button & m &
- *         Checkbox for whether to make the label visible to the player's team
- *         only or not. $
- *
- * @end{table}
- */
 
 REGISTER_DIALOG(editor_edit_label)
 
@@ -61,19 +36,6 @@ editor_edit_label::editor_edit_label(std::string& text,
 									   std::string& category)
 	: color_store(color)
 {
-	// std::string text = label.text();
-	// bool immutable = label.immutable();
-
-
-	// std::string label     = old_label ? old_label->text()              : "";
-	// std::string team_name = old_label ? old_label->team_name()         : "";
-	// bool visible_shroud   = old_label ? old_label->visible_in_shroud() :
-	// false;
-	// bool visible_fog      = old_label ? old_label->visible_in_fog()    :
-	// true;
-	// bool immutable        = old_label ? old_label->immutable()         :
-	// true;
-
 	register_text("label", true, text, true);
 	register_text("category", true, category, false);
 	register_bool("immutable_toggle", true, immutable);
@@ -93,7 +55,7 @@ void editor_edit_label::pre_show(window& win)
 void editor_edit_label::register_color_component(std::string widget_id, uint8_t color_t::* component) {
 	register_integer(widget_id, true,
 					 std::bind(&editor_edit_label::load_color_component, this, component),
-					 std::bind(&editor_edit_label::save_color_component, this, component, _1));
+					 std::bind(&editor_edit_label::save_color_component, this, component, std::placeholders::_1));
 }
 
 int editor_edit_label::load_color_component(uint8_t color_t::* component) {
@@ -104,4 +66,3 @@ void editor_edit_label::save_color_component(uint8_t color_t::* component, const
 	color_store.*component = value;
 }
 } // namespace dialogs
-} // namespace gui2

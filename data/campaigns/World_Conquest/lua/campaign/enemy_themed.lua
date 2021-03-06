@@ -11,7 +11,7 @@ local function wct_map_enemy_themed(race, pet, castle, village, chance)
 	if wesnoth.random(100) > chance then
 		return
 	end
-	local boss = wesnoth.get_units {
+	local boss = wesnoth.units.find_on_map {
 		side="4,5,6,7,8,9",
 		canrecruit=true,
 		race=race,
@@ -31,7 +31,7 @@ local function wct_map_enemy_themed(race, pet, castle, village, chance)
 		return
 	end
 	--give themed castle
-	wesnoth.set_terrain(boss.loc, "K" .. castle, "base")
+	wesnoth.current.map[boss] = wesnoth.map.replace_base("K" .. castle)
 	wesnoth.wml_actions.terrain {
 		terrain="C" .. castle,
 		wml.tag["and"] {
@@ -48,7 +48,7 @@ local function wct_map_enemy_themed(race, pet, castle, village, chance)
 			},
 		},
 	}
-	local elvish_castle = wesnoth.get_locations {
+	local elvish_castle = wesnoth.map.find {
 		terrain="Cv",
 		wml.tag.filter_adjacent_location {
 			terrain="Kv^*"
@@ -57,7 +57,7 @@ local function wct_map_enemy_themed(race, pet, castle, village, chance)
 	-- extra tweak with trees to elvish castle
 	for i, tile in ipairs(elvish_castle) do
 		if wesnoth.random(10) <= 4 then
-			wesnoth.set_terrain(tile, "Cv^Fet")
+			wesnoth.current.map[tile] = "Cv^Fet"
 		end
 	end
 	-- adjacent themed villages
@@ -76,7 +76,7 @@ local function wct_map_enemy_themed(race, pet, castle, village, chance)
 		y = boss.y,
 		type=pet,
 		side = boss.side,
-		name= wesnoth.format(enemy_pet, { name = boss.name }),
+		name= stringx.vformat(enemy_pet, { name = boss.name }),
 		role = "hero",
 		overlays = "misc/hero-icon.png",
 		wml.tag.modifications {

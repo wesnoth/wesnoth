@@ -26,7 +26,7 @@ struct SDL_Rect;
 
 namespace help {
 
-/// A help browser widget.
+/** A help browser widget. */
 class help_browser : public gui::widget
 {
 public:
@@ -34,8 +34,10 @@ public:
 
 	void adjust_layout();
 
-	/// Display the topic with the specified identifier. Open the menu
-	/// on the right location and display the topic in the text area.
+	/**
+	 * Display the topic with the specified identifier. Open the menu
+	 * on the right location and display the topic in the text area.
+	 */
 	void show_topic(const std::string &topic_id);
 
 protected:
@@ -44,14 +46,18 @@ protected:
 	virtual void handle_event(const SDL_Event &event);
 
 private:
-	/// Update the current cursor, set it to the reference cursor if
-	/// mousex, mousey is over a cross-reference, otherwise, set it to
-	/// the normal cursor.
+	/**
+	 * Update the current cursor, set it to the reference cursor if
+	 * mousex, mousey is over a cross-reference, otherwise, set it to
+	 * the normal cursor.
+	 */
 	void update_cursor();
 	void show_topic(const topic &t, bool save_in_history=true);
-	/// Move in the topic history. Pop an element from from and insert
-	/// it in to. Pop at the fronts if the maximum number of elements is
-	/// exceeded.
+	/**
+	 * Move in the topic history. Pop an element from from and insert
+	 * it in to. Pop at the fronts if the maximum number of elements is
+	 * exceeded.
+	 */
 	void move_in_history(std::deque<const topic *> &from, std::deque<const topic *> &to);
 	help_menu menu_;
 	help_text_area text_area_;

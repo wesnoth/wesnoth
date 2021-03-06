@@ -16,7 +16,7 @@
 
 #include "gui/core/event/handler.hpp"
 #include "hotkey/hotkey_command.hpp"
-#include "utils/functional.hpp"
+#include <functional>
 
 #include <SDL2/SDL_events.h>
 

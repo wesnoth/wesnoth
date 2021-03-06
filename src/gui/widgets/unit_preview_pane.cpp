@@ -38,12 +38,13 @@
 #include "resources.hpp"
 #include "team.hpp"
 #include "terrain/movement.hpp"
+#include "terrain/type_data.hpp"
 #include "units/attack_type.hpp"
 #include "units/types.hpp"
 #include "units/helper.hpp"
 #include "units/unit.hpp"
 
-#include "utils/functional.hpp"
+#include <functional>
 
 namespace gui2
 {
@@ -150,7 +151,7 @@ static inline std::string get_mp_tooltip(int total_movement, std::function<int (
 	std::ostringstream tooltip;
 	tooltip << "<big>" << _("Movement Costs:") << "</big>";
 
-	ter_data_cache tdata = help::load_terrain_types_data();
+	std::shared_ptr<terrain_type_data> tdata = help::load_terrain_types_data();
 
 	if(!tdata) {
 		return "";
@@ -628,7 +629,7 @@ widget* builder_unit_preview_pane::build() const
 	const auto conf = widget->cast_config_to<unit_preview_pane_definition>();
 	assert(conf);
 
-	widget->init_grid(conf->grid);
+	widget->init_grid(*conf->grid);
 	widget->finalize_setup();
 	widget->set_image_mods(image_mods_);
 

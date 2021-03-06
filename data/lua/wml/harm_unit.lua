@@ -19,7 +19,7 @@ function wml_actions.harm_unit(cfg)
 		else return false end
 	end
 
-	local this_unit = utils.start_var_scope("this_unit")
+	local this_unit <close> = utils.scoped_var("this_unit")
 
 	for index, unit_to_harm in ipairs(wesnoth.units.find_on_map(filter)) do
 		if unit_to_harm.valid then
@@ -91,7 +91,7 @@ function wml_actions.harm_unit(cfg)
 				amount,
 				cfg.alignment or "neutral",
 				wesnoth.get_time_of_day( { unit_to_harm.x, unit_to_harm.y, true } ).lawful_bonus,
-				unit_to_harm:resistance( cfg.damage_type or "dummy" ),
+				100 - unit_to_harm:resistance_against( cfg.damage_type or "dummy" ),
 				resistance_multiplier
 			)
 
@@ -202,7 +202,4 @@ function wml_actions.harm_unit(cfg)
 
 		wml_actions.redraw {}
 	end
-
-	wml.variables["this_unit"] = nil -- clearing this_unit
-	utils.end_var_scope("this_unit", this_unit)
 end

@@ -17,26 +17,8 @@
 #include "preferences/game.hpp"
 #include "gui/widgets/settings.hpp"
 
-namespace gui2
+namespace gui2::dialogs
 {
-namespace dialogs
-{
-
-/*WIKI
- * @page = GUIWindowDefinitionWML
- * @order = 2_game_delete
- *
- * == Delete a savegame ==
- *
- * This shows the dialog to confirm deleting a savegame file.
- *
- * @begin{table}{dialog_widgets}
- *
- * dont_ask_again & & boolean_selector & m &
- *        A checkbox to not show this dialog again. $
- *
- * @end{table}
- */
 
 REGISTER_DIALOG(game_delete)
 
@@ -69,4 +51,3 @@ game_delete::game_delete()
 }
 
 } // namespace dialogs
-} // namespace gui2

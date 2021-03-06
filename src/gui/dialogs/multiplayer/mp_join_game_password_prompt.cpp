@@ -16,26 +16,8 @@
 
 #include "gui/widgets/settings.hpp"
 
-namespace gui2
+namespace gui2::dialogs
 {
-namespace dialogs
-{
-
-/*WIKI
- * @page = GUIWindowDefinitionWML
- * @order = 2_mp_join_game_password_prompt
- *
- * == Join Game: Password Prompt ==
- *
- * Dialog for entering a password for joining a password-protected MP game.
- *
- * @begin{table}{dialog_widgets}
- *
- * password & & text_box & m &
- *         Input field for the game password. $
- *
- * @end{table}
- */
 
 REGISTER_DIALOG(mp_join_game_password_prompt)
 
@@ -46,4 +28,3 @@ mp_join_game_password_prompt::mp_join_game_password_prompt(
 }
 
 } // namespace dialogs
-} // namespace gui2

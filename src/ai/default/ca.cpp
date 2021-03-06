@@ -24,7 +24,6 @@
 #include "ai/composite/rca.hpp"
 #include "ai/composite/stage.hpp"
 #include "game_board.hpp"
-#include "game_classification.hpp"
 #include "game_data.hpp"
 #include "log.hpp"
 #include "map/map.hpp"
@@ -44,7 +43,6 @@ static lg::log_domain log_ai_testing_ai_default("ai/ca/testing_ai_default");
 #define LOG_AI_TESTING_AI_DEFAULT LOG_STREAM(info, log_ai_testing_ai_default)
 #define WRN_AI_TESTING_AI_DEFAULT LOG_STREAM(warn, log_ai_testing_ai_default)
 #define ERR_AI_TESTING_AI_DEFAULT LOG_STREAM(err, log_ai_testing_ai_default)
-
 
 namespace ai {
 
@@ -151,7 +149,6 @@ void goto_phase::execute()
 	}
 }
 
-
 //==============================================================
 
 combat_phase::combat_phase( rca_context &context, const config &cfg )
@@ -226,7 +223,6 @@ double combat_phase::evaluate()
 
 	time_taken = SDL_GetTicks() - ticks;
 	LOG_AI_TESTING_AI_DEFAULT << "analysis took " << time_taken << " ticks\n";
-
 
 	// suokko tested the rating against current_team().caution()
 	// Bad mistake -- the AI became extremely reluctant to attack anything.
@@ -495,11 +491,9 @@ double move_leader_to_keep_phase::evaluate()
 	map_location next_hop = map_location::null_location();
 	int next_hop_cost = 0;
 	for (const map_location& step : route.steps) {
-		if (leader_paths.destinations.contains(step)) {
+		if (leader_paths.destinations.contains(step) && units_.count(step) == 0) {
 			next_hop = step;
 			next_hop_cost += leader->movement_cost(resources::gameboard->map().get_terrain(step));
-		} else {
-			break;
 		}
 	}
 	if (next_hop == map_location::null_location()) {
@@ -566,7 +560,6 @@ double get_villages_phase::evaluate()
 	}
 	return BAD_SCORE;
 }
-
 
 void get_villages_phase::execute()
 {
@@ -642,7 +635,6 @@ void get_villages_phase::get_villages(
 			reachmap.emplace(u_itor->get_location(),	std::vector<map_location>());
 		}
 	}
-
 
 	DBG_AI_TESTING_AI_DEFAULT << reachmap.size() << " units found who can try to capture a village.\n";
 
@@ -1413,7 +1405,6 @@ retreat_phase::~retreat_phase()
 double retreat_phase::evaluate()
 {
 
-
 	// Get versions of the move map that assume that all units are at full movement
 	const unit_map& units_ = resources::gameboard->units();
 
@@ -1426,16 +1417,9 @@ double retreat_phase::evaluate()
 	calculate_possible_moves(dummy_possible_moves, fullmove_srcdst, fullmove_dstsrc,
 			false, true, &get_avoid());
 
-	/*adjacent_loc_array_t leader_adj;
-	if(leader != units_.end()) {
-		get_adjacent_tiles(leader->get_location(), leader_adj.data());
-	}*/
-	//int leader_adj_count = 0;
 	std::vector<map_location> leaders_adj_v;
 	for (unit_map::const_iterator leader : leaders) {
-		adjacent_loc_array_t tmp_leader_adj;
-		get_adjacent_tiles(leader->get_location(), tmp_leader_adj.data());
-		for (map_location &loc : tmp_leader_adj) {
+		for(const map_location& loc : get_adjacent_tiles(leader->get_location())) {
 			bool found = false;
 			for (map_location &new_loc : leaders_adj_v) {
 				if(new_loc == loc){
@@ -1449,7 +1433,6 @@ double retreat_phase::evaluate()
 		}
 	}
 	//leader_adj_count = leaders_adj_v.size();
-
 
 	for(unit_map::const_iterator i = units_.begin(); i != units_.end(); ++i) {
 		if (i->side() == get_side() &&
@@ -1541,8 +1524,6 @@ void retreat_phase::execute()
 	}
 }
 
-
-
 bool retreat_phase::should_retreat(const map_location& loc, const unit_map::const_iterator& un,  const move_map &srcdst, const move_map &dstsrc, double caution)
 {
 	const move_map &enemy_dstsrc = get_enemy_dstsrc();
@@ -1565,14 +1546,12 @@ bool retreat_phase::should_retreat(const map_location& loc, const unit_map::cons
 	return caution*their_power*(1.0+exposure) > our_power;
 }
 
-
 //==============================================================
 
 leader_control_phase::leader_control_phase( rca_context &context, const config &cfg )
 	: candidate_action(context,cfg)
 {
 }
-
 
 leader_control_phase::~leader_control_phase()
 {
@@ -1583,8 +1562,6 @@ double leader_control_phase::evaluate()
 	ERR_AI_TESTING_AI_DEFAULT << get_name() << ": evaluate - not yet implemented" << std::endl;
 	return BAD_SCORE;
 }
-
-
 
 void leader_control_phase::execute()
 {
@@ -1717,9 +1694,7 @@ void leader_shares_keep_phase::execute()
 	//ERR_AI_TESTING_AI_DEFAULT << get_name() << ": evaluate - not yet implemented" << std::endl;
 }
 
-
 //==============================================================
-
 
 } //end of namespace testing_ai_default
 

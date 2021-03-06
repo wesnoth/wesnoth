@@ -77,11 +77,6 @@ struct viewport_implementation
 	}
 };
 
-viewport::viewport(widget& widget) : widget_(widget), owns_widget_(false)
-{
-	widget_.set_parent(this);
-}
-
 viewport::viewport(const implementation::builder_viewport& builder,
 					 const builder_widget::replacements_map& replacements)
 	: widget(builder)
@@ -187,33 +182,6 @@ iteration::walker_base* viewport::create_walker()
 }
 
 // }---------- BUILDER -----------{
-
-/*WIKI_MACRO
- * @begin{macro}{viewport_description}
- *
- *        A viewport is an special widget used to view only a part of the
- *        widget it `holds'.
- * @end{macro}
- */
-
-/*WIKI
- * @page = GUIWidgetInstanceWML
- * @order = 2_viewport
- * @begin{parent}{name="gui/window/resolution/grid/row/column/"}
- * @begin{tag}{name="viewport"}{min=0}{max=-1}{super="generic/widget_instance"}
- * @begin{tag}{name="widget"}{min="1"}{max="1"}{super="gui/window/resolution/grid/row/column"}
- * == Label ==
- *
- * @macro = viewport_description
- *
- * List with the label specific variables:
- * @begin{table}{config}
- *     widget & section & &       Holds a single widget like a grid cell.$
- * @end{table}
- * @end{tag}{name="widget"}
- * @end{tag}{name="viewport"}
- * @end{parent}{name="gui/window/resolution/grid/row/column/"}
- */
 
 namespace implementation
 {

@@ -53,7 +53,6 @@
 #include <iterator>                     // for back_insert_iterator, etc
 #include <map>                          // for map, etc
 #include <set>
-#include <SDL2/SDL.h>
 
 static lg::log_domain log_display("display");
 #define WRN_DP LOG_STREAM(warn, log_display)
@@ -836,7 +835,7 @@ void generate_era_sections(const config* help_cfg, section & sec, int level)
 
 void generate_terrain_sections(section& sec, int /*level*/)
 {
-	ter_data_cache tdata = load_terrain_types_data();
+	std::shared_ptr<terrain_type_data> tdata = load_terrain_types_data();
 
 	if (!tdata) {
 		WRN_HP << "When building terrain help sections, couldn't acquire terrain types data, aborting.\n";
@@ -1339,7 +1338,7 @@ color_t string_to_color(const std::string &cmp_str)
 	}
 	// a #rrggbb color in pango format.
 	if (*cmp_str.c_str() == '#' && cmp_str.size() == 7) {
-		return color_t::from_argb_bytes(strtoul(cmp_str.c_str() + 1, nullptr, 16));
+		return color_t::from_hex_string(cmp_str.substr(1));
 	}
 	return font::NORMAL_COLOR;
 }
@@ -1466,9 +1465,11 @@ bool is_visible_id(const std::string &id) {
 	return (id.empty() || id[0] != '.');
 }
 
-/// Return true if the id is valid for user defined topics and
-/// sections. Some IDs are special, such as toplevel and may not be
-/// be defined in the config.
+/**
+ * Return true if the id is valid for user defined topics and
+ * sections. Some IDs are special, such as toplevel and may not be
+ * be defined in the config.
+ */
 bool is_valid_id(const std::string &id) {
 	if (id == "toplevel") {
 		return false;
@@ -1500,15 +1501,15 @@ unsigned image_width(const std::string &filename)
 	return 0;
 }
 
-void push_tab_pair(std::vector<help::item> &v, const std::string &s, const boost::optional<std::string> &image, unsigned padding)
+void push_tab_pair(std::vector<help::item> &v, const std::string &s, const std::optional<std::string> &image, unsigned padding)
 {
 	help::item item(s, font::line_width(s, normal_font_size));
 	if (image) {
 		// If the image doesn't exist, don't add padding.
-		auto width = image_width(image.get());
+		auto width = image_width(*image);
 		padding = (width ? padding : 0);
 
-		item.first = "<img>src='" + image.get() + "'</img>" + (padding ? jump(padding) : "") + s;
+		item.first = "<img>src='" + *image + "'</img>" + (padding ? jump(padding) : "") + s;
 		item.second += width + padding;
 	}
 	v.emplace_back(item);
@@ -1556,20 +1557,21 @@ std::string generate_table(const table_spec &tab, const unsigned int spacing)
 	return ss.str();
 }
 
-/// Prepend all chars with meaning inside attributes with a backslash.
+/** Prepend all chars with meaning inside attributes with a backslash. */
 std::string escape(const std::string &s)
 {
 	return utils::escape(s, "'\\");
 }
 
-/// Load the appropriate terrain types data to use
-ter_data_cache load_terrain_types_data() {
+/** Load the appropriate terrain types data to use */
+std::shared_ptr<terrain_type_data> load_terrain_types_data()
+{
 	if (display::get_singleton()) {
 		return display::get_singleton()->get_disp_context().map().tdata();
 	} else if (game_config_manager::get()){
 		return game_config_manager::get()->terrain_types();
 	} else {
-		return ter_data_cache();
+		return {};
 	}
 }
 

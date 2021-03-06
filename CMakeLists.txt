@@ -58,15 +58,16 @@ option(ENABLE_NLS "Enable building of translations" ${ENABLE_GAME})
 option(ENABLE_HISTORY "Enable using GNU history for history in lua console" ON)
 
 # boost::asio::post is new with 1.66
+# Ubuntu 18.04 also only has 1.65
 if(ENABLE_MYSQL)
 	set(BOOST_VERSION "1.66")
 else()
-	set(BOOST_VERSION "1.56")
+	set(BOOST_VERSION "1.65")
 endif(ENABLE_MYSQL)
 
 # set what std version to use
 if(NOT CXX_STD)
-	set(CXX_STD "14")
+	set(CXX_STD "17")
 endif()
 set(CMAKE_CXX_STANDARD ${CXX_STD})
 # make sure to force using it
@@ -74,19 +75,14 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 # forbid defaulting to gnu++NN instead of c++NN
 set(CMAKE_CXX_EXTENSIONS OFF)
 
-if(ENABLE_GAME OR ENABLE_TESTS)
-#	find_package(OpenGL REQUIRED)
-#	find_package(GLEW REQUIRED)
-	find_package(SDL2 2.0.4 REQUIRED)
-endif(ENABLE_GAME OR ENABLE_TESTS)
-
 if(NOT APPLE)
 	find_package(Crypto 1.0 REQUIRED)
 else()
 	set(CRYPTO_LIBRARY "-framework Security")
 endif()
 
-find_package(Boost ${BOOST_VERSION} REQUIRED COMPONENTS iostreams program_options regex system thread random)
+find_package(Boost ${BOOST_VERSION} REQUIRED COMPONENTS iostreams
+	program_options regex system thread random coroutine)
 
 # no, gettext executables are not required when NLS is deactivated
 find_package(Gettext)
@@ -386,7 +382,7 @@ if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
 		set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} -flto=${LTO_JOBS}" CACHE STRING "Release build flags with LTO" FORCE)
 
 		MESSAGE("Using GCC gold linker")
-		set(CMAKE_EXE_LINKER_FLAGS_RELEASE "${CMAKE_EXE_LINKER_FLAGS_RELEASE} -fuse-ld=gold" CACHE STRING "" FORCE)
+		set(CMAKE_EXE_LINKER_FLAGS_RELEASE "${CMAKE_EXE_LINKER_FLAGS_RELEASE} -fuse-ld=gold -Wno-stringop-overflow" CACHE STRING "" FORCE)
 	endif(ENABLE_LTO)
 endif(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
 
@@ -520,18 +516,18 @@ endif(ENABLE_DEBUG_WINDOW_LAYOUT)
 #
 
 if(ENABLE_GAME OR ENABLE_TESTS)
-	find_package( SDL2_image 2.0.0 REQUIRED )
-endif(ENABLE_GAME OR ENABLE_TESTS)
-
-if(ENABLE_GAME OR ENABLE_TESTS)
-	find_package( SDL2_mixer 2.0.0 REQUIRED )
-	find_package( SDL2_ttf 2.0.12 REQUIRED )
+#	find_package(OpenGL REQUIRED)
+#	find_package(GLEW REQUIRED)
+	find_package(SDL2 2.0.4 REQUIRED)
+	find_package(SDL2_image 2.0.2 REQUIRED)
+	find_package(SDL2_mixer 2.0.0 REQUIRED)
+	find_package(SDL2_ttf 2.0.12 REQUIRED)
 	find_package(VorbisFile REQUIRED)
-	find_package( PkgConfig REQUIRED )
-	pkg_check_modules( CAIRO REQUIRED cairo>=1.10 )
-	pkg_check_modules( PANGOCAIRO REQUIRED pangocairo>=1.22.0 )
-	pkg_check_modules( FONTCONFIG REQUIRED fontconfig>=2.4.1 )
-	pkg_check_modules( SYSTEMD systemd )
+	find_package(PkgConfig REQUIRED)
+	pkg_check_modules(CAIRO REQUIRED cairo>=1.10)
+	pkg_check_modules(PANGOCAIRO REQUIRED pangocairo>=1.22.0)
+	pkg_check_modules(FONTCONFIG REQUIRED fontconfig>=2.4.1)
+	pkg_check_modules(SYSTEMD systemd)
 endif(ENABLE_GAME OR ENABLE_TESTS)
 
 if(ENABLE_TESTS)

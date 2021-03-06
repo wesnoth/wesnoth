@@ -27,10 +27,9 @@
 #include "serialization/string_utils.hpp"
 
 #include <chrono>
+#include <thread>
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 using namespace std::chrono_literals;
 
@@ -68,12 +67,18 @@ void network_transmission::pump_monitor::process(events::pump_info&)
 
 	// Check if the thread is complete. If it is, loading is done.
 	if(poller_.wait_for(0ms) == std::future_status::ready) {
-		window_.get().set_retval(retval::OK);
+		// The worker returns void, so this is only to handle any exceptions thrown from the worker.
+		// worker_result_.valid() will return false after.
+		if(poller_.valid()) {
+			poller_.get();
+		}
+
+		window_->set_retval(retval::OK);
 		return;
 	}
 
 	if(total_) {
-		find_widget<progress_bar>(&(window_.get()), "progress", false)
+		find_widget<progress_bar>(window_.ptr(), "progress", false)
 			.set_percentage((completed_ * 100.) / total_);
 
 		std::ostringstream ss;
@@ -81,7 +86,7 @@ void network_transmission::pump_monitor::process(events::pump_info&)
 			<< utils::si_string(completed_, true, _("unit_byte^B")) << "/"
 			<< utils::si_string(total_, true, _("unit_byte^B"));
 
-		find_widget<label>(&(window_.get()), "numeric_progress", false)
+		find_widget<label>(window_.ptr(), "numeric_progress", false)
 			.set_label(ss.str());
 	}
 }
@@ -113,7 +118,7 @@ void network_transmission::pre_show(window& window)
 
 void network_transmission::post_show(window& /*window*/)
 {
-	pump_monitor_.window_.reset();
+	pump_monitor_.window_ = std::nullopt;
 
 	if(get_retval() == retval::CANCEL) {
 		// We need to wait for the current polling loop to conclude before exiting so we don't invalidate
@@ -126,4 +131,3 @@ void network_transmission::post_show(window& /*window*/)
 }
 
 } // namespace dialogs
-} // namespace gui2

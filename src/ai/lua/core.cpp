@@ -325,7 +325,6 @@ static int cfun_ai_fallback_human(lua_State*)
 
 // Goals and targets
 
-
 static int cfun_ai_get_targets(lua_State *L)
 {
 	move_map enemy_dst_src = get_readonly_context(L).get_enemy_dstsrc();
@@ -339,7 +338,6 @@ static int cfun_ai_get_targets(lua_State *L)
 
 		//to factor out
 		lua_createtable(L, 3, 0);
-
 
 		lua_pushstring(L, "type");
 		lua_pushstring(L, it->type.to_string().c_str());
@@ -435,20 +433,31 @@ static int cfun_ai_get_leader_goal(lua_State *L)
 	return 1;
 }
 
+namespace
+{
+// TODO: name this something better
+void visit_helper(lua_State* L, const utils::variant<bool, std::vector<std::string>>& input)
+{
+	utils::visit(
+		[L](const auto& v) {
+			if constexpr(utils::decayed_is_same<bool, decltype(v)>) {
+				lua_pushboolean(L, v);
+			} else {
+				lua_createtable(L, v.size(), 0);
+				for(const std::string& str : v) {
+					lua_pushlstring(L, str.c_str(), str.size());
+					lua_rawseti(L, -2, lua_rawlen(L, -2) + 1);
+				}
+			}
+		},
+		input);
+}
+} // namespace
+
 static int cfun_ai_get_leader_ignores_keep(lua_State *L)
 {
 	DEPRECATED_ASPECT_MESSAGE("leader_ignores_keep");
-	boost::variant<bool, std::vector<std::string>> leader_ignores_keep = get_readonly_context(L).get_leader_ignores_keep();
-	if (leader_ignores_keep.which() == 0) {
-		lua_pushboolean(L, boost::get<bool>(leader_ignores_keep));
-	} else {
-		std::vector<std::string> strlist = boost::get<std::vector<std::string>>(leader_ignores_keep);
-		lua_createtable(L, strlist.size(), 0);
-		for(const std::string& str : strlist) {
-			lua_pushlstring(L, str.c_str(), str.size());
-			lua_rawseti(L, -2, lua_rawlen(L, -2) + 1);
-		}
-	}
+	visit_helper(L, get_readonly_context(L).get_leader_ignores_keep());
 	return 1;
 }
 
@@ -463,34 +472,14 @@ static int cfun_ai_get_leader_value(lua_State *L)
 static int cfun_ai_get_passive_leader(lua_State *L)
 {
 	DEPRECATED_ASPECT_MESSAGE("passive_leader");
-	boost::variant<bool, std::vector<std::string>> passive_leader = get_readonly_context(L).get_passive_leader();
-	if (passive_leader.which() == 0) {
-		lua_pushboolean(L, boost::get<bool>(passive_leader));
-	} else {
-		std::vector<std::string> strlist = boost::get<std::vector<std::string>>(passive_leader);
-		lua_createtable(L, strlist.size(), 0);
-		for(const std::string& str : strlist) {
-			lua_pushlstring(L, str.c_str(), str.size());
-			lua_rawseti(L, -2, lua_rawlen(L, -2) + 1);
-		}
-	}
+	visit_helper(L, get_readonly_context(L).get_passive_leader());
 	return 1;
 }
 
 static int cfun_ai_get_passive_leader_shares_keep(lua_State *L)
 {
 	DEPRECATED_ASPECT_MESSAGE("passive_leader_shares_keep");
-	boost::variant<bool, std::vector<std::string>> passive_leader_shares_keep = get_readonly_context(L).get_passive_leader_shares_keep();
-	if (passive_leader_shares_keep.which() == 0) {
-		lua_pushboolean(L, boost::get<bool>(passive_leader_shares_keep));
-	} else {
-		std::vector<std::string> strlist = boost::get<std::vector<std::string>>(passive_leader_shares_keep);
-		lua_createtable(L, strlist.size(), 0);
-		for(const std::string& str : strlist) {
-			lua_pushlstring(L, str.c_str(), str.size());
-			lua_rawseti(L, -2, lua_rawlen(L, -2) + 1);
-		}
-	}
+	visit_helper(L, get_readonly_context(L).get_passive_leader_shares_keep());
 	return 1;
 }
 
@@ -506,6 +495,22 @@ static int cfun_ai_get_recruitment_pattern(lua_State *L)
 		lua_pushstring(L, recruiting[i].c_str());
 		lua_settable(L, -3);
 	}
+	return 1;
+}
+
+static int cfun_ai_get_retreat_enemy_weight(lua_State *L)
+{
+	DEPRECATED_ASPECT_MESSAGE("retreat_enemy_weight");
+	double retreat_enemy_weight = get_readonly_context(L).get_retreat_enemy_weight();
+	lua_pushnumber(L, retreat_enemy_weight);
+	return 1;
+}
+
+static int cfun_ai_get_retreat_factor(lua_State *L)
+{
+	DEPRECATED_ASPECT_MESSAGE("retreat_factor");
+	double retreat_factor = get_readonly_context(L).get_retreat_factor();
+	lua_pushnumber(L, retreat_factor);
 	return 1;
 }
 
@@ -592,7 +597,6 @@ static void push_movements(lua_State *L, const std::vector< std::pair < map_loca
 
 		lua_rawseti(L, table_index, i); // setting  the pair as an element of the movements table
 	}
-
 
 }
 
@@ -908,6 +912,8 @@ static int impl_ai_get(lua_State* L)
 			{ "get_passive_leader", &cfun_ai_get_passive_leader },
 			{ "get_passive_leader_shares_keep", &cfun_ai_get_passive_leader_shares_keep },
 			{ "get_recruitment_pattern", &cfun_ai_get_recruitment_pattern },
+			{ "get_retreat_enemy_weight", &cfun_ai_get_retreat_enemy_weight },
+			{ "get_retreat_factor", &cfun_ai_get_retreat_factor },
 			{ "get_scout_village_targeting", &cfun_ai_get_scout_village_targeting },
 			{ "get_simple_targeting", &cfun_ai_get_simple_targeting },
 			{ "get_support_villages", &cfun_ai_get_support_villages },
@@ -1056,7 +1062,6 @@ lua_ai_action_handler* lua_ai_action_handler::create(lua_State *L, char const *c
 	// Create the proxy C++ action handler.
 	return new lua_ai_action_handler(L, context, length + 1);
 }
-
 
 int lua_ai_load::refcount = 0;
 

@@ -109,7 +109,7 @@ static std::pair<int, int> parse_fraction(const std::string& s)
 	parts.resize(2);
 	int num = lexical_cast_default<int>(parts[0], 0);
 	int denom = lexical_cast_default<int>(parts[1], 0);
-	return std::make_pair(num, denom);
+	return std::pair(num, denom);
 }
 
 static int xp_to_advance(const std::string& s) {
@@ -155,7 +155,7 @@ bool menu::basic_sorter::less(int column, const item& row1, const item& row2) co
 			++begin2;
 		}
 
-		return std::lexicographical_compare(begin1,end1,begin2,end2,chars_less_insensitive);
+		return std::lexicographical_compare(begin1,end1,begin2,end2,utils::chars_less_insensitive);
 	} else if(numeric_sort_.count(column) == 1) {
 		int val_1 = lexical_cast_default<int>(item1, 0);
 		int val_2 = lexical_cast_default<int>(item2, 0);

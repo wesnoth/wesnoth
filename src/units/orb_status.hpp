@@ -14,8 +14,6 @@
 
 #pragma once
 
-#include "picture.hpp"
-
 #include <memory>
 #include <string>
 
@@ -25,6 +23,11 @@
 enum class orb_status {
 	/** The unit still has full movement and all attacks available. */
 	unmoved,
+	/**
+	 * The unit can move but can't attack, and wouldn't be able to attack even
+	 * if it was moved to a hex adjacent to an enemy.
+	 */
+	disengaged,
 	/** All moves and possible attacks have been done. */
 	moved,
 	/** There are still moves and/or attacks possible, but the unit doesn't fit in the "unmoved" status. */
@@ -49,10 +52,4 @@ bool prefs_show_orb(orb_status os);
  * preference.
  */
 std::string get_orb_color(orb_status os);
-
-/**
- * Wrapper which will assemble the image path (including IPF for the color from get_orb_color) for a given orb.
- * Returns nullptr if prefs_show_orb returns false.
- */
-std::unique_ptr<image::locator> get_orb_image(orb_status os);
 } // namespace orb_status_helper

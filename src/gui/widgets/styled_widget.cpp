@@ -29,7 +29,7 @@
 #include "hotkey/hotkey_item.hpp"
 #include "sdl/rect.hpp"
 #include "wml_exception.hpp"
-#include "utils/functional.hpp"
+#include <functional>
 
 #include <algorithm>
 #include <iomanip>
@@ -77,13 +77,13 @@ styled_widget::styled_widget(const implementation::builder_styled_widget& builde
 	set_wants_mouse_hover(!tooltip_.empty());
 
 	connect_signal<event::SHOW_TOOLTIP>(std::bind(
-			&styled_widget::signal_handler_show_tooltip, this, _2, _3, _5));
+			&styled_widget::signal_handler_show_tooltip, this, std::placeholders::_2, std::placeholders::_3, std::placeholders::_5));
 
 	connect_signal<event::SHOW_HELPTIP>(std::bind(
-			&styled_widget::signal_handler_show_helptip, this, _2, _3, _5));
+			&styled_widget::signal_handler_show_helptip, this, std::placeholders::_2, std::placeholders::_3, std::placeholders::_5));
 
 	connect_signal<event::NOTIFY_REMOVE_TOOLTIP>(std::bind(
-			&styled_widget::signal_handler_notify_remove_tooltip, this, _2, _3));
+			&styled_widget::signal_handler_notify_remove_tooltip, this, std::placeholders::_2, std::placeholders::_3));
 }
 
 void styled_widget::set_members(const string_map& data)
@@ -329,6 +329,15 @@ void styled_widget::set_label(const t_string& label)
 	set_layout_size(point());
 	update_canvas();
 	set_is_dirty(true);
+
+	// FIXME: This isn't the most elegant solution. Typically, we don't rely on the text rendering
+	// cache for anything except size calculations, but since we have link awareness now we need to
+	// update its text else `get_label_link` will return old results. I'm not actually sure why the
+	// results seem to only remain one invocation of `set_label` behind the current text, but that
+	// is what testing revealed (see https://github.com/wesnoth/wesnoth/pull/5363).
+	//
+	// -- vultraz, 2020-12-17
+	renderer_.set_text(label_, use_markup_);
 }
 
 void styled_widget::set_use_markup(bool use_markup)
@@ -576,84 +585,6 @@ std::string styled_widget::get_label_link(const point & position) const
 }
 
 // }---------- BUILDER -----------{
-
-/*WIKI
- * @page = GUIWidgetInstanceWML
- * @order = 1_widget
- *
- * = Widget =
- * @begin{parent}{name="generic/"}
- * @begin{tag}{name="widget_instance"}{min="0"}{max="-1"}
- * All widgets placed in the cell have some values in common:
- * @begin{table}{config}
- *     id & string & "" &              This value is used for the engine to
- *                                     identify 'special' items. This means that
- *                                     for example a text_box can get the proper
- *                                     initial value. This value should be
- *                                     unique or empty. Those special values are
- *                                     documented at the window definition that
- *                                     uses them. NOTE items starting with an
- *                                     underscore are used for composed widgets
- *                                     and these should be unique per composed
- *                                     widget. $
- *
- *     definition & string & "default" &
- *                                     The id of the widget definition to use.
- *                                     This way it's possible to select a
- *                                     specific version of the widget e.g. a
- *                                     title label when the label is used as
- *                                     title. $
- *
- *     linked_group & string & "" &    The linked group the styled_widget belongs
- *                                     to. $
- *
- *     label & t_string & "" &          Most widgets have some text associated
- *                                     with them, this field contain the value
- *                                     of that text. Some widgets use this value
- *                                     for other purposes, this is documented
- *                                     at the widget. E.g. an image uses the
- *                                     filename in this field. $
- *
- *     tooltip & t_string & "" &        If you hover over a widget a while (the
- *                                     time it takes can differ per widget) a
- *                                     short help can show up.This defines the
- *                                     text of that message. This field may not
- *                                     be empty when 'help' is set. $
- *
- *     help & t_string & "" &           If you hover over a widget and press F10
- *                                     (or the key the user defined for the help
- *                                     tip) a help message can show up. This
- *                                     help message might be the same as the
- *                                     tooltip but in general (if used) this
- *                                     message should show more help. This
- *                                     defines the text of that message. $
- *
- *    use_markup & bool & false &      Whether to format the text using Pango
- *                                     markup. Applies to Labels and
- *                                     other Widgets with text. $
- *
- *    use_tooltip_on_label_overflow & bool & true &
- *                                     If the text on the label is truncated and
- *                                     the tooltip is empty the label can be
- *                                     used for the tooltip. If this variable is
- *                                     set to true this will happen. $
- *
- *   debug_border_mode & unsigned & 0 &
- *                                     The mode for showing the debug border.
- *                                     This border shows the area reserved for
- *                                     a widget. This function is only meant
- *                                     for debugging and might not be
- *                                     available in all Wesnoth binaries.
- *                                     Available modes:
- *                                     @* 0 no border.
- *                                     @* 1 1 pixel border.
- *                                     @* 2 floodfill the widget area. $
- *
- *   debug_border_color & color & "" & The color of the debug border. $
- * @end{table}
- * @end{tag}{name="widget_instance"}
- * @end{parent}{name="generic/"}
- */
 
 namespace implementation
 {

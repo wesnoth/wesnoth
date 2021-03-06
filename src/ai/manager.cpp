@@ -60,7 +60,6 @@ const std::string manager::AI_TYPE_IDLE_AI = "idle_ai";
 const std::string manager::AI_TYPE_FORMULA_AI = "formula_ai";
 const std::string manager::AI_TYPE_DEFAULT = "default";
 
-
 static lg::log_domain log_ai_manager("ai/manager");
 #define DBG_AI_MANAGER LOG_STREAM(debug, log_ai_manager)
 #define LOG_AI_MANAGER LOG_STREAM(info, log_ai_manager)
@@ -77,7 +76,6 @@ holder::holder( side_number side, const config &cfg )
 {
 	DBG_AI_MANAGER << describe_ai() << "Preparing new AI holder" << std::endl;
 }
-
 
 void holder::init( side_number side )
 {
@@ -131,7 +129,6 @@ holder::~holder()
 	} catch (...) {}
 }
 
-
 ai_composite& holder::get_ai_ref()
 {
 	if (!this->ai_) {
@@ -141,7 +138,6 @@ ai_composite& holder::get_ai_ref()
 
 	return *this->ai_;
 }
-
 
 void holder::modify_ai(const config &cfg)
 {
@@ -216,8 +212,6 @@ config holder::to_config() const
 	}
 }
 
-
-
 const std::string holder::describe_ai()
 {
 	std::string sidestr = std::to_string(this->side_);
@@ -229,16 +223,15 @@ const std::string holder::describe_ai()
 	}
 }
 
-
 const std::string holder::get_ai_overview()
 {
 	if (!this->ai_) {
 		get_ai_ref();
 	}
 	// These assignments are necessary because the code will otherwise not compile on some platforms with an lvalue/rvalue mismatch error
-	boost::variant<bool, std::vector<std::string>> lik = this->ai_->get_leader_ignores_keep();
-	boost::variant<bool, std::vector<std::string>> pl = this->ai_->get_passive_leader();
-	boost::variant<bool, std::vector<std::string>> plsk = this->ai_->get_passive_leader_shares_keep();
+	auto lik = this->ai_->get_leader_ignores_keep();
+	auto pl = this->ai_->get_passive_leader();
+	auto plsk = this->ai_->get_passive_leader_shares_keep();
 	// In order to display booleans as yes/no rather than 1/0 or true/false
 	config cfg;
 	cfg["simple_targeting"] = this->ai_->get_simple_targeting();
@@ -249,10 +242,10 @@ const std::string holder::get_ai_overview()
 	s << "caution:  " << this->ai_->get_caution() << std::endl;
 	s << "grouping:  " << this->ai_->get_grouping() << std::endl;
 	s << "leader_aggression:  " << this->ai_->get_leader_aggression() << std::endl;
-	s << "leader_ignores_keep:  " << boost::apply_visitor(leader_aspects_visitor(), lik) << std::endl;
+	s << "leader_ignores_keep:  " << utils::visit(leader_aspects_visitor(), lik) << std::endl;
 	s << "leader_value:  " << this->ai_->get_leader_value() << std::endl;
-	s << "passive_leader:  " << boost::apply_visitor(leader_aspects_visitor(), pl) << std::endl;
-	s << "passive_leader_shares_keep:  " << boost::apply_visitor(leader_aspects_visitor(), plsk) << std::endl;
+	s << "passive_leader:  " << utils::visit(leader_aspects_visitor(), pl) << std::endl;
+	s << "passive_leader_shares_keep:  " << utils::visit(leader_aspects_visitor(), plsk) << std::endl;
 	s << "recruitment_diversity:  " << this->ai_->get_recruitment_diversity() << std::endl;
 	s << "recruitment_instructions:  " << std::endl << "----config begin----" << std::endl;
 	s << this->ai_->get_recruitment_instructions() << "-----config end-----" << std::endl;
@@ -261,6 +254,8 @@ const std::string holder::get_ai_overview()
 	s << "recruitment_randomness:  " << this->ai_->get_recruitment_randomness() << std::endl;
 	s << "recruitment_save_gold:  " << std::endl << "----config begin----" << std::endl;
 	s << this->ai_->get_recruitment_save_gold() << "-----config end-----" << std::endl;
+	s << "retreat_enemy_weight:  " << this->ai_->get_retreat_enemy_weight() << std::endl;
+	s << "retreat_factor:  " << this->ai_->get_retreat_factor() << std::endl;
 	s << "scout_village_targeting:  " << this->ai_->get_scout_village_targeting() << std::endl;
 	s << "simple_targeting:  " << cfg["simple_targeting"] << std::endl;
 	s << "support_villages:  " << cfg["support_villages"] << std::endl;
@@ -270,8 +265,6 @@ const std::string holder::get_ai_overview()
 	return s.str();
 }
 
-
-
 const std::string holder::get_ai_structure()
 {
 	if (!this->ai_) {
@@ -279,7 +272,6 @@ const std::string holder::get_ai_structure()
 	}
 	return component_manager::print_component_tree(&*this->ai_,"");
 }
-
 
 const std::string holder::get_ai_identifier() const
 {
@@ -309,7 +301,6 @@ component* holder::get_component(component *root, const std::string &path) {
 // LIFECYCLE
 // =======================================================================
 
-
 manager::manager()
 	: history_()
 	, history_item_counter_(0)
@@ -328,9 +319,7 @@ manager::manager()
 	singleton_ = this;
 }
 
-
 manager* manager::singleton_ = nullptr;
-
 
 void manager::add_observer( events::observer* event_observer){
 	user_interact_.attach_handler(event_observer);
@@ -339,7 +328,6 @@ void manager::add_observer( events::observer* event_observer){
 	gamestate_changed_.attach_handler(event_observer);
 }
 
-
 void manager::remove_observer(events::observer* event_observer){
 	user_interact_.detach_handler(event_observer);
 	sync_network_.detach_handler(event_observer);
@@ -347,13 +335,11 @@ void manager::remove_observer(events::observer* event_observer){
 	gamestate_changed_.detach_handler(event_observer);
 }
 
-
 void manager::add_gamestate_observer( events::observer* event_observer){
 	gamestate_changed_.attach_handler(event_observer);
 	turn_started_.attach_handler(event_observer);
 	map_changed_.attach_handler(event_observer);
 }
-
 
 void manager::remove_gamestate_observer(events::observer* event_observer){
 	gamestate_changed_.detach_handler(event_observer);
@@ -361,47 +347,38 @@ void manager::remove_gamestate_observer(events::observer* event_observer){
 	map_changed_.detach_handler(event_observer);
 }
 
-
 void manager::add_tod_changed_observer( events::observer* event_observer){
 	tod_changed_.attach_handler(event_observer);
 }
 
-
 void manager::remove_tod_changed_observer(events::observer* event_observer){
 	tod_changed_.detach_handler(event_observer);
 }
-
-
 
 void manager::add_map_changed_observer( events::observer* event_observer )
 {
 	map_changed_.attach_handler(event_observer);
 }
 
-
 void manager::add_recruit_list_changed_observer( events::observer* event_observer )
 {
 	recruit_list_changed_.attach_handler(event_observer);
 }
-
 
 void manager::add_turn_started_observer( events::observer* event_observer )
 {
 	turn_started_.attach_handler(event_observer);
 }
 
-
 void manager::remove_recruit_list_changed_observer( events::observer* event_observer )
 {
 	recruit_list_changed_.detach_handler(event_observer);
 }
 
-
 void manager::remove_map_changed_observer( events::observer* event_observer )
 {
 	map_changed_.detach_handler(event_observer);
 }
-
 
 void manager::remove_turn_started_observer( events::observer* event_observer )
 {
@@ -430,31 +407,25 @@ void manager::raise_sync_network() {
 	sync_network_.notify_observers();
 }
 
-
 void manager::raise_gamestate_changed() {
 	gamestate_changed_.notify_observers();
 }
-
 
 void manager::raise_tod_changed() {
 	tod_changed_.notify_observers();
 }
 
-
 void manager::raise_turn_started() {
 	turn_started_.notify_observers();
 }
-
 
 void manager::raise_recruit_list_changed() {
 	recruit_list_changed_.notify_observers();
 }
 
-
 void manager::raise_map_changed() {
 	map_changed_.notify_observers();
 }
-
 
 // =======================================================================
 // EVALUATION
@@ -480,7 +451,6 @@ const std::string manager::evaluate_command( side_number side, const std::string
 	return internal_evaluate_command(side,str);
 }
 
-
 bool manager::should_intercept( const std::string& str ) const
 {
 	if (str.length()<1) {
@@ -496,9 +466,9 @@ bool manager::should_intercept( const std::string& str ) const
 
 }
 
-//this is stub code to allow testing of basic 'history', 'repeat-last-command', 'add/remove/replace ai' capabilities.
-//yes, it doesn't look nice. but it is usable.
-//to be refactored at earliest opportunity
+// this is stub code to allow testing of basic 'history', 'repeat-last-command', 'add/remove/replace ai' capabilities.
+// yes, it doesn't look nice. but it is usable.
+// to be refactored at earliest opportunity
 // TODO: extract to separate class which will use fai or lua parser
 const std::string manager::internal_evaluate_command( side_number side, const std::string& str ){
 	const int MAX_HISTORY_VISIBLE = 30;
@@ -541,11 +511,10 @@ const std::string manager::internal_evaluate_command( side_number side, const st
 		return strstream.str();
 	};
 
-
 	std::vector< std::string > cmd = utils::parenthetical_split(str, ' ',"'","'");
 
 	if (cmd.size()==3){
-		//!add_ai side file
+		// add_ai side file
 		if (cmd.at(0)=="!add_ai"){
 			side = std::stoi(cmd.at(1));
 			std::string file = cmd.at(2);
@@ -555,7 +524,7 @@ const std::string manager::internal_evaluate_command( side_number side, const st
 				return std::string("AI MANAGER: failed attempt to add AI for side ")+std::to_string(side)+std::string(" from file ")+file;
 			}
 		}
-		//!replace_ai side file
+		// replace_ai side file
 		if (cmd.at(0)=="!replace_ai"){
 			side = std::stoi(cmd.at(1));
 			std::string file = cmd.at(2);
@@ -567,7 +536,7 @@ const std::string manager::internal_evaluate_command( side_number side, const st
 		}
 
 	} else if (cmd.size()==2){
-		//!remove_ai side
+		// remove_ai side
 		if (cmd.at(0)=="!remove_ai"){
 			side = std::stoi(cmd.at(1));
 			remove_ai_for_side(side);
@@ -605,7 +574,6 @@ const std::string manager::internal_evaluate_command( side_number side, const st
 		}
 	}
 
-
 	return "AI MANAGER: nothing to do";
 }
 
@@ -623,7 +591,6 @@ bool manager::add_ai_for_side_from_file( side_number side, const std::string& fi
 	return add_ai_for_side_from_config(side,cfg,replace);
 }
 
-
 bool manager::add_ai_for_side_from_config( side_number side, const config& cfg, bool replace ){
 	config parsed_cfg;
 	configuration::parse_side_config(side, cfg, parsed_cfg);
@@ -637,7 +604,6 @@ bool manager::add_ai_for_side_from_config( side_number side, const config& cfg, 
 	return true;
 }
 
-
 // =======================================================================
 // REMOVE
 // =======================================================================
@@ -650,7 +616,6 @@ void manager::remove_ai_for_side( side_number side )
 	}
 }
 
-
 void manager::remove_all_ais_for_side( side_number side )
 {
 	std::stack<holder>& ai_stack_for_specific_side = get_or_create_ai_stack_for_side(side);
@@ -661,18 +626,15 @@ void manager::remove_all_ais_for_side( side_number side )
 	}
 }
 
-
 void manager::clear_ais()
 {
 	ai_map_.clear();
 }
 
-
 void manager::modify_active_ai_for_side ( side_number side, const config &cfg )
 {
 	get_active_ai_holder_for_side(side).modify_ai(cfg);
 }
-
 
 void manager::append_active_ai_for_side(side_number side, const config& cfg)
 {
@@ -684,12 +646,10 @@ std::string manager::get_active_ai_overview_for_side( side_number side )
 	return get_active_ai_holder_for_side(side).get_ai_overview();
 }
 
-
 std::string manager::get_active_ai_structure_for_side( side_number side )
 {
 	return get_active_ai_holder_for_side(side).get_ai_structure();
 }
-
 
 std::string manager::get_active_ai_identifier_for_side( side_number side )
 {
@@ -706,18 +666,15 @@ ai::holder& manager::get_active_ai_holder_for_side_dbg( side_number side )
 	return get_active_ai_holder_for_side(side);
 }
 
-
 config manager::to_config( side_number side )
 {
 	return get_active_ai_holder_for_side(side).to_config();
 }
 
-
 game_info& manager::get_active_ai_info_for_side( side_number /*side*/ )
 {
 	return ai_info_;
 }
-
 
 game_info& manager::get_ai_info()
 {
@@ -750,7 +707,6 @@ void manager::play_turn( side_number side ){
 	DBG_AI_MANAGER << "side " << side << ": number of user interactions: "<<num_interact_<<std::endl;
 	DBG_AI_MANAGER << "side " << side << ": total turn time: "<<turn_end_time - turn_start_time << " ms "<< std::endl;
 }
-
 
 // =======================================================================
 // PRIVATE
@@ -791,7 +747,6 @@ ai_composite& manager::get_active_ai_for_side( side_number side )
 {
 	return get_active_ai_holder_for_side(side).get_ai_ref();
 }
-
 
 // =======================================================================
 // MISC

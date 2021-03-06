@@ -12,7 +12,7 @@ function wesnoth.wml_actions.find_respawn_point(cfg)
 	end
 
 	repeat
-		respawn_point = wesnoth.get_locations({
+		respawn_point = wesnoth.map.find({
 			include_borders = false,
 			T["and"] {
 				T.filter {

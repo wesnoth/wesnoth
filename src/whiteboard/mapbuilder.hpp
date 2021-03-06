@@ -20,7 +20,6 @@
 
 #include "side_actions.hpp"
 
-#include <boost/ptr_container/ptr_vector.hpp>
 #include <list>
 
 #include "utility.hpp"
@@ -66,13 +65,14 @@ private:
 	action_queue applied_actions_this_turn_;
 
 	//Used by pre_build()
-	boost::ptr_vector<unit_movement_resetter> resetters_;
-	boost::ptr_vector<temporary_unit_remover> removers_;
+	std::vector<std::unique_ptr<unit_movement_resetter>> resetters_;
+	std::vector<std::unique_ptr<temporary_unit_remover>> removers_;
 
 	//Used by process()
 	std::set<unit const*> acted_this_turn_;
 	std::set<unit const*> has_invalid_actions_;
-	std::list<side_actions::iterator> invalid_actions_; ///< Conserved invalid actions.
+	/** Conserved invalid actions. */
+	std::list<side_actions::iterator> invalid_actions_;
 };
 
 }

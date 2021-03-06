@@ -5,8 +5,8 @@ local wc2_invest = {}
 
 function wc2_invest.add_items(side_num, num_items)
 	local side = wesnoth.sides[side_num]
-	local items_left = wc2_utils.split_to_array(side.variables["wc2.items_left"])
-	local items_available = wc2_utils.split_to_array(side.variables["wc2.items"])
+	local items_left = stringx.split(side.variables["wc2.items_left"])
+	local items_available = stringx.split(side.variables["wc2.items"] or "")
 	for j = 1, num_items do
 		local i = wesnoth.random(#items_left)
 		table.insert(items_available, items_left[i])
@@ -26,7 +26,7 @@ end
 function wc2_invest.initialize()
 	local all_items = {}
 	for i,v in ipairs(wc2_artifacts.get_artifact_list()) do
-		local not_available = wc2_utils.split_to_set(v.not_available or "")
+		local not_available = stringx.map_split(v.not_available or "")
 		if not not_available["player"] then
 			table.insert(all_items, i)
 		end
@@ -57,7 +57,7 @@ end
 function wc2_invest.do_gold()
 	local side_num = wesnoth.current.side
 	local side = wesnoth.sides[side_num]
-	local leaders = wesnoth.get_units { side = side_num, canrecruit = true }
+	local leaders = wesnoth.units.find_on_map { side = side_num, canrecruit = true }
 	side.gold = side.gold + 70
 	wesnoth.wml_actions.wc2_map_supply_village { 
 		x = leaders[1].x,
@@ -68,10 +68,10 @@ end
 function wc2_invest.do_hero(t, is_local)
 	local side_num = wesnoth.current.side
 	local side = wesnoth.sides[side_num]
-	local leaders = wesnoth.get_units { side = side_num, canrecruit = true }
+	local leaders = wesnoth.units.find_on_map { side = side_num, canrecruit = true }
 	local x,y = leaders[1].x, leaders[1].y
 	if t == "wc2_commander" then
-		local commanders = wc2_utils.split_to_array(side.variables["wc2.commanders"])
+		local commanders = stringx.split(side.variables["wc2.commanders"])
 		local i = wesnoth.random(#commanders)
 		t = commanders[i]
 		table.remove(commanders, i)
@@ -84,7 +84,7 @@ function wc2_invest.do_hero(t, is_local)
 
 		wesnoth.sides[side_num].gold = wesnoth.sides[side_num].gold + 15
 
-		local deserters = wc2_utils.split_to_array(side.variables["wc2.deserters"])
+		local deserters = stringx.split(side.variables["wc2.deserters"])
 		local i = wesnoth.random(#deserters)
 		t = deserters[i]
 		table.remove(deserters, i)
@@ -94,7 +94,7 @@ function wc2_invest.do_hero(t, is_local)
 		end
 		wc2_heroes.place(t, side_num, x, y, false)
 	else
-		local heroes_available = wc2_utils.split_to_array(side.variables["wc2.heroes"])
+		local heroes_available = stringx.split(side.variables["wc2.heroes"])
 		local i = find_index(heroes_available, t)
 		if i == nil then
 			error("wc2 invest: invalid pick")
@@ -114,10 +114,10 @@ end
 function wc2_invest.do_item(t)
 	local side_num = wesnoth.current.side
 	local side = wesnoth.sides[side_num]
-	local leaders = wesnoth.get_units { side = side_num, canrecruit = true }
+	local leaders = wesnoth.units.find_on_map { side = side_num, canrecruit = true }
 	local x,y = leaders[1].x, leaders[1].y
 	
-	local items_available = wc2_utils.split_to_array(side.variables["wc2.items"], {}, tonumber)
+	local items_available = stringx.split(side.variables["wc2.items"])
 	local i = find_index(items_available, tostring(t))
 	if i == nil then
 		error("wc2 invest: invalid item pick '" .. t .. "' (" .. type(t) ..")")
@@ -131,10 +131,10 @@ end
 function wc2_invest.invest()
 	local side_num = wesnoth.current.side
 	local side = wesnoth.sides[side_num]
-	local items_available = wc2_utils.split_to_array(side.variables["wc2.items"])
-	local heroes_available = wc2_utils.split_to_array(side.variables["wc2.heroes"])
-	local commanders_available = wc2_utils.split_to_array(side.variables["wc2.commanders"])
-	local deserters_available = wc2_utils.split_to_array(side.variables["wc2.deserters"])
+	local items_available = stringx.split(side.variables["wc2.items"])
+	local heroes_available = stringx.split(side.variables["wc2.heroes"])
+	local commanders_available = stringx.split(side.variables["wc2.commanders"])
+	local deserters_available = stringx.split(side.variables["wc2.deserters"])
 	local trainings_available = wc2_training.list_available(side_num, {2,3,4,5,6})
 	local gold_available = true
 	for i =1,2 do

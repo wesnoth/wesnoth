@@ -15,7 +15,7 @@ function pick_advance.has_options(u)
 end
 
 on_event("pre_advance", function(ec)
-	local u = wesnoth.get_unit(ec.x1, ec.y1)
+	local u = wesnoth.units.get(ec.x1, ec.y1)
 	if not pick_advance.has_options(u) then
 		return
 	end
@@ -27,12 +27,12 @@ on_event("pre_advance", function(ec)
 end)
 
 function wesnoth.wml_actions.wc2_pya_set_pick(cfg)
-	local u = wesnoth.get_unit(cfg.x, cfg.y)
+	local u = wesnoth.units.get(cfg.x, cfg.y)
 	u.variables.wc2_pya_pick = cfg.pick
 end
 
 function wesnoth.wml_actions.wc2_pya_pick(cfg)
-	local u = wesnoth.get_unit(cfg.x, cfg.y)
+	local u = wesnoth.units.get(cfg.x, cfg.y)
 	if not pick_advance.has_options(u) then
 		return
 	end
@@ -43,7 +43,7 @@ function wesnoth.wml_actions.wc2_pya_pick(cfg)
 	local message_wml = {
 		x=cfg.x,
 		y=cfg.y,
-		message= wesnoth.format(str_advancer_option, {name  = current_name}),
+		message= stringx.vformat(str_advancer_option, {name  = current_name}),
 		wml.tag.option {
 			label = _"Random",
 			image = wc2_color.tc_image("units/unknown-unit.png"),
@@ -80,7 +80,7 @@ wc2_utils.menu_item {
 		if wml.variables.wc2_config_enable_pya == false then
 			return false
 		end
-		local u = wesnoth.get_unit(x, y)
+		local u = wesnoth.units.get(x, y)
 		return u and u.side == wesnoth.current.side and pick_advance.has_options(u)
 	end,
 	handler = function(cx)

@@ -242,7 +242,7 @@ bool playsingle_controller::hotkey_handler::can_execute_command(const hotkey::ho
 		case hotkey::HOTKEY_CREATE_UNIT:
 		case hotkey::HOTKEY_CHANGE_SIDE:
 		case hotkey::HOTKEY_KILL_UNIT:
-			return !events::commands_disabled && game_config::debug && play_controller_.get_map_const().on_board(mouse_handler_.get_last_hex()) && play_controller_.current_team().is_local();
+			return !events::commands_disabled && game_config::debug && play_controller_.get_map().on_board(mouse_handler_.get_last_hex()) && play_controller_.current_team().is_local();
 
 		case hotkey::HOTKEY_CLEAR_LABELS:
 			res = !is_observer();
@@ -250,7 +250,7 @@ bool playsingle_controller::hotkey_handler::can_execute_command(const hotkey::ho
 		case hotkey::HOTKEY_LABEL_TEAM_TERRAIN:
 		case hotkey::HOTKEY_LABEL_TERRAIN: {
 			const terrain_label *label = gui()->labels().get_label(mouse_handler_.get_last_hex());
-			res = !events::commands_disabled && play_controller_.get_map_const().on_board(mouse_handler_.get_last_hex())
+			res = !events::commands_disabled && play_controller_.get_map().on_board(mouse_handler_.get_last_hex())
 				&& !gui()->shrouded(mouse_handler_.get_last_hex())
 				&& !is_observer()
 				&& (!label || !label->immutable());
@@ -263,7 +263,7 @@ bool playsingle_controller::hotkey_handler::can_execute_command(const hotkey::ho
 			if( (menu_handler_.current_unit().valid())
 				&& (menu_handler_.current_unit()->move_interrupted()))
 				return true;
-			const unit_map::const_iterator i = play_controller_.get_units_const().find(mouse_handler_.get_selected_hex());
+			const unit_map::const_iterator i = play_controller_.get_units().find(mouse_handler_.get_selected_hex());
 			if (!i.valid()) return false;
 			return i->move_interrupted();
 		}

@@ -27,13 +27,11 @@
 #include "gui/widgets/window.hpp"
 #include "gettext.hpp"
 
-#include "utils/functional.hpp"
+#include <functional>
 
 #include <sstream>
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 
 REGISTER_DIALOG(end_credits)
@@ -57,7 +55,7 @@ void end_credits::pre_show(window& window)
 
 	connect_signal_on_draw(window, std::bind(&end_credits::timer_callback, this));
 
-	connect_signal_pre_key_press(window, std::bind(&end_credits::key_press_callback, this, _5));
+	connect_signal_pre_key_press(window, std::bind(&end_credits::key_press_callback, this, std::placeholders::_5));
 
 	std::stringstream ss;
 	std::stringstream focus_ss;
@@ -144,4 +142,3 @@ void end_credits::key_press_callback(const SDL_Keycode key)
 }
 
 } // namespace dialogs
-} // namespace gui2

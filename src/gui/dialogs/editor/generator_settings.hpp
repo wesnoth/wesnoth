@@ -35,7 +35,7 @@ public:
 private:
 	virtual void pre_show(window& window) override;
 
-	void adjust_minimum_size_by_players(window& window);
+	void adjust_minimum_size_by_players();
 
 	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const override;

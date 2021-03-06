@@ -25,21 +25,16 @@
 
 class display;
 
-namespace gui2
+namespace gui2::dialogs
 {
-namespace dialogs
-{
-
-using unit_ptr_vector = std::vector<unit_const_ptr>;
-
 void show_unit_list(display& gui);
 
 class unit_list : public modal_dialog
 {
 public:
-	explicit unit_list(unit_ptr_vector& unit_list, map_location& scroll_to);
+	explicit unit_list(std::vector<unit_const_ptr>& unit_list, map_location& scroll_to);
 
-	static bool execute(unit_ptr_vector& units, map_location& scroll_to)
+	static bool execute(std::vector<unit_const_ptr>& units, map_location& scroll_to)
 	{
 		if(units.empty()) {
 			show_transient_message("", _("No units found."));
@@ -50,12 +45,12 @@ public:
 	}
 
 private:
-	unit_ptr_vector& unit_list_;
+	std::vector<unit_const_ptr>& unit_list_;
 
 	map_location& scroll_to_;
 
 	/** Callbacks */
-	void list_item_clicked(window& window);
+	void list_item_clicked();
 
 	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const override;
@@ -68,4 +63,3 @@ private:
 };
 
 } // namespace dialogs
-} // namespace gui2

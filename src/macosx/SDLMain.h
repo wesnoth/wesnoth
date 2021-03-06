@@ -11,4 +11,5 @@
 {
 }
 - (IBAction)openHomepage:(id)sender;
+- (IBAction)openChangelog:(id)sender;
 @end

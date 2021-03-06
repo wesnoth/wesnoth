@@ -84,7 +84,9 @@ public:
 	/**
 	 * Returns whether or not *this is applicable given the context.
 	 * Assumes game variables x1, y1, and unit have been set.
-	 * @param[in]  hex  The hex where the menu will appear.
+	 * @param[in] hex The hex where the menu will appear.
+	 * @param[in] data Used to check whether to show if selecting is required.
+	 * @param[in] context Used to check whether the menu's filter matches.
 	 */
 	bool can_show(const map_location& hex, const game_data& data, filter_context& context) const;
 

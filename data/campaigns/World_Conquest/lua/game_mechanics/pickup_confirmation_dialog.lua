@@ -58,14 +58,20 @@ local function show_dialog(unit, item_image)
 						T.row {
 							T.column {
 								T.button {
-									label = _"Yes (enter)",
+									border = "all",
+									border_size = 5,
+									horizontal_alignment = "right",
+									label = _"Yes",
 									id="res_yes",
 									return_value = 1,
 								},
 							},
 							T.column {
+								border = "all",
+								border_size = 5,
+								horizontal_alignment = "right",
 								T.button {
-									label = _"No (esc)",
+									label = _"No",
 									id="res_no",
 									return_value = 2
 								},
