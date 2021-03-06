@@ -1231,10 +1231,10 @@ function battle_calcs.relative_damage_map(units, enemies, cache)
     -- Get the attack maps for each unit in 'units' and 'enemies'
     local my_attack_maps, enemy_attack_maps = {}, {}
     for i,unit in ipairs(units) do
-        my_attack_maps[i] = battle_calcs.get_attack_map_unit(unit, cfg)
+        my_attack_maps[i] = battle_calcs.get_attack_map_unit(unit)
     end
     for i,e in ipairs(enemies) do
-        enemy_attack_maps[i] = battle_calcs.get_attack_map_unit(e, cfg)
+        enemy_attack_maps[i] = battle_calcs.get_attack_map_unit(e)
     end
 
     -- Get the damage rating for each unit in 'units'. It is the maximum

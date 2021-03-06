@@ -1382,7 +1382,7 @@ function ai_helper.get_enemy_dst_src(enemies, cfg)
     end
 
     local cfg_copy = {}
-    if cfg then cfg_copy = ai_helper.table_copy(attack_array) end
+    if cfg then cfg_copy = ai_helper.table_copy(cfg) end
     cfg_copy.moves = 'max'
 
     return ai_helper.get_dst_src_units(enemies, cfg_copy)
