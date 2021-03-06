@@ -148,36 +148,23 @@ void mapgen_gamemap::set_terrain(const map_location& loc, const terrain_code & t
 }
 
 struct lua_map_ref {
-	virtual gamemap_base& get_map() = 0;
-	virtual ~lua_map_ref() {}
-};
-
-// Mapgen map reference, owned by Lua
-struct lua_map_ref_gen : public lua_map_ref {
-	mapgen_gamemap map;
-	template<typename... T>
-	lua_map_ref_gen(T&&... params) : map(std::forward<T>(params)...) {}
-	gamemap_base& get_map() override {
-		return map;
+	lua_map_ref(int w, int h, const t_translation::terrain_code& ter)
+		: owned_map(new mapgen_gamemap(w, h, ter))
+		, map_ptr(owned_map.get())
+	{}
+	lua_map_ref(string_view data)
+		: owned_map(new mapgen_gamemap(data))
+		, map_ptr(owned_map.get())
+	{}
+	lua_map_ref(gamemap_base& ref)
+		: map_ptr(&ref)
+	{}
+	gamemap_base& get_map() {
+		return *map_ptr;
 	}
-};
-
-// Main map reference, owned by the engine
-struct lua_map_ref_main : public lua_map_ref {
-	gamemap& map;
-	lua_map_ref_main(gamemap& ref) : map(ref) {}
-	gamemap_base& get_map() override {
-		return map;
-	}
-};
-
-// Non-owning map reference to either type (used for special location userdata)
-struct lua_map_ref_locs : public lua_map_ref {
-	gamemap_base& map;
-	lua_map_ref_locs(gamemap_base& ref) : map(ref) {}
-	gamemap_base& get_map() override {
-		return map;
-	}
+private:
+	std::unique_ptr<gamemap_base> owned_map;
+	gamemap_base* map_ptr; // either owned or unowned
 };
 
 bool luaW_isterrainmap(lua_State* L, int index)
@@ -205,7 +192,7 @@ gamemap_base& luaW_checkterrainmap(lua_State *L, int index)
 
 /**
  * Create a map.
- * - Arg 1: string descripbing the map data.
+ * - Arg 1: string describing the map data.
  * - or:
  * - Arg 1: int, width
  * - Arg 2: int, height
@@ -217,10 +204,10 @@ int intf_terrainmap_create(lua_State *L)
 		int w = lua_tonumber(L, 1);
 		int h = lua_tonumber(L, 2);
 		auto terrain = t_translation::read_terrain_code(luaL_checkstring(L, 3));
-		new(L) lua_map_ref_gen(w, h, terrain);
+		new(L) lua_map_ref(w, h, terrain);
 	} else {
 		string_view data_str = luaL_checkstring(L, 1);
-		new(L) lua_map_ref_gen(data_str);
+		new(L) lua_map_ref(data_str);
 	}
 	luaL_setmetatable(L, terrainmapKey);
 	return 1;
@@ -228,7 +215,7 @@ int intf_terrainmap_create(lua_State *L)
 
 int intf_terrainmap_get(lua_State* L)
 {
-	new(L) lua_map_ref_main(const_cast<gamemap&>(resources::gameboard->map()));
+	new(L) lua_map_ref(const_cast<gamemap&>(resources::gameboard->map()));
 	luaL_setmetatable(L, terrainmapKey);
 	return 1;
 }
@@ -312,7 +299,7 @@ static int impl_terrainmap_get(lua_State *L)
 	return_string_attrib("data", tm.to_string());
 
 	if(strcmp(m, "special_locations") == 0) {
-		new(L) lua_map_ref_locs(tm);
+		new(L) lua_map_ref(tm);
 		luaL_setmetatable(L, maplocationKey);
 		return 1;
 	}
