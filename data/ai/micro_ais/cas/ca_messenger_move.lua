@@ -30,7 +30,7 @@ function ca_messenger_move:execution(cfg)
 
     -- Compare this to the "ideal path"
     local path = AH.find_path_with_shroud(messenger, x, y, { ignore_units = 'yes' })
-    local optimum_hop, optimum_cost = { messenger.x, messenger.y }, 0
+    local optimum_hop = { messenger.x, messenger.y }
     for _,step in ipairs(path) do
         local sub_path, sub_cost = AH.find_path_with_shroud(messenger, step[1], step[2])
         if sub_cost > messenger.moves then
@@ -47,7 +47,7 @@ function ca_messenger_move:execution(cfg)
             end
 
             if not unit_in_way then
-                optimum_hop, nh_cost = step, sub_cost
+                optimum_hop = step
             end
         end
     end
