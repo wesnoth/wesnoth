@@ -15,7 +15,7 @@
  ### Packaging
  ### Terrain
  ### Translations
-   * Updated translations: British English, Italian
+   * Updated translations: British English, Chinese (Traditional), Italian
  ### Units
    * Beast-rider Walking Corpse variation (for UtBS Quenoth Tauroch line, but generally available)
  ### User interface
