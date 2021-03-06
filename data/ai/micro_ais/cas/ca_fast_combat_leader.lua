@@ -14,9 +14,9 @@ function ca_fast_combat_leader:evaluation(cfg, data)
     -- that the (more expensive) calculations for keeping the leader safe only
     -- get done once, when all other Fast MAI CAs are entirely done.
 
-    leader_weight = (cfg and cfg.leader_weight) or 2
-    leader_attack_max_units = (cfg and cfg.leader_attack_max_units) or 3
-    leader_additional_threat = (cfg and cfg.leader_additional_threat) or 1
+    local leader_weight = (cfg and cfg.leader_weight) or 2
+    local leader_attack_max_units = (cfg and cfg.leader_attack_max_units) or 3
+    local leader_additional_threat = (cfg and cfg.leader_additional_threat) or 1
 
     move_cache = { turn = wesnoth.current.turn }
     gamedata = FAU.gamedata_setup()
@@ -84,7 +84,7 @@ function ca_fast_combat_leader:evaluation(cfg, data)
     for _,enemy in ipairs(enemies) do
         -- Only need to consider enemies that are close enough
         if (wesnoth.map.distance_between(leader.x, leader.y, enemy.x, enemy.y) <= (enemy.max_moves + leader.max_moves + 1)) then
-            enemy_power = enemy.hitpoints
+            local enemy_power = enemy.hitpoints
 
             local old_moves = enemy.moves
             enemy.moves = enemy.max_moves

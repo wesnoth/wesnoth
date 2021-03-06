@@ -64,7 +64,7 @@ function ca_hunter:execution(cfg)
         local rand = math.random(10)
         if (not hunter_vars.goal_x) or (rand == 1) then
             -- 'locs' includes border hexes, but that does not matter here
-            locs = AH.get_passable_locations((wml.get_child(cfg, "filter_location") or {}), hunter)
+            local locs = AH.get_passable_locations((wml.get_child(cfg, "filter_location") or {}), hunter)
             local rand = math.random(#locs)
 
             hunter_vars.goal_x, hunter_vars.goal_y = locs[rand][1], locs[rand][2]
@@ -130,7 +130,7 @@ function ca_hunter:execution(cfg)
     -- If we got here, this means the hunter is either returning, or resting
     if (hunter_vars.hunting_status == 'returning') then
         local home_loc = AH.get_named_loc_xy('home', cfg)
-        goto_x, goto_y = wesnoth.find_vacant_tile(home_loc[1], home_loc[2], hunter)
+        local goto_x, goto_y = wesnoth.find_vacant_tile(home_loc[1], home_loc[2], hunter)
 
         local next_hop = AH.next_hop(hunter, goto_x, goto_y)
         if next_hop then

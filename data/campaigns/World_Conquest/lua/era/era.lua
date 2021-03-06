@@ -129,7 +129,7 @@ end
 function wc2_era.create_random_faction(id)
 
 	local deserters_set = {}
-	local heros_set = {}
+	local heroes_set = {}
 	local commanders_set = {}
 
 	local i_deserters1 = wesnoth.random(#wc2_era.standard_factions)
@@ -145,7 +145,7 @@ function wc2_era.create_random_faction(id)
 	local faction = {
 		id = "custom_random",
 		deserters = table.concat( wc2_utils.set_to_array(deserters_set), ","),
-		heroes = table.concat( wc2_utils.set_to_array(heros_set), ","),
+		heroes = table.concat( wc2_utils.set_to_array(heroes_set), ","),
 		commanders = table.concat( wc2_utils.set_to_array(commanders_set), ","),
 	}
 	return faction

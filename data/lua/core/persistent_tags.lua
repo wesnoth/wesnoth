@@ -22,11 +22,11 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 			if type(tag) == 'table' and type(tag.read) == 'function' then
 				tag.read(cfg[i][2])
 			elseif tag ~= nil and not warned_tags[name] then
-				msg = string.format("Invalid persistent tag [%s], should be a table containing read and write functions.", name)
+				local msg = string.format("Invalid persistent tag [%s], should be a table containing read and write functions.", name)
 				wesnoth.log("err", msg, true)
 				warned_tags[name] = true
 			else
-				msg = string.format("[%s] not supported at scenario toplevel", name)
+				local msg = string.format("[%s] not supported at scenario toplevel", name)
 				wesnoth.log("err", msg, true)
 				warned_tags[name] = true
 			end

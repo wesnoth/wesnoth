@@ -90,7 +90,7 @@ function ca_wolves_move:execution(cfg)
     end
 
     for i = 2,#wolves do
-        move = AH.find_best_move(wolves[i], function(x,y)
+        local move = AH.find_best_move(wolves[i], function(x,y)
             local rating = 0
 
             -- We ideally want wolves to be 2-3 hexes from each other

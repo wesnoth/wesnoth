@@ -1257,7 +1257,7 @@ function ai_helper.get_closest_enemy(loc, side, cfg)
 
     local closest_distance, closest_enemy = math.huge
     for _,enemy in ipairs(enemies) do
-        enemy_distance = M.distance_between(x, y, enemy.x, enemy.y)
+        local enemy_distance = M.distance_between(x, y, enemy)
         if (enemy_distance < closest_distance) then
             closest_enemy = enemy
             closest_distance = enemy_distance
@@ -2298,7 +2298,7 @@ function ai_helper.get_attack_combos_full(units, enemy, cfg)
     if (not attacks[1]) then return {} end
 
     -- This recursive function does all the work:
-    local combos = ai_helper.add_next_attack_combo_level(combos, attacks)
+    local combos = ai_helper.add_next_attack_combo_level(nil, attacks)
 
     return combos
 end
@@ -2454,7 +2454,7 @@ function ai_helper.get_unit_time_of_day_bonus(alignment, lawful_bonus)
         elseif (alignment == 'chaotic') then
             multiplier = (1 - lawful_bonus / 100.)
         elseif (alignment == 'liminal') then
-            multipler = (1 - math.abs(lawful_bonus) / 100.)
+            multiplier = (1 - math.abs(lawful_bonus) / 100.)
         end
     end
     return multiplier

@@ -76,7 +76,7 @@ local function wct_map_enemy_themed(race, pet, castle, village, chance)
 		y = boss.y,
 		type=pet,
 		side = boss.side,
-		name= stringx.vformat(enemy_pet, { name = boss.name }),
+		name= stringx.vformat(strings.enemy_pet, { name = boss.name }),
 		role = "hero",
 		overlays = "misc/hero-icon.png",
 		wml.tag.modifications {

@@ -6,8 +6,8 @@ local enemy = {}
 local function get_advanced_units(level, list, res)
 	res = res or {}
 	-- guards against units that can advance in circles or to themselves
-	res_set = {}
-	local add_units = function(units)
+	local res_set = {}
+	local function add_units(units)
 		for unused, typename in ipairs(units) do
 			local unittype = wesnoth.unit_types[typename]
 			if unittype.level == level then

@@ -88,7 +88,7 @@ function wc2_show_invest_dialog_impl(args)
 				page.info_label.label = desc
 			end
 			for j,v in ipairs(available_heroes) do
-				unit_type = wesnoth.unit_types[v]
+				local unit_type = wesnoth.unit_types[v]
 
 
 				local subnode, page = node:add_invest_item {
