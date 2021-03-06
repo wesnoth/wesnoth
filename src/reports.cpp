@@ -464,7 +464,7 @@ static config unit_hp(reports::context& rc, const unit* u)
 
 	bool att_def_diff = false;
 	map_location displayed_unit_hex = rc.screen().displayed_unit_hex();
-	for (const utils::string_map::value_type &resist : u->get_base_resistances())
+	for (const utils::string_map_res::value_type &resist : u->get_base_resistances())
 	{
 		std::ostringstream line;
 		line << translation::gettext(resist.first.c_str()) << ": ";
