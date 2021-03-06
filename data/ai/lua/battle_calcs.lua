@@ -808,7 +808,7 @@ function battle_calcs.attack_rating(attacker, defender, dst, cfg, cache)
     if (att_stats.slowed ~= 0) then
         damage = damage + 6 * (att_stats.slowed - att_stats.hp_chance[0])
     end
-    
+
     local map = wesnoth.current.map
 
     -- If attack is from a healing location, count that as slightly more than the healing amount
