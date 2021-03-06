@@ -4,14 +4,14 @@ local M = wesnoth.map
 local wolves_multipacks_functions = {}
 
 function wolves_multipacks_functions.clear_label(x, y)
-    wesnoth.label{ x = x, y = y, text = "" }
+    M.add_label{ x = x, y = y, text = "" }
 end
 
 function wolves_multipacks_functions.put_label(x, y, text)
     -- For displaying the wolf pack number underneath each wolf
     -- Only use gray for now, but easily expandable to add a color option
     text = "<span color='#c0c0c0'>" .. text .. "</span>"
-    wesnoth.label{ x = x, y = y, text = text }
+    M.add_label{ x = x, y = y, text = text }
 end
 
 function wolves_multipacks_functions.assign_packs(cfg)

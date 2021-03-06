@@ -72,7 +72,7 @@ end
 -- Not deprecated because, unlike wesnoth.map.get_adjacent_tiles,
 -- this verifies that the locations are on the map.
 function helper.adjacent_tiles(x, y, with_borders)
-	local adj = {wesnoth.map.get_adjacent_tiles(x, y)}
+	local adj = {wesnoth.map.get_adjacent_hexes(x, y)}
 	local i = 0
 	return function()
 		while i < #adj do

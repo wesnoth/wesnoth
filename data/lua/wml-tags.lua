@@ -800,7 +800,7 @@ function wml_actions.label( cfg )
 	local new_cfg = wml.parsed( cfg )
 	for index, location in ipairs( wesnoth.map.find( cfg ) ) do
 		new_cfg.x, new_cfg.y = location[1], location[2]
-		wesnoth.label( new_cfg )
+		wesnoth.map.add_label( new_cfg )
 	end
 end
 

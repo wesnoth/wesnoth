@@ -70,7 +70,7 @@ end
 function ai_helper.clear_labels()
     -- Clear all labels on a map
     for x, y in wesnoth.current.map:iter(true) do
-        wesnoth.label { x = x, y = y, text = "" }
+        M.add_labels { x = x, y = y, text = "" }
     end
 end
 
@@ -111,7 +111,7 @@ function ai_helper.put_labels(map, cfg)
         end
 
         if (type(out) == 'number') then out = out * factor end
-        wesnoth.label { x = x, y = y, text = out, color = cfg.color }
+        M.add_labels { x = x, y = y, text = out, color = cfg.color }
     end)
 end
 
@@ -782,7 +782,7 @@ function ai_helper.get_closest_location(hex, location_filter, unit)
 
         if unit then
             for _,loc in ipairs(locs) do
-                local movecost = unit:movement(wesnoth.current.map[loc])
+                local movecost = unit:movement_on(wesnoth.current.map[loc])
                 if (movecost <= unit.max_moves) then return loc end
             end
         else
@@ -808,7 +808,7 @@ function ai_helper.get_passable_locations(location_filter, unit)
     if unit then
         local locs = {}
         for _,loc in ipairs(all_locs) do
-            local movecost = unit:movement(wesnoth.current.map[loc])
+            local movecost = unit:movement_on(wesnoth.current.map[loc])
             if (movecost <= unit.max_moves) then table.insert(locs, loc) end
         end
         return locs

@@ -8,7 +8,7 @@ local M = wesnoth.map
 
 local function custom_cost(x, y, unit, avoid_map, enemy_map, enemy_attack_map, multiplier)
     local terrain = wesnoth.current.map[{x, y}]
-    local move_cost = unit:movement(terrain)
+    local move_cost = unit:movement_on(terrain)
 
     if avoid_map and avoid_map:get(x, y) then
         move_cost = move_cost + AH.no_path

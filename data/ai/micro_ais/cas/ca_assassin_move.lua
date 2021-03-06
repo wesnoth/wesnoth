@@ -25,7 +25,7 @@ local function custom_cost(x, y, unit, enemy_rating_map, prefer_map)
     --    must return values >=1 for the a* search to work.
 
     local terrain = wesnoth.current.map[{x, y}]
-    local move_cost = unit:movement(terrain)
+    local move_cost = unit:movement_on(terrain)
 
     move_cost = move_cost + (enemy_rating_map:get(x, y) or 0)
 
