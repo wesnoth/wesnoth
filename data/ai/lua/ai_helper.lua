@@ -70,7 +70,7 @@ end
 function ai_helper.clear_labels()
     -- Clear all labels on a map
     for x, y in wesnoth.current.map:iter(true) do
-        M.add_labels { x = x, y = y, text = "" }
+        M.add_label { x = x, y = y, text = "" }
     end
 end
 
@@ -111,7 +111,7 @@ function ai_helper.put_labels(map, cfg)
         end
 
         if (type(out) == 'number') then out = out * factor end
-        M.add_labels { x = x, y = y, text = out, color = cfg.color }
+        M.add_label { x = x, y = y, text = out, color = cfg.color }
     end)
 end
 
