@@ -294,11 +294,13 @@ bool pango_text::set_text(const std::string& text, const bool markedup)
 					<< " text '" << text
 					<< "' contains invalid utf-8, trimmed the invalid parts.\n";
 		}
-		if(markedup) {
-			if(!this->set_markup(narrow, *layout_)) {
-				return false;
-			}
+		if(markedup && !this->set_markup(narrow, *layout_)) {
+			// we were told to use mark up, but the text has invalid markup in it
+			markedup_text_ = false;
 		} else {
+			markedup_text_ = markedup;
+		}
+		if(!markedup_text_) {
 			/*
 			 * pango_layout_set_text after pango_layout_set_markup might
 			 * leave the layout in an undefined state regarding markup so
@@ -309,7 +311,6 @@ bool pango_text::set_text(const std::string& text, const bool markedup)
 		}
 		text_ = narrow;
 		length_ = wide.size();
-		markedup_text_ = markedup;
 		calculation_dirty_ = true;
 		surface_dirty_ = true;
 	}
@@ -719,11 +720,18 @@ void pango_text::rerender(const bool force)
 			auto start_of_line = text_.cbegin();
 			while (start_of_line != text_.cend()) {
 				auto end_of_line = std::find(start_of_line, text_.cend(), '\n');
-
 				auto part_layout = std::unique_ptr<PangoLayout, std::function<void(void*)>> { pango_layout_new(context_.get()), g_object_unref};
 				auto line = std::string_view(&*start_of_line, std::distance(start_of_line, end_of_line));
-				set_markup(line, *part_layout);
-				copy_layout_properties(*layout_, *part_layout);
+				if ( !set_markup(line, *part_layout) ) {
+					// the line has invalid markups, we need to tell the line box
+					//   to render the line as plain text
+					copy_layout_properties(*layout_, *part_layout);
+					pango_layout_set_attributes(part_layout.get(), nullptr);
+					pango_layout_set_text(part_layout.get(), line.data(), line.size());
+				}
+				else {
+					copy_layout_properties(*layout_, *part_layout);
+				}
 
 				auto part_rect = calculate_size(*part_layout);
 				render(*part_layout, part_rect, cumulative_height * stride, stride);
@@ -757,6 +765,11 @@ void pango_text::rerender(const bool force)
 	}
 }
 
+/**
+ * Attempts to set the given markup text into the given layout.
+ *   If the text is not valid markup, the given layout will be
+ *   unaffected and the function will return false.
+ */
 bool pango_text::set_markup(std::string_view text, PangoLayout& layout) {
 	char* raw_text;
 	std::string semi_escaped;
@@ -776,7 +789,6 @@ bool pango_text::set_markup(std::string_view text, PangoLayout& layout) {
 		ERR_GUI_L << "pango_text::" << __func__
 			<< " text '" << text
 			<< "' has broken markup, set to normal text.\n";
-		set_text(_("The text contains invalid Pango markup: ") + std::string(text), false);
 	}
 
 	return valid;
