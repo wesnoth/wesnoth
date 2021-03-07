@@ -610,6 +610,51 @@ void server::handle_read_from_fifo(const boost::system::error_code& error, std::
 				       << key << "=\"" << value << "\"\n";
 			}
 		}
+	} else if(ctl == "log") {
+		static const std::map<std::string, int> log_levels = {
+			{ "error",   lg::err().get_severity() },
+			{ "warning", lg::warn().get_severity() },
+			{ "info",    lg::info().get_severity() },
+			{ "debug",   lg::debug().get_severity() },
+			{ "none",    -1 }
+		};
+
+		if(ctl.args_count() != 2) {
+			ERR_CS << "Incorrect number of arguments for 'log'\n";
+		} else if(ctl[1] == "precise") {
+			if(ctl[2] == "on") {
+				lg::precise_timestamps(true);
+				LOG_CS << "Precise timestamps enabled\n";
+			} else if(ctl[2] == "off") {
+				lg::precise_timestamps(false);
+				LOG_CS << "Precise timestamps disabled\n";
+			} else {
+				ERR_CS << "Invalid argument for 'log precise': " << ctl[2] << '\n';
+			}
+		} else if(log_levels.find(ctl[1]) == log_levels.end()) {
+			ERR_CS << "Invalid log level '" << ctl[1] << "'\n";
+		} else {
+			auto sev = log_levels.find(ctl[1])->second;
+			for(const auto& domain : utils::split(ctl[2])) {
+				if(!lg::set_log_domain_severity(domain, sev)) {
+					ERR_CS << "Unknown log domain '" << domain << "'\n";
+				} else {
+					LOG_CS << "Set log level for domain '" << domain << "' to " << ctl[1] << '\n';
+				}
+			}
+		}
+	} else if(ctl == "timings") {
+		if(ctl.args_count() != 1) {
+			ERR_CS << "Incorrect number of arguments for 'timings'\n";
+		} else if(ctl[1] == "on") {
+			campaignd::timing_reports_enabled = true;
+			LOG_CS << "Request servicing timing reports enabled\n";
+		} else if(ctl[1] == "off") {
+			campaignd::timing_reports_enabled = false;
+			LOG_CS << "Request servicing timing reports disabled\n";
+		} else {
+			ERR_CS << "Invalid argument for 'timings': " << ctl[1] << '\n';
+		}
 	} else {
 		ERR_CS << "Unrecognized admin command: " << ctl.full() << '\n';
 	}
