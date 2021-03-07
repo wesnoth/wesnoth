@@ -109,15 +109,13 @@ def run_with_rerun_for_sdl_video(args, timeout):
 class WesnothRunner:
     def __init__(self, options):
         self.verbose = options.verbose
-        if options.path is None:
-            path = os.path.split(os.path.realpath(sys.argv[0]))[0]
-        elif options.path in ["XCode", "xcode", "Xcode"]:
+        if options.path in ["XCode", "xcode", "Xcode"]:
             import glob
             path_list = []
-            for build in ["Debug", "Release"]:
-                pattern = os.path.join("~/Library/Developer/XCode/DerivedData/Wesnoth*",
-                    build, "Build/Products/Release/Wesnoth.app/Contents/MacOS/")
-                path_list.extend(glob.glob(os.path.expanduser(pattern)))
+            build = "Debug" if options.debug_bin else "Release"
+            pattern = os.path.join("~/Library/Developer/XCode/DerivedData/The_Battle_for_Wesnoth*/Build/Products",
+                build, "The Battle for Wesnoth.app/Contents/MacOS/The Battle for Wesnoth")
+            path_list.extend(glob.glob(os.path.expanduser(pattern)))
             if len(path_list) == 0:
                 raise FileNotFoundError("Couldn't find your xcode build dir")
             if len(path_list) > 1:
@@ -125,10 +123,13 @@ class WesnothRunner:
                 raise RuntimeError("Found more than one xcode build dir")
             path = path_list[0]
         else:
-            path = options.path
-        path += "/wesnoth"
-        if options.debug_bin:
-            path += "-debug"
+            if options.path is None:
+                path = os.path.split(os.path.realpath(sys.argv[0]))[0]
+            else:
+                path = options.path
+            path += "/wesnoth"
+            if options.debug_bin:
+                path += "-debug"
         self.common_args = [path, "--nobanner"]
         if os.name == 'nt':
             self.common_args.append("--wnoconsole")
@@ -260,7 +261,8 @@ if __name__ == '__main__':
     ap.add_argument("-g", "--backtrace", action="store_true",
         help="If we encounter a crash, generate a backtrace using gdb. Must have gdb installed for this option.")
     ap.add_argument("-p", "--path", metavar="dir",
-        help="Path to wesnoth binary. By default assume it is with this script.")
+        help="Path to wesnoth binary. By default assume it is with this script."
+        + " If running on a Mac, passing 'xcode' as the path will attempt to locate the binary in Xcode derived data directories.")
     ap.add_argument("-l", "--list", metavar="filename",
         help="Loads list of tests from the given file.",
     default="wml_test_schedule")
