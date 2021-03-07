@@ -331,6 +331,8 @@ return {
 
             my_hp = my_hp + sum_gold_for_sides({{"allied_with", {side = wesnoth.current.side} }})*2.3
             enemy_hp = enemy_hp+sum_gold_for_sides({{"enemy_of", {side = wesnoth.current.side} }})*2.3
+            -- Need to prevent potential divide-by-zero
+            if (enemy_hp == 0) then enemy_hp = 1 end
             return my_hp / enemy_hp
         end
 
