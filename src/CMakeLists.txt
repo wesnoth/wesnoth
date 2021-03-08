@@ -366,7 +366,7 @@ if(ENABLE_CAMPAIGN_SERVER)
 	if(ENABLE_MYSQL)
 		target_include_directories(campaignd SYSTEM PRIVATE ${MYSQL_CFLAGS})
 		target_compile_definitions(campaignd PRIVATE HAVE_MYSQLPP)
-		target_link_libraries(wesnothd mariadbclientpp)
+		target_link_libraries(campaignd mariadbclientpp)
 	endif(ENABLE_MYSQL)
 
 	target_link_libraries(campaignd
