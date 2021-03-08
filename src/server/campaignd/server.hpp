@@ -121,6 +121,8 @@ private:
 	std::map<std::string, std::string> hooks_;
 	request_handlers_table handlers_;
 
+	std::string server_id_;
+
 	std::string feedback_url_format_;
 
 	std::string web_url_;

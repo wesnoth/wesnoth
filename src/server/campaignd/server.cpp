@@ -271,6 +271,7 @@ server::server(const std::string& cfg_file, unsigned short port)
 	, strict_versions_(true)
 	, hooks_()
 	, handlers_()
+	, server_id_()
 	, feedback_url_format_()
 	, web_url_()
 	, license_notice_()
@@ -331,6 +332,7 @@ void server::load_config()
 	update_pack_lifespan_ = cfg_["update_pack_lifespan"].to_time_t(30 * 24 * 60 * 60);
 
 	if(const auto& svinfo_cfg = server_info()) {
+		server_id_ = svinfo_cfg["id"].str();
 		feedback_url_format_ = svinfo_cfg["feedback_url_format"].str();
 		web_url_ = svinfo_cfg["web_url"].str(default_web_url);
 		license_notice_ = svinfo_cfg["license_notice"].str(default_license_notice);
@@ -884,6 +886,7 @@ void server::handle_server_id(const server::request& req)
 
 	std::ostringstream ostr;
 	write(ostr, config{"server_id", config{
+		"id",					server_id_,
 		"cap",					utils::join(capabilities_),
 		"version",				game_config::revision,
 		"url",					web_url_,
