@@ -69,7 +69,7 @@ connection::connection(const std::string& host, const std::string& service)
 	, host_(host)
 	, service_(service)
 	, resolver_(io_context_)
-	, socket_(raw_socket{io_context_})
+	, socket_(raw_socket(new raw_socket::element_type{io_context_}))
 	, done_(false)
 	, write_buf_()
 	, read_buf_()
@@ -99,7 +99,7 @@ void connection::handle_resolve(const boost::system::error_code& ec, results_typ
 		throw system_error(ec);
 	}
 
-	boost::asio::async_connect(utils::get<raw_socket>(socket_), results,
+	boost::asio::async_connect(*utils::get<raw_socket>(socket_), results,
 		std::bind(&connection::handle_connect, this, std::placeholders::_1, std::placeholders::_2));
 }
 
@@ -127,12 +127,12 @@ void connection::handshake()
 	static const uint32_t tls_handshake = htonl(uint32_t(1));
 
 	boost::asio::async_write(
-		utils::get<raw_socket>(socket_),
+		*utils::get<raw_socket>(socket_),
 		boost::asio::buffer(use_tls_ ? reinterpret_cast<const char*>(&tls_handshake) : reinterpret_cast<const char*>(&handshake), 4),
 		std::bind(&connection::handle_write, this, std::placeholders::_1, std::placeholders::_2)
 	);
 
-	boost::asio::async_read(utils::get<raw_socket>(socket_), boost::asio::buffer(&handshake_response_.binary, 4),
+	boost::asio::async_read(*utils::get<raw_socket>(socket_), boost::asio::buffer(&handshake_response_.binary, 4),
 		std::bind(&connection::handle_handshake, this, std::placeholders::_1));
 }
 
@@ -158,9 +158,10 @@ void connection::handle_handshake(const boost::system::error_code& ec)
 		if(handshake_response_.num == 0x00000000) {
 			tls_context_.set_default_verify_paths();
 			raw_socket s { std::move(utils::get<raw_socket>(socket_)) };
-			socket_.emplace<1>(std::move(s), tls_context_);
-			
-			auto& socket { utils::get<tls_socket>(socket_) };
+			tls_socket ts { new tls_socket::element_type { std::move(*s), tls_context_ } };
+			socket_ = std::move(ts);
+
+			auto& socket { *utils::get<tls_socket>(socket_) };
 
 			socket.set_verify_mode(
 				boost::asio::ssl::verify_peer |
@@ -194,10 +195,10 @@ void connection::fallback_to_unencrypted()
 	assert(use_tls_ == true);
 	use_tls_ = false;
 
-	boost::asio::ip::tcp::endpoint endpoint { utils::get<raw_socket>(socket_).remote_endpoint() };
-	utils::get<raw_socket>(socket_).close();
+	boost::asio::ip::tcp::endpoint endpoint { utils::get<raw_socket>(socket_)->remote_endpoint() };
+	utils::get<raw_socket>(socket_)->close();
 
-	utils::get<raw_socket>(socket_).async_connect(endpoint,
+	utils::get<raw_socket>(socket_)->async_connect(endpoint,
 		std::bind(&connection::handle_connect, this, std::placeholders::_1, endpoint));
 }
 
@@ -223,11 +224,11 @@ void connection::transfer(const config& request, config& response)
 	bufs.push_front(boost::asio::buffer(reinterpret_cast<const char*>(&payload_size_), 4));
 
 	utils::visit([this, &bufs, &response](auto&& socket) {
-		boost::asio::async_write(socket, bufs,
+		boost::asio::async_write(*socket, bufs,
 			std::bind(&connection::is_write_complete, this, std::placeholders::_1, std::placeholders::_2),
 			std::bind(&connection::handle_write, this, std::placeholders::_1, std::placeholders::_2));
 
-		boost::asio::async_read(socket, *read_buf_,
+		boost::asio::async_read(*socket, *read_buf_,
 			std::bind(&connection::is_read_complete, this, std::placeholders::_1, std::placeholders::_2),
 			std::bind(&connection::handle_read, this, std::placeholders::_1, std::placeholders::_2, std::ref(response)));
 	}, socket_);
@@ -236,7 +237,7 @@ void connection::transfer(const config& request, config& response)
 void connection::cancel()
 {
 	utils::visit([](auto&& socket) {
-		if(socket.lowest_layer().is_open()) {
+		if(socket->lowest_layer().is_open()) {
 			boost::system::error_code ec;
 
 #ifdef _MSC_VER
@@ -245,7 +246,7 @@ void connection::cancel()
 #pragma warning(push)
 #pragma warning(disable:4996)
 #endif
-			socket.lowest_layer().cancel(ec);
+			socket->lowest_layer().cancel(ec);
 #ifdef _MSC_VER
 #pragma warning(pop)
 #endif
