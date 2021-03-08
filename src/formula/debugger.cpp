@@ -153,13 +153,13 @@ void formula_debugger::check_breakpoints()
 void formula_debugger::show_gui()
 {
 	if (game_display::get_singleton() == nullptr) {
-		WRN_FDB << "do not showing debug window due to nullptr gui" << std::endl;
+		WRN_FDB << "skipping WFL debug window due to nullptr gui" << std::endl;
 		return;
 	}
 	if (game_config::debug) {
 		gui2::dialogs::formula_debugger::display(*this);
 	} else {
-		WRN_FDB << "do not showing debug window due to disabled --new-widgets"<< std::endl;
+		WRN_FDB << "skipping WFL debug window because :debug is not enabled"<< std::endl;
 	}
 }
 
