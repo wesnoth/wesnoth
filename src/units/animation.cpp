@@ -1346,6 +1346,34 @@ void unit_animator::add_animation(unit_const_ptr animated_unit
 	animated_units_.push_back(std::move(tmp));
 }
 
+bool unit_animator::has_animation(unit_const_ptr animated_unit
+		, const std::string& event
+		, const map_location &src
+		, const map_location &dst
+		, const int value
+		, const unit_animation::hit_type hit_type
+		, const_attack_ptr attack
+		, const_attack_ptr second_attack
+		, int value2) const
+{
+	if(!animated_unit){
+		return false;
+	}
+
+	display* disp = display::get_singleton();
+
+	anim_elem tmp;
+	tmp.my_unit = std::move(animated_unit);
+	tmp.src = src;
+	tmp.animation = tmp.my_unit->anim_comp().choose_animation(*disp, src, event, dst, value, hit_type, attack, second_attack, value2);
+
+	if(tmp.animation){
+		return true;
+	}
+
+	return false;
+}
+
 void unit_animator::replace_anim_if_invalid(unit_const_ptr animated_unit
 	, const std::string& event
 	, const map_location &src

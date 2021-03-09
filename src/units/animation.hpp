@@ -222,6 +222,16 @@ public:
 		, const_attack_ptr second_attack = nullptr
 		, int value2 = 0);
 
+	bool has_animation(unit_const_ptr animated_unit
+		, const std::string& event
+		, const map_location &src
+		, const map_location &dst
+		, const int value
+		, const unit_animation::hit_type hit_type
+		, const_attack_ptr attack
+		, const_attack_ptr second_attack
+		, int value2) const;
+
 	void replace_anim_if_invalid(unit_const_ptr animated_unit
 		, const std::string& event
 		, const map_location& src = map_location::null_location()
