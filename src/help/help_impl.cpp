@@ -1504,7 +1504,7 @@ unsigned image_width(const std::string &filename)
 
 void push_tab_pair(std::vector<help::item> &v, const std::string &s, const std::optional<std::string> &image, unsigned padding)
 {
-	help::item item(s, font::line_width(s, normal_font_size));
+	help::item item(s, font::pango_line_width(s, normal_font_size));
 	if (image) {
 		// If the image doesn't exist, don't add padding.
 		auto width = image_width(*image);
