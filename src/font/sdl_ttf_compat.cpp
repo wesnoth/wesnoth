@@ -14,6 +14,7 @@
 
 #include "font/sdl_ttf_compat.hpp"
 
+#include "font/standard_colors.hpp"
 #include "log.hpp"
 #include "sdl/utils.hpp"
 #include "serialization/unicode.hpp"
@@ -174,6 +175,12 @@ SDL_Rect pango_draw_text(surface& dst, const SDL_Rect& area, int size, const col
 	}
 
 	return res;
+}
+
+SDL_Rect pango_text_area(const std::string& text, int size, pango_text::FONT_STYLE style)
+{
+	const SDL_Rect area {0,0,10000,10000};
+	return pango_draw_text(nullptr, area, size, font::NORMAL_COLOR, text, 0, 0, false, style);
 }
 
 } // end namespace font

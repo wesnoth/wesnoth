@@ -82,4 +82,9 @@ SDL_Rect pango_draw_text(surface& dst, const SDL_Rect& area, int size, const col
  */
 SDL_Rect pango_draw_text(CVideo* gui, const SDL_Rect& area, int size, const color_t& color, const std::string& text, int x, int y, bool use_tooltips = false, pango_text::FONT_STYLE style = pango_text::STYLE_NORMAL);
 
+/**
+ * Calculate the size of a text (in pixels) if it were to be drawn.
+ */
+SDL_Rect pango_text_area(const std::string& text, int size, pango_text::FONT_STYLE style = pango_text::STYLE_NORMAL);
+
 } // end namespace font
