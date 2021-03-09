@@ -477,6 +477,26 @@ pango_text& pango_text::set_add_outline(bool do_add)
 	return *this;
 }
 
+int pango_text::get_max_glyph_height() const
+{
+	p_font font{ get_font_families(font_class_), font_size_, font_style_ };
+
+	PangoFont* f = pango_font_map_load_font(
+		pango_cairo_font_map_get_default(),
+		context_.get(),
+		font.get());
+
+	PangoFontMetrics* m = pango_font_get_metrics(f, nullptr);
+
+	auto ascent = pango_font_metrics_get_ascent(m);
+	auto descent = pango_font_metrics_get_descent(m);
+
+	pango_font_metrics_unref(m);
+	g_object_unref(f);
+
+	return ceil(pango_units_to_double(ascent + descent));
+}
+
 void pango_text::recalculate(const bool force) const
 {
 	if(calculation_dirty_ || force) {
@@ -898,6 +918,16 @@ pango_text& get_text_renderer()
 {
 	static pango_text text_renderer;
 	return text_renderer;
+}
+
+int get_max_height(unsigned size, font::family_class fclass, pango_text::FONT_STYLE style)
+{
+	// Reset metrics to defaults
+	return get_text_renderer()
+		.set_family_class(fclass)
+		.set_font_style(style)
+		.set_font_size(size)
+		.get_max_glyph_height();
 }
 
 } // namespace font
