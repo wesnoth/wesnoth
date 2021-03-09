@@ -518,6 +518,9 @@ PangoRectangle pango_text::calculate_size(PangoLayout& layout) const
 		w *= characters_per_line_;
 
 		maximum_width = ceil(pango_units_to_double(w));
+
+		pango_font_metrics_unref(m);
+		g_object_unref(f);
 	} else {
 		maximum_width = maximum_width_;
 	}
