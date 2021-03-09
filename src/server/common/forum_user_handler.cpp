@@ -247,4 +247,8 @@ bool fuh::db_topic_id_exists(int topic_id) {
 	return conn_.topic_id_exists(topic_id);
 }
 
+void fuh::db_insert_addon_info(const std::string& instance_version, const std::string& id, const std::string& name, const std::string& type, const std::string& version, bool forum_auth, int topic_id) {
+	conn_.insert_addon_info(instance_version, id, name, type, version, forum_auth, topic_id);
+}
+
 #endif //HAVE_MYSQLPP

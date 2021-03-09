@@ -208,6 +208,19 @@ public:
 	 */
 	bool db_topic_id_exists(int topic_id);
 
+	/**
+	 * Inserts information about an uploaded add-on into the database.
+	 * 
+	 * @param instance_version The version of campaignd the add-on was uploaded to.
+	 * @param id The add-on's ID (aka directory name).
+	 * @param name The add-on's name from the pbl.
+	 * @param type The add-on's type from the pbl.
+	 * @param version The add-on's version from the pbl.
+	 * @param forum_auth Whether the provided author and password should be matched a forum account or not.
+	 * @param topic_id The forum topic ID of the add-on's feedback thread, 0 if not present.
+	 */
+	void db_insert_addon_info(const std::string& instance_version, const std::string& id, const std::string& name, const std::string& type, const std::string& version, bool forum_auth, int topic_id);
+
 private:
 	/** An instance of the class responsible for executing the queries and handling the database connection. */
 	dbconn conn_;

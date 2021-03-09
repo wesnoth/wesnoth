@@ -143,4 +143,5 @@ public:
 	virtual void db_set_oos_flag(const std::string& uuid, int game_id) = 0;
 	virtual void async_test_query(boost::asio::io_service& io_service, int limit) = 0;
 	virtual bool db_topic_id_exists(int topic_id) = 0;
+	virtual void db_insert_addon_info(const std::string& instance_version, const std::string& id, const std::string& name, const std::string& type, const std::string& version, bool forum_auth, int topic_id) = 0;
 };
