@@ -19,6 +19,7 @@
 #include "server/campaignd/blacklist.hpp"
 #include "server/common/server_base.hpp"
 #include "server/common/simple_wml.hpp"
+#include "server/common/user_handler.hpp"
 
 #include <boost/asio/basic_waitable_timer.hpp>
 
@@ -95,6 +96,7 @@ public:
 
 private:
 
+	std::unique_ptr<user_handler> user_handler_;
 	typedef std::function<void (server*, const request& req)> request_handler;
 	typedef std::map<std::string, request_handler> request_handlers_table;
 

@@ -191,7 +191,10 @@ else:
 
 #---campaignd---
 campaignd_sources = GetSources("campaignd")
-env.WesnothProgram("campaignd", campaignd_sources + libwesnoth_core, have_server_prereqs, OBJPREFIX = "campaignd_")
+if env["forum_user_handler"]:
+    env.WesnothProgram("campaignd", campaignd_sources + libwesnoth_core + libmariadbpp, have_server_prereqs, OBJPREFIX = "campaignd_")
+else:
+    env.WesnothProgram("campaignd", campaignd_sources + libwesnoth_core, have_server_prereqs, OBJPREFIX = "campaignd_")
 
 #---boost_unit_tests---
 test_sources = GetSources("boost_unit_tests")
