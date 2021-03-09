@@ -222,7 +222,7 @@ std::shared_ptr<TTF_Font> sdl_ttf::get_font(font_id id)
  * Interface to SDL_TTF
  */
 
-static surface render_text(const std::string& text, int fontsize, const color_t& color, int style, bool use_markup)
+static surface render_text(const std::string& text, int fontsize, const color_t& color, int style)
 {
 	// we keep blank lines and spaces (may be wanted for indentation)
 	const std::vector<std::string> lines = utils::split(text, '\n', 0);
@@ -235,21 +235,9 @@ static surface render_text(const std::string& text, int fontsize, const color_t&
 		int sz = fontsize;
 		int text_style = style;
 
-		std::string::const_iterator after_markup = use_markup ?
-			parse_markup(ln->begin(), ln->end(), &sz, nullptr, &text_style) : ln->begin();
 		text_surface txt_surf(sz, color, text_style);
 
-		if (after_markup == ln->end() && (ln+1 != ln_end || lines.begin()+1 == ln_end)) {
-			// we replace empty line by a space (to have a line height)
-			// except for the last line if we have several
-			txt_surf.set_text(" ");
-		} else if (after_markup == ln->begin()) {
-			// simple case, no markup to skip
-			txt_surf.set_text(*ln);
-		} else  {
-			const std::string line(after_markup,ln->end());
-			txt_surf.set_text(line);
-		}
+		txt_surf.set_text(*ln);
 
 		const text_surface& cached_surf = text_cache::find(txt_surf);
 		const std::vector<surface>&res = cached_surf.get_surfaces();
@@ -294,8 +282,7 @@ static surface render_text(const std::string& text, int fontsize, const color_t&
 
 surface get_rendered_text(const std::string& str, int size, const color_t& color, int style)
 {
-	// TODO maybe later also to parse markup here, but a lot to check
-	return render_text(str, size, color, style, false);
+	return render_text(str, size, color, style);
 }
 
 SDL_Rect draw_text_line(surface& gui_surface, const SDL_Rect& area, int size,
@@ -314,8 +301,7 @@ SDL_Rect draw_text_line(surface& gui_surface, const SDL_Rect& area, int size,
 
 	const std::string etext = make_text_ellipsis(text, size, area.w);
 
-	// for the main current use, we already parsed markup
-	surface surface(render_text(etext,size,color,style,false));
+	surface surface(render_text(etext,size,color,style));
 	if(surface == nullptr) {
 		return {0, 0, 0, 0};
 	}
