@@ -45,7 +45,7 @@ std::pair<int, int> pango_line_size(const std::string& line, int font_size, font
 /**
  * Determine the width of a line of text given a certain font size.
  */
-inline int pango_line_width(const std::string& line, int font_size, font::pango_text::FONT_STYLE font_style)
+inline int pango_line_width(const std::string& line, int font_size, font::pango_text::FONT_STYLE font_style = font::pango_text::STYLE_NORMAL)
 {
 	return pango_line_size(line, font_size, font_style).first;
 }
