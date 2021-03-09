@@ -35,6 +35,7 @@ dbconn::dbconn(const config& c)
 	, db_user_group_table_(c["db_user_group_table"].str())
 	, db_tournament_query_(c["db_tournament_query"].str())
 	, db_topics_table_(c["db_topics_table"].str())
+	, db_addon_info_table_(c["db_addon_info_table"].str())
 {
 	try
 	{
@@ -358,6 +359,19 @@ bool dbconn::topic_id_exists(int topic_id) {
 	}
 }
 
+void dbconn::insert_addon_info(const std::string& instance_version, const std::string& id, const std::string& name, const std::string& type, const std::string& version, bool forum_auth, int topic_id)
+{
+	try
+	{
+		modify(connection_, "INSERT INTO `"+db_addon_info_table_+"`(INSTANCE_VERSION, ADDON_ID, ADDON_NAME, TYPE, VERSION, FORUM_AUTH, FEEDBACK_TOPIC) VALUES(?, ?, ?, ?, ?, ?, ?)",
+			instance_version, id, name, type, version, forum_auth, topic_id);
+	}
+	catch(const mariadb::exception::base& e)
+	{
+		log_sql_exception("Unable to insert add-on info for add-on `"+id+"` for instance `"+instance_version+"`.", e);
+	}
+}
+
 //
 // handle complex query results
 //
@@ -476,6 +490,12 @@ void dbconn::prepare(mariadb::statement_ref stmt, int i, Arg arg, Args&&... args
 	prepare(stmt, i, args...);
 }
 
+template<>
+int dbconn::prepare(mariadb::statement_ref stmt, int i, bool arg)
+{
+	stmt->set_boolean(i++, arg);
+	return i;
+}
 template<>
 int dbconn::prepare(mariadb::statement_ref stmt, int i, int arg)
 {

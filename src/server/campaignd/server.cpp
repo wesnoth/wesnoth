@@ -459,6 +459,10 @@ void server::load_config()
 
 #ifdef HAVE_MYSQLPP
 	if(const config& user_handler = cfg_.child("user_handler")) {
+		if(server_id_ == "") {
+			ERR_CS << "The server id must be set when database support is used.\n";
+			exit(1);
+		}
 		user_handler_.reset(new fuh(user_handler));
 	}
 #endif
@@ -1452,8 +1456,15 @@ void server::handle_upload(const server::request& req)
 	addon["uploads"] = 1 + addon["uploads"].to_int();
 
 	addon.clear_children("feedback");
+	int topic_id = 0;
 	if(const config& url_params = upload.child("feedback")) {
 		addon.add_child("feedback", url_params);
+		// already validated that this can be converted to an int in validate_addon()
+		topic_id = url_params["topic_id"].to_int();
+	}
+
+	if(user_handler_) {
+		user_handler_->db_insert_addon_info(server_id_, name, addon["title"].str(), addon["type"].str(), addon["version"].str(), false, topic_id);
 	}
 
 	// Copy in any metadata translations provided directly in the .pbl.

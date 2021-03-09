@@ -123,3 +123,25 @@ create table game_content_info
     VERSION           VARCHAR(255) NOT NULL,
     PRIMARY KEY (INSTANCE_UUID, GAME_ID, TYPE, ID)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- information about an uploaded addon
+-- INSTANCE_VERSION: the version of the addons server instance
+-- ADDON_ID: the ID of the addon (folder name)
+-- ADDON_NAME: the name of the addon
+-- TYPE: the type of the addon
+-- VERSION: the version of the addon
+-- FORUM_AUTH: whether forum authentication is to be used when uploading
+-- UPLOADED_ON: when the addon was uploaded
+-- FEEDBACK_TOPIC: the forum topic ID where feedback for the addon can be posted, 0 if not set
+create table addon_info
+(
+    INSTANCE_VERSION VARCHAR(255) NOT NULL,
+    ADDON_ID         VARCHAR(255) NOT NULL,
+    ADDON_NAME       VARCHAR(255) NOT NULL,
+    TYPE             VARCHAR(255) NOT NULL,
+    VERSION          VARCHAR(255) NOT NULL,
+    FORUM_AUTH       BIT(1) NOT NULL,
+    UPLOADED_ON      TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    FEEDBACK_TOPIC   INT UNSIGNED NOT NULL,
+    PRIMARY KEY (INSTANCE_VERSION, ADDON_ID, VERSION)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
