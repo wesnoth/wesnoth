@@ -35,9 +35,6 @@ SDL_Rect draw_text_line(surface& gui_surface, const SDL_Rect& area, int size,
 						const color_t& color, const std::string& text,
 						int x, int y, bool use_tooltips, int style);
 
-// Returns the maximum height of a font, in pixels
-int get_max_height(int size);
-
 /**
  * Determine the width of a line of text given a certain font size.
  * The font type used is the default wesnoth font type.

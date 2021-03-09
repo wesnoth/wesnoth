@@ -352,15 +352,6 @@ SDL_Rect draw_text_line(surface& gui_surface, const SDL_Rect& area, int size,
 	return dest;
 }
 
-int get_max_height(int size)
-{
-	// Only returns the maximal size of the first font
-	const auto font = sdl_ttf::get_font(font_id(0, size));
-	if(font == nullptr)
-		return 0;
-	return TTF_FontHeight(font.get());
-}
-
 int line_width(const std::string& line, int font_size, int style)
 {
 	return line_size(line,font_size,style).w;
