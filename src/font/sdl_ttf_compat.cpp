@@ -15,7 +15,10 @@
 #include "font/sdl_ttf_compat.hpp"
 
 #include "log.hpp"
+#include "sdl/utils.hpp"
 #include "serialization/unicode.hpp"
+#include "tooltips.hpp"
+#include "video.hpp"
 
 static lg::log_domain log_font("font");
 #define DBG_FT LOG_STREAM(debug, log_font)
@@ -125,6 +128,49 @@ std::string pango_word_wrap(const std::string& unwrapped_text, int font_size, in
 		res += line;
 		if(--max_lines == 0)
 			break;
+	}
+
+	return res;
+}
+
+SDL_Rect pango_draw_text(CVideo* gui, const SDL_Rect& area, int size, const color_t& color, const std::string& text, int x, int y, bool use_tooltips, pango_text::FONT_STYLE style)
+{
+	static surface null_surf{};
+
+	return pango_draw_text(gui != nullptr ? gui->getSurface() : null_surf, area, size, color, text, x, y, use_tooltips, style);
+}
+
+SDL_Rect pango_draw_text(surface& dst, const SDL_Rect& area, int size, const color_t& color, const std::string& text, int x, int y, bool use_tooltips, pango_text::FONT_STYLE style)
+{
+	auto& ptext = private_renderer();
+
+	ptext.set_text(text, false);
+	ptext.set_font_size(size)
+		 .set_font_style(style)
+		 .set_maximum_width(-1)
+		 .set_maximum_height(area.h, true)
+		 .set_foreground_color(color)
+		 .set_ellipse_mode(PANGO_ELLIPSIZE_END);
+
+	auto s = ptext.render();
+
+	bool ellipsized = false;
+
+	if(s->w > area.w) {
+		ptext.set_maximum_width(area.w);
+		s = ptext.render();
+		ellipsized = true;
+	}
+
+	SDL_Rect res = { x, y, s->w, s->h };
+
+	if(dst) {
+		SDL_Rect src = { 0, 0, s->w, s->h };
+		sdl_blit(s, &src, dst, &res);
+	}
+
+	if(ellipsized && use_tooltips) {
+		tooltips::add_tooltip(res, text);
 	}
 
 	return res;

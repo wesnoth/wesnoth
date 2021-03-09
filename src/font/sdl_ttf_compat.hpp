@@ -17,9 +17,18 @@
 /**
  * @file
  * Transitional API for porting SDL_ttf-based code to Pango. Do NOT use in new code!
+ *
+ * @note GUI1 markup is not supported by this transitional API for cost-benefit reasons.
+ * Not only does implementing it require a lot more work to go over text line by line,
+ * it also had major design flaws -- namely, only applying to whole lines with variable
+ * spans that would be decided by the layout algorithm depending on available space,
+ * rather than on a physical line basis (markup start till EOL) or fixed span basis (e.g.
+ * the special markup used by the Help browser, or Pango markup).
  */
 
 #include "font/text.hpp"
+
+class CVideo;
 
 namespace font {
 
@@ -50,5 +59,27 @@ std::string pango_line_ellipsize(const std::string& text, int font_size, int max
  * Uses Pango to word wrap text.
  */
 std::string pango_word_wrap(const std::string& unwrapped_text, int font_size, int max_width, int max_height = -1, int max_lines = -1, bool partial_line = false);
+
+/**
+ * Draws text on a surface.
+ *
+ * The text will be clipped to area.  If the text runs outside of area
+ * horizontally, an ellipsis will be displayed at the end of it.
+ *
+ * If use_tooltips is true, then text with an ellipsis will have a tooltip
+ * set for it equivalent to the entire contents of the text.
+ *
+ * A bounding rectangle of the text is returned. If dst is nullptr, then the
+ * text will not be drawn, and a bounding rectangle only will be returned.
+ */
+SDL_Rect pango_draw_text(surface& dst, const SDL_Rect& area, int size, const color_t& color, const std::string& text, int x, int y, bool use_tooltips = false, pango_text::FONT_STYLE style = pango_text::STYLE_NORMAL);
+
+/**
+ * Draws text on the screen.
+ *
+ * gui can be nullptr, in which case the bounding rectangle will still be
+ * returned.
+ */
+SDL_Rect pango_draw_text(CVideo* gui, const SDL_Rect& area, int size, const color_t& color, const std::string& text, int x, int y, bool use_tooltips = false, pango_text::FONT_STYLE style = pango_text::STYLE_NORMAL);
 
 } // end namespace font
