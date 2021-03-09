@@ -729,11 +729,11 @@ void unit_attack(display * disp, game_board & board,
 		if(animator.has_animation(leader.get_shared_ptr(), "leading", ability.teacher_loc,
 			att->get_location(), damage, hit_type, weapon, secondary_attack, swing) && leading_playable){
 				continue;
-			}
+		}
 		if(animator.has_animation(leader.get_shared_ptr(), "resistance", ability.teacher_loc,
 			def->get_location(), damage, hit_type, weapon, secondary_attack, swing) && helping_playable){
 				continue;
-			}
+		}
 		animator.add_animation(leader.get_shared_ptr(), "teaching", ability.teacher_loc,
 			att->get_location(), damage, true,  "", {0,0,0},
 			hit_type, weapon, secondary_attack, swing);
