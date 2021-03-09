@@ -1372,6 +1372,21 @@ ADDON_CHECK_STATUS server::validate_addon(const server::request& req, config*& e
 		return ADDON_CHECK_STATUS::UNEXPECTED_DELTA;
 	}
 
+	if(const config& url_params = upload.child("feedback")) {
+		try {
+			int topic_id = std::stoi(url_params["topic_id"].str("0"));
+			if(user_handler_ && topic_id != 0) {
+				if(!user_handler_->db_topic_id_exists(topic_id)) {
+					LOG_CS << "Validation error: feedback topic ID does not exist in forum database\n";
+					return ADDON_CHECK_STATUS::FEEDBACK_TOPIC_ID_NOT_FOUND;
+				}
+			}
+		} catch(...) {
+			LOG_CS << "Validation error: feedback topic ID is not a valid number\n";
+			return ADDON_CHECK_STATUS::BAD_FEEDBACK_TOPIC_ID;
+		}
+	}
+
 	return ADDON_CHECK_STATUS::SUCCESS;
 }
 

@@ -18,6 +18,13 @@
 --     PRIMARY KEY (USER_ID, GROUP_ID)
 -- ) ENGINE=InnoDB;
 
+-- a minimal topics table, if not using a phpbb3 installation
+-- create table topics
+-- (
+--     TOPIC_ID MEDIUMINT(8) UNSIGNED NOT NULL AUTO_INCREMENT,
+--     PRIMARY KEY (TOPIC_ID)
+-- ) ENGINE=InnoDB;
+
 -- table which the forum inserts bans into, which wesnothd checks during login
 -- create table ban
 -- (
