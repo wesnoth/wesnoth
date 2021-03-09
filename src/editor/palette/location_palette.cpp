@@ -18,6 +18,7 @@
 
 #include "gettext.hpp"
 #include "font/marked-up_text.hpp"
+#include "font/sdl_ttf_compat.hpp"
 #include "font/standard_colors.hpp"
 #include "tooltips.hpp"
 
@@ -64,7 +65,7 @@ public:
 		if (state_.selected) {
 			sdl::draw_rectangle(location(), {255, 255, 255, 255});
 		}
-		font::draw_text(&video(), location(), 16, font::NORMAL_COLOR, desc_.empty() ? id_ : desc_, location().x + 2, location().y, 0);
+		font::pango_draw_text(&video(), location(), 16, font::NORMAL_COLOR, desc_.empty() ? id_ : desc_, location().x + 2, location().y, 0);
 	}
 
 	//TODO move to widget

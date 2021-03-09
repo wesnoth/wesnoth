@@ -23,6 +23,7 @@
 #include "picture.hpp"
 #include "log.hpp"
 #include "font/marked-up_text.hpp"
+#include "font/sdl_ttf_compat.hpp"
 #include "font/standard_colors.hpp"
 #include "sdl/rect.hpp"
 #include "serialization/string_utils.hpp"
@@ -227,8 +228,7 @@ void button::calculate_size()
 	}
 
 	if (type_ != TYPE_IMAGE){
-		textRect_ = font::draw_text(nullptr, video().screen_area(), font_size,
-									font::BUTTON_COLOR, label_text_, 0, 0);
+		textRect_ = font::pango_draw_text(nullptr, video().screen_area(), font_size, font::BUTTON_COLOR, label_text_, 0, 0);
 	}
 
 	// TODO: There's a weird text clipping bug, allowing the code below to run fixes it.
@@ -382,7 +382,7 @@ void button::draw_contents()
 		clipArea.y += offset;
 		clipArea.w -= 2*offset;
 		clipArea.h -= 2*offset;
-		font::draw_text(&video(), clipArea, font_size, button_color, label_text_, textx, texty);
+		font::pango_draw_text(&video(), clipArea, font_size, button_color, label_text_, textx, texty);
 	}
 }
 

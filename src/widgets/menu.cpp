@@ -22,6 +22,7 @@
 #include "language.hpp"
 #include "picture.hpp"
 #include "font/marked-up_text.hpp"
+#include "font/sdl_ttf_compat.hpp"
 #include "sdl/rect.hpp"
 #include "sound.hpp"
 #include "utils/general.hpp"
@@ -811,7 +812,7 @@ SDL_Rect menu::style::item_size(const std::string& item) const {
 		else {
 			const SDL_Rect area {0,0,10000,10000};
 			const SDL_Rect font_size =
-				font::draw_text(nullptr,area,get_font_size(),font::NORMAL_COLOR,str,0,0);
+				font::pango_draw_text(nullptr,area,get_font_size(),font::NORMAL_COLOR,str,0,0);
 			res.w += font_size.w;
 			res.h = std::max<int>(font_size.h, res.h);
 		}
@@ -984,7 +985,7 @@ void menu::draw_row(const std::size_t row_index, const SDL_Rect& rect, ROW_TYPE 
 				const SDL_Rect& text_size = font::text_area(str,style_->get_font_size());
 				const std::size_t y = rect.y + (rect.h - text_size.h)/2;
 				const std::size_t padding = 2;
-				font::draw_text(&video(),column,style_->get_font_size(),font::NORMAL_COLOR,to_show,
+				font::pango_draw_text(&video(),column,style_->get_font_size(),font::NORMAL_COLOR,to_show,
 					(type == HEADING_ROW ? xpos+padding : xpos), y);
 
 				if(type == HEADING_ROW && sortby_ == int(i)) {
