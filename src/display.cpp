@@ -22,6 +22,7 @@
 #include "display.hpp"
 #include "fake_unit_manager.hpp"
 #include "font/sdl_ttf.hpp"
+#include "font/sdl_ttf_compat.hpp"
 #include "font/text.hpp"
 #include "preferences/game.hpp"
 #include "gettext.hpp"
@@ -1465,7 +1466,7 @@ static void draw_label(CVideo& video, surface target, const theme::label& label)
 			tooltips::add_tooltip(loc,text);
 		}
 	} else if(text.empty() == false) {
-		font::draw_text(&video,loc,label.font_size(),font::NORMAL_COLOR,text,loc.x,loc.y);
+		font::pango_draw_text(&video,loc,label.font_size(),font::NORMAL_COLOR,text,loc.x,loc.y);
 	}
 
 }
