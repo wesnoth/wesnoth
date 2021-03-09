@@ -42,6 +42,10 @@
 #include "hash.hpp"
 #include "utils/optimer.hpp"
 
+#ifdef HAVE_MYSQLPP
+#include "server/common/forum_user_handler.hpp"
+#endif
+
 #include <csignal>
 #include <ctime>
 #include <iomanip>
@@ -260,6 +264,7 @@ std::string simple_wml_escape(const std::string& text)
 
 server::server(const std::string& cfg_file, unsigned short port)
 	: server_base(default_campaignd_port, true)
+	, user_handler_(nullptr)
 	, capabilities_(cap_defaults)
 	, addons_()
 	, dirty_addons_()
@@ -451,6 +456,12 @@ void server::load_config()
 	}
 
 	LOG_CS << "Loaded addons metadata. " << addons_.size() << " addons found.\n";
+
+#ifdef HAVE_MYSQLPP
+	if(const config& user_handler = cfg_.child("user_handler")) {
+		user_handler_.reset(new fuh(user_handler));
+	}
+#endif
 }
 
 std::ostream& operator<<(std::ostream& o, const server::request& r)
