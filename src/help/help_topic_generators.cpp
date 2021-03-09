@@ -17,6 +17,7 @@
 #include "help/help_topic_generators.hpp"
 
 #include "font/sdl_ttf.hpp"             // for line_width
+#include "font/sdl_ttf_compat.hpp"
 #include "game_config.hpp"              // for debug, menu_contract, etc
 #include "preferences/game.hpp"         // for encountered_terrains, etc
 #include "gettext.hpp"                  // for _, gettext, N_
@@ -443,8 +444,8 @@ std::string unit_topic_generator::operator()() const {
 				std::stringstream random_count;
 				random_count << " (" << (type_.num_traits() - must_have_traits.size() - must_have_nameless_traits) << ") : ";
 
-				int second_line_whitespace = font::line_width(traits_label+must_have_count.str(), normal_font_size)
-					- font::line_width(random_count.str(), normal_font_size);
+				int second_line_whitespace = font::pango_line_width(traits_label+must_have_count.str(), normal_font_size)
+					- font::pango_line_width(random_count.str(), normal_font_size);
 				// This ensures that the second line is justified so that the ':' characters are aligned.
 
 				ss << must_have_count.str();
@@ -635,7 +636,7 @@ std::string unit_topic_generator::operator()() const {
 						attack_ss << ", "; //comma placed before next special
 					}
 				}
-				row.emplace_back(attack_ss.str(), font::line_width(lang_special, normal_font_size));
+				row.emplace_back(attack_ss.str(), font::pango_line_width(lang_special, normal_font_size));
 			}
 			table.push_back(row);
 		}
@@ -686,7 +687,7 @@ std::string unit_topic_generator::operator()() const {
 		const std::string markup = str.str();
 		str.str(clear_stringstream);
 		str << resist;
-		row.emplace_back(markup, font::line_width(str.str(), normal_font_size));
+		row.emplace_back(markup, font::pango_line_width(str.str(), normal_font_size));
 		resistance_table.push_back(row);
 	}
 	ss << generate_table(resistance_table);
@@ -758,7 +759,7 @@ std::string unit_topic_generator::operator()() const {
 
 			row.emplace_back("<img>src='" + final_image + "'</img> " +
 					make_link(m.name, "..terrain_" + m.id),
-				font::line_width(m.name, normal_font_size) + (high_res ? 32 : 16) );
+				font::pango_line_width(m.name, normal_font_size) + (high_res ? 32 : 16) );
 
 			//defense  -  range: +10 % .. +70 %
 			// passing false to select the more saturated red-to-green scale
@@ -769,7 +770,7 @@ std::string unit_topic_generator::operator()() const {
 			std::string markup = str.str();
 			str.str(clear_stringstream);
 			str << m.defense << "%";
-			row.emplace_back(markup, font::line_width(str.str(), normal_font_size));
+			row.emplace_back(markup, font::pango_line_width(str.str(), normal_font_size));
 
 			//movement  -  range: 1 .. 5, movetype::UNREACHABLE=impassable
 			str.str(clear_stringstream);
@@ -793,7 +794,7 @@ std::string unit_topic_generator::operator()() const {
 			markup = str.str();
 			str.str(clear_stringstream);
 			str << m.movement_cost;
-			row.emplace_back(markup, font::line_width(str.str(), normal_font_size));
+			row.emplace_back(markup, font::pango_line_width(str.str(), normal_font_size));
 
 			//defense cap
 			if (has_terrain_defense_caps) {
@@ -811,7 +812,7 @@ std::string unit_topic_generator::operator()() const {
 				} else {
 					str << font::unicode_figure_dash;
 				}
-				row.emplace_back(markup, font::line_width(str.str(), normal_font_size));
+				row.emplace_back(markup, font::pango_line_width(str.str(), normal_font_size));
 			}
 
 			//vision
@@ -839,7 +840,7 @@ std::string unit_topic_generator::operator()() const {
 				markup = str.str();
 				str.str(clear_stringstream);
 				str << m.vision_cost;
-				row.emplace_back(markup, font::line_width(str.str(), normal_font_size));
+				row.emplace_back(markup, font::pango_line_width(str.str(), normal_font_size));
 			}
 
 			//jamming
@@ -879,7 +880,7 @@ std::string unit_topic_generator::operator()() const {
 }
 
 void unit_topic_generator::push_header(std::vector< item > &row,  const std::string& name) const {
-	row.emplace_back(bold(name), font::line_width(name, normal_font_size, TTF_STYLE_BOLD));
+	row.emplace_back(bold(name), font::pango_line_width(name, normal_font_size, font::pango_text::STYLE_BOLD));
 }
 
 } // end namespace help
