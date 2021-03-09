@@ -542,6 +542,14 @@ std::string addon_check_status_desc(unsigned int code)
 			N_("Version number not greater than the latest uploaded version.")
 		},
 		{
+			ADDON_CHECK_STATUS::BAD_FEEDBACK_TOPIC_ID,
+			N_("Feedback topic id is not a number.")
+		},
+		{
+			ADDON_CHECK_STATUS::FEEDBACK_TOPIC_ID_NOT_FOUND,
+			N_("Feedback topic does not exist.")
+		},
+		{
 			ADDON_CHECK_STATUS::INVALID_UTF8_ATTRIBUTE,
 			N_("The add-on publish information contains an invalid UTF-8 sequence.")
 		},

@@ -200,6 +200,14 @@ public:
 	 */
 	void async_test_query(boost::asio::io_service& io_service, int limit);
 
+	/**
+	 * Checks whether a forum thread with @a topic_id exists.
+	 * 
+	 * @param topic_id The topic id to check for.
+	 * @return True if the thread exists or there was a database failure, false if the topic wasn't found.
+	 */
+	bool db_topic_id_exists(int topic_id);
+
 private:
 	/** An instance of the class responsible for executing the queries and handling the database connection. */
 	dbconn conn_;

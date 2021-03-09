@@ -60,6 +60,8 @@ enum class ADDON_CHECK_STATUS : unsigned int
 	BAD_TYPE					= 0x207,		/**< Bad add-on type */
 	VERSION_NOT_INCREMENTED		= 0x208,		/**< Version number is not an increment */
 	INVALID_UTF8_ATTRIBUTE		= 0x2FF,		/**< Invalid UTF-8 sequence in add-on metadata */
+	BAD_FEEDBACK_TOPIC_ID       = 0x209,        /**< The provided topic ID for the addon's feedback forum thread is invalid */
+	FEEDBACK_TOPIC_ID_NOT_FOUND = 0x2A0,        /**< The provided topic ID for the addon's feedback forum thread wasn't found in the forum database */
 	//
 	// Server errors
 	//

@@ -34,6 +34,7 @@ dbconn::dbconn(const config& c)
 	, db_game_content_info_table_(c["db_game_content_info_table"].str())
 	, db_user_group_table_(c["db_user_group_table"].str())
 	, db_tournament_query_(c["db_tournament_query"].str())
+	, db_topics_table_(c["db_topics_table"].str())
 {
 	try
 	{
@@ -341,6 +342,19 @@ void dbconn::set_oos_flag(const std::string& uuid, int game_id)
 	catch(const mariadb::exception::base& e)
 	{
 		log_sql_exception("Failed to set the OOS flag for UUID `"+uuid+"` and game ID `"+std::to_string(game_id)+"`", e);
+	}
+}
+
+bool dbconn::topic_id_exists(int topic_id) {
+	try
+	{
+		return exists(connection_, "SELECT 1 FROM `"+db_topics_table_+"` WHERE TOPIC_ID = ?",
+			topic_id);
+	}
+	catch(const mariadb::exception::base& e)
+	{
+		log_sql_exception("Unable to check whether `"+std::to_string(topic_id)+"` exists.", e);
+		return true;
 	}
 }
 

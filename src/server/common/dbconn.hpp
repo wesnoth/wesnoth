@@ -143,6 +143,11 @@ class dbconn
 		 */
 		void set_oos_flag(const std::string& uuid, int game_id);
 
+		/**
+		 * @see forum_user_handler::db_topic_id_exists().
+		 */
+		bool topic_id_exists(int topic_id);
+
 	private:
 		/**
 		 * The account used to connect to the database.
@@ -169,6 +174,8 @@ class dbconn
 		std::string db_user_group_table_;
 		/** The text of the SQL query to use to retrieve any currently active tournaments. */
 		std::string db_tournament_query_;
+		/** The name of the table that contains phpbb forum thread information */
+		std::string db_topics_table_;
 
 		/**
 		 * This is used to write out error text when an SQL-related exception occurs.

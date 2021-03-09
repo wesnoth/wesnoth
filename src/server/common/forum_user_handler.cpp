@@ -243,4 +243,8 @@ void fuh::async_test_query(boost::asio::io_service& io_service, int limit) {
 	 });
 }
 
+bool fuh::db_topic_id_exists(int topic_id) {
+	return conn_.topic_id_exists(topic_id);
+}
+
 #endif //HAVE_MYSQLPP
