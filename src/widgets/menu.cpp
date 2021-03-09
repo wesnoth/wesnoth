@@ -966,26 +966,11 @@ void menu::draw_row(const std::size_t row_index, const SDL_Rect& rect, ROW_TYPE 
 				}
 			} else {
 				column.x = xpos;
-				const bool has_wrap = (str.find_first_of("\r\n") != std::string::npos);
-				//prevent ellipsis calculation if there is any line wrapping
-				std::string to_show = str;
-				if (use_ellipsis_ && !has_wrap)
-				{
-					int fs = style_->get_font_size();
-					int style = TTF_STYLE_NORMAL;
-					int w = rect.w - (xpos - rect.x) - 2 * style_->get_thickness();
-					std::string::const_iterator it2_beg = to_show.begin(), it2_end = to_show.end(),
-						it2 = font::parse_markup(it2_beg, it2_end, &fs, nullptr, &style);
-					if (it2 != it2_end) {
-						std::string tmp(it2, it2_end);
-						to_show.erase(it2 - it2_beg, it2_end - it2_beg);
-						to_show += font::make_text_ellipsis(tmp, fs, w, style);
-					}
-				}
-				const SDL_Rect& text_size = font::text_area(str,style_->get_font_size());
+
+				const SDL_Rect& text_size = font::pango_text_area(str,style_->get_font_size());
 				const std::size_t y = rect.y + (rect.h - text_size.h)/2;
 				const std::size_t padding = 2;
-				font::pango_draw_text(&video(),column,style_->get_font_size(),font::NORMAL_COLOR,to_show,
+				font::pango_draw_text(&video(),column,style_->get_font_size(),font::NORMAL_COLOR,str,
 					(type == HEADING_ROW ? xpos+padding : xpos), y);
 
 				if(type == HEADING_ROW && sortby_ == int(i)) {

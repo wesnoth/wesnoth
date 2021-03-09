@@ -21,6 +21,7 @@
 #include "preferences/game.hpp"
 #include "log.hpp"
 #include "font/marked-up_text.hpp"
+#include "font/sdl_ttf_compat.hpp"
 #include "mp_ui_alerts.hpp"
 #include "serialization/string_utils.hpp"
 #include "color.hpp"
@@ -104,7 +105,7 @@ void display_chat_manager::add_chat_message(const std::time_t& time, const std::
 	try {
 		// We've had a joker who send an invalid utf-8 message to crash clients
 		// so now catch the exception and ignore the message.
-		msg = my_disp_.video().faked() ? "" : font::word_wrap_text(msg,font::SIZE_15,my_disp_.map_outside_area().w*3/4);
+		msg = my_disp_.video().faked() ? "" : font::pango_word_wrap(msg,font::SIZE_15,my_disp_.map_outside_area().w*3/4);
 	} catch (utf8::invalid_utf8_exception&) {
 		ERR_NG << "Invalid utf-8 found, chat message is ignored." << std::endl;
 		return;

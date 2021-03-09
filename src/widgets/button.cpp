@@ -208,24 +208,6 @@ void button::calculate_size()
 		set_location(loc_image);
 		return;
 	}
-	const SDL_Rect& loc = location();
-	bool change_size = loc.h == 0 || loc.w == 0;
-
-	if (!change_size) {
-		unsigned w = loc.w - (type_ == TYPE_PRESS || type_ == TYPE_TURBO ? horizontal_padding : checkbox_horizontal_padding + base_width_);
-		if (type_ != TYPE_IMAGE)
-		{
-			int fs = font_size;
-			int style = TTF_STYLE_NORMAL;
-			std::string::const_iterator i_beg = label_text_.begin(), i_end = label_text_.end(),
-				i = font::parse_markup(i_beg, i_end, &fs, nullptr, &style);
-			if (i != i_end) {
-				std::string tmp(i, i_end);
-				label_text_.erase(i - i_beg, i_end - i_beg);
-				label_text_ += font::make_text_ellipsis(tmp, fs, w, style);
-			}
-		}
-	}
 
 	if (type_ != TYPE_IMAGE){
 		textRect_ = font::pango_draw_text(nullptr, video().screen_area(), font_size, font::BUTTON_COLOR, label_text_, 0, 0);
