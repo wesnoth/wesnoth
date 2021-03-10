@@ -152,27 +152,12 @@ hotkey_ptr create_hotkey(const std::string &id, const SDL_Event &event)
 
 	switch (event.type) {
 	case SDL_KEYUP: {
-		if (mods & KMOD_CTRL || mods & KMOD_ALT || mods & KMOD_GUI || CKey::is_uncomposable(event.key) || command.toggle) {
-			auto keyboard = std::make_shared<hotkey_keyboard>();
-			base = std::dynamic_pointer_cast<hotkey_base>(keyboard);
-			SDL_Keycode code;
-			code = event.key.keysym.sym;
-			keyboard->set_keycode(code);
-			keyboard->set_text(SDL_GetKeyName(event.key.keysym.sym));
-		}
-	}
-		break;
-	case SDL_TEXTINPUT: {
-		if(command.toggle) {
-			return nullptr;
-		}
 		auto keyboard = std::make_shared<hotkey_keyboard>();
 		base = std::dynamic_pointer_cast<hotkey_base>(keyboard);
-		std::string text =  std::string(event.text.text);
-		keyboard->set_text(text);
-		if(text == ":" || text == "`") {
-			mods = mods & ~KMOD_SHIFT;
-		}
+		SDL_Scancode code;
+		code = event.key.keysym.scancode;
+		keyboard->set_scancode(code);
+		keyboard->set_text(SDL_GetScancodeName(code));
 	}
 		break;
 	case SDL_MOUSEBUTTONUP: {
@@ -213,12 +198,12 @@ hotkey_ptr load_from_config(const config& cfg)
 		auto keyboard = std::make_shared<hotkey_keyboard>();
 		base = std::dynamic_pointer_cast<hotkey_base>(keyboard);
 
-		SDL_Keycode keycode = SDL_GetKeyFromName(key_cfg.c_str());
-		if (keycode == SDLK_UNKNOWN) {
+		SDL_Scancode scancode = SDL_GetScancodeFromName(key_cfg.c_str());
+		if (scancode == SDL_SCANCODE_UNKNOWN) {
 			ERR_G<< "Unknown key: " << key_cfg << "\n";
 		}
 		keyboard->set_text(key_cfg);
-		keyboard->set_keycode(keycode);
+		keyboard->set_scancode(scancode);
 	}
 
 	if (base == hotkey_ptr()) {
@@ -288,19 +273,8 @@ bool hotkey_keyboard::matches_helper(const SDL_Event &event) const
 	unsigned int mods = sdl_get_mods();
 	const hotkey_command& command = get_hotkey_command(get_command());
 
-	if ((event.type == SDL_KEYDOWN || event.type == SDL_KEYUP) &&
-			(mods & KMOD_CTRL || mods & KMOD_ALT || mods & KMOD_GUI ||
-			command.toggle || CKey::is_uncomposable(event.key))) {
-		return event.key.keysym.sym == keycode_ && mods == mod_;
-	}
-
-	if (event.type == SDL_TEXTINPUT && !command.toggle) {
-		std::string text = std::string(event.text.text);
-		boost::algorithm::to_lower(text);
-		if(text == ":" || text == "`") {
-			mods = mods & ~KMOD_SHIFT;
-		}
-		return text_ == text && utf8::size(std::string(event.text.text)) == 1 && mods == mod_;
+	if (event.type == SDL_KEYDOWN) {
+		return event.key.keysym.scancode == scancode_ && mods == mod_;
 	}
 
 	return false;
@@ -483,11 +457,7 @@ bool is_hotkeyable_event(const SDL_Event &event) {
 
 	unsigned mods = sdl_get_mods();
 
-	if (mods & KMOD_CTRL || mods & KMOD_ALT || mods & KMOD_GUI) {
-		return event.type == SDL_KEYUP;
-	} else {
-		return event.type == SDL_TEXTINPUT || event.type  == SDL_KEYUP;
-	}
+	return event.type == SDL_KEYUP;
 }
 
 }
