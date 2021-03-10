@@ -20,10 +20,10 @@
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
-#include "font/sdl_ttf.hpp"
 #include "gettext.hpp"
 #include "font/marked-up_text.hpp"
 #include "font/standard_colors.hpp"
+#include "lexical_cast.hpp"
 #include "sdl/surface.hpp"
 #include "serialization/string_utils.hpp"
 #include "serialization/unicode.hpp"
@@ -48,7 +48,7 @@ const char LARGE_TEXT='*', SMALL_TEXT='`',
 std::string::const_iterator parse_markup(std::string::const_iterator i1,
 												std::string::const_iterator i2,
 												int* font_size,
-												color_t* color, int* style)
+												color_t* color, int* /*style*/)
 {
 	while(i1 != i2) {
 		switch(*i1) {
@@ -77,9 +77,9 @@ std::string::const_iterator parse_markup(std::string::const_iterator i1,
 		case SMALL_TEXT:
 			if (font_size) *font_size -= 2;
 			break;
-		case BOLD_TEXT:
-			if (style) *style |= TTF_STYLE_BOLD;
-			break;
+		//case BOLD_TEXT:
+		//	if (style) *style |= TTF_STYLE_BOLD;
+		//	break;
 		case NULL_MARKUP:
 			return i1+1;
 		case COLOR_TEXT:
