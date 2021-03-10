@@ -110,27 +110,6 @@ public:
 	 */
 	unsigned insert_text(const unsigned offset, const std::string& text);
 
-	/**
-	 * Inserts a unicode char.
-	 *
-	 * @param offset              The position to insert the char.
-	 * @param unicode             The character to insert.
-	 *
-	 * @returns                   True upon success, false otherwise.
-	 */
-	bool insert_unicode(const unsigned offset, char32_t unicode);
-
-	/**
-	 * Inserts unicode text.
-	 *
-	 * @param offset              The position to insert the text.
-	 * @param unicode             Vector with characters to insert.
-	 *
-	 * @returns                   The number of characters inserted.
-	 */
-	unsigned insert_unicode(
-		const unsigned offset, const std::u32string& unicode);
-
 	/***** ***** ***** ***** Font flags ***** ***** ***** *****/
 
 	// NOTE: these values must be powers of 2 in order to be bit-unique
@@ -374,12 +353,8 @@ private:
 
 	/**
 	 * Recalculates the text layout.
-	 *
-	 * When the text is recalculated the surface is dirtied.
-	 *
-	 * @param force               Recalculate even if not dirty?
 	 */
-	void recalculate(const bool force = false) const;
+	void recalculate() const;
 
 	/** Calculates surface size. */
 	PangoRectangle calculate_size(PangoLayout& layout) const;
@@ -391,11 +366,8 @@ private:
 	 * Renders the text.
 	 *
 	 * It will do a recalculation first so no need to call both.
-	 *
-	 * @param force               Render even if not dirty? This parameter is
-	 *                            also send to recalculate().
 	 */
-	void rerender(const bool force = false);
+	void rerender();
 
 	void render(PangoLayout& layout, const PangoRectangle& rect,
 		const std::size_t surface_buffer_offset, const unsigned stride);

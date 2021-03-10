@@ -140,17 +140,6 @@ unsigned pango_text::insert_text(const unsigned offset, const std::string& text)
 	return len;
 }
 
-bool pango_text::insert_unicode(const unsigned offset, char32_t unicode)
-{
-	return this->insert_unicode(offset, std::u32string(1, unicode)) == 1;
-}
-
-unsigned pango_text::insert_unicode(const unsigned offset, const std::u32string& unicode)
-{
-	const std::string insert = unicode_cast<std::string>(unicode);
-	return this->insert_text(offset, insert);
-}
-
 point pango_text::get_cursor_position(
 		const unsigned column, const unsigned line) const
 {
@@ -499,9 +488,9 @@ int pango_text::get_max_glyph_height() const
 	return ceil(pango_units_to_double(ascent + descent));
 }
 
-void pango_text::recalculate(const bool force) const
+void pango_text::recalculate() const
 {
-	if(calculation_dirty_ || force) {
+	if(calculation_dirty_) {
 		assert(layout_ != nullptr);
 
 		calculation_dirty_ = false;
@@ -703,12 +692,12 @@ void pango_text::render(PangoLayout& layout, const PangoRectangle& rect, const s
 	pango_cairo_show_layout(cr.get(), &layout);
 }
 
-void pango_text::rerender(const bool force)
+void pango_text::rerender()
 {
-	if(surface_dirty_ || force) {
+	if(surface_dirty_) {
 		assert(layout_.get());
 
-		this->recalculate(force);
+		this->recalculate();
 		surface_dirty_ = false;
 
 		int width  = rect_.x + rect_.width;
