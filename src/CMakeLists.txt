@@ -32,10 +32,6 @@ if(SDL2MIXER_INCLUDE_DIR)
 	include_directories(SYSTEM ${SDL2MIXER_INCLUDE_DIR} )
 	set(sdl_mixer-lib ${SDL2_MIXER_LIBRARY})
 endif()
-if(SDL2TTF_INCLUDE_DIR)
-	include_directories(SYSTEM ${SDL2TTF_INCLUDE_DIR} )
-	set(sdl_ttf-lib ${SDL2_TTF_LIBRARY})
-endif()
 
 if(ZLIB_INCLUDE_DIR)
 	include_directories(SYSTEM ${ZLIB_INCLUDE_DIR} )
@@ -77,7 +73,6 @@ set(game-external-libs
 	${Boost_THREAD_LIBRARY}
 	${sdl_image-lib}
 	${sdl_mixer-lib}
-	${sdl_ttf-lib}
 	${PANGOCAIRO_LIBRARIES}
 	${FONTCONFIG_LIBRARIES}
 	${LIBDBUS_LIBRARIES}
@@ -102,11 +97,6 @@ set(server-external-libs
 	${MYSQL_LIBS}
 	-lpthread
 )
-
-if(ENABLE_FRIBIDI AND FRIBIDI_FOUND)
-	set(game-external-libs ${game-external-libs} ${FRIBIDI_LIBRARIES})
-	include_directories(SYSTEM ${FRIBIDI_INCLUDE_DIRS} )
-endif(ENABLE_FRIBIDI AND FRIBIDI_FOUND)
 
 if(APPLE)
 	set(game-external-libs ${game-external-libs} "-framework IOKit")

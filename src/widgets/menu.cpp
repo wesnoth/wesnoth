@@ -17,9 +17,9 @@
 #include "widgets/menu.hpp"
 
 #include "game_config.hpp"
-#include "font/sdl_ttf.hpp"
 #include "font/standard_colors.hpp"
 #include "language.hpp"
+#include "lexical_cast.hpp"
 #include "picture.hpp"
 #include "font/marked-up_text.hpp"
 #include "font/sdl_ttf_compat.hpp"

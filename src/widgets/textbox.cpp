@@ -18,7 +18,6 @@
 
 #include "cursor.hpp"
 #include "desktop/clipboard.hpp"
-#include "font/sdl_ttf.hpp"
 #include "font/sdl_ttf_compat.hpp"
 #include "log.hpp"
 #include "sdl/rect.hpp"
