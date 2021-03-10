@@ -39,14 +39,6 @@ std::string::const_iterator parse_markup(std::string::const_iterator i1,
 std::string del_tags(const std::string& text);
 
 /**
- * Determine if char is one of the special chars used as markup.
- *
- * @retval true                   Input-char is a markup-char.
- * @retval false                  Input-char is a normal char.
- */
-bool is_format_char(char c);
-
-/**
  * Determine if a char32_t is a CJK character
  *
  * @retval true                   Input-char is a CJK char
