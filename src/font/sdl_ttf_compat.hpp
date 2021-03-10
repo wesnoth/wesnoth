@@ -35,12 +35,12 @@ namespace font {
 /**
  * Returns a SDL surface containing the rendered text.
  */
-surface pango_render_text(const std::string& text, int size, const color_t& color, font::pango_text::FONT_STYLE style, bool use_markup = false, int max_width = -1);
+surface pango_render_text(const std::string& text, int size, const color_t& color, font::pango_text::FONT_STYLE style = font::pango_text::STYLE_NORMAL, bool use_markup = false, int max_width = -1);
 
 /**
  * Determine the width and height of a line of text given a certain font size.
  */
-std::pair<int, int> pango_line_size(const std::string& line, int font_size, font::pango_text::FONT_STYLE font_style);
+std::pair<int, int> pango_line_size(const std::string& line, int font_size, font::pango_text::FONT_STYLE font_style = font::pango_text::STYLE_NORMAL);
 
 /**
  * Determine the width of a line of text given a certain font size.
