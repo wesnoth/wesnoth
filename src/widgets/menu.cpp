@@ -106,8 +106,8 @@ bool menu::basic_sorter::less(int column, const item& row1, const item& row2) co
 		return true;
 	}
 
-	const std::string& item1 = font::del_tags(row1.fields[column]);
-	const std::string& item2 = font::del_tags(row2.fields[column]);
+	const std::string& item1 = row1.fields[column];
+	const std::string& item2 = row2.fields[column];
 
 	if(alpha_sort_.count(column) == 1) {
 		std::string::const_iterator begin1 = item1.begin(), end1 = item1.end(),
