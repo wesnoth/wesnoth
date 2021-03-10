@@ -40,9 +40,6 @@ set(LOCALEDIR "translations" CACHE STRING "change the name of the locale data di
 set(PREFERENCES_DIR "" CACHE STRING "Use a non-default preferences directory (.wesnoth on unix)")
 set(DEFAULT_PREFS_FILE "" CACHE STRING "Set system wide preferences file")
 
-#Game options
-option(ENABLE_FRIBIDI "Enable FriBIDi support" ON)
-
 #server options
 set(SERVER_UID "" CACHE STRING "User id of the user who runs wesnothd")
 set(SERVER_GID "" CACHE STRING "Group id of the user who runs wesnothd")
@@ -521,7 +518,6 @@ if(ENABLE_GAME OR ENABLE_TESTS)
 	find_package(SDL2 2.0.4 REQUIRED)
 	find_package(SDL2_image 2.0.2 REQUIRED)
 	find_package(SDL2_mixer 2.0.0 REQUIRED)
-	find_package(SDL2_ttf 2.0.12 REQUIRED)
 	find_package(VorbisFile REQUIRED)
 	find_package(PkgConfig REQUIRED)
 	pkg_check_modules(CAIRO REQUIRED cairo>=1.10)
@@ -535,15 +531,6 @@ if(ENABLE_TESTS)
 endif(ENABLE_TESTS)
 
 if(ENABLE_GAME)
-	if(ENABLE_FRIBIDI)
-		PKG_CHECK_MODULES(FRIBIDI fribidi>=0.10.9)
-		if(FRIBIDI_FOUND)
-			add_definitions(-DHAVE_FRIBIDI)
-		elseif(NOT FRIBIDI_FOUND)
-			message("Could not find FriBiDi. Disabling FriBiDi support.")
-		endif(FRIBIDI_FOUND)
-	endif(ENABLE_FRIBIDI)
-
 	if(ENABLE_NOTIFICATIONS)
 		pkg_check_modules(LIBDBUS dbus-1)
 		if(LIBDBUS_FOUND)

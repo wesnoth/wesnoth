@@ -65,7 +65,6 @@ opts.AddVariables(
     ('cachedir', 'Directory that contains a cache of derived files.', ''),
     PathVariable('datadir', 'read-only architecture-independent game data', "$datarootdir/$datadirname", PathVariable.PathAccept),
     PathVariable('fifodir', 'directory for the wesnothd fifo socket file', "/var/run/wesnothd", PathVariable.PathAccept),
-    BoolVariable('fribidi','Clear to disable bidirectional-language support', True),
     BoolVariable('desktop_entry','Clear to disable desktop-entry', True),
     BoolVariable('appdata_file','Clear to not install appdata file', True),
     BoolVariable('systemd','Install systemd unit file for wesnothd', bool(WhereIs("systemd"))),
@@ -363,7 +362,6 @@ if env["prereqs"]:
     def have_sdl_other():
         return \
             conf.CheckSDL(require_version = '2.0.4') & \
-            conf.CheckSDL("SDL2_ttf", header_file = "SDL_ttf") & \
             conf.CheckSDL("SDL2_mixer", header_file = "SDL_mixer") & \
             conf.CheckSDL("SDL2_image", header_file = "SDL_image")
 
@@ -418,7 +416,6 @@ if env["prereqs"]:
             have_X = conf.CheckLib('X11')
 
         env["notifications"] = env["notifications"] and conf.CheckPKG("dbus-1")
-        client_env['fribidi'] = client_env['fribidi'] and (conf.CheckPKG('fribidi >= 0.10.9') or Warning("Can't find FriBiDi, disabling FriBiDi support."))
         env["history"] = env["history"] and (conf.CheckLib("history") or Warning("Can't find GNU history, disabling history support."))
 
     client_env = conf.Finish()
@@ -426,8 +423,6 @@ if env["prereqs"]:
 # We set those outside of Configure() section because SCons doesn't merge CPPPATH var properly in conf.Finish()
     if env["notifications"]:
         client_env.Append(CPPDEFINES = ["HAVE_LIBDBUS"])
-    if client_env['fribidi']:
-        client_env.Append(CPPDEFINES = ["HAVE_FRIBIDI"])
     if env["history"]:
         client_env.Append(CPPDEFINES = ["HAVE_HISTORY"])
 

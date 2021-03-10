@@ -16,7 +16,6 @@
 
 #include "help/help_topic_generators.hpp"
 
-#include "font/sdl_ttf.hpp"             // for line_width
 #include "font/sdl_ttf_compat.hpp"
 #include "game_config.hpp"              // for debug, menu_contract, etc
 #include "preferences/game.hpp"         // for encountered_terrains, etc

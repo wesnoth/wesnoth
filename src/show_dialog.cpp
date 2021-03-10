@@ -17,7 +17,6 @@
 #include "show_dialog.hpp"
 
 #include "floating_label.hpp"
-#include "font/sdl_ttf.hpp"
 #include "picture.hpp"
 #include "gettext.hpp"
 #include "gui/core/event/handler.hpp"

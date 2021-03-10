@@ -17,7 +17,6 @@
 #include "widgets/button.hpp"
 
 #include "filesystem.hpp"
-#include "font/sdl_ttf.hpp"
 #include "game_config.hpp"
 #include "game_errors.hpp"
 #include "picture.hpp"

@@ -16,12 +16,10 @@
 
 /***
  * The font::manager initializes cairo and font_config in order to figure out
- * what local fonts to use. It also asks SDL_TTF to initialize itself, via the
- * sdl_ttf raii object.
+ * what local fonts to use.
  */
 
 #include "font_options.hpp"
-#include "sdl_ttf.hpp"
 
 class t_string;
 
@@ -41,11 +39,6 @@ struct manager {
 
 	manager(const manager &) = delete;
 	manager & operator = (const manager &) = delete;
-
-private:
-
-    /** Initialize sdl_ttf concurrent with font::manager lifetime */
-	sdl_ttf sdl_ttf_initializer_;
 };
 
 /***

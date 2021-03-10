@@ -18,6 +18,7 @@
 #include "game_config.hpp"              // for debug
 #include "font/sdl_ttf_compat.hpp"
 #include "help/help_impl.hpp"           // for parse_error, box_width, etc
+#include "lexical_cast.hpp"
 #include "picture.hpp"                    // for get_image
 #include "log.hpp"                      // for LOG_STREAM, log_domain, etc
 #include "preferences/general.hpp"              // for font_scaled
