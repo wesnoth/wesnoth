@@ -144,24 +144,6 @@ std::string del_tags(const std::string& text){
 	return utils::join(lines, "\n");
 }
 
-bool is_format_char(char c)
-{
-	switch(c) {
-	case LARGE_TEXT:
-	case SMALL_TEXT:
-	case GOOD_TEXT:
-	case BAD_TEXT:
-	case NORMAL_TEXT:
-	case BLACK_TEXT:
-	case GRAY_TEXT:
-	case BOLD_TEXT:
-	case NULL_MARKUP:
-		return true;
-	default:
-		return false;
-	}
-}
-
 bool is_cjk_char(const char32_t ch)
 {
 	/**
@@ -216,98 +198,5 @@ bool is_cjk_char(const char32_t ch)
 		//Halfwidth and Fullwidth Forms
 		(ch >= 0xff00 && ch < 0xffef);
 }
-
-namespace {
-
-/*
- * According to Kinsoku-Shori, Japanese rules about line-breaking:
- *
- * * the following characters cannot begin a line (so we will never break before them):
- * 、。，．）〕］｝〉》」』】’”ゝゞヽヾ々？！：；ぁぃぅぇぉゃゅょゎァィゥェォャュョヮっヵッヶ・…ー
- *
- * * the following characters cannot end a line (so we will never break after them):
- * （〔［｛〈《「『【‘“
- *
- * Unicode range that concerns word wrap for Chinese:
- *   全角ASCII、全角中英文标点 (Fullwidth Character for ASCII, English punctuations and part of Chinese punctuations)
- *   http://www.unicode.org/charts/PDF/UFF00.pdf
- *   CJK 标点符号 (CJK punctuations)
- *   http://www.unicode.org/charts/PDF/U3000.pdf
- */
-inline bool no_break_after(const char32_t ch)
-{
-	return
-		/**
-		 * don't break after these Japanese characters
-		 */
-		ch == 0x2018 || ch == 0x201c || ch == 0x3008 || ch == 0x300a || ch == 0x300c ||
-		ch == 0x300e || ch == 0x3010 || ch == 0x3014 || ch == 0xff08 || ch == 0xff3b ||
-		ch == 0xff5b ||
-
-		/**
-		 * FIXME don't break after these Korean characters
-		 */
-
-		/**
-		 * don't break after these Chinese characters
-		 * contains left side of different kinds of brackets and quotes
-		 */
-		ch == 0x3016 || ch == 0x301a || ch == 0x301d;
-}
-
-inline bool no_break_before(const char32_t ch)
-{
-	return
-		/**
-		 * don't break before these Japanese characters
-		 */
-		ch == 0x2019 || ch == 0x201d || ch == 0x2026 || ch == 0x3001 || ch == 0x3002 ||
-		ch == 0x3005 || ch == 0x3009 || ch == 0x300b || ch == 0x300d || ch == 0x300f ||
-		ch == 0x3011 || ch == 0x3015 || ch == 0x3041 || ch == 0x3043 || ch == 0x3045 ||
-		ch == 0x3047 || ch == 0x3049 || ch == 0x3063 || ch == 0x3083 || ch == 0x3085 ||
-		ch == 0x3087 || ch == 0x308e || ch == 0x309d || ch == 0x309e || ch == 0x30a1 ||
-		ch == 0x30a3 || ch == 0x30a5 || ch == 0x30a7 || ch == 0x30a9 || ch == 0x30c3 ||
-		ch == 0x30e3 || ch == 0x30e5 || ch == 0x30e7 || ch == 0x30ee || ch == 0x30f5 ||
-		ch == 0x30f6 || ch == 0x30fb || ch == 0x30fc || ch == 0x30fd || ch == 0x30fe ||
-		ch == 0xff01 || ch == 0xff09 || ch == 0xff0c || ch == 0xff0e || ch == 0xff1a ||
-		ch == 0xff1b || ch == 0xff1f || ch == 0xff3d || ch == 0xff5d ||
-
-		// Small katakana used in Ainu:
-		ch == 0x31f0 || ch == 0x31f1 || ch == 0x31f2 || ch == 0x31f3 || ch == 0x31f4 ||
-		ch == 0x31f5 || ch == 0x31f6 || ch == 0x31f7 || ch == 0x31f8 || ch == 0x31f9 ||
-		ch == 0x31fa || ch == 0x31fb || ch == 0x31fc || ch == 0x31fd || ch == 0x31fe ||
-		ch == 0x31ff ||
-
-		/**
-		 * FIXME don't break before these Korean characters
-		 */
-
-		/**
-		 * don't break before these Chinese characters
-		 * contains
-		 *   many Chinese punctuations that should not start a line
-		 *   and right side of different kinds of brackets, quotes
-		 */
-		ch == 0x301c || ch == 0xff0d || ch == 0xff64 || ch == 0xff65 || ch == 0x3017 ||
-		ch == 0x301b || ch == 0x301e;
-}
-
-inline bool break_before(const char32_t ch)
-{
-	if(no_break_before(ch))
-		return false;
-
-	return is_cjk_char(ch);
-}
-
-inline bool break_after(const char32_t ch)
-{
-	if(no_break_after(ch))
-		return false;
-
-	return is_cjk_char(ch);
-}
-
-} // end of anon namespace
 
 } // end namespace font
