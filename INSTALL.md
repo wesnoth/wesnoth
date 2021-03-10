@@ -21,7 +21,6 @@ order to build Wesnoth:
    * SDL2                      >= 2.0.4
    * SDL2_image                >= 2.0.2 (with PNG and JPEG support)
    * SDL2_mixer                >= 2.0.0 (with Ogg Vorbis support)
-   * SDL2_ttf                  >= 2.0.12
  * Fontconfig                  >= 2.4.1
  * Cairo                       >= 1.10.0
  * Pango                       >= 1.22.0 (with Cairo backend)
@@ -38,10 +37,6 @@ features:
 
  * GNU history (libreadline):
    Command history and history expansion in the built-in Lua console.
-
- * FriBiDi >= 0.10.9:
-   Bidirectional text support for RTL languages (Hebrew, etc.) in some parts
-   of the user interface.
 
 
 ## Build Environment
