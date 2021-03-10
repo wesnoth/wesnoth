@@ -14,7 +14,7 @@ jobs:
 
     name: Discord Notification
 
-    needs: [ubuntu-2004-scons-gcc-release-lto, ubuntu-2004-scons-clang-debug, ubuntu-2004-cmake-clang-release, ubuntu-2004-cmake-gcc-debug, ubuntu-1804, steam-runtime, mingw, flatpak, translations, macos-intel-master-release, macos-intel-master-debug, windows-release, windows-debug]
+    needs: [ubuntu-2004-scons-gcc-release-lto, ubuntu-2004-scons-clang-debug, ubuntu-2004-cmake-clang-release, ubuntu-2004-cmake-gcc-debug, steam-runtime, mingw, flatpak, translations, macos-intel-master-release, macos-intel-master-debug, windows-release, windows-debug]
     if: always()
 
     steps:
@@ -132,28 +132,6 @@ jobs:
           path: |
             ~/build-cache/wesnoth
             ~/build-cache/wesnothd
-
-  ubuntu-1804:
-    runs-on: ubuntu-18.04
-
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          submodules: "recursive"
-
-      - name: Ubuntu 18.04
-        run: |
-          export BRANCH=master
-          export IMAGE=1804
-          export NLS=false
-          export TOOL=scons
-          export CC=gcc
-          export CXX=g++
-          export CXX_STD=17
-          export CFG=release
-          export LTO=false
-          export CACHE_DIR=/home/wesnoth-CI/build
-          ./.github/workflows/ci-scripts/ubuntu.sh
 
   steam-runtime:
     runs-on: ubuntu-20.04
