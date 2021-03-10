@@ -81,10 +81,10 @@ public:
     pango_text & operator = (const pango_text &) = delete;
 
 	/**
-	 * Returns the rendered text.
-	 *
-	 * Before rendering it tests whether a redraw is needed and if so it first
-	 * redraws the surface before returning it.
+	 * Returns the rendered text. The caller is expected to cache the result if
+	 * necessary to avoid making repeated calls to this - as pango_text is
+	 * usually used as a singleton, having a cache in pango_text itself is only
+	 * useful on the loading screen (because it only has one string on screen).
 	 */
 	surface& render();
 
@@ -109,27 +109,6 @@ public:
 	 * @returns                   The number of characters inserted.
 	 */
 	unsigned insert_text(const unsigned offset, const std::string& text);
-
-	/**
-	 * Inserts a unicode char.
-	 *
-	 * @param offset              The position to insert the char.
-	 * @param unicode             The character to insert.
-	 *
-	 * @returns                   True upon success, false otherwise.
-	 */
-	bool insert_unicode(const unsigned offset, char32_t unicode);
-
-	/**
-	 * Inserts unicode text.
-	 *
-	 * @param offset              The position to insert the text.
-	 * @param unicode             Vector with characters to insert.
-	 *
-	 * @returns                   The number of characters inserted.
-	 */
-	unsigned insert_unicode(
-		const unsigned offset, const std::u32string& unicode);
 
 	/***** ***** ***** ***** Font flags ***** ***** ***** *****/
 
@@ -312,9 +291,6 @@ private:
 	/** The foreground color. */
 	color_t foreground_color_;
 
-	/** Whether to add an outline effect. */
-	bool add_outline_;
-
 	/**
 	 * The maximum width of the text.
 	 *
@@ -361,12 +337,11 @@ private:
 	std::size_t maximum_length_;
 
 	/**
-	 * The text has two dirty states:
-	 * - The setting of the state and the size calculations.
-	 * - The rendering of the surface.
+	 * The dirty state of the calculations based on width, height, etc.
+	 *
+	 * The rendering itself is always assumed to be dirty, and will be remade
+	 * on each call to render().
 	 */
-
-	/** The dirty state of the calculations. */
 	mutable bool calculation_dirty_;
 
 	/** Length of the text. */
@@ -374,28 +349,18 @@ private:
 
 	/**
 	 * Recalculates the text layout.
-	 *
-	 * When the text is recalculated the surface is dirtied.
-	 *
-	 * @param force               Recalculate even if not dirty?
 	 */
-	void recalculate(const bool force = false) const;
+	void recalculate() const;
 
 	/** Calculates surface size. */
 	PangoRectangle calculate_size(PangoLayout& layout) const;
-
-	/** The dirty state of the surface. */
-	mutable bool surface_dirty_;
 
 	/**
 	 * Renders the text.
 	 *
 	 * It will do a recalculation first so no need to call both.
-	 *
-	 * @param force               Render even if not dirty? This parameter is
-	 *                            also send to recalculate().
 	 */
-	void rerender(const bool force = false);
+	void rerender();
 
 	void render(PangoLayout& layout, const PangoRectangle& rect,
 		const std::size_t surface_buffer_offset, const unsigned stride);

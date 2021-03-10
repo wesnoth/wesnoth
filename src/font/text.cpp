@@ -53,7 +53,6 @@ pango_text::pango_text()
 	, font_size_(14)
 	, font_style_(STYLE_NORMAL)
 	, foreground_color_() // solid white
-	, add_outline_(false)
 	, maximum_width_(-1)
 	, characters_per_line_(0)
 	, maximum_height_(-1)
@@ -62,7 +61,6 @@ pango_text::pango_text()
 	, maximum_length_(std::string::npos)
 	, calculation_dirty_(true)
 	, length_(0)
-	, surface_dirty_(true)
 	, surface_buffer_()
 {
 	// With 72 dpi the sizes are the same as with SDL_TTF so hardcoded.
@@ -136,17 +134,6 @@ unsigned pango_text::insert_text(const unsigned offset, const std::string& text)
 	this->set_text(utf8::insert(tmp, offset, insert), false);
 	// report back how many characters were actually inserted (e.g. to move the cursor selection)
 	return len;
-}
-
-bool pango_text::insert_unicode(const unsigned offset, char32_t unicode)
-{
-	return this->insert_unicode(offset, std::u32string(1, unicode)) == 1;
-}
-
-unsigned pango_text::insert_unicode(const unsigned offset, const std::u32string& unicode)
-{
-	const std::string insert = unicode_cast<std::string>(unicode);
-	return this->insert_text(offset, insert);
 }
 
 point pango_text::get_cursor_position(
@@ -311,7 +298,6 @@ bool pango_text::set_text(const std::string& text, const bool markedup)
 		length_ = wide.size();
 		markedup_text_ = markedup;
 		calculation_dirty_ = true;
-		surface_dirty_ = true;
 	}
 
 	return true;
@@ -322,7 +308,6 @@ pango_text& pango_text::set_family_class(font::family_class fclass)
 	if(fclass != font_class_) {
 		font_class_ = fclass;
 		calculation_dirty_ = true;
-		surface_dirty_ = true;
 	}
 
 	return *this;
@@ -334,7 +319,6 @@ pango_text& pango_text::set_font_size(const unsigned font_size)
 	if(actual_size != font_size_) {
 		font_size_ = actual_size;
 		calculation_dirty_ = true;
-		surface_dirty_ = true;
 	}
 
 	return *this;
@@ -345,7 +329,6 @@ pango_text& pango_text::set_font_style(const pango_text::FONT_STYLE font_style)
 	if(font_style != font_style_) {
 		font_style_ = font_style;
 		calculation_dirty_ = true;
-		surface_dirty_ = true;
 	}
 
 	return *this;
@@ -355,7 +338,6 @@ pango_text& pango_text::set_foreground_color(const color_t& color)
 {
 	if(color != foreground_color_) {
 		foreground_color_ = color;
-		surface_dirty_ = true;
 	}
 
 	return *this;
@@ -370,7 +352,6 @@ pango_text& pango_text::set_maximum_width(int width)
 	if(width != maximum_width_) {
 		maximum_width_ = width;
 		calculation_dirty_ = true;
-		surface_dirty_ = true;
 	}
 
 	return *this;
@@ -382,7 +363,6 @@ pango_text& pango_text::set_characters_per_line(const unsigned characters_per_li
 		characters_per_line_ = characters_per_line;
 
 		calculation_dirty_ = true;
-		surface_dirty_ = true;
 	}
 
 	return *this;
@@ -401,7 +381,6 @@ pango_text& pango_text::set_maximum_height(int height, bool multiline)
 		pango_layout_set_height(layout_.get(), !multiline ? -1 : height * PANGO_SCALE);
 		maximum_height_ = height;
 		calculation_dirty_ = true;
-		surface_dirty_ = true;
 	}
 
 	return *this;
@@ -415,7 +394,6 @@ pango_text& pango_text::set_ellipse_mode(const PangoEllipsizeMode ellipse_mode)
 		pango_layout_set_ellipsize(layout_.get(), ellipse_mode);
 		ellipse_mode_ = ellipse_mode;
 		calculation_dirty_ = true;
-		surface_dirty_ = true;
 	}
 
 	return *this;
@@ -426,7 +404,6 @@ pango_text &pango_text::set_alignment(const PangoAlignment alignment)
 	if (alignment != alignment_) {
 		pango_layout_set_alignment(layout_.get(), alignment);
 		alignment_ = alignment;
-		surface_dirty_ = true;
 	}
 
 	return *this;
@@ -449,7 +426,6 @@ pango_text& pango_text::set_link_aware(bool b)
 {
 	if (link_aware_ != b) {
 		calculation_dirty_ = true;
-		surface_dirty_ = true;
 		link_aware_ = b;
 	}
 	return *this;
@@ -460,18 +436,6 @@ pango_text& pango_text::set_link_color(const color_t& color)
 	if(color != link_color_) {
 		link_color_ = color;
 		calculation_dirty_ = true;
-		surface_dirty_ = true;
-	}
-
-	return *this;
-}
-
-pango_text& pango_text::set_add_outline(bool do_add)
-{
-	if(do_add != add_outline_) {
-		add_outline_ = do_add;
-		//calculation_dirty_ = true;
-		surface_dirty_ = true;
 	}
 
 	return *this;
@@ -497,13 +461,12 @@ int pango_text::get_max_glyph_height() const
 	return ceil(pango_units_to_double(ascent + descent));
 }
 
-void pango_text::recalculate(const bool force) const
+void pango_text::recalculate() const
 {
-	if(calculation_dirty_ || force) {
+	if(calculation_dirty_) {
 		assert(layout_ != nullptr);
 
 		calculation_dirty_ = false;
-		surface_dirty_ = true;
 
 		rect_ = calculate_size(*layout_);
 	}
@@ -656,29 +619,6 @@ void pango_text::render(PangoLayout& layout, const PangoRectangle& rect, const s
 		throw std::length_error("Text is too long to render");
 	}
 
-	//
-	// TODO: the outline may be slightly cut off around certain text if it renders too
-	// close to the surface's edge. That causes the outline to extend just slightly
-	// outside the surface's borders. I'm not sure how best to deal with this. Obviously,
-	// we want to increase the surface size, but we also don't want to invalidate all
-	// the placement and size calculations. Thankfully, it's not very noticeable.
-	//
-	// -- vultraz, 2018-03-07
-	//
-	if(add_outline_) {
-		// Add a path to the cairo context tracing the current text.
-		pango_cairo_layout_path(cr.get(), &layout);
-
-		// Set color for background outline (black).
-		cairo_set_source_rgba(cr.get(), 0.0, 0.0, 0.0, 1.0);
-
-		cairo_set_line_join(cr.get(), CAIRO_LINE_JOIN_ROUND);
-		cairo_set_line_width(cr.get(), 3.0); // Adjust as necessary
-
-		// Stroke path to draw outline.
-		cairo_stroke(cr.get());
-	}
-
 	// Set main text color.
 	cairo_set_source_rgba(cr.get(),
 		foreground_color_.r / 255.0,
@@ -690,13 +630,14 @@ void pango_text::render(PangoLayout& layout, const PangoRectangle& rect, const s
 	pango_cairo_show_layout(cr.get(), &layout);
 }
 
-void pango_text::rerender(const bool force)
+void pango_text::rerender()
 {
-	if(surface_dirty_ || force) {
+	// \todo remove a level of indentation from this function. That will be done along with removing
+	// the line-by-line rendering, postponing it until then makes the changes easier to review.
+	{
 		assert(layout_.get());
 
-		this->recalculate(force);
-		surface_dirty_ = false;
+		this->recalculate();
 
 		int width  = rect_.x + rect_.width;
 		int height = rect_.y + rect_.height;
