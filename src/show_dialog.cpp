@@ -23,7 +23,6 @@
 #include "help/help.hpp"
 #include "hotkey/command_executor.hpp"
 #include "log.hpp"
-#include "font/marked-up_text.hpp"
 #include "font/sdl_ttf_compat.hpp"
 #include "font/standard_colors.hpp"
 #include "sdl/rect.hpp"

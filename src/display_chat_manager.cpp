@@ -20,7 +20,6 @@
 #include "game_board.hpp" // <-- only needed for is_observer()
 #include "preferences/game.hpp"
 #include "log.hpp"
-#include "font/marked-up_text.hpp"
 #include "font/sdl_ttf_compat.hpp"
 #include "mp_ui_alerts.hpp"
 #include "serialization/string_utils.hpp"
