@@ -17,7 +17,6 @@
 #include "editor/palette/location_palette.hpp"
 
 #include "gettext.hpp"
-#include "font/marked-up_text.hpp"
 #include "font/sdl_ttf_compat.hpp"
 #include "font/standard_colors.hpp"
 #include "tooltips.hpp"

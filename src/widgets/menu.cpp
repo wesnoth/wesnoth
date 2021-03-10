@@ -21,7 +21,6 @@
 #include "language.hpp"
 #include "lexical_cast.hpp"
 #include "picture.hpp"
-#include "font/marked-up_text.hpp"
 #include "font/sdl_ttf_compat.hpp"
 #include "sdl/rect.hpp"
 #include "sound.hpp"
