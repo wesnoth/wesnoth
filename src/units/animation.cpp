@@ -1363,8 +1363,6 @@ bool unit_animator::has_animation(unit_const_ptr animated_unit
 	display* disp = display::get_singleton();
 
 	anim_elem tmp;
-	tmp.my_unit = std::move(animated_unit);
-	tmp.src = src;
 	tmp.animation = tmp.my_unit->anim_comp().choose_animation(*disp, src, event, dst, value, hit_type, attack, second_attack, value2);
 
 	if(tmp.animation){
