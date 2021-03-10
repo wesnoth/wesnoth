@@ -365,7 +365,7 @@ surface textbox::add_text_line(const std::u32string& text, const color_t& color)
 	}
 
 	const std::string s = unicode_cast<std::string>(wrapped_text);
-	const surface res(font::get_rendered_text(s, font_size_, color));
+	const surface res(font::pango_render_text(s, font_size_, color));
 
 	return res;
 }
