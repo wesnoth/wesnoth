@@ -25,19 +25,6 @@ class surface;
 
 namespace font {
 
-/** Standard markups for color, size, font, images. */
-extern const char LARGE_TEXT, SMALL_TEXT, BOLD_TEXT, NORMAL_TEXT, NULL_MARKUP, BLACK_TEXT, GRAY_TEXT,
-                  GOOD_TEXT, BAD_TEXT, GREEN_TEXT, RED_TEXT, COLOR_TEXT, IMAGE;
-
-/** Parses the markup-tags at the front of a string. */
-std::string::const_iterator parse_markup(std::string::const_iterator i1,
-												std::string::const_iterator i2,
-												int* font_size,
-												color_t* color, int* style);
-
-/** Copy string, but without tags at the beginning */
-std::string del_tags(const std::string& text);
-
 /**
  * Determine if a char32_t is a CJK character
  *
