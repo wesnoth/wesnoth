@@ -37,11 +37,8 @@ menu::basic_sorter::basic_sorter()
 	: alpha_sort_()
 	, numeric_sort_()
 	, id_sort_()
-	, xp_sort_()
-	, level_sort_()
 	, redirect_sort_()
 	, pos_sort_()
-	, xp_col_(-1)
 {
 	set_id_sort(-1);
 }
@@ -55,19 +52,6 @@ menu::basic_sorter& menu::basic_sorter::set_alpha_sort(int column)
 menu::basic_sorter& menu::basic_sorter::set_numeric_sort(int column)
 {
 	numeric_sort_.insert(column);
-	return *this;
-}
-
-menu::basic_sorter& menu::basic_sorter::set_xp_sort(int column)
-{
-	xp_sort_.insert(column);
-	return *this;
-}
-
-menu::basic_sorter& menu::basic_sorter::set_level_sort(int level_column, int xp_column)
-{
-	level_sort_.insert(level_column);
-	xp_col_ = xp_column;
 	return *this;
 }
 
@@ -100,27 +84,7 @@ bool menu::basic_sorter::column_sortable(int column) const
 	}
 
 	return alpha_sort_.count(column) == 1 || numeric_sort_.count(column) == 1 ||
-		   pos_sort_.count(column) == 1 || id_sort_.count(column) == 1 ||
-		    xp_sort_.count(column) == 1 || level_sort_.count(column) == 1;
-}
-
-static std::pair<int, int> parse_fraction(const std::string& s)
-{
-	std::vector<std::string> parts = utils::split(s, '/', 0);
-	parts.resize(2);
-	int num = lexical_cast_default<int>(parts[0], 0);
-	int denom = lexical_cast_default<int>(parts[1], 0);
-	return std::pair(num, denom);
-}
-
-static int xp_to_advance(const std::string& s) {
-	std::pair<int,int> xp_frac = parse_fraction(s);
-
-	//consider units without AMLA or advancement as having xp_max=1000000
-	if(xp_frac.second == 0)
-		xp_frac.second = 1000000;
-
-	return xp_frac.second - xp_frac.first;
+		   pos_sort_.count(column) == 1 || id_sort_.count(column) == 1;
 }
 
 bool menu::basic_sorter::less(int column, const item& row1, const item& row2) const
@@ -162,18 +126,6 @@ bool menu::basic_sorter::less(int column, const item& row1, const item& row2) co
 		int val_2 = lexical_cast_default<int>(item2, 0);
 
 		return val_1 > val_2;
-	} else if(xp_sort_.count(column) == 1) {
-		return xp_to_advance(item1) < xp_to_advance(item2);
-	} else if(level_sort_.count(column) == 1) {
-		int level_1 = lexical_cast_default<int>(item1, 0);
-		int level_2 = lexical_cast_default<int>(item2, 0);
-		if (level_1 == level_2) {
-			//break tie using xp
-			const std::string& xp_item1 = font::del_tags(row1.fields[xp_col_]);
-			const std::string& xp_item2 = font::del_tags(row2.fields[xp_col_]);
-			return xp_to_advance(xp_item1) < xp_to_advance(xp_item2);
-		}
-		return level_1 > level_2;
 	}
 
 	const std::map<int,std::vector<int>>::const_iterator itor = pos_sort_.find(column);
