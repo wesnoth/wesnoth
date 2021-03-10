@@ -1362,10 +1362,7 @@ bool unit_animator::has_animation(unit_const_ptr animated_unit
 
 	display* disp = display::get_singleton();
 
-	anim_elem tmp;
-	tmp.animation = tmp.my_unit->anim_comp().choose_animation(*disp, src, event, dst, value, hit_type, attack, second_attack, value2);
-
-	if(tmp.animation){
+	if(animated_unit->anim_comp().choose_animation(*disp, src, event, dst, value, hit_type, attack, second_attack, value2)){
 		return true;
 	}
 
