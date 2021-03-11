@@ -1488,25 +1488,13 @@
     <ClCompile Include="..\..\src\font\font_config.cpp">
       <Filter>Font</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\font\marked-up_text.cpp">
-      <Filter>Font</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\font\sdl_ttf.cpp">
-      <Filter>Font</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\src\font\standard_colors.cpp">
       <Filter>Font</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\font\text.cpp">
       <Filter>Font</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\font\text_cache.cpp">
-      <Filter>Font</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\src\font\text_formatting.cpp">
-      <Filter>Font</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\font\text_surface.cpp">
       <Filter>Font</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\preferences\credentials.cpp">
@@ -1595,6 +1583,9 @@
     </ClCompile>
     <ClCompile Include="..\..\src\gui\dialogs\multiplayer\match_history.cpp">
       <Filter>Gui\Dialogs\Multiplayer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\font\sdl_ttf_compat.cpp">
+      <Filter>Font</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -2966,16 +2957,7 @@
     <ClInclude Include="..\..\src\font\font_description.hpp">
       <Filter>Font</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\font\font_id.hpp">
-      <Filter>Font</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\src\font\font_options.hpp">
-      <Filter>Font</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\font\marked-up_text.hpp">
-      <Filter>Font</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\font\sdl_ttf.hpp">
       <Filter>Font</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\font\standard_colors.hpp">
@@ -2984,13 +2966,7 @@
     <ClInclude Include="..\..\src\font\text.hpp">
       <Filter>Font</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\font\text_cache.hpp">
-      <Filter>Font</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\src\font\text_formatting.hpp">
-      <Filter>Font</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\font\text_surface.hpp">
       <Filter>Font</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\font\pango\escape.hpp">
@@ -3098,6 +3074,9 @@
     </ClInclude>
     <ClInclude Include="..\..\src\gui\dialogs\multiplayer\match_history.hpp">
       <Filter>Gui\Dialogs\Multiplayer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\font\sdl_ttf_compat.hpp">
+      <Filter>Font</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
