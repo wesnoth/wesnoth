@@ -106,13 +106,6 @@ else
 
         ccache -s
         ccache -z
-# remove once 1804 isn't used anymore
-    elif [ "$IMAGE" == "1804" ]; then
-        scons wesnoth wesnothd campaignd boost_unit_tests build="$CFG" \
-            ctool="$CC" cxxtool="$CXX" cxx_std="$CXX_STD" \
-            extra_flags_config="-pipe" strict=true forum_user_handler=false \
-            nls="$NLS" enable_lto="$LTO" jobs=2 --debug=time
-        EXIT_VAL=$?
     else
         scons wesnoth wesnothd campaignd boost_unit_tests build="$CFG" \
             ctool="$CC" cxxtool="$CXX" cxx_std="$CXX_STD" \
@@ -136,9 +129,7 @@ fi
 
 execute "WML validation" ./utils/CI/schema_validation.sh
 execute "WML indentation check" checkindent
-if [ "$IMAGE" != "1804" ]; then
-  execute "Doxygen check" ./utils/CI/doxygen-check.sh
-fi
+execute "Doxygen check" ./utils/CI/doxygen-check.sh
 execute "WML tests" ./run_wml_tests -g -v -c -t 20
 execute "Play tests" ./utils/CI/play_test_executor.sh
 execute "MP tests" ./utils/CI/play_test_executor.sh
