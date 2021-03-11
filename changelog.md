@@ -4,6 +4,8 @@
  ### Campaigns
     * Delfador's Memoirs
      * Adjust campaign difficulty
+    * Liberty
+     * Revise dialogue
     * Sceptre of Fire
      * Adjust campaign difficulty
     * Secrets of the Ancients
