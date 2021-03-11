@@ -147,7 +147,6 @@ void hotkey_base::save(config& item) const
 hotkey_ptr create_hotkey(const std::string &id, const SDL_Event &event)
 {
 	hotkey_ptr base = std::make_shared<hotkey_void>();
-	const hotkey_command& command = get_hotkey_command(id);
 	unsigned mods = sdl_get_mods();
 
 	switch (event.type) {
@@ -271,7 +270,6 @@ const std::string hotkey_keyboard::get_name_helper() const
 bool hotkey_keyboard::matches_helper(const SDL_Event &event) const
 {
 	unsigned int mods = sdl_get_mods();
-	const hotkey_command& command = get_hotkey_command(get_command());
 
 	if (event.type == SDL_KEYDOWN) {
 		return event.key.keysym.scancode == scancode_ && mods == mod_;
@@ -454,8 +452,6 @@ bool is_hotkeyable_event(const SDL_Event &event) {
 			event.type == SDL_MOUSEBUTTONUP) {
 		return true;
 	}
-
-	unsigned mods = sdl_get_mods();
 
 	return event.type == SDL_KEYUP;
 }
