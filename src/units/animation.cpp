@@ -1356,17 +1356,8 @@ bool unit_animator::has_animation(unit_const_ptr animated_unit
 		, const_attack_ptr second_attack
 		, int value2) const
 {
-	if(!animated_unit){
-		return false;
-	}
-
 	display* disp = display::get_singleton();
-
-	if(animated_unit->anim_comp().choose_animation(*disp, src, event, dst, value, hit_type, attack, second_attack, value2)){
-		return true;
-	}
-
-	return false;
+	return (animated_unit && animated_unit->anim_comp().choose_animation(*disp, src, event, dst, value, hit_type, attack, second_attack, value2));
 }
 
 void unit_animator::replace_anim_if_invalid(unit_const_ptr animated_unit

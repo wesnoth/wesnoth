@@ -222,15 +222,28 @@ public:
 		, const_attack_ptr second_attack = nullptr
 		, int value2 = 0);
 
+	/** has_animation : return an boolean value if animated unit present and have animation specified, used for verify prensence of [leading_anim] or [resistance_anim] for playability of [teaching_anim]
+	 * @return True if the  @a animated_unit is present and have animation.
+	 * @param animated_unit the unit who is checked.
+	 * @param event the animation who is checked([leading_anim] or [resistance_anim].
+	 * @param src the location of animated_unit.
+	 * @param dst location of unit student(attacker or defender).
+	 * @param value value of damage.
+	 * @param hit_type type of damage inflicted.
+	 * @param attack weapon used by student.
+	 * @param second_attack weapon used by opponent.
+	 * @param value2 i don't understand myself.but this value is used in choose_animation.
+	 */
 	bool has_animation(unit_const_ptr animated_unit
 		, const std::string& event
-		, const map_location &src
-		, const map_location &dst
-		, const int value
-		, const unit_animation::hit_type hit_type
-		, const_attack_ptr attack
-		, const_attack_ptr second_attack
-		, int value2) const;
+		, const map_location& src = map_location::null_location()
+		, const map_location& dst = map_location::null_location()
+		, const int value = 0
+		, const unit_animation::hit_type hit_type =
+			unit_animation::hit_type::INVALID
+		, const_attack_ptr attack = nullptr
+		, const_attack_ptr second_attack = nullptr
+		, int value2 = 0) const;
 
 	void replace_anim_if_invalid(unit_const_ptr animated_unit
 		, const std::string& event
