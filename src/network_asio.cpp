@@ -43,11 +43,7 @@ std::deque<boost::asio::const_buffer> split_buffer(boost::asio::streambuf::const
 	std::deque<boost::asio::const_buffer> buffers;
 	unsigned int remaining_size = boost::asio::buffer_size(source_buffer);
 
-#if BOOST_VERSION >= 106600
 	const uint8_t* data = static_cast<const uint8_t*>(source_buffer.data());
-#else
-	const uint8_t* data = boost::asio::buffer_cast<const uint8_t*>(source_buffer);
-#endif
 
 	while(remaining_size > 0u) {
 		unsigned int size = std::min(remaining_size, chunk_size);
@@ -109,11 +105,8 @@ void connection::handle_connect(const boost::system::error_code& ec, endpoint en
 		ERR_NW << "Tried all IPs. Giving up" << std::endl;
 		throw system_error(ec);
 	} else {
-#if BOOST_VERSION >= 106600
 		LOG_NW << "Connected to " << endpoint.address() << '\n';
-#else
-		LOG_NW << "Connected to " << endpoint->endpoint().address() << '\n';
-#endif
+
 		if(endpoint.address().is_loopback()) {
 			use_tls_ = false;
 		}
@@ -204,11 +197,7 @@ void connection::fallback_to_unencrypted()
 
 void connection::transfer(const config& request, config& response)
 {
-#if BOOST_VERSION >= 106600
 	io_context_.restart();
-#else
-	io_context_.reset();
-#endif
 	done_ = false;
 
 	write_buf_.reset(new boost::asio::streambuf);

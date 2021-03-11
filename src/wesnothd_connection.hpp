@@ -33,11 +33,7 @@
 #include "configr_assign.hpp"
 #include "wesnothd_connection_error.hpp"
 
-#if BOOST_VERSION >= 106600
 #include <boost/asio/io_context.hpp>
-#else
-#include <boost/asio/io_service.hpp>
-#endif
 #include <boost/asio/ip/tcp.hpp>
 #include <boost/asio/streambuf.hpp>
 #include <boost/asio/ssl.hpp>
@@ -139,11 +135,7 @@ public:
 private:
 	std::thread worker_thread_;
 
-#if BOOST_VERSION >= 106600
 	boost::asio::io_context io_context_;
-#else
-	boost::asio::io_service io_context_;
-#endif
 
 	typedef boost::asio::ip::tcp::resolver resolver;
 	resolver resolver_;
@@ -166,13 +158,8 @@ private:
 
 	boost::asio::streambuf read_buf_;
 
-#if BOOST_VERSION >= 106600
 	using results_type = resolver::results_type;
 	using endpoint = const boost::asio::ip::tcp::endpoint&;
-#else
-	using results_type = resolver::iterator;
-	using endpoint = resolver::iterator;
-#endif
 
 	void handle_resolve(const boost::system::error_code& ec, results_type results);
 	void handle_connect(const boost::system::error_code& ec, endpoint endpoint);
@@ -196,11 +183,7 @@ private:
 	template<typename T>
 	using data_queue = std::queue<T, std::list<T>>;
 
-#if BOOST_VERSION >= 106600
 	data_queue<std::unique_ptr<boost::asio::streambuf>> send_queue_;
-#else
-	data_queue<std::shared_ptr<boost::asio::streambuf>> send_queue_;
-#endif
 	data_queue<config> recv_queue_;
 
 	std::mutex recv_queue_mutex_;

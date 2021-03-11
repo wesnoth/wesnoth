@@ -33,11 +33,7 @@
 #include "exceptions.hpp"
 #include "utils/variant.hpp"
 
-#if BOOST_VERSION >= 106600
 #include <boost/asio/io_context.hpp>
-#else
-#include <boost/asio/io_service.hpp>
-#endif
 #include <boost/asio/ip/tcp.hpp>
 #include <boost/asio/streambuf.hpp>
 #include <boost/asio/ssl.hpp>
@@ -126,11 +122,7 @@ public:
 	}
 
 private:
-#if BOOST_VERSION >= 106600
 	boost::asio::io_context io_context_;
-#else
-	boost::asio::io_service io_context_;
-#endif
 
 	std::string host_;
 	const std::string service_;
@@ -150,13 +142,8 @@ private:
 	std::unique_ptr<boost::asio::streambuf> write_buf_;
 	std::unique_ptr<boost::asio::streambuf> read_buf_;
 
-#if BOOST_VERSION >= 106600
 	using results_type = resolver::results_type;
 	using endpoint = const boost::asio::ip::tcp::endpoint&;
-#else
-	using results_type = resolver::iterator;
-	using endpoint = resolver::iterator;
-#endif
 
 	void handle_resolve(const boost::system::error_code& ec, results_type results);
 	void handle_connect(const boost::system::error_code& ec, endpoint endpoint);

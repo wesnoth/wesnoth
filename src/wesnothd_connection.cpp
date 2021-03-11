@@ -148,11 +148,8 @@ void wesnothd_connection::handle_connect(const boost::system::error_code& ec, en
 		ERR_NW << "Tried all IPs. Giving up" << std::endl;
 		throw system_error(ec);
 	} else {
-#if BOOST_VERSION >= 106600
 		LOG_NW << "Connected to " << endpoint.address() << '\n';
-#else
-		LOG_NW << "Connected to " << endpoint->endpoint().address() << '\n';
-#endif
+
 		if(endpoint.address().is_loopback()) {
 			use_tls_ = false;
 		}
@@ -272,21 +269,13 @@ void wesnothd_connection::send_data(const configr_of& request)
 {
 	MPTEST_LOG;
 
-#if BOOST_VERSION >= 106600
 	auto buf_ptr = std::make_unique<boost::asio::streambuf>();
-#else
-	auto buf_ptr = std::make_shared<boost::asio::streambuf>();
-#endif
 
 	std::ostream os(buf_ptr.get());
 	write_gz(os, request);
 
-	// No idea why io_context::post doesn't like this lambda while asio::post does.
-#if BOOST_VERSION >= 106600
 	boost::asio::post(io_context_, [this, buf_ptr = std::move(buf_ptr)]() mutable {
-#else
-	io_context_.post([this, buf_ptr]() {
-#endif
+
 		DBG_NW << "In wesnothd_connection::send_data::lambda\n";
 		send_queue_.push(std::move(buf_ptr));
 

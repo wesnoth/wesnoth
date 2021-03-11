@@ -54,13 +54,7 @@ option(ENABLE_TESTS "Build unit tests")
 option(ENABLE_NLS "Enable building of translations" ${ENABLE_GAME})
 option(ENABLE_HISTORY "Enable using GNU history for history in lua console" ON)
 
-# boost::asio::post is new with 1.66
-# Ubuntu 18.04 also only has 1.65
-if(ENABLE_MYSQL)
-	set(BOOST_VERSION "1.66")
-else()
-	set(BOOST_VERSION "1.65")
-endif(ENABLE_MYSQL)
+set(BOOST_VERSION "1.66")
 
 # set what std version to use
 if(NOT CXX_STD)
