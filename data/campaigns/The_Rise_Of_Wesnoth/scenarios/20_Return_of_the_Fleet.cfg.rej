@@ -1,0 +1,106 @@
+***************
+*** 5,11 ****
+      next_scenario=21_The_Plan
+      map_data="{campaigns/The_Rise_Of_Wesnoth/maps/20_Return_of_the_Fleet.map}"
+  
+-     {TURNS 45 42 39}
+      {DEFAULT_SCHEDULE}
+  
+      {SCENARIO_MUSIC vengeful.ogg}
+--- 5,11 ----
+      next_scenario=21_The_Plan
+      map_data="{campaigns/The_Rise_Of_Wesnoth/maps/20_Return_of_the_Fleet.map}"
+  
++     {TURNS 49 44 39}
+      {DEFAULT_SCHEDULE}
+  
+      {SCENARIO_MUSIC vengeful.ogg}
+***************
+*** 25,38 ****
+          type=Noble Commander
+          unrenamable=yes
+          canrecruit=yes
+-         gold=200
+          controller=human
+          team_name=Haldric
+          user_team_name=_"Refugees"
+          {FLAG_VARIANT loyalist}
+      [/side]
+  
+-     {STARTING_VILLAGES 1 5}
+  
+      [side]
+          type=Draug
+--- 25,39 ----
+          type=Noble Commander
+          unrenamable=yes
+          canrecruit=yes
++         {GOLD 220 210 200}
++         {INCOME 3 2 1}
+          controller=human
+          team_name=Haldric
+          user_team_name=_"Refugees"
+          {FLAG_VARIANT loyalist}
+      [/side]
+  
++     {STARTING_VILLAGES 1 {ON_DIFFICULTY 7 6 5}}
+  
+      [side]
+          type=Draug
+***************
+*** 62,68 ****
+              passive_leader=yes
+              recruitment_pattern=scout,fighter,archer
+              aggression=0.4
+-             {ATTACK_DEPTH 5 5 6}
+          [/ai]
+          [ai]
+              time_of_day=dusk,first_watch,second_watch
+--- 63,69 ----
+              passive_leader=yes
+              recruitment_pattern=scout,fighter,archer
+              aggression=0.4
++             {ATTACK_DEPTH 4 5 6}
+          [/ai]
+          [ai]
+              time_of_day=dusk,first_watch,second_watch
+***************
+*** 93,101 ****
+          team_name=orcs
+          user_team_name=_"Orcs"
+          [ai]
+-             #{NO_SCOUTS}
+              recruitment_pattern=scout,fighter,fighter,mixed fighter,archer
+-             {ATTACK_DEPTH 5 5 6}
+          [/ai]
+          [ai]
+              time_of_day=dusk,first_watch,second_watch
+--- 94,101 ----
+          team_name=orcs
+          user_team_name=_"Orcs"
+          [ai]
+              recruitment_pattern=scout,fighter,fighter,mixed fighter,archer
++             {ATTACK_DEPTH 4 5 6}
+          [/ai]
+          [ai]
+              time_of_day=dusk,first_watch,second_watch
+***************
+*** 129,137 ****
+          team_name=orcs
+          user_team_name=_"Orcs"
+          [ai]
+-             #{NO_SCOUTS}
+              recruitment_pattern=scout,fighter,fighter,mixed fighter,archer
+-             {ATTACK_DEPTH 5 5 6}
+          [/ai]
+          [ai]
+              time_of_day=dusk,first_watch,second_watch
+--- 129,136 ----
+          team_name=orcs
+          user_team_name=_"Orcs"
+          [ai]
+              recruitment_pattern=scout,fighter,fighter,mixed fighter,archer
++             {ATTACK_DEPTH 4 5 6}
+          [/ai]
+          [ai]
+              time_of_day=dusk,first_watch,second_watch

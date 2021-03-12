@@ -1,0 +1,121 @@
+***************
+*** 25,31 ****
+          name= _ "Prince Haldric"
+          unrenamable=yes
+          canrecruit=yes
+-         gold=200
+          controller=human
+          team_name=Haldric
+          user_team_name=_"Humans"
+--- 25,32 ----
+          name= _ "Prince Haldric"
+          unrenamable=yes
+          canrecruit=yes
++         {GOLD 300 250 200}
++         {INCOME 3 2 1}
+          controller=human
+          team_name=Haldric
+          user_team_name=_"Humans"
+***************
+*** 40,46 ****
+          profile="portraits/aethyr-first.png"
+          canrecruit=yes
+          recruit=Peasant, Bowman, Horseman, Mage, Spearman
+-         {GOLD 220 160 120}
+          [ai]
+              aggression=-0.5
+              {NO_SCOUTS}
+--- 41,48 ----
+          profile="portraits/aethyr-first.png"
+          canrecruit=yes
+          recruit=Peasant, Bowman, Horseman, Mage, Spearman
++         {GOLD 320 220 120}
++         {INCOME 3 2 1}
+          [ai]
+              aggression=-0.5
+              {NO_SCOUTS}
+***************
+*** 80,86 ****
+          recruit=Orcish Archer, Orcish Assassin, Orcish Grunt, Wolf Rider, Orcish Crossbowman, Orcish Warrior, Goblin Knight, Goblin Pillager, Orcish Slayer, Goblin Spearman, Goblin Impaler
+  #endif
+  
+-         {GOLD 190 230 290}
+          team_name=orcs
+          user_team_name=_"Orcs"
+          [ai]
+--- 82,88 ----
+          recruit=Orcish Archer, Orcish Assassin, Orcish Grunt, Wolf Rider, Orcish Crossbowman, Orcish Warrior, Goblin Knight, Goblin Pillager, Orcish Slayer, Goblin Spearman, Goblin Impaler
+  #endif
+  
++         {GOLD 180 230 290}
+          team_name=orcs
+          user_team_name=_"Orcs"
+          [ai]
+***************
+*** 94,100 ****
+              caution=0.0
+              grouping=no
+          [/ai]
+-         {INCOME 4 8 12}
+      [/side]
+  
+      [side]
+--- 96,102 ----
+              caution=0.0
+              grouping=no
+          [/ai]
++         {INCOME 2 8 12}
+      [/side]
+  
+      [side]
+***************
+*** 115,121 ****
+          recruit=Orcish Archer, Orcish Assassin, Orcish Grunt, Wolf Rider, Orcish Crossbowman, Orcish Warrior, Goblin Knight, Goblin Pillager, Orcish Slayer, Goblin Spearman, Goblin Impaler
+  #endif
+  
+-         {GOLD 190 230 290}
+          team_name=orcs
+          user_team_name=_"Orcs"
+          [ai]
+--- 117,123 ----
+          recruit=Orcish Archer, Orcish Assassin, Orcish Grunt, Wolf Rider, Orcish Crossbowman, Orcish Warrior, Goblin Knight, Goblin Pillager, Orcish Slayer, Goblin Spearman, Goblin Impaler
+  #endif
+  
++         {GOLD 180 230 290}
+          team_name=orcs
+          user_team_name=_"Orcs"
+          [ai]
+***************
+*** 129,135 ****
+              caution=0.0
+              grouping=no
+          [/ai]
+-         {INCOME 4 8 12}
+      [/side]
+  
+      [side]
+--- 131,137 ----
+              caution=0.0
+              grouping=no
+          [/ai]
++         {INCOME 2 8 12}
+      [/side]
+  
+      [side]
+***************
+*** 152,158 ****
+          recruit=Orcish Archer, Orcish Assassin, Orcish Grunt, Wolf Rider, Orcish Crossbowman, Orcish Warrior, Goblin Knight, Goblin Pillager, Orcish Slayer, Goblin Spearman, Goblin Impaler
+  #endif
+  
+-         {GOLD 260 300 360}
+          team_name=orcs
+          user_team_name=_"Orcs"
+          [ai]
+--- 154,160 ----
+          recruit=Orcish Archer, Orcish Assassin, Orcish Grunt, Wolf Rider, Orcish Crossbowman, Orcish Warrior, Goblin Knight, Goblin Pillager, Orcish Slayer, Goblin Spearman, Goblin Impaler
+  #endif
+  
++         {GOLD 240 300 360}
+          team_name=orcs
+          user_team_name=_"Orcs"
+          [ai]

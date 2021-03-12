@@ -1,0 +1,181 @@
+***************
+*** 5,11 ****
+      next_scenario=20_Return_of_the_Fleet
+      map_data="{campaigns/The_Rise_Of_Wesnoth/maps/19_The_Vanguard.map}"
+  
+-     {TURNS 41 38 35}
+      {DEFAULT_SCHEDULE}
+  
+      {SCENARIO_MUSIC loyalists.ogg}
+--- 5,11 ----
+      next_scenario=20_Return_of_the_Fleet
+      map_data="{campaigns/The_Rise_Of_Wesnoth/maps/19_The_Vanguard.map}"
+  
++     {TURNS 43 39 35}
+      {DEFAULT_SCHEDULE}
+  
+      {SCENARIO_MUSIC loyalists.ogg}
+***************
+*** 25,31 ****
+          type=Noble Commander
+          unrenamable=yes
+          canrecruit=yes
+-         gold=200
+          controller=human
+          team_name=Haldric
+          user_team_name=_"Refugees"
+--- 25,32 ----
+          type=Noble Commander
+          unrenamable=yes
+          canrecruit=yes
++         {GOLD 220 210 200}
++         {INCOME 6 4 2}
+          controller=human
+          team_name=Haldric
+          user_team_name=_"Refugees"
+***************
+*** 50,73 ****
+  #ifdef HARD
+          recruit=Orcish Archer, Orcish Assassin, Orcish Grunt, Wolf Rider, Orcish Crossbowman, Orcish Warrior, Goblin Knight, Goblin Pillager, Orcish Slayer, Goblin Spearman, Goblin Impaler
+  #endif
+-         {GOLD 150 190 230}
+          team_name=orcs
+          user_team_name=_"Orcs"
+          [ai]
+-             #{NO_SCOUTS}
+              recruitment_pattern=scout,fighter,fighter,mixed fighter,archer
+-             {ATTACK_DEPTH 5 5 6}
+          [/ai]
+          [ai]
+              time_of_day=dusk,first_watch,second_watch
+-             aggression=0.75
+              caution=0.0
+              grouping=no
+          [/ai]
+-         {INCOME 2 4 8}
+      [/side]
+  
+-     {STARTING_VILLAGES 2 8}
+  
+      [side]
+          type=Orcish Warlord
+--- 53,75 ----
+  #ifdef HARD
+          recruit=Orcish Archer, Orcish Assassin, Orcish Grunt, Wolf Rider, Orcish Crossbowman, Orcish Warrior, Goblin Knight, Goblin Pillager, Orcish Slayer, Goblin Spearman, Goblin Impaler
+  #endif
++         {GOLD 130 180 230}
+          team_name=orcs
+          user_team_name=_"Orcs"
+          [ai]
+              recruitment_pattern=scout,fighter,fighter,mixed fighter,archer
++             {ATTACK_DEPTH 4 5 6}
+          [/ai]
+          [ai]
+              time_of_day=dusk,first_watch,second_watch
++             aggression={ON_DIFFICULTY 0.71 0.73 0.75}
+              caution=0.0
+              grouping=no
+          [/ai]
++         {INCOME 1 4 9}
+      [/side]
+  
++     {STARTING_VILLAGES 2 {ON_DIFFICULTY 6 7 8}}
+  
+      [side]
+          type=Orcish Warlord
+***************
+*** 87,110 ****
+  #ifdef HARD
+          recruit=Orcish Archer, Orcish Assassin, Orcish Grunt, Wolf Rider, Orcish Crossbowman, Orcish Warrior, Goblin Knight, Goblin Pillager, Orcish Slayer, Goblin Spearman, Goblin Impaler
+  #endif
+-         {GOLD 150 190 230}
+          team_name=orcs
+          user_team_name=_"Orcs"
+          [ai]
+-             #{NO_SCOUTS}
+              recruitment_pattern=scout,fighter,fighter,mixed fighter,archer
+-             {ATTACK_DEPTH 5 5 6}
+          [/ai]
+          [ai]
+              time_of_day=dusk,first_watch,second_watch
+-             aggression=0.75
+              caution=0.0
+              grouping=no
+          [/ai]
+-         {INCOME 2 4 8}
+      [/side]
+  
+-     {STARTING_VILLAGES 3 8}
+  
+      [side]
+          type=Troll Warrior
+--- 89,111 ----
+  #ifdef HARD
+          recruit=Orcish Archer, Orcish Assassin, Orcish Grunt, Wolf Rider, Orcish Crossbowman, Orcish Warrior, Goblin Knight, Goblin Pillager, Orcish Slayer, Goblin Spearman, Goblin Impaler
+  #endif
++         {GOLD 130 180 230}
+          team_name=orcs
+          user_team_name=_"Orcs"
+          [ai]
+              recruitment_pattern=scout,fighter,fighter,mixed fighter,archer
++             {ATTACK_DEPTH 4 5 6}
+          [/ai]
+          [ai]
+              time_of_day=dusk,first_watch,second_watch
++             aggression={ON_DIFFICULTY 0.71 0.73 0.75}
+              caution=0.0
+              grouping=no
+          [/ai]
++         {INCOME 1 4 9}
+      [/side]
+  
++     {STARTING_VILLAGES 3 {ON_DIFFICULTY 6 7 8}}
+  
+      [side]
+          type=Troll Warrior
+***************
+*** 124,130 ****
+          recruit=Troll Whelp,Troll,Troll Warrior,Troll Rocklobber
+  #endif
+  
+-         {GOLD 110 150 190}
+          team_name=orcs
+          user_team_name=_"Orcs"
+          [ai]
+--- 125,131 ----
+          recruit=Troll Whelp,Troll,Troll Warrior,Troll Rocklobber
+  #endif
+  
++         {GOLD 100 145 190}
+          team_name=orcs
+          user_team_name=_"Orcs"
+          [ai]
+***************
+*** 135,146 ****
+              recruitment_pattern=fighter,fighter,mixed fighter
+  #endif
+              grouping=no
+-             {ATTACK_DEPTH 5 5 6}
+          [/ai]
+  
+-         {INCOME 2 4 8}
+      [/side]
+  
+      [side]
+          side=5
+          no_leader=yes
+--- 136,149 ----
+              recruitment_pattern=fighter,fighter,mixed fighter
+  #endif
+              grouping=no
++             {ATTACK_DEPTH 4 5 6}
+          [/ai]
+  
++         {INCOME 1 4 9}
+      [/side]
+  
++     {STARTING_VILLAGES 4 {ON_DIFFICULTY 6 7 8}}
++ 
+      [side]
+          side=5
+          no_leader=yes

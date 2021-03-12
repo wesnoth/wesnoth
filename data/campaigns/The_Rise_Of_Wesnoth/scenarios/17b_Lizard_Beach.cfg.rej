@@ -1,0 +1,133 @@
+***************
+*** 5,11 ****
+      next_scenario=16_The_Kalian
+      map_data="{campaigns/The_Rise_Of_Wesnoth/maps/17b_Lizard_Beach.map}"
+  
+-     {TURNS 35 32 29}
+      {DEFAULT_SCHEDULE}
+  
+      {SCENARIO_MUSIC battle.ogg}
+--- 5,11 ----
+      next_scenario=16_The_Kalian
+      map_data="{campaigns/The_Rise_Of_Wesnoth/maps/17b_Lizard_Beach.map}"
+  
++     {TURNS 39 34 29}
+      {DEFAULT_SCHEDULE}
+  
+      {SCENARIO_MUSIC battle.ogg}
+***************
+*** 23,29 ****
+          unrenamable=yes
+          side=1
+          canrecruit=yes
+-         gold=200
+          controller=human
+          team_name=Haldric
+          user_team_name=_"Refugees"
+--- 23,30 ----
+          unrenamable=yes
+          side=1
+          canrecruit=yes
++         {GOLD 280 240 200}
++         {INCOME 3 2 1}
+          controller=human
+          team_name=Haldric
+          user_team_name=_"Refugees"
+***************
+*** 37,59 ****
+          side=2
+          canrecruit=yes
+          {GOLD 130 190 250}
+-         {INCOME 2 4 8}
+          team_name=Liz
+          user_team_name=_"Monsters"
+  #ifdef EASY
+-         recruit=Naga Fighter, Saurian Skirmisher, Mudcrawler, Giant Mudcrawler,Saurian Augur
+  #else
+-         recruit=Naga Fighter, Saurian Skirmisher, Mudcrawler, Giant Mudcrawler, Saurian Ambusher, Giant Scorpion,Saurian Augur,Saurian Oracle
+  #endif
+          [ai]
+-             #{NO_SCOUTS}
+              recruitment_pattern=scout,archer,fighter,archer,fighter,scout,healer
+              passive_leader=yes
+-             {ATTACK_DEPTH 4 5 5}
+          [/ai]
+      [/side]
+  
+-     {STARTING_VILLAGES 2 8}
+  
+      [side]
+          type=Saurian Flanker
+--- 38,60 ----
+          side=2
+          canrecruit=yes
+          {GOLD 130 190 250}
++         {INCOME 2 5 8}
+          team_name=Liz
+          user_team_name=_"Monsters"
+  #ifdef EASY
++         recruit=Naga Fighter, Saurian Skirmisher, Mudcrawler, Giant Mudcrawler, Saurian Augur
+  #else
++         recruit=Naga Fighter, Saurian Skirmisher, Mudcrawler, Giant Mudcrawler, Saurian Ambusher, Giant Scorpion, Saurian Augur, Saurian Oracle
+  #endif
+          [ai]
+              recruitment_pattern=scout,archer,fighter,archer,fighter,scout,healer
+              passive_leader=yes
++             {ATTACK_DEPTH 3 4 5}
+          [/ai]
+      [/side]
+  
++     {STARTING_VILLAGES 2 {ON_DIFFICULTY 6 7 8}}
++     {LIMIT_CONTEMPORANEOUS_RECRUITS 2 (Giant Mudcrawler) {ON_DIFFICULTY 1 2 3}}
+  
+      [side]
+          type=Saurian Flanker
+***************
+*** 62,84 ****
+          side=3
+          canrecruit=yes
+          {GOLD 130 190 250}
+-         {INCOME 2 4 8}
+          team_name=Liz
+          user_team_name=_"Monsters"
+  #ifdef EASY
+-         recruit=Naga Fighter, Saurian Skirmisher, Mudcrawler, Giant Mudcrawler,Saurian Augur
+  #else
+-         recruit=Naga Fighter, Saurian Skirmisher, Mudcrawler, Giant Mudcrawler, Saurian Ambusher, Giant Scorpion,Saurian Augur,Saurian Soothsayer
+  #endif
+          [ai]
+-             #{NO_SCOUTS}
+              recruitment_pattern=scout,archer,fighter,archer,fighter,scout,healer
+              passive_leader=yes
+-             {ATTACK_DEPTH 4 5 5}
+          [/ai]
+      [/side]
+  
+-     {STARTING_VILLAGES 3 8}
+  
+      {campaigns/The_Rise_Of_Wesnoth/utils/trow-nlmsg.cfg}
+  
+--- 63,85 ----
+          side=3
+          canrecruit=yes
+          {GOLD 130 190 250}
++         {INCOME 2 5 8}
+          team_name=Liz
+          user_team_name=_"Monsters"
+  #ifdef EASY
++         recruit=Naga Fighter, Saurian Skirmisher, Mudcrawler, Giant Mudcrawler, Saurian Augur
+  #else
++         recruit=Naga Fighter, Saurian Skirmisher, Mudcrawler, Giant Mudcrawler, Saurian Ambusher, Giant Scorpion, Saurian Augur, Saurian Soothsayer
+  #endif
+          [ai]
+              recruitment_pattern=scout,archer,fighter,archer,fighter,scout,healer
+              passive_leader=yes
++             {ATTACK_DEPTH 3 4 5}
+          [/ai]
+      [/side]
+  
++     {STARTING_VILLAGES 3 {ON_DIFFICULTY 6 7 8}}
++     {LIMIT_CONTEMPORANEOUS_RECRUITS 2 (Giant Mudcrawler) {ON_DIFFICULTY 1 2 3}}
+  
+      {campaigns/The_Rise_Of_Wesnoth/utils/trow-nlmsg.cfg}
+  
