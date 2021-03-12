@@ -148,6 +148,7 @@ private:
 	std::string admin_passwd_;
 	std::string motd_;
 	std::string announcements_;
+	std::string server_id_;
 	std::string tournaments_;
 	std::string information_;
 	std::size_t default_max_messages_;
