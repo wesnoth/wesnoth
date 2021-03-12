@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3-svn\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-02-20 18:40-0300\n"
+"POT-Creation-Date: 2021-03-12 20:18-0300\n"
 "PO-Revision-Date: 2013-09-09 11:47+0700\n"
 "Last-Translator: Yuristyawan Pambudi Wicaksana <yuris_wicaksana@yahoo.com>\n"
 "Language-Team: none\n"
@@ -239,178 +239,60 @@ msgstr "Emas terbawa:"
 msgid "Notes:"
 msgstr "Catatan:"
 
-#. [lua]: wc_ii_generate_scenario
-#. [lua]: wct_store_possible_encampment_ford
-#: data/campaigns/World_Conquest/lua/map/main.lua:138
-#: data/campaigns/World_Conquest/lua/map/postgeneration/1A_Start.lua:144
-msgid "Start"
-msgstr ""
-
-#. [lua]: wc_ii_generate_scenario
-#: data/campaigns/World_Conquest/lua/map/main.lua:140
-#, fuzzy
-#| msgid "End Scenario"
-msgid "Scenario"
-msgstr "Akhir Skenario"
-
-#. [lua]: wc_ii_generate_scenario
-#: data/campaigns/World_Conquest/lua/map/main.lua:142
-msgid "Final Battle"
-msgstr ""
-
-#. [lua]: wct_map_2a_post_bunus_decoration
-#: data/campaigns/World_Conquest/lua/map/postgeneration/2A_Springs.lua:182
-msgid "water^Springs"
-msgstr ""
-
-#. [lua]: world_conquest_tek_map_decoration_2c
-#: data/campaigns/World_Conquest/lua/map/postgeneration/2C_Glaciers.lua:206
-msgid "Glaciers"
-msgstr ""
-
-#. [lua]: wct_map_2d_post_bunus_decoration
-#: data/campaigns/World_Conquest/lua/map/postgeneration/2D_Provinces.lua:164
-#, fuzzy
-#| msgid "Preferences"
-msgid "Provinces"
-msgstr "Pilihan"
-
-#. [lua]: wct_map_2f_post_bunus_decoration
-#: data/campaigns/World_Conquest/lua/map/postgeneration/2F_Clayey.lua:126
-#, fuzzy
-#| msgid "Players"
-msgid "Clayey"
-msgstr "Pemain-Pemain"
-
-#. [lua]: wct_map_3c_post_bunus_decoration
-#: data/campaigns/World_Conquest/lua/map/postgeneration/3C_Delta.lua:395
-msgid "river^Delta"
-msgstr ""
-
-#. [lua]: world_conquest_tek_map_repaint_3d
-#: data/campaigns/World_Conquest/lua/map/postgeneration/3D_Sulfurous.lua:61
-msgid "Sulfurous"
-msgstr ""
-
-#. [lua]: wct_map_3e_post_bunus_decoration
-#: data/campaigns/World_Conquest/lua/map/postgeneration/3E_Coral.lua:78
-msgid "made of^Coral"
-msgstr ""
-
-#. [lua]: wct_map_4a_post_bunus_decoration
-#: data/campaigns/World_Conquest/lua/map/postgeneration/4A_Thermal.lua:199
-#, fuzzy
-#| msgid "Normal"
-msgid "Thermal"
-msgstr "Normal"
-
-#. [lua]: world_conquest_tek_map_repaint_4b
-#: data/campaigns/World_Conquest/lua/map/postgeneration/4B_Volcanic.lua:414
-msgid "Volcanic"
-msgstr ""
-
-#. [lua]: wct_map_4d_post_bunus_decoration
-#: data/campaigns/World_Conquest/lua/map/postgeneration/4D_Podzol.lua:134
-msgid "Podzol"
-msgstr ""
-
-#. [lua]: wct_map_4e_post_bunus_decoration
-#: data/campaigns/World_Conquest/lua/map/postgeneration/4E_Wicked.lua:643
-msgid "Wicked"
-msgstr ""
-
-#. [lua]: wild_store_roads_in_cave_zone
-#: data/campaigns/World_Conquest/lua/map/postgeneration/4F_Wild.lua:266
-msgid "Wild"
-msgstr ""
-
-#. [lua]: world_conquest_tek_map_repaint_6d
-#: data/campaigns/World_Conquest/lua/map/postgeneration/6D_Feudal.lua:472
-msgid "Feudal"
-msgstr ""
-
-#. [lua]: add_enemy_side
-#: data/campaigns/World_Conquest/lua/map/scenario_utils/side_definitions.lua:38
-msgid "Enemies"
-msgstr "Musuh-Musuh"
-
-#. [lua]: add_player_side
-#: data/campaigns/World_Conquest/lua/map/scenario_utils/side_definitions.lua:61
-msgid "Allies"
-msgstr ""
-
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:147
-msgid " and "
-msgstr " dan"
-
 #. [language]
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:150
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:147
 #: data/english.cfg:31
 msgid "arcane"
 msgstr "misterius"
 
 #. [language]
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:153
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:150
 #: data/english.cfg:26
 msgid "blade"
 msgstr "senjata tajam"
 
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:156
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:153
 #: src/units/alignment.hpp:10
 msgid "chaotic"
 msgstr "brutal"
 
 #. [language]
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:159
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:156
 #: data/english.cfg:30
 msgid "cold"
 msgstr "dingin"
 
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:162
-#, fuzzy
-#| msgid "Damage"
-msgid "damage"
-msgstr "Luka"
-
 #. [language]
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:165
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:159
 #: data/english.cfg:3
 msgid "Easy"
 msgstr "Mudah"
 
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:168
-msgid "XP to advance"
-msgstr "AP untuk naik level"
-
 #. [language]
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:171
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:162
 #: data/english.cfg:29
 msgid "fire"
 msgstr "api"
 
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:174
-msgid "gold"
-msgstr "emas"
-
 #. [language]
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:177
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:165
 #: data/english.cfg:5
 msgid "Hard"
 msgstr "Susah"
 
 #. [label]: id=label-hp
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:180
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:168
 #: data/themes/default.cfg:146
 msgid "HP"
 msgstr "Darah"
 
 #. [language]
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:183
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:171
 #: data/english.cfg:28
 msgid "impact"
 msgstr "peremuk"
 
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:186
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:174
 #: src/units/alignment.hpp:8
 #, fuzzy
 #| msgid "female^lawful"
@@ -418,50 +300,28 @@ msgid "lawful"
 msgstr "baik"
 
 #. [language]
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:189
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:177
 #: data/english.cfg:22
 msgid "melee"
 msgstr "serangan jarak dekat"
 
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:192
-#, fuzzy
-#| msgid "moves"
-msgid "moves"
-msgstr "gerakan"
-
 #. [language]
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:195
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:180
 #: data/english.cfg:6
 msgid "Nightmare"
 msgstr "Sangat Sulit"
 
 #. [language]
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:198
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:183
 #: data/english.cfg:27
 msgid "pierce"
 msgstr "tusukan"
 
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:201
-msgid "gender^Random"
-msgstr "Acak"
-
 #. [language]
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:204
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:186
 #: data/english.cfg:23
 msgid "ranged"
 msgstr "serangan jarak jauh"
-
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:207
-#, fuzzy
-#| msgid " resistance vs "
-msgid " resistance vs "
-msgstr "daya tahan melawan"
-
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:210
-#, fuzzy
-#| msgid "Strikes"
-msgid "strike"
-msgstr "Serangan"
 
 #. [about]
 #: data/core/about.cfg:4
@@ -3922,8 +3782,19 @@ msgstr ""
 "DejaVuSans.ttf,Andagii.ttf,DroidSansJapanese.ttf,DroidSansFallbackFull.ttf,"
 "Junicode-Regular.ttf"
 
+#. [lua]: wesnoth.deprecate_api
+#: data/lua/core/_initial.lua:22
+msgid "(Note: You should use $replacement instead in new code)"
+msgstr ""
+
+#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
+#. [lua]: wesnoth.deprecate_api
+#: data/lua/core/_initial.lua:28 src/deprecation.cpp:68
+msgid "Invalid deprecation level $level (should be 1-4)"
+msgstr ""
+
 #. [lua]: wml_actions.deprecated_message
-#: data/lua/wml-tags.lua:905
+#: data/lua/wml-tags.lua:903
 msgid "Invalid deprecation level (should be 1-4)"
 msgstr ""
 
@@ -3969,8 +3840,8 @@ msgstr "tidak bisa menyembuhkan"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: wesnoth.wml_actions.message
-#: data/lua/wml/message.lua:433 src/scripting/game_lua_kernel.cpp:2897
-#: src/scripting/game_lua_kernel.cpp:2932
+#: data/lua/wml/message.lua:433 src/scripting/game_lua_kernel.cpp:2665
+#: src/scripting/game_lua_kernel.cpp:2700
 msgid "input"
 msgstr ""
 
@@ -4010,9 +3881,9 @@ msgstr "AP untuk naik level"
 #. [modification]: id=plan_unit_advance
 #: data/modifications.cfg:7
 msgid ""
-"When playing a multiplayer game, you do not control what a unit advances if "
-"they advances on another player's turn. With this modification you can set "
-"what your units advance to beforehand either for a specific unit or for all "
+"When playing a multiplayer game, you do not control what a unit advances to "
+"if it advances on another player's turn. With this modification you can set "
+"what your units advance to beforehand, either for a specific unit or for all "
 "units of the same type."
 msgstr ""
 
@@ -4114,17 +3985,8 @@ msgstr ""
 "serangannya melukai 25% lebih banyak dikalikan dengan perbedaan level mereka."
 
 #. [resistance]: id=melee_steadfast
-#: data/scenario-test.cfg:366
-msgid "steadfast"
-msgstr "kukuh"
-
-#. [resistance]: id=melee_steadfast
-#: data/scenario-test.cfg:367
-msgid "female^steadfast"
-msgstr "kukuh"
-
-#. [resistance]: id=melee_steadfast
-#: data/scenario-test.cfg:368
+#. This is not vanilla steadfast
+#: data/scenario-test.cfg:371
 #, fuzzy
 #| msgid ""
 #| "Steadfast:\n"
@@ -4138,67 +4000,26 @@ msgstr ""
 "Daya tahan unit ini didua kali lipat, sampai maksimum 50%, ketika bertahan. "
 "Kelemahan tidak terpengaruh."
 
-#. [plague]: id=plague, type=Walking Corpse
-#: data/scenario-test.cfg:403
-msgid "plague"
-msgstr "mewabah"
-
-#. [plague]: id=plague, type=Walking Corpse
-#: data/scenario-test.cfg:404
-#, fuzzy
-#| msgid ""
-#| "Plague:\n"
-#| "When a unit is killed by a Plague attack, that unit is replaced with a "
-#| "Walking Corpse on the same side as the unit with the Plague attack. This "
-#| "doesn’t work on Undead or units in villages."
-msgid ""
-"When a unit is killed by a Plague attack, that unit is replaced with a "
-"Walking Corpse on the same side as the unit with the Plague attack. This "
-"doesn’t work on Undead or units in villages."
-msgstr ""
-"Mewabah:\n"
-"Ketika sebuah unit dibunuh oleh serangan Mewabah, unit itu digantikan dengan "
-"seorang Mayat Berjalan pada sisi sama dengan unit memiliki serangan Mewabah. "
-"Ini tidak mengefek Tak-Mati atau unit di desa."
-
-#. [firststrike]: id=initiative
-#: data/scenario-test.cfg:465
-msgid "initiative"
-msgstr ""
-
-#. [firststrike]: id=initiative
-#: data/scenario-test.cfg:466
-#, fuzzy
-#| msgid ""
-#| " The length of this unit’s weapon allows it to strike first in melee, "
-#| "even in defense."
-msgid ""
-"All adjacent friendly units will strike first in melee combat, even when "
-"defending."
-msgstr ""
-"Panjang senjata unit ini membolehkannya menyerang pertama di pertarungan "
-"jarak dekat, bahkan ketika berlindung."
-
 #. [chance_to_hit]: id=marksman_leadership
-#: data/scenario-test.cfg:478
+#: data/scenario-test.cfg:485
 msgid "cantor"
 msgstr ""
 
 #. [chance_to_hit]: id=marksman_leadership
-#: data/scenario-test.cfg:479
+#: data/scenario-test.cfg:486
 #, fuzzy
 #| msgid "female^chaotic"
 msgid "female^cantor"
 msgstr "brutal"
 
 #. [chance_to_hit]: id=marksman_leadership
-#: data/scenario-test.cfg:480
+#: data/scenario-test.cfg:487
 msgid "This unit grants marksman to all ranged attacks of all adjacent allies."
 msgstr ""
 
 #. [heals]: id=aura of death 4
 #. [heals]: id=aura of death 8
-#: data/scenario-test.cfg:1066 data/scenario-test.cfg:1094
+#: data/scenario-test.cfg:1073 data/scenario-test.cfg:1101
 #, fuzzy
 #| msgid "female^healthy"
 msgid "aura of death ("
@@ -4206,19 +4027,19 @@ msgstr "sehat"
 
 #. [heals]: id=aura of death 4
 #. [heals]: id=aura of death 8
-#: data/scenario-test.cfg:1067 data/scenario-test.cfg:1095
+#: data/scenario-test.cfg:1074 data/scenario-test.cfg:1102
 #, fuzzy
 #| msgid "female^healthy"
 msgid "female^aura of death ("
 msgstr "sehat"
 
 #. [language]
-#: data/scenario-test.cfg:4396
+#: data/scenario-test.cfg:4403
 msgid "very long"
 msgstr "sangat lama"
 
 #. [language]
-#: data/scenario-test.cfg:4397
+#: data/scenario-test.cfg:4404
 msgid "electrical"
 msgstr "elektris"
 
@@ -5434,25 +5255,25 @@ msgstr[0] "Unit sekutu terlihat $friends unit-unit sekutu terlihat"
 msgid "(press $hotkey to keep moving)"
 msgstr "(tekan $hotkey untuk pindah terus)"
 
-#: src/addon/client.cpp:74
+#: src/addon/client.cpp:75
 #, fuzzy
 #| msgid "Connecting to Server..."
 msgid "Connecting to $server_address|..."
 msgstr "Menyambungkan ke Server..."
 
-#: src/addon/client.cpp:119
+#: src/addon/client.cpp:122
 #, fuzzy
 #| msgid "Requesting list of add-ons"
 msgid "Downloading list of add-ons..."
 msgstr "Meminta daftar tambahan"
 
-#: src/addon/client.cpp:140
+#: src/addon/client.cpp:143
 #, fuzzy
 #| msgid "Requesting terms"
 msgid "Requesting distribution terms..."
 msgstr "Meminta hubungan"
 
-#: src/addon/client.cpp:164
+#: src/addon/client.cpp:167
 #, fuzzy
 #| msgid ""
 #| "The add-on has an invalid file or directory name and cannot be installed."
@@ -5463,7 +5284,7 @@ msgstr ""
 "Add-on ini memiliki file atau nama direktori yang tidak berlaku dan tidak "
 "bisa diinstal."
 
-#: src/addon/client.cpp:190
+#: src/addon/client.cpp:193
 #, fuzzy
 #| msgid ""
 #| "The add-on has an invalid file or directory name and cannot be installed."
@@ -5474,7 +5295,7 @@ msgstr ""
 "Add-on ini memiliki file atau nama direktori yang tidak berlaku dan tidak "
 "bisa diinstal."
 
-#: src/addon/client.cpp:198
+#: src/addon/client.cpp:201
 msgid ""
 "The add-on <i>$addon_title</i> has an invalid file or directory name and "
 "cannot be published. File or directory names may not contain '..' or end "
@@ -5484,7 +5305,7 @@ msgid ""
 "&quot; * / : &lt; &gt; ? \\ | ~"
 msgstr ""
 
-#: src/addon/client.cpp:209
+#: src/addon/client.cpp:212
 #, fuzzy
 #| msgid ""
 #| "The add-on has an invalid file or directory name and cannot be installed."
@@ -5496,37 +5317,37 @@ msgstr ""
 "Add-on ini memiliki file atau nama direktori yang tidak berlaku dan tidak "
 "bisa diinstal."
 
-#: src/addon/client.cpp:224
+#: src/addon/client.cpp:227
 #, fuzzy
 #| msgid "Requesting terms"
 msgid "Requesting file index..."
 msgstr "Meminta hubungan"
 
-#: src/addon/client.cpp:240
+#: src/addon/client.cpp:243
 #, fuzzy
 #| msgid "Downloading add-on: $addon_title|..."
 msgid "Sending an update pack for the add-on <i>$addon_title</i>..."
 msgstr "Sedang download add-on: $addon_title|..."
 
-#: src/addon/client.cpp:261
+#: src/addon/client.cpp:264
 #, fuzzy
 #| msgid "Downloading add-on: $addon_title|..."
 msgid "Sending add-on <i>$addon_title</i>..."
 msgstr "Sedang download add-on: $addon_title|..."
 
-#: src/addon/client.cpp:294
+#: src/addon/client.cpp:297
 #, fuzzy
 #| msgid "Downloading add-on: $addon_title|..."
 msgid "Removing add-on <i>$addon_title</i> from the server..."
 msgstr "Sedang download add-on: $addon_title|..."
 
-#: src/addon/client.cpp:323
+#: src/addon/client.cpp:326
 #, fuzzy
 #| msgid "Downloading add-on: $addon_title|..."
 msgid "Downloading add-on <i>$addon_title</i>..."
 msgstr "Sedang download add-on: $addon_title|..."
 
-#: src/addon/client.cpp:342 src/addon/client.cpp:368
+#: src/addon/client.cpp:345 src/addon/client.cpp:371
 #, fuzzy
 #| msgid ""
 #| "The add-on has an invalid file or directory name and cannot be installed."
@@ -5537,7 +5358,7 @@ msgstr ""
 "Add-on ini memiliki file atau nama direktori yang tidak berlaku dan tidak "
 "bisa diinstal."
 
-#: src/addon/client.cpp:347 src/addon/client.cpp:373
+#: src/addon/client.cpp:350 src/addon/client.cpp:376
 #, fuzzy
 #| msgid ""
 #| "The add-on has an invalid file or directory name and cannot be installed."
@@ -5548,13 +5369,13 @@ msgstr ""
 "Add-on ini memiliki file atau nama direktori yang tidak berlaku dan tidak "
 "bisa diinstal."
 
-#: src/addon/client.cpp:406
+#: src/addon/client.cpp:409
 #, fuzzy
 #| msgid "The server responded with an error: \""
 msgid "The server responded with an error:"
 msgstr "Server menjawab dengan error: \""
 
-#: src/addon/client.cpp:456
+#: src/addon/client.cpp:459
 #, fuzzy
 #| msgid ""
 #| "The selected add-on has the following dependency. Do you want to install "
@@ -5572,13 +5393,13 @@ msgstr[0] ""
 "Pengaya terpilih memiliki kepercayaan berikut. Apakah anda ingin "
 "menginstalnya?"
 
-#: src/addon/client.cpp:465
+#: src/addon/client.cpp:468
 #, fuzzy
 #| msgid "Install dependencies"
 msgid "Broken Dependencies"
 msgstr "Menginstall kepercayaan-kepercayaan "
 
-#: src/addon/client.cpp:505
+#: src/addon/client.cpp:508
 msgid ""
 "The following dependency could not be installed. Do you still wish to "
 "continue?"
@@ -5587,38 +5408,38 @@ msgid_plural ""
 "continue?"
 msgstr[0] ""
 
-#: src/addon/client.cpp:509
+#: src/addon/client.cpp:512
 #, fuzzy
 #| msgid "Installation failed"
 msgid "Dependencies Installation Failed"
 msgstr "Instalasi gagal"
 
-#: src/addon/client.cpp:532
+#: src/addon/client.cpp:535
 msgid ""
 "The add-on '$addon|' is already installed and contains additional "
 "information that will be permanently lost if you continue:"
 msgstr ""
 
-#: src/addon/client.cpp:536
+#: src/addon/client.cpp:539
 msgid "Publishing information file (.pbl)"
 msgstr ""
 
-#: src/addon/client.cpp:540
+#: src/addon/client.cpp:543
 msgid "Version control system (VCS) information"
 msgstr ""
 
-#: src/addon/client.cpp:544
+#: src/addon/client.cpp:547
 #, fuzzy
 #| msgid "Do you want to continue?"
 msgid "Do you really wish to continue?"
 msgstr "Apakah anda mau melanjutkan?"
 
-#: src/addon/client.cpp:546 src/addon/manager_ui.cpp:172
+#: src/addon/client.cpp:549 src/addon/manager_ui.cpp:172
 #: src/game_initialization/multiplayer.cpp:361
 msgid "Confirm"
 msgstr "Tegaskan"
 
-#: src/addon/client.cpp:685
+#: src/addon/client.cpp:689
 #, fuzzy
 #| msgid "Add-on Installed"
 msgid "Add-ons Manager"
@@ -5870,28 +5691,36 @@ msgid "Version number not greater than the latest uploaded version."
 msgstr ""
 
 #: src/addon/validation.cpp:546
+msgid "Feedback topic id is not a number."
+msgstr ""
+
+#: src/addon/validation.cpp:550
+msgid "Feedback topic does not exist."
+msgstr ""
+
+#: src/addon/validation.cpp:554
 msgid "The add-on publish information contains an invalid UTF-8 sequence."
 msgstr ""
 
-#: src/addon/validation.cpp:555
+#: src/addon/validation.cpp:563
 msgid "Unspecified server error."
 msgstr ""
 
-#: src/addon/validation.cpp:559
+#: src/addon/validation.cpp:567
 msgid "Server is in read-only mode."
 msgstr ""
 
-#: src/addon/validation.cpp:563
+#: src/addon/validation.cpp:571
 #, fuzzy
 #| msgid "You have no add-ons installed."
 msgid "Corrupted server add-ons list."
 msgstr "Anda tidak memiliki tambahan terinstal."
 
-#: src/addon/validation.cpp:567
+#: src/addon/validation.cpp:575
 msgid "Empty add-on version list on the server."
 msgstr ""
 
-#: src/addon/validation.cpp:577
+#: src/addon/validation.cpp:585
 msgid "Unspecified validation failure."
 msgstr ""
 
@@ -6145,10 +5974,6 @@ msgstr ""
 msgid "$elem has been deprecated and removed."
 msgstr ""
 
-#: src/deprecation.cpp:68
-msgid "Invalid deprecation level $level (should be 1-4)"
-msgstr ""
-
 #: src/desktop/notifications.cpp:82
 #, fuzzy
 #| msgid "Chat message aging"
@@ -6273,22 +6098,22 @@ msgid ""
 "Error loading default core game configuration files. The game will now exit."
 msgstr "Error meload file konfigurasi permainan: '"
 
-#: src/game_config_manager.cpp:529
+#: src/game_config_manager.cpp:530
 msgid "Use [modify_unit_type]\n"
 msgstr ""
 
-#: src/game_config_manager.cpp:568
+#: src/game_config_manager.cpp:569
 msgid "instead, use the macro with the same name in the [campaign] tag"
 msgstr ""
 
-#: src/game_config_manager.cpp:619
+#: src/game_config_manager.cpp:620
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
 msgstr[0] ""
 "1 Add-on berikut memiliki error dan tidak bisa diload: Semua add-on berikut "
 "memiliki error dan tidak bisa diload:"
 
-#: src/game_config_manager.cpp:623
+#: src/game_config_manager.cpp:624
 msgid "Please report this to the author or maintainer of this add-on."
 msgid_plural ""
 "Please report this to the respective authors or maintainers of these add-ons."
@@ -6791,7 +6616,7 @@ msgstr "Permainan Selesai"
 msgid "This scenario has ended. Do you want to continue the campaign?"
 msgstr "Skenario ini sudah berakhir. Apakah anda ingin meneruskan kampanye?"
 
-#: src/game_initialization/playcampaign.cpp:415
+#: src/game_initialization/playcampaign.cpp:418
 msgid "Unknown scenario: '$scenario|'"
 msgstr "Skenario tidak diketahui: '$scenario|'"
 
@@ -8946,6 +8771,97 @@ msgstr "Sembunyikan rencana untuk $player"
 #: src/whiteboard/manager.cpp:1137
 msgid "Whiteboard Options"
 msgstr "Pilihan Papan Tulis Putih"
+
+#, fuzzy
+#~| msgid "End Scenario"
+#~ msgid "Scenario"
+#~ msgstr "Akhir Skenario"
+
+#, fuzzy
+#~| msgid "Preferences"
+#~ msgid "Provinces"
+#~ msgstr "Pilihan"
+
+#, fuzzy
+#~| msgid "Players"
+#~ msgid "Clayey"
+#~ msgstr "Pemain-Pemain"
+
+#, fuzzy
+#~| msgid "Normal"
+#~ msgid "Thermal"
+#~ msgstr "Normal"
+
+#~ msgid "Enemies"
+#~ msgstr "Musuh-Musuh"
+
+#~ msgid " and "
+#~ msgstr " dan"
+
+#, fuzzy
+#~| msgid "Damage"
+#~ msgid "damage"
+#~ msgstr "Luka"
+
+#~ msgid "XP to advance"
+#~ msgstr "AP untuk naik level"
+
+#~ msgid "gold"
+#~ msgstr "emas"
+
+#, fuzzy
+#~| msgid "moves"
+#~ msgid "moves"
+#~ msgstr "gerakan"
+
+#~ msgid "gender^Random"
+#~ msgstr "Acak"
+
+#, fuzzy
+#~| msgid " resistance vs "
+#~ msgid " resistance vs "
+#~ msgstr "daya tahan melawan"
+
+#, fuzzy
+#~| msgid "Strikes"
+#~ msgid "strike"
+#~ msgstr "Serangan"
+
+#~ msgid "steadfast"
+#~ msgstr "kukuh"
+
+#~ msgid "female^steadfast"
+#~ msgstr "kukuh"
+
+#~ msgid "plague"
+#~ msgstr "mewabah"
+
+#, fuzzy
+#~| msgid ""
+#~| "Plague:\n"
+#~| "When a unit is killed by a Plague attack, that unit is replaced with a "
+#~| "Walking Corpse on the same side as the unit with the Plague attack. This "
+#~| "doesn’t work on Undead or units in villages."
+#~ msgid ""
+#~ "When a unit is killed by a Plague attack, that unit is replaced with a "
+#~ "Walking Corpse on the same side as the unit with the Plague attack. This "
+#~ "doesn’t work on Undead or units in villages."
+#~ msgstr ""
+#~ "Mewabah:\n"
+#~ "Ketika sebuah unit dibunuh oleh serangan Mewabah, unit itu digantikan "
+#~ "dengan seorang Mayat Berjalan pada sisi sama dengan unit memiliki "
+#~ "serangan Mewabah. Ini tidak mengefek Tak-Mati atau unit di desa."
+
+#, fuzzy
+#~| msgid ""
+#~| " The length of this unit’s weapon allows it to strike first in melee, "
+#~| "even in defense."
+#~ msgid ""
+#~ "All adjacent friendly units will strike first in melee combat, even when "
+#~ "defending."
+#~ msgstr ""
+#~ "Panjang senjata unit ini membolehkannya menyerang pertama di pertarungan "
+#~ "jarak dekat, bahkan ketika berlindung."
 
 #, fuzzy
 #~| msgid "Max HP bonus +3, Max XP +20%"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.5-CVS\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-02-20 18:40-0300\n"
+"POT-Creation-Date: 2021-03-12 20:18-0300\n"
 "PO-Revision-Date: 2020-12-31 10:39-0300\n"
 "Last-Translator: Andrei Machado <andreisp.machado@yahoo.com>\n"
 "Language-Team: Portuguese/Brazil\n"
@@ -87,6 +87,14 @@ msgstr ""
 #: data/core/terrain.cfg:479 data/core/terrain.cfg:489
 msgid "Fence"
 msgstr "Cerca"
+
+#. [row]
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:193
+#: data/gui/window/mp_faction_select.cfg:176
+#, fuzzy
+#| msgid "Random"
+msgid "gender^Random"
+msgstr "Aleatório"
 
 #
 # File: data/core/terrain.cfg, line: 18
@@ -4538,8 +4546,9 @@ msgstr "Selecione dificuldade:"
 # File: data/gui/default/window/chat_log.cfg, line: 38
 # File: data/gui/default/window/chat_log.cfg, line: 38
 # File: data/gui/default/window/chat_log.cfg, line: 38
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/window/chat_log.cfg:36
+#: data/gui/window/chat_log.cfg:36 src/hotkey/hotkey_command.cpp:275
 msgid "Chat Log"
 msgstr "Log de Conversa"
 
@@ -6532,11 +6541,13 @@ msgstr "Anúncios"
 # File: data/gui/default/window/title_screen.cfg, line: 263
 # File: src/game_preferences_display.cpp, line: 63
 # File: src/hotkeys.cpp, line: 106
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [grid]
 #. [label]: id=title
 #. [button]: id=show_preferences
 #: data/gui/window/lobby_main.cfg:460 data/gui/window/lobby_main.cfg:655
 #: data/gui/window/preferences.cfg:213 data/gui/window/title_screen.cfg:256
+#: src/hotkey/hotkey_command.cpp:118
 msgid "Preferences"
 msgstr "Preferências"
 
@@ -7418,14 +7429,6 @@ msgstr "Líder:"
 msgid "Gender:"
 msgstr "Gênero:"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [row]
-#: data/gui/window/mp_faction_select.cfg:176
-#: src/gui/dialogs/multiplayer/faction_select.cpp:139
-#: src/gui/dialogs/multiplayer/mp_staging.cpp:492
-msgid "Random"
-msgstr "Aleatório"
-
 #
 # File: data/gui/default/window/unit_create.cfg, line: 77
 # File: data/gui/default/window/unit_create.cfg, line: 77
@@ -7620,7 +7623,7 @@ msgstr "Salvar senha localmente (encriptado)"
 #. [widget]: id=label
 #: data/gui/window/mp_method_selection.cfg:46
 #: data/gui/window/preferences.cfg:365 data/gui/window/title_screen.cfg:252
-#: src/gui/dialogs/game_load.cpp:382
+#: src/gui/dialogs/game_load.cpp:406
 msgid "Multiplayer"
 msgstr "Multiplayer"
 
@@ -9361,7 +9364,7 @@ msgstr "O tamanho máximo de largura de texto é menor que 1."
 # File: src/text.cpp, line: 734
 # File: src/text.cpp, line: 734
 # File: src/text.cpp, line: 734
-#: src/font/text.cpp:779
+#: src/font/text.cpp:782
 msgid "The text contains invalid Pango markup: "
 msgstr "Este texto contém marcação Pango inválida: "
 
@@ -10215,8 +10218,8 @@ msgstr "desconhecido"
 # File: src/gui/dialogs/network_transmission.cpp, line: 56
 # File: src/hotkeys.cpp, line: 1191
 #: src/gui/dialogs/game_cache_options.cpp:101
-#: src/gui/dialogs/network_transmission.cpp:85
 #: src/gui/dialogs/network_transmission.cpp:86
+#: src/gui/dialogs/network_transmission.cpp:87
 #: src/gui/dialogs/screenshot_notification.cpp:115
 msgid "unit_byte^B"
 msgstr "B"
@@ -10245,7 +10248,36 @@ msgstr "O cache de data do jogo foi expurgado."
 msgid "The game data cache could not be purged."
 msgstr "O cache de data do jogo não pode ser completamente expurgado."
 
-#: src/gui/dialogs/game_load.cpp:122
+#
+# File: data/gui/default/window/game_save.cfg, line: 42
+# File: data/gui/default/window/game_save_message.cfg, line: 42
+# File: data/gui/default/window/game_save_oos.cfg, line: 42
+# File: src/hotkeys.cpp, line: 90
+# File: data/gui/default/window/game_save.cfg, line: 42
+# File: data/gui/default/window/game_save_message.cfg, line: 42
+# File: data/gui/default/window/game_save_oos.cfg, line: 42
+# File: src/hotkeys.cpp, line: 90
+# File: data/gui/default/window/game_save.cfg, line: 42
+# File: data/gui/default/window/game_save_message.cfg, line: 42
+# File: data/gui/default/window/game_save_oos.cfg, line: 42
+# File: src/hotkeys.cpp, line: 90
+#: src/gui/dialogs/game_load.cpp:74
+#, fuzzy
+#| msgid "Saved Games"
+msgid "No Saved Games"
+msgstr "Jogos Salvos"
+
+#
+# File: src/preferences_display.cpp, line: 326
+# File: src/preferences_display.cpp, line: 322
+# File: src/preferences_display.cpp, line: 322
+#: src/gui/dialogs/game_load.cpp:74
+#, fuzzy
+#| msgid "There are no alternative video modes available"
+msgid "There are no saved games to load."
+msgstr "Não existem outros modos de vídeo disponíveis"
+
+#: src/gui/dialogs/game_load.cpp:143
 msgid "game_version^Current Version"
 msgstr "Versão Atual"
 
@@ -10253,11 +10285,11 @@ msgstr "Versão Atual"
 # File: src/gui/dialogs/title_screen.cpp, line: 297
 # File: src/gui/dialogs/title_screen.cpp, line: 297
 # File: src/gui/dialogs/title_screen.cpp, line: 297
-#: src/gui/dialogs/game_load.cpp:127
+#: src/gui/dialogs/game_load.cpp:147
 msgid "game_version^Wesnoth $version"
 msgstr "Wesnoth $version"
 
-#: src/gui/dialogs/game_load.cpp:264
+#: src/gui/dialogs/game_load.cpp:284
 msgid "The selected file is corrupt: "
 msgstr "O jogo selecionado não possui lados: "
 
@@ -10265,7 +10297,7 @@ msgstr "O jogo selecionado não possui lados: "
 # File: src/gui/dialogs/game_load.cpp, line: 269
 # File: src/gui/dialogs/game_load.cpp, line: 269
 # File: src/gui/dialogs/game_load.cpp, line: 269
-#: src/gui/dialogs/game_load.cpp:336
+#: src/gui/dialogs/game_load.cpp:357
 msgid "(Invalid)"
 msgstr "(Inválido)"
 
@@ -10273,7 +10305,7 @@ msgstr "(Inválido)"
 # File: src/gui/dialogs/game_load.cpp, line: 289
 # File: src/gui/dialogs/game_load.cpp, line: 289
 # File: src/gui/dialogs/game_load.cpp, line: 289
-#: src/gui/dialogs/game_load.cpp:373
+#: src/gui/dialogs/game_load.cpp:397
 msgid "Campaign: $campaign_name"
 msgstr "Campanha: $campaign_name"
 
@@ -10284,7 +10316,7 @@ msgstr "Campanha: $campaign_name"
 # File: src/gui/dialogs/game_load.cpp, line: 298
 # File: data/gui/default/window/title_screen.cfg, line: 256
 # File: src/gui/dialogs/game_load.cpp, line: 298
-#: src/gui/dialogs/game_load.cpp:385
+#: src/gui/dialogs/game_load.cpp:409
 msgid "Tutorial"
 msgstr "Tutorial"
 
@@ -10292,7 +10324,7 @@ msgstr "Tutorial"
 # File: src/gui/dialogs/game_load.cpp, line: 300
 # File: src/gui/dialogs/game_load.cpp, line: 300
 # File: src/gui/dialogs/game_load.cpp, line: 300
-#: src/gui/dialogs/game_load.cpp:388
+#: src/gui/dialogs/game_load.cpp:412
 msgid "Test scenario"
 msgstr "Cenário de teste"
 
@@ -10300,7 +10332,7 @@ msgstr "Cenário de teste"
 # File: src/gui/dialogs/game_load.cpp, line: 308
 # File: src/gui/dialogs/game_load.cpp, line: 308
 # File: src/gui/dialogs/game_load.cpp, line: 308
-#: src/gui/dialogs/game_load.cpp:398
+#: src/gui/dialogs/game_load.cpp:422
 msgid "Replay"
 msgstr "Replay"
 
@@ -10308,7 +10340,7 @@ msgstr "Replay"
 # File: src/gui/dialogs/game_load.cpp, line: 310
 # File: src/gui/dialogs/game_load.cpp, line: 310
 # File: src/gui/dialogs/game_load.cpp, line: 310
-#: src/gui/dialogs/game_load.cpp:400
+#: src/gui/dialogs/game_load.cpp:424
 msgid "Turn"
 msgstr "Turno"
 
@@ -10316,7 +10348,7 @@ msgstr "Turno"
 # File: src/gui/dialogs/game_load.cpp, line: 312
 # File: src/gui/dialogs/game_load.cpp, line: 312
 # File: src/gui/dialogs/game_load.cpp, line: 312
-#: src/gui/dialogs/game_load.cpp:402
+#: src/gui/dialogs/game_load.cpp:426
 msgid "Scenario start"
 msgstr "Início do Cenário"
 
@@ -10324,7 +10356,7 @@ msgstr "Início do Cenário"
 # File: src/gui/dialogs/game_load.cpp, line: 315
 # File: src/gui/dialogs/game_load.cpp, line: 315
 # File: src/gui/dialogs/game_load.cpp, line: 315
-#: src/gui/dialogs/game_load.cpp:405
+#: src/gui/dialogs/game_load.cpp:429
 msgid "Difficulty: "
 msgstr "Dificuldade: "
 
@@ -10332,7 +10364,7 @@ msgstr "Dificuldade: "
 # File: src/gui/dialogs/game_load.cpp, line: 319
 # File: src/gui/dialogs/game_load.cpp, line: 319
 # File: src/gui/dialogs/game_load.cpp, line: 319
-#: src/gui/dialogs/game_load.cpp:409
+#: src/gui/dialogs/game_load.cpp:433
 msgid "Version: "
 msgstr "Versão: "
 
@@ -10340,7 +10372,7 @@ msgstr "Versão: "
 # File: data/gui/default/window/mp_create_game_choose_mods.cfg, line: 54
 # File: data/gui/default/window/mp_create_game_choose_mods.cfg, line: 54
 # File: data/gui/default/window/mp_create_game_choose_mods.cfg, line: 54
-#: src/gui/dialogs/game_load.cpp:414
+#: src/gui/dialogs/game_load.cpp:438
 msgid "Modifications: "
 msgstr "Modificações: "
 
@@ -10549,6 +10581,11 @@ msgstr ""
 #: src/gui/dialogs/lua_interpreter.cpp:678
 msgid "lua console"
 msgstr "console lua"
+
+#: src/gui/dialogs/multiplayer/faction_select.cpp:139
+#: src/gui/dialogs/multiplayer/mp_staging.cpp:492
+msgid "Random"
+msgstr "Aleatório"
 
 #
 # File: data/gui/default/window/lobby_main.cfg, line: 337
@@ -12082,30 +12119,13 @@ msgid "Kill Unit (Debug!)"
 msgstr "Matar Unidade (Debug!)"
 
 #
-# File: data/gui/default/window/lobby_main.cfg, line: 666
-# File: data/gui/default/window/title_screen.cfg, line: 263
-# File: src/game_preferences_display.cpp, line: 63
-# File: src/hotkeys.cpp, line: 106
-# File: data/gui/default/window/lobby_main.cfg, line: 666
-# File: data/gui/default/window/title_screen.cfg, line: 263
-# File: src/game_preferences_display.cpp, line: 63
-# File: src/hotkeys.cpp, line: 106
-# File: data/gui/default/window/lobby_main.cfg, line: 666
-# File: data/gui/default/window/title_screen.cfg, line: 263
-# File: src/game_preferences_display.cpp, line: 63
-# File: src/hotkeys.cpp, line: 106
-#: src/hotkey/hotkey_command.cpp:118
-#, fuzzy
-#| msgid "Preferences"
-msgid "Open Preferences Screen"
-msgstr "Preferências"
-
-#
 # File: src/hotkeys.cpp, line: 107
 # File: src/hotkeys.cpp, line: 107
 # File: src/hotkeys.cpp, line: 107
 #: src/hotkey/hotkey_command.cpp:119
-msgid "Scenario Objectives"
+#, fuzzy
+#| msgid "Scenario Objectives"
+msgid "Objectives"
 msgstr "Objetivos do Cenário"
 
 #
@@ -12125,7 +12145,9 @@ msgid "Continue Network Game"
 msgstr "Continuar Jogo em Rede"
 
 #: src/hotkey/hotkey_command.cpp:125
-msgid "Quit to Main Menu"
+#, fuzzy
+#| msgid "Quit to Main Menu"
+msgid "Quit to Menu"
 msgstr "Sair para o Menu Inicial"
 
 #
@@ -13038,19 +13060,13 @@ msgid "Hint: save-loading is unnecessary"
 msgstr "Dica: Não é necessário salvando e carregando"
 
 #
-# File: src/hotkeys.cpp, line: 236
-# File: src/hotkeys.cpp, line: 236
-# File: src/hotkeys.cpp, line: 236
-#: src/hotkey/hotkey_command.cpp:275
-msgid "View Chat Log"
-msgstr "Ver log da Conversa"
-
-#
 # File: src/hotkeys.cpp, line: 238
 # File: src/hotkeys.cpp, line: 238
 # File: src/hotkeys.cpp, line: 238
 #: src/hotkey/hotkey_command.cpp:276
-msgid "Enter User Command"
+#, fuzzy
+#| msgid "Enter User Command"
+msgid "Enter Command"
 msgstr "Digitar Comando do Usuário"
 
 #
@@ -13069,9 +13085,15 @@ msgstr "Comando Customizado"
 msgid "Run Formula"
 msgstr "Executar Fórmula"
 
+#
+# File: data/gui/default/window/mp_create_game.cfg, line: 148
+# File: data/gui/default/window/mp_create_game.cfg, line: 148
+# File: data/gui/default/window/mp_create_game.cfg, line: 148
 #: src/hotkey/hotkey_command.cpp:279
-msgid "Clear Chat and Errors"
-msgstr ""
+#, fuzzy
+#| msgid "Player Chat"
+msgid "Clear Chat"
+msgstr "Chate dos jogadores"
 
 #
 # File: src/hotkeys.cpp, line: 237
@@ -13306,6 +13328,31 @@ msgid ""
 msgstr ""
 "A chave '$deprecated_key' foi renomeada para '$key'. Suporte para "
 "'$deprecated_key' será removido na versão $removal_version."
+
+#
+# File: data/gui/default/window/lobby_main.cfg, line: 666
+# File: data/gui/default/window/title_screen.cfg, line: 263
+# File: src/game_preferences_display.cpp, line: 63
+# File: src/hotkeys.cpp, line: 106
+# File: data/gui/default/window/lobby_main.cfg, line: 666
+# File: data/gui/default/window/title_screen.cfg, line: 263
+# File: src/game_preferences_display.cpp, line: 63
+# File: src/hotkeys.cpp, line: 106
+# File: data/gui/default/window/lobby_main.cfg, line: 666
+# File: data/gui/default/window/title_screen.cfg, line: 263
+# File: src/game_preferences_display.cpp, line: 63
+# File: src/hotkeys.cpp, line: 106
+#, fuzzy
+#~| msgid "Preferences"
+#~ msgid "Open Preferences Screen"
+#~ msgstr "Preferências"
+
+#
+# File: src/hotkeys.cpp, line: 236
+# File: src/hotkeys.cpp, line: 236
+# File: src/hotkeys.cpp, line: 236
+#~ msgid "View Chat Log"
+#~ msgstr "Ver log da Conversa"
 
 #~ msgid "Categories:"
 #~ msgstr "Categorias:"
@@ -14630,13 +14677,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "Prefs section^Editor"
 #~ msgstr "Som"
-
-#
-# File: src/preferences_display.cpp, line: 326
-# File: src/preferences_display.cpp, line: 322
-# File: src/preferences_display.cpp, line: 322
-#~ msgid "There are no alternative video modes available"
-#~ msgstr "Não existem outros modos de vídeo disponíveis"
 
 #
 # File: src/hotkeys.cpp, line: 402

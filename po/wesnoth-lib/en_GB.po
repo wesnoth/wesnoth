@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-02-20 18:40-0300\n"
+"POT-Creation-Date: 2021-03-12 20:18-0300\n"
 "PO-Revision-Date: 2021-02-22 13:42+1100\n"
 "Last-Translator: Wedge009 <wedge009@wedge009.net>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
@@ -63,6 +63,14 @@ msgstr "Dev AI: Default + Poisoning (Formula AI)"
 #: data/core/terrain.cfg:479 data/core/terrain.cfg:489
 msgid "Fence"
 msgstr "Fence"
+
+#. [row]
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:193
+#: data/gui/window/mp_faction_select.cfg:176
+#, fuzzy
+#| msgid "Random"
+msgid "gender^Random"
+msgstr "Random"
 
 #. [terrain_type]: id=deep_water_gray
 #. [terrain_type]: id=deep_water_medium
@@ -2655,8 +2663,9 @@ msgstr "Difficulty"
 msgid "Select difficulty:"
 msgstr "Select difficulty:"
 
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/window/chat_log.cfg:36
+#: data/gui/window/chat_log.cfg:36 src/hotkey/hotkey_command.cpp:275
 msgid "Chat Log"
 msgstr "Chat Log"
 
@@ -3795,11 +3804,13 @@ msgstr "Observe"
 msgid "Announcements"
 msgstr "Announcements"
 
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [grid]
 #. [label]: id=title
 #. [button]: id=show_preferences
 #: data/gui/window/lobby_main.cfg:460 data/gui/window/lobby_main.cfg:655
 #: data/gui/window/preferences.cfg:213 data/gui/window/title_screen.cfg:256
+#: src/hotkey/hotkey_command.cpp:118
 msgid "Preferences"
 msgstr "Preferences"
 
@@ -4384,14 +4395,6 @@ msgstr "Leader:"
 msgid "Gender:"
 msgstr "Gender:"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [row]
-#: data/gui/window/mp_faction_select.cfg:176
-#: src/gui/dialogs/multiplayer/faction_select.cpp:139
-#: src/gui/dialogs/multiplayer/mp_staging.cpp:492
-msgid "Random"
-msgstr "Random"
-
 #. [row]
 #. [toggle_button]: id=male_toggle
 #: data/gui/window/mp_faction_select.cfg:178
@@ -4510,7 +4513,7 @@ msgstr "Save password locally (encrypted)"
 #. [widget]: id=label
 #: data/gui/window/mp_method_selection.cfg:46
 #: data/gui/window/preferences.cfg:365 data/gui/window/title_screen.cfg:252
-#: src/gui/dialogs/game_load.cpp:382
+#: src/gui/dialogs/game_load.cpp:406
 msgid "Multiplayer"
 msgstr "Multiplayer"
 
@@ -5677,7 +5680,7 @@ msgstr "en_GB"
 msgid "The maximum text width is less than 1."
 msgstr "The maximum text width is less than 1."
 
-#: src/font/text.cpp:779
+#: src/font/text.cpp:782
 msgid "The text contains invalid Pango markup: "
 msgstr "The text contains invalid Pango mark-up: "
 
@@ -6234,8 +6237,8 @@ msgid "dir_size^Unknown"
 msgstr "Unknown"
 
 #: src/gui/dialogs/game_cache_options.cpp:101
-#: src/gui/dialogs/network_transmission.cpp:85
 #: src/gui/dialogs/network_transmission.cpp:86
+#: src/gui/dialogs/network_transmission.cpp:87
 #: src/gui/dialogs/screenshot_notification.cpp:115
 msgid "unit_byte^B"
 msgstr "B"
@@ -6264,55 +6267,67 @@ msgstr "The game data cache has been purged."
 msgid "The game data cache could not be purged."
 msgstr "The game data cache could not be purged."
 
-#: src/gui/dialogs/game_load.cpp:122
+#: src/gui/dialogs/game_load.cpp:74
+#, fuzzy
+#| msgid "Saved Games"
+msgid "No Saved Games"
+msgstr "Saved Games"
+
+#: src/gui/dialogs/game_load.cpp:74
+#, fuzzy
+#| msgid "There are no alternative video modes available"
+msgid "There are no saved games to load."
+msgstr "There are no alternative video modes available"
+
+#: src/gui/dialogs/game_load.cpp:143
 msgid "game_version^Current Version"
 msgstr "Current Version"
 
-#: src/gui/dialogs/game_load.cpp:127
+#: src/gui/dialogs/game_load.cpp:147
 msgid "game_version^Wesnoth $version"
 msgstr "Wesnoth $version"
 
-#: src/gui/dialogs/game_load.cpp:264
+#: src/gui/dialogs/game_load.cpp:284
 msgid "The selected file is corrupt: "
 msgstr "The selected file is corrupt: "
 
-#: src/gui/dialogs/game_load.cpp:336
+#: src/gui/dialogs/game_load.cpp:357
 msgid "(Invalid)"
 msgstr "(Invalid)"
 
-#: src/gui/dialogs/game_load.cpp:373
+#: src/gui/dialogs/game_load.cpp:397
 msgid "Campaign: $campaign_name"
 msgstr "Campaign: $campaign_name"
 
-#: src/gui/dialogs/game_load.cpp:385
+#: src/gui/dialogs/game_load.cpp:409
 msgid "Tutorial"
 msgstr "Tutorial"
 
-#: src/gui/dialogs/game_load.cpp:388
+#: src/gui/dialogs/game_load.cpp:412
 msgid "Test scenario"
 msgstr "Test scenario"
 
-#: src/gui/dialogs/game_load.cpp:398
+#: src/gui/dialogs/game_load.cpp:422
 msgid "Replay"
 msgstr "Replay"
 
-#: src/gui/dialogs/game_load.cpp:400
+#: src/gui/dialogs/game_load.cpp:424
 msgid "Turn"
 msgstr "Turn"
 
-#: src/gui/dialogs/game_load.cpp:402
+#: src/gui/dialogs/game_load.cpp:426
 msgid "Scenario start"
 msgstr "Scenario start"
 
-#: src/gui/dialogs/game_load.cpp:405
+#: src/gui/dialogs/game_load.cpp:429
 msgid "Difficulty: "
 msgstr "Difficulty: "
 
-#: src/gui/dialogs/game_load.cpp:409
+#: src/gui/dialogs/game_load.cpp:433
 msgid "Version: "
 msgstr "Version: "
 
-#: src/gui/dialogs/game_load.cpp:414
+#: src/gui/dialogs/game_load.cpp:438
 msgid "Modifications: "
 msgstr "Modifications: "
 
@@ -6450,6 +6465,11 @@ msgstr "The lua console can only be used in debug mode! (Run ':debug' first)"
 #: src/gui/dialogs/lua_interpreter.cpp:678
 msgid "lua console"
 msgstr "lua console"
+
+#: src/gui/dialogs/multiplayer/faction_select.cpp:139
+#: src/gui/dialogs/multiplayer/mp_staging.cpp:492
+msgid "Random"
+msgstr "Random"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:106
 msgid "Selected Game"
@@ -7283,12 +7303,10 @@ msgstr "Change Side (Debug!)"
 msgid "Kill Unit (Debug!)"
 msgstr "Kill Unit (Debug!)"
 
-#: src/hotkey/hotkey_command.cpp:118
-msgid "Open Preferences Screen"
-msgstr "Open Preferences Screen"
-
 #: src/hotkey/hotkey_command.cpp:119
-msgid "Scenario Objectives"
+#, fuzzy
+#| msgid "Scenario Objectives"
+msgid "Objectives"
 msgstr "Scenario Objectives"
 
 #: src/hotkey/hotkey_command.cpp:122
@@ -7300,7 +7318,9 @@ msgid "Continue Network Game"
 msgstr "Continue Network Game"
 
 #: src/hotkey/hotkey_command.cpp:125
-msgid "Quit to Main Menu"
+#, fuzzy
+#| msgid "Quit to Main Menu"
+msgid "Quit to Menu"
 msgstr "Quit to Main Menu"
 
 #: src/hotkey/hotkey_command.cpp:126
@@ -7818,12 +7838,10 @@ msgstr "Help about save-loading"
 msgid "Hint: save-loading is unnecessary"
 msgstr "Hint: save-loading is unnecessary"
 
-#: src/hotkey/hotkey_command.cpp:275
-msgid "View Chat Log"
-msgstr "View Chat Log"
-
 #: src/hotkey/hotkey_command.cpp:276
-msgid "Enter User Command"
+#, fuzzy
+#| msgid "Enter User Command"
+msgid "Enter Command"
 msgstr "Enter User Command"
 
 #: src/hotkey/hotkey_command.cpp:277
@@ -7835,8 +7853,10 @@ msgid "Run Formula"
 msgstr "Run Formula"
 
 #: src/hotkey/hotkey_command.cpp:279
-msgid "Clear Chat and Errors"
-msgstr "Clear Chat and Errors"
+#, fuzzy
+#| msgid "Player Chat"
+msgid "Clear Chat"
+msgstr "Player Chat"
 
 #: src/hotkey/hotkey_command.cpp:281
 msgid "Change Language"
@@ -7975,6 +7995,15 @@ msgid ""
 msgstr ""
 "The key '$deprecated_key' has been renamed to '$key'. Support for "
 "'$deprecated_key' will be removed in version $removal_version."
+
+#~ msgid "Open Preferences Screen"
+#~ msgstr "Open Preferences Screen"
+
+#~ msgid "View Chat Log"
+#~ msgstr "View Chat Log"
+
+#~ msgid "Clear Chat and Errors"
+#~ msgstr "Clear Chat and Errors"
 
 #~ msgid "Categories:"
 #~ msgstr "Categories:"
@@ -8714,9 +8743,6 @@ msgstr ""
 
 #~ msgid "Binding"
 #~ msgstr "Binding"
-
-#~ msgid "There are no alternative video modes available"
-#~ msgstr "There are no alternative video modes available"
 
 #~ msgid "Button"
 #~ msgstr "Button"

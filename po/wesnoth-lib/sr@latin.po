@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-lib\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-02-20 18:40-0300\n"
+"POT-Creation-Date: 2021-03-12 20:18-0300\n"
 "PO-Revision-Date: 2012-04-01 16:53+0200\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
@@ -69,6 +69,12 @@ msgstr ""
 #: data/core/terrain.cfg:479 data/core/terrain.cfg:489
 msgid "Fence"
 msgstr "ograda"
+
+#. [row]
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:193
+#: data/gui/window/mp_faction_select.cfg:176
+msgid "gender^Random"
+msgstr ""
 
 #. [terrain_type]: id=deep_water_gray
 #. [terrain_type]: id=deep_water_medium
@@ -2625,8 +2631,9 @@ msgstr "Težina"
 msgid "Select difficulty:"
 msgstr "Izaberite nivo težine:"
 
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/window/chat_log.cfg:36
+#: data/gui/window/chat_log.cfg:36 src/hotkey/hotkey_command.cpp:275
 msgid "Chat Log"
 msgstr "Dnevnik ćaskanja"
 
@@ -3877,11 +3884,13 @@ msgstr "Posmatraj"
 msgid "Announcements"
 msgstr "Napredne opcije"
 
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [grid]
 #. [label]: id=title
 #. [button]: id=show_preferences
 #: data/gui/window/lobby_main.cfg:460 data/gui/window/lobby_main.cfg:655
 #: data/gui/window/preferences.cfg:213 data/gui/window/title_screen.cfg:256
+#: src/hotkey/hotkey_command.cpp:118
 msgid "Preferences"
 msgstr "Postavke"
 
@@ -4566,14 +4575,6 @@ msgstr "Vođ"
 msgid "Gender:"
 msgstr "Pol:"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [row]
-#: data/gui/window/mp_faction_select.cfg:176
-#: src/gui/dialogs/multiplayer/faction_select.cpp:139
-#: src/gui/dialogs/multiplayer/mp_staging.cpp:492
-msgid "Random"
-msgstr ""
-
 #. [row]
 #. [toggle_button]: id=male_toggle
 #: data/gui/window/mp_faction_select.cfg:178
@@ -4702,7 +4703,7 @@ msgstr "Sačuvaj lozinku među postavkama (čist tekst)"
 #. [widget]: id=label
 #: data/gui/window/mp_method_selection.cfg:46
 #: data/gui/window/preferences.cfg:365 data/gui/window/title_screen.cfg:252
-#: src/gui/dialogs/game_load.cpp:382
+#: src/gui/dialogs/game_load.cpp:406
 msgid "Multiplayer"
 msgstr "Višeigranje"
 
@@ -5955,7 +5956,7 @@ msgstr "sr@latin"
 msgid "The maximum text width is less than 1."
 msgstr "Najveća širina teksta je ispod 1."
 
-#: src/font/text.cpp:779
+#: src/font/text.cpp:782
 #, fuzzy
 #| msgid "The text contains invalid markup: "
 msgid "The text contains invalid Pango markup: "
@@ -6527,8 +6528,8 @@ msgid "dir_size^Unknown"
 msgstr "Nepoznata epoha"
 
 #: src/gui/dialogs/game_cache_options.cpp:101
-#: src/gui/dialogs/network_transmission.cpp:85
 #: src/gui/dialogs/network_transmission.cpp:86
+#: src/gui/dialogs/network_transmission.cpp:87
 #: src/gui/dialogs/screenshot_notification.cpp:115
 msgid "unit_byte^B"
 msgstr "B"
@@ -6557,60 +6558,72 @@ msgstr ""
 msgid "The game data cache could not be purged."
 msgstr ""
 
-#: src/gui/dialogs/game_load.cpp:122
+#: src/gui/dialogs/game_load.cpp:74
+#, fuzzy
+#| msgid "Save Game"
+msgid "No Saved Games"
+msgstr "Sačuvaj poziciju"
+
+#: src/gui/dialogs/game_load.cpp:74
+#, fuzzy
+#| msgid "There are no alternative video modes available"
+msgid "There are no saved games to load."
+msgstr "Nema alternativnih video režima"
+
+#: src/gui/dialogs/game_load.cpp:143
 msgid "game_version^Current Version"
 msgstr ""
 
-#: src/gui/dialogs/game_load.cpp:127
+#: src/gui/dialogs/game_load.cpp:147
 #, fuzzy
 #| msgid "Version "
 msgid "game_version^Wesnoth $version"
 msgstr "Izdanje "
 
-#: src/gui/dialogs/game_load.cpp:264
+#: src/gui/dialogs/game_load.cpp:284
 msgid "The selected file is corrupt: "
 msgstr ""
 
-#: src/gui/dialogs/game_load.cpp:336
+#: src/gui/dialogs/game_load.cpp:357
 #, fuzzy
 #| msgid "#(Invalid)"
 msgid "(Invalid)"
 msgstr "#(loše)"
 
-#: src/gui/dialogs/game_load.cpp:373
+#: src/gui/dialogs/game_load.cpp:397
 msgid "Campaign: $campaign_name"
 msgstr "Pohod: $campaign_name"
 
-#: src/gui/dialogs/game_load.cpp:385
+#: src/gui/dialogs/game_load.cpp:409
 msgid "Tutorial"
 msgstr "Podučavanje"
 
-#: src/gui/dialogs/game_load.cpp:388
+#: src/gui/dialogs/game_load.cpp:412
 msgid "Test scenario"
 msgstr "Probni scenario"
 
-#: src/gui/dialogs/game_load.cpp:398
+#: src/gui/dialogs/game_load.cpp:422
 msgid "Replay"
 msgstr "Snimak"
 
-#: src/gui/dialogs/game_load.cpp:400
+#: src/gui/dialogs/game_load.cpp:424
 msgid "Turn"
 msgstr "Potez"
 
-#: src/gui/dialogs/game_load.cpp:402
+#: src/gui/dialogs/game_load.cpp:426
 msgid "Scenario start"
 msgstr "Početak scenarija"
 
-#: src/gui/dialogs/game_load.cpp:405
+#: src/gui/dialogs/game_load.cpp:429
 msgid "Difficulty: "
 msgstr "Težina: "
 
-#: src/gui/dialogs/game_load.cpp:409
+#: src/gui/dialogs/game_load.cpp:433
 msgid "Version: "
 msgstr "Izdanje: "
 
 # >> @title:window
-#: src/gui/dialogs/game_load.cpp:414
+#: src/gui/dialogs/game_load.cpp:438
 #, fuzzy
 #| msgid "Choose Resolution"
 msgid "Modifications: "
@@ -6776,6 +6789,11 @@ msgstr ""
 #| msgid "Clean Gray Cobbles"
 msgid "lua console"
 msgstr "čista siva kaldrma"
+
+#: src/gui/dialogs/multiplayer/faction_select.cpp:139
+#: src/gui/dialogs/multiplayer/mp_staging.cpp:492
+msgid "Random"
+msgstr ""
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:106
 #, fuzzy
@@ -7722,14 +7740,10 @@ msgstr "Promeni stranu (ispr.!)"
 msgid "Kill Unit (Debug!)"
 msgstr "Napravi jedinicu (ispr.!)"
 
-#: src/hotkey/hotkey_command.cpp:118
-#, fuzzy
-#| msgid "Preferences"
-msgid "Open Preferences Screen"
-msgstr "Postavke"
-
 #: src/hotkey/hotkey_command.cpp:119
-msgid "Scenario Objectives"
+#, fuzzy
+#| msgid "Scenario Objectives"
+msgid "Objectives"
 msgstr "Ciljevi scenarija"
 
 #: src/hotkey/hotkey_command.cpp:122
@@ -7743,7 +7757,7 @@ msgstr "Nastavi mrežnu partiju"
 #: src/hotkey/hotkey_command.cpp:125
 #, fuzzy
 #| msgid "Quit the game"
-msgid "Quit to Main Menu"
+msgid "Quit to Menu"
 msgstr "Napusti igru"
 
 #: src/hotkey/hotkey_command.cpp:126
@@ -8317,12 +8331,10 @@ msgstr ""
 msgid "Hint: save-loading is unnecessary"
 msgstr ""
 
-#: src/hotkey/hotkey_command.cpp:275
-msgid "View Chat Log"
-msgstr "Prikaži dnevnik ćaskanja"
-
 #: src/hotkey/hotkey_command.cpp:276
-msgid "Enter User Command"
+#, fuzzy
+#| msgid "Enter User Command"
+msgid "Enter Command"
 msgstr "Korisnička naredba"
 
 #: src/hotkey/hotkey_command.cpp:277
@@ -8334,8 +8346,10 @@ msgid "Run Formula"
 msgstr "Izvrši formulu"
 
 #: src/hotkey/hotkey_command.cpp:279
-msgid "Clear Chat and Errors"
-msgstr ""
+#, fuzzy
+#| msgid "Players: "
+msgid "Clear Chat"
+msgstr "Igrača: "
 
 #: src/hotkey/hotkey_command.cpp:281
 msgid "Change Language"
@@ -8483,6 +8497,14 @@ msgid ""
 msgstr ""
 "Ključ ‘$deprecated_key’ je preimenovan u ‘$key’. Podrška za "
 "‘$deprecated_key’ biće uklonjena u izdanju $removal_version."
+
+#, fuzzy
+#~| msgid "Preferences"
+#~ msgid "Open Preferences Screen"
+#~ msgstr "Postavke"
+
+#~ msgid "View Chat Log"
+#~ msgstr "Prikaži dnevnik ćaskanja"
 
 #~ msgid "Accelerated"
 #~ msgstr "Ubrzano"
@@ -9045,9 +9067,6 @@ msgstr ""
 #~| msgid "Prefs section^Sound"
 #~ msgid "Prefs section^Editor"
 #~ msgstr "Zvuk"
-
-#~ msgid "There are no alternative video modes available"
-#~ msgstr "Nema alternativnih video režima"
 
 #, fuzzy
 #~| msgid "Height:"

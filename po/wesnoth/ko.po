@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1.1+dev\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-02-20 18:40-0300\n"
+"POT-Creation-Date: 2021-03-12 20:18-0300\n"
 "PO-Revision-Date: 2019-09-30 13:37+0900\n"
 "Last-Translator: mistzone <drier22@gmail.com>\n"
 "Language-Team: none\n"
@@ -242,178 +242,60 @@ msgstr "자금 이월:"
 msgid "Notes:"
 msgstr "메모:"
 
-#. [lua]: wc_ii_generate_scenario
-#. [lua]: wct_store_possible_encampment_ford
-#: data/campaigns/World_Conquest/lua/map/main.lua:138
-#: data/campaigns/World_Conquest/lua/map/postgeneration/1A_Start.lua:144
-msgid "Start"
-msgstr ""
-
-#. [lua]: wc_ii_generate_scenario
-#: data/campaigns/World_Conquest/lua/map/main.lua:140
-#, fuzzy
-#| msgid "End Scenario"
-msgid "Scenario"
-msgstr "시나리오 마치기"
-
-#. [lua]: wc_ii_generate_scenario
-#: data/campaigns/World_Conquest/lua/map/main.lua:142
-msgid "Final Battle"
-msgstr ""
-
-#. [lua]: wct_map_2a_post_bunus_decoration
-#: data/campaigns/World_Conquest/lua/map/postgeneration/2A_Springs.lua:182
-msgid "water^Springs"
-msgstr ""
-
-#. [lua]: world_conquest_tek_map_decoration_2c
-#: data/campaigns/World_Conquest/lua/map/postgeneration/2C_Glaciers.lua:206
-msgid "Glaciers"
-msgstr ""
-
-#. [lua]: wct_map_2d_post_bunus_decoration
-#: data/campaigns/World_Conquest/lua/map/postgeneration/2D_Provinces.lua:164
-#, fuzzy
-#| msgid "Preferences"
-msgid "Provinces"
-msgstr "설정"
-
-#. [lua]: wct_map_2f_post_bunus_decoration
-#: data/campaigns/World_Conquest/lua/map/postgeneration/2F_Clayey.lua:126
-#, fuzzy
-#| msgid "Players"
-msgid "Clayey"
-msgstr "플레이어 수:"
-
-#. [lua]: wct_map_3c_post_bunus_decoration
-#: data/campaigns/World_Conquest/lua/map/postgeneration/3C_Delta.lua:395
-msgid "river^Delta"
-msgstr ""
-
-#. [lua]: world_conquest_tek_map_repaint_3d
-#: data/campaigns/World_Conquest/lua/map/postgeneration/3D_Sulfurous.lua:61
-msgid "Sulfurous"
-msgstr ""
-
-#. [lua]: wct_map_3e_post_bunus_decoration
-#: data/campaigns/World_Conquest/lua/map/postgeneration/3E_Coral.lua:78
-msgid "made of^Coral"
-msgstr ""
-
-#. [lua]: wct_map_4a_post_bunus_decoration
-#: data/campaigns/World_Conquest/lua/map/postgeneration/4A_Thermal.lua:199
-msgid "Thermal"
-msgstr ""
-
-#. [lua]: world_conquest_tek_map_repaint_4b
-#: data/campaigns/World_Conquest/lua/map/postgeneration/4B_Volcanic.lua:414
-msgid "Volcanic"
-msgstr ""
-
-#. [lua]: wct_map_4d_post_bunus_decoration
-#: data/campaigns/World_Conquest/lua/map/postgeneration/4D_Podzol.lua:134
-msgid "Podzol"
-msgstr ""
-
-#. [lua]: wct_map_4e_post_bunus_decoration
-#: data/campaigns/World_Conquest/lua/map/postgeneration/4E_Wicked.lua:643
-msgid "Wicked"
-msgstr ""
-
-#. [lua]: wild_store_roads_in_cave_zone
-#: data/campaigns/World_Conquest/lua/map/postgeneration/4F_Wild.lua:266
-msgid "Wild"
-msgstr ""
-
-#. [lua]: world_conquest_tek_map_repaint_6d
-#: data/campaigns/World_Conquest/lua/map/postgeneration/6D_Feudal.lua:472
-msgid "Feudal"
-msgstr ""
-
-#. [lua]: add_enemy_side
-#: data/campaigns/World_Conquest/lua/map/scenario_utils/side_definitions.lua:38
-msgid "Enemies"
-msgstr "적 소속 마을"
-
-#. [lua]: add_player_side
-#: data/campaigns/World_Conquest/lua/map/scenario_utils/side_definitions.lua:61
-msgid "Allies"
-msgstr ""
-
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:147
-msgid " and "
-msgstr ""
-
 #. [language]
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:150
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:147
 #: data/english.cfg:31
 msgid "arcane"
 msgstr "신령"
 
 #. [language]
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:153
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:150
 #: data/english.cfg:26
 msgid "blade"
 msgstr "참격"
 
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:156
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:153
 #: src/units/alignment.hpp:10
 msgid "chaotic"
 msgstr "야행성"
 
 #. [language]
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:159
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:156
 #: data/english.cfg:30
 msgid "cold"
 msgstr "냉기"
 
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:162
-#, fuzzy
-#| msgid "Damage: "
-msgid "damage"
-msgstr "무기 위력: "
-
 #. [language]
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:165
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:159
 #: data/english.cfg:3
 msgid "Easy"
 msgstr "쉬움"
 
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:168
-#, fuzzy
-#| msgid "No advancement"
-msgid "XP to advance"
-msgstr "승급 불가능"
-
 #. [language]
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:171
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:162
 #: data/english.cfg:29
 msgid "fire"
 msgstr "화염"
 
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:174
-msgid "gold"
-msgstr "자금"
-
 #. [language]
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:177
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:165
 #: data/english.cfg:5
 msgid "Hard"
 msgstr "어려움"
 
 #. [label]: id=label-hp
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:180
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:168
 #: data/themes/default.cfg:146
 msgid "HP"
 msgstr "체력"
 
 #. [language]
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:183
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:171
 #: data/english.cfg:28
 msgid "impact"
 msgstr "충격"
 
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:186
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:174
 #: src/units/alignment.hpp:8
 #, fuzzy
 #| msgid "female^lawful"
@@ -421,49 +303,28 @@ msgid "lawful"
 msgstr "주행성"
 
 #. [language]
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:189
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:177
 #: data/english.cfg:22
 msgid "melee"
 msgstr "근접"
 
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:192
-#, fuzzy
-msgid "moves"
-msgstr "이동력:"
-
 #. [language]
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:195
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:180
 #: data/english.cfg:6
 msgid "Nightmare"
 msgstr "악몽"
 
 #. [language]
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:198
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:183
 #: data/english.cfg:27
 msgid "pierce"
 msgstr "관통"
 
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:201
-msgid "gender^Random"
-msgstr "무작위"
-
 #. [language]
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:204
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:186
 #: data/english.cfg:23
 msgid "ranged"
 msgstr "원격"
-
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:207
-#, fuzzy
-#| msgid " resistance vs "
-msgid " resistance vs "
-msgstr "내성 vs "
-
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:210
-#, fuzzy
-#| msgid "Strikes"
-msgid "strike"
-msgstr "공격력"
 
 #. [about]
 #: data/core/about.cfg:4
@@ -4179,8 +4040,19 @@ msgstr ""
 "DejaVuSans.ttf,Andagii.ttf,DroidSansFallbackFull.ttf,DroidSansJapanese.ttf,"
 "Junicode-Regular.ttf"
 
+#. [lua]: wesnoth.deprecate_api
+#: data/lua/core/_initial.lua:22
+msgid "(Note: You should use $replacement instead in new code)"
+msgstr "(참고: 새 코드에서 $replacement 을(를) 대신 사용해야합니다)"
+
+#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
+#. [lua]: wesnoth.deprecate_api
+#: data/lua/core/_initial.lua:28 src/deprecation.cpp:68
+msgid "Invalid deprecation level $level (should be 1-4)"
+msgstr "잘못된 지원 중단 수준 $level (1-4이어야 함)"
+
 #. [lua]: wml_actions.deprecated_message
-#: data/lua/wml-tags.lua:905
+#: data/lua/wml-tags.lua:903
 msgid "Invalid deprecation level (should be 1-4)"
 msgstr "잘못된 지원 중단 수준 (1-4이어야 함)"
 
@@ -4227,8 +4099,8 @@ msgstr "치료불가"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: wesnoth.wml_actions.message
-#: data/lua/wml/message.lua:433 src/scripting/game_lua_kernel.cpp:2897
-#: src/scripting/game_lua_kernel.cpp:2932
+#: data/lua/wml/message.lua:433 src/scripting/game_lua_kernel.cpp:2665
+#: src/scripting/game_lua_kernel.cpp:2700
 msgid "input"
 msgstr "입력"
 
@@ -4268,9 +4140,9 @@ msgstr "승급 불가능"
 #. [modification]: id=plan_unit_advance
 #: data/modifications.cfg:7
 msgid ""
-"When playing a multiplayer game, you do not control what a unit advances if "
-"they advances on another player's turn. With this modification you can set "
-"what your units advance to beforehand either for a specific unit or for all "
+"When playing a multiplayer game, you do not control what a unit advances to "
+"if it advances on another player's turn. With this modification you can set "
+"what your units advance to beforehand, either for a specific unit or for all "
 "units of the same type."
 msgstr ""
 
@@ -4370,17 +4242,8 @@ msgstr ""
 "공격력은 1 레벨 차이마다 25%씩 더해집니다."
 
 #. [resistance]: id=melee_steadfast
-#: data/scenario-test.cfg:366
-msgid "steadfast"
-msgstr "철벽"
-
-#. [resistance]: id=melee_steadfast
-#: data/scenario-test.cfg:367
-msgid "female^steadfast"
-msgstr "철벽"
-
-#. [resistance]: id=melee_steadfast
-#: data/scenario-test.cfg:368
+#. This is not vanilla steadfast
+#: data/scenario-test.cfg:371
 #, fuzzy
 #| msgid ""
 #| "Steadfast:\n"
@@ -4394,78 +4257,42 @@ msgstr ""
 "이 유닛은 방어시에 각종 저항력이 2배가 됩니다(한계 50%). 약점은 영향을 받지 "
 "않습니다."
 
-#. [plague]: id=plague, type=Walking Corpse
-#: data/scenario-test.cfg:403
-msgid "plague"
-msgstr "역병"
-
-#. [plague]: id=plague, type=Walking Corpse
-#: data/scenario-test.cfg:404
-#, fuzzy
-#| msgid ""
-#| "Plague:\n"
-#| "When a unit is killed by a Plague attack, that unit is replaced with a "
-#| "Walking Corpse on the same side as the unit with the Plague attack. This "
-#| "doesn’t work on Undead or units in villages."
-msgid ""
-"When a unit is killed by a Plague attack, that unit is replaced with a "
-"Walking Corpse on the same side as the unit with the Plague attack. This "
-"doesn’t work on Undead or units in villages."
-msgstr ""
-"역병:\n"
-"역병 공격에 의해 죽은 유닛은 걸어다니는 시체가 되어 공격한 유닛과 같은 편이 "
-"됩니다. 이 공격은 언데드나 마을에 있는 유닛에는 통하지 않습니다."
-
-#. [firststrike]: id=initiative
-#: data/scenario-test.cfg:465
-#, fuzzy
-#| msgid " (inactive)"
-msgid "initiative"
-msgstr "(행동하지 않는)"
-
-#. [firststrike]: id=initiative
-#: data/scenario-test.cfg:466
-msgid ""
-"All adjacent friendly units will strike first in melee combat, even when "
-"defending."
-msgstr ""
-
 #. [chance_to_hit]: id=marksman_leadership
-#: data/scenario-test.cfg:478
+#: data/scenario-test.cfg:485
 msgid "cantor"
 msgstr ""
 
 #. [chance_to_hit]: id=marksman_leadership
-#: data/scenario-test.cfg:479
+#: data/scenario-test.cfg:486
 #, fuzzy
 #| msgid "female^chaotic"
 msgid "female^cantor"
 msgstr "야행성"
 
 #. [chance_to_hit]: id=marksman_leadership
-#: data/scenario-test.cfg:480
+#: data/scenario-test.cfg:487
 msgid "This unit grants marksman to all ranged attacks of all adjacent allies."
 msgstr ""
 
 #. [heals]: id=aura of death 4
 #. [heals]: id=aura of death 8
-#: data/scenario-test.cfg:1066 data/scenario-test.cfg:1094
+#: data/scenario-test.cfg:1073 data/scenario-test.cfg:1101
 msgid "aura of death ("
 msgstr ""
 
 #. [heals]: id=aura of death 4
 #. [heals]: id=aura of death 8
-#: data/scenario-test.cfg:1067 data/scenario-test.cfg:1095
+#: data/scenario-test.cfg:1074 data/scenario-test.cfg:1102
 msgid "female^aura of death ("
 msgstr ""
 
 #. [language]
-#: data/scenario-test.cfg:4396
+#: data/scenario-test.cfg:4403
 msgid "very long"
 msgstr "매우 길다"
 
 #. [language]
-#: data/scenario-test.cfg:4397
+#: data/scenario-test.cfg:4404
 #, fuzzy
 msgid "electrical"
 msgstr "기계"
@@ -5629,23 +5456,23 @@ msgstr[0] "우호 유닛 × $friends 발견"
 msgid "(press $hotkey to keep moving)"
 msgstr "(계속 이동하려면 $hotkey 키를 누르세요)"
 
-#: src/addon/client.cpp:74
+#: src/addon/client.cpp:75
 #, fuzzy
 #| msgid "Connecting to Server..."
 msgid "Connecting to $server_address|..."
 msgstr "서버에 연결하는중..."
 
-#: src/addon/client.cpp:119
+#: src/addon/client.cpp:122
 #, fuzzy
 #| msgid "Requesting list of add-ons"
 msgid "Downloading list of add-ons..."
 msgstr "부가 기능 목록을 받는중..."
 
-#: src/addon/client.cpp:140
+#: src/addon/client.cpp:143
 msgid "Requesting distribution terms..."
 msgstr "배포 조건 요청 중..."
 
-#: src/addon/client.cpp:164
+#: src/addon/client.cpp:167
 msgid ""
 "The add-on <i>$addon_title</i> has an invalid id '$addon_id' and cannot be "
 "published."
@@ -5653,7 +5480,7 @@ msgstr ""
 "The add-on <i>$addon_title</i> has an invalid id '$addon_id' and cannot be "
 "published."
 
-#: src/addon/client.cpp:190
+#: src/addon/client.cpp:193
 msgid ""
 "The add-on <i>$addon_title</i> has a file or directory containing invalid "
 "characters and cannot be published."
@@ -5661,7 +5488,7 @@ msgstr ""
 "The add-on <i>$addon_title</i> has a file or directory containing invalid "
 "characters and cannot be published."
 
-#: src/addon/client.cpp:198
+#: src/addon/client.cpp:201
 msgid ""
 "The add-on <i>$addon_title</i> has an invalid file or directory name and "
 "cannot be published. File or directory names may not contain '..' or end "
@@ -5677,7 +5504,7 @@ msgstr ""
 "\n"
 "&quot; * / : &lt; &gt; ? \\ | ~"
 
-#: src/addon/client.cpp:209
+#: src/addon/client.cpp:212
 msgid ""
 "The add-on <i>$addon_title</i> contains files or directories with case "
 "conflicts. File or directory names may not be differently-cased versions of "
@@ -5687,37 +5514,37 @@ msgstr ""
 "conflicts. File or directory names may not be differently-cased versions of "
 "the same string."
 
-#: src/addon/client.cpp:224
+#: src/addon/client.cpp:227
 #, fuzzy
 #| msgid "Requesting distribution terms..."
 msgid "Requesting file index..."
 msgstr "배포 조건 요청 중..."
 
-#: src/addon/client.cpp:240
+#: src/addon/client.cpp:243
 #, fuzzy
 #| msgid "Downloading add-on: $addon_title|..."
 msgid "Sending an update pack for the add-on <i>$addon_title</i>..."
 msgstr "부가 기능 전송중: <i>$addon_title</i>..."
 
-#: src/addon/client.cpp:261
+#: src/addon/client.cpp:264
 #, fuzzy
 #| msgid "Downloading add-on: $addon_title|..."
 msgid "Sending add-on <i>$addon_title</i>..."
 msgstr "부가 기능 전송중: <i>$addon_title</i>..."
 
-#: src/addon/client.cpp:294
+#: src/addon/client.cpp:297
 #, fuzzy
 #| msgid "Downloading add-on: $addon_title|..."
 msgid "Removing add-on <i>$addon_title</i> from the server..."
 msgstr "그 서버에서 부가 기능 제거중: <i>$addon_title</i>..."
 
-#: src/addon/client.cpp:323
+#: src/addon/client.cpp:326
 #, fuzzy
 #| msgid "Downloading add-on: $addon_title|..."
 msgid "Downloading add-on <i>$addon_title</i>..."
 msgstr "부가 기능 다운중: <i>$addon_title</i>..."
 
-#: src/addon/client.cpp:342 src/addon/client.cpp:368
+#: src/addon/client.cpp:345 src/addon/client.cpp:371
 msgid ""
 "The add-on <i>$addon_title</i> has an invalid file or directory name and "
 "cannot be installed."
@@ -5725,7 +5552,7 @@ msgstr ""
 "부가 기능 <i>$addon_title</i> 에 무효한 파일명 또는 디렉토리명이 포함되어 있"
 "어인스톨 할 수 없습니다."
 
-#: src/addon/client.cpp:347 src/addon/client.cpp:373
+#: src/addon/client.cpp:350 src/addon/client.cpp:376
 msgid ""
 "The add-on <i>$addon_title</i> has file or directory names with case "
 "conflicts. This may cause problems."
@@ -5733,11 +5560,11 @@ msgstr ""
 "The add-on <i>$addon_title</i> has file or directory names with case "
 "conflicts. This may cause problems."
 
-#: src/addon/client.cpp:406
+#: src/addon/client.cpp:409
 msgid "The server responded with an error:"
 msgstr "서버가 오류로 응답함:"
 
-#: src/addon/client.cpp:456
+#: src/addon/client.cpp:459
 msgid ""
 "The selected add-on has the following dependency, which is not currently "
 "installed or available from the server. Do you wish to continue?"
@@ -5748,12 +5575,12 @@ msgstr[0] ""
 "선택된 부가 기능은 아래의 부가 기능에 의존하고 있습니다.그러나, 그것들은 인스"
 "톨 되어 있지 않거나, 서버상에 존재하지 않습니다. 그래도 계속 하시겠어요?"
 
-#: src/addon/client.cpp:465
+#: src/addon/client.cpp:468
 #, fuzzy
 msgid "Broken Dependencies"
 msgstr "망가진 의존 관계"
 
-#: src/addon/client.cpp:505
+#: src/addon/client.cpp:508
 msgid ""
 "The following dependency could not be installed. Do you still wish to "
 "continue?"
@@ -5762,11 +5589,11 @@ msgid_plural ""
 "continue?"
 msgstr[0] "필요한 부가 기능을 설치 할 수 없습니다. 그래도 계속 하시겠습니까?"
 
-#: src/addon/client.cpp:509
+#: src/addon/client.cpp:512
 msgid "Dependencies Installation Failed"
 msgstr "Dependencies Installation Failed"
 
-#: src/addon/client.cpp:532
+#: src/addon/client.cpp:535
 msgid ""
 "The add-on '$addon|' is already installed and contains additional "
 "information that will be permanently lost if you continue:"
@@ -5774,25 +5601,25 @@ msgstr ""
 "'$addon|'는 인스톨이 완료되어 있으며, 추가 정보를 포함하고 있습니다. 이대로 "
 "계속하면, 이하의 추가 정보가 없어집니다."
 
-#: src/addon/client.cpp:536
+#: src/addon/client.cpp:539
 msgid "Publishing information file (.pbl)"
 msgstr "공개 정보 파일 (.pbl)"
 
-#: src/addon/client.cpp:540
+#: src/addon/client.cpp:543
 msgid "Version control system (VCS) information"
 msgstr "Version control system (VCS) information"
 
-#: src/addon/client.cpp:544
+#: src/addon/client.cpp:547
 #, fuzzy
 msgid "Do you really wish to continue?"
 msgstr "정말로 이 게임을 지우시겠습니까?"
 
-#: src/addon/client.cpp:546 src/addon/manager_ui.cpp:172
+#: src/addon/client.cpp:549 src/addon/manager_ui.cpp:172
 #: src/game_initialization/multiplayer.cpp:361
 msgid "Confirm"
 msgstr "확인"
 
-#: src/addon/client.cpp:685
+#: src/addon/client.cpp:689
 #, fuzzy
 #| msgid "Add-on Installed"
 msgid "Add-ons Manager"
@@ -6052,28 +5879,36 @@ msgid "Version number not greater than the latest uploaded version."
 msgstr ""
 
 #: src/addon/validation.cpp:546
+msgid "Feedback topic id is not a number."
+msgstr ""
+
+#: src/addon/validation.cpp:550
+msgid "Feedback topic does not exist."
+msgstr ""
+
+#: src/addon/validation.cpp:554
 msgid "The add-on publish information contains an invalid UTF-8 sequence."
 msgstr ""
 
-#: src/addon/validation.cpp:555
+#: src/addon/validation.cpp:563
 msgid "Unspecified server error."
 msgstr ""
 
-#: src/addon/validation.cpp:559
+#: src/addon/validation.cpp:567
 msgid "Server is in read-only mode."
 msgstr ""
 
-#: src/addon/validation.cpp:563
+#: src/addon/validation.cpp:571
 #, fuzzy
 #| msgid "You have no add-ons installed."
 msgid "Corrupted server add-ons list."
 msgstr "설치가 끝난 부가 기능이 없습니다."
 
-#: src/addon/validation.cpp:567
+#: src/addon/validation.cpp:575
 msgid "Empty add-on version list on the server."
 msgstr ""
 
-#: src/addon/validation.cpp:577
+#: src/addon/validation.cpp:585
 msgid "Unspecified validation failure."
 msgstr ""
 
@@ -6338,10 +6173,6 @@ msgstr "$elem has been deprecated and will be removed in version $version."
 msgid "$elem has been deprecated and removed."
 msgstr "$elem has been deprecated and removed."
 
-#: src/deprecation.cpp:68
-msgid "Invalid deprecation level $level (should be 1-4)"
-msgstr "잘못된 지원 중단 수준 $level (1-4이어야 함)"
-
 #: src/desktop/notifications.cpp:82
 #, fuzzy
 #| msgid "Chat message aging"
@@ -6461,20 +6292,20 @@ msgid ""
 msgstr ""
 "디폴트 코어의 게임 설정 파일을 읽는데 에러가 발생했습니다. 게임을 종료합니다."
 
-#: src/game_config_manager.cpp:529
+#: src/game_config_manager.cpp:530
 msgid "Use [modify_unit_type]\n"
 msgstr ""
 
-#: src/game_config_manager.cpp:568
+#: src/game_config_manager.cpp:569
 msgid "instead, use the macro with the same name in the [campaign] tag"
 msgstr ""
 
-#: src/game_config_manager.cpp:619
+#: src/game_config_manager.cpp:620
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
 msgstr[0] "이하의 부가 기능에는 문제가 있어, 읽기에 실패했습니다:"
 
-#: src/game_config_manager.cpp:623
+#: src/game_config_manager.cpp:624
 msgid "Please report this to the author or maintainer of this add-on."
 msgid_plural ""
 "Please report this to the respective authors or maintainers of these add-ons."
@@ -6967,7 +6798,7 @@ msgstr "게임 오버"
 msgid "This scenario has ended. Do you want to continue the campaign?"
 msgstr "이 시나리오는 끝났다. 캠페인을 계속하시겠습니까?"
 
-#: src/game_initialization/playcampaign.cpp:415
+#: src/game_initialization/playcampaign.cpp:418
 msgid "Unknown scenario: '$scenario|'"
 msgstr "불분명한 시나리오: '$scenario|'"
 
@@ -9083,6 +8914,83 @@ msgid "Whiteboard Options"
 msgstr "행동 예정 옵션"
 
 #, fuzzy
+#~| msgid "End Scenario"
+#~ msgid "Scenario"
+#~ msgstr "시나리오 마치기"
+
+#, fuzzy
+#~| msgid "Preferences"
+#~ msgid "Provinces"
+#~ msgstr "설정"
+
+#, fuzzy
+#~| msgid "Players"
+#~ msgid "Clayey"
+#~ msgstr "플레이어 수:"
+
+#~ msgid "Enemies"
+#~ msgstr "적 소속 마을"
+
+#, fuzzy
+#~| msgid "Damage: "
+#~ msgid "damage"
+#~ msgstr "무기 위력: "
+
+#, fuzzy
+#~| msgid "No advancement"
+#~ msgid "XP to advance"
+#~ msgstr "승급 불가능"
+
+#~ msgid "gold"
+#~ msgstr "자금"
+
+#, fuzzy
+#~ msgid "moves"
+#~ msgstr "이동력:"
+
+#~ msgid "gender^Random"
+#~ msgstr "무작위"
+
+#, fuzzy
+#~| msgid " resistance vs "
+#~ msgid " resistance vs "
+#~ msgstr "내성 vs "
+
+#, fuzzy
+#~| msgid "Strikes"
+#~ msgid "strike"
+#~ msgstr "공격력"
+
+#~ msgid "steadfast"
+#~ msgstr "철벽"
+
+#~ msgid "female^steadfast"
+#~ msgstr "철벽"
+
+#~ msgid "plague"
+#~ msgstr "역병"
+
+#, fuzzy
+#~| msgid ""
+#~| "Plague:\n"
+#~| "When a unit is killed by a Plague attack, that unit is replaced with a "
+#~| "Walking Corpse on the same side as the unit with the Plague attack. This "
+#~| "doesn’t work on Undead or units in villages."
+#~ msgid ""
+#~ "When a unit is killed by a Plague attack, that unit is replaced with a "
+#~ "Walking Corpse on the same side as the unit with the Plague attack. This "
+#~ "doesn’t work on Undead or units in villages."
+#~ msgstr ""
+#~ "역병:\n"
+#~ "역병 공격에 의해 죽은 유닛은 걸어다니는 시체가 되어 공격한 유닛과 같은 편"
+#~ "이 됩니다. 이 공격은 언데드나 마을에 있는 유닛에는 통하지 않습니다."
+
+#, fuzzy
+#~| msgid " (inactive)"
+#~ msgid "initiative"
+#~ msgstr "(행동하지 않는)"
+
+#, fuzzy
 #~| msgid "Turn bonus: "
 #~ msgid "Max HP bonus +6%"
 #~ msgstr "최대 무리 보너스: "
@@ -9199,9 +9107,6 @@ msgstr "행동 예정 옵션"
 
 #~ msgid "<small>(early finish bonus)</small>"
 #~ msgstr "<small>(조기 종료 보너스)</small>"
-
-#~ msgid "(Note: You should use $replacement instead in new code)"
-#~ msgstr "(참고: 새 코드에서 $replacement 을(를) 대신 사용해야합니다)"
 
 #~ msgid "theme^Classic"
 #~ msgstr "클래식"
