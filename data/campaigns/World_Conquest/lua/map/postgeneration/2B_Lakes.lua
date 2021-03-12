@@ -242,6 +242,8 @@ function world_conquest_tek_map_constructor_lakes()
 	}
 end
 
+local _ = wesnoth.textdomain 'wesnoth-wc'
+
 return function()
 	set_map_name(_"Lakes")
 	world_conquest_tek_map_constructor_lakes()

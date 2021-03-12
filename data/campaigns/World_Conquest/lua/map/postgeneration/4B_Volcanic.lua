@@ -410,6 +410,8 @@ function world_conquest_tek_map_repaint_4b()
 
 end
 
+local _ = wesnoth.textdomain 'wesnoth-wc'
+
 return function()
 	set_map_name(_"Volcanic")
 	world_conquest_tek_map_noise_classic("Gs^Fp")

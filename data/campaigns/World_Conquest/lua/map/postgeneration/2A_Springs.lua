@@ -177,6 +177,7 @@ function wct_map_2a_post_bunus_decoration()
 	wct_noise_snow_to("Wwf")
 end
 
+local _ = wesnoth.textdomain 'wesnoth-wc'
 
 return function()
 	set_map_name(_"water^Springs")

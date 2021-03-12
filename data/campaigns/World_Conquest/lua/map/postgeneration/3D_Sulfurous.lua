@@ -56,6 +56,7 @@ function world_conquest_tek_map_repaint_3d()
 	wct_dirt_beachs("7..10")
 end
 
+local _ = wesnoth.textdomain 'wesnoth-wc'
 
 return function()
 	set_map_name(_"Sulfurous")

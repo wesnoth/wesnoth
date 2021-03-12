@@ -398,6 +398,8 @@ local function world_conquest_tek_map_repaint_6a()
 	world_conquest_tek_map_dirt("Gg^Uf,Gs^Uf")
 end
 
+local _ = wesnoth.textdomain 'wesnoth-wc'
+
 return function()
 	set_map_name(_"Rural")
 	world_conquest_tek_map_noise_classic("Gs^Fp")

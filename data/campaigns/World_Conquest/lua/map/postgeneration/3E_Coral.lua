@@ -73,6 +73,7 @@ function wct_map_3e_post_bunus_decoration()
 
 end
 
+local _ = wesnoth.textdomain 'wesnoth-wc'
 
 return function()
 	set_map_name(_"made of^Coral")

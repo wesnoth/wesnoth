@@ -121,6 +121,7 @@ function wct_map_2f_post_bunus_decoration()
 	}
 end
 
+local _ = wesnoth.textdomain 'wesnoth-wc'
 
 return function()
 	set_map_name(_"Clayey")

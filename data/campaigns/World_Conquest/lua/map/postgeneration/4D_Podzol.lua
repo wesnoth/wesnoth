@@ -129,6 +129,7 @@ local function wct_map_4d_post_bunus_decoration()
 	wct_map_cave_path_to("Re")
 end
 
+local _ = wesnoth.textdomain 'wesnoth-wc'
 
 return function()
 	set_map_name(_"Podzol")

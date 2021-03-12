@@ -262,6 +262,8 @@ function wild_store_roads_in_cave_zone(map_data)
 	map_data.road_in_cave = map:get_locations(f.terrain("R*,Ur"), map_data.road_in_cave)
 end
 
+local _ = wesnoth.textdomain 'wesnoth-wc'
+
 return function()
 	set_map_name(_"Wild")
 	local map_data = {}

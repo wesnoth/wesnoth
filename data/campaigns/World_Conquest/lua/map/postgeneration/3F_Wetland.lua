@@ -246,6 +246,7 @@ function wct_store_cave_passages_candidates()
 
 end
 
+local _ = wesnoth.textdomain 'wesnoth-wc'
 
 return function()
 	set_map_name(_"Wetland")

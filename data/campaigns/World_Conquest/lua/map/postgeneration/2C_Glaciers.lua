@@ -202,6 +202,8 @@ function world_conquest_tek_map_decoration_2c()
 	wct_change_map_water("g")
 end
 
+local _ = wesnoth.textdomain 'wesnoth-wc'
+
 return function()
 	set_map_name(_"Glaciers")
 	world_conquest_tek_map_noise_classic("Gs^Fp")

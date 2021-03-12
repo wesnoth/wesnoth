@@ -140,6 +140,8 @@ function wct_store_possible_encampment_ford()
 	))
 end
 
+local _ = wesnoth.textdomain 'wesnoth-wc'
+
 return function()
 	set_map_name(_"Start")
 

@@ -390,6 +390,7 @@ function wct_map_3c_post_bunus_decoration()
 	}
 end
 
+local _ = wesnoth.textdomain 'wesnoth-wc'
 
 return function()
 	set_map_name(_"river^Delta")

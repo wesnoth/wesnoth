@@ -683,6 +683,8 @@ local function world_conquest_tek_map_repaint_6c()
 
 end
 
+local _ = wesnoth.textdomain 'wesnoth-wc'
+
 return function()
 	set_map_name(_"Industrial")
 	wct_enemy_castle_expansion()
