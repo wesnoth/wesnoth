@@ -373,7 +373,7 @@ void del_hotkey(const hotkey_ptr item);
  * @param id The command to bind to.
  * @param event The SDL_Event to base the creation on.
  */
-hotkey_ptr create_hotkey(const std::string &id, const SDL_Event &event);
+hotkey_ptr create_hotkey(const std::string &id, const SDL_Event &event, const std::string &input_text);
 
 /**
  * Iterate through the list of hotkeys and return a hotkey that matches

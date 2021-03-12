@@ -144,7 +144,7 @@ void hotkey_base::save(config& item) const
 	save_helper(item);
 }
 
-hotkey_ptr create_hotkey(const std::string &id, const SDL_Event &event)
+hotkey_ptr create_hotkey(const std::string &id, const SDL_Event &event, const std::string &input_text)
 {
 	hotkey_ptr base = std::make_shared<hotkey_void>();
 	unsigned mods = sdl_get_mods();
@@ -155,8 +155,13 @@ hotkey_ptr create_hotkey(const std::string &id, const SDL_Event &event)
 		base = std::dynamic_pointer_cast<hotkey_base>(keyboard);
 		SDL_Scancode code;
 		code = event.key.keysym.scancode;
-		keyboard->set_scancode(code);
-		keyboard->set_text(SDL_GetScancodeName(code));
+		if (code != SDL_SCANCODE_UNKNOWN /*&& CKey::is_uncomposable(event.key)*/) {
+			keyboard->set_scancode(code);
+			keyboard->set_text(SDL_GetScancodeName(code));
+		} else if (input_text != "") {
+			mods = mods & ~KMOD_SHIFT;
+			keyboard->set_text(input_text);
+		}
 	}
 		break;
 	case SDL_MOUSEBUTTONUP: {
@@ -198,9 +203,6 @@ hotkey_ptr load_from_config(const config& cfg)
 		base = std::dynamic_pointer_cast<hotkey_base>(keyboard);
 
 		SDL_Scancode scancode = SDL_GetScancodeFromName(key_cfg.c_str());
-		if (scancode == SDL_SCANCODE_UNKNOWN) {
-			ERR_G<< "Unknown key: " << key_cfg << "\n";
-		}
 		keyboard->set_text(key_cfg);
 		keyboard->set_scancode(scancode);
 	}
@@ -271,8 +273,16 @@ bool hotkey_keyboard::matches_helper(const SDL_Event &event) const
 {
 	unsigned int mods = sdl_get_mods();
 
-	if (event.type == SDL_KEYDOWN) {
+	if (event.type == SDL_KEYDOWN && scancode_ != SDL_SCANCODE_UNKNOWN
+			&& event.key.keysym.scancode != SDL_SCANCODE_UNKNOWN
+			/*&& CKey::is_uncomposable(event.key)*/) {
 		return event.key.keysym.scancode == scancode_ && mods == mod_;
+	}
+
+	if (event.type == SDL_TEXTINPUT) {
+		std::string text = std::string(event.text.text);
+		mods = mods & ~KMOD_SHIFT;
+		return utf8::size(text) == 1 && text == text_ && mods == mod_;
 	}
 
 	return false;

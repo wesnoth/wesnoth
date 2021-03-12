@@ -38,6 +38,8 @@ private:
 
 	hotkey::hotkey_ptr new_binding_;
 
+	std::string input_text_;
+
 	void sdl_event_callback(const SDL_Event& event);
 
 	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
