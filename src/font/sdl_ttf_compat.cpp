@@ -152,15 +152,15 @@ SDL_Rect pango_draw_text(surface& dst, const SDL_Rect& area, int size, const col
 		 .set_foreground_color(color)
 		 .set_ellipse_mode(PANGO_ELLIPSIZE_END);
 
-	auto s = ptext.render();
-
+	auto extents = ptext.get_size();
 	bool ellipsized = false;
 
-	if(s->w > area.w) {
+	if(extents.x > area.w) {
 		ptext.set_maximum_width(area.w);
-		s = ptext.render();
 		ellipsized = true;
 	}
+
+	auto s = ptext.render();
 
 	SDL_Rect res = { x, y, s->w, s->h };
 
