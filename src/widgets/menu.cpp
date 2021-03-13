@@ -921,7 +921,10 @@ void menu::draw_row(const std::size_t row_index, const SDL_Rect& rect, ROW_TYPE 
 				const SDL_Rect& text_size = font::pango_text_area(str,style_->get_font_size());
 				const std::size_t y = rect.y + (rect.h - text_size.h)/2;
 				const std::size_t padding = 2;
-				font::pango_draw_text(&video(),column,style_->get_font_size(),font::NORMAL_COLOR,str,
+				SDL_Rect text_rect = column;
+				text_rect.w = rect.w - (xpos - rect.x) - 2 * style_->get_thickness();
+				text_rect.h = text_size.h;
+				font::pango_draw_text(&video(), text_rect, style_->get_font_size(), font::NORMAL_COLOR, str,
 					(type == HEADING_ROW ? xpos+padding : xpos), y);
 
 				if(type == HEADING_ROW && sortby_ == int(i)) {
