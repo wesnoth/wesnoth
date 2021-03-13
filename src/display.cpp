@@ -2916,7 +2916,7 @@ void display::refresh_report(const std::string& report_name, const config * new_
 				.set_foreground_color(item->font_rgb_set() ? item->font_rgb() : color_t{})
 				.set_maximum_width(area.w)
 				.set_maximum_height(area.h, false)
-				.set_ellipse_mode(PANGO_ELLIPSIZE_NONE)
+				.set_ellipse_mode(PANGO_ELLIPSIZE_END)
 				.set_characters_per_line(0);
 
 			surface s = text.render();

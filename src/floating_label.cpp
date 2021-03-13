@@ -101,7 +101,7 @@ surface floating_label::create_surface()
 			.set_foreground_color(color_)
 			.set_maximum_width(width_ < 0 ? clip_rect_.w : width_)
 			.set_maximum_height(height_ < 0 ? clip_rect_.h : height_, true)
-			.set_ellipse_mode(PANGO_ELLIPSIZE_NONE)
+			.set_ellipse_mode(PANGO_ELLIPSIZE_END)
 			.set_characters_per_line(0);
 
 		// ignore last '\n'
