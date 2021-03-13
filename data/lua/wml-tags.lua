@@ -845,7 +845,7 @@ wml_actions.unstore_unit = function(cfg)
 		x,y = table.unpack(wesnoth.special_locations[cfg.location_id])
 	end
 	wesnoth.add_known_unit(unit.type)
-	if wesnoth.current.map:on_board(x, y) then
+	if x ~= 'recall' and y ~= 'recall' and wesnoth.current.map:on_board(x, y) then
 		if cfg.find_vacant then
 			x,y = wesnoth.find_vacant_tile(x, y, check_passability and unit)
 		end
