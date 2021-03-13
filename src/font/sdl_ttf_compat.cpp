@@ -64,7 +64,6 @@ std::pair<int, int> pango_line_size(const std::string& line, int font_size, font
 	ptext.set_font_size(font_size)
 		 .set_font_style(font_style)
 		 .set_maximum_height(-1, false)
-		 .set_foreground_color(color_t{})
 		 .set_maximum_width(-1)
 		 .set_ellipse_mode(PANGO_ELLIPSIZE_NONE);
 
@@ -117,7 +116,6 @@ std::string pango_word_wrap(const std::string& unwrapped_text, int font_size, in
 	ptext.set_font_size(font_size)
 		 .set_font_style(font::pango_text::STYLE_NORMAL)
 		 .set_maximum_height(max_height, true)
-		 .set_foreground_color(color_t{})
 		 .set_maximum_width(max_width)
 		 .set_ellipse_mode(PANGO_ELLIPSIZE_NONE);
 
