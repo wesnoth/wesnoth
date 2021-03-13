@@ -31,7 +31,7 @@ scrollarea::scrollarea(CVideo &video, const bool auto_join)
 
 bool scrollarea::has_scrollbar() const
 {
-	return shown_size_ < full_size_ && scrollbar_.is_valid_height(location().h);
+	return shown_size_ < full_size_;
 }
 
 sdl_handler_vector scrollarea::handler_members()

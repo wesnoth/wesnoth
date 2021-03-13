@@ -25,6 +25,7 @@
    * Re-added the pop-up when there are no saved games at all (issue #5517).
    * Fixed resource leak in the Pango text rendering pipeline when using the characters_per_line constraint.
    * Make the warning about loading saves from old versions much clearer.
+   * Made legacy GUI1 scrollbars match regular GUI2 scrollbars.
  ### WML Engine
    * Standard Location Filters now support gives_income=yes|no to make it simpler to match villages regardless of owner
    * Fixed ThemeWML `[label] font_rgb=` generating text elements with broken UTF-8 sequences.
