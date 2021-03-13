@@ -2902,19 +2902,23 @@ void display::refresh_report(const std::string& report_name, const config * new_
 			if (used_ellipsis) goto skip_element;
 
 			// Draw a text element.
-			font::pango_text text;
-			if (item->font_rgb_set()) {
-				text.set_foreground_color(item->font_rgb());
-			}
+			font::pango_text& text = font::get_text_renderer();
 			bool eol = false;
 			if (t[t.size() - 1] == '\n') {
 				eol = true;
 				t = t.substr(0, t.size() - 1);
 			}
-			text.set_font_size(item->font_size());
-			text.set_text(t, true);
-			text.set_maximum_width(area.w);
-			text.set_maximum_height(area.h, false);
+			text.set_link_aware(false)
+				.set_text(t, true);
+			text.set_font_size(item->font_size())
+				.set_font_style(font::pango_text::STYLE_NORMAL)
+				.set_alignment(PANGO_ALIGN_LEFT)
+				.set_foreground_color(item->font_rgb_set() ? item->font_rgb() : color_t{})
+				.set_maximum_width(area.w)
+				.set_maximum_height(area.h, false)
+				.set_ellipse_mode(PANGO_ELLIPSIZE_NONE)
+				.set_characters_per_line(0);
+
 			surface s = text.render();
 
 			// check if next element is text with almost no space to show it
