@@ -1434,19 +1434,8 @@ static void draw_label(CVideo& video, surface target, const theme::label& label)
 {
 	//log_scope("draw label");
 
-	const color_t& RGB = label.font_rgb();
-
-	std::string c_start="<";
-	std::string c_sep=",";
-	std::string c_end=">";
-	std::stringstream color;
-	color<< c_start << RGB.r << c_sep << RGB.g << c_sep << RGB.b << c_end;
-	std::string text = label.text();
-
-	if(label.font_rgb_set()) {
-		color<<text;
-		text = color.str();
-	}
+	const std::string& text = label.text();
+	const color_t text_color = label.font_rgb_set() ? label.font_rgb() : font::NORMAL_COLOR;
 	const std::string& icon = label.icon();
 	SDL_Rect& loc = label.location(video.screen_area());
 
@@ -1464,9 +1453,8 @@ static void draw_label(CVideo& video, surface target, const theme::label& label)
 			tooltips::add_tooltip(loc,text);
 		}
 	} else if(text.empty() == false) {
-		font::pango_draw_text(&video,loc,label.font_size(),font::NORMAL_COLOR,text,loc.x,loc.y);
+		font::pango_draw_text(&video, loc, label.font_size(), text_color, text, loc.x, loc.y);
 	}
-
 }
 
 void display::draw_all_panels()
