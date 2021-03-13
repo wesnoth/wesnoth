@@ -15,14 +15,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "POT-Creation-Date: 2021-02-20 18:40-0300\n"
-"PO-Revision-Date: 2021-02-08 18:39+0100\n"
-"Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
+"PO-Revision-Date: 2021-03-11 20:10+0100\n"
+"Last-Translator: Septim <septim@centrum.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+"X-Generator: Poedit 2.4.2\n"
 
 #. type: Content of: outside any tag (error?)
 #: doc/manual/manual.en.xml:3
@@ -44,12 +45,11 @@ msgstr "Manuál uživatele Bitvy o Wesnoth"
 msgid "Preface"
 msgstr "Úvod"
 
-# Fantasy?
 #. type: Content of: <book><preface><simpara>
 #: doc/manual/manual.en.xml:12
 msgid ""
 "The Battle for Wesnoth is a turn-based strategy game with a fantasy theme."
-msgstr "Bitva o Wesnoth je tahová strategická hra s fantastickým námětem."
+msgstr "Bitva o Wesnoth je tahová strategická hra s fantasy námětem."
 
 #. type: Content of: <book><preface><simpara>
 #: doc/manual/manual.en.xml:13
@@ -60,11 +60,11 @@ msgid ""
 "specialists, and hand pick a force with the right strengths to fight well on "
 "different terrains against all manner of opposition."
 msgstr ""
-"Sestavte skvělou armádu, jak se budou vaši vojáci zdokonalovat ze zelenáčů v "
-"ostřílené veterány. V pozdějších hrách přivoláte ty nejlepší z nich a "
-"vytvoříte vojsko, proti kterému nikdo neobstojí! Vybírejte jednotky z mnoha "
-"specialistů a nakombinujte armádu tak, aby měla ty správné klady pro boj v "
-"různých terénech a proti různým druhům nepřátel."
+"Vybuduj skvělou armádu tím, že postupně vytrénuješ zelenáče na ostřílené "
+"veterány. V pozdějších hrách si přivoláš ty nejlepší z nich a vytvoříš "
+"smrtící vojsko, proti kterému nikdo neobstojí! Vybírej jednotky z mnoha "
+"specialistů a nakombinuj svou armádu tak, aby měla ty správné předpoklady "
+"pro boj v různých terénech a proti všemožným nepřátelům."
 
 #. type: Content of: <book><preface><simpara>
 #: doc/manual/manual.en.xml:18
@@ -247,15 +247,11 @@ msgstr ""
 
 #. type: Content of: <book><chapter><section><simpara><inlinemediaobject>
 #: doc/manual/manual.en.xml:90
-#, fuzzy
-#| msgid ""
-#| "<imageobject> <imagedata fileref=\"images/main-menu-1.11.9.jpg\"/> </"
-#| "imageobject>"
 msgid ""
 "<imageobject> <imagedata fileref=\"images/main-menu-1.13.11+dev.jpg\"/> </"
 "imageobject>"
 msgstr ""
-"<imageobject> <imagedata fileref=\"images/main-menu-1.11.9.jpg\"/> </"
+"<imageobject> <imagedata fileref=\"images/main-menu-1.13.11+dev.jpg\"/> </"
 "imageobject>"
 
 #. type: Content of: <book><chapter><section><simpara><inlinemediaobject><textobject><phrase>
@@ -357,13 +353,6 @@ msgstr "Načíst hru"
 
 #. type: Content of: <book><chapter><section><variablelist><varlistentry><listitem><simpara>
 #: doc/manual/manual.en.xml:153
-#, fuzzy
-#| msgid ""
-#| "Click this button to load a previously saved game. You will be shown a "
-#| "dialogue listing saved games. Select the game and click Ok to load and "
-#| "continue, or Cancel to return to the Main Menu. If you select a replay "
-#| "game, you can check the Replay check box. The loaded game will make all "
-#| "the moves from the beginning while you watch."
 msgid ""
 "Click this button to load a previously saved game. You will be shown a "
 "dialogue listing saved games. Select the game and click Ok to load and "
@@ -371,11 +360,11 @@ msgid ""
 "you can check the \"Show replay\" check box. The loaded game will make all "
 "the moves from the beginning while you watch."
 msgstr ""
-"Tímto tlačítkem můžete načíst uložené hry. Zmáčknutím se dostanete do "
-"dialogu, kde lze vybrat hru ze seznamu; Ok ji načte, Zrušit Vás vrátí do "
-"hlavního menu. Pokud vyberete místo hry záznam, můžete zaškrtnout „Ukaž "
-"záznamy“ - po načtení si budete moci přehrát záznam celé hry tak, jak byla "
-"původně odehrána."
+"Kliknutím na toto tlačítko lze načíst dříve uloženou hru. Zobrazí se "
+"dialogové okno se seznamem uložených her. Výběrem hry a kliknutím na Načíst "
+"hru ji načteš, tlačítkem Zrušit se vrátíš do hlavního menu. Pokud vybereš "
+"hru se záznamem, můžeš zaškrtnout políčko „Přehrát záznam“. Načtená hra ti "
+"přehraje všechny tahy od začátku, zatímco se budeš dívat."
 
 #. type: Content of: <book><chapter><section><variablelist><varlistentry><term>
 #: doc/manual/manual.en.xml:163
@@ -435,7 +424,7 @@ msgstr "Nastavení"
 #. type: Content of: <book><chapter><section><variablelist><varlistentry><listitem><simpara>
 #: doc/manual/manual.en.xml:205
 msgid "Click here to change default settings."
-msgstr "Po kliknutí sem můžete změnit nastavení hry."
+msgstr "Po kliknutí sem můžeš změnit nastavení hry."
 
 #. type: Content of: <book><chapter><section><variablelist><varlistentry><term>
 #: doc/manual/manual.en.xml:211
@@ -477,9 +466,9 @@ msgid ""
 "provide you with information about units and all other gameplay relevant "
 "things of the game. Most of those things are mentioned in this manual."
 msgstr ""
-"Tento knoflík otvírá vestavěnou nápovědu hry, která obsahuje informace o "
-"jednotkách a všech dalších herních aspektech. Většina těchto informací je "
-"přítomna i v tomto manuálu."
+"Kliknutím na toto tlačítko otevřeš vestavěnou nápovědu hry, která obsahuje "
+"informace o jednotkách a všech dalších herních aspektech. Většina těchto "
+"informací je zmíněna i v tomto manuálu."
 
 #. type: Content of: <book><chapter><section><variablelist><varlistentry><term>
 #: doc/manual/manual.en.xml:245
@@ -515,6 +504,8 @@ msgid ""
 "Click this button to view game version and technical information. It may be "
 "useful when troubleshooting issues."
 msgstr ""
+"Kliknutím na toto tlačítko zobrazíš verzi hry a technické informace. To může "
+"být užitečné při řešení problémů."
 
 #. type: Content of: <book><chapter><section><title>
 #: doc/manual/manual.en.xml:277
@@ -540,10 +531,8 @@ msgstr "Hrát jediný scénář proti lidským nebo počítačovým protivníků
 
 #. type: Content of: <book><chapter><section><simpara>
 #: doc/manual/manual.en.xml:292
-#, fuzzy
-#| msgid "Message another player (in multiplayer)"
 msgid "There are also campaigns that can be played in multiplayer."
-msgstr "Pošle zprávu jinému hráči (ve hře více hráčů)"
+msgstr "Existují také tažení, která mohou být hrána ve hře více hráčů."
 
 #. type: Content of: <book><chapter><section><section><title>
 #: doc/manual/manual.en.xml:294
@@ -560,12 +549,12 @@ msgid ""
 "you choose not to use a unit at all during a scenario it is carried over to "
 "the next, so you don&#8217;t lose units you don&#8217;t use."
 msgstr ""
-"Tažení jsou sekvence bitev, propojených příběhem. Typické tažení se skládá s "
-"přibližně 10-20 scénářů. Hlavní výhodou tažení je, že Vám umožňují vyvíjet "
-"Vaši armádu. Po zakončení každého scénáře jsou jednotky uschovány pro "
-"použití v příštích scénářích, kde je můžete, ale nemusíte přivolat. Pokud je "
-"nepřivoláte, zůstanou i tak nadále k dispozici ve všech dalších scénářích "
-"tažení."
+"Tažení jsou sekvence bitev propojené příběhem. Typické tažení se skládá "
+"přibližně z 10 až 20 scénářů. Hlavní výhodou tažení je, že ti umožňují "
+"vyvíjet svou armádu. Po dokončení každého scénáře se přeživší jednotky na "
+"konci uloží, abys je mohl použít v dalším scénáři. Pokud se rozhodneš "
+"jednotku během scénáře vůbec nepoužít, bude přenesena do dalšího, takže o "
+"jednotky, které nepoužíváš, nepřijdeš."
 
 #. type: Content of: <book><chapter><section><section><simpara>
 #: doc/manual/manual.en.xml:302
@@ -574,8 +563,9 @@ msgid ""
 "is probably the most enjoyable, and is the recommended way for new players "
 "to learn the game."
 msgstr ""
-"Tažení představují zamýšlený primární účel Wesnothu, jsou nejzábavnější "
-"formou hry a také umožňují novým hráčům snadno se naučit hru."
+"Tažení představují zamýšlený primární účel Wesnothu, jsou pravděpodobně "
+"nejzábavnější formou hry a reprezentují doporučený způsob, kterým by se noví "
+"hráči měli hru učit."
 
 #. type: Content of: <book><chapter><section><section><title>
 #: doc/manual/manual.en.xml:307
@@ -599,18 +589,6 @@ msgstr ""
 
 #. type: Content of: <book><chapter><section><section><simpara>
 #: doc/manual/manual.en.xml:313
-#, fuzzy
-#| msgid ""
-#| "In general multiplayer games are played against other players via the "
-#| "Internet (you can also run them on your LAN if you have one). All these "
-#| "games are co-ordinated through the Wesnoth multiplayer server. "
-#| "Multiplayer games can take anywhere from 1 hour to 10 hours, depending on "
-#| "how many players there are (and the size of the map). The average time is "
-#| "between 3 to 7 hours. Games can be saved and loaded as many times as you "
-#| "like. So, it&#8217;s possible for some games to last 1 or 2 weeks, even "
-#| "though the play time is only a few hours. You cannot carry over units in "
-#| "multiplayer from one scenario to the next, so building up your army&#8217;"
-#| "s strength is possible only within the scenario."
 msgid ""
 "In general multiplayer games are played against other players via the "
 "Internet (you can also run them on your LAN if you have one). All these "
@@ -623,13 +601,14 @@ msgid ""
 "units won&#8217;t carry to future games and building up your army&#8217;s "
 "strength is possible only within the scenario."
 msgstr ""
-"Obecně jsou tyto hry hrány proti ostatním lidem přes internet (ale je možno "
-"i přes LAN). Pro tento účel je koordinuje hlavní server. Hry více hráčů přes "
-"internet mohou zabrat i několik hodin, podle počtu zúčastněných a velikosti "
-"mapy. Obvykle to bývá něco mezi třemi a sedmi hodinami. Hry je možno ukládat "
-"a načítat podle libosti, mohou proto trvat i několik týdnů - není nutno je "
-"hrát celé naráz. Jelikož není umožněno přenášet jednotky z jednoho scénáře "
-"do druhého, musíte si vystačit s budováním armády v rámci scénáře."
+"Obecně jsou tyto hry hrány proti ostatním hráčům přes internet (ale je možno "
+"i přes LAN). Jsou kordinovány prostřednictvím serveru pro hru více hráčů. "
+"Hry více hráčů mohou zabrat i desítky hodin, podle počtu zúčastněných a "
+"velikosti mapy. Obvykle to bývá něco mezi třemi a sedmi hodinami. Hry je "
+"možno ukládat a načítat podle libosti, mohou proto trvat i několik týdnů, "
+"ačkoli vlastní doba hry je v hodinách. Když hraješ pouze jeden scénář, tvé "
+"jednotky se nepřenáší do budoucích her a budování armády je možné jen v "
+"rámci daného scénáře."
 
 #. type: Content of: <book><chapter><section><section><simpara>
 #: doc/manual/manual.en.xml:323
@@ -637,19 +616,15 @@ msgid ""
 "There are several possible options you are provided with when clicking on "
 "the \"Multiplayer\" button:"
 msgstr ""
-"Po kliknutí na tlačítko „Hra více hráčů“ máte na výběr z několika možností:"
+"Po kliknutí na tlačítko „Hra více hráčů“ máš na výběr z několika možností:"
 
 #. type: Content of: <book><chapter><section><section><simpara><inlinemediaobject>
 #: doc/manual/manual.en.xml:326
-#, fuzzy
-#| msgid ""
-#| "<imageobject> <imagedata fileref=\"images/multiplayer-1.11.9.jpg\"/> </"
-#| "imageobject>"
 msgid ""
 "<imageobject> <imagedata fileref=\"images/multiplayer-1.13.11+dev.png\"/> </"
 "imageobject>"
 msgstr ""
-"<imageobject> <imagedata fileref=\"images/multiplayer-1.11.9.jpg\"/> </"
+"<imageobject> <imagedata fileref=\"images/multiplayer-1.13.11+dev.png\"/> </"
 "imageobject>"
 
 #. type: Content of: <book><chapter><section><section><simpara><inlinemediaobject><textobject><phrase>
@@ -784,6 +759,7 @@ msgstr ""
 msgid "Local Game"
 msgstr "Místní hra"
 
+# Nechal jsem některé formulace, protože jsou krásné.
 #. type: Content of: <book><chapter><section><section><section><simpara>
 #: doc/manual/manual.en.xml:375
 msgid ""
@@ -799,15 +775,16 @@ msgid ""
 "these games.  Of course, you can also mix both in one game. That is, play "
 "together in a game with a friend against an AI opponent."
 msgstr ""
-"Tímto vytvoříte hru, probíhající pouze na Vašem počítači. Může to být buď "
-"tzv. „horké křeslo“, kdy se hráči střídají u jednoho počítače v pořadí "
-"jejich tahů a hra trvá přibližně stejně dlouho jako kdyby byla hrána přes "
-"internet, nebo pouze hra proti počítačovým protivníkům. Druhá možnost může "
-"být dobrou přípravou pro hraní přes internet - seznámíte se s často hranými "
-"mapami. Je to také snadná cesta pro zkoumání jednotlivých frakcí: vyberete "
-"sobě a protivníkům příslušné frakce a hurá do boje! Oba přístupy - horké "
-"křeslo i bitku s počítači - lze libovolně kombinovat, výběr zda je daný hráč "
-"ovládán člověkem či počítačem je individuální pro každou stranu."
+"Tímto vytvoříš hru, probíhající pouze na tvém počítači. Může to být buď tzv. "
+"„horké křeslo“, kdy se hráči střídají u jednoho počítače v pořadí svých tahů "
+"a hra trvá přibližně stejně dlouho, jako kdyby byla hrána přes internet, "
+"nebo hra pouze proti počítačovým protivníkům. Druhá možnost může být dobrým "
+"způsobem, jak se seznámit s různými mapami, co se používají pro hry více "
+"hráčů, dříve než naskočíš do boje proti lidským protivníkům. Je to také "
+"snadná cesta jak prozkoumat možnosti jednotek z různých frakcí: vybereš sobě "
+"a svým protivníkům příslušné frakce a hurá do boje! Oba přístupy – horké "
+"křeslo i bitku s počítači – lze různě kombinovat. Můžeš tedy hrát společně s "
+"kamarádem proti počítačovému protivníkovi."
 
 #. type: Content of: <book><chapter><section><section><title>
 #: doc/manual/manual.en.xml:389
@@ -816,15 +793,11 @@ msgstr "Herní obrazovka"
 
 #. type: Content of: <book><chapter><section><section><simpara><inlinemediaobject>
 #: doc/manual/manual.en.xml:391
-#, fuzzy
-#| msgid ""
-#| "<imageobject> <imagedata fileref=\"images/game-screen-1.11.9.jpg\"/> </"
-#| "imageobject>"
 msgid ""
 "<imageobject> <imagedata fileref=\"images/game-screen-1.13.11+dev.jpg\"/> </"
 "imageobject>"
 msgstr ""
-"<imageobject> <imagedata fileref=\"images/game-screen-1.11.9.jpg\"/> </"
+"<imageobject> <imagedata fileref=\"images/game-screen-1.13.11+dev.jpg\"/> </"
 "imageobject>"
 
 #. type: Content of: <book><chapter><section><section><simpara><inlinemediaobject><textobject><phrase>
@@ -848,15 +821,11 @@ msgstr ""
 
 #. type: Content of: <book><chapter><section><section><simpara><inlinemediaobject>
 #: doc/manual/manual.en.xml:402
-#, fuzzy
-#| msgid ""
-#| "<imageobject> <imagedata fileref=\"images/top_pane-1.11.9.jpg\"/> </"
-#| "imageobject>"
 msgid ""
 "<imageobject> <imagedata fileref=\"images/top_pane-1.13.11+dev.png\"/> </"
 "imageobject>"
 msgstr ""
-"<imageobject> <imagedata fileref=\"images/top_pane-1.11.9.jpg\"/> </"
+"<imageobject> <imagedata fileref=\"images/top_pane-1.13.11+dev.png\"/> </"
 "imageobject>"
 
 #. type: Content of: <book><chapter><section><section><simpara><inlinemediaobject><textobject><phrase>
@@ -888,7 +857,7 @@ msgstr "Počitadlo kol (současné kolo / maximální počet kol)"
 #. type: Content of: <book><chapter><section><section><orderedlist><listitem><simpara>
 #: doc/manual/manual.en.xml:426
 msgid "Your gold"
-msgstr "Vaše zlato"
+msgstr "Tvé zlato"
 
 #. type: Content of: <book><chapter><section><section><orderedlist><listitem><simpara>
 #: doc/manual/manual.en.xml:431
@@ -898,17 +867,17 @@ msgstr "Vesnice (vlastněné / celkový počet)"
 #. type: Content of: <book><chapter><section><section><orderedlist><listitem><simpara>
 #: doc/manual/manual.en.xml:436
 msgid "Your total units"
-msgstr "Počet Vašich jednotek"
+msgstr "Počet tvých jednotek"
 
 #. type: Content of: <book><chapter><section><section><orderedlist><listitem><simpara>
 #: doc/manual/manual.en.xml:441
 msgid "Your upkeep"
-msgstr "Vaše výdaje"
+msgstr "Tvé výdaje"
 
 #. type: Content of: <book><chapter><section><section><orderedlist><listitem><simpara>
 #: doc/manual/manual.en.xml:446
 msgid "Your income"
-msgstr "Vaše příjmy"
+msgstr "Tvé příjmy"
 
 #. type: Content of: <book><chapter><section><section><orderedlist><listitem><simpara>
 #: doc/manual/manual.en.xml:451
@@ -917,15 +886,11 @@ msgstr "Aktuální čas, nebo zbývající čas (v hrách více hráčů na čas
 
 #. type: Content of: <book><chapter><section><section><simpara><inlinemediaobject>
 #: doc/manual/manual.en.xml:456
-#, fuzzy
-#| msgid ""
-#| "<imageobject> <imagedata fileref=\"images/right_pane-1.11.9.jpg\"/> </"
-#| "imageobject>"
 msgid ""
 "<imageobject> <imagedata fileref=\"images/right_pane-1.13.11+dev.png\"/> </"
 "imageobject>"
 msgstr ""
-"<imageobject> <imagedata fileref=\"images/right_pane-1.11.9.jpg\"/> </"
+"<imageobject> <imagedata fileref=\"images/right_pane-1.13.11+dev.png\"/> </"
 "imageobject>"
 
 #. type: Content of: <book><chapter><section><section><simpara><inlinemediaobject><textobject><phrase>
@@ -989,13 +954,14 @@ msgid ""
 "recall experienced units that survived earlier scenarios. From here, you can "
 "start to build your army to conquer the enemy."
 msgstr ""
-"Když poprvé začnete hrát scénář nebo tažení, bude se na mapě nacházet pouze "
-"několik jednotek. Jednou z nich bude Váš velitel (určený malou ikonkou "
-"koruny). Velitel je obvykle na začátku umístěn na zvláštním hexu zvaném "
-"tvrz. Kdykoliv je Váš velitel na tvrzi (kterékoliv) a má dostatek zlata, "
-"může verbovat do armády nové jednotky. V dalších scénářích tažení může také "
-"stejným způsobem přivolávat zkušené jednotky přeživší z dřívějších scénářů. "
-"Ve tvrzi tedy začínáte stavět armádu, která pokoří nepřítele."
+"Když poprvé začneš hrát scénář nebo tažení, budeš mít na mapě jen několik "
+"svých jednotek. Jednou z nich bude tvůj velitel (označený malou ikonkou "
+"zlaté korunky). Tvůj velitel je na začátku obvykle umístěn na zvláštním "
+"políčku zvaném tvrz. Kdykoliv je tvůj velitel na tvrzi (a to nejen na tvé, "
+"ale také na tvrzi kteréhokoli nepřátelského hradu, co zajmeš) a je k "
+"dispozici dostatek zlata, můžeš verbovat do armády jednotky. V dalších "
+"scénářích tažení můžeš přivolávat zkušené jednotky, které přežily ze scénářů "
+"dřívějších. Ve tvrzi tedy začínáš stavět armádu pro pokoření nepřítele."
 
 #. type: Content of: <book><chapter><section><section><simpara>
 #: doc/manual/manual.en.xml:506
@@ -1010,14 +976,14 @@ msgid ""
 "don&#8217;t dilly-dally looking at the scenery, there&#8217;s a battle to be "
 "won."
 msgstr ""
-"První, co budete chtít udělat, bude naverbovat alespoň jednu jednotku. "
-"Stiskněte <literal>Ctrl+r</literal> (nebo klikněte pravým tlačítkem na "
-"prázdné políčko hradu a zvolte „Naverbuj“) a vyberte jednotku k naverbování "
-"ze seznamu dostupných druhů jednotek. Každý rekrut je umístěn na příslušném "
-"(prázdném) políčku hradu; jakmile jimi zaplníte celý hrad, nelze již nikam "
-"verbovat dokud se nepřesunou pryč a neuvolní opět místo. Velitel vašeho "
-"nepřítele je také ve své tvrzi a započne verbováním své bandy, takže "
-"neotálejte s prohlížením krajiny."
+"První, co budeš pravděpodobně chtít udělat, bude naverbovat svou první "
+"jednotku. Stiskni <literal>Ctrl+r</literal> (nebo klikni pravým tlačítkem na "
+"prázdné políčko hradu a zvol „Naverbovat“) a vyber jednotku k naverbování ze "
+"seznamu všech dostupných jednotek. Každý rekrut je umístěn na (příslušné) "
+"prázdné políčko hradu. Jakmile jimi zaplníš celý hrad, nemůžeš už verbovat, "
+"dokud se nepřesunou pryč. Velitel tvého protivníka je podobně umístěn v jeho "
+"hradní tvrzi a začíná s verbováním svých vojáků, takže na začátku je "
+"zbytečné úporně šmejdit po mapě a hledat bitvu, co má být vyhrána."
 
 #. type: Content of: <book><chapter><section><section><simpara>
 #: doc/manual/manual.en.xml:514
@@ -1027,15 +993,15 @@ msgid ""
 "in a similar way to recruiting. Recalled troops are often more experienced "
 "than recruits and usually a better choice."
 msgstr ""
-"Na konci každého vyhraného scénáře jsou uschovány Vaše veškeré zbývající "
-"jednotky. Na začátku dalšího scénáře je můžete přivolat podobně jako při "
-"verbování. Přivolané jednotky již mají obvykle nasbírané zkušenosti a "
-"představují tak lepší volbu."
+"Na konci každého vyhraného scénáře se všechny tvé zbývající jednotky "
+"automaticky uloží. Na začátku dalšího scénáře je můžeš přivolat podobně jako "
+"při verbování. Přivolané jednotky jsou často zkušenější než noví rekruti a "
+"obvykle tak představují lepší volbu."
 
 #. type: Content of: <book><chapter><section><section><title>
 #: doc/manual/manual.en.xml:520
 msgid "Your Army"
-msgstr "Vaše armáda"
+msgstr "Tvá armáda"
 
 #. type: Content of: <book><chapter><section><section><simpara>
 #: doc/manual/manual.en.xml:521
@@ -1063,10 +1029,10 @@ msgid ""
 "recruit and recall more when that happens. But choose wisely, for each has "
 "strengths and weaknesses a cunning opponent will quickly exploit."
 msgstr ""
-"Jak Vaše jednotky získávají bojové zkušenosti, stávají se silnějšími a "
-"zvládají čím dál více. Některé také v boji padnou, takže budete muset "
-"naverbovat nebo přivolat další. Vybírejte ale dobře, výhody i nevýhody lze "
-"využít."
+"Jak tvé jednotky získávají bojové zkušenosti, učí se více dovedností a "
+"stávají se silnějšími. Také mohou padnout v bitvě a v tom případě budeš "
+"muset verbovat a přivolávat další. Vybírej ale moudře, protože každá "
+"jednotka má silné i slabé stránky, které mazaný protivník rychle využije."
 
 #. type: Content of: <book><chapter><section><section><title>
 #: doc/manual/manual.en.xml:534
@@ -1083,11 +1049,11 @@ msgid ""
 "rescuing someone, or solving a puzzle, or holding out against a siege until "
 "a certain number of turns have elapsed."
 msgstr ""
-"Vždy si pozorně pročtěte, co se objeví v okénku Úkoly na začátku scénáře. "
-"Většinou lze dosáhnout vítězství porážkou všech nepřátelských vůdců a "
-"prohrát, když zemře váš vůdce. Některé scénáře však mohou mít i jiné cíle - "
-"například dojít s vůdcem na určené místo, nebo nebo někoho zachránit, nebo "
-"vyřešit hádanku, nebo odolávat nepřátelům po několik kol..."
+"Vždy si pozorně pročti, co se objeví v okénku Úkoly na začátku scénáře. "
+"Obvykle lze dosáhnout vítězství porážkou všech nepřátelských vůdců a utrpět "
+"porážku, když tvůj vůdce zemře. Scénáře však mohou mít i jiné cíle – "
+"například dojít s vůdcem na určené místo, zachránit někoho, vyřešit hádanku "
+"nebo odolávat nepřátelům po určený počet kol."
 
 #. type: Content of: <book><chapter><section><section><simpara>
 #: doc/manual/manual.en.xml:542
@@ -1098,10 +1064,10 @@ msgid ""
 "multiplayer game)  chatting with other players before pressing that button "
 "to advance."
 msgstr ""
-"Když vyhrajete scénář, mapa zešedne a tlačítko <emphasis>Ukončit kolo</"
-"emphasis> se změní na <emphasis>Ukončit scénář</emphasis>. Můžete stále "
-"měnit nastavení nebo komunikovat se spoluhráči (ve hře více hráčů) před "
-"potvrzením konce hry tímto tlačítkem."
+"Když vyhraješ scénář, mapa zešedne a tlačítko <emphasis>Ukončit kolo</"
+"emphasis> se změní na <emphasis>Ukončit scénář</emphasis>. Před potvrzením "
+"konce hry tímto tlačítkem můžeš stále provádět některé věci, jako je změna "
+"možností uložení nebo chatování s ostatními hráči (ve hře více hráčů)."
 
 #. type: Content of: <book><chapter><section><title>
 #: doc/manual/manual.en.xml:548 doc/manual/manual.en.xml:580
@@ -1197,15 +1163,11 @@ msgstr "Verbování a přivolávání"
 
 #. type: Content of: <book><chapter><section><section><simpara><inlinemediaobject>
 #: doc/manual/manual.en.xml:591
-#, fuzzy
-#| msgid ""
-#| "<imageobject> <imagedata fileref=\"images/recruit-1.11.9.jpg\"/> </"
-#| "imageobject>"
 msgid ""
 "<imageobject> <imagedata fileref=\"images/recruit-1.13.11+dev.png\"/> </"
 "imageobject>"
 msgstr ""
-"<imageobject> <imagedata fileref=\"images/recruit-1.11.9.jpg\"/> </"
+"<imageobject> <imagedata fileref=\"images/recruit-1.13.11+dev.png\"/> </"
 "imageobject>"
 
 #. type: Content of: <book><chapter><section><section><simpara><inlinemediaobject><textobject><phrase>
@@ -1352,9 +1314,9 @@ msgid ""
 "and less at night. Chaotic units do more damage at night and less during the "
 "day. Liminal units do less damage during both night and daytime."
 msgstr ""
-"Každá jednotka má příslušnost — zákonnou, neutrální, chaotickou nebo šerou. "
+"Každá jednotka má příslušnost – zákonnou, neutrální, chaotickou nebo šerou. "
 "Příslušnost ovlivňuje, jak dobře jednotka bojuje v různé denní doby. Na "
-"neutrální nemá vliv, zákonné zvýhodňuje ve den a znevýhodňuje v noci, pro "
+"neutrální nemá vliv, zákonné zvýhodňuje během dne a znevýhodňuje v noci, pro "
 "chaotické platí opak. Šeré jednotky pak bojují během dne i noci hůře."
 
 #. type: Content of: <book><chapter><section><section><simpara>
@@ -1730,10 +1692,12 @@ msgid ""
 "resistances. Resilient units are especially useful for holding strategic "
 "positions against opponents."
 msgstr ""
-"Houževnaté jednotky mají navíc 4HP + 1HP na úroveň. Jsou užitečné ve všech "
-"fázích tažení. Největší výhodu tato vlastnost poskytuje, pokud ji dostane "
-"jednotka s kombinací nízkých životů, dobré obrany a vysokých odolností. "
-"Houževnaté jednotky se hodí zvláště pro udržení strategických pozic."
+"Houževnaté jednotky mají navíc 4 životy + 1 život za každou úroveň. Jsou "
+"užitečné ve všech fázích tažení a tato vlastnost se hodí všem jednotkám. "
+"Houževnatost je často nejužitečnější vlastností v případě, pokud ji dostane "
+"jednotka s kombinací nízkého počtu životů, dobré obrany a vysokých "
+"odolností. Houževnaté jednotky se zvláště hodí pro udržení strategických "
+"pozic."
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
 #: doc/manual/manual.en.xml:939
@@ -2694,26 +2658,22 @@ msgstr "Jednotka patří Vám, ale již nemůže v tomto kole nic dělat"
 
 #. type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
 #: doc/manual/manual.en.xml:1678
-#, fuzzy
-#| msgid "Recruit and Recall"
 msgid "Red and yellow"
-msgstr "Verbování a přivolávání"
+msgstr "Červená a žlutá"
 
 #. type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry><inlinemediaobject>
 #: doc/manual/manual.en.xml:1682
-#, fuzzy
-#| msgid ""
-#| "<imageobject> <imagedata fileref=\"images/orb-red.jpg\"/> </imageobject>"
 msgid ""
 "<imageobject> <imagedata fileref=\"images/orb-disengaged.png\"/> </"
 "imageobject>"
 msgstr ""
-"<imageobject> <imagedata fileref=\"images/orb-red.jpg\"/> </imageobject>"
+"<imageobject> <imagedata fileref=\"images/orb-disengaged.png\"/> </"
+"imageobject>"
 
 #. type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry><inlinemediaobject><textobject><phrase>
 #: doc/manual/manual.en.xml:1685
 msgid "Two color orb"
-msgstr ""
+msgstr "Dvoubarevná koule"
 
 #. type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
 #: doc/manual/manual.en.xml:1689
@@ -2771,10 +2731,8 @@ msgstr "Žádná koule"
 
 #. type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
 #: doc/manual/manual.en.xml:1721
-#, fuzzy
-#| msgid "Enemy units have a red orb on the top of their energy bar"
 msgid "Enemy units have no orb on the top of their energy bar"
-msgstr "Nepřátelské jednotky mají červené koule na ukazateli energie"
+msgstr "Nepřátelské jednotky nemají na ukazateli energie žádnou kouli"
 
 #. type: Content of: <book><chapter><section><section><title>
 #: doc/manual/manual.en.xml:1729
@@ -2806,10 +2764,9 @@ msgid ""
 "ellipse that has broken lines. This indicates that the unit has no Zone of "
 "Control."
 msgstr ""
-"Plocha pod jednotkou je obvykle celistvý disk - kvůli pohledu ze strany "
-"vyhlíží jako elipsa. Na některých jednotkách, obvykle nulté úrovně, je okraj "
-"elipsy přerušovaný a připomíná tak trochu vrtuli helikoptéry; znamená to, že "
-"jednotka nevytváří oblast kontroly."
+"Elipsa obvykle vypadá jako celistvý disk. U jednotek úrovně 0 lze vidět "
+"elipsu tvořenou přerušovanou čarou. To značí, že jednotka nemá žádnou zónu "
+"kontroly."
 
 #. type: Content of: <book><chapter><section><section><simpara>
 #: doc/manual/manual.en.xml:1736
@@ -2817,6 +2774,8 @@ msgid ""
 "Units that can recruit will always have a star-shaped base. Other units "
 "normally have an elliptic base."
 msgstr ""
+"Jednotky, které mohou verbovat, budou vždy mít pod sebou plochu ve tvaru "
+"hvězdice. Ostatní jednotky běžně mají plochu ve tvaru elipsy."
 
 #. type: Content of: <book><chapter><section><section><simpara>
 #: doc/manual/manual.en.xml:1738
@@ -3506,21 +3465,14 @@ msgstr ""
 
 #. type: Content of: <book><chapter><section><section><simpara>
 #: doc/manual/manual.en.xml:2042
-#, fuzzy
-#| msgid ""
-#| "In particular, use your ranged weapons if the enemy has no ranged attack. "
-#| "The computer&#8217;s default choice only looks for the most damage you "
-#| "can deal, so using it will often result in your units taking more damage "
-#| "than necessary."
 msgid ""
 "In particular, use your ranged weapons if the enemy has no ranged attack. "
 "Using it will often reduce the damage which your units take until the enemy "
 "dies."
 msgstr ""
-"Nejvíce využívejte situaci, v níž nemá nepřítel žádný útok na dálku a Vaše "
-"jednotky ano. Automatika v dialogu pro výběr útoku vybere na začátku útok "
-"způsobující nepříteli největší zranění, ale taková volba často vyústí ve "
-"větší (a zbytečné) zranění i Vaší jednotky."
+"Zbraně na dálku používej zejména v případech, kdy nepřítel útok na dálku "
+"nemá. Jejich použití často sníží poškození, které tvé jednotky utrpí, než "
+"nepřítel zemře."
 
 #. type: Content of: <book><chapter><section><section><title>
 #: doc/manual/manual.en.xml:2047
@@ -3857,9 +3809,8 @@ msgid ""
 "gold from winning early than from all of the map&#8217;s villages for the "
 "rest of the turns."
 msgstr ""
-"Čím rychleji vyhrajete scénář, tím více zlatých dostanete; tento bonus je "
-"vždy větší, než kolik můžete získat držením všech vesnic na mapě po "
-"zbývající kola."
+"Čím rychleji vyhraješ scénář, tím více zlatých dostaneš. Tento bonus je vždy "
+"větší, než kolik můžeš získat držením všech vesnic na mapě po zbývající kola."
 
 #. type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: doc/manual/manual.en.xml:2258
@@ -3878,7 +3829,7 @@ msgid ""
 "usually \"breathing room\" scenarios where you can rather easily gain some "
 "gold and experience (advanced units)."
 msgstr ""
-"Po scénářích, sestávajících se ze strašlivé řeže (kde pořádně „dostáváte na "
+"Po scénářích, sestávajících se ze strašlivé řeže (kde pořádně „dostáváš na "
 "frak“), obvykle následují volnější scénáře určené k opětovnému nashromáždění "
 "zlata a zkušených jednotek."
 
@@ -4255,16 +4206,6 @@ msgstr ""
 #~ msgid ":"
 #~ msgstr ":"
 
-#, fuzzy
-#~| msgid ""
-#~| "<ulink url=\"http://www.wesnoth.org/wiki/CommandMode\">Command mode</"
-#~| "ulink>"
-#~ msgid ""
-#~ "<ulink url=\"https://wiki.wesnoth.org/CommandMode\">Command mode</ulink>"
-#~ msgstr ""
-#~ "<ulink url=\"https://www.wesnoth.org/wiki/CommandMode\">Command mode</"
-#~ "ulink>"
-
 #~ msgid "F5"
 #~ msgstr "F5"
 
@@ -4356,14 +4297,6 @@ msgstr ""
 
 #~ msgid "Black"
 #~ msgstr "Černý"
-
-#, fuzzy
-#~| msgid ""
-#~| "<imageobject> <imagedata fileref=\"images/orb-blue.jpg\"/> </imageobject>"
-#~ msgid ""
-#~ "<imageobject> <imagedata fileref=\"images/orb-black.jpg\"/> </imageobject>"
-#~ msgstr ""
-#~ "<imageobject> <imagedata fileref=\"images/orb-blue.jpg\"/> </imageobject>"
 
 #~ msgid "Black orb"
 #~ msgstr "Černá koule"

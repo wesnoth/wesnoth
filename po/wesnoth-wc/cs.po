@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2021-03-12 23:18 UTC\n"
-"PO-Revision-Date: 2021-02-09 22:46+0100\n"
+"PO-Revision-Date: 2021-02-22 12:34+0100\n"
 "Last-Translator: Septim <septim@centrum.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
@@ -67,11 +67,11 @@ msgstr "legendární"
 
 #: data/campaigns/World_Conquest/era/campaign/strings.cfg:31
 msgid "Special advancement to Chocobone enabled."
-msgstr ""
+msgstr "Povolit speciální povýšení u kostipštrose."
 
 #: data/campaigns/World_Conquest/era/campaign/strings.cfg:34
 msgid "Special advancement to Goblin Pillager enabled."
-msgstr ""
+msgstr "Povolit speciální povýšení u goblina plenitele."
 
 #: data/campaigns/World_Conquest/era/factions/strings.cfg:7
 msgid "World Conquest"
@@ -895,7 +895,7 @@ msgstr "pobřeží"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:57
 msgid "Beacon"
-msgstr "Signální oheň"
+msgstr "signální oheň"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:57
 msgid "Signal"
@@ -903,7 +903,7 @@ msgstr "znamení"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:61
 msgid "Marsh"
-msgstr "Bažina"
+msgstr "bažina"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:63
 msgid "Delirium"
@@ -928,7 +928,7 @@ msgstr "farma"
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:69
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:97
 msgid "Field"
-msgstr "Pole"
+msgstr "pole"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:69
 msgid "Granary"
@@ -936,26 +936,26 @@ msgstr "sýpka"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:69
 msgid "Grassland"
-msgstr "Pastvina"
+msgstr "pastvina"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:69
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:97
 msgid "Meadow"
-msgstr "Louka"
+msgstr "louka"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:69
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:97
 msgid "Prairie"
-msgstr "Step"
+msgstr "step"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:69
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:97
 msgid "Shire"
-msgstr "Hrabství"
+msgstr "hrabství"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:69
 msgid "Windmill"
-msgstr "Větrný mlýn"
+msgstr "větrný mlýn"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:71
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:73
@@ -1029,27 +1029,27 @@ msgstr "chrám"
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:95
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:101
 msgid "Decay"
-msgstr "Rozklad"
+msgstr "rozklad"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:95
 msgid "Moor"
-msgstr "Vřešoviště"
+msgstr "vřešoviště"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:95
 msgid "Perversion"
-msgstr "Zvrácenost"
+msgstr "zvrácenost"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:97
 msgid "Glade"
-msgstr "Paseka"
+msgstr "paseka"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:97
 msgid "Tree"
-msgstr "Strom"
+msgstr "strom"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:99
 msgid "Observatory"
-msgstr "Observatoř"
+msgstr "observatoř"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:99
 msgid "Tower"
@@ -1133,7 +1133,7 @@ msgstr "Ostatní"
 #. [lua]: gui.widget.add_invest_item
 #: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:146
 msgid "+70 gold and +1 village"
-msgstr "+ 70 zlatých a vesnice navíc"
+msgstr "+70 zlatých a vesnice navíc"
 
 #. [lua]: gui.widget.add_invest_item
 #: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:151
@@ -2098,6 +2098,9 @@ msgid ""
 "You may not trust me or my reasons, but it seems you are not in a position "
 "to be choosy about your allies. Let me assist you and you just may survive."
 msgstr ""
+"Můžete o mně nebo o mé motivaci pochybovat, ale zdá se, že nejste v pozici, "
+"kdy byste si mohli spojence vybírat. Dovolte mi, abych vám pomohl a možná "
+"přežijete."
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:282
 msgid ""
@@ -2818,60 +2821,62 @@ msgstr ""
 
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:21
 #, fuzzy
-#| msgid "Staff of radiance"
+#| msgid "$value| XP to advance"
 msgid "XP to advance"
-msgstr "Zářící hůl"
+msgstr "$value| zkušeností k povýšení"
 
 #. [chance]
 #: data/campaigns/World_Conquest/resources/data/training.cfg:308
 msgid "$range|: $special|"
-msgstr ""
+msgstr "$range|: $special|"
 
 #. [chance]
 #: data/campaigns/World_Conquest/resources/data/training.cfg:522
 msgid "+$boost| moves"
-msgstr ""
+msgstr "+$boost| bodů pohybu"
 
 #. [chance]
 #: data/campaigns/World_Conquest/resources/data/training.cfg:536
 msgid "$range|: +$boost| damage"
-msgstr ""
+msgstr "$range|: +$boost| k poškození"
 
 #. [chance]
 #: data/campaigns/World_Conquest/resources/data/training.cfg:552
 msgid "$range|: +1 damage per level"
-msgstr ""
+msgstr "$range|: +1 k poškození za úroveň"
 
 #. [chance]
 #: data/campaigns/World_Conquest/resources/data/training.cfg:568
 msgid "+$hitpoints| hitpoints"
-msgstr ""
+msgstr "+$hitpoints| životů"
 
 #. [chance]
 #: data/campaigns/World_Conquest/resources/data/training.cfg:583
 msgid "+$hitpoints| hitpoints per level"
-msgstr ""
+msgstr "+$hitpoints| životů za úroveň"
 
 #. [chance]
 #: data/campaigns/World_Conquest/resources/data/training.cfg:599
 msgid "$value| XP to advance"
-msgstr ""
+msgstr "$value| zkušeností k povýšení"
 
 #. [chance]
 #: data/campaigns/World_Conquest/resources/data/training.cfg:623
 msgid "Village/Castle: +5 defense"
-msgstr ""
+msgstr "Vesnice/Hrad: +5 k obrannému bonusu"
 
 #. [chance]
 #: data/campaigns/World_Conquest/resources/data/training.cfg:655
 msgid ""
 "$terrain|: +$def| defense and full movement, +$res| resistance vs $dmg_type|"
 msgstr ""
+"$terrain|: +$def| k obrannému bonusu a volný pohyb, +$res| k odolnosti "
+"vůči $dmg_type|"
 
 #. [chance]
 #: data/campaigns/World_Conquest/resources/data/training.cfg:684
 msgid "$terrain|: +10 defense and full movement"
-msgstr ""
+msgstr "$terrain|: +10 k obrannému bonusu a volný pohyb"
 
 #. [chance]
 #: data/campaigns/World_Conquest/resources/data/training.cfg:695
@@ -3334,7 +3339,7 @@ msgstr ""
 
 #: data/campaigns/World_Conquest/resources/strings/effects.cfg:19
 msgid "corruption"
-msgstr ""
+msgstr "zkáza"
 
 #: data/campaigns/World_Conquest/resources/strings/effects.cfg:22
 msgid ""
@@ -3342,6 +3347,9 @@ msgid ""
 "units lose 6 HP or are reduced to 1 HP. Corruption cannot, of itself, kill a "
 "unit."
 msgstr ""
+"Tato jednotka ve svém kole ničí sousedící nepřátelské jednotky. Zasažené "
+"jednotky ztrácí 6 životů, případně jejich počet životů klesne na 1. Zkáza "
+"sama o sobě nemůže jednotku zabít."
 
 #: data/campaigns/World_Conquest/resources/strings/effects.cfg:25
 msgid "darkness"
@@ -3401,13 +3409,15 @@ msgstr "Sousedící nepřátelské jednotky způsobují o 13 % menší poškozen
 
 #: data/campaigns/World_Conquest/resources/strings/effects.cfg:55
 msgid "fury"
-msgstr ""
+msgstr "zuřivost"
 
 #: data/campaigns/World_Conquest/resources/strings/effects.cfg:58
 msgid ""
 "Whether used offensively or defensively, this attack presses the engagement "
 "until one of the combatants is slain, or 3 rounds of attacks have occurred."
 msgstr ""
+"Ať už se použije ofenzivně nebo defenzivně, boj trvá tak dlouho, dokud jeden "
+"z protivníků nezemře, nebo do počtu 3 útoků."
 
 #: data/campaigns/World_Conquest/resources/strings/effects.cfg:61
 msgid "Full movement on turn recruited or recalled"
@@ -3555,28 +3565,25 @@ msgstr ""
 "nudu a naučit vaše muže pár věcí o temných technikách."
 
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:5
-#, fuzzy
-#| msgid "World Conquest"
 msgid "World Conquest 1p"
-msgstr "Dobytí světa"
+msgstr "Dobytí světa 1hr"
 
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:8
-#, fuzzy
-#| msgid "World Conquest"
 msgid "World Conquest 2p"
-msgstr "Dobytí světa"
+msgstr "Dobytí světa 2hr"
 
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:11
-#, fuzzy
-#| msgid "World Conquest"
 msgid "World Conquest 3p"
-msgstr "Dobytí světa"
+msgstr "Dobytí světa 3hr"
 
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:14
 msgid ""
 "A randomly generated campaign for 1 player. It has 6 level of difficulties.\n"
 "(Expert level, 5 scenarios.)"
 msgstr ""
+"Náhodně generované tažení pro jednoho hráče. Lze nastavit 6 úrovní "
+"obtížnosti.\n"
+"(Úroveň expert, 5 scénářů.)"
 
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:18
 msgid ""
@@ -3584,6 +3591,9 @@ msgid ""
 "difficulties.\n"
 "(Expert level, 5 scenarios.)"
 msgstr ""
+"Náhodně generované kooperativní tažení pro dva hráče. Lze nastavit 6 úrovní "
+"obtížnosti.\n"
+"(Úroveň expert, 5 scénářů.)"
 
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:22
 msgid ""
@@ -3591,6 +3601,9 @@ msgid ""
 "difficulties.\n"
 "(Expert level, 5 scenarios.)"
 msgstr ""
+"Náhodně generované kooperativní tažení pro tři hráče. Lze nastavit 6 úrovní "
+"obtížnosti.\n"
+"(Úroveň expert, 5 scénářů.)"
 
 #~ msgid "Yes (enter)"
 #~ msgstr "Ano (Enter)"
