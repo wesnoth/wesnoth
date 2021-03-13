@@ -16,6 +16,7 @@
 
 #include "font/standard_colors.hpp"
 #include "log.hpp"
+#include "sdl/point.hpp"
 #include "sdl/utils.hpp"
 #include "serialization/unicode.hpp"
 #include "tooltips.hpp"
@@ -67,8 +68,8 @@ std::pair<int, int> pango_line_size(const std::string& line, int font_size, font
 		 .set_maximum_width(-1)
 		 .set_ellipse_mode(PANGO_ELLIPSIZE_NONE);
 
-	auto& s = ptext.render();
-	return { s->w, s->h };
+	auto s = ptext.get_size();
+	return { s.x, s.y };
 }
 
 std::string pango_line_ellipsize(const std::string& text, int font_size, int max_width, font::pango_text::FONT_STYLE font_style)
