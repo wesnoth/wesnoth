@@ -1757,12 +1757,12 @@ void conditional_levelup(std::vector<double>& hp_dist, double kill_prob)
 	hp_dist.back() += kill_prob;
 }
 
-/* Calculates the probability that we will be poisoned or slowed after the fight. Parameters:
- * initial_prob: how likely we are to be poisoned or slowed before the fight.
- * enemy_gives: true if the enemy poisons/slows us.
+/* Calculates the probability that we will be poisoned after the fight. Parameters:
+ * initial_prob: how likely we are to be poisoned before the fight.
+ * enemy_gives: true if the enemy poisons us.
  * prob_touched: probability the enemy touches us.
  * prob_stay_alive: probability we survive the fight alive.
- * kill_heals: true if killing the enemy heals the poison/slow (in other words, we get a level-up).
+ * kill_heals: true if killing the enemy heals the poison (in other words, we get a level-up).
  * prob_kill: probability we kill the enemy.
  */
 double calculate_probability_of_debuff(double initial_prob, bool enemy_gives, double prob_touched, double prob_stay_alive, bool kill_heals, double prob_kill)
@@ -2446,19 +2446,12 @@ void combatant::fight(combatant& opponent, bool levelup_considered)
 	opponent.poisoned = calculate_probability_of_debuff(opponent.poisoned, u_.poisons, opp_touched, 1.0 - opponent.hp_dist[0],
 		opponent.u_.experience + game_config::kill_xp(u_.level) >= opponent.u_.max_experience, hp_dist[0] - self_already_dead);
 
-	if(!use_monte_carlo_simulation) {
-		slowed = calculate_probability_of_debuff(slowed, opponent.u_.slows, touched, 1.0 - hp_dist[0],
-			u_.experience + game_config::kill_xp(opponent.u_.level) >= u_.max_experience, opponent.hp_dist[0] - opp_already_dead);
-		opponent.slowed = calculate_probability_of_debuff(opponent.slowed, u_.slows, opp_touched, 1.0 - opponent.hp_dist[0],
-			opponent.u_.experience + game_config::kill_xp(u_.level) >= opponent.u_.max_experience, hp_dist[0] - self_already_dead);
-	} else {
-		/* The slowed probability depends on in how many rounds
-		 * the combatant happened to be slowed.
-		 * We need to recalculate it based on the HP distribution.
-		 */
-		slowed = std::min(std::accumulate(summary[1].begin(), summary[1].end(), 0.0), 1.0);
-		opponent.slowed = std::min(std::accumulate(opponent.summary[1].begin(), opponent.summary[1].end(), 0.0), 1.0);
-	}
+	/* The slowed probability depends on in how many rounds
+	 * the combatant happened to be slowed.
+	 * We need to recalculate it based on the HP distribution.
+	 */
+	slowed = std::min(std::accumulate(summary[1].begin(), summary[1].end(), 0.0), 1.0);
+	opponent.slowed = std::min(std::accumulate(opponent.summary[1].begin(), opponent.summary[1].end(), 0.0), 1.0);
 
 	if(u_.experience + game_config::combat_xp(opponent.u_.level) >= u_.max_experience) {
 		// We'll level up after the battle -> slow/poison will go away
