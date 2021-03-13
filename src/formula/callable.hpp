@@ -25,31 +25,21 @@ namespace wfl
 {
 
 // Interface for objects that can have formulae run on them
-class formula_callable
+class formula_callable : public std::enable_shared_from_this<formula_callable>
 {
+	// Don't expose the enable_shared_from_this API to the public;
+	// it's only public inheritance so that its own internals can work.
+	using std::enable_shared_from_this<formula_callable>::shared_from_this;
+	using std::enable_shared_from_this<formula_callable>::weak_from_this;
 public:
 	explicit formula_callable(bool has_self = true) : type_(FORMULA_C), has_self_(has_self) {}
 
-	virtual ~formula_callable() {
-		for(auto& d : dtor_notify) {
-			if(d) {
-				d->notify_dead();
-			}
-		}
-	}
-
-	formula_callable_ptr fake_ptr() {
-		return formula_callable_ptr(this, [](const formula_callable*){});
-	}
-
-	const_formula_callable_ptr fake_ptr() const {
-		return const_formula_callable_ptr(this, [](const formula_callable*){});
-	}
+	virtual ~formula_callable() = default;
 
 	variant query_value(const std::string& key) const
 	{
 		if(has_self_ && key == "self") {
-			return variant(fake_ptr());
+			return variant(to_ptr());
 		}
 		return get_value(key);
 	}
@@ -88,14 +78,6 @@ public:
 	void serialize(std::string& str) const
 	{
 		serialize_to_string(str);
-	}
-
-	void subscribe_dtor(callable_die_subscriber* d) const {
-		dtor_notify.insert(d);
-	}
-
-	void unsubscribe_dtor(callable_die_subscriber* d) const {
-		dtor_notify.erase(d);
 	}
 
 protected:
@@ -172,11 +154,20 @@ protected:
 
 	TYPE type_;
 
-	mutable std::set<callable_die_subscriber*> dtor_notify;
-
 private:
+	virtual formula_callable* clone() const = 0;
+	const_formula_callable_ptr to_ptr() const
+	{
+		if(weak_from_this().use_count() > 0) {
+			return shared_from_this();
+		}
+		return const_formula_callable_ptr(clone());
+	}
 	virtual variant get_value(const std::string& key) const = 0;
 	bool has_self_;
+	// These two need special access to to_ptr()... or should it just be public?
+	friend class map_formula_callable;
+	friend class safe_call_result;
 };
 
 class action_callable : public formula_callable
@@ -187,6 +178,7 @@ public:
 
 class formula_callable_with_backup : public formula_callable
 {
+	formula_callable_with_backup* clone() const override {return new formula_callable_with_backup(*this);}
 public:
 	formula_callable_with_backup(const formula_callable& main, const formula_callable& backup)
 		: formula_callable(false), main_(main), backup_(backup)
@@ -215,6 +207,7 @@ private:
 
 class formula_variant_callable_with_backup : public formula_callable
 {
+	formula_variant_callable_with_backup* clone() const override {return new formula_variant_callable_with_backup(*this);}
 public:
 	formula_variant_callable_with_backup(const variant& var, const formula_callable& backup)
 		: formula_callable(false), var_(var), backup_(backup)
@@ -242,11 +235,19 @@ private:
 
 class map_formula_callable : public formula_callable
 {
+	map_formula_callable* clone() const override {return new map_formula_callable(*this);}
 public:
 	explicit map_formula_callable(const_formula_callable_ptr fallback = nullptr)
 		: formula_callable(false)
 		, values_()
 		, fallback_(fallback)
+	{}
+	
+	// May copy the passed callable
+	explicit map_formula_callable(const formula_callable& fallback)
+		: formula_callable(false)
+		, values_()
+		, fallback_(fallback.to_ptr())
 	{}
 
 	map_formula_callable& add(const std::string& key, const variant& value)
@@ -255,9 +256,15 @@ public:
 		return *this;
 	}
 
+	// May copy the passed callable
 	void set_fallback(const_formula_callable_ptr fallback)
 	{
 		fallback_ = fallback;
+	}
+	
+	void set_fallback(const formula_callable& fallback)
+	{
+		fallback_ = fallback.to_ptr();
 	}
 
 	bool empty() const { return values_.empty(); }

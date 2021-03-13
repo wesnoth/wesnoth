@@ -142,6 +142,7 @@ private:
 	variant get_value(const std::string& key) const override;
 
 	void get_inputs(formula_input_vector& inputs) const override;
+	key_value_pair* clone() const override {return new key_value_pair(*this);}
 };
 
 class formula_function_expression : public function_expression

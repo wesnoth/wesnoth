@@ -92,7 +92,7 @@ variant move_callable::execute_self(variant ctxt) {
 
 	if(!move_result->is_ok()) {
 		LOG_AI << "ERROR #" << move_result->get_status() << " while executing 'move' formula function\n" << std::endl;
-		return variant(std::make_shared<safe_call_result>(fake_ptr(), move_result->get_status(), move_result->get_unit_location()));
+		return variant(std::make_shared<safe_call_result>(*this, move_result->get_status(), move_result->get_unit_location()));
 	}
 
 	return variant(move_result->is_gamestate_changed());
@@ -121,7 +121,7 @@ variant move_partial_callable::execute_self(variant ctxt) {
 
 	if(!move_result->is_ok()) {
 		LOG_AI << "ERROR #" << move_result->get_status() << " while executing 'move_partial' formula function\n" << std::endl;
-		return variant(std::make_shared<safe_call_result>(fake_ptr(), move_result->get_status(), move_result->get_unit_location()));
+		return variant(std::make_shared<safe_call_result>(*this, move_result->get_status(), move_result->get_unit_location()));
 	}
 
 	return variant(move_result->is_gamestate_changed());
@@ -160,8 +160,8 @@ void outcome_callable::get_inputs(formula_input_vector& inputs) const {
 attack_callable::attack_callable(const map_location& move_from,
 				    const map_location& src, const map_location& dst, int weapon)
 	: move_from_(move_from), src_(src), dst_(dst),
-	bc_(resources::gameboard->units(), src, dst, weapon, -1, 1.0, nullptr,
-		resources::gameboard->units().find(move_from).get_shared_ptr())
+	bc_(std::make_shared<battle_context>(resources::gameboard->units(), src, dst, weapon, -1, 1.0, nullptr,
+		resources::gameboard->units().find(move_from).get_shared_ptr()))
 {
       type_ = ATTACK_C;
 }
@@ -224,7 +224,7 @@ variant attack_callable::execute_self(variant ctxt) {
 		if(!move_result->is_ok()) {
 			//move part failed
 			LOG_AI << "ERROR #" << move_result->get_status() << " while executing 'attack' formula function\n" << std::endl;
-			return variant(std::make_shared<safe_call_result>(fake_ptr(), move_result->get_status(), move_result->get_unit_location()));
+			return variant(std::make_shared<safe_call_result>(*this, move_result->get_status(), move_result->get_unit_location()));
 		}
 	}
 
@@ -235,7 +235,7 @@ variant attack_callable::execute_self(variant ctxt) {
 		if(!attack_result->is_ok()) {
 			//attack failed
 			LOG_AI << "ERROR #" << attack_result->get_status() << " while executing 'attack' formula function\n" << std::endl;
-			return variant(std::make_shared<safe_call_result>(fake_ptr(), attack_result->get_status()));
+			return variant(std::make_shared<safe_call_result>(*this, attack_result->get_status()));
 		}
 	}
 
@@ -309,7 +309,7 @@ variant recall_callable::execute_self(variant ctxt) {
 		recall_result->execute();
 	} else {
 		LOG_AI << "ERROR #" << recall_result->get_status() << " while executing 'recall' formula function\n" << std::endl;
-		return variant(std::make_shared<safe_call_result>(fake_ptr(), recall_result->get_status()));
+		return variant(std::make_shared<safe_call_result>(*this, recall_result->get_status()));
 	}
 
 	return variant(recall_result->is_gamestate_changed());
@@ -338,7 +338,7 @@ variant recruit_callable::execute_self(variant ctxt) {
 		recruit_result->execute();
 	} else {
 		LOG_AI << "ERROR #" << recruit_result->get_status() << " while executing 'recruit' formula function\n" << std::endl;
-		return variant(std::make_shared<safe_call_result>(fake_ptr(), recruit_result->get_status()));
+		return variant(std::make_shared<safe_call_result>(*this, recruit_result->get_status()));
 	}
 
 	//is_gamestate_changed()==true means that the game state was somehow changed by action.
@@ -385,7 +385,7 @@ variant set_unit_var_callable::execute_self(variant ctxt) {
 	}
 
 	ERR_AI << "ERROR #" << status << " while executing 'set_unit_var' formula function" << std::endl;
-	return variant(std::make_shared<safe_call_result>(fake_ptr(), status));
+	return variant(std::make_shared<safe_call_result>(*this, status));
 }
 
 variant fallback_callable::execute_self(variant) {

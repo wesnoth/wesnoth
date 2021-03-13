@@ -224,6 +224,7 @@ surface wipe_alpha_modification::operator()(const surface& src) const
 // TODO: Is this useful enough to move into formula/callable_objects?
 class pixel_callable : public wfl::formula_callable
 {
+	pixel_callable* clone() const override {return new pixel_callable(*this);}
 public:
 	pixel_callable(SDL_Point p, color_t clr, uint32_t w, uint32_t h)
 		: p(p), clr(clr), w(w), h(h)

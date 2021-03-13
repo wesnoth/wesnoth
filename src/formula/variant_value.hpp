@@ -310,11 +310,10 @@ private:
 };
 
 
-class variant_callable : public variant_value_base, private callable_die_subscriber
+class variant_callable : public variant_value_base
 {
 public:
 	explicit variant_callable(const_formula_callable_ptr callable);
-	~variant_callable();
 
 	virtual bool as_bool() const override
 	{
@@ -360,8 +359,6 @@ public:
 	}
 
 private:
-	void notify_dead() override {callable_.reset();}
-
 	mutable formula_input_vector inputs; // for iteration
 	const_formula_callable_ptr callable_;
 };

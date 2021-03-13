@@ -429,7 +429,7 @@ wfl::variant attack_analysis::execute_self(wfl::variant ctxt) {
 	//check if target is still valid
 	unit = units.find(att_dst);
 	if(unit == units.end()) {
-		return wfl::variant(std::make_shared<wfl::safe_call_result>(fake_ptr(), attack_result::E_EMPTY_DEFENDER, move_from));
+		return wfl::variant(std::make_shared<wfl::safe_call_result>(*this, attack_result::E_EMPTY_DEFENDER, move_from));
 	}
 
 	//check if we need to move
@@ -437,14 +437,14 @@ wfl::variant attack_analysis::execute_self(wfl::variant ctxt) {
 		//now check if location to which we want to move is still unoccupied
 		unit = units.find(att_src);
 		if(unit != units.end()) {
-			return wfl::variant(std::make_shared<wfl::safe_call_result>(fake_ptr(), move_result::E_NO_UNIT, move_from));
+			return wfl::variant(std::make_shared<wfl::safe_call_result>(*this, move_result::E_NO_UNIT, move_from));
 		}
 
 		ai::move_result_ptr result = get_ai_context(ctxt.as_callable()).execute_move_action(move_from, att_src);
 		if(!result->is_ok()) {
 			//move part failed
 			LOG_AI << "ERROR #" << result->get_status() << " while executing 'attack' formula function\n" << std::endl;
-			return wfl::variant(std::make_shared<wfl::safe_call_result>(fake_ptr(), result->get_status(), result->get_unit_location()));
+			return wfl::variant(std::make_shared<wfl::safe_call_result>(*this, result->get_status(), result->get_unit_location()));
 		}
 	}
 
@@ -453,7 +453,7 @@ wfl::variant attack_analysis::execute_self(wfl::variant ctxt) {
 		if(!result->is_ok()) {
 			//attack failed
 			LOG_AI << "ERROR #" << result->get_status() << " while executing 'attack' formula function\n" << std::endl;
-			return wfl::variant(std::make_shared<wfl::safe_call_result>(fake_ptr(), result->get_status()));
+			return wfl::variant(std::make_shared<wfl::safe_call_result>(*this, result->get_status()));
 		}
 	}
 	return wfl::variant(true);

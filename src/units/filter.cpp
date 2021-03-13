@@ -643,7 +643,7 @@ void unit_filter_compound::fill(vconfig cfg)
 			{
 				try {
 					const wfl::unit_callable main(args.loc, args.u);
-					wfl::map_formula_callable callable(main.fake_ptr());
+					wfl::map_formula_callable callable(main);
 					if (args.u2) {
 						std::shared_ptr<wfl::unit_callable> secondary(new wfl::unit_callable(*args.u2));
 						callable.add("other", wfl::variant(secondary));

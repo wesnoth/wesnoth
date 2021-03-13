@@ -160,13 +160,13 @@ std::string formula_ai::evaluate(const std::string& formula_str)
 
 		formula f(formula_str, &function_table_);
 
-		map_formula_callable callable(fake_ptr());
+		map_formula_callable callable(*this);
 
 		//formula_debugger fdb;
 		const variant v = f.evaluate(callable,nullptr);
 
 		if (ai_ptr_) {
-			variant var = variant(this->fake_ptr()).execute_variant(v);
+			variant var = this->query_value("self").execute_variant(v);
 
 			if (  !var.is_empty() ) {
 				return "Made move: " + var.to_debug_string();
@@ -192,7 +192,7 @@ wfl::variant formula_ai::make_action(wfl::const_formula_ptr formula_, const wfl:
 	variant res;
 
 	if (ai_ptr_) {
-		res = variant(this->fake_ptr()).execute_variant(var);
+		res = this->query_value("self").execute_variant(var);
 	} else {
 		ERR_AI << "skipped execution of action because ai context is not set correctly" << std::endl;
 	}
@@ -518,7 +518,7 @@ variant formula_ai::get_value(const std::string& key) const
 
 	} else if(key == "my_attacks")
 	{
-		return variant(attacks_callable.fake_ptr());
+		return attacks_callable.query_value("self");
 	} else if(key == "enemy_moves")
 	{
 		return variant(std::make_shared<move_map_callable>(get_enemy_srcdst(), get_enemy_dstsrc(), units));
@@ -543,7 +543,7 @@ variant formula_ai::get_value(const std::string& key) const
 
 	} else if(key == "vars")
 	{
-		return variant(vars_.fake_ptr());
+		return vars_.query_value("self");
 	} else if(key == "keeps")
 	{
 		return get_keeps();
@@ -694,7 +694,7 @@ void formula_ai::evaluate_candidate_action(ca_ptr fai_ca)
 
 bool formula_ai::execute_candidate_action(ca_ptr fai_ca)
 {
-	map_formula_callable callable(fake_ptr());
+	map_formula_callable callable(*this);
 	fai_ca->update_callable_map( callable );
 	const_formula_ptr move_formula(fai_ca->get_action());
 	return !make_action(move_formula, callable).is_empty();

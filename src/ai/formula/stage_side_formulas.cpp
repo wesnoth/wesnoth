@@ -43,7 +43,7 @@ stage_side_formulas::~stage_side_formulas()
 
 bool stage_side_formulas::do_play_stage()
 {
-	wfl::map_formula_callable callable(fai_.fake_ptr());
+	wfl::map_formula_callable callable(fai_);
 	try {
 		if (move_formula_) {
 			while( !fai_.make_action(move_formula_,callable).is_empty() ) { }

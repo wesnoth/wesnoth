@@ -68,9 +68,9 @@ struct plain_route;
 namespace ai {
 
 class formula_ai : public readonly_context_proxy, public wfl::formula_callable {
+	formula_ai(const formula_ai&) = default;
+	formula_ai& operator=(const formula_ai&) = default;
 public:
-	formula_ai(const formula_ai&) = delete;
-	formula_ai& operator=(const formula_ai&) = delete;
 
 	explicit formula_ai(readonly_context &context, const config &cfg);
 	virtual ~formula_ai() {}
@@ -149,6 +149,7 @@ public:
 	wfl::variant make_action(wfl::const_formula_ptr formula_, const wfl::formula_callable& variables);
 
 private:
+	formula_ai* clone() const override {return new formula_ai(*this);}
 	ai_context *ai_ptr_;
 	const config cfg_;
 	recursion_counter recursion_counter_;
