@@ -12,6 +12,8 @@
      * Adjust campaign difficulty
     * Son of the Black Eye
      * Adjust campaign difficulty
+   * Under the Burning Suns:
+     * Adjust campaign difficulty
  ### Editor
  ### Multiplayer
  ### Packaging
