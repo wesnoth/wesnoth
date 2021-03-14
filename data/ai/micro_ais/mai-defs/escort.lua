@@ -8,7 +8,7 @@ function wesnoth.micro_ais.messenger_escort(cfg)
 		AH.get_multi_named_locs_xy('waypoint', cfg, 'Messenger [micro_ai] tag')
 	end
 	local required_keys = {}
-	local optional_keys = { "id", "enemy_death_chance", "[filter]", "[filter_second]", "invert_order", "messenger_death_chance", "waypoint_loc", "waypoint_x", "waypoint_y" }
+	local optional_keys = { "[avoid]", "id", "enemy_death_chance", "[filter]", "[filter_second]", "invert_order", "messenger_death_chance", "waypoint_loc", "waypoint_x", "waypoint_y" }
 	local score = cfg.ca_score or 300000
 	local CA_parms = {
 		ai_id = 'mai_messenger',
