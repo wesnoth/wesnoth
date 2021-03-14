@@ -73,7 +73,8 @@ public:
 	 * @param filename
 	 * @param yield The function will suspend on write operations using this yield context
 	 */
-	template<class SocketPtr> void coro_send_file(SocketPtr socket, const std::string& filename, boost::asio::yield_context yield);
+	void coro_send_file(socket_ptr socket, const std::string& filename, boost::asio::yield_context yield);
+	void coro_send_file(tls_socket_ptr socket, const std::string& filename, boost::asio::yield_context yield);
 	/**
 	 * Receive WML document from a coroutine
 	 * @param socket
