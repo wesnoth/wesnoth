@@ -25,6 +25,7 @@
 using namespace wfl;
 
 class mock_char : public formula_callable {
+	mock_char* clone() const override {return new mock_char(*this);}
 	variant get_value(const std::string& key) const {
 		if(key == "strength") {
 			return variant(15);
@@ -37,6 +38,7 @@ class mock_char : public formula_callable {
 };
 
 class mock_party : public formula_callable {
+	mock_party* clone() const override {return new mock_party(*this);}
 	variant get_value(const std::string& key) const {
 		if(key == "members") {
 			i_[0].add("strength",variant(12));
@@ -44,12 +46,12 @@ class mock_party : public formula_callable {
 			i_[2].add("strength",variant(14));
 			std::vector<variant> members;
 			for(int n = 0; n != 3; ++n) {
-				members.emplace_back(i_[n].fake_ptr());
+				members.emplace_back(i_[n].query_value("self"));
 			}
 
 			return variant(members);
 		} else if(key == "char") {
-			return variant(c_.fake_ptr());
+			return c_.query_value("self");
 		} else {
 			return variant(0);
 		}
