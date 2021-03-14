@@ -43,6 +43,17 @@ hotkey_list hotkeys_;
 game_config_view default_hotkey_cfg_;
 
 const int TOUCH_MOUSE_INDEX = 255;
+
+/**
+ * Method of handling multiple keyboard layouts, assuming that they use different alphabets, by mapping letters from one alphabet to another. Uses a 1:1 mapping, so it might be considered a substitution cipher.
+ *
+ * For example, Greek's alpha and beta keys might be mapped to Latin's 'a' and 'b'.
+ */
+struct transliteration {
+	std::map<std::string, std::string> text;
+	std::map<SDL_Keycode, SDL_Keycode> sym;
+};
+std::vector<transliteration> transliterations_;
 }; // namespace
 
 const std::string hotkey_base::get_name() const
@@ -217,6 +228,36 @@ hotkey_ptr load_from_config(const config& cfg)
 	return base;
 }
 
+transliteration load_transliteration_from_config(const config& cfg)
+{
+	auto result = transliteration{};
+
+	for (const config &substitute : cfg.child_range("substitute")) {
+		if(!substitute.has_attribute("src") || !substitute.has_attribute("dst")) {
+			ERR_G << "Missing attribute in [hotkey_transliteration][substitute]\n";
+		}
+
+		const std::string& src = substitute["src"];
+		const std::string& dst = substitute["dst"];
+
+		// whitespace in either string means this is a placeholder pair, and it will already have been trim()'d
+		if(src.empty() || dst.empty())
+			continue;
+
+		result.text[src] = dst;
+		auto src_keysym = SDL_GetKeyFromName(src.c_str());
+		auto dst_keysym = SDL_GetKeyFromName(dst.c_str());
+		if(src_keysym == SDLK_UNKNOWN || dst_keysym == SDLK_UNKNOWN) {
+			ERR_G << "SDL_GetKeyFromName failed for mapping '" << src << "' to '" << dst << "'.\n";
+		} else {
+			result.sym[src_keysym] = dst_keysym;
+		}
+		DBG_G << "Added transliteration " << src << " -> " << dst << "'.\n";
+	}
+
+	return result;
+}
+
 bool hotkey_mouse::matches_helper(const SDL_Event& event) const
 {
 	if(event.type != SDL_MOUSEBUTTONUP && event.type != SDL_MOUSEBUTTONDOWN && event.type != SDL_FINGERDOWN
@@ -366,6 +407,44 @@ const hotkey_ptr get_hotkey(const SDL_Event& event)
 			return item;
 		}
 	}
+
+	if (event.type == SDL_KEYUP || event.type == SDL_KEYDOWN) {
+		DBG_G << "Handling SDL_KEY UP or DOWN with symbol '" << event.key.keysym.sym << "'.\n";
+		for (const auto& t : transliterations_) {
+			const auto dst = t.sym.find(event.key.keysym.sym);
+			if (dst != t.sym.end()) {
+				SDL_Event e = event;
+				e.key.keysym.sym = dst->second;
+
+				DBG_G << "Searching for transliterated hotkey (modifiers +) '" << e.key.keysym.sym << "'.\n";
+				for (hotkey_ptr item : hotkeys_) {
+					if (item->matches(e)) {
+						return item;
+					}
+				}
+			}
+		}
+	}
+
+	if (event.type == SDL_TEXTINPUT) {
+		DBG_G << "Handling SDL_TEXTINPUT with text '" << std::string(event.text.text) << "'.\n";
+		for (const auto& t : transliterations_) {
+			const auto dst = t.text.find(std::string(event.text.text));
+			if (dst != t.text.end()) {
+				SDL_Event e = event;
+				assert(dst->second.size() < sizeof(e.text.text));
+				strcpy(e.text.text, dst->second.c_str());
+
+				DBG_G << "Searching for transliterated hotkey (modifiers +) '" << std::string(e.text.text) << "'.\n";
+				for (hotkey_ptr item : hotkeys_) {
+					if (item->matches(e)) {
+						return item;
+					}
+				}
+			}
+		}
+	}
+
 	return std::make_shared<hotkey_void>();
 }
 
@@ -380,6 +459,12 @@ void load_default_hotkeys(const game_config_view& cfg)
 
 	default_hotkey_cfg_ = cfg;
 	hotkeys_.swap(new_hotkeys);
+
+	decltype(transliterations_) transliterations;
+	for (const config &t : cfg.child_range("hotkey_transliteration")) {
+		transliterations.push_back(load_transliteration_from_config(t));
+	}
+	transliterations_.swap(transliterations);
 }
 
 void load_custom_hotkeys(const game_config_view& cfg)
