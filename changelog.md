@@ -6,6 +6,7 @@
      * Adjust campaign difficulty
     * Liberty
      * Revise dialogue
+     * Reduce difficulty
     * Sceptre of Fire
      * Adjust campaign difficulty
     * Secrets of the Ancients
