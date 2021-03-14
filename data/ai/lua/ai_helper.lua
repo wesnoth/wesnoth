@@ -295,6 +295,9 @@ function ai_helper.robust_move_and_attack(ai, src, dst, target_loc, cfg)
     --     parameter is true, a partial move is done instead.
     --   weapon: The number (starting at 1) of the attack weapon to be used.
     --     If omitted, the best weapon is automatically selected.
+    --   avoid_map (location set): if given, the hexes in avoid_map are excluded
+    --     This is only used for passing through to move_unit_out_of_way. It is assumed
+    --     that @dst has been checked to lie outside areas to avoid.
     --   all optional parameters for ai_helper.move_unit_out_of_way()
 
     -- Notes:
@@ -739,11 +742,12 @@ function ai_helper.get_locations_no_borders(location_filter)
     return locs
 end
 
-function ai_helper.get_closest_location(hex, location_filter, unit)
+function ai_helper.get_closest_location(hex, location_filter, unit, avoid_map)
     -- Get the location closest to @hex (in format { x, y })
     -- that matches @location_filter (in WML table format)
     -- @unit can be passed as an optional third parameter, in which case the
     -- terrain needs to be passable for that unit
+    -- @avoid_map (location set): if given, the hexes in avoid_map are excluded
     -- Returns nil if no terrain matching the filter was found
 
     -- Find the maximum distance from 'hex' that's possible on the map
@@ -779,6 +783,14 @@ function ai_helper.get_closest_location(hex, location_filter, unit)
         end
 
         local locs = wesnoth.map.find(loc_filter)
+
+        if avoid_map then
+            for i = #locs,1,-1 do
+                if avoid_map:get(locs[i][1], locs[i][2]) then
+                    table.remove(locs, i)
+                end
+            end
+        end
 
         if unit then
             for _,loc in ipairs(locs) do
@@ -1958,6 +1970,7 @@ function ai_helper.move_unit_out_of_way(ai, unit, cfg)
     -- Main rating is the moves the unit still has left after that
     -- Other, configurable, parameters are given to function in @cfg:
     --   dx, dy: the direction in which moving out of the way is preferred
+    --   avoid_map (location set): if given, the hexes in avoid_map are excluded
     --   labels: if set, display labels of the rating for each hex the unit can reach
     --   viewing_side: see comments at beginning of this file. Defaults to side of @unit.
     --   ignore_visibility: see comments at beginning of this file. Defaults to nil.
@@ -1983,17 +1996,20 @@ function ai_helper.move_unit_out_of_way(ai, unit, cfg)
         if (not unit_in_way)       -- also excludes current hex
             or ((not ignore_visibility) and (not ai_helper.is_visible_unit(viewing_side, unit_in_way)))
         then
-            local rating = loc[3]  -- also disfavors hexes next to visible enemy units for which loc[3] = 0
+            local avoid_this_hex = cfg and cfg.avoid_map and cfg.avoid_map:get(loc[1], loc[2])
+            if (not avoid_this_hex) then
+                local rating = loc[3]  -- also disfavors hexes next to visible enemy units for which loc[3] = 0
 
-            if dx then
-                rating = rating + (loc[1] - unit.x) * dx * 0.01
-                rating = rating + (loc[2] - unit.y) * dy * 0.01
-            end
+                if dx then
+                    rating = rating + (loc[1] - unit.x) * dx * 0.01
+                    rating = rating + (loc[2] - unit.y) * dy * 0.01
+                end
 
-            if cfg.labels then reach_map:insert(loc[1], loc[2], rating) end
+                if cfg.labels then reach_map:insert(loc[1], loc[2], rating) end
 
-            if (rating > max_rating) then
-                max_rating, best_hex = rating, { loc[1], loc[2] }
+                if (rating > max_rating) then
+                    max_rating, best_hex = rating, { loc[1], loc[2] }
+                end
             end
         end
     end
