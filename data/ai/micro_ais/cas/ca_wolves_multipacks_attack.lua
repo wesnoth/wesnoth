@@ -47,7 +47,13 @@ function ca_wolves_multipacks_attack:execution(cfg)
                 local attack_splits_pack = false
                 for _,wolf in ipairs(wolves) do
                     local nh = AH.next_hop(wolf, attack.dst.x, attack.dst.y)
-                    local dist = M.distance_between(nh[1], nh[2], attack.dst.x, attack.dst.y)
+                    local nh = AH.next_hop(wolf, attack.dst.x, attack.dst.y)
+                    -- It is possible that the attack hex is unreachable for the other wolves
+                    -- in the pack, for example if one or several wolves are completely surrounded.
+                    -- It is okay to skip the attack here in that case. The wolves will
+                    -- still get as close to each other as they can and attack later.
+                    local dist = AH.no_path
+                    if nh then dist = M.distance_between(nh[1], nh[2], attack.dst.x, attack.dst.y) end
                     if (dist > 3) then
                         attack_splits_pack = true
                         break
