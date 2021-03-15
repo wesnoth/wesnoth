@@ -339,13 +339,8 @@ if env["prereqs"]:
     conf = env.Configure(**configure_args)
 
     if env["PLATFORM"] == "posix":
-        conf.CheckCHeader("poll.h", "<>")
-        conf.CheckCHeader("sys/poll.h", "<>")
-        conf.CheckCHeader("sys/select.h", "<>")
         if conf.CheckCHeader("sys/sendfile.h", "<>"):
             conf.CheckFunc("sendfile")
-    conf.CheckLib("m")
-    conf.CheckFunc("round")
 
     def CheckAsio(conf):
         if env["PLATFORM"] == 'win32':
