@@ -50,9 +50,6 @@ static void set_renderer_color(SDL_Renderer* renderer, color_t color)
 /**
  * Draws a line on a surface.
  *
- * @pre                   The caller needs to make sure the entire line fits on
- *                        the @p surface.
- * @pre                   @p x2 >= @p x1
  * @pre                   The @p surface is locked.
  *
  * @param canvas          The canvas to draw upon, the caller should lock the
@@ -77,11 +74,6 @@ static void draw_line(surface& canvas,
 			  << ',' << y2 << " canvas width " << w << " canvas height "
 			  << canvas->h << ".\n";
 
-	assert(static_cast<int>(x1) < canvas->w);
-	assert(static_cast<int>(x2) < canvas->w);
-	assert(static_cast<int>(y1) < canvas->h);
-	assert(static_cast<int>(y2) < canvas->h);
-
 	set_renderer_color(renderer, color);
 
 	if(x1 == x2 && y1 == y2) {
@@ -95,7 +87,6 @@ static void draw_line(surface& canvas,
 /**
  * Draws a circle on a surface.
  *
- * @pre                   The circle must fit on the canvas.
  * @pre                   The @p surface is locked.
  *
  * @param canvas          The canvas to draw upon, the caller should lock the
@@ -119,11 +110,6 @@ static void draw_circle(surface& canvas,
 	DBG_GUI_D << "Shape: draw circle at " << x_center << ',' << y_center
 			  << " with radius " << radius << " canvas width " << w
 			  << " canvas height " << canvas->h << ".\n";
-
-	if(octants & 0x0f) assert((x_center + radius) < canvas->w);
-	if(octants & 0xf0) assert((x_center - radius) >= 0);
-	if(octants & 0x3c) assert((y_center + radius) < canvas->h);
-	if(octants & 0xc3) assert((y_center - radius) >= 0);
 
 	set_renderer_color(renderer, color);
 
@@ -161,7 +147,6 @@ static void draw_circle(surface& canvas,
 /**
  * Draws a filled circle on a surface.
  *
- * @pre                   The circle must fit on the canvas.
  * @pre                   The @p surface is locked.
  *
  * @param canvas          The canvas to draw upon, the caller should lock the
@@ -185,11 +170,6 @@ static void fill_circle(surface& canvas,
 	DBG_GUI_D << "Shape: draw filled circle at " << x_center << ',' << y_center
 			  << " with radius " << radius << " canvas width " << w
 			  << " canvas height " << canvas->h << ".\n";
-
-	if(octants & 0x0f) assert((x_center + radius) < canvas->w);
-	if(octants & 0xf0) assert((x_center - radius) >= 0);
-	if(octants & 0x3c) assert((y_center + radius) < canvas->h);
-	if(octants & 0xc3) assert((y_center - radius) >= 0);
 
 	set_renderer_color(renderer, color);
 
@@ -241,6 +221,7 @@ line_shape::line_shape(const config& cfg)
 
 void line_shape::draw(surface& canvas,
 				 SDL_Renderer* renderer,
+				 const SDL_Rect& view_bounds,
 				 wfl::map_formula_callable& variables)
 {
 	/**
@@ -249,20 +230,14 @@ void line_shape::draw(surface& canvas,
 	 * flag or do the calculation in a separate routine.
 	 */
 
-	const unsigned x1 = x1_(variables);
-	const unsigned y1 = y1_(variables);
-	const unsigned x2 = x2_(variables);
-	const unsigned y2 = y2_(variables);
+	const unsigned x1 = x1_(variables) - view_bounds.x;
+	const unsigned y1 = y1_(variables) - view_bounds.y;
+	const unsigned x2 = x2_(variables) - view_bounds.x;
+	const unsigned y2 = y2_(variables) - view_bounds.y;
 
-	DBG_GUI_D << "Line: draw from " << x1 << ',' << y1 << " to " << x2 << ','
-			  << y2 << " canvas size " << canvas->w << ',' << canvas->h
-			  << ".\n";
-
-	VALIDATE(static_cast<int>(x1) < canvas->w
-			 && static_cast<int>(x2) < canvas->w
-			 && static_cast<int>(y1) < canvas->h
-			 && static_cast<int>(y2) < canvas->h,
-			 _("Line doesn't fit on canvas."));
+	DBG_GUI_D << "Line: draw from " << x1 << ',' << y1 << " to " << x2 << ',' << y2
+			  << " within bounds {" << view_bounds.x << ", " << view_bounds.y
+			  << ", " << view_bounds.w << ", " << view_bounds.h << "}.\n";
 
 	// @todo FIXME respect the thickness.
 
@@ -272,14 +247,59 @@ void line_shape::draw(surface& canvas,
 	draw_line(canvas, renderer, color_(variables), x1, y1, x2, y2);
 }
 
-/***** ***** ***** ***** ***** Rectangle ***** ***** ***** ***** *****/
+/***** ***** ***** Base class for rectangular shapes ***** ***** *****/
 
-rectangle_shape::rectangle_shape(const config& cfg)
+rect_bounded_shape::rect_bounded_shape(const config& cfg)
 	: shape(cfg)
 	, x_(cfg["x"])
 	, y_(cfg["y"])
 	, w_(cfg["w"])
 	, h_(cfg["h"])
+{
+}
+
+rect_bounded_shape::calculated_rects rect_bounded_shape::calculate_rects(const SDL_Rect& view_bounds, wfl::map_formula_callable& variables) const
+{
+	// Formulas are recalculated every draw cycle, even if there hasn't been a resize.
+
+	const unsigned x = x_(variables);
+	const unsigned y = y_(variables);
+	const unsigned w = w_(variables);
+	const unsigned h = h_(variables);
+
+	const auto dst_on_widget = sdl::create_rect(x, y, w, h);
+
+	SDL_Rect clip_on_widget;
+	if(!SDL_IntersectRect(&dst_on_widget, &view_bounds, &clip_on_widget)) {
+		DBG_GUI_D << "Text: Clipping view_bounds resulted in an empty intersection, nothing to do.\n";
+		return {true, dst_on_widget, {}, {}, {}, {}};
+	}
+
+	auto unclipped_around_viewport = dst_on_widget;
+	unclipped_around_viewport.x -= view_bounds.x;
+	unclipped_around_viewport.y -= view_bounds.y;
+
+	auto clip_in_shape = clip_on_widget;
+	clip_in_shape.x -= x;
+	clip_in_shape.y -= y;
+
+	auto dst_in_viewport = clip_on_widget;
+	dst_in_viewport.x -= view_bounds.x;
+	dst_in_viewport.y -= view_bounds.y;
+
+	DBG_GUI_D << "Calculate_rects: from " << x << ',' << y << " width " << w << " height " << h << "\n"
+			  << " view_bounds {" << view_bounds.x << ", " << view_bounds.y << ", "
+			  << view_bounds.w << ", " << view_bounds.h << "}.\n"
+			  << " dst_in_viewport {" << dst_in_viewport.x << ", " << dst_in_viewport.y << ", "
+			  << dst_in_viewport.w << ", " << dst_in_viewport.h << "}.\n";
+
+	return {false, dst_on_widget, clip_on_widget, clip_in_shape, unclipped_around_viewport, dst_in_viewport};
+}
+
+/***** ***** ***** ***** ***** Rectangle ***** ***** ***** ***** *****/
+
+rectangle_shape::rectangle_shape(const config& cfg)
+	: rect_bounded_shape(cfg)
 	, border_thickness_(cfg["border_thickness"])
 	, border_color_(cfg["border_color"], color_t::null_color())
 	, fill_color_(cfg["fill_color"], color_t::null_color())
@@ -297,55 +317,38 @@ rectangle_shape::rectangle_shape(const config& cfg)
 
 void rectangle_shape::draw(surface& canvas,
 					  SDL_Renderer* renderer,
+					  const SDL_Rect& view_bounds,
 					  wfl::map_formula_callable& variables)
 {
-	/**
-	 * @todo formulas are now recalculated every draw cycle which is a  bit
-	 * silly unless there has been a resize. So to optimize we should use an
-	 * extra flag or do the calculation in a separate routine.
-	 */
-	const int x = x_(variables);
-	const int y = y_(variables);
-	const int w = w_(variables);
-	const int h = h_(variables);
-
-	DBG_GUI_D << "Rectangle: draw from " << x << ',' << y << " width " << w
-			  << " height " << h << " canvas size " << canvas->w << ','
-			  << canvas->h << ".\n";
-
-	VALIDATE(x     <  canvas->w
-	      && x + w <= canvas->w
-	      && y     <  canvas->h
-	      && y + h <= canvas->h, _("Rectangle doesn't fit on canvas."));
+	const auto rects = calculate_rects(view_bounds, variables);
+	if(rects.empty) {
+		return;
+	}
 
 	surface_lock locker(canvas);
 
 	const color_t fill_color = fill_color_(variables);
 
 	// Fill the background, if applicable
-	if(!fill_color.null() && w && h) {
+	if(!fill_color.null()) {
 		set_renderer_color(renderer, fill_color);
-
-		SDL_Rect area {
-			x +  border_thickness_,
-			y +  border_thickness_,
-			w - (border_thickness_ * 2),
-			h - (border_thickness_ * 2)
-		};
+		auto area = rects.unclipped_around_viewport;
+		area.x += border_thickness_;
+		area.y += border_thickness_;
+		area.w -= 2 * border_thickness_;
+		area.h -= 2 * border_thickness_;
 
 		SDL_RenderFillRect(renderer, &area);
 	}
 
 	// Draw the border
+	set_renderer_color(renderer, border_color_(variables));
 	for(int i = 0; i < border_thickness_; ++i) {
-		SDL_Rect dimensions {
-			x + i,
-			y + i,
-			w - (i * 2),
-			h - (i * 2)
-		};
-
-		set_renderer_color(renderer, border_color_(variables));
+		auto dimensions = rects.unclipped_around_viewport;
+		dimensions.x += i;
+		dimensions.y += i;
+		dimensions.w -= 2 * i;
+		dimensions.h -= 2 * i;
 
 		SDL_RenderDrawRect(renderer, &dimensions);
 	}
@@ -354,11 +357,7 @@ void rectangle_shape::draw(surface& canvas,
 /***** ***** ***** ***** ***** Rounded Rectangle ***** ***** ***** ***** *****/
 
 round_rectangle_shape::round_rectangle_shape(const config& cfg)
-	: shape(cfg)
-	, x_(cfg["x"])
-	, y_(cfg["y"])
-	, w_(cfg["w"])
-	, h_(cfg["h"])
+	: rect_bounded_shape(cfg)
 	, r_(cfg["corner_radius"])
 	, border_thickness_(cfg["border_thickness"])
 	, border_color_(cfg["border_color"], color_t::null_color())
@@ -377,27 +376,20 @@ round_rectangle_shape::round_rectangle_shape(const config& cfg)
 
 void round_rectangle_shape::draw(surface& canvas,
 	SDL_Renderer* renderer,
+	const SDL_Rect& view_bounds,
 	wfl::map_formula_callable& variables)
 {
-	/**
-	 * @todo formulas are now recalculated every draw cycle which is a  bit
-	 * silly unless there has been a resize. So to optimize we should use an
-	 * extra flag or do the calculation in a separate routine.
-	 */
-	const int x = x_(variables);
-	const int y = y_(variables);
-	const int w = w_(variables);
-	const int h = h_(variables);
+	const auto rects = calculate_rects(view_bounds, variables);
+	const int x = rects.unclipped_around_viewport.x;
+	const int y = rects.unclipped_around_viewport.y;
+	const int w = rects.unclipped_around_viewport.w;
+	const int h = rects.unclipped_around_viewport.h;
 	const int r = r_(variables);
 
 	DBG_GUI_D << "Rounded Rectangle: draw from " << x << ',' << y << " width " << w
-		<< " height " << h << " canvas size " << canvas->w << ','
-		<< canvas->h << ".\n";
-
-	VALIDATE(x     <  canvas->w
-		&& x + w <= canvas->w
-		&& y     <  canvas->h
-		&& y + h <= canvas->h, _("Rounded Rectangle doesn't fit on canvas."));
+		<< " height "
+		<< " within bounds {" << view_bounds.x << ", " << view_bounds.y
+		<< ", " << view_bounds.w << ", " << view_bounds.h << "}.\n";
 
 	surface_lock locker(canvas);
 
@@ -459,6 +451,7 @@ circle_shape::circle_shape(const config& cfg)
 
 void circle_shape::draw(surface& canvas,
 				   SDL_Renderer* renderer,
+				   const SDL_Rect& view_bounds,
 				   wfl::map_formula_callable& variables)
 {
 	/**
@@ -467,34 +460,13 @@ void circle_shape::draw(surface& canvas,
 	 * extra flag or do the calculation in a separate routine.
 	 */
 
-	const unsigned x = x_(variables);
-	const unsigned y = y_(variables);
+	const int x = x_(variables) - view_bounds.x;
+	const int y = y_(variables) - view_bounds.y;
 	const unsigned radius = radius_(variables);
 
 	DBG_GUI_D << "Circle: drawn at " << x << ',' << y << " radius " << radius
-			  << " canvas size " << canvas->w << ',' << canvas->h << ".\n";
-
-	VALIDATE_WITH_DEV_MESSAGE(
-			static_cast<int>(x - radius) >= 0,
-			_("Circle doesn't fit on canvas."),
-			formatter() << "x = " << x << ", radius = " << radius);
-
-	VALIDATE_WITH_DEV_MESSAGE(
-			static_cast<int>(y - radius) >= 0,
-			_("Circle doesn't fit on canvas."),
-			formatter() << "y = " << y << ", radius = " << radius);
-
-	VALIDATE_WITH_DEV_MESSAGE(
-			static_cast<int>(x + radius) < canvas->w,
-			_("Circle doesn't fit on canvas."),
-			formatter() << "x = " << x << ", radius = " << radius
-						 << "', canvas width = " << canvas->w << ".");
-
-	VALIDATE_WITH_DEV_MESSAGE(
-			static_cast<int>(y + radius) < canvas->h,
-			_("Circle doesn't fit on canvas."),
-			formatter() << "y = " << y << ", radius = " << radius
-						 << "', canvas height = " << canvas->h << ".");
+		<< " within bounds {" << view_bounds.x << ", " << view_bounds.y
+		<< ", " << view_bounds.w << ", " << view_bounds.h << "}.\n";
 
 	// lock the surface
 	surface_lock locker(canvas);
@@ -542,6 +514,7 @@ void image_shape::dimension_validation(unsigned value, const std::string& name, 
 
 void image_shape::draw(surface& canvas,
 				  SDL_Renderer* /*renderer*/,
+				  const SDL_Rect& view_bounds,
 				  wfl::map_formula_callable& variables)
 {
 	DBG_GUI_D << "Image: draw.\n";
@@ -587,10 +560,7 @@ void image_shape::draw(surface& canvas,
 	local_variables.add("image_height", wfl::variant(h ? h : image_->h));
 
 	const unsigned clip_x = x_(local_variables);
-	dimension_validation(clip_x, name, "x");
-
 	const unsigned clip_y = y_(local_variables);
-	dimension_validation(clip_y, name, "y");
 
 	local_variables.add("clip_x", wfl::variant(clip_x));
 	local_variables.add("clip_y", wfl::variant(clip_y));
@@ -600,7 +570,6 @@ void image_shape::draw(surface& canvas,
 
 	// Copy the data to local variables to avoid overwriting the originals.
 	SDL_Rect src_clip = src_clip_;
-	SDL_Rect dst_clip = sdl::create_rect(clip_x, clip_y, 0, 0);
 	surface surf;
 
 	// Test whether we need to scale and do the scaling if needed.
@@ -656,11 +625,26 @@ void image_shape::draw(surface& canvas,
 		src_clip.h = h;
 	}
 
+	// Calculate the destination, clip it to the view_bounds, and then change both
+	// src_clip and dst_on_view_bounds to view_bounds' coordinate system.
+	const SDL_Rect dst_on_widget = sdl::create_rect(clip_x, clip_y, src_clip.w, src_clip.h);
+	SDL_Rect dst_on_view_bounds;
+	if(!SDL_IntersectRect(&dst_on_widget, &view_bounds, &dst_on_view_bounds)) {
+		DBG_GUI_D << "Image: completely outside view_bounds\n";
+		return;
+	}
+	dst_on_view_bounds.x -= view_bounds.x;
+	dst_on_view_bounds.y -= view_bounds.y;
+	src_clip.x += view_bounds.x;
+	src_clip.y += view_bounds.y;
+	src_clip.w = dst_on_view_bounds.w;
+	src_clip.h = dst_on_view_bounds.h;
+
 	if(vertical_mirror_(local_variables)) {
 		surf = flip_surface(surf);
 	}
 
-	blit_surface(surf, &src_clip, canvas, &dst_clip);
+	blit_surface(surf, &src_clip, canvas, &dst_on_view_bounds);
 }
 
 image_shape::resize_mode image_shape::get_resize_mode(const std::string& resize_mode)
@@ -683,11 +667,7 @@ image_shape::resize_mode image_shape::get_resize_mode(const std::string& resize_
 /***** ***** ***** ***** ***** TEXT ***** ***** ***** ***** *****/
 
 text_shape::text_shape(const config& cfg)
-	: shape(cfg)
-	, x_(cfg["x"])
-	, y_(cfg["y"])
-	, w_(cfg["w"])
-	, h_(cfg["h"])
+	: rect_bounded_shape(cfg)
 	, font_family_(font::str_to_family_class(cfg["font_family"]))
 	, font_size_(cfg["font_size"])
 	, font_style_(decode_font_style(cfg["font_style"]))
@@ -713,6 +693,7 @@ text_shape::text_shape(const config& cfg)
 
 void text_shape::draw(surface& canvas,
 				 SDL_Renderer* /*renderer*/,
+				 const SDL_Rect& view_bounds,
 				 wfl::map_formula_callable& variables)
 {
 	assert(variables.has_key("text"));
@@ -746,6 +727,20 @@ void text_shape::draw(surface& canvas,
 				: PANGO_ELLIPSIZE_END)
 		.set_characters_per_line(characters_per_line_);
 
+	wfl::map_formula_callable local_variables(variables);
+	local_variables.add("text_width", wfl::variant(text_renderer.get_width()));
+	local_variables.add("text_height", wfl::variant(text_renderer.get_height()));
+
+	const auto rects = calculate_rects(view_bounds, local_variables);
+
+	if(rects.empty) {
+		DBG_GUI_D << "Text: Clipping to view_bounds resulted in an empty intersection, nothing to do.\n";
+		return;
+	}
+
+	// TODO: This creates a surface that's the full text_width x text_height, and then discards most of it by
+	// calling blit_surface(... , &rects.clip_in_shape, ..., ...). Should be improved with a change to pango_text,
+	// so that we can call text_renderer.render(rects.clip_in_shape) and get a smaller surface instead.
 	surface& surf = text_renderer.render();
 	if(surf->w == 0) {
 		DBG_GUI_D << "Text: Rendering '" << text
@@ -753,45 +748,10 @@ void text_shape::draw(surface& canvas,
 		return;
 	}
 
-	wfl::map_formula_callable local_variables(variables);
-	local_variables.add("text_width", wfl::variant(surf->w));
-	local_variables.add("text_height", wfl::variant(surf->h));
-	/*
-		std::cerr << "Text: drawing text '" << text
-			<< " maximum width " << maximum_width_(variables)
-			<< " maximum height " << maximum_height_(variables)
-			<< " text width " << surf->w
-			<< " text height " << surf->h;
-	*/
-	// TODO: formulas are now recalculated every draw cycle which is a
-	// bit silly unless there has been a resize. So to optimize we should
-	// use an extra flag or do the calculation in a separate routine.
-
-	const unsigned x = x_(local_variables);
-	const unsigned y = y_(local_variables);
-	const unsigned w = w_(local_variables);
-	const unsigned h = h_(local_variables);
-
-	DBG_GUI_D << "Text: drawing text '" << text << "' drawn from " << x << ','
-			  << y << " width " << w << " height " << h << " canvas size "
-			  << canvas->w << ',' << canvas->h << ".\n";
-
-	VALIDATE(static_cast<int>(x) < canvas->w && static_cast<int>(y) < canvas->h,
-			 _("Text doesn't start on canvas."));
-
-	// A text might be to long and will be clipped.
-	if(surf->w > static_cast<int>(w)) {
-		WRN_GUI_D << "Text: text is too wide for the "
-					 "canvas and will be clipped.\n";
-	}
-
-	if(surf->h > static_cast<int>(h)) {
-		WRN_GUI_D << "Text: text is too high for the "
-					 "canvas and will be clipped.\n";
-	}
-
-	SDL_Rect dst = sdl::create_rect(x, y, canvas->w, canvas->h);
-	blit_surface(surf, nullptr, canvas, &dst);
+	// Blit the clipped region - this needs non-const copies of the rects
+	auto clip_in_shape = rects.clip_in_shape;
+	auto dst_in_viewport = rects.dst_in_viewport;
+	blit_surface(surf, &clip_in_shape, canvas, &dst_in_viewport);
 }
 
 /***** ***** ***** ***** ***** CANVAS ***** ***** ***** ***** *****/
@@ -801,7 +761,8 @@ canvas::canvas()
 	, blur_depth_(0)
 	, w_(0)
 	, h_(0)
-	, canvas_()
+	, viewport_()
+	, view_bounds_{0, 0, 0, 0}
 	, variables_()
 	, functions_()
 	, is_dirty_(true)
@@ -813,17 +774,21 @@ canvas::canvas(canvas&& c) noexcept
 	, blur_depth_(c.blur_depth_)
 	, w_(c.w_)
 	, h_(c.h_)
-	, canvas_(std::move(c.canvas_))
+	, viewport_(std::move(c.viewport_))
+	, view_bounds_(std::move(c.view_bounds_))
 	, variables_(c.variables_)
 	, functions_(c.functions_)
 	, is_dirty_(c.is_dirty_)
 {
 }
 
-void canvas::draw(const bool force)
+void canvas::draw(const SDL_Rect& area_to_draw, bool force)
 {
 	log_scope2(log_gui_draw, "Canvas: drawing.");
-	if(!is_dirty_ && !force) {
+	if(!viewport_ || !SDL_RectEquals(&view_bounds_, &area_to_draw)) {
+		DBG_GUI_D << "Canvas: redrawing because the cached view_bounds no longer fits.\n";
+		invalidate_cache();
+	} else if(!is_dirty_ && !force) {
 		DBG_GUI_D << "Canvas: nothing to draw.\n";
 		return;
 	}
@@ -835,23 +800,25 @@ void canvas::draw(const bool force)
 	}
 
 	auto renderer = std::unique_ptr<SDL_Renderer, decltype(&SDL_DestroyRenderer)> {nullptr, &SDL_DestroyRenderer};
-	if(canvas_) {
+
+	if(viewport_ && view_bounds_.w == area_to_draw.w && view_bounds_.h == area_to_draw.h) {
 		DBG_GUI_D << "Canvas: use cached canvas.\n";
-		renderer.reset(SDL_CreateSoftwareRenderer(canvas_));
+		renderer.reset(SDL_CreateSoftwareRenderer(viewport_));
 		SDL_SetRenderDrawColor(renderer.get(), 0, 0, 0, 0);
 		SDL_RenderClear(renderer.get());
 	} else {
 		DBG_GUI_D << "Canvas: create new empty canvas.\n";
-		canvas_ = surface(w_, h_);
-		renderer.reset(SDL_CreateSoftwareRenderer(canvas_));
+		viewport_ = surface(area_to_draw.w, area_to_draw.h);
+		renderer.reset(SDL_CreateSoftwareRenderer(viewport_));
 	}
+	view_bounds_ = area_to_draw;
 	SDL_SetRenderDrawBlendMode(renderer.get(), SDL_BLENDMODE_BLEND);
 
 	// draw items
 	for(auto& shape : shapes_) {
 		lg::scope_logger inner_scope_logging_object__(log_gui_draw, "Canvas: draw shape.");
 
-		shape->draw(canvas_, renderer.get(), variables_);
+		shape->draw(viewport_, renderer.get(), view_bounds_, variables_);
 	}
 
 	SDL_RenderPresent(renderer.get());
@@ -861,7 +828,38 @@ void canvas::draw(const bool force)
 
 void canvas::blit(surface& surf, SDL_Rect rect)
 {
-	draw();
+	// This early-return has to come before the `validate(rect.w <= w_)` check, as during the boost_unit_tests execution
+	// the debug_clock widget will have no shapes, 0x0 size, yet be given a larger rect to draw.
+	if(shapes_.empty()) {
+		DBG_GUI_D << "Canvas: empty (no shapes to draw).\n";
+		return;
+	}
+
+	VALIDATE(rect.w >= 0 && rect.h >= 0, _("Area to draw has negative size"));
+	VALIDATE(static_cast<unsigned>(rect.w) <= w_ && static_cast<unsigned>(rect.h) <= h_,
+		_("Area to draw is larger than widget size"));
+
+	// If the widget is partly off-screen, this might get called with
+	// surf width=1000, height=1000
+	// rect={-1, 2, 330, 440}
+	//
+	// From those, as the first column is off-screen:
+	// rect_clipped_to_parent={0, 2, 329, 440}
+	// area_to_draw={1, 0, 329, 440}
+	SDL_Rect parent {0, 0, surf->w, surf->h};
+	SDL_Rect rect_clipped_to_parent;
+	if(!SDL_IntersectRect(&rect, &parent, &rect_clipped_to_parent)) {
+		DBG_GUI_D << "Area to draw is completely outside parent.\n";
+		return;
+	}
+	SDL_Rect area_to_draw {
+		std::max(0, -rect.x),
+		std::max(0, -rect.y),
+		rect_clipped_to_parent.w,
+		rect_clipped_to_parent.h
+	};
+
+	draw(area_to_draw);
 
 	if(blur_depth_) {
 		/*
@@ -880,7 +878,18 @@ void canvas::blit(surface& surf, SDL_Rect rect)
 		}
 	}
 
-	sdl_blit(canvas_, nullptr, surf, &rect);
+	// Currently draw(area_to_draw) will always allocate a viewport_ that exactly matches area_to_draw, which means that
+	// scrolling by a single pixel will force a complete redraw. I tested rendering a few of the off-screen lines too,
+	// however it didn't seem to be an optimisation - the dirty flag was already set on each such redraw, triggering a
+	// complete redraw.
+	//
+	// If you try to re-add this overdraw, the nullptr below will need to be replaced with
+	// {area_to_draw.x - view_bounds_.x, area_to_draw.y - view_bounds_.y, area_to_draw.w, area_to_draw.h};
+	assert(area_to_draw.x == view_bounds_.x);
+	assert(area_to_draw.y == view_bounds_.y);
+	assert(area_to_draw.w == view_bounds_.w);
+	assert(area_to_draw.h == view_bounds_.h);
+	sdl_blit(viewport_, nullptr, surf, &rect_clipped_to_parent);
 }
 
 void canvas::parse_cfg(const config& cfg)
@@ -943,7 +952,7 @@ void canvas::clear_shapes(const bool force)
 
 void canvas::invalidate_cache()
 {
-	canvas_ = nullptr;
+	viewport_ = nullptr;
 }
 
 /***** ***** ***** ***** ***** SHAPE ***** ***** ***** ***** *****/
