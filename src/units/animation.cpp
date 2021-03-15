@@ -636,6 +636,7 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 
 	add_simple_anim(animations, cfg, "resistance_anim", "resistance");
 	add_simple_anim(animations, cfg, "leading_anim", "leading");
+	add_simple_anim(animations, cfg, "teaching_anim", "teaching");
 	add_simple_anim(animations, cfg, "recruit_anim", "recruited");
 	add_simple_anim(animations, cfg, "recruiting_anim", "recruiting");
 	add_simple_anim(animations, cfg, "idle_anim", "idling", display::LAYER_UNIT_DEFAULT, false);
@@ -1343,6 +1344,20 @@ void unit_animator::add_animation(unit_const_ptr animated_unit
 
 	start_time_ = std::max<int>(start_time_, tmp.animation->get_begin_time());
 	animated_units_.push_back(std::move(tmp));
+}
+
+bool unit_animator::has_animation(unit_const_ptr animated_unit
+		, const std::string& event
+		, const map_location &src
+		, const map_location &dst
+		, const int value
+		, const unit_animation::hit_type hit_type
+		, const_attack_ptr attack
+		, const_attack_ptr second_attack
+		, int value2) const
+{
+	display* disp = display::get_singleton();
+	return (animated_unit && animated_unit->anim_comp().choose_animation(*disp, src, event, dst, value, hit_type, attack, second_attack, value2));
 }
 
 void unit_animator::replace_anim_if_invalid(unit_const_ptr animated_unit

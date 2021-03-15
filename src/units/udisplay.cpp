@@ -657,11 +657,9 @@ void unit_attack(display * disp, game_board & board,
 
 	animator.add_animation(defender.shared_from_this(), defender_anim, def->get_location(), true, text, {255, 0, 0});
 
-	unit_ability_list abilities = attacker.get_abilities_weapons("leadership", weapon, secondary_attack);
-	for(auto& special : attacker.checking_tags()) {
-		abilities.append(weapon->list_ability(special));
-	}
-	for(const unit_ability& ability : abilities) {
+	unit_ability_list leadership_list = attacker.get_abilities_weapons("leadership", weapon, secondary_attack);
+	unit_ability_list resistance_list = defender.get_abilities_weapons("resistance", secondary_attack, weapon);
+	for(const unit_ability& ability : leadership_list) {
 		if(ability.teacher_loc == a) {
 			continue;
 		}
@@ -678,7 +676,7 @@ void unit_attack(display * disp, game_board & board,
 			hit_type, weapon, secondary_attack, swing);
 	}
 
-	for(const unit_ability& ability : defender.get_abilities_weapons("resistance", secondary_attack, weapon)) {
+	for(const unit_ability& ability : resistance_list) {
 		if(ability.teacher_loc == a) {
 			continue;
 		}
@@ -692,6 +690,52 @@ void unit_attack(display * disp, game_board & board,
 		helper->set_facing(ability.teacher_loc.get_relative_dir(b));
 		animator.add_animation(helper.get_shared_ptr(), "resistance", ability.teacher_loc,
 			def->get_location(), damage, true,  "", {0,0,0},
+			hit_type, weapon, secondary_attack, swing);
+	}
+
+	unit_ability_list abilities = att->get_location();
+	for(auto& special : attacker.checking_tags()) {
+		abilities.append(weapon->list_ability(special));
+	}
+
+	for(const unit_ability& ability : abilities) {
+		if(ability.teacher_loc == a) {
+			continue;
+		}
+
+		if(ability.teacher_loc == b) {
+			continue;
+		}
+
+		bool leading_playable = false;
+		bool helping_playable = false;
+		for(const unit_ability& leader_list : leadership_list) {
+			if(ability.teacher_loc == leader_list.teacher_loc) {
+				leading_playable = true;
+				break;
+			}
+		}
+
+		for(const unit_ability& helper_list : resistance_list) {
+			if(ability.teacher_loc == helper_list.teacher_loc) {
+				helping_playable = true;
+				break;
+			}
+		}
+
+		unit_map::const_iterator leader = board.units().find(ability.teacher_loc);
+		assert(leader.valid());
+		leader->set_facing(ability.teacher_loc.get_relative_dir(a));
+		if(animator.has_animation(leader.get_shared_ptr(), "leading", ability.teacher_loc,
+			att->get_location(), damage, hit_type, weapon, secondary_attack, swing) && leading_playable){
+				continue;
+		}
+		if(animator.has_animation(leader.get_shared_ptr(), "resistance", ability.teacher_loc,
+			def->get_location(), damage, hit_type, weapon, secondary_attack, swing) && helping_playable){
+				continue;
+		}
+		animator.add_animation(leader.get_shared_ptr(), "teaching", ability.teacher_loc,
+			att->get_location(), damage, true,  "", {0,0,0},
 			hit_type, weapon, secondary_attack, swing);
 	}
 
