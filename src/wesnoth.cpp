@@ -87,6 +87,7 @@
 
 #include <boost/iostreams/filtering_stream.hpp> // for filtering_stream
 #include <boost/program_options/errors.hpp>     // for error
+#include <optional>
 
 #include <algorithm> // for transform
 #include <cerrno>    // for ENOMEM
@@ -406,7 +407,7 @@ static int process_command_args(const commandline_options& cmdline_opts)
 		}
 
 		game_config::path = filesystem::normalize_path(game_config::path, true, true);
-		std::cerr << "Overriding data directory with " << game_config::path << std::endl;
+		if(!cmdline_opts.nobanner) std::cerr << "Overriding data directory with " << game_config::path << std::endl;
 
 		if(!filesystem::is_directory(game_config::path)) {
 			std::cerr << "Could not find directory '" << game_config::path << "'\n";
@@ -641,7 +642,6 @@ static void check_fpu()
 	if(_controlfp_s(&f_control, 0, 0) == 0) {
 		uint32_t unused;
 		uint32_t rounding_mode = f_control & _MCW_RC;
-		uint32_t precision_mode = f_control & _MCW_PC;
 
 		if(rounding_mode != _RC_NEAR) {
 			std::cerr << "Floating point rounding mode is currently '"
@@ -660,6 +660,7 @@ static void check_fpu()
 		}
 
 #ifndef _M_AMD64
+		uint32_t precision_mode = f_control & _MCW_PC;
 		if(precision_mode != _PC_53) {
 			std::cerr << "Floating point precision mode is currently '"
 				<< ((precision_mode == _PC_53)
@@ -771,7 +772,7 @@ static int do_gameloop(const std::vector<std::string>& args)
 
 	game_config_manager config_manager(cmdline_opts);
 
-	gui2::dialogs::loading_screen::display([&res, &config_manager]() {
+	gui2::dialogs::loading_screen::display([&res, &config_manager, &cmdline_opts]() {
 		gui2::dialogs::loading_screen::progress(loading_stage::load_config);
 		res = config_manager.init_game_config(game_config_manager::NO_FORCE_RELOAD);
 
@@ -788,9 +789,11 @@ static int do_gameloop(const std::vector<std::string>& args)
 			return;
 		}
 
-		gui2::dialogs::loading_screen::progress(loading_stage::refresh_addons);
+		if(!game_config::no_addons && !cmdline_opts.noaddons)  {
+			gui2::dialogs::loading_screen::progress(loading_stage::refresh_addons);
 
-		refresh_addon_version_info_cache();
+			refresh_addon_version_info_cache();
+		}
 	});
 
 	if(res == false) {
@@ -960,8 +963,20 @@ int main(int argc, char** argv)
 {
 	auto args = read_argv(argc, argv);
 	assert(!args.empty());
+	
+	// --nobanner needs to be detected before the main command-line parsing happens
+	bool nobanner = false;
+	for(const auto& arg : args) {
+		if(arg == "--nobanner") {
+			nobanner = true;
+			break;
+		}
+	}
 
 #ifdef _WIN32
+	bool log_redirect = true, native_console_implied = false;
+	// This is optional<bool> instead of tribool because value_or() is exactly the required semantic
+	std::optional<bool> native_console_force;
 	// Some switches force a Windows console to be attached to the process even
 	// if Wesnoth is an IMAGE_SUBSYSTEM_WINDOWS_GUI executable because they
 	// turn it into a CLI application. Also, --wconsole in particular attaches
@@ -983,7 +998,7 @@ int main(int argc, char** argv)
 		// care about -- we just want to see if the switch is there.
 		static const std::set<std::string> wincon_arg_switches = {
 			"-D", "--diff", "-p", "--preprocess", "-P", "--patch", "--render-image",
-			 "--screenshot", "-V", "--validate", "--validate-addon", "--validate-schema",
+			 "--screenshot", "-V", "--validate", "--validate-schema",
 		};
 
 		auto switch_matches_arg = [&arg](const std::string& sw) {
@@ -993,12 +1008,22 @@ int main(int argc, char** argv)
 
 		if(wincon_switches.find(arg) != wincon_switches.end() ||
 			std::find_if(wincon_arg_switches.begin(), wincon_arg_switches.end(), switch_matches_arg) != wincon_arg_switches.end()) {
-			lg::enable_native_console_output();
-			break;
+			native_console_implied = true;
+		}
+		
+		if(arg == "--wnoconsole") {
+			native_console_force = false;
+		} else if(arg == "--wconsole") {
+			native_console_force = true;
+		} else if(arg == "--wnoredirect") {
+			log_redirect = false;
 		}
 	}
 
-	lg::early_log_file_setup();
+	if(native_console_force.value_or(native_console_implied)) {
+		lg::enable_native_console_output();
+	}
+	lg::early_log_file_setup(!log_redirect);
 #endif
 
 	if(SDL_Init(SDL_INIT_TIMER) < 0) {
@@ -1030,9 +1055,11 @@ int main(int argc, char** argv)
 	SDL_StartTextInput();
 
 	try {
-		std::cerr << "Battle for Wesnoth v" << game_config::revision  << " " << game_config::build_arch() << '\n';
-		const std::time_t t = std::time(nullptr);
-		std::cerr << "Started on " << ctime(&t) << "\n";
+		if(!nobanner) {
+			std::cerr << "Battle for Wesnoth v" << game_config::revision  << " " << game_config::build_arch() << '\n';
+			const std::time_t t = std::time(nullptr);
+			std::cerr << "Started on " << ctime(&t) << "\n";
+		}
 
 		const std::string& exe_dir = filesystem::get_exe_dir();
 		if(!exe_dir.empty()) {
@@ -1058,7 +1085,7 @@ int main(int argc, char** argv)
 			}
 
 			if(!auto_dir.empty()) {
-				std::cerr << "Automatically found a possible data directory at " << filesystem::sanitize_path(auto_dir) << '\n';
+				if(!nobanner) std::cerr << "Automatically found a possible data directory at " << filesystem::sanitize_path(auto_dir) << '\n';
 				game_config::path = auto_dir;
 			}
 		}

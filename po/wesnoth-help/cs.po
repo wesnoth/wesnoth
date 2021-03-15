@@ -17,8 +17,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-02-20 18:40-0300\n"
-"PO-Revision-Date: 2021-02-07 22:13+0100\n"
+"POT-Creation-Date: 2021-03-12 20:18-0300\n"
+"PO-Revision-Date: 2021-03-11 20:05+0100\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
@@ -278,6 +278,7 @@ msgstr "noční lovec"
 #. [plague]: id=plague, type=Walking Corpse
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:98
 #: data/core/macros/abilities.cfg:391 data/core/macros/abilities.cfg:402
+#: data/scenario-test.cfg:407
 msgid "plague"
 msgstr "nákaza"
 
@@ -315,8 +316,9 @@ msgid "slows"
 msgstr "zpomalení"
 
 #. [resistance]: id=steadfast
+#. [resistance]: id=melee_steadfast
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:119
-#: data/core/macros/abilities.cfg:104
+#: data/core/macros/abilities.cfg:104 data/scenario-test.cfg:367
 msgid "steadfast"
 msgstr "vytrvalost"
 
@@ -781,6 +783,28 @@ msgid ""
 "name implies time, it is now more generic and can be used for other purposes "
 "without needing to change the time-of-day schedule in the area."
 msgstr ""
+"Tento nástroj vytváří sady dlaždic, které mohou být využity ve standardních "
+"filtrech míst (Standard Location Filters, pojem je podrobně vysvětlen na "
+"Wiki) WML skriptů pomocí identifikátoru oblasti v atributu filtru "
+"<italic>text='area='</italic>. Například:\n"
+"\n"
+"• přidělení místního časového pásma této sadě hexů\n"
+"• filtrování sady hexů, které spustí událost, když se na ně jednotka "
+"přesune\n"
+"\n"
+"Použití nástroje:\n"
+"\n"
+"• vyber hexy pomocí <ref>dst='editor_tool_select' text='nástroje pro výběr'</"
+"ref>\n"
+"• v menu Oblasti zvol Vybrat novou oblast\n"
+"• pak v menu Oblasti zvol Uložit výběr do oblasti\n"
+"• pak v menu Oblasti zvol Přejmenovat vybranou oblast a vyber pro tu oblast "
+"jméno\n"
+"\n"
+"Tento nástroj je dostupný pouze v režimu scénáře. Přidává do scénáře WML "
+"značky <italic>text='[time_area]'</italic>. Ačkoli jméno značky má v sobě "
+"čas, značka je teď obecnější a může být použita pro jiné účely, aniž je "
+"třeba v té oblasti měnit rozvrh denní doby."
 
 #. [topic]: id=editor_playlist
 #: data/core/editor/help.cfg:212
@@ -923,18 +947,6 @@ msgstr ""
 
 #. [topic]: id=..editor_mode_terrain
 #: data/core/editor/help.cfg:258
-#, fuzzy
-#| msgid ""
-#| "The terrain editor’s functionality is similar to a simple paint "
-#| "application.\n"
-#| "\n"
-#| "The right-hand sidebar contains, from top to bottom, the mini-map, the "
-#| "toolkit (see the pages for each tool), tool options, and "
-#| "<ref>dst='editor_palette' text='Palette'</ref>.\n"
-#| "\n"
-#| "When saved using “Save Map As” and saving to the default directory, the "
-#| "resulting map can be found in the “User Maps” game type of the "
-#| "multiplayer “Create Game” dialog."
 msgid ""
 "The terrain editor’s functionality is similar to a simple paint "
 "application.\n"
@@ -990,15 +1002,6 @@ msgstr ""
 
 #. [topic]: id=..editor_mode_scenario
 #: data/core/editor/help.cfg:279
-#, fuzzy
-#| msgid ""
-#| "<header>text='Entering scenario mode'</header>\n"
-#| "\n"
-#| "To start a new map in scenario mode, choose “New Scenario” from the "
-#| "“File” menu.\n"
-#| "\n"
-#| "If you’re already editing a map in terrain mode, use “Save Scenario As” "
-#| "from the “File” menu; this will switch to scenario mode."
 msgid ""
 "<header>text='Entering scenario mode'</header>\n"
 "\n"
@@ -1017,7 +1020,10 @@ msgstr ""
 "„Soubor“.\n"
 "\n"
 "Pokud už upravuješ mapu v režimu terénu, použij „Uložit scénář jako” z menu "
-"„Soubor“. To přepne do režimu scénáře."
+"„Soubor“. To přepne do režimu scénáře.\n"
+"\n"
+"Pro načtení mapy, která byla vytvořena v editoru scénáře, použij „Načíst "
+"mapu“ z menu „Soubor” a vyber soubor .cfg (nikoli soubor .map)."
 
 #. [topic]: id=..editor_mode_scenario
 #: data/core/editor/help.cfg:287
@@ -3461,6 +3467,30 @@ msgid ""
 "• Enemy units normally don’t have orbs, however these can be enabled in the "
 "advanced preference “Customize orb colors”."
 msgstr ""
+"Koule ukazují, jestli se jednotka může pohnout nebo útočit. Stavy a jejich "
+"obvyklé barvy jsou:\n"
+"• <bold>text='Zelená'</bold>, když se v tomto kole jednotka ani nepřesunula, "
+"ani nezaútočila.\n"
+"• <bold>text='Žlutá'</bold>, pokud se přesunula (nebo zaútočila) a ještě "
+"dokáže útočit. Může být také pořád schopna se posunout dál.\n"
+"• <bold>text='Červená'</bold>, jestliže se v tomto kole nemůže ani posunout "
+"dál, ani znovu zaútočit.\n"
+"    • Červená je také použita po příkazu „Ukončit kolo jednotky“,\n"
+"    • a když je jednotka uprostřed tahu přes více kol (bylo jí přikázáno, "
+"aby se posunula dál, než může v současném kole).\n"
+"• <bold>text='Červená a žlutá'</bold>, když se pohnula (nebo útočila), pořád "
+"se může pohybovat, ale už nemůže útočit.\n"
+"    • To se může stát kvůli událostem nebo schopnostem příznačným pro jedno "
+"tažení, například díky schopnosti <italic>text='uvolnění'</italic> v tažení "
+"<italic>text='Pod žhnoucími slunci'</italic>.\n"
+"• <bold>text='Modrá'</bold> pro spojenecké jednotky kromě průběhu jejich "
+"vlastního kola.\n"
+"    • Během vlastního kola spojenců se jejich jednotky budou zobrazovat se "
+"zelenými, žlutýmy, červenými a bílými barvami, avšak jejich posuny "
+"a odpovídající změny koulí jsou pozdrženy, jak je vysvětleno v oddílu "
+"<ref>dst='shroud_and_fog' text='zahalení tmou a mlha'</ref>.\n"
+"• Nepřátelské jednotky koule obyčejně nemají, nicméně lze je zapnout "
+"v pokročilém nastavení „Upravit barvy koulí“."
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:407
@@ -3975,9 +4005,9 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Mezi základní typy terénu patří Pláně, Hory, Písky, Voda a Bažiny. Mimo "
-"těchto pár základních existuje ještě několik dalších - seznam terénů, které "
-"jste už viděli, můžete najít na konci této stránky.\n"
+"Mezi základní typy terénu patří například plochý terén, kopce, hory, písky, "
+"voda a bažiny. Mimo těchto pár základních existuje ještě několik dalších – "
+"seznam terénů, které jsi už viděl, můžeš najít na konci této stránky.\n"
 "\n"
 
 #. [topic]: id=..terrains_section
@@ -3991,9 +4021,9 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Každá jednotka má obranu a cenu za pohyb pro daný základní typ terénu. Tyto "
-"hodnoty najdete v nápovědě na stránce dané jednotky. Základní typy terénu "
-"mohou mít zvláštní vlastnosti, jako například osvětlení."
+"Každá jednotka má pro daný typ terénu obranný bonus a cenu za pohyb. Tyto "
+"hodnoty najdeš v nápovědě na stránce dané jednotky. Základní typy terénu "
+"mohou také mít zvláštní vlastnosti, jako například osvětlení."
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:555
@@ -4021,12 +4051,12 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Smíšené typy terénu sdílejí vlastnosti více typů terénu - pro jednotky "
+"Smíšené typy terénu sdílejí vlastnosti více typů terénu. Pro jednotky "
 "obvykle platí hodnoty <italic>text='nejlepší obrany'</italic> a "
 "<italic>text='nejhoršího pohybu'</italic> vybrané z jednotlivých složek "
-"kombinovaného terénu. Když například máme terén <italic>text='zalesněné "
-"hory'</italic>, jde o složeninu <italic>text='písečných hor'</italic> a "
-"<italic>text='hora s jeskyní'</italic>.\n"
+"kombinovaného terénu. To je například případ terénů <italic>text='zalesněné "
+"kopce'</italic>, <italic>text='písečné kopce'</italic> či "
+"<italic>text='jeskynní kopce'</italic>.\n"
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:561
@@ -4044,12 +4074,12 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Světlou výjimkou je terén s mostem, například <italic>text='mosty přes "
-"mělkou vodu'</italic>, <italic>text='hrady'</italic> a <italic>text='mosty "
-"přes propasti'</italic>. Hrady jsou snadno schůdné pro lidi suchozemské i "
-"lidi mořské — místo aby na ně platil horší z obou bonusů, mají všechny "
-"jednotky v hradu obranné bonusy a náročnost pohybu výhodnějšího z dvojice "
-"rovina a mělká voda. Podobně i mosty přes propasti jsou (nečekaně) schůdné "
+"Světlou výjimkou jsou propojovací terény, například <italic>text='mosty přes "
+"mělkou vodu'</italic>, <italic>text='brody'</italic> a <italic>text='mosty "
+"přes propasti'</italic>. Brody jsou snadno schůdné pro lidi mořské i "
+"suchozemské, všechny jednotky tedy na nich mají jak výhodnější obranné "
+"bonusy, tak snazší pohyb z dvojice terénů plochý a mělká voda, namísto aby "
+"měly ten horší pohyb. Podobně i mosty přes propasti jsou (nečekaně) schůdné "
 "pro nelétavce.\n"
 "\n"
 
@@ -4065,9 +4095,9 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Vesnice stojící na zemi také obecně poskytují nejlepší obranu a nejsnadnější "
-"pohyb. Jsou ale smíšeným terénem. Vlastnosti sdílí s terénem, na kterém jsou "
-"postaveny - hory, bažiny nebo jeskyně.\n"
+"Vesnice stojící na zemi také obecně poskytují nejlepší obranu a nejsnazší "
+"pohyb. Jsou ale smíšeným terénem a sdílí vlastnosti s terénem, na kterém "
+"jsou postaveny, ať už jsou to kopce, bažiny nebo jeskyně.\n"
 "\n"
 
 #. [topic]: id=..terrains_section
@@ -4082,8 +4112,8 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Konečně, vesnice vystavěné na vodě jsou obvykle nevhodné pro pozemní "
-"jednotky a neposkytují bonusy ani obranné, ani v pohybu, které jsou pro "
+"Konečně vesnice vystavěné na vodě jsou obvykle pro pozemní jednotky "
+"nehostinné a neposkytují bonusy ani obranné, ani pro pohyb, které jsou pro "
 "vesnice obvyklé. Místo toho jsou brány jako políčka vody.\n"
 "\n"
 
@@ -4098,9 +4128,9 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Můžete se podívat, z jakých základních typů je smíšený terén poskládaný, "
-"když najedete myší na šestiúhelník s tímto terénem a prozkoumáte ikonky typů "
-"terénu zobrazené vpravo nahoře (ve výchozím motivu)."
+"Z jakých základních typů je smíšený terén poskládaný můžeš zjistit tak, že "
+"najedeš myší na políčko s tímto terénem a podíváš se na ikonky typů terénu "
+"zobrazené vpravo nahoře (ve výchozím motivu)."
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:575
@@ -4114,9 +4144,9 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Chování smíšeného terénu si můžete prohlédnout když najedete myší na "
-"šestiúhelník s tímto terénem a podíváte se na <italic>text='popis terénu'</"
-"italic> buď stisknutím zkratky nebo kliknutím pravým myšítkem a výběrem z "
+"Chování smíšeného terénu si můžeš ověřit tak, že najedeš myší na políčko s "
+"tímto terénem a podíváš se na <italic>text='popis terénu'</italic> buď "
+"stisknutím klávesové zkratky nebo kliknutím pravým myšítkem a výběrem z "
 "kontextového menu."
 
 #. [topic]: id=..terrains_section
@@ -4143,7 +4173,7 @@ msgstr ""
 "\n"
 "Některé jednotky mají <italic>text='limitovanou obranu'</italic> na určitém "
 "základním typu terénu. Tyto jednotky vždy trpí újmu na smíšených terénech "
-"složených z takového typu terénu — jejich obrana nemůže toto omezení "
+"složených z takového typu terénu. Jejich obrana nemůže toto omezení "
 "překročit."
 
 #. [topic]: id=..terrains_section
@@ -4158,9 +4188,9 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Například, když má <ref>text='Kavalerista' dst='unit_Cavalryman'</ref> "
-"obranu 30% v lese a limitovanou obranu v lese. Proto má v zalesněných horách "
-"obranu 30% místo 40%, protože složená obrana nemůže překročit limit."
+"Například <ref>text='kavalerista' dst='unit_Cavalryman'</ref> má obranný "
+"bonus v lese limitovaný na 30 %. Proto má v zalesněných horách obranný bonus "
+"30 % místo 40 %, protože zkombinovaná hodnota nemůže překročit limit."
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:583
@@ -4172,8 +4202,8 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Pokud má jednotka obranný limit pro nějaký typ terénu, vždy má na tomto "
-"terénu stejně hodnocenou obranu (nikdy nemůže být vyšší)."
+"Pokud má jednotka na nějakém typu terénu limit obranného bonusu, má vždy na "
+"tomto terénu stejně hodnocený obranný bonus (nemůže být vyšší)."
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:585
@@ -4988,7 +5018,8 @@ msgstr ""
 "místo léčení odstraní jed."
 
 #. [resistance]: id=steadfast
-#: data/core/macros/abilities.cfg:105
+#. [resistance]: id=melee_steadfast
+#: data/core/macros/abilities.cfg:105 data/scenario-test.cfg:368
 msgid "female^steadfast"
 msgstr "vytrvalost"
 
@@ -5213,8 +5244,8 @@ msgid ""
 "Whether used offensively or defensively, this attack presses the engagement "
 "until one of the combatants is slain, or 30 rounds of attacks have occurred."
 msgstr ""
-"Ať už se použije v útoku nebo v obraně, boj trvá tak dlouho, dokud jeden z "
-"protivníků nezemře, nebo do počtu 30 útoků."
+"Ať už se použije ofenzivně nebo defenzivně, boj trvá tak dlouho, dokud jeden "
+"z protivníků nezemře, nebo do počtu 30 útoků."
 
 #. [damage]: id=backstab
 #: data/core/macros/abilities.cfg:373
@@ -5239,7 +5270,7 @@ msgstr ""
 "jednotek umístěných ve vesnicích."
 
 #. [plague]: id=plague, type=Walking Corpse
-#: data/core/macros/abilities.cfg:403
+#: data/core/macros/abilities.cfg:403 data/scenario-test.cfg:408
 msgid ""
 "When a unit is killed by a Plague attack, that unit is replaced with a "
 "Walking Corpse on the same side as the unit with the Plague attack. This "
@@ -6872,7 +6903,7 @@ msgstr ""
 #. [race]: id=human
 #: data/core/units.cfg:191
 msgid "race^Human"
-msgstr "Člověk"
+msgstr "Muž"
 
 #. [race]: id=human
 #: data/core/units.cfg:192
@@ -7654,41 +7685,6 @@ msgstr "Nemrtví"
 
 #. [race]: id=undead
 #: data/core/units.cfg:367
-#, fuzzy
-#| msgid ""
-#| "Undead are not really a single race of creatures, although often treated "
-#| "as such. Most ordinary creatures can, by a sufficiently skilled "
-#| "necromancer, be reanimated into constructs of varying character — "
-#| "resurrection of the physical form often results in a minion that obeys "
-#| "its master without question, while manifestation of a soul usually "
-#| "produces a servant with at least a modicum of thought. A great mystery of "
-#| "necromancy is how these constructs are sustained and controlled without "
-#| "continuous effort from the necromancer. Most dark magi do not provide "
-#| "constant attention or maintenance to their creations, instead allowing "
-#| "them a small degree of independence to function autonomously in line with "
-#| "the provided commands. However, when left unchecked, some undead gain "
-#| "enough sovereignty to break free from and even turn on their masters. "
-#| "Accordingly, while even lesser undead require periodic maintenance, this "
-#| "is especially true for more powerful undead, particularly greater spirits "
-#| "or death knights, who possess a high degree of inherent will. In these "
-#| "cases, necromancy becomes a battle of resolve between mage and minion. "
-#| "The necromancer must maintain a delicate balance between control over "
-#| "their servants and alloting them free will — the source of their "
-#| "individual powers.\n"
-#| "\n"
-#| "Necromancy is almost solely limited to humans. Even the legends of "
-#| "magically apt races like elves and merfolk tell of very few of their kind "
-#| "who have ever delved in the dark arts. It is surmised that necromantic "
-#| "magic requires great adaptability and a flexible mind, extremes of which "
-#| "are most commonly found in humans. The ultimate goal of most necromancers "
-#| "is to turn the same art of preserving and imbuing life upon themselves, "
-#| "to alter themselves at whatever cost, to ultimately escape death by "
-#| "preserving their own mind and spirit.\n"
-#| "\n"
-#| "<header>text='Geography'</header>\n"
-#| "While undead lords arrived on the Great Continent in considerable numbers "
-#| "only in the wake of Haldric I, they were not completely unheard of by "
-#| "elves and dwarves before that."
 msgid ""
 "Undead are not really a single race of creatures, although often treated as "
 "such. Most ordinary creatures can, by a sufficiently skilled necromancer, be "
@@ -8719,28 +8715,6 @@ msgstr "Cena rušení"
 
 #~ msgid "trait^Aged"
 #~ msgstr "Starý"
-
-#, fuzzy
-#~| msgid ""
-#~| "In combat, your units will inevitably take damage. When a unit "
-#~| "<ref>dst='experience_and_advancement' text='advances'</ref>, it will "
-#~| "heal fully. This can happen as you finish fighting an enemy, whether it "
-#~| "is your turn or not. Wesnoth offers several other ways for your units to "
-#~| "heal, all of which take place at the beginning of your turn, before you "
-#~| "take action."
-#~ msgid ""
-#~ "In combat, your units will inevitably take damage. When a unit "
-#~ "<ref>dst='advancement' text='advances'</ref>, it will heal fully. This "
-#~ "can happen as you finish fighting an enemy, whether it is your turn or "
-#~ "not. Wesnoth offers several other ways for your units to heal, all of "
-#~ "which take place at the beginning of your turn, before you take action."
-#~ msgstr ""
-#~ "Během boje dojde nevyhnutelně také k poškození vašich jednotek. Pokud "
-#~ "jednotka <ref>dst='experience_and_advancement' text='povýší'</ref>, pak "
-#~ "dojde k jejímu plnému uzdravení. To může nastat po boji s nepřítelem, ať "
-#~ "už je to váš tah, nebo ne. Wesnoth nabízí různé další možnosti pro "
-#~ "uzdravení jednotek, k většině z nich dochází na začátku vašeho tahu, před "
-#~ "tím, než převezmete ovládání."
 
 #~ msgid "Factions"
 #~ msgstr "Frakce"

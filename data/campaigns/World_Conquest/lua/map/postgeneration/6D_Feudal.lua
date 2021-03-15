@@ -1,6 +1,6 @@
 -- Feudal
 
--- unused function, replaces by roads_to_feudal_castle below, 
+-- unused function, replaces by roads_to_feudal_castle below,
 -- the odl code used
 -- `wct_iterate_roads_to(wct_roads_to_feudal_castle, 3, "Rr")`
 -- instead of `roads_to_feudal_castle(3)`
@@ -135,12 +135,12 @@ local function world_conquest_tek_map_repaint_6d()
 		-- this is faster.
 		local r8_Re = map:get_tiles_radius(
 			map:get_locations(f.terrain("Re")),
-			wesnoth.create_filter(f.all()),
+			wesnoth.map.filter(f.all()),
 			8
 		)
 		local r6_Khs = map:get_tiles_radius(
 			map:get_locations(f.terrain("Khs")),
-			wesnoth.create_filter(f.all()),
+			wesnoth.map.filter(f.all()),
 			6
 		)
 		set_terrain { "Chs",
@@ -467,6 +467,7 @@ local function world_conquest_tek_map_repaint_6d()
 
 end
 
+local _ = wesnoth.textdomain 'wesnoth-wc'
 
 return function()
 	set_map_name(_"Feudal")

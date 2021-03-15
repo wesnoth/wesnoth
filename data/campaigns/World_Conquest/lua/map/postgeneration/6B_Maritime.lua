@@ -44,7 +44,7 @@ function wct_maritime_bridges()
 		pb = functional.filter(pb, function(t) return #t.locs >0 end)
 		local sel = pb[wesnoth.random(#pb)]
 		local loc = sel.locs[wesnoth.random(#sel.locs)]
-		map:set_terrain(loc, "Ww^" .. sel.type)
+		map[loc] = "Ww^" .. sel.type
 		pb = get_possible_maritime_bridge()
 	end
 end
@@ -88,13 +88,13 @@ function roads_to_river(radius)
 	--old implementation: wct_iterate_roads_to(wct_roads_to_river, 3, "Rp")
 end
 
--- todo: the old code used 
+-- todo: the old code used
 -- `wct_iterate_roads_to(wct_roads_to_river, 3, "Rp")`
 -- but the new code uses roads_to_river(4) i guess
--- wct_iterate_roads_to_ex defeind radiosu differently thatn 
+-- wct_iterate_roads_to_ex defeind radiosu differently thatn
 -- wct_iterate_roads_to ?
--- anyway leavong this function in as a sekeltong on how 
--- wct_iterate_roads_to worked. in particular if we want to convert the remaining cases to 
+-- anyway leavong this function in as a sekeltong on how
+-- wct_iterate_roads_to worked. in particular if we want to convert the remaining cases to
 -- wct_iterate_roads_to_ex
 function wct_roads_to_river(radius)
 
@@ -191,7 +191,7 @@ function world_conquest_tek_map_decoration_6b()
 			f.adjacent(f.terrain("Wog,Wwg"))
 		))
 		loc = locs[wesnoth.random(#locs)];
-		map:set_terrain(loc, "Iwr^Vl")
+		map[loc] = "Iwr^Vl"
 	end
 
 	set_terrain { "Wwg,Iwr,Wwg^Bw\\,Wwg^Bw\\,Wwg^Bw\\,Wwg^Bw\\",
@@ -446,6 +446,8 @@ function world_conquest_tek_map_repaint_6b()
 	wct_map_cave_path_to("Rb")
 	wct_noise_snow_to("Rb")
 end
+
+local _ = wesnoth.textdomain 'wesnoth-wc'
 
 return function()
 	set_map_name(_"Maritime")

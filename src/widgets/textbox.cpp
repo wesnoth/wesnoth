@@ -18,7 +18,7 @@
 
 #include "cursor.hpp"
 #include "desktop/clipboard.hpp"
-#include "font/sdl_ttf.hpp"
+#include "font/sdl_ttf_compat.hpp"
 #include "log.hpp"
 #include "sdl/rect.hpp"
 #include "serialization/string_utils.hpp"
@@ -41,7 +41,7 @@ textbox::textbox(CVideo &video, int width, const std::string& text, bool editabl
 		,listening_(false)
 {
 	// static const SDL_Rect area = video.screen_area();
-	// const int height = font::draw_text(nullptr,area,font_size,font::NORMAL_COLOR,"ABCD",0,0).h;
+	// const int height = font::pango_draw_text(nullptr,area,font_size,font::NORMAL_COLOR,"ABCD",0,0).h;
 	set_measurements(width, font::get_max_height(font_size_));
 	set_scroll_rate(font::get_max_height(font_size_) / 2);
 	update_text_cache(true);
@@ -334,7 +334,7 @@ surface textbox::add_text_line(const std::u32string& text, const color_t& color)
 			visible_string = "";
 		}
 
-		int w = font::line_width(visible_string, font_size_);
+		int w = font::pango_line_width(visible_string, font_size_);
 
 		if(wrap_ && w >= inner_location().w) {
 			if(backup_itor != text.end()) {
@@ -364,7 +364,7 @@ surface textbox::add_text_line(const std::u32string& text, const color_t& color)
 	}
 
 	const std::string s = unicode_cast<std::string>(wrapped_text);
-	const surface res(font::get_rendered_text(s, font_size_, color));
+	const surface res(font::pango_render_text(s, font_size_, color));
 
 	return res;
 }

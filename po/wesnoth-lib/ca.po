@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.6.0+dev\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-02-20 18:40-0300\n"
+"POT-Creation-Date: 2021-03-12 20:18-0300\n"
 "PO-Revision-Date: 2021-01-16 19:31+0100\n"
 "Last-Translator: Miquel-Àngel Burgos i Fradeja <miquel.angel.burgos@gmail."
 "com>\n"
@@ -70,6 +70,14 @@ msgstr ""
 #: data/core/terrain.cfg:479 data/core/terrain.cfg:489
 msgid "Fence"
 msgstr "Tanca"
+
+#. [row]
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:193
+#: data/gui/window/mp_faction_select.cfg:176
+#, fuzzy
+#| msgid "Random"
+msgid "gender^Random"
+msgstr "Aleatori"
 
 #. [terrain_type]: id=deep_water_gray
 #. [terrain_type]: id=deep_water_medium
@@ -2749,8 +2757,9 @@ msgstr "Dificultat"
 msgid "Select difficulty:"
 msgstr "Selecciona la dificultat:"
 
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/window/chat_log.cfg:36
+#: data/gui/window/chat_log.cfg:36 src/hotkey/hotkey_command.cpp:275
 msgid "Chat Log"
 msgstr "Registre de xat"
 
@@ -3895,11 +3904,13 @@ msgstr "Observa"
 msgid "Announcements"
 msgstr "Pujades de nivell"
 
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [grid]
 #. [label]: id=title
 #. [button]: id=show_preferences
 #: data/gui/window/lobby_main.cfg:460 data/gui/window/lobby_main.cfg:655
 #: data/gui/window/preferences.cfg:213 data/gui/window/title_screen.cfg:256
+#: src/hotkey/hotkey_command.cpp:118
 msgid "Preferences"
 msgstr "Preferències"
 
@@ -4522,14 +4533,6 @@ msgstr "Líder:"
 msgid "Gender:"
 msgstr "Gènere:"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [row]
-#: data/gui/window/mp_faction_select.cfg:176
-#: src/gui/dialogs/multiplayer/faction_select.cpp:139
-#: src/gui/dialogs/multiplayer/mp_staging.cpp:492
-msgid "Random"
-msgstr "Aleatori"
-
 #. [row]
 #. [toggle_button]: id=male_toggle
 #: data/gui/window/mp_faction_select.cfg:178
@@ -4648,7 +4651,7 @@ msgstr "Desa la contrasenya localment (encriptada)"
 #. [widget]: id=label
 #: data/gui/window/mp_method_selection.cfg:46
 #: data/gui/window/preferences.cfg:365 data/gui/window/title_screen.cfg:252
-#: src/gui/dialogs/game_load.cpp:382
+#: src/gui/dialogs/game_load.cpp:406
 msgid "Multiplayer"
 msgstr "Multijugador"
 
@@ -5823,7 +5826,7 @@ msgstr "ca"
 msgid "The maximum text width is less than 1."
 msgstr "L'amplada màxima del text és inferior a 1."
 
-#: src/font/text.cpp:779
+#: src/font/text.cpp:782
 msgid "The text contains invalid Pango markup: "
 msgstr "El text conté l'etiquetatge Pango no vàlid: "
 
@@ -6387,8 +6390,8 @@ msgid "dir_size^Unknown"
 msgstr "dir_size^Desconeguda"
 
 #: src/gui/dialogs/game_cache_options.cpp:101
-#: src/gui/dialogs/network_transmission.cpp:85
 #: src/gui/dialogs/network_transmission.cpp:86
+#: src/gui/dialogs/network_transmission.cpp:87
 #: src/gui/dialogs/screenshot_notification.cpp:115
 msgid "unit_byte^B"
 msgstr "unit_byte^B"
@@ -6417,57 +6420,69 @@ msgstr "S'ha purgat la memòria cau de dades del joc."
 msgid "The game data cache could not be purged."
 msgstr "No s'ha pogut purgar completament la memòria cau de dades del joc."
 
-#: src/gui/dialogs/game_load.cpp:122
+#: src/gui/dialogs/game_load.cpp:74
+#, fuzzy
+#| msgid "Saved Games"
+msgid "No Saved Games"
+msgstr "Partides desades"
+
+#: src/gui/dialogs/game_load.cpp:74
+#, fuzzy
+#| msgid "There are no alternative video modes available"
+msgid "There are no saved games to load."
+msgstr "No hi ha modes de vídeo alternatius disponibles"
+
+#: src/gui/dialogs/game_load.cpp:143
 msgid "game_version^Current Version"
 msgstr ""
 
-#: src/gui/dialogs/game_load.cpp:127
+#: src/gui/dialogs/game_load.cpp:147
 #, fuzzy
 #| msgid "Version $version"
 msgid "game_version^Wesnoth $version"
 msgstr "Versió $version"
 
-#: src/gui/dialogs/game_load.cpp:264
+#: src/gui/dialogs/game_load.cpp:284
 msgid "The selected file is corrupt: "
 msgstr "El fitxer seleccionat està malmès: "
 
-#: src/gui/dialogs/game_load.cpp:336
+#: src/gui/dialogs/game_load.cpp:357
 msgid "(Invalid)"
 msgstr "(No vàlid)"
 
-#: src/gui/dialogs/game_load.cpp:373
+#: src/gui/dialogs/game_load.cpp:397
 msgid "Campaign: $campaign_name"
 msgstr "Campanya: $campaign_name"
 
-#: src/gui/dialogs/game_load.cpp:385
+#: src/gui/dialogs/game_load.cpp:409
 msgid "Tutorial"
 msgstr "Tutorial"
 
-#: src/gui/dialogs/game_load.cpp:388
+#: src/gui/dialogs/game_load.cpp:412
 msgid "Test scenario"
 msgstr "Escenari de prova"
 
-#: src/gui/dialogs/game_load.cpp:398
+#: src/gui/dialogs/game_load.cpp:422
 msgid "Replay"
 msgstr "Repetició"
 
-#: src/gui/dialogs/game_load.cpp:400
+#: src/gui/dialogs/game_load.cpp:424
 msgid "Turn"
 msgstr "Torn"
 
-#: src/gui/dialogs/game_load.cpp:402
+#: src/gui/dialogs/game_load.cpp:426
 msgid "Scenario start"
 msgstr "Inici de l'escenari"
 
-#: src/gui/dialogs/game_load.cpp:405
+#: src/gui/dialogs/game_load.cpp:429
 msgid "Difficulty: "
 msgstr "Dificultat: "
 
-#: src/gui/dialogs/game_load.cpp:409
+#: src/gui/dialogs/game_load.cpp:433
 msgid "Version: "
 msgstr "Versió: "
 
-#: src/gui/dialogs/game_load.cpp:414
+#: src/gui/dialogs/game_load.cpp:438
 msgid "Modifications: "
 msgstr "Modificacions: "
 
@@ -6607,6 +6622,11 @@ msgstr ""
 #: src/gui/dialogs/lua_interpreter.cpp:678
 msgid "lua console"
 msgstr "consola lua"
+
+#: src/gui/dialogs/multiplayer/faction_select.cpp:139
+#: src/gui/dialogs/multiplayer/mp_staging.cpp:492
+msgid "Random"
+msgstr "Aleatori"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:106
 msgid "Selected Game"
@@ -7459,14 +7479,10 @@ msgstr "Canvia de bàndol (depuració)"
 msgid "Kill Unit (Debug!)"
 msgstr "Mata la unitat (depuració)"
 
-#: src/hotkey/hotkey_command.cpp:118
-#, fuzzy
-#| msgid "Preferences"
-msgid "Open Preferences Screen"
-msgstr "Preferències"
-
 #: src/hotkey/hotkey_command.cpp:119
-msgid "Scenario Objectives"
+#, fuzzy
+#| msgid "Scenario Objectives"
+msgid "Objectives"
 msgstr "Objectius de l'escenari"
 
 #: src/hotkey/hotkey_command.cpp:122
@@ -7478,7 +7494,9 @@ msgid "Continue Network Game"
 msgstr "Reprèn la partida en xarxa"
 
 #: src/hotkey/hotkey_command.cpp:125
-msgid "Quit to Main Menu"
+#, fuzzy
+#| msgid "Quit to Main Menu"
+msgid "Quit to Menu"
 msgstr "Surt al menú principal"
 
 #: src/hotkey/hotkey_command.cpp:126
@@ -8008,12 +8026,10 @@ msgstr ""
 msgid "Hint: save-loading is unnecessary"
 msgstr ""
 
-#: src/hotkey/hotkey_command.cpp:275
-msgid "View Chat Log"
-msgstr "Veure el registre del xat"
-
 #: src/hotkey/hotkey_command.cpp:276
-msgid "Enter User Command"
+#, fuzzy
+#| msgid "Enter User Command"
+msgid "Enter Command"
 msgstr "Introdueix una ordre d'usuari"
 
 #: src/hotkey/hotkey_command.cpp:277
@@ -8025,8 +8041,10 @@ msgid "Run Formula"
 msgstr "Executa la fórmula"
 
 #: src/hotkey/hotkey_command.cpp:279
-msgid "Clear Chat and Errors"
-msgstr ""
+#, fuzzy
+#| msgid "Player Chat"
+msgid "Clear Chat"
+msgstr "Xat del jugador"
 
 #: src/hotkey/hotkey_command.cpp:281
 msgid "Change Language"
@@ -8172,6 +8190,14 @@ msgid ""
 msgstr ""
 "El nom de la tecla «$deprecated_key» ha canviat a «$key». La compatibilitat "
 "de «$deprecated_key» s'eliminarà a la versió $removal_version."
+
+#, fuzzy
+#~| msgid "Preferences"
+#~ msgid "Open Preferences Screen"
+#~ msgstr "Preferències"
+
+#~ msgid "View Chat Log"
+#~ msgstr "Veure el registre del xat"
 
 #~ msgid "Categories:"
 #~ msgstr "Categories:"
@@ -8722,9 +8748,6 @@ msgstr ""
 #~| msgid "Prefs section^Sound"
 #~ msgid "Prefs section^Editor"
 #~ msgstr "So"
-
-#~ msgid "There are no alternative video modes available"
-#~ msgstr "No hi ha modes de vídeo alternatius disponibles"
 
 #, fuzzy
 #~| msgid "Height:"

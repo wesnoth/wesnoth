@@ -21,7 +21,7 @@
 #include "cursor.hpp"
 #include "display.hpp"
 #include "fake_unit_manager.hpp"
-#include "font/sdl_ttf.hpp"
+#include "font/sdl_ttf_compat.hpp"
 #include "font/text.hpp"
 #include "preferences/game.hpp"
 #include "gettext.hpp"
@@ -29,7 +29,6 @@
 #include "hotkey/command_executor.hpp"
 #include "language.hpp"
 #include "log.hpp"
-#include "font/marked-up_text.hpp"
 #include "map/map.hpp"
 #include "map/label.hpp"
 #include "minimap.hpp"
@@ -1435,19 +1434,8 @@ static void draw_label(CVideo& video, surface target, const theme::label& label)
 {
 	//log_scope("draw label");
 
-	const color_t& RGB = label.font_rgb();
-
-	std::string c_start="<";
-	std::string c_sep=",";
-	std::string c_end=">";
-	std::stringstream color;
-	color<< c_start << RGB.r << c_sep << RGB.g << c_sep << RGB.b << c_end;
-	std::string text = label.text();
-
-	if(label.font_rgb_set()) {
-		color<<text;
-		text = color.str();
-	}
+	const std::string& text = label.text();
+	const color_t text_color = label.font_rgb_set() ? label.font_rgb() : font::NORMAL_COLOR;
 	const std::string& icon = label.icon();
 	SDL_Rect& loc = label.location(video.screen_area());
 
@@ -1465,9 +1453,8 @@ static void draw_label(CVideo& video, surface target, const theme::label& label)
 			tooltips::add_tooltip(loc,text);
 		}
 	} else if(text.empty() == false) {
-		font::draw_text(&video,loc,label.font_size(),font::NORMAL_COLOR,text,loc.x,loc.y);
+		font::pango_draw_text(&video, loc, label.font_size(), text_color, text, loc.x, loc.y);
 	}
-
 }
 
 void display::draw_all_panels()
@@ -1530,8 +1517,8 @@ void display::draw_text_in_hex(const map_location& loc,
 
 	const std::size_t font_sz = static_cast<std::size_t>(font_size * get_zoom_factor());
 
-	surface text_surf = font::get_rendered_text(text, font_sz, color);
-	surface back_surf = font::get_rendered_text(text, font_sz, font::BLACK_COLOR);
+	surface text_surf = font::pango_render_text(text, font_sz, color);
+	surface back_surf = font::pango_render_text(text, font_sz, font::BLACK_COLOR);
 	const int x = get_location_x(loc) - text_surf->w/2
 	              + static_cast<int>(x_in_hex* hex_size());
 	const int y = get_location_y(loc) - text_surf->h/2
@@ -2699,7 +2686,7 @@ void display::draw_hex(const map_location& loc) {
 		if (draw_coordinates_) {
 			int off_x = xpos + hex_size()/2;
 			int off_y = ypos + hex_size()/2;
-			surface text = font::get_rendered_text(lexical_cast<std::string>(loc), font::SIZE_SMALL, font::NORMAL_COLOR);
+			surface text = font::pango_render_text(lexical_cast<std::string>(loc), font::SIZE_SMALL, font::NORMAL_COLOR);
 			surface bg(text->w, text->h);
 			SDL_Rect bg_rect {0, 0, text->w, text->h};
 			sdl::fill_surface_rect(bg, &bg_rect, 0xaa000000);
@@ -2717,7 +2704,7 @@ void display::draw_hex(const map_location& loc) {
 		if (draw_terrain_codes_ && (game_config::debug || !shrouded(loc))) {
 			int off_x = xpos + hex_size()/2;
 			int off_y = ypos + hex_size()/2;
-			surface text = font::get_rendered_text(lexical_cast<std::string>(get_map().get_terrain(loc)), font::SIZE_SMALL, font::NORMAL_COLOR);
+			surface text = font::pango_render_text(lexical_cast<std::string>(get_map().get_terrain(loc)), font::SIZE_SMALL, font::NORMAL_COLOR);
 			surface bg(text->w, text->h);
 			SDL_Rect bg_rect {0, 0, text->w, text->h};
 			sdl::fill_surface_rect(bg, &bg_rect, 0xaa000000);
@@ -2734,7 +2721,7 @@ void display::draw_hex(const map_location& loc) {
 		if (draw_num_of_bitmaps_) {
 			int off_x = xpos + hex_size()/2;
 			int off_y = ypos + hex_size()/2;
-			surface text = font::get_rendered_text(std::to_string(num_images_bg + num_images_fg), font::SIZE_SMALL, font::NORMAL_COLOR);
+			surface text = font::pango_render_text(std::to_string(num_images_bg + num_images_fg), font::SIZE_SMALL, font::NORMAL_COLOR);
 			surface bg(text->w, text->h);
 			SDL_Rect bg_rect {0, 0, text->w, text->h};
 			sdl::fill_surface_rect(bg, &bg_rect, 0xaa000000);
@@ -2814,7 +2801,7 @@ void display::refresh_report(const std::string& report_name, const config * new_
 
 	// Now we will need the config. Generate one if needed.
 
-	boost::optional <events::mouse_handler &> mhb = boost::none;
+	utils::optional_reference<events::mouse_handler> mhb = std::nullopt;
 
 	if (resources::controller) {
 		mhb = resources::controller->get_mouse_handler_base();
@@ -2902,19 +2889,23 @@ void display::refresh_report(const std::string& report_name, const config * new_
 			if (used_ellipsis) goto skip_element;
 
 			// Draw a text element.
-			font::pango_text text;
-			if (item->font_rgb_set()) {
-				text.set_foreground_color(item->font_rgb());
-			}
+			font::pango_text& text = font::get_text_renderer();
 			bool eol = false;
 			if (t[t.size() - 1] == '\n') {
 				eol = true;
 				t = t.substr(0, t.size() - 1);
 			}
-			text.set_font_size(item->font_size());
-			text.set_text(t, true);
-			text.set_maximum_width(area.w);
-			text.set_maximum_height(area.h, false);
+			text.set_link_aware(false)
+				.set_text(t, true);
+			text.set_font_size(item->font_size())
+				.set_font_style(font::pango_text::STYLE_NORMAL)
+				.set_alignment(PANGO_ALIGN_LEFT)
+				.set_foreground_color(item->font_rgb_set() ? item->font_rgb() : color_t{})
+				.set_maximum_width(area.w)
+				.set_maximum_height(area.h, false)
+				.set_ellipse_mode(PANGO_ELLIPSIZE_END)
+				.set_characters_per_line(0);
+
 			surface s = text.render();
 
 			// check if next element is text with almost no space to show it

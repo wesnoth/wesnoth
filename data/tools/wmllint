@@ -1889,6 +1889,7 @@ to be called on their own".format(filename, num))
     in_name_generator = False
     in_candidate_action = False
     in_lua = False
+    in_lua_args = False
     storeid = None
     storevar = None
     ignoreable = False
@@ -1904,8 +1905,13 @@ to be called on their own".format(filename, num))
         elif "[/lua]" in lines[i]:
             in_lua = False
         if in_lua:
-            # As far as I can tell none of the below tests make sense inside of a lua tag
-            continue
+            if has_opening_tag(lines[i], "args"):
+                in_lua_args = True
+            elif "[/args]" in lines[i]:
+                in_lua_args = False
+            if not in_lua_args:
+                # As far as I can tell none of the below tests make sense inside of a lua tag
+                continue
         if '[' in lines[i]:
             preamble_seen = True
         # This logic looks odd because a scenario can be conditionally
@@ -2726,6 +2732,15 @@ def maptransform(filename, baseline, inmap, y):
     for i in range(len(inmap[y])):
         for (old, new) in mapchanges:
             inmap[y][i] = inmap[y][i].replace(old, new)
+        # this change needs to be hardcoded here because it's tricky
+        # we're converting from a terrain without overlays to a terrain +
+        # overlay code
+        # since we don't support having two overlays, skip and print a warning
+        if "Xol^" in inmap[y][i]:
+            print("{}, line {}: Xol (enlightened wall) terrain with overlays \
+must be converted manually".format(filename, baseline + y + 1))
+        elif "Xol" in inmap[y][i]:
+            inmap[y][i] = inmap[y][i].replace("Xol", "Xos^Efs")
 
 # Generic machinery starts here
 

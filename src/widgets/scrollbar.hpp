@@ -34,8 +34,6 @@ public:
 	//- @param callback  a callback interface for warning that the grip has been moved
 	scrollbar(CVideo &video);
 
-	virtual void hide(bool value = true);
-
 	/**
 	 * Determine where the scrollbar is.
 	 *
@@ -64,9 +62,6 @@ public:
 	/** Set scroll rate. */
 	void set_scroll_rate(unsigned r);
 
-	/** Return true if the scrollbar has a valid size. */
-	bool is_valid_height(int height) const;
-
 	/** Scrolls down one step */
 	void scroll_down();
 
@@ -74,18 +69,12 @@ public:
 	void scroll_up();
 
 protected:
-	virtual sdl_handler_vector handler_members();
-	virtual void update_location(const SDL_Rect& rect);
 	virtual void handle_event(const SDL_Event& event);
-	virtual void process_event();
 	virtual void draw_contents();
 
 private:
 	SDL_Rect grip_area() const;
-	SDL_Rect groove_area() const;
 	surface mid_scaled_, groove_scaled_;
-
-	button uparrow_, downarrow_;
 
 	enum STATE { UNINIT, NORMAL, ACTIVE, DRAGGED };
 	STATE state_;

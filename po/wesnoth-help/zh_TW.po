@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.14\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-02-20 18:40-0300\n"
+"POT-Creation-Date: 2021-03-12 20:18-0300\n"
 "PO-Revision-Date: 2019-10-19 20:33+0800\n"
 "Last-Translator: 楊綮銘 <steven2880@gmail.com>\n"
 "Language-Team: Wesnoth Traditional Chinese Team\n"
@@ -278,6 +278,7 @@ msgstr "夜行"
 #. [plague]: id=plague, type=Walking Corpse
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:98
 #: data/core/macros/abilities.cfg:391 data/core/macros/abilities.cfg:402
+#: data/scenario-test.cfg:407
 msgid "plague"
 msgstr "瘟疫"
 
@@ -315,8 +316,9 @@ msgid "slows"
 msgstr "緩速"
 
 #. [resistance]: id=steadfast
+#. [resistance]: id=melee_steadfast
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:119
-#: data/core/macros/abilities.cfg:104
+#: data/core/macros/abilities.cfg:104 data/scenario-test.cfg:367
 msgid "steadfast"
 msgstr "堅守"
 
@@ -4443,7 +4445,8 @@ msgid ""
 msgstr "該單位可以每回合恢復8點生命值。如果中毒則以移除中毒效果代替治療。"
 
 #. [resistance]: id=steadfast
-#: data/core/macros/abilities.cfg:105
+#. [resistance]: id=melee_steadfast
+#: data/core/macros/abilities.cfg:105 data/scenario-test.cfg:368
 msgid "female^steadfast"
 msgstr "堅守"
 
@@ -4688,7 +4691,7 @@ msgstr ""
 "中的單位不起作用。"
 
 #. [plague]: id=plague, type=Walking Corpse
-#: data/core/macros/abilities.cfg:403
+#: data/core/macros/abilities.cfg:403 data/scenario-test.cfg:408
 msgid ""
 "When a unit is killed by a Plague attack, that unit is replaced with a "
 "Walking Corpse on the same side as the unit with the Plague attack. This "

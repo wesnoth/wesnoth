@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.5.8+dev\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-02-20 18:40-0300\n"
+"POT-Creation-Date: 2021-03-12 20:18-0300\n"
 "PO-Revision-Date: 2009-01-31 21:25+0100\n"
 "Last-Translator: Robert Millan <rmh@aybabtu.com>\n"
 "Language-Team: Catalan <wesnoth-ca@lists.ettin.org>\n"
@@ -311,6 +311,7 @@ msgstr "sigil"
 #. [plague]: id=plague, type=Walking Corpse
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:98
 #: data/core/macros/abilities.cfg:391 data/core/macros/abilities.cfg:402
+#: data/scenario-test.cfg:407
 msgid "plague"
 msgstr "plaga"
 
@@ -348,8 +349,9 @@ msgid "slows"
 msgstr "alentidor"
 
 #. [resistance]: id=steadfast
+#. [resistance]: id=melee_steadfast
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:119
-#: data/core/macros/abilities.cfg:104
+#: data/core/macros/abilities.cfg:104 data/scenario-test.cfg:367
 msgid "steadfast"
 msgstr "fermesa"
 
@@ -4091,7 +4093,8 @@ msgstr ""
 "enverinada, eliminarà el verí en comptes de curar-se."
 
 #. [resistance]: id=steadfast
-#: data/core/macros/abilities.cfg:105
+#. [resistance]: id=melee_steadfast
+#: data/core/macros/abilities.cfg:105 data/scenario-test.cfg:368
 msgid "female^steadfast"
 msgstr "fermesa"
 
@@ -4435,7 +4438,7 @@ msgstr ""
 "llogarets o que siguen no mortes."
 
 #. [plague]: id=plague, type=Walking Corpse
-#: data/core/macros/abilities.cfg:403
+#: data/core/macros/abilities.cfg:403 data/scenario-test.cfg:408
 #, fuzzy
 #| msgid ""
 #| "Plague:\n"

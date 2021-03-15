@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.14\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-02-20 18:40-0300\n"
+"POT-Creation-Date: 2021-03-12 20:18-0300\n"
 "PO-Revision-Date: 2020-05-09 22:27+0800\n"
 "Last-Translator: 楊綮銘 <steven2880@gmail.com>\n"
 "Language-Team: Wesnoth Traditional Chinese Team\n"
@@ -67,6 +67,14 @@ msgstr ""
 #: data/core/terrain.cfg:479 data/core/terrain.cfg:489
 msgid "Fence"
 msgstr "圍籬"
+
+#. [row]
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:193
+#: data/gui/window/mp_faction_select.cfg:176
+#, fuzzy
+#| msgid "Random"
+msgid "gender^Random"
+msgstr "隨機"
 
 #. [terrain_type]: id=deep_water_gray
 #. [terrain_type]: id=deep_water_medium
@@ -2652,8 +2660,9 @@ msgstr "難度"
 msgid "Select difficulty:"
 msgstr "選擇難度："
 
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/window/chat_log.cfg:36
+#: data/gui/window/chat_log.cfg:36 src/hotkey/hotkey_command.cpp:275
 msgid "Chat Log"
 msgstr "聊天紀録"
 
@@ -3793,11 +3802,13 @@ msgstr "觀察者"
 msgid "Announcements"
 msgstr "升級"
 
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [grid]
 #. [label]: id=title
 #. [button]: id=show_preferences
 #: data/gui/window/lobby_main.cfg:460 data/gui/window/lobby_main.cfg:655
 #: data/gui/window/preferences.cfg:213 data/gui/window/title_screen.cfg:256
+#: src/hotkey/hotkey_command.cpp:118
 msgid "Preferences"
 msgstr "偏好設定"
 
@@ -4424,14 +4435,6 @@ msgstr "指揮官："
 msgid "Gender:"
 msgstr "性別："
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [row]
-#: data/gui/window/mp_faction_select.cfg:176
-#: src/gui/dialogs/multiplayer/faction_select.cpp:139
-#: src/gui/dialogs/multiplayer/mp_staging.cpp:492
-msgid "Random"
-msgstr "隨機"
-
 #. [row]
 #. [toggle_button]: id=male_toggle
 #: data/gui/window/mp_faction_select.cfg:178
@@ -4549,7 +4552,7 @@ msgstr "在本機儲存密碼（明碼）"
 #. [widget]: id=label
 #: data/gui/window/mp_method_selection.cfg:46
 #: data/gui/window/preferences.cfg:365 data/gui/window/title_screen.cfg:252
-#: src/gui/dialogs/game_load.cpp:382
+#: src/gui/dialogs/game_load.cpp:406
 msgid "Multiplayer"
 msgstr "多人對戰"
 
@@ -5697,7 +5700,7 @@ msgstr "zh_TW"
 msgid "The maximum text width is less than 1."
 msgstr "最大文字寬度小於1。"
 
-#: src/font/text.cpp:779
+#: src/font/text.cpp:782
 msgid "The text contains invalid Pango markup: "
 msgstr "此文件有無效的 Pango 標記："
 
@@ -6245,8 +6248,8 @@ msgid "dir_size^Unknown"
 msgstr "未知"
 
 #: src/gui/dialogs/game_cache_options.cpp:101
-#: src/gui/dialogs/network_transmission.cpp:85
 #: src/gui/dialogs/network_transmission.cpp:86
+#: src/gui/dialogs/network_transmission.cpp:87
 #: src/gui/dialogs/screenshot_notification.cpp:115
 msgid "unit_byte^B"
 msgstr "B"
@@ -6275,57 +6278,69 @@ msgstr "遊戲數據暫存已完全刪除。"
 msgid "The game data cache could not be purged."
 msgstr "遊戲數據暫存無法完全刪除。"
 
-#: src/gui/dialogs/game_load.cpp:122
+#: src/gui/dialogs/game_load.cpp:74
+#, fuzzy
+#| msgid "Saved Games"
+msgid "No Saved Games"
+msgstr "遊戲存檔"
+
+#: src/gui/dialogs/game_load.cpp:74
+#, fuzzy
+#| msgid "There are no alternative video modes available"
+msgid "There are no saved games to load."
+msgstr "没有其他可用的顯示模式"
+
+#: src/gui/dialogs/game_load.cpp:143
 msgid "game_version^Current Version"
 msgstr ""
 
-#: src/gui/dialogs/game_load.cpp:127
+#: src/gui/dialogs/game_load.cpp:147
 #, fuzzy
 #| msgid "Version $version"
 msgid "game_version^Wesnoth $version"
 msgstr "版本 $version"
 
-#: src/gui/dialogs/game_load.cpp:264
+#: src/gui/dialogs/game_load.cpp:284
 msgid "The selected file is corrupt: "
 msgstr "所選的檔案是損壞的："
 
-#: src/gui/dialogs/game_load.cpp:336
+#: src/gui/dialogs/game_load.cpp:357
 msgid "(Invalid)"
 msgstr "（無效）"
 
-#: src/gui/dialogs/game_load.cpp:373
+#: src/gui/dialogs/game_load.cpp:397
 msgid "Campaign: $campaign_name"
 msgstr "戰役：$campaign_name"
 
-#: src/gui/dialogs/game_load.cpp:385
+#: src/gui/dialogs/game_load.cpp:409
 msgid "Tutorial"
 msgstr "教學"
 
-#: src/gui/dialogs/game_load.cpp:388
+#: src/gui/dialogs/game_load.cpp:412
 msgid "Test scenario"
 msgstr "測試章節"
 
-#: src/gui/dialogs/game_load.cpp:398
+#: src/gui/dialogs/game_load.cpp:422
 msgid "Replay"
 msgstr "錄影"
 
-#: src/gui/dialogs/game_load.cpp:400
+#: src/gui/dialogs/game_load.cpp:424
 msgid "Turn"
 msgstr "回合"
 
-#: src/gui/dialogs/game_load.cpp:402
+#: src/gui/dialogs/game_load.cpp:426
 msgid "Scenario start"
 msgstr "開始"
 
-#: src/gui/dialogs/game_load.cpp:405
+#: src/gui/dialogs/game_load.cpp:429
 msgid "Difficulty: "
 msgstr "難度： "
 
-#: src/gui/dialogs/game_load.cpp:409
+#: src/gui/dialogs/game_load.cpp:433
 msgid "Version: "
 msgstr "版本： "
 
-#: src/gui/dialogs/game_load.cpp:414
+#: src/gui/dialogs/game_load.cpp:438
 msgid "Modifications: "
 msgstr "模組："
 
@@ -6463,6 +6478,11 @@ msgstr "Lua 控制台只能在偵錯模式中使用！（請先執行 ':debug' �
 #: src/gui/dialogs/lua_interpreter.cpp:678
 msgid "lua console"
 msgstr "Lua 控制台"
+
+#: src/gui/dialogs/multiplayer/faction_select.cpp:139
+#: src/gui/dialogs/multiplayer/mp_staging.cpp:492
+msgid "Random"
+msgstr "隨機"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:106
 msgid "Selected Game"
@@ -7300,14 +7320,10 @@ msgstr "改變陣營（測試！）"
 msgid "Kill Unit (Debug!)"
 msgstr "移除單位（測試！）"
 
-#: src/hotkey/hotkey_command.cpp:118
-#, fuzzy
-#| msgid "Preferences"
-msgid "Open Preferences Screen"
-msgstr "偏好設定"
-
 #: src/hotkey/hotkey_command.cpp:119
-msgid "Scenario Objectives"
+#, fuzzy
+#| msgid "Scenario Objectives"
+msgid "Objectives"
 msgstr "任務目標"
 
 #: src/hotkey/hotkey_command.cpp:122
@@ -7319,7 +7335,9 @@ msgid "Continue Network Game"
 msgstr "繼續多人對戰"
 
 #: src/hotkey/hotkey_command.cpp:125
-msgid "Quit to Main Menu"
+#, fuzzy
+#| msgid "Quit to Main Menu"
+msgid "Quit to Menu"
 msgstr "退出至主選單"
 
 #: src/hotkey/hotkey_command.cpp:126
@@ -7837,12 +7855,10 @@ msgstr ""
 msgid "Hint: save-loading is unnecessary"
 msgstr ""
 
-#: src/hotkey/hotkey_command.cpp:275
-msgid "View Chat Log"
-msgstr "查看聊天紀録"
-
 #: src/hotkey/hotkey_command.cpp:276
-msgid "Enter User Command"
+#, fuzzy
+#| msgid "Enter User Command"
+msgid "Enter Command"
 msgstr "輸入使用者命令"
 
 #: src/hotkey/hotkey_command.cpp:277
@@ -7854,8 +7870,10 @@ msgid "Run Formula"
 msgstr "執行公式"
 
 #: src/hotkey/hotkey_command.cpp:279
-msgid "Clear Chat and Errors"
-msgstr ""
+#, fuzzy
+#| msgid "Player Chat"
+msgid "Clear Chat"
+msgstr "玩家聊天"
 
 #: src/hotkey/hotkey_command.cpp:281
 msgid "Change Language"
@@ -7993,6 +8011,14 @@ msgid ""
 msgstr ""
 "按鍵'$deprecated_key'已經被更名為'$key'。'$deprecated_key'將在"
 "$removal_version版本中移除。"
+
+#, fuzzy
+#~| msgid "Preferences"
+#~ msgid "Open Preferences Screen"
+#~ msgstr "偏好設定"
+
+#~ msgid "View Chat Log"
+#~ msgstr "查看聊天紀録"
 
 #~ msgid "Categories:"
 #~ msgstr "類別："
@@ -8662,9 +8688,6 @@ msgstr ""
 
 #~ msgid "Binding"
 #~ msgstr "快捷鍵"
-
-#~ msgid "There are no alternative video modes available"
-#~ msgstr "没有其他可用的顯示模式"
 
 #~ msgid "Button"
 #~ msgstr "按鍵"

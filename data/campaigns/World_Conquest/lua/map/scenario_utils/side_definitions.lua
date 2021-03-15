@@ -4,7 +4,7 @@
 ---- And the wml events to initilize the enemy sides ----
 ---------------------------------------------------------
 
-_ = wesnoth.textdomain "wesnoth"
+_ = wesnoth.textdomain "wesnoth-wc"
 helper = wesnoth.require("helper")
 
 local function table_join(t1, t2)

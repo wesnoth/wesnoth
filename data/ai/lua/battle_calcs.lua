@@ -677,8 +677,8 @@ function battle_calcs.battle_outcome(attacker, defender, cfg, cache)
     if (def_max_hits > att_strikes) then def_max_hits = att_strikes end
 
     -- Probability of landing a hit
-    local att_hit_prob = 1 - defender:defense_on(wesnoth.get_terrain(defender.x, defender.y)) / 100.
-    local def_hit_prob = 1 - attacker:defense_on(wesnoth.get_terrain(dst[1], dst[2])) / 100.
+    local att_hit_prob = 1 - defender:defense_on(wesnoth.current.map[defender]) / 100.
+    local def_hit_prob = 1 - attacker:defense_on(wesnoth.current.map[dst]) / 100.
 
     -- Magical: attack and defense, and under all circumstances
     if att_attack.magical then att_hit_prob = 0.7 end
@@ -809,12 +809,14 @@ function battle_calcs.attack_rating(attacker, defender, dst, cfg, cache)
         damage = damage + 6 * (att_stats.slowed - att_stats.hp_chance[0])
     end
 
+    local map = wesnoth.current.map
+
     -- If attack is from a healing location, count that as slightly more than the healing amount
-    damage = damage - 1.25 * wesnoth.get_terrain_info(wesnoth.get_terrain(dst[1], dst[2])).healing
+    damage = damage - 1.25 * wesnoth.terrain_types[map[dst]].healing
 
     -- Equivalently, if attack is adjacent to an unoccupied healing location, that's bad
     for xa,ya in H.adjacent_tiles(dst[1], dst[2]) do
-        local healing = wesnoth.get_terrain_info(wesnoth.get_terrain(xa, ya)).healing
+        local healing = wesnoth.terrain_types[map[{xa, ya}]].healing
         if (healing > 0) and (not wesnoth.units.get(xa, ya)) then
             damage = damage + 1.25 * healing
         end
@@ -865,7 +867,7 @@ function battle_calcs.attack_rating(attacker, defender, dst, cfg, cache)
     end
 
     -- If defender is on a healing location, count that as slightly more than the healing amount
-    damage = damage - 1.25 * wesnoth.get_terrain_info(wesnoth.get_terrain(defender.x, defender.y)).healing
+    damage = damage - 1.25 * wesnoth.terrain_types[map[defender]].healing
 
     if (damage < 0) then damage = 0. end
 
@@ -908,7 +910,7 @@ function battle_calcs.attack_rating(attacker, defender, dst, cfg, cache)
     -- If defender is on a village, add a bonus rating (we want to get rid of those preferentially)
     -- So yes, this is positive, even though it's a plus for the defender
     -- Note: defenders on healing locations also got a negative damage rating above (these don't exactly cancel each other though)
-    if wesnoth.get_terrain_info(wesnoth.get_terrain(defender.x, defender.y)).village then
+    if wesnoth.terrain_types[map[defender]].village then
         defender_value = defender_value * (1. + 10. / attacker.max_hitpoints)
     end
 
@@ -924,7 +926,7 @@ function battle_calcs.attack_rating(attacker, defender, dst, cfg, cache)
     -- We don't need a bonus for good terrain for the attacker, as that is covered in the damage calculation
     -- However, we add a small bonus for good terrain defense of the _defender_ on the _attack_ hex
     -- This is in order to take good terrain away from defender on next move, all else being equal
-    local defender_defense = - (100 - defender:defense_on(wesnoth.get_terrain(dst[1], dst[2]))) / 100.
+    local defender_defense = - (100 - defender:defense_on(map[dst])) / 100.
     defender_value = defender_value + defender_defense * defense_weight
 
     -- Get a very small bonus for hexes in between defender and AI leader
@@ -1229,10 +1231,10 @@ function battle_calcs.relative_damage_map(units, enemies, cache)
     -- Get the attack maps for each unit in 'units' and 'enemies'
     local my_attack_maps, enemy_attack_maps = {}, {}
     for i,unit in ipairs(units) do
-        my_attack_maps[i] = battle_calcs.get_attack_map_unit(unit, cfg)
+        my_attack_maps[i] = battle_calcs.get_attack_map_unit(unit)
     end
     for i,e in ipairs(enemies) do
-        enemy_attack_maps[i] = battle_calcs.get_attack_map_unit(e, cfg)
+        enemy_attack_maps[i] = battle_calcs.get_attack_map_unit(e)
     end
 
     -- Get the damage rating for each unit in 'units'. It is the maximum
@@ -1316,7 +1318,7 @@ function battle_calcs.best_defense_map(units, cfg)
         if max_moves then unit.moves = old_moves end
 
         for _,loc in ipairs(reach) do
-            local defense = unit:defense_on(wesnoth.get_terrain(loc[1], loc[2]))
+            local defense = unit:defense_on(wesnoth.current.map[loc])
 
             if (defense > (defense_map:get(loc[1], loc[2]) or - math.huge)) then
                 defense_map:insert(loc[1], loc[2], defense)
@@ -1524,7 +1526,7 @@ function battle_calcs.get_attack_combos_subset(units, enemy, cfg)
                     -- Store information about it in 'loc' and add this to 'locs'
                     -- Want coordinates (dst) and terrain defense (for sorting)
                     loc.dst = xa * 1000 + ya
-                    loc.hit_prob = 100 - unit:defense_on(wesnoth.get_terrain(xa, ya))
+                    loc.hit_prob = 100 - unit:defense_on(wesnoth.current.map[{xa, ya}])
                     table.insert(locs, loc)
 
                     -- Also mark this hex as usable

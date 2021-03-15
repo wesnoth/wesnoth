@@ -38,7 +38,7 @@ function training.get_chances(trainer, grade)
 	return training.get_trainer(trainer).grade[grade + 1].chance
 end
 
-function training.apply_trait(unit, trait, check)
+function training.apply_trait(u, trait, check)
 	if u:matches(check) and u:matches( wml.tag.filter_wml { wml.tag.modifications { wml.tag.trait { id = trait.id } } } ) then
 		u:add_modification("trait", trait)
 	else

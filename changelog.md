@@ -4,17 +4,40 @@
  ### Campaigns
     * Delfador's Memoirs
      * Adjust campaign difficulty
+    * Liberty
+     * Revise dialogue
+     * Reduce difficulty
+    * Sceptre of Fire
+     * Adjust campaign difficulty
+    * Secrets of the Ancients
+     * Adjust campaign difficulty
+    * Son of the Black Eye
+     * Adjust campaign difficulty
+    * The South Guard
+     * Reduce campaign difficulty
+   * Under the Burning Suns:
+     * Adjust campaign difficulty
  ### Editor
  ### Multiplayer
  ### Packaging
  ### Terrain
  ### Translations
+   * Updated translations: British English, Chinese (Traditional), Czech, Italian
  ### Units
+   * Beast-rider Walking Corpse variation (for UtBS Quenoth Tauroch line, but generally available)
  ### User interface
+   * Improved the Load dialog when there are no saved games for the current version, and also when there are corrupted files.
+   * Re-added the pop-up when there are no saved games at all (issue #5517).
+   * Fixed resource leak in the Pango text rendering pipeline when using the characters_per_line constraint.
+   * Make the warning about loading saves from old versions much clearer.
+   * Made legacy GUI1 scrollbars match regular GUI2 scrollbars.
  ### WML Engine
    * Standard Location Filters now support gives_income=yes|no to make it simpler to match villages regardless of owner
+   * Fixed ThemeWML `[label] font_rgb=` generating text elements with broken UTF-8 sequences.
    * abilities used like weapon can call a [teaching_anim] instead of [leading_anim] now.
  ### Miscellaneous and Bug Fixes
+   * Added support for 1.14’s tag names in `[terrain_defaults]` (issue #5308).
+   * Replaced legacy SDL_ttf/FriBidi-based font rendering used in old GUI1 code paths with Pango.
 
 ## Version 1.15.10
  ### Add-ons server

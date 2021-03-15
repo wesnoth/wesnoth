@@ -337,7 +337,11 @@ bool game_board::change_terrain(
 	} else if(mode_str == "overlay") {
 		mode = terrain_type_data::OVERLAY;
 	}
+	
+	return change_terrain(loc, terrain, mode, replace_if_failed);
+}
 
+bool game_board::change_terrain(const map_location &loc, const t_translation::terrain_code &terrain, terrain_type_data::merge_mode& mode, bool replace_if_failed) {
 	/*
 	 * When a hex changes from a village terrain to a non-village terrain, and
 	 * a team owned that village it loses that village. When a hex changes from

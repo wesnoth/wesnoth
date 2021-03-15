@@ -45,7 +45,7 @@ function muff_toras_move:execution()
         end
 
         -- All else being equal, go with good terrain
-        local hit_chance = muff_toras:defense(wesnoth.get_terrain(x, y))
+        local hit_chance = muff_toras:defense(wesnoth.current.map[{x, y}])
         rating = rating - hit_chance
 
         -- Finally, we want to run away from enemies if there are no other factors.

@@ -40,7 +40,7 @@ function gui.get_user_choice(attr, options)
 				code = string.format("gui.__user_choice_helper(%d)", k)
 			}}})
 	end
-	wml_actions.message(msg)
+	wesnoth.wml_actions.message(msg)
 	gui.__user_choice_helper = nil
 	return result
 end

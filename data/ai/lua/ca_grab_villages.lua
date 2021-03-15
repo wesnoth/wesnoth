@@ -28,7 +28,7 @@ function ca_grab_villages:evaluation(cfg, data, filter_own)
 
     local avoid_map = LS.of_pairs(ai.aspects.avoid)
 
-    local all_villages, villages = wesnoth.get_villages(), {}
+    local all_villages, villages = wesnoth.map.find{gives_income = true}, {}
     for _,village in ipairs(all_villages) do
         if (not avoid_map:get(village[1], village[2])) then
             table.insert(villages, village)
@@ -69,7 +69,7 @@ function ca_grab_villages:evaluation(cfg, data, filter_own)
         end
 
         -- Unowned and enemy-owned villages get a large bonus
-        local owner = wesnoth.get_village_owner(v[1], v[2])
+        local owner = wesnoth.map.get_owner(v)
         if (not owner) then
             village_rating = village_rating + 10000
         else

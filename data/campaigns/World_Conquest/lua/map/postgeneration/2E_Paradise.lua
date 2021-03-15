@@ -58,7 +58,7 @@ function world_conquest_tek_map_repaint_2e()
 	local terrain_to_change = wct_store_empty_citadel()
 	while #terrain_to_change > 0 do
 		local loc = terrain_to_change[wesnoth.random(#terrain_to_change)]
-		map:set_terrain(loc, "Rr^Vhc")
+		map[loc] = "Rr^Vhc"
 		terrain_to_change = wct_store_empty_citadel()
 	end
 	-- improve roads quality
@@ -85,7 +85,7 @@ function world_conquest_tek_map_repaint_2e()
 		layer = "overlay",
 	}
 
-	local max_yards = map.height * map_data.width // 300
+	local max_yards = map.height * map.width // 300
 	local nyards = tonumber(helper.rand("1,0.." .. max_yards))
 	for i = 1, nyards do
 		local yard_dir = "n,nw,ne"
@@ -121,7 +121,7 @@ function world_conquest_tek_map_repaint_2e()
 end
 
 function wct_map_yard(directions, counter_directions)
-	-- todo: is this code 'symmetric' andin the sense that switching 
+	-- todo: is this code 'symmetric' andin the sense that switching
 	--       directions and counter_directions  doesn't change anythign at all?
 	local terrain_to_change = map:get_locations(f.all(
 		f.terrain("Gg"),
@@ -137,7 +137,7 @@ function wct_map_yard(directions, counter_directions)
 
 	if #terrain_to_change > 0 then
 		local loc = terrain_to_change[wesnoth.random(#terrain_to_change)]
-		map:set_terrain(loc, "Gg^Eff")
+		map[loc] = "Gg^Eff"
 		set_terrain { "Gg^Eff",
 			f.adjacent( f.is_loc(loc), counter_directions, nil)
 		}
@@ -203,7 +203,7 @@ function wct_map_decoration_3e_leantos()
 	))
 	for i, v in ipairs(terrain_to_change) do
 		if wesnoth.random(3) == 1 then
-			map:set_terrain(v, "Rrc")
+			map[v] = "Rrc"
 
 			table.insert(prestart_event, wml.tag.item {
 				x = v[1],
@@ -215,6 +215,7 @@ function wct_map_decoration_3e_leantos()
 	end
 end
 
+local _ = wesnoth.textdomain 'wesnoth-wc'
 
 return function()
 	set_map_name(_"Paradise")

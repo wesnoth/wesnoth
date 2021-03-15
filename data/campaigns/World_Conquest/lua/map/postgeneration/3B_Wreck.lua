@@ -71,6 +71,7 @@ function wct_hunging_bridge(bridge, directions)
 	}
 end
 
+local _ = wesnoth.textdomain 'wesnoth-wc'
 
 return function()
 	set_map_name(_"civilization^Wreck")

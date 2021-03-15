@@ -12,7 +12,7 @@ function world_conquest_tek_map_repaint_3f()
 	while #terrain_to_change > 0 do
 		-- the oriignal code also did not randomize this.
 		-- todo: but maybe we should? (use wesnoth.random(#terrain_to_change[) instead of 1 here)
-		map:set_terrain(terrain_to_change[1], "Mm")
+		map[terrain_to_change[1]] = "Mm"
 		terrain_to_change = wct_store_cave_passages_candidates()
 	end
 	set_terrain { "Gd",
@@ -246,6 +246,7 @@ function wct_store_cave_passages_candidates()
 
 end
 
+local _ = wesnoth.textdomain 'wesnoth-wc'
 
 return function()
 	set_map_name(_"Wetland")

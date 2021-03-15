@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3-dev\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-02-20 18:40-0300\n"
+"POT-Creation-Date: 2021-03-12 20:18-0300\n"
 "PO-Revision-Date: 2008-09-24 02:09+0100\n"
 "Last-Translator: Mavorte <mavorte1@yahoo.es>\n"
 "Language-Team: none\n"
@@ -304,6 +304,7 @@ msgstr "aguait nocturn"
 #. [plague]: id=plague, type=Walking Corpse
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:98
 #: data/core/macros/abilities.cfg:391 data/core/macros/abilities.cfg:402
+#: data/scenario-test.cfg:407
 msgid "plague"
 msgstr "plaga"
 
@@ -341,8 +342,9 @@ msgid "slows"
 msgstr "retardar"
 
 #. [resistance]: id=steadfast
+#. [resistance]: id=melee_steadfast
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:119
-#: data/core/macros/abilities.cfg:104
+#: data/core/macros/abilities.cfg:104 data/scenario-test.cfg:367
 msgid "steadfast"
 msgstr "ferm"
 
@@ -4131,7 +4133,8 @@ msgstr ""
 "eliminarà el verí en conte de curar-se."
 
 #. [resistance]: id=steadfast
-#: data/core/macros/abilities.cfg:105
+#. [resistance]: id=melee_steadfast
+#: data/core/macros/abilities.cfg:105 data/scenario-test.cfg:368
 #, fuzzy
 msgid "female^steadfast"
 msgstr "ferm"
@@ -4493,7 +4496,7 @@ msgstr ""
 "ab No Morts o unitats en aldees."
 
 #. [plague]: id=plague, type=Walking Corpse
-#: data/core/macros/abilities.cfg:403
+#: data/core/macros/abilities.cfg:403 data/scenario-test.cfg:408
 #, fuzzy
 #| msgid ""
 #| "Plague:\n"

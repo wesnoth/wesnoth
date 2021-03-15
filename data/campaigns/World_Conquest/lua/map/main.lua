@@ -1,4 +1,4 @@
-_ = wesnoth.textdomain "wesnoth"
+_ = wesnoth.textdomain 'wesnoth-wc'
 helper = wesnoth.require("helper")
 utils = wesnoth.require("wml-utils")
 functional = wesnoth.require("functional")

@@ -17,14 +17,13 @@
 #include "show_dialog.hpp"
 
 #include "floating_label.hpp"
-#include "font/sdl_ttf.hpp"
 #include "picture.hpp"
 #include "gettext.hpp"
 #include "gui/core/event/handler.hpp"
 #include "help/help.hpp"
 #include "hotkey/command_executor.hpp"
 #include "log.hpp"
-#include "font/marked-up_text.hpp"
+#include "font/sdl_ttf_compat.hpp"
 #include "font/standard_colors.hpp"
 #include "sdl/rect.hpp"
 
@@ -325,8 +324,8 @@ void dialog_frame::draw_background()
 SDL_Rect dialog_frame::draw_title(CVideo* video)
 {
 	SDL_Rect rect = CVideo::get_singleton().screen_area();
-	return font::draw_text(video, rect, font::SIZE_TITLE, font::TITLE_COLOR,
-	                       title_, dim_.title.x, dim_.title.y, false, TTF_STYLE_NORMAL);
+	return font::pango_draw_text(video, rect, font::SIZE_TITLE, font::TITLE_COLOR,
+	                       title_, dim_.title.x, dim_.title.y, false, font::pango_text::STYLE_NORMAL);
 }
 
 void dialog_frame::draw()

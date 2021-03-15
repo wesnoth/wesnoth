@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.12 (wesnoth-lib)\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-02-20 18:40-0300\n"
+"POT-Creation-Date: 2021-03-12 20:18-0300\n"
 "PO-Revision-Date: 2018-04-24 11:58+0100\n"
 "Last-Translator: trewe <sjrs456@yandex.com>\n"
 "Language-Team: wesn-pt-trans <wesn-pt-trans-users@lists.sourceforge.net>\n"
@@ -68,6 +68,14 @@ msgstr ""
 #: data/core/terrain.cfg:479 data/core/terrain.cfg:489
 msgid "Fence"
 msgstr "Cerca"
+
+#. [row]
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:193
+#: data/gui/window/mp_faction_select.cfg:176
+#, fuzzy
+#| msgid "Random"
+msgid "gender^Random"
+msgstr "Aleatório"
 
 #
 #. [terrain_type]: id=deep_water_gray
@@ -3081,8 +3089,9 @@ msgid "Select difficulty:"
 msgstr "Escolha o nível de dificuldade:"
 
 #
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/window/chat_log.cfg:36
+#: data/gui/window/chat_log.cfg:36 src/hotkey/hotkey_command.cpp:275
 msgid "Chat Log"
 msgstr "Histórico da Conversa"
 
@@ -4360,11 +4369,13 @@ msgid "Announcements"
 msgstr "Avanços"
 
 #
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [grid]
 #. [label]: id=title
 #. [button]: id=show_preferences
 #: data/gui/window/lobby_main.cfg:460 data/gui/window/lobby_main.cfg:655
 #: data/gui/window/preferences.cfg:213 data/gui/window/title_screen.cfg:256
+#: src/hotkey/hotkey_command.cpp:118
 msgid "Preferences"
 msgstr "Preferências"
 
@@ -5041,14 +5052,6 @@ msgstr "Líder:"
 msgid "Gender:"
 msgstr "Sexo:"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [row]
-#: data/gui/window/mp_faction_select.cfg:176
-#: src/gui/dialogs/multiplayer/faction_select.cpp:139
-#: src/gui/dialogs/multiplayer/mp_staging.cpp:492
-msgid "Random"
-msgstr "Aleatório"
-
 #
 #. [row]
 #. [toggle_button]: id=male_toggle
@@ -5179,7 +5182,7 @@ msgstr "Guardar a senha localmente (encriptado)"
 #. [widget]: id=label
 #: data/gui/window/mp_method_selection.cfg:46
 #: data/gui/window/preferences.cfg:365 data/gui/window/title_screen.cfg:252
-#: src/gui/dialogs/game_load.cpp:382
+#: src/gui/dialogs/game_load.cpp:406
 msgid "Multiplayer"
 msgstr "Jogo em Rede"
 
@@ -6492,7 +6495,7 @@ msgid "The maximum text width is less than 1."
 msgstr "O tamanho do texto é menor que 1."
 
 #
-#: src/font/text.cpp:779
+#: src/font/text.cpp:782
 #, fuzzy
 #| msgid "The text contains invalid markup: "
 msgid "The text contains invalid Pango markup: "
@@ -7124,8 +7127,8 @@ msgstr "Desconhecido"
 
 #
 #: src/gui/dialogs/game_cache_options.cpp:101
-#: src/gui/dialogs/network_transmission.cpp:85
 #: src/gui/dialogs/network_transmission.cpp:86
+#: src/gui/dialogs/network_transmission.cpp:87
 #: src/gui/dialogs/screenshot_notification.cpp:115
 msgid "unit_byte^B"
 msgstr "B"
@@ -7154,68 +7157,79 @@ msgstr "A caché do jogo foi removida."
 msgid "The game data cache could not be purged."
 msgstr "A caché do jogo não pode ser removida."
 
-#: src/gui/dialogs/game_load.cpp:122
+#
+#: src/gui/dialogs/game_load.cpp:74
+#, fuzzy
+#| msgid "Saved Games"
+msgid "No Saved Games"
+msgstr "Partidas guardadas"
+
+#: src/gui/dialogs/game_load.cpp:74
+msgid "There are no saved games to load."
+msgstr ""
+
+#: src/gui/dialogs/game_load.cpp:143
 msgid "game_version^Current Version"
 msgstr ""
 
-#: src/gui/dialogs/game_load.cpp:127
+#: src/gui/dialogs/game_load.cpp:147
 #, fuzzy
 #| msgid "Version $version"
 msgid "game_version^Wesnoth $version"
 msgstr "Versão $version"
 
-#: src/gui/dialogs/game_load.cpp:264
+#: src/gui/dialogs/game_load.cpp:284
 #, fuzzy
 #| msgid "The file you have tried to load is corrupt: '"
 msgid "The selected file is corrupt: "
 msgstr "O ficheiro que tentaste carregar está corrompido:'"
 
 #
-#: src/gui/dialogs/game_load.cpp:336
+#: src/gui/dialogs/game_load.cpp:357
 msgid "(Invalid)"
 msgstr "(Invalido)"
 
 #
-#: src/gui/dialogs/game_load.cpp:373
+#: src/gui/dialogs/game_load.cpp:397
 msgid "Campaign: $campaign_name"
 msgstr "Campanha: $campaign_name"
 
 #
-#: src/gui/dialogs/game_load.cpp:385
+#: src/gui/dialogs/game_load.cpp:409
 msgid "Tutorial"
 msgstr "Tutorial"
 
 #
-#: src/gui/dialogs/game_load.cpp:388
+#: src/gui/dialogs/game_load.cpp:412
 msgid "Test scenario"
 msgstr "Cenário de teste"
 
 #
-#: src/gui/dialogs/game_load.cpp:398
+#: src/gui/dialogs/game_load.cpp:422
 msgid "Replay"
 msgstr "Revisão"
 
 #
-#: src/gui/dialogs/game_load.cpp:400
+#: src/gui/dialogs/game_load.cpp:424
 msgid "Turn"
 msgstr "Turno"
 
 #
-#: src/gui/dialogs/game_load.cpp:402
+#: src/gui/dialogs/game_load.cpp:426
 msgid "Scenario start"
 msgstr "Inicio do Cenário"
 
 #
-#: src/gui/dialogs/game_load.cpp:405
+#: src/gui/dialogs/game_load.cpp:429
 msgid "Difficulty: "
 msgstr "Dificuldade: "
 
 #
-#: src/gui/dialogs/game_load.cpp:409
+#: src/gui/dialogs/game_load.cpp:433
 msgid "Version: "
 msgstr "Versão: "
 
-#: src/gui/dialogs/game_load.cpp:414
+#: src/gui/dialogs/game_load.cpp:438
 #, fuzzy
 #| msgid "Modifications:"
 msgid "Modifications: "
@@ -7365,6 +7379,11 @@ msgstr ""
 #| msgid "Clear Console"
 msgid "lua console"
 msgstr "Limpar consola"
+
+#: src/gui/dialogs/multiplayer/faction_select.cpp:139
+#: src/gui/dialogs/multiplayer/mp_staging.cpp:492
+msgid "Random"
+msgstr "Aleatório"
 
 #
 #: src/gui/dialogs/multiplayer/lobby.cpp:106
@@ -8282,15 +8301,10 @@ msgstr "Mudar de Equipa (Modo de Depuração!)"
 msgid "Kill Unit (Debug!)"
 msgstr "Matar Unidade (Modo de Depuração!)"
 
-#
-#: src/hotkey/hotkey_command.cpp:118
-#, fuzzy
-#| msgid "Preferences"
-msgid "Open Preferences Screen"
-msgstr "Preferências"
-
 #: src/hotkey/hotkey_command.cpp:119
-msgid "Scenario Objectives"
+#, fuzzy
+#| msgid "Scenario Objectives"
+msgid "Objectives"
 msgstr "Objetivos do Cenário"
 
 #: src/hotkey/hotkey_command.cpp:122
@@ -8304,7 +8318,7 @@ msgstr "Continuar jogo em rede"
 #: src/hotkey/hotkey_command.cpp:125
 #, fuzzy
 #| msgid "Main Menu"
-msgid "Quit to Main Menu"
+msgid "Quit to Menu"
 msgstr "Menu principal"
 
 #: src/hotkey/hotkey_command.cpp:126
@@ -8857,13 +8871,10 @@ msgstr ""
 msgid "Hint: save-loading is unnecessary"
 msgstr ""
 
-#
-#: src/hotkey/hotkey_command.cpp:275
-msgid "View Chat Log"
-msgstr "Ver Registo da Conversa"
-
 #: src/hotkey/hotkey_command.cpp:276
-msgid "Enter User Command"
+#, fuzzy
+#| msgid "Enter User Command"
+msgid "Enter Command"
 msgstr "Introduzir comando personalizado"
 
 #
@@ -8876,8 +8887,10 @@ msgid "Run Formula"
 msgstr "Executar Fórmula"
 
 #: src/hotkey/hotkey_command.cpp:279
-msgid "Clear Chat and Errors"
-msgstr ""
+#, fuzzy
+#| msgid "Player Chat"
+msgid "Clear Chat"
+msgstr "Mensagens instantâneas"
 
 #: src/hotkey/hotkey_command.cpp:281
 msgid "Change Language"
@@ -9044,6 +9057,16 @@ msgid ""
 msgstr ""
 "A chave '$deprecated_key' foi renomeada para '$key'. Suporte para "
 "'$deprecated_key' será removido na versão $removal_version."
+
+#
+#, fuzzy
+#~| msgid "Preferences"
+#~ msgid "Open Preferences Screen"
+#~ msgstr "Preferências"
+
+#
+#~ msgid "View Chat Log"
+#~ msgstr "Ver Registo da Conversa"
 
 #~ msgid "Categories:"
 #~ msgstr "Categorias:"

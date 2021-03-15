@@ -10,7 +10,7 @@ function ca_protect_unit_attack:evaluation(cfg)
 
     local units = {}
     for u in wml.child_range(cfg, "unit") do
-        table.insert(units, AH.get_units_with_attacks { id = u.id }[1])
+        table.insert(units, AH.get_units_with_attacks { id = u.id, side = wesnoth.current.side }[1])
     end
     if (not units[1]) then return 0 end
 

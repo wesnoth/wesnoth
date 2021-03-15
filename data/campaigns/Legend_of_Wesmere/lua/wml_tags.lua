@@ -58,9 +58,9 @@ end
 
 function wesnoth.wml_actions.unstore_left_behind_units(cfg)
 	if wml.variables["l3_store_kalenz"] ~= nil then
-		l3_store_kalenz = wml.array_variables["l3_store_kalenz"]
+		local l3_store_kalenz = wml.array_variables["l3_store_kalenz"]
 		for i,_ in ipairs(l3_store_kalenz) do
-			var_name = "l3_store_kalenz[" .. tostring(i-1) .. "]"
+			local var_name = "l3_store_kalenz[" .. tostring(i-1) .. "]"
 			wml_actions.unstore_unit {
 				variable = var_name,
 				x = "recall",
@@ -70,9 +70,9 @@ function wesnoth.wml_actions.unstore_left_behind_units(cfg)
 		wml.variables["l3_store_kalenz"] = nil
 	end
 	if wml.variables["l3_store_landar"] ~= nil then
-		l3_store_landar = wml.array_variables["l3_store_landar"]
+		local l3_store_landar = wml.array_variables["l3_store_landar"]
 		for i,_ in ipairs(l3_store_landar) do
-			var_name = "l3_store_landar[" .. tostring(i-1) .. "]"
+			local var_name = "l3_store_landar[" .. tostring(i-1) .. "]"
 			wml_actions.unstore_unit {
 				variable = var_name,
 				x = "recall",

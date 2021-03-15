@@ -261,13 +261,15 @@ game_launcher::game_launcher(const commandline_options& cmdline_opts)
 	if(cmdline_opts_.translation_percent)
 		set_min_translation_percent(*cmdline_opts_.translation_percent);
 
-	std::cerr
-		<< "\nData directory:               " << filesystem::sanitize_path(game_config::path)
-		<< "\nUser configuration directory: " << filesystem::sanitize_path(filesystem::get_user_config_dir())
-		<< "\nUser data directory:          " << filesystem::sanitize_path(filesystem::get_user_data_dir())
-		<< "\nCache directory:              " << filesystem::sanitize_path(filesystem::get_cache_dir())
-		<< '\n';
-	std::cerr << '\n';
+	if(!cmdline_opts.nobanner) {
+		std::cerr
+			<< "\nData directory:               " << filesystem::sanitize_path(game_config::path)
+			<< "\nUser configuration directory: " << filesystem::sanitize_path(filesystem::get_user_config_dir())
+			<< "\nUser data directory:          " << filesystem::sanitize_path(filesystem::get_user_data_dir())
+			<< "\nCache directory:              " << filesystem::sanitize_path(filesystem::get_cache_dir())
+			<< '\n';
+		std::cerr << '\n';
+	}
 
 	// disable sound in nosound mode, or when sound engine failed to initialize
 	if(no_sound || ((preferences::sound_on() || preferences::music_on() ||
@@ -341,7 +343,7 @@ bool game_launcher::init_lua_script()
 {
 	bool error = false;
 
-	std::cerr << "Checking lua scripts... ";
+	if(!cmdline_opts_.nobanner) std::cerr << "Checking lua scripts... ";
 
 	if(cmdline_opts_.script_unsafe_mode) {
 		// load the "package" package, so that scripts can get what packages they want
@@ -421,7 +423,7 @@ bool game_launcher::init_lua_script()
 		}
 	}
 
-	if(!error) {
+	if(!error && !cmdline_opts_.nobanner) {
 		std::cerr << "ok\n";
 	}
 

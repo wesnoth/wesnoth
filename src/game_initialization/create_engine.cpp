@@ -181,8 +181,8 @@ campaign::campaign(const config& data)
 	, id_(data["id"])
 	, allow_era_choice_(level::allow_era_choice())
 	, image_label_()
-	, min_players_(2)
-	, max_players_(2)
+	, min_players_(1)
+	, max_players_(1)
 {
 	if(data.has_attribute("start_year")) {
 		dates_.first = irdya_date::read_date(data["start_year"]);
@@ -206,8 +206,8 @@ void campaign::set_metadata()
 {
 	image_label_ = data_["image"].str();
 
-	int min = data_["min_players"].to_int(2);
-	int max = data_["max_players"].to_int(2);
+	int min = data_["min_players"].to_int(1);
+	int max = data_["max_players"].to_int(1);
 
 	min_players_ = max_players_ =  min;
 

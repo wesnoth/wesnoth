@@ -18,6 +18,7 @@
 
 #include "cursor.hpp"
 #include "desktop/clipboard.hpp"
+#include "gui/core/gui_definition.hpp"
 #include "gui/core/log.hpp"
 #include "gui/core/timer.hpp"
 #include "serialization/unicode.hpp"
@@ -45,6 +46,9 @@ text_box_base::text_box_base(const implementation::builder_styled_widget& builde
 	, cursor_blink_rate_ms_(750)
 	, text_changed_callback_()
 {
+	auto cfg = get_control(control_type, builder.definition);
+	text_.set_family_class(cfg->text_font_family);
+
 #ifdef __unix__
 	// pastes on UNIX systems.
 	connect_signal<event::MIDDLE_BUTTON_CLICK>(std::bind(

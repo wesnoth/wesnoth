@@ -145,7 +145,7 @@ function world_conquest_tek_map_decoration_2c()
 	-- base amount in map surface
 	local r = helper.rand(tostring(total_tiles // 285) .. ".." .. tostring(total_tiles // 150))
 	for i = 1, math.min(r, #terrain_to_change) do
-		map:set_terrain(terrain_to_change[i], "Ai")
+		map[terrain_to_change[i]] = "Ai"
 	end
 
 	local icepack_candiates = map:get_locations(f.all(
@@ -158,7 +158,7 @@ function world_conquest_tek_map_decoration_2c()
 	for i = 1, math.min(r, #icepack_candiates) do
 		local loc = icepack_candiates[i]
 		table.insert(prestart_event, wml.tag.item {
-			image = "scenery/icepack-1.png"
+			image = "scenery/icepack-1.png",
 			x = loc[1],
 			y = loc[2],
 		})
@@ -201,6 +201,8 @@ function world_conquest_tek_map_decoration_2c()
 
 	wct_change_map_water("g")
 end
+
+local _ = wesnoth.textdomain 'wesnoth-wc'
 
 return function()
 	set_map_name(_"Glaciers")

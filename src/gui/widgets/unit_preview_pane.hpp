@@ -15,8 +15,8 @@
 
 #include "gui/widgets/container_base.hpp"
 
-#include <boost/optional.hpp>
 #include <string>
+#include "utils/optional_reference.hpp"
 
 class unit;
 class unit_type;
@@ -74,7 +74,7 @@ protected:
 	void finalize_setup();
 
 private:
-	boost::optional<const unit_type&> current_type_;
+	utils::optional_reference<const unit_type> current_type_;
 
 	image* icon_type_;
 	image* icon_race_;

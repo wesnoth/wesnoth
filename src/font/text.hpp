@@ -144,6 +144,15 @@ public:
 	/***** ***** ***** ***** Query details ***** ***** ***** *****/
 
 	/**
+	 * Returns the maximum glyph height of a font, in pixels.
+	 *
+	 * @returns                       The height of the tallest possible glyph for the selected
+	 *                                font. More specifically, the result is the sum of the maximum
+	 *                                ascent and descent lengths.
+	 */
+	int get_max_glyph_height() const;
+
+	/**
 	 * Gets the location for the cursor.
 	 *
 	 * @param column              The column offset of the cursor.
@@ -196,6 +205,17 @@ public:
 	 *                            character if not found.
 	 */
 	point get_column_line(const point& position) const;
+
+	/**
+	 * Retrieves a list of strings with contents for each rendered line.
+	 *
+	 * This method is not const because it requires rendering the text.
+	 *
+	 * @note This is only intended for renderer implementation details. This
+	 *       is a rather expensive function because it copies everything at
+	 *       least once.
+	 */
+	std::vector<std::string> get_lines() const;
 
 	/**
 	 * Gets the length of the text in bytes.
@@ -419,5 +439,18 @@ private:
  * class; constructing one is likely to be expensive.
  */
 pango_text& get_text_renderer();
+
+/**
+ * Returns the maximum glyph height of a font, in pixels.
+ *
+ * @param size                    Desired font size in pixels.
+ * @param fclass                  Font family to use for measurement.
+ * @param style                   Font style to select the correct variant for measurement.
+ *
+ * @returns                       The height of the tallest possible glyph for the selected
+ *                                font. More specifically, the result is the sum of the maximum
+ *                                ascent and descent lengths.
+ */
+int get_max_height(unsigned size, font::family_class fclass = font::FONT_SANS_SERIF, pango_text::FONT_STYLE style = pango_text::STYLE_NORMAL);
 
 } // namespace font

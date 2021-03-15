@@ -169,6 +169,7 @@ function world_conquest_tek_castle_swamp_bridges()
 	wct_castle_swamp_bridge("Bw\\", "se,nw", "!,Ds,S*,*^B*,Xu,Q*,M*^*,W*,Ch*,Kh*")
 end
 
+local _ = wesnoth.textdomain 'wesnoth-wc'
 
 return function()
 	set_map_name(_"Savannah")

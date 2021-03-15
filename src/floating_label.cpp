@@ -92,11 +92,17 @@ int floating_label::xpos(std::size_t width) const
 surface floating_label::create_surface()
 {
 	if(!surf_) {
-		font::pango_text text;
-		text.set_foreground_color(color_);
-		text.set_font_size(font_size_);
-		text.set_maximum_width(width_ < 0 ? clip_rect_.w : width_);
-		text.set_maximum_height(height_ < 0 ? clip_rect_.h : height_, true);
+		font::pango_text& text = font::get_text_renderer();
+
+		text.set_link_aware(false)
+			.set_font_size(font_size_)
+			.set_font_style(font::pango_text::STYLE_NORMAL)
+			.set_alignment(PANGO_ALIGN_LEFT)
+			.set_foreground_color(color_)
+			.set_maximum_width(width_ < 0 ? clip_rect_.w : width_)
+			.set_maximum_height(height_ < 0 ? clip_rect_.h : height_, true)
+			.set_ellipse_mode(PANGO_ELLIPSIZE_END)
+			.set_characters_per_line(0);
 
 		// ignore last '\n'
 		if(!text_.empty() && *(text_.rbegin()) == '\n') {

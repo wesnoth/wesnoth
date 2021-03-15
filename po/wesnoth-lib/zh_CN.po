@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.14\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-02-20 18:40-0300\n"
+"POT-Creation-Date: 2021-03-12 20:18-0300\n"
 "PO-Revision-Date: 2020-08-10 20:13+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
@@ -69,6 +69,14 @@ msgstr ""
 #: data/core/terrain.cfg:479 data/core/terrain.cfg:489
 msgid "Fence"
 msgstr "篱笆"
+
+#. [row]
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:193
+#: data/gui/window/mp_faction_select.cfg:176
+#, fuzzy
+#| msgid "Random"
+msgid "gender^Random"
+msgstr "随机"
 
 #. [terrain_type]: id=deep_water_gray
 #. [terrain_type]: id=deep_water_medium
@@ -2667,8 +2675,9 @@ msgstr "难度"
 msgid "Select difficulty:"
 msgstr "选择难度："
 
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/window/chat_log.cfg:36
+#: data/gui/window/chat_log.cfg:36 src/hotkey/hotkey_command.cpp:275
 msgid "Chat Log"
 msgstr "聊天记录"
 
@@ -3809,11 +3818,13 @@ msgstr "观察"
 msgid "Announcements"
 msgstr "次升级"
 
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [grid]
 #. [label]: id=title
 #. [button]: id=show_preferences
 #: data/gui/window/lobby_main.cfg:460 data/gui/window/lobby_main.cfg:655
 #: data/gui/window/preferences.cfg:213 data/gui/window/title_screen.cfg:256
+#: src/hotkey/hotkey_command.cpp:118
 msgid "Preferences"
 msgstr "首选项"
 
@@ -4430,14 +4441,6 @@ msgstr "首领："
 msgid "Gender:"
 msgstr "性别："
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [row]
-#: data/gui/window/mp_faction_select.cfg:176
-#: src/gui/dialogs/multiplayer/faction_select.cpp:139
-#: src/gui/dialogs/multiplayer/mp_staging.cpp:492
-msgid "Random"
-msgstr "随机"
-
 #. [row]
 #. [toggle_button]: id=male_toggle
 #: data/gui/window/mp_faction_select.cfg:178
@@ -4555,7 +4558,7 @@ msgstr "在本地保存密码（明文）"
 #. [widget]: id=label
 #: data/gui/window/mp_method_selection.cfg:46
 #: data/gui/window/preferences.cfg:365 data/gui/window/title_screen.cfg:252
-#: src/gui/dialogs/game_load.cpp:382
+#: src/gui/dialogs/game_load.cpp:406
 msgid "Multiplayer"
 msgstr "多人游戏"
 
@@ -5705,7 +5708,7 @@ msgstr "zh_CN"
 msgid "The maximum text width is less than 1."
 msgstr "最大文字宽度小于1。"
 
-#: src/font/text.cpp:779
+#: src/font/text.cpp:782
 msgid "The text contains invalid Pango markup: "
 msgstr "此文本中包含非法的Pango标记："
 
@@ -6254,8 +6257,8 @@ msgid "dir_size^Unknown"
 msgstr "未知"
 
 #: src/gui/dialogs/game_cache_options.cpp:101
-#: src/gui/dialogs/network_transmission.cpp:85
 #: src/gui/dialogs/network_transmission.cpp:86
+#: src/gui/dialogs/network_transmission.cpp:87
 #: src/gui/dialogs/screenshot_notification.cpp:115
 msgid "unit_byte^B"
 msgstr "B"
@@ -6284,57 +6287,67 @@ msgstr "游戏数据缓存已完全清除。"
 msgid "The game data cache could not be purged."
 msgstr "游戏数据缓存无法完全清除。"
 
-#: src/gui/dialogs/game_load.cpp:122
+#: src/gui/dialogs/game_load.cpp:74
+#, fuzzy
+#| msgid "Saved Games"
+msgid "No Saved Games"
+msgstr "游戏存档"
+
+#: src/gui/dialogs/game_load.cpp:74
+msgid "There are no saved games to load."
+msgstr ""
+
+#: src/gui/dialogs/game_load.cpp:143
 msgid "game_version^Current Version"
 msgstr ""
 
-#: src/gui/dialogs/game_load.cpp:127
+#: src/gui/dialogs/game_load.cpp:147
 #, fuzzy
 #| msgid "Version $version"
 msgid "game_version^Wesnoth $version"
 msgstr "版本$version"
 
-#: src/gui/dialogs/game_load.cpp:264
+#: src/gui/dialogs/game_load.cpp:284
 msgid "The selected file is corrupt: "
 msgstr "选定的文件是损坏的："
 
-#: src/gui/dialogs/game_load.cpp:336
+#: src/gui/dialogs/game_load.cpp:357
 msgid "(Invalid)"
 msgstr "（无效）"
 
-#: src/gui/dialogs/game_load.cpp:373
+#: src/gui/dialogs/game_load.cpp:397
 msgid "Campaign: $campaign_name"
 msgstr "战役：$campaign_name"
 
-#: src/gui/dialogs/game_load.cpp:385
+#: src/gui/dialogs/game_load.cpp:409
 msgid "Tutorial"
 msgstr "教程"
 
-#: src/gui/dialogs/game_load.cpp:388
+#: src/gui/dialogs/game_load.cpp:412
 msgid "Test scenario"
 msgstr "测试场景"
 
-#: src/gui/dialogs/game_load.cpp:398
+#: src/gui/dialogs/game_load.cpp:422
 msgid "Replay"
 msgstr "录像"
 
-#: src/gui/dialogs/game_load.cpp:400
+#: src/gui/dialogs/game_load.cpp:424
 msgid "Turn"
 msgstr "回合"
 
-#: src/gui/dialogs/game_load.cpp:402
+#: src/gui/dialogs/game_load.cpp:426
 msgid "Scenario start"
 msgstr "场景开始"
 
-#: src/gui/dialogs/game_load.cpp:405
+#: src/gui/dialogs/game_load.cpp:429
 msgid "Difficulty: "
 msgstr "难度："
 
-#: src/gui/dialogs/game_load.cpp:409
+#: src/gui/dialogs/game_load.cpp:433
 msgid "Version: "
 msgstr "版本："
 
-#: src/gui/dialogs/game_load.cpp:414
+#: src/gui/dialogs/game_load.cpp:438
 msgid "Modifications: "
 msgstr "模组："
 
@@ -6472,6 +6485,11 @@ msgstr "Lua控制台只能用于调试模式中！（请先运行“:debug”）
 #: src/gui/dialogs/lua_interpreter.cpp:678
 msgid "lua console"
 msgstr "Lua控制台"
+
+#: src/gui/dialogs/multiplayer/faction_select.cpp:139
+#: src/gui/dialogs/multiplayer/mp_staging.cpp:492
+msgid "Random"
+msgstr "随机"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:106
 msgid "Selected Game"
@@ -7312,14 +7330,10 @@ msgstr "改变阵营（调试！）"
 msgid "Kill Unit (Debug!)"
 msgstr "杀死单位（调试！）"
 
-#: src/hotkey/hotkey_command.cpp:118
-#, fuzzy
-#| msgid "Preferences"
-msgid "Open Preferences Screen"
-msgstr "首选项"
-
 #: src/hotkey/hotkey_command.cpp:119
-msgid "Scenario Objectives"
+#, fuzzy
+#| msgid "Scenario Objectives"
+msgid "Objectives"
 msgstr "场景目标"
 
 #: src/hotkey/hotkey_command.cpp:122
@@ -7331,7 +7345,9 @@ msgid "Continue Network Game"
 msgstr "继续联机游戏"
 
 #: src/hotkey/hotkey_command.cpp:125
-msgid "Quit to Main Menu"
+#, fuzzy
+#| msgid "Quit to Main Menu"
+msgid "Quit to Menu"
 msgstr "退出至主菜单"
 
 #: src/hotkey/hotkey_command.cpp:126
@@ -7850,12 +7866,10 @@ msgstr ""
 msgid "Hint: save-loading is unnecessary"
 msgstr ""
 
-#: src/hotkey/hotkey_command.cpp:275
-msgid "View Chat Log"
-msgstr "查看聊天纪录"
-
 #: src/hotkey/hotkey_command.cpp:276
-msgid "Enter User Command"
+#, fuzzy
+#| msgid "Enter User Command"
+msgid "Enter Command"
 msgstr "输入用户命令"
 
 #: src/hotkey/hotkey_command.cpp:277
@@ -7867,8 +7881,10 @@ msgid "Run Formula"
 msgstr "运行公式"
 
 #: src/hotkey/hotkey_command.cpp:279
-msgid "Clear Chat and Errors"
-msgstr ""
+#, fuzzy
+#| msgid "Player Chat"
+msgid "Clear Chat"
+msgstr "玩家交谈"
 
 #: src/hotkey/hotkey_command.cpp:281
 msgid "Change Language"
@@ -8006,6 +8022,14 @@ msgid ""
 msgstr ""
 "主键‘$deprecated_key|’已重命名为‘$key’。对‘$deprecated_key|’的支持将在版本"
 "$removal_version|中移除。"
+
+#, fuzzy
+#~| msgid "Preferences"
+#~ msgid "Open Preferences Screen"
+#~ msgstr "首选项"
+
+#~ msgid "View Chat Log"
+#~ msgstr "查看聊天纪录"
 
 #~ msgid "Categories:"
 #~ msgstr "类别："

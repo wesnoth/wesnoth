@@ -229,6 +229,7 @@ server::server(int port,
 	, admin_passwd_()
 	, motd_()
 	, announcements_()
+	, server_id_()
 	, tournaments_()
 	, information_()
 	, default_max_messages_(0)
@@ -450,6 +451,7 @@ void server::load_config()
 	motd_ = cfg_["motd"].str();
 	information_ = cfg_["information"].str();
 	announcements_ = cfg_["announcements"].str();
+	server_id_ = cfg_["id"].str();
 	lan_server_ = cfg_["lan_server"].to_time_t(0);
 
 	deny_unregistered_login_ = cfg_["deny_unregistered_login"].to_bool();
@@ -524,6 +526,11 @@ void server::load_config()
 
 #ifdef HAVE_MYSQLPP
 	if(const config& user_handler = cfg_.child("user_handler")) {
+		if(server_id_ == "") {
+			ERR_SERVER << "The server id must be set when database support is used" << std::endl;
+			exit(1);
+		}
+
 		user_handler_.reset(new fuh(user_handler));
 		uuid_ = user_handler_->get_uuid();
 		tournaments_ = user_handler_->get_tournaments();
@@ -1626,7 +1633,7 @@ void server::handle_player_in_game(player_iterator p, simple_wml::document& data
 				}
 			}
 
-			user_handler_->db_insert_game_info(uuid_, g.db_id(), game_config::wesnoth_version.str(), g.name(), g.is_reload(), m["observer"].to_bool(), !m["private_replay"].to_bool(), g.has_password());
+			user_handler_->db_insert_game_info(uuid_, g.db_id(), server_id_, g.name(), g.is_reload(), m["observer"].to_bool(), !m["private_replay"].to_bool(), g.has_password());
 
 			const simple_wml::node::child_list& sides = g.get_sides_list();
 			for(unsigned side_index = 0; side_index < sides.size(); ++side_index) {

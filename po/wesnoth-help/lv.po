@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.9.10+dev\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-02-20 18:40-0300\n"
+"POT-Creation-Date: 2021-03-12 20:18-0300\n"
 "PO-Revision-Date: 2015-08-08 15:21+0300\n"
 "Last-Translator: Gvido Bruveris <huhims@gmail.com>\n"
 "Language-Team: none\n"
@@ -285,6 +285,7 @@ msgstr "nakts ložņa"
 #. [plague]: id=plague, type=Walking Corpse
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:98
 #: data/core/macros/abilities.cfg:391 data/core/macros/abilities.cfg:402
+#: data/scenario-test.cfg:407
 msgid "plague"
 msgstr "mēris"
 
@@ -322,8 +323,9 @@ msgid "slows"
 msgstr "sapīšana"
 
 #. [resistance]: id=steadfast
+#. [resistance]: id=melee_steadfast
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:119
-#: data/core/macros/abilities.cfg:104
+#: data/core/macros/abilities.cfg:104 data/scenario-test.cfg:367
 msgid "steadfast"
 msgstr "izturīgs"
 
@@ -4683,7 +4685,8 @@ msgstr ""
 "vietā tā izņems indi."
 
 #. [resistance]: id=steadfast
-#: data/core/macros/abilities.cfg:105
+#. [resistance]: id=melee_steadfast
+#: data/core/macros/abilities.cfg:105 data/scenario-test.cfg:368
 msgid "female^steadfast"
 msgstr "izturīga"
 
@@ -4973,7 +4976,7 @@ msgstr ""
 "uzbrucēja pusē. Tas nestrādā uz nedzīvajiem un vienībām ciemos."
 
 #. [plague]: id=plague, type=Walking Corpse
-#: data/core/macros/abilities.cfg:403
+#: data/core/macros/abilities.cfg:403 data/scenario-test.cfg:408
 msgid ""
 "When a unit is killed by a Plague attack, that unit is replaced with a "
 "Walking Corpse on the same side as the unit with the Plague attack. This "

@@ -42,6 +42,10 @@
 #include "hash.hpp"
 #include "utils/optimer.hpp"
 
+#ifdef HAVE_MYSQLPP
+#include "server/common/forum_user_handler.hpp"
+#endif
+
 #include <csignal>
 #include <ctime>
 #include <iomanip>
@@ -260,6 +264,7 @@ std::string simple_wml_escape(const std::string& text)
 
 server::server(const std::string& cfg_file, unsigned short port)
 	: server_base(default_campaignd_port, true)
+	, user_handler_(nullptr)
 	, capabilities_(cap_defaults)
 	, addons_()
 	, dirty_addons_()
@@ -271,6 +276,7 @@ server::server(const std::string& cfg_file, unsigned short port)
 	, strict_versions_(true)
 	, hooks_()
 	, handlers_()
+	, server_id_()
 	, feedback_url_format_()
 	, web_url_()
 	, license_notice_()
@@ -331,6 +337,7 @@ void server::load_config()
 	update_pack_lifespan_ = cfg_["update_pack_lifespan"].to_time_t(30 * 24 * 60 * 60);
 
 	if(const auto& svinfo_cfg = server_info()) {
+		server_id_ = svinfo_cfg["id"].str();
 		feedback_url_format_ = svinfo_cfg["feedback_url_format"].str();
 		web_url_ = svinfo_cfg["web_url"].str(default_web_url);
 		license_notice_ = svinfo_cfg["license_notice"].str(default_license_notice);
@@ -449,6 +456,16 @@ void server::load_config()
 	}
 
 	LOG_CS << "Loaded addons metadata. " << addons_.size() << " addons found.\n";
+
+#ifdef HAVE_MYSQLPP
+	if(const config& user_handler = cfg_.child("user_handler")) {
+		if(server_id_ == "") {
+			ERR_CS << "The server id must be set when database support is used.\n";
+			exit(1);
+		}
+		user_handler_.reset(new fuh(user_handler));
+	}
+#endif
 }
 
 std::ostream& operator<<(std::ostream& o, const server::request& r)
@@ -609,6 +626,51 @@ void server::handle_read_from_fifo(const boost::system::error_code& error, std::
 				LOG_CS << "Set attribute on add-on '" << addon_id << "':\n"
 				       << key << "=\"" << value << "\"\n";
 			}
+		}
+	} else if(ctl == "log") {
+		static const std::map<std::string, int> log_levels = {
+			{ "error",   lg::err().get_severity() },
+			{ "warning", lg::warn().get_severity() },
+			{ "info",    lg::info().get_severity() },
+			{ "debug",   lg::debug().get_severity() },
+			{ "none",    -1 }
+		};
+
+		if(ctl.args_count() != 2) {
+			ERR_CS << "Incorrect number of arguments for 'log'\n";
+		} else if(ctl[1] == "precise") {
+			if(ctl[2] == "on") {
+				lg::precise_timestamps(true);
+				LOG_CS << "Precise timestamps enabled\n";
+			} else if(ctl[2] == "off") {
+				lg::precise_timestamps(false);
+				LOG_CS << "Precise timestamps disabled\n";
+			} else {
+				ERR_CS << "Invalid argument for 'log precise': " << ctl[2] << '\n';
+			}
+		} else if(log_levels.find(ctl[1]) == log_levels.end()) {
+			ERR_CS << "Invalid log level '" << ctl[1] << "'\n";
+		} else {
+			auto sev = log_levels.find(ctl[1])->second;
+			for(const auto& domain : utils::split(ctl[2])) {
+				if(!lg::set_log_domain_severity(domain, sev)) {
+					ERR_CS << "Unknown log domain '" << domain << "'\n";
+				} else {
+					LOG_CS << "Set log level for domain '" << domain << "' to " << ctl[1] << '\n';
+				}
+			}
+		}
+	} else if(ctl == "timings") {
+		if(ctl.args_count() != 1) {
+			ERR_CS << "Incorrect number of arguments for 'timings'\n";
+		} else if(ctl[1] == "on") {
+			campaignd::timing_reports_enabled = true;
+			LOG_CS << "Request servicing timing reports enabled\n";
+		} else if(ctl[1] == "off") {
+			campaignd::timing_reports_enabled = false;
+			LOG_CS << "Request servicing timing reports disabled\n";
+		} else {
+			ERR_CS << "Invalid argument for 'timings': " << ctl[1] << '\n';
 		}
 	} else {
 		ERR_CS << "Unrecognized admin command: " << ctl.full() << '\n';
@@ -839,6 +901,7 @@ void server::handle_server_id(const server::request& req)
 
 	std::ostringstream ostr;
 	write(ostr, config{"server_id", config{
+		"id",					server_id_,
 		"cap",					utils::join(capabilities_),
 		"version",				game_config::revision,
 		"url",					web_url_,
@@ -1313,6 +1376,21 @@ ADDON_CHECK_STATUS server::validate_addon(const server::request& req, config*& e
 		return ADDON_CHECK_STATUS::UNEXPECTED_DELTA;
 	}
 
+	if(const config& url_params = upload.child("feedback")) {
+		try {
+			int topic_id = std::stoi(url_params["topic_id"].str("0"));
+			if(user_handler_ && topic_id != 0) {
+				if(!user_handler_->db_topic_id_exists(topic_id)) {
+					LOG_CS << "Validation error: feedback topic ID does not exist in forum database\n";
+					return ADDON_CHECK_STATUS::FEEDBACK_TOPIC_ID_NOT_FOUND;
+				}
+			}
+		} catch(...) {
+			LOG_CS << "Validation error: feedback topic ID is not a valid number\n";
+			return ADDON_CHECK_STATUS::BAD_FEEDBACK_TOPIC_ID;
+		}
+	}
+
 	return ADDON_CHECK_STATUS::SUCCESS;
 }
 
@@ -1378,8 +1456,15 @@ void server::handle_upload(const server::request& req)
 	addon["uploads"] = 1 + addon["uploads"].to_int();
 
 	addon.clear_children("feedback");
+	int topic_id = 0;
 	if(const config& url_params = upload.child("feedback")) {
 		addon.add_child("feedback", url_params);
+		// already validated that this can be converted to an int in validate_addon()
+		topic_id = url_params["topic_id"].to_int();
+	}
+
+	if(user_handler_) {
+		user_handler_->db_insert_addon_info(server_id_, name, addon["title"].str(), addon["type"].str(), addon["version"].str(), false, topic_id);
 	}
 
 	// Copy in any metadata translations provided directly in the .pbl.

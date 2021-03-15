@@ -246,12 +246,12 @@ function default_generate_map(data)
 	for i = 1, 20 do
 		local status, map = pcall(function()
 			cfg.seed = wesnoth.random(5000) + 7
-			return wesnoth.generate_default_map(w, h, cfg)
+			return wesnoth.map.generate(w, h, cfg)
 		end)
 		if status then
 			return map
 		end
 	end
 	cfg.seed = wesnoth.random(5000) + 7
-	return wesnoth.generate_default_map(w, h, cfg)
+	return wesnoth.map.generate(w, h, cfg)
 end

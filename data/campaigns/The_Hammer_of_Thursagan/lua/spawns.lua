@@ -14,8 +14,8 @@ function wml_actions.spawn_units(cfg)
 
 	local done = 0
 	for i=1,count do
-		local locs = wesnoth.get_locations({T["not"] { T.filter {} } , T["and"] { x = x, y = y, radius = 1 } })
-		if #locs == 0 then locs = wesnoth.get_locations({T["not"] { T.filter {} } , T["and"] { x = x, y = y, radius = 2 } }) end
+		local locs = wesnoth.map.find({T["not"] { T.filter {} } , T["and"] { x = x, y = y, radius = 1 } })
+		if #locs == 0 then locs = wesnoth.map.find({T["not"] { T.filter {} } , T["and"] { x = x, y = y, radius = 2 } }) end
 		if #locs == 0 then break end
 
 		done = done + 1

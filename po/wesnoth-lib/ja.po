@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-02-20 18:40-0300\n"
+"POT-Creation-Date: 2021-03-12 20:18-0300\n"
 "PO-Revision-Date: 2018-05-06 10:15+0000\n"
 "Last-Translator: RatArmy <broadbarredfirefish@gmail.com>, 2020\n"
 "Language-Team: Japanese (https://www.transifex.com/wesnoth-jp/teams/60513/"
@@ -73,6 +73,14 @@ msgstr ""
 #: data/core/terrain.cfg:479 data/core/terrain.cfg:489
 msgid "Fence"
 msgstr "柵"
+
+#. [row]
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:193
+#: data/gui/window/mp_faction_select.cfg:176
+#, fuzzy
+#| msgid "Random"
+msgid "gender^Random"
+msgstr "ランダム"
 
 #. [terrain_type]: id=deep_water_gray
 #. [terrain_type]: id=deep_water_medium
@@ -2691,8 +2699,9 @@ msgstr "難易度 "
 msgid "Select difficulty:"
 msgstr "難易度選択："
 
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/window/chat_log.cfg:36
+#: data/gui/window/chat_log.cfg:36 src/hotkey/hotkey_command.cpp:275
 msgid "Chat Log"
 msgstr "チャットログ"
 
@@ -3834,11 +3843,13 @@ msgstr "観戦"
 msgid "Announcements"
 msgstr "レベルアップ"
 
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [grid]
 #. [label]: id=title
 #. [button]: id=show_preferences
 #: data/gui/window/lobby_main.cfg:460 data/gui/window/lobby_main.cfg:655
 #: data/gui/window/preferences.cfg:213 data/gui/window/title_screen.cfg:256
+#: src/hotkey/hotkey_command.cpp:118
 msgid "Preferences"
 msgstr "設定"
 
@@ -4457,14 +4468,6 @@ msgstr "リーダー："
 msgid "Gender:"
 msgstr "性別:"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [row]
-#: data/gui/window/mp_faction_select.cfg:176
-#: src/gui/dialogs/multiplayer/faction_select.cpp:139
-#: src/gui/dialogs/multiplayer/mp_staging.cpp:492
-msgid "Random"
-msgstr "ランダム"
-
 #. [row]
 #. [toggle_button]: id=male_toggle
 #: data/gui/window/mp_faction_select.cfg:178
@@ -4583,7 +4586,7 @@ msgstr "パスワードを暗号化して保存する"
 #. [widget]: id=label
 #: data/gui/window/mp_method_selection.cfg:46
 #: data/gui/window/preferences.cfg:365 data/gui/window/title_screen.cfg:252
-#: src/gui/dialogs/game_load.cpp:382
+#: src/gui/dialogs/game_load.cpp:406
 msgid "Multiplayer"
 msgstr "マルチプレイヤー"
 
@@ -5753,7 +5756,7 @@ msgstr "ja"
 msgid "The maximum text width is less than 1."
 msgstr "最大テキスト幅が 1 より小さいです。"
 
-#: src/font/text.cpp:779
+#: src/font/text.cpp:782
 msgid "The text contains invalid Pango markup: "
 msgstr "テキストに無効な Pango マークアップが含まれています："
 
@@ -6315,8 +6318,8 @@ msgid "dir_size^Unknown"
 msgstr "不明"
 
 #: src/gui/dialogs/game_cache_options.cpp:101
-#: src/gui/dialogs/network_transmission.cpp:85
 #: src/gui/dialogs/network_transmission.cpp:86
+#: src/gui/dialogs/network_transmission.cpp:87
 #: src/gui/dialogs/screenshot_notification.cpp:115
 msgid "unit_byte^B"
 msgstr "B"
@@ -6345,57 +6348,67 @@ msgstr "ゲームデータのキャッシュを削除しました。"
 msgid "The game data cache could not be purged."
 msgstr "ゲームデータのキャッシュを削除できませんでした。"
 
-#: src/gui/dialogs/game_load.cpp:122
+#: src/gui/dialogs/game_load.cpp:74
+#, fuzzy
+#| msgid "Saved Games"
+msgid "No Saved Games"
+msgstr "ゲームの保存"
+
+#: src/gui/dialogs/game_load.cpp:74
+msgid "There are no saved games to load."
+msgstr ""
+
+#: src/gui/dialogs/game_load.cpp:143
 msgid "game_version^Current Version"
 msgstr ""
 
-#: src/gui/dialogs/game_load.cpp:127
+#: src/gui/dialogs/game_load.cpp:147
 #, fuzzy
 #| msgid "Version $version"
 msgid "game_version^Wesnoth $version"
 msgstr "バージョン $version"
 
-#: src/gui/dialogs/game_load.cpp:264
+#: src/gui/dialogs/game_load.cpp:284
 msgid "The selected file is corrupt: "
 msgstr "選択したファイルは壊れています："
 
-#: src/gui/dialogs/game_load.cpp:336
+#: src/gui/dialogs/game_load.cpp:357
 msgid "(Invalid)"
 msgstr "（無効）"
 
-#: src/gui/dialogs/game_load.cpp:373
+#: src/gui/dialogs/game_load.cpp:397
 msgid "Campaign: $campaign_name"
 msgstr "キャンペーン：$campaign_name"
 
-#: src/gui/dialogs/game_load.cpp:385
+#: src/gui/dialogs/game_load.cpp:409
 msgid "Tutorial"
 msgstr "チュートリアル"
 
-#: src/gui/dialogs/game_load.cpp:388
+#: src/gui/dialogs/game_load.cpp:412
 msgid "Test scenario"
 msgstr "テストシナリオ"
 
-#: src/gui/dialogs/game_load.cpp:398
+#: src/gui/dialogs/game_load.cpp:422
 msgid "Replay"
 msgstr "リプレイ"
 
-#: src/gui/dialogs/game_load.cpp:400
+#: src/gui/dialogs/game_load.cpp:424
 msgid "Turn"
 msgstr "ターン"
 
-#: src/gui/dialogs/game_load.cpp:402
+#: src/gui/dialogs/game_load.cpp:426
 msgid "Scenario start"
 msgstr "シナリオの開始"
 
-#: src/gui/dialogs/game_load.cpp:405
+#: src/gui/dialogs/game_load.cpp:429
 msgid "Difficulty: "
 msgstr "難易度："
 
-#: src/gui/dialogs/game_load.cpp:409
+#: src/gui/dialogs/game_load.cpp:433
 msgid "Version: "
 msgstr "バージョン："
 
-#: src/gui/dialogs/game_load.cpp:414
+#: src/gui/dialogs/game_load.cpp:438
 msgid "Modifications: "
 msgstr "Mod："
 
@@ -6535,6 +6548,11 @@ msgstr ""
 #: src/gui/dialogs/lua_interpreter.cpp:678
 msgid "lua console"
 msgstr "Luaコンソール"
+
+#: src/gui/dialogs/multiplayer/faction_select.cpp:139
+#: src/gui/dialogs/multiplayer/mp_staging.cpp:492
+msgid "Random"
+msgstr "ランダム"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:106
 msgid "Selected Game"
@@ -7386,14 +7404,10 @@ msgstr "陣営変更（デバッグモード）"
 msgid "Kill Unit (Debug!)"
 msgstr "ユニットを殺す（デバッグモード）"
 
-#: src/hotkey/hotkey_command.cpp:118
-#, fuzzy
-#| msgid "Preferences"
-msgid "Open Preferences Screen"
-msgstr "設定"
-
 #: src/hotkey/hotkey_command.cpp:119
-msgid "Scenario Objectives"
+#, fuzzy
+#| msgid "Scenario Objectives"
+msgid "Objectives"
 msgstr "シナリオ目標"
 
 #: src/hotkey/hotkey_command.cpp:122
@@ -7405,7 +7419,9 @@ msgid "Continue Network Game"
 msgstr "通信対戦の再開"
 
 #: src/hotkey/hotkey_command.cpp:125
-msgid "Quit to Main Menu"
+#, fuzzy
+#| msgid "Quit to Main Menu"
+msgid "Quit to Menu"
 msgstr "メインメニューに戻る"
 
 #: src/hotkey/hotkey_command.cpp:126
@@ -7934,12 +7950,10 @@ msgstr ""
 msgid "Hint: save-loading is unnecessary"
 msgstr ""
 
-#: src/hotkey/hotkey_command.cpp:275
-msgid "View Chat Log"
-msgstr "チャットログ表示"
-
 #: src/hotkey/hotkey_command.cpp:276
-msgid "Enter User Command"
+#, fuzzy
+#| msgid "Enter User Command"
+msgid "Enter Command"
 msgstr "ユーザーコマンドを入力"
 
 #: src/hotkey/hotkey_command.cpp:277
@@ -7951,8 +7965,10 @@ msgid "Run Formula"
 msgstr "フォーミュラの実行"
 
 #: src/hotkey/hotkey_command.cpp:279
-msgid "Clear Chat and Errors"
-msgstr ""
+#, fuzzy
+#| msgid "Player Chat"
+msgid "Clear Chat"
+msgstr "プレイヤーチャット"
 
 #: src/hotkey/hotkey_command.cpp:281
 msgid "Change Language"
@@ -8095,6 +8111,14 @@ msgid ""
 msgstr ""
 "キー「$deprecated_key」は「$key」に名前が変更されました。「$deprecated_key」"
 "のサポートはバージョン$removal_versionで削除されます。"
+
+#, fuzzy
+#~| msgid "Preferences"
+#~ msgid "Open Preferences Screen"
+#~ msgstr "設定"
+
+#~ msgid "View Chat Log"
+#~ msgstr "チャットログ表示"
 
 #~ msgid "Categories:"
 #~ msgstr "カテゴリ："

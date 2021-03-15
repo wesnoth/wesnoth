@@ -16,7 +16,7 @@
 
 #include "display.hpp"
 #include "floating_label.hpp"
-#include "font/sdl_ttf.hpp"
+#include "font/sdl_ttf_compat.hpp"
 #include "picture.hpp"
 #include "log.hpp"
 #include "preferences/general.hpp"
@@ -524,7 +524,7 @@ int CVideo::set_help_string(const std::string& str)
 	int size = font::SIZE_LARGE;
 
 	while(size > 0) {
-		if(font::line_width(str, size) > get_width()) {
+		if(font::pango_line_width(str, size) > get_width()) {
 			size--;
 		} else {
 			break;

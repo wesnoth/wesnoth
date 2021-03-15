@@ -257,11 +257,22 @@ bool loadgame::check_version_compatibility(const version_info& save_version)
 
 	if(preferences::confirm_load_save_from_different_version()) {
 		const std::string message
-			= _("This save is from a different version of the game ($version_number|). Do you wish to try to load it?");
+			= _("This save is from a different version of the game ($version_number|), and might not work with this "
+				"version.\n"
+				"\n"
+				"<b>Warning:</b> saves in the middle of campaigns are especially likely to fail, and you should either "
+				"use the old version or restart the campaign. Even when a saved game seems to load successfully, "
+				"subtler aspects like gameplay balance and story progression could be impacted. The difficulty, the "
+				"challenge, the <i>fun</i> may be missing.\n"
+				"\n"
+				"For example, the campaign may have been rebalanced with fewer enemies in the early scenarios, but "
+				"expecting your recall list to have correspondingly less experience in the late scenarios.\n"
+				"\n"
+				"Do you wish to continue?");
 		utils::string_map symbols;
 		symbols["version_number"] = save_version.str();
 		const int res = gui2::show_message(_("Load Game"), utils::interpolate_variables_into_string(message, &symbols),
-			gui2::dialogs::message::yes_no_buttons);
+			gui2::dialogs::message::yes_no_buttons, true);
 		return res == gui2::retval::OK;
 	}
 

@@ -17,9 +17,9 @@ local supply_images =
 function wesnoth.wml_actions.wc2_map_supply_village(t)
 	local unit = wesnoth.units.get(t.x, t.y)
 	local loc = unit.loc
-	wesnoth.set_terrain(loc, "Kh^Vov", "overlay")
+	wesnoth.current.map[loc] = "^Vov"
 	
-	wesnoth.set_village_owner(loc, unit.side, false)
+	wesnoth.map.set_owner(loc, unit.side, false)
 	
 	local supply_image = ((wml.variables.wc2_supply_image_counter or 0) % #supply_images ) + 1
 	wml.variables.wc2_supply_image_counter = supply_image

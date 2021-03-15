@@ -152,7 +152,7 @@ function world_conquest_tek_map_decoration_4a()
 	local terrain_to_change = wct_store_possible_flowers("Rr^Vhc")
 	while #terrain_to_change > 0 and wesnoth.random(10) > 5 do
 		local loc = terrain_to_change[wesnoth.random(#terrain_to_change)]
-		map:set_terrain(loc, "Gg^Efm", "overlay")
+		map[loc] = "^Efm"
 		terrain_to_change = wct_store_possible_flowers("Rr^Vhc")
 	end
 	-- 1.12 new forest
@@ -194,6 +194,8 @@ function wct_map_4a_post_bunus_decoration()
 	wct_map_cave_path_to("Re")
 	wct_noise_snow_to("Gd")
 end
+
+local _ = wesnoth.textdomain 'wesnoth-wc'
 
 return function()
 	set_map_name(_"Thermal")

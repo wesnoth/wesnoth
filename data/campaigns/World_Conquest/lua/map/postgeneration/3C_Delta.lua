@@ -58,7 +58,7 @@ function world_conquest_tek_map_constructor_delta()
 		-- note: the reason why i didnt add support for lua functions yet is that i
 		--       might want lua filter objects to be serializable.
 		if is_in_octaegon(loc[1], loc[2]) then
-			map:set_terrain(loc, "Wwf")
+			map[loc] = "Wwf"
 		end
 	end
 end
@@ -390,6 +390,7 @@ function wct_map_3c_post_bunus_decoration()
 	}
 end
 
+local _ = wesnoth.textdomain 'wesnoth-wc'
 
 return function()
 	set_map_name(_"river^Delta")

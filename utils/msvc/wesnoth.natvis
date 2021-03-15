@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AutoVisualizer xmlns="http://schemas.microsoft.com/vstudio/debugger/natvis/2010">
+	<Type Name="config">
+		<Intrinsic Name="attribute_count" Expression="values_._Mypair._Myval2._Myval2._Mysize" />
+		<Intrinsic Name="all_children_count" Expression="ordered_children._Mypair._Myval2._Mylast - ordered_children._Mypair._Myval2._Myfirst" />
+		<DisplayString Condition="this == &amp;invalid">invalid</DisplayString>
+		<DisplayString Condition="this != &amp;invalid &amp;&amp; attribute_count() == 0 &amp;&amp; all_children_count() == 0">{{empty}}</DisplayString>
+		<DisplayString Condition="this != &amp;invalid &amp;&amp; attribute_count() == 0 &amp;&amp; all_children_count() == 1">{{1 child}}</DisplayString>
+		<DisplayString Condition="this != &amp;invalid &amp;&amp; attribute_count() == 0 &amp;&amp; all_children_count() >  1">{{{all_children_count()} children}}</DisplayString>
+		<DisplayString Condition="this != &amp;invalid &amp;&amp; attribute_count() == 1 &amp;&amp; all_children_count() == 0">{{1 attribute}}</DisplayString>
+		<DisplayString Condition="this != &amp;invalid &amp;&amp; attribute_count() == 1 &amp;&amp; all_children_count() == 1">{{1 attribute, 1 child}}</DisplayString>
+		<DisplayString Condition="this != &amp;invalid &amp;&amp; attribute_count() == 1 &amp;&amp; all_children_count() >  1">{{1 attribute, {all_children_count()} children}}</DisplayString>
+		<DisplayString Condition="this != &amp;invalid &amp;&amp; attribute_count() >  1 &amp;&amp; all_children_count() == 0">{{{attribute_count()} attributes}}</DisplayString>
+		<DisplayString Condition="this != &amp;invalid &amp;&amp; attribute_count() >  1 &amp;&amp; all_children_count() == 1">{{{attribute_count()} attributes, 1 child}}</DisplayString>
+		<DisplayString Condition="this != &amp;invalid &amp;&amp; attribute_count() >  1 &amp;&amp; all_children_count() >  1">{{{attribute_count()} attributes, {all_children_count()} children}}</DisplayString>
+		<Expand>
+			<Item Name="[attributes]">attribute_count()</Item>
+			<Item Name="[children]">all_children_count()</Item>
+			<TreeItems>
+				<Size>attribute_count()</Size>
+				<HeadPointer>values_._Mypair._Myval2._Myval2._Myhead-&gt;_Parent</HeadPointer>
+				<LeftPointer>_Left</LeftPointer>
+				<RightPointer>_Right</RightPointer>
+				<ValueNode Condition="_Isnil == 0" Name="[{_Myval.first}]">_Myval,view(ConfigHelper)</ValueNode>
+			</TreeItems>
+			<CustomListItems>
+				<Variable Name="index" InitialValue="0" />
+				<Variable Name="current_child" InitialValue="ordered_children._Mypair._Myval2._Myfirst" />
+				<Loop>
+					<Break Condition="index == all_children_count()" />
+					<Item Name="[{current_child->pos._Ptr->_Myval.first,sb}, {current_child->index}]">
+						*current_child->pos._Ptr->_Myval.second
+							._Mypair._Myval2._Myfirst[ordered_children._Mypair._Myval2._Myfirst[index].index]
+								._Mypair._Myval2
+					</Item>
+					<Exec>current_child++</Exec>
+					<Exec>index++</Exec>
+				</Loop>
+			</CustomListItems>
+		</Expand>
+	</Type>
+	<Type Name="config_attribute_value">
+		<DisplayString Condition="value_._Which == 0">blank</DisplayString>
+		<DisplayString Condition="value_._Which == 1">{value_._Tail._Head.value_}</DisplayString>
+		<DisplayString Condition="value_._Which == 2 &amp;&amp; value_._Tail._Tail._Head.value_">yes</DisplayString>
+		<DisplayString Condition="value_._Which == 2 &amp;&amp; !value_._Tail._Tail._Head.value_">no</DisplayString>
+		<DisplayString Condition="value_._Which == 3">{value_._Tail._Tail._Tail._Head}</DisplayString>
+		<DisplayString Condition="value_._Which == 4">{value_._Tail._Tail._Tail._Tail._Head}</DisplayString>
+		<DisplayString Condition="value_._Which == 5">{value_._Tail._Tail._Tail._Tail._Tail._Head}</DisplayString>
+		<DisplayString Condition="value_._Which == 6">{value_._Tail._Tail._Tail._Tail._Tail._Tail._Head}</DisplayString>
+		<DisplayString Condition="value_._Which == 7">{value_._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Head}</DisplayString>
+		<Expand>
+			<ExpandedItem Condition="value_._Which == 0">value_._Head</ExpandedItem>
+			<ExpandedItem Condition="value_._Which == 1">value_._Tail._Head</ExpandedItem>
+			<ExpandedItem Condition="value_._Which == 2">value_._Tail._Tail._Head</ExpandedItem>
+			<ExpandedItem Condition="value_._Which == 3">value_._Tail._Tail._Tail._Head</ExpandedItem>
+			<ExpandedItem Condition="value_._Which == 4">value_._Tail._Tail._Tail._Tail._Head</ExpandedItem>
+			<ExpandedItem Condition="value_._Which == 5">value_._Tail._Tail._Tail._Tail._Tail._Head</ExpandedItem>
+			<ExpandedItem Condition="value_._Which == 6">value_._Tail._Tail._Tail._Tail._Tail._Tail._Head</ExpandedItem>
+			<ExpandedItem Condition="value_._Which == 7">value_._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Head</ExpandedItem>
+		</Expand>
+	</Type>
+	<Type Name="std::pair&lt;*&gt;" IncludeView="ConfigHelper">
+		<DisplayString>{second}</DisplayString>
+		<Expand>
+			<ExpandedItem>second</ExpandedItem>
+		</Expand>
+	</Type>
+	<Type Name="config_attribute_value::true_false">
+		<DisplayString>{value_}</DisplayString>
+	</Type>
+	<Type Name="config_attribute_value::yes_no">
+		<DisplayString Condition="value_">yes</DisplayString>
+		<DisplayString Condition="!value_">no</DisplayString>
+	</Type>
+	<Type Name="t_string">
+		<Intrinsic Name="size" Expression="val_._Ptr->value_._Mypair._Myval2._Mysize" />
+		<Intrinsic Name="capacity" Expression="val_._Ptr->value_._Mypair._Myval2._Myres" />
+		<DisplayString>translatable string ({size()} bytes)</DisplayString>
+		<Expand>
+			<Item Name="[base]">*val_._Ptr</Item>
+			<Item Name="[size]" ExcludeView="simple">size()</Item>
+			<CustomListItems MaxItemsPerView="100">
+				<Variable Name="known_textdomains" InitialValue="val_._Ptr->id_to_textdomain._Mypair._Myval2._Myfirst" />
+				<Variable Name="num_textdomains" InitialValue="val_._Ptr->id_to_textdomain._Mypair._Myval2._Mylast - val_._Ptr->id_to_textdomain._Mypair._Myval2._Myfirst" />
+				<Variable Name="textdomain_len" InitialValue="(size_t)0" />
+				<Variable Name="string_len" InitialValue="(size_t)0" />
+				<Variable Name="current" InitialValue="capacity() &lt; val_._Ptr->value_._Mypair._Myval2._BUF_SIZE
+					? val_._Ptr->value_._Mypair._Myval2._Bx._Buf
+					: val_._Ptr->value_._Mypair._Myval2._Bx._Ptr
+				" />
+				<Variable Name="textdomain_ptr" InitialValue="current" />
+				<Variable Name="string_ptr" InitialValue="current" />
+				<Variable Name="next" InitialValue="current" />
+				<Variable Name="final" InitialValue="current + size()" />
+				<Variable Name="i" InitialValue="0" />
+				<Loop>
+					<!-- <Item Name="DEBUG:current[pre]">current</Item> -->
+					<!-- switch(*current) -->
+					<If Condition="*current == 1">
+						<!-- case TRANSLATABLE_PART:-->
+						<Exec>textdomain_ptr = current + 1</Exec>
+						<Exec>string_ptr = strchr(current, 3)</Exec><!-- 3 is TEXTDOMAIN_SEPARATOR -->
+						<Exec>textdomain_len = (string_ptr - current) - 1</Exec>
+					</If>
+					<Elseif Condition="*current == 4">
+						<!-- case ID_TRANSLATABLE_PART -->
+						<Exec>textdomain_len = ((size_t)current[2] &lt;&lt; 8) | current[1]</Exec>
+						<Exec>textdomain_ptr = known_textdomains[textdomain_len]._Mypair._Myval2._Myres &lt; known_textdomains[textdomain_len]._Mypair._Myval2._BUF_SIZE
+							? known_textdomains[textdomain_len]._Mypair._Myval2._Bx._Buf
+							: known_textdomains[textdomain_len]._Mypair._Myval2._Bx._Ptr
+						</Exec>
+						<Exec>textdomain_len = known_textdomains[textdomain_len]._Mypair._Myval2._Mysize</Exec>
+						<Exec>string_ptr = current + 3</Exec>
+					</Elseif>
+					<Elseif Condition="*current == 2">
+						<!-- case UNTRANSLATABLE_PART: -->
+						<Exec>textdomain_ptr = nullptr</Exec>
+						<Exec>textdomain_len = 0</Exec>
+						<Exec>string_ptr = current + 1</Exec>
+						<!-- <Item Name="DEBUG:string_ptr">string_ptr</Item> -->
+					</Elseif>
+					<Else>
+						<!-- default: -->
+						<Exec>textdomain_ptr = nullptr</Exec>
+						<Exec>textdomain_len = 0</Exec>
+						<Exec>string_ptr = current</Exec>
+					</Else>
+					<Exec>current = strchr(string_ptr, 1)</Exec>
+					<Exec>next = strchr(string_ptr, 2)</Exec>
+					<Exec Condition="current == nullptr || (next != nullptr &amp;&amp; next &lt; current)">current = next</Exec>
+					<Exec>next = strchr(string_ptr, 4)</Exec>
+					<Exec Condition="current == nullptr || (next != nullptr &amp;&amp; next &lt; current)">current = next</Exec>
+					<Exec Condition="current == nullptr">current = final</Exec>
+					<Exec>string_len = current - string_ptr</Exec>
+					<Item Condition="textdomain_ptr != nullptr" Name="[{i}] {textdomain_ptr,[textdomain_len]s}">string_ptr,[string_len]s</Item>
+					<Item Condition="textdomain_ptr == nullptr" Name="[{i}] (untranslated)">string_ptr,[string_len]s</Item>
+					<Exec>i++</Exec>
+					<Break Condition="current >= final" />
+				</Loop>
+			</CustomListItems>
+		</Expand>
+	</Type>
+	<Type Name="vconfig">
+		<DisplayString>test</DisplayString>
+	</Type>
+</AutoVisualizer>

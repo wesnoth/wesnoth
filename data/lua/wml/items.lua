@@ -94,7 +94,7 @@ end
 
 -- returns the 'name' of an item, this can be used as an id to remove the iten later.
 function wml_actions.item(cfg)
-	local locs = wesnoth.get_locations(cfg)
+	local locs = wesnoth.map.find(cfg)
 	cfg = wml.parsed(cfg)
 	if not cfg.image and not cfg.halo then
 		wml.error "[item] missing required image= and halo= attributes."
@@ -110,7 +110,7 @@ function wml_actions.item(cfg)
 end
 
 function wml_actions.remove_item(cfg)
-	local locs = wesnoth.get_locations(cfg)
+	local locs = wesnoth.map.find(cfg)
 	for i, loc in ipairs(locs) do
 		wesnoth.interface.remove_item(loc[1], loc[2], cfg.image)
 	end
@@ -122,7 +122,7 @@ function wml_actions.store_items(cfg)
 	variable = tostring(variable or wml.error("invalid variable= in [store_items]"))
 	wml.variables[variable] = nil
 	local index = 0
-	for i, loc in ipairs(wesnoth.get_locations(cfg)) do
+	for i, loc in ipairs(wesnoth.map.find(cfg)) do
 		local items = scenario_items[loc]
 		if items then
 			for j, item in ipairs(items) do

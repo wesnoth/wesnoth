@@ -216,6 +216,7 @@ private:
 	std::string last_error_;
 	std::string last_error_data_;
 
+	std::string server_id_;
 	std::string server_version_;
 	std::set<std::string> server_capabilities_;
 	std::string server_url_;

@@ -240,7 +240,7 @@ local function place_units(unittypes, x, y)
 		local dst_x, dst_y = wesnoth.find_vacant_tile(x, y, u)
 		u:to_map(dst_x, dst_y)
 		wesnoth.add_known_unit(v)
-		wesnoth.set_village_owner(dst_x, dst_y, 1)
+		wesnoth.map.set_owner(dst_x, dst_y, 1)
 	end
 end
 
@@ -291,7 +291,7 @@ on_event("new turn", function()
 	local unit_types = get_spawn_types(next_spawn.units, next_spawn.gold, random_spawns[next_spawn.pool_num])
 	local spawn_areas = {{"3-14", "15"}, {"1", "4-13"}, {"2-13", "1"}, {"1", "2-15"}}
 	local spawn_area = spawn_areas[wesnoth.random(#spawn_areas)]
-	local locations_in_area = wesnoth.get_locations { x = spawn_area[1], y = spawn_area[2], radius=1, include_borders=false }
+	local locations_in_area = wesnoth.map.find { x = spawn_area[1], y = spawn_area[2], radius=1, include_borders=false }
 	local chosen_location = locations_in_area[wesnoth.random(#locations_in_area)]
 	place_units(unit_types, chosen_location[1], chosen_location[2])
 end)

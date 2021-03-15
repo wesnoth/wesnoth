@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: hu-lib_1.5\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-02-20 18:40-0300\n"
+"POT-Creation-Date: 2021-03-12 20:18-0300\n"
 "PO-Revision-Date: 2020-05-09 23:50+0200\n"
 "Last-Translator: Széll András <szell.andris@gmail.com>\n"
 "Language-Team: Hungarian <>\n"
@@ -72,6 +72,14 @@ msgstr ""
 #: data/core/terrain.cfg:479 data/core/terrain.cfg:489
 msgid "Fence"
 msgstr "Kerítés"
+
+#. [row]
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:193
+#: data/gui/window/mp_faction_select.cfg:176
+#, fuzzy
+#| msgid "Random"
+msgid "gender^Random"
+msgstr "Véletlen"
 
 #. [terrain_type]: id=deep_water_gray
 #. [terrain_type]: id=deep_water_medium
@@ -2774,8 +2782,9 @@ msgstr "Nehézség"
 msgid "Select difficulty:"
 msgstr "Válassz nehézséget:"
 
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/window/chat_log.cfg:36
+#: data/gui/window/chat_log.cfg:36 src/hotkey/hotkey_command.cpp:275
 msgid "Chat Log"
 msgstr "Csevegésnapló"
 
@@ -3922,11 +3931,13 @@ msgstr "Megfigyelés"
 msgid "Announcements"
 msgstr "Szintlépések"
 
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [grid]
 #. [label]: id=title
 #. [button]: id=show_preferences
 #: data/gui/window/lobby_main.cfg:460 data/gui/window/lobby_main.cfg:655
 #: data/gui/window/preferences.cfg:213 data/gui/window/title_screen.cfg:256
+#: src/hotkey/hotkey_command.cpp:118
 msgid "Preferences"
 msgstr "Beállítások"
 
@@ -4557,14 +4568,6 @@ msgstr "Vezér:"
 msgid "Gender:"
 msgstr "Nem:"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [row]
-#: data/gui/window/mp_faction_select.cfg:176
-#: src/gui/dialogs/multiplayer/faction_select.cpp:139
-#: src/gui/dialogs/multiplayer/mp_staging.cpp:492
-msgid "Random"
-msgstr "Véletlen"
-
 #. [row]
 #. [toggle_button]: id=male_toggle
 #: data/gui/window/mp_faction_select.cfg:178
@@ -4683,7 +4686,7 @@ msgstr "Jelszó mentése a helyi számítógépre (titkosított)"
 #. [widget]: id=label
 #: data/gui/window/mp_method_selection.cfg:46
 #: data/gui/window/preferences.cfg:365 data/gui/window/title_screen.cfg:252
-#: src/gui/dialogs/game_load.cpp:382
+#: src/gui/dialogs/game_load.cpp:406
 msgid "Multiplayer"
 msgstr "Többjátékos"
 
@@ -5861,7 +5864,7 @@ msgstr "hu"
 msgid "The maximum text width is less than 1."
 msgstr "A legnagyobb szövegszélesség kisebb, mint 1."
 
-#: src/font/text.cpp:779
+#: src/font/text.cpp:782
 msgid "The text contains invalid Pango markup: "
 msgstr "A szöveg érvénytelen Pango jelölést tartalmaz: "
 
@@ -6425,8 +6428,8 @@ msgid "dir_size^Unknown"
 msgstr "Ismeretlen"
 
 #: src/gui/dialogs/game_cache_options.cpp:101
-#: src/gui/dialogs/network_transmission.cpp:85
 #: src/gui/dialogs/network_transmission.cpp:86
+#: src/gui/dialogs/network_transmission.cpp:87
 #: src/gui/dialogs/screenshot_notification.cpp:115
 msgid "unit_byte^B"
 msgstr "B"
@@ -6455,59 +6458,71 @@ msgstr "A gyorsítótár teljes tartalma törölve lett."
 msgid "The game data cache could not be purged."
 msgstr "Nem sikerült a gyorsítótárbeli játékadatok teljes törlése."
 
-#: src/gui/dialogs/game_load.cpp:122
+#: src/gui/dialogs/game_load.cpp:74
+#, fuzzy
+#| msgid "Saved Games"
+msgid "No Saved Games"
+msgstr "Mentett állások"
+
+#: src/gui/dialogs/game_load.cpp:74
+#, fuzzy
+#| msgid "There are no alternative video modes available"
+msgid "There are no saved games to load."
+msgstr "Nincsenek más megjelenítési módok"
+
+#: src/gui/dialogs/game_load.cpp:143
 msgid "game_version^Current Version"
 msgstr ""
 
-#: src/gui/dialogs/game_load.cpp:127
+#: src/gui/dialogs/game_load.cpp:147
 #, fuzzy
 #| msgid "Version $version"
 msgid "game_version^Wesnoth $version"
 msgstr "Verzió: $version"
 
-#: src/gui/dialogs/game_load.cpp:264
+#: src/gui/dialogs/game_load.cpp:284
 #, fuzzy
 #| msgid "The selected game has no sides!"
 msgid "The selected file is corrupt: "
 msgstr "A kiválasztott játékban nincsenek oldalak!"
 
-#: src/gui/dialogs/game_load.cpp:336
+#: src/gui/dialogs/game_load.cpp:357
 msgid "(Invalid)"
 msgstr "(Érvénytelen)"
 
-#: src/gui/dialogs/game_load.cpp:373
+#: src/gui/dialogs/game_load.cpp:397
 msgid "Campaign: $campaign_name"
 msgstr "Hadjárat: $campaign_name"
 
-#: src/gui/dialogs/game_load.cpp:385
+#: src/gui/dialogs/game_load.cpp:409
 msgid "Tutorial"
 msgstr "Gyakorlás"
 
-#: src/gui/dialogs/game_load.cpp:388
+#: src/gui/dialogs/game_load.cpp:412
 msgid "Test scenario"
 msgstr "Próbapálya"
 
-#: src/gui/dialogs/game_load.cpp:398
+#: src/gui/dialogs/game_load.cpp:422
 msgid "Replay"
 msgstr "Visszajátszás"
 
-#: src/gui/dialogs/game_load.cpp:400
+#: src/gui/dialogs/game_load.cpp:424
 msgid "Turn"
 msgstr "Kör"
 
-#: src/gui/dialogs/game_load.cpp:402
+#: src/gui/dialogs/game_load.cpp:426
 msgid "Scenario start"
 msgstr "Pálya indítása"
 
-#: src/gui/dialogs/game_load.cpp:405
+#: src/gui/dialogs/game_load.cpp:429
 msgid "Difficulty: "
 msgstr "Nehézség: "
 
-#: src/gui/dialogs/game_load.cpp:409
+#: src/gui/dialogs/game_load.cpp:433
 msgid "Version: "
 msgstr "Verzió: "
 
-#: src/gui/dialogs/game_load.cpp:414
+#: src/gui/dialogs/game_load.cpp:438
 msgid "Modifications: "
 msgstr "Módosítók: "
 
@@ -6647,6 +6662,11 @@ msgstr ""
 #: src/gui/dialogs/lua_interpreter.cpp:678
 msgid "lua console"
 msgstr "lua konzol"
+
+#: src/gui/dialogs/multiplayer/faction_select.cpp:139
+#: src/gui/dialogs/multiplayer/mp_staging.cpp:492
+msgid "Random"
+msgstr "Véletlen"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:106
 msgid "Selected Game"
@@ -7503,14 +7523,10 @@ msgstr "Oldal átállítása (hibakeresés!)"
 msgid "Kill Unit (Debug!)"
 msgstr "Egység megölése (hibakeresés!)"
 
-#: src/hotkey/hotkey_command.cpp:118
-#, fuzzy
-#| msgid "Preferences"
-msgid "Open Preferences Screen"
-msgstr "Beállítások"
-
 #: src/hotkey/hotkey_command.cpp:119
-msgid "Scenario Objectives"
+#, fuzzy
+#| msgid "Scenario Objectives"
+msgid "Objectives"
 msgstr "Pálya céljai"
 
 #: src/hotkey/hotkey_command.cpp:122
@@ -7522,7 +7538,9 @@ msgid "Continue Network Game"
 msgstr "Hálózati játék folytatása"
 
 #: src/hotkey/hotkey_command.cpp:125
-msgid "Quit to Main Menu"
+#, fuzzy
+#| msgid "Quit to Main Menu"
+msgid "Quit to Menu"
 msgstr "Visszatérés a főmenübe"
 
 #: src/hotkey/hotkey_command.cpp:126
@@ -8058,12 +8076,10 @@ msgstr ""
 msgid "Hint: save-loading is unnecessary"
 msgstr ""
 
-#: src/hotkey/hotkey_command.cpp:275
-msgid "View Chat Log"
-msgstr "Csevegésnapló megtekintése"
-
 #: src/hotkey/hotkey_command.cpp:276
-msgid "Enter User Command"
+#, fuzzy
+#| msgid "Enter User Command"
+msgid "Enter Command"
 msgstr "Felhasználói parancs megadása"
 
 #: src/hotkey/hotkey_command.cpp:277
@@ -8075,8 +8091,10 @@ msgid "Run Formula"
 msgstr "Minta futtatása"
 
 #: src/hotkey/hotkey_command.cpp:279
-msgid "Clear Chat and Errors"
-msgstr ""
+#, fuzzy
+#| msgid "Player Chat"
+msgid "Clear Chat"
+msgstr "Játékos csevegés"
 
 #: src/hotkey/hotkey_command.cpp:281
 msgid "Change Language"
@@ -8220,6 +8238,14 @@ msgid ""
 msgstr ""
 "Ez a kulcs („$deprecated_key”) új nevet kapott: „$key”. A régi elnevezés "
 "támogatása a(z) $removal_version. verzió után megszűnik."
+
+#, fuzzy
+#~| msgid "Preferences"
+#~ msgid "Open Preferences Screen"
+#~ msgstr "Beállítások"
+
+#~ msgid "View Chat Log"
+#~ msgstr "Csevegésnapló megtekintése"
 
 #~ msgid "Categories:"
 #~ msgstr "Kategóriák:"
@@ -8917,9 +8943,6 @@ msgstr ""
 
 #~ msgid "Binding"
 #~ msgstr "Összekötés"
-
-#~ msgid "There are no alternative video modes available"
-#~ msgstr "Nincsenek más megjelenítési módok"
 
 #~ msgid "Button"
 #~ msgstr "Gomb"

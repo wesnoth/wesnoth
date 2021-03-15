@@ -15,7 +15,6 @@
 #include "font/font_config.hpp"
 #include "font/font_description.hpp"
 #include "font/error.hpp"
-#include "font/sdl_ttf.hpp"
 
 #include "config.hpp"
 #include "log.hpp"
@@ -192,7 +191,6 @@ bool load_font_config()
 	if(fontlist.empty())
 		return false;
 
-	sdl_ttf::set_font_list(fontlist);
 	return true;
 }
 

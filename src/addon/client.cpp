@@ -50,6 +50,7 @@ addons_client::addons_client(const std::string& address)
 	, conn_(nullptr)
 	, last_error_()
 	, last_error_data_()
+	, server_id_()
 	, server_version_()
 	, server_capabilities_()
 	, server_url_()
@@ -82,6 +83,7 @@ void addons_client::connect()
 
 	if(!update_last_error(response_buf)) {
 		if(const auto& info = response_buf.child("server_id")) {
+			server_id_ = info["id"].str();
 			server_version_ = info["version"].str();
 
 			for(const auto& cap : utils::split(info["cap"].str())) {
@@ -96,14 +98,15 @@ void addons_client::connect()
 	}
 
 	if(server_version_.empty()) {
-		LOG_ADDONS << "Server version 1.15.7 or earlier\n";
 		// An educated guess
 		server_capabilities_ = { "auth:legacy" };
-	} else {
-		LOG_ADDONS << "Server version " << server_version_ << '\n';
 	}
 
-	LOG_ADDONS << "Server supports: " << utils::join(server_capabilities_, " ") << '\n';
+	const std::string version_desc = server_version_.empty() ? "<1.15.7 or earlier>" : server_version_;
+	const std::string id_desc = server_id_.empty() ? "<id not provided>" : server_id_;
+
+	LOG_ADDONS << "Server " << id_desc << " version " << version_desc
+			   << " supports: " << utils::join(server_capabilities_, " ") << '\n';
 }
 
 bool addons_client::request_addons_list(config& cfg)
@@ -599,6 +602,7 @@ void addons_client::clear_last_error()
 
 void addons_client::clear_server_info()
 {
+	server_id_.clear();
 	server_version_.clear();
 	server_capabilities_.clear();
 	server_url_.clear();

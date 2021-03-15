@@ -16,7 +16,6 @@
 
 #include "gui/widgets/text_box.hpp"
 
-#include "font/sdl_ttf.hpp"
 #include "gui/core/log.hpp"
 #include "gui/core/register_widget.hpp"
 #include "gui/widgets/settings.hpp"
@@ -278,7 +277,6 @@ void text_box::update_offsets()
 	const auto conf = cast_config_to<text_box_definition>();
 	assert(conf);
 
-	// FIXME: This should use pango-cairo code path instead of sdl_ttf code path
 	text_height_ = font::get_max_height(get_text_font_size());
 
 	wfl::map_formula_callable variables;

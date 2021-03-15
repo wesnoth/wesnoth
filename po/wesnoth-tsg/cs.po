@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2021-02-20 21:40 UTC\n"
-"PO-Revision-Date: 2020-12-07 22:43+0100\n"
+"PO-Revision-Date: 2021-03-11 20:14+0100\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
@@ -2396,10 +2396,6 @@ msgstr ""
 #. [message]: speaker=narrator
 #. All of Urza Afalas’s units have been transferred to the player’s side. The troops who attacked or were recruited last turn can’t attack this turn; the others can. The “disengaged” orb is the one used for Under the Burning Sun’s disengage ability.
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:890
-#, fuzzy
-#| msgid ""
-#| "Urza Afalas’s troops are exhausted from battle and cannot attack this "
-#| "turn, but are still able to withdraw and reposition themselves."
 msgid ""
 "Many of Urza Afalas’s troops are exhausted from battle and cannot attack "
 "this turn, but are still able to withdraw and reposition themselves.\n"
@@ -2407,8 +2403,11 @@ msgid ""
 "Units that can move but can’t attack are shown with the <i>disengaged</i> "
 "orb."
 msgstr ""
-"Oddíly Urzy Afalase jsou vyčerpané z bitvy a toto kolo nemohou útočit, ale "
-"stále jsou schopny se stáhnout a přemístit."
+"Mnoho oddílů Urzy Afalase je vyčerpaných z bitvy a v tomto kole nemohou "
+"útočit, ale stále jsou schopny se stáhnout a přemístit.\n"
+"\n"
+"Jednotky, které se mohou pohnout, ale nejsou schopny zaútočit, jsou ukázány "
+"s koulí <i>uvolněných</i>."
 
 #. [message]: speaker=Urza Afalas
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:924
@@ -5437,78 +5436,11 @@ msgstr ""
 #~ msgid "Eliomir"
 #~ msgstr "Eliomir"
 
-#, fuzzy
-#~| msgid ""
-#~| "Sir Gerrick, you must make it back to Kerlath Province and warn your "
-#~| "people of the danger from the south. We will lead you through the forest "
-#~| "and clear any foes from your path. You may choose some of your veterans "
-#~| "to go with you as well, and any ones you leave behind will still have "
-#~| "time to join Ethiliel and Deoran."
-#~ msgid ""
-#~ "Sir Gerrick, you must return to Westin and warn your people of the danger "
-#~ "from the south. We will lead you through the forest and clear the foes "
-#~ "from your path. You may choose some of your veterans to accompany your "
-#~ "journey. Any troops you leave behind will still have time to join "
-#~ "Ethiliel and Deoran."
-#~ msgstr ""
-#~ "Sire Gerricku, musíš se vrátit do Kerlathu a varovat své lidi před "
-#~ "nebezpečím z jihu. Provedeme tě lesem a vyčistíme cestu od nepřátel. "
-#~ "Můžeš si s sebou vzít některé veterány, a ti kteří zůstanou pozadu půjdou "
-#~ "s Ethiliel a Deoranem."
-
-#, fuzzy
-#~| msgid ""
-#~| "With the bandits and undead vanquished behind us, what foes can there be "
-#~| "ahead? Let us hope this is a speedy journey, for the specter of winter "
-#~| "looms."
-#~ msgid ""
-#~ "With many of the bandits and undead vanquished already, few foes should "
-#~ "remain before us. Let us hope this is a speedy journey, for the specter "
-#~ "of winter looms closer."
-#~ msgstr ""
-#~ "Jací nepřátelé mohou být před námi, když jsme zničili bandity i nemrtvé? "
-#~ "Doufejme, že to bude rychlá cesta, zima se blíží."
-
 #~ msgid "Move Sir Gerrick to the north end of the woods"
 #~ msgstr "Přesuň Sira Gerricka na severní okraj lesa"
 
-#, fuzzy
-#~| msgid "Defeat the Queen Xeila"
-#~ msgid "Defeat Queen Xeila"
-#~ msgstr "Poraz královnu Xeilu"
-
 #~ msgid "Recalled units will be unavailable to Deoran."
 #~ msgstr "Přivolané jednotky nebude mít Deoran k dispozici."
-
-#, fuzzy
-#~| msgid ""
-#~| "Hss... Here are the humans who have made a pact with the cursed mermen! "
-#~| "Hss..."
-#~ msgid ""
-#~ "Hss... Here come the humans who have made a pact with the cursed mermen!"
-#~ msgstr ""
-#~ "Sss.. Jsou tu ti lidi, kteří se spolčili s prokletým vodním lidem! Sss..."
-
-#, fuzzy
-#~| msgid "We have stumbled into a den of nagas!"
-#~ msgid "We have stumbled upon a den of naga!"
-#~ msgstr "Narazili jsme na doupě nág!"
-
-#, fuzzy
-#~| msgid "Hss... We will kill them all, my brood. Hss..."
-#~ msgid "Hss... Elves too! We will kill them all, my brood. Hss..."
-#~ msgstr "Sss... Zabijeme je všechny, mé dítka. Sss..."
-
-#, fuzzy
-#~| msgid ""
-#~| "She won’t listen. If we leave these nagas here, they will ambush Deoran "
-#~| "and Ethiliel! We must destroy them!"
-#~ msgid ""
-#~ "If we leave these naga here, they will ambush Deoran and Ethiliel! We "
-#~ "must destroy them!"
-#~ msgstr ""
-#~ "Nebude nás poslouchat. Pokud se s těmi nágami nevypořádáme, přepadnou "
-#~ "Deorana a Ethiliel! Musíme je vyhladit!"
 
 #~ msgid "Hss... elves! Are they friends or enemies? Hss..."
 #~ msgstr "Sss... Elfové! Přátelé, nebo nepřátelé? Sss..."
@@ -5517,117 +5449,12 @@ msgstr ""
 #~ msgstr ""
 #~ "Jsme znavení poutníci, kteří hledají cestu k domovu. Nechte nás projít..."
 
-#, fuzzy
-#~| msgid ""
-#~| "Hss... And humans! Humans drained our swamps and made them fields for "
-#~| "farms, and now they have found my winter nest. The Land-Walkers must "
-#~| "die! Hss..."
-#~ msgid ""
-#~ "Hss... And humans! Humans drained our swamps and destroyed our homes! Now "
-#~ "they have found my winter nest and seek to destroy me. The Land-Walkers "
-#~ "must die! Hss..."
-#~ msgstr ""
-#~ "Sss.. A lidé! Lidé vysušili naše bažiny, aby měli pole pro farmy, a teď "
-#~ "objevili mé zimní hnízdo. Suchozemci musí zemřít! Sss..."
-
-#, fuzzy
-#~| msgid ""
-#~| "She won’t listen. If we leave these nagas here, they will ambush Deoran "
-#~| "and Ethiliel! We must destroy them!"
-#~ msgid ""
-#~ "She refuses to listen! If we leave these naga here, they will ambush "
-#~ "Deoran and Ethiliel! We must destroy them!"
-#~ msgstr ""
-#~ "Nebude nás poslouchat. Pokud se s těmi nágami nevypořádáme, přepadnou "
-#~ "Deorana a Ethiliel! Musíme je vyhladit!"
-
-#, fuzzy
-#~| msgid ""
-#~| "There are a group of naga occupying this area... they don’t look very "
-#~| "friendly."
-#~ msgid ""
-#~ "There are a group of naga occupying this area. They don’t look very "
-#~ "friendly."
-#~ msgstr "Tuto oblast obývá skupinka nág... nevypadají moc přátelsky."
-
-#, fuzzy
-#~| msgid ""
-#~| "If they are hostile to us, they could endanger Deoran and Ethiliel as "
-#~| "well. Perhaps their leader can be reasoned with."
-#~ msgid ""
-#~ "If they are hostile to us, they could endanger Deoran and Ethiliel as "
-#~ "well, but perhaps we can reason with their leader."
-#~ msgstr ""
-#~ "Pokud se k nám budou chovat nepřátelsky, nepřivítají Deorana a Ethiliel o "
-#~ "nic lépe. Snad se budeme moci domluvit s jejich královnou."
-
-#, fuzzy
-#~| msgid "Hss... Who will watch over my brood now? Hss..."
-#~ msgid "Who will watch over my brood now? Hss..."
-#~ msgstr "Sss... Kdo teď bude pečovat o mé mladé? Sss..."
-
-#, fuzzy
-#~| msgid "Ho! Me see elves. Elves tasty? Me take elves to eat."
-#~ msgid "Oh! Me see elves. Elves tasty food?"
-#~ msgstr "Ha! Já vidím elfy. Chutní elfové? Já jíst elfy."
-
-#, fuzzy
-#~| msgid ""
-#~| "Travelers in this desolate land! I seek that dark Sage who is rumored to "
-#~| "dwell in these lands. Surely you have come from him?"
-#~ msgid ""
-#~ "Hail, travelers! I seek the dark sage who is rumored to dwell in these "
-#~ "lands. Surely you have come from him?"
-#~ msgstr ""
-#~ "Poutníci v této zpustošené zemi! Hledám temného mudrce, o kterém se "
-#~ "proslýchá, že přebývá v těchto krajích. Zajisté jste přišli od něj?"
-
-#, fuzzy
-#~| msgid ""
-#~| "Indeed! I just left my comrades, who were preparing to kill the vile "
-#~| "Necromancer."
-#~ msgid ""
-#~ "Indeed! I just left my comrades, who were preparing to kill the vile "
-#~ "necromancer."
-#~ msgstr ""
-#~ "Jistě! Právě jsem opustil své druhy, kteří se chystali zabít toho "
-#~ "ohavného nekromancera."
-
-#, fuzzy
-#~| msgid "Unworthy fools! I’ll kill you for this sacrilege!"
-#~ msgid ""
-#~ "Unworthy fools! How dare you attack the hallowed one?! You must be slain "
-#~ "for this sacrilege!"
-#~ msgstr "Bezcenní hlupáci! Všechny vás zabiji pro tuto svatokrádež!"
-
 #~ msgid ""
 #~ "These naga are still in control of the road. We must clear the way for "
 #~ "Deoran and Ethiliel!"
 #~ msgstr ""
 #~ "Ty nágy stále ovládají silnici. Musíme Deoranovi a Ethiliel připravit "
 #~ "cestu!"
-
-#, fuzzy
-#~| msgid ""
-#~| "I will hasten back to Kerlath Province now and seek the advice of the "
-#~| "Council of Westin..."
-#~ msgid ""
-#~ "I must hasten back to Kerlath Province and seek the advice of the Council "
-#~ "of Westin. I pray that Deoran and Ethiliel find the strength to defeat "
-#~ "the undead on their own."
-#~ msgstr ""
-#~ "Pospíším si zpět do Kerlathské provincie a vyhledám pomoc westinské "
-#~ "rady..."
-
-#, fuzzy
-#~| msgid ""
-#~| "We too will return to our councils. We have much to tell them... Much "
-#~| "indeed."
-#~ msgid ""
-#~ "We will return to our council as well. There is much we have to tell "
-#~ "them... much indeed."
-#~ msgstr ""
-#~ "My se také vrátíme k našim radám. Máme jim co říci... Vpravdě mnoho."
 
 #~ msgid "Maybe whoever summoned these undead knows where he is?"
 #~ msgstr "Možná ten, kdo přivolal nemrtvé, ví kde je?"
@@ -5822,20 +5649,6 @@ msgstr ""
 #~ "práci naléhavější věci. Muži Wesnothu, do zbraně! Musíme vyhnat bandity z "
 #~ "našeho města!"
 
-#, fuzzy
-#~| msgid ""
-#~| "It grieves me to learn of his death, foolish though he may have been! "
-#~| "Now, though, there are more pressing matters. Rise, men of Wesnoth! We "
-#~| "must drive these bandits from our city!"
-#~ msgid ""
-#~ "It grieves me to learn of his death, foolish though he may have been! At "
-#~ "least we managed to defeat some of these bandits here and now. What else "
-#~ "happened?"
-#~ msgstr ""
-#~ "Jakkoliv byl hloupý, zpráva o jeho smrti mne zarmoutila. Teď ale máme na "
-#~ "práci naléhavější věci. Muži Wesnothu, do zbraně! Musíme vyhnat bandity z "
-#~ "našeho města!"
-
 #~ msgid ""
 #~ "Not only will Minister Hylas’s <i>arcane</i> attack melt undead bones, "
 #~ "but he can also heal wounded units near him."
@@ -5983,17 +5796,6 @@ msgstr ""
 #~ msgstr ""
 #~ "Nebojím se žádných lesů. Pojďme najít tu řeku, ať už jsou za ní jacíkoliv "
 #~ "nepřátelé."
-
-#, fuzzy
-#~| msgid ""
-#~| "Surely the undead infestation cannot be dispatched so easily. We have "
-#~| "merely destroyed a servant of a far darker master."
-#~ msgid ""
-#~ "Surely the undead infestation cannot be dispatched so easily. We have "
-#~ "merely destroyed servants of a far darker master."
-#~ msgstr ""
-#~ "Nemrtví nemohou být zničeni jen tak snadno. Pravděpodobně to byl jen "
-#~ "služebník temného vládce."
 
 #~ msgid ""
 #~ "Save your thanks! We are here to root out all the evil from these woods, "
@@ -6155,17 +5957,6 @@ msgstr ""
 
 #~ msgid "Bad food! It hurt me. Arrrrggghhhh!!"
 #~ msgstr "Hnusné jídlo! Zraní mě. Arrrrggghhhh!!"
-
-#, fuzzy
-#~| msgid ""
-#~| "While the council debated the best course of action, Deoran and Ethiliel "
-#~| "prepared to enter the caves under Mebrin’s fortress..."
-#~ msgid ""
-#~ "While the council debated the best course of action, Deoran and Ethiliel "
-#~ "prepared to enter the caves under the fortress..."
-#~ msgstr ""
-#~ "Zatímco rada probírala nejlepší možnosti řešení, Deoran a Ethiliel se "
-#~ "připravovali ke vstupu do jeskyní pod Mebrinovou pevností..."
 
 #~ msgid "Fssth"
 #~ msgstr "Fššt"
@@ -6555,11 +6346,6 @@ msgstr ""
 # na vyjednávání - jak jinak?
 #~ msgid "Send Ethiliel to the Great Tree and parley with Ithelden"
 #~ msgstr "Doveď Ethiliel k Velkému Stromu na vyjednávání s Itheldenem"
-
-#, fuzzy
-#~| msgid "Disciple of Mebrin"
-#~ msgid "female^Disciple of Mebrin"
-#~ msgstr "Mebrinův následovník"
 
 #~ msgid ""
 #~ "Ithelden’s elves have killed Ethiliel! Now we have no chance to come to "

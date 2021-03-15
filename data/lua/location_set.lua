@@ -22,7 +22,7 @@ function locset_meta:__index(loc)
 	if type(loc) == 'string' then
 		return methods[loc]
 	elseif loc.x and loc.y then
-		return self:get(loc.x, lov.y)
+		return self:get(loc.x, loc.y)
 	else
 		return self:get(loc[1], loc[2])
 	end
@@ -84,16 +84,20 @@ function methods:clear()
 	self.values = {}
 end
 
-function methods:get(x, y)
-	return self.values[index(x, y)]
+function methods:get(...)
+	local loc = wesnoth.map.read_location(...)
+	return self.values[index(loc.x, loc.y)]
 end
 
-function methods:insert(x, y, v)
-	self.values[index(x, y)] = v or true
+function methods:insert(...)
+	local loc, n = wesnoth.map.read_location(...)
+	local v = select(n + 1, ...)
+	self.values[index(loc.x, loc.y)] = v or true
 end
 
-function methods:remove(x, y)
-	self.values[index(x, y)] = nil
+function methods:remove(...)
+	local loc = wesnoth.map.read_location(...)
+	self.values[index(loc.x, loc.y)] = nil
 end
 
 function methods:clone()
@@ -286,11 +290,6 @@ function methods:random()
 end
 
 function location_set.create()
-	if wesnoth.get_map_size then
-		-- If called from the mapgen kernel, there's no map
-		local w,h,b = wesnoth.get_map_size()
-		assert(h + 2 * b < 9000)
-	end
 	return setmetatable({ values = {} }, locset_meta)
 end
 

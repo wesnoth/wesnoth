@@ -50,11 +50,9 @@ function ca_big_animals:execution(cfg)
 
     local reach_map = AH.get_reachable_unocc(unit)
     local wander_terrain = wml.get_child(cfg, "filter_location_wander") or {}
-    reach_map:iter( function(x, y, v)
-        -- Remove tiles that do not comform to the wander terrain filter
-        if (not wesnoth.match_location(x, y, wander_terrain)) then
-            reach_map:remove(x, y)
-        end
+    -- Remove tiles that do not comform to the wander terrain filter
+    reach_map = reach_map:filter(function(x, y, v)
+        return wesnoth.map.matches(x, y, wander_terrain)
     end)
 
     -- Now find the one of these hexes that is closest to the goal

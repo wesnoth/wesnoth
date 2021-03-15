@@ -676,7 +676,7 @@ local function river_to_lava_postfix(terrain_to_change)
 	}
 	
 	wild_volcano_for_lava_zone(terrain_to_change)
-	local filter_adjacent_grassland = wesnoth.create_filter(f.all(
+	local filter_adjacent_grassland = wesnoth.map.filter(f.all(
 		f.terrain("G*^*"),
 		f.adjacent(f.find_in("terrain_to_change"))
 	), { terrain_to_change = terrain_to_change })

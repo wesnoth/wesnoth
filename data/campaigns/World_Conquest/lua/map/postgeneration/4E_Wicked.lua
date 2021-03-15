@@ -638,6 +638,7 @@ function wct_map_4e_post_bunus_decoration()
 
 end
 
+local _ = wesnoth.textdomain 'wesnoth-wc'
 
 return function()
 	set_map_name(_"Wicked")

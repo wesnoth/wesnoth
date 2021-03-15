@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-02-20 18:40-0300\n"
+"POT-Creation-Date: 2021-03-12 20:18-0300\n"
 "PO-Revision-Date: 2018-05-16 07:07+0100\n"
 "Last-Translator: Adrian Chaves <adrian@chaves.io>\n"
 "Language-Team: Galician <kde-i18n-doc@kde.org>\n"
@@ -247,232 +247,90 @@ msgstr "Ouro retido:"
 msgid "Notes:"
 msgstr "Notas:"
 
-#. [lua]: wc_ii_generate_scenario
-#. [lua]: wct_store_possible_encampment_ford
-#: data/campaigns/World_Conquest/lua/map/main.lua:138
-#: data/campaigns/World_Conquest/lua/map/postgeneration/1A_Start.lua:144
-msgid "Start"
-msgstr ""
-
-# Optimizado para a interface.
-#. [lua]: wc_ii_generate_scenario
-#: data/campaigns/World_Conquest/lua/map/main.lua:140
-msgid "Scenario"
-msgstr "Escenario"
-
-#. [lua]: wc_ii_generate_scenario
-#: data/campaigns/World_Conquest/lua/map/main.lua:142
-msgid "Final Battle"
-msgstr ""
-
-#. [lua]: wct_map_2a_post_bunus_decoration
-#: data/campaigns/World_Conquest/lua/map/postgeneration/2A_Springs.lua:182
-msgid "water^Springs"
-msgstr ""
-
-#. [lua]: world_conquest_tek_map_decoration_2c
-#: data/campaigns/World_Conquest/lua/map/postgeneration/2C_Glaciers.lua:206
-msgid "Glaciers"
-msgstr ""
-
-#. [lua]: wct_map_2d_post_bunus_decoration
-#: data/campaigns/World_Conquest/lua/map/postgeneration/2D_Provinces.lua:164
-#, fuzzy
-#| msgid "Preferences"
-msgid "Provinces"
-msgstr "Configuración"
-
-#. [lua]: wct_map_2f_post_bunus_decoration
-#: data/campaigns/World_Conquest/lua/map/postgeneration/2F_Clayey.lua:126
-#, fuzzy
-#| msgid "Players"
-msgid "Clayey"
-msgstr "Xogadores"
-
-#. [lua]: wct_map_3c_post_bunus_decoration
-#: data/campaigns/World_Conquest/lua/map/postgeneration/3C_Delta.lua:395
-msgid "river^Delta"
-msgstr ""
-
-#. [lua]: world_conquest_tek_map_repaint_3d
-#: data/campaigns/World_Conquest/lua/map/postgeneration/3D_Sulfurous.lua:61
-msgid "Sulfurous"
-msgstr ""
-
-#. [lua]: wct_map_3e_post_bunus_decoration
-#: data/campaigns/World_Conquest/lua/map/postgeneration/3E_Coral.lua:78
-msgid "made of^Coral"
-msgstr ""
-
-#. [lua]: wct_map_4a_post_bunus_decoration
-#: data/campaigns/World_Conquest/lua/map/postgeneration/4A_Thermal.lua:199
-#, fuzzy
-#| msgid "Normal"
-msgid "Thermal"
-msgstr "Normal"
-
-#. [lua]: world_conquest_tek_map_repaint_4b
-#: data/campaigns/World_Conquest/lua/map/postgeneration/4B_Volcanic.lua:414
-#, fuzzy
-#| msgid "Vulcaniad"
-msgid "Volcanic"
-msgstr "Volcanián"
-
-#. [lua]: wct_map_4d_post_bunus_decoration
-#: data/campaigns/World_Conquest/lua/map/postgeneration/4D_Podzol.lua:134
-msgid "Podzol"
-msgstr ""
-
-#. [lua]: wct_map_4e_post_bunus_decoration
-#: data/campaigns/World_Conquest/lua/map/postgeneration/4E_Wicked.lua:643
-msgid "Wicked"
-msgstr ""
-
-#. [lua]: wild_store_roads_in_cave_zone
-#: data/campaigns/World_Conquest/lua/map/postgeneration/4F_Wild.lua:266
-msgid "Wild"
-msgstr ""
-
-#. [lua]: world_conquest_tek_map_repaint_6d
-#: data/campaigns/World_Conquest/lua/map/postgeneration/6D_Feudal.lua:472
-msgid "Feudal"
-msgstr ""
-
-#. [lua]: add_enemy_side
-#: data/campaigns/World_Conquest/lua/map/scenario_utils/side_definitions.lua:38
-msgid "Enemies"
-msgstr "Inimigos"
-
-#. [lua]: add_player_side
-#: data/campaigns/World_Conquest/lua/map/scenario_utils/side_definitions.lua:61
-msgid "Allies"
-msgstr ""
-
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:147
-msgid " and "
-msgstr " e "
-
 #. [language]
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:150
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:147
 #: data/english.cfg:31
 msgid "arcane"
 msgstr "arcano"
 
 #. [language]
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:153
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:150
 #: data/english.cfg:26
 msgid "blade"
 msgstr "folla"
 
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:156
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:153
 #: src/units/alignment.hpp:10
 msgid "chaotic"
 msgstr "caótico"
 
 #. [language]
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:159
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:156
 #: data/english.cfg:30
 msgid "cold"
 msgstr "frío"
 
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:162
-#, fuzzy
-#| msgid "Damage"
-msgid "damage"
-msgstr "Dano"
-
 # A minúsucula é a propósito, aparece tras dous puntos (:) na carga de partidas.
 #. [language]
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:165
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:159
 #: data/english.cfg:3
 msgid "Easy"
 msgstr "fácil"
 
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:168
-msgid "XP to advance"
-msgstr "Experiencia para avanzar"
-
 #. [language]
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:171
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:162
 #: data/english.cfg:29
 msgid "fire"
 msgstr "lume"
 
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:174
-msgid "gold"
-msgstr "Ouro"
-
 # A minúsucula é a propósito, aparece tras dous puntos (:) na carga de partidas.
 #. [language]
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:177
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:165
 #: data/english.cfg:5
 msgid "Hard"
 msgstr "difícil"
 
 #. [label]: id=label-hp
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:180
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:168
 #: data/themes/default.cfg:146
 msgid "HP"
 msgstr "Vida"
 
 #. [language]
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:183
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:171
 #: data/english.cfg:28
 msgid "impact"
 msgstr "impacto"
 
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:186
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:174
 #: src/units/alignment.hpp:8
 msgid "lawful"
 msgstr "legal"
 
 #. [language]
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:189
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:177
 #: data/english.cfg:22
 msgid "melee"
 msgstr "corpo a corpo"
 
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:192
-#, fuzzy
-#| msgid "move"
-#| msgid_plural "moves"
-msgid "moves"
-msgstr "movemento"
-
 # A minúsucula é a propósito, aparece tras dous puntos (:) na carga de partidas.
 #. [language]
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:195
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:180
 #: data/english.cfg:6
 msgid "Nightmare"
 msgstr "pesadelo"
 
 #. [language]
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:198
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:183
 #: data/english.cfg:27
 msgid "pierce"
 msgstr "perforación"
 
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:201
-msgid "gender^Random"
-msgstr "Ao chou"
-
 #. [language]
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:204
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:186
 #: data/english.cfg:23
 msgid "ranged"
 msgstr "a distancia"
-
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:207
-#, fuzzy
-#| msgid " resistance vs "
-msgid " resistance vs "
-msgstr " resistencia contra "
-
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:210
-#, fuzzy
-#| msgid "Strikes"
-msgid "strike"
-msgstr "Golpes"
 
 #. [about]
 #: data/core/about.cfg:4
@@ -4790,8 +4648,19 @@ msgstr ""
 "Lato-Regular.ttf,DejaVuSans.ttf,Andagii.ttf,DroidSansJapanese.ttf,"
 "DroidSansFallbackFull.ttf,Junicode-Regular.ttf"
 
+#. [lua]: wesnoth.deprecate_api
+#: data/lua/core/_initial.lua:22
+msgid "(Note: You should use $replacement instead in new code)"
+msgstr "(Nota: debería usar «$replacement» no seu lugar en código novo)"
+
+#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
+#. [lua]: wesnoth.deprecate_api
+#: data/lua/core/_initial.lua:28 src/deprecation.cpp:68
+msgid "Invalid deprecation level $level (should be 1-4)"
+msgstr "Nivel de caducidade $level incorrecto (debería estar entre 1 e 4)."
+
 #. [lua]: wml_actions.deprecated_message
-#: data/lua/wml-tags.lua:905
+#: data/lua/wml-tags.lua:903
 msgid "Invalid deprecation level (should be 1-4)"
 msgstr "Nivel de caducidade incorrecto (debería estar entre 1 e 4)."
 
@@ -4838,8 +4707,8 @@ msgstr "Insandábel"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: wesnoth.wml_actions.message
-#: data/lua/wml/message.lua:433 src/scripting/game_lua_kernel.cpp:2897
-#: src/scripting/game_lua_kernel.cpp:2932
+#: data/lua/wml/message.lua:433 src/scripting/game_lua_kernel.cpp:2665
+#: src/scripting/game_lua_kernel.cpp:2700
 msgid "input"
 msgstr "entrada"
 
@@ -4881,9 +4750,9 @@ msgstr "Experiencia para avanzar"
 #. [modification]: id=plan_unit_advance
 #: data/modifications.cfg:7
 msgid ""
-"When playing a multiplayer game, you do not control what a unit advances if "
-"they advances on another player's turn. With this modification you can set "
-"what your units advance to beforehand either for a specific unit or for all "
+"When playing a multiplayer game, you do not control what a unit advances to "
+"if it advances on another player's turn. With this modification you can set "
+"what your units advance to beforehand, either for a specific unit or for all "
 "units of the same type."
 msgstr ""
 
@@ -4985,17 +4854,8 @@ msgstr ""
 "cada nivel máis que teña o líder."
 
 #. [resistance]: id=melee_steadfast
-#: data/scenario-test.cfg:366
-msgid "steadfast"
-msgstr "firme"
-
-#. [resistance]: id=melee_steadfast
-#: data/scenario-test.cfg:367
-msgid "female^steadfast"
-msgstr "firme"
-
-#. [resistance]: id=melee_steadfast
-#: data/scenario-test.cfg:368
+#. This is not vanilla steadfast
+#: data/scenario-test.cfg:371
 #, fuzzy
 #| msgid ""
 #| "Steadfast:\n"
@@ -5009,69 +4869,26 @@ msgstr ""
 "Cando se defende, as resistencias desta unidade duplícanse, ata un máximo do "
 "50%. Isto non afecta ás súas vulnerabilidades."
 
-#. [plague]: id=plague, type=Walking Corpse
-#: data/scenario-test.cfg:403
-msgid "plague"
-msgstr "peste"
-
-#. [plague]: id=plague, type=Walking Corpse
-#: data/scenario-test.cfg:404
-#, fuzzy
-#| msgid ""
-#| "Plague:\n"
-#| "When a unit is killed by a Plague attack, that unit is replaced with a "
-#| "Walking Corpse on the same side as the unit with the Plague attack. This "
-#| "doesn’t work on Undead or units in villages."
-msgid ""
-"When a unit is killed by a Plague attack, that unit is replaced with a "
-"Walking Corpse on the same side as the unit with the Plague attack. This "
-"doesn’t work on Undead or units in villages."
-msgstr ""
-"Peste:\n"
-"Cando unha unidade morre polo ataque da peste, a unidade substitúese por un "
-"cadáver andante do bando da unidade que a atacou coa peste. Non funciona "
-"cotra os non mortos ou as unidades en vilas."
-
-#. [firststrike]: id=initiative
-#: data/scenario-test.cfg:465
-#, fuzzy
-#| msgid " (inactive)"
-msgid "initiative"
-msgstr " (inactiva)"
-
-#. [firststrike]: id=initiative
-#: data/scenario-test.cfg:466
-#, fuzzy
-#| msgid ""
-#| " The length of this unit’s weapon allows it to strike first in melee, "
-#| "even in defense."
-msgid ""
-"All adjacent friendly units will strike first in melee combat, even when "
-"defending."
-msgstr ""
-" a lonxitude da arma desta unidade permítelle golpear primeiro nos "
-"enfrontamentos corpo a corpo, incluso cando se defende."
-
 #. [chance_to_hit]: id=marksman_leadership
-#: data/scenario-test.cfg:478
+#: data/scenario-test.cfg:485
 msgid "cantor"
 msgstr ""
 
 #. [chance_to_hit]: id=marksman_leadership
-#: data/scenario-test.cfg:479
+#: data/scenario-test.cfg:486
 #, fuzzy
 #| msgid "female^chaotic"
 msgid "female^cantor"
 msgstr "caótica"
 
 #. [chance_to_hit]: id=marksman_leadership
-#: data/scenario-test.cfg:480
+#: data/scenario-test.cfg:487
 msgid "This unit grants marksman to all ranged attacks of all adjacent allies."
 msgstr ""
 
 #. [heals]: id=aura of death 4
 #. [heals]: id=aura of death 8
-#: data/scenario-test.cfg:1066 data/scenario-test.cfg:1094
+#: data/scenario-test.cfg:1073 data/scenario-test.cfg:1101
 #, fuzzy
 #| msgid "female^healthy"
 msgid "aura of death ("
@@ -5079,7 +4896,7 @@ msgstr "saudable"
 
 #. [heals]: id=aura of death 4
 #. [heals]: id=aura of death 8
-#: data/scenario-test.cfg:1067 data/scenario-test.cfg:1095
+#: data/scenario-test.cfg:1074 data/scenario-test.cfg:1102
 #, fuzzy
 #| msgid "female^healthy"
 msgid "female^aura of death ("
@@ -5087,13 +4904,13 @@ msgstr "saudable"
 
 # Fai referencia á distancia de alcance.
 #. [language]
-#: data/scenario-test.cfg:4396
+#: data/scenario-test.cfg:4403
 msgid "very long"
 msgstr "grande"
 
 # Supoño que se refire a un tipo de dano.
 #. [language]
-#: data/scenario-test.cfg:4397
+#: data/scenario-test.cfg:4404
 msgid "electrical"
 msgstr "eléctrico"
 
@@ -6314,19 +6131,19 @@ msgid "(press $hotkey to keep moving)"
 msgstr "(preme $hotkey para continuar o desprazamento)"
 
 # Mensaxe que aparece ao intentar conectarse a un servidor. Véxase «Varios xogadores → Conectarse ao servidor oficial».
-#: src/addon/client.cpp:74
+#: src/addon/client.cpp:75
 msgid "Connecting to $server_address|..."
 msgstr "Conectándose a $server_address|…"
 
-#: src/addon/client.cpp:119
+#: src/addon/client.cpp:122
 msgid "Downloading list of add-ons..."
 msgstr "Descargando a lista de complementos…"
 
-#: src/addon/client.cpp:140
+#: src/addon/client.cpp:143
 msgid "Requesting distribution terms..."
 msgstr "Solicitando as condicións de distribución…"
 
-#: src/addon/client.cpp:164
+#: src/addon/client.cpp:167
 msgid ""
 "The add-on <i>$addon_title</i> has an invalid id '$addon_id' and cannot be "
 "published."
@@ -6334,7 +6151,7 @@ msgstr ""
 "O complemento «$addon_title» ten un identificador incorrecto, «$addon_id», e "
 "non pode publicarse."
 
-#: src/addon/client.cpp:190
+#: src/addon/client.cpp:193
 msgid ""
 "The add-on <i>$addon_title</i> has a file or directory containing invalid "
 "characters and cannot be published."
@@ -6342,7 +6159,7 @@ msgstr ""
 "O complemento «$addon_title» ten un ficheiro ou cartafol que contén "
 "caracteres incorrectos e non pode publicarse."
 
-#: src/addon/client.cpp:198
+#: src/addon/client.cpp:201
 msgid ""
 "The add-on <i>$addon_title</i> has an invalid file or directory name and "
 "cannot be published. File or directory names may not contain '..' or end "
@@ -6359,7 +6176,7 @@ msgstr ""
 "\n"
 "&quot; * / : &lt; &gt; ? \\ | ~"
 
-#: src/addon/client.cpp:209
+#: src/addon/client.cpp:212
 msgid ""
 "The add-on <i>$addon_title</i> contains files or directories with case "
 "conflicts. File or directory names may not be differently-cased versions of "
@@ -6370,35 +6187,35 @@ msgstr ""
 "cartafol nun mesmo cartafol que sexan idénticos salvo polo uso de maiúsculas "
 "e minúsculas."
 
-#: src/addon/client.cpp:224
+#: src/addon/client.cpp:227
 #, fuzzy
 #| msgid "Requesting distribution terms..."
 msgid "Requesting file index..."
 msgstr "Solicitando as condicións de distribución…"
 
 # Facilita máis a visualización que «Decargando o complemento: BlaBlaBla...»·
-#: src/addon/client.cpp:240
+#: src/addon/client.cpp:243
 #, fuzzy
 #| msgid "Sending add-on <i>$addon_title</i>..."
 msgid "Sending an update pack for the add-on <i>$addon_title</i>..."
 msgstr "Enviando «<i>$addon_title</i>»…"
 
 # Facilita máis a visualización que «Decargando o complemento: BlaBlaBla...»·
-#: src/addon/client.cpp:261
+#: src/addon/client.cpp:264
 msgid "Sending add-on <i>$addon_title</i>..."
 msgstr "Enviando «<i>$addon_title</i>»…"
 
 # Facilita máis a visualización que «Decargando o complemento: BlaBlaBla...»·
-#: src/addon/client.cpp:294
+#: src/addon/client.cpp:297
 msgid "Removing add-on <i>$addon_title</i> from the server..."
 msgstr "Eliminando «<i>$addon_title</i>» do servidor…"
 
 # Facilita máis a visualización que «Decargando o complemento: BlaBlaBla...»·
-#: src/addon/client.cpp:323
+#: src/addon/client.cpp:326
 msgid "Downloading add-on <i>$addon_title</i>..."
 msgstr "Descargando «<i>$addon_title</i>»…"
 
-#: src/addon/client.cpp:342 src/addon/client.cpp:368
+#: src/addon/client.cpp:345 src/addon/client.cpp:371
 msgid ""
 "The add-on <i>$addon_title</i> has an invalid file or directory name and "
 "cannot be installed."
@@ -6406,7 +6223,7 @@ msgstr ""
 "A ruta ao complemento «<i>$addon_title</i>» contén caracteres incorrectos, "
 "así que non é posíbel instalalo."
 
-#: src/addon/client.cpp:347 src/addon/client.cpp:373
+#: src/addon/client.cpp:350 src/addon/client.cpp:376
 msgid ""
 "The add-on <i>$addon_title</i> has file or directory names with case "
 "conflicts. This may cause problems."
@@ -6414,11 +6231,11 @@ msgstr ""
 "O complemento «$addon_title» ten nomes de ficheiro ou de cartafol con "
 "conflictos de maiúsculas e minúsculas. Isto pode causar problemas."
 
-#: src/addon/client.cpp:406
+#: src/addon/client.cpp:409
 msgid "The server responded with an error:"
 msgstr "O servidor respondeu cun erro:"
 
-#: src/addon/client.cpp:456
+#: src/addon/client.cpp:459
 msgid ""
 "The selected add-on has the following dependency, which is not currently "
 "installed or available from the server. Do you wish to continue?"
@@ -6432,11 +6249,11 @@ msgstr[1] ""
 "O complemento escollido ten as seguintes dependencias, que non están nin "
 "instaladas nin dispoñíbeis no servidor. Queres continuar?"
 
-#: src/addon/client.cpp:465
+#: src/addon/client.cpp:468
 msgid "Broken Dependencies"
 msgstr "Dependencias rotas"
 
-#: src/addon/client.cpp:505
+#: src/addon/client.cpp:508
 msgid ""
 "The following dependency could not be installed. Do you still wish to "
 "continue?"
@@ -6447,11 +6264,11 @@ msgstr[0] "Non foi posíbel instalar a seguinte dependencia. Queres continuar?"
 msgstr[1] ""
 "Non foi posíbel instalar as seguintes dependencias. Queres continuar?"
 
-#: src/addon/client.cpp:509
+#: src/addon/client.cpp:512
 msgid "Dependencies Installation Failed"
 msgstr "Non se instalaron as dependencias"
 
-#: src/addon/client.cpp:532
+#: src/addon/client.cpp:535
 msgid ""
 "The add-on '$addon|' is already installed and contains additional "
 "information that will be permanently lost if you continue:"
@@ -6459,24 +6276,24 @@ msgstr ""
 "O complemento «$addon|» xa está instalado e contén información adicional que "
 "se perderá de maneira permanente se continúas:"
 
-#: src/addon/client.cpp:536
+#: src/addon/client.cpp:539
 msgid "Publishing information file (.pbl)"
 msgstr "Ficheiro de publicación de información (.pbl)"
 
-#: src/addon/client.cpp:540
+#: src/addon/client.cpp:543
 msgid "Version control system (VCS) information"
 msgstr "Información do sistema de control de versións (VCS)"
 
-#: src/addon/client.cpp:544
+#: src/addon/client.cpp:547
 msgid "Do you really wish to continue?"
 msgstr "Queres continuar?"
 
-#: src/addon/client.cpp:546 src/addon/manager_ui.cpp:172
+#: src/addon/client.cpp:549 src/addon/manager_ui.cpp:172
 #: src/game_initialization/multiplayer.cpp:361
 msgid "Confirm"
 msgstr "Confirmar"
 
-#: src/addon/client.cpp:685
+#: src/addon/client.cpp:689
 msgid "Add-ons Manager"
 msgstr "Xestor de complementos"
 
@@ -6741,28 +6558,36 @@ msgid "Version number not greater than the latest uploaded version."
 msgstr ""
 
 #: src/addon/validation.cpp:546
+msgid "Feedback topic id is not a number."
+msgstr ""
+
+#: src/addon/validation.cpp:550
+msgid "Feedback topic does not exist."
+msgstr ""
+
+#: src/addon/validation.cpp:554
 msgid "The add-on publish information contains an invalid UTF-8 sequence."
 msgstr ""
 
-#: src/addon/validation.cpp:555
+#: src/addon/validation.cpp:563
 msgid "Unspecified server error."
 msgstr ""
 
-#: src/addon/validation.cpp:559
+#: src/addon/validation.cpp:567
 msgid "Server is in read-only mode."
 msgstr ""
 
-#: src/addon/validation.cpp:563
+#: src/addon/validation.cpp:571
 #, fuzzy
 #| msgid "You have no add-ons installed."
 msgid "Corrupted server add-ons list."
 msgstr "Non tes ningún complemento instalado."
 
-#: src/addon/validation.cpp:567
+#: src/addon/validation.cpp:575
 msgid "Empty add-on version list on the server."
 msgstr ""
 
-#: src/addon/validation.cpp:577
+#: src/addon/validation.cpp:585
 msgid "Unspecified validation failure."
 msgstr ""
 
@@ -7027,10 +6852,6 @@ msgstr ""
 msgid "$elem has been deprecated and removed."
 msgstr "O uso de $elem marcouse como obsoleto e retirouse."
 
-#: src/deprecation.cpp:68
-msgid "Invalid deprecation level $level (should be 1-4)"
-msgstr "Nivel de caducidade $level incorrecto (debería estar entre 1 e 4)."
-
 #: src/desktop/notifications.cpp:82
 msgid "Chat message"
 msgstr "Mensaxe de conversa"
@@ -7146,21 +6967,21 @@ msgstr ""
 "Produciuse un erro ao cargar os ficheiros de configuración do xogo do núcleo "
 "predeterminado. O xogo non pode iniciarse."
 
-#: src/game_config_manager.cpp:529
+#: src/game_config_manager.cpp:530
 msgid "Use [modify_unit_type]\n"
 msgstr ""
 
-#: src/game_config_manager.cpp:568
+#: src/game_config_manager.cpp:569
 msgid "instead, use the macro with the same name in the [campaign] tag"
 msgstr ""
 
-#: src/game_config_manager.cpp:619
+#: src/game_config_manager.cpp:620
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
 msgstr[0] "O seguinte complemento ten erros e non foi posíbel cargalo:"
 msgstr[1] "Os seguintes complementos teñen erros e non foi posíbel cargalos:"
 
-#: src/game_config_manager.cpp:623
+#: src/game_config_manager.cpp:624
 msgid "Please report this to the author or maintainer of this add-on."
 msgid_plural ""
 "Please report this to the respective authors or maintainers of these add-ons."
@@ -7635,7 +7456,7 @@ msgstr "Rematou a partida"
 msgid "This scenario has ended. Do you want to continue the campaign?"
 msgstr "Este escenario rematou. Queres continuar a campaña?"
 
-#: src/game_initialization/playcampaign.cpp:415
+#: src/game_initialization/playcampaign.cpp:418
 msgid "Unknown scenario: '$scenario|'"
 msgstr "Escenario descoñecido: «$scenario|»."
 
@@ -9710,6 +9531,107 @@ msgstr "Agochar os plans de $player"
 msgid "Whiteboard Options"
 msgstr "Opcións de planificación"
 
+# Optimizado para a interface.
+#~ msgid "Scenario"
+#~ msgstr "Escenario"
+
+#, fuzzy
+#~| msgid "Preferences"
+#~ msgid "Provinces"
+#~ msgstr "Configuración"
+
+#, fuzzy
+#~| msgid "Players"
+#~ msgid "Clayey"
+#~ msgstr "Xogadores"
+
+#, fuzzy
+#~| msgid "Normal"
+#~ msgid "Thermal"
+#~ msgstr "Normal"
+
+#, fuzzy
+#~| msgid "Vulcaniad"
+#~ msgid "Volcanic"
+#~ msgstr "Volcanián"
+
+#~ msgid "Enemies"
+#~ msgstr "Inimigos"
+
+#~ msgid " and "
+#~ msgstr " e "
+
+#, fuzzy
+#~| msgid "Damage"
+#~ msgid "damage"
+#~ msgstr "Dano"
+
+#~ msgid "XP to advance"
+#~ msgstr "Experiencia para avanzar"
+
+#~ msgid "gold"
+#~ msgstr "Ouro"
+
+#, fuzzy
+#~| msgid "move"
+#~| msgid_plural "moves"
+#~ msgid "moves"
+#~ msgstr "movemento"
+
+#~ msgid "gender^Random"
+#~ msgstr "Ao chou"
+
+#, fuzzy
+#~| msgid " resistance vs "
+#~ msgid " resistance vs "
+#~ msgstr " resistencia contra "
+
+#, fuzzy
+#~| msgid "Strikes"
+#~ msgid "strike"
+#~ msgstr "Golpes"
+
+#~ msgid "steadfast"
+#~ msgstr "firme"
+
+#~ msgid "female^steadfast"
+#~ msgstr "firme"
+
+#~ msgid "plague"
+#~ msgstr "peste"
+
+#, fuzzy
+#~| msgid ""
+#~| "Plague:\n"
+#~| "When a unit is killed by a Plague attack, that unit is replaced with a "
+#~| "Walking Corpse on the same side as the unit with the Plague attack. This "
+#~| "doesn’t work on Undead or units in villages."
+#~ msgid ""
+#~ "When a unit is killed by a Plague attack, that unit is replaced with a "
+#~ "Walking Corpse on the same side as the unit with the Plague attack. This "
+#~ "doesn’t work on Undead or units in villages."
+#~ msgstr ""
+#~ "Peste:\n"
+#~ "Cando unha unidade morre polo ataque da peste, a unidade substitúese por "
+#~ "un cadáver andante do bando da unidade que a atacou coa peste. Non "
+#~ "funciona cotra os non mortos ou as unidades en vilas."
+
+#, fuzzy
+#~| msgid " (inactive)"
+#~ msgid "initiative"
+#~ msgstr " (inactiva)"
+
+#, fuzzy
+#~| msgid ""
+#~| " The length of this unit’s weapon allows it to strike first in melee, "
+#~| "even in defense."
+#~ msgid ""
+#~ "All adjacent friendly units will strike first in melee combat, even when "
+#~ "defending."
+#~ msgstr ""
+#~ " a lonxitude da arma desta unidade permítelle golpear primeiro nos "
+#~ "enfrontamentos corpo a corpo, incluso cando se defende."
+
 #, fuzzy
 #~| msgid "Max HP bonus +3, Max XP +20%"
 #~ msgid "Max HP bonus +6%"
@@ -9817,9 +9739,6 @@ msgstr "Opcións de planificación"
 
 #~ msgid "<small>(early finish bonus)</small>"
 #~ msgstr "<small>(hai bonificación por rematar cedo)</small>"
-
-#~ msgid "(Note: You should use $replacement instead in new code)"
-#~ msgstr "(Nota: debería usar «$replacement» no seu lugar en código novo)"
 
 #~ msgid "theme^Classic"
 #~ msgstr "Clásico"
