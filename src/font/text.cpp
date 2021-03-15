@@ -63,6 +63,7 @@ pango_text::pango_text()
 	, calculation_dirty_(true)
 	, length_(0)
 	, surface_dirty_(true)
+	, rendered_viewport_()
 	, surface_buffer_()
 {
 	// With 72 dpi the sizes are the same as with SDL_TTF so hardcoded.
@@ -89,12 +90,19 @@ pango_text::pango_text()
 	cairo_font_options_destroy(fo);
 }
 
-surface& pango_text::render()
+surface& pango_text::render(const SDL_Rect& viewport)
 {
-	this->rerender();
+	rerender(viewport);
 	return surface_;
 }
 
+surface& pango_text::render()
+{
+	recalculate();
+	auto viewport = SDL_Rect{0, 0, rect_.x + rect_.width, rect_.y + rect_.height};
+	rerender(viewport);
+	return surface_;
+}
 
 int pango_text::get_width() const
 {
@@ -639,24 +647,22 @@ static void from_cairo_format(uint32_t & c)
 	c = (static_cast<uint32_t>(a) << 24) | (static_cast<uint32_t>(r) << 16) | (static_cast<uint32_t>(g) << 8) | static_cast<uint32_t>(b);
 }
 
-void pango_text::render(PangoLayout& layout, const PangoRectangle& rect, const std::size_t surface_buffer_offset, const unsigned stride)
+void pango_text::render(PangoLayout& layout, const SDL_Rect& viewport, const unsigned stride)
 {
-	int width = rect.x + rect.width;
-	int height = rect.y + rect.height;
-	if(maximum_width_  > 0) { width = std::min(width, maximum_width_); }
-	if(maximum_height_ > 0) { height = std::min(height, maximum_height_); }
-
 	cairo_format_t format = CAIRO_FORMAT_ARGB32;
 
-	uint8_t* buffer = &surface_buffer_[surface_buffer_offset];
+	uint8_t* buffer = &surface_buffer_[0];
 
 	std::unique_ptr<cairo_surface_t, std::function<void(cairo_surface_t*)>> cairo_surface(
-		cairo_image_surface_create_for_data(buffer, format, width, height, stride), cairo_surface_destroy);
+		cairo_image_surface_create_for_data(buffer, format, viewport.w, viewport.h, stride), cairo_surface_destroy);
 	std::unique_ptr<cairo_t, std::function<void(cairo_t*)>> cr(cairo_create(cairo_surface.get()), cairo_destroy);
 
 	if(cairo_status(cr.get()) == CAIRO_STATUS_INVALID_SIZE) {
 		throw std::length_error("Text is too long to render");
 	}
+
+	// The top-left of the text, which can be outside the area to be rendered
+	cairo_move_to(cr.get(), -viewport.x, -viewport.y);
 
 	//
 	// TODO: the outline may be slightly cut off around certain text if it renders too
@@ -692,88 +698,54 @@ void pango_text::render(PangoLayout& layout, const PangoRectangle& rect, const s
 	pango_cairo_show_layout(cr.get(), &layout);
 }
 
-void pango_text::rerender()
+void pango_text::rerender(const SDL_Rect& viewport)
 {
-	if(surface_dirty_) {
+	if(surface_dirty_ || !SDL_RectEquals(&rendered_viewport_, &viewport)) {
 		assert(layout_.get());
 
 		this->recalculate();
 		surface_dirty_ = false;
-
-		int width  = rect_.x + rect_.width;
-		int height = rect_.y + rect_.height;
-		if(maximum_width_  > 0) { width  = std::min(width, maximum_width_); }
-		if(maximum_height_ > 0) { height = std::min(height, maximum_height_); }
+		rendered_viewport_ = viewport;
 
 		cairo_format_t format = CAIRO_FORMAT_ARGB32;
-		const int stride = cairo_format_stride_for_width(format, width);
+		const int stride = cairo_format_stride_for_width(format, viewport.w);
 
 		// The width and stride can be zero if the text is empty or the stride can be negative to indicate an error from
 		// Cairo. Width isn't tested here because it's implied by stride.
-		if(stride <= 0 || height <= 0) {
+		if(stride <= 0 || viewport.h <= 0) {
 			surface_ = surface(0, 0);
 			surface_buffer_.clear();
 			return;
 		}
 
-		// TODO: a sane value should be chosen for this arbitrary limit. The limit currently merely prevents arithmetic
-		// overflow when calculating (stride * height), and still allows this function to allocate a 2 gigabyte surface.
-		//
-		// Making the limit match the amount that can be handled by a single call to render() would allow this function
-		// to be simplified, removing the next try...catch block and its line-by-line workaround. The credits are likely
-		// to be the only text which exceeds render()'s limit of approx 2**15 pixels in height, so reimplementing
-		// end_credits.cpp should be enough to support this refactor.
-		if(height > std::numeric_limits<int>::max() / stride) {
+		// Check to prevent arithmetic overflow when calculating (stride * height).
+		// The size of the viewport should already provide a far lower limit on the
+		// maximum size, but this is left in as a sanity check.
+		if(viewport.h > std::numeric_limits<int>::max() / stride) {
 			throw std::length_error("Text is too long to render");
 		}
 
 		// Resize buffer appropriately and set all pixel values to 0.
 		surface_ = nullptr; // Don't leave a dangling pointer to the old buffer
-		surface_buffer_.assign(height * stride, 0);
+		surface_buffer_.assign(viewport.h * stride, 0);
 
-		try {
-			// Try rendering the whole text in one go
-			render(*layout_, rect_, 0u, stride);
-		} catch (std::length_error&) {
-			// Try rendering line-by-line, this is a workaround for cairo
-			// surfaces being limited to approx 2**15 pixels in height. If this
-			// also throws a length_error then leave it to the caller to
-			// handle.
-			std::size_t cumulative_height = 0u;
-
-			auto start_of_line = text_.cbegin();
-			while (start_of_line != text_.cend()) {
-				auto end_of_line = std::find(start_of_line, text_.cend(), '\n');
-
-				auto part_layout = std::unique_ptr<PangoLayout, std::function<void(void*)>> { pango_layout_new(context_.get()), g_object_unref};
-				auto line = std::string_view(&*start_of_line, std::distance(start_of_line, end_of_line));
-				set_markup(line, *part_layout);
-				copy_layout_properties(*layout_, *part_layout);
-
-				auto part_rect = calculate_size(*part_layout);
-				render(*part_layout, part_rect, cumulative_height * stride, stride);
-				cumulative_height += part_rect.height;
-
-				start_of_line = end_of_line;
-				if (start_of_line != text_.cend()) {
-					// skip over the \n
-					++start_of_line;
-				}
-			}
-		}
+		// Try rendering the whole text in one go. If this throws a length_error
+		// then leave it to the caller to handle; one reason it may throw is that
+		// cairo surfaces are limited to approximately 2**15 pixels in height.
+		render(*layout_, viewport, stride);
 
 		// The cairo surface is in CAIRO_FORMAT_ARGB32 which uses
 		// pre-multiplied alpha. SDL doesn't use that so the pixels need to be
 		// decoded again.
-		for(int y = 0; y < height; ++y) {
+		for(int y = 0; y < viewport.h; ++y) {
 			uint32_t* pixels = reinterpret_cast<uint32_t*>(&surface_buffer_[y * stride]);
-			for(int x = 0; x < width; ++x) {
+			for(int x = 0; x < viewport.w; ++x) {
 				from_cairo_format(pixels[x]);
 			}
 		}
 
 		surface_ = SDL_CreateRGBSurfaceWithFormatFrom(
-			&surface_buffer_[0], width, height, 32, stride, SDL_PIXELFORMAT_ARGB8888);
+			&surface_buffer_[0], viewport.w, viewport.h, 32, stride, SDL_PIXELFORMAT_ARGB8888);
 	}
 }
 
