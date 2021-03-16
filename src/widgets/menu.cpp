@@ -918,12 +918,12 @@ void menu::draw_row(const std::size_t row_index, const SDL_Rect& rect, ROW_TYPE 
 			} else {
 				column.x = xpos;
 
-				const SDL_Rect& text_size = font::pango_text_area(str,style_->get_font_size());
-				const std::size_t y = rect.y + (rect.h - text_size.h)/2;
+				const auto text_size = font::pango_line_size(str, style_->get_font_size());
+				const std::size_t y = rect.y + (rect.h - text_size.second)/2;
 				const std::size_t padding = 2;
 				SDL_Rect text_rect = column;
 				text_rect.w = rect.w - (xpos - rect.x) - 2 * style_->get_thickness();
-				text_rect.h = text_size.h;
+				text_rect.h = text_size.second;
 				font::pango_draw_text(&video(), text_rect, style_->get_font_size(), font::NORMAL_COLOR, str,
 					(type == HEADING_ROW ? xpos+padding : xpos), y);
 
@@ -937,7 +937,7 @@ void menu::draw_row(const std::size_t row_index, const SDL_Rect& rect, ROW_TYPE 
 					}
 				}
 
-				xpos += dir * (text_size.w + 5);
+				xpos += dir * (text_size.first + 5);
 			}
 		}
 		if(lang_rtl)
