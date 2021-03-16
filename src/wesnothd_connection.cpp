@@ -63,6 +63,7 @@ wesnothd_connection::wesnothd_connection(const std::string& host, const std::str
 	, tls_context_(boost::asio::ssl::context::sslv23)
 	, host_(host)
 	, service_(service)
+	, use_tls_(true)
 	, socket_(raw_socket{ new raw_socket::element_type{io_context_} })
 	, last_error_()
 	, last_error_mutex_()

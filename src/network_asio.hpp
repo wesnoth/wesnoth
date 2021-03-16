@@ -134,7 +134,7 @@ private:
 	typedef std::unique_ptr<boost::asio::ip::tcp::socket> raw_socket;
 	typedef std::unique_ptr<boost::asio::ssl::stream<raw_socket::element_type>> tls_socket;
 	typedef utils::variant<raw_socket, tls_socket> any_socket;
-	bool use_tls_ = true;
+	bool use_tls_;
 	any_socket socket_;
 
 	bool done_;
