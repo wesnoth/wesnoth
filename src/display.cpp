@@ -2900,7 +2900,7 @@ void display::refresh_report(const std::string& report_name, const config * new_
 			text.set_font_size(item->font_size())
 				.set_font_style(font::pango_text::STYLE_NORMAL)
 				.set_alignment(PANGO_ALIGN_LEFT)
-				.set_foreground_color(item->font_rgb_set() ? item->font_rgb() : color_t{})
+				.set_foreground_color(item->font_rgb_set() ? item->font_rgb() : font::NORMAL_COLOR)
 				.set_maximum_width(area.w)
 				.set_maximum_height(area.h, false)
 				.set_ellipse_mode(PANGO_ELLIPSIZE_END)
