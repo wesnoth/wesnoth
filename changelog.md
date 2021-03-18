@@ -47,6 +47,14 @@
    * Fixed resource leak in the Pango text rendering pipeline when using the characters_per_line constraint.
    * Make the warning about loading saves from old versions much clearer.
    * Made legacy GUI1 scrollbars match regular GUI2 scrollbars.
+   * Reduced font sizes for the unit HP/XP/MP/Vision/Defense displays on the sidebar at small resolutions to avoid overlaps (issue #5575).
+   * Rearranged the unit XP and vision displays on the sidebar to avoid running out of room for the XP display (issue #5575).
+   * Reduced font size for the ToD counter on the sidebar to avoid it being ellipsized too often.
+   * Gave the turn timer display the same icon as the system clock display.
+   * Anchored the Observers icon to the sidebar again in a way that does not allow it to overlap into it (issue #5575).
+   * Fixed the turn timer/system clock display on the top bar incorrectly using a larger font size at small resolutions.
+   * Made the Defense display label on the sidebar visible (a side-effect of replacing SDL_ttf) and rearranged it slightly.
+   * Set the correct default text color for in-game UI elements instead of #ffffff white for consistency with other UI elements.
  ### WML Engine
    * Standard Location Filters now support gives_income=yes|no to make it simpler to match villages regardless of owner
    * Fixed ThemeWML `[label] font_rgb=` generating text elements with broken UTF-8 sequences.
