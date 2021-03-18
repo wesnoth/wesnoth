@@ -13,6 +13,8 @@
  ### Translations
    * Updated translations: British English, Catalan, Chinese (Traditional), French,
      Portuguese (Brazil), Spanish, Turkish
+ ### User interface
+   * Fixed color fringing issues with ClearType on Windows.
  ### Miscellaneous and Bug Fixes
    * Added support to wmlxgettext for double-quote characters in translatable raw strings
    * Fixed an error message and the AI leader potentially not moving when it cannot reach a keep because it's occupied by an allied unit
