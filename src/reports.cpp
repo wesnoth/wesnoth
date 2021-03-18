@@ -1736,7 +1736,12 @@ REPORT_GENERATOR(report_countdown, rc)
 	sec = sec % 60;
 	if (sec < 10) str << '0';
 	str << sec << end;
-	return text_report(str.str(), _("Turn Countdown") + "\n\n" + _("Countdown until your turn automatically ends."));
+
+	config report;
+	add_image(report, game_config::images::time_icon, "");
+	add_text(report, str.str(), _("Turn Countdown") + "\n\n" + _("Countdown until your turn automatically ends."));
+
+	return report;
 }
 
 void reports::register_generator(const std::string &name, reports::generator *g)
