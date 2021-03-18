@@ -26,6 +26,7 @@
  ### Units
    * Beast-rider Walking Corpse variation (for UtBS Quenoth Tauroch line, but generally available)
  ### User interface
+   * Fixed color fringing issues with ClearType on Windows.
    * Improved the Load dialog when there are no saved games for the current version, and also when there are corrupted files.
    * Re-added the pop-up when there are no saved games at all (issue #5517).
    * Fixed resource leak in the Pango text rendering pipeline when using the characters_per_line constraint.
