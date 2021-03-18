@@ -1,4 +1,11 @@
 ## Version 1.14.15+dev
+ ### AI
+   * Experimental AI: fixed a bug identifying hexes next to healers as healing locations
+   * Goto Micro AI:
+     * Fixed bug when the avoid_enemies parameter is set to very small values
+     * Fixed rare bug with blocked paths when ignoring enemies
+   * Protect Unit Micro AI: fixed bug when a unit is not on the AI side
+   * Multipack Wolves Micro AI: fixed error when a wolf is fully surrounded
  ### Campaigns
    * Dead Water:
      * Fix some characters’ names, which hadn’t been marked as translatable.
@@ -20,6 +27,7 @@
    * Fixed an error message and the AI leader potentially not moving when it cannot reach a keep because it's occupied by an allied unit
    * Fixed display zoom not being taken into account when using the `x`, `y`, `directional_x` and `directional_y` attributes in unit animations.
    * Fixed `[terrain_defaults]` and `[resistance_defaults]` (issue #5308).
+   * Fixed an attack prediction assert that happened in rare combinations of the defender slowing and the attacker potentially leveling up, and a specific combination of standard and Monte Carlo attack evaluations (issues #5533 and #5002)
 
 ## Version 1.14.15
  ### Add-ons client
