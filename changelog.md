@@ -1,6 +1,21 @@
 ## Version 1.15.10+dev
  ### Add-ons client
  ### Add-ons server
+ ### AI
+   * Improved the retreat_injured candidate action:
+     * Made the CA independent of the caution aspect, which could previously cause almost healthy units to retreat
+     * Added two new aspects for customizing the retreat behavior: retreat_factor and retreat_enemy_weight
+     * In the default setting, only healing locations are considered as retreat locations and enemy threats are not the dominant consideration any more, which means units will not retreat to the edge of the map
+     * Fixed a bug identifying hexes next to healers as healing locations
+     * Miscellaneous other improvements to the internal rating function
+   * Messenger Micro AI: added [avoid] tag functionality. In the process, two of the ai_helper functions also had this functionality added: move_unit_out_of_way() and get_closest_location()
+   * Goto Micro AI:
+     * Added optional remove_movement parameter (feature request #5580)
+     * Fixed how the avoid_map and avoid_enemies parameters interact
+     * Fixed rare bug with blocked paths when ignoring enemies
+     * Fixed bug when the avoid_enemies parameter is set to very small values
+   * Protect Unit Micro AI: fixed bug when a unit is not on the AI side
+   * Multipack Wolves Micro AI: fixed error when a wolf is fully surrounded
  ### Campaigns
     * Delfador's Memoirs
      * Adjust campaign difficulty
@@ -39,6 +54,8 @@
  ### Miscellaneous and Bug Fixes
    * Added support for 1.14’s tag names in `[terrain_defaults]` (issue #5308).
    * Replaced legacy SDL_ttf/FriBidi-based font rendering used in old GUI1 code paths with Pango.
+   * Fixed an attack prediction assert that happened in rare combinations of the defender slowing and the attacker potentially leveling up, and a specific combination of standard and Monte Carlo attack evaluations (issues #5533 and #5002)
+   * Fixed test scenarios in add-ons not working
 
 ## Version 1.15.10
  ### Add-ons server
