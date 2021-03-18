@@ -22,6 +22,13 @@
      Portuguese (Brazil), Spanish, Turkish
  ### User interface
    * Fixed color fringing issues with ClearType on Windows.
+   * Reduced font sizes for the unit HP/XP/MP/Vision/Defense displays on the sidebar at small resolutions to avoid overlaps (issue #5575).
+   * Rearranged the unit XP and vision displays on the sidebar to avoid running out of room for the XP display (issue #5575).
+   * Reduced font size for the ToD counter on the sidebar to avoid it being ellipsized too often.
+   * Gave the turn timer display the same icon as the system clock display.
+   * Anchored the Observers icon to the sidebar again in a way that does not allow it to overlap into it (issue #5575).
+   * Fixed the turn timer/system clock display on the top bar incorrectly using a larger font size at small resolutions.
+   * Rearranged the Defense display label on the sidebar slightly. It remains invisible in Wesnoth 1.14, however.
  ### Miscellaneous and Bug Fixes
    * Added support to wmlxgettext for double-quote characters in translatable raw strings
    * Fixed an error message and the AI leader potentially not moving when it cannot reach a keep because it's occupied by an allied unit
