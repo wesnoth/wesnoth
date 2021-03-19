@@ -99,7 +99,6 @@ public:
 	friend class style;
 	friend class imgsel_style;
 	static style &default_style;
-	static style simple_style;
 	static imgsel_style bluebg_style;
 
 	struct item
