@@ -883,7 +883,7 @@ void display::create_buttons()
 		if (!menu.is_button()) continue;
 
 		std::shared_ptr<gui::button> b(new gui::button(screen_, menu.title(), gui::button::TYPE_PRESS, menu.image(),
-				gui::button::DEFAULT_SPACE, false, menu.overlay()));
+				gui::button::DEFAULT_SPACE, false, menu.overlay(), font::SIZE_BUTTON_SMALL));
 		DBG_DP << "drawing button " << menu.get_id() << "\n";
 		b->join_same(this);
 		b->set_id(menu.get_id());
@@ -902,7 +902,7 @@ void display::create_buttons()
 	DBG_DP << "creating action buttons...\n";
 	for(const auto& action : theme_.actions()) {
 		std::shared_ptr<gui::button> b(new gui::button(screen_, action.title(), string_to_button_type(action.type()), action.image(),
-				gui::button::DEFAULT_SPACE, false, action.overlay()));
+				gui::button::DEFAULT_SPACE, false, action.overlay(), font::SIZE_BUTTON_SMALL));
 
 		DBG_DP << "drawing button " << action.get_id() << "\n";
 		b->set_id(action.get_id());
