@@ -62,7 +62,7 @@ public:
 
 	button(CVideo& video, const std::string& label, TYPE type=TYPE_PRESS,
 	       std::string button_image="", SPACE_CONSUMPTION spacing=DEFAULT_SPACE,
-		   const bool auto_join=true, std::string overlay_image="");
+		   const bool auto_join=true, std::string overlay_image="", int font_size = -1);
 
 
 	/** Default implementation, but defined out-of-line for efficiency reasons. */
@@ -116,6 +116,11 @@ private:
 	std::string button_image_name_;
 	std::string button_overlay_image_name_;
 	std::string button_image_path_suffix_;
+
+	int font_size_;
+	int horizontal_padding_;
+	int checkbox_horizontal_padding_;
+	int vertical_padding_;
 
 }; //end class button
 

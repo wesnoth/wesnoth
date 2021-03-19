@@ -36,14 +36,11 @@ static lg::log_domain log_display("display");
 
 namespace gui {
 
-const int font_size = font::SIZE_BUTTON;
-const int horizontal_padding = font::SIZE_SMALL;
-const int checkbox_horizontal_padding = font::SIZE_SMALL / 2;
-const int vertical_padding = font::SIZE_SMALL / 2;
+const int default_font_size = font::SIZE_BUTTON;
 
 button::button(CVideo& video, const std::string& label, button::TYPE type,
                std::string button_image_name, SPACE_CONSUMPTION spacing,
-               const bool auto_join, std::string overlay_image)
+               const bool auto_join, std::string overlay_image, int font_size)
 	: widget(video, auto_join), type_(type),
 	  label_text_(label),
 	  image_(nullptr), pressedImage_(nullptr), activeImage_(nullptr), pressedActiveImage_(nullptr),
@@ -52,7 +49,11 @@ button::button(CVideo& video, const std::string& label, button::TYPE type,
 	  state_(NORMAL), pressed_(false),
 	  spacing_(spacing), base_height_(0), base_width_(0),
 	  button_image_name_(), button_overlay_image_name_(overlay_image),
-	  button_image_path_suffix_()
+	  button_image_path_suffix_(),
+	  font_size_(font_size <= 0 ? default_font_size : font_size),
+	  horizontal_padding_(font_size_),
+	  checkbox_horizontal_padding_(font_size_ / 2),
+	  vertical_padding_(font_size_ / 2)
 {
 	if (button_image_name.empty()) {
 
@@ -208,7 +209,7 @@ void button::calculate_size()
 	}
 
 	if (type_ != TYPE_IMAGE){
-		textRect_ = font::pango_draw_text(nullptr, video().screen_area(), font_size, font::BUTTON_COLOR, label_text_, 0, 0);
+		textRect_ = font::pango_draw_text(nullptr, video().screen_area(), font_size_, font::BUTTON_COLOR, label_text_, 0, 0);
 	}
 
 	// TODO: There's a weird text clipping bug, allowing the code below to run fixes it.
@@ -218,18 +219,18 @@ void button::calculate_size()
 		return;
 #endif
 
-	set_height(std::max(textRect_.h+vertical_padding,base_height_));
+	set_height(std::max(textRect_.h+vertical_padding_,base_height_));
 	if(type_ == TYPE_PRESS || type_ == TYPE_TURBO) {
 		if(spacing_ == MINIMUM_SPACE) {
-			set_width(textRect_.w + horizontal_padding);
+			set_width(textRect_.w + horizontal_padding_);
 		} else {
-			set_width(std::max(textRect_.w+horizontal_padding,base_width_));
+			set_width(std::max(textRect_.w+horizontal_padding_,base_width_));
 		}
 	} else {
 		if(label_text_.empty()) {
 			set_width(base_width_);
 		} else {
-			set_width(checkbox_horizontal_padding + textRect_.w + base_width_);
+			set_width(checkbox_horizontal_padding_ + textRect_.w + base_width_);
 		}
 	}
 }
@@ -315,8 +316,8 @@ void button::draw_contents()
 	if (type_ != TYPE_CHECK && type_ != TYPE_RADIO && type_ != TYPE_IMAGE)
 		textx = loc.x + image->w / 2 - textRect_.w / 2 + offset;
 	else {
-		clipArea.w += image_w + checkbox_horizontal_padding;
-		textx = loc.x + image_w + checkbox_horizontal_padding / 2;
+		clipArea.w += image_w + checkbox_horizontal_padding_;
+		textx = loc.x + image_w + checkbox_horizontal_padding_ / 2;
 	}
 
 	color_t button_color = font::BUTTON_COLOR;
@@ -362,7 +363,7 @@ void button::draw_contents()
 		clipArea.y += offset;
 		clipArea.w -= 2*offset;
 		clipArea.h -= 2*offset;
-		font::pango_draw_text(&video(), clipArea, font_size, button_color, label_text_, textx, texty);
+		font::pango_draw_text(&video(), clipArea, font_size_, button_color, label_text_, textx, texty);
 	}
 }
 
