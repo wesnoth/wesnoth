@@ -21,7 +21,7 @@ namespace font {
 // font sizes, to be made theme parameters
 extern const int SIZE_NORMAL;
 // automatic computation of other font sizes, to be made a default for theme-provided values
-extern const int SIZE_TINY, SIZE_SMALL,
+extern const int SIZE_TINY, SIZE_SMALL, SIZE_BUTTON,
 	SIZE_15, SIZE_PLUS, SIZE_LARGE, SIZE_TITLE, SIZE_XLARGE;
 
 // For arbitrary scaling:
