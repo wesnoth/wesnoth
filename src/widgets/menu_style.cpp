@@ -234,7 +234,7 @@ SDL_Rect menu::imgsel_style::item_size(const std::string& item) const
 	SDL_Rect bounds = style::item_size(item);
 
 	bounds.w += 2 * thickness_;
-	bounds.h += 2 * thickness_;
+	bounds.h += 2 * thickness_ + 4;
 
 	return bounds;
 }
