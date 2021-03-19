@@ -16,17 +16,17 @@
 
 namespace font {
 
-const int SIZE_NORMAL = 14;
+const int SIZE_NORMAL = 17;
 
 const int
-	SIZE_TINY = 10 * SIZE_NORMAL / 14,
-	SIZE_SMALL = 12 * SIZE_NORMAL / 14,
+	SIZE_TINY = 13 * (SIZE_NORMAL / 17),
+	SIZE_SMALL = 15 * (SIZE_NORMAL / 17),
 
-	SIZE_15 = 15 * SIZE_NORMAL / 14,
-	SIZE_PLUS = 16 * SIZE_NORMAL / 14,
-	SIZE_LARGE = 18 * SIZE_NORMAL / 14,
-	SIZE_TITLE = 20 * SIZE_NORMAL / 14,
-	SIZE_XLARGE = 24 * SIZE_NORMAL / 14
+	SIZE_15 = 15 * (SIZE_NORMAL / 17),
+	SIZE_PLUS = 18 * (SIZE_NORMAL / 17),
+	SIZE_LARGE = 20 * (SIZE_NORMAL / 17),
+	SIZE_TITLE = 22 * (SIZE_NORMAL / 17),
+	SIZE_XLARGE = 36 * (SIZE_NORMAL / 17)
 ;
 
 const std::size_t max_text_line_width = 4096;
