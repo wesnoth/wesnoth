@@ -28,6 +28,7 @@
 #include "gui/auxiliary/filter.hpp"
 #include "gui/auxiliary/find_widget.hpp"
 #include "gui/dialogs/addon/license_prompt.hpp"
+#include "gui/dialogs/addon/addon_auth.hpp"
 #include "gui/dialogs/message.hpp"
 #include "gui/dialogs/transient_message.hpp"
 #include "gui/widgets/button.hpp"
@@ -734,6 +735,13 @@ void addon_manager::publish_addon(const addon_info& addon)
 			gui2::dialogs::message::yes_no_buttons);
 
 		if(res != gui2::retval::OK) {
+			return;
+		}
+	}
+
+	// the passphrase isn't provided, prompt for it
+	if(cfg["passphrase"].empty()) {
+		if(!gui2::dialogs::addon_auth::execute(cfg)) {
 			return;
 		}
 	}
