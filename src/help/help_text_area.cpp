@@ -48,7 +48,7 @@ help_text_area::help_text_area(CVideo &video, const section &toplevel) :
 	shown_topic_(nullptr),
 	title_spacing_(16),
 	curr_loc_(0, 0),
-	min_row_height_(font::get_max_height(normal_font_size)),
+	min_row_height_(4 + font::get_max_height(normal_font_size)),
 	curr_row_height_(min_row_height_),
 	contents_height_(0)
 {

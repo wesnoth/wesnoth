@@ -76,7 +76,7 @@ boost::tribool last_debug_state = boost::indeterminate;
 std::vector<std::string> empty_string_vector;
 const int max_section_level = 15;
 const int title_size = font::SIZE_LARGE;
-const int title2_size = font::SIZE_15;
+const int title2_size = font::SIZE_PLUS;
 const int box_width = 2;
 const int normal_font_size = font::SIZE_NORMAL;
 const unsigned max_history = 100;
