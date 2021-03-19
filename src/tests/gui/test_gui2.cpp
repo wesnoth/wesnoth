@@ -31,6 +31,7 @@
 #include "generators/map_create.hpp"
 #include "gettext.hpp"
 #include "gui/core/layout_exception.hpp"
+#include "gui/dialogs/addon/addon_auth.hpp"
 #include "gui/dialogs/addon/connect.hpp"
 #include "gui/dialogs/addon/install_dependencies.hpp"
 #include "gui/dialogs/addon/license_prompt.hpp"
@@ -413,6 +414,7 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 	/**** Run the tests. *****/
 
 	/* The modal_dialog classes. */
+	test<addon_auth>();
 	test<addon_connect>();
 	test<addon_license_prompt>();
 	//test<addon_manager>();
@@ -568,6 +570,16 @@ BOOST_AUTO_TEST_CASE(test_make_test_fake)
 }
 
 namespace {
+
+template<>
+struct dialog_tester<addon_auth>
+{
+	config cfg;
+	addon_auth* create()
+	{
+		return new addon_auth(cfg);
+	}
+};
 
 template<>
 struct dialog_tester<addon_connect>

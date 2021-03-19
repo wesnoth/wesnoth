@@ -21,6 +21,7 @@
 #include "font/pango/escape.hpp"
 #include "formula/string_utils.hpp"
 #include "gettext.hpp"
+#include "gui/dialogs/addon/addon_auth.hpp"
 #include "gui/dialogs/addon/install_dependencies.hpp"
 #include "gui/dialogs/message.hpp"
 #include "gui/widgets/retval.hpp"
@@ -169,20 +170,6 @@ bool addons_client::upload_addon(const std::string& id, std::string& response_me
 		return false;
 	}
 
-	std::string passphrase = cfg["passphrase"];
-	// generate a random passphrase and write it to disk
-	// if the .pbl file doesn't provide one already
-	if(passphrase.empty()) {
-		passphrase.resize(16);
-		for(std::size_t n = 0; n < passphrase.size(); ++n) {
-			passphrase[n] = randomness::generator->get_random_int('a', 'z');
-		}
-		cfg["passphrase"] = passphrase;
-		set_addon_pbl_info(id, cfg);
-
-		LOG_ADDONS << "automatically generated an initial passphrase for " << id << '\n';
-	}
-
 	cfg["name"] = id;
 
 	config addon_data;
@@ -287,6 +274,16 @@ bool addons_client::delete_remote_addon(const std::string& id, std::string& resp
 
 	config request_buf, response_buf;
 	config& request_body = request_buf.add_child("delete");
+
+	// the passphrase isn't provided, prompt for it
+	if(cfg["passphrase"].empty()) {
+		if(!gui2::dialogs::addon_auth::execute(cfg)) {
+			config dummy;
+			config& error = dummy.add_child("error");
+			error["message"] = "Password not provided.";
+			return !update_last_error(dummy);
+		}
+	}
 
 	request_body["name"] = id;
 	request_body["passphrase"] = cfg["passphrase"];
