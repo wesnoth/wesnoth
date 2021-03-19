@@ -81,7 +81,7 @@ namespace
 			assert(label_id_ == -1);
 			SDL_Rect area = display::get_singleton()->map_outside_area();
 			font::floating_label flabel(message_);
-			flabel.set_font_size(font::SIZE_XLARGE);
+			flabel.set_font_size(font::SIZE_LARGE);
 			flabel.set_color(font::NORMAL_COLOR);
 			flabel.set_position(area.w/2, area.h/4);
 			flabel.set_lifetime(-1);
