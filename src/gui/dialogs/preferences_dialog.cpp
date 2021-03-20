@@ -135,7 +135,7 @@ void preferences_dialog::set_resolution_list(menu_button& res_list)
 		config option;
 		option["label"] = formatter() << res.x << font::unicode_multiplication_sign << res.y;
 
-		const int div = std::gcd(12, 4);
+		const int div = std::gcd(res.x, res.y);
 		const int x_ratio = res.x / div;
 		const int y_ratio = res.y / div;
 
