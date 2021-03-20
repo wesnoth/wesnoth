@@ -98,6 +98,12 @@ public:
 	/** Waits until the server handshake is complete. */
 	void wait_for_handshake();
 
+	/** True if connection is currently using TLS and thus is allowed to send cleartext passwords or auth tokens */
+	bool using_tls() const
+	{
+		return utils::holds_alternative<tls_socket>(socket_);
+	}
+
 	void cancel();
 
 	void stop();

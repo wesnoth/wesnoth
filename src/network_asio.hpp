@@ -102,6 +102,14 @@ public:
 		return done_;
 	}
 
+	/** True if connection is currently using TLS and thus is allowed to send cleartext passwords or auth tokens */
+	bool using_tls() const
+	{
+		// Calling this function before connection is ready may return wrong result
+		assert(done_);
+		return utils::holds_alternative<tls_socket>(socket_);
+	}
+
 	std::size_t bytes_to_write() const
 	{
 		return bytes_to_write_;
