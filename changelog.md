@@ -57,6 +57,7 @@
    * Set the correct default text color for in-game UI elements instead of #ffffff white for consistency with other UI elements.
    * Increased font sizes in Help and some legacy UI elements.
    * Minor clean-up of game menus display.
+   * Restyled dropdown menu buttons to look like buttons rather than textboxes.
    * Fixed missing display resolution ratios in Preferences -> Display (regression introduced in 1.15.10).
  ### WML Engine
    * Standard Location Filters now support gives_income=yes|no to make it simpler to match villages regardless of owner
