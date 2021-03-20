@@ -45,10 +45,9 @@ outro::outro(const game_classification& info)
 		text_.push_back(_("The End"));
 	}
 
-	text_.push_back("<span size='large'>" + info.campaign_name + "</span>");
-
-	// We only show the end text and the title if credits were turned off
 	if(info.end_credits) {
+		text_.push_back("<span size='large'>" + info.campaign_name + "</span>");
+
 		const auto campaign_credits = about::get_campaign_credits(info.campaign);
 
 		if(campaign_credits != about::get_credits_data().end()) {

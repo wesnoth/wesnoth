@@ -63,6 +63,7 @@
    * Standard Location Filters now support gives_income=yes|no to make it simpler to match villages regardless of owner
    * Fixed ThemeWML `[label] font_rgb=` generating text elements with broken UTF-8 sequences.
    * abilities used like weapon can call a [teaching_anim] instead of [leading_anim] now.
+   * The campaign end screen is no longer displayed when `[campaign]/[endlevel] end_credits=` is set to a false value.
  ### Miscellaneous and Bug Fixes
    * Added support for 1.14’s tag names in `[terrain_defaults]` (issue #5308).
    * Replaced legacy SDL_ttf/FriBidi-based font rendering used in old GUI1 code paths with Pango.

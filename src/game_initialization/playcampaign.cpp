@@ -341,7 +341,9 @@ LEVEL_RESULT campaign_controller::play_game()
 				preferences::add_completed_campaign(
 					state_.classification().campaign, state_.classification().difficulty);
 
-				gui2::dialogs::outro::display(state_.classification());
+				if(state_.classification().end_credits) {
+					gui2::dialogs::outro::display(state_.classification());
+				}
 			}
 
 			return res;
