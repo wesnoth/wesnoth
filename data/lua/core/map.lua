@@ -214,7 +214,7 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 			new_ter = wesnoth.map.replace_if_failed(new_ter, mode, true)
 		elseif mode == 'both' or mode == 'base' or mode == 'overlay' then
 			new_ter = wesnoth.map['replace_' .. mode](new_ter)
-		else
+		elseif mode ~= nil then
 			error('set_terrain: invalid mode')
 		end
 		wesnoth.current.map[loc] = new_ter
