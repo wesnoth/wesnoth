@@ -405,6 +405,7 @@ void create_engine::prepare_for_campaign(const std::string& difficulty)
 
 	state_.classification().end_text = current_level_data["end_text"].str();
 	state_.classification().end_text_duration = current_level_data["end_text_duration"];
+	state_.classification().end_credits = current_level_data["end_credits"].to_bool(true);
 
 	state_.classification().campaign_define = current_level_data["define"].str();
 	state_.classification().campaign_xtra_defines =
