@@ -10,25 +10,25 @@
      * Miscellaneous other improvements to the internal rating function
    * Messenger Micro AI: added [avoid] tag functionality. In the process, two of the ai_helper functions also had this functionality added: move_unit_out_of_way() and get_closest_location()
    * Goto Micro AI:
-     * Added optional remove_movement parameter (feature request #5580)
+     * Added optional remove_movement parameter (issue #5580)
      * Fixed how the avoid_map and avoid_enemies parameters interact
      * Fixed rare bug with blocked paths when ignoring enemies
      * Fixed bug when the avoid_enemies parameter is set to very small values
    * Protect Unit Micro AI: fixed bug when a unit is not on the AI side
    * Multipack Wolves Micro AI: fixed error when a wolf is fully surrounded
  ### Campaigns
-    * Delfador's Memoirs
+   * Delfador's Memoirs
      * Adjust campaign difficulty
-    * Liberty
+   * Liberty
      * Revise dialogue
      * Reduce difficulty
-    * Sceptre of Fire
+   * Sceptre of Fire
      * Adjust campaign difficulty
-    * Secrets of the Ancients
+   * Secrets of the Ancients
      * Adjust campaign difficulty
-    * Son of the Black Eye
+   * Son of the Black Eye
      * Adjust campaign difficulty
-    * The South Guard
+   * The South Guard
      * Reduce campaign difficulty
    * Tutorial:
      * Disabled end credits (issue #5543).
