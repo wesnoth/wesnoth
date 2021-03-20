@@ -179,7 +179,7 @@ void show_help(const section &toplevel_sec,
 	gui::button close_button_(video, _("Close"));
 	buttons_ptr.push_back(&close_button_);
 
-	gui::dialog_frame f(video, _("The Battle for Wesnoth Help"), gui::dialog_frame::default_style,
+	gui::dialog_frame f(video, _("Help"), gui::dialog_frame::default_style,
 					 true, &buttons_ptr);
 	f.layout(xloc, yloc, width, height);
 	f.draw();
