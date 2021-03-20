@@ -155,11 +155,11 @@ battle_context_unit_stats::battle_context_unit_stats(nonempty_unit_const_ptr up,
 	{
 		const int distance = distance_between(u_loc, opp_loc);
 		const bool out_of_range = distance > weapon->max_range() || distance < weapon->min_range();
-		disable = weapon->get_special_bool_old("disable") || out_of_range;
+		disable = weapon->get_special_bool_without_abilities("disable") || out_of_range;
 	}
 
 	// Handle plague.
-	unit_ability_list plague_specials = weapon->get_specials_old("plague");
+	unit_ability_list plague_specials = weapon->get_specials_without_abilities("plague");
 	unit_ability_list alt_plague_specials = weapon->get_specials("plague");
 	if(!alt_plague_specials.empty() && plague_specials.empty()){
 		plague_specials = alt_plague_specials;
@@ -305,15 +305,15 @@ battle_context_unit_stats::battle_context_unit_stats(const unit_type* u_type,
 		opp_ctx.emplace(opp_weapon->specials_context(*opp_type, map_location::null_location(), !attacking));
 	}
 
-	slows = weapon->get_special_bool_old("slow");
-	drains = !opp_type->musthave_status("undrainable") && weapon->get_special_bool_old("drains");
-	petrifies = weapon->get_special_bool_old("petrifies");
-	poisons = !opp_type->musthave_status("unpoisonable") && weapon->get_special_bool_old("poison");
-	rounds = weapon->get_specials_old("berserk").highest("value", 1).first;
-	firststrike = weapon->get_special_bool_old("firststrike");
-	disable = weapon->get_special_bool_old("disable");
+	slows = weapon->get_special_bool_without_abilities("slow");
+	drains = !opp_type->musthave_status("undrainable") && weapon->get_special_bool_without_abilities("drains");
+	petrifies = weapon->get_special_bool_without_abilities("petrifies");
+	poisons = !opp_type->musthave_status("unpoisonable") && weapon->get_special_bool_without_abilities("poison");
+	rounds = weapon->get_specials_without_abilities("berserk").highest("value", 1).first;
+	firststrike = weapon->get_special_bool_without_abilities("firststrike");
+	disable = weapon->get_special_bool_without_abilities("disable");
 
-	unit_ability_list plague_specials = weapon->get_specials_old("plague");
+	unit_ability_list plague_specials = weapon->get_specials_without_abilities("plague");
 	plagues = !opp_type->musthave_status("unplagueable") && !plague_specials.empty() &&
 		opp_type->undead_variation() != "null";
 
@@ -327,7 +327,7 @@ battle_context_unit_stats::battle_context_unit_stats(const unit_type* u_type,
 	signed int cth = 100 - opp_terrain_defense + weapon->accuracy() - (opp_weapon ? opp_weapon->parry() : 0);
 	cth = std::clamp(cth, 0, 100);
 
-	unit_ability_list cth_specials = weapon->get_specials_old("chance_to_hit");
+	unit_ability_list cth_specials = weapon->get_specials_without_abilities("chance_to_hit");
 	unit_abilities::effect cth_effects(cth_specials, cth, backstab_pos, weapon);
 	cth = cth_effects.get_composite_value();
 
@@ -343,7 +343,7 @@ battle_context_unit_stats::battle_context_unit_stats(const unit_type* u_type,
 	slow_damage = round_damage(base_damage, damage_multiplier, 20000);
 
 	if(drains) {
-		unit_ability_list drain_specials = weapon->get_specials_old("drains");
+		unit_ability_list drain_specials = weapon->get_specials_without_abilities("drains");
 
 		// Compute the drain percent (with 50% as the base for backward compatibility)
 		unit_abilities::effect drain_percent_effects(drain_specials, 50, backstab_pos, weapon);
@@ -351,7 +351,7 @@ battle_context_unit_stats::battle_context_unit_stats(const unit_type* u_type,
 	}
 
 	// Add heal_on_hit (the drain constant)
-	unit_ability_list heal_on_hit_specials = weapon->get_specials_old("heal_on_hit");
+	unit_ability_list heal_on_hit_specials = weapon->get_specials_without_abilities("heal_on_hit");
 	unit_abilities::effect heal_on_hit_effects(heal_on_hit_specials, 0, backstab_pos, weapon);
 	drain_constant += heal_on_hit_effects.get_composite_value();
 

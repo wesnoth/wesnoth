@@ -142,7 +142,7 @@ static bool matches_simple_filter(const attack_type & attack, const config & fil
 		deprecated_message("special=", DEP_LEVEL::PREEMPTIVE, {1, 17, 0}, "Please use special_id or special_type instead");
 		bool found = false;
 		for(auto& special : filter_special) {
-			if(attack.get_special_bool_old(special, true)) {
+			if(attack.get_special_bool_without_abilities(special, true)) {
 				found = true;
 				break;
 			}
@@ -154,7 +154,7 @@ static bool matches_simple_filter(const attack_type & attack, const config & fil
 	if(!filter_special_id.empty()) {
 		bool found = false;
 		for(auto& special : filter_special_id) {
-			if(attack.get_special_bool_old(special, true, true, false)) {
+			if(attack.get_special_bool_without_abilities(special, true, true, false)) {
 				found = true;
 				break;
 			}
@@ -168,7 +168,7 @@ static bool matches_simple_filter(const attack_type & attack, const config & fil
 		deprecated_message("special_active=", DEP_LEVEL::PREEMPTIVE, {1, 17, 0}, "Please use special_id_active or special_type_active instead");
 		bool found = false;
 		for(auto& special : filter_special_active) {
-			if(attack.get_special_bool_old(special, false)) {
+			if(attack.get_special_bool_without_abilities(special, false)) {
 				found = true;
 				break;
 			}
@@ -192,7 +192,7 @@ static bool matches_simple_filter(const attack_type & attack, const config & fil
 	if(!filter_special_type.empty()) {
 		bool found = false;
 		for(auto& special : filter_special_type) {
-			if(attack.get_special_bool_old(special, true, false)) {
+			if(attack.get_special_bool_without_abilities(special, true, false)) {
 				found = true;
 				break;
 			}
