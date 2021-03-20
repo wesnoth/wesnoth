@@ -78,8 +78,8 @@ public:
 	 * @param special_id If true, match @a special against the @c id of special tags.
 	 * @param special_tags If true, match @a special against the tag name of special tags.
 	 */
-	bool get_special_bool_old(const std::string& special, bool simple_check=false, bool special_id=true, bool special_tags=true) const;
-	unit_ability_list get_specials_old(const std::string& special) const;
+	bool get_special_bool_without_abilities(const std::string& special, bool simple_check=false, bool special_id=true, bool special_tags=true) const;
+	unit_ability_list get_specials_without_abilities(const std::string& special) const;
 	std::vector<std::pair<t_string, t_string>> special_tooltips(boost::dynamic_bitset<>* active_list = nullptr) const;
 	std::string weapon_specials(bool only_active=false, bool is_backstab=false) const;
 
@@ -90,7 +90,7 @@ public:
 	int modified_damage(bool is_backstab) const;
 	/** Returns list for weapon like abilitiesfor each ability type. */
 	unit_ability_list get_weapon_ability(const std::string& ability) const;
-	/** Returns list who contains get_weapon_ability and get_specials_old list for each ability type */
+	/** Returns list who contains get_weapon_ability and get_specials_without_abilities list for each ability type */
 	unit_ability_list get_specials(const std::string& ability) const;
 	/** used for abilities used like weapon
 	 * @return True if the ability @a special is active.
