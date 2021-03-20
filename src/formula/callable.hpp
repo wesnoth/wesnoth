@@ -155,13 +155,13 @@ protected:
 	TYPE type_;
 
 private:
-	virtual formula_callable* clone() const = 0;
+	virtual const_formula_callable_ptr clone() const = 0;
 	const_formula_callable_ptr to_ptr() const
 	{
 		if(weak_from_this().use_count() > 0) {
 			return shared_from_this();
 		}
-		return const_formula_callable_ptr(clone());
+		return clone();
 	}
 	virtual variant get_value(const std::string& key) const = 0;
 	bool has_self_;
@@ -178,7 +178,7 @@ public:
 
 class formula_callable_with_backup : public formula_callable
 {
-	formula_callable_with_backup* clone() const override {return new formula_callable_with_backup(*this);}
+	const_formula_callable_ptr clone() const override {return std::make_shared<formula_callable_with_backup>(*this);}
 public:
 	formula_callable_with_backup(const formula_callable& main, const formula_callable& backup)
 		: formula_callable(false), main_(main), backup_(backup)
@@ -207,7 +207,7 @@ private:
 
 class formula_variant_callable_with_backup : public formula_callable
 {
-	formula_variant_callable_with_backup* clone() const override {return new formula_variant_callable_with_backup(*this);}
+	const_formula_callable_ptr clone() const override {return std::make_shared<formula_variant_callable_with_backup>(*this);}
 public:
 	formula_variant_callable_with_backup(const variant& var, const formula_callable& backup)
 		: formula_callable(false), var_(var), backup_(backup)
@@ -235,7 +235,7 @@ private:
 
 class map_formula_callable : public formula_callable
 {
-	map_formula_callable* clone() const override {return new map_formula_callable(*this);}
+	const_formula_callable_ptr clone() const override {return std::make_shared<map_formula_callable>(*this);}
 public:
 	explicit map_formula_callable(const_formula_callable_ptr fallback = nullptr)
 		: formula_callable(false)

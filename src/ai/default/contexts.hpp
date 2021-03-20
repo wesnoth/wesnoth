@@ -47,7 +47,7 @@ struct target {
 
 class attack_analysis : public wfl::action_callable
 {
-	attack_analysis* clone() const override {return new attack_analysis(*this);}
+	wfl::const_formula_callable_ptr clone() const override {return std::make_shared<attack_analysis>(*this);}
 public:
 	attack_analysis() :
 		wfl::action_callable(),

@@ -443,7 +443,7 @@ private:
 
 class string_callable : public formula_callable
 {
-	string_callable* clone() const override {return new string_callable(*this);}
+	const_formula_callable_ptr clone() const override {return std::make_shared<string_callable>(*this);}
 public:
 	explicit string_callable(const variant& string) : string_(string) {}
 
@@ -501,7 +501,7 @@ private:
 
 class list_callable : public formula_callable
 {
-	list_callable* clone() const override {return new list_callable(*this);}
+	const_formula_callable_ptr clone() const override {return std::make_shared<list_callable>(*this);}
 public:
 	explicit list_callable(const variant& list) : list_(list) {}
 
@@ -542,7 +542,7 @@ private:
 
 class map_callable : public formula_callable
 {
-	map_callable* clone() const override {return new map_callable(*this);}
+	const_formula_callable_ptr clone() const override {return std::make_shared<map_callable>(*this);}
 public:
 	explicit map_callable(const variant& map) : map_(map) {}
 
@@ -594,7 +594,7 @@ private:
 
 class dot_callable : public formula_callable
 {
-	dot_callable* clone() const override {return new dot_callable(*this);}
+	const_formula_callable_ptr clone() const override {return std::make_shared<dot_callable>(*this);}
 public:
 	dot_callable(const formula_callable &global, const formula_callable& local)
 		: global_(global), local_(local)
@@ -811,7 +811,7 @@ private:
 
 class where_variables: public formula_callable
 {
-	where_variables* clone() const override {return new where_variables(*this);}
+	const_formula_callable_ptr clone() const override {return std::make_shared<where_variables>(*this);}
 public:
 	where_variables(const formula_callable &base, expr_table_ptr table, formula_debugger* fdb)
 		: formula_callable(false)

@@ -149,7 +149,7 @@ public:
 	wfl::variant make_action(wfl::const_formula_ptr formula_, const wfl::formula_callable& variables);
 
 private:
-	formula_ai* clone() const override {return new formula_ai(*this);}
+	wfl::const_formula_callable_ptr clone() const override {return std::shared_ptr<formula_ai>(new formula_ai(*this));}
 	ai_context *ai_ptr_;
 	const config cfg_;
 	recursion_counter recursion_counter_;

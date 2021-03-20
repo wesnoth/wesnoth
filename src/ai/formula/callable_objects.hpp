@@ -36,7 +36,7 @@ private:
 	const unit_map& units_;
 	const ai::formula_ai& ai_;
 
-	attack_map_callable* clone() const override {return new attack_map_callable(*this);}
+	const_formula_callable_ptr clone() const override {return std::make_shared<attack_map_callable>(*this);}
 	variant get_value(const std::string& key) const override;
 
 	void get_inputs(formula_input_vector& inputs) const override;
@@ -52,7 +52,7 @@ class attack_callable : public action_callable {
 	variant get_value(const std::string& key) const override;
 
 	void get_inputs(formula_input_vector& inputs) const override;
-	attack_callable* clone() const override {return new attack_callable(*this);}
+	const_formula_callable_ptr clone() const override {return std::make_shared<attack_callable>(*this);}
 public:
 	attack_callable(const map_location& move_from,
 			    const map_location& src, const map_location& dst, int weapon);
@@ -87,7 +87,7 @@ class move_callable : public action_callable {
 	}
 
 	int do_compare(const formula_callable* callable) const override;
-	move_callable* clone() const override {return new move_callable(*this);}
+	const_formula_callable_ptr clone() const override {return std::make_shared<move_callable>(*this);}
 public:
 	move_callable(const map_location& src, const map_location& dst) :
 	  src_(src), dst_(dst)
@@ -117,7 +117,7 @@ class move_partial_callable : public action_callable {
 	}
 
 	int do_compare(const formula_callable* callable) const override;
-	move_partial_callable* clone() const override {return new move_partial_callable(*this);}
+	const_formula_callable_ptr clone() const override {return std::make_shared<move_partial_callable>(*this);}
 public:
 	move_partial_callable(const map_location& src, const map_location& dst) :
 	  src_(src), dst_(dst)
@@ -137,7 +137,7 @@ class recall_callable : public action_callable {
 	variant get_value(const std::string& key) const override;
 
 	void get_inputs(formula_input_vector& inputs) const override;
-	recall_callable* clone() const override {return new recall_callable(*this);}
+	const_formula_callable_ptr clone() const override {return std::make_shared<recall_callable>(*this);}
 public:
 	recall_callable(const map_location& loc, const std::string& id)
 	  : loc_(loc), id_(id)
@@ -155,7 +155,7 @@ class recruit_callable : public action_callable {
 	variant get_value(const std::string& key) const override;
 
 	void get_inputs(formula_input_vector& inputs) const override;
-	recruit_callable* clone() const override {return new recruit_callable(*this);}
+	const_formula_callable_ptr clone() const override {return std::make_shared<recruit_callable>(*this);}
 public:
 	recruit_callable(const map_location& loc, const std::string& type)
 	  : loc_(loc), type_(type)
@@ -173,7 +173,7 @@ class set_unit_var_callable : public action_callable {
 	variant get_value(const std::string& key) const override;
 
 	void get_inputs(formula_input_vector& inputs) const override;
-	set_unit_var_callable* clone() const override {return new set_unit_var_callable(*this);}
+	const_formula_callable_ptr clone() const override {return std::make_shared<set_unit_var_callable>(*this);}
 public:
 	set_unit_var_callable(const std::string& key, const variant& value, const map_location& loc)
 	  : key_(key), value_(value), loc_(loc)
@@ -187,7 +187,7 @@ public:
 
 class fallback_callable : public action_callable {
 	variant get_value(const std::string& /*key*/) const override { return variant(); }
-	fallback_callable* clone() const override {return new fallback_callable(*this);}
+	const_formula_callable_ptr clone() const override {return std::make_shared<fallback_callable>(*this);}
 public:
 	explicit fallback_callable() {
 	}
@@ -202,7 +202,7 @@ class move_map_callable : public formula_callable {
 
 	variant get_value(const std::string& key) const override;
 	void get_inputs(formula_input_vector& inputs) const override;
-	move_map_callable* clone() const override {return new move_map_callable(*this);}
+	const_formula_callable_ptr clone() const override {return std::make_shared<move_map_callable>(*this);}
 public:
 	move_map_callable(const move_map& srcdst, const move_map& dstsrc, const unit_map& units)
 	  : srcdst_(srcdst), dstsrc_(dstsrc), units_(units)
@@ -220,7 +220,7 @@ class position_callable : public formula_callable {
 	variant get_value(const std::string& key) const override;
 
 	void get_inputs(formula_input_vector& inputs) const override;
-	position_callable* clone() const override {return new position_callable(*this);}
+	const_formula_callable_ptr clone() const override {return std::make_shared<position_callable>(*this);}
 public:
 	position_callable(/*unit_map* units,*/ int chance) :
 		//units_(),
@@ -251,7 +251,7 @@ class outcome_callable : public formula_callable {
 	variant get_value(const std::string& key) const override;
 
 	void get_inputs(formula_input_vector& inputs) const override;
-	outcome_callable* clone() const override {return new outcome_callable(*this);}
+	const_formula_callable_ptr clone() const override {return std::make_shared<outcome_callable>(*this);}
 public:
 	outcome_callable(		const std::vector<variant>& hitLeft,
 					const std::vector<variant>& prob,

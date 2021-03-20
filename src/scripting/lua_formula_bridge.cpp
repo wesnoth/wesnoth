@@ -37,7 +37,7 @@ variant luaW_tofaivariant(lua_State* L, int i);
 class lua_callable : public formula_callable {
 	lua_State* mState;
 	int table_i;
-	lua_callable* clone() const override {return new lua_callable(*this);}
+	const_formula_callable_ptr clone() const override {return std::make_shared<lua_callable>(*this);}
 public:
 	lua_callable(lua_State* L, int i) : mState(L), table_i(lua_absindex(L,i)) {}
 	variant get_value(const std::string& key) const {

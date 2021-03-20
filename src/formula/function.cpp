@@ -685,7 +685,7 @@ namespace
 {
 class variant_comparator : public formula_callable
 {
-	variant_comparator* clone() const override {return new variant_comparator(*this);}
+	const_formula_callable_ptr clone() const override {return std::make_shared<variant_comparator>(*this);}
 public:
 	variant_comparator(const expression_ptr& expr, const formula_callable& fallback)
 		: expr_(expr)

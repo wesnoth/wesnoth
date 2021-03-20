@@ -40,7 +40,7 @@ public:
 	int do_compare(const formula_callable* callable) const override;
 
 private:
-	terrain_callable* clone() const override {return new terrain_callable(*this);}
+	const_formula_callable_ptr clone() const override {return std::make_shared<terrain_callable>(*this);}
 	const map_location loc_;
 	const terrain_type& t_;
 	const int owner_;
@@ -58,7 +58,7 @@ public:
 	const gamemap& get_gamemap() const;
 
 private:
-	gamemap_callable* clone() const override {return new gamemap_callable(*this);}
+	const_formula_callable_ptr clone() const override {return std::make_shared<gamemap_callable>(*this);}
 	const display_context& board_;
 };
 
@@ -81,7 +81,7 @@ private:
 
 	void get_inputs(formula_input_vector& inputs) const override;
 	int do_compare(const formula_callable* callable) const override;
-	location_callable* clone() const override {return new location_callable(*this);}
+	const_formula_callable_ptr clone() const override {return std::make_shared<location_callable>(*this);}
 };
 
 class attack_type_callable : public formula_callable
@@ -97,7 +97,7 @@ public:
 	const attack_type& get_attack_type() const { return *att_; }
 
 private:
-	attack_type_callable* clone() const override {return new attack_type_callable(*this);}
+	const_formula_callable_ptr clone() const override {return std::make_shared<attack_type_callable>(*this);}
 	const_attack_ptr att_;
 };
 
@@ -120,7 +120,7 @@ public:
 	const map_location& get_location() const { return loc_; }
 
 private:
-	unit_callable* clone() const override {return new unit_callable(*this);}
+	const_formula_callable_ptr clone() const override {return std::make_shared<unit_callable>(*this);}
 	const map_location& loc_;
 	const unit& u_;
 };
@@ -141,7 +141,7 @@ public:
 	const unit_type& get_unit_type() const { return u_; }
 
 private:
-	unit_type_callable* clone() const override {return new unit_type_callable(*this);}
+	const_formula_callable_ptr clone() const override {return std::make_shared<unit_type_callable>(*this);}
 	const unit_type& u_;
 };
 
@@ -157,7 +157,7 @@ public:
 	const config& get_config() const { return cfg_; }
 
 private:
-	config_callable* clone() const override {return new config_callable(*this);}
+	const_formula_callable_ptr clone() const override {return std::make_shared<config_callable>(*this);}
 	const config& cfg_;
 };
 
@@ -172,7 +172,7 @@ public:
 	const team& get_team() const { return team_; }
 
 private:
-	team_callable* clone() const override {return new team_callable(*this);}
+	const_formula_callable_ptr clone() const override {return std::make_shared<team_callable>(*this);}
 	const team& team_;
 };
 
@@ -193,7 +193,7 @@ private:
 	variant get_value(const std::string& key) const override;
 
 	void get_inputs(formula_input_vector& inputs) const override;
-	set_var_callable* clone() const override {return new set_var_callable(*this);}
+	const_formula_callable_ptr clone() const override {return std::make_shared<set_var_callable>(*this);}
 };
 
 class safe_call_callable : public action_callable
@@ -223,7 +223,7 @@ private:
 	variant get_value(const std::string& key) const override;
 
 	void get_inputs(formula_input_vector& inputs) const override;
-	safe_call_callable* clone() const override {return new safe_call_callable(*this);}
+	const_formula_callable_ptr clone() const override {return std::make_shared<safe_call_callable>(*this);}
 };
 
 class safe_call_result : public formula_callable
@@ -250,7 +250,7 @@ private:
 	variant get_value(const std::string& key) const override;
 
 	void get_inputs(formula_input_vector& inputs) const override;
-	safe_call_result* clone() const override {return new safe_call_result(*this);}
+	const_formula_callable_ptr clone() const override {return std::make_shared<safe_call_result>(*this);}
 };
 
 } // namespace wfl
