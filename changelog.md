@@ -2,6 +2,8 @@
  ### Add-ons client
  ### Add-ons server
  ### Campaigns
+   * Eastern Invasion
+     * Dialogue changes in S07b
  ### Editor
  ### Multiplayer
  ### Packaging
@@ -31,6 +33,10 @@
  ### Campaigns
    * Delfador's Memoirs
      * Adjust campaign difficulty
+   * Eastern Invasion
+     * Reveal shroud in S2 and S10, to be fairer the first time a player sees those scenarios
+     * Balance the carryover gold on the branching campaign paths between S06 and S09
+     * Various small fixes
    * Liberty
      * Revise dialogue
      * Reduce difficulty
