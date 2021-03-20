@@ -56,6 +56,7 @@
    * Made the Defense display label on the sidebar visible (a side-effect of replacing SDL_ttf) and rearranged it slightly.
    * Set the correct default text color for in-game UI elements instead of #ffffff white for consistency with other UI elements.
    * Increased font sizes in Help and some legacy UI elements.
+   * Minor clean-up of game menus display.
  ### WML Engine
    * Standard Location Filters now support gives_income=yes|no to make it simpler to match villages regardless of owner
    * Fixed ThemeWML `[label] font_rgb=` generating text elements with broken UTF-8 sequences.
