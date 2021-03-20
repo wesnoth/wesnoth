@@ -695,7 +695,7 @@ void unit_attack(display * disp, game_board & board,
 
 	unit_ability_list abilities = att->get_location();
 	for(auto& special : attacker.checking_tags()) {
-		abilities.append(weapon->list_ability(special));
+		abilities.append(weapon->get_weapon_ability(special));
 	}
 
 	for(const unit_ability& ability : abilities) {
