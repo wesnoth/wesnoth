@@ -66,6 +66,7 @@ public:
 	 * @param service Service identifier such as "80" or "http"
 	 */
 	connection(const std::string& host, const std::string& service);
+	~connection();
 
 	void transfer(const config& request, config& response);
 

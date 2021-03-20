@@ -90,6 +90,18 @@ connection::connection(const std::string& host, const std::string& service)
 	LOG_NW << "Resolving hostname: " << host << '\n';
 }
 
+connection::~connection()
+{
+	if(auto socket = utils::get_if<tls_socket>(&socket_)) {
+		boost::system::error_code ec;
+		// this sends close_notify for secure connection shutdown
+		(*socket)->async_shutdown([](const boost::system::error_code&) {} );
+		const char buffer[] = "";
+		// this write is needed to trigger immediate close instead of waiting for other side's close_notify
+		boost::asio::write(**socket, boost::asio::buffer(buffer, 0), ec);
+	}
+}
+
 void connection::handle_resolve(const boost::system::error_code& ec, results_type results)
 {
 	if(ec) {
