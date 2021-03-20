@@ -30,6 +30,8 @@
      * Adjust campaign difficulty
     * The South Guard
      * Reduce campaign difficulty
+   * Tutorial:
+     * Disabled end credits (issue #5543).
    * Under the Burning Suns:
      * Adjust campaign difficulty
  ### Editor
