@@ -693,7 +693,7 @@ namespace {
  * active in the current context (see set_specials_context), including
  * specials obtained from the opponent's attack.
  */
-bool attack_type::get_special_bool_without_abilities(const std::string& special, bool simple_check, bool special_id, bool special_tags) const
+bool attack_type::get_special_bool_temp(const std::string& special, bool simple_check, bool special_id, bool special_tags) const
 {
 	{
 		std::vector<special_match> special_tag_matches;
@@ -765,9 +765,9 @@ bool attack_type::get_special_bool_without_abilities(const std::string& special,
  * Returns the currently active specials as an ability list, given the current
  * context (see set_specials_context).
  */
-unit_ability_list attack_type::get_specials_without_abilities(const std::string& special) const
+unit_ability_list attack_type::get_specials_temp(const std::string& special) const
 {
-	//log_scope("get_specials_without_abilities");
+	//log_scope("get_specials_temp");
 	const map_location loc = self_ ? self_->get_location() : self_loc_;
 	unit_ability_list res(loc);
 
@@ -1158,16 +1158,19 @@ unit_ability_list attack_type::get_weapon_ability(const std::string& ability) co
 	return abil_list;
 }
 
-unit_ability_list attack_type::get_specials(const std::string& ability) const
+unit_ability_list attack_type::get_specials(const std::string& special, bool with_ability) const
 {
-	unit_ability_list abil_list = get_weapon_ability(ability);
-	for(unit_ability_list::iterator i = abil_list.begin(); i != abil_list.end();) {
-		if((*i->ability_cfg)["overwrite_specials"].to_bool()) {
-			return abil_list;
+	unit_ability_list abil_list(self_loc_);
+	if(with_ability){
+		abil_list = get_weapon_ability(special);
+		for(unit_ability_list::iterator i = abil_list.begin(); i != abil_list.end();) {
+			if((*i->ability_cfg)["overwrite_specials"].to_bool()) {
+				return abil_list;
+			}
+			++i;
 		}
-		++i;
 	}
-	abil_list.append(get_specials_without_abilities(ability));
+	abil_list.append(get_specials_temp(special));
 	return abil_list;
 }
 
@@ -1359,9 +1362,12 @@ bool attack_type::get_weapon_ability_bool(const std::string& special, bool speci
 	return false;
 }
 
-bool attack_type::get_special_bool(const std::string& special, bool special_id, bool special_tags) const
+bool attack_type::get_special_bool(const std::string& special, bool simple_check, bool special_id, bool special_tags) const
 {
-	return (get_special_bool_without_abilities(special, false, special_id, special_tags) || get_weapon_ability_bool(special, special_id, special_tags));
+	if(simple_check){
+		return get_special_bool_temp(special, simple_check, special_id, special_tags);
+	}
+	return (get_special_bool_temp(special, simple_check, special_id, special_tags) || get_weapon_ability_bool(special, special_id, special_tags));
 }
 //end of emulate weapon special functions.
 
