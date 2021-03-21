@@ -1,3 +1,10 @@
+## Version 1.14.16+dev
+ ### Add-ons client
+ ### Campaigns
+ ### Translations
+ ### User interface
+ ### Miscellaneous and Bug Fixes
+
 ## Version 1.14.16
  ### AI
    * Experimental AI: fixed a bug identifying hexes next to healers as healing locations
