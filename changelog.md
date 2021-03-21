@@ -1,4 +1,4 @@
-## Version 1.14.15+dev
+## Version 1.14.16
  ### AI
    * Experimental AI: fixed a bug identifying hexes next to healers as healing locations
    * Goto Micro AI:
