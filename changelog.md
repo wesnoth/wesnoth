@@ -1,6 +1,4 @@
-## Version 1.15.10+dev
- ### Add-ons client
- ### Add-ons server
+## Version 1.15.11
  ### AI
    * Improved the retreat_injured candidate action:
      * Made the CA independent of the caution aspect, which could previously cause almost healthy units to retreat
@@ -34,10 +32,6 @@
      * Disabled end credits (issue #5543).
    * Under the Burning Suns:
      * Adjust campaign difficulty
- ### Editor
- ### Multiplayer
- ### Packaging
- ### Terrain
  ### Translations
    * Updated translations: British English, Chinese (Traditional), Czech, Italian
  ### Units
