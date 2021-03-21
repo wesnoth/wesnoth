@@ -42,7 +42,6 @@
 		46406DEA230DA7180069492E /* libSDL2_image-2.0.0.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 464C0362228361B5007D2741 /* libSDL2_image-2.0.0.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		46406DEB230DA7180069492E /* libSDL2_mixer-2.0.0.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 464C0368228361B7007D2741 /* libSDL2_mixer-2.0.0.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		46406DEC230DA7180069492E /* libSDL2_net-2.0.0.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 464C0365228361B6007D2741 /* libSDL2_net-2.0.0.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		46406DED230DA7180069492E /* libSDL2_ttf-2.0.0.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 464C0366228361B6007D2741 /* libSDL2_ttf-2.0.0.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		46406DEE230DA7180069492E /* libSDL2-2.0.0.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 464C0367228361B6007D2741 /* libSDL2-2.0.0.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		46406DEF230DA7190069492E /* libvorbis.0.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 464C0364228361B6007D2741 /* libvorbis.0.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		46406DF0230DA7190069492E /* libvorbisfile.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 464C0369228361B7007D2741 /* libvorbisfile.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
@@ -72,14 +71,12 @@
 		464C036B228361B7007D2741 /* libogg.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 464C0363228361B6007D2741 /* libogg.0.dylib */; };
 		464C036C228361B7007D2741 /* libvorbis.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 464C0364228361B6007D2741 /* libvorbis.0.dylib */; };
 		464C036D228361B7007D2741 /* libSDL2_net-2.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 464C0365228361B6007D2741 /* libSDL2_net-2.0.0.dylib */; };
-		464C036E228361B7007D2741 /* libSDL2_ttf-2.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 464C0366228361B6007D2741 /* libSDL2_ttf-2.0.0.dylib */; };
 		464C036F228361B7007D2741 /* libSDL2-2.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 464C0367228361B6007D2741 /* libSDL2-2.0.0.dylib */; };
 		464C0370228361B7007D2741 /* libSDL2_mixer-2.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 464C0368228361B7007D2741 /* libSDL2_mixer-2.0.0.dylib */; };
 		464C0371228361B7007D2741 /* libvorbisfile.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 464C0369228361B7007D2741 /* libvorbisfile.dylib */; };
 		464C03722283622A007D2741 /* libSDL2-2.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 464C0367228361B6007D2741 /* libSDL2-2.0.0.dylib */; };
 		464C037322836954007D2741 /* libvorbisfile.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 464C0369228361B7007D2741 /* libvorbisfile.dylib */; };
 		464C037422836957007D2741 /* libSDL2-2.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 464C0367228361B6007D2741 /* libSDL2-2.0.0.dylib */; };
-		464C03752283695A007D2741 /* libSDL2_ttf-2.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 464C0366228361B6007D2741 /* libSDL2_ttf-2.0.0.dylib */; };
 		464C03762283695D007D2741 /* libSDL2_mixer-2.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 464C0368228361B7007D2741 /* libSDL2_mixer-2.0.0.dylib */; };
 		464C037722836961007D2741 /* libSDL2_image-2.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 464C0362228361B5007D2741 /* libSDL2_image-2.0.0.dylib */; };
 		464F7FD125937D72006AB37B /* server_base.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 460D899824DC7842000B1ABC /* server_base.cpp */; };
@@ -1418,7 +1415,6 @@
 				46406DEE230DA7180069492E /* libSDL2-2.0.0.dylib in Copy Frameworks */,
 				468A5BC5258CD8D2004A80EF /* libboost_system-mt.dylib in Copy Frameworks */,
 				46515C452569CE3400084CE2 /* libcrypto.1.1.dylib in Copy Frameworks */,
-				46406DED230DA7180069492E /* libSDL2_ttf-2.0.0.dylib in Copy Frameworks */,
 				91B6221B1B76C0A600B00E0F /* libpng16.16.dylib in Copy Frameworks */,
 				4674EE9D24CD1E64007C18CE /* libfribidi.0.dylib in Copy Frameworks */,
 				91A41F901CA22A98008B10D5 /* libreadline.8.0.dylib in Copy Frameworks */,
@@ -1493,7 +1489,6 @@
 		464C0363228361B6007D2741 /* libogg.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libogg.0.dylib; path = lib/libogg.0.dylib; sourceTree = "<group>"; };
 		464C0364228361B6007D2741 /* libvorbis.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libvorbis.0.dylib; path = lib/libvorbis.0.dylib; sourceTree = "<group>"; };
 		464C0365228361B6007D2741 /* libSDL2_net-2.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libSDL2_net-2.0.0.dylib"; path = "lib/libSDL2_net-2.0.0.dylib"; sourceTree = "<group>"; };
-		464C0366228361B6007D2741 /* libSDL2_ttf-2.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libSDL2_ttf-2.0.0.dylib"; path = "lib/libSDL2_ttf-2.0.0.dylib"; sourceTree = "<group>"; };
 		464C0367228361B6007D2741 /* libSDL2-2.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libSDL2-2.0.0.dylib"; path = "lib/libSDL2-2.0.0.dylib"; sourceTree = "<group>"; };
 		464C0368228361B7007D2741 /* libSDL2_mixer-2.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libSDL2_mixer-2.0.0.dylib"; path = "lib/libSDL2_mixer-2.0.0.dylib"; sourceTree = "<group>"; };
 		464C0369228361B7007D2741 /* libvorbisfile.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libvorbisfile.dylib; path = lib/libvorbisfile.dylib; sourceTree = "<group>"; };
@@ -2842,7 +2837,6 @@
 				EC5C245318EF07B4001FA499 /* libz.1.dylib in Frameworks */,
 				4674EEA024CD207F007C18CE /* libgio-2.0.0.dylib in Frameworks */,
 				915C68F41DF1F78600594B07 /* libintl.8.dylib in Frameworks */,
-				464C036E228361B7007D2741 /* libSDL2_ttf-2.0.0.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2893,7 +2887,6 @@
 				468A5B95258CD3B5004A80EF /* libboost_prg_exec_monitor-mt.dylib in Frameworks */,
 				468A5B93258CD3B5004A80EF /* libboost_chrono-mt.dylib in Frameworks */,
 				464C037422836957007D2741 /* libSDL2-2.0.0.dylib in Frameworks */,
-				464C03752283695A007D2741 /* libSDL2_ttf-2.0.0.dylib in Frameworks */,
 				468A5B98258CD3B5004A80EF /* libboost_regex-mt.dylib in Frameworks */,
 				46A72F4624D7148C0033B5A9 /* IOKit.framework in Frameworks */,
 				468A5B94258CD3B5004A80EF /* libboost_context-mt.dylib in Frameworks */,
@@ -3324,7 +3317,6 @@
 				464C0362228361B5007D2741 /* libSDL2_image-2.0.0.dylib */,
 				464C0368228361B7007D2741 /* libSDL2_mixer-2.0.0.dylib */,
 				464C0365228361B6007D2741 /* libSDL2_net-2.0.0.dylib */,
-				464C0366228361B6007D2741 /* libSDL2_ttf-2.0.0.dylib */,
 				464C0367228361B6007D2741 /* libSDL2-2.0.0.dylib */,
 				46515C2E2569CE0B00084CE2 /* libssl.1.1.dylib */,
 				464C0364228361B6007D2741 /* libvorbis.0.dylib */,
