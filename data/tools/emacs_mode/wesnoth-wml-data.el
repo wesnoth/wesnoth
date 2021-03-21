@@ -1151,7 +1151,7 @@
   ("y" "x" "terrain"))
  ("micro_ai"
   ("avoid_unit" "filter_location_enemy" "mobilize_condition" "avoid" "filter_location_wander" "filter_location" "unit" "probability" "filter_second" "filter")
-  ("weapon" "disable_move_leader_to_keep" "avoid_type" "tusklet_type" "tusker_type" "rabbit_type" "deer_type" "active_side_leader" "leadership_y" "leadership_x" "healer_y" "healer_x" "enemy_y" "enemy_x" "y" "x" "show_messages" "rest_turns" "use_straight_line" "avoid_enemies" "unique_goals" "release_all_units_at_goal" "release_unit_at_goal" "ca_id" "seek_x" "distance" "aggression" "injured_units_only" "stationary" "out_and_back" "attack" "one_time_only" "waypoint_y" "waypoint_x" "id" "skip_low_gold_recruiting" "ca_score" "pack_size" "show_pack_number" "action" "ai_type" "side"))
+  ("weapon" "disable_move_leader_to_keep" "avoid_type" "tusklet_type" "tusker_type" "rabbit_type" "deer_type" "active_side_leader" "leadership_y" "leadership_x" "healer_y" "healer_x" "enemy_y" "enemy_x" "y" "x" "show_messages" "rest_turns" "use_straight_line" "avoid_enemies" "unique_goals" "release_all_units_at_goal" "release_unit_at_goal" "ca_id" "seek_x" "distance" "aggression" "injured_units_only" "stationary" "out_and_back" "attack" "attack_range" "attack_invisible_enemies" "one_time_only" "waypoint_y" "waypoint_x" "id" "skip_low_gold_recruiting" "ca_score" "pack_size" "show_pack_number" "action" "ai_type" "side"))
  ("petrify" nil
   ("id"))
  ("background_layer" nil
