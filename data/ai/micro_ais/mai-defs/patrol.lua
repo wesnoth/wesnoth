@@ -8,7 +8,7 @@ function wesnoth.micro_ais.patrol(cfg)
 		AH.get_multi_named_locs_xy('waypoint', cfg, 'Patrol [micro_ai] tag')
 	end
 	local required_keys = {}
-	local optional_keys = { "id", "[filter]", "attack", "one_time_only", "out_and_back", "waypoint_loc", "waypoint_x", "waypoint_y" }
+	local optional_keys = { "id", "[filter]", "attack", "attack_range", "attack_invisible_enemies", "one_time_only", "out_and_back", "waypoint_loc", "waypoint_x", "waypoint_y" }
 	local CA_parms = {
 		ai_id = 'mai_patrol',
 		{ ca_id = "move", location = 'ca_patrol.lua', score = cfg.ca_score or 300000 }
