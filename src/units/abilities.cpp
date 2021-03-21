@@ -693,7 +693,7 @@ namespace {
  * active in the current context (see set_specials_context), including
  * specials obtained from the opponent's attack.
  */
-bool attack_type::get_special_bool_temp(const std::string& special, bool simple_check, bool special_id, bool special_tags) const
+bool attack_type::get_special_bool(const std::string& special, bool simple_check, bool special_id, bool special_tags) const
 {
 	{
 		std::vector<special_match> special_tag_matches;
@@ -765,9 +765,9 @@ bool attack_type::get_special_bool_temp(const std::string& special, bool simple_
  * Returns the currently active specials as an ability list, given the current
  * context (see set_specials_context).
  */
-unit_ability_list attack_type::get_specials_temp(const std::string& special) const
+unit_ability_list attack_type::get_specials(const std::string& special) const
 {
-	//log_scope("get_specials_temp");
+	//log_scope("get_specials");
 	const map_location loc = self_ ? self_->get_location() : self_loc_;
 	unit_ability_list res(loc);
 
@@ -964,7 +964,7 @@ void attack_type::modified_attacks(bool is_backstab, unsigned & min_attacks,
                                    unsigned & max_attacks) const
 {
 	// Apply [attacks].
-	unit_abilities::effect attacks_effect(get_specials("attacks"),
+	unit_abilities::effect attacks_effect(get_specials_and_abilities("attacks"),
 	                                      num_attacks(), is_backstab, shared_from_this());
 	int attacks_value = attacks_effect.get_composite_value();
 
@@ -974,7 +974,7 @@ void attack_type::modified_attacks(bool is_backstab, unsigned & min_attacks,
 	}
 
 	// Apply [swarm].
-	unit_ability_list swarm_specials = get_specials("swarm");
+	unit_ability_list swarm_specials = get_specials_and_abilities("swarm");
 	if ( !swarm_specials.empty() ) {
 		min_attacks = std::max<int>(0, swarm_specials.highest("swarm_attacks_min").first);
 		max_attacks = std::max<int>(0, swarm_specials.highest("swarm_attacks_max", attacks_value).first);
@@ -989,7 +989,7 @@ void attack_type::modified_attacks(bool is_backstab, unsigned & min_attacks,
  */
 int attack_type::modified_damage(bool is_backstab) const
 {
-	unit_abilities::effect dmg_effect(get_specials("damage"), damage(), is_backstab, shared_from_this());
+	unit_abilities::effect dmg_effect(get_specials_and_abilities("damage"), damage(), is_backstab, shared_from_this());
 	int damage_value = dmg_effect.get_composite_value();
 	return damage_value;
 }
@@ -1158,19 +1158,16 @@ unit_ability_list attack_type::get_weapon_ability(const std::string& ability) co
 	return abil_list;
 }
 
-unit_ability_list attack_type::get_specials(const std::string& special, bool with_ability) const
+unit_ability_list attack_type::get_specials_and_abilities(const std::string& special) const
 {
-	unit_ability_list abil_list(self_loc_);
-	if(with_ability){
-		abil_list = get_weapon_ability(special);
-		for(unit_ability_list::iterator i = abil_list.begin(); i != abil_list.end();) {
-			if((*i->ability_cfg)["overwrite_specials"].to_bool()) {
-				return abil_list;
-			}
-			++i;
+	unit_ability_list abil_list = get_weapon_ability(special);
+	for(unit_ability_list::iterator i = abil_list.begin(); i != abil_list.end();) {
+		if((*i->ability_cfg)["overwrite_specials"].to_bool()) {
+			return abil_list;
 		}
+		++i;
 	}
-	abil_list.append(get_specials_temp(special));
+	abil_list.append(get_specials(special));
 	return abil_list;
 }
 
@@ -1362,12 +1359,9 @@ bool attack_type::get_weapon_ability_bool(const std::string& special, bool speci
 	return false;
 }
 
-bool attack_type::get_special_bool(const std::string& special, bool simple_check, bool special_id, bool special_tags) const
+bool attack_type::get_special_and_abilities_bool(const std::string& special, bool special_id, bool special_tags) const
 {
-	if(simple_check){
-		return get_special_bool_temp(special, simple_check, special_id, special_tags);
-	}
-	return (get_special_bool_temp(special, simple_check, special_id, special_tags) || get_weapon_ability_bool(special, special_id, special_tags));
+	return (get_special_bool(special, false, special_id, special_tags) || get_weapon_ability_bool(special, special_id, special_tags));
 }
 //end of emulate weapon special functions.
 
@@ -1462,7 +1456,7 @@ bool attack_type::special_active_impl(const_attack_ptr self_attack, const_attack
 		return false;
 	}
 	if (tag_name == "firststrike" && !is_attacker && other_attack &&
-		other_attack->get_special_bool("firststrike")) {
+		other_attack->get_special_and_abilities_bool("firststrike")) {
 		return false;
 	}
 
