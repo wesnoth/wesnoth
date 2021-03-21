@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-03-12 23:18 UTC\n"
+"POT-Creation-Date: 2021-03-21 01:02 UTC\n"
 "PO-Revision-Date: 2018-05-16 07:12+0100\n"
 "Last-Translator: Adrian Chaves <adrian@chaves.io>\n"
 "Language-Team: Galician <kde-i18n-doc@kde.org>\n"
@@ -51,6 +51,11 @@ msgstr ""
 msgid "(Expert level, 10 scenarios.)"
 msgstr "Nivel experto, 10 escenarios."
 
+#. [campaign]: id=Under_the_Burning_Suns
+#: data/campaigns/Under_the_Burning_Suns/_main.cfg:26
+msgid "Challenging"
+msgstr "Esixente"
+
 # loitador do deserto FIXADO
 #. [campaign]: id=Under_the_Burning_Suns
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:26
@@ -58,14 +63,9 @@ msgid "Fighter"
 msgstr "Loitador"
 
 #. [campaign]: id=Under_the_Burning_Suns
-#: data/campaigns/Under_the_Burning_Suns/_main.cfg:26
-msgid "Normal"
-msgstr "Normal"
-
-#. [campaign]: id=Under_the_Burning_Suns
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:27
-msgid "Challenging"
-msgstr "Esixente"
+msgid "Difficult"
+msgstr ""
 
 #. [campaign]: id=Under_the_Burning_Suns
 #. [advancement]: id=warrior_1
@@ -512,10 +512,15 @@ msgstr "Por fin acabamos con eles."
 
 #. [message]: speaker=Garak
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:631
+#, fuzzy
+#| msgid ""
+#| "Thanks for the help. I am glad to see that so many have survived the "
+#| "night. But there’s no time to talk, we must save the rest of our people "
+#| "and crush any other of these earthen abominations back into the earth."
 msgid ""
 "Thanks for the help. I am glad to see that so many have survived the night. "
 "But there’s no time to talk, we must save the rest of our people and crush "
-"any other of these earthen abominations back into the earth."
+"these earthen abominations."
 msgstr ""
 "Grazas pola axuda. Alégrame ver que somos tantos os que conseguimos "
 "sobrevivir. Pero xa falaremos despois, debemos rescatar ao resto da xente e "
@@ -17559,6 +17564,9 @@ msgstr "Castelo fantasma"
 #: data/campaigns/Under_the_Burning_Suns/utils/terrain.cfg:64
 msgid "Phantom Keep"
 msgstr "Torre fantasma"
+
+#~ msgid "Normal"
+#~ msgstr "Normal"
 
 # formiga xigante FIXADO
 #~ msgid "Giant Ant"

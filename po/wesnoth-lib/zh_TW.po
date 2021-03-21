@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.14\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-03-12 20:18-0300\n"
+"POT-Creation-Date: 2021-03-20 22:03-0300\n"
 "PO-Revision-Date: 2020-05-09 22:27+0800\n"
 "Last-Translator: 楊綮銘 <steven2880@gmail.com>\n"
 "Language-Team: Wesnoth Traditional Chinese Team\n"
@@ -2135,7 +2135,7 @@ msgstr "<italic>text='鐵軌'</italic>大部份都被矮人拿來運輸礦石用
 msgid " (Press '$hotkey' for more information)"
 msgstr " （按下 '$hotkey' 鍵來查看更多訊息）"
 
-#: data/gui/macros/_initial.cfg:336
+#: data/gui/macros/_initial.cfg:352
 msgid "Search"
 msgstr "搜尋"
 
@@ -5604,27 +5604,23 @@ msgstr "錯誤"
 msgid "Details:"
 msgstr "詳細："
 
-#: src/build_info.cpp:277
+#: src/build_info.cpp:262
 msgid "feature^Lua console completion"
 msgstr "Lua 控制台完善"
 
-#: src/build_info.cpp:282
-msgid "feature^Legacy bidirectional rendering"
-msgstr "Legacy bidirectional rendering"
-
-#: src/build_info.cpp:289
+#: src/build_info.cpp:269
 msgid "feature^D-Bus notifications back end"
 msgstr "D-Bus 後端通知"
 
-#: src/build_info.cpp:298
+#: src/build_info.cpp:278
 msgid "feature^Win32 notifications back end"
 msgstr "Win32 後端通知"
 
-#: src/build_info.cpp:304
+#: src/build_info.cpp:284
 msgid "feature^Cocoa notifications back end"
 msgstr "Cocoa 後端通知"
 
-#: src/build_info.cpp:342 src/desktop/version.cpp:113
+#: src/build_info.cpp:322 src/desktop/version.cpp:113
 msgid "cpu_architecture^<unknown>"
 msgstr ""
 
@@ -5696,11 +5692,7 @@ msgstr ""
 msgid "language code for localized resources^en_US"
 msgstr "zh_TW"
 
-#: src/font/marked-up_text.cpp:402
-msgid "The maximum text width is less than 1."
-msgstr "最大文字寬度小於1。"
-
-#: src/font/text.cpp:782
+#: src/font/text.cpp:815
 msgid "The text contains invalid Pango markup: "
 msgstr "此文件有無效的 Pango 標記："
 
@@ -8011,6 +8003,12 @@ msgid ""
 msgstr ""
 "按鍵'$deprecated_key'已經被更名為'$key'。'$deprecated_key'將在"
 "$removal_version版本中移除。"
+
+#~ msgid "feature^Legacy bidirectional rendering"
+#~ msgstr "Legacy bidirectional rendering"
+
+#~ msgid "The maximum text width is less than 1."
+#~ msgstr "最大文字寬度小於1。"
 
 #, fuzzy
 #~| msgid "Preferences"

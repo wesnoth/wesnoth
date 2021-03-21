@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.6.0+dev\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-03-12 20:18-0300\n"
+"POT-Creation-Date: 2021-03-20 22:02-0300\n"
 "PO-Revision-Date: 2020-09-03 18:13+0200\n"
 "Last-Translator: Miquel-Àngel Burgos i Fradeja <miquel.angel.burgos@gmail."
 "com>\n"
@@ -286,7 +286,7 @@ msgstr "Difícil"
 
 #. [label]: id=label-hp
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:168
-#: data/themes/default.cfg:146
+#: data/themes/default.cfg:148
 msgid "HP"
 msgstr "HP"
 
@@ -4411,57 +4411,59 @@ msgid "Reset"
 msgstr "Reiniciar"
 
 #. [menu]: id=menu-main
-#: data/themes/cutscene.cfg:37 data/themes/default.cfg:80
+#: data/themes/cutscene.cfg:37 data/themes/default.cfg:82
 msgid "Menu"
 msgstr "Menú"
 
 #. [action]: id=button-endturn
-#: data/themes/cutscene.cfg:53 data/themes/default.cfg:133
+#: data/themes/cutscene.cfg:53 data/themes/default.cfg:135
 msgid "End Turn"
 msgstr "Fi del torn"
 
 #. [action]: id=button-endturn
-#: data/themes/cutscene.cfg:54 data/themes/default.cfg:134
+#: data/themes/cutscene.cfg:54 data/themes/default.cfg:136
 msgid "End Scenario"
 msgstr "Fi de l'escenari"
 
 #. [theme]: id=Default
-#: data/themes/default.cfg:32
+#: data/themes/default.cfg:34
 msgid "theme^Default"
 msgstr "theme^Per defecte"
 
 #. [theme]: id=Default
-#: data/themes/default.cfg:33
+#: data/themes/default.cfg:35
 msgid "The default theme"
 msgstr "El tema per defecte"
 
 #. [menu]: id=menu-autosaves
-#: data/themes/default.cfg:90
-msgid "Back to..."
-msgstr "Torna a..."
+#: data/themes/default.cfg:92
+#, fuzzy
+#| msgid "Load Game..."
+msgid "Load Turn..."
+msgstr "Carrega una partida..."
 
 #. [menu]: id=actions-menu
-#: data/themes/default.cfg:98
+#: data/themes/default.cfg:100
 msgid "Actions"
 msgstr "Accions"
 
 #. [label]: id=label-xp
-#: data/themes/default.cfg:155
+#: data/themes/default.cfg:157
 msgid "XP"
 msgstr "XP"
 
 #. [label]: id=label-mp
-#: data/themes/default.cfg:163
+#: data/themes/default.cfg:165
 msgid "MP"
 msgstr "MP"
 
 #. [label]: id=label-def
-#: data/themes/default.cfg:171
+#: data/themes/default.cfg:173
 msgid "def"
 msgstr "def"
 
 #. [unit_level]: id=unit-level
-#: data/themes/default.cfg:408
+#: data/themes/default.cfg:410
 msgid "statuspanel^lvl"
 msgstr "statuspanel^niv"
 
@@ -6312,7 +6314,7 @@ msgstr[0] "Informeu-ne a l'autor o mantenidor d'aquest complement."
 msgstr[1] ""
 "Informeu-ne als autors o mantenidors respectius d'aquests complements."
 
-#: src/game_events/pump.cpp:476 src/game_launcher.cpp:922
+#: src/game_events/pump.cpp:476 src/game_launcher.cpp:924
 msgid "Error: "
 msgstr "Error: "
 
@@ -6366,7 +6368,7 @@ msgid "Reserved"
 msgstr "Reservat"
 
 #: src/game_initialization/create_engine.cpp:72
-#: src/game_initialization/create_engine.cpp:661
+#: src/game_initialization/create_engine.cpp:662
 msgid "Map could not be loaded: "
 msgstr "No s'ha pogut carregar el mapa: "
 
@@ -6477,7 +6479,7 @@ msgid "mp_game_available_slots^Full"
 msgstr "mp_game_available_slots^Ple"
 
 #: src/game_initialization/lobby_data.cpp:443
-#: src/game_initialization/lobby_data.cpp:445 src/savegame.cpp:648
+#: src/game_initialization/lobby_data.cpp:445 src/savegame.cpp:659
 msgid "Turn"
 msgstr "Torn"
 
@@ -6741,20 +6743,20 @@ msgstr[1] ""
 "Començareu l'escenari següent amb $gold o l'or inicial mínim definit, el més "
 "elevat dels dos."
 
-#: src/game_initialization/playcampaign.cpp:290 src/game_launcher.cpp:875
+#: src/game_initialization/playcampaign.cpp:290 src/game_launcher.cpp:877
 msgid "The game could not be loaded: "
 msgstr "No s'ha pogut carregar la partida: "
 
-#: src/game_initialization/playcampaign.cpp:296 src/game_launcher.cpp:877
+#: src/game_initialization/playcampaign.cpp:296 src/game_launcher.cpp:879
 msgid "Error while playing the game: "
 msgstr "S'ha produït un error durant la partida: "
 
-#: src/game_initialization/playcampaign.cpp:299 src/game_launcher.cpp:914
+#: src/game_initialization/playcampaign.cpp:299 src/game_launcher.cpp:916
 msgid "The game map could not be loaded: "
 msgstr "No s'ha pogut carregar el mapa: "
 
-#: src/game_initialization/playcampaign.cpp:302 src/game_launcher.cpp:879
-#: src/game_launcher.cpp:995
+#: src/game_initialization/playcampaign.cpp:302 src/game_launcher.cpp:881
+#: src/game_launcher.cpp:997
 msgid "Map generator error: "
 msgstr "Error del generador de mapes: "
 
@@ -6762,16 +6764,16 @@ msgstr "Error del generador de mapes: "
 msgid "Error while reading the WML: "
 msgstr "S'ha produït un error mentre es llegia el WML: "
 
-#: src/game_initialization/playcampaign.cpp:349
+#: src/game_initialization/playcampaign.cpp:351
 #: src/playsingle_controller.cpp:321
 msgid "Game Over"
 msgstr "Partida perduda"
 
-#: src/game_initialization/playcampaign.cpp:350
+#: src/game_initialization/playcampaign.cpp:352
 msgid "This scenario has ended. Do you want to continue the campaign?"
 msgstr "Aquest escenari ha acabat. Voleu continuar la campanya?"
 
-#: src/game_initialization/playcampaign.cpp:418
+#: src/game_initialization/playcampaign.cpp:420
 msgid "Unknown scenario: '$scenario|'"
 msgstr "Escenari desconegut: «$scenario|»"
 
@@ -6779,29 +6781,29 @@ msgstr "Escenari desconegut: «$scenario|»"
 msgid "No campaigns are available."
 msgstr "No hi ha campanyes disponibles."
 
-#: src/game_launcher.cpp:680 src/game_launcher.cpp:699
+#: src/game_launcher.cpp:682 src/game_launcher.cpp:701
 msgid "The file you have tried to load is corrupt"
 msgstr "El fitxer que heu intentat carregar està malmès"
 
-#: src/game_launcher.cpp:682 src/game_launcher.cpp:701
+#: src/game_launcher.cpp:684 src/game_launcher.cpp:703
 #: src/hotkey/hotkey_handler_sp.cpp:315 src/savegame.cpp:154
-#: src/savegame.cpp:304
+#: src/savegame.cpp:315
 msgid "The file you have tried to load is corrupt: '"
 msgstr "El fitxer que heu intentat carregar està corromput: '"
 
-#: src/game_launcher.cpp:691
+#: src/game_launcher.cpp:693
 msgid "File I/O Error while reading the game"
 msgstr "Error d'E/S en el fitxer mentre es llegia la partida"
 
-#: src/game_launcher.cpp:693
+#: src/game_launcher.cpp:695
 msgid "File I/O Error while reading the game: '"
 msgstr "S'ha produït un error d'E/S de fitxer en llegir la partida: «"
 
-#: src/game_launcher.cpp:873
+#: src/game_launcher.cpp:875
 msgid "Error while starting server: "
 msgstr "S'ha produït un error mentre s'iniciava el servidor: "
 
-#: src/game_launcher.cpp:895
+#: src/game_launcher.cpp:897
 msgid "Connection failed: "
 msgstr "Ha fallat la connexió: "
 
@@ -6896,121 +6898,121 @@ msgstr "sí"
 msgid "Reference to unknown topic: "
 msgstr "Referència a un tema desconegut: "
 
-#: src/help/help_impl.cpp:354
+#: src/help/help_impl.cpp:409
 msgid "Only available during a scenario."
 msgstr "Només disponible durant un escenari."
 
-#: src/help/help_impl.cpp:355 src/help/help_impl.cpp:391
+#: src/help/help_impl.cpp:410 src/help/help_impl.cpp:446
 msgid "Time of Day Schedule"
 msgstr "Moments del dia"
 
-#: src/help/help_impl.cpp:382
+#: src/help/help_impl.cpp:437
 msgid "Lawful Bonus:"
 msgstr "Bonificació legals:"
 
-#: src/help/help_impl.cpp:383
+#: src/help/help_impl.cpp:438
 msgid "Neutral Bonus:"
 msgstr "Bonificació neutrals:"
 
-#: src/help/help_impl.cpp:384
+#: src/help/help_impl.cpp:439
 msgid "Chaotic Bonus:"
 msgstr "Bonificació caòtiques:"
 
-#: src/help/help_impl.cpp:385
+#: src/help/help_impl.cpp:440
 msgid "Liminal Bonus:"
 msgstr "Bonificació liminals:"
 
-#: src/help/help_impl.cpp:386
+#: src/help/help_impl.cpp:441
 msgid "Schedule"
 msgstr "Horari"
 
-#: src/help/help_impl.cpp:478
+#: src/help/help_impl.cpp:533
 msgid "<header>text='Units with this special attack'</header>"
 msgstr "<header>text='Unitats amb aquest atac especial'</header>"
 
-#: src/help/help_impl.cpp:542
+#: src/help/help_impl.cpp:597
 msgid "<header>text='Units with this ability'</header>"
 msgstr "<header>text='Unitats amb aquesta habilitat'</header>"
 
-#: src/help/help_impl.cpp:572
+#: src/help/help_impl.cpp:627
 msgid "Era:"
 msgstr "Era:"
 
-#: src/help/help_impl.cpp:580
+#: src/help/help_impl.cpp:635
 msgid "Factions"
 msgstr "Faccions"
 
-#: src/help/help_impl.cpp:628
+#: src/help/help_impl.cpp:683
 msgid "Races: "
 msgstr "Races: "
 
-#: src/help/help_impl.cpp:637 src/help/help_impl.cpp:1001
+#: src/help/help_impl.cpp:692 src/help/help_impl.cpp:1056
 msgid "Alignments: "
 msgstr "Alineacions: "
 
-#: src/help/help_impl.cpp:644
+#: src/help/help_impl.cpp:699
 msgid "Leaders"
 msgstr "Líders"
 
-#: src/help/help_impl.cpp:653
+#: src/help/help_impl.cpp:708
 msgid "Recruits"
 msgstr "Reclutaments"
 
-#: src/help/help_impl.cpp:715 src/units/types.cpp:488
+#: src/help/help_impl.cpp:770 src/units/types.cpp:488
 msgid "No description available."
 msgstr "No hi ha disponible."
 
-#: src/help/help_impl.cpp:719 src/help/help_impl.cpp:721
+#: src/help/help_impl.cpp:774 src/help/help_impl.cpp:776
 msgid "Availability: "
 msgstr "Disponibilitat: "
 
-#: src/help/help_impl.cpp:719
+#: src/help/help_impl.cpp:774
 msgid "Must-have"
 msgstr "Imprescindible"
 
-#: src/help/help_impl.cpp:721
+#: src/help/help_impl.cpp:776
 msgid "Unavailable"
 msgstr "No disponible"
 
-#: src/help/help_impl.cpp:801 src/help/help_impl.cpp:978
+#: src/help/help_impl.cpp:856 src/help/help_impl.cpp:1033
 msgid "race^Miscellaneous"
 msgstr "race^Miscel·lània"
 
-#: src/help/help_impl.cpp:1001 src/reports.cpp:377
+#: src/help/help_impl.cpp:1056 src/reports.cpp:377
 msgid "Alignment: "
 msgstr "Alineació: "
 
 #. TRANSLATORS: this is expected to say "[Dunefolk are] a group of units, all of whom are Humans",
 #. or "[Quenoth Elves are] a group of units, all of whom are Elves".
-#: src/help/help_impl.cpp:1020
+#: src/help/help_impl.cpp:1075
 msgid ""
 "This is a group of units, all of whom are <ref>dst='$topic_id' "
 "text='$help_taxonomy'</ref>"
 msgstr ""
 
-#: src/help/help_impl.cpp:1025
+#: src/help/help_impl.cpp:1080
 #, fuzzy
 #| msgid "<header>text='Units with this ability'</header>"
 msgid "<header>text='Subgroups of units within this group'</header>"
 msgstr "<header>text='Unitats amb aquesta habilitat'</header>"
 
-#: src/help/help_impl.cpp:1027
+#: src/help/help_impl.cpp:1082
 #, fuzzy
 #| msgid "<header>text='Units of this race'</header>"
 msgid "<header>text='Groups of units within this race'</header>"
 msgstr "<header>text='Unitats d'aquesta raça'</header>"
 
-#: src/help/help_impl.cpp:1036
+#: src/help/help_impl.cpp:1091
 #, fuzzy
 #| msgid "<header>text='Units of this race'</header>"
 msgid "<header>text='Units of this group'</header>"
 msgstr "<header>text='Unitats d'aquesta raça'</header>"
 
-#: src/help/help_impl.cpp:1038
+#: src/help/help_impl.cpp:1093
 msgid "<header>text='Units of this race'</header>"
 msgstr "<header>text='Unitats d'aquesta raça'</header>"
 
-#: src/help/help_impl.cpp:1359
+#: src/help/help_impl.cpp:1414
 msgid "corrupted original file"
 msgstr "fitxer original malmès"
 
@@ -7931,7 +7933,7 @@ msgstr "Surt"
 msgid "Do you really want to quit?"
 msgstr "Segur que voleu sortir?"
 
-#: src/reports.cpp:172 src/savegame.cpp:419
+#: src/reports.cpp:172 src/savegame.cpp:430
 msgid "Name: "
 msgstr "Nom: "
 
@@ -8259,11 +8261,11 @@ msgstr "Rellotge"
 msgid "Battery"
 msgstr "Bateria"
 
-#: src/reports.cpp:1739
+#: src/reports.cpp:1742
 msgid "Countdown until your turn automatically ends."
 msgstr "Compte enrere fins que el torn s'acaba automàticament."
 
-#: src/reports.cpp:1739
+#: src/reports.cpp:1742
 msgid "Turn Countdown"
 msgstr "Comptador de torns"
 
@@ -8276,12 +8278,12 @@ msgid "%a %b %d %H:%M %Y"
 msgstr "%a %b %d %H:%M %Y"
 
 #. TRANSLATORS: This string is used as part of a filename, as in, "HttT-The Elves Besieged replay.gz"
-#: src/save_index.cpp:261 src/savegame.cpp:574
+#: src/save_index.cpp:261 src/savegame.cpp:585
 msgid "replay"
 msgstr "repetició"
 
-#: src/save_index.cpp:345 src/savegame.cpp:71 src/savegame.cpp:610
-#: src/savegame.cpp:612
+#: src/save_index.cpp:345 src/savegame.cpp:71 src/savegame.cpp:621
+#: src/savegame.cpp:623
 msgid "Auto-Save"
 msgstr "Partida desada automàticament"
 
@@ -8301,68 +8303,78 @@ msgstr ""
 
 #: src/savegame.cpp:260
 msgid ""
-"This save is from a different version of the game ($version_number|). Do you "
-"wish to try to load it?"
+"This save is from a different version of the game ($version_number|), and "
+"might not work with this version.\n"
+"\n"
+"<b>Warning:</b> saves in the middle of campaigns are especially likely to "
+"fail, and you should either use the old version or restart the campaign. "
+"Even when a saved game seems to load successfully, subtler aspects like "
+"gameplay balance and story progression could be impacted. The difficulty, "
+"the challenge, the <i>fun</i> may be missing.\n"
+"\n"
+"For example, the campaign may have been rebalanced with fewer enemies in the "
+"early scenarios, but expecting your recall list to have correspondingly less "
+"experience in the late scenarios.\n"
+"\n"
+"Do you wish to continue?"
 msgstr ""
-"Aquesta partida desada és d'una versió diferent del joc ($version_ number|). "
-"Voleu intentar carregar-la?"
 
-#: src/savegame.cpp:263 src/savegame.cpp:309
+#: src/savegame.cpp:274 src/savegame.cpp:320
 msgid "Load Game"
 msgstr "Carrega una partida"
 
-#: src/savegame.cpp:309
+#: src/savegame.cpp:320
 msgid "Replays are not supported in multiplayer mode."
 msgstr "No s'admeten repeticions en mode multijugador."
 
-#: src/savegame.cpp:316
+#: src/savegame.cpp:327
 msgid "This is not a multiplayer save."
 msgstr "Aquesta partida desada no és de multijugador."
 
-#: src/savegame.cpp:350
+#: src/savegame.cpp:361
 msgid "The game could not be saved: "
 msgstr "No s'ha pogut desar la partida: "
 
-#: src/savegame.cpp:419
+#: src/savegame.cpp:430
 msgid "Save already exists. Do you want to overwrite it?"
 msgstr "Ja existeix una partida amb aquest nom. Voleu sobreescriure-la?"
 
-#: src/savegame.cpp:420
+#: src/savegame.cpp:431
 msgid "Overwrite?"
 msgstr "Voleu sobreescriure?"
 
-#: src/savegame.cpp:427
+#: src/savegame.cpp:438
 msgid ""
 "Save names should not end on '.gz' or '.bz2'. Please remove the extension."
 msgstr ""
 "Els noms de les partides desades no poden acabar en «.gz» ni en «.bz2» . "
 "Esborreu l'extensió."
 
-#: src/savegame.cpp:474
+#: src/savegame.cpp:485
 msgid "Saved"
 msgstr "Partida desada"
 
-#: src/savegame.cpp:474
+#: src/savegame.cpp:485
 msgid "The game has been saved."
 msgstr "S'ha desat la partida."
 
-#: src/savegame.cpp:506 src/savegame.cpp:526
+#: src/savegame.cpp:517 src/savegame.cpp:537
 msgid "Could not write to file"
 msgstr "No s'ha pogut escriure al fitxer"
 
-#: src/savegame.cpp:563
+#: src/savegame.cpp:574
 msgid "Save Replay"
 msgstr "Desa la repetició"
 
-#: src/savegame.cpp:592
+#: src/savegame.cpp:603
 msgid "Could not auto save the game. Please save the game manually."
 msgstr "No s'ha pogut desar la partida automàticament. Deseu-la manualment."
 
-#: src/savegame.cpp:642
+#: src/savegame.cpp:653
 msgid "Save Game"
 msgstr "Desa partida"
 
-#: src/savegame.cpp:656
+#: src/savegame.cpp:667
 msgid "Game state is corrupted"
 msgstr "L'estat de la partida és malmès"
 
@@ -8774,6 +8786,16 @@ msgstr "Amaga els plans de $player"
 #: src/whiteboard/manager.cpp:1137
 msgid "Whiteboard Options"
 msgstr "Opcions de la pissarra"
+
+#~ msgid "Back to..."
+#~ msgstr "Torna a..."
+
+#~ msgid ""
+#~ "This save is from a different version of the game ($version_number|). Do "
+#~ "you wish to try to load it?"
+#~ msgstr ""
+#~ "Aquesta partida desada és d'una versió diferent del joc ($version_ "
+#~ "number|). Voleu intentar carregar-la?"
 
 #, fuzzy
 #~| msgid "End Scenario"
@@ -9647,9 +9669,6 @@ msgstr "Opcions de la pissarra"
 
 #~ msgid "Settings..."
 #~ msgstr "Paràmetres..."
-
-#~ msgid "Load Game..."
-#~ msgstr "Carrega una partida..."
 
 #, fuzzy
 #~| msgid "End Scenario"

@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth_Lib-1.12\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-03-12 20:18-0300\n"
+"POT-Creation-Date: 2021-03-20 22:03-0300\n"
 "PO-Revision-Date: 2021-02-08 16:04+0100\n"
 "Last-Translator: Clémence\n"
 "Language-Team: French <wesnothfr@lists.tuxfamily.org>\n"
@@ -2173,7 +2173,7 @@ msgstr ""
 msgid " (Press '$hotkey' for more information)"
 msgstr "(Appuyez sur « $hotkey » pour plus d'informations)"
 
-#: data/gui/macros/_initial.cfg:336
+#: data/gui/macros/_initial.cfg:352
 msgid "Search"
 msgstr "Rechercher"
 
@@ -5647,27 +5647,23 @@ msgstr "Erreur"
 msgid "Details:"
 msgstr "Détails :"
 
-#: src/build_info.cpp:277
+#: src/build_info.cpp:262
 msgid "feature^Lua console completion"
 msgstr "Complétion de la console Lua"
 
-#: src/build_info.cpp:282
-msgid "feature^Legacy bidirectional rendering"
-msgstr "Ancien rendu bidirectionnel"
-
-#: src/build_info.cpp:289
+#: src/build_info.cpp:269
 msgid "feature^D-Bus notifications back end"
 msgstr "Notifications via le back-end D-Bus"
 
-#: src/build_info.cpp:298
+#: src/build_info.cpp:278
 msgid "feature^Win32 notifications back end"
 msgstr "Notifications via le back-end Win32"
 
-#: src/build_info.cpp:304
+#: src/build_info.cpp:284
 msgid "feature^Cocoa notifications back end"
 msgstr "Notifications via le back-end Cocoa"
 
-#: src/build_info.cpp:342 src/desktop/version.cpp:113
+#: src/build_info.cpp:322 src/desktop/version.cpp:113
 #, fuzzy
 #| msgid "cpu_archictecture^<unknown>"
 msgid "cpu_architecture^<unknown>"
@@ -5741,11 +5737,7 @@ msgstr ""
 msgid "language code for localized resources^en_US"
 msgstr "fr"
 
-#: src/font/marked-up_text.cpp:402
-msgid "The maximum text width is less than 1."
-msgstr "La largeur maximum du texte est inférieure à 1."
-
-#: src/font/text.cpp:782
+#: src/font/text.cpp:815
 msgid "The text contains invalid Pango markup: "
 msgstr "Le texte contient une balise Pango invalide : "
 
@@ -8104,6 +8096,12 @@ msgid ""
 msgstr ""
 "La clef « $deprecated_key » a été remplacée par « $key ». « $deprecated_key "
 "» ne sera plus maintenue à partir de la version $removal_version."
+
+#~ msgid "feature^Legacy bidirectional rendering"
+#~ msgstr "Ancien rendu bidirectionnel"
+
+#~ msgid "The maximum text width is less than 1."
+#~ msgstr "La largeur maximum du texte est inférieure à 1."
 
 #, fuzzy
 #~| msgid "Preferences"

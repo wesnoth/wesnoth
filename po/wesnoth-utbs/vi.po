@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-03-12 23:18 UTC\n"
+"POT-Creation-Date: 2021-03-21 01:02 UTC\n"
 "PO-Revision-Date: 2014-06-24 23:32+0700\n"
 "Last-Translator: \n"
 "Language-Team: Vietnamese <kde-i18n-doc@kde.org>\n"
@@ -48,23 +48,21 @@ msgstr "(Mức độ chuyên gia, 10 màn chơi)"
 #. [campaign]: id=Under_the_Burning_Suns
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:26
 #, fuzzy
+#| msgid "(Challenging)"
+msgid "Challenging"
+msgstr "(Thử thách)"
+
+#. [campaign]: id=Under_the_Burning_Suns
+#: data/campaigns/Under_the_Burning_Suns/_main.cfg:26
+#, fuzzy
 #| msgid "Desert Fighter"
 msgid "Fighter"
 msgstr "Đấu sĩ sa mạc"
 
 #. [campaign]: id=Under_the_Burning_Suns
-#: data/campaigns/Under_the_Burning_Suns/_main.cfg:26
-#, fuzzy
-#| msgid "(Normal)"
-msgid "Normal"
-msgstr "(Bình thường)"
-
-#. [campaign]: id=Under_the_Burning_Suns
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:27
-#, fuzzy
-#| msgid "(Challenging)"
-msgid "Challenging"
-msgstr "(Thử thách)"
+msgid "Difficult"
+msgstr ""
 
 #. [campaign]: id=Under_the_Burning_Suns
 #. [advancement]: id=warrior_1
@@ -520,10 +518,15 @@ msgstr "Ha! Cuối cùng chúng cũng bị tiêu diệt."
 
 #. [message]: speaker=Garak
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:631
+#, fuzzy
+#| msgid ""
+#| "Thanks for the help. I am glad to see that so many have survived the "
+#| "night. But there’s no time to talk, we must save the rest of our people "
+#| "and crush any other of these earthen abominations back into the earth."
 msgid ""
 "Thanks for the help. I am glad to see that so many have survived the night. "
 "But there’s no time to talk, we must save the rest of our people and crush "
-"any other of these earthen abominations back into the earth."
+"these earthen abominations."
 msgstr ""
 "Cảm ơn vì đã giúp đỡ. Tôi rất mừng khi thấy nhiều người đã sống sót đêm qua. "
 "Nhưng không còn thời gian để nói chuyện nữa, chúng ta phải giải cứu những "
@@ -17823,6 +17826,11 @@ msgstr "Lâu đài ma"
 #: data/campaigns/Under_the_Burning_Suns/utils/terrain.cfg:64
 msgid "Phantom Keep"
 msgstr "Pháo đài ma"
+
+#, fuzzy
+#~| msgid "(Normal)"
+#~ msgid "Normal"
+#~ msgstr "(Bình thường)"
 
 #~ msgid "Giant Ant"
 #~ msgstr "Kiến khổng lồ"

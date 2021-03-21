@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-03-12 20:18-0300\n"
+"POT-Creation-Date: 2021-03-20 22:03-0300\n"
 "PO-Revision-Date: 2021-03-13 06:24+0100\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
@@ -2143,7 +2143,7 @@ msgstr ""
 msgid " (Press '$hotkey' for more information)"
 msgstr " (Pro více informací stiskněte '$hotkey')"
 
-#: data/gui/macros/_initial.cfg:336
+#: data/gui/macros/_initial.cfg:352
 msgid "Search"
 msgstr "Vyhledat"
 
@@ -5592,27 +5592,23 @@ msgstr "Chyba"
 msgid "Details:"
 msgstr "Podrobnosti:"
 
-#: src/build_info.cpp:277
+#: src/build_info.cpp:262
 msgid "feature^Lua console completion"
 msgstr "Doplňování v Lua konzoli"
 
-#: src/build_info.cpp:282
-msgid "feature^Legacy bidirectional rendering"
-msgstr "Zastaralé bidirekcionální renderování"
-
-#: src/build_info.cpp:289
+#: src/build_info.cpp:269
 msgid "feature^D-Bus notifications back end"
 msgstr "Použití D-Bus notifikací"
 
-#: src/build_info.cpp:298
+#: src/build_info.cpp:278
 msgid "feature^Win32 notifications back end"
 msgstr "Použití Win32 notifikací"
 
-#: src/build_info.cpp:304
+#: src/build_info.cpp:284
 msgid "feature^Cocoa notifications back end"
 msgstr "Použití Cocoa notifikací"
 
-#: src/build_info.cpp:342 src/desktop/version.cpp:113
+#: src/build_info.cpp:322 src/desktop/version.cpp:113
 msgid "cpu_architecture^<unknown>"
 msgstr "<neznámá arch. CPU>"
 
@@ -5689,11 +5685,7 @@ msgstr ""
 msgid "language code for localized resources^en_US"
 msgstr "cs"
 
-#: src/font/marked-up_text.cpp:402
-msgid "The maximum text width is less than 1."
-msgstr "Maximální šířka textu je menší než 1."
-
-#: src/font/text.cpp:782
+#: src/font/text.cpp:815
 msgid "The text contains invalid Pango markup: "
 msgstr "Text obsahuje neplatné Pango značky: "
 
@@ -8007,6 +7999,12 @@ msgid ""
 msgstr ""
 "Klíč '$deprecated_key' byl přejmenován na '$key' a ve verzi $removal_version "
 "bude odstraněna podpora původního tvaru."
+
+#~ msgid "feature^Legacy bidirectional rendering"
+#~ msgstr "Zastaralé bidirekcionální renderování"
+
+#~ msgid "The maximum text width is less than 1."
+#~ msgstr "Maximální šířka textu je menší než 1."
 
 #~ msgid "Open Preferences Screen"
 #~ msgstr "Otevřít obrazovku nastavení"

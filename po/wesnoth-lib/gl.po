@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-03-12 20:18-0300\n"
+"POT-Creation-Date: 2021-03-20 22:03-0300\n"
 "PO-Revision-Date: 2018-05-16 07:08+0100\n"
 "Last-Translator: Adrian Chaves <adrian@chaves.io>\n"
 "Language-Team: Galician <kde-i18n-doc@kde.org>\n"
@@ -2267,7 +2267,7 @@ msgstr ""
 msgid " (Press '$hotkey' for more information)"
 msgstr " (prema «$hotkey» para máis información)"
 
-#: data/gui/macros/_initial.cfg:336
+#: data/gui/macros/_initial.cfg:352
 msgid "Search"
 msgstr "Busca"
 
@@ -5841,27 +5841,23 @@ msgstr "Houbo un erro"
 msgid "Details:"
 msgstr "Detalles:"
 
-#: src/build_info.cpp:277
+#: src/build_info.cpp:262
 msgid "feature^Lua console completion"
 msgstr "Completamento da consola de Lua"
 
-#: src/build_info.cpp:282
-msgid "feature^Legacy bidirectional rendering"
-msgstr "Renderización bidireccional de versións anteriores"
-
-#: src/build_info.cpp:289
+#: src/build_info.cpp:269
 msgid "feature^D-Bus notifications back end"
 msgstr "Infraestrutura de notificacións de D-Bus"
 
-#: src/build_info.cpp:298
+#: src/build_info.cpp:278
 msgid "feature^Win32 notifications back end"
 msgstr "Infraestrutura de notificacións de Win32"
 
-#: src/build_info.cpp:304
+#: src/build_info.cpp:284
 msgid "feature^Cocoa notifications back end"
 msgstr "Infraestrutura de notificacións de Cocoa"
 
-#: src/build_info.cpp:342 src/desktop/version.cpp:113
+#: src/build_info.cpp:322 src/desktop/version.cpp:113
 msgid "cpu_architecture^<unknown>"
 msgstr ""
 
@@ -5933,11 +5929,7 @@ msgstr ""
 msgid "language code for localized resources^en_US"
 msgstr "gl"
 
-#: src/font/marked-up_text.cpp:402
-msgid "The maximum text width is less than 1."
-msgstr "O ancho máximo do texto é inferior a 1."
-
-#: src/font/text.cpp:782
+#: src/font/text.cpp:815
 #, fuzzy
 #| msgid "The text contains invalid markup: "
 msgid "The text contains invalid Pango markup: "
@@ -8356,6 +8348,12 @@ msgid ""
 msgstr ""
 "A clave «$deprecated_key|» chámase agora «$key|». «$deprecated_key|» deixará "
 "de poder empregarse a partir da versión $removal_version do xogo."
+
+#~ msgid "feature^Legacy bidirectional rendering"
+#~ msgstr "Renderización bidireccional de versións anteriores"
+
+#~ msgid "The maximum text width is less than 1."
+#~ msgstr "O ancho máximo do texto é inferior a 1."
 
 #, fuzzy
 #~| msgid "Preferences"

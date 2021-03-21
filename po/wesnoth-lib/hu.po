@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: hu-lib_1.5\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-03-12 20:18-0300\n"
+"POT-Creation-Date: 2021-03-20 22:03-0300\n"
 "PO-Revision-Date: 2020-05-09 23:50+0200\n"
 "Last-Translator: Széll András <szell.andris@gmail.com>\n"
 "Language-Team: Hungarian <>\n"
@@ -2254,7 +2254,7 @@ msgstr ""
 msgid " (Press '$hotkey' for more information)"
 msgstr "(Nyomd meg a(z) '$hotkey' billentyűt további információért)"
 
-#: data/gui/macros/_initial.cfg:336
+#: data/gui/macros/_initial.cfg:352
 msgid "Search"
 msgstr "Keresés"
 
@@ -5768,27 +5768,23 @@ msgstr "Hiba"
 msgid "Details:"
 msgstr "Részletek:"
 
-#: src/build_info.cpp:277
+#: src/build_info.cpp:262
 msgid "feature^Lua console completion"
 msgstr "Lua konzol kiegészítő"
 
-#: src/build_info.cpp:282
-msgid "feature^Legacy bidirectional rendering"
-msgstr "Régi kétirányú renderelés"
-
-#: src/build_info.cpp:289
+#: src/build_info.cpp:269
 msgid "feature^D-Bus notifications back end"
 msgstr "D-Bus értesítéskezelő"
 
-#: src/build_info.cpp:298
+#: src/build_info.cpp:278
 msgid "feature^Win32 notifications back end"
 msgstr "Win32 értesítéskezelő"
 
-#: src/build_info.cpp:304
+#: src/build_info.cpp:284
 msgid "feature^Cocoa notifications back end"
 msgstr "Cocoa értesítéskezelő"
 
-#: src/build_info.cpp:342 src/desktop/version.cpp:113
+#: src/build_info.cpp:322 src/desktop/version.cpp:113
 msgid "cpu_architecture^<unknown>"
 msgstr ""
 
@@ -5860,11 +5856,7 @@ msgstr ""
 msgid "language code for localized resources^en_US"
 msgstr "hu"
 
-#: src/font/marked-up_text.cpp:402
-msgid "The maximum text width is less than 1."
-msgstr "A legnagyobb szövegszélesség kisebb, mint 1."
-
-#: src/font/text.cpp:782
+#: src/font/text.cpp:815
 msgid "The text contains invalid Pango markup: "
 msgstr "A szöveg érvénytelen Pango jelölést tartalmaz: "
 
@@ -8238,6 +8230,12 @@ msgid ""
 msgstr ""
 "Ez a kulcs („$deprecated_key”) új nevet kapott: „$key”. A régi elnevezés "
 "támogatása a(z) $removal_version. verzió után megszűnik."
+
+#~ msgid "feature^Legacy bidirectional rendering"
+#~ msgstr "Régi kétirányú renderelés"
+
+#~ msgid "The maximum text width is less than 1."
+#~ msgstr "A legnagyobb szövegszélesség kisebb, mint 1."
 
 #, fuzzy
 #~| msgid "Preferences"

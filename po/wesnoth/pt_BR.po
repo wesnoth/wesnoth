@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-03-12 20:18-0300\n"
+"POT-Creation-Date: 2021-03-20 22:02-0300\n"
 "PO-Revision-Date: 2020-12-28 11:24-0300\n"
 "Last-Translator: Andrei Machado <andreisp.machado@yahoo.com>\n"
 "Language-Team: Portuguese - Brasil\n"
@@ -425,7 +425,7 @@ msgstr "Difícil"
 # File: src/unit.cpp, line: 2609
 #. [label]: id=label-hp
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:168
-#: data/themes/default.cfg:146
+#: data/themes/default.cfg:148
 msgid "HP"
 msgstr "HP"
 
@@ -5741,7 +5741,7 @@ msgstr "Recomeçar"
 # File: data/themes/experimental.cfg, line: 93
 # File: data/themes/widescreen.cfg, line: 137
 #. [menu]: id=menu-main
-#: data/themes/cutscene.cfg:37 data/themes/default.cfg:80
+#: data/themes/cutscene.cfg:37 data/themes/default.cfg:82
 msgid "Menu"
 msgstr "Menu"
 
@@ -5756,7 +5756,7 @@ msgstr "Menu"
 # File: data/themes/dfool.cfg, line: 157
 # File: data/themes/widescreen.cfg, line: 178
 #. [action]: id=button-endturn
-#: data/themes/cutscene.cfg:53 data/themes/default.cfg:133
+#: data/themes/cutscene.cfg:53 data/themes/default.cfg:135
 msgid "End Turn"
 msgstr "Terminar Turno"
 
@@ -5775,28 +5775,30 @@ msgstr "Terminar Turno"
 # File: data/themes/dfool.cfg, line: 158
 # File: data/themes/widescreen.cfg, line: 179
 #. [action]: id=button-endturn
-#: data/themes/cutscene.cfg:54 data/themes/default.cfg:134
+#: data/themes/cutscene.cfg:54 data/themes/default.cfg:136
 msgid "End Scenario"
 msgstr "Terminar o Cenário"
 
 #. [theme]: id=Default
-#: data/themes/default.cfg:32
+#: data/themes/default.cfg:34
 msgid "theme^Default"
 msgstr "Padrão"
 
 #. [theme]: id=Default
-#: data/themes/default.cfg:33
+#: data/themes/default.cfg:35
 msgid "The default theme"
 msgstr "O tema padrão"
 
 #
-# File: src/play_controller.cpp, line: 1141
-# File: src/play_controller.cpp, line: 1141
-# File: src/play_controller.cpp, line: 1141
+# File: src/multiplayer_create.cpp, line: 126
+# File: src/multiplayer_create.cpp, line: 126
+# File: src/multiplayer_create.cpp, line: 126
 #. [menu]: id=menu-autosaves
-#: data/themes/default.cfg:90
-msgid "Back to..."
-msgstr "Voltar para..."
+#: data/themes/default.cfg:92
+#, fuzzy
+#| msgid "Load Game..."
+msgid "Load Turn..."
+msgstr "Carregar Jogo..."
 
 #
 # File: data/themes/default.cfg, line: 123
@@ -5812,7 +5814,7 @@ msgstr "Voltar para..."
 # File: data/themes/experimental.cfg, line: 104
 # File: data/themes/widescreen.cfg, line: 148
 #. [menu]: id=actions-menu
-#: data/themes/default.cfg:98
+#: data/themes/default.cfg:100
 msgid "Actions"
 msgstr "Ações"
 
@@ -5839,7 +5841,7 @@ msgstr "Ações"
 # File: src/dialogs.cpp, line: 327
 # File: src/dialogs.cpp, line: 499
 #. [label]: id=label-xp
-#: data/themes/default.cfg:155
+#: data/themes/default.cfg:157
 msgid "XP"
 msgstr "XP"
 
@@ -5848,12 +5850,12 @@ msgstr "XP"
 # File: data/themes/dfool.cfg, line: 249
 # File: data/themes/dfool.cfg, line: 249
 #. [label]: id=label-mp
-#: data/themes/default.cfg:163
+#: data/themes/default.cfg:165
 msgid "MP"
 msgstr "MP"
 
 #. [label]: id=label-def
-#: data/themes/default.cfg:171
+#: data/themes/default.cfg:173
 msgid "def"
 msgstr "def"
 
@@ -5874,7 +5876,7 @@ msgstr "def"
 # File: data/themes/widescreen.cfg, line: 491
 # File: data/themes/widescreen.cfg, line: 617
 #. [unit_level]: id=unit-level
-#: data/themes/default.cfg:408
+#: data/themes/default.cfg:410
 msgid "statuspanel^lvl"
 msgstr "lvl"
 
@@ -8970,7 +8972,7 @@ msgstr[1] ""
 # File: src/game_events.cpp, line: 187
 # File: src/game_events.cpp, line: 187
 # File: src/game_events.cpp, line: 187
-#: src/game_events/pump.cpp:476 src/game_launcher.cpp:922
+#: src/game_events/pump.cpp:476 src/game_launcher.cpp:924
 msgid "Error: "
 msgstr "Erro: "
 
@@ -9087,7 +9089,7 @@ msgstr "Reservado"
 # File: src/playcampaign.cpp, line: 214
 # File: src/playcampaign.cpp, line: 503
 #: src/game_initialization/create_engine.cpp:72
-#: src/game_initialization/create_engine.cpp:661
+#: src/game_initialization/create_engine.cpp:662
 msgid "Map could not be loaded: "
 msgstr "O mapa não pode ser carregado: "
 
@@ -9334,7 +9336,7 @@ msgstr "Lotado"
 # File: src/dialogs.cpp, line: 864
 # File: src/savegame.cpp, line: 1142
 #: src/game_initialization/lobby_data.cpp:443
-#: src/game_initialization/lobby_data.cpp:445 src/savegame.cpp:648
+#: src/game_initialization/lobby_data.cpp:445 src/savegame.cpp:659
 msgid "Turn"
 msgstr "Turno"
 
@@ -9805,7 +9807,7 @@ msgstr[1] ""
 # File: src/game_controller.cpp, line: 819
 # File: src/playcampaign.cpp, line: 214
 # File: src/playcampaign.cpp, line: 503
-#: src/game_initialization/playcampaign.cpp:290 src/game_launcher.cpp:875
+#: src/game_initialization/playcampaign.cpp:290 src/game_launcher.cpp:877
 msgid "The game could not be loaded: "
 msgstr "O jogo não pôde ser carregado: "
 
@@ -9819,7 +9821,7 @@ msgstr "O jogo não pôde ser carregado: "
 # File: src/game_controller.cpp, line: 821
 # File: src/playcampaign.cpp, line: 216
 # File: src/playcampaign.cpp, line: 506
-#: src/game_initialization/playcampaign.cpp:296 src/game_launcher.cpp:877
+#: src/game_initialization/playcampaign.cpp:296 src/game_launcher.cpp:879
 msgid "Error while playing the game: "
 msgstr "Erro durante o jogo: "
 
@@ -9833,12 +9835,12 @@ msgstr "Erro durante o jogo: "
 # File: src/game_controller.cpp, line: 839
 # File: src/playcampaign.cpp, line: 218
 # File: src/playcampaign.cpp, line: 509
-#: src/game_initialization/playcampaign.cpp:299 src/game_launcher.cpp:914
+#: src/game_initialization/playcampaign.cpp:299 src/game_launcher.cpp:916
 msgid "The game map could not be loaded: "
 msgstr "O mapa do jogo não pôde ser carregado: "
 
-#: src/game_initialization/playcampaign.cpp:302 src/game_launcher.cpp:879
-#: src/game_launcher.cpp:995
+#: src/game_initialization/playcampaign.cpp:302 src/game_launcher.cpp:881
+#: src/game_launcher.cpp:997
 msgid "Map generator error: "
 msgstr "Erro no gerador de mapa: "
 
@@ -9857,7 +9859,7 @@ msgstr "Erro ao ler o WML: "
 # File: src/playsingle_controller.cpp, line: 462
 # File: src/playcampaign.cpp, line: 549
 # File: src/playsingle_controller.cpp, line: 462
-#: src/game_initialization/playcampaign.cpp:349
+#: src/game_initialization/playcampaign.cpp:351
 #: src/playsingle_controller.cpp:321
 msgid "Game Over"
 msgstr "Game Over"
@@ -9866,7 +9868,7 @@ msgstr "Game Over"
 # File: src/playcampaign.cpp, line: 550
 # File: src/playcampaign.cpp, line: 550
 # File: src/playcampaign.cpp, line: 550
-#: src/game_initialization/playcampaign.cpp:350
+#: src/game_initialization/playcampaign.cpp:352
 msgid "This scenario has ended. Do you want to continue the campaign?"
 msgstr "Este cenário acabou. Você quer continuar a campanha?"
 
@@ -9874,7 +9876,7 @@ msgstr "Este cenário acabou. Você quer continuar a campanha?"
 # File: src/playcampaign.cpp, line: 734
 # File: src/playcampaign.cpp, line: 734
 # File: src/playcampaign.cpp, line: 734
-#: src/game_initialization/playcampaign.cpp:418
+#: src/game_initialization/playcampaign.cpp:420
 msgid "Unknown scenario: '$scenario|'"
 msgstr "Cenário desconhecido: '$scenario|'"
 
@@ -9893,7 +9895,7 @@ msgstr "Não há campanhas disponíveis."
 # File: src/game_controller.cpp, line: 428
 # File: src/game_controller.cpp, line: 410
 # File: src/game_controller.cpp, line: 428
-#: src/game_launcher.cpp:680 src/game_launcher.cpp:699
+#: src/game_launcher.cpp:682 src/game_launcher.cpp:701
 msgid "The file you have tried to load is corrupt"
 msgstr "O Arquivo que você tentou carregar está corrompido"
 
@@ -9907,9 +9909,9 @@ msgstr "O Arquivo que você tentou carregar está corrompido"
 # File: src/game_controller.cpp, line: 413
 # File: src/game_controller.cpp, line: 431
 # File: src/savegame.cpp, line: 733
-#: src/game_launcher.cpp:682 src/game_launcher.cpp:701
+#: src/game_launcher.cpp:684 src/game_launcher.cpp:703
 #: src/hotkey/hotkey_handler_sp.cpp:315 src/savegame.cpp:154
-#: src/savegame.cpp:304
+#: src/savegame.cpp:315
 msgid "The file you have tried to load is corrupt: '"
 msgstr "O Arquivo que você tentou carregar está corrompido: '"
 
@@ -9917,7 +9919,7 @@ msgstr "O Arquivo que você tentou carregar está corrompido: '"
 # File: src/game_controller.cpp, line: 421
 # File: src/game_controller.cpp, line: 421
 # File: src/game_controller.cpp, line: 421
-#: src/game_launcher.cpp:691
+#: src/game_launcher.cpp:693
 msgid "File I/O Error while reading the game"
 msgstr "Erro de I/O ao ler o jogo"
 
@@ -9925,7 +9927,7 @@ msgstr "Erro de I/O ao ler o jogo"
 # File: src/game_controller.cpp, line: 423
 # File: src/game_controller.cpp, line: 423
 # File: src/game_controller.cpp, line: 423
-#: src/game_launcher.cpp:693
+#: src/game_launcher.cpp:695
 msgid "File I/O Error while reading the game: '"
 msgstr "Erro de I/O ao ler o jogo: '"
 
@@ -9933,7 +9935,7 @@ msgstr "Erro de I/O ao ler o jogo: '"
 # File: src/game_controller.cpp, line: 817
 # File: src/game_controller.cpp, line: 817
 # File: src/game_controller.cpp, line: 817
-#: src/game_launcher.cpp:873
+#: src/game_launcher.cpp:875
 msgid "Error while starting server: "
 msgstr "Erro ao iniciar o server: "
 
@@ -9947,7 +9949,7 @@ msgstr "Erro ao iniciar o server: "
 # File: src/multiplayer.cpp, line: 235
 # File: src/multiplayer.cpp, line: 320
 # File: src/multiplayer_ui.cpp, line: 84
-#: src/game_launcher.cpp:895
+#: src/game_launcher.cpp:897
 msgid "Connection failed: "
 msgstr "A conexão falhou: "
 
@@ -10127,7 +10129,7 @@ msgstr "sim"
 msgid "Reference to unknown topic: "
 msgstr "Refere a um tópico desconhecido: "
 
-#: src/help/help_impl.cpp:354
+#: src/help/help_impl.cpp:409
 msgid "Only available during a scenario."
 msgstr "Disponível apenas durante um cenário."
 
@@ -10135,7 +10137,7 @@ msgstr "Disponível apenas durante um cenário."
 # File: src/reports.cpp, line: 689
 # File: src/reports.cpp, line: 689
 # File: src/reports.cpp, line: 689
-#: src/help/help_impl.cpp:355 src/help/help_impl.cpp:391
+#: src/help/help_impl.cpp:410 src/help/help_impl.cpp:446
 msgid "Time of Day Schedule"
 msgstr "Cronograma do Período do Dia"
 
@@ -10143,7 +10145,7 @@ msgstr "Cronograma do Período do Dia"
 # File: src/reports.cpp, line: 1078
 # File: src/reports.cpp, line: 1078
 # File: src/reports.cpp, line: 1078
-#: src/help/help_impl.cpp:382
+#: src/help/help_impl.cpp:437
 msgid "Lawful Bonus:"
 msgstr "Bônus Ordeiro:"
 
@@ -10151,7 +10153,7 @@ msgstr "Bônus Ordeiro:"
 # File: src/reports.cpp, line: 1080
 # File: src/reports.cpp, line: 1080
 # File: src/reports.cpp, line: 1080
-#: src/help/help_impl.cpp:383
+#: src/help/help_impl.cpp:438
 msgid "Neutral Bonus:"
 msgstr "Bônus Neutro:"
 
@@ -10159,7 +10161,7 @@ msgstr "Bônus Neutro:"
 # File: src/reports.cpp, line: 1081
 # File: src/reports.cpp, line: 1081
 # File: src/reports.cpp, line: 1081
-#: src/help/help_impl.cpp:384
+#: src/help/help_impl.cpp:439
 msgid "Chaotic Bonus:"
 msgstr "Bônus Caótico:"
 
@@ -10167,19 +10169,19 @@ msgstr "Bônus Caótico:"
 # File: src/reports.cpp, line: 1083
 # File: src/reports.cpp, line: 1083
 # File: src/reports.cpp, line: 1083
-#: src/help/help_impl.cpp:385
+#: src/help/help_impl.cpp:440
 msgid "Liminal Bonus:"
 msgstr "Bônus Liminal:"
 
-#: src/help/help_impl.cpp:386
+#: src/help/help_impl.cpp:441
 msgid "Schedule"
 msgstr "Cronograma"
 
-#: src/help/help_impl.cpp:478
+#: src/help/help_impl.cpp:533
 msgid "<header>text='Units with this special attack'</header>"
 msgstr "<header>text='Unidades com este ataque especial'</header>"
 
-#: src/help/help_impl.cpp:542
+#: src/help/help_impl.cpp:597
 msgid "<header>text='Units with this ability'</header>"
 msgstr "<header>text='Units com esta habilidade'</header>"
 
@@ -10187,7 +10189,7 @@ msgstr "<header>text='Units com esta habilidade'</header>"
 # File: src/multiplayer_create.cpp, line: 91
 # File: src/multiplayer_create.cpp, line: 91
 # File: src/multiplayer_create.cpp, line: 91
-#: src/help/help_impl.cpp:572
+#: src/help/help_impl.cpp:627
 msgid "Era:"
 msgstr "Era:"
 
@@ -10204,7 +10206,7 @@ msgstr "Era:"
 # File: data/themes/dfool.cfg, line: 142
 # File: data/themes/experimental.cfg, line: 104
 # File: data/themes/widescreen.cfg, line: 148
-#: src/help/help_impl.cpp:580
+#: src/help/help_impl.cpp:635
 msgid "Factions"
 msgstr "Facções"
 
@@ -10212,7 +10214,7 @@ msgstr "Facções"
 # File: src/reports.cpp, line: 198
 # File: src/reports.cpp, line: 198
 # File: src/reports.cpp, line: 198
-#: src/help/help_impl.cpp:628
+#: src/help/help_impl.cpp:683
 msgid "Races: "
 msgstr "Raças: "
 
@@ -10220,7 +10222,7 @@ msgstr "Raças: "
 # File: src/reports.cpp, line: 343
 # File: src/reports.cpp, line: 343
 # File: src/reports.cpp, line: 343
-#: src/help/help_impl.cpp:637 src/help/help_impl.cpp:1001
+#: src/help/help_impl.cpp:692 src/help/help_impl.cpp:1056
 msgid "Alignments: "
 msgstr "Alinhamentos: "
 
@@ -10231,7 +10233,7 @@ msgstr "Alinhamentos: "
 # File: src/menu_events.cpp, line: 191
 # File: src/leader_scroll_dialog.cpp, line: 45
 # File: src/menu_events.cpp, line: 191
-#: src/help/help_impl.cpp:644
+#: src/help/help_impl.cpp:699
 msgid "Leaders"
 msgstr "Líderes"
 
@@ -10242,7 +10244,7 @@ msgstr "Líderes"
 # File: src/statistics_dialog.cpp, line: 234
 # File: src/statistics_dialog.cpp, line: 117
 # File: src/statistics_dialog.cpp, line: 234
-#: src/help/help_impl.cpp:653
+#: src/help/help_impl.cpp:708
 msgid "Recruits"
 msgstr "Recrutados"
 
@@ -10250,7 +10252,7 @@ msgstr "Recrutados"
 # File: src/unit_types.cpp, line: 762
 # File: src/unit_types.cpp, line: 762
 # File: src/unit_types.cpp, line: 762
-#: src/help/help_impl.cpp:715 src/units/types.cpp:488
+#: src/help/help_impl.cpp:770 src/units/types.cpp:488
 msgid "No description available."
 msgstr "Nenhuma descrição disponível."
 
@@ -10258,11 +10260,11 @@ msgstr "Nenhuma descrição disponível."
 # File: src/reports.cpp, line: 383
 # File: src/reports.cpp, line: 383
 # File: src/reports.cpp, line: 383
-#: src/help/help_impl.cpp:719 src/help/help_impl.cpp:721
+#: src/help/help_impl.cpp:774 src/help/help_impl.cpp:776
 msgid "Availability: "
 msgstr "Disponibilidade: "
 
-#: src/help/help_impl.cpp:719
+#: src/help/help_impl.cpp:774
 msgid "Must-have"
 msgstr "Necessário"
 
@@ -10270,11 +10272,11 @@ msgstr "Necessário"
 # File: src/menu_events.cpp, line: 1592
 # File: src/menu_events.cpp, line: 1592
 # File: src/menu_events.cpp, line: 1592
-#: src/help/help_impl.cpp:721
+#: src/help/help_impl.cpp:776
 msgid "Unavailable"
 msgstr "Indisponível"
 
-#: src/help/help_impl.cpp:801 src/help/help_impl.cpp:978
+#: src/help/help_impl.cpp:856 src/help/help_impl.cpp:1033
 msgid "race^Miscellaneous"
 msgstr "Variados"
 
@@ -10282,41 +10284,41 @@ msgstr "Variados"
 # File: src/reports.cpp, line: 343
 # File: src/reports.cpp, line: 343
 # File: src/reports.cpp, line: 343
-#: src/help/help_impl.cpp:1001 src/reports.cpp:377
+#: src/help/help_impl.cpp:1056 src/reports.cpp:377
 msgid "Alignment: "
 msgstr "Alinhamento: "
 
 #. TRANSLATORS: this is expected to say "[Dunefolk are] a group of units, all of whom are Humans",
 #. or "[Quenoth Elves are] a group of units, all of whom are Elves".
-#: src/help/help_impl.cpp:1020
+#: src/help/help_impl.cpp:1075
 msgid ""
 "This is a group of units, all of whom are <ref>dst='$topic_id' "
 "text='$help_taxonomy'</ref>"
 msgstr ""
 
-#: src/help/help_impl.cpp:1025
+#: src/help/help_impl.cpp:1080
 #, fuzzy
 #| msgid "<header>text='Units with this ability'</header>"
 msgid "<header>text='Subgroups of units within this group'</header>"
 msgstr "<header>text='Units com esta habilidade'</header>"
 
-#: src/help/help_impl.cpp:1027
+#: src/help/help_impl.cpp:1082
 #, fuzzy
 #| msgid "<header>text='Units of this race'</header>"
 msgid "<header>text='Groups of units within this race'</header>"
 msgstr "<header>text='Unidades desta raça'</header>"
 
-#: src/help/help_impl.cpp:1036
+#: src/help/help_impl.cpp:1091
 #, fuzzy
 #| msgid "<header>text='Units of this race'</header>"
 msgid "<header>text='Units of this group'</header>"
 msgstr "<header>text='Unidades desta raça'</header>"
 
-#: src/help/help_impl.cpp:1038
+#: src/help/help_impl.cpp:1093
 msgid "<header>text='Units of this race'</header>"
 msgstr "<header>text='Unidades desta raça'</header>"
 
-#: src/help/help_impl.cpp:1359
+#: src/help/help_impl.cpp:1414
 msgid "corrupted original file"
 msgstr "arquivo original corrompido"
 
@@ -11894,7 +11896,7 @@ msgstr "Você realmente deseja sair?"
 # File: src/multiplayer_connect.cpp, line: 1156
 # File: src/reports.cpp, line: 158
 # File: src/savegame.cpp, line: 888
-#: src/reports.cpp:172 src/savegame.cpp:419
+#: src/reports.cpp:172 src/savegame.cpp:430
 msgid "Name: "
 msgstr "Nome: "
 
@@ -12516,11 +12518,11 @@ msgstr "Relógio"
 msgid "Battery"
 msgstr "Bateria"
 
-#: src/reports.cpp:1739
+#: src/reports.cpp:1742
 msgid "Countdown until your turn automatically ends."
 msgstr "Contagem Regressiva até que o seu turno termine automaticamente."
 
-#: src/reports.cpp:1739
+#: src/reports.cpp:1742
 msgid "Turn Countdown"
 msgstr "Contagem Regressiva do Turno"
 
@@ -12551,7 +12553,7 @@ msgstr "%a %b %d %H:%M %Y"
 # File: src/savegame.cpp, line: 1063
 # File: src/savegame.cpp, line: 1063
 #. TRANSLATORS: This string is used as part of a filename, as in, "HttT-The Elves Besieged replay.gz"
-#: src/save_index.cpp:261 src/savegame.cpp:574
+#: src/save_index.cpp:261 src/savegame.cpp:585
 msgid "replay"
 msgstr "replay"
 
@@ -12571,8 +12573,8 @@ msgstr "replay"
 # File: src/savegame.cpp, line: 477
 # File: src/savegame.cpp, line: 1098
 # File: src/savegame.cpp, line: 1100
-#: src/save_index.cpp:345 src/savegame.cpp:71 src/savegame.cpp:610
-#: src/savegame.cpp:612
+#: src/save_index.cpp:345 src/savegame.cpp:71 src/savegame.cpp:621
+#: src/savegame.cpp:623
 msgid "Auto-Save"
 msgstr "Salvamente automático"
 
@@ -12601,17 +12603,23 @@ msgstr ""
 "Este save é de uma versão velha que não possui suporte ($version_number|) e "
 "não pode ser carregada."
 
-#
-# File: src/savegame.cpp, line: 682
-# File: src/savegame.cpp, line: 682
-# File: src/savegame.cpp, line: 682
 #: src/savegame.cpp:260
 msgid ""
-"This save is from a different version of the game ($version_number|). Do you "
-"wish to try to load it?"
+"This save is from a different version of the game ($version_number|), and "
+"might not work with this version.\n"
+"\n"
+"<b>Warning:</b> saves in the middle of campaigns are especially likely to "
+"fail, and you should either use the old version or restart the campaign. "
+"Even when a saved game seems to load successfully, subtler aspects like "
+"gameplay balance and story progression could be impacted. The difficulty, "
+"the challenge, the <i>fun</i> may be missing.\n"
+"\n"
+"For example, the campaign may have been rebalanced with fewer enemies in the "
+"early scenarios, but expecting your recall list to have correspondingly less "
+"experience in the late scenarios.\n"
+"\n"
+"Do you wish to continue?"
 msgstr ""
-"Este save é de uma versão diferente do jogo ($version_number|). Você deseja "
-"tentar carrega-lo?"
 
 #
 # File: src/dialogs.cpp, line: 971
@@ -12623,11 +12631,11 @@ msgstr ""
 # File: src/dialogs.cpp, line: 971
 # File: src/multiplayer_create.cpp, line: 125
 # File: src/savegame.cpp, line: 685
-#: src/savegame.cpp:263 src/savegame.cpp:309
+#: src/savegame.cpp:274 src/savegame.cpp:320
 msgid "Load Game"
 msgstr "Continuar um Jogo"
 
-#: src/savegame.cpp:309
+#: src/savegame.cpp:320
 msgid "Replays are not supported in multiplayer mode."
 msgstr "Replays não são suportados no modo multiplayer ."
 
@@ -12635,7 +12643,7 @@ msgstr "Replays não são suportados no modo multiplayer ."
 # File: src/savegame.cpp, line: 739
 # File: src/savegame.cpp, line: 739
 # File: src/savegame.cpp, line: 739
-#: src/savegame.cpp:316
+#: src/savegame.cpp:327
 msgid "This is not a multiplayer save."
 msgstr "Este não é um save de multiplayer."
 
@@ -12643,7 +12651,7 @@ msgstr "Este não é um save de multiplayer."
 # File: src/savegame.cpp, line: 806
 # File: src/savegame.cpp, line: 806
 # File: src/savegame.cpp, line: 806
-#: src/savegame.cpp:350
+#: src/savegame.cpp:361
 msgid "The game could not be saved: "
 msgstr "O jogo não pôde ser salvo: "
 
@@ -12651,7 +12659,7 @@ msgstr "O jogo não pôde ser salvo: "
 # File: src/savegame.cpp, line: 888
 # File: src/savegame.cpp, line: 888
 # File: src/savegame.cpp, line: 888
-#: src/savegame.cpp:419
+#: src/savegame.cpp:430
 msgid "Save already exists. Do you want to overwrite it?"
 msgstr "Arquivo já existente. Você deseja Sobrescreve-lo?"
 
@@ -12659,7 +12667,7 @@ msgstr "Arquivo já existente. Você deseja Sobrescreve-lo?"
 # File: src/savegame.cpp, line: 889
 # File: src/savegame.cpp, line: 889
 # File: src/savegame.cpp, line: 889
-#: src/savegame.cpp:420
+#: src/savegame.cpp:431
 msgid "Overwrite?"
 msgstr "Sobrescrever?"
 
@@ -12667,7 +12675,7 @@ msgstr "Sobrescrever?"
 # File: src/savegame.cpp, line: 899
 # File: src/savegame.cpp, line: 899
 # File: src/savegame.cpp, line: 899
-#: src/savegame.cpp:427
+#: src/savegame.cpp:438
 msgid ""
 "Save names should not end on '.gz' or '.bz2'. Please remove the extension."
 msgstr ""
@@ -12678,7 +12686,7 @@ msgstr ""
 # File: src/savegame.cpp, line: 965
 # File: src/savegame.cpp, line: 965
 # File: src/savegame.cpp, line: 965
-#: src/savegame.cpp:474
+#: src/savegame.cpp:485
 msgid "Saved"
 msgstr "Salvo"
 
@@ -12686,7 +12694,7 @@ msgstr "Salvo"
 # File: src/savegame.cpp, line: 965
 # File: src/savegame.cpp, line: 965
 # File: src/savegame.cpp, line: 965
-#: src/savegame.cpp:474
+#: src/savegame.cpp:485
 msgid "The game has been saved."
 msgstr "O jogo foi salvo."
 
@@ -12697,7 +12705,7 @@ msgstr "O jogo foi salvo."
 # File: src/savegame.cpp, line: 1020
 # File: src/savegame.cpp, line: 999
 # File: src/savegame.cpp, line: 1020
-#: src/savegame.cpp:506 src/savegame.cpp:526
+#: src/savegame.cpp:517 src/savegame.cpp:537
 msgid "Could not write to file"
 msgstr "Não foi possível escrever no arquivo"
 
@@ -12705,7 +12713,7 @@ msgstr "Não foi possível escrever no arquivo"
 # File: src/savegame.cpp, line: 1054
 # File: src/savegame.cpp, line: 1054
 # File: src/savegame.cpp, line: 1054
-#: src/savegame.cpp:563
+#: src/savegame.cpp:574
 msgid "Save Replay"
 msgstr "Salvar Replay"
 
@@ -12713,7 +12721,7 @@ msgstr "Salvar Replay"
 # File: src/savegame.cpp, line: 1081
 # File: src/savegame.cpp, line: 1081
 # File: src/savegame.cpp, line: 1081
-#: src/savegame.cpp:592
+#: src/savegame.cpp:603
 msgid "Could not auto save the game. Please save the game manually."
 msgstr ""
 "Não foi possível salvar o jogo automaticamente. Por favor salve o jogo "
@@ -12723,11 +12731,11 @@ msgstr ""
 # File: src/savegame.cpp, line: 1130
 # File: src/savegame.cpp, line: 1130
 # File: src/savegame.cpp, line: 1130
-#: src/savegame.cpp:642
+#: src/savegame.cpp:653
 msgid "Save Game"
 msgstr "Salvar o Jogo"
 
-#: src/savegame.cpp:656
+#: src/savegame.cpp:667
 msgid "Game state is corrupted"
 msgstr "O estado do jogo está corrompido"
 
@@ -13459,6 +13467,24 @@ msgstr "Esconder planos para $player"
 #: src/whiteboard/manager.cpp:1137
 msgid "Whiteboard Options"
 msgstr "Opções do Quadro-Branco"
+
+#
+# File: src/play_controller.cpp, line: 1141
+# File: src/play_controller.cpp, line: 1141
+# File: src/play_controller.cpp, line: 1141
+#~ msgid "Back to..."
+#~ msgstr "Voltar para..."
+
+#
+# File: src/savegame.cpp, line: 682
+# File: src/savegame.cpp, line: 682
+# File: src/savegame.cpp, line: 682
+#~ msgid ""
+#~ "This save is from a different version of the game ($version_number|). Do "
+#~ "you wish to try to load it?"
+#~ msgstr ""
+#~ "Este save é de uma versão diferente do jogo ($version_number|). Você "
+#~ "deseja tentar carrega-lo?"
 
 #~ msgid "Start"
 #~ msgstr "Começo"
@@ -15586,13 +15612,6 @@ msgstr "Opções do Quadro-Branco"
 # File: src/multiplayer_create.cpp, line: 103
 #~ msgid "Settings..."
 #~ msgstr "Configurações..."
-
-#
-# File: src/multiplayer_create.cpp, line: 126
-# File: src/multiplayer_create.cpp, line: 126
-# File: src/multiplayer_create.cpp, line: 126
-#~ msgid "Load Game..."
-#~ msgstr "Carregar Jogo..."
 
 #
 # File: src/statistics_dialog.cpp, line: 225

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-02-20 21:40 UTC\n"
+"POT-Creation-Date: 2021-03-21 01:03 UTC\n"
 "PO-Revision-Date: 2011-11-10 19:43+0900\n"
 "Last-Translator: mistzone <drier22@gmail.com>\n"
 "Language-Team: none\n"
@@ -44,9 +44,9 @@ msgstr "(중급자 레벨, 18 개 시나리오)"
 #. [campaign]: id=LOW, type=hybrid
 #: data/campaigns/Legend_of_Wesmere/_main.cfg:51
 #, fuzzy
-#| msgid "(Easy)"
-msgid "Easy"
-msgstr "(쉬움)"
+#| msgid "(Normal)"
+msgid "Normal"
+msgstr "(보통)"
 
 #. [campaign]: id=LOW, type=hybrid
 #: data/campaigns/Legend_of_Wesmere/_main.cfg:51
@@ -55,19 +55,17 @@ msgstr "병사"
 
 #. [campaign]: id=LOW, type=hybrid
 #: data/campaigns/Legend_of_Wesmere/_main.cfg:52
+msgid "Challenging"
+msgstr ""
+
+#. [campaign]: id=LOW, type=hybrid
+#: data/campaigns/Legend_of_Wesmere/_main.cfg:52
 msgid "Lord"
 msgstr "군주"
 
 #. [campaign]: id=LOW, type=hybrid
-#: data/campaigns/Legend_of_Wesmere/_main.cfg:52
-#, fuzzy
-#| msgid "(Normal)"
-msgid "Normal"
-msgstr "(보통)"
-
-#. [campaign]: id=LOW, type=hybrid
 #: data/campaigns/Legend_of_Wesmere/_main.cfg:53
-msgid "Challenging"
+msgid "Difficult"
 msgstr ""
 
 #. [campaign]: id=LOW, type=hybrid
@@ -5373,6 +5371,11 @@ msgstr "잘가게 $unit.name. 그대의 충성스런 노고는 잊혀지지 않�
 #: data/campaigns/Legend_of_Wesmere/utils/deaths.cfg:152
 msgid "Oh, no! We are too late..."
 msgstr "아, 안돼! 너무 늦어버렸어..."
+
+#, fuzzy
+#~| msgid "(Easy)"
+#~ msgid "Easy"
+#~ msgstr "(쉬움)"
 
 #~ msgid "... Enough, gentlemen, we have a battle to fight!"
 #~ msgstr "... 됐네, 제군들. 우리 앞엔 전장이 있네!"

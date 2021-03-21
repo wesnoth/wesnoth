@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: hu-utbs_1.4_1.5\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-03-12 23:18 UTC\n"
+"POT-Creation-Date: 2021-03-21 01:02 UTC\n"
 "PO-Revision-Date: 2012-08-15 08:38+0200\n"
 "Last-Translator: Dr. Kádár-Németh Krisztián <krisztian.kad@gmail.com>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
@@ -55,23 +55,21 @@ msgstr "(Gyakorlott szint, 10 pálya)"
 #. [campaign]: id=Under_the_Burning_Suns
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:26
 #, fuzzy
+#| msgid "(Challenging)"
+msgid "Challenging"
+msgstr "(Kihívást jelentő)"
+
+#. [campaign]: id=Under_the_Burning_Suns
+#: data/campaigns/Under_the_Burning_Suns/_main.cfg:26
+#, fuzzy
 #| msgid "Desert Fighter"
 msgid "Fighter"
 msgstr "Sivatagi harcos"
 
 #. [campaign]: id=Under_the_Burning_Suns
-#: data/campaigns/Under_the_Burning_Suns/_main.cfg:26
-#, fuzzy
-#| msgid "(Normal)"
-msgid "Normal"
-msgstr "(Normál)"
-
-#. [campaign]: id=Under_the_Burning_Suns
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:27
-#, fuzzy
-#| msgid "(Challenging)"
-msgid "Challenging"
-msgstr "(Kihívást jelentő)"
+msgid "Difficult"
+msgstr ""
 
 #. [campaign]: id=Under_the_Burning_Suns
 #. [advancement]: id=warrior_1
@@ -517,10 +515,15 @@ msgstr "Hah! Legyőztük az utolsót is!"
 
 #. [message]: speaker=Garak
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:631
+#, fuzzy
+#| msgid ""
+#| "Thanks for the help. I am glad to see that so many have survived the "
+#| "night. But there’s no time to talk, we must save the rest of our people "
+#| "and crush any other of these earthen abominations back into the earth."
 msgid ""
 "Thanks for the help. I am glad to see that so many have survived the night. "
 "But there’s no time to talk, we must save the rest of our people and crush "
-"any other of these earthen abominations back into the earth."
+"these earthen abominations."
 msgstr ""
 "Köszönöm a segítséget. Boldog vagyok, hogy többen is túléltük az éjszakát. "
 "De nincs idő csevegésre, meg kell mentenünk a társainkat, és a földbe "
@@ -17520,6 +17523,11 @@ msgstr "Fantom vár"
 #: data/campaigns/Under_the_Burning_Suns/utils/terrain.cfg:64
 msgid "Phantom Keep"
 msgstr "Fantom erőd"
+
+#, fuzzy
+#~| msgid "(Normal)"
+#~ msgid "Normal"
+#~ msgstr "(Normál)"
 
 #~ msgid "Giant Ant"
 #~ msgstr "Óriáshangya"

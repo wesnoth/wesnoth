@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bg1\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-02-20 21:40 UTC\n"
+"POT-Creation-Date: 2021-03-21 01:03 UTC\n"
 "PO-Revision-Date: 2007-05-15 01:00+0300\n"
 "Last-Translator: Nikolay Vladimirov <nikolay@vladimiroff.com>\n"
 "Language-Team: Български\n"
@@ -30,15 +30,21 @@ msgstr ""
 
 #. [campaign]: id=The_Rise_of_Wesnoth
 #: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:20
-#, fuzzy
-#| msgid "(Easy)"
-msgid "Easy"
-msgstr "(Лесно)"
+msgid "Fighter"
+msgstr "Боец"
 
 #. [campaign]: id=The_Rise_of_Wesnoth
 #: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:20
-msgid "Fighter"
-msgstr "Боец"
+#, fuzzy
+msgid "Normal"
+msgstr "(Нормално)"
+
+#. [campaign]: id=The_Rise_of_Wesnoth
+#: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:21
+#, fuzzy
+#| msgid "(Challenging)"
+msgid "Challenging"
+msgstr "(Предизвикателно)"
 
 #. [campaign]: id=The_Rise_of_Wesnoth
 #: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:21
@@ -46,17 +52,9 @@ msgid "Commander"
 msgstr "Командир"
 
 #. [campaign]: id=The_Rise_of_Wesnoth
-#: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:21
-#, fuzzy
-msgid "Normal"
-msgstr "(Нормално)"
-
-#. [campaign]: id=The_Rise_of_Wesnoth
 #: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:22
-#, fuzzy
-#| msgid "(Challenging)"
-msgid "Challenging"
-msgstr "(Предизвикателно)"
+msgid "Difficult"
+msgstr ""
 
 #. [campaign]: id=The_Rise_of_Wesnoth
 #: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:22
@@ -7622,6 +7620,11 @@ msgid ""
 msgstr ""
 "Новините наистина са чудесни. Така нашият брой се удвоява. А сега да се "
 "заемем с неотложните дела."
+
+#, fuzzy
+#~| msgid "(Easy)"
+#~ msgid "Easy"
+#~ msgstr "(Лесно)"
 
 #~ msgid ""
 #~ "Our strength is waning, and our foes grow stronger by the hour. The "

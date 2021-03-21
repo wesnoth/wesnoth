@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-02-20 21:40 UTC\n"
+"POT-Creation-Date: 2021-03-21 01:03 UTC\n"
 "PO-Revision-Date: 2007-11-30 11:09+0100\n"
 "Last-Translator: Stefan Bergström (tephlon) <stefan DOT bergstrom AT gmail "
 "DOT com>\n"
@@ -30,15 +30,21 @@ msgstr "TRoW"
 
 #. [campaign]: id=The_Rise_of_Wesnoth
 #: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:20
-#, fuzzy
-#| msgid "(Easy)"
-msgid "Easy"
-msgstr "(Lätt)"
+msgid "Fighter"
+msgstr "Krigare"
 
 #. [campaign]: id=The_Rise_of_Wesnoth
 #: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:20
-msgid "Fighter"
-msgstr "Krigare"
+#, fuzzy
+msgid "Normal"
+msgstr "(Normalsvårt)"
+
+#. [campaign]: id=The_Rise_of_Wesnoth
+#: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:21
+#, fuzzy
+#| msgid "(Challenging)"
+msgid "Challenging"
+msgstr "(Utmanande)"
 
 #. [campaign]: id=The_Rise_of_Wesnoth
 #: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:21
@@ -46,17 +52,9 @@ msgid "Commander"
 msgstr "Befälhavare"
 
 #. [campaign]: id=The_Rise_of_Wesnoth
-#: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:21
-#, fuzzy
-msgid "Normal"
-msgstr "(Normalsvårt)"
-
-#. [campaign]: id=The_Rise_of_Wesnoth
 #: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:22
-#, fuzzy
-#| msgid "(Challenging)"
-msgid "Challenging"
-msgstr "(Utmanande)"
+msgid "Difficult"
+msgstr ""
 
 #. [campaign]: id=The_Rise_of_Wesnoth
 #: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:22
@@ -7544,6 +7542,11 @@ msgid ""
 msgstr ""
 "Detta är sannerligen fantastiska nyheter. Vårt antal har fördubblats. Och nu "
 "till ärendet vi har för handen."
+
+#, fuzzy
+#~| msgid "(Easy)"
+#~ msgid "Easy"
+#~ msgstr "(Lätt)"
 
 #~ msgid ""
 #~ "Our strength is waning, and our foes grow stronger by the hour. The "

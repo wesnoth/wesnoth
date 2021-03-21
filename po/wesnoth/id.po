@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3-svn\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-03-12 20:18-0300\n"
+"POT-Creation-Date: 2021-03-20 22:02-0300\n"
 "PO-Revision-Date: 2013-09-09 11:47+0700\n"
 "Last-Translator: Yuristyawan Pambudi Wicaksana <yuris_wicaksana@yahoo.com>\n"
 "Language-Team: none\n"
@@ -282,7 +282,7 @@ msgstr "Susah"
 
 #. [label]: id=label-hp
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:168
-#: data/themes/default.cfg:146
+#: data/themes/default.cfg:148
 msgid "HP"
 msgstr "Darah"
 
@@ -4177,61 +4177,61 @@ msgid "Reset"
 msgstr "Pasang Lagi"
 
 #. [menu]: id=menu-main
-#: data/themes/cutscene.cfg:37 data/themes/default.cfg:80
+#: data/themes/cutscene.cfg:37 data/themes/default.cfg:82
 msgid "Menu"
 msgstr "Menu"
 
 #. [action]: id=button-endturn
-#: data/themes/cutscene.cfg:53 data/themes/default.cfg:133
+#: data/themes/cutscene.cfg:53 data/themes/default.cfg:135
 msgid "End Turn"
 msgstr "Akhir Giliran"
 
 #. [action]: id=button-endturn
-#: data/themes/cutscene.cfg:54 data/themes/default.cfg:134
+#: data/themes/cutscene.cfg:54 data/themes/default.cfg:136
 msgid "End Scenario"
 msgstr "Akhir Skenario"
 
 #. [theme]: id=Default
-#: data/themes/default.cfg:32
+#: data/themes/default.cfg:34
 msgid "theme^Default"
 msgstr ""
 
 #. [theme]: id=Default
-#: data/themes/default.cfg:33
+#: data/themes/default.cfg:35
 #, fuzzy
 #| msgid "Default AI"
 msgid "The default theme"
 msgstr "AI Asli"
 
 #. [menu]: id=menu-autosaves
-#: data/themes/default.cfg:90
+#: data/themes/default.cfg:92
 #, fuzzy
-#| msgid "Back to turn "
-msgid "Back to..."
-msgstr "Kembali ke giliran"
+#| msgid "Load Game..."
+msgid "Load Turn..."
+msgstr "Meload Permainan..."
 
 #. [menu]: id=actions-menu
-#: data/themes/default.cfg:98
+#: data/themes/default.cfg:100
 msgid "Actions"
 msgstr "Aksi"
 
 #. [label]: id=label-xp
-#: data/themes/default.cfg:155
+#: data/themes/default.cfg:157
 msgid "XP"
 msgstr "AP"
 
 #. [label]: id=label-mp
-#: data/themes/default.cfg:163
+#: data/themes/default.cfg:165
 msgid "MP"
 msgstr "AG"
 
 #. [label]: id=label-def
-#: data/themes/default.cfg:171
+#: data/themes/default.cfg:173
 msgid "def"
 msgstr ""
 
 #. [unit_level]: id=unit-level
-#: data/themes/default.cfg:408
+#: data/themes/default.cfg:410
 #, fuzzy
 #| msgid "statuspanel^level"
 msgid "statuspanel^lvl"
@@ -6119,7 +6119,7 @@ msgid_plural ""
 "Please report this to the respective authors or maintainers of these add-ons."
 msgstr[0] ""
 
-#: src/game_events/pump.cpp:476 src/game_launcher.cpp:922
+#: src/game_events/pump.cpp:476 src/game_launcher.cpp:924
 msgid "Error: "
 msgstr "Error:"
 
@@ -6175,7 +6175,7 @@ msgid "Reserved"
 msgstr "Disimpan"
 
 #: src/game_initialization/create_engine.cpp:72
-#: src/game_initialization/create_engine.cpp:661
+#: src/game_initialization/create_engine.cpp:662
 #, fuzzy
 #| msgid "The game could not be loaded: "
 msgid "Map could not be loaded: "
@@ -6304,7 +6304,7 @@ msgid "mp_game_available_slots^Full"
 msgstr ""
 
 #: src/game_initialization/lobby_data.cpp:443
-#: src/game_initialization/lobby_data.cpp:445 src/savegame.cpp:648
+#: src/game_initialization/lobby_data.cpp:445 src/savegame.cpp:659
 msgid "Turn"
 msgstr "Giliran"
 
@@ -6586,20 +6586,20 @@ msgstr[0] ""
 "Anda akan memulai skenario berikutnya dengan $gold atau emas permulaan "
 "minimum terpasang, yang manapun yang lebih tinggi."
 
-#: src/game_initialization/playcampaign.cpp:290 src/game_launcher.cpp:875
+#: src/game_initialization/playcampaign.cpp:290 src/game_launcher.cpp:877
 msgid "The game could not be loaded: "
 msgstr "Permainan tidak bisa diload:"
 
-#: src/game_initialization/playcampaign.cpp:296 src/game_launcher.cpp:877
+#: src/game_initialization/playcampaign.cpp:296 src/game_launcher.cpp:879
 msgid "Error while playing the game: "
 msgstr "Error ketika memainkan permainan:"
 
-#: src/game_initialization/playcampaign.cpp:299 src/game_launcher.cpp:914
+#: src/game_initialization/playcampaign.cpp:299 src/game_launcher.cpp:916
 msgid "The game map could not be loaded: "
 msgstr "Peta permainan tidak bisa diload:"
 
-#: src/game_initialization/playcampaign.cpp:302 src/game_launcher.cpp:879
-#: src/game_launcher.cpp:995
+#: src/game_initialization/playcampaign.cpp:302 src/game_launcher.cpp:881
+#: src/game_launcher.cpp:997
 msgid "Map generator error: "
 msgstr ""
 
@@ -6607,16 +6607,16 @@ msgstr ""
 msgid "Error while reading the WML: "
 msgstr "Error ketika membaca WML:"
 
-#: src/game_initialization/playcampaign.cpp:349
+#: src/game_initialization/playcampaign.cpp:351
 #: src/playsingle_controller.cpp:321
 msgid "Game Over"
 msgstr "Permainan Selesai"
 
-#: src/game_initialization/playcampaign.cpp:350
+#: src/game_initialization/playcampaign.cpp:352
 msgid "This scenario has ended. Do you want to continue the campaign?"
 msgstr "Skenario ini sudah berakhir. Apakah anda ingin meneruskan kampanye?"
 
-#: src/game_initialization/playcampaign.cpp:418
+#: src/game_initialization/playcampaign.cpp:420
 msgid "Unknown scenario: '$scenario|'"
 msgstr "Skenario tidak diketahui: '$scenario|'"
 
@@ -6626,29 +6626,29 @@ msgstr "Skenario tidak diketahui: '$scenario|'"
 msgid "No campaigns are available."
 msgstr "Tidak ada kampanye yang tersedia.\n"
 
-#: src/game_launcher.cpp:680 src/game_launcher.cpp:699
+#: src/game_launcher.cpp:682 src/game_launcher.cpp:701
 msgid "The file you have tried to load is corrupt"
 msgstr "File yang anda coba load rusak"
 
-#: src/game_launcher.cpp:682 src/game_launcher.cpp:701
+#: src/game_launcher.cpp:684 src/game_launcher.cpp:703
 #: src/hotkey/hotkey_handler_sp.cpp:315 src/savegame.cpp:154
-#: src/savegame.cpp:304
+#: src/savegame.cpp:315
 msgid "The file you have tried to load is corrupt: '"
 msgstr "File yang anda coba load rusak: '"
 
-#: src/game_launcher.cpp:691
+#: src/game_launcher.cpp:693
 msgid "File I/O Error while reading the game"
 msgstr "Error file I/O ketika membaca permainan"
 
-#: src/game_launcher.cpp:693
+#: src/game_launcher.cpp:695
 msgid "File I/O Error while reading the game: '"
 msgstr "File I/O Error ketika membaca permainan: '"
 
-#: src/game_launcher.cpp:873
+#: src/game_launcher.cpp:875
 msgid "Error while starting server: "
 msgstr "Error ketika memulai server:"
 
-#: src/game_launcher.cpp:895
+#: src/game_launcher.cpp:897
 #, fuzzy
 #| msgid "Connection timed out"
 msgid "Connection failed: "
@@ -6754,145 +6754,145 @@ msgstr "iya"
 msgid "Reference to unknown topic: "
 msgstr "Referensi ke topic yang tidak diketahui:"
 
-#: src/help/help_impl.cpp:354
+#: src/help/help_impl.cpp:409
 msgid "Only available during a scenario."
 msgstr ""
 
-#: src/help/help_impl.cpp:355 src/help/help_impl.cpp:391
+#: src/help/help_impl.cpp:410 src/help/help_impl.cpp:446
 #, fuzzy
 #| msgid "Time of day: "
 msgid "Time of Day Schedule"
 msgstr "Waktu hari:"
 
-#: src/help/help_impl.cpp:382
+#: src/help/help_impl.cpp:437
 #, fuzzy
 #| msgid "Lawful units: "
 msgid "Lawful Bonus:"
 msgstr "Unit baik:"
 
-#: src/help/help_impl.cpp:383
+#: src/help/help_impl.cpp:438
 #, fuzzy
 #| msgid "Neutral units: "
 msgid "Neutral Bonus:"
 msgstr "Unit netral:"
 
-#: src/help/help_impl.cpp:384
+#: src/help/help_impl.cpp:439
 #, fuzzy
 #| msgid "Chaotic units: "
 msgid "Chaotic Bonus:"
 msgstr "Unit brutal:"
 
-#: src/help/help_impl.cpp:385
+#: src/help/help_impl.cpp:440
 #, fuzzy
 #| msgid "Liminal units: "
 msgid "Liminal Bonus:"
 msgstr "Unit-unit liminal:"
 
-#: src/help/help_impl.cpp:386
+#: src/help/help_impl.cpp:441
 msgid "Schedule"
 msgstr ""
 
-#: src/help/help_impl.cpp:478
+#: src/help/help_impl.cpp:533
 #, fuzzy
 #| msgid "<header>text='Units having this special attack'</header>"
 msgid "<header>text='Units with this special attack'</header>"
 msgstr "<header>text='Unit-unit memiliki serangan spesial ini'</header>"
 
-#: src/help/help_impl.cpp:542
+#: src/help/help_impl.cpp:597
 #, fuzzy
 #| msgid "<header>text='Units having this ability'</header>"
 msgid "<header>text='Units with this ability'</header>"
 msgstr "<header>text='Unit-unit memiliki kemampuan ini'</header>"
 
-#: src/help/help_impl.cpp:572
+#: src/help/help_impl.cpp:627
 msgid "Era:"
 msgstr "Era:"
 
-#: src/help/help_impl.cpp:580
+#: src/help/help_impl.cpp:635
 msgid "Factions"
 msgstr "kelompok-kelompok"
 
-#: src/help/help_impl.cpp:628
+#: src/help/help_impl.cpp:683
 #, fuzzy
 #| msgid "Race: "
 msgid "Races: "
 msgstr "Ras:"
 
-#: src/help/help_impl.cpp:637 src/help/help_impl.cpp:1001
+#: src/help/help_impl.cpp:692 src/help/help_impl.cpp:1056
 #, fuzzy
 #| msgid "Alignment: "
 msgid "Alignments: "
 msgstr "Golongan:"
 
-#: src/help/help_impl.cpp:644
+#: src/help/help_impl.cpp:699
 #, fuzzy
 #| msgid "Leaders:"
 msgid "Leaders"
 msgstr "Pemimpin:"
 
-#: src/help/help_impl.cpp:653
+#: src/help/help_impl.cpp:708
 msgid "Recruits"
 msgstr "Rekrutan"
 
-#: src/help/help_impl.cpp:715 src/units/types.cpp:488
+#: src/help/help_impl.cpp:770 src/units/types.cpp:488
 msgid "No description available."
 msgstr "Tidak ada deskripsi."
 
-#: src/help/help_impl.cpp:719 src/help/help_impl.cpp:721
+#: src/help/help_impl.cpp:774 src/help/help_impl.cpp:776
 #, fuzzy
 #| msgid "Ability: "
 msgid "Availability: "
 msgstr "Kemampuan:"
 
-#: src/help/help_impl.cpp:719
+#: src/help/help_impl.cpp:774
 msgid "Must-have"
 msgstr ""
 
-#: src/help/help_impl.cpp:721
+#: src/help/help_impl.cpp:776
 #, fuzzy
 #| msgid " No help available."
 msgid "Unavailable"
 msgstr "Tidak ada bantuan yang tersedia."
 
-#: src/help/help_impl.cpp:801 src/help/help_impl.cpp:978
+#: src/help/help_impl.cpp:856 src/help/help_impl.cpp:1033
 msgid "race^Miscellaneous"
 msgstr "Yang Lain"
 
-#: src/help/help_impl.cpp:1001 src/reports.cpp:377
+#: src/help/help_impl.cpp:1056 src/reports.cpp:377
 msgid "Alignment: "
 msgstr "Golongan:"
 
 #. TRANSLATORS: this is expected to say "[Dunefolk are] a group of units, all of whom are Humans",
 #. or "[Quenoth Elves are] a group of units, all of whom are Elves".
-#: src/help/help_impl.cpp:1020
+#: src/help/help_impl.cpp:1075
 msgid ""
 "This is a group of units, all of whom are <ref>dst='$topic_id' "
 "text='$help_taxonomy'</ref>"
 msgstr ""
 
-#: src/help/help_impl.cpp:1025
+#: src/help/help_impl.cpp:1080
 #, fuzzy
 #| msgid "<header>text='Units having this ability'</header>"
 msgid "<header>text='Subgroups of units within this group'</header>"
 msgstr "<header>text='Unit-unit memiliki kemampuan ini'</header>"
 
-#: src/help/help_impl.cpp:1027
+#: src/help/help_impl.cpp:1082
 #, fuzzy
 #| msgid "<header>text='Units of this race'</header>"
 msgid "<header>text='Groups of units within this race'</header>"
 msgstr "<header>text='Unit-unit ras ini'</header>"
 
-#: src/help/help_impl.cpp:1036
+#: src/help/help_impl.cpp:1091
 #, fuzzy
 #| msgid "<header>text='Units of this race'</header>"
 msgid "<header>text='Units of this group'</header>"
 msgstr "<header>text='Unit-unit ras ini'</header>"
 
-#: src/help/help_impl.cpp:1038
+#: src/help/help_impl.cpp:1093
 msgid "<header>text='Units of this race'</header>"
 msgstr "<header>text='Unit-unit ras ini'</header>"
 
-#: src/help/help_impl.cpp:1359
+#: src/help/help_impl.cpp:1414
 msgid "corrupted original file"
 msgstr "file asli rusak"
 
@@ -7869,7 +7869,7 @@ msgstr "Keluar"
 msgid "Do you really want to quit?"
 msgstr "Apakah anda benar-benar mau memecat dia?"
 
-#: src/reports.cpp:172 src/savegame.cpp:419
+#: src/reports.cpp:172 src/savegame.cpp:430
 msgid "Name: "
 msgstr "Nama: "
 
@@ -8203,11 +8203,11 @@ msgstr ""
 msgid "Battery"
 msgstr ""
 
-#: src/reports.cpp:1739
+#: src/reports.cpp:1742
 msgid "Countdown until your turn automatically ends."
 msgstr ""
 
-#: src/reports.cpp:1739
+#: src/reports.cpp:1742
 msgid "Turn Countdown"
 msgstr ""
 
@@ -8220,12 +8220,12 @@ msgid "%a %b %d %H:%M %Y"
 msgstr "%a %d %b %H:%M %Y"
 
 #. TRANSLATORS: This string is used as part of a filename, as in, "HttT-The Elves Besieged replay.gz"
-#: src/save_index.cpp:261 src/savegame.cpp:574
+#: src/save_index.cpp:261 src/savegame.cpp:585
 msgid "replay"
 msgstr "permainan ulang"
 
-#: src/save_index.cpp:345 src/savegame.cpp:71 src/savegame.cpp:610
-#: src/savegame.cpp:612
+#: src/save_index.cpp:345 src/savegame.cpp:71 src/savegame.cpp:621
+#: src/savegame.cpp:623
 msgid "Auto-Save"
 msgstr "Simpanan-Otomatis"
 
@@ -8244,46 +8244,52 @@ msgid ""
 msgstr "Simpanan ini dari versi yang terlalu lama untuk diload."
 
 #: src/savegame.cpp:260
-#, fuzzy
-#| msgid ""
-#| "This save is from a different version of the game. Do you want to try to "
-#| "load it?"
 msgid ""
-"This save is from a different version of the game ($version_number|). Do you "
-"wish to try to load it?"
+"This save is from a different version of the game ($version_number|), and "
+"might not work with this version.\n"
+"\n"
+"<b>Warning:</b> saves in the middle of campaigns are especially likely to "
+"fail, and you should either use the old version or restart the campaign. "
+"Even when a saved game seems to load successfully, subtler aspects like "
+"gameplay balance and story progression could be impacted. The difficulty, "
+"the challenge, the <i>fun</i> may be missing.\n"
+"\n"
+"For example, the campaign may have been rebalanced with fewer enemies in the "
+"early scenarios, but expecting your recall list to have correspondingly less "
+"experience in the late scenarios.\n"
+"\n"
+"Do you wish to continue?"
 msgstr ""
-"Simpanan ini dari versi permainan ini yang lain. Apakah anda mau mencoba "
-"meloadnya?"
 
-#: src/savegame.cpp:263 src/savegame.cpp:309
+#: src/savegame.cpp:274 src/savegame.cpp:320
 msgid "Load Game"
 msgstr "Load Permainan"
 
-#: src/savegame.cpp:309
+#: src/savegame.cpp:320
 #, fuzzy
 #| msgid "Factions are only used in multiplayer"
 msgid "Replays are not supported in multiplayer mode."
 msgstr "golongan-golongan hanya digunakan dalam multiplayer"
 
-#: src/savegame.cpp:316
+#: src/savegame.cpp:327
 #, fuzzy
 #| msgid "This is not a multiplayer save"
 msgid "This is not a multiplayer save."
 msgstr "Ini bukan sebuah simpanan multi pemain"
 
-#: src/savegame.cpp:350
+#: src/savegame.cpp:361
 msgid "The game could not be saved: "
 msgstr "Permainan ini tidak bisa disimpan"
 
-#: src/savegame.cpp:419
+#: src/savegame.cpp:430
 msgid "Save already exists. Do you want to overwrite it?"
 msgstr "Simpanan sudah ada. Apakah anda ingin menulis ulang?"
 
-#: src/savegame.cpp:420
+#: src/savegame.cpp:431
 msgid "Overwrite?"
 msgstr "Tulis ulang?"
 
-#: src/savegame.cpp:427
+#: src/savegame.cpp:438
 #, fuzzy
 #| msgid "Save names should not end on '.gz'. Please choose a different name."
 msgid ""
@@ -8291,35 +8297,35 @@ msgid ""
 msgstr ""
 "Nama simpanan tidak boleh berakhir dengan '.gz'. Tolong pilih nama yang lain."
 
-#: src/savegame.cpp:474
+#: src/savegame.cpp:485
 msgid "Saved"
 msgstr "Tersimpan"
 
-#: src/savegame.cpp:474
+#: src/savegame.cpp:485
 #, fuzzy
 #| msgid "The game has been saved"
 msgid "The game has been saved."
 msgstr "Permainan ini sudah disimpan"
 
-#: src/savegame.cpp:506 src/savegame.cpp:526
+#: src/savegame.cpp:517 src/savegame.cpp:537
 msgid "Could not write to file"
 msgstr "Tidak bisa menulis ke file"
 
-#: src/savegame.cpp:563
+#: src/savegame.cpp:574
 msgid "Save Replay"
 msgstr "Simpan Replay"
 
-#: src/savegame.cpp:592
+#: src/savegame.cpp:603
 msgid "Could not auto save the game. Please save the game manually."
 msgstr ""
 "Tidak bisa menyimpan permainan secara otomatis. Tolong simpan permainan ini "
 "sendiri."
 
-#: src/savegame.cpp:642
+#: src/savegame.cpp:653
 msgid "Save Game"
 msgstr "Simpan Permainan"
 
-#: src/savegame.cpp:656
+#: src/savegame.cpp:667
 msgid "Game state is corrupted"
 msgstr ""
 
@@ -8771,6 +8777,22 @@ msgstr "Sembunyikan rencana untuk $player"
 #: src/whiteboard/manager.cpp:1137
 msgid "Whiteboard Options"
 msgstr "Pilihan Papan Tulis Putih"
+
+#, fuzzy
+#~| msgid "Back to turn "
+#~ msgid "Back to..."
+#~ msgstr "Kembali ke giliran"
+
+#, fuzzy
+#~| msgid ""
+#~| "This save is from a different version of the game. Do you want to try to "
+#~| "load it?"
+#~ msgid ""
+#~ "This save is from a different version of the game ($version_number|). Do "
+#~ "you wish to try to load it?"
+#~ msgstr ""
+#~ "Simpanan ini dari versi permainan ini yang lain. Apakah anda mau mencoba "
+#~ "meloadnya?"
 
 #, fuzzy
 #~| msgid "End Scenario"
@@ -9756,9 +9778,6 @@ msgstr "Pilihan Papan Tulis Putih"
 
 #~ msgid "Settings..."
 #~ msgstr "Setting..."
-
-#~ msgid "Load Game..."
-#~ msgstr "Meload Permainan..."
 
 #, fuzzy
 #~| msgid "End Scenario"

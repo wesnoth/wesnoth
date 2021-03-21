@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.2\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-03-12 20:18-0300\n"
+"POT-Creation-Date: 2021-03-20 22:03-0300\n"
 "PO-Revision-Date: 2019-01-26 18:06+0100\n"
 "Last-Translator: aceman <acelists@atlas.sk>\n"
 "Language-Team: none\n"
@@ -2211,7 +2211,7 @@ msgstr ""
 msgid " (Press '$hotkey' for more information)"
 msgstr " (Stlačte '$hotkey' pre viac informácií)"
 
-#: data/gui/macros/_initial.cfg:336
+#: data/gui/macros/_initial.cfg:352
 msgid "Search"
 msgstr "Hľadať"
 
@@ -5729,27 +5729,23 @@ msgstr "Chyba"
 msgid "Details:"
 msgstr "Detaily:"
 
-#: src/build_info.cpp:277
+#: src/build_info.cpp:262
 msgid "feature^Lua console completion"
 msgstr ""
 
-#: src/build_info.cpp:282
-msgid "feature^Legacy bidirectional rendering"
-msgstr ""
-
-#: src/build_info.cpp:289
+#: src/build_info.cpp:269
 msgid "feature^D-Bus notifications back end"
 msgstr ""
 
-#: src/build_info.cpp:298
+#: src/build_info.cpp:278
 msgid "feature^Win32 notifications back end"
 msgstr ""
 
-#: src/build_info.cpp:304
+#: src/build_info.cpp:284
 msgid "feature^Cocoa notifications back end"
 msgstr ""
 
-#: src/build_info.cpp:342 src/desktop/version.cpp:113
+#: src/build_info.cpp:322 src/desktop/version.cpp:113
 msgid "cpu_architecture^<unknown>"
 msgstr ""
 
@@ -5821,11 +5817,7 @@ msgstr ""
 msgid "language code for localized resources^en_US"
 msgstr "sk,cz,en"
 
-#: src/font/marked-up_text.cpp:402
-msgid "The maximum text width is less than 1."
-msgstr "Maximálna šírka textu je menšia ako 1."
-
-#: src/font/text.cpp:782
+#: src/font/text.cpp:815
 msgid "The text contains invalid Pango markup: "
 msgstr "Text obsahuje neplatné značky Pango: "
 
@@ -8174,6 +8166,9 @@ msgid ""
 msgstr ""
 "Kľúč '$deprecated_key' bol premenovaný na '$key'. Podpora pre "
 "'$deprecated_key' bude odstránená vo verzii $removal_version."
+
+#~ msgid "The maximum text width is less than 1."
+#~ msgstr "Maximálna šírka textu je menšia ako 1."
 
 #, fuzzy
 #~| msgid "Preferences"

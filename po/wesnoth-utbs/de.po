@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.12\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-03-12 23:18 UTC\n"
+"POT-Creation-Date: 2021-03-21 01:02 UTC\n"
 "PO-Revision-Date: 2020-02-01 12:46+0100\n"
 "Last-Translator: Christoph Berg <christoph.berg@kpm-sport.de>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
@@ -52,18 +52,18 @@ msgstr "(Einstufung: Experte, 10 Szenarien)"
 
 #. [campaign]: id=Under_the_Burning_Suns
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:26
+msgid "Challenging"
+msgstr "Herausfordernd"
+
+#. [campaign]: id=Under_the_Burning_Suns
+#: data/campaigns/Under_the_Burning_Suns/_main.cfg:26
 msgid "Fighter"
 msgstr "Kämpfer"
 
 #. [campaign]: id=Under_the_Burning_Suns
-#: data/campaigns/Under_the_Burning_Suns/_main.cfg:26
-msgid "Normal"
-msgstr "Normal"
-
-#. [campaign]: id=Under_the_Burning_Suns
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:27
-msgid "Challenging"
-msgstr "Herausfordernd"
+msgid "Difficult"
+msgstr ""
 
 #. [campaign]: id=Under_the_Burning_Suns
 #. [advancement]: id=warrior_1
@@ -517,10 +517,15 @@ msgstr "Ha! Endlich sind sie alle vernichtet."
 
 #. [message]: speaker=Garak
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:631
+#, fuzzy
+#| msgid ""
+#| "Thanks for the help. I am glad to see that so many have survived the "
+#| "night. But there’s no time to talk, we must save the rest of our people "
+#| "and crush any other of these earthen abominations back into the earth."
 msgid ""
 "Thanks for the help. I am glad to see that so many have survived the night. "
 "But there’s no time to talk, we must save the rest of our people and crush "
-"any other of these earthen abominations back into the earth."
+"these earthen abominations."
 msgstr ""
 "Danke für die Hilfe. Ich bin glücklich darüber, dass ich so viele von euch "
 "nach dieser Nacht am Leben sehe. Aber wir haben jetzt keine Zeit zum Reden, "
@@ -18144,6 +18149,9 @@ msgstr "Phantom-Burg"
 #: data/campaigns/Under_the_Burning_Suns/utils/terrain.cfg:64
 msgid "Phantom Keep"
 msgstr "Phantom-Burgfried"
+
+#~ msgid "Normal"
+#~ msgstr "Normal"
 
 #~ msgid "Giant Ant"
 #~ msgstr "Riesenameise"

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.2\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-03-12 23:18 UTC\n"
+"POT-Creation-Date: 2021-03-21 01:02 UTC\n"
 "PO-Revision-Date: 2018-05-10 02:17+0200\n"
 "Last-Translator: PaulP <paulp@hotmail.sk>\n"
 "Language-Team: none\n"
@@ -45,18 +45,18 @@ msgstr "(Expertná úroveň, 10 scén)"
 
 #. [campaign]: id=Under_the_Burning_Suns
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:26
+msgid "Challenging"
+msgstr "(Náročná)"
+
+#. [campaign]: id=Under_the_Burning_Suns
+#: data/campaigns/Under_the_Burning_Suns/_main.cfg:26
 msgid "Fighter"
 msgstr "Bojovník"
 
 #. [campaign]: id=Under_the_Burning_Suns
-#: data/campaigns/Under_the_Burning_Suns/_main.cfg:26
-msgid "Normal"
-msgstr "(Normálna)"
-
-#. [campaign]: id=Under_the_Burning_Suns
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:27
-msgid "Challenging"
-msgstr "(Náročná)"
+msgid "Difficult"
+msgstr ""
 
 #. [campaign]: id=Under_the_Burning_Suns
 #. [advancement]: id=warrior_1
@@ -501,10 +501,15 @@ msgstr "Ha! Tak sme si s nimi nakoniec poradili."
 
 #. [message]: speaker=Garak
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:631
+#, fuzzy
+#| msgid ""
+#| "Thanks for the help. I am glad to see that so many have survived the "
+#| "night. But there’s no time to talk, we must save the rest of our people "
+#| "and crush any other of these earthen abominations back into the earth."
 msgid ""
 "Thanks for the help. I am glad to see that so many have survived the night. "
 "But there’s no time to talk, we must save the rest of our people and crush "
-"any other of these earthen abominations back into the earth."
+"these earthen abominations."
 msgstr ""
 "Vďaka za pomoc. Som rád, že toľkí z vás prežili noc. Ale nemáme čas na reči, "
 "musíme zachrániť zvyšok našich ľudí a potlačiť ostatných takýchto blatných "
@@ -17482,6 +17487,9 @@ msgstr "Hrad prízrakov"
 #: data/campaigns/Under_the_Burning_Suns/utils/terrain.cfg:64
 msgid "Phantom Keep"
 msgstr "Pevnosť prízrakov"
+
+#~ msgid "Normal"
+#~ msgstr "(Normálna)"
 
 #~ msgid "Giant Ant"
 #~ msgstr "Obrí mravec"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-utbs\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-03-12 23:18 UTC\n"
+"POT-Creation-Date: 2021-03-21 01:02 UTC\n"
 "PO-Revision-Date: 2012-01-07 13:20+0100\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
@@ -56,23 +56,21 @@ msgstr "(Зналачки ниво, 10 сценарија.)"
 #. [campaign]: id=Under_the_Burning_Suns
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:26
 #, fuzzy
+#| msgid "(Challenging)"
+msgid "Challenging"
+msgstr "(изазовно)"
+
+#. [campaign]: id=Under_the_Burning_Suns
+#: data/campaigns/Under_the_Burning_Suns/_main.cfg:26
+#, fuzzy
 #| msgid "Desert Fighter"
 msgid "Fighter"
 msgstr "пустињски борац"
 
 #. [campaign]: id=Under_the_Burning_Suns
-#: data/campaigns/Under_the_Burning_Suns/_main.cfg:26
-#, fuzzy
-#| msgid "(Normal)"
-msgid "Normal"
-msgstr "(нормално)"
-
-#. [campaign]: id=Under_the_Burning_Suns
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:27
-#, fuzzy
-#| msgid "(Challenging)"
-msgid "Challenging"
-msgstr "(изазовно)"
+msgid "Difficult"
+msgstr ""
 
 #. [campaign]: id=Under_the_Burning_Suns
 #. [advancement]: id=warrior_1
@@ -531,10 +529,15 @@ msgstr "Ха! Коначно су уништени."
 
 #. [message]: speaker=Garak
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:631
+#, fuzzy
+#| msgid ""
+#| "Thanks for the help. I am glad to see that so many have survived the "
+#| "night. But there’s no time to talk, we must save the rest of our people "
+#| "and crush any other of these earthen abominations back into the earth."
 msgid ""
 "Thanks for the help. I am glad to see that so many have survived the night. "
 "But there’s no time to talk, we must save the rest of our people and crush "
-"any other of these earthen abominations back into the earth."
+"these earthen abominations."
 msgstr ""
 "Хвала вам на помоћи. Драго ми је да видим да нас толико прегурало ноћ. Али "
 "нема времена за причу, морамо спасити остатак преживјелих, и сабити колико "
@@ -17542,6 +17545,11 @@ msgstr "фантомски замак"
 #: data/campaigns/Under_the_Burning_Suns/utils/terrain.cfg:64
 msgid "Phantom Keep"
 msgstr "фантомска кула"
+
+#, fuzzy
+#~| msgid "(Normal)"
+#~ msgid "Normal"
+#~ msgstr "(нормално)"
 
 #~ msgid "Giant Ant"
 #~ msgstr "џиновски мрав"

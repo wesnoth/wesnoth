@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-03-12 23:18 UTC\n"
+"POT-Creation-Date: 2021-03-21 01:02 UTC\n"
 "PO-Revision-Date: 2012-01-07 19:19+0300\n"
 "Last-Translator: Kaido Kikkas <kakk@kakupesa.net>\n"
 "Language-Team: none\n"
@@ -44,23 +44,21 @@ msgstr "(Eksperdi tase, 10 stsenaariumi.)"
 #. [campaign]: id=Under_the_Burning_Suns
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:26
 #, fuzzy
+#| msgid "(Challenging)"
+msgid "Challenging"
+msgstr "(Keeruline)"
+
+#. [campaign]: id=Under_the_Burning_Suns
+#: data/campaigns/Under_the_Burning_Suns/_main.cfg:26
+#, fuzzy
 #| msgid "Desert Fighter"
 msgid "Fighter"
 msgstr "Kõrbesõdalane"
 
 #. [campaign]: id=Under_the_Burning_Suns
-#: data/campaigns/Under_the_Burning_Suns/_main.cfg:26
-#, fuzzy
-#| msgid "(Normal)"
-msgid "Normal"
-msgstr "(Harilik)"
-
-#. [campaign]: id=Under_the_Burning_Suns
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:27
-#, fuzzy
-#| msgid "(Challenging)"
-msgid "Challenging"
-msgstr "(Keeruline)"
+msgid "Difficult"
+msgstr ""
 
 #. [campaign]: id=Under_the_Burning_Suns
 #. [advancement]: id=warrior_1
@@ -507,10 +505,15 @@ msgstr "Hei! Nad on viimaks hävitatud."
 
 #. [message]: speaker=Garak
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:631
+#, fuzzy
+#| msgid ""
+#| "Thanks for the help. I am glad to see that so many have survived the "
+#| "night. But there’s no time to talk, we must save the rest of our people "
+#| "and crush any other of these earthen abominations back into the earth."
 msgid ""
 "Thanks for the help. I am glad to see that so many have survived the night. "
 "But there’s no time to talk, we must save the rest of our people and crush "
-"any other of these earthen abominations back into the earth."
+"these earthen abominations."
 msgstr ""
 "Tänu teile abi eest. Mul on hea meel näha, et nii paljud on ellu jäänud. "
 "Kuid rääkimiseks pole aega - me peame päästma ülejäänud rahva ja lööma kõik "
@@ -17278,6 +17281,11 @@ msgstr "Ebamaine loss"
 #: data/campaigns/Under_the_Burning_Suns/utils/terrain.cfg:64
 msgid "Phantom Keep"
 msgstr "Ebamaine linnus"
+
+#, fuzzy
+#~| msgid "(Normal)"
+#~ msgid "Normal"
+#~ msgstr "(Harilik)"
 
 #~ msgid "Giant Ant"
 #~ msgstr "Hiidsipelgas"

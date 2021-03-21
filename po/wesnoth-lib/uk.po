@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.11\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-03-12 20:18-0300\n"
+"POT-Creation-Date: 2021-03-20 22:03-0300\n"
 "PO-Revision-Date: 2019-01-29 15:03+0200\n"
 "Last-Translator: AncientGeneral <greatgeneral12 {AT} gmail.com>\n"
 "Language-Team: \n"
@@ -2220,7 +2220,7 @@ msgstr ""
 msgid " (Press '$hotkey' for more information)"
 msgstr " (Натисніть '$hotkey' щоб дізнатися більше)"
 
-#: data/gui/macros/_initial.cfg:336
+#: data/gui/macros/_initial.cfg:352
 msgid "Search"
 msgstr "Пошук"
 
@@ -5717,27 +5717,23 @@ msgstr "Помилка"
 msgid "Details:"
 msgstr "Деталі:"
 
-#: src/build_info.cpp:277
+#: src/build_info.cpp:262
 msgid "feature^Lua console completion"
 msgstr "доповнення вводу в консолі Lua"
 
-#: src/build_info.cpp:282
-msgid "feature^Legacy bidirectional rendering"
-msgstr "Застарілий двонапрямний рендер"
-
-#: src/build_info.cpp:289
+#: src/build_info.cpp:269
 msgid "feature^D-Bus notifications back end"
 msgstr "D-Bus сповіщення"
 
-#: src/build_info.cpp:298
+#: src/build_info.cpp:278
 msgid "feature^Win32 notifications back end"
 msgstr "Win32 сповіщення"
 
-#: src/build_info.cpp:304
+#: src/build_info.cpp:284
 msgid "feature^Cocoa notifications back end"
 msgstr "Cocoa сповіщення"
 
-#: src/build_info.cpp:342 src/desktop/version.cpp:113
+#: src/build_info.cpp:322 src/desktop/version.cpp:113
 msgid "cpu_architecture^<unknown>"
 msgstr ""
 
@@ -5809,11 +5805,7 @@ msgstr ""
 msgid "language code for localized resources^en_US"
 msgstr "uk,ru"
 
-#: src/font/marked-up_text.cpp:402
-msgid "The maximum text width is less than 1."
-msgstr "Максимальна ширина тексту менше 1."
-
-#: src/font/text.cpp:782
+#: src/font/text.cpp:815
 msgid "The text contains invalid Pango markup: "
 msgstr "Текст містить неприпустиму розмітку Pango: "
 
@@ -8165,6 +8157,12 @@ msgid ""
 msgstr ""
 "Клавіша '$deprecated_key' перейменована в '$key'. Вона буде видалена у "
 "версії $removal_version."
+
+#~ msgid "feature^Legacy bidirectional rendering"
+#~ msgstr "Застарілий двонапрямний рендер"
+
+#~ msgid "The maximum text width is less than 1."
+#~ msgstr "Максимальна ширина тексту менше 1."
 
 #, fuzzy
 #~| msgid "Preferences"

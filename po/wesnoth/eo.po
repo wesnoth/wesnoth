@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-03-12 20:18-0300\n"
+"POT-Creation-Date: 2021-03-20 22:02-0300\n"
 "PO-Revision-Date: 2008-03-01 19:31+0200\n"
 "Last-Translator: Luther Thompson <luther@librem.one>\n"
 "Language-Team: \n"
@@ -278,7 +278,7 @@ msgstr "Malsimpla"
 
 #. [label]: id=label-hp
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:168
-#: data/themes/default.cfg:146
+#: data/themes/default.cfg:148
 msgid "HP"
 msgstr "Vivoj"
 
@@ -4087,60 +4087,60 @@ msgid "Reset"
 msgstr ""
 
 #. [menu]: id=menu-main
-#: data/themes/cutscene.cfg:37 data/themes/default.cfg:80
+#: data/themes/cutscene.cfg:37 data/themes/default.cfg:82
 msgid "Menu"
 msgstr "Menuo"
 
 #. [action]: id=button-endturn
-#: data/themes/cutscene.cfg:53 data/themes/default.cfg:133
+#: data/themes/cutscene.cfg:53 data/themes/default.cfg:135
 msgid "End Turn"
 msgstr "Fini la movon"
 
 #. [action]: id=button-endturn
-#: data/themes/cutscene.cfg:54 data/themes/default.cfg:134
+#: data/themes/cutscene.cfg:54 data/themes/default.cfg:136
 msgid "End Scenario"
 msgstr "Fini scenejon"
 
 #. [theme]: id=Default
-#: data/themes/default.cfg:32
+#: data/themes/default.cfg:34
 msgid "theme^Default"
 msgstr ""
 
 #. [theme]: id=Default
-#: data/themes/default.cfg:33
+#: data/themes/default.cfg:35
 #, fuzzy
 msgid "The default theme"
 msgstr "Standarda"
 
 #. [menu]: id=menu-autosaves
-#: data/themes/default.cfg:90
+#: data/themes/default.cfg:92
 #, fuzzy
-#| msgid "Back to turn "
-msgid "Back to..."
-msgstr "Reen al antaŭa movo"
+#| msgid "Load Game..."
+msgid "Load Turn..."
+msgstr "Legado de ludo..."
 
 #. [menu]: id=actions-menu
-#: data/themes/default.cfg:98
+#: data/themes/default.cfg:100
 msgid "Actions"
 msgstr "Ago"
 
 #. [label]: id=label-xp
-#: data/themes/default.cfg:155
+#: data/themes/default.cfg:157
 msgid "XP"
 msgstr "Spertoj"
 
 #. [label]: id=label-mp
-#: data/themes/default.cfg:163
+#: data/themes/default.cfg:165
 msgid "MP"
 msgstr "GL"
 
 #. [label]: id=label-def
-#: data/themes/default.cfg:171
+#: data/themes/default.cfg:173
 msgid "def"
 msgstr ""
 
 #. [unit_level]: id=unit-level
-#: data/themes/default.cfg:408
+#: data/themes/default.cfg:410
 #, fuzzy
 #| msgid "statuspanel^level"
 msgid "statuspanel^lvl"
@@ -5857,7 +5857,7 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/game_events/pump.cpp:476 src/game_launcher.cpp:922
+#: src/game_events/pump.cpp:476 src/game_launcher.cpp:924
 #, fuzzy
 msgid "Error: "
 msgstr "Eraro"
@@ -5916,7 +5916,7 @@ msgid "Reserved"
 msgstr "Servilo:"
 
 #: src/game_initialization/create_engine.cpp:72
-#: src/game_initialization/create_engine.cpp:661
+#: src/game_initialization/create_engine.cpp:662
 #, fuzzy
 #| msgid "The game could not be loaded: "
 msgid "Map could not be loaded: "
@@ -6042,7 +6042,7 @@ msgid "mp_game_available_slots^Full"
 msgstr ""
 
 #: src/game_initialization/lobby_data.cpp:443
-#: src/game_initialization/lobby_data.cpp:445 src/savegame.cpp:648
+#: src/game_initialization/lobby_data.cpp:445 src/savegame.cpp:659
 msgid "Turn"
 msgstr "turno"
 
@@ -6298,20 +6298,20 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/game_initialization/playcampaign.cpp:290 src/game_launcher.cpp:875
+#: src/game_initialization/playcampaign.cpp:290 src/game_launcher.cpp:877
 msgid "The game could not be loaded: "
 msgstr "Ne eblis alŝuti ludon:"
 
-#: src/game_initialization/playcampaign.cpp:296 src/game_launcher.cpp:877
+#: src/game_initialization/playcampaign.cpp:296 src/game_launcher.cpp:879
 msgid "Error while playing the game: "
 msgstr "Eraro ĉe ludado:"
 
-#: src/game_initialization/playcampaign.cpp:299 src/game_launcher.cpp:914
+#: src/game_initialization/playcampaign.cpp:299 src/game_launcher.cpp:916
 msgid "The game map could not be loaded: "
 msgstr "Ne eblis alŝuti ludmapon:"
 
-#: src/game_initialization/playcampaign.cpp:302 src/game_launcher.cpp:879
-#: src/game_launcher.cpp:995
+#: src/game_initialization/playcampaign.cpp:302 src/game_launcher.cpp:881
+#: src/game_launcher.cpp:997
 msgid "Map generator error: "
 msgstr ""
 
@@ -6319,16 +6319,16 @@ msgstr ""
 msgid "Error while reading the WML: "
 msgstr "Eraro dum legado de WML:"
 
-#: src/game_initialization/playcampaign.cpp:349
+#: src/game_initialization/playcampaign.cpp:351
 #: src/playsingle_controller.cpp:321
 msgid "Game Over"
 msgstr "Fino de ludo"
 
-#: src/game_initialization/playcampaign.cpp:350
+#: src/game_initialization/playcampaign.cpp:352
 msgid "This scenario has ended. Do you want to continue the campaign?"
 msgstr ""
 
-#: src/game_initialization/playcampaign.cpp:418
+#: src/game_initialization/playcampaign.cpp:420
 msgid "Unknown scenario: '$scenario|'"
 msgstr "Nekonata scenejo: '$scenario|'"
 
@@ -6337,31 +6337,31 @@ msgstr "Nekonata scenejo: '$scenario|'"
 msgid "No campaigns are available."
 msgstr "Neniaj celoj estas starigitaj"
 
-#: src/game_launcher.cpp:680 src/game_launcher.cpp:699
+#: src/game_launcher.cpp:682 src/game_launcher.cpp:701
 msgid "The file you have tried to load is corrupt"
 msgstr "Dosiero, kiun vi volis legi, estas damaĝita."
 
-#: src/game_launcher.cpp:682 src/game_launcher.cpp:701
+#: src/game_launcher.cpp:684 src/game_launcher.cpp:703
 #: src/hotkey/hotkey_handler_sp.cpp:315 src/savegame.cpp:154
-#: src/savegame.cpp:304
+#: src/savegame.cpp:315
 msgid "The file you have tried to load is corrupt: '"
 msgstr "La dosiero, kiun vi volis ŝarĝi, estas damaĝita: '"
 
-#: src/game_launcher.cpp:691
+#: src/game_launcher.cpp:693
 msgid "File I/O Error while reading the game"
 msgstr "Eraro ĉe legado de lud-dosiero"
 
-#: src/game_launcher.cpp:693
+#: src/game_launcher.cpp:695
 #, fuzzy
 msgid "File I/O Error while reading the game: '"
 msgstr "Eraro ĉe legado de lud-dosiero"
 
-#: src/game_launcher.cpp:873
+#: src/game_launcher.cpp:875
 #, fuzzy
 msgid "Error while starting server: "
 msgstr "Eraro ĉe ludado:"
 
-#: src/game_launcher.cpp:895
+#: src/game_launcher.cpp:897
 #, fuzzy
 #| msgid "Connection timed out"
 msgid "Connection failed: "
@@ -6456,142 +6456,142 @@ msgstr "jes"
 msgid "Reference to unknown topic: "
 msgstr "Referenco al nekonata temo:"
 
-#: src/help/help_impl.cpp:354
+#: src/help/help_impl.cpp:409
 msgid "Only available during a scenario."
 msgstr ""
 
-#: src/help/help_impl.cpp:355 src/help/help_impl.cpp:391
+#: src/help/help_impl.cpp:410 src/help/help_impl.cpp:446
 #, fuzzy
 msgid "Time of Day Schedule"
 msgstr "Tempo de diurno"
 
-#: src/help/help_impl.cpp:382
+#: src/help/help_impl.cpp:437
 #, fuzzy
 #| msgid "Lawful units: "
 msgid "Lawful Bonus:"
 msgstr "Ordemaj milit-unuoj:"
 
-#: src/help/help_impl.cpp:383
+#: src/help/help_impl.cpp:438
 #, fuzzy
 #| msgid "Neutral units: "
 msgid "Neutral Bonus:"
 msgstr "Neŭtralaj milit-unuoj:"
 
-#: src/help/help_impl.cpp:384
+#: src/help/help_impl.cpp:439
 #, fuzzy
 #| msgid "Chaotic units: "
 msgid "Chaotic Bonus:"
 msgstr "Kaosaj milit-unuoj:"
 
-#: src/help/help_impl.cpp:385
+#: src/help/help_impl.cpp:440
 #, fuzzy
 msgid "Liminal Bonus:"
 msgstr "Ordemaj milit-unuoj:"
 
-#: src/help/help_impl.cpp:386
+#: src/help/help_impl.cpp:441
 msgid "Schedule"
 msgstr ""
 
-#: src/help/help_impl.cpp:478
+#: src/help/help_impl.cpp:533
 #, fuzzy
 #| msgid "<header>text='Units having this special attack'</header>"
 msgid "<header>text='Units with this special attack'</header>"
 msgstr "<header>text='Unuoj havantaj tiun specialan atakon'</header>"
 
-#: src/help/help_impl.cpp:542
+#: src/help/help_impl.cpp:597
 #, fuzzy
 #| msgid "<header>text='Units having this ability'</header>"
 msgid "<header>text='Units with this ability'</header>"
 msgstr "<header>text='Unuoj havantaj tiun kapablon'</header>"
 
-#: src/help/help_impl.cpp:572
+#: src/help/help_impl.cpp:627
 msgid "Era:"
 msgstr "Erao:"
 
-#: src/help/help_impl.cpp:580
+#: src/help/help_impl.cpp:635
 #, fuzzy
 msgid "Factions"
 msgstr "Frakcio"
 
-#: src/help/help_impl.cpp:628
+#: src/help/help_impl.cpp:683
 #, fuzzy
 #| msgid "Race: "
 msgid "Races: "
 msgstr "Raso:"
 
-#: src/help/help_impl.cpp:637 src/help/help_impl.cpp:1001
+#: src/help/help_impl.cpp:692 src/help/help_impl.cpp:1056
 #, fuzzy
 #| msgid "Alignment: "
 msgid "Alignments: "
 msgstr "Aparteneco:"
 
-#: src/help/help_impl.cpp:644
+#: src/help/help_impl.cpp:699
 #, fuzzy
 msgid "Leaders"
 msgstr "Komandanto:"
 
-#: src/help/help_impl.cpp:653
+#: src/help/help_impl.cpp:708
 msgid "Recruits"
 msgstr "Rekrutoj"
 
-#: src/help/help_impl.cpp:715 src/units/types.cpp:488
+#: src/help/help_impl.cpp:770 src/units/types.cpp:488
 #, fuzzy
 msgid "No description available."
 msgstr "Neniaj celoj estas starigitaj"
 
-#: src/help/help_impl.cpp:719 src/help/help_impl.cpp:721
+#: src/help/help_impl.cpp:774 src/help/help_impl.cpp:776
 #, fuzzy
 msgid "Availability: "
 msgstr "Kapabloj:"
 
-#: src/help/help_impl.cpp:719
+#: src/help/help_impl.cpp:774
 msgid "Must-have"
 msgstr ""
 
-#: src/help/help_impl.cpp:721
+#: src/help/help_impl.cpp:776
 #, fuzzy
 msgid "Unavailable"
 msgstr "Neniaj celoj estas starigitaj"
 
-#: src/help/help_impl.cpp:801 src/help/help_impl.cpp:978
+#: src/help/help_impl.cpp:856 src/help/help_impl.cpp:1033
 msgid "race^Miscellaneous"
 msgstr "Diversaj"
 
-#: src/help/help_impl.cpp:1001 src/reports.cpp:377
+#: src/help/help_impl.cpp:1056 src/reports.cpp:377
 msgid "Alignment: "
 msgstr "Aparteneco:"
 
 #. TRANSLATORS: this is expected to say "[Dunefolk are] a group of units, all of whom are Humans",
 #. or "[Quenoth Elves are] a group of units, all of whom are Elves".
-#: src/help/help_impl.cpp:1020
+#: src/help/help_impl.cpp:1075
 msgid ""
 "This is a group of units, all of whom are <ref>dst='$topic_id' "
 "text='$help_taxonomy'</ref>"
 msgstr ""
 
-#: src/help/help_impl.cpp:1025
+#: src/help/help_impl.cpp:1080
 #, fuzzy
 #| msgid "<header>text='Units having this ability'</header>"
 msgid "<header>text='Subgroups of units within this group'</header>"
 msgstr "<header>text='Unuoj havantaj tiun kapablon'</header>"
 
-#: src/help/help_impl.cpp:1027
+#: src/help/help_impl.cpp:1082
 #, fuzzy
 #| msgid "<header>text='Units of this race'</header>"
 msgid "<header>text='Groups of units within this race'</header>"
 msgstr "<header>text='Unuoj de tiu raso'</header>"
 
-#: src/help/help_impl.cpp:1036
+#: src/help/help_impl.cpp:1091
 #, fuzzy
 #| msgid "<header>text='Units of this race'</header>"
 msgid "<header>text='Units of this group'</header>"
 msgstr "<header>text='Unuoj de tiu raso'</header>"
 
-#: src/help/help_impl.cpp:1038
+#: src/help/help_impl.cpp:1093
 msgid "<header>text='Units of this race'</header>"
 msgstr "<header>text='Unuoj de tiu raso'</header>"
 
-#: src/help/help_impl.cpp:1359
+#: src/help/help_impl.cpp:1414
 msgid "corrupted original file"
 msgstr ""
 
@@ -7520,7 +7520,7 @@ msgstr "Fino"
 msgid "Do you really want to quit?"
 msgstr "Ĉu vi vere volas likvidi lin?"
 
-#: src/reports.cpp:172 src/savegame.cpp:419
+#: src/reports.cpp:172 src/savegame.cpp:430
 msgid "Name: "
 msgstr "Nomo:"
 
@@ -7872,11 +7872,11 @@ msgstr ""
 msgid "Battery"
 msgstr ""
 
-#: src/reports.cpp:1739
+#: src/reports.cpp:1742
 msgid "Countdown until your turn automatically ends."
 msgstr ""
 
-#: src/reports.cpp:1739
+#: src/reports.cpp:1742
 msgid "Turn Countdown"
 msgstr ""
 
@@ -7889,12 +7889,12 @@ msgid "%a %b %d %H:%M %Y"
 msgstr "%a %b %d %H:%M %Y"
 
 #. TRANSLATORS: This string is used as part of a filename, as in, "HttT-The Elves Besieged replay.gz"
-#: src/save_index.cpp:261 src/savegame.cpp:574
+#: src/save_index.cpp:261 src/savegame.cpp:585
 msgid "replay"
 msgstr "registro"
 
-#: src/save_index.cpp:345 src/savegame.cpp:71 src/savegame.cpp:610
-#: src/savegame.cpp:612
+#: src/save_index.cpp:345 src/savegame.cpp:71 src/savegame.cpp:621
+#: src/savegame.cpp:623
 msgid "Auto-Save"
 msgstr "Aŭtomata konservado"
 
@@ -7914,45 +7914,51 @@ msgstr ""
 "ĝin?"
 
 #: src/savegame.cpp:260
-#, fuzzy
-#| msgid ""
-#| "This save is from a different version of the game. Do you want to try to "
-#| "load it?"
 msgid ""
-"This save is from a different version of the game ($version_number|). Do you "
-"wish to try to load it?"
+"This save is from a different version of the game ($version_number|), and "
+"might not work with this version.\n"
+"\n"
+"<b>Warning:</b> saves in the middle of campaigns are especially likely to "
+"fail, and you should either use the old version or restart the campaign. "
+"Even when a saved game seems to load successfully, subtler aspects like "
+"gameplay balance and story progression could be impacted. The difficulty, "
+"the challenge, the <i>fun</i> may be missing.\n"
+"\n"
+"For example, the campaign may have been rebalanced with fewer enemies in the "
+"early scenarios, but expecting your recall list to have correspondingly less "
+"experience in the late scenarios.\n"
+"\n"
+"Do you wish to continue?"
 msgstr ""
-"Tiu ĉi konservita ludo estas el alia versio de programo. Ĉu mi provu ŝarĝi "
-"ĝin?"
 
-#: src/savegame.cpp:263 src/savegame.cpp:309
+#: src/savegame.cpp:274 src/savegame.cpp:320
 msgid "Load Game"
 msgstr "Legi ludon"
 
-#: src/savegame.cpp:309
+#: src/savegame.cpp:320
 msgid "Replays are not supported in multiplayer mode."
 msgstr ""
 
-#: src/savegame.cpp:316
+#: src/savegame.cpp:327
 #, fuzzy
 #| msgid "This is not a multiplayer save"
 msgid "This is not a multiplayer save."
 msgstr "Tio ĉi estas ne savita reta ludo"
 
-#: src/savegame.cpp:350
+#: src/savegame.cpp:361
 #, fuzzy
 msgid "The game could not be saved: "
 msgstr "Oni ne sukcesis registri la ludon"
 
-#: src/savegame.cpp:419
+#: src/savegame.cpp:430
 msgid "Save already exists. Do you want to overwrite it?"
 msgstr "Savita ludo kun sama nomo jam ekzistas. Ĉu vi volas reskribi ĝin?"
 
-#: src/savegame.cpp:420
+#: src/savegame.cpp:431
 msgid "Overwrite?"
 msgstr "Traskribi?"
 
-#: src/savegame.cpp:427
+#: src/savegame.cpp:438
 #, fuzzy
 #| msgid "Save names should not end on '.gz'. Please choose a different name."
 msgid ""
@@ -7960,34 +7966,34 @@ msgid ""
 msgstr ""
 "Nomoj de savitaj ludoj ne povas fini per '.gz'. Bonvolu elekti alian nomon."
 
-#: src/savegame.cpp:474
+#: src/savegame.cpp:485
 msgid "Saved"
 msgstr "Konservita"
 
-#: src/savegame.cpp:474
+#: src/savegame.cpp:485
 #, fuzzy
 #| msgid "The game has been saved"
 msgid "The game has been saved."
 msgstr "La ludo estis konservita"
 
-#: src/savegame.cpp:506 src/savegame.cpp:526
+#: src/savegame.cpp:517 src/savegame.cpp:537
 msgid "Could not write to file"
 msgstr "Mi ne povas registri en dosieron."
 
-#: src/savegame.cpp:563
+#: src/savegame.cpp:574
 #, fuzzy
 msgid "Save Replay"
 msgstr "Registri reludon"
 
-#: src/savegame.cpp:592
+#: src/savegame.cpp:603
 msgid "Could not auto save the game. Please save the game manually."
 msgstr "Ne eblis aŭtomate savi ludon. Bonvolu savi lunon per menuo."
 
-#: src/savegame.cpp:642
+#: src/savegame.cpp:653
 msgid "Save Game"
 msgstr "Savu ludon"
 
-#: src/savegame.cpp:656
+#: src/savegame.cpp:667
 msgid "Game state is corrupted"
 msgstr ""
 
@@ -8449,6 +8455,22 @@ msgstr "Anstataŭi per $player"
 #: src/whiteboard/manager.cpp:1137
 msgid "Whiteboard Options"
 msgstr ""
+
+#, fuzzy
+#~| msgid "Back to turn "
+#~ msgid "Back to..."
+#~ msgstr "Reen al antaŭa movo"
+
+#, fuzzy
+#~| msgid ""
+#~| "This save is from a different version of the game. Do you want to try to "
+#~| "load it?"
+#~ msgid ""
+#~ "This save is from a different version of the game ($version_number|). Do "
+#~ "you wish to try to load it?"
+#~ msgstr ""
+#~ "Tiu ĉi konservita ludo estas el alia versio de programo. Ĉu mi provu "
+#~ "ŝarĝi ĝin?"
 
 #, fuzzy
 #~| msgid "End Scenario"
@@ -9151,9 +9173,6 @@ msgstr ""
 
 #~ msgid "Settings..."
 #~ msgstr "Alĝustigoj..."
-
-#~ msgid "Load Game..."
-#~ msgstr "Legado de ludo..."
 
 #, fuzzy
 #~| msgid "End Scenario"

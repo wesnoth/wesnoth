@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1.1+dev\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-02-20 21:40 UTC\n"
+"POT-Creation-Date: 2021-03-21 01:03 UTC\n"
 "PO-Revision-Date: 2011-11-22 15:47+0900\n"
 "Last-Translator: mistzone <drier22@gmail.com>\n"
 "Language-Team: none\n"
@@ -26,15 +26,22 @@ msgstr "건국"
 
 #. [campaign]: id=The_Rise_of_Wesnoth
 #: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:20
-#, fuzzy
-#| msgid "(Easy)"
-msgid "Easy"
-msgstr "(쉬움)"
+msgid "Fighter"
+msgstr "투사"
 
 #. [campaign]: id=The_Rise_of_Wesnoth
 #: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:20
-msgid "Fighter"
-msgstr "투사"
+#, fuzzy
+#| msgid "Normal:"
+msgid "Normal"
+msgstr "평범한 길:"
+
+#. [campaign]: id=The_Rise_of_Wesnoth
+#: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:21
+#, fuzzy
+#| msgid "(Challenging)"
+msgid "Challenging"
+msgstr "(어려움)"
 
 #. [campaign]: id=The_Rise_of_Wesnoth
 #: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:21
@@ -42,18 +49,9 @@ msgid "Commander"
 msgstr "지휘관"
 
 #. [campaign]: id=The_Rise_of_Wesnoth
-#: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:21
-#, fuzzy
-#| msgid "Normal:"
-msgid "Normal"
-msgstr "평범한 길:"
-
-#. [campaign]: id=The_Rise_of_Wesnoth
 #: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:22
-#, fuzzy
-#| msgid "(Challenging)"
-msgid "Challenging"
-msgstr "(어려움)"
+msgid "Difficult"
+msgstr ""
 
 #. [campaign]: id=The_Rise_of_Wesnoth
 #: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:22
@@ -7351,6 +7349,11 @@ msgid ""
 msgstr ""
 "그건 정말로 좋은 소식이군요. 우리의 숫자가 두배가 됐어. 이제 지금 할 일을 하"
 "죠."
+
+#, fuzzy
+#~| msgid "(Easy)"
+#~ msgid "Easy"
+#~ msgstr "(쉬움)"
 
 #~ msgid ""
 #~ "Our strength is waning, and our foes grow stronger by the hour. The "

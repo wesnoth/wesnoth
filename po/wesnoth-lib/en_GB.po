@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-03-12 20:18-0300\n"
+"POT-Creation-Date: 2021-03-20 22:03-0300\n"
 "PO-Revision-Date: 2021-03-17 12:54+1100\n"
 "Last-Translator: Wedge009 <wedge009@wedge009.net>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
@@ -2146,7 +2146,7 @@ msgstr ""
 msgid " (Press '$hotkey' for more information)"
 msgstr " (Press '$hotkey' for more information)"
 
-#: data/gui/macros/_initial.cfg:336
+#: data/gui/macros/_initial.cfg:352
 msgid "Search"
 msgstr "Search"
 
@@ -5578,27 +5578,23 @@ msgstr "Error"
 msgid "Details:"
 msgstr "Details:"
 
-#: src/build_info.cpp:277
+#: src/build_info.cpp:262
 msgid "feature^Lua console completion"
 msgstr "Lua console completion"
 
-#: src/build_info.cpp:282
-msgid "feature^Legacy bidirectional rendering"
-msgstr "Legacy bidirectional rendering"
-
-#: src/build_info.cpp:289
+#: src/build_info.cpp:269
 msgid "feature^D-Bus notifications back end"
 msgstr "D-Bus notifications back-end"
 
-#: src/build_info.cpp:298
+#: src/build_info.cpp:278
 msgid "feature^Win32 notifications back end"
 msgstr "Win32 notifications back-end"
 
-#: src/build_info.cpp:304
+#: src/build_info.cpp:284
 msgid "feature^Cocoa notifications back end"
 msgstr "Cocoa notifications back-end"
 
-#: src/build_info.cpp:342 src/desktop/version.cpp:113
+#: src/build_info.cpp:322 src/desktop/version.cpp:113
 msgid "cpu_architecture^<unknown>"
 msgstr "<unknown>"
 
@@ -5674,11 +5670,7 @@ msgstr ""
 msgid "language code for localized resources^en_US"
 msgstr "en_GB"
 
-#: src/font/marked-up_text.cpp:402
-msgid "The maximum text width is less than 1."
-msgstr "The maximum text width is less than 1."
-
-#: src/font/text.cpp:782
+#: src/font/text.cpp:815
 msgid "The text contains invalid Pango markup: "
 msgstr "The text contains invalid Pango mark-up: "
 
@@ -7981,6 +7973,12 @@ msgid ""
 msgstr ""
 "The key '$deprecated_key' has been renamed to '$key'. Support for "
 "'$deprecated_key' will be removed in version $removal_version."
+
+#~ msgid "feature^Legacy bidirectional rendering"
+#~ msgstr "Legacy bidirectional rendering"
+
+#~ msgid "The maximum text width is less than 1."
+#~ msgstr "The maximum text width is less than 1."
 
 #~ msgid "Open Preferences Screen"
 #~ msgstr "Open Preferences Screen"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-03-12 20:18-0300\n"
+"POT-Creation-Date: 2021-03-20 22:03-0300\n"
 "PO-Revision-Date: 2020-03-10 12:52+0100\n"
 "Last-Translator: Alex Alowersson <alexalowersson@gmail.com>\n"
 "Language-Team: Swedish\n"
@@ -2202,7 +2202,7 @@ msgstr ""
 msgid " (Press '$hotkey' for more information)"
 msgstr " (Tryck på '$hotkey' för mer information)"
 
-#: data/gui/macros/_initial.cfg:336
+#: data/gui/macros/_initial.cfg:352
 msgid "Search"
 msgstr "Sök"
 
@@ -5683,27 +5683,23 @@ msgstr "Fel"
 msgid "Details:"
 msgstr "Detaljer:"
 
-#: src/build_info.cpp:277
+#: src/build_info.cpp:262
 msgid "feature^Lua console completion"
 msgstr "Komplettering i Lua-konsol"
 
-#: src/build_info.cpp:282
-msgid "feature^Legacy bidirectional rendering"
-msgstr "Äldre rendering av två riktningar"
-
-#: src/build_info.cpp:289
+#: src/build_info.cpp:269
 msgid "feature^D-Bus notifications back end"
 msgstr "D-Bus-aviseringar backend"
 
-#: src/build_info.cpp:298
+#: src/build_info.cpp:278
 msgid "feature^Win32 notifications back end"
 msgstr "Win32-aviseringar backend"
 
-#: src/build_info.cpp:304
+#: src/build_info.cpp:284
 msgid "feature^Cocoa notifications back end"
 msgstr "Cocoa-aviseringar backend"
 
-#: src/build_info.cpp:342 src/desktop/version.cpp:113
+#: src/build_info.cpp:322 src/desktop/version.cpp:113
 msgid "cpu_architecture^<unknown>"
 msgstr ""
 
@@ -5775,11 +5771,7 @@ msgstr ""
 msgid "language code for localized resources^en_US"
 msgstr "sv,da,no"
 
-#: src/font/marked-up_text.cpp:402
-msgid "The maximum text width is less than 1."
-msgstr "Maximal textbredd är mindre än 1."
-
-#: src/font/text.cpp:782
+#: src/font/text.cpp:815
 msgid "The text contains invalid Pango markup: "
 msgstr "Texten innehåller ogiltiga Pango-taggar: "
 
@@ -8125,6 +8117,12 @@ msgid ""
 msgstr ""
 "Nyckeln '$deprecated_key' har döpts om till '$key'. Stödet för "
 "'$deprecated_key' försvinner i och med version $removal_version."
+
+#~ msgid "feature^Legacy bidirectional rendering"
+#~ msgstr "Äldre rendering av två riktningar"
+
+#~ msgid "The maximum text width is less than 1."
+#~ msgstr "Maximal textbredd är mindre än 1."
 
 #, fuzzy
 #~| msgid "Preferences"
