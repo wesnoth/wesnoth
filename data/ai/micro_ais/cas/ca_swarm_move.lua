@@ -4,7 +4,10 @@ local M = wesnoth.map
 local ca_swarm_move = {}
 
 function ca_swarm_move:evaluation(cfg)
-    local units = wesnoth.units.find_on_map { side = wesnoth.current.side }
+    local units = wesnoth.units.find_on_map {
+        side = wesnoth.current.side,
+        { "and" , wml.get_child(cfg, "filter") }
+    }
     for _,unit in ipairs(units) do
         if (unit.moves > 0) then return cfg.ca_score end
     end
@@ -17,7 +20,11 @@ function ca_swarm_move:execution(cfg)
     local vision_distance = cfg.vision_distance or 12
 
     -- If no close enemies, swarm will move semi-randomly, staying close together, but away from enemies
-    local all_units = wesnoth.units.find_on_map { side = wesnoth.current.side }
+    local all_units = wesnoth.units.find_on_map {
+        side = wesnoth.current.side,
+        { "and" , wml.get_child(cfg, "filter") }
+    }
+
     local units, units_no_moves = {}, {}
     for _,unit in ipairs(all_units) do
         if (unit.moves > 0) then

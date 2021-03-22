@@ -146,7 +146,7 @@ function wesnoth.micro_ais.forest_animals(cfg)
 end
 
 function wesnoth.micro_ais.swarm(cfg)
-	local optional_keys = { "[avoid]", "scatter_distance", "vision_distance", "enemy_distance" }
+	local optional_keys = { "[avoid]", "[filter]", "scatter_distance", "vision_distance", "enemy_distance" }
 	local score = cfg.ca_score or 300000
 	local CA_parms = {
 		ai_id = 'mai_swarm',

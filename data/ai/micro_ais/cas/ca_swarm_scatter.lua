@@ -12,7 +12,10 @@ local function get_enemies(cfg)
 end
 
 local function get_swarm_units(cfg)
-    return AH.get_units_with_moves { side = wesnoth.current.side }
+    return AH.get_units_with_moves {
+        side = wesnoth.current.side,
+        { "and" , wml.get_child(cfg, "filter") }
+    }
 end
 
 local ca_swarm_scatter = {}
