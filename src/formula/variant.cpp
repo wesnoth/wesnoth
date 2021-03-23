@@ -279,7 +279,9 @@ std::size_t variant::num_elements() const
 variant variant::get_member(const std::string& name) const
 {
 	if(is_callable()) {
-		return value_cast<variant_callable>()->get_callable()->query_value(name);
+		if(auto obj = value_cast<variant_callable>()->get_callable()) {
+			return obj->query_value(name);
+		}
 	}
 
 	if(name == "self") {
