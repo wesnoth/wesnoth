@@ -14,6 +14,7 @@
 
 #include "game_version.hpp"
 
+#include "utils/math.hpp"
 #include "lexical_cast.hpp"
 #include "serialization/string_utils.hpp"
 #include "wesconfig.h"
@@ -167,6 +168,10 @@ unsigned int version_info::revision_level() const {
 
 bool version_info::is_canonical() const {
 	return nums_.size() <= 3;
+}
+
+bool version_info::is_dev_version() const {
+	return is_canonical() && is_odd(minor_version());
 }
 
 namespace {

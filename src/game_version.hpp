@@ -60,6 +60,11 @@ public:
 	bool is_canonical() const;
 
 	/**
+	 * Whether this version represents a development version of Wesnoth aka whether the minor version odd.
+	 */
+	bool is_dev_version() const;
+
+	/**
 	 * Serializes the version number into string form.
 	 *
 	 * The result is in the format <tt>x1.x2.x3[.x4[.x5[...]]]</tt>, followed
