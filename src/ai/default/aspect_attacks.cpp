@@ -168,11 +168,11 @@ void aspect_attacks_base::do_attack_analysis(const map_location& loc,
 		bool backstab = false, slow = false;
 		for(const attack_type& a : unit_itor->attacks()) {
 			// For speed, just assume these specials will be active if they are present.
-			if(a.get_special_bool("backstab", true)) {
+			if(a.has_special("backstab", true)) {
 				backstab = true;
 			}
 
-			if(a.get_special_bool("slow", true)) {
+			if(a.has_special("slow", true)) {
 				slow = true;
 			}
 		}

@@ -693,7 +693,7 @@ namespace {
  * active in the current context (see set_specials_context), including
  * specials obtained from the opponent's attack.
  */
-bool attack_type::get_special_bool(const std::string& special, bool simple_check, bool special_id, bool special_tags) const
+bool attack_type::has_special(const std::string& special, bool simple_check, bool special_id, bool special_tags) const
 {
 	{
 		std::vector<special_match> special_tag_matches;
@@ -1261,7 +1261,7 @@ bool attack_type::check_adj_abilities_impl(const_attack_ptr self_attack, const_a
  * active in the current context (see set_specials_context), including
  * specials obtained from the opponent's attack.
  */
-bool attack_type::get_weapon_ability_bool(const std::string& special, bool special_id, bool special_tags) const
+bool attack_type::has_weapon_ability(const std::string& special, bool special_id, bool special_tags) const
 {
 	assert(display::get_singleton());
 	const unit_map& units = display::get_singleton()->get_units();
@@ -1359,9 +1359,9 @@ bool attack_type::get_weapon_ability_bool(const std::string& special, bool speci
 	return false;
 }
 
-bool attack_type::get_special_and_abilities_bool(const std::string& special, bool special_id, bool special_tags) const
+bool attack_type::has_special_and_abilities(const std::string& special, bool special_id, bool special_tags) const
 {
-	return (get_special_bool(special, false, special_id, special_tags) || get_weapon_ability_bool(special, special_id, special_tags));
+	return (has_special(special, false, special_id, special_tags) || has_weapon_ability(special, special_id, special_tags));
 }
 //end of emulate weapon special functions.
 
@@ -1456,7 +1456,7 @@ bool attack_type::special_active_impl(const_attack_ptr self_attack, const_attack
 		return false;
 	}
 	if (tag_name == "firststrike" && !is_attacker && other_attack &&
-		other_attack->get_special_and_abilities_bool("firststrike")) {
+		other_attack->has_special_and_abilities("firststrike")) {
 		return false;
 	}
 

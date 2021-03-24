@@ -78,7 +78,7 @@ public:
 	 * @param special_id If true, match @a special against the @c id of special tags.
 	 * @param special_tags If true, match @a special against the tag name of special tags.
 	 */
-	bool get_special_bool(const std::string& special, bool simple_check=false, bool special_id=true, bool special_tags=true) const;
+	bool has_special(const std::string& special, bool simple_check=false, bool special_id=true, bool special_tags=true) const;
 	unit_ability_list get_specials(const std::string& special) const;
 	std::vector<std::pair<t_string, t_string>> special_tooltips(boost::dynamic_bitset<>* active_list = nullptr) const;
 	std::string weapon_specials(bool only_active=false, bool is_backstab=false) const;
@@ -98,14 +98,14 @@ public:
 	 * @param special_id If true, match @a special against the @c id of special tags.
 	 * @param special_tags If true, match @a special against the tag name of special tags.
 	 */
-	bool get_weapon_ability_bool(const std::string& special, bool special_id=true, bool special_tags=true) const;
+	bool has_weapon_ability(const std::string& special, bool special_id=true, bool special_tags=true) const;
 	/** used for abilities used like weapon and true specials
 	 * @return True if the ability @a special is active.
 	 * @param special The special being checked.
 	 * @param special_id If true, match @a special against the @c id of special tags.
 	 * @param special_tags If true, match @a special against the tag name of special tags.
 	 */
-	bool get_special_and_abilities_bool(const std::string& special, bool special_id=true, bool special_tags=true) const;
+	bool has_special_and_abilities(const std::string& special, bool special_id=true, bool special_tags=true) const;
 
 	// In unit_types.cpp:
 
