@@ -143,14 +143,14 @@ battle_context_unit_stats::battle_context_unit_stats(nonempty_unit_const_ptr up,
 		opp_ctx.emplace(opp_weapon->specials_context(oppp, up, opp_loc, u_loc, !attacking, weapon));
 	}
 
-	slows = weapon->has_special_and_abilities("slow");
-	drains = !opp.get_state("undrainable") && weapon->has_special_and_abilities("drains");
-	petrifies = weapon->has_special_and_abilities("petrifies");
-	poisons = !opp.get_state("unpoisonable") && weapon->has_special_and_abilities("poison") && !opp.get_state(unit::STATE_POISONED);
+	slows = weapon->has_special_or_abilities("slow");
+	drains = !opp.get_state("undrainable") && weapon->has_special_or_abilities("drains");
+	petrifies = weapon->has_special_or_abilities("petrifies");
+	poisons = !opp.get_state("unpoisonable") && weapon->has_special_or_abilities("poison") && !opp.get_state(unit::STATE_POISONED);
 	backstab_pos = is_attacker && backstab_check(u_loc, opp_loc, units, resources::gameboard->teams());
 	rounds = weapon->get_specials_and_abilities("berserk").highest("value", 1).first;
 
-	firststrike = weapon->has_special_and_abilities("firststrike");
+	firststrike = weapon->has_special_or_abilities("firststrike");
 
 	{
 		const int distance = distance_between(u_loc, opp_loc);
