@@ -58,7 +58,7 @@ function set_terrain_impl(data)
 		local d = data[i]
 		local chance = d.per_thousand
 		local terrains = d.terrain
-		local layer = d.layer
+		local layer = d.layer or 'both'
 		local num_tiles = d.nlocs and math.min(#locs[i], d.nlocs) or #locs[i]
 		if d.exact then
 			num_tiles = math.ceil(num_tiles * chance / 1000)
