@@ -18,6 +18,7 @@
 #include "log.hpp"
 #include "preferences/general.hpp"
 #include "game_version.hpp"
+#include "utils/math.hpp"
 
 // Set the default severity with the second parameter.
 // -1 means the default is to never log on this domain.
@@ -79,7 +80,8 @@ std::string deprecated_message(
 		const lg::logger& out_log = *log_ptr;
 		FORCE_LOG_TO(out_log, log_deprecate) << message << '\n';
 
-		if(preferences::get("show_deprecation", false)) {
+		// show deprecation warnings if enabled or if this is a development (odd numbered) release
+		if(preferences::get("show_deprecation", false) || is_odd(game_config::wesnoth_version.minor_version())) {
 			lg::wml_error() << message << '\n';
 		}
 	}
