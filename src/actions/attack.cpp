@@ -143,19 +143,19 @@ battle_context_unit_stats::battle_context_unit_stats(nonempty_unit_const_ptr up,
 		opp_ctx.emplace(opp_weapon->specials_context(oppp, up, opp_loc, u_loc, !attacking, weapon));
 	}
 
-	slows = weapon->get_special_and_abilities_bool("slow");
-	drains = !opp.get_state("undrainable") && weapon->get_special_and_abilities_bool("drains");
-	petrifies = weapon->get_special_and_abilities_bool("petrifies");
-	poisons = !opp.get_state("unpoisonable") && weapon->get_special_and_abilities_bool("poison") && !opp.get_state(unit::STATE_POISONED);
+	slows = weapon->has_special_and_abilities("slow");
+	drains = !opp.get_state("undrainable") && weapon->has_special_and_abilities("drains");
+	petrifies = weapon->has_special_and_abilities("petrifies");
+	poisons = !opp.get_state("unpoisonable") && weapon->has_special_and_abilities("poison") && !opp.get_state(unit::STATE_POISONED);
 	backstab_pos = is_attacker && backstab_check(u_loc, opp_loc, units, resources::gameboard->teams());
 	rounds = weapon->get_specials_and_abilities("berserk").highest("value", 1).first;
 
-	firststrike = weapon->get_special_and_abilities_bool("firststrike");
+	firststrike = weapon->has_special_and_abilities("firststrike");
 
 	{
 		const int distance = distance_between(u_loc, opp_loc);
 		const bool out_of_range = distance > weapon->max_range() || distance < weapon->min_range();
-		disable = weapon->get_special_bool("disable") || out_of_range;
+		disable = weapon->has_special("disable") || out_of_range;
 	}
 
 	// Handle plague.
@@ -305,13 +305,13 @@ battle_context_unit_stats::battle_context_unit_stats(const unit_type* u_type,
 		opp_ctx.emplace(opp_weapon->specials_context(*opp_type, map_location::null_location(), !attacking));
 	}
 
-	slows = weapon->get_special_bool("slow");
-	drains = !opp_type->musthave_status("undrainable") && weapon->get_special_bool("drains");
-	petrifies = weapon->get_special_bool("petrifies");
-	poisons = !opp_type->musthave_status("unpoisonable") && weapon->get_special_bool("poison");
+	slows = weapon->has_special("slow");
+	drains = !opp_type->musthave_status("undrainable") && weapon->has_special("drains");
+	petrifies = weapon->has_special("petrifies");
+	poisons = !opp_type->musthave_status("unpoisonable") && weapon->has_special("poison");
 	rounds = weapon->get_specials("berserk").highest("value", 1).first;
-	firststrike = weapon->get_special_bool("firststrike");
-	disable = weapon->get_special_bool("disable");
+	firststrike = weapon->has_special("firststrike");
+	disable = weapon->has_special("disable");
 
 	unit_ability_list plague_specials = weapon->get_specials("plague");
 	plagues = !opp_type->musthave_status("unplagueable") && !plague_specials.empty() &&

@@ -142,7 +142,7 @@ static bool matches_simple_filter(const attack_type & attack, const config & fil
 		deprecated_message("special=", DEP_LEVEL::PREEMPTIVE, {1, 17, 0}, "Please use special_id or special_type instead");
 		bool found = false;
 		for(auto& special : filter_special) {
-			if(attack.get_special_bool(special, true)) {
+			if(attack.has_special(special, true)) {
 				found = true;
 				break;
 			}
@@ -154,7 +154,7 @@ static bool matches_simple_filter(const attack_type & attack, const config & fil
 	if(!filter_special_id.empty()) {
 		bool found = false;
 		for(auto& special : filter_special_id) {
-			if(attack.get_special_bool(special, true, true, false)) {
+			if(attack.has_special(special, true, true, false)) {
 				found = true;
 				break;
 			}
@@ -168,7 +168,7 @@ static bool matches_simple_filter(const attack_type & attack, const config & fil
 		deprecated_message("special_active=", DEP_LEVEL::PREEMPTIVE, {1, 17, 0}, "Please use special_id_active or special_type_active instead");
 		bool found = false;
 		for(auto& special : filter_special_active) {
-			if(attack.get_special_bool(special, false)) {
+			if(attack.has_special(special, false)) {
 				found = true;
 				break;
 			}
@@ -180,7 +180,7 @@ static bool matches_simple_filter(const attack_type & attack, const config & fil
 	if(!filter_special_id_active.empty()) {
 		bool found = false;
 		for(auto& special : filter_special_id_active) {
-			if(attack.get_special_and_abilities_bool(special, true, false)) {
+			if(attack.has_special_and_abilities(special, true, false)) {
 				found = true;
 				break;
 			}
@@ -192,7 +192,7 @@ static bool matches_simple_filter(const attack_type & attack, const config & fil
 	if(!filter_special_type.empty()) {
 		bool found = false;
 		for(auto& special : filter_special_type) {
-			if(attack.get_special_bool(special, true, false)) {
+			if(attack.has_special(special, true, false)) {
 				found = true;
 				break;
 			}
@@ -204,7 +204,7 @@ static bool matches_simple_filter(const attack_type & attack, const config & fil
 	if(!filter_special_type_active.empty()) {
 		bool found = false;
 		for(auto& special : filter_special_type_active) {
-			if(attack.get_special_and_abilities_bool(special, false)) {
+			if(attack.has_special_and_abilities(special, false)) {
 				found = true;
 				break;
 			}
