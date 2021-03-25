@@ -1359,7 +1359,7 @@ bool attack_type::has_weapon_ability(const std::string& special, bool special_id
 	return false;
 }
 
-bool attack_type::has_special_or_abilities(const std::string& special, bool special_id, bool special_tags) const
+bool attack_type::has_special_or_ability(const std::string& special, bool special_id, bool special_tags) const
 {
 	return (has_special(special, false, special_id, special_tags) || has_weapon_ability(special, special_id, special_tags));
 }
@@ -1456,7 +1456,7 @@ bool attack_type::special_active_impl(const_attack_ptr self_attack, const_attack
 		return false;
 	}
 	if (tag_name == "firststrike" && !is_attacker && other_attack &&
-		other_attack->has_special_or_abilities("firststrike")) {
+		other_attack->has_special_or_ability("firststrike")) {
 		return false;
 	}
 

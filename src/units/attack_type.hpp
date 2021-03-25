@@ -105,7 +105,7 @@ public:
 	 * @param special_id If true, match @a special against the @c id of special tags.
 	 * @param special_tags If true, match @a special against the tag name of special tags.
 	 */
-	bool has_special_or_abilities(const std::string& special, bool special_id=true, bool special_tags=true) const;
+	bool has_special_or_ability(const std::string& special, bool special_id=true, bool special_tags=true) const;
 
 	// In unit_types.cpp:
 
