@@ -16,6 +16,7 @@
    * Minor adjustments to the sidebar's minimap area in the default game theme to reclaim empty and uneven space back. Note that this WILL break custom WML themes that use the same sidebar graphics as the default theme.
  ### WML Engine
  ### Miscellaneous and Bug Fixes
+   * Fixed units with max movement set to zero being given one max movement point by `[unstore_unit]` or when loading a saved game
 
 ## Version 1.15.11
  ### AI

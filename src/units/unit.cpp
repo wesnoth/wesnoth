@@ -514,7 +514,7 @@ void unit::init(const config& cfg, bool use_traits, const vconfig* vcfg)
 		set_max_hitpoints(std::max(1, v->to_int(max_hit_points_)));
 	}
 	if(const config::attribute_value* v = cfg.get("max_moves")) {
-		set_total_movement(std::max(1, v->to_int(max_movement_)));
+		set_total_movement(std::max(0, v->to_int(max_movement_)));
 	}
 	if(const config::attribute_value* v = cfg.get("max_experience")) {
 		set_max_experience(std::max(1, v->to_int(max_experience_)));
