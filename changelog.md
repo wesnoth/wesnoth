@@ -13,6 +13,7 @@
  ### User interface
  ### WML Engine
  ### Miscellaneous and Bug Fixes
+   * Fixed units with max movement set to zero being given one max movement point by `[unstore_unit]` or when loading a saved game
 
 ## Version 1.15.11
  ### AI
