@@ -1155,6 +1155,17 @@ unit_ability_list attack_type::list_ability(const std::string& ability) const
 		}
 	}
 	abil_list.append(abil_other_list);
+	unit_ability_list temp_list = abil_list;
+	for(unit_ability_list::iterator i = temp_list.begin(); i != temp_list.end();) {
+		if(!(*i->ability_cfg)["overwrite_specials"].to_bool()) {
+			i = temp_list.erase(i);
+		} else {
+			++i;
+		}
+	}
+	if(!temp_list.empty()){
+		abil_list = temp_list;
+	}
 	return abil_list;
 }
 
