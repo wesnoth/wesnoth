@@ -766,8 +766,48 @@ function wml_actions.redraw(cfg)
 	wesnoth.redraw(cfg, clear_shroud)
 end
 
+local wml_floating_label = {valid = false}
 function wml_actions.print(cfg)
-	wesnoth.print(cfg)
+	wesnoth.deprecated_message('[print]', 1, nil, 'use [floating_label] instead')
+	if wml_floating_label.valid then
+		wml_floating_label:remove()
+	end
+	local label_text = {cfg.text}
+	if cfg.size then
+		table.insert(label_text, cfg.size)
+	end
+	if cfg.color then
+		table.insert(label_text, stringx.split(cfg.color))
+	elseif cfg.red or cfg.green or cfg.blue then
+		table.insert(label_text, {cfg.red or 0, cfg.green or 0, cfg.blue or 0})
+	end
+
+	wml_floating_label = wesnoth.interface.add_floating_label(label_text, cfg.duration or 50)
+end
+
+function wml_actions.floating_label(cfg)
+	local label_text, lifetime = {cfg.text}, {}
+	if wml_floating_label.valid then
+		wml_floating_label:remove()
+	end
+	if cfg.size then
+		table.insert(label_text, cfg.size)
+	end
+	if cfg.color then
+		table.insert(label_text, stringx.split(cfg.color))
+	end
+	local offset = nil
+	if cfg.x_offset or cfg.y_offset then
+		offset = {cfg.x_offset or 0, cfg.y_offset or 0}
+	end
+	if cfg.duration then
+		lifetime.duration = cfg.duration
+	end
+	if cfg.fade_time then
+		lifetime.fade_time = cfg.fade_time
+	end
+
+	wml_floating_label = wesnoth.interface.add_floating_label(label_text, lifetime, offset)
 end
 
 function wml_actions.unsynced(cfg)
