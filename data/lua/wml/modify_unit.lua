@@ -25,7 +25,7 @@ local known_attributes = make_set {
 	"side",
 	"name",
 	"role",
-	"facing",
+	-- "facing" is not simple, it needs the C++ to trigger animations
 	"attacks_left",
 	"hitpoints",
 	"max_hitpoints",
@@ -91,7 +91,6 @@ local function simple_modify_unit(cfg)
 		"side",
 		"name",
 		"role",
-		"facing",
 		"attacks_left",
 		"hitpoints",
 		"max_hitpoints",
