@@ -74,6 +74,9 @@ game_version::game_version()
 	path_map_["saves"] = filesystem::get_saves_dir();
 	path_map_["addons"] = filesystem::get_addons_dir();
 	path_map_["cache"] = filesystem::get_cache_dir();
+#ifdef _WIN32
+	path_map_["logs"] = filesystem::get_logs_dir();
+#endif
 
 	for(unsigned k = 0; k < game_config::LIB_COUNT; ++k) {
 		const game_config::LIBRARY_ID lib = game_config::LIBRARY_ID(k);
@@ -155,9 +158,9 @@ void game_version::pre_show(window& window)
 	}
 
 #ifndef _WIN32
-	grid& w32_options_grid
-			= find_widget<grid>(&window, "win32_paths", false);
-	w32_options_grid.set_visible(widget::visibility::invisible);
+	for(const auto& wid : {"win32_paths", "label_logs", "path_logs", "copy_logs", "browse_logs"}) {
+		find_widget<widget>(&window, wid, false).set_visible(widget::visibility::invisible);
+	}
 #else
 	button& stderr_button
 			= find_widget<button>(&window, "open_stderr", false);

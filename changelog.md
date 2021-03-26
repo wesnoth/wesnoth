@@ -11,6 +11,7 @@
  ### Translations
  ### Units
  ### User interface
+   * Added logs folder path to the Game Version dialog on Windows.
  ### WML Engine
  ### Miscellaneous and Bug Fixes
 

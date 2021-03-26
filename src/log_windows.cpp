@@ -42,6 +42,16 @@ static lg::log_domain log_setup("logsetup");
 #define LOG_LS LOG_STREAM(info,  log_setup)
 #define DBG_LS LOG_STREAM(debug, log_setup)
 
+namespace filesystem
+{
+
+std::string get_logs_dir()
+{
+	return filesystem::get_user_data_dir() + "/logs";
+}
+
+}
+
 namespace lg
 {
 
@@ -514,7 +524,7 @@ void finish_log_file_setup()
 		return;
 	}
 
-	const std::string log_dir = filesystem::get_user_data_dir() + "/logs";
+	const std::string log_dir = filesystem::get_logs_dir();
 	if(!filesystem::file_exists(log_dir) && !filesystem::make_directory(log_dir)) {
 		log_init_panic(std::string("Could not create logs directory at ") +
 					   log_dir + ".");
