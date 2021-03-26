@@ -1124,8 +1124,8 @@ unit_ability_list attack_type::list_ability(const std::string& ability) const
 	}
 
 	if(other_) {
-        abil_other_list.append((*other_).get_abilities(ability, other_loc_));
-        for(unit_ability_list::iterator i = abil_other_list.begin(); i != abil_other_list.end();) {
+		abil_other_list.append((*other_).get_abilities(ability, other_loc_));
+		for(unit_ability_list::iterator i = abil_other_list.begin(); i != abil_other_list.end();) {
 			if(!special_active_impl(other_attack_, shared_from_this(), *i->ability_cfg, AFFECT_OTHER, ability, true, "filter_student")) {
 				i = abil_other_list.erase(i);
 			} else {
