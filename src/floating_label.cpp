@@ -48,7 +48,7 @@ floating_label::floating_label(const std::string& text, const surface& surf)
 	, buf_(nullptr)
 	, buf_pos_()
 #endif
-	, fadeout_(true)
+	, fadeout_(0)
 	, time_start_(0)
 	, text_(text)
 	, font_size_(SIZE_SMALL)
@@ -194,9 +194,10 @@ void floating_label::draw(int time, surface screen)
 	sdl_blit(get_surface(time), nullptr, screen, &rect);
 }
 
-void floating_label::set_lifetime(int lifetime)
+void floating_label::set_lifetime(int lifetime, int fadeout)
 {
 	lifetime_ = lifetime;
+	fadeout_ = fadeout;
 	time_start_	= SDL_GetTicks();
 }
 
@@ -212,11 +213,13 @@ SDL_Point floating_label::get_loc(int time)
 
 surface floating_label::get_surface(int time)
 {
-	if(fadeout_ && lifetime_ >= 0 && surf_ != nullptr) {
-		// fade out moving floating labels
+	if(lifetime_ >= 0 && fadeout_ > 0) {
 		int time_alive = get_time_alive(time);
-		int alpha_add = -255 * time_alive / lifetime_;
-		return adjust_surface_alpha_add(surf_, alpha_add);
+		if(time_alive >= lifetime_ && surf_ != nullptr) {
+			// fade out moving floating labels
+			int alpha_add = -255 * (time_alive - lifetime_) / fadeout_;
+			return adjust_surface_alpha_add(surf_, alpha_add);
+		}
 	}
 	return surf_;
 }
@@ -261,10 +264,14 @@ void scroll_floating_labels(double xmove, double ymove)
 	}
 }
 
-void remove_floating_label(int handle)
+void remove_floating_label(int handle, int fadeout)
 {
 	const label_map::iterator i = labels.find(handle);
 	if(i != labels.end()) {
+		if(fadeout > 0) {
+			i->second.set_lifetime(0, fadeout);
+			return;
+		}
 		labels.erase(i);
 	}
 

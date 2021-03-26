@@ -52,7 +52,7 @@ public:
 		ymove_ = ymove;
 	}
 	// set the number of frames to display the text for, or -1 to display until removed
-	void set_lifetime(int lifetime);
+	void set_lifetime(int lifetime, int fadeout = 100);
 	void set_color(const color_t& color) {color_ = color;}
 	void set_bg_color(const color_t& bg_color) {
 		bgcolor_ = bg_color;
@@ -73,7 +73,7 @@ public:
 
 	surface create_surface();
 
-	bool expired(int time) const { return lifetime_ >= 0 && get_time_alive(time) > lifetime_; }
+	bool expired(int time) const { return lifetime_ >= 0 && get_time_alive(time) > lifetime_ + fadeout_; }
 
 	void show(const bool value) { visible_ = value; }
 
@@ -87,7 +87,7 @@ private:
 	surface get_surface(int time);
 	surface surf_, buf_;
 	SDL_Rect buf_pos_;
-	bool fadeout_;
+	int fadeout_;
 	int time_start_;
 	std::string text_;
 	int font_size_;
@@ -119,7 +119,8 @@ void move_floating_label(int handle, double xmove, double ymove);
 void scroll_floating_labels(double xmove, double ymove);
 
 /** removes the floating label given by 'handle' from the screen */
-void remove_floating_label(int handle);
+/** if fadeout is given, the label fades out over that duration */
+void remove_floating_label(int handle, int fadeout = 0);
 
 /** hides or shows a floating label */
 void show_floating_label(int handle, bool show);
