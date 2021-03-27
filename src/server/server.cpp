@@ -1050,6 +1050,10 @@ void server::read_from_player(socket_ptr socket)
 
 void server::handle_read_from_player(socket_ptr socket, std::shared_ptr<simple_wml::document> doc)
 {
+	if(player_connections_.find(socket) == player_connections_.end()) { //this could happen if this handler was pending when player was kicked by admin
+		return;
+	}
+
 	read_from_player(socket);
 
 	// DBG_SERVER << client_address(socket) << "\tWML received:\n" << doc->output() << std::endl;
