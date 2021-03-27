@@ -7,7 +7,7 @@ end
 
 function wesnoth.map.read_location(...)
 	local x, y = ...
-	if y == nil then
+	if y == nil or type(x) == 'table' or type(x) == 'userdata' then
 		if type(x.x) == 'number' and type(x.y) == 'number' then
 			x, y = x.x, x.y
 		elseif type(x[1]) == 'number' and type(x[2]) == 'number' then
@@ -16,7 +16,7 @@ function wesnoth.map.read_location(...)
 			return nil, 0
 		end
 		return {x = x, y = y}, 1
-	elseif type(x) == 'number' or type(y) == 'number' then
+	elseif type(x) == 'number' and type(y) == 'number' then
 		return {x = x, y = y}, 2
 	end
 	return nil, 0
@@ -180,11 +180,9 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 	hex_mt.__len = wesnoth.deprecate_api('#location', 'nil', 3, '1.17', function() return 2 end, 'Using the length of a location as a validity test is no longer supported. You should represent an invalid location by nil instead.')
 	
 	function wesnoth.map.get(x, y)
-		if not x or not y then error('Missing coordinate') end
-		if type(x) ~= 'number' or type(y) ~= 'number' then
-			error('Coordinate must be a number')
-		end
-		return setmetatable({x = x, y = y}, hex_mt)
+		local loc, n = wesnoth.map.read_location(x, y)
+		if n == 0 then error('Missing or invalid coordinate') end
+		return setmetatable(loc, hex_mt)
 	end
 	
 	local find_locations = wesnoth.map.find
