@@ -19,7 +19,6 @@ local ice = {
 --replaces terrain fo the wct  custom terrain mod.
 local function wct_map_custom_ruin_village(loc)
 	local map = wesnoth.current.map
-	loc = wesnoth.map.get(loc)
 	-- TODO: enable once https://github.com/wesnoth/wesnoth/issues/4894 is fixed.
 	if false then
 		if loc:matches{terrain = "*^Vh,*^Vha"} then
