@@ -170,7 +170,7 @@ std::map<std::string, std::string> parse_fdo_osrelease(const std::string& path)
 
 	std::map<std::string, std::string> res;
 
-	// FIXME: intentionally basic "parsing" here. We are not supposed to see
+	// NOTE:  intentionally basic "parsing" here. We are not supposed to see
 	//        more complex shell syntax anyway.
 	//        <https://www.freedesktop.org/software/systemd/man/os-release.html>
 	for(std::string s; std::getline(*in, s);) {
