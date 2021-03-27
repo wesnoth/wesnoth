@@ -50,7 +50,7 @@ button::button(CVideo& video, const std::string& label, button::TYPE type,
 	  spacing_(spacing), base_height_(0), base_width_(0),
 	  button_image_name_(), button_overlay_image_name_(overlay_image),
 	  button_image_path_suffix_(),
-	  font_size_(font_size <= 0 ? default_font_size : font_size),
+	  font_size_(font_size <= 0 ? (type != TYPE_CHECK && type != TYPE_RADIO ? default_font_size : font::SIZE_SMALL) : font_size),
 	  horizontal_padding_(font_size_),
 	  checkbox_horizontal_padding_(font_size_ / 2),
 	  vertical_padding_(font_size_ / 2)
