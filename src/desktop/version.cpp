@@ -34,7 +34,11 @@
 
 #elif defined(_X11)
 
+#include "serialization/string_utils.hpp"
+
 #include <cerrno>
+#include <map>
+#include <boost/algorithm/string/trim.hpp>
 
 #endif
 
@@ -156,6 +160,47 @@ std::string read_pipe_line(scoped_posix_pipe& p)
 
 	return ver;
 }
+
+std::map<std::string, std::string> parse_fdo_osrelease(const std::string& path)
+{
+	auto in = filesystem::istream_file(path);
+	if(!in->good()) {
+		return {};
+	}
+
+	std::map<std::string, std::string> res;
+
+	// FIXME: intentionally basic "parsing" here. We are not supposed to see
+	//        more complex shell syntax anyway.
+	//        <https://www.freedesktop.org/software/systemd/man/os-release.html>
+	for(std::string s; std::getline(*in, s);) {
+		if(s.empty() || s.front() == '#') {
+			continue;
+		}
+
+		auto eqsign_pos = s.find('=');
+		if(!eqsign_pos || eqsign_pos == std::string::npos) {
+			continue;
+		}
+
+		auto lhs = s.substr(0, eqsign_pos),
+			 rhs = eqsign_pos + 1 < s.length() ? utils::unescape(s.substr(eqsign_pos + 1)) : "";
+
+		boost::algorithm::trim(lhs);
+		boost::algorithm::trim(rhs);
+
+		// Unquote if the quotes match on both sides
+		if(rhs.length() >= 2 && rhs.front() == '"' && rhs.back() == '"') {
+			rhs.pop_back();
+			rhs.erase(0, 1);
+		}
+
+		res.emplace(std::move(lhs), std::move(rhs));
+	}
+
+	return res;
+}
+
 #endif
 
 } // end anonymous namespace
@@ -181,7 +226,32 @@ std::string os_version()
 #elif defined(_X11)
 
 	//
-	// Linux Standard Base version.
+	// systemd/freedesktop.org method.
+	//
+
+	std::map<std::string, std::string> osrel;
+
+	static const std::string fdo_osrel_etc = "/etc/os-release";
+	static const std::string fdo_osrel_usr = "/usr/lib/os-release";
+
+	if(filesystem::file_exists(fdo_osrel_etc)) {
+		osrel = parse_fdo_osrelease(fdo_osrel_etc);
+	} else if(filesystem::file_exists(fdo_osrel_usr)) {
+		osrel = parse_fdo_osrelease(fdo_osrel_usr);
+	}
+
+	// Check both existence and emptiness in case some vendor sets PRETTY_NAME=""
+	auto osrel_distname = osrel["PRETTY_NAME"];
+	if(osrel_distname.empty()) {
+		osrel_distname = osrel["NAME"];
+	}
+
+	if(!osrel_distname.empty()) {
+		return osrel_distname + " " + u.machine;
+	}
+
+	//
+	// Linux Standard Base fallback.
 	//
 
 	static const std::string lsb_release_bin = "/usr/bin/lsb_release";
