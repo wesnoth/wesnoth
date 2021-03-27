@@ -160,7 +160,6 @@ std::string read_pipe_line(scoped_posix_pipe& p)
 
 	return ver;
 }
-#endif
 
 std::map<std::string, std::string> parse_fdo_osrelease(const std::string& path)
 {
@@ -201,6 +200,8 @@ std::map<std::string, std::string> parse_fdo_osrelease(const std::string& path)
 
 	return res;
 }
+
+#endif
 
 } // end anonymous namespace
 
