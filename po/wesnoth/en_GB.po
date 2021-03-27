@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2021-03-20 22:02-0300\n"
-"PO-Revision-Date: 2021-03-17 11:35+1100\n"
+"PO-Revision-Date: 2021-03-23 09:20+1100\n"
 "Last-Translator: Wedge009 <wedge009@wedge009.net>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
 "EnglishGBTranslation>\n"
@@ -4354,10 +4354,8 @@ msgstr "The default theme"
 
 #. [menu]: id=menu-autosaves
 #: data/themes/default.cfg:92
-#, fuzzy
-#| msgid "Load Game..."
 msgid "Load Turn..."
-msgstr "Load Game..."
+msgstr "Load Turn..."
 
 #. [menu]: id=actions-menu
 #: data/themes/default.cfg:100
@@ -8146,6 +8144,20 @@ msgid ""
 "\n"
 "Do you wish to continue?"
 msgstr ""
+"This save is from a different version of the game ($version_number|), and "
+"might not work with this version.\n"
+"\n"
+"<b>Warning:</b> saves in the middle of campaigns are especially likely to "
+"fail, and you should either use the old version or restart the campaign. "
+"Even when a saved game appears to load successfully, more subtle aspects "
+"like game-play balance and story progression could be impacted. The "
+"difficulty, the challenge, the <i>fun</i> may be missing.\n"
+"\n"
+"For example, the campaign may have been re-balanced with fewer enemies in "
+"the early scenarios, but expecting your recall list to have correspondingly "
+"less experience in the late scenarios.\n"
+"\n"
+"Do you wish to continue?"
 
 #: src/savegame.cpp:274 src/savegame.cpp:320
 msgid "Load Game"
