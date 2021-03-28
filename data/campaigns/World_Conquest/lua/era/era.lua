@@ -115,13 +115,13 @@ local function add_known_hero_group(id, cfg)
 end
 
 local function add_known_spawn_filter(spawn_filter)
-	local types = stringx.map_split(spawn_filter.types)
+	local types = stringx.map_split(spawn_filter.types or "")
 	local filter_location = wml.get_child(spawn_filter, "filter_location") or helper.wml_error("missing [filter_location] in [hero_spawn_filter]")
 	table.insert(wc2_era.spawn_filters, { types = types, filter_location = filter_location} )
 end
 
 local function add_known_trait_extra(trait_extra)
-	local types = stringx.map_split(trait_extra.types)
+	local types = stringx.map_split(trait_extra.types or "")
 	local trait = wml.get_child(trait_extra, "trait") or helper.wml_error("missing [trait] in [trait_extra]")
 	table.insert(wc2_era.hero_traits, { types = types, trait = trait} )
 end
@@ -140,7 +140,7 @@ function wc2_era.create_random_faction(id)
 
 	deserters_set = stringx.map_split(wc2_era.standard_factions[i_deserters1].recruits .. ',' .. wc2_era.standard_factions[i_deserters2].recruits)
 	heroes_set = stringx.map_split(wc2_era.standard_factions[i_heroes1].recruits .. ',' .. wc2_era.standard_factions[i_heroes2].recruits)
-	commanders_set = stringx.map_split(wc2_era.standard_factions[i_commanders].recruits)
+	commanders_set = stringx.map_split(wc2_era.standard_factions[i_commanders].recruits or "")
 
 	local faction = {
 		id = "custom_random",
