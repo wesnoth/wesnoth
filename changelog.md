@@ -12,6 +12,8 @@
  ### Units
  ### User interface
    * Added logs folder path to the Game Version dialog on Windows.
+   * Made Accelerated Speed toggle announcement not stackable over itself or other announcements.
+   * Minor adjustments to the sidebar's minimap area in the default game theme to reclaim empty and uneven space back. Note that this WILL break custom WML themes that use the same sidebar graphics as the default theme.
  ### WML Engine
  ### Miscellaneous and Bug Fixes
 
