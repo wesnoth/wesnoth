@@ -23,7 +23,7 @@ local function get_advanced_units(level, list, res)
 end
 
 function enemy.pick_suitable_enemy_item(unit)
-	local enemy_items = stringx.split(wml.variables["wc2_enemy_army.artifacts"])
+	local enemy_items = stringx.split(wml.variables["wc2_enemy_army.artifacts"] or "")
 	if #enemy_items == 0 then
 		enemy_items = wc2_artifacts.fresh_artifacts_list("enemy")
 	end
@@ -166,7 +166,7 @@ function enemy.do_recall(cfg, group_id, loc)
 		local amount = wml.get_child(cfg, "recall")["level" .. level] or 0
 		local types =  stringx.split(wml.get_child(group, "recall")["level" .. level] or "")
 		if #types == 0 then
-			get_advanced_units(level, stringx.split(group.recruit), types)
+			get_advanced_units(level, stringx.split(group.recruit or ""), types)
 		end
 		for i = 1, amount do
 			table.insert(to_recall, types[wesnoth.random(#types)])

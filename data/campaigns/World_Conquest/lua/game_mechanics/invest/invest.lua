@@ -5,7 +5,7 @@ local wc2_invest = {}
 
 function wc2_invest.add_items(side_num, num_items)
 	local side = wesnoth.sides[side_num]
-	local items_left = stringx.split(side.variables["wc2.items_left"])
+	local items_left = stringx.split(side.variables["wc2.items_left"] or "")
 	local items_available = stringx.split(side.variables["wc2.items"] or "")
 	for j = 1, num_items do
 		local i = wesnoth.random(#items_left)
@@ -71,7 +71,7 @@ function wc2_invest.do_hero(t, is_local)
 	local leaders = wesnoth.units.find_on_map { side = side_num, canrecruit = true }
 	local x,y = leaders[1].x, leaders[1].y
 	if t == "wc2_commander" then
-		local commanders = stringx.split(side.variables["wc2.commanders"])
+		local commanders = stringx.split(side.variables["wc2.commanders"] or "")
 		local i = wesnoth.random(#commanders)
 		t = commanders[i]
 		table.remove(commanders, i)
@@ -84,7 +84,7 @@ function wc2_invest.do_hero(t, is_local)
 
 		wesnoth.sides[side_num].gold = wesnoth.sides[side_num].gold + 15
 
-		local deserters = stringx.split(side.variables["wc2.deserters"])
+		local deserters = stringx.split(side.variables["wc2.deserters"] or "")
 		local i = wesnoth.random(#deserters)
 		t = deserters[i]
 		table.remove(deserters, i)
@@ -94,7 +94,7 @@ function wc2_invest.do_hero(t, is_local)
 		end
 		wc2_heroes.place(t, side_num, x, y, false)
 	else
-		local heroes_available = stringx.split(side.variables["wc2.heroes"])
+		local heroes_available = stringx.split(side.variables["wc2.heroes"] or "")
 		local i = find_index(heroes_available, t)
 		if i == nil then
 			error("wc2 invest: invalid pick")
@@ -117,7 +117,7 @@ function wc2_invest.do_item(t)
 	local leaders = wesnoth.units.find_on_map { side = side_num, canrecruit = true }
 	local x,y = leaders[1].x, leaders[1].y
 	
-	local items_available = stringx.split(side.variables["wc2.items"])
+	local items_available = stringx.split(side.variables["wc2.items"] or "")
 	local i = find_index(items_available, tostring(t))
 	if i == nil then
 		error("wc2 invest: invalid item pick '" .. t .. "' (" .. type(t) ..")")
@@ -131,10 +131,10 @@ end
 function wc2_invest.invest()
 	local side_num = wesnoth.current.side
 	local side = wesnoth.sides[side_num]
-	local items_available = stringx.split(side.variables["wc2.items"])
-	local heroes_available = stringx.split(side.variables["wc2.heroes"])
-	local commanders_available = stringx.split(side.variables["wc2.commanders"])
-	local deserters_available = stringx.split(side.variables["wc2.deserters"])
+	local items_available = stringx.split(side.variables["wc2.items"] or "")
+	local heroes_available = stringx.split(side.variables["wc2.heroes"] or "")
+	local commanders_available = stringx.split(side.variables["wc2.commanders"] or "")
+	local deserters_available = stringx.split(side.variables["wc2.deserters"] or "")
 	local trainings_available = wc2_training.list_available(side_num, {2,3,4,5,6})
 	local gold_available = true
 	for i =1,2 do

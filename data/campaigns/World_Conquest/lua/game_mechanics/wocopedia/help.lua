@@ -137,7 +137,7 @@ function wesnoth.wml_actions.wc2_show_wocopedia(cfg)
 				}
 
 				for p_wml in wml.child_range(faction_info, "pair") do
-					local p = stringx.split(p_wml.types)
+					local p = stringx.split(p_wml.types or "")
 					local ut1 = wesnoth.unit_types[p[1]] or error("invald unit type" .. tostring(p[1]))
 					local ut2 = wesnoth.unit_types[p[2]] or error("invald unit type" .. tostring(p[2]))
 
@@ -155,7 +155,7 @@ function wesnoth.wml_actions.wc2_show_wocopedia(cfg)
 
 				if faction_wml then
 					local random_leaders = {}
-					for i,v in ipairs(stringx.split(faction_wml.random_leader)) do
+					for i,v in ipairs(stringx.split(faction_wml.random_leader or "")) do
 						table.insert(random_leaders, wesnoth.unit_types[v].name)
 					end
 					random_leaders = wesnoth.format_conjunct_list("", random_leaders)

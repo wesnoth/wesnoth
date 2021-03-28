@@ -27,7 +27,7 @@ on_event("recruit", function(ctx)
 	local unittype = unit.type
 
 	for i,v in ipairs(wml.array_access.get("wc2.pair", side)) do
-		local p = stringx.split(v.types)
+		local p = stringx.split(v.types or "")
 		if p[1] == unittype and p[2] ~= nil then
 			wesnoth.wml_actions.disallow_recruit {
 				side = side_num,
@@ -73,7 +73,7 @@ local function init_side(side_num)
 		local i = 0
 		for v in wml.child_range(faction, "pair") do
 			i = i + 1
-			local p = stringx.split(v.types)
+			local p = stringx.split(v.types or "")
 			if wesnoth.random(1,2) == 2 then
 				p[1],p[2] = p[2],p[1]
 			end
@@ -226,7 +226,7 @@ end
 -- picks a deserter for the side @a side_num using the list of posibel deserters for that sides faction.
 function wc2_era.pick_deserter(side_num)
 	local side_variables = wesnoth.sides[side_num].variables
-	local deserters = stringx.split(side_variables["wc2.deserters"])
+	local deserters = stringx.split(side_variables["wc2.deserters"] or "")
 	if #deserters == 0 then
 		return nil
 	end
@@ -242,7 +242,7 @@ end
 -- @a types_str a comma seperated list of unti types and group ids.
 -- @returns an array of unit types.
 function wc2_era.expand_hero_types(types_str)
-	local types = stringx.split(types_str)
+	local types = stringx.split(types_str or "")
 	local types_new = {}
 	local types_res = {}
 	while #types > 0 do
@@ -251,7 +251,7 @@ function wc2_era.expand_hero_types(types_str)
 				table.insert(types_res, v)
 			elseif wc2_era.hero_types[v] then
 				local group =  wc2_era.hero_types[v]
-				local these_types = stringx.split(group.types)
+				local these_types = stringx.split(group.types or "")
 				for j,type in ipairs(these_types) do
 					table.insert(types_new, type)
 				end
@@ -270,7 +270,7 @@ end
 -- @a types_str a comma seperated list of unti types and group ids.
 -- @returns an array of unit type names.
 function wc2_era.expand_hero_names(types_str, only_unitnames)
-	local types = stringx.split(types_str)
+	local types = stringx.split(types_str or "")
 	local types_new = {}
 	local names_res = {}
 	while #types > 0 do
@@ -283,7 +283,7 @@ function wc2_era.expand_hero_names(types_str, only_unitnames)
 				if group.name and not only_unitnames then
 					table.insert(names_res, group.name)
 				else
-					local these_types = stringx.split(group.types)
+					local these_types = stringx.split(group.types or "")
 					for j,type in ipairs(these_types) do
 						table.insert(types_new, type)
 					end
@@ -330,7 +330,7 @@ function wesnoth.wml_actions.wc2_recruit_info(cfg)
 	}
 
 	for i,v in ipairs(wml.array_access.get("wc2.pair", side_num)) do
-		local p = stringx.split(v.types)
+		local p = stringx.split(v.types or "")
 		local ut1 = wesnoth.unit_types[p[1]]
 		local ut2 = wesnoth.unit_types[p[2]]
 		local img = "misc/blank.png~SCALE(144,72)" ..

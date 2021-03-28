@@ -152,7 +152,7 @@ function wct_bonus_chose_scenery(loc, theme, filter_extra)
 		}
 	}
 	for i,v in ipairs(terrain_to_scenery) do
-		for j,str in ipairs(stringx.split(v.terrain)) do
+		for j,str in ipairs(stringx.split(v.terrain or "")) do
 			if str == terrain then
 				scenery = v.scenery
 				goto intial_list_screated
