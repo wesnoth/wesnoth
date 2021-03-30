@@ -32,6 +32,8 @@
 #include <fstream>
 #include <iomanip>
 
+#include "lua/lua.h"
+
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 #include <SDL2/SDL_mixer.h>
@@ -228,6 +230,13 @@ version_table_manager::version_table_manager()
 	compiled[LIB_BOOST] = BOOST_LIB_VERSION;
 	std::replace(compiled[LIB_BOOST].begin(), compiled[LIB_BOOST].end(), '_', '.');
 	names[LIB_BOOST] = "Boost";
+
+	//
+	// Lua
+	//
+
+	compiled[LIB_LUA] = LUA_VERSION_MAJOR "." LUA_VERSION_MINOR "." LUA_VERSION_RELEASE;
+	names[LIB_LUA] = "Lua";
 
 	//
 	// OpenSSL/libcrypto

@@ -23,6 +23,7 @@ namespace game_config
 enum LIBRARY_ID
 {
 	LIB_BOOST,
+	LIB_LUA,
 
 	LIB_CRYPTO,
 
