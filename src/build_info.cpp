@@ -323,12 +323,21 @@ std::string build_arch()
 #endif
 }
 
-std::vector<optional_feature> optional_features_table()
+std::vector<optional_feature> optional_features_table(bool localize)
 {
 	std::vector<optional_feature> res = versions.features;
 
 	for(std::size_t k = 0; k < res.size(); ++k) {
-		res[k].name = _(res[k].name.c_str());
+		if(localize) {
+			res[k].name = _(res[k].name.c_str());
+		} else {
+			// Strip annotation carets ("blah blah^actual text here") from translatable
+			// strings.
+			const auto caret_pos = res[k].name.find('^');
+			if(caret_pos != std::string::npos) {
+				res[k].name.erase(0, caret_pos + 1);
+			}
+		}
 	}
 	return res;
 }
@@ -487,9 +496,7 @@ list_formatter optional_features_report_internal(const std::string& heading = ""
 {
 	list_formatter fmt{heading};
 
-	// Yes, it's for stdout/stderr but we still want the localized version so
-	// that the context prefixes are stripped.
-	const std::vector<optional_feature>& features = optional_features_table();
+	const std::vector<optional_feature>& features = optional_features_table(false);
 
 	for(const auto& feature : features) {
 		fmt.insert(feature.name, feature.enabled ? "yes" : "no");

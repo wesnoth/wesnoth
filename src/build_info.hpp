@@ -51,9 +51,9 @@ struct optional_feature
 std::string build_arch();
 
 /**
- * Return a localized features table.
+ * Retrieve the features table.
  */
-std::vector<optional_feature> optional_features_table();
+std::vector<optional_feature> optional_features_table(bool localize = true);
 
 /**
  * Produce a plain-text report of features suitable for stdout/stderr.
