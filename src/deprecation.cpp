@@ -71,7 +71,7 @@ std::string deprecated_message(
 	}
 
 	if(!detail.empty()) {
-		message += "\n  ";
+		message += "; ";
 		message += detail;
 	}
 
