@@ -27,7 +27,7 @@ function wc2_show_invest_dialog_impl(args)
 		local details = dialog.details
 		local root_node = dialog.left_tree
 
-		function gui.widget.add_invest_categopry(parent_node, name)			
+		function gui.widget.add_invest_category(parent_node, name)			
 			local node = parent_node:add_item_of_type("category")
 			node.category_name.label = name
 			node.unfolded = true
@@ -53,7 +53,7 @@ function wc2_show_invest_dialog_impl(args)
 
 		local cati_current = 0
 		if show_artifacts then			
-			local node = root_node:add_invest_categopry(_ "Artifacts")
+			local node = root_node:add_invest_category(_ "Artifacts")
 
 			for i,v in ipairs(available_artifacts) do
 				local artifact_info = wc2_artifacts.get_artifact(tonumber(v))
@@ -72,7 +72,7 @@ function wc2_show_invest_dialog_impl(args)
 		end
 
 		if show_heroes then
-			local node = root_node:add_invest_categopry(_ "Heroes")
+			local node = root_node:add_invest_category(_ "Heroes")
 		
 			if available_commanders then
 				local desc = _ "Commanders will take your leader’s place when the leader dies, possible commanders:"
@@ -115,7 +115,7 @@ function wc2_show_invest_dialog_impl(args)
 		end
 
 		if show_training then
-			local node = root_node:add_invest_categopry(_ "Training")
+			local node = root_node:add_invest_category(_ "Training")
 			for i,v in ipairs(available_training) do
 				local current_grade = wc2_training.get_level(side_num, v)
 				local training_info = wc2_training.get_trainer(v)
@@ -137,9 +137,7 @@ function wc2_show_invest_dialog_impl(args)
 		end
 
 		if show_other then
-			local node = root_node:add_invest_categopry(_ "Other")
-
-
+			local node = root_node:add_invest_category(_ "Other")
 
 			local colored_galleon = wc2_color.tc_image("units/transport/transport-galleon.png")
 			local supplies_image = "misc/blank-hex.png~SCALE(90,80)~BLIT(" .. colored_galleon .. ",9,4)"
