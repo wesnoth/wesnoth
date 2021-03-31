@@ -18,7 +18,6 @@ wc2_training = wesnoth.require("./training.lua")
 wc2_unittypedata = wesnoth.require("./unittypedata.lua")
 wc2_utils = wesnoth.require("./utils.lua")
 
-wc2_wiki_dialog = wesnoth.require("./wocopedia/help_dialog.lua")
 wc2_wiki = wesnoth.require("./wocopedia/help.lua")
 
 wc2_invest = wesnoth.require("./invest/invest.lua")

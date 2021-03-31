@@ -1,5 +1,5 @@
 local _ = wesnoth.textdomain 'wesnoth-wc'
-local dialog = wc2_wiki_dialog
+local dialog = wml.load "campaigns/World_Conquest/gui/help_dialog.cfg"
 
 local function make_caption(text)
 	return ("<big><b>%s</b></big>"):format(text)
@@ -237,7 +237,8 @@ function wesnoth.wml_actions.wc2_show_wocopedia(cfg)
 		end
 	end
 
-	gui.show_dialog(dialog, preshow)
+	local dialog_wml = wml.get_child(dialog, 'resolution')
+	gui.show_dialog(dialog_wml, preshow)
 end
 
 wc2_utils.menu_item {
