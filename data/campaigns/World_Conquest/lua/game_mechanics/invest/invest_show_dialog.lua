@@ -1,7 +1,6 @@
 local _ = wesnoth.textdomain 'wesnoth-wc'
 
-local dialog_wml = wc2_invest_dialog
-
+local dialog_wml = wml.load "campaigns/World_Conquest/gui/invest_dialog.cfg"
 
 function wc2_show_invest_dialog_impl(args)
 	local side_num = wesnoth.current.side
@@ -166,7 +165,8 @@ function wc2_show_invest_dialog_impl(args)
 		root_node.on_modified = set_result
 		set_result()
 	end
-	local d_res = gui.show_dialog(dialog_wml, preshow)
+	local d_wml = wml.get_child(dialog_wml, 'resolution')
+	local d_res = gui.show_dialog(d_wml, preshow)
 	return d_res, res
 end
 

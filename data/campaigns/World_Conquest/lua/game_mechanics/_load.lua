@@ -22,7 +22,6 @@ wc2_wiki_dialog = wesnoth.require("./wocopedia/help_dialog.lua")
 wc2_wiki = wesnoth.require("./wocopedia/help.lua")
 
 wc2_invest = wesnoth.require("./invest/invest.lua")
-wc2_invest_dialog = wesnoth.require("./invest/invest_dialog.lua")
 wc2_invest_show_dialog = wesnoth.require("./invest/invest_show_dialog.lua")
 wc2_invest_tellunit = wesnoth.require("./invest/invest_tellunit.lua")
 
