@@ -84,7 +84,7 @@ on_event("die", function(cx)
 		wesnoth.play_sound("water-blast.wav")
 		item("scenery/castle-ruins.png")
 	elseif loc:matches{terrain = "Rrc"} then
-		if wesnoth.variables["bonus.theme"] == "paradise" then
+		if wml.variables["bonus.theme"] == "paradise" then
 			wesnoth.wml_actions.remove_item {
 				x = cx.x1,
 				y = cx.y1,
