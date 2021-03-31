@@ -154,7 +154,7 @@ function wc2_show_invest_dialog_impl(args)
 			page.info_label.label = _"Gives 70 gold and places a village on your keep."
 		end
 
-		function root_node.on_modified()
+		local function set_result()
 			local selected = root_node.selected_item_path
 			local selected_data = index_map[table.concat(selected, '_')]
 			if selected_data ~= nil then
@@ -162,6 +162,9 @@ function wc2_show_invest_dialog_impl(args)
 			end
 			res = selected_data.res
 		end
+
+		root_node.on_modified = set_result
+		set_result()
 	end
 	local d_res = gui.show_dialog(dialog_wml, preshow)
 	return d_res, res
