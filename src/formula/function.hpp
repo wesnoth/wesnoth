@@ -47,9 +47,14 @@ namespace wfl
 #define DECLARE_WFL_FUNCTION(name)                                                                                     \
 	functions_table.add_function(#name, std::make_shared<builtin_formula_function<name##_function>>(#name))
 
+/**
+ * Provides debugging information for error messages.
+ */
 struct call_stack_manager
 {
 	explicit call_stack_manager(const std::string& str);
+	call_stack_manager(const call_stack_manager&) = delete;
+	call_stack_manager& operator=(const call_stack_manager&) = delete;
 	~call_stack_manager();
 
 	static std::string get();

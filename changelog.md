@@ -4,6 +4,7 @@
  ### Translations
  ### User interface
  ### Miscellaneous and Bug Fixes
+   * Fixed an intermittent crash on the loading screen (issue #5629)
 
 ## Version 1.14.16
  ### AI
