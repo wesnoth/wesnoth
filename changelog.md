@@ -17,6 +17,7 @@
  ### WML Engine
  ### Miscellaneous and Bug Fixes
    * Fixed units with max movement set to zero being given one max movement point by `[unstore_unit]` or when loading a saved game
+   * Fixed an intermittent crash on the loading screen (issue #5629)
 
 ## Version 1.15.11
  ### AI

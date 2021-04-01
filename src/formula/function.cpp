@@ -37,7 +37,13 @@ static lg::log_domain log_scripting_formula("scripting/formula");
 
 namespace wfl
 {
-static std::deque<std::string> call_stack;
+/**
+ * For printing error messages when WFL parsing or evaluation fails, this contains the names of the WFL functions being evaluated.
+ *
+ * Two C++ threads might be evaluating WFL at the same; declaring this thread_local is a quick bugfix which should probably be replaced
+ * by having a context-object for each WFL evaluation.
+ */
+thread_local static std::deque<std::string> call_stack;
 
 call_stack_manager::call_stack_manager(const std::string& str)
 {
