@@ -14,15 +14,29 @@
 #pragma once
 
 #include <functional>
+#include <boost/preprocessor/cat.hpp>
 
 namespace utils {
 
+template<typename F>
 class scope_exit {
-	//TODO: with c++17 we could make this a template class with 'F f_' instead of 'std::function<void ()> f_';
-	std::function<void ()> f_;
+	F f_;
 public:
+	explicit scope_exit(F&& f) : f_(std::forward<F>(f)) {}
+	~scope_exit() { f_(); }
+};
+
+struct scope_exit_syntax_support {
 	template<typename F>
-	explicit scope_exit(F&& f) : f_(f) {}
-	~scope_exit() { if(f_) { f_(); }}
+	scope_exit<F> operator<<(F&& f) {
+		return scope_exit<F>(std::forward<F>(f));
+	}
 };
 } // namespace utils
+
+/**
+ * Run some arbitrary code (a lambda) when the current scope exits
+ * The lambda body follows this header, terminated by a semicolon.
+ * @arg ... Capture clause for the lambda.
+ */
+#define ON_SCOPE_EXIT(...) [[maybe_unused]] const auto& BOOST_PP_CAT(scope_exit, __LINE__) = utils::scope_exit_syntax_support() << [__VA_ARGS__]()

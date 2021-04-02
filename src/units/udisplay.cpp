@@ -817,7 +817,9 @@ void unit_recruited(const map_location& loc,const map_location& leader_loc)
 	unit_animator animator;
 
 	{
-		utils::scope_exit se([u] () { u->set_hidden(false); });
+		ON_SCOPE_EXIT(u) {
+			u->set_hidden(false);
+		};
 		u->set_hidden(true);
 
 		if (leader_visible && unit_visible) {

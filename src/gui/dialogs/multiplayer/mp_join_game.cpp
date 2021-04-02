@@ -306,7 +306,9 @@ bool mp_join_game::show_flg_select(int side_num, bool first_time)
 		{
 			gui2::dialogs::faction_select flg_dialog(flg, color, side_num);
 			flg_dialog_ = &flg_dialog;
-			utils::scope_exit se([this]() { flg_dialog_ = nullptr; });
+			ON_SCOPE_EXIT(this) {
+				flg_dialog_ = nullptr;
+			};
 
 			if(!flg_dialog.show() && !first_time) {
 				return true;
