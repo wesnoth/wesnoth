@@ -157,9 +157,9 @@ end
 -- creates the 'timed_spawn' wml array.
 -- @a num_spawns: the total number of times units get spawned
 -- @a interval: the number of turns between 2 spawns
--- @a base_gold_amount, gold_increment: used to cauculate the amount of gold available for each timed spawn
--- @a units_amount, gold_per_unit_amount: used to cauculate the number of units spawned in each timed spawn
-local function create_timed_spaws(interval, num_spawns, base_gold_amount, gold_increment, units_amount, gold_per_unit_amount)
+-- @a base_gold_amount, gold_increment: used to calculate the amount of gold available for each timed spawn
+-- @a units_amount, gold_per_unit_amount: used to calculate the number of units spawned in each timed spawn
+local function create_timed_spawns(interval, num_spawns, base_gold_amount, gold_increment, units_amount, gold_per_unit_amount)
 	local configure_gold_factor = ((wml.variables["enemey_gold_factor"] or 0) + 100)/100
 	local random_spawn_numbers = {}
 	for i = 1, #random_spawns do
@@ -270,9 +270,9 @@ end)
 on_event("prestart", function()
 	local leaders = wesnoth.units.find_on_map { side = "3,4", canrecruit= true}
 	if #leaders < 2 then
-		create_timed_spaws(5, 11, 50, 5, 4, 21)
+		create_timed_spawns(5, 11, 50, 5, 4, 21)
 	else
-		create_timed_spaws(4, 11, 90, 4, 5, 23)
+		create_timed_spawns(4, 11, 90, 4, 5, 23)
 	end
 end)
 
