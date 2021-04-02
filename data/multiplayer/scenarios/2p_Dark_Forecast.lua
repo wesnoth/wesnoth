@@ -450,7 +450,7 @@ local function weather_map(name)
 end
 
 -- change weather at side 3 turns, TODO: consider the case that side 3 is empty.
-on_event("side 3 turn", function()
+on_event("side 1 turn", function()
 	-- get next weather event
 	local weather_event = wml.variables["weather_event[0]"]
 	if weather_event == nil then
