@@ -454,8 +454,7 @@ end
 -- which allowed a cheat to be used by players 
 -- by setting side 3 as Empty and picking a faction 
 -- optimised for the default/basic map for side 4
--- which caused this weather change featur to never
--- trigger
+-- which caused this weather change feature to never trigger
 on_event("side 1 turn", function()
 	-- get next weather event
 	local weather_event = wml.variables["weather_event[0]"]
