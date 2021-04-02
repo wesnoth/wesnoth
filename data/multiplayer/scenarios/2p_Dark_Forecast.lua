@@ -449,7 +449,13 @@ local function weather_map(name)
 	wesnoth.redraw {}
 end
 
--- change weather at side 3 turns, TODO: consider the case that side 3 is empty.
+-- change weather at side 1 turns
+-- initially this was set for every side 3 turns
+-- which allowed a cheat to be used by players 
+-- by setting side 3 as Empty and picking a faction 
+-- optimised for the default/basic map for side 4
+-- which caused this weather change featur to never
+-- trigger
 on_event("side 1 turn", function()
 	-- get next weather event
 	local weather_event = wml.variables["weather_event[0]"]
