@@ -204,12 +204,12 @@ void wml_menu_item::finish_handler()
 	}
 }
 
-void wml_menu_item::init_handler()
+void wml_menu_item::init_handler(game_lua_kernel& lk)
 {
 	// If this menu item has a [command], add a handler for it.
 	if(!command_.empty()) {
 		assert(resources::game_events);
-		resources::game_events->add_event_handler(command_, true);
+		resources::game_events->add_event_handler(command_, lk, true);
 	}
 
 	// Hotkey support
@@ -367,7 +367,8 @@ void wml_menu_item::update_command(const config& new_command)
 		// Register the event.
 		LOG_NG << "Setting command for " << event_name_ << " to:\n" << command_;
 		assert(resources::game_events);
-		resources::game_events->add_event_handler(command_, true);
+		assert(resources::lua_kernel);
+		resources::game_events->add_event_handler(command_, *resources::lua_kernel, true);
 	}
 }
 

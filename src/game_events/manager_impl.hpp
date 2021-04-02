@@ -21,6 +21,8 @@
 #include <deque>
 #include <unordered_map>
 
+class game_lua_kernel;
+
 namespace game_events
 {
 // event_handlers is essentially the implementation details of the manager
@@ -82,7 +84,7 @@ public:
 	handler_list& get(const std::string& name);
 
 	/** Adds an event handler. */
-	void add_event_handler(const config& cfg, bool is_menu_item = false);
+	void add_event_handler(const config& cfg, game_lua_kernel& lk, bool is_menu_item = false);
 
 	/** Removes an event handler, identified by its ID. */
 	void remove_event_handler(const std::string& id);

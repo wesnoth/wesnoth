@@ -92,7 +92,7 @@ handler_list& event_handlers::get(const std::string& name)
  * An event with a nonempty ID will not be added if an event with that
  * ID already exists.
  */
-void event_handlers::add_event_handler(const config& cfg, bool is_menu_item)
+void event_handlers::add_event_handler(const config& cfg, game_lua_kernel& lk, bool is_menu_item)
 {
 	// Someone decided to register an empty event... bail.
 	if(cfg.empty()) {
@@ -145,7 +145,7 @@ void event_handlers::add_event_handler(const config& cfg, bool is_menu_item)
 	// Do note active_ holds the main shared_ptr, and the other three containers
 	// construct weak_ptrs from the shared one.
 	DBG_EH << "inserting event handler for name=" << name << " with id=" << id << "\n";
-	active_.emplace_back(new event_handler(std::move(event_cfg), is_menu_item, standardized_names));
+	active_.emplace_back(new event_handler(std::move(event_cfg), is_menu_item, standardized_names, lk));
 
 	//
 	//  !! event_cfg is invalid past this point! DO NOT USE!

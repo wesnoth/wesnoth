@@ -40,13 +40,14 @@ namespace game_events
 {
 /* ** event_handler ** */
 
-event_handler::event_handler(config&& cfg, bool imi, const std::vector<std::string>& types)
+event_handler::event_handler(config&& cfg, bool imi, const std::vector<std::string>& types, game_lua_kernel& lk)
 	: first_time_only_(cfg["first_time_only"].to_bool(true))
 	, is_menu_item_(imi)
 	, disabled_(false)
 	, cfg_(cfg)
 	, types_(types)
 {
+	event_ref_ = lk.save_wml_event(cfg);
 }
 
 void event_handler::disable()
@@ -69,7 +70,7 @@ void event_handler::handle_event(const queued_event& event_info, game_lua_kernel
 		disable();
 	}
 
-	lk.run_wml_action("command", vconfig(cfg_, false), event_info);
+	lk.run_wml_event(event_ref_, vconfig(cfg_, false), event_info);
 	sound::commit_music_changes();
 }
 
