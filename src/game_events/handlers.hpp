@@ -38,7 +38,7 @@ struct queued_event;
 class event_handler
 {
 public:
-	event_handler(config&& cfg, bool is_menu_item, const std::vector<std::string>& types);
+	event_handler(config&& cfg, bool is_menu_item, const std::vector<std::string>& types, game_lua_kernel& lk);
 
 	const std::vector<std::string>& names() const
 	{
@@ -76,6 +76,7 @@ private:
 	bool is_menu_item_;
 	bool disabled_;
 	config cfg_;
+	int event_ref_;
 	std::vector<std::string> types_;
 };
 

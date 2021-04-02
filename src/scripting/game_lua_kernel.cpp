@@ -103,6 +103,7 @@
 #include "units/map.hpp"  // for unit_map, etc
 #include "units/ptr.hpp"                 // for unit_const_ptr, unit_ptr
 #include "units/types.hpp"    // for unit_type_data, unit_types, etc
+#include "utils/scope_exit.hpp"
 #include "variable.hpp"                 // for vconfig, etc
 #include "variable_info.hpp"
 #include "whiteboard/manager.hpp"       // for whiteboard
@@ -3695,9 +3696,9 @@ int game_lua_kernel::intf_add_event(lua_State *L)
 	game_events::manager & man = *game_state_.events_manager_;
 
 	if (!cfg["delayed_variable_substitution"].to_bool(true)) {
-		man.add_event_handler(cfg.get_parsed_config());
+		man.add_event_handler(cfg.get_parsed_config(), *this);
 	} else {
-		man.add_event_handler(cfg.get_config());
+		man.add_event_handler(cfg.get_config(), *this);
 	}
 	return 0;
 }
@@ -4481,6 +4482,7 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 	, play_controller_(pc)
 	, reports_(reports_object)
 	, level_lua_()
+	, EVENT_TABLE(LUA_NOREF)
 	, queued_events_()
 	, map_locked_(0)
 {
@@ -5223,6 +5225,73 @@ bool game_lua_kernel::run_wml_conditional(const std::string& cmd, const vconfig&
 
 	lua_pop(L, 1);
 	return b;
+}
+
+static int intf_run_event_wml(lua_State* L)
+{
+	int argIdx = lua_gettop(L);
+	if(!luaW_getglobal(L, "wesnoth", "wml_actions", "command")) {
+		return luaL_error(L, "wesnoth.wml_actions.command is missing");
+	}
+	lua_pushvalue(L, argIdx);
+	lua_call(L, 1, 0);
+	return 0;
+}
+
+int game_lua_kernel::save_wml_event(const config& evt)
+{
+	lua_State* L = mState;
+	if(EVENT_TABLE == LUA_NOREF) {
+		lua_newtable(L);
+		EVENT_TABLE = luaL_ref(L, LUA_REGISTRYINDEX);
+	}
+	lua_geti(L, LUA_REGISTRYINDEX, EVENT_TABLE);
+	int evtIdx = lua_gettop(L);
+	ON_SCOPE_EXIT(L) {
+		lua_pop(L, 1);
+	};
+	if(evt.has_attribute("code")) {
+		std::ostringstream name;
+		name << "event ";
+		if(evt.has_attribute("name")) {
+			name << evt["name"];
+		} else {
+			name << "<anon>";
+		}
+		if(evt.has_attribute("id")) {
+			name << "[id=" << evt["id"] << "]";
+		}
+		if(!load_string(evt["code"].str().c_str(), name.str())) {
+			ERR_LUA << "Failed to register WML event: " << name.str();
+			return LUA_NOREF;
+		}
+	} else {
+		lua_pushcfunction(L, intf_run_event_wml);
+	}
+	int ref = luaL_ref(L, evtIdx);
+	return ref;
+}
+
+void game_lua_kernel::clear_wml_event(int ref)
+{
+	lua_State* L = mState;
+	lua_geti(L, LUA_REGISTRYINDEX, EVENT_TABLE);
+	luaL_unref(L, -1, ref);
+	lua_pop(L, 1);
+}
+
+bool game_lua_kernel::run_wml_event(int ref, const vconfig& args, const game_events::queued_event& ev)
+{
+	lua_State* L = mState;
+	lua_geti(L, LUA_REGISTRYINDEX, EVENT_TABLE);
+	ON_SCOPE_EXIT(L) {
+		lua_pop(L, 1);
+	};
+	lua_geti(L, -1, ref);
+	if(lua_isnil(L, -1)) return false;
+	luaW_pushvconfig(L, args);
+	queued_event_context dummy(&ev, queued_events_);
+	return protected_call(1, 0);
 }
 
 

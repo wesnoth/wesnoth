@@ -28,6 +28,7 @@
 class config;
 class filter_context;
 class game_data;
+class game_lua_kernel;
 struct map_location;
 class unit_map;
 class vconfig;
@@ -79,7 +80,7 @@ public:
 			unit_map& units) const;
 
 	/** Initializes the implicit event handlers for inlined [command]s. */
-	void init_handlers() const;
+	void init_handlers(game_lua_kernel& lk) const;
 
 	void to_config(config& cfg) const;
 

@@ -64,9 +64,9 @@ namespace
 namespace game_events
 {
 /** Create an event handler. */
-void manager::add_event_handler(const config& handler, bool is_menu_item)
+void manager::add_event_handler(const config& handler, game_lua_kernel& lk, bool is_menu_item)
 {
-	event_handlers_->add_event_handler(handler, is_menu_item);
+	event_handlers_->add_event_handler(handler, lk, is_menu_item);
 }
 
 /** Removes an event handler. */
@@ -91,10 +91,10 @@ manager::manager()
 {
 }
 
-void manager::read_scenario(const config& scenario_cfg)
+void manager::read_scenario(const config& scenario_cfg, game_lua_kernel& lk)
 {
 	for(const config& ev : scenario_cfg.child_range("event")) {
-		add_event_handler(ev);
+		add_event_handler(ev, lk);
 	}
 
 	for(const std::string& id : utils::split(scenario_cfg["unit_wml_ids"])) {
@@ -104,14 +104,14 @@ void manager::read_scenario(const config& scenario_cfg)
 	wml_menu_items_.set_menu_items(scenario_cfg);
 
 	// Create the event handlers for menu items.
-	wml_menu_items_.init_handlers();
+	wml_menu_items_.init_handlers(lk);
 }
 
 manager::~manager()
 {
 }
 
-void manager::add_events(const config::const_child_itors& cfgs, const std::string& type)
+void manager::add_events(const config::const_child_itors& cfgs, game_lua_kernel& lk, const std::string& type)
 {
 	if(!type.empty()) {
 		if(std::find(unit_wml_ids_.begin(), unit_wml_ids_.end(), type) != unit_wml_ids_.end()) {
@@ -127,7 +127,7 @@ void manager::add_events(const config::const_child_itors& cfgs, const std::strin
 			continue;
 		}
 
-		add_event_handler(new_ev);
+		add_event_handler(new_ev, lk);
 	}
 }
 

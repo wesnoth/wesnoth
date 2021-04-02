@@ -163,7 +163,7 @@ wmi_manager::item_ptr wmi_manager::get_item(const std::string& id) const
 /**
  * Initializes the implicit event handlers for inlined [command]s.
  */
-void wmi_manager::init_handlers() const
+void wmi_manager::init_handlers(game_lua_kernel& lk) const
 {
 	// Applying default hotkeys here currently does not work because
 	// the hotkeys are reset by play_controler::init_managers() ->
@@ -179,7 +179,7 @@ void wmi_manager::init_handlers() const
 	// Loop through each menu item.
 	for(const auto& item : wml_menu_items_) {
 		// If this menu item has a [command], add a handler for it.
-		item.second->init_handler();
+		item.second->init_handler(lk);
 
 		// Count the menu items (for the diagnostic message).
 		++wmi_count;

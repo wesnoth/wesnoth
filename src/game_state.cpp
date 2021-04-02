@@ -94,7 +94,7 @@ game_state::game_state(const config& level, play_controller& pc, game_board& boa
 	, first_human_team_(-1)
 {
 	lua_kernel_->load_core();
-	events_manager_->read_scenario(level);
+	events_manager_->read_scenario(level, *lua_kernel_);
 	if(const config& endlevel_cfg = level.child("end_level_data")) {
 		end_level_data el_data;
 		el_data.read(endlevel_cfg);
@@ -178,7 +178,7 @@ void game_state::place_sides_in_preferred_locations(const config& level)
 
 void game_state::init(const config& level, play_controller & pc)
 {
-	events_manager_->read_scenario(level);
+	events_manager_->read_scenario(level, *lua_kernel_);
 	gui2::dialogs::loading_screen::progress(loading_stage::init_teams);
 	if (level["modify_placing"].to_bool()) {
 		LOG_NG << "modifying placing..." << std::endl;

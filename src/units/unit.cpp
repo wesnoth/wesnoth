@@ -421,8 +421,8 @@ void unit::init(const config& cfg, bool use_traits, const vconfig* vcfg)
 		}
 	}
 
-	if(resources::game_events) {
-		resources::game_events->add_events(events_.child_range("event"));
+	if(resources::game_events && resources::lua_kernel) {
+		resources::game_events->add_events(events_.child_range("event"), *resources::lua_kernel);
 	}
 
 	random_traits_ = cfg["random_traits"].to_bool(true);
@@ -997,8 +997,8 @@ void unit::advance_to(const unit_type& u_type, bool use_traits)
 	}
 
 	// In case the unit carries EventWML, apply it now
-	if(resources::game_events) {
-		resources::game_events->add_events(new_type.events(), new_type.id());
+	if(resources::game_events && resources::lua_kernel) {
+		resources::game_events->add_events(new_type.events(), *resources::lua_kernel, new_type.id());
 	}
 	bool bool_small_profile = get_attr_changed(UA_SMALL_PROFILE);
 	bool bool_profile = get_attr_changed(UA_PROFILE);

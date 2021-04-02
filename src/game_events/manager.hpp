@@ -25,6 +25,7 @@
 
 class filter_context;
 class game_data;
+class game_lua_kernel;
 
 namespace game_events
 {
@@ -55,11 +56,11 @@ public:
 	manager& operator=(const manager&) = delete;
 
 	explicit manager();
-	void read_scenario(const config& scenario_cfg);
+	void read_scenario(const config& scenario_cfg, game_lua_kernel& lk);
 	~manager();
 
 	/** Create an event handler. */
-	void add_event_handler(const config& handler, bool is_menu_item = false);
+	void add_event_handler(const config& handler, game_lua_kernel& lk, bool is_menu_item = false);
 
 	/** Removes an event handler. */
 	void remove_event_handler(const std::string& id);
@@ -67,7 +68,7 @@ public:
 	/** Gets an event handler by ID */
 	const handler_ptr get_event_handler_by_id(const std::string& id);
 
-	void add_events(const config::const_child_itors& cfgs, const std::string& type = std::string());
+	void add_events(const config::const_child_itors& cfgs, game_lua_kernel& lk, const std::string& type = std::string());
 
 	void write_events(config& cfg) const;
 

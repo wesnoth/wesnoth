@@ -58,6 +58,7 @@ class game_lua_kernel : public lua_kernel_base
 	tod_manager & tod_man();
 
 	config level_lua_;
+	int EVENT_TABLE;
 
 	std::stack<game_events::queued_event const * > queued_events_;
 
@@ -218,6 +219,12 @@ public:
 	bool run_filter(char const *name, const team& t);
 	bool run_filter(char const *name, int nArgs);
 	bool run_wml_conditional(const std::string&, const vconfig&);
+	/** Store a WML event in the Lua registry, as a function */
+	int save_wml_event(const config& evt);
+	/** Clear a WML event store in the Lua registry */
+	void clear_wml_event(int ref);
+	/** Run a WML store in the Lua registry */
+	bool run_wml_event(int ref, const vconfig& args, const game_events::queued_event& ev);
 
 	virtual void log_error(char const* msg, char const* context = "Lua error") override;
 
