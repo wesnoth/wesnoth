@@ -159,11 +159,7 @@ end
 -- @a interval: the number of turns between 2 spawns
 -- @a base_gold_amount, gold_increment: used to calculate the amount of gold available for each timed spawn
 -- @a units_amount, gold_per_unit_amount: used to calculate the number of units spawned in each timed spawn
-<<<<<<< HEAD
-local function create_timed_spaws(interval, num_spawns, base_gold_amount, gold_increment, units_amount, gold_per_unit_amount)
-=======
 local function create_timed_spawns(interval, num_spawns, base_gold_amount, gold_increment, units_amount, gold_per_unit_amount)
->>>>>>> upstream/master
 	local configure_gold_factor = ((wml.variables["enemey_gold_factor"] or 0) + 100)/100
 	local random_spawn_numbers = {}
 	for i = 1, #random_spawns do
