@@ -159,7 +159,11 @@ end
 -- @a interval: the number of turns between 2 spawns
 -- @a base_gold_amount, gold_increment: used to calculate the amount of gold available for each timed spawn
 -- @a units_amount, gold_per_unit_amount: used to calculate the number of units spawned in each timed spawn
+<<<<<<< HEAD
 local function create_timed_spaws(interval, num_spawns, base_gold_amount, gold_increment, units_amount, gold_per_unit_amount)
+=======
+local function create_timed_spawns(interval, num_spawns, base_gold_amount, gold_increment, units_amount, gold_per_unit_amount)
+>>>>>>> upstream/master
 	local configure_gold_factor = ((wml.variables["enemey_gold_factor"] or 0) + 100)/100
 	local random_spawn_numbers = {}
 	for i = 1, #random_spawns do
@@ -270,9 +274,9 @@ end)
 on_event("prestart", function()
 	local leaders = wesnoth.units.find_on_map { side = "3,4", canrecruit= true}
 	if #leaders < 2 then
-		create_timed_spaws(5, 11, 50, 5, 4, 21)
+		create_timed_spawns(5, 11, 50, 5, 4, 21)
 	else
-		create_timed_spaws(4, 11, 90, 4, 5, 23)
+		create_timed_spawns(4, 11, 90, 4, 5, 23)
 	end
 end)
 
@@ -449,8 +453,11 @@ local function weather_map(name)
 	wesnoth.redraw {}
 end
 
--- change weather at side 3 turns, TODO: consider the case that side 3 is empty.
-on_event("side 3 turn", function()
+-- change weather at side 1 turns
+-- initially this was set for every side 3 turns which allowed a cheat to be used by players.
+-- the cheat was activated by setting side 3 as Empty and picking a faction optimised for the default/basic map for side 4.
+-- the result was that the weather change feature never triggered.
+on_event("side 1 turn", function()
 	-- get next weather event
 	local weather_event = wml.variables["weather_event[0]"]
 	if weather_event == nil then
