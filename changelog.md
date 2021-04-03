@@ -10,6 +10,7 @@
  ### Terrain
  ### Translations
  ### Units
+   * New rock scorpion monster and scorpion zombie variation
  ### User interface
    * Added logs folder path to the Game Version dialog on Windows.
    * Made Accelerated Speed toggle announcement not stackable over itself or other announcements.
