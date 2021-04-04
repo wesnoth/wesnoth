@@ -127,6 +127,7 @@ class WesnothRunner:
                 path = os.path.split(os.path.realpath(sys.argv[0]))[0]
             else:
                 path = options.path
+            if os.path.isdir(path):
             path += "/wesnoth"
             if options.debug_bin:
                 path += "-debug"
