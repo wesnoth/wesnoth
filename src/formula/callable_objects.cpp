@@ -24,6 +24,7 @@
 #include "units/unit.hpp"
 #include "units/types.hpp"
 #include "log.hpp"
+#include "recall_list_manager.hpp"
 
 static lg::log_domain log_scripting_formula("scripting/formula");
 #define LOG_SF LOG_STREAM(info, log_scripting_formula)
@@ -739,7 +740,12 @@ variant team_callable::get_value(const std::string& key) const
 		for(const auto& recruit : team_.recruits()) {
 			result.emplace_back(recruit);
 		}
-
+		return variant(result);
+	} else if(key == "recall") {
+		std::vector<variant> result;
+		for(const auto& u : team_.recall_list()) {
+			result.push_back(std::make_shared<unit_callable>(*u));
+		}
 		return variant(result);
 	} else if(key == "wml_vars") {
 		return variant(std::make_shared<config_callable>(team_.variables()));
