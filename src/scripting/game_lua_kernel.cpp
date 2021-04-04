@@ -3691,6 +3691,27 @@ int game_lua_kernel::intf_log_replay(lua_State* L)
 	return 0;
 }
 
+struct lua_event_filter : public game_events::event_filter
+{
+	lua_event_filter(game_lua_kernel& lk, int idx, const config& args) : lk(lk), args_(args)
+	{
+		ref_ = lk.save_wml_event(idx);
+	}
+	bool operator()(const game_events::queued_event& event_info) const override
+	{
+		bool result;
+		return lk.run_wml_event(ref_, args_, event_info, &result) && result;
+	}
+	~lua_event_filter()
+	{
+		lk.clear_wml_event(ref_);
+	}
+private:
+	game_lua_kernel& lk;
+	int ref_;
+	vconfig args_;
+};
+
 static std::string read_event_name(lua_State* L, int idx)
 {
 	if(lua_isstring(L, idx)) {
@@ -3751,6 +3772,7 @@ int game_lua_kernel::intf_add_event(lua_State *L)
 		}
 		auto new_handler = man.add_event_handler_from_lua(name, id, repeat, is_menu_item);
 		if(new_handler.valid()) {
+			bool has_lua_filter = false;
 			new_handler->set_arguments(luaW_table_get_def(L, 1, "content", config{"__empty_lua_event", true}));
 
 			if(luaW_tableget(L, 1, "filter")) {
@@ -3758,7 +3780,9 @@ int game_lua_kernel::intf_add_event(lua_State *L)
 				config filters;
 				if(!luaW_toconfig(L, filterIdx, filters)) {
 					if(lua_isfunction(L, filterIdx)) {
-						//new_handler->add_filter(std::make_unique<lua_event_filter>());
+						int fcnIdx = lua_absindex(L, -1);
+						new_handler->add_filter(std::make_unique<lua_event_filter>(*this, fcnIdx, luaW_table_get_def(L, 1, "filter_args", config())));
+						has_lua_filter = true;
 					} else {
 						if(luaW_tableget(L, filterIdx, "condition")) {
 							filters.add_child("filter_condition", luaW_checkconfig(L, -1));
@@ -3786,6 +3810,11 @@ int game_lua_kernel::intf_add_event(lua_State *L)
 			if(luaW_tableget(L, 1, "action")) {
 				new_handler->set_event_ref(save_wml_event(-1));
 			} else {
+				if(has_lua_filter) {
+					// This just sets the appropriate flags so the engine knows it cannot be serialized.
+					// The register_wml_event call will override the actual event_ref so just pass LUA_NOREF here.
+					new_handler->set_event_ref(LUA_NOREF);
+				}
 				new_handler->register_wml_event(*this);
 			}
 		}
@@ -5381,7 +5410,7 @@ void game_lua_kernel::clear_wml_event(int ref)
 	lua_pop(L, 1);
 }
 
-bool game_lua_kernel::run_wml_event(int ref, const vconfig& args, const game_events::queued_event& ev)
+bool game_lua_kernel::run_wml_event(int ref, const vconfig& args, const game_events::queued_event& ev, bool* out)
 {
 	lua_State* L = mState;
 	lua_geti(L, LUA_REGISTRYINDEX, EVENT_TABLE);
@@ -5392,7 +5421,14 @@ bool game_lua_kernel::run_wml_event(int ref, const vconfig& args, const game_eve
 	if(lua_isnil(L, -1)) return false;
 	luaW_pushvconfig(L, args);
 	queued_event_context dummy(&ev, queued_events_);
-	return protected_call(1, 0);
+	if(protected_call(1, out ? 1 : 0)) {
+		if(out) {
+			*out = luaW_toboolean(L, -1);
+			lua_pop(L, 1);
+		}
+		return true;
+	}
+	return false;
 }
 
 
