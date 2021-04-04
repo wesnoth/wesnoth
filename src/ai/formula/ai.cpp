@@ -580,6 +580,9 @@ variant formula_ai::get_value(const std::string& key) const
 	{
 		return villages_from_set(resources::gameboard->map().villages(), &current_team().villages());
 	}
+	else if(key == "world") {
+		return variant(std::make_shared<gamestate_callable>());
+	}
 
 	return variant();
 }
@@ -613,6 +616,7 @@ void formula_ai::get_inputs(formula_input_vector& inputs) const
 	add_input(inputs, "my_villages");
 	add_input(inputs, "villages_of_side");
 	add_input(inputs, "enemy_and_unowned_villages");
+	add_input(inputs, "world");
 }
 
 void formula_ai::set_value(const std::string& key, const variant& value) {

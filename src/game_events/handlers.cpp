@@ -24,6 +24,8 @@
 #include "game_events/pump.hpp"
 #include "game_events/manager_impl.hpp" // for standardize_name
 
+#include "formula/callable_objects.hpp"
+#include "formula/formula.hpp"
 #include "formula/string_utils.hpp"
 #include "game_board.hpp"
 #include "game_data.hpp"
@@ -211,6 +213,28 @@ private:
 	bool first_;
 };
 
+struct filter_formula : public event_filter {
+	filter_formula(const std::string& formula) : formula_(formula) {}
+	bool operator()(const queued_event& event_info) const override
+	{
+		wfl::gamestate_callable gs;
+		wfl::event_callable evt(event_info);
+		wfl::formula_callable_with_backup data(evt, gs);
+		return formula_.evaluate(data).as_bool();
+	}
+	void serialize(config& cfg) const override
+	{
+		std::string code = formula_.str();
+		if(cfg.has_attribute("filter_formula")) {
+			// This will probably never happen in practice, but handle it just in case it somehow can
+			code = "(" + cfg["filter_formula"].str() + ") and (" + code + ")";
+		}
+		cfg["filter_formula"] = code;
+	}
+private:
+	wfl::formula formula_;
+};
+
 void event_handler::read_filters(const config &cfg)
 {
 	for(auto filter : cfg.all_children_range()) {
@@ -228,6 +252,9 @@ void event_handler::read_filters(const config &cfg)
 		} else if(filter.key == "filter_second_attack") {
 			add_filter(std::make_unique<filter_attack>(vcfg, false));
 		}
+	}
+	if(cfg.has_attribute("filter_formula")) {
+		add_filter(std::make_unique<filter_formula>(cfg["filter_formula"]));
 	}
 }
 
