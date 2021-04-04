@@ -143,8 +143,6 @@ public:
 	void flush_messages();
 
 private:
-	bool filter_event(const event_handler& handler, const queued_event& ev);
-
 	void process_event(handler_ptr& handler_p, const queued_event& ev);
 
 	void fill_wml_messages_map(std::map<std::string, int>& msg_map, std::stringstream& source);

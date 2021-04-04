@@ -25,7 +25,7 @@
 
 class unit;
 class vconfig;
-
+class unit_filter;
 
 namespace game_events
 {
@@ -39,7 +39,7 @@ namespace game_events
 		const map_location& filter_loc() const { return filter_loc_;  }
 		bool matches_unit(const unit_map::const_iterator & un_it) const;
 		bool matches_unit_filter(const unit_map::const_iterator & un_it,
-		                         const vconfig & filter) const;
+		                         const unit_filter& filter) const;
 		unit_const_ptr get_unit() const;
 
 		static const entity_location null_entity;

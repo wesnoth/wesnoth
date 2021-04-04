@@ -89,8 +89,7 @@ bool entity_location::matches_unit(const unit_map::const_iterator & un_it) const
  * the unit is required to additionally match the unit that was supplied
  * when this was constructed.
  */
-bool entity_location::matches_unit_filter(const unit_map::const_iterator & un_it,
-                                          const vconfig & filter) const
+bool entity_location::matches_unit_filter(const unit_map::const_iterator & un_it, const unit_filter& filter) const
 {
 	if ( !un_it.valid() )
 		return false;
@@ -101,7 +100,7 @@ bool entity_location::matches_unit_filter(const unit_map::const_iterator & un_it
 
 	// Filter the unit at the filter location (should be the unit's
 	// location if no special filter location was specified).
-	return unit_filter(filter).matches(*un_it, filter_loc_)  &&
+	return filter.matches(*un_it, filter_loc_)  &&
 	       matches_unit(un_it);
 }
 
