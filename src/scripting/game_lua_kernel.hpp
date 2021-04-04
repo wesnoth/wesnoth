@@ -251,9 +251,10 @@ public:
 	 * @param ref The unique index into the EVENT_TABLE within the Lua registry
 	 * @param args Arguments to pass to the event function, as a config
 	 * @param ev The event data for the event being fired
+	 * @param out If non-null, receives the result of the called function (provided it is a boolean value)
 	 * @return Whether the function was successfully called; could be false if @a ref was invalid or if the function raised an error
 	 */
-	bool run_wml_event(int ref, const vconfig& args, const game_events::queued_event& ev);
+	bool run_wml_event(int ref, const vconfig& args, const game_events::queued_event& ev, bool* out = nullptr);
 
 	virtual void log_error(char const* msg, char const* context = "Lua error") override;
 
