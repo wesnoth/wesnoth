@@ -611,8 +611,8 @@ int game_lua_kernel::intf_get_recall_units(lua_State *L)
  * - Arg 1: string containing the event name or id.
  * - Arg 2: optional first location.
  * - Arg 3: optional second location.
- * - Arg 4: optional WML table used as the [weapon] tag.
- * - Arg 5: optional WML table used as the [second_weapon] tag.
+ * - Arg 4: optional WML table used used as the event data
+ * Typically this contains [first] as the [weapon] tag and [second] as the [second_weapon] tag.
  * - Ret 1: boolean indicating whether the event was processed or not.
  */
 int game_lua_kernel::intf_fire_event(lua_State *L, const bool by_id)
@@ -631,13 +631,7 @@ int game_lua_kernel::intf_fire_event(lua_State *L, const bool by_id)
 		}
 	}
 
-	if (!lua_isnoneornil(L, pos)) {
-		data.add_child("first", luaW_checkconfig(L, pos));
-	}
-	++pos;
-	if (!lua_isnoneornil(L, pos)) {
-		data.add_child("second", luaW_checkconfig(L, pos));
-	}
+	luaW_toconfig(L, pos, data);
 
 	bool b = false;
 
@@ -1711,6 +1705,7 @@ int game_lua_kernel::impl_current_get(lua_State *L)
 		config cfg;
 		cfg["name"] = ev.name;
 		cfg["id"]   = ev.id;
+		cfg.add_child("data", ev.data);
 		if (const config &weapon = ev.data.child("first")) {
 			cfg.add_child("weapon", weapon);
 		}
@@ -4609,8 +4604,6 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 		{ "modify_ai",                &intf_modify_ai_old            },
 		{ "allow_undo",                &dispatch<&game_lua_kernel::intf_allow_undo                 >        },
 		{ "cancel_action",             &dispatch<&game_lua_kernel::intf_cancel_action              >        },
-		{ "fire_event",                &dispatch2<&game_lua_kernel::intf_fire_event, false         >        },
-		{ "fire_event_by_id",          &dispatch2<&game_lua_kernel::intf_fire_event, true          >        },
 		{ "log_replay",                &dispatch<&game_lua_kernel::intf_log_replay                 >        },
 		{ "log",                       &dispatch<&game_lua_kernel::intf_log                        >        },
 		{ "redraw",                    &dispatch<&game_lua_kernel::intf_redraw                     >        },
@@ -4954,6 +4947,8 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 	static luaL_Reg const event_callbacks[] {
 		{ "add", &dispatch<&game_lua_kernel::intf_add_event> },
 		{ "remove", &dispatch<&game_lua_kernel::intf_remove_event> },
+		{ "fire", &dispatch2<&game_lua_kernel::intf_fire_event, false> },
+		{ "fire_by_id", &dispatch2<&game_lua_kernel::intf_fire_event, true> },
 		{ nullptr, nullptr }
 	};
 	lua_getglobal(L, "wesnoth");

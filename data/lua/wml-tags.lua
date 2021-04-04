@@ -146,10 +146,12 @@ function wml_actions.fire_event(cfg)
 
 	local w1 = wml.get_child(cfg, "primary_attack")
 	local w2 = wml.get_child(cfg, "secondary_attack")
-	if w2 then w1 = w1 or {} end
+	local data = wml.get_child(cfg, "data") or {}
+	if w1 then table.insert(data, wml.tag.first(w1)) end
+	if w2 then table.insert(data, wml.tag.second(w2)) end
 
-	if cfg.id and cfg.id ~= "" then wesnoth.fire_event_by_id(cfg.id, x1, y1, x2, y2, w1, w2)
-	elseif cfg.name and cfg.name ~= "" then wesnoth.fire_event(cfg.name, x1, y1, x2, y2, w1, w2)
+	if cfg.id and cfg.id ~= "" then wesnoth.game_events.fire_by_id(cfg.id, x1, y1, x2, y2, data)
+	elseif cfg.name and cfg.name ~= "" then wesnoth.game_events.fire(cfg.name, x1, y1, x2, y2, data)
 	end
 end
 
