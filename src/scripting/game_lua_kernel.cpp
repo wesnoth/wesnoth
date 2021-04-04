@@ -4068,20 +4068,23 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 	}
 	luaL_setfuncs(L, callbacks, 0);
 
-	if(play_controller_.get_classification().is_test()) {
-		static luaL_Reg const test_callbacks[] {
-			{ "fire_wml_menu_item",        &dispatch<&game_lua_kernel::intf_fire_wml_menu_item         >        },
-			{ nullptr, nullptr }
-		};
-		luaL_setfuncs(L, test_callbacks , 0);
-	}
-
 	lua_setglobal(L, "wesnoth");
 
 	lua_getglobal(L, "gui");
 	lua_pushcfunction(L, &dispatch<&game_lua_kernel::intf_gamestate_inspector>);
 	lua_setfield(L, -2, "show_inspector");
 	lua_pop(L, 1);
+	
+	if(play_controller_.get_classification().is_test()) {
+		// Create the unit_test module
+		lua_newtable(L);
+		static luaL_Reg const test_callbacks[] {
+			{ "fire_wml_menu_item", &dispatch<&game_lua_kernel::intf_fire_wml_menu_item> },
+			{ nullptr, nullptr }
+		};
+		luaL_setfuncs(L, test_callbacks, 0);
+		lua_setglobal(L, "unit_test");
+	}
 
 	// Create the getside metatable.
 	cmd_log_ << lua_team::register_metatable(L);
