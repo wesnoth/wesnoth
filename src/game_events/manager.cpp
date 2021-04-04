@@ -72,7 +72,7 @@ void manager::add_event_handler_from_wml(const config& handler, game_lua_kernel&
 		new_handler->read_filters(handler);
 
 		// Strip out anything that's used by the event system itself.
-		// TODO: "filter" and "formula" are stubs intended for Lua and WFL code respectively.
+		// TODO: "filter" is a stub intended for Lua code.
 		config args;
 		for(const auto& [attr, val] : handler.attribute_range()) {
 			if(attr == "id" || attr == "name" || attr == "first_time_only" || attr.compare(0, 6, "filter") == 0) {
