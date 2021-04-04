@@ -166,6 +166,10 @@ class WesnothRunner:
                 return
             timeout = None
         else:
+            if test.status == UnitTestResult.FAIL_BROKE_STRICT and not options.strict_mode:
+                test_summary.skip_test()
+                print('Skipping test', test_list[0].name, 'because strict mode is disabled')
+                return
             if len(test_list) == 1:
                 timeout = self.timeout
             else:
