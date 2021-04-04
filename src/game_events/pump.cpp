@@ -20,7 +20,6 @@
  */
 
 #include "game_events/pump.hpp"
-#include "game_events/conditional_wml.hpp"
 #include "game_events/handlers.hpp"
 
 #include "display_chat_manager.hpp"
@@ -187,84 +186,6 @@ pump_manager::~pump_manager()
 }
 
 /**
- * Returns true iff the given event passes all its filters.
- */
-bool wml_event_pump::filter_event(const event_handler& handler, const queued_event& ev)
-{
-	const unit_map& units = resources::gameboard->units();
-	unit_map::const_iterator unit1 = units.find(ev.loc1);
-	unit_map::const_iterator unit2 = units.find(ev.loc2);
-	vconfig filters(handler.get_config());
-
-	for(const vconfig& condition : filters.get_children("filter_condition")) {
-		if(!conditional_passed(condition)) {
-			return false;
-		}
-	}
-
-	for(const vconfig& f : filters.get_children("filter_side")) {
-		side_filter ssf(f, &resources::controller->gamestate());
-		if(!ssf.match(resources::controller->current_side()))
-			return false;
-	}
-
-	for(const vconfig& f : filters.get_children("filter")) {
-		if(!ev.loc1.matches_unit_filter(unit1, f)) {
-			return false;
-		}
-	}
-
-	vconfig::child_list special_filters = filters.get_children("filter_attack");
-	bool special_matches = special_filters.empty();
-	if(!special_matches && unit1 != units.end()) {
-		const bool matches_unit = ev.loc1.matches_unit(unit1);
-		const config& attack = ev.data.child("first");
-		for(const vconfig& f : special_filters) {
-			if(f.empty()) {
-				special_matches = true;
-			} else if(!matches_unit) {
-				return false;
-			}
-
-			special_matches = special_matches || matches_special_filter(attack, f);
-		}
-	}
-
-	if(!special_matches) {
-		return false;
-	}
-
-	for(const vconfig& f : filters.get_children("filter_second")) {
-		if(!ev.loc2.matches_unit_filter(unit2, f)) {
-			return false;
-		}
-	}
-
-	special_filters = filters.get_children("filter_second_attack");
-	special_matches = special_filters.empty();
-	if(!special_matches && unit2 != units.end()) {
-		const bool matches_unit = ev.loc2.matches_unit(unit2);
-		const config& attack = ev.data.child("second");
-		for(const vconfig& f : special_filters) {
-			if(f.empty()) {
-				special_matches = true;
-			} else if(!matches_unit) {
-				return false;
-			}
-
-			special_matches = special_matches || matches_special_filter(attack, f);
-		}
-	}
-
-	if(!special_matches) {
-		return false;
-	}
-
-	// All filters passed.
-	return true;
-}
-
-/**
  * Processes an event through a single event handler.
  * This includes checking event filters, but not checking that the event
  * name matches.
@@ -289,7 +210,7 @@ void wml_event_pump::process_event(handler_ptr& handler_p, const queued_event& e
 	scoped_weapon_info first_weapon("weapon", ev.data.child("first"));
 	scoped_weapon_info second_weapon("second_weapon", ev.data.child("second"));
 
-	if(!filter_event(*handler_p, ev)) {
+	if(!handler_p->filter_event(ev)) {
 		return;
 	}
 
@@ -572,7 +493,7 @@ pump_result_t wml_event_pump::operator()()
 		if(event_id.empty()) {
 			// Handle events of this name.
 			impl_->my_manager->execute_on_events(event_name, [&](game_events::manager&, handler_ptr& ptr) {
-				DBG_EH << "processing event " << event_name << " with id=" << ptr->get_config()["id"] << "\n";
+				DBG_EH << "processing event " << event_name << " with id=" << ptr->id() << "\n";
 
 				// Let this handler process our event.
 				process_event(ptr, ev);
@@ -582,7 +503,7 @@ pump_result_t wml_event_pump::operator()()
 			handler_ptr cur_handler = impl_->my_manager->get_event_handler_by_id(event_id);
 
 			if(cur_handler) {
-				DBG_EH << "processing event " << event_name << " with id=" << cur_handler->get_config()["id"] << "\n";
+				DBG_EH << "processing event " << event_name << " with id=" << cur_handler->id() << "\n";
 				process_event(cur_handler, ev);
 			}
 		}

@@ -209,7 +209,7 @@ void wml_menu_item::init_handler(game_lua_kernel& lk)
 	// If this menu item has a [command], add a handler for it.
 	if(!command_.empty()) {
 		assert(resources::game_events);
-		resources::game_events->add_event_handler(command_, lk, true);
+		resources::game_events->add_event_handler_from_wml(command_, lk, true);
 	}
 
 	// Hotkey support
@@ -338,16 +338,14 @@ void wml_menu_item::update(const vconfig& vcfg)
 void wml_menu_item::update_command(const config& new_command)
 {
 	// If there is an old command, remove it from the event handlers.
-	if(!command_.empty()) {
-		assert(resources::game_events);
+	assert(resources::game_events);
 
-		resources::game_events->execute_on_events(event_name_, [&](game_events::manager& man, handler_ptr& ptr) {
-			if(ptr->is_menu_item()) {
-				LOG_NG << "Removing command for " << event_name_ << ".\n";
-				man.remove_event_handler(command_["id"].str());
-			}
-		});
-	}
+	resources::game_events->execute_on_events(event_name_, [&](game_events::manager& man, handler_ptr& ptr) {
+		if(ptr->is_menu_item()) {
+			LOG_NG << "Removing command for " << event_name_ << ".\n";
+			man.remove_event_handler(command_["id"].str());
+		}
+	});
 
 	// Update our stored command.
 	if(new_command.empty()) {
@@ -368,7 +366,7 @@ void wml_menu_item::update_command(const config& new_command)
 		LOG_NG << "Setting command for " << event_name_ << " to:\n" << command_;
 		assert(resources::game_events);
 		assert(resources::lua_kernel);
-		resources::game_events->add_event_handler(command_, *resources::lua_kernel, true);
+		resources::game_events->add_event_handler_from_wml(command_, *resources::lua_kernel, true);
 	}
 }
 

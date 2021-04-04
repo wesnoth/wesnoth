@@ -30,17 +30,31 @@
 
 class game_data;
 class game_lua_kernel;
+class variable_set;
 
 namespace game_events
 {
 struct queued_event;
+/** Represents a single filter condition on an event. */
+struct event_filter {
+	/** Runs the filter and returns whether it passes on the given event. */
+	virtual bool operator()(const queued_event& event_info) const = 0;
+	/** Serializes the filter into a config, if possible. */
+	virtual void serialize(config& cfg) const;
+	virtual ~event_filter() = default;
+	event_filter() = default;
+private:
+	event_filter(const event_filter&) = delete;
+	event_filter& operator=(const event_filter&) = delete;
+};
 
 class event_handler
 {
 public:
-	event_handler(config&& cfg, bool is_menu_item, const std::vector<std::string>& types, game_lua_kernel& lk);
+	event_handler(const std::string& types, const std::string& id = "");
 
-	const std::vector<std::string>& names() const
+	std::vector<std::string> names(const variable_set* vars) const;
+	const std::string& names_raw() const
 	{
 		return types_;
 	}
@@ -66,18 +80,61 @@ public:
 	 */
 	void handle_event(const queued_event& event_info, game_lua_kernel& lk);
 
-	const config& get_config() const
+	bool filter_event(const queued_event& event_info) const;
+
+	const config& arguments() const
 	{
-		return cfg_;
+		return args_;
 	}
+
+	const std::string& id() const
+	{
+		return id_;
+	}
+
+	bool empty() const;
+
+	bool repeatable() const
+	{
+		return !first_time_only_;
+	}
+
+	void write_config(config& cfg) const;
+
+	void set_repeatable(bool repeat = true)
+	{
+		first_time_only_ = !repeat;
+	}
+
+	void set_menu_item(bool imi)
+	{
+		is_menu_item_ = imi;
+	}
+
+	void set_arguments(const config& cfg)
+	{
+		args_ = cfg;
+	}
+
+	void read_filters(const config& cfg);
+	void add_filter(std::unique_ptr<event_filter>&& filter);
+
+	void register_wml_event(game_lua_kernel& lk);
+	void set_event_ref(int idx);
 
 private:
 	bool first_time_only_;
 	bool is_menu_item_;
 	bool disabled_;
-	config cfg_;
+	/**
+	 * Tracks whether the event was registered from the Lua API.
+	 * This allows a warning to be issued in cases that will break saved games.
+	 */
+	bool is_lua_;
 	int event_ref_;
-	std::vector<std::string> types_;
+	config args_;
+	std::vector<std::shared_ptr<event_filter>> filters_;
+	std::string id_, types_;
 };
 
 }

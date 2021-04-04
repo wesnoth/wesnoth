@@ -64,7 +64,14 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 	wesnoth.print = wesnoth.deprecate_api('wesnoth.print', 'wesnoth.interface.add_overlay_text', 1, nil, function(cfg)
 		wesnoth.wml_actions.print(cfg)
 	end)
-	-- No deprecation for these since since they're not actually public API yet
-	wesnoth.set_menu_item = wesnoth.interface.set_menu_item
+	wesnoth.set_menu_item = wesnoth.deprecate_api('wesnoth.set_menu_item', 'wesnoth.interface.set_menu_item', 1, nil, function(id, cfg)
+		-- wesnoth.set_menu_item added both the menu item and the event that it triggers
+		-- wesnoth.interface.set_menu_item only adds the menu item
+		wesnoth.interface.set_menu_item(id, cfg)
+		wesnoth.game_events.add(cfg.id, wesnoth.wml_actions.command, true)
+	end)
 	wesnoth.clear_menu_item = wesnoth.interface.clear_menu_item
+	-- Event handlers don't have a separate module Lua file so dump those here
+	wesnoth.add_event_handler = wesnoth.deprecate_api('wesnoth.add_event_hander', 'wesnoth.game_events.add', 1, nil, function(cfg) wesnoth.wml_actions.event(cfg) end)
+	wesnoth.remove_event_handler = wesnoth.deprecate_api('wesnoth.remove_event_handler', 'wesnoth.game_events.remove', 1, nil, wesnoth.game_events.remove)
 end

@@ -32,6 +32,7 @@ static lg::log_domain log_engine("engine");
 #define WRN_NG LOG_STREAM(warn, log_engine)
 
 static lg::log_domain log_event_handler("event_handler");
+#define LOG_EH LOG_STREAM(info, log_event_handler)
 #define DBG_EH LOG_STREAM(debug, log_event_handler)
 
 namespace
@@ -64,9 +65,43 @@ namespace
 namespace game_events
 {
 /** Create an event handler. */
-void manager::add_event_handler(const config& handler, game_lua_kernel& lk, bool is_menu_item)
+void manager::add_event_handler_from_wml(const config& handler, game_lua_kernel& lk, bool is_menu_item)
 {
-	event_handlers_->add_event_handler(handler, lk, is_menu_item);
+	auto new_handler = event_handlers_->add_event_handler(handler["name"], handler["id"], !handler["first_time_only"].to_bool(true), is_menu_item);
+	if(new_handler.valid()) {
+		new_handler->read_filters(handler);
+
+		// Strip out anything that's used by the event system itself.
+		// TODO: "filter" and "formula" are stubs intended for Lua and WFL code respectively.
+		config args;
+		for(const auto& [attr, val] : handler.attribute_range()) {
+			if(attr == "id" || attr == "name" || attr == "first_time_only" || attr.compare(0, 6, "filter") == 0) {
+				continue;
+			}
+			args[attr] = val;
+		}
+		for(auto child : handler.all_children_range()) {
+			if(child.key.compare(0, 6, "filter") != 0) {
+				args.add_child(child.key, child.cfg);
+			}
+		}
+		new_handler->set_arguments(args);
+		new_handler->register_wml_event(lk);
+		DBG_EH << "Registered WML event "
+			<< (new_handler->names_raw().empty() ? "" : "'" + new_handler->names_raw() + "'")
+			<< (new_handler->id().empty() ? "" : "{id=" + new_handler->id() + "}")
+			<< (new_handler->repeatable() ? " (repeating" : " (first time only")
+			<< (is_menu_item ? "; menu item)" : ")")
+			<< " with the following actions:\n"
+			<< args.debug();
+	} else {
+		LOG_EH << "Content of failed event:\n" << handler.debug() << "\n";
+	}
+}
+
+pending_event_handler manager::add_event_handler_from_lua(const std::string& name, const std::string& id, bool repeat, bool is_menu_item)
+{
+	return event_handlers_->add_event_handler(name, id, repeat, is_menu_item);
 }
 
 /** Removes an event handler. */
@@ -94,7 +129,7 @@ manager::manager()
 void manager::read_scenario(const config& scenario_cfg, game_lua_kernel& lk)
 {
 	for(const config& ev : scenario_cfg.child_range("event")) {
-		add_event_handler(ev, lk);
+		add_event_handler_from_wml(ev, lk);
 	}
 
 	for(const std::string& id : utils::split(scenario_cfg["unit_wml_ids"])) {
@@ -127,7 +162,7 @@ void manager::add_events(const config::const_child_itors& cfgs, game_lua_kernel&
 			continue;
 		}
 
-		add_event_handler(new_ev, lk);
+		add_event_handler_from_wml(new_ev, lk);
 	}
 }
 
@@ -150,7 +185,7 @@ void manager::write_events(config& cfg) const
 			assert(!eh->disabled());
 		}
 
-		cfg.add_child("event", eh->get_config());;
+		eh->write_config(cfg.add_child("event"));
 	}
 
 	cfg["unit_wml_ids"] = utils::join(unit_wml_ids_);
@@ -188,24 +223,8 @@ void manager::execute_on_events(const std::string& event_id, manager::event_func
 			}
 
 			// Could be more than one.
-			for (const std::string& name : handler->names()) {
-				bool matches = false;
-
-				if (utils::might_contain_variables(name)) {
-					// If we don't have gamedata, we can't interpolate variables, so there's
-					// no way the name will match. Move on to the next one in that case.
-					if (!gd) {
-						continue;
-					}
-
-					matches = standardized_event_id ==
-						event_handlers::standardize_name(utils::interpolate_variables_into_string(name, *gd));
-				}
-				else {
-					matches = standardized_event_id == name;
-				}
-
-				if (matches) {
+			for(const std::string& name : handler->names(gd)) {
+				if(standardized_event_id == name) {
 					func(*this, handler);
 					break;
 				}

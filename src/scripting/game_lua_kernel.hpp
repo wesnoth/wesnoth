@@ -219,11 +219,40 @@ public:
 	bool run_filter(char const *name, const team& t);
 	bool run_filter(char const *name, int nArgs);
 	bool run_wml_conditional(const std::string&, const vconfig&);
-	/** Store a WML event in the Lua registry, as a function */
-	int save_wml_event(const config& evt);
-	/** Clear a WML event store in the Lua registry */
+	/**
+	 * Store a WML event in the Lua registry, as a function.
+	 * Uses a default function that interprets ActionWML.
+	 * @return A unique index into the EVENT_TABLE within the Lua registry
+	 */
+	int save_wml_event();
+	/**
+	 * Store a WML event in the Lua registry, as a function.
+	 * Compiles the function from the given code.
+	 * @param name The event name, used to generate a chunk name for the compiled function
+	 * @param id The event id, used to generate a chunk name for the compiled function
+	 * @param code The actual code of the function
+	 * @return A unique index into the EVENT_TABLE within the Lua registry
+	 */
+	int save_wml_event(const std::string& name, const std::string& id, const std::string& code);
+	/**
+	 * Store a WML event in the Lua registry, as a function.
+	 * Uses the function at the specified Lua stack index.
+	 * @param idx The Lua stack index of the function to store
+	 * @return A unique index into the EVENT_TABLE within the Lua registry
+	 */
+	int save_wml_event(int idx);
+	/**
+	 * Clear a WML event store in the Lua registry.
+	 * @param ref The unique index into the EVENT_TABLE within the Lua registry
+	 */
 	void clear_wml_event(int ref);
-	/** Run a WML store in the Lua registry */
+	/**
+	 * Run a WML stored in the Lua registry.
+	 * @param ref The unique index into the EVENT_TABLE within the Lua registry
+	 * @param args Arguments to pass to the event function, as a config
+	 * @param ev The event data for the event being fired
+	 * @return Whether the function was successfully called; could be false if @a ref was invalid or if the function raised an error
+	 */
 	bool run_wml_event(int ref, const vconfig& args, const game_events::queued_event& ev);
 
 	virtual void log_error(char const* msg, char const* context = "Lua error") override;

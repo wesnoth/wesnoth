@@ -40,6 +40,7 @@ public:
 	bool match(const team& t) const;
 	bool match(const int side) const;
 	std::vector<int> get_teams() const;
+	const config& get_config() const {return cfg_.get_config();}
 
 private:
 	side_filter(const side_filter &other);

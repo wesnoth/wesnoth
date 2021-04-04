@@ -82,6 +82,12 @@ namespace lua_check_impl
 		return luaL_checkstring(L, n);
 	}
 	template<typename T>
+	std::enable_if_t<std::is_same_v<T, std::string>, std::string>
+	lua_to_or_default(lua_State *L, int n, const T& def)
+	{
+		return luaL_optstring(L, n, def.c_str());
+	}
+	template<typename T>
 	std::enable_if_t<std::is_same_v<T, std::string>, void>
 	lua_push(lua_State *L, const T& val)
 	{
@@ -114,6 +120,13 @@ namespace lua_check_impl
 	lua_check(lua_State *L, int n)
 	{
 		return luaW_checkconfig(L, n);
+	}
+	template<typename T>
+	std::enable_if_t<std::is_same_v<T, config>, config>
+	lua_to_or_default(lua_State *L, int n, const T& def)
+	{
+		config cfg;
+		return luaW_toconfig(L, n, cfg) ? cfg : def;
 	}
 	template<typename T>
 	std::enable_if_t<std::is_same_v<T, config>, void>
