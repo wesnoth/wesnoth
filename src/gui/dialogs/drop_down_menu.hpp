@@ -102,13 +102,10 @@ private:
 	 * */
 	bool mouse_down_happened_;
 
-	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const override;
 
-	/** Inherited from modal_dialog. */
 	virtual void pre_show(window& window) override;
 
-	/** Inherited from modal_dialog. */
 	virtual void post_show(window& window) override;
 
 	void mouse_up_callback(bool&, bool&, const point& coordinate);

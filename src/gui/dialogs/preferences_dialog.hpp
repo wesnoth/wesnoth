@@ -77,10 +77,8 @@ public:
 	typedef std::vector<const hotkey::hotkey_command*> visible_hotkeys_t;
 
 private:
-	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const override;
 
-	/** Inherited from modal_dialog. */
 	virtual void post_build(window& window) override;
 	virtual void pre_show(window& window) override;
 	virtual void post_show(window& /*window*/) override;

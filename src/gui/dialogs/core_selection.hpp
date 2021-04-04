@@ -53,13 +53,10 @@ private:
 	/** Called when another core is selected. */
 	void core_selected() const;
 
-	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const override;
 
-	/** Inherited from modal_dialog. */
 	virtual void pre_show(window& window) override;
 
-	/** Inherited from modal_dialog. */
 	virtual void post_show(window& window) override;
 
 	/** Contains the config objects for all cores. */

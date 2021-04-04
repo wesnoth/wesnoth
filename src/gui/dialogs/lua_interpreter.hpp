@@ -31,7 +31,6 @@ public:
 
 	lua_interpreter(lua_kernel_base & lk);
 
-	/** Inherited from modal_dialog. */
 	virtual void pre_show(window& window) override;
 
 	enum WHICH_KERNEL { APP, GAME };
@@ -40,7 +39,6 @@ public:
 private:
 	const std::unique_ptr<controller> controller_;
 
-	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const override;
 };
 

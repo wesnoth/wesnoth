@@ -43,13 +43,10 @@ private:
 	std::map<std::string, group<std::string>> groups_;
 	std::vector<std::string> domain_list_, widget_id_;
 
-	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const override;
 
-	/** Inherited from modal_dialog. */
 	virtual void pre_show(window& window) override;
 
-	/** Inherited from modal_dialog. */
 	virtual void post_show(window& window) override;
 
 	void filter_text_changed(const std::string& text);

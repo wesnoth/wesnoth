@@ -40,13 +40,10 @@ public:
 	bool fetch_game_config();
 	bool started() const { return level_["started"].to_bool(); }
 private:
-	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const override;
 
-	/** Inherited from modal_dialog. */
 	virtual void pre_show(window& window) override;
 
-	/** Inherited from modal_dialog. */
 	virtual void post_show(window& window) override;
 
 	/** @returns false if an error ocurred. */

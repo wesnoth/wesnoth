@@ -36,10 +36,8 @@ public:
 	DEFINE_SIMPLE_DISPLAY_WRAPPER(end_credits)
 
 private:
-	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const override;
 
-	/** Inherited from modal_dialog. */
 	virtual void pre_show(window& window) override;
 
 	void timer_callback();

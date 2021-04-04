@@ -32,13 +32,11 @@ public:
 
 	DEFINE_SIMPLE_DISPLAY_WRAPPER(chat_log)
 
-	/** Inherited from modal_dialog. */
 	virtual void pre_show(window& window) override;
 
 	std::shared_ptr<view> get_view() const;
 
 private:
-	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const override;
 
 	std::shared_ptr<view> view_;

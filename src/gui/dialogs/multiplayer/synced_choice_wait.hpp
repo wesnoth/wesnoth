@@ -35,10 +35,8 @@ private:
 	user_choice_manager& mgr_;
 	label* message_;
 
-	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const override;
 
-	/** Inherited from modal_dialog. */
 	virtual void pre_show(window& window) override;
 
 	virtual void handle_generic_event(const std::string& event_name) override;

@@ -59,7 +59,6 @@ namespace gui2::dialogs
  * Call this function to register a window. In the header of the class it adds
  * the following code:
  *@code
- *  // Inherited from modal_dialog, implemented by REGISTER_DIALOG.
  *	virtual const std::string& id() const;
  *@endcode
  * Then use this macro in the implementation, inside the gui2 namespace.

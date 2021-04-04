@@ -204,10 +204,8 @@ private:
 	int current_bookmark_;
 	int user_bookmarks_begin_;
 
-	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const override;
 
-	/** Inherited from modal_dialog. */
 	virtual void pre_show(window& window) override;
 
 	/** Handles dialog exit events and decides whether to proceed or not. */

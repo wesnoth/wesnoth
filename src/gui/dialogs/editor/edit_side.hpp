@@ -53,7 +53,6 @@ private:
 	team::SHARE_VISION& share_vision_;
 	group<team::SHARE_VISION> vision_group;
 
-	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const override;
 };
 } // namespace dialogs

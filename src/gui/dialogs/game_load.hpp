@@ -53,10 +53,8 @@ public:
 	static bool execute(const game_config_view& cache_config, savegame::load_game_metadata& data);
 
 private:
-	/** Inherited from modal_dialog. */
 	virtual void pre_show(window& window) override;
 
-	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const override;
 
 	void set_save_dir_list(menu_button& dir_list);
