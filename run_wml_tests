@@ -128,7 +128,7 @@ class WesnothRunner:
             else:
                 path = options.path
             if os.path.isdir(path):
-            path += "/wesnoth"
+                path += "/wesnoth"
             if options.debug_bin:
                 path += "-debug"
         self.common_args = [path, "--nobanner"]
