@@ -697,6 +697,7 @@
 		91979795261A6FA1001E8133 /* test_formula_timespan.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91979794261A6FA1001E8133 /* test_formula_timespan.cpp */; };
 		9197979C261A6FCA001E8133 /* wml_equivalence.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9197979B261A6FCA001E8133 /* wml_equivalence.cpp */; };
 		919797A7261A6FDB001E8133 /* test_macro_define.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 919797A6261A6FDB001E8133 /* test_macro_define.cpp */; };
+		919797B6261A7399001E8133 /* addon_auth.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 919797322619A151001E8133 /* addon_auth.cpp */; };
 		919B37F81BAF789E00E0094C /* synced_user_choice.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 919B37F71BAF789D00E0094C /* synced_user_choice.cpp */; };
 		91A214E51CAD666B00927AEA /* arrow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B52EE8A1121359A600CFBDAB /* arrow.cpp */; };
 		91A214E71CAD666B00927AEA /* cursor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5599A9D0EC62181008DD061 /* cursor.cpp */; };
@@ -4565,7 +4566,6 @@
 		B597C49D0FACD3F900CE81F5 /* tests */ = {
 			isa = PBXGroup;
 			children = (
-				919797A5261A6FDB001E8133 /* wml */,
 				B597C4CA0FACD43B00CE81F5 /* gui */,
 				B597C4A90FACD42E00CE81F5 /* main.cpp */,
 				91E356091CACA6CB00774252 /* test_addons.cpp */,
@@ -4592,6 +4592,7 @@
 				B597C4A40FACD42E00CE81F5 /* test_version.cpp */,
 				91E356181CACA6CB00774252 /* test_whiteboard_side_actions.cpp */,
 				B597C4B80FACD43B00CE81F5 /* utils */,
+				919797A5261A6FDB001E8133 /* wml */,
 			);
 			name = tests;
 			path = ../../src/tests;
@@ -5913,6 +5914,7 @@
 				46F92E822174F6A400602C1C /* styled_widget.cpp in Sources */,
 				91E356CD1CACC8DA00774252 /* open.cpp in Sources */,
 				91E356CE1CACC8DA00774252 /* version.cpp in Sources */,
+				919797B6261A7399001E8133 /* addon_auth.cpp in Sources */,
 				91E356CF1CACC8F200774252 /* editor_controller.cpp in Sources */,
 				91E356D01CACC8F200774252 /* editor_display.cpp in Sources */,
 				46F92DB22174F6A300602C1C /* wml_message.cpp in Sources */,
