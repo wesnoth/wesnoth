@@ -143,7 +143,6 @@
 		4685A5FB25B4501E006FD3A1 /* match_history.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4685A5F925B4501E006FD3A1 /* match_history.cpp */; };
 		4685A60225B45064006FD3A1 /* game_history.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4685A60025B45064006FD3A1 /* game_history.cpp */; };
 		4685A60325B45064006FD3A1 /* game_history.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4685A60025B45064006FD3A1 /* game_history.cpp */; };
-		4685E3712417F9C000CB1ED8 /* data in Resources */ = {isa = PBXBuildFile; fileRef = 4685E3702417F9BF00CB1ED8 /* data */; };
 		468A5B93258CD3B5004A80EF /* libboost_chrono-mt.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 468A5B85258CD3B4004A80EF /* libboost_chrono-mt.dylib */; };
 		468A5B94258CD3B5004A80EF /* libboost_context-mt.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 468A5B86258CD3B4004A80EF /* libboost_context-mt.dylib */; };
 		468A5B95258CD3B5004A80EF /* libboost_prg_exec_monitor-mt.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 468A5B87258CD3B4004A80EF /* libboost_prg_exec_monitor-mt.dylib */; };
@@ -693,6 +692,8 @@
 		9193FC831D5C2D00004F6C07 /* lua_unit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9193FC801D5C2CF7004F6C07 /* lua_unit.cpp */; };
 		9193FC861D5D7461004F6C07 /* lua_unit_attacks.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9193FC841D5D7452004F6C07 /* lua_unit_attacks.cpp */; };
 		9193FC871D5D7461004F6C07 /* lua_unit_attacks.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9193FC841D5D7452004F6C07 /* lua_unit_attacks.cpp */; };
+		919796F4261433AD001E8133 /* data in Resources */ = {isa = PBXBuildFile; fileRef = 4685E3702417F9BF00CB1ED8 /* data */; };
+		919797332619A151001E8133 /* addon_auth.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 919797322619A151001E8133 /* addon_auth.cpp */; };
 		919B37F81BAF789E00E0094C /* synced_user_choice.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 919B37F71BAF789D00E0094C /* synced_user_choice.cpp */; };
 		91A214E51CAD666B00927AEA /* arrow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B52EE8A1121359A600CFBDAB /* arrow.cpp */; };
 		91A214E71CAD666B00927AEA /* cursor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5599A9D0EC62181008DD061 /* cursor.cpp */; };
@@ -1527,7 +1528,6 @@
 		466C740225FD2DF0003757EE /* sdl_ttf_compat.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = sdl_ttf_compat.hpp; path = font/sdl_ttf_compat.hpp; sourceTree = "<group>"; };
 		4674EE9B24CD1E64007C18CE /* libfribidi.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libfribidi.0.dylib; path = lib/libfribidi.0.dylib; sourceTree = "<group>"; };
 		4674EE9F24CD207F007C18CE /* libgio-2.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libgio-2.0.0.dylib"; path = "lib/libgio-2.0.0.dylib"; sourceTree = "<group>"; };
-		4675F091257A494E00ADF791 /* optional_fwd.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = optional_fwd.hpp; sourceTree = "<group>"; };
 		4675F092257A494E00ADF791 /* optimer.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = optimer.hpp; sourceTree = "<group>"; };
 		4675F093257A495A00ADF791 /* scope_exit.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = scope_exit.hpp; sourceTree = "<group>"; };
 		467D9DF0205EC3D200FA2FC4 /* userevent.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = userevent.hpp; sourceTree = "<group>"; };
@@ -2095,6 +2095,22 @@
 		9193FC811D5C2CF8004F6C07 /* lua_unit.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = lua_unit.hpp; sourceTree = "<group>"; };
 		9193FC841D5D7452004F6C07 /* lua_unit_attacks.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lua_unit_attacks.cpp; sourceTree = "<group>"; };
 		9193FC851D5D745D004F6C07 /* lua_unit_attacks.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = lua_unit_attacks.hpp; sourceTree = "<group>"; };
+		9197972426199E8C001E8133 /* pathutils_impl.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = pathutils_impl.hpp; sourceTree = "<group>"; };
+		9197972526199F0B001E8133 /* variable_info_private.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = variable_info_private.hpp; sourceTree = "<group>"; };
+		9197972626199F25001E8133 /* wesnoth_lua_config.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = wesnoth_lua_config.h; sourceTree = "<group>"; };
+		9197972726199F54001E8133 /* wml_separators.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = wml_separators.hpp; sourceTree = "<group>"; };
+		9197972826199F9D001E8133 /* optional_reference.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = optional_reference.hpp; sourceTree = "<group>"; };
+		9197972926199FA5001E8133 /* ranges.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ranges.hpp; sourceTree = "<group>"; };
+		9197972A26199FB5001E8133 /* variant.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = variant.hpp; sourceTree = "<group>"; };
+		9197972B26199FC6001E8133 /* alignment.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = alignment.hpp; sourceTree = "<group>"; };
+		9197972C26199FD6001E8133 /* frame_private.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = frame_private.hpp; sourceTree = "<group>"; };
+		9197972D26199FE8001E8133 /* type_error.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = type_error.hpp; sourceTree = "<group>"; };
+		9197972E2619A006001E8133 /* movement.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = movement.hpp; sourceTree = "<group>"; };
+		919797302619A095001E8133 /* lua_stringx.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = lua_stringx.hpp; sourceTree = "<group>"; };
+		919797312619A0D0001E8133 /* lua_wml.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = lua_wml.hpp; sourceTree = "<group>"; };
+		919797322619A151001E8133 /* addon_auth.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = addon_auth.cpp; sourceTree = "<group>"; };
+		919797382619A155001E8133 /* addon_auth.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = addon_auth.hpp; sourceTree = "<group>"; };
+		919797392619A29E001E8133 /* fwd.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = fwd.hpp; sourceTree = "<group>"; };
 		919B37F71BAF789D00E0094C /* synced_user_choice.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = synced_user_choice.cpp; sourceTree = "<group>"; };
 		919B37F91BAF78AB00E0094C /* synced_user_choice.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = synced_user_choice.hpp; sourceTree = "<group>"; };
 		91A214E41CAD618700927AEA /* gettext.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = gettext.hpp; sourceTree = "<group>"; };
@@ -3139,6 +3155,7 @@
 				B55BE02C11234AAB00154E6C /* pathfind */,
 				B55999D20EC62181008DD061 /* pathutils.cpp */,
 				B55999D10EC62181008DD061 /* pathutils.hpp */,
+				9197972426199E8C001E8133 /* pathutils_impl.hpp */,
 				B52EE8B9121359A600CFBDAB /* persist_context.cpp */,
 				B52EE8BA121359A600CFBDAB /* persist_context.hpp */,
 				B52EE8BB121359A600CFBDAB /* persist_manager.cpp */,
@@ -3235,6 +3252,7 @@
 				91EF6C0A1C9F1D9000E2A733 /* units */,
 				91EF6BF01C9E217C00E2A733 /* utils */,
 				91B6219D1B76737200B00E0F /* variable_info_detail.hpp */,
+				9197972526199F0B001E8133 /* variable_info_private.hpp */,
 				EC2864311967990500168DFF /* variable_info.cpp */,
 				EC2864321967990500168DFF /* variable_info.hpp */,
 				B559996B0EC62181008DD061 /* variable.cpp */,
@@ -3242,6 +3260,7 @@
 				B55999650EC62181008DD061 /* video.cpp */,
 				B55999640EC62181008DD061 /* video.hpp */,
 				B55999620EC62181008DD061 /* wesconfig.h */,
+				9197972626199F25001E8133 /* wesnoth_lua_config.h */,
 				EC219453196064C500420969 /* wesnoth.cpp */,
 				918C8A1B1D05F9AA009744A0 /* wesnothd_connection_error.hpp */,
 				918C8A1C1D05F9AA009744A0 /* wesnothd_connection.cpp */,
@@ -3250,6 +3269,7 @@
 				B55999440EC62181008DD061 /* widgets */,
 				B55999430EC62181008DD061 /* wml_exception.cpp */,
 				B55999420EC62181008DD061 /* wml_exception.hpp */,
+				9197972726199F54001E8133 /* wml_separators.hpp */,
 				91B621AC1B76B05700B00E0F /* xBRZ */,
 			);
 			name = src;
@@ -3609,6 +3629,8 @@
 		46F92C9A2174F6A300602C1C /* addon */ = {
 			isa = PBXGroup;
 			children = (
+				919797322619A151001E8133 /* addon_auth.cpp */,
+				919797382619A155001E8133 /* addon_auth.hpp */,
 				46F92C9F2174F6A300602C1C /* connect.cpp */,
 				46F92C9D2174F6A300602C1C /* connect.hpp */,
 				46F92C9C2174F6A300602C1C /* install_dependencies.cpp */,
@@ -3630,9 +3652,9 @@
 				46F92CC02174F6A300602C1C /* faction_select.hpp */,
 				46F92CD62174F6A300602C1C /* lobby.cpp */,
 				46F92CBE2174F6A300602C1C /* lobby.hpp */,
-				46F92CCA2174F6A300602C1C /* mp_alerts_options.cpp */,
 				4685A5F925B4501E006FD3A1 /* match_history.cpp */,
 				4685A5FA25B4501E006FD3A1 /* match_history.hpp */,
+				46F92CCA2174F6A300602C1C /* mp_alerts_options.cpp */,
 				46F92CD22174F6A300602C1C /* mp_alerts_options.hpp */,
 				46F92CD52174F6A300602C1C /* mp_change_control.cpp */,
 				46F92CBD2174F6A300602C1C /* mp_change_control.hpp */,
@@ -3968,6 +3990,7 @@
 				62CC8E6D17B9063D00C16B75 /* conditional_wml.hpp */,
 				62CC8E6E17B9063D00C16B75 /* entity_location.cpp */,
 				62CC8E6F17B9063D00C16B75 /* entity_location.hpp */,
+				919797392619A29E001E8133 /* fwd.hpp */,
 				62CC8E7017B9063D00C16B75 /* handlers.cpp */,
 				62CC8E7117B9063D00C16B75 /* handlers.hpp */,
 				ECDF181E1A3FE0DE00D157A6 /* manager_impl.cpp */,
@@ -4190,12 +4213,14 @@
 				913D26761D3C9697002FF3AB /* name_generator_factory.hpp */,
 				91C55DA11CC078780040012E /* name_generator.hpp */,
 				4675F092257A494E00ADF791 /* optimer.hpp */,
-				4675F091257A494E00ADF791 /* optional_fwd.hpp */,
+				9197972826199F9D001E8133 /* optional_reference.hpp */,
 				46B58F4121E097900070BB8E /* parse_network_address.cpp */,
 				46B58F4221E097900070BB8E /* parse_network_address.hpp */,
+				9197972926199FA5001E8133 /* ranges.hpp */,
 				91EF6C001C9E22E400E2A733 /* reference_counter.hpp */,
 				4675F093257A495A00ADF791 /* scope_exit.hpp */,
 				469CA216253C52120045A0B3 /* shared_reference.hpp */,
+				9197972A26199FB5001E8133 /* variant.hpp */,
 			);
 			path = utils;
 			sourceTree = "<group>";
@@ -4237,6 +4262,7 @@
 				ECBBD73C1928F3F100E434C6 /* builder.hpp */,
 				B55999930EC62181008DD061 /* filter.cpp */,
 				B55999920EC62181008DD061 /* filter.hpp */,
+				9197972E2619A006001E8133 /* movement.hpp */,
 				B55999950EC62181008DD061 /* terrain.cpp */,
 				B55999940EC62181008DD061 /* terrain.hpp */,
 				B55999910EC62181008DD061 /* translation.cpp */,
@@ -4252,6 +4278,7 @@
 			children = (
 				B559997D0EC62181008DD061 /* abilities.cpp */,
 				B559997C0EC62181008DD061 /* abilities.hpp */,
+				9197972B26199FC6001E8133 /* alignment.hpp */,
 				EC386CEF195119A9006004ED /* animation_component.cpp */,
 				EC386CF0195119AA006004ED /* animation_component.hpp */,
 				B559997B0EC62181008DD061 /* animation.cpp */,
@@ -4264,6 +4291,7 @@
 				EC28642F1967988F00168DFF /* filter.hpp */,
 				EC08023A194D0A80009E0050 /* formula_manager.cpp */,
 				EC08023B194D0A80009E0050 /* formula_manager.hpp */,
+				9197972C26199FD6001E8133 /* frame_private.hpp */,
 				B55999770EC62181008DD061 /* frame.cpp */,
 				B55999760EC62181008DD061 /* frame.hpp */,
 				B52EE8C7121359A600CFBDAB /* helper.cpp */,
@@ -4279,6 +4307,7 @@
 				91B6219C1B76735200B00E0F /* ptr.hpp */,
 				B55999C00EC62181008DD061 /* race.cpp */,
 				B55999BF0EC62181008DD061 /* race.hpp */,
+				9197972D26199FE8001E8133 /* type_error.hpp */,
 				B55999710EC62181008DD061 /* types.cpp */,
 				B55999700EC62181008DD061 /* types.hpp */,
 				B55999790EC62181008DD061 /* udisplay.cpp */,
@@ -4633,11 +4662,13 @@
 				9190B73A1CA0554900B0EF66 /* lua_pathfind_cost_calculator.hpp */,
 				ECFB61831DA0A0C50055D3F8 /* lua_preferences.cpp */,
 				ECFB61841DA0A0C50055D3F8 /* lua_preferences.hpp */,
+				46E2D99525022D46003D99F3 /* lua_ptr.hpp */,
 				ECC2FFF91A51A00900023AF4 /* lua_race.cpp */,
 				91B621EB1B76BB1D00B00E0F /* lua_race.hpp */,
 				ECA4A67A1A1EC319006BCCF2 /* lua_rng.cpp */,
 				91B621EC1B76BB2200B00E0F /* lua_rng.hpp */,
 				ECF0F80023A09929004A2011 /* lua_stringx.cpp */,
+				919797302619A095001E8133 /* lua_stringx.hpp */,
 				EC5430211A4E6024006D206C /* lua_team.cpp */,
 				91B621ED1B76BB2600B00E0F /* lua_team.hpp */,
 				46BDBBE6217C6F6100D2820C /* lua_terrainfilter.cpp */,
@@ -4650,7 +4681,6 @@
 				91B621EE1B76BB2C00B00E0F /* lua_unit_type.hpp */,
 				9193FC801D5C2CF7004F6C07 /* lua_unit.cpp */,
 				9193FC811D5C2CF8004F6C07 /* lua_unit.hpp */,
-				46E2D99525022D46003D99F3 /* lua_ptr.hpp */,
 				46E2D98D25022BF5003D99F3 /* lua_widget_attributes.cpp */,
 				46E2D98A25022BF4003D99F3 /* lua_widget_attributes.hpp */,
 				46E2D98E25022BF5003D99F3 /* lua_widget_methods.cpp */,
@@ -4658,6 +4688,7 @@
 				46E2D98B25022BF5003D99F3 /* lua_widget.cpp */,
 				46E2D98C25022BF5003D99F3 /* lua_widget.hpp */,
 				ECF0F80223A09932004A2011 /* lua_wml.cpp */,
+				919797312619A0D0001E8133 /* lua_wml.hpp */,
 				EC59F2601A4529D2001910CB /* manager.cpp */,
 				91B621E31B76BAF600B00E0F /* manager.hpp */,
 				ECA1E1001A12755B00426E00 /* mapgen_lua_kernel.cpp */,
@@ -4970,11 +5001,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				46F302EE220327FE0028938F /* container-migration.plist in Resources */,
+				919796F4261433AD001E8133 /* data in Resources */,
 				B5A9B2290ECA4074002BE442 /* fonts in Resources */,
 				B5A9BE2A0ECE927C002BE442 /* icon.icns in Resources */,
 				B5A9B22B0ECA4074002BE442 /* images in Resources */,
 				B5BB6EFE0F93B83500444FBF /* SDLMain.nib in Resources */,
-				4685E3712417F9C000CB1ED8 /* data in Resources */,
 				B5A9B22C0ECA4074002BE442 /* sounds in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -5183,6 +5214,7 @@
 				ECFB61851DA0A0C50055D3F8 /* lua_preferences.cpp in Sources */,
 				B5599B6D0EC62181008DD061 /* tokenizer.cpp in Sources */,
 				46F92E512174F6A400602C1C /* widget.cpp in Sources */,
+				919797332619A151001E8133 /* addon_auth.cpp in Sources */,
 				B5599B700EC62181008DD061 /* formula.cpp in Sources */,
 				B5951A9C1013BB5A00C10B66 /* function_table.cpp in Sources */,
 				ECFB9FAA193BFB4B00146ED0 /* game_board.cpp in Sources */,
