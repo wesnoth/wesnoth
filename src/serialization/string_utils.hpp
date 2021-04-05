@@ -158,17 +158,20 @@ std::vector< std::string > parenthetical_split(
  *
  * Examples:
  *
- * INPUT:   ("a[1-3](1,[5,6,7]),b[8,9]", ",")
+ * INPUT:   ("a[1~3](1,[5,6,7]),b[8,9]", ",")
  * RETURNS: {"a1(1,5)", "a2(1,6)", "a3(1,7)", "b8", "b9"}
  *
- * INPUT:   ("abc[07-10]")
+ * INPUT:   ("abc[07~10]")
  * RETURNS: {"abc07", "abc08", "abc09", "abc10"}
  *
- * INPUT:   ("a[1,2]b[3-4]:c[5,6]")
+ * INPUT:   ("a[1,2]b[3~4]:c[5,6]")
  * RETURNS: {"a1b3:c5", "a2b4:c6"}
  *
- * INPUT:   ("abc[3,1].png")
+ * INPUT:   ("abc[3~1].png")
  * RETURNS: {"abc3.png", "abc2.png", "abc1.png"}
+ *
+ * INPUT:   ("abc[3,1].png")
+ * RETURNS: {"abc3.png", "abc1.png"}
  *
  * INPUT:   ("abc[de,xyz]")
  * RETURNS: {"abcde", "abcxyz"}
