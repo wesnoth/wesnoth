@@ -381,6 +381,105 @@ BOOST_AUTO_TEST_CASE( utils_parenthetical_split_test )
 	}
 }
 
+BOOST_AUTO_TEST_CASE( utils_square_parenthetical_split )
+{
+	{
+		auto split = utils::square_parenthetical_split(" a ,, b ,, c ");
+		std::array expect = {"a", "b", "c"};
+		BOOST_CHECK_EQUAL_COLLECTIONS(split.begin(), split.end(), expect.begin(), expect.end());
+	}
+	{
+		auto split = utils::square_parenthetical_split(" a ,, b ,, c ", ',', "([", ")]", utils::REMOVE_EMPTY | utils::STRIP_SPACES);
+		std::array expect = {"a", "b", "c"};
+		BOOST_CHECK_EQUAL_COLLECTIONS(split.begin(), split.end(), expect.begin(), expect.end());
+	}
+	{
+		auto split = utils::square_parenthetical_split(" a ,, b ,, c ", ',', "([", ")]", utils::REMOVE_EMPTY);
+		std::array expect = {" a ", " b ", " c "};
+		BOOST_CHECK_EQUAL_COLLECTIONS(split.begin(), split.end(), expect.begin(), expect.end());
+	}
+	{
+		auto split = utils::square_parenthetical_split(" a ,, b ,, c ", ',', "([", ")]", utils::STRIP_SPACES);
+		std::array expect = {"a", "", "b", "", "c"};
+		BOOST_CHECK_EQUAL_COLLECTIONS(split.begin(), split.end(), expect.begin(), expect.end());
+	}
+	{
+		auto split = utils::square_parenthetical_split(" a ,, b ,, c ", ',', "([", ")]", 0);
+		std::array expect = {" a ", "", " b ", "", " c "};
+		BOOST_CHECK_EQUAL_COLLECTIONS(split.begin(), split.end(), expect.begin(), expect.end());
+	}
+	{
+		auto split = utils::square_parenthetical_split("[a*3]");
+		std::array expect = {"a", "a", "a"};
+		BOOST_CHECK_EQUAL_COLLECTIONS(split.begin(), split.end(), expect.begin(), expect.end());
+	}
+	{
+		auto split = utils::square_parenthetical_split("q[a*3,b,c*2]");
+		std::array expect = {"qa", "qa", "qa", "qb", "qc", "qc"};
+		BOOST_CHECK_EQUAL_COLLECTIONS(split.begin(), split.end(), expect.begin(), expect.end());
+	}
+	{
+		auto split = utils::square_parenthetical_split("q[a,b,c]");
+		std::array expect = {"qa", "qb", "qc"};
+		BOOST_CHECK_EQUAL_COLLECTIONS(split.begin(), split.end(), expect.begin(), expect.end());
+	}
+	{
+		auto split = utils::square_parenthetical_split("q[1~5]");
+		std::array expect = {"q1", "q2", "q3", "q4", "q5"};
+		BOOST_CHECK_EQUAL_COLLECTIONS(split.begin(), split.end(), expect.begin(), expect.end());
+	}
+	{
+		auto split = utils::square_parenthetical_split("q[5~1]");
+		std::array expect = {"q5", "q4", "q3", "q2", "q1"};
+		BOOST_CHECK_EQUAL_COLLECTIONS(split.begin(), split.end(), expect.begin(), expect.end());
+	}
+	{
+		auto split = utils::square_parenthetical_split("q[001~005]");
+		std::array expect = {"q001", "q002", "q003", "q004", "q005"};
+		BOOST_CHECK_EQUAL_COLLECTIONS(split.begin(), split.end(), expect.begin(), expect.end());
+	}
+	{
+		auto split = utils::square_parenthetical_split("q[007~012]");
+		std::array expect = {"q007", "q008", "q009", "q010", "q011", "q012"};
+		BOOST_CHECK_EQUAL_COLLECTIONS(split.begin(), split.end(), expect.begin(), expect.end());
+	}
+	{
+		auto split = utils::square_parenthetical_split("a[1~3](1,[5,6,7]),b[8,9]");
+		std::array expect = {"a1(1,5)", "a2(1,6)", "a3(1,7)", "b8", "b9"};
+		BOOST_CHECK_EQUAL_COLLECTIONS(split.begin(), split.end(), expect.begin(), expect.end());
+	}
+	{
+		auto split = utils::square_parenthetical_split("abc[07~10]");
+		std::array expect = {"abc07", "abc08", "abc09", "abc10"};
+		BOOST_CHECK_EQUAL_COLLECTIONS(split.begin(), split.end(), expect.begin(), expect.end());
+	}
+	{
+		auto split = utils::square_parenthetical_split("a[1,2]b[3~4]:c[5,6]");
+		std::array expect = {"a1b3:c5", "a2b4:c6"};
+		BOOST_CHECK_EQUAL_COLLECTIONS(split.begin(), split.end(), expect.begin(), expect.end());
+	}
+	{
+		auto split = utils::square_parenthetical_split("abc[3~1].png");
+		std::array expect = {"abc3.png", "abc2.png", "abc1.png"};
+		BOOST_CHECK_EQUAL_COLLECTIONS(split.begin(), split.end(), expect.begin(), expect.end());
+	}
+	{
+		auto split = utils::square_parenthetical_split("abc[3,1].png");
+		std::array expect = {"abc3.png", "abc1.png"};
+		BOOST_CHECK_EQUAL_COLLECTIONS(split.begin(), split.end(), expect.begin(), expect.end());
+	}
+	{
+		auto split = utils::square_parenthetical_split("abc[de,xyz]");
+		std::array expect = {"abcde", "abcxyz"};
+		BOOST_CHECK_EQUAL_COLLECTIONS(split.begin(), split.end(), expect.begin(), expect.end());
+	}
+	{
+		auto split = utils::square_parenthetical_split("abc[1*3]");
+		std::array expect = {"abc1", "abc1", "abc1"};
+		BOOST_CHECK_EQUAL_COLLECTIONS(split.begin(), split.end(), expect.begin(), expect.end());
+	}
+}
+
 BOOST_AUTO_TEST_CASE( utils_unicode_test )
 {
 	std::string unicode = "ünicod€ check";
