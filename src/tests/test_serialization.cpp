@@ -336,6 +336,51 @@ BOOST_AUTO_TEST_CASE( utils_map_split_test )
 	}
 }
 
+BOOST_AUTO_TEST_CASE( utils_parenthetical_split_test )
+{
+	{
+		auto split = utils::parenthetical_split("a ( b ) c { d } e ( f { g } ) h", 0, "({", ")}");
+		std::array expect = {"a", "b", "c", "d", "e", "f { g }", "h"};
+		BOOST_CHECK_EQUAL_COLLECTIONS(split.begin(), split.end(), expect.begin(), expect.end());
+	}
+	{
+		auto split = utils::parenthetical_split("a ( b ) c { d } e ( f { g } ) h", 0, "({", ")}", utils::STRIP_SPACES);
+		std::array expect = {"a", "b", "c", "d", "e", "f { g }", "h"};
+		BOOST_CHECK_EQUAL_COLLECTIONS(split.begin(), split.end(), expect.begin(), expect.end());
+	}
+	{
+		auto split = utils::parenthetical_split("a ( b ) c { d } e ( f { g } ) h", 0, "({", ")}", 0);
+		std::array expect = {"a ", " b ", " c ", " d ", " e ", " f { g } ", " h"};
+		BOOST_CHECK_EQUAL_COLLECTIONS(split.begin(), split.end(), expect.begin(), expect.end());
+	}
+	
+	{
+		auto split = utils::parenthetical_split("a, (b, c), {d, e},, f(g,g), h{i,i}", ',', "({", ")}");
+		std::array expect = {"a", "(b, c)", "{d, e}", "f(g,g)", "h{i,i}"};
+		BOOST_CHECK_EQUAL_COLLECTIONS(split.begin(), split.end(), expect.begin(), expect.end());
+	}
+	{
+		auto split = utils::parenthetical_split("a, (b, c), {d, e},, f(g,g), h{i,i}", ',', "({", ")}", utils::REMOVE_EMPTY | utils::STRIP_SPACES);
+		std::array expect = {"a", "(b, c)", "{d, e}", "f(g,g)", "h{i,i}"};
+		BOOST_CHECK_EQUAL_COLLECTIONS(split.begin(), split.end(), expect.begin(), expect.end());
+	}
+	{
+		auto split = utils::parenthetical_split("a, (b, c), {d, e},, f(g,g), h{i,i}", ',', "({", ")}", utils::REMOVE_EMPTY);
+		std::array expect = {"a", " (b, c)", " {d, e}", " f(g,g)", " h{i,i}"};
+		BOOST_CHECK_EQUAL_COLLECTIONS(split.begin(), split.end(), expect.begin(), expect.end());
+	}
+	{
+		auto split = utils::parenthetical_split("a, (b, c), {d, e},, f(g,g), h{i,i}", ',', "({", ")}", utils::STRIP_SPACES);
+		std::array expect = {"a", "(b, c)", "{d, e}", "", "f(g,g)", "h{i,i}"};
+		BOOST_CHECK_EQUAL_COLLECTIONS(split.begin(), split.end(), expect.begin(), expect.end());
+	}
+	{
+		auto split = utils::parenthetical_split("a, (b, c), {d, e},, f(g,g), h{i,i}", ',', "({", ")}", 0);
+		std::array expect = {"a", " (b, c)", " {d, e}", "", " f(g,g)", " h{i,i}"};
+		BOOST_CHECK_EQUAL_COLLECTIONS(split.begin(), split.end(), expect.begin(), expect.end());
+	}
+}
+
 BOOST_AUTO_TEST_CASE( utils_unicode_test )
 {
 	std::string unicode = "ünicod€ check";
