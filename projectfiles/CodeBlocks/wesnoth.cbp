@@ -91,10 +91,6 @@
 		<Unit filename="../../packaging/windows/wesnoth.rc">
 			<Option compilerVar="WINDRES" />
 		</Unit>
-		<Unit filename="../../src/crypt_blowfish/crypt_blowfish.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="../../src/crypt_blowfish/crypt_blowfish.h" />
 		<Unit filename="../../src/about.cpp" />
 		<Unit filename="../../src/about.hpp" />
 		<Unit filename="../../src/actions/advancement.cpp" />
@@ -250,6 +246,10 @@
 		<Unit filename="../../src/controller_base.hpp" />
 		<Unit filename="../../src/countdown_clock.cpp" />
 		<Unit filename="../../src/countdown_clock.hpp" />
+		<Unit filename="../../src/crypt_blowfish/crypt_blowfish.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../src/crypt_blowfish/crypt_blowfish.h" />
 		<Unit filename="../../src/cursor.cpp" />
 		<Unit filename="../../src/cursor.hpp" />
 		<Unit filename="../../src/deprecation.cpp" />
@@ -537,6 +537,8 @@
 		<Unit filename="../../src/gui/core/window_builder/helper.hpp" />
 		<Unit filename="../../src/gui/core/window_builder/instance.cpp" />
 		<Unit filename="../../src/gui/core/window_builder/instance.hpp" />
+		<Unit filename="../../src/gui/dialogs/addon/addon_auth.cpp" />
+		<Unit filename="../../src/gui/dialogs/addon/addon_auth.hpp" />
 		<Unit filename="../../src/gui/dialogs/addon/connect.cpp" />
 		<Unit filename="../../src/gui/dialogs/addon/connect.hpp" />
 		<Unit filename="../../src/gui/dialogs/addon/install_dependencies.cpp" />
