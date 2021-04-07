@@ -593,7 +593,7 @@ endif(ENABLE_CAMPAIGN_SERVER AND NOT ENABLE_GAME)
 #
 if(ENABLE_DESKTOP_ENTRY AND ENABLE_GAME)
 	install(FILES packaging/org.wesnoth.Wesnoth.desktop DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/applications )
-	install(DIRECTORY packaging/icons/hicolor DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/icons )
+	install(DIRECTORY packaging/icons/hicolor packaging/icons/HighContrast DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/icons )
 endif(ENABLE_DESKTOP_ENTRY AND ENABLE_GAME)
 
 if(ENABLE_APPDATA_FILE AND ENABLE_GAME)
