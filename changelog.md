@@ -19,6 +19,7 @@
    * Modify implementation of overwrite_specials attribute for replace yes/no parameter by none/one_side/both_sides and select abilities used like weapons and specials who must be overwrited(owned by fighter where special applied or both)
  ### Miscellaneous and Bug Fixes
    * More optimizations in the UI drawing code, these shouldn't have visible effects (PR #5681).
+   * Further optimised rendering text, fixes the crash displaying the full credits (issue #5043).
    * Made GUI.pyw compatible with Python 3.9 (issue #5719).
    * Removed workarounds for bugs affecting older SDL 2.0 versions, including an extra copy of the game screen made during gamemap scrolling (PR #5736).
 
