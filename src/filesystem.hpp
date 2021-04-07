@@ -252,8 +252,11 @@ inline bool is_compressed_file(const std::string& filename) {
  * This is meant to be used for any files created by Wesnoth where user input
  * is required, including save files and add-on files for uploading to the
  * add-ons server.
+ *
+ * @param name                 File name to verify.
+ * @param allow_whitespace     Whether whitespace should be allowed.
  */
-bool is_legal_user_file_name(const std::string& name);
+bool is_legal_user_file_name(const std::string& name, bool allow_whitespace = true);
 
 struct file_tree_checksum
 {
