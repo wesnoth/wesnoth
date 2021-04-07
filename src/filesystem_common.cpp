@@ -31,7 +31,7 @@ static lg::log_domain log_filesystem("filesystem");
 namespace filesystem
 {
 
-bool is_legal_user_file_name(const std::string& name)
+bool is_legal_user_file_name(const std::string& name, bool allow_whitespace)
 {
 	//
 	// IMPORTANT NOTE:
@@ -77,10 +77,11 @@ bool is_legal_user_file_name(const std::string& name)
 		return false; // name is an invalid UTF-8 sequence
 	}
 
-	return name_ucs4.end() == std::find_if(name_ucs4.begin(), name_ucs4.end(), [](char32_t c)
+	return name_ucs4.end() == std::find_if(name_ucs4.begin(), name_ucs4.end(), [=](char32_t c)
 	{
 		switch(c) {
 			case ' ':
+				return !allow_whitespace;
 			case '"':
 			case '*':
 			case '/':

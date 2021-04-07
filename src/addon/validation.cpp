@@ -68,7 +68,7 @@ bool addon_filename_legal(const std::string& name)
 	// Currently just a wrapper for filesystem::is_legal_user_file_name().
 	// This is allowed to change in the future. Do not remove this wrapper.
 	// I will hunt you down if you do.
-	return filesystem::is_legal_user_file_name(name);
+	return filesystem::is_legal_user_file_name(name, false);
 }
 
 namespace {
