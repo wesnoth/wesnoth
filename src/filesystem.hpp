@@ -246,6 +246,15 @@ inline bool is_compressed_file(const std::string& filename) {
 	return is_gzip_file(filename) || is_bzip2_file(filename);
 }
 
+/**
+ * Returns whether the given filename is a legal name for a user-created file.
+ *
+ * This is meant to be used for any files created by Wesnoth where user input
+ * is required, including save files and add-on files for uploading to the
+ * add-ons server.
+ */
+bool is_legal_user_file_name(const std::string& name);
+
 struct file_tree_checksum
 {
 	file_tree_checksum();
