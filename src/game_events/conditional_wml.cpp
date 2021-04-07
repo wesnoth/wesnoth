@@ -138,6 +138,8 @@ namespace builtin_conditions {
 #undef TEST_STR_ATTR
 #undef TEST_NUM_ATTR
 #undef TEST_BOL_ATTR
+
+		lg::wml_error() << "[variable] found with no comparison attribute\n";
 		return true;
 	}
 }
