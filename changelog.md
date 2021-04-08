@@ -15,13 +15,16 @@
    * Rename tusker/gorer references to boars and piglets, to avoid stepping on existing UMC
  ### User interface
    * Added logs folder path to the Game Version dialog on Windows.
+   * Added built-in Lua engine version to the Game Version dialog and `--report`.
    * Made Accelerated Speed toggle announcement not stackable over itself or other announcements.
    * Minor adjustments to the sidebar's minimap area in the default game theme to reclaim empty and uneven space back. Note that this WILL break custom WML themes that use the same sidebar graphics as the default theme.
    * Minor adjustment to the placement of numerals on the debug clock.
+   * Players now receive an error message when attempting to save games using illegal file names (issue #5679).
  ### WML Engine
  ### Miscellaneous and Bug Fixes
    * Fixed units with max movement set to zero being given one max movement point by `[unstore_unit]` or when loading a saved game
    * Fixed an intermittent crash on the loading screen (issue #5629)
+   * wmlunits (units.wesnoth.org) no longer incorrectly assumes that units with movement costs equal to their maximum movement can't move into the affected terrains.
 
 ## Version 1.15.11
  ### AI
