@@ -735,6 +735,20 @@ bool wildcard_string_match(const std::string& str, const std::string& match) {
 	return matches;
 }
 
+void to_sql_wildcards(std::string& str, bool underscores)
+{
+	std::replace(str.begin(), str.end(), '*', '%');
+	if(underscores)
+	{
+		std::size_t n = 0;
+		while((n = str.find("_", n)) != std::string::npos)
+		{
+			str.replace(n, 1, "\\_");
+			n += 2;
+		}
+	}
+}
+
 std::string indent(const std::string& string, std::size_t indent_size)
 {
 	if(indent_size == 0) {

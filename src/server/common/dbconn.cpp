@@ -17,7 +17,9 @@
 #include "server/common/resultsets/tournaments.hpp"
 #include "server/common/resultsets/ban_check.hpp"
 #include "server/common/resultsets/game_history.hpp"
+
 #include "log.hpp"
+#include "serialization/unicode.hpp"
 
 static lg::log_domain log_sql_handler("sql_executor");
 #define ERR_SQL LOG_STREAM(err, log_sql_handler)
@@ -36,6 +38,7 @@ dbconn::dbconn(const config& c)
 	, db_tournament_query_(c["db_tournament_query"].str())
 	, db_topics_table_(c["db_topics_table"].str())
 	, db_addon_info_table_(c["db_addon_info_table"].str())
+	, db_connection_history_table_(c["db_connection_history_table"].str())
 {
 	try
 	{
@@ -372,6 +375,75 @@ void dbconn::insert_addon_info(const std::string& instance_version, const std::s
 	}
 }
 
+unsigned long long dbconn::insert_login(const std::string& username, const std::string& ip)
+{
+	try
+	{
+		return modify(connection_, "INSERT INTO `"+db_connection_history_table_+"`(USER_NAME, IP) values(lower(?), ?)",
+			username, ip);
+	}
+	catch(const mariadb::exception::base& e)
+	{
+		log_sql_exception("Unable to insert login row user `"+username+"` and ip `"+ip+"`.", e);
+		return 0;
+	}
+}
+
+void dbconn::update_logout(unsigned long long login_id)
+{
+	try
+	{
+		modify(connection_, "UPDATE `"+db_connection_history_table_+"` SET LOGOUT_TIME = CURRENT_TIMESTAMP WHERE LOGIN_ID = ?",
+			login_id);
+	}
+	catch(const mariadb::exception::base& e)
+	{
+		log_sql_exception("Unable to update login row `"+std::to_string(login_id)+"`.", e);
+	}
+}
+
+void dbconn::get_users_for_ip(const std::string& ip, std::ostringstream* out)
+{
+	try
+	{
+		mariadb::result_set_ref rslt = select(connection_, "SELECT USER_NAME, IP, date_format(LOGIN_TIME, '%Y/%m/%d %h:%i:%s'), coalesce(date_format(LOGOUT_TIME, '%Y/%m/%d %h:%i:%s'), '(not set)') FROM `"+db_connection_history_table_+"` WHERE IP LIKE ? order by LOGIN_TIME",
+			ip);
+		
+		*out << "\nCount of results for ip: " << rslt->row_count();
+
+		while(rslt->next())
+		{
+			*out << "\nFound user " << rslt->get_string(0) << " with ip " << rslt->get_string(1)
+			     << ", logged in at " << rslt->get_string(2) << " and logged out at " << rslt->get_string(3);
+		}
+	}
+	catch(const mariadb::exception::base& e)
+	{
+		log_sql_exception("Unable to select rows for ip `"+ip+"`.", e);
+	}
+}
+
+void dbconn::get_ips_for_user(const std::string& username, std::ostringstream* out)
+{
+	try
+	{
+		mariadb::result_set_ref rslt = select(connection_, "SELECT USER_NAME, IP, date_format(LOGIN_TIME, '%Y/%m/%d %h:%i:%s'), coalesce(date_format(LOGOUT_TIME, '%Y/%m/%d %h:%i:%s'), '(not set)') FROM `"+db_connection_history_table_+"` WHERE USER_NAME LIKE ? order by LOGIN_TIME",
+			utf8::lowercase(username));
+		
+		*out << "\nCount of results for user: " << rslt->row_count();
+		
+		while(rslt->next())
+		{
+			*out << "\nFound user " << rslt->get_string(0) << " with ip " << rslt->get_string(1)
+			     << ", logged in at " << rslt->get_string(2) << " and logged out at " << rslt->get_string(3);
+		}
+	}
+	catch(const mariadb::exception::base& e)
+	{
+		log_sql_exception("Unable to select rows for player `"+username+"`.", e);
+	}
+}
+
 //
 // handle complex query results
 //
@@ -457,12 +529,12 @@ mariadb::result_set_ref dbconn::select(mariadb::connection_ref connection, const
 	}
 }
 template<typename... Args>
-int dbconn::modify(mariadb::connection_ref connection, const std::string& sql, Args&&... args)
+unsigned long long dbconn::modify(mariadb::connection_ref connection, const std::string& sql, Args&&... args)
 {
 	try
 	{
 		mariadb::statement_ref stmt = query(connection, sql, args...);
-		int count = stmt->insert();
+		unsigned long long count = stmt->insert();
 		return count;
 	}
 	catch(const mariadb::exception::base& e)
@@ -506,6 +578,12 @@ template<>
 int dbconn::prepare(mariadb::statement_ref stmt, int i, long arg)
 {
 	stmt->set_signed64(i++, arg);
+	return i;
+}
+template<>
+int dbconn::prepare(mariadb::statement_ref stmt, int i, unsigned long long arg)
+{
+	stmt->set_unsigned64(i++, arg);
 	return i;
 }
 template<>

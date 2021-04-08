@@ -144,4 +144,8 @@ public:
 	virtual void async_test_query(boost::asio::io_service& io_service, int limit) = 0;
 	virtual bool db_topic_id_exists(int topic_id) = 0;
 	virtual void db_insert_addon_info(const std::string& instance_version, const std::string& id, const std::string& name, const std::string& type, const std::string& version, bool forum_auth, int topic_id) = 0;
+	virtual unsigned long long db_insert_login(const std::string& username, const std::string& ip) = 0;
+	virtual void db_update_logout(unsigned long long login_id) = 0;
+	virtual void get_users_for_ip(const std::string& ip, std::ostringstream* out) = 0;
+	virtual void get_ips_for_user(const std::string& username, std::ostringstream* out) = 0;
 };

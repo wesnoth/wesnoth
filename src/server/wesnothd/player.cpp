@@ -15,7 +15,7 @@
 #include "server/wesnothd/player.hpp"
 
 wesnothd::player::player(const std::string& n, simple_wml::node& cfg, int id,
-                         bool registered, const std::string& version, const std::string& source, const std::size_t max_messages,
+                         bool registered, const std::string& version, const std::string& source, unsigned long long login_id, const std::size_t max_messages,
                          const std::size_t time_period,
                          const bool moderator)
   : name_(n)
@@ -29,6 +29,7 @@ wesnothd::player::player(const std::string& n, simple_wml::node& cfg, int id,
   , TimePeriod(time_period)
   , status_(LOBBY)
   , moderator_(moderator)
+  , login_id_(login_id)
 {
 	cfg_.set_attr_dup("name", n.c_str());
 	cfg_.set_attr("registered", registered ? "yes" : "no");

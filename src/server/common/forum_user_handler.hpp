@@ -221,6 +221,40 @@ public:
 	 */
 	void db_insert_addon_info(const std::string& instance_version, const std::string& id, const std::string& name, const std::string& type, const std::string& version, bool forum_auth, int topic_id);
 
+	/**
+	 * Inserts into the database for when a player logs in.
+	 * 
+	 * @param username The username of who logged in. The username is converted to lower case when inserting in order to allow index usage when querying.
+	 * @param ip The ip address of who logged in.
+	 */
+	unsigned long long db_insert_login(const std::string& username, const std::string& ip);
+
+	/**
+	 * Updates the database for when a player logs out.
+	 * 
+	 * @param login_id The generated ID that uniquely identifies the row to be updated.
+	 */
+	void db_update_logout(unsigned long long login_id);
+
+	/**
+	 * Searches for all players that logged in using the ip address.
+	 * The '%' wildcard can be used to search for partial ip addresses.
+	 * 
+	 * @param ip The ip address to search for.
+	 * @param out Where to output the results.
+	 */
+	void get_users_for_ip(const std::string& ip, std::ostringstream* out);
+
+	/**
+	 * Searches for all ip addresses used by the player.
+	 * The username is converted to lower case to allow a case insensitive select query to be executed while still using an index.
+	 * The '%' wildcard can be used to search for partial usernames.
+	 * 
+	 * @param username The username to search for.
+	 * @param out Where to output the results.
+	 */
+	void get_ips_for_user(const std::string& username, std::ostringstream* out);
+
 private:
 	/** An instance of the class responsible for executing the queries and handling the database connection. */
 	dbconn conn_;
