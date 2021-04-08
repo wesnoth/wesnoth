@@ -31,6 +31,20 @@ BOOST_AUTO_TEST_CASE( validation )
 	BOOST_CHECK( !addon_filename_legal("invalid~tilde") );
 	BOOST_CHECK( !addon_filename_legal("invalid/../parent") );
 
+	std::vector<std::string> ddns = { "NUL", "CON", "AUX", "PRN", "CONIN$", "CONOUT$" };
+	for(unsigned i = 1; i < 10; ++i) {
+		ddns.emplace_back(std::string{"LPT"} + std::to_string(i));
+		ddns.emplace_back(std::string{"COM"} + std::to_string(i));
+	}
+
+	for(const auto& name : ddns) {
+		BOOST_CHECK( addon_filename_legal("foo.bar." + name) );
+		BOOST_CHECK( addon_filename_legal("foo." + name + ".bar") );
+		BOOST_CHECK( !addon_filename_legal(name + ".foo.bar") );
+		BOOST_CHECK( !addon_filename_legal(name + ':') );
+		BOOST_CHECK( !addon_filename_legal(name) );
+	}
+
 	BOOST_CHECK( addon_name_legal("-0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ_abcdefghijklmnopqrstuvwxyz") );
 
 	BOOST_CHECK( !addon_name_legal("invalid\nnewline") );
