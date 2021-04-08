@@ -1327,7 +1327,7 @@ class HTMLOutput:
                 classes_cost.append('rating-' + cost_rating)
             if defense_rating:
                 classes_defense.append('rating-' + defense_rating)
-            if move_cost == '-' or int_fallback(total_movement) <= int_fallback(move_cost, 99):
+            if move_cost == '-' or int_fallback(total_movement) < int_fallback(move_cost, 99):
                 move_cost = HTML_ENTITY_FIGURE_DASH
             else:
                 move_cost = cleantext(move_cost, quote=False)
