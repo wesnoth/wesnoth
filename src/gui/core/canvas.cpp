@@ -803,7 +803,6 @@ canvas::canvas()
 	, w_(0)
 	, h_(0)
 	, canvas_()
-	, renderer_(nullptr)
 	, variables_()
 	, functions_()
 	, is_dirty_(true)
@@ -817,17 +816,10 @@ canvas::canvas(canvas&& c) noexcept
 	, w_(c.w_)
 	, h_(c.h_)
 	, canvas_(std::move(c.canvas_))
-	, renderer_(std::exchange(c.renderer_, nullptr))
 	, variables_(c.variables_)
 	, functions_(c.functions_)
 	, is_dirty_(c.is_dirty_)
 {
-}
-
-canvas::~canvas()
-{
-	if(renderer_)
-		SDL_DestroyRenderer(renderer_);
 }
 
 void canvas::draw(const bool force)
@@ -844,33 +836,31 @@ void canvas::draw(const bool force)
 		variables_.add("height", wfl::variant(h_));
 	}
 
+	auto renderer = std::unique_ptr<SDL_Renderer, decltype(&SDL_DestroyRenderer)> {nullptr, &SDL_DestroyRenderer};
 	if(canvas_) {
 		DBG_GUI_D << "Canvas: use cached canvas.\n";
+		renderer.reset(SDL_CreateSoftwareRenderer(canvas_));
+		SDL_SetRenderDrawColor(renderer.get(), 0, 0, 0, 0);
+		SDL_RenderClear(renderer.get());
 	} else {
-		// create surface
 		DBG_GUI_D << "Canvas: create new empty canvas.\n";
 		canvas_ = surface(w_, h_);
+		renderer.reset(SDL_CreateSoftwareRenderer(canvas_));
 	}
-
-	if(renderer_) {
-		SDL_DestroyRenderer(renderer_);
-	}
-
-	renderer_ = SDL_CreateSoftwareRenderer(canvas_);
-	SDL_SetRenderDrawBlendMode(renderer_, SDL_BLENDMODE_BLEND);
+	SDL_SetRenderDrawBlendMode(renderer.get(), SDL_BLENDMODE_BLEND);
 
 	// draw items
 	for(auto& shape : shapes_) {
 		lg::scope_logger inner_scope_logging_object__(log_gui_draw, "Canvas: draw shape.");
 
-		shape->draw(canvas_, renderer_, variables_);
+		shape->draw(canvas_, renderer.get(), variables_);
 	}
 
 	// The shapes have been drawn and the draw result has been cached. Clear the list.
 	std::copy(shapes_.begin(), shapes_.end(), std::back_inserter(drawn_shapes_));
 	shapes_.clear();
 
-	SDL_RenderPresent(renderer_);
+	SDL_RenderPresent(renderer.get());
 
 	is_dirty_ = false;
 }

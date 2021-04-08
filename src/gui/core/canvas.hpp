@@ -91,8 +91,6 @@ public:
 	canvas(const canvas&) = delete;
 	canvas(canvas&& c) noexcept;
 
-	~canvas();
-
 	/**
 	 * Draws the canvas.
 	 *
@@ -204,8 +202,6 @@ private:
 
 	/** The surface we draw all items on. */
 	surface canvas_;
-
-	SDL_Renderer* renderer_;
 
 	/** The variables of the canvas. */
 	wfl::map_formula_callable variables_;
