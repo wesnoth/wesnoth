@@ -798,7 +798,6 @@ void text_shape::draw(surface& canvas,
 
 canvas::canvas()
 	: shapes_()
-	, drawn_shapes_()
 	, blur_depth_(0)
 	, w_(0)
 	, h_(0)
@@ -811,7 +810,6 @@ canvas::canvas()
 
 canvas::canvas(canvas&& c) noexcept
 	: shapes_(std::move(c.shapes_))
-	, drawn_shapes_(std::move(c.drawn_shapes_))
 	, blur_depth_(c.blur_depth_)
 	, w_(c.w_)
 	, h_(c.h_)
@@ -856,10 +854,6 @@ void canvas::draw(const bool force)
 		shape->draw(canvas_, renderer.get(), variables_);
 	}
 
-	// The shapes have been drawn and the draw result has been cached. Clear the list.
-	std::copy(shapes_.begin(), shapes_.end(), std::back_inserter(drawn_shapes_));
-	shapes_.clear();
-
 	SDL_RenderPresent(renderer.get());
 
 	is_dirty_ = false;
@@ -901,17 +895,17 @@ void canvas::parse_cfg(const config& cfg)
 		DBG_GUI_P << "Canvas: found shape of the type " << type << ".\n";
 
 		if(type == "line") {
-			shapes_.emplace_back(std::make_shared<line_shape>(data));
+			shapes_.emplace_back(std::make_unique<line_shape>(data));
 		} else if(type == "rectangle") {
-			shapes_.emplace_back(std::make_shared<rectangle_shape>(data));
+			shapes_.emplace_back(std::make_unique<rectangle_shape>(data));
 		} else if(type == "round_rectangle") {
-			shapes_.emplace_back(std::make_shared<round_rectangle_shape>(data));
+			shapes_.emplace_back(std::make_unique<round_rectangle_shape>(data));
 		} else if(type == "circle") {
-			shapes_.emplace_back(std::make_shared<circle_shape>(data));
+			shapes_.emplace_back(std::make_unique<circle_shape>(data));
 		} else if(type == "image") {
-			shapes_.emplace_back(std::make_shared<image_shape>(data, functions_));
+			shapes_.emplace_back(std::make_unique<image_shape>(data, functions_));
 		} else if(type == "text") {
-			shapes_.emplace_back(std::make_shared<text_shape>(data));
+			shapes_.emplace_back(std::make_unique<text_shape>(data));
 		} else if(type == "pre_commit") {
 
 			/* note this should get split if more preprocessing is used. */
@@ -939,28 +933,17 @@ void canvas::clear_shapes(const bool force)
 {
 	if(force) {
 		shapes_.clear();
-		drawn_shapes_.clear();
 	} else {
-		auto conditional = [](const shape_ptr s)->bool { return !s->immutable(); };
+		auto conditional = [](const std::unique_ptr<shape>& s)->bool { return !s->immutable(); };
 
 		auto iter = std::remove_if(shapes_.begin(), shapes_.end(), conditional);
 		shapes_.erase(iter, shapes_.end());
-
-		iter = std::remove_if(drawn_shapes_.begin(), drawn_shapes_.end(), conditional);
-		drawn_shapes_.erase(iter, drawn_shapes_.end());
 	}
 }
 
 void canvas::invalidate_cache()
 {
 	canvas_ = nullptr;
-
-	if(shapes_.empty()) {
-		shapes_.swap(drawn_shapes_);
-	} else {
-		std::copy(drawn_shapes_.begin(), drawn_shapes_.end(), std::inserter(shapes_, shapes_.begin()));
-		drawn_shapes_.clear();
-	}
 }
 
 /***** ***** ***** ***** ***** SHAPE ***** ***** ***** ***** *****/

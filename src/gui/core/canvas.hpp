@@ -84,9 +84,6 @@ public:
 		bool immutable_;
 	};
 
-	typedef std::shared_ptr<shape> shape_ptr;
-	typedef std::shared_ptr<const shape> const_shape_ptr;
-
 	canvas();
 	canvas(const canvas&) = delete;
 	canvas(canvas&& c) noexcept;
@@ -178,11 +175,7 @@ public:
 
 private:
 	/** Vector with the shapes to draw. */
-	std::vector<shape_ptr> shapes_;
-
-	/** All shapes which have been already drawn. Kept around in case
-	 * the cache needs to be invalidated. */
-	std::vector<shape_ptr> drawn_shapes_;
+	std::vector<std::unique_ptr<shape>> shapes_;
 
 	/**
 	 * The depth of the blur to use in the pre committing.
