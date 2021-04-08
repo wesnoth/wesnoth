@@ -174,17 +174,19 @@ class WesnothRunner:
                 timeout = self.timeout
             else:
                 timeout = self.batch_timeout
-        if len(test_list) == 1:
-            print("Running test", test_list[0].name)
-        else:
-            print("Running {count} tests ({names})".format(count=len(test_list),
-                names=", ".join([test.name for test in test_list])))
-        if self.verbose > 1:
-            print(repr(args))
+        if self.verbose > 0:
+            if len(test_list) == 1:
+                print("Running test", test_list[0].name)
+            else:
+                print("Running {count} tests ({names})".format(count=len(test_list),
+                    names=", ".join([test.name for test in test_list])))
+            if self.verbose > 1:
+                print(repr(args))
         try:
             res = run_with_rerun_for_sdl_video(args, timeout)
         except subprocess.TimeoutExpired as t:
-            print("Timed out (killed by Python timeout implementation)")
+            if self.verbose > 0:
+                print("Timed out (killed by Python timeout implementation)")
             res = subprocess.CompletedProcess(args, UnitTestResult.TIMEOUT.value, t.output or b'')
         if self.verbose > 0:
             print(res.stdout.decode('utf-8'))
@@ -210,7 +212,10 @@ class WesnothRunner:
             raise UnexpectedTestStatusException()
         if returned_result != expected_result:
             if self.verbose == 0:
-                print(res.stdout.decode('utf-8'))
+                for line in res.stdout.decode('utf-8').splitlines():
+                    if expected_result == UnitTestResult.PASS and line.startswith("PASS TEST"):
+                        continue
+                    print(line)
             print("Failure, Wesnoth returned", returned_result, "but we expected", expected_result)
             test_summary.fail_test()
             test_summary.skip_test(len(test_list) - num_passed - 1)
@@ -305,7 +310,7 @@ if __name__ == '__main__':
                 batch = batch[just_passed + 1 :]
                 test_summary.skip_test(-len(batch))
 
-    print("Result:", test_summary.passed, "of", test_summary.total, "tests passed")
+    print("Result:" if options.verbose > 0 else "WML Unit Tests Result:", test_summary.passed, "of", test_summary.total, "tests passed")
 
     if test_summary.passed != test_summary.total:
         breakdown = ["{0} passed".format(test_summary.passed)]
