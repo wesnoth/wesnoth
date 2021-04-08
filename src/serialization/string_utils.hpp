@@ -353,6 +353,14 @@ bool word_match(const std::string& message, const std::string& word);
 bool wildcard_string_match(const std::string& str, const std::string& match);
 
 /**
+ * Converts '*' to '%' and optionally escapes '_'.
+ * 
+ * @param str The original string.
+ * @param underscores Whether to escape underscore characters as well.
+ */
+void to_sql_wildcards(std::string& str, bool underscores = true);
+
+/**
  * Check if the username contains only valid characters.
  *
  * (all alpha-numeric characters plus underscore and hyphen)

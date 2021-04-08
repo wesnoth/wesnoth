@@ -91,6 +91,7 @@ CREATE INDEX START_TIME_IDX ON game_info(START_TIME);
 -- FACTION: the faction being played by this side
 -- CLIENT_VERSION: the version of the wesnoth client used to connect
 -- CLIENT_SOURCE: where the wesnoth client was downloaded from - SourceForge, Steam, etc
+-- USER_NAME: the username logged in with
 create table game_player_info
 (
     INSTANCE_UUID  CHAR(36) NOT NULL,
@@ -145,3 +146,21 @@ create table addon_info
     FEEDBACK_TOPIC   INT UNSIGNED NOT NULL,
     PRIMARY KEY (INSTANCE_VERSION, ADDON_ID, VERSION)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- history of user sessions
+-- LOGIN_ID: auto generated ID to use as a primary key
+-- USER_NAME: the username logged in with
+-- IP: the IP address the login originated from
+-- LOGIN_TIME: when the user logged in
+-- LOGOUT_TIME: when the user logged out
+create table connection_history
+(
+    LOGIN_ID    BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+    USER_NAME   VARCHAR(255) NOT NULL,
+    IP          VARCHAR(255) NOT NULL,
+    LOGIN_TIME  TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    LOGOUT_TIME TIMESTAMP NULL DEFAULT NULL,
+    PRIMARY KEY (LOGIN_ID)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+CREATE INDEX CONNECTION_IP_IDX ON connection_history(IP);
+CREATE INDEX CONNECTION_USERNAME_IDX ON connection_history(USER_NAME);

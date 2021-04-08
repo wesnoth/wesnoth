@@ -251,4 +251,20 @@ void fuh::db_insert_addon_info(const std::string& instance_version, const std::s
 	conn_.insert_addon_info(instance_version, id, name, type, version, forum_auth, topic_id);
 }
 
+unsigned long long fuh::db_insert_login(const std::string& username, const std::string& ip) {
+	return conn_.insert_login(username, ip);
+}
+
+void fuh::db_update_logout(unsigned long long login_id) {
+	conn_.update_logout(login_id);
+}
+
+void fuh::get_users_for_ip(const std::string& ip, std::ostringstream* out) {
+	conn_.get_users_for_ip(ip, out);
+}
+
+void fuh::get_ips_for_user(const std::string& username, std::ostringstream* out) {
+	conn_.get_ips_for_user(username, out);
+}
+
 #endif //HAVE_MYSQLPP

@@ -153,6 +153,26 @@ class dbconn
 		 */
 		void insert_addon_info(const std::string& instance_version, const std::string& id, const std::string& name, const std::string& type, const std::string& version, bool forum_auth, int topic_id);
 
+		/**
+		 * @see forum_user_handler::db_insert_login().
+		 */
+		unsigned long long insert_login(const std::string& username, const std::string& ip);
+
+		/**
+		 * @see forum_user_handler::db_update_logout().
+		 */
+		void update_logout(unsigned long long login_id);
+
+		/**
+		 * @see forum_user_handler::get_users_for_ip().
+		 */
+		void get_users_for_ip(const std::string& ip, std::ostringstream* out);
+
+		/**
+		 * @see forum_user_handler::get_ips_for_users().
+		 */
+		void get_ips_for_user(const std::string& username, std::ostringstream* out);
+
 	private:
 		/**
 		 * The account used to connect to the database.
@@ -183,6 +203,8 @@ class dbconn
 		std::string db_topics_table_;
 		/** The name of the table that contains add-on information. */
 		std::string db_addon_info_table_;
+		/** The name of the table that contains user connection history. */
+		std::string db_connection_history_table_;
 
 		/**
 		 * This is used to write out error text when an SQL-related exception occurs.
@@ -258,7 +280,7 @@ class dbconn
 		 * @return The number of rows modified.
 		 */
 		template<typename... Args>
-		int modify(mariadb::connection_ref connection, const std::string& sql, Args&&... args);
+		unsigned long long modify(mariadb::connection_ref connection, const std::string& sql, Args&&... args);
 
 		/**
 		 * Begins recursively unpacking of the parameter pack in order to be able to call the correct parameterized setters on the query.

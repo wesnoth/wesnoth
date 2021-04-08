@@ -709,6 +709,7 @@ void server::login_client(boost::asio::yield_context yield, socket_ptr socket)
 		registered,
 		client_version,
 		client_source,
+		user_handler_ ? user_handler_->db_insert_login(username, client_address(socket)) : 0,
 		default_max_messages_,
 		default_time_period_,
 		is_moderator
@@ -731,14 +732,16 @@ void server::login_client(boost::asio::yield_context yield, socket_ptr socket)
 	}
 
 	// Log the IP
-	connection_log ip_name { username, client_address(socket), 0 };
+	if(!user_handler_) {
+		connection_log ip_name { username, client_address(socket), 0 };
 
-	if(std::find(ip_log_.begin(), ip_log_.end(), ip_name) == ip_log_.end()) {
-		ip_log_.push_back(ip_name);
+		if(std::find(ip_log_.begin(), ip_log_.end(), ip_name) == ip_log_.end()) {
+			ip_log_.push_back(ip_name);
 
-		// Remove the oldest entry if the size of the IP log exceeds the maximum size
-		if(ip_log_.size() > max_ip_log_size_) {
-			ip_log_.pop_front();
+			// Remove the oldest entry if the size of the IP log exceeds the maximum size
+			if(ip_log_.size() > max_ip_log_size_) {
+				ip_log_.pop_front();
+			}
 		}
 	}
 }
@@ -1888,15 +1891,18 @@ void server::remove_player(player_iterator iter)
 
 	games_and_users_list_.root().remove_child("user", index);
 
-	LOG_SERVER << ip << "\t" << iter->info().name() << "\twas logged off"
-			   << "\n";
+	LOG_SERVER << ip << "\t" << iter->info().name() << "\thas logged off\n";
 
 	// Find the matching nick-ip pair in the log and update the sign off time
-	connection_log ip_name { iter->info().name(), ip, 0 };
+	if(user_handler_) {
+		user_handler_->db_update_logout(iter->info().get_login_id());
+	} else {
+		connection_log ip_name { iter->info().name(), ip, 0 };
 
-	auto i = std::find(ip_log_.begin(), ip_log_.end(), ip_name);
-	if(i != ip_log_.end()) {
-		i->log_off = std::time(nullptr);
+		auto i = std::find(ip_log_.begin(), ip_log_.end(), ip_name);
+		if(i != ip_log_.end()) {
+			i->log_off = std::time(nullptr);
+		}
 	}
 
 	player_connections_.erase(iter);
@@ -2505,23 +2511,7 @@ void server::ban_handler(
 		}
 
 		if(!banned) {
-			// If nobody was banned yet check the ip_log but only if a
-			// simple username was used to prevent accidental bans.
-			// @todo FIXME: since we can have several entries now we should only ban the latest or so
-			/*if (utils::isvalid_username(target)) {
-				for (std::deque<connection_log>::const_iterator i = ip_log_.begin();
-						i != ip_log_.end(); ++i) {
-					if (i->nick == target) {
-						if (banned) out << "\n";
-						else banned = true;
-						out << ban_manager_.ban(i->ip, parsed_time, reason, issuer_name, group, target);
-					}
-				}
-			}*/
-
-			if(!banned) {
-				*out << "Nickname mask '" << target << "' did not match, no bans set.";
-			}
+			*out << "Nickname mask '" << target << "' did not match, no bans set.";
 		}
 	}
 }
@@ -2591,22 +2581,7 @@ void server::kickban_handler(
 		}
 
 		if(!banned) {
-			// If nobody was banned yet check the ip_log but only if a
-			// simple username was used to prevent accidental bans.
-			// @todo FIXME: since we can have several entries now we should only ban the latest or so
-			/*if (utils::isvalid_username(target)) {
-					for (std::deque<connection_log>::const_iterator i = ip_log_.begin();
-							i != ip_log_.end(); ++i) {
-						if (i->nick == target) {
-							if (banned) out << "\n";
-							else banned = true;
-							out << ban_manager_.ban(i->ip, parsed_time, reason, issuer_name, group, target);
-						}
-					}
-				}*/
-			if(!banned) {
-				*out << "Nickname mask '" << target << "' did not match, no bans set.";
-			}
+			*out << "Nickname mask '" << target << "' did not match, no bans set.";
 		}
 	}
 
@@ -2677,22 +2652,7 @@ void server::gban_handler(
 		}
 
 		if(!banned) {
-			// If nobody was banned yet check the ip_log but only if a
-			// simple username was used to prevent accidental bans.
-			// @todo FIXME: since we can have several entries now we should only ban the latest or so
-			/*if (utils::isvalid_username(target)) {
-						for (std::deque<connection_log>::const_iterator i = ip_log_.begin();
-								i != ip_log_.end(); ++i) {
-							if (i->nick == target) {
-								if (banned) out << "\n";
-								else banned = true;
-								out << ban_manager_.ban(i->ip, parsed_time, reason, issuer_name, group, target);
-							}
-						}
-					}*/
-			if(!banned) {
-				*out << "Nickname mask '" << target << "' did not match, no bans set.";
-			}
+			*out << "Nickname mask '" << target << "' did not match, no bans set.";
 		}
 	}
 }
@@ -2813,33 +2773,42 @@ void server::searchlog_handler(const std::string& /*issuer_name*/,
 
 	*out << "IP/NICK LOG for '" << parameters << "'";
 
-	bool found_something = false;
-
 	// If this looks like an IP look up which nicks have been connected from it
 	// Otherwise look for the last IP the nick used to connect
 	const bool match_ip = (std::count(parameters.begin(), parameters.end(), '.') >= 1);
 
-	for(const auto& i : ip_log_) {
-		const std::string& username = i.nick;
-		const std::string& ip = i.ip;
+	if(!user_handler_) {
+		bool found_something = false;
+		
+		for(const auto& i : ip_log_) {
+			const std::string& username = i.nick;
+			const std::string& ip = i.ip;
 
-		if((match_ip && utils::wildcard_string_match(ip, parameters)) ||
-		  (!match_ip && utils::wildcard_string_match(utf8::lowercase(username), utf8::lowercase(parameters)))
-		) {
-			found_something = true;
-			auto player = player_connections_.get<name_t>().find(username);
+			if((match_ip && utils::wildcard_string_match(ip, parameters)) ||
+			(!match_ip && utils::wildcard_string_match(utf8::lowercase(username), utf8::lowercase(parameters)))
+			) {
+				found_something = true;
+				auto player = player_connections_.get<name_t>().find(username);
 
-			if(player != player_connections_.get<name_t>().end() && player->client_ip() == ip) {
-				*out << std::endl << player_status(*player);
-			} else {
-				*out << "\n'" << username << "' @ " << ip
-					 << " last seen: " << lg::get_timestamp(i.log_off, "%H:%M:%S %d.%m.%Y");
+				if(player != player_connections_.get<name_t>().end() && player->client_ip() == ip) {
+					*out << std::endl << player_status(*player);
+				} else {
+					*out << "\n'" << username << "' @ " << ip
+						<< " last seen: " << lg::get_timestamp(i.log_off, "%H:%M:%S %d.%m.%Y");
+				}
 			}
 		}
-	}
 
-	if(!found_something) {
-		*out << "\nNo match found.";
+		if(!found_something) {
+			*out << "\nNo match found.";
+		}
+	} else {
+		if(!match_ip) {
+			utils::to_sql_wildcards(parameters);
+			user_handler_->get_ips_for_user(parameters, out);
+		} else {
+			user_handler_->get_users_for_ip(parameters, out);
+		}
 	}
 }
 

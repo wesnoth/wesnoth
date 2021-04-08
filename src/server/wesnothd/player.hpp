@@ -31,7 +31,7 @@ public:
 	};
 
 	player(const std::string& n, simple_wml::node& cfg, int id, bool registered, const std::string& version, const std::string& source,
-	       const std::size_t max_messages=4, const std::size_t time_period=10,
+	       unsigned long long login_id, const std::size_t max_messages=4, const std::size_t time_period=10,
 	       const bool moderator=false);
 
 	void set_status(STATUS status);
@@ -54,6 +54,8 @@ public:
 	void set_moderator(bool moderator) { moderator_ = moderator; }
 	bool is_moderator() const { return moderator_; }
 
+	unsigned long long get_login_id() const { return login_id_; };
+
 private:
 	const std::string name_;
 	std::string version_;
@@ -68,6 +70,7 @@ private:
 	const std::time_t TimePeriod;
 	STATUS status_;
 	bool moderator_;
+	unsigned long long login_id_;
 };
 
 } //namespace wesnothd
