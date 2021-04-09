@@ -301,7 +301,6 @@ bool editor_controller::can_execute_command(const hotkey::hotkey_command& cmd, i
 			// unit tool related
 		case HOTKEY_DELETE_UNIT:
 		case HOTKEY_RENAME_UNIT:
-		case HOTKEY_EDITOR_UNIT_CHANGE_ID:
 		case HOTKEY_EDITOR_UNIT_TOGGLE_CANRECRUIT:
 		case HOTKEY_EDITOR_UNIT_TOGGLE_RENAMEABLE:
 		case HOTKEY_EDITOR_UNIT_TOGGLE_LOYAL:
@@ -758,10 +757,6 @@ bool editor_controller::do_execute_command(const hotkey::hotkey_command& cmd, in
 			add_area();
 			return true;
 
-		case HOTKEY_EDITOR_UNIT_CHANGE_ID:
-			change_unit_id();
-			return true;
-
 		return true;
 		case HOTKEY_EDITOR_UNIT_TOGGLE_RENAMEABLE:
 		{
@@ -1123,23 +1118,6 @@ void editor_controller::copy_selection()
 	if (!get_current_map_context().map().selection().empty()) {
 		context_manager_->get_clipboard() = map_fragment(get_current_map_context().map(), get_current_map_context().map().selection());
 		context_manager_->get_clipboard().center_by_mass();
-	}
-}
-
-void editor_controller::change_unit_id()
-{
-	map_location loc = gui_->mouseover_hex();
-	unit_map& units = get_current_map_context().units();
-	const unit_map::unit_iterator& un = units.find(loc);
-
-	const std::string title(N_("Change Unit ID"));
-	const std::string label(N_("ID:"));
-
-	if(un != units.end()) {
-		std::string id = un->id();
-		if (gui2::dialogs::edit_text::execute(title, label, id)) {
-			un->set_id(id);
-		}
 	}
 }
 
