@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2021-03-20 22:02-0300\n"
-"PO-Revision-Date: 2021-02-21 22:57+0100\n"
+"PO-Revision-Date: 2021-04-03 18:51+0200\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -146,13 +146,13 @@ msgstr "Mostra tutti i tipi di unità nella sezione Aiuto"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:118
-#, fuzzy
 msgid ""
 "Show all unit types in the help (requires restart). If unset, only units "
 "that have been encountered will be shown."
 msgstr ""
-"Mostra tutti i tipi di unità nella sezione Aiuto (riavvio necessario). Non "
-"altera l’elenco delle unità incontrate"
+"Mostra tutti i tipi di unità nella sezione Aiuto (riavvio necessario). Se "
+"deselezionato, verranno mostrate soltanto le incontrate nelle partite "
+"giocate."
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:125
@@ -4092,9 +4092,8 @@ msgstr "$percent|% dell’oro riportato nello scenario successivo."
 
 #. [modification]: id=plan_unit_advance
 #: data/modifications.cfg:6
-#, fuzzy
 msgid "Plan Unit Advance"
-msgstr "PE per avanzare"
+msgstr "Piano Avanzamento Unità"
 
 #. [modification]: id=plan_unit_advance
 #: data/modifications.cfg:7
@@ -4104,12 +4103,15 @@ msgid ""
 "what your units advance to beforehand, either for a specific unit or for all "
 "units of the same type."
 msgstr ""
+"In una partita multigiocatore, non puoi controllare l’avanzamento di una "
+"unità se viene promossa durante il turno di un altro giocatore. Con questa "
+"modifica, puoi impostare il tipo di avanzamento delle tue unità, sia "
+"singolarmente che per tutte le unità dello stesso tipo."
 
 #. [checkbox]: id=pickadvance_force_choice
 #: data/modifications.cfg:12
-#, fuzzy
 msgid "Force advancement planning"
-msgstr "Nessun avanzamento"
+msgstr "Forza la pianificazione di avanzamento"
 
 #. [checkbox]: id=pickadvance_force_choice
 #: data/modifications.cfg:13
@@ -4119,24 +4121,29 @@ msgid ""
 "\n"
 "Some eras and scenarios may automatically enable this option."
 msgstr ""
+"Ti verrà chiesto un chiarimento qualora dovesse essere fatto l’avanzamento "
+"non pianificato di una unità.\n"
+"\n"
+"Alcune ere e scenari possono abilitare automaticamente questa opzione."
 
 #. [lua]: pickadvance.show_dialog_unsynchronized
 #: data/modifications/pick_advance/dialog.lua:30
 #: data/modifications/pick_advance/main.lua:10
-#, fuzzy
 msgid "Plan Advancement"
-msgstr "Avanzamenti ritardati"
+msgstr "Piano di Avanzamento"
 
 #. [lua]: pickadvance.show_dialog_unsynchronized
 #: data/modifications/pick_advance/dialog.lua:67
 msgid ""
 "This advancement is currently the default for all units of the same type"
 msgstr ""
+"Questo avanzamento è attualmente il default per tutte le unità dello stesso "
+"tipo"
 
 #. [lua]: pickadvance.show_dialog_unsynchronized
 #: data/modifications/pick_advance/dialog.lua:129
 msgid "Apply to all units of this type"
-msgstr ""
+msgstr "Applica a tutte le le unità di questo tipo"
 
 #. [lua]: pickadvance.show_dialog_unsynchronized
 #: data/modifications/pick_advance/dialog.lua:145
@@ -4150,20 +4157,18 @@ msgstr "Annulla"
 
 #. [lua]: preshow
 #: data/modifications/pick_advance/dialog.lua:174
-#, fuzzy
 msgid "No planned advancement"
-msgstr "Nessun avanzamento"
+msgstr "Nessun avanzamento pianificato"
 
 #. [leadership]: id=magical_leadership
 #: data/scenario-test.cfg:339
-#, fuzzy
 msgid "magical leadership"
-msgstr "Comando: "
+msgstr "comando magico"
 
 #. [leadership]: id=magical_leadership
 #: data/scenario-test.cfg:340
 msgid "female^magical leadership"
-msgstr ""
+msgstr "comando magico"
 
 #. [leadership]: id=magical_leadership
 #: data/scenario-test.cfg:341
@@ -4175,6 +4180,13 @@ msgid ""
 "Leadership engages in combat, its attacks do 25% more damage times the "
 "difference in their levels."
 msgstr ""
+"Questa unità può comandare le tue unità alleate circostanti, facendole "
+"combattere meglio con le loro armi magiche.\n"
+"Le unità alleate adiacenti di livello inferiore infliggeranno un danno "
+"maggiore in combattimento. Quando una unità adiacente di livello inferiore e "
+"della stessa squadra di una unità con questa abilità di Comando viene "
+"ingaggiata in combattimento, i suoi attacchi avranno un bonus danni del 25% "
+"moltiplicato per la differenza di livello."
 
 #. [resistance]: id=melee_steadfast
 #. This is not vanilla steadfast
@@ -4183,34 +4195,38 @@ msgid ""
 "This unit’s resistances are added to 20%, up to a maximum of 50%, when "
 "defending to melle attacks. Vulnerabilities are not affected."
 msgstr ""
+"Le resistenze di questa unità vengono incrementate del 20%, fino ad un "
+"massimo del 50%, quando l’unità è in fase difensiva. Le vulnerabilità non "
+"vengono alterate."
 
 #. [chance_to_hit]: id=marksman_leadership
 #: data/scenario-test.cfg:485
 msgid "cantor"
-msgstr ""
+msgstr "cantore"
 
 #. [chance_to_hit]: id=marksman_leadership
 #: data/scenario-test.cfg:486
-#, fuzzy
 msgid "female^cantor"
-msgstr "caotica"
+msgstr "cantrice"
 
 #. [chance_to_hit]: id=marksman_leadership
 #: data/scenario-test.cfg:487
 msgid "This unit grants marksman to all ranged attacks of all adjacent allies."
 msgstr ""
+"Questa unità infonde l’abilità “colpo preciso” a tutti gli attacchi a "
+"distanza delle unità ad essa adiacenti."
 
 #. [heals]: id=aura of death 4
 #. [heals]: id=aura of death 8
 #: data/scenario-test.cfg:1073 data/scenario-test.cfg:1101
 msgid "aura of death ("
-msgstr ""
+msgstr "aura mortale ("
 
 #. [heals]: id=aura of death 4
 #. [heals]: id=aura of death 8
 #: data/scenario-test.cfg:1074 data/scenario-test.cfg:1102
 msgid "female^aura of death ("
-msgstr ""
+msgstr "aura mortale ("
 
 #. [language]
 #: data/scenario-test.cfg:4403
@@ -4370,10 +4386,8 @@ msgstr "Tema predefinito"
 
 #. [menu]: id=menu-autosaves
 #: data/themes/default.cfg:92
-#, fuzzy
-#| msgid "End Turn"
 msgid "Load Turn..."
-msgstr "Fine turno"
+msgstr "Carica Turno..."
 
 #. [menu]: id=actions-menu
 #: data/themes/default.cfg:100
@@ -5272,6 +5286,8 @@ msgstr "<i>― Ser Gerrick di Westin, 607AW</i>"
 msgid ""
 "Some types of terrain give unique bonuses, such as healing or illumination."
 msgstr ""
+"Alcuni tipi di terreno hanno dei bonus peculiari, quali abilità curative o "
+"illuminazione."
 
 #. [tip]
 #. Translate the word "Flight" as a collective noun for drakes
@@ -5731,28 +5747,31 @@ msgstr ""
 
 #: src/addon/validation.cpp:448
 msgid "Success."
-msgstr ""
+msgstr "Successo."
 
 #: src/addon/validation.cpp:452
 msgid "Incorrect add-on passphrase."
-msgstr ""
+msgstr "Parola d’ordine dell’estensione invalida."
 
 #: src/addon/validation.cpp:456
 msgid "Upload denied. Please contact the server administration for assistance."
 msgstr ""
+"Invio negato. Si prega di contattare l’amministratore del server per "
+"ricevere assistenza."
 
 #: src/addon/validation.cpp:460
 msgid "Attempted to upload an update pack for a non-existent add-on."
 msgstr ""
+"Si è tentato di inviare un pacchetto di aggiornamento per un estensione che "
+"non esiste."
 
 #: src/addon/validation.cpp:469
 msgid "No add-on data was supplied by the client."
-msgstr ""
+msgstr "Il client non ha fornito alcun dato per l’estensione."
 
 #: src/addon/validation.cpp:473
-#, fuzzy
 msgid "Invalid upload pack."
-msgstr "Posizione non valida"
+msgstr "Invio del pacchetto non valido."
 
 #: src/addon/validation.cpp:477
 msgid "Invalid add-on name."
@@ -5760,7 +5779,7 @@ msgstr "Nome estensione non valido."
 
 #: src/addon/validation.cpp:481
 msgid "Formatting character in add-on name."
-msgstr ""
+msgstr "Il nome dell’estensione contiene un carattere di formattazione."
 
 #: src/addon/validation.cpp:485
 msgid ""
@@ -5800,18 +5819,20 @@ msgstr ""
 #: src/addon/validation.cpp:501
 msgid "The add-on name contains an invalid UTF-8 sequence."
 msgstr ""
+"Il nome dell’estensione contiene una sequenza non valida di caratteri UTF-8."
 
 #: src/addon/validation.cpp:510
 msgid "No add-on title specified."
-msgstr ""
+msgstr "Non è stato specificato alcun titolo per l’estensione."
 
 #: src/addon/validation.cpp:514
 msgid "No add-on author/maintainer name specified."
 msgstr ""
+"Non è stato specificato il nome di un autore/manutentore dell’estensione."
 
 #: src/addon/validation.cpp:518
 msgid "No add-on version specified."
-msgstr ""
+msgstr "Non è stata specificata la versione dell’estensione."
 
 #: src/addon/validation.cpp:522
 msgid "No add-on description specified."
@@ -5820,14 +5841,16 @@ msgstr "Non è stata specificata nessuna descrizione dell’estensione."
 #: src/addon/validation.cpp:526
 msgid "No add-on author/maintainer email specified."
 msgstr ""
+"Non è stato specificato l’indirizzo di posta elettronica di un autore/"
+"manutentore dell’estensione."
 
 #: src/addon/validation.cpp:530
 msgid "Missing passphrase."
-msgstr ""
+msgstr "Parola d’ordine mancante."
 
 #: src/addon/validation.cpp:534
 msgid "Formatting character in add-on title."
-msgstr ""
+msgstr "Carattere di formattazione nel titolo dell’estensione."
 
 #: src/addon/validation.cpp:538
 msgid "Invalid or unspecified add-on type."
@@ -5836,18 +5859,21 @@ msgstr "Tipo di estensione non valido o non specificato."
 #: src/addon/validation.cpp:542
 msgid "Version number not greater than the latest uploaded version."
 msgstr ""
+"Numero della versione non superiore a quello dell’ultima versione inviata."
 
 #: src/addon/validation.cpp:546
 msgid "Feedback topic id is not a number."
-msgstr ""
+msgstr "L’identificativo dell’argomento di feedback non è un numero."
 
 #: src/addon/validation.cpp:550
 msgid "Feedback topic does not exist."
-msgstr ""
+msgstr "L’argomento del feedback non esiste."
 
 #: src/addon/validation.cpp:554
 msgid "The add-on publish information contains an invalid UTF-8 sequence."
 msgstr ""
+"Le informazioni di pubblicazione dell’estensione contengono una sequenza di "
+"caratteri UTF-8 non valida."
 
 #: src/addon/validation.cpp:563
 msgid "Unspecified server error."
@@ -5863,11 +5889,11 @@ msgstr "La lista delle estensioni del server è corrotta."
 
 #: src/addon/validation.cpp:575
 msgid "Empty add-on version list on the server."
-msgstr ""
+msgstr "La lista delle estensioni del server è vuota."
 
 #: src/addon/validation.cpp:585
 msgid "Unspecified validation failure."
-msgstr ""
+msgstr "Fallimento non specificato della validazione."
 
 #: src/chat_command_handler.cpp:112
 msgid "Added to ignore list: $nick"
@@ -6034,6 +6060,8 @@ msgstr "<N>"
 #: src/chat_command_handler.hpp:114
 msgid "Get a random number between 1 and N visible in the game setup lobby."
 msgstr ""
+"Scegli un numero a caso tra 1 d N tra quelli visibili nelle impostazioni di "
+"gioco della lobby."
 
 #: src/chat_command_handler.hpp:116
 msgid "Display version information."
@@ -6243,11 +6271,11 @@ msgstr ""
 
 #: src/game_config_manager.cpp:530
 msgid "Use [modify_unit_type]\n"
-msgstr ""
+msgstr "Usa [modify_unit_type]\n"
 
 #: src/game_config_manager.cpp:569
 msgid "instead, use the macro with the same name in the [campaign] tag"
-msgstr ""
+msgstr "invece, usa la macro con lo stesso nome nel tag [campaign]"
 
 #: src/game_config_manager.cpp:620
 msgid "The following add-on had errors and could not be loaded:"
@@ -6477,6 +6505,7 @@ msgstr "Impossibile trovare l’era $era"
 #: src/game_initialization/multiplayer.cpp:236
 msgid "Invalid address specified for multiplayer server"
 msgstr ""
+"Indirizzo specificato del server per la partita multigiocatore non valido"
 
 #: src/game_initialization/multiplayer.cpp:271
 msgid ""
@@ -6812,7 +6841,7 @@ msgstr "Nessuna squadra visibile trovata."
 
 #: src/gui/dialogs/multiplayer/match_history.cpp:30
 msgid "Match History — $player"
-msgstr ""
+msgstr "Storia delle Partite — $player"
 
 #: src/gui/dialogs/multiplayer/player_info.cpp:105
 msgid "In game:"
@@ -6958,6 +6987,8 @@ msgid ""
 "This is a group of units, all of whom are <ref>dst='$topic_id' "
 "text='$help_taxonomy'</ref>"
 msgstr ""
+"Questo è un gruppo di unità, tutte <ref>dst='$topic_id' "
+"text='$help_taxonomy'</ref>"
 
 #: src/help/help_impl.cpp:1080
 msgid "<header>text='Subgroups of units within this group'</header>"
@@ -7159,7 +7190,11 @@ msgid_plural ""
 "Error: there are several unknown unit types on your recruit list: "
 "$unknown_ids"
 msgstr[0] ""
+"Errore: c’è una unità di tipo sconosciuto nella tua lista di reclutamento: "
+"$unknown_ids"
 msgstr[1] ""
+"Errore: ci sono diverse unità di tipo sconosciuto nella tua lista di "
+"reclutamento: $unknown_ids"
 
 #: src/menu_events.cpp:274
 msgid "You have no units available to recruit."
@@ -7304,7 +7339,7 @@ msgstr "Cambia il tipo di terreno dell’ esagono corrente"
 #. TRANSLATORS: [both|base|overlay] are hardcoded literal arguments and shouldn't be translated.
 #: src/menu_events.cpp:1231
 msgid "<terrain type> [both|base|overlay]"
-msgstr ""
+msgstr "<tipo di terreno> [both|base|overlay]"
 
 #: src/menu_events.cpp:1232
 msgid "Switch a side to/from idle state."
@@ -7558,6 +7593,8 @@ msgid ""
 "It is not allowed to change a side from AI to human control when it's not "
 "your turn."
 msgstr ""
+"Non è permesso ad una squadra di cambiare il controllo da AI ad Umano quando "
+"non è il tuo turno."
 
 #: src/menu_events.cpp:1507 src/menu_events.cpp:1563
 msgid "Side '$side' controller is now controlled by: AI."
@@ -7580,6 +7617,8 @@ msgid ""
 "It is not allowed to change a side from human to AI control when it's not "
 "your turn."
 msgstr ""
+"Non è permesso ad una squadra di cambiare il controllo da Umano ad IA quando "
+"non è il tuo turno."
 
 #: src/menu_events.cpp:1539
 msgid "Side '$side' controller is now fully controlled by: AI."
@@ -7593,6 +7632,8 @@ msgstr "La squadra '$side' è già completamente automatizzata."
 msgid ""
 "Invalid action provided for side '$side'. Valid actions are: on, off, full."
 msgstr ""
+"Richiesta azione invalida per la squadra '$side'. Azioni possibili sono: on, "
+"off, full."
 
 #: src/menu_events.cpp:1608
 msgid "Can't idle invalid side: '$side'."
@@ -8287,6 +8328,24 @@ msgid ""
 "\n"
 "Do you wish to continue?"
 msgstr ""
+"Questo salvataggio proviene da una versione diversa del gioco "
+"($version_number|), e potrebbe quindi non funzionare con quella attuale.\n"
+"\n"
+"<b>Attenzione:</b> i salvataggi effettuate nel bel mezzo di una campagna "
+"sono particolarmente soggetti a questa problematica. Dovresti quindi "
+"utilizzarli con una versione adeguatamente vecchia del programma o, in "
+"alternativa, iniziare di nuovo la campagna. Anche se un salvataggio sembra "
+"essersi caricato con successo, possono esserci coinvolti degli aspetti "
+"delicati e impercettibili a prima vista, quali il bilanciamento del gioco e "
+"l’evoluzione della storia. La difficoltà, la sfida, il <i>divertimento</i> "
+"potrebbero mancare.\n"
+"\n"
+"Ad esempio, una campagna potrebbe essere stata riequilibrata con un numero "
+"inferiore di nemici negli scenari iniziali, e contemporaneamente presumere "
+"quindi che la lista delle unità richiamabili contenga unità di basso livello "
+"per gli scenari finali.\n"
+"\n"
+"Desideri comunque continuare?"
 
 #: src/savegame.cpp:274 src/savegame.cpp:320
 msgid "Load Game"
@@ -8534,7 +8593,7 @@ msgstr ""
 msgid "waiting for $desc from side $sides"
 msgid_plural "waiting for $desc from sides $sides"
 msgstr[0] "in attesa di $desc dalla squadra $sides"
-msgstr[1] "in attesa di $desc dalle squadrae $sides"
+msgstr[1] "in attesa di $desc dalle squadre $sides"
 
 #. TRANSLATORS: In networked games, this text is shown for other clients,
 #. while they wait for an action from another player.
@@ -8819,24 +8878,20 @@ msgstr "Opzioni della lavagna"
 #~ msgstr "oro"
 
 # mi tocca metterlo così, altrimenti il testo nella finestra va a capo [Nd Bonta-kun]
-#, fuzzy
 #~ msgid "moves"
-#~ msgstr "Mosse:"
+#~ msgstr "mosse"
 
 #~ msgid "gender^Random"
 #~ msgstr "Casuale"
 
-#, fuzzy
 #~ msgid " resistance vs "
-#~ msgstr "Resistenze"
+#~ msgstr " resistenza vs "
 
-#, fuzzy
 #~ msgid "strike"
-#~ msgstr "Colpi"
+#~ msgstr "colpo"
 
-#, fuzzy
 #~ msgid "female^steadfast"
-#~ msgstr "rallentata"
+#~ msgstr "fermezza"
 
 #~ msgid "initiative"
 #~ msgstr "iniziativa"
@@ -9213,3 +9268,43 @@ msgstr "Opzioni della lavagna"
 #~ "Sono presenti almeno duecento tipi di unità, sedici razze, sette fazioni "
 #~ "principali e centinaia di anni di storia.\n"
 #~ "\n"
+
+#~ msgid "water^Springs"
+#~ msgstr "Surgiva"
+
+#~ msgid "Clayey"
+#~ msgstr "Argilloso"
+
+#~ msgid "Podzol"
+#~ msgstr "Podzol"
+
+#~ msgid "Wicked"
+#~ msgstr "Malvagio"
+
+#~ msgid "Wild"
+#~ msgstr "Selvatico"
+
+#~ msgid "Feudal"
+#~ msgstr "Feudale"
+
+#~ msgid "steadfast"
+#~ msgstr "fermezza"
+
+#~ msgid "plague"
+#~ msgstr "contagio"
+
+#~ msgid ""
+#~ "When a unit is killed by a Plague attack, that unit is replaced with a "
+#~ "Walking Corpse on the same side as the unit with the Plague attack. This "
+#~ "doesn’t work on Undead or units in villages."
+#~ msgstr ""
+#~ "Quando un’unità viene uccisa da un attacco “contagio”, viene sostituita "
+#~ "da un morto vivente che si schiera a fianco dell’unità che ha sferrato "
+#~ "tale attacco. Non funziona sui non-morti e sulle unità nei villaggi."
+
+#~ msgid ""
+#~ "All adjacent friendly units will strike first in melee combat, even when "
+#~ "defending."
+#~ msgstr ""
+#~ "Tutte le unità alleate adiacenti otterranno il primo attacco, anche in "
+#~ "difesa."

@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2021-03-20 22:03-0300\n"
-"PO-Revision-Date: 2021-02-21 23:11+0100\n"
+"PO-Revision-Date: 2021-04-03 19:08+0200\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -69,8 +69,6 @@ msgstr "Steccato"
 #. [row]
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:193
 #: data/gui/window/mp_faction_select.cfg:176
-#, fuzzy
-#| msgid "Random"
 msgid "gender^Random"
 msgstr "Casuale"
 
@@ -4175,7 +4173,7 @@ msgstr "Cambia il controllo"
 #. [label]
 #: data/gui/window/mp_connect.cfg:71
 msgid "Choose or enter the address of a multiplayer server."
-msgstr "Scegli o inserici l’indirizzo di un server multigiocatore."
+msgstr "Scegli o inserisci l’indirizzo di un server multigiocatore."
 
 #. [label]
 #: data/gui/window/mp_connect.cfg:101
@@ -5297,16 +5295,20 @@ msgid ""
 "The sum (or difference) of the two numbers in parentheses is the actual "
 "number of hitpoints inflicted/taken."
 msgstr ""
+"Differenza fra il risultato effettivo e quello atteso, in percentuale.\n"
+"Il primo numero tra parentesi è il numero atteso di danni inflitti/subiti.\n"
+"La somma (o la differenza) dei due numeri tra parentesi è il numero "
+"effettivo di danni inflitti/subiti."
 
 #. [column]
 #: data/gui/window/statistics_dialog.cfg:561
 msgid "stats dialog^Ratio of actual to expected"
-msgstr ""
+msgstr "Rapporto effettivi su attesi"
 
 #. [column]
 #: data/gui/window/statistics_dialog.cfg:576
 msgid "Hits"
-msgstr ""
+msgstr "Colpi"
 
 #. [column]
 #: data/gui/window/statistics_dialog.cfg:579
@@ -5322,6 +5324,18 @@ msgid ""
 "Green values indicate this side fared better than expected.\n"
 "Red values indicate this side fared worse than expected."
 msgstr ""
+"La probabilità <i>a priori</i> di infliggere/subire al massimo così tanti "
+"danni, in percentuale.\n"
+"\n"
+"Intuitivamente, una misura di quanto la casualità abbia inciso su questa "
+"squadra.\n"
+"Valori tra 0 e 50 suggeriscono che il numero di danni effettivi è stato "
+"inferiore a quanto atteso.\n"
+"Valori tra 50 e 100 suggeriscono che il numero di danni effettivi è stato "
+"superiore a quanto atteso.\n"
+"\n"
+"Valori in verde indicano che questa squadra è andata meglio del previsto.\n"
+"Valori in rosso indicano che questa squadra è andata peggio del previsto."
 
 #. [button]: id=cancel
 #: data/gui/window/story_viewer.cfg:131
@@ -5332,7 +5346,7 @@ msgstr "Salta"
 #. [label]: id=lblTitle
 #: data/gui/window/surrender_quit.cfg:40 src/hotkey/hotkey_command.cpp:124
 msgid "Surrender Game"
-msgstr "Arrendersi"
+msgstr "Resa"
 
 #. [label]: id=lblMessage
 #: data/gui/window/surrender_quit.cfg:60
@@ -5884,6 +5898,8 @@ msgid ""
 "Grid '$grid' row $row has a differing number of columns ($found found, "
 "$expected expected)"
 msgstr ""
+"La riga $row della griglia '$grid' ha un diverso numero di colonne (trovato "
+"$found, atteso $expected)"
 
 #: src/gui/dialogs/addon/manager.cpp:160
 msgid "addons_view^All Add-ons"
@@ -6314,16 +6330,12 @@ msgid "The game data cache could not be purged."
 msgstr "La cache del gioco non può essere ripulita."
 
 #: src/gui/dialogs/game_load.cpp:74
-#, fuzzy
-#| msgid "Saved Games"
 msgid "No Saved Games"
-msgstr "Partite salvate"
+msgstr "Nessuna partita salvata"
 
 #: src/gui/dialogs/game_load.cpp:74
-#, fuzzy
-#| msgid "There are no alternative video modes available"
 msgid "There are no saved games to load."
-msgstr "Nessuna modalità video alternativa disponibile"
+msgstr "Non ci sono partite salvate in precedenza da caricare."
 
 #: src/gui/dialogs/game_load.cpp:143
 msgid "game_version^Current Version"
@@ -6835,7 +6847,7 @@ msgstr "Turno corrente"
 
 #: src/gui/dialogs/statistics_dialog.cpp:214
 msgid "Actual hit rates, by chance to hit:"
-msgstr ""
+msgstr "Tasso di colpi effettivo, ordinato per probabilità di colpire:"
 
 #: src/gui/dialogs/statistics_dialog.cpp:216
 msgid "(no attacks have taken place yet)"
@@ -6850,6 +6862,10 @@ msgid ""
 "The sum (or difference) of the two numbers in parentheses is the actual "
 "number of hits inflicted/taken."
 msgstr ""
+"Differenza fra il risultato effettivo e quello atteso, in percentuale.\n"
+"Il primo numero tra parentesi è il numero atteso di colpi inflitti/subiti.\n"
+"La somma (o la differenza) dei due numeri tra parentesi è il numero "
+"effettivo di colpi inflitti/subiti."
 
 #: src/gui/dialogs/statistics_dialog.cpp:368
 msgid "Recruits"
@@ -7357,10 +7373,8 @@ msgid "Kill Unit (Debug!)"
 msgstr "Uccidi unità (Debug!)"
 
 #: src/hotkey/hotkey_command.cpp:119
-#, fuzzy
-#| msgid "Scenario Objectives"
 msgid "Objectives"
-msgstr "Obiettivi dello scenario"
+msgstr "Obiettivi"
 
 #: src/hotkey/hotkey_command.cpp:122
 msgid "Pause Network Game"
@@ -7371,10 +7385,8 @@ msgid "Continue Network Game"
 msgstr "Continua la partita in rete"
 
 #: src/hotkey/hotkey_command.cpp:125
-#, fuzzy
-#| msgid "Quit to Main Menu"
 msgid "Quit to Menu"
-msgstr "Esci alla schermata iniziale"
+msgstr "Esci e torna alla schermata iniziale"
 
 #: src/hotkey/hotkey_command.cpp:126
 msgid "Set Team Label"
@@ -7900,10 +7912,8 @@ msgid "Hint: save-loading is unnecessary"
 msgstr "Indizio: salvataggio-caricamento non è necessario"
 
 #: src/hotkey/hotkey_command.cpp:276
-#, fuzzy
-#| msgid "Enter User Command"
 msgid "Enter Command"
-msgstr "Invia un comando utente"
+msgstr "Invia un comando"
 
 #: src/hotkey/hotkey_command.cpp:277
 msgid "Custom Command"
@@ -7914,10 +7924,8 @@ msgid "Run Formula"
 msgstr "Esegui formula"
 
 #: src/hotkey/hotkey_command.cpp:279
-#, fuzzy
-#| msgid "Player Chat"
 msgid "Clear Chat"
-msgstr "Chat dei giocatori"
+msgstr "Ripulisci Chat"
 
 #: src/hotkey/hotkey_command.cpp:281
 msgid "Change Language"
@@ -9170,3 +9178,6 @@ msgstr ""
 
 #~ msgid "Ok"
 #~ msgstr "Ok"
+
+#~ msgid "Clear Chat and Errors"
+#~ msgstr "Cancella Chat ed Errori"
