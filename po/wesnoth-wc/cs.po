@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2021-03-12 23:18 UTC\n"
-"PO-Revision-Date: 2021-02-22 12:34+0100\n"
+"PO-Revision-Date: 2021-03-16 12:40+0100\n"
 "Last-Translator: Septim <septim@centrum.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
@@ -2171,14 +2171,11 @@ msgstr "Herní mechanika"
 
 #. [lua]: preshow
 #: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:28
-#, fuzzy
-#| msgid "<b>Gold</b>:\n"
 msgid "<b>Gold</b>\n"
-msgstr "<b>Peníze</b>:\n"
+msgstr "<b>Peníze</b>\n"
 
 #. [lua]: preshow
 #: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:29
-#, fuzzy
 msgid ""
 "Carryover rate is 15% and split evenly among players. Negative amounts will "
 "not carry over. Early finish bonus is superior to village control, but it is "
@@ -2192,33 +2189,24 @@ msgstr ""
 
 #. [lua]: preshow
 #: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:30
-#, fuzzy
-#| msgid "<b>Autorecall</b>:\n"
 msgid "<b>Autorecall</b>\n"
-msgstr "<b>Automatické přivolání</b>:\n"
+msgstr "<b>Automatické přivolání</b>\n"
 
 #. [lua]: preshow
 #: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:31
-#, fuzzy
-#| msgid ""
-#| "Units with trait HEROIC are recalled at the start of each scenario with "
-#| "no cost (up to castle size).\n"
-#| "\n"
 msgid ""
 "Units with the <b>heroic</b> trait are recalled at the start of each "
 "scenario with no cost (up to castle size).\n"
 "\n"
 msgstr ""
-"Jednotky s vlastností HRDINNÝ jsou automaticky zdarma přivolány na začátku "
-"každého scénáře (do limitu velikosti hradu).\n"
+"Jednotky s vlastností <b>hrdinný</b> jsou automaticky zdarma přivolány na "
+"začátku každého scénáře (do limitu velikosti hradu).\n"
 "\n"
 
 #. [lua]: preshow
 #: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:32
-#, fuzzy
-#| msgid "<b>Recall Cost</b>:\n"
 msgid "<b>Recall Cost</b>\n"
-msgstr "<b>Náklady na přivolání</b>:\n"
+msgstr "<b>Náklady na přivolání</b>\n"
 
 #. [lua]: preshow
 #: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:33
@@ -2231,10 +2219,8 @@ msgstr ""
 
 #. [lua]: preshow
 #: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:34
-#, fuzzy
-#| msgid "<b>Training</b>:\n"
 msgid "<b>Training</b>\n"
-msgstr "<b>Výcvik</b>:\n"
+msgstr "<b>Výcvik</b>\n"
 
 #. [lua]: preshow
 #: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:35
@@ -2253,32 +2239,24 @@ msgstr ""
 
 #. [lua]: preshow
 #: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:36
-#, fuzzy
-#| msgid "<b>Upkeep</b>:\n"
 msgid "<b>Upkeep</b>\n"
-msgstr "<b>Údržba</b>:\n"
+msgstr "<b>Údržba</b>\n"
 
 #. [lua]: preshow
 #: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:37
-#, fuzzy
-#| msgid ""
-#| "Units with trait HEROIC or holding any magic ITEM have FREE upkeep.\n"
-#| "\n"
 msgid ""
 "Units with the <b>heroic</b> trait or holding any magic <b>item</b> have "
 "free upkeep.\n"
 "\n"
 msgstr ""
-"Jednotky s vlastností HRDINNÝ nebo držící nějaký magický PŘEDMĚT nevyžadují "
-"peníze na údržbu.\n"
+"Jednotky s vlastností <b>hrdinný</b> nebo držící nějaký magický <b>předmět</"
+"b> nevyžadují peníze na údržbu.\n"
 "\n"
 
 #. [lua]: preshow
 #: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:38
-#, fuzzy
-#| msgid "<b>Bonus Points</b>:\n"
 msgid "<b>Bonus Points</b>\n"
-msgstr "<b>Bonusová místa</b>:\n"
+msgstr "<b>Bonusová místa</b>\n"
 
 # Ty uvedené počty sice moc nesedí se skutečností, ale budiž.
 #. [lua]: preshow
@@ -2296,10 +2274,8 @@ msgstr ""
 
 #. [lua]: preshow
 #: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:40
-#, fuzzy
-#| msgid "<b>Army discipline</b>:\n"
 msgid "<b>Army discipline</b>\n"
-msgstr "<b>Armádní disciplína</b>:\n"
+msgstr "<b>Armádní disciplína</b>\n"
 
 #. [lua]: preshow
 #: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:41
@@ -2323,37 +2299,23 @@ msgstr "Zpětná vazba"
 
 #. [lua]: preshow
 #: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:43
-#, fuzzy
-#| msgid ""
-#| "For feedback please either post in the World Conquest II thread in the "
-#| "official Wesnoth forum https://r.wesnoth.org/t39651 or file an issue at "
-#| "GitHub https://github.com/gfgtdf/World_Conquest_II/issues .\n"
-#| "\n"
 msgid ""
 "For feedback please either post in the World Conquest II thread in the "
 "official Wesnoth forum &lt;https://r.wesnoth.org/t39651&gt; or file an issue "
 "at GitHub &lt;https://github.com/gfgtdf/World_Conquest_II/issues&gt;."
 msgstr ""
 "Svou zpětnou vazbu prosím napište do příspěvku vlákna World Conquest II na "
-"oficiálním fóru Wesnoth (viz https://r.wesnoth.org/t39651) nebo založte "
-"podnět v rámci GitHub (viz https://github.com/gfgtdf/World_Conquest_II/"
-"issues).\n"
-"\n"
+"oficiálním fóru Wesnoth (viz &lt;https://r.wesnoth.org/t39651&gt;) nebo "
+"založte podnět v rámci GitHub (viz &lt;https://github.com/gfgtdf/"
+"World_Conquest_II/issues&gt;)."
 
 #. [lua]: preshow
 #: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:44
-#, fuzzy
-#| msgid ""
-#| "<b>Training</b>\n"
-#| "Training improves newly recruited units, it has no effect on already "
-#| "recruited units. The following list shows all available training, the "
-#| "training you currently have is marked in green."
 msgid ""
 "Training improves newly recruited units, it has no effect on already "
 "recruited units. The following list shows all available training, the "
 "training you currently have is marked in green."
 msgstr ""
-"<b>Výcvik</b>\n"
 "Výcvik vylepšuje nově naverbované jednotky, na již existující jednotky nemá "
 "žádný vliv. Následující seznam zobrazuje veškerý dostupný výcvik, zeleně "
 "jsou označeny úrovně výcviku, které již ovládáš."
@@ -2361,25 +2323,17 @@ msgstr ""
 #. [lua]: preshow
 #: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:45
 msgid "Items"
-msgstr ""
+msgstr "Předměty"
 
 #. [lua]: preshow
 #: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:45
-#, fuzzy
-#| msgid ""
-#| "<b>Items</b>\n"
-#| "Items can be given to units to make them stronger. You can get artifacts "
-#| "in three ways: 1) By choosing an item as your starting bonus; 2) By "
-#| "finding it on a map in a bonus point; 3) By dropping from enemies in "
-#| "later scenarios. Note, however, that not all units can pick up all items."
 msgid ""
 "Items can be given to units to make them stronger. You can get items in "
 "three ways: 1) By choosing an item as your starting bonus; 2) By finding it "
 "on a map in a bonus point; 3) By dropping from enemies in later scenarios. "
 "Note, however, that not all units can pick up all items."
 msgstr ""
-"<b>Předměty</b>\n"
-"Jednotkám mohou být dávany předměty, které je činí silnějšími. Artefakty "
+"Jednotkám mohou být dávany předměty, které je činí silnějšími. Předměty "
 "můžeš získat třemi způsoby: 1) předmět si vybereš jako svůj počáteční bonus; "
 "2) předmět najdeš v bonusovém místě na mapě; 3) předmět vyzvedneš od padlých "
 "nepřátel (v pozdějších scénářích). Upozorňujeme však, že ne všechny jednotky "
@@ -2392,17 +2346,6 @@ msgstr "Frakce"
 
 #. [lua]: preshow
 #: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:46
-#, fuzzy
-#| msgid ""
-#| "<b>Factions</b>\n"
-#| " The World Conquest II era consists of factions that are built from pairs "
-#| "of mainline factions. One faction will have a healer available (Drakes, "
-#| "Rebels and Loyalists) and one will not (Orcs, Dwarves and Undead). The "
-#| "recruit list is also organized in pairs so that sometimes you will have "
-#| "to recruit a different unit before you can recruit the units that you "
-#| "want. The available heroes, deserters, and random leaders also depend on "
-#| "your factions; the items you can get do not depend on the faction you "
-#| "choose."
 msgid ""
 "The World Conquest II era consists of factions that are built from pairs of "
 "mainline factions. One faction will have a healer available (Drakes, Rebels "
@@ -2412,8 +2355,7 @@ msgid ""
 "heroes, deserters, and random leaders also depend on your factions; the "
 "items you can get do not depend on the faction you choose."
 msgstr ""
-"<b>Frakce</b>\n"
-" Dobytí světa II pracuje s věkem, který sestává z frakcí, jež jsou vytvořeny "
+"Dobytí světa II pracuje s věkem, který sestává z frakcí, jež jsou vytvořeny "
 "z dvojic frakcí Základního věku. Jednou z frakcí je ta, která disponuje "
 "léčitelskou jednotkou (Drakonidé, Odbojní či Věrní), a druhou z frakcí je "
 "ta, která jí nedisponuje (Seveřané, Knalganská aliance či Nemrtví). "
@@ -2460,10 +2402,8 @@ msgstr ""
 
 #. [lua]: wc_ii_generate_scenario
 #: data/campaigns/World_Conquest/lua/map/main.lua:140
-#, fuzzy
-#| msgid " scenario: "
 msgid "Scenario"
-msgstr " scénář: "
+msgstr "Scénář"
 
 #. [lua]: wc_ii_generate_scenario
 #: data/campaigns/World_Conquest/lua/map/main.lua:142
@@ -2820,10 +2760,8 @@ msgid "strike"
 msgstr ""
 
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:21
-#, fuzzy
-#| msgid "$value| XP to advance"
 msgid "XP to advance"
-msgstr "$value| zkušeností k povýšení"
+msgstr "zkušeností k povýšení"
 
 #. [chance]
 #: data/campaigns/World_Conquest/resources/data/training.cfg:308
@@ -2885,10 +2823,8 @@ msgstr ""
 
 #. [chance]
 #: data/campaigns/World_Conquest/resources/data/training.cfg:705
-#, fuzzy
-#| msgid "optional charge"
 msgid "melee: optional charge"
-msgstr "možnost volby výpadu"
+msgstr "zblízka: možnost volby výpadu"
 
 #. [chance]
 #: data/campaigns/World_Conquest/resources/data/training.cfg:730

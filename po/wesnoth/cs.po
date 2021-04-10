@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2021-03-20 22:02-0300\n"
-"PO-Revision-Date: 2021-03-12 19:42+0100\n"
+"PO-Revision-Date: 2021-03-21 19:53+0100\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
@@ -306,7 +306,7 @@ msgstr "zblízka"
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:180
 #: data/english.cfg:6
 msgid "Nightmare"
-msgstr "Nehratelná"
+msgstr "Zlý sen"
 
 #. [language]
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:183
@@ -4104,6 +4104,10 @@ msgid ""
 "what your units advance to beforehand, either for a specific unit or for all "
 "units of the same type."
 msgstr ""
+"Při hraní hry pro více hráčů neurčuješ, na co jednotka povýší, když povyšuje "
+"v kole jiného hráče. S tímto pozměněním můžeš dopředu nastavit, na co tvé "
+"jednotky povýší, ať už pro jednu určitou, nebo pro všechny jednotky stejného "
+"typu."
 
 #. [checkbox]: id=pickadvance_force_choice
 #: data/modifications.cfg:12
@@ -4118,6 +4122,10 @@ msgid ""
 "\n"
 "Some eras and scenarios may automatically enable this option."
 msgstr ""
+"Kdykoli se objeví jednotka, o které nebylo rozhodnuto, budeš dotázán na "
+"výběr povýšení.\n"
+"\n"
+"Některé věky a scénáře mohou tuto volbu zapnout automaticky."
 
 #. [lua]: pickadvance.show_dialog_unsynchronized
 #: data/modifications/pick_advance/dialog.lua:30
@@ -4129,12 +4137,12 @@ msgstr "Plánovat povýšení"
 #: data/modifications/pick_advance/dialog.lua:67
 msgid ""
 "This advancement is currently the default for all units of the same type"
-msgstr ""
+msgstr "Toto povýšení je nyní výchozí pro všechny jednotky stejného typu"
 
 #. [lua]: pickadvance.show_dialog_unsynchronized
 #: data/modifications/pick_advance/dialog.lua:129
 msgid "Apply to all units of this type"
-msgstr ""
+msgstr "Použít na všechny jednotky tohoto typu"
 
 #. [lua]: pickadvance.show_dialog_unsynchronized
 #: data/modifications/pick_advance/dialog.lua:145
@@ -4203,18 +4211,20 @@ msgstr "kantorka"
 #: data/scenario-test.cfg:487
 msgid "This unit grants marksman to all ranged attacks of all adjacent allies."
 msgstr ""
+"Tato jednotka poskytuje všem útokům na dálku všech sousedících spojenců "
+"výjimečnost odstřelovače."
 
 #. [heals]: id=aura of death 4
 #. [heals]: id=aura of death 8
 #: data/scenario-test.cfg:1073 data/scenario-test.cfg:1101
 msgid "aura of death ("
-msgstr ""
+msgstr "aura smrti ("
 
 #. [heals]: id=aura of death 4
 #. [heals]: id=aura of death 8
 #: data/scenario-test.cfg:1074 data/scenario-test.cfg:1102
 msgid "female^aura of death ("
-msgstr ""
+msgstr "aura smrti ("
 
 #. [language]
 #: data/scenario-test.cfg:4403
@@ -4232,7 +4242,7 @@ msgstr "elektrický"
 #: data/test/scenarios/swarm_disables_upgrades_with_abilities_adjacent_leadership.cfg:47
 #: data/test/scenarios/swarm_disables_upgrades_with_abilities_adjacent_leadership_fail.cfg:47
 msgid "Alex"
-msgstr ""
+msgstr "Aleš"
 
 #. [unit]: id=ben, type=Orcish Warrior
 #: data/test/scenarios/swarm_disables_upgrades_with_abilities_adjacent.cfg:51
@@ -4240,7 +4250,7 @@ msgstr ""
 #: data/test/scenarios/swarm_disables_upgrades_with_abilities_adjacent_leadership.cfg:54
 #: data/test/scenarios/swarm_disables_upgrades_with_abilities_adjacent_leadership_fail.cfg:54
 msgid "Ben"
-msgstr ""
+msgstr "Ben"
 
 #. [action]: id=button-playreplay, type=image
 #: data/themes/_initial.cfg:428
@@ -4375,10 +4385,8 @@ msgstr "Výchozí motiv"
 
 #. [menu]: id=menu-autosaves
 #: data/themes/default.cfg:92
-#, fuzzy
-#| msgid "Load Game..."
 msgid "Load Turn..."
-msgstr "Načti hru..."
+msgstr "Načti kolo..."
 
 #. [menu]: id=actions-menu
 #: data/themes/default.cfg:100
@@ -5694,23 +5702,23 @@ msgstr ""
 
 #: src/addon/validation.cpp:448
 msgid "Success."
-msgstr ""
+msgstr "Úspěch."
 
 #: src/addon/validation.cpp:452
 msgid "Incorrect add-on passphrase."
-msgstr ""
+msgstr "Nesprávná heslová fráze rozšíření."
 
 #: src/addon/validation.cpp:456
 msgid "Upload denied. Please contact the server administration for assistance."
-msgstr ""
+msgstr "Nahrání zamítnuto. Prosím obrať se na správu serveru pro radu."
 
 #: src/addon/validation.cpp:460
 msgid "Attempted to upload an update pack for a non-existent add-on."
-msgstr ""
+msgstr "Pokus o nahrání aktualizačního balíčku pro neexistující rozšíření."
 
 #: src/addon/validation.cpp:469
 msgid "No add-on data was supplied by the client."
-msgstr ""
+msgstr "Klientem nebyla v rozšíření dodána žádná data."
 
 #: src/addon/validation.cpp:473
 msgid "Invalid upload pack."
@@ -5722,7 +5730,7 @@ msgstr "Neplatný název rozšíření."
 
 #: src/addon/validation.cpp:481
 msgid "Formatting character in add-on name."
-msgstr ""
+msgstr "Formátovací znak ve jménu rozšíření."
 
 #: src/addon/validation.cpp:485
 msgid ""
@@ -5736,6 +5744,15 @@ msgid ""
 "Additionally, names may not be longer than 255 characters, contain '..', or "
 "end with '.'."
 msgstr ""
+"Rozšíření obsahuje soubory nebo adresáře s nedovolenými názvy.\n"
+"\n"
+"Názvy obsahující bílé nebo řídící znaky nebo jakýkoliv z následujících "
+"symbolů nejsou přípustné:\n"
+"\n"
+"    \" * / : < > ? \\ | ~\n"
+"\n"
+"Navíc názvy nemohou být delší než 255 znaků, obsahovat „..“ nebo končit na "
+"„.“."
 
 #: src/addon/validation.cpp:495
 msgid ""
@@ -5751,7 +5768,7 @@ msgstr ""
 
 #: src/addon/validation.cpp:501
 msgid "The add-on name contains an invalid UTF-8 sequence."
-msgstr ""
+msgstr "Název rozšíření obsahuje neplatnou UTF-8 posloupnost."
 
 #: src/addon/validation.cpp:510
 msgid "No add-on title specified."
@@ -5759,11 +5776,11 @@ msgstr "Nebyl stanoven název rozšíření."
 
 #: src/addon/validation.cpp:514
 msgid "No add-on author/maintainer name specified."
-msgstr ""
+msgstr "Nebylo stanoveno jméno autora/správce rozšíření."
 
 #: src/addon/validation.cpp:518
 msgid "No add-on version specified."
-msgstr ""
+msgstr "Nebyla stanovena verze rozšíření."
 
 #: src/addon/validation.cpp:522
 msgid "No add-on description specified."
@@ -5771,15 +5788,15 @@ msgstr "Nebyl stanoven popis rozšíření."
 
 #: src/addon/validation.cpp:526
 msgid "No add-on author/maintainer email specified."
-msgstr ""
+msgstr "Nebyl stanoven email autora/správce rozšíření."
 
 #: src/addon/validation.cpp:530
 msgid "Missing passphrase."
-msgstr ""
+msgstr "Chybějící heslová fráze."
 
 #: src/addon/validation.cpp:534
 msgid "Formatting character in add-on title."
-msgstr ""
+msgstr "Formátovací znak v názvu rozšíření."
 
 #: src/addon/validation.cpp:538
 msgid "Invalid or unspecified add-on type."
@@ -5787,27 +5804,28 @@ msgstr "Neplatný nebo neurčený typ rozšíření."
 
 #: src/addon/validation.cpp:542
 msgid "Version number not greater than the latest uploaded version."
-msgstr ""
+msgstr "Číslo verze není vyšší než poslední nahraná verze."
 
 #: src/addon/validation.cpp:546
 msgid "Feedback topic id is not a number."
-msgstr ""
+msgstr "Identifikátor tématu pro zpětnou vazbu není číslem."
 
 #: src/addon/validation.cpp:550
 msgid "Feedback topic does not exist."
-msgstr ""
+msgstr "Téma pro zpětnou vazbu neexistuje."
 
 #: src/addon/validation.cpp:554
 msgid "The add-on publish information contains an invalid UTF-8 sequence."
 msgstr ""
+"Zveřejňované infomace o rozšíření obsahují neplatnou UTF-8 posloupnost."
 
 #: src/addon/validation.cpp:563
 msgid "Unspecified server error."
-msgstr ""
+msgstr "Blíže neurčená chyba serveru."
 
 #: src/addon/validation.cpp:567
 msgid "Server is in read-only mode."
-msgstr ""
+msgstr "Server je v režimu pouze pro čtení."
 
 #: src/addon/validation.cpp:571
 msgid "Corrupted server add-ons list."
@@ -5815,11 +5833,11 @@ msgstr "Poškozený seznam rozšíření serveru."
 
 #: src/addon/validation.cpp:575
 msgid "Empty add-on version list on the server."
-msgstr ""
+msgstr "Prázdný seznam verzí rozšíření na serveru."
 
 #: src/addon/validation.cpp:585
 msgid "Unspecified validation failure."
-msgstr ""
+msgstr "Blíže neurčené selhání ověření."
 
 #: src/chat_command_handler.cpp:112
 msgid "Added to ignore list: $nick"
@@ -5922,6 +5940,8 @@ msgid ""
 "Send some data to the server. Can be used to verify the network connection "
 "and notice disconnects."
 msgstr ""
+"Pošle na server nějaká data. Lze použít pro ověření síťového připojení "
+"a k pozorování rozpojení."
 
 #: src/chat_command_handler.hpp:93
 msgid ""
@@ -5973,11 +5993,11 @@ msgstr "Smaže jméno ze seznamu otrapů nebo přátel."
 
 #: src/chat_command_handler.hpp:114
 msgid "<N>"
-msgstr ""
+msgstr "<N>"
 
 #: src/chat_command_handler.hpp:114
 msgid "Get a random number between 1 and N visible in the game setup lobby."
-msgstr ""
+msgstr "Získat náhodné číslo mezi 1 a N viditelné v čekárně hry více hráčů."
 
 # Když nedostane klient v datech která éra je použita.
 #: src/chat_command_handler.hpp:116
@@ -6184,11 +6204,11 @@ msgstr ""
 
 #: src/game_config_manager.cpp:530
 msgid "Use [modify_unit_type]\n"
-msgstr ""
+msgstr "Použij [modify_unit_type]\n"
 
 #: src/game_config_manager.cpp:569
 msgid "instead, use the macro with the same name in the [campaign] tag"
-msgstr ""
+msgstr "místo toho použij ve značce [campaign] makro se stejným jménem"
 
 #: src/game_config_manager.cpp:620
 msgid "The following add-on had errors and could not be loaded:"
@@ -6413,7 +6433,7 @@ msgstr "Nemohu najít následující věk - $era"
 
 #: src/game_initialization/multiplayer.cpp:236
 msgid "Invalid address specified for multiplayer server"
-msgstr ""
+msgstr "Byla zadána neplatná adresa serveru pro hru více hráčů"
 
 #: src/game_initialization/multiplayer.cpp:271
 msgid ""
@@ -6741,7 +6761,7 @@ msgstr "Nebyly nalezeny žádné viditelné strany."
 
 #: src/gui/dialogs/multiplayer/match_history.cpp:30
 msgid "Match History — $player"
-msgstr ""
+msgstr "Historie zápasů – $player"
 
 #: src/gui/dialogs/multiplayer/player_info.cpp:105
 msgid "In game:"
@@ -7227,17 +7247,17 @@ msgid ""
 "player"
 msgstr ""
 "[<strana> [on/off/full]]\n"
-"„on“ = zapnout, ale ponechat rozhled, „full” = jako když je ovládaná jiným "
+"„on“ = zapnout, ale ponechat rozhled, „full“ = jako když je ovládaná jiným "
 "hráčem"
 
 #: src/menu_events.cpp:1229
 msgid "Change terrain type of current hex"
-msgstr ""
+msgstr "Změnit typ terénu stávajícího políčka"
 
 #. TRANSLATORS: [both|base|overlay] are hardcoded literal arguments and shouldn't be translated.
 #: src/menu_events.cpp:1231
 msgid "<terrain type> [both|base|overlay]"
-msgstr ""
+msgstr "<typ terénu> [both|base|overlay]"
 
 #: src/menu_events.cpp:1232
 msgid "Switch a side to/from idle state."
@@ -7484,6 +7504,8 @@ msgid ""
 "It is not allowed to change a side from AI to human control when it's not "
 "your turn."
 msgstr ""
+"Není dovoleno měnit ovládání strany z počítače na člověka, když nejsi ve "
+"svém kole."
 
 #: src/menu_events.cpp:1507 src/menu_events.cpp:1563
 msgid "Side '$side' controller is now controlled by: AI."
@@ -7499,13 +7521,15 @@ msgstr "Strana „$side“ je nyní řízena člověkem."
 
 #: src/menu_events.cpp:1525
 msgid "Side '$side' is already not droided."
-msgstr ""
+msgstr "Strana „$side“ už počítačem není řízena."
 
 #: src/menu_events.cpp:1529
 msgid ""
 "It is not allowed to change a side from human to AI control when it's not "
 "your turn."
 msgstr ""
+"Není dovoleno měnit ovládání strany z člověka na počítač, když nejsi ve svém "
+"kole."
 
 #: src/menu_events.cpp:1539
 msgid "Side '$side' controller is now fully controlled by: AI."
@@ -7519,6 +7543,8 @@ msgstr "Strana '$side' už je plně ovládaná počítačem."
 msgid ""
 "Invalid action provided for side '$side'. Valid actions are: on, off, full."
 msgstr ""
+"Pro stranu „$side“ byla zadána neplatná akce. Platné akce jsou: on, off, "
+"full."
 
 #: src/menu_events.cpp:1608
 msgid "Can't idle invalid side: '$side'."
@@ -8034,7 +8060,7 @@ msgstr[2] "Útoků"
 #. TRANSLATORS: This string is shown in the sidebar beneath the word "Attacks" when a unit can attack multiple times per turn
 #: src/reports.cpp:1127
 msgid "Remaining: $left/$max"
-msgstr ""
+msgstr "Zbývající: $left/$max"
 
 #: src/reports.cpp:1131
 msgid "This unit can attack multiple times per turn."
@@ -8199,6 +8225,20 @@ msgid ""
 "\n"
 "Do you wish to continue?"
 msgstr ""
+"Tato uložená pozice je z jiné verze hry ($version_number|) a s touto verzí "
+"nemusí pracovat.\n"
+"\n"
+"<b>Varování:</b> hry uložené uprostřed tažení jsou zvláště náchylné "
+"k selhání a ty bys měl(a) buď použít starší verzi, nebo tažení začít znovu. "
+"I když to vypadá, že se uložená hra v pořádku načetla, může být poznamenána "
+"v sotva patrných ohledech, jakými jsou vyvážená hratelnost a posloupnost "
+"příběhu. Obtížnost, výzva, <i>zábava</i>, ty mohou chybět.\n"
+"\n"
+"Například tažení mohlo být znovu vyváženo snížením počtu nepřátel "
+"v počátečních scénářích, ale očekává, že tvůj povolávací seznam v pozdějších "
+"scénářích má odpovídajícím způsobem méně zkušeností.\n"
+"\n"
+"Přeješ si pokračovat?"
 
 #: src/savegame.cpp:274 src/savegame.cpp:320
 msgid "Load Game"
@@ -8676,16 +8716,6 @@ msgstr "Skryj plány pro hráče $player"
 #: src/whiteboard/manager.cpp:1137
 msgid "Whiteboard Options"
 msgstr "Nastavení plánovacího módu"
-
-#~ msgid "Back to..."
-#~ msgstr "Zpět na kolo..."
-
-#~ msgid ""
-#~ "This save is from a different version of the game ($version_number|). Do "
-#~ "you wish to try to load it?"
-#~ msgstr ""
-#~ "Tato uložená pozice je z jiné verze hry ($version_number|). Chceš se ji "
-#~ "opravdu pokusit nahrát?"
 
 # !!!!
 #~ msgid "Scenario"

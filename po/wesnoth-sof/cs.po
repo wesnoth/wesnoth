@@ -19,7 +19,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2021-03-12 23:18 UTC\n"
-"PO-Revision-Date: 2021-03-08 13:59+0100\n"
+"PO-Revision-Date: 2021-04-06 19:03+0200\n"
 "Last-Translator: Septim <septim@centrum.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
@@ -27,7 +27,6 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Poedit 2.4.2\n"
 
 #. [campaign]: id=Sceptre_of_Fire
 #: data/campaigns/Sceptre_of_Fire/_main.cfg:11
@@ -52,7 +51,7 @@ msgstr "Normální"
 #. [campaign]: id=Sceptre_of_Fire
 #: data/campaigns/Sceptre_of_Fire/_main.cfg:21
 msgid "Challenging"
-msgstr "Nelehká"
+msgstr "Náročná"
 
 #. [campaign]: id=Sceptre_of_Fire
 #: data/campaigns/Sceptre_of_Fire/_main.cfg:21
@@ -62,7 +61,7 @@ msgstr "Trpasličí těžkooděnec"
 #. [campaign]: id=Sceptre_of_Fire
 #: data/campaigns/Sceptre_of_Fire/_main.cfg:22
 msgid "Difficult"
-msgstr "Náročná"
+msgstr "Obtížná"
 
 #. [campaign]: id=Sceptre_of_Fire
 #: data/campaigns/Sceptre_of_Fire/_main.cfg:22
@@ -107,7 +106,7 @@ msgstr ""
 #. [campaign]: id=Sceptre_of_Fire
 #: data/campaigns/Sceptre_of_Fire/_main.cfg:34
 msgid "(Hard level, 9 scenarios.)"
-msgstr "(Úroveň těžká, 9 scénářů.)"
+msgstr "(Úroveň ostřílený hráč, 9 scénářů.)"
 
 #. [about]
 #: data/campaigns/Sceptre_of_Fire/_main.cfg:39
@@ -2767,10 +2766,9 @@ msgid ""
 "stride, and seemed to understand what the pats and strokes of the dwarf's "
 "hands meant."
 msgstr ""
-"Jeden statečný statečný trpaslík se rozběhl, chytnul přátelského gryfona za "
-"robustní peří na krku a vyskočil mu na záda. Velké zvíře to všechno vzalo s "
-"rozvahou. A zdálo se, že chápe, co znamenají poklepání a tahy trpasličích "
-"rukou."
+"Jeden statečný trpaslík se rozběhl, chytnul přátelského gryfona za robustní "
+"peří na krku a vyskočil mu na záda. Velké zvíře to všechno vzalo s rozvahou. "
+"A zdálo se, že chápe, co znamenají poklepání a tahy trpasličích rukou."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:449
@@ -3124,10 +3122,11 @@ msgstr ""
 "Chápu... No, nenecháme se zmást tvým smlouváním a falešnými sliby. Byl jsi "
 "velmi pošetilý, když jsi sem vyšel sám."
 
+# Střílí do něj lukem.
 #. [animate]
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:398
 msgid "<i>Thud!</i>"
-msgstr "<i>Buch!</i>"
+msgstr "<i>Svist!</i>"
 
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:421
@@ -3238,16 +3237,18 @@ msgid ""
 "Here, if you are still having doubts, let me inscribe this rune for you to "
 "help you slip past their defenses."
 msgstr ""
+"A tady, pokud stále máš pochybnosti, mi dovol zapsat tuto runu, která ti "
+"pomůže proklouznout přes jejich obranu."
 
 #. [message]: speaker=Alanin
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:525
 msgid "Thanks!"
-msgstr ""
+msgstr "Díky!"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:529
 msgid "Alanin has gained new abilities!"
-msgstr ""
+msgstr "Alanin získal nové schopnosti."
 
 #. [message]: speaker=Alanin
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:534
@@ -3348,8 +3349,8 @@ msgid ""
 "My only hope is to convince the peasants to stop the elves from passing "
 "through their land, so I can get ahead of those riders."
 msgstr ""
-"Má jediná naděje je přesvědčit sedláky, aby elfy při průchodu jejich zemí "
-"zastavili. Tak bych mohl získat před těmi jezdci větší náskok."
+"Má jediná naděje je přesvědčit sedláky, aby elfy při průchodu svou zemí "
+"zadržovali. Tak bych mohl získat před těmi jezdci větší náskok."
 
 #. [unit]: type=Elvish Outrider, id=Asaeri
 #: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:128
@@ -3850,6 +3851,9 @@ msgid ""
 "spattering of bat guano, there was a glowing rune. Krawg didn't know what to "
 "make of it, so the gryphon left it for now."
 msgstr ""
+"Kravág si lámal hlavu nad kamennou dlaždicí, která volně ležela na hromádce "
+"nepořádku. Pod skvrnami z netopýřího guana zářila runa. Kravág nevěděl, co "
+"si o tom myslet, takže ji zatím nechal být."
 
 #. [message]: speaker=Krawg
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:665
@@ -3872,6 +3876,8 @@ msgid ""
 "Yes, Krawg, that must be the last rune sealing the volcano. Smash it, like "
 "the others!"
 msgstr ""
+"Ano, Kravágu, to musí být poslední runa udržující utěsnění sopky. Rozbij ji, "
+"jako ostatní!"
 
 #. [message]: speaker=Krawg
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:678
@@ -3932,12 +3938,16 @@ msgid ""
 "tomb of hot, flowing rock. The Sceptre of Fire would wait, unharmed by the "
 "lava, until some day far in the future."
 msgstr ""
+"Jakmile bylo magické těsnění zakrývající hrdlo sopky odstraněno, láva a "
+"toxický plyn vybuchly, zabily všechny uvnitř a utěsnily je v hrobce z horké "
+"tekoucí skály. Ohnivé žezlo, nepoškozeno lávou, tu spočine až do jednoho dne "
+"v budoucnosti."
 
 #. [message]: speaker=unit
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:906
 msgid ""
 "These chests have been forced open. Whatever they once held has been removed."
-msgstr ""
+msgstr "Tyto truhly byly vypáčeny. Cokoli kdysi obsahovaly, je pryč."
 
 #. [message]: speaker=unit
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:932
@@ -3945,6 +3955,8 @@ msgid ""
 "Ah! We aren't wandering the bowels o' the earth, this is crafted stone! It's "
 "very old though..."
 msgstr ""
+"No tohle! Netouláme se v zemských útrobách, tenhle kámen je opracovaný! Je "
+"to však hodně staré dílo..."
 
 #. [message]: speaker=unit
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:944
@@ -3954,6 +3966,10 @@ msgid ""
 "three symbols for these arcs... Well, it must describe the volcano somehow, "
 "but I can't puzzle it out now."
 msgstr ""
+"Tady je nějaký druh záznamu... Text neumím přečíst, ale jsou tu kresby "
+"ukazující tři oblouky, které překlenují to, co musí být sopka. Každý oblouk "
+"má svůj symbol... No, nějak to tu sopku určitě popisuje, ale teď to neumím "
+"rozluštit."
 
 #. [objective]: condition=win
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:954
@@ -4511,29 +4527,29 @@ msgid ""
 "This isn't the place to do really good work though, so the effects will "
 "vanish in the future. What do you say, is it worth a bit of gold and crystal?"
 msgstr ""
-"Mohu vykouzlit malé runové kouzlo, mělo by vám trochu pomoci. Tady však není "
+"Mohu vykouzlit malé runové kouzlo, mělo by ti trochu pomoci. Tady však není "
 "místo pro opravdu dobrou práci, takže účinky budou jen dočasné. Co myslíš, "
 "má smysl obětovat na něj něco zlata a drahokamů?"
 
 #. [option]
 #: data/campaigns/Sceptre_of_Fire/utils/rune-equip.cfg:289
 msgid "Exit"
-msgstr ""
+msgstr "Odejít"
 
 #. [option]
 #: data/campaigns/Sceptre_of_Fire/utils/rune-equip.cfg:290
 msgid "Nothing for now."
-msgstr ""
+msgstr "Teď ne."
 
 #. [option]
 #: data/campaigns/Sceptre_of_Fire/utils/rune-equip.cfg:297
 msgid "Reject"
-msgstr ""
+msgstr "Odmítnout"
 
 #. [option]
 #: data/campaigns/Sceptre_of_Fire/utils/rune-equip.cfg:298
 msgid "No thanks, don't ask again."
-msgstr ""
+msgstr "Ne díky, již se neptej."
 
 #. [option]
 #: data/campaigns/Sceptre_of_Fire/utils/rune-equip.cfg:315
