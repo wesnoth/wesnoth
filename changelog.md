@@ -20,6 +20,7 @@
    * Minor adjustments to the sidebar's minimap area in the default game theme to reclaim empty and uneven space back. Note that this WILL break custom WML themes that use the same sidebar graphics as the default theme.
    * Minor adjustment to the placement of numerals on the debug clock.
    * Players now receive an error message when attempting to save games using illegal file names (issue #5679).
+   * Fixed text labels containing only a single link becoming empty (issue #5625).
  ### WML Engine
  ### Miscellaneous and Bug Fixes
    * Fixed units with max movement set to zero being given one max movement point by `[unstore_unit]` or when loading a saved game

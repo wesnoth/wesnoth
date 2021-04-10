@@ -816,27 +816,31 @@ std::string pango_text::format_links(std::string_view text) const
 	static const std::string delim = " \n\r\t";
 	std::ostringstream result;
 
-	std::size_t last_delim = -1;
-	for(std::size_t index = 0; index < text.size(); ++index) {
-		if(delim.find(text[index]) != std::string::npos) {
-			// Token starts from after the last delimiter up to (but not including) this delimiter
-			auto token = text.substr(last_delim + 1, index - last_delim - 1);
-
-			if(looks_like_url(token)) {
-				result << format_as_link(std::string(token), link_color_) << text[index];
-			} else {
-				result << token << text[index];
-			}
-
-			last_delim = index;
+	std::size_t tok_start = 0;
+	for(std::size_t pos = 0; pos < text.length(); ++pos) {
+		if(delim.find(text[pos]) == std::string::npos) {
+			continue;
 		}
+
+		if(const auto tok_length = pos - tok_start) {
+			// Token starts from after the last delimiter up to (but not including) this delimiter
+			auto token = text.substr(tok_start, tok_length);
+			if(looks_like_url(token)) {
+				result << format_as_link(std::string{token}, link_color_);
+			} else {
+				result << token;
+			}
+		}
+
+		result << text[pos];
+		tok_start = pos + 1;
 	}
 
-	if(last_delim < text.size() - 1) {
-		auto token = text.substr(last_delim + 1, text.size() - last_delim - 1);
-
+	// Deal with the remainder token
+	if(tok_start < text.length()) {
+		auto token = text.substr(tok_start);
 		if(looks_like_url(token)) {
-			result << format_as_link(std::string(token), link_color_);
+			result << format_as_link(std::string{token}, link_color_);
 		} else {
 			result << token;
 		}
