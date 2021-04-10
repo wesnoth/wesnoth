@@ -4,24 +4,23 @@
 # Copyright (C) 2004 - 2020 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 #
-# Czech Wesnoth translation team <hrubymar10@gmail.com>,
-#
+# Czech Wesnoth translation team
 #
 # Yeti <yeti@physics.muni.cz> et al, 2004.
 # Oto 'tapik' Buchta <tapik@buchtovi.cz>, 2005 - 2007, 2010.
 # Vladimír Slávik <slavik.vladimir@seznam.cz>, 2007 - 2011.
 # Jan Dědič <jan.dedic@gmail.com>, 2014.
 # Martin Hrubý <hrubymar10@gmail.com>, 2017 - 2020.
-# Michal Žejdl <lachim@emer.cz>, 2019 - 2020.
+# Michal Žejdl <lachim@emer.cz>, 2019 - 2021.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2021-02-14 16:35-0300\n"
-"PO-Revision-Date: 2020-12-03 16:14+0100\n"
+"PO-Revision-Date: 2021-03-25 21:17+0100\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
-"Language-Team: Český <hrubymar10@gmail.com>\n"
+"Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -57,13 +56,13 @@ msgid ""
 "A poisoned unit cannot be cured of its poison by a healer, and must seek the "
 "care of a village or a unit that can cure."
 msgstr ""
-"Jednotka dokáže ošetřit spřátelené jednotky na vedlejších polích na začátku "
-"tahu.\n"
+"Umožňuje jednotce na začátku jejího kola ošetřit sousední spojenecké "
+"jednotky.\n"
 "\n"
-"Zraněná jednotka v péči tohoto ošetřovatele se může za jeden tah vyléčit až "
-"o 4 životy nebo se jí může na jeden tah zastavit působení jedu.\n"
+"Jednotka, která je v péči tohoto ošetřovatele, se může vyléčit až o 4 životy "
+"za kolo, nebo v tomto kole zastavit působení jedu.\n"
 "Ošetřovatel nedokáže uzdravit otrávenou jednotku; taková jednotka musí "
-"vyhledat pomoc ve vesnici nebo u jednotky, která dokáže uzdravovat."
+"vyhledat pomoc ve vesnici nebo u jednotky, která dokáže uzdravovat."
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:39
@@ -112,10 +111,8 @@ msgstr "Editor terénu"
 #. [section]: id=editor_mode_scenario
 #. [topic]: id=..editor_mode_scenario
 #: data/core/editor/help.cfg:20 data/core/editor/help.cfg:269
-#, fuzzy
-#| msgid "Map/Scenario Editor"
 msgid "Scenario Editor"
-msgstr "Editor map/scénářů"
+msgstr "Editor scénáře"
 
 #. [topic]: id=editor_tool_paint
 #: data/core/editor/help.cfg:28
@@ -141,26 +138,40 @@ msgid ""
 "\n"
 "The selected brush changes the size of the tool:"
 msgstr ""
+"Maluje dlaždice terénu na mapu.\n"
+"\n"
+"Nástroj malování používá velikosti štětců a paletu terénů.\n"
+"\n"
+"<bold>text='Klávesové modifikátory'</bold>\n"
+"\n"
+"• Shift + kliknutí myší: Když je vybrán základní terén, změní základ "
+"a překryv ponechá. Pokud je vybrán překryv, změní překryv a ponechá základ.\n"
+"• Control + kliknutí myší: Vybere terén pod kurzorem myši, jako kdyby byl "
+"vybrán na paletě terénů (vezme jak základ, tak překryv).\n"
+"\n"
+"<bold>text='Velikosti štětců'</bold>\n"
+"\n"
+"Vybraný štětec mění velikost nástroje:"
 
 #. [topic]: id=editor_tool_paint
 #: data/core/editor/help.cfg:41
 msgid "Paint single hexes."
-msgstr ""
+msgstr "Malovat jednotlivé hexy."
 
 #. [topic]: id=editor_tool_paint
 #: data/core/editor/help.cfg:42
 msgid "Paint seven hexes at a time."
-msgstr ""
+msgstr "Malovat sedm hexů najednou."
 
 #. [topic]: id=editor_tool_paint
 #: data/core/editor/help.cfg:43
 msgid "Paint nineteen hexes at a time."
-msgstr ""
+msgstr "Malovat devatenáct hexů najednou."
 
 #. [topic]: id=editor_tool_paint
 #: data/core/editor/help.cfg:44 data/core/editor/help.cfg:45
 msgid "Paint three hexes in a line."
-msgstr ""
+msgstr "Malovat tři hexy za sebou."
 
 #. [topic]: id=editor_tool_fill
 #: data/core/editor/help.cfg:52
@@ -182,11 +193,21 @@ msgid ""
 "• Control+mouse click: Select the terrain under the mouse cursor, as if it "
 "had been selected on the terrain palette (picks up both base and overlay)."
 msgstr ""
+"Vyplní spojité oblasti terénu jiným.\n"
+"\n"
+"Nástroj vyplňování používá paletu terénů.\n"
+"\n"
+"<bold>text='Klávesové modifikátory'</bold>\n"
+"\n"
+"• Shift + kliknutí myší: Když je vybrán základní terén, změní základ "
+"a překryv ponechá. Pokud je vybrán překryv, změní překryv a ponechá základ.\n"
+"• Control + kliknutí myší: Vybere terén pod kurzorem myši, jako kdyby byl "
+"vybrán na paletě terénů (vezme jak základ, tak překryv)."
 
 #. [topic]: id=editor_tool_select
 #: data/core/editor/help.cfg:67
 msgid "Select Tool"
-msgstr "Vybrat nástroj"
+msgstr "Vybírání"
 
 #. [topic]: id=editor_tool_select
 #: data/core/editor/help.cfg:68
@@ -204,31 +225,43 @@ msgid ""
 "\n"
 "The selected brush changes the size of the tool:"
 msgstr ""
+"Vybere množinu šestiúhelníkových políček pro použití s tlačítky Vyjmout, "
+"Kopírovat a Vyplnit výběr, která se nacházejí pod lištou s menu.\n"
+"\n"
+"<bold>text='Klávesové modifikátory'</bold>\n"
+"\n"
+"• Shift + kliknutí myší: Režim „kouzelné hůlky“ vybere hex pod kurzorem myši "
+"a sousední hexy se stejným typem terénu.\n"
+"• Control + kliknutí myší: Zruší výběr hexů.\n"
+"\n"
+"<bold>text='Velikosti štětců'</bold>\n"
+"\n"
+"Vybraný štětec mění velikost nástroje:"
 
 #. [topic]: id=editor_tool_select
 #: data/core/editor/help.cfg:78
 msgid "Select single hexes."
-msgstr ""
+msgstr "Vybrat jednotlivé hexy."
 
 #. [topic]: id=editor_tool_select
 #: data/core/editor/help.cfg:79
 msgid "Select seven hexes at a time."
-msgstr ""
+msgstr "Vybrat sedm hexů najednou."
 
 #. [topic]: id=editor_tool_select
 #: data/core/editor/help.cfg:80
 msgid "Select nineteen hexes at a time."
-msgstr ""
+msgstr "Vybrat devatenáct hexů najednou."
 
 #. [topic]: id=editor_tool_select
 #: data/core/editor/help.cfg:81 data/core/editor/help.cfg:82
 msgid "Select three hexes in a line."
-msgstr ""
+msgstr "Vybrat tři hexy za sebou."
 
 #. [topic]: id=editor_tool_paste
 #: data/core/editor/help.cfg:89
 msgid "Clipboard and Paste Tool"
-msgstr ""
+msgstr "Schránka a vkládání"
 
 #. [topic]: id=editor_tool_paste
 #: data/core/editor/help.cfg:90
@@ -245,33 +278,42 @@ msgid ""
 "\n"
 "The paste tool also has some clipboard-manipulation functions:"
 msgstr ""
+"Otáčí, převrací a vkládá terén ve schránce.\n"
+"\n"
+"Hexy lze do schránky vyjmout nebo kopírovat pomocí "
+"<ref>dst='editor_tool_select' text='nástroje vybírání'</ref>.\n"
+"\n"
+"Nástroj vkládání zobrazuje obrys obsahu schránky, který může být vložen "
+"kliknutím myší. Je vidět pouze obrys, ale chyby mohou být opraveny pomocí "
+"funkce zpět, která je svázaná jak s Control+Z, tak i s tou samou klávesou "
+"jako funkce zpět ve hře.\n"
+"\n"
+"Nástroj vkládání má také některé funkce pro zacházení se schránkou:"
 
 #. [topic]: id=editor_tool_paste
 #: data/core/editor/help.cfg:97
 msgid "Rotate clockwise by 60°."
-msgstr ""
+msgstr "Otočit o 60° po směru hodinových ručiček."
 
 #. [topic]: id=editor_tool_paste
 #: data/core/editor/help.cfg:98
 msgid "Rotate counter-clockwise by 60°."
-msgstr ""
+msgstr "Otočit o 60° proti směru hodinových ručiček."
 
 #. [topic]: id=editor_tool_paste
 #: data/core/editor/help.cfg:99
 msgid "Flip horizontally"
-msgstr ""
+msgstr "Převrátit horizontálně"
 
 #. [topic]: id=editor_tool_paste
 #: data/core/editor/help.cfg:100
 msgid "Flip vertically"
-msgstr ""
+msgstr "Převrátit vertikálně"
 
 #. [topic]: id=editor_tool_starting
 #: data/core/editor/help.cfg:107
-#, fuzzy
-#| msgid "Starting Positions Howto"
 msgid "Starting Locations Tool"
-msgstr "Vše o nastavování počáteční pozice"
+msgstr "Startovní pozice"
 
 #. [topic]: id=editor_tool_starting
 #: data/core/editor/help.cfg:109
@@ -306,6 +348,35 @@ msgid ""
 "location for placing with a subsequent mouse click, as if it was selected in "
 "the editor palette."
 msgstr ""
+"Stanovuje počáteční umístění vůdce dané strany.\n"
+"\n"
+"Tento nástroj nastavuje výchozí umístění vůdců stran a pojmenovaná zvláštní "
+"místa. Oba typy míst jsou povoleny jak v režimu <ref>dst='.."
+"editor_mode_terrain' text='editoru terénu'</ref>, tak <ref>dst='.."
+"editor_mode_scenario' text='editoru scénáře'</ref>. Jména míst jsou "
+"zobrazena jako seznam v paletě editoru, kliknutí do mapy umístí toto jméno "
+"na hex, každé místo může být pouze na jediném hexu a editor umožní jenom "
+"jedno místo na hex.\n"
+"\n"
+"Pro přidání pojmenovaných zvlášních míst klikni dole na paletě na „Přidat“ "
+"a vlož jméno. Tato jména musí začínat písmenem a mohou obsahovat čísla "
+"a podtržítka.\n"
+"\n"
+"Do mapy může být přidáno více než devět týmů kliknutím na „Přidat” "
+"a vložením čísla, například „10“. Uživatelské rozhraní to automaticky "
+"zobrazí jako „Hráč 10“.\n"
+"\n"
+"K pojmenovaným místům je možné se z WML dostat pomocí "
+"<italic>text='location_id='</italic> standardního filtru oblastí. Též "
+"výchozí polohy hráčů lze získat použitím <italic>text='location_id=1'</"
+"italic>, <italic>text='location_id=2'</italic>, atd. – použij pouze číslo "
+"a nepřidávej před něj „Hráč ”.\n"
+"\n"
+"<bold>text='Klávesové modifikátory'</bold>\n"
+"\n"
+"• Control + kliknutí myší na hex, který už nějaké místo obsahuje: vybere "
+"toto místo pro vložení následným kliknutím myší, jako by bylo vybráno "
+"v paletě editoru."
 
 #. [topic]: id=editor_tool_label
 #: data/core/editor/help.cfg:129
@@ -325,11 +396,20 @@ msgid ""
 "This tool is only available in Scenario Mode; the decorations are "
 "implemented in the scenario using WML’s <italic>text='[label]'</italic> tag."
 msgstr ""
+"Vloží do mapy textové popisky.\n"
+"\n"
+"• Kliknutí levým otevře dialogové okno pro vytvoření nového popisku nebo "
+"úpravu stávajícího.\n"
+"• Kliknutí pravým maže.\n"
+"• Přetažení pomocí levého tlačítka myši popisky posouvá.\n"
+"\n"
+"Tento nástroj je dostupný pouze v režimu scénáře. Ve scénáři jsou tyto "
+"přízdoby zavedeny použitím WML značky <italic>text='[label]'</italic>."
 
 #. [topic]: id=editor_tool_scenery
 #: data/core/editor/help.cfg:145
 msgid "Item Tool (Scenery Tool)"
-msgstr ""
+msgstr "Předměty (dekorace)"
 
 #. [topic]: id=editor_tool_scenery
 #: data/core/editor/help.cfg:146
@@ -345,6 +425,16 @@ msgid ""
 "of the terrain and are implemented in the scenario using WML’s "
 "<italic>text='[item]'</italic> tag."
 msgstr ""
+"Nástroj pro předměty umožňuje umístění dekorací jako třeba větrných mlýnů, "
+"knihovniček a monolitů. Na jeden hex lze dát více předmětů.\n"
+"\n"
+"<bold>text='Poznámka:'</bold> u již umístěných předmětů nástroj nepodporuje "
+"mazání ani funkci zpět. Momentálně mohou být omyly opraveny pouze úpravou "
+"vytvořeného WML souboru.\n"
+"\n"
+"Tento nástroj je dostupný pouze v režimu scénáře. Dekorace nejsou součástí "
+"terénu a ve scénáři jsou zavedeny použitím WML značky <italic>text='[item]'</"
+"italic>."
 
 #. [topic]: id=editor_tool_village
 #: data/core/editor/help.cfg:159
@@ -365,6 +455,16 @@ msgid ""
 "stored by adding WML <italic>text='[village]'</italic> tags to the "
 "appropriate <italic>text='[side]'</italic>."
 msgstr ""
+"Tento nástroj přidělí vlastnictví vesnic na začátku scénáře. Nejprve musí "
+"být vesnice umístěny na terén pomocí <ref>dst='editor_tool_paint' "
+"text='nástroje malování'</ref>.\n"
+"\n"
+"• Kliknutí levým přidělí vesnici momentálně vybrané straně.\n"
+"• Kliknutí pravým vlastnictví vesnice zruší.\n"
+"\n"
+"Tento nástroj je dostupný pouze v režimu scénáře. Informace o vlastnictví je "
+"uložena přidáním WML značky <italic>text='[village]'</italic> příslušné "
+"straně <italic>text='[side]'</italic>."
 
 #. [topic]: id=editor_tool_unit
 #: data/core/editor/help.cfg:174
@@ -385,6 +485,16 @@ msgid ""
 "<italic>text='[unit]'</italic> tags to the appropriate "
 "<italic>text='[side]'</italic>."
 msgstr ""
+"Umístí jednotky náležející momentálně vybrané straně.\n"
+"\n"
+"• Kliknutí levým umístí jednotku.\n"
+"• Přetažení levým posune jednotku již umístěnou.\n"
+"• Když hex obsahuje jednotku, tak jsou do menu po kliknutí pravým přidány "
+"různé akce.\n"
+"\n"
+"Tento nástroj je dostupný pouze v režimu scénáře. K příslušné WML značce pro "
+"stranu <italic>text='[side]'</italic> přidává značku jednotky "
+"<italic>text='[unit]'</italic>."
 
 #. [topic]: id=editor_named_area
 #: data/core/editor/help.cfg:190
@@ -417,6 +527,28 @@ msgid ""
 "name implies time, it is now more generic and can be used for other purposes "
 "without needing to change the time-of-day schedule in the area."
 msgstr ""
+"Tento nástroj vytváří sady dlaždic, které mohou být využity ve standardních "
+"filtrech míst (Standard Location Filters, pojem je podrobně vysvětlen na "
+"Wiki) WML skriptů pomocí identifikátoru oblasti v atributu filtru "
+"<italic>text='area='</italic>. Například:\n"
+"\n"
+"• přidělení místního časového pásma této sadě hexů\n"
+"• filtrování sady hexů, které spustí událost, když se na ně jednotka "
+"přesune\n"
+"\n"
+"Použití nástroje:\n"
+"\n"
+"• vyber hexy pomocí <ref>dst='editor_tool_select' text='nástroje pro výběr'</"
+"ref>\n"
+"• v menu Oblasti zvol Vybrat novou oblast\n"
+"• pak v menu Oblasti zvol Uložit výběr do oblasti\n"
+"• pak v menu Oblasti zvol Přejmenovat vybranou oblast a vyber pro tu oblast "
+"jméno\n"
+"\n"
+"Tento nástroj je dostupný pouze v režimu scénáře. Přidává do scénáře WML "
+"značky <italic>text='[time_area]'</italic>. Ačkoli jméno značky má v sobě "
+"čas, značka je teď obecnější a může být použita pro jiné účely, aniž je "
+"třeba v té oblasti měnit rozvrh denní doby."
 
 #. [topic]: id=editor_playlist
 #: data/core/editor/help.cfg:212
@@ -432,6 +564,11 @@ msgid ""
 "This tool is only available in Scenario Mode; it adds WML "
 "<italic>text='[music]'</italic> tags to the scenario."
 msgstr ""
+"Ukáže seznam hudebních nahrávek, které editor zná, se zaškrtávacími políčky "
+"pro jejich zapnutí.\n"
+"\n"
+"Tento nástroj je dostupný pouze v režimu scénáře. Přidá do scénáře WML "
+"značky <italic>text='[music]'</italic>."
 
 #. [topic]: id=..editor
 #: data/core/editor/help.cfg:223
@@ -473,6 +610,37 @@ msgid ""
 "it is one of the main blockers for the 1.16 release, however in 1.14 its "
 "quality is far below that of the game and the terrain mode."
 msgstr ""
+"Editor map a scénářů Wesnothu umožňuje uživatelům vytvářet a upravovat mapy, "
+"na kterých se odehrává každý scénář. Také poskytuje omezenou sadu prvků pro "
+"vytvoření základního scénáře.\n"
+"\n"
+"Editor může být spuštěn volbou <italic>text='Editor map'</italic> na úvodní "
+"obrazovce.\n"
+"\n"
+"<header>text='Režimy úprav'</header>\n"
+"\n"
+"Editor obsahuje dva režimy úprav: režim terénu a scénáře.\n"
+"\n"
+"<ref>dst='..editor_mode_terrain' text='Režim terénu'</ref> je podobný jako "
+"jednoduchý program na malování, s nástroji pro <ref>dst='editor_tool_paint' "
+"text='malování'</ref>, <ref>dst='editor_tool_fill' text='vyplňování'</ref>, "
+"<ref>dst='editor_tool_select' text='výběr (a kopírování)'</ref> "
+"a <ref>dst='editor_tool_paste' text='vkládání'</ref>. Také má nástroj pro "
+"nastavení <ref>dst='editor_tool_starting' text='počátečního umístění'</ref> "
+"vůdců.\n"
+"\n"
+"<ref>dst='..editor_mode_scenario' text='Režim scénáře'</ref> navíc "
+"k nástrojům, které jsou dostupné v režimu terénu, dodává podporu přidávání "
+"<ref>dst='editor_tool_label' text='popisků'</ref>, "
+"<ref>dst='editor_tool_scenery' text='dekorativních předmětů'</ref>, dalších "
+"<ref>dst='editor_tool_unit' text='jednotek'</ref> k vůdci a přidělování "
+"<ref>dst='editor_tool_village' text='vlastnictví vesnic'</ref> na začátku "
+"scénáře. V režimu scénáře je také <ref>dst='editor_playlist' text='správce "
+"seznamu skladeb'</ref> pro hudbu.\n"
+"\n"
+"<bold>text='Varování: režim scénáře je v 1.14 zachybovaný.'</bold> Jeho "
+"vylepšení je jednou z hlavních zábran vydání 1.16, nicméně v 1.14 je jeho "
+"kvalita hluboko pod úrovní hry a režimu terénu."
 
 #. [topic]: id=..editor
 #: data/core/editor/help.cfg:238
@@ -499,6 +667,27 @@ msgid ""
 "have their own terrains will need that add-on to tell the editor about their "
 "terrains."
 msgstr ""
+"<header>text='Co *nedostaneš*'</header>\n"
+"\n"
+"• Přesně to samé vykreslování mapy jako ve hře\n"
+"\n"
+"Mapa nebude v editoru vypadat přesně tak jako ve hře, protože to závisí na "
+"pravidlech terénu. Například když je společně nakupeno mnoho horských hexů, "
+"pravidla pro terén se je pokusí spojit do pohoří a velkých grafik, které "
+"pokrývají mnohé hexy.\n"
+"\n"
+"• Obsluhy událostí a skriptování\n"
+"\n"
+"Editor není nástrojem, který by ti pomohl skriptovat obsluhy událostí "
+"scénáře.\n"
+"\n"
+"• Neomezenou zpětnou kompatibilitu\n"
+"\n"
+"Editor dokáže načíst většinu map ze starších verzí Wesnothu, ale ne všechny. "
+"Mapy z 1.3.2 a následujících budou obvykle podporovány, ledaže by používaly "
+"terény, které již nejsou v hlavním Wesnothu. Mapy rozšíření, která mají "
+"vlastní terény, budou potřebovat toto rozšíření, aby editor o jejich "
+"terénech věděl."
 
 #. [topic]: id=..editor_mode_terrain
 #: data/core/editor/help.cfg:258
@@ -514,6 +703,16 @@ msgid ""
 "resulting map can be found in the “Custom Maps” game type of the multiplayer "
 "“Create Game” dialog."
 msgstr ""
+"Rozsah funkcí editoru terénu je podobný, jako má jednoduchý program na "
+"kreslení.\n"
+"\n"
+"Postranní panel napravo obsahuje zhora dolů minimapu, sadu nástrojů (viz "
+"stránku pro každý nástroj), možnosti nástrojů a <ref>dst='editor_palette' "
+"text='paletu'</ref>.\n"
+"\n"
+"Když bude mapa uložena pomocí „Uložit mapu jako” do výchozího adresáře, lze "
+"výslednou mapu najít pod typem hry „Vlastní mapy“ v dialogovém okně „Vytvoř "
+"hru“ pro hru více hráčů."
 
 #. [topic]: id=..editor_mode_scenario
 #: data/core/editor/help.cfg:270
@@ -523,6 +722,10 @@ msgid ""
 "additional WML to be written using a different tool; the scenario editor "
 "does not support scripting the scenario’s events."
 msgstr ""
+"Editor v režimu scénáře přidává podporu pro některé WML prvky související "
+"z mapou, jako třeba oblasti a dekorační předměty. Přesto bude většina "
+"scénářů potřebovat napsat další WML pomocí jiného nástroje. Editor scénáře "
+"nepodporuje skriptování událostí."
 
 #. [topic]: id=..editor_mode_scenario
 #: data/core/editor/help.cfg:272
@@ -534,6 +737,12 @@ msgid ""
 "• In scenario mode the “Areas” and “Side” menus are enabled.\n"
 "• In terrain-only mode the “Areas” and “Side” menus are grayed-out."
 msgstr ""
+"<header>text='Ověření, jestli je editor v režimu scénáře'</header>\n"
+"\n"
+"Pohledem na lištu menu můžeš zjistit, ve kterém je editor režimu.\n"
+"\n"
+"• V režimu scénáře jsou menu „Oblasti“ a „Strana“ povolená.\n"
+"• V režimu pouze pro terén jsou menu „Oblasti“ a „Strana“ zašedlá."
 
 #. [topic]: id=..editor_mode_scenario
 #: data/core/editor/help.cfg:279
@@ -549,6 +758,16 @@ msgid ""
 "To load a map that was created in the scenario editor, use “Load Map” from "
 "the “File” menu, and select the .cfg file (not a .map file)."
 msgstr ""
+"<header>text='Vstup do režimu scénáře'</header>\n"
+"\n"
+"Abys začal novou mapu v režimu scénáře, vyber „Nový scénář“ z menu "
+"„Soubor“.\n"
+"\n"
+"Pokud už upravuješ mapu v režimu terénu, použij „Uložit scénář jako” z menu "
+"„Soubor“. To přepne do režimu scénáře.\n"
+"\n"
+"Pro načtení mapy, která byla vytvořena v editoru scénáře, použij „Načíst "
+"mapu“ z menu „Soubor” a vyber soubor .cfg (nikoli soubor .map)."
 
 #. [topic]: id=..editor_mode_scenario
 #: data/core/editor/help.cfg:287
@@ -568,11 +787,26 @@ msgid ""
 "editor may follow the link and open the corresponding .map in terrain-only "
 "mode, as if the .map file was chosen in the file selector."
 msgstr ""
+"<header>text='Soubory: .map a .cfg'</header>\n"
+"\n"
+"Editor map uloží právě jeden soubor, buď .map (v režimu terénu), nebo .cfg "
+"(v režimu scénáře). V režimu scénáře je mapa terénu uložena uvnitř souboru ."
+"cfg, žádný samostatný soubor .map není. Když začneš úpravy v režimu terénu "
+"a pak přepneš do režimu scénáře, pak může zůstat starý soubor .map, ale ten "
+"není editorem scénáře aktualizován.\n"
+"\n"
+"Různé výsledky načtení souboru .cfg závisí na obsahu souboru .cfg. Pro "
+"soubory .cfg, které byly vytvořeny v editoru scénáře, se .cfg otevře "
+"v editoru scénáře. Avšak u souborů .cfg, které využívají samostatný soubor ."
+"map (jenž nemůže být vytvořen editorem scénáře), může editor následovat "
+"odkaz a otevřít odpovídající .map v režimu pouze pro terén, jako kdyby byl "
+"soubor .map vybrán při volbě souboru."
 
+# zkráceno, aby se to vešlo do levého panelu v nápovědě (i s posuvnou lištou)
 #. [topic]: id=editor_separate_events_file
 #: data/core/editor/help.cfg:299
 msgid "Using a separate file for WML events"
-msgstr ""
+msgstr "Soubor WML událostí"
 
 #. [topic]: id=editor_separate_events_file
 #: data/core/editor/help.cfg:300
@@ -626,6 +860,53 @@ msgid ""
 "  ◦ inside the [scenario] element, use “map_file=\"map_from_01.cfg\"” to "
 "load that file"
 msgstr ""
+"Při načítání souboru .cfg editor scénáře rozumí souborům, které jím byly "
+"vytvořeny, ale je pravděpodobné, že bude mít obtíže se soubory, které byly "
+"upravovány ručně.\n"
+"\n"
+"Soubory vytvořené editorem scénáře nezahrnují úvodní [scenario] a uzavírací "
+"[/scenario] značky. Když vytváříš tažení (nebo jiné rozšíření), pak musí být "
+"tyto značky přidány. O tomto je více podrobností v dokumentaci "
+"<ref>dst='editor_map_format' text='formátu mapového souboru'</ref>.\n"
+"\n"
+"Jedním z pracovních postupů je vytvořit samostatný soubor WML, který bude "
+"mít také příponu .cfg a použije WML preprocesor, aby zahrnul soubor "
+"vytvořený editorem. Tento samostatný soubor obsahuje jak [scenario] značku, "
+"tak jakýkoli ručně upravovaný WML, jako třeba události. S tímto pracovním "
+"postupem by mohla struktura souborů rozšíření vypadat asi takto:\n"
+"\n"
+"<header>text='Pro Wesnoth 1.14'</header>\n"
+"\n"
+"• _main.cfg:\n"
+"  ◦ použij “{./scenarios}” pro vložení adresáře „scenarios“\n"
+"• maps/map_from_01.cfg\n"
+"  ◦ toto je soubor vytvořený editorem scénáře\n"
+"• scenarios/01_Forest.cfg, místo úvodní značky [scenario] vlož tyto čtyři "
+"řádky:\n"
+"  ◦ [scenario]\n"
+"  ◦     {~add-ons/NAME_OF_ADD_ON/maps/map_from_01.cfg}\n"
+"  ◦ [/scenario]\n"
+"  ◦ [+scenario]\n"
+"\n"
+"První tři z těchto řádků vloží soubor s vytvořeným scénářem dovnitř značky "
+"[scenario]. Znaménko „+“ na čtvrtém řádku znamená, že se dvě scenario značky "
+"spojí a zároveň s tím atributy v druhé přepíší adributy z první.\n"
+"\n"
+"<header>text='1.16 a následující'</header>\n"
+"\n"
+"Jestliže bude tvé rozšíření použito pouze v 1.16 a následujících, jsou zde "
+"nové prvky pro načítání souborů .cfg přes map_file a vyhnutí se opakování "
+"názvu rozšíření uvnitř souborů .cfg.\n"
+"\n"
+"• _main.cfg:\n"
+"  ◦ použij „[binary_path]“, abys přidal adresáře rozšíření k binární cestě, "
+"což způsobí, že „map_file“ prohledá adresář „maps“.\n"
+"  ◦ použij „{./scenarios}“, abys zahrnul adresář „scenarios“\n"
+"• maps/map_from_01.cfg\n"
+"  ◦ toto je soubor vytvořený editorem scénáře\n"
+"• scenarios/01_Forest.cfg\n"
+"  ◦ uvnitř prvku [scenario] použij „map_file=\"map_from_01.cfg\"“, abys "
+"tento soubor načetl"
 
 #. [topic]: id=editor_masks
 #: data/core/editor/help.cfg:338
@@ -644,10 +925,8 @@ msgstr ""
 #. [topic]: id=editor_time_schedule
 #. Time of Day and Schedule Editor, please use a short string as it will be used in the left-hand pane of the help browser
 #: data/core/editor/help.cfg:347
-#, fuzzy
-#| msgid "Time Schedule Editor"
 msgid "ToD and Schedule Editor"
-msgstr "Časový plán"
+msgstr "Editor rozvrhu dne"
 
 #. [topic]: id=editor_time_schedule
 #: data/core/editor/help.cfg:348
@@ -661,6 +940,13 @@ msgid ""
 "In scenario mode, the button accesses an editor for individual schedules for "
 "<ref>dst='editor_named_area' text='time areas'</ref>."
 msgstr ""
+"Toto tlačítko v pravém horním rohu obrazovky umožňuje přístup k náhledu "
+"denní doby a editoru rozvrhu dne.\n"
+"\n"
+"V režimu terénu zobrazuje, jak bude mapa v různé denní doby přebarvena.\n"
+"\n"
+"V režimu scénáře tlačítko zpřístupňuje editor jednotlivých rozvrhů "
+"<ref>dst='editor_named_area' text='časových oblastí'</ref>."
 
 #. [topic]: id=editor_palette
 #: data/core/editor/help.cfg:359
@@ -683,21 +969,31 @@ msgid ""
 "this is the leftmost of the four buttons at the top of the palette, and the "
 "graphic changes depending on what is selected. Examples:"
 msgstr ""
+"Paleta editoru obsahuje příslušné položky, které můžeš použít s právě "
+"vybraným nástrojem. Například nástroj malování ukáže dlouhý seznam všech "
+"dostupných terénů a nástroj pro jednotky ukáže jednotky, které jsou k mání. "
+"Při použití nástroje pro startovní pozice se paleta změní na výpis „Hráč 1“, "
+"„Hráč 2“ atd.\n"
+"\n"
+"<bold>text='Filtr'</bold>\n"
+"Pro zobrazení pouze podmnožiny dostupných položek existuje funkce filtru – "
+"ze čtyř tlačítek nad paletou je to tlačítko nejvíce vlevo a obrázek na něm "
+"se mění podle toho, co je vybráno. Příklady:"
 
 #. [topic]: id=editor_palette
 #: data/core/editor/help.cfg:366
 msgid "Show all kinds of terrain"
-msgstr ""
+msgstr "Ukázat všechny typy terénu"
 
 #. [topic]: id=editor_palette
 #: data/core/editor/help.cfg:367
 msgid "Show only water terrains"
-msgstr ""
+msgstr "Ukázat jen terény s vodou"
 
 #. [topic]: id=editor_palette
 #: data/core/editor/help.cfg:368
 msgid "Show only villages"
-msgstr ""
+msgstr "Ukázat pouze vesnice"
 
 #. [topic]: id=editor_map_format
 #: data/core/editor/help.cfg:379
@@ -708,6 +1004,7 @@ msgstr "Formát mapy"
 #: data/core/editor/help.cfg:380
 msgid "Wesnoth stores its maps in human readable plain text files."
 msgstr ""
+"Wesnoth své mapy ukládá do jednoduchých textových souborů čitelných člověkem."
 
 #. [topic]: id=editor_map_format
 #: data/core/editor/help.cfg:382
@@ -739,6 +1036,32 @@ msgid ""
 "The <italic>text='map_file'</italic> method is preferred over using a "
 "preprocessor include."
 msgstr ""
+"<header>text='Původní'</header>\n"
+"\n"
+"Soubor s mapou obsahuje řádky s řetězci oddělenými čárkami, ve kterých je "
+"zakódován terén. Jediná informace, kterou poskytuje syntaxe mapy a která se "
+"netýká terénu, je sada umístění vytvořených <ref>dst='editor_tool_starting' "
+"text='nástrojem startovních pozic'</ref>. Soubory mohou být upravovány "
+"pomocí textového editoru pro univerzální použití jako notepad.\n"
+"\n"
+"Tyto soubory mohou být použity přímo pro hry více hráčů, počet hráčů je "
+"automaticky určen počtem startovních pozic. Pokud je mapa uložena do "
+"výchozího adresáře, lze ji najít pod typem hry „Vlastní mapy“ v dialogovém "
+"okně „Vytvoř hru“ pro hru více hráčů. Možná bude třeba, abys obnovil "
+"vyrovnávací paměť (na titulní obrazovce stiskni F5), než se nově vytvořená "
+"mapa objeví.\n"
+"\n"
+"Tyto soubory mohou být použity v souboru scénáře .cfg s WML scénáře, který "
+"poskytne další informace jako třeba týmy, vlastní událost a složitá "
+"nastavení stran. Soubor .cfg načte soubor s mapou jedním z těchto způsobů:\n"
+"\n"
+"• map_file=maps/01_First_Map.map <italic>text='– podporováno od Wesnothu "
+"1.14'</italic>\n"
+"• map_data=\"{maps/01_First_Map.map}\" <italic>text='– začleněno WML "
+"preprocesorem'</italic>\n"
+"\n"
+"Způsobu s <italic>text='map_file'</italic> je dána přednost před použitím "
+"začleňování preprocesorem."
 
 #. [topic]: id=editor_map_format
 #: data/core/editor/help.cfg:395
@@ -759,6 +1082,20 @@ msgid ""
 "this is rarely-used code. Maps opened this way are marked (E) in the Window "
 "menu."
 msgstr ""
+"<header>text='Vnořený'</header>\n"
+"\n"
+"Mapové údaje mohou být uloženy jako součást souboru scénáře .cfg, přímo "
+"v atributu <italic>text='map_data'</italic>. Jinými slovy v místě, které by "
+"preprocesor začlenil při použití způsobu s preprocesorem.\n"
+"\n"
+"<header>text='Použití vnořeného formátu v režimu terénu'</header>\n"
+"\n"
+"Když upravuješ mapu a nepoužíváš podporu režimu scénáře, pak je jednoduché "
+"přesunout data do původního mapového souboru předtím, než jej otevřeš "
+"v editoru. Tento převod je doporučený – editor podporuje úpravu obsahu "
+"map_data, zatímco nechává všechno ostatní v souboru nedotčené, ale to je "
+"zřídka používaný kód. Mapy otevřené tímto způsobem jsou v menu Okno označeny "
+"(E)."
 
 #. [topic]: id=editor_map_format
 #: data/core/editor/help.cfg:403
@@ -772,6 +1109,14 @@ msgid ""
 "<ref>dst='editor_separate_events_file' text='using a separate .cfg file'</"
 "ref> for the hand-edited parts."
 msgstr ""
+"<header>text='Soubory vytvořené editorem scénáře'</header>\n"
+"\n"
+"V režimu scénáře editor ukládá data jako soubor .cfg s vnořenými mapovými "
+"údaji. Když editor scénáře soubor .cfg načítá, rozumí souborům, které jím "
+"byly vytvořeny, ale pravděpodobně bude mít obtíže se soubory, jež byly "
+"upravovány ručně. Potížím se lze vyhnout "
+"<ref>dst='editor_separate_events_file' text='použitím samostatného souboru ."
+"cfg'</ref> pro ručně upravované části."
 
 #. [topic]: id=editor_map_format
 #: data/core/editor/help.cfg:407
@@ -794,6 +1139,23 @@ msgid ""
 "needs the [scenario]...[/scenario] (or [multiplayer]...[/multiplayer]) tags "
 "to know which WML is part of each scenario."
 msgstr ""
+"<header>text='Které soubory scénáře používají značku [scenario]'</header>\n"
+"\n"
+"Soubory vytvořené editorem scénáře mají obsah WML prvku scénář, ale "
+"nezahrnují úvodní [scenario] a uzavírací [/scenario] značky. Hra bude "
+"automaticky zkoušet načíst scénář z každého souboru .cfg v podsložce editor/"
+"scenarios složky s uživatelskými daty, aby jej zahrnula do seznamu „Vlastní "
+"scénáře“ (soubory, které se nepodaří načíst, jsou ignorovány). V této složce "
+"je každý soubor samostatnou položkou – soubory, které se nepodaří rozpoznat "
+"jako scénář, jsou ignorovány a soubory nesmí obsahovat značky [scenario][/"
+"scenario].\n"
+"\n"
+"Opak je pravdou, když je scénář součástí tažení nebo jiného rozšíření. "
+"Obvykle má každý scénář svůj vlastní soubor .cfg, ačkoli to není důležité – "
+"vše z WML v rozšíření bude spojeno preprocesorem, nezáleží na tom, zda je "
+"rozšíření napsáno v samostatných souborech, nebo ne. Engine potřebuje značky "
+"[scenario]...[/scenario] (nebo [multiplayer]...[/multiplayer]), aby věděl, "
+"který WML je částí každého scénáře."
 
 #. [time]: id=deep_underground
 #. [editor_times]: id=deep_underground
@@ -1608,8 +1970,8 @@ msgstr ""
 "\n"
 "Tažení jsou seskupena podle <italic>text='úrovně'</italic> "
 "a <italic>text='obtížnosti'</italic>. Například <italic>text='Dědic trůnu'</"
-"italic> je úrovně ‚nováček‘ a je hratelný na tři obtížnosti: ‚začátečník‘, "
-"‚normální‘ a ‚nelehká‘. Úroveň tažení naznačuje, jaká je předpokládána "
+"italic> je úrovně „nováček“ a je hratelný na tři obtížnosti: „začátečník“, "
+"„normální“ a „náročná“. Úroveň tažení naznačuje, jaká je předpokládána "
 "zběhlost v herních mechanikách (jako například <ref>dst='movement' "
 "text='oblasti kontroly'</ref> a <ref>dst='time_of_day' text='denní doba'</"
 "ref>). Obtížnost ukazuje, jak budou scénáře náročné pro ostříleného hráče: "
@@ -2152,7 +2514,7 @@ msgstr ""
 #. [topic]: id=saveload
 #: data/core/help.cfg:287
 msgid "Save-loading"
-msgstr ""
+msgstr "Opakované nahrávání"
 
 #. [topic]: id=saveload
 #: data/core/help.cfg:288
@@ -2165,6 +2527,13 @@ msgid ""
 "<italic>text='expect'</italic> one of them to die about every 20 turns. So, "
 "you’ll rarely make it through a scenario without having it happen."
 msgstr ""
+"\n"
+"\n"
+"Jedna z výzev této hry je přijít na to, jak chránit své hrdiny. Malá rizika "
+"se rychle nastřádají. Když máš pět důležitých jednotek a každá z nich má "
+"v každém kole jen 1% šanci zemřít, můžeš <italic>text='očekávat'</italic>, "
+"že jedna z nich zemře přibližně každých 20 kol. Takže dokázat, aby se to "
+"během celého scénáře nestalo, se ti může podařit jen zřídka."
 
 #. [topic]: id=saveload
 #: data/core/help.cfg:288
@@ -2177,6 +2546,14 @@ msgid ""
 "the game, but we recommend against reloading merely to try the same strategy "
 "again while hoping for better luck."
 msgstr ""
+"Náhodná čísla jsou nedílnou součástí Wesnothu, kvůli smůle mohou útoky "
+"selhat a jednotky zemřít. Je to část hry, se kterou se počítá, a jeden "
+"z cílů, který si hra klade, je ten, že dostatečně dovedný hráč by měl být "
+"schopen dokončit všechna hlavní tažení na těžkou obtížnost bez toho, aby "
+"bylo třeba opakovaně nahrávat. Vrátit se k předchozímu kolu a zkusit jinou "
+"strategii je jedním ze způsobů, jak se hru naučit, ale nedoporučujeme "
+"opakovaně nahrávat pouze proto, aby se znovu zkusila stejná strategie "
+"s nadějí na větší štěstí."
 
 #. [topic]: id=saveload
 #: data/core/help.cfg:290
@@ -2187,6 +2564,11 @@ msgid ""
 "1.15.x series before 1.16.0 please assume that the forum threads are more "
 "authoritative than the text on this page."
 msgstr ""
+"\n"
+"\n"
+"Následující body jsou předmětem debat na fórech. Alespoň pro řadu 1.15.x "
+"před 1.16.0 prosím přepokládej, že vlákna diskusí na fórech jsou "
+"směrodatnější než text na této stránce."
 
 #. [topic]: id=saveload
 #: data/core/help.cfg:292
@@ -2202,6 +2584,15 @@ msgid ""
 "• There are more experience points available than on easy, and the player "
 "will be able to train enough troops to cope with losing some L2 or L3 units."
 msgstr ""
+"\n"
+"\n"
+"V hlavních taženích na těžkou obtížnost:\n"
+"• Dostatečně dovedný hráč bude mít slušnou možnost vyhrát napoprvé každý "
+"scénář bez toho, aby dopředu věděl, co se stane.\n"
+"• To předpokládá, že hráč zachytí všechny nápovědy obsažené v rozhovoru.\n"
+"• Je více bodů zkušenosti k mání než na jednoduchou obtížnost a hráč bude "
+"schopen vycvičit dost oddílů na to, aby se vypořádal se ztrátou několika "
+"jednotek druhé nebo třetí úrovně."
 
 #. [topic]: id=saveload
 #: data/core/help.cfg:297
@@ -2211,6 +2602,10 @@ msgid ""
 "That said, it’s a game; the best way to play it is whichever way gives you "
 "the most enjoyment."
 msgstr ""
+"\n"
+"\n"
+"Jinak řečeno, je to hra. Nejlepší způsob, jak ji hrát, je ten, ze kterého "
+"máš největší radost."
 
 #. [topic]: id=whylost
 #: data/core/help.cfg:306
@@ -2782,14 +3177,15 @@ msgid ""
 "• <bold>text='Liminal'</bold> units get −25% damage during both night and "
 "daytime."
 msgstr ""
-"Denní doba má vliv na poškození některých jednotek, a to konkrétně:\n"
+"Denní doba má vliv na poškození, která jsou udílená některými jednotkami, a "
+"to konkrétně:\n"
 "\n"
-"• <bold>text='Zákonné'</bold> jednotky získávají +25% bonus během dne a v "
-"noci −25% ztrácí.\n"
-"• <bold>text='Chaotické'</bold> jednotky získávají +25% bonus v noci a během "
-"dne −25% ztrácí.\n"
-"• <bold>text='Šeré'</bold> jednotky ztrácí −25% ve dne i v noci.\n"
-"• <bold>text='Neutrální'</bold> jednotky nejsou denní dobou ovlivněny."
+"• <bold>text='Zákonné'</bold> jednotky získávají +25 % během dne a v noci 25 "
+"% ztrácí.\n"
+"• <bold>text='Chaotické'</bold> jednotky získávají +25 % v noci a během dne "
+"25 % ztrácí.\n"
+"• <bold>text='Neutrální'</bold> jednotky nejsou denní dobou ovlivněny.\n"
+"• <bold>text='Šeré'</bold> jednotky ztrácí 25 % ve dne i v noci."
 
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:400
@@ -2858,7 +3254,7 @@ msgid ""
 "Keep in mind that some scenarios take place underground, where it is "
 "perpetually night!\n"
 msgstr ""
-"Pamatujte pro\\sím, že pokud se scénář nachází pod zemí, pak je zde neustále "
+"Měj na paměti, že některé scénáře se odehrávají v podzemí, kde je neustále "
 "noc!\n"
 
 #. [topic]: id=time_of_day
@@ -3179,9 +3575,9 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Mezi základní typy terénu patří Pláně, Hory, Písky, Voda a Bažiny. Mimo "
-"těchto pár základních existuje ještě několik dalších - seznam terénů, které "
-"jste už viděli, můžete najít na konci této stránky.\n"
+"Mezi základní typy terénu patří například plochý terén, kopce, hory, písky, "
+"voda a bažiny. Mimo těchto pár základních existuje ještě několik dalších – "
+"seznam terénů, které jsi už viděl, můžeš najít na konci této stránky.\n"
 "\n"
 
 #. [topic]: id=..terrains_section
@@ -3195,9 +3591,9 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Každá jednotka má obranu a cenu za pohyb pro daný základní typ terénu. Tyto "
-"hodnoty najdete v nápovědě na stránce dané jednotky. Základní typy terénu "
-"mohou mít zvláštní vlastnosti, jako například osvětlení."
+"Každá jednotka má pro daný typ terénu obranný bonus a cenu za pohyb. Tyto "
+"hodnoty najdeš v nápovědě na stránce dané jednotky. Základní typy terénu "
+"mohou také mít zvláštní vlastnosti, jako například osvětlení."
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:483
@@ -3225,12 +3621,12 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Smíšené typy terénu sdílejí vlastnosti více typů terénu - pro jednotky "
+"Smíšené typy terénu sdílejí vlastnosti více typů terénu. Pro jednotky "
 "obvykle platí hodnoty <italic>text='nejlepší obrany'</italic> a "
 "<italic>text='nejhoršího pohybu'</italic> vybrané z jednotlivých složek "
-"kombinovaného terénu. Když například máme terén <italic>text='zalesněné "
-"hory'</italic>, jde o složeninu <italic>text='písečných hor'</italic> a "
-"<italic>text='hora s jeskyní'</italic>.\n"
+"kombinovaného terénu. To je například případ terénů <italic>text='zalesněné "
+"kopce'</italic>, <italic>text='písečné kopce'</italic> či "
+"<italic>text='jeskynní kopce'</italic>.\n"
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:489
@@ -3248,12 +3644,12 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Světlou výjimkou je terén s mostem, například <italic>text='mosty přes "
-"mělkou vodu'</italic>, <italic>text='hrady'</italic> a <italic>text='mosty "
-"přes propasti'</italic>. Hrady jsou snadno schůdné pro lidi suchozemské i "
-"lidi mořské — místo aby na ně platil horší z obou bonusů, mají všechny "
-"jednotky v hradu obranné bonusy a náročnost pohybu výhodnějšího z dvojice "
-"rovina a mělká voda. Podobně i mosty přes propasti jsou (nečekaně) schůdné "
+"Světlou výjimkou jsou propojovací terény, například <italic>text='mosty přes "
+"mělkou vodu'</italic>, <italic>text='brody'</italic> a <italic>text='mosty "
+"přes propasti'</italic>. Brody jsou snadno schůdné pro lidi mořské i "
+"suchozemské, všechny jednotky tedy na nich mají jak výhodnější obranné "
+"bonusy, tak snazší pohyb z dvojice terénů plochý a mělká voda, namísto aby "
+"měly ten horší pohyb. Podobně i mosty přes propasti jsou (nečekaně) schůdné "
 "pro nelétavce.\n"
 "\n"
 
@@ -3269,9 +3665,9 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Vesnice stojící na zemi také obecně poskytují nejlepší obranu a nejsnadnější "
-"pohyb. Jsou ale smíšeným terénem. Vlastnosti sdílí s terénem, na kterém jsou "
-"postaveny - hory, bažiny nebo jeskyně.\n"
+"Vesnice stojící na zemi také obecně poskytují nejlepší obranu a nejsnazší "
+"pohyb. Jsou ale smíšeným terénem a sdílí vlastnosti s terénem, na kterém "
+"jsou postaveny, ať už jsou to kopce, bažiny nebo jeskyně.\n"
 "\n"
 
 #. [topic]: id=..terrains_section
@@ -3286,8 +3682,8 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Konečně, vesnice vystavěné na vodě jsou obvykle nevhodné pro pozemní "
-"jednotky a neposkytují bonusy ani obranné, ani v pohybu, které jsou pro "
+"Konečně vesnice vystavěné na vodě jsou obvykle pro pozemní jednotky "
+"nehostinné a neposkytují bonusy ani obranné, ani pro pohyb, které jsou pro "
 "vesnice obvyklé. Místo toho jsou brány jako políčka vody.\n"
 "\n"
 
@@ -3302,9 +3698,9 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Můžete se podívat, z jakých základních typů je smíšený terén poskládaný, "
-"když najedete myší na šestiúhelník s tímto terénem a prozkoumáte ikonky typů "
-"terénu zobrazené vpravo nahoře (ve výchozím motivu)."
+"Z jakých základních typů je smíšený terén poskládaný můžeš zjistit tak, že "
+"najedeš myší na políčko s tímto terénem a podíváš se na ikonky typů terénu "
+"zobrazené vpravo nahoře (ve výchozím motivu)."
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:503
@@ -3318,9 +3714,9 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Chování smíšeného terénu si můžete prohlédnout když najedete myší na "
-"šestiúhelník s tímto terénem a podíváte se na <italic>text='popis terénu'</"
-"italic> buď stisknutím zkratky nebo kliknutím pravým myšítkem a výběrem z "
+"Chování smíšeného terénu si můžeš ověřit tak, že najedeš myší na políčko s "
+"tímto terénem a podíváš se na <italic>text='popis terénu'</italic> buď "
+"stisknutím klávesové zkratky nebo kliknutím pravým myšítkem a výběrem z "
 "kontextového menu."
 
 #. [topic]: id=..terrains_section
@@ -3347,7 +3743,7 @@ msgstr ""
 "\n"
 "Některé jednotky mají <italic>text='limitovanou obranu'</italic> na určitém "
 "základním typu terénu. Tyto jednotky vždy trpí újmu na smíšených terénech "
-"složených z takového typu terénu — jejich obrana nemůže toto omezení "
+"složených z takového typu terénu. Jejich obrana nemůže toto omezení "
 "překročit."
 
 #. [topic]: id=..terrains_section
@@ -3362,9 +3758,9 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Například, když má <ref>text='Kavalerista' dst='unit_Cavalryman'</ref> "
-"obranu 30% v lese a limitovanou obranu v lese. Proto má v zalesněných horách "
-"obranu 30% místo 40%, protože složená obrana nemůže překročit limit."
+"Například <ref>text='kavalerista' dst='unit_Cavalryman'</ref> má obranný "
+"bonus v lese limitovaný na 30 %. Proto má v zalesněných horách obranný bonus "
+"30 % místo 40 %, protože zkombinovaná hodnota nemůže překročit limit."
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:511
@@ -3376,8 +3772,8 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Pokud má jednotka obranný limit pro nějaký typ terénu, vždy má na tomto "
-"terénu stejně hodnocenou obranu (nikdy nemůže být vyšší)."
+"Pokud má jednotka na nějakém typu terénu limit obranného bonusu, má vždy na "
+"tomto terénu stejně hodnocený obranný bonus (nemůže být vyšší)."
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:513
@@ -3748,11 +4144,11 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"Nastavuje nebo přepíná hráče mezi režimem člověk/počítač. Tento příkaz může "
-"použít pouze hráč/klient, který ovládá tuto stranu. Pokud neudáte ve druhém "
-"parametru stav (on/off), je stav přepnut na opačnou hodnotu. ‚On‘ znamená, "
-"že danou stranu řídí umělá inteligence, ‚off‘ člověk. Pokud neudáte žádné "
-"parametry, je vybrána aktivní strana.\n"
+"Nastavuje nebo přepíná hráče za stranu mezi režimem člověk/počítač. Tento "
+"příkaz může použít pouze hráč/klient, který ovládá tuto stranu. Pokud "
+"neudáte ve druhém parametru stav (on/off), je stav přepnut na opačnou "
+"hodnotu. „On“ znamená, že danou stranu řídí umělá inteligence, „off“ člověk. "
+"Pokud neudáte žádné parametry, je vybrána aktivní strana.\n"
 "\n"
 
 #. [topic]: id=general_commands
@@ -3763,7 +4159,7 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"Zobrazit informace o stavu vlastníka dané strany.\n"
+"Zobrazí informace o stavu vlastníka dané strany.\n"
 "\n"
 
 #. [topic]: id=general_commands
@@ -3905,8 +4301,8 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"Nastavit stranu jako nečinnou. Host může stranu takto označit po odpojení "
-"daného hráče.\n"
+"Nastaví stranu jako nečinnou. Hostitel může stranu takto označit po "
+"přerušení síťového spojení.\n"
 "\n"
 
 #. [topic]: id=mp_commands
@@ -4114,13 +4510,13 @@ msgid ""
 "This ability will not cure an affected unit of poison, however, only delay "
 "its effect."
 msgstr ""
-"Jednotka dokáže ošetřit spřátelené jednotky na vedlejších polích na začátku "
-"tahu.\n"
+"Umožňuje jednotce na začátku jejího kola ošetřit sousední spojenecké "
+"jednotky.\n"
 "\n"
-"Zraněná jednotka v péči tohoto ošetřovatele se může za jeden tah vyléčit až "
-"o 4 životy nebo se jí může na jeden tah zastavit působení jedu.\n"
-"Ošetřovatel nedokáže uzdravit otrávenou jednotku; taková jednotka musí "
-"vyhledat pomoc ve vesnici nebo u jednotky, která dokáže uzdravovat."
+"Jednotka, která je v péči tohoto ošetřovatele, se může vyléčit až o 4 životy "
+"za kolo, nebo v tomto kole zastavit působení jedu.\n"
+"Tato schopnost nicméně otrávenou jednotku neuzdraví, pouze pozdrží účinky "
+"jedu."
 
 #. [heals]: id=healing
 #: data/core/macros/abilities.cfg:30
@@ -4221,12 +4617,12 @@ msgid ""
 "Leadership engages in combat, its attacks do 25% more damage times the "
 "difference in their levels."
 msgstr ""
-"Tato jednotka dokáže vést jednotky vedle sebe, takže bojují lépe.\n"
+"Tato jednotka dokáže vést vlastní jednotky vedle sebe, takže bojují lépe.\n"
 "\n"
-"Vlastní jednotky nižší úrovně na sousedních polích způsobí v boji větší "
-"poškození. Když se jednotka nižšího stupně nachází v boji na stejné straně "
-"jako ta velící, pak její útok způsobí o 25% více poškození krát rozdíl "
-"jejich úrovní."
+"Vlastní jednotky nižší úrovně na sousedících polích způsobí v boji větší "
+"poškození. Když se sousedící jednotka nižší úrovně nachází v boji na stejné "
+"straně jako ta velící, pak její útok způsobí o 25 % více poškození krát "
+"rozdíl jejich úrovní."
 
 #. [skirmisher]: id=skirmisher
 #: data/core/macros/abilities.cfg:125
@@ -4244,8 +4640,8 @@ msgid ""
 "This unit is skilled in moving past enemies quickly, and ignores all enemy "
 "Zones of Control."
 msgstr ""
-"Tato jednotka je zvyklá pohybovat se mezi nepřáteli a ignoruje všechny "
-"oblasti kontroly."
+"Tato jednotka se umí rychle pohybovat kolem nepřátel a ignoruje všechny "
+"jejich oblasti kontroly."
 
 #. [illuminates]: id=illumination
 #: data/core/macros/abilities.cfg:140
@@ -4419,8 +4815,8 @@ msgid ""
 "Whether used offensively or defensively, this attack presses the engagement "
 "until one of the combatants is slain, or 30 rounds of attacks have occurred."
 msgstr ""
-"Ať už se použije v útoku nebo v obraně, boj trvá tak dlouho, dokud jeden z "
-"protivníků nezemře, nebo do počtu 30 útoků."
+"Ať už se použije ofenzivně nebo defenzivně, boj trvá tak dlouho, dokud jeden "
+"z protivníků nezemře, nebo do počtu 30 útoků."
 
 #. [damage]: id=backstab
 #: data/core/macros/abilities.cfg:285
@@ -4717,52 +5113,52 @@ msgstr "První hlídka — čtvrtá hodina"
 #. [time]: id=dawn1
 #: data/core/macros/schedules.cfg:498
 msgid "First Dawn"
-msgstr "První hlídka"
+msgstr "První svítání"
 
 #. [time]: id=dawn2
 #: data/core/macros/schedules.cfg:509
 msgid "Second Dawn"
-msgstr "Druhá hlídka"
+msgstr "Druhé svítání"
 
 #. [time]: id=morning1
 #: data/core/macros/schedules.cfg:520
 msgid "First Morning"
-msgstr "Ráno"
+msgstr "První dopoledne"
 
 #. [time]: id=morning2
 #: data/core/macros/schedules.cfg:532
 msgid "Second Morning"
-msgstr "Dopoledne"
+msgstr "Druhé dopoledne"
 
 #. [time]: id=midday1
 #: data/core/macros/schedules.cfg:544
 msgid "First Midday"
-msgstr "Poledne"
+msgstr "První poledne"
 
 #. [time]: id=midday2
 #: data/core/macros/schedules.cfg:556
 msgid "Second Midday"
-msgstr "Poledne"
+msgstr "Druhé poledne"
 
 #. [time]: id=afternoon1
 #: data/core/macros/schedules.cfg:568
 msgid "First Afternoon"
-msgstr "Druhá hlídka"
+msgstr "První odpoledne"
 
 #. [time]: id=afternoon2
 #: data/core/macros/schedules.cfg:580
 msgid "Second Afternoon"
-msgstr "Odpoledne"
+msgstr "Druhé odpoledne"
 
 #. [time]: id=dusk1
 #: data/core/macros/schedules.cfg:592
 msgid "First Dusk"
-msgstr "První hlídka"
+msgstr "První soumrak"
 
 #. [time]: id=dusk2
 #: data/core/macros/schedules.cfg:603
 msgid "Second Dusk"
-msgstr "Druhá hlídka"
+msgstr "Druhý soumrak"
 
 #. [time]: id=short_dark
 #: data/core/macros/schedules.cfg:614
@@ -5556,8 +5952,9 @@ msgid ""
 "Units with the <italic>text='aged'</italic> trait have 8 hitpoints less and "
 "suffer from a 1 point decrease in movement and melee damage."
 msgstr ""
-"Jednotky s vlastností <ref>text='starý'</ref> mají o 8 hp nižší životy. Dále "
-"mají o 1 snížen pohyb a zranění při útoku zblízka."
+"Jednotky s vlastností <italic>text='starý nebo stará'</italic> mají o 8 bodů "
+"života méně a trpí omezením pohybu a snížením poškození útoku na blízko o 1 "
+"bod."
 
 #: data/core/units.cfg:11
 msgid ""
@@ -5942,7 +6339,7 @@ msgstr ""
 "\n"
 "Elfové tráví mnoho času zdokonalováním svých dovedností a prohlubováním "
 "svých talentů. Ti, kteří se nedají cestou magie, obvykle zasvětí svůj život "
-"pilování fyzických shopností. Tací pak vynikají v lukostřelbě, která je "
+"pilování fyzických schopností. Tací pak vynikají v lukostřelbě, která je "
 "nejspíš nejdůležitějším způsobem boje elfů. Většina elfích oddílů u sebe "
 "nosí luk a žádná jiná rasa se nevyrovná v rychlosti a přesnosti jejich "
 "lučištníkům. Všichni elfové také sdílí silnou náklonnost k nedotčené "
@@ -6075,7 +6472,7 @@ msgstr ""
 #. [race]: id=human
 #: data/core/units.cfg:189
 msgid "race^Human"
-msgstr "Člověk"
+msgstr "Muž"
 
 #. [race]: id=human
 #: data/core/units.cfg:190
@@ -6316,6 +6713,7 @@ msgstr "Ještěráčice"
 msgid "race^Saurians"
 msgstr "Ještěráci"
 
+# Nechápu, jak je přesně myšlena ta mezipohlavní dominance. Jestli to neznamená spíš, že se to projevuje v rámci daného pohlaví.
 #. [race]: id=lizard
 #: data/core/units.cfg:250
 msgid ""
@@ -6385,6 +6783,70 @@ msgid ""
 "eating carrion and even committing cannibalism, which are both regular "
 "occurrences."
 msgstr ""
+"Ještěráci jsou ještěrkovití tvorové. Jsou menší a štíhlejší než lidé a "
+"zřídka měří víc než desetileté dítě. Nicméně od špičky nozder po konec ocasu "
+"může být ještěrák tak dlouhý, jak je průměrný muž vysoký. Ještěráčtí "
+"válečníci jsou lehcí a obratní a nejraději bojují stejnou taktikou jako při "
+"lovu – proklouzávají nepřátelskými liniemi a zaměřují se na slabé a zraněné, "
+"zatímco se vyhýbají útočníkům.\n"
+"\n"
+"<header>text='Společnost'</header>\n"
+"Ještěráci jsou velmi tajemná stvoření, což plyne z jejich tendence žít v "
+"oblastech nehostinných pro ostatní rasy, jako jsou třeba bažiny. Jejich "
+"myšlení je extrémně fatalistické, ještěráci věří, že všechny události v "
+"životě lze předpovědět pomocí složitých astronomických výkladů.\n"
+"\n"
+"Ještěrácká kultura je ostře pohlavně segregovaná. V rámci každého pohlaví "
+"mezi sebou jeho zástupci soupeří a prostřednictvím svých dovedností, "
+"odhodlání a reputace tak vytvářejí jasný hierarchický řád, který je vedený "
+"svým vedoucím. V případech, kdy obě pohlaví interagují, nebojují vzájemně o "
+"nadvládu. Místo toho situaci určuje dominantní pohlaví. Vedoucí samců je "
+"alfa ve vesnici nebo táboře klanu, zatímco vedoucí samic je dominantní "
+"kdekoli jinde. Tak to pokračuje v sestupné struktuře, přičemž každý samec "
+"nebo samice je dominantní nad jakýmkoli členem opačného pohlaví s nižším "
+"postavením a podrobuje se členům opačného pohlaví s postavením vyšším.\n"
+"\n"
+"Segregace a střídání genderové dominance ještěrácké společnosti je výsledkem "
+"jejich jasně definovaných genderových rolí. Samice mají odpovědnost za "
+"lovení a nacházení jídla, což jsou dovednosti, které je nakonec vycvičí, aby "
+"se staly válečnicemi: rváčkami, ochránkyněmi a přepadávačkami, kterých se "
+"ostatní rasy tak bojí. Samci jsou mezitím zodpovědní za hlídání snůšky – "
+"vajec zanechaných samicemi. I když jim to ponechává čas na rozvoj a "
+"zdokonalování umění astrologie, léčení a magie, vystavuje je to také "
+"značnému nebezpečí, protože se tím stávají stabilními cíli nepřátel klanu "
+"číslo jedna – ostatních ještěráckých klanů.\n"
+"\n"
+"Nové ještěrácké klany jsou zakládány, když jsou vyčtena správná astrologická "
+"znamení. Každá samice označená hvězdnou konjukcí je provolána ploditelkou, "
+"vybere si skupinu jedinců s nižším postavením a opustí svůj původní klan. "
+"Často jsou označeny všechny samice se specifickou vlastností, což způsobí, "
+"že se „vylíhne“ více nových klanů najednou. Výběr jedinců se řídí "
+"jednoduchým procesem: žádná skupina, která opouští klan, nemůže být větší "
+"než kterákoli jiná, všechny odchozí skupiny nemohou dohromady být větší než "
+"zbývající klan a samice s vyšším postavením si může přetáhnout jedince z "
+"výběru jiné, méně privilegované samice.\n"
+"\n"
+"V důsledku rychlého populačního růstu, častých rozkolů v klanech a "
+"skutečnosti, že kanibalismus není tabu, je násilí jedním z určujících rysů "
+"ještěráckého života. To omezuje růst ještěrácké kultury tak, aby vyhovovala "
+"stylu žití a neustálé obnově, neboť většina ještěráckých znalostí je "
+"předávána ústní tradicí a ještěrácké statky musí být mobilní.\n"
+"\n"
+"<header>text='Geografie'</header>\n"
+"Ještěráci mohou žít v mnoha různých oblastech, ačkoli močály jsou zdaleka "
+"jejich nejběžnějším stanovištěm.\n"
+"\n"
+"<header>text='Biologie'</header>\n"
+"V porovnání s většinou ostatních ras Wesnothu žijí ještěráci dramaticky "
+"krátký život. Plné dospělosti dosáhnou do 3 let a často umírají v době, kdy "
+"jim je 10 až 15 let. Zdaleka nejčastější příčinou smrti je násilí. "
+"Ještěrácké samice snášejí zhruba jednou za rok snůšku asi 20 vajec, což "
+"vytváří stálý populační tlak a může ubírat zdroje potravy většině "
+"masožravců. Jako lovci a mrchožrouti mají ještěráci extrémně silné čelisti a "
+"velmi výkonný trávicí systém s vysoce kyselými tekutinami, díky čemuž jsou "
+"schopni jíst a trávit veškerou svou kořist včetně kůže, zubů, rohů a kostí. "
+"Dále se neštítí ani jedení zdechlin nebo dokonce kanibalismu, k čemuž "
+"obojímu pravidelně dochází."
 
 #. [race]: id=mechanical
 #: data/core/units.cfg:276
@@ -7471,28 +7933,6 @@ msgstr "Překládací chyba při pokusu o načtení pomocného textu: "
 
 #~ msgid "trait^Aged"
 #~ msgstr "Starý"
-
-#, fuzzy
-#~| msgid ""
-#~| "In combat, your units will inevitably take damage. When a unit "
-#~| "<ref>dst='experience_and_advancement' text='advances'</ref>, it will "
-#~| "heal fully. This can happen as you finish fighting an enemy, whether it "
-#~| "is your turn or not. Wesnoth offers several other ways for your units to "
-#~| "heal, all of which take place at the beginning of your turn, before you "
-#~| "take action."
-#~ msgid ""
-#~ "In combat, your units will inevitably take damage. When a unit "
-#~ "<ref>dst='advancement' text='advances'</ref>, it will heal fully. This "
-#~ "can happen as you finish fighting an enemy, whether it is your turn or "
-#~ "not. Wesnoth offers several other ways for your units to heal, all of "
-#~ "which take place at the beginning of your turn, before you take action."
-#~ msgstr ""
-#~ "Během boje dojde nevyhnutelně také k poškození vašich jednotek. Pokud "
-#~ "jednotka <ref>dst='experience_and_advancement' text='povýší'</ref>, pak "
-#~ "dojde k jejímu plnému uzdravení. To může nastat po boji s nepřítelem, ať "
-#~ "už je to váš tah, nebo ne. Wesnoth nabízí různé další možnosti pro "
-#~ "uzdravení jednotek, k většině z nich dochází na začátku vašeho tahu, před "
-#~ "tím, než převezmete ovládání."
 
 #~ msgid "Factions"
 #~ msgstr "Frakce"

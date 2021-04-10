@@ -4,24 +4,23 @@
 # Copyright (C) 2004 - 2020 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 #
-# Czech Wesnoth translation team <hrubymar10@gmail.com>,
-#
+# Czech Wesnoth translation team
 #
 # Yeti <yeti@physics.muni.cz> et al, 2004.
 # Oto 'tapik' Buchta <tapik@buchtovi.cz>, 2005 - 2007, 2010.
 # Vladimír Slávik <slavik.vladimir@seznam.cz>, 2007 - 2011.
 # Jan Dědič <jan.dedic@gmail.com>, 2014.
 # Martin Hrubý <hrubymar10@gmail.com>, 2017 - 2020.
-# Michal Žejdl <lachim@emer.cz>, 2019 - 2020.
+# Michal Žejdl <lachim@emer.cz>, 2019 - 2021.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2021-03-20 22:07-0300\n"
-"PO-Revision-Date: 2020-12-05 07:24+0100\n"
+"PO-Revision-Date: 2021-03-14 16:19+0100\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
-"Language-Team: Český <hrubymar10@gmail.com>\n"
+"Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -143,7 +142,7 @@ msgstr "Potvrzovat načtení uložených her z jiné verze"
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:117
 msgid "Show all unit types in help"
-msgstr "Ukázat v nápovědě všechny jednotky"
+msgstr "Ukázat v nápovědě všechny typy jednotek"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:118
@@ -246,6 +245,12 @@ msgid ""
 "Note: this option only affects singleplayer, and the ‘Save random seed’ "
 "option must also be enabled when creating a game for this to work."
 msgstr ""
+"Zapne determinističtější výpočty šance na zásah. Tohle je pokusný prvek "
+"navržený k tomu, aby byla pozorovaná míra zásahů/minutí více v souladu se "
+"zobrazovanými procenty.\n"
+"\n"
+"Poznámka: tato volba ovlivňuje pouze hru jednoho hráče, a aby to pracovalo, "
+"musí být při vytvoření hry zapnuta také volba „Ulož náhodný seed“."
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:197
@@ -3647,7 +3652,7 @@ msgstr "Těžká"
 #. [language]
 #: data/english.cfg:6
 msgid "Nightmare"
-msgstr "Nehratelná"
+msgstr "Zlý sen"
 
 #. [language]
 #: data/english.cfg:8
@@ -3668,7 +3673,7 @@ msgid ""
 "Neutral units are unaffected by day and night, fighting equally well under "
 "both conditions."
 msgstr ""
-"Neutrální jednotky nejsou ovlivněny střídáním dne a noci. V každou denní "
+"Neutrální jednotky nejsou ovlivněny střídáním dne a noci. V každou denní "
 "dobu bojují stejně."
 
 #. [language]
@@ -3746,6 +3751,10 @@ msgid ""
 "\t\tmain=$base {bridge_type}|$base{!}’s {bridge_type}\n"
 "\t"
 msgstr ""
+"\n"
+"\t\tbridge_type=most|přechod\n"
+"\t\tmain=$base{!}ův {bridge_type}|$base{!}in {bridge_type}\n"
+"\t"
 
 #. [naming]
 #. Generator for road labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
@@ -3756,6 +3765,10 @@ msgid ""
 "\t\tmain=$base{!}’s {road_type}|{road_type} of $base\n"
 "\t"
 msgstr ""
+"\n"
+"\t\troad_type=silnice|soutěska|pěšina|cesta|stezka\n"
+"\t\tmain=$base{!}ova {road_type}|$base{!}ina {road_type}\n"
+"\t"
 
 #. [naming]
 #. Generator for river labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
@@ -3766,6 +3779,10 @@ msgid ""
 "\t\tmain=$base {river_type}|{river_type} $base\n"
 "\t"
 msgstr ""
+"\n"
+"\t\triver_type=řeka|řeka|řeka|potok|potok|bystřina|průplav\n"
+"\t\tmain={river_type} $base\n"
+"\t"
 
 #. [naming]
 #. Generator for forest labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
@@ -3776,6 +3793,10 @@ msgid ""
 "\t\tmain=$base {forest_type}|$base{!}’s {forest_type}|{forest_type} $base\n"
 "\t"
 msgstr ""
+"\n"
+"\t\tforest_type=les|les|hvozd\n"
+"\t\tmain=$base{!}ův {forest_type}|$base{!}in {forest_type}\n"
+"\t"
 
 #. [naming]
 #. Generator for lake labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
@@ -3786,6 +3807,10 @@ msgid ""
 "\t\tmain=$base {lake_type}|{lake_type} $base\n"
 "\t"
 msgstr ""
+"\n"
+"\t\tlake_type=jezero|jezero|jezero|pleso|moře\n"
+"\t\tmain={lake_type} $base\n"
+"\t"
 
 #. [naming]
 #. Generator for mountain labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
@@ -3795,6 +3820,9 @@ msgid ""
 "\t\tmain=$base{!}’s Peak|$base Peak|Mount $base|Mount $base\n"
 "\t"
 msgstr ""
+"\n"
+"\t\tmain=$base{!}ův štít|$base{!}in štít|hora $base|hora $base|hora $base\n"
+"\t"
 
 #. [naming]
 #. Generator for swamp labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
@@ -3805,6 +3833,10 @@ msgid ""
 "\t\tmain=$base{!}{suffix}\n"
 "\t"
 msgstr ""
+"\n"
+"\t\tsuffix=ova bažina|ina bažina|ův močál|in močál|ova slať|ina slať\n"
+"\t\tmain=$base{!}{suffix}\n"
+"\t"
 
 #. [village_naming]
 #. Generator for generic village labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
@@ -3815,6 +3847,13 @@ msgid ""
 "\t\tmain=$base{!}{suffix}\n"
 "\t"
 msgstr ""
+"\n"
+"\t\tsuffix=ín|ov|any|ice|anice|enice|inice|onice|unice|ovice|ovy Domky|iny "
+"Domky|ův Dvůr|in Dvůr|ovy Dvory|iny Dvory|ovy Chalupy|iny Chalupy|ova Lhota|"
+"ina Lhota|ova Lhotka|ina Lhotka|ův Týn|in Týn|ův Týnec|in Týnec|ovo Týniště|"
+"ino Týniště|ova Ves|ina Ves\n"
+"\t\tmain=$base{!}{suffix}\n"
+"\t"
 
 #. [village_naming]
 #. Generator for lakeside village labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
@@ -3826,6 +3865,12 @@ msgid ""
 "\t\tmain={prefix}{suffix}\n"
 "\t"
 msgstr ""
+"\n"
+"\t\tprefix=$base{!}|$lake{!}\n"
+"\t\tsuffix=ovo Jezeří|ino Jezeří|ovy Lázně|iny Lázně|ova Rybná|ina Rybná|ův "
+"Rybník|in Rybník|ova Voda|ina Voda\n"
+"\t\tmain={prefix}{suffix}\n"
+"\t"
 
 #. [village_naming]
 #. Generator for riverside village labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
@@ -3838,6 +3883,13 @@ msgid ""
 "\t\tmain={prefix}{suffix}\n"
 "\t"
 msgstr ""
+"\n"
+"\t\tprefix=$base{!}|$river{!}\n"
+"\t\triver=$river{!}|River\n"
+"\t\tsuffix=ův Brod|in Brod|ův Luh|in Luh|ův Mlýn|in Mlýn|ovy Mlýny|iny Mlýny|"
+"ovo Podolí|ino Podolí|ovo Poříčí|ino Poříčí|ův Újezd|in Újezd\n"
+"\t\tmain={prefix}{suffix}\n"
+"\t"
 
 #. [village_naming]
 #. Generator for bridge village labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
@@ -3849,6 +3901,11 @@ msgid ""
 "\t\tmain={prefix}{suffix}\n"
 "\t"
 msgstr ""
+"\n"
+"\t\tprefix=$base{!}|$river{!}|$bridge{!}\n"
+"\t\tsuffix=ův Brod|in Brod|ův Most|in Most|ovo Mýto|ino Mýto\n"
+"\t\tmain={prefix}{suffix}\n"
+"\t"
 
 #. [village_naming]
 #. Generator for grassland village labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
@@ -3859,6 +3916,12 @@ msgid ""
 "\t\tmain=$base{!}{suffix}\n"
 "\t"
 msgstr ""
+"\n"
+"\t\tsuffix=ova Květná|ina Květná|ova Loučná|ina Loučná|ova Louka|ina Louka|"
+"ův Mlýn|in Mlýn|ovy Mlýny|iny Mlýny|ovo Pole|ino Pole|ova Role|ina Role|ův "
+"Újezd|in Újezd\n"
+"\t\tmain=$base{!}{suffix}\n"
+"\t"
 
 #. [village_naming]
 #. Generator for forest village labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
@@ -3870,6 +3933,13 @@ msgid ""
 "\t\tmain={prefix}{suffix}\n"
 "\t"
 msgstr ""
+"\n"
+"\t\tprefix=$base{!}|$forest{!}\n"
+"\t\tsuffix=ův Bor|in Bor|ova Dubina|ina Dubina|ův Háj|in Háj|ova Huť|ina Huť|"
+"ův Chlum|in Chlum|ův Les|in Les|ův Luh|in Luh|ova Pila|ina Pila|ův Újezd|in "
+"Újezd|ovo Záboří|ino Záboří|ův Žďár|in Žďár\n"
+"\t\tmain={prefix}{suffix}\n"
+"\t"
 
 #. [village_naming]
 #. Generator for hill village labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
@@ -3880,6 +3950,12 @@ msgid ""
 "\t\tmain=$base{!}{suffix}\n"
 "\t"
 msgstr ""
+"\n"
+"\t\tsuffix=ovo Hradiště|ino Hradiště|ova Huť|ina Huť|ova Hůrka|ina Hůrka|ův "
+"Chlumec|in Chlumec|ova Kamenice|ina Kamenice|ova Lomnice|ina Lomnice|ova Pec|"
+"ina Pec|ovo Podolí|ino Podolí|ovo Sedlo|ino Sedlo\n"
+"\t\tmain=$base{!}{suffix}\n"
+"\t"
 
 #. [village_naming]
 #. Generator for mountain village labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
@@ -3891,6 +3967,11 @@ msgid ""
 "\t\tmain={prefix}{suffix}\n"
 "\t"
 msgstr ""
+"\n"
+"\t\tprefix=$base{!}|$mountain{!}\n"
+"\t\tsuffix=ov\n"
+"\t\tmain={prefix}{suffix}\n"
+"\t"
 
 #. [village_naming]
 #. Generator for mountain labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
@@ -3901,6 +3982,11 @@ msgid ""
 "\t\tmain=$base{!}{suffix}\n"
 "\t"
 msgstr ""
+"\n"
+"\t\tsuffix=ův Důl|in Důl|ovy Hory|iny Hory|ův Kámen|in Kámen|ova Pec|ina Pec|"
+"ova Rokle|ina Rokle|ovo Sedlo|ino Sedlo\n"
+"\t\tmain=$base{!}{suffix}\n"
+"\t"
 
 #. [village_naming]
 #. Generator for roadside village labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
@@ -3912,6 +3998,12 @@ msgid ""
 "\t\tmain={prefix}{suffix}\n"
 "\t"
 msgstr ""
+"\n"
+"\t\tprefix=$road{!}|$road{!}|$base{!}\n"
+"\t\tsuffix=ův Dvůr|in Dvůr|ovy Dvory|iny Dvory|ova Lhota|ina Lhota|ovo Mýto|"
+"ino Mýto|ův Týn|in Týn|ův Týnec|in Týnec|ova Ves|ina Ves\n"
+"\t\tmain={prefix}{suffix}\n"
+"\t"
 
 #. [village_naming]
 #. Generator for swamp village labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
@@ -3923,6 +4015,12 @@ msgid ""
 "\t\tmain={prefix}{suffix}\n"
 "\t"
 msgstr ""
+"\n"
+"\t\tprefix=$base{!}|$swamp{!}\n"
+"\t\tsuffix=ovo Blatno|ino Blatno|ovy Mokřiny|iny Mokřiny|ova Slatina|ina "
+"Slatina\n"
+"\t\tmain={prefix}{suffix}\n"
+"\t"
 
 #. [server]
 #: data/game_config.cfg:4
@@ -3939,9 +4037,7 @@ msgstr "Alternativní server Wesnothu"
 msgid ""
 "There are no custom options available for the selected era, game, or "
 "modification."
-msgstr ""
-"Nejsou zde žádné rozšiřující nastavení pro zvolenou éru, hru, nebo "
-"modifikaci."
+msgstr "Pro vybranou éru, hru nebo modifikaci neexistují vlastní možnosti."
 
 #. [button]: id=reset_option_values
 #: data/gui/macros/custom_options_tree.cfg:249
@@ -4112,7 +4208,7 @@ msgstr "elektrický"
 #. [action]: id=button-playreplay, type=image
 #: data/themes/_initial.cfg:426 data/themes/_initial.cfg:586
 msgid "Play"
-msgstr "Hrát"
+msgstr "Přehrát"
 
 #. [action]: id=button-playreplay, type=image
 #: data/themes/_initial.cfg:427 data/themes/_initial.cfg:587
@@ -4132,7 +4228,7 @@ msgstr "po tomto tahu pauznout hru"
 #. [action]: id=button-resetreplay, type=image
 #: data/themes/_initial.cfg:457 data/themes/_initial.cfg:614
 msgid "Reset"
-msgstr "Resetovat"
+msgstr "Znovu"
 
 #. [action]: id=button-resetreplay, type=image
 #: data/themes/_initial.cfg:458 data/themes/_initial.cfg:615
@@ -4659,8 +4755,8 @@ msgid ""
 "Elvish units move and fight well in forest. Dwarvish units move and fight "
 "well in hills, mountains and caves."
 msgstr ""
-"Elfské jednotky se pohybují a bojují velmi dobře v lese. Trpasličí jednotky "
-"se pohybují a bojují velmi dobře v kopcích a horách."
+"Elfí jednotky se pohybují a bojují velmi dobře v lese. Trpasličí jednotky se "
+"pohybují a bojují velmi dobře v kopcích a horách."
 
 #. [tip]
 #: data/tips.cfg:120
@@ -4863,10 +4959,11 @@ msgid ""
 "lower-level units instead."
 msgstr ""
 "Namísto povyšování mají jednotky na nejvyšší úrovni schopnost <i>rozvoje po "
-"dosažení maximální úrovně</i> (<i>After Maximum Level Advancement – AMLA</"
-"i>), která obvykle zvýší maximální počet životů o 3 a uzdraví je. Toto není "
-"velký zisk, a navíc každá dosažená AMLA ztíží podmínky pro dosažení další; "
-"proto je většinou vhodnější pokusit se povýšit jednotky nižší úrovně."
+"dosažení maximální úrovně</i> (After Maximum Level Advancement – AMLA), "
+"která obvykle zvýší maximální počet bodů života jednotky o tři a úplně "
+"ji uzdraví. To jsou mnohem menší výhody než ty obvyklé při postupu na další "
+"úroveň, takže je obyčejně moudřejší místo toho povyšovat tvé jednotky nižší "
+"úrovně."
 
 #. [tip]
 #: data/tips.cfg:196
@@ -4956,8 +5053,8 @@ msgid ""
 msgstr ""
 "Pokus se používat jednotky s malým počtem silných útoků (např. temné "
 "učedníky, jezdce, skřetí pěšáky nebo trpasličí hromovládce) ve skupinkách po "
-"dvou či po třech. Takto je k dispozici další pokus, pokud první útok "
-"selže... což se běžně stává."
+"dvou či po třech. Tak budeš mít k dispozici další pokus, pokud první útok "
+"selže..., což se běžně stává."
 
 #. [tip]
 #: data/tips.cfg:225
@@ -4969,7 +5066,7 @@ msgid ""
 msgstr ""
 "Jednotky se třemi nebo více útoky, zejména magickými, jsou vhodné pro "
 "dorážku nepřátel s pouhými několika životy. Pokud to umožní zabití jediným "
-"úderem, používej velení nebo silnou či obratnou jednotku."
+"úderem, využij schopnost velení nebo použij silnou či obratnou jednotku."
 
 #. [tip]
 #: data/tips.cfg:229
@@ -4989,9 +5086,9 @@ msgid ""
 "turns’ movement away from the fighting. Then it can recover in peace (at 10 "
 "hitpoints per turn) without tying up front-line villages."
 msgstr ""
-"Když je těžce zraněna velmi odolná jednotka, pošli ji do vesnice vzdálené "
-"několik tahů od fronty. Tam se bude moci nerušeně zotavovat (o 10 životů za "
-"kolo), aniž by zabírala vesnice poblíž fronty."
+"Když je těžce zraněna velmi odolná jednotka, pošli ji uzdravit se do "
+"vesnice, která je od bojů vzdálena několik kol na přesun. Pak se může "
+"nerušeně zotavovat (o 10 životů za kolo), aniž zabírá vesnice poblíž fronty."
 
 #. [tip]
 #: data/tips.cfg:234 data/tips.cfg:246
@@ -5033,9 +5130,9 @@ msgid ""
 "land does favor you."
 msgstr ""
 "Pokud tvé jednotky mají na celé mapě pouze slabou obranu, zaber místa, kde "
-"budou i nepřátelé v nevýhodě, pokud budou chtít útočit. Vyhni se místům, kde "
-"máš obranu slabou a nepřítel „pouze“ průměrnou. Počítej s velkými ztrátami a "
-"drž za každou cenu políčka, kde bojuješ dobře."
+"budou i nepřátelé v nevýhodě, pokud budou chtít útočit. Vyhni se místům, kde "
+"máš obranu slabou a nepřítel „pouze“ průměrnou. Počítej s velkými ztrátami "
+"a drž za každou cenu políčka, kde bojuješ dobře."
 
 #. [tip]
 #: data/tips.cfg:249
@@ -5092,7 +5189,7 @@ msgid ""
 "otherwise possible."
 msgstr ""
 "Pokud je jednotka umístěna vedle léčitelů ze dvou spojeneckých stran, bude "
-"léčena v kolech obou stran. Takto může být jednotka léčena rychleji, než by "
+"léčena v kolech obou stran. Takto může být jednotka léčena rychleji, než by "
 "jinak bylo možné."
 
 #. [tip]
@@ -5251,6 +5348,12 @@ msgid ""
 "\n"
 "&quot; * / : &lt; &gt; ? \\ | ~"
 msgstr ""
+"Rozšíření <i>$addon_title</i> má neplatné jméno souboru nebo adresáře "
+"a nemůže být zveřejněno. Jména souborů nebo adresářů nesmí obsahovat „..“ "
+"nebo končit na „.“ nebo být delší než 255 znaků. Také nemohou obsahovat bílý "
+"znak, řídící znaky nebo jakýkoli z následujících znaků:\n"
+"\n"
+"&quot; * / : &lt; &gt; ? \\ | ~"
 
 #: src/addon/client.cpp:172
 msgid ""
@@ -5640,8 +5743,8 @@ msgid ""
 "Sends a private message. You cannot send private messages to players in a "
 "running game you observe or play in."
 msgstr ""
-"Pošle soukromou zprávu. Nelze ji poslat hráči, který hraje za některou "
-"stranu ve stejné hře jako vy (právě běžící)."
+"Pošle soukromou zprávu. Nemůžeš posílat soukromé zprávy hráčům v běžící hře, "
+"kterou sleduješ, nebo sám hraješ."
 
 #: src/chat_command_handler.hpp:117
 msgid "<nickname> <message>"
@@ -6068,9 +6171,9 @@ msgstr "Načtená hra"
 #: src/game_initialization/lobby_data.cpp:453
 msgid "Vacant Slot:"
 msgid_plural "Vacant Slots:"
-msgstr[0] "Prázdná pozice:"
-msgstr[1] "Prázdné pozice:"
-msgstr[2] "Prázdných pozic:"
+msgstr[0] "Volná pozice:"
+msgstr[1] "Volné pozice:"
+msgstr[2] "Volných pozic:"
 
 #: src/game_initialization/lobby_data.cpp:455
 msgid "mp_game_available_slots^Full"
@@ -6122,7 +6225,7 @@ msgid ""
 "The server accepts versions '$required_version', but you are using version "
 "'$your_version'"
 msgstr ""
-"Server přijímá pouze verzi '$required_version', zatímco vy máte verzi "
+"Server přijímá pouze verze '$required_version', ale ty používáš verzi "
 "'$your_version'"
 
 #: src/game_initialization/multiplayer.cpp:137
@@ -6136,7 +6239,7 @@ msgid ""
 "to do it for you."
 msgstr ""
 "Přezdívka ‘$nick’ není aktivní. Nelze si ji přivlastnit, dokud svůj účet "
-"neaktivujete emailem, nebo o to nepožádáte administrátora."
+"neaktivuješ emailem nebo o to nepožádáš administrátora."
 
 #: src/game_initialization/multiplayer.cpp:222
 msgid "Do you want to continue?"
@@ -6416,6 +6519,7 @@ msgstr ""
 #: src/gui/core/linked_group_definition.cpp:39
 msgid "Linked group '$id' needs a 'fixed_width' or 'fixed_height' key."
 msgstr ""
+"Spojená skupina „$id“ potřebuje klíč „fixed_width“ nebo „fixed_height“."
 
 #: src/gui/dialogs/addon/install_dependencies.cpp:38
 msgid ""
@@ -6674,7 +6778,7 @@ msgstr "Kroků:"
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:537
 msgid "Vision:"
-msgstr "Vidění:"
+msgstr "Rozhled:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
@@ -6762,7 +6866,7 @@ msgstr "Omezení obrany"
 
 #: src/help/help_topic_generators.cpp:690
 msgid "Vision Cost"
-msgstr "Cena vidění"
+msgstr "Cena rozhledu"
 
 #: src/help/help_topic_generators.cpp:694
 msgid "Jamming Cost"
@@ -6782,15 +6886,15 @@ msgstr "Screenshot mapy"
 
 #: src/hotkey/hotkey_handler.cpp:217
 msgid "(press $hk to disable)"
-msgstr "(stiskni $hk k vypnutí)"
+msgstr "(stiskni $hk pro vypnutí)"
 
 #: src/hotkey/hotkey_handler.cpp:217
 msgid "Accelerated speed enabled!"
-msgstr "Povoleno zvýšení rychlosti!"
+msgstr "Zrychlení zapnuto!"
 
 #: src/hotkey/hotkey_handler.cpp:221
 msgid "Accelerated speed disabled!"
-msgstr "Zakázáno zvýšení rychlosti!"
+msgstr "Zrychlení vypnuto!"
 
 #: src/hotkey/hotkey_handler.cpp:413
 msgid "Back to Turn "
@@ -6849,7 +6953,7 @@ msgid ""
 "Unknown command '$command', try $help_command for a list of available "
 "commands."
 msgstr ""
-"Neznámý příkaz '$command'; zkus $help_command pro seznam dostupných příkazů."
+"Neznámý příkaz „$command“, zkus $help_command pro seznam dostupných příkazů."
 
 #: src/map_command_handler.hpp:210
 msgid "Error:"
@@ -6860,8 +6964,8 @@ msgid ""
 "Available commands list and command-specific help. Use \"help all\" to "
 "include currently unavailable commands."
 msgstr ""
-"Seznam dostupných příkazů a jejich nápověda. Použijte \"help all\" pro "
-"zahrnutí nedostupných příkazů."
+"Seznam dostupných příkazů a nápověda k nim. Použij „help all“ pro zahrnutí "
+"nyní nedostupných příkazů."
 
 #. TRANSLATORS: These are the arguments accepted by the "help" command,
 #. which are either "all" or the name of another command.
@@ -6872,6 +6976,9 @@ msgid ""
 "“all” = overview of all commands, <command> = name of a specific command "
 "(provides more detail)"
 msgstr ""
+"[all|<příkaz>]\n"
+"„all“ = přehled všech příkazů, <příkaz> = název určitého příkazu (poskytne "
+"více podrobností)"
 
 #: src/map_command_handler.hpp:266
 msgid "Missing argument $arg_id"
@@ -6907,9 +7014,9 @@ msgstr "Použití:"
 #: src/map_command_handler.hpp:343
 msgid "command^Alias:"
 msgid_plural "Aliases:"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "Alias:"
+msgstr[1] "Aliasy:"
+msgstr[2] "Aliasy:"
 
 #: src/menu_events.cpp:176
 msgid "Save Map As"
@@ -7308,15 +7415,15 @@ msgstr "Nelze „droidovat“ síťovou stranu „$side|“."
 
 #: src/menu_events.cpp:1477
 msgid "Side '$side' is already droided."
-msgstr ""
+msgstr "Strana „$side“ už je počítačem řízena."
 
 #: src/menu_events.cpp:1487
 msgid "Side '$side' controller is now controlled by: AI."
-msgstr "Strana '$side' je nyní řízena počítačem."
+msgstr "Strana „$side“ je nyní řízena počítačem."
 
 #: src/menu_events.cpp:1489
 msgid "Side '$side' controller is now controlled by: human."
-msgstr "Strana '$side' je nyní řízena člověkem."
+msgstr "Strana „$side“ je nyní řízena člověkem."
 
 #: src/menu_events.cpp:1497
 msgid "Can't droid a local ai side: '$side'."
@@ -7378,6 +7485,11 @@ msgid ""
 "\n"
 "Do not continue unless you really know what you are doing."
 msgstr ""
+"Spouštění Lua kódu tímto způsobem otevírá tvůj počítač možným narušením "
+"bezpečnosti od kterýchkoliv rozšíření či jiných programů, které sis možná "
+"nainstaloval.\n"
+"\n"
+"Nepokračuj, pokud opravdu nevíš, co děláš."
 
 #: src/menu_events.cpp:1810
 msgid "Unsafe mode enabled!"
@@ -7425,7 +7537,7 @@ msgstr "Tato jednotka nemá žádné použitelné zbraně."
 
 #: src/mp_game_settings.hpp:71
 msgid "Independent"
-msgstr "Nezávisle"
+msgstr "Nezávislé"
 
 #: src/mp_game_settings.hpp:72
 msgid "No Mirror"
@@ -7437,7 +7549,7 @@ msgstr "Nezrcadlit spojence"
 
 #: src/mp_ui_alerts.cpp:67
 msgid "A game ($name|, $scenario|) has been created"
-msgstr ""
+msgstr "Byla vytvořena hra ($name|, $scenario|)"
 
 #: src/mp_ui_alerts.cpp:68 src/mp_ui_alerts.cpp:82 src/mp_ui_alerts.cpp:96
 #: src/mp_ui_alerts.cpp:165 src/mp_ui_alerts.cpp:176
@@ -7478,7 +7590,7 @@ msgstr "Nalezen terén s cenou pohybu menší než 1."
 #. from another player. This text will be embedded into a sentence.
 #: src/persist_var.cpp:58
 msgid "waiting for^a global variable"
-msgstr ""
+msgstr "globální proměnnou"
 
 #: src/play_controller.cpp:242
 msgid "time left for current turn"
@@ -7653,7 +7765,7 @@ msgstr "neviditelný: "
 #: src/reports.cpp:339
 msgid "This unit is invisible. It cannot be seen or attacked by enemy units."
 msgstr ""
-"Tato jednotka je neviditelná. Nemůže být spatřena a nepřítel na ni nemůže "
+"Tato jednotka je neviditelná. Nemůže být spatřena a nepřítel na ni nemůže "
 "zaútočit."
 
 #: src/reports.cpp:342
@@ -7941,7 +8053,7 @@ msgstr "Baterie"
 
 #: src/reports.cpp:1634
 msgid "Countdown until your turn automatically ends."
-msgstr ""
+msgstr "Odpočítávání, než tvé kolo automaticky skončí."
 
 #: src/reports.cpp:1634
 msgid "Turn Countdown"
@@ -8039,7 +8151,7 @@ msgstr "Hru se nepodařilo automaticky uložit. Uložte ji prosím ručně."
 
 #: src/savegame.cpp:611
 msgid "Save Game"
-msgstr "Ulož hru"
+msgstr "Uložit hru"
 
 #: src/savegame.cpp:625
 msgid "Game state is corrupted"
@@ -8226,16 +8338,16 @@ msgstr ""
 #: src/synced_user_choice.cpp:330
 msgid "waiting for $desc from side $sides"
 msgid_plural "waiting for $desc from sides $sides"
-msgstr[0] "čeká se na $desc hrajícího za stranu $sides"
-msgstr[1] "čeká se na $desc hrajícího za strany $sides"
-msgstr[2] "čeká se na $desc hrajícího za strany $sides"
+msgstr[0] "čeká se na $desc od strany $sides"
+msgstr[1] "čeká se na $desc od stran $sides"
+msgstr[2] "čeká se na $desc od stran $sides"
 
 #. TRANSLATORS: In networked games, this text is shown for other clients,
 #. while they wait for an action from another player.
 #. This text will be embedded into a sentence.
 #: src/synced_user_choice.hpp:42
 msgid "waiting for^input"
-msgstr ""
+msgstr "vstup"
 
 #: src/terrain/terrain.cpp:181
 msgid "Allied village"
@@ -8569,15 +8681,6 @@ msgstr "Nastavení plánovacího módu"
 #~ msgid "None"
 #~ msgstr "Nic"
 
-#, fuzzy
-#~| msgid "attack per turn"
-#~ msgid "<span color=\"$color\">$number_or_percent movement</span> point"
-#~ msgid_plural ""
-#~ "<span color=\"$color\">$number_or_percent movement</span> points"
-#~ msgstr[0] "útok za kolo"
-#~ msgstr[1] "útok za kolo"
-#~ msgstr[2] "útok za kolo"
-
 #~ msgid "Ping timeout"
 #~ msgstr "Doba vypršení pingu"
 
@@ -8602,13 +8705,6 @@ msgstr "Nastavení plánovacího módu"
 
 #~ msgid "wesnoth"
 #~ msgstr "wesnoth"
-
-#, fuzzy
-#~| msgid "$elem has been deprecated and will be removed in the next version."
-#~ msgid ""
-#~ "$elem has been deprecated and will be removed in the next version "
-#~ "($version)."
-#~ msgstr "$elem byl označen za zastaralý a bude odstraněn v příští verzi."
 
 #~ msgid ""
 #~ "Screenshot creation failed.\n"
@@ -8653,11 +8749,6 @@ msgstr "Nastavení plánovacího módu"
 
 #~ msgid " and "
 #~ msgstr " a "
-
-#, fuzzy
-#~| msgid "% accuracy"
-#~ msgid "$percent|% accuracy"
-#~ msgstr "% přesnosti"
 
 #~ msgid "Not implemented yet."
 #~ msgstr "Ještě nebylo implementováno."
@@ -8711,22 +8802,6 @@ msgstr "Nastavení plánovacího módu"
 
 #~ msgid "Chance of being unscathed"
 #~ msgstr "Šance přečkat bez zranění"
-
-#, fuzzy
-#~| msgid "Experimental multiplayer lobby"
-#~ msgid "Experimental multiplayer UI"
-#~ msgstr "Experimentální multiplayerová čekárna"
-
-#, fuzzy
-#~| msgid ""
-#~| "Replace the classic multiplayer lobby with a newer, experimental "
-#~| "interface"
-#~ msgid ""
-#~ "Replace the classic multiplayer lobby and game setup UI with a newer, "
-#~ "experimental interface"
-#~ msgstr ""
-#~ "Nahradit klasickou čekárnu pro hru více hráčů novým, experimentálním "
-#~ "rozhraním"
 
 #~ msgid "pause at end of turn"
 #~ msgstr "pozastav na konci kola"
@@ -9831,11 +9906,6 @@ msgstr "Nastavení plánovacího módu"
 #~ msgstr ""
 #~ "DejaVu Sans,Andagii,Droid Sans Japanese,Droid Sans Fallback,Junicode"
 
-#, fuzzy
-#~| msgid "Chat message aging"
-#~ msgid "Clear Weather"
-#~ msgstr "Stárnutí zpráv chatu"
-
 #~ msgid "Initializing user interface"
 #~ msgstr "Příprava uživatelského rozhraní"
 
@@ -9896,26 +9966,11 @@ msgstr "Nastavení plánovacího módu"
 #~ msgid " move"
 #~ msgstr " krok"
 
-#, fuzzy
-#~| msgid "vision: "
-#~ msgid " vision"
-#~ msgstr "vidění:"
-
-#, fuzzy
-#~| msgid "Warning: "
-#~ msgid " jamming"
-#~ msgstr "Varování: "
-
 #~ msgid "Show your ignores and friends list."
 #~ msgstr "Zobrazí seznam otrapů a přátel."
 
 #~ msgid "There are no players on your friends or ignore list."
 #~ msgstr "Ve Vašem seznamu přátel nebo otrapů nejsou žádní hráči."
-
-#, fuzzy
-#~| msgid "The Battle for Wesnoth"
-#~ msgid "Battle for Wesnoth"
-#~ msgstr "Bitva o Wesnoth"
 
 #~ msgid "save_compression_short^gzip"
 #~ msgstr "gzip"
@@ -9941,20 +9996,6 @@ msgstr "Nastavení plánovacího módu"
 #~ msgid "Choose whether the sun moves left-to-right or right-to-left"
 #~ msgstr ""
 #~ "Zvol, zda-li se má slunce pohybovat zleva doprava, nebo zprava doleva"
-
-#, fuzzy
-#~| msgid ""
-#~| "This is a multiplayer scenario. Some parts of it may not work properly "
-#~| "in single-player. It is recommended to load this scenario through the "
-#~| "Multiplayer -> Load Game dialog instead."
-#~ msgid ""
-#~ "This is a multiplayer scenario. Some parts of it may not work properly in "
-#~ "single-player. It is recommended to load this scenario through the "
-#~ "<b>Multiplayer</b> → <b>Load Game</b> dialog instead."
-#~ msgstr ""
-#~ "Toto je scénář pro více hráčů. Některé jeho části nemusí správně fungovat "
-#~ "pro jednoho hráče. Doporučujeme nahrávat scénáře přes nabídku Multiplayer "
-#~ "-> Nahrát hru."
 
 #~ msgid ""
 #~ "Use colored mouse cursors, which may be slower or break the game (use at "
@@ -10097,352 +10138,6 @@ msgstr "Nastavení plánovacího módu"
 #~ msgid "(side $temp_i|)"
 #~ msgstr "(strana $temp_i|)"
 
-#, fuzzy
-#~| msgid "Cancel"
-#~ msgid "cancel"
-#~ msgstr "Zrušit"
-
-#, fuzzy
-#~| msgid "Test scenario"
-#~ msgid "Select Hex"
-#~ msgstr "Testovací scénář"
-
-#, fuzzy
-#~| msgid "Attacker"
-#~ msgid "Move/Attack"
-#~ msgstr "Útočník"
-
-#, fuzzy
-#~| msgid "Next Turn"
-#~ msgid "Next Unit"
-#~ msgstr "Další kolo"
-
-#, fuzzy
-#~| msgid "End Turn"
-#~ msgid "End Unit Turn"
-#~ msgstr "Ukonči kolo"
-
-#, fuzzy
-#~| msgid "Description"
-#~ msgid "Terrain Description"
-#~ msgstr "Popis"
-
-#, fuzzy
-#~| msgid "Description"
-#~ msgid "Unit Description"
-#~ msgstr "Popis"
-
-#, fuzzy
-#~| msgid "Delete add-on: "
-#~ msgid "Delete Unit"
-#~ msgstr "Vymaž rozšíření: "
-
-#, fuzzy
-#~| msgid "Share Maps"
-#~ msgid "Save Map"
-#~ msgstr "Sdílej mapy"
-
-#, fuzzy
-#~| msgid "Recruit"
-#~ msgid "Repeat Recruit"
-#~ msgstr "Naverbuj"
-
-#, fuzzy
-#~| msgid "Mouse scrolling"
-#~ msgid "Mouse Scrolling"
-#~ msgstr "Posouvání pomocí myši"
-
-#, fuzzy
-#~| msgid "Status"
-#~ msgid "Status Table"
-#~ msgstr "Stav"
-
-#, fuzzy
-#~| msgid "Create Unit (Debug!)"
-#~ msgid "Change Side (Debug!)"
-#~ msgstr "Vytvořit jednotku (Ladění!)"
-
-#, fuzzy
-#~| msgid "Create Unit (Debug!)"
-#~ msgid "Kill Unit (Debug!)"
-#~ msgstr "Vytvořit jednotku (Ladění!)"
-
-#, fuzzy
-#~| msgid "Scenario Settings"
-#~ msgid "Scenario Objectives"
-#~ msgstr "Nastavení scénáře"
-
-#, fuzzy
-#~| msgid "Network Player"
-#~ msgid "Pause Network Game"
-#~ msgstr "Síťový hráč"
-
-#, fuzzy
-#~| msgid "Confirm"
-#~ msgid "Continue Network Game"
-#~ msgstr "Potvrdit"
-
-#, fuzzy
-#~| msgid "Quit game."
-#~ msgid "Quit Game"
-#~ msgstr "Ukončí hru."
-
-#, fuzzy
-#~| msgid "Save Replay"
-#~ msgid "Play Replay"
-#~ msgstr "Uložení záznamu"
-
-#, fuzzy
-#~| msgid "Save Replay"
-#~ msgid "Reset Replay"
-#~ msgstr "Uložení záznamu"
-
-#, fuzzy
-#~| msgid "Save Replay"
-#~ msgid "Stop Replay"
-#~ msgstr "Uložení záznamu"
-
-#, fuzzy
-#~| msgid "Team"
-#~ msgid "Each Team"
-#~ msgstr "Tým"
-
-#, fuzzy
-#~| msgid "Team"
-#~ msgid "Team 1"
-#~ msgstr "Tým"
-
-#, fuzzy
-#~| msgid "Skip animation"
-#~ msgid "Skip Animation"
-#~ msgstr "Přeskočit animaci"
-
-#, fuzzy
-#~| msgid "Whiteboard Options"
-#~ msgid "whiteboard^Execute Action"
-#~ msgstr "Nastavení plánovacího módu"
-
-#, fuzzy
-#~| msgid "Whiteboard Options"
-#~ msgid "whiteboard^Execute All Actions"
-#~ msgstr "Nastavení plánovacího módu"
-
-#, fuzzy
-#~| msgid "Whiteboard Options"
-#~ msgid "whiteboard^Delete Action"
-#~ msgstr "Nastavení plánovacího módu"
-
-#, fuzzy
-#~| msgid "Whiteboard Options"
-#~ msgid "whiteboard^Move Action Up"
-#~ msgstr "Nastavení plánovacího módu"
-
-#, fuzzy
-#~| msgid "Whiteboard Options"
-#~ msgid "whiteboard^Move Action Down"
-#~ msgstr "Nastavení plánovacího módu"
-
-#, fuzzy
-#~| msgid "Time of day"
-#~ msgid "Switch Time of Day"
-#~ msgstr "Denní doba"
-
-#, fuzzy
-#~| msgid "Share Maps"
-#~ msgid "Switch Map"
-#~ msgstr "Sdílej mapy"
-
-#, fuzzy
-#~| msgid "Time of day"
-#~ msgid "Custom Time of Day Creator"
-#~ msgstr "Denní doba"
-
-#, fuzzy
-#~| msgid "Load Game"
-#~ msgid "Load Map"
-#~ msgstr "Načti hru"
-
-#, fuzzy
-#~| msgid "Test scenario"
-#~ msgid "Save Scenario As"
-#~ msgstr "Testovací scénář"
-
-#, fuzzy
-#~| msgid "Save the Map As"
-#~ msgid "Save All Maps"
-#~ msgstr "Ulož mapu jako"
-
-#, fuzzy
-#~| msgid "Skip animation"
-#~ msgid "Map Information"
-#~ msgstr "Přeskočit animaci"
-
-#, fuzzy
-#~| msgid "Next Side"
-#~ msgid "Add New Side"
-#~ msgstr "Další strana"
-
-#, fuzzy
-#~| msgid "Next Turn"
-#~ msgid "Next Tool"
-#~ msgstr "Další kolo"
-
-#, fuzzy
-#~| msgid "Starting position: "
-#~ msgid "Starting Positions Tool"
-#~ msgstr "Počáteční pozice: "
-
-#, fuzzy
-#~| msgid "Village gold: "
-#~ msgid "Village Tool"
-#~ msgstr "Zlato/Vesnice: "
-
-#, fuzzy
-#~| msgid "Recruit"
-#~ msgid "Can Recruit"
-#~ msgstr "Naverbuj"
-
-#, fuzzy
-#~| msgid "Advance Unit"
-#~ msgid "Change Unit ID"
-#~ msgstr "Povýšení jednotky"
-
-#, fuzzy
-#~| msgid "Next Turn"
-#~ msgid "Next Brush"
-#~ msgstr "Další kolo"
-
-#, fuzzy
-#~| msgid "Select unit:"
-#~ msgid "Select All"
-#~ msgstr "Vyber jednotku:"
-
-#, fuzzy
-#~| msgid "Select an add-on to update:"
-#~ msgid "Select Inverse"
-#~ msgstr "Vyberte rozšíření k aktualizaci:"
-
-#, fuzzy
-#~| msgid "Select unit:"
-#~ msgid "Select None"
-#~ msgstr "Vyber jednotku:"
-
-#, fuzzy
-#~| msgid "Invalid location"
-#~ msgid "Flip Selection"
-#~ msgstr "Neplatná lokace"
-
-#, fuzzy
-#~| msgid "Randomize time of day in begin"
-#~ msgid "Randomize Tiles in Selection"
-#~ msgstr "Nastaví na začátku hry náhodnou denní dobu"
-
-#, fuzzy
-#~| msgid "Share Maps"
-#~ msgid "Rotate Map"
-#~ msgstr "Sdílej mapy"
-
-#, fuzzy
-#~| msgid "Regenerate"
-#~ msgid "Generate Map"
-#~ msgstr "Vygeneruj další"
-
-#, fuzzy
-#~| msgid "Create Game"
-#~ msgid "Create Mask"
-#~ msgstr "Vytvoř hru"
-
-#, fuzzy
-#~| msgid "Refresh gui."
-#~ msgid "Refresh Display"
-#~ msgstr "Obnoví grafické rozhraní."
-
-#, fuzzy
-#~| msgid "Latin Translation"
-#~ msgid "Update Terrain Transitions"
-#~ msgstr "Latinský překlad"
-
-# !!!!
-#, fuzzy
-#~| msgid "End Scenario"
-#~ msgid "Edit Scenario"
-#~ msgstr "Ukončit scénář"
-
-#, fuzzy
-#~| msgid "Next Side"
-#~ msgid "Edit Side"
-#~ msgstr "Další strana"
-
-#, fuzzy
-#~| msgid "Next Side"
-#~ msgid "Remove Side"
-#~ msgstr "Další strana"
-
-#, fuzzy
-#~| msgid "Update all"
-#~ msgid "Speak to Ally"
-#~ msgstr "Aktualizovat vše"
-
-#, fuzzy
-#~| msgid "Update all"
-#~ msgid "Speak to All"
-#~ msgstr "Aktualizovat vše"
-
-#, fuzzy
-#~| msgid "Chat Log"
-#~ msgid "View Chat Log"
-#~ msgstr "Záznam rozhovoru"
-
-#, fuzzy
-#~| msgid "Refresh gui."
-#~ msgid "Refresh WML"
-#~ msgstr "Obnoví grafické rozhraní."
-
-#, fuzzy
-#~| msgid "Time of day"
-#~ msgid "Next Tip of the Day"
-#~ msgstr "Denní doba"
-
-#, fuzzy
-#~| msgid "Tutorial"
-#~ msgid "Start Tutorial"
-#~ msgstr "Výcvik"
-
-#, fuzzy
-#~| msgid "Campaign Design"
-#~ msgid "Start Campaign"
-#~ msgstr "Návrh tažení"
-
-#, fuzzy
-#~| msgid "Multiplayer"
-#~ msgid "Start Multiplayer Game"
-#~ msgstr "Hra více hráčů"
-
-#, fuzzy
-#~| msgid "Update add-ons"
-#~ msgid "Manage Add-ons"
-#~ msgstr "Aktualizace rozšíření"
-
-#, fuzzy
-#~| msgid "Show replay"
-#~ msgid "Show Credits"
-#~ msgstr "Ukaž záznamy"
-
-#, fuzzy
-#~| msgid "Show replay"
-#~ msgid "Show Helptip"
-#~ msgstr "Ukaž záznamy"
-
-#, fuzzy
-#~| msgid "Compressed saves"
-#~ msgid "Compress savegames using bzip2"
-#~ msgstr "Ukládat hry v komprimovaném formátu"
-
-#, fuzzy
-#~| msgid "Settings..."
-#~ msgid "Options..."
-#~ msgstr "Nastavení..."
-
 #~ msgid "?"
 #~ msgstr "?"
 
@@ -10464,161 +10159,8 @@ msgstr "Nastavení plánovacího módu"
 #~ msgid "KB"
 #~ msgstr "KB"
 
-#, fuzzy
-#~| msgid "Multiplayer_AI^RCA AI"
-#~ msgid "Multiplayer_AI^Default AI (RCA)"
-#~ msgstr "RCA AI"
-
-#, fuzzy
-#~| msgid "Multiplayer_AI^RCA AI"
-#~ msgid "Multiplayer_AI^Experimental AI"
-#~ msgstr "RCA AI"
-
-#, fuzzy
-#~| msgid "Enemy unit sighted!"
-#~| msgid_plural "$enemies enemy units sighted!"
-#~ msgid "Enemy unit weight  (default: 100)"
-#~ msgstr "Nepřátelská jednotka na dohled!"
-
-#, fuzzy
-#~| msgid "Move leader here"
-#~ msgid "Move Konrad here"
-#~ msgstr "Přesunout vůdce sem"
-
-#, fuzzy
-#~| msgid "help"
-#~ msgid "Whelps"
-#~ msgstr "nápověda"
-
-# !!!!
-#, fuzzy
-#~| msgid "End Scenario"
-#~ msgid "End scenario"
-#~ msgstr "Ukončit scénář"
-
-#, fuzzy
-#~| msgid "Save the Map As"
-#~ msgid "Take the pass"
-#~ msgstr "Ulož mapu jako"
-
-#, fuzzy
-#~| msgid "Defeat"
-#~ msgid "Defeat Rowck"
-#~ msgstr "Porážka"
-
-# | msgid "Defeat enemy leader(s)"
-#, fuzzy
-#~ msgid "Death of the bat leader"
-#~ msgstr "Znič nepřátelské(ho) vůdce"
-
-#, fuzzy
-#~| msgid "Faction"
-#~ msgid "Station 1"
-#~ msgstr "Frakce"
-
-#, fuzzy
-#~| msgid "Faction"
-#~ msgid "Station 2"
-#~ msgstr "Frakce"
-
-#, fuzzy
-#~| msgid "Defeat enemy leader(s)"
-#~ msgid "Defeat all enemy units"
-#~ msgstr "Znič nepřátelské(ho) vůdce"
-
-#, fuzzy
-#~| msgid "Notes:"
-#~ msgid "Notes"
-#~ msgstr "Poznámky:"
-
-#, fuzzy
-#~| msgid "Clear all orders"
-#~ msgid "Defeat all lurkers"
-#~ msgstr "Zrušit všechny příkazy"
-
-#, fuzzy
-#~| msgid "Message:"
-#~ msgid "Messenger"
-#~ msgstr "Zpráva:"
-
-#, fuzzy
-#~| msgid "Move leader here"
-#~ msgid "AI moves Messenger here"
-#~ msgstr "Přesunout vůdce sem"
-
-#, fuzzy
-#~| msgid "Move leader here"
-#~ msgid "Move Rossauba here"
-#~ msgstr "Přesunout vůdce sem"
-
-#, fuzzy
-#~| msgid "Recruit"
-#~ msgid "Recruiting"
-#~ msgstr "Naverbuj"
-
-#, fuzzy
-#~| msgid "Swarm: "
-#~ msgid "Swarm"
-#~ msgstr "Hejno: "
-
-#, fuzzy
-#~| msgid "Invalid location"
-#~ msgid "AI Location:"
-#~ msgstr "Neplatná lokace"
-
 #~ msgid "Unknown unit type '$type|' while generating traits"
 #~ msgstr "Neznámá jednotka „$type|“ při vytváření vlastností."
-
-#, fuzzy
-#~| msgid "invisible: "
-#~ msgid "invisible"
-#~ msgstr "neviditelný: "
-
-#, fuzzy
-#~| msgid "female^slowed"
-#~ msgid "female^invisible"
-#~ msgstr "zpomalená"
-
-#, fuzzy
-#~| msgid "Fire a game event."
-#~ msgid "I triggered a moveto event."
-#~ msgstr "Spouští herní událost (event)."
-
-#, fuzzy
-#~| msgid "invisible: "
-#~ msgid "It is invisible!"
-#~ msgstr "neviditelný: "
-
-#, fuzzy
-#~| msgid "Choose weapon:"
-#~ msgid "Choose a Map to Open"
-#~ msgstr "Vyber si zbraň:"
-
-#, fuzzy
-#~| msgid "Choose the game to load"
-#~ msgid "Choose a Mask to Apply"
-#~ msgstr "Vyber si hru pro nahrání"
-
-#, fuzzy
-#~| msgid "Choose weapon:"
-#~ msgid "Choose Target Map"
-#~ msgstr "Vyber si zbraň:"
-
-#, fuzzy
-#~| msgid "The map already exists. Do you want to overwrite it?"
-#~ msgid "The file already exists. Do you want to overwrite it?"
-#~ msgstr "Tato mapa již existuje. Chceš ji přepsat?"
-
-# Když nedostane klient v datech která éra je použita.
-#, fuzzy
-#~| msgid "No era information found."
-#~ msgid "No random map generators found."
-#~ msgstr "Nenalezeny žádné informace o věku."
-
-#, fuzzy
-#~| msgid "Installation failed"
-#~ msgid "Map creation failed."
-#~ msgstr "Instalace selhala"
 
 #~ msgid "The server responded with an error: \"$error|\""
 #~ msgstr "Server odpověděl chybou: „$error|“"
@@ -10750,21 +10292,6 @@ msgstr "Nastavení plánovacího módu"
 
 #~ msgid "Difficulty: Hard"
 #~ msgstr "Obtížnost: těžká"
-
-# | msgid "Campaign: $campaign_name"
-#, fuzzy
-#~ msgid "Main campaign define"
-#~ msgstr "Tažení: $campaign_name"
-
-# | msgid "Campaign Design"
-#, fuzzy
-#~ msgid "Extra campaign define"
-#~ msgstr "Návrh tažení"
-
-# | msgid "Multiplayer"
-#, fuzzy
-#~ msgid "Multiplayer define"
-#~ msgstr "Hra více hráčů"
 
 #~ msgid "Download"
 #~ msgstr "Stáhnout"

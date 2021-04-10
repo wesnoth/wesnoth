@@ -2,7 +2,7 @@
  ### Add-ons client
  ### Campaigns
  ### Translations
-   * Updated translations: Italian
+   * Updated translations: Czech, Italian
  ### User interface
  ### Miscellaneous and Bug Fixes
    * Fixed an intermittent crash on the loading screen (issue #5629)
