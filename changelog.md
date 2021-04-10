@@ -10,7 +10,7 @@
  ### Packaging
  ### Terrain
  ### Translations
-   * Updated translations: Czech, Italian
+   * Updated translations: Chinese (Traditional), Czech, Italian
  ### Units
    * New rock scorpion monster and scorpion zombie variation
    * Rename tusker/gorer references to boars and piglets, to avoid stepping on existing UMC
