@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.14\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2021-02-14 16:35-0300\n"
-"PO-Revision-Date: 2020-11-24 01:36+0100\n"
+"PO-Revision-Date: 2021-04-01 17:15+0200\n"
 "Last-Translator: Whiskeyjack\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
 "Language: de_DE\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.4.1\n"
+"X-Generator: Poedit 2.3\n"
 
 #. [time]: id=underground
 #. [editor_times]: id=underground
@@ -108,10 +108,8 @@ msgstr "Gelände Editor"
 #. [section]: id=editor_mode_scenario
 #. [topic]: id=..editor_mode_scenario
 #: data/core/editor/help.cfg:20 data/core/editor/help.cfg:269
-#, fuzzy
-#| msgid "Map/Scenario Editor"
 msgid "Scenario Editor"
-msgstr "Karten-/Szenarieneditor"
+msgstr "Szenarieneditor"
 
 #. [topic]: id=editor_tool_paint
 #: data/core/editor/help.cfg:28
@@ -137,31 +135,47 @@ msgid ""
 "\n"
 "The selected brush changes the size of the tool:"
 msgstr ""
+"Zeichne Kacheln auf der Karte.\n"
+"\n"
+"Das Zeichenwerkzeug macht sich die Pinselgröße und die Landschaftspalette zu "
+"Nutze \n"
+"\n"
+"<bold>text='Tastenkombinationen'</bold>\n"
+"\n"
+"• Shift+Mausklick: Wenn eine Grundfläche ausgewählt wird , ändert es die "
+"Grundfläche, ohne die Oberfläche zu beeinflussen. Wenn eine Oberfläche "
+"ausgewählt wird, ändert es die Oberfläche, ohne die Grundfläche zu ändern.\n"
+"•Steuerung+Mausklick: Wähle die Fläche unter dem Mauszeiger aus, um die "
+"Grundfläche, sowie die Oberfläche auszuwählen.\n"
+"\n"
+"<bold>text='Pinselgrößen'</bold>\n"
+"\n"
+"Der verwendete Pinsel ändert den Wirkungsbereich des Werkzeugs:"
 
 #. [topic]: id=editor_tool_paint
 #: data/core/editor/help.cfg:41
 msgid "Paint single hexes."
-msgstr ""
+msgstr "Zeichne einzelne Felder."
 
 #. [topic]: id=editor_tool_paint
 #: data/core/editor/help.cfg:42
 msgid "Paint seven hexes at a time."
-msgstr ""
+msgstr "Zeichne sieben Felder gleichzeitig."
 
 #. [topic]: id=editor_tool_paint
 #: data/core/editor/help.cfg:43
 msgid "Paint nineteen hexes at a time."
-msgstr ""
+msgstr "Zeichne neunzehn Felder gleichzeitig."
 
 #. [topic]: id=editor_tool_paint
 #: data/core/editor/help.cfg:44 data/core/editor/help.cfg:45
 msgid "Paint three hexes in a line."
-msgstr ""
+msgstr "Zeichne drei Felder geradlinig."
 
 #. [topic]: id=editor_tool_fill
 #: data/core/editor/help.cfg:52
 msgid "Fill Tool"
-msgstr "Füllen-Werkzeug"
+msgstr "Füll-Werkzeug"
 
 #. [topic]: id=editor_tool_fill
 #: data/core/editor/help.cfg:53
@@ -178,6 +192,17 @@ msgid ""
 "• Control+mouse click: Select the terrain under the mouse cursor, as if it "
 "had been selected on the terrain palette (picks up both base and overlay)."
 msgstr ""
+"Ersetze Bereiche einer Landschaft mit einer anderen .\n"
+"\n"
+"Das Füll-Werkzeug benutzt die Landschaftspalette.\n"
+"\n"
+"<bold>text='Tastenkombinationen'</bold>\n"
+"\n"
+"• Shift+Mausklick: Wenn eine Grundfläche ausgewählt wird , ändert es die "
+"Grundfläche, ohne die Oberfläche zu beeinflussen. Wenn eine Oberfläche "
+"ausgewählt wird, ändert es die Oberfläche, ohne die Grundfläche zu ändern.\n"
+"•Steuerung+Mausklick: Wähle die Fläche unter dem Mauszeiger aus, um die "
+"Grundfläche, sowie die Oberfläche auszuwählen."
 
 #. [topic]: id=editor_tool_select
 #: data/core/editor/help.cfg:67
@@ -200,31 +225,43 @@ msgid ""
 "\n"
 "The selected brush changes the size of the tool:"
 msgstr ""
+"Wählt eine Reihe von Feldern aus zur Benutzung für die Ausschneid-, Kopier- "
+"und Füll-Auswahl Schaltflächen unter der Menüleiste.\n"
+"\n"
+"<bold>text='Tastenkombinationen'</bold>\n"
+"\n"
+"• Shift+Mausklick: ,,Zauberstabmodus\", wähle ein Feld unter dem Mauszeiger "
+"aus und grenze diese den Feldern der selben Landschaftsart an.\n"
+"• Steuerung+Mausklick: Wähle die ausgewählten Felder ab.\n"
+"\n"
+"<bold>text='Pinselgrößen'</bold>\n"
+"\n"
+"Der verwendete Pinsel ändert den Wirkungsbereich des Werkzeugs:"
 
 #. [topic]: id=editor_tool_select
 #: data/core/editor/help.cfg:78
 msgid "Select single hexes."
-msgstr ""
+msgstr "Wähle einzelne Felder aus."
 
 #. [topic]: id=editor_tool_select
 #: data/core/editor/help.cfg:79
 msgid "Select seven hexes at a time."
-msgstr ""
+msgstr "Wähle sieben Felder gleichzeitig aus."
 
 #. [topic]: id=editor_tool_select
 #: data/core/editor/help.cfg:80
 msgid "Select nineteen hexes at a time."
-msgstr ""
+msgstr "Wähle neunzehn Felder gleichzeitig aus."
 
 #. [topic]: id=editor_tool_select
 #: data/core/editor/help.cfg:81 data/core/editor/help.cfg:82
 msgid "Select three hexes in a line."
-msgstr ""
+msgstr "Wähle drei Felder geradlinig aus."
 
 #. [topic]: id=editor_tool_paste
 #: data/core/editor/help.cfg:89
 msgid "Clipboard and Paste Tool"
-msgstr ""
+msgstr "Kopier- und Einfügen-Werkzeug"
 
 #. [topic]: id=editor_tool_paste
 #: data/core/editor/help.cfg:90
@@ -241,36 +278,48 @@ msgid ""
 "\n"
 "The paste tool also has some clipboard-manipulation functions:"
 msgstr ""
+"Drehe, spiegele und füge die Landschaft in die Zwischenablage ein\n"
+"\n"
+"Felder können in die Zwischenablage mit dem <ref>dst='editor_tool_select' "
+"text='Auswahl-Werkzeug'</ref> ausgeschnitten oder kopiert werden.\n"
+"\n"
+"Das Werkzeug zum Einfügen zeigt einen Umriss der Zwischenablage, welche mit "
+"der Hilfe eines Mausklicks eingefügt werden kann. Während der Umriss gezeigt "
+"wird, können Fehler mit der Rückgängig-Machen-Funktion beseitigt werden, "
+"indem man Steuerung und ,,Z\" gleichzeitig betätigt.\n"
+"\n"
+"Das Werkzeug zum Einfügen verfügt auch über weitere Methoden die "
+"Zwischenablage zu manipulieren :"
 
 #. [topic]: id=editor_tool_paste
 #: data/core/editor/help.cfg:97
 msgid "Rotate clockwise by 60°."
-msgstr ""
+msgstr "Drehe im Uhrzeigersinn um 60°."
 
 #. [topic]: id=editor_tool_paste
 #: data/core/editor/help.cfg:98
 msgid "Rotate counter-clockwise by 60°."
-msgstr ""
+msgstr "Drehe gegen den Uhrzeigersinn um 60°."
 
 #. [topic]: id=editor_tool_paste
 #: data/core/editor/help.cfg:99
 msgid "Flip horizontally"
-msgstr ""
+msgstr "Horizontal spiegeln"
 
 #. [topic]: id=editor_tool_paste
 #: data/core/editor/help.cfg:100
 msgid "Flip vertically"
-msgstr ""
+msgstr "Vertikal spiegeln"
 
 #. [topic]: id=editor_tool_starting
 #: data/core/editor/help.cfg:107
-#, fuzzy
-#| msgid "Starting Positions Howto"
 msgid "Starting Locations Tool"
-msgstr "Startposition Kurzanleitung"
+msgstr "Startpositionswerkzeug"
 
+# Der letzte Halbsatz könnte noch ausgebessert werden
 #. [topic]: id=editor_tool_starting
 #: data/core/editor/help.cfg:109
+#, fuzzy
 msgid ""
 "Defines the side leader starting position.\n"
 "\n"
@@ -302,6 +351,37 @@ msgid ""
 "location for placing with a subsequent mouse click, as if it was selected in "
 "the editor palette."
 msgstr ""
+"Definiert die Position der Startposition des Seitenanführers.\n"
+"\n"
+"Dieses Werkzeug setzt die Standard Startpositionen des Seitenanführers, "
+"sowie dessen benannte Positionen. Beide Arten der Positionen sind in beiden  "
+"<ref>dst='..editor_mode_terrain' text='Geländeeditor'</ref> und <ref>dst='.."
+"editor_mode_scenario' text='Szenarieneditor'</ref> Modi zugelassen.  Die "
+"Positionsnamen sind in der Liste der Editorenpalette. Nachdem man auf die "
+"Karte klickt wird der Name auf das Feld gesetzt, wobei jeder Positonsname "
+"nur auf jeweils ein Feld gesetzt werden kann. Außerdem kann nur ein "
+"Positionsname gleichzeitig auf einem Feld sein. \n"
+"\n"
+"Um benannte Positionen zu erstellen, klicke ,,Hinzufügen\" am unteren Rand "
+"der Editorenpalette und gebe den Namen ein. Ein Positionsname muss mit einem "
+"Buchstaben beginnen und darf Zahlen wie auch Unterstriche enthalten.\n"
+"\n"
+"Mehr als neun Teams können pro Karte hinzugefügt werden, indem man auf ,,"
+"Hinzufügen\" drückt und eine Zahl wie beispielsweise ,,10\" eingibt. Die "
+"Benutzeroberfläche zeigt dann automatisch noch einen ,,Spieler 10\" an.\n"
+"\n"
+"Benannte Positionen können durch WML mit der Hilfe der "
+"<italic>text='location_id='</italic> des Standard Ortsfilters eingesehen "
+"werden. Auf Spielerstarts kann man zugreifen, indem man die  "
+"<italic>text='location_id=1'</italic>, <italic>text='location_id=2'</"
+"italic>, etc bei WML verwendet — benutze nur Nummern, ohne ,,Spieler\" vor "
+"die Zahl zu setzen.\n"
+"\n"
+"<bold>text='Tastenkombinationen'</bold>\n"
+"\n"
+"• Steuerung+Mausklick auf einem längst benannten Feld: Wähle die Positon zur "
+"Platzierung mit einem anschließenden Mausklick aus,  wie es in der "
+"Editorenpalette ausgewählt wurde."
 
 #. [topic]: id=editor_tool_label
 #: data/core/editor/help.cfg:129
@@ -321,11 +401,22 @@ msgid ""
 "This tool is only available in Scenario Mode; the decorations are "
 "implemented in the scenario using WML’s <italic>text='[label]'</italic> tag."
 msgstr ""
+"Setze Beschriftungen auf die Karte.\n"
+"\n"
+"• Links-Klick öffnet ein Dialogfenster, mit dem Beschriftung erstellt werden "
+"oder schon bestehende bearbeitet werden können.\n"
+"• Rechts-Klick löscht die Beschriftung.\n"
+"• Mit ,,Ziehen-und-Ablegen\" (bzw. Drag-and-drop) kann man mit der linken "
+"Maustaste Beschriftungen verschieben.\n"
+"\n"
+"Dieses Werkzeug ist nur im Szenarienmodus verfügbar, wobei die Dekorationen "
+"im Szenario durch Verwendung des WML <italic>text='[label]'</italic> tags "
+"eingesetzt werden können."
 
 #. [topic]: id=editor_tool_scenery
 #: data/core/editor/help.cfg:145
 msgid "Item Tool (Scenery Tool)"
-msgstr ""
+msgstr "Gegenstandwerkzeug (Szeneriewerkzeug)"
 
 #. [topic]: id=editor_tool_scenery
 #: data/core/editor/help.cfg:146
@@ -341,6 +432,18 @@ msgid ""
 "of the terrain and are implemented in the scenario using WML’s "
 "<italic>text='[item]'</italic> tag."
 msgstr ""
+"Das Gegenstandswerkzeug erlaubt die Platzierung von Dekoration wie "
+"Windmühlen, Bücherregalen und Monolithen. Mehrere Gegenständen können auf "
+"dem selben Feld platziert werden.\n"
+"\n"
+"<bold>text='Notiz:'</bold> Das Werkzeug unterstützt weder die Entfernung von "
+"Gegenständen , sobald sie gesetzt worden sind, noch das Rückgängigmachen der "
+"Platzierung. Fehler können nur behoben werden, indem man die generierte WML-"
+"Datei ändert.\n"
+"\n"
+"Dieses Werkzeug ist nur im Szenarienmodus verfügbar; die Dekorationen sind "
+"nicht Teil des Geländes und können im Szenario durch Benutzung des WML "
+"<italic>text='[item]'</italic> tags eingesetzt werden."
 
 #. [topic]: id=editor_tool_village
 #: data/core/editor/help.cfg:159
@@ -361,6 +464,17 @@ msgid ""
 "stored by adding WML <italic>text='[village]'</italic> tags to the "
 "appropriate <italic>text='[side]'</italic>."
 msgstr ""
+"Dieses Werkzeug weist das Besitzrecht der Dörfer beim Start des Szenarios "
+"zu. Die Dörfer müssen erst auf dem Gelände mit dem "
+"<ref>dst='editor_tool_paint' text='Zeichenwerkzeug'</ref> gesetzt werden.\n"
+"\n"
+"• Links-Klick weist das Dorf der momentan ausgewählten Fraktion hinzu.\n"
+"• Rechts-Klick enteignet das Dorf.\n"
+"\n"
+"Dieses Werkzeug ist nur im Szenarienmodus verfügbar; Informationen zu den "
+"Besitzrechten werden gespeichert, indem man den WML "
+"<italic>text='[village]'</italic> tag der zugehörigen Fraktion "
+"<italic>text='[side]'</italic> zuweist."
 
 #. [topic]: id=editor_tool_unit
 #: data/core/editor/help.cfg:174
@@ -381,6 +495,17 @@ msgid ""
 "<italic>text='[unit]'</italic> tags to the appropriate "
 "<italic>text='[side]'</italic>."
 msgstr ""
+"Setze Einheiten, die zu der ausgewählten Fraktion gehören.\n"
+"\n"
+"• Links-Klick setzt eine Einheit.\n"
+"• Ziehen und Ablegen (Drag and drop) mit der linken Maustaste bewegt eine "
+"gesetzte Einheit.\n"
+"• Verschiedene Funktionsweisen erscheinen auf dem Rechtsklick Menü, wenn auf "
+"einem Feld eine Einheit stationiert ist. \n"
+"\n"
+"Dieses Werkzeug ist nur im Szenarienmodus verfügbar; es fügt WML "
+"<italic>text='[unit]'</italic> tags zu der zugehörigen "
+"<italic>text='[side]'</italic>."
 
 #. [topic]: id=editor_named_area
 #: data/core/editor/help.cfg:190
@@ -413,11 +538,34 @@ msgid ""
 "name implies time, it is now more generic and can be used for other purposes "
 "without needing to change the time-of-day schedule in the area."
 msgstr ""
+"Dieses Werkzeug erstellt Reihen von Kacheln, die mit den Standard "
+"Ortsfiltern der WML Skripte (wird im Wiki näher erklärt) genutzt werden, "
+"indem man die id der Gegend in des Filters <italic>text='area='</italic> "
+"Attribute einsetzt. Zum Beispiel:\n"
+"\n"
+"• bei der Zuweisung einer örtlichen Zeitzone zur eine Reihe von Feldern\n"
+"• bei der Filterung der Reihen von Feldern, welche ein Ereignis bei der "
+"Betretung durch eine Einheit auslösen \n"
+"\n"
+"Um das Werkzeug zu nutzen:\n"
+"\n"
+"• wähle Felder aus, indem du das <ref>dst='editor_tool_select' "
+"text='Auswahlwerkzeug'</ref> benutzt\n"
+"• wähle im Gebietsmenü ,,neues Gebiet\" aus\n"
+"• danach wählst du im Gebietsmenü Sicherungsauswahl (Save Selection) zum "
+"Gebiet aus\n"
+"• wähle im Gebietsmenü ,,Benenne das ausgewählte Gebiet um\" und wähle einen "
+"Namen für das Gebiet aus\n"
+"\n"
+"Dieses Werkzeug ist nur im Szenarienmodus verfügbar; es fügt WML "
+"<italic>text='[time_area]'</italic> tags zum Szenario hinzu. Auch wenn der "
+"Name des tags Zeit bedeutet, kann der tag auch für andere Zwecke genutzt "
+"werden, ohne den Zeit-des-Tages-Zeitplan in der Gegend zu ändern."
 
 #. [topic]: id=editor_playlist
 #: data/core/editor/help.cfg:212
 msgid "Playlist Manager"
-msgstr "Wiedergabeliste-Verwalter"
+msgstr "Wiedergabelisten-Verwalter"
 
 #. [topic]: id=editor_playlist
 #: data/core/editor/help.cfg:213
@@ -428,6 +576,11 @@ msgid ""
 "This tool is only available in Scenario Mode; it adds WML "
 "<italic>text='[music]'</italic> tags to the scenario."
 msgstr ""
+"Zeigt eine Liste an Musikstücken an, die dem Editoren geläufig sind. Man "
+"kann sie mit den Umschaltfeldern an- und ausschalten.\n"
+"\n"
+"Das Werkzeug ist nur im Szenarienmodus verfügbar; es fügt WML "
+"<italic>text='[music]'</italic> tags zum Szenario hinzu."
 
 #. [topic]: id=..editor
 #: data/core/editor/help.cfg:223
@@ -469,6 +622,42 @@ msgid ""
 "it is one of the main blockers for the 1.16 release, however in 1.14 its "
 "quality is far below that of the game and the terrain mode."
 msgstr ""
+"Wesnoths Karten- und Szenarieneditor erlaubt  es, Karten zu erstellen, wie "
+"auch jede Wesnoth Szenarienkarte zu editieren. Auch stattet es einen mit "
+"einer begrenzten Auswahl an Funktionen aus, um ein grundlegendes Szenario zu "
+"erstellen. \n"
+"\n"
+"Der Editor kann von der <italic>text='Karteneditor'</italic> Option im "
+"Hauptmenü aufgerufen werden.\n"
+"\n"
+"<header>text='Editiermodi'</header>\n"
+"\n"
+"Der Editor liefert zwei Modi zur Anwendung: Den Geländemodus, sowie den "
+"Szenarienmodus.\n"
+"\n"
+"Der <ref>dst='..editor_mode_terrain' text='Geländemodus'</ref> ist einem "
+"einfachen Zeichenprogramm ziemlich ähnlich, mit Werkzeugen zu "
+"<ref>dst='editor_tool_paint' text='zeichnen'</ref>,  zu "
+"<ref>dst='editor_tool_fill' text='füllen'</ref>, "
+"<ref>dst='editor_tool_select' text='auszuwählen (und zu kopieren)'</ref>, "
+"und <ref>dst='editor_tool_paste' text='einzufügen'</ref>. Es beinhaltet auch "
+"das Werkzeug zu Erstellung der ’ <ref>dst='editor_tool_starting' "
+"text='Startpositionen</ref> der Anführer.\n"
+"\n"
+"Der <ref>dst='..editor_mode_scenario' text='Szenarienmodus'</ref>, der als "
+"Ergänzung zu den Werkzeugen, die im Geländemodus verfügbar sind, liefert "
+"Unterstützung zur Hinzufügung von <ref>dst='editor_tool_label' "
+"text='Beschriftungen'</ref>, <ref>dst='editor_tool_scenery' "
+"text='Szeneriegegenständen'</ref>, <ref>dst='editor_tool_unit' "
+"text='Einheiten'</ref> und als Zusatz zum Anführer, die Zuweisung des "
+"<ref>dst='editor_tool_village' text='Dorfsbesitzrechts'</ref> am Start des "
+"Szenarios. Außerdem gibt es einen <ref>dst='editor_playlist' "
+"text='Wiedergabelistenverwalter'</ref> für die Musik.\n"
+"\n"
+"<bold>text='Warnung: Der Szenarienmodus in der 1.14 ist noch fehlerhaft.'</"
+"bold> Das zu verbessern ist einer der Hauptgründe für eine Verzögerung der "
+"Veröffentlichung der 1.16, wenn auch in der 1.14 dessen Qualität leider weit "
+"unter der des Spiels und des Geländeeditoren liegt."
 
 #. [topic]: id=..editor
 #: data/core/editor/help.cfg:238
@@ -495,6 +684,28 @@ msgid ""
 "have their own terrains will need that add-on to tell the editor about their "
 "terrains."
 msgstr ""
+"<header>text='Was du hier alles *nicht* bekommst'</header>\n"
+"\n"
+"• Selbige Kartendarstellung wie die im-Spiel\n"
+"\n"
+"Die Karte wird nicht genau wie die im Editor aussehen, da diese stark von "
+"den Geländeregeln abhängig ist. Beispielsweise werden die Geländeregeln bei "
+"einer Gruppierung von mehreren Gebirgsfeldern versuchen Gebirgsketten, sowie "
+"große Grafiken, die mehrere Felder umfassen, zu bilden\n"
+"\n"
+"• Handhabung von Ereignissen und Skripting\n"
+"\n"
+"Der Editor ist kein Werkzeug, was dir dient die Handhabung der "
+"Szenarioereignisse zu skripten .\n"
+"\n"
+"• Unendliche Abwärtskompatibilität\n"
+"\n"
+"Der Editor ist fähig die meisten Karten alter Versionen Wesnoths zu laden, "
+"nun aber nicht alle. Karten ab Version 1.3.2 und später werden wie immer "
+"unterstützt, es sei denn, dass diese Gelände beinhalten, die vom Hauptspiel "
+"Wesnoth nicht unterstützt werden. Karten von Erweiterungen, die ihre eigenen "
+"Gelände haben, brauchen diese Erweiterungen, um dem Editor ihre Existenz "
+"verständlich zu machen."
 
 #. [topic]: id=..editor_mode_terrain
 #: data/core/editor/help.cfg:258
@@ -510,6 +721,17 @@ msgid ""
 "resulting map can be found in the “Custom Maps” game type of the multiplayer "
 "“Create Game” dialog."
 msgstr ""
+"Die Funktionsweise des Geländeeditors ähnelt dem eines einfachen "
+"Zeichenprogramms.\n"
+"\n"
+"Die rechten Seitenleiste beinhaltet von der Ober-, zur Unterseite eine "
+"Miniaturkarte, eine Werkzeugkiste (siehe die Seiten zu den verschiedenen "
+"Werkzeugen), Werkzeugoptionen, und die <ref>dst='editor_palette' "
+"text='Palette'</ref>.\n"
+"\n"
+"Nachdem man die Karte mit ,,Karte speichern unter\" im Standardordner "
+"gesichert hat, kann die fertige Karte im ,,Eigene Karten\" Spielmodus des "
+"Mehrspielers im ,,Spiel erstellen\" Dialog gefunden werden."
 
 #. [topic]: id=..editor_mode_scenario
 #: data/core/editor/help.cfg:270
@@ -519,6 +741,11 @@ msgid ""
 "additional WML to be written using a different tool; the scenario editor "
 "does not support scripting the scenario’s events."
 msgstr ""
+"Der Szenarieneditormodus fügt Unterstützung für einige kartenbetreffende WML "
+"Funktionalitäten wie die Flächen und Szeneriegegenstände hinzu. Eine "
+"Vielzahl an Szenarien wird jedoch weiterhin zusätzliches WML verlangen, was "
+"durch ein anderes Werkzeug geschrieben werde muss; Der Szenarieneditor "
+"unterstützt kein Skripten der Szenarienereignisse."
 
 #. [topic]: id=..editor_mode_scenario
 #: data/core/editor/help.cfg:272
@@ -530,6 +757,15 @@ msgid ""
 "• In scenario mode the “Areas” and “Side” menus are enabled.\n"
 "• In terrain-only mode the “Areas” and “Side” menus are grayed-out."
 msgstr ""
+"<header>text='Prüft, ob der Editor sich im Szenarienmodus befindet'</"
+"header>\n"
+"\n"
+"Es ist möglich zu prüfen, welchen Modus der Editor benutzt, indem man einen "
+"Blick auf die Menüleiste wirft.\n"
+"\n"
+"• Im Szenarienmodus sind die Menüs ,,Gebiet\" und Fraktion aktiviert.\n"
+"• Im alleinigen Geländemodus sind die Menüs ,,Gebiet\", sowie Fraktion "
+"ausgegraut."
 
 #. [topic]: id=..editor_mode_scenario
 #: data/core/editor/help.cfg:279
@@ -545,6 +781,18 @@ msgid ""
 "To load a map that was created in the scenario editor, use “Load Map” from "
 "the “File” menu, and select the .cfg file (not a .map file)."
 msgstr ""
+"<header>text='Eintritt in den Szenarienmodus'</header>\n"
+"\n"
+"Zum Starten einer Karte im Szenarienmodus wählt man ,,Neues Szenario\" im ,,"
+"Datei\"-Menü aus..\n"
+"\n"
+"Im Falle, dass du schon deine Karte im Geländemodus editiert hast, wähle ,,"
+"Szenario speichern unter\" im ,,Datei\"-Menü aus; Dies wechselt in den "
+"Szenarienmodus.\n"
+"\n"
+"Um auf eine Karte zuzugreifen, die im Szenarieneditor erstellt wurde, klicke "
+"auf ,,Karte laden\" aus dem ,,Datei\"-Menü und wähle die .cfg Datei aus "
+"(nicht die .map Datei)."
 
 #. [topic]: id=..editor_mode_scenario
 #: data/core/editor/help.cfg:287
@@ -564,14 +812,31 @@ msgid ""
 "editor may follow the link and open the corresponding .map in terrain-only "
 "mode, as if the .map file was chosen in the file selector."
 msgstr ""
+"<header>text='.map und .cfg Dateien'</header>\n"
+"\n"
+"Der Karteneditor sichert nur eine Datei, die entweder eine .map (für den "
+"Geländemodus) oder eine .cfg (für den Szenarienmodus) ist. Im Szenarienmodus "
+"ist die Geländekarte in der .cfg gesichert, wobei es keine eigene .map gibt. "
+"Wenn du erst im Geländemodus und dann in den Szenarienmodus wechselst, kann "
+"dann eine veraltete .map weiter vorhanden bleiben, die aber nicht vom "
+"Szenarieneditor aktualisiert wird.\n"
+"\n"
+"Eine .cfg zu laden kann verschiedene Ergebnisse je nach .cfg liefern. Bei ."
+"cfgs, die durch den Szenarieneditor erstellt wurden, werden solche in diesem "
+"geöffnet. Jedoch wird bei .cfgs, die eine eigene .map benutzen (.map-Dateien "
+"können ja nicht vom Szenarieneditor erstellt werden), der Editor dem Link "
+"bzw. der Verbindung folgen und die entsprechende .map im alleinigen "
+"Geländemodus öffnen, als sei die .map in der Dateiauswahl ausgewählt worden."
 
 #. [topic]: id=editor_separate_events_file
 #: data/core/editor/help.cfg:299
 msgid "Using a separate file for WML events"
-msgstr ""
+msgstr "Nutzen einer seperaten Datei für WML Ereignisse"
 
+# preprocessor könnte verständlicher übersetzt werden
 #. [topic]: id=editor_separate_events_file
 #: data/core/editor/help.cfg:300
+#, fuzzy
 msgid ""
 "When loading a .cfg file, the scenario editor understands files created by "
 "the scenario editor, but is likely to have difficulty with files that have "
@@ -622,6 +887,57 @@ msgid ""
 "  ◦ inside the [scenario] element, use “map_file=\"map_from_01.cfg\"” to "
 "load that file"
 msgstr ""
+"Beim Laden einer .cfg versteht der Szenarieneditor recht einfach vom "
+"selbigen erstellte Dateien, könnte aber bei manuell geschriebenen seine "
+"Probleme haben.\n"
+"\n"
+"Dateien, die vom Szenarieneditor erstellt wurden, lassen das Öffnen von "
+"[scenario] und Schließen von [/scenario] tags aus. Beim Erstellen einer "
+"Kampagne bzw. einer anderen Erweiterung müssen diese tags hinzugefügt "
+"werden; Mehr Informationen dazu finden sich in der Dokumentation der "
+"<ref>dst='editor_map_format' text='Kartendateiformatierung'</ref>.\n"
+"\n"
+"Eine Möglichkeit ist es, eine seperate WML Datei mit einer .cfg "
+"Dateinamenserweiterung zu erstellen, welche einen WML Präprozessor zum "
+"Einschluss von vom Editor gemachten Dateien verwendet. Diese seperate Datei "
+"enthält den [scenario] tag und eine manuell editierte WML wie auch "
+"Ereignisse. Mit dieser Möglichkeit kann die Struktur von den Dateien der "
+"Erweiterungen etwa so aussehen:\n"
+"\n"
+"<header>text='Für Wesnoth in der 1.14'</header>\n"
+"\n"
+"• _main.cfg:\n"
+"  ◦ benutze “{./scenarios}” um das Szenarienverzeichnis einzubinden\n"
+"• maps/map_from_01.cfg\n"
+"  ◦ die Datei, die durch den Szenarieneditor erstellt wurde\n"
+"• scenarios/01_Forest.cfg, statt den [scenario] tag zu öffnen, schreibe in "
+"diese vier Zeilen:\n"
+"  ◦ [scenario]\n"
+"  ◦     {~add-ons/NAME_OF_ADD_ON/maps/map_from_01.cfg}\n"
+"  ◦ [/scenario]\n"
+"  ◦ [+scenario]\n"
+"\n"
+"Die ersten drei dieser Zeilen setzen die durch die durch das Szenario "
+"generierte Datei in einen [scenario] tag. Das ,,+\" Symbol in der vierten "
+"Zeile bedeutet, dass zwei Szenarientags miteinander verbunden werden, wobei "
+"die Eigenschaften des zweiten die des ersten überschreiben.\n"
+"\n"
+"<header>text='Versionen ab der 1.16</header>\n"
+"\n"
+"Wenn deine Erweiterung nur für Version ab der 1.16 ist, gibt es Neuerungen, "
+"mit denen man die .cfgs über eine sogenannte ,,map_file\" lädt, um die sich "
+"wiederholende Nennung des Namens der Erweiterung zu vermeiden.\n"
+"\n"
+"• _main.cfg:\n"
+"  ◦ verwende “[binary_path]” um die Verzeichnisse der Erweiterung zum "
+"binären Pfad hinzuzufügen, damit “map_file” im “maps” Verzeichnis sucht.\n"
+"  ◦ benutze “{./scenarios}”um das “scenarios” Verzeichnis mit "
+"einzuschließen\n"
+"• maps/map_from_01.cfg\n"
+"  ◦ die vom Szenarieneditor erstellte Datei\n"
+"• scenarios/01_Forest.cfg\n"
+"  ◦benutze innerhalb des [scenario] Elements “map_file=\"map_from_01.cfg\"”, "
+"um die Datei zu laden"
 
 #. [topic]: id=editor_masks
 #: data/core/editor/help.cfg:338
@@ -640,10 +956,8 @@ msgstr ""
 #. [topic]: id=editor_time_schedule
 #. Time of Day and Schedule Editor, please use a short string as it will be used in the left-hand pane of the help browser
 #: data/core/editor/help.cfg:347
-#, fuzzy
-#| msgid "Time Schedule Editor"
 msgid "ToD and Schedule Editor"
-msgstr "Tagesablauf Editor"
+msgstr "ZdT und Ablaufeditor"
 
 #. [topic]: id=editor_time_schedule
 #: data/core/editor/help.cfg:348
@@ -657,15 +971,26 @@ msgid ""
 "In scenario mode, the button accesses an editor for individual schedules for "
 "<ref>dst='editor_named_area' text='time areas'</ref>."
 msgstr ""
+"Die Schaltfläche oben rechts auf dem Bildschirm greift auf die "
+"Tageszeitvorschau, sowie auf den Zeitplaneditor zu.\n"
+"\n"
+"Im Geländemodus wird die Karte während der verschiedenen Tageszeiten neu "
+"eingefärbt.\n"
+"\n"
+"Im Szenarienmodus greift die Schaltfläche auf den Editor für die "
+"verschiedenen Zeitpläne für <ref>dst='editor_named_area' text='Zeitzonen'</"
+"ref> zu."
 
 #. [topic]: id=editor_palette
 #: data/core/editor/help.cfg:359
 msgid "Editor Palette"
-msgstr "Editorpalette"
+msgstr "Editorenpalette"
 
+# Der letzte Abschnitt ist unverständlich
 #. [topic]: id=editor_palette
 #. the “Player 1”, “Player 2”, ... list is translated using "Player $side_num" in the wesnoth-editor textdomain
 #: data/core/editor/help.cfg:361
+#, fuzzy
 msgid ""
 "The editor palette contains the applicable items you may use with the "
 "currently selected tool. For example, the Paint tool will display a full "
@@ -679,21 +1004,34 @@ msgid ""
 "this is the leftmost of the four buttons at the top of the palette, and the "
 "graphic changes depending on what is selected. Examples:"
 msgstr ""
+"Die Editorenpalette enthält Gegenstände, die du mit dem gerade ausgewählten "
+"Werkzeug benutzen kannst. Beispielsweise zeigt das Zeichenwerkzeug eine "
+"Liste an verfügbarem Gelände an, wie auch das Einheitenwerkzeug eine Liste "
+"aller verfügbaren Einheiten enthält. Bei der Benutzung des "
+"Startpositionswerkzeugs wird eine Spielerliste angezeigt (,,Spieler 1\", ,,"
+"Spieler 2,\" etc.)\n"
+"\n"
+"<bold>text='Filter'</bold>\n"
+"\n"
+"Es besteht eine Filterfunktion, die es einem erlaubt nur einen Teil der "
+"verfügbaren Gegenstände anzuzeigen — das wäre der erste von links der vier "
+"Schaltflächen auf der Oberseite der Palette, die Grafik ändert sich in "
+"Abhängigkeit des momentan ausgewählten. Hier paar Beispiele:"
 
 #. [topic]: id=editor_palette
 #: data/core/editor/help.cfg:366
 msgid "Show all kinds of terrain"
-msgstr ""
+msgstr "Zeige alle Arten von Gelände"
 
 #. [topic]: id=editor_palette
 #: data/core/editor/help.cfg:367
 msgid "Show only water terrains"
-msgstr ""
+msgstr "Zeige nur Gewässer an"
 
 #. [topic]: id=editor_palette
 #: data/core/editor/help.cfg:368
 msgid "Show only villages"
-msgstr ""
+msgstr "Zeige nur Dörfer an"
 
 #. [topic]: id=editor_map_format
 #: data/core/editor/help.cfg:379
@@ -704,9 +1042,12 @@ msgstr "Wesnoth Kartenformat"
 #: data/core/editor/help.cfg:380
 msgid "Wesnoth stores its maps in human readable plain text files."
 msgstr ""
+"Wesnoth speichert seine Karten in für Menschen leserliche Text Dateien."
 
+# preprocessor könnte hier vielleicht wieder falsch übersetzt sein
 #. [topic]: id=editor_map_format
 #: data/core/editor/help.cfg:382
+#, fuzzy
 msgid ""
 "<header>text='Native'</header>\n"
 "\n"
@@ -735,9 +1076,38 @@ msgid ""
 "The <italic>text='map_file'</italic> method is preferred over using a "
 "preprocessor include."
 msgstr ""
+"<header>text='Native'</header>\n"
+"\n"
+"Eine Kartendatei besteht aus Reihen von mit Kommata getrennten "
+"Geländekodierungszeichenfolgen. Die einzigen Informationen, die nicht das "
+"Gelände betreffen, werden von der Karten Syntax gegeben und in einer Reihe "
+"von Positionen durch das <ref>dst='editor_tool_starting' "
+"text='Startpositionswerkzeug'</ref> erstellt. Die Dateien können mit einem "
+"einfachen Texteditor wie notepad bearbeitet werden.\n"
+"\n"
+"Diese Dateien können direkt für Spiele im Mehrspieler genutzt werden, wobei "
+"die Anzahl der Spieler durch die Anzahl der Startpositionen festgesetzt "
+"wird. Wenn man im Standardverzeichnis speichert, kann die Karte im “Eigene "
+"Karten” Spielmodus des Mehrspieler “Erstelle Spiel” Dialogs gefunden werden; "
+"Bevor eine kürzlich erstellte Karte angezeigt werden kann, sollte man die "
+"Anzeige mithilfe von F5 im Hauptmenü aktualisieren.\n"
+"\n"
+"Diese Dateien können in der .cfg eines Szenarios verwendet werden, wobei "
+"zusätzlichen Informationen der WML des Szenarios wie Fraktionen, eigene "
+"Ereignisse und komplexe Nebeninstallationen zur Verfügung gestellt werden:\n"
+"\n"
+"• map_file=maps/01_First_Map.map <italic>text='— unterstützt seit Wesnoth "
+"1.14'</italic>\n"
+"• map_data=\"{maps/01_First_Map.map}\" <italic>text='— eine Einschließung "
+"des WML Präprozessors'</italic>\n"
+"\n"
+"Die <italic>text='map_file'</italic> Methode wird einer Einschließung eines "
+"Präprozessors bevorzugt."
 
+# preprocessor könnte falsch übersetzt sein
 #. [topic]: id=editor_map_format
 #: data/core/editor/help.cfg:395
+#, fuzzy
 msgid ""
 "<header>text='Embedded'</header>\n"
 "\n"
@@ -755,6 +1125,22 @@ msgid ""
 "this is rarely-used code. Maps opened this way are marked (E) in the Window "
 "menu."
 msgstr ""
+"<header>text='Einbettung'</header>\n"
+"\n"
+"Die Karteninformationen werden als Teil der .cfg eines Szenarios als "
+"<italic>text='map_data'</italic> Eigenschaften gesichert beziehungsweise "
+"dort wo der Präprozessor etwas mit der Präprozessor-include-Methode "
+"einbeziehen würde.\n"
+"\n"
+"<header>text='Benutzen des eingebetteten Formats im Geländemodus'</header>\n"
+"\n"
+"Bei Bearbeitung der Karte ohne die Verwendung der Unterstützung des "
+"Szenarienmodus ist es wichtig die Daten einer nativen Kartendatei "
+"anzuhängen, bevor man diese im Editor öffnet. Diese Umformung wird empfohlen "
+"— der Editor unterstützt die Bearbeitung des Inhalts von map_data während "
+"der Rest der Datei außen vor gelassen wird, was aber selten genutzter Kode "
+"ist. Karten, die so geöffnet wurden, werden durch ein ,,E\" im Fenstermenü "
+"markiert."
 
 #. [topic]: id=editor_map_format
 #: data/core/editor/help.cfg:403
@@ -768,9 +1154,20 @@ msgid ""
 "<ref>dst='editor_separate_events_file' text='using a separate .cfg file'</"
 "ref> for the hand-edited parts."
 msgstr ""
+"<header>text='Dateien erstellt durch den Szenarieneditor</header>\n"
+"\n"
+"Im Szenarienmodus sichert der Editor die Informationen als Dateien im .cfg-"
+"Format, die auch die Karteninformationen enthalten. Beim Laden einer .cfg "
+"Datei versteht der Szenarieneditor Dateien, die vom selbigen erstellt wurden "
+"von alleine. Jedoch könnte es Schwierigkeiten bei manuell/ von Hand "
+"erstellten Dateien geben;  Komplikationen können vorgebeugt werden, indem "
+"man <ref>dst='editor_separate_events_file' text='eine seperate .cfg Datei "
+"benutzt'</ref> , um selbsterstellte Teile zu verwenden."
 
+# preprocessor und engine könnten hier anders übersetzt werden
 #. [topic]: id=editor_map_format
 #: data/core/editor/help.cfg:407
+#, fuzzy
 msgid ""
 "<header>text='Which scenario files use the [scenario] tag'</header>\n"
 "\n"
@@ -790,6 +1187,25 @@ msgid ""
 "needs the [scenario]...[/scenario] (or [multiplayer]...[/multiplayer]) tags "
 "to know which WML is part of each scenario."
 msgstr ""
+"<header>text='Welche Szenario Dateien verwenden den [scenario] tag'</"
+"header>\n"
+"\n"
+"Dateien, die durch den Szenarieneditor erstellt wurden, enthalten die "
+"Inhalte eines WML Szenarioelements jedoch nicht das Öffnen[scenario] und "
+"Schließen von[/scenario] tags. Aus jeder .cfg im Verzeichnis editor/scenario "
+"lädt das Spiel automatisch das Szenario, um es in die “Eigene Szenarien” "
+"Liste hinzuzufügen (wenn eine Datei nicht geladen kann, wird sie nicht "
+"hinzugefügt). In diesem Ordner ist jede Datei etwas eigenes - Dateien, die "
+"das Spiel nicht als ein Szenario klassifiziert, werden nicht berücksichtigt, "
+"Dateien dürfen [scenario][/scenario] tags nicht enthalten.\n"
+"\n"
+"Das Gegenteil trifft zu, wenn das Szenario Teil einer Kampagne oder einer "
+"anderen Erweiterung ist. Jedes Szenario hat seine eigene .cfg, wobei es aber "
+"obsolet ist - jede WLM in einer Erweiterung wird durch den Präprozessoren "
+"verbunden, wobei es unwichtig ist, ob die Erweiterung als eigene Datei "
+"geschrieben wurde. Die Engine braucht [scenario]...[/scenario] (oder "
+"[multiplayer]...[/multiplayer]) tags, um zu wissen, welche WML Teil eines "
+"jeden Szenarios ist."
 
 #. [time]: id=deep_underground
 #. [editor_times]: id=deep_underground
@@ -1348,7 +1764,7 @@ msgstr "Einführung"
 #. [topic]: id=..gameplay
 #: data/core/help.cfg:23 data/core/help.cfg:167
 msgid "Gameplay"
-msgstr "Spielregeln"
+msgstr "Spielgeschehen"
 
 #. [section]: id=traits_section
 #. [topic]: id=..traits_section
@@ -4356,8 +4772,8 @@ msgid ""
 "The unit will heal itself 8 HP per turn. If it is poisoned, it will remove "
 "the poison instead of healing."
 msgstr ""
-"Diese Einheit hat so stark Selbstheilungskräfte, dass sie 8 LP zu Beginn des "
-"Zuges zurückgewinnt. Sollte sie vergiftet sein, wird statt Heilung die "
+"Diese Einheit hat so starke Selbstheilungskräfte, dass sie 8 LP zu Beginn "
+"des Zuges zurückgewinnt. Sollte sie vergiftet sein, wird statt Heilung die "
 "Wirkung des Giftes gestoppt."
 
 #. [resistance]: id=steadfast
