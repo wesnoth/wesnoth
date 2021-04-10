@@ -21,8 +21,8 @@
 #include "desktop/open.hpp"
 #include "desktop/version.hpp"
 #include "filesystem.hpp"
+#include "formula/string_utils.hpp"
 #include "game_config.hpp"
-#include "gettext.hpp"
 #include "gui/auxiliary/find_widget.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/styled_widget.hpp"
@@ -35,9 +35,6 @@
 #ifdef _WIN32
 #include "log_windows.hpp"
 #endif
-#include "formula/string_utils.hpp"
-
-#include "gettext.hpp"
 
 #include <functional>
 
