@@ -518,11 +518,11 @@ bool battle_context::better_combat(const combatant& us_a,
 		return true;
 	}
 
-	// Add poison to calculations
-	double poison_a_us = (us_a.poisoned) * game_config::poison_amount;
-	double poison_a_them = (them_a.poisoned) * game_config::poison_amount;
-	double poison_b_us = (us_b.poisoned) * game_config::poison_amount;
-	double poison_b_them = (them_b.poisoned) * game_config::poison_amount;
+	// Add poison to calculations, but poison bonus should only be applied if the unit survives
+	double poison_a_us = us_a.poisoned > 0 ? (us_a.poisoned - us_a.hp_dist[0]) * game_config::poison_amount : 0;
+	double poison_a_them = them_a.poisoned > 0 ? (them_a.poisoned - them_a.hp_dist[0]) * game_config::poison_amount : 0;
+	double poison_b_us = us_b.poisoned > 0 ? (us_b.poisoned - us_b.hp_dist[0]) * game_config::poison_amount : 0;
+	double poison_b_them = them_b.poisoned > 0 ? (them_b.poisoned - them_b.hp_dist[0]) * game_config::poison_amount : 0;
 
 	// Compare: damage to them - damage to us (average_hp replaces -damage)
 	a = (us_a.average_hp() - poison_a_us) * harm_weight - (them_a.average_hp() - poison_a_them);
