@@ -101,7 +101,7 @@ namespace builtin_conditions {
 			if (values.has_attribute(name)) { \
 				std::string attr_str = values[name].str(); \
 				std::string str_value = value.str(); \
-				if (!(test)) return false; \
+				return (test); \
 			} \
 		} while (0)
 
@@ -110,7 +110,7 @@ namespace builtin_conditions {
 			if (values.has_attribute(name)) { \
 				double attr_num = values[name].to_double(); \
 				double num_value = value.to_double(); \
-				if (!(test)) return false; \
+				return (test); \
 			} \
 		} while (0)
 
@@ -119,7 +119,7 @@ namespace builtin_conditions {
 			if (values.has_attribute(name)) { \
 				bool attr_bool = values[name].to_bool(); \
 				bool bool_value = value.to_bool(); \
-				if (!(test)) return false; \
+				return (test); \
 			} \
 		} while (0)
 
@@ -139,7 +139,7 @@ namespace builtin_conditions {
 #undef TEST_NUM_ATTR
 #undef TEST_BOL_ATTR
 
-		lg::wml_error() << "[variable] found with no comparison attribute\n";
+		lg::wml_error() << "[variable] name='" << name << "' found with no comparison attribute\n";
 		return true;
 	}
 }
