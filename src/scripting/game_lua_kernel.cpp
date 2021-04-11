@@ -3746,7 +3746,7 @@ int game_lua_kernel::intf_add_event(lua_State *L)
 			man.add_event_handler_from_wml(cfg.get_parsed_config(), *this);
 		}
 	} else if(lua_isstring(L, 1)) {
-		bool is_menu_item = luaW_toboolean(L, 3), repeat = false;
+		bool is_menu_item = luaW_toboolean(L, 3), repeat = true;
 		std::string name = read_event_name(L, 1), id;
 		if(is_menu_item) {
 			id = name;
