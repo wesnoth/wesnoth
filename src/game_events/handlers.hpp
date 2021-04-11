@@ -41,6 +41,8 @@ struct event_filter {
 	virtual bool operator()(const queued_event& event_info) const = 0;
 	/** Serializes the filter into a config, if possible. */
 	virtual void serialize(config& cfg) const;
+	/** Returns true if it is possible to serialize the filter into a config. */
+	virtual bool can_serialize() const;
 	virtual ~event_filter() = default;
 	event_filter() = default;
 private:
@@ -120,7 +122,7 @@ public:
 	void add_filter(std::unique_ptr<event_filter>&& filter);
 
 	void register_wml_event(game_lua_kernel& lk);
-	void set_event_ref(int idx);
+	void set_event_ref(int idx, bool has_preloaded);
 
 private:
 	bool first_time_only_;
@@ -131,6 +133,18 @@ private:
 	 * This allows a warning to be issued in cases that will break saved games.
 	 */
 	bool is_lua_;
+	/**
+	 * Tracks whether the event was registered before or after the Lua preload event fired.
+	 * This allows a warning to be issued in cases that will break saved games.
+	 *
+	 * Rationale: Events where the filter or action is a Lua function cannot be serialized.
+	 * Therefore, if a saved game relies on it being serialized, it will fail.
+	 * Events registered during or before preload do not need to be serialized, because when
+	 * a saved game is loaded, the preload event re-triggers and re-registers the event.
+	 * This is actually a common use-case for the Lua events API.
+	 * So, this flag allows avoiding false positives in the warning message.
+	 */
+	bool has_preloaded_;
 	int event_ref_;
 	config args_;
 	std::vector<std::shared_ptr<event_filter>> filters_;

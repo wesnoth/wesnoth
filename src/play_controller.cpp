@@ -349,6 +349,7 @@ void play_controller::fire_preload()
 	// Run initialization scripts, even if loading from a snapshot.
 	gamestate().gamedata_.get_variable("turn_number") = static_cast<int>(turn());
 	pump().fire("preload");
+	gamestate().lua_kernel_->preload_finished();
 }
 
 void play_controller::fire_prestart()
