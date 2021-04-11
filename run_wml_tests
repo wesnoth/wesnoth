@@ -192,14 +192,10 @@ class WesnothRunner:
             print(res.stdout.decode('utf-8'))
             if self.verbose > 1:
                 print("Result:", res.returncode)
-        returned_result = UnitTestResult(res.returncode)
-        num_passed = 0
+        num_passed = 1
         if test_list[0].status == UnitTestResult.PASS:
             num_passed = res.stdout.count(b"PASS TEST")
             test_summary.pass_test(num_passed)
-        elif returned_result == expected_result:
-            num_passed = 1
-            test_summary.pass_test()
         if res.returncode < 0:
             print("Wesnoth exited because of signal", -res.returncode)
             if options.backtrace:
@@ -210,6 +206,7 @@ class WesnothRunner:
             test_summary.crash_test()
             test_summary.skip_test(len(test_list) - num_passed - 1)
             raise UnexpectedTestStatusException()
+        returned_result = UnitTestResult(res.returncode)
         if returned_result != expected_result:
             if self.verbose == 0:
                 for line in res.stdout.decode('utf-8').splitlines():
@@ -220,6 +217,8 @@ class WesnothRunner:
             test_summary.fail_test()
             test_summary.skip_test(len(test_list) - num_passed - 1)
             raise UnexpectedTestStatusException()
+        elif test_list[0].status != UnitTestResult.PASS:
+            test_summary.pass_test()
 
 def test_batcher(test_list):
     """A generator function that collects tests into batches which a single
