@@ -96,6 +96,10 @@ namespace builtin_conditions {
 		const std::string name = values["name"];
 		config::attribute_value value = resources::gamedata->get_variable_const(name);
 
+		if(values.get_config().attribute_count() != 2) {
+			lg::wml_error() << "[variable] name='" << name << "' found with multiple comparison attributes\n";
+		}
+
 #define TEST_STR_ATTR(name, test) \
 		do { \
 			if (values.has_attribute(name)) { \
