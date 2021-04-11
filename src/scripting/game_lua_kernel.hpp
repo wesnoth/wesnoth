@@ -59,6 +59,7 @@ class game_lua_kernel : public lua_kernel_base
 
 	config level_lua_;
 	int EVENT_TABLE;
+	bool has_preloaded_ = false;
 
 	std::stack<game_events::queued_event const * > queued_events_;
 
@@ -262,4 +263,5 @@ public:
 
 	void mouse_over_hex_callback(const map_location& loc);
 	void select_hex_callback(const map_location& loc);
+	void preload_finished() {has_preloaded_ = true;}
 };
