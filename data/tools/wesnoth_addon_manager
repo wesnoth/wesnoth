@@ -123,7 +123,8 @@ if __name__ == "__main__":
                 pcounter = cs.counter
 
         if args.raw_download:
-            file(name, "w").write(mythread.data)
+            with open(name, "wb") as f:
+                f.write(mythread.data)
         else:
             decoded = cs.decode(mythread.data)
             dirname = os.path.join(cdir, name)
@@ -278,7 +279,8 @@ if __name__ == "__main__":
 
     elif args.unpack:
         cs = CampaignClient(address)
-        data = file(args.unpack).read()
+        with open(args.unpack, "rb") as f:
+            data = f.read()
         decoded = cs.decode(data)
         print("Unpacking %s..." % args.unpack)
         cs.unpackdir(decoded, args.campaigns_dir,  verbose=True)
