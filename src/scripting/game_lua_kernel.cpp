@@ -28,7 +28,7 @@
 #include "actions/attack.hpp"           // for battle_context_unit_stats, etc
 #include "actions/advancement.hpp"           // for advance_unit_at, etc
 #include "actions/move.hpp"		// for clear_shroud
-#include "actions/vision.hpp"		// for clear_shroud
+#include "actions/vision.hpp"		// for clear_shroud and create_jamming_map
 #include "ai/composite/ai.hpp"          // for ai_composite
 #include "ai/composite/component.hpp"   // for component, etc
 #include "ai/composite/contexts.hpp"    // for ai_context
@@ -1642,6 +1642,62 @@ int game_lua_kernel::intf_find_reach(lua_State *L)
 		lua_rawseti(L, -2, i + 1);
 	}
 
+	return 1;
+}
+
+/**
+ * Finds all the locations for which a given unit would remove the fog (if there was fog on the map).
+ *
+ * - Arg 1: source location OR unit.
+ * - Ret 1: array of triples (coordinates + remaining vision points).
+ */
+int game_lua_kernel::intf_find_vision_range(lua_State *L)
+{
+	int arg = 1;
+	const unit* u = nullptr;
+
+	if (lua_isuserdata(L, arg))
+	{
+		u = &luaW_checkunit(L, arg);
+		++arg;
+	}
+	else
+	{
+		map_location src = luaW_checklocation(L, arg);
+		unit_map::const_unit_iterator ui = units().find(src);
+		if (!ui.valid())
+			return luaL_argerror(L, 1, "unit not found");
+		u = ui.get_shared_ptr().get();
+		++arg;
+	}
+
+	if(!u)
+	{
+		return luaL_error(L, "wesnoth.find_vision_range: requires a valid unit");
+	}
+
+	std::map<map_location, int> jamming_map;
+	actions::create_jamming_map(jamming_map, resources::gameboard->get_team(u->side()));
+	pathfind::vision_path res(*u, u->get_location(), jamming_map);
+
+	auto vision_set = res.edges;
+	for(auto d : res.destinations)
+	{
+		vision_set.insert(d.curr);
+	}
+
+	lua_createtable(L, vision_set.size(), 0);
+	int i = 1;
+	for (const map_location& loc : vision_set)
+	{
+		lua_createtable(L, 2, 0);
+		lua_pushinteger(L, loc.wml_x());
+		lua_rawseti(L, -2, 1);
+		lua_pushinteger(L, loc.wml_y());
+		lua_rawseti(L, -2, 2);
+		lua_rawseti(L, -2, i);
+		++i;
+	}
 	return 1;
 }
 
@@ -4032,6 +4088,7 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 		{ "find_path",                 &dispatch<&game_lua_kernel::intf_find_path                  >        },
 		{ "find_reach",                &dispatch<&game_lua_kernel::intf_find_reach                 >        },
 		{ "find_vacant_tile",          &dispatch<&game_lua_kernel::intf_find_vacant_tile           >        },
+		{ "find_vision_range",         &dispatch<&game_lua_kernel::intf_find_vision_range          >        },
 		{ "fire_event",                &dispatch2<&game_lua_kernel::intf_fire_event, false         >        },
 		{ "fire_event_by_id",          &dispatch2<&game_lua_kernel::intf_fire_event, true          >        },
 		{ "get_all_vars",              &dispatch<&game_lua_kernel::intf_get_all_vars               >        },

@@ -36,6 +36,15 @@ namespace actions {
 	class  move_unit_spectator;
 
 /**
+ * Helper function that creates the map of enemy anti-vision that's needed when
+ * creating a pathfinding::vision_path.
+ *
+ * Sets @a jamming to the (newly calculated) "jamming" map that reduces @a view_team's vision.
+ */
+void create_jamming_map(std::map<map_location, int> & jamming,
+	const team & view_team);
+
+/**
  * Class that stores the part of a unit's data that is needed for fog clearing.
  * (Used by the undo stack as that cannot rely on a unit sticking around, and
  * we do not really need to copy the entire unit.)

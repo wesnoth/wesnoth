@@ -45,10 +45,7 @@ static lg::log_domain log_engine("engine");
 static const std::string sighted_str("sighted");
 
 
-/**
- * Sets @a jamming to the (newly calculated) "jamming" map for @a view_team.
- */
-static void create_jamming_map(std::map<map_location, int> & jamming,
+void actions::create_jamming_map(std::map<map_location, int> & jamming,
                                const team & view_team)
 {
 	// Reset the map.
@@ -82,7 +79,7 @@ static bool can_see(const unit & viewer, const map_location & loc,
 	// Make sure we have a "jamming" map.
 	std::map<map_location, int> local_jamming;
 	if ( jamming == nullptr ) {
-		create_jamming_map(local_jamming, resources::gameboard->get_team(viewer.side()));
+		actions::create_jamming_map(local_jamming, resources::gameboard->get_team(viewer.side()));
 		jamming = &local_jamming;
 	}
 
