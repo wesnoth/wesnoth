@@ -740,7 +740,7 @@ function wml_actions.remove_event(cfg)
 	local id = cfg.id or wml.error("[remove_event] missing required id= key")
 
 	for _,w in ipairs(id:split()) do
-		wesnoth.remove_event_handler(w)
+		wesnoth.game_events.remove(w)
 	end
 end
 
