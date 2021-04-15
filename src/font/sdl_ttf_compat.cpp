@@ -46,7 +46,8 @@ surface pango_render_text(const std::string& text, int size, const color_t& colo
 	auto& ptext = private_renderer();
 
 	ptext.set_text(text, use_markup);
-	ptext.set_font_size(size)
+	ptext.set_family_class(font::FONT_SANS_SERIF)
+		 .set_font_size(size)
 		 .set_font_style(style)
 		 .set_maximum_height(-1, false)
 		 .set_foreground_color(color)
@@ -61,7 +62,8 @@ std::pair<int, int> pango_line_size(const std::string& line, int font_size, font
 	auto& ptext = private_renderer();
 
 	ptext.set_text(line, false);
-	ptext.set_font_size(font_size)
+	ptext.set_family_class(font::FONT_SANS_SERIF)
+		 .set_font_size(font_size)
 		 .set_font_style(font_style)
 		 .set_maximum_height(-1, false)
 		 .set_maximum_width(-1)
@@ -113,7 +115,8 @@ std::string pango_word_wrap(const std::string& unwrapped_text, int font_size, in
 	auto& ptext = private_renderer();
 
 	ptext.set_text(unwrapped_text, false);
-	ptext.set_font_size(font_size)
+	ptext.set_family_class(font::FONT_SANS_SERIF)
+		 .set_font_size(font_size)
 		 .set_font_style(font::pango_text::STYLE_NORMAL)
 		 .set_maximum_height(max_height, true)
 		 .set_maximum_width(max_width)
@@ -145,7 +148,8 @@ SDL_Rect pango_draw_text(surface& dst, const SDL_Rect& area, int size, const col
 	auto& ptext = private_renderer();
 
 	ptext.set_text(text, false);
-	ptext.set_font_size(size)
+	ptext.set_family_class(font::FONT_SANS_SERIF)
+		 .set_font_size(size)
 		 .set_font_style(style)
 		 .set_maximum_width(-1)
 		 .set_maximum_height(area.h, true)
