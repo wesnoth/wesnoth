@@ -79,6 +79,36 @@ if rawget(_G, 'unit_test') ~= nil then
 			unit_test.fail()
 		end
 	end
+	
+	function unit_test.assert_throws(a, b, c)
+		local fcn, expect_err, message
+		if type(a) == 'function' then
+			fcn, message = a, b
+		else
+			fcn, expect_err, message = a, b, c
+		end
+		local result, err = pcall(fcn)
+		if result ~= false then
+			if expect_err ~= nil then
+				if err ~= expect_err then
+					std_print('Assertion failed (should be an error: ' .. unit_test.tostring(expect_err) .. '):', message)
+					unit_test.fail()
+				end
+			else
+				std_print('Assertion failed (should be an error):', message)
+				unit_test.fail()
+			end
+		end
+	end
+	
+	function unit_test.assert_nothrow(fcn, message)
+		local result, err = pcall(fcn)
+		if result ~= true then
+			std_print('Assertion failed (should not be an error):', message)
+			std_print('  The following error was raised:', err)
+			unit_test.fail()
+		end
+	end
 
 	function unit_test.assert_equal(a, b, message)
 		if a ~= b then
