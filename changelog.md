@@ -28,7 +28,7 @@
    * Dune Warmaster gold cost changed from 56 to 57, hp changed from 57 to 59, alignment changed from liminal to lawful.
    * Naga Ophidian gold cost changed from 24 to 22, melee damage changed from 7 to 6, ranged damage changed from 10 to 12.
    * Naga Ringcaster gold cost changed from 24 to 22.
-   * Naga Sicarus gold cost changed from 48 to 46, melee damage changed from 10 to 11, ranged damage changed from 12 to 13.
+   * Naga Sicarus gold cost changed from 48 to 46, melee damage changed from 10 to 9, ranged damage changed from 12 to 13.
    * Naga Zephyr gold cost changed from 50 to 46.
    * Wose Sapling gold cost changed from 10 to 11.
    * Wose Shaman gold cost changed from 40 to 27, movement points changed from 3 to 4, melee damage changed from 9 to 12, ranged damage changed from 10 to 11, hp changed from 50 to 56.
