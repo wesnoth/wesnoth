@@ -213,7 +213,7 @@ class WesnothRunner:
                     if expected_result == UnitTestResult.PASS and line.startswith("PASS TEST"):
                         continue
                     print(line)
-            print("Failure, Wesnoth returned", returned_result, "but we expected", expected_result)
+            print("Failure, Wesnoth returned", returned_result, "for", test_list[num_passed - 1].name, "but we expected", expected_result)
             test_summary.fail_test()
             test_summary.skip_test(len(test_list) - num_passed - 1)
             raise UnexpectedTestStatusException()
