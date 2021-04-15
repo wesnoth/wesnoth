@@ -14,6 +14,25 @@
  ### Units
    * New rock scorpion monster and scorpion zombie variation
    * Rename tusker/gorer references to boars and piglets, to avoid stepping on existing UMC
+   * Dune Blademaster gold cost changed from 52 to 57.
+   * Dune Captain alignment changed from liminal to lawful.
+   * Dune Cataphract gold cost changed from 61 to 62.
+   * Dune Firetrooper gold cost changed from 50 to 41.
+   * Dune Harrier gold cost changed from 46 to 47.
+   * Dune Luminary gold cost changed from 53 to 38.
+   * Dune Maruder gold cost changed from 52 to 60.
+   * Dune Sky Hunter gold cost changed from 47 to 51.
+   * Dune Spearmaster gold cost changed from 51 to 57.
+   * Dune Wayfarer gold cost changed from 52 to 55.
+   * Dune Windbolt gold cost changed from 50 to 49.
+   * Dune Warmaster gold cost changed from 56 to 57, hp changed from 57 to 59, alignment changed from liminal to lawful.
+   * Naga Ophidian gold cost changed from 24 to 22, melee damage changed from 7 to 6, ranged damage changed from 10 to 12.
+   * Naga Ringcaster gold cost changed from 24 to 22.
+   * Naga Sicarus gold cost changed from 48 to 46, melee damage changed from 10 to 11, ranged damage changed from 12 to 13.
+   * Naga Zephyr gold cost changed from 50 to 46.
+   * Wose Sapling gold cost changed from 10 to 11.
+   * Wose Shaman gold cost changed from 40 to 27, movement points changed from 3 to 4, melee damage changed from 9 to 12, ranged damage changed from 10 to 11, hp changed from 50 to 56.
+   * Horned Scarab gold cost changed from 12 to 11.
  ### User interface
    * Added logs folder path to the Game Version dialog on Windows.
    * Added built-in Lua engine version to the Game Version dialog and `--report`.
