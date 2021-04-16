@@ -55,7 +55,7 @@ class TestResultAccumulator:
     def crash_test(self, n = 1):
         self.crashed = self.failed + n
     
-    def __bool_(self):
+    def __bool__(self):
         return self.passed + self.skipped == self.total
 
 class TestListParser:
