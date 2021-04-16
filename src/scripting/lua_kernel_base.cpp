@@ -1021,7 +1021,7 @@ bool lua_kernel_base::protected_call(lua_State * L, int nArgs, int nRets, error_
 bool lua_kernel_base::load_string(char const * prog, const std::string& name, error_handler e_h)
 {
 	// pass 't' to prevent loading bytecode which is unsafe and can be used to escape the sandbox.
-	int errcode = luaL_loadbufferx(mState, prog, strlen(prog), name.empty() ? name.c_str() : prog, "t");
+	int errcode = luaL_loadbufferx(mState, prog, strlen(prog), name.empty() ? prog : name.c_str(), "t");
 	if (errcode != LUA_OK) {
 		char const * msg = lua_tostring(mState, -1);
 		std::string message = msg ? msg : "null string";
