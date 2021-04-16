@@ -1,19 +1,51 @@
 ## Version 1.15.11+dev
  ### Add-ons client
-   * When uploading or deleting an add-on, the game will now prompt for the required password if it is not present in the _server.pbl file.
+   * When uploading or deleting an add-on, the game will now prompt for the required password if it is not present in the `_server.pbl` file.
  ### Add-ons server
+ ### AI
+   * Improved AI decisions about whether an attack with poison is better than one with higher direct damage.
+   * Added options to the Patrol Micro AI on whether to notice invisible units, and on attack range.
+   * Added a `[filter]` option to the Swarm Micro AI.
+   * Replaced several uses of Formula AIs with Micro AIs, and removed Formula AIs from demo scenarios.
+   * Removed experimental MP dev Formula AIs.
+   * Fixed a crash in the Lurker Formula AI.
  ### Campaigns
+   * Descent into Darkness
+     * Buffed Malin.
    * Eastern Invasion
-     * Dialogue changes in S07b
+     * Dialogue changes in S07b.
+   * Legend of Wesmere
+     * S16: Replaced the Patrol Formula AI with the Patrol Micro AI.
+   * Secrets of the Ancients
+     * Reimplemented the zombie recruitment UI.
+   * The Rise of Wesnoth
+     * Balance changes (issue #5603).
+   * The South Guard
+     * Fix the new ally's upkeep when choosing the bandit branch.
+   * Tutorial
+     * Reimplemented the character-choice UI.
+   * Under the Burning Suns
+     * In S01, fixed one of the mystics spawning in the lake.
  ### Editor
+ ### Lua API
+   * Fix issues with the wesnoth.map module.
  ### Multiplayer
+   * Dark Forecast
+     * Difficulty rebalanced so that two-player-mode is hard rather than impossible (PR #5673).
+     * The weather now changes on side 1's turn instead of side 3's turn (issue #5653).
+   * World Conquest
+     * Many bugs have been fixed, however WC is still hidden while more bugs are fixed.
+     * Converted GUI2 dialogs to WML.
+     * Fixed an error in the destruction mechanic.
  ### Packaging
+   * Removed the obsolete FindSDL2_ttf cmake module.
  ### Terrain
+   * Improved transition between human castle ruins and sunken ruins (issue #5611).
  ### Translations
-   * Updated translations: Chinese (Traditional), Czech, Italian
+   * Updated translations: Chinese (Traditional), Czech, Italian.
  ### Units
-   * New rock scorpion monster and scorpion zombie variation
-   * Rename tusker/gorer references to boars and piglets, to avoid stepping on existing UMC
+   * New rock scorpion monster and scorpion zombie variation.
+   * Rename tusker/gorer references to boars and piglets, to avoid stepping on existing UMC.
    * Dune Blademaster gold cost changed from 52 to 57.
    * Dune Captain alignment changed from liminal to lawful.
    * Dune Cataphract gold cost changed from 61 to 62.
@@ -33,7 +65,11 @@
    * Wose Sapling gold cost changed from 10 to 11.
    * Wose Shaman gold cost changed from 40 to 27, movement points changed from 3 to 4, melee damage changed from 9 to 12, ranged damage changed from 10 to 11, hp changed from 50 to 56.
    * Horned Scarab gold cost changed from 12 to 11.
+   * Fixed the Walking Corpses of some river creatures having poor movement in deep water (issue #5701).
+   * New descriptions for the Fire Ant, Roc and Sand Scuttler.
+   * Fixed the Giant Scorpion having an empty variation name.
  ### User interface
+   * Improved the attack dialog's recommendation about whether an attack with poison is better than one with higher direct damage.
    * Added logs folder path to the Game Version dialog on Windows.
    * Added built-in Lua engine version to the Game Version dialog and `--report`.
    * Made Accelerated Speed toggle announcement not stackable over itself or other announcements.
@@ -41,11 +77,21 @@
    * Minor adjustment to the placement of numerals on the debug clock.
    * Players now receive an error message when attempting to save games using illegal file names (issue #5679).
    * Fixed text labels containing only a single link becoming empty (issue #5625).
+   * Separated floating labels' duration from the speed of their eventual fade-out.
+   * Fixed a bug where setting a font family in one text area could affect other text areas (issue #5712).
  ### WML Engine
+   * In development builds, deprecation warnings are now shown in-game by default.
+   * Conditional WML's `[variable]` tag now expects exactly one comparison, and will warn if given none or multiple tests.
+   * `[store_reachable_locations]range=vision` now calculates vision, instead of using movement costs and max movement points (issue #4179).
  ### Miscellaneous and Bug Fixes
-   * Fixed units with max movement set to zero being given one max movement point by `[unstore_unit]` or when loading a saved game
-   * Fixed an intermittent crash on the loading screen (issue #5629)
+   * Fixed units with max movement set to zero being given one max movement point by `[unstore_unit]` or when loading a saved game (issue #5638).
+   * Fixed an intermittent crash on the loading screen (issue #5629).
    * wmlunits (units.wesnoth.org) no longer incorrectly assumes that units with movement costs equal to their maximum movement can't move into the affected terrains.
+   * Fixed a bug where log domains' severity could accidentally be reduced.
+   * Changed the verbosity and error-handling of the `run_wml_tests` script.
+   * Made `run_wml_tests` automatically skip tests which need strict mode when running without strict mode.
+   * Made optimizations in the UI drawing code, these shouldn't have visible effects (PR #5697).
+   * Optimized the command-line `wesnoth_addon_manager` tool.
 
 ## Version 1.15.11
  ### AI
