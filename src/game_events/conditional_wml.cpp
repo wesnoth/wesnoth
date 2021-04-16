@@ -93,11 +93,17 @@ namespace builtin_conditions {
 
 	bool variable_matches(const vconfig& values)
 	{
+		if(values["name"].blank()) {
+			lg::wml_error() << "[variable] with missing name=\n";
+			return true;
+		}
 		const std::string name = values["name"];
 		config::attribute_value value = resources::gamedata->get_variable_const(name);
 
-		if(values.get_config().attribute_count() != 2) {
+		if(auto n = values.get_config().attribute_count(); n > 2) {
 			lg::wml_error() << "[variable] name='" << name << "' found with multiple comparison attributes\n";
+		} else if(n < 2) {
+			lg::wml_error() << "[variable] name='" << name << "' found with no comparison attribute\n";
 		}
 
 #define TEST_STR_ATTR(name, test) \
@@ -143,7 +149,6 @@ namespace builtin_conditions {
 #undef TEST_NUM_ATTR
 #undef TEST_BOL_ATTR
 
-		lg::wml_error() << "[variable] name='" << name << "' found with no comparison attribute\n";
 		return true;
 	}
 }
