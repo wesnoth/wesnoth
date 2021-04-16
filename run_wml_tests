@@ -313,11 +313,11 @@ if __name__ == '__main__':
 
     if test_summary.passed != test_summary.total:
         breakdown = ["{0} passed".format(test_summary.passed)]
-        if test_summary.failed > 0:
+        if test_summary.failed != 0:
             breakdown.append("{0} failed".format(test_summary.failed))
-        if test_summary.crashed > 0:
+        if test_summary.crashed != 0:
             breakdown.append("{0} crashed".format(test_summary.crashed))
-        if test_summary.skipped > 0:
+        if test_summary.skipped != 0:
             breakdown.append("{0} skipped".format(test_summary.skipped))
         print("    ({0})".format(', '.join(breakdown)))
 
