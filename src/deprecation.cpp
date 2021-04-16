@@ -66,7 +66,7 @@ std::string deprecated_message(
 		// Note: This message is duplicated in data/lua/core.lua
 		// Any changes should be mirrorred there.
 		std::string msg = VGETTEXT("Invalid deprecation level $level (should be 1-4)", err_params);
-		LOG_STREAM(err, "general") << msg;
+		LOG_STREAM(err, lg::general()) << msg;
 		return msg;
 	}
 

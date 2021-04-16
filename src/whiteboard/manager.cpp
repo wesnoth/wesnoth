@@ -1182,7 +1182,7 @@ void manager::set_planned_unit_map()
 		return;
 	}
 
-	log_scope2("whiteboard", "Building planned unit map");
+	log_scope2(log_whiteboard, "Building planned unit map");
 	mapbuilder_.reset(new mapbuilder(resources::gameboard->units()));
 	mapbuilder_->build_map();
 
@@ -1197,7 +1197,7 @@ void manager::set_real_unit_map()
 		assert(!wait_for_side_init_);
 		if(mapbuilder_)
 		{
-			log_scope2("whiteboard", "Restoring regular unit map.");
+			log_scope2(log_whiteboard, "Restoring regular unit map.");
 			mapbuilder_.reset();
 		}
 		planned_unit_map_active_ = false;

@@ -533,7 +533,7 @@ pump_result_t wml_event_pump::operator()()
 		return pump_result_t();
 	}
 
-	if(!lg::debug().dont_log("event_handler")) {
+	if(!lg::debug().dont_log(log_event_handler)) {
 		std::stringstream ss;
 		for(const queued_event& ev : impl_->events_queue) {
 			ss << "name=" << ev.name << ", "
