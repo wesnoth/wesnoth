@@ -70,7 +70,7 @@ void save_index_class::rebuild(const std::string& name, const std::time_t& modif
 void save_index_class::remove(const std::string& name)
 {
 	config& root = data();
-	root.remove_attribute(name);
+	root.remove_children("save", [&name](const config& d) { return name == d["save"]; });
 	write_save_index();
 }
 
@@ -97,6 +97,22 @@ const std::string& save_index_class::dir() const
 	return dir_;
 }
 
+void save_index_class::clean_up_index()
+{
+	config &root = data();
+
+	std::vector<std::string> filenames;
+	filesystem::get_files_in_dir(dir(), &filenames);
+
+	if(root.all_children_count() > filenames.size()) {
+		root.remove_children("save", [&filenames](const config& d)
+			{
+				return std::find(filenames.begin(), filenames.end(), d["save"]) == filenames.end();
+			}
+		);
+	}
+}
+
 void save_index_class::write_save_index()
 {
 	log_scope("write_save_index()");
@@ -104,6 +120,11 @@ void save_index_class::write_save_index()
 	if(read_only_) {
 		LOG_SAVE << "no-op: read_only instance";
 		return;
+	}
+
+	if(clean_up_index_) {
+		clean_up_index();
+		clean_up_index_ = false;
 	}
 
 	try {
@@ -126,6 +147,7 @@ save_index_class::save_index_class(const std::string& dir)
 	, modified_()
 	, dir_(dir)
 	, read_only_(true)
+	, clean_up_index_(true)
 {
 }
 

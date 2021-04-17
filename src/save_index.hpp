@@ -124,6 +124,8 @@ private:
 	config& data();
 
 	static void fix_leader_image_path(config& data);
+	/** Deletes non-existent save files from the index. */
+	void clean_up_index();
 
 	bool loaded_;
 	config data_;
@@ -134,5 +136,7 @@ private:
 	 * write_save_index() and delete() are no-ops.
 	 */
 	bool read_only_;
+	/** Flag to only run the clean_up_index method once. */
+	bool clean_up_index_;
 };
 } // end of namespace savegame

@@ -541,8 +541,6 @@ void savegame::finish_save_game(const config_writer& out)
 		if(!out.good()) {
 			throw game::save_game_failed(_("Could not write to file"));
 		}
-
-		save_index_manager_->remove(gamestate_.classification().label);
 	} catch(const filesystem::io_exception& e) {
 		throw game::save_game_failed(e.what());
 	}
