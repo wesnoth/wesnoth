@@ -105,7 +105,7 @@ if rawget(_G, 'unit_test') ~= nil then
 	--! Fail the test with a message unless the function exits with a specific error
 	function unit_test.assert_throws_with(expect_err, fcn, message)
 		local result, err = pcall(fcn)
-		if result ~= false and err ~= expect_err then
+		if result ~= false or err ~= expect_err then
 			unit_test.log('Assertion failed (should be an error: ' .. unit_test.tostring(expect_err) .. ')', message)
 			unit_test.fail()
 		end
@@ -143,7 +143,7 @@ if rawget(_G, 'unit_test') ~= nil then
 	function unit_test.assert_greater(a, b, message)
 		if a <= b then
 			local expr = ('expected %s > %s'):format(unit_test.tostring(a), unit_test.tostring(b))
-			unti_test.log('Assertion failed (' .. expr .. ')', message)
+			unit_test.log('Assertion failed (' .. expr .. ')', message)
 			unit_test.fail()
 		end
 	end
