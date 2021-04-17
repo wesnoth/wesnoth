@@ -2,7 +2,7 @@
 --[========[Unit Test Helpers]========]
 
 if rawget(_G, 'unit_test') ~= nil then
-    print("Loading unit_test module...")
+	print("Loading unit_test module...")
 
 	function unit_test.finish(result)
 		wesnoth.wml_actions.endlevel{
@@ -19,8 +19,8 @@ if rawget(_G, 'unit_test') ~= nil then
 		unit_test.finish('pass')
 	end
 
-    function unit_test.tostring(val)
-        -- This exists so custom behaviour can be added for specific types if required.
+	function unit_test.tostring(val)
+		-- This exists so custom behaviour can be added for specific types if required.
 		if type(val) == 'string' then
 			-- Strings are output quoted but without escaped_split
 			-- Pick a quote style that the string doesn't contain
@@ -41,16 +41,16 @@ if rawget(_G, 'unit_test') ~= nil then
 				end
 			end
 		end
-        return tostring(val)
-    end
+		return tostring(val)
+	end
 
-    function unit_test.log(prefix, message)
-        std_print(prefix .. ': ' .. message)
-    end
+	function unit_test.log(prefix, message)
+		std_print(prefix .. ': ' .. message)
+	end
 
 	function unit_test.fail_if(condition, message)
 		if condition then
-            std_print('Failed because fail_if condition was true:', message)
+			std_print('Failed because fail_if condition was true:', message)
 			unit_test.fail()
 		else
 			unit_test.pass()
@@ -61,21 +61,21 @@ if rawget(_G, 'unit_test') ~= nil then
 		if condition then
 			unit_test.pass()
 		else
-            std_print('Failed because pass_if condition was false:', message)
+			std_print('Failed because pass_if condition was false:', message)
 			unit_test.fail()
 		end
 	end
 
 	function unit_test.assert(condition, message)
 		if not condition then
-            std_print('Assertion failed: ' .. message)
+			std_print('Assertion failed: ' .. message)
 			unit_test.fail()
 		end
 	end
 
 	function unit_test.assert_not(condition, message)
 		if condition then
-            std_print('Negative assertion failed:', message)
+			std_print('Negative assertion failed:', message)
 			unit_test.fail()
 		end
 	end
@@ -112,64 +112,64 @@ if rawget(_G, 'unit_test') ~= nil then
 
 	function unit_test.assert_equal(a, b, message)
 		if a ~= b then
-            local expr = ('expected %s == %s'):format(unit_test.tostring(a), unit_test.tostring(b))
-            std_print('Assertion failed (' .. expr .. '):', message)
+			local expr = ('expected %s == %s'):format(unit_test.tostring(a), unit_test.tostring(b))
+			std_print('Assertion failed (' .. expr .. '):', message)
 			unit_test.fail()
 		end
 	end
 	
 	function unit_test.assert_not_equal(a, b, message)
 		if a == b then
-            local expr = ('expected %s ~= %s'):format(unit_test.tostring(a), unit_test.tostring(b))
-            std_print('Assertion failed (' .. expr .. '):', message)
+			local expr = ('expected %s ~= %s'):format(unit_test.tostring(a), unit_test.tostring(b))
+			std_print('Assertion failed (' .. expr .. '):', message)
 			unit_test.fail()
 		end
 	end
 
 	function unit_test.assert_greater(a, b, message)
 		if a <= b then
-            local expr = ('expected %s > %s'):format(unit_test.tostring(a), unit_test.tostring(b))
-            std_print('Assertion failed (' .. expr .. '):', message)
+			local expr = ('expected %s > %s'):format(unit_test.tostring(a), unit_test.tostring(b))
+			std_print('Assertion failed (' .. expr .. '):', message)
 			unit_test.fail()
 		end
 	end
 
 	function unit_test.assert_less(a, b, message)
 		if a >= b then
-            local expr = ('expected %s < %s'):format(unit_test.tostring(a), unit_test.tostring(b))
-            std_print('Assertion failed (' .. expr .. '):', message)
+			local expr = ('expected %s < %s'):format(unit_test.tostring(a), unit_test.tostring(b))
+			std_print('Assertion failed (' .. expr .. '):', message)
 			unit_test.fail()
 		end
 	end
 
 	function unit_test.assert_greater_equal(a, b, message)
 		if a < b then
-            local expr = ('expected %s >= %s'):format(unit_test.tostring(a), unit_test.tostring(b))
-            std_print('Assertion failed (' .. expr .. '):', message)
+			local expr = ('expected %s >= %s'):format(unit_test.tostring(a), unit_test.tostring(b))
+			std_print('Assertion failed (' .. expr .. '):', message)
 			unit_test.fail()
 		end
 	end
 
 	function unit_test.assert_less_equal(a, b, message)
 		if a > b then
-            local expr = ('expected %s <= %s'):format(unit_test.tostring(a), unit_test.tostring(b))
-            std_print('Assertion failed (' .. expr .. '):', message)
+			local expr = ('expected %s <= %s'):format(unit_test.tostring(a), unit_test.tostring(b))
+			std_print('Assertion failed (' .. expr .. '):', message)
 			unit_test.fail()
 		end
 	end
 
 	function unit_test.assert_in_range(val, min, max, message)
 		if val < min or val > max then
-            local expr = ('expected %s <= %s <= %s'):format(unit_test.tostring(min), unit_test.tostring(val), unit_test.tostring(max))
-            std_print('Assertion failed (' .. expr .. '):', message)
+			local expr = ('expected %s <= %s <= %s'):format(unit_test.tostring(min), unit_test.tostring(val), unit_test.tostring(max))
+			std_print('Assertion failed (' .. expr .. '):', message)
 			unit_test.fail()
 		end
 	end
 
 	function unit_test.assert_approx_equal(a, b, tolerance, message)
 		if math.abs(a - b) > tolerance then
-            local expr = ('expected %s == %s (within %s)'):format(unit_test.tostring(a), unit_test.tostring(b), unit_test.tostring(tolerance))
-            std_print('Assertion failed (' .. expr .. '):', message)
+			local expr = ('expected %s == %s (within %s)'):format(unit_test.tostring(a), unit_test.tostring(b), unit_test.tostring(tolerance))
+			std_print('Assertion failed (' .. expr .. '):', message)
 			unit_test.fail()
 		end
 	end
