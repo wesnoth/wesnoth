@@ -268,6 +268,7 @@ if(APPLE)
 		desktop/apple_battery_info.mm
 		desktop/apple_notification.mm
 		desktop/apple_version.mm
+		desktop/apple_video.mm
 	)
 endif(APPLE)
 
