@@ -85,7 +85,7 @@ if rawget(_G, 'unit_test') ~= nil then
 		if type(a) == 'function' then
 			fcn, message = a, b
 		else
-			fcn, expect_err, message = a, b, c
+			expect_err, fcn, message = a, b, c
 		end
 		local result, err = pcall(fcn)
 		if result ~= false then
