@@ -13,12 +13,12 @@ if rawget(_G, 'unit_test') ~= nil then
 		}
 	end
 
-	--! Fail the test unconditionally
+	--! End the test in unconditional failure
 	function unit_test.fail()
 		unit_test.finish('fail')
 	end
 
-	--! Pass the test unconditionally
+	--! End the test in success if all assertions passed, otherwise in failure
 	function unit_test.pass()
 		unit_test.finish('pass')
 	end
@@ -55,7 +55,7 @@ if rawget(_G, 'unit_test') ~= nil then
 		std_print(prefix .. ': ' .. message)
 	end
 
-	--! If condition is true, fail the test with message,otherwise pass the test.
+	--! End the test in failure if condition is true and success otherwise
 	--! Can be thought of as 'return not condition'
 	function unit_test.fail_if(condition, message)
 		if condition then
@@ -66,7 +66,7 @@ if rawget(_G, 'unit_test') ~= nil then
 		end
 	end
 
-	--! If condition is true, pass the test with message, otherwise fail the test.
+	--! End the test in success if condition is true and failure otherwise
 	--! Can be thought of as 'return condition'
 	function unit_test.pass_if(condition, message)
 		if condition then
