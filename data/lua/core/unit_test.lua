@@ -102,11 +102,19 @@ if rawget(_G, 'unit_test') ~= nil then
 		end
 	end
 	
+	local function match_error(expect, have)
+		if type(expect) == 'string' then
+			local m = string.match(have, '^%[.-%]:%d: (.*)')
+			if m then return expect == m end
+		end
+		return expect == have
+	end
+	
 	--! Fail the test with a message unless the function exits with a specific error
 	function unit_test.assert_throws_with(expect_err, fcn, message)
 		local result, err = pcall(fcn)
-		if result ~= false or err ~= expect_err then
-			unit_test.log('Assertion failed (should be an error: ' .. unit_test.tostring(expect_err) .. ')', message)
+		if result ~= false or not match_error(expect_err, err) then
+			unit_test.log('Assertion failed (should be an error: ' .. unit_test.tostring(expect_err) .. ' but got ' .. unit_test.tostring(err) .. ')', message)
 			unit_test.fail()
 		end
 	end
