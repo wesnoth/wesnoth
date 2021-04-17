@@ -31,6 +31,10 @@
 #if defined(__APPLE__)
 
 #include "apple_version.hpp"
+#include "serialization/string_utils.hpp"
+
+#include <map>
+#include <boost/algorithm/string/trim.hpp>
 
 #elif defined(_X11)
 
