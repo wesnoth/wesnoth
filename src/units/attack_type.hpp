@@ -125,6 +125,13 @@ private:
 
 	// Configured as a bit field, in case that is useful.
 	enum AFFECTS { AFFECT_SELF=1, AFFECT_OTHER=2, AFFECT_EITHER=3 };
+	/** overwrite_special_checking : return an unit_ability_list list after checking presence or not of overwrite_specials
+	 * @param ability The special ability type who is being checked.
+	 * @param temp_list the list checked and returned.
+	 * @param abil_list list checked for verify presence of overwrite_specials .
+	 * @param filter_self name of [filter_"self/student"] if is abilities or specials who are checked
+	 */
+	unit_ability_list overwrite_special_checking(const std::string& ability, unit_ability_list temp_list, const unit_ability_list& abil_list, const std::string& filter_self = "filter_self") const;
 	/** check_self_abilities : return an boolean value for checking of activities of abilities used like weapon
 	 * @return True if the special @a special is active.
 	 * @param cfg the config to one special ability checked.
