@@ -1,7 +1,6 @@
-## Version 1.15.11+dev
+## Version 1.15.12
  ### Add-ons client
    * When uploading or deleting an add-on, the game will now prompt for the required password if it is not present in the `_server.pbl` file.
- ### Add-ons server
  ### AI
    * Improved AI decisions about whether an attack with poison is better than one with higher direct damage.
    * Added options to the Patrol Micro AI on whether to notice invisible units, and on attack range.
@@ -26,7 +25,6 @@
      * Reimplemented the character-choice UI.
    * Under the Burning Suns
      * In S01, fixed one of the mystics spawning in the lake.
- ### Editor
  ### Lua API
    * Fix issues with the wesnoth.map module.
  ### Multiplayer
