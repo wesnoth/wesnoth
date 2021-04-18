@@ -78,7 +78,7 @@
    * Players now receive an error message when attempting to save games using illegal file names (issue #5679).
    * Fixed text labels containing only a single link becoming empty (issue #5625).
    * Separated floating labels' duration from the speed of their eventual fade-out.
-   * Fixed a bug where setting a font family in one text area could affect other text areas (issue #5712).
+   * Fixed font family leakage from GUI2 canvases to GUI1 elements such as the in-game chat overlay (issue #5712).
  ### WML Engine
    * In development builds, deprecation warnings are now shown in-game by default.
    * Conditional WML's `[variable]` tag now expects exactly one comparison, and will warn if given none or multiple tests.
