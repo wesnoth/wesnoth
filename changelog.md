@@ -11,6 +11,7 @@
  ### User interface
  ### WML Engine
  ### Miscellaneous and Bug Fixes
+   * Made GUI.pyw compatible with Python 3.9 (issue #5719).
 
 ## Version 1.15.12
  ### Add-ons client
