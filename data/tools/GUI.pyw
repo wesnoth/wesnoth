@@ -19,6 +19,7 @@ import queue
 # tkinter modules
 from tkinter import *
 from tkinter.messagebox import *
+from tkinter.messagebox import WARNING # for Python >= 3.9
 from tkinter.filedialog import *
 import tkinter.font as font
 # ttk must be called last
@@ -302,10 +303,15 @@ Self destroys when the tool thread is over"""
         # placing this in a for or while cycle freezes the app
         # so we need to use the .after method and recursively call the function
         # that's one of the many quirks of Tkinter
-        if self.thread.isAlive():
-            self.after(100,self.check_thread_alive)
-        else:
-            self.after(1,self.destroy)
+        try: # Python <= 3.8
+            is_alive = self.thread.isAlive()
+        except AttributeError: # Python >= 3.9
+            is_alive = self.thread.is_alive()
+        finally:
+            if is_alive:
+                self.after(100,self.check_thread_alive)
+            else:
+                self.after(1,self.destroy)
     def terminate(self):
         self.thread.terminate()
 
