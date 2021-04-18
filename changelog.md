@@ -10,6 +10,7 @@
  ### Units
  ### User interface
  ### WML Engine
+   * Modify implementation of overwrite_specials attribute for replace yes/no parameter by none/one_side/both_sides and select abilities used like weapons and specials who must be overwrited(owned by fighter where special applied or both)
  ### Miscellaneous and Bug Fixes
 
 ## Version 1.15.12
