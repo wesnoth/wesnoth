@@ -1300,18 +1300,18 @@ bool attack_type::has_weapon_ability(const std::string& special, bool special_id
 	assert(display::get_singleton());
 	const unit_map& units = display::get_singleton()->get_units();
 	if(self_){
-		std::vector<special_match> special_tag_matches;
-		std::vector<special_match> special_id_matches;
-		get_ability_children(special_tag_matches, special_id_matches, (*self_).abilities(), special, special_id , special_tags);
+		std::vector<special_match> special_tag_matches_self;
+		std::vector<special_match> special_id_matches_self;
+		get_ability_children(special_tag_matches_self, special_id_matches_self, (*self_).abilities(), special, special_id , special_tags);
 		if(special_tags){
-			for(const special_match& entry : special_tag_matches) {
+			for(const special_match& entry : special_tag_matches_self) {
 				if(check_self_abilities(*entry.cfg, entry.tag_name)){
 					return true;
 				}
 			}
 		}
 		if(special_id){
-			for(const special_match& entry : special_id_matches) {
+			for(const special_match& entry : special_id_matches_self) {
 				if(check_self_abilities(*entry.cfg, entry.tag_name)){
 					return true;
 				}
@@ -1326,16 +1326,18 @@ bool attack_type::has_weapon_ability(const std::string& special, bool special_id
 			if ( &*it == self_.get() )
 				continue;
 
-			get_ability_children(special_tag_matches, special_id_matches, it->abilities(), special, special_id , special_tags);
+			std::vector<special_match> special_tag_matches_adj;
+			std::vector<special_match> special_id_matches_adj;
+			get_ability_children(special_tag_matches_adj, special_id_matches_adj, it->abilities(), special, special_id , special_tags);
 			if(special_tags){
-				for(const special_match& entry : special_tag_matches) {
+				for(const special_match& entry : special_tag_matches_adj) {
 					if(check_adj_abilities(*entry.cfg, entry.tag_name, i , *it)){
 						return true;
 					}
 				}
 			}
 			if(special_id){
-				for(const special_match& entry : special_id_matches) {
+				for(const special_match& entry : special_id_matches_adj) {
 					if(check_adj_abilities(*entry.cfg, entry.tag_name, i , *it)){
 						return true;
 					}
@@ -1345,11 +1347,11 @@ bool attack_type::has_weapon_ability(const std::string& special, bool special_id
 	}
 
 	if(other_){
-		std::vector<special_match> special_tag_matches;
-		std::vector<special_match> special_id_matches;
-		get_ability_children(special_tag_matches, special_id_matches, (*other_).abilities(), special, special_id , special_tags);
+		std::vector<special_match> special_tag_matches_other;
+		std::vector<special_match> special_id_matches_other;
+		get_ability_children(special_tag_matches_other, special_id_matches_other, (*other_).abilities(), special, special_id , special_tags);
 		if(special_tags){
-			for(const special_match& entry : special_tag_matches) {
+			for(const special_match& entry : special_tag_matches_other) {
 				if(check_self_abilities_impl(other_attack_, shared_from_this(), *entry.cfg, other_, other_loc_, AFFECT_OTHER, entry.tag_name)){
 					return true;
 				}
@@ -1357,7 +1359,7 @@ bool attack_type::has_weapon_ability(const std::string& special, bool special_id
 		}
 
 		if(special_id){
-			for(const special_match& entry : special_id_matches) {
+			for(const special_match& entry : special_id_matches_other) {
 				if(check_self_abilities_impl(other_attack_, shared_from_this(), *entry.cfg, other_, other_loc_, AFFECT_OTHER, entry.tag_name)){
 					return true;
 				}
@@ -1372,9 +1374,11 @@ bool attack_type::has_weapon_ability(const std::string& special, bool special_id
 			if ( &*it == other_.get() )
 				continue;
 
-			get_ability_children(special_tag_matches, special_id_matches, it->abilities(), special, special_id , special_tags);
+			std::vector<special_match> special_tag_matches_oadj;
+			std::vector<special_match> special_id_matches_oadj;
+			get_ability_children(special_tag_matches_oadj, special_id_matches_oadj, it->abilities(), special, special_id , special_tags);
 			if(special_tags){
-				for(const special_match& entry : special_tag_matches) {
+				for(const special_match& entry : special_tag_matches_oadj) {
 					if(check_adj_abilities_impl(other_attack_, shared_from_this(), *entry.cfg, other_, *it, i, other_loc_, AFFECT_OTHER, entry.tag_name)){
 						return true;
 					}
@@ -1382,7 +1386,7 @@ bool attack_type::has_weapon_ability(const std::string& special, bool special_id
 			}
 
 			if(special_id){
-				for(const special_match& entry : special_id_matches) {
+				for(const special_match& entry : special_id_matches_oadj) {
 					if(check_adj_abilities_impl(other_attack_, shared_from_this(), *entry.cfg, other_, *it, i, other_loc_, AFFECT_OTHER, entry.tag_name)){
 						return true;
 					}
