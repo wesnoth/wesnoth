@@ -11,6 +11,7 @@
    * Update piglet/boar graphics
  ### User interface
  ### WML Engine
+   * Modify implementation of overwrite_specials attribute for replace yes/no parameter by none/one_side/both_sides and select abilities used like weapons and specials who must be overwrited(owned by fighter where special applied or both)
  ### Miscellaneous and Bug Fixes
    * Made GUI.pyw compatible with Python 3.9 (issue #5719).
 
