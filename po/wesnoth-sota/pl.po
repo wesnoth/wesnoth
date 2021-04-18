@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-03-12 23:18 UTC\n"
+"POT-Creation-Date: 2021-04-18 02:22 UTC\n"
 "PO-Revision-Date: 2020-10-26 14:49+0100\n"
 "Last-Translator: Piotr Makarewicz <makpio@interia.pl>\n"
 "Language-Team: none\n"
@@ -83,6 +83,41 @@ msgstr "Utrzymanie kampanii"
 #: data/campaigns/Secrets_of_the_Ancients/_main.cfg:42
 msgid "Additional Artwork"
 msgstr "Dodatkowa grafika"
+
+#. [label]
+#: data/campaigns/Secrets_of_the_Ancients/gui/zombie_recruit_dialog.cfg:108
+msgid "Lvl 0"
+msgstr "Poz. 0"
+
+#. [label]
+#: data/campaigns/Secrets_of_the_Ancients/gui/zombie_recruit_dialog.cfg:130
+msgid "Undead"
+msgstr "Nieumarli"
+
+#. [label]
+#: data/campaigns/Secrets_of_the_Ancients/gui/zombie_recruit_dialog.cfg:173
+msgid "Traits"
+msgstr "Cechy"
+
+#. [label]
+#: data/campaigns/Secrets_of_the_Ancients/gui/zombie_recruit_dialog.cfg:207
+msgid "Attacks"
+msgstr "Ataki"
+
+#. [label]
+#: data/campaigns/Secrets_of_the_Ancients/gui/zombie_recruit_dialog.cfg:275
+msgid "Choose a Corpse"
+msgstr "Wybierz zwłoki"
+
+#. [button]
+#: data/campaigns/Secrets_of_the_Ancients/gui/zombie_recruit_dialog.cfg:341
+msgid "Recruit"
+msgstr "Rekrutuj"
+
+#. [button]: id=cancel
+#: data/campaigns/Secrets_of_the_Ancients/gui/zombie_recruit_dialog.cfg:347
+msgid "Cancel"
+msgstr "Anuluj"
 
 #. [scenario]: id=01_Slipping_Away
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/01_Slipping_Away.cfg:22
@@ -4837,56 +4872,28 @@ msgstr "Możesz teraz ożywiać zwłoki krasnoludów!"
 msgid "A lua error has occurred, and a corpse cannot be recruited."
 msgstr "Pojawił się błąd lua i trup nie może zostać zrekrutowany."
 
-#: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:33
-msgid "Lvl 0"
-msgstr "Poz. 0"
-
-#: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:36
-msgid "Undead"
-msgstr "Nieumarli"
-
-#: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:41
-msgid "Traits"
-msgstr "Cechy"
-
-#: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:44
-msgid "Attacks"
-msgstr "Ataki"
-
-#: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:56
-msgid "Choose a Corpse"
-msgstr "Wybierz zwłoki"
-
-#: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:71
-msgid "Recruit"
-msgstr "Rekrutuj"
-
-#: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:72
-msgid "Cancel"
-msgstr "Anuluj"
-
 #. [lua]: select
-#: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:85
+#: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:24
 msgid "HP: "
 msgstr "PŻ: "
 
 #. [lua]: select
-#: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:85
+#: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:24
 msgid "MP: "
 msgstr "PR: "
 
 #. [lua]: select
-#: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:85
+#: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:24
 msgid "XP: "
 msgstr "PD: "
 
 #. [lua]: postshow
-#: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:150
+#: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:89
 msgid "There are no corpses available."
 msgstr "Nie ma dostępnych zwłok."
 
 #. [lua]: postshow
-#: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:155
+#: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:94
 msgid "You do not have enough gold to recruit that unit"
 msgstr "Nie masz wystarczająco dużo złota, by rekrutować tę jednostkę"
 

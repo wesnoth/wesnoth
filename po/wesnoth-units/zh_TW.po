@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.15\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-03-12 23:18 UTC\n"
+"POT-Creation-Date: 2021-04-18 02:22 UTC\n"
 "PO-Revision-Date: 2021-04-06 09:47+0800\n"
 "Last-Translator: 李信融 <magiclen0810@gmail.com>\n"
 "Language-Team: Wesnoth Traditional Chinese Team\n"
@@ -117,9 +117,9 @@ msgstr "杖"
 #: data/campaigns/Descent_Into_Darkness/units/Apprentice_Mage.cfg:24
 #: data/campaigns/Descent_Into_Darkness/units/Apprentice_Necromancer.cfg:24
 #: data/campaigns/Descent_Into_Darkness/units/Dark_Mage.cfg:25
-#: data/campaigns/Descent_Into_Darkness/units/Malin_Keshar.cfg:502
-#: data/campaigns/Descent_Into_Darkness/units/Malin_Keshar.cfg:530
-#: data/campaigns/Descent_Into_Darkness/units/Malin_Keshar.cfg:572
+#: data/campaigns/Descent_Into_Darkness/units/Malin_Keshar.cfg:507
+#: data/campaigns/Descent_Into_Darkness/units/Malin_Keshar.cfg:535
+#: data/campaigns/Descent_Into_Darkness/units/Malin_Keshar.cfg:577
 #: data/campaigns/Liberty/units/Rogue_Mage.cfg:24
 #: data/campaigns/Liberty/units/Shadow_Mage.cfg:34
 #: data/core/units/dunefolk/Falconer.cfg:142
@@ -132,8 +132,8 @@ msgstr "短劍"
 #. [attack]: type=cold
 #: data/campaigns/Descent_Into_Darkness/units/Apprentice_Necromancer.cfg:33
 #: data/campaigns/Descent_Into_Darkness/units/Dark_Mage.cfg:34
-#: data/campaigns/Descent_Into_Darkness/units/Malin_Keshar.cfg:539
-#: data/campaigns/Descent_Into_Darkness/units/Malin_Keshar.cfg:581
+#: data/campaigns/Descent_Into_Darkness/units/Malin_Keshar.cfg:544
+#: data/campaigns/Descent_Into_Darkness/units/Malin_Keshar.cfg:586
 #: data/campaigns/Under_the_Burning_Suns/units/undead/Spider_Lich.cfg:38
 #: data/core/units/undead/Necro_Dark_Adept.cfg:31
 #: data/core/units/undead/Necro_Dark_Sorcerer.cfg:59
@@ -144,8 +144,8 @@ msgstr "寒冰旋風"
 #. [attack]: type=arcane
 #: data/campaigns/Descent_Into_Darkness/units/Apprentice_Necromancer.cfg:45
 #: data/campaigns/Descent_Into_Darkness/units/Dark_Mage.cfg:46
-#: data/campaigns/Descent_Into_Darkness/units/Malin_Keshar.cfg:551
-#: data/campaigns/Descent_Into_Darkness/units/Malin_Keshar.cfg:593
+#: data/campaigns/Descent_Into_Darkness/units/Malin_Keshar.cfg:556
+#: data/campaigns/Descent_Into_Darkness/units/Malin_Keshar.cfg:598
 #: data/campaigns/Secrets_of_the_Ancients/units/Necro_Ancient_Lich.cfg:60
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Rune_Lord.cfg:104
 #: data/campaigns/Under_the_Burning_Suns/units/undead/Spider_Lich.cfg:50
@@ -325,7 +325,7 @@ msgstr "弓箭"
 #: data/core/units/monsters/Falcon.cfg:85
 #: data/core/units/monsters/Icemonax.cfg:53
 #: data/core/units/monsters/Icemonax_Greater.cfg:54
-#: data/core/units/monsters/Roc.cfg:36
+#: data/core/units/monsters/Roc.cfg:38
 #: data/core/units/monsters/Skeletal_Dragon.cfg:43
 #: data/core/units/undead/Corpse_Ghoul.cfg:33
 #: data/core/units/undead/Corpse_Necrophage.cfg:28
@@ -1487,10 +1487,22 @@ msgstr "沙丘煉金術士"
 
 #. [unit_type]: id=Dune Alchemist, race=dunefolk
 #: data/core/units/dunefolk/Alchemist.cfg:25
+#, fuzzy
+#| msgid ""
+#| "To the Dunefolk, alchemy is less a form of philosophy or science, and "
+#| "more an extension of the phytology that is practiced by herbalists. "
+#| "However, in contrast to their brethrens’ focus on herbs for medicine and "
+#| "healing, many alchemists utilize various plants and naturally occurring "
+#| "venoms to concoct lethal poisons. While useful for weakening tough "
+#| "enemies, this art is viewed warily by other Dunefolk as a potent means "
+#| "for espionage and assassination. At the same time, such a tool presents a "
+#| "tremendous political advantage, so much so that almost every caravan will "
+#| "hire or train a few alchemists to maintain a reasonable level of threat "
+#| "at all times."
 msgid ""
 "To the Dunefolk, alchemy is less a form of philosophy or science, and more "
 "an extension of the phytology that is practiced by herbalists. However, in "
-"contrast to their brethrens’ focus on herbs for medicine and healing, many "
+"contrast to their brethren’s focus on herbs for medicine and healing, many "
 "alchemists utilize various plants and naturally occurring venoms to concoct "
 "lethal poisons. While useful for weakening tough enemies, this art is viewed "
 "warily by other Dunefolk as a potent means for espionage and assassination. "
@@ -5261,6 +5273,51 @@ msgstr ""
 "洞窟中漫遊，牠們有敏銳的嗅覺和聽覺，不過視力不好。當敵對的掠食者，或是某種其"
 "它威脅，靠得太近時，熊肯定將會發起攻擊。"
 
+#. [unit_type]: id=Woodland Boar, race=monster
+#: data/core/units/monsters/Boar.cfg:4
+msgid "Woodland Boar"
+msgstr ""
+
+#. [unit_type]: id=Woodland Boar, race=monster
+#: data/core/units/monsters/Boar.cfg:35
+#, fuzzy
+#| msgid ""
+#| "As Tuskers age, their already formidable teeth grow longer and more "
+#| "numerous. A mature boar gorer is a valuable asset to any farmer. And an "
+#| "angry boar gorer is a challenge even to the best hunters."
+msgid ""
+"As boars age, their already formidable teeth grow longer and more numerous. "
+"A mature, tamed boar is a valuable asset to any farmer, but an angry wild "
+"boar is a challenge even to the best hunters."
+msgstr ""
+"當獠牙獸成年時，牠們那早已令人害怕的牙齒長得更長且更多了。一個成熟的雄性獠牙"
+"獸對任何農夫來說都是個珍貴的資產，而一個生氣的雄性獠牙獸甚至對最好的獵人來說"
+"都會是個挑戰。"
+
+#. [attack]: type=blade
+#: data/core/units/monsters/Boar.cfg:51
+#: data/core/units/monsters/Boar_Piglet.cfg:48
+msgid "Tusks"
+msgstr "獠牙"
+
+#. [attack]: type=pierce
+#: data/core/units/monsters/Boar.cfg:103
+msgid "Tusk Charge"
+msgstr "獠牙衝鋒"
+
+#. [unit_type]: id=Piglet, race=monster
+#: data/core/units/monsters/Boar_Piglet.cfg:4
+msgid "Piglet"
+msgstr ""
+
+#. [unit_type]: id=Piglet, race=monster
+#: data/core/units/monsters/Boar_Piglet.cfg:33
+msgid ""
+"Young piglets are curious but just as ill-tempered as their parents, if a "
+"little less of a challenge in combat.  But seldom is a piglet found that "
+"does not have a protective adult boar watching over them."
+msgstr ""
+
 #. [unit_type]: id=Swamp Lizard, race=monster
 #: data/core/units/monsters/Crocodile.cfg:9
 msgid "Swamp Lizard"
@@ -5349,7 +5406,7 @@ msgstr ""
 #. [attack]: type=pierce
 #. [attack]: type=blade
 #: data/core/units/monsters/Elder_Falcon.cfg:28
-#: data/core/units/monsters/Falcon.cfg:94 data/core/units/monsters/Roc.cfg:28
+#: data/core/units/monsters/Falcon.cfg:94 data/core/units/monsters/Roc.cfg:30
 msgid "beak"
 msgstr "喙"
 
@@ -5374,10 +5431,13 @@ msgstr ""
 msgid "Fire Ant"
 msgstr "火蟻"
 
-# 這不知道是什麼鬼，可能還沒寫描述吧。
 #. [unit_type]: id=Fire Ant, race=monster
 #: data/core/units/monsters/Fire_Ant.cfg:46
-msgid "Lorem ipsem ..."
+msgid ""
+"Small but deadly in large numbers, fire ants possess fierce fangs and an "
+"unusual ability to generate fire. Though these creatures typically function "
+"as scavengers, a burrow of fire ants can become aggressive when provoked and "
+"have even been known to attack small groups of threatening troops."
 msgstr ""
 
 #. [attack]: type=fire
@@ -5531,23 +5591,37 @@ msgid "sting"
 msgstr "螫"
 
 #. [attack]: type=impact
+#. [attack]: type=blade
 #: data/core/units/monsters/Giant_Scorpion.cfg:60
 #: data/core/units/monsters/Giant_Scorpling.cfg:45
+#: data/core/units/monsters/Rock_Scorpion.cfg:52
 msgid "pincers"
 msgstr "鉗子"
 
 #. [variation]
 #: data/core/units/monsters/Giant_Scorpion.cfg:112
+#, fuzzy
+#| msgid "Sand Scuttler"
+msgid "scuttler"
+msgstr "沙蠍"
+
+#. [variation]
+#: data/core/units/monsters/Giant_Scorpion.cfg:113
 msgid "Sand Scuttler"
 msgstr "沙蠍"
 
 # 不是很懂「an odd mix of mundane creature and elemental beast」是什麼意思。
 #. [variation]
-#: data/core/units/monsters/Giant_Scorpion.cfg:115
+#: data/core/units/monsters/Giant_Scorpion.cfg:118
+#, fuzzy
+#| msgid ""
+#| "Blending in nearly seamlessly into sandy dunes, these critters are an odd "
+#| "mix of mundane creature and elemental beast. Though usually timid, Sand "
+#| "Scuttlers sometimes attack unwary travelers, especially when startled."
 msgid ""
-"Blending in nearly seamlessly into sandy dunes, these critters are an odd "
-"mix of mundane creature and elemental beast. Though usually timid, Sand "
-"Scuttlers sometimes attack unwary travelers, especially when startled."
+"Making their homes in sandy dunes, these critters are an odd mix of mundane "
+"creature and elemental beast. Though usually timid, Sand Scuttlers sometimes "
+"attack unwary travelers, especially when startled."
 msgstr ""
 "幾乎與沙丘合為一體，這些動物是普通生物和元素野獸的奇怪混合。雖然通常是溫馴"
 "的，但沙蠍有時候會攻擊不小心的旅行者，尤其是受驚時。"
@@ -5664,10 +5738,51 @@ msgstr ""
 "緩慢、脆弱，且易受火焰傷害，但牠們的快速且簡易的製造方式和牠們對普通平民的粗"
 "糙鈍器的抗性，讓牠們成為具有野心但經驗不足的召喚者們優先考慮的工具。"
 
-#. [unit_type]: id=Roc, race=monster, description=
+#. [unit_type]: id=Roc, race=monster
 #: data/core/units/monsters/Roc.cfg:4
 msgid "Roc"
 msgstr "巨鹏"
+
+#. [unit_type]: id=Roc, race=monster
+#: data/core/units/monsters/Roc.cfg:19
+msgid ""
+"Far from human cities in the great desert mountains, the large birds of prey "
+"known as Rocs can sometimes be found rapidly scouring the sands on their "
+"hunts. Despite their large size, Rocs tend to be reclusive and are only "
+"rarely encountered by other sapient races. Their elusive nature has raised "
+"them to near mythological status, particularly among the nomads of the "
+"deserts.\n"
+"\n"
+"Unlike other avians, such as falcons or hawks, the individualistic and "
+"intelligent Rocs are nearly untamable. Only on occasion, a Roc may offer its "
+"aid to a traveler in need, usually in exchange for a small trinket or shiny "
+"bauble."
+msgstr ""
+
+#. [unit_type]: id=Rock Scorpion, race=monster
+#: data/core/units/monsters/Rock_Scorpion.cfg:4
+#, fuzzy
+#| msgid "Giant Scorpion"
+msgid "Rock Scorpion"
+msgstr "巨蠍"
+
+#. [unit_type]: id=Rock Scorpion, race=monster
+#: data/core/units/monsters/Rock_Scorpion.cfg:45
+msgid ""
+"Rock scorpions have featured in tales of highwaymen and drunks, but there "
+"has been scant evidence that they truly exist.  They've been described as "
+"stealthy monsters with a hide of solid rock, and sharp, crystalline claws.  "
+"Unlike most scorpions, they do not deliver their poison with a piercing "
+"stinger, but instead spray their enemies with a noxious, volatile stream."
+msgstr ""
+
+# 翻譯成「水噴」會很奇怪。
+#. [attack]: type=impact
+#: data/core/units/monsters/Rock_Scorpion.cfg:60
+#, fuzzy
+#| msgid "water spray"
+msgid "spray"
+msgstr "水柱"
 
 #. [unit_type]: id=Horned Scarab, race=monster
 #: data/core/units/monsters/Scarab.cfg:4
@@ -5765,49 +5880,6 @@ msgstr ""
 "觸手並沒有非常高的威脅性，儘管它們有快速修補傷害的能力。不過，還是有許多人不"
 "願接近它們，這也合乎情理，因為害怕被抓住，並被拖進水下去面對那些觸手所連接的"
 "無論是什麼樣子的怪物。"
-
-#. [unit_type]: id=Gorer, race=monster
-#: data/core/units/monsters/Tusker_Gorer.cfg:4
-msgid "Gorer"
-msgstr "獠牙獸"
-
-#. [unit_type]: id=Gorer, race=monster
-#: data/core/units/monsters/Tusker_Gorer.cfg:35
-msgid ""
-"As Tuskers age, their already formidable teeth grow longer and more "
-"numerous. A mature boar gorer is a valuable asset to any farmer. And an "
-"angry boar gorer is a challenge even to the best hunters."
-msgstr ""
-"當獠牙獸成年時，牠們那早已令人害怕的牙齒長得更長且更多了。一個成熟的雄性獠牙"
-"獸對任何農夫來說都是個珍貴的資產，而一個生氣的雄性獠牙獸甚至對最好的獵人來說"
-"都會是個挑戰。"
-
-#. [attack]: type=blade
-#: data/core/units/monsters/Tusker_Gorer.cfg:51
-#: data/core/units/monsters/Tusker_Tusklet.cfg:48
-msgid "Tusks"
-msgstr "獠牙"
-
-#. [attack]: type=pierce
-#: data/core/units/monsters/Tusker_Gorer.cfg:103
-msgid "Tusk Charge"
-msgstr "獠牙衝鋒"
-
-#. [unit_type]: id=Tusklet, race=monster
-#: data/core/units/monsters/Tusker_Tusklet.cfg:4
-msgid "Tusklet"
-msgstr "小獠牙獸"
-
-# 最後一句接得很不順，不照翻。
-#. [unit_type]: id=Tusklet, race=monster
-#: data/core/units/monsters/Tusker_Tusklet.cfg:33
-msgid ""
-"Young tuskers are as notoriously bad-tempered as the adults of the species, "
-"if a little less of a challenge. But woe betide the unfortunate who comes "
-"between a Tusklet and its parents."
-msgstr ""
-"年輕的獠牙獸是出了名的與該物種的成年體一樣脾氣暴躁，雖然前者的挑戰性較小一"
-"點。任何介在小獠牙獸和牠的父母之間的人都會變得很不幸。"
 
 #. [unit_type]: id=Water Serpent, race=monster
 #: data/core/units/monsters/Water_Serpent.cfg:5
@@ -6847,12 +6919,22 @@ msgstr "巨食屍鬼"
 
 #. [unit_type]: id=Necrophage, race=undead
 #: data/core/units/undead/Corpse_Necrophage.cfg:18
+#, fuzzy
+#| msgid ""
+#| "The necrophage, or ‘devourer of the dead’, is a monstrous, corpulent "
+#| "thing, which bears only a crude resemblance to a man. They appear to be "
+#| "quite rotten in spite of their ability to move; they are rife with "
+#| "disease and poisons of the blood, and have a stench to match. But the "
+#| "most revolting fact about these fratures, apparent only to those who can "
+#| "perceive the traces of foul magic on them, is that they were somehow made "
+#| "from living men — a process about which almost nothing is known, but "
+#| "which can be nothing but nightmarish."
 msgid ""
 "The necrophage, or ‘devourer of the dead’, is a monstrous, corpulent thing, "
 "which bears only a crude resemblance to a man. They appear to be quite "
 "rotten in spite of their ability to move; they are rife with disease and "
 "poisons of the blood, and have a stench to match. But the most revolting "
-"fact about these fratures, apparent only to those who can perceive the "
+"fact about these creatures, apparent only to those who can perceive the "
 "traces of foul magic on them, is that they were somehow made from living men "
 "— a process about which almost nothing is known, but which can be nothing "
 "but nightmarish."
@@ -6920,55 +7002,65 @@ msgstr "蜥蜴人"
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:259
 #: data/core/units/undead/Corpse_Walking.cfg:258
-msgid "wc_variation^Spider"
-msgstr "蜘蛛"
+#, fuzzy
+#| msgid "wc_variation^Saurian"
+msgid "wc_variation^Scorpion"
+msgstr "蜥蜴人"
 
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:268
 #: data/core/units/undead/Corpse_Walking.cfg:267
+msgid "wc_variation^Spider"
+msgstr "蜘蛛"
+
+#. [variation]
+#: data/core/units/undead/Corpse_Soulless.cfg:277
+#: data/core/units/undead/Corpse_Walking.cfg:276
 msgid "wc_variation^Serpent"
 msgstr "蛇"
 
 # 人魚或是納迦。
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:285
-#: data/core/units/undead/Corpse_Walking.cfg:284
+#: data/core/units/undead/Corpse_Soulless.cfg:296
+#: data/core/units/undead/Corpse_Walking.cfg:295
 msgid "wc_variation^Swimmer"
 msgstr "游泳者"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:303
-#: data/core/units/undead/Corpse_Walking.cfg:302
+#: data/core/units/undead/Corpse_Soulless.cfg:314
+#: data/core/units/undead/Corpse_Walking.cfg:313
 msgid "wc_variation^Troll"
 msgstr "巨魔"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:312
-#: data/core/units/undead/Corpse_Walking.cfg:311
-msgid "wc_variation^Tusker"
-msgstr "長牙"
+#: data/core/units/undead/Corpse_Soulless.cfg:323
+#: data/core/units/undead/Corpse_Walking.cfg:322
+#, fuzzy
+#| msgid "wc_variation^Bat"
+msgid "wc_variation^Boar"
+msgstr "蝙蝠"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:320
-#: data/core/units/undead/Corpse_Walking.cfg:319
+#: data/core/units/undead/Corpse_Soulless.cfg:331
+#: data/core/units/undead/Corpse_Walking.cfg:330
 msgid "tusk"
 msgstr "長牙"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:325
-#: data/core/units/undead/Corpse_Walking.cfg:324
+#: data/core/units/undead/Corpse_Soulless.cfg:336
+#: data/core/units/undead/Corpse_Walking.cfg:335
 msgid "wc_variation^Wose"
 msgstr "樹人"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:337
-#: data/core/units/undead/Corpse_Walking.cfg:336
+#: data/core/units/undead/Corpse_Soulless.cfg:348
+#: data/core/units/undead/Corpse_Walking.cfg:347
 msgid "wc_variation^Wolf"
 msgstr "狼"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:350
-#: data/core/units/undead/Corpse_Walking.cfg:349
+#: data/core/units/undead/Corpse_Soulless.cfg:361
+#: data/core/units/undead/Corpse_Walking.cfg:360
 msgid "wc_variation^Bat"
 msgstr "蝙蝠"
 
@@ -7516,3 +7608,21 @@ msgid ""
 "These woses are able to command forest plants such as vines and creepers to "
 "hinder their enemies."
 msgstr "這些樹人能夠指揮森林的植物，像是藤蔓，來妨礙他們的敵人。"
+
+#~ msgid "Gorer"
+#~ msgstr "獠牙獸"
+
+#~ msgid "Tusklet"
+#~ msgstr "小獠牙獸"
+
+# 最後一句接得很不順，不照翻。
+#~ msgid ""
+#~ "Young tuskers are as notoriously bad-tempered as the adults of the "
+#~ "species, if a little less of a challenge. But woe betide the unfortunate "
+#~ "who comes between a Tusklet and its parents."
+#~ msgstr ""
+#~ "年輕的獠牙獸是出了名的與該物種的成年體一樣脾氣暴躁，雖然前者的挑戰性較小一"
+#~ "點。任何介在小獠牙獸和牠的父母之間的人都會變得很不幸。"
+
+#~ msgid "wc_variation^Tusker"
+#~ msgstr "長牙"

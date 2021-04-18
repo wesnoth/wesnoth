@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-03-12 23:18 UTC\n"
+"POT-Creation-Date: 2021-04-18 02:21 UTC\n"
 "PO-Revision-Date: 2021-01-13 08:10-0300\n"
 "Last-Translator: Andrei Machado <andreisp.machado@yahoo.com>\n"
 "Language-Team: none\n"
@@ -119,6 +119,70 @@ msgstr "A Mão"
 #: data/campaigns/World_Conquest/era/factions/strings.cfg:41
 msgid "The Empire"
 msgstr "O Império"
+
+#. [label]: id=title
+#. [lua]: root_node.on_modified
+#: data/campaigns/World_Conquest/gui/help_dialog.cfg:49
+#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:246
+msgid "WoCopedia"
+msgstr "CoMupedia"
+
+#. [label]: id=title
+#. [lua]: preshow
+#: data/campaigns/World_Conquest/gui/help_dialog.cfg:571
+#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:47
+msgid "Settings"
+msgstr "Configurações"
+
+#. [label]
+#: data/campaigns/World_Conquest/gui/help_dialog.cfg:670
+msgid "Difficulty"
+msgstr ""
+
+#. [label]: id=title
+#: data/campaigns/World_Conquest/gui/invest_dialog.cfg:34
+msgid "Choose a bonus for your team"
+msgstr ""
+
+#. [label]: id=title
+#: data/campaigns/World_Conquest/gui/invest_tellunit.cfg:24
+msgid "You got"
+msgstr "Você tem"
+
+#. [button]: id=ok
+#: data/campaigns/World_Conquest/gui/invest_tellunit.cfg:58
+msgid "OK"
+msgstr "OK"
+
+#. [label]: id=title
+#: data/campaigns/World_Conquest/gui/pickup_confirmation.cfg:24
+msgid "Pick up item?"
+msgstr "Pegar item?"
+
+#. [button]: id=res_yes
+#: data/campaigns/World_Conquest/gui/pickup_confirmation.cfg:62
+msgid "Yes"
+msgstr ""
+
+#. [button]: id=res_no
+#: data/campaigns/World_Conquest/gui/pickup_confirmation.cfg:72
+msgid "No"
+msgstr ""
+
+#. [label]: id=title
+#: data/campaigns/World_Conquest/gui/settings_dialog.cfg:29
+msgid "Map Settings"
+msgstr "Configurações do mapa"
+
+#. [label]
+#: data/campaigns/World_Conquest/gui/settings_dialog.cfg:50
+msgid " scenario: "
+msgstr " cenário: "
+
+#. [label]
+#: data/campaigns/World_Conquest/gui/settings_dialog.cfg:63
+msgid " map: "
+msgstr " mapa: "
 
 #: data/campaigns/World_Conquest/lua/campaign/difficulty.lua:6
 msgid "Choose difficulty level:"
@@ -1047,23 +1111,18 @@ msgstr "Torre"
 msgid "WC2 Invest"
 msgstr "WC2 Investimento"
 
-#. [lua]: GUI_FORCE_WIDGET_MINIMUM_SIZE
-#: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_dialog.lua:53
-msgid "Invest"
-msgstr "Investir"
-
 #. [lua]: gui.widget.add_invest_item
-#: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:56
+#: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:55
 msgid "Artifacts"
 msgstr "Artefatos"
 
 #. [lua]: gui.widget.add_invest_item
-#: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:75
+#: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:74
 msgid "Heroes"
 msgstr "Heróis"
 
 #. [lua]: gui.widget.add_invest_item
-#: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:78
+#: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:77
 msgid ""
 "Commanders will take your leader’s place when the leader dies, possible "
 "commanders:"
@@ -1072,89 +1131,66 @@ msgstr ""
 "possíveis são:"
 
 #. [lua]: gui.widget.add_invest_item
-#: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:85
+#: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:84
 msgid "Commander"
 msgstr "Comandante"
 
 #. [lua]: gui.widget.add_invest_item
-#: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:85
+#: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:84
 msgid "promote to leader"
 msgstr "promover para líder"
 
 #. [lua]: gui.widget.add_invest_item
-#: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:103
+#: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:102
 msgid "possible units:"
 msgstr "unidades possíveis:"
 
 #. [lua]: gui.widget.add_invest_item
-#: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:110
+#: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:109
 msgid "Deserter"
 msgstr "Desertor"
 
 #. [lua]: gui.widget.add_invest_item
 #. [lua]: preshow
-#: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:118
+#: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:117
 #: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:44
 msgid "Training"
 msgstr "Treinamento"
 
 #. [lua]: gui.widget.add_invest_item
-#: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:125
+#: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:124
 msgid "$name Training"
 msgstr "$name Treino"
 
 #. [lua]: gui.widget.add_invest_item
-#: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:135
+#: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:134
 msgid "After:"
 msgstr "Depois:"
 
 #. [lua]: gui.widget.add_invest_item
-#: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:135
+#: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:134
 msgid "Before:"
 msgstr "Antes:"
 
 #. [lua]: gui.widget.add_invest_item
-#: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:140
+#: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:139
 msgid "Other"
 msgstr "Outro"
 
 #. [lua]: gui.widget.add_invest_item
-#: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:146
+#: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:143
 msgid "+70 gold and +1 village"
 msgstr "+70 de ouro e +1 aldeia"
 
 #. [lua]: gui.widget.add_invest_item
-#: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:151
+#: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:148
 msgid "Stock up supplies"
 msgstr "Estoque de suprimentos"
 
 #. [lua]: gui.widget.add_invest_item
-#: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:156
+#: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:153
 msgid "Gives 70 gold and places a village on your keep."
 msgstr "Concede 70 de ouro e coloca uma aldeia na sua torre de menagem."
-
-#: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_tellunit.lua:20
-msgid "You got"
-msgstr "Você tem"
-
-#: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_tellunit.lua:54
-msgid "OK"
-msgstr "OK"
-
-#. [lua]: show_dialog
-#: data/campaigns/World_Conquest/lua/game_mechanics/pickup_confirmation_dialog.lua:26
-msgid "Pick up item?"
-msgstr "Pegar item?"
-
-#. [lua]: show_dialog
-#: data/campaigns/World_Conquest/lua/game_mechanics/pickup_confirmation_dialog.lua:64
-msgid "Yes"
-msgstr ""
-
-#. [lua]: show_dialog
-#: data/campaigns/World_Conquest/lua/game_mechanics/pickup_confirmation_dialog.lua:74
-msgid "No"
-msgstr ""
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/promote_commander.lua:5
 msgid "No! This is the end!"
@@ -2422,13 +2458,6 @@ msgstr ""
 "desertores e líderes aleatórios também dependem da sua facção; os itens que "
 "você pode vir a conseguir não dependem da facção que você escolheu."
 
-#. [lua]: preshow
-#. [lua]: formula_gui_scale_resolution
-#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:47
-#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help_dialog.lua:605
-msgid "Settings"
-msgstr "Configurações"
-
 #. [lua]: type_icon
 #: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:171
 msgid " (not available for enemies)"
@@ -2438,18 +2467,6 @@ msgstr " (não disponível para os inimigos)"
 #: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:172
 msgid " (not available for players)"
 msgstr " (não disponível para os jogadores)"
-
-#. [lua]: root_node.on_modified
-#. [lua]: formula_gui_scale_resolution
-#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:245
-#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help_dialog.lua:87
-msgid "WoCopedia"
-msgstr "CoMupedia"
-
-#. [lua]: formula_gui_scale_resolution
-#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help_dialog.lua:704
-msgid "Difficulty"
-msgstr ""
 
 #. [lua]: wc_ii_generate_scenario
 #. [lua]: wct_store_possible_encampment_ford
@@ -2766,21 +2783,6 @@ msgstr ""
 #: data/campaigns/World_Conquest/lua/map/scenario_utils/side_definitions.lua:61
 msgid "Allies"
 msgstr ""
-
-#. [lua]: _G.wct_map_generator
-#: data/campaigns/World_Conquest/lua/map/settings/settings_dialog.lua:47
-msgid "Map Settings"
-msgstr "Configurações do mapa"
-
-#. [lua]: _G.wct_map_generator
-#: data/campaigns/World_Conquest/lua/map/settings/settings_dialog.lua:68
-msgid " scenario: "
-msgstr " cenário: "
-
-#. [lua]: _G.wct_map_generator
-#: data/campaigns/World_Conquest/lua/map/settings/settings_dialog.lua:81
-msgid " map: "
-msgstr " mapa: "
 
 #: data/campaigns/World_Conquest/lua/optional_mechanics/pick_advance.lua:10
 msgid "Preset Advancement"
@@ -3567,6 +3569,9 @@ msgid ""
 "difficulties.\n"
 "(Expert level, 5 scenarios.)"
 msgstr ""
+
+#~ msgid "Invest"
+#~ msgstr "Investir"
 
 #~ msgid "Yes (enter)"
 #~ msgstr "Sim (enter)"

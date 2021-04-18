@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-03-20 22:02-0300\n"
+"POT-Creation-Date: 2021-04-17 22:21-0400\n"
 "PO-Revision-Date: 2020-01-13 11:39+0000\n"
 "Last-Translator: GunChleoc, 2019\n"
 "Language-Team: Gaelic, Scottish (https://www.transifex.com/gunchleoc/"
@@ -243,6 +243,11 @@ msgstr "Òr a bheir thu leat:"
 #: data/lua/wml/objectives.lua:39 src/map_command_handler.hpp:337
 msgid "Notes:"
 msgstr "An aire:"
+
+#. [button]: id=ok
+#: data/campaigns/World_Conquest/gui/help_dialog.cfg:734
+msgid "Close"
+msgstr ""
 
 #. [language]
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:147
@@ -4149,7 +4154,7 @@ msgstr ""
 "1-4)"
 
 #. [lua]: wml_actions.deprecated_message
-#: data/lua/wml-tags.lua:903
+#: data/lua/wml-tags.lua:851
 msgid "Invalid deprecation level (should be 1-4)"
 msgstr ""
 "Chan eil leibheil an dì-mholaidh dligheach (bu chòir dha bhith eadar 1-4)"
@@ -4196,8 +4201,8 @@ msgstr "do-slànaichte"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: wesnoth.wml_actions.message
-#: data/lua/wml/message.lua:433 src/scripting/game_lua_kernel.cpp:2665
-#: src/scripting/game_lua_kernel.cpp:2700
+#: data/lua/wml/message.lua:433 src/scripting/game_lua_kernel.cpp:2721
+#: src/scripting/game_lua_kernel.cpp:2756
 msgid "input"
 msgstr "ion-chur"
 
@@ -4351,23 +4356,23 @@ msgstr ""
 
 #. [heals]: id=aura of death 4
 #. [heals]: id=aura of death 8
-#: data/scenario-test.cfg:1073 data/scenario-test.cfg:1101
+#: data/scenario-test.cfg:1080 data/scenario-test.cfg:1108
 msgid "aura of death ("
 msgstr ""
 
 #. [heals]: id=aura of death 4
 #. [heals]: id=aura of death 8
-#: data/scenario-test.cfg:1074 data/scenario-test.cfg:1102
+#: data/scenario-test.cfg:1081 data/scenario-test.cfg:1109
 msgid "female^aura of death ("
 msgstr ""
 
 #. [language]
-#: data/scenario-test.cfg:4403
+#: data/scenario-test.cfg:4459
 msgid "very long"
 msgstr "glè fhada"
 
 #. [language]
-#: data/scenario-test.cfg:4404
+#: data/scenario-test.cfg:4460
 msgid "electrical"
 msgstr "dealanach"
 
@@ -4388,114 +4393,114 @@ msgid "Ben"
 msgstr ""
 
 #. [action]: id=button-playreplay, type=image
-#: data/themes/_initial.cfg:428
+#: data/themes/_initial.cfg:413
 #, fuzzy
 #| msgid "replay"
 msgid "replay^Play"
 msgstr "ath-chluiche"
 
 #. [action]: id=button-playreplay, type=image
-#: data/themes/_initial.cfg:429 data/themes/_initial.cfg:589
+#: data/themes/_initial.cfg:414 data/themes/_initial.cfg:574
 msgid "continuous replay"
 msgstr "ath-chluich gun sgur"
 
 #. [action]: id=button-stopreplay, type=image
-#: data/themes/_initial.cfg:443
+#: data/themes/_initial.cfg:428
 #, fuzzy
 #| msgid "replay"
 msgid "replay^Stop"
 msgstr "ath-chluiche"
 
 #. [action]: id=button-stopreplay, type=image
-#: data/themes/_initial.cfg:444
+#: data/themes/_initial.cfg:429
 msgid "pause after current move"
 msgstr "cuir ’na stad às dèidh a’ ghluasaid làithrich"
 
 #. [action]: id=button-resetreplay, type=image
-#: data/themes/_initial.cfg:459
+#: data/themes/_initial.cfg:444
 #, fuzzy
 #| msgid "replay"
 msgid "replay^Reset"
 msgstr "ath-chluiche"
 
 #. [action]: id=button-resetreplay, type=image
-#: data/themes/_initial.cfg:460 data/themes/_initial.cfg:617
+#: data/themes/_initial.cfg:445 data/themes/_initial.cfg:602
 msgid "reset to beginning"
 msgstr "Aisig dhan toiseach"
 
 #. [action]: id=button-nextturn, type=image
-#: data/themes/_initial.cfg:475 data/themes/_initial.cfg:630
+#: data/themes/_initial.cfg:460 data/themes/_initial.cfg:615
 msgid "Next Turn"
 msgstr "Ath chuairt"
 
 #. [action]: id=button-nextturn, type=image
-#: data/themes/_initial.cfg:476 data/themes/_initial.cfg:631
+#: data/themes/_initial.cfg:461 data/themes/_initial.cfg:616
 msgid "play turn"
 msgstr "cluich cuairt"
 
 #. [action]: id=button-nextside, type=image
-#: data/themes/_initial.cfg:491 data/themes/_initial.cfg:644
+#: data/themes/_initial.cfg:476 data/themes/_initial.cfg:629
 msgid "Next Side"
 msgstr "Ath thaobh"
 
 #. [action]: id=button-nextside, type=image
-#: data/themes/_initial.cfg:492 data/themes/_initial.cfg:645
+#: data/themes/_initial.cfg:477 data/themes/_initial.cfg:630
 msgid "play side turn"
 msgstr "cluich cuairt an taoibh"
 
 #. [action]: id=button-nextmove, type=image
-#: data/themes/_initial.cfg:506 data/themes/_initial.cfg:658
+#: data/themes/_initial.cfg:491 data/themes/_initial.cfg:643
 msgid "Next Move"
 msgstr "Ath ghluasad"
 
 #. [action]: id=button-nextmove, type=image
-#: data/themes/_initial.cfg:507 data/themes/_initial.cfg:659
+#: data/themes/_initial.cfg:492 data/themes/_initial.cfg:644
 msgid "play single move"
 msgstr "cluich aon ghluasad"
 
 #. [menu]: id=show-what
-#: data/themes/_initial.cfg:519 data/themes/_initial.cfg:671
+#: data/themes/_initial.cfg:504 data/themes/_initial.cfg:656
 msgid "Point of view"
 msgstr "Taobh-seallaidh"
 
 #. [action]: id=button-continue
-#: data/themes/_initial.cfg:530
+#: data/themes/_initial.cfg:515
 msgid "Continue Play"
 msgstr "Lean air adhart a’ cluiche"
 
 #. [action]: id=button-continue
-#: data/themes/_initial.cfg:531
+#: data/themes/_initial.cfg:516
 msgid "Exit the replay mode and continue playing normally."
 msgstr ""
 "Fàg modh na h-ath-chluiche agus lean air adhart a’ cluiche gu h-àbhaisteach."
 
 #. [action]: id=skip-animation, type=checkbox
-#: data/themes/_initial.cfg:543 data/themes/_initial.cfg:683
+#: data/themes/_initial.cfg:528 data/themes/_initial.cfg:668
 msgid "Skip animation"
 msgstr "Leig beòthachadh seachad"
 
 #. [label]: id=replay-label
-#: data/themes/_initial.cfg:573
+#: data/themes/_initial.cfg:558
 msgid "Replay"
 msgstr "Ath-chluiche"
 
 #. [action]: id=button-playreplay, type=image
-#: data/themes/_initial.cfg:588
+#: data/themes/_initial.cfg:573
 msgid "Play"
 msgstr "Cluich"
 
 #. [action]: id=button-stopreplay, type=image
-#: data/themes/_initial.cfg:602
+#: data/themes/_initial.cfg:587
 msgid "Stop"
 msgstr "Stad"
 
 #. [action]: id=button-stopreplay, type=image
-#: data/themes/_initial.cfg:603
+#: data/themes/_initial.cfg:588
 msgid "pause"
 msgstr "cuir ’na stad"
 
 #. [action]: id=button-resetreplay, type=image
-#: data/themes/_initial.cfg:616
+#: data/themes/_initial.cfg:601
 msgid "Reset"
 msgstr "Aisig"
 
@@ -5602,19 +5607,19 @@ msgstr[3] "$friends aonad càirdeil air fàire"
 msgid "(press $hotkey to keep moving)"
 msgstr "(brùth air $hotkey gus leantainn air adhart leis a’ ghluasad)"
 
-#: src/addon/client.cpp:75
+#: src/addon/client.cpp:76
 msgid "Connecting to $server_address|..."
 msgstr "A’ ceangal ri $server_address|…"
 
-#: src/addon/client.cpp:122
+#: src/addon/client.cpp:123
 msgid "Downloading list of add-ons..."
 msgstr "A’ luchdadh a-nuas liosta dhe na tuilleadain…"
 
-#: src/addon/client.cpp:143
+#: src/addon/client.cpp:144
 msgid "Requesting distribution terms..."
 msgstr "Ag iarraidh teirmichean an sgaoilidh…"
 
-#: src/addon/client.cpp:167
+#: src/addon/client.cpp:168
 msgid ""
 "The add-on <i>$addon_title</i> has an invalid id '$addon_id' and cannot be "
 "published."
@@ -5622,7 +5627,7 @@ msgstr ""
 "Tha is mì-dhligheach “$addon_id” aig an tuilleadan <i>$addon_title</i> is "
 "cha ghabh fhoillseachadh."
 
-#: src/addon/client.cpp:193
+#: src/addon/client.cpp:180
 msgid ""
 "The add-on <i>$addon_title</i> has a file or directory containing invalid "
 "characters and cannot be published."
@@ -5630,7 +5635,7 @@ msgstr ""
 "Tha ainm faidhle no pasgain sa bheil caractar mì-dhligheach aig an "
 "tuilleadan <i>$addon_title</i> is cha ghabh fhoillseachadh."
 
-#: src/addon/client.cpp:201
+#: src/addon/client.cpp:188
 msgid ""
 "The add-on <i>$addon_title</i> has an invalid file or directory name and "
 "cannot be published. File or directory names may not contain '..' or end "
@@ -5647,7 +5652,7 @@ msgstr ""
 "\n"
 "&quot; * / : &lt; &gt; ? \\ | ~"
 
-#: src/addon/client.cpp:212
+#: src/addon/client.cpp:199
 msgid ""
 "The add-on <i>$addon_title</i> contains files or directories with case "
 "conflicts. File or directory names may not be differently-cased versions of "
@@ -5657,32 +5662,32 @@ msgstr ""
 "san tuilleadan <i>$addon_title</i>. Feumaidh diofar eile seach litrichean "
 "mòra is beaga a bhith ann eadar ainmean."
 
-#: src/addon/client.cpp:227
+#: src/addon/client.cpp:214
 #, fuzzy
 #| msgid "Requesting distribution terms..."
 msgid "Requesting file index..."
 msgstr "Ag iarraidh teirmichean an sgaoilidh…"
 
-#: src/addon/client.cpp:243
+#: src/addon/client.cpp:230
 #, fuzzy
 #| msgid "Sending add-on <i>$addon_title</i>..."
 msgid "Sending an update pack for the add-on <i>$addon_title</i>..."
 msgstr "A’ cur a-null an tuilleadain <i>$addon_title</i>…"
 
-#: src/addon/client.cpp:264
+#: src/addon/client.cpp:251
 msgid "Sending add-on <i>$addon_title</i>..."
 msgstr "A’ cur a-null an tuilleadain <i>$addon_title</i>…"
 
-#: src/addon/client.cpp:297
+#: src/addon/client.cpp:294
 msgid "Removing add-on <i>$addon_title</i> from the server..."
 msgstr ""
 "A’ toirt air falbh an tuilleadain <i>$addon_title</i> on fhrithealaiche…"
 
-#: src/addon/client.cpp:326
+#: src/addon/client.cpp:323
 msgid "Downloading add-on <i>$addon_title</i>..."
 msgstr "A’ luchdadh a-nuas an tuilleadain <i>$addon_title</i>…"
 
-#: src/addon/client.cpp:345 src/addon/client.cpp:371
+#: src/addon/client.cpp:342 src/addon/client.cpp:368
 msgid ""
 "The add-on <i>$addon_title</i> has an invalid file or directory name and "
 "cannot be installed."
@@ -5690,7 +5695,7 @@ msgstr ""
 "Tha ainm faidhle no pasgain mì-dhligheach aig an tuilleadan <i>$addon_title</"
 "i> is cha ghabh e stàladh."
 
-#: src/addon/client.cpp:350 src/addon/client.cpp:376
+#: src/addon/client.cpp:347 src/addon/client.cpp:373
 msgid ""
 "The add-on <i>$addon_title</i> has file or directory names with case "
 "conflicts. This may cause problems."
@@ -5699,11 +5704,11 @@ msgstr ""
 "nach eil diofar seach litrichean mòra is beaga. Dh’fhaoidte gun adhbharaich "
 "seo trioblaid."
 
-#: src/addon/client.cpp:409
+#: src/addon/client.cpp:406
 msgid "The server responded with an error:"
 msgstr "Dh’fhreagair am frithealaiche le mearachd:"
 
-#: src/addon/client.cpp:459
+#: src/addon/client.cpp:456
 msgid ""
 "The selected add-on has the following dependency, which is not currently "
 "installed or available from the server. Do you wish to continue?"
@@ -5727,11 +5732,11 @@ msgstr[3] ""
 "stàlaichte agad ’s nach eil ri fhaighinn air an fhrithealaiche. A bheil thu "
 "airson leantainn air adhart?"
 
-#: src/addon/client.cpp:468
+#: src/addon/client.cpp:465
 msgid "Broken Dependencies"
 msgstr "Eisimeileachdan briste"
 
-#: src/addon/client.cpp:508
+#: src/addon/client.cpp:505
 msgid ""
 "The following dependency could not be installed. Do you still wish to "
 "continue?"
@@ -5751,11 +5756,11 @@ msgstr[3] ""
 "Cha b’ urrainn dhuinn na h-eisimeileachdan a leanas a stàladh. A bheil thu "
 "airson leantainn air adhart co-dhiù?"
 
-#: src/addon/client.cpp:512
+#: src/addon/client.cpp:509
 msgid "Dependencies Installation Failed"
 msgstr "Dh’fhàillig le stàladh nan eisimeileachdan"
 
-#: src/addon/client.cpp:535
+#: src/addon/client.cpp:532
 msgid ""
 "The add-on '$addon|' is already installed and contains additional "
 "information that will be permanently lost if you continue:"
@@ -5763,24 +5768,24 @@ msgstr ""
 "Tha an tuilleadan “$addon|” stàlaichte agad mar-thà agus tha fiosrachadh a "
 "bharrachd ’na bhroinn a chailleas tu ma leanas tu air adhart:"
 
-#: src/addon/client.cpp:539
+#: src/addon/client.cpp:536
 msgid "Publishing information file (.pbl)"
 msgstr "Faidhle fiosrachadh an fhoillseachaidh (.pbl)"
 
-#: src/addon/client.cpp:543
+#: src/addon/client.cpp:540
 msgid "Version control system (VCS) information"
 msgstr "Fiosrachadh siostam smachd nan tionndaidhean (VCS)"
 
-#: src/addon/client.cpp:547
+#: src/addon/client.cpp:544
 msgid "Do you really wish to continue?"
 msgstr "A bheil thu airson leantainn air adhart?"
 
-#: src/addon/client.cpp:549 src/addon/manager_ui.cpp:172
+#: src/addon/client.cpp:546 src/addon/manager_ui.cpp:172
 #: src/game_initialization/multiplayer.cpp:361
 msgid "Confirm"
 msgstr "Dearbhaich"
 
-#: src/addon/client.cpp:689
+#: src/addon/client.cpp:686
 msgid "Add-ons Manager"
 msgstr "Manaidsear nan tuilleadan"
 
@@ -5953,43 +5958,43 @@ msgstr ""
 "Cha deach tuilleadan a lorg air frithealaiche nan tuilleadan air a bheil an "
 "id $addon_id."
 
-#: src/addon/validation.cpp:448
+#: src/addon/validation.cpp:387
 msgid "Success."
 msgstr ""
 
-#: src/addon/validation.cpp:452
+#: src/addon/validation.cpp:391
 msgid "Incorrect add-on passphrase."
 msgstr ""
 
-#: src/addon/validation.cpp:456
+#: src/addon/validation.cpp:395
 msgid "Upload denied. Please contact the server administration for assistance."
 msgstr ""
 
-#: src/addon/validation.cpp:460
+#: src/addon/validation.cpp:399
 msgid "Attempted to upload an update pack for a non-existent add-on."
 msgstr ""
 
-#: src/addon/validation.cpp:469
+#: src/addon/validation.cpp:408
 msgid "No add-on data was supplied by the client."
 msgstr ""
 
-#: src/addon/validation.cpp:473
+#: src/addon/validation.cpp:412
 #, fuzzy
 #| msgid "Invalid location"
 msgid "Invalid upload pack."
 msgstr "Àite mì-dhligheach"
 
-#: src/addon/validation.cpp:477
+#: src/addon/validation.cpp:416
 #, fuzzy
 #| msgid "Invalid tag name"
 msgid "Invalid add-on name."
 msgstr "Ainm taga mì-dhligheach"
 
-#: src/addon/validation.cpp:481
+#: src/addon/validation.cpp:420
 msgid "Formatting character in add-on name."
 msgstr ""
 
-#: src/addon/validation.cpp:485
+#: src/addon/validation.cpp:424
 msgid ""
 "The add-on contains files or directories with illegal names.\n"
 "\n"
@@ -6002,7 +6007,7 @@ msgid ""
 "end with '.'."
 msgstr ""
 
-#: src/addon/validation.cpp:495
+#: src/addon/validation.cpp:434
 #, fuzzy
 #| msgid ""
 #| "The add-on <i>$addon_title</i> contains files or directories with case "
@@ -6018,81 +6023,81 @@ msgstr ""
 "san tuilleadan <i>$addon_title</i>. Feumaidh diofar eile seach litrichean "
 "mòra is beaga a bhith ann eadar ainmean."
 
-#: src/addon/validation.cpp:501
+#: src/addon/validation.cpp:440
 msgid "The add-on name contains an invalid UTF-8 sequence."
 msgstr ""
 
-#: src/addon/validation.cpp:510
+#: src/addon/validation.cpp:449
 msgid "No add-on title specified."
 msgstr ""
 
-#: src/addon/validation.cpp:514
+#: src/addon/validation.cpp:453
 msgid "No add-on author/maintainer name specified."
 msgstr ""
 
-#: src/addon/validation.cpp:518
+#: src/addon/validation.cpp:457
 msgid "No add-on version specified."
 msgstr ""
 
-#: src/addon/validation.cpp:522
+#: src/addon/validation.cpp:461
 #, fuzzy
 #| msgid "No description available."
 msgid "No add-on description specified."
 msgstr "Chan eil tuairisgeul ri fhaighinn."
 
-#: src/addon/validation.cpp:526
+#: src/addon/validation.cpp:465
 msgid "No add-on author/maintainer email specified."
 msgstr ""
 
-#: src/addon/validation.cpp:530
+#: src/addon/validation.cpp:469
 msgid "Missing passphrase."
 msgstr ""
 
-#: src/addon/validation.cpp:534
+#: src/addon/validation.cpp:473
 msgid "Formatting character in add-on title."
 msgstr ""
 
-#: src/addon/validation.cpp:538
+#: src/addon/validation.cpp:477
 #, fuzzy
 #| msgid "Invalid unit type"
 msgid "Invalid or unspecified add-on type."
 msgstr "Seòrsa aonaid mì-dhligheach"
 
-#: src/addon/validation.cpp:542
+#: src/addon/validation.cpp:481
 msgid "Version number not greater than the latest uploaded version."
 msgstr ""
 
-#: src/addon/validation.cpp:546
+#: src/addon/validation.cpp:485
 msgid "Feedback topic id is not a number."
 msgstr ""
 
-#: src/addon/validation.cpp:550
+#: src/addon/validation.cpp:489
 msgid "Feedback topic does not exist."
 msgstr ""
 
-#: src/addon/validation.cpp:554
+#: src/addon/validation.cpp:493
 msgid "The add-on publish information contains an invalid UTF-8 sequence."
 msgstr ""
 
-#: src/addon/validation.cpp:563
+#: src/addon/validation.cpp:502
 msgid "Unspecified server error."
 msgstr ""
 
-#: src/addon/validation.cpp:567
+#: src/addon/validation.cpp:506
 msgid "Server is in read-only mode."
 msgstr ""
 
-#: src/addon/validation.cpp:571
+#: src/addon/validation.cpp:510
 #, fuzzy
 #| msgid "You have no add-ons installed."
 msgid "Corrupted server add-ons list."
 msgstr "Chan eil tuilleadan air stàladh agad."
 
-#: src/addon/validation.cpp:575
+#: src/addon/validation.cpp:514
 msgid "Empty add-on version list on the server."
 msgstr ""
 
-#: src/addon/validation.cpp:585
+#: src/addon/validation.cpp:524
 msgid "Unspecified validation failure."
 msgstr ""
 
@@ -6668,7 +6673,7 @@ msgid "mp_game_available_slots^Full"
 msgstr "Làn"
 
 #: src/game_initialization/lobby_data.cpp:443
-#: src/game_initialization/lobby_data.cpp:445 src/savegame.cpp:659
+#: src/game_initialization/lobby_data.cpp:445 src/savegame.cpp:664
 msgid "Turn"
 msgstr "Cuairt"
 
@@ -7256,23 +7261,23 @@ msgstr "Gèill"
 msgid "Map-Screenshot"
 msgstr "Glacadh-sgrìn mapa"
 
-#: src/hotkey/hotkey_handler.cpp:221
+#: src/hotkey/hotkey_handler.cpp:224
 msgid "(press $hk to disable)"
 msgstr "(brùth air $hk gus a chur à comas)"
 
-#: src/hotkey/hotkey_handler.cpp:221
+#: src/hotkey/hotkey_handler.cpp:224
 msgid "Accelerated speed enabled!"
 msgstr "Tha luaths luathaichte an comas!"
 
-#: src/hotkey/hotkey_handler.cpp:225
+#: src/hotkey/hotkey_handler.cpp:228
 msgid "Accelerated speed disabled!"
 msgstr "Tha luaths luathaichte à comas!"
 
-#: src/hotkey/hotkey_handler.cpp:422
+#: src/hotkey/hotkey_handler.cpp:425
 msgid "Back to Turn "
 msgstr "Till dhan chuairt "
 
-#: src/hotkey/hotkey_handler.cpp:428
+#: src/hotkey/hotkey_handler.cpp:431
 msgid "Back to Start"
 msgstr "Till dhan toiseach"
 
@@ -8582,12 +8587,12 @@ msgid "%a %b %d %H:%M %Y"
 msgstr "%a %d %b %H:%M %Y"
 
 #. TRANSLATORS: This string is used as part of a filename, as in, "HttT-The Elves Besieged replay.gz"
-#: src/save_index.cpp:261 src/savegame.cpp:585
+#: src/save_index.cpp:261 src/savegame.cpp:590
 msgid "replay"
 msgstr "ath-chluiche"
 
-#: src/save_index.cpp:345 src/savegame.cpp:71 src/savegame.cpp:621
-#: src/savegame.cpp:623
+#: src/save_index.cpp:345 src/savegame.cpp:71 src/savegame.cpp:626
+#: src/savegame.cpp:628
 msgid "Auto-Save"
 msgstr "Fèin-shàbhaladh"
 
@@ -8655,31 +8660,38 @@ msgstr ""
 "Cha bu chòir do dh’ainmean sàbhalaidh a chrìochnachadh le “.gz” no “.bz2”. "
 "Feuch an toir thu an leudachan air falbh."
 
-#: src/savegame.cpp:485
+#: src/savegame.cpp:443
+msgid ""
+"Save names may not end with a dot, or contain two dots or any of the "
+"following characters:\n"
+"    \" * / : < > ? \\ | ~"
+msgstr ""
+
+#: src/savegame.cpp:490
 msgid "Saved"
 msgstr "Air a shàbhaladh"
 
-#: src/savegame.cpp:485
+#: src/savegame.cpp:490
 msgid "The game has been saved."
 msgstr "Chaidh an geama a shàbhaladh."
 
-#: src/savegame.cpp:517 src/savegame.cpp:537
+#: src/savegame.cpp:522 src/savegame.cpp:542
 msgid "Could not write to file"
 msgstr "Cha b’ urrainn dhuinn sgrìobhadh dhan fhaidhle"
 
-#: src/savegame.cpp:574
+#: src/savegame.cpp:579
 msgid "Save Replay"
 msgstr "Sàbhail ath-chluiche"
 
-#: src/savegame.cpp:603
+#: src/savegame.cpp:608
 msgid "Could not auto save the game. Please save the game manually."
 msgstr "Dh’fhàillig am fèin-shàbhaladh. Feuch an sàbhail thu an geama a làimh."
 
-#: src/savegame.cpp:653
+#: src/savegame.cpp:658
 msgid "Save Game"
 msgstr "Sàbhail an geama"
 
-#: src/savegame.cpp:667
+#: src/savegame.cpp:672
 msgid "Game state is corrupted"
 msgstr "Tha staid a’ gheama coirbte"
 

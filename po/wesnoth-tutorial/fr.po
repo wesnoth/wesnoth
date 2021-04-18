@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth_Tutorial-1.12\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-03-21 01:02 UTC\n"
+"POT-Creation-Date: 2021-04-18 02:21 UTC\n"
 "PO-Revision-Date: 2020-06-01 11:00+0200\n"
 "Last-Translator: Syll <syll-dev@laposte.net>\n"
 "Language-Team: French <wesnoth@ml.free.fr>\n"
@@ -42,28 +42,29 @@ msgid "Beginner"
 msgstr ""
 
 # À l'infinitif comme le titre de la boîte de dialogue de confirmation quand on veut quitter la partie ("Quitter"). Sauf si quelqu'un a une autre référence.
-#. [lua]: wml_actions.select_character
-#: data/campaigns/tutorial/lua/character_selection.lua:25
+#. [label]
+#: data/campaigns/tutorial/gui/character_selection.cfg:21
 msgid "Select Character"
 msgstr "Sélectionner un personnage"
 
-#. [lua]: wml_actions.select_character
-#: data/campaigns/tutorial/lua/character_selection.lua:36
+#. [label]
+#: data/campaigns/tutorial/gui/character_selection.cfg:32
 msgid "Who do you want to play?"
 msgstr "Qui souhaitez-vous jouer ?"
 
 #. [side]: type=Fighter, id=student
-#. [lua]: wml_actions.select_character
-#: data/campaigns/tutorial/lua/character_selection.lua:67
+#. [button]
+#: data/campaigns/tutorial/gui/character_selection.cfg:63
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:32
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:30
 msgid "Konrad"
 msgstr "Konrad"
 
 #. [modify_side]
+#. [button]
 #. [lua]: wml_actions.select_character
-#: data/campaigns/tutorial/lua/character_selection.lua:76
-#: data/campaigns/tutorial/lua/character_selection.lua:94
+#: data/campaigns/tutorial/gui/character_selection.cfg:72
+#: data/campaigns/tutorial/lua/character_selection.lua:21
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:178
 msgid "Li’sar"
 msgstr "Li’sar"

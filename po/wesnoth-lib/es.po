@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-03-20 22:03-0300\n"
+"POT-Creation-Date: 2021-04-17 22:21-0400\n"
 "PO-Revision-Date: 2020-05-12 09:57+0200\n"
 "Last-Translator: Pepe <donpepe1963@gmail.com>\n"
 "Language-Team: Spanish <kde-i18n-doc@kde.org>\n"
@@ -52,16 +52,6 @@ msgstr "Alertas multijugador"
 #. [ai]: id=ai_default_rca_alternate_recruiting
 #: data/ai/dev/ai_default_rca_alternate_recruiting.cfg:10
 msgid "Multiplayer_AI^Dev AI: Default AI (RCA) with Alternate Recruiting"
-msgstr ""
-
-#. [ai]: id=formula_ai # id is needed to uniquely identify a MP AI, it is not needed in the scenario AI
-#: data/ai/dev/formula_ai.cfg:10
-msgid "Multiplayer_AI^Dev AI: Default + Experimental Recruitment (Formula AI)"
-msgstr ""
-
-#. [ai]: id=formula_ai_poisoning
-#: data/ai/dev/formula_ai_poisoning.cfg:9
-msgid "Multiplayer_AI^Dev AI: Default + Poisoning (Formula AI)"
 msgstr ""
 
 #. [terrain_type]: id=fence
@@ -2333,7 +2323,7 @@ msgstr "Publicar el complemento"
 #. [button]: id=single_uninstall
 #. [button]: id=uninstall
 #: data/gui/widget/addon_list.cfg:435 data/gui/window/addon_manager.cfg:244
-#: src/gui/dialogs/addon/manager.cpp:806
+#: src/gui/dialogs/addon/manager.cpp:814
 msgid "Uninstall add-on"
 msgstr "Desinstalar el complemento"
 
@@ -2350,7 +2340,7 @@ msgstr "Mensajes en espera"
 #: data/gui/window/attack_predictions.cfg:304 data/gui/window/chat_log.cfg:201
 #: data/gui/window/end_credits.cfg:145
 #: data/gui/window/game_cache_options.cfg:247
-#: data/gui/window/game_stats.cfg:843 data/gui/window/game_version.cfg:652
+#: data/gui/window/game_stats.cfg:843 data/gui/window/game_version.cfg:655
 #: data/gui/window/gamestate_inspector.cfg:397
 #: data/gui/window/generator_settings.cfg:190
 #: data/gui/window/help_browser.cfg:188
@@ -2373,38 +2363,51 @@ msgstr "Cerrar"
 msgid "Profile"
 msgstr "Perfil"
 
-#. [widget]: id=name
-#. [label]
-#: data/gui/window/addon_connect.cfg:40 data/gui/window/mp_connect.cfg:52
-#: data/gui/window/mp_method_selection.cfg:254
-msgid "Connect to Server"
-msgstr "Conectar al servidor"
+#. [window]: id=addon_auth
+#: data/gui/window/addon_auth.cfg:8
+msgid "Add-on upload authentication dialog"
+msgstr ""
 
 #. [label]
-#: data/gui/window/addon_connect.cfg:59
-msgid "You will now connect to a server to download add-ons."
-msgstr "Ahora se conectará a un servidor para descargar complementos."
+#: data/gui/window/addon_auth.cfg:41
+msgid "Authenticate"
+msgstr ""
 
 #. [label]
-#: data/gui/window/addon_connect.cfg:89
-msgid "Server:"
-msgstr "Servidor:"
+#: data/gui/window/addon_auth.cfg:71 data/gui/window/mp_create_game.cfg:990
+#: data/gui/window/mp_join_game_password_prompt.cfg:90
+#: data/gui/window/mp_login.cfg:143
+msgid "Password:"
+msgstr "Contraseña:"
 
-#. [label]
-#. [button]: id=remove_addons
-#: data/gui/window/addon_connect.cfg:144
-#: data/gui/window/addon_uninstall_list.cfg:51
-msgid "Remove Add-ons"
-msgstr "Eliminar complementos"
-
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
-#: data/gui/window/addon_connect.cfg:197 data/gui/window/mp_connect.cfg:299
-msgid "Connect"
-msgstr "Conectar"
+#: data/gui/window/addon_auth.cfg:119 data/gui/window/core_dialog.cfg:227
+#: data/gui/window/custom_tod.cfg:431
+#: data/gui/window/depcheck_select_new.cfg:151
+#: data/gui/window/edit_label.cfg:139 data/gui/window/edit_text.cfg:116
+#: data/gui/window/editor_edit_label.cfg:301
+#: data/gui/window/editor_edit_scenario.cfg:287
+#: data/gui/window/editor_edit_side.cfg:443 data/gui/window/file_dialog.cfg:437
+#: data/gui/window/folder_create.cfg:119 data/gui/window/label_settings.cfg:137
+#: data/gui/window/language_selection.cfg:148 data/gui/window/logging.cfg:259
+#: data/gui/window/mp_change_control.cfg:203
+#: data/gui/window/mp_faction_select.cfg:388
+#: data/gui/window/mp_join_game_password_prompt.cfg:136
+#: data/gui/window/mp_login.cfg:243 data/gui/window/mp_method_selection.cfg:327
+#: data/gui/window/select_orb_colors.cfg:138
+#: data/gui/window/simple_item_selector.cfg:145
+#: data/gui/window/sp_options_configure.cfg:105
+#: data/gui/window/theme_list.cfg:142 data/gui/window/unit_advance.cfg:191
+#: data/gui/window/unit_create.cfg:294 data/gui/window/wml_error.cfg:162
+#: data/gui/window/wml_message.cfg:444 src/gui/dialogs/message.cpp:181
+#: src/gui/dialogs/message.cpp:188
+msgid "OK"
+msgstr "Aceptar"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=cancel
-#: data/gui/window/addon_connect.cfg:211
+#: data/gui/window/addon_auth.cfg:133 data/gui/window/addon_connect.cfg:211
 #: data/gui/window/addon_license_prompt.cfg:115
 #: data/gui/window/addon_uninstall_list.cfg:174
 #: data/gui/window/campaign_dialog.cfg:497
@@ -2441,6 +2444,35 @@ msgstr "Conectar"
 #: src/hotkey/hotkey_command.cpp:73
 msgid "Cancel"
 msgstr "Cancelar"
+
+#. [widget]: id=name
+#. [label]
+#: data/gui/window/addon_connect.cfg:40 data/gui/window/mp_connect.cfg:52
+#: data/gui/window/mp_method_selection.cfg:254
+msgid "Connect to Server"
+msgstr "Conectar al servidor"
+
+#. [label]
+#: data/gui/window/addon_connect.cfg:59
+msgid "You will now connect to a server to download add-ons."
+msgstr "Ahora se conectará a un servidor para descargar complementos."
+
+#. [label]
+#: data/gui/window/addon_connect.cfg:89
+msgid "Server:"
+msgstr "Servidor:"
+
+#. [label]
+#. [button]: id=remove_addons
+#: data/gui/window/addon_connect.cfg:144
+#: data/gui/window/addon_uninstall_list.cfg:51
+msgid "Remove Add-ons"
+msgstr "Eliminar complementos"
+
+#. [button]: id=ok
+#: data/gui/window/addon_connect.cfg:197 data/gui/window/mp_connect.cfg:299
+msgid "Connect"
+msgstr "Conectar"
 
 #. [label]
 #: data/gui/window/addon_license_prompt.cfg:39
@@ -2529,7 +2561,7 @@ msgstr "Dependencias:"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=dependencies
-#: data/gui/window/addon_manager.cfg:520 src/gui/dialogs/addon/manager.cpp:880
+#: data/gui/window/addon_manager.cfg:520 src/gui/dialogs/addon/manager.cpp:888
 msgid "addon_dependencies^None"
 msgstr "Ninguna"
 
@@ -2540,7 +2572,7 @@ msgstr "Traducciones:"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=translations
-#: data/gui/window/addon_manager.cfg:554 src/gui/dialogs/addon/manager.cpp:894
+#: data/gui/window/addon_manager.cfg:554 src/gui/dialogs/addon/manager.cpp:902
 msgid "translations^None"
 msgstr "Ninguna"
 
@@ -2573,8 +2605,8 @@ msgstr "Gestor de complementos"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=details_toggle
-#: data/gui/window/addon_manager.cfg:875 src/gui/dialogs/addon/manager.cpp:438
-#: src/gui/dialogs/addon/manager.cpp:629
+#: data/gui/window/addon_manager.cfg:875 src/gui/dialogs/addon/manager.cpp:439
+#: src/gui/dialogs/addon/manager.cpp:630
 msgid "Addon Details"
 msgstr "Detalles del complemento"
 
@@ -2756,7 +2788,7 @@ msgstr ""
 #. [slider]: id=enemey_gold_factor
 #. [label]: id=title
 #: data/gui/window/campaign_difficulty.cfg:53
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:257
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:263
 msgid "Difficulty"
 msgstr "Dificultad"
 
@@ -2819,34 +2851,10 @@ msgstr "Copiar este registro al porta-papeles"
 msgid "Load Core"
 msgstr "Cargar módulo"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [button]: id=ok
-#: data/gui/window/core_dialog.cfg:227 data/gui/window/custom_tod.cfg:431
-#: data/gui/window/depcheck_select_new.cfg:151
-#: data/gui/window/edit_label.cfg:139 data/gui/window/edit_text.cfg:116
-#: data/gui/window/editor_edit_label.cfg:301
-#: data/gui/window/editor_edit_scenario.cfg:287
-#: data/gui/window/editor_edit_side.cfg:443 data/gui/window/file_dialog.cfg:437
-#: data/gui/window/folder_create.cfg:119 data/gui/window/label_settings.cfg:137
-#: data/gui/window/language_selection.cfg:148 data/gui/window/logging.cfg:259
-#: data/gui/window/mp_change_control.cfg:203
-#: data/gui/window/mp_faction_select.cfg:388
-#: data/gui/window/mp_join_game_password_prompt.cfg:136
-#: data/gui/window/mp_login.cfg:243 data/gui/window/mp_method_selection.cfg:327
-#: data/gui/window/select_orb_colors.cfg:138
-#: data/gui/window/simple_item_selector.cfg:145
-#: data/gui/window/sp_options_configure.cfg:105
-#: data/gui/window/theme_list.cfg:142 data/gui/window/unit_advance.cfg:191
-#: data/gui/window/unit_create.cfg:294 data/gui/window/wml_error.cfg:162
-#: data/gui/window/wml_message.cfg:444 src/gui/dialogs/message.cpp:181
-#: src/gui/dialogs/message.cpp:188
-msgid "OK"
-msgstr "Aceptar"
-
 #. [button]: id=copy
 #. [button]: id=copy_
 #: data/gui/window/custom_tod.cfg:50 data/gui/window/game_cache_options.cfg:110
-#: data/gui/window/game_version.cfg:46
+#: data/gui/window/game_version.cfg:47
 #: data/gui/window/screenshot_notification.cfg:33
 msgid "filesystem^Copy"
 msgstr "Copiar"
@@ -2854,7 +2862,7 @@ msgstr "Copiar"
 #. [button]: id=copy
 #. [button]: id=copy_
 #: data/gui/window/custom_tod.cfg:51 data/gui/window/game_cache_options.cfg:111
-#: data/gui/window/game_version.cfg:47
+#: data/gui/window/game_version.cfg:48
 #: data/gui/window/screenshot_notification.cfg:34
 msgid "Copy this path to clipboard"
 msgstr "Copiar esta dirección de los archivos al porta-papeles"
@@ -2862,14 +2870,14 @@ msgstr "Copiar esta dirección de los archivos al porta-papeles"
 #. [button]: id=browse
 #. [button]: id=browse_
 #: data/gui/window/custom_tod.cfg:66 data/gui/window/game_cache_options.cfg:126
-#: data/gui/window/game_version.cfg:62
+#: data/gui/window/game_version.cfg:63
 msgid "filesystem^Browse"
 msgstr "Explorar"
 
 #. [button]: id=browse
 #. [button]: id=browse_
 #: data/gui/window/custom_tod.cfg:67 data/gui/window/game_cache_options.cfg:127
-#: data/gui/window/game_version.cfg:63
+#: data/gui/window/game_version.cfg:64
 msgid "Browse this location using a file manager"
 msgstr "Explorar esta dirección usando un administrador de archivos"
 
@@ -2944,7 +2952,7 @@ msgstr "Borrar ToD"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/depcheck_confirm_change.cfg:40
-#: src/gui/dialogs/addon/manager.cpp:779 src/gui/dialogs/file_dialog.cpp:302
+#: src/gui/dialogs/addon/manager.cpp:787 src/gui/dialogs/file_dialog.cpp:302
 #: src/gui/dialogs/file_dialog.cpp:728
 msgid "Confirm"
 msgstr "Confirmar"
@@ -3547,7 +3555,7 @@ msgstr "Equipo"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [toggle_button]: id=sort_2
 #: data/gui/window/game_stats.cfg:63
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:423
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:425
 msgid "Gold"
 msgstr "Oro"
 
@@ -3574,7 +3582,7 @@ msgstr "Coste de mantenimiento"
 #. [toggle_button]: id=sort_6
 #: data/gui/window/game_stats.cfg:118 data/gui/window/mp_join_game.cfg:273
 #: data/gui/window/mp_join_game.cfg:286
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:429
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:431
 msgid "Income"
 msgstr "Ingresos"
 
@@ -3643,64 +3651,69 @@ msgid "Scroll To"
 msgstr "Desplazamiento hacia"
 
 #. [grid]
-#: data/gui/window/game_version.cfg:126
+#: data/gui/window/game_version.cfg:127
 msgid "Game data:"
 msgstr "Datos del juego:"
 
 #. [grid]
-#: data/gui/window/game_version.cfg:128
+#: data/gui/window/game_version.cfg:129
 msgid "Configuration:"
 msgstr "Configuración:"
 
 #. [grid]
-#: data/gui/window/game_version.cfg:130
+#: data/gui/window/game_version.cfg:131
 msgid "User data:"
 msgstr "Datos de usuario:"
 
 #. [grid]
-#: data/gui/window/game_version.cfg:132
+#: data/gui/window/game_version.cfg:133
 msgid "Saved games:"
 msgstr "Partidas guardadas:"
 
 #. [grid]
-#: data/gui/window/game_version.cfg:134
+#: data/gui/window/game_version.cfg:135
 msgid "Add-ons:"
 msgstr "Complementos:"
 
 #. [grid]
-#: data/gui/window/game_version.cfg:136
+#: data/gui/window/game_version.cfg:137
 msgid "Cache:"
 msgstr "Caché:"
 
+#. [grid]
+#: data/gui/window/game_version.cfg:139
+msgid "Logs:"
+msgstr ""
+
 #. [button]: id=open_stderr
-#: data/gui/window/game_version.cfg:161
+#: data/gui/window/game_version.cfg:164
 msgid "Open Log File"
 msgstr "Abrir archivo de registro"
 
 #. [button]: id=open_stderr
-#: data/gui/window/game_version.cfg:162
+#: data/gui/window/game_version.cfg:165
 msgid "Opens the log file, which may contain useful debug information"
 msgstr ""
 "Abre el archivo de registro, que podría tener información útil para depurar "
 "errores"
 
 #. [label]
-#: data/gui/window/game_version.cfg:196
+#: data/gui/window/game_version.cfg:199
 msgid "library^Name"
 msgstr "Nombre"
 
 #. [label]
-#: data/gui/window/game_version.cfg:207
+#: data/gui/window/game_version.cfg:210
 msgid "library^Build version"
 msgstr "Versión de compilación"
 
 #. [label]
-#: data/gui/window/game_version.cfg:219
+#: data/gui/window/game_version.cfg:222
 msgid "library^Runtime version"
 msgstr "Versión en ejecución"
 
 #. [label]
-#: data/gui/window/game_version.cfg:300
+#: data/gui/window/game_version.cfg:303
 msgid ""
 "The following features were selected when building this version of Wesnoth:"
 msgstr ""
@@ -3708,32 +3721,32 @@ msgstr ""
 "características:"
 
 #. [label]
-#: data/gui/window/game_version.cfg:454
+#: data/gui/window/game_version.cfg:457
 msgid "The Battle for Wesnoth"
 msgstr "La batalla por Wesnoth"
 
 #. [widget]: id=tab_label
-#: data/gui/window/game_version.cfg:535
+#: data/gui/window/game_version.cfg:538
 msgid "Paths"
 msgstr "Rutas"
 
 #. [widget]: id=tab_label
-#: data/gui/window/game_version.cfg:548
+#: data/gui/window/game_version.cfg:551
 msgid "Libraries"
 msgstr "Librerías"
 
 #. [widget]: id=tab_label
-#: data/gui/window/game_version.cfg:561
+#: data/gui/window/game_version.cfg:564
 msgid "Features"
 msgstr "Características"
 
 #. [button]: id=copy_all
-#: data/gui/window/game_version.cfg:636
+#: data/gui/window/game_version.cfg:639
 msgid "page^Copy"
 msgstr "Copiar"
 
 #. [button]: id=copy_all
-#: data/gui/window/game_version.cfg:637
+#: data/gui/window/game_version.cfg:640
 msgid "Copy the full report to clipboard"
 msgstr "Copiar el informe completo al porta-papeles"
 
@@ -4511,13 +4524,6 @@ msgstr "Si la repetición estará disponible publicamente"
 #: data/gui/window/mp_create_game.cfg:957
 msgid "Name of game:"
 msgstr "Nombre de la partida:"
-
-#. [label]
-#: data/gui/window/mp_create_game.cfg:990
-#: data/gui/window/mp_join_game_password_prompt.cfg:90
-#: data/gui/window/mp_login.cfg:143
-msgid "Password:"
-msgstr "Contraseña:"
 
 #. [text_box]: id=game_password
 #: data/gui/window/mp_create_game.cfg:1004
@@ -5755,23 +5761,23 @@ msgstr "Error"
 msgid "Details:"
 msgstr "Detalles:"
 
-#: src/build_info.cpp:262
+#: src/build_info.cpp:271
 msgid "feature^Lua console completion"
 msgstr "Finalización de consola Lua"
 
-#: src/build_info.cpp:269
+#: src/build_info.cpp:278
 msgid "feature^D-Bus notifications back end"
 msgstr "Sistema de notificaciones D-Bus"
 
-#: src/build_info.cpp:278
+#: src/build_info.cpp:287
 msgid "feature^Win32 notifications back end"
 msgstr "Sistema a notificaciones Win32"
 
-#: src/build_info.cpp:284
+#: src/build_info.cpp:293
 msgid "feature^Cocoa notifications back end"
 msgstr "Sistema a notificaciones Cocoa"
 
-#: src/build_info.cpp:322 src/desktop/version.cpp:113
+#: src/build_info.cpp:331 src/desktop/version.cpp:117
 msgid "cpu_architecture^<unknown>"
 msgstr ""
 
@@ -5803,7 +5809,7 @@ msgstr "Carpeta personal"
 msgid "filesystem_path_system^Root"
 msgstr "Raíz"
 
-#: src/desktop/version.cpp:327
+#: src/desktop/version.cpp:397
 msgid "operating_system^<unknown>"
 msgstr "<desconocido>"
 
@@ -5843,7 +5849,7 @@ msgstr ""
 msgid "language code for localized resources^en_US"
 msgstr "es"
 
-#: src/font/text.cpp:815
+#: src/font/text.cpp:804
 msgid "The text contains invalid Pango markup: "
 msgstr "El texto contiene marcado Pango inválido: "
 
@@ -6010,202 +6016,202 @@ msgid ""
 "$expected expected)"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:160
+#: src/gui/dialogs/addon/manager.cpp:161
 msgid "addons_view^All Add-ons"
 msgstr "Todos los complementos"
 
-#: src/gui/dialogs/addon/manager.cpp:161
+#: src/gui/dialogs/addon/manager.cpp:162
 msgid "addons_view^Installed"
 msgstr "Instalado"
 
-#: src/gui/dialogs/addon/manager.cpp:162
+#: src/gui/dialogs/addon/manager.cpp:163
 msgid "addons_view^Upgradable"
 msgstr "Actualizable"
 
-#: src/gui/dialogs/addon/manager.cpp:163
+#: src/gui/dialogs/addon/manager.cpp:164
 msgid "addons_view^Publishable"
 msgstr "Publicable"
 
-#: src/gui/dialogs/addon/manager.cpp:164
+#: src/gui/dialogs/addon/manager.cpp:165
 msgid "addons_view^Not Installed"
 msgstr "Sin instalar"
 
-#: src/gui/dialogs/addon/manager.cpp:168
+#: src/gui/dialogs/addon/manager.cpp:169
 msgid "addons_of_type^Campaigns"
 msgstr "Campañas"
 
-#: src/gui/dialogs/addon/manager.cpp:169
+#: src/gui/dialogs/addon/manager.cpp:170
 msgid "addons_of_type^Scenarios"
 msgstr "Escenarios"
 
-#: src/gui/dialogs/addon/manager.cpp:170
+#: src/gui/dialogs/addon/manager.cpp:171
 msgid "addons_of_type^SP/MP campaigns"
 msgstr "Campañas de un jugador o multijugador"
 
-#: src/gui/dialogs/addon/manager.cpp:171
+#: src/gui/dialogs/addon/manager.cpp:172
 msgid "addons_of_type^MP campaigns"
 msgstr "Campañas multijugador"
 
-#: src/gui/dialogs/addon/manager.cpp:172
+#: src/gui/dialogs/addon/manager.cpp:173
 msgid "addons_of_type^MP scenarios"
 msgstr "Escenarios multijugador"
 
-#: src/gui/dialogs/addon/manager.cpp:173
+#: src/gui/dialogs/addon/manager.cpp:174
 msgid "addons_of_type^MP map-packs"
 msgstr "Paquetes de mapas multijugador"
 
-#: src/gui/dialogs/addon/manager.cpp:174
+#: src/gui/dialogs/addon/manager.cpp:175
 msgid "addons_of_type^MP eras"
 msgstr "Eras multijugador"
 
-#: src/gui/dialogs/addon/manager.cpp:175
+#: src/gui/dialogs/addon/manager.cpp:176
 msgid "addons_of_type^MP factions"
 msgstr "Facciones multijugador"
 
-#: src/gui/dialogs/addon/manager.cpp:176
+#: src/gui/dialogs/addon/manager.cpp:177
 msgid "addons_of_type^Modifications"
 msgstr "Modificaciones"
 
-#: src/gui/dialogs/addon/manager.cpp:177
+#: src/gui/dialogs/addon/manager.cpp:178
 msgid "addons_of_type^Cores"
 msgstr "Módulos"
 
-#: src/gui/dialogs/addon/manager.cpp:178
+#: src/gui/dialogs/addon/manager.cpp:179
 msgid "addons_of_type^Resources"
 msgstr "Recursos"
 
-#: src/gui/dialogs/addon/manager.cpp:180
+#: src/gui/dialogs/addon/manager.cpp:181
 msgid "addons_of_type^Other"
 msgstr "Otros"
 
-#: src/gui/dialogs/addon/manager.cpp:181
+#: src/gui/dialogs/addon/manager.cpp:182
 msgid "addons_of_type^Unknown"
 msgstr "Desconocido"
 
-#: src/gui/dialogs/addon/manager.cpp:185
+#: src/gui/dialogs/addon/manager.cpp:186
 msgid "addons_order^Name ($order)"
 msgstr "Nombre ($order)"
 
-#: src/gui/dialogs/addon/manager.cpp:188
+#: src/gui/dialogs/addon/manager.cpp:189
 msgid "addons_order^Author ($order)"
 msgstr "Autor ($order)"
 
-#: src/gui/dialogs/addon/manager.cpp:191
+#: src/gui/dialogs/addon/manager.cpp:192
 msgid "addons_order^Size ($order)"
 msgstr "Tamaño ($order)"
 
-#: src/gui/dialogs/addon/manager.cpp:194
+#: src/gui/dialogs/addon/manager.cpp:195
 msgid "addons_order^Downloads ($order)"
 msgstr "Descargas ($order)"
 
-#: src/gui/dialogs/addon/manager.cpp:197
+#: src/gui/dialogs/addon/manager.cpp:198
 msgid "addons_order^Type ($order)"
 msgstr "Tipo ($order)"
 
-#: src/gui/dialogs/addon/manager.cpp:200
+#: src/gui/dialogs/addon/manager.cpp:201
 msgid "addons_order^Last updated ($datelike_order)"
 msgstr "Última actualización ($datelike_order)"
 
-#: src/gui/dialogs/addon/manager.cpp:203
+#: src/gui/dialogs/addon/manager.cpp:204
 msgid "addons_order^First uploaded ($datelike_order)"
 msgstr "Primera publicación ($datelike_order)"
 
-#: src/gui/dialogs/addon/manager.cpp:227 src/gui/widgets/addon_list.cpp:103
+#: src/gui/dialogs/addon/manager.cpp:228 src/gui/widgets/addon_list.cpp:103
 msgid "addon_state^Not installed"
 msgstr "No instalado"
 
-#: src/gui/dialogs/addon/manager.cpp:228 src/gui/widgets/addon_list.cpp:103
+#: src/gui/dialogs/addon/manager.cpp:229 src/gui/widgets/addon_list.cpp:103
 msgid "addon_state^Published, not installed"
 msgstr "Publicado, no instalado"
 
-#: src/gui/dialogs/addon/manager.cpp:232 src/gui/widgets/addon_list.cpp:111
+#: src/gui/dialogs/addon/manager.cpp:233 src/gui/widgets/addon_list.cpp:111
 msgid "addon_state^Installed"
 msgstr "Instalado"
 
-#: src/gui/dialogs/addon/manager.cpp:233 src/gui/widgets/addon_list.cpp:111
+#: src/gui/dialogs/addon/manager.cpp:234 src/gui/widgets/addon_list.cpp:111
 msgid "addon_state^Published"
 msgstr "Publicado"
 
-#: src/gui/dialogs/addon/manager.cpp:237
+#: src/gui/dialogs/addon/manager.cpp:238
 msgid "addon_state^Installed, not tracking local version"
 msgstr "Instalado, sin referencia de la versión local"
 
-#: src/gui/dialogs/addon/manager.cpp:240
+#: src/gui/dialogs/addon/manager.cpp:241
 msgid "addon_state^Published, not tracking local version"
 msgstr "Publicado, sin referencia del la versión local"
 
-#: src/gui/dialogs/addon/manager.cpp:244
+#: src/gui/dialogs/addon/manager.cpp:245
 msgid "addon_state^Installed ($local_version|), upgradable"
 msgstr "Instalado ($local_version|), actualizable"
 
-#: src/gui/dialogs/addon/manager.cpp:245
+#: src/gui/dialogs/addon/manager.cpp:246
 msgid "addon_state^Published ($local_version| installed), upgradable"
 msgstr "Publicado ($local_version| instalado), actualizable"
 
-#: src/gui/dialogs/addon/manager.cpp:251
+#: src/gui/dialogs/addon/manager.cpp:252
 msgid "addon_state^Installed ($local_version|), outdated on server"
 msgstr "Instalado ($local_version|), sin actualizar en el servidor"
 
-#: src/gui/dialogs/addon/manager.cpp:252
+#: src/gui/dialogs/addon/manager.cpp:253
 msgid "addon_state^Published ($local_version| installed), outdated on server"
 msgstr "Publicado ($local_version| instalado), sin actualizar en el servidor"
 
-#: src/gui/dialogs/addon/manager.cpp:258 src/gui/widgets/addon_list.cpp:114
+#: src/gui/dialogs/addon/manager.cpp:259 src/gui/widgets/addon_list.cpp:114
 msgid "addon_state^Installed, not ready to publish"
 msgstr "Instalado, no está listo para publicar"
 
-#: src/gui/dialogs/addon/manager.cpp:259 src/gui/widgets/addon_list.cpp:114
+#: src/gui/dialogs/addon/manager.cpp:260 src/gui/widgets/addon_list.cpp:114
 msgid "addon_state^Ready to publish"
 msgstr "Listo para publicar"
 
-#: src/gui/dialogs/addon/manager.cpp:263 src/gui/widgets/addon_list.cpp:126
+#: src/gui/dialogs/addon/manager.cpp:264 src/gui/widgets/addon_list.cpp:126
 msgid "addon_state^Installed, broken"
 msgstr "Instalado, roto"
 
-#: src/gui/dialogs/addon/manager.cpp:264 src/gui/widgets/addon_list.cpp:126
+#: src/gui/dialogs/addon/manager.cpp:265 src/gui/widgets/addon_list.cpp:126
 msgid "addon_state^Published, broken"
 msgstr "Publicado, roto"
 
-#: src/gui/dialogs/addon/manager.cpp:267 src/gui/widgets/addon_list.cpp:130
+#: src/gui/dialogs/addon/manager.cpp:268 src/gui/widgets/addon_list.cpp:130
 msgid "addon_state^Unknown"
 msgstr "Desconocido"
 
-#: src/gui/dialogs/addon/manager.cpp:329
+#: src/gui/dialogs/addon/manager.cpp:330
 msgid "ascending"
 msgstr "ascendente"
 
 #. TRANSLATORS: Sorting order of dates, oldest first
-#: src/gui/dialogs/addon/manager.cpp:331
+#: src/gui/dialogs/addon/manager.cpp:332
 msgid "oldest to newest"
 msgstr "de más viejo a más nuevo"
 
-#: src/gui/dialogs/addon/manager.cpp:334
+#: src/gui/dialogs/addon/manager.cpp:335
 msgid "descending"
 msgstr "descendente"
 
 #. TRANSLATORS: Sorting order of dates, newest first
-#: src/gui/dialogs/addon/manager.cpp:336
+#: src/gui/dialogs/addon/manager.cpp:337
 msgid "newest to oldest"
 msgstr "de más nuevo a más viejo"
 
-#: src/gui/dialogs/addon/manager.cpp:435
+#: src/gui/dialogs/addon/manager.cpp:436
 msgid "addons^Back to List"
 msgstr "Volver a la lista"
 
-#: src/gui/dialogs/addon/manager.cpp:447
+#: src/gui/dialogs/addon/manager.cpp:448
 msgid "An error occurred while downloading the add-ons list from the server."
 msgstr ""
 "Se ha producido un error al descargar la lista de complementos del servidor."
 
-#: src/gui/dialogs/addon/manager.cpp:483
+#: src/gui/dialogs/addon/manager.cpp:484
 msgid "No Add-ons Available"
 msgstr "No hay disponible ningún complemento"
 
-#: src/gui/dialogs/addon/manager.cpp:483
+#: src/gui/dialogs/addon/manager.cpp:484
 msgid "There are no add-ons available for download from this server."
 msgstr "No hay complementos disponibles para descargar en este servidor."
 
-#: src/gui/dialogs/addon/manager.cpp:671
+#: src/gui/dialogs/addon/manager.cpp:672
 msgid ""
 "The following add-on appears to have publishing or version control "
 "information stored locally, and will not be removed:"
@@ -6213,15 +6219,15 @@ msgstr ""
 "El siguiente complemento aparenta tener información sobre publicación o "
 "control de versión guardada localmente, y no será eliminado:"
 
-#: src/gui/dialogs/addon/manager.cpp:679
+#: src/gui/dialogs/addon/manager.cpp:680
 msgid "The following add-on could not be deleted properly:"
 msgstr "El siguiente complemento podría no haber sido borrado adecuadamente:"
 
-#: src/gui/dialogs/addon/manager.cpp:732
+#: src/gui/dialogs/addon/manager.cpp:733
 msgid "Warning"
 msgstr "Aviso"
 
-#: src/gui/dialogs/addon/manager.cpp:733
+#: src/gui/dialogs/addon/manager.cpp:734
 msgid ""
 "The remote version of this add-on is greater or equal to the version being "
 "uploaded. Do you really wish to continue?"
@@ -6229,26 +6235,26 @@ msgstr ""
 "La versión remota de este complemento es mayor o igual a la versión que está "
 "siendo subida. ¿Desea continuar?"
 
-#: src/gui/dialogs/addon/manager.cpp:742
+#: src/gui/dialogs/addon/manager.cpp:750
 msgid "Invalid icon path. Make sure the path points to a valid image."
 msgstr ""
 "Ubicación de icono no válida. Asegúrese de que la ubicación apunta a una "
 "imagen válida."
 
-#: src/gui/dialogs/addon/manager.cpp:745 src/gui/dialogs/addon/manager.cpp:787
+#: src/gui/dialogs/addon/manager.cpp:753 src/gui/dialogs/addon/manager.cpp:795
 msgid "The server responded with an error:"
 msgstr "El servidor devolvió un error:"
 
-#: src/gui/dialogs/addon/manager.cpp:748
+#: src/gui/dialogs/addon/manager.cpp:756
 msgid "The add-on was rejected by the server:"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:763 src/gui/dialogs/addon/manager.cpp:790
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:498
+#: src/gui/dialogs/addon/manager.cpp:771 src/gui/dialogs/addon/manager.cpp:798
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:500
 msgid "Response"
 msgstr "Respuesta"
 
-#: src/gui/dialogs/addon/manager.cpp:775
+#: src/gui/dialogs/addon/manager.cpp:783
 msgid ""
 "Deleting '$addon|' will permanently erase its download and upload counts on "
 "the add-ons server. Do you really wish to continue?"
@@ -6256,11 +6262,11 @@ msgstr ""
 "Al borrar '$addon|' se eliminarán permanentemente sus recuentos de subidas y "
 "bajadas en el servidor de complementos. ¿Desea continuar?"
 
-#: src/gui/dialogs/addon/manager.cpp:807
+#: src/gui/dialogs/addon/manager.cpp:815
 msgid "Do you want to uninstall '$addon|'?"
 msgstr "¿Desea desinstalar '$addon|'?"
 
-#: src/gui/dialogs/addon/manager.cpp:897
+#: src/gui/dialogs/addon/manager.cpp:905
 msgid "url^None"
 msgstr "Ninguna"
 
@@ -6883,7 +6889,7 @@ msgstr "vacío"
 msgid "this game"
 msgstr "esta partida"
 
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:356
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:358
 #: src/gui/dialogs/multiplayer/mp_staging.cpp:154
 msgid "Team:"
 msgstr "Equipo:"
@@ -7278,7 +7284,7 @@ msgstr ""
 "«Descartar»."
 
 #: src/gui/widgets/window.cpp:950 src/gui/widgets/window.cpp:987
-#: src/tests/gui/test_gui2.cpp:562
+#: src/tests/gui/test_gui2.cpp:564
 msgid "Failed to show a dialog, which doesn't fit on the screen."
 msgstr "No se pudo mostrar un diálogo que no cabe en la pantalla."
 

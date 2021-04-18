@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-03-20 22:03-0300\n"
+"POT-Creation-Date: 2021-04-17 22:21-0400\n"
 "PO-Revision-Date: 2021-03-13 06:24+0100\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
@@ -51,16 +51,6 @@ msgstr "Vývojová UI: Nečinná UI"
 #: data/ai/dev/ai_default_rca_alternate_recruiting.cfg:10
 msgid "Multiplayer_AI^Dev AI: Default AI (RCA) with Alternate Recruiting"
 msgstr "Vývojová UI: Výchozí UI (RCA) s jiným verbováním"
-
-#. [ai]: id=formula_ai # id is needed to uniquely identify a MP AI, it is not needed in the scenario AI
-#: data/ai/dev/formula_ai.cfg:10
-msgid "Multiplayer_AI^Dev AI: Default + Experimental Recruitment (Formula AI)"
-msgstr "Vývojová UI: Výchozí + zkušební verbování (Formula AI)"
-
-#. [ai]: id=formula_ai_poisoning
-#: data/ai/dev/formula_ai_poisoning.cfg:9
-msgid "Multiplayer_AI^Dev AI: Default + Poisoning (Formula AI)"
-msgstr "Vývojová UI: Výchozí + používání jedu (Formula AI)"
 
 #. [terrain_type]: id=fence
 #. [terrain_type]: id=fence_iron
@@ -2234,7 +2224,7 @@ msgstr "Publikuj rozšíření"
 #. [button]: id=single_uninstall
 #. [button]: id=uninstall
 #: data/gui/widget/addon_list.cfg:435 data/gui/window/addon_manager.cfg:244
-#: src/gui/dialogs/addon/manager.cpp:806
+#: src/gui/dialogs/addon/manager.cpp:814
 msgid "Uninstall add-on"
 msgstr "Odinstalovat rozšíření"
 
@@ -2251,7 +2241,7 @@ msgstr "Čekající zprávy"
 #: data/gui/window/attack_predictions.cfg:304 data/gui/window/chat_log.cfg:201
 #: data/gui/window/end_credits.cfg:145
 #: data/gui/window/game_cache_options.cfg:247
-#: data/gui/window/game_stats.cfg:843 data/gui/window/game_version.cfg:652
+#: data/gui/window/game_stats.cfg:843 data/gui/window/game_version.cfg:655
 #: data/gui/window/gamestate_inspector.cfg:397
 #: data/gui/window/generator_settings.cfg:190
 #: data/gui/window/help_browser.cfg:188
@@ -2274,38 +2264,51 @@ msgstr "Zavřít"
 msgid "Profile"
 msgstr "Profil"
 
-#. [widget]: id=name
-#. [label]
-#: data/gui/window/addon_connect.cfg:40 data/gui/window/mp_connect.cfg:52
-#: data/gui/window/mp_method_selection.cfg:254
-msgid "Connect to Server"
-msgstr "Připoj se na server"
+#. [window]: id=addon_auth
+#: data/gui/window/addon_auth.cfg:8
+msgid "Add-on upload authentication dialog"
+msgstr ""
 
 #. [label]
-#: data/gui/window/addon_connect.cfg:59
-msgid "You will now connect to a server to download add-ons."
-msgstr "Nyní se připojíš na server s rozšířeními, abys nějaké stáhl."
+#: data/gui/window/addon_auth.cfg:41
+msgid "Authenticate"
+msgstr ""
 
 #. [label]
-#: data/gui/window/addon_connect.cfg:89
-msgid "Server:"
-msgstr "Server:"
+#: data/gui/window/addon_auth.cfg:71 data/gui/window/mp_create_game.cfg:990
+#: data/gui/window/mp_join_game_password_prompt.cfg:90
+#: data/gui/window/mp_login.cfg:143
+msgid "Password:"
+msgstr "Heslo:"
 
-#. [label]
-#. [button]: id=remove_addons
-#: data/gui/window/addon_connect.cfg:144
-#: data/gui/window/addon_uninstall_list.cfg:51
-msgid "Remove Add-ons"
-msgstr "Odstranit rozšíření"
-
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
-#: data/gui/window/addon_connect.cfg:197 data/gui/window/mp_connect.cfg:299
-msgid "Connect"
-msgstr "Připojit"
+#: data/gui/window/addon_auth.cfg:119 data/gui/window/core_dialog.cfg:227
+#: data/gui/window/custom_tod.cfg:431
+#: data/gui/window/depcheck_select_new.cfg:151
+#: data/gui/window/edit_label.cfg:139 data/gui/window/edit_text.cfg:116
+#: data/gui/window/editor_edit_label.cfg:301
+#: data/gui/window/editor_edit_scenario.cfg:287
+#: data/gui/window/editor_edit_side.cfg:443 data/gui/window/file_dialog.cfg:437
+#: data/gui/window/folder_create.cfg:119 data/gui/window/label_settings.cfg:137
+#: data/gui/window/language_selection.cfg:148 data/gui/window/logging.cfg:259
+#: data/gui/window/mp_change_control.cfg:203
+#: data/gui/window/mp_faction_select.cfg:388
+#: data/gui/window/mp_join_game_password_prompt.cfg:136
+#: data/gui/window/mp_login.cfg:243 data/gui/window/mp_method_selection.cfg:327
+#: data/gui/window/select_orb_colors.cfg:138
+#: data/gui/window/simple_item_selector.cfg:145
+#: data/gui/window/sp_options_configure.cfg:105
+#: data/gui/window/theme_list.cfg:142 data/gui/window/unit_advance.cfg:191
+#: data/gui/window/unit_create.cfg:294 data/gui/window/wml_error.cfg:162
+#: data/gui/window/wml_message.cfg:444 src/gui/dialogs/message.cpp:181
+#: src/gui/dialogs/message.cpp:188
+msgid "OK"
+msgstr "OK"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=cancel
-#: data/gui/window/addon_connect.cfg:211
+#: data/gui/window/addon_auth.cfg:133 data/gui/window/addon_connect.cfg:211
 #: data/gui/window/addon_license_prompt.cfg:115
 #: data/gui/window/addon_uninstall_list.cfg:174
 #: data/gui/window/campaign_dialog.cfg:497
@@ -2342,6 +2345,35 @@ msgstr "Připojit"
 #: src/hotkey/hotkey_command.cpp:73
 msgid "Cancel"
 msgstr "Zrušit"
+
+#. [widget]: id=name
+#. [label]
+#: data/gui/window/addon_connect.cfg:40 data/gui/window/mp_connect.cfg:52
+#: data/gui/window/mp_method_selection.cfg:254
+msgid "Connect to Server"
+msgstr "Připoj se na server"
+
+#. [label]
+#: data/gui/window/addon_connect.cfg:59
+msgid "You will now connect to a server to download add-ons."
+msgstr "Nyní se připojíš na server s rozšířeními, abys nějaké stáhl."
+
+#. [label]
+#: data/gui/window/addon_connect.cfg:89
+msgid "Server:"
+msgstr "Server:"
+
+#. [label]
+#. [button]: id=remove_addons
+#: data/gui/window/addon_connect.cfg:144
+#: data/gui/window/addon_uninstall_list.cfg:51
+msgid "Remove Add-ons"
+msgstr "Odstranit rozšíření"
+
+#. [button]: id=ok
+#: data/gui/window/addon_connect.cfg:197 data/gui/window/mp_connect.cfg:299
+msgid "Connect"
+msgstr "Připojit"
 
 #. [label]
 #: data/gui/window/addon_license_prompt.cfg:39
@@ -2428,7 +2460,7 @@ msgstr "Závislosti:"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=dependencies
-#: data/gui/window/addon_manager.cfg:520 src/gui/dialogs/addon/manager.cpp:880
+#: data/gui/window/addon_manager.cfg:520 src/gui/dialogs/addon/manager.cpp:888
 msgid "addon_dependencies^None"
 msgstr "Žádné"
 
@@ -2439,7 +2471,7 @@ msgstr "Překlady:"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=translations
-#: data/gui/window/addon_manager.cfg:554 src/gui/dialogs/addon/manager.cpp:894
+#: data/gui/window/addon_manager.cfg:554 src/gui/dialogs/addon/manager.cpp:902
 msgid "translations^None"
 msgstr "žádné"
 
@@ -2470,8 +2502,8 @@ msgstr "Správce rozšíření"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=details_toggle
-#: data/gui/window/addon_manager.cfg:875 src/gui/dialogs/addon/manager.cpp:438
-#: src/gui/dialogs/addon/manager.cpp:629
+#: data/gui/window/addon_manager.cfg:875 src/gui/dialogs/addon/manager.cpp:439
+#: src/gui/dialogs/addon/manager.cpp:630
 msgid "Addon Details"
 msgstr "Podrobnosti o rozšíření"
 
@@ -2648,7 +2680,7 @@ msgstr "Hrát"
 #. [slider]: id=enemey_gold_factor
 #. [label]: id=title
 #: data/gui/window/campaign_difficulty.cfg:53
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:257
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:263
 msgid "Difficulty"
 msgstr "Obtížnost"
 
@@ -2711,34 +2743,10 @@ msgstr "Zkopíruj log do schránky"
 msgid "Load Core"
 msgstr "Načíst jádro"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [button]: id=ok
-#: data/gui/window/core_dialog.cfg:227 data/gui/window/custom_tod.cfg:431
-#: data/gui/window/depcheck_select_new.cfg:151
-#: data/gui/window/edit_label.cfg:139 data/gui/window/edit_text.cfg:116
-#: data/gui/window/editor_edit_label.cfg:301
-#: data/gui/window/editor_edit_scenario.cfg:287
-#: data/gui/window/editor_edit_side.cfg:443 data/gui/window/file_dialog.cfg:437
-#: data/gui/window/folder_create.cfg:119 data/gui/window/label_settings.cfg:137
-#: data/gui/window/language_selection.cfg:148 data/gui/window/logging.cfg:259
-#: data/gui/window/mp_change_control.cfg:203
-#: data/gui/window/mp_faction_select.cfg:388
-#: data/gui/window/mp_join_game_password_prompt.cfg:136
-#: data/gui/window/mp_login.cfg:243 data/gui/window/mp_method_selection.cfg:327
-#: data/gui/window/select_orb_colors.cfg:138
-#: data/gui/window/simple_item_selector.cfg:145
-#: data/gui/window/sp_options_configure.cfg:105
-#: data/gui/window/theme_list.cfg:142 data/gui/window/unit_advance.cfg:191
-#: data/gui/window/unit_create.cfg:294 data/gui/window/wml_error.cfg:162
-#: data/gui/window/wml_message.cfg:444 src/gui/dialogs/message.cpp:181
-#: src/gui/dialogs/message.cpp:188
-msgid "OK"
-msgstr "OK"
-
 #. [button]: id=copy
 #. [button]: id=copy_
 #: data/gui/window/custom_tod.cfg:50 data/gui/window/game_cache_options.cfg:110
-#: data/gui/window/game_version.cfg:46
+#: data/gui/window/game_version.cfg:47
 #: data/gui/window/screenshot_notification.cfg:33
 msgid "filesystem^Copy"
 msgstr "Kopírovat"
@@ -2746,7 +2754,7 @@ msgstr "Kopírovat"
 #. [button]: id=copy
 #. [button]: id=copy_
 #: data/gui/window/custom_tod.cfg:51 data/gui/window/game_cache_options.cfg:111
-#: data/gui/window/game_version.cfg:47
+#: data/gui/window/game_version.cfg:48
 #: data/gui/window/screenshot_notification.cfg:34
 msgid "Copy this path to clipboard"
 msgstr "Zkopíruj cestu do schránky"
@@ -2754,14 +2762,14 @@ msgstr "Zkopíruj cestu do schránky"
 #. [button]: id=browse
 #. [button]: id=browse_
 #: data/gui/window/custom_tod.cfg:66 data/gui/window/game_cache_options.cfg:126
-#: data/gui/window/game_version.cfg:62
+#: data/gui/window/game_version.cfg:63
 msgid "filesystem^Browse"
 msgstr "Procházet"
 
 #. [button]: id=browse
 #. [button]: id=browse_
 #: data/gui/window/custom_tod.cfg:67 data/gui/window/game_cache_options.cfg:127
-#: data/gui/window/game_version.cfg:63
+#: data/gui/window/game_version.cfg:64
 msgid "Browse this location using a file manager"
 msgstr "Procházet umístění ve správci souborů"
 
@@ -2836,7 +2844,7 @@ msgstr "Smazat ToD"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/depcheck_confirm_change.cfg:40
-#: src/gui/dialogs/addon/manager.cpp:779 src/gui/dialogs/file_dialog.cpp:302
+#: src/gui/dialogs/addon/manager.cpp:787 src/gui/dialogs/file_dialog.cpp:302
 #: src/gui/dialogs/file_dialog.cpp:728
 msgid "Confirm"
 msgstr "Potvrdit"
@@ -3441,7 +3449,7 @@ msgstr "Tým"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [toggle_button]: id=sort_2
 #: data/gui/window/game_stats.cfg:63
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:423
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:425
 msgid "Gold"
 msgstr "Zlato"
 
@@ -3468,7 +3476,7 @@ msgstr "Výdaje"
 #. [toggle_button]: id=sort_6
 #: data/gui/window/game_stats.cfg:118 data/gui/window/mp_join_game.cfg:273
 #: data/gui/window/mp_join_game.cfg:286
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:429
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:431
 msgid "Income"
 msgstr "Příjem"
 
@@ -3537,95 +3545,100 @@ msgid "Scroll To"
 msgstr "Posunout na"
 
 #. [grid]
-#: data/gui/window/game_version.cfg:126
+#: data/gui/window/game_version.cfg:127
 msgid "Game data:"
 msgstr "Herní údaje:"
 
 #. [grid]
-#: data/gui/window/game_version.cfg:128
+#: data/gui/window/game_version.cfg:129
 msgid "Configuration:"
 msgstr "Nastavení:"
 
 #. [grid]
-#: data/gui/window/game_version.cfg:130
+#: data/gui/window/game_version.cfg:131
 msgid "User data:"
 msgstr "Uživatelská data:"
 
 #. [grid]
-#: data/gui/window/game_version.cfg:132
+#: data/gui/window/game_version.cfg:133
 msgid "Saved games:"
 msgstr "Uložené hry:"
 
 #. [grid]
-#: data/gui/window/game_version.cfg:134
+#: data/gui/window/game_version.cfg:135
 msgid "Add-ons:"
 msgstr "Rozšíření:"
 
 #. [grid]
-#: data/gui/window/game_version.cfg:136
+#: data/gui/window/game_version.cfg:137
 msgid "Cache:"
 msgstr "Cache:"
 
+#. [grid]
+#: data/gui/window/game_version.cfg:139
+msgid "Logs:"
+msgstr ""
+
 #. [button]: id=open_stderr
-#: data/gui/window/game_version.cfg:161
+#: data/gui/window/game_version.cfg:164
 msgid "Open Log File"
 msgstr "Otevřít soubor s logy"
 
 #. [button]: id=open_stderr
-#: data/gui/window/game_version.cfg:162
+#: data/gui/window/game_version.cfg:165
 msgid "Opens the log file, which may contain useful debug information"
 msgstr ""
 "Otevře soubor s logy, který může obsahovat užitečné informace pro debugování"
 
 #. [label]
-#: data/gui/window/game_version.cfg:196
+#: data/gui/window/game_version.cfg:199
 msgid "library^Name"
 msgstr "Jméno"
 
 #. [label]
-#: data/gui/window/game_version.cfg:207
+#: data/gui/window/game_version.cfg:210
 msgid "library^Build version"
 msgstr "Verze sestavení"
 
 #. [label]
-#: data/gui/window/game_version.cfg:219
+#: data/gui/window/game_version.cfg:222
 msgid "library^Runtime version"
 msgstr "Verze runtime"
 
 #. [label]
-#: data/gui/window/game_version.cfg:300
+#: data/gui/window/game_version.cfg:303
 msgid ""
 "The following features were selected when building this version of Wesnoth:"
 msgstr ""
 "Následující funkce byly vybrané při vytváření této verze Bitvy o Wesnoth:"
 
 #. [label]
-#: data/gui/window/game_version.cfg:454
+#: data/gui/window/game_version.cfg:457
 msgid "The Battle for Wesnoth"
 msgstr "Bitva o Wesnoth"
 
 #. [widget]: id=tab_label
-#: data/gui/window/game_version.cfg:535
+#: data/gui/window/game_version.cfg:538
 msgid "Paths"
 msgstr "Cesty"
 
 #. [widget]: id=tab_label
-#: data/gui/window/game_version.cfg:548
+#: data/gui/window/game_version.cfg:551
 msgid "Libraries"
 msgstr "Knihovny"
 
 #. [widget]: id=tab_label
-#: data/gui/window/game_version.cfg:561
+#: data/gui/window/game_version.cfg:564
 msgid "Features"
 msgstr "Vymakávky"
 
 #. [button]: id=copy_all
-#: data/gui/window/game_version.cfg:636
+#: data/gui/window/game_version.cfg:639
 msgid "page^Copy"
 msgstr "Kopírovat"
 
 #. [button]: id=copy_all
-#: data/gui/window/game_version.cfg:637
+#: data/gui/window/game_version.cfg:640
 msgid "Copy the full report to clipboard"
 msgstr "Zkopíruj kompletní hlášení do schránky"
 
@@ -4365,13 +4378,6 @@ msgstr "Zda bude záznam veřejně dostupný"
 #: data/gui/window/mp_create_game.cfg:957
 msgid "Name of game:"
 msgstr "Název hry:"
-
-#. [label]
-#: data/gui/window/mp_create_game.cfg:990
-#: data/gui/window/mp_join_game_password_prompt.cfg:90
-#: data/gui/window/mp_login.cfg:143
-msgid "Password:"
-msgstr "Heslo:"
 
 #. [text_box]: id=game_password
 #: data/gui/window/mp_create_game.cfg:1004
@@ -5592,23 +5598,23 @@ msgstr "Chyba"
 msgid "Details:"
 msgstr "Podrobnosti:"
 
-#: src/build_info.cpp:262
+#: src/build_info.cpp:271
 msgid "feature^Lua console completion"
 msgstr "Doplňování v Lua konzoli"
 
-#: src/build_info.cpp:269
+#: src/build_info.cpp:278
 msgid "feature^D-Bus notifications back end"
 msgstr "Použití D-Bus notifikací"
 
-#: src/build_info.cpp:278
+#: src/build_info.cpp:287
 msgid "feature^Win32 notifications back end"
 msgstr "Použití Win32 notifikací"
 
-#: src/build_info.cpp:284
+#: src/build_info.cpp:293
 msgid "feature^Cocoa notifications back end"
 msgstr "Použití Cocoa notifikací"
 
-#: src/build_info.cpp:322 src/desktop/version.cpp:113
+#: src/build_info.cpp:331 src/desktop/version.cpp:117
 msgid "cpu_architecture^<unknown>"
 msgstr "<neznámá arch. CPU>"
 
@@ -5640,7 +5646,7 @@ msgstr "Domovská složka"
 msgid "filesystem_path_system^Root"
 msgstr "Kořenový adresář"
 
-#: src/desktop/version.cpp:327
+#: src/desktop/version.cpp:397
 msgid "operating_system^<unknown>"
 msgstr "<neznámý OS>"
 
@@ -5685,7 +5691,7 @@ msgstr ""
 msgid "language code for localized resources^en_US"
 msgstr "cs"
 
-#: src/font/text.cpp:815
+#: src/font/text.cpp:804
 msgid "The text contains invalid Pango markup: "
 msgstr "Text obsahuje neplatné Pango značky: "
 
@@ -5852,201 +5858,201 @@ msgstr ""
 "Řádek $row mřížky '$grid' se liší v počtu sloupců (nalezeno $found, "
 "očekáváno $expected)"
 
-#: src/gui/dialogs/addon/manager.cpp:160
+#: src/gui/dialogs/addon/manager.cpp:161
 msgid "addons_view^All Add-ons"
 msgstr "Všechna rozšíření"
 
-#: src/gui/dialogs/addon/manager.cpp:161
+#: src/gui/dialogs/addon/manager.cpp:162
 msgid "addons_view^Installed"
 msgstr "Nainstalované"
 
-#: src/gui/dialogs/addon/manager.cpp:162
+#: src/gui/dialogs/addon/manager.cpp:163
 msgid "addons_view^Upgradable"
 msgstr "Dostupná nová verze"
 
-#: src/gui/dialogs/addon/manager.cpp:163
+#: src/gui/dialogs/addon/manager.cpp:164
 msgid "addons_view^Publishable"
 msgstr "Publikovatelné"
 
-#: src/gui/dialogs/addon/manager.cpp:164
+#: src/gui/dialogs/addon/manager.cpp:165
 msgid "addons_view^Not Installed"
 msgstr "Nenainstalované"
 
-#: src/gui/dialogs/addon/manager.cpp:168
+#: src/gui/dialogs/addon/manager.cpp:169
 msgid "addons_of_type^Campaigns"
 msgstr "Tažení"
 
-#: src/gui/dialogs/addon/manager.cpp:169
+#: src/gui/dialogs/addon/manager.cpp:170
 msgid "addons_of_type^Scenarios"
 msgstr "Scénáře"
 
-#: src/gui/dialogs/addon/manager.cpp:170
+#: src/gui/dialogs/addon/manager.cpp:171
 msgid "addons_of_type^SP/MP campaigns"
 msgstr "Tažení SP nebo MP"
 
-#: src/gui/dialogs/addon/manager.cpp:171
+#: src/gui/dialogs/addon/manager.cpp:172
 msgid "addons_of_type^MP campaigns"
 msgstr "Tažení MP"
 
-#: src/gui/dialogs/addon/manager.cpp:172
+#: src/gui/dialogs/addon/manager.cpp:173
 msgid "addons_of_type^MP scenarios"
 msgstr "Scénář MP"
 
-#: src/gui/dialogs/addon/manager.cpp:173
+#: src/gui/dialogs/addon/manager.cpp:174
 msgid "addons_of_type^MP map-packs"
 msgstr "Sady map MP"
 
-#: src/gui/dialogs/addon/manager.cpp:174
+#: src/gui/dialogs/addon/manager.cpp:175
 msgid "addons_of_type^MP eras"
 msgstr "Éra MP"
 
-#: src/gui/dialogs/addon/manager.cpp:175
+#: src/gui/dialogs/addon/manager.cpp:176
 msgid "addons_of_type^MP factions"
 msgstr "Frakce MP"
 
-#: src/gui/dialogs/addon/manager.cpp:176
+#: src/gui/dialogs/addon/manager.cpp:177
 msgid "addons_of_type^Modifications"
 msgstr "Modifikace"
 
-#: src/gui/dialogs/addon/manager.cpp:177
+#: src/gui/dialogs/addon/manager.cpp:178
 msgid "addons_of_type^Cores"
 msgstr "Jádra"
 
-#: src/gui/dialogs/addon/manager.cpp:178
+#: src/gui/dialogs/addon/manager.cpp:179
 msgid "addons_of_type^Resources"
 msgstr "Zdroje"
 
-#: src/gui/dialogs/addon/manager.cpp:180
+#: src/gui/dialogs/addon/manager.cpp:181
 msgid "addons_of_type^Other"
 msgstr "Ostatní"
 
-#: src/gui/dialogs/addon/manager.cpp:181
+#: src/gui/dialogs/addon/manager.cpp:182
 msgid "addons_of_type^Unknown"
 msgstr "Neznámé"
 
-#: src/gui/dialogs/addon/manager.cpp:185
+#: src/gui/dialogs/addon/manager.cpp:186
 msgid "addons_order^Name ($order)"
 msgstr "Název ($order)"
 
-#: src/gui/dialogs/addon/manager.cpp:188
+#: src/gui/dialogs/addon/manager.cpp:189
 msgid "addons_order^Author ($order)"
 msgstr "Autor ($order)"
 
-#: src/gui/dialogs/addon/manager.cpp:191
+#: src/gui/dialogs/addon/manager.cpp:192
 msgid "addons_order^Size ($order)"
 msgstr "Velikost ($order)"
 
-#: src/gui/dialogs/addon/manager.cpp:194
+#: src/gui/dialogs/addon/manager.cpp:195
 msgid "addons_order^Downloads ($order)"
 msgstr "Stažení ($order)"
 
-#: src/gui/dialogs/addon/manager.cpp:197
+#: src/gui/dialogs/addon/manager.cpp:198
 msgid "addons_order^Type ($order)"
 msgstr "Typ ($order)"
 
-#: src/gui/dialogs/addon/manager.cpp:200
+#: src/gui/dialogs/addon/manager.cpp:201
 msgid "addons_order^Last updated ($datelike_order)"
 msgstr "Naposledy aktualizováno ($datelike_order)"
 
-#: src/gui/dialogs/addon/manager.cpp:203
+#: src/gui/dialogs/addon/manager.cpp:204
 msgid "addons_order^First uploaded ($datelike_order)"
 msgstr "Poprvé nahráno ($datelike_order)"
 
-#: src/gui/dialogs/addon/manager.cpp:227 src/gui/widgets/addon_list.cpp:103
+#: src/gui/dialogs/addon/manager.cpp:228 src/gui/widgets/addon_list.cpp:103
 msgid "addon_state^Not installed"
 msgstr "Nenainstalované"
 
-#: src/gui/dialogs/addon/manager.cpp:228 src/gui/widgets/addon_list.cpp:103
+#: src/gui/dialogs/addon/manager.cpp:229 src/gui/widgets/addon_list.cpp:103
 msgid "addon_state^Published, not installed"
 msgstr "Uveřejněné, nenainstalované"
 
-#: src/gui/dialogs/addon/manager.cpp:232 src/gui/widgets/addon_list.cpp:111
+#: src/gui/dialogs/addon/manager.cpp:233 src/gui/widgets/addon_list.cpp:111
 msgid "addon_state^Installed"
 msgstr "Nainstalované"
 
-#: src/gui/dialogs/addon/manager.cpp:233 src/gui/widgets/addon_list.cpp:111
+#: src/gui/dialogs/addon/manager.cpp:234 src/gui/widgets/addon_list.cpp:111
 msgid "addon_state^Published"
 msgstr "Uveřejněné"
 
-#: src/gui/dialogs/addon/manager.cpp:237
+#: src/gui/dialogs/addon/manager.cpp:238
 msgid "addon_state^Installed, not tracking local version"
 msgstr "Nainstalované, nesleduje místní verzi"
 
-#: src/gui/dialogs/addon/manager.cpp:240
+#: src/gui/dialogs/addon/manager.cpp:241
 msgid "addon_state^Published, not tracking local version"
 msgstr "Uveřejněné, nesleduje místní verzi"
 
-#: src/gui/dialogs/addon/manager.cpp:244
+#: src/gui/dialogs/addon/manager.cpp:245
 msgid "addon_state^Installed ($local_version|), upgradable"
 msgstr "Nainstalované ($local_version|), dostupná nová verze"
 
-#: src/gui/dialogs/addon/manager.cpp:245
+#: src/gui/dialogs/addon/manager.cpp:246
 msgid "addon_state^Published ($local_version| installed), upgradable"
 msgstr "Uveřejněné ($local_version| installed), dostupná nová verze"
 
-#: src/gui/dialogs/addon/manager.cpp:251
+#: src/gui/dialogs/addon/manager.cpp:252
 msgid "addon_state^Installed ($local_version|), outdated on server"
 msgstr "Nainstalované ($local_version|), na serveru zastaralé"
 
-#: src/gui/dialogs/addon/manager.cpp:252
+#: src/gui/dialogs/addon/manager.cpp:253
 msgid "addon_state^Published ($local_version| installed), outdated on server"
 msgstr "Uveřejněné ($local_version| nainstalované) na serveru zastaralé"
 
-#: src/gui/dialogs/addon/manager.cpp:258 src/gui/widgets/addon_list.cpp:114
+#: src/gui/dialogs/addon/manager.cpp:259 src/gui/widgets/addon_list.cpp:114
 msgid "addon_state^Installed, not ready to publish"
 msgstr "Nainstalované, není připraveno k publikaci"
 
-#: src/gui/dialogs/addon/manager.cpp:259 src/gui/widgets/addon_list.cpp:114
+#: src/gui/dialogs/addon/manager.cpp:260 src/gui/widgets/addon_list.cpp:114
 msgid "addon_state^Ready to publish"
 msgstr "Připraveno k publikaci"
 
-#: src/gui/dialogs/addon/manager.cpp:263 src/gui/widgets/addon_list.cpp:126
+#: src/gui/dialogs/addon/manager.cpp:264 src/gui/widgets/addon_list.cpp:126
 msgid "addon_state^Installed, broken"
 msgstr "Nainstalované, poškozené"
 
-#: src/gui/dialogs/addon/manager.cpp:264 src/gui/widgets/addon_list.cpp:126
+#: src/gui/dialogs/addon/manager.cpp:265 src/gui/widgets/addon_list.cpp:126
 msgid "addon_state^Published, broken"
 msgstr "Uveřejněné, poškozené"
 
-#: src/gui/dialogs/addon/manager.cpp:267 src/gui/widgets/addon_list.cpp:130
+#: src/gui/dialogs/addon/manager.cpp:268 src/gui/widgets/addon_list.cpp:130
 msgid "addon_state^Unknown"
 msgstr "Neznámý"
 
-#: src/gui/dialogs/addon/manager.cpp:329
+#: src/gui/dialogs/addon/manager.cpp:330
 msgid "ascending"
 msgstr "vzestupně"
 
 #. TRANSLATORS: Sorting order of dates, oldest first
-#: src/gui/dialogs/addon/manager.cpp:331
+#: src/gui/dialogs/addon/manager.cpp:332
 msgid "oldest to newest"
 msgstr "nejstarší po nejnovější"
 
-#: src/gui/dialogs/addon/manager.cpp:334
+#: src/gui/dialogs/addon/manager.cpp:335
 msgid "descending"
 msgstr "sestupně"
 
 #. TRANSLATORS: Sorting order of dates, newest first
-#: src/gui/dialogs/addon/manager.cpp:336
+#: src/gui/dialogs/addon/manager.cpp:337
 msgid "newest to oldest"
 msgstr "nejnovější po nejstarší"
 
-#: src/gui/dialogs/addon/manager.cpp:435
+#: src/gui/dialogs/addon/manager.cpp:436
 msgid "addons^Back to List"
 msgstr "Zpět na seznam"
 
-#: src/gui/dialogs/addon/manager.cpp:447
+#: src/gui/dialogs/addon/manager.cpp:448
 msgid "An error occurred while downloading the add-ons list from the server."
 msgstr "Při stahování seznamu rozšíření ze serveru došlo k chybě."
 
-#: src/gui/dialogs/addon/manager.cpp:483
+#: src/gui/dialogs/addon/manager.cpp:484
 msgid "No Add-ons Available"
 msgstr "Žádné dostupné rozšíření"
 
-#: src/gui/dialogs/addon/manager.cpp:483
+#: src/gui/dialogs/addon/manager.cpp:484
 msgid "There are no add-ons available for download from this server."
 msgstr "Na tomto serveru nejsou k dispozici žádná rozšíření ke stažení."
 
-#: src/gui/dialogs/addon/manager.cpp:671
+#: src/gui/dialogs/addon/manager.cpp:672
 msgid ""
 "The following add-on appears to have publishing or version control "
 "information stored locally, and will not be removed:"
@@ -6054,15 +6060,15 @@ msgstr ""
 "Následující rozšíření má zřejmě informace pro publikaci nebo správu verzí a "
 "nebude proto odstraněno:"
 
-#: src/gui/dialogs/addon/manager.cpp:679
+#: src/gui/dialogs/addon/manager.cpp:680
 msgid "The following add-on could not be deleted properly:"
 msgstr "Následující rozšíření nebylo možno správně odstranit:"
 
-#: src/gui/dialogs/addon/manager.cpp:732
+#: src/gui/dialogs/addon/manager.cpp:733
 msgid "Warning"
 msgstr "Varování"
 
-#: src/gui/dialogs/addon/manager.cpp:733
+#: src/gui/dialogs/addon/manager.cpp:734
 msgid ""
 "The remote version of this add-on is greater or equal to the version being "
 "uploaded. Do you really wish to continue?"
@@ -6070,24 +6076,24 @@ msgstr ""
 "Vzdálená verze tohoto rozšíření je vyšší nebo stejná vůči verzi, která je "
 "nahrávána. Opravdu si přeješ pokračovat?"
 
-#: src/gui/dialogs/addon/manager.cpp:742
+#: src/gui/dialogs/addon/manager.cpp:750
 msgid "Invalid icon path. Make sure the path points to a valid image."
 msgstr "Neplatná cesta k ikoně. Ujisti se, že cesta ukazuje na platný obrázek."
 
-#: src/gui/dialogs/addon/manager.cpp:745 src/gui/dialogs/addon/manager.cpp:787
+#: src/gui/dialogs/addon/manager.cpp:753 src/gui/dialogs/addon/manager.cpp:795
 msgid "The server responded with an error:"
 msgstr "Server odpověděl chybou:"
 
-#: src/gui/dialogs/addon/manager.cpp:748
+#: src/gui/dialogs/addon/manager.cpp:756
 msgid "The add-on was rejected by the server:"
 msgstr "Rozšíření bylo serverem odmítnuto:"
 
-#: src/gui/dialogs/addon/manager.cpp:763 src/gui/dialogs/addon/manager.cpp:790
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:498
+#: src/gui/dialogs/addon/manager.cpp:771 src/gui/dialogs/addon/manager.cpp:798
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:500
 msgid "Response"
 msgstr "Odpověď"
 
-#: src/gui/dialogs/addon/manager.cpp:775
+#: src/gui/dialogs/addon/manager.cpp:783
 msgid ""
 "Deleting '$addon|' will permanently erase its download and upload counts on "
 "the add-ons server. Do you really wish to continue?"
@@ -6095,11 +6101,11 @@ msgstr ""
 "Smazání '$addon|' natrvalo vymaže jeho počty stažení a nahrání na serveru "
 "s rozšířeními. Opravdu si přeješ pokračovat?"
 
-#: src/gui/dialogs/addon/manager.cpp:807
+#: src/gui/dialogs/addon/manager.cpp:815
 msgid "Do you want to uninstall '$addon|'?"
 msgstr "Chceš odinstalovat '$addon|'?"
 
-#: src/gui/dialogs/addon/manager.cpp:897
+#: src/gui/dialogs/addon/manager.cpp:905
 msgid "url^None"
 msgstr "Žádná"
 
@@ -6707,7 +6713,7 @@ msgstr "prázdný"
 msgid "this game"
 msgstr "tato hra"
 
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:356
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:358
 #: src/gui/dialogs/multiplayer/mp_staging.cpp:154
 msgid "Team:"
 msgstr "Tým:"
@@ -7097,7 +7103,7 @@ msgstr ""
 "nastaveným na 'click_dismiss' nebo 'ok'."
 
 #: src/gui/widgets/window.cpp:950 src/gui/widgets/window.cpp:987
-#: src/tests/gui/test_gui2.cpp:562
+#: src/tests/gui/test_gui2.cpp:564
 msgid "Failed to show a dialog, which doesn't fit on the screen."
 msgstr "Nebyl zobrazen dialog, který se nevejde na obrazovku."
 
@@ -7999,6 +8005,13 @@ msgid ""
 msgstr ""
 "Klíč '$deprecated_key' byl přejmenován na '$key' a ve verzi $removal_version "
 "bude odstraněna podpora původního tvaru."
+
+#~ msgid ""
+#~ "Multiplayer_AI^Dev AI: Default + Experimental Recruitment (Formula AI)"
+#~ msgstr "Vývojová UI: Výchozí + zkušební verbování (Formula AI)"
+
+#~ msgid "Multiplayer_AI^Dev AI: Default + Poisoning (Formula AI)"
+#~ msgstr "Vývojová UI: Výchozí + používání jedu (Formula AI)"
 
 #~ msgid "feature^Legacy bidirectional rendering"
 #~ msgstr "Zastaralé bidirekcionální renderování"

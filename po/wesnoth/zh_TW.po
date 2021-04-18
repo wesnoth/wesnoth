@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.15\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-03-20 22:02-0300\n"
+"POT-Creation-Date: 2021-04-17 22:21-0400\n"
 "PO-Revision-Date: 2021-04-05 15:00+0800\n"
 "Last-Translator: 李信融 <magiclen0810@gmail.com>\n"
 "Language-Team: Wesnoth Traditional Chinese Team\n"
@@ -223,6 +223,11 @@ msgstr "帶走金幣："
 #: data/lua/wml/objectives.lua:39 src/map_command_handler.hpp:337
 msgid "Notes:"
 msgstr "備註："
+
+#. [button]: id=ok
+#: data/campaigns/World_Conquest/gui/help_dialog.cfg:734
+msgid "Close"
+msgstr ""
 
 #. [language]
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:147
@@ -3965,7 +3970,7 @@ msgid "Invalid deprecation level $level (should be 1-4)"
 msgstr "不正確的不維護等級：$level（應為1到4）"
 
 #. [lua]: wml_actions.deprecated_message
-#: data/lua/wml-tags.lua:903
+#: data/lua/wml-tags.lua:851
 msgid "Invalid deprecation level (should be 1-4)"
 msgstr "無效的廢棄等級（應為1-4）"
 
@@ -4011,8 +4016,8 @@ msgstr "不可治療"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: wesnoth.wml_actions.message
-#: data/lua/wml/message.lua:433 src/scripting/game_lua_kernel.cpp:2665
-#: src/scripting/game_lua_kernel.cpp:2700
+#: data/lua/wml/message.lua:433 src/scripting/game_lua_kernel.cpp:2721
+#: src/scripting/game_lua_kernel.cpp:2756
 msgid "input"
 msgstr "輸入"
 
@@ -4158,23 +4163,23 @@ msgstr ""
 
 #. [heals]: id=aura of death 4
 #. [heals]: id=aura of death 8
-#: data/scenario-test.cfg:1073 data/scenario-test.cfg:1101
+#: data/scenario-test.cfg:1080 data/scenario-test.cfg:1108
 msgid "aura of death ("
 msgstr "死亡氣息 ("
 
 #. [heals]: id=aura of death 4
 #. [heals]: id=aura of death 8
-#: data/scenario-test.cfg:1074 data/scenario-test.cfg:1102
+#: data/scenario-test.cfg:1081 data/scenario-test.cfg:1109
 msgid "female^aura of death ("
 msgstr "死亡氣息 ("
 
 #. [language]
-#: data/scenario-test.cfg:4403
+#: data/scenario-test.cfg:4459
 msgid "very long"
 msgstr "非常長"
 
 #. [language]
-#: data/scenario-test.cfg:4404
+#: data/scenario-test.cfg:4460
 msgid "electrical"
 msgstr "電子"
 
@@ -4195,107 +4200,107 @@ msgid "Ben"
 msgstr "班"
 
 #. [action]: id=button-playreplay, type=image
-#: data/themes/_initial.cfg:428
+#: data/themes/_initial.cfg:413
 msgid "replay^Play"
 msgstr "開始播放"
 
 #. [action]: id=button-playreplay, type=image
-#: data/themes/_initial.cfg:429 data/themes/_initial.cfg:589
+#: data/themes/_initial.cfg:414 data/themes/_initial.cfg:574
 msgid "continuous replay"
 msgstr "連續播放"
 
 #. [action]: id=button-stopreplay, type=image
-#: data/themes/_initial.cfg:443
+#: data/themes/_initial.cfg:428
 msgid "replay^Stop"
 msgstr "停止播放"
 
 #. [action]: id=button-stopreplay, type=image
-#: data/themes/_initial.cfg:444
+#: data/themes/_initial.cfg:429
 msgid "pause after current move"
 msgstr "移動完目前這步後暫停"
 
 #. [action]: id=button-resetreplay, type=image
-#: data/themes/_initial.cfg:459
+#: data/themes/_initial.cfg:444
 msgid "replay^Reset"
 msgstr "重置"
 
 #. [action]: id=button-resetreplay, type=image
-#: data/themes/_initial.cfg:460 data/themes/_initial.cfg:617
+#: data/themes/_initial.cfg:445 data/themes/_initial.cfg:602
 msgid "reset to beginning"
 msgstr "重置到開頭"
 
 #. [action]: id=button-nextturn, type=image
-#: data/themes/_initial.cfg:475 data/themes/_initial.cfg:630
+#: data/themes/_initial.cfg:460 data/themes/_initial.cfg:615
 msgid "Next Turn"
 msgstr "下一回合"
 
 #. [action]: id=button-nextturn, type=image
-#: data/themes/_initial.cfg:476 data/themes/_initial.cfg:631
+#: data/themes/_initial.cfg:461 data/themes/_initial.cfg:616
 msgid "play turn"
 msgstr "播放回合"
 
 #. [action]: id=button-nextside, type=image
-#: data/themes/_initial.cfg:491 data/themes/_initial.cfg:644
+#: data/themes/_initial.cfg:476 data/themes/_initial.cfg:629
 msgid "Next Side"
 msgstr "下一個陣營"
 
 #. [action]: id=button-nextside, type=image
-#: data/themes/_initial.cfg:492 data/themes/_initial.cfg:645
+#: data/themes/_initial.cfg:477 data/themes/_initial.cfg:630
 msgid "play side turn"
 msgstr "播放陣營"
 
 #. [action]: id=button-nextmove, type=image
-#: data/themes/_initial.cfg:506 data/themes/_initial.cfg:658
+#: data/themes/_initial.cfg:491 data/themes/_initial.cfg:643
 msgid "Next Move"
 msgstr "下一步"
 
 #. [action]: id=button-nextmove, type=image
-#: data/themes/_initial.cfg:507 data/themes/_initial.cfg:659
+#: data/themes/_initial.cfg:492 data/themes/_initial.cfg:644
 msgid "play single move"
 msgstr "播放一步"
 
 #. [menu]: id=show-what
-#: data/themes/_initial.cfg:519 data/themes/_initial.cfg:671
+#: data/themes/_initial.cfg:504 data/themes/_initial.cfg:656
 msgid "Point of view"
 msgstr "視角"
 
 #. [action]: id=button-continue
-#: data/themes/_initial.cfg:530
+#: data/themes/_initial.cfg:515
 msgid "Continue Play"
 msgstr "繼續遊玩"
 
 #. [action]: id=button-continue
-#: data/themes/_initial.cfg:531
+#: data/themes/_initial.cfg:516
 msgid "Exit the replay mode and continue playing normally."
 msgstr "退出錄影重播模式並繼續進行遊戲。"
 
 #. [action]: id=skip-animation, type=checkbox
-#: data/themes/_initial.cfg:543 data/themes/_initial.cfg:683
+#: data/themes/_initial.cfg:528 data/themes/_initial.cfg:668
 msgid "Skip animation"
 msgstr "省略動畫"
 
 #. [label]: id=replay-label
-#: data/themes/_initial.cfg:573
+#: data/themes/_initial.cfg:558
 msgid "Replay"
 msgstr "遊戲錄影"
 
 #. [action]: id=button-playreplay, type=image
-#: data/themes/_initial.cfg:588
+#: data/themes/_initial.cfg:573
 msgid "Play"
 msgstr "開始播放"
 
 #. [action]: id=button-stopreplay, type=image
-#: data/themes/_initial.cfg:602
+#: data/themes/_initial.cfg:587
 msgid "Stop"
 msgstr "停止播放"
 
 #. [action]: id=button-stopreplay, type=image
-#: data/themes/_initial.cfg:603
+#: data/themes/_initial.cfg:588
 msgid "pause"
 msgstr "暫停"
 
 #. [action]: id=button-resetreplay, type=image
-#: data/themes/_initial.cfg:616
+#: data/themes/_initial.cfg:601
 msgid "Reset"
 msgstr "重置"
 
@@ -5233,31 +5238,31 @@ msgstr[1] "發現$friends|個同盟單位"
 msgid "(press $hotkey to keep moving)"
 msgstr "（按 $hotkey 鍵繼續移動）"
 
-#: src/addon/client.cpp:75
+#: src/addon/client.cpp:76
 msgid "Connecting to $server_address|..."
 msgstr "正在連接到 $server_address|……"
 
-#: src/addon/client.cpp:122
+#: src/addon/client.cpp:123
 msgid "Downloading list of add-ons..."
 msgstr "下載模組清單……"
 
-#: src/addon/client.cpp:143
+#: src/addon/client.cpp:144
 msgid "Requesting distribution terms..."
 msgstr "請求來源……"
 
-#: src/addon/client.cpp:167
+#: src/addon/client.cpp:168
 msgid ""
 "The add-on <i>$addon_title</i> has an invalid id '$addon_id' and cannot be "
 "published."
 msgstr "此模組<i>$addon_title</i>使用無效的模組ID：$addon_id|，故無法發佈。"
 
-#: src/addon/client.cpp:193
+#: src/addon/client.cpp:180
 msgid ""
 "The add-on <i>$addon_title</i> has a file or directory containing invalid "
 "characters and cannot be published."
 msgstr "此模組<i>$addon_title</i>的檔案或資料夾包含無效的字元而無法發佈。"
 
-#: src/addon/client.cpp:201
+#: src/addon/client.cpp:188
 msgid ""
 "The add-on <i>$addon_title</i> has an invalid file or directory name and "
 "cannot be published. File or directory names may not contain '..' or end "
@@ -5272,7 +5277,7 @@ msgstr ""
 "\n"
 "&quot; * / : &lt; &gt; ? \\ | ~"
 
-#: src/addon/client.cpp:212
+#: src/addon/client.cpp:199
 msgid ""
 "The add-on <i>$addon_title</i> contains files or directories with case "
 "conflicts. File or directory names may not be differently-cased versions of "
@@ -5281,33 +5286,33 @@ msgstr ""
 "此模組<i>$addon_title</i>的檔案或資料夾有大小寫衝突。名稱相同但大小寫不同的檔"
 "案或資料夾，算是同樣的東西。"
 
-#: src/addon/client.cpp:227
+#: src/addon/client.cpp:214
 msgid "Requesting file index..."
 msgstr "請求檔案索引……"
 
-#: src/addon/client.cpp:243
+#: src/addon/client.cpp:230
 msgid "Sending an update pack for the add-on <i>$addon_title</i>..."
 msgstr "正在傳送一個更新包給模組<i>$addon_title</i>……"
 
-#: src/addon/client.cpp:264
+#: src/addon/client.cpp:251
 msgid "Sending add-on <i>$addon_title</i>..."
 msgstr "正在傳送模組<i>$addon_title</i>……"
 
-#: src/addon/client.cpp:297
+#: src/addon/client.cpp:294
 msgid "Removing add-on <i>$addon_title</i> from the server..."
 msgstr "正在從伺服器移除模組<i>$addon_title</i>……"
 
-#: src/addon/client.cpp:326
+#: src/addon/client.cpp:323
 msgid "Downloading add-on <i>$addon_title</i>..."
 msgstr "正在下載模組<i>$addon_title</i>……"
 
-#: src/addon/client.cpp:345 src/addon/client.cpp:371
+#: src/addon/client.cpp:342 src/addon/client.cpp:368
 msgid ""
 "The add-on <i>$addon_title</i> has an invalid file or directory name and "
 "cannot be installed."
 msgstr "此模組<i>$addon_title</i>的檔案或資料夾名稱無效而無法安裝。"
 
-#: src/addon/client.cpp:350 src/addon/client.cpp:376
+#: src/addon/client.cpp:347 src/addon/client.cpp:373
 msgid ""
 "The add-on <i>$addon_title</i> has file or directory names with case "
 "conflicts. This may cause problems."
@@ -5315,11 +5320,11 @@ msgstr ""
 "此模組<i>$addon_title</i>的檔案或資料夾的名稱大小寫衝突。這可能會導致錯誤發"
 "生。"
 
-#: src/addon/client.cpp:409
+#: src/addon/client.cpp:406
 msgid "The server responded with an error:"
 msgstr "伺服器回應錯誤："
 
-#: src/addon/client.cpp:459
+#: src/addon/client.cpp:456
 msgid ""
 "The selected add-on has the following dependency, which is not currently "
 "installed or available from the server. Do you wish to continue?"
@@ -5329,11 +5334,11 @@ msgid_plural ""
 msgstr[0] "這個模組必須依賴以下的相依模組，目前未安裝，你要安裝嗎？"
 msgstr[1] "這個模組必須依賴以下的相依模組，目前未安裝，你要安裝嗎？"
 
-#: src/addon/client.cpp:468
+#: src/addon/client.cpp:465
 msgid "Broken Dependencies"
 msgstr "錯誤的相依項目"
 
-#: src/addon/client.cpp:508
+#: src/addon/client.cpp:505
 msgid ""
 "The following dependency could not be installed. Do you still wish to "
 "continue?"
@@ -5343,35 +5348,35 @@ msgid_plural ""
 msgstr[0] "以下的相依模組無法被安裝。你仍然想要繼續嗎？"
 msgstr[1] "以下的相依模組無法被安裝。你仍然想要繼續嗎？"
 
-#: src/addon/client.cpp:512
+#: src/addon/client.cpp:509
 msgid "Dependencies Installation Failed"
 msgstr "相依模組安裝失敗"
 
-#: src/addon/client.cpp:535
+#: src/addon/client.cpp:532
 msgid ""
 "The add-on '$addon|' is already installed and contains additional "
 "information that will be permanently lost if you continue:"
 msgstr ""
 "這個模組<i>$addon|</i>已經安裝且包含額外資訊，如果繼續將永久遺失相關資料："
 
-#: src/addon/client.cpp:539
+#: src/addon/client.cpp:536
 msgid "Publishing information file (.pbl)"
 msgstr "發佈訊息檔 (.pbl)"
 
-#: src/addon/client.cpp:543
+#: src/addon/client.cpp:540
 msgid "Version control system (VCS) information"
 msgstr "版本控制系統（VCS）資訊"
 
-#: src/addon/client.cpp:547
+#: src/addon/client.cpp:544
 msgid "Do you really wish to continue?"
 msgstr "你真的想要繼續嗎？"
 
-#: src/addon/client.cpp:549 src/addon/manager_ui.cpp:172
+#: src/addon/client.cpp:546 src/addon/manager_ui.cpp:172
 #: src/game_initialization/multiplayer.cpp:361
 msgid "Confirm"
 msgstr "確認"
 
-#: src/addon/client.cpp:689
+#: src/addon/client.cpp:686
 msgid "Add-ons Manager"
 msgstr "模組管理員"
 
@@ -5509,39 +5514,39 @@ msgstr "從伺服器下載模組清單的時候發生錯誤。"
 msgid "Could not find an add-on matching id $addon_id on the add-on server."
 msgstr "無法在這個伺服器找到ID為「$addon_id|」的模組。"
 
-#: src/addon/validation.cpp:448
+#: src/addon/validation.cpp:387
 msgid "Success."
 msgstr "成功。"
 
-#: src/addon/validation.cpp:452
+#: src/addon/validation.cpp:391
 msgid "Incorrect add-on passphrase."
 msgstr "不正確的模組密碼短語。"
 
-#: src/addon/validation.cpp:456
+#: src/addon/validation.cpp:395
 msgid "Upload denied. Please contact the server administration for assistance."
 msgstr "上傳被拒。請聯絡伺服器管理員來取得協助。"
 
-#: src/addon/validation.cpp:460
+#: src/addon/validation.cpp:399
 msgid "Attempted to upload an update pack for a non-existent add-on."
 msgstr "試圖為一個不存在的模組上傳一個更新包。"
 
-#: src/addon/validation.cpp:469
+#: src/addon/validation.cpp:408
 msgid "No add-on data was supplied by the client."
 msgstr "客戶端並未提供模組資料。"
 
-#: src/addon/validation.cpp:473
+#: src/addon/validation.cpp:412
 msgid "Invalid upload pack."
 msgstr "無效的更新包。"
 
-#: src/addon/validation.cpp:477
+#: src/addon/validation.cpp:416
 msgid "Invalid add-on name."
 msgstr "無效模組名稱。"
 
-#: src/addon/validation.cpp:481
+#: src/addon/validation.cpp:420
 msgid "Formatting character in add-on name."
 msgstr "格式化模組名稱中的字元。"
 
-#: src/addon/validation.cpp:485
+#: src/addon/validation.cpp:424
 msgid ""
 "The add-on contains files or directories with illegal names.\n"
 "\n"
@@ -5562,7 +5567,7 @@ msgstr ""
 "此外，名稱不能超過255個字元，也不能包含「..」，或者以「.」結尾。"
 
 # 原文敘述不清楚，不照原文翻譯。
-#: src/addon/validation.cpp:495
+#: src/addon/validation.cpp:434
 msgid ""
 "The add-on contains files or directories with case conflicts.\n"
 "\n"
@@ -5573,75 +5578,75 @@ msgstr ""
 "\n"
 "在同一個資料夾下，不可以有名稱相同但大小寫不同的檔案和資料夾。"
 
-#: src/addon/validation.cpp:501
+#: src/addon/validation.cpp:440
 msgid "The add-on name contains an invalid UTF-8 sequence."
 msgstr "此模組名稱包含一個無效的UTF-8序列。"
 
-#: src/addon/validation.cpp:510
+#: src/addon/validation.cpp:449
 msgid "No add-on title specified."
 msgstr "模組標題沒有被定義。"
 
-#: src/addon/validation.cpp:514
+#: src/addon/validation.cpp:453
 msgid "No add-on author/maintainer name specified."
 msgstr "模組作者/維護者的名稱沒有被定義。"
 
-#: src/addon/validation.cpp:518
+#: src/addon/validation.cpp:457
 msgid "No add-on version specified."
 msgstr "模組版本沒有被定義。"
 
-#: src/addon/validation.cpp:522
+#: src/addon/validation.cpp:461
 msgid "No add-on description specified."
 msgstr "模組描述沒有被定義。"
 
-#: src/addon/validation.cpp:526
+#: src/addon/validation.cpp:465
 msgid "No add-on author/maintainer email specified."
 msgstr "模組作者/維護者的電子郵件沒有被定義。"
 
-#: src/addon/validation.cpp:530
+#: src/addon/validation.cpp:469
 msgid "Missing passphrase."
 msgstr "缺少密碼短語。"
 
-#: src/addon/validation.cpp:534
+#: src/addon/validation.cpp:473
 msgid "Formatting character in add-on title."
 msgstr "格式化模組標題中的字元。"
 
-#: src/addon/validation.cpp:538
+#: src/addon/validation.cpp:477
 msgid "Invalid or unspecified add-on type."
 msgstr "無效或未定義的模組類型"
 
-#: src/addon/validation.cpp:542
+#: src/addon/validation.cpp:481
 msgid "Version number not greater than the latest uploaded version."
 msgstr "版本號碼並未大於最新的上傳版本。"
 
-#: src/addon/validation.cpp:546
+#: src/addon/validation.cpp:485
 msgid "Feedback topic id is not a number."
 msgstr "反饋主題ID不是一個數字。"
 
-#: src/addon/validation.cpp:550
+#: src/addon/validation.cpp:489
 msgid "Feedback topic does not exist."
 msgstr "反饋主題不存在。"
 
-#: src/addon/validation.cpp:554
+#: src/addon/validation.cpp:493
 msgid "The add-on publish information contains an invalid UTF-8 sequence."
 msgstr "模組發佈資訊包含無效的UTF-8序列。"
 
-#: src/addon/validation.cpp:563
+#: src/addon/validation.cpp:502
 msgid "Unspecified server error."
 msgstr "未定義的伺服器錯誤。"
 
-#: src/addon/validation.cpp:567
+#: src/addon/validation.cpp:506
 msgid "Server is in read-only mode."
 msgstr "伺服器是唯讀模式。"
 
-#: src/addon/validation.cpp:571
+#: src/addon/validation.cpp:510
 msgid "Corrupted server add-ons list."
 msgstr "伺服器的模組清單毀損。"
 
-#: src/addon/validation.cpp:575
+#: src/addon/validation.cpp:514
 msgid "Empty add-on version list on the server."
 msgstr "伺服器上的模組版本清單是空的。"
 
-#: src/addon/validation.cpp:585
+#: src/addon/validation.cpp:524
 msgid "Unspecified validation failure."
 msgstr "未定義的驗證錯誤。"
 
@@ -6175,7 +6180,7 @@ msgid "mp_game_available_slots^Full"
 msgstr "已滿"
 
 #: src/game_initialization/lobby_data.cpp:443
-#: src/game_initialization/lobby_data.cpp:445 src/savegame.cpp:659
+#: src/game_initialization/lobby_data.cpp:445 src/savegame.cpp:664
 msgid "Turn"
 msgstr "回合"
 
@@ -6697,23 +6702,23 @@ msgstr "投降"
 msgid "Map-Screenshot"
 msgstr "地圖截圖"
 
-#: src/hotkey/hotkey_handler.cpp:221
+#: src/hotkey/hotkey_handler.cpp:224
 msgid "(press $hk to disable)"
 msgstr "（按 $hk 來關閉）"
 
-#: src/hotkey/hotkey_handler.cpp:221
+#: src/hotkey/hotkey_handler.cpp:224
 msgid "Accelerated speed enabled!"
 msgstr "加速已啟用！"
 
-#: src/hotkey/hotkey_handler.cpp:225
+#: src/hotkey/hotkey_handler.cpp:228
 msgid "Accelerated speed disabled!"
 msgstr "加速已停用！"
 
-#: src/hotkey/hotkey_handler.cpp:422
+#: src/hotkey/hotkey_handler.cpp:425
 msgid "Back to Turn "
 msgstr "回到回合"
 
-#: src/hotkey/hotkey_handler.cpp:428
+#: src/hotkey/hotkey_handler.cpp:431
 msgid "Back to Start"
 msgstr "回到開頭"
 
@@ -7887,12 +7892,12 @@ msgid "%a %b %d %H:%M %Y"
 msgstr "%a %b %d %H:%M %Y"
 
 #. TRANSLATORS: This string is used as part of a filename, as in, "HttT-The Elves Besieged replay.gz"
-#: src/save_index.cpp:261 src/savegame.cpp:585
+#: src/save_index.cpp:261 src/savegame.cpp:590
 msgid "replay"
 msgstr "遊戲錄影"
 
-#: src/save_index.cpp:345 src/savegame.cpp:71 src/savegame.cpp:621
-#: src/savegame.cpp:623
+#: src/save_index.cpp:345 src/savegame.cpp:71 src/savegame.cpp:626
+#: src/savegame.cpp:628
 msgid "Auto-Save"
 msgstr "自動存檔"
 
@@ -7966,31 +7971,38 @@ msgid ""
 "Save names should not end on '.gz' or '.bz2'. Please remove the extension."
 msgstr "檔案名稱不能以「.gz」或「.bz2」結尾。請移除掉。"
 
-#: src/savegame.cpp:485
+#: src/savegame.cpp:443
+msgid ""
+"Save names may not end with a dot, or contain two dots or any of the "
+"following characters:\n"
+"    \" * / : < > ? \\ | ~"
+msgstr ""
+
+#: src/savegame.cpp:490
 msgid "Saved"
 msgstr "已儲存"
 
-#: src/savegame.cpp:485
+#: src/savegame.cpp:490
 msgid "The game has been saved."
 msgstr "遊戲已儲存。"
 
-#: src/savegame.cpp:517 src/savegame.cpp:537
+#: src/savegame.cpp:522 src/savegame.cpp:542
 msgid "Could not write to file"
 msgstr "無法寫入檔案"
 
-#: src/savegame.cpp:574
+#: src/savegame.cpp:579
 msgid "Save Replay"
 msgstr "儲存遊戲錄影"
 
-#: src/savegame.cpp:603
+#: src/savegame.cpp:608
 msgid "Could not auto save the game. Please save the game manually."
 msgstr "不能自動存儲目前遊戲，請手動存檔。"
 
-#: src/savegame.cpp:653
+#: src/savegame.cpp:658
 msgid "Save Game"
 msgstr "儲存遊戲"
 
-#: src/savegame.cpp:667
+#: src/savegame.cpp:672
 msgid "Game state is corrupted"
 msgstr "遊戲狀態毀損"
 

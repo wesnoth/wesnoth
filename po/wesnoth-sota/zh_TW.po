@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.15\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-03-12 23:18 UTC\n"
+"POT-Creation-Date: 2021-04-18 02:22 UTC\n"
 "PO-Revision-Date: 2021-04-06 09:08+0800\n"
 "Last-Translator: 李信融 <magiclen0810@gmail.com>\n"
 "Language-Team: Wesnoth Traditional Chinese Team\n"
@@ -87,6 +87,41 @@ msgstr "戰役維護"
 #: data/campaigns/Secrets_of_the_Ancients/_main.cfg:42
 msgid "Additional Artwork"
 msgstr "額外美術"
+
+#. [label]
+#: data/campaigns/Secrets_of_the_Ancients/gui/zombie_recruit_dialog.cfg:108
+msgid "Lvl 0"
+msgstr "Lv 0"
+
+#. [label]
+#: data/campaigns/Secrets_of_the_Ancients/gui/zombie_recruit_dialog.cfg:130
+msgid "Undead"
+msgstr "亡靈"
+
+#. [label]
+#: data/campaigns/Secrets_of_the_Ancients/gui/zombie_recruit_dialog.cfg:173
+msgid "Traits"
+msgstr "特質"
+
+#. [label]
+#: data/campaigns/Secrets_of_the_Ancients/gui/zombie_recruit_dialog.cfg:207
+msgid "Attacks"
+msgstr "攻擊次數"
+
+#. [label]
+#: data/campaigns/Secrets_of_the_Ancients/gui/zombie_recruit_dialog.cfg:275
+msgid "Choose a Corpse"
+msgstr "選擇一個屍體"
+
+#. [button]
+#: data/campaigns/Secrets_of_the_Ancients/gui/zombie_recruit_dialog.cfg:341
+msgid "Recruit"
+msgstr "招募"
+
+#. [button]: id=cancel
+#: data/campaigns/Secrets_of_the_Ancients/gui/zombie_recruit_dialog.cfg:347
+msgid "Cancel"
+msgstr "取消"
 
 #. [scenario]: id=01_Slipping_Away
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/01_Slipping_Away.cfg:22
@@ -4557,59 +4592,31 @@ msgstr "你現在可以喚起矮人的屍體了！"
 msgid "A lua error has occurred, and a corpse cannot be recruited."
 msgstr "一個Lua錯誤已經發生，一個屍體無法被招募。"
 
-#: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:33
-msgid "Lvl 0"
-msgstr "Lv 0"
-
-#: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:36
-msgid "Undead"
-msgstr "亡靈"
-
-#: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:41
-msgid "Traits"
-msgstr "特質"
-
-#: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:44
-msgid "Attacks"
-msgstr "攻擊次數"
-
-#: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:56
-msgid "Choose a Corpse"
-msgstr "選擇一個屍體"
-
-#: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:71
-msgid "Recruit"
-msgstr "招募"
-
-#: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:72
-msgid "Cancel"
-msgstr "取消"
-
 # 因為是中文，所以結尾不需要空格。
 #. [lua]: select
-#: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:85
+#: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:24
 msgid "HP: "
 msgstr "生命值："
 
 # 因為是中文，所以結尾不需要空格。
 #. [lua]: select
-#: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:85
+#: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:24
 msgid "MP: "
 msgstr "移動點數："
 
 # 因為是中文，所以結尾不需要空格。
 #. [lua]: select
-#: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:85
+#: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:24
 msgid "XP: "
 msgstr "經驗值："
 
 #. [lua]: postshow
-#: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:150
+#: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:89
 msgid "There are no corpses available."
 msgstr "沒有可用的屍體。"
 
 #. [lua]: postshow
-#: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:155
+#: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:94
 msgid "You do not have enough gold to recruit that unit"
 msgstr "你沒有足夠的金幣招募那個單位"
 

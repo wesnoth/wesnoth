@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-03-21 01:03 UTC\n"
+"POT-Creation-Date: 2021-04-18 02:21 UTC\n"
 "PO-Revision-Date: 2018-09-12 07:30+0000\n"
 "Last-Translator: 堀 秀幸 <Hide.HORI@gmail.com>, 2020\n"
 "Language-Team: Japanese (https://www.transifex.com/wesnoth-jp/teams/60513/"
@@ -1846,12 +1846,13 @@ msgstr ""
 "お前らの身体を川の中で腐らせて、我が主人のアンデッド軍の材料にしてやる！"
 
 #. [message]: speaker=Mal-un-Karad
-#: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:134
-msgid "Creatures from the deep, I summon thee to destroy this foe!"
-msgstr "深淵の生物よ、現れいでて敵を滅ぼせ！"
+#. "Wake" doesn't mean "raise undead" here. The reinforcements are sea creatures, they're alive but hidden underwater.
+#: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:135
+msgid "Time to wake my reinforcements!"
+msgstr ""
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:219
+#: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:252
 msgid ""
 "It seems as if in addition to summoning undead this foul sorcerer has "
 "learned to call up monsters from the deep!"
@@ -1860,22 +1861,22 @@ msgstr ""
 "んでいたようです！"
 
 #. [message]: speaker=unit
-#: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:260
+#: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:293
 msgid "I failed my Master..."
 msgstr "ああ、主よ、失敗しました..."
 
 #. [message]
-#: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:279
+#: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:312
 msgid "<i>HISS!</i>"
 msgstr "<i>シューー！</i>"
 
 #. [message]: speaker=Owaec
-#: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:289
+#: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:322
 msgid "The sea creatures are gone!"
 msgstr "海の怪物が去っていった！"
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:298
+#: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:331
 msgid ""
 "We have no time to lose! Let's get moving quickly before the rest of their "
 "army catches up with us."
@@ -4052,6 +4053,9 @@ msgstr "このアイテムは私には適しません。他の人にあげてく
 #: data/campaigns/Eastern_Invasion/utils/macros.cfg:67
 msgid "Holy Amulet"
 msgstr "聖なるお守り"
+
+#~ msgid "Creatures from the deep, I summon thee to destroy this foe!"
+#~ msgstr "深淵の生物よ、現れいでて敵を滅ぼせ！"
 
 #~ msgid "Easy"
 #~ msgstr "易しい"

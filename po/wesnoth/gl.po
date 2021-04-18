@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-03-20 22:02-0300\n"
+"POT-Creation-Date: 2021-04-17 22:21-0400\n"
 "PO-Revision-Date: 2018-05-16 07:07+0100\n"
 "Last-Translator: Adrian Chaves <adrian@chaves.io>\n"
 "Language-Team: Galician <kde-i18n-doc@kde.org>\n"
@@ -246,6 +246,11 @@ msgstr "Ouro retido:"
 #: data/lua/wml/objectives.lua:39 src/map_command_handler.hpp:337
 msgid "Notes:"
 msgstr "Notas:"
+
+#. [button]: id=ok
+#: data/campaigns/World_Conquest/gui/help_dialog.cfg:734
+msgid "Close"
+msgstr "Pechar"
 
 #. [language]
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:147
@@ -4660,7 +4665,7 @@ msgid "Invalid deprecation level $level (should be 1-4)"
 msgstr "Nivel de caducidade $level incorrecto (debería estar entre 1 e 4)."
 
 #. [lua]: wml_actions.deprecated_message
-#: data/lua/wml-tags.lua:903
+#: data/lua/wml-tags.lua:851
 msgid "Invalid deprecation level (should be 1-4)"
 msgstr "Nivel de caducidade incorrecto (debería estar entre 1 e 4)."
 
@@ -4707,8 +4712,8 @@ msgstr "Insandábel"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: wesnoth.wml_actions.message
-#: data/lua/wml/message.lua:433 src/scripting/game_lua_kernel.cpp:2665
-#: src/scripting/game_lua_kernel.cpp:2700
+#: data/lua/wml/message.lua:433 src/scripting/game_lua_kernel.cpp:2721
+#: src/scripting/game_lua_kernel.cpp:2756
 msgid "input"
 msgstr "entrada"
 
@@ -4888,7 +4893,7 @@ msgstr ""
 
 #. [heals]: id=aura of death 4
 #. [heals]: id=aura of death 8
-#: data/scenario-test.cfg:1073 data/scenario-test.cfg:1101
+#: data/scenario-test.cfg:1080 data/scenario-test.cfg:1108
 #, fuzzy
 #| msgid "female^healthy"
 msgid "aura of death ("
@@ -4896,7 +4901,7 @@ msgstr "saudable"
 
 #. [heals]: id=aura of death 4
 #. [heals]: id=aura of death 8
-#: data/scenario-test.cfg:1074 data/scenario-test.cfg:1102
+#: data/scenario-test.cfg:1081 data/scenario-test.cfg:1109
 #, fuzzy
 #| msgid "female^healthy"
 msgid "female^aura of death ("
@@ -4904,13 +4909,13 @@ msgstr "saudable"
 
 # Fai referencia á distancia de alcance.
 #. [language]
-#: data/scenario-test.cfg:4403
+#: data/scenario-test.cfg:4459
 msgid "very long"
 msgstr "grande"
 
 # Supoño que se refire a un tipo de dano.
 #. [language]
-#: data/scenario-test.cfg:4404
+#: data/scenario-test.cfg:4460
 msgid "electrical"
 msgstr "eléctrico"
 
@@ -4932,75 +4937,75 @@ msgstr ""
 
 # A maiúscula é a propósito, aparece ao principio dunha liña ao cargar partidas (repeticións).
 #. [action]: id=button-playreplay, type=image
-#: data/themes/_initial.cfg:428
+#: data/themes/_initial.cfg:413
 #, fuzzy
 #| msgid "replay"
 msgid "replay^Play"
 msgstr "Repetición"
 
 #. [action]: id=button-playreplay, type=image
-#: data/themes/_initial.cfg:429 data/themes/_initial.cfg:589
+#: data/themes/_initial.cfg:414 data/themes/_initial.cfg:574
 msgid "continuous replay"
 msgstr "Repetición continua."
 
 # A maiúscula é a propósito, aparece ao principio dunha liña ao cargar partidas (repeticións).
 #. [action]: id=button-stopreplay, type=image
-#: data/themes/_initial.cfg:443
+#: data/themes/_initial.cfg:428
 #, fuzzy
 #| msgid "replay"
 msgid "replay^Stop"
 msgstr "Repetición"
 
 #. [action]: id=button-stopreplay, type=image
-#: data/themes/_initial.cfg:444
+#: data/themes/_initial.cfg:429
 msgid "pause after current move"
 msgstr "Deter despois do movemento actual."
 
 # A maiúscula é a propósito, aparece ao principio dunha liña ao cargar partidas (repeticións).
 #. [action]: id=button-resetreplay, type=image
-#: data/themes/_initial.cfg:459
+#: data/themes/_initial.cfg:444
 #, fuzzy
 #| msgid "replay"
 msgid "replay^Reset"
 msgstr "Repetición"
 
 #. [action]: id=button-resetreplay, type=image
-#: data/themes/_initial.cfg:460 data/themes/_initial.cfg:617
+#: data/themes/_initial.cfg:445 data/themes/_initial.cfg:602
 msgid "reset to beginning"
 msgstr "Volver ao comezo."
 
 #. [action]: id=button-nextturn, type=image
-#: data/themes/_initial.cfg:475 data/themes/_initial.cfg:630
+#: data/themes/_initial.cfg:460 data/themes/_initial.cfg:615
 msgid "Next Turn"
 msgstr "Seguinte quenda"
 
 #. [action]: id=button-nextturn, type=image
-#: data/themes/_initial.cfg:476 data/themes/_initial.cfg:631
+#: data/themes/_initial.cfg:461 data/themes/_initial.cfg:616
 msgid "play turn"
 msgstr "Xogar a rolda."
 
 #. [action]: id=button-nextside, type=image
-#: data/themes/_initial.cfg:491 data/themes/_initial.cfg:644
+#: data/themes/_initial.cfg:476 data/themes/_initial.cfg:629
 msgid "Next Side"
 msgstr "Seguinte bando"
 
 #. [action]: id=button-nextside, type=image
-#: data/themes/_initial.cfg:492 data/themes/_initial.cfg:645
+#: data/themes/_initial.cfg:477 data/themes/_initial.cfg:630
 msgid "play side turn"
 msgstr "Xogar a quenda."
 
 #. [action]: id=button-nextmove, type=image
-#: data/themes/_initial.cfg:506 data/themes/_initial.cfg:658
+#: data/themes/_initial.cfg:491 data/themes/_initial.cfg:643
 msgid "Next Move"
 msgstr "Seguinte movemento"
 
 #. [action]: id=button-nextmove, type=image
-#: data/themes/_initial.cfg:507 data/themes/_initial.cfg:659
+#: data/themes/_initial.cfg:492 data/themes/_initial.cfg:644
 msgid "play single move"
 msgstr "Xogar un movemento."
 
 #. [menu]: id=show-what
-#: data/themes/_initial.cfg:519 data/themes/_initial.cfg:671
+#: data/themes/_initial.cfg:504 data/themes/_initial.cfg:656
 msgid "Point of view"
 msgstr "Punto de vista"
 
@@ -5008,42 +5013,42 @@ msgstr "Punto de vista"
 #
 # Botón que aparece ao ver repeticións de partidas.
 #. [action]: id=button-continue
-#: data/themes/_initial.cfg:530
+#: data/themes/_initial.cfg:515
 msgid "Continue Play"
 msgstr "Seguir xogando"
 
 #. [action]: id=button-continue
-#: data/themes/_initial.cfg:531
+#: data/themes/_initial.cfg:516
 msgid "Exit the replay mode and continue playing normally."
 msgstr "Saír do modo de repetición e continuar xogando a partida."
 
 #. [action]: id=skip-animation, type=checkbox
-#: data/themes/_initial.cfg:543 data/themes/_initial.cfg:683
+#: data/themes/_initial.cfg:528 data/themes/_initial.cfg:668
 msgid "Skip animation"
 msgstr "Saltar a animación."
 
 #. [label]: id=replay-label
-#: data/themes/_initial.cfg:573
+#: data/themes/_initial.cfg:558
 msgid "Replay"
 msgstr "Repetición"
 
 #. [action]: id=button-playreplay, type=image
-#: data/themes/_initial.cfg:588
+#: data/themes/_initial.cfg:573
 msgid "Play"
 msgstr "Reproducir"
 
 #. [action]: id=button-stopreplay, type=image
-#: data/themes/_initial.cfg:602
+#: data/themes/_initial.cfg:587
 msgid "Stop"
 msgstr "Deter"
 
 #. [action]: id=button-stopreplay, type=image
-#: data/themes/_initial.cfg:603
+#: data/themes/_initial.cfg:588
 msgid "pause"
 msgstr "Deter."
 
 #. [action]: id=button-resetreplay, type=image
-#: data/themes/_initial.cfg:616
+#: data/themes/_initial.cfg:601
 msgid "Reset"
 msgstr "Restablecer"
 
@@ -6133,19 +6138,19 @@ msgid "(press $hotkey to keep moving)"
 msgstr "(preme $hotkey para continuar o desprazamento)"
 
 # Mensaxe que aparece ao intentar conectarse a un servidor. Véxase «Varios xogadores → Conectarse ao servidor oficial».
-#: src/addon/client.cpp:75
+#: src/addon/client.cpp:76
 msgid "Connecting to $server_address|..."
 msgstr "Conectándose a $server_address|…"
 
-#: src/addon/client.cpp:122
+#: src/addon/client.cpp:123
 msgid "Downloading list of add-ons..."
 msgstr "Descargando a lista de complementos…"
 
-#: src/addon/client.cpp:143
+#: src/addon/client.cpp:144
 msgid "Requesting distribution terms..."
 msgstr "Solicitando as condicións de distribución…"
 
-#: src/addon/client.cpp:167
+#: src/addon/client.cpp:168
 msgid ""
 "The add-on <i>$addon_title</i> has an invalid id '$addon_id' and cannot be "
 "published."
@@ -6153,7 +6158,7 @@ msgstr ""
 "O complemento «$addon_title» ten un identificador incorrecto, «$addon_id», e "
 "non pode publicarse."
 
-#: src/addon/client.cpp:193
+#: src/addon/client.cpp:180
 msgid ""
 "The add-on <i>$addon_title</i> has a file or directory containing invalid "
 "characters and cannot be published."
@@ -6161,7 +6166,7 @@ msgstr ""
 "O complemento «$addon_title» ten un ficheiro ou cartafol que contén "
 "caracteres incorrectos e non pode publicarse."
 
-#: src/addon/client.cpp:201
+#: src/addon/client.cpp:188
 msgid ""
 "The add-on <i>$addon_title</i> has an invalid file or directory name and "
 "cannot be published. File or directory names may not contain '..' or end "
@@ -6178,7 +6183,7 @@ msgstr ""
 "\n"
 "&quot; * / : &lt; &gt; ? \\ | ~"
 
-#: src/addon/client.cpp:212
+#: src/addon/client.cpp:199
 msgid ""
 "The add-on <i>$addon_title</i> contains files or directories with case "
 "conflicts. File or directory names may not be differently-cased versions of "
@@ -6189,35 +6194,35 @@ msgstr ""
 "cartafol nun mesmo cartafol que sexan idénticos salvo polo uso de maiúsculas "
 "e minúsculas."
 
-#: src/addon/client.cpp:227
+#: src/addon/client.cpp:214
 #, fuzzy
 #| msgid "Requesting distribution terms..."
 msgid "Requesting file index..."
 msgstr "Solicitando as condicións de distribución…"
 
 # Facilita máis a visualización que «Decargando o complemento: BlaBlaBla...»·
-#: src/addon/client.cpp:243
+#: src/addon/client.cpp:230
 #, fuzzy
 #| msgid "Sending add-on <i>$addon_title</i>..."
 msgid "Sending an update pack for the add-on <i>$addon_title</i>..."
 msgstr "Enviando «<i>$addon_title</i>»…"
 
 # Facilita máis a visualización que «Decargando o complemento: BlaBlaBla...»·
-#: src/addon/client.cpp:264
+#: src/addon/client.cpp:251
 msgid "Sending add-on <i>$addon_title</i>..."
 msgstr "Enviando «<i>$addon_title</i>»…"
 
 # Facilita máis a visualización que «Decargando o complemento: BlaBlaBla...»·
-#: src/addon/client.cpp:297
+#: src/addon/client.cpp:294
 msgid "Removing add-on <i>$addon_title</i> from the server..."
 msgstr "Eliminando «<i>$addon_title</i>» do servidor…"
 
 # Facilita máis a visualización que «Decargando o complemento: BlaBlaBla...»·
-#: src/addon/client.cpp:326
+#: src/addon/client.cpp:323
 msgid "Downloading add-on <i>$addon_title</i>..."
 msgstr "Descargando «<i>$addon_title</i>»…"
 
-#: src/addon/client.cpp:345 src/addon/client.cpp:371
+#: src/addon/client.cpp:342 src/addon/client.cpp:368
 msgid ""
 "The add-on <i>$addon_title</i> has an invalid file or directory name and "
 "cannot be installed."
@@ -6225,7 +6230,7 @@ msgstr ""
 "A ruta ao complemento «<i>$addon_title</i>» contén caracteres incorrectos, "
 "así que non é posíbel instalalo."
 
-#: src/addon/client.cpp:350 src/addon/client.cpp:376
+#: src/addon/client.cpp:347 src/addon/client.cpp:373
 msgid ""
 "The add-on <i>$addon_title</i> has file or directory names with case "
 "conflicts. This may cause problems."
@@ -6233,11 +6238,11 @@ msgstr ""
 "O complemento «$addon_title» ten nomes de ficheiro ou de cartafol con "
 "conflictos de maiúsculas e minúsculas. Isto pode causar problemas."
 
-#: src/addon/client.cpp:409
+#: src/addon/client.cpp:406
 msgid "The server responded with an error:"
 msgstr "O servidor respondeu cun erro:"
 
-#: src/addon/client.cpp:459
+#: src/addon/client.cpp:456
 msgid ""
 "The selected add-on has the following dependency, which is not currently "
 "installed or available from the server. Do you wish to continue?"
@@ -6251,11 +6256,11 @@ msgstr[1] ""
 "O complemento escollido ten as seguintes dependencias, que non están nin "
 "instaladas nin dispoñíbeis no servidor. Queres continuar?"
 
-#: src/addon/client.cpp:468
+#: src/addon/client.cpp:465
 msgid "Broken Dependencies"
 msgstr "Dependencias rotas"
 
-#: src/addon/client.cpp:508
+#: src/addon/client.cpp:505
 msgid ""
 "The following dependency could not be installed. Do you still wish to "
 "continue?"
@@ -6266,11 +6271,11 @@ msgstr[0] "Non foi posíbel instalar a seguinte dependencia. Queres continuar?"
 msgstr[1] ""
 "Non foi posíbel instalar as seguintes dependencias. Queres continuar?"
 
-#: src/addon/client.cpp:512
+#: src/addon/client.cpp:509
 msgid "Dependencies Installation Failed"
 msgstr "Non se instalaron as dependencias"
 
-#: src/addon/client.cpp:535
+#: src/addon/client.cpp:532
 msgid ""
 "The add-on '$addon|' is already installed and contains additional "
 "information that will be permanently lost if you continue:"
@@ -6278,24 +6283,24 @@ msgstr ""
 "O complemento «$addon|» xa está instalado e contén información adicional que "
 "se perderá de maneira permanente se continúas:"
 
-#: src/addon/client.cpp:539
+#: src/addon/client.cpp:536
 msgid "Publishing information file (.pbl)"
 msgstr "Ficheiro de publicación de información (.pbl)"
 
-#: src/addon/client.cpp:543
+#: src/addon/client.cpp:540
 msgid "Version control system (VCS) information"
 msgstr "Información do sistema de control de versións (VCS)"
 
-#: src/addon/client.cpp:547
+#: src/addon/client.cpp:544
 msgid "Do you really wish to continue?"
 msgstr "Queres continuar?"
 
-#: src/addon/client.cpp:549 src/addon/manager_ui.cpp:172
+#: src/addon/client.cpp:546 src/addon/manager_ui.cpp:172
 #: src/game_initialization/multiplayer.cpp:361
 msgid "Confirm"
 msgstr "Confirmar"
 
-#: src/addon/client.cpp:689
+#: src/addon/client.cpp:686
 msgid "Add-ons Manager"
 msgstr "Xestor de complementos"
 
@@ -6447,43 +6452,43 @@ msgstr ""
 "Non foi posíbel atopar un complemento co identificador «$addon_id» no "
 "servidor de complementos."
 
-#: src/addon/validation.cpp:448
+#: src/addon/validation.cpp:387
 msgid "Success."
 msgstr ""
 
-#: src/addon/validation.cpp:452
+#: src/addon/validation.cpp:391
 msgid "Incorrect add-on passphrase."
 msgstr ""
 
-#: src/addon/validation.cpp:456
+#: src/addon/validation.cpp:395
 msgid "Upload denied. Please contact the server administration for assistance."
 msgstr ""
 
-#: src/addon/validation.cpp:460
+#: src/addon/validation.cpp:399
 msgid "Attempted to upload an update pack for a non-existent add-on."
 msgstr ""
 
-#: src/addon/validation.cpp:469
+#: src/addon/validation.cpp:408
 msgid "No add-on data was supplied by the client."
 msgstr ""
 
-#: src/addon/validation.cpp:473
+#: src/addon/validation.cpp:412
 #, fuzzy
 #| msgid "Invalid location"
 msgid "Invalid upload pack."
 msgstr "Lugar incorrecto."
 
-#: src/addon/validation.cpp:477
+#: src/addon/validation.cpp:416
 #, fuzzy
 #| msgid "Invalid tag name"
 msgid "Invalid add-on name."
 msgstr "O nome da etiqueta é incorrecto."
 
-#: src/addon/validation.cpp:481
+#: src/addon/validation.cpp:420
 msgid "Formatting character in add-on name."
 msgstr ""
 
-#: src/addon/validation.cpp:485
+#: src/addon/validation.cpp:424
 msgid ""
 "The add-on contains files or directories with illegal names.\n"
 "\n"
@@ -6496,7 +6501,7 @@ msgid ""
 "end with '.'."
 msgstr ""
 
-#: src/addon/validation.cpp:495
+#: src/addon/validation.cpp:434
 #, fuzzy
 #| msgid ""
 #| "The add-on <i>$addon_title</i> contains files or directories with case "
@@ -6513,83 +6518,83 @@ msgstr ""
 "cartafol nun mesmo cartafol que sexan idénticos salvo polo uso de maiúsculas "
 "e minúsculas."
 
-#: src/addon/validation.cpp:501
+#: src/addon/validation.cpp:440
 msgid "The add-on name contains an invalid UTF-8 sequence."
 msgstr ""
 
-#: src/addon/validation.cpp:510
+#: src/addon/validation.cpp:449
 #, fuzzy
 #| msgid "No add-ons to update"
 msgid "No add-on title specified."
 msgstr "Non hai nova versión de ningún complemento."
 
-#: src/addon/validation.cpp:514
+#: src/addon/validation.cpp:453
 msgid "No add-on author/maintainer name specified."
 msgstr ""
 
-#: src/addon/validation.cpp:518
+#: src/addon/validation.cpp:457
 msgid "No add-on version specified."
 msgstr ""
 
-#: src/addon/validation.cpp:522
+#: src/addon/validation.cpp:461
 #, fuzzy
 #| msgid "No description available."
 msgid "No add-on description specified."
 msgstr "Sen descrición."
 
-#: src/addon/validation.cpp:526
+#: src/addon/validation.cpp:465
 msgid "No add-on author/maintainer email specified."
 msgstr ""
 
-#: src/addon/validation.cpp:530
+#: src/addon/validation.cpp:469
 msgid "Missing passphrase."
 msgstr ""
 
-#: src/addon/validation.cpp:534
+#: src/addon/validation.cpp:473
 msgid "Formatting character in add-on title."
 msgstr ""
 
-#: src/addon/validation.cpp:538
+#: src/addon/validation.cpp:477
 #, fuzzy
 #| msgid "Invalid unit type"
 msgid "Invalid or unspecified add-on type."
 msgstr "Tipo de unidade incorrecto."
 
-#: src/addon/validation.cpp:542
+#: src/addon/validation.cpp:481
 msgid "Version number not greater than the latest uploaded version."
 msgstr ""
 
-#: src/addon/validation.cpp:546
+#: src/addon/validation.cpp:485
 msgid "Feedback topic id is not a number."
 msgstr ""
 
-#: src/addon/validation.cpp:550
+#: src/addon/validation.cpp:489
 msgid "Feedback topic does not exist."
 msgstr ""
 
-#: src/addon/validation.cpp:554
+#: src/addon/validation.cpp:493
 msgid "The add-on publish information contains an invalid UTF-8 sequence."
 msgstr ""
 
-#: src/addon/validation.cpp:563
+#: src/addon/validation.cpp:502
 msgid "Unspecified server error."
 msgstr ""
 
-#: src/addon/validation.cpp:567
+#: src/addon/validation.cpp:506
 msgid "Server is in read-only mode."
 msgstr ""
 
-#: src/addon/validation.cpp:571
+#: src/addon/validation.cpp:510
 #, fuzzy
 #| msgid "You have no add-ons installed."
 msgid "Corrupted server add-ons list."
 msgstr "Non tes ningún complemento instalado."
 
-#: src/addon/validation.cpp:575
+#: src/addon/validation.cpp:514
 msgid "Empty add-on version list on the server."
 msgstr ""
 
-#: src/addon/validation.cpp:585
+#: src/addon/validation.cpp:524
 msgid "Unspecified validation failure."
 msgstr ""
 
@@ -7160,7 +7165,7 @@ msgstr "Chea"
 
 # En referencia á rolda en que está a partida (unha rolda é o grupo formado por unha quenda de cada xogador).
 #: src/game_initialization/lobby_data.cpp:443
-#: src/game_initialization/lobby_data.cpp:445 src/savegame.cpp:659
+#: src/game_initialization/lobby_data.cpp:445 src/savegame.cpp:664
 msgid "Turn"
 msgstr "Rolda"
 
@@ -7724,23 +7729,23 @@ msgstr "Renderme"
 msgid "Map-Screenshot"
 msgstr "Captura-do-mapa"
 
-#: src/hotkey/hotkey_handler.cpp:221
+#: src/hotkey/hotkey_handler.cpp:224
 msgid "(press $hk to disable)"
 msgstr "(preme $hotkey para desactivala)"
 
-#: src/hotkey/hotkey_handler.cpp:221
+#: src/hotkey/hotkey_handler.cpp:224
 msgid "Accelerated speed enabled!"
 msgstr "Activouse a velocidade acelerada."
 
-#: src/hotkey/hotkey_handler.cpp:225
+#: src/hotkey/hotkey_handler.cpp:228
 msgid "Accelerated speed disabled!"
 msgstr "Desactivouse a velocidade acelerada."
 
-#: src/hotkey/hotkey_handler.cpp:422
+#: src/hotkey/hotkey_handler.cpp:425
 msgid "Back to Turn "
 msgstr "Volver á quenda "
 
-#: src/hotkey/hotkey_handler.cpp:428
+#: src/hotkey/hotkey_handler.cpp:431
 msgid "Back to Start"
 msgstr "Volver ao comezo"
 
@@ -9029,12 +9034,12 @@ msgstr "%d/%m/%Y ás %H:%M"
 
 # A maiúscula é a propósito, aparece ao principio dunha liña ao cargar partidas (repeticións).
 #. TRANSLATORS: This string is used as part of a filename, as in, "HttT-The Elves Besieged replay.gz"
-#: src/save_index.cpp:261 src/savegame.cpp:585
+#: src/save_index.cpp:261 src/savegame.cpp:590
 msgid "replay"
 msgstr "Repetición"
 
-#: src/save_index.cpp:345 src/savegame.cpp:71 src/savegame.cpp:621
-#: src/savegame.cpp:623
+#: src/save_index.cpp:345 src/savegame.cpp:71 src/savegame.cpp:626
+#: src/savegame.cpp:628
 msgid "Auto-Save"
 msgstr "Gardado automático"
 
@@ -9101,33 +9106,40 @@ msgstr ""
 "Os nomes das partidas gardadas non poden rematar en «.gz» ou «.bz2». Elixe "
 "outro nome."
 
-#: src/savegame.cpp:485
+#: src/savegame.cpp:443
+msgid ""
+"Save names may not end with a dot, or contain two dots or any of the "
+"following characters:\n"
+"    \" * / : < > ? \\ | ~"
+msgstr ""
+
+#: src/savegame.cpp:490
 msgid "Saved"
 msgstr "Gardada."
 
-#: src/savegame.cpp:485
+#: src/savegame.cpp:490
 msgid "The game has been saved."
 msgstr "Gardouse a partida."
 
-#: src/savegame.cpp:517 src/savegame.cpp:537
+#: src/savegame.cpp:522 src/savegame.cpp:542
 msgid "Could not write to file"
 msgstr "Non foi posíbel escribir no ficheiro."
 
-#: src/savegame.cpp:574
+#: src/savegame.cpp:579
 msgid "Save Replay"
 msgstr "Gardar a repetición"
 
-#: src/savegame.cpp:603
+#: src/savegame.cpp:608
 msgid "Could not auto save the game. Please save the game manually."
 msgstr ""
 "Non foi posíbel gardar automaticamente a partida. Garda a partida "
 "manualmente."
 
-#: src/savegame.cpp:653
+#: src/savegame.cpp:658
 msgid "Save Game"
 msgstr "Gardar a partida"
 
-#: src/savegame.cpp:667
+#: src/savegame.cpp:672
 msgid "Game state is corrupted"
 msgstr "A partida está corrompida."
 
@@ -10139,9 +10151,6 @@ msgstr "Opcións de planificación"
 #~| msgid "Screenshot"
 #~ msgid "Screenshots..."
 #~ msgstr "Captura de pantalla"
-
-#~ msgid "Close"
-#~ msgstr "Pechar"
 
 #, fuzzy
 #~| msgid "Wesnoth"

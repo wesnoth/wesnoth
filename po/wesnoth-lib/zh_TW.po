@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.15\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-03-20 22:03-0300\n"
+"POT-Creation-Date: 2021-04-17 22:21-0400\n"
 "PO-Revision-Date: 2021-04-06 08:26+0800\n"
 "Last-Translator: 李信融 <magiclen0810@gmail.com>\n"
 "Language-Team: Wesnoth Traditional Chinese Team\n"
@@ -43,16 +43,6 @@ msgstr "開發用AI：閒置AI"
 #: data/ai/dev/ai_default_rca_alternate_recruiting.cfg:10
 msgid "Multiplayer_AI^Dev AI: Default AI (RCA) with Alternate Recruiting"
 msgstr "預設AI（RCA）使用替代的招募邏輯"
-
-#. [ai]: id=formula_ai # id is needed to uniquely identify a MP AI, it is not needed in the scenario AI
-#: data/ai/dev/formula_ai.cfg:10
-msgid "Multiplayer_AI^Dev AI: Default + Experimental Recruitment (Formula AI)"
-msgstr "開發用AI：預設 + 實驗性的招募邏輯（公式AI）"
-
-#. [ai]: id=formula_ai_poisoning
-#: data/ai/dev/formula_ai_poisoning.cfg:9
-msgid "Multiplayer_AI^Dev AI: Default + Poisoning (Formula AI)"
-msgstr "開發用AI：預設 + 毒（公式AI）"
 
 #. [terrain_type]: id=fence
 #. [terrain_type]: id=fence_iron
@@ -2174,7 +2164,7 @@ msgstr "發佈模組"
 #. [button]: id=single_uninstall
 #. [button]: id=uninstall
 #: data/gui/widget/addon_list.cfg:435 data/gui/window/addon_manager.cfg:244
-#: src/gui/dialogs/addon/manager.cpp:806
+#: src/gui/dialogs/addon/manager.cpp:814
 msgid "Uninstall add-on"
 msgstr "移除模組"
 
@@ -2191,7 +2181,7 @@ msgstr "訊息等待中"
 #: data/gui/window/attack_predictions.cfg:304 data/gui/window/chat_log.cfg:201
 #: data/gui/window/end_credits.cfg:145
 #: data/gui/window/game_cache_options.cfg:247
-#: data/gui/window/game_stats.cfg:843 data/gui/window/game_version.cfg:652
+#: data/gui/window/game_stats.cfg:843 data/gui/window/game_version.cfg:655
 #: data/gui/window/gamestate_inspector.cfg:397
 #: data/gui/window/generator_settings.cfg:190
 #: data/gui/window/help_browser.cfg:188
@@ -2214,38 +2204,51 @@ msgstr "關閉"
 msgid "Profile"
 msgstr "概述"
 
-#. [widget]: id=name
-#. [label]
-#: data/gui/window/addon_connect.cfg:40 data/gui/window/mp_connect.cfg:52
-#: data/gui/window/mp_method_selection.cfg:254
-msgid "Connect to Server"
-msgstr "連結伺服器"
+#. [window]: id=addon_auth
+#: data/gui/window/addon_auth.cfg:8
+msgid "Add-on upload authentication dialog"
+msgstr ""
 
 #. [label]
-#: data/gui/window/addon_connect.cfg:59
-msgid "You will now connect to a server to download add-ons."
-msgstr "你將連結到伺服器下載模組。"
+#: data/gui/window/addon_auth.cfg:41
+msgid "Authenticate"
+msgstr ""
 
 #. [label]
-#: data/gui/window/addon_connect.cfg:89
-msgid "Server:"
-msgstr "伺服器："
+#: data/gui/window/addon_auth.cfg:71 data/gui/window/mp_create_game.cfg:990
+#: data/gui/window/mp_join_game_password_prompt.cfg:90
+#: data/gui/window/mp_login.cfg:143
+msgid "Password:"
+msgstr "密碼："
 
-#. [label]
-#. [button]: id=remove_addons
-#: data/gui/window/addon_connect.cfg:144
-#: data/gui/window/addon_uninstall_list.cfg:51
-msgid "Remove Add-ons"
-msgstr "移除模組"
-
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
-#: data/gui/window/addon_connect.cfg:197 data/gui/window/mp_connect.cfg:299
-msgid "Connect"
-msgstr "連結"
+#: data/gui/window/addon_auth.cfg:119 data/gui/window/core_dialog.cfg:227
+#: data/gui/window/custom_tod.cfg:431
+#: data/gui/window/depcheck_select_new.cfg:151
+#: data/gui/window/edit_label.cfg:139 data/gui/window/edit_text.cfg:116
+#: data/gui/window/editor_edit_label.cfg:301
+#: data/gui/window/editor_edit_scenario.cfg:287
+#: data/gui/window/editor_edit_side.cfg:443 data/gui/window/file_dialog.cfg:437
+#: data/gui/window/folder_create.cfg:119 data/gui/window/label_settings.cfg:137
+#: data/gui/window/language_selection.cfg:148 data/gui/window/logging.cfg:259
+#: data/gui/window/mp_change_control.cfg:203
+#: data/gui/window/mp_faction_select.cfg:388
+#: data/gui/window/mp_join_game_password_prompt.cfg:136
+#: data/gui/window/mp_login.cfg:243 data/gui/window/mp_method_selection.cfg:327
+#: data/gui/window/select_orb_colors.cfg:138
+#: data/gui/window/simple_item_selector.cfg:145
+#: data/gui/window/sp_options_configure.cfg:105
+#: data/gui/window/theme_list.cfg:142 data/gui/window/unit_advance.cfg:191
+#: data/gui/window/unit_create.cfg:294 data/gui/window/wml_error.cfg:162
+#: data/gui/window/wml_message.cfg:444 src/gui/dialogs/message.cpp:181
+#: src/gui/dialogs/message.cpp:188
+msgid "OK"
+msgstr "確定"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=cancel
-#: data/gui/window/addon_connect.cfg:211
+#: data/gui/window/addon_auth.cfg:133 data/gui/window/addon_connect.cfg:211
 #: data/gui/window/addon_license_prompt.cfg:115
 #: data/gui/window/addon_uninstall_list.cfg:174
 #: data/gui/window/campaign_dialog.cfg:497
@@ -2282,6 +2285,35 @@ msgstr "連結"
 #: src/hotkey/hotkey_command.cpp:73
 msgid "Cancel"
 msgstr "取消"
+
+#. [widget]: id=name
+#. [label]
+#: data/gui/window/addon_connect.cfg:40 data/gui/window/mp_connect.cfg:52
+#: data/gui/window/mp_method_selection.cfg:254
+msgid "Connect to Server"
+msgstr "連結伺服器"
+
+#. [label]
+#: data/gui/window/addon_connect.cfg:59
+msgid "You will now connect to a server to download add-ons."
+msgstr "你將連結到伺服器下載模組。"
+
+#. [label]
+#: data/gui/window/addon_connect.cfg:89
+msgid "Server:"
+msgstr "伺服器："
+
+#. [label]
+#. [button]: id=remove_addons
+#: data/gui/window/addon_connect.cfg:144
+#: data/gui/window/addon_uninstall_list.cfg:51
+msgid "Remove Add-ons"
+msgstr "移除模組"
+
+#. [button]: id=ok
+#: data/gui/window/addon_connect.cfg:197 data/gui/window/mp_connect.cfg:299
+msgid "Connect"
+msgstr "連結"
 
 #. [label]
 #: data/gui/window/addon_license_prompt.cfg:39
@@ -2368,7 +2400,7 @@ msgstr "相依模組："
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=dependencies
-#: data/gui/window/addon_manager.cfg:520 src/gui/dialogs/addon/manager.cpp:880
+#: data/gui/window/addon_manager.cfg:520 src/gui/dialogs/addon/manager.cpp:888
 msgid "addon_dependencies^None"
 msgstr "無"
 
@@ -2379,7 +2411,7 @@ msgstr "翻譯："
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=translations
-#: data/gui/window/addon_manager.cfg:554 src/gui/dialogs/addon/manager.cpp:894
+#: data/gui/window/addon_manager.cfg:554 src/gui/dialogs/addon/manager.cpp:902
 msgid "translations^None"
 msgstr "無"
 
@@ -2411,8 +2443,8 @@ msgstr "模組管理器"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=details_toggle
-#: data/gui/window/addon_manager.cfg:875 src/gui/dialogs/addon/manager.cpp:438
-#: src/gui/dialogs/addon/manager.cpp:629
+#: data/gui/window/addon_manager.cfg:875 src/gui/dialogs/addon/manager.cpp:439
+#: src/gui/dialogs/addon/manager.cpp:630
 msgid "Addon Details"
 msgstr "模組詳細資訊"
 
@@ -2586,7 +2618,7 @@ msgstr "開始"
 #. [slider]: id=enemey_gold_factor
 #. [label]: id=title
 #: data/gui/window/campaign_difficulty.cfg:53
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:257
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:263
 msgid "Difficulty"
 msgstr "難度"
 
@@ -2649,34 +2681,10 @@ msgstr "複製日誌至剪貼簿"
 msgid "Load Core"
 msgstr "讀取核心"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [button]: id=ok
-#: data/gui/window/core_dialog.cfg:227 data/gui/window/custom_tod.cfg:431
-#: data/gui/window/depcheck_select_new.cfg:151
-#: data/gui/window/edit_label.cfg:139 data/gui/window/edit_text.cfg:116
-#: data/gui/window/editor_edit_label.cfg:301
-#: data/gui/window/editor_edit_scenario.cfg:287
-#: data/gui/window/editor_edit_side.cfg:443 data/gui/window/file_dialog.cfg:437
-#: data/gui/window/folder_create.cfg:119 data/gui/window/label_settings.cfg:137
-#: data/gui/window/language_selection.cfg:148 data/gui/window/logging.cfg:259
-#: data/gui/window/mp_change_control.cfg:203
-#: data/gui/window/mp_faction_select.cfg:388
-#: data/gui/window/mp_join_game_password_prompt.cfg:136
-#: data/gui/window/mp_login.cfg:243 data/gui/window/mp_method_selection.cfg:327
-#: data/gui/window/select_orb_colors.cfg:138
-#: data/gui/window/simple_item_selector.cfg:145
-#: data/gui/window/sp_options_configure.cfg:105
-#: data/gui/window/theme_list.cfg:142 data/gui/window/unit_advance.cfg:191
-#: data/gui/window/unit_create.cfg:294 data/gui/window/wml_error.cfg:162
-#: data/gui/window/wml_message.cfg:444 src/gui/dialogs/message.cpp:181
-#: src/gui/dialogs/message.cpp:188
-msgid "OK"
-msgstr "確定"
-
 #. [button]: id=copy
 #. [button]: id=copy_
 #: data/gui/window/custom_tod.cfg:50 data/gui/window/game_cache_options.cfg:110
-#: data/gui/window/game_version.cfg:46
+#: data/gui/window/game_version.cfg:47
 #: data/gui/window/screenshot_notification.cfg:33
 msgid "filesystem^Copy"
 msgstr "複製"
@@ -2684,7 +2692,7 @@ msgstr "複製"
 #. [button]: id=copy
 #. [button]: id=copy_
 #: data/gui/window/custom_tod.cfg:51 data/gui/window/game_cache_options.cfg:111
-#: data/gui/window/game_version.cfg:47
+#: data/gui/window/game_version.cfg:48
 #: data/gui/window/screenshot_notification.cfg:34
 msgid "Copy this path to clipboard"
 msgstr "複製路徑至剪貼簿"
@@ -2692,14 +2700,14 @@ msgstr "複製路徑至剪貼簿"
 #. [button]: id=browse
 #. [button]: id=browse_
 #: data/gui/window/custom_tod.cfg:66 data/gui/window/game_cache_options.cfg:126
-#: data/gui/window/game_version.cfg:62
+#: data/gui/window/game_version.cfg:63
 msgid "filesystem^Browse"
 msgstr "瀏覽"
 
 #. [button]: id=browse
 #. [button]: id=browse_
 #: data/gui/window/custom_tod.cfg:67 data/gui/window/game_cache_options.cfg:127
-#: data/gui/window/game_version.cfg:63
+#: data/gui/window/game_version.cfg:64
 msgid "Browse this location using a file manager"
 msgstr "使用檔案管理員瀏覽這個目錄"
 
@@ -2774,7 +2782,7 @@ msgstr "刪除 ToD"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/depcheck_confirm_change.cfg:40
-#: src/gui/dialogs/addon/manager.cpp:779 src/gui/dialogs/file_dialog.cpp:302
+#: src/gui/dialogs/addon/manager.cpp:787 src/gui/dialogs/file_dialog.cpp:302
 #: src/gui/dialogs/file_dialog.cpp:728
 msgid "Confirm"
 msgstr "確認"
@@ -3372,7 +3380,7 @@ msgstr "隊伍"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [toggle_button]: id=sort_2
 #: data/gui/window/game_stats.cfg:63
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:423
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:425
 msgid "Gold"
 msgstr "金幣"
 
@@ -3399,7 +3407,7 @@ msgstr "支出"
 #. [toggle_button]: id=sort_6
 #: data/gui/window/game_stats.cfg:118 data/gui/window/mp_join_game.cfg:273
 #: data/gui/window/mp_join_game.cfg:286
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:429
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:431
 msgid "Income"
 msgstr "收入"
 
@@ -3468,93 +3476,98 @@ msgid "Scroll To"
 msgstr "捲屏至"
 
 #. [grid]
-#: data/gui/window/game_version.cfg:126
+#: data/gui/window/game_version.cfg:127
 msgid "Game data:"
 msgstr "遊戲資料："
 
 #. [grid]
-#: data/gui/window/game_version.cfg:128
+#: data/gui/window/game_version.cfg:129
 msgid "Configuration:"
 msgstr "配置："
 
 #. [grid]
-#: data/gui/window/game_version.cfg:130
+#: data/gui/window/game_version.cfg:131
 msgid "User data:"
 msgstr "使用者資料："
 
 #. [grid]
-#: data/gui/window/game_version.cfg:132
+#: data/gui/window/game_version.cfg:133
 msgid "Saved games:"
 msgstr "儲存遊戲："
 
 #. [grid]
-#: data/gui/window/game_version.cfg:134
+#: data/gui/window/game_version.cfg:135
 msgid "Add-ons:"
 msgstr "模組"
 
 #. [grid]
-#: data/gui/window/game_version.cfg:136
+#: data/gui/window/game_version.cfg:137
 msgid "Cache:"
 msgstr "快取："
 
+#. [grid]
+#: data/gui/window/game_version.cfg:139
+msgid "Logs:"
+msgstr ""
+
 #. [button]: id=open_stderr
-#: data/gui/window/game_version.cfg:161
+#: data/gui/window/game_version.cfg:164
 msgid "Open Log File"
 msgstr "打開日誌檔案"
 
 #. [button]: id=open_stderr
-#: data/gui/window/game_version.cfg:162
+#: data/gui/window/game_version.cfg:165
 msgid "Opens the log file, which may contain useful debug information"
 msgstr "打開日誌檔案，裡面可能包含偵錯訊息"
 
 #. [label]
-#: data/gui/window/game_version.cfg:196
+#: data/gui/window/game_version.cfg:199
 msgid "library^Name"
 msgstr "名稱"
 
 #. [label]
-#: data/gui/window/game_version.cfg:207
+#: data/gui/window/game_version.cfg:210
 msgid "library^Build version"
 msgstr "建置版本"
 
 #. [label]
-#: data/gui/window/game_version.cfg:219
+#: data/gui/window/game_version.cfg:222
 msgid "library^Runtime version"
 msgstr "運行版本"
 
 #. [label]
-#: data/gui/window/game_version.cfg:300
+#: data/gui/window/game_version.cfg:303
 msgid ""
 "The following features were selected when building this version of Wesnoth:"
 msgstr "建置此版本時有選擇以下功能："
 
 #. [label]
-#: data/gui/window/game_version.cfg:454
+#: data/gui/window/game_version.cfg:457
 msgid "The Battle for Wesnoth"
 msgstr "韋諾之戰"
 
 #. [widget]: id=tab_label
-#: data/gui/window/game_version.cfg:535
+#: data/gui/window/game_version.cfg:538
 msgid "Paths"
 msgstr "路徑"
 
 #. [widget]: id=tab_label
-#: data/gui/window/game_version.cfg:548
+#: data/gui/window/game_version.cfg:551
 msgid "Libraries"
 msgstr "函式庫"
 
 #. [widget]: id=tab_label
-#: data/gui/window/game_version.cfg:561
+#: data/gui/window/game_version.cfg:564
 msgid "Features"
 msgstr "功能"
 
 #. [button]: id=copy_all
-#: data/gui/window/game_version.cfg:636
+#: data/gui/window/game_version.cfg:639
 msgid "page^Copy"
 msgstr "複製"
 
 #. [button]: id=copy_all
-#: data/gui/window/game_version.cfg:637
+#: data/gui/window/game_version.cfg:640
 msgid "Copy the full report to clipboard"
 msgstr "複製完整報告至剪貼簿"
 
@@ -4293,13 +4306,6 @@ msgstr "錄影是否將公開發佈"
 #: data/gui/window/mp_create_game.cfg:957
 msgid "Name of game:"
 msgstr "遊戲名稱："
-
-#. [label]
-#: data/gui/window/mp_create_game.cfg:990
-#: data/gui/window/mp_join_game_password_prompt.cfg:90
-#: data/gui/window/mp_login.cfg:143
-msgid "Password:"
-msgstr "密碼："
 
 #. [text_box]: id=game_password
 #: data/gui/window/mp_create_game.cfg:1004
@@ -5495,23 +5501,23 @@ msgstr "錯誤"
 msgid "Details:"
 msgstr "詳細："
 
-#: src/build_info.cpp:262
+#: src/build_info.cpp:271
 msgid "feature^Lua console completion"
 msgstr "Lua完整主控台"
 
-#: src/build_info.cpp:269
+#: src/build_info.cpp:278
 msgid "feature^D-Bus notifications back end"
 msgstr "D-Bus通知後端"
 
-#: src/build_info.cpp:278
+#: src/build_info.cpp:287
 msgid "feature^Win32 notifications back end"
 msgstr "Win32通知後端"
 
-#: src/build_info.cpp:284
+#: src/build_info.cpp:293
 msgid "feature^Cocoa notifications back end"
 msgstr "Cocoa通知後端"
 
-#: src/build_info.cpp:322 src/desktop/version.cpp:113
+#: src/build_info.cpp:331 src/desktop/version.cpp:117
 msgid "cpu_architecture^<unknown>"
 msgstr "<unknown>"
 
@@ -5543,7 +5549,7 @@ msgstr "主目錄"
 msgid "filesystem_path_system^Root"
 msgstr "根目錄"
 
-#: src/desktop/version.cpp:327
+#: src/desktop/version.cpp:397
 msgid "operating_system^<unknown>"
 msgstr "<未知>"
 
@@ -5583,7 +5589,7 @@ msgstr "使用絕對路徑。相對路徑的用法已經被廢棄了，因為它
 msgid "language code for localized resources^en_US"
 msgstr "zh_TW"
 
-#: src/font/text.cpp:815
+#: src/font/text.cpp:804
 msgid "The text contains invalid Pango markup: "
 msgstr "此文件有無效的Pango標記："
 
@@ -5749,249 +5755,249 @@ msgid ""
 msgstr ""
 "行列 $grid 之 第 $row 列有著異常的行數（找到 $found 行，預期 $expected 行）"
 
-#: src/gui/dialogs/addon/manager.cpp:160
+#: src/gui/dialogs/addon/manager.cpp:161
 msgid "addons_view^All Add-ons"
 msgstr "所有模組"
 
-#: src/gui/dialogs/addon/manager.cpp:161
+#: src/gui/dialogs/addon/manager.cpp:162
 msgid "addons_view^Installed"
 msgstr "已安裝"
 
-#: src/gui/dialogs/addon/manager.cpp:162
+#: src/gui/dialogs/addon/manager.cpp:163
 msgid "addons_view^Upgradable"
 msgstr "可更新"
 
-#: src/gui/dialogs/addon/manager.cpp:163
+#: src/gui/dialogs/addon/manager.cpp:164
 msgid "addons_view^Publishable"
 msgstr "可發佈"
 
-#: src/gui/dialogs/addon/manager.cpp:164
+#: src/gui/dialogs/addon/manager.cpp:165
 msgid "addons_view^Not Installed"
 msgstr "未安裝"
 
-#: src/gui/dialogs/addon/manager.cpp:168
+#: src/gui/dialogs/addon/manager.cpp:169
 msgid "addons_of_type^Campaigns"
 msgstr "戰役"
 
-#: src/gui/dialogs/addon/manager.cpp:169
+#: src/gui/dialogs/addon/manager.cpp:170
 msgid "addons_of_type^Scenarios"
 msgstr "章節"
 
-#: src/gui/dialogs/addon/manager.cpp:170
+#: src/gui/dialogs/addon/manager.cpp:171
 msgid "addons_of_type^SP/MP campaigns"
 msgstr "單人/多人戰役"
 
-#: src/gui/dialogs/addon/manager.cpp:171
+#: src/gui/dialogs/addon/manager.cpp:172
 msgid "addons_of_type^MP campaigns"
 msgstr "多人戰役"
 
-#: src/gui/dialogs/addon/manager.cpp:172
+#: src/gui/dialogs/addon/manager.cpp:173
 msgid "addons_of_type^MP scenarios"
 msgstr "多人章節"
 
-#: src/gui/dialogs/addon/manager.cpp:173
+#: src/gui/dialogs/addon/manager.cpp:174
 msgid "addons_of_type^MP map-packs"
 msgstr "多人地圖包"
 
-#: src/gui/dialogs/addon/manager.cpp:174
+#: src/gui/dialogs/addon/manager.cpp:175
 msgid "addons_of_type^MP eras"
 msgstr "多人時代"
 
-#: src/gui/dialogs/addon/manager.cpp:175
+#: src/gui/dialogs/addon/manager.cpp:176
 msgid "addons_of_type^MP factions"
 msgstr "多人派系"
 
-#: src/gui/dialogs/addon/manager.cpp:176
+#: src/gui/dialogs/addon/manager.cpp:177
 msgid "addons_of_type^Modifications"
 msgstr "模組"
 
-#: src/gui/dialogs/addon/manager.cpp:177
+#: src/gui/dialogs/addon/manager.cpp:178
 msgid "addons_of_type^Cores"
 msgstr "核心"
 
-#: src/gui/dialogs/addon/manager.cpp:178
+#: src/gui/dialogs/addon/manager.cpp:179
 msgid "addons_of_type^Resources"
 msgstr "資源"
 
-#: src/gui/dialogs/addon/manager.cpp:180
+#: src/gui/dialogs/addon/manager.cpp:181
 msgid "addons_of_type^Other"
 msgstr "其它"
 
-#: src/gui/dialogs/addon/manager.cpp:181
+#: src/gui/dialogs/addon/manager.cpp:182
 msgid "addons_of_type^Unknown"
 msgstr "未知"
 
-#: src/gui/dialogs/addon/manager.cpp:185
+#: src/gui/dialogs/addon/manager.cpp:186
 msgid "addons_order^Name ($order)"
 msgstr "名稱 ($order|)"
 
-#: src/gui/dialogs/addon/manager.cpp:188
+#: src/gui/dialogs/addon/manager.cpp:189
 msgid "addons_order^Author ($order)"
 msgstr "作者 ($order|)"
 
-#: src/gui/dialogs/addon/manager.cpp:191
+#: src/gui/dialogs/addon/manager.cpp:192
 msgid "addons_order^Size ($order)"
 msgstr "大小 ($order|)"
 
-#: src/gui/dialogs/addon/manager.cpp:194
+#: src/gui/dialogs/addon/manager.cpp:195
 msgid "addons_order^Downloads ($order)"
 msgstr "下載數 ($order|)"
 
-#: src/gui/dialogs/addon/manager.cpp:197
+#: src/gui/dialogs/addon/manager.cpp:198
 msgid "addons_order^Type ($order)"
 msgstr "類型 ($order|)"
 
-#: src/gui/dialogs/addon/manager.cpp:200
+#: src/gui/dialogs/addon/manager.cpp:201
 msgid "addons_order^Last updated ($datelike_order)"
 msgstr "最近更新時間 ($datelike_order|)"
 
-#: src/gui/dialogs/addon/manager.cpp:203
+#: src/gui/dialogs/addon/manager.cpp:204
 msgid "addons_order^First uploaded ($datelike_order)"
 msgstr "首次上傳時間 ($datelike_order|)"
 
-#: src/gui/dialogs/addon/manager.cpp:227 src/gui/widgets/addon_list.cpp:103
+#: src/gui/dialogs/addon/manager.cpp:228 src/gui/widgets/addon_list.cpp:103
 msgid "addon_state^Not installed"
 msgstr "未安裝"
 
-#: src/gui/dialogs/addon/manager.cpp:228 src/gui/widgets/addon_list.cpp:103
+#: src/gui/dialogs/addon/manager.cpp:229 src/gui/widgets/addon_list.cpp:103
 msgid "addon_state^Published, not installed"
 msgstr "已發佈，未安裝"
 
-#: src/gui/dialogs/addon/manager.cpp:232 src/gui/widgets/addon_list.cpp:111
+#: src/gui/dialogs/addon/manager.cpp:233 src/gui/widgets/addon_list.cpp:111
 msgid "addon_state^Installed"
 msgstr "已安裝"
 
-#: src/gui/dialogs/addon/manager.cpp:233 src/gui/widgets/addon_list.cpp:111
+#: src/gui/dialogs/addon/manager.cpp:234 src/gui/widgets/addon_list.cpp:111
 msgid "addon_state^Published"
 msgstr "已發佈"
 
-#: src/gui/dialogs/addon/manager.cpp:237
+#: src/gui/dialogs/addon/manager.cpp:238
 msgid "addon_state^Installed, not tracking local version"
 msgstr "已安裝，未追蹤本機版本"
 
-#: src/gui/dialogs/addon/manager.cpp:240
+#: src/gui/dialogs/addon/manager.cpp:241
 msgid "addon_state^Published, not tracking local version"
 msgstr "已發佈，未追蹤本機版本"
 
-#: src/gui/dialogs/addon/manager.cpp:244
+#: src/gui/dialogs/addon/manager.cpp:245
 msgid "addon_state^Installed ($local_version|), upgradable"
 msgstr "已安裝（$local_version|），可更新"
 
-#: src/gui/dialogs/addon/manager.cpp:245
+#: src/gui/dialogs/addon/manager.cpp:246
 msgid "addon_state^Published ($local_version| installed), upgradable"
 msgstr "已發佈（$local_version| 已安裝），可更新"
 
-#: src/gui/dialogs/addon/manager.cpp:251
+#: src/gui/dialogs/addon/manager.cpp:252
 msgid "addon_state^Installed ($local_version|), outdated on server"
 msgstr "已安裝（$local_version|），伺服器版本已過期"
 
-#: src/gui/dialogs/addon/manager.cpp:252
+#: src/gui/dialogs/addon/manager.cpp:253
 msgid "addon_state^Published ($local_version| installed), outdated on server"
 msgstr "已發佈（$local_version| 已安裝），伺服器版本已過期"
 
-#: src/gui/dialogs/addon/manager.cpp:258 src/gui/widgets/addon_list.cpp:114
+#: src/gui/dialogs/addon/manager.cpp:259 src/gui/widgets/addon_list.cpp:114
 msgid "addon_state^Installed, not ready to publish"
 msgstr "已安裝，未準備好發佈"
 
-#: src/gui/dialogs/addon/manager.cpp:259 src/gui/widgets/addon_list.cpp:114
+#: src/gui/dialogs/addon/manager.cpp:260 src/gui/widgets/addon_list.cpp:114
 msgid "addon_state^Ready to publish"
 msgstr "已準備好發佈"
 
-#: src/gui/dialogs/addon/manager.cpp:263 src/gui/widgets/addon_list.cpp:126
+#: src/gui/dialogs/addon/manager.cpp:264 src/gui/widgets/addon_list.cpp:126
 msgid "addon_state^Installed, broken"
 msgstr "已安裝，但損毀"
 
-#: src/gui/dialogs/addon/manager.cpp:264 src/gui/widgets/addon_list.cpp:126
+#: src/gui/dialogs/addon/manager.cpp:265 src/gui/widgets/addon_list.cpp:126
 msgid "addon_state^Published, broken"
 msgstr "已發佈，但損毀"
 
-#: src/gui/dialogs/addon/manager.cpp:267 src/gui/widgets/addon_list.cpp:130
+#: src/gui/dialogs/addon/manager.cpp:268 src/gui/widgets/addon_list.cpp:130
 msgid "addon_state^Unknown"
 msgstr "未知"
 
-#: src/gui/dialogs/addon/manager.cpp:329
+#: src/gui/dialogs/addon/manager.cpp:330
 msgid "ascending"
 msgstr "遞增"
 
 #. TRANSLATORS: Sorting order of dates, oldest first
-#: src/gui/dialogs/addon/manager.cpp:331
+#: src/gui/dialogs/addon/manager.cpp:332
 msgid "oldest to newest"
 msgstr "從最舊到最新"
 
-#: src/gui/dialogs/addon/manager.cpp:334
+#: src/gui/dialogs/addon/manager.cpp:335
 msgid "descending"
 msgstr "遞減"
 
 #. TRANSLATORS: Sorting order of dates, newest first
-#: src/gui/dialogs/addon/manager.cpp:336
+#: src/gui/dialogs/addon/manager.cpp:337
 msgid "newest to oldest"
 msgstr "從最新到最舊"
 
-#: src/gui/dialogs/addon/manager.cpp:435
+#: src/gui/dialogs/addon/manager.cpp:436
 msgid "addons^Back to List"
 msgstr "回到清單"
 
-#: src/gui/dialogs/addon/manager.cpp:447
+#: src/gui/dialogs/addon/manager.cpp:448
 msgid "An error occurred while downloading the add-ons list from the server."
 msgstr "從伺服器下載模組清單時發生錯誤。"
 
-#: src/gui/dialogs/addon/manager.cpp:483
+#: src/gui/dialogs/addon/manager.cpp:484
 msgid "No Add-ons Available"
 msgstr "沒有可用的模組"
 
-#: src/gui/dialogs/addon/manager.cpp:483
+#: src/gui/dialogs/addon/manager.cpp:484
 msgid "There are no add-ons available for download from this server."
 msgstr "此伺服器沒有可供下載的模組。"
 
-#: src/gui/dialogs/addon/manager.cpp:671
+#: src/gui/dialogs/addon/manager.cpp:672
 msgid ""
 "The following add-on appears to have publishing or version control "
 "information stored locally, and will not be removed:"
 msgstr "下列模組似乎有發佈中或版本控制訊息儲存在本機，所以將不會被刪除："
 
-#: src/gui/dialogs/addon/manager.cpp:679
+#: src/gui/dialogs/addon/manager.cpp:680
 msgid "The following add-on could not be deleted properly:"
 msgstr "下列模組無法正常被刪除："
 
-#: src/gui/dialogs/addon/manager.cpp:732
+#: src/gui/dialogs/addon/manager.cpp:733
 msgid "Warning"
 msgstr "警告"
 
-#: src/gui/dialogs/addon/manager.cpp:733
+#: src/gui/dialogs/addon/manager.cpp:734
 msgid ""
 "The remote version of this add-on is greater or equal to the version being "
 "uploaded. Do you really wish to continue?"
 msgstr "此模組的遠端版本與正在上傳的版本相同或更新。你真的希望繼續嗎？"
 
-#: src/gui/dialogs/addon/manager.cpp:742
+#: src/gui/dialogs/addon/manager.cpp:750
 msgid "Invalid icon path. Make sure the path points to a valid image."
 msgstr "無效的圖示路徑。請確認路徑指向有效的圖示。"
 
-#: src/gui/dialogs/addon/manager.cpp:745 src/gui/dialogs/addon/manager.cpp:787
+#: src/gui/dialogs/addon/manager.cpp:753 src/gui/dialogs/addon/manager.cpp:795
 msgid "The server responded with an error:"
 msgstr "伺服器回傳了一個錯誤："
 
-#: src/gui/dialogs/addon/manager.cpp:748
+#: src/gui/dialogs/addon/manager.cpp:756
 msgid "The add-on was rejected by the server:"
 msgstr "這個模組被伺服器拒絕了："
 
-#: src/gui/dialogs/addon/manager.cpp:763 src/gui/dialogs/addon/manager.cpp:790
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:498
+#: src/gui/dialogs/addon/manager.cpp:771 src/gui/dialogs/addon/manager.cpp:798
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:500
 msgid "Response"
 msgstr "回應"
 
-#: src/gui/dialogs/addon/manager.cpp:775
+#: src/gui/dialogs/addon/manager.cpp:783
 msgid ""
 "Deleting '$addon|' will permanently erase its download and upload counts on "
 "the add-ons server. Do you really wish to continue?"
 msgstr ""
 "刪除「$addon|」將會從模組伺服器上永久移除上傳及下載數。你真的希望繼續嗎？"
 
-#: src/gui/dialogs/addon/manager.cpp:807
+#: src/gui/dialogs/addon/manager.cpp:815
 msgid "Do you want to uninstall '$addon|'?"
 msgstr "你真的想要移除「$addon|」？"
 
-#: src/gui/dialogs/addon/manager.cpp:897
+#: src/gui/dialogs/addon/manager.cpp:905
 msgid "url^None"
 msgstr "無"
 
@@ -6587,7 +6593,7 @@ msgstr "空"
 msgid "this game"
 msgstr "此遊戲"
 
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:356
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:358
 #: src/gui/dialogs/multiplayer/mp_staging.cpp:154
 msgid "Team:"
 msgstr "隊伍："
@@ -6970,7 +6976,7 @@ msgid "Click dismiss needs a 'click_dismiss' or 'ok' button."
 msgstr "點選解雇需要一個「click_dismiss」或「ok」按鈕。"
 
 #: src/gui/widgets/window.cpp:950 src/gui/widgets/window.cpp:987
-#: src/tests/gui/test_gui2.cpp:562
+#: src/tests/gui/test_gui2.cpp:564
 msgid "Failed to show a dialog, which doesn't fit on the screen."
 msgstr "無法顯示對話框，畫面尺寸不符。"
 
@@ -7861,6 +7867,13 @@ msgid ""
 msgstr ""
 "按鍵「$deprecated_key|」已經被更名為「$key|」。「$deprecated_key|」將在"
 "$removal_version|版本中被移除。"
+
+#~ msgid ""
+#~ "Multiplayer_AI^Dev AI: Default + Experimental Recruitment (Formula AI)"
+#~ msgstr "開發用AI：預設 + 實驗性的招募邏輯（公式AI）"
+
+#~ msgid "Multiplayer_AI^Dev AI: Default + Poisoning (Formula AI)"
+#~ msgstr "開發用AI：預設 + 毒（公式AI）"
 
 #~ msgid "url^Copy"
 #~ msgstr "複製"

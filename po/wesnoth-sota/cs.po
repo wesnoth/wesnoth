@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-03-12 23:18 UTC\n"
+"POT-Creation-Date: 2021-04-18 02:22 UTC\n"
 "PO-Revision-Date: 2021-03-03 21:28+0100\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
@@ -92,6 +92,41 @@ msgstr "Údržba tažení"
 #: data/campaigns/Secrets_of_the_Ancients/_main.cfg:42
 msgid "Additional Artwork"
 msgstr "Dodatečná grafika"
+
+#. [label]
+#: data/campaigns/Secrets_of_the_Ancients/gui/zombie_recruit_dialog.cfg:108
+msgid "Lvl 0"
+msgstr "Úroveň 0"
+
+#. [label]
+#: data/campaigns/Secrets_of_the_Ancients/gui/zombie_recruit_dialog.cfg:130
+msgid "Undead"
+msgstr "Nemrtví"
+
+#. [label]
+#: data/campaigns/Secrets_of_the_Ancients/gui/zombie_recruit_dialog.cfg:173
+msgid "Traits"
+msgstr "Vlastnosti"
+
+#. [label]
+#: data/campaigns/Secrets_of_the_Ancients/gui/zombie_recruit_dialog.cfg:207
+msgid "Attacks"
+msgstr "Útoky"
+
+#. [label]
+#: data/campaigns/Secrets_of_the_Ancients/gui/zombie_recruit_dialog.cfg:275
+msgid "Choose a Corpse"
+msgstr "Vyber tělo"
+
+#. [button]
+#: data/campaigns/Secrets_of_the_Ancients/gui/zombie_recruit_dialog.cfg:341
+msgid "Recruit"
+msgstr "Naverbovat"
+
+#. [button]: id=cancel
+#: data/campaigns/Secrets_of_the_Ancients/gui/zombie_recruit_dialog.cfg:347
+msgid "Cancel"
+msgstr "Zpět"
 
 #. [scenario]: id=01_Slipping_Away
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/01_Slipping_Away.cfg:22
@@ -4783,56 +4818,28 @@ msgstr "Nyní můžeš vyvolávat mrtvoly trpaslíků!"
 msgid "A lua error has occurred, and a corpse cannot be recruited."
 msgstr "Došlo k chybě Lua skriptu a mrtvolu nelze verbovat."
 
-#: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:33
-msgid "Lvl 0"
-msgstr "Úroveň 0"
-
-#: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:36
-msgid "Undead"
-msgstr "Nemrtví"
-
-#: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:41
-msgid "Traits"
-msgstr "Vlastnosti"
-
-#: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:44
-msgid "Attacks"
-msgstr "Útoky"
-
-#: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:56
-msgid "Choose a Corpse"
-msgstr "Vyber tělo"
-
-#: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:71
-msgid "Recruit"
-msgstr "Naverbovat"
-
-#: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:72
-msgid "Cancel"
-msgstr "Zpět"
-
 #. [lua]: select
-#: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:85
+#: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:24
 msgid "HP: "
 msgstr "Životy: "
 
 #. [lua]: select
-#: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:85
+#: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:24
 msgid "MP: "
 msgstr "Kroky: "
 
 #. [lua]: select
-#: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:85
+#: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:24
 msgid "XP: "
 msgstr "Zkušenosti: "
 
 #. [lua]: postshow
-#: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:150
+#: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:89
 msgid "There are no corpses available."
 msgstr "Žádná těla nejsou k dispozici."
 
 #. [lua]: postshow
-#: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:155
+#: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:94
 msgid "You do not have enough gold to recruit that unit"
 msgstr "K naverbování této jednotky nemáš dostatek zlatých."
 

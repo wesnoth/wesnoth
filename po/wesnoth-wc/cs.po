@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-03-12 23:18 UTC\n"
+"POT-Creation-Date: 2021-04-18 02:21 UTC\n"
 "PO-Revision-Date: 2021-03-16 12:40+0100\n"
 "Last-Translator: Septim <septim@centrum.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
@@ -131,6 +131,70 @@ msgstr "Ruka"
 #: data/campaigns/World_Conquest/era/factions/strings.cfg:41
 msgid "The Empire"
 msgstr "Impérium"
+
+#. [label]: id=title
+#. [lua]: root_node.on_modified
+#: data/campaigns/World_Conquest/gui/help_dialog.cfg:49
+#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:246
+msgid "WoCopedia"
+msgstr "WoCoDePedie"
+
+#. [label]: id=title
+#. [lua]: preshow
+#: data/campaigns/World_Conquest/gui/help_dialog.cfg:571
+#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:47
+msgid "Settings"
+msgstr "Nastavení"
+
+#. [label]
+#: data/campaigns/World_Conquest/gui/help_dialog.cfg:670
+msgid "Difficulty"
+msgstr ""
+
+#. [label]: id=title
+#: data/campaigns/World_Conquest/gui/invest_dialog.cfg:34
+msgid "Choose a bonus for your team"
+msgstr ""
+
+#. [label]: id=title
+#: data/campaigns/World_Conquest/gui/invest_tellunit.cfg:24
+msgid "You got"
+msgstr "Získal jsi"
+
+#. [button]: id=ok
+#: data/campaigns/World_Conquest/gui/invest_tellunit.cfg:58
+msgid "OK"
+msgstr "OK"
+
+#. [label]: id=title
+#: data/campaigns/World_Conquest/gui/pickup_confirmation.cfg:24
+msgid "Pick up item?"
+msgstr "Vzít si to?"
+
+#. [button]: id=res_yes
+#: data/campaigns/World_Conquest/gui/pickup_confirmation.cfg:62
+msgid "Yes"
+msgstr ""
+
+#. [button]: id=res_no
+#: data/campaigns/World_Conquest/gui/pickup_confirmation.cfg:72
+msgid "No"
+msgstr ""
+
+#. [label]: id=title
+#: data/campaigns/World_Conquest/gui/settings_dialog.cfg:29
+msgid "Map Settings"
+msgstr "Nastavení mapy"
+
+#. [label]
+#: data/campaigns/World_Conquest/gui/settings_dialog.cfg:50
+msgid " scenario: "
+msgstr " scénář: "
+
+#. [label]
+#: data/campaigns/World_Conquest/gui/settings_dialog.cfg:63
+msgid " map: "
+msgstr " mapa: "
 
 #: data/campaigns/World_Conquest/lua/campaign/difficulty.lua:6
 msgid "Choose difficulty level:"
@@ -1060,23 +1124,18 @@ msgstr "věž"
 msgid "WC2 Invest"
 msgstr ""
 
-#. [lua]: GUI_FORCE_WIDGET_MINIMUM_SIZE
-#: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_dialog.lua:53
-msgid "Invest"
-msgstr ""
-
 #. [lua]: gui.widget.add_invest_item
-#: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:56
+#: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:55
 msgid "Artifacts"
 msgstr "Artefakty"
 
 #. [lua]: gui.widget.add_invest_item
-#: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:75
+#: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:74
 msgid "Heroes"
 msgstr "Hrdinové"
 
 #. [lua]: gui.widget.add_invest_item
-#: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:78
+#: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:77
 msgid ""
 "Commanders will take your leader’s place when the leader dies, possible "
 "commanders:"
@@ -1084,89 +1143,66 @@ msgstr ""
 "Pokud tvůj vůdce zemře, může ho nahradit jeden z velitelů. Dostupní velitelé:"
 
 #. [lua]: gui.widget.add_invest_item
-#: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:85
+#: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:84
 msgid "Commander"
 msgstr "Velitel"
 
 #. [lua]: gui.widget.add_invest_item
-#: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:85
+#: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:84
 msgid "promote to leader"
 msgstr "povýšit na vůdce"
 
 #. [lua]: gui.widget.add_invest_item
-#: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:103
+#: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:102
 msgid "possible units:"
 msgstr "Dostupné jednotky:"
 
 #. [lua]: gui.widget.add_invest_item
-#: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:110
+#: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:109
 msgid "Deserter"
 msgstr "Zběh"
 
 #. [lua]: gui.widget.add_invest_item
 #. [lua]: preshow
-#: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:118
+#: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:117
 #: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:44
 msgid "Training"
 msgstr "Výcvik"
 
 #. [lua]: gui.widget.add_invest_item
-#: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:125
+#: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:124
 msgid "$name Training"
 msgstr "Výcvik $name"
 
 #. [lua]: gui.widget.add_invest_item
-#: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:135
+#: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:134
 msgid "After:"
 msgstr "Po:"
 
 #. [lua]: gui.widget.add_invest_item
-#: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:135
+#: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:134
 msgid "Before:"
 msgstr "Před:"
 
 #. [lua]: gui.widget.add_invest_item
-#: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:140
+#: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:139
 msgid "Other"
 msgstr "Ostatní"
 
 #. [lua]: gui.widget.add_invest_item
-#: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:146
+#: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:143
 msgid "+70 gold and +1 village"
 msgstr "+70 zlatých a vesnice navíc"
 
 #. [lua]: gui.widget.add_invest_item
-#: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:151
+#: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:148
 msgid "Stock up supplies"
 msgstr "Doplnit zásoby"
 
 #. [lua]: gui.widget.add_invest_item
-#: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:156
+#: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:153
 msgid "Gives 70 gold and places a village on your keep."
 msgstr "Získáš 70 zlatých a vesnici do své tvrze."
-
-#: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_tellunit.lua:20
-msgid "You got"
-msgstr "Získal jsi"
-
-#: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_tellunit.lua:54
-msgid "OK"
-msgstr "OK"
-
-#. [lua]: show_dialog
-#: data/campaigns/World_Conquest/lua/game_mechanics/pickup_confirmation_dialog.lua:26
-msgid "Pick up item?"
-msgstr "Vzít si to?"
-
-#. [lua]: show_dialog
-#: data/campaigns/World_Conquest/lua/game_mechanics/pickup_confirmation_dialog.lua:64
-msgid "Yes"
-msgstr ""
-
-#. [lua]: show_dialog
-#: data/campaigns/World_Conquest/lua/game_mechanics/pickup_confirmation_dialog.lua:74
-msgid "No"
-msgstr ""
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/promote_commander.lua:5
 msgid "No! This is the end!"
@@ -2364,13 +2400,6 @@ msgstr ""
 "frakce také určuje, jací hrdinové, zběhové a náhodní vůdci budou dostupní. "
 "Výběr tvé frakce však neovlivní předměty, které budeš moci získat."
 
-#. [lua]: preshow
-#. [lua]: formula_gui_scale_resolution
-#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:47
-#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help_dialog.lua:605
-msgid "Settings"
-msgstr "Nastavení"
-
 #. [lua]: type_icon
 #: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:171
 msgid " (not available for enemies)"
@@ -2380,18 +2409,6 @@ msgstr " (předmět není dostupný pro nepřátele)"
 #: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:172
 msgid " (not available for players)"
 msgstr " (předmět není dostupný pro hráče)"
-
-#. [lua]: root_node.on_modified
-#. [lua]: formula_gui_scale_resolution
-#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:245
-#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help_dialog.lua:87
-msgid "WoCopedia"
-msgstr "WoCoDePedie"
-
-#. [lua]: formula_gui_scale_resolution
-#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help_dialog.lua:704
-msgid "Difficulty"
-msgstr ""
 
 #. [lua]: wc_ii_generate_scenario
 #. [lua]: wct_store_possible_encampment_ford
@@ -2699,21 +2716,6 @@ msgstr ""
 #: data/campaigns/World_Conquest/lua/map/scenario_utils/side_definitions.lua:61
 msgid "Allies"
 msgstr ""
-
-#. [lua]: _G.wct_map_generator
-#: data/campaigns/World_Conquest/lua/map/settings/settings_dialog.lua:47
-msgid "Map Settings"
-msgstr "Nastavení mapy"
-
-#. [lua]: _G.wct_map_generator
-#: data/campaigns/World_Conquest/lua/map/settings/settings_dialog.lua:68
-msgid " scenario: "
-msgstr " scénář: "
-
-#. [lua]: _G.wct_map_generator
-#: data/campaigns/World_Conquest/lua/map/settings/settings_dialog.lua:81
-msgid " map: "
-msgstr " mapa: "
 
 #: data/campaigns/World_Conquest/lua/optional_mechanics/pick_advance.lua:10
 msgid "Preset Advancement"

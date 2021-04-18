@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth 1.6\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-03-12 23:18 UTC\n"
+"POT-Creation-Date: 2021-04-18 02:22 UTC\n"
 "PO-Revision-Date: 2009-04-05 11:02+0100\n"
 "Last-Translator: Gaute Storli Nielsen <gauteamus(at)gmail(dot)com>\n"
 "Language-Team: None\n"
@@ -114,9 +114,9 @@ msgstr "stav"
 #: data/campaigns/Descent_Into_Darkness/units/Apprentice_Mage.cfg:24
 #: data/campaigns/Descent_Into_Darkness/units/Apprentice_Necromancer.cfg:24
 #: data/campaigns/Descent_Into_Darkness/units/Dark_Mage.cfg:25
-#: data/campaigns/Descent_Into_Darkness/units/Malin_Keshar.cfg:502
-#: data/campaigns/Descent_Into_Darkness/units/Malin_Keshar.cfg:530
-#: data/campaigns/Descent_Into_Darkness/units/Malin_Keshar.cfg:572
+#: data/campaigns/Descent_Into_Darkness/units/Malin_Keshar.cfg:507
+#: data/campaigns/Descent_Into_Darkness/units/Malin_Keshar.cfg:535
+#: data/campaigns/Descent_Into_Darkness/units/Malin_Keshar.cfg:577
 #: data/campaigns/Liberty/units/Rogue_Mage.cfg:24
 #: data/campaigns/Liberty/units/Shadow_Mage.cfg:34
 #: data/core/units/dunefolk/Falconer.cfg:142
@@ -129,8 +129,8 @@ msgstr "kortsverd"
 #. [attack]: type=cold
 #: data/campaigns/Descent_Into_Darkness/units/Apprentice_Necromancer.cfg:33
 #: data/campaigns/Descent_Into_Darkness/units/Dark_Mage.cfg:34
-#: data/campaigns/Descent_Into_Darkness/units/Malin_Keshar.cfg:539
-#: data/campaigns/Descent_Into_Darkness/units/Malin_Keshar.cfg:581
+#: data/campaigns/Descent_Into_Darkness/units/Malin_Keshar.cfg:544
+#: data/campaigns/Descent_Into_Darkness/units/Malin_Keshar.cfg:586
 #: data/campaigns/Under_the_Burning_Suns/units/undead/Spider_Lich.cfg:38
 #: data/core/units/undead/Necro_Dark_Adept.cfg:31
 #: data/core/units/undead/Necro_Dark_Sorcerer.cfg:59
@@ -141,8 +141,8 @@ msgstr "frostbølge"
 #. [attack]: type=arcane
 #: data/campaigns/Descent_Into_Darkness/units/Apprentice_Necromancer.cfg:45
 #: data/campaigns/Descent_Into_Darkness/units/Dark_Mage.cfg:46
-#: data/campaigns/Descent_Into_Darkness/units/Malin_Keshar.cfg:551
-#: data/campaigns/Descent_Into_Darkness/units/Malin_Keshar.cfg:593
+#: data/campaigns/Descent_Into_Darkness/units/Malin_Keshar.cfg:556
+#: data/campaigns/Descent_Into_Darkness/units/Malin_Keshar.cfg:598
 #: data/campaigns/Secrets_of_the_Ancients/units/Necro_Ancient_Lich.cfg:60
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Rune_Lord.cfg:104
 #: data/campaigns/Under_the_Burning_Suns/units/undead/Spider_Lich.cfg:50
@@ -323,7 +323,7 @@ msgstr "bue"
 #: data/core/units/monsters/Falcon.cfg:85
 #: data/core/units/monsters/Icemonax.cfg:53
 #: data/core/units/monsters/Icemonax_Greater.cfg:54
-#: data/core/units/monsters/Roc.cfg:36
+#: data/core/units/monsters/Roc.cfg:38
 #: data/core/units/monsters/Skeletal_Dragon.cfg:43
 #: data/core/units/undead/Corpse_Ghoul.cfg:33
 #: data/core/units/undead/Corpse_Necrophage.cfg:28
@@ -1427,7 +1427,7 @@ msgstr "Sverdmester"
 msgid ""
 "To the Dunefolk, alchemy is less a form of philosophy or science, and more "
 "an extension of the phytology that is practiced by herbalists. However, in "
-"contrast to their brethrens’ focus on herbs for medicine and healing, many "
+"contrast to their brethren’s focus on herbs for medicine and healing, many "
 "alchemists utilize various plants and naturally occurring venoms to concoct "
 "lethal poisons. While useful for weakening tough enemies, this art is viewed "
 "warily by other Dunefolk as a potent means for espionage and assassination. "
@@ -4697,6 +4697,43 @@ msgid ""
 "gets too close, a bear will reliably attack."
 msgstr ""
 
+#. [unit_type]: id=Woodland Boar, race=monster
+#: data/core/units/monsters/Boar.cfg:4
+msgid "Woodland Boar"
+msgstr ""
+
+#. [unit_type]: id=Woodland Boar, race=monster
+#: data/core/units/monsters/Boar.cfg:35
+msgid ""
+"As boars age, their already formidable teeth grow longer and more numerous. "
+"A mature, tamed boar is a valuable asset to any farmer, but an angry wild "
+"boar is a challenge even to the best hunters."
+msgstr ""
+
+#. [attack]: type=blade
+#: data/core/units/monsters/Boar.cfg:51
+#: data/core/units/monsters/Boar_Piglet.cfg:48
+msgid "Tusks"
+msgstr ""
+
+#. [attack]: type=pierce
+#: data/core/units/monsters/Boar.cfg:103
+msgid "Tusk Charge"
+msgstr ""
+
+#. [unit_type]: id=Piglet, race=monster
+#: data/core/units/monsters/Boar_Piglet.cfg:4
+msgid "Piglet"
+msgstr ""
+
+#. [unit_type]: id=Piglet, race=monster
+#: data/core/units/monsters/Boar_Piglet.cfg:33
+msgid ""
+"Young piglets are curious but just as ill-tempered as their parents, if a "
+"little less of a challenge in combat.  But seldom is a piglet found that "
+"does not have a protective adult boar watching over them."
+msgstr ""
+
 #. [unit_type]: id=Swamp Lizard, race=monster
 #: data/core/units/monsters/Crocodile.cfg:9
 msgid "Swamp Lizard"
@@ -4785,7 +4822,7 @@ msgstr ""
 #. [attack]: type=pierce
 #. [attack]: type=blade
 #: data/core/units/monsters/Elder_Falcon.cfg:28
-#: data/core/units/monsters/Falcon.cfg:94 data/core/units/monsters/Roc.cfg:28
+#: data/core/units/monsters/Falcon.cfg:94 data/core/units/monsters/Roc.cfg:30
 msgid "beak"
 msgstr ""
 
@@ -4814,7 +4851,11 @@ msgstr "Ildsprutende drage"
 
 #. [unit_type]: id=Fire Ant, race=monster
 #: data/core/units/monsters/Fire_Ant.cfg:46
-msgid "Lorem ipsem ..."
+msgid ""
+"Small but deadly in large numbers, fire ants possess fierce fangs and an "
+"unusual ability to generate fire. Though these creatures typically function "
+"as scavengers, a burrow of fire ants can become aggressive when provoked and "
+"have even been known to attack small groups of threatening troops."
 msgstr ""
 
 #. [attack]: type=fire
@@ -4968,22 +5009,29 @@ msgid "sting"
 msgstr "brodd"
 
 #. [attack]: type=impact
+#. [attack]: type=blade
 #: data/core/units/monsters/Giant_Scorpion.cfg:60
 #: data/core/units/monsters/Giant_Scorpling.cfg:45
+#: data/core/units/monsters/Rock_Scorpion.cfg:52
 msgid "pincers"
 msgstr "klør"
 
 #. [variation]
 #: data/core/units/monsters/Giant_Scorpion.cfg:112
+msgid "scuttler"
+msgstr ""
+
+#. [variation]
+#: data/core/units/monsters/Giant_Scorpion.cfg:113
 msgid "Sand Scuttler"
 msgstr ""
 
 #. [variation]
-#: data/core/units/monsters/Giant_Scorpion.cfg:115
+#: data/core/units/monsters/Giant_Scorpion.cfg:118
 msgid ""
-"Blending in nearly seamlessly into sandy dunes, these critters are an odd "
-"mix of mundane creature and elemental beast. Though usually timid, Sand "
-"Scuttlers sometimes attack unwary travelers, especially when startled."
+"Making their homes in sandy dunes, these critters are an odd mix of mundane "
+"creature and elemental beast. Though usually timid, Sand Scuttlers sometimes "
+"attack unwary travelers, especially when startled."
 msgstr ""
 
 #. [unit_type]: id=Giant Scorpling, race=monster
@@ -5083,10 +5131,50 @@ msgid ""
 "makes them the tool of choice for ambitious but inexperienced summoners."
 msgstr ""
 
-#. [unit_type]: id=Roc, race=monster, description=
+#. [unit_type]: id=Roc, race=monster
 #: data/core/units/monsters/Roc.cfg:4
 msgid "Roc"
 msgstr ""
+
+#. [unit_type]: id=Roc, race=monster
+#: data/core/units/monsters/Roc.cfg:19
+msgid ""
+"Far from human cities in the great desert mountains, the large birds of prey "
+"known as Rocs can sometimes be found rapidly scouring the sands on their "
+"hunts. Despite their large size, Rocs tend to be reclusive and are only "
+"rarely encountered by other sapient races. Their elusive nature has raised "
+"them to near mythological status, particularly among the nomads of the "
+"deserts.\n"
+"\n"
+"Unlike other avians, such as falcons or hawks, the individualistic and "
+"intelligent Rocs are nearly untamable. Only on occasion, a Roc may offer its "
+"aid to a traveler in need, usually in exchange for a small trinket or shiny "
+"bauble."
+msgstr ""
+
+#. [unit_type]: id=Rock Scorpion, race=monster
+#: data/core/units/monsters/Rock_Scorpion.cfg:4
+#, fuzzy
+#| msgid "Giant Scorpion"
+msgid "Rock Scorpion"
+msgstr "Kjempeskorpion"
+
+#. [unit_type]: id=Rock Scorpion, race=monster
+#: data/core/units/monsters/Rock_Scorpion.cfg:45
+msgid ""
+"Rock scorpions have featured in tales of highwaymen and drunks, but there "
+"has been scant evidence that they truly exist.  They've been described as "
+"stealthy monsters with a hide of solid rock, and sharp, crystalline claws.  "
+"Unlike most scorpions, they do not deliver their poison with a piercing "
+"stinger, but instead spray their enemies with a noxious, volatile stream."
+msgstr ""
+
+#. [attack]: type=impact
+#: data/core/units/monsters/Rock_Scorpion.cfg:60
+#, fuzzy
+#| msgid "water spray"
+msgid "spray"
+msgstr "vannsprut"
 
 #. [unit_type]: id=Horned Scarab, race=monster
 #: data/core/units/monsters/Scarab.cfg:4
@@ -5172,43 +5260,6 @@ msgid ""
 "swiftly. Many are understandably hesitant to approach, though, for fear of "
 "being caught and dragged underwater to face whatever beast the tentacles are "
 "attached to."
-msgstr ""
-
-#. [unit_type]: id=Gorer, race=monster
-#: data/core/units/monsters/Tusker_Gorer.cfg:4
-msgid "Gorer"
-msgstr ""
-
-#. [unit_type]: id=Gorer, race=monster
-#: data/core/units/monsters/Tusker_Gorer.cfg:35
-msgid ""
-"As Tuskers age, their already formidable teeth grow longer and more "
-"numerous. A mature boar gorer is a valuable asset to any farmer. And an "
-"angry boar gorer is a challenge even to the best hunters."
-msgstr ""
-
-#. [attack]: type=blade
-#: data/core/units/monsters/Tusker_Gorer.cfg:51
-#: data/core/units/monsters/Tusker_Tusklet.cfg:48
-msgid "Tusks"
-msgstr ""
-
-#. [attack]: type=pierce
-#: data/core/units/monsters/Tusker_Gorer.cfg:103
-msgid "Tusk Charge"
-msgstr ""
-
-#. [unit_type]: id=Tusklet, race=monster
-#: data/core/units/monsters/Tusker_Tusklet.cfg:4
-msgid "Tusklet"
-msgstr ""
-
-#. [unit_type]: id=Tusklet, race=monster
-#: data/core/units/monsters/Tusker_Tusklet.cfg:33
-msgid ""
-"Young tuskers are as notoriously bad-tempered as the adults of the species, "
-"if a little less of a challenge. But woe betide the unfortunate who comes "
-"between a Tusklet and its parents."
 msgstr ""
 
 #. [unit_type]: id=Water Serpent, race=monster
@@ -6075,7 +6126,7 @@ msgid ""
 "which bears only a crude resemblance to a man. They appear to be quite "
 "rotten in spite of their ability to move; they are rife with disease and "
 "poisons of the blood, and have a stench to match. But the most revolting "
-"fact about these fratures, apparent only to those who can perceive the "
+"fact about these creatures, apparent only to those who can perceive the "
 "traces of foul magic on them, is that they were somehow made from living men "
 "— a process about which almost nothing is known, but which can be nothing "
 "but nightmarish."
@@ -6138,54 +6189,62 @@ msgstr ""
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:259
 #: data/core/units/undead/Corpse_Walking.cfg:258
-msgid "wc_variation^Spider"
-msgstr ""
+#, fuzzy
+#| msgid "Giant Scorpion"
+msgid "wc_variation^Scorpion"
+msgstr "Kjempeskorpion"
 
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:268
 #: data/core/units/undead/Corpse_Walking.cfg:267
+msgid "wc_variation^Spider"
+msgstr ""
+
+#. [variation]
+#: data/core/units/undead/Corpse_Soulless.cfg:277
+#: data/core/units/undead/Corpse_Walking.cfg:276
 msgid "wc_variation^Serpent"
 msgstr ""
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:285
-#: data/core/units/undead/Corpse_Walking.cfg:284
+#: data/core/units/undead/Corpse_Soulless.cfg:296
+#: data/core/units/undead/Corpse_Walking.cfg:295
 msgid "wc_variation^Swimmer"
 msgstr ""
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:303
-#: data/core/units/undead/Corpse_Walking.cfg:302
+#: data/core/units/undead/Corpse_Soulless.cfg:314
+#: data/core/units/undead/Corpse_Walking.cfg:313
 msgid "wc_variation^Troll"
 msgstr ""
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:312
-#: data/core/units/undead/Corpse_Walking.cfg:311
-msgid "wc_variation^Tusker"
+#: data/core/units/undead/Corpse_Soulless.cfg:323
+#: data/core/units/undead/Corpse_Walking.cfg:322
+msgid "wc_variation^Boar"
 msgstr ""
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:320
-#: data/core/units/undead/Corpse_Walking.cfg:319
+#: data/core/units/undead/Corpse_Soulless.cfg:331
+#: data/core/units/undead/Corpse_Walking.cfg:330
 msgid "tusk"
 msgstr ""
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:325
-#: data/core/units/undead/Corpse_Walking.cfg:324
+#: data/core/units/undead/Corpse_Soulless.cfg:336
+#: data/core/units/undead/Corpse_Walking.cfg:335
 msgid "wc_variation^Wose"
 msgstr ""
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:337
-#: data/core/units/undead/Corpse_Walking.cfg:336
+#: data/core/units/undead/Corpse_Soulless.cfg:348
+#: data/core/units/undead/Corpse_Walking.cfg:347
 msgid "wc_variation^Wolf"
 msgstr ""
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:350
-#: data/core/units/undead/Corpse_Walking.cfg:349
+#: data/core/units/undead/Corpse_Soulless.cfg:361
+#: data/core/units/undead/Corpse_Walking.cfg:360
 msgid "wc_variation^Bat"
 msgstr ""
 

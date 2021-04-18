@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-03-21 01:02 UTC\n"
+"POT-Creation-Date: 2021-04-18 02:21 UTC\n"
 "PO-Revision-Date: 2018-05-06 10:23+0000\n"
 "Last-Translator: 堀 秀幸 <Hide.HORI@gmail.com>, 2020\n"
 "Language-Team: Japanese (https://www.transifex.com/wesnoth-jp/teams/60513/"
@@ -42,28 +42,29 @@ msgstr ""
 msgid "Beginner"
 msgstr ""
 
-#. [lua]: wml_actions.select_character
-#: data/campaigns/tutorial/lua/character_selection.lua:25
+#. [label]
+#: data/campaigns/tutorial/gui/character_selection.cfg:21
 msgid "Select Character"
 msgstr "キャラクター選択"
 
-#. [lua]: wml_actions.select_character
-#: data/campaigns/tutorial/lua/character_selection.lua:36
+#. [label]
+#: data/campaigns/tutorial/gui/character_selection.cfg:32
 msgid "Who do you want to play?"
 msgstr "どのキャラクターでプレイしますか？"
 
 #. [side]: type=Fighter, id=student
-#. [lua]: wml_actions.select_character
-#: data/campaigns/tutorial/lua/character_selection.lua:67
+#. [button]
+#: data/campaigns/tutorial/gui/character_selection.cfg:63
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:32
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:30
 msgid "Konrad"
 msgstr "Konrad"
 
 #. [modify_side]
+#. [button]
 #. [lua]: wml_actions.select_character
-#: data/campaigns/tutorial/lua/character_selection.lua:76
-#: data/campaigns/tutorial/lua/character_selection.lua:94
+#: data/campaigns/tutorial/gui/character_selection.cfg:72
+#: data/campaigns/tutorial/lua/character_selection.lua:21
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:178
 msgid "Li’sar"
 msgstr "Li’sar"

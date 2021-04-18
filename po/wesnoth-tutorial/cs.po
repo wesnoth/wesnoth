@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-03-21 01:02 UTC\n"
+"POT-Creation-Date: 2021-04-18 02:21 UTC\n"
 "PO-Revision-Date: 2021-03-11 20:16+0100\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
@@ -51,28 +51,29 @@ msgstr ""
 msgid "Beginner"
 msgstr "Začátečník"
 
-#. [lua]: wml_actions.select_character
-#: data/campaigns/tutorial/lua/character_selection.lua:25
+#. [label]
+#: data/campaigns/tutorial/gui/character_selection.cfg:21
 msgid "Select Character"
 msgstr "Vyber si postavu"
 
-#. [lua]: wml_actions.select_character
-#: data/campaigns/tutorial/lua/character_selection.lua:36
+#. [label]
+#: data/campaigns/tutorial/gui/character_selection.cfg:32
 msgid "Who do you want to play?"
 msgstr "Za koho chceš hrát?"
 
 #. [side]: type=Fighter, id=student
-#. [lua]: wml_actions.select_character
-#: data/campaigns/tutorial/lua/character_selection.lua:67
+#. [button]
+#: data/campaigns/tutorial/gui/character_selection.cfg:63
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:32
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:30
 msgid "Konrad"
 msgstr "Konrád"
 
 #. [modify_side]
+#. [button]
 #. [lua]: wml_actions.select_character
-#: data/campaigns/tutorial/lua/character_selection.lua:76
-#: data/campaigns/tutorial/lua/character_selection.lua:94
+#: data/campaigns/tutorial/gui/character_selection.cfg:72
+#: data/campaigns/tutorial/lua/character_selection.lua:21
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:178
 msgid "Li’sar"
 msgstr "Lisar"

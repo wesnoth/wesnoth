@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-03-21 01:03 UTC\n"
+"POT-Creation-Date: 2021-04-18 02:21 UTC\n"
 "PO-Revision-Date: 2021-03-21 21:39+0100\n"
 "Last-Translator: Septim <septim@centrum.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
@@ -1855,12 +1855,13 @@ msgstr ""
 "houfech mého pána!"
 
 #. [message]: speaker=Mal-un-Karad
-#: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:134
-msgid "Creatures from the deep, I summon thee to destroy this foe!"
-msgstr "Stvoření z hlubiny, přivolávám tě, abys zničil tyto nepřátele!"
+#. "Wake" doesn't mean "raise undead" here. The reinforcements are sea creatures, they're alive but hidden underwater.
+#: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:135
+msgid "Time to wake my reinforcements!"
+msgstr ""
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:219
+#: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:252
 msgid ""
 "It seems as if in addition to summoning undead this foul sorcerer has "
 "learned to call up monsters from the deep!"
@@ -1869,22 +1870,22 @@ msgstr ""
 "hlubin!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:260
+#: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:293
 msgid "I failed my Master..."
 msgstr "Selhal jsem Mistře..."
 
 #. [message]
-#: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:279
+#: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:312
 msgid "<i>HISS!</i>"
 msgstr "<i>JEHO!</i>"
 
 #. [message]: speaker=Owaec
-#: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:289
+#: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:322
 msgid "The sea creatures are gone!"
 msgstr "Mořské bytosti jsou pryč!"
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:298
+#: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:331
 msgid ""
 "We have no time to lose! Let's get moving quickly before the rest of their "
 "army catches up with us."
@@ -4046,6 +4047,9 @@ msgstr "Nedokáži použít tento předmět! Ať jej vezme někdo jiný."
 #: data/campaigns/Eastern_Invasion/utils/macros.cfg:67
 msgid "Holy Amulet"
 msgstr "Svatý amulet"
+
+#~ msgid "Creatures from the deep, I summon thee to destroy this foe!"
+#~ msgstr "Stvoření z hlubiny, přivolávám tě, abys zničil tyto nepřátele!"
 
 #~ msgid "Easy"
 #~ msgstr "Lehká"

@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-03-12 23:18 UTC\n"
+"POT-Creation-Date: 2021-04-18 02:22 UTC\n"
 "PO-Revision-Date: 2021-03-25 21:02+0100\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
@@ -5920,7 +5920,7 @@ msgstr ""
 
 #. [attack]: type=impact
 #: data/campaigns/Descent_Into_Darkness/units/Apprentice_Mage.cfg:34
-#: data/campaigns/Descent_Into_Darkness/units/Malin_Keshar.cfg:512
+#: data/campaigns/Descent_Into_Darkness/units/Malin_Keshar.cfg:517
 msgid "magic blast"
 msgstr "magická vlna"
 
@@ -6106,35 +6106,35 @@ msgstr "Malinův útok mečem získává speciální vlastnost magický"
 msgid "Malin’s sword gains the plague special"
 msgstr "Malinův útok mečem získává speciální vlastnost nákaza"
 
-#: data/campaigns/Descent_Into_Darkness/units/Malin_Keshar.cfg:217
-#: data/campaigns/Descent_Into_Darkness/units/Malin_Keshar.cfg:315
+#: data/campaigns/Descent_Into_Darkness/units/Malin_Keshar.cfg:222
+#: data/campaigns/Descent_Into_Darkness/units/Malin_Keshar.cfg:320
 msgid "+2 ranged damage, but -10% arcane resistance"
 msgstr "+2 k útoku na dálku, ale -10 % k odolnosti vůči nezemským útokům"
 
-#: data/campaigns/Descent_Into_Darkness/units/Malin_Keshar.cfg:236
+#: data/campaigns/Descent_Into_Darkness/units/Malin_Keshar.cfg:241
 msgid "Malin’s melee attack heals him every hit"
 msgstr "Malinův útok na blízko ho uzdravuje, kdykoli zasáhne"
 
-#: data/campaigns/Descent_Into_Darkness/units/Malin_Keshar.cfg:253
+#: data/campaigns/Descent_Into_Darkness/units/Malin_Keshar.cfg:258
 msgid "Chill tempest gains the impetuity special"
 msgstr "Útok mrazivou bouří získává speciální vlastnost podráždění"
 
-#: data/campaigns/Descent_Into_Darkness/units/Malin_Keshar.cfg:270
+#: data/campaigns/Descent_Into_Darkness/units/Malin_Keshar.cfg:275
 msgid "Malin gains a special corpse launching attack"
 msgstr "Malin získává speciální útok vymršťování mrtvol"
 
 #. [effect]: type=impact
-#: data/campaigns/Descent_Into_Darkness/units/Malin_Keshar.cfg:277
+#: data/campaigns/Descent_Into_Darkness/units/Malin_Keshar.cfg:282
 #: data/campaigns/Descent_Into_Darkness/utils/amlas.cfg:789
 msgid "corpse launch"
 msgstr "vymršťování mrtvol"
 
-#: data/campaigns/Descent_Into_Darkness/units/Malin_Keshar.cfg:294
+#: data/campaigns/Descent_Into_Darkness/units/Malin_Keshar.cfg:299
 msgid "+2 melee damage"
 msgstr "+2 k útoku na blízko"
 
-#: data/campaigns/Descent_Into_Darkness/units/Malin_Keshar.cfg:338
-#: data/campaigns/Descent_Into_Darkness/units/Malin_Keshar.cfg:360
+#: data/campaigns/Descent_Into_Darkness/units/Malin_Keshar.cfg:343
+#: data/campaigns/Descent_Into_Darkness/units/Malin_Keshar.cfg:365
 msgid ""
 "Malin gains +10% resistance to blade and pierce, but loses -10% resistance "
 "to arcane"
@@ -6143,30 +6143,30 @@ msgstr ""
 "% z odolnosti vůči nezemským útokům"
 
 #. [advancement]: id=malin_melee_vitalize_amla
-#: data/campaigns/Descent_Into_Darkness/units/Malin_Keshar.cfg:376
+#: data/campaigns/Descent_Into_Darkness/units/Malin_Keshar.cfg:381
 #: data/campaigns/Descent_Into_Darkness/utils/amlas.cfg:748
 msgid "Improves the vitalize special"
 msgstr "Vylepšuje speciální vlastnost oživování"
 
 #. [advancement]: id=malin_corpse_master_amla
-#: data/campaigns/Descent_Into_Darkness/units/Malin_Keshar.cfg:399
+#: data/campaigns/Descent_Into_Darkness/units/Malin_Keshar.cfg:404
 #: data/campaigns/Descent_Into_Darkness/utils/amlas.cfg:814
 msgid "Gains the corpse master ability"
 msgstr "Získává schopnost mrtvolného mistrovství"
 
-#: data/campaigns/Descent_Into_Darkness/units/Malin_Keshar.cfg:415
+#: data/campaigns/Descent_Into_Darkness/units/Malin_Keshar.cfg:420
 msgid "+1 ranged strikes, but -20% arcane resistance and -12 hp"
 msgstr ""
 "+1 k útokům na dálku, ale -20 % k odolnosti vůči nezemským útokům a -12 "
 "životů"
 
-#: data/campaigns/Descent_Into_Darkness/units/Malin_Keshar.cfg:438
+#: data/campaigns/Descent_Into_Darkness/units/Malin_Keshar.cfg:443
 msgid "Shadow wave gains the fervor special and -10% arcane resistance"
 msgstr ""
 "Útok vlnou tmy získává speciální vlastnost zanícení a zároveň je při jeho "
 "použití snížena odolnost vůči nezemským útokům o 10 %"
 
-#: data/campaigns/Descent_Into_Darkness/units/Malin_Keshar.cfg:464
+#: data/campaigns/Descent_Into_Darkness/units/Malin_Keshar.cfg:469
 msgid "Gains the consumption ability"
 msgstr "Získává schopnost sžírání"
 
@@ -6471,8 +6471,12 @@ msgstr "mrtvolné mistrovství"
 
 #. [heals]: id=did_corpse_master
 #: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:735
+#, fuzzy
+#| msgid ""
+#| "Adjacent allied corpses heal 6 HP per turn and gain 20% resistance to "
+#| "blade, impact, and pierce."
 msgid ""
-"Adjacent allied corpses heal 6 HP per turn and gain 20% resistance to blade, "
+"Adjacent allied corpses heal 8 HP per turn and gain 30% resistance to blade, "
 "impact, and pierce."
 msgstr ""
 "Sousedící spojenecké chodící mrtvoly se každé kolo mohou vyléčit až o 6 "
