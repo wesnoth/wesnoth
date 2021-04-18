@@ -1,3 +1,17 @@
+## Version 1.15.12+dev
+ ### Add-ons client
+ ### Add-ons server
+ ### Campaigns
+ ### Editor
+ ### Multiplayer
+ ### Packaging
+ ### Terrain
+ ### Translations
+ ### Units
+ ### User interface
+ ### WML Engine
+ ### Miscellaneous and Bug Fixes
+
 ## Version 1.15.12
  ### Add-ons client
    * When uploading or deleting an add-on, the game will now prompt for the required password if it is not present in the `_server.pbl` file.
