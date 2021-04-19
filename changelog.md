@@ -8,6 +8,7 @@
  ### Terrain
  ### Translations
  ### Units
+   * Update piglet/boar graphics
  ### User interface
  ### WML Engine
  ### Miscellaneous and Bug Fixes
