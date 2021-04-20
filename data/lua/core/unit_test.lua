@@ -28,15 +28,8 @@ if rawget(_G, 'unit_test') ~= nil then
 	function unit_test.tostring(val)
 		-- This exists so custom behaviour can be added for specific types if required.
 		if type(val) == 'string' then
-			-- Strings are output quoted but without escaped_split
-			-- Pick a quote style that the string doesn't contain
-			if val:find("'") == nil then
-				return "'" .. val .. "'"
-			elseif val:find('"') == nil then
-				return '"' .. val .. '"'
-			else
-				return '`' .. val .. '`'
-			end
+			-- Strings are output quoted
+			return string.format('%q', val)
 		end
 		return tostring(val)
 	end
