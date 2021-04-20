@@ -35,16 +35,7 @@ if rawget(_G, 'unit_test') ~= nil then
 			elseif val:find('"') == nil then
 				return '"' .. val .. '"'
 			else
-				local n = 0;
-				-- This loop is guaranteed to end eventually, although it could run a very large number of times on particularly pathological input.
-				while true do
-					local left = '[' .. string.rep('=', n) .. '['
-					local right = ']' .. string.rep('=', n) .. ']'
-					if val:find(left) == nil and val:find(right) == nil then
-						return left .. val .. right
-					end
-					n = n + 1
-				end
+				return '`' .. val .. '`'
 			end
 		end
 		return tostring(val)
