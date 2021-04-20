@@ -42,25 +42,20 @@ res.turns_over_advantage = function()
 	local income_factor = 5
 
 	local winning_sides = {}
-	local tie = true
 	local total_score = -1
 	local side_comparison = ""
-	local color = "#000000"
+	local winners_color = "#000000"
 	for side, team in all_sides() do
 		if not team.__cfg.hidden then
-			local r, g, b = 255, 255, 255
-			if     team.__cfg.color == 1 then r, g, b = 255,   0,   0
-			elseif team.__cfg.color == 2 then r, g, b =   0,   0, 255
-			elseif team.__cfg.color == 3 then r, g, b =   0, 255,   0
-			elseif team.__cfg.color == 4 then r, g, b = 155,  48, 255
-			elseif team.__cfg.color == 5 then r, g, b =   0,   0,   0
-			elseif team.__cfg.color == 6 then r, g, b = 165,  42,  42
-			elseif team.__cfg.color == 7 then r, g, b = 255, 165,   0
-			elseif team.__cfg.color == 8 then r, g, b = 255, 255, 255
-			elseif team.__cfg.color == 9 then r, g, b =   0, 128, 128 end
+			-- The translatable strings include support for coloring the side names, but here we just use white. The team colors accessible to Lua
+			-- could be "red", "blue", etc (which are also supported by Pango's markup), but could also be user-defined names from a color changer mod.
+			-- Logged as bug #5722.
+			local side_color = "#ffffff"
 			if # wesnoth.units.find_on_map( { side = side } ) == 0 then
-				side_comparison = side_comparison .. string.format( tostring( _ "<span strikethrough='true' foreground='#%02x%02x%02x'>Side %d</span>") .. "\n",
-				r, g, b, side)
+				-- po: In the end-of-match summary, a side which has no units left and therefore lost. In English the loss is shown by displaying it with the text struck through.
+				local side_text = _ "<span strikethrough='true' foreground='$side_color'>Side $side_number</span>:  Has lost all units"
+				-- The double new-line here is to balance with the other sides getting a line for "Grand total"
+				side_comparison = side_comparison .. side_text:vformat{side_color = side_color, side_number = side} .. "\n\n"
 			else
 				local income = team.total_income * income_factor
 				local units = 0
@@ -73,27 +68,38 @@ res.turns_over_advantage = function()
 				end
 				-- Up to here
 				local total = units + team.gold + income
-				side_comparison = side_comparison .. string.format( tostring( _ "<span foreground='#%02x%02x%02x'>Side %d</span>:  Income score = %d  Unit score = %d  Gold = %d") .. "\n" .. tostring( _ "Grand total: <b>%d</b>") .. "\n",
-				r, g, b, side, income, units, team.gold, total)
+				-- po: In the end-of-match summary, any side that still has units left
+				local side_text = _ "<span foreground='$side_color'>Side $side_number</span>:  Income score = $income  Unit score = $units  Gold = $gold\nGrand total: <b>$total</b>"
+				side_comparison = side_comparison .. side_text:vformat{side_color = side_color, side_number = side, income = income, units = units, gold = team.gold, total = total} .. "\n"
 				if total > total_score then
-					color = string.format("#%02x%02x%02x", r, g, b)
+					winners_color = side_color
 					winning_sides = {side}
-					tie = false
 					total_score = total
 				elseif total == total_score then
 					table.insert(winning_sides, side)
-					tie = true
 				end
 			end
 		end
 	end
 
-	if tie then
-		local last_winning_side = table.remove(winning_sides)
-		side_comparison = side_comparison .. string.format( "\n" .. tostring( _ "Sides %s and %d are tied."), table.concat(winning_sides, ", "), last_winning_side)
+	if #winning_sides == 0 then
+		-- every side either has no units or has a negative score
+	elseif #winning_sides == 1 then
+		-- po: In the end-of-match summary, there's a single side that's won.
+		local comparison_text = _ "<span foreground='$side_color'>Side $side_number</span> has the advantage."
+		side_comparison = side_comparison .. "\n" .. comparison_text:vformat{side_number = winning_sides[1], side_color = winners_color}
+	elseif #winning_sides == 2 then
+		-- po: In the end-of-match summary, there's a two-way tie (this is only used for exactly two winning teams)
+		-- Separated from the three-or-more text in case a language differentiates "two sides" vs "three sides".
+		local comparison_text = _ "Sides $side_number and $other_side_number are tied."
+		side_comparison = side_comparison .. "\n" .. comparison_text:vformat{side_number = winning_sides[1], other_side_number = winning_sides[2]}
 	else
-		side_comparison = side_comparison .. string.format( "\n" .. tostring( _ "<span foreground='%s'>Side %d</span> has the advantage."), color, winning_sides[1])
+		local winners = stringx.format_conjunct_list("", winning_sides)
+		-- po: In the end-of-match summary, three or more teams have all tied for the best score. $winners contains the result of formatting the conjunct list.
+		local comparison_text = _ "Sides $winners are tied."
+		side_comparison = side_comparison .. "\n" .. comparison_text:vformat{winners = winners}
 	end
-	wesnoth.fire("message", { message = side_comparison, speaker = "narrator", image = "wesnoth-icon.png"})
+	-- po: "Turns Over", meaning "turn limit reached" is the title of the end-of-match summary dialog
+	local a, b = gui.show_popup(_ "dialog^Turns Over", side_comparison)
 end
 return res
