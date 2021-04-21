@@ -646,7 +646,7 @@ void server::login_client(boost::asio::yield_context yield, SocketPtr socket)
 			std::bind(&utils::wildcard_string_match, client_version, std::placeholders::_1));
 
 		if(accepted_it != accepted_versions_.end()) {
-			LOG_SERVER << client_address(socket) << "\tplayer joined using accepted version " << client_version
+			LOG_SERVER << log_address(socket) << "\tplayer joined using accepted version " << client_version
 					   << ":\ttelling them to log in.\n";
 			coro_send_doc(socket, login_response_, yield[ec]);
 			if(check_error(ec, socket)) return;
@@ -656,7 +656,7 @@ void server::login_client(boost::asio::yield_context yield, SocketPtr socket)
 			// Check if it is a redirected version
 			for(const auto& redirect_version : redirected_versions_) {
 				if(utils::wildcard_string_match(client_version, redirect_version.first)) {
-					LOG_SERVER << client_address(socket) << "\tplayer joined using version " << client_version
+					LOG_SERVER << log_address(socket) << "\tplayer joined using version " << client_version
 						   << ":\tredirecting them to " << redirect_version.second["host"] << ":"
 						   << redirect_version.second["port"] << "\n";
 
@@ -670,7 +670,7 @@ void server::login_client(boost::asio::yield_context yield, SocketPtr socket)
 				}
 			}
 
-			LOG_SERVER << client_address(socket) << "\tplayer joined using unknown version " << client_version
+			LOG_SERVER << log_address(socket) << "\tplayer joined using unknown version " << client_version
 				   << ":\trejecting them\n";
 
 			// For compatibility with older clients
@@ -682,7 +682,7 @@ void server::login_client(boost::asio::yield_context yield, SocketPtr socket)
 			return;
 		}
 	} else {
-		LOG_SERVER << client_address(socket) << "\tclient didn't send its version: rejecting\n";
+		LOG_SERVER << log_address(socket) << "\tclient didn't send its version: rejecting\n";
 		return;
 	}
 
@@ -727,7 +727,7 @@ void server::login_client(boost::asio::yield_context yield, SocketPtr socket)
 		[this, socket, new_player](boost::asio::yield_context yield) { handle_player(yield, socket, new_player); }
 	);
 
-	LOG_SERVER << client_address(socket) << "\t" << username << "\thas logged on"
+	LOG_SERVER << log_address(socket) << "\t" << username << "\thas logged on"
 			   << (registered ? " to a registered account" : "") << "\n";
 
 	std::shared_ptr<game> last_sent;
@@ -842,7 +842,7 @@ template<class SocketPtr> bool server::is_login_allowed(SocketPtr socket, const 
 		ban_reason += " (" + ban_duration + ")";
 
 		if(!is_moderator) {
-			LOG_SERVER << client_address(socket) << "\t" << username << "\tis banned by user_handler (" << ban_type_desc
+			LOG_SERVER << log_address(socket) << "\t" << username << "\tis banned by user_handler (" << ban_type_desc
 					   << ")\n";
 			if(auth_ban.duration) {
 				// Temporary ban
@@ -853,7 +853,7 @@ template<class SocketPtr> bool server::is_login_allowed(SocketPtr socket, const 
 			}
 			return false;
 		} else {
-			LOG_SERVER << client_address(socket) << "\t" << username << "\tis banned by user_handler (" << ban_type_desc
+			LOG_SERVER << log_address(socket) << "\t" << username << "\tis banned by user_handler (" << ban_type_desc
 					   << "), " << "ignoring due to moderator flag\n";
 		}
 	}
@@ -965,7 +965,7 @@ template<class SocketPtr> bool server::authenticate(
 				}
 
 				// Log the failure
-				LOG_SERVER << client_address(socket) << "\t"
+				LOG_SERVER << log_address(socket) << "\t"
 						   << "Login attempt with incorrect password for nickname '" << username << "'.\n";
 				return false;
 			}

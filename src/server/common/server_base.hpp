@@ -22,6 +22,9 @@
 #include "exceptions.hpp"
 #include "server/common/simple_wml.hpp"
 
+#include "utils/variant.hpp"
+#include "utils/general.hpp"
+
 #ifdef _WIN32
 #include "serialization/unicode_cast.hpp"
 #endif
@@ -36,7 +39,6 @@
 #include <boost/asio/ssl.hpp>
 #include <boost/asio/spawn.hpp>
 #include <boost/shared_array.hpp>
-#include <utils/variant.hpp>
 
 #include <map>
 
@@ -137,4 +139,5 @@ protected:
 };
 
 template<class SocketPtr> std::string client_address(SocketPtr socket);
+template<class SocketPtr> std::string log_address(SocketPtr socket) { return (utils::decayed_is_same<tls_socket_ptr, decltype(socket)> ? "+" : "") + client_address(socket); }
 template<class SocketPtr> bool check_error(const boost::system::error_code& error, SocketPtr socket);

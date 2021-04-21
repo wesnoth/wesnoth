@@ -17,7 +17,6 @@
 #include "log.hpp"
 #include "serialization/parser.hpp"
 #include "filesystem.hpp"
-#include "utils/general.hpp"
 
 #ifdef HAVE_CONFIG_H
 #include "config.h"
@@ -248,9 +247,9 @@ template<class SocketPtr> bool check_error(const boost::system::error_code& erro
 {
 	if(error) {
 		if(error == boost::asio::error::eof)
-			LOG_SERVER << client_address(socket) << "\tconnection closed\n";
+			LOG_SERVER << log_address(socket) << "\tconnection closed\n";
 		else
-			ERR_SERVER << client_address(socket) << "\t" << error.message() << "\n";
+			ERR_SERVER << log_address(socket) << "\t" << error.message() << "\n";
 		return true;
 	}
 	return false;
@@ -282,7 +281,7 @@ void info_table_into_simple_wml(simple_wml::document& doc, const std::string& pa
 template<class SocketPtr> void server_base::coro_send_doc(SocketPtr socket, simple_wml::document& doc, boost::asio::yield_context yield)
 {
 	if(dump_wml) {
-		std::cout << "Sending WML to " << client_address(socket) << ": \n" << doc.output() << std::endl;
+		std::cout << "Sending WML to " << log_address(socket) << ": \n" << doc.output() << std::endl;
 	}
 
 	try {
@@ -486,13 +485,13 @@ template<class SocketPtr> std::unique_ptr<simple_wml::document> server_base::cor
 
 	if(size == 0) {
 		ERR_SERVER <<
-					  client_address(socket) <<
+					  log_address(socket) <<
 					  "\treceived invalid packet with payload size 0" << std::endl;
 		return {};
 	}
 	if(size > simple_wml::document::document_size_limit) {
 		ERR_SERVER <<
-					  client_address(socket) <<
+					  log_address(socket) <<
 					  "\treceived packet with payload size over size limit" << std::endl;
 		return {};
 	}
@@ -505,7 +504,7 @@ template<class SocketPtr> std::unique_ptr<simple_wml::document> server_base::cor
 		return std::make_unique<simple_wml::document>(compressed_buf);
 	}  catch (simple_wml::error& e) {
 		ERR_SERVER <<
-			client_address(socket) <<
+			log_address(socket) <<
 			"\tsimple_wml error in received data: " << e.message << std::endl;
 		async_send_error(socket, "Invalid WML received: " + e.message);
 		return {};
