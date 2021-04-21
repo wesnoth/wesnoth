@@ -172,7 +172,7 @@ function wct_map_decorative_docks()
 end
 
 function wct_store_possible_flowers(terrain)
-	return map:get_locations(f.all(
+	return map:find(f.all(
 		f.terrain("Gs,Gg"),
 		f.adjacent(f.terrain(terrain)),
 		f.adjacent(f.terrain("D*^*,S*^*,Hd"), nil, 0)
@@ -182,7 +182,7 @@ function wct_store_possible_flowers(terrain)
 end
 
 function wct_store_possible_map4_castle(value)
-	return  map:get_locations(f.all(
+	return  map:find(f.all(
 		f.terrain("H*^F*"),
 		f.adjacent(f.terrain("H*^F*"), nil, 6)
 	))
@@ -198,14 +198,14 @@ function wct_possible_map4_castle(terrain, value)
 end
 
 function wct_store_possible_dwarven_castle()
-	return map:get_locations(f.all(
+	return map:find(f.all(
 		f.terrain("Uh"),
 		f.adjacent(f.terrain("Uh"), nil, "5-6")
 	))
 end
 
 function wct_store_possible_roads(village)
-	return map:get_locations(f.all(
+	return map:find(f.all(
 		f.terrain("Gg,Gs"),
 		f.adjacent(f.all(
 			f.terrain(village),
@@ -247,14 +247,14 @@ end
 -- roads have a maximum length of @a radius and can only be
 -- placed on tiles that match @a f_dest
 function wct_iterate_roads_to_2(f_validpath, f_src, f_dest, terrain_road, radius)
-	local src_tiles = map:get_locations(f_src)
-	local dest_tiles = map:get_locations(f_dest)
+	local src_tiles = map:find(f_src)
+	local dest_tiles = map:find(f_dest)
 	local filter_path = wesnoth.map.filter(f_validpath)
 	local map = _G.map
 
 	local function filter_path_function(x, y)
 		local xy_list = { {x,y} }
-		local res = #map:get_locations(filter_path, xy_list) > 0
+		local res = #map:find(filter_path, xy_list) > 0
 		return res
 	end
 	-- calculate for each tile its distance to any of the tiles in dest_tiles.
@@ -316,7 +316,7 @@ function wct_break_walls(wall, terrain)
 end
 
 function wct_store_broken_wall_candidates(wall)
-	return map:get_locations(f.all(
+	return map:find(f.all(
 		f.terrain(wall),
 		f.adjacent(f.terrain("M*^Xm,X*"), nil, "2-6"),
 		f.adjacent(f.terrain("Mv"), nil, 0)
@@ -325,7 +325,7 @@ function wct_store_broken_wall_candidates(wall)
 end
 
 function wct_store_possible_muddy_swamps()
-	return map:get_locations(f.all(
+	return map:find(f.all(
 		f.terrain("Ss"),
 		f.adjacent(f.terrain("D*^*,Hd,Sm,Rd"), nil, "5-6")
 	))

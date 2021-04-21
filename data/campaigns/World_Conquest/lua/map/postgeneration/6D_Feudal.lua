@@ -5,7 +5,7 @@
 -- `wct_iterate_roads_to(wct_roads_to_feudal_castle, 3, "Rr")`
 -- instead of `roads_to_feudal_castle(3)`
 local function wct_roads_to_feudal_castle(radius)
-	return map:get_locations(f.all(
+	return map:find(f.all(
 		f.terrain("!,W*,*^V*,Ds,C*,K*,R*"),
 		f.adjacent(f.all(
 			f.terrain("Chs,Rr"),
@@ -134,12 +134,12 @@ local function world_conquest_tek_map_repaint_6d()
 	else
 		-- this is faster.
 		local r8_Re = map:get_tiles_radius(
-			map:get_locations(f.terrain("Re")),
+			map:find(f.terrain("Re")),
 			wesnoth.map.filter(f.all()),
 			8
 		)
 		local r6_Khs = map:get_tiles_radius(
-			map:get_locations(f.terrain("Khs")),
+			map:find(f.terrain("Khs")),
 			wesnoth.map.filter(f.all()),
 			6
 		)

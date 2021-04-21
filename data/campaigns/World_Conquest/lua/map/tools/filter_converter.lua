@@ -3,7 +3,7 @@
 ---- A helper tool, that works (mostly) indpendently  ----
 ---- of the rest to convert location filter wml to    ----
 ---- the filter syntax used in this addon             ----
----- (map:get_locations)                              ----
+---- (map:find)                              ----
 ----------------------------------------------------------
 
 
@@ -208,7 +208,7 @@ function convert_filter()
 			local variable = content.variable
 			local f = parse_wml_filter(content)
 
-			std_print("local " .. variable .. " = map:get_locations(" .. print_filter(f, 1) .. ")")
+			std_print("local " .. variable .. " = map:find(" .. print_filter(f, 1) .. ")")
 		end
 	end
 	--local filter = parse_wml_filter(cfg)

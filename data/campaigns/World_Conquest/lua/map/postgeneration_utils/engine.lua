@@ -38,7 +38,7 @@ f = {
 
 function get_locations(t)
 	local filter = wesnoth.map.filter(t.filter, t.filter_extra or {})
-	return map:get_locations(filter, t.locs)
+	return map:find(filter, t.locs)
 end
 
 function set_terrain_impl(data)
@@ -47,7 +47,7 @@ function set_terrain_impl(data)
 	for i = 1, #data do
 		if data[i].filter then
 			local f = wesnoth.map.filter(data[i].filter, data[i].known or {})
-			locs[i] = map:get_locations(f, data[i].locs)
+			locs[i] = map:find(f, data[i].locs)
 		else
 			locs[i] = data[i].locs
 		end

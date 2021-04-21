@@ -26,7 +26,7 @@ function wesnoth.effects.wc2_optional_attack(u, cfg)
 		end
 	end
 	for k,v in ipairs(attacks_to_add) do
-		wesnoth.add_modification(u, "object", { T.effect ( v)}, false)
+		wesnoth.units.add_modification(u, "object", { T.effect ( v)}, false)
 	end
 
 	if #names > 0 then
@@ -34,13 +34,13 @@ function wesnoth.effects.wc2_optional_attack(u, cfg)
 		attack_mod.apply_to = "attack"
 		attack_mod.name = table.concat(names, ",")
 
-		wesnoth.add_modification(u, "object", { T.effect (attack_mod) }, false)
+		wesnoth.units.add_modification(u, "object", { T.effect (attack_mod) }, false)
 	end
 end
 
 -- The implementation of the moves defense bonus in movement training.
 function wesnoth.effects.wc2_moves_defense(u, cfg)
-	wesnoth.add_modification(u, "object", { T.effect {
+	wesnoth.units.add_modification(u, "object", { T.effect {
 		apply_to = "defense",
 		replace = false,
 		T.defense {
@@ -78,7 +78,7 @@ function wesnoth.effects.wc2_min_resistance(u, cfg)
 			end
 		end
 	end
-	wesnoth.add_modification(u, "object", {
+	wesnoth.units.add_modification(u, "object", {
 		T.effect {
 			apply_to = "resistance",
 			replace = true,
@@ -97,7 +97,7 @@ function wesnoth.effects.wc2_min_defense(u, cfg)
 			defense_new[k] = v
 		end
 	end
-	wesnoth.add_modification(u, "object", {
+	wesnoth.units.add_modification(u, "object", {
 		T.effect {
 			apply_to = "defense",
 			replace = true,
@@ -127,7 +127,7 @@ function wesnoth.effects.wc2_update_aura(u, cfg)
 		halo = "halo/illuminates-aura.png"
 	end
 	
-	wesnoth.add_modification(u, "object", {
+	wesnoth.units.add_modification(u, "object", {
 		T.effect {
 			apply_to = "halo",
 			halo = halo,
@@ -156,7 +156,7 @@ function wesnoth.effects.wc2_overlay(u, cfg)
 		cfg.add = table.concat(to_add_new,",")
 	end
 	cfg.apply_to = "overlay"
-	wesnoth.add_modification(u, "object", { T.effect(cfg)} , false)
+	wesnoth.units.add_modification(u, "object", { T.effect(cfg)} , false)
 end
 
 -- Can move in same turn as when recruited/recalled

@@ -8,7 +8,7 @@ function get_possible_maritime_bridge()
 	return {
 		{
 			type = "Bsb|",
-			locs = map:get_locations(f.all(
+			locs = map:find(f.all(
 				f.terrain("Ww"),
 				f.adjacent(f.terrain("Chw"), "s,n", nil),
 				f.adjacent(f.terrain("Ch,Kh"), "s,n", nil),
@@ -17,7 +17,7 @@ function get_possible_maritime_bridge()
 		},
 		{
 			type = "Bsb\\",
-			locs = map:get_locations(f.all(
+			locs = map:find(f.all(
 				f.terrain("Ww"),
 				f.adjacent(f.terrain("Chw"), "se,nw", nil),
 				f.adjacent(f.terrain("Ch,Kh"), "se,nw", nil),
@@ -26,7 +26,7 @@ function get_possible_maritime_bridge()
 		},
 		{
 			type = "Bsb/",
-			locs = map:get_locations(f.all(
+			locs = map:find(f.all(
 				f.terrain("Ww"),
 				f.adjacent(f.terrain("Chw"), "sw,ne", nil),
 				f.adjacent(f.terrain("Ch,Kh"), "sw,ne", nil),
@@ -61,7 +61,7 @@ function roads_to_dock(radius)
 end
 
 function wct_roads_to_dock(radius)
-	return map:get_locations(f.all(
+	return map:find(f.all(
 		f.terrain("!,W*^*"),
 		f.adjacent(f.all(
 			f.terrain("Iwr^Vl,Rp"),
@@ -103,7 +103,7 @@ function wct_roads_to_river(radius)
 	local f_src = f.terrain("*^Vhc")
 	local f_path_taken = f.terrain("Rp")
 
-	return map:get_locations(f.all(
+	return map:find(f.all(
 		f_valid_path_tiles,
 		-- adjacent to open ends or startign points.
 		f.adjacent(f.all(
@@ -184,8 +184,8 @@ function world_conquest_tek_map_decoration_6b()
 	roads_to_dock(4)
 	roads_to_river(4)
 
-	if #map:get_locations(f.terrain("Iwr^Vl")) == 0 then
-		local locs = map:get_locations(f.all(
+	if #map:find(f.terrain("Iwr^Vl")) == 0 then
+		local locs = map:find(f.all(
 			f.terrain("*^V*"),
 			f.adjacent(f.terrain("W*^*"), nil, "2-5"),
 			f.adjacent(f.terrain("Wog,Wwg"))
@@ -236,7 +236,7 @@ function world_conquest_tek_map_decoration_6b()
 			f.adjacent(f.terrain("Iwr"), "s,n", nil)
 		),
 	}
-	local locs = map:get_locations(f.terrain("Iwr"))
+	local locs = map:find(f.terrain("Iwr"))
 	for ship_i, ship_loc in ipairs(locs) do
 		if wesnoth.random(2) == 1 then
 			table.insert(prestart_event, wml.tag.item {
@@ -370,7 +370,7 @@ function world_conquest_tek_map_decoration_6b()
 	-- chance of expand rivers into sea
 	local r = tonumber(helper.rand("0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,2,2,3"))
 	for i = 1 , r do
-		local terrain_to_change = map:get_locations(f.all(
+		local terrain_to_change = map:find(f.all(
 			f.terrain("Wog,Wwg,Wwrg"),
 			f.adjacent(f.terrain("Ww,Wwf,Wo"))
 		))

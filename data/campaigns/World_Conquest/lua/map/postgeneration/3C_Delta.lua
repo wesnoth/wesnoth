@@ -51,7 +51,7 @@ function world_conquest_tek_map_constructor_delta()
 		end
 	end
 
-	local water_tiles = map:get_locations(f.terrain("W*"))
+	local water_tiles = map:find(f.terrain("W*"))
 	for i, loc in ipairs(water_tiles) do
 		-- todo: it mighjt be nice to add suppot for a lua function filter, so that we
 		--      can pass is_in_octaegon to get_location, and use set_terrain directly.

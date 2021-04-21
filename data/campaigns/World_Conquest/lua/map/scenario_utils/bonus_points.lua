@@ -163,7 +163,7 @@ function wct_bonus_chose_scenery(loc, theme, filter_extra)
 
 	local function matches_location(f)
 		local filter_object = wesnoth.map.filter(f, filter_extra)
-		return #map:get_locations(filter_object, {loc}) > 0
+		return #map:find(filter_object, {loc}) > 0
 	end
 
 	-- chance of rock cairn on isolated hills
@@ -402,7 +402,7 @@ function world_conquest_tek_bonus_points(theme)
 	local scenario_num = wesnoth.get_variable("wc2_scenario") or 1
 	oceanic = get_oceanic()
 	f_wct_bonus_location_filter = wesnoth.map.filter(get_f_wct_bonus_location_filter(map), { oceanic = oceanic })
-	local possible_locs = map:get_locations(f_wct_bonus_location_filter)
+	local possible_locs = map:find(f_wct_bonus_location_filter)
 	function place_item(loc)
 		scenery = wct_bonus_chose_scenery(loc, theme, { oceanic = oceanic })
 		table.insert(prestart_event, wml.tag.wc2_place_bonus {

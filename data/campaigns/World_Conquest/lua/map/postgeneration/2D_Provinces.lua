@@ -26,27 +26,27 @@ end
 
 function world_conquest_tek_map_decoration_2d()
 	for i = 1, 2 do
-		local terrain_to_change = map:get_locations(f.all(
+		local terrain_to_change = map:find(f.all(
 			f.terrain("Hh,Mm,Mm^Xm,Xu,*^F*"),
 			f.adjacent(f.terrain("D*^*,Hd*^*")),
 			wct_provinces_castle_separation()
 		))
 		wct_provinces_castle(terrain_to_change, "Cd")
 
-		local terrain_to_change = map:get_locations(f.all(
+		local terrain_to_change = map:find(f.all(
 			f.terrain("Hh^F*"),
 			wct_provinces_castle_separation()
 		))
 		wct_provinces_castle(terrain_to_change,  "Cv^Fds")
 
-		local terrain_to_change = map:get_locations(f.all(
+		local terrain_to_change = map:find(f.all(
 			f.terrain("Hh"),
 			f.none(f.radius(2, f.terrain("D*^*,Hd*^*"))),
 			wct_provinces_castle_separation()
 		))
 		wct_provinces_castle(terrain_to_change,  "Ce")
 
-		local terrain_to_change = map:get_locations(f.all(
+		local terrain_to_change = map:find(f.all(
 			f.terrain("Mm"),
 			wct_provinces_castle_separation()
 		))
