@@ -68,14 +68,6 @@ if rawget(_G, 'unit_test') ~= nil then
 			unit_test.fail()
 		end
 	end
-
-	--! Fail the test with a message unless the condition is false
-	function unit_test.assert_not(condition, message)
-		if condition then
-			unit_test.log('Negative assertion failed', message)
-			unit_test.fail()
-		end
-	end
 	
 	--! Fail the test with a message unless the function exits with any error
 	function unit_test.assert_throws(fcn, message)
