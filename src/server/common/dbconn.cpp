@@ -375,12 +375,12 @@ void dbconn::insert_addon_info(const std::string& instance_version, const std::s
 	}
 }
 
-unsigned long long dbconn::insert_login(const std::string& username, const std::string& ip)
+unsigned long long dbconn::insert_login(const std::string& username, const std::string& ip, const std::string& version)
 {
 	try
 	{
-		return modify(connection_, "INSERT INTO `"+db_connection_history_table_+"`(USER_NAME, IP) values(lower(?), ?)",
-			username, ip);
+		return modify(connection_, "INSERT INTO `"+db_connection_history_table_+"`(USER_NAME, IP, VERSION) values(lower(?), ?, ?)",
+			username, ip, version);
 	}
 	catch(const mariadb::exception::base& e)
 	{

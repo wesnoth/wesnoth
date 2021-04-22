@@ -153,6 +153,7 @@ create table addon_info
 -- IP: the IP address the login originated from
 -- LOGIN_TIME: when the user logged in
 -- LOGOUT_TIME: when the user logged out
+-- VERSION: the version the user logged in with
 create table connection_history
 (
     LOGIN_ID    BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -160,6 +161,7 @@ create table connection_history
     IP          VARCHAR(255) NOT NULL,
     LOGIN_TIME  TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     LOGOUT_TIME TIMESTAMP NULL DEFAULT NULL,
+    VERSION     VARCHAR(255),
     PRIMARY KEY (LOGIN_ID)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 CREATE INDEX CONNECTION_IP_IDX ON connection_history(IP);
