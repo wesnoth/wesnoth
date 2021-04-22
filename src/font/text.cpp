@@ -502,8 +502,6 @@ void pango_text::recalculate() const
 
 PangoRectangle pango_text::calculate_size(PangoLayout& layout) const
 {
-	PangoRectangle size;
-
 	p_font font{ get_font_families(font_class_), font_size_, font_style_ };
 	pango_layout_set_font_description(&layout, font.get());
 
@@ -543,7 +541,18 @@ PangoRectangle pango_text::calculate_size(PangoLayout& layout) const
 	pango_layout_set_width(&layout, maximum_width == -1
 		? -1
 		: maximum_width * PANGO_SCALE);
-	pango_layout_get_pixel_extents(&layout, nullptr, &size);
+
+	PangoRectangle ink_extents;
+	PangoRectangle size;
+	pango_layout_get_pixel_extents(&layout, &ink_extents, &size);
+
+	// Prevent the bottom of the first character and the top of the last character being cut.
+	// The problem was only noticable on italic text in the "script" font
+	// family, not sure if it should be applied to other text too.
+	if(font_style_ & pango_text::STYLE_ITALIC && ink_extents.width > size.width) {
+		size.x = ink_extents.x;
+		size.width = ink_extents.width;
+	}
 
 	DBG_GUI_L << "pango_text::" << __func__
 		<< " text '" << gui2::debug_truncate(text_)
