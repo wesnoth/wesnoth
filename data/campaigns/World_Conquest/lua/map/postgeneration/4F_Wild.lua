@@ -50,7 +50,7 @@ function repaint(map_data)
 	local heights = wesnoth.dofile("./../postgeneration_utils/wild_zones.lua")
 
 	-- store and remove villages
-	local villages = map:get_locations(f.terrain("*^Vh"))
+	local villages = map:find(f.terrain("*^Vh"))
 	set_terrain { "*",
 		f.terrain("*^Vh"),
 		layer = "overlay",
@@ -213,7 +213,7 @@ function wild_zones_store(heights)
 	for i_height, height in ipairs(heights) do
 		for i_temp, temp in ipairs(height) do
 			-- oldname: 'regions'
-			temp.all_locs = map:get_locations(f.terrain(temp.terrain))
+			temp.all_locs = map:find(f.terrain(temp.terrain))
 			-- oldname: 'zone[$zone_i].loc'
 			temp.zones = connected_components(temp.all_locs)
 		end
@@ -255,11 +255,11 @@ end
 
 -- to place right image in bonus points
 function wild_store_cave_zone(map_data)
-	map_data.road_in_cave = map:get_locations(f.terrain("X*^*"))
+	map_data.road_in_cave = map:find(f.terrain("X*^*"))
 end
 
 function wild_store_roads_in_cave_zone(map_data)
-	map_data.road_in_cave = map:get_locations(f.terrain("R*,Ur"), map_data.road_in_cave)
+	map_data.road_in_cave = map:find(f.terrain("R*,Ur"), map_data.road_in_cave)
 end
 
 local _ = wesnoth.textdomain 'wesnoth-wc'

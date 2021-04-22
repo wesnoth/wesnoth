@@ -20,7 +20,7 @@ function world_conquest_tek_map_decoration_2a()
 
 	-- chances of tropical palm forest near caves
 	if wesnoth.random(2) == 1 then
-		local terrain_to_change = map:get_locations(f.all(
+		local terrain_to_change = map:find(f.all(
 			f.terrain("Hh*^F*"),
 			f.adjacent(f.terrain("Xu,U*^*,Mv,Ql,Qxu"))
 		))
@@ -33,7 +33,7 @@ function world_conquest_tek_map_decoration_2a()
 		end
 	end
 	if wesnoth.random(2) == 1 then
-		local terrain_to_change = map:get_locations(f.all(
+		local terrain_to_change = map:find(f.all(
 			f.terrain("G*^F*"),
 			f.adjacent(f.terrain("Xu,U*^*,Mv,Ql,Qxu"))
 		))

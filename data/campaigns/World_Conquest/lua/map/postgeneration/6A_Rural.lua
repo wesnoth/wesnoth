@@ -167,7 +167,7 @@ local function world_conquest_tek_map_decoration_6a()
 	}
 
 	-- add snow, base amount in map surface
-	local terrain_to_change = map:get_locations(f.all(
+	local terrain_to_change = map:find(f.all(
 		f.terrain("!,Ss,D*^*,Hd,W*^*,Mm^Xm,Xu,Mv,Q*^*,U*^*"),
 		f.radius(3, f.all(
 			f.terrain("Gd^Fdf,Hh,Hh^Fdf"),
@@ -275,7 +275,7 @@ local function world_conquest_tek_map_decoration_6a()
 		terrain_to_change = wct_store_possible_dwarven_castle()
 	end
 	-- decorative farmlands in base to log villages
-	local terrain_to_change = map:get_locations(f.terrain("Gs^Vl"))
+	local terrain_to_change = map:find(f.terrain("Gs^Vl"))
 	for i = 1, wesnoth.random(0, 2 * #terrain_to_change) do
 		set_terrain { "Gg^Gvs",
 			f.all(
@@ -320,7 +320,7 @@ local function world_conquest_tek_map_decoration_6a()
 
 	-- chance of fences near farmlands
 	if wesnoth.random(2) == 1 then
-		local terrain_to_change = map:get_locations(f.all(
+		local terrain_to_change = map:find(f.all(
 			f.terrain("Gs,Gg,Gll,Aa,Ai"),
 			f.adjacent(f.terrain("Gg^Gvs")),
 			f.adjacent(f.all(

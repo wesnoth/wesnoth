@@ -1,12 +1,12 @@
 function world_conquest_tek_map_noise_proxy(radius, fraction, terrain)
-	local terrain_to_change = map:get_locations(f.terrain(terrain))
+	local terrain_to_change = map:find(f.terrain(terrain))
 	local nop_filter = wesnoth.map.filter(f.all())
 	helper.shuffle(terrain_to_change)
 	for terrain_i = 1, math.ceil(#terrain_to_change / fraction) do
 		local loc_a = terrain_to_change[terrain_i]
 		local terrain_to_swap_b = map:get_tiles_radius({loc_a}, nop_filter, radius)
 		
-		terrain_to_swap_b  = map:get_locations(f.all(
+		terrain_to_swap_b  = map:find(f.all(
 			f.none(f.is_loc(loc_a)),
 			f.terrain(terrain)
 		), terrain_to_swap_b)

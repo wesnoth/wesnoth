@@ -58,7 +58,7 @@ function wct_volcanos()
 			f.adjacent(f.terrain("Mv"), "n,ne,nw", nil)
 		),
 	}
-	local terrain_to_change = map:get_locations(f.terrain("Mv"))
+	local terrain_to_change = map:find(f.terrain("Mv"))
 	--todo figure out whether there is a differnce between many sound_source and on with a hige x,y list.
 	for volcano_i, volcano_loc in ipairs(terrain_to_change) do
 		table.insert(prestart_event, wml.tag.sound_source {
@@ -165,7 +165,7 @@ function get_oceanic()
 		f.x("1," .. tostring(map.width - 1)),
 		f.y("1," .. tostring(map.height - 1))
 	)
-	local water_border_tiles = map:get_locations(f.all(f_is_border, f.terrain("Wo*")))
+	local water_border_tiles = map:find(f.all(f_is_border, f.terrain("Wo*")))
 	local filter_radius = wesnoth.map.filter(f.all(
 		f.terrain("W*^V*,Wwr*,Ww,Wwg,Wwt,Wo*"),
 		--ignore rivers

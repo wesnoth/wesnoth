@@ -4,7 +4,7 @@ local function wct_terrain_replace(t)
 end
 
 local function wild_volcano_for_lava_zone(terrain_to_change)
-	local possible_volcano = map:get_locations(f.all(
+	local possible_volcano = map:find(f.all(
 		f.find_in("terrain_to_change"),
 		f.adjacent(f.find_in("terrain_to_change"), "se,s,sw", 3)
 	), { terrain_to_change = terrain_to_change })
@@ -681,7 +681,7 @@ local function river_to_lava_postfix(terrain_to_change)
 		f.adjacent(f.find_in("terrain_to_change"))
 	), { terrain_to_change = terrain_to_change })
 	
-	adjacent_grssland = map:get_locations(filter_adjacent_grassland)
+	adjacent_grssland = map:find(filter_adjacent_grassland)
 	
 	set_terrain {
 		terrain = "Ur,Re,Re,Gd,Gd,Gd",

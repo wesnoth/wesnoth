@@ -173,7 +173,7 @@ function training.give_bonus(side_num, cx, amount, traintype_index)
 		speaker = teacher.id,
 		message = traintype.dialogue,
 	}
-	wesnoth.extract_unit(teacher)
+	wesnoth.units.extract(teacher)
 	local message = training.generate_message(traintype_index, new_level)
 	wesnoth.wml_actions.message(message)
 

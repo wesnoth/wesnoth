@@ -2,7 +2,7 @@
 local function world_conquest_tek_map_repaint_2b()
 	-- Add snow and ice
 	if wesnoth.random(2) == 1 then
-		local terrain_to_change = map:get_locations(f.all(
+		local terrain_to_change = map:find(f.all(
 			f.terrain("!,Ss,D*^*,Hd,W*^*,Mm^Xm,Xu,Mv,Q*^*,U*^*"),
 			f.radius(2, f.terrain("M*^*"))
 		))
@@ -141,7 +141,7 @@ local function world_conquest_tek_map_repaint_2b()
 
 	end
 	-- chance of diferent forest based in map temperature
-	local terrain_to_change = map:get_locations(f.terrain("A*^*,Ha*^*,Ms^*"))
+	local terrain_to_change = map:find(f.terrain("A*^*,Ha*^*,Ms^*"))
 
 	local chance = 2000 * #terrain_to_change // total_tiles
 	if wesnoth.random(0, 99 ) > chance then

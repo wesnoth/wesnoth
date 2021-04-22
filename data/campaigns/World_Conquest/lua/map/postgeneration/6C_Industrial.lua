@@ -1,11 +1,11 @@
 -- Industrial
 -- TODO: this is somwwhta slow, maybe it because it used wct_iterate_road_to ?
 local function wct_conect_factory_rails()
-	local rails_conected = map:get_locations(f.all(
+	local rails_conected = map:find(f.all(
 		f.terrain("*^Br*"),
 		f.adjacent(f.terrain("*^Vhh"))
 	))
-	while #map:get_locations(wesnoth.map.filter(
+	while #map:find(wesnoth.map.filter(
 		f.all(
 			f.terrain("*^Br*"),
 			f.adjacent(f.find_in("rails_conected")),
@@ -55,7 +55,7 @@ local function wct_conect_factory_rails()
 			filter_extra = { rails_conected = rails_conected },
 			layer = "overlay",
 		}
-		rails_conected = map:get_locations(wesnoth.map.filter(
+		rails_conected = map:find(wesnoth.map.filter(
 			f.all(
 				f.terrain("*^Br*"),
 				f.radius(1, f.find_in("rails_conected"))
@@ -93,7 +93,7 @@ local function wct_conect_factory_rails()
 end
 
 local function wct_store_possible_dirty_delta()
-	return map:get_locations(f.all(
+	return map:find(f.all(
 		f.terrain("Wwg,Sm"),
 		f.adjacent(f.terrain("Wwg^*,Sm^*"), nil, "5-6")
 	))
@@ -111,7 +111,7 @@ local function wct_dirty_deltas()
 end
 
 local function wct_store_possible_ford_delta()
-	return map:get_locations(f.all(
+	return map:find(f.all(
 		f.terrain("Wwf"),
 		f.adjacent(f.terrain("W*^*"), nil, "5-6")
 	))
@@ -132,7 +132,7 @@ end
 
 local function wct_rails_to_industrial_keep(radius)
 	-- "Cud^Br|"
-	return map:get_locations(f.all(
+	return map:find(f.all(
 		f.terrain("C*"),
 		f.adjacent(f.all(
 			f.terrain("*^Br*,*^Vhh"),
@@ -150,7 +150,7 @@ end
 
 local function wct_roads_to_industrial_village(radius)
 	-- "Rb"
-	return map:get_locations(f.all(
+	return map:find(f.all(
 		f.terrain("!,W*^*,*^V*,*^Bcx*,Urb,C*,K*^*,R*"),
 		f.adjacent(f.all(
 			f.terrain("*^Ve,*^Vl,Rb"),
@@ -168,7 +168,7 @@ end
 
 local function wct_roads_to_industrial_city(radius)
 	-- "Rrc"
-	return map:get_locations(f.all(
+	return map:find(f.all(
 		f.terrain("!,W*^*,*^V*,*^Bcx*,Urb,C*,K*^*,R*"),
 		f.adjacent(f.all(
 			f.terrain("*^Vhc,Rrc"),
@@ -186,7 +186,7 @@ end
 
 local function wct_roads_to_factory(radius)
 	--"Rr"
-	return map:get_locations(f.all(
+	return map:find(f.all(
 		f.terrain("!,W*^*,*^V*,*^Bcx*,Urb,C*,K*^*,R*"),
 		f.adjacent(f.all(
 			f.terrain("*^Vhh,Rr"),
@@ -204,7 +204,7 @@ end
 
 local function wct_roads_to_river_industry(radius)
 	-- "Re"
-	return map:get_locations(f.all(
+	return map:find(f.all(
 		f.terrain("!,W*^*,*^V*,*^Bcx*,Urb,C*,K*^*,R*"),
 		f.adjacent(f.all(
 			f.terrain("*^Vud,Re,Rr"),
@@ -379,7 +379,7 @@ local function world_conquest_tek_map_decoration_6c()
 		),
 		layer = "base",
 	}
-	local terrain_to_change = map:get_locations(f.all(
+	local terrain_to_change = map:find(f.all(
 		f.terrain("Sm^*"),
 		f.adjacent(f.terrain("Ww^*"))
 	))
@@ -396,7 +396,7 @@ local function world_conquest_tek_map_decoration_6c()
 		}
 	end
 	-- dirty rivers
-	local terrain_to_change = map:get_locations(f.all(
+	local terrain_to_change = map:find(f.all(
 		f.terrain("Sm^*"),
 		f.adjacent(f.terrain("Ww^*"))
 	))
