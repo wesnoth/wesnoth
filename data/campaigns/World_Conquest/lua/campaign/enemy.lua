@@ -209,7 +209,7 @@ function enemy.do_gold(cfg, side)
 	--difficulty_enemy_power is in [6,9]
 	local enemy_power = (wml.variables["wc2_difficulty.enemy_power"] or 6)
 	local factor = (cfg.nplayers + 1 ) * enemy_power/6 - 2
-	side.gold = side.gold + cfg.bonus_gold * factor * 0.75
+	side.gold = side.gold + cfg.bonus_gold * factor
 end
 
 function enemy.init_data()

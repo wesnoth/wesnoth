@@ -3,7 +3,7 @@
 ---- A helper tool, that works (mostly) indpendently  ----
 ---- of the rest to convert location filter wml to    ----
 ---- the filter syntax used in this addon             ----
----- (map:find)                              ----
+---- (map:find)                                       ----
 ----------------------------------------------------------
 
 
