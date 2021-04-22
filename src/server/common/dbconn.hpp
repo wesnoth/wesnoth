@@ -156,7 +156,7 @@ class dbconn
 		/**
 		 * @see forum_user_handler::db_insert_login().
 		 */
-		unsigned long long insert_login(const std::string& username, const std::string& ip);
+		unsigned long long insert_login(const std::string& username, const std::string& ip, const std::string& version);
 
 		/**
 		 * @see forum_user_handler::db_update_logout().

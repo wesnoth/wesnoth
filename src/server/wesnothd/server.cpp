@@ -709,7 +709,7 @@ void server::login_client(boost::asio::yield_context yield, socket_ptr socket)
 		registered,
 		client_version,
 		client_source,
-		user_handler_ ? user_handler_->db_insert_login(username, client_address(socket)) : 0,
+		user_handler_ ? user_handler_->db_insert_login(username, client_address(socket), client_version) : 0,
 		default_max_messages_,
 		default_time_period_,
 		is_moderator

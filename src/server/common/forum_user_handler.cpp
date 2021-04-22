@@ -251,8 +251,8 @@ void fuh::db_insert_addon_info(const std::string& instance_version, const std::s
 	conn_.insert_addon_info(instance_version, id, name, type, version, forum_auth, topic_id);
 }
 
-unsigned long long fuh::db_insert_login(const std::string& username, const std::string& ip) {
-	return conn_.insert_login(username, ip);
+unsigned long long fuh::db_insert_login(const std::string& username, const std::string& ip, const std::string& version) {
+	return conn_.insert_login(username, ip, version);
 }
 
 void fuh::db_update_logout(unsigned long long login_id) {

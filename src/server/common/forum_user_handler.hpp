@@ -226,8 +226,9 @@ public:
 	 * 
 	 * @param username The username of who logged in. The username is converted to lower case when inserting in order to allow index usage when querying.
 	 * @param ip The ip address of who logged in.
+	 * @param version The version of the client that logged in.
 	 */
-	unsigned long long db_insert_login(const std::string& username, const std::string& ip);
+	unsigned long long db_insert_login(const std::string& username, const std::string& ip, const std::string& version);
 
 	/**
 	 * Updates the database for when a player logs out.
