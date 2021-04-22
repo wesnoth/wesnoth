@@ -39,28 +39,6 @@ if rawget(_G, 'unit_test') ~= nil then
 		std_print(prefix .. ': ' .. message)
 	end
 
-	--! End the test in failure if condition is true and success otherwise
-	--! Can be thought of as 'return not condition'
-	function unit_test.fail_if(condition, message)
-		if condition then
-			unit_test.log('Failed because fail_if condition was true', message)
-			unit_test.fail()
-		else
-			unit_test.pass()
-		end
-	end
-
-	--! End the test in success if condition is true and failure otherwise
-	--! Can be thought of as 'return condition'
-	function unit_test.pass_if(condition, message)
-		if condition then
-			unit_test.pass()
-		else
-			unit_test.log('Failed because pass_if condition was false', message)
-			unit_test.fail()
-		end
-	end
-
 	--! Fail the test with a message unless the condition is true
 	function unit_test.assert(condition, message)
 		if not condition then
