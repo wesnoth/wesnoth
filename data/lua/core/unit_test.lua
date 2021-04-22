@@ -19,7 +19,7 @@ if rawget(_G, 'unit_test') ~= nil then
 	end
 
 	--! End the test in success if all assertions passed, otherwise in failure
-	function unit_test.pass()
+	function unit_test.succeed()
 		unit_test.finish('pass')
 	end
 
