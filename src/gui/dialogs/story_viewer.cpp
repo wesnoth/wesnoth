@@ -381,6 +381,7 @@ void story_viewer::draw_floating_image(floating_image_list::const_iterator image
 			font_size_ss << "(floor(" << font::SIZE_LARGE << " * base_scale_x))";
 			text["font_size"] = font_size_ss.str();
 			text["color"] = font::bigmap_label_color.to_rgb_string();
+			text["outline"] = "yes";
 			auto cfg = config{"text", std::move(text)};
 
 			window_canvas.append_cfg(cfg);

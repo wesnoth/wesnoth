@@ -680,8 +680,17 @@ void pango_text::render(PangoLayout& layout, const PangoRectangle& rect, const s
 		// Add a path to the cairo context tracing the current text.
 		pango_cairo_layout_path(cr.get(), &layout);
 
-		// Set color for background outline (black).
-		cairo_set_source_rgba(cr.get(), 0.0, 0.0, 0.0, 1.0);
+		// Set color for background outline
+		if(foreground_color_.r + foreground_color_.g + foreground_color_.b < 200.0)
+		{
+			// foreground is dark, use a light outline
+			cairo_set_source_rgba(cr.get(), 0.8, 0.8, 0.8, foreground_color_.a / 255.0);
+		}
+		else
+		{
+			// foreground is light, use a dark outline
+			cairo_set_source_rgba(cr.get(), 0.1, 0.1, 0.1, foreground_color_.a / 255.0);
+		}
 
 		cairo_set_line_join(cr.get(), CAIRO_LINE_JOIN_ROUND);
 		cairo_set_line_width(cr.get(), 3.0); // Adjust as necessary

@@ -700,6 +700,7 @@ text_shape::text_shape(const config& cfg)
 	, maximum_width_(cfg["maximum_width"], -1)
 	, characters_per_line_(cfg["text_characters_per_line"])
 	, maximum_height_(cfg["maximum_height"], -1)
+	, outline_(cfg["outline"], false)
 {
 	if(!font_size_.has_formula()) {
 		VALIDATE(font_size_(), _("Text has a font size of 0."));
@@ -744,6 +745,8 @@ void text_shape::draw(surface& canvas,
 		.set_ellipse_mode(variables.has_key("text_wrap_mode")
 				? static_cast<PangoEllipsizeMode>(variables.query_value("text_wrap_mode").as_int())
 				: PANGO_ELLIPSIZE_END)
+		// \todo: fix all other users of pango_text to reset the outline too
+		.set_add_outline(outline_(variables))
 		.set_characters_per_line(characters_per_line_);
 
 	surface& surf = text_renderer.render();

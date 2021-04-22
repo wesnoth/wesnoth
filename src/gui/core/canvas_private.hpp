@@ -379,6 +379,7 @@ private:
  * text_link_color    | @ref guivartype_string "string"          |"#ffff00"|The color of links in the text.
  * maximum_width      | @ref guivartype_f_int "f_int"            |-1       |The maximum width the text is allowed to be.
  * maximum_height     | @ref guivartype_f_int "f_int"            |-1       |The maximum height the text is allowed to be.
+ * outline            | @ref guivartype_f_bool "f_bool"          |false    |Enable a border around the text.
  * debug              | @ref guivartype_string "string"          |""       |Debug message to show upon creation this message is not stored.
  *
  * NOTE alignment could only be done with the formulas, but now with the text_alignment flag as well,
@@ -446,6 +447,9 @@ private:
 
 	/** The maximum height for the text. */
 	typed_formula<int> maximum_height_;
+
+	/** Whether to draw a border around the text. */
+	typed_formula<bool> outline_;
 };
 
 }
