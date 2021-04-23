@@ -14,7 +14,7 @@ Art and music submissions are accepted usually to fill in missing or outdated as
 
 ## Engine
 
-Wesnoth's engine conforms to the C++14 standard. We encourage the use of standard library APIs over third-party libraries whenever possible. However, third-party libraries are preferred over adding new, custom in-engine APIs, when appropriate.
+Wesnoth's engine conforms to the C++17 standard. We encourage the use of standard library APIs over third-party libraries whenever possible. However, third-party libraries are preferred over adding new, custom in-engine APIs, when appropriate.
 
 ### Code Formatting
 
