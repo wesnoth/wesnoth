@@ -7,15 +7,15 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2021-03-20 22:07-0300\n"
-"PO-Revision-Date: 2021-02-23 21:33+0100\n"
-"Last-Translator: Merijn de Vet <tybonzer@live.nl>\n"
+"PO-Revision-Date: 2020-01-14 20:51+0100\n"
+"Last-Translator: Merijn de Vet <merijndevet@hotmail.com>\n"
 "Language-Team: Dutch <merijndevet@hotmail.com>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.4.2\n"
+"X-Generator: Poedit 2.2.4\n"
 
 #. [multiplayer_side]: id=Custom
 #: data/_main.cfg:22
@@ -3625,7 +3625,7 @@ msgstr "De Standaard Wesnoth bron."
 #. [language]
 #: data/english.cfg:3
 msgid "Easy"
-msgstr "Makkelijk"
+msgstr "Gemakkelijk"
 
 #. [language]
 #: data/english.cfg:4
@@ -3719,7 +3719,7 @@ msgstr "stomp"
 #. [language]
 #: data/english.cfg:30
 msgid "fire"
-msgstr "heet"
+msgstr "vuur"
 
 #. [language]
 #: data/english.cfg:31
@@ -3729,7 +3729,7 @@ msgstr "koud"
 #. [language]
 #: data/english.cfg:32
 msgid "arcane"
-msgstr "magisch"
+msgstr "witte magie"
 
 #. [naming]
 #. Generator for bridge labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
@@ -7970,11 +7970,15 @@ msgid "Turn Number"
 msgstr "Beurt Nummer"
 
 #: src/reports.cpp:1286
+#, fuzzy
+#| msgid ""
+#| "When the game reaches the number of turns indicated by the second number, "
+#| "it will end."
 msgid ""
 "When the game exceeds the number of turns indicated by the second number, it "
 "will end."
 msgstr ""
-"Wanneer het spel het aantal beurten overschrijdt aangegeven door het tweede "
+"Wanneer het spel het aantal beurten bereikt aangegeven door het tweede "
 "getal, zal het eindigen."
 
 #: src/reports.cpp:1311
