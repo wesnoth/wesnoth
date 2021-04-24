@@ -14,6 +14,7 @@ if rawget(_G, 'unit_test') ~= nil then
 	end
 
 	--! End the test in unconditional failure
+	--! This does not immediately terminate the test; any assertions in the current event will still be run.
 	function unit_test.fail()
 		unit_test.finish('fail')
 	end
