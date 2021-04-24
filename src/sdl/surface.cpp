@@ -24,6 +24,10 @@ const SDL_PixelFormat surface::neutral_pixel_format = []() {
 #endif
 }();
 
+const bool surface::sdl_freesurface_bug_ = []() {
+	return sdl_get_version() == version_info(2, 0, 6);
+}();
+
 surface::surface(SDL_Surface* surf)
 	: surface_(surf)
 {
@@ -98,7 +102,7 @@ void surface::free_surface()
 		*
 		* - Jyrki, 2017-09-23
 		*/
-		if(surface_->refcount > 1 && sdl_get_version() == version_info(2, 0, 6)) {
+		if(surface_->refcount > 1 && sdl_freesurface_bug_) {
 			--surface_->refcount;
 		} else {
 			SDL_FreeSurface(surface_);

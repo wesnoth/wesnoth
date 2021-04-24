@@ -110,6 +110,12 @@ private:
 	SDL_Surface* surface_;
 
 	static const SDL_PixelFormat neutral_pixel_format;
+
+	/**
+	 * Apply a workaround for SDL2.0.6 bug. SDL_FreeSurface() frees the blit map
+	 * unconditionally without checking if the reference count has fallen to zero.
+	 */
+	static const bool sdl_freesurface_bug_;
 };
 
 bool operator<(const surface& a, const surface& b);
