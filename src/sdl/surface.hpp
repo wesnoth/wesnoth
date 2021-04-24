@@ -61,9 +61,6 @@ public:
 		return *this;
 	}
 
-	// Intended to be used when SDL has already freed the surface
-	void clear_without_free() { surface_ = nullptr; }
-
 	/**
 	 * Check that the surface is neutral bpp 32.
 	 *

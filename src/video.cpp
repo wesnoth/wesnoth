@@ -124,12 +124,6 @@ void CVideo::initSDL()
 
 CVideo::~CVideo()
 {
-	if(sdl_get_version() >= version_info(2, 0, 6)) {
-		// Because SDL will free the framebuffer,
-		// ensure that we won't attempt to free it.
-		frameBuffer.clear_without_free();
-	}
-
 	LOG_DP << "calling SDL_Quit()\n";
 	SDL_Quit();
 	assert(singleton_);
@@ -205,13 +199,6 @@ void CVideo::update_framebuffer()
 	}
 
 	surface fb = SDL_GetWindowSurface(*window);
-
-	if(frameBuffer && sdl_get_version() >= version_info(2, 0, 6)) {
-		// Because SDL has already freed the old framebuffer,
-		// ensure that we won't attempt to free it.
-		frameBuffer.clear_without_free();
-	}
-
 	frameBuffer = fb;
 }
 
