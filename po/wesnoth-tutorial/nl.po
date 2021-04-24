@@ -7,15 +7,15 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2021-04-18 02:21 UTC\n"
-"PO-Revision-Date: 2020-02-17 21:39+0100\n"
-"Last-Translator: Merijn de Vet <merijndevet@hotmail.com>\n"
+"PO-Revision-Date: 2021-02-23 21:15+0100\n"
+"Last-Translator: Merijn de Vet <tybonzer@live.nl>\n"
 "Language-Team: Dutch <merijndevet@hotmail.com>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-Basepath: /home/koan/wesnoth\n"
-"X-Generator: Poedit 2.3\n"
+"X-Generator: Poedit 2.4.2\n"
 
 #. [campaign]: id=Tutorial
 #: data/campaigns/tutorial/_main.cfg:11
@@ -1349,6 +1349,15 @@ msgid ""
 "A detailed explanation of healing may be found in the <i>Gameplay</i> "
 "section of the help (default hotkey: <b>F1</b>)."
 msgstr ""
+"Een het begin van een beurt, zullen eenheden die aan een Sjamaan grenzen, 4 "
+"levenspunten genezen, dat is enkel de helft als een dorp aan genezing biedt. "
+"De Sjamaan krijgt geen ervaring als ze geneest, enkel als ze vecht. Het is "
+"wel aan te raden de Sjamaan door middel van ervaring te laten promoveren — "
+"haar tweede niveau, Elvendruïde, heeft dezelfde geneeskrachten als een "
+"dorp.\n"
+"\n"
+"Een gedetailleerde uitleg van het genezen van eenheden is te vinden in het "
+"<i>Gameplay</i> gedeelte van het help-menu (standaard sneltoets: <b>F1</b>)."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:331
@@ -1397,6 +1406,13 @@ msgid ""
 "adjacent units by 8 hitpoints per turn. A unit next to multiple healers is "
 "healed by the most advanced one."
 msgstr ""
+"Je hebt nu twee genezers. Elke eenheid kan echter maar worden genezen door "
+"één genezer — een eenheid zal dus maar 4 levenspunten genezen, ook al zijn "
+"er aangrenzend twee Sjamanen te vinden.\n"
+"\n"
+"Als een van de Sjamanen een Druïde kan worden, is ze krachtig genoeg om "
+"eenheden met 8 levenspunten te genezen. Een eenheid die meerdere genezers in "
+"aangrenzende tegels heeft staan, zal worden genezen door de krachtigste."
 
 #. [message]: speaker=narrator
 #. one healer is a level one shaman, but the other healer is a druid or (very unlikely) a shyde
@@ -1407,6 +1423,10 @@ msgid ""
 "healing from one healer — a unit next to multiple healers is healed by the "
 "most advanced one."
 msgstr ""
+"Je hebt nu twee genezers. Je Druïde kan eenheden met 8 levenspunten per "
+"beurt genezen, je Sjamaan maar met 4. Elke eenheid kan echter maar worden "
+"genezen door één genezer per beurt — een eenheid naast meerdere genezers, "
+"zal worden genezen door de krachtigste genezer."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:383
@@ -1419,6 +1439,8 @@ msgid ""
 "A unit in a village will receive healing from the village instead of from "
 "adjacent healers."
 msgstr ""
+"Een eenheid in een dorp zal worden genezen door het dorp in plaats van door "
+"aangrenzende genezers."
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:388
@@ -1428,6 +1450,12 @@ msgid ""
 "movement — the 2 hitpoints from rest-healing does combine with other sources "
 "of healing, so it’s often better to move a healer instead of an injured unit."
 msgstr ""
+"Het hebben van meerdere genezers biedt de mogelijkheid dat ze elkaar "
+"genezen, of dat je een groter gebied kan laten genezen door te spreiden. Het "
+"kan ook betere bewegingsmogelijkheden bieden — de 2 levenspunten die een "
+"eenheid geneest als deze rust worden gecombineerd met de genezing die wordt "
+"veroorzaakt door genezers of een dorp. Het kan daarom soms verstandig zijn "
+"om juist de genezer te verplaatsen in plaats van de gewonde eenheid."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:403
@@ -1979,6 +2007,19 @@ msgid ""
 "from villages or healers, combining for a total of up to 10 hitpoints per "
 "turn."
 msgstr ""
+"Vergeet niet om je gewonde eenheden te laten genezen in dorpen. Sjamanen "
+"kunnen enkel 4 levenspunten per beurt genezen, terwijl dorp dit met 8 "
+"levenspunten per beurt kunnen.\n"
+"\n"
+"Verschillende vormen van genezing worden normaal gesproken niet "
+"gecombineerd. Als een eenheid zich naast meerdere genezers bevindt, of in "
+"een dorp en naast een genezer, zal de eenheid maar van één keer genezen in "
+"die beurt.\n"
+"\n"
+"Het genezen door rust  is een uitzondering op deze regel — als een eenheid "
+"zich niet verplaatst, zal het 2 levenspunten extra genezen naast eventuele "
+"genezing die de eenheid ontvangt door een dorp of een genezer. Dit kan "
+"leiden tot een genezing van 10 levenspunten per beurt."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:999

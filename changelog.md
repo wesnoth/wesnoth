@@ -7,6 +7,7 @@
  ### Packaging
  ### Terrain
  ### Translations
+   * Updated translations: Dutch
  ### Units
    * Update piglet/boar graphics
  ### User interface

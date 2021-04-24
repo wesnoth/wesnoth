@@ -7,15 +7,15 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2021-04-17 22:21-0400\n"
-"PO-Revision-Date: 2020-01-14 20:51+0100\n"
-"Last-Translator: Merijn de Vet <merijndevet@hotmail.com>\n"
+"PO-Revision-Date: 2021-02-23 21:33+0100\n"
+"Last-Translator: Merijn de Vet <tybonzer@live.nl>\n"
 "Language-Team: Dutch <merijndevet@hotmail.com>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.2.4\n"
+"X-Generator: Poedit 2.4.2\n"
 
 #. [multiplayer_side]: id=Custom
 #: data/_main.cfg:22
@@ -244,7 +244,7 @@ msgstr "Sluiten"
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:147
 #: data/english.cfg:31
 msgid "arcane"
-msgstr "witte magie"
+msgstr "magisch"
 
 #. [language]
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:150
@@ -267,13 +267,13 @@ msgstr "koud"
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:159
 #: data/english.cfg:3
 msgid "Easy"
-msgstr "Gemakkelijk"
+msgstr "Makkelijk"
 
 #. [language]
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:162
 #: data/english.cfg:29
 msgid "fire"
-msgstr "vuur"
+msgstr "heet"
 
 #. [language]
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:165
@@ -8165,15 +8165,11 @@ msgid "Turn Number"
 msgstr "Beurt Nummer"
 
 #: src/reports.cpp:1394
-#, fuzzy
-#| msgid ""
-#| "When the game reaches the number of turns indicated by the second number, "
-#| "it will end."
 msgid ""
 "When the game exceeds the number of turns indicated by the second number, it "
 "will end."
 msgstr ""
-"Wanneer het spel het aantal beurten bereikt aangegeven door het tweede "
+"Wanneer het spel het aantal beurten overschrijdt aangegeven door het tweede "
 "getal, zal het eindigen."
 
 #: src/reports.cpp:1419
@@ -8779,124 +8775,14 @@ msgstr "Verberg plannen voor $player"
 msgid "Whiteboard Options"
 msgstr "Whiteboard Opties"
 
-#~ msgid "Back to..."
-#~ msgstr "Terug naar..."
+#~ msgid "Graphics scaling options"
+#~ msgstr "Grafische schaalopties"
 
-#~ msgid ""
-#~ "This save is from a different version of the game ($version_number|). Do "
-#~ "you wish to try to load it?"
-#~ msgstr ""
-#~ "Dit opgeslagen spel is van een andere versie van het spel "
-#~ "($version_number|). Wil je proberen het te laden?"
+#~ msgid "Show haloing effects"
+#~ msgstr "Toon halo-effecten"
 
-#~ msgid "Scenario"
-#~ msgstr "Scenario"
-
-#, fuzzy
-#~| msgid "Preferences"
-#~ msgid "Provinces"
-#~ msgstr "Instellingen"
-
-#, fuzzy
-#~| msgid "Players"
-#~ msgid "Clayey"
-#~ msgstr "Spelers"
-
-#, fuzzy
-#~| msgid "Normal"
-#~ msgid "Thermal"
-#~ msgstr "Normaal"
-
-#~ msgid "Enemies"
-#~ msgstr "Vijanden"
-
-#~ msgid " and "
-#~ msgstr " en "
-
-#, fuzzy
-#~| msgid "Damage"
-#~ msgid "damage"
-#~ msgstr "Schade"
-
-#~ msgid "XP to advance"
-#~ msgstr "XP om te promoveren"
-
-#~ msgid "gold"
-#~ msgstr "goud"
-
-#, fuzzy
-#~| msgid "moves"
-#~ msgid "moves"
-#~ msgstr "zetten"
-
-#~ msgid "gender^Random"
-#~ msgstr "Willekeurig"
-
-#, fuzzy
-#~| msgid " resistance vs "
-#~ msgid " resistance vs "
-#~ msgstr " weerstand vs "
-
-#, fuzzy
-#~| msgid "Strikes"
-#~ msgid "strike"
-#~ msgstr "Kansen"
-
-#~ msgid "steadfast"
-#~ msgstr "standvastig"
-
-#~ msgid "female^steadfast"
-#~ msgstr "standvastig"
-
-#~ msgid "plague"
-#~ msgstr "pest"
-
-#, fuzzy
-#~| msgid ""
-#~| "Plague:\n"
-#~| "When a unit is killed by a Plague attack, that unit is replaced with a "
-#~| "Walking Corpse on the same side as the unit with the Plague attack. This "
-#~| "doesn’t work on Undead or units in villages."
-#~ msgid ""
-#~ "When a unit is killed by a Plague attack, that unit is replaced with a "
-#~ "Walking Corpse on the same side as the unit with the Plague attack. This "
-#~ "doesn’t work on Undead or units in villages."
-#~ msgstr ""
-#~ "Pest:\n"
-#~ "Als een eenheid wordt gedood door een pestaanval, dan wordt hij vervangen "
-#~ "door eenzelfde eenheid van dezelfde partij als de aanvaller. Dit gaat "
-#~ "niet op bij ondoden en eenheden in dorpen."
-
-#, fuzzy
-#~| msgid " (inactive)"
-#~ msgid "initiative"
-#~ msgstr " (inactief)"
-
-#, fuzzy
-#~| msgid ""
-#~| " The length of this unit’s weapon allows it to strike first in melee, "
-#~| "even in defense."
-#~ msgid ""
-#~ "All adjacent friendly units will strike first in melee combat, even when "
-#~ "defending."
-#~ msgstr ""
-#~ " Door zijn lange wapen is de eerste klap in een gevecht altijd voor deze "
-#~ "eenheid, ook wanneer hij verdedigt."
-
-#, fuzzy
-#~| msgid "Max HP bonus +3, Max XP +20%"
-#~ msgid "Max HP bonus +6%"
-#~ msgstr "Max HP bonus +3, Max XP +20%"
-
-#, fuzzy
-#~| msgid "XP to advance"
-#~ msgid "$value| XP to advance"
-#~ msgstr "XP om te promoveren"
-
-#, fuzzy
-#~| msgid "Be more defensive"
-#~ msgid "+moves defense"
-#~ msgstr "Wees defensiever"
+#~ msgid "Show special unit graphical effects"
+#~ msgstr "Toon grafische effecten voor speciale eenheden"
 
 #~ msgid "Use experimental PRNG combat"
 #~ msgstr "Gebruik experimentele PRNG-gevechten"
@@ -8916,31 +8802,6 @@ msgstr "Whiteboard Opties"
 #~ "Opmerking: deze optie is alleen van invloed op singleplayer en de optie "
 #~ "'Sla willekeurig op' moet ook worden ingeschakeld bij het starten van een "
 #~ "spel om dit te laten werken."
-
-#, fuzzy
-#~| msgid "Sending add-on <i>$addon_title</i>..."
-#~ msgid ""
-#~ "Requesting the older version composition for the add-on <i>$addon_title</"
-#~ "i>..."
-#~ msgstr "Verzenden van add-on <i>$addon_title</i>..."
-
-#~ msgid "Connection timed out"
-#~ msgstr "Verbinding time-out"
-
-#~ msgid "Battle for Wesnoth"
-#~ msgstr "Strijd om Wesnoth"
-
-#~ msgid "<i>― Vank of Galun’s Flight, 6YW</i>"
-#~ msgstr "<i>― Vank of Galun's Vlucht, 6YW</i>"
-
-#~ msgid "Graphics scaling options"
-#~ msgstr "Grafische schaalopties"
-
-#~ msgid "Show haloing effects"
-#~ msgstr "Toon halo-effecten"
-
-#~ msgid "Show special unit graphical effects"
-#~ msgstr "Toon grafische effecten voor speciale eenheden"
 
 #~ msgid "Joystick support"
 #~ msgstr "Ondersteuning voor joystick"
@@ -9027,32 +8888,8 @@ msgstr "Whiteboard Opties"
 #~ msgid "Connected Players"
 #~ msgstr "Verbonden Spelers"
 
-#~ msgid "theme^Classic"
-#~ msgstr "Klassiek"
-
-#~ msgid "The classic, pre-1.12 theme"
-#~ msgstr "De klassieke, voor-1.12 theme"
-
-#~ msgid "villages"
-#~ msgstr "dorpen"
-
-#~ msgid "units"
-#~ msgstr "eenheden"
-
-#~ msgid "upkeep"
-#~ msgstr "kosten"
-
-#~ msgid "income"
-#~ msgstr "inkomen"
-
-#~ msgid "statuspanel^level"
-#~ msgstr "rang"
-
-#~ msgid "statuspanel^moves"
-#~ msgstr "zetten"
-
-#~ msgid "statuspanel^terrain def."
-#~ msgstr "terrein verd."
+#~ msgid "Back to..."
+#~ msgstr "Terug naar..."
 
 #~ msgid "registering with password *** and no email address"
 #~ msgstr "registratie met wachtwoord *** en zonder e-mailadres"
@@ -9088,6 +8925,9 @@ msgstr "Whiteboard Opties"
 #~ msgstr ""
 #~ "Vraag een lijst aan van details die je kunt instellen voor je "
 #~ "geregistreerde bijnaam."
+
+#~ msgid "Connection timed out"
+#~ msgstr "Verbinding time-out"
 
 #~ msgid "No Saved Games"
 #~ msgstr "Geen opgeslagen spellen"
@@ -9167,6 +9007,9 @@ msgstr "Whiteboard Opties"
 #~ msgid "Type"
 #~ msgstr "Type"
 
+#~ msgid "Strikes"
+#~ msgstr "Kansen"
+
 #~ msgid "Range"
 #~ msgstr "Bereik"
 
@@ -9209,6 +9052,43 @@ msgstr "Whiteboard Opties"
 
 #~ msgid "Side:"
 #~ msgstr "Kant:"
+
+#~ msgid ""
+#~ "This save is from a different version of the game ($version_number|). Do "
+#~ "you wish to try to load it?"
+#~ msgstr ""
+#~ "Dit opgeslagen spel is van een andere versie van het spel "
+#~ "($version_number|). Wil je proberen het te laden?"
+
+#~ msgid "theme^Classic"
+#~ msgstr "Klassiek"
+
+#~ msgid "The classic, pre-1.12 theme"
+#~ msgstr "De klassieke, voor-1.12 theme"
+
+#~ msgid "gold"
+#~ msgstr "goud"
+
+#~ msgid "villages"
+#~ msgstr "dorpen"
+
+#~ msgid "units"
+#~ msgstr "eenheden"
+
+#~ msgid "upkeep"
+#~ msgstr "kosten"
+
+#~ msgid "income"
+#~ msgstr "inkomen"
+
+#~ msgid "statuspanel^level"
+#~ msgstr "rang"
+
+#~ msgid "statuspanel^moves"
+#~ msgstr "zetten"
+
+#~ msgid "statuspanel^terrain def."
+#~ msgstr "terrein verd."
 
 #~ msgid " replay"
 #~ msgstr " herhaling"
@@ -9301,6 +9181,9 @@ msgstr "Whiteboard Opties"
 #~ msgid "wfl"
 #~ msgstr "gezagsgetrouw"
 
+#~ msgid " and "
+#~ msgstr " en "
+
 #, fuzzy
 #~| msgid "% accuracy"
 #~ msgid "$percent|% accuracy"
@@ -9339,6 +9222,9 @@ msgstr "Whiteboard Opties"
 
 #~ msgid "Leadership"
 #~ msgstr "Leiderschap"
+
+#~ msgid " resistance vs "
+#~ msgstr " weerstand vs "
 
 #~ msgid " vulnerability vs "
 #~ msgstr " kwetsbaarheid vs"
@@ -9637,6 +9523,9 @@ msgstr "Whiteboard Opties"
 #~ msgid "+"
 #~ msgstr "+"
 
+#~ msgid "Normal"
+#~ msgstr "Normaal"
+
 #~ msgid "Game Lobby: "
 #~ msgstr "Spellobby: "
 
@@ -9789,6 +9678,9 @@ msgstr "Whiteboard Opties"
 #~ msgid "Join Game"
 #~ msgstr "Meedoen met een netwerkspel"
 
+#~ msgid "Preferences"
+#~ msgstr "Instellingen"
+
 #~ msgid "Apply filter"
 #~ msgstr "Pas filter toe: "
 
@@ -9912,6 +9804,12 @@ msgstr "Whiteboard Opties"
 
 #~ msgid "Campaign"
 #~ msgstr "Veldtocht"
+
+#~ msgid "Scenario"
+#~ msgstr "Scenario"
+
+#~ msgid "Damage"
+#~ msgstr "Schade"
 
 #~ msgid "Overall"
 #~ msgstr "Geheel"
@@ -10060,6 +9958,13 @@ msgstr "Whiteboard Opties"
 
 #~ msgid "% parry"
 #~ msgstr "% pareer"
+
+#, fuzzy
+#~| msgid "moves"
+#~ msgid "move"
+#~ msgid_plural "moves"
+#~ msgstr[0] "zetten"
+#~ msgstr[1] "zetten"
 
 #, fuzzy
 #~| msgid "per turn"
@@ -10466,6 +10371,9 @@ msgstr "Whiteboard Opties"
 #~ msgid "There are no players on your friends or ignore list."
 #~ msgstr "Er zijn geen spelers in je vrienden- of negeerlijst."
 
+#~ msgid "Battle for Wesnoth"
+#~ msgstr "Strijd om Wesnoth"
+
 #, fuzzy
 #~| msgid "Local time of day light"
 #~ msgid "Local time of day area lighting"
@@ -10552,6 +10460,9 @@ msgstr "Whiteboard Opties"
 
 #~ msgid "Create Unit (Debug!)"
 #~ msgstr "Maak eenheid (Debug!)"
+
+#~ msgid "gender^Random"
+#~ msgstr "Willekeurig"
 
 #~ msgid ""
 #~ "The replay is corrupt/out of sync. It might not make much sense to "
@@ -11338,6 +11249,12 @@ msgstr "Whiteboard Opties"
 
 #~ msgid "Test campaign - first scenario (grass)"
 #~ msgstr "Testveldtocht - eerste scenario (gras)"
+
+#~ msgid "Players"
+#~ msgstr "Spelers"
+
+#~ msgid "Enemies"
+#~ msgstr "Vijanden"
 
 #~ msgid "Difficulty: Easy"
 #~ msgstr "Niveau: Gemakkelijk"
@@ -14414,6 +14331,12 @@ msgstr "Whiteboard Opties"
 #~ "De eenheid heelt 8HP per beurt. Indien het wordt vergiftigd zal het in de "
 #~ "volgende beurt het gif uitscheiden."
 
+#~ msgid "steadfast"
+#~ msgstr "standvastig"
+
+#~ msgid "female^steadfast"
+#~ msgstr "standvastig"
+
 #~ msgid "leadership"
 #~ msgstr "leiderschap"
 
@@ -14587,11 +14510,25 @@ msgstr "Whiteboard Opties"
 #~ "reden is uitgeschakeld (omdat hij versteend is bijvoorbeeld), zich aan de "
 #~ "andere kant van het slachtoffer bevindt."
 
+#~ msgid "plague"
+#~ msgstr "pest"
+
 #~ msgid ""
 #~ "Plague:\n"
 #~ "When a unit is killed by a Plague attack, that unit is replaced with a "
 #~ "unit identical to and on the same side as the unit with the Plague "
 #~ "attack. This doesn’t work on Undead or units in villages."
+#~ msgstr ""
+#~ "Pest:\n"
+#~ "Als een eenheid wordt gedood door een pestaanval, dan wordt hij vervangen "
+#~ "door eenzelfde eenheid van dezelfde partij als de aanvaller. Dit gaat "
+#~ "niet op bij ondoden en eenheden in dorpen."
+
+#~ msgid ""
+#~ "Plague:\n"
+#~ "When a unit is killed by a Plague attack, that unit is replaced with a "
+#~ "Walking Corpse on the same side as the unit with the Plague attack. This "
+#~ "doesn’t work on Undead or units in villages."
 #~ msgstr ""
 #~ "Pest:\n"
 #~ "Als een eenheid wordt gedood door een pestaanval, dan wordt hij vervangen "
@@ -14678,6 +14615,9 @@ msgstr "Whiteboard Opties"
 #~ "Deze aanval vergiftigt de vijand. Vergiftigde eenheden verliezen elke "
 #~ "beurt 8HP totdat ze worden genezen of totdat ze nog slechts 1HP hebben. "
 #~ "Gif zelf kan geen eenheid doden."
+
+#~ msgid "Max HP bonus +3, Max XP +20%"
+#~ msgstr "Max HP bonus +3, Max XP +20%"
 
 #~ msgid "Deep Underground"
 #~ msgstr "Diep ondergronds"
@@ -14863,6 +14803,13 @@ msgstr "Whiteboard Opties"
 #~ msgstr ""
 #~ " Tijdens een gevecht heelt deze eenheid door het leven uit zijn "
 #~ "slachtoffers te zuigen."
+
+#~ msgid ""
+#~ " The length of this unit’s weapon allows it to strike first in melee, "
+#~ "even in defense."
+#~ msgstr ""
+#~ " Door zijn lange wapen is de eerste klap in een gevecht altijd voor deze "
+#~ "eenheid, ook wanneer hij verdedigt."
 
 #~ msgid ""
 #~ " The victims of this unit’s poison will continually take damage until "
