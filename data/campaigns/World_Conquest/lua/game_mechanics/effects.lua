@@ -66,7 +66,7 @@ end
 -- Like apply_to=resistance with replace=true, but never decreases resistances.
 function wesnoth.effects.wc2_min_resistance(u, cfg)
 	local resistance_new = {}
-	local resistance_old = wml.get_child(cfg, "resistance")
+	local resistance_old = wml.parsed(wml.get_child(cfg, "resistance"))
 	local unit_resistance_cfg = nil
 	for k,v in pairs(resistance_old) do
 		if type(k) == "string" and type(v) == "number" then
@@ -91,7 +91,7 @@ end
 -- Like apply_to=defense with replace=true, but never decreases defense.
 function wesnoth.effects.wc2_min_defense(u, cfg)
 	local defense_new = {}
-	local defense_old = wml.get_child(cfg, "defense")
+	local defense_old = wml.parsed(wml.get_child(cfg, "defense"))
 	for k,v in pairs(defense_old) do
 		if type(k) == "string" and type(v) == "number" and wesnoth.unit_defense(u, terrain_map[k] or "") >= v then
 			defense_new[k] = v
