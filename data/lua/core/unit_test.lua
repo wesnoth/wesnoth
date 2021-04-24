@@ -15,11 +15,15 @@ if rawget(_G, 'unit_test') ~= nil then
 
 	--! End the test in unconditional failure
 	--! This does not immediately terminate the test; any assertions in the current event will still be run.
+	--! Without calling either succeed() or fail(), the test will never end.
+	--! This allows a test to run over multiple events and even multiple turns.
 	function unit_test.fail()
 		unit_test.finish('fail')
 	end
 
 	--! End the test in success if all assertions passed, otherwise in failure
+	--! Without calling either succeed() or fail(), the test will never end.
+	--! This allows a test to run over multiple events and even multiple turns.
 	function unit_test.succeed()
 		unit_test.finish('pass')
 	end
