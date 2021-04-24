@@ -349,7 +349,7 @@ static int intf_get_image_size(lua_State *L) {
 * Returns the time stamp, exactly as [set_variable] time=stamp does.
 * - Ret 1: integer
 */
-static int intf_get_time_stamp(lua_State *L) {
+static int intf_ms_since_init(lua_State *L) {
 	lua_pushinteger(L, SDL_GetTicks());
 	return 1;
 }
@@ -456,7 +456,7 @@ lua_kernel_base::lua_kernel_base()
 		{ "name_generator",           &intf_name_generator           },
 		{ "log",                      &intf_log                      },
 		{ "get_image_size",           &intf_get_image_size           },
-		{ "get_time_stamp",           &intf_get_time_stamp           },
+		{ "ms_since_init",            &intf_ms_since_init           },
 		{ "get_language",             &intf_get_language             },
 		{ nullptr, nullptr }
 	};

@@ -73,6 +73,7 @@ end
 
 unpack = wesnoth.deprecate_api('unpack', 'table.unpack', 3, '1.17', table.unpack)
 math.pow = wesnoth.deprecate_api('math.pow', '^', 3, '1.17', function(a,b) return a ^ b end)
+wesnoth.get_time_stamp = wesnoth.deprecate_api('wesnoth.get_time_stamp', 'wesnoth.ms_since_init', 1, nil, wesnoth.ms_since_init)
 if wesnoth.kernel_type() == "Game Lua Kernel" then
 	-- wesnoth.wml_actions.music doesn't exist yet at this point, so create a helper function instead.
 	wesnoth.set_music = wesnoth.deprecate_api('wesnoth.set_music', 'wesnoth.music_list', 1, nil, function(cfg)
