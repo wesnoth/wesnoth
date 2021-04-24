@@ -448,7 +448,7 @@ return {
         end
 
         function ai_cas:recruit_rushers_eval()
-            local start_time, ca_name = wesnoth.get_time_stamp() / 1000., 'recruit_rushers'
+            local start_time, ca_name = wesnoth.ms_since_init() / 1000., 'recruit_rushers'
             if AH.print_eval() then AH.print_ts('     - Evaluating recruit_rushers CA:') end
 
             local score = recruit_lib.do_recruit_eval(recruit_data)

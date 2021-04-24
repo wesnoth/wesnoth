@@ -11,7 +11,7 @@ local MTAE_unit, MTAE_destination
 local ca_move_to_any_enemy = {}
 
 function ca_move_to_any_enemy:evaluation(cfg, data, filter_own)
-    local start_time, ca_name = wesnoth.get_time_stamp() / 1000., 'move_to_any_enemy'
+    local start_time, ca_name = wesnoth.ms_since_init() / 1000., 'move_to_any_enemy'
     if AH.print_eval() then AH.print_ts('     - Evaluating move_to_any_enemy CA:') end
 
     local units = AH.get_units_with_moves({

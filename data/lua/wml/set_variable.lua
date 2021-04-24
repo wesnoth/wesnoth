@@ -149,7 +149,7 @@ function wesnoth.wml_actions.set_variable(cfg, variables)
 
 	if cfg.time then
 		if cfg.time == "stamp" then
-			variables[name] = wesnoth.get_time_stamp()
+			variables[name] = wesnoth.ms_since_init()
 		end
 	end
 

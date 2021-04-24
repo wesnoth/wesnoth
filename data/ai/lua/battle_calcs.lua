@@ -1380,7 +1380,7 @@ function battle_calcs.get_attack_combos_subset(units, enemy, cfg)
     local function add_attack(attacks, reachable_hexes, n_reach, attack_combos, combos_str, current_combo, hexes_used, cfg)
 
         local time_up = false
-        if cfg.max_time and (wesnoth.get_time_stamp() / 1000. - cfg.start_time >= cfg.max_time) then
+        if cfg.max_time and (wesnoth.ms_since_init() / 1000. - cfg.start_time >= cfg.max_time) then
             time_up = true
         end
 
@@ -1583,7 +1583,7 @@ function battle_calcs.get_attack_combos_subset(units, enemy, cfg)
     -- If cfg.max_time is set, record the start time
     -- For convenience, we store this in cfg
     if cfg.max_time then
-        cfg.start_time = wesnoth.get_time_stamp() / 1000.
+        cfg.start_time = wesnoth.ms_since_init() / 1000.
     end
 
 
