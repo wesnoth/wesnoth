@@ -17,11 +17,7 @@
 #include "video.hpp"
 
 const SDL_PixelFormat surface::neutral_pixel_format = []() {
-#if SDL_VERSION_ATLEAST(2, 0, 6)
 	return *SDL_CreateRGBSurfaceWithFormat(0, 1, 1, 32, SDL_PIXELFORMAT_ARGB8888)->format;
-#else
-	return *SDL_CreateRGBSurface(0, 1, 1, 32, SDL_RED_MASK, SDL_GREEN_MASK, SDL_BLUE_MASK, SDL_ALPHA_MASK)->format;
-#endif
 }();
 
 surface::surface(SDL_Surface* surf)
@@ -37,16 +33,7 @@ surface::surface(int w, int h)
 		throw std::invalid_argument("Creating surface with negative dimensions");
 	}
 
-#if SDL_VERSION_ATLEAST(2, 0, 6)
 	surface_ = SDL_CreateRGBSurfaceWithFormat(0, w, h, neutral_pixel_format.BitsPerPixel, neutral_pixel_format.format);
-#else
-	surface_ = SDL_CreateRGBSurface(0, w, h,
-		neutral_pixel_format.BitsPerPixel,
-		neutral_pixel_format.Rmask,
-		neutral_pixel_format.Gmask,
-		neutral_pixel_format.Bmask,
-		neutral_pixel_format.Amask);
-#endif
 }
 
 bool surface::is_neutral() const
