@@ -738,8 +738,9 @@ linguas = Split(File("po/LINGUAS").get_contents().decode("utf-8"))
 def InstallManpages(env, component):
     env.InstallData("mandir", component, os.path.join("doc", "man", component + ".6"), "man6")
     for lingua in linguas:
-        manpage = os.path.join("doc", "man", lingua, component + ".6")
-        env.InstallData("mandir", component, manpage, os.path.join(lingua, "man6"))
+        manpage = FindFile(os.path.join(lingua, component + ".6"), "doc/man")
+        if manpage:
+            env.InstallData("mandir", component, manpage, os.path.join(lingua, "man6"))
 
 # Now the actual installation productions
 
