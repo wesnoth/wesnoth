@@ -16,6 +16,8 @@
 
 #include "log.hpp"
 
+#include "display.hpp"
+#include "display_context.hpp"
 #include "config.hpp"
 #include "game_data.hpp"
 #include "map/map.hpp"
@@ -288,6 +290,26 @@ void unit_filter_compound::create_attribute(const config::attribute_value v, C c
 	}
 }
 
+namespace {
+
+	struct ability_match
+	{
+		std::string tag_name;
+		const config* cfg;
+	};
+
+	void get_ability_children_id(std::vector<ability_match>& id_result,
+	                           const config& parent, const std::string& id) {
+		for (const config::any_child &sp : parent.all_children_range())
+		{
+			if(sp.cfg["id"] == id) {
+				ability_match special = { sp.key, &sp.cfg };
+				id_result.push_back(special);
+			}
+		}
+	}
+}
+
 void unit_filter_compound::fill(vconfig cfg)
 	{
 		const config& literal = cfg.get_config();
@@ -380,6 +402,42 @@ void unit_filter_compound::fill(vconfig cfg)
 				for(const std::string& ability : abilities) {
 					if (args.u.has_ability_type(ability)) {
 						return true;
+					}
+				}
+				return false;
+			}
+		);
+
+		create_attribute(literal["ability_id_active"],
+			[](const config::attribute_value& c) { return utils::split(c.str()); },
+			[](const std::vector<std::string>& abilities, const unit_filter_args& args)
+			{
+				assert(display::get_singleton());
+				const unit_map& units = display::get_singleton()->get_units();
+				for(const std::string& ability : abilities) {
+					std::vector<ability_match> ability_id_matches_self;
+					get_ability_children_id(ability_id_matches_self, args.u.abilities(), ability);
+					for(const ability_match& entry : ability_id_matches_self) {
+						if (args.u.get_self_ability_bool(*entry.cfg, entry.tag_name, args.loc)) {
+							return true;
+						}
+					}
+
+					const auto adjacent = get_adjacent_tiles(args.loc);
+					for(unsigned i = 0; i < adjacent.size(); ++i) {
+						const unit_map::const_iterator it = units.find(adjacent[i]);
+						if (it == units.end() || it->incapacitated())
+							continue;
+						if ( &*it == (args.u.shared_from_this()).get() )
+							continue;
+
+						std::vector<ability_match> ability_id_matches_adj;
+						get_ability_children_id(ability_id_matches_adj, it->abilities(), ability);
+						for(const ability_match& entry : ability_id_matches_adj) {
+							if (args.u.get_adj_ability_bool(*entry.cfg, entry.tag_name,i, args.loc, *it)) {
+								return true;
+							}
+						}
 					}
 				}
 				return false;
