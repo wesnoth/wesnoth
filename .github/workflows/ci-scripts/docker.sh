@@ -31,8 +31,14 @@ execute() {
     fi
 }
 
+# in order:
+# check for proper indentation of WML
+# check for trailing whitespace in hpp|cpp files
+# check for trailing whitespace in lua files
 checkindent() {
     make -C data/tools reindent &&
+    find src/ -name \*.\[ch\]pp -print0 | xargs -0 sed -i 's/[[:blank:]]*$//' &&
+    find data/src/ -name \*.lua -print0 | xargs -0 sed -i 's/[[:blank:]]*$//' &&
     git diff-index --quiet HEAD
 }
 
@@ -128,7 +134,7 @@ if [ "$CFG" == "debug" ]; then
 fi
 
 execute "WML validation" ./utils/CI/schema_validation.sh
-execute "WML indentation check" checkindent
+execute "Whitespace and WML indentation check" checkindent
 execute "Doxygen check" ./utils/CI/doxygen-check.sh
 execute "WML tests" ./run_wml_tests -g -c -t 20
 execute "Play tests" ./utils/CI/play_test_executor.sh
