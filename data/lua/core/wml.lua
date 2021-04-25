@@ -185,7 +185,7 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 	function wml.error(m)
 		error("~wml:" .. m, 0)
 	end
-	
+
 	--- Calling wesnoth.fire isn't the same as calling wesnoth.wml_actions[name] due to the passed vconfig userdata
 	--- which also provides "constness" of the passed wml object from the point of view of the caller.
 	--- So please don't remove since it's not deprecated.

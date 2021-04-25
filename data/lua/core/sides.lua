@@ -29,7 +29,7 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 		if type(side) == 'number' then side = wesnoth.sides[side] end
 		return side.starting_location
 	end
-	
+
 	wesnoth.get_side_variable = wesnoth.deprecate_api('wesnoth.get_side_variable', 'wesnoth.sides[].variables', 1, nil, wesnoth.get_side_variable)
 	wesnoth.set_side_variable = wesnoth.deprecate_api('wesnoth.set_side_variable', 'wesnoth.sides[].variables', 1, nil, wesnoth.set_side_variable)
 	wesnoth.get_starting_location = wesnoth.deprecate_api('wesnoth.get_starting_location', 'wesnoth.sides[].starting_location', 1, nil, wesnoth.get_starting_location)

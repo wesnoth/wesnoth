@@ -37,7 +37,7 @@ if wesnoth.kernel_type() ~= "Application Lua Kernel" then
 			return base .. '^'
 		end
 	end
-	
+
 	function wesnoth.map.replace_overlay(code)
 		local base, overlay = wesnoth.map.split_terrain_code(code)
 		if overlay == nil or overlay == '' then -- A or A^
@@ -48,7 +48,7 @@ if wesnoth.kernel_type() ~= "Application Lua Kernel" then
 			return '^' .. overlay
 		end
 	end
-	
+
 	function wesnoth.map.replace_both(code)
 		local base, overlay = wesnoth.map.split_terrain_code(code)
 		if base == '' then -- ^ or ^B
@@ -68,7 +68,7 @@ end
 
 if wesnoth.kernel_type() == "Game Lua Kernel" then
 	local hex_mt = {__metatable = 'terrain hex reference'}
-	
+
 	function hex_mt.__index(self, key)
 		if key == 'fogged' then
 			return self:fogged_for(wesnoth.current.side)
@@ -100,7 +100,7 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 			return hex_mt[key]
 		end
 	end
-	
+
 	function hex_mt.__newindex(self, key, val)
 		if key == 'fogged' then
 			self:set_fogged(wesnoth.current.side, val)
@@ -143,15 +143,15 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 			rawset(self, key, val)
 		end
 	end
-	
+
 	function hex_mt:fogged_for(side)
 		return wesnoth.map.is_fogged(side, self.x, self.y)
 	end
-	
+
 	function hex_mt:shrouded_for(side)
 		return wesnoth.map.is_shrouded(side, self.x, self.y)
 	end
-	
+
 	function hex_mt:set_shrouded(side, val)
 		if val then
 			wesnoth.map.place_shroud(side, {val})
@@ -159,7 +159,7 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 			wesnoth.map.remove_shroud(side, {val})
 		end
 	end
-	
+
 	function hex_mt:set_fogged(side, val)
 		if val then
 			wesnoth.map.place_fog(side, {val})
@@ -167,24 +167,24 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 			wesnoth.map.remove_fog(side, {val})
 		end
 	end
-	
+
 	function hex_mt:label_for(who)
 		return wesnoth.map.get_label(self.x, self.y, who)
 	end
-	
+
 	function hex_mt:matches(filter)
 		return wesnoth.map.matches(self.x, self.y, filter)
 	end
-	
+
 	-- Backwards compatibility - length is always 2
 	hex_mt.__len = wesnoth.deprecate_api('#location', 'nil', 3, '1.17', function() return 2 end, 'Using the length of a location as a validity test is no longer supported. You should represent an invalid location by nil instead.')
-	
+
 	function wesnoth.map.get(x, y)
 		local loc, n = wesnoth.map.read_location(x, y)
 		if n == 0 then error('Missing or invalid coordinate') end
 		return setmetatable(loc, hex_mt)
 	end
-	
+
 	local find_locations = wesnoth.map.find
 	function wesnoth.map.find(cfg)
 		local hexes = find_locations(cfg)
@@ -193,7 +193,7 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 		end
 		return hexes
 	end
-	
+
 	wesnoth.terrain_mask = wesnoth.deprecate_api('wesnoth.terrain_mask', 'wesnoth.current.map:terrain_mask', 1, nil, function(...)
 		wesnoth.current.map:terrain_mask(...)
 	end)
@@ -233,7 +233,7 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 		end,
 		__pairs = function(_) return pairs(wesnoth.current.map.special_locations) end,
 	}), 'Note: the length operator has been removed')
-	
+
 	wesnoth.place_shroud = wesnoth.deprecate_api('wesnoth.place_shroud', 'wesnoth.map.place_shroud', 1, nil, wesnoth.map.place_shroud)
 	wesnoth.remove_shroud = wesnoth.deprecate_api('wesnoth.remove_shroud', 'wesnoth.map.remove_shroud', 1, nil, wesnoth.map.remove_shroud)
 	wesnoth.is_shrouded = wesnoth.deprecate_api('wesnoth.is_shrouded', 'wesnoth.map.is_shrouded', 1, nil, wesnoth.map.is_shrouded)

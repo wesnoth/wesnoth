@@ -350,7 +350,7 @@ function wesnoth.wml_actions.message(cfg)
 			elseif option.description then
 				msg_text = tostring(option.description)
 			end
-			
+
 			local opt = {
 				label = option.label,
 				description = msg_text,
@@ -358,7 +358,7 @@ function wesnoth.wml_actions.message(cfg)
 				default = option.default,
 				value = option.value
 			}
-			
+
 			table.insert(options, opt)
 			table.insert(option_events, {})
 

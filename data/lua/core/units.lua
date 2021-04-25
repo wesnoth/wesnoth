@@ -43,7 +43,7 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 	function wesnoth.units.resistance(...)
 		return 100 - wesnoth.units.resistance_against(...)
 	end
-	
+
 	wesnoth.match_unit = wesnoth.deprecate_api('wesnoth.match_unit', 'wesnoth.units.matches', 1, nil, wesnoth.units.matches)
 	wesnoth.put_recall_unit = wesnoth.deprecate_api('wesnoth.put_recall_unit', 'wesnoth.units.to_recall', 1, nil, wesnoth.units.to_recall)
 	wesnoth.put_unit = wesnoth.deprecate_api('wesnoth.put_unit', 'wesnoth.units.to_map', 1, nil, wesnoth.units.to_map)

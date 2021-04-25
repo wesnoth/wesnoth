@@ -117,7 +117,7 @@ end
 
 local old_show_dialog = gui.show_dialog
 function gui.show_dialog(dialog_wml, preshow, postshow)
-	
+
 	local res = old_show_dialog(
 		dialog_wml,
 		function(dialog)

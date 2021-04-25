@@ -2,7 +2,7 @@
 
 if wesnoth.kernel_type() == "Game Lua Kernel" then
 	print("Creating persistent_tags table...")
-	
+
 	wesnoth.persistent_tags = setmetatable({}, {
 		-- This just makes assignment of the read/write funtions more convenient
 		__index = function(t,k)

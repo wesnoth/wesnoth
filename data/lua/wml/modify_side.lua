@@ -103,7 +103,7 @@ function wesnoth.wml_actions.modify_side(cfg)
 				side.variables.__cfg = wml.merge(side.variables.__cfg, content, cfg.var_merge_mode or "replace")
 			end
 		end
-		
+
 		if cfg.switch_ai then
 			side:switch_ai(cfg.switch_ai)
 		end

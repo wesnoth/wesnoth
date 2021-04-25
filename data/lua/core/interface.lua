@@ -33,7 +33,7 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 		moving_unit:to_map(to_x, to_y)
 		wesnoth.wml_actions.redraw{}
 	end
-	
+
 	wesnoth.delay = wesnoth.deprecate_api('wesnoth.delay', 'wesnoth.interface.delay', 1, nil, wesnoth.interface.delay)
 	wesnoth.float_label = wesnoth.deprecate_api('wesnoth.float_label', 'wesnoth.interface.float_label', 1, nil, wesnoth.interface.float_label)
 	wesnoth.highlight_hex = wesnoth.deprecate_api('wesnoth.highlight_hex', 'wesnoth.interface.highlight_hex', 1, nil, wesnoth.interface.highlight_hex)
