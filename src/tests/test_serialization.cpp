@@ -52,7 +52,7 @@ BOOST_AUTO_TEST_CASE( utils_join_test )
 BOOST_AUTO_TEST_CASE( utils_split_test )
 {
 	const std::string test_string = "a,  ,  bb,  ccc  ||  d,  ee,,  fff  | |  g,  ,  hh,  iii";
-	
+
 	{
 		auto split = utils::split(test_string);
 		std::array expect = {"a", "bb", "ccc  ||  d", "ee", "fff  | |  g", "hh", "iii"};
@@ -108,7 +108,7 @@ BOOST_AUTO_TEST_CASE( utils_split_test )
 BOOST_AUTO_TEST_CASE( utils_quoted_split_test )
 {
 	const std::string test_string = "a,  `,  bb,  ccc  ||  d,  ee,,  fff  | `|  g,  `,  hh,  iii";
-	
+
 	{
 		auto split = utils::quoted_split(test_string, ',', utils::REMOVE_EMPTY | utils::STRIP_SPACES, '`');
 		std::array expect = {"a", "`,  bb", "ccc  ||  d", "ee", "fff  | `|  g", "`,  hh", "iii"};
@@ -154,7 +154,7 @@ BOOST_AUTO_TEST_CASE( utils_quoted_split_test )
 BOOST_AUTO_TEST_CASE( utils_map_split_test )
 {
 	const std::string test_string = "a = b:2,, c = d:.9, e = f:5;; x = r:12, y = b:9.2,, z = g:45";
-	
+
 	{
 		auto split = utils::map_split(test_string);
 		std::map<std::string, std::string> expect = {
@@ -166,7 +166,7 @@ BOOST_AUTO_TEST_CASE( utils_map_split_test )
 		};
 		BOOST_CHECK_EQUAL_COLLECTIONS(split.begin(), split.end(), expect.begin(), expect.end());
 	}
-	
+
 	{
 		auto split = utils::map_split(test_string, ',', ':', utils::REMOVE_EMPTY | utils::STRIP_SPACES);
 		std::map<std::string, std::string> expect = {
@@ -205,7 +205,7 @@ BOOST_AUTO_TEST_CASE( utils_map_split_test )
 		};
 		BOOST_CHECK_EQUAL_COLLECTIONS(split.begin(), split.end(), expect.begin(), expect.end());
 	}
-	
+
 	{
 		auto split = utils::map_split(test_string, ',', ':', utils::REMOVE_EMPTY);
 		std::map<std::string, std::string> expect = {
@@ -244,7 +244,7 @@ BOOST_AUTO_TEST_CASE( utils_map_split_test )
 		};
 		BOOST_CHECK_EQUAL_COLLECTIONS(split.begin(), split.end(), expect.begin(), expect.end());
 	}
-	
+
 	{
 		auto split = utils::map_split(test_string, ',', ':', utils::STRIP_SPACES);
 		std::map<std::string, std::string> expect = {
@@ -289,7 +289,7 @@ BOOST_AUTO_TEST_CASE( utils_map_split_test )
 		};
 		BOOST_CHECK_EQUAL_COLLECTIONS(split.begin(), split.end(), expect.begin(), expect.end());
 	}
-	
+
 	{
 		auto split = utils::map_split(test_string, ',', ':', 0);
 		std::map<std::string, std::string> expect = {
@@ -353,7 +353,7 @@ BOOST_AUTO_TEST_CASE( utils_parenthetical_split_test )
 		std::array expect = {"a ", " b ", " c ", " d ", " e ", " f { g } ", " h"};
 		BOOST_CHECK_EQUAL_COLLECTIONS(split.begin(), split.end(), expect.begin(), expect.end());
 	}
-	
+
 	{
 		auto split = utils::parenthetical_split("a, (b, c), {d, e},, f(g,g), h{i,i}", ',', "({", ")}");
 		std::array expect = {"a", "(b, c)", "{d, e}", "f(g,g)", "h{i,i}"};

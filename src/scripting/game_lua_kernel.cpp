@@ -1232,7 +1232,7 @@ int game_lua_kernel::impl_current_get(lua_State *L)
 	return_int_attrib("turn", play_controller_.turn());
 	return_string_attrib("synced_state", synced_state());
 	return_bool_attrib("user_can_invoke_commands", !play_controller_.is_lingering() && play_controller_.gamestate().init_side_done() && !events::commands_disabled && gamedata().phase() == game_data::PLAY);
-	
+
 	if(strcmp(m, "map") == 0) {
 		return intf_terrainmap_get(L);
 	}
@@ -4199,7 +4199,7 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 	lua_pushcfunction(L, &lua_common::intf_tovconfig);
 	lua_setfield(L, -2, "tovconfig");
 	lua_pop(L, 1);
-	
+
 	// Add functions to the map module
 	luaW_getglobal(L, "wesnoth", "map");
 	static luaL_Reg const map_callbacks[] {

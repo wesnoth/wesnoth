@@ -202,7 +202,7 @@ public:
 
 	/**
 	 * Checks whether a forum thread with @a topic_id exists.
-	 * 
+	 *
 	 * @param topic_id The topic id to check for.
 	 * @return True if the thread exists or there was a database failure, false if the topic wasn't found.
 	 */
@@ -210,7 +210,7 @@ public:
 
 	/**
 	 * Inserts information about an uploaded add-on into the database.
-	 * 
+	 *
 	 * @param instance_version The version of campaignd the add-on was uploaded to.
 	 * @param id The add-on's ID (aka directory name).
 	 * @param name The add-on's name from the pbl.
@@ -223,7 +223,7 @@ public:
 
 	/**
 	 * Inserts into the database for when a player logs in.
-	 * 
+	 *
 	 * @param username The username of who logged in. The username is converted to lower case when inserting in order to allow index usage when querying.
 	 * @param ip The ip address of who logged in.
 	 * @param version The version of the client that logged in.
@@ -232,7 +232,7 @@ public:
 
 	/**
 	 * Updates the database for when a player logs out.
-	 * 
+	 *
 	 * @param login_id The generated ID that uniquely identifies the row to be updated.
 	 */
 	void db_update_logout(unsigned long long login_id);
@@ -240,7 +240,7 @@ public:
 	/**
 	 * Searches for all players that logged in using the ip address.
 	 * The '%' wildcard can be used to search for partial ip addresses.
-	 * 
+	 *
 	 * @param ip The ip address to search for.
 	 * @param out Where to output the results.
 	 */
@@ -250,7 +250,7 @@ public:
 	 * Searches for all ip addresses used by the player.
 	 * The username is converted to lower case to allow a case insensitive select query to be executed while still using an index.
 	 * The '%' wildcard can be used to search for partial usernames.
-	 * 
+	 *
 	 * @param username The username to search for.
 	 * @param out Where to output the results.
 	 */

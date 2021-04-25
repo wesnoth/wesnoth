@@ -487,7 +487,7 @@ void early_log_file_setup(bool disable)
 		disable_redirect = true;
 		return;
 	}
-	
+
 	lfm.reset(new log_file_manager());
 }
 

@@ -2779,7 +2779,7 @@ void server::searchlog_handler(const std::string& /*issuer_name*/,
 
 	if(!user_handler_) {
 		bool found_something = false;
-		
+
 		for(const auto& i : ip_log_) {
 			const std::string& username = i.nick;
 			const std::string& ip = i.ip;

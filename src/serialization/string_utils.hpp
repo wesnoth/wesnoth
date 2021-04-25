@@ -354,7 +354,7 @@ bool wildcard_string_match(const std::string& str, const std::string& match);
 
 /**
  * Converts '*' to '%' and optionally escapes '_'.
- * 
+ *
  * @param str The original string.
  * @param underscores Whether to escape underscore characters as well.
  */

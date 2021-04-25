@@ -66,7 +66,7 @@ bad_commandline_tuple::bad_commandline_tuple(const std::string& str,
 #else
 #define IMPLY_WCONSOLE
 #endif // _WIN32
-		 
+
 
 commandline_options::commandline_options(const std::vector<std::string>& args)
 	: bunzip2()

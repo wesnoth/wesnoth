@@ -963,7 +963,7 @@ int main(int argc, char** argv)
 {
 	auto args = read_argv(argc, argv);
 	assert(!args.empty());
-	
+
 	// --nobanner needs to be detected before the main command-line parsing happens
 	bool nobanner = false;
 	for(const auto& arg : args) {
@@ -1010,7 +1010,7 @@ int main(int argc, char** argv)
 			std::find_if(wincon_arg_switches.begin(), wincon_arg_switches.end(), switch_matches_arg) != wincon_arg_switches.end()) {
 			native_console_implied = true;
 		}
-		
+
 		if(arg == "--wnoconsole") {
 			native_console_force = false;
 		} else if(arg == "--wconsole") {

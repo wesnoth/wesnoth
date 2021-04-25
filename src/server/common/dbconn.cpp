@@ -408,7 +408,7 @@ void dbconn::get_users_for_ip(const std::string& ip, std::ostringstream* out)
 	{
 		mariadb::result_set_ref rslt = select(connection_, "SELECT USER_NAME, IP, date_format(LOGIN_TIME, '%Y/%m/%d %h:%i:%s'), coalesce(date_format(LOGOUT_TIME, '%Y/%m/%d %h:%i:%s'), '(not set)') FROM `"+db_connection_history_table_+"` WHERE IP LIKE ? order by LOGIN_TIME",
 			ip);
-		
+
 		*out << "\nCount of results for ip: " << rslt->row_count();
 
 		while(rslt->next())
@@ -429,9 +429,9 @@ void dbconn::get_ips_for_user(const std::string& username, std::ostringstream* o
 	{
 		mariadb::result_set_ref rslt = select(connection_, "SELECT USER_NAME, IP, date_format(LOGIN_TIME, '%Y/%m/%d %h:%i:%s'), coalesce(date_format(LOGOUT_TIME, '%Y/%m/%d %h:%i:%s'), '(not set)') FROM `"+db_connection_history_table_+"` WHERE USER_NAME LIKE ? order by LOGIN_TIME",
 			utf8::lowercase(username));
-		
+
 		*out << "\nCount of results for user: " << rslt->row_count();
-		
+
 		while(rslt->next())
 		{
 			*out << "\nFound user " << rslt->get_string(0) << " with ip " << rslt->get_string(1)

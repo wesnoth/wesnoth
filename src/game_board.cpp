@@ -337,7 +337,7 @@ bool game_board::change_terrain(
 	} else if(mode_str == "overlay") {
 		mode = terrain_type_data::OVERLAY;
 	}
-	
+
 	return change_terrain(loc, terrain, mode, replace_if_failed);
 }
 

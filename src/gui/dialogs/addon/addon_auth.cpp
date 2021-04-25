@@ -29,7 +29,7 @@ REGISTER_DIALOG(addon_auth)
 addon_auth::addon_auth(config& cfg)
 	: cfg_(cfg)
 {
-	
+
 }
 
 void addon_auth::pre_show(window& win)

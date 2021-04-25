@@ -107,7 +107,7 @@ bool terrain_filter::match_internal(const map_location& loc, const unit* ref_uni
 	if (cfg_.has_attribute("area") &&
 		fc_->get_tod_man().get_area_by_id(cfg_["area"]).count(loc) == 0)
 		return false;
-	
+
 	if(cfg_.has_attribute("gives_income") &&
 		cfg_["gives_income"].to_bool() != fc_->get_disp_context().map().is_village(loc))
 		return false;

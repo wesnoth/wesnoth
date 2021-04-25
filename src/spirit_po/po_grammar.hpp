@@ -104,7 +104,7 @@ struct po_grammar : qi::grammar<Iterator, po_message()> {
      * keep track of if we saw a fuzzy marker, and to consume the entire file if only whitespace lines remain, whether or
      * not it ends in new-line.
      *
-     * First, parse "ignored_comments", 
+     * First, parse "ignored_comments",
      * message_preamble is the main rule of this section
      */
 
