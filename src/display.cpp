@@ -1965,12 +1965,9 @@ bool display::scroll(int xmove, int ymove, bool force)
 		srcrect.x -= diff_x;
 		srcrect.y -= diff_y;
 
-		// This is a workaround for a SDL2 bug when blitting on overlapping surfaces. The bug
-		// only strikes during scrolling, but will then duplicate textures across the entire map.
-		surface screen_copy = screen.clone();
-
-		SDL_SetSurfaceBlendMode(screen_copy, SDL_BLENDMODE_NONE);
-		SDL_BlitSurface(screen_copy, &srcrect, screen, &dstrect);
+		SDL_SetSurfaceBlendMode(screen, SDL_BLENDMODE_NONE);
+		SDL_BlitSurface(screen, &srcrect, screen, &dstrect);
+		SDL_SetSurfaceBlendMode(screen, SDL_BLENDMODE_BLEND);
 	}
 
 	if(diff_y != 0) {
