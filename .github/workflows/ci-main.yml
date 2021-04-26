@@ -255,6 +255,10 @@ jobs:
           path: |
             ~/work/wesnoth/wesnoth/projectfiles/Xcode/Wesnoth_Debug.dmg
 
+# enabling both intel and arm macOS jobs would tend to confuse the github actions CI
+# sometimes it would succeed, other times it would fail at random with extra entries for macOS jobs that didn't exist in this configuration file
+# try re-enabling at some point to see if this got fixed in the mean time
+
 #  macos-arm-master-release:
 #    runs-on: macos-11.0
 #
