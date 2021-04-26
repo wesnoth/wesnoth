@@ -44,6 +44,8 @@ checkindent() {
 }
 
 EXIT_VAL=-1
+# remove temp dockerfile so it doesn't get picked up by `git status`
+rm utils/dockerbuilds/CI/Dockerfile-CI-2004-master
 
 if [ "$NLS" == "only" ]; then
     export LANGUAGE=en_US.UTF-8
@@ -52,11 +54,11 @@ if [ "$NLS" == "only" ]; then
 
     ./utils/CI/check_utf8.sh || exit 1
     ./utils/CI/utf8_bom_dog.sh || exit 1
-    echo "Checked for invalod characters"
+    echo "Checked for invalid characters"
 
     cmake -DENABLE_NLS=true -DENABLE_GAME=false -DENABLE_SERVER=false -DENABLE_CAMPAIGN_SERVER=false -DENABLE_TESTS=false -DENABLE_POT_UPDATE_TARGET=TRUE
     make update-po4a-man || exit 1
-    echo "Ran umake pdate-po4a-man"
+    echo "Ran cmake pdate-po4a-man"
     make update-po4a-manual || exit 1
     echo "Ran make update-po4a-manual"
     make pot-update || exit 1
