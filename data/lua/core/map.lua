@@ -7,6 +7,7 @@ end
 
 function wesnoth.map.read_location(...)
 	local x, y = ...
+	if x == nil then return nil, 0 end
 	if y == nil or type(x) == 'table' or type(x) == 'userdata' then
 		if type(x.x) == 'number' and type(x.y) == 'number' then
 			x, y = x.x, x.y
