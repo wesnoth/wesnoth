@@ -3,7 +3,7 @@
 
 if rawget(_G, 'unit_test') ~= nil then
 	print("Loading unit_test module...")
-	
+
 	--! Causes the test to complete with a specific result.
 	--! This is mostly an internal detail but might very occasionally be useful to produce a result other than pass or fail
 	function unit_test.finish(result)
@@ -51,7 +51,7 @@ if rawget(_G, 'unit_test') ~= nil then
 			unit_test.fail()
 		end
 	end
-	
+
 	--! Fail the test with a message unless the function exits with any error
 	function unit_test.assert_throws(fcn, message)
 		local result = pcall(fcn)
@@ -60,7 +60,7 @@ if rawget(_G, 'unit_test') ~= nil then
 			unit_test.fail()
 		end
 	end
-	
+
 	local function match_error(expect, have)
 		if type(expect) == 'string' then
 			local m = string.match(have, '^%[.-%]:%d: (.*)')
@@ -68,7 +68,7 @@ if rawget(_G, 'unit_test') ~= nil then
 		end
 		return expect == have
 	end
-	
+
 	--! Fail the test with a message unless the function exits with a specific error
 	function unit_test.assert_throws_with(expect_err, fcn, message)
 		local result, err = pcall(fcn)
@@ -77,7 +77,7 @@ if rawget(_G, 'unit_test') ~= nil then
 			unit_test.fail()
 		end
 	end
-	
+
 	--! Fail the test with a message unless the function exits with no errors
 	function unit_test.assert_nothrow(fcn, message)
 		local result, err = pcall(fcn)
@@ -96,7 +96,7 @@ if rawget(_G, 'unit_test') ~= nil then
 			unit_test.fail()
 		end
 	end
-	
+
 	--! Fail the test with a message unless a ~= b
 	function unit_test.assert_not_equal(a, b, message)
 		if a == b then
@@ -160,7 +160,7 @@ if rawget(_G, 'unit_test') ~= nil then
 			unit_test.fail()
 		end
 	end
-	
+
 	--! Fail the test with a message unless the source string contains the fragment as a substring
 	function unit_test.assert_contains(source, fragment, message)
 		if not string.find(source, fragment, 1, true) then
