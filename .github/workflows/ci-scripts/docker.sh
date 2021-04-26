@@ -27,6 +27,11 @@ execute() {
         : # success
     else
         EXIT_VAL=$?
+        echo "********** !FAILURE! **********"
+        echo "********** !FAILURE! **********"
+        echo "********** !FAILURE! **********"
+        echo "********** !FAILURE! **********"
+        echo "********** !FAILURE! **********"
         error "$message failed! ($*)"
     fi
 }
