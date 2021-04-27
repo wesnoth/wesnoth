@@ -426,7 +426,7 @@ end
 
 local function weather_map(name)
 	wesnoth.wml_actions.terrain_mask {
-		mask = wesnoth.read_file(name),
+		mask = filesystem.read_file(name),
 		x = 1,
 		y = 1,
 		border = true,

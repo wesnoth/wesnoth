@@ -10,7 +10,7 @@ Distmap = wesnoth.dofile("./distmap.lua")
 wesnoth.dofile("./postgeneration_utils/engine.lua")
 
 local postgenerators = {}
-for i, v in ipairs(wesnoth.read_file("./postgeneration")) do
+for i, v in ipairs(filesystem.read_file("./postgeneration")) do
 	local code = string.match(v, "^(%d%a).*")
 	if code then
 		postgenerators[string.lower(code)] = v
