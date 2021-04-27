@@ -77,7 +77,7 @@ on_event("enemies defeated", function(cx)
 	if wml.variables.wc2_scenario > 4 then
 		return
 	end
-	wesnoth.play_sound("ambient/ship.ogg")
+	wesnoth.audio.play("ambient/ship.ogg")
 	wesnoth.wml_actions.endlevel {
 		result = "victory",
 		carryover_percentage = 0,

@@ -279,10 +279,9 @@ local function message_user_choice(cfg, speaker, options, text_input, sound)
 	end
 
 	return function()
-		if sound then wesnoth.play_sound(sound) end
+		if sound then wesnoth.audio.play(sound) end
 		if voice then
 			local speech = {
-				id = "wml_message_speaker",
 				sounds = voice,
 				loops = 0,
 				delay = 0,
@@ -291,13 +290,13 @@ local function message_user_choice(cfg, speaker, options, text_input, sound)
 				speech.x = speaker.x
 				speech.y = speaker.y
 			end
-			wesnoth.add_sound_source(speech)
+			wesnoth.audio.sources.wml_message_speaker = speech
 		end
 
 		local option_chosen, ti_content = gui.show_narration(msg_cfg, options, text_input)
 
 		if voice then
-			wesnoth.remove_sound_source("wml_message_speaker")
+			wesnoth.sources.wml_message_speaker = nil
 		end
 
 		if option_chosen == -2 then -- Pressed Escape (only if no input)
