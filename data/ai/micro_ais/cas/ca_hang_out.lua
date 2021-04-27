@@ -21,7 +21,7 @@ function ca_hang_out:evaluation(cfg, data)
 
     -- Otherwise check if any of the mobilize conditions are now met
     local mobilize_condition = wml.get_child(cfg, "mobilize_condition")
-    if (mobilize_condition and wesnoth.eval_conditional(mobilize_condition))
+    if (mobilize_condition and wml.eval_conditional(mobilize_condition))
         or (cfg.mobilize_on_gold_less_than and (wesnoth.sides[wesnoth.current.side].gold < cfg.mobilize_on_gold_less_than))
     then
         MAISD.insert_mai_self_data(data, cfg.ai_id, { mobilize_units = true })

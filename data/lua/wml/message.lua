@@ -319,7 +319,7 @@ end
 
 function wesnoth.wml_actions.message(cfg)
 	local show_if = wml.get_child(cfg, "show_if") or {}
-	if not wesnoth.eval_conditional(show_if) then
+	if not wml.eval_conditional(show_if) then
 		log("[message] skipped because [show_if] did not pass", "debug")
 		return
 	end
@@ -337,7 +337,7 @@ function wesnoth.wml_actions.message(cfg)
 	local options, option_events = {}, {}
 	for option in wml.child_range(cfg, "option") do
 		local condition = wml.get_child(option, "show_if") or {}
-		if wesnoth.eval_conditional(condition) then
+		if wml.eval_conditional(condition) then
 
 			-- make message= and description= equivalent for the sake of backwards compatibility
 			local msg_text = ""
