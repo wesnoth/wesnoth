@@ -317,7 +317,8 @@ jobs:
       - name: DOS1
         shell: cmd
         run: |
-          git clone --depth=1 https://github.com/microsoft/vcpkg.git ../vcpkg
+          git clone --shallow-since=2021-04-25 https://github.com/microsoft/vcpkg.git ../vcpkg
+          git -C ../vcpkg checkout a9b27ed5dffbf70b135eddb0c4729f3ca87f106c
           %~dp0../wesnoth/vcpkg/bootstrap-vcpkg.bat
       - name: DOS2
         shell: cmd
@@ -350,7 +351,8 @@ jobs:
       - name: DOS1
         shell: cmd
         run: |
-          git clone --depth=1 https://github.com/microsoft/vcpkg.git ../vcpkg
+          git clone --shallow-since=2021-04-25 https://github.com/microsoft/vcpkg.git ../vcpkg
+          git -C ../vcpkg checkout a9b27ed5dffbf70b135eddb0c4729f3ca87f106c
           %~dp0../wesnoth/vcpkg/bootstrap-vcpkg.bat
       - name: DOS2
         shell: cmd
