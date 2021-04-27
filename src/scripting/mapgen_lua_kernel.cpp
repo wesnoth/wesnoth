@@ -222,7 +222,6 @@ mapgen_lua_kernel::mapgen_lua_kernel(const config* vars)
 	static luaL_Reg const callbacks[] {
 		{ "find_path",           &intf_find_path           },
 		{ "random",              &intf_random              },
-		{ "get_variable", &dispatch<&mapgen_lua_kernel::intf_get_variable> },
 		{ nullptr, nullptr }
 	};
 
@@ -249,6 +248,18 @@ mapgen_lua_kernel::mapgen_lua_kernel(const config* vars)
 	luaL_setfuncs(L, map_callbacks, 0);
 	lua_pop(L, 1);
 	assert(lua_gettop(L) == 0);
+	
+	// Add functions to the WML module
+	lua_getglobal(L, "wml");
+	static luaL_Reg const wml_callbacks[] {
+		{"tovconfig", &lua_common::intf_tovconfig},
+		// These aren't actually part of the API - they're used internally by the variable metatable.
+		{ "get_variable", &dispatch<&mapgen_lua_kernel::intf_get_variable>},
+		{ "get_all_vars", &dispatch<&mapgen_lua_kernel::intf_get_all_vars>},
+		{ nullptr, nullptr }
+	};
+	luaL_setfuncs(L, wml_callbacks, 0);
+	lua_pop(L, 1);
 
 	cmd_log_ << lua_terrainmap::register_metatables(L);
 	cmd_log_ << lua_terrainfilter::register_metatables(L);
@@ -268,12 +279,17 @@ void mapgen_lua_kernel::user_config(const char * prog, const config & generator)
 
 int mapgen_lua_kernel::intf_get_variable(lua_State *L)
 {
-	static const config empty_cfg;
 
 	char const *m = luaL_checkstring(L, 1);
-	variable_access_const v(m, vars_ ? *vars_ : empty_cfg);
+	variable_access_const v(m, vars_ ? *vars_ : config());
 	return luaW_pushvariable(L, v) ? 1 : 0;
 }
+
+int mapgen_lua_kernel::intf_get_all_vars(lua_State *L) {
+	luaW_pushconfig(L, vars_ ? *vars_ : config());
+	return 1;
+}
+
 std::string mapgen_lua_kernel::create_map(const char * prog, const config & generator, std::optional<uint32_t> seed) // throws game::lua_error
 {
 	random_seed_ = seed;

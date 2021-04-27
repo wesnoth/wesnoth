@@ -192,7 +192,9 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 	function wml.fire(name, cfg)
 		wesnoth.wml_actions[name](wml.tovconfig(cfg or {}))
 	end
+end
 
+if wesnoth.kernel_type() ~= "Application Lua Kernel" then
 	--[========[Basic variable access]========]
 
 	-- Get all variables via wml.all_variables (read-only)
@@ -215,7 +217,9 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 	})
 
 	local get_variable_local = wml.get_variable
-	local set_variable_local = wml.set_variable
+	local set_variable_local = wml.set_variable or function()
+		error("Variables are read-only during map generation", 3)
+	end
 
 	-- Get and set variables via wml.variables[variable_path]
 	wml.variables = setmetatable({}, {
@@ -438,10 +442,13 @@ wesnoth.tovconfig = wesnoth.deprecate_api('wesnoth.tovconfig', 'wml.tovconfig', 
 wesnoth.debug = wesnoth.deprecate_api('wesnoth.debug', 'wml.tostring', 1, nil, wml.tostring)
 wesnoth.wml_matches_filter = wesnoth.deprecate_api('wesnoth.wml_matches_filter', 'wml.matches_filter', 1, nil, wml.matches_filter)
 
-if wesnoth.kernel_type() == "Game Lua Kernel" then
+if wesnoth.kernel_type() ~= "Application Lua Kernel" then
 	wesnoth.get_variable = wesnoth.deprecate_api('wesnoth.get_variable', 'wml.variables', 1, nil, wml.get_variable)
-	wesnoth.set_variable = wesnoth.deprecate_api('wesnoth.set_variable', 'wml.variables', 1, nil, wml.set_variable)
 	wesnoth.get_all_vars = wesnoth.deprecate_api('wesnoth.get_all_vars', 'wml.all_variables', 1, nil, wml.get_all_vars)
+end
+
+if wesnoth.kernel_type() == "Game Lua Kernel" then
+	wesnoth.set_variable = wesnoth.deprecate_api('wesnoth.set_variable', 'wml.variables', 1, nil, wml.set_variable)
 	wesnoth.fire = wesnoth.deprecate_api('wesnoth.fire', 'wml.fire', 1, nil, wml.fire)
 	wesnoth.eval_conditional = wesnoth.deprecate_api('wesnoth.eval_conditional', 'wml.eval_conditional', 1, nil, wml.eval_conditional)
 end
