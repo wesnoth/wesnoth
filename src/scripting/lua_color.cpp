@@ -118,11 +118,11 @@ static int impl_color_get(lua_State *L)
 	if(strcmp(m, "minimap") == 0) {
 		return luaW_pushsinglecolor(L, c.rep());
 	}
-	// TODO: i think this shortcut would be useful, but im not sure yet on the best attribute name.
-	//if(strcmp(m, "pango_hex") == 0) {
-	//	lua_push(L, c.mid().to_hex_string());
-	//	return 1;
-	//}
+	// returns a string which can be used in Pango's foreground= attribute
+	if(strcmp(m, "pango_color") == 0) {
+		lua_push(L, c.mid().to_hex_string());
+		return 1;
+	}
 	return 0;
 }
 

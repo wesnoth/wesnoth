@@ -4,6 +4,8 @@
  ### Campaigns
  ### Editor
  ### Multiplayer
+ ### Lua API
+   * Added `pango_color` to the `wesnoth.colors` table, for easy use in formatted text.
  ### Packaging
    * Increased minimum required version of SDL to 2.0.8 (PR #5736).
  ### Terrain
@@ -12,6 +14,7 @@
  ### Units
    * Update piglet/boar graphics
  ### User interface
+   * The multiplayer "turns over" dialog now uses each team's colors when showing teams' names.
  ### WML Engine
    * Modify implementation of overwrite_specials attribute for replace yes/no parameter by none/one_side/both_sides and select abilities used like weapons and specials who must be overwrited(owned by fighter where special applied or both)
  ### Miscellaneous and Bug Fixes

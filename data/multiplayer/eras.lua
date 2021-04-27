@@ -47,10 +47,7 @@ res.turns_over_advantage = function()
 	local winners_color = "#000000"
 	for side, team in all_sides() do
 		if not team.__cfg.hidden then
-			-- The translatable strings include support for coloring the side names, but here we just use white. The team colors accessible to Lua
-			-- could be "red", "blue", etc (which are also supported by Pango's markup), but could also be user-defined names from a color changer mod.
-			-- Logged as bug #5722.
-			local side_color = "#ffffff"
+			local side_color = wesnoth.colors[team.color].pango_color
 			if # wesnoth.units.find_on_map( { side = side } ) == 0 then
 				-- po: In the end-of-match summary, a side which has no units left and therefore lost. In English the loss is shown by displaying it with the text struck through.
 				local side_text = _ "<span strikethrough='true' foreground='$side_color'>Side $side_number</span>:  Has lost all units"
