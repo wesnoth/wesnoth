@@ -411,7 +411,7 @@ function wesnoth.wml_actions.message(cfg)
 		wesnoth.interface.deselect_hex()
 		-- The speaker is expected to be either nil or a unit later
 		speaker = nil
-		wesnoth.fire("redraw")
+		wml.fire("redraw")
 	else
 		-- Check ~= false, because the default if omitted should be true
 		if cfg.scroll ~= false then
@@ -419,7 +419,7 @@ function wesnoth.wml_actions.message(cfg)
 		end
 
 		wesnoth.interface.highlight_hex(speaker.x, speaker.y)
-		wesnoth.fire("redraw")
+		wml.fire("redraw")
 	end
 
 	local msg_dlg = message_user_choice(cfg, speaker, options, text_input, cfg.sound)

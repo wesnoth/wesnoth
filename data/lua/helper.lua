@@ -44,7 +44,7 @@ end
 local fire_action_mt = {
 	__metatable = "WML actions",
 	__index = function(t, n)
-		return function(cfg) wesnoth.fire(n, cfg) end
+		return function(cfg) wml.fire(n, cfg) end
 	end
 }
 

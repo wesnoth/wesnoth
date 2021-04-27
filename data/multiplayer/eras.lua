@@ -59,7 +59,7 @@ res.turns_over_advantage = function()
 				-- Calc the total unit-score here
 				for i, unit in ipairs( wesnoth.units.find_on_map { side = side } ) do
 					if not unit.__cfg.canrecruit then
-						wesnoth.fire("unit_worth", { id = unit.id })
+						wml.fire("unit_worth", { id = unit.id })
 						units = units + wml.variables["unit_worth"]
 					end
 				end

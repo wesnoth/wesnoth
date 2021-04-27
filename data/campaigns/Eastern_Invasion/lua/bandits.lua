@@ -80,12 +80,12 @@ function wml_actions.bandit_village_capture(cfg)
 			local visited = vars.villages_visited
 			vars.villages_visited = visited + 1
 
-			wesnoth.fire("message" , { x = x , y = y , message = _"They're here!"})
+			wml.fire("message" , { x = x , y = y , message = _"They're here!"})
 
 			bandits_found(x,y)
 			return
 		end
 	end
 
-	wesnoth.fire("message" , { x = x , y = y , message = _"No outlaws in this village."})
+	wml.fire("message" , { x = x , y = y , message = _"No outlaws in this village."})
 end
