@@ -5,6 +5,7 @@
  ### Editor
  ### Multiplayer
  ### Packaging
+   * Increased minimum required version of SDL to 2.0.8 (PR #5736).
  ### Terrain
  ### Translations
    * Updated translations: British English, Dutch, Italian.
@@ -15,6 +16,7 @@
    * Modify implementation of overwrite_specials attribute for replace yes/no parameter by none/one_side/both_sides and select abilities used like weapons and specials who must be overwrited(owned by fighter where special applied or both)
  ### Miscellaneous and Bug Fixes
    * Made GUI.pyw compatible with Python 3.9 (issue #5719).
+   * Removed workarounds for bugs affecting older SDL 2.0 versions, including an extra copy of the game screen made during gamemap scrolling (PR #5736).
 
 ## Version 1.15.12
  ### Add-ons client
