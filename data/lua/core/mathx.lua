@@ -53,7 +53,7 @@ function mathx.random_choice(possible_values, random_func)
 		-- We need to parse ranges separately anyway
 		for i, val in ipairs(possible_values) do
 			if type(val) == "table" then
-				assert(#val == 2 and type(val[1]) == "number" and type(val[2]) == "number", "Malformed range for helper.rand")
+				assert(#val == 2 and type(val[1]) == "number" and type(val[2]) == "number", "Malformed range for mathx.random_choice")
 				if val[1] > val[2] then
 					val = {val[2], val[1]}
 				end
@@ -95,4 +95,4 @@ function mathx.shuffle(t, random_func)
 	end
 end
 
-wesnoth.random = wesnoth.deprecate_api('wesnoth.random', 'mathx.random', 1, nil, mathx.random)
+mathx.random = wesnoth.deprecate_api('mathx.random', 'mathx.random', 1, nil, mathx.random)

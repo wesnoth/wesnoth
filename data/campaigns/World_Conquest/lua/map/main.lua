@@ -28,7 +28,7 @@ local function get_map_generator(scenario_data)
 			globals.settings.island
 		)
 	else
-		return scenario_data.generators[wesnoth.random(#scenario_data.generators)]
+		return scenario_data.generators[mathx.random(#scenario_data.generators)]
 	end
 end
 

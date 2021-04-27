@@ -1,5 +1,4 @@
 
-local helper = wesnoth.require("helper")
 local _ = wesnoth.textdomain 'wesnoth-multiplayer'
 local T = wml.tag
 local on_event = wesnoth.require("on_event")
@@ -96,7 +95,7 @@ local function get_spawn_types(num_units, max_gold, unit_pool)
 	local units_left = num_units
 	local current_types = {}
 	while gold_left > 0 and units_left > 0 do
-		local unit_group = wesnoth.random(#unit_pool)
+		local unit_group = mathx.random(#unit_pool)
 		local unit_rank = 1
 		local unit_type = wesnoth.unit_types[unit_pool[unit_group][unit_rank]]
 		table.insert(current_types, { group = unit_group, type =  unit_type})
@@ -143,7 +142,7 @@ local function get_spawn_types(num_units, max_gold, unit_pool)
 				table.insert(possible_groups, { group = i, type = unit_type})
 			end
 		end
-		local index = wesnoth.random(#possible_groups)
+		local index = mathx.random(#possible_groups)
 		table.insert(current_types, possible_groups[index])
 		gold_left = gold_left - possible_groups[index].type.cost
 	end
@@ -165,22 +164,22 @@ local function create_timed_spawns(interval, num_spawns, base_gold_amount, gold_
 	for i = 1, #random_spawns do
 		table.insert(random_spawn_numbers, i)
 	end
-	helper.shuffle(random_spawn_numbers)
-	local final_turn = math.ceil(((num_spawns - 1) * interval + 40 + wesnoth.random(2,4))/2)
+	mathx.shuffle(random_spawn_numbers)
+	local final_turn = math.ceil(((num_spawns - 1) * interval + 40 + mathx.random(2,4))/2)
 	local end_spawns = 0
 	for spawn_number = 1, num_spawns do
 		local turn = 3 + (spawn_number - 1) * interval
 		local gold = base_gold_amount + (turn - 3) * gold_increment
 		if spawn_number > 1 then
 			-- foruma taken from original Dark forecast, TODO: find easier formula.
-			local unit_gold = (turn - 3) * gold_increment + math.min(wesnoth.random(base_gold_amount), wesnoth.random(base_gold_amount))
+			local unit_gold = (turn - 3) * gold_increment + math.min(mathx.random(base_gold_amount), mathx.random(base_gold_amount))
 			local gold_per_unit = gold_per_unit_amount + turn / 1.5
-			local units = unit_gold / gold_per_unit + units_amount + wesnoth.random(-1, 2)
-			if wesnoth.random(5) == 5 then
+			local units = unit_gold / gold_per_unit + units_amount + mathx.random(-1, 2)
+			if mathx.random(5) == 5 then
 				units = units - 1
 			end
 			-- end complicated formula
-			turn = turn + wesnoth.random(-1, 1)
+			turn = turn + mathx.random(-1, 1)
 			-- reduce gold and units for spawns after the final spawn
 			if turn >= final_turn then
 				units = units / (end_spawns + 3)
@@ -194,7 +193,7 @@ local function create_timed_spawns(interval, num_spawns, base_gold_amount, gold_
 			wml.variables[string.format("timed_spawn[%d]", spawn_number - 1)] = {
 				units = math.ceil(units),
 				turn = turn,
-				gold = helper.round(gold * configure_gold_factor),
+				gold = mathx.round(gold * configure_gold_factor),
 				pool_num = random_spawn_numbers[spawn_number],
 			}
 		else
@@ -235,7 +234,7 @@ local function final_spawn()
 	if spawns_left == 0 then
 		return
 	end
-	local spawn_index = wesnoth.random(spawns_left) - 1
+	local spawn_index = mathx.random(spawns_left) - 1
 	local spawn = wml.variables[string.format("fixed_spawn[%d]", spawn_index)]
 	wml.variables[string.format("fixed_spawn[%d]", spawn_index)] = nil
 	local types = {}
@@ -276,9 +275,9 @@ on_event("new turn", function()
 	wml.variables["timed_spawn[0]"] = nil
 	local unit_types = get_spawn_types(next_spawn.units, next_spawn.gold, random_spawns[next_spawn.pool_num])
 	local spawn_areas = {{"3-14", "15"}, {"1", "4-13"}, {"2-13", "1"}, {"1", "2-15"}}
-	local spawn_area = spawn_areas[wesnoth.random(#spawn_areas)]
+	local spawn_area = spawn_areas[mathx.random(#spawn_areas)]
 	local locations_in_area = wesnoth.map.find { x = spawn_area[1], y = spawn_area[2], radius=1, include_borders=false }
-	local chosen_location = locations_in_area[wesnoth.random(#locations_in_area)]
+	local chosen_location = locations_in_area[mathx.random(#locations_in_area)]
 	place_units(unit_types, chosen_location[1], chosen_location[2])
 end)
 
@@ -301,7 +300,7 @@ on_event("new turn", function()
 		message= _ "The last and most powerful of these creatures are almost upon us. I feel that if we can finish them off in time, we shall be victorious.",
 	}
 
-	wml.variables["next_final_spawn"] = wesnoth.current.turn + wesnoth.random(1,2)
+	wml.variables["next_final_spawn"] = wesnoth.current.turn + mathx.random(1,2)
 end)
 
 -- after the first final spawn, spawn a new final spawn every 1 or 2 turns.
@@ -310,7 +309,7 @@ on_event("new turn", function()
 		return
 	end
 	final_spawn()
-	wml.variables["next_final_spawn"] = wesnoth.current.turn + wesnoth.random(1,2)
+	wml.variables["next_final_spawn"] = wesnoth.current.turn + mathx.random(1,2)
 end)
 
 -- The victory condition: win when there are no enemy unit after the first final spawn appeared.
@@ -359,15 +358,15 @@ end)
 -- The weather evens are complateleey unrelated to the spawn events.
 
 local function get_weather_duration(max_duration)
-	local res = wesnoth.random(2)
-	while res < max_duration and wesnoth.random(2) == 2 do
+	local res = mathx.random(2)
+	while res < max_duration and mathx.random(2) == 2 do
 		res = res + 1
 	end
 	return res
 end
 -- initilize the weather_event wml array which defines at which turns the weather changes.
 on_event("prestart", function()
-	local turn = wesnoth.random(4,6)
+	local turn = mathx.random(4,6)
 	local event_num = 0
 	local weather_to_dispense = {
 		{ turns_left = 10, id = "drought"},
@@ -378,7 +377,7 @@ on_event("prestart", function()
 	local heavy_snowfall_turns_left = 6
 	while turn < 55 and #weather_to_dispense > 0 do
 		-- pick a random weather except 'clear' and 'heavy snow'
-		local index = wesnoth.random(#weather_to_dispense)
+		local index = mathx.random(#weather_to_dispense)
 		local num_turns = get_weather_duration(weather_to_dispense[index].turns_left)
 		local weather_id = weather_to_dispense[index].id
 		weather_to_dispense[index].turns_left = weather_to_dispense[index].turns_left - num_turns
@@ -392,7 +391,7 @@ on_event("prestart", function()
 		event_num = event_num + 1
 		turn = turn + num_turns
 		-- Second snow happens half the time.
-		if weather_id == "snowfall" and heavy_snowfall_turns_left >= 0 and wesnoth.random(2) == 2 then
+		if weather_id == "snowfall" and heavy_snowfall_turns_left >= 0 and mathx.random(2) == 2 then
 			num_turns = get_weather_duration(heavy_snowfall_turns_left)
 			wml.variables[string.format("weather_event[%d]", event_num)] = {
 				turn = turn,

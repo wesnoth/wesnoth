@@ -1,4 +1,3 @@
-local helper = wesnoth.require "helper"
 
 function wesnoth.wml_actions.set_variable(cfg, variables)
 	local name = cfg.name or wml.error "trying to set a variable with an empty name"
@@ -106,7 +105,7 @@ function wesnoth.wml_actions.set_variable(cfg, variables)
 		else
 			local decimals = math.modf(tonumber(round_val) or 0)
 			local value = var * (10 ^ decimals)
-			value = helper.round(value)
+			value = mathx.round(value)
 			value = value * (10 ^ -decimals)
 			variables[name] = value
 		end
@@ -154,7 +153,7 @@ function wesnoth.wml_actions.set_variable(cfg, variables)
 	end
 
 	if cfg.rand then
-		variables[name] = helper.rand(tostring(cfg.rand))
+		variables[name] = mathx.random_choice(tostring(cfg.rand))
 	end
 
 	if cfg.formula then

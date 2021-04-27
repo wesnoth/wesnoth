@@ -143,16 +143,16 @@ function battle_calcs.strike_damage(attacker, defender, att_weapon, def_weapon, 
     -- Rounding of .5 values is done differently depending on whether the
     -- multiplier is greater or smaller than 1
     if (att_multiplier > 1) then
-        att_damage = H.round(att_damage * att_multiplier - 0.001)
+        att_damage = mathx.round(att_damage * att_multiplier - 0.001)
     else
-        att_damage = H.round(att_damage * att_multiplier + 0.001)
+        att_damage = mathx.round(att_damage * att_multiplier + 0.001)
     end
 
     if (def_weapon ~= 0) then
         if (def_multiplier > 1) then
-            def_damage = H.round(def_damage * def_multiplier - 0.001)
+            def_damage = mathx.round(def_damage * def_multiplier - 0.001)
         else
-            def_damage = H.round(def_damage * def_multiplier + 0.001)
+            def_damage = mathx.round(def_damage * def_multiplier + 0.001)
         end
     end
 

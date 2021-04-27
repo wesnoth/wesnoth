@@ -1,6 +1,6 @@
 local MG = wesnoth.require "mapgen_helper"
 local LS = wesnoth.require "location_set"
-local random = wesnoth.random
+local random = mathx.random
 
 local callbacks = {}
 

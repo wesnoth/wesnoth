@@ -63,12 +63,12 @@ function set_terrain_impl(data)
 		if d.exact then
 			num_tiles = math.ceil(num_tiles * chance / 1000)
 			chance = 1000
-			helper.shuffle(locs[i])
+			mathx.shuffle(locs[i])
 		end
 		for j = 1, num_tiles do
 			local loc = locs[i][j]
-			if chance >= 1000 or chance >= wesnoth.random(1000) then
-				map[loc] = wesnoth.map['replace_' .. layer](helper.rand(terrains))
+			if chance >= 1000 or chance >= mathx.random(1000) then
+				map[loc] = wesnoth.map['replace_' .. layer](mathx.random_choice(terrains))
 				nlocs_changed = nlocs_changed + 1
 			end
 		end
@@ -95,7 +95,7 @@ function set_terrain_simul(cfg)
 		elseif r.fraction then
 			r_new.per_thousand = math.ceil(1000 / r.fraction);
 		elseif r.fraction_rand then
-			r_new.per_thousand = math.ceil(1000 / helper.rand(r.fraction_rand));
+			r_new.per_thousand = math.ceil(1000 / mathx.random_choice(r.fraction_rand));
 		end
 		table.insert(data, r_new)
 	end

@@ -15,7 +15,7 @@ end
 
 function wct_provinces_castle(terrain_to_change, terrain)
 	if #terrain_to_change > 0 then
-		local loc = terrain_to_change[wesnoth.random(#terrain_to_change)]
+		local loc = terrain_to_change[mathx.random(#terrain_to_change)]
 		map[loc] = terrain
 	end
 end

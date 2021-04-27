@@ -230,7 +230,7 @@ function world_conquest_tek_map_decoration_4c()
 		layer = "overlay",
 	}
 
-	if wesnoth.random(20) == 1 then
+	if mathx.random(20) == 1 then
 		wct_change_map_water("t")
 	end
 end
@@ -262,7 +262,7 @@ function wct_map_4c_post_bunus_decoration()
 	))
 
 	for forge_i, v in ipairs(terrain_to_change) do
-		local r = wesnoth.random(6)
+		local r = mathx.random(6)
 		if r == 1 then
 			map[v] = "Cud"
 		elseif r == 2 then

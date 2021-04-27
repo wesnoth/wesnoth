@@ -1,4 +1,3 @@
-local helper = wesnoth.require("helper")
 local on_event = wesnoth.require("on_event")
 local _ = wesnoth.textdomain 'wesnoth-wc'
 
@@ -74,7 +73,7 @@ local function init_side(side_num)
 		for v in wml.child_range(faction, "pair") do
 			i = i + 1
 			local p = stringx.split(v.types or "")
-			if wesnoth.random(1,2) == 2 then
+			if mathx.random(1,2) == 2 then
 				p[1],p[2] = p[2],p[1]
 			end
 			wesnoth.wml_actions.allow_recruit {
@@ -86,7 +85,7 @@ local function init_side(side_num)
 	end
 
 	if not faction and #wc2_era.factions_wml > 0 then
-		faction = wc2_era.factions_wml[wesnoth.random(#wc2_era.factions_wml)]
+		faction = wc2_era.factions_wml[mathx.random(#wc2_era.factions_wml)]
 	end
 
 	if not faction then
@@ -97,9 +96,9 @@ local function init_side(side_num)
 	local deserters = wc2_era.expand_hero_types(faction.deserters)
 	local commanders = wc2_era.expand_hero_types(faction.commanders)
 
-	helper.shuffle(heroes)
-	helper.shuffle(deserters)
-	helper.shuffle(commanders)
+	mathx.shuffle(heroes)
+	mathx.shuffle(deserters)
+	mathx.shuffle(commanders)
 
 	side.variables["wc2.heroes"] = table.concat(heroes, ",")
 	side.variables["wc2.deserters"] = table.concat(deserters, ",")
@@ -116,13 +115,13 @@ end
 
 local function add_known_spawn_filter(spawn_filter)
 	local types = stringx.map_split(spawn_filter.types or "")
-	local filter_location = wml.get_child(spawn_filter, "filter_location") or helper.wml_error("missing [filter_location] in [hero_spawn_filter]")
+	local filter_location = wml.get_child(spawn_filter, "filter_location") or wml.error("missing [filter_location] in [hero_spawn_filter]")
 	table.insert(wc2_era.spawn_filters, { types = types, filter_location = filter_location} )
 end
 
 local function add_known_trait_extra(trait_extra)
 	local types = stringx.map_split(trait_extra.types or "")
-	local trait = wml.get_child(trait_extra, "trait") or helper.wml_error("missing [trait] in [trait_extra]")
+	local trait = wml.get_child(trait_extra, "trait") or wml.error("missing [trait] in [trait_extra]")
 	table.insert(wc2_era.hero_traits, { types = types, trait = trait} )
 end
 -- in case that a [multiplayer_side] has not [world_conquest_data] we generate it randomly.
@@ -132,11 +131,11 @@ function wc2_era.create_random_faction(id)
 	local heroes_set = {}
 	local commanders_set = {}
 
-	local i_deserters1 = wesnoth.random(#wc2_era.standard_factions)
-	local i_deserters2 = wesnoth.random(#wc2_era.standard_factions)
-	local i_heroes1 = wesnoth.random(#wc2_era.standard_factions)
-	local i_heroes2 = wesnoth.random(#wc2_era.standard_factions)
-	local i_commanders = wesnoth.random(#wc2_era.standard_factions)
+	local i_deserters1 = mathx.random(#wc2_era.standard_factions)
+	local i_deserters2 = mathx.random(#wc2_era.standard_factions)
+	local i_heroes1 = mathx.random(#wc2_era.standard_factions)
+	local i_heroes2 = mathx.random(#wc2_era.standard_factions)
+	local i_commanders = mathx.random(#wc2_era.standard_factions)
 
 	deserters_set = stringx.map_split(wc2_era.standard_factions[i_deserters1].recruits .. ',' .. wc2_era.standard_factions[i_deserters2].recruits)
 	heroes_set = stringx.map_split(wc2_era.standard_factions[i_heroes1].recruits .. ',' .. wc2_era.standard_factions[i_heroes2].recruits)

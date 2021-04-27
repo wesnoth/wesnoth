@@ -32,7 +32,7 @@ function wc2_utils.pick_random(str, generator)
 		if #array == 0 and generator then
 			array = generator()
 		end
-		local index  = wesnoth.random(#array)
+		local index  = mathx.random(#array)
 		local res = array[index]
 		table.remove(array, index)
 		wml.variables[str] = table.concat(array, ",")
@@ -50,7 +50,7 @@ local function filtered_from_array(array, filter)
 	if #possible_indicies == 0 then
 		return nil
 	end
-	local index  = possible_indicies[wesnoth.random(#possible_indicies)]
+	local index  = possible_indicies[mathx.random(#possible_indicies)]
 	return index
 end
 
@@ -79,7 +79,7 @@ end
 function wc2_utils.pick_random_t(str)
 	local size = wml.variables[str .. ".length"]
 	if size ~= 0 then
-		local index = wesnoth.random(size) - 1
+		local index = mathx.random(size) - 1
 		local res = wml.variables[str .. "[" ..  index .. "]"]
 		wml.variables[str .. "[" ..  index .. "]"] = nil
 		return res

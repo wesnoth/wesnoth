@@ -76,9 +76,9 @@ on_event("die", function(cx)
 		map[loc] = "^Fetd"
 
 	elseif loc:matches{terrain = "Aa"} then
-		item(snow[wesnoth.random(#snow)])
+		item(snow[mathx.random(#snow)])
 	elseif loc:matches{terrain = "Ai"} then
-		item(ice[wesnoth.random(#ice)])
+		item(ice[mathx.random(#ice)])
 	elseif loc:matches{terrain = "Ww^Bsb|,Ww^Bsb/,Ww^Bsb\\,Wwt^Bsb|,Wwt^Bsb/,Wwt^Bsb\\,Wwg^Bsb|,Wwg^Bsb/,Wwg^Bsb\\"} then
 		map[loc] = "Wwf^Edt"
 		wesnoth.play_sound("water-blast.wav")

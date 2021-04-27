@@ -1840,7 +1840,7 @@ function ai_helper.custom_cost_with_avoid(x, y, prev_cost, unit, avoid_map, ally
     -- in most cases this will simply add to the cost, rather than change the path itself.
     local defense = unit:defense_on(terrain)
     -- We need this to be multiples of 10 for the penalty identification to work
-    defense = H.round(defense / 10) * 10
+    defense = mathx.round(defense / 10) * 10
     if (defense > 90) then defense = 90 end
     if (defense < 10) then defense = 10 end
     move_cost_int = move_cost_int + (100 - defense)

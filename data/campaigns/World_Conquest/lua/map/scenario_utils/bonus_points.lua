@@ -20,7 +20,7 @@ function random_placement(locs, num_items, min_distance, command)
 				helper.wml_error("[random_placement] failed to place items. only " .. i .. " items were placed")
 			end
 		end
-		local index = wesnoth.random(size)
+		local index = mathx.random(size)
 		local point = locs[index]
 
 		command(point, i)
@@ -391,7 +391,7 @@ function wct_bonus_chose_scenery(loc, theme, filter_extra)
 	end
 	::final_pick::
 	-- pick random scenery value from our list
-	local res = helper.rand(scenery)
+	local res = mathx.random_choice(scenery)
 	wesnoth.log("debug", "scenery:" ..  res .. " from " .. scenery)
 	return res
 end
