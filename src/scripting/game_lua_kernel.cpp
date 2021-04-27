@@ -1133,7 +1133,7 @@ int game_lua_kernel::impl_game_config_get(lua_State *L)
 	char const *m = luaL_checkstring(L, 2);
 
 	// Find the corresponding attribute.
-	return_int_attrib_deprecated("last_turn", "wesnoth.game_config", INDEFINITE, "11.7", "Use wesnoth.scenario.turns instead", tod_man().number_of_turns());
+	return_int_attrib_deprecated("last_turn", "wesnoth.game_config", INDEFINITE, "1.17", "Use wesnoth.scenario.turns instead", tod_man().number_of_turns());
 	return_bool_attrib("do_healing", play_controller_.gamestate().do_healing_);
 	return_string_attrib_deprecated("next_scenario", "wesnoth.game_config", INDEFINITE, "1.17", "Use wesnoth.scenario.next instead", gamedata().next_scenario());
 	return_string_attrib("theme", gamedata().get_theme());

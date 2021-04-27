@@ -50,7 +50,7 @@ local function generate_objectives(cfg)
 
 			if obj.show_turn_counter then
 				local current_turn = wesnoth.current.turn
-				local turn_limit = wesnoth.game_config.last_turn
+				local turn_limit = wesnoth.scenario.turns
 
 				if turn_limit >= current_turn then
 					local turn_count = turn_limit - current_turn + 1

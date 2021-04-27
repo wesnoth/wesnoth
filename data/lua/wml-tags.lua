@@ -384,7 +384,7 @@ end
 
 function wml_actions.store_turns(cfg)
 	local var = cfg.variable or "turns"
-	wml.variables[var] = wesnoth.game_config.last_turn
+	wml.variables[var] = wesnoth.scenario.turns
 end
 
 function wml_actions.store_unit(cfg)

@@ -10,7 +10,7 @@ function wesnoth.wml_actions.endlevel(cfg)
 
 	local next_scenario = cfg.next_scenario
 	if next_scenario then
-		wesnoth.game_config.next_scenario = next_scenario
+		wesnoth.scenario.next = next_scenario
 	end
 
 	local end_text = cfg.end_text
@@ -86,9 +86,9 @@ function wesnoth.wml_actions.endlevel(cfg)
 	if cfg.music then
 		local music = cfg.music:split()
 		if victory then
-			wesnoth.game_config.victory_music = music
+			wesnoth.scenario.victory_music = music
 		else
-			wesnoth.game_config.defeat_music = music
+			wesnoth.scenario.defeat_music = music
 		end
 	end
 

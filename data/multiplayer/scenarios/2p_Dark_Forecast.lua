@@ -293,7 +293,7 @@ on_event("new turn", function()
 		append = true,
 	}
 	final_spawn()
-	wesnoth.game_config.last_turn = wesnoth.current.turn + 12
+	wesnoth.scenario.turns = wesnoth.current.turn + 12
 	wesnoth.wml_actions.message {
 		side="3,4",
 		canrecruit=true,

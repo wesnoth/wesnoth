@@ -171,18 +171,17 @@ function wc2_utils.load_wc2_data()
 	if wc2_utils.world_conquest_data == nil then
 		local data_dict = {}
 		local ignore_list = {}
-		for i,res_id in ipairs(wesnoth.game_config.active_resources) do
-			local ressource = wesnoth.get_resource(res_id)
-			local world_conquest_data = wml.get_child(ressource, "world_conquest_data")
+		for i,resource in ipairs(wesnoth.scenario.resources) do
+			local world_conquest_data = wml.get_child(resource, "world_conquest_data")
 			if world_conquest_data then
 				for ignore in wml.child_range(world_conquest_data, "ignore") do
 					ignore_list[ignore.id] = true
 				end
-				table.insert(data_dict, {id=res_id, data = world_conquest_data})
+				table.insert(data_dict, {id=resource.id, data = world_conquest_data})
 			end
 		end
 
-		table.insert(data_dict, {id="era", data = wesnoth.game_config.era})
+		table.insert(data_dict, {id="era", data = wesnoth.scenario.era})
 		
 
 		-- make sure the result does not depend on the order in which these addons are loaded.

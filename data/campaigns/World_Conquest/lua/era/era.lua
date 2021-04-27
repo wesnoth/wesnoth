@@ -173,7 +173,7 @@ function wc2_era.read_era_tag(era_wml)
 end
 
 function wc2_era.init_era_default()
-	wc2_era.read_era_tag(wesnoth.game_config.era)
+	wc2_era.read_era_tag(wesnoth.scenario.era)
 	wc2_era.init_data()
 end
 

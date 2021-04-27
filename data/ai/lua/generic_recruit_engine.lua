@@ -756,7 +756,7 @@ return {
 
                 local lawful_bonus = 0
                 local eta_turn = wesnoth.current.turn + eta
-                if eta_turn <= wesnoth.game_config.last_turn then
+                if eta_turn <= wesnoth.scenario.turns then
                     lawful_bonus = wesnoth.get_time_of_day(wesnoth.current.turn + eta).lawful_bonus / eta^2
                 end
                 local damage_bonus = AH.get_unit_time_of_day_bonus(recruit_unit.alignment, lawful_bonus)
