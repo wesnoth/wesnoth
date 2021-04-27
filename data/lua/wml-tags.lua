@@ -967,7 +967,9 @@ function wml_actions.terrain_mask(cfg)
 		rules[#rules + 1] = rule
 	end
 	if cfg.mask_file then
-		mask = filesystem.read_file(cfg.mask_file)
+		local resolved = filesystem.resolve_asset(filesystem.asset_type.MAP, cfg.mask_file)
+		resolved = resolved:sub(6) -- strip off 'data/' prefix
+		mask = filesystem.read_file(resolved)
 	end
 	wesnoth.current.map:terrain_mask({x, y}, mask, {
 		is_odd = is_odd,
