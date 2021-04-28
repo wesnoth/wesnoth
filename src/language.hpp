@@ -78,9 +78,16 @@ extern symbol_table string_table;
 
 bool& time_locale_correct();
 
-//function which, given the main configuration object, will return
-//a list of the translations of the game available.
-std::vector<language_def> get_languages();
+/**
+ * Return a list of available translations.
+ *
+ * The list will normally be filtered with incomplete (according to
+ * min_translation_percent) translations removed.
+ *
+ *@param all if true, include incomplete translations
+ *@pre load_language_list() has already been called
+ */
+std::vector<language_def> get_languages(bool all=false);
 
 //function which, given the main configuration object, and a locale,
 //will set string_table to be populated with data from that locale.

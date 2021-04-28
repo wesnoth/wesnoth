@@ -113,13 +113,13 @@ bool load_language_list()
 	return true;
 }
 
-language_list get_languages()
+language_list get_languages(bool all)
 {
 	// We sort every time, the local might have changed which can modify the
 	// sort order.
 	std::sort(known_languages.begin(), known_languages.end());
 
-	if(min_translation_percent == 0) {
+	if(all || min_translation_percent == 0) {
 		return known_languages;
 	}
 
