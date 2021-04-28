@@ -21,6 +21,7 @@
 #include "cursor.hpp"
 #include "display.hpp"
 #include "fake_unit_manager.hpp"
+#include "filesystem.hpp"
 #include "font/sdl_ttf_compat.hpp"
 #include "font/text.hpp"
 #include "preferences/game.hpp"
@@ -79,6 +80,7 @@ static lg::log_domain log_display("display");
 #define MaxZoom          (zoom_levels.back())
 
 namespace {
+	// if this is enabled with :benchmark, then everything is marked as invalid and redrawn each time
 	bool benchmark = false;
 
 	bool debug_foreground = false;
@@ -1368,13 +1370,25 @@ void display::update_display()
 		static int frames = 0;
 		++frames;
 		const int sample_freq = 10;
+
 		if(frames == sample_freq) {
 			const auto minmax_it = std::minmax_element(frametimes_.begin(), frametimes_.end());
 			const unsigned render_avg = std::accumulate(frametimes_.begin(), frametimes_.end(), 0) / frametimes_.size();
 			const int avg_fps = calculate_fps(render_avg);
 			const int max_fps = calculate_fps(*minmax_it.first);
 			const int min_fps = calculate_fps(*minmax_it.second);
+			fps_history_.emplace_back(min_fps, avg_fps, max_fps);
 			frames = 0;
+
+			// flush out the stored fps values every so often
+			if(fps_history_.size() == 1000) {
+				std::string filename = filesystem::get_user_data_dir()+"/fps_log.csv";
+				filesystem::scoped_ostream fps_log = filesystem::ostream_file(filename, std::ios_base::binary | std::ios_base::app);
+				for(const auto& fps : fps_history_) {
+					*fps_log << std::get<0>(fps) << "," << std::get<1>(fps) << "," << std::get<2>(fps) << "\n";
+				}
+				fps_history_.clear();
+			}
 
 			if(fps_handle_ != 0) {
 				font::remove_floating_label(fps_handle_);

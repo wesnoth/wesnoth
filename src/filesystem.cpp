@@ -1038,25 +1038,25 @@ filesystem::scoped_istream istream_file(const std::string& fname, bool treat_fai
 	}
 }
 
-filesystem::scoped_ostream ostream_file(const std::string& fname, bool create_directory)
+filesystem::scoped_ostream ostream_file(const std::string& fname, std::ios_base::openmode mode, bool create_directory)
 {
 	LOG_FS << "streaming " << fname << " for writing.\n";
 #if 1
 	try {
-		boost::iostreams::file_descriptor_sink fd(bfs::path(fname), std::ios_base::binary);
+		boost::iostreams::file_descriptor_sink fd(bfs::path(fname), mode);
 		return std::make_unique<boost::iostreams::stream<boost::iostreams::file_descriptor_sink>>(fd, 4096, 0);
 	} catch(const BOOST_IOSTREAMS_FAILURE& e) {
 		// If this operation failed because the parent directory didn't exist, create the parent directory and
 		// retry.
 		error_code ec_unused;
 		if(create_directory && bfs::create_directories(bfs::path(fname).parent_path(), ec_unused)) {
-			return ostream_file(fname, false);
+			return ostream_file(fname, mode, false);
 		}
 
 		throw filesystem::io_exception(e.what());
 	}
 #else
-	return new bfs::ofstream(bfs::path(fname), std::ios_base::binary);
+	return new bfs::ofstream(bfs::path(fname), mode);
 #endif
 }
 
