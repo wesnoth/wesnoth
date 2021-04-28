@@ -292,7 +292,7 @@ bool game_launcher::init_language()
 
 	language_def locale;
 	if(cmdline_opts_.language) {
-		std::vector<language_def> langs = get_languages();
+		std::vector<language_def> langs = get_languages(true);
 		for(const language_def& def : langs) {
 			if(def.localename == *cmdline_opts_.language) {
 				locale = def;
