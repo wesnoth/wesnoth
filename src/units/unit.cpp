@@ -204,11 +204,6 @@ static unit_race::GENDER generate_gender(const unit_type& type, bool random_gend
 		return genders.front();
 	} else {
 		return genders[randomness::generator->get_random_int(0,genders.size()-1)];
-		// Note: genders is guaranteed to be non-empty, so this is not a
-		// potential division by zero.
-		// Note: Whoever wrote this code, you should have used an assertion, to save others hours of work...
-		// If the assertion size>0 is failing for you, one possible cause is that you are constructing a unit
-		// from a unit type which has not been ``built'' using the unit_type_data methods.
 	}
 }
 
