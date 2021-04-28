@@ -76,9 +76,9 @@ public:
 	 */
 	explicit line_shape(const config& cfg);
 
-	/** Implement shape::draw(). */
 	void draw(surface& canvas,
 			  SDL_Renderer* renderer,
+			  const SDL_Rect& viewport,
 			  wfl::map_formula_callable& variables) override;
 
 private:
@@ -103,9 +103,8 @@ private:
 /**
  * @ingroup GUICanvasWML
  *
- * Definition of a rectangle.
- * When drawing a rectangle it doesn't get blended on the surface but replaces the pixels instead.
- * A blitting flag might be added later if needed.
+ * Class holding common attribute names (for WML) and common implementation (in C++) for shapes
+ * placed with the 4 attributes x, y, w and h.
  *
  * Keys:
  * Key                |Type                                    |Default|Description
@@ -114,6 +113,65 @@ private:
  * y                  | @ref guivartype_f_unsigned "f_unsigned"|0      |The y coordinate of the top left corner.
  * w                  | @ref guivartype_f_unsigned "f_unsigned"|0      |The width of the rectangle.
  * h                  | @ref guivartype_f_unsigned "f_unsigned"|0      |The height of the rectangle.
+ */
+class rect_bounded_shape : public canvas::shape {
+protected:
+	/**
+	 * Constructor.
+	 *
+	 * @param cfg                 The config object to define the rectangle.
+	 */
+	explicit rect_bounded_shape(const config& cfg);
+
+	/**
+	 * Where to draw, calculated from the x,y,w,h formulas but with different reference points used
+	 * as the origin of the co-ordinate system.
+	 */
+	struct calculated_rects {
+		/**
+		 * True if there was no intersection between dst_on_widget and the viewport. If true, the
+		 * data in the SDL_Rects must be ignored.
+		 */
+		bool empty;
+		/** In the co-ordinate system that the WML uses, and unaffected by the view_bounds */
+		SDL_Rect dst_on_widget;
+		/** Intersection of dst_on_widget with view_bounds, in the co-ordinate system that the WML uses. */
+		SDL_Rect clip_on_widget;
+		/**
+		 * Intersection of view_bounds with the shape, in co-ordinates with the shape's top-left at
+		 * (0,0). For a text_shape, this co-ordinate system corresponds to the co-ordinates of the
+		 * Cairo surface that Pango draws on.
+		 */
+		SDL_Rect clip_in_shape;
+		/**
+		 * Translation of dst_on_widget to the viewport's co-ordinates. Here (0,0) corresponds to
+		 * view_bounds's top-left. Will often have negative values for x and y, and widths or
+		 * heights larger than the viewport's size.
+		 */
+		SDL_Rect unclipped_around_viewport;
+		/** Where to draw, in the co-ordinates of the viewport, and restricted to the view_bounds. */
+		SDL_Rect dst_in_viewport;
+	};
+
+	calculated_rects calculate_rects(const SDL_Rect& view_bounds, wfl::map_formula_callable& variables) const;
+
+private:
+	typed_formula<int> x_; /**< The x coordinate of the rectangle. */
+	typed_formula<int> y_; /**< The y coordinate of the rectangle. */
+	typed_formula<int> w_; /**< The width of the rectangle. */
+	typed_formula<int> h_; /**< The height of the rectangle. */
+};
+
+/**
+ * @ingroup GUICanvasWML
+ *
+ * Definition of a rectangle.
+ * When drawing a rectangle it doesn't get blended on the surface but replaces the pixels instead.
+ * A blitting flag might be added later if needed.
+ *
+ * Keys:
+ * Key                |Type                                    |Default|Description
+ * -------------------|----------------------------------------|-------|-----------
  * border_thickness   | @ref guivartype_unsigned "unsigned"    |0      |The thickness of the border if the thickness is zero it's not drawn.
  * border_color       | @ref guivartype_color "color"          |""     |The color of the border if empty it's not drawn.
  * fill_color         | @ref guivartype_color "color"          |""     |The color of the interior if omitted it's not drawn.
@@ -121,7 +179,7 @@ private:
  *
  * Variables: see line_shape
  */
-class rectangle_shape : public canvas::shape {
+class rectangle_shape : public rect_bounded_shape {
 public:
 	/**
 	 * Constructor.
@@ -130,17 +188,12 @@ public:
 	 */
 	explicit rectangle_shape(const config& cfg);
 
-	/** Implement shape::draw(). */
 	void draw(surface& canvas,
 			  SDL_Renderer* renderer,
+			  const SDL_Rect& viewport,
 			  wfl::map_formula_callable& variables) override;
 
 private:
-	typed_formula<int> x_, /**< The x coordinate of the rectangle. */
-			y_,			   /**< The y coordinate of the rectangle. */
-			w_,			   /**< The width of the rectangle. */
-			h_;			   /**< The height of the rectangle. */
-
 	/**
 	 * Border thickness.
 	 *
@@ -171,17 +224,13 @@ private:
  * A blitting flag might be added later if needed.
  * Key             |Type                                    |Default  |Description
  * ----------------|----------------------------------------|---------|-----------
- * x               | @ref guivartype_f_unsigned "f_unsigned"|0        |The x coordinate of the top left corner.
- * y               | @ref guivartype_f_unsigned "f_unsigned"|0        |The y coordinate of the top left corner.
- * w               | @ref guivartype_f_unsigned "f_unsigned"|0        |The width of the rounded rectangle.
- * h               | @ref guivartype_f_unsigned "f_unsigned"|0        |The height of the rounded rectangle.
  * corner_radius   | @ref guivartype_f_unsigned "f_unsigned"|0        |The radius of the rectangle's corners.
  * border_thickness| @ref guivartype_unsigned "unsigned"    |0        |The thickness of the border; if the thickness is zero it's not drawn.
  * border_color    | @ref guivartype_color "color"          |""       |The color of the border; if empty it's not drawn.
  * fill_color      | @ref guivartype_color "color"          |""       |The color of the interior; if omitted it's not drawn.
  * debug           | @ref guivartype_string "string"        |""       |Debug message to show upon creation; this message is not stored.
  */
-class round_rectangle_shape : public canvas::shape {
+class round_rectangle_shape : public rect_bounded_shape {
 public:
 	/**
 	 * Constructor.
@@ -190,17 +239,13 @@ public:
 	 */
 	explicit round_rectangle_shape(const config& cfg);
 
-	/** Implement shape::draw(). */
 	void draw(surface& canvas,
 			  SDL_Renderer* renderer,
+			  const SDL_Rect& viewport,
 			  wfl::map_formula_callable& variables) override;
 
 private:
-	typed_formula<int> x_, /**< The x coordinate of the rectangle. */
-			y_,			   /**< The y coordinate of the rectangle. */
-			w_,			   /**< The width of the rectangle. */
-			h_,			   /**< The height of the rectangle. */
-			r_;			   /**< The radius of the corners. */
+	typed_formula<int> r_; /**< The radius of the corners. */
 
 	/**
 	 * Border thickness.
@@ -253,9 +298,9 @@ public:
 	 */
 	explicit circle_shape(const config& cfg);
 
-	/** Implement shape::draw(). */
 	void draw(surface& canvas,
 			  SDL_Renderer* renderer,
+			  const SDL_Rect& viewport,
 			  wfl::map_formula_callable& variables) override;
 
 private:
@@ -305,9 +350,9 @@ public:
 	 */
 	image_shape(const config& cfg, wfl::action_function_symbol_table& functions);
 
-	/** Implement shape::draw(). */
 	void draw(surface& canvas,
 			  SDL_Renderer* renderer,
+			  const SDL_Rect& viewport,
 			  wfl::map_formula_callable& variables) override;
 
 private:
@@ -364,10 +409,6 @@ private:
  *
  * Key                |Type                                      |Default  |Description
  * -------------------|------------------------------------------|---------|-----------
- * x                  | @ref guivartype_f_unsigned "f_unsigned"  |0        |The x coordinate of the top left corner.
- * y                  | @ref guivartype_f_unsigned "f_unsigned"  |0        |The y coordinate of the top left corner.
- * w                  | @ref guivartype_f_unsigned "f_unsigned"  |0        |The width of the text's bounding rectangle.
- * h                  | @ref guivartype_f_unsigned "f_unsigned"  |0        |The height of the text's bounding rectangle.
  * font_family        | @ref guivartype_font_style "font_style"  |"sans"   |The font family used for the text.
  * font_size          | @ref guivartype_f_unsigned "f_unsigned"  |mandatory|The size of the text font.
  * font_style         | @ref guivartype_f_unsigned "f_unsigned"  |""       |The style of the text.
@@ -391,7 +432,7 @@ private:
  * text_height        | @ref guivartype_unsigned "unsigned"      |The height of the rendered text.
  * Also the general variables are available, see line_shape
  */
-class text_shape : public canvas::shape {
+class text_shape : public rect_bounded_shape {
 public:
 	/**
 	 * Constructor.
@@ -400,17 +441,12 @@ public:
 	 */
 	explicit text_shape(const config& cfg);
 
-	/** Implement shape::draw(). */
 	void draw(surface& canvas,
 			  SDL_Renderer* renderer,
+			  const SDL_Rect& viewport,
 			  wfl::map_formula_callable& variables) override;
 
 private:
-	typed_formula<unsigned> x_, /**< The x coordinate of the text. */
-			y_,			   /**< The y coordinate of the text. */
-			w_,			   /**< The width of the text. */
-			h_;			   /**< The height of the text. */
-
 	/** The text font family. */
 	font::family_class font_family_;
 

@@ -64,11 +64,14 @@ public:
 		 * @param canvas          The resulting image will be blitted upon this
 		 *                        canvas.
 		 * @param renderer        The SDL_Renderer to use.
+		 * @param view_bounds     Part of the shape to render - this is the location of @a canvas
+		 *                        within the coordinates of the shape.
 		 * @param variables       The canvas can have formulas in it's
 		 *                        definition, this parameter contains the values
 		 *                        for these formulas.
 		 */
 		virtual void draw(surface& canvas, SDL_Renderer* renderer,
+		                  const SDL_Rect& view_bounds,
 		                  wfl::map_formula_callable& variables) = 0;
 
 		bool immutable() const
@@ -86,18 +89,23 @@ public:
 
 	canvas();
 	canvas(const canvas&) = delete;
+	canvas& operator=(const canvas&) = delete;
 	canvas(canvas&& c) noexcept;
 
+	private:
 	/**
-	 * Draws the canvas.
+	 * Internal part of the blit() function - prepares the contents of the internal viewport_
+	 * surface, reallocating that surface if necessary.
 	 *
+	 * @param area_to_draw        Currently-visible part of the widget, any area outside here won't be blitted to the parent.
 	 * @param force               If the canvas isn't dirty it isn't redrawn
 	 *                            unless force is set to true.
 	 */
-	void draw(const bool force = false);
+	void draw(const SDL_Rect& area_to_draw, const bool force = false);
 
+	public:
 	/**
-	 * Blits the canvas unto another surface.
+	 * Draw the canvas' shapes onto another surface.
 	 *
 	 * It makes sure the image on the canvas is up to date. Also executes the
 	 * pre-blitting functions.
@@ -156,11 +164,6 @@ public:
 		return h_;
 	}
 
-	surface& surf()
-	{
-		return canvas_;
-	}
-
 	void set_variable(const std::string& key, const wfl::variant& value)
 	{
 		variables_.add(key, value);
@@ -187,14 +190,21 @@ private:
 	 */
 	unsigned blur_depth_;
 
-	/** Width of the canvas. */
+	/** Width of the canvas (the full size, not limited to the view_bounds_). */
 	unsigned w_;
 
-	/** Height of the canvas. */
+	/** Height of the canvas (the full size, not limited to the view_bounds_). */
 	unsigned h_;
 
 	/** The surface we draw all items on. */
-	surface canvas_;
+	surface viewport_;
+
+	/**
+	 * The placement and size of viewport_ in the coordinates of this widget; value is not useful when bool(viewport_) is false.
+	 *
+	 * For large widgets, a small viewport_ may be used that contains only the currently-visible part of the widget.
+	 */
+	SDL_Rect view_bounds_;
 
 	/** The variables of the canvas. */
 	wfl::map_formula_callable variables_;
