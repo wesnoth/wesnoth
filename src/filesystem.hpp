@@ -20,6 +20,7 @@
 #pragma once
 
 #include <ctime>
+#include <fstream>
 #include <iosfwd>
 #include <memory>
 #include <string>
@@ -204,7 +205,7 @@ bool looks_like_pbl(const std::string& file);
 /** Basic disk I/O - read file. */
 std::string read_file(const std::string& fname);
 filesystem::scoped_istream istream_file(const std::string& fname, bool treat_failure_as_error = true);
-filesystem::scoped_ostream ostream_file(const std::string& fname, bool create_directory = true);
+filesystem::scoped_ostream ostream_file(const std::string& fname, std::ios_base::openmode mode = std::ios_base::binary, bool create_directory = true);
 /** Throws io_exception if an error occurs. */
 void write_file(const std::string& fname, const std::string& data);
 

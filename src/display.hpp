@@ -51,6 +51,7 @@ namespace wb {
 
 #include "animated.hpp"
 #include "display_context.hpp"
+#include "filesystem.hpp"
 #include "font/standard_colors.hpp"
 #include "game_config.hpp"
 #include "picture.hpp" //only needed for enums (!)
@@ -1070,6 +1071,8 @@ private:
 	tod_color color_adjust_;
 
 	bool dirty_;
+
+	std::vector<std::tuple<int, int, int>> fps_history_;
 
 protected:
 	static display * singleton_;
