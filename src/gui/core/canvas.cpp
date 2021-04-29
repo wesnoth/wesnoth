@@ -738,20 +738,16 @@ void text_shape::draw(surface& canvas,
 		return;
 	}
 
-	// TODO: This creates a surface that's the full text_width x text_height, and then discards most of it by
-	// calling blit_surface(... , &rects.clip_in_shape, ..., ...). Should be improved with a change to pango_text,
-	// so that we can call text_renderer.render(rects.clip_in_shape) and get a smaller surface instead.
-	surface& surf = text_renderer.render();
+	surface& surf = text_renderer.render(rects.clip_in_shape);
 	if(surf->w == 0) {
 		DBG_GUI_D << "Text: Rendering '" << text
 				  << "' resulted in an empty canvas, leave.\n";
 		return;
 	}
 
-	// Blit the clipped region - this needs non-const copies of the rects
-	auto clip_in_shape = rects.clip_in_shape;
+	// Blit the clipped region - this needs a non-const copy of the rect
 	auto dst_in_viewport = rects.dst_in_viewport;
-	blit_surface(surf, &clip_in_shape, canvas, &dst_in_viewport);
+	blit_surface(surf, nullptr, canvas, &dst_in_viewport);
 }
 
 /***** ***** ***** ***** ***** CANVAS ***** ***** ***** ***** *****/

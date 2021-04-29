@@ -83,8 +83,20 @@ public:
 	/**
 	 * Returns the rendered text.
 	 *
-	 * Before rendering it tests whether a redraw is needed and if so it first
-	 * redraws the surface before returning it.
+	 * @param viewport Only this area needs to be drawn - the returned
+	 * surface's origin will correspond to viewport.x and viewport.y, the
+	 * width and height will be at least viewport.w and viewport.h (although
+	 * they may be larger).
+	 */
+	surface& render(const SDL_Rect& viewport);
+
+	/**
+	 * Equivalent to render(viewport), where the viewport's top-left is at
+	 * (0,0) and the area is large enough to contain the full text.
+	 *
+	 * The top-left of the viewport will be at (0,0), regardless of the values
+	 * of x and y.  If the x or y co-ordinates are non-zero, then x columns and
+	 * y rows of blank space are included in the amount of memory allocated.
 	 */
 	surface& render();
 
@@ -362,15 +374,17 @@ private:
 	/** The dirty state of the surface. */
 	mutable bool surface_dirty_;
 
+	/** The area that's cached in surface_, which is the area that was rendered when surface_dirty_ was last set to false. */
+	SDL_Rect rendered_viewport_;
+
 	/**
 	 * Renders the text.
 	 *
 	 * It will do a recalculation first so no need to call both.
 	 */
-	void rerender();
+	void rerender(const SDL_Rect& viewport);
 
-	void render(PangoLayout& layout, const PangoRectangle& rect,
-		const std::size_t surface_buffer_offset, const unsigned stride);
+	void render(PangoLayout& layout, const SDL_Rect& viewport, const unsigned stride);
 
 	/**
 	 * Buffer to store the image on.
