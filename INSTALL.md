@@ -68,7 +68,7 @@ rebuild Wesnoth frequently (i.e. for development and testing).
 See [here](https://github.com/wesnoth/wesnoth/blob/master/projectfiles/Xcode/README.md) for instructions on using Xcode.
 
 ### Windows
-See [here](https://github.com/wesnoth/wesnoth/blob/master/projectfiles/VC16/README.md) for instructions on using Visual Studio 2019.
+Wesnoth uses CMake for project configuration and vcpkg for installing dependencies. See [here](https://docs.microsoft.com/en-us/cpp/build/cmake-projects-in-visual-studio) for information on using Visual Studio with cmake. The first time it's run, vcpkg will build all the required dependencies which may take over an hour, however it will only need to be done once.
 
 ## SCons Build
 
