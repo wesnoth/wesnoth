@@ -14,6 +14,7 @@
 
 #define GETTEXT_DOMAIN "wesnoth-test"
 
+#include <array>
 #include <vector>
 #include <string>
 #include "serialization/base64.hpp"
@@ -55,52 +56,52 @@ BOOST_AUTO_TEST_CASE( utils_split_test )
 
 	{
 		auto split = utils::split(test_string);
-		std::array expect = {"a", "bb", "ccc  ||  d", "ee", "fff  | |  g", "hh", "iii"};
+		std::array<std::string, 7> expect = {"a", "bb", "ccc  ||  d", "ee", "fff  | |  g", "hh", "iii"};
 		BOOST_CHECK_EQUAL_COLLECTIONS(split.begin(), split.end(), expect.begin(), expect.end());
 	}
 	{
 		auto split = utils::split(test_string, ',', utils::REMOVE_EMPTY | utils::STRIP_SPACES);
-		std::array expect = {"a", "bb", "ccc  ||  d", "ee", "fff  | |  g", "hh", "iii"};
+		std::array<std::string, 7> expect = {"a", "bb", "ccc  ||  d", "ee", "fff  | |  g", "hh", "iii"};
 		BOOST_CHECK_EQUAL_COLLECTIONS(split.begin(), split.end(), expect.begin(), expect.end());
 	}
 	{
 		auto split = utils::split(test_string, ',', utils::REMOVE_EMPTY);
-		std::array expect = {"a", "  ", "  bb", "  ccc  ||  d", "  ee", "  fff  | |  g", "  ", "  hh", "  iii"};
+		std::array<std::string, 9> expect = {"a", "  ", "  bb", "  ccc  ||  d", "  ee", "  fff  | |  g", "  ", "  hh", "  iii"};
 		BOOST_CHECK_EQUAL_COLLECTIONS(split.begin(), split.end(), expect.begin(), expect.end());
 	}
 	{
 		auto split = utils::split(test_string, ',', utils::STRIP_SPACES);
-		std::array expect = {"a", "", "bb", "ccc  ||  d", "ee", "", "fff  | |  g", "", "hh", "iii"};
+		std::array<std::string, 10> expect = {"a", "", "bb", "ccc  ||  d", "ee", "", "fff  | |  g", "", "hh", "iii"};
 		BOOST_CHECK_EQUAL_COLLECTIONS(split.begin(), split.end(), expect.begin(), expect.end());
 	}
 	{
 		auto split = utils::split(test_string, ',', 0);
-		std::array expect = {"a", "  ", "  bb", "  ccc  ||  d", "  ee", "", "  fff  | |  g", "  ", "  hh", "  iii"};
+		std::array<std::string, 10> expect = {"a", "  ", "  bb", "  ccc  ||  d", "  ee", "", "  fff  | |  g", "  ", "  hh", "  iii"};
 		BOOST_CHECK_EQUAL_COLLECTIONS(split.begin(), split.end(), expect.begin(), expect.end());
 	}
 	{
 		auto split = utils::split(test_string, '|');
-		std::array expect = {"a,  ,  bb,  ccc", "d,  ee,,  fff", "g,  ,  hh,  iii"};
+		std::array<std::string, 3> expect = {"a,  ,  bb,  ccc", "d,  ee,,  fff", "g,  ,  hh,  iii"};
 		BOOST_CHECK_EQUAL_COLLECTIONS(split.begin(), split.end(), expect.begin(), expect.end());
 	}
 	{
 		auto split = utils::split(test_string, '|', utils::REMOVE_EMPTY | utils::STRIP_SPACES);
-		std::array expect = {"a,  ,  bb,  ccc", "d,  ee,,  fff", "g,  ,  hh,  iii"};
+		std::array<std::string, 3> expect = {"a,  ,  bb,  ccc", "d,  ee,,  fff", "g,  ,  hh,  iii"};
 		BOOST_CHECK_EQUAL_COLLECTIONS(split.begin(), split.end(), expect.begin(), expect.end());
 	}
 	{
 		auto split = utils::split(test_string, '|', utils::REMOVE_EMPTY);
-		std::array expect = {"a,  ,  bb,  ccc  ", "  d,  ee,,  fff  ", " ", "  g,  ,  hh,  iii"};
+		std::array<std::string, 4> expect = {"a,  ,  bb,  ccc  ", "  d,  ee,,  fff  ", " ", "  g,  ,  hh,  iii"};
 		BOOST_CHECK_EQUAL_COLLECTIONS(split.begin(), split.end(), expect.begin(), expect.end());
 	}
 	{
 		auto split = utils::split(test_string, '|', utils::STRIP_SPACES);
-		std::array expect = {"a,  ,  bb,  ccc", "", "d,  ee,,  fff", "", "g,  ,  hh,  iii"};
+		std::array<std::string, 5> expect = {"a,  ,  bb,  ccc", "", "d,  ee,,  fff", "", "g,  ,  hh,  iii"};
 		BOOST_CHECK_EQUAL_COLLECTIONS(split.begin(), split.end(), expect.begin(), expect.end());
 	}
 	{
 		auto split = utils::split(test_string, '|', 0);
-		std::array expect = {"a,  ,  bb,  ccc  ", "", "  d,  ee,,  fff  ", " ", "  g,  ,  hh,  iii"};
+		std::array<std::string, 5> expect = {"a,  ,  bb,  ccc  ", "", "  d,  ee,,  fff  ", " ", "  g,  ,  hh,  iii"};
 		BOOST_CHECK_EQUAL_COLLECTIONS(split.begin(), split.end(), expect.begin(), expect.end());
 	}
 }
@@ -111,42 +112,42 @@ BOOST_AUTO_TEST_CASE( utils_quoted_split_test )
 
 	{
 		auto split = utils::quoted_split(test_string, ',', utils::REMOVE_EMPTY | utils::STRIP_SPACES, '`');
-		std::array expect = {"a", "`,  bb", "ccc  ||  d", "ee", "fff  | `|  g", "`,  hh", "iii"};
+		std::array<std::string, 7> expect = {"a", "`,  bb", "ccc  ||  d", "ee", "fff  | `|  g", "`,  hh", "iii"};
 		BOOST_CHECK_EQUAL_COLLECTIONS(split.begin(), split.end(), expect.begin(), expect.end());
 	}
 	{
 		auto split = utils::quoted_split(test_string, ',', utils::REMOVE_EMPTY, '`');
-		std::array expect = {"a", "  `,  bb", "  ccc  ||  d", "  ee", "  fff  | `|  g", "  `,  hh", "  iii"};
+		std::array<std::string, 7> expect = {"a", "  `,  bb", "  ccc  ||  d", "  ee", "  fff  | `|  g", "  `,  hh", "  iii"};
 		BOOST_CHECK_EQUAL_COLLECTIONS(split.begin(), split.end(), expect.begin(), expect.end());
 	}
 	{
 		auto split = utils::quoted_split(test_string, ',', utils::STRIP_SPACES, '`');
-		std::array expect = {"a", "`,  bb", "ccc  ||  d", "ee", "", "fff  | `|  g", "`,  hh", "iii"};
+		std::array<std::string, 8> expect = {"a", "`,  bb", "ccc  ||  d", "ee", "", "fff  | `|  g", "`,  hh", "iii"};
 		BOOST_CHECK_EQUAL_COLLECTIONS(split.begin(), split.end(), expect.begin(), expect.end());
 	}
 	{
 		auto split = utils::quoted_split(test_string, ',', 0, '`');
-		std::array expect = {"a", "  `,  bb", "  ccc  ||  d", "  ee", "", "  fff  | `|  g", "  `,  hh", "  iii"};
+		std::array<std::string, 8> expect = {"a", "  `,  bb", "  ccc  ||  d", "  ee", "", "  fff  | `|  g", "  `,  hh", "  iii"};
 		BOOST_CHECK_EQUAL_COLLECTIONS(split.begin(), split.end(), expect.begin(), expect.end());
 	}
 	{
 		auto split = utils::quoted_split(test_string, '|', utils::REMOVE_EMPTY | utils::STRIP_SPACES, '`');
-		std::array expect = {"a,  `,  bb,  ccc", "d,  ee,,  fff", "`|  g,  `,  hh,  iii"};
+		std::array<std::string, 3> expect = {"a,  `,  bb,  ccc", "d,  ee,,  fff", "`|  g,  `,  hh,  iii"};
 		BOOST_CHECK_EQUAL_COLLECTIONS(split.begin(), split.end(), expect.begin(), expect.end());
 	}
 	{
 		auto split = utils::quoted_split(test_string, '|', utils::REMOVE_EMPTY, '`');
-		std::array expect = {"a,  `,  bb,  ccc  ", "  d,  ee,,  fff  ", " `|  g,  `,  hh,  iii"};
+		std::array<std::string, 3> expect = {"a,  `,  bb,  ccc  ", "  d,  ee,,  fff  ", " `|  g,  `,  hh,  iii"};
 		BOOST_CHECK_EQUAL_COLLECTIONS(split.begin(), split.end(), expect.begin(), expect.end());
 	}
 	{
 		auto split = utils::quoted_split(test_string, '|', utils::STRIP_SPACES, '`');
-		std::array expect = {"a,  `,  bb,  ccc", "", "d,  ee,,  fff", "`|  g,  `,  hh,  iii"};
+		std::array<std::string, 4> expect = {"a,  `,  bb,  ccc", "", "d,  ee,,  fff", "`|  g,  `,  hh,  iii"};
 		BOOST_CHECK_EQUAL_COLLECTIONS(split.begin(), split.end(), expect.begin(), expect.end());
 	}
 	{
 		auto split = utils::quoted_split(test_string, '|', 0, '`');
-		std::array expect = {"a,  `,  bb,  ccc  ", "", "  d,  ee,,  fff  ", " `|  g,  `,  hh,  iii"};
+		std::array<std::string, 4> expect = {"a,  `,  bb,  ccc  ", "", "  d,  ee,,  fff  ", " `|  g,  `,  hh,  iii"};
 		BOOST_CHECK_EQUAL_COLLECTIONS(split.begin(), split.end(), expect.begin(), expect.end());
 	}
 }

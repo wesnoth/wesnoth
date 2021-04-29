@@ -73,36 +73,35 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
 if(NOT APPLE)
-	find_package(Crypto 1.0 REQUIRED)
+	find_package(OpenSSL 1.0 REQUIRED)
 else()
-	set(CRYPTO_LIBRARY "-framework Security")
+	set(OPENSSL_CRYPTO_LIBRARY "-framework Security")
 endif()
 
-find_package(Boost ${BOOST_VERSION} REQUIRED COMPONENTS iostreams
-	program_options regex system thread random coroutine)
+find_package(Boost ${BOOST_VERSION} REQUIRED COMPONENTS iostreams program_options regex system thread random coroutine)
 
 # no, gettext executables are not required when NLS is deactivated
 find_package(Gettext)
 
 find_package(X11)
 
-# needed to get some SDL2 defines in... (as of rev31694 -D_GNU_SOURCE=1 is required!)
-if(NOT MINGW)
-	set(SDL2_CONFIG "sdl2-config" CACHE STRING "Path to sdl2-config script")
-	exec_program(${SDL2_CONFIG} ARGS "--cflags" OUTPUT_VARIABLE SDL2_CFLAGS)
-	add_definitions(${SDL2_CFLAGS})
-else()
-	# equivalent to sdl2-config --cflags --libs
-	# since cmake cannot execute sdl2-config in msys2 shell
-	set(CMAKE_CXX_FLAGS ${CMAKE_CXX_FLAGS} -I/mingw64/include/SDL2 -Dmain=SDL_main -L/mingw64/lib -lmingw32 -lSDL2main -lSDL2 -mwindows)
-
-	# MinGW system libraries that should be linked to wesnoth
-	set(MINGW_SYSTEM_LIBS wsock32 ws2_32 shlwapi winmm)
-endif()
-
 if(NOT WIN32)
-	# Use the safer `mkstemp' instead of `tmpnam' on POSIX systems.
-	add_definitions(-DLUA_USE_POSIX)
+  # needed to get some SDL2 defines in... (as of rev31694 -D_GNU_SOURCE=1 is required!)
+  if(NOT MINGW)
+	  set(SDL2_CONFIG "sdl2-config" CACHE STRING "Path to sdl2-config script")
+	  exec_program(${SDL2_CONFIG} ARGS "--cflags" OUTPUT_VARIABLE SDL2_CFLAGS)
+	  add_definitions(${SDL2_CFLAGS})
+  else()
+	  # equivalent to sdl2-config --cflags --libs
+	  # since cmake cannot execute sdl2-config in msys2 shell
+	  set(CMAKE_CXX_FLAGS ${CMAKE_CXX_FLAGS} -I/mingw64/include/SDL2 -Dmain=SDL_main -L/mingw64/lib -lmingw32 -lSDL2main -lSDL2 -mwindows)
+
+	  # MinGW system libraries that should be linked to wesnoth
+	  set(MINGW_SYSTEM_LIBS wsock32 ws2_32 shlwapi winmm)
+  endif()
+
+	  # Use the safer `mkstemp' instead of `tmpnam' on POSIX systems.
+	  add_definitions(-DLUA_USE_POSIX)
 endif(NOT WIN32)
 
 #check for some compiler/arch specific things and export defines accordingly...
@@ -113,6 +112,7 @@ include(SearchForStuff)
 # if nothing was selected
 if(NOT CMAKE_BUILD_TYPE)
 	set(CMAKE_BUILD_TYPE Release CACHE STRING "Choose the type of build, options are: None Debug Release Profile RelWithDebInfo MinSizeRel." FORCE)
+	message("No build type specified, defaulting to Release")
 endif(NOT CMAKE_BUILD_TYPE)
 
 if(NOT DEFINED ENABLE_DISPLAY_REVISION)
@@ -120,10 +120,7 @@ if(NOT DEFINED ENABLE_DISPLAY_REVISION)
 	# fail and should be disabled by default. If inside a repository enable
 	# the display of revision numbers by default.
 	execute_process(
-		COMMAND
-			${CMAKE_SOURCE_DIR}/utils/autorevision.sh
-				-t h
-				> ${CMAKE_CURRENT_BINARY_DIR}/revision.dummy
+		COMMAND ${CMAKE_SOURCE_DIR}/utils/autorevision.sh -t h > ${CMAKE_CURRENT_BINARY_DIR}/revision.dummy
 		WORKING_DIRECTORY
 			${CMAKE_SOURCE_DIR}
 		OUTPUT_VARIABLE
@@ -148,14 +145,6 @@ option(
 	"Enable the display of the revision number in the game, only enable it when in a checkout"
 	${DEFAULT_ENABLE_DISPLAY_REVISION}
 )
-
-
-# The use of shared libraries makes compilation debug versions faster but
-# results in extra shared libraries. For installation this is not practical
-# since the libraries need to be given SONAMES and kept in sync. Therefore
-# installation is not supported for this option and will probably fail.
-set(ENABLE_SHARED_LIBRARIES OFF CACHE BOOL "Enables shared libraries, this option is meant for development only, installation is *NOT* supported")
-mark_as_advanced(on ENABLE_SHARED_LIBRARIES)
 
 if(UNIX AND NOT APPLE AND NOT CYGWIN)
 	option(ENABLE_DESKTOP_ENTRY "enable installation of desktop entry files" ON)
@@ -187,297 +176,290 @@ set(BINARY_PREFIX "" CACHE STRING "Prefix in front of all binaries")
 
 ### Set the environment compiler flags.
 
-if(CONFIGURED)
-	# The CONFIGURED flag was replaced when trunk `was' 1.11, before the release of 1.11.0
-	message("Builed files depending on 'CONFIGURED' found, please regenerate your build files.")
-	set(CXX_FLAGS_USER
-		"${CMAKE_CXX_FLAGS}"
-		CACHE
-		STRING
-		"The CXXFLAGS environment variable used for the initial generation."
-		FORCE
-	)
-	unset(CONFIGURED CACHE)
-endif(CONFIGURED)
+if(NOT WIN32)
+  if(NOT DEFINED CXX_FLAGS_USER)
 
-if(NOT DEFINED CXX_FLAGS_USER)
+	  MESSAGE(STATUS "Environment compiler flags set to »${CXX_FLAGS_USER}«")
+	  set(CXX_FLAGS_USER
+		  "$ENV{CXXFLAGS}"
+		  CACHE
+		  STRING
+		  "The CXXFLAGS environment variable used for the initial generation."
+		  FORCE
+	  )
 
-	message(STATUS "Environment compiler flags set to »${CXX_FLAGS_USER}«")
-	set(CXX_FLAGS_USER
-		"$ENV{CXXFLAGS}"
-		CACHE
-		STRING
-		"The CXXFLAGS environment variable used for the initial generation."
-		FORCE
-	)
+  endif(NOT DEFINED CXX_FLAGS_USER)
 
-endif(NOT DEFINED CXX_FLAGS_USER)
+  set(COMPILER_FLAGS "-Wall -Wextra -Werror=non-virtual-dtor -Wno-unused-local-typedefs -Wno-maybe-uninitialized -Wold-style-cast -Wtrampolines")
 
-set(COMPILER_FLAGS "-Wall -Wextra -Werror=non-virtual-dtor -Wno-unused-local-typedefs -Wno-maybe-uninitialized -Wold-style-cast -Wtrampolines")
-
-if(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
-	set(COMPILER_FLAGS "${COMPILER_FLAGS} -Qunused-arguments -Wno-unknown-warning-option -Wmismatched-tags -Wno-conditional-uninitialized -Wno-unused-lambda-capture")
-endif()
+  if(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+	  set(COMPILER_FLAGS "${COMPILER_FLAGS} -Qunused-arguments -Wno-unknown-warning-option -Wmismatched-tags -Wno-conditional-uninitialized -Wno-unused-lambda-capture")
+  endif()
 
 ### Set strict compiler flags.
 
-if(ENABLE_STRICT_COMPILATION)
-	set(COMPILER_FLAGS "${COMPILER_FLAGS} -Werror")
-endif(ENABLE_STRICT_COMPILATION)
+  if(ENABLE_STRICT_COMPILATION)
+	  set(COMPILER_FLAGS "${COMPILER_FLAGS} -Werror")
+  endif(ENABLE_STRICT_COMPILATION)
 
 ### Set pedantic compiler flags.
 
-if(ENABLE_PEDANTIC_COMPILATION)
+  if(ENABLE_PEDANTIC_COMPILATION)
 
-	set(CXX_FLAGS_PEDANTIC_COMPILATION "-Wlogical-op -Wmissing-declarations -Wredundant-decls -Wctor-dtor-privacy -Wdouble-promotion -Wuseless-cast -Wnoexcept")
+	  set(CXX_FLAGS_PEDANTIC_COMPILATION "-Wlogical-op -Wmissing-declarations -Wredundant-decls -Wctor-dtor-privacy -Wdouble-promotion -Wuseless-cast -Wnoexcept")
 
-	if(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
-		set(CXX_FLAGS_PEDANTIC_COMPILATION "${CXX_FLAGS_PEDANTIC_COMPILATION} -Wdocumentation -Wno-documentation-deprecated-sync")
-	endif()
+	  if(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+		  set(CXX_FLAGS_PEDANTIC_COMPILATION "${CXX_FLAGS_PEDANTIC_COMPILATION} -Wdocumentation -Wno-documentation-deprecated-sync")
+	  endif()
 
-	set(COMPILER_FLAGS "${COMPILER_FLAGS} ${CXX_FLAGS_PEDANTIC_COMPILATION}")
+	  set(COMPILER_FLAGS "${COMPILER_FLAGS} ${CXX_FLAGS_PEDANTIC_COMPILATION}")
 
-endif(ENABLE_PEDANTIC_COMPILATION)
+  endif(ENABLE_PEDANTIC_COMPILATION)
 
 # check for sanitizer options
-if(SANITIZE)
-	set(COMPILER_FLAGS "${COMPILER_FLAGS} -fsanitize=${SANITIZE}")
-	set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -fsanitize=${SANITIZE}")
-# manually disable some optimizations to get better stacktraces if sanitizers are used
-	set(COMPILER_FLAGS "${COMPILER_FLAGS} -fno-omit-frame-pointer -fno-optimize-sibling-calls")
-endif(SANITIZE)
+  if(SANITIZE)
+	  set(COMPILER_FLAGS "${COMPILER_FLAGS} -fsanitize=${SANITIZE}")
+	  set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -fsanitize=${SANITIZE}")
+    # manually disable some optimizations to get better stacktraces if sanitizers are used
+	  set(COMPILER_FLAGS "${COMPILER_FLAGS} -fno-omit-frame-pointer -fno-optimize-sibling-calls")
+  endif(SANITIZE)
 
 ### Set the final compiler flags.
 
-set(COMPILER_FLAGS "${COMPILER_FLAGS} ${CXX_FLAGS_USER}")
+  set(COMPILER_FLAGS "${COMPILER_FLAGS} ${CXX_FLAGS_USER}")
 
-if(NOT "${CMAKE_CXX_FLAGS}" STREQUAL "${COMPILER_FLAGS}")
-	message(STATUS "CMake compiler flags set to »${COMPILER_FLAGS}«")
-	set(CMAKE_CXX_FLAGS
-		"${COMPILER_FLAGS}"
-		CACHE
-		STRING
-		"Global flags used by the CXX compiler during all builds."
-		FORCE
-	)
-endif(NOT "${CMAKE_CXX_FLAGS}" STREQUAL "${COMPILER_FLAGS}")
+  if(NOT "${CMAKE_CXX_FLAGS}" STREQUAL "${COMPILER_FLAGS}")
+	  MESSAGE(STATUS "CMake compiler flags set to »${COMPILER_FLAGS}«")
+	  set(CMAKE_CXX_FLAGS
+		  "${COMPILER_FLAGS}"
+		  CACHE
+		  STRING
+		  "Global flags used by the CXX compiler during all builds."
+		  FORCE
+	  )
+  endif(NOT "${CMAKE_CXX_FLAGS}" STREQUAL "${COMPILER_FLAGS}")
 
 # #
 # Determine optimization level
 # #
 
-if(NOT OPT)
-	set(CMAKE_CXX_FLAGS_RELEASE "-O3")
-	set(CMAKE_C_FLAGS_RELEASE "-O3")
+  if(NOT OPT)
+	  set(CMAKE_CXX_FLAGS_RELEASE "-O3")
+	  set(CMAKE_C_FLAGS_RELEASE "-O3")
 
-	set(CMAKE_CXX_FLAGS_DEBUG "-O0")
-	set(CMAKE_C_FLAGS_DEBUG "-O0")
+	  set(CMAKE_CXX_FLAGS_DEBUG "-O0")
+	  set(CMAKE_C_FLAGS_DEBUG "-O0")
 
-	if(PROFILER STREQUAL "perf")
-		set(CMAKE_CXX_FLAGS_PROFILE "-Og")
-		set(CMAKE_C_FLAGS_PROFILE "-Og")
-	else(PROFILER STREQUAL "perf")
-		set(CMAKE_CXX_FLAGS_PROFILE "-O0")
-		set(CMAKE_C_FLAGS_PROFILE "-O0")
-	endif(PROFILER STREQUAL "perf")
-else(NOT OPT)
-	set(CMAKE_CXX_FLAGS_RELEASE "${OPT}")
-	set(CMAKE_C_FLAGS_RELEASE "${OPT}")
+	  if(PROFILER STREQUAL "perf")
+		  set(CMAKE_CXX_FLAGS_PROFILE "-Og")
+		  set(CMAKE_C_FLAGS_PROFILE "-Og")
+	  else(PROFILER STREQUAL "perf")
+		  set(CMAKE_CXX_FLAGS_PROFILE "-O0")
+		  set(CMAKE_C_FLAGS_PROFILE "-O0")
+	  endif(PROFILER STREQUAL "perf")
+  else(NOT OPT)
+	  set(CMAKE_CXX_FLAGS_RELEASE "${OPT}")
+	  set(CMAKE_C_FLAGS_RELEASE "${OPT}")
 
-	set(CMAKE_CXX_FLAGS_DEBUG "${OPT}")
-	set(CMAKE_C_FLAGS_DEBUG "${OPT}")
+	  set(CMAKE_CXX_FLAGS_DEBUG "${OPT}")
+	  set(CMAKE_C_FLAGS_DEBUG "${OPT}")
 
-	set(CMAKE_CXX_FLAGS_PROFILE "${OPT}")
-	set(CMAKE_C_FLAGS_PROFILE "${OPT}")
-endif(NOT OPT)
+	  set(CMAKE_CXX_FLAGS_PROFILE "${OPT}")
+	  set(CMAKE_C_FLAGS_PROFILE "${OPT}")
+  endif(NOT OPT)
 
 # check for hardening options
-if(HARDEN AND NOT WIN32)
-	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIE -fstack-protector-strong")
-	set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fPIE -fstack-protector-strong")
+  if(HARDEN)
+	  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIE -fstack-protector-strong")
+	  set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fPIE -fstack-protector-strong")
 
-	if(APPLE)
-		set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -fPIE -Wl,-pie")
-	else()
-		set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -fPIE -pie -Wl,-z,relro,-z,now")
-	endif()
+	  if(APPLE)
+		  set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -fPIE -Wl,-pie")
+	  else()
+		  set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -fPIE -pie -Wl,-z,relro,-z,now")
+	  endif()
 
-	if(NOT CMAKE_CXX_FLAGS_DEBUG STREQUAL "-O0")
-		add_definitions(-D_FORTIFY_SOURCE=2)
-	endif()
-endif(HARDEN AND NOT WIN32)
+	  if(NOT CMAKE_CXX_FLAGS_DEBUG STREQUAL "-O0")
+		  add_definitions(-D_FORTIFY_SOURCE=2)
+	  endif()
+  endif(HARDEN)
 
-if(UNIX AND NOT CMAKE_COMPILER_IS_GNUCXX)
-	# Assume the compiler is the clang compiler.
-	set(CMAKE_EXE_LINKER_FLAGS "-lstdc++ -lm ${CMAKE_EXE_LINKER_FLAGS}")
-endif(UNIX AND NOT CMAKE_COMPILER_IS_GNUCXX)
+  if(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+	  set(CMAKE_EXE_LINKER_FLAGS "-lstdc++ -lm ${CMAKE_EXE_LINKER_FLAGS}")
+  endif(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
 
-if(NOT WIN32)
 	add_definitions(-DWESNOTH_PATH="${CMAKE_INSTALL_FULL_DATADIR}/${DATADIRNAME}")
-endif(NOT WIN32)
 
-if(X11_FOUND)
-	add_definitions(-D_X11)
-endif(X11_FOUND)
+  if(X11_FOUND)
+	  add_definitions(-D_X11)
+  endif(X11_FOUND)
 
-add_definitions(-DLOCALEDIR="${LOCALEDIR}")
-
-# -DNDEBUG is automatically added to all release build types, so manually remove this define from the related variables
-RemoveFlag(CMAKE_CXX_FLAGS_RELWITHDEBINFO CACHE "-DNDEBUG" "Default C++ flags for RelWithDebInfo")
-RemoveFlag(CMAKE_C_FLAGS_RELWITHDEBINFO CACHE "-DNDEBUG" "Default C flags for RelWithDebInfo")
-RemoveFlag(CMAKE_CXX_FLAGS_MINSIZEREL CACHE "-DNDEBUG" "Default C++ flags for MinSizeRel")
-RemoveFlag(CMAKE_C_FLAGS_MINSIZEREL CACHE "-DNDEBUG" "Default C flags for MinSizeRel")
+  add_definitions(-DLOCALEDIR="${LOCALEDIR}")
 
 # -rdynamic is automatically added, but we don't need it, and it increases the executable size
-RemoveFlag(CMAKE_SHARED_LIBRARY_LINK_CXX_FLAGS SCRIPT "-rdynamic" "")
-RemoveFlag(CMAKE_SHARED_LIBRARY_LINK_C_FLAGS SCRIPT "-rdynamic" "")
+  RemoveFlag(CMAKE_SHARED_LIBRARY_LINK_CXX_FLAGS SCRIPT "-rdynamic" "")
+  RemoveFlag(CMAKE_SHARED_LIBRARY_LINK_C_FLAGS SCRIPT "-rdynamic" "")
+
+# -DNDEBUG is automatically added to all release build types, so manually remove this define from the related variables
+  RemoveFlag(CMAKE_CXX_FLAGS_RELWITHDEBINFO CACHE "-DNDEBUG" "Default C++ flags for RelWithDebInfo")
+  RemoveFlag(CMAKE_C_FLAGS_RELWITHDEBINFO CACHE "-DNDEBUG" "Default C flags for RelWithDebInfo")
+  RemoveFlag(CMAKE_CXX_FLAGS_MINSIZEREL CACHE "-DNDEBUG" "Default C++ flags for MinSizeRel")
+  RemoveFlag(CMAKE_C_FLAGS_MINSIZEREL CACHE "-DNDEBUG" "Default C flags for MinSizeRel")
 
 # #
 # Start determining options for Release build
 # #
 
 # reset the base Release build option
-MESSAGE("Replacing default flags used for Release build with ${OPT} ${EXTRA_FLAGS_CONFIG} ${EXTRA_FLAGS_RELEASE}")
-set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} ${EXTRA_FLAGS_CONFIG} ${EXTRA_FLAGS_RELEASE}" CACHE STRING "Release build flags" FORCE)
-set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} ${EXTRA_FLAGS_CONFIG} ${EXTRA_FLAGS_RELEASE}" CACHE STRING "Release build flags" FORCE)
-set(CMAKE_EXE_LINKER_FLAGS_RELEASE "" CACHE STRING "" FORCE)
+  MESSAGE("Replacing default flags used for Release build with ${OPT} ${EXTRA_FLAGS_CONFIG} ${EXTRA_FLAGS_RELEASE}")
+  set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} ${EXTRA_FLAGS_CONFIG} ${EXTRA_FLAGS_RELEASE}" CACHE STRING "Release build flags" FORCE)
+  set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} ${EXTRA_FLAGS_CONFIG} ${EXTRA_FLAGS_RELEASE}" CACHE STRING "Release build flags" FORCE)
+  set(CMAKE_EXE_LINKER_FLAGS_RELEASE "" CACHE STRING "" FORCE)
 # set the arch to use for Release build if provided
-if(ARCH)
-	MESSAGE("adding -march=${ARCH} to Release build")
-	set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -march=${ARCH}" CACHE STRING "Release build flags" FORCE)
-	set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} -march=${ARCH}" CACHE STRING "Release build flags" FORCE)
-endif(ARCH)
-# add pentiumpro arch for windows builds with -O3 if no other arch provided, otherwise resulting executable may not work
-if(WIN32 AND NOT ARCH)
-	MESSAGE("WIN32 and no arch provided, defaulting to pentiumpro")
-	set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -march=pentiumpro" CACHE STRING "Release build flags" FORCE)
-	set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} -march=pentiumpro" CACHE STRING "Release build flags" FORCE)
-endif(WIN32 AND NOT ARCH)
+  if(ARCH)
+	  MESSAGE("adding -march=${ARCH} to Release build")
+	  set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -march=${ARCH}" CACHE STRING "Release build flags" FORCE)
+	  set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} -march=${ARCH}" CACHE STRING "Release build flags" FORCE)
+  endif(ARCH)
 
 # PGO and LTO for GCC
-if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
-	if(PGO_DATA STREQUAL "generate")
-		MESSAGE("Generating PGO data")
-		set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -fprofile-generate=${CMAKE_SOURCE_DIR}/pgo_data/" CACHE STRING "Release build flags generating PGO data" FORCE)
-		set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} -fprofile-generate=${CMAKE_SOURCE_DIR}/pgo_data/" CACHE STRING "Release build flags generating PGO data" FORCE)
-	endif()
+  if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
+	  if(PGO_DATA STREQUAL "generate")
+		  MESSAGE("Generating PGO data")
+		  set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -fprofile-generate=${CMAKE_SOURCE_DIR}/pgo_data/" CACHE STRING "Release build flags generating PGO data" FORCE)
+		  set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} -fprofile-generate=${CMAKE_SOURCE_DIR}/pgo_data/" CACHE STRING "Release build flags generating PGO data" FORCE)
+	  endif()
 
-	if(PGO_DATA STREQUAL "use")
-		MESSAGE("Using PGO data from previous runs")
-		set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -fprofile-correction -fprofile-use=${CMAKE_SOURCE_DIR}/pgo_data/" CACHE STRING "Release build flags for using PGO data" FORCE)
-		set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} -fprofile-correction -fprofile-use=${CMAKE_SOURCE_DIR}/pgo_data/" CACHE STRING "Release build flags for using PGO data" FORCE)
-	endif()
+	  if(PGO_DATA STREQUAL "use")
+		  MESSAGE("Using PGO data from previous runs")
+		  set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -fprofile-correction -fprofile-use=${CMAKE_SOURCE_DIR}/pgo_data/" CACHE STRING "Release build flags for using PGO data" FORCE)
+		  set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} -fprofile-correction -fprofile-use=${CMAKE_SOURCE_DIR}/pgo_data/" CACHE STRING "Release build flags for using PGO data" FORCE)
+	  endif()
 
-	if(ENABLE_LTO)
-		if(NOT LTO_JOBS)
-			MESSAGE("LTO_JOBS not set, defaulting to 1")
-			set(LTO_JOBS "1" CACHE STRING "Number of threads to use for LTO with gcc" FORCE)
-		endif(NOT LTO_JOBS)
+	  if(ENABLE_LTO)
+		  if(NOT LTO_JOBS)
+			  MESSAGE("LTO_JOBS not set, defaulting to 1")
+			  set(LTO_JOBS "1" CACHE STRING "Number of threads to use for LTO with gcc" FORCE)
+		  endif(NOT LTO_JOBS)
 
-		MESSAGE("added -flto=${LTO_JOBS} to Release build")
-		set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -flto=${LTO_JOBS}" CACHE STRING "Release build flags with LTO" FORCE)
-		set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} -flto=${LTO_JOBS}" CACHE STRING "Release build flags with LTO" FORCE)
+		  MESSAGE("added -flto=${LTO_JOBS} to Release build")
+		  set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -flto=${LTO_JOBS}" CACHE STRING "Release build flags with LTO" FORCE)
+		  set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} -flto=${LTO_JOBS}" CACHE STRING "Release build flags with LTO" FORCE)
 
-		MESSAGE("Using GCC gold linker")
-		set(CMAKE_EXE_LINKER_FLAGS_RELEASE "${CMAKE_EXE_LINKER_FLAGS_RELEASE} -fuse-ld=gold -Wno-stringop-overflow" CACHE STRING "" FORCE)
-	endif(ENABLE_LTO)
-endif(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
+		  MESSAGE("Using GCC gold linker")
+		  set(CMAKE_EXE_LINKER_FLAGS_RELEASE "${CMAKE_EXE_LINKER_FLAGS_RELEASE} -fuse-ld=gold -Wno-stringop-overflow" CACHE STRING "" FORCE)
+	  endif(ENABLE_LTO)
+  endif(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
 
 # PGO and LTO for Clang
-if(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
-	if(PGO_DATA STREQUAL "generate")
-		MESSAGE("Generating PGO data")
-		set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -fprofile-instr-generate=${CMAKE_SOURCE_DIR}/pgo_data/wesnoth-%p.profraw" CACHE STRING "Release build flags generating PGO data" FORCE)
-		set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} -fprofile-instr-generate=${CMAKE_SOURCE_DIR}/pgo_data/wesnoth-%p.profraw" CACHE STRING "Release build flags generating PGO data" FORCE)
-	endif()
+  if(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+	  if(PGO_DATA STREQUAL "generate")
+		  MESSAGE("Generating PGO data")
+		  set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -fprofile-instr-generate=${CMAKE_SOURCE_DIR}/pgo_data/wesnoth-%p.profraw" CACHE STRING "Release build flags generating PGO data" FORCE)
+		  set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} -fprofile-instr-generate=${CMAKE_SOURCE_DIR}/pgo_data/wesnoth-%p.profraw" CACHE STRING "Release build flags generating PGO data" FORCE)
+	  endif()
 
-	if(PGO_DATA STREQUAL "use")
-		MESSAGE("Using PGO data from previous runs")
-		set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -fprofile-instr-use=${CMAKE_SOURCE_DIR}/pgo_data/wesnoth.profdata" CACHE STRING "Release build flags for using PGO data" FORCE)
-		set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} -fprofile-instr-use=${CMAKE_SOURCE_DIR}/pgo_data/wesnoth.profdata" CACHE STRING "Release build flags for using PGO data" FORCE)
-	endif()
+	  if(PGO_DATA STREQUAL "use")
+		  MESSAGE("Using PGO data from previous runs")
+		  set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -fprofile-instr-use=${CMAKE_SOURCE_DIR}/pgo_data/wesnoth.profdata" CACHE STRING "Release build flags for using PGO data" FORCE)
+		  set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} -fprofile-instr-use=${CMAKE_SOURCE_DIR}/pgo_data/wesnoth.profdata" CACHE STRING "Release build flags for using PGO data" FORCE)
+	  endif()
 
-	if(ENABLE_LTO)
-		MESSAGE("added -flto=thin to Release build")
-		set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -flto=thin" CACHE STRING "Release build flags with LTO" FORCE)
-		set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} -flto=thin" CACHE STRING "Release build flags with LTO" FORCE)
+	  if(ENABLE_LTO)
+		  MESSAGE("added -flto=thin to Release build")
+		  set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -flto=thin" CACHE STRING "Release build flags with LTO" FORCE)
+		  set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} -flto=thin" CACHE STRING "Release build flags with LTO" FORCE)
 
-		MESSAGE("Using Clang LLD linker")
-		set(CMAKE_EXE_LINKER_FLAGS_RELEASE "${CMAKE_EXE_LINKER_FLAGS_RELEASE} -fuse-ld=lld" CACHE STRING "Linker flag for building with LTO and clang" FORCE)
-	endif(ENABLE_LTO)
-endif(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+		  MESSAGE("Using Clang LLD linker")
+		  set(CMAKE_EXE_LINKER_FLAGS_RELEASE "${CMAKE_EXE_LINKER_FLAGS_RELEASE} -fuse-ld=lld" CACHE STRING "Linker flag for building with LTO and clang" FORCE)
+	  endif(ENABLE_LTO)
+  endif(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
 
 # set CMAKE_AR and CMAKE_RANLIB to use LTO-enabled variants if LTO is enabled
-if(ENABLE_LTO)
-	MESSAGE("Using gcc-ar and gcc-ranlib")
-	find_program(LTO_AR NAMES gcc-ar)
-	find_program(LTO_RANLIB NAMES gcc-ranlib)
-	set(CMAKE_AR "${LTO_AR}" CACHE STRING "Supports LTO" FORCE)
-	set(CMAKE_RANLIB "${LTO_RANLIB}" CACHE STRING "Supports LTO" FORCE)
-endif()
-MARK_AS_ADVANCED(LTO_AR LTO_RANLIB NON_LTO_AR NON_LTO_RANLIB)
+  if(ENABLE_LTO)
+	  MESSAGE("Using gcc-ar and gcc-ranlib")
+	  find_program(LTO_AR NAMES gcc-ar)
+	  find_program(LTO_RANLIB NAMES gcc-ranlib)
+	  set(CMAKE_AR "${LTO_AR}" CACHE STRING "Supports LTO" FORCE)
+	  set(CMAKE_RANLIB "${LTO_RANLIB}" CACHE STRING "Supports LTO" FORCE)
+  endif()
+  MARK_AS_ADVANCED(LTO_AR LTO_RANLIB NON_LTO_AR NON_LTO_RANLIB)
 
 # add in extra flags
-set(CMAKE_EXE_LINKER_FLAGS_RELEASE "${CMAKE_EXE_LINKER_FLAGS_RELEASE} ${LINK_EXTRA_FLAGS_CONFIG} ${LINK_EXTRA_FLAGS_RELEASE}")
+  set(CMAKE_EXE_LINKER_FLAGS_RELEASE "${CMAKE_EXE_LINKER_FLAGS_RELEASE} ${LINK_EXTRA_FLAGS_CONFIG} ${LINK_EXTRA_FLAGS_RELEASE}")
 
 # clean the pgo data
-set_directory_properties(PROPERTIES ADDITIONAL_MAKE_CLEAN_FILES "${CMAKE_SOURCE_DIR}/pgo_data/")
+  set_directory_properties(PROPERTIES ADDITIONAL_MAKE_CLEAN_FILES "${CMAKE_SOURCE_DIR}/pgo_data/")
 
 # #
 # End determining options for Release build
 # Start setting options for Debug build
 # #
 
-# replace the default Debug flag of -g with -O0 -DDEBUG -ggdb3
-# this matches the flags of scons' debug build
-MESSAGE("Replacing flags used for Debug build ${OPT} -DDEBUG -ggdb3 ${EXTRA_FLAGS_CONFIG} ${EXTRA_FLAGS_DEBUG}")
-set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -DDEBUG -ggdb3 ${EXTRA_FLAGS_CONFIG} ${EXTRA_FLAGS_DEBUG}" CACHE STRING "change cmake's Debug flags to match scons' flags" FORCE)
-set(CMAKE_C_FLAGS_DEBUG "${CMAKE_C_FLAGS_DEBUG} -DDEBUG -ggdb3 ${EXTRA_FLAGS_CONFIG} ${EXTRA_FLAGS_DEBUG}" CACHE STRING "change cmake's Debug flags to match scons' flags" FORCE)
-set(CMAKE_EXE_LINKER_FLAGS_DEBUG "${LINK_EXTRA_FLAGS_CONFIG} ${LINK_EXTRA_FLAGS_DEBUG}" CACHE STRING "" FORCE)
+  # replace the default Debug flag of -g with -O0 -DDEBUG -ggdb3
+  # this matches the flags of scons' debug build
+  MESSAGE("Replacing flags used for Debug build ${OPT} -DDEBUG -ggdb3 ${EXTRA_FLAGS_CONFIG} ${EXTRA_FLAGS_DEBUG}")
+  set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -DDEBUG -ggdb3 ${EXTRA_FLAGS_CONFIG} ${EXTRA_FLAGS_DEBUG}" CACHE STRING "change cmake's Debug flags to match scons' flags" FORCE)
+  set(CMAKE_C_FLAGS_DEBUG "${CMAKE_C_FLAGS_DEBUG} -DDEBUG -ggdb3 ${EXTRA_FLAGS_CONFIG} ${EXTRA_FLAGS_DEBUG}" CACHE STRING "change cmake's Debug flags to match scons' flags" FORCE)
+  set(CMAKE_EXE_LINKER_FLAGS_DEBUG "${LINK_EXTRA_FLAGS_CONFIG} ${LINK_EXTRA_FLAGS_DEBUG}" CACHE STRING "" FORCE)
 
 # adds GLIBCXX_DEBUG definitions
-if(GLIBCXX_DEBUG)
-	MESSAGE("Defining _GLIBCXX_DEBUG and _GLIBCXX_DEBUG_PEDANTIC")
-	add_definitions(-D_GLIBCXX_DEBUG)
-	add_definitions(-D_GLIBCXX_DEBUG_PEDANTIC)
-endif(GLIBCXX_DEBUG)
+  if(GLIBCXX_DEBUG)
+	  MESSAGE("Defining _GLIBCXX_DEBUG and _GLIBCXX_DEBUG_PEDANTIC")
+	  add_definitions(-D_GLIBCXX_DEBUG)
+	  add_definitions(-D_GLIBCXX_DEBUG_PEDANTIC)
+  endif(GLIBCXX_DEBUG)
 
 # #
 # End setting options for Debug build
 # Start setting options for Profile build
 # #
 
-if(PROFILER STREQUAL "gprof" OR NOT PROFILER)
-	MESSAGE("Profiler is gprof")
-	set(CMAKE_CXX_FLAGS_PROFILE "${CMAKE_CXX_FLAGS_PROFILE} -pg ${EXTRA_FLAGS_CONFIG} ${EXTRA_FLAGS_PROFILE}" CACHE STRING "Flags for profiling with gprof" FORCE)
-	set(CMAKE_C_FLAGS_PROFILE "${CMAKE_C_FLAGS_PROFILE} -pg ${EXTRA_FLAGS_CONFIG} ${EXTRA_FLAGS_PROFILE}" CACHE STRING "Flags for profiling with gprof" FORCE)
-	set(CMAKE_EXE_LINKER_FLAGS_PROFILE "${LINK_EXTRA_FLAGS_CONFIG} ${LINK_EXTRA_FLAGS_PROFILE}" CACHE STRING "" FORCE)
-endif()
+  if(PROFILER STREQUAL "gprof" OR NOT PROFILER)
+	  MESSAGE("Profiler is gprof")
+	  set(CMAKE_CXX_FLAGS_PROFILE "${CMAKE_CXX_FLAGS_PROFILE} -pg ${EXTRA_FLAGS_CONFIG} ${EXTRA_FLAGS_PROFILE}" CACHE STRING "Flags for profiling with gprof" FORCE)
+	  set(CMAKE_C_FLAGS_PROFILE "${CMAKE_C_FLAGS_PROFILE} -pg ${EXTRA_FLAGS_CONFIG} ${EXTRA_FLAGS_PROFILE}" CACHE STRING "Flags for profiling with gprof" FORCE)
+	  set(CMAKE_EXE_LINKER_FLAGS_PROFILE "${LINK_EXTRA_FLAGS_CONFIG} ${LINK_EXTRA_FLAGS_PROFILE}" CACHE STRING "" FORCE)
+  endif()
 
-if(PROFILER STREQUAL "gcov")
-	MESSAGE("Profiler is gcov")
-	set(CMAKE_CXX_FLAGS_PROFILE "${CMAKE_CXX_FLAGS_PROFILE} -fprofile-arcs -ftest-coverage ${EXTRA_FLAGS_CONFIG} ${EXTRA_FLAGS_PROFILE}" CACHE STRING "Flags for profiling with gcov" FORCE)
-	set(CMAKE_C_FLAGS_PROFILE "${CMAKE_C_FLAGS_PROFILE} -fprofile-arcs -ftest-coverage ${EXTRA_FLAGS_CONFIG} ${EXTRA_FLAGS_PROFILE}" CACHE STRING "Flags for profiling with gcov" FORCE)
-	set(CMAKE_EXE_LINKER_FLAGS_PROFILE "${LINK_EXTRA_FLAGS_CONFIG} ${LINK_EXTRA_FLAGS_PROFILE}" CACHE STRING "" FORCE)
-endif()
+  if(PROFILER STREQUAL "gcov")
+	  MESSAGE("Profiler is gcov")
+	  set(CMAKE_CXX_FLAGS_PROFILE "${CMAKE_CXX_FLAGS_PROFILE} -fprofile-arcs -ftest-coverage ${EXTRA_FLAGS_CONFIG} ${EXTRA_FLAGS_PROFILE}" CACHE STRING "Flags for profiling with gcov" FORCE)
+	  set(CMAKE_C_FLAGS_PROFILE "${CMAKE_C_FLAGS_PROFILE} -fprofile-arcs -ftest-coverage ${EXTRA_FLAGS_CONFIG} ${EXTRA_FLAGS_PROFILE}" CACHE STRING "Flags for profiling with gcov" FORCE)
+	  set(CMAKE_EXE_LINKER_FLAGS_PROFILE "${LINK_EXTRA_FLAGS_CONFIG} ${LINK_EXTRA_FLAGS_PROFILE}" CACHE STRING "" FORCE)
+  endif()
 
-if(PROFILER STREQUAL "gperftools")
-	MESSAGE("Profiler is gperftools")
-	set(CMAKE_CXX_FLAGS_PROFILE "${CMAKE_CXX_FLAGS_PROFILE} ${EXTRA_FLAGS_CONFIG} ${EXTRA_FLAGS_PROFILE}" CACHE STRING "Flags for profiling with gperftools" FORCE)
-	set(CMAKE_C_FLAGS_PROFILE "${CMAKE_C_FLAGS_PROFILE} ${EXTRA_FLAGS_CONFIG} ${EXTRA_FLAGS_PROFILE}" CACHE STRING "Flags for profiling with gperftools" FORCE)
-	set(CMAKE_EXE_LINKER_FLAGS_PROFILE "-Wl,--no-as-needed,-lprofiler ${LINK_EXTRA_FLAGS_CONFIG} ${LINK_EXTRA_FLAGS_PROFILE}" CACHE STRING "" FORCE)
-endif()
+  if(PROFILER STREQUAL "gperftools")
+	  MESSAGE("Profiler is gperftools")
+	  set(CMAKE_CXX_FLAGS_PROFILE "${CMAKE_CXX_FLAGS_PROFILE} ${EXTRA_FLAGS_CONFIG} ${EXTRA_FLAGS_PROFILE}" CACHE STRING "Flags for profiling with gperftools" FORCE)
+	  set(CMAKE_C_FLAGS_PROFILE "${CMAKE_C_FLAGS_PROFILE} ${EXTRA_FLAGS_CONFIG} ${EXTRA_FLAGS_PROFILE}" CACHE STRING "Flags for profiling with gperftools" FORCE)
+	  set(CMAKE_EXE_LINKER_FLAGS_PROFILE "-Wl,--no-as-needed,-lprofiler ${LINK_EXTRA_FLAGS_CONFIG} ${LINK_EXTRA_FLAGS_PROFILE}" CACHE STRING "" FORCE)
+  endif()
 
-if(PROFILER STREQUAL "perf")
-	MESSAGE("Profiler is perf")
-	set(CMAKE_CXX_FLAGS_PROFILE "${CMAKE_CXX_FLAGS_PROFILE} -ggdb ${EXTRA_FLAGS_CONFIG} ${EXTRA_FLAGS_PROFILE}" CACHE STRING "Flags for profiling with perf" FORCE)
-	set(CMAKE_C_FLAGS_PROFILE "${CMAKE_C_FLAGS_PROFILE} -ggdb ${EXTRA_FLAGS_CONFIG} ${EXTRA_FLAGS_PROFILE}" CACHE STRING "Flags for profiling with perf" FORCE)
-	set(CMAKE_EXE_LINKER_FLAGS_PROFILE "${LINK_EXTRA_FLAGS_CONFIG} ${LINK_EXTRA_FLAGS_PROFILE}" CACHE STRING "" FORCE)
-endif()
-
+  if(PROFILER STREQUAL "perf")
+	  MESSAGE("Profiler is perf")
+	  set(CMAKE_CXX_FLAGS_PROFILE "${CMAKE_CXX_FLAGS_PROFILE} -ggdb ${EXTRA_FLAGS_CONFIG} ${EXTRA_FLAGS_PROFILE}" CACHE STRING "Flags for profiling with perf" FORCE)
+	  set(CMAKE_C_FLAGS_PROFILE "${CMAKE_C_FLAGS_PROFILE} -ggdb ${EXTRA_FLAGS_CONFIG} ${EXTRA_FLAGS_PROFILE}" CACHE STRING "Flags for profiling with perf" FORCE)
+	  set(CMAKE_EXE_LINKER_FLAGS_PROFILE "${LINK_EXTRA_FLAGS_CONFIG} ${LINK_EXTRA_FLAGS_PROFILE}" CACHE STRING "" FORCE)
+  endif()
 # #
 # End setting options for Profile build
 # #
+else()
+  set(CMAKE_CXX_FLAGS "/W3 /WX /wd4503 /wd4351 /wd4250 /wd4244 /wd4267 /we4239 /wd4275 /EHsc" CACHE STRING "Global flags used by the CXX compiler during all builds." FORCE)
+  add_definitions(-D_WIN32_WINNT=_WIN32_WINNT_WIN7 -D_CRT_SECURE_NO_WARNINGS -D_WINSOCK_DEPRECATED_NO_WARNINGS -DNOMINMAX)
+
+  set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -DDEBUG_LUA")
+  set(CMAKE_EXE_LINKER_FLAGS_DEBUG "${CMAKE_EXE_LINKER_FLAGS_DEBUG} /NODEFAULTLIB:MSVCRT")
+  
+# -DNDEBUG is automatically added to all release build types, so manually remove this define from the related variables
+  RemoveFlag(CMAKE_CXX_FLAGS_RELEASE CACHE "/DNDEBUG" "Default C++ flags for RELEASE")
+  RemoveFlag(CMAKE_C_FLAGS_RELEASE CACHE "/DNDEBUG" "Default C flags for RELEASE")
+  RemoveFlag(CMAKE_CXX_FLAGS_RELWITHDEBINFO CACHE "/DNDEBUG" "Default C++ flags for RelWithDebInfo")
+  RemoveFlag(CMAKE_C_FLAGS_RELWITHDEBINFO CACHE "/DNDEBUG" "Default C flags for RelWithDebInfo")
+  RemoveFlag(CMAKE_CXX_FLAGS_MINSIZEREL CACHE "/DNDEBUG" "Default C++ flags for MinSizeRel")
+  RemoveFlag(CMAKE_C_FLAGS_MINSIZEREL CACHE "/DNDEBUG" "Default C flags for MinSizeRel")
+endif(NOT WIN32)
 
 # When the path starts with a / on a Unix system it's an absolute path.
 # This means that on Windows the path used is always relative.
@@ -513,8 +495,6 @@ endif(ENABLE_DEBUG_WINDOW_LAYOUT)
 #
 
 if(ENABLE_GAME OR ENABLE_TESTS)
-#	find_package(OpenGL REQUIRED)
-#	find_package(GLEW REQUIRED)
 	find_package(SDL2 2.0.8 REQUIRED)
 	find_package(SDL2_image 2.0.2 REQUIRED)
 	find_package(SDL2_mixer 2.0.0 REQUIRED)
@@ -523,7 +503,9 @@ if(ENABLE_GAME OR ENABLE_TESTS)
 	pkg_check_modules(CAIRO REQUIRED cairo>=1.10)
 	pkg_check_modules(PANGOCAIRO REQUIRED pangocairo>=1.22.0)
 	pkg_check_modules(FONTCONFIG REQUIRED fontconfig>=2.4.1)
-	pkg_check_modules(SYSTEMD systemd)
+	if(NOT WIN32)
+  	pkg_check_modules(SYSTEMD systemd)
+	endif(NOT WIN32)
 endif(ENABLE_GAME OR ENABLE_TESTS)
 
 if(ENABLE_TESTS)

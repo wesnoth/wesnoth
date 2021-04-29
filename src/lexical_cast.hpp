@@ -480,6 +480,45 @@ struct lexical_caster<
 	}
 };
 
+/**
+ * Specialized conversion class.
+ *
+ * Specialized for returning a bool from a std::string.
+ * @note is specialized to silence C4804 from MSVC.
+ */
+template <>
+struct lexical_caster<bool, std::string>
+{
+	bool operator()(const std::string& value, std::optional<bool>) const
+	{
+		DEBUG_THROW("specialized - To bool - From std::string");
+
+		return value == "1";
+	}
+};
+
+/**
+ * Specialized conversion class.
+ *
+ * Specialized for returning a bool from a (const) char*.
+ * @note is specialized to silence C4804 from MSVC.
+ */
+template <class From>
+struct lexical_caster<
+	  bool
+	, From
+	, void
+	, std::enable_if_t<std::is_same_v<From, const char*> || std::is_same_v<From, char*>>
+	>
+{
+	bool operator()(From value, std::optional<bool>) const
+	{
+		DEBUG_THROW("specialized - To bool - From (const) char*");
+
+		return lexical_cast<bool>(std::string(value));
+	}
+};
+
 } // namespace implementation
 
 #endif
