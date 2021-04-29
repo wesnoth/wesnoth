@@ -20,6 +20,7 @@
  ### Miscellaneous and Bug Fixes
    * Made GUI.pyw compatible with Python 3.9 (issue #5719).
    * Removed workarounds for bugs affecting older SDL 2.0 versions, including an extra copy of the game screen made during gamemap scrolling (PR #5736).
+   * FPS values calculated when the :fps or :benchmark are now written to a file which can then be used to track FPS values over time.
 
 ## Version 1.15.12
  ### Add-ons client
