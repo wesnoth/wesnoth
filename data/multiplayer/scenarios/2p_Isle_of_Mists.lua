@@ -370,7 +370,7 @@ end)
 -------------------------------------------------------------------------------
 -------------------------- Weather events -------------------------------------
 -------------------------------------------------------------------------------
--- The weather evens are complateleey unrelated to the spawn events.
+-- The weather events are completely unrelated to the spawn events.
 
 local function get_weather_duration(max_duration)
 	local res = wesnoth.random(2)
