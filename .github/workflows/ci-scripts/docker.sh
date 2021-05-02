@@ -41,9 +41,7 @@ execute() {
 # check for trailing whitespace in hpp|cpp files
 # check for trailing whitespace in lua files
 checkindent() {
-    make -C data/tools reindent
-    find src/ -name \*.\[ch\]pp -print0 | xargs -0 sed -i 's/[[:blank:]]*$//'
-    find data/lua/ -name \*.lua -print0 | xargs -0 sed -i 's/[[:blank:]]*$//'
+    ./utils/CI/fix_whitespace.sh
     git status
     (( $(git status --short | wc -l) == 0 ))
 }
