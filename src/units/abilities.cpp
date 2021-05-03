@@ -1403,6 +1403,50 @@ bool attack_type::has_special_or_ability(const std::string& special, bool specia
 }
 //end of emulate weapon special functions.
 
+static bool active_on(const config& cfg, bool attacker)
+{
+	if(!(cfg["active_on"].empty() || (attacker && cfg["active_on"] == "offense") || (!attacker && cfg["active_on"] == "defense"))) {
+		return false;
+	}
+	return true;
+}
+
+bool unit::get_ability_bool_anti_weapons(const std::string& tag_name, const map_location& loc, bool attacker, const_attack_ptr weapon, const_attack_ptr opp_weapon) const
+{
+	for (const config &i : this->abilities_.child_range(tag_name)) {
+		if (get_self_ability_bool_weapon(i, tag_name, loc, weapon, opp_weapon) && active_on(i, attacker))
+		{
+			return true;
+		}
+	}
+
+	assert(display::get_singleton());
+	const unit_map& units = display::get_singleton()->get_units();
+
+	const auto adjacent = get_adjacent_tiles(loc);
+	for(unsigned i = 0; i < adjacent.size(); ++i) {
+		const unit_map::const_iterator it = units.find(adjacent[i]);
+		if (it == units.end() || it->incapacitated())
+			continue;
+		// Abilities may be tested at locations other than the unit's current
+		// location. This is intentional to allow for less messing with the unit
+		// map during calculations, particularly with regards to movement.
+		// Thus, we need to make sure the adjacent unit (*it) is not actually
+		// ourself.
+		if ( &*it == this )
+			continue;
+		for (const config &j : it->abilities_.child_range(tag_name)) {
+			if (get_adj_ability_bool_weapon(j, tag_name, i, loc, *it, weapon, opp_weapon) && active_on(j, attacker))
+			{
+				return true;
+			}
+		}
+	}
+
+
+	return false;
+}
+
 bool attack_type::special_active(const config& special, AFFECTS whom, const std::string& tag_name,
                                  bool include_backstab, const std::string& filter_self) const
 {
@@ -1481,20 +1525,53 @@ bool attack_type::special_active_impl(const_attack_ptr self_attack, const_attack
 	temporary_facing other_facing(other, other_loc.get_relative_dir(self_loc));
 
 	// Filter poison, plague, drain, first strike
-	if (tag_name == "drains" && other && other->get_state("undrainable")) {
+	if (tag_name == "drains" && other && (other->get_state("undrainable")|| other->get_ability_bool_anti_weapons("undrains", other_loc, !is_attacker, other_attack, self_attack))) {
 		return false;
 	}
 	if (tag_name == "plague" && other &&
 		(other->get_state("unplagueable") ||
+		other->get_ability_bool_anti_weapons("unplague", other_loc, !is_attacker, other_attack, self_attack) ||
 		 resources::gameboard->map().is_village(other_loc))) {
 		return false;
 	}
 	if (tag_name == "poison" && other &&
-		(other->get_state("unpoisonable") || other->get_state(unit::STATE_POISONED))) {
+		(other->get_state("unpoisonable") || other->get_ability_bool_anti_weapons("unpoison", other_loc, !is_attacker, other_attack, self_attack) || other->get_state(unit::STATE_POISONED))) {
 		return false;
 	}
-	if (tag_name == "firststrike" && !is_attacker && other_attack &&
-		other_attack->has_special_or_ability("firststrike")) {
+	if (tag_name == "slow" && other &&
+		other->get_ability_bool_anti_weapons("unslow", other_loc, !is_attacker, other_attack, self_attack)) {
+		return false;
+	}
+	if (tag_name == "petrifies" && other &&
+		other->get_ability_bool_anti_weapons("unpetrifies", other_loc, !is_attacker, other_attack, self_attack)) {
+		return false;
+	}
+	if (tag_name == "attacks" && other &&
+		other->get_ability_bool_anti_weapons("unattacks", other_loc, !is_attacker, other_attack, self_attack)) {
+		return false;
+	}
+	if (tag_name == "damage" && other &&
+		other->get_ability_bool_anti_weapons("undamage", other_loc, !is_attacker, other_attack, self_attack)) {
+		return false;
+	}
+	if (tag_name == "chance_to_hit" && other &&
+		other->get_ability_bool_anti_weapons("unchance_to_hit", other_loc, !is_attacker, other_attack, self_attack)) {
+		return false;
+	}
+	if (tag_name == "swarm" && other &&
+		other->get_ability_bool_anti_weapons("unswarm", other_loc, !is_attacker, other_attack, self_attack)) {
+		return false;
+	}
+	if (tag_name == "heal_on_hit" && other &&
+		other->get_ability_bool_anti_weapons("unheal_on_hit", other_loc, !is_attacker, other_attack, self_attack)) {
+		return false;
+	}
+	if (tag_name == "berserk" && other &&
+		other->get_ability_bool_anti_weapons("unberserk", other_loc, !is_attacker, other_attack, self_attack)) {
+		return false;
+	}
+	if (tag_name == "firststrike" && !is_attacker && ((other_attack &&
+		other_attack->has_special_or_ability("firststrike")) || (other && other->get_ability_bool_anti_weapons("unfirststrike", other_loc, !is_attacker, other_attack, self_attack)))) {
 		return false;
 	}
 

@@ -1649,6 +1649,38 @@ public:
 		return get_ability_bool(tag_name, loc_);
 	}
 
+	/**
+	 * Checks whether this unit currently possesses or is affected by a ability to type immune_to_.
+	 *
+	 * This means that the ability could be owned by this unit itself or by an adjacent unit, should
+	 * the ability affect an AoE in which this unit happens to be.
+	 *
+	 * @param tag_name            The name of the ability to check for.
+	 * @param loc                 The location around which to check for affected units. This may or
+	 *                            may not be the location of this unit.
+	 * @param attacker            The unit afected is attacker or defender in fight
+	 * @param weapon              The weapon used by unit affected
+	 * @param opp_weapon              The weapon used by opponent to unit affected
+	 */
+
+	bool get_ability_bool_anti_weapons(const std::string& tag_name, const map_location& loc, bool attacker, const_attack_ptr weapon = nullptr, const_attack_ptr opp_weapon=nullptr) const;
+
+	/**
+	 * Checks whether this unit currently possesses or is affected by a ability to type immune_to.
+	 *
+	 * This means that the ability could be owned by this unit itself or by an adjacent unit, should
+	 * the ability affect an AoE in which this unit happens to be.
+	 *
+	 * @param tag_name            The name of the ability to check for.
+	 * @param attacker            The unit afected is attacker or defender in fight
+	 * @param weapon              The weapon used by unit affected
+	 * @param opp_weapon              The weapon used by opponent to unit affected
+	 */
+	bool get_ability_bool_anti_weapons(const std::string& tag_name, bool attacker, const_attack_ptr weapon = nullptr, const_attack_ptr opp_weapon = nullptr) const
+	{
+		return get_ability_bool_anti_weapons(tag_name, loc_, attacker, weapon, opp_weapon);
+	}
+
 	/** Checks whether this unit currently possesses a given ability used like weapon
 	 * @return True if the ability @a tag_name is active.
 	 * @param special the const config to one of abilities @a tag_name checked.
