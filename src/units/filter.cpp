@@ -428,7 +428,7 @@ void unit_filter_compound::fill(vconfig cfg)
 						const unit_map::const_iterator it = units.find(adjacent[i]);
 						if (it == units.end() || it->incapacitated())
 							continue;
-						if ( &*it == (args.u.shared_from_this()).get() )
+						if (&*it == (args.u.shared_from_this()).get())
 							continue;
 
 						std::vector<ability_match> ability_id_matches_adj;
