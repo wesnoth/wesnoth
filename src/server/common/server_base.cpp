@@ -129,23 +129,16 @@ void server_base::serve(boost::asio::yield_context yield, boost::asio::ip::tcp::
 
 	DBG_SERVER << client_address(socket) << "\tnew connection tentatively accepted\n";
 
-	union {
-		uint32_t number;
-		char buf[4];
-	} protocol_version;
-
-	union {
-		uint32_t number;
-		char buf[4];
-	} handshake_response;
+	uint32_t protocol_version;
+	uint32_t handshake_response;
 	
 	any_socket_ptr final_socket;
 
-	async_read(*socket, boost::asio::buffer(protocol_version.buf), yield[error]);
+	async_read(*socket, boost::asio::buffer(reinterpret_cast<std::byte*>(&protocol_version), 4), yield[error]);
 	if(check_error(error, socket))
 		return;
 
-	switch(ntohl(protocol_version.number)) {
+	switch(ntohl(protocol_version)) {
 		case 0:
 			async_write(*socket, boost::asio::buffer(handshake_response_.buf, 4), yield[error]);
 			if(check_error(error, socket)) return;
@@ -154,12 +147,12 @@ void server_base::serve(boost::asio::yield_context yield, boost::asio::ip::tcp::
 		case 1:
 			if(!tls_enabled_) {
 				ERR_SERVER << client_address(socket) << "\tTLS requested by client but not enabled on server\n";
-				handshake_response.number = 0xFFFFFFFFU;
+				handshake_response = 0xFFFFFFFFU;
 			} else {
-				handshake_response.number = 0x00000000;
+				handshake_response = 0x00000000;
 			}
 
-			async_write(*socket, boost::asio::buffer(handshake_response.buf, 4), yield[error]);
+			async_write(*socket, boost::asio::buffer(reinterpret_cast<const std::byte*>(&handshake_response), 4), yield[error]);
 			if(check_error(error, socket)) return;
 			if(!tls_enabled_) { // continue with unencrypted connection if TLS disabled
 				final_socket = socket;
