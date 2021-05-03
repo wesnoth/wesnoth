@@ -17,6 +17,7 @@
    * The multiplayer "turns over" dialog now uses each team's colors when showing teams' names.
  ### WML Engine
    * Modify implementation of overwrite_specials attribute for replace yes/no parameter by none/one_side/both_sides and select abilities used like weapons and specials who must be overwrited(owned by fighter where special applied or both)
+   * Add a 'ability_id_active' attribute to [filter]
  ### Miscellaneous and Bug Fixes
    * More optimizations in the UI drawing code, these shouldn't have visible effects (PR #5681).
    * Made GUI.pyw compatible with Python 3.9 (issue #5719).
