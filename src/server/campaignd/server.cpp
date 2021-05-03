@@ -618,7 +618,7 @@ void server::handle_read_from_fifo(const boost::system::error_code& error, std::
 				//       the values provided by the .pbl data or the empty
 				//       string if absent, and this is normally preserved by
 				//       the config serialization.
-				ERR_CS << "Attribute '" << value << "' is not a recognized add-on attribute\n";
+				ERR_CS << "Attribute '" << key << "' is not a recognized add-on attribute\n";
 			} else {
 				addon[key] = value;
 				mark_dirty(addon_id);
