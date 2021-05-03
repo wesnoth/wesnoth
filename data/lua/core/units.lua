@@ -69,5 +69,5 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 	wesnoth.create_unit = wesnoth.deprecate_api('wesnoth.create_unit', 'wesnoth.units.create', 1, nil, wesnoth.units.create)
 	wesnoth.get_unit = wesnoth.deprecate_api('wesnoth.get_unit', 'wesnoth.units.get', 1, nil, wesnoth.units.get)
 	wesnoth.get_units = wesnoth.deprecate_api('wesnoth.get_units', 'wesnoth.units.find_on_map', 1, nil, wesnoth.units.find_on_map)
-	wesnoth.get_recall_units = wesnoth.deprecate_api('wesnoth.get_units', 'wesnoth.units.find_on_recall', 1, nil, wesnoth.units.find_on_recall)
+	wesnoth.get_recall_units = wesnoth.deprecate_api('wesnoth.get_recall_units', 'wesnoth.units.find_on_recall', 1, nil, wesnoth.units.find_on_recall)
 end
