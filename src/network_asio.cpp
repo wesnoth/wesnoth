@@ -83,7 +83,7 @@ connection::connection(const std::string& host, const std::string& service)
 		use_tls_ = false;
 		boost::asio::post(io_context_, [this, ec, result](){ handle_resolve(ec, { result } ); } );
 	} else {
-		resolver_.async_resolve(host, service, 
+		resolver_.async_resolve(host, service,
 			std::bind(&connection::handle_resolve, this, std::placeholders::_1, std::placeholders::_2));
 	}
 
@@ -153,7 +153,7 @@ void connection::handle_handshake(const boost::system::error_code& ec)
 
 		throw system_error(ec);
 	}
-	
+
 	if(use_tls_) {
 		if(handshake_response_.num == 0xFFFFFFFFU) {
 			use_tls_ = false;

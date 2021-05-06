@@ -87,7 +87,7 @@ wesnothd_connection::wesnothd_connection(const std::string& host, const std::str
 		use_tls_ = false;
 		boost::asio::post(io_context_, [this, ec, result](){ handle_resolve(ec, { result } ); } );
 	} else {
-		resolver_.async_resolve(host, service, 
+		resolver_.async_resolve(host, service,
 			std::bind(&wesnothd_connection::handle_resolve, this, std::placeholders::_1, std::placeholders::_2));
 	}
 
@@ -184,7 +184,7 @@ void wesnothd_connection::handle_handshake(const error_code& ec)
 		LOG_NW << __func__ << " Throwing: " << ec << "\n";
 		throw system_error(ec);
 	}
-	
+
 	if(use_tls_) {
 		if(handshake_response_.num == 0xFFFFFFFFU) {
 			use_tls_ = false;
@@ -197,7 +197,7 @@ void wesnothd_connection::handle_handshake(const error_code& ec)
 			raw_socket s { std::move(utils::get<raw_socket>(socket_)) };
 			tls_socket ts { new tls_socket::element_type{std::move(*s), tls_context_} };
 			socket_ = std::move(ts);
-			
+
 			auto& socket { *utils::get<tls_socket>(socket_) };
 
 			socket.set_verify_mode(

@@ -131,7 +131,7 @@ void server_base::serve(boost::asio::yield_context yield, boost::asio::ip::tcp::
 
 	uint32_t protocol_version;
 	uint32_t handshake_response;
-	
+
 	any_socket_ptr final_socket;
 
 	async_read(*socket, boost::asio::buffer(reinterpret_cast<std::byte*>(&protocol_version), 4), yield[error]);
@@ -158,7 +158,7 @@ void server_base::serve(boost::asio::yield_context yield, boost::asio::ip::tcp::
 				final_socket = socket;
 				break;
 			}
-			
+
 			final_socket = tls_socket_ptr { new tls_socket_ptr::element_type(std::move(*socket), tls_context_) };
 			utils::get<tls_socket_ptr>(final_socket)->async_handshake(boost::asio::ssl::stream_base::server, yield[error]);
 			if(error) {
