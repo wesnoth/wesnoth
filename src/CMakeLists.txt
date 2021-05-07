@@ -55,7 +55,7 @@ set(common-external-libs
 	${Boost_LOCALE_LIBRARY}
 )
 if(WIN32)
-  set(common-external-libs ${common-external-libs} shlwapi.lib winmm.lib)
+	set(common-external-libs ${common-external-libs} shlwapi.lib winmm.lib)
 endif(WIN32)
 
 if(CMAKE_SYSTEM_NAME STREQUAL "Linux")
@@ -91,7 +91,7 @@ set(server-external-libs
 )
 
 if(NOT WIN32)
-  set(server-external-libs ${server-external-libs} -lpthread)
+	set(server-external-libs ${server-external-libs} -lpthread)
 endif(NOT WIN32)
 
 if(APPLE)
@@ -124,16 +124,16 @@ if(WIN32)
 	set(wesnoth_game_sources ${wesnoth_game_sources} desktop/windows_tray_notification.cpp desktop/windows_battery_info.cpp)
 	
 	set_source_files_properties(${lua_sources} PROPERTIES COMPILE_FLAGS "/FI\"${wesnoth_lua_config}\"")
-  # silence an implicit bitshift conversion warning
+	# silence an implicit bitshift conversion warning
 	set_property(SOURCE SOURCE ${lua_sources} APPEND_STRING PROPERTY COMPILE_FLAGS " /wd4334")
 else()
-  set_source_files_properties(${lua_sources} PROPERTIES COMPILE_FLAGS "-include \"${wesnoth_lua_config}\" -Wno-old-style-cast -Wno-useless-cast -Wno-stringop-overflow")
+	set_source_files_properties(${lua_sources} PROPERTIES COMPILE_FLAGS "-include \"${wesnoth_lua_config}\" -Wno-old-style-cast -Wno-useless-cast -Wno-stringop-overflow")
 endif(WIN32)
 
 if(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
-  # silence a Clang specific warning due to extra parenthesis in if statements
+	# silence a Clang specific warning due to extra parenthesis in if statements
 	set_property(SOURCE SOURCE ${lua_sources} APPEND_STRING PROPERTY COMPILE_FLAGS " -Wno-parentheses-equality")
-  # silence a Clang specific warning when compiling the lua code
+	# silence a Clang specific warning when compiling the lua code
 	set_property(SOURCE SOURCE ${lua_sources}	APPEND_STRING PROPERTY COMPILE_FLAGS " -Wno-string-plus-int")
 endif(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
 
@@ -178,29 +178,29 @@ endif()
 
 add_library(wesnoth-common STATIC ${wesnoth_core_sources})
 if(ENABLE_GAME OR ENABLE_TESTS)
-  add_library(wesnoth-client STATIC ${wesnoth_sources} ${lua_sources} ${wesnoth_game_sources} ${wesnoth_sdl_sources})
+	add_library(wesnoth-client STATIC ${wesnoth_sources} ${lua_sources} ${wesnoth_game_sources} ${wesnoth_sdl_sources})
 
-  # widgets need special handling since otherwise the way they're registered causes the linker to remove them since it incorrectly thinks they're unused
-  add_library(wesnoth-widgets ${wesnoth_widget-sources})
-  if(APPLE)
-    set(WIDGETS_LIB -Wl,-force_load wesnoth-widgets)
-  elseif(NOT WIN32)
-    set(WIDGETS_LIB -Wl,--whole-archive wesnoth-widgets -Wl,--no-whole-archive)
-  else()
-    # handled by /WHOLEARCHIVE below
-    set(WIDGETS_LIB wesnoth-widgets)
-  endif(APPLE)
+	# widgets need special handling since otherwise the way they're registered causes the linker to remove them since it incorrectly thinks they're unused
+	add_library(wesnoth-widgets ${wesnoth_widget-sources})
+	if(APPLE)
+		set(WIDGETS_LIB -Wl,-force_load wesnoth-widgets)
+	elseif(NOT WIN32)
+		set(WIDGETS_LIB -Wl,--whole-archive wesnoth-widgets -Wl,--no-whole-archive)
+	else()
+		# handled by /WHOLEARCHIVE below
+		set(WIDGETS_LIB wesnoth-widgets)
+	endif(APPLE)
 endif(ENABLE_GAME OR ENABLE_TESTS)
 
 if(ENABLE_GAME)
-  if(WIN32)
+	if(WIN32)
 		add_executable(wesnoth WIN32 wesnoth.cpp)
 		target_link_options(wesnoth PRIVATE /WX /WHOLEARCHIVE:wesnoth-widgets)
-  elseif(APPLE)
+	elseif(APPLE)
 		add_executable(wesnoth wesnoth.cpp macosx/SDLMain.mm)
 	else()
 		add_executable(wesnoth wesnoth.cpp)
-  endif(WIN32)
+	endif(WIN32)
 
 	target_link_libraries(wesnoth wesnoth-common ${WIDGETS_LIB} wesnoth-client wesnoth-common ${game-external-libs})
 	add_dependencies(wesnoth wesnoth-revision)
@@ -213,19 +213,19 @@ endif(ENABLE_GAME)
 ########### Boost Unit tests ###############
 
 if(ENABLE_TESTS)
-  add_definitions(-DBOOST_TEST_DYN_LINK)
+	add_definitions(-DBOOST_TEST_DYN_LINK)
 
-  GetSources("boost_unit_tests" boost_tests_sources)
-  add_executable(boost_unit_tests ${boost_tests_sources})
+	GetSources("boost_unit_tests" boost_tests_sources)
+	add_executable(boost_unit_tests ${boost_tests_sources})
 
-  if(WIN32)
-    target_link_options(boost_unit_tests PRIVATE /WX /WHOLEARCHIVE:wesnoth-widgets)
-  endif(WIN32)
+	if(WIN32)
+		target_link_options(boost_unit_tests PRIVATE /WX /WHOLEARCHIVE:wesnoth-widgets)
+	endif(WIN32)
 
-  target_link_libraries(boost_unit_tests wesnoth-common ${WIDGETS_LIB} wesnoth-client wesnoth-common ${game-external-libs} ${Boost_UNIT_TEST_FRAMEWORK_LIBRARY})
+	target_link_libraries(boost_unit_tests wesnoth-common ${WIDGETS_LIB} wesnoth-client wesnoth-common ${game-external-libs} ${Boost_UNIT_TEST_FRAMEWORK_LIBRARY})
 	add_dependencies(boost_unit_tests wesnoth-revision)
 
-  set_target_properties(boost_unit_tests PROPERTIES OUTPUT_NAME ${BINARY_PREFIX}boost_unit_tests${BINARY_SUFFIX})
+	set_target_properties(boost_unit_tests PROPERTIES OUTPUT_NAME ${BINARY_PREFIX}boost_unit_tests${BINARY_SUFFIX})
 endif(ENABLE_TESTS)
 
 ########### Wesnothd Server ###############
@@ -243,7 +243,7 @@ if(ENABLE_SERVER)
 
 	target_link_libraries(wesnothd wesnoth-common ${server-external-libs})
 	if(WIN32)
-  	target_link_options(wesnothd PRIVATE /WX)
+		target_link_options(wesnothd PRIVATE /WX)
 	endif(WIN32)
 
 	set_target_properties(wesnothd PROPERTIES OUTPUT_NAME ${BINARY_PREFIX}wesnothd${BINARY_SUFFIX})
@@ -267,7 +267,7 @@ if(ENABLE_CAMPAIGN_SERVER)
 
 	target_link_libraries(campaignd wesnoth-common ${server-external-libs})
 	if(WIN32)
-  	target_link_options(campaignd PRIVATE /WX)
+		target_link_options(campaignd PRIVATE /WX)
 	endif(WIN32)
 
 	set_target_properties(campaignd PROPERTIES OUTPUT_NAME ${BINARY_PREFIX}campaignd${BINARY_SUFFIX})
