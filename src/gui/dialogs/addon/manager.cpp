@@ -206,6 +206,40 @@ const std::vector<addon_manager::addon_order> addon_manager::all_orders_{
 	[](const addon_info& a, const addon_info& b) { return a.created > b.created; }}
 };
 
+namespace
+{
+struct addon_tag
+{
+	/** Text to match against addon_info.tags() */
+	std::string id;
+	/** What to show in the filter's drop-down list */
+	std::string label;
+	/** Shown when hovering over an entry in the filter's drop-down list */
+	std::string tooltip;
+};
+
+const std::vector<addon_tag> tag_filter_types_{
+	{"cooperative", N_("addon_tag^Cooperative"),
+		// TRANSLATORS: tooltip in the drop-down menu for filtering add-ons
+		N_("addon_tag^All human players are on the same team, versus the AI")},
+	{"cosmetic", N_("addon_tag^Cosmetic"),
+		// TRANSLATORS: tooltip in the drop-down menu for filtering add-ons
+		N_("addon_tag^These make the game look different, without changing gameplay")},
+	{"difficulty", N_("addon_tag^Difficulty"),
+		// TRANSLATORS: tooltip in the drop-down menu for filtering add-ons
+		N_("addon_tag^Can make campaigns easier or harder")},
+	{"rng", N_("addon_tag^RNG"),
+		// TRANSLATORS: tooltip in the drop-down menu for filtering add-ons
+		N_("addon_tag^Modify the randomness in the combat mechanics, or remove it entirely")},
+	{"survival", N_("addon_tag^Survival"),
+		// TRANSLATORS: tooltip in the drop-down menu for filtering add-ons
+		N_("addon_tag^Fight against waves of enemies")},
+	{"terraforming", N_("addon_tag^Terraforming"),
+		// TRANSLATORS: tooltip in the drop-down menu for filtering add-ons
+		N_("addon_tag^Players can change the terrain")},
+};
+};
+
 addon_manager::addon_manager(addons_client& client)
 	: orders_()
 	, cfg_()
@@ -309,6 +343,22 @@ void addon_manager::pre_show(window& window)
 	connect_signal_notify_modified(status_filter,
 		std::bind(&addon_manager::apply_filters, this));
 
+	// The tag filter
+	auto& tag_filter = find_widget<multimenu_button>(&window, "tag_filter", false);
+
+	std::vector<config> tag_filter_entries;
+	for(const auto& f : tag_filter_types_) {
+		tag_filter_entries.emplace_back("label", t_string(f.label, GETTEXT_DOMAIN), "checkbox", false);
+		if(!f.tooltip.empty()) {
+			tag_filter_entries.back()["tooltip"] = t_string(f.tooltip, GETTEXT_DOMAIN);
+		}
+	}
+
+	tag_filter.set_values(tag_filter_entries);
+
+	connect_signal_notify_modified(tag_filter, std::bind(&addon_manager::apply_filters, this));
+
+	// The type filter
 	multimenu_button& type_filter = find_widget<multimenu_button>(&window, "type_filter", false);
 
 	std::vector<config> type_filter_entries;
@@ -321,6 +371,7 @@ void addon_manager::pre_show(window& window)
 	connect_signal_notify_modified(type_filter,
 		std::bind(&addon_manager::apply_filters, this));
 
+	// Sorting order
 	menu_button& order_dropdown = find_widget<menu_button>(&window, "order_dropdown", false);
 
 	std::vector<config> order_dropdown_entries;
@@ -555,6 +606,38 @@ boost::dynamic_bitset<> addon_manager::get_status_filter_visibility() const
 	return res;
 }
 
+boost::dynamic_bitset<> addon_manager::get_tag_filter_visibility() const
+{
+	const auto& tag_filter = find_widget<const multimenu_button>(get_window(), "tag_filter", false);
+	const auto toggle_states = tag_filter.get_toggle_states();
+	if(toggle_states.none()) {
+		// Nothing selected. It means that all add-ons are shown.
+		boost::dynamic_bitset<> res_flipped(addons_.size());
+		return ~res_flipped;
+	}
+
+	std::vector<std::string> selected_tags;
+	for(std::size_t i = 0; i < tag_filter_types_.size(); ++i) {
+		if(toggle_states[i]) {
+			selected_tags.push_back(tag_filter_types_[i].id);
+		}
+	}
+
+	boost::dynamic_bitset<> res;
+	for(const auto& a : addons_) {
+		bool matched_tag = false;
+		for(const auto& id : selected_tags) {
+			if(utils::contains(a.second.tags, id)) {
+				matched_tag = true;
+				break;
+			}
+		}
+		res.push_back(matched_tag);
+	}
+
+	return res;
+}
+
 boost::dynamic_bitset<> addon_manager::get_type_filter_visibility() const
 {
 	const multimenu_button& type_filter = find_widget<const multimenu_button>(get_window(), "type_filter", false);
@@ -585,6 +668,7 @@ void addon_manager::apply_filters()
 {
 	boost::dynamic_bitset<> res =
 		get_status_filter_visibility()
+		& get_tag_filter_visibility()
 		& get_type_filter_visibility()
 		& get_name_filter_visibility();
 	find_widget<addon_list>(get_window(), "addons", false).set_addon_shown(res);

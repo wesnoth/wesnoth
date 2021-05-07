@@ -156,6 +156,7 @@ private:
 
 	boost::dynamic_bitset<> get_name_filter_visibility() const;
 	boost::dynamic_bitset<> get_status_filter_visibility() const;
+	boost::dynamic_bitset<> get_tag_filter_visibility() const;
 	boost::dynamic_bitset<> get_type_filter_visibility() const;
 
 	void on_selected_version_change();
