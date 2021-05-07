@@ -13,23 +13,14 @@ if(ENABLE_MYSQL)
 endif(ENABLE_MYSQL)
 
 ## some includes ##
-include_directories(SYSTEM ${FONTCONFIG_INCLUDE_DIRS} )
-include_directories(SYSTEM ${PANGOCAIRO_INCLUDE_DIRS} )
-include_directories(SYSTEM ${GETTEXT_INCLUDE_DIR} )
-include_directories(SYSTEM ${LIBDBUS_INCLUDE_DIRS} )
-include_directories(SYSTEM ${VORBISFILE_INCLUDE_DIR} )
-
-include_directories(SYSTEM ${SDL2_INCLUDE_DIR} )
-set(sdl-lib ${SDL2_LIBRARY})
-#optional dependencies
-if(SDL2IMAGE_INCLUDE_DIR)
-	include_directories(SYSTEM ${SDL2IMAGE_INCLUDE_DIR} )
-	set(sdl_image-lib ${SDL2_IMAGE_LIBRARY})
-endif()
-if(SDL2MIXER_INCLUDE_DIR)
-	include_directories(SYSTEM ${SDL2MIXER_INCLUDE_DIR} )
-	set(sdl_mixer-lib ${SDL2_MIXER_LIBRARY})
-endif()
+include_directories(SYSTEM ${FONTCONFIG_INCLUDE_DIRS})
+include_directories(SYSTEM ${PANGOCAIRO_INCLUDE_DIRS})
+include_directories(SYSTEM ${GETTEXT_INCLUDE_DIR})
+include_directories(SYSTEM ${LIBDBUS_INCLUDE_DIRS})
+include_directories(SYSTEM ${VORBISFILE_INCLUDE_DIR})
+include_directories(SYSTEM ${SDL2_INCLUDE_DIR})
+include_directories(SYSTEM ${SDL2IMAGE_INCLUDE_DIR})
+include_directories(SYSTEM ${SDL2MIXER_INCLUDE_DIR})
 
 if(ZLIB_INCLUDE_DIR)
 	include_directories(SYSTEM ${ZLIB_INCLUDE_DIR} )
@@ -41,36 +32,22 @@ include_directories( ${CMAKE_SOURCE_DIR}/src/ )
 include_directories( ${CMAKE_CURRENT_BINARY_DIR} )
 
 link_directories(
-	${Boost_LIBRARY_DIRS}
 	${PANGOCAIRO_LIBRARY_DIRS}
 	${FONTCONFIG_LIBRARY_DIRS}
 	${LIBDBUS_LIBRARY_DIRS}
 )
 
-set(common-external-libs
-	${Boost_IOSTREAMS_LIBRARY}
-	${Boost_REGEX_LIBRARY}
-	${Boost_PROGRAM_OPTIONS_LIBRARY}
-	${Boost_FILESYSTEM_LIBRARY}
-	${Boost_LOCALE_LIBRARY}
-)
 if(WIN32)
-	set(common-external-libs ${common-external-libs} shlwapi.lib winmm.lib)
+	set(common-external-libs shlwapi.lib winmm.lib)
+elseif(CMAKE_SYSTEM_NAME STREQUAL "Linux")
+	set(common-external-libs "-licudata -licui18n -licuuc")
 endif(WIN32)
-
-if(CMAKE_SYSTEM_NAME STREQUAL "Linux")
-	set(common-external-libs ${common-external-libs} "-licudata -licui18n -licuuc")
-endif(CMAKE_SYSTEM_NAME STREQUAL "Linux")
 
 set(game-external-libs
 	${common-external-libs}
-	${sdl-lib}
-	${OPENSSL_CRYPTO_LIBRARY}
-	${Boost_SYSTEM_LIBRARIES}
-	${Boost_RANDOM_LIBRARY}
-	${Boost_THREAD_LIBRARY}
-	${sdl_image-lib}
-	${sdl_mixer-lib}
+	${SDL2_LIBRARY}
+	${SDL2_IMAGE_LIBRARY}
+	${SDL2_MIXER_LIBRARY}
 	${PANGOCAIRO_LIBRARIES}
 	${FONTCONFIG_LIBRARIES}
 	${LIBDBUS_LIBRARIES}
@@ -83,10 +60,6 @@ endif(ENABLE_HISTORY AND HISTORY_FOUND)
 
 set(server-external-libs
 	${common-external-libs}
-	${Boost_SYSTEM_LIBRARIES}
-	${Boost_RANDOM_LIBRARY}
-	${Boost_COROUTINE_LIBRARY}
-	${OPENSSL_CRYPTO_LIBRARY}
 	${MYSQL_LIBS}
 )
 
@@ -99,8 +72,8 @@ if(APPLE)
 endif(APPLE)
 
 if(MINGW)
-	set(server-external-libs ${server-external-libs} ${MINGW_SYSTEM_LIBS})
-	set(game-external-libs ${game-external-libs} ${MINGW_SYSTEM_LIBS})
+	set(server-external-libs ${server-external-libs} wsock32 ws2_32 shlwapi winmm)
+	set(game-external-libs ${game-external-libs} wsock32 ws2_32 shlwapi winmm)
 endif(MINGW)
 
 # get source lists
@@ -202,7 +175,23 @@ if(ENABLE_GAME)
 		add_executable(wesnoth wesnoth.cpp)
 	endif(WIN32)
 
-	target_link_libraries(wesnoth wesnoth-common ${WIDGETS_LIB} wesnoth-client wesnoth-common ${game-external-libs})
+	target_link_libraries(wesnoth
+		wesnoth-common
+		${WIDGETS_LIB}
+		wesnoth-client
+		wesnoth-common
+		${game-external-libs}
+		OpenSSL::Crypto
+		Boost::iostreams
+		Boost::program_options
+		Boost::regex
+		Boost::system
+		Boost::thread
+		Boost::random
+		Boost::coroutine
+		Boost::locale
+		Boost::filesystem
+	)
 	add_dependencies(wesnoth wesnoth-revision)
 
 	set_target_properties(wesnoth PROPERTIES OUTPUT_NAME ${BINARY_PREFIX}wesnoth${BINARY_SUFFIX})
@@ -222,7 +211,24 @@ if(ENABLE_TESTS)
 		target_link_options(boost_unit_tests PRIVATE /WX /WHOLEARCHIVE:wesnoth-widgets)
 	endif(WIN32)
 
-	target_link_libraries(boost_unit_tests wesnoth-common ${WIDGETS_LIB} wesnoth-client wesnoth-common ${game-external-libs} ${Boost_UNIT_TEST_FRAMEWORK_LIBRARY})
+	target_link_libraries(boost_unit_tests
+		wesnoth-common
+		${WIDGETS_LIB}
+		wesnoth-client
+		wesnoth-common
+		${game-external-libs}
+		OpenSSL::Crypto
+		Boost::iostreams
+		Boost::program_options
+		Boost::regex
+		Boost::system
+		Boost::thread
+		Boost::random
+		Boost::coroutine
+		Boost::locale
+		Boost::filesystem
+		Boost::unit_test_framework
+	)
 	add_dependencies(boost_unit_tests wesnoth-revision)
 
 	set_target_properties(boost_unit_tests PROPERTIES OUTPUT_NAME ${BINARY_PREFIX}boost_unit_tests${BINARY_SUFFIX})
@@ -241,7 +247,20 @@ if(ENABLE_SERVER)
 		target_link_libraries(wesnothd mariadbclientpp)
 	endif(ENABLE_MYSQL)
 
-	target_link_libraries(wesnothd wesnoth-common ${server-external-libs})
+	target_link_libraries(wesnothd
+		wesnoth-common
+		${server-external-libs}
+		OpenSSL::Crypto
+		Boost::iostreams
+		Boost::program_options
+		Boost::regex
+		Boost::system
+		Boost::thread
+		Boost::random
+		Boost::coroutine
+		Boost::locale
+		Boost::filesystem
+	)
 	if(WIN32)
 		target_link_options(wesnothd PRIVATE /WX)
 	endif(WIN32)
@@ -265,7 +284,21 @@ if(ENABLE_CAMPAIGN_SERVER)
 		target_link_libraries(campaignd mariadbclientpp)
 	endif(ENABLE_MYSQL)
 
-	target_link_libraries(campaignd wesnoth-common ${server-external-libs})
+	target_link_libraries(
+		campaignd
+		wesnoth-common
+		${server-external-libs}
+		OpenSSL::Crypto
+		Boost::iostreams
+		Boost::program_options
+		Boost::regex
+		Boost::system
+		Boost::thread
+		Boost::random
+		Boost::coroutine
+		Boost::locale
+		Boost::filesystem
+	)
 	if(WIN32)
 		target_link_options(campaignd PRIVATE /WX)
 	endif(WIN32)

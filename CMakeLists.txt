@@ -1,5 +1,5 @@
 ﻿# set minimum version
-cmake_minimum_required(VERSION 3.1)
+cmake_minimum_required(VERSION 3.5)
 
 project(wesnoth)
 
@@ -78,7 +78,7 @@ else()
 	set(OPENSSL_CRYPTO_LIBRARY "-framework Security")
 endif()
 
-find_package(Boost ${BOOST_VERSION} REQUIRED COMPONENTS iostreams program_options regex system thread random coroutine)
+find_package(Boost ${BOOST_VERSION} REQUIRED COMPONENTS iostreams program_options regex system thread random coroutine locale filesystem)
 
 # no, gettext executables are not required when NLS is deactivated
 find_package(Gettext)
@@ -95,9 +95,6 @@ if(NOT WIN32)
 		# equivalent to sdl2-config --cflags --libs
 		# since cmake cannot execute sdl2-config in msys2 shell
 		set(CMAKE_CXX_FLAGS ${CMAKE_CXX_FLAGS} -I/mingw64/include/SDL2 -Dmain=SDL_main -L/mingw64/lib -lmingw32 -lSDL2main -lSDL2 -mwindows)
-
-		# MinGW system libraries that should be linked to wesnoth
-		set(MINGW_SYSTEM_LIBS wsock32 ws2_32 shlwapi winmm)
 	endif()
 
 		# Use the safer `mkstemp' instead of `tmpnam' on POSIX systems.
@@ -495,6 +492,7 @@ endif(ENABLE_DEBUG_WINDOW_LAYOUT)
 #
 
 if(ENABLE_GAME OR ENABLE_TESTS)
+# TODO: SDL2::SDL2 etc component target available with cmake 3.19+
 	find_package(SDL2 2.0.8 REQUIRED)
 	find_package(SDL2_image 2.0.2 REQUIRED)
 	find_package(SDL2_mixer 2.0.0 REQUIRED)
@@ -502,6 +500,7 @@ if(ENABLE_GAME OR ENABLE_TESTS)
 	find_package(PkgConfig REQUIRED)
 	pkg_check_modules(CAIRO REQUIRED cairo>=1.10)
 	pkg_check_modules(PANGOCAIRO REQUIRED pangocairo>=1.22.0)
+# TODO: can use find_package and Fontconfig::Fontconfig with cmake 3.14+
 	pkg_check_modules(FONTCONFIG REQUIRED fontconfig>=2.4.1)
 	if(NOT WIN32)
 		pkg_check_modules(SYSTEMD systemd)
@@ -531,9 +530,6 @@ if(ENABLE_GAME)
 		message("Could not find GNU history. Disabling support for command history in lua console.")
 	endif(ENABLE_HISTORY AND HISTORY_FOUND)
 endif(ENABLE_GAME)
-
-find_package(Boost ${BOOST_VERSION} REQUIRED COMPONENTS filesystem)
-find_package(Boost ${BOOST_VERSION} REQUIRED COMPONENTS locale)
 
 if(ENABLE_POT_UPDATE_TARGET)
 	find_package(TranslationTools REQUIRED)
