@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2020-11-09 11:41+0300\n"
-"PO-Revision-Date: 2021-04-03 12:04+0200\n"
+"PO-Revision-Date: 2021-05-07 21:42+0200\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
@@ -634,7 +634,7 @@ msgstr "B<--nocache>"
 #. type: Plain text
 #: doc/man/wesnoth.6:211
 msgid "disables caching of game data."
-msgstr "vypne ukládání herních dat do vyrovnávací paměti."
+msgstr "vypne ukládání herních dat do mezipaměti."
 
 # type: TP
 #. type: TP
@@ -1099,7 +1099,7 @@ msgstr "B<--validcache>"
 #. type: Plain text
 #: doc/man/wesnoth.6:379
 msgid "assumes that the cache is valid. (dangerous)"
-msgstr "předpokládá, že vyrovnávací paměť je platná. (nebezpečné)"
+msgstr "předpokládá, že mezipaměť je platná. (nebezpečné)"
 
 # type: TP
 #. type: TP
@@ -2451,65 +2451,3 @@ msgstr ""
 #: doc/man/wesnothd.6:302
 msgid "B<wesnoth>(6)"
 msgstr "B<wesnoth>(6)"
-
-# type: Plain text
-#~ msgid ""
-#~ "(for user_handler=forum) The name of the table in which wesnothd will "
-#~ "save its own data about users. You will have to create this table "
-#~ "manually, e.g.: B<CREATE TABLE E<lt>table-nameE<gt>(username VARCHAR(255) "
-#~ "PRIMARY KEY, user_lastvisit INT UNSIGNED NOT NULL DEFAULT 0, "
-#~ "user_is_moderator TINYINT(4) NOT NULL DEFAULT 0);>"
-#~ msgstr ""
-#~ "(pro user_handler=forum) Název tabulky, v níž bude wesnothd ukládat svá "
-#~ "vlastní data o uživatelích. Tuto tabulku budete muset vytvořit ručně - "
-#~ "například: B<CREATE TABLE E<lt>jméno_tabulkyE<gt>(username VARCHAR(255) "
-#~ "PRIMARY KEY, user_lastvisit INT UNSIGNED NOT NULL DEFAULT 0, "
-#~ "user_is_moderator TINYINT(4) NOT NULL DEFAULT 0);>"
-
-# type: TP
-#~ msgid "B<--path>"
-#~ msgstr "B<--path>"
-
-# type: Plain text
-#~ msgid "prints the name of the game data directory and exits."
-#~ msgstr "pouze zobrazí cestu k adresáři s daty a skončí."
-
-#~ msgid "2013"
-#~ msgstr "2013"
-
-# type: TP
-#~ msgid "B<--bpp>I<\\ number>"
-#~ msgstr "B<--bpp>I<\\ číslo>"
-
-# type: Plain text
-#~ msgid "sets BitsPerPixel value. Example: B<--bpp 32>"
-#~ msgstr ""
-#~ "nastavuje hodnotu BitsPerPixel - počet bitů na bod. Příklad: B<--bpp 32>"
-
-# type: Plain text
-#~ msgid "path the path of the data directory and exits."
-#~ msgstr "pouze zobrazí cestu k adresáři s daty a skončí."
-
-# type: Plain text
-#~ msgid "runs the game in a small test scenario."
-#~ msgstr "spouští hru v malém testovacím scénáři."
-
-# type: Plain text
-#~ msgid ""
-#~ "selects a non-standard algorithm to be used by the AI controller for this "
-#~ "side. Available values: B<idle_ai> and B<sample_ai>."
-#~ msgstr ""
-#~ "vybírá nestandardní algoritmus, který bude použit pro umělou inteligenci "
-#~ "této strany. Momentálně jsou k dispozici hodnoty: B<idle_ai> a "
-#~ "B<sample_ai>."
-
-# type: Plain text
-#~ msgid ""
-#~ "runs the game without the GUI. Must appear before B<--multiplayer> to "
-#~ "have the desired effect."
-#~ msgstr ""
-#~ "spouští hru bez GUI. Musí být použito před B<--multiplayer> pro docílení "
-#~ "kýženého efektu."
-
-#~ msgid "2011"
-#~ msgstr "2011"

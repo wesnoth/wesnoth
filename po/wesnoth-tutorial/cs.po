@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2021-05-02 18:08 UTC\n"
-"PO-Revision-Date: 2021-03-14 16:21+0100\n"
+"PO-Revision-Date: 2021-05-06 00:00+0200\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
@@ -86,7 +86,7 @@ msgstr ""
 "Naučíš se základy:\n"
 "• <small>pohybu</small>\n"
 "• <small>útočení</small>\n"
-"• <small>uzdravování</small>\n"
+"• <small>léčení</small>\n"
 "• <small>verbování</small>"
 
 #. [objective]: condition=win
@@ -114,8 +114,8 @@ msgid ""
 "Part 1 will teach you the basics about movement, attacking, healing, and "
 "recruiting. Firstly, you’ll choose a hero (both heroes play the same)."
 msgstr ""
-"Jedná se o dvoudílný tutoriál určený pro lidi, kteří jsou ve hře noví. "
-"Část 1 tě naučí základy pohybu, útočení, uzdravení a verbování. Nejprve si "
+"Jedná se o dvoudílný tutoriál určený pro hráče, kteří jsou ve hře noví. "
+"Část 1 tě naučí základy pohybu, útočení, léčení a verbování. Nejprve si "
 "vybereš hrdinu (oba hrdinové hrají stejně)."
 
 #. [message]: speaker=narrator
@@ -427,7 +427,7 @@ msgid ""
 "and ending your turn on one will heal you. To a village!"
 msgstr ""
 "Máš na dosah dvě vesnice. Navštěvovat vesnice je dobrý nápad, a pokud "
-"ukončíš své kolo ve vesnici, na začátku příštího se uzdravíš. Tedy vzhůru do "
+"ukončíš své kolo ve vesnici, na začátku příštího se vyléčíš. Tedy vzhůru do "
 "vesnice!"
 
 #. [label]
@@ -458,7 +458,7 @@ msgid ""
 "many villages you currently control). Villages provide the gold needed to "
 "recruit units. Each turn, you gain 2 gold, plus 1 for every village you own."
 msgstr ""
-"Zabral(a) jsi vesnici! Teď tam vlají tvé barvy a byla přidána k celkovému "
+"Zabral/a jsi vesnici! Teď tam vlají tvé barvy a byla přidána k celkovému "
 "počtu tvých vesnic (obrázek domečku na vrchu obrazovky ukazuje, kolik vesnic "
 "nyní ovládáš). Vesnice poskytují zlato potřebné pro verbování jednotek. "
 "Každé kolo získáš 2 zlaté a k tomu 1 zlatý za každou vesnici, kterou "
@@ -472,10 +472,10 @@ msgid ""
 "whichever is less. In your case, you regained $student_hp_heal_amount "
 "hitpoints."
 msgstr ""
-"Jelikož jsi začal(a) své kolo ve vesnici, znovu jsi získal(a) nějaké zdraví! "
+"Jelikož jsi začal/a své kolo ve vesnici, znovu jsi získal/a nějaké zdraví! "
 "Vesnice každé kolo vyléčí jednotky o 8 bodů života nebo o to, co jim zbývá "
 "do úplného uzdravení, cokoli z toho je menší. V tvém případě jsi znovu "
-"získal(a) $student_hp_heal_amount bodů života."
+"získal/a $student_hp_heal_amount bodů života."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:701
@@ -500,8 +500,8 @@ msgid ""
 "have plenty of gold for that."
 msgstr ""
 "Skvělý nápad! Asi bude nejlepší nepokoušet se v tomto kole panáka napadnout. "
-"Místo toho by ses měl(a) vrátit do tvrze a naverbovat dvě jednotky; máš na "
-"to spoustu zlata."
+"Místo toho by ses měl/a vrátit do tvrze a naverbovat dvě jednotky; máš na to "
+"spoustu zlata."
 
 #. [label]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:717
@@ -568,8 +568,7 @@ msgstr ""
 msgid ""
 "Hey, the quintain just healed 2 hitpoints! I’d better attack it at once!"
 msgstr ""
-"Heeej, ten panák se právě uzdravil o dva životy! Asi by bylo lepší zase "
-"zaútočit!"
+"Heeej, ten panák si právě vyléčil 2 životy! Asi by bylo lepší zase zaútočit!"
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:827
@@ -577,13 +576,12 @@ msgid ""
 "female^Hey, the quintain just healed 2 hitpoints! I’d better attack it at "
 "once!"
 msgstr ""
-"Heeej, ten panák se právě uzdravil o dva životy! Asi by bylo lepší zase "
-"zaútočit!"
+"Heeej, ten panák si právě vyléčil 2 životy! Asi by bylo lepší zase zaútočit!"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:832
 msgid "Yes, if a unit doesn’t do anything for a turn, it will slowly heal."
-msgstr "Ano, pokud jednotka v tahu nic nedělá, bude se pomalu uzdravovat."
+msgstr "Ano, pokud jednotka v tahu nic nedělá, bude se pomalu léčit."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:837
@@ -591,7 +589,7 @@ msgid ""
 "Before you send your fighters against the quintain, you should know they "
 "have two kinds of attack..."
 msgstr ""
-"Předtím, než vyšleš své bojovníky proti panákovi, bys měl(a) vědět, že mají "
+"Předtím, než vyšleš své bojovníky proti panákovi, bys měl/a vědět, že mají "
 "dva druhy útoku..."
 
 #. [message]: speaker=student
@@ -885,7 +883,7 @@ msgstr "Jeden dobrý útok skřetího pěšáka a je po mně!"
 #. [event]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:126
 msgid "I could make use of some healing in a village."
-msgstr "Docela rád bych se uzdravil v nějaké vesnici."
+msgstr "Docela rád bych se vyléčil v nějaké vesnici."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:127
@@ -906,7 +904,7 @@ msgstr "Jeden dobrý útok skřetího pěšáka a je po mně!"
 #. [event]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:130
 msgid "female^I could make use of some healing in a village."
-msgstr "Docela ráda bych se uzdravila v nějaké vesnici."
+msgstr "Docela ráda bych se vyléčila v nějaké vesnici."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:131
@@ -1047,8 +1045,7 @@ msgid ""
 "fight so well."
 msgstr ""
 "Pravděpodobnější je tedy útok po mostě. Ostrov uprostřed je klíčový: má "
-"vesnici pro uzdravování raněných jednotek a les, ve kterém tak dobře "
-"bojujeme."
+"vesnici pro léčení raněných jednotek a les, ve kterém tak dobře bojujeme."
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:235
@@ -1089,10 +1086,9 @@ msgid ""
 "carefully, though; if a unit has too little experience, it might be better "
 "to recruit a new one."
 msgstr ""
-"Vidím, že máš ze svého tréninku zkušené oddíly! Měl(a) bys je <i>povolat</"
-"i>, abys začal(a) bitvu se zkušenějšími jednotkami. Ačkoli, důkladně to "
-"rozmysli; jestliže má jednotka příliš málo zkušeností, může být lepší "
-"naverbovat novou."
+"Vidím, že máš ze svého tréninku zkušené oddíly! Měl/a bys je <i>povolat</i>, "
+"abys začal/a bitvu se zkušenějšími jednotkami. Ačkoli, důkladně to rozmysli; "
+"jestliže má jednotka příliš málo zkušeností, může být lepší naverbovat novou."
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:270
@@ -1101,7 +1097,7 @@ msgid ""
 "formidable, so you should recall them as well."
 msgstr ""
 "Některé tvé jednotky také dokázaly povýšit o úroveň. Ty vzbuzují ještě větší "
-"respekt, takže bys je měl(a) také povolat."
+"respekt, takže bys je měl/a také povolat."
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:285
@@ -1136,8 +1132,8 @@ msgstr ""
 "své ostřílené veterány z předchozích scénářů za cenu 20 zlatých za každého. "
 "To ti v průběhu mnoha scénářů umožní vybudovat hrozivé vojsko povoláváním "
 "oddílů na nejvyšších úrovních nebo těch s dobrými kombinacemi vlastností "
-"a schopností. Abys povolal(a) jednotku, klikni pravým tlačítkem, zatímco "
-"tvůj velitel stojí v tvrzi, a vyber možnost <i>Přivolat</i>. Nezapomeň krom "
+"a schopností. Abys povolal/a jednotku, klikni pravým tlačítkem, zatímco tvůj "
+"velitel stojí v tvrzi, a vyber možnost <i>Přivolat</i>. Nezapomeň krom "
 "povolávání bývalých oddílů také naverbovat nové."
 
 #. [message]: speaker=Galdrad
@@ -1174,15 +1170,15 @@ msgid ""
 "they do for one turn. However, she’s physically weaker than fighters and "
 "archers, so be careful when sending her into battle."
 msgstr ""
-"Šamanka má schopnost <i>ošetřovat</i> spřátelené jednotky okolo sebe. Má "
-"také speciální útok, který <i>zpomaluje</i> nepřátele, přičemž na jedno kolo "
+"Šamanka má schopnost <i>léčit</i> spřátelené jednotky okolo sebe. Má také "
+"speciální útok, který <i>zpomaluje</i> nepřátele, přičemž na jedno kolo "
 "sníží o polovinu zranění jimi způsobená. Nicméně je tělesně slabší než "
 "bojovníci a lučištníci, takže si dej pozor, když ji posíláš do bitvy."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:322
 msgid "The <i>Heal</i> Ability"
-msgstr "Schopnost <i>ošetření</i>"
+msgstr "Schopnost <i>léčení</i>"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:324
@@ -1196,11 +1192,10 @@ msgid ""
 "A detailed explanation of healing may be found in the <i>Gameplay</i> "
 "section of the help (default hotkey: <b>F1</b>)."
 msgstr ""
-"Spojenecké jednotky sousedící se šamankou se na začátku každého kola uzdraví "
-"o 4 body života, což je jen půlka toho, co by poskytla vesnice. Za ošetření "
-"nezíská šamanka žádné zkušenosti, to pouze za souboj, ale vyplatí se dělat "
-"s ní pokroky – po povýšení na elfí druidku poskytuje stejné léčení jako "
-"vesnice.\n"
+"Spojenecké jednotky sousedící se šamankou si na začátku každého kola vyléčí "
+"4 životy, což je jen půlka toho, co by poskytla vesnice. Za léčení nezíská "
+"šamanka žádné zkušenosti, jen za souboj, ale vyplatí se dělat s ní pokroky. "
+"Po povýšení na elfí druidku poskytuje stejně účinné léčení jako vesnice.\n"
 "\n"
 "Podrobné vysvětlení léčení lze nalézt v nápovědě, v oddílu <i>Pravidla hry</"
 "i> (výchozí klávesová zkratka: <b>F1</b>)."
@@ -1252,13 +1247,13 @@ msgid ""
 "adjacent units by 8 hitpoints per turn. A unit next to multiple healers is "
 "healed by the most advanced one."
 msgstr ""
-"Teď máš dva léčitele. Avšak každá jednotka může být ošetřena pouze jedním "
-"z nich – stále bude léčena pouze o 4 body zdraví za kolo, i když bude "
-"sousedit s oběma šamankami.\n"
+"Teď máš dvě léčitelky. Avšak každá jednotka může být léčena pouze jednou "
+"z nich. I když bude sousedit s oběma šamankami, bude stále léčena pouze "
+"o 4 životy za kolo.\n"
 "\n"
 "Když kterákoli šamanka povýší na druidku, bude pak umět léčit sousední "
-"jednotky o 8 bodů života za kolo. Jednotka, která se nachází vedle více "
-"léčitelů, je léčena tím nejpokročilejším."
+"jednotky o 8 životů za kolo. Jednotka, která se nachází vedle více léčitelů, "
+"je léčena tím nejpokročilejším."
 
 #. [message]: speaker=narrator
 #. one healer is a level one shaman, but the other healer is a druid or (very unlikely) a shyde
@@ -1269,9 +1264,9 @@ msgid ""
 "healing from one healer — a unit next to multiple healers is healed by the "
 "most advanced one."
 msgstr ""
-"Teď máš dva léčitele. Tvoje druidka umí léčit sousední jednotky o 8 bodů "
-"života za kolo v porovnání se šamankou, která léčí o 4. Avšak každá jednotka "
-"může být léčena pouze jednou z nich – jednotka, která se nachází vedle více "
+"Teď máš dvě léčitelky. Tvoje druidka umí léčit sousední jednotky o 8 životů "
+"za kolo v porovnání se šamankou, která léčí o 4. Avšak každá jednotka může "
+"být léčena pouze jednou z nich. Jednotka, která se nachází vedle více "
 "léčitelů, je léčena tím nejpokročilejším."
 
 #. [message]: speaker=narrator
@@ -1285,7 +1280,7 @@ msgid ""
 "A unit in a village will receive healing from the village instead of from "
 "adjacent healers."
 msgstr ""
-"Jednotka ve vesnici přijme léčení z vesnice místo od sousedních léčitelů."
+"Jednotka ve vesnici přijme léčení z vesnice místo od sousedících léčitelů."
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:388
@@ -1325,8 +1320,8 @@ msgid ""
 "You certainly have a fondness for shamans, I see. They will provide a lot of "
 "healing, but not much offensive potential."
 msgstr ""
-"Aha, ty máš určitě slabost pro šamanky. Poskytnou ti mnoho ošetření, ale už "
-"ne tolik útočných možností."
+"Aha, ty máš určitě slabost pro šamanky. Poskytnou ti mnoho léčení, ale už ne "
+"tolik útočných možností."
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:442
@@ -1356,7 +1351,7 @@ msgstr "Ještě musíš obsadit vesnici!"
 msgid ""
 "You forgot to recruit troops! You can press <b>u</b> to undo your last move."
 msgstr ""
-"Zapomněl(a) jsi naverbovat oddíly! Můžeš stisknout <b>u</b>, abys vrátil(a) "
+"Zapomněl/a jsi naverbovat oddíly! Můžeš stisknout <b>u</b>, abys vrátil/a "
 "svůj poslední tah."
 
 #. [disallow_end_turn]
@@ -1417,8 +1412,8 @@ msgid ""
 "You forgot to capture a village! You can press <b>u</b> to undo your last "
 "move."
 msgstr ""
-"Zapomněl(a) jsi obsadit vesnici! Můžeš stisknout <b>u</b>, abys vrátil(a) "
-"svůj poslední tah."
+"Zapomněl/a jsi obsadit vesnici! Můžeš stisknout <b>u</b>, abys vrátil/a svůj "
+"poslední tah."
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:587
@@ -1510,8 +1505,8 @@ msgstr ""
 "lučištníci by jej mohli zaměstnat, aniž by moc riskovali. Smůla je, že se "
 "tvoji lučištníci v tomto kole k němu nemůžou dostat, ale ty bys je neměl "
 "nechat hnít! Přesuň je na takové místo, aby mohli zaútočit příští kolo. Na "
-"této straně řeky jsou také další vesnice. Měl(a) bys je zajistit kvůli "
-"příjmu a léčení."
+"této straně řeky jsou také další vesnice. Měl/a bys je zajistit kvůli příjmu "
+"a léčení."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:622
@@ -1664,7 +1659,7 @@ msgid ""
 "move everyone closer for next turn."
 msgstr ""
 "Doufám, že přežiju protiútok, když mé jednotky nebudou moci v tomto kole "
-"sejmout toho pěšáka. Pokud mohou zabrat další vesnice, měl(a) bych jim to "
+"sejmout toho pěšáka. Pokud mohou zabrat další vesnice, měl/a bych jim to "
 "nařídit a před dalším kolem přesunout všechny blíž."
 
 #. [message]: speaker=Galdrad
@@ -1674,7 +1669,7 @@ msgid ""
 "at the beginning of the next turn."
 msgstr ""
 "Jestliže zrovna za tebou stojí jedna ze tvých šamanek, na začátku příštího "
-"kola tě vyléčí o 4 body zdraví."
+"kola tě vyléčí o 4 životy."
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:789
@@ -1684,7 +1679,7 @@ msgid ""
 "closer for next turn."
 msgstr ""
 "Doufám, že moje jednotky přežijí protiútok, když v tomhle kole nebudu moct "
-"sejmout toho pěšáka. Pokud to jde, raději bych měl(a) obsadit víc vesnic "
+"sejmout toho pěšáka. Pokud to jde, raději bych měl/a obsadit víc vesnic "
 "a před dalším kolem přesunout všechny blíž."
 
 #. [message]: speaker=Galdrad
@@ -1693,8 +1688,8 @@ msgid ""
 "If one of your Shamans stands just behind your wounded units, she will heal "
 "them each 4 hitpoints at the beginning of the next turn."
 msgstr ""
-"Jestliže právě za tvými zraněnými jednotkami stojí jedna ze tvých šamanek, "
-"na začátku příštího kola každou z nich vyléčí o 4 body zdraví."
+"Jestliže právě za tvými zraněnými jednotkami stojí jedna z tvých šamanek, na "
+"začátku příštího kola každou z nich vyléčí o 4 životy."
 
 #. [message]: speaker=second_unit
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:830
@@ -1732,7 +1727,7 @@ msgid ""
 "without wading through the water, and you will be securely on a terrain with "
 "good defense."
 msgstr ""
-"Bravo! Vesnice na ostrově je naše. Můžeš použít stromy, abys vytvořil(a) "
+"Bravo! Vesnice na ostrově je naše. Můžeš použít stromy, abys vytvořil/a "
 "blokádu proti skřetům; bez brodění vodou mohou pouze přicházet přes most "
 "jeden za druhým a ty budeš bezpečně v terénu s dobrou obranou."
 
@@ -1807,7 +1802,7 @@ msgstr ""
 "Jak míjejí kola, tak se během scénáře mění denní doba. Jednotka může mít "
 "jednu ze čtyř <i>příslušností</i>: zákonnou, neutrální, chaotickou nebo "
 "šerou. Každá příslušnost má v závislosti na denní době různou odměnu nebo "
-"postih. Abys viděl(a), jaká je denní doba a kdo má výhodu, přejeď myší přes "
+"postih. Abys viděl/a, jaká je denní doba a kdo má výhodu, přejeď myší přes "
 "obrázek oblohy napravo pod minimapou."
 
 #. [then]
@@ -1828,17 +1823,16 @@ msgid ""
 "turn."
 msgstr ""
 "Nezapomeň stahovat raněné jednotky do vesnic. Šamanky mohou léčit jen "
-"o 4 body života za kolo, zatímco vesnice je mohou léčit rychleji – o 8 za "
-"kolo.\n"
+"o 4 životy za kolo, zatímco vesnice je mohou léčit rychleji – o 8 za kolo.\n"
 "\n"
 "Různé zdroje léčení nejsou obvykle slučovány. Jestliže jednotka začíná své "
 "kolo vedle více léčitelů nebo ve vesnici a vedle léčitele, stejně bude "
 "léčena pouze jednou.\n"
 "\n"
-"Výjimkou z pravidla je léčení při odpočinku – pokud jednotka v kole nic "
-"neudělá, vyléčí se o 2 body života navíc k jakémukoli léčení, které může "
-"přijmout z vesnic nebo od léčitelů, což se spojí až do celkového počtu 10 "
-"bodů života za kolo."
+"Výjimkou z pravidla je léčení při odpočinku. Pokud jednotka v kole nic "
+"neudělá, vyléčí se o 2 životy navíc k jakémukoli léčení, které může přijmout "
+"z vesnic nebo od léčitelů, což se spojí až do celkového počtu 10 životů za "
+"kolo."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:999
@@ -1854,10 +1848,10 @@ msgid ""
 "accident later on. When <b>n</b> no longer selects a new unit, it’s safe to "
 "end your turn."
 msgstr ""
-"Můžeš se ujistit, že jsi v tomto tahu využil(a) všechny své jednotky: "
-"zmáčkni <b>n</b> pro přepnutí na další jednotku, <b>mezerník</b> pokud chceš "
-"ukončit tah této jednotky, což zabraňuje nežádoucímu pohybu do konce kola. "
-"Když už <b>n</b> nevybírá další jednotku, můžeš své kolo bez obav ukončit."
+"Můžeš se ujistit, že jsi v tomto tahu využil/a všechny své jednotky: zmáčkni "
+"<b>n</b> pro přepnutí na další jednotku, <b>mezerník</b> pokud chceš ukončit "
+"tah této jednotky, což zabraňuje nežádoucímu pohybu do konce kola. Když už "
+"<b>n</b> nevybírá další jednotku, můžeš své kolo bez obav ukončit."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1010
@@ -1930,7 +1924,7 @@ msgid ""
 "The village heals him each turn and provides good defense."
 msgstr ""
 "Jejich vůdce se přesunul do vesnice! Není tak hloupý, jak jsem si myslel. "
-"Uzdravuje se každé kolo a má dobrou obranu."
+"Každé kolo se léčí a má dobrou obranu."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1174
@@ -1938,8 +1932,8 @@ msgid ""
 "That unit has captured our village! You’d better get him out; it heals him "
 "each turn and provides good defense."
 msgstr ""
-"Ta jednotka obsadila naši vesnici! Raději ji rychle zneškodni; vesnice ji "
-"každé kolo uzdraví a poskytne jí poměrně dobrou obranu."
+"Ta jednotka obsadila naši vesnici! Raději ji rychle zneškodni. Ve vesnici se "
+"každé kolo léčí a má dobrou obranu."
 
 #. [message]: speaker=unit
 #. The speaker is female
@@ -2049,9 +2043,9 @@ msgid ""
 "always has a 70% chance to hit, but it is not as powerful as the similar "
 "attack wielded by the Elvish Sorceress."
 msgstr ""
-"Postup o úroveň mě zcela uzdravil! Každé kolo můžu léčit jednotky o 8 bodů "
-"zdraví místo pouhých 4, a pokud se nedostanou do vesnice, mohu u nich také "
-"odstranit jed! Krom toho jsem získala další <i>magický</i> útok, což "
+"Postup o úroveň mě zcela uzdravil a vyléčil! Každé kolo můžu léčit jednotky "
+"o 8 životů místo pouhých 4 a mohu u nich také uzdravovat otravu, když se "
+"nedostanou do vesnice! Krom toho jsem získala další <i>magický</i> útok, což "
 "znamená, že má vždy 70% šanci na zásah, avšak není tak silný jako obdobný "
 "útok používaný elfími vědmami."
 
@@ -2064,10 +2058,10 @@ msgid ""
 "damage each for 4 strikes. It also has the <i>magical</i> weapon special, "
 "meaning it always has a 70% chance to hit."
 msgstr ""
-"Postup o úroveň mě zcela uzdravil! Už nemůžu léčit sousední jednotky, ale "
-"náhradou za to mám nový silný útok kouzelný oheň, který zraňuje o 7 při "
-"každém ze 4 úderů. Také je to speciální <i>magický</i> útok, což znamená, že "
-"má vždy 70% šanci na zásah."
+"Postup o úroveň mě zcela uzdravil a vyléčil! Už nemůžu léčit sousedící "
+"jednotky, ale náhradou za to mám nový silný útok kouzelným ohněm, který "
+"zraňuje o 7 při každém ze 4 úderů. Také je to speciální <i>magický</i> útok, "
+"což znamená, že má vždy 70% šanci na zásah."
 
 #. [message]: speaker=unit
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1363
@@ -2077,10 +2071,10 @@ msgid ""
 "ability, and I deal 9 damage each for 4 attacks. Use me to dislodge hard-to-"
 "hit units."
 msgstr ""
-"Postup o úroveň mě zcela uzdravil! Díky mým schopnostem <i>odstřelovače</i> "
-"mám při útoku svým dlouhým lukem vždy nejméně 60% šanci zásahu a udílím "
-"zranění 9 při každém ze 4 útoků. Použij mě proti jednotkám, které je obtížné "
-"zasáhnout."
+"Postup o úroveň mě zcela uzdravil a vyléčil! Díky mým schopnostem "
+"<i>odstřelovače</i> mám při útoku svým dlouhým lukem vždy nejméně 60% šanci "
+"zásahu a udílím zranění 9 při každém ze 4 útoků. Použij mě proti jednotkám, "
+"které je obtížné zasáhnout."
 
 #. [message]: speaker=unit
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1364
@@ -2090,10 +2084,10 @@ msgid ""
 "i> ability, and I deal 9 damage each for 4 attacks. Use me to dislodge hard-"
 "to-hit units."
 msgstr ""
-"Postup o úroveň mě zcela uzdravil! Díky mým schopnostem <i>odstřelovačky</i> "
-"mám při útoku svým dlouhým lukem vždy nejméně 60% šanci zásahu a udílím "
-"zranění 9 při každém ze 4 útoků. Použij mě proti jednotkám, které je obtížné "
-"zasáhnout."
+"Postup o úroveň mě zcela uzdravil a vyléčil! Díky mým schopnostem "
+"<i>odstřelovačky</i> mám při útoku svým dlouhým lukem vždy nejméně 60% šanci "
+"zásahu a udílím zranění 9 při každém ze 4 útoků. Použij mě proti jednotkám, "
+"které je obtížné zasáhnout."
 
 #. [message]: speaker=unit
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1377
@@ -2102,9 +2096,10 @@ msgid ""
 "and I have a special ability: <i>Ambush</i>. I can hide in forests where "
 "enemies can only see me if they are right next to me."
 msgstr ""
-"Postup o úroveň mě zcela uzdravil! Umím dobře zacházet s mečem i lukem, ale "
-"mám také speciální schopnost: <i>přepadení</i>. Mohu se skrýt v lese "
-"a nepřátelé mě uvidí, pouze pokud se náhodou postaví na políčko vedle mne."
+"Postup o úroveň mě zcela uzdravil a vyléčil! Umím dobře zacházet s mečem "
+"i lukem, ale mám také speciální schopnost: <i>přepadení</i>. Mohu se skrýt "
+"v lese a nepřátelé mě uvidí, pouze pokud se náhodou postaví na políčko vedle "
+"mne."
 
 #. [message]: speaker=unit
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1378
@@ -2113,9 +2108,9 @@ msgid ""
 "sword, and I have a special ability: <i>Ambush</i>. I can hide in forests "
 "where enemies can only see me if they are right next to me."
 msgstr ""
-"Postup o úroveň mě zcela uzdravil! Jsem dobrá v boji s lukem i mečem a mám "
-"speciální schopnost: <i>přepadení</i>. Mohu se skrýt v lese, kde mě "
-"nepřátelé uvidí, jen když budou přímo vedle mne."
+"Postup o úroveň mě zcela uzdravil a vyléčil! Jsem dobrá v boji s lukem "
+"i mečem a mám speciální schopnost: <i>přepadení</i>. Mohu se skrýt v lese, "
+"kde mě nepřátelé uvidí, jen když budou přímo vedle mne."
 
 #. [message]: speaker=unit
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1392
@@ -2125,11 +2120,11 @@ msgid ""
 "than the Elvish Hero, but my ability allows my allies to fight better. First "
 "level units around me do 25% more damage, so position me carefully!"
 msgstr ""
-"Postup o úroveň mě zcela uzdravil! Jsem dobrý v boji lukem i mečem a mám "
-"speciální schopnost: <i>velení</i>. Způsobuji menší zranění než elfí hrdina, "
-"ale má schopnost umožňuje mým spojencům lépe bojovat. Jednotky první úrovně, "
-"které stojí v boji vedle mne, způsobují o 25% více zranění, takže mě pečlivě "
-"umísťuj!"
+"Postup o úroveň mě zcela uzdravil a vyléčil! Jsem dobrý v boji lukem i mečem "
+"a mám speciální schopnost: <i>velení</i>. Způsobuji menší zranění než elfí "
+"hrdina, ale má schopnost umožňuje mým spojencům lépe bojovat. Jednotky první "
+"úrovně, které stojí v boji vedle mne, způsobují o 25 % více zranění, takže "
+"mě pečlivě umísťuj!"
 
 #. [message]: speaker=unit
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1405
@@ -2139,10 +2134,10 @@ msgid ""
 "abilities of the Elvish Captain, my superior fighting skills allow my "
 "attacks to do more damage!"
 msgstr ""
-"Postup o úroveň mě zcela uzdravil! Jsem mimořádně dobrý v boji s mečem. "
-"Způsobuji 8 zranění při 4 útocích. Nemám sice schopnost velení jako elfí "
-"kapitán, ale moje lepší bojové schopnosti dovolují mým útokům způsobit větší "
-"zranění!"
+"Postup o úroveň mě zcela uzdravil a vyléčil! Jsem mimořádně dobrý v boji "
+"s mečem. Způsobuji 8 zranění při 4 útocích. Nemám sice schopnost velení jako "
+"elfí kapitán, ale moje lepší bojové schopnosti dovolují mým útokům způsobit "
+"větší zranění!"
 
 #. [message]: speaker=unit
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1418
@@ -2152,10 +2147,10 @@ msgid ""
 "abilities, my fighting skills will allow me to beat the orcs by dealing more "
 "damage!"
 msgstr ""
-"Postup o úroveň mě zcela uzdravil! Stal jsem se lepším v používání meče, "
-"kterým způsobuji zranění 9 při 4 útocích. Přestože nemám žádné zvláštní "
-"schopnosti, moje bojové dovednosti mi dovolí porazit skřety tím, že způsobím "
-"větší zranění!"
+"Postup o úroveň mě zcela uzdravil a vyléčil! Stal jsem se lepším v používání "
+"meče, kterým způsobuji zranění 9 při 4 útocích. Přestože nemám žádné "
+"zvláštní schopnosti, moje bojové dovednosti mi dovolí porazit skřety tím, že "
+"způsobím větší zranění!"
 
 #. [message]: speaker=unit
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1419
@@ -2165,10 +2160,10 @@ msgid ""
 "abilities, my fighting skills will allow me to beat the orcs by dealing more "
 "damage!"
 msgstr ""
-"Postup o úroveň mě zcela uzdravil! Stala jsem se lepší v používání meče, "
-"kterým způsobuji zranění 9 při 4 útocích. Přestože nemám žádné zvláštní "
-"schopnosti, moje bojové dovednosti mi dovolí porazit skřety tím, že způsobím "
-"větší zranění!"
+"Postup o úroveň mě zcela uzdravil a vyléčil! Stala jsem se lepší v používání "
+"meče, kterým způsobuji zranění 9 při 4 útocích. Přestože nemám žádné "
+"zvláštní schopnosti, moje bojové dovednosti mi dovolí porazit skřety tím, že "
+"způsobím větší zranění!"
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1428
@@ -2279,7 +2274,7 @@ msgid ""
 "Don’t forget, you can press <b>u</b> to undo most things if you make a "
 "mistake."
 msgstr ""
-"Pamatuj, pokud jsi udělal(a) chybu, můžeš pro vrácení většiny akcí stisknout "
+"Pamatuj, pokud jsi udělal/a chybu, můžeš pro vrácení většiny akcí stisknout "
 "<b>u</b>."
 
 #: data/campaigns/tutorial/utils/utils.cfg:126
@@ -2289,559 +2284,3 @@ msgid ""
 msgstr ""
 "\n"
 "<big>Pro pokračování klikni myší nebo zmáčkni mezerník...</big>"
-
-#~ msgid ""
-#~ "Certain unit types have special <i>abilities</i>. Unlike traits, which "
-#~ "usually provide small buffs or debuffs, abilities give units special "
-#~ "behaviors that normal units do not have. In this case, the Elvish Shaman "
-#~ "has the Heal ability, which allows her to heal allied adjacent units 4 "
-#~ "hitpoints at the start of each turn. Unit types with abilities, "
-#~ "especially ones like Heal, can be very useful, so be careful when sending "
-#~ "them into battle."
-#~ msgstr ""
-#~ "Určité typy jednotek mají zvláštní <i>schopnosti</i>. Na rozdíl od "
-#~ "vlastností, které obvykle poskytují malé zlepšení nebo zhoršení, "
-#~ "schopnosti způsobují u jednotek zvláštní chování, které obyčejné jednotky "
-#~ "nemají. V tomto případě má elfí šamanka schopnost ošetření, která jí "
-#~ "umožňuje na začátku každého kola léčit sousední spojenecké jednotky "
-#~ "o 4 body života. Typy jednotek, které mají schopnosti, zvláště takové "
-#~ "jako ošetření, mohou být velmi užitečné, takže dej pozor, když je posíláš "
-#~ "do bitvy."
-
-#~ msgid ""
-#~ "Remember to retreat your wounded units to villages. Healers can only heal "
-#~ "4 hitpoints at a time, while villages can heal 8 (the maximum healing for "
-#~ "any unit)."
-#~ msgstr ""
-#~ "Nezapomeň stahovat své zraněné jednotky do vesnic. Léčitelé mohou za kolo "
-#~ "uzdravit pouze o 4 životy, kdežto vesnice o 8 (maximum pro všechny "
-#~ "jednotky)."
-
-#~ msgid "Agh! Now who will teach you how to defeat these orcs!"
-#~ msgstr "Au! Kdo si myslíš, že tě teď bude učit bojovat proti skřetům?!"
-
-#~ msgid "End Scenario"
-#~ msgstr "Konec scénáře"
-
-#~ msgid "Yes, I’m still figuring it out."
-#~ msgstr "Ano, stále mi to není úplně jasné."
-
-#~ msgid "No, I think I’ve got it."
-#~ msgstr "Ne, myslím že už to chápu."
-
-#~ msgid "sword"
-#~ msgstr "meč"
-
-#~ msgid "saber"
-#~ msgstr "šavle"
-
-#~ msgid "flail"
-#~ msgstr "cep"
-
-#~ msgid ""
-#~ "<big>You have selected Konrad.</big>\n"
-#~ "The places he can move to are highlighted."
-#~ msgstr ""
-#~ "<big>Vybral jsi Konráda.</big>\n"
-#~ "Místa, kam může jít, jsou vyznačena."
-
-#~ msgid ""
-#~ "<big>You have selected Li’sar.</big>\n"
-#~ "The places she can move to are highlighted."
-#~ msgstr ""
-#~ "<big>Vybral jsi Lisar.</big>\n"
-#~ "Místa, kam může jít, jsou vyznačena."
-
-#~ msgid "Here"
-#~ msgstr "Zde"
-
-#~ msgid ""
-#~ "Move Konrad next to Delfador by clicking on the tile marked <b>Here</b>."
-#~ msgstr ""
-#~ "Přesuň Konráda k Delfadorovi kliknutím na místo označené <b>zde</b>."
-
-#~ msgid ""
-#~ "Move Li’sar next to Delfador by clicking on the tile marked <b>Here</b>."
-#~ msgstr "Přesuň Lisar k Delfadorovi kliknutím na místo označené <b>zde</b>."
-
-#~ msgid "Left click on tile labeled <b>Here</b>"
-#~ msgstr "Klikni levým tlačítkem na políčko označené <b>zde</b>."
-
-#~ msgid "Oops!"
-#~ msgstr "Jejda!"
-
-#~ msgid "Click on the quintain to attack it"
-#~ msgstr "Klikni na panáka, abys na něj zaútočil"
-
-#~ msgid ""
-#~ "The tiny metal crown above Delfador means you will lose the game if he is "
-#~ "killed. You will also lose the game if your leader (Konrad) is killed."
-#~ msgstr ""
-#~ "Malá stříbrná korunka u Delfadorovy hlavy ukazuje, že když takto označená "
-#~ "jednotka zemře, prohraješ. Samozřejmě hra také končí, když zemře vůdce "
-#~ "(Konrád)."
-
-#~ msgid ""
-#~ "The tiny metal crown above Delfador means you will lose the game if he is "
-#~ "killed. You will also lose the game if your leader (Li’sar) is killed."
-#~ msgstr ""
-#~ "Malá stříbrná korunka u Delfadorovy hlavy ukazuje, že když takto označená "
-#~ "jednotka zemře, prohraješ. Samozřejmě hra také končí, když zemře vůdce "
-#~ "(Lisar)."
-
-#~ msgid ""
-#~ "female^Unfortunately, you’ve used up your turn attacking the quintain. "
-#~ "The quintain now gets to attack."
-#~ msgstr ""
-#~ "Bohužel už jsi spotřebovala svůj tah útokem na panáka. Teď je na tahu "
-#~ "panák."
-
-#~ msgid ""
-#~ "Click on the <b>End Turn</b> button in the bottom right of the screen"
-#~ msgstr "Klikni na tlačítko <b>Ukonči kolo</b> v pravém dolním rohu"
-
-#~ msgid ""
-#~ "female^There is a village on the other side of the river. Visiting "
-#~ "villages is a good idea, and ending your turn in one will heal you. To "
-#~ "the village!"
-#~ msgstr ""
-#~ "Na druhé straně řeky je vesnice. Navštěvovat vesnice je dobrý nápad, a "
-#~ "pokud ukončíš svůj tah ve vesnici, na začátku příštího se uzdravíš. Tedy "
-#~ "vzhůru do vesnice!"
-
-#~ msgid "Click on the village to move Konrad"
-#~ msgstr "Klikni na vesnici pro přesun Konráda"
-
-#~ msgid "Click on the village to move Li’sar"
-#~ msgstr "Klikni na vesnici pro přesun Lisar"
-
-#~ msgid "Click on the <b>End Turn</b> button"
-#~ msgstr "Klikni na tlačítko <b>Ukonči kolo</b>"
-
-#~ msgid ""
-#~ "female^You’re about to be healed by $hp_difference hitpoints, but it’s "
-#~ "time to summon some help against that quintain."
-#~ msgstr ""
-#~ "Za chvíli se uzdravíš o $hp_difference životů. Přesto si myslím, že budeš "
-#~ "proti tomu panákovi potřebovat nějakou pomoc."
-
-#~ msgid ""
-#~ "female^A splendid idea. You can recruit two units if you return to the "
-#~ "keep. You have plenty of gold for that."
-#~ msgstr ""
-#~ "Dobrý nápad. Pokud se vrátíš do své tvrze, můžeš naverbovat dvě jednotky. "
-#~ "Máš k tomu spoustu peněz."
-
-#~ msgid "Right click on a castle tile and select <b>Recruit</b>"
-#~ msgstr ""
-#~ "Klikni pravým tlačítkem na prázdné políčko hradu a vyber „<b>Naverbuj</b>“"
-
-#~ msgid "New Recruits"
-#~ msgstr "Noví rekruti"
-
-#~ msgid ""
-#~ "New units cannot act in the turn they appear; you will gain control of "
-#~ "them next turn.\n"
-#~ "After this dialog, you can move the mouse over a unit to see a summary of "
-#~ "its abilities on the right of the screen."
-#~ msgstr ""
-#~ "Nově naverbované jednotky v tomto kole nemohou nic dělat; můžeš je "
-#~ "ovládat až v příštím tahu.\n"
-#~ "Až zmizí tento dialog, můžeš přesunout myš nad jednotku a uvidíš souhrn "
-#~ "jejích vlastností na pravé straně obrazovky."
-
-#~ msgid "Right click on the other castle tile and recruit another unit"
-#~ msgstr ""
-#~ "Klikni pravým tlačítkem na jiné políčko hradu a naverbuj další jednotku"
-
-#~ msgid ""
-#~ "Had the quintain survived your onslaught, it would have regained two "
-#~ "hitpoints. If a unit doesn’t do anything for a turn, it will slowly heal."
-#~ msgstr ""
-#~ "Kdyby byl panák přežil tvůj útok, obnovil by si teď dva životy. Pokud "
-#~ "jednotka v tahu nic nedělá, bude se pomalu uzdravovat."
-
-#~ msgid "End your turn and attack again."
-#~ msgstr "Ukonči své kolo a pak opět zaútoč."
-
-#~ msgid "Left click on the quintain to attack it."
-#~ msgstr "Klikni levým tlačítkem na panáka, abys na něj zaútočil."
-
-#~ msgid " The ranged attack would have been safer."
-#~ msgstr " Útok na dálku by býval byl bezpečnější."
-
-#~ msgid ""
-#~ "\n"
-#~ "End your turn, then attack again."
-#~ msgstr ""
-#~ "\n"
-#~ "Ukonči své kolo a pak opět zaútoč."
-
-#~ msgid ""
-#~ "\n"
-#~ "You should tell the other elf to use the bow."
-#~ msgstr ""
-#~ "\n"
-#~ "Bylo by moudré, kdyby druhý elf použil luk."
-
-#~ msgid "Attack with the other elf"
-#~ msgstr "Zaútoč dalším elfem"
-
-#~ msgid ""
-#~ ", your new recruit, has two traits: <i>strong</i> and <i>intelligent</i>. "
-#~ "‘Strong’ means a unit does more damage, and ‘intelligent’ means it needs "
-#~ "less experience to advance a level."
-#~ msgstr ""
-#~ ", tvůj nový rekrut, má dvě vlastnosti: <i>silný</i> a <i>inteligentní</"
-#~ "i>. Silný znamená, že jednotka způsobuje větší zranění a inteligentní, že "
-#~ "potřebuje méně zkušeností k postupu o úroveň."
-
-#~ msgid ""
-#~ " has two traits: <i>quick</i> and <i>resilient</i>. ‘Quick’ means a unit "
-#~ "can move one tile further each turn, and ‘resilient’ means it has more "
-#~ "hitpoints."
-#~ msgstr ""
-#~ " má dvě vlastnosti: <i>rychlý</i> a <i>houževnatý</i>. Rychlý znamená, že "
-#~ "jednotka dojde každý tah o jedno políčko dále; houževnatý, že má více "
-#~ "životů."
-
-#~ msgid "Patch of forest"
-#~ msgstr "Kousek lesa"
-
-#~ msgid ""
-#~ "Now put an unwounded unit, preferably a Fighter, in that patch of forest "
-#~ "on the south-east of the island; a nice, defensible spot."
-#~ msgstr ""
-#~ "Teď postav nezraněnou jednotku, nejlépe bojovníka, do kousku lesa na "
-#~ "jihovýchodě ostrova: pěkné místo, vhodné k obraně."
-
-#~ msgid "Can one unit survive against all those enemies?"
-#~ msgstr "Může jedna jednotka obstát proti všem těm nepřátelům?"
-
-#~ msgid ""
-#~ "With a little help, yes. If you move your Shaman next to the defending "
-#~ "unit, she will heal it 4 hitpoints per turn. Just be careful not to "
-#~ "expose the Shaman to attack since she is fairly weak herself."
-#~ msgstr ""
-#~ "S trochou pomoci ano. Pokud přesuneš tvou šamanku vedle bránící se "
-#~ "jednotky, uzdraví ji každé kolo o 4 životy. Jen si dej pozor, aby nebyla "
-#~ "šamanka zbytečně vystavena útoku - je docela slabá."
-
-#~ msgid "Move a unit (a Fighter if possible) to the patch of forest"
-#~ msgstr "Přesuň jednotku (nejlépe bojovníka) na políčko lesa"
-
-#~ msgid ""
-#~ "Advance other units onto the island or to capture villages, then <b>End "
-#~ "Turn</b>"
-#~ msgstr ""
-#~ "Postup s dalšími jednotkami na ostrov nebo pro obsazení vesnic,\n"
-#~ "pak <b>ukonči kolo</b>."
-
-#~ msgid "I have $side.gold gold; enough to recruit!"
-#~ msgstr "Mám $side.gold zlatých, dostatek k verbování!"
-
-#~ msgid "Yes, keep recruiting more units: I think you might need them!"
-#~ msgstr ""
-#~ "Ano, pokračuj ve verbování dalších jednotek; myslím, že je budeš "
-#~ "potřebovat!"
-
-#~ msgid "This is no game, Konrad! "
-#~ msgstr "Konráde, tohle není hra!"
-
-#~ msgid "This is no game, Li’sar! "
-#~ msgstr "Tohle není hra, Lisar!"
-
-#~ msgid "Shallow"
-#~ msgstr "Mělčina"
-
-#~ msgid "Deep water"
-#~ msgstr "Hluboká voda"
-
-#~ msgid ""
-#~ "To start, we will need some units:\n"
-#~ "two Elvish Fighters\n"
-#~ "two Elvish Archers\n"
-#~ "one Elvish Shaman"
-#~ msgstr ""
-#~ "Pro začátek budeme potřebovat nějaké jednotky:\n"
-#~ "dva elfí bojovníky\n"
-#~ "dva elfí lučištníky\n"
-#~ "jednu elfí šamanku"
-
-#~ msgid ""
-#~ "During your tutorial, both $recall_name1 and $recall_name2 gained "
-#~ "$recall_xp1 experience points. You should <i>recall</i> them now so they "
-#~ "can gain more experience, rather than recruiting new Fighters."
-#~ msgstr ""
-#~ "Během tvého výcviku získali $recall_name1 i $recall_name2 $recall_xp1 "
-#~ "zkušenostních bodů. Bylo by dobré <i>přivolat</i> je, aby mohli získat "
-#~ "další zkušenosti, spíše než najímat nové jednotky."
-
-#~ msgid ""
-#~ "During your tutorial, $recall_name1 gained $recall_xp1 experience points, "
-#~ "and $recall_name2 gained $recall_xp2. You should <i>recall</i> them now "
-#~ "so they can gain more experience, rather than recruiting new Fighters."
-#~ msgstr ""
-#~ "Během tvého výcviku získal $recall_name1 $recall_xp1 zkušenostních bodů a "
-#~ "$recall_name2 $recall_xp2|.  Bylo by dobré <i>přivolat</i> je, aby mohli "
-#~ "získat další zkušenosti, spíše než najímat nové jednotky."
-
-#~ msgid ""
-#~ "During your tutorial, $recall_name1 gained $recall_xp1 experience points. "
-#~ "You should recall that unit now, and recruit a second one (which is "
-#~ "cheaper than recalling, anyway)."
-#~ msgstr ""
-#~ "Během tvého výcviku získal $recall_name1 $recall_xp1 zkušenostních bodů.  "
-#~ "Bylo by dobré <i>přivolat</i> jej a naverbovat druhou jednotku (což je "
-#~ "koneckonců levnější než přivolávání)."
-
-#~ msgid "RECALL $recall_name1"
-#~ msgstr "Přivolej jednotku $recall_name1"
-
-# nevleze se na obrazovku
-#~ msgid ""
-#~ "Right click on the tile north-east of you and <i>recall</i> $recall_name1"
-#~ msgstr ""
-#~ "Klikni pravým tlačítkem na políčko severovýchodně od tebe\n"
-#~ "a <i>přivolej</i> $recall_name1|a."
-
-#~ msgid ""
-#~ "If any Elvish Fighters from your last battle had experience, we would "
-#~ "<i>recall</i> them to the current battlefield. However, your veterans "
-#~ "gained no experience so it’s cheaper to recruit new units instead. "
-#~ "Recruit an Elvish Fighter."
-#~ msgstr ""
-#~ "Pokud by kterýkoliv elfí bojovník ze tvé předchozí bitvy získal "
-#~ "zkušenosti, <i>přivolali</i> bychom jej. Protože tomu tak není, je "
-#~ "levnější naverbovat nové. Takže naverbuj elfího bojovníka."
-
-#~ msgid ""
-#~ "If you had any experienced units alive from your last battle we would "
-#~ "<i>recall</i> them. Instead we must recruit some new Elvish Fighters."
-#~ msgstr ""
-#~ "Kdyby některé tvé zkušené jednotky z minulé bitvy přežily, <i>přivolali</"
-#~ "i> bychom je, ale místo toho musíme naverbovat nové elfí bojovníky."
-
-#~ msgid ""
-#~ "Right click on the tile north-east of you and recruit an Elvish Fighter"
-#~ msgstr ""
-#~ "Klikni pravým tlačítkem na políčko severovýchodně od tebe a naverbuj "
-#~ "elfího bojovníka"
-
-#~ msgid "No! I said recruit an Elvish <i>Shaman</i>! Now try again..."
-#~ msgstr ""
-#~ "Ne! Říkal jsem aby jsi naverboval elfí <i>šamanku</i>! Zkus to znovu..."
-
-#~ msgid "So, should I end my turn now?"
-#~ msgstr "Mám tedy ukončit kolo?"
-
-#~ msgid "No! I said recruit an Elvish <i>Archer</i>! Now try again..."
-#~ msgstr ""
-#~ "Ne! Říkal jsem aby jsi naverboval elfího <i>lučištníka</i>! Zkus to "
-#~ "znovu..."
-
-#~ msgid "Eowynial"
-#~ msgstr "Eowynial"
-
-#~ msgid "Recruit an Elvish Shaman to your north"
-#~ msgstr "Naverbuj elfí šamanku na sever od tebe"
-
-#~ msgid "Elriend"
-#~ msgstr "Elriend"
-
-#~ msgid "No! I said <i>recall</i> $recall_name2|! Now try again..."
-#~ msgstr ""
-#~ "Ne! Říkal jsem že máš <i>přivolat</i> $recall_name2|a! Zkus to znovu..."
-
-#~ msgid "Archer #1"
-#~ msgstr "Lučištník #1"
-
-#~ msgid "Archer #2"
-#~ msgstr "Lučištník #2"
-
-#~ msgid "Recruit two Elvish Archers in the tiles to your west"
-#~ msgstr "Naverbuj dva elfí lučištníky do políček na západ od tebe"
-
-#~ msgid "No! I said recruit an Elvish <i>Fighter</i>! Now try again..."
-#~ msgstr ""
-#~ "Ne! Říkal jsem aby jsi naverboval elfího <i>bojovníka</i>! Zkus to "
-#~ "znovu..."
-
-#~ msgid "Golir"
-#~ msgstr "Golir"
-
-#~ msgid ""
-#~ "No! I said recall $recall_name1, not $recall_name2|! Now try again..."
-#~ msgstr ""
-#~ "Ne! Říkal jsem aby jsi přivolal $recall_name1|a, ne $recall_name2|a! Zkus "
-#~ "to znovu..."
-
-#~ msgid ""
-#~ "No! I said <i>recall</i> $recall_name1 from the last battle, not recruit "
-#~ "a new $recruit.language_name|! Now try again..."
-#~ msgstr ""
-#~ "Ne! Říkal jsem abys <i>přivolal</i> $recall_name1|a z minulé bitvy, a ne "
-#~ "naverboval novou jednotku typu $recruit.language_name|! Zkus to znovu..."
-
-# nevleze se na obrazovku
-#~ msgid "Right click on the tile east of you and recall $recall_name2"
-#~ msgstr ""
-#~ "Klikni pravým tlačítkem na políčko východně od tebe\n"
-#~ "a přivolej $recall_name2|a"
-
-#~ msgid "RECALL $recall_name2"
-#~ msgstr "Přivolej jednotku $recall_name2"
-
-#~ msgid "Right click on the tile east of you and recruit an Elvish Fighter"
-#~ msgstr ""
-#~ "Klikni pravým tlačítkem na políčko východně od tebe a naverbuj elfího "
-#~ "bojovníka"
-
-#~ msgid ""
-#~ "$recruit.language_name|? I said <i>recruit</i> a new <i>Elvish Fighter</"
-#~ "i>. Now try again..."
-#~ msgstr ""
-#~ "Cože, $recruit.language_name|? Říkal jsem abys <i>naverboval elfího "
-#~ "bojovníka</i>! Zkus to znovu..."
-
-#~ msgid "Elindel"
-#~ msgstr "Elindel"
-
-#~ msgid "You’ve learned well, Konrad! "
-#~ msgstr "Vidím, že už jsi se něco naučil, Konráde! "
-
-#~ msgid ""
-#~ "The village supports one unit and pays 1 gold per turn. You’re only "
-#~ "losing 1 gold per turn now."
-#~ msgstr ""
-#~ "Vesnice zásobuje jednu jednotku a přidává jeden zlatý za kolo. Teď "
-#~ "přicházíš pouze o 1 zlatý za kolo."
-
-#~ msgid "You’ve learned well, Li’sar! "
-#~ msgstr "Vidím, že už jsi se něco naučila, Lisar! "
-
-#~ msgid ""
-#~ "You should leave the villages near your keep for Konrad to capture. He "
-#~ "needs to stay nearby to recruit more units anyway."
-#~ msgstr ""
-#~ "Měl bys nechat vesnice okolo tvrze k obsazení Konrádovi, protože stejně "
-#~ "bude muset zůstat poblíž tvrze pro verbování dalších jednotek."
-
-#~ msgid ""
-#~ "You should leave the villages near your keep for Li’sar to capture. She "
-#~ "needs to stay nearby to recruit more units anyway."
-#~ msgstr ""
-#~ "Měl bys nechat vesnice okolo tvrze k obsazení Lisar, protože stejně bude "
-#~ "muset zůstat poblíž tvrze pro verbování dalších jednotek."
-
-#~ msgid ""
-#~ "Orcish Grunts have no ranged attacks, so use your archers against them."
-#~ msgstr "Skřeti nemají útok na dálku, takže proti nim použij své lučištníky."
-
-#~ msgid ""
-#~ "To review the capabilities of any unit—including an enemy—hover the mouse "
-#~ "over it, and you will see a unit summary on the right of the screen"
-#~ msgstr ""
-#~ "Pro zjištění schopností jakékoliv jednotky na bojišti na ni přesuň myš. "
-#~ "Napravo se objeví příslušný souhrn."
-
-# ohldně toho na pravém panelu
-#~ msgid "Unit Summaries"
-#~ msgstr "Souhrn informací o jednotkách"
-
-#~ msgid ""
-#~ "Excellent. Elves are well-protected in the forest. There’s only a 30% "
-#~ "chance of hitting an Elvish Archer in that tile."
-#~ msgstr ""
-#~ "Výtečně! Elfové jsou v lese dobře chráněni. Pravděpodobnost, že útočníci "
-#~ "zasáhnou elfího lučištníka v lese je pouze 30%."
-
-#~ msgid ""
-#~ "It’s very dangerous to stand in water when there are enemies about! Your "
-#~ "unit will have an 80% chance of being hit when the enemy counter-attacks! "
-#~ "Cancel!"
-#~ msgstr ""
-#~ "Je velmi nebezpečné stát ve vodě, když jsou okolo nepřátelé! Tvá jednotka "
-#~ "má šanci 80%, že bude zasažena, když se skřet bude bránit! Vrať to!"
-
-#~ msgid "Attack the orc with the other Archer"
-#~ msgstr "Zaútoč na skřeta dalším lučištníkem"
-
-#~ msgid "Fighter to HERE"
-#~ msgstr "Bojovník sem"
-
-#~ msgid ""
-#~ "Your other units cannot reach the orc this turn. Send a Fighter to the "
-#~ "village in the far east of the map. It will take two turns to reach it."
-#~ msgstr ""
-#~ "Tvé další jednotky se v tomto kole nedostanou dostatečně blízko k tomu "
-#~ "skřetovi. Pošli jednoho bojovníka do vesnice daleko na východě, bude to "
-#~ "trvat dva tahy."
-
-#~ msgid "Tell a Fighter to move to the far east village"
-#~ msgstr "Nech bojovníka jít do vesnice dále na východě"
-
-#~ msgid ""
-#~ "Send the other Fighter and the Shaman south so they can attack next turn, "
-#~ "then return to the keep to recruit more units!"
-#~ msgstr ""
-#~ "Pošli druhého bojovníka a šamanku na jih, aby mohli v příštím kole "
-#~ "zaútočit, a ty se vrať do tvrze naverbovat další jednotky!"
-
-#~ msgid "Move your Fighter and Shaman south, then return Konrad to the keep"
-#~ msgstr "Přesuň bojovníka a šamanku na jih, pak vrať Konráda do tvrze"
-
-#~ msgid "Move your Fighter and Shaman south, then return Li’sar to the keep"
-#~ msgstr "Přesuň bojovníka a šamanku na jih, pak vrať Lisar do tvrze"
-
-#~ msgid "Recruit another Archer and a Fighter"
-#~ msgstr "Naverbuj dalšího lučištníka a bojovníka."
-
-#~ msgid "That is often a problem, which is why owning villages is important."
-#~ msgstr "To je častý problém. Proto je důležité mít obsazené vesnice."
-
-#~ msgid "Move Konrad to another (unowned) village"
-#~ msgstr "Přesuň Konráda do další (neobsazené) vesnice"
-
-#~ msgid "Move Li’sar to another (unowned) village"
-#~ msgstr "Přesuň Lisar do další (neobsazené) vesnice"
-
-#~ msgid "ZoC"
-#~ msgstr "ZoC"
-
-#~ msgid "Advance other units and capture villages, then <b>End Turn</b>"
-#~ msgstr ""
-#~ "Postup s dalšími jednotkami a obsaď vesnice, potom <b>ukonči tah</b>"
-
-#~ msgid ""
-#~ "female^No other units can reach that orc. I hope my $unit.language_name "
-#~ "survives its counter-attack! I’d better grab more villages and move "
-#~ "everyone closer for next turn."
-#~ msgstr ""
-#~ "female^Žádné další jednotky se k tomu skřetovi nedostanou; doufám, že "
-#~ "$unit.language_name přežije jeho protiútok! Raději bych měl obsadit více "
-#~ "vesnic a přesunout v dalším tahu všechny jednotky blíže."
-
-#~ msgid "Move your Shaman onto the bridge to stand behind your other unit"
-#~ msgstr "Přesuň šamanku na most tak, aby stála přímo za tvojí jednotkou"
-
-#~ msgid ""
-#~ "Don’t forget about your Fighter in the east; you can move him south to "
-#~ "that last village near the channel."
-#~ msgstr ""
-#~ "Nezapomeň na svého bojovníka na východě. Můžeš jej přesunout na jih k "
-#~ "poslední vesnici u vody."
-
-#~ msgid ""
-#~ "After this dialog, hold the mouse over the landscape image below the "
-#~ "minimap on the right. This brings up a description of the time of day, "
-#~ "showing who has the advantage."
-#~ msgstr ""
-#~ "Po tomto dialogu přesuň myš nad obrázek pod mapou napravo, uvidíš tam "
-#~ "popis denní doby, včetně informace, kdo má výhodu."
-
-#~ msgid "Defend here"
-#~ msgstr "Braň se zde"
-
-#~ msgid "Do you want to keep practicing?"
-#~ msgstr "Chceš pokračovat v tréninku?"
