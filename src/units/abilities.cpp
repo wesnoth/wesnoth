@@ -1543,7 +1543,7 @@ bool attack_type::special_active_impl(const_attack_ptr self_attack, const_attack
 		return false;
 	}
 	if (tag_name == "slow" && other &&
-		other->get_ability_bool_anti_weapons("slow", other_loc, !is_attacker, other_attack, self_attack) || other->get_state(unit::STATE_SLOWED)) {
+		(other->get_ability_bool_anti_weapons("slow", other_loc, !is_attacker, other_attack, self_attack) || other->get_state(unit::STATE_SLOWED))) {
 		return false;
 	}
 	if (tag_name == "petrifies" && other &&
