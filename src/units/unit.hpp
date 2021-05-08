@@ -1655,7 +1655,7 @@ public:
 	 * This means that the ability could be owned by this unit itself or by an adjacent unit, should
 	 * the ability affect an AoE in which this unit happens to be.
 	 *
-	 * @param tag_name            The name of the ability to check for.
+	 * @param status_name         The name of the status to immune.
 	 * @param loc                 The location around which to check for affected units. This may or
 	 *                            may not be the location of this unit.
 	 * @param attacker            The unit afected is attacker or defender in fight
@@ -1663,7 +1663,7 @@ public:
 	 * @param opp_weapon              The weapon used by opponent to unit affected
 	 */
 
-	bool get_ability_bool_anti_weapons(const std::string& tag_name, const map_location& loc, bool attacker, const_attack_ptr weapon = nullptr, const_attack_ptr opp_weapon=nullptr) const;
+	bool get_ability_bool_anti_weapons(const std::string& status_name, const map_location& loc, bool attacker, const_attack_ptr weapon = nullptr, const_attack_ptr opp_weapon=nullptr) const;
 
 	/**
 	 * Checks whether this unit currently possesses or is affected by a ability to type immune_to.
@@ -1671,14 +1671,14 @@ public:
 	 * This means that the ability could be owned by this unit itself or by an adjacent unit, should
 	 * the ability affect an AoE in which this unit happens to be.
 	 *
-	 * @param tag_name            The name of the ability to check for.
+	 * @param status_name         The name of the status  to immune.
 	 * @param attacker            The unit afected is attacker or defender in fight
 	 * @param weapon              The weapon used by unit affected
 	 * @param opp_weapon              The weapon used by opponent to unit affected
 	 */
-	bool get_ability_bool_anti_weapons(const std::string& tag_name, bool attacker, const_attack_ptr weapon = nullptr, const_attack_ptr opp_weapon = nullptr) const
+	bool get_ability_bool_anti_weapons(const std::string& status_name, bool attacker, const_attack_ptr weapon = nullptr, const_attack_ptr opp_weapon = nullptr) const
 	{
-		return get_ability_bool_anti_weapons(tag_name, loc_, attacker, weapon, opp_weapon);
+		return get_ability_bool_anti_weapons(status_name, loc_, attacker, weapon, opp_weapon);
 	}
 
 	/** Checks whether this unit currently possesses a given ability used like weapon
