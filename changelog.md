@@ -10,7 +10,7 @@
    * Increased minimum required version of SDL to 2.0.8 (PR #5736).
  ### Terrain
  ### Translations
-   * Updated translations: British English, Dutch, Italian.
+   * Updated translations: British English, Czech, Dutch, Italian.
  ### Units
    * Update piglet/boar graphics
  ### User interface
