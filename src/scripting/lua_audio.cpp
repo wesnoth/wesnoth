@@ -339,6 +339,6 @@ namespace lua_audio {
 		lua_pushstring(L, Track);
 		lua_setfield(L, -2, "__metatable");
 
-		return "Adding music playlist table...";
+		return "Adding music playlist table...\n";
 	}
 }
