@@ -41,6 +41,7 @@
    * Add a `ability_id_active` attribute to `[filter]`
    * `[terrain_mask]` now accepts `mask_file` as an alternative to an inline mask. The file is loaded from the same place as `map_file` in the `[scenario]` tag (ie, a maps/ subdirectory of your binary path). Anyone who prefers to keep masks separate from regular maps is free to make a subdirectory for their masks (or just keep all their masks inline).
    * `[effect]apply_to=movement` now always affects vision too, except when given the `apply_to_vision=no` attribute
+   * Add an [anti_special] ability with 'special' attribute, which can negate the effects of certain special weapons (slow, poison, drains, plague and petrifies), but remain 'active' in attack prediction window.
  ### Miscellaneous and Bug Fixes
    * More optimization in the UI drawing code, fixes the crash displaying the full credits (issue #5043).
    * Made GUI.pyw compatible with Python 3.9 (issue #5719).

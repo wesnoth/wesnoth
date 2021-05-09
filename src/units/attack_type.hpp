@@ -106,6 +106,12 @@ public:
 	 * @param special_tags If true, match @a special against the tag name of special tags.
 	 */
 	bool has_special_or_ability(const std::string& special, bool special_id=true, bool special_tags=true) const;
+	/**
+	 * Checks whether this unit currently possesses or is affected by a ability to type anti_special.
+	 *
+	 * @param special             The name of the ability to check for.
+	 */
+	bool has_anti_weapon_ability(const std::string& special) const;
 
 	// In unit_types.cpp:
 
@@ -159,6 +165,7 @@ private:
 	 * @param whom determine if unit affected or not by special ability.
 	 * @param tag_name The special ability type who is being checked.
 	 * @param leader_bool If true, [leadership] abilities are checked.
+	 * @param anti_special If true, [anti_special] abilities are checked.
 	 */
 	static bool check_self_abilities_impl(
 		const_attack_ptr self_attack,
@@ -168,7 +175,8 @@ private:
 		const map_location& loc,
 		AFFECTS whom,
 		const std::string& tag_name,
-		bool leader_bool=false
+		bool leader_bool=false,
+		bool anti_special=false
 	);
 
 
@@ -184,6 +192,7 @@ private:
 	 * @param whom determine if unit affected or not by special ability.
 	 * @param tag_name The special ability type who is being checked.
 	 * @param leader_bool If true, [leadership] abilities are checked.
+	 * @param anti_special If true, [anti_special] abilities are checked.
 	 */
 	static bool check_adj_abilities_impl(
 		const_attack_ptr self_attack,
@@ -195,7 +204,8 @@ private:
 		const map_location& loc,
 		AFFECTS whom,
 		const std::string& tag_name,
-		bool leader_bool=false
+		bool leader_bool=false,
+		bool anti_special=false
 	);
 
 	static bool special_active_impl(

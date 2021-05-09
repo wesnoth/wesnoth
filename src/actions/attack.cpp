@@ -143,10 +143,10 @@ battle_context_unit_stats::battle_context_unit_stats(nonempty_unit_const_ptr up,
 		opp_ctx.emplace(opp_weapon->specials_context(oppp, up, opp_loc, u_loc, !attacking, weapon));
 	}
 
-	slows = weapon->has_special_or_ability("slow");
-	drains = !opp.get_state("undrainable") && weapon->has_special_or_ability("drains");
-	petrifies = weapon->has_special_or_ability("petrifies");
-	poisons = !opp.get_state("unpoisonable") && weapon->has_special_or_ability("poison") && !opp.get_state(unit::STATE_POISONED);
+	slows = weapon->has_special_or_ability("slow") && !weapon->has_anti_weapon_ability("slow");
+	drains = !opp.get_state("undrainable")  && !weapon->has_anti_weapon_ability("drains") && weapon->has_special_or_ability("drains");
+	petrifies = weapon->has_special_or_ability("petrifies") && !weapon->has_anti_weapon_ability("petrifies");
+	poisons = !opp.get_state("unpoisonable") && !weapon->has_anti_weapon_ability("poison") && weapon->has_special_or_ability("poison") && !opp.get_state(unit::STATE_POISONED);
 	backstab_pos = is_attacker && backstab_check(u_loc, opp_loc, units, resources::gameboard->teams());
 	rounds = weapon->get_specials_and_abilities("berserk").highest("value", 1).first;
 
@@ -161,7 +161,7 @@ battle_context_unit_stats::battle_context_unit_stats(nonempty_unit_const_ptr up,
 	// Handle plague.
 	unit_ability_list plague_specials = weapon->get_specials_and_abilities("plague");
 	plagues = !opp.get_state("unplagueable") && !plague_specials.empty() &&
-		opp.undead_variation() != "null" && !resources::gameboard->map().is_village(opp_loc);
+		opp.undead_variation() != "null" && !resources::gameboard->map().is_village(opp_loc) && !weapon->has_anti_weapon_ability("plague");
 
 	if(plagues) {
 		plague_type = (*plague_specials.front().ability_cfg)["type"].str();
