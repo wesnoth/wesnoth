@@ -655,7 +655,7 @@ function ai_helper.get_named_loc_xy(param_core, cfg, required_for)
     if (param_core ~= '') then param_loc = param_core .. '_loc' end
     local loc_id = cfg[param_loc]
     if loc_id then
-        local loc = wesnoth.special_locations[loc_id]
+        local loc = wesnoth.current.map.special_locations[loc_id]
         if loc then
             return loc
         else
