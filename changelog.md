@@ -12,6 +12,9 @@
  ### Translations
    * Updated translations: British English, Czech, Dutch, Italian, Russian.
  ### Units
+   * Horses added
+   * Seahorse added
+   * Zombie horse variation added
    * Update piglet/boar graphics
  ### User interface
    * The multiplayer "turns over" dialog now uses each team's colors when showing teams' names.
