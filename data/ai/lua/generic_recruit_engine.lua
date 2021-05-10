@@ -684,7 +684,7 @@ return {
                 local enemy_sides = wesnoth.sides.find({ { "enemy_of", {side = wesnoth.current.side} } })
                 local min_dist = math.huge
                 for _, side in ipairs(enemy_sides) do
-                    local enemy_start_hex = wesnoth.special_locations[side.side]
+                    local enemy_start_hex = wesnoth.current.map.special_locations[side.side]
                     if enemy_start_hex then
                         local dist = wesnoth.map.distance_between(reference_hex[1], reference_hex[2], enemy_start_hex[1], enemy_start_hex[2])
                         if dist < min_dist then
