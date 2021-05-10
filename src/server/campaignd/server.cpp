@@ -1144,11 +1144,11 @@ void server::handle_request_campaign(const server::request& req)
 
 			LOG_CS << req << "Sending add-on '" << name << "' version: " << from << " -> " << to << " (delta)\n";
 
-			utils::visit([this, &req, &doc](auto && sock) {
+			if(utils::visit([this, &req, &doc](auto && sock) {
 				boost::system::error_code ec;
 				coro_send_doc(sock, doc, req.yield[ec]);
-				if(check_error(ec, sock)) return;
-			}, req.sock);
+				return check_error(ec, sock);
+			}, req.sock)) return;
 
 			full_pack_path.clear();
 		}
@@ -1164,11 +1164,11 @@ void server::handle_request_campaign(const server::request& req)
 		}
 
 		LOG_CS << req << "Sending add-on '" << name << "' version: " << to << " size: " << full_pack_size / 1024 << " KiB\n";
-		utils::visit([this, &req, &full_pack_path](auto&& socket) {
+		if(utils::visit([this, &req, &full_pack_path](auto&& socket) {
 			boost::system::error_code ec;
 			coro_send_file(socket, full_pack_path, req.yield[ec]);
-			if(check_error(ec, socket)) return;
-		}, req.sock);
+			return check_error(ec, socket);
+		}, req.sock)) return;
 	}
 
 	// Clients doing upgrades or some other specific thing shouldn't bump
@@ -1220,11 +1220,11 @@ void server::handle_request_campaign_hash(const server::request& req)
 		}
 
 		LOG_CS << req << "Sending add-on hash index for '" << req.cfg["name"] << "' size: " << file_size / 1024 << " KiB\n";
-		utils::visit([this, &path, &req](auto&& socket) {
+		if(utils::visit([this, &path, &req](auto&& socket) {
 			boost::system::error_code ec;
 			coro_send_file(socket, path, req.yield[ec]);
-			if(check_error(ec, socket)) return;
-		}, req.sock);
+			return check_error(ec, socket);
+		}, req.sock)) return;
 	}
 }
 
