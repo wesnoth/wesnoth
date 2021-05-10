@@ -1,5 +1,6 @@
 ## Version 1.15.12+dev
  ### Add-ons client
+   * The details panel now shows the list of tags in each add-on.
  ### Add-ons server
  ### Campaigns
  ### Editor
