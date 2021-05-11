@@ -366,7 +366,7 @@ if wesnoth.kernel_type() ~= "Application Lua Kernel" then
 			wml.array_access.set(key, value)
 		end
 	})
-	
+
 	--[========[Global persistent variables]========]
 	local ns_key, global_temp = '$ns$', "lua_global_variable"
 	local global_vars_ns = {}
@@ -375,7 +375,7 @@ if wesnoth.kernel_type() ~= "Application Lua Kernel" then
 			setmetatable({[ns_key] = namespace}, global_vars_ns)
 		end
 	}
-	
+
 	function global_vars_ns.__index(self, name)
 		local U = wesnoth.require "wml-utils"
 		local var <close> = U.scoped_var(global_temp)
@@ -393,7 +393,7 @@ if wesnoth.kernel_type() ~= "Application Lua Kernel" then
 		end
 		return res
 	end
-	
+
 	function global_vars_ns.__newindex(self, name, val)
 		local U = wesnoth.require "wml-utils"
 		local var <close> = U.scoped_var(global_temp)
@@ -407,12 +407,12 @@ if wesnoth.kernel_type() ~= "Application Lua Kernel" then
 			}
 		end)
 	end
-	
+
 	-- Make sure wesnoth.experimental.wml actually exists
 	-- It's done this way so it doesn't break if we later need to add things here from C++
 	wesnoth.experimental = wesnoth.experimental or {}
 	wesnoth.experimental.wml = wesnoth.experimental.wml or {}
-	
+
 	wesnoth.experimental.wml.global_vars = setmetatable({}, global_vars_mt)
 else
 	--[========[Backwards compatibility for wml.tovconfig]========]

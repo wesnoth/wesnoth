@@ -389,7 +389,7 @@ namespace lua_units {
 		lua_setfield(L, -2, "__metatable");
 		lua_pushcfunction(L, impl_unit_attack_match);
 		lua_setfield(L, -2, "matches");
-		
+
 		return cmd_out.str();
 	}
 }

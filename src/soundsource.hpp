@@ -204,7 +204,7 @@ public:
 	const std::string& id() const { return id_; }
 
 	const std::string& files() const { return files_; }
-	
+
 	void set_files(const std::string& f) {
 		files_ = f;
 	}

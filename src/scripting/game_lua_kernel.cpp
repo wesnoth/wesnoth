@@ -1248,7 +1248,7 @@ int game_lua_kernel::impl_scenario_get(lua_State *L)
 		lua_push(L, mods);
 		return 1;
 	}
-	
+
 	if(classification.is_multiplayer()) {
 		return_cfgref_attrib("mp_settings", play_controller_.get_mp_settings().to_config());
 		return_cfgref_attrib("era", find_addon("era", classification.era_id));
@@ -4387,7 +4387,7 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 	lua_setmetatable(L, -2);
 	lua_setfield(L, -2, "game_display");
 	lua_pop(L, 1);
-	
+
 	// Create the scenario table.
 	cmd_log_ << "Adding scenario table...\n";
 

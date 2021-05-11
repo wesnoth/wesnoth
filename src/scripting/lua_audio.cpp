@@ -394,7 +394,7 @@ static int impl_source_get(lua_State* L) {
 	return_bool_attrib("check_fogged", src->check_fogged());
 	return_bool_attrib("check_shrouded", src->check_shrouded());
 	return_cfg_attrib("__cfg", src->write(cfg));
-	
+
 	if(strcmp(m, "locations") == 0) {
 		const auto& locs = src->get_locations();
 		lua_createtable(L, locs.size(), 0);
@@ -417,7 +417,7 @@ static int impl_source_set(lua_State* L) {
 	modify_int_attrib("fade_range", src->set_fade_range(value));
 	modify_bool_attrib("check_fogged", src->set_check_fogged(value));
 	modify_bool_attrib("check_shrouded", src->set_check_shrouded(value));
-	
+
 	if(strcmp(m, "sounds") == 0) {
 		std::string files;
 		if(lua_istable(L, 3)) {
@@ -427,12 +427,12 @@ static int impl_source_set(lua_State* L) {
 		}
 		src->set_files(files);
 	}
-	
+
 	if(strcmp(m, "locations") == 0) {
 		std::vector<map_location> locs;
 		locs.resize(1);
 		if(luaW_tolocation(L, 3, locs[0])) {
-			
+
 		} else {
 			locs.clear();
 			for(lua_pushnil(L); lua_next(L, 3); lua_pop(L, 1)) {
@@ -441,7 +441,7 @@ static int impl_source_set(lua_State* L) {
 		}
 		src->set_locations(locs);
 	}
-	
+
 	// Now apply the change
 	resources::soundsources->add(*src);
 	resources::soundsources->update();
@@ -516,7 +516,7 @@ namespace lua_audio {
 		};
 		luaL_setfuncs(L, vol_callbacks, 0);
 		lua_setmetatable(L, -2);
-		
+
 		// The music playlist metatable
 		lua_newuserdatauv(L, 0, 0);
 		lua_createtable(L, 0, 10);
@@ -537,7 +537,7 @@ namespace lua_audio {
 		lua_setfield(L, -2, "__metatable");
 		lua_setmetatable(L, -2);
 		lua_setfield(L, -2, "music_list");
-		
+
 		// The sound source map metatable
 		lua_newuserdatauv(L, 0, 0);
 		lua_createtable(L, 0, 3);
