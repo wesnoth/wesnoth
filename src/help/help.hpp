@@ -21,31 +21,49 @@ class unit_type;
 class CVideo;
 class game_config_view;
 
+#include <memory>
 #include <string>
-#include "utils/guard_value.hpp"
 
 namespace help {
 
+/**
+ * The help implementation caches data parsed from the game_config. This class
+ * is used to control the lifecycle of that cache, so that the cache will be
+ * cleared before the game_config itself changes.
+ *
+ * Note: it's okay to call any of the help::show_* functions without creating
+ * an instance of help_manager - that will simply mean that the cache is
+ * cleared before the show function returns.
+ *
+ * Creating two instances of this will cause an assert.
+ */
 struct help_manager {
 	help_manager(const game_config_view *game_config);
+	help_manager(const help_manager&) = delete;
+	help_manager& operator=(const help_manager&) = delete;
 	~help_manager();
-private:
-	utils::guard_value<const game_config_view*> guard;
 };
 
-struct section;
 /**
- * Open a help dialog using a toplevel other than the default. This
- * allows for complete customization of the contents, although not in a
- * very easy way.
+ * Helper function for any of the show_help functions to control the cache's
+ * lifecycle; can also be used by any other caller that wants to ensure the
+ * cache is reused over multiple show_help calls.
+ *
+ * Treat the return type as opaque, it can return nullptr on success. Also
+ * don't extend the cache lifecycle beyond the lifecycle of the
+ * game_config_manager or over a reload of the game config.
+ *
+ *@pre game_config_manager has been initialised
  */
-void show_help(const section &toplevel, const std::string& show_topic="",
-			   int xloc=-1, int yloc=-1);
+std::unique_ptr<help_manager> ensure_cache_lifecycle();
 
 /**
  * Open the help browser. The help browser will have the topic with id
  * show_topic open if it is not the empty string. The default topic
  * will be shown if show_topic is the empty string.
+ *
+ *@pre game_config_manager has been initialised, or the instance of help_manager
+ * has been created with an alternative config.
  */
 void show_help(const std::string& show_topic="", int xloc=-1, int yloc=-1);
 

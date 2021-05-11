@@ -193,7 +193,6 @@ void faction_select::profile_button_callback()
 	const unit_type* ut = unit_types.find(leader_type);
 	if(ut != nullptr) {
 		preferences::encountered_units().insert(ut->id());
-		help::help_manager help_manager(&game_config_manager::get()->game_config());
 		help::show_unit_description(*ut);
 	}
 }

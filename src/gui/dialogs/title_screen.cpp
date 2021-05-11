@@ -241,7 +241,6 @@ void title_screen::pre_show(window& win)
 			gui2::dialogs::help_browser::display();
 		}
 
-		help::help_manager help_manager(&game_config_manager::get()->game_config());
 		help::show_help();
 	});
 
@@ -282,9 +281,6 @@ void title_screen::pre_show(window& win)
 	// Addons
 	//
 	register_button(win, "addons", hotkey::TITLE_SCREEN__ADDONS, [&win]() {
-		// NOTE: we need the help_manager to get access to the Add-ons section in the game help!
-		help::help_manager help_manager(&game_config_manager::get()->game_config());
-
 		if(manage_addons()) {
 			win.set_retval(RELOAD_GAME_DATA);
 		}

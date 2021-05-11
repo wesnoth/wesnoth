@@ -253,11 +253,9 @@ int show_gamestate_inspector(const vconfig& cfg, const game_data& data, const ga
 
 int show_help(lua_State *L)
 {
-	help::help_manager help_manager(&game_config_manager::get()->game_config());
 	help::show_help(luaL_checkstring(L, 1));
 	return 0;
 }
-
 
 /**
  * - Arg 1: string, widget type
