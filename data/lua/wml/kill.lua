@@ -43,7 +43,7 @@ function wesnoth.wml_actions.kill(cfg)
 		end
 		if cfg.animate and unit.valid == "map" then
 			wesnoth.interface.scroll_to_hex(death_loc, true)
-			local anim = wesnoth.create_animator()
+			local anim = wesnoth.units.create_animator()
 			local primary = wml.get_child(cfg, "primary_attack")
 			local secondary = wml.get_child(cfg, "secondary_attack")
 			-- Yes, we get the primary attack from the secondary unit and vice versa
@@ -54,7 +54,7 @@ function wesnoth.wml_actions.kill(cfg)
 				if secondary_unit then
 					primary = secondary_unit:find_attack(primary)
 				else
-					primary = wesnoth.create_weapon(primary)
+					primary = wesnoth.units.create_weapon(primary)
 				end
 				wesnoth.log('err', "Primary weapon:\n" .. wml.tostring(primary.__cfg))
 			end
@@ -62,7 +62,7 @@ function wesnoth.wml_actions.kill(cfg)
 				if primary then
 					secondary = unit:find_attack(secondary)
 				else
-					secondary = wesnoth.create_weapon(secondary)
+					secondary = wesnoth.units.create_weapon(secondary)
 				end
 				wesnoth.log('err', "Secondary weapon:\n" .. wml.tostring(secondary.__cfg))
 			end

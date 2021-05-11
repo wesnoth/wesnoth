@@ -157,7 +157,7 @@ BOOST_AUTO_TEST_CASE( test_fs_binary_path )
 	BOOST_CHECK_EQUAL( get_binary_file_location("sounds", "explosion.ogg"),
 	                   gamedata + "/data/core/sounds/explosion.ogg" );
 
-	BOOST_CHECK_EQUAL( get_independent_image_path("wesnoth-icon.png"),
+	BOOST_CHECK_EQUAL( get_independent_binary_file_path("images", "wesnoth-icon.png"),
 	                   "data/core/images/wesnoth-icon.png" );
 
 	// Inexistent paths are resolved empty.
@@ -167,7 +167,7 @@ BOOST_AUTO_TEST_CASE( test_fs_binary_path )
 	BOOST_CHECK( get_binary_file_location("images", "bunnies_and_ponies_and_rainbows_oh_em_gee.psd").empty() );
 	BOOST_CHECK( get_binary_file_location("music", "this_track_does_not_exist.aiff").empty() );
 	BOOST_CHECK( get_binary_file_location("sounds", "rude_noises.aiff").empty() );
-	BOOST_CHECK( get_independent_image_path("dopefish.txt").empty() );
+	BOOST_CHECK( get_independent_binary_file_path("images", "dopefish.txt").empty() );
 }
 
 BOOST_AUTO_TEST_CASE( test_fs_wml_path )

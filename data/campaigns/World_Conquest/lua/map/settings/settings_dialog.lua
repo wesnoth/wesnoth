@@ -5,7 +5,7 @@ local _ = wesnoth.textdomain 'wesnoth-wc'
 
 
 function get_defaults(nplayer, nscenario)
-	if wesnoth.have_file(string.format("./../scenarios/WC_II_%dp_scenario%d.lua", nplayer, nscenario)) then
+	if filesystem.have_file(string.format("./../scenarios/WC_II_%dp_scenario%d.lua", nplayer, nscenario)) then
 		local old_wct_map_generator = _G.wct_map_generator
 		_G.wct_map_generator = function(default_id, postgen_id, length, villages, castle, iterations, hill_size, players, island)
 			return {

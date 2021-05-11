@@ -212,7 +212,7 @@ on_event("moveto", function()
 				pickadvance.pick_advance(unit)
 				if #unit.advances_to > 1 then
 					local len = #unit.advances_to
-					local rand = wesnoth.random(len)
+					local rand = mathx.random(len)
 					unit.advances_to = { unit.advances_to[rand] }
 				end
 			else

@@ -13,7 +13,7 @@ local function create_game(context)
   context.select_type({type = "scenario"})
   local s = info.find_level({id = "test1"})
   context.select_level({index = s.index})
-  context.set_name({name = tostring(wesnoth.random(999999))})
+  context.set_name({name = tostring(mathx.random(999999))})
   context.update_settings({registered_users = false})
 
   events, context, info = coroutine.yield()
@@ -52,7 +52,7 @@ return function()
   -- Reached the lobby. Random delay before we start actually simulating activity.
   -- This is here to avoid a situation where activity arrives in bursts after a script
   -- has launched, say, 100 copies of Wesnoth at the same time.
-  wesnoth.interface.delay(wesnoth.random(15000))
+  wesnoth.interface.delay(mathx.random(15000))
 
   events, context, info = coroutine.yield()
 
@@ -64,10 +64,10 @@ return function()
       exit_game(context)
     end
 
-    if wesnoth.random() > 0.1 then
+    if mathx.random() > 0.1 then
       -- chat message
       local messages = {"asdf", "qwerty", "zxc"}
-      context.chat({message = messages[wesnoth.random(#messages)]})
+      context.chat({message = messages[mathx.random(#messages)]})
     else
       -- toggle between creating a game and leaving it
       if not in_staging then

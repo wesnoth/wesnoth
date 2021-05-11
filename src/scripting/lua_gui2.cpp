@@ -35,6 +35,8 @@
 #include "scripting/lua_widget_methods.hpp"
 #include "scripting/push_check.hpp"
 #include "serialization/string_utils.hpp"
+#include "help/help.hpp"
+#include "game_config_manager.hpp"
 #include "tstring.hpp"
 #include "game_data.hpp"
 #include "game_state.hpp"
@@ -249,6 +251,13 @@ int show_gamestate_inspector(const vconfig& cfg, const game_data& data, const ga
 	return 0;
 }
 
+int show_help(lua_State *L)
+{
+	help::help_manager help_manager(&game_config_manager::get()->game_config());
+	help::show_help(luaL_checkstring(L, 1));
+	return 0;
+}
+
 
 /**
  * - Arg 1: string, widget type
@@ -280,6 +289,7 @@ int luaW_open(lua_State* L)
 		{ "show_popup",         &show_popup_dialog },
 		{ "show_story",         &show_story },
 		{ "show_prompt",        &show_message_box },
+		{ "show_help",          &show_help   },
 		{ "add_widget_definition",    &intf_add_widget_definition },
 		{ "show_dialog",              &intf_show_dialog   },
 		{ nullptr, nullptr },

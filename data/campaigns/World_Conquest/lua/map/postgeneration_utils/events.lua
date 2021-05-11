@@ -146,7 +146,7 @@ function wct_castle_expansion_side(side_num)
 		wesnoth.log("warn", "Too few tiles in castle expansion for side " .. side_num .. ", wanted: " .. n_tiles_wanted .. " but we got only " .. #candidates)
 		n_tiles_wanted = #candidates
 	end
-	helper.shuffle(candidates)
+	mathx.shuffle(candidates)
 	for i = 1, n_tiles_wanted do
 		map[candidates[i]] = "Ch"
 	end

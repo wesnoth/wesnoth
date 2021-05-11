@@ -9,7 +9,7 @@ local SP_attack
 local ca_spread_poison = {}
 
 function ca_spread_poison:evaluation(cfg, data, filter_own)
-    local start_time, ca_name = wesnoth.get_time_stamp() / 1000., 'spread_poison'
+    local start_time, ca_name = wesnoth.ms_since_init() / 1000., 'spread_poison'
     if AH.print_eval() then AH.print_ts('     - Evaluating spread_poison CA:') end
 
     local attacks_aspect = ai.aspects.attacks

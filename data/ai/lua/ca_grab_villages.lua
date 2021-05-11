@@ -10,7 +10,7 @@ local GV_unit, GV_village
 local ca_grab_villages = {}
 
 function ca_grab_villages:evaluation(cfg, data, filter_own)
-    local start_time, ca_name = wesnoth.get_time_stamp() / 1000., 'grab_villages'
+    local start_time, ca_name = wesnoth.ms_since_init() / 1000., 'grab_villages'
     if AH.print_eval() then AH.print_ts('     - Evaluating grab_villages CA:') end
 
     -- Check if there are units with moves left

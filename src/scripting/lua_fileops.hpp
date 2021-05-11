@@ -26,5 +26,6 @@ int intf_have_file(lua_State*);
 int intf_read_file(lua_State*);
 int intf_canonical_path(lua_State*);
 int load_file(lua_State*);
+int luaW_open(lua_State *L);
 
 } // end namespace lua_fileops

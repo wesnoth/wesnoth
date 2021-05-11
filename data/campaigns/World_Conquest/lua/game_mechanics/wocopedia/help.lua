@@ -119,7 +119,7 @@ function wesnoth.wml_actions.wc2_show_wocopedia(cfg)
 				end
 			end
 			---- add general factions topic ----
-			local era_wml = wesnoth.game_config.era
+			local era_wml = wesnoth.scenario.era
 
 			local node, page = root_node:add_help_page {
 				title = str_cat_era

@@ -1553,9 +1553,9 @@ std::string get_short_wml_path(const std::string& filename)
 	return filename;
 }
 
-std::string get_independent_image_path(const std::string& filename)
+std::string get_independent_binary_file_path(const std::string& type, const std::string& filename)
 {
-	bfs::path full_path(get_binary_file_location("images", filename));
+	bfs::path full_path(get_binary_file_location(type, filename));
 
 	if(full_path.empty()) {
 		return full_path.generic_string();

@@ -42,8 +42,8 @@ function wct_maritime_bridges()
 	local pb = get_possible_maritime_bridge()
 	while #pb[1].locs > 0 or #pb[2].locs > 0 or #pb[3].locs > 0 do
 		pb = functional.filter(pb, function(t) return #t.locs >0 end)
-		local sel = pb[wesnoth.random(#pb)]
-		local loc = sel.locs[wesnoth.random(#sel.locs)]
+		local sel = pb[mathx.random(#pb)]
+		local loc = sel.locs[mathx.random(#sel.locs)]
 		map[loc] = "Ww^" .. sel.type
 		pb = get_possible_maritime_bridge()
 	end
@@ -190,7 +190,7 @@ function world_conquest_tek_map_decoration_6b()
 			f.adjacent(f.terrain("W*^*"), nil, "2-5"),
 			f.adjacent(f.terrain("Wog,Wwg"))
 		))
-		loc = locs[wesnoth.random(#locs)];
+		loc = locs[mathx.random(#locs)];
 		map[loc] = "Iwr^Vl"
 	end
 
@@ -238,7 +238,7 @@ function world_conquest_tek_map_decoration_6b()
 	}
 	local locs = map:find(f.terrain("Iwr"))
 	for ship_i, ship_loc in ipairs(locs) do
-		if wesnoth.random(2) == 1 then
+		if mathx.random(2) == 1 then
 			table.insert(prestart_event, wml.tag.item {
 				x = ship_loc[1],
 				y = ship_loc[2],
@@ -368,7 +368,7 @@ function world_conquest_tek_map_decoration_6b()
 	}
 
 	-- chance of expand rivers into sea
-	local r = tonumber(helper.rand("0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,2,2,3"))
+	local r = tonumber(mathx.random_choice("0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,2,2,3"))
 	for i = 1 , r do
 		local terrain_to_change = map:find(f.all(
 			f.terrain("Wog,Wwg,Wwrg"),

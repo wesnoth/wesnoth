@@ -448,7 +448,7 @@ return {
         end
 
         function ai_cas:recruit_rushers_eval()
-            local start_time, ca_name = wesnoth.get_time_stamp() / 1000., 'recruit_rushers'
+            local start_time, ca_name = wesnoth.ms_since_init() / 1000., 'recruit_rushers'
             if AH.print_eval() then AH.print_ts('     - Evaluating recruit_rushers CA:') end
 
             local score = recruit_lib.do_recruit_eval(recruit_data)
@@ -756,7 +756,7 @@ return {
 
                 local lawful_bonus = 0
                 local eta_turn = wesnoth.current.turn + eta
-                if eta_turn <= wesnoth.game_config.last_turn then
+                if eta_turn <= wesnoth.scenario.turns then
                     lawful_bonus = wesnoth.get_time_of_day(wesnoth.current.turn + eta).lawful_bonus / eta^2
                 end
                 local damage_bonus = AH.get_unit_time_of_day_bonus(recruit_unit.alignment, lawful_bonus)

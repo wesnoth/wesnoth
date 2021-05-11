@@ -70,7 +70,7 @@ function repaint(map_data)
 		exact = false,
 	}
 
-	if wesnoth.random(4) == 1 then
+	if mathx.random(4) == 1 then
 		set_terrain { "Ww",
 			f.terrain("Wwg^*"),
 			layer = "base",
@@ -238,7 +238,7 @@ function wild_zones_replace(heights)
 		for i_temp, temp in ipairs(height) do
 			handle_single_zone(temp.all_locs, temp[1].default)
 			for zone_i, zone in ipairs(temp.zones) do
-				local wild_dice = wesnoth.random(100)
+				local wild_dice = mathx.random(100)
 				for chance_i, chance in ipairs(temp[1].chances) do
 					if wild_dice <= chance.value then
 						handle_single_zone(zone, chance.command)

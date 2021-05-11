@@ -31,3 +31,4 @@ void luaW_pushweapon(lua_State* L, attack_ptr weapon);
 void luaW_pushweapon(lua_State* L, const_attack_ptr weapon);
 const_attack_ptr luaW_toweapon(lua_State* L, int idx);
 attack_type& luaW_checkweapon(lua_State* L, int idx);
+int intf_create_attack(lua_State* L);

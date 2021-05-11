@@ -8,7 +8,7 @@ function wc2_invest.add_items(side_num, num_items)
 	local items_left = stringx.split(side.variables["wc2.items_left"] or "")
 	local items_available = stringx.split(side.variables["wc2.items"] or "")
 	for j = 1, num_items do
-		local i = wesnoth.random(#items_left)
+		local i = mathx.random(#items_left)
 		table.insert(items_available, items_left[i])
 		table.remove(items_left, i)
 	end
@@ -72,7 +72,7 @@ function wc2_invest.do_hero(t, is_local)
 	local x,y = leaders[1].x, leaders[1].y
 	if t == "wc2_commander" then
 		local commanders = stringx.split(side.variables["wc2.commanders"] or "")
-		local i = wesnoth.random(#commanders)
+		local i = mathx.random(#commanders)
 		t = commanders[i]
 		table.remove(commanders, i)
 		side.variables["wc2.commanders"] = table.concat(commanders, ",")
@@ -85,7 +85,7 @@ function wc2_invest.do_hero(t, is_local)
 		wesnoth.sides[side_num].gold = wesnoth.sides[side_num].gold + 15
 
 		local deserters = stringx.split(side.variables["wc2.deserters"] or "")
-		local i = wesnoth.random(#deserters)
+		local i = mathx.random(#deserters)
 		t = deserters[i]
 		table.remove(deserters, i)
 		side.variables["wc2.deserters"] = table.concat(deserters, ",")
@@ -171,7 +171,7 @@ end
 
 function wesnoth.wml_actions.wc2_invest(cfg)
 	--disallow undoing.
-	wesnoth.random(100)
+	mathx.random(100)
 	wc2_invest.invest()
 end
 

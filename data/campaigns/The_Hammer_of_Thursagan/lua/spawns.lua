@@ -20,8 +20,8 @@ function wml_actions.spawn_units(cfg)
 
 		done = done + 1
 
-		local unit_type = helper.rand(types)
-		local loc_i = helper.rand("1.."..#locs)
+		local unit_type = mathx.random_choice(types)
+		local loc_i = mathx.random_choice("1.."..#locs)
 
 		wml_actions.move_unit_fake({x = string.format("%d,%d", x, locs[loc_i][1]) , y = string.format("%d,%d", y, locs[loc_i][2]) , type = unit_type , side = side})
 		wesnoth.units.to_map({ type = unit_type , side = side, random_traits = "yes", generate_name = "yes" , upkeep = "loyal" }, locs[loc_i][1], locs[loc_i][2])

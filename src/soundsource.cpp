@@ -52,7 +52,7 @@ void manager::add(const sourcespec &spec)
 	sources_[spec.id()].reset(new positional_source(spec));
 }
 
-config manager::get(const std::string &id)
+sourcespec manager::get(const std::string &id)
 {
 	config cfg;
 	positional_source_iterator it = sources_.find(id);
@@ -71,6 +71,11 @@ void manager::remove(const std::string &id)
 	else {
 		sources_.erase(it);
 	}
+}
+
+bool manager::contains(const std::string& id)
+{
+	return sources_.find(id) != sources_.end();
 }
 
 void manager::update()
@@ -204,6 +209,20 @@ int positional_source::calculate_volume(const map_location &loc, const display &
 
 void positional_source::write_config(config& cfg) const
 {
+	cfg["sounds"] = files_;
+	cfg["delay"] = min_delay_;
+	cfg["chance"] = chance_;
+	cfg["check_fogged"] = check_fogged_;
+	cfg["check_shrouded"] = check_shrouded_;
+	cfg["loop"] = loops_;
+	cfg["full_range"] = range_;
+	cfg["fade_range"] = faderange_;
+	write_locations(locations_, cfg);
+}
+
+void sourcespec::write(config& cfg) const
+{
+	cfg["id"] = id_;
 	cfg["sounds"] = files_;
 	cfg["delay"] = min_delay_;
 	cfg["chance"] = chance_;

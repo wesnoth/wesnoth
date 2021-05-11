@@ -453,7 +453,7 @@ local function world_conquest_tek_map_repaint_6d()
 		fraction_rand = "24..240",
 	}
 
-	if wesnoth.random(20) == 1 then
+	if mathx.random(20) == 1 then
 		wct_map_decorative_docks()
 	end
 	-- beachs sand and stones

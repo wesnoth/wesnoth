@@ -20,6 +20,8 @@
 #include "log.hpp"
 #include "scripting/lua_common.hpp"	// for chat_message, luaW_pcall
 #include "scripting/push_check.hpp"
+#include "picture.hpp"
+#include "sdl/surface.hpp"
 
 #include <algorithm>
 #include <exception>
@@ -34,6 +36,48 @@ static lg::log_domain log_scripting_lua("scripting/lua");
 #define LOG_LUA LOG_STREAM(info, log_scripting_lua)
 #define WRN_LUA LOG_STREAM(warn, log_scripting_lua)
 #define ERR_LUA LOG_STREAM(err, log_scripting_lua)
+
+/**
+* Gets the dimension of an image.
+* - Arg 1: string.
+* - Ret 1: width.
+* - Ret 2: height.
+*/
+static int intf_get_image_size(lua_State *L)
+{
+	char const *m = luaL_checkstring(L, 1);
+	image::locator img(m);
+	if(!img.file_exists()) return 0;
+	surface s = get_image(img);
+	lua_pushinteger(L, s->w);
+	lua_pushinteger(L, s->h);
+	return 2;
+}
+
+/**
+ * Returns true if an asset with the given path can be found in the binary paths.
+ * - Arg 1: asset type (generally one of images, sounds, music, maps)
+ * - Arg 2: relative path
+ */
+static int intf_have_asset(lua_State* L)
+{
+	std::string type = luaL_checkstring(L, 1), name = luaL_checkstring(L, 2);
+	lua_pushboolean(L, !filesystem::get_binary_file_location(type, name).empty());
+	return 1;
+}
+
+/**
+ * Given an asset path relative to binary paths, resolves to an absolute
+ * asset path starting from data/
+ * - Arg 1: asset type
+ * - Arg 2: relative path
+ */
+static int intf_resolve_asset(lua_State* L)
+{
+	std::string type = luaL_checkstring(L, 1), name = luaL_checkstring(L, 2);
+	lua_push(L, filesystem::get_independent_binary_file_path(type, name));
+	return 1;
+}
 
 namespace lua_fileops {
 static std::string get_calling_file(lua_State* L)
@@ -272,6 +316,21 @@ int load_file(lua_State *L)
 	}
 	lua_remove(L, -2);	//remove the filename from the stack
 
+	return 1;
+}
+
+int luaW_open(lua_State* L)
+{
+	static luaL_Reg const callbacks[] {
+		{ "have_file", &lua_fileops::intf_have_file },
+		{ "read_file", &lua_fileops::intf_read_file },
+		{ "canonical_path", &lua_fileops::intf_canonical_path },
+		{ "image_size", &intf_get_image_size },
+		{ "have_asset", &intf_have_asset },
+		{ "resolve_asset", &intf_resolve_asset },
+	};
+	lua_newtable(L);
+	luaL_setfuncs(L, callbacks, 0);
 	return 1;
 }
 

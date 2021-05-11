@@ -154,3 +154,7 @@ wesnoth.get_dialog_value = wesnoth.deprecate_api('wesnoth.get_dialog_value', val
 wesnoth.add_dialog_tree_node = wesnoth.deprecate_api('wesnoth.add_dialog_tree_node', '<widget>:add_item_of_type', 1, nil, add_dialog_tree_node)
 wesnoth.remove_dialog_item = wesnoth.deprecate_api('wesnoth.remove_dialog_item', '<widget>:remove_items_at', 1, nil, remove_dialog_item)
 wesnoth.show_dialog = wesnoth.deprecate_api('wesnoth.show_dialog', 'gui.show_dialog', 1, nil, gui.show_dialog)
+if wesnoth.kernel_type() == "Game Lua Kernel" then
+	-- The deprecated function was only available in Game Lua Kernel, so even though show_help is available in other kernels, there's no need to expose the deprecated function there.
+	wesnoth.open_help = wesnoth.deprecate_api('wesnoth.open_help', 'gui.show_help', 1, nil, gui.show_help)
+end

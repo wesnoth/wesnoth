@@ -8,7 +8,7 @@ local strings = {
 -- which means in paticular changing the castle of the enemy accorign to the unit type of that
 -- enemy, and giving him an extra unit.
 local function wct_map_enemy_themed(race, pet, castle, village, chance)
-	if wesnoth.random(100) > chance then
+	if mathx.random(100) > chance then
 		return
 	end
 	local boss = wesnoth.units.find_on_map {
@@ -56,7 +56,7 @@ local function wct_map_enemy_themed(race, pet, castle, village, chance)
 	}
 	-- extra tweak with trees to elvish castle
 	for i, tile in ipairs(elvish_castle) do
-		if wesnoth.random(10) <= 4 then
+		if mathx.random(10) <= 4 then
 			wesnoth.current.map[tile] = "Cv^Fet"
 		end
 	end
