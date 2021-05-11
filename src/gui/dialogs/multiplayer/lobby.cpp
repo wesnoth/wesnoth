@@ -1070,7 +1070,6 @@ void mp_lobby::refresh_lobby()
 
 void mp_lobby::show_help_callback()
 {
-	help::help_manager help_manager(&game_config_);
 	help::show_help();
 }
 
