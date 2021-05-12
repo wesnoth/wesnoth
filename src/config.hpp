@@ -489,7 +489,7 @@ public:
 	void merge_attributes(const config &);
 	template<typename... T>
 	void remove_attributes(T... keys) {
-		for(const std::string& key : {keys...}) {
+		for(const std::string key : {keys...}) {
 			remove_attribute(key);
 		}
 	}
@@ -497,7 +497,7 @@ public:
 	template<typename... T>
 	void copy_attributes(const config& from, T... keys)
 	{
-		for(const std::string& key : {keys...}) {
+		for(const std::string key : {keys...}) {
 			auto* attr = from.get(key);
 			if(attr) {
 				(*this)[key] = *attr;

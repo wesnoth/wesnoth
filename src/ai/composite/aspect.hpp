@@ -301,7 +301,7 @@ public:
 	virtual config to_config() const
 	{
 		config cfg = aspect::to_config();
-		for (const typesafe_aspect_ptr<T> f : facets_) {
+		for (const typesafe_aspect_ptr<T>& f : facets_) {
 			cfg.add_child("facet",f->to_config());
 		}
 		if (default_) {
