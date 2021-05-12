@@ -502,9 +502,6 @@ if(ENABLE_GAME OR ENABLE_TESTS)
 	pkg_check_modules(PANGOCAIRO REQUIRED pangocairo>=1.22.0)
 # TODO: can use find_package and Fontconfig::Fontconfig with cmake 3.14+
 	pkg_check_modules(FONTCONFIG REQUIRED fontconfig>=2.4.1)
-	if(NOT WIN32)
-		pkg_check_modules(SYSTEMD systemd)
-	endif(NOT WIN32)
 endif(ENABLE_GAME OR ENABLE_TESTS)
 
 if(ENABLE_TESTS)
