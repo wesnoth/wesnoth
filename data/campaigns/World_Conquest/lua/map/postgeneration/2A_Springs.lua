@@ -19,28 +19,28 @@ function world_conquest_tek_map_decoration_2a()
 	}
 
 	-- chances of tropical palm forest near caves
-	if wesnoth.random(2) == 1 then
+	if mathx.random(2) == 1 then
 		local terrain_to_change = map:find(f.all(
 			f.terrain("Hh*^F*"),
 			f.adjacent(f.terrain("Xu,U*^*,Mv,Ql,Qxu"))
 		))
 		if #terrain_to_change > 3 then
-			local r = wesnoth.random(0, #terrain_to_change - 3)
+			local r = mathx.random(0, #terrain_to_change - 3)
 			for i = 1, r do
-				local loc = terrain_to_change[wesnoth.random(#terrain_to_change)]
+				local loc = terrain_to_change[mathx.random(#terrain_to_change)]
 				map[loc] = "Hh^Ftp"
 			end
 		end
 	end
-	if wesnoth.random(2) == 1 then
+	if mathx.random(2) == 1 then
 		local terrain_to_change = map:find(f.all(
 			f.terrain("G*^F*"),
 			f.adjacent(f.terrain("Xu,U*^*,Mv,Ql,Qxu"))
 		))
 		if #terrain_to_change > 3 then
-		local r = wesnoth.random(0, #terrain_to_change - 3)
+		local r = mathx.random(0, #terrain_to_change - 3)
 			for i = 1, r do
-				local loc = terrain_to_change[wesnoth.random(#terrain_to_change)]
+				local loc = terrain_to_change[mathx.random(#terrain_to_change)]
 				map[loc] = "Gs^Ftp"
 			end
 		end
@@ -139,7 +139,7 @@ function world_conquest_tek_map_decoration_2a()
 
 	-- fords
 
-	local r = wesnoth.random(0, 4)
+	local r = mathx.random(0, 4)
 	for i = 1, r do
 		set_terrain { "Wwf",
 			f.all(
@@ -152,8 +152,8 @@ function world_conquest_tek_map_decoration_2a()
 	end
 	-- chances flowers
 	local terrain_to_change = wct_store_possible_flowers("G*^Fet")
-	while #terrain_to_change > 0 and wesnoth.random(10) ~= 1 do
-		local loc = terrain_to_change[wesnoth.random(#terrain_to_change)]
+	while #terrain_to_change > 0 and mathx.random(10) ~= 1 do
+		local loc = terrain_to_change[mathx.random(#terrain_to_change)]
 		map[loc] = "^Efm"
 		local terrain_to_change = wct_store_possible_flowers("G*^Fet")
 	end
@@ -167,7 +167,7 @@ function world_conquest_tek_map_decoration_2a()
 	}
 
 	wct_map_reduce_castle_expanding_recruit("Ce", "Re")
-	if wesnoth.random(5) ~= 1 then
+	if mathx.random(5) ~= 1 then
 		wct_map_decorative_docks()
 	end
 end

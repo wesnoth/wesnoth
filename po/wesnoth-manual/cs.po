@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "POT-Creation-Date: 2021-02-20 18:40-0300\n"
-"PO-Revision-Date: 2021-03-29 20:31+0200\n"
+"PO-Revision-Date: 2021-05-05 23:34+0200\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
@@ -176,11 +176,11 @@ msgid ""
 "there and can travel more easily and fight better when they are in familiar "
 "terrain."
 msgstr ""
-"V krajině se nacházejí roztroušené vesnice, kde můžete uzdravovat jednotky a "
-"shromažďovat peníze, potřebné pro vydržování armády. Občas bude nutno "
+"V krajině se nacházejí roztroušené vesnice, kde můžeš léčit jednotky a "
+"získávat peníze, potřebné pro vydržování armády. Občas bude nutno "
 "překračovat pohoří a řeky, pronikat lesy, kopci a tundrou, a také křižovat "
 "otevřené pláně. Každý z těchto terénů obývají tvorové, uzpůsobení k "
-"tamějšímu životu; pohybují se proto ve známém terénu rychleji a bojují lépe."
+"tamějšímu životu. Pohybují se proto ve známém terénu rychleji a bojují lépe."
 
 #. type: Content of: <book><chapter><section><section><title>
 #: doc/manual/manual.en.xml:64
@@ -313,16 +313,16 @@ msgid ""
 "the first scenario of the campaign."
 msgstr ""
 "Wesnoth je navržen převážně pro hraní tažení. Tažení jsou propojené série "
-"scénářů. Tažení začnete hrát kliknutím na toto tlačítko; poté se zobrazí "
-"seznam tažení dostupných na Vašem počítači (další mohou být stažena). "
-"Vyberte si tažení a klikněte na „OK“ pro start nebo „Zrušit“ pro zavření "
+"scénářů. Tažení začneš hrát kliknutím na toto tlačítko. Zobrazí se seznam "
+"tažení dostupných na tvém počítači (a další si můžeš stáhnout, když budeš "
+"chtít). Vyber si tažení a klikni na „OK“ pro start nebo „Zrušit“ pro zavření "
 "seznamu. Každé tažení má několik úrovní obtížnosti (typicky tři). "
 "Doporučenou je prostřední obtížnost z možných voleb, protože obvykle "
-"poskytuje dostatek výzev a současně zachovává hru zábavnou. Během hraní "
-"tažení není možné měnit obtížnost. Pokud máte problém postupovat i při volbě "
-"nejnižší obtížnosti, oddíl <link linkend=\"basic_strategy\">základy "
-"strategie</link> tohoto manuálu Vám pomůže. Jakmile zvolíte obtížnost, hra "
-"načte první scénář tažení."
+"poskytuje dostatek výzev a současně zachovává hru zábavnou. Během hraní bys "
+"neměl měnit obtížnost tažení. Pokud máš problém postupovat i při volbě "
+"nejnižší obtížnosti, prostudování oddílu <link linkend=\"basic_strategy"
+"\">základy strategie</link> tohoto manuálu ti určitě pomůže. Jakmile zvolíš "
+"obtížnost, hra načte první scénář tažení."
 
 #. type: Content of: <book><chapter><section><variablelist><varlistentry><term>
 #: doc/manual/manual.en.xml:135
@@ -338,10 +338,10 @@ msgid ""
 "appear and allow you to choose how you want to play the scenario. To learn "
 "more, see <link linkend=\"scenarios\">scenarios</link>."
 msgstr ""
-"Kliknutím na toto tlačítko můžete hrát jednotlivé scénáře proti protivníkům. "
+"Kliknutím na toto tlačítko můžeš hrát jednotlivé scénáře proti protivníkům. "
 "Hra může být vedena přes internet i pouze na jednom počítači a proti lidem i "
-"počítačovým hráčům. Po zmáčknutí se objeví dialog, kde můžete zvolit další "
-"podrobnosti. Více se dozvíte v oddílu <link linkend=\"scenarios\">scénáře</"
+"počítačovým hráčům. Po zmáčknutí se objeví dialog, kde můžeš zvolit další "
+"podrobnosti. Více se dozvíš v oddílu <link linkend=\"scenarios\">scénáře</"
 "link>."
 
 #. type: Content of: <book><chapter><section><variablelist><varlistentry><term>
@@ -1102,7 +1102,7 @@ msgid ""
 msgstr ""
 "Na začátku každého scénáře je hra automaticky uložena. Při porážce ji pak "
 "můžeš načíst a opět se pokusit zvítězit. Jakmile se ti to povede, budeš na "
-"začátku dalšího scénáře opět před začátkem dotázán(a) na uložení atd. Pokud "
+"začátku dalšího scénáře opět před začátkem dotázán na uložení atd. Pokud "
 "budeš muset hru přerušit uprostřed scénáře, můžeš ji uložit a načíst "
 "později. Pamatuj ale, že dobrý hráč Wesnothu nepotřebuje v průběhu scénáře "
 "hru ukládat. Většina začátečníků však má tendenci to dělat častěji."
@@ -1780,7 +1780,7 @@ msgstr ""
 "Trpaslíci jsou obecně známí jako životaschopní tvorové. Někteří jsou "
 "zdatnější než jiní a dokáží odpočívat i při chůzi či boji. Zdravé jednotky "
 "mají o 1 život navíc plus 1 život za každou úroveň a bez ohledu na to, co "
-"dělají, se po každém tahu uzdraví o 2 životy."
+"dělají, si po každém tahu vyléčí 2 životy."
 
 #. type: Content of: <book><chapter><section><section><simpara>
 #: doc/manual/manual.en.xml:1006
@@ -2181,10 +2181,11 @@ msgstr ""
 "Tato jednotka získává 1 život k celkovému počtu životů kdykoliv zabije "
 "jednotku, kromě jednotek, které jsou odolné proti nákaze."
 
+# Je to název schopnosti.
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
 #: doc/manual/manual.en.xml:1311
 msgid "Heals +4"
-msgstr "Ošetření"
+msgstr "Léčení +4"
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
 #: doc/manual/manual.en.xml:1315
@@ -2195,16 +2196,17 @@ msgid ""
 "its poison by a healer, and must seek the care of a village or a unit that "
 "can cure."
 msgstr ""
-"Umožňuje jednotce na začátku každého kola ošetřit sousední spřátelené "
-"jednotky. Jednotka, která je v péči tohoto ošetřovatele, se může vyléčit až "
-"o 4 životy za kolo, nebo v tomto kole zastavit působení jedu. Otrávenou "
-"jednotku ošetřovatel uzdravit nedokáže. Ta musí hledat pomoc ve vesnici nebo "
-"u jednotky, která dokáže uzdravovat."
+"Umožňuje jednotce na začátku každého kola základním způsobem léčit sousedící "
+"spřátelené jednotky. Jednotka, která je v péči tohoto léčitele, se může "
+"vyléčit až o 4 životy za kolo, nebo v tomto kole zastavit působení jedu. "
+"Otrávenou jednotku nedokáže léčitel uzdravit. Ta musí hledat pomoc ve "
+"vesnici nebo u jednotky, která dokáže uzdravovat."
 
+# Je to název schopnosti.
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
 #: doc/manual/manual.en.xml:1326
 msgid "Heals +8"
-msgstr "Léčení"
+msgstr "Léčení +8"
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
 #: doc/manual/manual.en.xml:1330
@@ -2216,12 +2218,10 @@ msgid ""
 "must seek the care of a village or a unit that can cure."
 msgstr ""
 "Tato jednotka kombinuje účinky léčivých rostlin s magií, aby vyléčila "
-"jednotky rychleji než je běžně možné na bitevním poli. Na začátku tahu se "
-"postará o všechny spřátelené zraněné jednotky stojící na sousedních polích. "
-"Zraněná jednotka se může za jeden tah vyléčit až o 8 životů nebo zastavit na "
-"jeden tah průběh otravy. Léčitel nedokáže uzdravit otrávenou jednotku; "
-"taková jednotka musí vyhledat pomoc ve vesnici nebo u jednotky, která dokáže "
-"uzdravovat."
+"jednotky rychleji, než je běžně na bitevním poli možné. Jednotka, která je "
+"v péči tohoto léčitele, se může vyléčit až o 8 životů za kolo, nebo v tomto "
+"kole zastavit působení jedu. Otrávenou jednotku nedokáže léčitel uzdravit. "
+"Ta musí hledat pomoc ve vesnici nebo u jednotky, která dokáže uzdravovat."
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
 #: doc/manual/manual.en.xml:1341
@@ -2277,10 +2277,11 @@ msgstr ""
 "jednotka, která ji nalezne jako první, ztrácí všechny své zbývající body "
 "pohybu."
 
+# Je to název schopnosti.
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
 #: doc/manual/manual.en.xml:1382
 msgid "Regenerates"
-msgstr "Regeneruje"
+msgstr "Regenerace"
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
 #: doc/manual/manual.en.xml:1386
@@ -2288,7 +2289,7 @@ msgid ""
 "This unit will heal itself 8HP per turn. If it is poisoned, it will remove "
 "the poison instead of healing."
 msgstr ""
-"Jednotka se vyléčí o 8 životů za tah. V případě, že je otrávena, je místo "
+"Jednotka se vyléčí o 8 životů za kolo. V případě, že je otrávena, je místo "
 "vyléčení uzdravena z otravy."
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
@@ -2960,7 +2961,7 @@ msgstr ""
 #. type: Content of: <book><chapter><section><section><title>
 #: doc/manual/manual.en.xml:1835 doc/manual/manual.en.xml:2233
 msgid "Healing"
-msgstr "Uzdravování"
+msgstr "Léčení"
 
 #. type: Content of: <book><chapter><section><simpara>
 #: doc/manual/manual.en.xml:1836
@@ -2971,11 +2972,11 @@ msgid ""
 "added on top of hitpoints recovered through healing so it is possible for a "
 "unit to recover up to a total of 10 hit points per turn."
 msgstr ""
-"Jednotka může být vyléčena nejvýše o 8 životů za kolo. Jednotka, která během "
-"svého kola nebojuje ani se nepohne, <emphasis>odpočívá</emphasis> a vyléčí "
-"se „jen tak“ o 2 životy. Tyto 2 životy získané odpočinkem nejsou do dříve "
-"zmíněných 8 zahrnuty, takže v extrémních případech se mohou jednotky vyléčit "
-"až o 10 životů za kolo."
+"Jednotka může být vyléčena nejvýše o 8 životů za kolo. Jednotka, která se "
+"během svého kola nepohne ani nebojuje, <emphasis>odpočívá</emphasis> a "
+"vyléčí si tak 2 životy. Životy získané <emphasis>odpočinkem</emphasis> "
+"nejsou zahrnuty do životů získaných léčením, takže se v některých situacích "
+"může jednotka vyléčit až o 10 životů za kolo."
 
 #. type: Content of: <book><chapter><section><simpara>
 #: doc/manual/manual.en.xml:1841
@@ -2995,9 +2996,9 @@ msgid ""
 "description. This is invariably <emphasis>heals +4</emphasis> or "
 "<emphasis>heals +8</emphasis>."
 msgstr ""
-"Stáním vedle jednotek se schopností <emphasis>ošetření</emphasis> nebo "
-"<emphasis>léčení</emphasis>. Rozdíl je v počtu životů, o které dokáže "
-"léčitel vyléčit zraněnou jednotku za kolo, a to buď 4, nebo 8."
+"Pobýváním vedle jednotek se schopností <emphasis>léčení</emphasis>. Počet "
+"vyléčených životů je pak dán specifikací schopnosti léčitele. Je to buď 4 "
+"nebo 8 životů."
 
 #. type: Content of: <book><chapter><section><section><title>
 #: doc/manual/manual.en.xml:1857
@@ -3013,9 +3014,9 @@ msgid ""
 "and Woses gain no additional benefit from being on a village or next to a "
 "healing unit."
 msgstr ""
-"Trollové a stromoví muži se dokáží léčit sami přirozenou regenerací. Uzdraví "
-"se o 8 životů za kolo, pokud jsou raněni. Jelikož je 8 životů zároveň "
-"maximem léčení, je zbytečné je stavět na vesnice nebo vedle léčitelů - "
+"Trollové a stromoví lidé se dokáží léčit sami přirozenou regenerací. Pokud "
+"jsou zraněni, vyléčí se o 8 životů za kolo. Jelikož je 8 životů zároveň "
+"maximem léčení, je zbytečné je stavět na vesnice nebo vedle léčitelů – "
 "nevyléčí nic navíc."
 
 #. type: Content of: <book><chapter><section><section><simpara>
@@ -3031,15 +3032,14 @@ msgid ""
 "until it is cured of poisoning. Resting is still allowed, although it will "
 "not substantially diminish the poison&#8217;s effect."
 msgstr ""
-"Některé útoky mohou Vaše jednotky otrávit jedem. Když se tak stane, otrávená "
+"Některé útoky mohou tvé jednotky otrávit jedem. Když se tak stane, otrávená "
 "jednotka bude každé kolo ztrácet 8 životů, dokud není uzdravena. Otravu "
 "uzdravují vesnice nebo jednotky se schopností <emphasis>uzdravování</"
-"emphasis> stejně jako při léčení. Jednotky se schopnostmi "
-"<emphasis>ošetření</emphasis> a <emphasis>léčení</emphasis> pouze pozastaví "
-"účinky jedu, ale neuzdraví otrávenou jednotku. V kole, kdy je jednotka "
-"uzdravena z otravy již neztrácí životy, ale ani se nemůže dále léčit. "
-"Otrávenou jednotku lze samozřejmě nechat odpočívat, jakkoli to podstatně "
-"nezmenší efekt otravy."
+"emphasis> stejným mechanismem jako při léčení. Jednotky se schopností "
+"<emphasis>léčení</emphasis> pouze pozastaví účinky jedu, ale neuzdraví "
+"otrávenou jednotku. V kole, kdy je jednotka uzdravena z otravy, již neztrácí "
+"životy, ale ani se nemůže dále léčit. Otrávenou jednotku lze samozřejmě "
+"nechat odpočívat, jakkoli to podstatně nezmenší efekt otravy."
 
 #. type: Content of: <book><chapter><section><section><simpara>
 #: doc/manual/manual.en.xml:1874
@@ -3049,7 +3049,7 @@ msgstr "Další rady ohledně léčení:"
 #. type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: doc/manual/manual.en.xml:1878
 msgid "A unit may take several turns to be fully healed."
-msgstr "Plné uzdravení jednotky často trvá i několik kol."
+msgstr "Plné vyléčení jednotky často trvá i několik kol."
 
 #. type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: doc/manual/manual.en.xml:1883
@@ -3060,7 +3060,7 @@ msgid ""
 msgstr ""
 "Léčitelé (elfí šamanka, elfí druidka, elfí víla, bílý mág, mág světla či "
 "paladin) léčí všechny zraněné jednotky kolem sebe, takže můžeš nechat "
-"jednotky se uzdravovat nedaleko od místa boje."
+"jednotky se léčit nedaleko od místa boje."
 
 #. type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: doc/manual/manual.en.xml:1890
@@ -3085,13 +3085,13 @@ msgid ""
 "Multiple healers from different allied sides can heal the same unit and "
 "speed up healing."
 msgstr ""
-"Jednotku může léčit několik léčitelů (i spojeneckých) zaráz a urychlit tak "
-"léčení."
+"Jednotku může léčit nezávisle několik léčitelů různých spojeneckých stran a "
+"urychlit tak léčení."
 
 #. type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: doc/manual/manual.en.xml:1911
 msgid "Trolls and Woses cannot regenerate other units."
-msgstr "Trollové a stromoví muži nemohou regenerovat ostatní jednotky."
+msgstr "Trollové a stromoví lidé nemohou regenerovat ostatní jednotky."
 
 #. type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: doc/manual/manual.en.xml:1916
@@ -3117,9 +3117,9 @@ msgid ""
 "off your career as a Wesnothian battle veteran. The minor concrete examples "
 "are somewhat tied to the \"Heir to the Throne\" campaign."
 msgstr ""
-"Následující základní principy boje a tipy by Vám měly pomoci začít Vaši "
+"Následující základní principy boje a tipy by ti měly pomoci začít tvou "
 "kariéru ostříleného válečníka ve světě Wesnothu. Některé konkrétnější "
-"příklady se týkají tažení „Dědic trůnu“."
+"příklady se odvozují od tažení „Dědic trůnu“."
 
 #. type: Content of: <book><chapter><section><section><title>
 #: doc/manual/manual.en.xml:1931
@@ -3135,10 +3135,9 @@ msgid ""
 "care of a healer (like Elvish Shamans or White Mages). Healers are very "
 "useful!"
 msgstr ""
-"Neposílejte raněné jednotky na jistou smrt. Jakmile je jednotka raněna tak, "
-"že jí zbývá méně než polovina životů (HP), pokuste se ji dopravit do bezpečí "
-"a vyléčit - buď ve vesnici nebo pomocí léčitele. Léčitelé jsou velmi "
-"užiteční!"
+"Neposílej raněné jednotky na jistou smrt. Jakmile je jednotka raněna tak, že "
+"jí zbývá méně než polovina životů (HP), pokus se ji dopravit do bezpečí a "
+"vyléčit – buď ve vesnici nebo pomocí léčitele. Léčitelé jsou velmi užiteční!"
 
 #. type: Content of: <book><chapter><section><section><simpara>
 #: doc/manual/manual.en.xml:1937
@@ -3312,10 +3311,10 @@ msgid ""
 "front line. If you have healers, damaged units in the second line will "
 "quickly recover."
 msgstr ""
-"Když je jednotka v první linii těžce zraněna, můžete ji přesunout do týlu. K "
-"udržení fronty ji nejspíše budete muset nahradit jinou - udržujte proto za "
-"frontou „na střídačce“ několik náhradníků. Když navíc umístíte za první "
-"linii léčitele, raněné jednotky se budou moci rychleji opět zapojit."
+"Když je jednotka v první linii těžce zraněna, můžeš ji přesunout do týlu. K "
+"udržení fronty ji nejspíše budeš muset nahradit jinou. Udržuj proto za "
+"frontou „na střídačce“ několik náhradníků. Když máš za první linií léčitele, "
+"raněné jednotky se budou moci rychle vyléčit."
 
 #. type: Content of: <book><chapter><section><section><simpara>
 #: doc/manual/manual.en.xml:2002
@@ -3754,7 +3753,7 @@ msgstr ""
 "Důležitá část úspěšného hraní ve Wesnothu je udržení zdraví tvých jednotek. "
 "Když jsou raněny, můžeš je léčit přesunutím do vesnice nebo vedle léčitelů "
 "(elfí šamanka, bílý mág atd.). Některé jiné jednotky, s kterými se setkáš, "
-"jako trollové, se dokáží uzdravovat samy."
+"jako trollové, se dokáží léčit samy."
 
 #. type: Content of: <book><chapter><section><section><title>
 #: doc/manual/manual.en.xml:2241
@@ -3809,478 +3808,3 @@ msgid ""
 msgstr ""
 "Povýšené jednotky vyžadují vyšší žold, než na základní úrovni (1 zlatý na "
 "úroveň), výjimkou jsou věrné jednotky."
-
-#~ msgid ""
-#~ "These are the default control keys. Key setup might differ depending on "
-#~ "the platform used. For example you will often have to use the command key "
-#~ "instead of the control key when you are using MacOSX. You can change most "
-#~ "hotkeys to your taste using the Preferences menu."
-#~ msgstr ""
-#~ "Toto jsou výchozí nastavení klávesových zkratek. Rozdílné platformy "
-#~ "přinášejí drobné odlišnosti. Například pro Mac OS X bude třeba většinou "
-#~ "zaměnit Ctrl za Cmd. Většinu zkratek lze v nastavení hry změnit."
-
-#~ msgid "General controls and hotkeys"
-#~ msgstr "Obecné klávesové zkratky"
-
-#~ msgid "F1"
-#~ msgstr "F1"
-
-#~ msgid "The Battle for Wesnoth Help"
-#~ msgstr "Nápověda Bitvy o Wesnoth"
-
-#~ msgid "Arrow keys"
-#~ msgstr "Šipky"
-
-#~ msgid "Scroll"
-#~ msgstr "Posouvání"
-
-#~ msgid "Left click"
-#~ msgstr "Levé („hlavní“) tlačítko myši"
-
-#~ msgid "Select unit, move unit"
-#~ msgstr "Vybere nebo přesune jednotku"
-
-#~ msgid "Right click"
-#~ msgstr "Pravé („druhé“) tlačítko myši"
-
-#~ msgid "Context menu, cancel action"
-#~ msgstr "Kontextové menu / zrušení akce"
-
-#~ msgid "Middle click"
-#~ msgstr "Prostřední tlačítko myši"
-
-#~ msgid "Center on pointer location"
-#~ msgstr "Vystředí mapu kolem pozice kurzoru"
-
-#~ msgid "Escape"
-#~ msgstr "Escape"
-
-#~ msgid "Exit game, exit menu, cancel message"
-#~ msgstr "Ukončí hru / zavře menu / odstraní zprávu"
-
-#~ msgid "Ctrl+s"
-#~ msgstr "Ctrl+s"
-
-#~ msgid "Save game"
-#~ msgstr "Uloží hru"
-
-#~ msgid "Ctrl+o"
-#~ msgstr "Ctrl+o"
-
-#~ msgid "Load game"
-#~ msgstr "Načte hru"
-
-#~ msgid "Ctrl+p"
-#~ msgstr "Ctrl+p"
-
-#~ msgid "Go to Preferences menu"
-#~ msgstr "Otevře dialog nastavení"
-
-#~ msgid "Ctrl+q"
-#~ msgstr "Ctrl+q"
-
-#~ msgid "Quit game"
-#~ msgstr "Ukončí hru"
-
-#~ msgid "Ctrl+f"
-#~ msgstr "Ctrl+f"
-
-#~ msgid "Toggle full screen/windowed mode"
-#~ msgstr "Přepne režim zobrazení mezi celoobrazovkovým a oknem"
-
-#~ msgid "Ctrl+Alt+m"
-#~ msgstr "Ctrl+Alt+m"
-
-#~ msgid "Toggle muting of game sounds"
-#~ msgstr "Přepíná utlumení herních zvuků"
-
-#~ msgid "+"
-#~ msgstr "+"
-
-#~ msgid "Zoom in"
-#~ msgstr "Přiblíží pohled"
-
-#~ msgid "Zoom out"
-#~ msgstr "Oddálí pohled"
-
-#~ msgid "Reset zoom to default"
-#~ msgstr "Přiblíží/oddálí na implicitní pohled"
-
-#~ msgid "Ctrl+e"
-#~ msgstr "Ctrl+e"
-
-#~ msgid "Toggle ellipses"
-#~ msgstr "Přepne elipsy"
-
-#~ msgid "Ctrl+g"
-#~ msgstr "Ctrl+g"
-
-#~ msgid "Toggle grid"
-#~ msgstr "Přepne mřížku"
-
-#~ msgid "Ctrl+a"
-#~ msgstr "Ctrl+a"
-
-#~ msgid "Toggle accelerated game mode"
-#~ msgstr "Přepne zrychlený mód"
-
-#~ msgid "Holding Shift"
-#~ msgstr "Držení mezerníku"
-
-#~ msgid ""
-#~ "Toggle between accelerated and normal game mode while pressed (temporary!)"
-#~ msgstr "Přepne mezi zrychleným a běžným herním módem při držení (dočasně!)"
-
-#~ msgid "Ctrl+j"
-#~ msgstr "Ctrl+j"
-
-#~ msgid "Show scenario objectives"
-#~ msgstr "Zobrazí úkoly scénáře"
-
-#~ msgid "s"
-#~ msgstr "s"
-
-#~ msgid "Show statistics"
-#~ msgstr "Zobrazí statistiky"
-
-#~ msgid "Alt+s"
-#~ msgstr "Alt+s"
-
-#~ msgid "Show status table"
-#~ msgstr "Ukáže stavovou tabulku"
-
-#~ msgid "Alt+u"
-#~ msgstr "Alt+u"
-
-#~ msgid "Show unit list"
-#~ msgstr "Zobrazí seznam jednotek"
-
-#~ msgid "l"
-#~ msgstr "l"
-
-#~ msgid "Move to leader unit"
-#~ msgstr "Posune pohled k vůdci"
-
-#~ msgid "Shift+s"
-#~ msgstr "Shift+s"
-
-#~ msgid "Update shroud now"
-#~ msgstr "Obnov mlhu"
-
-#~ msgid "Unit and turn specific hotkeys"
-#~ msgstr "Klávesové zkratky pro jednotky a tah"
-
-#~ msgid "Ctrl+r"
-#~ msgstr "Ctrl+r"
-
-#~ msgid "Recruit unit"
-#~ msgstr "Naverbuje jednotku"
-
-#~ msgid "Ctrl+Alt+r"
-#~ msgstr "Ctrl+Alt+r"
-
-#~ msgid "Repeat last recruit"
-#~ msgstr "Zopakuje poslední verbování"
-
-#~ msgid "Alt+r"
-#~ msgstr "Alt+r"
-
-#~ msgid "Recall unit"
-#~ msgstr "Přivolá jednotku"
-
-#~ msgid "Ctrl+n"
-#~ msgstr "Ctrl+n"
-
-#~ msgid "Rename unit"
-#~ msgstr "Přejmenuje jednotku"
-
-#~ msgid "d"
-#~ msgstr "d"
-
-#~ msgid "Show the description of the currently selected unit"
-#~ msgstr "Ukáže popis vybrané jednotky"
-
-#~ msgid "t"
-#~ msgstr "t"
-
-#~ msgid "Continue interrupted unit move"
-#~ msgstr "Pokračuje v přerušeném pohybu jednotky"
-
-#~ msgid "u"
-#~ msgstr "u"
-
-#~ msgid "Undo last move (only deterministic moves can be undone)"
-#~ msgstr "Vrátí poslední pohyb (lze vracet pouze deterministické akce)"
-
-#~ msgid "r"
-#~ msgstr "r"
-
-#~ msgid "Redo move"
-#~ msgstr "Zopakuje pohyb"
-
-#~ msgid "n"
-#~ msgstr "n"
-
-#~ msgid "Cycle through units that have movement left"
-#~ msgstr "Prochází jednotkami, které se ještě mohou pohybovat"
-
-#~ msgid "Shift+n"
-#~ msgstr "Shift+n"
-
-#~ msgid "Cycle through units that have movement left, in reverse order"
-#~ msgstr "Prochází opačným směrem jednotkami, které se ještě mohou pohybovat"
-
-#~ msgid "Ctrl+v"
-#~ msgstr "Ctrl+v"
-
-#~ msgid "Show enemy moves (where the enemy can move next turn)"
-#~ msgstr "Zobrazí nepřátelské tahy (kam může nepřítel táhnout v příštím kole)"
-
-#~ msgid "Ctrl+b"
-#~ msgstr "Ctrl+b"
-
-#~ msgid "Show potential enemy moves, if your units were not on the map"
-#~ msgstr ""
-#~ "Zobrazí možné nepřátelské tahy (nebere v potaz Vaše jednotky, jen terén)"
-
-#~ msgid "1-7"
-#~ msgstr "1-7"
-
-#~ msgid "Show how far currently selected unit can move in that many turns"
-#~ msgstr "Zobrazí, jak daleko může vybraná jednotka dojít za tolik tahů"
-
-#~ msgid "Space"
-#~ msgstr "Mezerník"
-
-#~ msgid "End unit turn and cycle to next unit that has movement left"
-#~ msgstr ""
-#~ "Ukončí tah jednotky a přepne na další jednotku se zbývajícími pohyby"
-
-#~ msgid "Shift+Space"
-#~ msgstr "Shift+mezerník"
-
-#~ msgid "Make currently selected unit hold position (end its movement)"
-#~ msgstr "Ukončí tah vybrané jednotky (vynuluje zbývající pohyby)"
-
-#~ msgid "Ctrl+Space"
-#~ msgstr "Ctrl+mezerník"
-
-#~ msgid "End this player&#8217;s turn"
-#~ msgstr "Ukončí hráčovo kolo"
-
-#~ msgid "Whiteboard specific hotkeys"
-#~ msgstr "Klávesové zkratky pro plánování"
-
-#~ msgid "p"
-#~ msgstr "p"
-
-#~ msgid "Toggle planning mode"
-#~ msgstr "Přepne plánovací mód"
-
-#~ msgid "y"
-#~ msgstr "y"
-
-#~ msgid "Execute planned action"
-#~ msgstr "Provede plánovanou akci"
-
-#~ msgid "h"
-#~ msgstr "h"
-
-#~ msgid "Delete planned action"
-#~ msgstr "Smaže naplánovanou akci"
-
-#~ msgid "Page Down"
-#~ msgstr "Page Down"
-
-#~ msgid "Move action down in the queue"
-#~ msgstr "Posune akci ve frontě dolů"
-
-#~ msgid "Page Up"
-#~ msgstr "Page Up"
-
-#~ msgid "Move action up in the queue"
-#~ msgstr "Posune akci ve frontě nahoru"
-
-#~ msgid "Ctrl+y"
-#~ msgstr "Ctrl+y"
-
-#~ msgid "Execute all actions"
-#~ msgstr "Spustí všechny akce"
-
-#~ msgid "Suppose dead"
-#~ msgstr "Předpokládá smrt"
-
-#~ msgid "Multiplayer specific hotkeys"
-#~ msgstr "Klávesové zkratky hry více hráčů"
-
-#~ msgid "m"
-#~ msgstr "m"
-
-#~ msgid "Message another player (in multiplayer)"
-#~ msgstr "Pošle zprávu jinému hráči (ve hře více hráčů)"
-
-#~ msgid "Ctrl+m"
-#~ msgstr "Ctrl+m"
-
-#~ msgid "Message your allies (in multiplayer)"
-#~ msgstr "Pošle zprávu Vašim spojencům (ve hře více hráčů)"
-
-#~ msgid "Alt+m"
-#~ msgstr "Alt+m"
-
-#~ msgid "Message everyone in the game (in multiplayer)"
-#~ msgstr "Pošle zprávu všem (ve hře více hráčů)"
-
-#~ msgid "Alt+c"
-#~ msgstr "Alt+c"
-
-#~ msgid "View chat log"
-#~ msgstr "Ukáže záznam rozhovoru"
-
-#~ msgid "Ctrl+x"
-#~ msgstr "Ctrl+x"
-
-#~ msgid "Clear messages"
-#~ msgstr "Smaže zprávy"
-
-#~ msgid "Miscellaneous hotkeys"
-#~ msgstr "Klávesové zkratky – ostatní"
-
-#~ msgid "Ctrl+c"
-#~ msgstr "Ctrl+c"
-
-#~ msgid "Clear onscreen labels"
-#~ msgstr "Odstraní plovoucí popisky"
-
-#~ msgid "/"
-#~ msgstr "/"
-
-#~ msgid "Search (find label or unit by name)"
-#~ msgstr "Hledá (jednotky podle jména nebo popisku na mapě)"
-
-#~ msgid "Alt+l"
-#~ msgstr "Alt+l"
-
-#~ msgid "Attach a text label to a terrain hex"
-#~ msgstr "Přidá popisek na současnou pozici na mapě"
-
-#~ msgid "Ctrl+l"
-#~ msgstr "Ctrl+l"
-
-#~ msgid "Set team label"
-#~ msgstr "Umístí týmový popisek"
-
-#~ msgid ":"
-#~ msgstr ":"
-
-#~ msgid "F5"
-#~ msgstr "F5"
-
-#~ msgid "Refresh Cache"
-#~ msgstr "Obnoví mezipaměť"
-
-#~ msgid "Shift+c"
-#~ msgstr "Shift+c"
-
-#~ msgid "Create Unit (Debug!)"
-#~ msgstr "Vytvoří jednotku (ladění!)"
-
-#~ msgid "f"
-#~ msgstr "f"
-
-#~ msgid "Run AI formula"
-#~ msgstr "Spustí vzorec umělé inteligence"
-
-#~ msgid ""
-#~ "Some keys on MacOSX require more than replacing Ctrl by Cmd. Here is a "
-#~ "list of those:"
-#~ msgstr ""
-#~ "Mac&nbsp;OS&nbsp;X vyžaduje pro některé akce jiné kombinace kláves, než "
-#~ "pouhé nahrazení Ctrl za Cmd. Zde je jejich seznam:"
-
-#~ msgid "Cmd+w"
-#~ msgstr "Cmd+w"
-
-#~ msgid "Cmd+,"
-#~ msgstr "Cmd+,"
-
-#~ msgid "Ctrl+F5"
-#~ msgstr "Ctrl+F5"
-
-#~ msgid "Option+Space"
-#~ msgstr "Option+mezerník"
-
-#~ msgid "If the unit is an ally you do not control"
-#~ msgstr "Jednotka patří mezi spojence, které nekontrolujete"
-
-#~ msgid ""
-#~ "Some hotkeys were changed slightly to make better use of the controls "
-#~ "provided by the Pandora. If you are using a Pandora, these keys differ "
-#~ "from the lists above:"
-#~ msgstr ""
-#~ "Některé klávesové zkratky byly změněny, aby lépe odpovídaly možnostem "
-#~ "Pandory. Pokud tedy používáte Pandoru, tyto akce mají odlišné zkratky:"
-
-#~ msgid "Pandora specific controls and hotkeys"
-#~ msgstr "Klávesové zkratky Pandory"
-
-# klávesa na Pandoře
-#~ msgid "D-Pad"
-#~ msgstr "D-Pad"
-
-#~ msgid "GamingButton A"
-#~ msgstr "Knoflík A"
-
-#~ msgid "GamingButton B"
-#~ msgstr "Knoflík B"
-
-#~ msgid "GamingButton X"
-#~ msgstr "Knoflík X"
-
-#~ msgid "GamingButton Y"
-#~ msgstr "Knoflík Y"
-
-#~ msgid "Alt+GamingButton Y"
-#~ msgstr "Alt+Knoflík Y"
-
-#~ msgid "Move action down queue"
-#~ msgstr "Posune akci ve frontě dolů"
-
-#~ msgid "Alt+GamingButton X"
-#~ msgstr "Alt+Knoflík X"
-
-#~ msgid "Move action up queue"
-#~ msgstr "Posune akci ve frontě nahoru"
-
-#~ msgid "Unpoison"
-#~ msgstr "Protijed"
-
-#~ msgid ""
-#~ "A curer can cure a unit of poison, although that unit will receive no "
-#~ "additional healing on the turn it is cured of the poison."
-#~ msgstr ""
-#~ "Uzdravovatel dokáže uzdravit otrávenou jednotku, ale tato jednotka už v "
-#~ "daném tahu nebude dále léčena."
-
-#~ msgid "Black"
-#~ msgstr "Černý"
-
-#~ msgid "Black orb"
-#~ msgstr "Černá koule"
-
-#~ msgid "Current hex position (x-coordinate, y-coordinate)"
-#~ msgstr "Pozice současného hexu (souřadnice x,y)"
-
-#~ msgid "Envelope"
-#~ msgstr "Obálka"
-
-#~ msgid ""
-#~ "Click this button (the icon of an envelope) to open a dialog where you "
-#~ "can enable or disable summary uploads which will help us to better "
-#~ "balance campaigns. All data submitted will be anonymous."
-#~ msgstr ""
-#~ "Kliknutí na tento knoflík (ikonku obálky) otevře dialog, ve kterém můžete "
-#~ "povolit odesílání souhrnů Vašich her. Tyto data pomáhají při úpravách "
-#~ "obtížnosti tažení. Veškerá odeslaná data jsou anonymní. Tato volba je "
-#~ "implicitně vypnutá."

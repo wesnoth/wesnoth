@@ -141,9 +141,9 @@ function world_conquest_tek_map_decoration_2c()
 		f.terrain("Wo"),
 		f.adjacent(f.terrain("!,Wo"), nil, 0)
 	))
-	helper.shuffle(terrain_to_change)
+	mathx.shuffle(terrain_to_change)
 	-- base amount in map surface
-	local r = helper.rand(tostring(total_tiles // 285) .. ".." .. tostring(total_tiles // 150))
+	local r = mathx.random_choice(tostring(total_tiles // 285) .. ".." .. tostring(total_tiles // 150))
 	for i = 1, math.min(r, #terrain_to_change) do
 		map[terrain_to_change[i]] = "Ai"
 	end
@@ -152,8 +152,8 @@ function world_conquest_tek_map_decoration_2c()
 		f.terrain("Wo"),
 		f.adjacent(f.terrain("!,Wo,Ai"), nil, 0)
 	))
-	helper.shuffle(icepack_candiates)
-	local r = helper.rand(tostring(total_tiles // 250) .. ".." .. tostring(total_tiles // 150))
+	mathx.shuffle(icepack_candiates)
+	local r = mathx.random_choice(tostring(total_tiles // 250) .. ".." .. tostring(total_tiles // 150))
 
 	for i = 1, math.min(r, #icepack_candiates) do
 		local loc = icepack_candiates[i]
@@ -170,20 +170,20 @@ function world_conquest_tek_map_decoration_2c()
 		fraction = 15,
 	}
 
-	if wesnoth.random(2) == 1 then
+	if mathx.random(2) == 1 then
 		set_terrain { "Wwf",
 			f.terrain("Gd"),
 			fraction_rand = "2..6",
 		}
 
 	end
-	if wesnoth.random(2) == 1 then
+	if mathx.random(2) == 1 then
 		set_terrain { "Gs",
 			f.terrain("Gd"),
 			fraction_rand = "1..5",
 		}
 	end
-	if wesnoth.random(8) == 1 then
+	if mathx.random(8) == 1 then
 		set_terrain { "Aa,Aa,Aa,Ai",
 			f.terrain("Gd"),
 			fraction_rand = "1..4",

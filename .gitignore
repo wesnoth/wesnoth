@@ -49,25 +49,16 @@ projectfiles/**/*_build_log.html
 projectfiles/**/*objs*
 
 # Visual Studio
-projectfiles/VC*
-!projectfiles/VC16
-projectfiles/VC*/.vs/
-projectfiles/VC*/*.vc.*db
-projectfiles/VC*/*.sdf
-projectfiles/VC*/*.suo
-projectfiles/VC*/*.aps
-projectfiles/VC*/*.user
-ALL_BUILD.vcproj
-INSTALL.vcproj
-PACKAGE.vcproj
-ZERO_CHECK.vcproj
-uninstall.vcproj
-*.vcproj.*.user
-src/**/*.vcproj
-/WindowsTimeout.ilk
-/WindowsTimeout.pdb
 .vscode
 /.vs
+vcpkg_installed/
+*.vcxproj
+*.vcxproj.filters
+doc/**/*.vcxproj
+doc/**/*.vcxproj.filters
+src/**/*.vcxproj
+src/**/*.vcxproj.filters
+vcpkg-manifest-install.log
 
 # CLion
 /.idea

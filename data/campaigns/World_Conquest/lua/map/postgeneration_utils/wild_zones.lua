@@ -10,7 +10,7 @@ local function wild_volcano_for_lava_zone(terrain_to_change)
 	), { terrain_to_change = terrain_to_change })
 	
 	if #possible_volcano > 0 then
-		local loc = possible_volcano[wesnoth.random(#possible_volcano)]
+		local loc = possible_volcano[mathx.random(#possible_volcano)]
 		set_terrain { "Md^Xm",
 			f.adjacent(f.is_loc(loc), "ne,n,nw")
 		}

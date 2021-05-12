@@ -364,7 +364,7 @@ function world_conquest_tek_map_repaint_4e()
 	}
 
 	local r = "Gs^Fp,Gs^Fms,Gs^Fds,Gs^Ft,Gs^Ft,Gs^Ftp,Gs^Ftr,Gs^Ftd,Gs^Fet"
-	r = helper.rand(r)
+	r = mathx.random_choice(r)
 	set_terrain { r,
 		f.all(
 			f_west_half,
@@ -376,7 +376,7 @@ function world_conquest_tek_map_repaint_4e()
 	}
 
 	local r = "Gs^Fp,Gs^Fms,Gs^Fds,Gs^Ftp,Gs^Ft,Gs^Ftp,Gs^Ftr,Gs^Ftd,Gs^Fet,Gs^Fts,Gs^Fts,Gs^Ft,Gs^Ft,Gs^Ftd,Gs^Fp"
-	r = helper.rand(r)
+	r = mathx.random_choice(r)
 	set_terrain { r,
 		f.all(
 			f.terrain("Gs^F*,Hh^F*"),
@@ -587,7 +587,7 @@ function wct_map_4e_post_bunus_decoration()
 				f_north_half
 			)
 		),
-		fraction = wesnoth.random(10,30),
+		fraction = mathx.random(10,30),
 	}
 
 	-- small mushrooms northeast
@@ -601,7 +601,7 @@ function wct_map_4e_post_bunus_decoration()
 				f_west_half
 			)
 		),
-		fraction = wesnoth.random(2,3),
+		fraction = mathx.random(2,3),
 	}
 
 	-- slighty soft dessert southwest

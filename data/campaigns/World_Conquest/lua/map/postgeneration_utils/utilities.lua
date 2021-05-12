@@ -47,7 +47,7 @@ function world_conquest_tek_map_rebuild(cave, reef)
 
 	-- replace hills for mushrooms
 	-- base amount in map surface
-	local r = helper.rand(tostring(total_tiles // 500) .. ".." .. tostring(total_tiles // 250))
+	local r = mathx.random_choice(tostring(total_tiles // 500) .. ".." .. tostring(total_tiles // 250))
 	-- just to be sure.
 	r = tonumber(r)
 	set_terrain { "Hh^Uf",
@@ -190,8 +190,8 @@ end
 
 function wct_possible_map4_castle(terrain, value)
 	local terrain_to_change = wct_store_possible_map4_castle(value)
-	while #terrain_to_change > 0 and wesnoth.random(value + 1) == 1 do
-		local loc = terrain_to_change[wesnoth.random(#terrain_to_change)]
+	while #terrain_to_change > 0 and mathx.random(value + 1) == 1 do
+		local loc = terrain_to_change[mathx.random(#terrain_to_change)]
 		map[loc] = terrain
 		terrain_to_change = wct_store_possible_map4_castle(value)
 	end
@@ -220,7 +220,7 @@ function wct_road_to_village(road, village)
 	-- build roads of 1 hex to conect villages
 	local terrain_to_change = wct_store_possible_roads(village)
 	while #terrain_to_change > 0 do
-		local loc = terrain_to_change[wesnoth.random(#terrain_to_change)]
+		local loc = terrain_to_change[mathx.random(#terrain_to_change)]
 		map[loc] = road
 		terrain_to_change = wct_store_possible_roads(village)
 	end
@@ -233,7 +233,7 @@ function wct_iterate_roads_to(get_next, radius, terrain)
 	for r = radius, 1, -1 do
 		local locs = get_next(r)
 		while #locs > 0 do
-			local loc = locs[wesnoth.random(#locs)]
+			local loc = locs[mathx.random(#locs)]
 			map[loc] = terrain
 			locs = get_next(r)
 		end
@@ -287,7 +287,7 @@ function wct_iterate_roads_to_2(f_validpath, f_src, f_dest, terrain_road, radius
 						goto path_found
 					end
 				end
-				path[#path + 1] = next_locs[wesnoth.random(#next_locs)]
+				path[#path + 1] = next_locs[mathx.random(#next_locs)]
 				loc = path[#path]
 				dist = distmap:get(loc)
 			end
@@ -309,8 +309,8 @@ function wct_break_walls(wall, terrain)
 	
 	local terrain_to_change = wct_store_broken_wall_candidates(wall)
 	while #terrain_to_change > 0 do
-		local loc = terrain_to_change[wesnoth.random(#terrain_to_change)]
-		map[loc] = helper.rand(terrain)
+		local loc = terrain_to_change[mathx.random(#terrain_to_change)]
+		map[loc] = mathx.random_choice(terrain)
 		terrain_to_change = wct_store_broken_wall_candidates(wall)
 	end
 end

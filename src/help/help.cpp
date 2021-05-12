@@ -87,16 +87,14 @@ void show_unit_description(const unit_type &t)
 		help::show_unit_help(t.id(), t.show_variations_in_help(), hide_help);
 }
 
-help_manager::help_manager(const game_config_view *cfg) //, gamemap *_map)
+static game_config_view dummy_view;
+help_manager::help_manager(const game_config_view *cfg)
+	: guard(game_cfg, cfg == nullptr ? &dummy_view : cfg)
 {
-	static game_config_view dummy_view;
-	game_cfg = cfg == nullptr ? &dummy_view : cfg;
-//	map = _map;
 }
 
 help_manager::~help_manager()
 {
-	game_cfg = nullptr;
 //	map = nullptr;
 	default_toplevel.clear();
 	hidden_sections.clear();

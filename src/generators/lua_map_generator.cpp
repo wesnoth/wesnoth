@@ -17,9 +17,14 @@
 #include "config.hpp"
 #include "game_errors.hpp"
 #include "scripting/mapgen_lua_kernel.hpp"
+#include "log.hpp"
 
 #include <array>
 #include <string>
+
+static lg::log_domain log_mapgen("mapgen");
+#define ERR_NG LOG_STREAM(err, log_mapgen)
+#define LOG_NG LOG_STREAM(info, log_mapgen)
 
 lua_map_generator::lua_map_generator(const config & cfg, const config* vars)
 	: id_(cfg["id"])
@@ -86,6 +91,7 @@ config lua_map_generator::create_scenario(std::optional<uint32_t> seed)
 		std::string msg = "Error when running lua_map_generator create_scenario.\n";
 		msg += "The generator was: " + config_name_ + "\n";
 		msg += e.what();
+		ERR_NG << msg;
 		throw mapgen_exception(msg);
 	}
 }

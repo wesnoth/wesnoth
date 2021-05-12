@@ -102,6 +102,8 @@ class game_lua_kernel : public lua_kernel_base
 	int intf_get_selected_tile(lua_State *L);
 	int impl_game_config_get(lua_State *L) override;
 	int impl_game_config_set(lua_State *L) override;
+	int impl_scenario_get(lua_State *L);
+	int impl_scenario_set(lua_State *L);
 	int impl_current_get(lua_State *L);
 	int intf_clear_messages(lua_State*);
 	int intf_end_level(lua_State*);
@@ -167,9 +169,6 @@ class game_lua_kernel : public lua_kernel_base
 	int intf_fire_event(lua_State *L, const bool by_id);
 	int intf_fire_wml_menu_item(lua_State *L);
 	int intf_teleport(lua_State *L);
-	int intf_remove_sound_source(lua_State *L);
-	int intf_add_sound_source(lua_State *L);
-	int intf_get_sound_source(lua_State *L);
 	int intf_log(lua_State *L);
 	int intf_toggle_fog(lua_State *L, const bool clear);
 	int intf_get_fog_or_shroud(lua_State *L, bool fog);

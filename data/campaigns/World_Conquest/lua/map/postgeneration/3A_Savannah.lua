@@ -9,7 +9,7 @@ end
 
 function world_conquest_tek_map_decoration_3a()
 	-- chances of some dessert over swamp
-	if wesnoth.random(4) ~= 1 then
+	if mathx.random(4) ~= 1 then
 		set_terrain { "Dd^Edp,Dd^Do,Dd,Dd,Dd,Dd,Dd,Dd",
 			f.all(
 				f.terrain("Ss"),
@@ -139,7 +139,7 @@ function world_conquest_tek_map_decoration_3a()
 		f.terrain("Xu"),
 	}
 
-	if wesnoth.random(20) ~= 1 then
+	if mathx.random(20) ~= 1 then
 		wct_change_map_water("t")
 	end
 	set_terrain { "Gs^Ft",

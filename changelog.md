@@ -6,23 +6,33 @@
  ### Multiplayer
  ### Lua API
    * Added `pango_color` to the `wesnoth.colors` table, for easy use in formatted text.
+   * Add new function `filesystem.resolve_asset` to convert `[binary_path]` relative paths to data-relative paths.
+   * Add new function `filesystem.have_asset` which can determine if an image or sound exists.
+   * `wesnoth.have_file`, `wesnoth.read_file`, `wesnoth.image_size` moved to new `filesystem` library
+   * Add a more advanced way of manipulating version strings via `wesnoth.version` constructor function.
+   * Add a `wesnoth.scenario` data module that consolidates everything there is to know about the current scenario. Much of this information was previously available through `wesnoth.game_config`, but there are some new details too.
  ### Packaging
    * Increased minimum required version of SDL to 2.0.8 (PR #5736).
  ### Terrain
  ### Translations
-   * Updated translations: British English, Dutch, Italian.
+   * Updated translations: British English, Czech, Dutch, Italian, Russian.
  ### Units
+   * Horses added
+   * Seahorse added
+   * Zombie horse variation added
    * Update piglet/boar graphics
  ### User interface
    * The multiplayer "turns over" dialog now uses each team's colors when showing teams' names.
  ### WML Engine
    * Modify implementation of overwrite_specials attribute for replace yes/no parameter by none/one_side/both_sides and select abilities used like weapons and specials who must be overwrited(owned by fighter where special applied or both)
-   * Add a 'ability_id_active' attribute to [filter]
+   * Add a `ability_id_active` attribute to `[filter]`
+   * `[terrain_mask]` now accepts `mask_file` as an alternative to an inline mask. The file is loaded from the same place as `map_file` in the `[scenario]` tag (ie, a maps/ subdirectory of your binary path). Anyone who prefers to keep masks separate from regular maps is free to make a subdirectory for their masks (or just keep all their masks inline).
  ### Miscellaneous and Bug Fixes
-   * More optimizations in the UI drawing code, these shouldn't have visible effects (PR #5681).
+   * More optimization in the UI drawing code, fixes the crash displaying the full credits (issue #5043).
    * Made GUI.pyw compatible with Python 3.9 (issue #5719).
    * Removed workarounds for bugs affecting older SDL 2.0 versions, including an extra copy of the game screen made during gamemap scrolling (PR #5736).
    * FPS values calculated when the :fps or :benchmark are now written to a file which can then be used to track FPS values over time.
+   * Removed old image optimisation scripts, as there's a rewrite in Python.
 
 ## Version 1.15.12
  ### Add-ons client

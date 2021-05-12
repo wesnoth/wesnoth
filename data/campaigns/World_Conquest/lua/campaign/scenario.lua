@@ -46,7 +46,7 @@ function wesnoth.wml_actions.wc2_store_carryover(cfg)
 	local human_sides = wesnoth.sides.find(wml.get_child(cfg, "sides"))
 	--use an the average amount of villages for this scenario to stay independent of map generator results.
 	local nvillages = cfg.nvillages
-	local turns_left = math.max(wesnoth.game_config.last_turn - wesnoth.current.turn, 0)
+	local turns_left = math.max(wesnoth.scenario.turns - wesnoth.current.turn, 0)
 	local player_gold = 0
 
 	for side_num, side in ipairs(human_sides) do
@@ -77,7 +77,7 @@ on_event("enemies defeated", function(cx)
 	if wml.variables.wc2_scenario > 4 then
 		return
 	end
-	wesnoth.play_sound("ambient/ship.ogg")
+	wesnoth.audio.play("ambient/ship.ogg")
 	wesnoth.wml_actions.endlevel {
 		result = "victory",
 		carryover_percentage = 0,

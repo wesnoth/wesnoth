@@ -43,7 +43,7 @@ function add_plot(scenario, scenario_num, nplayers)
 
 		end_message("1,2,3", true, _ "Victory is ours! Let us set sail in search of new lands to conquer!")
 	elseif scenario_num == 2 then
-		local r = wesnoth.random(nplayers)
+		local r = mathx.random(nplayers)
 		start_message(r, true, _ "Ahhh. Just look at these fertile lands, ripe for conquest!")
 		start_message("4", true, _ "What’s this?! Foreign invaders have set foot upon our shores!")
 		start_message("5", true, _ "We’ll send them back to where they came from quick enough. All troops, to me!")
@@ -57,7 +57,7 @@ function add_plot(scenario, scenario_num, nplayers)
 
 		end_message("1,2,3", true, _ "Victory is ours! Let us set sail in search of new lands to conquer!")
 	elseif scenario_num == 4 then
-		local r = wesnoth.random(nplayers)
+		local r = mathx.random(nplayers)
 		start_message("5", true, _ "Ready yourselves, men! The conquering hordes are upon us!")
 		start_message("4", true, _ "Word has come to our island of your victories. Your army is impressive, but it will avail you not.")
 		start_message("6", true, _ "Indeed. You come this far, and no farther!")
@@ -69,7 +69,7 @@ function add_plot(scenario, scenario_num, nplayers)
 		end_message("1,2,3", false, _ "We have travelled great oceans and brought low mighty empires. Should we not wait until our forces regain their strength?")
 		end_message("1,2,3", true, _ "One last effort! We better finish our campaign when we hold initiative, before Winter arrives.")
 	else
-		local r = wesnoth.random(nplayers)
+		local r = mathx.random(nplayers)
 
 		start_message(r, true, _ "Finally we come to the shores of the last continent. Here at the edge of the world our empire shall be made complete.")
 		start_message("4", true, _ "Never! Your mad quest ends here, tyrant.")

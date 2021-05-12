@@ -204,7 +204,7 @@ void game_load::display_savegame_internal(const savegame::save_info& game)
 		// work, we fallback on unknown-unit.png.
 		std::string leader_image = leader["leader_image"].str();
 		if(!::image::exists(leader_image)) {
-			leader_image = filesystem::get_independent_image_path(leader_image);
+			leader_image = filesystem::get_independent_binary_file_path("images", leader_image);
 
 			// The leader TC modifier isn't appending if the independent image path can't
 			// be resolved during save_index entry creation, so we need to add it here.

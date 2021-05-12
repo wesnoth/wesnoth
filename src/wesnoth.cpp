@@ -337,6 +337,8 @@ static void handle_preprocess_command(const commandline_options& cmdline_opts)
 
 static int handle_validate_command(const std::string& file, abstract_validator& validator, const std::vector<std::string>& defines) {
 	preproc_map defines_map;
+	// add the WESNOTH_VERSION define
+	defines_map["WESNOTH_VERSION"] = preproc_define(game_config::wesnoth_version.str());
 	for(const std::string& define : defines) {
 		if(define.empty()) {
 			std::cerr << "empty define supplied\n";

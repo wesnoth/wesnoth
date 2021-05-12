@@ -4,7 +4,7 @@ local function path_locs(path)
 		local function special_locations()
 			return function()
 				for _,loc in ipairs(tostring(path.location_id):split()) do
-					loc = wesnoth.special_locations[loc]
+					loc = wesnoth.current.map.special_locations[loc]
 					if loc then coroutine.yield(loc[1], loc[2]) end
 				end
 			end

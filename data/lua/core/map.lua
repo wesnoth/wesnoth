@@ -7,6 +7,7 @@ end
 
 function wesnoth.map.read_location(...)
 	local x, y = ...
+	if x == nil then return nil, 0 end
 	if y == nil or type(x) == 'table' or type(x) == 'userdata' then
 		if type(x.x) == 'number' and type(x.y) == 'number' then
 			x, y = x.x, x.y
@@ -221,7 +222,7 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 		local m = wesnoth.current.map
 		return m.playable_width, m.playable_height, m.border_size
 	end)
-	wesnoth.special_locations = wesnoth.deprecate_api('wesnoth.special_locations', 'wesnoth.current.map:special_locations', 1, nil, setmetatable({}, {
+	wesnoth.special_locations = wesnoth.deprecate_api('wesnoth.special_locations', 'wesnoth.current.map.special_locations', 1, nil, setmetatable({}, {
 		__index = function(_, k) return wesnoth.current.map.special_locations[k] end,
 		__newindex = function(_, k, v) wesnoth.current.map.special_locations[k] = v end,
 		__len = function(_)

@@ -30,7 +30,8 @@ BOOST_AUTO_TEST_CASE( validate_mt19937 )
 {
 	std::mt19937 rng;
 	for (int i = 0; i < 9999 ; i++) {
-		rng();
+		// silence C4834 warning in MSVC
+		static_cast<void>(rng());
 	}
 	unsigned long val = rng();
 	BOOST_CHECK_EQUAL( val , 4123659995U );

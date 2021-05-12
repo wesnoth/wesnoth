@@ -267,27 +267,27 @@ end
 
 function wml_actions.music(cfg)
 	if cfg.play_once then
-		wesnoth.music_list.play(cfg.name)
+		wesnoth.audio.music_list.play(cfg.name)
 	else
 		if not cfg.append then
-			if cfg.immediate and wesnoth.music_list.current_i then
-				wesnoth.music_list.current.once = true
+			if cfg.immediate and wesnoth.audio.music_list.current_i then
+				wesnoth.audio.music_list.current.once = true
 			end
-			wesnoth.music_list.clear()
+			wesnoth.audio.music_list.clear()
 		end
-		local m = #wesnoth.music_list
-		wesnoth.music_list.add(cfg.name, not not cfg.immediate, cfg.ms_before or 0, cfg.ms_after or 0)
-		local n = #wesnoth.music_list
+		local m = #wesnoth.audio.music_list
+		wesnoth.audio.music_list.add(cfg.name, not not cfg.immediate, cfg.ms_before or 0, cfg.ms_after or 0)
+		local n = #wesnoth.audio.music_list
 		if n == 0 then
 			return
 		end
 		if cfg.shuffle == false then
-			wesnoth.music_list[n].shuffle = false
+			wesnoth.audio.music_list[n].shuffle = false
 		end
 		-- Always overwrite shuffle even if the new track couldn't be added,
 		-- but title shouldn't be overwritten.
 		if cfg.title ~= nil and m ~= n then
-			wesnoth.music_list[n].title = cfg.title
+			wesnoth.audio.music_list[n].title = cfg.title
 		end
 	end
 end
@@ -295,11 +295,11 @@ end
 function wml_actions.volume(cfg)
 	if cfg.music then
 		local rel = tonumber(cfg.music) or 100.0
-		wesnoth.music_list.volume = rel
+		wesnoth.audio.music_list.volume = rel
 	end
 	if cfg.sound then
 		local rel = tonumber(cfg.sound) or 100.0
-		wesnoth.sound_volume(rel)
+		wesnoth.audio.volume = rel
 	end
 end
 
@@ -384,7 +384,7 @@ end
 
 function wml_actions.store_turns(cfg)
 	local var = cfg.variable or "turns"
-	wml.variables[var] = wesnoth.game_config.last_turn
+	wml.variables[var] = wesnoth.scenario.turns
 end
 
 function wml_actions.store_unit(cfg)
@@ -410,7 +410,7 @@ end
 
 function wml_actions.sound(cfg)
 	local name = cfg.name or wml.error("[sound] missing required name= attribute")
-	wesnoth.play_sound(name, cfg["repeat"])
+	wesnoth.audio.play(name, cfg["repeat"])
 end
 
 function wml_actions.store_locations(cfg)
@@ -716,7 +716,7 @@ function wml_actions.scroll(cfg)
 end
 
 function wml_actions.color_adjust(cfg)
-	wesnoth.interface.color_adjust(cfg)
+	wesnoth.interface.color_adjust(cfg.red, cfg.green, cfg.blue)
 end
 
 function wml_actions.end_turn(cfg)
@@ -753,7 +753,7 @@ function wml_actions.label( cfg )
 end
 
 function wml_actions.open_help(cfg)
-	wesnoth.open_help(cfg.topic)
+	gui.open_help(cfg.topic)
 end
 
 function wml_actions.redraw(cfg)
@@ -837,12 +837,12 @@ end
 function wml_actions.remove_sound_source(cfg)
 	local ids = cfg.id or wml.error("[remove_sound_source] missing required id= attribute")
 	for _,id in ipairs(ids:split()) do
-		wesnoth.remove_sound_source(id)
+		wesnoth.audio.sources[id] = nil
 	end
 end
 
 function wml_actions.sound_source(cfg)
-	wesnoth.add_sound_source(cfg)
+	wesnoth.audio.sources[cfg.id] = cfg
 end
 
 function wml_actions.deprecated_message(cfg)
@@ -967,7 +967,9 @@ function wml_actions.terrain_mask(cfg)
 		rules[#rules + 1] = rule
 	end
 	if cfg.mask_file then
-		mask = wesnoth.read_file(cfg.mask_file)
+		local resolved = filesystem.resolve_asset(filesystem.asset_type.MAP, cfg.mask_file)
+		resolved = resolved:sub(6) -- strip off 'data/' prefix
+		mask = filesystem.read_file(resolved)
 	end
 	wesnoth.current.map:terrain_mask({x, y}, mask, {
 		is_odd = is_odd,

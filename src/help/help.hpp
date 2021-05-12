@@ -22,12 +22,15 @@ class CVideo;
 class game_config_view;
 
 #include <string>
+#include "utils/guard_value.hpp"
 
 namespace help {
 
 struct help_manager {
 	help_manager(const game_config_view *game_config);
 	~help_manager();
+private:
+	utils::guard_value<const game_config_view*> guard;
 };
 
 struct section;

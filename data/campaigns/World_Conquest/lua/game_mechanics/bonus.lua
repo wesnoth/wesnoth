@@ -17,12 +17,12 @@ function wesnoth.wml_actions.wc2_place_bonus(cfg)
 	local image = c_scenery.image or scenery
 	bonus.place_item(x, y, image)
 
-	-- Note: although the numbrs of options passed to helper.rand might depend on the langauge
-	--       the number of thimes random is called does not (random is called even if there is
+	-- Note: although the numbers of options passed to mathx.random_choice might depend on the langauge
+	--       the number of times random is called does not (random is called even if there is
 	--       only one option), so this doesn't cause OOS.
 	local name1 = wc2_random_names()
 	local name_options = c_scenery.names or { _"place" }
-	local name2 = tostring(name_options[wesnoth.random(#name_options)])
+	local name2 = tostring(name_options[mathx.random(#name_options)])
 
 	local function span_font_family(str, fam)
 		return string.format("<span font-family='%s'>%s</span>", fam, str)
@@ -100,7 +100,7 @@ on_event("wc2_drop_pickup", function(ec)
 		local training_chance = wml.variables.wc2_config_training_chance or 1
 		local hero_chance = wml.variables.wc2_config_hero_chance or 1
 		local item_chance = wml.variables.wc2_config_item_chance or 1
-		local r = wesnoth.random(training_chance + hero_chance + item_chance)
+		local r = mathx.random(training_chance + hero_chance + item_chance)
 		if r <= training_chance then
 			bonus_type = 1
 		elseif r <= training_chance + item_chance then
@@ -112,7 +112,7 @@ on_event("wc2_drop_pickup", function(ec)
 	local bonus_subtype = item.wc2_subtype
 	if bonus_type == 1 then
 		if not bonus.found_training(wesnoth.current.side, bonus_subtype, ec) then
-			bonus_type = wesnoth.random(2,3)
+			bonus_type = mathx.random(2,3)
 			bonus_subtype = nil
 		end
 	end

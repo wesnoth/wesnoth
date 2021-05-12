@@ -1,21 +1,21 @@
 -- Lakes
 local function world_conquest_tek_map_repaint_2b()
 	-- Add snow and ice
-	if wesnoth.random(2) == 1 then
+	if mathx.random(2) == 1 then
 		local terrain_to_change = map:find(f.all(
 			f.terrain("!,Ss,D*^*,Hd,W*^*,Mm^Xm,Xu,Mv,Q*^*,U*^*"),
 			f.radius(2, f.terrain("M*^*"))
 		))
 
 		-- base amount in map surface
-		local r = helper.rand(tostring(total_tiles // 675) .. ".." .. tostring(total_tiles // 330))
+		local r = mathx.random_choice(tostring(total_tiles // 675) .. ".." .. tostring(total_tiles // 330))
 		wct_storm(terrain_to_change, r)
 	end
 	wct_expand_snow()
 	set_terrain { "Ai",
 		f.all(
 			f.terrain("Wwt,Wot"),
-			f.adjacent(f.terrain("A*^*,Ms^*,Ha^*,Kha,Cha"), nil, wesnoth.random(3, 5))
+			f.adjacent(f.terrain("A*^*,Ms^*,Ha^*,Kha,Cha"), nil, mathx.random(3, 5))
 		),
 	}
 	-- randomize snowed forests
@@ -58,14 +58,14 @@ local function world_conquest_tek_map_repaint_2b()
 		fraction = 2,
 	}
 
-	if wesnoth.random(20) ~= 1 then
+	if mathx.random(20) ~= 1 then
 		set_terrain { "Gg",
 			f.terrain("Gs^*"),
 			layer = "base",
 		}
 
 	end
-	if wesnoth.random(20) ~= 1 then
+	if mathx.random(20) ~= 1 then
 		set_terrain { "Gg^Gvs",
 			f.all(
 				f.terrain("Gg"),
@@ -88,13 +88,13 @@ local function world_conquest_tek_map_repaint_2b()
 		}
 
 	end
-	if wesnoth.random(20) == 1 then
+	if mathx.random(20) == 1 then
 		wct_map_decorative_docks()
 	end
 	wct_dirt_beachs("9..11")
 	-- chance of different lakes water
 	-- todo: does this syntax really work?
-	local terrain_mod = helper.rand("g,,,,,,,,,,,,,,,,,,t")
+	local terrain_mod = mathx.random_choice("g,,,,,,,,,,,,,,,,,,t")
 	set_terrain { "Ww" .. terrain_mod,
 		f.terrain("Wwt^*"),
 		layer = "base",
@@ -104,7 +104,7 @@ local function world_conquest_tek_map_repaint_2b()
 	}
 
 	-- chance of frozen lakes
-	if wesnoth.random(9) == 1 then
+	if mathx.random(9) == 1 then
 		set_terrain { "Ai",
 			f.all(
 				f.terrain("Ww,Wwg,Wo,Wog"),
@@ -144,7 +144,7 @@ local function world_conquest_tek_map_repaint_2b()
 	local terrain_to_change = map:find(f.terrain("A*^*,Ha*^*,Ms^*"))
 
 	local chance = 2000 * #terrain_to_change // total_tiles
-	if wesnoth.random(0, 99 ) > chance then
+	if mathx.random(0, 99 ) > chance then
 		set_terrain { "*^Ftd",
 			f.terrain("*^Ft"),
 			layer = "overlay",
@@ -231,7 +231,7 @@ function world_conquest_tek_map_constructor_lakes()
 		fraction_rand = "11..13",
 	}
 
-	local r = helper.rand(tostring(total_tiles // 675) .. ".." .. tostring(total_tiles // 285))
+	local r = mathx.random_choice(tostring(total_tiles // 675) .. ".." .. tostring(total_tiles // 285))
 
 	set_terrain { "Hh^Uf",
 		f.all(

@@ -61,7 +61,7 @@ end
 
 function ai_helper.done_eval_messages(start_time, ca_name)
     ca_name = ca_name or 'unknown'
-    local dt = wesnoth.get_time_stamp() / 1000. - start_time
+    local dt = wesnoth.ms_since_init() / 1000. - start_time
     if ai_helper.print_eval() then
         ai_helper.print_ts_delta(start_time, '       - Done evaluating ' .. ca_name .. ':')
     end
@@ -119,7 +119,7 @@ function ai_helper.print_ts(...)
     -- Print arguments preceded by a time stamp in seconds
     -- Also return that time stamp
 
-    local ts = wesnoth.get_time_stamp() / 1000.
+    local ts = wesnoth.ms_since_init() / 1000.
 
     local arg = { ... }
     arg[#arg+1] = string.format('[ t = %.3f ]', ts)
@@ -130,13 +130,13 @@ function ai_helper.print_ts(...)
 end
 
 function ai_helper.print_ts_delta(start_time, ...)
-    -- @start_time: time stamp in seconds as returned by wesnoth.get_time_stamp / 1000.
+    -- @start_time: time stamp in seconds as returned by wesnoth.ms_since_init / 1000.
 
     -- Same as ai_helper.print_ts(), but also adds time elapsed since
     -- the time given in the first argument (in seconds)
     -- Returns time stamp as well as time elapsed
 
-    local ts = wesnoth.get_time_stamp() / 1000.
+    local ts = wesnoth.ms_since_init() / 1000.
     local delta = ts - start_time
 
     local arg = { ... }
@@ -655,7 +655,7 @@ function ai_helper.get_named_loc_xy(param_core, cfg, required_for)
     if (param_core ~= '') then param_loc = param_core .. '_loc' end
     local loc_id = cfg[param_loc]
     if loc_id then
-        local loc = wesnoth.special_locations[loc_id]
+        local loc = wesnoth.current.map.special_locations[loc_id]
         if loc then
             return loc
         else
@@ -1840,7 +1840,7 @@ function ai_helper.custom_cost_with_avoid(x, y, prev_cost, unit, avoid_map, ally
     -- in most cases this will simply add to the cost, rather than change the path itself.
     local defense = unit:defense_on(terrain)
     -- We need this to be multiples of 10 for the penalty identification to work
-    defense = H.round(defense / 10) * 10
+    defense = mathx.round(defense / 10) * 10
     if (defense > 90) then defense = 90 end
     if (defense < 10) then defense = 10 end
     move_cost_int = move_cost_int + (100 - defense)
