@@ -495,7 +495,7 @@ lua_kernel_base::lua_kernel_base()
 	};
 	for (luaL_Reg const *lib = safe_libs; lib->func; ++lib)
 	{
-		luaL_requiref(L, lib->name, lib->func, true);
+		luaL_requiref(L, lib->name, lib->func, strlen(lib->name));
 		lua_pop(L, 1);  /* remove lib */
 	}
 
