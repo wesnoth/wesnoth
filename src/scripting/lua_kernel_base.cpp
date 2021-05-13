@@ -49,6 +49,7 @@
 #include "utils/name_generator.hpp"
 #include "utils/markov_generator.hpp"
 #include "utils/context_free_grammar_generator.hpp"
+#include "utils/scope_exit.hpp"
 
 #include <cstring>
 #include <exception>
@@ -56,6 +57,7 @@
 #include <string>
 #include <sstream>
 #include <vector>
+#include <numeric>
 
 #include "lua/lauxlib.h"
 #include "lua/lualib.h"
@@ -501,6 +503,97 @@ static int intf_get_language(lua_State* L)
 	return 1;
 }
 
+static void dir_meta_helper(lua_State* L, std::vector<std::string>& keys)
+{
+	switch(luaL_getmetafield(L, -1, "__dir")) {
+		case LUA_TFUNCTION:
+			lua_pushvalue(L, 1);
+			lua_push(L, keys);
+			lua_call(L, 2, 1);
+			keys = lua_check<std::vector<std::string>>(L, -1);
+			break;
+		case LUA_TTABLE:
+			auto dir_keys = lua_check<std::vector<std::string>>(L, -1);
+			std::copy(dir_keys.begin(), dir_keys.end(), std::back_inserter(keys));
+			break;
+	}
+}
+
+/**
+ * Prints out a list of keys available in an object.
+ * A list of keys is gathered from the following sources:
+ * - For a table, all keys defined in the table
+ * - Any keys accessible through the metatable chain (if __index on the metatable is a table)
+ * - The output of the __dir metafunction
+ * The list is then sorted alphabetically and formatted into columns.
+ * - Arg 1: Any object
+ * - Arg 3: (optional) Function to use for output; defaults to _G.print
+ */
+static int intf_object_dir(lua_State* L)
+{
+	if(lua_isnil(L, 1)) return luaL_argerror(L, 1, "Can't dir() nil");
+	if(!lua_isfunction(L, -1)) {
+		luaW_getglobal(L, "print");
+	}
+	int fcn_idx = lua_gettop(L);
+	std::vector<std::string> keys;
+	if(lua_istable(L, 1)) {
+		// Walk the metatable chain (as long as __index is a table)...
+		// If we reach an __index that's a function, check for a __dir metafunction.
+		int save_top = lua_gettop(L);
+		lua_pushvalue(L, 1);
+		ON_SCOPE_EXIT(&) {
+			lua_settop(L, save_top);
+		};
+		do {
+			int table_idx = lua_absindex(L, -1);
+			for(lua_pushnil(L); lua_next(L, table_idx); lua_pop(L, 1)) {
+				if(lua_type(L, -2) == LUA_TSTRING) {
+					keys.push_back(lua_tostring(L,-2));
+				}
+			}
+			// Two possible exit cases:
+			// 1. getmetafield returns TNIL because there is no __index
+			// In this case, the stack is unchanged, so the while condition is still true.
+			// 2. The __index is not a table
+			// In this case, obviously the while condition fails
+			if(luaL_getmetafield(L, table_idx, "__index") == LUA_TNIL) break;
+		} while(lua_istable(L, -1));
+		if(lua_isfunction(L, -1)) {
+			lua_pop(L, 1);
+			dir_meta_helper(L, keys);
+		}
+	} else if(lua_isuserdata(L, 1) && !lua_islightuserdata(L, 1)) {
+		lua_pushvalue(L, 1);
+		dir_meta_helper(L, keys);
+		lua_pop(L, 1);
+	}
+	// Sort and remove any duplicates
+	std::sort(keys.begin(), keys.end());
+	keys.erase(std::unique(keys.begin(), keys.end()), keys.end());
+	size_t max_len = std::accumulate(keys.begin(), keys.end(), 0, [](size_t max, const std::string& next) {
+		return std::max(max, next.size());
+	});
+	// Let's limit to about 80 characters of total width with minimum 3 characters padding between columns
+	static const size_t MAX_WIDTH = 80, COL_PADDING = 3;
+	size_t n_cols = (MAX_WIDTH + COL_PADDING) / (max_len + COL_PADDING);
+	size_t col_width = max_len + COL_PADDING;
+	size_t n_rows = ceil(keys.size() / double(n_cols));
+	for(size_t i = 0; i < n_rows; i++) {
+		std::ostringstream line;
+		line.fill(' ');
+		line.setf(std::ios::left);
+		for(size_t j = 0; j < n_cols && j + (i * n_cols) < keys.size(); j++) {
+			line.width(col_width);
+			line << keys[j + i * n_cols];
+		}
+		lua_pushvalue(L, fcn_idx);
+		lua_push(L, line.str());
+		lua_call(L, 1, 0);
+	}
+	return 0;
+}
+
 // End Callback implementations
 
 // Template which allows to push member functions to the lua kernel base into lua as C functions, using a shim
@@ -572,6 +665,10 @@ lua_kernel_base::lua_kernel_base()
 	lua_setglobal(L, "dofile");
 	lua_pushnil(L);
 	lua_setglobal(L, "loadfile");
+
+	// Add dir()
+	lua_pushcfunction(L, intf_object_dir);
+	lua_setglobal(L, "dir");
 
 	// Store the error handler.
 	cmd_log_ << "Adding error handler...\n";
