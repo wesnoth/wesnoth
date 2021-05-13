@@ -328,6 +328,7 @@ int luaW_open(lua_State* L)
 		{ "image_size", &intf_get_image_size },
 		{ "have_asset", &intf_have_asset },
 		{ "resolve_asset", &intf_resolve_asset },
+		{ nullptr, nullptr }
 	};
 	lua_newtable(L);
 	luaL_setfuncs(L, callbacks, 0);
