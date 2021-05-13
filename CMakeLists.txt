@@ -113,28 +113,32 @@ if(NOT CMAKE_BUILD_TYPE)
 endif(NOT CMAKE_BUILD_TYPE)
 
 if(NOT DEFINED ENABLE_DISPLAY_REVISION)
-	# Test whether the code is used in a repository if not autorevision will
-	# fail and should be disabled by default. If inside a repository enable
-	# the display of revision numbers by default.
-	execute_process(
-		COMMAND ${CMAKE_SOURCE_DIR}/utils/autorevision.sh -t h > ${CMAKE_CURRENT_BINARY_DIR}/revision.dummy
-		WORKING_DIRECTORY
-			${CMAKE_SOURCE_DIR}
-		OUTPUT_VARIABLE
-			 ENABLE_DISPLAY_REVISION_TEST_OUTPUT
-		ERROR_VARIABLE
-			ENABLE_DISPLAY_REVISION_TEST_ERRNO
-	)
+	# can't run the shell script on windows
+	if(NOT WIN32)
+		# Test whether the code is used in a repository if not autorevision will
+		# fail and should be disabled by default. If inside a repository enable
+		# the display of revision numbers by default.
+		execute_process(
+			COMMAND ${CMAKE_SOURCE_DIR}/utils/autorevision.sh -t h > ${CMAKE_CURRENT_BINARY_DIR}/revision.dummy
+			WORKING_DIRECTORY
+				${CMAKE_SOURCE_DIR}
+			OUTPUT_VARIABLE
+				ENABLE_DISPLAY_REVISION_TEST_OUTPUT
+			ERROR_VARIABLE
+				ENABLE_DISPLAY_REVISION_TEST_ERRNO
+		)
 
-	if("${ENABLE_DISPLAY_REVISION_TEST_ERRNO}" STREQUAL "")
-		set(DEFAULT_ENABLE_DISPLAY_REVISION true)
+		if("${ENABLE_DISPLAY_REVISION_TEST_ERRNO}" STREQUAL "")
+			set(DEFAULT_ENABLE_DISPLAY_REVISION true)
+		else()
+			set(DEFAULT_ENABLE_DISPLAY_REVISION false)
+		endif()
+
+		unset(ENABLE_DISPLAY_REVISION_TEST_OUTPUT)
+		unset(ENABLE_DISPLAY_REVISION_TEST_ERRNO)
 	else()
 		set(DEFAULT_ENABLE_DISPLAY_REVISION false)
 	endif()
-
-	unset(ENABLE_DISPLAY_REVISION_TEST_OUTPUT)
-	unset(ENABLE_DISPLAY_REVISION_TEST_ERRNO)
-
 endif()
 
 option(

@@ -192,7 +192,9 @@ if(ENABLE_GAME)
 		Boost::locale
 		Boost::filesystem
 	)
-	add_dependencies(wesnoth wesnoth-revision)
+	if(ENABLE_DISPLAY_REVISION)
+		add_dependencies(wesnoth wesnoth-revision)
+	endif()
 
 	set_target_properties(wesnoth PROPERTIES OUTPUT_NAME ${BINARY_PREFIX}wesnoth${BINARY_SUFFIX})
 
@@ -229,7 +231,9 @@ if(ENABLE_TESTS)
 		Boost::filesystem
 		Boost::unit_test_framework
 	)
-	add_dependencies(boost_unit_tests wesnoth-revision)
+	if(ENABLE_DISPLAY_REVISION)
+		add_dependencies(boost_unit_tests wesnoth-revision)
+	endif()
 
 	set_target_properties(boost_unit_tests PROPERTIES OUTPUT_NAME ${BINARY_PREFIX}boost_unit_tests${BINARY_SUFFIX})
 endif(ENABLE_TESTS)
@@ -266,7 +270,9 @@ if(ENABLE_SERVER)
 	endif(WIN32)
 
 	set_target_properties(wesnothd PROPERTIES OUTPUT_NAME ${BINARY_PREFIX}wesnothd${BINARY_SUFFIX})
-	add_dependencies(wesnothd wesnoth-revision)
+	if(ENABLE_DISPLAY_REVISION)
+		add_dependencies(wesnothd wesnoth-revision)
+	endif()
 
 	install(TARGETS wesnothd DESTINATION ${CMAKE_INSTALL_BINDIR})
 endif(ENABLE_SERVER)
@@ -304,7 +310,9 @@ if(ENABLE_CAMPAIGN_SERVER)
 	endif(WIN32)
 
 	set_target_properties(campaignd PROPERTIES OUTPUT_NAME ${BINARY_PREFIX}campaignd${BINARY_SUFFIX})
-	add_dependencies(campaignd wesnoth-revision)
+	if(ENABLE_DISPLAY_REVISION)
+		add_dependencies(campaignd wesnoth-revision)
+	endif()
 
 	install(TARGETS campaignd DESTINATION ${CMAKE_INSTALL_BINDIR})
 endif(ENABLE_CAMPAIGN_SERVER)
