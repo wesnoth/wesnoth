@@ -397,6 +397,10 @@ WIDGET_SETTER("visible", lua_index_raw, gui2::styled_widget)
 //must be last
 WIDGET_SETTER("value_compat,label", t_string, gui2::styled_widget)
 {
+	gui2::window* window = w.get_window();
+	if(window) {
+		window->invalidate_layout();
+	}
 	w.set_label(value);
 }
 
