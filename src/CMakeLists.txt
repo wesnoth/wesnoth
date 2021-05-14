@@ -37,10 +37,9 @@ link_directories(
 	${LIBDBUS_LIBRARY_DIRS}
 )
 
+set(common-external-libs ${ICU_DATA_LIBRARY} ${ICU_I18N_LIBRARY} ${ICU_UC_LIBRARY})
 if(WIN32)
-	set(common-external-libs shlwapi.lib winmm.lib)
-elseif(CMAKE_SYSTEM_NAME STREQUAL "Linux")
-	set(common-external-libs "-licudata -licui18n -licuuc")
+	set(common-external-libs ${common-external-libs} shlwapi.lib winmm.lib)
 endif(WIN32)
 
 set(game-external-libs
