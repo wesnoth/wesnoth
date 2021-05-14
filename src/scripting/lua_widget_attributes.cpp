@@ -384,11 +384,14 @@ WIDGET_SETTER("visible", lua_index_raw, gui2::styled_widget)
 
 	w.set_visible(flag);
 
-	//if(flag == visibility::hidden) {
-	//	// HACK: this is needed to force the widget to be repainted immediately
-	//	//       to get rid of its ghost image.
-	//	scoped_dialog::current->window->invalidate_layout();
-	//}
+	if(flag == visibility::hidden) {
+		// HACK: this is needed to force the widget to be repainted immediately
+		//       to get rid of its ghost image.
+		gui2::window* window = w.get_window();
+		if(window) {
+			window->invalidate_layout();
+		}
+	}
 }
 
 //must be last
