@@ -725,31 +725,6 @@ int game_lua_kernel::intf_clear_menu_item(lua_State *L)
 	return 0;
 }
 
-int game_lua_kernel::intf_set_end_campaign_credits(lua_State *L)
-{
-	game_classification &classification = play_controller_.get_classification();
-	classification.end_credits = luaW_toboolean(L, 1);
-	return 0;
-}
-
-int game_lua_kernel::intf_set_end_campaign_text(lua_State *L)
-{
-	game_classification &classification = play_controller_.get_classification();
-	classification.end_text = luaW_checktstring(L, 1);
-	if (lua_isnumber(L, 2)) {
-		classification.end_text_duration = static_cast<int> (lua_tonumber(L, 2));
-	}
-
-	return 0;
-}
-
-int game_lua_kernel::intf_set_next_scenario(lua_State *L)
-{
-	deprecated_message("wesnoth.set_next_scenario", DEP_LEVEL::INDEFINITE, "");
-	gamedata().set_next_scenario(luaL_checkstring(L, 1));
-	return 0;
-}
-
 int game_lua_kernel::intf_shroud_op(lua_State *L, bool place_shroud)
 {
 
@@ -4083,9 +4058,6 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 		{ "replace_schedule",          &dispatch<&game_lua_kernel::intf_replace_schedule           >        },
 		{ "select_hex",                &dispatch<&game_lua_kernel::intf_select_hex                 >        },
 		{ "set_time_of_day",           &dispatch<&game_lua_kernel::intf_set_time_of_day            >        },
-		{ "set_end_campaign_credits",  &dispatch<&game_lua_kernel::intf_set_end_campaign_credits   >        },
-		{ "set_end_campaign_text",     &dispatch<&game_lua_kernel::intf_set_end_campaign_text      >        },
-		{ "set_next_scenario",         &dispatch<&game_lua_kernel::intf_set_next_scenario          >        },
 		{ "simulate_combat",           &dispatch<&game_lua_kernel::intf_simulate_combat            >        },
 		{ "synchronize_choice",        &intf_synchronize_choice                                             },
 		{ "synchronize_choices",       &intf_synchronize_choices                                            },

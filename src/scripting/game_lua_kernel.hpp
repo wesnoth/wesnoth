@@ -131,7 +131,6 @@ class game_lua_kernel : public lua_kernel_base
 	int intf_clear_menu_item(lua_State *L);
 	int intf_create_side(lua_State *L);
 	int intf_set_menu_item(lua_State *L);
-	int intf_set_next_scenario(lua_State *L);
 	int intf_shroud_op(lua_State *L, bool place_shroud);
 	int intf_simulate_combat(lua_State *L);
 	int intf_scroll_to_tile(lua_State *L);
