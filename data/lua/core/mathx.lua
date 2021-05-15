@@ -95,4 +95,4 @@ function mathx.shuffle(t, random_func)
 	end
 end
 
-mathx.random = wesnoth.deprecate_api('mathx.random', 'mathx.random', 1, nil, mathx.random)
+math.random = wesnoth.deprecate_api('math.random', 'mathx.random', 1, nil, mathx.random)
