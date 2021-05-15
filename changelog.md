@@ -12,6 +12,7 @@
    * Add a more advanced way of manipulating version strings via `wesnoth.version` constructor function.
    * Add a `wesnoth.scenario` data module that consolidates everything there is to know about the current scenario. Much of this information was previously available through `wesnoth.game_config`, but there are some new details too.
    * Fixed a regression introduced in 1.15.5 causing GUI2 widgets set to a hidden state to remain visible but not able to be interacted with.
+   * Fixed a regression introduced in 1.15.5 causing GUI2 listboxes to break when cleared and re-filled under certain circumstances.
  ### Packaging
    * Increased minimum required version of SDL to 2.0.8 (PR #5736).
  ### Terrain
