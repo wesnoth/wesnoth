@@ -159,11 +159,13 @@ static int impl_music_set(lua_State* L) {
 				sound::remove_track(i);
 			}
 		} else if(luaW_toconfig(L, 3, cfg)) {
+			// Don't clear the playlist
+			cfg["append"] = true;
 			// Don't allow play_once=yes
 			if(cfg["play_once"]) {
 				return luaL_argerror(L, 3, "For play_once, use wesnoth.music_list.play instead");
 			}
-			if(i < sound::get_num_tracks()) {
+			if(i >= sound::get_num_tracks()) {
 				sound::play_music_config(cfg);
 			} else {
 				// Remove the track at that index and add the new one in its place
