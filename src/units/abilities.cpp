@@ -1497,6 +1497,14 @@ bool attack_type::special_active_impl(const_attack_ptr self_attack, const_attack
 		other_attack->has_special_or_ability("firststrike")) {
 		return false;
 	}
+	if (tag_name == "slow" && other &&
+		(other->get_state("unslowable") || other->get_state(unit::STATE_SLOWED))) {
+		return false;
+	}
+	if (tag_name == "petrifies" && other &&
+		other->get_state("unpetrifiable")) {
+		return false;
+	}
 
 
 	// Translate our context into terms of "attacker" and "defender".

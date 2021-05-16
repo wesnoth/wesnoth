@@ -10,6 +10,7 @@
  ### Units
  ### User interface
  ### WML Engine
+   * add 'unslowable' and 'unpetrifiable' status to immune to slow or petrifies
  ### Miscellaneous and Bug Fixes
 
 ## Version 1.15.13

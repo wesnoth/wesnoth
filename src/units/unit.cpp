@@ -949,6 +949,12 @@ void unit::advance_to(const unit_type& u_type, bool use_traits)
 	if(get_state("unpoisonable")) {
 		set_state(STATE_POISONED, false);
 	}
+	if(get_state("unslowable")) {
+		set_state(STATE_SLOWED, false);
+	}
+	if(get_state("unpetrifiable")) {
+		set_state(STATE_PETRIFIED, false);
+	}
 
 	// Now that modifications are done modifying the maximum hit points,
 	// enforce this maximum.
