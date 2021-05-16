@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-05-02 18:08 UTC\n"
+"POT-Creation-Date: 2021-05-16 02:02 UTC\n"
 "PO-Revision-Date: 2021-05-01 08:44+0200\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
@@ -62,8 +62,8 @@ msgstr "Místo patrol.lua použij Mikro UI Hlídka."
 msgid "The Elves Besieged"
 msgstr "Elfové v Obležení"
 
-#. [unit]: type=Spearman, id=Konrad
 #. [side]: type=Spearman, id=Konrad
+#. [unit]: type=Spearman, id=Konrad
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:34
 #: data/ai/micro_ais/scenarios/patrols.cfg:92
 msgid "Konrad"
@@ -88,10 +88,10 @@ msgstr "Delfador"
 msgid "Urug-Telfar"
 msgstr "Urug-Telfar"
 
-#. [side]: id=Vanak, type=Orcish Ruler
 #. [side]: type=Orcish Warlord, id=Urug-Telfar
 #. [side]: type=Orcish Warlord, id=Knafa-Tan
 #. [side]: type=Orcish Warlord, id=Maga-Knafa
+#. [side]: id=Vanak, type=Orcish Ruler
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:99
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:114
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:133
@@ -323,8 +323,8 @@ msgstr ""
 "druhých nevšímají, což ukazuje na neskutečnou schopnost sebeovládání dobře "
 "vycvičeného ovčáckého psa."
 
-#. [event]
 #. [test]: id=animals
+#. [event]
 #: data/ai/micro_ais/scenarios/animals.cfg:27
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:45
 msgid "Animals"
@@ -335,10 +335,10 @@ msgstr "Zvířata"
 msgid "Rutburt"
 msgstr "Rutburt"
 
-#. [side]: id=Rutburt, type=Outlaw
 #. [side]: type=General, id=leader2
 #. [side]: type=Lieutenant, id=leader5
 #. [side]: type=Lieutenant, id=leader6
+#. [side]: id=Rutburt, type=Outlaw
 #: data/ai/micro_ais/scenarios/animals.cfg:48
 #: data/ai/micro_ais/scenarios/goto.cfg:43
 #: data/ai/micro_ais/scenarios/goto.cfg:93
@@ -367,8 +367,8 @@ msgstr "Pavouci"
 msgid "Yetis"
 msgstr "Sněžní muži"
 
-#. [event]
 #. [side]
+#. [event]
 #. [test]: id=wolves
 #: data/ai/micro_ais/scenarios/animals.cfg:119
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:48
@@ -382,10 +382,10 @@ msgid "Whelps"
 msgstr "Štěňata"
 
 # !!!!
-#. [set_menu_item]: id=m01_end_animals
-#. [event]
-#. [set_menu_item]: id=m04_end_animals
 #. [set_menu_item]: id=m01_end_swarm
+#. [set_menu_item]: id=m04_end_animals
+#. [event]
+#. [set_menu_item]: id=m01_end_animals
 #. [set_menu_item]: id=m01_end_wolves
 #: data/ai/micro_ais/scenarios/animals.cfg:209
 #: data/ai/micro_ais/scenarios/dragon.cfg:48
@@ -540,9 +540,9 @@ msgstr "Velký zlý skřřet"
 msgid "All right, chaps. Those orcs need to be stopped."
 msgstr "Dobře chlapi. Tyhle skřety musíme zastavit."
 
-#. [message]: speaker=Big Bad Orc
-#. [message]: speaker=Vanak
 #. [message]: speaker=Another Bad Orc
+#. [message]: speaker=Vanak
+#. [message]: speaker=Big Bad Orc
 #: data/ai/micro_ais/scenarios/bottleneck_defense.cfg:93
 #: data/ai/micro_ais/scenarios/guardians.cfg:573
 #: data/ai/micro_ais/scenarios/messenger_escort.cfg:140
@@ -746,8 +746,8 @@ msgstr ""
 "Není tu co dělat, jen se dívej, nebo tento scénář použij jako předlohu či "
 "pro své vlastní testy."
 
-#. [event]
 #. [test]: id=goto
+#. [event]
 #: data/ai/micro_ais/scenarios/goto.cfg:5
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:84
 msgid "Goto"
@@ -803,8 +803,8 @@ msgstr "seržant Aethubry"
 msgid "Place Side 1 Footpad"
 msgstr "Přidat lapku straně 1"
 
-#. [set_menu_item]: id=m02_kill_unit
 #. [set_menu_item]: id=m05_kill_unit
+#. [set_menu_item]: id=m02_kill_unit
 #: data/ai/micro_ais/scenarios/goto.cfg:350
 #: data/ai/micro_ais/scenarios/swarm.cfg:117
 #: data/ai/micro_ais/scenarios/wolves.cfg:157
@@ -1063,8 +1063,8 @@ msgstr "Všichni jsme se dostali do rohů, vraťme se znovu k sobě."
 msgid "We're back together, let's head out to the corners again."
 msgstr "Jsme zpátky spolu, zamiřme zase do rohů."
 
-#. [event]
 #. [test]: id=guardians
+#. [event]
 #: data/ai/micro_ais/scenarios/guardians.cfg:17
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:57
 msgid "Guardians"
@@ -2254,8 +2254,8 @@ msgstr "Držel jsem se tak dlouho, jak jen bylo možné."
 msgid "I made it"
 msgstr "Zvládl jsem to"
 
-#. [event]
 #. [test]: id=recruiting
+#. [event]
 #: data/ai/micro_ais/scenarios/recruiting.cfg:5
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:78
 msgid "Recruiting"
@@ -2327,8 +2327,8 @@ msgstr "Grnk Slabý"
 msgid "team_name^Grnk"
 msgstr "Grnk"
 
-#. [event]
 #. [test]: id=swarm
+#. [event]
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:51
 #: data/ai/micro_ais/scenarios/swarm.cfg:5
 msgid "Swarm"
