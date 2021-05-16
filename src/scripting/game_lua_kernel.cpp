@@ -2553,9 +2553,9 @@ int game_lua_kernel::intf_simulate_combat(lua_State *L)
  */
 int game_lua_kernel::intf_play_sound(lua_State *L)
 {
-	char const *m = luaL_checkstring(L, 1);
 	if (play_controller_.is_skipping_replay()) return 0;
-	int repeats = lua_tointeger(L, 2);
+	char const *m = luaL_checkstring(L, 1);
+	int repeats = luaL_optinteger(L, 2, 1);
 	sound::play_sound(m, sound::SOUND_FX, repeats);
 	return 0;
 }
