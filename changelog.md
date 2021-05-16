@@ -1,11 +1,7 @@
-## Version 1.15.12+dev
+## Version 1.15.13
  ### Add-ons client
    * The details panel now shows the list of tags in each add-on.
    * Added a filter based on tags.
- ### Add-ons server
- ### Campaigns
- ### Editor
- ### Multiplayer
  ### Lua API
    * Added `pango_color` to the `wesnoth.colors` table, for easy use in formatted text.
    * Add new function `filesystem.resolve_asset` to convert `[binary_path]` relative paths to data-relative paths.
@@ -17,7 +13,6 @@
    * Fixed a regression introduced in 1.15.5 causing GUI2 listboxes to break when cleared and re-filled under certain circumstances.
  ### Packaging
    * Increased minimum required version of SDL to 2.0.8 (PR #5736).
- ### Terrain
  ### Translations
    * Updated translations: British English, Czech, Dutch, Italian, Russian.
  ### Units
