@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.9.10+dev\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-03-20 22:02-0300\n"
+"POT-Creation-Date: 2021-05-15 22:06-0400\n"
 "PO-Revision-Date: 2015-08-08 15:21+0300\n"
 "Last-Translator: Gvido Bruveris <huhims@gmail.com>\n"
 "Language-Team: none\n"
@@ -6794,23 +6794,58 @@ msgid ""
 "origins."
 msgstr ""
 
+#. [race]: id=horse
+#: data/core/units.cfg:183
+#, fuzzy
+#| msgid "race^Wose"
+msgid "race^Horse"
+msgstr "Vose"
+
+#. [race]: id=horse
+#: data/core/units.cfg:184
+#, fuzzy
+#| msgid "race+female^Ogre"
+msgid "race+female^Horse"
+msgstr "Cilvēkēdāja"
+
+#. [race]: id=horse
+#: data/core/units.cfg:185
+#, fuzzy
+#| msgid "race^Woses"
+msgid "race^Horses"
+msgstr "Voses"
+
+#. [race]: id=horse
+#: data/core/units.cfg:186
+msgid ""
+"Domesticated horses come in many shapes and sizes, from mighty war chargers, "
+"to sturdy draught horses or agile stock horses.  While they are more fragile "
+"than many beasts, their speed and cunning allow feral horses to thrive in "
+"the wild, alongside their wild bretheren.\n"
+"\n"
+"Horses have been an important part of many civilizations, so it is not "
+"surprising that there are many myths and stories centered around them.  "
+"Winged horses, man-horse hybrids, and ghost horses have made their way into "
+"written history, though few can honestly claim to have seen such things."
+msgstr ""
+
 #. [race]: id=human
-#: data/core/units.cfg:191
+#: data/core/units.cfg:203
 msgid "race^Human"
 msgstr "Vīrietis"
 
 #. [race]: id=human
-#: data/core/units.cfg:192
+#: data/core/units.cfg:204
 msgid "race+female^Human"
 msgstr "Sieviete"
 
 #. [race]: id=human
-#: data/core/units.cfg:193
+#: data/core/units.cfg:205
 msgid "race^Humans"
 msgstr "Cilvēki"
 
 #. [race]: id=human
-#: data/core/units.cfg:194
+#: data/core/units.cfg:206
 #, fuzzy
 #| msgid ""
 #| "The race of men is an extremely diverse one. Although they originally "
@@ -6924,28 +6959,28 @@ msgstr ""
 "valsts karavīri."
 
 #. [race]: id=dunefolk
-#: data/core/units.cfg:209
+#: data/core/units.cfg:221
 #, fuzzy
 #| msgid "race^Human"
 msgid "race^Dunefolk Human"
 msgstr "Vīrietis"
 
 #. [race]: id=dunefolk
-#: data/core/units.cfg:210
+#: data/core/units.cfg:222
 #, fuzzy
 #| msgid "race+female^Human"
 msgid "race+female^Dunefolk Human"
 msgstr "Sieviete"
 
 #. [race]: id=dunefolk
-#: data/core/units.cfg:211
+#: data/core/units.cfg:223
 #, fuzzy
 #| msgid "race+plural^Undead"
 msgid "race+plural^Dunefolk"
 msgstr "Nedzīvie"
 
 #. [race]: id=dunefolk
-#: data/core/units.cfg:213
+#: data/core/units.cfg:225
 msgid ""
 "An offshoot of a forgotten nomadic civilization, the Dunefolk lay claim to "
 "the river valleys and oases of the Sandy Wastes. How they came to inhabit "
@@ -7003,22 +7038,22 @@ msgid ""
 msgstr ""
 
 #. [race]: id=lizard
-#: data/core/units.cfg:234
+#: data/core/units.cfg:246
 msgid "race^Saurian"
 msgstr "Rāpulis"
 
 #. [race]: id=lizard
-#: data/core/units.cfg:235
+#: data/core/units.cfg:247
 msgid "race+female^Saurian"
 msgstr "Rāpule"
 
 #. [race]: id=lizard
-#: data/core/units.cfg:236
+#: data/core/units.cfg:248
 msgid "race^Saurians"
 msgstr "Rāpuļi"
 
 #. [race]: id=lizard
-#: data/core/units.cfg:237
+#: data/core/units.cfg:249
 msgid ""
 "Saurians are lizard-like creatures. Smaller and more slender than humans, "
 "they rarely stand taller than a ten year old child, though from tip of snout "
@@ -7088,17 +7123,17 @@ msgid ""
 msgstr ""
 
 #. [race]: id=mechanical
-#: data/core/units.cfg:263
+#: data/core/units.cfg:275
 msgid "race^Mechanical"
 msgstr "Mehānisms"
 
 #. [race]: id=mechanical
-#: data/core/units.cfg:264
+#: data/core/units.cfg:276
 msgid "race+plural^Mechanical"
 msgstr "Mehānismi"
 
 #. [race]: id=mechanical
-#: data/core/units.cfg:265
+#: data/core/units.cfg:277
 msgid ""
 "Animated neither by natural life nor by necromancy, the term "
 "<italic>text='mechanical'</italic> describes a created artifact of an "
@@ -7111,24 +7146,24 @@ msgstr ""
 "to spēj pateicoties burvestībām."
 
 #. [race]: id=merman
-#: data/core/units.cfg:274
+#: data/core/units.cfg:286
 msgid "race^Merman"
 msgstr "Ūdensvīrs"
 
 #. [race]: id=merman
-#: data/core/units.cfg:275
+#: data/core/units.cfg:287
 msgid "race^Mermaid"
 msgstr "Nāra"
 
 #. [race]: id=merman
-#: data/core/units.cfg:276
+#: data/core/units.cfg:288
 #, fuzzy
 #| msgid "race^Troll"
 msgid "race^Merfolk"
 msgstr "Trollis"
 
 #. [race]: id=merman
-#: data/core/units.cfg:278
+#: data/core/units.cfg:290
 msgid ""
 "Something like a fusion between humans and fish, the merfolk are an "
 "enigmatic race with both piscine and humanoid attributes. They have strong "
@@ -7151,22 +7186,22 @@ msgstr ""
 "meža apvidu."
 
 #. [race]: id=monster
-#: data/core/units.cfg:286
+#: data/core/units.cfg:298
 msgid "race^Monster"
 msgstr "Briesmonis"
 
 #. [race]: id=monster
-#: data/core/units.cfg:287
+#: data/core/units.cfg:299
 msgid "race+female^Monster"
 msgstr "Briesmone"
 
 #. [race]: id=monster
-#: data/core/units.cfg:288
+#: data/core/units.cfg:300
 msgid "race^Monsters"
 msgstr "Briesmoņi"
 
 #. [race]: id=monster
-#: data/core/units.cfg:289
+#: data/core/units.cfg:301
 msgid ""
 "The term “monster” incorporates many hideous beasts that haunt the caves, "
 "wilderness, ocean depths, and other climes of the world. They figure largely "
@@ -7177,22 +7212,22 @@ msgstr ""
 "to iemītnieku stāstos un murgos."
 
 #. [race]: id=naga
-#: data/core/units.cfg:296
+#: data/core/units.cfg:308
 msgid "race^Naga"
 msgstr "Nāga"
 
 #. [race]: id=naga
-#: data/core/units.cfg:297
+#: data/core/units.cfg:309
 msgid "race^Nagini"
 msgstr "Nāgans"
 
 #. [race]: id=naga
-#: data/core/units.cfg:298
+#: data/core/units.cfg:310
 msgid "race^Nagas"
 msgstr "Nāgas"
 
 #. [race]: id=naga
-#: data/core/units.cfg:299
+#: data/core/units.cfg:311
 msgid ""
 "The serpentine nagas are one of the least understood races of the Great "
 "Continent. Part of this is due to their xenophobic nature and part is due to "
@@ -7223,22 +7258,22 @@ msgstr ""
 "ūdenim."
 
 #. [race]: id=ogre
-#: data/core/units.cfg:307
+#: data/core/units.cfg:319
 msgid "race^Ogre"
 msgstr "Cilvēkēdājs"
 
 #. [race]: id=ogre
-#: data/core/units.cfg:308
+#: data/core/units.cfg:320
 msgid "race+female^Ogre"
 msgstr "Cilvēkēdāja"
 
 #. [race]: id=ogre
-#: data/core/units.cfg:309
+#: data/core/units.cfg:321
 msgid "race^Ogres"
 msgstr "Cilvēkēdāji"
 
 #. [race]: id=ogre
-#: data/core/units.cfg:310
+#: data/core/units.cfg:322
 msgid ""
 "Ogres are a wild and uncivilized race who dwell mainly in the wilderness of "
 "the Great Continent. Physically, they resemble humans and orcs but are "
@@ -7270,22 +7305,22 @@ msgstr ""
 "sadarbības, piejaucēšanas vai vienkārši izdevīga gadījuma zīme."
 
 #. [race]: id=orc
-#: data/core/units.cfg:318
+#: data/core/units.cfg:330
 msgid "race^Orc"
 msgstr "Orks"
 
 #. [race]: id=orc
-#: data/core/units.cfg:319
+#: data/core/units.cfg:331
 msgid "race+female^Orc"
 msgstr "Orkiete"
 
 #. [race]: id=orc
-#: data/core/units.cfg:320
+#: data/core/units.cfg:332
 msgid "race^Orcs"
 msgstr "Orki"
 
 #. [race]: id=orc
-#: data/core/units.cfg:321
+#: data/core/units.cfg:333
 #, fuzzy
 #| msgid ""
 #| "In appearance, orcs are half men and half beasts. They are taller, "
@@ -7452,7 +7487,7 @@ msgstr ""
 "prasmēs, kā piemēram lokšaušana vai slepkavošana."
 
 #. [race]: id=orc
-#: data/core/units.cfg:332
+#: data/core/units.cfg:344
 msgid ""
 "\n"
 "\n"
@@ -7461,22 +7496,22 @@ msgid ""
 msgstr ""
 
 #. [race]: id=troll
-#: data/core/units.cfg:341
+#: data/core/units.cfg:353
 msgid "race^Troll"
 msgstr "Trollis"
 
 #. [race]: id=troll
-#: data/core/units.cfg:342
+#: data/core/units.cfg:354
 msgid "race+female^Troll"
 msgstr "Trolle"
 
 #. [race]: id=troll
-#: data/core/units.cfg:343
+#: data/core/units.cfg:355
 msgid "race^Trolls"
 msgstr "Troļļi"
 
 #. [race]: id=troll
-#: data/core/units.cfg:344
+#: data/core/units.cfg:356
 #, fuzzy
 #| msgid ""
 #| "Trolls are ancient creatures, one of the oldest known races known to "
@@ -7586,22 +7621,22 @@ msgstr ""
 "Vesnotas, un lai kur arī orku bari ceļotu."
 
 #. [race]: id=undead
-#: data/core/units.cfg:364
+#: data/core/units.cfg:376
 msgid "race^Undead"
 msgstr "Nedzīvais"
 
 #. [race]: id=undead
-#: data/core/units.cfg:365
+#: data/core/units.cfg:377
 msgid "race+female^Undead"
 msgstr "Nedzīvā"
 
 #. [race]: id=undead
-#: data/core/units.cfg:366
+#: data/core/units.cfg:378
 msgid "race+plural^Undead"
 msgstr "Nedzīvie"
 
 #. [race]: id=undead
-#: data/core/units.cfg:367
+#: data/core/units.cfg:379
 #, fuzzy
 #| msgid ""
 #| "Undead are not really a single race of creatures, although often treated "
@@ -7688,22 +7723,22 @@ msgstr ""
 "rūķiem jau pirms tam."
 
 #. [race]: id=wolf
-#: data/core/units.cfg:380
+#: data/core/units.cfg:392
 msgid "race^Wolf"
 msgstr "Vilks"
 
 #. [race]: id=wolf
-#: data/core/units.cfg:381
+#: data/core/units.cfg:393
 msgid "race+female^Wolf"
 msgstr "Vilcene"
 
 #. [race]: id=wolf
-#: data/core/units.cfg:382
+#: data/core/units.cfg:394
 msgid "race^Wolves"
 msgstr "Vilki"
 
 #. [race]: id=wolf
-#: data/core/units.cfg:383
+#: data/core/units.cfg:395
 msgid ""
 "Wolves are predatory canines encountered frequently in the wilderness. "
 "Quick, tough, and durable, a solitary wolf suffices to maim or kill "
@@ -7715,17 +7750,17 @@ msgid ""
 msgstr ""
 
 #. [race]: id=wose
-#: data/core/units.cfg:392
+#: data/core/units.cfg:404
 msgid "race^Wose"
 msgstr "Vose"
 
 #. [race]: id=wose
-#: data/core/units.cfg:393
+#: data/core/units.cfg:405
 msgid "race^Woses"
 msgstr "Voses"
 
 #. [race]: id=wose
-#: data/core/units.cfg:394
+#: data/core/units.cfg:406
 #, fuzzy
 #| msgid ""
 #| "The mighty wose resides within the deepest forests of the known world. To "
@@ -7836,15 +7871,15 @@ msgstr ""
 "pasaules daļā. No sava miega pamostās tikai priekš meža aizstāvēšanas, kuru "
 "tie sauc par mājām."
 
-#: src/help/help.cpp:179
+#: src/help/help.cpp:212
 msgid "Close"
 msgstr "Aizvērt"
 
-#: src/help/help.cpp:182
+#: src/help/help.cpp:215
 msgid "Help"
 msgstr "Palīdzība"
 
-#: src/help/help.cpp:236 src/help/help.cpp:240
+#: src/help/help.cpp:269 src/help/help.cpp:273
 #, fuzzy
 #| msgid "Parse error when parsing help text: "
 msgid "Parse error when parsing help text:"

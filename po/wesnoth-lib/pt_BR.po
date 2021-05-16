@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.5-CVS\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-04-17 22:21-0400\n"
+"POT-Creation-Date: 2021-05-15 22:06-0400\n"
 "PO-Revision-Date: 2020-12-31 10:39-0300\n"
 "Last-Translator: Andrei Machado <andreisp.machado@yahoo.com>\n"
 "Language-Team: Portuguese/Brazil\n"
@@ -3803,7 +3803,7 @@ msgstr "Publicar add-on"
 #. [button]: id=single_uninstall
 #. [button]: id=uninstall
 #: data/gui/widget/addon_list.cfg:435 data/gui/window/addon_manager.cfg:244
-#: src/gui/dialogs/addon/manager.cpp:814
+#: src/gui/dialogs/addon/manager.cpp:898
 msgid "Uninstall add-on"
 msgstr "Desinstalar add-on"
 
@@ -4303,7 +4303,7 @@ msgstr "Deletar add-on"
 # File: data/gui/default/window/addon_description.cfg, line: 88
 # File: data/gui/default/window/addon_description.cfg, line: 88
 #. [label]
-#: data/gui/window/addon_manager.cfg:315 data/gui/window/addon_manager.cfg:662
+#: data/gui/window/addon_manager.cfg:315 data/gui/window/addon_manager.cfg:694
 msgid "Type:"
 msgstr "Tipo:"
 
@@ -4348,12 +4348,17 @@ msgstr "Downloads:"
 
 #. [label]
 #: data/gui/window/addon_manager.cfg:506
+msgid "Website:"
+msgstr "Site:"
+
+#. [label]
+#: data/gui/window/addon_manager.cfg:536
 msgid "Dependencies:"
 msgstr "Dependências:"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=dependencies
-#: data/gui/window/addon_manager.cfg:520 src/gui/dialogs/addon/manager.cpp:888
+#: data/gui/window/addon_manager.cfg:550 src/gui/dialogs/addon/manager.cpp:976
 msgid "addon_dependencies^None"
 msgstr "Nenhuma"
 
@@ -4362,7 +4367,7 @@ msgstr "Nenhuma"
 # File: data/gui/default/window/addon_description.cfg, line: 306
 # File: data/gui/default/window/addon_description.cfg, line: 306
 #. [label]
-#: data/gui/window/addon_manager.cfg:540
+#: data/gui/window/addon_manager.cfg:570
 msgid "Translations:"
 msgstr "Traduções:"
 
@@ -4372,17 +4377,17 @@ msgstr "Traduções:"
 # File: data/gui/default/window/addon_description.cfg, line: 320
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=translations
-#: data/gui/window/addon_manager.cfg:554 src/gui/dialogs/addon/manager.cpp:902
+#: data/gui/window/addon_manager.cfg:584 src/gui/dialogs/addon/manager.cpp:990
 msgid "translations^None"
 msgstr "Nenhuma"
 
 #. [label]
-#: data/gui/window/addon_manager.cfg:572
-msgid "Website:"
-msgstr "Site:"
+#: data/gui/window/addon_manager.cfg:602 data/gui/window/addon_manager.cfg:721
+msgid "Tags:"
+msgstr ""
 
 #. [text_box]: id=filter
-#: data/gui/window/addon_manager.cfg:623
+#: data/gui/window/addon_manager.cfg:655
 #, fuzzy
 #| msgid "Filters on addon description, version, type or author."
 msgid "Filters on addon description, version, type or author"
@@ -4393,7 +4398,7 @@ msgstr "Filtrar por descrição, versão, tipo ou autor."
 # File: data/gui/default/window/addon_description.cfg, line: 180
 # File: data/gui/default/window/addon_description.cfg, line: 180
 #. [label]
-#: data/gui/window/addon_manager.cfg:636
+#: data/gui/window/addon_manager.cfg:668
 msgid "State:"
 msgstr "Situação:"
 
@@ -4402,7 +4407,7 @@ msgstr "Situação:"
 # File: src/hotkeys.cpp, line: 76
 # File: src/hotkeys.cpp, line: 76
 #. [label]
-#: data/gui/window/addon_manager.cfg:689
+#: data/gui/window/addon_manager.cfg:747
 msgid "Order:"
 msgstr "Ordenar:"
 
@@ -4411,14 +4416,14 @@ msgstr "Ordenar:"
 # File: data/gui/default/window/title_screen.cfg, line: 260
 # File: data/gui/default/window/title_screen.cfg, line: 260
 #. [label]
-#: data/gui/window/addon_manager.cfg:775 data/gui/window/addon_manager.cfg:950
+#: data/gui/window/addon_manager.cfg:833 data/gui/window/addon_manager.cfg:1008
 msgid "Add-ons Manager"
 msgstr "Gerenciador de Add-ons"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=details_toggle
-#: data/gui/window/addon_manager.cfg:875 src/gui/dialogs/addon/manager.cpp:439
-#: src/gui/dialogs/addon/manager.cpp:630
+#: data/gui/window/addon_manager.cfg:933 src/gui/dialogs/addon/manager.cpp:490
+#: src/gui/dialogs/addon/manager.cpp:714
 msgid "Addon Details"
 msgstr "Detalhes do Add-on"
 
@@ -4427,12 +4432,12 @@ msgstr "Detalhes do Add-on"
 # File: src/hotkeys.cpp, line: 234
 # File: src/hotkeys.cpp, line: 234
 #. [button]: id=update_all
-#: data/gui/window/addon_manager.cfg:889 data/gui/window/addon_manager.cfg:1053
+#: data/gui/window/addon_manager.cfg:947 data/gui/window/addon_manager.cfg:1111
 msgid "Update All"
 msgstr "Atualzar todos"
 
 #. [button]: id=cancel
-#: data/gui/window/addon_manager.cfg:903 data/gui/window/addon_manager.cfg:1067
+#: data/gui/window/addon_manager.cfg:961 data/gui/window/addon_manager.cfg:1125
 msgid "Exit"
 msgstr "Sair"
 
@@ -4933,7 +4938,7 @@ msgstr "Deletar PdD"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/depcheck_confirm_change.cfg:40
-#: src/gui/dialogs/addon/manager.cpp:787 src/gui/dialogs/file_dialog.cpp:302
+#: src/gui/dialogs/addon/manager.cpp:871 src/gui/dialogs/file_dialog.cpp:302
 #: src/gui/dialogs/file_dialog.cpp:728
 msgid "Confirm"
 msgstr "Confirmar"
@@ -5166,7 +5171,7 @@ msgstr "Descrição:"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/editor_edit_scenario.cfg:170
-#: src/gui/dialogs/multiplayer/lobby.cpp:508
+#: src/gui/dialogs/multiplayer/lobby.cpp:510
 msgid "Experience modifier:"
 msgstr "Modificador de experiência:"
 
@@ -5264,7 +5269,7 @@ msgstr "Ouro:"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/editor_edit_side.cfg:277
-#: src/gui/dialogs/multiplayer/lobby.cpp:509
+#: src/gui/dialogs/multiplayer/lobby.cpp:511
 msgid "Gold per village:"
 msgstr "Ouro por aldeia:"
 
@@ -5365,7 +5370,7 @@ msgstr "Escolha um gerador de mapa:"
 #. [button]: id=random_map_settings
 #: data/gui/window/editor_generate_map.cfg:128
 #: data/gui/window/mp_create_game.cfg:877
-#: src/gui/dialogs/multiplayer/lobby.cpp:507
+#: src/gui/dialogs/multiplayer/lobby.cpp:509
 msgid "Settings"
 msgstr "Preferências"
 
@@ -7413,7 +7418,7 @@ msgstr ""
 #: data/gui/window/mp_create_game/default_resolution.cfg:176
 #: data/gui/window/mp_create_game/small_resolution.cfg:181
 #: data/gui/window/mp_create_game/tiny_resolution.cfg:164
-#: src/gui/dialogs/multiplayer/lobby.cpp:510
+#: src/gui/dialogs/multiplayer/lobby.cpp:512
 msgid "Map size:"
 msgstr "Tamanho do mapa:"
 
@@ -9278,7 +9283,7 @@ msgstr "Win32 notificações de back end"
 msgid "feature^Cocoa notifications back end"
 msgstr "Cocoa notificações de back end"
 
-#: src/build_info.cpp:331 src/desktop/version.cpp:117
+#: src/build_info.cpp:331 src/desktop/version.cpp:121
 msgid "cpu_architecture^<unknown>"
 msgstr ""
 
@@ -9310,7 +9315,7 @@ msgstr "Home"
 msgid "filesystem_path_system^Root"
 msgstr "Root"
 
-#: src/desktop/version.cpp:397
+#: src/desktop/version.cpp:401
 msgid "operating_system^<unknown>"
 msgstr "<desconhecido>"
 
@@ -9358,7 +9363,7 @@ msgstr "pt_BR,pt"
 # File: src/text.cpp, line: 734
 # File: src/text.cpp, line: 734
 # File: src/text.cpp, line: 734
-#: src/font/text.cpp:804
+#: src/font/text.cpp:771
 msgid "The text contains invalid Pango markup: "
 msgstr "Este texto contém marcação Pango inválida: "
 
@@ -9463,48 +9468,6 @@ msgid "timespan^$num seconds"
 msgstr "$num segundos"
 
 #
-# File: src/gui/auxiliary/canvas.cpp, line: 611
-# File: src/gui/auxiliary/canvas.cpp, line: 611
-# File: src/gui/auxiliary/canvas.cpp, line: 611
-#: src/gui/core/canvas.cpp:265
-msgid "Line doesn't fit on canvas."
-msgstr "Linha não cabe na tela."
-
-#
-# File: src/gui/auxiliary/canvas.cpp, line: 750
-# File: src/gui/auxiliary/canvas.cpp, line: 750
-# File: src/gui/auxiliary/canvas.cpp, line: 750
-#: src/gui/core/canvas.cpp:319
-msgid "Rectangle doesn't fit on canvas."
-msgstr "Retângulo não cabe na tela."
-
-#
-# File: src/gui/auxiliary/canvas.cpp, line: 750
-# File: src/gui/auxiliary/canvas.cpp, line: 750
-# File: src/gui/auxiliary/canvas.cpp, line: 750
-#: src/gui/core/canvas.cpp:400
-msgid "Rounded Rectangle doesn't fit on canvas."
-msgstr "Retângulo arredondado não cabe na tela."
-
-#
-# File: src/gui/auxiliary/canvas.cpp, line: 883
-# File: src/gui/auxiliary/canvas.cpp, line: 888
-# File: src/gui/auxiliary/canvas.cpp, line: 893
-# File: src/gui/auxiliary/canvas.cpp, line: 899
-# File: src/gui/auxiliary/canvas.cpp, line: 883
-# File: src/gui/auxiliary/canvas.cpp, line: 888
-# File: src/gui/auxiliary/canvas.cpp, line: 893
-# File: src/gui/auxiliary/canvas.cpp, line: 899
-# File: src/gui/auxiliary/canvas.cpp, line: 883
-# File: src/gui/auxiliary/canvas.cpp, line: 888
-# File: src/gui/auxiliary/canvas.cpp, line: 893
-# File: src/gui/auxiliary/canvas.cpp, line: 899
-#: src/gui/core/canvas.cpp:479 src/gui/core/canvas.cpp:484
-#: src/gui/core/canvas.cpp:489 src/gui/core/canvas.cpp:495
-msgid "Circle doesn't fit on canvas."
-msgstr "Círculo não cabe na tela."
-
-#
 # File: src/gui/auxiliary/canvas.cpp, line: 1085
 # File: src/gui/auxiliary/canvas.cpp, line: 1092
 # File: src/gui/auxiliary/canvas.cpp, line: 1102
@@ -9517,7 +9480,7 @@ msgstr "Círculo não cabe na tela."
 # File: src/gui/auxiliary/canvas.cpp, line: 1092
 # File: src/gui/auxiliary/canvas.cpp, line: 1102
 # File: src/gui/auxiliary/canvas.cpp, line: 1109
-#: src/gui/core/canvas.cpp:538
+#: src/gui/core/canvas.cpp:510
 msgid "Image doesn't fit on canvas."
 msgstr "Imagem não cabe na tela."
 
@@ -9525,17 +9488,17 @@ msgstr "Imagem não cabe na tela."
 # File: src/gui/auxiliary/canvas.cpp, line: 1321
 # File: src/gui/auxiliary/canvas.cpp, line: 1321
 # File: src/gui/auxiliary/canvas.cpp, line: 1321
-#: src/gui/core/canvas.cpp:705
+#: src/gui/core/canvas.cpp:685
 msgid "Text has a font size of 0."
 msgstr "Texto tem um tamanho de fonte 0."
 
-#
-# File: src/gui/auxiliary/canvas.cpp, line: 1391
-# File: src/gui/auxiliary/canvas.cpp, line: 1391
-# File: src/gui/auxiliary/canvas.cpp, line: 1391
-#: src/gui/core/canvas.cpp:780
-msgid "Text doesn't start on canvas."
-msgstr "Texto não começa na tela."
+#: src/gui/core/canvas.cpp:834
+msgid "Area to draw has negative size"
+msgstr ""
+
+#: src/gui/core/canvas.cpp:836
+msgid "Area to draw is larger than widget size"
+msgstr ""
 
 #
 # File: src/gui/widgets/settings.cpp, line: 532
@@ -9782,11 +9745,73 @@ msgstr "Última atualização ($datelike_order)"
 msgid "addons_order^First uploaded ($datelike_order)"
 msgstr "Ordem de upload ($datelike_order)"
 
+#: src/gui/dialogs/addon/manager.cpp:222
+msgid "addon_tag^Cooperative"
+msgstr ""
+
+#. TRANSLATORS: tooltip in the drop-down menu for filtering add-ons
+#: src/gui/dialogs/addon/manager.cpp:224
+msgid "addon_tag^All human players are on the same team, versus the AI"
+msgstr ""
+
+#: src/gui/dialogs/addon/manager.cpp:225
+msgid "addon_tag^Cosmetic"
+msgstr ""
+
+#. TRANSLATORS: tooltip in the drop-down menu for filtering add-ons
+#: src/gui/dialogs/addon/manager.cpp:227
+msgid "addon_tag^These make the game look different, without changing gameplay"
+msgstr ""
+
+#
+# File: data/gui/default/window/campaign_difficulty.cfg, line: 57
+# File: data/gui/default/window/campaign_difficulty.cfg, line: 57
+# File: data/gui/default/window/campaign_difficulty.cfg, line: 57
+#: src/gui/dialogs/addon/manager.cpp:228
+#, fuzzy
+#| msgid "Difficulty"
+msgid "addon_tag^Difficulty"
+msgstr "Dificuldade"
+
+#. TRANSLATORS: tooltip in the drop-down menu for filtering add-ons
+#: src/gui/dialogs/addon/manager.cpp:230
+msgid "addon_tag^Can make campaigns easier or harder"
+msgstr ""
+
+#: src/gui/dialogs/addon/manager.cpp:231
+msgid "addon_tag^RNG"
+msgstr ""
+
+#. TRANSLATORS: tooltip in the drop-down menu for filtering add-ons
+#: src/gui/dialogs/addon/manager.cpp:233
+msgid ""
+"addon_tag^Modify the randomness in the combat mechanics, or remove it "
+"entirely"
+msgstr ""
+
+#: src/gui/dialogs/addon/manager.cpp:234
+msgid "addon_tag^Survival"
+msgstr ""
+
+#. TRANSLATORS: tooltip in the drop-down menu for filtering add-ons
+#: src/gui/dialogs/addon/manager.cpp:236
+msgid "addon_tag^Fight against waves of enemies"
+msgstr ""
+
+#: src/gui/dialogs/addon/manager.cpp:237
+msgid "addon_tag^Terraforming"
+msgstr ""
+
+#. TRANSLATORS: tooltip in the drop-down menu for filtering add-ons
+#: src/gui/dialogs/addon/manager.cpp:239
+msgid "addon_tag^Players can change the terrain"
+msgstr ""
+
 #
 # File: src/gui/dialogs/addon/description.cpp, line: 47
 # File: src/gui/dialogs/addon/description.cpp, line: 47
 # File: src/gui/dialogs/addon/description.cpp, line: 47
-#: src/gui/dialogs/addon/manager.cpp:228 src/gui/widgets/addon_list.cpp:103
+#: src/gui/dialogs/addon/manager.cpp:262 src/gui/widgets/addon_list.cpp:103
 msgid "addon_state^Not installed"
 msgstr "Não instalado"
 
@@ -9794,7 +9819,7 @@ msgstr "Não instalado"
 # File: src/gui/dialogs/addon/description.cpp, line: 49
 # File: src/gui/dialogs/addon/description.cpp, line: 49
 # File: src/gui/dialogs/addon/description.cpp, line: 49
-#: src/gui/dialogs/addon/manager.cpp:229 src/gui/widgets/addon_list.cpp:103
+#: src/gui/dialogs/addon/manager.cpp:263 src/gui/widgets/addon_list.cpp:103
 msgid "addon_state^Published, not installed"
 msgstr "Publicado, não instalado"
 
@@ -9802,7 +9827,7 @@ msgstr "Publicado, não instalado"
 # File: src/gui/dialogs/addon/description.cpp, line: 55
 # File: src/gui/dialogs/addon/description.cpp, line: 55
 # File: src/gui/dialogs/addon/description.cpp, line: 55
-#: src/gui/dialogs/addon/manager.cpp:233 src/gui/widgets/addon_list.cpp:111
+#: src/gui/dialogs/addon/manager.cpp:267 src/gui/widgets/addon_list.cpp:111
 msgid "addon_state^Installed"
 msgstr "Instalado"
 
@@ -9810,7 +9835,7 @@ msgstr "Instalado"
 # File: src/gui/dialogs/addon/description.cpp, line: 57
 # File: src/gui/dialogs/addon/description.cpp, line: 57
 # File: src/gui/dialogs/addon/description.cpp, line: 57
-#: src/gui/dialogs/addon/manager.cpp:234 src/gui/widgets/addon_list.cpp:111
+#: src/gui/dialogs/addon/manager.cpp:268 src/gui/widgets/addon_list.cpp:111
 msgid "addon_state^Published"
 msgstr "Publicado"
 
@@ -9818,7 +9843,7 @@ msgstr "Publicado"
 # File: src/gui/dialogs/addon/description.cpp, line: 64
 # File: src/gui/dialogs/addon/description.cpp, line: 64
 # File: src/gui/dialogs/addon/description.cpp, line: 64
-#: src/gui/dialogs/addon/manager.cpp:238
+#: src/gui/dialogs/addon/manager.cpp:272
 msgid "addon_state^Installed, not tracking local version"
 msgstr "Instalado, não rastreando a versão local"
 
@@ -9826,7 +9851,7 @@ msgstr "Instalado, não rastreando a versão local"
 # File: src/gui/dialogs/addon/description.cpp, line: 68
 # File: src/gui/dialogs/addon/description.cpp, line: 68
 # File: src/gui/dialogs/addon/description.cpp, line: 68
-#: src/gui/dialogs/addon/manager.cpp:241
+#: src/gui/dialogs/addon/manager.cpp:275
 msgid "addon_state^Published, not tracking local version"
 msgstr "Publicado, não rastreando a versão local"
 
@@ -9834,7 +9859,7 @@ msgstr "Publicado, não rastreando a versão local"
 # File: src/gui/dialogs/addon/description.cpp, line: 76
 # File: src/gui/dialogs/addon/description.cpp, line: 76
 # File: src/gui/dialogs/addon/description.cpp, line: 76
-#: src/gui/dialogs/addon/manager.cpp:245
+#: src/gui/dialogs/addon/manager.cpp:279
 msgid "addon_state^Installed ($local_version|), upgradable"
 msgstr "Instalado ($local_version|), atualizável"
 
@@ -9842,7 +9867,7 @@ msgstr "Instalado ($local_version|), atualizável"
 # File: src/gui/dialogs/addon/description.cpp, line: 77
 # File: src/gui/dialogs/addon/description.cpp, line: 77
 # File: src/gui/dialogs/addon/description.cpp, line: 77
-#: src/gui/dialogs/addon/manager.cpp:246
+#: src/gui/dialogs/addon/manager.cpp:280
 msgid "addon_state^Published ($local_version| installed), upgradable"
 msgstr "Publicado ($local_version| installed), atualizável"
 
@@ -9850,7 +9875,7 @@ msgstr "Publicado ($local_version| installed), atualizável"
 # File: src/gui/dialogs/addon/description.cpp, line: 86
 # File: src/gui/dialogs/addon/description.cpp, line: 86
 # File: src/gui/dialogs/addon/description.cpp, line: 86
-#: src/gui/dialogs/addon/manager.cpp:252
+#: src/gui/dialogs/addon/manager.cpp:286
 msgid "addon_state^Installed ($local_version|), outdated on server"
 msgstr "Instalado ($local_version|), versão do servidor desatualizada"
 
@@ -9858,16 +9883,16 @@ msgstr "Instalado ($local_version|), versão do servidor desatualizada"
 # File: src/gui/dialogs/addon/description.cpp, line: 87
 # File: src/gui/dialogs/addon/description.cpp, line: 87
 # File: src/gui/dialogs/addon/description.cpp, line: 87
-#: src/gui/dialogs/addon/manager.cpp:253
+#: src/gui/dialogs/addon/manager.cpp:287
 msgid "addon_state^Published ($local_version| installed), outdated on server"
 msgstr ""
 "Publicado ($local_version| installed), versão do servidor desatualizada"
 
-#: src/gui/dialogs/addon/manager.cpp:259 src/gui/widgets/addon_list.cpp:114
+#: src/gui/dialogs/addon/manager.cpp:293 src/gui/widgets/addon_list.cpp:114
 msgid "addon_state^Installed, not ready to publish"
 msgstr "Instalado, não pronto para ser publicado"
 
-#: src/gui/dialogs/addon/manager.cpp:260 src/gui/widgets/addon_list.cpp:114
+#: src/gui/dialogs/addon/manager.cpp:294 src/gui/widgets/addon_list.cpp:114
 msgid "addon_state^Ready to publish"
 msgstr "Pronto para ser publicado"
 
@@ -9875,7 +9900,7 @@ msgstr "Pronto para ser publicado"
 # File: src/gui/dialogs/addon/description.cpp, line: 95
 # File: src/gui/dialogs/addon/description.cpp, line: 95
 # File: src/gui/dialogs/addon/description.cpp, line: 95
-#: src/gui/dialogs/addon/manager.cpp:264 src/gui/widgets/addon_list.cpp:126
+#: src/gui/dialogs/addon/manager.cpp:298 src/gui/widgets/addon_list.cpp:126
 msgid "addon_state^Installed, broken"
 msgstr "Instalado, quebrado"
 
@@ -9883,7 +9908,7 @@ msgstr "Instalado, quebrado"
 # File: src/gui/dialogs/addon/description.cpp, line: 97
 # File: src/gui/dialogs/addon/description.cpp, line: 97
 # File: src/gui/dialogs/addon/description.cpp, line: 97
-#: src/gui/dialogs/addon/manager.cpp:265 src/gui/widgets/addon_list.cpp:126
+#: src/gui/dialogs/addon/manager.cpp:299 src/gui/widgets/addon_list.cpp:126
 msgid "addon_state^Published, broken"
 msgstr "Publicado, quebrado"
 
@@ -9891,7 +9916,7 @@ msgstr "Publicado, quebrado"
 # File: src/gui/dialogs/addon/description.cpp, line: 103
 # File: src/gui/dialogs/addon/description.cpp, line: 103
 # File: src/gui/dialogs/addon/description.cpp, line: 103
-#: src/gui/dialogs/addon/manager.cpp:268 src/gui/widgets/addon_list.cpp:130
+#: src/gui/dialogs/addon/manager.cpp:302 src/gui/widgets/addon_list.cpp:130
 msgid "addon_state^Unknown"
 msgstr "Desconhecido"
 
@@ -9899,29 +9924,29 @@ msgstr "Desconhecido"
 # File: src/hotkey_preferences_display.cpp, line: 252
 # File: src/hotkey_preferences_display.cpp, line: 252
 # File: src/hotkey_preferences_display.cpp, line: 252
-#: src/gui/dialogs/addon/manager.cpp:330
+#: src/gui/dialogs/addon/manager.cpp:381
 msgid "ascending"
 msgstr "subindo"
 
 #. TRANSLATORS: Sorting order of dates, oldest first
-#: src/gui/dialogs/addon/manager.cpp:332
+#: src/gui/dialogs/addon/manager.cpp:383
 msgid "oldest to newest"
 msgstr "mais antigo para o mais novo"
 
-#: src/gui/dialogs/addon/manager.cpp:335
+#: src/gui/dialogs/addon/manager.cpp:386
 msgid "descending"
 msgstr "descendo"
 
 #. TRANSLATORS: Sorting order of dates, newest first
-#: src/gui/dialogs/addon/manager.cpp:337
+#: src/gui/dialogs/addon/manager.cpp:388
 msgid "newest to oldest"
 msgstr "mais recente para o mais antigo"
 
-#: src/gui/dialogs/addon/manager.cpp:436
+#: src/gui/dialogs/addon/manager.cpp:487
 msgid "addons^Back to List"
 msgstr "Voltar para a Lista"
 
-#: src/gui/dialogs/addon/manager.cpp:448
+#: src/gui/dialogs/addon/manager.cpp:499
 msgid "An error occurred while downloading the add-ons list from the server."
 msgstr "Ocorreu um erro ao baixar a lista de add-ons do servidor."
 
@@ -9929,15 +9954,15 @@ msgstr "Ocorreu um erro ao baixar a lista de add-ons do servidor."
 # File: data/gui/default/window/addon_description.cfg, line: 288
 # File: data/gui/default/window/addon_description.cfg, line: 288
 # File: data/gui/default/window/addon_description.cfg, line: 288
-#: src/gui/dialogs/addon/manager.cpp:484
+#: src/gui/dialogs/addon/manager.cpp:535
 msgid "No Add-ons Available"
 msgstr "Nenhum Add-on disponível"
 
-#: src/gui/dialogs/addon/manager.cpp:484
+#: src/gui/dialogs/addon/manager.cpp:535
 msgid "There are no add-ons available for download from this server."
 msgstr "Não há nenhum add-on disponível para download neste servidor."
 
-#: src/gui/dialogs/addon/manager.cpp:672
+#: src/gui/dialogs/addon/manager.cpp:756
 msgid ""
 "The following add-on appears to have publishing or version control "
 "information stored locally, and will not be removed:"
@@ -9945,7 +9970,7 @@ msgstr ""
 "O seguinte add-on aparenta ter controle de informações de versão ou "
 "publicação armazenados localmente e, portanto, não será removido:"
 
-#: src/gui/dialogs/addon/manager.cpp:680
+#: src/gui/dialogs/addon/manager.cpp:764
 msgid "The following add-on could not be deleted properly:"
 msgstr "O seguinte add-on não fo deletado corretamente:"
 
@@ -9953,11 +9978,11 @@ msgstr "O seguinte add-on não fo deletado corretamente:"
 # File: src/hotkey_preferences_display.cpp, line: 637
 # File: src/hotkey_preferences_display.cpp, line: 637
 # File: src/hotkey_preferences_display.cpp, line: 637
-#: src/gui/dialogs/addon/manager.cpp:733
+#: src/gui/dialogs/addon/manager.cpp:817
 msgid "Warning"
 msgstr "Aviso"
 
-#: src/gui/dialogs/addon/manager.cpp:734
+#: src/gui/dialogs/addon/manager.cpp:818
 msgid ""
 "The remote version of this add-on is greater or equal to the version being "
 "uploaded. Do you really wish to continue?"
@@ -9965,26 +9990,26 @@ msgstr ""
 "A versão remota deste add-on é maior ou igual a versão que está sendo "
 "enviada. Você realmente deseja continuar?"
 
-#: src/gui/dialogs/addon/manager.cpp:750
+#: src/gui/dialogs/addon/manager.cpp:834
 msgid "Invalid icon path. Make sure the path points to a valid image."
 msgstr ""
 "Caminho do ícone inválido. Certifique-se que o caminho leva para uma imagem "
 "válida."
 
-#: src/gui/dialogs/addon/manager.cpp:753 src/gui/dialogs/addon/manager.cpp:795
+#: src/gui/dialogs/addon/manager.cpp:837 src/gui/dialogs/addon/manager.cpp:879
 msgid "The server responded with an error:"
 msgstr "O servidor respondeu com um erro:"
 
-#: src/gui/dialogs/addon/manager.cpp:756
+#: src/gui/dialogs/addon/manager.cpp:840
 msgid "The add-on was rejected by the server:"
 msgstr "O add-on foi rejeitado pelo servidor:"
 
-#: src/gui/dialogs/addon/manager.cpp:771 src/gui/dialogs/addon/manager.cpp:798
+#: src/gui/dialogs/addon/manager.cpp:855 src/gui/dialogs/addon/manager.cpp:882
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:500
 msgid "Response"
 msgstr "Resposta"
 
-#: src/gui/dialogs/addon/manager.cpp:783
+#: src/gui/dialogs/addon/manager.cpp:867
 msgid ""
 "Deleting '$addon|' will permanently erase its download and upload counts on "
 "the add-ons server. Do you really wish to continue?"
@@ -9996,11 +10021,11 @@ msgstr ""
 # File: data/gui/default/window/game_delete.cfg, line: 60
 # File: data/gui/default/window/game_delete.cfg, line: 60
 # File: data/gui/default/window/game_delete.cfg, line: 60
-#: src/gui/dialogs/addon/manager.cpp:815
+#: src/gui/dialogs/addon/manager.cpp:899
 msgid "Do you want to uninstall '$addon|'?"
 msgstr "Você desinstalar '$addon|'?"
 
-#: src/gui/dialogs/addon/manager.cpp:905
+#: src/gui/dialogs/addon/manager.cpp:993
 msgid "url^None"
 msgstr "Nenhum"
 
@@ -10033,7 +10058,7 @@ msgstr "Vulnerabilidades do atacante vs"
 # File: data/gui/default/window/mp_create_game_choose_mods.cfg, line: 54
 # File: data/gui/default/window/mp_create_game_choose_mods.cfg, line: 54
 #: src/gui/dialogs/campaign_selection.cpp:364
-#: src/gui/dialogs/multiplayer/lobby.cpp:491
+#: src/gui/dialogs/multiplayer/lobby.cpp:493
 msgid "active_modifications^None"
 msgstr "Nenhum"
 
@@ -10391,7 +10416,7 @@ msgstr "Desconhecido"
 # File: src/game_preferences_display.cpp, line: 1090
 # File: src/game_preferences_display.cpp, line: 1090
 #: src/gui/dialogs/game_stats.cpp:196 src/gui/dialogs/game_stats.cpp:199
-#: src/gui/dialogs/multiplayer/lobby.cpp:505
+#: src/gui/dialogs/multiplayer/lobby.cpp:507
 msgid "no"
 msgstr "não"
 
@@ -10400,7 +10425,7 @@ msgstr "não"
 # File: src/game_preferences_display.cpp, line: 1088
 # File: src/game_preferences_display.cpp, line: 1088
 #: src/gui/dialogs/game_stats.cpp:196 src/gui/dialogs/game_stats.cpp:199
-#: src/gui/dialogs/multiplayer/lobby.cpp:505
+#: src/gui/dialogs/multiplayer/lobby.cpp:507
 msgid "yes"
 msgstr "sim"
 
@@ -10656,11 +10681,11 @@ msgstr ""
 # File: src/gui/dialogs/lobby_main.cpp, line: 662
 # File: src/gui/dialogs/lobby_main.cpp, line: 662
 # File: src/gui/dialogs/lobby_main.cpp, line: 662
-#: src/gui/dialogs/multiplayer/lobby.cpp:426
+#: src/gui/dialogs/multiplayer/lobby.cpp:428
 msgid "Games: showing $num_shown out of $num_total"
 msgstr "Jogos: mostrando $num_shown de $num_total"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:446
+#: src/gui/dialogs/multiplayer/lobby.cpp:448
 msgid "$game_name (Era: $era_name)"
 msgstr "$game_name (Era: $era_name)"
 
@@ -10668,7 +10693,7 @@ msgstr "$game_name (Era: $era_name)"
 # File: src/gui/dialogs/addon/description.cpp, line: 47
 # File: src/gui/dialogs/addon/description.cpp, line: 47
 # File: src/gui/dialogs/addon/description.cpp, line: 47
-#: src/gui/dialogs/multiplayer/lobby.cpp:476
+#: src/gui/dialogs/multiplayer/lobby.cpp:478
 msgid "era_or_mod^not installed"
 msgstr "Não instalado"
 
@@ -10676,7 +10701,7 @@ msgstr "Não instalado"
 # File: data/gui/default/window/mp_create_game.cfg, line: 185
 # File: data/gui/default/window/mp_create_game.cfg, line: 185
 # File: data/gui/default/window/mp_create_game.cfg, line: 185
-#: src/gui/dialogs/multiplayer/lobby.cpp:479
+#: src/gui/dialogs/multiplayer/lobby.cpp:481
 msgid "Era"
 msgstr "Era"
 
@@ -10684,7 +10709,7 @@ msgstr "Era"
 # File: data/gui/default/window/mp_create_game_choose_mods.cfg, line: 54
 # File: data/gui/default/window/mp_create_game_choose_mods.cfg, line: 54
 # File: data/gui/default/window/mp_create_game_choose_mods.cfg, line: 54
-#: src/gui/dialogs/multiplayer/lobby.cpp:486
+#: src/gui/dialogs/multiplayer/lobby.cpp:488
 msgid "Modifications"
 msgstr "Modificações"
 
@@ -10692,15 +10717,15 @@ msgstr "Modificações"
 # File: data/gui/default/window/lobby_main.cfg, line: 179
 # File: data/gui/default/window/lobby_main.cfg, line: 179
 # File: data/gui/default/window/lobby_main.cfg, line: 179
-#: src/gui/dialogs/multiplayer/lobby.cpp:511
+#: src/gui/dialogs/multiplayer/lobby.cpp:513
 msgid "Reloaded:"
 msgstr "Recarregado:"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:512
+#: src/gui/dialogs/multiplayer/lobby.cpp:514
 msgid "Shared vision:"
 msgstr "Visão compartilhada:"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:513
+#: src/gui/dialogs/multiplayer/lobby.cpp:515
 msgid "Shuffle sides:"
 msgstr "Times embaralhados:"
 
@@ -10708,7 +10733,7 @@ msgstr "Times embaralhados:"
 # File: data/gui/default/window/lobby_main.cfg, line: 186
 # File: data/gui/default/window/lobby_main.cfg, line: 186
 # File: data/gui/default/window/lobby_main.cfg, line: 186
-#: src/gui/dialogs/multiplayer/lobby.cpp:514
+#: src/gui/dialogs/multiplayer/lobby.cpp:516
 msgid "Time limit:"
 msgstr "Tempo limite:"
 
@@ -10719,11 +10744,11 @@ msgstr "Tempo limite:"
 # File: data/gui/default/window/mp_create_game.cfg, line: 321
 # File: data/gui/default/window/lobby_main.cfg, line: 178
 # File: data/gui/default/window/mp_create_game.cfg, line: 321
-#: src/gui/dialogs/multiplayer/lobby.cpp:515
+#: src/gui/dialogs/multiplayer/lobby.cpp:517
 msgid "Use map settings:"
 msgstr "Usar configurações do mapa:"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:523
+#: src/gui/dialogs/multiplayer/lobby.cpp:525
 msgid ""
 "One or more add-ons need to be installed\n"
 "in order to join this game."
@@ -10735,7 +10760,7 @@ msgstr ""
 # File: src/gui/dialogs/lobby_main.cpp, line: 705
 # File: src/gui/dialogs/lobby_main.cpp, line: 705
 # File: src/gui/dialogs/lobby_main.cpp, line: 705
-#: src/gui/dialogs/multiplayer/lobby.cpp:548
+#: src/gui/dialogs/multiplayer/lobby.cpp:550
 msgid "Observers allowed"
 msgstr "Observadores permitidos"
 
@@ -10743,7 +10768,7 @@ msgstr "Observadores permitidos"
 # File: src/gui/dialogs/lobby_main.cpp, line: 708
 # File: src/gui/dialogs/lobby_main.cpp, line: 708
 # File: src/gui/dialogs/lobby_main.cpp, line: 708
-#: src/gui/dialogs/multiplayer/lobby.cpp:551
+#: src/gui/dialogs/multiplayer/lobby.cpp:553
 msgid "Observers not allowed"
 msgstr "Observadores não permitidos"
 
@@ -10751,11 +10776,11 @@ msgstr "Observadores não permitidos"
 # File: data/gui/default/window/lobby_main.cfg, line: 339
 # File: data/gui/default/window/lobby_main.cfg, line: 339
 # File: data/gui/default/window/lobby_main.cfg, line: 339
-#: src/gui/dialogs/multiplayer/lobby.cpp:810
+#: src/gui/dialogs/multiplayer/lobby.cpp:812
 msgid "lobby"
 msgstr "saguão"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:1001
+#: src/gui/dialogs/multiplayer/lobby.cpp:1003
 msgid ""
 "Something is wrong with the addon version check database supporting the "
 "multiplayer lobby. Please report this at https://bugs.wesnoth.org."
@@ -11184,7 +11209,7 @@ msgstr "Captura de Tela"
 # File: src/game_preferences_display.cpp, line: 1279
 # File: src/game_preferences_display.cpp, line: 1302
 # File: src/game_preferences_display.cpp, line: 1302
-#: src/gui/dialogs/title_screen.cpp:413
+#: src/gui/dialogs/title_screen.cpp:409
 msgid "Choose Test"
 msgstr "Escolher Teste"
 
@@ -13322,6 +13347,50 @@ msgid ""
 msgstr ""
 "A chave '$deprecated_key' foi renomeada para '$key'. Suporte para "
 "'$deprecated_key' será removido na versão $removal_version."
+
+#
+# File: src/gui/auxiliary/canvas.cpp, line: 611
+# File: src/gui/auxiliary/canvas.cpp, line: 611
+# File: src/gui/auxiliary/canvas.cpp, line: 611
+#~ msgid "Line doesn't fit on canvas."
+#~ msgstr "Linha não cabe na tela."
+
+#
+# File: src/gui/auxiliary/canvas.cpp, line: 750
+# File: src/gui/auxiliary/canvas.cpp, line: 750
+# File: src/gui/auxiliary/canvas.cpp, line: 750
+#~ msgid "Rectangle doesn't fit on canvas."
+#~ msgstr "Retângulo não cabe na tela."
+
+#
+# File: src/gui/auxiliary/canvas.cpp, line: 750
+# File: src/gui/auxiliary/canvas.cpp, line: 750
+# File: src/gui/auxiliary/canvas.cpp, line: 750
+#~ msgid "Rounded Rectangle doesn't fit on canvas."
+#~ msgstr "Retângulo arredondado não cabe na tela."
+
+#
+# File: src/gui/auxiliary/canvas.cpp, line: 883
+# File: src/gui/auxiliary/canvas.cpp, line: 888
+# File: src/gui/auxiliary/canvas.cpp, line: 893
+# File: src/gui/auxiliary/canvas.cpp, line: 899
+# File: src/gui/auxiliary/canvas.cpp, line: 883
+# File: src/gui/auxiliary/canvas.cpp, line: 888
+# File: src/gui/auxiliary/canvas.cpp, line: 893
+# File: src/gui/auxiliary/canvas.cpp, line: 899
+# File: src/gui/auxiliary/canvas.cpp, line: 883
+# File: src/gui/auxiliary/canvas.cpp, line: 888
+# File: src/gui/auxiliary/canvas.cpp, line: 893
+# File: src/gui/auxiliary/canvas.cpp, line: 899
+#~ msgid "Circle doesn't fit on canvas."
+#~ msgstr "Círculo não cabe na tela."
+
+#
+# File: src/gui/auxiliary/canvas.cpp, line: 1391
+# File: src/gui/auxiliary/canvas.cpp, line: 1391
+# File: src/gui/auxiliary/canvas.cpp, line: 1391
+#~ msgid "Text doesn't start on canvas."
+#~ msgstr "Texto não começa na tela."
 
 #~ msgid "feature^Legacy bidirectional rendering"
 #~ msgstr "Renderização bidirecional legado"

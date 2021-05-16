@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.12 (wesnoth-help)\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-03-20 22:02-0300\n"
+"POT-Creation-Date: 2021-05-15 22:06-0400\n"
 "PO-Revision-Date: 2020-02-14 20:16+0000\n"
 "Last-Translator: trewe <sjrs456@yandex.com>\n"
 "Language-Team: wesn-pt-trans <wesn-pt-trans-users@lists.sourceforge.net>\n"
@@ -6742,26 +6742,64 @@ msgid ""
 msgstr ""
 
 #
+#. [race]: id=horse
+#: data/core/units.cfg:183
+#, fuzzy
+#| msgid "race^Wose"
+msgid "race^Horse"
+msgstr "Silvano"
+
+#
+#. [race]: id=horse
+#: data/core/units.cfg:184
+#, fuzzy
+#| msgid "race+female^Ogre"
+msgid "race+female^Horse"
+msgstr "Ogre"
+
+#
+#. [race]: id=horse
+#: data/core/units.cfg:185
+#, fuzzy
+#| msgid "race^Woses"
+msgid "race^Horses"
+msgstr "Silvanos"
+
+#. [race]: id=horse
+#: data/core/units.cfg:186
+msgid ""
+"Domesticated horses come in many shapes and sizes, from mighty war chargers, "
+"to sturdy draught horses or agile stock horses.  While they are more fragile "
+"than many beasts, their speed and cunning allow feral horses to thrive in "
+"the wild, alongside their wild bretheren.\n"
+"\n"
+"Horses have been an important part of many civilizations, so it is not "
+"surprising that there are many myths and stories centered around them.  "
+"Winged horses, man-horse hybrids, and ghost horses have made their way into "
+"written history, though few can honestly claim to have seen such things."
+msgstr ""
+
+#
 #. [race]: id=human
-#: data/core/units.cfg:191
+#: data/core/units.cfg:203
 msgid "race^Human"
 msgstr "Humano"
 
 #
 #. [race]: id=human
-#: data/core/units.cfg:192
+#: data/core/units.cfg:204
 msgid "race+female^Human"
 msgstr "Humana"
 
 #
 #. [race]: id=human
-#: data/core/units.cfg:193
+#: data/core/units.cfg:205
 msgid "race^Humans"
 msgstr "Humanos"
 
 #
 #. [race]: id=human
-#: data/core/units.cfg:194
+#: data/core/units.cfg:206
 msgid ""
 "The race of men is an extremely diverse one. Although they originally came "
 "from the Old Continent, men have spread all over the world and split into "
@@ -6843,24 +6881,24 @@ msgstr ""
 
 #
 #. [race]: id=dunefolk
-#: data/core/units.cfg:209
+#: data/core/units.cfg:221
 msgid "race^Dunefolk Human"
 msgstr "Habitante das Dunas"
 
 #
 #. [race]: id=dunefolk
-#: data/core/units.cfg:210
+#: data/core/units.cfg:222
 msgid "race+female^Dunefolk Human"
 msgstr "Habitante das Dunas"
 
 #
 #. [race]: id=dunefolk
-#: data/core/units.cfg:211
+#: data/core/units.cfg:223
 msgid "race+plural^Dunefolk"
 msgstr "Povo das Dunas"
 
 #. [race]: id=dunefolk
-#: data/core/units.cfg:213
+#: data/core/units.cfg:225
 msgid ""
 "An offshoot of a forgotten nomadic civilization, the Dunefolk lay claim to "
 "the river valleys and oases of the Sandy Wastes. How they came to inhabit "
@@ -6919,24 +6957,24 @@ msgstr ""
 
 #
 #. [race]: id=lizard
-#: data/core/units.cfg:234
+#: data/core/units.cfg:246
 msgid "race^Saurian"
 msgstr "Réptil"
 
 #
 #. [race]: id=lizard
-#: data/core/units.cfg:235
+#: data/core/units.cfg:247
 msgid "race+female^Saurian"
 msgstr "Réptil"
 
 #
 #. [race]: id=lizard
-#: data/core/units.cfg:236
+#: data/core/units.cfg:248
 msgid "race^Saurians"
 msgstr "Répteis"
 
 #. [race]: id=lizard
-#: data/core/units.cfg:237
+#: data/core/units.cfg:249
 msgid ""
 "Saurians are lizard-like creatures. Smaller and more slender than humans, "
 "they rarely stand taller than a ten year old child, though from tip of snout "
@@ -7007,19 +7045,19 @@ msgstr ""
 
 #
 #. [race]: id=mechanical
-#: data/core/units.cfg:263
+#: data/core/units.cfg:275
 msgid "race^Mechanical"
 msgstr "Mecânico"
 
 #
 #. [race]: id=mechanical
-#: data/core/units.cfg:264
+#: data/core/units.cfg:276
 msgid "race+plural^Mechanical"
 msgstr "Mecânicos"
 
 #
 #. [race]: id=mechanical
-#: data/core/units.cfg:265
+#: data/core/units.cfg:277
 msgid ""
 "Animated neither by natural life nor by necromancy, the term "
 "<italic>text='mechanical'</italic> describes a created artifact of an "
@@ -7033,25 +7071,25 @@ msgstr ""
 
 #
 #. [race]: id=merman
-#: data/core/units.cfg:274
+#: data/core/units.cfg:286
 msgid "race^Merman"
 msgstr "Ondim"
 
 #
 #. [race]: id=merman
-#: data/core/units.cfg:275
+#: data/core/units.cfg:287
 msgid "race^Mermaid"
 msgstr "Ondina"
 
 #
 #. [race]: id=merman
-#: data/core/units.cfg:276
+#: data/core/units.cfg:288
 msgid "race^Merfolk"
 msgstr "Aquáticos"
 
 #
 #. [race]: id=merman
-#: data/core/units.cfg:278
+#: data/core/units.cfg:290
 msgid ""
 "Something like a fusion between humans and fish, the merfolk are an "
 "enigmatic race with both piscine and humanoid attributes. They have strong "
@@ -7076,25 +7114,25 @@ msgstr ""
 
 #
 #. [race]: id=monster
-#: data/core/units.cfg:286
+#: data/core/units.cfg:298
 msgid "race^Monster"
 msgstr "Monstro"
 
 #
 #. [race]: id=monster
-#: data/core/units.cfg:287
+#: data/core/units.cfg:299
 msgid "race+female^Monster"
 msgstr "Monstro"
 
 #
 #. [race]: id=monster
-#: data/core/units.cfg:288
+#: data/core/units.cfg:300
 msgid "race^Monsters"
 msgstr "Monstros"
 
 #
 #. [race]: id=monster
-#: data/core/units.cfg:289
+#: data/core/units.cfg:301
 msgid ""
 "The term “monster” incorporates many hideous beasts that haunt the caves, "
 "wilderness, ocean depths, and other climes of the world. They figure largely "
@@ -7106,25 +7144,25 @@ msgstr ""
 
 #
 #. [race]: id=naga
-#: data/core/units.cfg:296
+#: data/core/units.cfg:308
 msgid "race^Naga"
 msgstr "Naga"
 
 #
 #. [race]: id=naga
-#: data/core/units.cfg:297
+#: data/core/units.cfg:309
 msgid "race^Nagini"
 msgstr "Nagini"
 
 #
 #. [race]: id=naga
-#: data/core/units.cfg:298
+#: data/core/units.cfg:310
 msgid "race^Nagas"
 msgstr "Nagas"
 
 #
 #. [race]: id=naga
-#: data/core/units.cfg:299
+#: data/core/units.cfg:311
 msgid ""
 "The serpentine nagas are one of the least understood races of the Great "
 "Continent. Part of this is due to their xenophobic nature and part is due to "
@@ -7156,24 +7194,24 @@ msgstr ""
 
 #
 #. [race]: id=ogre
-#: data/core/units.cfg:307
+#: data/core/units.cfg:319
 msgid "race^Ogre"
 msgstr "Ogre"
 
 #
 #. [race]: id=ogre
-#: data/core/units.cfg:308
+#: data/core/units.cfg:320
 msgid "race+female^Ogre"
 msgstr "Ogre"
 
 #
 #. [race]: id=ogre
-#: data/core/units.cfg:309
+#: data/core/units.cfg:321
 msgid "race^Ogres"
 msgstr "Ogres"
 
 #. [race]: id=ogre
-#: data/core/units.cfg:310
+#: data/core/units.cfg:322
 msgid ""
 "Ogres are a wild and uncivilized race who dwell mainly in the wilderness of "
 "the Great Continent. Physically, they resemble humans and orcs but are "
@@ -7207,25 +7245,25 @@ msgstr ""
 
 #
 #. [race]: id=orc
-#: data/core/units.cfg:318
+#: data/core/units.cfg:330
 msgid "race^Orc"
 msgstr "Orc"
 
 #
 #. [race]: id=orc
-#: data/core/units.cfg:319
+#: data/core/units.cfg:331
 msgid "race+female^Orc"
 msgstr "Orc"
 
 #
 #. [race]: id=orc
-#: data/core/units.cfg:320
+#: data/core/units.cfg:332
 msgid "race^Orcs"
 msgstr "Orcs"
 
 #
 #. [race]: id=orc
-#: data/core/units.cfg:321
+#: data/core/units.cfg:333
 msgid ""
 "In appearance, orcs resemble humans but with some bestial features. They are "
 "taller, sturdier and stronger than humans. They are warlike, savage, and "
@@ -7340,7 +7378,7 @@ msgstr ""
 "como tiro com arco ou o assassinato.\n"
 
 #. [race]: id=orc
-#: data/core/units.cfg:332
+#: data/core/units.cfg:344
 msgid ""
 "\n"
 "\n"
@@ -7350,25 +7388,25 @@ msgstr ""
 
 #
 #. [race]: id=troll
-#: data/core/units.cfg:341
+#: data/core/units.cfg:353
 msgid "race^Troll"
 msgstr "Troglodita"
 
 #
 #. [race]: id=troll
-#: data/core/units.cfg:342
+#: data/core/units.cfg:354
 msgid "race+female^Troll"
 msgstr "Troglodita"
 
 #
 #. [race]: id=troll
-#: data/core/units.cfg:343
+#: data/core/units.cfg:355
 msgid "race^Trolls"
 msgstr "Trogloditas"
 
 #
 #. [race]: id=troll
-#: data/core/units.cfg:344
+#: data/core/units.cfg:356
 #, fuzzy
 #| msgid ""
 #| "Trolls are ancient creatures, one of the oldest known races known to "
@@ -7480,25 +7518,25 @@ msgstr ""
 
 #
 #. [race]: id=undead
-#: data/core/units.cfg:364
+#: data/core/units.cfg:376
 msgid "race^Undead"
 msgstr "Morto-Vivo"
 
 #
 #. [race]: id=undead
-#: data/core/units.cfg:365
+#: data/core/units.cfg:377
 msgid "race+female^Undead"
 msgstr "Morto-Viva"
 
 #
 #. [race]: id=undead
-#: data/core/units.cfg:366
+#: data/core/units.cfg:378
 msgid "race+plural^Undead"
 msgstr "Morto-Vivos"
 
 #
 #. [race]: id=undead
-#: data/core/units.cfg:367
+#: data/core/units.cfg:379
 #, fuzzy
 #| msgid ""
 #| "Undead are not really a single race of creatures, although often treated "
@@ -7587,24 +7625,24 @@ msgstr ""
 
 #
 #. [race]: id=wolf
-#: data/core/units.cfg:380
+#: data/core/units.cfg:392
 msgid "race^Wolf"
 msgstr "Lobo"
 
 #
 #. [race]: id=wolf
-#: data/core/units.cfg:381
+#: data/core/units.cfg:393
 msgid "race+female^Wolf"
 msgstr "Loba"
 
 #
 #. [race]: id=wolf
-#: data/core/units.cfg:382
+#: data/core/units.cfg:394
 msgid "race^Wolves"
 msgstr "Lobos"
 
 #. [race]: id=wolf
-#: data/core/units.cfg:383
+#: data/core/units.cfg:395
 msgid ""
 "Wolves are predatory canines encountered frequently in the wilderness. "
 "Quick, tough, and durable, a solitary wolf suffices to maim or kill "
@@ -7617,19 +7655,19 @@ msgstr ""
 
 #
 #. [race]: id=wose
-#: data/core/units.cfg:392
+#: data/core/units.cfg:404
 msgid "race^Wose"
 msgstr "Silvano"
 
 #
 #. [race]: id=wose
-#: data/core/units.cfg:393
+#: data/core/units.cfg:405
 msgid "race^Woses"
 msgstr "Silvanos"
 
 #
 #. [race]: id=wose
-#: data/core/units.cfg:394
+#: data/core/units.cfg:406
 msgid ""
 "The mighty wose resides within the deepest forests of the known world. To "
 "the untrained eye, the wose appears to be nothing more than an oddly shaped, "
@@ -7708,16 +7746,16 @@ msgstr ""
 "apenas levantar-se para acudir as suas florestas sob ataque alheio."
 
 #
-#: src/help/help.cpp:179
+#: src/help/help.cpp:212
 msgid "Close"
 msgstr "Fechar"
 
-#: src/help/help.cpp:182
+#: src/help/help.cpp:215
 msgid "Help"
 msgstr ""
 
 #
-#: src/help/help.cpp:236 src/help/help.cpp:240
+#: src/help/help.cpp:269 src/help/help.cpp:273
 #, fuzzy
 #| msgid "Parse error when parsing help text: "
 msgid "Parse error when parsing help text:"

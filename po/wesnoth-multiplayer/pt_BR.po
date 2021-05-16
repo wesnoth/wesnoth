@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-04-18 02:21 UTC\n"
+"POT-Creation-Date: 2021-05-16 02:06 UTC\n"
 "PO-Revision-Date: 2020-12-15 07:54-0300\n"
 "Last-Translator: Andrei Machado <andreisp.machado@yahoo.com>\n"
 "Language-Team: Portuguese/Brazil <gnome-l10n-br@listas.cipsga.org.br>\n"
@@ -104,33 +104,60 @@ msgstr ""
 "com ela, por favor entre em contato conosco pelo fórum."
 
 #. [lua]: f
-#: data/multiplayer/eras.lua:62
-msgid "<span strikethrough='true' foreground='#%02x%02x%02x'>Side %d</span>"
+#. In the end-of-match summary, a side which has no units left and therefore lost. In English the loss is shown by displaying it with the text struck through.
+#: data/multiplayer/eras.lua:53
+#, fuzzy
+#| msgid "<span strikethrough='true' foreground='#%02x%02x%02x'>Side %d</span>"
+msgid ""
+"<span strikethrough='true' foreground='$side_color'>Side $side_number</"
+"span>:  Has lost all units"
 msgstr "<span strikethrough='true' foreground='#%02x%02x%02x'>Lado %d</span>"
 
 #. [lua]: f
-#: data/multiplayer/eras.lua:76
+#. In the end-of-match summary, any side that still has units left
+#: data/multiplayer/eras.lua:69
+#, fuzzy
+#| msgid ""
+#| "<span foreground='#%02x%02x%02x'>Side %d</span>:  Income score = %d  Unit "
+#| "score = %d  Gold = %d"
 msgid ""
-"<span foreground='#%02x%02x%02x'>Side %d</span>:  Income score = %d  Unit "
-"score = %d  Gold = %d"
+"<span foreground='$side_color'>Side $side_number</span>:  Income score = "
+"$income  Unit score = $units  Gold = $gold\n"
+"Grand total: <b>$total</b>"
 msgstr ""
 "<span foreground='#%02x%02x%02x'>Lado %d</span>:  Pontuação de Renda = %d  "
 "Pontuação de Unidade = %d  Ouro = %d"
 
 #. [lua]: f
-#: data/multiplayer/eras.lua:76
-msgid "Grand total: <b>%d</b>"
-msgstr "Total geral: <b>%d</b>"
+#. In the end-of-match summary, there's a single side that's won.
+#: data/multiplayer/eras.lua:86
+#, fuzzy
+#| msgid "<span foreground='%s'>Side %d</span> has the advantage."
+msgid ""
+"<span foreground='$side_color'>Side $side_number</span> has the advantage."
+msgstr "<span foreground='%s'>Lado %d</span> tem a vantagem."
 
 #. [lua]: f
-#: data/multiplayer/eras.lua:93
-msgid "Sides %s and %d are tied."
+#. In the end-of-match summary, there's a two-way tie (this is only used for exactly two winning teams)
+#: data/multiplayer/eras.lua:91
+#, fuzzy
+#| msgid "Sides %s and %d are tied."
+msgid "Sides $side_number and $other_side_number are tied."
 msgstr "Os lados %s e %d estão empatados."
 
 #. [lua]: f
-#: data/multiplayer/eras.lua:95
-msgid "<span foreground='%s'>Side %d</span> has the advantage."
-msgstr "<span foreground='%s'>Lado %d</span> tem a vantagem."
+#. In the end-of-match summary, three or more teams have all tied for the best score. $winners contains the result of formatting the conjunct list.
+#: data/multiplayer/eras.lua:96
+#, fuzzy
+#| msgid "Sides %s and %d are tied."
+msgid "Sides $winners are tied."
+msgstr "Os lados %s e %d estão empatados."
+
+#. [lua]: f
+#. "Turns Over", meaning "turn limit reached" is the title of the end-of-match summary dialog
+#: data/multiplayer/eras.lua:100
+msgid "dialog^Turns Over"
+msgstr ""
 
 #. [multiplayer_side]: id=Drakes, type=random
 #: data/multiplayer/factions/drakes-aoh.cfg:4
@@ -1281,7 +1308,7 @@ msgstr ""
 "porcentagem"
 
 #. [lua]: final_spawn
-#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:315
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:300
 msgid ""
 "The last and most powerful of these creatures are almost upon us. I feel "
 "that if we can finish them off in time, we shall be victorious."
@@ -1291,7 +1318,7 @@ msgstr ""
 "nossa."
 
 #. [lua]: final_spawn
-#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:345
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:330
 msgid ""
 "The screams and pleas for mercy are finally silenced, as you remove your "
 "blood soaked blade from the last of the rebels. There will be no more "
@@ -1302,27 +1329,27 @@ msgstr ""
 "mais resistência da escória local. Seu reinado finalmente será estável."
 
 #. [lua]: weather_map
-#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:472
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:457
 msgid "Clear Weather"
 msgstr "Tempo Bom"
 
 #. [lua]: weather_map
-#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:478
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:463
 msgid "Drought"
 msgstr "Seca"
 
 #. [lua]: weather_map
-#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:490
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:475
 msgid "Heavy Rains"
 msgstr "Temporal"
 
 #. [lua]: weather_map
-#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:496
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:481
 msgid "Snowfall"
 msgstr "Nevasca"
 
 #. [lua]: weather_map
-#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:502
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:487
 msgid "Heavy Snowfall"
 msgstr "Nevasca Pesada"
 
@@ -2764,6 +2791,9 @@ msgid ""
 msgstr ""
 "Um benchmark para wesnoth, usa --no-delay --multiplayer --"
 "scenario=wesbench_shroud_walk --exit-at-end."
+
+#~ msgid "Grand total: <b>%d</b>"
+#~ msgstr "Total geral: <b>%d</b>"
 
 #, fuzzy
 #~| msgid "Age of Heroes"

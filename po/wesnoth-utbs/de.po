@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.12\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-03-21 01:02 UTC\n"
+"POT-Creation-Date: 2021-05-16 02:06 UTC\n"
 "PO-Revision-Date: 2020-02-01 12:46+0100\n"
 "Last-Translator: Christoph Berg <christoph.berg@kpm-sport.de>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
@@ -17102,9 +17102,10 @@ msgstr "erfrischt"
 msgid "refreshed"
 msgstr "erfrischt"
 
-#: data/campaigns/Under_the_Burning_Suns/utils/garak-abilities.cfg:57
-msgid "+%d XP"
-msgstr "+%d EP"
+#. Floating text shown when Garak's teaching ability transfers experience points
+#: data/campaigns/Under_the_Burning_Suns/utils/garak-abilities.cfg:56
+msgid "+$amount XP"
+msgstr ""
 
 #. [part]
 #: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:6
@@ -18149,6 +18150,9 @@ msgstr "Phantom-Burg"
 #: data/campaigns/Under_the_Burning_Suns/utils/terrain.cfg:64
 msgid "Phantom Keep"
 msgstr "Phantom-Burgfried"
+
+#~ msgid "+%d XP"
+#~ msgstr "+%d EP"
 
 #~ msgid "Normal"
 #~ msgstr "Normal"
