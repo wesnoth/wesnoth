@@ -94,3 +94,5 @@ function mathx.shuffle(t, random_func)
 		t[index], t[random] = t[random], t[index]
 	end
 end
+
+wesnoth.random = wesnoth.deprecate_api('wesnoth.random', 'mathx.random', 1, nil, mathx.random)
