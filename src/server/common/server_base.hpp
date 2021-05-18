@@ -22,6 +22,9 @@
 #include "exceptions.hpp"
 #include "server/common/simple_wml.hpp"
 
+#include "utils/variant.hpp"
+#include "utils/general.hpp"
+
 #ifdef _WIN32
 #include "serialization/unicode_cast.hpp"
 #endif
@@ -33,6 +36,7 @@
 #endif
 #include <boost/asio/signal_set.hpp>
 #include <boost/asio/streambuf.hpp>
+#include <boost/asio/ssl.hpp>
 #include <boost/asio/spawn.hpp>
 #include <boost/shared_array.hpp>
 
@@ -40,7 +44,11 @@
 
 extern bool dump_wml;
 
+class config;
+
 typedef std::shared_ptr<boost::asio::ip::tcp::socket> socket_ptr;
+typedef std::shared_ptr<boost::asio::ssl::stream<socket_ptr::element_type>> tls_socket_ptr;
+typedef utils::variant<socket_ptr, tls_socket_ptr> any_socket_ptr;
 
 struct server_shutdown : public game::error
 {
@@ -60,7 +68,7 @@ public:
 	 * @param doc
 	 * @param yield The function will suspend on write operation using this yield context
 	 */
-	void coro_send_doc(socket_ptr socket, simple_wml::document& doc, boost::asio::yield_context yield);
+	template<class SocketPtr> void coro_send_doc(SocketPtr socket, simple_wml::document& doc, boost::asio::yield_context yield);
 	/**
 	 * Send contents of entire file directly to socket from within a coroutine
 	 * @param socket
@@ -68,12 +76,13 @@ public:
 	 * @param yield The function will suspend on write operations using this yield context
 	 */
 	void coro_send_file(socket_ptr socket, const std::string& filename, boost::asio::yield_context yield);
+	void coro_send_file(tls_socket_ptr socket, const std::string& filename, boost::asio::yield_context yield);
 	/**
 	 * Receive WML document from a coroutine
 	 * @param socket
 	 * @param yield The function will suspend on read operation using this yield context
 	 */
-	std::unique_ptr<simple_wml::document> coro_receive_doc(socket_ptr socket, boost::asio::yield_context yield);
+	template<class SocketPtr> std::unique_ptr<simple_wml::document> coro_receive_doc(SocketPtr socket, boost::asio::yield_context yield);
 
 	/**
 	 * High level wrapper for sending a WML document
@@ -83,18 +92,23 @@ public:
 	 * @param socket
 	 * @param doc Document to send. A copy of it will be made so there is no need to keep the reference live after the function returns.
 	 */
-	void async_send_doc_queued(socket_ptr socket, simple_wml::document& doc);
+	template<class SocketPtr> void async_send_doc_queued(SocketPtr socket, simple_wml::document& doc);
 
 	typedef std::map<std::string, std::string> info_table;
-	void async_send_error(socket_ptr socket, const std::string& msg, const char* error_code = "", const info_table& info = {});
-	void async_send_warning(socket_ptr socket, const std::string& msg, const char* warning_code = "", const info_table& info = {});
+	template<class SocketPtr> void async_send_error(SocketPtr socket, const std::string& msg, const char* error_code = "", const info_table& info = {});
+	template<class SocketPtr> void async_send_warning(SocketPtr socket, const std::string& msg, const char* warning_code = "", const info_table& info = {});
 
 protected:
 	unsigned short port_;
 	bool keep_alive_;
 	boost::asio::io_service io_service_;
+	boost::asio::ssl::context tls_context_ { boost::asio::ssl::context::sslv23 };
+	bool tls_enabled_ { false };
 	boost::asio::ip::tcp::acceptor acceptor_v6_;
 	boost::asio::ip::tcp::acceptor acceptor_v4_;
+
+	void load_tls_config(const config& cfg);
+
 	void start_server();
 	void serve(boost::asio::yield_context yield, boost::asio::ip::tcp::acceptor& acceptor, boost::asio::ip::tcp::endpoint endpoint);
 
@@ -104,6 +118,7 @@ protected:
 	} handshake_response_;
 
 	virtual void handle_new_client(socket_ptr socket) = 0;
+	virtual void handle_new_client(tls_socket_ptr socket) = 0;
 
 	virtual bool accepting_connections() const { return true; }
 	virtual std::string is_ip_banned(const std::string&) { return std::string(); }
@@ -123,5 +138,6 @@ protected:
 	void handle_termination(const boost::system::error_code& error, int signal_number);
 };
 
-std::string client_address(socket_ptr socket);
-bool check_error(const boost::system::error_code& error, socket_ptr socket);
+template<class SocketPtr> std::string client_address(SocketPtr socket);
+template<class SocketPtr> std::string log_address(SocketPtr socket) { return (utils::decayed_is_same<tls_socket_ptr, decltype(socket)> ? "+" : "") + client_address(socket); }
+template<class SocketPtr> bool check_error(const boost::system::error_code& error, SocketPtr socket);

@@ -15,6 +15,7 @@
 #include "server/common/server_base.hpp"
 
 #include "log.hpp"
+#include "serialization/parser.hpp"
 #include "filesystem.hpp"
 
 #ifdef HAVE_CONFIG_H
@@ -128,19 +129,50 @@ void server_base::serve(boost::asio::yield_context yield, boost::asio::ip::tcp::
 
 	DBG_SERVER << client_address(socket) << "\tnew connection tentatively accepted\n";
 
-	boost::shared_array<char> handshake(new char[4]);
-	async_read(*socket, boost::asio::buffer(handshake.get(), 4), yield[error]);
+	uint32_t protocol_version;
+	uint32_t handshake_response;
+
+	any_socket_ptr final_socket;
+
+	async_read(*socket, boost::asio::buffer(reinterpret_cast<std::byte*>(&protocol_version), 4), yield[error]);
 	if(check_error(error, socket))
 		return;
 
-	if(memcmp(handshake.get(), "\0\0\0\0", 4) != 0) {
-		ERR_SERVER << client_address(socket) << "\tincorrect handshake\n";
-		return;
+	switch(ntohl(protocol_version)) {
+		case 0:
+			async_write(*socket, boost::asio::buffer(handshake_response_.buf, 4), yield[error]);
+			if(check_error(error, socket)) return;
+			final_socket = socket;
+			break;
+		case 1:
+			if(!tls_enabled_) {
+				ERR_SERVER << client_address(socket) << "\tTLS requested by client but not enabled on server\n";
+				handshake_response = 0xFFFFFFFFU;
+			} else {
+				handshake_response = 0x00000000;
+			}
+
+			async_write(*socket, boost::asio::buffer(reinterpret_cast<const std::byte*>(&handshake_response), 4), yield[error]);
+			if(check_error(error, socket)) return;
+			if(!tls_enabled_) { // continue with unencrypted connection if TLS disabled
+				final_socket = socket;
+				break;
+			}
+
+			final_socket = tls_socket_ptr { new tls_socket_ptr::element_type(std::move(*socket), tls_context_) };
+			utils::get<tls_socket_ptr>(final_socket)->async_handshake(boost::asio::ssl::stream_base::server, yield[error]);
+			if(error) {
+				ERR_SERVER << "TLS handshake failed: " << error.message() << "\n";
+				return;
+			}
+
+			break;
+		default:
+			ERR_SERVER << client_address(socket) << "\tincorrect handshake\n";
+			return;
 	}
 
-	async_write(*socket, boost::asio::buffer(handshake_response_.buf, 4), yield[error]);
-
-	if(!check_error(error, socket)) {
+	utils::visit([this](auto&& socket) {
 		const std::string ip = client_address(socket);
 
 		const std::string reason = is_ip_banned(ip);
@@ -153,10 +185,14 @@ void server_base::serve(boost::asio::yield_context yield, boost::asio::ip::tcp::
 			async_send_error(socket, "Too many connections from your IP.");
 			return;
 		} else {
-			DBG_SERVER << ip << "\tnew connection fully accepted\n";
+			if constexpr (utils::decayed_is_same<tls_socket_ptr, decltype(socket)>) {
+				DBG_SERVER << ip << "\tnew encrypted connection fully accepted\n";
+			} else {
+				DBG_SERVER << ip << "\tnew connection fully accepted\n";
+			}
 			this->handle_new_client(socket);
 		}
-	}
+	}, final_socket);
 }
 
 #ifndef _WIN32
@@ -190,27 +226,28 @@ void server_base::run() {
 	}
 }
 
-std::string client_address(const socket_ptr socket)
+template<class SocketPtr> std::string client_address(SocketPtr socket)
 {
 	boost::system::error_code error;
-	std::string result = socket->remote_endpoint(error).address().to_string();
+	std::string result = socket->lowest_layer().remote_endpoint(error).address().to_string();
 	if(error)
 		return "<unknown address>";
 	else
 		return result;
 }
 
-bool check_error(const boost::system::error_code& error, socket_ptr socket)
+template<class SocketPtr> bool check_error(const boost::system::error_code& error, SocketPtr socket)
 {
 	if(error) {
 		if(error == boost::asio::error::eof)
-			LOG_SERVER << client_address(socket) << "\tconnection closed\n";
+			LOG_SERVER << log_address(socket) << "\tconnection closed\n";
 		else
-			ERR_SERVER << client_address(socket) << "\t" << error.message() << "\n";
+			ERR_SERVER << log_address(socket) << "\t" << error.message() << "\n";
 		return true;
 	}
 	return false;
 }
+template bool check_error<tls_socket_ptr>(const boost::system::error_code& error, tls_socket_ptr socket);
 
 namespace {
 
@@ -234,10 +271,10 @@ void info_table_into_simple_wml(simple_wml::document& doc, const std::string& pa
  * @param doc
  * @param yield The function will suspend on write operation using this yield context
  */
-void server_base::coro_send_doc(socket_ptr socket, simple_wml::document& doc, boost::asio::yield_context yield)
+template<class SocketPtr> void server_base::coro_send_doc(SocketPtr socket, simple_wml::document& doc, boost::asio::yield_context yield)
 {
 	if(dump_wml) {
-		std::cout << "Sending WML to " << client_address(socket) << ": \n" << doc.output() << std::endl;
+		std::cout << "Sending WML to " << log_address(socket) << ": \n" << doc.output() << std::endl;
 	}
 
 	try {
@@ -261,8 +298,38 @@ void server_base::coro_send_doc(socket_ptr socket, simple_wml::document& doc, bo
 		throw;
 	}
 }
+template void server_base::coro_send_doc<socket_ptr>(socket_ptr socket, simple_wml::document& doc, boost::asio::yield_context yield);
+template void server_base::coro_send_doc<tls_socket_ptr>(tls_socket_ptr socket, simple_wml::document& doc, boost::asio::yield_context yield);
+
+template<class SocketPtr> void coro_send_file_userspace(SocketPtr socket, const std::string& filename, boost::asio::yield_context yield)
+{
+	std::size_t filesize { std::size_t(filesystem::file_size(filename)) };
+	union DataSize
+	{
+		uint32_t size;
+		char buf[4];
+	} data_size {};
+	data_size.size = htonl(filesize);
+
+	async_write(*socket, boost::asio::buffer(data_size.buf), yield);
+
+	auto ifs { filesystem::istream_file(filename) };
+	ifs->seekg(0);
+	while(ifs->good()) {
+		char buf[16384];
+		ifs->read(buf, sizeof(buf));
+		async_write(*socket, boost::asio::buffer(buf, ifs->gcount()), yield);
+	}
+}
 
 #ifdef HAVE_SENDFILE
+
+void server_base::coro_send_file(tls_socket_ptr socket, const std::string& filename, boost::asio::yield_context yield)
+{
+	// We fallback to userspace if using TLS socket because sendfile is not aware of TLS state
+	// TODO: keep in mind possibility of using KTLS instead. This seem to be available only in openssl3 branch for now
+	coro_send_file_userspace(socket, filename, yield);
+}
 
 void server_base::coro_send_file(socket_ptr socket, const std::string& filename, boost::asio::yield_context yield)
 {
@@ -321,9 +388,13 @@ void server_base::coro_send_file(socket_ptr socket, const std::string& filename,
 
 #elif defined(_WIN32)
 
+void server_base::coro_send_file(tls_socket_ptr socket, const std::string& filename, boost::asio::yield_context yield)
+{
+	coro_send_file_userspace(socket, filename, yield);
+}
+
 void server_base::coro_send_file(socket_ptr socket, const std::string& filename, boost::asio::yield_context yield)
 {
-
 	OVERLAPPED overlap;
 	std::vector<boost::asio::const_buffer> buffers;
 
@@ -382,15 +453,19 @@ void server_base::coro_send_file(socket_ptr socket, const std::string& filename,
 
 #else
 
+void server_base::coro_send_file(tls_socket_ptr socket, const std::string& filename, boost::asio::yield_context yield)
+{
+	coro_send_file_userspace(socket, filename, yield);
+}
+
 void server_base::coro_send_file(socket_ptr socket, const std::string& filename, boost::asio::yield_context yield)
 {
-// TODO: Implement this for systems without sendfile()
-	assert(false && "Not implemented yet");
+	coro_send_file_userspace(socket, filename, yield);
 }
 
 #endif
 
-std::unique_ptr<simple_wml::document> server_base::coro_receive_doc(socket_ptr socket, boost::asio::yield_context yield)
+template<class SocketPtr> std::unique_ptr<simple_wml::document> server_base::coro_receive_doc(SocketPtr socket, boost::asio::yield_context yield)
 {
 	union DataSize
 	{
@@ -403,13 +478,13 @@ std::unique_ptr<simple_wml::document> server_base::coro_receive_doc(socket_ptr s
 
 	if(size == 0) {
 		ERR_SERVER <<
-					  client_address(socket) <<
+					  log_address(socket) <<
 					  "\treceived invalid packet with payload size 0" << std::endl;
 		return {};
 	}
 	if(size > simple_wml::document::document_size_limit) {
 		ERR_SERVER <<
-					  client_address(socket) <<
+					  log_address(socket) <<
 					  "\treceived packet with payload size over size limit" << std::endl;
 		return {};
 	}
@@ -422,18 +497,20 @@ std::unique_ptr<simple_wml::document> server_base::coro_receive_doc(socket_ptr s
 		return std::make_unique<simple_wml::document>(compressed_buf);
 	}  catch (simple_wml::error& e) {
 		ERR_SERVER <<
-			client_address(socket) <<
+			log_address(socket) <<
 			"\tsimple_wml error in received data: " << e.message << std::endl;
 		async_send_error(socket, "Invalid WML received: " + e.message);
 		return {};
 	}
 }
+template std::unique_ptr<simple_wml::document> server_base::coro_receive_doc<socket_ptr>(socket_ptr socket, boost::asio::yield_context yield);
+template std::unique_ptr<simple_wml::document> server_base::coro_receive_doc<tls_socket_ptr>(tls_socket_ptr socket, boost::asio::yield_context yield);
 
-void server_base::async_send_doc_queued(socket_ptr socket, simple_wml::document& doc)
+template<class SocketPtr> void server_base::async_send_doc_queued(SocketPtr socket, simple_wml::document& doc)
 {
 	boost::asio::spawn(
 		io_service_, [this, doc_ptr = doc.clone(), socket](boost::asio::yield_context yield) mutable {
-			static std::map<socket_ptr, std::queue<std::unique_ptr<simple_wml::document>>> queues;
+			static std::map<SocketPtr, std::queue<std::unique_ptr<simple_wml::document>>> queues;
 
 			queues[socket].push(std::move(doc_ptr));
 			if(queues[socket].size() > 1) {
@@ -449,7 +526,7 @@ void server_base::async_send_doc_queued(socket_ptr socket, simple_wml::document&
 	);
 }
 
-void server_base::async_send_error(socket_ptr socket, const std::string& msg, const char* error_code, const info_table& info)
+template<class SocketPtr> void server_base::async_send_error(SocketPtr socket, const std::string& msg, const char* error_code, const info_table& info)
 {
 	simple_wml::document doc;
 	doc.root().add_child("error").set_attr_dup("message", msg.c_str());
@@ -460,8 +537,10 @@ void server_base::async_send_error(socket_ptr socket, const std::string& msg, co
 
 	async_send_doc_queued(socket, doc);
 }
+template void server_base::async_send_error<socket_ptr>(socket_ptr socket, const std::string& msg, const char* error_code, const info_table& info);
+template void server_base::async_send_error<tls_socket_ptr>(tls_socket_ptr socket, const std::string& msg, const char* error_code, const info_table& info);
 
-void server_base::async_send_warning(socket_ptr socket, const std::string& msg, const char* warning_code, const info_table& info)
+template<class SocketPtr> void server_base::async_send_warning(SocketPtr socket, const std::string& msg, const char* warning_code, const info_table& info)
 {
 	simple_wml::document doc;
 	doc.root().add_child("warning").set_attr_dup("message", msg.c_str());
@@ -471,6 +550,25 @@ void server_base::async_send_warning(socket_ptr socket, const std::string& msg, 
 	info_table_into_simple_wml(doc, "warning", info);
 
 	async_send_doc_queued(socket, doc);
+}
+template void server_base::async_send_warning<socket_ptr>(socket_ptr socket, const std::string& msg, const char* warning_code, const info_table& info);
+template void server_base::async_send_warning<tls_socket_ptr>(tls_socket_ptr socket, const std::string& msg, const char* warning_code, const info_table& info);
+
+void server_base::load_tls_config(const config& cfg)
+{
+	tls_enabled_ = cfg["tls_enabled"].to_bool(false);
+	if(!tls_enabled_) return;
+
+	tls_context_.set_options(
+		boost::asio::ssl::context::default_workarounds
+		| boost::asio::ssl::context::no_sslv2
+		| boost::asio::ssl::context::no_sslv3
+		| boost::asio::ssl::context::single_dh_use
+	);
+
+	tls_context_.use_certificate_chain_file(cfg["tls_fullchain"].str());
+	tls_context_.use_private_key_file(cfg["tls_private_key"].str(), boost::asio::ssl::context::pem);
+	if(!cfg["tls_dh"].str().empty()) tls_context_.use_tmp_dh_file(cfg["tls_dh"].str());
 }
 
 // This is just here to get it to build without the deprecation_message function

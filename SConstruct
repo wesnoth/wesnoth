@@ -183,13 +183,7 @@ if env['distcc']:
 
 if env['ccache']: env.Tool('ccache')
 
-# boost::asio::post is new with 1.66
-# Ubuntu 18.04 also only has 1.65
-if env["forum_user_handler"]:
-    boost_version = "1.66"
-else:
-    boost_version = "1.65"
-
+boost_version = "1.66"
 
 def SortHelpText(a, b):
     return (a > b) - (a < b)
@@ -386,7 +380,7 @@ if env["prereqs"]:
 
     if(env["PLATFORM"] != 'darwin'):
         # Otherwise, use Security.framework
-        have_server_prereqs = have_server_prereqs & conf.CheckLib("libcrypto")
+        have_server_prereqs = have_server_prereqs & conf.CheckLib("libcrypto") & conf.CheckLib("ssl")
 
     env = conf.Finish()
 

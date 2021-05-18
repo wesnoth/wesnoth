@@ -181,6 +181,7 @@ if(ENABLE_GAME)
 		wesnoth-common
 		${game-external-libs}
 		OpenSSL::Crypto
+		OpenSSL::SSL
 		Boost::iostreams
 		Boost::program_options
 		Boost::regex
@@ -219,6 +220,7 @@ if(ENABLE_TESTS)
 		wesnoth-common
 		${game-external-libs}
 		OpenSSL::Crypto
+		OpenSSL::SSL
 		Boost::iostreams
 		Boost::program_options
 		Boost::regex
@@ -254,6 +256,7 @@ if(ENABLE_SERVER)
 		wesnoth-common
 		${server-external-libs}
 		OpenSSL::Crypto
+		OpenSSL::SSL
 		Boost::iostreams
 		Boost::program_options
 		Boost::regex
@@ -294,6 +297,7 @@ if(ENABLE_CAMPAIGN_SERVER)
 		wesnoth-common
 		${server-external-libs}
 		OpenSSL::Crypto
+		OpenSSL::SSL
 		Boost::iostreams
 		Boost::program_options
 		Boost::regex
