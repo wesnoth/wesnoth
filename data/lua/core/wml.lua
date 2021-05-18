@@ -371,8 +371,14 @@ if wesnoth.kernel_type() ~= "Application Lua Kernel" then
 	local ns_key, global_temp = '$ns$', "lua_global_variable"
 	local global_vars_ns = {}
 	local global_vars_mt = {
+		__metatable = 'global variables',
 		__index = function(self, namespace)
-			setmetatable({[ns_key] = namespace}, global_vars_ns)
+			local ns = setmetatable({
+				__metatable = string.format('global variables[%s]', namespace)
+			}, {
+				__index = global_vars_ns
+			})
+			return setmetatable({[ns_key] = namespace}, ns)
 		end
 	}
 
