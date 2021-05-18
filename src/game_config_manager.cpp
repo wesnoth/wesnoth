@@ -621,7 +621,7 @@ void game_config_manager::load_addons_cfg()
 			throw game::error("Did not find an add-on for --validate-addon");
 		}
 
-		WRN_CONFIG << "Note: for --validate-addon to find errors, you have to play (in the GUI) a game that uses the add-on.";
+		WRN_CONFIG << "Note: for --validate-addon to find errors, you have to play (in the GUI) a game that uses the add-on." << std::endl;
 	}
 
 	if(!error_addons.empty()) {
