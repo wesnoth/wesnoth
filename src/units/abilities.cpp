@@ -1435,7 +1435,7 @@ bool attack_type::has_anti_weapon_ability(const std::string& special) const
 			std::vector<special_match> special_tag_matches_adj;
 			get_special_children_tags(special_tag_matches_adj, it->abilities(), "anti_special", false);
 			for(const special_match& entry : special_tag_matches_adj) {
-				if((*entry.cfg)["special"] == special && ab_active = check_adj_abilities_impl(shared_from_this(), other_attack_, *entry.cfg, self_, *it, i, self_loc_, AFFECT_OTHER, "anti_special", false, true)){
+				if((*entry.cfg)["special"] == special && check_adj_abilities_impl(shared_from_this(), other_attack_, *entry.cfg, self_, *it, i, self_loc_, AFFECT_OTHER, "anti_special", false, true)){
 					return true;
 				}
 			}
@@ -1462,7 +1462,7 @@ bool attack_type::has_anti_weapon_ability(const std::string& special) const
 			std::vector<special_match> special_tag_matches_oadj;
 			get_special_children_tags(special_tag_matches_oadj, it->abilities(), "anti_special", false);
 			for(const special_match& entry : special_tag_matches_oadj) {
-				if((*entry.cfg)["special"] == special && ab_active = check_adj_abilities_impl(other_attack_, shared_from_this(), *entry.cfg, other_, *it, i, other_loc_, AFFECT_SELF, "anti_special", false, true)){
+				if((*entry.cfg)["special"] == special && check_adj_abilities_impl(other_attack_, shared_from_this(), *entry.cfg, other_, *it, i, other_loc_, AFFECT_SELF, "anti_special", false, true)){
 					return true;
 				}
 			}
