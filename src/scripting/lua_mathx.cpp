@@ -22,6 +22,9 @@
 #include "lua/lua.h"
 #include "lua/lualib.h"
 
+#include <stdio.h>
+#include <math.h>
+
 namespace lua_mathx {
 
 /**
