@@ -22,6 +22,7 @@
 #include "resources.hpp"
 #include "game_board.hpp"
 #include "play_controller.hpp"
+#include "game_config_manager.hpp"
 
 
 static lg::log_domain log_scripting_lua("scripting/lua");
@@ -565,6 +566,46 @@ static int impl_replace_if_failed_tostring(lua_State* L)
 	return 1;
 }
 
+/**
+ * Gets details about a terrain.
+ * - Arg 1: terrain code string.
+ * - Ret 1: table.
+ */
+int impl_get_terrain_info(lua_State *L)
+{
+	char const *m = luaL_checkstring(L, 2);
+	t_translation::terrain_code t = t_translation::read_terrain_code(m);
+	auto tdata = game_config_manager::get()->terrain_types();
+	if (t == t_translation::NONE_TERRAIN || !tdata->is_known(t)) return 0;
+	const terrain_type& info = tdata->get_terrain_info(t);
+
+	lua_newtable(L);
+	lua_pushstring(L, info.id().c_str());
+	lua_setfield(L, -2, "id");
+	luaW_pushtstring(L, info.name());
+	lua_setfield(L, -2, "name");
+	luaW_pushtstring(L, info.editor_name());
+	lua_setfield(L, -2, "editor_name");
+	luaW_pushtstring(L, info.description());
+	lua_setfield(L, -2, "description");
+	lua_push(L, info.icon_image());
+	lua_setfield(L, -2, "icon");
+	lua_push(L, info.editor_image());
+	lua_setfield(L, -2, "editor_image");
+	lua_pushinteger(L, info.light_bonus(0));
+	lua_setfield(L, -2, "light");
+	lua_pushboolean(L, info.is_village());
+	lua_setfield(L, -2, "village");
+	lua_pushboolean(L, info.is_castle());
+	lua_setfield(L, -2, "castle");
+	lua_pushboolean(L, info.is_keep());
+	lua_setfield(L, -2, "keep");
+	lua_pushinteger(L, info.gives_healing());
+	lua_setfield(L, -2, "healing");
+
+	return 1;
+}
+
 namespace lua_terrainmap {
 	std::string register_metatables(lua_State* L)
 	{
@@ -599,6 +640,18 @@ namespace lua_terrainmap {
 		lua_setfield(L, -2, "__pairs");
 		lua_pushstring(L, maplocationKey);
 		lua_setfield(L, -2, "__metatable");
+
+		cmd_out << "Adding terrain_types table...\n";
+		lua_getglobal(L, "wesnoth");
+		lua_newuserdatauv(L, 0, 0);
+		lua_createtable(L, 0, 2);
+		lua_pushcfunction(L, impl_get_terrain_info);
+		lua_setfield(L, -2, "__index");
+		lua_pushstring(L, "terrain types");
+		lua_setfield(L, -2, "__metatable");
+		lua_setmetatable(L, -2);
+		lua_setfield(L, -2, "terrain_types");
+		lua_pop(L, 1);
 
 		return cmd_out.str();
 	}
