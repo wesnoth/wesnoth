@@ -134,7 +134,6 @@ class game_lua_kernel : public lua_kernel_base
 	int intf_shroud_op(lua_State *L, bool place_shroud);
 	int intf_simulate_combat(lua_State *L);
 	int intf_scroll_to_tile(lua_State *L);
-	int intf_select_hex(lua_State *L);
 	int intf_select_unit(lua_State *L);
 	int intf_deselect_hex(lua_State *L);
 	int intf_is_skipping_messages(lua_State *L);

@@ -2585,25 +2585,6 @@ int game_lua_kernel::intf_scroll_to_tile(lua_State *L)
 	return 0;
 }
 
-int game_lua_kernel::intf_select_hex(lua_State *L)
-{
-	events::command_disabler command_disabler;
-	deprecated_message("wesnoth.select_hex", DEP_LEVEL::PREEMPTIVE, {1, 15, 0}, "Use wesnoth.units.select and/or wesnoth.interface.highlight_hex instead.");
-
-	// Need this because check_location may change the stack
-	// By doing this now, we ensure that it won't do so when
-	// intf_select_unit and intf_highlight_hex call it.
-	const map_location loc = luaW_checklocation(L, 1);
-	luaW_pushlocation(L, loc);
-	lua_replace(L, 1);
-
-	intf_select_unit(L);
-	if(!lua_isnoneornil(L, 2) && luaW_toboolean(L,2)) {
-		intf_highlight_hex(L);
-	}
-	return 0;
-}
-
 /**
  * Selects and highlights the given location on the map.
  * - Arg 1: location.
@@ -4056,7 +4037,6 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 		{ "redraw",                    &dispatch<&game_lua_kernel::intf_redraw                     >        },
 		{ "remove_event_handler",      &dispatch<&game_lua_kernel::intf_remove_event               >        },
 		{ "replace_schedule",          &dispatch<&game_lua_kernel::intf_replace_schedule           >        },
-		{ "select_hex",                &dispatch<&game_lua_kernel::intf_select_hex                 >        },
 		{ "set_time_of_day",           &dispatch<&game_lua_kernel::intf_set_time_of_day            >        },
 		{ "simulate_combat",           &dispatch<&game_lua_kernel::intf_simulate_combat            >        },
 		{ "synchronize_choice",        &intf_synchronize_choice                                             },
