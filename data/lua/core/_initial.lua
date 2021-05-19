@@ -121,6 +121,10 @@ wesnoth.set_end_campaign_text = wesnoth.deprecate_api('wesnoth.set_end_campaign_
 	end
 end)
 
+if wesnoth.kernel_type() ~= 'Application Lua Kernel' then
+	wesnoth.find_path = wesnoth.deprecate_api('wesnoth.find_path', 'wesnoth.paths.find_path', 1, nil, wesnoth.paths.find_path)
+end
+
 if wesnoth.kernel_type() == 'Game Lua Kernel' then
 	local function get_time_of_day(...)
 		local arg_i, turn = 1, nil
@@ -167,4 +171,9 @@ if wesnoth.kernel_type() == 'Game Lua Kernel' then
 	wesnoth.unsynced = wesnoth.deprecate_api('wesnoth.unsynced', 'wesnoth.sync.run_unsynced', 1, nil, wesnoth.sync.run_unsynced)
 	wesnoth.synchronize_choice = wesnoth.deprecate_api('wesnoth.synchronize_choice', 'wesnoth.sync.evaluate_single', 1, nil, wesnoth.sync.evaluate_single)
 	wesnoth.synchronize_choices = wesnoth.deprecate_api('wesnoth.synchronize_choices', 'wesnoth.sync.evaluate_multiple', 1, nil, wesnoth.sync.evaluate_multiple)
+	
+	wesnoth.find_cost_map = wesnoth.deprecate_api('wesnoth.find_cost_map', 'wesnoth.paths.find_cost_map', 1, nil, wesnoth.paths.find_cost_map)
+	wesnoth.find_reach = wesnoth.deprecate_api('wesnoth.find_reach', 'wesnoth.paths.find_reach', 1, nil, wesnoth.paths.find_reach)
+	wesnoth.find_vacant_tile = wesnoth.deprecate_api('wesnoth.find_vacant_tile', 'wesnoth.paths.find_vacant_tile', 1, nil, wesnoth.paths.find_vacant_tile)
+	wesnoth.find_vision_range = wesnoth.deprecate_api('wesnoth.find_vision_range', 'wesnoth.paths.find_vision_range', 1, nil, wesnoth.paths.find_vision_range)
 end
