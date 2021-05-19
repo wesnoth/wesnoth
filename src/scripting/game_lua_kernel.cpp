@@ -4168,11 +4168,6 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 		{ "add_event_handler",         &dispatch<&game_lua_kernel::intf_add_event                  >        },
 		{ "allow_undo",                &dispatch<&game_lua_kernel::intf_allow_undo                 >        },
 		{ "cancel_action",             &dispatch<&game_lua_kernel::intf_cancel_action              >        },
-		{ "find_cost_map",             &dispatch<&game_lua_kernel::intf_find_cost_map              >        },
-		{ "find_path",                 &dispatch<&game_lua_kernel::intf_find_path                  >        },
-		{ "find_reach",                &dispatch<&game_lua_kernel::intf_find_reach                 >        },
-		{ "find_vacant_tile",          &dispatch<&game_lua_kernel::intf_find_vacant_tile           >        },
-		{ "find_vision_range",         &dispatch<&game_lua_kernel::intf_find_vision_range          >        },
 		{ "fire_event",                &dispatch2<&game_lua_kernel::intf_fire_event, false         >        },
 		{ "fire_event_by_id",          &dispatch2<&game_lua_kernel::intf_fire_event, true          >        },
 		{ "log_replay",                &dispatch<&game_lua_kernel::intf_log_replay                 >        },
@@ -4427,6 +4422,22 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 	lua_newtable(L);
 	luaL_setfuncs(L, audio_callbacks, 0);
 	lua_setfield(L, -2, "audio");
+	lua_pop(L, 1);
+	
+	// Create the paths module
+	cmd_log_ << "Adding paths module...\n";
+	static luaL_Reg const path_callbacks[] {
+		{ "find_cost_map",             &dispatch<&game_lua_kernel::intf_find_cost_map              >        },
+		{ "find_path",                 &dispatch<&game_lua_kernel::intf_find_path                  >        },
+		{ "find_reach",                &dispatch<&game_lua_kernel::intf_find_reach                 >        },
+		{ "find_vacant_tile",          &dispatch<&game_lua_kernel::intf_find_vacant_tile           >        },
+		{ "find_vision_range",         &dispatch<&game_lua_kernel::intf_find_vision_range          >        },
+		{ nullptr, nullptr }
+	};
+	lua_getglobal(L, "wesnoth");
+	lua_newtable(L);
+	luaL_setfuncs(L, path_callbacks, 0);
+	lua_setfield(L, -2, "paths");
 	lua_pop(L, 1);
 
 	// Create the sync module

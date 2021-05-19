@@ -157,34 +157,55 @@ static int intf_default_generate_height_map(lua_State *L)
 }
 /**
  * Finds a path between two locations.
- * - Args 1,2: source location.
- * - Args 3,4: destination.
- * - Arg 5: cost function
- * - Args 6,7 size of map.
- * - Arg 8 include border.
+ * - Args 1: source location.
+ * - Args 2: destination.
+ * - Arg 3: cost function
+ * - Args 4,5 size of map.
+ * - Arg 6 include border.
+ * OR
+ * - Arg 3: options table containing calculate, width, height, (optional) include_borders
  * - Ret 1: array of pairs containing path steps.
  * - Ret 2: path cost.
  */
 static int intf_find_path(lua_State *L)
 {
 	int arg = 1;
-	map_location src, dst;
-	src.set_wml_x(luaL_checkinteger(L, 1));
-	src.set_wml_y(luaL_checkinteger(L, 2));
-	dst.set_wml_x(luaL_checkinteger(L, 3));
-	dst.set_wml_y(luaL_checkinteger(L, 4));
+	map_location src = luaW_checklocation(L, 1), dst = luaW_checklocation(L, 2);
 	if(lua_isfunction(L, arg)) {
-		const char *msg = lua_pushfstring(L, "%s expected, got %s", lua_typename(L, LUA_TFUNCTION), luaL_typename(L, 5));
-		return luaL_argerror(L, 5, msg);
+		const char *msg = lua_pushfstring(L, "%s expected, got %s", lua_typename(L, LUA_TFUNCTION), luaL_typename(L, 3));
+		return luaL_argerror(L, 3, msg);
 	}
-	lua_pathfind_cost_calculator calc(L, 5);
-	int width = luaL_checkinteger(L, 6);
-	int height = luaL_checkinteger(L, 7);
+	std::optional<lua_pathfind_cost_calculator> calc;
+	int width, height;
 	bool border = false;
-	if(lua_isboolean(L, 8)) {
-		border = luaW_toboolean(L, 8);
+	if(lua_istable(L, 3)) {
+		if(luaW_tableget(L, 3, "calculate")) {
+			calc = lua_pathfind_cost_calculator(L, lua_gettop(L));
+		} else {
+			return luaL_argerror(L, 3, "missing key: calculate");
+		}
+		if(!luaW_tableget(L, 3, "width")) {
+			width = luaL_checkinteger(L, -1);
+		} else {
+			return luaL_argerror(L, 3, "missing key: width");
+		}
+		if(!luaW_tableget(L, 3, "height")) {
+			height = luaL_checkinteger(L, -1);
+		} else {
+			return luaL_argerror(L, 3, "missing key: height");
+		}
+		if(!luaW_tableget(L, 3, "include_borders")) {
+			border = luaW_toboolean(L, -1);
+		}
+	} else {
+		calc = lua_pathfind_cost_calculator(L, 3);
+		width = luaL_checkinteger(L, 4);
+		height = luaL_checkinteger(L, 5);
+		if(lua_isboolean(L, 6)) {
+			border = luaW_toboolean(L, 6);
+		}
 	}
-	pathfind::plain_route res = pathfind::a_star_search(src, dst, 10000, calc, width, height, nullptr, border);
+	pathfind::plain_route res = pathfind::a_star_search(src, dst, 10000, *calc, width, height, nullptr, border);
 
 	int nb = res.steps.size();
 	lua_createtable(L, nb, 0);
@@ -219,18 +240,6 @@ mapgen_lua_kernel::mapgen_lua_kernel(const config* vars)
 
 	lua_settop(L, 0);
 
-	static luaL_Reg const callbacks[] {
-		{ "find_path",           &intf_find_path           },
-		{ "random",              &intf_random              },
-		{ nullptr, nullptr }
-	};
-
-	lua_getglobal(L, "wesnoth");
-	assert(lua_istable(L,-1));
-	luaL_setfuncs(L, callbacks, 0);
-	lua_pop(L, 1);
-	assert(lua_gettop(L) == 0);
-
 	static luaL_Reg const map_callbacks[] {
 		// Map methods
 		{ "find",                &intf_mg_get_locations            },
@@ -248,6 +257,18 @@ mapgen_lua_kernel::mapgen_lua_kernel(const config* vars)
 	luaL_setfuncs(L, map_callbacks, 0);
 	lua_pop(L, 1);
 	assert(lua_gettop(L) == 0);
+	
+	// Create the paths module
+	cmd_log_ << "Adding paths module...\n";
+	static luaL_Reg const path_callbacks[] {
+		{ "find_path",                 &intf_find_path                          },
+		{ nullptr, nullptr }
+	};
+	lua_getglobal(L, "wesnoth");
+	lua_newtable(L);
+	luaL_setfuncs(L, path_callbacks, 0);
+	lua_setfield(L, -2, "paths");
+	lua_pop(L, 1);
 
 	// Add functions to the WML module
 	lua_getglobal(L, "wml");
