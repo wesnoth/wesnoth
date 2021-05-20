@@ -43,8 +43,7 @@ private:
 	template<class SocketPtr> void login_client(boost::asio::yield_context yield, SocketPtr socket);
 	template<class SocketPtr> bool is_login_allowed(SocketPtr socket, const simple_wml::node* const login, const std::string& username, bool& registered, bool& is_moderator);
 	template<class SocketPtr> bool authenticate(SocketPtr socket, const std::string& username, const std::string& password, bool name_taken, bool& registered);
-	template<class SocketPtr> void send_password_request(SocketPtr socket, const std::string& msg,
-		const std::string& user, const char* error_code = "", bool force_confirmation = false);
+	template<class SocketPtr> void send_password_request(SocketPtr socket, const std::string& msg, const char* error_code = "", bool force_confirmation = false);
 	bool accepting_connections() const { return !graceful_restart; }
 
 	template<class SocketPtr> void handle_player(boost::asio::yield_context yield, SocketPtr socket, const player& player);
@@ -59,6 +58,15 @@ private:
 	void handle_join_game(player_iterator player, simple_wml::node& join);
 	void disconnect_player(player_iterator player);
 	void remove_player(player_iterator player);
+	/**
+	 * Handles hashing the password provided by the player before comparing it to the hashed password in the forum database.
+	 *
+	 * @param pw The plaintext password.
+	 * @param user The player attempting to log in.
+	 * @param socket The socket the player is connected with.
+	 * @return The hashed password, or empty if the password couldn't be hashed.
+	 */
+	template<class SocketPtr> std::pair<std::string, std::string> hash_password(const std::string& pw, const std::string& user, SocketPtr socket);
 
 public:
 	template<class SocketPtr> void send_server_message(SocketPtr socket, const std::string& message, const std::string& type);
@@ -115,7 +123,6 @@ private:
 	std::deque<login_log> failed_logins_;
 
 	std::unique_ptr<user_handler> user_handler_;
-	std::map<void*, std::string> seeds_;
 
 	std::mt19937 die_;
 
