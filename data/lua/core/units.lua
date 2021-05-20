@@ -72,4 +72,5 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 	wesnoth.get_recall_units = wesnoth.deprecate_api('wesnoth.get_recall_units', 'wesnoth.units.find_on_recall', 1, nil, wesnoth.units.find_on_recall)
 	wesnoth.create_animator = wesnoth.deprecate_api('wesnoth.create_animator', 'wesnoth.units.create_animator', 1, nil, wesnoth.units.create_animator)
 	wesnoth.create_weapon = wesnoth.deprecate_api('wesnoth.create_weapon', 'wesnoth.units.create_weapon', 1, nil, wesnoth.units.create_weapon)
+	wesnoth.teleport = wesnoth.deprecate_api('wesnoth.teleport', 'wesnoth.units.teleport', 1, nil, wesnoth.units.teleport)
 end

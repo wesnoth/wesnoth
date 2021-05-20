@@ -831,7 +831,7 @@ wml_actions.teleport = function(cfg)
 	if cfg.location_id then
 		x,y = table.unpack(wesnoth.current.map.special_locations[cfg.location_id])
 	end
-	wesnoth.teleport(unit, x, y, cfg.check_passability == false, cfg.clear_shroud ~= false, cfg.animate)
+	unit:teleport(x, y, cfg.check_passability == false, cfg.clear_shroud ~= false, cfg.animate)
 end
 
 function wml_actions.remove_sound_source(cfg)
