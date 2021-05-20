@@ -429,6 +429,10 @@ static int process_command_args(const commandline_options& cmdline_opts)
 		game_config::debug_lua = true;
 	}
 
+	if(cmdline_opts.allow_insecure) {
+		game_config::allow_insecure = true;
+	}
+
 	if(cmdline_opts.strict_lua) {
 		game_config::strict_lua = true;
 	}

@@ -76,6 +76,12 @@ public:
 	bool debug_lua;
 	/** True if --strict-lua was given in the commandline. Disallows use of deprecated APIs. */
 	bool strict_lua;
+	/**
+	 * True if --allow-insecure was given in the commandline.
+	 * Allows sending a plaintext password over an unencrypted connection.
+	 * Should only ever be used for local testing.
+	 */
+	bool allow_insecure;
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
 	/** Non-empty if --debug-dot-domain was given on the command line. */
 	std::optional<std::string> debug_dot_domain;
