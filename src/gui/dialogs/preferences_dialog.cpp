@@ -36,6 +36,7 @@
 // Sub-dialog includes
 #include "gui/dialogs/game_cache_options.hpp"
 #include "gui/dialogs/hotkey_bind.hpp"
+#include "gui/dialogs/hotkey_transliteration.hpp"
 #include "gui/dialogs/log_settings.hpp"
 #include "gui/dialogs/multiplayer/mp_alerts_options.hpp"
 #include "gui/dialogs/select_orb_colors.hpp"
@@ -773,6 +774,10 @@ void preferences_dialog::initialize_callbacks()
 		find_widget<button>(this, "btn_reset_hotkeys", false), std::bind(
 			&preferences_dialog::default_hotkey_callback,
 			this));
+
+	connect_signal_mouse_left_click(
+		find_widget<button>(this, "btn_hotkey_transliteration", false),
+			std::bind(&gui2::dialogs::hotkey_transliteration::display<>));
 }
 
 listbox& preferences_dialog::setup_hotkey_list()

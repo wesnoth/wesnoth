@@ -44,15 +44,6 @@ game_config_view default_hotkey_cfg_;
 
 const int TOUCH_MOUSE_INDEX = 255;
 
-/**
- * Method of handling multiple keyboard layouts, assuming that they use different alphabets, by mapping letters from one alphabet to another. Uses a 1:1 mapping, so it might be considered a substitution cipher.
- *
- * For example, Greek's alpha and beta keys might be mapped to Latin's 'a' and 'b'.
- */
-struct transliteration {
-	std::map<std::string, std::string> text;
-	std::map<SDL_Keycode, SDL_Keycode> sym;
-};
 std::vector<transliteration> transliterations_;
 }; // namespace
 
@@ -253,6 +244,12 @@ transliteration load_transliteration_from_config(const config& cfg)
 			result.sym[src_keysym] = dst_keysym;
 		}
 		DBG_G << "Added transliteration " << src << " -> " << dst << "'.\n";
+	}
+
+	// placeholder for the name
+	result.name = cfg["name"].str();
+	if(result.name.empty() && !result.text.empty()) {
+		result.name = result.text.begin()->first;
 	}
 
 	return result;
@@ -491,6 +488,11 @@ void reset_default_hotkeys()
 const hotkey_list& get_hotkeys()
 {
 	return hotkeys_;
+}
+
+const std::vector<transliteration>& get_transliterations()
+{
+	return transliterations_;
 }
 
 void save_hotkeys(config& cfg)
