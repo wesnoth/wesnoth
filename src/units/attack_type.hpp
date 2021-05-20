@@ -159,6 +159,7 @@ private:
 	 * @param whom determine if unit affected or not by special ability.
 	 * @param tag_name The special ability type who is being checked.
 	 * @param leader_bool If true, [leadership] abilities are checked.
+	 * @param anti_special If true, [anti_special] abilities are checked.
 	 */
 	static bool check_self_abilities_impl(
 		const_attack_ptr self_attack,
@@ -168,7 +169,8 @@ private:
 		const map_location& loc,
 		AFFECTS whom,
 		const std::string& tag_name,
-		bool leader_bool=false
+		bool leader_bool=false,
+		bool anti_special=false
 	);
 
 
@@ -184,6 +186,7 @@ private:
 	 * @param whom determine if unit affected or not by special ability.
 	 * @param tag_name The special ability type who is being checked.
 	 * @param leader_bool If true, [leadership] abilities are checked.
+	 * @param anti_special If true, [anti_special] abilities are checked.
 	 */
 	static bool check_adj_abilities_impl(
 		const_attack_ptr self_attack,
@@ -195,8 +198,16 @@ private:
 		const map_location& loc,
 		AFFECTS whom,
 		const std::string& tag_name,
-		bool leader_bool=false
+		bool leader_bool=false,
+		bool anti_special=false
 	);
+
+	/**
+	 * @return True if the special checked is active and matches filter.
+	 * @param special_type          The type of special to immune.
+	 * @param special               The config of special to immune.
+	 */
+	bool has_anti_weapon_ability(const std::string& special_type, const config& special) const;
 
 	static bool special_active_impl(
 		const_attack_ptr self_attack,

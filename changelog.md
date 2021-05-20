@@ -12,6 +12,7 @@
    * Added missing Seahorse graphics
  ### User interface
  ### WML Engine
+   * add a [anti_special] who negate effect of specials based on type or only on id of special via [filter_special]'id' or 'type'.(firststrike, berserk and swarm are exclude)
  ### Miscellaneous and Bug Fixes
 
 ## Version 1.15.13
