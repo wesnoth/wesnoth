@@ -18,6 +18,7 @@
 
 #include "log.hpp"
 #include "serialization/parser.hpp"
+#include "tls_root_store.hpp"
 
 #include <boost/asio/connect.hpp>
 #include <boost/asio/read.hpp>
@@ -162,7 +163,7 @@ void connection::handle_handshake(const boost::system::error_code& ec)
 		}
 
 		if(handshake_response_.num == 0x00000000) {
-			tls_context_.set_default_verify_paths();
+			load_tls_root_certs(tls_context_);
 			raw_socket s { std::move(utils::get<raw_socket>(socket_)) };
 			tls_socket ts { new tls_socket::element_type { std::move(*s), tls_context_ } };
 			socket_ = std::move(ts);
