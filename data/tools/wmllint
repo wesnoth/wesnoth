@@ -1072,44 +1072,7 @@ def standard_unit_filter():
 # Please note that a special note can be associated with multiple abilities
 # but any given ability can be associated with only one special note
 # Some notes are handled directly in the global_sanity_check() function
-notepairs = [
-    ("{ABILITY_HEALS}", "{NOTE_HEALS}"),
-    ("{ABILITY_EXTRA_HEAL}", "{NOTE_EXTRA_HEAL}"),
-    ("{ABILITY_UNPOISON}", "{NOTE_UNPOISON}"),
-    ("{ABILITY_CURES}", "{NOTE_CURES}"),
-    ("{ABILITY_REGENERATES}", "{NOTE_REGENERATES}"),
-    ("{ABILITY_SELF_HEAL}", "{NOTE_SELF_HEAL}"),
-    ("{ABILITY_STEADFAST}", "{NOTE_STEADFAST}"),
-    ("{ABILITY_LEADERSHIP}", "{NOTE_LEADERSHIP}"),
-    ("{ABILITY_SKIRMISHER}", "{NOTE_SKIRMISHER}"),
-    ("{ABILITY_ILLUMINATES}", "{NOTE_ILLUMINATES}"),
-    ("{ABILITY_TELEPORT}", "{NOTE_TELEPORT}"),
-    ("{ABILITY_AMBUSH}", "{NOTE_AMBUSH}"),
-    ("{ABILITY_NIGHTSTALK}", "{NOTE_NIGHTSTALK}"),
-    ("{ABILITY_CONCEALMENT}", "{NOTE_CONCEALMENT}"),
-    ("{ABILITY_SUBMERGE}", "{NOTE_SUBMERGE}"),
-    ("{ABILITY_FEEDING}", "{NOTE_FEEDING}"),
-    ("{ABILITY_INSPIRE}", "{NOTE_INSPIRE}"),
-    ("{ABILITY_INITIATIVE}", "{NOTE_INITIATIVE}"),
-    ("{ABILITY_DISTRACT}", "{NOTE_DISTRACT}"),
-    ("{ABILITY_DISENGAGE}", "{NOTE_DISENGAGE}"),
-    ("{ABILITY_FORMATION}", "{NOTE_FORMATION}"),
-    ("{WEAPON_SPECIAL_BERSERK}", "{NOTE_BERSERK}"),
-    ("{WEAPON_SPECIAL_BACKSTAB}", "{NOTE_BACKSTAB}"),
-    ("{WEAPON_SPECIAL_PLAGUE", "{NOTE_PLAGUE}"), # No } deliberately
-    ("{WEAPON_SPECIAL_SLOW}", "{NOTE_SLOW}"),
-    ("{WEAPON_SPECIAL_PETRIFY}", "{NOTE_PETRIFY}"),
-    ("{WEAPON_SPECIAL_MARKSMAN}", "{NOTE_MARKSMAN}"),
-    ("{WEAPON_SPECIAL_MAGICAL}", "{NOTE_MAGICAL}"),
-    ("{WEAPON_SPECIAL_SWARM}", "{NOTE_SWARM}"),
-    ("{WEAPON_SPECIAL_CHARGE}", "{NOTE_CHARGE}"),
-    ("{WEAPON_SPECIAL_DRAIN}", "{NOTE_DRAIN}"),
-    ("{WEAPON_SPECIAL_FIRSTSTRIKE}", "{NOTE_FIRSTSTRIKE}"),
-    ("{WEAPON_SPECIAL_POISON}", "{NOTE_POISON}"),
-    ("{WEAPON_SPECIAL_STUN}", "{NOTE_STUN}"),
-    ("{WEAPON_SPECIAL_SHOCK}", "{NOTE_SHOCK}"),
-    ("{WEAPON_SPECIAL_DAZE}", "{NOTE_DAZE}"),
-    ]
+notepairs = []
 
 # This dictionary will pair macros with the characters they recall or create,
 # but must be populated by the magic comment, "#wmllint: who ... is ...".

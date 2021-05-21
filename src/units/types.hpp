@@ -36,6 +36,7 @@ class game_config_view;
 
 typedef std::map<std::string, movetype> movement_type_map;
 
+void append_special_note(std::vector<t_string>& notes, const t_string& new_note);
 
 /**
  * A single unit type that the player may recruit.
@@ -151,7 +152,7 @@ public:
 	// translation engine upon changing the language in the same session.
 	t_string unit_description() const;
 	bool has_special_notes() const;
-	const std::vector<t_string>& special_notes() const;
+	std::vector<t_string> special_notes() const;
 	int hitpoints() const { return hitpoints_; }
 	double hp_bar_scaling() const { return hp_bar_scaling_; }
 	double xp_bar_scaling() const { return xp_bar_scaling_; }
