@@ -113,6 +113,10 @@ static void wrong_value_error(const std::string& file,
 		bool flag_exception)
 {
 	std::ostringstream ss;
+	ss << "Invalid value '";
+	if(value.length() > 128)
+		ss << value.substr(0, 128) << "...";
+	else ss << value;
 	ss << "' in key '" << key << "=' in tag [" << tag << "]\n" << " (expected value of type " << expected << ") " << at(file, line) << "\n";
 	print_output(ss.str(), flag_exception);
 }
