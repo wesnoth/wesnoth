@@ -339,6 +339,7 @@ static int handle_validate_command(const std::string& file, abstract_validator& 
 	preproc_map defines_map;
 	// add the WESNOTH_VERSION define
 	defines_map["WESNOTH_VERSION"] = preproc_define(game_config::wesnoth_version.str());
+	defines_map["SCHEMA_VALIDATION"] = preproc_define();
 	for(const std::string& define : defines) {
 		if(define.empty()) {
 			std::cerr << "empty define supplied\n";
