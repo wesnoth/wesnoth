@@ -311,8 +311,8 @@ When adding new features, keep in mind the project philosophy,
 which is that of
 <a href="https://wiki.wesnoth.org/WesnothPhilosophy">KISS</a>.
 
-The development team hangs out in the IRC channel
-<a href="https://webchat.freenode.net/?channels=wesnoth-dev">@#wesnoth-dev on irc.freenode.net</a>.
+The development team hangs out in the <a href="https://discord.gg/battleforwesnoth">official Wesnoth Discord server</a>,
+and in the IRC channel @#wesnoth-dev on irc.libera.chat.
 Feel free to join us and ask any questions you may have about our codebase!
 
 */
