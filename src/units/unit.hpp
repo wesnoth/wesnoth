@@ -449,10 +449,7 @@ public:
 	}
 
 	/** The unit's special notes. */
-	const std::vector<t_string>& unit_special_notes() const
-	{
-		return special_notes_;
-	}
+	std::vector<t_string> unit_special_notes() const;
 
 	/** The gender of this unit. */
 	unit_race::GENDER gender() const

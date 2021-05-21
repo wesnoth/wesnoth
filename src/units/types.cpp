@@ -493,11 +493,50 @@ t_string unit_type::unit_description() const
 
 bool unit_type::has_special_notes() const
 {
-	return !special_notes_.empty();
+	if(!special_notes_.empty()) return true;
+	for(const config::any_child ability : abilities_cfg().all_children_range()) {
+		if(ability.cfg.has_attribute("special_note")) {
+			return true;
+		}
+	}
+	for(const auto& attack : attacks()) {
+		for(const config::any_child ability : attack.specials().all_children_range()) {
+			if(ability.cfg.has_attribute("special_note")) {
+				return true;
+			}
+		}
+	}
+	return false;
 }
 
-const std::vector<t_string>& unit_type::special_notes() const {
-	return special_notes_;
+void append_special_note(std::vector<t_string>& notes, const t_string& new_note) {
+	if(new_note.empty()) return;
+	std::string_view note_plain = new_note.c_str();
+	utils::trim(note_plain);
+	if(note_plain.empty()) return;
+	auto iter = std::find(notes.begin(), notes.end(), new_note);
+	if(iter != notes.end()) return;
+	notes.push_back(new_note);
+}
+
+std::vector<t_string> unit_type::special_notes() const {
+	std::vector<t_string> notes;
+	for(const config::any_child ability : abilities_cfg().all_children_range()) {
+		if(ability.cfg.has_attribute("special_note")) {
+			append_special_note(notes, ability.cfg["special_note"].t_str());
+		}
+	}
+	for(const auto& attack : attacks()) {
+		for(const config::any_child ability : attack.specials().all_children_range()) {
+			if(ability.cfg.has_attribute("special_note")) {
+				append_special_note(notes, ability.cfg["special_note"].t_str());
+			}
+		}
+	}
+	for(const auto& note : special_notes_) {
+		append_special_note(notes, note);
+	}
+	return notes;
 }
 
 const std::vector<unit_animation>& unit_type::animations() const
