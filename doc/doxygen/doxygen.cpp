@@ -301,7 +301,7 @@ needs to be reviewed by other developers.
 - Submit your pull requests on <a href="https://github.com/wesnoth/wesnoth/">GitHub</a>.
 
 One way to contribute is to find an unassigned bug in the
-<a href="http://gna.org/bugs/?group=wesnoth">bug tracker</a>
+<a href="https://bugs.wesnoth.org/">bug tracker</a>
 and fix it.
 If you wish to work on something else, you should probably
 explain on the
