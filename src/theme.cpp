@@ -431,7 +431,7 @@ theme::label::label()
 
 theme::label::label(std::size_t sw, std::size_t sh, const config& cfg)
 	: object(sw, sh, cfg)
-	, text_(cfg["prefix"].str() + cfg["text"].str() + cfg["postfix"].str())
+	, text_(cfg["prefix"].str() + cfg["prefix_literal"].str() + cfg["text"].str() + cfg["postfix_literal"].str() + cfg["postfix"].str())
 	, icon_(cfg["icon"])
 	, font_(cfg["font_size"])
 	, font_rgb_set_(false)
