@@ -1,5 +1,9 @@
 #include "tls_root_store.hpp"
 
+#ifdef _WIN32
+#include <wincrypt.h>
+#endif
+
 namespace network_asio
 {
 

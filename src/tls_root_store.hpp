@@ -1,7 +1,6 @@
 #pragma once
 
 #include <boost/asio/ssl/context.hpp>
-#include <wincrypt.h>
 
 namespace network_asio
 {
