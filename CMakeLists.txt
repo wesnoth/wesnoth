@@ -5,8 +5,6 @@ project(wesnoth)
 
 include(CheckCXXCompilerFlag)
 
-set(CMAKE_ALLOW_LOOSE_LOOP_CONSTRUCTS true)
-
 # use our own version of FindBoost.cmake and other Find* scripts
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake")
 
@@ -95,7 +93,7 @@ if(NOT WIN32)
 
 		# Use the safer `mkstemp' instead of `tmpnam' on POSIX systems.
 		add_definitions(-DLUA_USE_POSIX)
-endif(NOT WIN32)
+endif()
 
 #check for some compiler/arch specific things and export defines accordingly...
 include(SearchForStuff)
@@ -106,7 +104,7 @@ include(SearchForStuff)
 if(NOT CMAKE_BUILD_TYPE)
 	set(CMAKE_BUILD_TYPE Release CACHE STRING "Choose the type of build, options are: None Debug Release Profile RelWithDebInfo MinSizeRel." FORCE)
 	message("No build type specified, defaulting to Release")
-endif(NOT CMAKE_BUILD_TYPE)
+endif()
 
 if(NOT DEFINED ENABLE_DISPLAY_REVISION)
 	# can't run the shell script on windows
@@ -145,11 +143,11 @@ option(
 
 if(UNIX AND NOT APPLE AND NOT CYGWIN)
 	option(ENABLE_DESKTOP_ENTRY "enable installation of desktop entry files" ON)
-endif(UNIX AND NOT APPLE AND NOT CYGWIN)
+endif()
 
 if(CMAKE_SYSTEM_NAME STREQUAL "Linux")
 	option(ENABLE_APPDATA_FILE "enable installation of an appdata file for appstream" ON)
-endif(CMAKE_SYSTEM_NAME STREQUAL "Linux")
+endif()
 
 option(HARDEN "Whether to enable options to harden the executables" ON)
 option(ENABLE_STRICT_COMPILATION "Sets the strict compilation mode" OFF)
@@ -162,7 +160,7 @@ option(ENABLE_POT_UPDATE_TARGET "Enables the tools to update the pot files and m
 
 if(UNIX AND NOT APPLE AND NOT CYGWIN)
 	option(ENABLE_NOTIFICATIONS "Enable Window manager notification messages" ON)
-endif(UNIX AND NOT APPLE AND NOT CYGWIN)
+endif()
 
 set(BINARY_SUFFIX "" CACHE STRING "Suffix behind all binaries")
 set(BINARY_PREFIX "" CACHE STRING "Prefix in front of all binaries")
@@ -185,7 +183,7 @@ if(NOT WIN32)
 			FORCE
 		)
 
-	endif(NOT DEFINED CXX_FLAGS_USER)
+	endif()
 
 	set(COMPILER_FLAGS "-Wall -Wextra -Werror=non-virtual-dtor -Wno-unused-local-typedefs -Wno-maybe-uninitialized -Wold-style-cast -Wtrampolines")
 
@@ -197,7 +195,7 @@ if(NOT WIN32)
 
 	if(ENABLE_STRICT_COMPILATION)
 		set(COMPILER_FLAGS "${COMPILER_FLAGS} -Werror")
-	endif(ENABLE_STRICT_COMPILATION)
+	endif()
 
 ### Set pedantic compiler flags.
 
@@ -211,7 +209,7 @@ if(NOT WIN32)
 
 		set(COMPILER_FLAGS "${COMPILER_FLAGS} ${CXX_FLAGS_PEDANTIC_COMPILATION}")
 
-	endif(ENABLE_PEDANTIC_COMPILATION)
+	endif()
 
 # check for sanitizer options
 	if(SANITIZE)
@@ -219,7 +217,7 @@ if(NOT WIN32)
 		set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -fsanitize=${SANITIZE}")
 		# manually disable some optimizations to get better stacktraces if sanitizers are used
 		set(COMPILER_FLAGS "${COMPILER_FLAGS} -fno-omit-frame-pointer -fno-optimize-sibling-calls")
-	endif(SANITIZE)
+	endif()
 
 ### Set the final compiler flags.
 
@@ -234,7 +232,7 @@ if(NOT WIN32)
 			"Global flags used by the CXX compiler during all builds."
 			FORCE
 		)
-	endif(NOT "${CMAKE_CXX_FLAGS}" STREQUAL "${COMPILER_FLAGS}")
+	endif()
 
 # #
 # Determine optimization level
@@ -250,11 +248,11 @@ if(NOT WIN32)
 		if(PROFILER STREQUAL "perf")
 			set(CMAKE_CXX_FLAGS_PROFILE "-Og")
 			set(CMAKE_C_FLAGS_PROFILE "-Og")
-		else(PROFILER STREQUAL "perf")
+		else()
 			set(CMAKE_CXX_FLAGS_PROFILE "-O0")
 			set(CMAKE_C_FLAGS_PROFILE "-O0")
-		endif(PROFILER STREQUAL "perf")
-	else(NOT OPT)
+		endif()
+	else()
 		set(CMAKE_CXX_FLAGS_RELEASE "${OPT}")
 		set(CMAKE_C_FLAGS_RELEASE "${OPT}")
 
@@ -263,7 +261,7 @@ if(NOT WIN32)
 
 		set(CMAKE_CXX_FLAGS_PROFILE "${OPT}")
 		set(CMAKE_C_FLAGS_PROFILE "${OPT}")
-	endif(NOT OPT)
+	endif()
 
 # check for hardening options
 	if(HARDEN)
@@ -279,17 +277,17 @@ if(NOT WIN32)
 		if(NOT CMAKE_CXX_FLAGS_DEBUG STREQUAL "-O0")
 			add_definitions(-D_FORTIFY_SOURCE=2)
 		endif()
-	endif(HARDEN)
+	endif()
 
 	if(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
 		set(CMAKE_EXE_LINKER_FLAGS "-lstdc++ -lm ${CMAKE_EXE_LINKER_FLAGS}")
-	endif(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+	endif()
 
 	add_definitions(-DWESNOTH_PATH="${CMAKE_INSTALL_FULL_DATADIR}/${DATADIRNAME}")
 
 	if(X11_FOUND)
 		add_definitions(-D_X11)
-	endif(X11_FOUND)
+	endif()
 
 	add_definitions(-DLOCALEDIR="${LOCALEDIR}")
 
@@ -317,7 +315,7 @@ if(NOT WIN32)
 		MESSAGE("adding -march=${ARCH} to Release build")
 		set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -march=${ARCH}" CACHE STRING "Release build flags" FORCE)
 		set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} -march=${ARCH}" CACHE STRING "Release build flags" FORCE)
-	endif(ARCH)
+	endif()
 
 # PGO and LTO for GCC
 	if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
@@ -337,7 +335,7 @@ if(NOT WIN32)
 			if(NOT LTO_JOBS)
 				MESSAGE("LTO_JOBS not set, defaulting to 1")
 				set(LTO_JOBS "1" CACHE STRING "Number of threads to use for LTO with gcc" FORCE)
-			endif(NOT LTO_JOBS)
+			endif()
 
 			MESSAGE("added -flto=${LTO_JOBS} to Release build")
 			set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -flto=${LTO_JOBS}" CACHE STRING "Release build flags with LTO" FORCE)
@@ -345,8 +343,8 @@ if(NOT WIN32)
 
 			MESSAGE("Using GCC gold linker")
 			set(CMAKE_EXE_LINKER_FLAGS_RELEASE "${CMAKE_EXE_LINKER_FLAGS_RELEASE} -fuse-ld=gold -Wno-stringop-overflow" CACHE STRING "" FORCE)
-		endif(ENABLE_LTO)
-	endif(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
+		endif()
+	endif()
 
 # PGO and LTO for Clang
 	if(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
@@ -369,8 +367,8 @@ if(NOT WIN32)
 
 			MESSAGE("Using Clang LLD linker")
 			set(CMAKE_EXE_LINKER_FLAGS_RELEASE "${CMAKE_EXE_LINKER_FLAGS_RELEASE} -fuse-ld=lld" CACHE STRING "Linker flag for building with LTO and clang" FORCE)
-		endif(ENABLE_LTO)
-	endif(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+		endif()
+	endif()
 
 # set CMAKE_AR and CMAKE_RANLIB to use LTO-enabled variants if LTO is enabled
 	if(ENABLE_LTO)
@@ -405,7 +403,7 @@ if(NOT WIN32)
 		MESSAGE("Defining _GLIBCXX_DEBUG and _GLIBCXX_DEBUG_PEDANTIC")
 		add_definitions(-D_GLIBCXX_DEBUG)
 		add_definitions(-D_GLIBCXX_DEBUG_PEDANTIC)
-	endif(GLIBCXX_DEBUG)
+	endif()
 
 # #
 # End setting options for Debug build
@@ -456,7 +454,7 @@ else()
 	RemoveFlag(CMAKE_C_FLAGS_RELWITHDEBINFO CACHE "/DNDEBUG" "Default C flags for RelWithDebInfo")
 	RemoveFlag(CMAKE_CXX_FLAGS_MINSIZEREL CACHE "/DNDEBUG" "Default C++ flags for MinSizeRel")
 	RemoveFlag(CMAKE_C_FLAGS_MINSIZEREL CACHE "/DNDEBUG" "Default C flags for MinSizeRel")
-endif(NOT WIN32)
+endif()
 
 # When the path starts with a / on a Unix system it's an absolute path.
 # This means that on Windows the path used is always relative.
@@ -472,7 +470,7 @@ add_definitions(-DFIFODIR="${FIFO_DIR}")
 
 if(PREFERENCES_DIR)
 	add_definitions(-DPREFERENCES_DIR="${PREFERENCES_DIR}")
-endif(PREFERENCES_DIR)
+endif()
 
 
 if(DEFAULT_PREFS_FILE)
@@ -480,12 +478,12 @@ if(DEFAULT_PREFS_FILE)
 
 	if(NOT DEFAULT_PREFS_FILE MATCHES "^/")
 		add_definitions(-DHAS_RELATIVE_DEFPREF)
-	endif(NOT DEFAULT_PREFS_FILE MATCHES "^/")
-endif(DEFAULT_PREFS_FILE)
+	endif()
+endif()
 
 if(ENABLE_DEBUG_WINDOW_LAYOUT)
 	add_definitions(-DDEBUG_WINDOW_LAYOUT_GRAPHS)
-endif(ENABLE_DEBUG_WINDOW_LAYOUT)
+endif()
 
 #
 # Libraries that are only required by some targets
@@ -502,20 +500,20 @@ if(ENABLE_GAME OR ENABLE_TESTS)
 	pkg_check_modules(PANGOCAIRO REQUIRED pangocairo>=1.22.0)
 # TODO: can use find_package and Fontconfig::Fontconfig with cmake 3.14+
 	pkg_check_modules(FONTCONFIG REQUIRED fontconfig>=2.4.1)
-endif(ENABLE_GAME OR ENABLE_TESTS)
+endif()
 
 if(ENABLE_TESTS)
 	find_package( Boost ${BOOST_VERSION} REQUIRED COMPONENTS unit_test_framework )
-endif(ENABLE_TESTS)
+endif()
 
 if(ENABLE_GAME)
 	if(ENABLE_NOTIFICATIONS)
 		pkg_check_modules(LIBDBUS dbus-1)
 		if(LIBDBUS_FOUND)
 			add_definitions(-DHAVE_LIBDBUS)
-		else(LIBDBUS_FOUND)
+		else()
 			message("Could not find dbus-1, Disabling notification support.")
-		endif(LIBDBUS_FOUND)
+		endif()
 	else()
 		unset(LIBDBUS_FOUND CACHE)
 	endif()
@@ -523,21 +521,21 @@ if(ENABLE_GAME)
 	find_package( History )
 	if(ENABLE_HISTORY AND HISTORY_FOUND)
 		add_definitions(-DHAVE_HISTORY)
-	else(ENABLE_HISTORY AND HISTORY_FOUND)
+	else()
 		message("Could not find GNU history. Disabling support for command history in lua console.")
-	endif(ENABLE_HISTORY AND HISTORY_FOUND)
-endif(ENABLE_GAME)
+	endif()
+endif()
 
 if(ENABLE_POT_UPDATE_TARGET)
 	find_package(TranslationTools REQUIRED)
-endif(ENABLE_POT_UPDATE_TARGET)
+endif()
 
 # get languages
 if(ENABLE_NLS)
 	file(READ po/LINGUAS LINGUAS)
 	string(REPLACE "\n" "" LINGUAS ${LINGUAS})
 	separate_arguments(LINGUAS)
-endif(ENABLE_NLS)
+endif()
 
 #
 # Include subdirectories
@@ -547,7 +545,7 @@ add_subdirectory(doc)
 
 if(GETTEXT_FOUND AND ENABLE_NLS)
 	add_subdirectory(po)
-endif (GETTEXT_FOUND AND ENABLE_NLS)
+endif()
 
 add_subdirectory(src)
 
@@ -556,12 +554,12 @@ add_subdirectory(src)
 #
 if(ENABLE_GAME)
 	install(DIRECTORY data fonts images sounds DESTINATION ${CMAKE_INSTALL_DATADIR}/${DATADIRNAME} USE_SOURCE_PERMISSIONS PATTERN ".git" EXCLUDE )
-endif(ENABLE_GAME)
+endif()
 
 # install file for add-ons server
 if(ENABLE_CAMPAIGN_SERVER AND NOT ENABLE_GAME)
 	install(FILES data/COPYING.txt DESTINATION ${CMAKE_INSTALL_DATADIR}/${DATADIRNAME}/data)
-endif(ENABLE_CAMPAIGN_SERVER AND NOT ENABLE_GAME)
+endif()
 
 #
 # Install desktop file so wesnoth appears in the application start menu with an icon
@@ -569,11 +567,11 @@ endif(ENABLE_CAMPAIGN_SERVER AND NOT ENABLE_GAME)
 if(ENABLE_DESKTOP_ENTRY AND ENABLE_GAME)
 	install(FILES packaging/org.wesnoth.Wesnoth.desktop DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/applications )
 	install(DIRECTORY packaging/icons/hicolor packaging/icons/HighContrast DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/icons )
-endif(ENABLE_DESKTOP_ENTRY AND ENABLE_GAME)
+endif()
 
 if(ENABLE_APPDATA_FILE AND ENABLE_GAME)
 	install(FILES packaging/org.wesnoth.Wesnoth.appdata.xml DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/metainfo )
-endif(ENABLE_APPDATA_FILE AND ENABLE_GAME)
+endif()
 
 if(ENABLE_SERVER AND FIFO_DIR)
 	install(CODE "execute_process(COMMAND ${CMAKE_COMMAND} -E make_directory \$ENV{DESTDIR}/${FIFO_DIR})")
