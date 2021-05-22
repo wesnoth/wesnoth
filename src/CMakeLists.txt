@@ -39,7 +39,7 @@ link_directories(
 
 set(common-external-libs ${ICU_DATA_LIBRARY} ${ICU_I18N_LIBRARY} ${ICU_UC_LIBRARY})
 if(WIN32)
-	set(common-external-libs ${common-external-libs} shlwapi.lib winmm.lib)
+	set(common-external-libs ${common-external-libs} shlwapi.lib winmm.lib crypt32.lib)
 endif(WIN32)
 
 set(game-external-libs
