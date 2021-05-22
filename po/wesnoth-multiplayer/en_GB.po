@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2021-05-16 02:06 UTC\n"
-"PO-Revision-Date: 2021-01-26 10:36+1100\n"
+"PO-Revision-Date: 2021-05-17 09:48+1000\n"
 "Last-Translator: Wedge009 <wedge009@wedge009.net>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
 "EnglishGBTranslation>\n"
@@ -107,58 +107,50 @@ msgstr ""
 #. [lua]: f
 #. In the end-of-match summary, a side which has no units left and therefore lost. In English the loss is shown by displaying it with the text struck through.
 #: data/multiplayer/eras.lua:53
-#, fuzzy
-#| msgid "<span strikethrough='true' foreground='#%02x%02x%02x'>Side %d</span>"
 msgid ""
 "<span strikethrough='true' foreground='$side_color'>Side $side_number</"
 "span>:  Has lost all units"
-msgstr "<span strikethrough='true' foreground='#%02x%02x%02x'>Side %d</span>"
+msgstr ""
+"<span strikethrough='true' foreground='$side_color'>Side $side_number</"
+"span>: Has lost all units"
 
 #. [lua]: f
 #. In the end-of-match summary, any side that still has units left
 #: data/multiplayer/eras.lua:69
-#, fuzzy
-#| msgid ""
-#| "<span foreground='#%02x%02x%02x'>Side %d</span>:  Income score = %d  Unit "
-#| "score = %d  Gold = %d"
 msgid ""
 "<span foreground='$side_color'>Side $side_number</span>:  Income score = "
 "$income  Unit score = $units  Gold = $gold\n"
 "Grand total: <b>$total</b>"
 msgstr ""
-"<span foreground='#%02x%02x%02x'>Side %d</span>:  Income score = %d  Unit "
-"score = %d  Gold = %d"
+"<span foreground='$side_color'>Side $side_number</span>: Income score = "
+"$income Unit score = $units Gold = $gold\n"
+"Grand total: <b>$total</b>"
 
 #. [lua]: f
 #. In the end-of-match summary, there's a single side that's won.
 #: data/multiplayer/eras.lua:86
-#, fuzzy
-#| msgid "<span foreground='%s'>Side %d</span> has the advantage."
 msgid ""
 "<span foreground='$side_color'>Side $side_number</span> has the advantage."
-msgstr "<span foreground='%s'>Side %d</span> has the advantage."
+msgstr ""
+"<span foreground='$side_color'>Side $side_number</span> has the advantage."
 
 #. [lua]: f
 #. In the end-of-match summary, there's a two-way tie (this is only used for exactly two winning teams)
 #: data/multiplayer/eras.lua:91
-#, fuzzy
-#| msgid "Sides %s and %d are tied."
 msgid "Sides $side_number and $other_side_number are tied."
-msgstr "Sides %s and %d are tied."
+msgstr "Sides $side_number and $other_side_number are tied."
 
 #. [lua]: f
 #. In the end-of-match summary, three or more teams have all tied for the best score. $winners contains the result of formatting the conjunct list.
 #: data/multiplayer/eras.lua:96
-#, fuzzy
-#| msgid "Sides %s and %d are tied."
 msgid "Sides $winners are tied."
-msgstr "Sides %s and %d are tied."
+msgstr "Sides $winners are tied."
 
 #. [lua]: f
 #. "Turns Over", meaning "turn limit reached" is the title of the end-of-match summary dialog
 #: data/multiplayer/eras.lua:100
 msgid "dialog^Turns Over"
-msgstr ""
+msgstr "Turns Over"
 
 #. [multiplayer_side]: id=Drakes, type=random
 #: data/multiplayer/factions/drakes-aoh.cfg:4
