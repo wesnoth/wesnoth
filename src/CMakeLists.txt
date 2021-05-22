@@ -40,9 +40,9 @@ link_directories(
 set(common-external-libs ${ICU_DATA_LIBRARY} ${ICU_I18N_LIBRARY} ${ICU_UC_LIBRARY})
 if(WIN32)
 	set(common-external-libs ${common-external-libs} shlwapi.lib winmm.lib crypt32.lib)
-endif()
-
-if(APPLE)
+elseif(MINGW)
+	set(common-external-libs ${common-external-libs} wsock32 ws2_32 shlwapi winmm)
+elseif(APPLE)
 	set(common-external-libs ${common-external-libs} ${IOKIT_LIBRARY} ${SECURITY_LIBRARY})
 endif()
 
@@ -59,20 +59,6 @@ set(game-external-libs
 
 if(ENABLE_HISTORY AND HISTORY_FOUND)
 	set(game-external-libs ${game-external-libs} ${HISTORY_LIBRARY})
-endif()
-
-set(server-external-libs
-	${common-external-libs}
-	${MYSQL_LIBS}
-)
-
-if(NOT WIN32)
-	set(server-external-libs ${server-external-libs} -lpthread)
-endif()
-
-if(MINGW)
-	set(server-external-libs ${server-external-libs} wsock32 ws2_32 shlwapi winmm)
-	set(game-external-libs ${game-external-libs} wsock32 ws2_32 shlwapi winmm)
 endif()
 
 # get source lists
@@ -254,7 +240,8 @@ if(ENABLE_SERVER)
 
 	target_link_libraries(wesnothd
 		wesnoth-common
-		${server-external-libs}
+		-lpthread
+		${MYSQL_LIBS}
 		OpenSSL::Crypto
 		OpenSSL::SSL
 		Boost::iostreams
@@ -295,7 +282,8 @@ if(ENABLE_CAMPAIGN_SERVER)
 	target_link_libraries(
 		campaignd
 		wesnoth-common
-		${server-external-libs}
+		-lpthread
+		${MYSQL_LIBS}
 		OpenSSL::Crypto
 		OpenSSL::SSL
 		Boost::iostreams
