@@ -61,7 +61,6 @@ end
 
 function ai_helper.done_eval_messages(start_time, ca_name)
     ca_name = ca_name or 'unknown'
-    local dt = wesnoth.ms_since_init() / 1000. - start_time
     if ai_helper.print_eval() then
         ai_helper.print_ts_delta(start_time, '       - Done evaluating ' .. ca_name .. ':')
     end
