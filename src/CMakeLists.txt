@@ -57,7 +57,7 @@ set(game-external-libs
 	${VORBISFILE_LIBRARIES}
 )
 
-if(ENABLE_HISTORY AND HISTORY_FOUND)
+if(HISTORY_FOUND)
 	set(game-external-libs ${game-external-libs} ${HISTORY_LIBRARY})
 endif()
 

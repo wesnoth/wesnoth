@@ -50,7 +50,6 @@ option(ENABLE_SERVER "Enable compilation of MP server" ON)
 option(ENABLE_MYSQL "Enable building MP/add-ons servers with mysql support" OFF)
 option(ENABLE_TESTS "Build unit tests")
 option(ENABLE_NLS "Enable building of translations" ${ENABLE_GAME})
-option(ENABLE_HISTORY "Enable using GNU history for history in lua console" ON)
 
 set(BOOST_VERSION "1.66")
 
@@ -518,11 +517,9 @@ if(ENABLE_GAME)
 		unset(LIBDBUS_FOUND CACHE)
 	endif()
 
-	find_package( History )
-	if(ENABLE_HISTORY AND HISTORY_FOUND)
+	find_package(History)
+	if(HISTORY_FOUND)
 		add_definitions(-DHAVE_HISTORY)
-	else()
-		message("Could not find GNU history. Disabling support for command history in lua console.")
 	endif()
 endif()
 
