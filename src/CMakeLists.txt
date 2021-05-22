@@ -67,7 +67,7 @@ if(NOT WIN32)
 endif(NOT WIN32)
 
 if(APPLE)
-	set(game-external-libs ${game-external-libs} "-framework IOKit")
+	set(game-external-libs ${game-external-libs} ${IOKIT_LIBRARY} ${SECURITY_LIBRARY})
 endif(APPLE)
 
 if(MINGW)

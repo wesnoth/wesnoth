@@ -66,12 +66,12 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 # forbid defaulting to gnu++NN instead of c++NN
 set(CMAKE_CXX_EXTENSIONS OFF)
 
-if(NOT APPLE)
-	find_package(OpenSSL 1.0 REQUIRED)
-else()
-	set(OPENSSL_CRYPTO_LIBRARY "-framework Security")
+find_package(OpenSSL 1.0 REQUIRED)
+
+if(APPLE)
+	find_library(IOKIT_LIBRARY IOKit REQUIRED)
+	find_library(SECURITY_LIBRARY Security REQUIRED)
 endif()
-find_package(OpenSSL REQUIRED)
 
 find_package(Boost ${BOOST_VERSION} REQUIRED COMPONENTS iostreams program_options regex system thread random coroutine locale filesystem)
 find_package(ICU REQUIRED COMPONENTS data i18n uc)
