@@ -240,7 +240,6 @@ if(ENABLE_SERVER)
 
 	target_link_libraries(wesnothd
 		wesnoth-common
-		-lpthread
 		${MYSQL_LIBS}
 		OpenSSL::Crypto
 		OpenSSL::SSL
@@ -282,7 +281,6 @@ if(ENABLE_CAMPAIGN_SERVER)
 	target_link_libraries(
 		campaignd
 		wesnoth-common
-		-lpthread
 		${MYSQL_LIBS}
 		OpenSSL::Crypto
 		OpenSSL::SSL
