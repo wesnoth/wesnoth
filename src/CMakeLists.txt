@@ -42,6 +42,10 @@ if(WIN32)
 	set(common-external-libs ${common-external-libs} shlwapi.lib winmm.lib crypt32.lib)
 endif(WIN32)
 
+if(APPLE)
+	set(common-external-libs ${common-external-libs} ${IOKIT_LIBRARY} ${SECURITY_LIBRARY})
+endif(APPLE)
+
 set(game-external-libs
 	${common-external-libs}
 	${SDL2_LIBRARY}
@@ -65,10 +69,6 @@ set(server-external-libs
 if(NOT WIN32)
 	set(server-external-libs ${server-external-libs} -lpthread)
 endif(NOT WIN32)
-
-if(APPLE)
-	set(game-external-libs ${game-external-libs} ${IOKIT_LIBRARY} ${SECURITY_LIBRARY})
-endif(APPLE)
 
 if(MINGW)
 	set(server-external-libs ${server-external-libs} wsock32 ws2_32 shlwapi winmm)
