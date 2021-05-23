@@ -9,6 +9,7 @@
  ### Translations
    * Updated translations: British English
  ### Units
+   * Added missing Seahorse graphics
  ### User interface
  ### WML Engine
  ### Miscellaneous and Bug Fixes
