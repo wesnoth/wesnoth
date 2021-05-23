@@ -128,14 +128,8 @@ public:
 		error(const std::string& message) : game::error(message) {}
 	};
 
-	/** Create a random string of digits for password encryption. */
-	std::string create_unsecure_nonce(int length = 8);
-	std::string create_secure_nonce();
-
 	/**
 	 * Create custom salt.
-	 *
-	 * If not needed let it return and empty string or whatever you feel like.
 	 */
 	virtual std::string extract_salt(const std::string& username) = 0;
 

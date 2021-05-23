@@ -37,11 +37,11 @@ public:
 	 *
 	 * @param name The username used to login.
 	 * @param password The hashed password sent by the client.
-	 * @param seed The nonce created for this login attempt.
+	 * @param nonce The nonce created for this login attempt.
 	 *             @see server::send_password_request().
 	 * @return Whether the hashed password sent by the client matches the hash retrieved from the phpbb database.
 	 */
-	bool login(const std::string& name, const std::string& password, const std::string& seed);
+	bool login(const std::string& name, const std::string& password, const std::string& nonce);
 
 	/**
 	 * Needed because the hashing algorithm used by phpbb requires some info
@@ -270,7 +270,7 @@ private:
 	 * @param user The player's username.
 	 * @return The player's hashed password from the phpbb forum database.
 	 */
-	std::string get_hash(const std::string& user);
+	std::string get_hashed_password_from_db(const std::string& user);
 
 	/**
 	 * @param user The player's username.
