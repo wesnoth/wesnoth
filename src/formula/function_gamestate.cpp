@@ -21,6 +21,9 @@
 #include "pathutils.hpp"
 #include "units/types.hpp"
 #include "units/unit.hpp"
+#include "play_controller.hpp"
+#include "tod_manager.hpp"
+#include "resources.hpp"
 
 namespace wfl {
 
@@ -394,6 +397,52 @@ DEFINE_WFL_FUNCTION(resistance_on, 3, 4)
 	return variant();
 }
 
+DEFINE_WFL_FUNCTION(tod_bonus, 0, 2)
+{
+	map_location loc;
+	int turn = resources::controller->turn();
+	if(args().size() > 0) {
+		variant loc_arg = args()[0]->evaluate(variables, add_debug_info(fdb, 0, "tod_bonus:loc"));
+		if(auto p = loc_arg.try_convert<location_callable>()) {
+			loc = p->loc();
+		} else return variant();
+
+		if(args().size() > 1) {
+			variant turn_arg = args()[1]->evaluate(variables, add_debug_info(fdb, 0, "tod_bonus:turn"));
+			if(turn_arg.is_int()) {
+				turn = turn_arg.as_int();
+			} else if(!turn_arg.is_null()) {
+				return variant();
+			}
+		}
+	}
+	int bonus = resources::tod_manager->get_illuminated_time_of_day(resources::gameboard->units(), resources::gameboard->map(), loc, turn).lawful_bonus;
+	return variant(bonus);
+}
+
+DEFINE_WFL_FUNCTION(base_tod_bonus, 0, 2)
+{
+	map_location loc;
+	int turn = resources::controller->turn();
+	if(args().size() > 0) {
+		variant loc_arg = args()[0]->evaluate(variables, add_debug_info(fdb, 0, "tod_bonus:loc"));
+		if(auto p = loc_arg.try_convert<location_callable>()) {
+			loc = p->loc();
+		} else return variant();
+
+		if(args().size() > 1) {
+			variant turn_arg = args()[1]->evaluate(variables, add_debug_info(fdb, 0, "tod_bonus:turn"));
+			if(turn_arg.is_int()) {
+				turn = turn_arg.as_int();
+			} else if(!turn_arg.is_null()) {
+				return variant();
+			}
+		}
+	}
+	int bonus = resources::tod_manager->get_time_of_day(loc, turn).lawful_bonus;
+	return variant(bonus);
+}
+
 } // namespace gamestate
 
 gamestate_function_symbol_table::gamestate_function_symbol_table(std::shared_ptr<function_symbol_table> parent) : function_symbol_table(parent) {
@@ -410,6 +459,8 @@ gamestate_function_symbol_table::gamestate_function_symbol_table(std::shared_ptr
 	DECLARE_WFL_FUNCTION(adjacent_locs); // This is deliberately duplicated here; this form excludes off-map locations, while the core form does not
 	DECLARE_WFL_FUNCTION(locations_in_radius);
 	DECLARE_WFL_FUNCTION(enemy_of);
+	DECLARE_WFL_FUNCTION(tod_bonus);
+	DECLARE_WFL_FUNCTION(base_tod_bonus);
 }
 
 }
