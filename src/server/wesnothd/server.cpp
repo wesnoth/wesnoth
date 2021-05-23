@@ -22,7 +22,6 @@
 #include "config.hpp"
 #include "filesystem.hpp"
 #include "game_config.hpp"
-#include "hash.hpp"
 #include "log.hpp"
 #include "multiplayer_error_codes.hpp"
 #include "serialization/parser.hpp"
@@ -60,7 +59,6 @@
 #include <queue>
 #include <set>
 #include <sstream>
-#include <string>
 #include <vector>
 
 static lg::log_domain log_server("server");
@@ -889,7 +887,16 @@ template<class SocketPtr> bool server::authenticate(
 	registered = false;
 
 	if(user_handler_) {
-		const auto [hashed_password, nonce] = hash_password(password, username, socket);
+		const std::string salt = user_handler_->extract_salt(username);
+		if(salt.empty()) {
+			async_send_error(socket,
+				"Even though your nickname is registered on this server you "
+				"cannot log in due to an error in the hashing algorithm. "
+				"Logging into your forum account on https://forums.wesnoth.org "
+				"may fix this problem.");
+			return false;
+		}
+		const auto [hashed_password, nonce] = hash_password(password, salt, username);
 		const bool exists = user_handler_->user_exists(username);
 
 		// This name is registered but the account is not active
@@ -978,77 +985,6 @@ template<class SocketPtr> bool server::authenticate(
 	}
 
 	return true;
-}
-
-template<class SocketPtr> std::pair<std::string, std::string> server::hash_password(const std::string& pw, const std::string& user, SocketPtr socket)
-{
-	std::string plain_salt = user_handler_->extract_salt(user);
-	std::string password = pw;
-
-	// If using crypt_blowfish, use 32 random Base64 characters, cryptographic-strength, 192 bits entropy
-	// else (phppass, MD5, $H$), use 8 random integer digits, not secure, do not use, this is crap, 29.8 bits entropy
-	std::string nonce{(plain_salt[1] == '2')
-		? user_handler_->create_secure_nonce()
-		: user_handler_->create_unsecure_nonce()};
-
-	std::string salt = plain_salt + nonce;
-	if(salt.empty()) {
-		async_send_error(socket,
-			"Even though your nickname is registered on this server you "
-			"cannot log in due to an error in the hashing algorithm. "
-			"Logging into your forum account on https://forums.wesnoth.org "
-			"may fix this problem.");
-		return std::make_pair("", "");
-	}
-
-	// Apparently HTML key-characters are passed to the hashing functions of phpbb in this escaped form.
-	// I will do closer investigations on this, for now let's just hope these are all of them.
-
-	// Note: we must obviously replace '&' first, I wasted some time before I figured that out... :)
-	for(std::string::size_type pos = 0; (pos = password.find('&', pos)) != std::string::npos; ++pos) {
-		password.replace(pos, 1, "&amp;");
-	}
-	for(std::string::size_type pos = 0; (pos = password.find('\"', pos)) != std::string::npos; ++pos) {
-		password.replace(pos, 1, "&quot;");
-	}
-	for(std::string::size_type pos = 0; (pos = password.find('<', pos)) != std::string::npos; ++pos) {
-		password.replace(pos, 1, "&lt;");
-	}
-	for(std::string::size_type pos = 0; (pos = password.find('>', pos)) != std::string::npos; ++pos) {
-		password.replace(pos, 1, "&gt;");
-	}
-
-	if(salt.length() < 12) {
-		ERR_SERVER << "Bad salt found for user: " << user << std::endl;
-		return std::make_pair("", "");
-	}
-
-	if(utils::md5::is_valid_prefix(salt)) {
-		std::string md5_1 = utils::md5(password, utils::md5::get_salt(salt), utils::md5::get_iteration_count(salt)).base64_digest();
-		std::string md5_2 = utils::md5(md5_1, salt.substr(12, 8)).base64_digest();
-		return std::make_pair(md5_2, nonce);
-	} else if(utils::bcrypt::is_valid_prefix(salt)) {
-		try {
-			auto bcrypt_salt = utils::bcrypt::from_salted_salt(salt);
-			auto hash = utils::bcrypt::hash_pw(password, bcrypt_salt);
-
-			const std::string outer_salt = salt.substr(bcrypt_salt.iteration_count_delim_pos + 23);
-			if(outer_salt.size() != 32) {
-				throw utils::hash_error("salt wrong size");
-			}
-
-			return std::make_pair(
-				utils::md5(hash.base64_digest(), outer_salt).base64_digest(),
-				nonce
-			);
-		} catch(const utils::hash_error& err) {
-			ERR_SERVER << "bcrypt hash failed: " << err.what() << std::endl;
-			return std::make_pair("", "");
-		}
-	} else {
-		ERR_SERVER << "Unable to determine how to hash the password for user: " << user << std::endl;
-		return std::make_pair("", "");
-	}
 }
 
 template<class SocketPtr> void server::send_password_request(SocketPtr socket,

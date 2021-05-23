@@ -14,9 +14,13 @@
 
 #include "server/common/server_base.hpp"
 
+#include "config.hpp"
+#include "hash.hpp"
 #include "log.hpp"
 #include "serialization/parser.hpp"
+#include "serialization/base64.hpp"
 #include "filesystem.hpp"
+#include "random.hpp"
 
 #ifdef HAVE_CONFIG_H
 #include "config.h"
@@ -38,8 +42,19 @@
 #endif
 #include <boost/asio/write.hpp>
 
+#include <array>
+#include <ctime>
 #include <functional>
 #include <queue>
+#include <sstream>
+#include <string>
+
+#ifndef __APPLE__
+#include <openssl/rand.h>
+#else
+#include <cstdlib>
+#endif
+
 
 static lg::log_domain log_server("server");
 #define ERR_SERVER LOG_STREAM(err, log_server)
@@ -569,6 +584,106 @@ void server_base::load_tls_config(const config& cfg)
 	tls_context_.use_certificate_chain_file(cfg["tls_fullchain"].str());
 	tls_context_.use_private_key_file(cfg["tls_private_key"].str(), boost::asio::ssl::context::pem);
 	if(!cfg["tls_dh"].str().empty()) tls_context_.use_tmp_dh_file(cfg["tls_dh"].str());
+}
+
+std::string server_base::create_unsecure_nonce(int length)
+{
+	srand(static_cast<unsigned>(std::time(nullptr)));
+
+	std::stringstream ss;
+
+	for(int i = 0; i < length; i++) {
+		ss << randomness::rng::default_instance().get_random_int(0, 9);
+	}
+
+	return ss.str();
+}
+
+#ifndef __APPLE__
+namespace
+{
+class RAND_bytes_exception : public std::exception
+{
+};
+} // namespace
+#endif
+
+std::string server_base::create_secure_nonce()
+{
+	// Must be full base64 encodings (3 bytes = 4 chars) else we skew the PRNG results
+	std::array<unsigned char, (3 * 32) / 4> buf;
+
+#ifndef __APPLE__
+	if(!RAND_bytes(buf.data(), buf.size())) {
+		throw RAND_bytes_exception();
+	}
+#else
+	arc4random_buf(buf.data(), buf.size());
+#endif
+
+	return base64::encode({buf.data(), buf.size()});
+}
+
+std::pair<std::string, std::string> server_base::hash_password(const std::string& pw, const std::string& plain_salt, const std::string& username)
+{
+	std::string password = pw;
+
+	// if using crypt_blowfish hashing, create a properly secure nonce
+	// otherwise if using MD5 hashing, create an insecure nonce
+	std::string nonce{(plain_salt.length() > 1 && plain_salt[1] == '2')
+		? create_secure_nonce()
+		: create_unsecure_nonce()};
+
+	std::string salt = plain_salt + nonce;
+
+	// Apparently HTML key-characters are passed to the hashing functions of phpbb in this escaped form.
+	// I will do closer investigations on this, for now let's just hope these are all of them.
+
+	// Note: we must obviously replace '&' first, I wasted some time before I figured that out... :)
+	for(std::string::size_type pos = 0; (pos = password.find('&', pos)) != std::string::npos; ++pos) {
+		password.replace(pos, 1, "&amp;");
+	}
+	for(std::string::size_type pos = 0; (pos = password.find('\"', pos)) != std::string::npos; ++pos) {
+		password.replace(pos, 1, "&quot;");
+	}
+	for(std::string::size_type pos = 0; (pos = password.find('<', pos)) != std::string::npos; ++pos) {
+		password.replace(pos, 1, "&lt;");
+	}
+	for(std::string::size_type pos = 0; (pos = password.find('>', pos)) != std::string::npos; ++pos) {
+		password.replace(pos, 1, "&gt;");
+	}
+
+	if(salt.length() < 12) {
+		ERR_SERVER << "Bad salt found for user: " << username << std::endl;
+		return std::make_pair("", "");
+	}
+
+	if(utils::md5::is_valid_prefix(salt)) {
+		std::string md5_1 = utils::md5(password, utils::md5::get_salt(salt), utils::md5::get_iteration_count(salt)).base64_digest();
+		std::string md5_2 = utils::md5(md5_1, salt.substr(12, 8)).base64_digest();
+		return std::make_pair(md5_2, nonce);
+	} else if(utils::bcrypt::is_valid_prefix(salt)) {
+		try {
+			auto bcrypt_salt = utils::bcrypt::from_salted_salt(salt);
+			auto hash = utils::bcrypt::hash_pw(password, bcrypt_salt);
+
+			const std::string outer_salt = salt.substr(bcrypt_salt.iteration_count_delim_pos + 23);
+			if(outer_salt.size() != 32) {
+				throw utils::hash_error("salt wrong size");
+			}
+
+			return std::make_pair(
+				utils::md5(hash.base64_digest(), outer_salt).base64_digest(),
+				nonce
+			);
+		} catch(const utils::hash_error& err) {
+			ERR_SERVER << "bcrypt hash failed for user " << username << ": " << err.what() << std::endl;
+			return std::make_pair("", "");
+		}
+	} else {
+		ERR_SERVER << "Unable to determine how to hash the password for user: " << username << std::endl;
+		return std::make_pair("", "");
+	}
 }
 
 // This is just here to get it to build without the deprecation_message function

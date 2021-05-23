@@ -58,15 +58,6 @@ private:
 	void handle_join_game(player_iterator player, simple_wml::node& join);
 	void disconnect_player(player_iterator player);
 	void remove_player(player_iterator player);
-	/**
-	 * Handles hashing the password provided by the player before comparing it to the hashed password in the forum database.
-	 *
-	 * @param pw The plaintext password.
-	 * @param user The player attempting to log in.
-	 * @param socket The socket the player is connected with.
-	 * @return The hashed password, or empty if the password couldn't be hashed.
-	 */
-	template<class SocketPtr> std::pair<std::string, std::string> hash_password(const std::string& pw, const std::string& user, SocketPtr socket);
 
 public:
 	template<class SocketPtr> void send_server_message(SocketPtr socket, const std::string& message, const std::string& type);
