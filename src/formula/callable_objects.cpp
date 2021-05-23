@@ -26,7 +26,9 @@
 #include "log.hpp"
 #include "recall_list_manager.hpp"
 #include "deprecation.hpp"
-#include "version.hpp"
+#include "game_board.hpp"
+#include "game_version.hpp"
+#include "resources.hpp"
 
 static lg::log_domain log_scripting_formula("scripting/formula");
 #define LOG_SF LOG_STREAM(info, log_scripting_formula)
@@ -187,6 +189,11 @@ variant unit_callable::get_value(const std::string& key) const
 		}
 
 		return variant(std::make_shared<location_callable>(loc_));
+	} else if(key == "terrain") {
+		if(loc_ == map_location::null_location()) {
+			return variant();
+		}
+		return variant(std::make_shared<terrain_callable>(*resources::gameboard, loc_));
 	} else if(key == "id") {
 		return variant(u_.id());
 	} else if(key == "type") {
@@ -319,6 +326,7 @@ void unit_callable::get_inputs(formula_input_vector& inputs) const
 	add_input(inputs, "x");
 	add_input(inputs, "y");
 	add_input(inputs, "loc");
+	add_input(inputs, "terrain");
 	add_input(inputs, "id");
 	add_input(inputs, "type");
 	add_input(inputs, "name");
