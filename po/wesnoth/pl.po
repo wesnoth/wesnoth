@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-05-15 22:06-0400\n"
+"POT-Creation-Date: 2021-05-22 22:21-0400\n"
 "PO-Revision-Date: 2020-11-24 13:08+0100\n"
 "Last-Translator: Piotr Makarewicz <sxpgch@gmail.com>\n"
 "Language-Team: none\n"
@@ -7320,7 +7320,9 @@ msgid "Debug layers from terrain under the mouse."
 msgstr "Debuguj warstwy terenu pod wskaźnikiem myszy."
 
 #: src/menu_events.cpp:1246
-msgid "Show fps (Frames Per Second)."
+#, fuzzy
+#| msgid "Show fps (Frames Per Second)."
+msgid "Display and log fps (Frames Per Second)."
 msgstr "Pokazuj fps (klatki na sekundę)"
 
 #: src/menu_events.cpp:1248
@@ -8700,7 +8702,7 @@ msgstr "$year Przed Updatkiem"
 msgid "$year AF"
 msgstr "$year Po Upadku"
 
-#: src/wesnothd_connection.cpp:422
+#: src/wesnothd_connection.cpp:496
 msgid "Disconnected from server."
 msgstr "Rozłączono z serwerem"
 

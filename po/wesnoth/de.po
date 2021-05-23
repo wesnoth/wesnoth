@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.14\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-05-15 22:06-0400\n"
+"POT-Creation-Date: 2021-05-22 22:21-0400\n"
 "PO-Revision-Date: 2020-11-23 01:13+0100\n"
 "Last-Translator: Aaron Winter <winter.aaron93@gmail.com>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
@@ -7461,7 +7461,9 @@ msgid "Debug layers from terrain under the mouse."
 msgstr "Ebenen des Geländes unter der Maus auf Fehler testen."
 
 #: src/menu_events.cpp:1246
-msgid "Show fps (Frames Per Second)."
+#, fuzzy
+#| msgid "Show fps (Frames Per Second)."
+msgid "Display and log fps (Frames Per Second)."
 msgstr "FPS anzeigen (Frames pro Sekunde)."
 
 #: src/menu_events.cpp:1248
@@ -8916,7 +8918,7 @@ msgstr "$year BF"
 msgid "$year AF"
 msgstr "$year NF"
 
-#: src/wesnothd_connection.cpp:422
+#: src/wesnothd_connection.cpp:496
 msgid "Disconnected from server."
 msgstr "Verbindung zum Server getrennt."
 

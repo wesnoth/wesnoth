@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-05-15 22:06-0400\n"
+"POT-Creation-Date: 2021-05-22 22:21-0400\n"
 "PO-Revision-Date: 2018-05-06 10:17+0000\n"
 "Last-Translator: RatArmy <broadbarredfirefish@gmail.com>, 2020\n"
 "Language-Team: Japanese (https://www.transifex.com/wesnoth-jp/teams/60513/"
@@ -7233,7 +7233,9 @@ msgid "Debug layers from terrain under the mouse."
 msgstr "マウス下の地形レイヤーをデバッグします。"
 
 #: src/menu_events.cpp:1246
-msgid "Show fps (Frames Per Second)."
+#, fuzzy
+#| msgid "Show fps (Frames Per Second)."
+msgid "Display and log fps (Frames Per Second)."
 msgstr "fps を表示する。"
 
 #: src/menu_events.cpp:1248
@@ -8593,7 +8595,7 @@ msgstr "$year BF"
 msgid "$year AF"
 msgstr "$year AF"
 
-#: src/wesnothd_connection.cpp:422
+#: src/wesnothd_connection.cpp:496
 msgid "Disconnected from server."
 msgstr "サーバから切断されました。"
 

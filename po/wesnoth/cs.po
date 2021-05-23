@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-05-15 22:06-0400\n"
+"POT-Creation-Date: 2021-05-22 22:21-0400\n"
 "PO-Revision-Date: 2021-05-05 23:46+0200\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
@@ -7291,7 +7291,9 @@ msgid "Debug layers from terrain under the mouse."
 msgstr "Ladí terénní vrstvy pod myší."
 
 #: src/menu_events.cpp:1246
-msgid "Show fps (Frames Per Second)."
+#, fuzzy
+#| msgid "Show fps (Frames Per Second)."
+msgid "Display and log fps (Frames Per Second)."
 msgstr "Zobrazit FPS (snímky za sekundu)."
 
 #: src/menu_events.cpp:1248
@@ -8691,7 +8693,7 @@ msgstr "$year př. P."
 msgid "$year AF"
 msgstr "$year po P."
 
-#: src/wesnothd_connection.cpp:422
+#: src/wesnothd_connection.cpp:496
 msgid "Disconnected from server."
 msgstr "Odpojen od serveru."
 

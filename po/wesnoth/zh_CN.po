@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.14\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-05-15 22:06-0400\n"
+"POT-Creation-Date: 2021-05-22 22:21-0400\n"
 "PO-Revision-Date: 2020-08-10 20:09+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
@@ -7465,7 +7465,9 @@ msgid "Debug layers from terrain under the mouse."
 msgstr "调试鼠标所指向的地形中的各层。"
 
 #: src/menu_events.cpp:1246
-msgid "Show fps (Frames Per Second)."
+#, fuzzy
+#| msgid "Show fps (Frames Per Second)."
+msgid "Display and log fps (Frames Per Second)."
 msgstr "显示FPS（每秒帧数）。"
 
 #: src/menu_events.cpp:1248
@@ -8804,7 +8806,7 @@ msgstr "崩前$year|年"
 msgid "$year AF"
 msgstr "崩后$year|年"
 
-#: src/wesnothd_connection.cpp:422
+#: src/wesnothd_connection.cpp:496
 msgid "Disconnected from server."
 msgstr "已与服务器断开链接。"
 

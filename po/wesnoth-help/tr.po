@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-help\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-05-15 22:06-0400\n"
+"POT-Creation-Date: 2021-05-22 22:21-0400\n"
 "PO-Revision-Date: 2021-02-16 16:50+0300\n"
 "Last-Translator: Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>\n"
 "Language-Team: Turkish\n"
@@ -366,13 +366,13 @@ msgstr "Harita ve Senaryo Düzenleyici"
 
 #. [section]: id=editor_mode_terrain
 #. [topic]: id=..editor_mode_terrain
-#: data/core/editor/help.cfg:13 data/core/editor/help.cfg:257
+#: data/core/editor/help.cfg:13 data/core/editor/help.cfg:255
 msgid "Terrain Editor"
 msgstr "Arazi Düzenleyici"
 
 #. [section]: id=editor_mode_scenario
 #. [topic]: id=..editor_mode_scenario
-#: data/core/editor/help.cfg:20 data/core/editor/help.cfg:269
+#: data/core/editor/help.cfg:20 data/core/editor/help.cfg:267
 msgid "Scenario Editor"
 msgstr "Senaryo Düzenleyici"
 
@@ -844,6 +844,40 @@ msgstr "Harita / Senaryo Düzenleyici"
 
 #. [topic]: id=..editor
 #: data/core/editor/help.cfg:224
+#, fuzzy
+#| msgid ""
+#| "Wesnoth’s Map and Scenario Editor allows users to create and edit the "
+#| "maps on which every Wesnoth scenario takes place. It also provides a "
+#| "limited set of features for setting up a basic scenario.\n"
+#| "\n"
+#| "The editor can be launched from the <italic>text='Map Editor'</italic> "
+#| "option at the title screen.\n"
+#| "\n"
+#| "<header>text='Editing Modes'</header>\n"
+#| "\n"
+#| "The editor features two modes of operation: terrain mode and scenario "
+#| "mode.\n"
+#| "\n"
+#| "The <ref>dst='..editor_mode_terrain' text='Terrain Mode'</ref> is similar "
+#| "to a simple paint application, with tools to <ref>dst='editor_tool_paint' "
+#| "text='paint'</ref>, <ref>dst='editor_tool_fill' text='fill'</ref>, "
+#| "<ref>dst='editor_tool_select' text='select (and copy)'</ref>, and "
+#| "<ref>dst='editor_tool_paste' text='paste'</ref>. It also has the tool for "
+#| "setting the leaders’ <ref>dst='editor_tool_starting' text='starting "
+#| "locations'</ref>.\n"
+#| "\n"
+#| "The <ref>dst='..editor_mode_scenario' text='Scenario Mode'</ref>, in "
+#| "addition to the tools available in terrain mode, adds support for adding "
+#| "<ref>dst='editor_tool_label' text='labels'</ref>, "
+#| "<ref>dst='editor_tool_scenery' text='scenery items'</ref>, "
+#| "<ref>dst='editor_tool_unit' text='units'</ref> in addition to the leader, "
+#| "and assigning <ref>dst='editor_tool_village' text='village ownership'</"
+#| "ref> at the start of the scenario. There’s also a "
+#| "<ref>dst='editor_playlist' text='playlist manager'</ref> for the music.\n"
+#| "\n"
+#| "<bold>text='Warning: the Scenario Mode is buggy in 1.14.'</bold> "
+#| "Improving it is one of the main blockers for the 1.16 release, however in "
+#| "1.14 its quality is far below that of the game and the terrain mode."
 msgid ""
 "Wesnoth’s Map and Scenario Editor allows users to create and edit the maps "
 "on which every Wesnoth scenario takes place. It also provides a limited set "
@@ -871,11 +905,7 @@ msgid ""
 "<ref>dst='editor_tool_unit' text='units'</ref> in addition to the leader, "
 "and assigning <ref>dst='editor_tool_village' text='village ownership'</ref> "
 "at the start of the scenario. There’s also a <ref>dst='editor_playlist' "
-"text='playlist manager'</ref> for the music.\n"
-"\n"
-"<bold>text='Warning: the Scenario Mode is buggy in 1.14.'</bold> Improving "
-"it is one of the main blockers for the 1.16 release, however in 1.14 its "
-"quality is far below that of the game and the terrain mode."
+"text='playlist manager'</ref> for the music."
 msgstr ""
 "Wesnoth’un Harita ve Senaryo Düzenleyicisi, kullanıcıların her Wesnoth "
 "senaryosunun üzerinde yer aldığı haritaları oluşturmasına ve düzenlemesine "
@@ -911,7 +941,7 @@ msgstr ""
 "1.14'teki kalitesi oyunun ve arazi kipinin çok altındadır."
 
 #. [topic]: id=..editor
-#: data/core/editor/help.cfg:238
+#: data/core/editor/help.cfg:236
 msgid ""
 "<header>text='What you do *not* get'</header>\n"
 "\n"
@@ -958,7 +988,7 @@ msgstr ""
 "için bu eklentiye ihtiyacı olacaktır."
 
 #. [topic]: id=..editor_mode_terrain
-#: data/core/editor/help.cfg:258
+#: data/core/editor/help.cfg:256
 #, fuzzy
 #| msgid ""
 #| "The terrain editor’s functionality is similar to a simple paint "
@@ -994,7 +1024,7 @@ msgstr ""
 "Haritalar” oyun türünde bulunabilir."
 
 #. [topic]: id=..editor_mode_scenario
-#: data/core/editor/help.cfg:270
+#: data/core/editor/help.cfg:268
 msgid ""
 "The scenario editor mode adds support for some map-related WML features, "
 "such as areas and scenery items. Most scenarios will still require "
@@ -1007,7 +1037,7 @@ msgstr ""
 "düzenleyicisi, senaryonun olaylarını kodlamayı desteklemez."
 
 #. [topic]: id=..editor_mode_scenario
-#: data/core/editor/help.cfg:272
+#: data/core/editor/help.cfg:270
 msgid ""
 "<header>text='Checking whether the editor is in scenario mode'</header>\n"
 "\n"
@@ -1025,7 +1055,7 @@ msgstr ""
 "• Arazi kipinde “Alanlar” ve “Taraf” menüleri gri renktedir."
 
 #. [topic]: id=..editor_mode_scenario
-#: data/core/editor/help.cfg:279
+#: data/core/editor/help.cfg:277
 #, fuzzy
 #| msgid ""
 #| "<header>text='Entering scenario mode'</header>\n"
@@ -1063,7 +1093,7 @@ msgstr ""
 "(bir .map dosyası değil)."
 
 #. [topic]: id=..editor_mode_scenario
-#: data/core/editor/help.cfg:287
+#: data/core/editor/help.cfg:285
 msgid ""
 "<header>text='The files: .map and .cfg'</header>\n"
 "\n"
@@ -1098,12 +1128,12 @@ msgstr ""
 "bir .map dosyası olarak açabilir."
 
 #. [topic]: id=editor_separate_events_file
-#: data/core/editor/help.cfg:299
+#: data/core/editor/help.cfg:297
 msgid "Using a separate file for WML events"
 msgstr "WML olayları için ayrı bir dosya kullanımı"
 
 #. [topic]: id=editor_separate_events_file
-#: data/core/editor/help.cfg:300
+#: data/core/editor/help.cfg:298
 msgid ""
 "When loading a .cfg file, the scenario editor understands files created by "
 "the scenario editor, but is likely to have difficulty with files that have "
@@ -1205,12 +1235,12 @@ msgstr ""
 "\"” kullan"
 
 #. [topic]: id=editor_masks
-#: data/core/editor/help.cfg:338
+#: data/core/editor/help.cfg:336
 msgid "Editor Mask Usage"
 msgstr "Düzenleyici Maske Kullanımı"
 
 #. [topic]: id=editor_masks
-#: data/core/editor/help.cfg:339
+#: data/core/editor/help.cfg:337
 msgid ""
 "Masks can be applied to a base map for reusal in several scenarios playing "
 "at the same locations."
@@ -1220,12 +1250,12 @@ msgstr ""
 
 #. [topic]: id=editor_time_schedule
 #. Time of Day and Schedule Editor, please use a short string as it will be used in the left-hand pane of the help browser
-#: data/core/editor/help.cfg:347
+#: data/core/editor/help.cfg:345
 msgid "ToD and Schedule Editor"
 msgstr "Zaman Çizelgesi Düzenleyicisi"
 
 #. [topic]: id=editor_time_schedule
-#: data/core/editor/help.cfg:348
+#: data/core/editor/help.cfg:346
 msgid ""
 "This button at the top-right of the screen accesses the time-of-day preview "
 "and the schedule editor.\n"
@@ -1246,13 +1276,13 @@ msgstr ""
 "ref> için ayrı bir zaman planlayıcısına erişir."
 
 #. [topic]: id=editor_palette
-#: data/core/editor/help.cfg:359
+#: data/core/editor/help.cfg:357
 msgid "Editor Palette"
 msgstr "Düzenleyici Paleti"
 
 #. [topic]: id=editor_palette
 #. the “Player 1”, “Player 2”, ... list is translated using "Player $side_num" in the wesnoth-editor textdomain
-#: data/core/editor/help.cfg:361
+#: data/core/editor/help.cfg:359
 msgid ""
 "The editor palette contains the applicable items you may use with the "
 "currently selected tool. For example, the Paint tool will display a full "
@@ -1279,32 +1309,32 @@ msgstr ""
 "seçildiğine bağlı olarak değişir. Örnekler:"
 
 #. [topic]: id=editor_palette
-#: data/core/editor/help.cfg:366
+#: data/core/editor/help.cfg:364
 msgid "Show all kinds of terrain"
 msgstr "Tüm arazi türlerini göster"
 
 #. [topic]: id=editor_palette
-#: data/core/editor/help.cfg:367
+#: data/core/editor/help.cfg:365
 msgid "Show only water terrains"
 msgstr "Yalnız sulu arazileri göster"
 
 #. [topic]: id=editor_palette
-#: data/core/editor/help.cfg:368
+#: data/core/editor/help.cfg:366
 msgid "Show only villages"
 msgstr "Yalnız köyleri göster"
 
 #. [topic]: id=editor_map_format
-#: data/core/editor/help.cfg:379
+#: data/core/editor/help.cfg:377
 msgid "Wesnoth Map Format"
 msgstr "Vesnot Harita Biçemi"
 
 #. [topic]: id=editor_map_format
-#: data/core/editor/help.cfg:380
+#: data/core/editor/help.cfg:378
 msgid "Wesnoth stores its maps in human readable plain text files."
 msgstr "Haritalar insan tarafından okunabilir düz metin dosyalarında saklanır."
 
 #. [topic]: id=editor_map_format
-#: data/core/editor/help.cfg:382
+#: data/core/editor/help.cfg:380
 msgid ""
 "<header>text='Native'</header>\n"
 "\n"
@@ -1361,7 +1391,7 @@ msgstr ""
 "edililir."
 
 #. [topic]: id=editor_map_format
-#: data/core/editor/help.cfg:395
+#: data/core/editor/help.cfg:393
 msgid ""
 "<header>text='Embedded'</header>\n"
 "\n"
@@ -1396,7 +1426,7 @@ msgstr ""
 "menüsünde (E) işaretlidir."
 
 #. [topic]: id=editor_map_format
-#: data/core/editor/help.cfg:403
+#: data/core/editor/help.cfg:401
 msgid ""
 "<header>text='Files created by the Scenario Editor'</header>\n"
 "\n"
@@ -1417,7 +1447,7 @@ msgstr ""
 "bir .cfg dosyası kullanarak'</ref> seçeneği ile önlenebilir."
 
 #. [topic]: id=editor_map_format
-#: data/core/editor/help.cfg:407
+#: data/core/editor/help.cfg:405
 msgid ""
 "<header>text='Which scenario files use the [scenario] tag'</header>\n"
 "\n"
@@ -4665,9 +4695,15 @@ msgstr ""
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:692
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "Toggle the display of the current frames per second.\n"
+#| "\n"
 msgid ""
 "\n"
-"Toggle the display of the current frames per second.\n"
+"Toggle the display of the current frames per second. Also writes these "
+"values to a file in the userdata directory.\n"
 "\n"
 msgstr ""
 "\n"
@@ -7073,7 +7109,7 @@ msgid ""
 "Domesticated horses come in many shapes and sizes, from mighty war chargers, "
 "to sturdy draught horses or agile stock horses.  While they are more fragile "
 "than many beasts, their speed and cunning allow feral horses to thrive in "
-"the wild, alongside their wild bretheren.\n"
+"the wild, alongside their wild brethren.\n"
 "\n"
 "Horses have been an important part of many civilizations, so it is not "
 "surprising that there are many myths and stories centered around them.  "

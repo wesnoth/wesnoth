@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1-dev\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-04-18 02:21 UTC\n"
+"POT-Creation-Date: 2021-05-23 02:21 UTC\n"
 "PO-Revision-Date: 2012-09-28 12:24+0100\n"
 "Last-Translator: galicae <nikolaspapadop@yahoo.com>\n"
 "Language-Team: none\n"
@@ -53,7 +53,7 @@ msgstr "Με ποιον θα θέλατε να παίξετε;"
 #. [side]: type=Fighter, id=student
 #. [button]
 #: data/campaigns/tutorial/gui/character_selection.cfg:63
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:32
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:33
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:30
 msgid "Konrad"
 msgstr "Κόνραντ"
@@ -70,8 +70,9 @@ msgstr "Λί'ζαρ"
 #. [scenario]: id=tutorial
 #. Hello, translators! The tutorial is meant to be a bit funny at the start,
 #. welcoming new players. Please keep the friendly fun feeling!
-#. If you have any questions, ask in the forums or in the #wesnoth-dev channel on the Freenode IRC network.
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:8
+#. If you have any questions, ask in the forums or, the #wesnoth-dev channel on irc.libera.chat,
+#. or https://discord.gg/battleforwesnoth.
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:9
 #, fuzzy
 #| msgid "Wesnoth Tutorial Part I"
 msgid "Wesnoth Tutorial — Part I"
@@ -79,19 +80,19 @@ msgstr "Εκμάθηση του Γουέσνοθ Μέρος I"
 
 #. [side]: type=Fighter, id=student
 #. [side]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:28
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:29
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:26
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:104
 msgid "team_name^Student"
 msgstr ""
 
 #. [unit]: id=Delfador, type=Elder Mage
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:74
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:75
 msgid "Delfador"
 msgstr "Ντέλφαντορ"
 
 #. [objectives]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:118
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:119
 #, fuzzy
 #| msgid ""
 #| "You will learn the basics of:\n"
@@ -113,31 +114,31 @@ msgstr ""
 "στρατολόγηση"
 
 #. [objective]: condition=win
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:124
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:125
 msgid "Destroy a fierce enemy"
 msgstr "Διέλυσε έναν άγριο αντίπαλο"
 
 #. [objective]: condition=lose
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:128
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:129
 msgid "Get yourself killed"
 msgstr "Κατάφερε να πεθάνεις"
 
 #. [disallow_end_turn]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:136
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:137
 msgid ""
 "You cannot end your turn until you have completed the lesson on movement!"
 msgstr ""
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:145
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:158
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:166
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:146
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:159
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:167
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:195
 msgid "Welcome to Wesnoth!"
 msgstr "Καλωσορίσατε στο Γουέσνοθ!"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:147
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:148
 msgid ""
 "This is a two-part tutorial intended for people who are new to the game. "
 "Part 1 will teach you the basics about movement, attacking, healing, and "
@@ -145,7 +146,7 @@ msgid ""
 msgstr ""
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:160
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:161
 #, fuzzy
 #| msgid ""
 #| "For this tutorial, you are playing Konrad.\n"
@@ -161,7 +162,7 @@ msgstr ""
 "ο μέντοράς σας, Ντέλφαντορ βρίσκεται στην ανατολική όχθη του ποταμού."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:168
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:169
 #, fuzzy
 #| msgid ""
 #| "For this tutorial, you are playing Li’sar.\n"
@@ -177,34 +178,34 @@ msgstr ""
 "ο μέντοράς σας, Ντέλφαντορ βρίσκεται στην ανατολική όχθη του ποταμού."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:174
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:175
 #, fuzzy
 #| msgid "Left click on Konrad"
 msgid "Click on Konrad"
 msgstr "Αριστερό κλικ στον Κόνραντ"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:176
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:177
 #, fuzzy
 #| msgid "Left click on Li’sar"
 msgid "Click on Li’sar"
 msgstr "Αριστερό κλικ στην Λί'ζαρ"
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:318
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:319
 msgid "To undo your last move, press <b>u</b> or use the right-click menu."
 msgstr ""
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:359
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:367
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:360
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:368
 #, fuzzy
 #| msgid "Advancement"
 msgid "Movement"
 msgstr "Προαγωγές"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:361
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:362
 msgid ""
 "When you hover over or select a unit, in this case Konrad, the places he can "
 "move to are highlighted. All units have a certain number of <i>movement "
@@ -215,7 +216,7 @@ msgid ""
 msgstr ""
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:369
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:370
 msgid ""
 "When you hover over or select a unit, in this case Li’sar, the places she "
 "can move to are highlighted. All units have a certain number of <i>movement "
@@ -226,72 +227,72 @@ msgid ""
 msgstr ""
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:380
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:381
 #, fuzzy
 #| msgid "Move Konrad to the keep"
 msgid "Move Konrad next to Delfador"
 msgstr "Μετακίνησε τον Κόνραντ στον πύργο"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:382
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:383
 #, fuzzy
 #| msgid "Move Li’sar to the keep"
 msgid "Move Li’sar next to Delfador"
 msgstr "Μετακίνησε την Λί'ζαρ στο οχυρό"
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:399
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:400
 msgid "Good morning, Delfador! Is it time to attack things?"
 msgstr "Καλημέρα Ντέλφαντορ! Είναι επιτέλους ώρα να χτυπήσω πράματα;"
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:400
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:401
 #, fuzzy
 #| msgid "Good morning, Delfador! Is it time to attack things?"
 msgid "female^Good morning, Delfador! Is it time to attack things?"
 msgstr "Καλημέρα Ντέλφαντορ! Είναι επιτέλους ώρα να χτυπήσω πράματα;"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:405
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:406
 msgid "Um, well..."
 msgstr "Χμμ, εντάξει..."
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:410
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:411
 msgid "Have you found an orc for me to fight, huh? A troll?"
 msgstr "Μου βρήκες κανένα ορκ για να παλέψω, ε; Κανένα τρολ;"
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:411
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:412
 #, fuzzy
 #| msgid "Have you found an orc for me to fight, huh? A troll?"
 msgid "female^Have you found an orc for me to fight, huh? A troll?"
 msgstr "Μου βρήκες κανένα ορκ για να παλέψω, ε; Κανένα τρολ;"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:416
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:417
 msgid "Quiet! I will summon an enemy for you..."
 msgstr "Ησυχία! Θα καλέσω έναν εχθρό για σένα..."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:488
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:489
 msgid "... this quintain!"
 msgstr "... αυτό το ανδρείκελο!"
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:493
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:494
 msgid "A quintain? You want me to fight a dummy?"
 msgstr "Ένα ανδρείκελο; Θες να πολεμήσω ένα σκιάχτρο;;"
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:494
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:495
 #, fuzzy
 #| msgid "A quintain? You want me to fight a dummy?"
 msgid "female^A quintain? You want me to fight a dummy?"
 msgstr "Ένα ανδρείκελο; Θες να πολεμήσω ένα σκιάχτρο;;"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:500
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:501
 #, fuzzy
 #| msgid ""
 #| "female^Young lady, you have 32 hitpoints and a sword. I’m fairly sure "
@@ -304,7 +305,7 @@ msgstr ""
 "θα τα καταφέρεις."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:505
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:506
 #, fuzzy
 #| msgid ""
 #| "female^Young lady, you have 32 hitpoints and a sword. I’m fairly sure "
@@ -317,13 +318,13 @@ msgstr ""
 "θα τα καταφέρεις."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:512
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:519
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:513
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:520
 msgid "Attacking"
 msgstr "Μάχη"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:514
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:515
 #, fuzzy
 #| msgid ""
 #| "To attack the quintain, first select the attacker (Konrad) then the "
@@ -339,7 +340,7 @@ msgstr ""
 "μάχης. Όταν επιλέξεις ΟΚ, ο Κόνραντ θα επιτεθεί."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:521
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:522
 #, fuzzy
 #| msgid ""
 #| "To attack the quintain, first select the attacker (Li’sar) then the "
@@ -355,27 +356,27 @@ msgstr ""
 "μάχης. Όταν επιλέξεις ΟΚ, η Λί'ζαρ θα επιτεθεί."
 
 #. [disallow_end_turn]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:526
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:527
 msgid "You cannot end your turn until you have attacked the dummy!"
 msgstr ""
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:540
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:541
 msgid "Hey! This quintain fights back!"
 msgstr "Έι! Αυτό το ανδρείκελο αντεπιτίθεται!"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:545
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:546
 msgid "Hmm, perhaps we should have started with a doll."
 msgstr "Χμμ, μάλλον θα έπρεπε να είχαμε αρχίσει με μία κούκλα."
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:550
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:551
 msgid "Should I retreat?"
 msgstr "Μήπως να υποχωρήσω;"
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:551
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:552
 #, fuzzy
 #| msgid "Should I retreat?"
 msgid "female^Should I retreat?"
@@ -383,19 +384,19 @@ msgstr "Μήπως να υποχωρήσω;"
 
 #. [message]: speaker=Galdrad
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:556
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:557
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1055
 msgid "Good idea!"
 msgstr "Καλή ιδέα!"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:562
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:569
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:563
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:570
 msgid "Crowns"
 msgstr "Κορόνες"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:564
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:565
 msgid ""
 "The tiny golden crown above your leader (Konrad) indicates he is a side "
 "leader. In most scenarios, you will lose if your leader is killed. Be sure "
@@ -403,7 +404,7 @@ msgid ""
 msgstr ""
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:571
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:572
 msgid ""
 "The tiny golden crown above your leader (Li’sar) indicates she is a side "
 "leader. In most scenarios, you will lose if your leader is killed. Be sure "
@@ -411,7 +412,7 @@ msgid ""
 msgstr ""
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:598
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:599
 msgid ""
 "Unfortunately, you’ve used up your turn attacking the quintain. The quintain "
 "now gets to attack."
@@ -420,12 +421,12 @@ msgstr ""
 "είναι η σειρά του."
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:603
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:604
 msgid "The <i>dummy</i> gets a turn?"
 msgstr "Σειρά του ΣΚΙΑΧΤΡΟΥ;"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:608
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:609
 #, fuzzy
 #| msgid ""
 #| "Yes. It’s a magical quintain.\n"
@@ -443,12 +444,12 @@ msgstr ""
 "$student_hp στους $future_hp βαθμούς ζωής. Φυλάξου!"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:615
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:616
 msgid "Turns"
 msgstr ""
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:617
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:618
 msgid ""
 "Every turn, each side in a scenario gets a chance to make their move. Once "
 "you’ve completed everything you wish to do this turn, click on the <b>End "
@@ -461,33 +462,33 @@ msgstr ""
 
 #. [else]
 #. [event]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:620
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:687
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:795
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:621
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:688
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:796
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:509
 msgid "End your turn"
 msgstr "Τελείωσε τον γύρο σου"
 
 #. [disallow_end_turn]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:630
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:631
 msgid ""
 "You cannot end your turn until you have completed the lesson on healing!"
 msgstr ""
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:641
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:642
 msgid "Ouch! I need to heal! Only $student_hp hitpoints left!"
 msgstr "Άουτς! Χρειάζομαι περίθαλψη! Μου έμειναν μόνο $student_hp βαθμοί!"
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:642
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:643
 #, fuzzy
 #| msgid "Ouch! I need to heal! Only $student_hp hitpoints left!"
 msgid "female^Ouch! I need to heal! Only $student_hp hitpoints left!"
 msgstr "Άουτς! Χρειάζομαι περίθαλψη! Μου έμειναν μόνο $student_hp βαθμοί!"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:647
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:648
 #, fuzzy
 #| msgid ""
 #| "There is a village on the other side of the river. Visiting villages is a "
@@ -501,31 +502,31 @@ msgstr ""
 "θεραπευτείς στην αρχή του επόμενου γύρου σου. Εμπρός στο χωριό!"
 
 #. [label]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:652
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:653
 msgid "Village"
 msgstr "Χωριό"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:665
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:666
 #, fuzzy
 #| msgid "Move Konrad to capture a village"
 msgid "Move Konrad to a nearby village"
 msgstr "Μετακίνησε τον Κόνραντ κυριεύοντας ένα χωριό"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:667
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:668
 #, fuzzy
 #| msgid "Move Li’sar to capture a village"
 msgid "Move Li’sar to a nearby village"
 msgstr "Μετακίνησε την Λί'ζαρ ώστε να πάρει ένα χωριό"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:680
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:681
 msgid "Villages"
 msgstr "Χωριά"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:682
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:683
 #, fuzzy
 #| msgid ""
 #| "You have captured a village! It now flies your flag and has been added to "
@@ -547,13 +548,13 @@ msgstr ""
 "*Αριστερό κλικ ή κάποιο άλλο κουμπί για να συνεχίσεις..."
 
 #. [disallow_end_turn]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:697
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:698
 msgid ""
 "You cannot end your turn until you have completed the lesson on recruiting!"
 msgstr ""
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:706
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:707
 msgid ""
 "Since you started your turn on a village, you regained some health! Villages "
 "heal units 8 hitpoints per turn, or enough to top off their health, "
@@ -562,7 +563,7 @@ msgid ""
 msgstr ""
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:711
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:712
 #, fuzzy
 #| msgid ""
 #| "You’re about to be healed by $hp_difference hitpoints, but it’s time to "
@@ -573,19 +574,19 @@ msgstr ""
 "χρειαστείς λίγη βοήθεια εναντίων του ανδρείκελου."
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:716
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:717
 msgid "I’ll recruit some elves!"
 msgstr "Θα στρατολογήσω μερικά ξωτικά!"
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:717
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:718
 #, fuzzy
 #| msgid "I’ll recruit some elves!"
 msgid "female^I’ll recruit some elves!"
 msgstr "Θα στρατολογήσω μερικά ξωτικά!"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:722
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:723
 #, fuzzy
 #| msgid ""
 #| "A splendid idea. You can recruit two units if you return to the keep. You "
@@ -599,27 +600,27 @@ msgstr ""
 "μονάδες. Έχεις αρκετό χρυσό γι'αυτό."
 
 #. [label]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:727
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:728
 msgid "Keep"
 msgstr "Πύργος"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:741
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:742
 msgid "Move Konrad to the keep"
 msgstr "Μετακίνησε τον Κόνραντ στον πύργο"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:743
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:744
 msgid "Move Li’sar to the keep"
 msgstr "Μετακίνησε την Λί'ζαρ στο οχυρό"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:761
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:762
 msgid "Recruiting"
 msgstr "Στρατολόγηση"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:763
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:764
 #, fuzzy
 #| msgid ""
 #| "Whenever you’re on a <i>keep</i>, you can <i>recruit</i> into the castle "
@@ -637,19 +638,19 @@ msgstr ""
 "έχεις μόνο έναν τύπο μονάδας να διαλέξεις: έναν πολεμιστή των Ξωτικών."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:766
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:767
 #, fuzzy
 #| msgid "Left click on an Elvish Fighter"
 msgid "Recruit two Elvish Fighters"
 msgstr "Αριστερό κλικ στο Ξωτικοπολεμιστή"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:785
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:786
 msgid "Traits"
 msgstr ""
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:787
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:788
 msgid ""
 "Be sure to examine the <i>traits</i> of your new recruits. They are listed "
 "under its race in the sidebar. Traits can subtly affect how you use your "
@@ -659,13 +660,13 @@ msgid ""
 msgstr ""
 
 #. [disallow_end_turn]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:829
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:830
 msgid ""
 "You cannot end your turn until you have completed the lesson on attacking!"
 msgstr ""
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:838
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:839
 msgid ""
 "Hey, the quintain just healed 2 hitpoints! I’d better attack it at once!"
 msgstr ""
@@ -673,7 +674,7 @@ msgstr ""
 "να επιτεθώ αμέσως!"
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:839
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:840
 #, fuzzy
 #| msgid ""
 #| "Hey, the quintain just healed 2 hitpoints! I’d better attack it at once!"
@@ -685,14 +686,14 @@ msgstr ""
 "να επιτεθώ αμέσως!"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:844
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:845
 msgid "Yes, if a unit doesn’t do anything for a turn, it will slowly heal."
 msgstr ""
 "Ναι, αν μια μονάδα δεν κάνει τίποτα στην διάρκεια ενός γύρου, θα αρχίσει να "
 "γιατρεύεται σιγά-σιγά."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:849
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:850
 #, fuzzy
 #| msgid ""
 #| "But before you send your fighters against the quintain, you should know "
@@ -707,21 +708,21 @@ msgstr ""
 "ξέρεις ότι έχουν δύο είδη επιθέσεων..."
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:854
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:855
 #, fuzzy
 #| msgid "I’ll tell them to use the one that does the most damage!"
 msgid "I’ll tell them to use the one that does more damage!"
 msgstr "Θα τους πω να χρησιμοποιήσουν αυτό που κάνει την πιο πολλή ζημιά!"
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:855
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:856
 #, fuzzy
 #| msgid "I’ll tell them to use the one that does the most damage!"
 msgid "female^I’ll tell them to use the one that does more damage!"
 msgstr "Θα τους πω να χρησιμοποιήσουν αυτό που κάνει την πιο πολλή ζημιά!"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:860
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:861
 #, fuzzy
 #| msgid ""
 #| "And which would that be? The sword (5–4) or the bow (3–3)? I suppose "
@@ -734,14 +735,14 @@ msgstr ""
 "Και πιο είναι αυτό; Το σπαθί (5-4) ή το τόξο (3-3); Υποθέτω θα το βρεις..."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:863
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:864
 #, fuzzy
 #| msgid "Attack the orc with an Archer"
 msgid "Attack the quintain with your fighters"
 msgstr "Κάνε επίθεση στον Ορκ με τον Τοξότη"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:874
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:875
 #, fuzzy
 #| msgid ""
 #| "You wouldn’t do anything stupid like charging that quintain yourself "
@@ -759,7 +760,7 @@ msgstr ""
 
 #. [message]: speaker=Delfador
 #. a strong elf, so +1 damage
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:917
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:918
 #, fuzzy
 msgid ""
 "Your elf used a sword (6×4; or 6 damage on each hit, with 4 attacks), which "
@@ -773,14 +774,14 @@ msgstr ""
 "Τελείωσε τον γύρο σου, και ξαναπροσπάθησε."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:921
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:922
 msgid ""
 "Elvish Fighters normally do 5×4 damage with their swords, but this elf has "
 "the <i>strong</i> trait, which increases the damage output of melee attacks."
 msgstr ""
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:927
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:928
 #, fuzzy
 msgid ""
 "Your elf used a sword (5×4; or 5 damage on each hit, with 4 attacks), which "
@@ -795,7 +796,7 @@ msgstr ""
 
 #. [message]: speaker=Delfador
 #. a dextrous elf, so +1 damage
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:948
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:949
 #, fuzzy
 #| msgid ""
 #| "Your elf used a bow, which is a <i>ranged</i> attack (3–3; or 3 damage, 3 "
@@ -811,14 +812,14 @@ msgstr ""
 "έτσι δεν μπόρεσε να αμυνθεί."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:952
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:953
 msgid ""
 "Elvish Fighters normally do 3×3 damage with their bows, but this elf has the "
 "<i>dextrous</i> trait, which increases the damage output of ranged attacks."
 msgstr ""
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:958
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:959
 #, fuzzy
 #| msgid ""
 #| "Your elf used a bow, which is a <i>ranged</i> attack (3–3; or 3 damage, 3 "
@@ -834,33 +835,33 @@ msgstr ""
 "έτσι δεν μπόρεσε να αμυνθεί."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:975
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:976
 msgid "Keep attacking with both elves until the quintain is finished!"
 msgstr "Συνέχισε να πολεμάς με τα δύο ξωτικά, μέχρι να νικήσεις το ανδρείκελο!"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:990
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:991
 msgid "Maybe you should recruit another elf?"
 msgstr "Μήπως θα έπρεπε να στρατολογήσεις ένα ακόμα ξωτικό;"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1000
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1001
 msgid "Unit Descriptions"
 msgstr "Περιγραφή μονάδας"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1002
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1003
 msgid ""
 "You can right click on a unit to see a detailed <b>Unit Description</b>."
 msgstr "Μπορείς να κάνεις δεξί κλικ σε μια μονάδα για να δεις το Προφίλ της."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1012
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1013
 msgid "Protect Your Troops"
 msgstr "Προστάτεψε το στρατό σου"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1014
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1015
 msgid ""
 "Remember to pull back wounded units into villages and recruit more if "
 "needed. Take special care of units with the highest <i>experience points "
@@ -872,12 +873,12 @@ msgstr ""
 "γίνονται πιο δυνατές."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1024
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1025
 msgid "Support"
 msgstr "Υποστήριξη"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1026
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1027
 msgid ""
 "Each village you control will <i>support</i> one unit for free. After that, "
 "each unit costs you one gold per turn."
@@ -886,17 +887,17 @@ msgstr ""
 "κάθε μονάδα κοστίζει ένα νόμισμα ανά γύρο."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1036
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1037
 msgid "You had really better finish off that quintain."
 msgstr ""
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1046
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1047
 msgid "Advancement"
 msgstr "Προαγωγές"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1048
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1049
 #, fuzzy
 #| msgid ""
 #| "When a unit gains enough experience points (the <i>experience bar</i>, if "
@@ -918,12 +919,12 @@ msgstr ""
 "επιπέδου."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1058
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1059
 msgid "Defenses"
 msgstr "Άμυνα"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1061
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1062
 #, fuzzy
 #| msgid ""
 #| "Whenever one of your units is selected, you’ll see varying percentages as "
@@ -950,22 +951,22 @@ msgstr ""
 "να χτυπήσουν τον αντίπαλο, ανεξάρτητα από το έδαφος στο οποίο βρίσκονται."
 
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1073
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1074
 msgid "Agh! This training is too much for me..."
 msgstr ""
 
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1074
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1075
 msgid "female^Agh! This training is too much for me..."
 msgstr ""
 
 #. [message]: speaker=second_unit
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1110
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1111
 msgid "The quintain is destroyed, and I have gained more experience!"
 msgstr "Το ανδρείκελο είναι νεκρό, και πήρα περισσότερη εμπειρία!"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1115
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1116
 #, fuzzy
 #| msgid ""
 #| "Yes, you gain experience through battle, especially by killing an "
@@ -983,7 +984,7 @@ msgstr ""
 "από αυτό όμως έχουμε πραγματική δουλειά μπροστά μας..."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1121
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1122
 #, fuzzy
 msgid ""
 "Now, Konrad, I will leave you with more dummies to practice on! After that, "
@@ -993,7 +994,7 @@ msgstr ""
 "Μετά, έχουμε λίγη πραγματική δουλειά να κάνουμε..."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1126
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1127
 #, fuzzy
 msgid ""
 "Now, Li’sar, I will leave you with more dummies to practice on! After that, "
@@ -1003,12 +1004,12 @@ msgstr ""
 "ασχοληθούμε με πραγματικές μάχες..."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1202
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1203
 msgid "Note"
 msgstr "Σημείωση"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1204
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1205
 msgid ""
 "These dummies only attack if you are a single tile away. With care, you "
 "should be able to kill them one at a time."
@@ -1019,26 +1020,26 @@ msgstr ""
 "από ένα κάθε φορά."
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1213
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1214
 msgid ""
 "Well, I think I know the basics. Onwards! Maybe I can fight in a real battle "
 "next?"
 msgstr ""
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1214
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1215
 msgid ""
 "female^Well, I think I know the basics. Onwards! Maybe I can fight in a real "
 "battle next?"
 msgstr ""
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1230
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1231
 msgid "Victory"
 msgstr "Νίκη"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1232
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1233
 #, fuzzy
 #| msgid ""
 #| "After your victory notice, the map will be grayed out to indicate that "

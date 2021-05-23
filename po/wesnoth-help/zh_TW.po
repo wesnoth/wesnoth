@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.15\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-05-15 22:06-0400\n"
+"POT-Creation-Date: 2021-05-22 22:21-0400\n"
 "PO-Revision-Date: 2021-04-09 09:00+0800\n"
 "Last-Translator: 李信融 <magiclen0810@gmail.com>\n"
 "Language-Team: Wesnoth Traditional Chinese Team\n"
@@ -344,13 +344,13 @@ msgstr "地圖及章節編輯器"
 
 #. [section]: id=editor_mode_terrain
 #. [topic]: id=..editor_mode_terrain
-#: data/core/editor/help.cfg:13 data/core/editor/help.cfg:257
+#: data/core/editor/help.cfg:13 data/core/editor/help.cfg:255
 msgid "Terrain Editor"
 msgstr "地形編輯器"
 
 #. [section]: id=editor_mode_scenario
 #. [topic]: id=..editor_mode_scenario
-#: data/core/editor/help.cfg:20 data/core/editor/help.cfg:269
+#: data/core/editor/help.cfg:20 data/core/editor/help.cfg:267
 msgid "Scenario Editor"
 msgstr "章節編輯器"
 
@@ -794,6 +794,40 @@ msgstr "地圖/章節編輯器"
 # 最後面的警告不照翻。
 #. [topic]: id=..editor
 #: data/core/editor/help.cfg:224
+#, fuzzy
+#| msgid ""
+#| "Wesnoth’s Map and Scenario Editor allows users to create and edit the "
+#| "maps on which every Wesnoth scenario takes place. It also provides a "
+#| "limited set of features for setting up a basic scenario.\n"
+#| "\n"
+#| "The editor can be launched from the <italic>text='Map Editor'</italic> "
+#| "option at the title screen.\n"
+#| "\n"
+#| "<header>text='Editing Modes'</header>\n"
+#| "\n"
+#| "The editor features two modes of operation: terrain mode and scenario "
+#| "mode.\n"
+#| "\n"
+#| "The <ref>dst='..editor_mode_terrain' text='Terrain Mode'</ref> is similar "
+#| "to a simple paint application, with tools to <ref>dst='editor_tool_paint' "
+#| "text='paint'</ref>, <ref>dst='editor_tool_fill' text='fill'</ref>, "
+#| "<ref>dst='editor_tool_select' text='select (and copy)'</ref>, and "
+#| "<ref>dst='editor_tool_paste' text='paste'</ref>. It also has the tool for "
+#| "setting the leaders’ <ref>dst='editor_tool_starting' text='starting "
+#| "locations'</ref>.\n"
+#| "\n"
+#| "The <ref>dst='..editor_mode_scenario' text='Scenario Mode'</ref>, in "
+#| "addition to the tools available in terrain mode, adds support for adding "
+#| "<ref>dst='editor_tool_label' text='labels'</ref>, "
+#| "<ref>dst='editor_tool_scenery' text='scenery items'</ref>, "
+#| "<ref>dst='editor_tool_unit' text='units'</ref> in addition to the leader, "
+#| "and assigning <ref>dst='editor_tool_village' text='village ownership'</"
+#| "ref> at the start of the scenario. There’s also a "
+#| "<ref>dst='editor_playlist' text='playlist manager'</ref> for the music.\n"
+#| "\n"
+#| "<bold>text='Warning: the Scenario Mode is buggy in 1.14.'</bold> "
+#| "Improving it is one of the main blockers for the 1.16 release, however in "
+#| "1.14 its quality is far below that of the game and the terrain mode."
 msgid ""
 "Wesnoth’s Map and Scenario Editor allows users to create and edit the maps "
 "on which every Wesnoth scenario takes place. It also provides a limited set "
@@ -821,11 +855,7 @@ msgid ""
 "<ref>dst='editor_tool_unit' text='units'</ref> in addition to the leader, "
 "and assigning <ref>dst='editor_tool_village' text='village ownership'</ref> "
 "at the start of the scenario. There’s also a <ref>dst='editor_playlist' "
-"text='playlist manager'</ref> for the music.\n"
-"\n"
-"<bold>text='Warning: the Scenario Mode is buggy in 1.14.'</bold> Improving "
-"it is one of the main blockers for the 1.16 release, however in 1.14 its "
-"quality is far below that of the game and the terrain mode."
+"text='playlist manager'</ref> for the music."
 msgstr ""
 "韋諾的地圖和章節編輯器允許使用者建立並編輯每個韋諾章節所使用的地圖。它也提供"
 "了一系列有限的功能來設置出一個基本的章節。\n"
@@ -854,7 +884,7 @@ msgstr ""
 "要目標之一。"
 
 #. [topic]: id=..editor
-#: data/core/editor/help.cfg:238
+#: data/core/editor/help.cfg:236
 msgid ""
 "<header>text='What you do *not* get'</header>\n"
 "\n"
@@ -897,7 +927,7 @@ msgstr ""
 "地形的地圖將會需要該模組來告訴編輯器它們的地形。"
 
 #. [topic]: id=..editor_mode_terrain
-#: data/core/editor/help.cfg:258
+#: data/core/editor/help.cfg:256
 msgid ""
 "The terrain editor’s functionality is similar to a simple paint "
 "application.\n"
@@ -918,7 +948,7 @@ msgstr ""
 "想要開始，就參考<ref>dst='editor_tool_paint' text='繪圖工具'</ref>的頁面。"
 
 #. [topic]: id=..editor_mode_scenario
-#: data/core/editor/help.cfg:270
+#: data/core/editor/help.cfg:268
 msgid ""
 "The scenario editor mode adds support for some map-related WML features, "
 "such as areas and scenery items. Most scenarios will still require "
@@ -930,7 +960,7 @@ msgstr ""
 "本的編輯。"
 
 #. [topic]: id=..editor_mode_scenario
-#: data/core/editor/help.cfg:272
+#: data/core/editor/help.cfg:270
 msgid ""
 "<header>text='Checking whether the editor is in scenario mode'</header>\n"
 "\n"
@@ -947,7 +977,7 @@ msgstr ""
 "• 在地形模式中，「地區」和「陣營」選單是禁用的，而呈灰色。"
 
 #. [topic]: id=..editor_mode_scenario
-#: data/core/editor/help.cfg:279
+#: data/core/editor/help.cfg:277
 msgid ""
 "<header>text='Entering scenario mode'</header>\n"
 "\n"
@@ -970,7 +1000,7 @@ msgstr ""
 "cfg」檔案（不是「.map」檔案）。"
 
 #. [topic]: id=..editor_mode_scenario
-#: data/core/editor/help.cfg:287
+#: data/core/editor/help.cfg:285
 msgid ""
 "<header>text='The files: .map and .cfg'</header>\n"
 "\n"
@@ -1001,12 +1031,12 @@ msgstr ""
 "案來開啟一樣。"
 
 #. [topic]: id=editor_separate_events_file
-#: data/core/editor/help.cfg:299
+#: data/core/editor/help.cfg:297
 msgid "Using a separate file for WML events"
 msgstr "對WML事件使用一個獨立的檔案"
 
 #. [topic]: id=editor_separate_events_file
-#: data/core/editor/help.cfg:300
+#: data/core/editor/help.cfg:298
 msgid ""
 "When loading a .cfg file, the scenario editor understands files created by "
 "the scenario editor, but is likely to have difficulty with files that have "
@@ -1100,12 +1130,12 @@ msgstr ""
 "  ◦ 在「[scenario]」標籤中，使用「map_file=\"map_from_01.cfg\"」來載入該檔案"
 
 #. [topic]: id=editor_masks
-#: data/core/editor/help.cfg:338
+#: data/core/editor/help.cfg:336
 msgid "Editor Mask Usage"
 msgstr "編輯器遮罩用法"
 
 #. [topic]: id=editor_masks
-#: data/core/editor/help.cfg:339
+#: data/core/editor/help.cfg:337
 msgid ""
 "Masks can be applied to a base map for reusal in several scenarios playing "
 "at the same locations."
@@ -1114,12 +1144,12 @@ msgstr ""
 
 #. [topic]: id=editor_time_schedule
 #. Time of Day and Schedule Editor, please use a short string as it will be used in the left-hand pane of the help browser
-#: data/core/editor/help.cfg:347
+#: data/core/editor/help.cfg:345
 msgid "ToD and Schedule Editor"
 msgstr "時段編輯器"
 
 #. [topic]: id=editor_time_schedule
-#: data/core/editor/help.cfg:348
+#: data/core/editor/help.cfg:346
 msgid ""
 "This button at the top-right of the screen accesses the time-of-day preview "
 "and the schedule editor.\n"
@@ -1138,13 +1168,13 @@ msgstr ""
 "ref>編輯器，用來獨立設定時段。"
 
 #. [topic]: id=editor_palette
-#: data/core/editor/help.cfg:359
+#: data/core/editor/help.cfg:357
 msgid "Editor Palette"
 msgstr "編輯器調色盤"
 
 #. [topic]: id=editor_palette
 #. the “Player 1”, “Player 2”, ... list is translated using "Player $side_num" in the wesnoth-editor textdomain
-#: data/core/editor/help.cfg:361
+#: data/core/editor/help.cfg:359
 msgid ""
 "The editor palette contains the applicable items you may use with the "
 "currently selected tool. For example, the Paint tool will display a full "
@@ -1168,32 +1198,32 @@ msgstr ""
 "最左邊的那個，而且圖示會根據被選擇的東西而改變。例如："
 
 #. [topic]: id=editor_palette
-#: data/core/editor/help.cfg:366
+#: data/core/editor/help.cfg:364
 msgid "Show all kinds of terrain"
 msgstr "顯示所有種類的地形"
 
 #. [topic]: id=editor_palette
-#: data/core/editor/help.cfg:367
+#: data/core/editor/help.cfg:365
 msgid "Show only water terrains"
 msgstr "只顯示水的地形"
 
 #. [topic]: id=editor_palette
-#: data/core/editor/help.cfg:368
+#: data/core/editor/help.cfg:366
 msgid "Show only villages"
 msgstr "只顯示村莊"
 
 #. [topic]: id=editor_map_format
-#: data/core/editor/help.cfg:379
+#: data/core/editor/help.cfg:377
 msgid "Wesnoth Map Format"
 msgstr "韋諾地圖格式"
 
 #. [topic]: id=editor_map_format
-#: data/core/editor/help.cfg:380
+#: data/core/editor/help.cfg:378
 msgid "Wesnoth stores its maps in human readable plain text files."
 msgstr "韋諾將它的地圖存成人類可讀的純文字檔案。"
 
 #. [topic]: id=editor_map_format
-#: data/core/editor/help.cfg:382
+#: data/core/editor/help.cfg:380
 msgid ""
 "<header>text='Native'</header>\n"
 "\n"
@@ -1247,7 +1277,7 @@ msgstr ""
 
 # 看不懂「but this is rarely-used code」，不翻譯。
 #. [topic]: id=editor_map_format
-#: data/core/editor/help.cfg:395
+#: data/core/editor/help.cfg:393
 msgid ""
 "<header>text='Embedded'</header>\n"
 "\n"
@@ -1279,7 +1309,7 @@ msgstr ""
 "檔案會在視窗選單上被標示為「(E)」。"
 
 #. [topic]: id=editor_map_format
-#: data/core/editor/help.cfg:403
+#: data/core/editor/help.cfg:401
 msgid ""
 "<header>text='Files created by the Scenario Editor'</header>\n"
 "\n"
@@ -1299,7 +1329,7 @@ msgstr ""
 "避免。"
 
 #. [topic]: id=editor_map_format
-#: data/core/editor/help.cfg:407
+#: data/core/editor/help.cfg:405
 msgid ""
 "<header>text='Which scenario files use the [scenario] tag'</header>\n"
 "\n"
@@ -4348,9 +4378,15 @@ msgstr ""
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:692
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "Toggle the display of the current frames per second.\n"
+#| "\n"
 msgid ""
 "\n"
-"Toggle the display of the current frames per second.\n"
+"Toggle the display of the current frames per second. Also writes these "
+"values to a file in the userdata directory.\n"
 "\n"
 msgstr ""
 "\n"
@@ -6521,7 +6557,7 @@ msgid ""
 "Domesticated horses come in many shapes and sizes, from mighty war chargers, "
 "to sturdy draught horses or agile stock horses.  While they are more fragile "
 "than many beasts, their speed and cunning allow feral horses to thrive in "
-"the wild, alongside their wild bretheren.\n"
+"the wild, alongside their wild brethren.\n"
 "\n"
 "Horses have been an important part of many civilizations, so it is not "
 "surprising that there are many myths and stories centered around them.  "
