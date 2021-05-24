@@ -7,7 +7,7 @@
  ### Packaging
  ### Terrain
  ### Translations
-   * Updated translations: British English
+   * Updated translations: British English, Slovak
  ### Units
    * Added missing Seahorse graphics
  ### User interface
