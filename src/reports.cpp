@@ -192,6 +192,12 @@ static config unit_type(const unit* u)
 	str << u->type_name();
 	tooltip << _("Type: ") << "<b>" << u->type_name() << "</b>\n"
 		<< u->unit_description();
+	if(const auto& notes = u->unit_special_notes(); !notes.empty()) {
+		tooltip << "\n\n" << _("Special Notes:") << '\n';
+		for(const auto& note : notes) {
+			tooltip << "• " << note << '\n';
+		}
+	}
 	return text_report(str.str(), tooltip.str(), has_variations_prefix + "unit_" + u->type_id());
 }
 REPORT_GENERATOR(unit_type, rc)
