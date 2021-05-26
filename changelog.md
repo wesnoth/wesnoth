@@ -13,6 +13,7 @@
  ### User interface
  ### WML Engine
  ### Miscellaneous and Bug Fixes
+   * The unit description tooltip in the sidebar now includes the text from `[special_note]`s.
 
 ## Version 1.15.13
  ### Add-ons client
