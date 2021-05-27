@@ -143,9 +143,9 @@ battle_context_unit_stats::battle_context_unit_stats(nonempty_unit_const_ptr up,
 		opp_ctx.emplace(opp_weapon->specials_context(oppp, up, opp_loc, u_loc, !attacking, weapon));
 	}
 
-	slows = weapon->has_special_or_ability("slow");
+	slows = weapon->has_special_or_ability("slow") && !opp.get_state("unslowable") ;
 	drains = !opp.get_state("undrainable") && weapon->has_special_or_ability("drains");
-	petrifies = weapon->has_special_or_ability("petrifies");
+	petrifies = !opp.get_state("unpetrifiable") && weapon->has_special_or_ability("petrifies");
 	poisons = !opp.get_state("unpoisonable") && weapon->has_special_or_ability("poison") && !opp.get_state(unit::STATE_POISONED);
 	backstab_pos = is_attacker && backstab_check(u_loc, opp_loc, units, resources::gameboard->teams());
 	rounds = weapon->get_specials_and_abilities("berserk").highest("value", 1).first;

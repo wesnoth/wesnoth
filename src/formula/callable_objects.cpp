@@ -417,6 +417,10 @@ variant unit_type_callable::get_value(const std::string& key) const
 		return variant(u_.movement());
 	} else if(key == "unpoisonable") {
 		return variant(u_.musthave_status("unpoisonable"));
+	} else if(key == "unslowable") {
+		return variant(u_.musthave_status("unslowable"));
+	} else if(key == "unpetrifiable") {
+		return variant(u_.musthave_status("unpetrifiable"));
 	} else if(key == "undrainable") {
 		return variant(u_.musthave_status("undrainable"));
 	} else if(key == "unplagueable") {

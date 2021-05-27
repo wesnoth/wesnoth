@@ -12,6 +12,7 @@
    * Added missing Seahorse graphics
  ### User interface
  ### WML Engine
+   * add 'unslowable' and 'unpetrifiable' status to immune to slow or petrifies
  ### Miscellaneous and Bug Fixes
    * The unit description tooltip in the sidebar now includes the text from `[special_note]`s.
 
