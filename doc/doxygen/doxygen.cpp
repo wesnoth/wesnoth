@@ -312,7 +312,7 @@ which is that of
 <a href="https://wiki.wesnoth.org/WesnothPhilosophy">KISS</a>.
 
 The development team hangs out in the <a href="https://discord.gg/battleforwesnoth">official Wesnoth Discord server</a>,
-and in the IRC channel @#wesnoth-dev on irc.libera.chat.
+and in the IRC channel <a href="https://web.libera.chat/#wesnoth-dev">@#wesnoth-dev on irc.libera.chat</a>.
 Feel free to join us and ask any questions you may have about our codebase!
 
 */
