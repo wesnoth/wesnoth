@@ -6,7 +6,7 @@ Wesnoth was built with the hard work of volunteers all over the world! Everyone 
 
 The best place to get in touch with the development team is on our [official Discord community server](https://discord.gg/battleforwesnoth) or on the [Wesnoth forums](https://forums.wesnoth.org/).
 
-The Discord server is mirrored to [Libera.Chat IRC](https://libera.chat), channels: #wesnoth (general discussions), #wesnoth-umc-dev (questions about creating add-ons), #wesnoth-dev (development of wesnoth mainline).
+The Discord server is mirrored to [Libera.Chat IRC](https://libera.chat), channels: [`#wesnoth`](https://web.libera.chat/#wesnoth) (general discussions), [`#wesnoth-umc-dev`](https://web.libera.chat/#wesnoth-umc-dev) (questions about creating add-ons), [`#wesnoth-dev`](https://web.libera.chat/#wesnoth-dev) (development of wesnoth mainline).
 
 ## Art and Music
 
