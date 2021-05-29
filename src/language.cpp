@@ -90,6 +90,16 @@ const t_string& symbol_table::operator[](const char* key) const
 	return (*this)[std::string(key)];
 }
 
+utils::string_map::const_iterator symbol_table::find(const std::string& key) const
+{
+	return strings_.find(key);
+}
+
+utils::string_map::const_iterator symbol_table::end() const
+{
+	return strings_.end();
+}
+
 bool load_language_list()
 {
 	config cfg;

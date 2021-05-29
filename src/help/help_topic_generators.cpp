@@ -560,9 +560,9 @@ std::string unit_topic_generator::operator()() const {
 
 	// Print the detailed description about the unit.
 	ss << "\n\n" << detailed_description;
-	if(type_.has_special_notes()) {
+	if(const auto notes = type_.special_notes(); !notes.empty()) {
 		ss << "\n\n" << _("Special Notes:") << '\n';
-		for(const auto& note : type_.special_notes()) {
+		for(const auto& note : notes) {
 			ss << "• " << note << '\n';
 		}
 	}

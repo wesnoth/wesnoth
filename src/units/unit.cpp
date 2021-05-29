@@ -899,7 +899,7 @@ void unit::advance_to(const unit_type& u_type, bool use_traits)
 	type_ = &new_type;
 	type_name_ = new_type.type_name();
 	description_ = new_type.unit_description();
-	special_notes_ = new_type.special_notes();
+	special_notes_ = new_type.direct_special_notes();
 	undead_variation_ = new_type.undead_variation();
 	max_experience_ = new_type.experience_needed(true);
 	level_ = new_type.level();
@@ -2640,23 +2640,7 @@ void unit::clear_changed_attributes()
 }
 
 std::vector<t_string> unit::unit_special_notes() const {
-	std::vector<t_string> notes;
-	for(const config::any_child ability : abilities().all_children_range()) {
-		if(ability.cfg.has_attribute("special_note")) {
-			append_special_note(notes, ability.cfg["special_note"].t_str());
-		}
-	}
-	for(const auto& attack : attacks()) {
-		for(const config::any_child ability : attack.specials().all_children_range()) {
-			if(ability.cfg.has_attribute("special_note")) {
-				append_special_note(notes, ability.cfg["special_note"].t_str());
-			}
-		}
-	}
-	for(const auto& note : special_notes_) {
-		append_special_note(notes, note);
-	}
-	return notes;
+	return combine_special_notes(special_notes_, abilities(), attacks(), movement_type());
 }
 
 // Filters unimportant stats from the unit config and returns a checksum of

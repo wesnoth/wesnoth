@@ -67,8 +67,19 @@ typedef std::vector<language_def> language_list;
 
 struct symbol_table
 {
+	/**
+	 * Look up the string mappings given in [language] tags. If the key is not
+	 * found, fall back to returning a string that's only meant for developers
+	 * to see.
+	 */
 	const t_string& operator[](const std::string& key) const;
 	const t_string& operator[](const char* key) const;
+	/**
+	 * Look up the string mappings given in [language] tags. If the key is not
+	 * found, returns symbol_table::end().
+	 */
+	utils::string_map::const_iterator find(const std::string& key) const;
+	utils::string_map::const_iterator end() const;
 };
 
 //table of strings which are displayed to the user. Maps ids -> text.
