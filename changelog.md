@@ -10,6 +10,8 @@
    * Updated translations: British English, Slovak
  ### Units
    * Added missing Seahorse graphics
+   * Revised Jinn (unit config and graphics)
+   * Fire Wraith added
  ### User interface
  ### WML Engine
    * add 'unslowable' and 'unpetrifiable' status to immune to slow or petrifies
