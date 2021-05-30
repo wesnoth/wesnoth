@@ -6,6 +6,8 @@
  ### Multiplayer
  ### Packaging
  ### Terrain
+   * Added some great tree variations
+   * Added 'icy cobbles' (terrain code `Rra`) - mostly useful for the transitions
  ### Translations
    * Updated translations: British English, Slovak
  ### Units
