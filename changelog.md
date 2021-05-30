@@ -19,6 +19,7 @@
    * add 'unslowable' and 'unpetrifiable' status to immune to slow or petrifies
  ### Miscellaneous and Bug Fixes
    * The unit description tooltip in the sidebar now includes the text from `[special_note]`s.
+   * Added a collection of item images
 
 ## Version 1.15.13
  ### Add-ons client
