@@ -1,5 +1,7 @@
 ## Version 1.15.13+dev
  ### Add-ons client
+   * Fixed: using the versions drop-down in small-screen mode returned to the title screen (issue #5810)
+   * Fixed: keyboard input in small-screen mode returned to the title screen (part of issue #3059)
  ### Add-ons server
  ### Campaigns
  ### Editor
