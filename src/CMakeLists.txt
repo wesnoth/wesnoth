@@ -139,7 +139,7 @@ if(ENABLE_GAME OR ENABLE_TESTS)
 	add_library(wesnoth-client STATIC ${wesnoth_sources} ${lua_sources} ${wesnoth_game_sources} ${wesnoth_sdl_sources})
 
 	# widgets need special handling since otherwise the way they're registered causes the linker to remove them since it incorrectly thinks they're unused
-	add_library(wesnoth-widgets ${wesnoth_widget-sources})
+	add_library(wesnoth-widgets STATIC ${wesnoth_widget-sources})
 	if(APPLE)
 		set(WIDGETS_LIB -Wl,-force_load wesnoth-widgets)
 	elseif(NOT WIN32)
