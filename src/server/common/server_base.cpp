@@ -76,7 +76,7 @@ void server_base::start_server()
 	boost::asio::ip::tcp::endpoint endpoint_v4(boost::asio::ip::tcp::v4(), port_);
 	boost::asio::spawn(io_service_, [this, endpoint_v4](boost::asio::yield_context yield) { serve(yield, acceptor_v4_, endpoint_v4); });
 
-	handshake_response_.connection_num = htonl(42);
+	handshake_response_ = htonl(42);
 
 #ifndef _WIN32
 	sighup_.async_wait(
@@ -140,7 +140,7 @@ void server_base::serve(boost::asio::yield_context yield, boost::asio::ip::tcp::
 
 	switch(ntohl(protocol_version)) {
 		case 0:
-			async_write(*socket, boost::asio::buffer(handshake_response_.buf, 4), yield[error]);
+			async_write(*socket, boost::asio::buffer(reinterpret_cast<std::byte*>(&handshake_response_), 4), yield[error]);
 			if(check_error(error, socket)) return;
 			final_socket = socket;
 			break;

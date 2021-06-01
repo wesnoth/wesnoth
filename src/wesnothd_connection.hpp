@@ -48,11 +48,6 @@
 
 class config;
 
-union data_union {
-	char binary[4];
-	uint32_t num;
-};
-
 /** A class that represents a TCP/IP connection to the wesnothd server. */
 class wesnothd_connection
 {
@@ -173,7 +168,7 @@ private:
 	void handshake();
 	void handle_handshake(const boost::system::error_code& ec);
 
-	data_union handshake_response_;
+	uint32_t handshake_response_;
 
 	void fallback_to_unencrypted();
 

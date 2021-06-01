@@ -131,10 +131,7 @@ protected:
 	void start_server();
 	void serve(boost::asio::yield_context yield, boost::asio::ip::tcp::acceptor& acceptor, boost::asio::ip::tcp::endpoint endpoint);
 
-	union {
-		uint32_t connection_num;
-		char buf[4];
-	} handshake_response_;
+	uint32_t handshake_response_;
 
 	virtual void handle_new_client(socket_ptr socket) = 0;
 	virtual void handle_new_client(tls_socket_ptr socket) = 0;

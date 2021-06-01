@@ -139,7 +139,7 @@ void connection::handshake()
 		std::bind(&connection::handle_write, this, std::placeholders::_1, std::placeholders::_2)
 	);
 
-	boost::asio::async_read(*utils::get<raw_socket>(socket_), boost::asio::buffer(&handshake_response_.binary, 4),
+	boost::asio::async_read(*utils::get<raw_socket>(socket_), boost::asio::buffer(reinterpret_cast<std::byte*>(&handshake_response_), 4),
 		std::bind(&connection::handle_handshake, this, std::placeholders::_1));
 }
 
@@ -156,13 +156,13 @@ void connection::handle_handshake(const boost::system::error_code& ec)
 	}
 
 	if(use_tls_) {
-		if(handshake_response_.num == 0xFFFFFFFFU) {
+		if(handshake_response_ == 0xFFFFFFFFU) {
 			use_tls_ = false;
 			handle_handshake(ec);
 			return;
 		}
 
-		if(handshake_response_.num == 0x00000000) {
+		if(handshake_response_ == 0x00000000) {
 			load_tls_root_certs(tls_context_);
 			raw_socket s { std::move(utils::get<raw_socket>(socket_)) };
 			tls_socket ts { new tls_socket::element_type { std::move(*s), tls_context_ } };
@@ -299,10 +299,10 @@ std::size_t connection::is_read_complete(const boost::system::error_code& ec, st
 
 	if(!bytes_to_read_) {
 		std::istream is(read_buf_.get());
-		data_union data_size;
+		uint32_t data_size;
 
-		is.read(data_size.binary, 4);
-		bytes_to_read_ = ntohl(data_size.num) + 4;
+		is.read(reinterpret_cast<char*>(&data_size), 4);
+		bytes_to_read_ = ntohl(data_size) + 4;
 
 		// Close immediately if we receive an invalid length
 		if(bytes_to_read_ < 4) {
