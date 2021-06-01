@@ -887,16 +887,6 @@ template<class SocketPtr> bool server::authenticate(
 	registered = false;
 
 	if(user_handler_) {
-		const std::string salt = user_handler_->extract_salt(username);
-		if(salt.empty()) {
-			async_send_error(socket,
-				"Even though your nickname is registered on this server you "
-				"cannot log in due to an error in the hashing algorithm. "
-				"Logging into your forum account on https://forums.wesnoth.org "
-				"may fix this problem.");
-			return false;
-		}
-		const auto [hashed_password, nonce] = hash_password(password, salt, username);
 		const bool exists = user_handler_->user_exists(username);
 
 		// This name is registered but the account is not active
@@ -906,6 +896,17 @@ template<class SocketPtr> bool server::authenticate(
 				"nickname until you activate your account via email or ask an administrator to do it for you.",
 				MP_NAME_INACTIVE_WARNING);
 		} else if(exists) {
+			const std::string salt = user_handler_->extract_salt(username);
+			if(salt.empty()) {
+				async_send_error(socket,
+					"Even though your nickname is registered on this server you "
+					"cannot log in due to an error in the hashing algorithm. "
+					"Logging into your forum account on https://forums.wesnoth.org "
+					"may fix this problem.");
+				return false;
+			}
+			const auto [hashed_password, nonce] = hash_password(password, salt, username);
+
 			// This name is registered and no password provided
 			if(password.empty()) {
 				if(!name_taken) {
