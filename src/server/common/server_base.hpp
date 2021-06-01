@@ -55,6 +55,25 @@ struct server_shutdown : public game::error
 	server_shutdown(const std::string& msg) : game::error(msg) {}
 };
 
+/**
+ * Base class for implementing servers that use gzipped-WML network protocol
+ *
+ * The protocol is based on TCP connection between client and server.
+ * Before WML payloads can be sent a handshake is required. Handshake process is as follows:
+ * - client establishes a TCP connection to server.
+ * - client sends 32-bit integer(network byte order) representing protocol version requested.
+ * - server receives 32-bit integer. Depending on number received server does the following:
+ *   0: unencrypted protocol, proceed to next item
+ *   1: depending on whether TLS is enabled on server
+ *     if TLS enabled: send 32-bit integer 0 and immediately start TLS, client is expected to start TLS on receiving this 0
+ *     if TLS disabled: send 32-bit integer 0xFFFFFFFF, on receiving this client should proceed as with unencrypted connection or immediately close
+ *   any other number: server closes connection immediately
+ * - at this point handshake is completed and client and server can exchange WML messages
+ *
+ * Message format is as follows:
+ * - 32-bit unsigned integer(network byte order), this is size of the following payload
+ * - payload: gzipped WML data, which is WML text fed through gzip utility or the equivalent library function.
+ */
 class server_base
 {
 public:
