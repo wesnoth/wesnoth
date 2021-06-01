@@ -63,7 +63,7 @@ struct server_shutdown : public game::error
  * - client establishes a TCP connection to server.
  * - client sends 32-bit integer(network byte order) representing protocol version requested.
  * - server receives 32-bit integer. Depending on number received server does the following:
- *   0: unencrypted protocol, proceed to next item
+ *   0: unencrypted protocol, send unspecified 32-bit integer for compatibility(current implementation sends 42)
  *   1: depending on whether TLS is enabled on server
  *     if TLS enabled: send 32-bit integer 0 and immediately start TLS, client is expected to start TLS on receiving this 0
  *     if TLS disabled: send 32-bit integer 0xFFFFFFFF, on receiving this client should proceed as with unencrypted connection or immediately close
