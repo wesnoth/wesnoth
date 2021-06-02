@@ -310,7 +310,7 @@ jobs:
           path: |
             D:/a/wesnoth/vcpkg
             D:/a/wesnoth/wesnoth/vcpkg_installed
-          key: windows-master-N007
+          key: windows-master-N008
 
       - name: Add msbuild to PATH
         uses: microsoft/setup-msbuild@v1.0.2
@@ -356,7 +356,7 @@ jobs:
           submodules: "recursive"
 
       - name: Cache object files
-        id: windows-master-N007
+        id: windows-master-N008
         uses: actions/cache@v2
         with:
           path: |
