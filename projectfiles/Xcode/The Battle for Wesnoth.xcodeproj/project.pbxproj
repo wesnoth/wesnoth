@@ -25,7 +25,6 @@
 		460D89B724DC7863000B1ABC /* server.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 460D89AE24DC7862000B1ABC /* server.cpp */; };
 		460D89B824DC7863000B1ABC /* fs_commit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 460D89B024DC7862000B1ABC /* fs_commit.cpp */; };
 		460D89B924DC7863000B1ABC /* blacklist.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 460D89B424DC7862000B1ABC /* blacklist.cpp */; };
-		460D89BA24DC79D8000B1ABC /* user_handler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 460D899024DC7842000B1ABC /* user_handler.cpp */; };
 		460D89BB24DC945F000B1ABC /* apple_video.mm in Sources */ = {isa = PBXBuildFile; fileRef = 46A72F3C24D6F6B30033B5A9 /* apple_video.mm */; };
 		460D89C224DC95DD000B1ABC /* ban_check.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 460D89BE24DC95DC000B1ABC /* ban_check.cpp */; };
 		460D89C324DC95DD000B1ABC /* ban_check.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 460D89BE24DC95DC000B1ABC /* ban_check.cpp */; };
@@ -1464,7 +1463,6 @@
 		460D898D24DC7841000B1ABC /* forum_user_handler.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = forum_user_handler.hpp; path = ../../src/server/common/forum_user_handler.hpp; sourceTree = SOURCE_ROOT; };
 		460D898E24DC7841000B1ABC /* dbconn.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = dbconn.cpp; path = ../../src/server/common/dbconn.cpp; sourceTree = SOURCE_ROOT; };
 		460D898F24DC7841000B1ABC /* simple_wml.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = simple_wml.hpp; path = ../../src/server/common/simple_wml.hpp; sourceTree = SOURCE_ROOT; };
-		460D899024DC7842000B1ABC /* user_handler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = user_handler.cpp; path = ../../src/server/common/user_handler.cpp; sourceTree = SOURCE_ROOT; };
 		460D899124DC7842000B1ABC /* user_handler.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = user_handler.hpp; path = ../../src/server/common/user_handler.hpp; sourceTree = SOURCE_ROOT; };
 		460D899324DC7842000B1ABC /* forum_user_handler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = forum_user_handler.cpp; path = ../../src/server/common/forum_user_handler.cpp; sourceTree = SOURCE_ROOT; };
 		460D899524DC7842000B1ABC /* simple_wml.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = simple_wml.cpp; path = ../../src/server/common/simple_wml.cpp; sourceTree = SOURCE_ROOT; };
@@ -3412,7 +3410,6 @@
 				460D899724DC7842000B1ABC /* server_base.hpp */,
 				460D899524DC7842000B1ABC /* simple_wml.cpp */,
 				460D898F24DC7841000B1ABC /* simple_wml.hpp */,
-				460D899024DC7842000B1ABC /* user_handler.cpp */,
 				460D899124DC7842000B1ABC /* user_handler.hpp */,
 			);
 			path = common;
@@ -6296,7 +6293,6 @@
 				B5BB6C6F0F8941CD00444FBF /* game_config.cpp in Sources */,
 				EC4DF45619FEA7A8000EC086 /* gettext.cpp in Sources */,
 				B5BB6C800F89435300444FBF /* log.cpp in Sources */,
-				460D89BA24DC79D8000B1ABC /* user_handler.cpp in Sources */,
 				460D899924DC7843000B1ABC /* dbconn.cpp in Sources */,
 				460D899F24DC7843000B1ABC /* simple_wml.cpp in Sources */,
 				460D898924DC7831000B1ABC /* metrics.cpp in Sources */,
