@@ -60,7 +60,7 @@ public:
 	 * Currently the login procedure in the server and client code is hardcoded
 	 * for the forum_user_handler implementation
 	 */
-	virtual bool login(const std::string& name, const std::string& password, const std::string& seed) = 0;
+	virtual bool login(const std::string& name, const std::string& password) = 0;
 
 	/** Executed when the user with the given name logged in. */
 	virtual void user_logged_in(const std::string& name) = 0;

@@ -136,11 +136,11 @@ public:
 	 * Handles hashing the password provided by the player before comparing it to the hashed password in the forum database.
 	 *
 	 * @param pw The plaintext password.
-	 * @param plain_salt The salt as retrieved from the forum database.
+	 * @param salt The salt as retrieved from the forum database.
 	 * @param username The player attempting to log in.
 	 * @return The hashed password, or empty if the password couldn't be hashed.
 	 */
-	std::pair<std::string, std::string> hash_password(const std::string& pw, const std::string& plain_salt, const std::string& username);
+	std::string hash_password(const std::string& pw, const std::string& salt, const std::string& username);
 
 protected:
 	unsigned short port_;
