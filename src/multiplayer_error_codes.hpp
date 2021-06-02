@@ -32,7 +32,6 @@
 
 #define MP_PASSWORD_REQUEST                     "200"
 #define MP_PASSWORD_REQUEST_FOR_LOGGED_IN_NAME  "201"
-#define MP_NO_SEED_ERROR                        "202"
 #define MP_INCORRECT_PASSWORD_ERROR             "203"
 #define MP_TOO_MANY_ATTEMPTS_ERROR              "204"
 #define MP_HASHING_PASSWORD_FAILED              "205"

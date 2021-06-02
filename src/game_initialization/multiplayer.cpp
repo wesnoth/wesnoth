@@ -444,8 +444,6 @@ std::unique_ptr<wesnothd_connection> mp_manager::open_connection(std::string hos
 					error_message = VGETTEXT("The nickname ‘$nick’ is registered on this server.", i18n_symbols)
 							+ "\n\n" + _("WARNING: There is already a client using this nickname, "
 							"logging in will cause that client to be kicked!");
-				} else if(ec == MP_NO_SEED_ERROR) {
-					error_message = _("Error in the login procedure (the server had no seed for your connection).");
 				} else if(ec == MP_INCORRECT_PASSWORD_ERROR) {
 					error_message = _("The password you provided was incorrect.");
 				} else if(ec == MP_TOO_MANY_ATTEMPTS_ERROR) {

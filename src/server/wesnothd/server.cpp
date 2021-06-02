@@ -905,7 +905,7 @@ template<class SocketPtr> bool server::authenticate(
 					"may fix this problem.");
 				return false;
 			}
-			const auto [hashed_password, nonce] = hash_password(password, salt, username);
+			const std::string hashed_password = hash_password(password, salt, username);
 
 			// This name is registered and no password provided
 			if(password.empty()) {
@@ -923,19 +923,14 @@ template<class SocketPtr> bool server::authenticate(
 				return false;
 			}
 
-			// A password was provided, however the generated nonce is empty for some reason
-			if(nonce.empty()) {
-				send_password_request(socket, "Please try again.", MP_NO_SEED_ERROR);
-				return false;
-			}
 			// hashing the password failed
 			// note: this could be due to other related problems other than *just* the hashing step failing
-			else if(hashed_password.empty()) {
+			if(hashed_password.empty()) {
 				async_send_error(socket, "Password hashing failed.", MP_HASHING_PASSWORD_FAILED);
 				return false;
 			}
 			// This name is registered and an incorrect password provided
-			else if(!(user_handler_->login(username, hashed_password, nonce))) {
+			else if(!(user_handler_->login(username, hashed_password))) {
 				const std::time_t now = std::time(nullptr);
 
 				login_log login_ip { client_address(socket), 0, now };
