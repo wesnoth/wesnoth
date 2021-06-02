@@ -20,7 +20,7 @@ namespace network_asio
 void load_tls_root_certs(boost::asio::ssl::context &ctx)
 {
 #ifdef _WIN32
-	HCERTSTORE hStore = CertOpenSystemStore(0, "ROOT");
+	HCERTSTORE hStore = CertOpenSystemStore(0, TEXT("ROOT"));
 	assert(hStore != NULL);
 
 	X509_STORE *store = X509_STORE_new();
