@@ -73,6 +73,10 @@
 		<Unit filename="../../packaging/windows/wesnothd.rc">
 			<Option compilerVar="WINDRES" />
 		</Unit>
+		<Unit filename="../../src/crypt_blowfish/crypt_blowfish.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../src/crypt_blowfish/crypt_blowfish.h" />
 		<Unit filename="../../src/about.hpp" />
 		<Unit filename="../../src/color.cpp" />
 		<Unit filename="../../src/color.hpp" />
@@ -95,6 +99,8 @@
 		<Unit filename="../../src/gettext.hpp" />
 		<Unit filename="../../src/gettext.cpp" />
 		<Unit filename="../../src/global.hpp" />
+		<Unit filename="../../src/hash.cpp" />
+		<Unit filename="../../src/hash.hpp" />
 		<Unit filename="../../src/libc_error.hpp" />
 		<Unit filename="../../src/log.cpp" />
 		<Unit filename="../../src/log.hpp" />
