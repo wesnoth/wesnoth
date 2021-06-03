@@ -827,7 +827,7 @@ void server::send_message(const std::string& msg, const any_socket_ptr& sock)
 }
 
 inline std::string client_address(const any_socket_ptr& sock) {
-	return utils::visit([](auto&& sock) { return client_address(sock); }, sock);
+	return utils::visit([](auto&& sock) { return ::client_address(sock); }, sock);
 }
 
 void server::send_error(const std::string& msg, const any_socket_ptr& sock)
