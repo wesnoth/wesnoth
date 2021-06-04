@@ -23,7 +23,7 @@ msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2021-05-15 22:01-0400\n"
-"PO-Revision-Date: 2020-05-12 10:18+0200\n"
+"PO-Revision-Date: 2021-06-03 14:20+0200\n"
 "Last-Translator: Pepe <donpepe1963@gmail.com>\n"
 "Language-Team: wesnoth-es-trad-1_14@googlegroups.com\n"
 "Language: es\n"
@@ -31,7 +31,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Poedit 2.3\n"
 "X-Poedit-Bookmarks: 125,-1,-1,-1,-1,-1,-1,-1,-1,-1\n"
 
 #. [time]: id=underground
@@ -116,10 +116,8 @@ msgstr "Editor de terreno"
 #. [section]: id=editor_mode_scenario
 #. [topic]: id=..editor_mode_scenario
 #: data/core/editor/help.cfg:20 data/core/editor/help.cfg:269
-#, fuzzy
-#| msgid "Map/Scenario Editor"
 msgid "Scenario Editor"
-msgstr "Editor de Mapa/Escenario"
+msgstr "Editor de escenario"
 
 #. [topic]: id=editor_tool_paint
 #: data/core/editor/help.cfg:28
@@ -145,26 +143,43 @@ msgid ""
 "\n"
 "The selected brush changes the size of the tool:"
 msgstr ""
+"Dibuja casillas de terreno en el mapa.\n"
+"\n"
+"La herramienta de terreno utiliza los tamaños de brocha y la paleta de "
+"terreno.\n"
+"\n"
+"<bold>text='Modificadores de teclado'</bold>\n"
+"\n"
+"• Mayúsculas+clic de ratón: si se ha seleccionado un terreno base, cambia la "
+"base sin cambiar la cobertura. Si se ha seleccionado una cobertura, cambia "
+"la cobertura sin cambiar la base.\n"
+"• Control+clic de ratón: Selecciona el terreno bajo el cursor del ratón, "
+"como si se hubiera seleccionado con la paleta de terreno (toma tanto la base "
+"como la cobertura).\n"
+"\n"
+"<bold>text='Tamaños de brocha'</bold>\n"
+"\n"
+"La brocha seleccionada cambia el tamaño de la herramienta:"
 
 #. [topic]: id=editor_tool_paint
 #: data/core/editor/help.cfg:41
 msgid "Paint single hexes."
-msgstr ""
+msgstr "Dibuja hexágonos individuales."
 
 #. [topic]: id=editor_tool_paint
 #: data/core/editor/help.cfg:42
 msgid "Paint seven hexes at a time."
-msgstr ""
+msgstr "Dibuja siete hexágonos a la vez."
 
 #. [topic]: id=editor_tool_paint
 #: data/core/editor/help.cfg:43
 msgid "Paint nineteen hexes at a time."
-msgstr ""
+msgstr "Dibuja diez y nueve hexágonos a la vez."
 
 #. [topic]: id=editor_tool_paint
 #: data/core/editor/help.cfg:44 data/core/editor/help.cfg:45
 msgid "Paint three hexes in a line."
-msgstr ""
+msgstr "Dibuja tres hexágonos en fila."
 
 #. [topic]: id=editor_tool_fill
 #: data/core/editor/help.cfg:52
@@ -186,6 +201,18 @@ msgid ""
 "• Control+mouse click: Select the terrain under the mouse cursor, as if it "
 "had been selected on the terrain palette (picks up both base and overlay)."
 msgstr ""
+"Rellena una región de terreno repetido con otro distinto.\n"
+"\n"
+"La herramienta de relleno utiliza la paleta de terreno.\n"
+"\n"
+"<bold>text='Modificadores de teclado'</bold>\n"
+"\n"
+"• Mayúscula+clic de ratón: si se ha seleccionado un terreno base, cambia la "
+"base sin cambiar la cobertura. Si se ha seleccionado una cobertura, cambia "
+"la cobertura sin cambiar la base.\n"
+"• Control+clic de ratón: Selecciona el terreno bajo el cursor del ratón, "
+"como si se hubiera seleccionado con la paleta de terreno (toma tanto la base "
+"como la cobertura)."
 
 #. [topic]: id=editor_tool_select
 #: data/core/editor/help.cfg:67
@@ -208,31 +235,43 @@ msgid ""
 "\n"
 "The selected brush changes the size of the tool:"
 msgstr ""
+"Selecciona un grupo de casillas hexagonales , para usar con los botones de "
+"cortar, copiar y rellenar selección bajo la barra de menús.\n"
+"\n"
+"<bold>text='Modificadores de teclado'</bold>\n"
+"\n"
+"• Mayúscula+clic de ratón: modo «Varita mágica», selecciona el hexágono bajo "
+"el cursor del ratón, y añade los hexágonos con el mismo tipo de terreno.\n"
+"• Control+clic de ratón: Desmarca los hexágonos.\n"
+"\n"
+"<bold>text='Tamaños de brocha'</bold>\n"
+"\n"
+"La brocha seleccionada cambia el tamaño de la herramienta:"
 
 #. [topic]: id=editor_tool_select
 #: data/core/editor/help.cfg:78
 msgid "Select single hexes."
-msgstr ""
+msgstr "Selecciona hexágonos individuales."
 
 #. [topic]: id=editor_tool_select
 #: data/core/editor/help.cfg:79
 msgid "Select seven hexes at a time."
-msgstr ""
+msgstr "Selecciona siete hexágonos a la vez."
 
 #. [topic]: id=editor_tool_select
 #: data/core/editor/help.cfg:80
 msgid "Select nineteen hexes at a time."
-msgstr ""
+msgstr "Selecciona diez y nueve hexágonos a la vez."
 
 #. [topic]: id=editor_tool_select
 #: data/core/editor/help.cfg:81 data/core/editor/help.cfg:82
 msgid "Select three hexes in a line."
-msgstr ""
+msgstr "Selecciona tres hexágonos en fila."
 
 #. [topic]: id=editor_tool_paste
 #: data/core/editor/help.cfg:89
 msgid "Clipboard and Paste Tool"
-msgstr ""
+msgstr "Herramienta de portapapeles y de pegado"
 
 #. [topic]: id=editor_tool_paste
 #: data/core/editor/help.cfg:90
@@ -249,33 +288,44 @@ msgid ""
 "\n"
 "The paste tool also has some clipboard-manipulation functions:"
 msgstr ""
+"Gira, voltea y pega el terreno en el portapapeles\n"
+"\n"
+"Los hexágonos pueden ser cortados o copiados al portapapeles usando la "
+"<ref>dst='editor_tool_select' text='Herramienta de selección'</ref>.\n"
+"\n"
+"La herramienta de pegado muestra el portapapeles remarcado, en el que puede "
+"hacerse un pegado con un clic de ratón. Solo se muestra un remarcado, pero "
+"los errores pueden corregirse con la función de deshacer, que está vinculada "
+"a la combinación de teclas Control+Z y a la misma tecla que la función "
+"deshacer del juego.\n"
+"\n"
+"La herramienta de pegado también tiene algunas funciones de manejo del "
+"portapapeles:"
 
 #. [topic]: id=editor_tool_paste
 #: data/core/editor/help.cfg:97
 msgid "Rotate clockwise by 60°."
-msgstr ""
+msgstr "Giro de 60° en el sentido de las agujas del reloj."
 
 #. [topic]: id=editor_tool_paste
 #: data/core/editor/help.cfg:98
 msgid "Rotate counter-clockwise by 60°."
-msgstr ""
+msgstr "Giro de 60° en el sentido contrario de las agujas del reloj."
 
 #. [topic]: id=editor_tool_paste
 #: data/core/editor/help.cfg:99
 msgid "Flip horizontally"
-msgstr ""
+msgstr "Volteo horizontal"
 
 #. [topic]: id=editor_tool_paste
 #: data/core/editor/help.cfg:100
 msgid "Flip vertically"
-msgstr ""
+msgstr "Volteo vertical"
 
 #. [topic]: id=editor_tool_starting
 #: data/core/editor/help.cfg:107
-#, fuzzy
-#| msgid "Starting Positions Howto"
 msgid "Starting Locations Tool"
-msgstr "Guía de posiciones iniciales"
+msgstr "Guía de posiciones de inicio"
 
 #. [topic]: id=editor_tool_starting
 #: data/core/editor/help.cfg:109
@@ -310,6 +360,37 @@ msgid ""
 "location for placing with a subsequent mouse click, as if it was selected in "
 "the editor palette."
 msgstr ""
+"Define la posición de inicio del líder de cada bando.\n"
+"\n"
+"Esta herramienta asigna las posiciones de inicio predefinidas de los líderes "
+"de cada bando, y de posiciones especiales designadas. Ambos tipos de "
+"posiciones se activan tanto en el modo de <ref>dst='..editor_mode_terrain' "
+"text='Editor de terreno'</ref> como en el de <ref>dst='.."
+"editor_mode_scenario' text='Editor de escenario'</ref>. Los nombres de "
+"posición se muestran en una lista en la paleta de edición, haciendo clic en "
+"el mapa se pondrá ese nombre en un hexágono, cada posición puede ponerse "
+"unicamente en un solo hexágono, y el editor solo permitirá una posición por "
+"hexágono.\n"
+"\n"
+"Para añadir posiciones especiales designadas, haga clic en «Añadir» en la "
+"parte baja de la paleta de edición, e introduzca el nombre. Estos nombres "
+"han de comenzar con una letra y pueden contener números y guiones bajos.\n"
+"\n"
+"Se pueden añadir más de nueve equipos a un mapa, haciendo clic en «Añadir» e "
+"introduciendo un número, por ejemplo «10». La IU mostrará esta entrada de "
+"forma automática como el «Jugador 10».\n"
+"\n"
+"Se puede acceder a las posiciones designadas desde WML usando los filtros "
+"estándar de posición <italic>text='location_id='</italic>. También se puede "
+"acceder a las posiciones de inicio de los jugadores desde WML usando "
+"<italic>text='location_id=1'</italic>, <italic>text='location_id=2'</"
+"italic>, etc. — use solo el número, sin añadir «Player» delante del número.\n"
+"\n"
+"<bold>text='Modificadores de teclado'</bold>\n"
+"\n"
+"• Control+clic de ratón en un hexágono que ya tiene una posición: selecciona "
+"esa posición para volver a ser colocada con un clic de ratón, como si "
+"hubiera sido seleccionada con la paleta de edición."
 
 #. [topic]: id=editor_tool_label
 #: data/core/editor/help.cfg:129
@@ -329,11 +410,21 @@ msgid ""
 "This tool is only available in Scenario Mode; the decorations are "
 "implemented in the scenario using WML’s <italic>text='[label]'</italic> tag."
 msgstr ""
+"Coloca etiquetas de texto en el mapa.\n"
+"\n"
+"• Clic izquierdo abrirá una ventana de diálogo para crear una nueva etiqueta "
+"o para editar una existente.\n"
+"• Clic derecho borra.\n"
+"• Arrastrar y soltar con el botón izquierdo del ratón mueve las etiquetas.\n"
+"\n"
+"Esta herramienta solo está disponible en el modo escenario; los decorados se "
+"aplican al escenario usando la marca WML <italic>text='[label]'</italic>."
 
+# cosas? elementos? artículos?
 #. [topic]: id=editor_tool_scenery
 #: data/core/editor/help.cfg:145
 msgid "Item Tool (Scenery Tool)"
-msgstr ""
+msgstr "Herramienta de objetos (Herramienta de escenario)"
 
 #. [topic]: id=editor_tool_scenery
 #: data/core/editor/help.cfg:146
@@ -349,11 +440,22 @@ msgid ""
 "of the terrain and are implemented in the scenario using WML’s "
 "<italic>text='[item]'</italic> tag."
 msgstr ""
+"La herramienta de objetos permite situar ornamentos como molinos de viento, "
+"estanterías y monolitos. En el mismo hexágono pueden ponerse varios "
+"objetos.\n"
+"\n"
+"<bold>text='Nota:'</bold> la herramienta no permite borrar objetos una vez "
+"situados, ni permite deshacer. Solo se pueden arreglar los errores editando "
+"el archivo WML generado.\n"
+"\n"
+"Esta herramienta solo está disponible en modo escenario; la decoración no "
+"forma parte del terreno y se añade al escenario usando la marca WML "
+"<italic>text='[item]'</italic>."
 
 #. [topic]: id=editor_tool_village
 #: data/core/editor/help.cfg:159
 msgid "Village Ownership Tool"
-msgstr "Herramienta de población"
+msgstr "Herramienta de control de aldeas"
 
 #. [topic]: id=editor_tool_village
 #: data/core/editor/help.cfg:160
@@ -369,6 +471,17 @@ msgid ""
 "stored by adding WML <italic>text='[village]'</italic> tags to the "
 "appropriate <italic>text='[side]'</italic>."
 msgstr ""
+"Esta herramienta asigna el control de las aldeas al principio del escenario. "
+"Se han de colocar primero las aldeas en el terreno con la "
+"<ref>dst='editor_tool_paint' text='Herramienta de dibujo'</ref>.\n"
+"\n"
+"• Clic izquierdo asignará la aldea al bando actualmente seleccionado.\n"
+"• Clic derecho volverá a dejar la aldea sin dueño.\n"
+"\n"
+"Esta herramienta solo está disponible en modo escenario; la información "
+"sobre el control se guarda añadiendo las marcas WML "
+"<italic>text='[village]'</italic> al correspondiente <italic>text='[side]'</"
+"italic>."
 
 #. [topic]: id=editor_tool_unit
 #: data/core/editor/help.cfg:174
@@ -389,6 +502,16 @@ msgid ""
 "<italic>text='[unit]'</italic> tags to the appropriate "
 "<italic>text='[side]'</italic>."
 msgstr ""
+"Coloca unidades pertenecientes al bando seleccionado.\n"
+"\n"
+"• Clic izquierdo colocará una unidad.\n"
+"• Arrastrar y soltar con el botón izquierdo moverá una unidad ya colocada.\n"
+"• Se han añadido varias operaciones al menú que emerge al hacer clic derecho "
+"sobre una unidad ya colocada en su hexágono.\n"
+"\n"
+"Esta herramienta solo está disponible en modo escenario; añade las marcas "
+"WML <italic>text='[unit]'</italic> al <italic>text='[side]'</italic> "
+"apropiado."
 
 #. [topic]: id=editor_named_area
 #: data/core/editor/help.cfg:190
@@ -421,6 +544,29 @@ msgid ""
 "name implies time, it is now more generic and can be used for other purposes "
 "without needing to change the time-of-day schedule in the area."
 msgstr ""
+"Esta herramienta crea grupos de casillas que se pueden usar en filtros de "
+"localización estándar (concepto explicado en detalle en la Wiki) de "
+"secuencias de comandos WML, usando la id del área en el atributo de "
+"<italic>text='area='</italic> del filtro. Por ejemplo:\n"
+"\n"
+"• asignando una franja horaria local a este grupo de hexágonos\n"
+"• filtrando el grupo de casillas con un disparador y un evento cuando una "
+"unidad se mueve a una de ellas\n"
+"\n"
+"Para utilizar la herramienta:\n"
+"\n"
+"• seleccione los hexágonos usando la <ref>dst='editor_tool_select' "
+"text='herramienta de selección'</ref>\n"
+"• en el menú de Áreas, seleccione Añadir área nueva\n"
+"• después en el menú de Áreas, seleccione Guardar selección en el área\n"
+"• después en el menú de áreas, seleccione Renombrar el área seleccionada y "
+"elegir un nombre para el área\n"
+"\n"
+"Esta herramienta solo está disponible en modo escenario; añade marcas WML "
+"<italic>text='[time_area]'</italic> al escenario. Aunque el nombre de las "
+"marcas denota tiempo, ahora es más genérico y puede ser usado para "
+"propósitos distintos sin que sea necesario cambiar la plantilla de franjas "
+"horarias en el área."
 
 #. [topic]: id=editor_playlist
 #: data/core/editor/help.cfg:212
@@ -436,6 +582,11 @@ msgid ""
 "This tool is only available in Scenario Mode; it adds WML "
 "<italic>text='[music]'</italic> tags to the scenario."
 msgstr ""
+"Muestra una lista de pistas musicales conocidas por el editor, con casillas "
+"de activación para habilitarlas.\n"
+"\n"
+"Esta herramienta solo está disponible en modo escenario; añade marcas WML "
+"<italic>text='[music]'</italic> al escenario."
 
 #. [topic]: id=..editor
 #: data/core/editor/help.cfg:223
@@ -477,7 +628,42 @@ msgid ""
 "it is one of the main blockers for the 1.16 release, however in 1.14 its "
 "quality is far below that of the game and the terrain mode."
 msgstr ""
+"El editor de mapas y escenarios de Wesnoth permite a los usuarios crear y "
+"editar los mapas en los que transcurre cada escenario de Wesnoth. También "
+"proporciona un conjunto limitado de características para configurar un "
+"escenario básico.\n"
+"\n"
+"El editor se puede activar desde la opción de la pantalla de inicio "
+"<italic>text='Editor de Mapas'</italic>.\n"
+"\n"
+"<header>text='Modos de edición'</header>\n"
+"\n"
+"El editor proporciona dos formas de operar: modo terreno y modo escenario.\n"
+"\n"
+"El <ref>dst='..editor_mode_terrain' text='Modo Terreno'</ref> se parece a "
+"una sencilla aplicación de dibujo, con herramientas para "
+"<ref>dst='editor_tool_paint' text='dibujar'</ref>, "
+"<ref>dst='editor_tool_fill' text='rellenar'</ref>, "
+"<ref>dst='editor_tool_select' text='seleccionar (y copiar)'</ref>, y "
+"<ref>dst='editor_tool_paste' text='pegar'</ref>. También tiene la "
+"herramienta para configurar las <ref>dst='editor_tool_starting' "
+"text='posiciones de inicio'</ref> de los líderes.\n"
+"\n"
+"El <ref>dst='..editor_mode_scenario' text='modo escenario'</ref>, además de "
+"las herramientas disponibles en el modo terreno, proporciona ayuda para "
+"añadir <ref>dst='editor_tool_label' text='etiquetas'</ref>, "
+"<ref>dst='editor_tool_scenery' text='objetos de escenario'</ref>, "
+"<ref>dst='editor_tool_unit' text='unidades'</ref> además del líder, y "
+"asignar <ref>dst='editor_tool_village' text='control de aldeas'</ref> al "
+"principio del escenario. También hay un <ref>dst='editor_playlist' "
+"text='gestor de la lista de reproducción'</ref> para la música.\n"
+"\n"
+"<bold>text='Aviso: el modo escenario tiene errores de ejecución en la "
+"versión 1.14.'</bold> Su mejora es uno de los principales obstáculos para la "
+"versión 1.16, siendo así que en la 1.14 su calidad está muy por debajo de la "
+"del juego o del modo terreno."
 
+# No entiendo lo que quiere decir sobre como combina hexágonos, será que no uso nunca el editor de terreno.
 #. [topic]: id=..editor
 #: data/core/editor/help.cfg:238
 msgid ""
@@ -503,6 +689,28 @@ msgid ""
 "have their own terrains will need that add-on to tell the editor about their "
 "terrains."
 msgstr ""
+"<header>text='Qué es lo que *no* se tiene'</header>\n"
+"\n"
+"• Justo el mismo mapa que se genera en el juego\n"
+"\n"
+"El mapa no se ve exactamente igual en el juego al del editor, ya que esto "
+"depende de las reglas del terreno. Por ejemplo, cuando hay muchos hexágonos "
+"montañosos agrupados las reglas del terreno intentarán combinarlos dentro de "
+"rangos montañosos y grandes gráficos que abarcan varios hexágonos.\n"
+"\n"
+"• Manejadores de eventos y de secuencias de comandos\n"
+"\n"
+"El editor no es una herramienta para ayudarle a automatizar los manejadores "
+"de eventos del escenario.\n"
+"\n"
+"• Compatibilidad infinita hacia atrás\n"
+"\n"
+"El editor puede cargar la mayoría de los mapas de versiones más antiguas de "
+"Wesnoth, pero no de todas. Los mapas de versiones 1.3.2 y posteriores suelen "
+"estar soportados, a no ser que usen tipos de terreno que ya no forman parte "
+"del conjunto principal de Wesnoth. Los mapas de complementos que tienen sus "
+"propios tipos de terreno necesitarán ese complemento para informar al editor "
+"sobre sus tipos de terreno."
 
 #. [topic]: id=..editor_mode_terrain
 #: data/core/editor/help.cfg:258
@@ -518,6 +726,16 @@ msgid ""
 "resulting map can be found in the “Custom Maps” game type of the multiplayer "
 "“Create Game” dialog."
 msgstr ""
+"La funcionalidad del editor de terreno es similar a la de una sencilla "
+"aplicación de dibujo.\n"
+"\n"
+"La barra lateral derecha contiene, de arriba a abajo, el mini-mapa, el juego "
+"de herramientas (vea las páginas para cada herramienta), opciones de "
+"herramientas, y la <ref>dst='editor_palette' text='Paleta'</ref>.\n"
+"\n"
+"Cuando se guarda usando “Guardar mapa como” y guardando en el directorio "
+"predeterminado, el mapa resultante se puede encontrar con el diálogo «Crear "
+"partida» del tipo de juego «Mapas personalizados» de multijugador."
 
 #. [topic]: id=..editor_mode_scenario
 #: data/core/editor/help.cfg:270
@@ -527,6 +745,12 @@ msgid ""
 "additional WML to be written using a different tool; the scenario editor "
 "does not support scripting the scenario’s events."
 msgstr ""
+"El modo de editor de escenario aporta ayuda para algunas características WML "
+"en relación con los mapas, tales como áreas y objetos de escenario. La "
+"mayoría de los escenarios aún requerirán que se escriba código WML adicional "
+"haciendo uso de una herramienta diferente; el editor de escenario no da "
+"soporte para las secuencias de comandos que automatizan los eventos del "
+"escenario."
 
 #. [topic]: id=..editor_mode_scenario
 #: data/core/editor/help.cfg:272
@@ -538,6 +762,14 @@ msgid ""
 "• In scenario mode the “Areas” and “Side” menus are enabled.\n"
 "• In terrain-only mode the “Areas” and “Side” menus are grayed-out."
 msgstr ""
+"<header>text='Verificando si el editor está en modo escenario'</header>\n"
+"\n"
+"Puede verificar cual es el modo en el que se encuentra el editor mirando en "
+"la barra de menús.\n"
+"\n"
+"• En modo escenario los menús de «Áreas» y «Bando» se encuentran activados.\n"
+"• En modo solo-terreno los menús de «Áreas» y «Bando» se encuentran "
+"desactivados."
 
 #. [topic]: id=..editor_mode_scenario
 #: data/core/editor/help.cfg:279
@@ -553,6 +785,17 @@ msgid ""
 "To load a map that was created in the scenario editor, use “Load Map” from "
 "the “File” menu, and select the .cfg file (not a .map file)."
 msgstr ""
+"<header>text='Entrando en modo escenario'</header>\n"
+"\n"
+"Para iniciar un nuevo mapa en modo escenario, seleccione «Nuevo escenario» "
+"en el menú «Archivo».\n"
+"\n"
+"Si ya se encuentra editando un mapa en modo terreno, utilice «Guardar "
+"escenario como» desde el menú «Archivo»; esto cambiará al modo escenario.\n"
+"\n"
+"Para cargar un mapa que fue creado con el editor de escenario, utilice "
+"«Cargar mapa» desde el menú «Archivo»,y seleccione el archivo .cfg (no un "
+"archivo .map)."
 
 #. [topic]: id=..editor_mode_scenario
 #: data/core/editor/help.cfg:287
@@ -572,11 +815,27 @@ msgid ""
 "editor may follow the link and open the corresponding .map in terrain-only "
 "mode, as if the .map file was chosen in the file selector."
 msgstr ""
+"<header>text='Lor archivos: .map y .cfg'</header>\n"
+"\n"
+"El editor de mapas no guarda más que un archivo, ya sea uno .map (para el "
+"modo terreno) o uno .cfg (para el modo escenario). En modo escenario el mapa "
+"del terreno se guarda dentro del archivo .cfg; no hay un archivo separado "
+"tipo .map. Si comienza a editar en modo terreno y después cambia a modo "
+"escenario un viejo archivo .map podría persistir, pero no será actualizado "
+"por el editor de escenarios.\n"
+"\n"
+"Cargar un archivo .cfg tiene resultados distintos dependiendo del contenido "
+"del ese fichero .cfg. Para archivos .cfg que fueron creados con el editor de "
+"escenarios, abrirá el .cfg con el editor de escenarios. Sin embargo, para "
+"archivos .cfg que usan un archivo .map diferenciado (que no pueden crearse "
+"con el editor de escenarios), el editor podría seguir el enlace y abrir el "
+"archivo .map correspondiente en modo solo-terreno, como si el archivo .map "
+"hubiera sido seleccionado con el administrador de archivos."
 
 #. [topic]: id=editor_separate_events_file
 #: data/core/editor/help.cfg:299
 msgid "Using a separate file for WML events"
-msgstr ""
+msgstr "Usando un archivo diferenciado para eventos WML"
 
 #. [topic]: id=editor_separate_events_file
 #: data/core/editor/help.cfg:300
@@ -630,6 +889,56 @@ msgid ""
 "  ◦ inside the [scenario] element, use “map_file=\"map_from_01.cfg\"” to "
 "load that file"
 msgstr ""
+"Al cargar un archivo .cfg, el editor de escenarios entiende los archivos que "
+"han sido creados con el mismo, pero es muy probable que tenga dificultades "
+"para comprender los archivos que han sido editados manualmente.\n"
+"\n"
+"Los archivos creados con el editor de escenarios omiten las marcas de "
+"apertura [scenario] y de cierre [/scenario]. Si usted está creando una "
+"campaña (o cualquier otro tipo de complemento), esas marcas han de ser "
+"añadidas; tiene más detalles acerca de este tema en la documentación "
+"<ref>dst='editor_map_format' text='formato del archivo de mapa'</ref>.\n"
+"\n"
+"Un flujo de trabajo se ha de crear en un archivo WML diferenciado, también "
+"con la extensión .cfg, que usa el preprocesador WML para añadir los archivos "
+"creados con el editor. Este archivo diferenciado contiene tanto la marca "
+"[scenario] como cualquier WML manual como los eventos. Con este flujo de "
+"trabajo, la estructura de ficheros del complemento podría verse de la forma "
+"siguiente:\n"
+"\n"
+"<header>text='Para Wesnoth 1.14'</header>\n"
+"\n"
+"• _main.cfg:\n"
+"  ◦ utilice “{./scenarios}” para incluir el directorio con los “scenarios”\n"
+"• maps/map_from_01.cfg\n"
+"  ◦ este es el archivo creado con el editor de escenario\n"
+"• scenarios/01_Forest.cfg, en vez de la marca de inicio [scenario] poner "
+"estas cuatro líneas:\n"
+"  ◦ [scenario]\n"
+"  ◦     {~add-ons/NAME_OF_ADD_ON/maps/map_from_01.cfg}\n"
+"  ◦ [/scenario]\n"
+"  ◦ [+scenario]\n"
+"\n"
+"Dentro de estas líneas, las tres primeras insertan el archivo de escenario "
+"generado dentro de la marca [scenario]. El signo ‘+’ de la cuarta línea "
+"significa que se combinarán dos marcas de escenario, con los atributos de la "
+"segunda sobreescribiendo los atributos de la primera.\n"
+"\n"
+"<header>text='1.16 y siguientes'</header>\n"
+"\n"
+"Si su complemento solo va a ser usado con la versión 1.16 y posteriores, hay "
+"nuevas características para cargar archivos .cfg mediante map_file, y evitar "
+"la repetición del nombre del complemento dentro de los archivos .cfg.\n"
+"\n"
+"• _main.cfg:\n"
+"  ◦ utilice “[binary_path]” para añadir los directorios de los complementos "
+"a la ruta binaria, que hace que “map_file” busque el directorio de “maps”.\n"
+"  ◦ use “{./scenarios}” para incluir el directorio de “scenarios”\n"
+"• maps/map_from_01.cfg\n"
+"  ◦ este es el archivo creado por el editor de escenarios\n"
+"• scenarios/01_Forest.cfg\n"
+"  ◦ dentro del elemento [scenario], utilice “map_file=\"map_from_01.cfg\"” "
+"para cargar ese archivo"
 
 #. [topic]: id=editor_masks
 #: data/core/editor/help.cfg:338
@@ -648,10 +957,8 @@ msgstr ""
 #. [topic]: id=editor_time_schedule
 #. Time of Day and Schedule Editor, please use a short string as it will be used in the left-hand pane of the help browser
 #: data/core/editor/help.cfg:347
-#, fuzzy
-#| msgid "Time Schedule Editor"
 msgid "ToD and Schedule Editor"
-msgstr "Editor de planificación de fases horarias"
+msgstr "Editor de planificaciones y franjas horarias"
 
 #. [topic]: id=editor_time_schedule
 #: data/core/editor/help.cfg:348
@@ -665,6 +972,14 @@ msgid ""
 "In scenario mode, the button accesses an editor for individual schedules for "
 "<ref>dst='editor_named_area' text='time areas'</ref>."
 msgstr ""
+"Este botón en lo alto de la parte derecha de la pantalla accede a la "
+"previsualización de franjas horarias y al editor de planificaciones.\n"
+"\n"
+"En modo terreno, mostrará el mapa con colores diferentes a franjas horarias "
+"distintas.\n"
+"\n"
+"En modo escenario, el botón accede a un editor para planificaciones "
+"diferentes de <ref>dst='editor_named_area' text='franjas horarias'</ref>."
 
 #. [topic]: id=editor_palette
 #: data/core/editor/help.cfg:359
@@ -687,21 +1002,34 @@ msgid ""
 "this is the leftmost of the four buttons at the top of the palette, and the "
 "graphic changes depending on what is selected. Examples:"
 msgstr ""
+"La paleta del editor contiene los elementos aplicables que usted podría usar "
+"con la herramienta actualmente seleccionada. Por ejemplo, la herramienta "
+"Dibujar mostrará una lista completa de terrenos disponibles, y la "
+"herramienta Unidad dispondrá de una lista de unidades disponibles. Al usar "
+"la herramienta de Posiciones de inicio, la paleta cambia a una lista de "
+"«Jugador 1», «Jugador 2», etc.\n"
+"\n"
+"<bold>text='Filtrado'</bold>\n"
+"\n"
+"Hay una función de filtrado para mostrar solamente una selección de los "
+"elementos disponibles — se trata del que está más a la izquierda de los "
+"cuatro botones de la parte superior de la paleta, y el gráfico cambia "
+"dependiendo de cual está seleccionado. Ejemplos:"
 
 #. [topic]: id=editor_palette
 #: data/core/editor/help.cfg:366
 msgid "Show all kinds of terrain"
-msgstr ""
+msgstr "Muestra todos los tipos de terreno"
 
 #. [topic]: id=editor_palette
 #: data/core/editor/help.cfg:367
 msgid "Show only water terrains"
-msgstr ""
+msgstr "Solo muestra los terrenos acuaticos"
 
 #. [topic]: id=editor_palette
 #: data/core/editor/help.cfg:368
 msgid "Show only villages"
-msgstr ""
+msgstr "Solo muestra aldeas"
 
 #. [topic]: id=editor_map_format
 #: data/core/editor/help.cfg:379
@@ -712,6 +1040,7 @@ msgstr "Formato de los mapas de Wesnoth"
 #: data/core/editor/help.cfg:380
 msgid "Wesnoth stores its maps in human readable plain text files."
 msgstr ""
+"Wesnoth guarda sus mapas en archivos de texto plano legibles por humanos"
 
 #. [topic]: id=editor_map_format
 #: data/core/editor/help.cfg:382
@@ -743,6 +1072,35 @@ msgid ""
 "The <italic>text='map_file'</italic> method is preferred over using a "
 "preprocessor include."
 msgstr ""
+"<header>text='Nativo'</header>\n"
+"\n"
+"Un archivo de mapa consiste en filas con cadenas de códigos de terreno "
+"separadas por comas. La única información no referente al terreno que aporta "
+"la sintaxis del mapa es el conjunto de posiciones creado con la "
+"<ref>dst='editor_tool_starting' text='Herramienta de posiciones de inicio'</"
+"ref>. Los archivos pueden ser editados con un editor de texto de propósito "
+"general como el bloc de notas.\n"
+"\n"
+"Estos archivos pueden usarse directamente para partidas multijugador, el "
+"número de jugadores se determina de forma automática por el número de "
+"posiciones de inicio. Cuando se guarda en el directorio predeterminado, el "
+"mapa puede ser encontrado en partidas del tipo «Mapa personalizado» del "
+"diálogo «Crear partida» de multijugador; podría ser necesario refrescar la "
+"caché (pulsando F5 en la pantalla de inicio) antes de que se vea un mapa "
+"creado recientemente.\n"
+"\n"
+"Estos archivos pueden usarse en un archivo de escenario .cfg, con las WML "
+"del escenario aportando información adicional tal como equipos, eventos "
+"personalizados, y configuraciones sofisticadas para los bandos. El archivo ."
+"cfg carga el archivo de mapa con cualquiera de:\n"
+"\n"
+"• map_file=maps/01_First_Map.map <italic>text='— soportado desde Wesnoth "
+"1.14'</italic>\n"
+"• map_data=\"{maps/01_First_Map.map}\" <italic>text='— un preprocessor "
+"include de WML'</italic>\n"
+"\n"
+"El método <italic>text='map_file'</italic> es preferible al del uso del "
+"preprocessor include."
 
 #. [topic]: id=editor_map_format
 #: data/core/editor/help.cfg:395
@@ -763,6 +1121,21 @@ msgid ""
 "this is rarely-used code. Maps opened this way are marked (E) in the Window "
 "menu."
 msgstr ""
+"<header>text='Embebido'</header>\n"
+"\n"
+"Los datos del mapa pueden guardarse como parte de un archivo de escenario ."
+"cfg, directamente en el atributo <italic>text='map_data'</italic>. En otras "
+"palabras, en el lugar en el que el preprocesador lo insertaría al usar el "
+"metodo preprocessor-include.\n"
+"\n"
+"<header>text='Usando el formato embebido en modo terreno'</header>\n"
+"\n"
+"Si está editando el mapa sin usar el soporte modo escenario, es fácil mover "
+"los datos a un archivo de mapa nativo antes de abrirlo con el editor. Es "
+"recomendable hacer esta conversión — el editor soporta editar el contenido "
+"de map_data mientras deja sin tocar todo lo demás dentro del archivo, pero "
+"esto es código que se usa raramente. Los mapas abiertos de esta forma están "
+"marcados con (E) en el menú Ventana."
 
 #. [topic]: id=editor_map_format
 #: data/core/editor/help.cfg:403
@@ -776,6 +1149,15 @@ msgid ""
 "<ref>dst='editor_separate_events_file' text='using a separate .cfg file'</"
 "ref> for the hand-edited parts."
 msgstr ""
+"<header>text='Archivos creados con el editor de escenarios'</header>\n"
+"\n"
+"En modo escenario, el editor guarda los datos como un archivo .cfg con datos "
+"de mapa embebidos. Cuando se carga un archivo .cfg, el editor de escenario "
+"entiende los archivos creados con el propio editor de escenarios, pero es "
+"más que probable que tenga dificultades con los archivos que han sido "
+"editados manualmente; se pueden evitar problemas mediante el "
+"<ref>dst='editor_separate_events_file' text='uso de un archivo .cfg "
+"diferenciado'</ref> para las partes editadas a mano."
 
 #. [topic]: id=editor_map_format
 #: data/core/editor/help.cfg:407
@@ -798,6 +1180,25 @@ msgid ""
 "needs the [scenario]...[/scenario] (or [multiplayer]...[/multiplayer]) tags "
 "to know which WML is part of each scenario."
 msgstr ""
+"<header>text='Qué archivos de escenario usan la marca [scenario]'</header>\n"
+"\n"
+"Los archivos creados con el editor de escenarios tienen el contenido de un "
+"elemento de escenario WML, pero no incluyen las marcas de apertura "
+"[scenario] ni de cierre [/scenario]. Para cada archivo .cfg en la carpeta "
+"userdata, subcarpeta editor/scenarios, el juego intentará automáticamente "
+"cargar un escenario de ella para añadir a la lista de «Escenarios "
+"personalizados» (se ignorarán los archivos que fallen al cargar). En esta "
+"carpeta cada archivo es un elemento separado - los ficheros que fallan al "
+"ser analizados como un escenario son ignorados, y los ficheros no deben "
+"contener las marcas de [scenario] [/scenario].\n"
+"\n"
+"Lo contrario se aplica cuando un escenario forma parte de una campaña o de "
+"otro complemento. Normalmente cada escenario tiene su propio archivo .cfg, "
+"aunque esto no sea necesario - todo el WML de un complemento será combinado "
+"por el preprocesador, no importa si el complemento se ha escrito en archivos "
+"separados o no. El motor necesita las marcas [scenario]...[/scenario] (o "
+"[multiplayer]...[/multiplayer]) para saber qué WML forma parte de cada "
+"escenario."
 
 #. [time]: id=deep_underground
 #. [editor_times]: id=deep_underground
