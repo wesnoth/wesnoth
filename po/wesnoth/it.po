@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2021-05-22 22:21-0400\n"
-"PO-Revision-Date: 2021-04-03 18:51+0200\n"
+"PO-Revision-Date: 2021-05-23 16:48+0200\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -244,7 +244,7 @@ msgstr "Note:"
 #. [button]: id=ok
 #: data/campaigns/World_Conquest/gui/help_dialog.cfg:734
 msgid "Close"
-msgstr ""
+msgstr "Chiudi"
 
 #. [language]
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:147
@@ -5870,7 +5870,7 @@ msgstr "Non specificato errore del server."
 
 #: src/addon/validation.cpp:506
 msgid "Server is in read-only mode."
-msgstr "Server in modalità di sola lettura"
+msgstr "Server in modalità di sola lettura."
 
 #: src/addon/validation.cpp:510
 msgid "Corrupted server add-ons list."
@@ -7143,7 +7143,7 @@ msgstr "Uso:"
 #: src/map_command_handler.hpp:343
 msgid "command^Alias:"
 msgid_plural "Aliases:"
-msgstr[0] "Alias"
+msgstr[0] "Alias:"
 msgstr[1] "Alias"
 
 #: src/menu_events.cpp:164
@@ -7375,10 +7375,8 @@ msgid "Debug layers from terrain under the mouse."
 msgstr "Debug degli strati di terreno sotto il mouse."
 
 #: src/menu_events.cpp:1246
-#, fuzzy
-#| msgid "Show fps (Frames Per Second)."
 msgid "Display and log fps (Frames Per Second)."
-msgstr "Mostra fps (Frame per Secondo)."
+msgstr "Mostra e registra fps (Frame per Secondo)."
 
 #: src/menu_events.cpp:1248
 msgid "Save game."
@@ -8375,6 +8373,9 @@ msgid ""
 "following characters:\n"
 "    \" * / : < > ? \\ | ~"
 msgstr ""
+"I file di salvataggio non possono terminare con un punto, né contenere due "
+"punto o uno qualsiasi dei seguenti caratteri:\n"
+"    \" * / : < > ? \\ | ~"
 
 #: src/savegame.cpp:490
 msgid "Saved"

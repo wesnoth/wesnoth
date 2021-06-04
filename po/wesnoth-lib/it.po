@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2021-05-15 22:06-0400\n"
-"PO-Revision-Date: 2021-04-03 19:08+0200\n"
+"PO-Revision-Date: 2021-05-23 17:06+0200\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -210,12 +210,12 @@ msgstr "Mucchio di foglie"
 #: data/core/terrain.cfg:209 data/core/terrain.cfg:219
 #: data/core/terrain.cfg:229
 msgid "Dirt"
-msgstr "Terra"
+msgstr "Terreno"
 
 #. [terrain_type]: id=dirt_dark
 #: data/core/terrain.cfg:210
 msgid "Dark Dirt"
-msgstr "Terra scuro"
+msgstr "Terreno scuro"
 
 #. [terrain_type]: id=dirt
 #: data/core/terrain.cfg:220
@@ -359,7 +359,7 @@ msgstr "Fiori vari"
 #. [terrain_type]: id=farm
 #: data/core/terrain.cfg:368
 msgid "Farmland"
-msgstr "Terra agricola"
+msgstr "Terreno agricolo"
 
 #. [terrain_type]: id=stones_small
 #: data/core/terrain.cfg:377
@@ -918,7 +918,7 @@ msgstr "Montagne invalicabili innevate"
 #. [terrain_type]: id=cloud_desert
 #: data/core/terrain.cfg:1232
 msgid "Desert Impassable Mountains"
-msgstr "Montagne invalicabili deserte"
+msgstr "Montagne invalicabili nel deserto"
 
 #. [terrain_type]: id=cavewall
 #. [terrain_type]: id=cavewall_earthy
@@ -1319,7 +1319,7 @@ msgstr "Accampamento diroccato"
 #. [terrain_type]: id=encampment_snow
 #: data/core/terrain.cfg:2022
 msgid "Snowy Encampment"
-msgstr "Accampamento nella neve"
+msgstr "Accampamento innevato"
 
 #. [terrain_type]: id=orcish_fort
 #. [terrain_type]: id=snow_orcish_fort
@@ -1681,7 +1681,7 @@ msgstr ""
 "\n"
 "Per chi viaggia per mare o per terra, un ponte è il meglio che possano "
 "offrire entrambi i mondi. Dal punto di vista del gioco, un ponte è trattato "
-"come prateria o come l-acqua sottostante, a seconda di quale dei due terreni "
+"come prateria o come l’acqua sottostante, a seconda di quale dei due terreni "
 "offra i migliori bonus difensivi e di movimento per l’unità che occupa il "
 "ponte. Da notare che comunque una unità che sa nuotare e una terrestre non "
 "possono comunque occupare la stessa tessera simultaneamente."
@@ -2311,12 +2311,12 @@ msgstr "Profilo"
 #. [window]: id=addon_auth
 #: data/gui/window/addon_auth.cfg:8
 msgid "Add-on upload authentication dialog"
-msgstr ""
+msgstr "Autenticazione invio estensione"
 
 #. [label]
 #: data/gui/window/addon_auth.cfg:41
 msgid "Authenticate"
-msgstr ""
+msgstr "Autenticato"
 
 #. [label]
 #: data/gui/window/addon_auth.cfg:71 data/gui/window/mp_create_game.cfg:990
@@ -2527,7 +2527,7 @@ msgstr "Nessuna"
 #. [label]
 #: data/gui/window/addon_manager.cfg:602 data/gui/window/addon_manager.cfg:721
 msgid "Tags:"
-msgstr ""
+msgstr "Contrassegni:"
 
 #. [text_box]: id=filter
 #: data/gui/window/addon_manager.cfg:655
@@ -3625,7 +3625,7 @@ msgstr "Cache:"
 #. [grid]
 #: data/gui/window/game_version.cfg:139
 msgid "Logs:"
-msgstr ""
+msgstr "Logs:"
 
 #. [button]: id=open_stderr
 #: data/gui/window/game_version.cfg:164
@@ -3909,7 +3909,7 @@ msgstr ""
 #. [label]
 #: data/gui/window/lobby_main.cfg:617 data/gui/window/lobby_main.cfg:834
 msgid "Multiplayer Lobby"
-msgstr "Lobby multigiocatori"
+msgstr "Lobby multigiocatore"
 
 #. [label]
 #: data/gui/window/lobby_player_info.cfg:38
@@ -5137,7 +5137,7 @@ msgstr "Non mostrare gli ingressi nella lobby"
 msgid "Do not show messages about players joining the multiplayer lobby"
 msgstr ""
 "Non mostrare i messaggi sui collegamenti dei giocatori alla lobby "
-"multigiocatori"
+"multigiocatore"
 
 #. [toggle_button]: id=lobby_joins_friends
 #: data/gui/window/preferences/05_multiplayer.cfg:116
@@ -5148,7 +5148,7 @@ msgstr "Mostra solo gli ingressi di amici nella lobby"
 #: data/gui/window/preferences/05_multiplayer.cfg:117
 msgid "Show messages about your friends joining the multiplayer lobby"
 msgstr ""
-"Mostra i messaggi sui collegamenti dei tuoi amici alla lobby multigiocatori"
+"Mostra i messaggi sui collegamenti dei tuoi amici alla lobby multigiocatore"
 
 #. [toggle_button]: id=lobby_joins_all
 #: data/gui/window/preferences/05_multiplayer.cfg:131
@@ -5160,7 +5160,7 @@ msgstr "Mostra tutti gli ingressi nella lobby"
 msgid "Show messages about all players joining the multiplayer lobby"
 msgstr ""
 "Mostra i messaggi sui collegamenti di tutti i giocatori alla lobby "
-"multigiocatori"
+"multigiocatore"
 
 #. [button]: id=mp_alerts
 #: data/gui/window/preferences/05_multiplayer.cfg:149
@@ -5859,11 +5859,11 @@ msgstr "Il testo ha una dimensione di carattere di 0."
 
 #: src/gui/core/canvas.cpp:834
 msgid "Area to draw has negative size"
-msgstr ""
+msgstr "L'area da disegnare ha un'estensione negativa"
 
 #: src/gui/core/canvas.cpp:836
 msgid "Area to draw is larger than widget size"
-msgstr ""
+msgstr "L'area da disegnare è più grande della dimensione del widget"
 
 #: src/gui/core/widget_definition.cpp:30
 msgid "No state or draw section defined."
@@ -6001,36 +6001,36 @@ msgstr "Prima pubblicazione ($datelike_order)"
 
 #: src/gui/dialogs/addon/manager.cpp:222
 msgid "addon_tag^Cooperative"
-msgstr ""
+msgstr "Cooperativo"
 
 #. TRANSLATORS: tooltip in the drop-down menu for filtering add-ons
 #: src/gui/dialogs/addon/manager.cpp:224
 msgid "addon_tag^All human players are on the same team, versus the AI"
 msgstr ""
+"Tutti i giocatori umani fanno parte dello stesso schieramento, opposto alla "
+"IA"
 
 #: src/gui/dialogs/addon/manager.cpp:225
 msgid "addon_tag^Cosmetic"
-msgstr ""
+msgstr "Abbellimento"
 
 #. TRANSLATORS: tooltip in the drop-down menu for filtering add-ons
 #: src/gui/dialogs/addon/manager.cpp:227
 msgid "addon_tag^These make the game look different, without changing gameplay"
-msgstr ""
+msgstr "Fa sembrare il gioco diverso senza alterare le meccaniche di gioco"
 
 #: src/gui/dialogs/addon/manager.cpp:228
-#, fuzzy
-#| msgid "Difficulty"
 msgid "addon_tag^Difficulty"
 msgstr "Difficoltà"
 
 #. TRANSLATORS: tooltip in the drop-down menu for filtering add-ons
 #: src/gui/dialogs/addon/manager.cpp:230
 msgid "addon_tag^Can make campaigns easier or harder"
-msgstr ""
+msgstr "Può rendere le campagne più facili o più difficili"
 
 #: src/gui/dialogs/addon/manager.cpp:231
 msgid "addon_tag^RNG"
-msgstr ""
+msgstr "GNC"
 
 #. TRANSLATORS: tooltip in the drop-down menu for filtering add-ons
 #: src/gui/dialogs/addon/manager.cpp:233
@@ -6038,24 +6038,26 @@ msgid ""
 "addon_tag^Modify the randomness in the combat mechanics, or remove it "
 "entirely"
 msgstr ""
+"Modifica la casualità nelle meccaniche di combattimento, o la rimuove "
+"interamente."
 
 #: src/gui/dialogs/addon/manager.cpp:234
 msgid "addon_tag^Survival"
-msgstr ""
+msgstr "Sopravvivenza"
 
 #. TRANSLATORS: tooltip in the drop-down menu for filtering add-ons
 #: src/gui/dialogs/addon/manager.cpp:236
 msgid "addon_tag^Fight against waves of enemies"
-msgstr ""
+msgstr "Combatti contro ondate di nemici"
 
 #: src/gui/dialogs/addon/manager.cpp:237
 msgid "addon_tag^Terraforming"
-msgstr ""
+msgstr "Terraforming"
 
 #. TRANSLATORS: tooltip in the drop-down menu for filtering add-ons
 #: src/gui/dialogs/addon/manager.cpp:239
 msgid "addon_tag^Players can change the terrain"
-msgstr ""
+msgstr "I giocatori posso cambiare il terreno"
 
 #: src/gui/dialogs/addon/manager.cpp:262 src/gui/widgets/addon_list.cpp:103
 msgid "addon_state^Not installed"
@@ -6726,7 +6728,7 @@ msgstr "Scenari"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:98
 msgid "Multiplayer Campaigns"
-msgstr "Campagne multigiocatori"
+msgstr "Campagne multigiocatore"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:99
 msgid "Singleplayer Campaigns"

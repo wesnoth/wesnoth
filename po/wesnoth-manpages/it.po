@@ -4,12 +4,12 @@
 #
 # Automatically generated, 2006.
 # Luciano Montanaro <mikelima@cirulla.net>, 2007, 2008, 2009, 2011.
-# Antonio 'Antro' Rosella <arosella@yahoo.com> 2012-2019
+# Antonio 'Antro' Rosella <arosella@yahoo.com> 2012-2021
 msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "POT-Creation-Date: 2021-05-22 22:21-0400\n"
-"PO-Revision-Date: 2019-12-15 15:16+0100\n"
+"PO-Revision-Date: 2021-05-23 17:45+0200\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.2.4\n"
+"X-Generator: Poedit 2.4.2\n"
 
 # type: TH
 #. type: TH
@@ -30,7 +30,7 @@ msgstr "WESNOTH"
 #: doc/man/wesnoth.6:16 doc/man/wesnothd.6:16
 #, no-wrap
 msgid "2021"
-msgstr ""
+msgstr "2021"
 
 # type: TH
 #. type: TH
@@ -335,21 +335,20 @@ msgstr "abilita alcuni meccanismi di debug Lua"
 
 #. type: TP
 #: doc/man/wesnoth.6:106
-#, fuzzy, no-wrap
-#| msgid "B<--strict-validation>"
+#, no-wrap
 msgid "B<--strict-lua>"
-msgstr "B<--strict-validation>"
+msgstr "B<--strict-lua>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:109
 msgid "disallow deprecated Lua API calls"
-msgstr ""
+msgstr "non permette di utilizzare chiamate Lua API deprecate"
 
 #. type: TP
 #: doc/man/wesnoth.6:109
 #, no-wrap
 msgid "B<-D,--diff>I<\\ left-file>B<\\ >I<right-file>"
-msgstr ""
+msgstr "B<-D,--diff>I<\\ file-sinistro>B<\\ >I<file-destro>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:115
@@ -358,6 +357,10 @@ msgid ""
 "them through B<-p> first). Outputs the diff as DiffWML on standard output or "
 "to the file indicated by I<--output>."
 msgstr ""
+"esegue una differenza tra due file WML, senza prima pre-processarli (per "
+"farlo, eseguili prima con B<-p>). La differenza verrà stampata come u file "
+"di tipo DiffWML nell’uscita standard o nel file indicato dall’opzione I<--"
+"output>."
 
 # type: TP
 #. type: TP
@@ -386,17 +389,14 @@ msgstr "B<--fps>"
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnoth.6:127
-#, fuzzy
-#| msgid ""
-#| "displays the number of frames per second the game is currently running "
-#| "at, in a corner of the screen."
 msgid ""
 "displays the number of frames per second the game is currently running at in "
 "a corner of the screen as well as writes these values to a file in the "
 "userdata directory."
 msgstr ""
 "mostra, in un angolo dello schermo, il numero di immagini per secondo che il "
-"gioco sta generando attualmente."
+"gioco sta generando attualmente e contemporaneamente memorizza questi valori "
+"in un file nella directory dei dati utente."
 
 # type: TP
 #. type: TP
@@ -530,8 +530,6 @@ msgstr "B<--log-precise>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:181
-#, fuzzy
-#| msgid "shows the timestamps in the logfile with more precision."
 msgid "shows the timestamps in log output with more precision."
 msgstr "registra i tempi nel logfile in maniera più accurata."
 
@@ -632,7 +630,7 @@ msgid ""
 "library are deemed stable and will work without this switch."
 msgstr ""
 "se c’è un nuovo widget toolkit WIP, questa opzione lo abilita. Questo è "
-"molto sperimentale, perciò non sottomettete bugs perchè la maggior parte di "
+"molto sperimentale, perciò non sottomettete bugs perché la maggior parte di "
 "loro è già nota. Parti della libreria sono considerate stabili e "
 "funzioneranno senza questa opzione."
 
@@ -698,15 +696,14 @@ msgstr ""
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:229
-#, fuzzy, no-wrap
-#| msgid "B<--nocache>"
+#, no-wrap
 msgid "B<--nobanner>"
-msgstr "B<--nocache>"
+msgstr "B<--nobanner>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:232
 msgid "suppress the startup banner."
-msgstr ""
+msgstr "elimina la schermata di partenza."
 
 # type: TP
 #. type: TP
@@ -753,15 +750,16 @@ msgstr "esegue il gioco senza suono e musica."
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:242
-#, fuzzy, no-wrap
-#| msgid "B<--script>I<\\ file>"
+#, no-wrap
 msgid "B<--output>I<\\ file>"
-msgstr "B<--script>I<\\ file>"
+msgstr "B<--output>I<\\ file>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:245
 msgid "output to the specified file. Applicable to diffing operations."
 msgstr ""
+"redirige l’uscita nel file specificato. Applicabile nelle operazioni di tipo "
+"\"diff\"."
 
 #. type: TP
 #: doc/man/wesnoth.6:245
@@ -799,10 +797,9 @@ msgstr ""
 
 #. type: TP
 #: doc/man/wesnoth.6:257
-#, fuzzy, no-wrap
-#| msgid "B<-p,\\ --preprocess>I<\\ source-file/folder>B<\\ >I<target-directory>"
+#, no-wrap
 msgid "B<-P,--patch>I<\\ base-file>B<\\ >I<patch-file>"
-msgstr "B<-p,\\ --preprocess>I<\\ file/cartella sorgente>B<\\ >I<cartella destinazione>"
+msgstr "B<-P,--patch>I<\\ file-base>B<\\ >I<file-correzione>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:262
@@ -811,6 +808,9 @@ msgid ""
 "files.  Outputs the patched WML to standard output or to the file indicated "
 "by I<--output>."
 msgstr ""
+"applica un file correzione DiffWML ad un file WML, senza pre-processare "
+"nessuno dei due. Restituisce il file WML modificato nell’uscita standard o "
+"nel file indicato da I<--output>."
 
 #. type: TP
 #: doc/man/wesnoth.6:262
@@ -1095,15 +1095,14 @@ msgstr ""
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:366
-#, fuzzy, no-wrap
-#| msgid "B<--scenario>I<\\ value>"
+#, no-wrap
 msgid "B<-S,--use-schema>I<\\ path>"
-msgstr "B<--scenario>I<\\ valore>"
+msgstr "B<--scenario>I<\\ percorso>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:370
 msgid "sets the WML schema for use with B<-V,--validate>."
-msgstr ""
+msgstr "imposta lo schema WML da utilizzare con B<-V,--validate>."
 
 # type: TP
 #. type: TP
@@ -1201,52 +1200,49 @@ msgstr ""
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:401
-#, fuzzy, no-wrap
-#| msgid "B<--data-path>"
+#, no-wrap
 msgid "B<--validate>I<\\ path>"
-msgstr "B<--data-path>"
+msgstr "B<--validate>I<\\ percorso>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:404
 msgid "validates a file against the WML schema."
-msgstr ""
+msgstr "valida uno file rispetto allo schema WML."
 
 #. type: TP
 #: doc/man/wesnoth.6:404
 #, no-wrap
 msgid "B<--validate-addon>I<\\ addon_id>"
-msgstr ""
+msgstr "B<--validate-addon>I<\\ id estensione>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:407
 msgid "validates the WML of the given addon as you play."
-msgstr ""
+msgstr "valida il WML di una specifica estensione durante il gioco."
 
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:407
-#, fuzzy, no-wrap
-#| msgid "B<--validcache>"
+#, no-wrap
 msgid "B<--validate-core>"
-msgstr "B<--validcache>"
+msgstr "B<--validate-core>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:410
 msgid "validates the core WML as you play."
-msgstr ""
+msgstr "valida in nucleo WML durante il gioco."
 
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:410
-#, fuzzy, no-wrap
-#| msgid "B<--validcache>"
+#, no-wrap
 msgid "B<--validate-schema \\ path>"
-msgstr "B<--validcache>"
+msgstr "B<--validate-schema \\ percorso>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:413
 msgid "validates a file as a WML schema."
-msgstr ""
+msgstr "valida un file come schema WML."
 
 # type: TP
 #. type: TP
@@ -1542,16 +1538,6 @@ msgstr ""
 
 #. type: Plain text
 #: doc/man/wesnoth.6:518
-#, fuzzy
-#| msgid ""
-#| "When running unit tests (withB<\\ -u>), the exit status is different. An "
-#| "exit status of 0 indicates that the test passed, and 1 indicates that the "
-#| "test failed. An exit status of 3 indicates that the test passed, but "
-#| "produced an invalid replay file. An exit status of 4 indicates that the "
-#| "test passed, but the replay produced errors. These latter two are only "
-#| "returned if B<--noreplaycheck> is not passed. An exit status of 2 "
-#| "indicates that the test timed out, when used with the deprecated B<--"
-#| "timeout> option."
 msgid ""
 "When running unit tests (withB<\\ -u>), the exit status is different. An "
 "exit status of 0 indicates that the test passed, and 1 indicates that the "
@@ -1566,9 +1552,7 @@ msgstr ""
 "ha prodotto un file di replay non valido. Uno stato di uscita con valore 4 "
 "indica che il test è riuscito, ma che il replay produce errori. Questi due "
 "ultimi stati vengono restituiti soltanto se il parametro B<--noreplaycheck> "
-"non viene utilizzato. Uno stato di uscita con valore 2 indica che il test ha "
-"esaurito il tempo massimo a disposizione, quando viene utilizzata l’opzione "
-"B<--timeout> (deprecata)."
+"non viene utilizzato."
 
 # type: SH
 #. type: SH
@@ -1619,12 +1603,9 @@ msgstr "COPYRIGHT"
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnoth.6:532 doc/man/wesnothd.6:274
-#, fuzzy
-#| msgid ""
-#| "Copyright \\(co 2003-2018 David White E<lt>davidnwhite@verizon.netE<gt>"
 msgid "Copyright \\(co 2003-2021 David White E<lt>davidnwhite@verizon.netE<gt>"
 msgstr ""
-"Copyright \\(co 2003-2018 David White E<lt>davidnwhite@verizon.netE<gt>"
+"Copyright \\(co 2003-2021 David White E<lt>davidnwhite@verizon.netE<gt>"
 
 # type: Plain text
 #. type: Plain text
@@ -2189,7 +2170,7 @@ msgstr ""
 #: doc/man/wesnothd.6:168
 #, no-wrap
 msgid "B<deny_unregistered_login>"
-msgstr ""
+msgstr "B<deny_unregistered_login>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:173
@@ -2197,6 +2178,8 @@ msgid ""
 "Whether to prevent users who are not registered with the B<user_handler> "
 "being used from logging in. (default: false)"
 msgstr ""
+"Impedisce agli utenti che non si sono registrati con B<user_handler> di "
+"accedere. (default: falso)"
 
 # type: SS
 #. type: SS
@@ -2321,14 +2304,6 @@ msgstr ""
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:223
-#, fuzzy
-#| msgid ""
-#| "B<[user_handler]> Configures the user handler. Available keys vary "
-#| "depending on which user handler is set with the B<user_handler> key. If "
-#| "no B<[user_handler]> section is present in the configuration the server "
-#| "will run without any nick registration service. All additional tables "
-#| "that are needed for the forum_user_handler to function can be found in "
-#| "table_definitions.sql in the Wesnoth source repository."
 msgid ""
 "B<[user_handler]> Configures the user handler. Available keys vary depending "
 "on which user handler is set with the B<user_handler> key. If no "
@@ -2342,7 +2317,7 @@ msgstr ""
 "B<user_handler>. Se non è presente una sezione B<[user_handler]> nella "
 "configurazione il server verrà lanciato senza un servizio di registrazione "
 "del nick. Tutte le tabelle aggiuntive necessarie per il funzionamento di "
-"forum_user_handler possono essere reperite in table_definitions.sql nel "
+"B<forum_user_handler> possono essere reperite in table_definitions.sql nel "
 "repository del codice sorgente di Wesnoth."
 
 # type: TP
@@ -2355,10 +2330,8 @@ msgstr "B<db_host>"
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:227
-#, fuzzy
-#| msgid "The hostname of the mail server"
 msgid "The hostname of the database server"
-msgstr "L’hostname del sever della posta"
+msgstr "L’hostname del server del database"
 
 # type: TP
 #. type: TP
@@ -2370,10 +2343,8 @@ msgstr "B<db_name>"
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:230
-#, fuzzy
-#| msgid "The hostname of the mail server"
 msgid "The name of the database"
-msgstr "L’hostname del sever della posta"
+msgstr "Il nome del database"
 
 # type: TP
 #. type: TP
@@ -2385,13 +2356,8 @@ msgstr "B<db_user>"
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:233
-#, fuzzy
-#| msgid ""
-#| "(for user_handler=forum) The name of the user under which to log into the "
-#| "database"
 msgid "The name of the user under which to log into the database"
-msgstr ""
-"(per user_handler=forum) Il nome dell’utente con cui connettersi al database"
+msgstr "Il nome dell’utente con cui connettersi al database"
 
 # type: TP
 #. type: TP
@@ -2403,10 +2369,8 @@ msgstr "B<db_password>"
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:236
-#, fuzzy
-#| msgid "This user's password."
 msgid "This user's password"
-msgstr "La password di questo utente."
+msgstr "La password di questo utente"
 
 # type: TP
 #. type: TP
@@ -2418,18 +2382,13 @@ msgstr "B<db_users_table>"
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:239
-#, fuzzy
-#| msgid ""
-#| "(for user_handler=forum) The name of the table in which your phpbb forums "
-#| "saves its user data. Most likely this will be E<lt>table-"
-#| "prefixE<gt>_users (e.g. phpbb3_users)."
 msgid ""
 "The name of the table in which your phpbb forums saves its user data. Most "
 "likely this will be E<lt>table-prefixE<gt>_users (e.g. phpbb3_users)."
 msgstr ""
-"(per user_handler=forum) Il nome della tabella nella quale il vostro forum "
-"phpbb salva i dati degli utenti. Di solito questo valore è E<lt>table-"
-"prefixE<gt>_users (i.e. phpbb3_users)."
+"Il nome della tabella nella quale il vostro forum phpbb salva i dati degli "
+"utenti. Di solito questo valore è E<lt>table-prefixE<gt>_users (i.e. "
+"phpbb3_users)."
 
 # type: TP
 #. type: TP
@@ -2441,15 +2400,11 @@ msgstr "B<db_extra_table>"
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:242
-#, fuzzy
-#| msgid ""
-#| "(for user_handler=forum) The name of the table in which wesnothd will "
-#| "save its own data about games."
 msgid ""
 "The name of the table in which wesnothd will save its own data about users."
 msgstr ""
-"(per user_handler=forum) Il nome della tabella nella quale il processo "
-"wesnothd salverà i suoi dati delle partite."
+"Il nome della tabella nella quale il processo wesnothd salverà i suoi dati "
+"degli utenti."
 
 # type: TP
 #. type: TP
@@ -2461,15 +2416,11 @@ msgstr "B<db_game_info_table>"
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:245
-#, fuzzy
-#| msgid ""
-#| "(for user_handler=forum) The name of the table in which wesnothd will "
-#| "save its own data about games."
 msgid ""
 "The name of the table in which wesnothd will save its own data about games."
 msgstr ""
-"(per user_handler=forum) Il nome della tabella nella quale il processo "
-"wesnothd salverà i suoi dati delle partite."
+"Il nome della tabella nella quale il processo wesnothd salverà i suoi dati "
+"delle partite."
 
 # type: TP
 #. type: TP
@@ -2481,16 +2432,12 @@ msgstr "B<db_game_player_info_table>"
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:248
-#, fuzzy
-#| msgid ""
-#| "(for user_handler=forum) The name of the table in which wesnothd will "
-#| "save its own data about the players in a game."
 msgid ""
 "The name of the table in which wesnothd will save its own data about the "
 "players in a game."
 msgstr ""
-"(per user_handler=forum) Il nome della tabella nella quale il processo "
-"wesnothd salverà i suoi dati dei giocatori di una partita."
+"Il nome della tabella nella quale il processo wesnothd salverà i suoi dati "
+"dei giocatori di una partita."
 
 #. type: TP
 #: doc/man/wesnothd.6:248
@@ -2501,16 +2448,12 @@ msgstr "B<db_game_modification_info_table>"
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:251
-#, fuzzy
-#| msgid ""
-#| "(for user_handler=forum) The name of the table in which wesnothd will "
-#| "save its own data about the modifications used in a game."
 msgid ""
 "The name of the table in which wesnothd will save its own data about the "
 "modifications used in a game."
 msgstr ""
-"(per user_handler=forum) Il nome della tabella nella quale il processo "
-"wesnothd salverà i suoi dati delle modifiche utilizzate in una partita."
+"Il nome della tabella nella quale il processo wesnothd salverà i suoi dati "
+"delle modifiche utilizzate in una partita."
 
 # type: TP
 #. type: TP
@@ -2522,19 +2465,14 @@ msgstr "B<db_user_group_table>"
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:254
-#, fuzzy
-#| msgid ""
-#| "(for user_handler=forum) The name of the table in which your phpbb forums "
-#| "saves its user group data. Most likely this will be E<lt>table-"
-#| "prefixE<gt>_user_group (e.g. phpbb3_user_group)."
 msgid ""
 "The name of the table in which your phpbb forums saves its user group data. "
 "Most likely this will be E<lt>table-prefixE<gt>_user_group (e.g. "
 "phpbb3_user_group)."
 msgstr ""
-"(per user_handler=forum) Il nome della tabella nella quale il vostro forum "
-"phpbb salva i dati del gruppo dell’utente. Di solito questo valore è "
-"E<lt>table-prefixE<gt>_user_group (i.e. phpbb3_user_group)."
+"Il nome della tabella nella quale il vostro forum phpbb salva i dati del "
+"gruppo dell’utente. Di solito questo valore è E<lt>table-"
+"prefixE<gt>_user_group (i.e. phpbb3_user_group)."
 
 #. type: TP
 #: doc/man/wesnothd.6:254
@@ -2545,15 +2483,11 @@ msgstr "B<mp_mod_group>"
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:257
-#, fuzzy
-#| msgid ""
-#| "(for user_handler=forum) The ID of the forum group to be considered as "
-#| "having moderation authority."
 msgid ""
 "The ID of the forum group to be considered as having moderation authority."
 msgstr ""
-"(per user_handler=forum) ID del gruppo del forum da considerare come avente "
-"i diritti di moderazione del gruppo."
+"ID del gruppo del forum da considerare come avente i diritti di moderazione "
+"del gruppo."
 
 #. type: Plain text
 #: doc/man/wesnothd.6:262
@@ -2587,7 +2521,6 @@ msgstr ""
 msgid "B<wesnoth>(6)"
 msgstr "B<wesnoth>(6)"
 
-#, no-wrap
 #~ msgid "2018"
 #~ msgstr "2018"
 
@@ -2781,12 +2714,6 @@ msgstr "B<wesnoth>(6)"
 #~ msgstr "imposta il numero di bit per pixel. Esempio: B<--bpp 32>"
 
 #, fuzzy
-#~| msgid ""
-#~| "goes directly to the campaign with id E<lt>id_campaignE<gt>. A selection "
-#~| "menu will appear if no id was specified.  B<Note:> When using this "
-#~| "switch please ensure that you specify the data directory path as the "
-#~| "final argument aswell, otherwise the game will take the campaign/"
-#~| "scenario id as the data dir."
 #~ msgid ""
 #~ "goes directly to the campaign with id E<lt>id_campaignE<gt>. A selection "
 #~ "menu will appear if no id was specified.  B<Note:> When using this switch "
