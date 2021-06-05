@@ -353,19 +353,17 @@ DEFINE_WFL_FUNCTION(enemy_of, 2, 2)
 	int self, other;
 
 	if(auto uc = self_v.try_convert<unit_callable>()) {
-		// For some obscure, bizarre reason, the unit callable returns a 0-indexed side. :|
-		self = uc->get_value("side").as_int() + 1;
+		self = uc->get_value("side_number").as_int();
 	} else if(auto tc = self_v.try_convert<team_callable>()) {
-		self = tc->get_value("side").as_int();
+		self = tc->get_value("side_number").as_int();
 	} else {
 		self = self_v.as_int();
 	}
 
 	if(auto uc = other_v.try_convert<unit_callable>()) {
-		// For some obscure, bizarre reason, the unit callable returns a 0-indexed side. :|
-		other = uc->get_value("side").as_int() + 1;
+		other = uc->get_value("side_number").as_int();
 	} else if(auto tc = other_v.try_convert<team_callable>()) {
-		other = tc->get_value("side").as_int();
+		other = tc->get_value("side_number").as_int();
 	} else {
 		other = other_v.as_int();
 	}
