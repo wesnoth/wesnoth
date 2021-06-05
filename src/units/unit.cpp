@@ -2223,7 +2223,7 @@ void unit::apply_builtin_effect(std::string apply_to, const config& effect)
 				heal_fully();
 			}
 		} else {
-			WRN_UT << "unknown type= in [effect]apply_to=type, ignoring" << std::endl;
+			WRN_UT << "unknown type '" << new_type_id << "' (name=) in [effect]apply_to=type, ignoring" << std::endl;
 		}
 	}
 }
