@@ -2204,7 +2204,7 @@ void unit::apply_builtin_effect(std::string apply_to, const config& effect)
 		const unit_type*  base_type = unit_types.find(type().parent_id());
 		assert(base_type != nullptr);
 		const std::string& variation_id = effect["name"];
-		if(base_type->get_gender_unit_type(gender_).has_variation(variation_id)) {
+		if(variation_id.empty() || base_type->get_gender_unit_type(gender_).has_variation(variation_id)) {
 			variation_ = variation_id;
 			advance_to(*base_type);
 			if(effect["heal_full"].to_bool(false)) {
