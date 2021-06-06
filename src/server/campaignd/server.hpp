@@ -268,6 +268,8 @@ private:
 	 * and message is recorded to the server log.
 	 */
 	void send_error(const std::string& msg, const std::string& extra_data, unsigned int status_code, const any_socket_ptr& sock);
+
+	bool authenticate_forum(const config& addon, const std::string& passphrase);
 };
 
 } // end namespace campaignd

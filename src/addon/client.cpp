@@ -20,6 +20,7 @@
 #include "cursor.hpp"
 #include "font/pango/escape.hpp"
 #include "formula/string_utils.hpp"
+#include "game_config.hpp"
 #include "gettext.hpp"
 #include "gui/dialogs/addon/addon_auth.hpp"
 #include "gui/dialogs/addon/install_dependencies.hpp"
@@ -199,6 +200,11 @@ bool addons_client::upload_addon(const std::string& id, std::string& response_me
 			VGETTEXT("The add-on <i>$addon_title</i> contains files or directories with case conflicts. "
 				"File or directory names may not be differently-cased versions of the same string.", i18n_symbols);
 		last_error_data_ = font::escape_text(utils::join(badnames, "\n"));
+		return false;
+	}
+
+	if(cfg["forum_auth"].to_bool() && !conn_->using_tls() && !game_config::allow_insecure) {
+		last_error_ = VGETTEXT("The connection to the remote server is not secure. The add-on <i>$addon_title</i> cannot be uploaded.", i18n_symbols);
 		return false;
 	}
 
