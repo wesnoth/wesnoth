@@ -113,6 +113,9 @@ void network_transmission::pre_show(window& window)
 		subtitle_label.set_use_markup(true);
 	}
 
+	// NOTE: needed to avoid explicit calls to invalidate_layout()
+	// in network_transmission::pump_monitor::process()
+	find_widget<label>(&window, "numeric_progress", false).set_label(" ");
 	pump_monitor_.window_ = window;
 }
 
