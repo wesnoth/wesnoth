@@ -4,6 +4,8 @@
    * Fixed: keyboard input in small-screen mode returned to the title screen (part of issue #3059)
  ### Add-ons server
  ### Campaigns
+   * Sceptre of Fire
+     * Revisions to the last two scenarios
  ### Editor
  ### Multiplayer
  ### Packaging
