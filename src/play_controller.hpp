@@ -406,6 +406,11 @@ private:
 
 	void init(const config& level);
 
+	/**
+	 * This shows a warning dialog if either [scenario]next_scenario or any [endlevel]next_scenario would lead to an "Unknown Scenario" dialog.
+	 */
+	void check_next_scenario_is_known();
+
 	bool victory_when_enemies_defeated_;
 	bool remove_from_carryover_on_defeat_;
 	std::vector<std::string> victory_music_;
