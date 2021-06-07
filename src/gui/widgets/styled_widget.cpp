@@ -71,6 +71,23 @@ styled_widget::styled_widget(const implementation::builder_styled_widget& builde
 	}
 
 	// Initialize all the canvas variables.
+	// \todo: this is calling a virtual method in the constructor. The
+	// subclasses expect this method to be called at least once place() gets
+	// called (which is late, as that means any change will only take effect
+	// after another set of layout). Diverting the call in place() to
+	// update_canvas_size() means that some subclasses' update_canvas() might
+	// never get called at all.
+	//
+	// The subclasses' update_canvas() should call their parent's update_canvas(),
+	// which means a lot of overhead if the subclasses' constructors make the call
+	// themselves. Possibly the right answer is to make update_canvas() non-virtual,
+	// and require subclasses to override any method which would affect the variables
+	// that that subclass sets.
+	//
+	// Other option - leave the virtual method, but expect each subclass to
+	// have a new update_canvas_impl() or update_canvas_private() which does the work,
+	// so in the construction sequence they only call their own one.
+	// ... or just copy what's in their update_canvas to their constructor, it's often a 3-line block.
 	update_canvas();
 
 	// Enable hover behavior if a tooltip was provided.
@@ -282,7 +299,7 @@ void styled_widget::place(const point& origin, const point& size)
 	widget::place(origin, size);
 
 	// update the state of the canvas after the sizes have been set.
-	update_canvas();
+	update_canvas_size();
 }
 
 widget* styled_widget::find_at(const point& coordinate, const bool must_be_active)
@@ -375,9 +392,6 @@ void styled_widget::set_text_ellipse_mode(const PangoEllipsizeMode ellipse_mode)
 
 void styled_widget::update_canvas()
 {
-	const int max_width = get_text_maximum_width();
-	const int max_height = get_text_maximum_height();
-
 	// set label in canvases
 	for(auto & canvas : canvases_)
 	{
@@ -397,11 +411,23 @@ void styled_widget::update_canvas()
 		canvas.set_variable("text_link_color", wfl::variant(link_color_as_list));
 		canvas.set_variable("text_alignment",
 							wfl::variant(encode_text_alignment(text_alignment_)));
-		canvas.set_variable("text_maximum_width", wfl::variant(max_width));
-		canvas.set_variable("text_maximum_height", wfl::variant(max_height));
 		canvas.set_variable("text_wrap_mode", wfl::variant(get_text_ellipse_mode()));
 		canvas.set_variable("text_characters_per_line",
 							wfl::variant(get_characters_per_line()));
+	}
+
+	update_canvas_size();
+}
+
+void styled_widget::update_canvas_size()
+{
+	const int max_width = get_text_maximum_width();
+	const int max_height = get_text_maximum_height();
+
+	for(auto & canvas : canvases_)
+	{
+		canvas.set_variable("text_maximum_width", wfl::variant(max_width));
+		canvas.set_variable("text_maximum_height", wfl::variant(max_height));
 	}
 }
 

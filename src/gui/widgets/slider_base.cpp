@@ -140,7 +140,7 @@ void slider_base::set_slider_position(int item_position)
 	update_canvas();
 }
 
-void slider_base::update_canvas()
+void slider_base::update_canvas_size()
 {
 	for(auto& tmp : get_canvases()) {
 		tmp.set_variable("positioner_offset", wfl::variant(positioner_offset_));

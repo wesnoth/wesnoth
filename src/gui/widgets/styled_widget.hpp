@@ -333,12 +333,36 @@ protected:
 	/***** ***** ***** ***** miscellaneous ***** ***** ***** *****/
 
 	/**
-	 * Updates the canvas(ses).
+	 * This function is called when the properties other than the size and
+	 * placement change, for example when the text or color change.
 	 *
-	 * This function should be called if either the size of the widget changes
-	 * or the text on the widget changes.
+	 * Updates (currently creates fresh instances of) WFL objects that are used
+	 * for calculations within the canvas.
+	 *
+	 * \todo The following paragraphs come from different designs, this is in the
+	 * middle of trying to fix performance issues.
+	 *
+	 * The canvas itself will run the calculations, with inputs available in
+	 * the canvas. It shouldn't be necessary to create new instances of all the
+	 * WFL objects just because the size changed.
+	 *
+	 * The original design of this function was that it should be called if
+	 * either the size of the widget changes, or the text on the widget changes.
+	 * The GUI2 layout code repeatedly changes the size of widgets, so this ended
+	 * up being a performance bottleneck (see bug #5578); for that reason changes
+	 * in size only call update_canvas_size and not this function.
+	 *
+	 * This function will internally call update_canvas_size, which is itself more
+	 * expensive than a function that gets called in the layout loop should be.
 	 */
 	virtual void update_canvas();
+
+	/**
+	 * This gets called when the size or placement changes.
+	 *
+	 * It will be called by update_canvas(), and directly by calls to place().
+	 */
+	virtual void update_canvas_size();
 
 	/**
 	 * Resolves and returns the text_font_size

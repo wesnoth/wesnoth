@@ -59,6 +59,10 @@ label::label(const implementation::builder_label& builder)
 		std::bind(&label::signal_handler_mouse_motion, this, std::placeholders::_3, std::placeholders::_5));
 	connect_signal<event::MOUSE_LEAVE>(
 		std::bind(&label::signal_handler_mouse_leave, this, std::placeholders::_3));
+
+	for(auto& tmp : get_canvases()) {
+		tmp.set_variable("text_alpha", wfl::variant(text_alpha_));
+	}
 }
 
 void label::update_canvas()

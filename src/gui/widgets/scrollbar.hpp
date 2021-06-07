@@ -197,11 +197,12 @@ protected:
 	}
 
 	/**
-	 * See @ref styled_widget::update_canvas.
+	 * See @ref styled_widget::update_canvas_size.
 	 *
-	 * After a recalculation the canvasses also need to be updated.
+	 * A scrollbar has to adjust the size of its positioner whenever either the
+	 * contained items or the container itself change size.
 	 */
-	virtual void update_canvas() override;
+	virtual void update_canvas_size() override;
 
 	/**
 	 * Callback for subclasses to get notified about positioner movement.

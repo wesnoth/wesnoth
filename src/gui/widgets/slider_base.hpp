@@ -159,12 +159,7 @@ protected:
 		return positioner_length_;
 	}
 
-	/**
-	 * See @ref styled_widget::update_canvas.
-	 *
-	 * After a recalculation the canvasses also need to be updated.
-	 */
-	virtual void update_canvas() override;
+	virtual void update_canvas_size() override;
 
 	/**
 	 * Callback for subclasses to get notified about positioner movement.

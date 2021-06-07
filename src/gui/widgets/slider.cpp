@@ -56,6 +56,10 @@ slider::slider(const implementation::builder_slider& builder)
 	//		std::bind(&slider::signal_handler_left_button_down, this, std::placeholders::_2, std::placeholders::_3));
 
 	connect_signal<event::LEFT_BUTTON_UP>(std::bind(&slider::signal_handler_left_button_up, this, std::placeholders::_2, std::placeholders::_3));
+
+	for(auto& tmp : get_canvases()) {
+		tmp.set_variable("text", wfl::variant(get_value_label()));
+	}
 }
 
 point slider::calculate_best_size() const

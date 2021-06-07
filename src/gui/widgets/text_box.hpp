@@ -183,8 +183,12 @@ protected:
 
 	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
 
-	/** See @ref styled_widget::update_canvas. */
-	virtual void update_canvas() override;
+	/*
+	 * \todo: this should probably only override update_canvas, but as there
+	 * are unlikely to be many instances of this class in the same window it
+	 * doesn't seem necessary to look at optimising it.
+	 */
+	virtual void update_canvas_size() override;
 
 	/** Inherited from text_box_base. */
 	void goto_end_of_line(const bool select = false) override

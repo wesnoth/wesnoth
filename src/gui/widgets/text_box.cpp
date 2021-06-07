@@ -128,6 +128,7 @@ void text_box::place(const point& origin, const point& size)
 	// Inherited.
 	styled_widget::place(origin, size);
 
+	// \todo why does it do this *after* the (via inheritance) call to update_canvas_size()?
 	set_maximum_width(get_text_maximum_width());
 	set_maximum_height(get_text_maximum_height(), false);
 
@@ -136,7 +137,7 @@ void text_box::place(const point& origin, const point& size)
 	update_offsets();
 }
 
-void text_box::update_canvas()
+void text_box::update_canvas_size()
 {
 	/***** Gather the info *****/
 
@@ -289,8 +290,7 @@ void text_box::update_offsets()
 
 	// Since this variable doesn't change set it here instead of in
 	// update_canvas().
-	for(auto & tmp : get_canvases())
-	{
+	for(auto & tmp : get_canvases()) {
 		tmp.set_variable("text_font_height", wfl::variant(text_height_));
 	}
 

@@ -54,6 +54,10 @@ toggle_button::toggle_button(const implementation::builder_toggle_button& builde
 			this,
 			std::placeholders::_2,
 			std::placeholders::_3));
+
+	for(auto & canvas : get_canvases()) {
+		canvas.set_variable("icon", wfl::variant(icon_name_));
+	}
 }
 
 unsigned toggle_button::num_states() const
@@ -99,10 +103,7 @@ void toggle_button::update_canvas()
 	// Inherit.
 	styled_widget::update_canvas();
 
-	// set icon in canvases
-	std::vector<canvas>& canvases = styled_widget::get_canvases();
-	for(auto & canvas : canvases)
-	{
+	for(auto & canvas : get_canvases()) {
 		canvas.set_variable("icon", wfl::variant(icon_name_));
 	}
 

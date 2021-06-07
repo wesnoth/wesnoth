@@ -175,7 +175,7 @@ void scrollbar_base::set_item_position(const unsigned item_position)
 #endif
 }
 
-void scrollbar_base::update_canvas()
+void scrollbar_base::update_canvas_size()
 {
 	for(auto & tmp : get_canvases())
 	{
