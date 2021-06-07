@@ -27,7 +27,7 @@ local random_spawns = {
 		{"Skeleton", "Revenant", "more", "Draug"},
 	},
 	{
-		{"Rock Scorpion", "Wild Wyvern", "none", "none"},
+		{"Rock Scorpion", "Fire Wraith", "none", "none"},
 		{"Fire Ant", "more", "Cave Bear", "more"},
 	},
 	{
