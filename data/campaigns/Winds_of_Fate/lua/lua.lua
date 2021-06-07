@@ -60,7 +60,6 @@ local function determine_advantage()
 		result = winning_sides[1]
 	else -- #winning_sides == 2, a tie (or both sides have no units or a negative score which should be impossible here)
 		-- po: In the end-of-match summary, there's a two-way tie (this is only used for exactly two winning teams)
-		-- Separated from the three-or-more text in case a language differentiates "two sides" vs "three sides".
 		local comparison_text = _ "Sides $side_number and $other_side_number are tied."
 		side_comparison = side_comparison .. "\n" .. comparison_text:vformat{side_number = winning_sides[1], other_side_number = winning_sides[2]}
 		result = "tie"
