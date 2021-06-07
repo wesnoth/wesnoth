@@ -259,6 +259,8 @@ server::server(int port,
 	, cmd_handlers_()
 	, timer_(io_service_)
 	, lan_server_timer_(io_service_)
+	, dummy_player_timer_(io_service_)
+	, dummy_player_timer_interval_(30)
 {
 	setup_handlers();
 	load_config();
@@ -539,6 +541,24 @@ void server::load_config()
 #endif
 
 	load_tls_config(cfg_);
+
+	if(cfg_["dummy_player_count"].to_int() > 0) {
+		for(int i = 0; i < cfg_["dummy_player_count"].to_int(); i++) {
+			simple_wml::node& dummy_user = games_and_users_list_.root().add_child_at("user", i);
+			dummy_user.set_attr_dup("available", "yes");
+			dummy_user.set_attr_int("forum_id", i);
+			dummy_user.set_attr_int("game_id", 0);
+			dummy_user.set_attr_dup("location", "");
+			dummy_user.set_attr_dup("moderator", "no");
+			dummy_user.set_attr_dup("name", ("player"+std::to_string(i)).c_str());
+			dummy_user.set_attr_dup("registered", "yes");
+			dummy_user.set_attr_dup("status", "lobby");
+		}
+		if(cfg_["dummy_player_timer_interval"].to_int() > 0) {
+			dummy_player_timer_interval_ = cfg_["dummy_player_timer_interval"].to_int();
+		}
+		start_dummy_player_updates();
+	}
 }
 
 bool server::ip_exceeds_connection_limit(const std::string& ip) const
@@ -588,6 +608,53 @@ void server::dump_stats(const boost::system::error_code& ec)
 			   << "\tnumber_of_games = " << games().size() << "\tnumber_of_users = " << player_connections_.size()
 			   << "\n";
 	start_dump_stats();
+}
+
+void server::start_dummy_player_updates()
+{
+#if BOOST_VERSION >= 106600
+	dummy_player_timer_.expires_after(std::chrono::seconds(dummy_player_timer_interval_));
+#else
+	dummy_player_timer_.expires_from_now(std::chrono::seconds(dummy_player_timer_interval_));
+#endif
+	dummy_player_timer_.async_wait([this](const boost::system::error_code& ec) { dummy_player_updates(ec); });
+}
+
+void server::dummy_player_updates(const boost::system::error_code& ec)
+{
+	if(ec) {
+		ERR_SERVER << "Error waiting for dummy player timer: " << ec.message() << "\n";
+		return;
+	}
+
+	int size = games_and_users_list_.root().children("user").size();
+	LOG_SERVER << "player count: " << size << std::endl;
+	if(size % 2 == 0) {
+		simple_wml::node* dummy_user = games_and_users_list_.root().children("user").at(size-1);
+
+		simple_wml::document diff;
+		if(make_delete_diff(games_and_users_list_.root(), nullptr, "user", dummy_user, diff)) {
+			send_to_lobby(diff);
+		}
+
+		games_and_users_list_.root().remove_child("user", size-1);
+	} else {
+		simple_wml::node& dummy_user = games_and_users_list_.root().add_child_at("user", size-1);
+		dummy_user.set_attr_dup("available", "yes");
+		dummy_user.set_attr_int("forum_id", size-1);
+		dummy_user.set_attr_int("game_id", 0);
+		dummy_user.set_attr_dup("location", "");
+		dummy_user.set_attr_dup("moderator", "no");
+		dummy_user.set_attr_dup("name", ("player"+std::to_string(size-1)).c_str());
+		dummy_user.set_attr_dup("registered", "yes");
+		dummy_user.set_attr_dup("status", "lobby");
+
+		simple_wml::document diff;
+		make_add_diff(games_and_users_list_.root(), nullptr, "user", diff);
+		send_to_lobby(diff);
+	}
+
+	start_dummy_player_updates();
 }
 
 void server::start_tournaments_timer()
