@@ -36,6 +36,7 @@
 #include "game_state.hpp"
 #include "gettext.hpp"
 #include "gui/dialogs/loading_screen.hpp"
+#include "gui/dialogs/message.hpp"      // for show_error_message
 #include "gui/dialogs/transient_message.hpp"
 #include "hotkey/command_executor.hpp"
 #include "hotkey/hotkey_handler.hpp"
@@ -64,6 +65,7 @@
 #include "units/id.hpp"
 #include "units/types.hpp"
 #include "units/unit.hpp"
+#include "utils/general.hpp"
 #include "whiteboard/manager.hpp"
 
 #include <functional>
@@ -1196,6 +1198,91 @@ void play_controller::start_game()
 		gamestate().gamedata_.set_phase(game_data::PLAY);
 		gui_->recalculate_minimap();
 	}
+
+	check_next_scenario_is_known();
+}
+
+/**
+ * Find all [endlevel]next_scenario= attributes, and add them to @a result.
+ */
+static void find_next_scenarios(const config& parent, std::set<std::string>& result) {
+	for(const auto& endlevel : parent.child_range("endlevel")) {
+		if(endlevel.has_attribute("next_scenario")) {
+			result.insert(endlevel["next_scenario"]);
+		}
+	}
+	for(const auto& cfg : parent.all_children_range()) {
+		find_next_scenarios(cfg.cfg, result);
+	}
+};
+
+void play_controller::check_next_scenario_is_known() {
+	// Which scenarios are reachable from the current one?
+	std::set<std::string> possible_next_scenarios;
+	possible_next_scenarios.insert(gamestate().gamedata_.next_scenario());
+
+	// Find all "endlevel" tags that could be triggered in events
+	config events;
+	gamestate().events_manager_->write_events(events);
+	find_next_scenarios(events, possible_next_scenarios);
+
+	// Are we looking for [scenario]id=, [multiplayer]id= or [test]id=?
+	const auto tagname = saved_game_.classification().get_tagname();
+
+	// Of the possible routes, work out which exist.
+	bool possible_this_is_the_last_scenario = false;
+	std::vector<std::string> known;
+	std::vector<std::string> unknown;
+	for(const auto& x : possible_next_scenarios) {
+		if(x.empty() || x == "null") {
+			possible_this_is_the_last_scenario = true;
+			LOG_NG << "This can be the last scenario\n";
+		} else if(utils::contains(x, '$')) {
+			// Assume a WML variable will be set to a correct value before the end of the scenario
+			known.push_back(x);
+			LOG_NG << "Variable value for next scenario '" << x << "'\n";
+		} else if(game_config_.find_child(tagname, "id", x)) {
+			known.push_back(x);
+			LOG_NG << "Known next scenario '" << x << "'\n";
+		} else {
+			unknown.push_back(x);
+			ERR_NG << "Unknown next scenario '" << x << "'\n";
+		}
+	}
+
+	if(unknown.empty()) {
+		// everything's good
+		return;
+	}
+
+	std::string title = _("Warning: broken campaign branches");
+	std::stringstream message;
+
+	message << _n(
+		// TRANSLATORS: This is an error that will hopefully only be seen by UMC authors and by players who have already
+		// said "okay" to a "loading saves from an old version might not work" dialog.
+		"The next scenario is missing, you will not be able to finish this campaign.",
+		// TRANSLATORS: This is an error that will hopefully only be seen by UMC authors and by players who have already
+		// said "okay" to a "loading saves from an old version might not work" dialog.
+		"Some of the possible next scenarios are missing, you might not be able to finish this campaign.",
+		unknown.size() + known.size() + (possible_this_is_the_last_scenario ? 1 : 0));
+	message << "\n\n";
+	message << _n(
+		"Please report the following missing scenario to the campaign’s author:\n$unknown_list|",
+		"Please report the following missing scenarios to the campaign’s author:\n$unknown_list|",
+		unknown.size());
+	message << "\n";
+	message << _("Once this is fixed, you will need to restart this scenario.");
+
+	std::stringstream unknown_list;
+	for(const auto& x : unknown) {
+		unknown_list << font::unicode_bullet << " " << x << "\n";
+	}
+	utils::string_map symbols;
+	symbols["unknown_list"] = unknown_list.str();
+	auto message_str = utils::interpolate_variables_into_string(message.str(), &symbols);
+	ERR_NG << message_str << "\n";
+	gui2::show_message(title, message_str, gui2::dialogs::message::close_button);
 }
 
 bool play_controller::can_use_synced_wml_menu() const
