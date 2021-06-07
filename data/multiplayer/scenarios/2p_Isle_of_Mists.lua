@@ -267,9 +267,9 @@ end)
 on_event("prestart", function()
 	local leaders = wesnoth.units.find_on_map { side = "3,4", canrecruit= true}
 	if #leaders < 2 then
-		create_timed_spawns(5, 11, 50, 5, 4, 21)
+		create_timed_spawns(5, 11, 30, 5, 4, 21)
 	else
-		create_timed_spawns(4, 11, 90, 4, 5, 23)
+		create_timed_spawns(4, 11, 60, 4, 5, 23)
 	end
 end)
 
@@ -285,12 +285,22 @@ on_event("new turn", function()
 		return
 	end
 	wml.variables["timed_spawn[0]"] = nil
+
+	-- first spawn wave
 	local unit_types = get_spawn_types(next_spawn.units, next_spawn.gold, random_spawns[next_spawn.pool_num])
 	local spawn_areas = {{"6", "3"}, {"4", "6"}, {"3", "9"}, {"3", "13"}, {"7", "14"}, {"10", "14"}, {"14", "14"}, {"20", "15"}, {"26", "15"}, {"28", "11"}, {"29", "7"}, {"25", "3"}, {"29", "3"}, {"19", "3"}, {"15", "3"}, {"12", "3"}, {"8", "4"},}
 	local spawn_area = spawn_areas[mathx.random(#spawn_areas)]
 	local locations_in_area = wesnoth.map.find { x = spawn_area[1], y = spawn_area[2], radius=1, include_borders=false }
 	local chosen_location = locations_in_area[mathx.random(#locations_in_area)]
 	place_units(unit_types, chosen_location[1], chosen_location[2])
+
+	-- second follow up spawn wave
+	local unit_types_second = get_spawn_types(next_spawn.units, next_spawn.gold, random_spawns[next_spawn.pool_num])
+	local spawn_areas_second = {{"6", "3"}, {"4", "6"}, {"3", "9"}, {"3", "13"}, {"7", "14"}, {"10", "14"}, {"14", "14"}, {"20", "15"}, {"26", "15"}, {"28", "11"}, {"29", "7"}, {"25", "3"}, {"29", "3"}, {"19", "3"}, {"15", "3"}, {"12", "3"}, {"8", "4"},}
+	local spawn_area_second = spawn_areas_second[mathx.random(#spawn_areas)]
+	local locations_in_area_second = wesnoth.map.find { x = spawn_area_second[1], y = spawn_area_second[2], radius=1, include_borders=false }
+	local chosen_location_second = locations_in_area_second[mathx.random(#locations_in_area_second)]
+	place_units(unit_types_second, chosen_location_second[1], chosen_location_second[2])
 end)
 
 -- on turn 'final_turn' the first 'final spawn' appears
