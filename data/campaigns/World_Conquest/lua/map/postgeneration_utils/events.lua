@@ -111,8 +111,8 @@ function wct_castle_expansion_side(side_num)
 	if keep_loc == nil then
 		return
 	end
-	local castle = map:get_tiles_radius({keep_loc}, wesnoth.map.filter(f.terrain("C*,K*")), 1)
-	local keep_area = map:get_tiles_radius({keep_loc}, wesnoth.map.filter(f.all()), 2)
+	local castle = map:find_in_radius({keep_loc}, 1, wesnoth.map.filter(f.terrain("C*,K*")))
+	local keep_area = map:find_in_radius({keep_loc}, 2, wesnoth.map.filter(f.all()))
 
 	local candidates = get_locations {
 		filter = f.all(
@@ -146,7 +146,7 @@ function wct_castle_expansion_side(side_num)
 		wesnoth.log("warn", "Too few tiles in castle expansion for side " .. side_num .. ", wanted: " .. n_tiles_wanted .. " but we got only " .. #candidates)
 		n_tiles_wanted = #candidates
 	end
-	helper.shuffle(candidates)
+	mathx.shuffle(candidates)
 	for i = 1, n_tiles_wanted do
 		map[candidates[i]] = "Ch"
 	end
@@ -171,5 +171,5 @@ function get_oceanic()
 		--ignore rivers
 		f.adjacent(f.terrain("!,W*^*,S*^*,D*^*,Ai"), nil, "0-3")
 	))
-	return map:get_tiles_radius(water_border_tiles, filter_radius, 999)
+	return map:find_in_radius(water_border_tiles, 999, filter_radius)
 end

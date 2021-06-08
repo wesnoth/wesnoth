@@ -378,7 +378,7 @@ function world_conquest_tek_map_decoration_3c()
 	}
 
 
-	if wesnoth.random(2) == 1 then
+	if mathx.random(2) == 1 then
 		wct_change_map_water("t")
 	end
 end

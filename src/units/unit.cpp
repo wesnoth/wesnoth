@@ -849,7 +849,7 @@ void unit::advance_to(const unit_type& u_type, bool use_traits)
 	const unit_type& old_type = type();
 	// Adjust the new type for gender and variation.
 	const unit_type& new_type = u_type.get_gender_unit_type(gender_).get_variation(variation_);
-	// In cast u_type was already a variation, make sure our variation is set correctly.
+	// In case u_type was already a variation, make sure our variation is set correctly.
 	variation_ = new_type.variation_id();
 
 	// Reset the scalar values first
@@ -899,7 +899,7 @@ void unit::advance_to(const unit_type& u_type, bool use_traits)
 	type_ = &new_type;
 	type_name_ = new_type.type_name();
 	description_ = new_type.unit_description();
-	special_notes_ = new_type.special_notes();
+	special_notes_ = new_type.direct_special_notes();
 	undead_variation_ = new_type.undead_variation();
 	max_experience_ = new_type.experience_needed(true);
 	level_ = new_type.level();
@@ -948,6 +948,12 @@ void unit::advance_to(const unit_type& u_type, bool use_traits)
 	// be cleared.
 	if(get_state("unpoisonable")) {
 		set_state(STATE_POISONED, false);
+	}
+	if(get_state("unslowable")) {
+		set_state(STATE_SLOWED, false);
+	}
+	if(get_state("unpetrifiable")) {
+		set_state(STATE_PETRIFIED, false);
 	}
 
 	// Now that modifications are done modifying the maximum hit points,
@@ -1965,8 +1971,16 @@ void unit::apply_builtin_effect(std::string apply_to, const config& effect)
 			hit_points_ = 1;
 		}
 	} else if(apply_to == "movement") {
-		const std::string& increase = effect["increase"];
+		const bool apply_to_vision = effect["apply_to_vision"].to_bool(true);
 
+		// Unlink vision from movement, regardless of whether we'll increment both or not
+		if(vision_ < 0) {
+			vision_ = max_movement_;
+		}
+
+		const int old_max = max_movement_;
+
+		const std::string& increase = effect["increase"];
 		if(!increase.empty()) {
 			set_total_movement(utils::apply_modifier(max_movement_, increase, 1));
 		}
@@ -1976,12 +1990,19 @@ void unit::apply_builtin_effect(std::string apply_to, const config& effect)
 		if(movement_ > max_movement_) {
 			movement_ = max_movement_;
 		}
-	} else if(apply_to == "vision") {
-		const std::string& increase = effect["increase"];
 
+		if(apply_to_vision) {
+			vision_ = std::max(0, vision_ + max_movement_ - old_max);
+		}
+	} else if(apply_to == "vision") {
+		// Unlink vision from movement, regardless of which one we're about to change.
+		if(vision_ < 0) {
+			vision_ = max_movement_;
+		}
+
+		const std::string& increase = effect["increase"];
 		if(!increase.empty()) {
-			const int current_vision = vision_ < 0 ? max_movement_ : vision_;
-			vision_ = utils::apply_modifier(current_vision, increase, 1);
+			vision_ = utils::apply_modifier(vision_, increase, 1);
 		}
 
 		vision_ = effect["set"].to_int(vision_);
@@ -2180,12 +2201,17 @@ void unit::apply_builtin_effect(std::string apply_to, const config& effect)
 			recall_cost_ = utils::apply_modifier(recall_cost, increase, 1);
 		}
 	} else if(effect["apply_to"] == "variation") {
-		variation_ = effect["name"].str();
 		const unit_type*  base_type = unit_types.find(type().parent_id());
 		assert(base_type != nullptr);
-		advance_to(*base_type);
-		if(effect["heal_full"].to_bool(false)) {
-			heal_fully();
+		const std::string& variation_id = effect["name"];
+		if(variation_id.empty() || base_type->get_gender_unit_type(gender_).has_variation(variation_id)) {
+			variation_ = variation_id;
+			advance_to(*base_type);
+			if(effect["heal_full"].to_bool(false)) {
+				heal_fully();
+			}
+		} else {
+			WRN_UT << "unknown variation '" << variation_id << "' (name=) in [effect]apply_to=variation, ignoring" << std::endl;
 		}
 	} else if(effect["apply_to"] == "type") {
 		std::string prev_type = effect["prev_type"];
@@ -2195,14 +2221,13 @@ void unit::apply_builtin_effect(std::string apply_to, const config& effect)
 		const std::string& new_type_id = effect["name"];
 		const unit_type* new_type = unit_types.find(new_type_id);
 		if(new_type) {
-			const bool heal_full = effect["heal_full"].to_bool(false);
 			advance_to(*new_type);
 			preferences::encountered_units().insert(new_type_id);
-			if(heal_full) {
+			if(effect["heal_full"].to_bool(false)) {
 				heal_fully();
 			}
 		} else {
-			WRN_UT << "unknown type= in [effect]apply_to=type, ignoring" << std::endl;
+			WRN_UT << "unknown type '" << new_type_id << "' (name=) in [effect]apply_to=type, ignoring" << std::endl;
 		}
 	}
 }
@@ -2616,6 +2641,10 @@ void unit::clear_changed_attributes()
 	for(const auto& a_ptr : attacks_) {
 		a_ptr->set_changed(false);
 	}
+}
+
+std::vector<t_string> unit::unit_special_notes() const {
+	return combine_special_notes(special_notes_, abilities(), attacks(), movement_type());
 }
 
 // Filters unimportant stats from the unit config and returns a checksum of

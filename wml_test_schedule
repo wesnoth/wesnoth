@@ -89,8 +89,7 @@
 5 test_move_fail_6
 0 test_move_unit
 0 test_move_unit_in_circle
-0 sighted_events
-0 sighted_on_opponents_turn
+0 sighted_on_move
 0 move_skip_no_sighted_no_share_view
 0 move_skip_ally_sighted_no_share_view
 0 move_skip_all_sighted_no_share_view
@@ -114,6 +113,7 @@
 0 event_handlers_in_events_7
 0 event_handlers_in_events_8
 0 event_handers_in_events__delayed
+0 event_handers_in_events__immediate
 0 event_handlers_in_events__dynamic_filter
 0 event_remove_test
 0 event_repeat_test
@@ -126,6 +126,8 @@
 0 event_test_filter_condition
 0 event_test_filter_side
 0 event_test_filter_unit
+0 test_ability_id_active
+0 test_ability_id_not_active
 0 event_test_filter_attack
 0 filter_vision
 0 scatter_units
@@ -173,6 +175,7 @@
 0 lua_wml_tagnames
 0 test_scoped_vars
 0 as_text
+0 test_lua_version_api
 #
 # Pathfinding
 #
@@ -212,6 +215,7 @@
 # [effect]apply_to=movement and [effect]apply_to=vision
 0 effect_move_affects_vision
 0 effect_move_ignores_vision
+0 effect_move_separated_vision
 0 effect_vision
 # [store_locations]
 0 store_reachable_locations_vision
@@ -234,6 +238,10 @@
 0 test_time_area_prestart
 0 test_berzerk_firststrike
 0 feeding
+0 backstab_simple
+0 backstab_without_enemy_behind
+0 backstab_with_statue_behind
+0 backstab_with_ally_behind
 0 swarm_disables_upgrades
 0 swarm_disables_upgrades_with_abilities
 0 swarm_disables_upgrades_with_abilities_fail
@@ -241,6 +249,8 @@
 0 swarm_disables_upgrades_with_abilities_adjacent_fail
 0 swarm_disables_upgrades_with_abilities_adjacent_leadership
 0 swarm_disables_upgrades_with_abilities_adjacent_leadership_fail
+0 unslowable_status_test
+0 unpetrifiable_status_test
 0 test_force_chance_to_hit_macro
 #
 # Deterministic unit facing tests

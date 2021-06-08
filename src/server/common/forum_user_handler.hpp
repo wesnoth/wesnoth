@@ -37,11 +37,10 @@ public:
 	 *
 	 * @param name The username used to login.
 	 * @param password The hashed password sent by the client.
-	 * @param seed The nonce created for this login attempt.
 	 *             @see server::send_password_request().
 	 * @return Whether the hashed password sent by the client matches the hash retrieved from the phpbb database.
 	 */
-	bool login(const std::string& name, const std::string& password, const std::string& seed);
+	bool login(const std::string& name, const std::string& password);
 
 	/**
 	 * Needed because the hashing algorithm used by phpbb requires some info
@@ -125,12 +124,12 @@ public:
 	 * The result is then posted back to the main boost::asio thread to be sent to the requesting player.
 	 *
 	 * @param io_service The boost io_service to use to post the query results back to the main boost::asio thread.
-	 * @param s_base The server instance the player is connected to.
-	 * @param player_socket The socket use to communicate with the player's client.
+	 * @param s The server instance the player is connected to.
+	 * @param player The player iterator used to communicate with the player's client.
 	 * @param player_id The forum ID of the player to get the game history for.
 	 * @param offset Where to start returning rows to the client from the query results.
 	 */
-	void async_get_and_send_game_history(boost::asio::io_service& io_service, server_base& s_base, socket_ptr player_socket, int player_id, int offset);
+	void async_get_and_send_game_history(boost::asio::io_service& io_service, wesnothd::server& s, wesnothd::player_iterator player, int player_id, int offset);
 
 	/**
 	 * Inserts game related information.
@@ -270,7 +269,7 @@ private:
 	 * @param user The player's username.
 	 * @return The player's hashed password from the phpbb forum database.
 	 */
-	std::string get_hash(const std::string& user);
+	std::string get_hashed_password_from_db(const std::string& user);
 
 	/**
 	 * @param user The player's username.

@@ -280,7 +280,7 @@ function methods:random()
 	-- Select a random hex from the hexes in the location set
 	-- This seems "inelegant", but I can't come up with another way without creating an extra array
 	-- Return -1, -1 if empty
-	local r = wesnoth.random(self:size())
+	local r = mathx.random(self:size())
 	local i, xr, yr = 1, -1, -1
 	self:iter( function(x, y, v)
 		if (i == r) then xr, yr = x, y end

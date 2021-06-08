@@ -11,7 +11,7 @@ local VH_unit, VH_dst = {}, {}
 local ca_village_hunt = {}
 
 function ca_village_hunt:evaluation(cfg, data, filter_own)
-    local start_time, ca_name = wesnoth.get_time_stamp() / 1000., 'village_hunt'
+    local start_time, ca_name = wesnoth.ms_since_init() / 1000., 'village_hunt'
     if AH.print_eval() then AH.print_ts('     - Evaluating village_hunt CA:') end
 
     local avoid_map = LS.of_pairs(ai.aspects.avoid)

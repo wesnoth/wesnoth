@@ -10,7 +10,7 @@ function wct_map_2e_post_bunus_decoration()
 end
 
 function world_conquest_tek_map_repaint_2e()
-	world_conquest_tek_map_noise_proxy(1, wesnoth.random(1,2), "!,W*^*,Ds*^*,X*,M*^Xm,R*^*,Ch*,K*,U*^*,Ql^B*")
+	world_conquest_tek_map_noise_proxy(1, mathx.random(1,2), "!,W*^*,Ds*^*,X*,M*^Xm,R*^*,Ch*,K*,U*^*,Ql^B*")
 
 	-- create citadel castles
 	wct_map_reduce_castle_expanding_recruit("Xos", "Rr^Fet")
@@ -57,12 +57,12 @@ function world_conquest_tek_map_repaint_2e()
 	-- create villages in empty citadels
 	local terrain_to_change = wct_store_empty_citadel()
 	while #terrain_to_change > 0 do
-		local loc = terrain_to_change[wesnoth.random(#terrain_to_change)]
+		local loc = terrain_to_change[mathx.random(#terrain_to_change)]
 		map[loc] = "Rr^Vhc"
 		terrain_to_change = wct_store_empty_citadel()
 	end
 	-- improve roads quality
-	local r = wesnoth.random(2,4)
+	local r = mathx.random(2,4)
 	set_terrain { "Rr",
 		f.all(
 			f.terrain("Re"),
@@ -86,11 +86,11 @@ function world_conquest_tek_map_repaint_2e()
 	}
 
 	local max_yards = map.height * map.width // 300
-	local nyards = tonumber(helper.rand("1,0.." .. max_yards))
+	local nyards = tonumber(mathx.random_choice("1,0.." .. max_yards))
 	for i = 1, nyards do
 		local yard_dir = "n,nw,ne"
 		local yard_cdir = "s,sw,se"
-		if wesnoth.random(2) == 1 then
+		if mathx.random(2) == 1 then
 			yard_dir, yard_cdir = yard_cdir, yard_dir
 		end
 		wct_map_yard(yard_dir, yard_cdir)
@@ -98,7 +98,7 @@ function world_conquest_tek_map_repaint_2e()
 
 
 	-- chance of farms replacing yards
-	if wesnoth.random(20) == 1 then
+	if mathx.random(20) == 1 then
 		set_terrain { "Rb^Gvs,Rb^Gvs,Rb^Gvs,Gg",
 			f.terrain("*^Eff"),
 		}
@@ -136,7 +136,7 @@ function wct_map_yard(directions, counter_directions)
 	))
 
 	if #terrain_to_change > 0 then
-		local loc = terrain_to_change[wesnoth.random(#terrain_to_change)]
+		local loc = terrain_to_change[mathx.random(#terrain_to_change)]
 		map[loc] = "Gg^Eff"
 		set_terrain { "Gg^Eff",
 			f.adjacent( f.is_loc(loc), counter_directions, nil)
@@ -202,7 +202,7 @@ function wct_map_decoration_3e_leantos()
 		)
 	))
 	for i, v in ipairs(terrain_to_change) do
-		if wesnoth.random(3) == 1 then
+		if mathx.random(3) == 1 then
 			map[v] = "Rrc"
 
 			table.insert(prestart_event, wml.tag.item {

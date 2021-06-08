@@ -102,7 +102,7 @@ function training.find_available(side_num, among, amount)
 	if #possible_traintypes == 0 then
 		return
 	else
-		return possible_traintypes[wesnoth.random(#possible_traintypes)]
+		return possible_traintypes[mathx.random(#possible_traintypes)]
 	end
 end
 
@@ -184,7 +184,7 @@ end
 function training.bonus_calculate_amount(side_num)
 	local amount = 1
 	local advanced_chance = 4 * training.get_level_sum(side_num)
-	if wc2_scenario.scenario_num() > 3 or wesnoth.random(100) <= advanced_chance then
+	if wc2_scenario.scenario_num() > 3 or mathx.random(100) <= advanced_chance then
 		amount = 2
 	end
 	return amount
@@ -226,7 +226,7 @@ function training.apply(u)
 			local vchance = wml.tovconfig(chance)
 			local filter = wml.get_child(vchance, "filter")
 			local matches_filter = (not filter) or u:matches(filter)
-			if wesnoth.random(100) <= vchance.value and matches_filter then
+			if mathx.random(100) <= vchance.value and matches_filter then
 				--wesnoth.wml_actions.message { message = "Got it" }
 				table.insert(descriptions, wc2_utils.get_fstring(chance, "info"))
 				for effect in wml.child_range(vchance, "effect") do

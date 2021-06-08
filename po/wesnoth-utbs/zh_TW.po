@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.14\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-03-21 01:02 UTC\n"
+"POT-Creation-Date: 2021-05-16 02:06 UTC\n"
 "PO-Revision-Date: 2021-02-28 18:33+0800\n"
 "Last-Translator: 楊綮銘 <steven2880@gmail.com>\n"
 "Language-Team: Wesnoth Traditional Chinese Team\n"
@@ -14446,9 +14446,10 @@ msgstr "回復"
 msgid "refreshed"
 msgstr "回復"
 
-#: data/campaigns/Under_the_Burning_Suns/utils/garak-abilities.cfg:57
-msgid "+%d XP"
-msgstr "+%d 經驗值"
+#. Floating text shown when Garak's teaching ability transfers experience points
+#: data/campaigns/Under_the_Burning_Suns/utils/garak-abilities.cfg:56
+msgid "+$amount XP"
+msgstr ""
 
 #. [part]
 #: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:6
@@ -15084,6 +15085,9 @@ msgstr "魅影城堡"
 #: data/campaigns/Under_the_Burning_Suns/utils/terrain.cfg:64
 msgid "Phantom Keep"
 msgstr "魅影主堡"
+
+#~ msgid "+%d XP"
+#~ msgstr "+%d 經驗值"
 
 #~ msgid "Normal"
 #~ msgstr "普通"

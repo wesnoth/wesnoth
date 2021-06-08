@@ -55,7 +55,6 @@
 #include "game_events/entity_location.hpp"
 #include "game_events/pump.hpp"         // for queued_event
 #include "preferences/game.hpp"         // for encountered_units
-#include "help/help.hpp"
 #include "log.hpp"                      // for LOG_STREAM, logger, etc
 #include "utils/make_enum.hpp"                // for operator<<
 #include "map/map.hpp"                      // for gamemap
@@ -700,9 +699,11 @@ int game_lua_kernel::intf_set_variable(lua_State *L)
 int game_lua_kernel::intf_create_side(lua_State *L)
 {
 	config cfg = luaW_checkconfig(L, 1);
+	cfg["side"] = teams().size() + 1;
 	game_state_.add_side_wml(cfg);
+	lua_pushinteger(L, teams().size());
 
-	return 0;
+	return 1;
 }
 
 int game_lua_kernel::intf_set_menu_item(lua_State *L)
@@ -721,31 +722,6 @@ int game_lua_kernel::intf_clear_menu_item(lua_State *L)
 		}
 		game_state_.get_wml_menu_items().erase(id);
 	}
-	return 0;
-}
-
-int game_lua_kernel::intf_set_end_campaign_credits(lua_State *L)
-{
-	game_classification &classification = play_controller_.get_classification();
-	classification.end_credits = luaW_toboolean(L, 1);
-	return 0;
-}
-
-int game_lua_kernel::intf_set_end_campaign_text(lua_State *L)
-{
-	game_classification &classification = play_controller_.get_classification();
-	classification.end_text = luaW_checktstring(L, 1);
-	if (lua_isnumber(L, 2)) {
-		classification.end_text_duration = static_cast<int> (lua_tonumber(L, 2));
-	}
-
-	return 0;
-}
-
-int game_lua_kernel::intf_set_next_scenario(lua_State *L)
-{
-	deprecated_message("wesnoth.set_next_scenario", DEP_LEVEL::INDEFINITE, "");
-	gamedata().set_next_scenario(luaL_checkstring(L, 1));
 	return 0;
 }
 
@@ -1132,22 +1108,26 @@ int game_lua_kernel::impl_game_config_get(lua_State *L)
 	char const *m = luaL_checkstring(L, 2);
 
 	// Find the corresponding attribute.
-	return_int_attrib("last_turn", tod_man().number_of_turns());
+	return_int_attrib_deprecated("last_turn", "wesnoth.game_config", INDEFINITE, "1.17", "Use wesnoth.scenario.turns instead", tod_man().number_of_turns());
 	return_bool_attrib("do_healing", play_controller_.gamestate().do_healing_);
-	return_string_attrib("next_scenario", gamedata().next_scenario());
+	return_string_attrib_deprecated("next_scenario", "wesnoth.game_config", INDEFINITE, "1.17", "Use wesnoth.scenario.next instead", gamedata().next_scenario());
 	return_string_attrib("theme", gamedata().get_theme());
-	return_string_attrib("scenario_id", gamedata().get_id());
-	return_vector_string_attrib("defeat_music", gamedata().get_defeat_music());
-	return_vector_string_attrib("victory_music", gamedata().get_victory_music());
-	return_vector_string_attrib("active_resources", utils::split(play_controller_.get_loaded_resources()) );
+	return_string_attrib_deprecated("scenario_id", "wesnoth.game_config", INDEFINITE, "1.17", "Use wesnoth.scenario.id instead", gamedata().get_id());
+	return_vector_string_attrib_deprecated("defeat_music", "wesnoth.game_config", INDEFINITE, "1.17", "Use wesnoth.scenario.defeat_music instead",
+		gamedata().get_defeat_music());
+	return_vector_string_attrib_deprecated("victory_music", "wesnoth.game_config", INDEFINITE, "1.17", "Use wesnoth.scenario.victory_music instead",
+		gamedata().get_victory_music());
+	return_vector_string_attrib_deprecated("active_resources", "wesnoth.game_config", INDEFINITE, "1.17", "Use wesnoth.scenario.resources instead",
+		utils::split(play_controller_.get_loaded_resources()));
 
 	const mp_game_settings& mp_settings = play_controller_.get_mp_settings();
 	const game_classification & classification = play_controller_.get_classification();
 
-	return_string_attrib("campaign_type", classification.campaign_type.to_string());
+	return_string_attrib_deprecated("campaign_type", "wesnoth.game_config", INDEFINITE, "1.17", "Use wesnoth.scenario.type instead", classification.campaign_type.to_string());
 	if(classification.campaign_type==game_classification::CAMPAIGN_TYPE::MULTIPLAYER) {
-		return_cfgref_attrib("mp_settings", mp_settings.to_config());
-		return_cfgref_attrib("era", game_config_manager::get()->game_config().find_child("era","id",classification.era_id));
+		return_cfgref_attrib_deprecated("mp_settings", "wesnoth.game_config", INDEFINITE, "1.17", "Use wesnoth.scenario.mp_settings instead", mp_settings.to_config());
+		return_cfgref_attrib_deprecated("era", "wesnoth.game_config", INDEFINITE, "1.17", "Use wesnoth.scenario.era instead",
+			game_config_manager::get()->game_config().find_child("era","id",classification.era_id));
 		//^ finds the era with name matching mp_era, and creates a lua reference from the config of that era.
 
 		//This code for SigurdFD, not the cleanest implementation but seems to work just fine.
@@ -1180,16 +1160,98 @@ int game_lua_kernel::impl_game_config_set(lua_State *L)
 	modify_int_attrib("recall_cost", game_config::recall_cost = value);
 	modify_int_attrib("kill_experience", game_config::kill_experience = value);
 	modify_int_attrib("combat_experience", game_config::combat_experience = value);
-	modify_int_attrib("last_turn", tod_man().set_number_of_turns_by_wml(value));
+	modify_int_attrib_deprecated("last_turn", "wesnoth.game_config", INDEFINITE, "1.17", "Use wesnoth.scenario.turns instead", tod_man().set_number_of_turns_by_wml(value));
 	modify_bool_attrib("do_healing", play_controller_.gamestate().do_healing_ = value);
-	modify_string_attrib("next_scenario", gamedata().set_next_scenario(value));
+	modify_string_attrib_deprecated("next_scenario", "wesnoth.game_config", INDEFINITE, "1.17", "Use wesnoth.scenario.next instead", gamedata().set_next_scenario(value));
 	modify_string_attrib("theme",
 		gamedata().set_theme(value);
 		const game_config_view& game_config = game_config_manager::get()->game_config();
 		game_display_->set_theme(play_controller_.get_theme(game_config, value));
 	);
+	modify_vector_string_attrib_deprecated("defeat_music", "wesnoth.game_config", INDEFINITE, "1.17", "Use wesnoth.scenario.defeat_music instead", gamedata().set_defeat_music(std::move(value)));
+	modify_vector_string_attrib_deprecated("victory_music", "wesnoth.game_config", INDEFINITE, "1.17", "Use wesnoth.scenario.victory_music instead", gamedata().set_victory_music(std::move(value)));
+	return lua_kernel_base::impl_game_config_set(L);
+}
+
+namespace {
+	static config find_addon(const std::string& type, const std::string& id)
+	{
+		return game_config_manager::get()->game_config().find_child(type, "id", id);
+	}
+}
+
+/**
+ * Gets some scenario data (__index metamethod).
+ * - Arg 1: userdata (ignored).
+ * - Arg 2: string containing the name of the property.
+ * - Ret 1: something containing the attribute.
+ */
+int game_lua_kernel::impl_scenario_get(lua_State *L)
+{
+	LOG_LUA << "impl_scenario_get\n";
+	char const *m = luaL_checkstring(L, 2);
+
+	// Find the corresponding attribute.
+	return_int_attrib("turns", tod_man().number_of_turns());
+	return_string_attrib("next", gamedata().next_scenario());
+	return_string_attrib("id", gamedata().get_id());
+	return_vector_string_attrib("defeat_music", gamedata().get_defeat_music());
+	return_vector_string_attrib("victory_music", gamedata().get_victory_music());
+	if(strcmp(m, "resources") == 0) {
+		std::vector<config> resources;
+		for(const std::string& rsrc : utils::split(play_controller_.get_loaded_resources())) {
+			resources.push_back(find_addon("resource", rsrc));
+		}
+		lua_push(L, resources);
+		return 1;
+	}
+
+	const game_classification& classification = play_controller_.get_classification();
+	return_string_attrib("type", classification.campaign_type.to_string());
+	return_string_attrib("difficulty", classification.difficulty);
+	return_bool_attrib("show_credits", classification.end_credits);
+	return_string_attrib("end_text", classification.end_text);
+	return_int_attrib("end_text_duration", classification.end_text_duration);
+	if(!classification.campaign.empty()) {
+		return_cfgref_attrib("campaign", find_addon("campaign", classification.campaign));
+	}
+	if(strcmp(m, "modifications") == 0) {
+		std::vector<config> mods;
+		for(const std::string& mod : classification.active_mods) {
+			mods.push_back(find_addon("modification", mod));
+		}
+		lua_push(L, mods);
+		return 1;
+	}
+
+	if(classification.is_multiplayer()) {
+		return_cfgref_attrib("mp_settings", play_controller_.get_mp_settings().to_config());
+		return_cfgref_attrib("era", find_addon("era", classification.era_id));
+	}
+	return lua_kernel_base::impl_game_config_get(L);
+}
+
+/**
+ * Sets some scenario data (__newindex metamethod).
+ * - Arg 1: userdata (ignored).
+ * - Arg 2: string containing the name of the property.
+ * - Arg 3: something containing the attribute.
+ */
+int game_lua_kernel::impl_scenario_set(lua_State *L)
+{
+	LOG_LUA << "impl_scenario_set\n";
+	char const *m = luaL_checkstring(L, 2);
+
+	// Find the corresponding attribute.
+	modify_int_attrib("turns", tod_man().set_number_of_turns_by_wml(value));
+	modify_string_attrib("next", gamedata().set_next_scenario(value));
 	modify_vector_string_attrib("defeat_music", gamedata().set_defeat_music(std::move(value)));
 	modify_vector_string_attrib("victory_music", gamedata().set_victory_music(std::move(value)));
+
+	game_classification& classification = play_controller_.get_classification();
+	modify_bool_attrib("show_credits", classification.end_credits = value);
+	modify_string_attrib("end_text", classification.end_text = value);
+	modify_int_attrib("end_text_duration", classification.end_text_duration = value);
 	return lua_kernel_base::impl_game_config_set(L);
 }
 
@@ -1289,14 +1351,6 @@ int game_lua_kernel::intf_message(lua_State *L)
 	}
 	lua_chat(h, m);
 	LOG_LUA << "Script says: \"" << m << "\"\n";
-	return 0;
-}
-
-int game_lua_kernel::intf_open_help(lua_State *L)
-{
-	if (game_display_) {
-		help::show_help(luaL_checkstring(L, 1));
-	}
 	return 0;
 }
 
@@ -2493,23 +2547,6 @@ int game_lua_kernel::intf_simulate_combat(lua_State *L)
 }
 
 /**
- * Modifies the music playlist.
- * - Arg 1: WML table, or nil to force changes.
- */
-static int intf_set_music(lua_State *L)
-{
-	deprecated_message("wesnoth.set_music", DEP_LEVEL::INDEFINITE, "", "Use the wesnoth.playlist table instead!");
-	if (lua_isnoneornil(L, 1)) {
-		sound::commit_music_changes();
-		return 0;
-	}
-
-	config cfg = luaW_checkconfig(L, 1);
-	sound::play_music_config(cfg);
-	return 0;
-}
-
-/**
  * Plays a sound, possibly repeated.
  * - Arg 1: string.
  * - Arg 2: optional integer.
@@ -2521,26 +2558,6 @@ int game_lua_kernel::intf_play_sound(lua_State *L)
 	int repeats = lua_tointeger(L, 2);
 	sound::play_sound(m, sound::SOUND_FX, repeats);
 	return 0;
-}
-
-/**
- * Gets/sets the current sound volume
- * - Arg 1: (optional) New volume to set
- * - Return: Original volume
- */
-static int intf_sound_volume(lua_State* L)
-{
-	int vol = preferences::sound_volume();
-	lua_pushnumber(L, sound::get_sound_volume() * 100.0 / vol);
-	if(lua_isnumber(L, 1)) {
-		float rel = lua_tonumber(L, 1);
-		if(rel < 0.0f || rel > 100.0f) {
-			return luaL_argerror(L, 1, "volume must be in range 0..100");
-		}
-		vol = static_cast<int>(rel*vol / 100.0f);
-		sound::set_sound_volume(vol);
-	}
-	return 1;
 }
 
 /**
@@ -2564,25 +2581,6 @@ int game_lua_kernel::intf_scroll_to_tile(lua_State *L)
 	;
 	if (game_display_) {
 		game_display_->scroll_to_tile(loc, scroll, check_fogged);
-	}
-	return 0;
-}
-
-int game_lua_kernel::intf_select_hex(lua_State *L)
-{
-	events::command_disabler command_disabler;
-	deprecated_message("wesnoth.select_hex", DEP_LEVEL::PREEMPTIVE, {1, 15, 0}, "Use wesnoth.units.select and/or wesnoth.interface.highlight_hex instead.");
-
-	// Need this because check_location may change the stack
-	// By doing this now, we ensure that it won't do so when
-	// intf_select_unit and intf_highlight_hex call it.
-	const map_location loc = luaW_checklocation(L, 1);
-	luaW_pushlocation(L, loc);
-	lua_replace(L, 1);
-
-	intf_select_unit(L);
-	if(!lua_isnoneornil(L, 2) && luaW_toboolean(L,2)) {
-		intf_highlight_hex(L);
 	}
 	return 0;
 }
@@ -3271,9 +3269,7 @@ int game_lua_kernel::intf_remove_event(lua_State *L)
 int game_lua_kernel::intf_color_adjust(lua_State *L)
 {
 	if (game_display_) {
-		vconfig cfg(luaW_checkvconfig(L, 1));
-
-		game_display_->adjust_color_overlay(cfg["red"], cfg["green"], cfg["blue"]);
+		game_display_->adjust_color_overlay(luaL_checkinteger(L, 1), luaL_checkinteger(L, 2), luaL_checkinteger(L, 3));
 		game_display_->invalidate_all();
 		game_display_->draw(true,true);
 	}
@@ -3401,7 +3397,6 @@ static int intf_modify_ai_old(lua_State *L)
 	config cfg;
 	luaW_toconfig(L, 1, cfg);
 	int side = cfg["side"];
-	deprecated_message("wesnoth.modify_ai", DEP_LEVEL::PREEMPTIVE, {1, 15, 0}, "Use wesnoth.sides.add_ai_component, wesnoth.sides.delete_ai_component, or wesnoth.sides.change_ai_component.");
 	ai::manager::get_singleton().modify_active_ai_for_side(side, cfg);
 	return 0;
 }
@@ -3840,60 +3835,6 @@ int game_lua_kernel::intf_teleport(lua_State *L)
 }
 
 /**
- * Removes a sound source by its ID
- * Arg 1: sound source ID
- */
-int game_lua_kernel::intf_remove_sound_source(lua_State *L)
-{
-	soundsource::manager* man = play_controller_.get_soundsource_man();
-	std::string id = luaL_checkstring(L, 1);
-	man->remove(id);
-	return 0;
-}
-
-/**
- * Add a new sound source
- * Arg 1: Table containing keyword arguments
- */
-int game_lua_kernel::intf_add_sound_source(lua_State *L)
-{
-	soundsource::manager* man = play_controller_.get_soundsource_man();
-	config cfg = luaW_checkconfig(L, 1);
-	try {
-		soundsource::sourcespec spec(cfg);
-		man->add(spec);
-		man->update();
-	} catch (const bad_lexical_cast &) {
-		ERR_LUA << "Error when parsing sound_source config: invalid parameter." << std::endl;
-		ERR_LUA << "sound_source config was: " << cfg.debug() << std::endl;
-		ERR_LUA << "Skipping this sound source..." << std::endl;
-	}
-	return 0;
-}
-
-/**
- * Get an existing sound source
- * Arg 1: The sound source ID
- * Return: Config of sound source info, or nil if it didn't exist
- * This is a copy of the sound source info, so you need to call
- * add_sound_source again after changing it.
- */
-int game_lua_kernel::intf_get_sound_source(lua_State *L)
-{
-	soundsource::manager* man = play_controller_.get_soundsource_man();
-	std::string id = luaL_checkstring(L, 1);
-	config cfg = man->get(id);
-	if(cfg.empty()) {
-		return 0;
-	}
-	// Sound sources do not know their own string ID
-	// Thus, we need to add this manually
-	cfg["id"] = id;
-	luaW_pushconfig(L, cfg);
-	return 1;
-}
-
-/**
  * Logs a message
  * Arg 1: (optional) Logger; "wml" for WML errors or deprecations
  * Arg 2: Message
@@ -4065,19 +4006,14 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 	// Put some callback functions in the scripting environment.
 	static luaL_Reg const callbacks[] {
 		{ "add_known_unit",           &intf_add_known_unit           },
-		{ "create_animator",          &dispatch<&game_lua_kernel::intf_create_animator>          },
-		{ "eval_conditional",         &intf_eval_conditional         },
 		{ "get_era",                  &intf_get_era                  },
 		{ "get_resource",             &intf_get_resource             },
 		{ "get_traits",               &intf_get_traits               },
 		{ "get_viewing_side",         &intf_get_viewing_side         },
 		{ "invoke_synced_command",    &intf_invoke_synced_command    },
 		{ "modify_ai",                &intf_modify_ai_old            },
-		{ "set_music",                &intf_set_music                },
-		{ "sound_volume",             &intf_sound_volume             },
 		{ "unsynced",                 &intf_do_unsynced              },
 		{ "add_event_handler",         &dispatch<&game_lua_kernel::intf_add_event                  >        },
-		{ "add_sound_source",          &dispatch<&game_lua_kernel::intf_add_sound_source           >        },
 		{ "allow_end_turn",            &dispatch<&game_lua_kernel::intf_allow_end_turn             >        },
 		{ "allow_undo",                &dispatch<&game_lua_kernel::intf_allow_undo                 >        },
 		{ "cancel_action",             &dispatch<&game_lua_kernel::intf_cancel_action              >        },
@@ -4091,29 +4027,17 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 		{ "find_vision_range",         &dispatch<&game_lua_kernel::intf_find_vision_range          >        },
 		{ "fire_event",                &dispatch2<&game_lua_kernel::intf_fire_event, false         >        },
 		{ "fire_event_by_id",          &dispatch2<&game_lua_kernel::intf_fire_event, true          >        },
-		{ "get_all_vars",              &dispatch<&game_lua_kernel::intf_get_all_vars               >        },
 		{ "get_end_level_data",        &dispatch<&game_lua_kernel::intf_get_end_level_data         >        },
-		{ "get_sound_source",          &dispatch<&game_lua_kernel::intf_get_sound_source           >        },
 		{ "get_time_of_day",           &dispatch<&game_lua_kernel::intf_get_time_of_day            >        },
 		{ "get_max_liminal_bonus",     &dispatch<&game_lua_kernel::intf_get_max_liminal_bonus      >        },
-		{ "get_variable",              &dispatch<&game_lua_kernel::intf_get_variable               >        },
 		{ "log_replay",                &dispatch<&game_lua_kernel::intf_log_replay                 >        },
 		{ "log",                       &dispatch<&game_lua_kernel::intf_log                        >        },
 		{ "message",                   &dispatch<&game_lua_kernel::intf_message                    >        },
-		{ "open_help",                 &dispatch<&game_lua_kernel::intf_open_help                  >        },
-		{ "play_sound",                &dispatch<&game_lua_kernel::intf_play_sound                 >        },
 		{ "print",                     &dispatch<&game_lua_kernel::intf_print                      >        },
 		{ "redraw",                    &dispatch<&game_lua_kernel::intf_redraw                     >        },
 		{ "remove_event_handler",      &dispatch<&game_lua_kernel::intf_remove_event               >        },
-		{ "remove_sound_source",       &dispatch<&game_lua_kernel::intf_remove_sound_source        >        },
 		{ "replace_schedule",          &dispatch<&game_lua_kernel::intf_replace_schedule           >        },
-		{ "select_hex",                &dispatch<&game_lua_kernel::intf_select_hex                 >        },
 		{ "set_time_of_day",           &dispatch<&game_lua_kernel::intf_set_time_of_day            >        },
-		{ "set_end_campaign_credits",  &dispatch<&game_lua_kernel::intf_set_end_campaign_credits   >        },
-		{ "set_end_campaign_text",     &dispatch<&game_lua_kernel::intf_set_end_campaign_text      >        },
-		{ "create_side",               &dispatch<&game_lua_kernel::intf_create_side                >        },
-		{ "set_next_scenario",         &dispatch<&game_lua_kernel::intf_set_next_scenario          >        },
-		{ "set_variable",              &dispatch<&game_lua_kernel::intf_set_variable               >        },
 		{ "simulate_combat",           &dispatch<&game_lua_kernel::intf_simulate_combat            >        },
 		{ "synchronize_choice",        &intf_synchronize_choice                                             },
 		{ "synchronize_choices",       &intf_synchronize_choices                                            },
@@ -4197,10 +4121,18 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 	lua_setfield(L, -2, "current");
 	lua_pop(L, 1);
 
-	// Add tovconfig to the WML module
+	// Add functions to the WML module
 	lua_getglobal(L, "wml");
-	lua_pushcfunction(L, &lua_common::intf_tovconfig);
-	lua_setfield(L, -2, "tovconfig");
+	static luaL_Reg const wml_callbacks[] {
+		{"tovconfig", &lua_common::intf_tovconfig},
+		{"eval_conditional", &intf_eval_conditional},
+		// These aren't actually part of the API - they're used internally by the variable metatable.
+		{ "get_variable", &dispatch<&game_lua_kernel::intf_get_variable>},
+		{ "set_variable", &dispatch<&game_lua_kernel::intf_set_variable>},
+		{ "get_all_vars", &dispatch<&game_lua_kernel::intf_get_all_vars>},
+		{ nullptr, nullptr }
+	};
+	luaL_setfuncs(L, wml_callbacks, 0);
 	lua_pop(L, 1);
 
 	// Add functions to the map module
@@ -4266,6 +4198,9 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 		{"find_on_recall", &dispatch<&game_lua_kernel::intf_get_recall_units>},
 		{"get", &dispatch<&game_lua_kernel::intf_get_unit>},
 		{"get_hovered", &dispatch<&game_lua_kernel::intf_get_displayed_unit>},
+		{"create_animator", &dispatch<&game_lua_kernel::intf_create_animator>},
+		{"create_weapon", intf_create_attack},
+
 		{ nullptr, nullptr }
 	};
 	lua_getglobal(L, "wesnoth");
@@ -4286,6 +4221,7 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 		// Static functions
 		{ "find", &dispatch<&game_lua_kernel::intf_get_sides> },
 		{ "get", &dispatch<&game_lua_kernel::intf_get_side> },
+		{ "create", &dispatch<&game_lua_kernel::intf_create_side> },
 		{ nullptr, nullptr }
 	};
 	std::vector<lua_cpp::Reg> const cpp_side_callbacks {
@@ -4330,6 +4266,18 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 	lua_newtable(L);
 	luaL_setfuncs(L, intf_callbacks, 0);
 	lua_setfield(L, -2, "interface");
+	lua_pop(L, 1);
+
+	// Create the audio module
+	cmd_log_ << "Adding audio module...\n";
+	static luaL_Reg const audio_callbacks[] {
+		{ "play",                &dispatch<&game_lua_kernel::intf_play_sound                 >        },
+		{ nullptr, nullptr }
+	};
+	lua_getglobal(L, "wesnoth");
+	lua_newtable(L);
+	luaL_setfuncs(L, audio_callbacks, 0);
+	lua_setfield(L, -2, "audio");
 	lua_pop(L, 1);
 
 	// Create the playlist table with its metatable
@@ -4390,6 +4338,20 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 	lua_setfield(L, -2, "__newindex");
 	lua_setmetatable(L, -2);
 	lua_setfield(L, -2, "game_display");
+	lua_pop(L, 1);
+
+	// Create the scenario table.
+	cmd_log_ << "Adding scenario table...\n";
+
+	luaW_getglobal(L, "wesnoth");
+	lua_newtable(L);
+	lua_createtable(L, 0, 2);
+	lua_pushcfunction(L, &dispatch<&game_lua_kernel::impl_scenario_get>);
+	lua_setfield(L, -2, "__index");
+	lua_pushcfunction(L, &dispatch<&game_lua_kernel::impl_scenario_set>);
+	lua_setfield(L, -2, "__newindex");
+	lua_setmetatable(L, -2);
+	lua_setfield(L, -2, "scenario");
 	lua_pop(L, 1);
 
 	lua_settop(L, 0);

@@ -133,15 +133,15 @@ local function world_conquest_tek_map_repaint_6d()
 		}
 	else
 		-- this is faster.
-		local r8_Re = map:get_tiles_radius(
+		local r8_Re = map:find_in_radius(
 			map:find(f.terrain("Re")),
-			wesnoth.map.filter(f.all()),
-			8
+			8,
+			wesnoth.map.filter(f.all())
 		)
-		local r6_Khs = map:get_tiles_radius(
+		local r6_Khs = map:find_in_radius(
 			map:find(f.terrain("Khs")),
-			wesnoth.map.filter(f.all()),
-			6
+			6,
+			wesnoth.map.filter(f.all())
 		)
 		set_terrain { "Chs",
 			f.all(
@@ -453,7 +453,7 @@ local function world_conquest_tek_map_repaint_6d()
 		fraction_rand = "24..240",
 	}
 
-	if wesnoth.random(20) == 1 then
+	if mathx.random(20) == 1 then
 		wct_map_decorative_docks()
 	end
 	-- beachs sand and stones

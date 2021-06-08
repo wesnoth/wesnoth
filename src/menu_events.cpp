@@ -1243,7 +1243,7 @@ protected:
 		register_command("foreground", &console_handler::do_foreground, _("Debug foreground terrain."), "", "D");
 		register_command(
 				"layers", &console_handler::do_layers, _("Debug layers from terrain under the mouse."), "", "D");
-		register_command("fps", &console_handler::do_fps, _("Show fps (Frames Per Second)."));
+		register_command("fps", &console_handler::do_fps, _("Display and log fps (Frames Per Second)."));
 		register_command("benchmark", &console_handler::do_benchmark);
 		register_command("save", &console_handler::do_save, _("Save game."));
 		register_alias("save", "w");

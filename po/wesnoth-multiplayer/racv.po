@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ca_ES@valencia\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-04-18 02:21 UTC\n"
+"POT-Creation-Date: 2021-05-16 02:06 UTC\n"
 "PO-Revision-Date: 2008-02-25 20:51+0100\n"
 "Last-Translator: Mavorte <mavorte1@yahoo.es>\n"
 "Language-Team: Valencià <mavorte1@yahoo.es>\n"
@@ -95,30 +95,45 @@ msgid ""
 msgstr ""
 
 #. [lua]: f
-#: data/multiplayer/eras.lua:62
-msgid "<span strikethrough='true' foreground='#%02x%02x%02x'>Side %d</span>"
-msgstr ""
-
-#. [lua]: f
-#: data/multiplayer/eras.lua:76
+#. In the end-of-match summary, a side which has no units left and therefore lost. In English the loss is shown by displaying it with the text struck through.
+#: data/multiplayer/eras.lua:53
 msgid ""
-"<span foreground='#%02x%02x%02x'>Side %d</span>:  Income score = %d  Unit "
-"score = %d  Gold = %d"
+"<span strikethrough='true' foreground='$side_color'>Side $side_number</"
+"span>:  Has lost all units"
 msgstr ""
 
 #. [lua]: f
-#: data/multiplayer/eras.lua:76
-msgid "Grand total: <b>%d</b>"
+#. In the end-of-match summary, any side that still has units left
+#: data/multiplayer/eras.lua:69
+msgid ""
+"<span foreground='$side_color'>Side $side_number</span>:  Income score = "
+"$income  Unit score = $units  Gold = $gold\n"
+"Grand total: <b>$total</b>"
 msgstr ""
 
 #. [lua]: f
-#: data/multiplayer/eras.lua:93
-msgid "Sides %s and %d are tied."
+#. In the end-of-match summary, there's a single side that's won.
+#: data/multiplayer/eras.lua:86
+msgid ""
+"<span foreground='$side_color'>Side $side_number</span> has the advantage."
 msgstr ""
 
 #. [lua]: f
-#: data/multiplayer/eras.lua:95
-msgid "<span foreground='%s'>Side %d</span> has the advantage."
+#. In the end-of-match summary, there's a two-way tie (this is only used for exactly two winning teams)
+#: data/multiplayer/eras.lua:91
+msgid "Sides $side_number and $other_side_number are tied."
+msgstr ""
+
+#. [lua]: f
+#. In the end-of-match summary, three or more teams have all tied for the best score. $winners contains the result of formatting the conjunct list.
+#: data/multiplayer/eras.lua:96
+msgid "Sides $winners are tied."
+msgstr ""
+
+#. [lua]: f
+#. "Turns Over", meaning "turn limit reached" is the title of the end-of-match summary dialog
+#: data/multiplayer/eras.lua:100
+msgid "dialog^Turns Over"
 msgstr ""
 
 #. [multiplayer_side]: id=Drakes, type=random
@@ -1201,7 +1216,7 @@ msgid "Changes the gold worth of the enemy spawns by a certain percentage"
 msgstr ""
 
 #. [lua]: final_spawn
-#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:315
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:300
 msgid ""
 "The last and most powerful of these creatures are almost upon us. I feel "
 "that if we can finish them off in time, we shall be victorious."
@@ -1210,7 +1225,7 @@ msgstr ""
 "Sent que si podem acabar ab elles a temps, vencerem."
 
 #. [lua]: final_spawn
-#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:345
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:330
 msgid ""
 "The screams and pleas for mercy are finally silenced, as you remove your "
 "blood soaked blade from the last of the rebels. There will be no more "
@@ -1222,27 +1237,27 @@ msgstr ""
 "fi."
 
 #. [lua]: weather_map
-#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:472
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:457
 msgid "Clear Weather"
 msgstr "Clar"
 
 #. [lua]: weather_map
-#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:478
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:463
 msgid "Drought"
 msgstr "Sequia"
 
 #. [lua]: weather_map
-#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:490
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:475
 msgid "Heavy Rains"
 msgstr "Fortes Plujes"
 
 #. [lua]: weather_map
-#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:496
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:481
 msgid "Snowfall"
 msgstr "Nevada"
 
 #. [lua]: weather_map
-#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:502
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:487
 msgid "Heavy Snowfall"
 msgstr "Fortes nevades"
 

@@ -143,16 +143,16 @@ function battle_calcs.strike_damage(attacker, defender, att_weapon, def_weapon, 
     -- Rounding of .5 values is done differently depending on whether the
     -- multiplier is greater or smaller than 1
     if (att_multiplier > 1) then
-        att_damage = H.round(att_damage * att_multiplier - 0.001)
+        att_damage = mathx.round(att_damage * att_multiplier - 0.001)
     else
-        att_damage = H.round(att_damage * att_multiplier + 0.001)
+        att_damage = mathx.round(att_damage * att_multiplier + 0.001)
     end
 
     if (def_weapon ~= 0) then
         if (def_multiplier > 1) then
-            def_damage = H.round(def_damage * def_multiplier - 0.001)
+            def_damage = mathx.round(def_damage * def_multiplier - 0.001)
         else
-            def_damage = H.round(def_damage * def_multiplier + 0.001)
+            def_damage = mathx.round(def_damage * def_multiplier + 0.001)
         end
     end
 
@@ -1380,7 +1380,7 @@ function battle_calcs.get_attack_combos_subset(units, enemy, cfg)
     local function add_attack(attacks, reachable_hexes, n_reach, attack_combos, combos_str, current_combo, hexes_used, cfg)
 
         local time_up = false
-        if cfg.max_time and (wesnoth.get_time_stamp() / 1000. - cfg.start_time >= cfg.max_time) then
+        if cfg.max_time and (wesnoth.ms_since_init() / 1000. - cfg.start_time >= cfg.max_time) then
             time_up = true
         end
 
@@ -1583,7 +1583,7 @@ function battle_calcs.get_attack_combos_subset(units, enemy, cfg)
     -- If cfg.max_time is set, record the start time
     -- For convenience, we store this in cfg
     if cfg.max_time then
-        cfg.start_time = wesnoth.get_time_stamp() / 1000.
+        cfg.start_time = wesnoth.ms_since_init() / 1000.
     end
 
 

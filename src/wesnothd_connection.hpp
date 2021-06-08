@@ -33,13 +33,10 @@
 #include "configr_assign.hpp"
 #include "wesnothd_connection_error.hpp"
 
-#if BOOST_VERSION >= 106600
 #include <boost/asio/io_context.hpp>
-#else
-#include <boost/asio/io_service.hpp>
-#endif
 #include <boost/asio/ip/tcp.hpp>
 #include <boost/asio/streambuf.hpp>
+#include <boost/asio/ssl.hpp>
 
 #include <condition_variable>
 #include <deque>
@@ -50,11 +47,6 @@
 #include <thread>
 
 class config;
-
-union data_union {
-	char binary[4];
-	uint32_t num;
-};
 
 /** A class that represents a TCP/IP connection to the wesnothd server. */
 class wesnothd_connection
@@ -101,6 +93,12 @@ public:
 	/** Waits until the server handshake is complete. */
 	void wait_for_handshake();
 
+	/** True if connection is currently using TLS and thus is allowed to send cleartext passwords or auth tokens */
+	bool using_tls() const
+	{
+		return utils::holds_alternative<tls_socket>(socket_);
+	}
+
 	void cancel();
 
 	void stop();
@@ -138,17 +136,20 @@ public:
 private:
 	std::thread worker_thread_;
 
-#if BOOST_VERSION >= 106600
 	boost::asio::io_context io_context_;
-#else
-	boost::asio::io_service io_context_;
-#endif
 
 	typedef boost::asio::ip::tcp::resolver resolver;
 	resolver resolver_;
 
-	typedef boost::asio::ip::tcp::socket socket;
-	socket socket_;
+	boost::asio::ssl::context tls_context_;
+
+	std::string host_;
+	std::string service_;
+	typedef std::unique_ptr<boost::asio::ip::tcp::socket> raw_socket;
+	typedef std::unique_ptr<boost::asio::ssl::stream<raw_socket::element_type>> tls_socket;
+	typedef utils::variant<raw_socket, tls_socket> any_socket;
+	bool use_tls_;
+	any_socket socket_;
 
 	boost::system::error_code last_error_;
 
@@ -158,13 +159,8 @@ private:
 
 	boost::asio::streambuf read_buf_;
 
-#if BOOST_VERSION >= 106600
 	using results_type = resolver::results_type;
 	using endpoint = const boost::asio::ip::tcp::endpoint&;
-#else
-	using results_type = resolver::iterator;
-	using endpoint = resolver::iterator;
-#endif
 
 	void handle_resolve(const boost::system::error_code& ec, results_type results);
 	void handle_connect(const boost::system::error_code& ec, endpoint endpoint);
@@ -172,7 +168,9 @@ private:
 	void handshake();
 	void handle_handshake(const boost::system::error_code& ec);
 
-	data_union handshake_response_;
+	uint32_t handshake_response_;
+
+	void fallback_to_unencrypted();
 
 	std::size_t is_write_complete(const boost::system::error_code& error, std::size_t bytes_transferred);
 	void handle_write(const boost::system::error_code& ec, std::size_t bytes_transferred);
@@ -186,11 +184,7 @@ private:
 	template<typename T>
 	using data_queue = std::queue<T, std::list<T>>;
 
-#if BOOST_VERSION >= 106600
 	data_queue<std::unique_ptr<boost::asio::streambuf>> send_queue_;
-#else
-	data_queue<std::shared_ptr<boost::asio::streambuf>> send_queue_;
-#endif
 	data_queue<config> recv_queue_;
 
 	std::mutex recv_queue_mutex_;

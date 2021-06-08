@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.5.5+dev\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-04-17 22:21-0400\n"
+"POT-Creation-Date: 2021-05-15 22:06-0400\n"
 "PO-Revision-Date: 2008-10-25 11:30+0200\n"
 "Last-Translator: Robert Millan <rmh@aybabtu.com>\n"
 "Language-Team: Catalan <wesnoth-ca@lists.ettin.org>\n"
@@ -2205,7 +2205,7 @@ msgstr ""
 #. [button]: id=single_uninstall
 #. [button]: id=uninstall
 #: data/gui/widget/addon_list.cfg:435 data/gui/window/addon_manager.cfg:244
-#: src/gui/dialogs/addon/manager.cpp:814
+#: src/gui/dialogs/addon/manager.cpp:898
 #, fuzzy
 msgid "Uninstall add-on"
 msgstr "Actualitza els complements"
@@ -2406,7 +2406,7 @@ msgid "Delete add-on"
 msgstr "Suprimix fitxer"
 
 #. [label]
-#: data/gui/window/addon_manager.cfg:315 data/gui/window/addon_manager.cfg:662
+#: data/gui/window/addon_manager.cfg:315 data/gui/window/addon_manager.cfg:694
 #, fuzzy
 msgid "Type:"
 msgstr "Sí"
@@ -2441,51 +2441,56 @@ msgstr ""
 
 #. [label]
 #: data/gui/window/addon_manager.cfg:506
+msgid "Website:"
+msgstr ""
+
+#. [label]
+#: data/gui/window/addon_manager.cfg:536
 msgid "Dependencies:"
 msgstr ""
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=dependencies
-#: data/gui/window/addon_manager.cfg:520 src/gui/dialogs/addon/manager.cpp:888
+#: data/gui/window/addon_manager.cfg:550 src/gui/dialogs/addon/manager.cpp:976
 msgid "addon_dependencies^None"
 msgstr ""
 
 #. [label]
-#: data/gui/window/addon_manager.cfg:540
+#: data/gui/window/addon_manager.cfg:570
 msgid "Translations:"
 msgstr ""
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=translations
-#: data/gui/window/addon_manager.cfg:554 src/gui/dialogs/addon/manager.cpp:902
+#: data/gui/window/addon_manager.cfg:584 src/gui/dialogs/addon/manager.cpp:990
 msgid "translations^None"
 msgstr ""
 
 #. [label]
-#: data/gui/window/addon_manager.cfg:572
-msgid "Website:"
+#: data/gui/window/addon_manager.cfg:602 data/gui/window/addon_manager.cfg:721
+msgid "Tags:"
 msgstr ""
 
 #. [text_box]: id=filter
-#: data/gui/window/addon_manager.cfg:623
+#: data/gui/window/addon_manager.cfg:655
 msgid "Filters on addon description, version, type or author"
 msgstr ""
 
 #. [label]
-#: data/gui/window/addon_manager.cfg:636
+#: data/gui/window/addon_manager.cfg:668
 #, fuzzy
 msgid "State:"
 msgstr "Taula d'estat"
 
 #. [label]
-#: data/gui/window/addon_manager.cfg:689
+#: data/gui/window/addon_manager.cfg:747
 #, fuzzy
 #| msgid "Leader"
 msgid "Order:"
 msgstr "Líder"
 
 #. [label]
-#: data/gui/window/addon_manager.cfg:775 data/gui/window/addon_manager.cfg:950
+#: data/gui/window/addon_manager.cfg:833 data/gui/window/addon_manager.cfg:1008
 #, fuzzy
 #| msgid "Add-ons"
 msgid "Add-ons Manager"
@@ -2493,19 +2498,19 @@ msgstr "Complements"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=details_toggle
-#: data/gui/window/addon_manager.cfg:875 src/gui/dialogs/addon/manager.cpp:439
-#: src/gui/dialogs/addon/manager.cpp:630
+#: data/gui/window/addon_manager.cfg:933 src/gui/dialogs/addon/manager.cpp:490
+#: src/gui/dialogs/addon/manager.cpp:714
 msgid "Addon Details"
 msgstr ""
 
 #. [button]: id=update_all
-#: data/gui/window/addon_manager.cfg:889 data/gui/window/addon_manager.cfg:1053
+#: data/gui/window/addon_manager.cfg:947 data/gui/window/addon_manager.cfg:1111
 #, fuzzy
 msgid "Update All"
 msgstr "Actualitza els complements"
 
 #. [button]: id=cancel
-#: data/gui/window/addon_manager.cfg:903 data/gui/window/addon_manager.cfg:1067
+#: data/gui/window/addon_manager.cfg:961 data/gui/window/addon_manager.cfg:1125
 msgid "Exit"
 msgstr ""
 
@@ -2864,7 +2869,7 @@ msgstr "Suprimix fitxer"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/depcheck_confirm_change.cfg:40
-#: src/gui/dialogs/addon/manager.cpp:787 src/gui/dialogs/file_dialog.cpp:302
+#: src/gui/dialogs/addon/manager.cpp:871 src/gui/dialogs/file_dialog.cpp:302
 #: src/gui/dialogs/file_dialog.cpp:728
 msgid "Confirm"
 msgstr ""
@@ -2981,7 +2986,7 @@ msgstr "Descriu la unitat"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/editor_edit_scenario.cfg:170
-#: src/gui/dialogs/multiplayer/lobby.cpp:508
+#: src/gui/dialogs/multiplayer/lobby.cpp:510
 #, fuzzy
 #| msgid "Experience modifier"
 msgid "Experience modifier:"
@@ -3053,7 +3058,7 @@ msgstr ""
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/editor_edit_side.cfg:277
-#: src/gui/dialogs/multiplayer/lobby.cpp:509
+#: src/gui/dialogs/multiplayer/lobby.cpp:511
 #, fuzzy
 msgid "Gold per village:"
 msgstr "Llogaret"
@@ -3130,7 +3135,7 @@ msgstr "Generador de mapes"
 #. [button]: id=random_map_settings
 #: data/gui/window/editor_generate_map.cfg:128
 #: data/gui/window/mp_create_game.cfg:877
-#: src/gui/dialogs/multiplayer/lobby.cpp:507
+#: src/gui/dialogs/multiplayer/lobby.cpp:509
 msgid "Settings"
 msgstr "Configuració"
 
@@ -4563,7 +4568,7 @@ msgstr ""
 #: data/gui/window/mp_create_game/default_resolution.cfg:176
 #: data/gui/window/mp_create_game/small_resolution.cfg:181
 #: data/gui/window/mp_create_game/tiny_resolution.cfg:164
-#: src/gui/dialogs/multiplayer/lobby.cpp:510
+#: src/gui/dialogs/multiplayer/lobby.cpp:512
 #, fuzzy
 #| msgid "Map size: "
 msgid "Map size:"
@@ -5863,7 +5868,7 @@ msgstr ""
 msgid "feature^Cocoa notifications back end"
 msgstr ""
 
-#: src/build_info.cpp:331 src/desktop/version.cpp:117
+#: src/build_info.cpp:331 src/desktop/version.cpp:121
 msgid "cpu_architecture^<unknown>"
 msgstr ""
 
@@ -5895,7 +5900,7 @@ msgstr ""
 msgid "filesystem_path_system^Root"
 msgstr ""
 
-#: src/desktop/version.cpp:397
+#: src/desktop/version.cpp:401
 msgid "operating_system^<unknown>"
 msgstr ""
 
@@ -5935,7 +5940,7 @@ msgstr ""
 msgid "language code for localized resources^en_US"
 msgstr "ca@valencia,ca"
 
-#: src/font/text.cpp:804
+#: src/font/text.cpp:771
 msgid "The text contains invalid Pango markup: "
 msgstr ""
 
@@ -6039,37 +6044,21 @@ msgstr ""
 msgid "timespan^$num seconds"
 msgstr ""
 
-#: src/gui/core/canvas.cpp:265
-msgid "Line doesn't fit on canvas."
-msgstr "La línia no s'ajusta al llenç."
-
-#: src/gui/core/canvas.cpp:319
-msgid "Rectangle doesn't fit on canvas."
-msgstr "El rectangle no s'ajusta al llenç."
-
-#: src/gui/core/canvas.cpp:400
-#, fuzzy
-#| msgid "Rectangle doesn't fit on canvas."
-msgid "Rounded Rectangle doesn't fit on canvas."
-msgstr "El rectangle no s'ajusta al llenç."
-
-#: src/gui/core/canvas.cpp:479 src/gui/core/canvas.cpp:484
-#: src/gui/core/canvas.cpp:489 src/gui/core/canvas.cpp:495
-#, fuzzy
-msgid "Circle doesn't fit on canvas."
-msgstr "La línia no s'ajusta al llenç."
-
-#: src/gui/core/canvas.cpp:538
+#: src/gui/core/canvas.cpp:510
 #, fuzzy
 msgid "Image doesn't fit on canvas."
 msgstr "La línia no s'ajusta al llenç."
 
-#: src/gui/core/canvas.cpp:705
+#: src/gui/core/canvas.cpp:685
 msgid "Text has a font size of 0."
 msgstr "La grandària del tipus de lletra del text és 0."
 
-#: src/gui/core/canvas.cpp:780
-msgid "Text doesn't start on canvas."
+#: src/gui/core/canvas.cpp:834
+msgid "Area to draw has negative size"
+msgstr ""
+
+#: src/gui/core/canvas.cpp:836
+msgid "Area to draw is larger than widget size"
 msgstr ""
 
 #: src/gui/core/widget_definition.cpp:30
@@ -6210,151 +6199,209 @@ msgstr ""
 msgid "addons_order^First uploaded ($datelike_order)"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:228 src/gui/widgets/addon_list.cpp:103
+#: src/gui/dialogs/addon/manager.cpp:222
+msgid "addon_tag^Cooperative"
+msgstr ""
+
+#. TRANSLATORS: tooltip in the drop-down menu for filtering add-ons
+#: src/gui/dialogs/addon/manager.cpp:224
+msgid "addon_tag^All human players are on the same team, versus the AI"
+msgstr ""
+
+#: src/gui/dialogs/addon/manager.cpp:225
+msgid "addon_tag^Cosmetic"
+msgstr ""
+
+#. TRANSLATORS: tooltip in the drop-down menu for filtering add-ons
+#: src/gui/dialogs/addon/manager.cpp:227
+msgid "addon_tag^These make the game look different, without changing gameplay"
+msgstr ""
+
+#: src/gui/dialogs/addon/manager.cpp:228
+#, fuzzy
+#| msgid "Change Hotkey"
+msgid "addon_tag^Difficulty"
+msgstr "Canvia la tecla"
+
+#. TRANSLATORS: tooltip in the drop-down menu for filtering add-ons
+#: src/gui/dialogs/addon/manager.cpp:230
+msgid "addon_tag^Can make campaigns easier or harder"
+msgstr ""
+
+#: src/gui/dialogs/addon/manager.cpp:231
+msgid "addon_tag^RNG"
+msgstr ""
+
+#. TRANSLATORS: tooltip in the drop-down menu for filtering add-ons
+#: src/gui/dialogs/addon/manager.cpp:233
+msgid ""
+"addon_tag^Modify the randomness in the combat mechanics, or remove it "
+"entirely"
+msgstr ""
+
+#: src/gui/dialogs/addon/manager.cpp:234
+msgid "addon_tag^Survival"
+msgstr ""
+
+#. TRANSLATORS: tooltip in the drop-down menu for filtering add-ons
+#: src/gui/dialogs/addon/manager.cpp:236
+msgid "addon_tag^Fight against waves of enemies"
+msgstr ""
+
+#: src/gui/dialogs/addon/manager.cpp:237
+msgid "addon_tag^Terraforming"
+msgstr ""
+
+#. TRANSLATORS: tooltip in the drop-down menu for filtering add-ons
+#: src/gui/dialogs/addon/manager.cpp:239
+msgid "addon_tag^Players can change the terrain"
+msgstr ""
+
+#: src/gui/dialogs/addon/manager.cpp:262 src/gui/widgets/addon_list.cpp:103
 msgid "addon_state^Not installed"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:229 src/gui/widgets/addon_list.cpp:103
+#: src/gui/dialogs/addon/manager.cpp:263 src/gui/widgets/addon_list.cpp:103
 msgid "addon_state^Published, not installed"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:233 src/gui/widgets/addon_list.cpp:111
+#: src/gui/dialogs/addon/manager.cpp:267 src/gui/widgets/addon_list.cpp:111
 msgid "addon_state^Installed"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:234 src/gui/widgets/addon_list.cpp:111
+#: src/gui/dialogs/addon/manager.cpp:268 src/gui/widgets/addon_list.cpp:111
 msgid "addon_state^Published"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:238
+#: src/gui/dialogs/addon/manager.cpp:272
 msgid "addon_state^Installed, not tracking local version"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:241
+#: src/gui/dialogs/addon/manager.cpp:275
 msgid "addon_state^Published, not tracking local version"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:245
+#: src/gui/dialogs/addon/manager.cpp:279
 msgid "addon_state^Installed ($local_version|), upgradable"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:246
+#: src/gui/dialogs/addon/manager.cpp:280
 msgid "addon_state^Published ($local_version| installed), upgradable"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:252
+#: src/gui/dialogs/addon/manager.cpp:286
 msgid "addon_state^Installed ($local_version|), outdated on server"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:253
+#: src/gui/dialogs/addon/manager.cpp:287
 msgid "addon_state^Published ($local_version| installed), outdated on server"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:259 src/gui/widgets/addon_list.cpp:114
+#: src/gui/dialogs/addon/manager.cpp:293 src/gui/widgets/addon_list.cpp:114
 msgid "addon_state^Installed, not ready to publish"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:260 src/gui/widgets/addon_list.cpp:114
+#: src/gui/dialogs/addon/manager.cpp:294 src/gui/widgets/addon_list.cpp:114
 msgid "addon_state^Ready to publish"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:264 src/gui/widgets/addon_list.cpp:126
+#: src/gui/dialogs/addon/manager.cpp:298 src/gui/widgets/addon_list.cpp:126
 msgid "addon_state^Installed, broken"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:265 src/gui/widgets/addon_list.cpp:126
+#: src/gui/dialogs/addon/manager.cpp:299 src/gui/widgets/addon_list.cpp:126
 msgid "addon_state^Published, broken"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:268 src/gui/widgets/addon_list.cpp:130
+#: src/gui/dialogs/addon/manager.cpp:302 src/gui/widgets/addon_list.cpp:130
 msgid "addon_state^Unknown"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:330
+#: src/gui/dialogs/addon/manager.cpp:381
 #, fuzzy
 #| msgid "Binding"
 msgid "ascending"
 msgstr "Drecera"
 
 #. TRANSLATORS: Sorting order of dates, oldest first
-#: src/gui/dialogs/addon/manager.cpp:332
+#: src/gui/dialogs/addon/manager.cpp:383
 msgid "oldest to newest"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:335
+#: src/gui/dialogs/addon/manager.cpp:386
 msgid "descending"
 msgstr ""
 
 #. TRANSLATORS: Sorting order of dates, newest first
-#: src/gui/dialogs/addon/manager.cpp:337
+#: src/gui/dialogs/addon/manager.cpp:388
 msgid "newest to oldest"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:436
+#: src/gui/dialogs/addon/manager.cpp:487
 msgid "addons^Back to List"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:448
+#: src/gui/dialogs/addon/manager.cpp:499
 msgid "An error occurred while downloading the add-ons list from the server."
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:484
+#: src/gui/dialogs/addon/manager.cpp:535
 msgid "No Add-ons Available"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:484
+#: src/gui/dialogs/addon/manager.cpp:535
 msgid "There are no add-ons available for download from this server."
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:672
+#: src/gui/dialogs/addon/manager.cpp:756
 msgid ""
 "The following add-on appears to have publishing or version control "
 "information stored locally, and will not be removed:"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:680
+#: src/gui/dialogs/addon/manager.cpp:764
 msgid "The following add-on could not be deleted properly:"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:733
+#: src/gui/dialogs/addon/manager.cpp:817
 msgid "Warning"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:734
+#: src/gui/dialogs/addon/manager.cpp:818
 msgid ""
 "The remote version of this add-on is greater or equal to the version being "
 "uploaded. Do you really wish to continue?"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:750
+#: src/gui/dialogs/addon/manager.cpp:834
 msgid "Invalid icon path. Make sure the path points to a valid image."
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:753 src/gui/dialogs/addon/manager.cpp:795
+#: src/gui/dialogs/addon/manager.cpp:837 src/gui/dialogs/addon/manager.cpp:879
 msgid "The server responded with an error:"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:756
+#: src/gui/dialogs/addon/manager.cpp:840
 msgid "The add-on was rejected by the server:"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:771 src/gui/dialogs/addon/manager.cpp:798
+#: src/gui/dialogs/addon/manager.cpp:855 src/gui/dialogs/addon/manager.cpp:882
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:500
 msgid "Response"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:783
+#: src/gui/dialogs/addon/manager.cpp:867
 msgid ""
 "Deleting '$addon|' will permanently erase its download and upload counts on "
 "the add-ons server. Do you really wish to continue?"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:815
+#: src/gui/dialogs/addon/manager.cpp:899
 #, fuzzy
 msgid "Do you want to uninstall '$addon|'?"
 msgstr "Segur que voleu eixir?"
 
-#: src/gui/dialogs/addon/manager.cpp:905
+#: src/gui/dialogs/addon/manager.cpp:993
 #, fuzzy
 #| msgid "None"
 msgid "url^None"
@@ -6383,7 +6430,7 @@ msgid "Attacker vulnerability vs"
 msgstr ""
 
 #: src/gui/dialogs/campaign_selection.cpp:364
-#: src/gui/dialogs/multiplayer/lobby.cpp:491
+#: src/gui/dialogs/multiplayer/lobby.cpp:493
 #, fuzzy
 #| msgid "Choose Resolution"
 msgid "active_modifications^None"
@@ -6610,12 +6657,12 @@ msgid "Unknown"
 msgstr ""
 
 #: src/gui/dialogs/game_stats.cpp:196 src/gui/dialogs/game_stats.cpp:199
-#: src/gui/dialogs/multiplayer/lobby.cpp:505
+#: src/gui/dialogs/multiplayer/lobby.cpp:507
 msgid "no"
 msgstr "No"
 
 #: src/gui/dialogs/game_stats.cpp:196 src/gui/dialogs/game_stats.cpp:199
-#: src/gui/dialogs/multiplayer/lobby.cpp:505
+#: src/gui/dialogs/multiplayer/lobby.cpp:507
 msgid "yes"
 msgstr "Sí"
 
@@ -6794,73 +6841,73 @@ msgid ""
 "Do you want to try to install them?"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:426
+#: src/gui/dialogs/multiplayer/lobby.cpp:428
 msgid "Games: showing $num_shown out of $num_total"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:446
+#: src/gui/dialogs/multiplayer/lobby.cpp:448
 msgid "$game_name (Era: $era_name)"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:476
+#: src/gui/dialogs/multiplayer/lobby.cpp:478
 msgid "era_or_mod^not installed"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:479
+#: src/gui/dialogs/multiplayer/lobby.cpp:481
 #, fuzzy
 #| msgid "Era:"
 msgid "Era"
 msgstr "Era:"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:486
+#: src/gui/dialogs/multiplayer/lobby.cpp:488
 #, fuzzy
 #| msgid "Choose Resolution"
 msgid "Modifications"
 msgstr "Tria la resolució"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:511
+#: src/gui/dialogs/multiplayer/lobby.cpp:513
 #, fuzzy
 msgid "Reloaded:"
 msgstr "Crea una partida"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:512
+#: src/gui/dialogs/multiplayer/lobby.cpp:514
 msgid "Shared vision:"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:513
+#: src/gui/dialogs/multiplayer/lobby.cpp:515
 msgid "Shuffle sides:"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:514
+#: src/gui/dialogs/multiplayer/lobby.cpp:516
 #, fuzzy
 msgid "Time limit:"
 msgstr "Tema"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:515
+#: src/gui/dialogs/multiplayer/lobby.cpp:517
 #, fuzzy
 #| msgid "Use map settings"
 msgid "Use map settings:"
 msgstr "Utilitza els paràmetres per defecte"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:523
+#: src/gui/dialogs/multiplayer/lobby.cpp:525
 msgid ""
 "One or more add-ons need to be installed\n"
 "in order to join this game."
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:548
+#: src/gui/dialogs/multiplayer/lobby.cpp:550
 msgid "Observers allowed"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:551
+#: src/gui/dialogs/multiplayer/lobby.cpp:553
 msgid "Observers not allowed"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:810
+#: src/gui/dialogs/multiplayer/lobby.cpp:812
 msgid "lobby"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:1001
+#: src/gui/dialogs/multiplayer/lobby.cpp:1003
 msgid ""
 "Something is wrong with the addon version check database supporting the "
 "multiplayer lobby. Please report this at https://bugs.wesnoth.org."
@@ -7141,7 +7188,7 @@ msgstr ""
 msgid "Screenshot"
 msgstr "Captura de pantalla"
 
-#: src/gui/dialogs/title_screen.cpp:413
+#: src/gui/dialogs/title_screen.cpp:409
 #, fuzzy
 #| msgid "Choose Resolution"
 msgid "Choose Test"
@@ -8430,6 +8477,21 @@ msgid ""
 "The key '$deprecated_key' has been renamed to '$key'. Support for "
 "'$deprecated_key' will be removed in version $removal_version."
 msgstr ""
+
+#~ msgid "Line doesn't fit on canvas."
+#~ msgstr "La línia no s'ajusta al llenç."
+
+#~ msgid "Rectangle doesn't fit on canvas."
+#~ msgstr "El rectangle no s'ajusta al llenç."
+
+#, fuzzy
+#~| msgid "Rectangle doesn't fit on canvas."
+#~ msgid "Rounded Rectangle doesn't fit on canvas."
+#~ msgstr "El rectangle no s'ajusta al llenç."
+
+#, fuzzy
+#~ msgid "Circle doesn't fit on canvas."
+#~ msgstr "La línia no s'ajusta al llenç."
 
 #~ msgid "The maximum text width is less than 1."
 #~ msgstr "L'amplada màxima del text és inferior a 1."

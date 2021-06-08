@@ -19,6 +19,7 @@
 #include "gettext.hpp"
 #include "log.hpp"
 #include "serialization/parser.hpp"
+#include "tls_root_store.hpp"
 
 #include <boost/asio/connect.hpp>
 #include <boost/asio/read.hpp>
@@ -60,7 +61,11 @@ wesnothd_connection::wesnothd_connection(const std::string& host, const std::str
 	: worker_thread_()
 	, io_context_()
 	, resolver_(io_context_)
-	, socket_(io_context_)
+	, tls_context_(boost::asio::ssl::context::sslv23)
+	, host_(host)
+	, service_(service)
+	, use_tls_(true)
+	, socket_(raw_socket{ new raw_socket::element_type{io_context_} })
 	, last_error_()
 	, last_error_mutex_()
 	, handshake_finished_()
@@ -76,12 +81,16 @@ wesnothd_connection::wesnothd_connection(const std::string& host, const std::str
 	, bytes_read_(0)
 {
 	MPTEST_LOG;
-#if BOOST_VERSION >= 106600
-	resolver_.async_resolve(host, service,
-#else
-	resolver_.async_resolve(boost::asio::ip::tcp::resolver::query(host, service),
-#endif
-		std::bind(&wesnothd_connection::handle_resolve, this, std::placeholders::_1, std::placeholders::_2));
+
+	error_code ec;
+	auto result = resolver_.resolve(host, service, boost::asio::ip::resolver_query_base::numeric_host, ec);
+	if(!ec) { // if numeric resolve succeeds then we got raw ip address so TLS host name validation would never pass
+		use_tls_ = false;
+		boost::asio::post(io_context_, [this, ec, result](){ handle_resolve(ec, { result } ); } );
+	} else {
+		resolver_.async_resolve(host, service,
+			std::bind(&wesnothd_connection::handle_resolve, this, std::placeholders::_1, std::placeholders::_2));
+	}
 
 	// Starts the worker thread. Do this *after* the above async_resolve call or it will just exit immediately!
 	worker_thread_ = std::thread([this]() {
@@ -107,6 +116,14 @@ wesnothd_connection::~wesnothd_connection()
 {
 	MPTEST_LOG;
 
+	if(auto socket = utils::get_if<tls_socket>(&socket_)) {
+		error_code ec;
+		// this sends close_notify for secure connection shutdown
+		(*socket)->async_shutdown([](const error_code&) {} );
+		const char buffer[] = "";
+		// this write is needed to trigger immediate close instead of waiting for other side's close_notify
+		boost::asio::write(**socket, boost::asio::buffer(buffer, 0), ec);
+	}
 	// Stop the io_service and wait for the worker thread to terminate.
 	stop();
 	worker_thread_.join();
@@ -121,7 +138,7 @@ void wesnothd_connection::handle_resolve(const error_code& ec, results_type resu
 		throw system_error(ec);
 	}
 
-	boost::asio::async_connect(socket_, results,
+	boost::asio::async_connect(*utils::get<raw_socket>(socket_), results,
 		std::bind(&wesnothd_connection::handle_connect, this, std::placeholders::_1, std::placeholders::_2));
 }
 
@@ -133,11 +150,11 @@ void wesnothd_connection::handle_connect(const boost::system::error_code& ec, en
 		ERR_NW << "Tried all IPs. Giving up" << std::endl;
 		throw system_error(ec);
 	} else {
-#if BOOST_VERSION >= 106600
 		LOG_NW << "Connected to " << endpoint.address() << '\n';
-#else
-		LOG_NW << "Connected to " << endpoint->endpoint().address() << '\n';
-#endif
+
+		if(endpoint.address().is_loopback()) {
+			use_tls_ = false;
+		}
 		handshake();
 	}
 }
@@ -147,11 +164,11 @@ void wesnothd_connection::handshake()
 {
 	MPTEST_LOG;
 	static const uint32_t handshake = 0;
+	static const uint32_t tls_handshake = htonl(uint32_t(1));
 
-	boost::asio::async_write(socket_, boost::asio::buffer(reinterpret_cast<const char*>(&handshake), 4),
+	boost::asio::async_write(*utils::get<raw_socket>(socket_), boost::asio::buffer(use_tls_ ? reinterpret_cast<const char*>(&tls_handshake) : reinterpret_cast<const char*>(&handshake), 4),
 		[](const error_code& ec, std::size_t) { if(ec) { throw system_error(ec); } });
-
-	boost::asio::async_read(socket_, boost::asio::buffer(&handshake_response_.binary, 4),
+	boost::asio::async_read(*utils::get<raw_socket>(socket_), boost::asio::buffer(reinterpret_cast<std::byte*>(&handshake_response_), 4),
 		std::bind(&wesnothd_connection::handle_handshake, this, std::placeholders::_1));
 }
 
@@ -160,12 +177,71 @@ void wesnothd_connection::handle_handshake(const error_code& ec)
 {
 	MPTEST_LOG;
 	if(ec) {
+		if(ec == boost::asio::error::eof && use_tls_) {
+			// immediate disconnect likely means old server not supporting TLS handshake code
+			fallback_to_unencrypted();
+			return;
+		}
 		LOG_NW << __func__ << " Throwing: " << ec << "\n";
 		throw system_error(ec);
 	}
 
-	handshake_finished_.set_value();
-	recv();
+	if(use_tls_) {
+		if(handshake_response_ == 0xFFFFFFFFU) {
+			use_tls_ = false;
+			handle_handshake(ec);
+			return;
+		}
+
+		if(handshake_response_ == 0x00000000) {
+			network_asio::load_tls_root_certs(tls_context_);
+			raw_socket s { std::move(utils::get<raw_socket>(socket_)) };
+			tls_socket ts { new tls_socket::element_type{std::move(*s), tls_context_} };
+			socket_ = std::move(ts);
+
+			auto& socket { *utils::get<tls_socket>(socket_) };
+
+			socket.set_verify_mode(
+				boost::asio::ssl::verify_peer |
+				boost::asio::ssl::verify_fail_if_no_peer_cert
+			);
+
+#if BOOST_VERSION >= 107300
+			socket.set_verify_callback(boost::asio::ssl::host_name_verification(host_));
+#else
+			socket.set_verify_callback(boost::asio::ssl::rfc2818_verification(host_));
+#endif
+
+			socket.async_handshake(boost::asio::ssl::stream_base::client, [this](const error_code& ec) {
+				if(ec) {
+					LOG_NW << __func__ << " Throwing: " << ec << "\n";
+					throw system_error(ec);
+				}
+
+				handshake_finished_.set_value();
+				recv();
+			});
+			return;
+		}
+
+		fallback_to_unencrypted();
+	} else {
+		handshake_finished_.set_value();
+		recv();
+	}
+}
+
+// worker thread
+void wesnothd_connection::fallback_to_unencrypted()
+{
+	assert(use_tls_ == true);
+	use_tls_ = false;
+
+	boost::asio::ip::tcp::endpoint endpoint { utils::get<raw_socket>(socket_)->remote_endpoint() };
+	utils::get<raw_socket>(socket_)->close();
+
+	utils::get<raw_socket>(socket_)->async_connect(endpoint,
+		std::bind(&wesnothd_connection::handle_connect, this, std::placeholders::_1, endpoint));
 }
 
 // main thread
@@ -195,21 +271,13 @@ void wesnothd_connection::send_data(const configr_of& request)
 {
 	MPTEST_LOG;
 
-#if BOOST_VERSION >= 106600
 	auto buf_ptr = std::make_unique<boost::asio::streambuf>();
-#else
-	auto buf_ptr = std::make_shared<boost::asio::streambuf>();
-#endif
 
 	std::ostream os(buf_ptr.get());
 	write_gz(os, request);
 
-	// No idea why io_context::post doesn't like this lambda while asio::post does.
-#if BOOST_VERSION >= 106600
 	boost::asio::post(io_context_, [this, buf_ptr = std::move(buf_ptr)]() mutable {
-#else
-	io_context_.post([this, buf_ptr]() {
-#endif
+
 		DBG_NW << "In wesnothd_connection::send_data::lambda\n";
 		send_queue_.push(std::move(buf_ptr));
 
@@ -223,8 +291,9 @@ void wesnothd_connection::send_data(const configr_of& request)
 void wesnothd_connection::cancel()
 {
 	MPTEST_LOG;
-	if(socket_.is_open()) {
-		boost::system::error_code ec;
+	utils::visit([](auto&& socket) {
+		if(socket->lowest_layer().is_open()) {
+			boost::system::error_code ec;
 
 #ifdef _MSC_VER
 // Silence warning about boost::asio::basic_socket<Protocol>::cancel always
@@ -232,15 +301,16 @@ void wesnothd_connection::cancel()
 #pragma warning(push)
 #pragma warning(disable:4996)
 #endif
-		socket_.cancel(ec);
+		socket->lowest_layer().cancel(ec);
 #ifdef _MSC_VER
 #pragma warning(pop)
 #endif
 
-		if(ec) {
-			WRN_NW << "Failed to cancel network operations: " << ec.message() << std::endl;
+			if(ec) {
+				WRN_NW << "Failed to cancel network operations: " << ec.message() << std::endl;
+			}
 		}
-	}
+	}, socket_);
 }
 
 // main thread
@@ -321,10 +391,10 @@ std::size_t wesnothd_connection::is_read_complete(const boost::system::error_cod
 
 	if(!bytes_to_read_) {
 		std::istream is(&read_buf_);
-		data_union data_size;
+		uint32_t data_size;
 
-		is.read(data_size.binary, 4);
-		bytes_to_read_ = ntohl(data_size.num) + 4;
+		is.read(reinterpret_cast<char*>(&data_size), 4);
+		bytes_to_read_ = ntohl(data_size) + 4;
 
 		// Close immediately if we receive an invalid length
 		if(bytes_to_read_ < 4) {
@@ -384,9 +454,11 @@ void wesnothd_connection::send()
 		buf.data()
 	};
 
-	boost::asio::async_write(socket_, bufs,
-		std::bind(&wesnothd_connection::is_write_complete, this, std::placeholders::_1, std::placeholders::_2),
-		std::bind(&wesnothd_connection::handle_write, this, std::placeholders::_1, std::placeholders::_2));
+	utils::visit([this, &bufs](auto&& socket) {
+		boost::asio::async_write(*socket, bufs,
+			std::bind(&wesnothd_connection::is_write_complete, this, std::placeholders::_1, std::placeholders::_2),
+			std::bind(&wesnothd_connection::handle_write, this, std::placeholders::_1, std::placeholders::_2));
+	}, socket_);
 }
 
 // worker thread
@@ -394,9 +466,11 @@ void wesnothd_connection::recv()
 {
 	MPTEST_LOG;
 
-	boost::asio::async_read(socket_, read_buf_,
-		std::bind(&wesnothd_connection::is_read_complete, this, std::placeholders::_1, std::placeholders::_2),
-		std::bind(&wesnothd_connection::handle_read, this, std::placeholders::_1, std::placeholders::_2));
+	utils::visit([this](auto&& socket) {
+		boost::asio::async_read(*socket, read_buf_,
+			std::bind(&wesnothd_connection::is_read_complete, this, std::placeholders::_1, std::placeholders::_2),
+			std::bind(&wesnothd_connection::handle_read, this, std::placeholders::_1, std::placeholders::_2));
+	}, socket_);
 }
 
 // main thread

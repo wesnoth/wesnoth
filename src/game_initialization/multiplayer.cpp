@@ -31,7 +31,6 @@
 #include "gui/dialogs/multiplayer/mp_join_game.hpp"
 #include "gui/dialogs/multiplayer/mp_login.hpp"
 #include "gui/dialogs/multiplayer/mp_staging.hpp"
-#include "hash.hpp"
 #include "log.hpp"
 #include "map_settings.hpp"
 #include "multiplayer_error_codes.hpp"
@@ -361,58 +360,20 @@ std::unique_ptr<wesnothd_connection> mp_manager::open_connection(std::string hos
 					? (gui2::show_message(_("Confirm"), (*error)["message"], gui2::dialogs::message::ok_cancel_buttons) == gui2::retval::CANCEL)
 					: false;
 
-				const bool is_pw_request = !((*error)["password_request"].empty()) && !(password.empty());
+				// If:
+				// * the server asked for a password
+				// * the password isn't empty
+				// * the user didn't press Cancel
+				// * the connection is secure or the client was started with the option to use insecure connections
+				// send the password to the server
+				// otherwise go directly to the username/password dialog
+				if(!(*error)["password_request"].empty() && !password.empty() && !fall_through && (conn->using_tls() || game_config::allow_insecure)) {
+					// the possible cases here are that either:
+					// 1) TLS encryption is enabled, thus sending the plaintext password is still secure
+					// 2) TLS encryption is not enabled, in which case the server should not be requesting a password in the first place
+					// 3) This is being used for local testing/development, so using an insecure connection is enabled manually
 
-				// If the server asks for a password, provide one if we can
-				// or request a password reminder.
-				// Otherwise or if the user pressed 'cancel' in the confirmation dialog
-				// above go directly to the username/password dialog
-				if(is_pw_request && !fall_through) {
-					if((*error)["phpbb_encryption"].to_bool()) {
-						// Apparently HTML key-characters are passed to the hashing functions of phpbb in this escaped form.
-						// I will do closer investigations on this, for now let's just hope these are all of them.
-
-						// Note: we must obviously replace '&' first, I wasted some time before I figured that out... :)
-						for(std::string::size_type pos = 0; (pos = password.find('&', pos)) != std::string::npos; ++pos)
-							password.replace(pos, 1, "&amp;");
-						for(std::string::size_type pos = 0; (pos = password.find('\"', pos)) != std::string::npos; ++pos)
-							password.replace(pos, 1, "&quot;");
-						for(std::string::size_type pos = 0; (pos = password.find('<', pos)) != std::string::npos; ++pos)
-							password.replace(pos, 1, "&lt;");
-						for(std::string::size_type pos = 0; (pos = password.find('>', pos)) != std::string::npos; ++pos)
-							password.replace(pos, 1, "&gt;");
-
-						const std::string salt = (*error)["salt"];
-						if(salt.length() < 12) {
-							throw wesnothd_error(_("Bad data received from server"));
-						}
-
-						if(utils::md5::is_valid_prefix(salt)) {
-							sp["password"] = utils::md5(
-								utils::md5(password, utils::md5::get_salt(salt), utils::md5::get_iteration_count(salt)).base64_digest(),
-								salt.substr(12, 8)
-							).base64_digest();
-						} else if(utils::bcrypt::is_valid_prefix(salt)) {
-							try {
-								auto bcrypt_salt = utils::bcrypt::from_salted_salt(salt);
-								auto hash = utils::bcrypt::hash_pw(password, bcrypt_salt);
-
-								const std::string outer_salt = salt.substr(bcrypt_salt.iteration_count_delim_pos + 23);
-								if(outer_salt.size() != 32) {
-									throw utils::hash_error("salt wrong size");
-								}
-
-								sp["password"] = utils::md5(hash.base64_digest(), outer_salt).base64_digest();
-							} catch(const utils::hash_error& err) {
-								ERR_MP << "bcrypt hash failed: " << err.what() << std::endl;
-								throw wesnothd_error(_("Bad data received from server"));
-							}
-						} else {
-							throw wesnothd_error(_("Bad data received from server"));
-						}
-					} else {
-						sp["password"] = password;
-					}
+					sp["password"] = password;
 
 					// Once again send our request...
 					conn->send_data(response);
@@ -442,7 +403,9 @@ std::unique_ptr<wesnothd_connection> mp_manager::open_connection(std::string hos
 
 				const std::string ec = (*error)["error_code"];
 
-				if(ec == MP_MUST_LOGIN) {
+				if(!(*error)["password_request"].empty() && !conn->using_tls() && !game_config::allow_insecure) {
+					error_message = _("The remote server requested a password while using an insecure connection.");
+				} else if(ec == MP_MUST_LOGIN) {
 					error_message = _("You must login first.");
 				} else if(ec == MP_NAME_TAKEN_ERROR) {
 					error_message = VGETTEXT("The nickname ‘$nick’ is already taken.", i18n_symbols);
@@ -481,12 +444,12 @@ std::unique_ptr<wesnothd_connection> mp_manager::open_connection(std::string hos
 					error_message = VGETTEXT("The nickname ‘$nick’ is registered on this server.", i18n_symbols)
 							+ "\n\n" + _("WARNING: There is already a client using this nickname, "
 							"logging in will cause that client to be kicked!");
-				} else if(ec == MP_NO_SEED_ERROR) {
-					error_message = _("Error in the login procedure (the server had no seed for your connection).");
 				} else if(ec == MP_INCORRECT_PASSWORD_ERROR) {
 					error_message = _("The password you provided was incorrect.");
 				} else if(ec == MP_TOO_MANY_ATTEMPTS_ERROR) {
 					error_message = _("You have made too many login attempts.");
+				} else if(ec == MP_HASHING_PASSWORD_FAILED) {
+					error_message = _("Password hashing failed.");
 				} else {
 					error_message = (*error)["message"].str();
 				}

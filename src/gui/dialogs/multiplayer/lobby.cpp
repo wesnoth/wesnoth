@@ -332,7 +332,9 @@ void mp_lobby::update_gamelist_diff()
 		if(game.display_status == mp::game_info::disp_status::NEW) {
 			// call void do_notify(notify_mode mode, const std::string& sender, const std::string& message)
 			// sender will be the game_info.scenario (std::string) and message will be game_info.name (std::string)
-			do_notify(mp::NOTIFY_GAME_CREATED, game.scenario, game.name);
+			if (lobby_info_.is_game_visible(game)) {
+				do_notify(mp::NOTIFY_GAME_CREATED, game.scenario, game.name);
+			}
 
 			LOG_LB << "Adding game to listbox " << game.id << "\n";
 
@@ -1070,7 +1072,6 @@ void mp_lobby::refresh_lobby()
 
 void mp_lobby::show_help_callback()
 {
-	help::help_manager help_manager(&game_config_);
 	help::show_help();
 }
 

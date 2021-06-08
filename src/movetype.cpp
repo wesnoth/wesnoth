@@ -518,6 +518,7 @@ void swap(movetype & a, movetype & b)
 	swap(a.defense_, b.defense_);
 	std::swap(a.resist_, b.resist_);
 	std::swap(a.flying_, b.flying_);
+	std::swap(a.special_notes_, b.special_notes_);
 }
 
 movetype & movetype::operator=(const movetype & that)
@@ -801,7 +802,8 @@ movetype::movetype() :
 	jamming_(mvj_params_, &vision_),
 	defense_(),
 	resist_(),
-	flying_(false)
+	flying_(false),
+	special_notes_()
 {
 }
 
@@ -819,6 +821,10 @@ movetype::movetype(const config & cfg) :
 {
 	// 1.15 will support both "flying" and "flies", with "flies" being deprecated
 	flying_ = cfg["flying"].to_bool(flying_);
+
+	for(const config& sn : cfg.child_range("special_note")) {
+		special_notes_.push_back(sn["note"]);
+	}
 }
 
 
@@ -831,7 +837,8 @@ movetype::movetype(const movetype & that) :
 	jamming_(that.jamming_, &vision_),
 	defense_(that.defense_),
 	resist_(that.resist_),
-	flying_(that.flying_)
+	flying_(that.flying_),
+	special_notes_(that.special_notes_)
 {
 }
 
@@ -844,7 +851,8 @@ movetype::movetype(movetype && that) :
 	jamming_(std::move(that.jamming_), &vision_),
 	defense_(std::move(that.defense_)),
 	resist_(std::move(that.resist_)),
-	flying_(std::move(that.flying_))
+	flying_(std::move(that.flying_)),
+	special_notes_(std::move(that.special_notes_))
 {
 }
 
@@ -920,4 +928,8 @@ void movetype::write(config & cfg) const
 
 	if ( flying_ )
 		cfg["flying"] = true;
+
+	for(const auto& note : special_notes_) {
+		cfg.add_child("special_note", config{"note", note});
+	}
 }

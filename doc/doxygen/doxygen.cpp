@@ -301,7 +301,7 @@ needs to be reviewed by other developers.
 - Submit your pull requests on <a href="https://github.com/wesnoth/wesnoth/">GitHub</a>.
 
 One way to contribute is to find an unassigned bug in the
-<a href="http://gna.org/bugs/?group=wesnoth">bug tracker</a>
+<a href="https://bugs.wesnoth.org/">bug tracker</a>
 and fix it.
 If you wish to work on something else, you should probably
 explain on the
@@ -311,8 +311,8 @@ When adding new features, keep in mind the project philosophy,
 which is that of
 <a href="https://wiki.wesnoth.org/WesnothPhilosophy">KISS</a>.
 
-The development team hangs out in the IRC channel
-<a href="https://webchat.freenode.net/?channels=wesnoth-dev">@#wesnoth-dev on irc.freenode.net</a>.
+The development team hangs out in the <a href="https://discord.gg/battleforwesnoth">official Wesnoth Discord server</a>,
+and in the IRC channel <a href="https://web.libera.chat/#wesnoth-dev">@#wesnoth-dev on irc.libera.chat</a>.
 Feel free to join us and ask any questions you may have about our codebase!
 
 */

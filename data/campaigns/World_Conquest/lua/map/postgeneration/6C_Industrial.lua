@@ -103,8 +103,8 @@ local function wct_dirty_deltas()
 
 	local terrain_to_change = wct_store_possible_dirty_delta()
 	while #terrain_to_change > 0 do
-		local loc = 1 -- todo: maybe use  terrain_to_change[wesnoth.random(#terrain_to_change)]
-		local ter = helper.rand("Gs,Hh^Uf,Cud,Gs^Uf,Gs,Hh,Ds^Edt,Ds,Hh^Fmf,Gs,Gs^Fmf")
+		local loc = 1 -- todo: maybe use  terrain_to_change[mathx.random(#terrain_to_change)]
+		local ter = mathx.random_choice("Gs,Hh^Uf,Cud,Gs^Uf,Gs,Hh,Ds^Edt,Ds,Hh^Fmf,Gs,Gs^Fmf")
 		map[loc] = ter
 		terrain_to_change = wct_store_possible_dirty_delta()
 	end
@@ -122,8 +122,8 @@ local function wct_ford_deltas()
 
 	local terrain_to_change = wct_store_possible_ford_delta()
 	while #terrain_to_change > 0 do
-		local loc = terrain_to_change[1]-- todo: maybe use errain_to_change[wesnoth.random(#terrain_to_change)]
-		local ter = helper.rand("Gg,Gg^Efm,Mm,Gg^Fet,Gg,Mm,Gg")
+		local loc = terrain_to_change[1]-- todo: maybe use errain_to_change[mathx.random(#terrain_to_change)]
+		local ter = mathx.random_choice("Gg,Gg^Efm,Mm,Gg^Fet,Gg,Mm,Gg")
 		map[loc] = ter
 		terrain_to_change = wct_store_possible_ford_delta()
 	end
@@ -385,7 +385,7 @@ local function world_conquest_tek_map_decoration_6c()
 	))
 
 	for swamp_i, swamp_loc in ipairs(terrain_to_change) do
-		local r = wesnoth.random(3, map.width // 4)
+		local r = mathx.random(3, map.width // 4)
 		set_terrain { "Sm",
 			f.all(
 				f.terrain("Ww^*"),
@@ -402,7 +402,7 @@ local function world_conquest_tek_map_decoration_6c()
 	))
 
 	for water_i, water_loc in ipairs(terrain_to_change) do
-		local r = wesnoth.random(4, map.width // 6)
+		local r = mathx.random(4, map.width // 6)
 		set_terrain { "Wwg",
 			f.all(
 				f.terrain("Ww^*"),
@@ -413,7 +413,7 @@ local function world_conquest_tek_map_decoration_6c()
 		}
 	end
 	-- fords
-	local r = wesnoth.random(4, map.width // 10)
+	local r = mathx.random(4, map.width // 10)
 	set_terrain { "Wwf",
 		f.all(
 			f.terrain("Ww^*"),

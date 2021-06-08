@@ -101,7 +101,7 @@ function world_conquest_tek_map_decoration_4a()
 	}
 
 	-- better road near castle
-	local rad = helper.rand("1,2,3,3,3,3,4,4")
+	local rad = mathx.random_choice("1,2,3,3,3,3,4,4")
 	set_terrain { "Rr",
 		f.all(
 			f.terrain("Re"),
@@ -150,8 +150,8 @@ function world_conquest_tek_map_decoration_4a()
 
 	-- chances flowers
 	local terrain_to_change = wct_store_possible_flowers("Rr^Vhc")
-	while #terrain_to_change > 0 and wesnoth.random(10) > 5 do
-		local loc = terrain_to_change[wesnoth.random(#terrain_to_change)]
+	while #terrain_to_change > 0 and mathx.random(10) > 5 do
+		local loc = terrain_to_change[mathx.random(#terrain_to_change)]
 		map[loc] = "^Efm"
 		terrain_to_change = wct_store_possible_flowers("Rr^Vhc")
 	end
@@ -162,30 +162,30 @@ function world_conquest_tek_map_decoration_4a()
 		layer = "overlay",
 	}
 
-	if wesnoth.random(20) == 1 then
+	if mathx.random(20) == 1 then
 		set_terrain { "*^Ftr",
 			f.terrain("G*^Fds"),
 			layer = "overlay",
 		}
 	end
-	if wesnoth.random(20) == 1 then
+	if mathx.random(20) == 1 then
 		set_terrain { "*^Ftr",
 			f.terrain("G*^Fms"),
 			fraction = 3,
 			layer = "overlay",
 		}
 	end
-	if wesnoth.random(20) == 1 then
+	if mathx.random(20) == 1 then
 		set_terrain { "*^Ftr",
 			f.terrain("G*^Fp"),
 			fraction = 5,
 			layer = "overlay",
 		}
 	end
-	if wesnoth.random(20) == 1 then
+	if mathx.random(20) == 1 then
 		wct_map_decorative_docks()
 	end
-	if wesnoth.random(20) == 1 then
+	if mathx.random(20) == 1 then
 		wct_change_map_water("g")
 	end
 end

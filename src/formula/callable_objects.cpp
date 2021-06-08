@@ -24,6 +24,11 @@
 #include "units/unit.hpp"
 #include "units/types.hpp"
 #include "log.hpp"
+#include "recall_list_manager.hpp"
+#include "deprecation.hpp"
+#include "game_board.hpp"
+#include "game_version.hpp"
+#include "resources.hpp"
 
 static lg::log_domain log_scripting_formula("scripting/formula");
 #define LOG_SF LOG_STREAM(info, log_scripting_formula)
@@ -184,6 +189,11 @@ variant unit_callable::get_value(const std::string& key) const
 		}
 
 		return variant(std::make_shared<location_callable>(loc_));
+	} else if(key == "terrain") {
+		if(loc_ == map_location::null_location()) {
+			return variant();
+		}
+		return variant(std::make_shared<terrain_callable>(*resources::gameboard, loc_));
 	} else if(key == "id") {
 		return variant(u_.id());
 	} else if(key == "type") {
@@ -233,7 +243,10 @@ variant unit_callable::get_value(const std::string& key) const
 	} else if(key == "states" || key == "status") {
 		return formula_callable::convert_set(u_.get_states());
 	} else if(key == "side") {
+		deprecated_message("unit.side", DEP_LEVEL::FOR_REMOVAL, version_info("1.17"), "This returns 0 for side 1 etc and should not be used. Use side_number instead.");
 		return variant(u_.side()-1);
+	} else if(key == "side_number") {
+		return variant(u_.side());
 	} else if(key == "cost") {
 		return variant(u_.cost());
 	} else if(key == "upkeep") {
@@ -313,6 +326,7 @@ void unit_callable::get_inputs(formula_input_vector& inputs) const
 	add_input(inputs, "x");
 	add_input(inputs, "y");
 	add_input(inputs, "loc");
+	add_input(inputs, "terrain");
 	add_input(inputs, "id");
 	add_input(inputs, "type");
 	add_input(inputs, "name");
@@ -330,7 +344,7 @@ void unit_callable::get_inputs(formula_input_vector& inputs) const
 	add_input(inputs, "max_moves");
 	add_input(inputs, "attacks_left");
 	add_input(inputs, "max_attacks");
-	add_input(inputs, "side");
+	add_input(inputs, "side_number");
 	add_input(inputs, "extra_recruit");
 	add_input(inputs, "advances_to");
 	add_input(inputs, "status");
@@ -403,6 +417,10 @@ variant unit_type_callable::get_value(const std::string& key) const
 		return variant(u_.movement());
 	} else if(key == "unpoisonable") {
 		return variant(u_.musthave_status("unpoisonable"));
+	} else if(key == "unslowable") {
+		return variant(u_.musthave_status("unslowable"));
+	} else if(key == "unpetrifiable") {
+		return variant(u_.musthave_status("unpetrifiable"));
 	} else if(key == "undrainable") {
 		return variant(u_.musthave_status("undrainable"));
 	} else if(key == "unplagueable") {
@@ -536,7 +554,7 @@ int config_callable::do_compare(const formula_callable* callable) const
 	return cfg_.hash().compare(cfg_callable->get_config().hash());
 }
 
-terrain_callable::terrain_callable(const display_context& dc, const map_location& loc) : loc_(loc), t_(dc.map().get_terrain_info(loc)), owner_(dc.village_owner(loc) - 1)
+terrain_callable::terrain_callable(const display_context& dc, const map_location& loc) : loc_(loc), t_(dc.map().get_terrain_info(loc)), owner_(dc.village_owner(loc))
 {
 	type_ = TERRAIN_C;
 }
@@ -570,6 +588,9 @@ variant terrain_callable::get_value(const std::string& key) const
 	} else if(key == "healing") {
 		return variant(t_.gives_healing());
 	} else if(key == "owner") {
+		deprecated_message("terrain.owner", DEP_LEVEL::FOR_REMOVAL, version_info("1.17"), "This returns 0 for side 1 etc and should not be used. Use owner_side instead.");
+		return variant(owner_ - 1);
+	} else if(key == "owner_side") {
 		return variant(owner_);
 	}
 
@@ -591,7 +612,7 @@ void terrain_callable::get_inputs(formula_input_vector& inputs) const
 	add_input(inputs, "castle");
 	add_input(inputs, "keep");
 	add_input(inputs, "healing");
-	add_input(inputs, "owner");
+	add_input(inputs, "owner_side");
 }
 
 int terrain_callable::do_compare(const formula_callable* callable) const
@@ -654,7 +675,7 @@ variant gamemap_callable::get_value(const std::string& key) const
 
 void team_callable::get_inputs(formula_input_vector& inputs) const
 {
-	add_input(inputs, "side");
+	add_input(inputs, "side_number");
 	add_input(inputs, "id");
 	add_input(inputs, "gold");
 	add_input(inputs, "start_gold");
@@ -687,6 +708,9 @@ void team_callable::get_inputs(formula_input_vector& inputs) const
 variant team_callable::get_value(const std::string& key) const
 {
 	if(key == "side") {
+		deprecated_message("team.side", DEP_LEVEL::INDEFINITE, version_info("1.17"), "Use side_number instead.");
+		return variant(team_.side());
+	} else if(key == "side_number") {
 		return variant(team_.side());
 	} else if(key == "id") {
 		return variant(team_.save_id());
@@ -739,7 +763,12 @@ variant team_callable::get_value(const std::string& key) const
 		for(const auto& recruit : team_.recruits()) {
 			result.emplace_back(recruit);
 		}
-
+		return variant(result);
+	} else if(key == "recall") {
+		std::vector<variant> result;
+		for(const auto& u : team_.recall_list()) {
+			result.push_back(std::make_shared<unit_callable>(*u));
+		}
 		return variant(result);
 	} else if(key == "wml_vars") {
 		return variant(std::make_shared<config_callable>(team_.variables()));

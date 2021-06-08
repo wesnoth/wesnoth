@@ -71,7 +71,7 @@ function wesnoth.effects.wc2_min_resistance(u, cfg)
 	for k,v in pairs(resistance_old) do
 		if type(k) == "string" and type(v) == "number" then
 			if not unit_resistance_cfg then
-				unit_resistance_cfg = wml.parsed(wml.get_child(u.__cfg, "resistance"))
+				unit_resistance_cfg = wml.get_child(u.__cfg, "resistance")
 			end
 			if unit_resistance_cfg[k] >= v then
 				resistance_new[k] = v

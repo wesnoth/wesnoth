@@ -234,7 +234,13 @@ class WesnothRunner:
                 subprocess.run(gdb_args, timeout=240)
             test_summary.crash_test(test_list)
             raise UnexpectedTestStatusException()
-        returned_result = UnitTestResult(res.returncode)
+        returned_result = None
+        try:
+            returned_result = UnitTestResult(res.returncode)
+        except:
+            print("Wesnoth returned an unexpected value: ", res.returncode)
+            test_summary.crash_test(test_list)
+            raise UnexpectedTestStatusException()
         if returned_result == expected_result:
             test_summary.pass_test(test_list)
         else:

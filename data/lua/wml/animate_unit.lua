@@ -35,7 +35,7 @@ local function add_animation(anim, cfg)
 			-- Similarly, the secondary weapon in a victory animation is the weapon
 			-- of the attacker, who is now the primary unit.
 			if primary then
-				primary = wesnoth.create_weapon(primary)
+				primary = wesnoth.units.create_weapon(primary)
 			end
 			if secondary then
 				secondary = unit:find_attack(secondary)
@@ -45,7 +45,7 @@ local function add_animation(anim, cfg)
 				primary = unit:find_attack(primary)
 			end
 			if secondary then
-				secondary = wesnoth.create_weapon(secondary)
+				secondary = wesnoth.units.create_weapon(secondary)
 			end
 		end
 
@@ -107,7 +107,7 @@ local function add_animation(anim, cfg)
 end
 
 function wesnoth.wml_actions.animate_unit(cfg)
-	local anim = wesnoth.create_animator()
+	local anim = wesnoth.units.create_animator()
 	add_animation(anim, cfg)
 	anim:run()
 end

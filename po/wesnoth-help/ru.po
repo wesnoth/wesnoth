@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth.po\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-03-20 22:02-0300\n"
+"POT-Creation-Date: 2021-05-22 22:21-0400\n"
 "PO-Revision-Date: 2020-07-26 23:18+0300\n"
 "Last-Translator: Artem Khrapov <artemkhrapov2001@yandex.ru>\n"
 "Language-Team: \n"
@@ -370,13 +370,13 @@ msgstr "Редактор карт и сценариев"
 
 #. [section]: id=editor_mode_terrain
 #. [topic]: id=..editor_mode_terrain
-#: data/core/editor/help.cfg:13 data/core/editor/help.cfg:257
+#: data/core/editor/help.cfg:13 data/core/editor/help.cfg:255
 msgid "Terrain Editor"
 msgstr "Редактор местности"
 
 #. [section]: id=editor_mode_scenario
 #. [topic]: id=..editor_mode_scenario
-#: data/core/editor/help.cfg:20 data/core/editor/help.cfg:269
+#: data/core/editor/help.cfg:20 data/core/editor/help.cfg:267
 #, fuzzy
 #| msgid "Map/Scenario Editor"
 msgid "Scenario Editor"
@@ -732,15 +732,11 @@ msgid ""
 "<ref>dst='editor_tool_unit' text='units'</ref> in addition to the leader, "
 "and assigning <ref>dst='editor_tool_village' text='village ownership'</ref> "
 "at the start of the scenario. There’s also a <ref>dst='editor_playlist' "
-"text='playlist manager'</ref> for the music.\n"
-"\n"
-"<bold>text='Warning: the Scenario Mode is buggy in 1.14.'</bold> Improving "
-"it is one of the main blockers for the 1.16 release, however in 1.14 its "
-"quality is far below that of the game and the terrain mode."
+"text='playlist manager'</ref> for the music."
 msgstr ""
 
 #. [topic]: id=..editor
-#: data/core/editor/help.cfg:238
+#: data/core/editor/help.cfg:236
 msgid ""
 "<header>text='What you do *not* get'</header>\n"
 "\n"
@@ -766,7 +762,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..editor_mode_terrain
-#: data/core/editor/help.cfg:258
+#: data/core/editor/help.cfg:256
 msgid ""
 "The terrain editor’s functionality is similar to a simple paint "
 "application.\n"
@@ -781,7 +777,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..editor_mode_scenario
-#: data/core/editor/help.cfg:270
+#: data/core/editor/help.cfg:268
 msgid ""
 "The scenario editor mode adds support for some map-related WML features, "
 "such as areas and scenery items. Most scenarios will still require "
@@ -790,7 +786,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..editor_mode_scenario
-#: data/core/editor/help.cfg:272
+#: data/core/editor/help.cfg:270
 msgid ""
 "<header>text='Checking whether the editor is in scenario mode'</header>\n"
 "\n"
@@ -801,7 +797,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..editor_mode_scenario
-#: data/core/editor/help.cfg:279
+#: data/core/editor/help.cfg:277
 msgid ""
 "<header>text='Entering scenario mode'</header>\n"
 "\n"
@@ -816,7 +812,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..editor_mode_scenario
-#: data/core/editor/help.cfg:287
+#: data/core/editor/help.cfg:285
 msgid ""
 "<header>text='The files: .map and .cfg'</header>\n"
 "\n"
@@ -835,12 +831,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=editor_separate_events_file
-#: data/core/editor/help.cfg:299
+#: data/core/editor/help.cfg:297
 msgid "Using a separate file for WML events"
 msgstr ""
 
 #. [topic]: id=editor_separate_events_file
-#: data/core/editor/help.cfg:300
+#: data/core/editor/help.cfg:298
 msgid ""
 "When loading a .cfg file, the scenario editor understands files created by "
 "the scenario editor, but is likely to have difficulty with files that have "
@@ -893,12 +889,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=editor_masks
-#: data/core/editor/help.cfg:338
+#: data/core/editor/help.cfg:336
 msgid "Editor Mask Usage"
 msgstr "Использование Маски Редактора"
 
 #. [topic]: id=editor_masks
-#: data/core/editor/help.cfg:339
+#: data/core/editor/help.cfg:337
 msgid ""
 "Masks can be applied to a base map for reusal in several scenarios playing "
 "at the same locations."
@@ -908,14 +904,14 @@ msgstr ""
 
 #. [topic]: id=editor_time_schedule
 #. Time of Day and Schedule Editor, please use a short string as it will be used in the left-hand pane of the help browser
-#: data/core/editor/help.cfg:347
+#: data/core/editor/help.cfg:345
 #, fuzzy
 #| msgid "Time Schedule Editor"
 msgid "ToD and Schedule Editor"
 msgstr "Редактор времени"
 
 #. [topic]: id=editor_time_schedule
-#: data/core/editor/help.cfg:348
+#: data/core/editor/help.cfg:346
 msgid ""
 "This button at the top-right of the screen accesses the time-of-day preview "
 "and the schedule editor.\n"
@@ -928,13 +924,13 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=editor_palette
-#: data/core/editor/help.cfg:359
+#: data/core/editor/help.cfg:357
 msgid "Editor Palette"
 msgstr "Палитра редактора"
 
 #. [topic]: id=editor_palette
 #. the “Player 1”, “Player 2”, ... list is translated using "Player $side_num" in the wesnoth-editor textdomain
-#: data/core/editor/help.cfg:361
+#: data/core/editor/help.cfg:359
 msgid ""
 "The editor palette contains the applicable items you may use with the "
 "currently selected tool. For example, the Paint tool will display a full "
@@ -950,32 +946,32 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=editor_palette
-#: data/core/editor/help.cfg:366
+#: data/core/editor/help.cfg:364
 msgid "Show all kinds of terrain"
 msgstr ""
 
 #. [topic]: id=editor_palette
-#: data/core/editor/help.cfg:367
+#: data/core/editor/help.cfg:365
 msgid "Show only water terrains"
 msgstr ""
 
 #. [topic]: id=editor_palette
-#: data/core/editor/help.cfg:368
+#: data/core/editor/help.cfg:366
 msgid "Show only villages"
 msgstr ""
 
 #. [topic]: id=editor_map_format
-#: data/core/editor/help.cfg:379
+#: data/core/editor/help.cfg:377
 msgid "Wesnoth Map Format"
 msgstr "Формат карт Веснота"
 
 #. [topic]: id=editor_map_format
-#: data/core/editor/help.cfg:380
+#: data/core/editor/help.cfg:378
 msgid "Wesnoth stores its maps in human readable plain text files."
 msgstr ""
 
 #. [topic]: id=editor_map_format
-#: data/core/editor/help.cfg:382
+#: data/core/editor/help.cfg:380
 msgid ""
 "<header>text='Native'</header>\n"
 "\n"
@@ -1006,7 +1002,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=editor_map_format
-#: data/core/editor/help.cfg:395
+#: data/core/editor/help.cfg:393
 msgid ""
 "<header>text='Embedded'</header>\n"
 "\n"
@@ -1026,7 +1022,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=editor_map_format
-#: data/core/editor/help.cfg:403
+#: data/core/editor/help.cfg:401
 msgid ""
 "<header>text='Files created by the Scenario Editor'</header>\n"
 "\n"
@@ -1039,7 +1035,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=editor_map_format
-#: data/core/editor/help.cfg:407
+#: data/core/editor/help.cfg:405
 msgid ""
 "<header>text='Which scenario files use the [scenario] tag'</header>\n"
 "\n"
@@ -4276,9 +4272,15 @@ msgstr ""
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:692
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "Toggle the display of the current frames per second.\n"
+#| "\n"
 msgid ""
 "\n"
-"Toggle the display of the current frames per second.\n"
+"Toggle the display of the current frames per second. Also writes these "
+"values to a file in the userdata directory.\n"
 "\n"
 msgstr ""
 "\n"
@@ -6656,23 +6658,58 @@ msgstr ""
 "большому весу, были предметом дискуссий на протяжении столетий, но остаются "
 "столь же неразгаданными, как и происхождение гифонов."
 
+#. [race]: id=horse
+#: data/core/units.cfg:183
+#, fuzzy
+#| msgid "race^Wose"
+msgid "race^Horse"
+msgstr "Древень"
+
+#. [race]: id=horse
+#: data/core/units.cfg:184
+#, fuzzy
+#| msgid "race+female^Ogre"
+msgid "race+female^Horse"
+msgstr "Огриха"
+
+#. [race]: id=horse
+#: data/core/units.cfg:185
+#, fuzzy
+#| msgid "race^Woses"
+msgid "race^Horses"
+msgstr "Древни"
+
+#. [race]: id=horse
+#: data/core/units.cfg:186
+msgid ""
+"Domesticated horses come in many shapes and sizes, from mighty war chargers, "
+"to sturdy draught horses or agile stock horses.  While they are more fragile "
+"than many beasts, their speed and cunning allow feral horses to thrive in "
+"the wild, alongside their wild brethren.\n"
+"\n"
+"Horses have been an important part of many civilizations, so it is not "
+"surprising that there are many myths and stories centered around them.  "
+"Winged horses, man-horse hybrids, and ghost horses have made their way into "
+"written history, though few can honestly claim to have seen such things."
+msgstr ""
+
 #. [race]: id=human
-#: data/core/units.cfg:191
+#: data/core/units.cfg:203
 msgid "race^Human"
 msgstr "Человек"
 
 #. [race]: id=human
-#: data/core/units.cfg:192
+#: data/core/units.cfg:204
 msgid "race+female^Human"
 msgstr "Человек"
 
 #. [race]: id=human
-#: data/core/units.cfg:193
+#: data/core/units.cfg:205
 msgid "race^Humans"
 msgstr "Люди"
 
 #. [race]: id=human
-#: data/core/units.cfg:194
+#: data/core/units.cfg:206
 msgid ""
 "The race of men is an extremely diverse one. Although they originally came "
 "from the Old Continent, men have spread all over the world and split into "
@@ -6752,22 +6789,22 @@ msgstr ""
 "друг друга."
 
 #. [race]: id=dunefolk
-#: data/core/units.cfg:209
+#: data/core/units.cfg:221
 msgid "race^Dunefolk Human"
 msgstr "Житель пустыни"
 
 #. [race]: id=dunefolk
-#: data/core/units.cfg:210
+#: data/core/units.cfg:222
 msgid "race+female^Dunefolk Human"
 msgstr "Жительница пустыни"
 
 #. [race]: id=dunefolk
-#: data/core/units.cfg:211
+#: data/core/units.cfg:223
 msgid "race+plural^Dunefolk"
 msgstr "Народ пустыни"
 
 #. [race]: id=dunefolk
-#: data/core/units.cfg:213
+#: data/core/units.cfg:225
 #, fuzzy
 #| msgid ""
 #| "An offshoot of a forgotten nomadic civilization, the Dunefolk humans lay "
@@ -6938,22 +6975,22 @@ msgstr ""
 "дальних уголках Ирдии."
 
 #. [race]: id=lizard
-#: data/core/units.cfg:234
+#: data/core/units.cfg:246
 msgid "race^Saurian"
 msgstr "Ящер"
 
 #. [race]: id=lizard
-#: data/core/units.cfg:235
+#: data/core/units.cfg:247
 msgid "race+female^Saurian"
 msgstr "Ящерица"
 
 #. [race]: id=lizard
-#: data/core/units.cfg:236
+#: data/core/units.cfg:248
 msgid "race^Saurians"
 msgstr "Ящеры"
 
 #. [race]: id=lizard
-#: data/core/units.cfg:237
+#: data/core/units.cfg:249
 msgid ""
 "Saurians are lizard-like creatures. Smaller and more slender than humans, "
 "they rarely stand taller than a ten year old child, though from tip of snout "
@@ -7087,17 +7124,17 @@ msgstr ""
 "падаль и даже совершать каннибализм, что является для них обычным явлением."
 
 #. [race]: id=mechanical
-#: data/core/units.cfg:263
+#: data/core/units.cfg:275
 msgid "race^Mechanical"
 msgstr "Механизмы"
 
 #. [race]: id=mechanical
-#: data/core/units.cfg:264
+#: data/core/units.cfg:276
 msgid "race+plural^Mechanical"
 msgstr "Механизмы"
 
 #. [race]: id=mechanical
-#: data/core/units.cfg:265
+#: data/core/units.cfg:277
 msgid ""
 "Animated neither by natural life nor by necromancy, the term "
 "<italic>text='mechanical'</italic> describes a created artifact of an "
@@ -7110,22 +7147,22 @@ msgstr ""
 "некоторые получают эти способности в результате магического вмешательства."
 
 #. [race]: id=merman
-#: data/core/units.cfg:274
+#: data/core/units.cfg:286
 msgid "race^Merman"
 msgstr "Водяной"
 
 #. [race]: id=merman
-#: data/core/units.cfg:275
+#: data/core/units.cfg:287
 msgid "race^Mermaid"
 msgstr "Русалка"
 
 #. [race]: id=merman
-#: data/core/units.cfg:276
+#: data/core/units.cfg:288
 msgid "race^Merfolk"
 msgstr "Водяные"
 
 #. [race]: id=merman
-#: data/core/units.cfg:278
+#: data/core/units.cfg:290
 msgid ""
 "Something like a fusion between humans and fish, the merfolk are an "
 "enigmatic race with both piscine and humanoid attributes. They have strong "
@@ -7149,22 +7186,22 @@ msgstr ""
 "замедляется."
 
 #. [race]: id=monster
-#: data/core/units.cfg:286
+#: data/core/units.cfg:298
 msgid "race^Monster"
 msgstr "Монстр"
 
 #. [race]: id=monster
-#: data/core/units.cfg:287
+#: data/core/units.cfg:299
 msgid "race+female^Monster"
 msgstr "Монстр"
 
 #. [race]: id=monster
-#: data/core/units.cfg:288
+#: data/core/units.cfg:300
 msgid "race^Monsters"
 msgstr "Монстры"
 
 #. [race]: id=monster
-#: data/core/units.cfg:289
+#: data/core/units.cfg:301
 msgid ""
 "The term “monster” incorporates many hideous beasts that haunt the caves, "
 "wilderness, ocean depths, and other climes of the world. They figure largely "
@@ -7176,22 +7213,22 @@ msgstr ""
 "рассказах."
 
 #. [race]: id=naga
-#: data/core/units.cfg:296
+#: data/core/units.cfg:308
 msgid "race^Naga"
 msgstr "Наг"
 
 #. [race]: id=naga
-#: data/core/units.cfg:297
+#: data/core/units.cfg:309
 msgid "race^Nagini"
 msgstr "Нагиня"
 
 #. [race]: id=naga
-#: data/core/units.cfg:298
+#: data/core/units.cfg:310
 msgid "race^Nagas"
 msgstr "Наги"
 
 #. [race]: id=naga
-#: data/core/units.cfg:299
+#: data/core/units.cfg:311
 msgid ""
 "The serpentine nagas are one of the least understood races of the Great "
 "Continent. Part of this is due to their xenophobic nature and part is due to "
@@ -7220,22 +7257,22 @@ msgstr ""
 "целом, наги любят болота и реки так же, как и открытые моря и океаны."
 
 #. [race]: id=ogre
-#: data/core/units.cfg:307
+#: data/core/units.cfg:319
 msgid "race^Ogre"
 msgstr "Огр"
 
 #. [race]: id=ogre
-#: data/core/units.cfg:308
+#: data/core/units.cfg:320
 msgid "race+female^Ogre"
 msgstr "Огриха"
 
 #. [race]: id=ogre
-#: data/core/units.cfg:309
+#: data/core/units.cfg:321
 msgid "race^Ogres"
 msgstr "Огры"
 
 #. [race]: id=ogre
-#: data/core/units.cfg:310
+#: data/core/units.cfg:322
 msgid ""
 "Ogres are a wild and uncivilized race who dwell mainly in the wilderness of "
 "the Great Continent. Physically, they resemble humans and orcs but are "
@@ -7268,22 +7305,22 @@ msgstr ""
 "или случайность."
 
 #. [race]: id=orc
-#: data/core/units.cfg:318
+#: data/core/units.cfg:330
 msgid "race^Orc"
 msgstr "Орк"
 
 #. [race]: id=orc
-#: data/core/units.cfg:319
+#: data/core/units.cfg:331
 msgid "race+female^Orc"
 msgstr "Орчиха"
 
 #. [race]: id=orc
-#: data/core/units.cfg:320
+#: data/core/units.cfg:332
 msgid "race^Orcs"
 msgstr "Орки"
 
 #. [race]: id=orc
-#: data/core/units.cfg:321
+#: data/core/units.cfg:333
 msgid ""
 "In appearance, orcs resemble humans but with some bestial features. They are "
 "taller, sturdier and stronger than humans. They are warlike, savage, and "
@@ -7387,7 +7424,7 @@ msgstr ""
 "силовые умения, например, стрельбу из лука или ночные убийства.\n"
 
 #. [race]: id=orc
-#: data/core/units.cfg:332
+#: data/core/units.cfg:344
 msgid ""
 "\n"
 "\n"
@@ -7400,22 +7437,22 @@ msgstr ""
 "например владение луком или навыки отравления ядом."
 
 #. [race]: id=troll
-#: data/core/units.cfg:341
+#: data/core/units.cfg:353
 msgid "race^Troll"
 msgstr "Тролль"
 
 #. [race]: id=troll
-#: data/core/units.cfg:342
+#: data/core/units.cfg:354
 msgid "race+female^Troll"
 msgstr "Троллиха"
 
 #. [race]: id=troll
-#: data/core/units.cfg:343
+#: data/core/units.cfg:355
 msgid "race^Trolls"
 msgstr "Тролли"
 
 #. [race]: id=troll
-#: data/core/units.cfg:344
+#: data/core/units.cfg:356
 #, fuzzy
 #| msgid ""
 #| "Trolls are ancient creatures, one of the oldest known races known to "
@@ -7526,22 +7563,22 @@ msgstr ""
 "востоке Веснота, а также везде, куда бы ни зашли орды орков."
 
 #. [race]: id=undead
-#: data/core/units.cfg:364
+#: data/core/units.cfg:376
 msgid "race^Undead"
 msgstr "Нежить"
 
 #. [race]: id=undead
-#: data/core/units.cfg:365
+#: data/core/units.cfg:377
 msgid "race+female^Undead"
 msgstr "Нежить"
 
 #. [race]: id=undead
-#: data/core/units.cfg:366
+#: data/core/units.cfg:378
 msgid "race+plural^Undead"
 msgstr "Нежить"
 
 #. [race]: id=undead
-#: data/core/units.cfg:367
+#: data/core/units.cfg:379
 #, fuzzy
 #| msgid ""
 #| "Undead are not really a single race of creatures, although often treated "
@@ -7625,22 +7662,22 @@ msgstr ""
 "Континент лишь незадолго до Халдрика I, эльфы и гномы слышали о них и прежде."
 
 #. [race]: id=wolf
-#: data/core/units.cfg:380
+#: data/core/units.cfg:392
 msgid "race^Wolf"
 msgstr "Волк"
 
 #. [race]: id=wolf
-#: data/core/units.cfg:381
+#: data/core/units.cfg:393
 msgid "race+female^Wolf"
 msgstr "Волчица"
 
 #. [race]: id=wolf
-#: data/core/units.cfg:382
+#: data/core/units.cfg:394
 msgid "race^Wolves"
 msgstr "Волки"
 
 #. [race]: id=wolf
-#: data/core/units.cfg:383
+#: data/core/units.cfg:395
 msgid ""
 "Wolves are predatory canines encountered frequently in the wilderness. "
 "Quick, tough, and durable, a solitary wolf suffices to maim or kill "
@@ -7657,17 +7694,17 @@ msgstr ""
 "цивилизации, лишь изредка рискуя приблизится для охоты на домашний скот."
 
 #. [race]: id=wose
-#: data/core/units.cfg:392
+#: data/core/units.cfg:404
 msgid "race^Wose"
 msgstr "Древень"
 
 #. [race]: id=wose
-#: data/core/units.cfg:393
+#: data/core/units.cfg:405
 msgid "race^Woses"
 msgstr "Древни"
 
 #. [race]: id=wose
-#: data/core/units.cfg:394
+#: data/core/units.cfg:406
 msgid ""
 "The mighty wose resides within the deepest forests of the known world. To "
 "the untrained eye, the wose appears to be nothing more than an oddly shaped, "
@@ -7742,15 +7779,15 @@ msgstr ""
 "цивилизованном мире. Древни выходят из спячки только чтобы выступить на "
 "защиту природного мира и леса, которые они зовут домом."
 
-#: src/help/help.cpp:179
+#: src/help/help.cpp:212
 msgid "Close"
 msgstr "Закрыть"
 
-#: src/help/help.cpp:182
+#: src/help/help.cpp:215
 msgid "Help"
 msgstr "Помощь"
 
-#: src/help/help.cpp:236 src/help/help.cpp:240
+#: src/help/help.cpp:269 src/help/help.cpp:273
 #, fuzzy
 #| msgid "Parse error when parsing help text: "
 msgid "Parse error when parsing help text:"

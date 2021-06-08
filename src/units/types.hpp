@@ -150,8 +150,16 @@ public:
 	// NOTE: this used to be a const object reference, but it messed up with the
 	// translation engine upon changing the language in the same session.
 	t_string unit_description() const;
-	bool has_special_notes() const;
-	const std::vector<t_string>& special_notes() const;
+	/**
+	 * Returns only the notes defined by [unit_type][special_note] tags, excluding
+	 * any that would be found from abilities, attacks, etc.
+	 */
+	std::vector<t_string> direct_special_notes() const { return special_notes_; }
+	/**
+	 * Returns all notes that should be displayed in the help page for this type,
+	 * including those found in abilities and attacks.
+	 */
+	std::vector<t_string> special_notes() const;
 	int hitpoints() const { return hitpoints_; }
 	double hp_bar_scaling() const { return hp_bar_scaling_; }
 	double xp_bar_scaling() const { return xp_bar_scaling_; }
@@ -440,3 +448,11 @@ struct unit_experience_accelerator {
 private:
 	int old_value_;
 };
+
+/**
+ * Common logic for unit_type::special_notes() and unit::special_notes(). Adds
+ * any notes from the sources given as arguments, and filters out duplicates.
+ *
+ * @return the special notes for a unit or unit_type.
+ */
+std::vector<t_string> combine_special_notes(const std::vector<t_string> direct, const config& abilities, const_attack_itors attacks, const movetype& mt);

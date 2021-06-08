@@ -48,9 +48,9 @@ function world_conquest_tek_map_decoration_1()
 	}
 
 	-- tweak roads
-	if wesnoth.random(20) ~= 1 then
-		local rad = wesnoth.random(5, 9)
-		local ter = helper.rand("Ch*^*,Kh*^*,Ch*^*,Kh*^*")
+	if mathx.random(20) ~= 1 then
+		local rad = mathx.random(5, 9)
+		local ter = mathx.random_choice("Ch*^*,Kh*^*,Ch*^*,Kh*^*")
 		set_terrain { "Rb",
 			f.all(
 				f.terrain("Re"),
@@ -63,13 +63,13 @@ function world_conquest_tek_map_decoration_1()
 	-- chances of fords
 	local terrain_to_change = wct_store_possible_encampment_ford();
 
-	while #terrain_to_change > 0 and wesnoth.random(2) == 1 do
-		local i = wesnoth.random(#terrain_to_change)
+	while #terrain_to_change > 0 and mathx.random(2) == 1 do
+		local i = mathx.random(#terrain_to_change)
 		map[terrain_to_change[i]] = "Wwf"
 		terrain_to_change = wct_store_possible_encampment_ford()
 	end
 
-	if wesnoth.random(20) ~= 1 then
+	if mathx.random(20) ~= 1 then
 		wct_change_map_water("g")
 	end
 	-- randomize a few forest
@@ -87,7 +87,7 @@ function world_conquest_tek_map_decoration_1()
 		),
 	}
 
-	if wesnoth.random(8) ~= 1 then
+	if mathx.random(8) ~= 1 then
 		set_terrain { "Mm^Xm",
 			f.all(
 				f.terrain("Xu"),
@@ -122,7 +122,7 @@ end
 
 function wct_map_1_post_castle_expansion_fix()
 	wct_map_reduce_castle_expanding_recruit("Ce", "Wwf")
-	local r = helper.rand("Ch,Ch,Ch,Chw,Chw,Chs,Ce,Wwf")
+	local r = mathx.random_choice("Ch,Ch,Ch,Chw,Chw,Chs,Ce,Wwf")
 	set_terrain { r,
 		f.all(
 			f.terrain("Ce"),

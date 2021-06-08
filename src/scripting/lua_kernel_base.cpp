@@ -19,7 +19,6 @@
 #include "gui/core/gui_definition.hpp" // for remove_single_widget_definition
 #include "log.hpp"
 #include "lua_jailbreak_exception.hpp"  // for lua_jailbreak_exception
-#include "random.hpp"
 #include "seed_rng.hpp"
 #include "deprecation.hpp"
 #include "language.hpp"                 // for get_language
@@ -37,12 +36,12 @@
 #include "scripting/lua_wml.hpp"
 #include "scripting/lua_stringx.hpp"
 #include "scripting/lua_map_location_ops.hpp"
+#include "scripting/lua_mathx.hpp"
 #include "scripting/lua_rng.hpp"
 #include "scripting/lua_widget.hpp"
 #include "scripting/push_check.hpp"
 
 #include "game_version.hpp"                  // for do_version_check, etc
-#include "picture.hpp"
 
 #include <functional>
 #include "utils/name_generator.hpp"
@@ -69,29 +68,132 @@ static lg::log_domain log_user("scripting/lua/user");
 
 // Registry key for metatable
 static const char * Gen = "name generator";
+static const char * Version = "version";
 // Registry key for lua interpreter environment
 static const char * Interp = "lua interpreter";
 
 // Callback implementations
 
 /**
- * Compares 2 version strings - which is newer.
- * - Args 1,3: version strings
- * - Arg 2: comparison operator (string)
+ * Compares two versions.
+ * - Args 1,2: version strings
  * - Ret 1: comparison result
  */
-static int intf_compare_versions(lua_State* L)
+template<VERSION_COMP_OP vop>
+static int impl_version_compare(lua_State* L)
 {
-	char const *v1 = luaL_checkstring(L, 1);
-
-	const VERSION_COMP_OP vop = parse_version_op(luaL_checkstring(L, 2));
-	if(vop == OP_INVALID) return luaL_argerror(L, 2, "unknown version comparison operator - allowed are ==, !=, <, <=, > and >=");
-
-	char const *v2 = luaL_checkstring(L, 3);
-
-	const bool result = do_version_check(version_info(v1), vop, version_info(v2));
+	version_info& v1 = *static_cast<version_info*>(luaL_checkudata(L, 1, Version));
+	version_info& v2 = *static_cast<version_info*>(luaL_checkudata(L, 2, Version));
+	const bool result = do_version_check(v1, vop, v2);
 	lua_pushboolean(L, result);
+	return 1;
+}
 
+/**
+ * Decomposes a version into its component parts
+ */
+static int impl_version_get(lua_State* L)
+{
+	version_info& vers = *static_cast<version_info*>(luaL_checkudata(L, 1, Version));
+	if(lua_isinteger(L, 2)) {
+		int n = lua_tointeger(L, 2) - 1;
+		auto& components = vers.components();
+		if(n >= 0 && size_t(n) < components.size()) {
+			lua_pushinteger(L, vers.components()[n - 1]);
+		} else {
+			lua_pushnil(L);
+		}
+		return 1;
+	}
+	char const *m = luaL_checkstring(L, 2);
+	return_int_attrib("major", vers.major_version());
+	return_int_attrib("minor", vers.minor_version());
+	return_int_attrib("revision", vers.revision_level());
+	return_bool_attrib("is_canonical", vers.is_canonical());
+	return_string_attrib("special", vers.special_version());
+	if(char sep = vers.special_version_separator()) {
+		return_string_attrib("sep", std::string(1, sep));
+	} else if(strcmp(m, "sep") == 0) {
+		lua_pushnil(L);
+		return 1;
+	}
+	return 0;
+}
+
+/**
+ * Destroy a version
+ */
+static int impl_version_finalize(lua_State* L)
+{
+	version_info* vers = static_cast<version_info*>(luaL_checkudata(L, 1, Version));
+	vers->~version_info();
+	return 0;
+}
+
+/**
+ * Convert a version to string form
+ */
+static int impl_version_tostring(lua_State* L)
+{
+	version_info& vers = *static_cast<version_info*>(luaL_checkudata(L, 1, Version));
+	lua_push(L, vers.str());
+	return 1;
+}
+
+/**
+ * Builds a version from its component parts, or parses it from a string
+ */
+static int intf_make_version(lua_State* L)
+{
+	// If passed a version, just return it unchanged
+	if(luaL_testudata(L, 1, Version)) {
+		lua_settop(L, 1);
+		return 1;
+	}
+	// If it's a string, parse it; otherwise build from components
+	// The components method only supports canonical versions
+	if(lua_isstring(L, 1)) {
+		new(L) version_info(lua_check<std::string>(L, 1));
+	} else {
+		int major = luaL_checkinteger(L, 1), minor = luaL_optinteger(L, 2, 0), rev = luaL_optinteger(L, 3, 0);
+		std::string sep, special;
+		if(lua_type(L, -1) == LUA_TSTRING) {
+			special = lua_tostring(L, -1);
+			if(!special.empty() && std::isalpha(special[0])) {
+				sep.push_back('+');
+			} else {
+				sep.push_back(special[0]);
+				special = special.substr(1);
+			}
+		} else {
+			sep.push_back(0);
+		}
+		new(L) version_info(major, minor, rev, sep[0], special);
+	}
+	if(luaL_newmetatable(L, Version)) {
+		static const luaL_Reg metafuncs[] {
+			{ "__index", &impl_version_get },
+			{ "__tostring", &impl_version_tostring },
+			{ "__lt", &impl_version_compare<VERSION_COMP_OP::OP_LESS> },
+			{ "__le", &impl_version_compare<VERSION_COMP_OP::OP_LESS_OR_EQUAL> },
+			{ "__eq", &impl_version_compare<VERSION_COMP_OP::OP_EQUAL> },
+			{ "__gc", &impl_version_finalize },
+			{ nullptr, nullptr }
+		};
+		luaL_setfuncs(L, metafuncs, 0);
+		luaW_table_set<std::string>(L, -1, "__metatable", Version);
+	}
+	lua_setmetatable(L, -2);
+	return 1;
+}
+
+/**
+ * Returns the current Wesnoth version
+ */
+static int intf_current_version(lua_State* L) {
+	lua_settop(L, 0);
+	lua_push(L, game_config::wesnoth_version.str());
+	intf_make_version(L);
 	return 1;
 }
 
@@ -282,36 +384,6 @@ static int intf_name_generator(lua_State *L)
 }
 
 /**
-* Returns a random numer, same interface as math.random.
-*/
-static int intf_random(lua_State *L)
-{
-	if (lua_isnoneornil(L, 1)) {
-		double r = static_cast<double>(randomness::generator->next_random());
-		double r_max = static_cast<double>(std::numeric_limits<uint32_t>::max());
-		lua_push(L, r / (r_max + 1));
-		return 1;
-	}
-	else {
-		int32_t min;
-		int32_t max;
-		if (lua_isnumber(L, 2)) {
-			min = lua_check<int32_t>(L, 1);
-			max = lua_check<int32_t>(L, 2);
-		}
-		else {
-			min = 1;
-			max = lua_check<int32_t>(L, 1);
-		}
-		if (min > max) {
-			return luaL_argerror(L, 1, "min > max");
-		}
-		lua_push(L, randomness::generator->get_random_int(min, max));
-		return 1;
-	}
-}
-
-/**
 * Logs a message
 * Arg 1: (optional) Logger
 * Arg 2: Message
@@ -360,26 +432,10 @@ static int intf_deprecated_message(lua_State* L) {
 }
 
 /**
-* Gets the dimension of an image.
-* - Arg 1: string.
-* - Ret 1: width.
-* - Ret 2: height.
-*/
-static int intf_get_image_size(lua_State *L) {
-	char const *m = luaL_checkstring(L, 1);
-	image::locator img(m);
-	if(!img.file_exists()) return 0;
-	surface s = get_image(img);
-	lua_pushinteger(L, s->w);
-	lua_pushinteger(L, s->h);
-	return 2;
-}
-
-/**
 * Returns the time stamp, exactly as [set_variable] time=stamp does.
 * - Ret 1: integer
 */
-static int intf_get_time_stamp(lua_State *L) {
+static int intf_ms_since_init(lua_State *L) {
 	lua_pushinteger(L, SDL_GetTicks());
 	return 1;
 }
@@ -431,13 +487,15 @@ lua_kernel_base::lua_kernel_base()
 		{ "utf8",	luaopen_utf8   }, // added in Lua 5.3
 		// Wesnoth libraries
 		{ "stringx",lua_stringx::luaW_open },
+		{ "mathx",  lua_mathx::luaW_open },
 		{ "wml",    lua_wml::luaW_open },
 		{ "gui",    lua_gui2::luaW_open },
+		{ "filesystem", lua_fileops::luaW_open },
 		{ nullptr, nullptr }
 	};
 	for (luaL_Reg const *lib = safe_libs; lib->func; ++lib)
 	{
-		luaL_requiref(L, lib->name, lib->func, true);
+		luaL_requiref(L, lib->name, lib->func, strlen(lib->name));
 		lua_pop(L, 1);  /* remove lib */
 	}
 
@@ -471,11 +529,7 @@ lua_kernel_base::lua_kernel_base()
 	cmd_log_ << "Registering basic wesnoth API...\n";
 
 	static luaL_Reg const callbacks[] {
-		{ "compare_versions",         &intf_compare_versions         		},
 		{ "deprecated_message",       &intf_deprecated_message              },
-		{ "have_file",                &lua_fileops::intf_have_file          },
-		{ "read_file",                &lua_fileops::intf_read_file          },
-		{ "canonical_path",           &lua_fileops::intf_canonical_path     },
 		{ "textdomain",               &lua_common::intf_textdomain   		},
 		{ "dofile",                   &dispatch<&lua_kernel_base::intf_dofile>           },
 		{ "require",                  &dispatch<&lua_kernel_base::intf_require>          },
@@ -483,11 +537,11 @@ lua_kernel_base::lua_kernel_base()
 		{ "compile_formula",          &lua_formula_bridge::intf_compile_formula},
 		{ "eval_formula",             &lua_formula_bridge::intf_eval_formula},
 		{ "name_generator",           &intf_name_generator           },
-		{ "random",                   &intf_random                   },
 		{ "log",                      &intf_log                      },
-		{ "get_image_size",           &intf_get_image_size           },
-		{ "get_time_stamp",           &intf_get_time_stamp           },
+		{ "ms_since_init",            &intf_ms_since_init           },
 		{ "get_language",             &intf_get_language             },
+		{ "version",                  &intf_make_version       },
+		{ "current_version",          &intf_current_version    },
 		{ nullptr, nullptr }
 	};
 
@@ -900,7 +954,7 @@ int lua_kernel_base::impl_game_config_get(lua_State* L)
 	return_int_attrib("recall_cost", game_config::recall_cost);
 	return_int_attrib("kill_experience", game_config::kill_experience);
 	return_int_attrib("combat_experience", game_config::combat_experience);
-	return_string_attrib("version", game_config::wesnoth_version.str());
+	return_string_attrib_deprecated("version", "wesnoth.game_config", INDEFINITE, "1.17", "Use version.current() instead", game_config::wesnoth_version.str());
 	return_bool_attrib("debug", game_config::debug);
 	return_bool_attrib("debug_lua", game_config::debug_lua);
 	return_bool_attrib("strict_lua", game_config::strict_lua);

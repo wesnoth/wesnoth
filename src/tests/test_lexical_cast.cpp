@@ -155,8 +155,7 @@ BOOST_AUTO_TEST_CASE(test_lexical_cast_long_long)
 }
 
 typedef boost::mpl::vector<
-	  bool
-	, unsigned char
+	  unsigned char
 	, unsigned short
 	, unsigned int
 	, unsigned long> test_lexical_cast_unsigned_types;
@@ -192,6 +191,22 @@ BOOST_AUTO_TEST_CASE(test_lexical_cast_unsigned_long_long)
 	result = "specialized - To unsigned long long - From std::string";
 
 	BOOST_CHECK_EXCEPTION(lexical_cast<unsigned long long>(
+			std::string(value)), const char*, validate);
+}
+
+BOOST_AUTO_TEST_CASE(test_lexical_cast_bool)
+{
+	result = "specialized - To bool - From (const) char*";
+
+	const char* value = "test";
+	BOOST_CHECK_EXCEPTION(lexical_cast<bool>(
+			value), const char*, validate);
+	BOOST_CHECK_EXCEPTION(lexical_cast<bool>(
+			const_cast<char*>(value)), const char*, validate);
+
+	result = "specialized - To bool - From std::string";
+
+	BOOST_CHECK_EXCEPTION(lexical_cast<bool>(
 			std::string(value)), const char*, validate);
 }
 

@@ -179,7 +179,7 @@ function print_set_terrain(filter, terrain, extra)
 end
 
 function convert_filter()
-	local cfg = wml.parse(wesnoth.read_file("./filterdata.cfg"))
+	local cfg = wml.parse(filesystem.read_file("./filterdata.cfg"))
 	std_print("")
 	for i, v in ipairs(cfg) do
 		local tag = v[1]

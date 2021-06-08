@@ -23,6 +23,7 @@
 #include "game_config.hpp"
 #include "game_errors.hpp" //thrown sometimes
 //#include "gettext.hpp"
+#include "language.hpp" // for string_table
 #include "log.hpp"
 #include "units/abilities.hpp"
 #include "units/animation.hpp"
@@ -491,13 +492,45 @@ t_string unit_type::unit_description() const
 	}
 }
 
-bool unit_type::has_special_notes() const
-{
-	return !special_notes_.empty();
+std::vector<t_string> unit_type::special_notes() const {
+	return combine_special_notes(special_notes_, abilities_cfg(), attacks(), movement_type());
 }
 
-const std::vector<t_string>& unit_type::special_notes() const {
-	return special_notes_;
+static void append_special_note(std::vector<t_string>& notes, const t_string& new_note) {
+	if(new_note.empty()) return;
+	std::string_view note_plain = new_note.c_str();
+	utils::trim(note_plain);
+	if(note_plain.empty()) return;
+	auto iter = std::find(notes.begin(), notes.end(), new_note);
+	if(iter != notes.end()) return;
+	notes.push_back(new_note);
+}
+
+std::vector<t_string> combine_special_notes(const std::vector<t_string> direct, const config& abilities, const_attack_itors attacks, const movetype& mt)
+{
+	std::vector<t_string> notes;
+	for(const auto& note : direct) {
+		append_special_note(notes, note);
+	}
+	for(const config::any_child ability : abilities.all_children_range()) {
+		if(ability.cfg.has_attribute("special_note")) {
+			append_special_note(notes, ability.cfg["special_note"].t_str());
+		}
+	}
+	for(const auto& attack : attacks) {
+		for(const config::any_child ability : attack.specials().all_children_range()) {
+			if(ability.cfg.has_attribute("special_note")) {
+				append_special_note(notes, ability.cfg["special_note"].t_str());
+			}
+		}
+		if(auto attack_type_note = string_table.find("special_note_damage_type_" + attack.type()); attack_type_note != string_table.end()) {
+			append_special_note(notes, attack_type_note->second);
+		}
+	}
+	for(const auto& move_note : mt.special_notes()) {
+		append_special_note(notes, move_note);
+	}
+	return notes;
 }
 
 const std::vector<unit_animation>& unit_type::animations() const

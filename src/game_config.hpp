@@ -62,6 +62,8 @@ namespace game_config
 	extern bool debug_lua, strict_lua, editor, ignore_replay_errors, mp_debug,
 		exit_at_end, no_delay, disable_autosave, no_addons;
 
+	extern bool allow_insecure;
+
 	extern const bool& debug;
 	void set_debug(bool new_debug);
 

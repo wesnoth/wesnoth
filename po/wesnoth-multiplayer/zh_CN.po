@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.14\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-04-18 02:21 UTC\n"
+"POT-Creation-Date: 2021-05-16 02:06 UTC\n"
 "PO-Revision-Date: 2020-08-10 20:14+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
@@ -100,33 +100,60 @@ msgstr ""
 "此时代仍在开发中，因此请务必报告出现的一切问题。"
 
 #. [lua]: f
-#: data/multiplayer/eras.lua:62
-msgid "<span strikethrough='true' foreground='#%02x%02x%02x'>Side %d</span>"
+#. In the end-of-match summary, a side which has no units left and therefore lost. In English the loss is shown by displaying it with the text struck through.
+#: data/multiplayer/eras.lua:53
+#, fuzzy
+#| msgid "<span strikethrough='true' foreground='#%02x%02x%02x'>Side %d</span>"
+msgid ""
+"<span strikethrough='true' foreground='$side_color'>Side $side_number</"
+"span>:  Has lost all units"
 msgstr "<span strikethrough='true' foreground='#%02x%02x%02x'>阵营%d</span>"
 
 #. [lua]: f
-#: data/multiplayer/eras.lua:76
+#. In the end-of-match summary, any side that still has units left
+#: data/multiplayer/eras.lua:69
+#, fuzzy
+#| msgid ""
+#| "<span foreground='#%02x%02x%02x'>Side %d</span>:  Income score = %d  Unit "
+#| "score = %d  Gold = %d"
 msgid ""
-"<span foreground='#%02x%02x%02x'>Side %d</span>:  Income score = %d  Unit "
-"score = %d  Gold = %d"
+"<span foreground='$side_color'>Side $side_number</span>:  Income score = "
+"$income  Unit score = $units  Gold = $gold\n"
+"Grand total: <b>$total</b>"
 msgstr ""
 "<span foreground='#%02x%02x%02x'>阵营%d</span>:  收入得分 = %d  单位得分 = "
 "%d  金币 = %d"
 
 #. [lua]: f
-#: data/multiplayer/eras.lua:76
-msgid "Grand total: <b>%d</b>"
-msgstr "总得分：<b>%d</b>"
+#. In the end-of-match summary, there's a single side that's won.
+#: data/multiplayer/eras.lua:86
+#, fuzzy
+#| msgid "<span foreground='%s'>Side %d</span> has the advantage."
+msgid ""
+"<span foreground='$side_color'>Side $side_number</span> has the advantage."
+msgstr "<span foreground='%s'>阵营%d</span>取得了优势。"
 
 #. [lua]: f
-#: data/multiplayer/eras.lua:93
-msgid "Sides %s and %d are tied."
+#. In the end-of-match summary, there's a two-way tie (this is only used for exactly two winning teams)
+#: data/multiplayer/eras.lua:91
+#, fuzzy
+#| msgid "Sides %s and %d are tied."
+msgid "Sides $side_number and $other_side_number are tied."
 msgstr "阵营%s和%d势均力敌。"
 
 #. [lua]: f
-#: data/multiplayer/eras.lua:95
-msgid "<span foreground='%s'>Side %d</span> has the advantage."
-msgstr "<span foreground='%s'>阵营%d</span>取得了优势。"
+#. In the end-of-match summary, three or more teams have all tied for the best score. $winners contains the result of formatting the conjunct list.
+#: data/multiplayer/eras.lua:96
+#, fuzzy
+#| msgid "Sides %s and %d are tied."
+msgid "Sides $winners are tied."
+msgstr "阵营%s和%d势均力敌。"
+
+#. [lua]: f
+#. "Turns Over", meaning "turn limit reached" is the title of the end-of-match summary dialog
+#: data/multiplayer/eras.lua:100
+msgid "dialog^Turns Over"
+msgstr ""
 
 #. [multiplayer_side]: id=Drakes, type=random
 #: data/multiplayer/factions/drakes-aoh.cfg:4
@@ -1188,7 +1215,7 @@ msgid "Changes the gold worth of the enemy spawns by a certain percentage"
 msgstr "对所生成的敌军的金币价值作出百分比修正"
 
 #. [lua]: final_spawn
-#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:315
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:300
 msgid ""
 "The last and most powerful of these creatures are almost upon us. I feel "
 "that if we can finish them off in time, we shall be victorious."
@@ -1197,7 +1224,7 @@ msgstr ""
 "的话，那就能赢。"
 
 #. [lua]: final_spawn
-#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:345
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:330
 msgid ""
 "The screams and pleas for mercy are finally silenced, as you remove your "
 "blood soaked blade from the last of the rebels. There will be no more "
@@ -1207,27 +1234,27 @@ msgstr ""
 "再也不会有本地渣滓们的反抗了。你的统治终于稳定了下来。"
 
 #. [lua]: weather_map
-#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:472
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:457
 msgid "Clear Weather"
 msgstr "晴天"
 
 #. [lua]: weather_map
-#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:478
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:463
 msgid "Drought"
 msgstr "干旱"
 
 #. [lua]: weather_map
-#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:490
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:475
 msgid "Heavy Rains"
 msgstr "大雨"
 
 #. [lua]: weather_map
-#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:496
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:481
 msgid "Snowfall"
 msgstr "降雪"
 
 #. [lua]: weather_map
-#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:502
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:487
 msgid "Heavy Snowfall"
 msgstr "大雪"
 
@@ -2592,3 +2619,6 @@ msgid ""
 msgstr ""
 "一幅韦诺基准测试图，命令行参数为：--no-delay --multiplayer --"
 "scenario=wesbench_shroud_walk --exit-at-end。"
+
+#~ msgid "Grand total: <b>%d</b>"
+#~ msgstr "总得分：<b>%d</b>"
