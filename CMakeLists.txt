@@ -101,7 +101,7 @@ include(SearchForStuff)
 # optimization (c.f. bug #23445), work around this by enforcing "release" type
 # if nothing was selected
 if(NOT CMAKE_BUILD_TYPE)
-	set(CMAKE_BUILD_TYPE Release CACHE STRING "Choose the type of build, options are: None Debug Release Profile RelWithDebInfo MinSizeRel." FORCE)
+	set(CMAKE_BUILD_TYPE Release CACHE STRING "Choose the type of build, options are: None Debug Release RelWithDebInfo MinSizeRel." FORCE)
 	message("No build type specified, defaulting to Release")
 endif()
 
@@ -238,18 +238,12 @@ if(NOT WIN32)
 # #
 
 	if(NOT OPT)
-		set(CMAKE_CXX_FLAGS_RELEASE "-O3")
-		set(CMAKE_C_FLAGS_RELEASE "-O3")
-
-		set(CMAKE_CXX_FLAGS_DEBUG "-O0")
-		set(CMAKE_C_FLAGS_DEBUG "-O0")
-
 		if(PROFILER STREQUAL "perf")
-			set(CMAKE_CXX_FLAGS_PROFILE "-Og")
-			set(CMAKE_C_FLAGS_PROFILE "-Og")
+			set(CMAKE_CXX_FLAGS_RELEASE "-Og")
+			set(CMAKE_C_FLAGS_RELEASE "-Og")
 		else()
-			set(CMAKE_CXX_FLAGS_PROFILE "-O0")
-			set(CMAKE_C_FLAGS_PROFILE "-O0")
+			set(CMAKE_CXX_FLAGS_RELEASE "-O3")
+			set(CMAKE_C_FLAGS_RELEASE "-O3")
 		endif()
 	else()
 		set(CMAKE_CXX_FLAGS_RELEASE "${OPT}")
@@ -257,9 +251,6 @@ if(NOT WIN32)
 
 		set(CMAKE_CXX_FLAGS_DEBUG "${OPT}")
 		set(CMAKE_C_FLAGS_DEBUG "${OPT}")
-
-		set(CMAKE_CXX_FLAGS_PROFILE "${OPT}")
-		set(CMAKE_C_FLAGS_PROFILE "${OPT}")
 	endif()
 
 # check for hardening options
@@ -405,39 +396,33 @@ if(NOT WIN32)
 	endif()
 
 # #
-# End setting options for Debug build
-# Start setting options for Profile build
+# Setup profiler build options
 # #
 
-	if(PROFILER STREQUAL "gprof" OR NOT PROFILER)
+	if(PROFILER STREQUAL "gprof")
 		MESSAGE("Profiler is gprof")
-		set(CMAKE_CXX_FLAGS_PROFILE "${CMAKE_CXX_FLAGS_PROFILE} -pg ${EXTRA_FLAGS_CONFIG} ${EXTRA_FLAGS_PROFILE}" CACHE STRING "Flags for profiling with gprof" FORCE)
-		set(CMAKE_C_FLAGS_PROFILE "${CMAKE_C_FLAGS_PROFILE} -pg ${EXTRA_FLAGS_CONFIG} ${EXTRA_FLAGS_PROFILE}" CACHE STRING "Flags for profiling with gprof" FORCE)
-		set(CMAKE_EXE_LINKER_FLAGS_PROFILE "${LINK_EXTRA_FLAGS_CONFIG} ${LINK_EXTRA_FLAGS_PROFILE}" CACHE STRING "" FORCE)
+		set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -pg ${EXTRA_FLAGS_CONFIG}" CACHE STRING "Flags for profiling with gprof" FORCE)
+		set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} -pg ${EXTRA_FLAGS_CONFIG}" CACHE STRING "Flags for profiling with gprof" FORCE)
 	endif()
 
 	if(PROFILER STREQUAL "gcov")
 		MESSAGE("Profiler is gcov")
-		set(CMAKE_CXX_FLAGS_PROFILE "${CMAKE_CXX_FLAGS_PROFILE} -fprofile-arcs -ftest-coverage ${EXTRA_FLAGS_CONFIG} ${EXTRA_FLAGS_PROFILE}" CACHE STRING "Flags for profiling with gcov" FORCE)
-		set(CMAKE_C_FLAGS_PROFILE "${CMAKE_C_FLAGS_PROFILE} -fprofile-arcs -ftest-coverage ${EXTRA_FLAGS_CONFIG} ${EXTRA_FLAGS_PROFILE}" CACHE STRING "Flags for profiling with gcov" FORCE)
-		set(CMAKE_EXE_LINKER_FLAGS_PROFILE "${LINK_EXTRA_FLAGS_CONFIG} ${LINK_EXTRA_FLAGS_PROFILE}" CACHE STRING "" FORCE)
+		set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -fprofile-arcs -ftest-coverage ${EXTRA_FLAGS_CONFIG}" CACHE STRING "Flags for profiling with gcov" FORCE)
+		set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} -fprofile-arcs -ftest-coverage ${EXTRA_FLAGS_CONFIG}" CACHE STRING "Flags for profiling with gcov" FORCE)
 	endif()
 
 	if(PROFILER STREQUAL "gperftools")
 		MESSAGE("Profiler is gperftools")
-		set(CMAKE_CXX_FLAGS_PROFILE "${CMAKE_CXX_FLAGS_PROFILE} ${EXTRA_FLAGS_CONFIG} ${EXTRA_FLAGS_PROFILE}" CACHE STRING "Flags for profiling with gperftools" FORCE)
-		set(CMAKE_C_FLAGS_PROFILE "${CMAKE_C_FLAGS_PROFILE} ${EXTRA_FLAGS_CONFIG} ${EXTRA_FLAGS_PROFILE}" CACHE STRING "Flags for profiling with gperftools" FORCE)
-		set(CMAKE_EXE_LINKER_FLAGS_PROFILE "-Wl,--no-as-needed,-lprofiler ${LINK_EXTRA_FLAGS_CONFIG} ${LINK_EXTRA_FLAGS_PROFILE}" CACHE STRING "" FORCE)
+		set(CMAKE_EXE_LINKER_FLAGS_RELEASE "-Wl,--no-as-needed,-lprofiler ${LINK_EXTRA_FLAGS_CONFIG}" CACHE STRING "" FORCE)
 	endif()
 
 	if(PROFILER STREQUAL "perf")
 		MESSAGE("Profiler is perf")
-		set(CMAKE_CXX_FLAGS_PROFILE "${CMAKE_CXX_FLAGS_PROFILE} -ggdb ${EXTRA_FLAGS_CONFIG} ${EXTRA_FLAGS_PROFILE}" CACHE STRING "Flags for profiling with perf" FORCE)
-		set(CMAKE_C_FLAGS_PROFILE "${CMAKE_C_FLAGS_PROFILE} -ggdb ${EXTRA_FLAGS_CONFIG} ${EXTRA_FLAGS_PROFILE}" CACHE STRING "Flags for profiling with perf" FORCE)
-		set(CMAKE_EXE_LINKER_FLAGS_PROFILE "${LINK_EXTRA_FLAGS_CONFIG} ${LINK_EXTRA_FLAGS_PROFILE}" CACHE STRING "" FORCE)
+		set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -ggdb ${EXTRA_FLAGS_CONFIG}" CACHE STRING "Flags for profiling with perf" FORCE)
+		set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} -ggdb ${EXTRA_FLAGS_CONFIG}" CACHE STRING "Flags for profiling with perf" FORCE)
 	endif()
 # #
-# End setting options for Profile build
+# End setting profiler build options
 # #
 else()
 	set(CMAKE_CXX_FLAGS "/W3 /WX /wd4503 /wd4351 /wd4250 /wd4244 /wd4267 /we4239 /wd4275 /EHsc /utf-8" CACHE STRING "Global flags used by the CXX compiler during all builds." FORCE)
