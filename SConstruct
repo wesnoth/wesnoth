@@ -47,7 +47,7 @@ def OptionalPath(key, val, env):
 opts.AddVariables(
     ListVariable('default_targets', 'Targets that will be built if no target is specified in command line.',
         "wesnoth,wesnothd", Split("wesnoth wesnothd campaignd boost_unit_tests")),
-    EnumVariable('build', 'Build variant: release, debug, or profile', "release", ["release", "debug", "profile"]),
+    EnumVariable('build', 'Build variant: release, debug, or profile', "release", ["release", "debug"]),
     PathVariable('build_dir', 'Build all intermediate files(objects, test programs, etc) under this dir', "build", PathVariable.PathAccept),
     ('extra_flags_config', "Extra compiler and linker flags to use for configuration and all builds. Whether they're compiler or linker is determined by env.ParseFlags. Unknown flags are compile flags by default. This applies to all extra_flags_* variables", ""),
     ('extra_flags_release', 'Extra compiler and linker flags to use for release builds', ""),
@@ -58,7 +58,7 @@ opts.AddVariables(
     ('opt', 'override for the build\'s optimization level', ""),
     BoolVariable('harden', 'Whether to enable options to harden the executables', True),
     BoolVariable('glibcxx_debug', 'Whether to define _GLIBCXX_DEBUG and _GLIBCXX_DEBUG_PEDANTIC for build=debug', False),
-    EnumVariable('profiler', 'profiler to be used for build=profile', "gprof", ["gprof", "gcov", "gperftools", "perf"]),
+    EnumVariable('profiler', 'profiler to be used', "", ["", "gprof", "gcov", "gperftools", "perf"]),
     EnumVariable('pgo_data', 'whether to generate profiling data for PGO, or use existing profiling data', "", ["", "generate", "use"]),
     BoolVariable('use_srcdir', 'Whether to place object files in src/ or not', False),
     PathVariable('bindir', 'Where to install binaries', "bin", PathVariable.PathAccept),
@@ -503,7 +503,7 @@ for env in [test_env, client_env, env]:
         if not env["opt"]:
             if env["build"] == "release":
                 env["opt"] = "-O3 "
-            elif env["build"] == "profile" and env["profiler"] == "perf":
+            elif env["profiler"] == "perf":
                 env["opt"] = "-Og "
             else:
                 env["opt"] = "-O0 "
@@ -553,6 +553,26 @@ for env in [test_env, client_env, env]:
         rel_comp_flags = env["opt"]
         rel_link_flags = ""
 
+# #
+# Add flags if using profiling
+# #
+
+        if env["profiler"] == "gprof":
+            rel_comp_flags += " -pg"
+            rel_link_flags += " -pg"
+
+        if env["profiler"] == "gcov":
+            rel_comp_flags += " -fprofile-arcs -ftest-coverage"
+            rel_link_flags += " -fprofile-arcs"
+
+        if env["profiler"] == "gperftools":
+            rel_comp_flags += ""
+            rel_link_flags += " -Wl,--no-as-needed,-lprofiler"
+
+        if env["profiler"] == "perf":
+            rel_comp_flags += " -ggdb"
+            rel_link_flags += ""
+
 # use the arch if provided, or if on Windows and no arch was passed in then default to pentiumpro
 # without setting to pentiumpro, compiling on Windows with 64-bit tdm-gcc and -O3 currently fails
         if env["arch"]:
@@ -561,61 +581,40 @@ for env in [test_env, client_env, env]:
         if env["PLATFORM"] == "win32" and not env["arch"]:
             env["arch"] = " -march=pentiumpro"
 
-        rel_comp_flags = rel_comp_flags + env["arch"]
+        rel_comp_flags += env["arch"]
 
 # PGO and LTO setup
         if "gcc" in env["CC"]:
             if env["pgo_data"] == "generate":
-                rel_comp_flags = rel_comp_flags + " -fprofile-generate=pgo_data/"
-                rel_link_flags = "-fprofile-generate=pgo_data/"
+                rel_comp_flags += " -fprofile-generate=pgo_data/"
+                rel_link_flags += " -fprofile-generate=pgo_data/"
 
             if env["pgo_data"] == "use":
-                rel_comp_flags = rel_comp_flags + " -fprofile-correction -fprofile-use=pgo_data/"
-                rel_link_flags = "-fprofile-correction -fprofile-use=pgo_data/"
+                rel_comp_flags += " -fprofile-correction -fprofile-use=pgo_data/"
+                rel_link_flags += " -fprofile-correction -fprofile-use=pgo_data/"
 
             if env["enable_lto"] == True:
-                rel_comp_flags = rel_comp_flags + " -flto=" + str(env["jobs"])
-                rel_link_flags = rel_comp_flags + " -fuse-ld=gold -Wno-stringop-overflow"
+                rel_comp_flags += " -flto=" + str(env["jobs"])
+                rel_link_flags += rel_comp_flags + " -fuse-ld=gold -Wno-stringop-overflow"
         elif "clang" in env["CXX"]:
             if env["pgo_data"] == "generate":
-                rel_comp_flags = rel_comp_flags + " -fprofile-instr-generate=pgo_data/wesnoth-%p.profraw"
-                rel_link_flags = "-fprofile-instr-generate=pgo_data/wesnoth-%p.profraw"
+                rel_comp_flags += " -fprofile-instr-generate=pgo_data/wesnoth-%p.profraw"
+                rel_link_flags += " -fprofile-instr-generate=pgo_data/wesnoth-%p.profraw"
 
             if env["pgo_data"] == "use":
-                rel_comp_flags = rel_comp_flags + " -fprofile-instr-use=pgo_data/wesnoth.profdata"
-                rel_link_flags = "-fprofile-instr-use=pgo_data/wesnoth.profdata"
+                rel_comp_flags += " -fprofile-instr-use=pgo_data/wesnoth.profdata"
+                rel_link_flags += " -fprofile-instr-use=pgo_data/wesnoth.profdata"
 
             if env["enable_lto"] == True:
-                rel_comp_flags = rel_comp_flags + " -flto=thin"
-                rel_link_flags = rel_comp_flags + " -fuse-ld=lld"
+                rel_comp_flags += " -flto=thin"
+                rel_link_flags += rel_comp_flags + " -fuse-ld=lld"
 
 # Enable ASLR and NX bit support on mingw
         if "mingw" in env["TOOLS"]:
-            rel_link_flags += "-Wl,--dynamicbase -Wl,--nxcompat"
+            rel_link_flags += " -Wl,--dynamicbase -Wl,--nxcompat"
 
 # #
 # End setting options for release build
-# Start setting options for profile build
-# #
-
-        if env["profiler"] == "gprof":
-            prof_comp_flags = env["opt"]+"-pg"
-            prof_link_flags = "-pg"
-
-        if env["profiler"] == "gcov":
-            prof_comp_flags = env["opt"]+"-fprofile-arcs -ftest-coverage"
-            prof_link_flags = "-fprofile-arcs"
-
-        if env["profiler"] == "gperftools":
-            prof_comp_flags = env["opt"]
-            prof_link_flags = "-Wl,--no-as-needed,-lprofiler"
-
-        if env["profiler"] == "perf":
-            prof_comp_flags = env["opt"]+"-ggdb"
-            prof_link_flags = ""
-
-# #
-# End setting options for profile build
 # #
 
     if env['internal_data']:
@@ -656,8 +655,7 @@ SConscript(dirs = Split("po doc packaging/windows packaging/systemd"))
 binaries = Split("wesnoth wesnothd campaignd boost_unit_tests")
 builds = {
     "release" : dict(CCFLAGS = Split(rel_comp_flags) , LINKFLAGS  = Split(rel_link_flags)),
-    "debug"   : dict(CCFLAGS = Split(debug_flags)    , CPPDEFINES = Split(glibcxx_debug_flags)),
-    "profile" : dict(CCFLAGS = Split(prof_comp_flags), LINKFLAGS  = Split(prof_link_flags))
+    "debug"   : dict(CCFLAGS = Split(debug_flags)    , CPPDEFINES = Split(glibcxx_debug_flags))
     }
 build = env["build"]
 
