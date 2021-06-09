@@ -164,9 +164,9 @@ public:
 		return h_;
 	}
 
-	void set_variable(const std::string& key, const wfl::variant& value)
+	void set_variable(const std::string& key, wfl::variant&& value)
 	{
-		variables_.add(key, value);
+		variables_.add(key, std::move(value));
 		set_is_dirty(true);
 		invalidate_cache();
 	}
@@ -227,7 +227,11 @@ private:
 	void parse_cfg(const config& cfg);
 
 	void clear_shapes(const bool force);
-	void invalidate_cache();
+
+	void invalidate_cache()
+	{
+		viewport_ = nullptr;
+	}
 };
 
 } // namespace gui2
