@@ -418,8 +418,8 @@ if(NOT WIN32)
 
 	if(PROFILER STREQUAL "perf")
 		MESSAGE("Profiler is perf")
-		set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -ggdb ${EXTRA_FLAGS_CONFIG}" CACHE STRING "Flags for profiling with perf" FORCE)
-		set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} -ggdb ${EXTRA_FLAGS_CONFIG}" CACHE STRING "Flags for profiling with perf" FORCE)
+		set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -ggdb -fno-omit-frame-pointer ${EXTRA_FLAGS_CONFIG}" CACHE STRING "Flags for profiling with perf" FORCE)
+		set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} -ggdb -fno-omit-frame-pointer ${EXTRA_FLAGS_CONFIG}" CACHE STRING "Flags for profiling with perf" FORCE)
 	endif()
 # #
 # End setting profiler build options

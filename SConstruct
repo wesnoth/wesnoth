@@ -570,7 +570,7 @@ for env in [test_env, client_env, env]:
             rel_link_flags += " -Wl,--no-as-needed,-lprofiler"
 
         if env["profiler"] == "perf":
-            rel_comp_flags += " -ggdb"
+            rel_comp_flags += " -ggdb -fno-omit-frame-pointer"
             rel_link_flags += ""
 
 # use the arch if provided, or if on Windows and no arch was passed in then default to pentiumpro
