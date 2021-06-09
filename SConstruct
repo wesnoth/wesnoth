@@ -562,8 +562,8 @@ for env in [test_env, client_env, env]:
             rel_link_flags += " -pg"
 
         if env["profiler"] == "gcov":
-            rel_comp_flags += " -fprofile-arcs -ftest-coverage"
-            rel_link_flags += " -fprofile-arcs"
+            rel_comp_flags += " --coverage"
+            rel_link_flags += " --coverage"
 
         if env["profiler"] == "gperftools":
             rel_comp_flags += ""
