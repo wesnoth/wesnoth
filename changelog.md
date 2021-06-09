@@ -8,6 +8,9 @@
      * Revisions to the last two scenarios
  ### Editor
  ### Multiplayer
+ ### Networking
+   * Added support for encrypting connection using TLS to multiplayer/addon client/server
+   * Moved password hashing code from client to server, relying on TLS to avoid sending cleartext passwords
  ### Packaging
  ### Terrain
    * Added some great tree variations
