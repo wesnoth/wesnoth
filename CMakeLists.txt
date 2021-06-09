@@ -398,6 +398,7 @@ if(NOT WIN32)
 # #
 # Setup profiler build options
 # #
+	set(PROFILER "" CACHE STRING "Enable performance-measuring tools (and choose which tool to use)")
 
 	if(PROFILER STREQUAL "gprof")
 		MESSAGE("Profiler is gprof")
