@@ -946,11 +946,6 @@ void canvas::clear_shapes(const bool force)
 	}
 }
 
-void canvas::invalidate_cache()
-{
-	viewport_ = nullptr;
-}
-
 /***** ***** ***** ***** ***** SHAPE ***** ***** ***** ***** *****/
 
 } // namespace gui2

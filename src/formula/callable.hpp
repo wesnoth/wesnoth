@@ -255,6 +255,12 @@ public:
 		return *this;
 	}
 
+	map_formula_callable& add(const std::string& key, variant&& value)
+	{
+		values_[key] = std::move(value);
+		return *this;
+	}
+
 	void set_fallback(const_formula_callable_ptr fallback)
 	{
 		fallback_ = fallback;
