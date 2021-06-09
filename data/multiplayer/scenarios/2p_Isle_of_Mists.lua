@@ -174,7 +174,7 @@ local function create_timed_spawns(interval, num_spawns, base_gold_amount, gold_
 			-- formula taken from original Dark forecast, TODO: find easier formula.
 			local unit_gold = (turn - 3) * gold_increment + math.min(mathx.random(base_gold_amount), mathx.random(base_gold_amount))
 			local gold_per_unit = gold_per_unit_amount + turn / 1.5
-			local units = unit_gold / gold_per_unit + units_amount + mathx.random(-1, 2)
+			local units = unit_gold / gold_per_unit + units_amount + mathx.random(-1, 1)
 			if mathx.random(5) == 5 then
 				units = units - 1
 			end
@@ -267,9 +267,9 @@ end)
 on_event("prestart", function()
 	local leaders = wesnoth.units.find_on_map { side = "3,4", canrecruit= true}
 	if #leaders < 2 then
-		create_timed_spawns(5, 11, 30, 5, 4, 21)
+		create_timed_spawns(5, 6, 45, 5, 3, 21)
 	else
-		create_timed_spawns(4, 11, 60, 4, 5, 23)
+		create_timed_spawns(4, 6, 90, 4, 4, 23)
 	end
 end)
 
