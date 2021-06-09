@@ -32,6 +32,7 @@
  * So far the use of 'subjective info' is stubbed out.
  */
 
+#include "actions/undo.hpp"
 #include "ai/actions.hpp"
 #include "ai/manager.hpp"
 #include "ai/simulated_actions.hpp"
@@ -652,6 +653,7 @@ void recall_result::do_execute()
 	// Do the actual recalling.
 	// We ignore possible errors (=unit doesn't exist on the recall list)
 	// because that was the previous behavior.
+	resources::undo_stack->clear();
 	synced_context::run_in_synced_context_if_not_already("recall",
 		replay_helper::get_recall(unit_id_, recall_location_, recall_from_),
 		false,
@@ -800,6 +802,7 @@ void recruit_result::do_execute()
 		return;
 	}
 
+	resources::undo_stack->clear();
 	synced_context::run_in_synced_context_if_not_already("recruit", replay_helper::get_recruit(u->id(), recruit_location_, recruit_from_), false, !preferences::skip_ai_moves());
 	//TODO: should we do something to pass use_undo = false in replays and ai moves ?
 	//::actions::recruit_unit(*u, get_side(), recruit_location_, recruit_from_,
