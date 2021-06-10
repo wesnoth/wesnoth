@@ -205,6 +205,15 @@ const time_of_day& tod_manager::get_time_of_day(const map_location& loc, int n_t
 	return get_time_of_day_turn(times_, n_turn, currentTime_);
 }
 
+const time_of_day& tod_manager::get_area_time_of_day(int area_i, int n_turn) const
+{
+	assert(area_i < static_cast<int>(areas_.size()));
+	if(n_turn == 0) {
+		n_turn = turn_;
+	}
+	return get_time_of_day_turn(areas_[area_i].times, n_turn, areas_[area_i].currentTime);
+}
+
 const time_of_day tod_manager::get_illuminated_time_of_day(
 	const unit_map& units, const gamemap& map, const map_location& loc, int for_turn) const
 {
@@ -324,6 +333,12 @@ void tod_manager::set_area_id(int area_index, const std::string& id)
 	areas_[area_index].id = id;
 }
 
+const std::string& tod_manager::get_area_id(int area_index) const
+{
+	assert(area_index < static_cast<int>(areas_.size()));
+	return areas_[area_index].id;
+}
+
 std::vector<std::string> tod_manager::get_area_ids() const
 {
 	std::vector<std::string> areas;
@@ -349,6 +364,19 @@ const std::set<map_location>& tod_manager::get_area_by_id(const std::string& id)
 const std::set<map_location>& tod_manager::get_area_by_index(int index) const
 {
 	return areas_[index].hexes;
+}
+
+std::pair<int, std::string> tod_manager::get_area_on_hex(const map_location& loc) const
+{
+	if(loc != map_location::null_location()) {
+		for(auto i = areas_.rbegin(), i_end = areas_.rend();
+			i != i_end; ++i) {
+			if(i->hexes.find(loc) != i->hexes.end() && !i->times.empty())
+				return {std::distance(areas_.rbegin(), i), i->id};
+		}
+	}
+
+	return {-1, ""};
 }
 
 void tod_manager::add_time_area(const gamemap& map, const config& cfg)

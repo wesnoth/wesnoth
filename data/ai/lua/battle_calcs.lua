@@ -95,8 +95,8 @@ function battle_calcs.strike_damage(attacker, defender, att_weapon, def_weapon, 
     -- Set up a cache index. We use id+max_hitpoints+side for each unit, since the
     -- unit can level up.
     -- Also need to add the weapons and lawful_bonus values for each unit
-    local att_lawful_bonus = wesnoth.get_time_of_day({ dst[1], dst[2], true }).lawful_bonus
-    local def_lawful_bonus = wesnoth.get_time_of_day({ defender.x, defender.y, true }).lawful_bonus
+    local att_lawful_bonus = wesnoth.schedule.get_illumination(dst).lawful_bonus
+    local def_lawful_bonus = wesnoth.schedule.get_illumination(defender).lawful_bonus
 
     local cind = 'SD-' .. attacker.id .. attacker.max_hitpoints .. attacker.side
     cind = cind .. 'x' .. defender.id .. defender.max_hitpoints .. defender.side
@@ -183,8 +183,8 @@ function battle_calcs.best_weapons(attacker, defender, dst, cache)
     -- Set up a cache index. We use id+max_hitpoints+side for each unit, since the
     -- unit can level up.
     -- Also need to add the weapons and lawful_bonus values for each unit
-    local att_lawful_bonus = wesnoth.get_time_of_day({ dst[1], dst[2], true }).lawful_bonus
-    local def_lawful_bonus = wesnoth.get_time_of_day({ defender.x, defender.y, true }).lawful_bonus
+    local att_lawful_bonus = wesnoth.schedule.get_illumination(dst).lawful_bonus
+    local def_lawful_bonus = wesnoth.schedule.get_illumination(defender).lawful_bonus
 
     local cind = 'BW-' .. attacker.id .. attacker.max_hitpoints .. attacker.side
     cind = cind .. 'x' .. defender.id .. defender.max_hitpoints .. defender.side

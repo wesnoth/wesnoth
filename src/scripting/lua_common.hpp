@@ -115,6 +115,16 @@ bool luaW_tolocation(lua_State *L, int index, map_location &loc);
 map_location luaW_checklocation(lua_State *L, int index);
 
 /**
+ * Converts a set of map locations to a Lua table pushed at the top of the stack.
+ */
+int luaW_push_locationset(lua_State* L, const std::set<map_location>& locs);
+
+/**
+ * Converts a table of integer pairs to a set of map location objects.
+ */
+std::set<map_location> luaW_check_locationset(lua_State* L, int idx);
+
+/**
  * Converts a config object to a Lua table pushed at the top of the stack.
  */
 void luaW_pushconfig(lua_State *L, const config& cfg);

@@ -839,6 +839,174 @@ int game_lua_kernel::intf_lock_view(lua_State *L)
 	return 0;
 }
 
+static void luaW_push_tod(lua_State* L, const time_of_day& tod)
+{
+	lua_newtable(L);
+	lua_pushstring(L, tod.id.c_str());
+	lua_setfield(L, -2, "id");
+	lua_pushinteger(L, tod.lawful_bonus);
+	lua_setfield(L, -2, "lawful_bonus");
+	lua_pushinteger(L, tod.bonus_modified);
+	lua_setfield(L, -2, "bonus_modified");
+	lua_pushstring(L, tod.image.c_str());
+	lua_setfield(L, -2, "image");
+	luaW_pushtstring(L, tod.name);
+	lua_setfield(L, -2, "name");
+	lua_pushstring(L, tod.sounds.c_str());
+	lua_setfield(L, -2, "sound");
+	lua_pushstring(L, tod.image_mask.c_str());
+	lua_setfield(L, -2, "mask");
+
+	lua_pushinteger(L, tod.color.r);
+	lua_setfield(L, -2, "red");
+	lua_pushinteger(L, tod.color.g);
+	lua_setfield(L, -2, "green");
+	lua_pushinteger(L, tod.color.b);
+	lua_setfield(L, -2, "blue");
+}
+
+// A schedule object is just a location with a special metatable.
+// This is also valid for time area objects, which also have an "index" key identifying them.
+// The index is a secondary means of identification in case it has no locations.
+void game_lua_kernel::luaW_push_schedule(lua_State* L, int area_index)
+{
+	lua_newuserdatauv(L, 0, 1);
+	lua_pushinteger(L, area_index);
+	lua_setiuservalue(L, -2, 1);
+	if(luaL_newmetatable(L, "schedule")) {
+		static luaL_Reg const schedule_meta[] {
+			{"__index", &dispatch<&game_lua_kernel::impl_schedule_get>},
+			{"__newindex", &dispatch<&game_lua_kernel::impl_schedule_set>},
+			{"__len", &dispatch<&game_lua_kernel::impl_schedule_len>},
+			{ nullptr, nullptr }
+		};
+		luaL_setfuncs(L, schedule_meta, 0);
+	}
+	lua_setmetatable(L, -2);
+}
+
+static int luaW_check_schedule(lua_State* L, int idx)
+{
+	int save_top = lua_gettop(L);
+	luaL_checkudata(L, idx, "schedule");
+	lua_getiuservalue(L, idx, 1);
+	int i = luaL_checkinteger(L, -1);
+	lua_settop(L, save_top);
+	return i;
+}
+
+int game_lua_kernel::impl_schedule_get(lua_State *L)
+{
+	int area_index = luaW_check_schedule(L, 1);
+	if(lua_isnumber(L, 2)) {
+		const auto& times = area_index < 0 ? tod_man().times() : tod_man().times(area_index);
+		int i = lua_tointeger(L, 2) - 1;
+		if(i < 0 || i >= static_cast<int>(times.size())) {
+			return luaL_argerror(L, 2, "invalid time of day index");
+		}
+		luaW_push_tod(L, times[i]);
+		return 1;
+	} else {
+		const char* m = luaL_checkstring(L, 2);
+		if(area_index >= 0) {
+			return_string_attrib("time_of_day", tod_man().get_area_time_of_day(area_index).id);
+			return_string_attrib("id", tod_man().get_area_id(area_index));
+			if(strcmp(m, "hexes") == 0) {
+				const auto& hexes = tod_man().get_area_by_index(area_index);
+				luaW_push_locationset(L, hexes);
+				return 1;
+			}
+		} else {
+			return_string_attrib("time_of_day", tod_man().get_time_of_day().id);
+			return_int_attrib("liminal_bonus", tod_man().get_max_liminal_bonus());
+		}
+		
+		if(luaW_getglobal(L, "wesnoth", "schedule", m)) {
+			return 1;
+		}
+	}
+	return 0;
+}
+
+int game_lua_kernel::impl_schedule_len(lua_State *L)
+{
+	int area_index = luaW_check_schedule(L, 1);
+	const auto& times = area_index < 0 ? tod_man().times() : tod_man().times(area_index);
+	lua_pushinteger(L, times.size());
+	return 1;
+}
+
+int game_lua_kernel::impl_schedule_set(lua_State *L)
+{
+	int area_index = luaW_check_schedule(L, 1);
+	if(lua_isnumber(L, 2)) {
+		std::vector<time_of_day> times = area_index < 0 ? tod_man().times() : tod_man().times(area_index);
+		int i = lua_tointeger(L, 2) - 1;
+		if(i < 0 || i >= static_cast<int>(times.size())) {
+			return luaL_argerror(L, 2, "invalid time of day index");
+		}
+		config time_cfg = luaW_checkconfig(L, 3);
+		times[i] = time_of_day(time_cfg);
+		if(area_index < 0) {
+			tod_man().replace_schedule(times);
+		} else {
+			tod_man().replace_local_schedule(times, area_index);
+		}
+	} else {
+		const char* m = luaL_checkstring(L, 2);
+		if(strcmp(m, "time_of_day") == 0) {
+			std::string value = luaL_checkstring(L, 3);
+			const auto& times = area_index < 0 ? tod_man().times() : tod_man().times(area_index);
+			auto iter = std::find_if(times.begin(), times.end(), [&value](const time_of_day& tod) {
+				return tod.id == value;
+			});
+			if(iter == times.end()) {
+				std::ostringstream err;
+				err << "invalid time of day ID for ";
+				if(area_index < 0) {
+					err << "global schedule";
+				} else {
+					const std::string& id = tod_man().get_area_id(area_index);
+					if(id.empty()) {
+						const auto& hexes = tod_man().get_area_by_index(area_index);
+						if(hexes.empty()) {
+							err << "anonymous empty time area";
+						} else {
+							err << "anonymous time area at (" << hexes.begin()->wml_x() << ',' << hexes.begin()->wml_y() << ")";
+						}
+					} else {
+						err << "time area with id=" << id;
+					}
+				}
+				lua_push(L, err.str());
+				return lua_error(L);
+			}
+			int n = std::distance(times.begin(), iter);
+			if(area_index < 0) {
+				tod_man().set_current_time(n);
+			} else {
+				tod_man().set_current_time(n, area_index);
+			}
+		}
+		if(area_index >= 0) {
+			modify_string_attrib("id", tod_man().set_area_id(area_index, value));
+			if(strcmp(m, "hexes") == 0) {
+				auto hexes = luaW_check_locationset(L, 3);
+				tod_man().replace_area_locations(area_index, hexes);
+				return 0;
+			}
+		} else {
+			// Assign nil to reset the bonus to the default (best) value
+			if(lua_isnil(L, 3) && strcmp(m, "liminal_bonus") == 0) {
+				tod_man().reset_max_liminal_bonus();
+				return 0;
+			}
+			modify_int_attrib("liminal_bonus", tod_man().set_max_liminal_bonus(value));
+		}
+	}
+	return 0;
+}
+
 /**
  * Gets details about a terrain.
  * - Arg 1: terrain code string.
@@ -880,38 +1048,41 @@ int game_lua_kernel::impl_get_terrain_info(lua_State *L)
 
 /**
  * Gets time of day information.
- * - Arg 1: optional turn number
- * - Arg 2: optional location
- * - Arg 3: optional boolean (consider_illuminates)
+ * - Arg 1: schedule object, location, time area ID, or nil
+ * - Arg 2: optional turn number
  * - Ret 1: table.
  */
+template<bool consider_illuminates>
 int game_lua_kernel::intf_get_time_of_day(lua_State *L)
 {
-	unsigned arg = 1;
-
 	int for_turn = tod_man().turn();
 	map_location loc = map_location();
-	bool consider_illuminates = false;
 
-	if(lua_isnumber(L, arg)) {
-		++arg;
+	if(luaW_tolocation(L, 1, loc)) {
+		if(!board().map().on_board_with_border(loc)) {
+			return luaL_argerror(L, 1, "coordinates are not on board");
+		}
+	} else if(lua_isstring(L, 1)) {
+		auto area = tod_man().get_area_by_id(lua_tostring(L, 1));
+		if(area.empty()) {
+			return luaL_error(L, "invalid or empty time_area ID");
+		}
+		// We just need SOME location in that area, it doesn't matter which one.
+		loc = *area.begin();
+	} else if(!lua_isnil(L, 1)) {
+		auto area = tod_man().get_area_by_index(luaW_check_schedule(L, 1));
+		if(area.empty()) {
+			return luaL_error(L, "empty time_area");
+		}
+		// We just need SOME location in that area, it doesn't matter which one.
+		loc = *area.begin();
+	}
+	
+	if(lua_isnumber(L, 2)) {
 		for_turn = luaL_checkinteger(L, 1);
 		int number_of_turns = tod_man().number_of_turns();
 		if(for_turn < 1 || (number_of_turns != -1 && for_turn > number_of_turns)) {
 			return luaL_argerror(L, 1, "turn number out of range");
-		}
-	}
-	else if(lua_isnil(L, arg)) ++arg;
-
-	if(luaW_tolocation(L, arg, loc)) {
-		if(!board().map().on_board(loc)) return luaL_argerror(L, arg, "coordinates are not on board");
-
-		if(lua_istable(L, arg)) {
-			lua_rawgeti(L, arg, 3);
-			consider_illuminates = luaW_toboolean(L, -1);
-			lua_pop(L, 1);
-		} else if(lua_isboolean(L, arg + 1)) {
-			consider_illuminates = luaW_toboolean(L, arg + 1);
 		}
 	}
 
@@ -919,40 +1090,7 @@ int game_lua_kernel::intf_get_time_of_day(lua_State *L)
 		tod_man().get_illuminated_time_of_day(board().units(), board().map(), loc, for_turn) :
 		tod_man().get_time_of_day(loc, for_turn);
 
-	lua_newtable(L);
-	lua_pushstring(L, tod.id.c_str());
-	lua_setfield(L, -2, "id");
-	lua_pushinteger(L, tod.lawful_bonus);
-	lua_setfield(L, -2, "lawful_bonus");
-	lua_pushinteger(L, tod.bonus_modified);
-	lua_setfield(L, -2, "bonus_modified");
-	lua_pushstring(L, tod.image.c_str());
-	lua_setfield(L, -2, "image");
-	luaW_pushtstring(L, tod.name);
-	lua_setfield(L, -2, "name");
-	lua_pushstring(L, tod.sounds.c_str());
-	lua_setfield(L, -2, "sound");
-	lua_pushstring(L, tod.image_mask.c_str());
-	lua_setfield(L, -2, "mask");
-
-	lua_pushinteger(L, tod.color.r);
-	lua_setfield(L, -2, "red");
-	lua_pushinteger(L, tod.color.g);
-	lua_setfield(L, -2, "green");
-	lua_pushinteger(L, tod.color.b);
-	lua_setfield(L, -2, "blue");
-
-	return 1;
-}
-
-/**
- * Gets the max liminal bonus
- * - Ret 1: integer.
- */
-int game_lua_kernel::intf_get_max_liminal_bonus(lua_State *L)
-{
-	int bonus = tod_man().get_max_liminal_bonus();
-	lua_pushinteger(L, bonus);
+	luaW_push_tod(L, tod);
 
 	return 1;
 }
@@ -1399,6 +1537,10 @@ int game_lua_kernel::impl_current_get(lua_State *L)
 
 	if(strcmp(m, "map") == 0) {
 		return intf_terrainmap_get(L);
+	}
+	if(strcmp(m, "schedule") == 0) {
+		luaW_push_schedule(L, -1);
+		return 1;
 	}
 
 	if (strcmp(m, "event_context") == 0)
@@ -3620,70 +3762,51 @@ int game_lua_kernel::intf_remove_time_area(lua_State * L)
 	return 0;
 }
 
+int game_lua_kernel::intf_get_time_area(lua_State* L)
+{
+	map_location loc;
+	if(luaW_tolocation(L, 1, loc)) {
+		int area_index = tod_man().get_area_on_hex(loc).first;
+		if(area_index < 0) {
+			lua_pushnil(L);
+			return 1;
+		}
+		luaW_push_schedule(L, area_index);
+		return 1;
+	} else {
+		std::string area_id = luaL_checkstring(L, 1);
+		const auto& area_ids = tod_man().get_area_ids();
+		if(auto iter = std::find(area_ids.begin(), area_ids.end(), area_id); iter == area_ids.end()) {
+			lua_pushnil(L);
+			return 1;
+		} else {
+			luaW_push_schedule(L, std::distance(area_ids.begin(), iter));
+			return 1;
+		}
+	}
+}
+
 /** Replacing the current time of day schedule. */
 int game_lua_kernel::intf_replace_schedule(lua_State * L)
 {
-	vconfig cfg = luaW_checkvconfig(L, 1);
-
-	if(cfg.get_children("time").empty()) {
-		ERR_LUA << "attempted to to replace ToD schedule with empty schedule" << std::endl;
+	map_location loc;
+	if(luaW_tolocation(L, 1, loc)) {
+		// Replace the global schedule with a time area's schedule
+		// The expectation is that you call schedule.replace(time_area.schedule),
+		// rather than passing a literal location.
+		
 	} else {
-		tod_man().replace_schedule(cfg.get_parsed_config());
-		if (game_display_) {
-			game_display_->new_turn();
-		}
-		LOG_LUA << "replaced ToD schedule\n";
-	}
-	return 0;
-}
+		vconfig cfg = luaW_checkvconfig(L, 1);
 
-int game_lua_kernel::intf_set_time_of_day(lua_State * L)
-{
-	if(!game_display_) {
-		return 0;
-	}
-	std::string area_id;
-	std::size_t area_i = 0;
-	if (lua_isstring(L, 2)) {
-		area_id = lua_tostring(L, 1);
-		std::vector<std::string> area_ids = tod_man().get_area_ids();
-		area_i = std::distance(area_ids.begin(), std::find(area_ids.begin(), area_ids.end(), area_id));
-		if(area_i >= area_ids.size()) {
-			return luaL_argerror(L, 1, "invalid time area ID");
-		}
-	}
-	int is_num = false;
-	int new_time = lua_tonumberx(L, 1, &is_num) - 1;
-	const std::vector<time_of_day>& times = area_id.empty()
-		? tod_man().times()
-		: tod_man().times(area_i);
-	int num_times = times.size();
-	if(!is_num) {
-		std::string time_id = luaL_checkstring(L, 1);
-		new_time = 0;
-		for(const time_of_day& time : times) {
-			if(time_id == time.id) {
-				break;
+		if(cfg.get_children("time").empty()) {
+			ERR_LUA << "attempted to to replace ToD schedule with empty schedule" << std::endl;
+		} else {
+			tod_man().replace_schedule(cfg.get_parsed_config());
+			if (game_display_) {
+				game_display_->new_turn();
 			}
-			new_time++;
+			LOG_LUA << "replaced ToD schedule\n";
 		}
-		if(new_time >= num_times) {
-			return luaL_argerror(L, 1, "invalid time of day ID");
-		}
-	}
-
-	if(new_time == 0 && num_times == 0) {
-		//ignore this case, because we don't want code like set_current_time(get_current_time()) to fail if num_times is 0.
-		return 0;
-	}
-	if(new_time < 0 || new_time >= num_times) {
-		return luaL_argerror(L, 1, "invalid time of day index");
-	}
-
-	if(area_id.empty()) {
-		tod_man().set_current_time(new_time);
-	} else {
-		tod_man().set_current_time(new_time, area_i);
 	}
 	return 0;
 }
@@ -4020,16 +4143,12 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 		{ "find_vision_range",         &dispatch<&game_lua_kernel::intf_find_vision_range          >        },
 		{ "fire_event",                &dispatch2<&game_lua_kernel::intf_fire_event, false         >        },
 		{ "fire_event_by_id",          &dispatch2<&game_lua_kernel::intf_fire_event, true          >        },
-		{ "get_time_of_day",           &dispatch<&game_lua_kernel::intf_get_time_of_day            >        },
-		{ "get_max_liminal_bonus",     &dispatch<&game_lua_kernel::intf_get_max_liminal_bonus      >        },
 		{ "log_replay",                &dispatch<&game_lua_kernel::intf_log_replay                 >        },
 		{ "log",                       &dispatch<&game_lua_kernel::intf_log                        >        },
 		{ "message",                   &dispatch<&game_lua_kernel::intf_message                    >        },
 		{ "print",                     &dispatch<&game_lua_kernel::intf_print                      >        },
 		{ "redraw",                    &dispatch<&game_lua_kernel::intf_redraw                     >        },
 		{ "remove_event_handler",      &dispatch<&game_lua_kernel::intf_remove_event               >        },
-		{ "replace_schedule",          &dispatch<&game_lua_kernel::intf_replace_schedule           >        },
-		{ "set_time_of_day",           &dispatch<&game_lua_kernel::intf_set_time_of_day            >        },
 		{ "simulate_combat",           &dispatch<&game_lua_kernel::intf_simulate_combat            >        },
 		{ "synchronize_choice",        &intf_synchronize_choice                                             },
 		{ "synchronize_choices",       &intf_synchronize_choices                                            },
@@ -4270,6 +4389,22 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 	lua_newtable(L);
 	luaL_setfuncs(L, audio_callbacks, 0);
 	lua_setfield(L, -2, "audio");
+	lua_pop(L, 1);
+	
+	// Create the schedule module
+	cmd_log_ << "Adding schedule module...\n";
+	static luaL_Reg const schedule_callbacks[] {
+		{ "get_time_of_day", &dispatch<&game_lua_kernel::intf_get_time_of_day<false>>},
+		{ "get_illumination", &dispatch<&game_lua_kernel::intf_get_time_of_day<true>>},
+		{ "replace", &dispatch<&game_lua_kernel::intf_replace_schedule>},
+		{ nullptr, nullptr }
+	};
+	lua_getglobal(L, "wesnoth");
+	lua_newtable(L);
+	luaL_setfuncs(L, schedule_callbacks, 0);
+	lua_createtable(L, 0, 2);
+	lua_setmetatable(L, -2);
+	lua_setfield(L, -2, "schedule");
 	lua_pop(L, 1);
 
 	// Create the playlist table with its metatable

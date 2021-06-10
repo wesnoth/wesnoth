@@ -13,7 +13,7 @@ local _ = wesnoth.textdomain "wesnoth"
 ---- level: deprecation level (1-4)
 ---- version: the version at which the element may be removed (level 2 or 3 only)
 ---- Set to nil if deprecation level is 1 or 4
----- elem: The actual element being deprecated
+---- elem: The actual element being deprecated, ignored if level is 4
 ---- detail_msg: An optional message to add to the deprecation message
 function wesnoth.deprecate_api(elem_name, replacement, level, version, elem, detail_msg)
 	if wesnoth.game_config.strict_lua then return nil end
@@ -28,7 +28,20 @@ function wesnoth.deprecate_api(elem_name, replacement, level, version, elem, det
 		error((_"Invalid deprecation level $level (should be 1-4)"):vformat(err_params))
 	end
 	local msg_shown = false
-	if type(elem) == "function" or getmetatable(elem) == "function" then
+	if level == 4 then
+		local function show_msg(...)
+			if not msg_shown then
+				msg_shown = true
+				wesnoth.deprecated_message(elem_name, level, version, message)
+			end
+		end
+		return setmetatable({}, {
+			__index = show_msg,
+			__newindex = show_msg,
+			__call = show_msg,
+			__metatable = "removed API",
+		})
+	elseif type(elem) == "function" or getmetatable(elem) == "function" then
 		return function(...)
 			if not msg_shown then
 				msg_shown = true
@@ -109,6 +122,43 @@ wesnoth.set_end_campaign_text = wesnoth.deprecate_api('wesnoth.set_end_campaign_
 end)
 
 if wesnoth.kernel_type() == 'Game Lua Kernel' then
+	local function get_time_of_day(...)
+		local arg_i, turn = 1, nil
+		if type(...) == 'number' then
+			turn = ...
+			arg_i = arg_i + 1
+		end
+		local loc, n = wesnoth.map.read_location(select(arg_i, ...))
+		local illum = false
+		if loc ~= nil then
+			local actual_loc = type(select(arg_i, ...))
+			if type(actual_loc) == 'table' and type(actual_loc[3]) == 'boolean' then
+				illum = actual_loc[3]
+			end
+			arg_i = arg_i + n
+		end
+		local final_arg = select(arg_i, ...)
+		if type(final_arg) == 'boolean' then
+			illum = final_arg
+		end
+		local get_tod
+		if illum then
+			get_tod = wesnoth.schedule.get_illumination
+		else
+			get_tod = wesnoth.schedule.get_time_of_day
+		end
+		return get_tod(loc, turn)
+	end
+	
+	local function liminal_bonus(...)
+		return wesnoth.current.schedule.liminal_bonus
+	end
+	
+	wesnoth.get_time_of_day = wesnoth.deprecate_api('wesnoth.get_time_of_day', 'wesnoth.schedule.get_time_of_day or wesnoth.schedule.get_illumination', 1, nil, get_time_of_day, 'The arguments have changed')
+	wesnoth.set_time_of_day = wesnoth.deprecate_api('wesnoth.set_time_of_day', 'wesnoth.current.schedule.time_of_day', 4, nil, nil)
+	wesnoth.get_max_liminal_bonus = wesnoth.deprecate_api('wesnoth.get_max_liminal_bonus', 'wesnoth.current.schedule.liminal_bonus', 1, nil, liminal_bonus, "It's now a read-write attribute")
+	wesnoth.replace_schedule = wesnoth.deprecate_api('wesnoth.replace_schedule', 'wesnoth.schedule.replace', 1, nil, wesnoth.schedule.replace)
+	
 	wesnoth.get_traits = wesnoth.deprecate_api('wesnoth.get_traits', 'wesnoth.game_config.global_traits', 1, nil, function() return wesnoth.game_config.global_traits end)
 	wesnoth.end_level = wesnoth.deprecate_api('wesnoth.end_level', 'wesnoth.scenario.end_level_data assignment', 1, nil, function(cfg) wesnoth.scenario.end_level_data = cfg end)
 	wesnoth.get_end_level_data = wesnoth.deprecate_api('wesnoth.get_end_level_data', 'wesnoth.scenario.end_level_data', 1, nil, function() return wesnoth.scenario.end_level_data end)

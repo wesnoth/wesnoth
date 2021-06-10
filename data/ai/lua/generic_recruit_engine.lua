@@ -757,7 +757,7 @@ return {
                 local lawful_bonus = 0
                 local eta_turn = wesnoth.current.turn + eta
                 if eta_turn <= wesnoth.scenario.turns then
-                    lawful_bonus = wesnoth.get_time_of_day(wesnoth.current.turn + eta).lawful_bonus / eta^2
+                    lawful_bonus = wesnoth.schedule.get_time_of_day(nil, wesnoth.current.turn + eta).lawful_bonus / eta^2
                 end
                 local damage_bonus = AH.get_unit_time_of_day_bonus(recruit_unit.alignment, lawful_bonus)
                 -- Estimate effectiveness on offense and defense
