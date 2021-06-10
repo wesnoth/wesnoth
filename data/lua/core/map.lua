@@ -93,6 +93,10 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 			return self.terrain:split('^', {remove_empty=false})[2]
 		elseif key == 'info' then
 			return wesnoth.get_terrain_info(wesnoth.current.map[self])
+		elseif key == 'time_of_day' then
+			return wesnoth.schedule.get_time_of_day(self)
+		elseif key == 'illuminated_time' then
+			return wesnoth.schedule.get_illumination(self)
 		elseif key == 1 then
 			return self.x
 		elseif key == 2 then
@@ -137,8 +141,8 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 			self.x = val
 		elseif key == 2 then
 			self.y = val
-		elseif key == 'info' then
-			error('hex.info is read-only', 1)
+		elseif key == 'info' or key == 'time_of_day' or key == 'illuminated_time' then
+			error(string.format('hex.%s is read-only', key), 1)
 		else
 			-- If it's not a known key, just set it
 			rawset(self, key, val)

@@ -46,6 +46,7 @@ class tod_manager
 		void set_current_time(int time, int area_index);
 		void set_current_time(int time, const std::string& area_id);
 		void set_area_id(int area_index, const std::string& id);
+		const std::string& get_area_id(int area_index) const;
 
 		/**
 		 * Returns global time of day for the passed turn.
@@ -60,8 +61,12 @@ class tod_manager
 		 * tod areas matter, for_turn = 0 means current turn
 		 * ignoring illumination
 		 */
-		const time_of_day& get_time_of_day(const map_location& loc,
-				int for_turn = 0) const;
+		const time_of_day& get_time_of_day(const map_location& loc, int for_turn = 0) const;
+		/**
+		 * Returns time of day for the passed turn in the specified tod area.
+		 * for_turn = 0 means current turn, ignoring illumination
+		*/
+		const time_of_day& get_area_time_of_day(int area_i, int for_turn = 0) const;
 
 		int get_current_area_time(int index) const;
 
@@ -101,6 +106,11 @@ class tod_manager
 		 * @returns The area with id @p id.
 		 */
 		const std::set<map_location>& get_area_by_id(const std::string& id) const;
+
+		/**
+		 * @returns the area ID and index active on the given location.
+		 */
+		std::pair<int, std::string> get_area_on_hex(const map_location& loc) const;
 
 		/**
 		 * Adds a new local time area from config, making it follow its own
@@ -181,6 +191,14 @@ class tod_manager
 		{ return has_tod_bonus_changed_; }
 		int get_max_liminal_bonus() const
 		{ return liminal_bonus_; }
+		void set_max_liminal_bonus(int bonus) {
+			liminal_bonus_ = bonus;
+			has_cfg_liminal_bonus_ = true;
+		}
+		void reset_max_liminal_bonus() {
+			liminal_bonus_ = calculate_best_liminal_bonus(times());
+			has_cfg_liminal_bonus_ = false;
+		}
 	private:
 
 		/**

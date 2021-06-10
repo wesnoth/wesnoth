@@ -78,7 +78,7 @@ function wml_actions.harm_unit(cfg)
 				elseif alignment == "chaotic" then
 					damage_multiplier = damage_multiplier - tod_bonus
 				elseif alignment == "liminal" then
-					damage_multiplier = damage_multiplier + math.max(0, wesnoth.get_max_liminal_bonus() - math.abs(tod_bonus))
+					damage_multiplier = damage_multiplier + math.max(0, wesnoth.current.schedule.liminal_bonus - math.abs(tod_bonus))
 				else -- neutral, do nothing
 				end
 				local resistance_modified = resistance * modifier
@@ -90,7 +90,7 @@ function wml_actions.harm_unit(cfg)
 			local damage = calculate_damage(
 				amount,
 				cfg.alignment or "neutral",
-				wesnoth.get_time_of_day( { unit_to_harm.x, unit_to_harm.y, true } ).lawful_bonus,
+				wesnoth.schedule.get_illumination(unit_to_harm).lawful_bonus,
 				100 - unit_to_harm:resistance_against( cfg.damage_type or "dummy" ),
 				resistance_multiplier
 			)

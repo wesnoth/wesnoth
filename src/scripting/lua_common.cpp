@@ -730,6 +730,39 @@ map_location luaW_checklocation(lua_State *L, int index)
 	return result;
 }
 
+int luaW_push_locationset(lua_State* L, const std::set<map_location>& locs)
+{
+	lua_createtable(L, locs.size(), 0);
+	int i = 1;
+	for(const map_location& loc : locs) {
+		lua_createtable(L, 2, 0);
+		lua_pushinteger(L, loc.wml_x());
+		lua_rawseti(L, -2, 1);
+		lua_pushinteger(L, loc.wml_y());
+		lua_rawseti(L, -2, 2);
+		lua_rawseti(L, -2, i);
+		++i;
+	}
+	return 1;
+}
+
+std::set<map_location> luaW_check_locationset(lua_State* L, int idx)
+{
+	std::set<map_location> locs;
+	if(!lua_istable(L, idx)) {
+		luaW_type_error(L, idx, "array of locations");
+	}
+	lua_len(L, idx);
+	int len = luaL_checkinteger(L, -1);
+	for(int i = 1; i < len; i++) {
+		lua_geti(L, idx, i);
+		locs.insert(luaW_checklocation(L, -1));
+		lua_pop(L, 1);
+	}
+	return locs;
+
+}
+
 void luaW_pushconfig(lua_State *L, const config& cfg)
 {
 	lua_newtable(L);

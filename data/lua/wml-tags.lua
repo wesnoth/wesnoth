@@ -699,7 +699,7 @@ function wml_actions.remove_time_area(cfg)
 end
 
 function wml_actions.replace_schedule(cfg)
-	wesnoth.replace_schedule(cfg)
+	wesnoth.schedule.replace(cfg)
 end
 
 function wml_actions.scroll(cfg)
