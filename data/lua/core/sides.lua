@@ -45,4 +45,10 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 	wesnoth.get_sides = wesnoth.deprecate_api('wesnoth.get_sides', 'wesnoth.sides.find', 1, nil, wesnoth.sides.find)
 	wesnoth.create_side = wesnoth.deprecate_api('wesnoth.create_side', 'wesnoth.sides.create', 1, nil, wesnoth.sides.create)
 	wesnoth.modify_ai = wesnoth.deprecate_api('wesnoth.modify_ai', 'wesnoth.sides.add|delete|change_ai_component', 1, nil, wesnoth.modify_ai)
+	wesnoth.place_shroud = wesnoth.deprecate_api('wesnoth.place_shroud', 'wesnoth.sides.place_shroud or wesnoth.sides.override_shroud', 1, nil, wesnoth.sides.place_shroud)
+	wesnoth.remove_shroud = wesnoth.deprecate_api('wesnoth.remove_shroud', 'wesnoth.sides.remove_shroud', 1, nil, wesnoth.sides.remove_shroud)
+	wesnoth.is_shrouded = wesnoth.deprecate_api('wesnoth.is_shrouded', 'wesnoth.sides.is_shrouded', 1, nil, wesnoth.sides.is_shrouded)
+	wesnoth.add_fog = wesnoth.deprecate_api('wesnoth.add_fog', 'wesnoth.sides.place_fog', 1, nil, wesnoth.sides.place_fog)
+	wesnoth.remove_fog = wesnoth.deprecate_api('wesnoth.remove_fog', 'wesnoth.sides.remove_fog', 1, nil, wesnoth.sides.remove_fog)
+	wesnoth.is_fogged = wesnoth.deprecate_api('wesnoth.is_fogged', 'wesnoth.sides.is_fogged', 1, nil, wesnoth.sides.is_fogged)
 end

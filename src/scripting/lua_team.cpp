@@ -94,6 +94,7 @@ static int impl_side_get(lua_State *L)
 	return_bool_attrib("share_view", t.share_view());
 	return_bool_attrib("chose_random", t.chose_random());
 	return_tstring_attrib("side_name", t.side_name_tstr());
+	return_string_attrib("shroud_data", t.shroud_data());
 
 	if (strcmp(m, "recruit") == 0) {
 		const std::set<std::string>& recruits = t.recruits();
@@ -204,6 +205,7 @@ static int impl_side_set(lua_State *L)
 	modify_bool_attrib("fog", t.set_fog(value));
 	modify_string_attrib("flag_icon", t.set_flag_icon(value));
 	modify_tstring_attrib("side_name", t.set_side_name(value));
+	modify_string_attrib("shroud_data", t.reshroud(); t.merge_shroud_map_data(value));
 	modify_string_attrib("share_vision", {
 		team::SHARE_VISION v;
 		if(v.parse(value)) {
@@ -346,6 +348,20 @@ void luaW_pushteam(lua_State *L, team & tm)
 
 team& luaW_checkteam(lua_State* L, int idx)
 {
+	return **static_cast<team **>(luaL_checkudata(L, idx, Team));
+}
+
+team& luaW_checkteam(lua_State* L, int idx, game_board& board)
+{
+	if(lua_isinteger(L, idx)) {
+		int side = lua_tointeger(L, idx);
+		if(!board.has_team(side)) {
+			std::string error = "side " + std::to_string(side) + " does not exist";
+			luaL_argerror(L, 1, error.c_str());
+			// Unreachable
+		}
+		return board.get_team(side);
+	}
 	return **static_cast<team **>(luaL_checkudata(L, idx, Team));
 }
 

@@ -18,7 +18,7 @@ local function add_animation(anim, cfg)
 		)
 	end
 
-	if unit and not wesnoth.map.is_fogged(wesnoth.current.side, unit.x, unit.y) then
+	if unit and not wesnoth.sides.is_fogged(wesnoth.current.side, unit.x, unit.y) then
 		local primary = wml.get_child(cfg, "primary_attack")
 		local secondary = wml.get_child(cfg, "secondary_attack")
 		-- We don't have access to the secondary unit at this point.

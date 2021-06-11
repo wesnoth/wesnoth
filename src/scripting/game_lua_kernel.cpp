@@ -725,31 +725,17 @@ int game_lua_kernel::intf_clear_menu_item(lua_State *L)
 	return 0;
 }
 
-int game_lua_kernel::intf_shroud_op(lua_State *L, bool place_shroud)
+/**
+ * Toggle shroud on some locations
+ * Arg 1: Side number
+ * Arg 2: List of locations on which to place/remove shroud
+ */
+int game_lua_kernel::intf_toggle_shroud(lua_State *L, bool place_shroud)
 {
+	team& t = luaW_checkteam(L, 1, board());
 
-	int side_num = luaL_checkinteger(L, 1);
-
-	if(lua_isstring(L, 2)) {
-		std::string data = lua_tostring(L, 2);
-		// Special case - using a shroud_data string, or "all"
-		team& side = board().get_team(side_num);
-		if(place_shroud) {
-			side.reshroud();
-		}
-		if(data != "all") {
-			side.merge_shroud_map_data(data);
-		} else if(!place_shroud) {
-			bool was_shrouded = side.uses_shroud();
-			side.set_shroud(false);
-			actions::clear_shroud(side.side());
-			side.set_shroud(was_shrouded);
-		}
-		return 0;
-	} else if(lua_istable(L, 2)) {
-		std::vector<map_location> locs_v = lua_check<std::vector<map_location>>(L, 2);
-		std::set<map_location> locs(locs_v.begin(), locs_v.end());
-		team &t = board().get_team(side_num);
+	if(lua_istable(L, 2)) {
+		std::set<map_location> locs = luaW_check_locationset(L, 2);
 
 		for (const map_location& loc : locs)
 		{
@@ -760,7 +746,7 @@ int game_lua_kernel::intf_shroud_op(lua_State *L, bool place_shroud)
 			}
 		}
 	} else {
-		return luaL_argerror(L, 2, "expected list of locations or shroud data string");
+		return luaL_argerror(L, 2, "expected list of locations");
 	}
 
 	game_display_->labels().recalculate_shroud();
@@ -770,6 +756,60 @@ int game_lua_kernel::intf_shroud_op(lua_State *L, bool place_shroud)
 	return 0;
 }
 
+/**
+ * Overrides the shroud entirely. All locations are shrouded, except for the ones passed in as argument 2.
+ * Arg 1: Side number
+ * Arg 2: List of locations that should be unshrouded
+ */
+int game_lua_kernel::intf_override_shroud(lua_State *L)
+{
+	team& t = luaW_checkteam(L, 1, board());
+
+	if(lua_istable(L, 2)) {
+		std::set<map_location> locs = luaW_check_locationset(L, 2);
+		t.reshroud();
+		for(const map_location& loc : locs) {
+			t.clear_shroud(loc);
+		}
+	} else {
+		return luaL_argerror(L, 2, "expected list of locations");
+	}
+
+	game_display_->labels().recalculate_shroud();
+	game_display_->recalculate_minimap();
+	game_display_->invalidate_all();
+
+	return 0;
+}
+
+static int intf_parse_shroud_bitmap(lua_State* L)
+{
+	shroud_map temp;
+	temp.set_enabled(true);
+	temp.read(luaL_checkstring(L, 1));
+	std::set<map_location> locs;
+	for(int x = 1; x <= temp.width(); x++) {
+		for(int y = 1; y <= temp.height(); y++) {
+			if(temp.value(x, y)) {
+				locs.emplace(x, y, wml_loc());
+			}
+		}
+	}
+	luaW_push_locationset(L, locs);
+	return 1;
+}
+
+static int intf_make_shroud_bitmap(lua_State* L)
+{
+	shroud_map temp;
+	temp.set_enabled(true);
+	auto locs = luaW_check_locationset(L, 1);
+	for(const auto& loc : locs) {
+		temp.clear(loc.wml_x(), loc.wml_y());
+	}
+	lua_push(L, temp.write());
+	return 1;
+}
 
 /**
  * Highlights the given location on the map.
@@ -3974,14 +4014,8 @@ int game_lua_kernel::intf_log(lua_State *L)
 
 int game_lua_kernel::intf_get_fog_or_shroud(lua_State *L, bool fog)
 {
-	int side = luaL_checknumber(L, 1);
+	team& t = luaW_checkteam(L, 1, board());
 	map_location loc = luaW_checklocation(L, 2);
-	if(side < 1 || static_cast<std::size_t>(side) > teams().size()) {
-		std::string error = "side " + std::to_string(side) + " does not exist";
-		return luaL_argerror(L, 1, error.c_str());
-	}
-
-	team& t = board().get_team(side);
 	lua_pushboolean(L, fog ? t.fogged(loc) : t.shrouded(loc));
 	return 1;
 }
@@ -4005,8 +4039,10 @@ int game_lua_kernel::intf_toggle_fog(lua_State *L, const bool clear)
 		affect_normal_fog = luaW_toboolean(L, -1);
 	}
 	std::set<int> sides;
-	if(lua_isnumber(L, 1)) {
-		sides.insert(lua_tonumber(L, 1));
+	if(team* t = luaW_toteam(L, 1)) {
+		sides.insert(t->side());
+	} else if(lua_isnumber(L, 1)) {
+		sides.insert(lua_tointeger(L, 1));
 	} else if(lua_istable(L, 1) && lua_istable(L, 2)) {
 		const auto& v = lua_check<std::vector<int>>(L, 1);
 		sides.insert(v.begin(), v.end());
@@ -4253,14 +4289,6 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 		{"on_board", &intf_on_board},
 		{"on_border", &intf_on_border},
 		{"iter", &intf_terrainmap_iter},
-		// Shroud operations
-		{"place_shroud", &dispatch2<&game_lua_kernel::intf_shroud_op, true>},
-		{"remove_shroud", &dispatch2<&game_lua_kernel::intf_shroud_op, false>},
-		{"is_shrouded", &dispatch2<&game_lua_kernel::intf_get_fog_or_shroud, false>},
-		// Fog operations
-		{"place_fog", &dispatch2<&game_lua_kernel::intf_toggle_fog, false>},
-		{"remove_fog", &dispatch2<&game_lua_kernel::intf_toggle_fog, true>},
-		{"is_fogged", &dispatch2<&game_lua_kernel::intf_get_fog_or_shroud, true>},
 		// Village operations
 		{"get_owner", &dispatch<&game_lua_kernel::intf_get_village_owner>},
 		{"set_owner", &dispatch<&game_lua_kernel::intf_set_village_owner>},
@@ -4275,6 +4303,9 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 		{"find", &dispatch<&game_lua_kernel::intf_get_locations>},
 		{"matches", &dispatch<&game_lua_kernel::intf_match_location>},
 		{"replace_if_failed", intf_replace_if_failed},
+		// Shroud bitmaps
+		{"parse_bitmap", intf_parse_shroud_bitmap},
+		{"make_bitmap", intf_make_shroud_bitmap},
 		{ nullptr, nullptr }
 	};
 	luaL_setfuncs(L, map_callbacks, 0);
@@ -4333,6 +4364,15 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 		{ "find", &dispatch<&game_lua_kernel::intf_get_sides> },
 		{ "get", &dispatch<&game_lua_kernel::intf_get_side> },
 		{ "create", &dispatch<&game_lua_kernel::intf_create_side> },
+		// Shroud operations
+		{"place_shroud", &dispatch2<&game_lua_kernel::intf_toggle_shroud, true>},
+		{"remove_shroud", &dispatch2<&game_lua_kernel::intf_toggle_shroud, false>},
+		{"override_shroud", &dispatch<&game_lua_kernel::intf_override_shroud>},
+		{"is_shrouded", &dispatch2<&game_lua_kernel::intf_get_fog_or_shroud, false>},
+		// Fog operations
+		{"place_fog", &dispatch2<&game_lua_kernel::intf_toggle_fog, false>},
+		{"remove_fog", &dispatch2<&game_lua_kernel::intf_toggle_fog, true>},
+		{"is_fogged", &dispatch2<&game_lua_kernel::intf_get_fog_or_shroud, true>},
 		{ nullptr, nullptr }
 	};
 	std::vector<lua_cpp::Reg> const cpp_side_callbacks {

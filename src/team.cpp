@@ -675,7 +675,7 @@ bool team::fogged(const map_location& loc) const
 	return fog_.shared_value(ally_fog(resources::gameboard->teams()), loc.wml_x(), loc.wml_y());
 }
 
-const std::vector<const team::shroud_map*>& team::ally_shroud(const std::vector<team>& teams) const
+const std::vector<const shroud_map*>& team::ally_shroud(const std::vector<team>& teams) const
 {
 	if(ally_shroud_.empty()) {
 		for(std::size_t i = 0; i < teams.size(); ++i) {
@@ -688,7 +688,7 @@ const std::vector<const team::shroud_map*>& team::ally_shroud(const std::vector<
 	return ally_shroud_;
 }
 
-const std::vector<const team::shroud_map*>& team::ally_fog(const std::vector<team>& teams) const
+const std::vector<const shroud_map*>& team::ally_fog(const std::vector<team>& teams) const
 {
 	if(ally_fog_.empty()) {
 		for(std::size_t i = 0; i < teams.size(); ++i) {
@@ -765,7 +765,20 @@ void validate_side(int side)
 	}
 }
 
-bool team::shroud_map::clear(int x, int y)
+int shroud_map::width() const
+{
+	return data_.size();
+}
+
+int shroud_map::height() const
+{
+	if(data_.size() == 0) return 0;
+	return std::max_element(data_.begin(), data_.end(), [](const auto& a, const auto& b) {
+		return a.size() < b.size();
+	})->size();
+}
+
+bool shroud_map::clear(int x, int y)
 {
 	if(enabled_ == false || x < 0 || y < 0) {
 		return false;
@@ -787,7 +800,7 @@ bool team::shroud_map::clear(int x, int y)
 	return false;
 }
 
-void team::shroud_map::place(int x, int y)
+void shroud_map::place(int x, int y)
 {
 	if(enabled_ == false || x < 0 || y < 0) {
 		return;
@@ -804,7 +817,7 @@ void team::shroud_map::place(int x, int y)
 	}
 }
 
-void team::shroud_map::reset()
+void shroud_map::reset()
 {
 	if(enabled_ == false) {
 		return;
@@ -815,7 +828,7 @@ void team::shroud_map::reset()
 	}
 }
 
-bool team::shroud_map::value(int x, int y) const
+bool shroud_map::value(int x, int y) const
 {
 	if(!enabled_) {
 		return false;
@@ -835,7 +848,7 @@ bool team::shroud_map::value(int x, int y) const
 	return !data_[x][y];
 }
 
-bool team::shroud_map::shared_value(const std::vector<const shroud_map*>& maps, int x, int y) const
+bool shroud_map::shared_value(const std::vector<const shroud_map*>& maps, int x, int y) const
 {
 	if(!enabled_) {
 		return false;
@@ -856,7 +869,7 @@ bool team::shroud_map::shared_value(const std::vector<const shroud_map*>& maps, 
 	return true;
 }
 
-std::string team::shroud_map::write() const
+std::string shroud_map::write() const
 {
 	std::stringstream shroud_str;
 	for(const auto& sh : data_) {
@@ -872,7 +885,7 @@ std::string team::shroud_map::write() const
 	return shroud_str.str();
 }
 
-void team::shroud_map::read(const std::string& str)
+void shroud_map::read(const std::string& str)
 {
 	data_.clear();
 
@@ -891,7 +904,7 @@ void team::shroud_map::read(const std::string& str)
 	}
 }
 
-void team::shroud_map::merge(const std::string& str)
+void shroud_map::merge(const std::string& str)
 {
 	int x = 0, y = 0;
 	for(std::size_t i = 1; i < str.length(); ++i) {
@@ -907,7 +920,7 @@ void team::shroud_map::merge(const std::string& str)
 	}
 }
 
-bool team::shroud_map::copy_from(const std::vector<const shroud_map*>& maps)
+bool shroud_map::copy_from(const std::vector<const shroud_map*>& maps)
 {
 	if(enabled_ == false) {
 		return false;
