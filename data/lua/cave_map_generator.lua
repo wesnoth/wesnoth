@@ -135,7 +135,7 @@ function callbacks.generate_map(params)
 				end
 				return res
 			end
-			local path = wesnoth.find_path(
+			local path = wesnoth.paths.find_path(
 				v.start_x, v.start_y, v.dest_x, v.dest_y, calc, params.map_width, params.map_height)
 			for i, loc in ipairs(path) do
 				local locs_set = LS.create()

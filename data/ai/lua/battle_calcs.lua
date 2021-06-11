@@ -1510,7 +1510,7 @@ function battle_calcs.get_attack_combos_subset(units, enemy, cfg)
             if (not blocked_hexes:get(xa, ya) or ((xa == unit.x) and (ya == unit.y))) then
 
                 -- Check whether the unit can get to the hex
-                -- wesnoth.map.distance_between() is much faster than wesnoth.find_path()
+                -- wesnoth.map.distance_between() is much faster than wesnoth.paths.find_path()
                 --> pre-filter using the former
                 local cost = M.distance_between(unit.x, unit.y, xa, ya)
 

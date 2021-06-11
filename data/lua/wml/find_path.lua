@@ -52,7 +52,7 @@ function wesnoth.wml_actions.find_path(cfg)
 		if not wesnoth.current.map:on_border(location) then
 			local distance = wesnoth.map.distance_between ( unit.x, unit.y, location )
 			-- if we pass an unreachable location then an empty path and high value cost will be returned
-			local path, cost = wesnoth.find_path( unit, location, {
+			local path, cost = wesnoth.paths.find_path( unit, location, {
 				max_cost = max_cost,
 				ignore_units = ignore_units,
 				ignore_teleport = ignore_teleport,
@@ -97,7 +97,7 @@ function wesnoth.wml_actions.find_path(cfg)
 		end
 		wml.variables[tostring(variable)] = { hexes = 0 } -- set only hexes, nil all other values
 	else
-		local path, cost = wesnoth.find_path(
+		local path, cost = wesnoth.paths.find_path(
 			unit,
 			current_location,
 			{
@@ -134,7 +134,7 @@ function wesnoth.wml_actions.find_path(cfg)
 			}
 
 		for index, path_loc in ipairs(path) do
-			local sub_path, sub_cost = wesnoth.find_path(
+			local sub_path, sub_cost = wesnoth.paths.find_path(
 				unit,
 				path_loc,
 				{
