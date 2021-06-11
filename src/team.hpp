@@ -37,6 +37,33 @@ namespace wb {
 	class side_actions;
 }
 
+class shroud_map {
+public:
+	shroud_map() : enabled_(false), data_() {}
+
+	void place(int x, int y);
+	bool clear(int x, int y);
+	void reset();
+
+	bool value(int x, int y) const;
+	bool shared_value(const std::vector<const shroud_map*>& maps, int x, int y) const;
+
+	bool copy_from(const std::vector<const shroud_map*>& maps);
+
+	std::string write() const;
+	void read(const std::string& shroud_data);
+	void merge(const std::string& shroud_data);
+
+	bool enabled() const { return enabled_; }
+	void set_enabled(bool enabled) { enabled_ = enabled; }
+
+	int width() const;
+	int height() const;
+private:
+	bool enabled_;
+	std::vector<std::vector<bool>> data_;
+};
+
 /**
  * This class stores all the data for a single 'side' (in game nomenclature).
  * E.g., there is only one leader unit per team.
@@ -71,30 +98,6 @@ public:
 	)
 
 private:
-	class shroud_map {
-	public:
-		shroud_map() : enabled_(false), data_() {}
-
-		void place(int x, int y);
-		bool clear(int x, int y);
-		void reset();
-
-		bool value(int x, int y) const;
-		bool shared_value(const std::vector<const shroud_map*>& maps, int x, int y) const;
-
-		bool copy_from(const std::vector<const shroud_map*>& maps);
-
-		std::string write() const;
-		void read(const std::string& shroud_data);
-		void merge(const std::string& shroud_data);
-
-		bool enabled() const { return enabled_; }
-		void set_enabled(bool enabled) { enabled_ = enabled; }
-	private:
-		bool enabled_;
-		std::vector<std::vector<bool>> data_;
-	};
-
 	struct team_info
 	{
 		team_info();
@@ -333,6 +336,7 @@ public:
 	void refog() { fog_.reset(); }
 	void set_shroud(bool shroud) { shroud_.set_enabled(shroud); }
 	void set_fog(bool fog) { fog_.set_enabled(fog); }
+	std::string shroud_data() const { return shroud_.write(); }
 
 	/** Merge a WML shroud map with the shroud data of this player. */
 	void merge_shroud_map_data(const std::string& shroud_data) { shroud_.merge(shroud_data); }

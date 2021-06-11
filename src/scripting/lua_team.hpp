@@ -35,3 +35,6 @@ team* luaW_toteam(lua_State*, int);
 
 /** Test if the top stack element is a team, and if not, error */
 team& luaW_checkteam(lua_State*, int);
+
+/** Get a team either from a direct userdata or from a side number */
+team& luaW_checkteam(lua_State* L, int idx, class game_board& board);

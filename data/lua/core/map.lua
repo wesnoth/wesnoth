@@ -150,26 +150,26 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 	end
 
 	function hex_mt:fogged_for(side)
-		return wesnoth.map.is_fogged(side, self.x, self.y)
+		return wesnoth.sides.is_fogged(side, self)
 	end
 
 	function hex_mt:shrouded_for(side)
-		return wesnoth.map.is_shrouded(side, self.x, self.y)
+		return wesnoth.sides.is_shrouded(side, self)
 	end
 
 	function hex_mt:set_shrouded(side, val)
 		if val then
-			wesnoth.map.place_shroud(side, {val})
+			wesnoth.sides.place_shroud(side, {self})
 		else
-			wesnoth.map.remove_shroud(side, {val})
+			wesnoth.sides.remove_shroud(side, {self})
 		end
 	end
 
 	function hex_mt:set_fogged(side, val)
 		if val then
-			wesnoth.map.place_fog(side, {val})
+			wesnoth.sides.place_fog(side, {self})
 		else
-			wesnoth.map.remove_fog(side, {val})
+			wesnoth.sides.remove_fog(side, {self})
 		end
 	end
 
@@ -239,12 +239,6 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 		__pairs = function(_) return pairs(wesnoth.current.map.special_locations) end,
 	}), 'Note: the length operator has been removed')
 
-	wesnoth.place_shroud = wesnoth.deprecate_api('wesnoth.place_shroud', 'wesnoth.map.place_shroud', 1, nil, wesnoth.map.place_shroud)
-	wesnoth.remove_shroud = wesnoth.deprecate_api('wesnoth.remove_shroud', 'wesnoth.map.remove_shroud', 1, nil, wesnoth.map.remove_shroud)
-	wesnoth.is_shrouded = wesnoth.deprecate_api('wesnoth.is_shrouded', 'wesnoth.map.is_shrouded', 1, nil, wesnoth.map.is_shrouded)
-	wesnoth.add_fog = wesnoth.deprecate_api('wesnoth.add_fog', 'wesnoth.map.place_fog', 1, nil, wesnoth.map.place_fog)
-	wesnoth.remove_fog = wesnoth.deprecate_api('wesnoth.remove_fog', 'wesnoth.map.remove_fog', 1, nil, wesnoth.map.remove_fog)
-	wesnoth.is_fogged = wesnoth.deprecate_api('wesnoth.is_fogged', 'wesnoth.map.is_fogged', 1, nil, wesnoth.map.is_fogged)
 	wesnoth.get_village_owner = wesnoth.deprecate_api('wesnoth.get_village_owner', 'wesnoth.map.get_owner', 1, nil, wesnoth.map.get_owner)
 	wesnoth.set_village_owner = wesnoth.deprecate_api('wesnoth.set_village_owner', 'wesnoth.map.set_owner', 1, nil, wesnoth.map.set_owner)
 	wesnoth.label = wesnoth.deprecate_api('wesnoth.label', 'wesnoth.map.add_label', 1, nil, wesnoth.map.add_label)

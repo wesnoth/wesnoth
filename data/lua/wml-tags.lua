@@ -670,7 +670,7 @@ function wml_actions.place_shroud(cfg)
 	local sides = utils.get_sides(cfg)
 	local tiles = wesnoth.map.find(cfg)
 	for i,side in ipairs(sides) do
-		wesnoth.map.place_shroud(side.side, tiles)
+		side:place_shroud(tiles)
 	end
 end
 
@@ -678,7 +678,7 @@ function wml_actions.remove_shroud(cfg)
 	local sides = utils.get_sides(cfg)
 	local tiles = wesnoth.map.find(cfg)
 	for i,side in ipairs(sides) do
-		wesnoth.map.remove_shroud(side.side, tiles)
+		side:remove_shroud(tiles)
 	end
 end
 
@@ -869,14 +869,14 @@ end
 function wml_actions.lift_fog(cfg)
 	local locs, sides = parse_fog_cfg(cfg)
 	for i = 1, #sides do
-		wesnoth.map.remove_fog(sides[i].side, locs, not cfg.multiturn)
+		sides[i]:remove_fog(locs, not cfg.multiturn)
 	end
 end
 
 function wml_actions.reset_fog(cfg)
 	local locs, sides = parse_fog_cfg(cfg)
 	for i = 1, #sides do
-		wesnoth.map.place_fog(sides[i].side, locs, cfg.reset_view)
+		sides[i]:place_fog(locs, cfg.reset_view)
 	end
 end
 

@@ -245,6 +245,10 @@ function methods:of_triples(t)
     end
 end
 
+function methods:of_shroud_data(data)
+	self:of_pairs(wesnoth.map.parse_bitmap(data))
+end
+
 function methods:to_pairs()
 	local res = {}
 	self:iter(function(x, y) table.insert(res, { x, y }) end)
@@ -274,6 +278,10 @@ function methods:to_triples()
     local res = {}
     self:iter(function(x, y, v) table.insert(res, { x, y, v }) end)
     return res
+end
+
+function methods:to_shroud_data()
+	return wesnoth.map.make_bitmap(self:to_pairs())
 end
 
 function methods:random()
@@ -309,6 +317,12 @@ function location_set.of_triples(t)
     local s = location_set.create()
     s:of_triples(t)
     return s
+end
+
+function location_set.of_shroud_data(data)
+	local s = location_set.create()
+	s:of_shroud_data(data)
+	return s
 end
 
 return location_set
