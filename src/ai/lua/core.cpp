@@ -1050,6 +1050,10 @@ int lua_ai_load::refcount = 0;
 lua_ai_load::lua_ai_load(lua_ai_context& ctx, bool read_only) : L(ctx.L), was_readonly(false)
 {
 	refcount++;
+	lua_getfield(L, LUA_REGISTRYINDEX, aisKey); // [-1: AI registry]
+	lua_rawgeti(L, -1, ctx.num_); // [-1: AI state  -2: AI registry]
+	lua_remove(L,-2); // [-1: AI state]
+
 	// Check if the AI table is already loaded. If so, we have less work to do.
 	lua_getglobal(L, "ai");
 	if(!lua_isnoneornil(L, -1)) {
@@ -1061,19 +1065,16 @@ lua_ai_load::lua_ai_load(lua_ai_context& ctx, bool read_only) : L(ctx.L), was_re
 		lua_pushstring(L, "read_only");
 		lua_pushboolean(L, read_only);
 		lua_rawset(L, -3);
-		return; // Leave the AI table on the stack, as requested
+		lua_pop(L, 1); // Pop the ai table off the stack
+	} else {
+		lua_pop(L, 1); // Pop the nil value off the stack
+		// Load the AI functions table into global scope
+		lua_getfield(L, -1, "ai"); // [-1: AI functions  -2: AI state]
+		lua_pushstring(L, "read_only"); // [-1: key  -2: AI functions  -3: AI state]
+		lua_pushboolean(L, read_only); // [-1: value  -2: key  -3: AI functions  -4: AI state]
+		lua_rawset(L, -3); // [-1: AI functions  -2: AI state]
+		lua_setglobal(L, "ai"); // [-1: AI state]
 	}
-	lua_pop(L, 1); // Pop the nil value off the stack
-	lua_getfield(L, LUA_REGISTRYINDEX, aisKey); // [-1: AI registry]
-	lua_rawgeti(L, -1, ctx.num_); // [-1: AI state  -2: AI registry]
-	lua_remove(L,-2); // [-1: AI state]
-
-	// Load the AI functions table into global scope
-	lua_getfield(L, -1, "ai"); // [-1: AI functions  -2: AI state]
-	lua_pushstring(L, "read_only"); // [-1: key  -2: AI functions  -3: AI state]
-	lua_pushboolean(L, read_only); // [-1: value  -2: key  -3: AI functions  -4: AI state]
-	lua_rawset(L, -3); // [-1: AI functions  -2: AI state]
-	lua_setglobal(L, "ai"); // [-1: AI state]
 }
 
 lua_ai_load::~lua_ai_load()
