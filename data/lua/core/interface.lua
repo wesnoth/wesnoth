@@ -53,6 +53,11 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 	wesnoth.zoom = wesnoth.deprecate_api('wesnoth.zoom', 'wesnoth.interface.zoom', 1, nil, wesnoth.interface.zoom)
 	wesnoth.gamestate_inspector = wesnoth.deprecate_api('wesnoth.gamestate_inspector', 'gui.show_inspector', 1, nil, gui.show_inspector)
 	wesnoth.color_adjust = wesnoth.deprecate_api('wesnoth.color_adjust', 'wesnoth.interface.color_adjust', 1, nil, function(cfg) wesnoth.interface.color_adjust(cfg.red, cfg.green, cfg.blue) end)
+	wesnoth.allow_end_turn = wesnoth.deprecate_api('wesnoth.allow_end_turn', 'wesnoth.interface.allow_end_turn', 1, nil, wesnoth.interface.allow_end_turn)
+	wesnoth.clear_messages = wesnoth.deprecate_api('wesnoth.clear_messages', 'wesnoth.interface.clear_chat_messages', 1, nil, wesnoth.interface.clear_chat_messages)
+	wesnoth.end_turn = wesnoth.deprecate_api('wesnoth.end_turn', 'wesnoth.interface.end_turn', 1, nil, wesnoth.interface.end_turn)
+	wesnoth.get_viewing_side = wesnoth.deprecate_api('wesnoth.get_viewing_side', 'wesnoth.interface.get_viewing_side', 1, nil, wesnoth.interface.get_viewing_side)
+	wesnoth.message = wesnoth.deprecate_api('wesnoth.message', 'wesnoth.interface.add_chat_message', 1, nil, wesnoth.interface.add_chat_message)
 	-- No deprecation for these since since they're not actually public API yet
 	wesnoth.set_menu_item = wesnoth.interface.set_menu_item
 	wesnoth.clear_menu_item = wesnoth.interface.clear_menu_item
