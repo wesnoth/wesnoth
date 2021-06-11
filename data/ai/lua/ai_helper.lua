@@ -13,7 +13,7 @@ local M = wesnoth.map
 -- With their default settings, the ai_helper functions use the vision a player of
 -- the respective side would see, that is, they assume no knowledge of invisible
 -- units. This can be influenced with the 'viewing_side' and 'ignore_visibility' parameters,
--- which work in the same way as they do in wesnoth.find_reach() and wesnoth.find_path():
+-- which work in the same way as they do in wesnoth.paths.find_reach() and wesnoth.paths.find_path():
 --   - If 'viewing_side' is set, vision for that side is used. It must be set to a valid side number.
 --   - If 'ignore_visibility' is set to true, all units on the map are seen and shroud is ignored.
 --       This overrides 'viewing_side'.
@@ -26,7 +26,7 @@ local M = wesnoth.map
 -- hidden units correctly) as of Wesnoth 1.13.7. This is consistent with default
 -- Wesnoth AI behavior and ensures that Lua AIs, including the Micro AIs, can be
 -- used for AI sides with shroud=yes. It is accomplished by using
--- ai_helper.find_path_with_shroud() instead of wesnoth.find_path().
+-- ai_helper.find_path_with_shroud() instead of wesnoth.paths.find_path().
 
 local ai_helper = {}
 
@@ -1442,7 +1442,7 @@ function ai_helper.next_hop(unit, x, y, cfg)
     -- Returns coordinates of the endpoint of the hop (or nil if no path to
     -- (x,y) is found for the unit), and movement cost to get there.
     -- Only unoccupied hexes are considered
-    -- @cfg: standard extra options for wesnoth.find_path()
+    -- @cfg: standard extra options for wesnoth.paths.find_path()
     --   including:
     --     viewing_side: see comments at beginning of this file. Defaults to side of @unit
     --     ignore_visibility: see comments at beginning of this file. Defaults to nil.
@@ -1691,7 +1691,7 @@ function ai_helper.get_reachable_unocc(unit, cfg)
 end
 
 function ai_helper.find_path_with_shroud(unit, x, y, cfg)
-    -- Same as wesnoth.find_path, just that it works under shroud as well while still
+    -- Same as wesnoth.paths.find_path, just that it works under shroud as well while still
     -- ignoring invisible units. It does this by using ignore_visibility=true and taking
     -- invisible units off the map for the path finding process.
     --
@@ -1727,13 +1727,13 @@ function ai_helper.find_path_with_shroud(unit, x, y, cfg)
         local cfg_copy = {}
         if cfg then cfg_copy = ai_helper.table_copy(cfg) end
         cfg_copy.ignore_visibility = true
-        path, cost = wesnoth.find_path(unit, x, y, cfg_copy)
+        path, cost = wesnoth.paths.find_path(unit, x, y, cfg_copy)
 
         for _,extracted_unit in ipairs(extracted_units) do
             extracted_unit:to_map()
         end
     else
-        path, cost = wesnoth.find_path(unit, x, y, cfg)
+        path, cost = wesnoth.paths.find_path(unit, x, y, cfg)
     end
 
     return path, cost
@@ -1871,7 +1871,7 @@ function ai_helper.find_path_with_avoid(unit, x, y, avoid_map, options)
     --     - Hexes with higher terrain defense are preferred, all else being equal.
     --
     -- OPTIONAL INPUTS:
-    --  @options: Note that this is not the same as the @cfg table that can be passed to wesnoth.find_path().
+    --  @options: Note that this is not the same as the @cfg table that can be passed to wesnoth.paths.find_path().
     --    Possible fields are:
     --     @strict_avoid: if 'true', trigger the "strict avoid" mode described above
     --     @ignore_enemies: if 'true', enemies will not be taken into account.
@@ -2045,7 +2045,7 @@ function ai_helper.movefull_outofway_stopunit(ai, unit, x, y, cfg)
     -- @cfg: table with optional configuration parameters:
     --   viewing_side: see comments at beginning of this file. Defaults to side of @unit
     --   ignore_visibility: see comments at beginning of this file. Defaults to nil.
-    --   all other optional parameters to ai_helper.move_unit_out_of_way() and wesnoth.find_path()
+    --   all other optional parameters to ai_helper.move_unit_out_of_way() and wesnoth.paths.find_path()
 
     local viewing_side = cfg and cfg.viewing_side or unit.side
     ai_helper.check_viewing_side(viewing_side)
@@ -2324,7 +2324,7 @@ function ai_helper.get_attack_combos(units, enemy, cfg)
     -- attacks. Use ai_helper.get_attack_combos_full() if order matters.
     --
     -- Optional inputs:
-    -- @cfg: Configuration table to be passed on to wesnoth.find_path()
+    -- @cfg: Configuration table to be passed on to wesnoth.paths.find_path()
     --
     -- Return values:
     --   1. Attack combinations in form { dst = src }
@@ -2367,7 +2367,7 @@ function ai_helper.get_attack_combos(units, enemy, cfg)
         for _,unit in ipairs(units) do
             if ((unit.x == xa) and (unit.y == ya)) or (not blocked_hexes:get(xa, ya)) then
 
-                -- wesnoth.map.distance_between() is much faster than wesnoth.find_path()
+                -- wesnoth.map.distance_between() is much faster than wesnoth.paths.find_path()
                 --> pre-filter using the former
                 local cost = M.distance_between(unit.x, unit.y, xa, ya)
 
