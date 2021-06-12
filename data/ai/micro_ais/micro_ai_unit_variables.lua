@@ -26,7 +26,7 @@ function MAI_set_unit_variable(unit, ai_id, value)
         ai_id = ai_id
     }
     if value then table.insert(cfg, { "value", value }) end
-    wesnoth.invoke_synced_command("MAI_set_unit_variable", cfg)
+    wesnoth.sync.invoke_command("MAI_set_unit_variable", cfg)
 end
 
 local micro_ai_unit_variables = {}

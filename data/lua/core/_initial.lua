@@ -162,4 +162,9 @@ if wesnoth.kernel_type() == 'Game Lua Kernel' then
 	wesnoth.get_traits = wesnoth.deprecate_api('wesnoth.get_traits', 'wesnoth.game_config.global_traits', 1, nil, function() return wesnoth.game_config.global_traits end)
 	wesnoth.end_level = wesnoth.deprecate_api('wesnoth.end_level', 'wesnoth.scenario.end_level_data assignment', 1, nil, function(cfg) wesnoth.scenario.end_level_data = cfg end)
 	wesnoth.get_end_level_data = wesnoth.deprecate_api('wesnoth.get_end_level_data', 'wesnoth.scenario.end_level_data', 1, nil, function() return wesnoth.scenario.end_level_data end)
+	
+	wesnoth.invoke_synced_command = wesnoth.deprecate_api('wesnoth.invoke_synced_command', 'wesnoth.sync.invoke_command', 1, nil, wesnoth.sync.invoke_command)
+	wesnoth.unsynced = wesnoth.deprecate_api('wesnoth.unsynced', 'wesnoth.sync.run_unsynced', 1, nil, wesnoth.sync.run_unsynced)
+	wesnoth.synchronize_choice = wesnoth.deprecate_api('wesnoth.synchronize_choice', 'wesnoth.sync.evaluate', 1, nil, wesnoth.sync.evaluate)
+	wesnoth.synchronize_choices = wesnoth.deprecate_api('wesnoth.synchronize_choices', 'wesnoth.sync.multi_evaluate', 1, nil, wesnoth.sync.multi_evaluate)
 end

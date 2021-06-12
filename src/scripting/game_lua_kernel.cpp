@@ -2891,7 +2891,9 @@ namespace
 			lua_pushnumber(L, side);
 			if (luaW_pcall(L, 1, 1, false)) {
 				if(!luaW_toconfig(L, -1, cfg)) {
-					lua_kernel_base::get_lua_kernel<game_lua_kernel>(L).log_error("function returned to wesnoth.synchronize_choice a table which was partially invalid");
+					static const char* msg = "function returned to wesnoth.sync.[multi_]evaluate a table which was partially invalid";
+					lua_kernel_base::get_lua_kernel<game_lua_kernel>(L).log_error(msg);
+					lua_warning(L, msg, false);
 				}
 			}
 		}
@@ -4162,9 +4164,7 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 		{ "add_known_unit",           &intf_add_known_unit           },
 		{ "get_era",                  &intf_get_era                  },
 		{ "get_resource",             &intf_get_resource             },
-		{ "invoke_synced_command",    &intf_invoke_synced_command    },
 		{ "modify_ai",                &intf_modify_ai_old            },
-		{ "unsynced",                 &intf_do_unsynced              },
 		{ "add_event_handler",         &dispatch<&game_lua_kernel::intf_add_event                  >        },
 		{ "allow_undo",                &dispatch<&game_lua_kernel::intf_allow_undo                 >        },
 		{ "cancel_action",             &dispatch<&game_lua_kernel::intf_cancel_action              >        },
@@ -4181,8 +4181,6 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 		{ "redraw",                    &dispatch<&game_lua_kernel::intf_redraw                     >        },
 		{ "remove_event_handler",      &dispatch<&game_lua_kernel::intf_remove_event               >        },
 		{ "simulate_combat",           &dispatch<&game_lua_kernel::intf_simulate_combat            >        },
-		{ "synchronize_choice",        &intf_synchronize_choice                                             },
-		{ "synchronize_choices",       &intf_synchronize_choices                                            },
 		{ nullptr, nullptr }
 	};lua_getglobal(L, "wesnoth");
 	if (!lua_istable(L,-1)) {
@@ -4429,6 +4427,21 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 	lua_newtable(L);
 	luaL_setfuncs(L, audio_callbacks, 0);
 	lua_setfield(L, -2, "audio");
+	lua_pop(L, 1);
+	
+	// Create the sync module
+	cmd_log_ << "Adding sync module...\n";
+	static luaL_Reg const sync_callbacks[] {
+		{ "invoke_command",    &intf_invoke_synced_command },
+		{ "run_unsynced",      &intf_do_unsynced },
+		{ "evaluate",          &intf_synchronize_choice },
+		{ "multi_evaluate",    &intf_synchronize_choices },
+		{ nullptr, nullptr }
+	};
+	lua_getglobal(L, "wesnoth");
+	lua_newtable(L);
+	luaL_setfuncs(L, sync_callbacks, 0);
+	lua_setfield(L, -2, "sync");
 	lua_pop(L, 1);
 
 	// Create the schedule module

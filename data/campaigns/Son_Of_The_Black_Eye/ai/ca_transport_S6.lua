@@ -115,7 +115,7 @@ function ca_transport:execution()
             table.insert(command_data, T.dst { x = best_adj_tiles[i][1], y = best_adj_tiles[i][2]} )
         end
 
-        wesnoth.invoke_synced_command("ship_unload", command_data)
+        wesnoth.sync.invoke_command("ship_unload", command_data)
 
         return
     end
