@@ -21,7 +21,7 @@ function mathx.random_choice(possible_values, random_func)
 				local high = tonumber(word:sub(dots_end+1))
 				-- perhaps someone passed a string as part of the range, intercept the issue
 				if not (low and high) then
-					wesnoth.message("Malformed range: " .. word)
+					wesnoth.interface.add_chat_message("Malformed range: " .. word)
 					table.insert(items, word)
 					num_choices = num_choices + 1
 				else

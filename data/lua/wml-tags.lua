@@ -65,7 +65,7 @@ function wml_actions.chat(cfg)
 
 	for index, side in ipairs(side_list) do
 		if side.controller == "human" and side.is_local then
-			wesnoth.message(speaker, message)
+			wesnoth.interface.add_chat_message(speaker, message)
 			break
 		end
 	end
@@ -83,7 +83,7 @@ function wml_actions.chat(cfg)
 		end
 
 		if not has_human_side then
-			wesnoth.message(speaker, message)
+			wesnoth.interface.add_chat_message(speaker, message)
 		end
 	end
 end
@@ -651,11 +651,11 @@ function wml_actions.allow_undo(cfg)
 end
 
 function wml_actions.allow_end_turn(cfg)
-	wesnoth.allow_end_turn(true)
+	wesnoth.interface.allow_end_turn(true)
 end
 
 function wml_actions.disallow_end_turn(cfg)
-	wesnoth.allow_end_turn(cfg.reason or false)
+	wesnoth.interface.allow_end_turn(cfg.reason or false)
 end
 
 function wml_actions.clear_menu_item(cfg)
@@ -720,7 +720,7 @@ function wml_actions.color_adjust(cfg)
 end
 
 function wml_actions.end_turn(cfg)
-	wesnoth.end_turn()
+	wesnoth.interface.end_turn()
 end
 
 function wml_actions.event(cfg)
