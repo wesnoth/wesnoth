@@ -107,3 +107,7 @@ wesnoth.set_end_campaign_text = wesnoth.deprecate_api('wesnoth.set_end_campaign_
 		wesnoth.scenario.end_text_duration = d
 	end
 end)
+
+if wesnoth.kernel_type() == 'Game Lua Kernel' then
+	wesnoth.get_traits = wesnoth.deprecate_api('wesnoth.get_traits', 'wesnoth.game_config.global_traits', 1, nil, function() return wesnoth.game_config.global_traits end)
+end

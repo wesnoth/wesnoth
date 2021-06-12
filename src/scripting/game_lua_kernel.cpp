@@ -1119,6 +1119,20 @@ int game_lua_kernel::impl_game_config_get(lua_State *L)
 		gamedata().get_victory_music());
 	return_vector_string_attrib_deprecated("active_resources", "wesnoth.game_config", INDEFINITE, "1.17", "Use wesnoth.scenario.resources instead",
 		utils::split(play_controller_.get_loaded_resources()));
+	
+	if(strcmp(m, "global_traits") == 0) {
+		lua_newtable(L);
+		for(const config& trait : unit_types.traits()) {
+			const std::string& id = trait["id"];
+			//It seems the engine never checks the id field for emptiness or duplicates
+			//However, the worst that could happen is that the trait read later overwrites the older one,
+			//and this is not the right place for such checks.
+			lua_pushstring(L, id.c_str());
+			luaW_pushconfig(L, trait);
+			lua_rawset(L, -3);
+		}
+		return 1;
+	}
 
 	const mp_game_settings& mp_settings = play_controller_.get_mp_settings();
 	const game_classification & classification = play_controller_.get_classification();
@@ -1130,6 +1144,7 @@ int game_lua_kernel::impl_game_config_get(lua_State *L)
 			game_config_manager::get()->game_config().find_child("era","id",classification.era_id));
 		//^ finds the era with name matching mp_era, and creates a lua reference from the config of that era.
 	}
+	
 	return lua_kernel_base::impl_game_config_get(L);
 }
 
@@ -3052,26 +3067,6 @@ int game_lua_kernel::intf_get_sides(lua_State* L)
 }
 
 /**
- * .Returns information about the global traits known to the engine.
- * - Ret 1: Table with named fields holding wml tables describing the traits.
- */
-static int intf_get_traits(lua_State* L)
-{
-	lua_newtable(L);
-	for(const config& trait : unit_types.traits()) {
-		const std::string& id = trait["id"];
-		//It seems the engine does nowhere check the id field for emptyness or duplicates
-		//(also not later on).
-		//However, the worst thing to happen is that the trait read later overwrites the older one,
-		//and this is not the right place for such checks.
-		lua_pushstring(L, id.c_str());
-		luaW_pushconfig(L, trait);
-		lua_rawset(L, -3);
-	}
-	return 1;
-}
-
-/**
  * Adds a modification to a unit.
  * - Arg 1: unit.
  * - Arg 2: string.
@@ -4001,7 +3996,6 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 		{ "add_known_unit",           &intf_add_known_unit           },
 		{ "get_era",                  &intf_get_era                  },
 		{ "get_resource",             &intf_get_resource             },
-		{ "get_traits",               &intf_get_traits               },
 		{ "get_viewing_side",         &intf_get_viewing_side         },
 		{ "invoke_synced_command",    &intf_invoke_synced_command    },
 		{ "modify_ai",                &intf_modify_ai_old            },
