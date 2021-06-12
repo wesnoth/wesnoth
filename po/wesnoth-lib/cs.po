@@ -1,11 +1,3 @@
-# translation of wesnoth-lib.pot to Czech
-# Czech translations for Battle for Wesnoth package.
-# Český překlad hry Battle for Wesnoth (Bitva o Wesnoth).
-# Copyright (C) 2004 - 2020 Wesnoth development team
-# This file is distributed under the same license as the Battle for Wesnoth package.
-#
-# Czech Wesnoth translation team
-#
 # Yeti <yeti@physics.muni.cz> et al, 2004.
 # Oto 'tapik' Buchta <tapik@buchtovi.cz>, 2005 - 2007.
 # Vladimír Slávik <slavik.vladimir@seznam.cz>, 2007 - 2011.
@@ -18,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2021-05-15 22:06-0400\n"
-"PO-Revision-Date: 2021-05-07 21:47+0200\n"
+"PO-Revision-Date: 2021-06-09 17:46+0200\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
@@ -2483,7 +2475,7 @@ msgstr "žádné"
 #. [label]
 #: data/gui/window/addon_manager.cfg:602 data/gui/window/addon_manager.cfg:721
 msgid "Tags:"
-msgstr ""
+msgstr "Štítky:"
 
 #. [text_box]: id=filter
 #: data/gui/window/addon_manager.cfg:655
@@ -3650,7 +3642,7 @@ msgstr "Zkopíruj kompletní hlášení do schránky"
 #. [label]
 #: data/gui/window/gamestate_inspector.cfg:94
 msgid "Gamestate Inspector"
-msgstr "Inspektor herního stavu"
+msgstr "Prohlížeč stavu hry"
 
 #. [button]: id=copy
 #: data/gui/window/gamestate_inspector.cfg:336
@@ -4670,8 +4662,8 @@ msgid ""
 "Speed at which unit moves and animations play when ‘Accelerated speed’ is "
 "enabled or when Shift is held down in-game"
 msgstr ""
-"Rychlost, kterou se pohybuje jednotka a přehrávají animace, když je zapnuta "
-"‚Zrychlená hra‘ nebo když je ve hře držen stisknutý Shift."
+"Rychlost, kterou se pohybuje jednotka a přehrávají animace, když je zapnuta "
+"„Zrychlená hra“ nebo když je ve hře držen stisknutý Shift."
 
 #. [toggle_button]: id=disable_auto_moves
 #: data/gui/window/preferences/01_general.cfg:100
@@ -5810,11 +5802,11 @@ msgstr "Text má výšku fontu nula."
 
 #: src/gui/core/canvas.cpp:834
 msgid "Area to draw has negative size"
-msgstr ""
+msgstr "Oblast na vykreslení má zápornou velikost"
 
 #: src/gui/core/canvas.cpp:836
 msgid "Area to draw is larger than widget size"
-msgstr ""
+msgstr "Oblast na vykreslení je větší než velikost grafického prvku"
 
 #: src/gui/core/widget_definition.cpp:30
 msgid "No state or draw section defined."
@@ -5952,61 +5944,59 @@ msgstr "Poprvé nahráno ($datelike_order)"
 
 #: src/gui/dialogs/addon/manager.cpp:222
 msgid "addon_tag^Cooperative"
-msgstr ""
+msgstr "Spolupracující"
 
 #. TRANSLATORS: tooltip in the drop-down menu for filtering add-ons
 #: src/gui/dialogs/addon/manager.cpp:224
 msgid "addon_tag^All human players are on the same team, versus the AI"
-msgstr ""
+msgstr "Všichni hráči jsou ve stejném týmu a proti UI"
 
 #: src/gui/dialogs/addon/manager.cpp:225
 msgid "addon_tag^Cosmetic"
-msgstr ""
+msgstr "Kosmetické"
 
 #. TRANSLATORS: tooltip in the drop-down menu for filtering add-ons
 #: src/gui/dialogs/addon/manager.cpp:227
 msgid "addon_tag^These make the game look different, without changing gameplay"
-msgstr ""
+msgstr "Tato rozšíření mění vzhled hry, aniž změní hratelnost"
 
 #: src/gui/dialogs/addon/manager.cpp:228
-#, fuzzy
-#| msgid "Difficulty"
 msgid "addon_tag^Difficulty"
 msgstr "Obtížnost"
 
 #. TRANSLATORS: tooltip in the drop-down menu for filtering add-ons
 #: src/gui/dialogs/addon/manager.cpp:230
 msgid "addon_tag^Can make campaigns easier or harder"
-msgstr ""
+msgstr "Může usnadnit nebo ztížit tažení"
 
 #: src/gui/dialogs/addon/manager.cpp:231
 msgid "addon_tag^RNG"
-msgstr ""
+msgstr "GNČ"
 
 #. TRANSLATORS: tooltip in the drop-down menu for filtering add-ons
 #: src/gui/dialogs/addon/manager.cpp:233
 msgid ""
 "addon_tag^Modify the randomness in the combat mechanics, or remove it "
 "entirely"
-msgstr ""
+msgstr "Upravuje náhodnost v mechanice soubojů, nebo ji úplně odstraňuje"
 
 #: src/gui/dialogs/addon/manager.cpp:234
 msgid "addon_tag^Survival"
-msgstr ""
+msgstr "Přežití"
 
 #. TRANSLATORS: tooltip in the drop-down menu for filtering add-ons
 #: src/gui/dialogs/addon/manager.cpp:236
 msgid "addon_tag^Fight against waves of enemies"
-msgstr ""
+msgstr "Boj proti vlnám nepřátel"
 
 #: src/gui/dialogs/addon/manager.cpp:237
 msgid "addon_tag^Terraforming"
-msgstr ""
+msgstr "Terraformace"
 
 #. TRANSLATORS: tooltip in the drop-down menu for filtering add-ons
 #: src/gui/dialogs/addon/manager.cpp:239
 msgid "addon_tag^Players can change the terrain"
-msgstr ""
+msgstr "Hráči mohou měnit terén"
 
 #: src/gui/dialogs/addon/manager.cpp:262 src/gui/widgets/addon_list.cpp:103
 msgid "addon_state^Not installed"
@@ -8055,18 +8045,3 @@ msgid ""
 msgstr ""
 "Klíč '$deprecated_key' byl přejmenován na '$key' a ve verzi $removal_version "
 "bude odstraněna podpora původního tvaru."
-
-#~ msgid "Line doesn't fit on canvas."
-#~ msgstr "Čára se nevejde na plátno."
-
-#~ msgid "Rectangle doesn't fit on canvas."
-#~ msgstr "Obdélník se nevejde na plátno."
-
-#~ msgid "Rounded Rectangle doesn't fit on canvas."
-#~ msgstr "Zaoblený obdélník se nevejde na plátno."
-
-#~ msgid "Circle doesn't fit on canvas."
-#~ msgstr "Kruh se nevejde na plátno."
-
-#~ msgid "Text doesn't start on canvas."
-#~ msgstr "Text nezačíná na plátně."

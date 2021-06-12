@@ -1,11 +1,3 @@
-# translation of wesnoth-units.pot to Czech
-# Czech translations for Battle for Wesnoth package.
-# Český překlad hry Battle for Wesnoth (Bitva o Wesnoth).
-# Copyright (C) 2004 - 2020 Wesnoth development team
-# This file is distributed under the same license as the Battle for Wesnoth package.
-#
-# Czech Wesnoth translation team
-#
 # Yeti <yeti@physics.muni.cz> et al, 2004.
 # Oto 'tapik' Buchta <tapik@buchtovi.cz>, 2005 - 2007.
 # Vladimír Slávik <slavik.vladimir@seznam.cz>, 2007 - 2011.
@@ -19,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2021-05-23 02:21 UTC\n"
-"PO-Revision-Date: 2021-04-19 17:36+0200\n"
+"PO-Revision-Date: 2021-06-04 21:56+0200\n"
 "Last-Translator: Septim <septim@centrum.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
@@ -27,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Poedit 2.4.2\n"
+"X-Generator: Poedit 3.0\n"
 
 #. [attack]: type=impact
 #. [attack]: type=arcane
@@ -3670,7 +3662,7 @@ msgid ""
 msgstr ""
 "Zkušenosti z bitvy nejenom posilují bojovou zdatnost zvířete i jezdce, ale "
 "také utužují pouto mezi nimi. Zatímco člověčí rytíř může do bitvy vyjet na "
-"různých ořích, název ‚gobliní rytíř‘ se týká společně goblina i vlka jako "
+"různých ořích, název „gobliní rytíř“ se týká společně goblina i vlka jako "
 "jediné jednotky, naprosto oddaných jeden druhému téměř až do krajnosti.\n"
 "\n"
 "Mezi skřety jsou jezdci považováni za vyšší vrstvu než goblini, i když jsou "
@@ -3742,7 +3734,7 @@ msgstr ""
 "V každé rase jsou vždy takoví neobvyklí jednotlivci, kteří se nešťastnou "
 "náhodou narodili mnohem menší a slabší než zbytek jejich druhu. Avšak "
 "u skřetů jsou tyto případy nadobyčej časté tím, že se v každém vrhu obvykle "
-"narodí několik nedochůdčat. Jsou známi jako ‚goblini‘ a tato neduživá "
+"narodí několik nedochůdčat. Jsou známi jako „goblini“ a tato neduživá "
 "stvoření téměř vždy žijí krátké a kruté životy. Většinou jsou použiti pouze "
 "jako živý štít proti nepřátelům svých větších sourozenců, vybaveni jen těmi "
 "nejhruběji vyrobenými kopími."
@@ -5722,14 +5714,12 @@ msgstr ""
 #: data/core/units/monsters/Boar.cfg:51
 #: data/core/units/monsters/Boar_Piglet.cfg:49
 msgid "Bite"
-msgstr ""
+msgstr "kousnutí"
 
 #. [attack]: type=pierce
 #: data/core/units/monsters/Boar.cfg:60
-#, fuzzy
-#| msgid "Tusks"
 msgid "Tusk"
-msgstr "kly"
+msgstr "kel"
 
 #. [unit_type]: id=Piglet, race=monster
 #: data/core/units/monsters/Boar_Piglet.cfg:4
@@ -6130,12 +6120,12 @@ msgstr "pavučina"
 #. [unit_type]: id=Bay Horse, race=horse
 #: data/core/units/monsters/Horse.cfg:5
 msgid "Bay Horse"
-msgstr ""
+msgstr "Hnědohřívák"
 
 #. [unit_type]: id=Bay Horse, race=horse
 #: data/core/units/monsters/Horse.cfg:20
 msgid "Horses need a better description."
-msgstr ""
+msgstr "Koně potřebují lepší popis."
 
 #. [attack]: type=impact
 #: data/core/units/monsters/Horse.cfg:34 data/core/units/monsters/Horse.cfg:180
@@ -6148,10 +6138,8 @@ msgstr "kop"
 
 #. [unit_type]: id=White Horse
 #: data/core/units/monsters/Horse.cfg:76
-#, fuzzy
-#| msgid "White Mage"
 msgid "White Horse"
-msgstr "Bílý mág"
+msgstr "Bělohřívák"
 
 #. [unit_type]: id=White Horse
 #: data/core/units/monsters/Horse.cfg:101
@@ -6161,13 +6149,15 @@ msgid ""
 "As if blessed by the faerie world, they have a grace and agility not found "
 "in their more common relatives."
 msgstr ""
+"Někteří koně mají bílou barvu, jsou to však jen bíle zbarvení koně. Existuje "
+"však speciální plemeno koní, které se vyskytuje pouze v divokých lesích, a "
+"to jsou bělohříváci. Jako by byli požehnáni světem víl, disponují půvabem a "
+"hbitostí, které se u jejich běžnějších příbuzných nenacházejí."
 
 #. [unit_type]: id=Dark Horse
 #: data/core/units/monsters/Horse.cfg:138
-#, fuzzy
-#| msgid "Dark Sorcerer"
 msgid "Dark Horse"
-msgstr "Temný čaroděj"
+msgstr "Šedohřívák"
 
 #. [unit_type]: id=Dark Horse
 #: data/core/units/monsters/Horse.cfg:176
@@ -6176,20 +6166,21 @@ msgid ""
 "civilized races.  They leave no signs of their passage, but they have been "
 "noticed scouting camps and outposts during the night."
 msgstr ""
+"Šedohříváci jsou divoká zvířata. Nicméně se zdá, že je zvláště zajímají "
+"civilizované rasy. Nezanechávají po sobě stopy své přítomnosti, ale bylo "
+"pozorováno, jak během nocí pozorují tábory a základny různých ras."
 
 #. [male]
 #. [female]
 #: data/core/units/monsters/Horse.cfg:203
 #: data/core/units/monsters/Horse.cfg:207
-#, fuzzy
-#| msgid "female^Dark Adept"
 msgid "female^Dark Horse"
-msgstr "Temná učednice"
+msgstr "Šedohřivka"
 
 #. [unit_type]: id=Black Horse, race=horse
 #: data/core/units/monsters/Horse_Black.cfg:5
 msgid "Black Horse"
-msgstr ""
+msgstr "Černohřívák"
 
 #. [unit_type]: id=Black Horse, race=horse
 #: data/core/units/monsters/Horse_Black.cfg:25
@@ -6198,35 +6189,34 @@ msgid ""
 "their eyes and the unnerving, unnatural sound of their calls suggest they "
 "are malevolent spirits."
 msgstr ""
+"Skutečnou povahu černohříváků je těžké odhalit. Ale oheň v jejich očích a "
+"zneklidňující, nepřirozený zvuk jejich řehtání naznačují, že v nich dřímou "
+"zlovolní duchové."
 
 #. [attack]: type=cold
 #: data/core/units/monsters/Horse_Black.cfg:48
 msgid "whinny"
-msgstr ""
+msgstr "řehtání"
 
 #. [male]
 #: data/core/units/monsters/Horse_Black.cfg:83
 msgid "Black Stallion"
-msgstr ""
+msgstr "Černý hřebec"
 
 #. [female]
 #: data/core/units/monsters/Horse_Black.cfg:88
-#, fuzzy
-#| msgid "female^Mage of Light"
 msgid "female^Black Nightmare"
-msgstr "Světlá čarodějka"
+msgstr "Noční můra"
 
 #. [unit_type]: id=Great Horse, race=horse
 #: data/core/units/monsters/Horse_Great.cfg:5
-#, fuzzy
-#| msgid "Great Mage"
 msgid "Great Horse"
-msgstr "Velký mág"
+msgstr "Shirský kůň"
 
 #. [unit_type]: id=Great Horse, race=horse
 #: data/core/units/monsters/Horse_Great.cfg:20
 msgid "Great Horses need a better description."
-msgstr ""
+msgstr "Shirští koně potřebují lepší popis."
 
 #. [unit_type]: id=Icemonax, race=monster
 #: data/core/units/monsters/Icemonax.cfg:4
@@ -6415,10 +6405,8 @@ msgstr ""
 
 #. [unit_type]: id=Great Seahorse, race=monster
 #: data/core/units/monsters/Seahorse.cfg:5
-#, fuzzy
-#| msgid "Great Mage"
 msgid "Great Seahorse"
-msgstr "Velký mág"
+msgstr "Velký mořský koník"
 
 #. [unit_type]: id=Great Seahorse, race=monster
 #: data/core/units/monsters/Seahorse.cfg:29
@@ -6430,6 +6418,13 @@ msgid ""
 "force to stun a small animal, and has thick, bony plate armor, but like all "
 "seahorses, it is a slow swimmer and cannot move over land."
 msgstr ""
+"Mořští koníci jsou druh ryb, které mají koňskou hlavu, ale nemají žádnou "
+"skutečnou souvislost s koňovitými. Většina mořských koníků jsou malá, plachá "
+"stvoření, která žerou brouky a podobnou malou kořist, ale velcí mořští "
+"koníci jsou dostatečně velcí, aby ohrožovali i neopatrné cestovatele. Toto "
+"velké plemeno dokáže plivat vodu s takovou silou, že omráčí menší zvíře, a "
+"také má tlusté kostnaté brnění. Stejně jako všichni mořští koníci patří ale "
+"mezi pomalé plavce a nemůže se pohybovat po zemi."
 
 #. [unit_type]: id=Skeletal Dragon, race=undead
 #: data/core/units/monsters/Skeletal_Dragon.cfg:4
@@ -6579,7 +6574,7 @@ msgstr ""
 "i pochybující nepouštěli příliš daleko do hor, o nichž se říká, že je "
 "yettiové obývají."
 
-# Fakt jsem nad tím hodně přemýšlel. Prostě to má odrážet ten boj s čepelemi (břity), musí to nějak relativně normálně znít a také to musí obrážet, že je to zatím ‚malé pivo“. Jinak otrocky přeloženo by to bylo tesakotesák.
+# Fakt jsem nad tím hodně přemýšlel. Prostě to má odrážet ten boj s čepelemi (břity), musí to nějak relativně normálně znít a také to musí obrážet, že je to zatím „malé pivo“. Jinak otrocky přeloženo by to bylo tesakotesák.
 #. [unit_type]: id=Naga Dirkfang, race=naga
 #: data/core/units/nagas/Dirkfang.cfg:4
 msgid "Naga Dirkfang"
@@ -7648,10 +7643,8 @@ msgstr "Goblin"
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:190
 #: data/core/units/undead/Corpse_Walking.cfg:212
-#, fuzzy
-#| msgid "wc_variation^Wose"
 msgid "wc_variation^Horse"
-msgstr "Stromový muž"
+msgstr "Kůň"
 
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:200
@@ -8333,6 +8326,3 @@ msgid ""
 msgstr ""
 "Tito stromový muži jsou schopni přikázat lesním rostlinám, jako je réva a "
 "jiné popínavky, aby blokovaly nepřátele."
-
-#~ msgid "Tusk Charge"
-#~ msgstr "výpad kly"
