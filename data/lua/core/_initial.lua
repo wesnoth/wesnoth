@@ -110,4 +110,6 @@ end)
 
 if wesnoth.kernel_type() == 'Game Lua Kernel' then
 	wesnoth.get_traits = wesnoth.deprecate_api('wesnoth.get_traits', 'wesnoth.game_config.global_traits', 1, nil, function() return wesnoth.game_config.global_traits end)
+	wesnoth.end_level = wesnoth.deprecate_api('wesnoth.end_level', 'wesnoth.scenario.end_level_data assignment', 1, nil, function(cfg) wesnoth.scenario.end_level_data = cfg end)
+	wesnoth.get_end_level_data = wesnoth.deprecate_api('wesnoth.get_end_level_data', 'wesnoth.scenario.end_level_data', 1, nil, function() return wesnoth.scenario.end_level_data end)
 end
