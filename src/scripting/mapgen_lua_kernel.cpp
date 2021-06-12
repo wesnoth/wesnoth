@@ -49,7 +49,7 @@ int dispatch(lua_State *L) {
 }
 
 /**
- * Returns a random numer, same interface as math.random.
+ * Returns a random number, same interface as math.random.
  */
 static int intf_random(lua_State *L)
 {
@@ -211,10 +211,10 @@ mapgen_lua_kernel::mapgen_lua_kernel(const config* vars)
 {
 	lua_State *L = mState;
 
-	// Unset wesnoth.random. This guarantees that the mapgen_lua_kernel version
-	// of wesnoth.random overrides the lua_kernel_base version.
-	lua_getglobal(L, "wesnoth");
-	lua_pushnil(L);
+	// Overwrite mathx.random. This guarantees that the mapgen_lua_kernel version
+	// of mathx.random overrides the lua_kernel_base version.
+	lua_getglobal(L, "mathx");
+	lua_pushcfunction(L, &intf_random);
 	lua_setfield(L, -2, "random");
 
 	lua_settop(L, 0);
