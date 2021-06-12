@@ -1228,7 +1228,7 @@ int game_lua_kernel::impl_scenario_get(lua_State *L)
 		return_cfgref_attrib("mp_settings", play_controller_.get_mp_settings().to_config());
 		return_cfgref_attrib("era", find_addon("era", classification.era_id));
 	}
-	return lua_kernel_base::impl_game_config_get(L);
+	return 0;
 }
 
 /**
@@ -1252,7 +1252,7 @@ int game_lua_kernel::impl_scenario_set(lua_State *L)
 	modify_bool_attrib("show_credits", classification.end_credits = value);
 	modify_string_attrib("end_text", classification.end_text = value);
 	modify_int_attrib("end_text_duration", classification.end_text_duration = value);
-	return lua_kernel_base::impl_game_config_set(L);
+	return 0;
 }
 
 /**
