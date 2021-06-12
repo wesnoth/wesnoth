@@ -4641,7 +4641,7 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 		{"end_turn", &dispatch<&game_lua_kernel::intf_end_turn>},
 		{"get_viewing_side", &intf_get_viewing_side},
 		{"add_chat_message", &dispatch<&game_lua_kernel::intf_message>},
-		{"add_floating_label", &dispatch2<&game_lua_kernel::intf_set_floating_label, true>},
+		{"add_overlay_text", &dispatch2<&game_lua_kernel::intf_set_floating_label, true>},
 		{ nullptr, nullptr }
 	};
 	lua_getglobal(L, "wesnoth");

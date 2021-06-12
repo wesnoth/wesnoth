@@ -61,7 +61,7 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 	wesnoth.get_viewing_side = wesnoth.deprecate_api('wesnoth.get_viewing_side', 'wesnoth.interface.get_viewing_side', 1, nil, wesnoth.interface.get_viewing_side)
 	wesnoth.message = wesnoth.deprecate_api('wesnoth.message', 'wesnoth.interface.add_chat_message', 1, nil, wesnoth.interface.add_chat_message)
 	-- wesnoth.wml_actions.print doesn't exist yet at this point, so create a helper function instead.
-	wesnoth.print = wesnoth.deprecate_api('wesnoth.print', 'wesnoth.interface.add_floating_label', 1, nil, function(cfg)
+	wesnoth.print = wesnoth.deprecate_api('wesnoth.print', 'wesnoth.interface.add_overlay_text', 1, nil, function(cfg)
 		wesnoth.wml_actions.print(cfg)
 	end)
 	-- No deprecation for these since since they're not actually public API yet
