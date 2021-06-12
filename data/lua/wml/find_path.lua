@@ -93,7 +93,7 @@ function wesnoth.wml_actions.find_path(cfg)
 	if current_location == nil then
 		-- either no matching locations, or only inaccessible matching locations (maybe enemy units are there)
 		if #locations == 0 then
-			wesnoth.message("WML warning","[find_path]'s filter didn't match any location")
+			wesnoth.interface.add_chat_message("WML warning","[find_path]'s filter didn't match any location")
 		end
 		wml.variables[tostring(variable)] = { hexes = 0 } -- set only hexes, nil all other values
 	else

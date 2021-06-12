@@ -113,7 +113,7 @@ function wesnoth.effects.wc2_update_aura(u, cfg)
 	local forcefield = wesnoth.units.matches(u, { ability = "forcefield" } )
 	local halo = ""
 	if illuminates and darkens then 
-		wesnoth.message("WC2", "Warning illuminates and darkens discovered on a unit")
+		wesnoth.interface.add_chat_message("WC2", "Warning illuminates and darkens discovered on a unit")
 	end
 	if forcefield and illuminates then
 		halo = "halo/illuminates-aura.png~R(50)"

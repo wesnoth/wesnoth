@@ -87,7 +87,7 @@ local function generate_objectives(cfg)
 					.. color_prefix(r, g, b) .. objective_bullet.. description
 					.. turn_counter .. "</span>" .. "\n"
 			else
-				wesnoth.message "Unknown condition, ignoring."
+				wesnoth.interface.add_chat_message "Unknown condition, ignoring."
 			end
 		end
 	end

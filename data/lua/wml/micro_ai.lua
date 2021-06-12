@@ -14,7 +14,7 @@ function wesnoth.wml_actions.micro_ai(cfg)
     if (not cfg.ai_type) then wml.error("[micro_ai] is missing required ai_type= key") end
     if (not cfg.side) then wml.error("[micro_ai] is missing required side= key") end
     if (not wesnoth.sides[cfg.side]) then
-        wesnoth.message("Warning", "[micro_ai] uses side=" .. cfg.side .. ": side does not exist")
+        wesnoth.interface.add_chat_message("Warning", "[micro_ai] uses side=" .. cfg.side .. ": side does not exist")
         return
     end
     if (not cfg.action) then wml.error("[micro_ai] is missing required action= key") end

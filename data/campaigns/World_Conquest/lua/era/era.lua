@@ -255,7 +255,7 @@ function wc2_era.expand_hero_types(types_str)
 					table.insert(types_new, type)
 				end
 			else
-				wesnoth.message("WCII ERROR", "unknown deserter group: '" .. v .. "'")
+				wesnoth.interface.add_chat_message("WCII ERROR", "unknown deserter group: '" .. v .. "'")
 			end
 		end
 		types = types_new
