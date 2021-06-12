@@ -1129,13 +1129,6 @@ int game_lua_kernel::impl_game_config_get(lua_State *L)
 		return_cfgref_attrib_deprecated("era", "wesnoth.game_config", INDEFINITE, "1.17", "Use wesnoth.scenario.era instead",
 			game_config_manager::get()->game_config().find_child("era","id",classification.era_id));
 		//^ finds the era with name matching mp_era, and creates a lua reference from the config of that era.
-
-		//This code for SigurdFD, not the cleanest implementation but seems to work just fine.
-		std::vector<std::string> eras_list;
-		for (const config& era : game_config_manager::get()->game_config().child_range("era") ) {
-			eras_list.push_back(era["id"].str());
-		}
-		return_string_attrib("eras", utils::join(eras_list));
 	}
 	return lua_kernel_base::impl_game_config_get(L);
 }
