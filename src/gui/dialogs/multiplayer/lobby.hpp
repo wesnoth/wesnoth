@@ -54,7 +54,6 @@ struct player_list
 	void init(window& w);
 
 	sub_player_list active_game;
-	sub_player_list active_room;
 	sub_player_list other_rooms;
 	sub_player_list other_games;
 

@@ -120,8 +120,7 @@ user_info::user_info(const config& c)
 	update_relation();
 }
 
-void user_info::update_state(int selected_game_id,
-							 const room_info* current_room /*= nullptr*/)
+void user_info::update_state(int selected_game_id)
 {
 	if(game_id != 0) {
 		if(game_id == selected_game_id) {
@@ -130,11 +129,7 @@ void user_info::update_state(int selected_game_id,
 			state = user_state::GAME;
 		}
 	} else {
-		if(current_room != nullptr && current_room->is_member(name)) {
-			state = user_state::SEL_ROOM;
-		} else {
-			state = user_state::LOBBY;
-		}
+		state = user_state::LOBBY;
 	}
 	update_relation();
 }
