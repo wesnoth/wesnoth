@@ -21,6 +21,7 @@
    * Added missing Seahorse graphics
    * Revised Jinn (unit config and graphics)
    * Fire Wraith added
+   * Moved Naga guardian line from UtBS to core, and made some revisions
  ### User interface
  ### WML Engine
    * add 'unslowable' and 'unpetrifiable' status to immune to slow or petrifies
