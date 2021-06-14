@@ -105,9 +105,6 @@ void player_list::init(window& w)
 {
 	active_game.init(w, _("Selected Game"), true);
 	other_rooms.init(w, _("Lobby"), true);
-#ifdef ENABLE_ROOM_MEMBER_TREE
-	active_room.init(w, _("Current Room"));
-#endif
 	other_games.init(w, _("Other Games"));
 
 	tree = find_widget<tree_view>(&w, "player_tree", false, true);
@@ -584,30 +581,15 @@ void mp_lobby::update_playerlist()
 {
 	SCOPE_LB;
 	DBG_LB << "Playerlist update: " << lobby_info_.users().size() << "\n";
-	lobby_info_.update_user_statuses(selected_game_id_, chatbox_->active_window_room());
-
-#ifdef ENABLE_ROOM_MEMBER_TREE
-	bool lobby = false;
-	if(mp::room_info* ri = chatbox_->active_window_room()) {
-		if(ri->name() == "lobby") {
-			lobby = true;
-		}
-	}
-#endif
+	lobby_info_.update_user_statuses(selected_game_id_);
 
 	assert(player_list_.active_game.tree);
-#ifdef ENABLE_ROOM_MEMBER_TREE
-	assert(player_list_.active_room.tree);
-#endif
 	assert(player_list_.other_games.tree);
 	assert(player_list_.other_rooms.tree);
 
 	unsigned scrollbar_position = player_list_.tree->get_vertical_scrollbar_item_position();
 
 	player_list_.active_game.tree->clear();
-#ifdef ENABLE_ROOM_MEMBER_TREE
-	player_list_.active_room.tree->clear();
-#endif
 	player_list_.other_games.tree->clear();
 	player_list_.other_rooms.tree->clear();
 
@@ -619,15 +601,6 @@ void mp_lobby::update_playerlist()
 		std::stringstream icon_ss;
 		icon_ss << "lobby/status";
 		switch(user.state) {
-#ifdef ENABLE_ROOM_MEMBER_TREE
-			case mp::user_info::user_state::SEL_ROOM:
-				icon_ss << "-lobby";
-				target_list = &player_list_.active_room;
-				if(lobby) {
-					target_list = &player_list_.other_rooms;
-				}
-				break;
-#endif
 			case mp::user_info::user_state::LOBBY:
 				icon_ss << "-lobby";
 				target_list = &player_list_.other_rooms;
@@ -700,9 +673,6 @@ void mp_lobby::update_playerlist()
 	}
 
 	player_list_.active_game.update_player_count_label();
-#ifdef ENABLE_ROOM_MEMBER_TREE
-	player_list_.active_room.update_player_count_label();
-#endif
 	player_list_.other_rooms.update_player_count_label();
 	player_list_.other_games.update_player_count_label();
 

@@ -372,10 +372,10 @@ void lobby_info::apply_game_filter()
 	}
 }
 
-void lobby_info::update_user_statuses(int game_id, const room_info* room)
+void lobby_info::update_user_statuses(int game_id)
 {
 	for(auto& user : users_) {
-		user.update_state(game_id, room);
+		user.update_state(game_id);
 	}
 }
 
