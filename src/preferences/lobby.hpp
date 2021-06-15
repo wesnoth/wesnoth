@@ -24,8 +24,6 @@ void set_whisper_friends_only(bool v);
 bool auto_open_whisper_windows();
 void set_auto_open_whisper_windows(bool v);
 
-bool playerlist_group_players();
-
 bool fi_invert();
 void set_fi_invert(bool value);
 

@@ -639,10 +639,6 @@ void mp_lobby::update_playerlist()
 
 		icon_ss << ".png";
 
-		if(!preferences::playerlist_group_players()) {
-			target_list = &player_list_.other_rooms;
-		}
-
 		assert(target_list->tree);
 
 		string_map tree_group_field;
