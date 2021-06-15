@@ -80,7 +80,7 @@ local random_spawns = {
 	{
 		{"Dwarvish Fighter", "Dwarvish Steelclad", "more", "Dwarvish Lord"},
 		{"Poacher", "Trapper", "more", "none"},
-		{"Jinn", "more", "more", "none"},
+		{"Fire Wraith", "more", "more", "none"},
 	},
 	{
 		{"Horned Scarab", "more", "more", "more"},
@@ -169,12 +169,12 @@ local function create_timed_spawns(interval, num_spawns, base_gold_amount, gold_
 	local end_spawns = 0
 	for spawn_number = 1, num_spawns do
 		local turn = 3 + (spawn_number - 1) * interval
-		local gold = base_gold_amount + (turn - 3) * gold_increment
+		local gold = (base_gold_amount * 0.60) + (turn - 3) * gold_increment
 		if spawn_number > 1 then
 			-- formula taken from original Dark forecast, TODO: find easier formula.
 			local unit_gold = (turn - 3) * gold_increment + math.min(mathx.random(base_gold_amount), mathx.random(base_gold_amount))
 			local gold_per_unit = gold_per_unit_amount + turn / 1.5
-			local units = unit_gold / gold_per_unit + units_amount + mathx.random(-1, 1)
+			local units = (unit_gold * 0.60) / gold_per_unit + units_amount + mathx.random(-1, 1)
 			if mathx.random(5) == 5 then
 				units = units - 1
 			end
@@ -213,18 +213,7 @@ end
 local function place_units(unittypes, x, y)
 	for i,v in ipairs(unittypes) do
 		local u = wesnoth.units.create { type = v, passable = true, placement = "map", generate_name = true, side = 2 }
-		u:add_modification("object", {
-			T.effect {
-				apply_to = "movement_costs",
-				replace = true,
-				T.movement_costs {
-					flat = 1,
-					sand = 2,
-					forest = 2,
-					deep_water = 3,
-				}
-			}
-		})
+
 		-- give the unit less moves on its first turn.
 		u.status.slowed = true
 		u:add_modification("object", {
@@ -267,9 +256,9 @@ end)
 on_event("prestart", function()
 	local leaders = wesnoth.units.find_on_map { side = "3,4", canrecruit= true}
 	if #leaders < 2 then
-		create_timed_spawns(5, 6, 45, 5, 3, 21)
+		create_timed_spawns(6, 11, 25, 5, 3, 21)
 	else
-		create_timed_spawns(4, 6, 90, 4, 4, 23)
+		create_timed_spawns(5, 11, 55, 4, 4, 23)
 	end
 end)
 
@@ -322,7 +311,7 @@ on_event("new turn", function()
 		message= _ "The last and most powerful of our enemies are upon us. If we can finish them off in time, we shall be victorious.",
 	}
 
-	wml.variables["next_final_spawn"] = wesnoth.current.turn + mathx.random(2,3)
+	wml.variables["next_final_spawn"] = wesnoth.current.turn + mathx.random(1,2)
 end)
 
 -- after the first final spawn, spawn a new final spawn every 1 or 2 turns.
@@ -369,7 +358,7 @@ on_event("prestart", function()
 	wml.array_access.set("fixed_spawn", {
 		fixed_spawn(27, 3, "Armageddon Drake", "Wild Wyvern", "Grand Knight"),
 		fixed_spawn(8, 14, "Dune Paragon", "Dune Luminary", "Fire Drake"),
-		fixed_spawn(4, 9, "Necromancer", "Necrophage", "Dune Explorer", "Dune Rover", "Dune Falconer", "Dune Captain", "Dune Soldier", "Dune Rover", "Dune Soldier"),
+		fixed_spawn(4, 9, "Necromancer", "Dune Soldier", "Dune Rover", "Dune Rover", "Dune Falconer", "Dune Captain", "Dune Rover", "Dune Soldier"),
 		fixed_spawn(28,11, "Elvish Champion", "Dune Spearguard", "Dwarvish Stalwart", "Necrophage"),
 		fixed_spawn(5, 3, "Dwarvish Arcanister", "Mage of Light", "Drake Warrior", "Arch Mage"),
 	})
