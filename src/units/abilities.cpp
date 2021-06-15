@@ -864,13 +864,10 @@ std::string attack_type::weapon_specials(bool only_active, bool is_backstab) con
 			if (it == units.end() || it->incapacitated())
 				continue;
 			for (const config::any_child &sp : (*it).abilities().all_children_range()){
-				bool affect_adj_or_self;
-				if ( &*it == self_.get() ){
-					affect_adj_or_self = check_self_abilities(sp.cfg, sp.key);
-				} else {
-					affect_adj_or_self = check_adj_abilities(sp.cfg, sp.key, i , *it);
-				}
-				const bool active = (*it).checking_tags().count(sp.key) != 0 && affect_adj_or_self && special_active(sp.cfg, AFFECT_EITHER, sp.key, is_backstab, "filter_student");
+				const bool active =
+					(&*it == self_.get())
+					? check_self_abilities_impl(shared_from_this(), other_attack_, sp.cfg, self_, self_loc_, AFFECT_EITHER, sp.key)
+					: check_adj_abilities_impl(shared_from_this(), other_attack_, sp.cfg, self_, *it, i, self_loc_, AFFECT_EITHER, sp.key);
 
 				const std::string& name = active ? sp.cfg["name"].str() : "";
 
