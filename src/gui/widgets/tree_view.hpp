@@ -88,7 +88,7 @@ public:
 	 * @returns         A pair consisting of a smart pointer managing the removed
 	 *                  node, and its position before removal.
 	 */
-	std::pair<tree_view_node::ptr_t, int> remove_node(tree_view_node* node);
+	std::pair<std::shared_ptr<tree_view_node>, int> remove_node(tree_view_node* node);
 
 	void clear();
 

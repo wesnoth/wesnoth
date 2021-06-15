@@ -59,7 +59,7 @@ tree_view_node& tree_view::add_node(
 	return get_root_node().add_child(id, data, index);
 }
 
-std::pair<tree_view_node::ptr_t, int> tree_view::remove_node(tree_view_node* node)
+std::pair<std::shared_ptr<tree_view_node>, int> tree_view::remove_node(tree_view_node* node)
 {
 	assert(node && node != root_node_ && node->parent_node_);
 	const point node_size = node->get_size();

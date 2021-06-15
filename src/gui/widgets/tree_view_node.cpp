@@ -126,7 +126,7 @@ void tree_view_node::clear_before_destruct()
 	}
 }
 
-tree_view_node& tree_view_node::add_child_impl(ptr_t&& new_node, const int index)
+tree_view_node& tree_view_node::add_child_impl(std::shared_ptr<tree_view_node>&& new_node, const int index)
 {
 	auto itor = children_.end();
 
@@ -184,6 +184,82 @@ tree_view_node& tree_view_node::add_child_impl(ptr_t&& new_node, const int index
 	get_tree_view().resize_content(width_modification, height_modification, -1, node.calculate_ypos());
 
 	return node;
+}
+
+std::map<std::string, std::shared_ptr<gui2::tree_view_node>> tree_view_node::replace_children(const std::string& id, const std::map<std::string, std::map<std::string /* widget id */, string_map>>& data)
+{
+	std::map<std::string, std::shared_ptr<gui2::tree_view_node>> nodes;
+	clear();
+
+	if(data.size() == 0)
+	{
+		return nodes;
+	}
+
+	int width_modification = 0;
+
+	for(const auto& d : data)
+	{
+		std::shared_ptr<gui2::tree_view_node> new_node = std::make_shared<tree_view_node>(id, this, get_tree_view(), d.second);
+		std::shared_ptr<gui2::tree_view_node> node = *children_.insert(children_.end(), std::move(new_node));
+
+		// NOTE: we currently don't support moving nodes between different trees, so this
+		// just ensures that wasn't tried. Remove this if we implement support for that.
+		assert(node->tree_view_ == tree_view_);
+
+		// Safety check. Might only fail if someone accidentally removed the parent_node_ setter in add_child().
+		assert(node->parent_node_ == this);
+
+		nodes[d.first] = node;
+
+		if(is_folded()) {
+			continue;
+		}
+
+		assert(get_tree_view().content_grid());
+		const point current_size = get_tree_view().content_grid()->get_size();
+
+		// Calculate width modification.
+		// This increases tree width if the width of the new node is greater than the current width.
+		int best_size = node->get_best_size().x;
+		best_size += get_indentation_level() * get_tree_view().indentation_step_size_;
+
+		int new_width = best_size > current_size.x
+			? best_size - current_size.x
+			: 0;
+
+		if(new_width > width_modification)
+		{
+			width_modification = new_width;
+		}
+	}
+
+	if(is_folded()) {
+		return nodes;
+	}
+
+	// Calculate height modification.
+	// For this, we only increase height if the best size of the tree (that is, the size with the new node)
+	// is larger than its current size. This prevents the scrollbar being reserved even when there's obviously
+	// enough visual space.
+
+	// Throw away cached best size to force a recalculation.
+	get_tree_view().layout_initialize(false);
+
+	const point current_size = get_tree_view().content_grid()->get_size();
+	const point tree_best_size = get_tree_view().get_best_size();
+
+	const int height_modification = tree_best_size.y > current_size.y && get_tree_view().layout_size() == point()
+		? tree_best_size.y - current_size.y
+		: 0;
+
+	assert(height_modification >= 0);
+
+	// Request new size.
+	auto& last_node = children_.at(children_.size()-1);
+	get_tree_view().resize_content(width_modification, height_modification, -1, last_node->calculate_ypos());
+
+	return nodes;
 }
 
 unsigned tree_view_node::get_indentation_level() const
