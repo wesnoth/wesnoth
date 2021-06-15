@@ -1119,7 +1119,7 @@ int game_lua_kernel::impl_game_config_get(lua_State *L)
 		gamedata().get_victory_music());
 	return_vector_string_attrib_deprecated("active_resources", "wesnoth.game_config", INDEFINITE, "1.17", "Use wesnoth.scenario.resources instead",
 		utils::split(play_controller_.get_loaded_resources()));
-	
+
 	if(strcmp(m, "global_traits") == 0) {
 		lua_newtable(L);
 		for(const config& trait : unit_types.traits()) {
@@ -1144,7 +1144,7 @@ int game_lua_kernel::impl_game_config_get(lua_State *L)
 			game_config_manager::get()->game_config().find_child("era","id",classification.era_id));
 		//^ finds the era with name matching mp_era, and creates a lua reference from the config of that era.
 	}
-	
+
 	return lua_kernel_base::impl_game_config_get(L);
 }
 
