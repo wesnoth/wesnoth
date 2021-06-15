@@ -23,7 +23,7 @@
 #include <string>
 
 class config;
-
+class config_attribute_value;
 extern bool strict_validation_enabled;
 
 /**
@@ -84,7 +84,7 @@ public:
 
 	virtual void validate_key(const config & cfg,
 							  const std::string & name,
-							  const std::string & value,
+							  const config_attribute_value & value,
 							  int start_line,
 							  const std::string &file) = 0;
 	/**

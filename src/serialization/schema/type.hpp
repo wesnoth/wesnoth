@@ -23,6 +23,7 @@
 #include <boost/regex.hpp>
 
 class config;
+class config_attribute_value;
 
 namespace schema_validation
 {
@@ -39,7 +40,7 @@ public:
 	explicit wml_type(const std::string& name) : name_(name) {}
 	using ptr = std::shared_ptr<wml_type>;
 	using map = std::map<std::string, ptr>;
-	virtual bool matches(const std::string& value, const map& type_map) const = 0;
+	virtual bool matches(const config_attribute_value& value, const map& type_map) const = 0;
 	static std::shared_ptr<wml_type> from_config(const config& cfg);
 	virtual ~wml_type() {}
 };
@@ -50,9 +51,11 @@ public:
  */
 class wml_type_simple : public wml_type {
 	boost::regex pattern_;
+	bool allow_translatable_ = false;
 public:
 	wml_type_simple(const std::string& name, const std::string& pattern) : wml_type(name), pattern_(pattern) {}
-	bool matches(const std::string& value, const map& type_map) const override;
+	bool matches(const config_attribute_value& value, const map& type_map) const override;
+	void allow_translatable() {allow_translatable_ =  true;}
 };
 
 /**
@@ -64,7 +67,7 @@ class wml_type_alias : public wml_type {
 	std::string link_;
 public:
 	wml_type_alias(const std::string& name, const std::string& link) : wml_type(name), link_(link) {}
-	bool matches(const std::string& value, const map& type_map) const override;
+	bool matches(const config_attribute_value& value, const map& type_map) const override;
 };
 
 /**
@@ -89,7 +92,7 @@ public:
 class wml_type_union : public wml_type_composite {
 public:
 	explicit wml_type_union(const std::string& name) : wml_type_composite(name) {}
-	bool matches(const std::string& value, const map& type_map) const override;
+	bool matches(const config_attribute_value& value, const map& type_map) const override;
 };
 
 /**
@@ -99,7 +102,7 @@ public:
 class wml_type_intersection : public wml_type_composite {
 public:
 	explicit wml_type_intersection(const std::string& name) : wml_type_composite(name) {}
-	bool matches(const std::string& value, const map& type_map) const override;
+	bool matches(const config_attribute_value& value, const map& type_map) const override;
 };
 
 /**
@@ -116,6 +119,13 @@ public:
 		, min_(min)
 		, max_(max)
 	{}
-	bool matches(const std::string& value, const map& type_map) const override;
+	bool matches(const config_attribute_value& value, const map& type_map) const override;
 };
+
+class wml_type_tstring : public wml_type {
+public:
+	wml_type_tstring() : wml_type("t_string") {}
+	bool matches(const config_attribute_value& value, const map& type_map) const override;
+};
+
 }

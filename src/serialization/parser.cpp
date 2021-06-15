@@ -344,7 +344,7 @@ void parser::parse_variable()
 				}
 
 				if(validator_) {
-					validator_->validate_key(cfg, *curvar, buffer.value(), tok_.get_start_line(), tok_.get_file());
+					validator_->validate_key(cfg, *curvar, cfg[*curvar], tok_.get_start_line(), tok_.get_file());
 				}
 
 				buffer = t_string_base();
@@ -427,7 +427,7 @@ finish:
 	}
 
 	if(validator_) {
-		validator_->validate_key(cfg, *curvar, buffer.value(), tok_.get_start_line(), tok_.get_file());
+		validator_->validate_key(cfg, *curvar, cfg[*curvar], tok_.get_start_line(), tok_.get_file());
 	}
 
 	while(++curvar != variables.end()) {

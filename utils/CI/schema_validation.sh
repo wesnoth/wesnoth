@@ -109,7 +109,7 @@ validate_schema "WML Diff"     "diff"         || RET=1
 validate_core "Core" || RET=1
 validate_misc "Editor"      "EDITOR" || RET=1
 validate_misc "Multiplayer" "MULTIPLAYER,MULTIPLAYER_A_NEW_LAND_LOAD" || RET=1
-validate_misc "Test"        "TEST,SCHEMA_SHOULD_SKIP_THIS"            || RET=1
+validate_misc "Test"        "TEST"            || RET=1
 validate_misc "World_Conquest" "MULTIPLAYER,LOAD_WC2,LOAD_WC2_EVEN_THOUGH_IT_NEEDS_A_NEW_MAINTAINER" || RET=1
 validate_campaign "Dead_Water"              "CAMPAIGN_DEAD_WATER"              "EASY" "NORMAL" "HARD" "NIGHTMARE" || RET=1
 validate_campaign "Delfadors_Memoirs"       "CAMPAIGN_DELFADORS_MEMOIRS"       "EASY" "NORMAL" "HARD"             || RET=1
@@ -125,7 +125,7 @@ validate_campaign "Son_Of_The_Black_Eye"    "CAMPAIGN_SON_OF_THE_BLACK_EYE"    "
 validate_campaign "The_Hammer_of_Thursagan" "CAMPAIGN_THE_HAMMER_OF_THURSAGAN" "EASY" "NORMAL" "HARD"             || RET=1
 validate_campaign "The_Rise_Of_Wesnoth"     "CAMPAIGN_THE_RISE_OF_WESNOTH"     "EASY" "NORMAL" "HARD"             || RET=1
 validate_campaign "The_South_Guard"         "CAMPAIGN_THE_SOUTH_GUARD"         "EASY" "NORMAL" "HARD"             || RET=1
-validate_campaign "tutorial"                "TUTORIAL"                         "EASY" "NORMAL" "HARD"             || RET=1
+validate_campaign "tutorial"                "TUTORIAL"                         "EASY"                             || RET=1
 validate_campaign "Two_Brothers"            "CAMPAIGN_TWO_BROTHERS"            "EASY" "HARD"                      || RET=1
 validate_campaign "Under_the_Burning_Suns"  "CAMPAIGN_UNDER_THE_BURNING_SUNS"  "EASY" "NORMAL" "HARD"             || RET=1
 
