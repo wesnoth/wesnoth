@@ -4434,8 +4434,8 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 	static luaL_Reg const sync_callbacks[] {
 		{ "invoke_command",    &intf_invoke_synced_command },
 		{ "run_unsynced",      &intf_do_unsynced },
-		{ "evaluate",          &intf_synchronize_choice },
-		{ "multi_evaluate",    &intf_synchronize_choices },
+		{ "evaluate_single",   &intf_synchronize_choice },
+		{ "evaluate_multiple", &intf_synchronize_choices },
 		{ nullptr, nullptr }
 	};
 	lua_getglobal(L, "wesnoth");

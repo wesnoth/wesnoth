@@ -20,7 +20,7 @@ That means before loading the WML tags via wesnoth.require "wml".
 
 function wml_actions.sync_variable(cfg)
 	local names = cfg.name or wml.error "[sync_variable] missing required name= attribute."
-	local result = wesnoth.sync.evaluate(
+	local result = wesnoth.sync.evaluate_single(
 		function()
 			local res = {}
 			for _,name_raw in ipairs(names:split()) do

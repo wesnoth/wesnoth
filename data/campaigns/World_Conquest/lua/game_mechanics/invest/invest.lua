@@ -139,7 +139,7 @@ function wc2_invest.invest()
 	local gold_available = true
 	for i = 1,2 do
 		local is_local = false
-		local res = wesnoth.sync.evaluate(_"WC2 Invest", function()
+		local res = wesnoth.sync.evaluate_single(_"WC2 Invest", function()
 			is_local = true
 			return wc2_show_invest_dialog {
 				items_available = items_available,

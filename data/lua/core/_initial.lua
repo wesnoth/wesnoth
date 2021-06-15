@@ -165,6 +165,6 @@ if wesnoth.kernel_type() == 'Game Lua Kernel' then
 	
 	wesnoth.invoke_synced_command = wesnoth.deprecate_api('wesnoth.invoke_synced_command', 'wesnoth.sync.invoke_command', 1, nil, wesnoth.sync.invoke_command)
 	wesnoth.unsynced = wesnoth.deprecate_api('wesnoth.unsynced', 'wesnoth.sync.run_unsynced', 1, nil, wesnoth.sync.run_unsynced)
-	wesnoth.synchronize_choice = wesnoth.deprecate_api('wesnoth.synchronize_choice', 'wesnoth.sync.evaluate', 1, nil, wesnoth.sync.evaluate)
-	wesnoth.synchronize_choices = wesnoth.deprecate_api('wesnoth.synchronize_choices', 'wesnoth.sync.multi_evaluate', 1, nil, wesnoth.sync.multi_evaluate)
+	wesnoth.synchronize_choice = wesnoth.deprecate_api('wesnoth.synchronize_choice', 'wesnoth.sync.evaluate_single', 1, nil, wesnoth.sync.evaluate_single)
+	wesnoth.synchronize_choices = wesnoth.deprecate_api('wesnoth.synchronize_choices', 'wesnoth.sync.evaluate_multiple', 1, nil, wesnoth.sync.evaluate_multiple)
 end
