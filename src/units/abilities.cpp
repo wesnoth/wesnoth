@@ -854,6 +854,34 @@ std::string attack_type::weapon_specials(bool only_active, bool is_backstab) con
 		}
 	}
 
+	assert(display::get_singleton());
+	const unit_map& units = display::get_singleton()->get_units();
+	if(self_){
+		std::set<std::string> checking_name;
+		const auto adjacent = get_adjacent_tiles(self_loc_);
+		for(unsigned i = 0; i < adjacent.size(); ++i) {
+			const unit_map::const_iterator it = units.find(adjacent[i]);
+			if (it == units.end() || it->incapacitated())
+				continue;
+			for (const config::any_child &sp : (*it).abilities().all_children_range()){
+				bool affect_adj_or_self;
+				if ( &*it == self_.get() ){
+					affect_adj_or_self = check_self_abilities(sp.cfg, sp.key);
+				} else {
+					affect_adj_or_self = check_adj_abilities(sp.cfg, sp.key, i , *it);
+				}
+				const bool active = (*it).checking_tags().count(sp.key) != 0 && affect_adj_or_self && special_active(sp.cfg, AFFECT_EITHER, sp.key, is_backstab, "filter_student");
+
+				const std::string& name = active ? sp.cfg["name"].str() : "";
+
+				if (!name.empty() && checking_name.count(name) == 0) {
+					checking_name.insert(std::move(name));
+					if (!res.empty()) res += ", ";
+					res += name;
+				}
+			}
+		}
+	}
 	return res;
 }
 
