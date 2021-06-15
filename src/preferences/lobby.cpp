@@ -32,11 +32,6 @@ bool auto_open_whisper_windows()
 	return preferences::get("lobby_auto_open_whisper_windows", true);
 }
 
-bool playerlist_group_players()
-{
-	return preferences::get("lobby_playerlist_group_players", true);
-}
-
 bool fi_invert()
 {
 	return preferences::get("fi_invert", false);
