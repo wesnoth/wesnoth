@@ -104,7 +104,7 @@ void sub_player_list::update_player_count_label()
 void player_list::init(window& w)
 {
 	active_game.init(w, _("Selected Game"), true);
-	other_rooms.init(w, _("Lobby"), true);
+	lobby_players.init(w, _("Lobby"), true);
 	other_games.init(w, _("Other Games"));
 
 	tree = find_widget<tree_view>(&w, "player_tree", false, true);
@@ -585,35 +585,34 @@ void mp_lobby::update_playerlist()
 
 	assert(player_list_.active_game.tree);
 	assert(player_list_.other_games.tree);
-	assert(player_list_.other_rooms.tree);
+	assert(player_list_.lobby_players.tree);
 
 	unsigned scrollbar_position = player_list_.tree->get_vertical_scrollbar_item_position();
 
 	player_list_.active_game.tree->clear();
 	player_list_.other_games.tree->clear();
-	player_list_.other_rooms.tree->clear();
+	player_list_.lobby_players.tree->clear();
 
-	for(auto& user : lobby_info_.users()) {
-		sub_player_list* target_list(nullptr);
-
+	std::map<std::string, std::map<std::string, string_map>> lobby_player_items;
+	std::map<std::string, std::map<std::string, string_map>> active_game_items;
+	std::map<std::string, std::map<std::string, string_map>> other_game_items;
+	for(const auto& user : lobby_info_.users()) {
 		std::string name = user.name;
 
 		std::stringstream icon_ss;
+
 		icon_ss << "lobby/status";
 		switch(user.state) {
 			case mp::user_info::user_state::LOBBY:
 				icon_ss << "-lobby";
-				target_list = &player_list_.other_rooms;
 				break;
 			case mp::user_info::user_state::SEL_GAME:
 				name = colorize(name, {0, 255, 255});
 				icon_ss << (user.observing ? "-obs" : "-playing");
-				target_list = &player_list_.active_game;
 				break;
 			case mp::user_info::user_state::GAME:
 				name = colorize(name, font::GRAY_COLOR);
 				icon_ss << (user.observing ? "-obs" : "-playing");
-				target_list = &player_list_.other_games;
 				break;
 			default:
 				ERR_LB << "Bad user state in lobby: " << user.name << ": " << static_cast<int>(user.state) << "\n";
@@ -639,8 +638,6 @@ void mp_lobby::update_playerlist()
 
 		icon_ss << ".png";
 
-		assert(target_list->tree);
-
 		string_map tree_group_field;
 		std::map<std::string, string_map> tree_group_item;
 
@@ -652,14 +649,37 @@ void mp_lobby::update_playerlist()
 		tree_group_field["use_markup"] = "true";
 		tree_group_item["name"] = tree_group_field;
 
-		tree_view_node& player = target_list->tree->add_child("player", tree_group_item);
+		switch(user.state) {
+			case mp::user_info::user_state::LOBBY:
+				lobby_player_items[user.name] = tree_group_item;
+				break;
+			case mp::user_info::user_state::SEL_GAME:
+				active_game_items[user.name] = tree_group_item;
+				break;
+			case mp::user_info::user_state::GAME:
+				other_game_items[user.name] = tree_group_item;
+				break;
+			default:
+				ERR_LB << "Bad user state in lobby: " << user.name << ": " << static_cast<int>(user.state) << "\n";
+				continue;
+		}
+	}
 
-		connect_signal_mouse_left_double_click(find_widget<toggle_panel>(&player, "tree_view_node_label", false),
-			std::bind(&mp_lobby::user_dialog_callback, this, &user));
+	for(const auto& player : player_list_.active_game.tree->replace_children("player", active_game_items)) {
+		 connect_signal_mouse_left_double_click(find_widget<toggle_panel>(player.second.get(), "tree_view_node_label", false),
+		 	std::bind(&mp_lobby::user_dialog_callback, this, lobby_info_.get_user(player.first)));
+	}
+	for(const auto& player : player_list_.lobby_players.tree->replace_children("player", lobby_player_items)) {
+		 connect_signal_mouse_left_double_click(find_widget<toggle_panel>(player.second.get(), "tree_view_node_label", false),
+		 	std::bind(&mp_lobby::user_dialog_callback, this, lobby_info_.get_user(player.first)));
+	}
+	for(const auto& player : player_list_.other_games.tree->replace_children("player", other_game_items)) {
+		 connect_signal_mouse_left_double_click(find_widget<toggle_panel>(player.second.get(), "tree_view_node_label", false),
+		 	std::bind(&mp_lobby::user_dialog_callback, this, lobby_info_.get_user(player.first)));
 	}
 
 	player_list_.active_game.update_player_count_label();
-	player_list_.other_rooms.update_player_count_label();
+	player_list_.lobby_players.update_player_count_label();
 	player_list_.other_games.update_player_count_label();
 
 	// Don't attempt to restore the scroll position if the window hasn't been laid out yet

@@ -35,8 +35,7 @@ class tree_view_node : public widget
 	friend class tree_view;
 
 public:
-	using ptr_t = std::shared_ptr<tree_view_node>;
-	using node_children_vector = std::vector<ptr_t>;
+	using node_children_vector = std::vector<std::shared_ptr<tree_view_node>>;
 
 	bool operator==(const tree_view_node& node)
 	{
@@ -74,13 +73,26 @@ public:
 	}
 
 	/**
+	 * Replaces all children of this tree with new children.
+	 * The motivation here is to provide a way to add multiple children without calculating the trees size for each child added.
+	 * This is a waste of time since the results of that resizing will be immediately thrown out except for the final child added.
+	 *
+	 * @param id The id of the node definition to use for the new nodes.
+	 * @param data data.first is a unique identifying value to be associated to the respective tree_view_node that's returned.
+	 * 			   data.second is the data to provide to the tree_node_view's constructor.
+	 * @return return_value.first is data.first
+	 * 		   return_value.second is the tree_view_node created from data.second
+	 */
+	std::map<std::string, std::shared_ptr<gui2::tree_view_node>> replace_children(const std::string& id, const std::map<std::string, std::map<std::string /* widget id */, string_map>>& data);
+
+	/**
 	 * Adds a previously-constructed node as a child of this node at the given position.
 	 *
 	 * @param new_node            A smart pointer to the node object to insert.
 	 * @param index               The item before which to add the new item,
 	 *                            0 == begin, -1 == end.
 	 */
-	tree_view_node& add_child(ptr_t new_node, const int index = -1)
+	tree_view_node& add_child(std::shared_ptr<tree_view_node> new_node, const int index = -1)
 	{
 		new_node->parent_node_ = this;
 		return add_child_impl(std::move(new_node), index);
@@ -109,7 +121,7 @@ public:
 
 private:
 	/** Implementation detail for @ref add_child. */
-	tree_view_node& add_child_impl(ptr_t&& new_node, const int index);
+	tree_view_node& add_child_impl(std::shared_ptr<tree_view_node>&& new_node, const int index);
 
 public:
 	/**
