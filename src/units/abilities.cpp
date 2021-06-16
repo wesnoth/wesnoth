@@ -872,7 +872,7 @@ std::string attack_type::weapon_specials(bool only_active, bool is_backstab) con
 				const std::string& name = active ? sp.cfg["name"].str() : "";
 
 				if (!name.empty() && checking_name.count(name) == 0) {
-					checking_name.insert(std::move(name));
+					checking_name.insert(name);
 					if (!res.empty()) res += ", ";
 					res += name;
 				}
