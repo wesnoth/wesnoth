@@ -837,34 +837,6 @@ WML_HANDLER_FUNCTION(store_rotate_map_location,, cfg)
 	}
 }
 
-
-/**
- * Store time of day config in a WML variable. This is useful for those who
- * are too lazy to calculate the corresponding time of day for a given turn,
- * or if the turn / time-of-day sequence mutates in a scenario.
- */
-WML_HANDLER_FUNCTION(store_time_of_day,, cfg)
-{
-	const map_location loc = cfg_to_loc(cfg);
-	int turn = cfg["turn"];
-	// using 0 will use the current turn
-	const time_of_day& tod = resources::tod_manager->get_time_of_day(loc,turn);
-
-	std::string variable = cfg["variable"];
-	if(variable.empty()) {
-		variable = "time_of_day";
-	}
-	try
-	{
-		variable_access_create store = resources::gamedata->get_variable_access_write(variable);
-		tod.write(store.as_container());
-	}
-	catch(const invalid_variablename_exception&)
-	{
-		ERR_NG << "Found invalid variablename " << variable << " in [store_time_of_day] with " << cfg.get_config().debug() << "\n";
-	}
-}
-
 WML_HANDLER_FUNCTION(tunnel,, cfg)
 {
 	const bool remove = cfg["remove"].to_bool(false);

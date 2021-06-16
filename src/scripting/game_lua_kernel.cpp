@@ -930,6 +930,10 @@ int game_lua_kernel::intf_get_time_of_day(lua_State *L)
 	lua_setfield(L, -2, "image");
 	luaW_pushtstring(L, tod.name);
 	lua_setfield(L, -2, "name");
+	lua_pushstring(L, tod.sounds.c_str());
+	lua_setfield(L, -2, "sound");
+	lua_pushstring(L, tod.image_mask.c_str());
+	lua_setfield(L, -2, "mask");
 
 	lua_pushinteger(L, tod.color.r);
 	lua_setfield(L, -2, "red");
