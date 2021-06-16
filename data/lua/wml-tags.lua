@@ -773,12 +773,12 @@ function wml_actions.print(cfg)
 		wml_floating_label:remove()
 	end
 	if cfg.size then
-		table.insert(label_text, cfg.size)
+		label_text.size = cfg.size
 	end
 	if cfg.color then
-		table.insert(label_text, stringx.split(cfg.color))
+		label_text.color = stringx.split(cfg.color)
 	elseif cfg.red or cfg.green or cfg.blue then
-		table.insert(label_text, {cfg.red or 0, cfg.green or 0, cfg.blue or 0})
+		label_text.color = {cfg.red or 0, cfg.green or 0, cfg.blue or 0}
 	end
 	local offset = nil
 	if cfg.x_offset or cfg.y_offset then

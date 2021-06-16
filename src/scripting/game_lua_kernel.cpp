@@ -2315,9 +2315,9 @@ int game_lua_kernel::intf_move_floating_label(lua_State* L)
 }
 
 /**
- * Arg 1: text info - "string" or {"string", [size], [{r,g,b}]}
- * Arg 2: duration info - integer, "infinity", or {duration = integer, fade_time = integer}
- * Arg 3: screen location
+ * Arg 1: text info - "string" or {"string", [size = integer], [color = {r,g,b}|hex]}
+ * Arg 2: optional duration info - integer, "infinity", or {duration = integer, fade_time = integer}
+ * Arg 3: optional screen location, relative to screen centre
  * Returns: label handle
  */
 int game_lua_kernel::intf_set_floating_label(lua_State* L, bool spawn)
@@ -2330,30 +2330,28 @@ int game_lua_kernel::intf_set_floating_label(lua_State* L, bool spawn)
 		if(lua_type(L, first_arg) != LUA_TTABLE) {
 			return luaW_type_error(L, 1, "string or table");
 		}
-		for(lua_Unsigned i = 1; i <= lua_rawlen(L, first_arg); i++) {
-			lua_geti(L, first_arg, i);
-			if(i == 1) {
-				text = luaW_checktstring(L, -1);
-			} else switch(lua_type(L, -1)) {
-				default:
-					return luaL_error(L, "unknown floating label text setting - should be either size (integer) or color (hex string or array of 3 integers)");
-				case LUA_TNUMBER:
-					size = lua_tointeger(L, -1);
-					break;
-				case LUA_TSTRING:
-					color = color_t::from_hex_string(lua_tostring(L, -1));
-					break;
-				case LUA_TTABLE:
-					auto vec = lua_check<std::vector<int>>(L, -1);
-					if(vec.size() != 3) {
-						return luaL_error(L, "floating label text color should be a hex string or an array of 3 integers");
-					}
-					color.r = vec[0];
-					color.g = vec[1];
-					color.b = vec[2];
-					break;
+		if(!luaW_tableget(L, first_arg, "text")) {
+			lua_geti(L, first_arg, 1);
+			if(lua_isnoneornil(L, -1)) {
+				return luaL_argerror(L, 1, "string or table with string as first element");
 			}
-			lua_pop(L, 1);
+		}
+		text = luaL_checkstring(L, -1);
+		if(luaW_tableget(L, first_arg, "size")) {
+			size = luaL_checkinteger(L, -1);
+		}
+		if(luaW_tableget(L, first_arg, "color")) {
+			if(lua_isstring(L, -1)) {
+				color = color_t::from_hex_string(lua_tostring(L, -1));
+			} else {
+				auto vec = lua_check<std::vector<int>>(L, -1);
+				if(vec.size() != 3) {
+					return luaL_error(L, "floating label text color should be a hex string or an array of 3 integers");
+				}
+				color.r = vec[0];
+				color.g = vec[1];
+				color.b = vec[2];
+			}
 		}
 	}
 
@@ -2369,6 +2367,13 @@ int game_lua_kernel::intf_set_floating_label(lua_State* L, bool spawn)
 			} else {
 				lifetime = luaW_table_get_def(L, first_arg + 1, "duration", 2000);
 				fadeout = luaW_table_get_def(L, first_arg + 1, "fade_time", 100);
+				// Check for lifetime = 'infinity'
+				auto actual_lifetime = luaW_table_get_def<std::string_view>(L, first_arg + 1, "duration", "");
+				if(actual_lifetime == "infinity") {
+					lifetime = -1;
+				} else if(actual_lifetime != std::to_string(lifetime)) {
+					return luaW_type_error(L, first_arg + 1, "that duration should be integer or 'infinity'");
+				}
 			}
 			break;
 		case LUA_TNUMBER:
