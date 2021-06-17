@@ -203,7 +203,7 @@ double combat_phase::evaluate()
 		bool skip_attack = false;
 		for(std::size_t i = 0; i != it->movements.size(); ++i) {
 			const unit_map::const_iterator u = units_.find(it->movements[i].first);
-			if (!is_allowed_unit(*u)) {
+			if (!u.valid() || (!is_allowed_unit(*u))) {
 				skip_attack = true;
 				break;
 			}
