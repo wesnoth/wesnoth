@@ -256,9 +256,11 @@ end)
 on_event("prestart", function()
 	local leaders = wesnoth.units.find_on_map { side = "3,4", canrecruit= true}
 	if #leaders < 2 then
-		create_timed_spawns(6, 11, 25, 5, 3, 21)
+		--create_timed_spawns(5, 11, 50, 5, 4, 21)
+		create_timed_spawns(5, 11, 50, 5, 4, 18)
 	else
-		create_timed_spawns(5, 11, 55, 4, 4, 23)
+		--create_timed_spawns(4, 11, 90, 4, 5, 23)
+		create_timed_spawns(5, 11, 90, 4, 5, 20)
 	end
 end)
 
