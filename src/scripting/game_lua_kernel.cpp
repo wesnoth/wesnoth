@@ -2336,7 +2336,7 @@ int game_lua_kernel::intf_set_floating_label(lua_State* L, bool spawn)
 				return luaL_argerror(L, 1, "string or table with string as first element");
 			}
 		}
-		text = luaL_checkstring(L, -1);
+		text = luaW_checktstring(L, -1);
 		if(luaW_tableget(L, first_arg, "size")) {
 			size = luaL_checkinteger(L, -1);
 		}
