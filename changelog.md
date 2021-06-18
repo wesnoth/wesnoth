@@ -28,6 +28,10 @@
  ### Miscellaneous and Bug Fixes
    * The unit description tooltip in the sidebar now includes the text from `[special_note]`s.
    * Added a collection of item images
+   * AI: fixed crash when using attacks aspect with invalidate_on_gamestate_change=no
+   * AI: fixed crash when using custom_synced_commands
+   * Micro AIs: fixed unit variables getting lost when continuing from replay
+   * Fixed AI state initialization problem after reloading
 
 ## Version 1.15.13
  ### Add-ons client
