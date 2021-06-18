@@ -1998,7 +1998,12 @@ int game_lua_kernel::intf_print(lua_State *L) {
 		return 0;
 
 	int size = cfg["size"].to_int(font::SIZE_SMALL);
-	int lifetime = cfg["duration"].to_int(50);
+	int lifetime;
+	if(cfg["duration"] == "unlimited") {
+		lifetime = -1;
+	} else {
+		lifetime = cfg["duration"].to_int(5000);
+	}
 
 	color_t color = font::LABEL_COLOR;
 
