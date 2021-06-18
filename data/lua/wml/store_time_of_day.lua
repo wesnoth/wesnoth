@@ -12,9 +12,9 @@ function wesnoth.wml_actions.store_time_of_day(cfg)
 
 	local out
 	if x and y then
-		out = wesnoth.get_time_of_day(turn, {x, y})
+		out = wesnoth.schedule.get_time_of_day(x, y, turn)
 	else
-		out = wesnoth.get_time_of_day(turn)
+		out = wesnoth.schedule.get_time_of_day(nil, turn)
 	end
 
 	for key, value in pairs(out) do
