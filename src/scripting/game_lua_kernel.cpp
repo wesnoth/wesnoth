@@ -960,7 +960,7 @@ int game_lua_kernel::impl_schedule_get(lua_State *L)
 			return_string_attrib("time_of_day", tod_man().get_time_of_day().id);
 			return_int_attrib("liminal_bonus", tod_man().get_max_liminal_bonus());
 		}
-		
+
 		if(luaW_getglobal(L, "wesnoth", "schedule", m)) {
 			return 1;
 		}
@@ -1117,7 +1117,7 @@ int game_lua_kernel::intf_get_time_of_day(lua_State *L)
 		// We just need SOME location in that area, it doesn't matter which one.
 		loc = *area.begin();
 	}
-	
+
 	if(lua_isnumber(L, 2)) {
 		for_turn = luaL_checkinteger(L, 1);
 		int number_of_turns = tod_man().number_of_turns();
@@ -3834,7 +3834,7 @@ int game_lua_kernel::intf_replace_schedule(lua_State * L)
 		// Replace the global schedule with a time area's schedule
 		// The expectation is that you call schedule.replace(time_area.schedule),
 		// rather than passing a literal location.
-		
+
 	} else {
 		vconfig cfg = luaW_checkvconfig(L, 1);
 
@@ -4430,7 +4430,7 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 	luaL_setfuncs(L, audio_callbacks, 0);
 	lua_setfield(L, -2, "audio");
 	lua_pop(L, 1);
-	
+
 	// Create the schedule module
 	cmd_log_ << "Adding schedule module...\n";
 	static luaL_Reg const schedule_callbacks[] {
