@@ -2365,14 +2365,18 @@ int game_lua_kernel::intf_set_floating_label(lua_State* L, bool spawn)
 			if(luaW_tolocation(L, first_arg + 1, loc)) {
 				found_location = true;
 			} else {
-				lifetime = luaW_table_get_def(L, first_arg + 1, "duration", 2000);
 				fadeout = luaW_table_get_def(L, first_arg + 1, "fade_time", 100);
-				// Check for lifetime = 'infinity'
-				auto actual_lifetime = luaW_table_get_def<std::string_view>(L, first_arg + 1, "duration", "");
-				if(actual_lifetime == "infinity") {
-					lifetime = -1;
-				} else if(actual_lifetime != std::to_string(lifetime)) {
-					return luaL_argerror(L, first_arg + 1, "duration should be integer or 'infinity'");
+				if(luaW_tableget(L, first_arg + 1, "duration")) {
+					int found_number;
+					lifetime = lua_tointegerx(L, -1, &found_number);
+					if(!found_number && !lua_isnil(L, -1)) {
+						auto value = luaW_tostring(L, -1);
+						if(value == "infinity") {
+							lifetime = -1;
+						} else {
+							return luaL_argerror(L, first_arg + 1, "duration should be integer or 'infinity'");
+						}
+					}
 				}
 			}
 			break;
