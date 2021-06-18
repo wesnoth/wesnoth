@@ -2372,7 +2372,7 @@ int game_lua_kernel::intf_set_floating_label(lua_State* L, bool spawn)
 				if(actual_lifetime == "infinity") {
 					lifetime = -1;
 				} else if(actual_lifetime != std::to_string(lifetime)) {
-					return luaW_type_error(L, first_arg + 1, "that duration should be integer or 'infinity'");
+					return luaL_argerror(L, first_arg + 1, "duration should be integer or 'infinity'");
 				}
 			}
 			break;
