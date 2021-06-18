@@ -4428,7 +4428,7 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 	luaL_setfuncs(L, audio_callbacks, 0);
 	lua_setfield(L, -2, "audio");
 	lua_pop(L, 1);
-	
+
 	// Create the sync module
 	cmd_log_ << "Adding sync module...\n";
 	static luaL_Reg const sync_callbacks[] {
