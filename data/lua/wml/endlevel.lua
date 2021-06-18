@@ -92,7 +92,7 @@ function wesnoth.wml_actions.endlevel(cfg)
 		end
 	end
 
-	wesnoth.end_level {
+	wesnoth.scenario.end_level_data = {
 		carryover_report = cfg.carryover_report,
 		save = cfg.save,
 		replay_save = cfg.replay_save,

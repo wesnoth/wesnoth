@@ -1192,6 +1192,61 @@ namespace {
 	}
 }
 
+static int impl_end_level_data_get(lua_State* L)
+{
+	const end_level_data& data = *static_cast<end_level_data*>(lua_touserdata(L, 1));
+	const char* m = luaL_checkstring(L, 2);
+
+	return_bool_attrib("linger_mode", data.transient.linger_mode);
+	return_bool_attrib("reveal_map", data.transient.reveal_map);
+	return_bool_attrib("carryover_report", data.transient.carryover_report);
+	return_bool_attrib("prescenario_save", data.prescenario_save);
+	return_bool_attrib("replay_save", data.replay_save);
+	return_bool_attrib("proceed_to_next_level", data.proceed_to_next_level);
+	return_bool_attrib("is_victory", data.is_victory);
+	return_bool_attrib("is_loss", !data.is_victory);
+	return_cstring_attrib("result", data.is_victory ? "victory" : "loss"); // to match wesnoth.end_level()
+	return_string_attrib("test_result", data.test_result);
+	return_cfg_attrib("__cfg", data.to_config_full());
+
+	return 0;
+}
+
+namespace {
+	struct end_level_committer {
+		end_level_committer(end_level_data& data, play_controller& pc) : data_(data), pc_(pc) {}
+		~end_level_committer() {
+			pc_.set_end_level_data(data_);
+		}
+	private:
+		end_level_data& data_;
+		play_controller& pc_;
+	};
+}
+
+int game_lua_kernel::impl_end_level_data_set(lua_State* L)
+{
+	end_level_data& data = *static_cast<end_level_data*>(lua_touserdata(L, 1));
+	const char* m = luaL_checkstring(L, 2);
+	end_level_committer commit(data, play_controller_);
+
+	modify_bool_attrib("linger_mode", data.transient.linger_mode = value);
+	modify_bool_attrib("reveal_map", data.transient.reveal_map = value);
+	modify_bool_attrib("carryover_report", data.transient.carryover_report = value);
+	modify_bool_attrib("prescenario_save", data.prescenario_save = value);
+	modify_bool_attrib("replay_save", data.replay_save = value);
+	modify_string_attrib("test_result", data.test_result = value);
+
+	return 0;
+}
+
+static int impl_end_level_data_collect(lua_State* L)
+{
+	end_level_data* data = static_cast<end_level_data*>(lua_touserdata(L, 1));
+	data->~end_level_data();
+	return 0;
+}
+
 /**
  * Gets some scenario data (__index metamethod).
  * - Arg 1: userdata (ignored).
@@ -1235,6 +1290,25 @@ int game_lua_kernel::impl_scenario_get(lua_State *L)
 		lua_push(L, mods);
 		return 1;
 	}
+	if(strcmp(m, "end_level_data") == 0) {
+		if (!play_controller_.is_regular_game_end()) {
+			return 0;
+		}
+		auto data = play_controller_.get_end_level_data();
+		new(L) end_level_data(data);
+		if(luaL_newmetatable(L, "end level data")) {
+			static luaL_Reg const callbacks[] {
+				{ "__index", 	    &impl_end_level_data_get},
+				{ "__newindex",     &dispatch<&game_lua_kernel::impl_end_level_data_set>},
+				{ "__gc",           &impl_end_level_data_collect},
+				{ nullptr, nullptr }
+			};
+			luaL_setfuncs(L, callbacks, 0);
+		}
+		lua_setmetatable(L, -2);
+
+		return 1;
+	}
 
 	if(classification.is_multiplayer()) {
 		return_cfgref_attrib("mp_settings", play_controller_.get_mp_settings().to_config());
@@ -1264,6 +1338,22 @@ int game_lua_kernel::impl_scenario_set(lua_State *L)
 	modify_bool_attrib("show_credits", classification.end_credits = value);
 	modify_string_attrib("end_text", classification.end_text = value);
 	modify_int_attrib("end_text_duration", classification.end_text_duration = value);
+	if(strcmp(m, "end_level_data") == 0) {
+		vconfig cfg(luaW_checkvconfig(L, 3));
+		end_level_data data;
+
+		data.proceed_to_next_level = cfg["proceed_to_next_level"].to_bool(true);
+		data.transient.carryover_report = cfg["carryover_report"].to_bool(true);
+		data.prescenario_save = cfg["save"].to_bool(true);
+		data.replay_save = cfg["replay_save"].to_bool(true);
+		data.transient.linger_mode = cfg["linger_mode"].to_bool(true) && !teams().empty();
+		data.transient.reveal_map = cfg["reveal_map"].to_bool(true);
+		data.is_victory = cfg["result"] == "victory";
+		data.test_result = cfg["test_result"].str(LEVEL_RESULT::enum_to_string(LEVEL_RESULT::TEST_NOT_SET));
+		play_controller_.set_end_level_data(data);
+
+		return 1;
+	}
 	return 0;
 }
 
@@ -1391,98 +1481,6 @@ int game_lua_kernel::intf_clear_messages(lua_State*)
 	if (game_display_) {
 		game_display_->get_chat_manager().clear_chat_messages();
 	}
-	return 0;
-}
-
-static int impl_end_level_data_get(lua_State* L)
-{
-	const end_level_data& data = *static_cast<end_level_data*>(lua_touserdata(L, 1));
-	const char* m = luaL_checkstring(L, 2);
-
-	return_bool_attrib("linger_mode", data.transient.linger_mode);
-	return_bool_attrib("reveal_map", data.transient.reveal_map);
-	return_bool_attrib("carryover_report", data.transient.carryover_report);
-	return_bool_attrib("prescenario_save", data.prescenario_save);
-	return_bool_attrib("replay_save", data.replay_save);
-	return_bool_attrib("proceed_to_next_level", data.proceed_to_next_level);
-	return_bool_attrib("is_victory", data.is_victory);
-	return_bool_attrib("is_loss", !data.is_victory);
-	return_cstring_attrib("result", data.is_victory ? "victory" : "loss"); // to match wesnoth.end_level()
-	return_string_attrib("test_result", data.test_result);
-	return_cfg_attrib("__cfg", data.to_config_full());
-
-	return 0;
-}
-
-namespace {
-	struct end_level_committer {
-		end_level_committer(end_level_data& data, play_controller& pc) : data_(data), pc_(pc) {}
-		~end_level_committer() {
-			pc_.set_end_level_data(data_);
-		}
-	private:
-		end_level_data& data_;
-		play_controller& pc_;
-	};
-}
-
-int game_lua_kernel::impl_end_level_data_set(lua_State* L)
-{
-	end_level_data& data = *static_cast<end_level_data*>(lua_touserdata(L, 1));
-	const char* m = luaL_checkstring(L, 2);
-	end_level_committer commit(data, play_controller_);
-
-	modify_bool_attrib("linger_mode", data.transient.linger_mode = value);
-	modify_bool_attrib("reveal_map", data.transient.reveal_map = value);
-	modify_bool_attrib("carryover_report", data.transient.carryover_report = value);
-	modify_bool_attrib("prescenario_save", data.prescenario_save = value);
-	modify_bool_attrib("replay_save", data.replay_save = value);
-	modify_string_attrib("test_result", data.test_result = value);
-
-	return 0;
-}
-
-static int impl_end_level_data_collect(lua_State* L)
-{
-	end_level_data* data = static_cast<end_level_data*>(lua_touserdata(L, 1));
-	data->~end_level_data();
-	return 0;
-}
-
-int game_lua_kernel::intf_get_end_level_data(lua_State* L)
-{
-	if (!play_controller_.is_regular_game_end()) {
-		return 0;
-	}
-	auto data = play_controller_.get_end_level_data();
-	new(L) end_level_data(data);
-	if(luaL_newmetatable(L, "end level data")) {
-		static luaL_Reg const callbacks[] {
-			{ "__index", 	    &impl_end_level_data_get},
-			{ "__newindex",     &dispatch<&game_lua_kernel::impl_end_level_data_set>},
-			{ "__gc",           &impl_end_level_data_collect},
-			{ nullptr, nullptr }
-		};
-		luaL_setfuncs(L, callbacks, 0);
-	}
-	lua_setmetatable(L, -2);
-	return 1;
-}
-
-int game_lua_kernel::intf_end_level(lua_State *L)
-{
-	vconfig cfg(luaW_checkvconfig(L, 1));
-	end_level_data data;
-
-	data.proceed_to_next_level = cfg["proceed_to_next_level"].to_bool(true);
-	data.transient.carryover_report = cfg["carryover_report"].to_bool(true);
-	data.prescenario_save = cfg["save"].to_bool(true);
-	data.replay_save = cfg["replay_save"].to_bool(true);
-	data.transient.linger_mode = cfg["linger_mode"].to_bool(true) && !teams().empty();
-	data.transient.reveal_map = cfg["reveal_map"].to_bool(true);
-	data.is_victory = cfg["result"] == "victory";
-	data.test_result = cfg["test_result"].str(LEVEL_RESULT::enum_to_string(LEVEL_RESULT::TEST_NOT_SET));
-	play_controller_.set_end_level_data(data);
 	return 0;
 }
 
@@ -4010,7 +4008,6 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 		{ "cancel_action",             &dispatch<&game_lua_kernel::intf_cancel_action              >        },
 		{ "clear_messages",            &dispatch<&game_lua_kernel::intf_clear_messages             >        },
 		{ "end_turn",                  &dispatch<&game_lua_kernel::intf_end_turn                   >        },
-		{ "end_level",                 &dispatch<&game_lua_kernel::intf_end_level                  >        },
 		{ "find_cost_map",             &dispatch<&game_lua_kernel::intf_find_cost_map              >        },
 		{ "find_path",                 &dispatch<&game_lua_kernel::intf_find_path                  >        },
 		{ "find_reach",                &dispatch<&game_lua_kernel::intf_find_reach                 >        },
@@ -4018,7 +4015,6 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 		{ "find_vision_range",         &dispatch<&game_lua_kernel::intf_find_vision_range          >        },
 		{ "fire_event",                &dispatch2<&game_lua_kernel::intf_fire_event, false         >        },
 		{ "fire_event_by_id",          &dispatch2<&game_lua_kernel::intf_fire_event, true          >        },
-		{ "get_end_level_data",        &dispatch<&game_lua_kernel::intf_get_end_level_data         >        },
 		{ "get_time_of_day",           &dispatch<&game_lua_kernel::intf_get_time_of_day            >        },
 		{ "get_max_liminal_bonus",     &dispatch<&game_lua_kernel::intf_get_max_liminal_bonus      >        },
 		{ "log_replay",                &dispatch<&game_lua_kernel::intf_log_replay                 >        },
