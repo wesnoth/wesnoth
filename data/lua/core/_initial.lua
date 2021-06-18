@@ -149,16 +149,16 @@ if wesnoth.kernel_type() == 'Game Lua Kernel' then
 		end
 		return get_tod(loc, turn)
 	end
-	
+
 	local function liminal_bonus(...)
 		return wesnoth.current.schedule.liminal_bonus
 	end
-	
+
 	wesnoth.get_time_of_day = wesnoth.deprecate_api('wesnoth.get_time_of_day', 'wesnoth.schedule.get_time_of_day or wesnoth.schedule.get_illumination', 1, nil, get_time_of_day, 'The arguments have changed')
 	wesnoth.set_time_of_day = wesnoth.deprecate_api('wesnoth.set_time_of_day', 'wesnoth.current.schedule.time_of_day', 4, nil, nil)
 	wesnoth.get_max_liminal_bonus = wesnoth.deprecate_api('wesnoth.get_max_liminal_bonus', 'wesnoth.current.schedule.liminal_bonus', 1, nil, liminal_bonus, "It's now a read-write attribute")
 	wesnoth.replace_schedule = wesnoth.deprecate_api('wesnoth.replace_schedule', 'wesnoth.schedule.replace', 1, nil, wesnoth.schedule.replace)
-	
+
 	wesnoth.get_traits = wesnoth.deprecate_api('wesnoth.get_traits', 'wesnoth.game_config.global_traits', 1, nil, function() return wesnoth.game_config.global_traits end)
 	wesnoth.end_level = wesnoth.deprecate_api('wesnoth.end_level', 'wesnoth.scenario.end_level_data assignment', 1, nil, function(cfg) wesnoth.scenario.end_level_data = cfg end)
 	wesnoth.get_end_level_data = wesnoth.deprecate_api('wesnoth.get_end_level_data', 'wesnoth.scenario.end_level_data', 1, nil, function() return wesnoth.scenario.end_level_data end)
