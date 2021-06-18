@@ -7,6 +7,7 @@
  ### Miscellaneous and Bug Fixes
    * Fixed an intermittent crash on the loading screen (issue #5629)
    * Made GUI.pyw compatible with Python 3.9 (issue #5719).
+   * AI: fixed crash when using custom_synced_commands
 
 ## Version 1.14.16
  ### AI
