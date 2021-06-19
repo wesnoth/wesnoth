@@ -7,6 +7,32 @@
    * Sceptre of Fire
      * Revisions to the last two scenarios
  ### Editor
+ ### Lua API
+   * Pathfinding functions are now in a new wesnoth.path module.
+     * Pathfinding in map generation now takes an options table as the third argument.
+   * New sync module that contains functions for multiplayer synchronization
+     * In particular, wesnoth.synchronize_choice is now wesnoth.sync.evaluate_single
+   * allow_end_turn and end_turn moved to the wesnoth.interface module
+   * wesnoth.message is now wesnoth.interface.add_chat_message
+   * Shroud and fog control are now in the wesnoth.sides module
+     * Shroud data strings and the special string "all" are no longer supported by place_shroud -
+       only a list of locations is supported
+     * wesnoth.map.parse_bitmap transforms a shroud data string into a list of locations
+     * wesnoth.map.make_bitmap builds a shroud data string from a list of locations
+     * There are now two different ways of altering shroud: place_shroud merges with existing shroud,
+       while override_shroud replaces the entire shroud with the new value.
+   * New schedule module for working with schedules and time areas
+     * wesnoth.map.get_time_area now returns the area's schedule object
+     * The global scenario schedule is available as wesnoth.current.schedule
+     * wesnoth.get_time_of_day is split into wesnoth.schedule.get_time_of_day (ignoring illumination)
+       and wesnoth.get_illumination (which considers illumination). Both functions now take the location
+       as the first argument.
+     * wesnoth.get_max_liminal_bonus() is now wesnoth.current.schedule.liminal_bonus
+     * wesnoth.replace_schedule is now wesnoth.schedule.replace
+   * wesnoth.end_level() and wesnoth.get_end_level_data() are now removed - instead, there's
+     an end_level_data field in wesnoth.scenario.that serves both purposes.
+   * wesnoth.get_traits() is now wesnoth.game_config.global_traits
+   * wesnoth.teleport moved to the units module
  ### Multiplayer
    * Added Isle of Mists, a new single player or coop survival scenario.
  ### Networking
@@ -31,8 +57,19 @@
    * Fire Guardian can now level into Fire Wraith, experience needed to level up for Fire Guardian changed from 50 to 29
    * Revised statistics of all animal horses, Bay Horse can now level into Great Horse
  ### User interface
+ ### Wesnoth Formula Language
+   * The use of "side" on units and "owner" on terrain objects is now deprecated.
+     Instead, you should use "side_number" or "owner_side", respectively.
+     The old key returns 0 for side 1 and so on, so the new key is preferred.
+   * A unit object now has a "terrain" key that returns the terrain object the unit is standing on.
+   * Add new functions tod_bonus() and base_tod_bonus() to get the bonus on a specific location
  ### WML Engine
    * add 'unslowable' and 'unpetrifiable' status to immune to slow or petrifies
+   * Schema validation now checks whether string values are translatable or not, according to what the
+     schema specifies.
+   * Fix schema validation rejecting Lua AI goals
+   * Unit special notes are now read directly from weapon specials, abilities, and a few other places, meaning
+     the `[special_note]` tag is usually not required.
  ### Miscellaneous and Bug Fixes
    * The unit description tooltip in the sidebar now includes the text from `[special_note]`s.
    * Added a collection of item images
