@@ -4,8 +4,12 @@
    * Fixed: keyboard input in small-screen mode returned to the title screen (part of issue #3059)
  ### Add-ons server
  ### Campaigns
+   * A Tale of Two Brothers
+     * S02: Dialog revisions.
    * Sceptre of Fire
-     * Revisions to the last two scenarios
+     * Revisions to the last two scenarios.
+   * Tutorial
+     * S02: Mention the acceleration factor preference.
  ### Editor
  ### Lua API
    * Pathfinding functions are now in a new wesnoth.paths module.
@@ -69,7 +73,9 @@
      schema specifies.
    * Fix schema validation rejecting Lua AI goals
    * Unit special notes are now read directly from weapon specials, abilities, and a few other places, meaning
-     the `[special_note]` tag is usually not required.
+     the `[special_note]` tag is usually not required in `[unit]` or `[unit_type]`.
+   * A warning is now displayed when the next scenario is unknown (issue #5530).
+   * Changed the default duration for `[print]` to 5000 milliseconds, and added support for `duration=unlimited` (PR #5868).
  ### Miscellaneous and Bug Fixes
    * The unit description tooltip in the sidebar now includes the text from `[special_note]`s.
    * Added a collection of item images
