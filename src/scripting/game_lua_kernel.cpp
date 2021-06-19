@@ -2371,10 +2371,10 @@ int game_lua_kernel::intf_set_floating_label(lua_State* L, bool spawn)
 					lifetime = lua_tointegerx(L, -1, &found_number);
 					if(!found_number && !lua_isnil(L, -1)) {
 						auto value = luaW_tostring(L, -1);
-						if(value == "infinity") {
+						if(value == "unlimited") {
 							lifetime = -1;
 						} else {
-							return luaL_argerror(L, first_arg + 1, "duration should be integer or 'infinity'");
+							return luaL_argerror(L, first_arg + 1, "duration should be integer or 'unlimited'");
 						}
 					}
 				}
@@ -2384,13 +2384,13 @@ int game_lua_kernel::intf_set_floating_label(lua_State* L, bool spawn)
 			lifetime = lua_tointeger(L, first_arg + 1);
 			break;
 		case LUA_TSTRING:
-			if(luaW_tostring(L, first_arg + 1) == "infinity") {
+			if(luaW_tostring(L, first_arg + 1) == "unlimited") {
 				lifetime = -1;
 				break;
 			}
 			[[fallthrough]];
 		default:
-			return luaW_type_error(L, first_arg + 1, "integer or 'infinity'");
+			return luaW_type_error(L, first_arg + 1, "integer or 'unlimited'");
 	}
 
 	if(!found_location && !lua_isnoneornil(L, first_arg + 2)) {
