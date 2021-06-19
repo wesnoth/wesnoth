@@ -3814,10 +3814,8 @@ msgstr ""
 
 #. [toggle_button]: id=filter_with_ignored
 #: data/gui/window/lobby_main.cfg:363
-#, fuzzy
-#| msgid "Computer Player"
 msgid "Blocked players"
-msgstr "コンピュータープレイヤー"
+msgstr ""
 
 #. [toggle_button]: id=filter_with_ignored
 #: data/gui/window/lobby_main.cfg:364
@@ -8160,72 +8158,6 @@ msgstr ""
 "キー「$deprecated_key」は「$key」に名前が変更されました。「$deprecated_key」"
 "のサポートはバージョン$removal_versionで削除されます。"
 
-#~ msgid "Line doesn't fit on canvas."
-#~ msgstr "線がキャンバスに合いません。"
-
-#~ msgid "Rectangle doesn't fit on canvas."
-#~ msgstr "長方形がキャンバスに合いません。"
-
-#~ msgid "Rounded Rectangle doesn't fit on canvas."
-#~ msgstr "角が丸い長方形はこのキャンバスに合いません。"
-
-#~ msgid "Circle doesn't fit on canvas."
-#~ msgstr "円がキャンバスに合いません。"
-
-#~ msgid "Text doesn't start on canvas."
-#~ msgstr "テキストがキャンバス上から始まっていません。"
-
-#~ msgid "feature^Legacy bidirectional rendering"
-#~ msgstr "レガシーな双方向レンダリング"
-
-#~ msgid "The maximum text width is less than 1."
-#~ msgstr "最大テキスト幅が 1 より小さいです。"
-
-#, fuzzy
-#~| msgid "Preferences"
-#~ msgid "Open Preferences Screen"
-#~ msgstr "設定"
-
-#~ msgid "View Chat Log"
-#~ msgstr "チャットログ表示"
-
-#~ msgid "Categories:"
-#~ msgstr "カテゴリ："
-
-#~ msgid "Accelerated"
-#~ msgstr "高速化"
-
-#~ msgid "Clear Messages"
-#~ msgstr "チャットメッセージを消去"
-
-#~ msgid "Dates"
-#~ msgstr "日付"
-
-#~ msgid "Save random seed"
-#~ msgstr "乱数のシードを保存"
-
-#~ msgid ""
-#~ "Makes the random number generator yield the same results even after "
-#~ "reloading a game"
-#~ msgstr "ゲームを再開した場合でも、乱数生成器が同じ値を出すようになります。"
-
-#~ msgid "Choose Player"
-#~ msgstr "プレイヤー選択"
-
-#~ msgid "Which player should start here?"
-#~ msgstr "どのプレイヤーをここからスタートさせますか？"
-
-#~ msgid "No ignored"
-#~ msgstr "無視リストのプレイヤーを除外"
-
-#, fuzzy
-#~| msgid "Map Information"
-#~ msgid "Information"
-#~ msgstr "マップ情報"
-
-#~ msgid "Do you want to open this link?"
-#~ msgstr "このリンクを開きますか？"
-
 #~ msgid "url^Copy"
 #~ msgstr "コピー"
 
@@ -8237,59 +8169,6 @@ msgstr ""
 
 #~ msgid "Visit this URL with a web browser"
 #~ msgstr "WebブラウザでURLにアクセスします"
-
-#~ msgid "Screenshots..."
-#~ msgstr "保存フォルダを開く"
-
-#~ msgid "feature^JPEG screenshots"
-#~ msgstr "JPEG スクリーンショット"
-
-#~ msgid "Number of columns differ."
-#~ msgstr "列（column）の数が違います。"
-
-#~ msgid "Terms"
-#~ msgstr "条項"
-
-#~ msgid "version^N/A"
-#~ msgstr "N/A"
-
-#~ msgid "Assign Recruit List"
-#~ msgstr "雇用リストの設定"
-
-#~ msgid "Assign the selected unit set as recruit list to the unit."
-#~ msgstr "選択したユニットセットをこのユニットの雇用リストに割り当てます。"
-
-#~ msgid "Room <i>“$name”</i> joined"
-#~ msgstr "部屋「 $name 」に参加しました。"
-
-#~ msgid ""
-#~ "Left mouse button sets a new item or moves it via drag and drop, right "
-#~ "clears. Not implemented yet."
-#~ msgstr ""
-#~ "左クリックで新しいアイテムを設置し、ドラッグアンドドロップで移動、右クリッ"
-#~ "クで消去します。まだ実装されていません。"
-
-#~ msgid ""
-#~ "Left mouse button sets or drags a sound source, right clears. Not "
-#~ "implemented yet."
-#~ msgstr ""
-#~ "左クリックで音源をセットし、ドラッグで移動、右クリックで消去します。まだ実"
-#~ "装されていません。"
-
-#~ msgid "Sound Source Tool"
-#~ msgstr "音源ツール"
-
-#~ msgid "Generate Tiles in Selection"
-#~ msgstr "選択部分にタイルを生成する"
-
-#~ msgid "Rotate Map"
-#~ msgstr "マップを回転"
-
-#~ msgid "Allow only registered users to join the game"
-#~ msgstr "フォーラムに登録済みのユーザーのみがゲームに参加できるようにします"
-
-#~ msgid "Registered Users Only"
-#~ msgstr "登録済みユーザー限定"
 
 #~ msgid "Nearest Neighbor"
 #~ msgstr "Nearest Neighbor"
@@ -8336,6 +8215,26 @@ msgstr ""
 #~ msgid "Sort by:"
 #~ msgstr "並び順："
 
+#~ msgid "Dates"
+#~ msgstr "日付"
+
+#~ msgid "Save random seed"
+#~ msgstr "乱数のシードを保存"
+
+#~ msgid ""
+#~ "Makes the random number generator yield the same results even after "
+#~ "reloading a game"
+#~ msgstr "ゲームを再開した場合でも、乱数生成器が同じ値を出すようになります。"
+
+#~ msgid "Choose Player"
+#~ msgstr "プレイヤー選択"
+
+#~ msgid "Which player should start here?"
+#~ msgstr "どのプレイヤーをここからスタートさせますか？"
+
+#~ msgid "No ignored"
+#~ msgstr "無視リストのプレイヤーを除外"
+
 #~ msgid "Event"
 #~ msgstr "イベント"
 
@@ -8345,11 +8244,23 @@ msgstr ""
 #~ msgid "View List"
 #~ msgstr "リストを表示"
 
+#~ msgid "Allow only registered users to join the game"
+#~ msgstr "フォーラムに登録済みのユーザーのみがゲームに参加できるようにします"
+
+#~ msgid "Registered Users Only"
+#~ msgstr "登録済みユーザー限定"
+
+#~ msgid "Categories:"
+#~ msgstr "カテゴリ："
+
 #~ msgid "Font Scaling:"
 #~ msgstr "フォントスケーリング："
 
 #~ msgid "Set the scaling factor of fonts"
 #~ msgstr "フォントを拡大・縮小します"
+
+#~ msgid "Screenshots..."
+#~ msgstr "保存フォルダを開く"
 
 #~ msgid "Start a tutorial to familiarize yourself with the game"
 #~ msgstr "チュートリアルを開始し、ゲームの基本を学びます"
@@ -8360,8 +8271,85 @@ msgstr ""
 #~ msgid "Select the game core data"
 #~ msgstr "ゲームのコアデータ（中核機能）を選択します"
 
+#~ msgid "feature^JPEG screenshots"
+#~ msgstr "JPEG スクリーンショット"
+
+#~ msgid "feature^Legacy bidirectional rendering"
+#~ msgstr "レガシーな双方向レンダリング"
+
+#~ msgid "The maximum text width is less than 1."
+#~ msgstr "最大テキスト幅が 1 より小さいです。"
+
+#~ msgid "Line doesn't fit on canvas."
+#~ msgstr "線がキャンバスに合いません。"
+
+#~ msgid "Rectangle doesn't fit on canvas."
+#~ msgstr "長方形がキャンバスに合いません。"
+
+#~ msgid "Rounded Rectangle doesn't fit on canvas."
+#~ msgstr "角が丸い長方形はこのキャンバスに合いません。"
+
+#~ msgid "Circle doesn't fit on canvas."
+#~ msgstr "円がキャンバスに合いません。"
+
+#~ msgid "Text doesn't start on canvas."
+#~ msgstr "テキストがキャンバス上から始まっていません。"
+
+#~ msgid "Number of columns differ."
+#~ msgstr "列（column）の数が違います。"
+
+#~ msgid "Terms"
+#~ msgstr "条項"
+
 #~ msgid "No matching widget found for scaling option"
 #~ msgstr "scaling option にマッチする widget が見つかりません"
+
+#~ msgid "version^N/A"
+#~ msgstr "N/A"
+
+#~ msgid "Room <i>“$name”</i> joined"
+#~ msgstr "部屋「 $name 」に参加しました。"
+
+#~ msgid "Do you want to open this link?"
+#~ msgstr "このリンクを開きますか？"
+
+#~ msgid "Accelerated"
+#~ msgstr "高速化"
+
+#~ msgid ""
+#~ "Left mouse button sets a new item or moves it via drag and drop, right "
+#~ "clears. Not implemented yet."
+#~ msgstr ""
+#~ "左クリックで新しいアイテムを設置し、ドラッグアンドドロップで移動、右クリッ"
+#~ "クで消去します。まだ実装されていません。"
+
+#~ msgid ""
+#~ "Left mouse button sets or drags a sound source, right clears. Not "
+#~ "implemented yet."
+#~ msgstr ""
+#~ "左クリックで音源をセットし、ドラッグで移動、右クリックで消去します。まだ実"
+#~ "装されていません。"
+
+#~ msgid "Sound Source Tool"
+#~ msgstr "音源ツール"
+
+#~ msgid "Assign Recruit List"
+#~ msgstr "雇用リストの設定"
+
+#~ msgid "Assign the selected unit set as recruit list to the unit."
+#~ msgstr "選択したユニットセットをこのユニットの雇用リストに割り当てます。"
+
+#~ msgid "Generate Tiles in Selection"
+#~ msgstr "選択部分にタイルを生成する"
+
+#~ msgid "Rotate Map"
+#~ msgstr "マップを回転"
+
+#~ msgid "View Chat Log"
+#~ msgstr "チャットログ表示"
+
+#~ msgid "Clear Messages"
+#~ msgstr "チャットメッセージを消去"
 
 #~ msgid "No server has been defined."
 #~ msgstr "サーバーが1つも設定されていません。"

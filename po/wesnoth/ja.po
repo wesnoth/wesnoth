@@ -4078,10 +4078,8 @@ msgstr "次のシナリオに %d%% のゴールドを引き継ぎます。"
 
 #. [modification]: id=plan_unit_advance
 #: data/modifications.cfg:6
-#, fuzzy
-#| msgid "No advancement"
 msgid "Plan Unit Advance"
-msgstr "レベルアップなし"
+msgstr ""
 
 #. [modification]: id=plan_unit_advance
 #: data/modifications.cfg:7
@@ -8025,10 +8023,6 @@ msgid "Turn Number"
 msgstr "ターン数"
 
 #: src/reports.cpp:1394
-#, fuzzy
-#| msgid ""
-#| "When the game reaches the number of turns indicated by the second number, "
-#| "it will end."
 msgid ""
 "When the game exceeds the number of turns indicated by the second number, it "
 "will end."
@@ -8619,70 +8613,14 @@ msgstr "$player の計画を非表示"
 msgid "Whiteboard Options"
 msgstr "行動予定オプション"
 
-#~ msgid "Back to..."
-#~ msgstr "指定ターンに戻る"
+#~ msgid "Graphics scaling options"
+#~ msgstr "グラフィックの拡大・縮小オプション"
 
-#~ msgid ""
-#~ "This save is from a different version of the game ($version_number|). Do "
-#~ "you wish to try to load it?"
-#~ msgstr ""
-#~ "このセーブデータは異なるバージョン（$version_number|）のものです。読み込ん"
-#~ "でみますか？"
+#~ msgid "Show haloing effects"
+#~ msgstr "ヘイローエフェクトの表示"
 
-#, fuzzy
-#~| msgid "End Scenario"
-#~ msgid "Scenario"
-#~ msgstr "シナリオ終了"
-
-#, fuzzy
-#~| msgid "Enemy village"
-#~ msgid "Enemies"
-#~ msgstr "敵所有の村"
-
-#, fuzzy
-#~| msgid "Damage: "
-#~ msgid "damage"
-#~ msgstr "ダメージ："
-
-#, fuzzy
-#~| msgid "No advancement"
-#~ msgid "XP to advance"
-#~ msgstr "レベルアップなし"
-
-#, fuzzy
-#~| msgid "Moves:"
-#~ msgid "moves"
-#~ msgstr "移動力："
-
-#, fuzzy
-#~| msgid "Resistances"
-#~ msgid " resistance vs "
-#~ msgstr "耐性"
-
-#, fuzzy
-#~| msgid "Strikes"
-#~ msgid "strike"
-#~ msgstr "回数"
-
-#, fuzzy
-#~| msgid "female^slowed"
-#~ msgid "female^steadfast"
-#~ msgstr "遅化"
-
-#, fuzzy
-#~| msgid " (inactive)"
-#~ msgid "initiative"
-#~ msgstr "（無効）"
-
-#, fuzzy
-#~| msgid "Max swarm bonus: "
-#~ msgid "Max HP bonus +6%"
-#~ msgstr "最大群れボーナス："
-
-#, fuzzy
-#~| msgid "Be more defensive"
-#~ msgid "+moves defense"
-#~ msgstr "防衛重視"
+#~ msgid "Show special unit graphical effects"
+#~ msgstr "ユニットに対する特殊なグラフィカルエフェクトを表示します。"
 
 #~ msgid "Use experimental PRNG combat"
 #~ msgstr "実験的な PRNG 戦闘を使用"
@@ -8700,25 +8638,6 @@ msgstr "行動予定オプション"
 #~ "\n"
 #~ "メモ：このオプションはシングルプレイヤーでのみ適用されます。また、「乱数の"
 #~ "シードを保存」オプションをゲーム作成時に有効にしなｋれば動作しません。"
-
-#, fuzzy
-#~| msgid "Sending add-on <i>$addon_title</i>..."
-#~ msgid ""
-#~ "Requesting the older version composition for the add-on <i>$addon_title</"
-#~ "i>..."
-#~ msgstr "アドオン「 $addon_title| 」の送信中…"
-
-#~ msgid "Connection timed out"
-#~ msgstr "接続がタイムアウトしました"
-
-#~ msgid "Graphics scaling options"
-#~ msgstr "グラフィックの拡大・縮小オプション"
-
-#~ msgid "Show haloing effects"
-#~ msgstr "ヘイローエフェクトの表示"
-
-#~ msgid "Show special unit graphical effects"
-#~ msgstr "ユニットに対する特殊なグラフィカルエフェクトを表示します。"
 
 #~ msgid "Joystick support"
 #~ msgstr "ジョイスティックのサポート"
@@ -8802,6 +8721,9 @@ msgstr "行動予定オプション"
 #~ msgid "Connected Players"
 #~ msgstr "参加中のプレイヤー"
 
+#~ msgid "Back to..."
+#~ msgstr "指定ターンに戻る"
+
 #~ msgid "registering with password *** and no email address"
 #~ msgstr "emailアドレスの指定無し、パスワード *** で登録中…"
 
@@ -8835,6 +8757,9 @@ msgstr "行動予定オプション"
 #~ msgid "Request a list of details you can set for your registered nickname."
 #~ msgstr ""
 #~ "あなたの登録済みニックネームに対して、設定可能な項目のリストを要求します。"
+
+#~ msgid "Connection timed out"
+#~ msgstr "接続がタイムアウトしました"
 
 #~ msgid "No Saved Games"
 #~ msgstr "セーブデータが存在しません"
@@ -8887,6 +8812,9 @@ msgstr "行動予定オプション"
 #~ msgid "HP:"
 #~ msgstr "HP："
 
+#~ msgid "Moves:"
+#~ msgstr "移動力："
+
 #~ msgid "Vision:"
 #~ msgstr "視界："
 
@@ -8911,11 +8839,17 @@ msgstr "行動予定オプション"
 #~ msgid "Type"
 #~ msgstr "種類"
 
+#~ msgid "Strikes"
+#~ msgstr "回数"
+
 #~ msgid "Range"
 #~ msgstr "射程"
 
 #~ msgid "Special"
 #~ msgstr "特殊"
+
+#~ msgid "Resistances"
+#~ msgstr "耐性"
 
 #~ msgid "Attack Type"
 #~ msgstr "ダメージ型"
@@ -8950,3 +8884,10 @@ msgstr "行動予定オプション"
 
 #~ msgid "Side:"
 #~ msgstr "陣営："
+
+#~ msgid ""
+#~ "This save is from a different version of the game ($version_number|). Do "
+#~ "you wish to try to load it?"
+#~ msgstr ""
+#~ "このセーブデータは異なるバージョン（$version_number|）のものです。読み込ん"
+#~ "でみますか？"

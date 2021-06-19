@@ -5,6 +5,7 @@
 #
 # Translators:
 # RatArmy <broadbarredfirefish@gmail.com>, 2020
+# tamanegi, 2021
 #
 #, fuzzy
 msgid ""
@@ -12,7 +13,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: 2021-05-22 22:21-0400\n"
 "PO-Revision-Date: 2018-05-06 10:25+0000\n"
-"Last-Translator: RatArmy <broadbarredfirefish@gmail.com>, 2020\n"
+"Last-Translator: tamanegi, 2021\n"
 "Language-Team: Japanese (https://www.transifex.com/wesnoth-jp/teams/60513/"
 "ja/)\n"
 "Language: ja\n"
@@ -31,7 +32,7 @@ msgstr "WESNOTH"
 #: doc/man/wesnoth.6:16 doc/man/wesnothd.6:16
 #, no-wrap
 msgid "2021"
-msgstr ""
+msgstr "2021"
 
 #. type: TH
 #: doc/man/wesnoth.6:16
@@ -469,10 +470,8 @@ msgstr "B<--log-precise>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:181
-#, fuzzy
-#| msgid "shows the timestamps in the logfile with more precision."
 msgid "shows the timestamps in log output with more precision."
-msgstr "より正確なログファイルの時刻を表示する。"
+msgstr "より正確にログ出力の時刻を表示する。"
 
 #. type: TP
 #: doc/man/wesnoth.6:181
@@ -1431,12 +1430,9 @@ msgstr "著作権"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:532 doc/man/wesnothd.6:274
-#, fuzzy
-#| msgid ""
-#| "Copyright \\(co 2003-2018 David White E<lt>davidnwhite@verizon.netE<gt>"
 msgid "Copyright \\(co 2003-2021 David White E<lt>davidnwhite@verizon.netE<gt>"
 msgstr ""
-"Copyright \\(co 2003-2018 David White E<lt>davidnwhite@verizon.netE<gt>"
+"Copyright \\(co 2003-2021 David White E<lt>davidnwhite@verizon.netE<gt>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:535 doc/man/wesnothd.6:277
@@ -2271,39 +2267,6 @@ msgid "B<wesnoth>(6)"
 msgstr "B<wesnoth>(6)"
 
 #, no-wrap
-#~ msgid "2018"
-#~ msgstr "2018"
-
-#~ msgid "B<--proxy>"
-#~ msgstr "B<--proxy>"
-
-#~ msgid "enables usage of proxy for network connections."
-#~ msgstr "ネットワークコネクションにプロキシを使用する。"
-
-#~ msgid "B<--proxy-address>I<\\ address>"
-#~ msgstr "B<--proxy-address>I<\\ address>"
-
-#~ msgid "specifies I<address> of the proxy."
-#~ msgstr "プロキシの I<address> を指定する。"
-
-#~ msgid "B<--proxy-port>I<\\ port>"
-#~ msgstr "B<--proxy-port>I<\\ port>"
-
-#~ msgid "specifies I<port> of the proxy."
-#~ msgstr "プロキシの I<port> を指定する。"
-
-#~ msgid "B<--proxy-user>I<\\ username>"
-#~ msgstr "B<--proxy-user>I<\\ username>"
-
-#~ msgid "specifies I<username> to log in to the proxy."
-#~ msgstr "プロキシへのログイン用の I<username> を指定する。"
-
-#~ msgid "B<--proxy-password>I<\\ password>"
-#~ msgstr "B<--proxy-password>I<\\ password>"
-
-#~ msgid "specifies I<password> to log in to the proxy."
-#~ msgstr "プロキシへのログイン用の I<password> を指定する。"
-
 #~ msgid "B<user_handler>"
 #~ msgstr "B<user_handler>"
 
@@ -2337,6 +2300,7 @@ msgstr "B<wesnoth>(6)"
 #~ "（user_handler=forum のとき）ユーザに関するデータを wesnothd が保存する"
 #~ "テーブルの名前。このテーブルは手動で作成する必要がある。"
 
+#, no-wrap
 #~ msgid "B<user_expiration>"
 #~ msgstr "B<user_expiration>"
 
@@ -2354,24 +2318,29 @@ msgstr "B<wesnoth>(6)"
 #~ "B<[mail]> で SMTP サーバユーザーハンドラがメールを送れるサーバーを設定す"
 #~ "る。現在はサンプルのユーザーハンドラとしてのみ使用される。"
 
+#, no-wrap
 #~ msgid "B<server>"
 #~ msgstr "B<server>"
 
+#, no-wrap
 #~ msgid "B<username>"
 #~ msgstr "B<username>"
 
 #~ msgid "The user name under which to log into the mail server."
 #~ msgstr "メールサーバーにログインするユーザー名。"
 
+#, no-wrap
 #~ msgid "B<password>"
 #~ msgstr "B<password>"
 
+#, no-wrap
 #~ msgid "B<from_address>"
 #~ msgstr "B<from_address>"
 
 #~ msgid "The reply-to address of you mail."
 #~ msgstr "あなたのメールの返信先アドレス。"
 
+#, no-wrap
 #~ msgid "B<mail_port>"
 #~ msgstr "B<mail_port>"
 

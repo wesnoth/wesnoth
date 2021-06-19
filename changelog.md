@@ -16,7 +16,7 @@
    * Added some great tree variations
    * Added 'icy cobbles' (terrain code `Rra`) - mostly useful for the transitions
  ### Translations
-   * Updated translations: British English, Czech, Indonesian, Italian, Scottish Gaelic, Slovak, Spanish
+   * Updated translations: British English, Czech, Indonesian, Italian, Japanese, Scottish Gaelic, Slovak, Spanish
  ### Units
    * Added missing Seahorse graphics
    * Revised Jinn (unit config and graphics)
