@@ -79,7 +79,7 @@ public:
 	void show(const bool value) { visible_ = value; }
 
 	LABEL_SCROLL_MODE scroll() const { return scroll_; }
-	
+
 	// TODO: Might be good to have more getters, right?
 	int get_fade_time() const { return fadeout_; }
 
