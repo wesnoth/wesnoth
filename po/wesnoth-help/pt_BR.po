@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2021-05-15 22:01-0400\n"
-"PO-Revision-Date: 2021-02-04 09:34-0300\n"
+"PO-Revision-Date: 2021-06-14 12:29-0300\n"
 "Last-Translator: Andrei Machado <andreisp.machado@yahoo.com>\n"
 "Language-Team: Portuguese - Brasil\n"
 "Language: pt_BR\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 2.4.2\n"
+"X-Generator: Poedit 2.4.3\n"
 
 #
 # File: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg, line: 529
@@ -743,18 +743,6 @@ msgstr ""
 
 #. [topic]: id=..editor_mode_terrain
 #: data/core/editor/help.cfg:258
-#, fuzzy
-#| msgid ""
-#| "The terrain editor’s functionality is similar to a simple paint "
-#| "application.\n"
-#| "\n"
-#| "The right-hand sidebar contains, from top to bottom, the mini-map, the "
-#| "toolkit (see the pages for each tool), tool options, and "
-#| "<ref>dst='editor_palette' text='Palette'</ref>.\n"
-#| "\n"
-#| "When saved using “Save Map As” and saving to the default directory, the "
-#| "resulting map can be found in the “User Maps” game type of the "
-#| "multiplayer “Create Game” dialog."
 msgid ""
 "The terrain editor’s functionality is similar to a simple paint "
 "application.\n"
@@ -775,7 +763,7 @@ msgstr ""
 "<ref>dst='editor_palette' text='Paleta'</ref>.\n"
 "\n"
 "Ao salvar usando \"Salvar Mapa Como\", e salvar no diretório padrão, o mapa "
-"pode ser acessado em \"Mapas do Usuário\" nos jogos multiplayer ao "
+"pode ser acessado em \"Mapas Personalizados\" no modo multiplayer ao "
 "selecionar a opção \"Criar Jogo\"."
 
 #. [topic]: id=..editor_mode_scenario
@@ -810,15 +798,6 @@ msgstr ""
 
 #. [topic]: id=..editor_mode_scenario
 #: data/core/editor/help.cfg:279
-#, fuzzy
-#| msgid ""
-#| "<header>text='Entering scenario mode'</header>\n"
-#| "\n"
-#| "To start a new map in scenario mode, choose “New Scenario” from the "
-#| "“File” menu.\n"
-#| "\n"
-#| "If you’re already editing a map in terrain mode, use “Save Scenario As” "
-#| "from the “File” menu; this will switch to scenario mode."
 msgid ""
 "<header>text='Entering scenario mode'</header>\n"
 "\n"
@@ -837,7 +816,10 @@ msgstr ""
 "menu \"Arquivo\". \n"
 "\n"
 "Se você já estiver editando um mapa no modo de terreno, use \"Salvar Cenário "
-"Como\" no menu \"Arquivo\"; assim você mudará para o modo de cenário."
+"Como\" no menu \"Arquivo\"; assim você mudará para o modo de cenário.\n"
+"\n"
+"Para carregar um mapa que foi criado no editor de cenários, use \"Carregar "
+"Mapa\" no menu \"Arquivo\" e selecione o arquivo .cfg (não selecione o .map)."
 
 #. [topic]: id=..editor_mode_scenario
 #: data/core/editor/help.cfg:287
