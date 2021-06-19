@@ -5,7 +5,7 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 # Translators:
-# GunChleoc, 2019
+# GunChleoc, 2020
 #
 #, fuzzy
 msgid ""
@@ -13,8 +13,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2021-05-15 22:06-0400\n"
-"PO-Revision-Date: 2020-01-13 11:44+0000\n"
-"Last-Translator: GunChleoc, 2019\n"
+"PO-Revision-Date: 2021-06-14 09:26+0100\n"
+"Last-Translator: GunChleoc, 2020\n"
 "Language-Team: Gaelic, Scottish (https://www.transifex.com/gunchleoc/"
 "teams/12769/gd/)\n"
 "Language: gd\n"
@@ -806,19 +806,6 @@ msgstr "Uamh chreagach"
 #. [terrain_type]: id=rocky_cave
 #. [terrain_type]: id=earthy_rocky_cave
 #: data/core/terrain.cfg:1054 data/core/terrain.cfg:1070
-#, fuzzy
-#| msgid ""
-#| "<italic>text='Rockbound cave'</italic> terrain is formed by the action of "
-#| "water and wind, carrying erosive particles that carve the rock. It "
-#| "resembles a scraggy underground cavern which shoulders defense, but is "
-#| "hard for most units to traverse. Only settlers of caves, such as dwarves "
-#| "and trolls, are fully capable of navigating such topography.\n"
-#| "\n"
-#| "Most units have about 50% defense in rocky caves, whereas cavalry are "
-#| "limited to 40%. Dwarves, by dint of their small size, enjoy 60% defense "
-#| "in rockbound caves.\n"
-#| "\n"
-#| "Occasionally caves are <italic>text='illuminated'</italic>."
 msgid ""
 "<italic>text='Rockbound cave'</italic> terrain is formed by the action of "
 "water and wind, carrying erosive particles that carve the rock. It resembles "
@@ -1851,24 +1838,6 @@ msgstr ""
 
 #. [terrain_type]: id=cave
 #: data/core/terrain.cfg:2967
-#, fuzzy
-#| msgid ""
-#| "<italic>text='Cave'</italic> terrain represents any underground cavern "
-#| "with enough room for a unit to pass.\n"
-#| "Most units are wholly unfamiliar with the terrain, and thus are both "
-#| "slowed down and hindered in defense. Dwarves and trolls, who make their "
-#| "homes in caves, both have a relatively easy time navigating this terrain, "
-#| "especially dwarves, who by dint of their small size can navigate many "
-#| "obstacles that other races cannot. Occasionally caves are "
-#| "<italic>text='illuminated'</italic>.\n"
-#| "\n"
-#| "Rare patches of the underground world are illuminated by light from the "
-#| "surface shining down into the gloomy darkness. This provides an attack "
-#| "bonus for lawful units and removes the attack bonus from chaotic units. "
-#| "In all other regards this terrain is functionally identical to normal "
-#| "cave terrains.\n"
-#| "\n"
-#| "Most units receive 20 to 40% defense in caves, whereas dwarves have 50%."
 msgid ""
 "<italic>text='Cave'</italic> terrain represents any underground cavern with "
 "enough room for a unit to pass.\n"
@@ -3901,10 +3870,8 @@ msgstr ""
 
 #. [toggle_button]: id=filter_with_ignored
 #: data/gui/window/lobby_main.cfg:363
-#, fuzzy
-#| msgid "Computer Player"
 msgid "Blocked players"
-msgstr "Coimpiutair"
+msgstr ""
 
 #. [toggle_button]: id=filter_with_ignored
 #: data/gui/window/lobby_main.cfg:364
@@ -6926,9 +6893,9 @@ msgstr "Chan eil taobhan aig a’ gheama a thagh thu!"
 #. TRANSLATORS: This sentence will be followed by some details of the error, most likely the "Map could not be loaded" message from create_engine.cpp
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:827
 #, fuzzy
-#| msgid "The selected game has no sides!"
+#| msgid "The selected game can not be created."
 msgid "The selected game cannot be created."
-msgstr "Chan eil taobhan aig a’ gheama a thagh thu!"
+msgstr "Cha ghabh an geama a thagh thu a chruthachadh."
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:899
 msgid "Choose Starting Scenario"
@@ -7640,20 +7607,14 @@ msgid "Next Move"
 msgstr "An t-ath ghluasad"
 
 #: src/hotkey/hotkey_command.cpp:138
-#, fuzzy
-#| msgid "View: Full Map"
 msgid "View: Full Map"
 msgstr "Sealladh: mapa slàn"
 
 #: src/hotkey/hotkey_command.cpp:139
-#, fuzzy
-#| msgid "View: Each Team"
 msgid "View: Each Team"
 msgstr "Sealladh: gach sgioba"
 
 #: src/hotkey/hotkey_command.cpp:140
-#, fuzzy
-#| msgid "View: Human Team"
 msgid "View: Human Team"
 msgstr "Sealladh: sgioba daoine"
 
@@ -8300,74 +8261,6 @@ msgstr ""
 "taic ri “$deprecated_key” a thoirt air falbh leis an tionndadh "
 "$removal_version."
 
-#~ msgid "Line doesn't fit on canvas."
-#~ msgstr "Tha an loidhne ro mhòr airson a’ chanabhais."
-
-#~ msgid "Rectangle doesn't fit on canvas."
-#~ msgstr "Tha an ceart-cheàrnachan ro mhòr airson a’ chanabhais."
-
-#~ msgid "Rounded Rectangle doesn't fit on canvas."
-#~ msgstr "Tha an ceart-cheàrnach cruinn ro mhòr airson a’ chanabhais."
-
-#~ msgid "Circle doesn't fit on canvas."
-#~ msgstr "Tha an cearcall ro mhòr airson a’ chanabhais."
-
-#~ msgid "Text doesn't start on canvas."
-#~ msgstr "Chan eil an teacsa a’ tòiseachadh air a’ chanabhas."
-
-#~ msgid "feature^Legacy bidirectional rendering"
-#~ msgstr "Reandaradh dà-chomhaireach dìleabach"
-
-#~ msgid "The maximum text width is less than 1."
-#~ msgstr "Tha an leud as motha dhe theacsa nas lugha na 1."
-
-#, fuzzy
-#~| msgid "Preferences"
-#~ msgid "Open Preferences Screen"
-#~ msgstr "Roghainnean"
-
-#~ msgid "View Chat Log"
-#~ msgstr "Seall loga na cabadaich"
-
-#~ msgid "Categories:"
-#~ msgstr "Roinnean-seòrsa:"
-
-#~ msgid "Accelerated"
-#~ msgstr "Luathaichte"
-
-#~ msgid "Clear Messages"
-#~ msgstr "Falamhaich teachdaireachdan"
-
-#~ msgid "Dates"
-#~ msgstr "Cinn-latha"
-
-#~ msgid "Save random seed"
-#~ msgstr "Sàbhail sìol na tuairmeachd"
-
-#~ msgid ""
-#~ "Makes the random number generator yield the same results even after "
-#~ "reloading a game"
-#~ msgstr ""
-#~ "Bheir gineadair nan àireamhan tuaireamach an aon toradh dhut gach turas "
-#~ "fiù ’s nuair a bhios tu air geama ath-luchdadh"
-
-#~ msgid "Choose Player"
-#~ msgstr "Tagh cluicheadair"
-
-#~ msgid "Which player should start here?"
-#~ msgstr "Cò an cluicheadair a thòisicheas an-seo?"
-
-#~ msgid "No ignored"
-#~ msgstr "Gun neach neo-shuime"
-
-#, fuzzy
-#~| msgid "Map Information"
-#~ msgid "Information"
-#~ msgstr "Fiosrachadh mapa"
-
-#~ msgid "Do you want to open this link?"
-#~ msgstr "A bheil thu airson an ceangal seo fhosgladh?"
-
 #~ msgid "url^Copy"
 #~ msgstr "Dèan lethbhreac"
 
@@ -8379,73 +8272,6 @@ msgstr ""
 
 #~ msgid "Visit this URL with a web browser"
 #~ msgstr "Tadhail air an URL seo le brabhsair-lìn"
-
-#~ msgid "Screenshots..."
-#~ msgstr "Glacaidhean-sgrìn…"
-
-#, fuzzy
-#~| msgid "feature^JPEG screenshots"
-#~ msgid "feature^JPEG screenshots"
-#~ msgstr "Glacaidhean-sgrìn JPEG"
-
-#~ msgid "Number of columns differ."
-#~ msgstr "Cha àireamhan eadar-dhealaichte dhe cholbhan ann."
-
-#~ msgid "Terms"
-#~ msgstr "Teirmichean"
-
-#~ msgid "version^N/A"
-#~ msgstr "chan eil fhios"
-
-#~ msgid "Assign Recruit List"
-#~ msgstr "Sònraich liosta-trusaidh"
-
-#~ msgid "Assign the selected unit set as recruit list to the unit."
-#~ msgstr ""
-#~ "Sònraich an seata de dh’aonadan a thagh thu mar liosta-trusaidh an aonaid."
-
-#~ msgid "Room <i>“$name”</i> joined"
-#~ msgstr "Air tighinn a-steach dhan t-seòmar <i>“$name”</i>"
-
-#~ msgid ""
-#~ "Left mouse button sets a new item or moves it via drag and drop, right "
-#~ "clears. Not implemented yet."
-#~ msgstr ""
-#~ "Suidhichidh putan clì na luchaige nì ùr no gluaisidh e aonad le slaodadh "
-#~ "’s leigeil às; falamhaichidh tu an taghadh leis an fhear deas. Cha deach "
-#~ "seo a chruthachadh fhathast."
-
-#~ msgid ""
-#~ "Left mouse button sets or drags a sound source, right clears. Not "
-#~ "implemented yet."
-#~ msgstr ""
-#~ "Suidhichidh no slaodaidh tu tùs fuaime le putan clì na luchaige; "
-#~ "falamhaichidh tu an taghadh leis an fhear deas. Cha deach seo a "
-#~ "chruthachadh fhathast."
-
-#~ msgid "Sound Source Tool"
-#~ msgstr "Inneal nan tùsan fuaime"
-
-#~ msgid "Generate Tiles in Selection"
-#~ msgstr "Gin leacan san taghadh"
-
-#~ msgid "Rotate Map"
-#~ msgstr "Tionndadh mapa"
-
-#~ msgid "Allow only registered users to join the game"
-#~ msgstr ""
-#~ "Na leig ach le cleachdaichean clàraichte tighinn a-steach dhan gheama"
-
-#~ msgid "Registered Users Only"
-#~ msgstr "Cleachdaichean clàraichte a-mhàin"
-
-#, fuzzy
-#~| msgid "Do you want to open this link?"
-#~ msgid "Are you sure you want to open this link? "
-#~ msgstr "A bheil thu airson an ceangal seo fhosgladh?"
-
-#~ msgid "Event"
-#~ msgstr "Tachartas"
 
 #~ msgid "Nearest Neighbor"
 #~ msgstr "An nàbaidh as fhaisge"
@@ -8492,17 +8318,55 @@ msgstr ""
 #~ msgid "Sort by:"
 #~ msgstr "Seòrsaich a-rèir:"
 
+#~ msgid "Dates"
+#~ msgstr "Cinn-latha"
+
+#~ msgid "Save random seed"
+#~ msgstr "Sàbhail sìol na tuairmeachd"
+
+#~ msgid ""
+#~ "Makes the random number generator yield the same results even after "
+#~ "reloading a game"
+#~ msgstr ""
+#~ "Bheir gineadair nan àireamhan tuaireamach an aon toradh dhut gach turas "
+#~ "fiù ’s nuair a bhios tu air geama ath-luchdadh"
+
+#~ msgid "Choose Player"
+#~ msgstr "Tagh cluicheadair"
+
+#~ msgid "Which player should start here?"
+#~ msgstr "Cò an cluicheadair a thòisicheas an-seo?"
+
+#~ msgid "No ignored"
+#~ msgstr "Gun neach neo-shuime"
+
+#~ msgid "Event"
+#~ msgstr "Tachartas"
+
 #~ msgid "You will now connect to the multiplayer server."
 #~ msgstr "Nì thu ceangal ri frithealaiche ioma-chluicheadair a-nis"
 
 #~ msgid "View List"
 #~ msgstr "Faic liosta"
 
+#~ msgid "Allow only registered users to join the game"
+#~ msgstr ""
+#~ "Na leig ach le cleachdaichean clàraichte tighinn a-steach dhan gheama"
+
+#~ msgid "Registered Users Only"
+#~ msgstr "Cleachdaichean clàraichte a-mhàin"
+
+#~ msgid "Categories:"
+#~ msgstr "Roinnean-seòrsa:"
+
 #~ msgid "Font Scaling:"
 #~ msgstr "Sgèileadh a’ chrutha-chlò:"
 
 #~ msgid "Set the scaling factor of fonts"
 #~ msgstr "Suidhich factar sgàilidh nan cruthan-clò"
+
+#~ msgid "Screenshots..."
+#~ msgstr "Glacaidhean-sgrìn…"
 
 #~ msgid "Start a tutorial to familiarize yourself with the game"
 #~ msgstr "Tòisich oideachadh gus ionnsachadh mun gheama"
@@ -8513,8 +8377,88 @@ msgstr ""
 #~ msgid "Select the game core data"
 #~ msgstr "Tagh dàta eitein a’ gheama"
 
+#~ msgid "feature^JPEG screenshots"
+#~ msgstr "Glacaidhean-sgrìn JPEG"
+
+#~ msgid "feature^Legacy bidirectional rendering"
+#~ msgstr "Reandaradh dà-chomhaireach dìleabach"
+
+#~ msgid "The maximum text width is less than 1."
+#~ msgstr "Tha an leud as motha dhe theacsa nas lugha na 1."
+
+#~ msgid "Line doesn't fit on canvas."
+#~ msgstr "Tha an loidhne ro mhòr airson a’ chanabhais."
+
+#~ msgid "Rectangle doesn't fit on canvas."
+#~ msgstr "Tha an ceart-cheàrnachan ro mhòr airson a’ chanabhais."
+
+#~ msgid "Rounded Rectangle doesn't fit on canvas."
+#~ msgstr "Tha an ceart-cheàrnach cruinn ro mhòr airson a’ chanabhais."
+
+#~ msgid "Circle doesn't fit on canvas."
+#~ msgstr "Tha an cearcall ro mhòr airson a’ chanabhais."
+
+#~ msgid "Text doesn't start on canvas."
+#~ msgstr "Chan eil an teacsa a’ tòiseachadh air a’ chanabhas."
+
+#~ msgid "Number of columns differ."
+#~ msgstr "Cha àireamhan eadar-dhealaichte dhe cholbhan ann."
+
+#~ msgid "Terms"
+#~ msgstr "Teirmichean"
+
 #~ msgid "No matching widget found for scaling option"
 #~ msgstr "Cha each widget a lorg airson na roghainn sgèilidh"
+
+#~ msgid "version^N/A"
+#~ msgstr "chan eil fhios"
+
+#~ msgid "Room <i>“$name”</i> joined"
+#~ msgstr "Air tighinn a-steach dhan t-seòmar <i>“$name”</i>"
+
+#~ msgid "Do you want to open this link?"
+#~ msgstr "A bheil thu airson an ceangal seo fhosgladh?"
+
+#~ msgid "Accelerated"
+#~ msgstr "Luathaichte"
+
+#~ msgid ""
+#~ "Left mouse button sets a new item or moves it via drag and drop, right "
+#~ "clears. Not implemented yet."
+#~ msgstr ""
+#~ "Suidhichidh putan clì na luchaige nì ùr no gluaisidh e aonad le slaodadh "
+#~ "’s leigeil às; falamhaichidh tu an taghadh leis an fhear deas. Cha deach "
+#~ "seo a chruthachadh fhathast."
+
+#~ msgid ""
+#~ "Left mouse button sets or drags a sound source, right clears. Not "
+#~ "implemented yet."
+#~ msgstr ""
+#~ "Suidhichidh no slaodaidh tu tùs fuaime le putan clì na luchaige; "
+#~ "falamhaichidh tu an taghadh leis an fhear deas. Cha deach seo a "
+#~ "chruthachadh fhathast."
+
+#~ msgid "Sound Source Tool"
+#~ msgstr "Inneal nan tùsan fuaime"
+
+#~ msgid "Assign Recruit List"
+#~ msgstr "Sònraich liosta-trusaidh"
+
+#~ msgid "Assign the selected unit set as recruit list to the unit."
+#~ msgstr ""
+#~ "Sònraich an seata de dh’aonadan a thagh thu mar liosta-trusaidh an aonaid."
+
+#~ msgid "Generate Tiles in Selection"
+#~ msgstr "Gin leacan san taghadh"
+
+#~ msgid "Rotate Map"
+#~ msgstr "Tionndadh mapa"
+
+#~ msgid "View Chat Log"
+#~ msgstr "Seall loga na cabadaich"
+
+#~ msgid "Clear Messages"
+#~ msgstr "Falamhaich teachdaireachdan"
 
 #~ msgid "No server has been defined."
 #~ msgstr "Cha deach frithealaiche a shònrachadh."
