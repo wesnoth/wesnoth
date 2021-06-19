@@ -434,7 +434,7 @@ function wesnoth.wml_actions.message(cfg)
 			-- 0 means currently playing side.
 			sides_for = 0
 		end
-		local choice = wesnoth.synchronize_choice(wait_description, msg_dlg, sides_for)
+		local choice = wesnoth.sync.evaluate_single(wait_description, msg_dlg, sides_for)
 
 		option_chosen = tonumber(choice.value)
 

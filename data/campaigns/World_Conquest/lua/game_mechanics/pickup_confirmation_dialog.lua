@@ -21,7 +21,7 @@ end
 
 -- returns true when the item should be picked up.
 function pickup_confirmation_dialog.promt_synced(unit, item_image)
-	local res = wesnoth.synchronize_choice("Item Pickup Choice", function()
+	local res = wesnoth.sync.evaluate_single("Item Pickup Choice", function()
 		return { take_item = show_dialog(unit, item_image) }
 	end)
 	return res.take_item

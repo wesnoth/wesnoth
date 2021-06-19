@@ -58,7 +58,7 @@ function ca_forest_animals_new_rabbit:execution(cfg)
             x, y = wesnoth.find_vacant_tile(holes[i].x, holes[i].y)
         end
 
-        wesnoth.invoke_synced_command("rabbit_spawn", { rabbit_type = cfg.rabbit_type, x = x, y = y})
+        wesnoth.sync.invoke_command("rabbit_spawn", { rabbit_type = cfg.rabbit_type, x = x, y = y})
     end
 
     if wesnoth.sides[wesnoth.current.side].shroud then
