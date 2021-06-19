@@ -257,7 +257,7 @@ mapgen_lua_kernel::mapgen_lua_kernel(const config* vars)
 	luaL_setfuncs(L, map_callbacks, 0);
 	lua_pop(L, 1);
 	assert(lua_gettop(L) == 0);
-	
+
 	// Create the paths module
 	cmd_log_ << "Adding paths module...\n";
 	static luaL_Reg const path_callbacks[] {
