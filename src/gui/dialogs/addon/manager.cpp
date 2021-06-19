@@ -487,7 +487,7 @@ void addon_manager::toggle_details(button& btn, stacked_widget& stk)
 		btn.set_label(_("addons^Back to List"));
 		stk.select_layer(1);
 	} else {
-		btn.set_label(_("Addon Details"));
+		btn.set_label(_("Add-on Details"));
 		stk.select_layer(0);
 	}
 }
@@ -722,7 +722,7 @@ void addon_manager::execute_action_on_selected_addon()
 	// Explicitly return to the main page if we're in low-res mode so the list is visible.
 	if(stacked_widget* stk = find_widget<stacked_widget>(get_window(), "main_stack", false, false)) {
 		stk->select_layer(0);
-		find_widget<button>(get_window(), "details_toggle", false).set_label(_("Addon Details"));
+		find_widget<button>(get_window(), "details_toggle", false).set_label(_("Add-on Details"));
 	}
 
 	addon_list& addons = find_widget<addon_list>(get_window(), "addons", false);
