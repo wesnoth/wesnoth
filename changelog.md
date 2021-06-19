@@ -22,6 +22,13 @@
    * Revised Jinn (unit config and graphics)
    * Fire Wraith added
    * Moved Naga guardian line from UtBS to core, and made some revisions
+   * Dune Apothecary experience needed to level up changed from 100 to 65
+   * Dune Captain experience needed to level up changed from 86 to 75
+   * Dune Herbalist cost changed form 15 to 14
+   * Dune Horse Archer experience needed to level up changed form 70 to 65
+   * Naga Sicarius hp changed form 55 to 53 and melee damage changed form 9 to 6, new special "deflect" added to melee attack
+   * Fire Guardian can now level into Fire Wraith, experience needed to level up for Fire Guardian changed from 50 to 29
+   * Revised statistics of all animal horses, Bay Horse can now level into Great Horse
  ### User interface
  ### WML Engine
    * add 'unslowable' and 'unpetrifiable' status to immune to slow or petrifies
