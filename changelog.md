@@ -8,7 +8,7 @@
      * Revisions to the last two scenarios
  ### Editor
  ### Lua API
-   * Pathfinding functions are now in a new wesnoth.path module.
+   * Pathfinding functions are now in a new wesnoth.paths module.
      * Pathfinding in map generation now takes an options table as the third argument.
    * New sync module that contains functions for multiplayer synchronization
      * In particular, wesnoth.synchronize_choice is now wesnoth.sync.evaluate_single
