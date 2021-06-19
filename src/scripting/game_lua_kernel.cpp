@@ -2298,8 +2298,10 @@ static int impl_floating_label_getmethod(lua_State* L)
 int game_lua_kernel::intf_remove_floating_label(lua_State* L)
 {
 	int* handle = luaW_check_floating_label(L, 1);
+	int fade = luaL_optinteger(L, 2, -1);
 	if(*handle != 0) {
-		font::remove_floating_label(*handle);
+		// Passing -1 as the second argument means it uses the fade time that was set when the label was created
+		font::remove_floating_label(*handle, fade);
 	}
 	*handle = 0;
 	return 0;

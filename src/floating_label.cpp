@@ -273,6 +273,9 @@ void remove_floating_label(int handle, int fadeout)
 		if(fadeout > 0) {
 			i->second.set_lifetime(0, fadeout);
 			return;
+		} else if(fadeout < 0) {
+			i->second.set_lifetime(0, i->second.get_fade_time());
+			return;
 		}
 		labels.erase(i);
 	}

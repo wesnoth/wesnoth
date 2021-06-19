@@ -79,6 +79,9 @@ public:
 	void show(const bool value) { visible_ = value; }
 
 	LABEL_SCROLL_MODE scroll() const { return scroll_; }
+	
+	// TODO: Might be good to have more getters, right?
+	int get_fade_time() const { return fadeout_; }
 
 private:
 
@@ -121,6 +124,7 @@ void scroll_floating_labels(double xmove, double ymove);
 
 /** removes the floating label given by 'handle' from the screen */
 /** if fadeout is given, the label fades out over that duration */
+/** if fadeout is less than 0, it uses the fadeout setting from the label */
 void remove_floating_label(int handle, int fadeout = 0);
 
 /** hides or shows a floating label */
