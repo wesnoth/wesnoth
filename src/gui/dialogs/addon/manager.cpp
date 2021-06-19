@@ -309,6 +309,26 @@ void addon_manager::pre_show(window& window)
 {
 	window.set_escape_disabled(true);
 
+	stacked_widget& addr_info = find_widget<stacked_widget>(&window, "server_conn_info", false);
+	grid* addr_visible;
+
+	if(client_.using_tls()) {
+		addr_info.select_layer(1);
+		addr_visible = addr_info.get_layer_grid(1);
+		addr_info.set_tooltip("Traffic between the game and the server is encrypted");
+	} else {
+		addr_info.select_layer(0);
+		addr_visible = addr_info.get_layer_grid(0);
+		addr_info.set_tooltip("Traffic between the game and the server is not secure");
+	}
+
+	if(addr_visible) {
+		auto addr_box = dynamic_cast<styled_widget*>(addr_visible->find("server_addr", false));
+		if(addr_box) {
+			addr_box->set_label(client_.addr());
+		}
+	}
+
 	addon_list& list = find_widget<addon_list>(&window, "addons", false);
 
 	text_box& filter = find_widget<text_box>(&window, "filter", false);

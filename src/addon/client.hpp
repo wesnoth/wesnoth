@@ -69,6 +69,9 @@ public:
 		clear_server_info();
 	}
 
+	/** Returns the current hostname:port used for this connection. */
+	const std::string& addr() const { return addr_; }
+
 	/** Returns the last error message sent by the server, or an empty string. */
 	const std::string& get_last_server_error() const { return last_error_; }
 
@@ -204,6 +207,14 @@ public:
 	bool server_supports_legacy_auth() const
 	{
 		return server_supports("auth:legacy");
+	}
+
+	/**
+	 * Returns whether the current connection uses TLS.
+	 */
+	bool using_tls() const
+	{
+		return conn_ && conn_->using_tls();
 	}
 
 private:
