@@ -21,7 +21,6 @@ set(NORMAL_DOMAINS
 	wesnoth-sota
 	wesnoth-sotbe
 	wesnoth-tb
-	wesnoth-test
 	wesnoth-thot
 	wesnoth-trow
 	wesnoth-tsg
