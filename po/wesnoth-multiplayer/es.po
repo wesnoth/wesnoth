@@ -12,7 +12,7 @@
 # Fernando Cerezal <kryptos21@gmail.com>, 2006.
 # Robert Romero <sildurin@gmail.com>, 2006.
 # Sergi March <sergi.march@gmail.com>, 2008.
-# Iris Morelle <shadowm@wesnoth.org>, 2008, 2009.
+# Ignacio R. Morelle <shikadilord@users.sourceforge.net>, 2008, 2009.
 # Aelonin <quianaaelonin@gmail.com>, 2012.
 # Pepe <donpepe1963@gmail.com>, 2014.
 msgid ""
@@ -20,7 +20,7 @@ msgstr ""
 "Project-Id-Version: Wesnoth 1.13\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2021-05-16 02:06 UTC\n"
-"PO-Revision-Date: 2020-01-16 07:51+0100\n"
+"PO-Revision-Date: 2021-06-15 13:23+0200\n"
 "Last-Translator: Pepe <donpepe1963@gmail.com>\n"
 "Language-Team: Wesnoth-spanish\n"
 "Language: es\n"
@@ -28,7 +28,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Poedit 2.3\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 
 #. [generic_multiplayer]: id=user_map
@@ -120,58 +120,50 @@ msgstr ""
 #. [lua]: f
 #. In the end-of-match summary, a side which has no units left and therefore lost. In English the loss is shown by displaying it with the text struck through.
 #: data/multiplayer/eras.lua:53
-#, fuzzy
-#| msgid "<span strikethrough='true' foreground='#%02x%02x%02x'>Side %d</span>"
 msgid ""
 "<span strikethrough='true' foreground='$side_color'>Side $side_number</"
 "span>:  Has lost all units"
-msgstr "<span strikethrough='true' foreground='#%02x%02x%02x'>Bando %d</span>"
+msgstr ""
+"<span strikethrough='true' foreground='$side_color'>El bando $side_number</"
+"span>:  Ha perdido todas las unidades"
 
 #. [lua]: f
 #. In the end-of-match summary, any side that still has units left
 #: data/multiplayer/eras.lua:69
-#, fuzzy
-#| msgid ""
-#| "<span foreground='#%02x%02x%02x'>Side %d</span>:  Income score = %d  Unit "
-#| "score = %d  Gold = %d"
 msgid ""
 "<span foreground='$side_color'>Side $side_number</span>:  Income score = "
 "$income  Unit score = $units  Gold = $gold\n"
 "Grand total: <b>$total</b>"
 msgstr ""
-"<span foreground='#%02x%02x%02x'>Bando %d</span>:  Puntuación de ingresos = "
-"%d  Puntuación de unidades = %d  Oro = %d"
+"<span foreground='$side_color'>Bando $side_number</span>:  Puntuación por "
+"ingresos = $income  Puntuación por unidades = $units  Oro = $gold\n"
+"Suma total: <b>$total</b>"
 
 #. [lua]: f
 #. In the end-of-match summary, there's a single side that's won.
 #: data/multiplayer/eras.lua:86
-#, fuzzy
-#| msgid "<span foreground='%s'>Side %d</span> has the advantage."
 msgid ""
 "<span foreground='$side_color'>Side $side_number</span> has the advantage."
-msgstr "El <span foreground='%s'>bando %d</span> tiene la ventaja."
+msgstr ""
+"<span foreground='$side_color'>El bando $side_number</span> tiene ventaja."
 
 #. [lua]: f
 #. In the end-of-match summary, there's a two-way tie (this is only used for exactly two winning teams)
 #: data/multiplayer/eras.lua:91
-#, fuzzy
-#| msgid "Sides %s and %d are tied."
 msgid "Sides $side_number and $other_side_number are tied."
-msgstr "Los lados %s y %d están coaligados."
+msgstr "Los bandos $side_number y $other_side_number están empatados."
 
 #. [lua]: f
 #. In the end-of-match summary, three or more teams have all tied for the best score. $winners contains the result of formatting the conjunct list.
 #: data/multiplayer/eras.lua:96
-#, fuzzy
-#| msgid "Sides %s and %d are tied."
 msgid "Sides $winners are tied."
-msgstr "Los lados %s y %d están coaligados."
+msgstr "Los bandos $winners están empatados."
 
 #. [lua]: f
 #. "Turns Over", meaning "turn limit reached" is the title of the end-of-match summary dialog
 #: data/multiplayer/eras.lua:100
 msgid "dialog^Turns Over"
-msgstr ""
+msgstr "Se han acabado los turnos"
 
 #. [multiplayer_side]: id=Drakes, type=random
 #: data/multiplayer/factions/drakes-aoh.cfg:4
@@ -1331,7 +1323,7 @@ msgstr ""
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:265
 msgid "Changes the gold worth of the enemy spawns by a certain percentage"
 msgstr ""
-"Cambia el valor en oro de la generación de enemigos en un cierto porcentaje."
+"Cambia el valor en oro de la generación de enemigos en un cierto porcentaje"
 
 #. [lua]: final_spawn
 #: data/multiplayer/scenarios/2p_Dark_Forecast.lua:300
@@ -2240,7 +2232,7 @@ msgstr "Equipo noreste"
 #. [checkbox]: id=simple_background
 #: data/multiplayer/scenarios/4p_Isars_Cross.cfg:67
 msgid "Disable Background Image"
-msgstr ""
+msgstr "Desactiva la imagen de fondo"
 
 #. [checkbox]: id=simple_background
 #. Tooltip for the Isar's Cross map, makes the map look as it did in Wesnoth 1.14 and earlier
@@ -2249,6 +2241,8 @@ msgid ""
 "Show a blank area outside the map, instead of the floating island with "
 "cliffs."
 msgstr ""
+"Muestra un área en blanco fuera del mapa, en vez de la isla flotante con "
+"acantilados."
 
 #. [multiplayer]: id=multiplayer_King_of_the_Hill
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:7
@@ -2470,10 +2464,8 @@ msgstr "Monstruos"
 
 #. [objective]: condition=win
 #: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:245
-#, fuzzy
-#| msgid "Defeat the enemy leaders"
 msgid "Defeat all enemy leaders"
-msgstr "Derrote a los líderes enemigos"
+msgstr "Derrote a todos los líderes enemigos"
 
 #. [objective]: condition=win
 #: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:264
@@ -2493,7 +2485,7 @@ msgstr "Muerte de todas sus unidades"
 #. [note]
 #: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:292
 msgid "You cannot recruit units."
-msgstr "No puede reclutar unidades"
+msgstr "No puede reclutar unidades."
 
 #. [multiplayer]: id=multiplayer_Crusaders_Field
 #: data/multiplayer/scenarios/6p_Crusaders_Field.cfg:5
@@ -2844,7 +2836,6 @@ msgstr ""
 #~ msgstr "Resultado total: <b>%d</b>"
 
 #, fuzzy
-#~| msgid "Defeat all enemy leaders"
 #~ msgid "Defeat enemy leader(s)"
 #~ msgstr "Derrote a todos los líderes enemigos"
 

@@ -7,7 +7,7 @@
 # Roberto Romero <sildurin@gmail.com>, 2006, 2007.
 # Sergi March <sergi.march@gmail.com>, 2008.
 # Gustavo Gingins <gusgins@gmail.com>, 2009.
-# Iris Morelle <shadowm@wesnoth.org>, 2009.
+# Ignacio R. Morelle <shikadilord@users.sourceforge.net>, 2009.
 # J. Cortázar <javier_los_herejes@hotmail.com>, 2011.
 # Aelonin <quianaaelonin@gmail.com>, 2012.
 # Pepe <donpepe1963@gmail.com>, 2014.
@@ -16,7 +16,7 @@ msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2021-05-23 02:21 UTC\n"
-"PO-Revision-Date: 2020-01-16 09:22+0100\n"
+"PO-Revision-Date: 2021-06-15 14:04+0200\n"
 "Last-Translator: Pepe <donpepe1963@gmail.com>\n"
 "Language-Team: Spanish <kde-i18n-doc@kde.org>\n"
 "Language: es\n"
@@ -24,18 +24,18 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Poedit 2.3\n"
 
 #. [campaign]: id=Tutorial
 #: data/campaigns/tutorial/_main.cfg:11
 msgid "Battle Training"
-msgstr ""
+msgstr "Entrenamiento de batalla"
 
 #. [difficulty]
 #. [campaign]: id=Tutorial
 #: data/campaigns/tutorial/_main.cfg:14 data/campaigns/tutorial/_main.cfg:30
 msgid "Tutorial"
-msgstr ""
+msgstr "Tutorial"
 
 #. [campaign]: id=Tutorial
 #: data/campaigns/tutorial/_main.cfg:21
@@ -43,11 +43,13 @@ msgid ""
 "Learn the basics of Wesnoth gameplay with a tutorial. Recommended for first "
 "time players."
 msgstr ""
+"Aprenda los principios básicos para jugar a Wesnoth con un tutorial. "
+"Recomendado para quienes juegan por primera vez."
 
 #. [difficulty]
 #: data/campaigns/tutorial/_main.cfg:31
 msgid "Beginner"
-msgstr ""
+msgstr "Principiante"
 
 #. [label]
 #: data/campaigns/tutorial/gui/character_selection.cfg:21
@@ -125,15 +127,10 @@ msgstr "Conseguir que te maten"
 
 #. [disallow_end_turn]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:137
-#, fuzzy
-#| msgid ""
-#| "You cannot end your turn until you have recruited troops and captured a "
-#| "village!"
 msgid ""
 "You cannot end your turn until you have completed the lesson on movement!"
 msgstr ""
-"¡No puedes terminar tu turno hasta que hayas reclutado tropas y capturado "
-"una aldea!"
+"¡No puedes terminar tu turno hasta que hayas completado la lección en curso!"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:146
@@ -350,14 +347,8 @@ msgstr ""
 
 #. [disallow_end_turn]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:527
-#, fuzzy
-#| msgid ""
-#| "You cannot end your turn until you have recruited troops and captured a "
-#| "village!"
 msgid "You cannot end your turn until you have attacked the dummy!"
-msgstr ""
-"¡No puedes terminar tu turno hasta que hayas reclutado tropas y capturado "
-"una aldea!"
+msgstr "¡No puedes terminar tu turno hasta que hayas atacado al maniquí!"
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:541
@@ -476,15 +467,11 @@ msgstr "Termina tu turno"
 
 #. [disallow_end_turn]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:631
-#, fuzzy
-#| msgid ""
-#| "You cannot end your turn until you have recruited troops and captured a "
-#| "village!"
 msgid ""
 "You cannot end your turn until you have completed the lesson on healing!"
 msgstr ""
-"¡No puedes terminar tu turno hasta que hayas reclutado tropas y capturado "
-"una aldea!"
+"¡No puedes terminar tu turno hasta que hayas terminado la lección sobre "
+"sanación!"
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:642
@@ -541,15 +528,11 @@ msgstr ""
 
 #. [disallow_end_turn]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:698
-#, fuzzy
-#| msgid ""
-#| "You cannot end your turn until you have recruited troops and captured a "
-#| "village!"
 msgid ""
 "You cannot end your turn until you have completed the lesson on recruiting!"
 msgstr ""
-"¡No puedes terminar tu turno hasta que hayas reclutado tropas y capturado "
-"una aldea!"
+"¡No puedes terminar tu turno hasta que hayas completado la lección sobre "
+"reclutamiento!"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:707
@@ -654,15 +637,11 @@ msgstr ""
 
 #. [disallow_end_turn]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:830
-#, fuzzy
-#| msgid ""
-#| "You cannot end your turn until you have recruited troops and captured a "
-#| "village!"
 msgid ""
 "You cannot end your turn until you have completed the lesson on attacking!"
 msgstr ""
-"¡No puedes terminar tu turno hasta que hayas reclutado tropas y capturado "
-"una aldea!"
+"¡No puedes terminar tu turno hasta que hayas terminado la lección sobre "
+"ataque!"
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:839
@@ -736,19 +715,13 @@ msgstr ""
 #. [message]: speaker=Delfador
 #. a strong elf, so +1 damage
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:918
-#, fuzzy
-#| msgid ""
-#| "Your elf used a sword (5×4; or 5 damage on each hit, with 4 attacks), "
-#| "which is a <i>melee</i> attack. The quintain defended with its melee "
-#| "attack (3×5; or 3 damage on each hit, with 5 attacks). The ranged attack "
-#| "(the bow) would have been safer."
 msgid ""
 "Your elf used a sword (6×4; or 6 damage on each hit, with 4 attacks), which "
 "is a <i>melee</i> attack. The quintain defended with its melee attack (3×5; "
 "or 3 damage on each hit, with 5 attacks). The ranged attack (the bow) would "
 "have been safer."
 msgstr ""
-"Tu elfo usó una espada (5x4; o 5 de daño por golpe, con 4 ataques), que es "
+"Tu elfo usó una espada (6x4; o 6 de daño por golpe, con 4 ataques), que es "
 "un ataque <i>cuerpo a cuerpo</i>. El estafermo se defendió con su ataque "
 "cuerpo a cuerpo (3x5; o 3 de daño por cada golpe, con 5 ataques). El ataque "
 "a distancia (con el arco) habría sido más seguro."
@@ -759,6 +732,9 @@ msgid ""
 "Elvish Fighters normally do 5×4 damage with their swords, but this elf has "
 "the <i>strong</i> trait, which increases the damage output of melee attacks."
 msgstr ""
+"Los luchadores elfos hacen normalmente 5×4 de daño con sus espadas, pero "
+"este elfo tiene el rasgo <i>fuerte</i>, que aumenta el daño que producen los "
+"ataques cuerpo a cuerpo."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:928
@@ -776,17 +752,12 @@ msgstr ""
 #. [message]: speaker=Delfador
 #. a dextrous elf, so +1 damage
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:949
-#, fuzzy
-#| msgid ""
-#| "Your elf used a bow, which is a <i>ranged</i> attack (3×3; or 3 damage on "
-#| "each hit, with 3 attacks). The quintain has no ranged attack, only a "
-#| "melee attack, so it could not defend itself."
 msgid ""
 "Your elf used a bow, which is a <i>ranged</i> attack (4×3; or 4 damage on "
 "each hit, with 3 attacks). The quintain has no ranged attack, only a melee "
 "attack, so it could not defend itself."
 msgstr ""
-"Tu elfo ha usado un arco, que es un ataque <i>a distancia</i> (3x3; o 3 de "
+"Tu elfo ha usado un arco, que es un ataque <i>a distancia</i> (4x3; o 4 de "
 "daño por golpe, con 3 ataques). El estafermo no tiene ataque a distancia, "
 "sólo cuerpo a cuerpo, así que no pudo defenderse."
 
@@ -796,6 +767,9 @@ msgid ""
 "Elvish Fighters normally do 3×3 damage with their bows, but this elf has the "
 "<i>dextrous</i> trait, which increases the damage output of ranged attacks."
 msgstr ""
+"Los luchadores elfos hacen normalmente 3×3 de daño con sus arcos, pero este "
+"elfo tiene el rasgo <i>diestro</i>, que aumenta el daño producido por los "
+"ataques a distancia."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:959
@@ -1183,13 +1157,6 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:229
-#, fuzzy
-#| msgid ""
-#| "See this dark blue water? It’s too deep for either side to cross. The "
-#| "orcs could slowly wade through that narrow band of shallow lighter-blue "
-#| "water in the north; but we could stand on the shore and force them to "
-#| "fight us from the water, where they are exposed and we are protected by "
-#| "the forest."
 msgid ""
 "See this dark blue water? It’s too deep for either side to cross. The orcs "
 "could slowly wade through that narrow band of shallow lighter-blue water in "
@@ -1334,12 +1301,6 @@ msgstr "Chamana elfa"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:317
-#, fuzzy
-#| msgid ""
-#| "The Shaman has the ability to <i>heal</i> friendly units around her. She "
-#| "also has a special attack which <i>slows</i> enemies, halving the damage "
-#| "they do for one turn. However, she’s physically weaker than fighters and "
-#| "archers, so be careful when sending her into battle."
 msgid ""
 "The Shaman has the ability to <i>heal</i> friendly units around her. She "
 "also has a special attack which <i>slows</i> enemies, halving the damage "
@@ -1381,25 +1342,11 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:331
-#, fuzzy
-#| msgid "Weapon Specials"
 msgid "Weapon Specials"
 msgstr "Ataques especiales de arma"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:333
-#, fuzzy
-#| msgid ""
-#| "Weapon specials are special attack modifiers that make certain attacks "
-#| "more powerful. In this case, the Shaman has the Slows special on her "
-#| "entangle attack. When this attack successfully hits an enemy, it will "
-#| "halve the damage they do for one turn. Other weapon specials include "
-#| "First Strike, which allows that attack to always hit first no matter who "
-#| "attacks first, and Magical, which gives that attack a constant 70% chance "
-#| "to hit.\n"
-#| "\n"
-#| "A full list of abilities and weapons specials, along with traits, may be "
-#| "found in the help (default hotkey: <b>F1</b>)."
 msgid ""
 "Weapon specials are special attack modifiers that make certain attacks more "
 "powerful. In this case, the Shaman has the Slows special on her entangle "
@@ -1881,11 +1828,6 @@ msgstr ""
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:789
-#, fuzzy
-#| msgid ""
-#| "I hope my units will survive the counter-attack if I can’t take this "
-#| "grunt out this turn. I’d better grab more villages if I can and move "
-#| "everyone closer for next turn."
 msgid ""
 "I hope my units will survive the counter-attack if I can’t take this grunt "
 "out this turn. I’d better grab more villages if I can and move everyone "
@@ -1978,11 +1920,6 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:940
-#, fuzzy
-#| msgid ""
-#| "We need to occupy that village, otherwise they will take it soon! Move a "
-#| "unit into the village to stop the orcs capturing it. Whichever unit you "
-#| "choose will benefit from the village’s healing, too."
 msgid ""
 "We need to occupy that village, otherwise they will take it soon! Move a "
 "unit into the village to stop the orcs capturing it. Whichever unit you "
@@ -2237,10 +2174,6 @@ msgstr ""
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1293
-#, fuzzy
-#| msgid ""
-#| "Higher level units are powerful, but not invulnerable. We’ll miss you, "
-#| "$unit.name|."
 msgid ""
 "Higher level units are powerful, but not invulnerable. We’ll miss you, $unit."
 "name|."
@@ -2422,11 +2355,6 @@ msgstr "¡Ay! ¿Quién os conducirá ahora a la victoria?"
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1478
-#, fuzzy
-#| msgid ""
-#| "You have beaten the orcs! You may want to try one of the rookie-level "
-#| "campaigns next, which include strategy hints. <i>A Tale of Two Brothers</"
-#| "i> is the easiest and is the recommended first campaign."
 msgid ""
 "You have beaten the orcs! You may want to try one of the rookie-level "
 "campaigns next, which include strategy hints. <i>A Tale of Two Brothers</i> "
@@ -2519,17 +2447,15 @@ msgstr ""
 "las acciones si cometes un error."
 
 #: data/campaigns/tutorial/utils/utils.cfg:126
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "<big>Click a mouse button or press the spacebar to continue...</big>"
 msgid ""
 "\n"
 "\n"
 "<big>Click a mouse button or press the spacebar to continue...</big>"
 msgstr ""
 "\n"
-"<big>Pulsa el ratón o la barra espaciadora para continuar...</big>"
+"\n"
+"<big>Haz clic con el ratón o pulsa la barra espaciadora para continuar...</"
+"big>"
 
 #~ msgid ""
 #~ "Certain unit types have special <i>abilities</i>. Unlike traits, which "
