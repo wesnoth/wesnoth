@@ -5,14 +5,15 @@
 #
 # Translators:
 # RatArmy <broadbarredfirefish@gmail.com>, 2020
+# tamanegi, 2021
 #
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2021-05-22 22:18-0400\n"
+"POT-Creation-Date: 2021-06-07 03:09-0400\n"
 "PO-Revision-Date: 2018-05-06 10:25+0000\n"
-"Last-Translator: RatArmy <broadbarredfirefish@gmail.com>, 2020\n"
+"Last-Translator: tamanegi, 2021\n"
 "Language-Team: Japanese (https://www.transifex.com/wesnoth-jp/teams/60513/"
 "ja/)\n"
 "Language: ja\n"
@@ -31,7 +32,7 @@ msgstr "WESNOTH"
 #: doc/man/wesnoth.6:16 doc/man/wesnothd.6:16
 #, no-wrap
 msgid "2021"
-msgstr ""
+msgstr "2021"
 
 #. type: TH
 #: doc/man/wesnoth.6:16
@@ -438,10 +439,8 @@ msgstr "B<--log-precise>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:171
-#, fuzzy
-#| msgid "shows the timestamps in the logfile with more precision."
 msgid "shows the timestamps in log output with more precision."
-msgstr "より正確なログファイルの時刻を表示する。"
+msgstr "より正確にログ出力の時刻を表示する。"
 
 #. type: TP
 #: doc/man/wesnoth.6:171
@@ -1302,12 +1301,9 @@ msgstr "著作権"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:495 doc/man/wesnothd.6:296
-#, fuzzy
-#| msgid ""
-#| "Copyright \\(co 2003-2018 David White E<lt>davidnwhite@verizon.netE<gt>"
 msgid "Copyright \\(co 2003-2021 David White E<lt>davidnwhite@verizon.netE<gt>"
 msgstr ""
-"Copyright \\(co 2003-2018 David White E<lt>davidnwhite@verizon.netE<gt>"
+"Copyright \\(co 2003-2021 David White E<lt>davidnwhite@verizon.netE<gt>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:498 doc/man/wesnothd.6:299
@@ -2193,42 +2189,3 @@ msgstr ""
 #: doc/man/wesnothd.6:302
 msgid "B<wesnoth>(6)"
 msgstr "B<wesnoth>(6)"
-
-#, no-wrap
-#~ msgid "2018"
-#~ msgstr "2018"
-
-#, no-wrap
-#~ msgid "B<--proxy>"
-#~ msgstr "B<--proxy>"
-
-#~ msgid "enables usage of proxy for network connections."
-#~ msgstr "ネットワークコネクションにプロキシを使用する。"
-
-#, no-wrap
-#~ msgid "B<--proxy-address>I<\\ address>"
-#~ msgstr "B<--proxy-address>I<\\ address>"
-
-#~ msgid "specifies I<address> of the proxy."
-#~ msgstr "プロキシの I<address> を指定する。"
-
-#, no-wrap
-#~ msgid "B<--proxy-port>I<\\ port>"
-#~ msgstr "B<--proxy-port>I<\\ port>"
-
-#~ msgid "specifies I<port> of the proxy."
-#~ msgstr "プロキシの I<port> を指定する。"
-
-#, no-wrap
-#~ msgid "B<--proxy-user>I<\\ username>"
-#~ msgstr "B<--proxy-user>I<\\ username>"
-
-#~ msgid "specifies I<username> to log in to the proxy."
-#~ msgstr "プロキシへのログイン用の I<username> を指定する。"
-
-#, no-wrap
-#~ msgid "B<--proxy-password>I<\\ password>"
-#~ msgstr "B<--proxy-password>I<\\ password>"
-
-#~ msgid "specifies I<password> to log in to the proxy."
-#~ msgstr "プロキシへのログイン用の I<password> を指定する。"
