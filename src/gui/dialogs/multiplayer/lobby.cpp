@@ -281,6 +281,8 @@ bool handle_addon_requirements_gui(const std::vector<mp::game_info::required_add
 
 void mp_lobby::update_gamelist()
 {
+	if(delay_gamelist_update_) return;
+
 	SCOPE_LB;
 	gamelistbox_->clear();
 	gamelist_id_at_row_.clear();
@@ -316,6 +318,8 @@ void mp_lobby::update_gamelist()
 
 void mp_lobby::update_gamelist_diff()
 {
+	if(delay_gamelist_update_) return;
+
 	SCOPE_LB;
 	lobby_info_.make_games_vector();
 	int select_row = -1;
@@ -579,6 +583,8 @@ void mp_lobby::update_gamelist_filter()
 
 void mp_lobby::update_playerlist()
 {
+	if(delay_playerlist_update_) return;
+
 	SCOPE_LB;
 	DBG_LB << "Playerlist update: " << lobby_info_.users().size() << "\n";
 	lobby_info_.update_user_statuses(selected_game_id_);
@@ -912,6 +918,8 @@ void mp_lobby::process_network_data(const config& data)
 
 void mp_lobby::process_gamelist(const config& data)
 {
+	if(delay_gamelist_update_ || delay_playerlist_update_) return;
+
 	lobby_info_.process_gamelist(data);
 	DBG_LB << "Received gamelist\n";
 	gamelist_dirty_ = true;
@@ -920,6 +928,8 @@ void mp_lobby::process_gamelist(const config& data)
 
 void mp_lobby::process_gamelist_diff(const config& data)
 {
+	if(delay_gamelist_update_ || delay_playerlist_update_) return;
+
 	if(lobby_info_.process_gamelist_diff(data)) {
 		DBG_LB << "Received gamelist diff\n";
 		gamelist_dirty_ = true;
@@ -1146,13 +1156,11 @@ void mp_lobby::player_filter_callback()
 
 void mp_lobby::user_dialog_callback(mp::user_info* info)
 {
-	lobby_player_info dlg(*chatbox_, *info, lobby_info_);
-
+	delay_playerlist_update_ = true;
 	lobby_delay_gamelist_update_guard g(*this);
 
+	lobby_player_info dlg(*chatbox_, *info, lobby_info_);
 	dlg.show();
-
-	delay_playerlist_update_ = true;
 
 	if(dlg.result_open_whisper()) {
 		lobby_chat_window* t = chatbox_->whisper_window_open(info->name, true);
