@@ -4430,7 +4430,7 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 		{ "find_cost_map",             &dispatch<&game_lua_kernel::intf_find_cost_map              >        },
 		{ "find_path",                 &dispatch<&game_lua_kernel::intf_find_path                  >        },
 		{ "find_reach",                &dispatch<&game_lua_kernel::intf_find_reach                 >        },
-		{ "find_vacant_tile",          &dispatch<&game_lua_kernel::intf_find_vacant_tile           >        },
+		{ "find_vacant_hex",          &dispatch<&game_lua_kernel::intf_find_vacant_tile           >        },
 		{ "find_vision_range",         &dispatch<&game_lua_kernel::intf_find_vision_range          >        },
 		{ nullptr, nullptr }
 	};

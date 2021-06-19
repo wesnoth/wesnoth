@@ -174,6 +174,6 @@ if wesnoth.kernel_type() == 'Game Lua Kernel' then
 
 	wesnoth.find_cost_map = wesnoth.deprecate_api('wesnoth.find_cost_map', 'wesnoth.paths.find_cost_map', 1, nil, wesnoth.paths.find_cost_map)
 	wesnoth.find_reach = wesnoth.deprecate_api('wesnoth.find_reach', 'wesnoth.paths.find_reach', 1, nil, wesnoth.paths.find_reach)
-	wesnoth.find_vacant_tile = wesnoth.deprecate_api('wesnoth.find_vacant_tile', 'wesnoth.paths.find_vacant_tile', 1, nil, wesnoth.paths.find_vacant_tile)
+	wesnoth.find_vacant_tile = wesnoth.deprecate_api('wesnoth.find_vacant_tile', 'wesnoth.paths.find_vacant_hex', 1, nil, wesnoth.paths.find_vacant_hex)
 	wesnoth.find_vision_range = wesnoth.deprecate_api('wesnoth.find_vision_range', 'wesnoth.paths.find_vision_range', 1, nil, wesnoth.paths.find_vision_range)
 end

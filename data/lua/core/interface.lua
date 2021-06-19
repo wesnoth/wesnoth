@@ -12,7 +12,7 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 		local from_x, from_y = moving_unit.x, moving_unit.y
 
 		wesnoth.interface.scroll_to_hex(from_x, from_y)
-		to_x, to_y = wesnoth.find_vacant_tile(to_x, to_y, moving_unit)
+		to_x, to_y = wesnoth.find_vacant_hex(to_x, to_y, moving_unit)
 
 		if to_x < from_x then
 			moving_unit.facing = "sw"

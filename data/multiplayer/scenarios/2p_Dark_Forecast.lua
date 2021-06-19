@@ -222,7 +222,7 @@ local function place_units(unittypes, x, y)
 				increase = "-50%",
 			}
 		})
-		local dst_x, dst_y = wesnoth.find_vacant_tile(x, y, u)
+		local dst_x, dst_y = wesnoth.find_vacant_hex(x, y, u)
 		u:to_map(dst_x, dst_y)
 		wesnoth.add_known_unit(v)
 		wesnoth.map.set_owner(dst_x, dst_y, 1)

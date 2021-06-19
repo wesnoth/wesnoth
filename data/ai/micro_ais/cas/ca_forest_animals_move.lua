@@ -100,7 +100,7 @@ function ca_forest_animals_move:execution(cfg)
             end
 
             if (best_hex) then
-                local x,y = wesnoth.find_vacant_tile(best_hex[1], best_hex[2], unit)
+                local x,y = wesnoth.find_vacant_hex(best_hex[1], best_hex[2], unit)
                 local next_hop = AH.next_hop(unit, x, y)
                 if (not next_hop) then next_hop = { unit.x, unit.y } end
 

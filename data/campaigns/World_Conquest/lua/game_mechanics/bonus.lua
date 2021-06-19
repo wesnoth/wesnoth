@@ -150,7 +150,7 @@ function bonus.found_artifact(ec, index)
 	}
 	bonus.remove_current_item(ec)
 	wc2_artifacts.drop_message(index)
-	--local x2, y2 = wesnoth.find_vacant_tile(ec.x1, ec.y1)
+	--local x2, y2 = wesnoth.find_vacant_hex(ec.x1, ec.y1)
 	local x2, y2 = ec.x1, ec.y1 + 1
 	wc2_artifacts.place_item(x2, y2, index)
 	return true

@@ -85,7 +85,7 @@ function wesnoth.wml_actions.move_unit(cfg)
 			while true do
 				x = tonumber(x) or wml.error(coordinate_error)
 				y = tonumber(y) or wml.error(coordinate_error)
-				if not (x == prevX and y == prevY) then x, y = wesnoth.find_vacant_tile(x, y, pass_check) end
+				if not (x == prevX and y == prevY) then x, y = wesnoth.find_vacant_hex(x, y, pass_check) end
 				if not x or not y then wml.error("Could not find a suitable hex near to one of the target hexes in [move_unit].") end
 				table.insert(x_list, x)
 				table.insert(y_list, y)

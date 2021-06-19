@@ -795,7 +795,7 @@ wml_actions.unstore_unit = function(cfg)
 	wesnoth.add_known_unit(unit.type)
 	if x ~= 'recall' and y ~= 'recall' and wesnoth.current.map:on_board(x, y) then
 		if cfg.find_vacant then
-			x,y = wesnoth.find_vacant_tile(x, y, check_passability and unit)
+			x,y = wesnoth.find_vacant_hex(x, y, check_passability and unit)
 		end
 		unit:to_map(x, y, cfg.fire_event)
 		local text
