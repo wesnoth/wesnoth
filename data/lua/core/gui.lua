@@ -157,4 +157,5 @@ wesnoth.show_dialog = wesnoth.deprecate_api('wesnoth.show_dialog', 'gui.show_dia
 if wesnoth.kernel_type() == "Game Lua Kernel" then
 	-- The deprecated function was only available in Game Lua Kernel, so even though show_help is available in other kernels, there's no need to expose the deprecated function there.
 	wesnoth.open_help = wesnoth.deprecate_api('wesnoth.open_help', 'gui.show_help', 1, nil, gui.show_help)
+	wesnoth.gamestate_inspector = wesnoth.deprecate_api('wesnoth.gamestate_inspector', 'gui.show_inspector', 1, nil, gui.show_inspector)
 end
