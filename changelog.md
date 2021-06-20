@@ -1,3 +1,18 @@
+## Version 1.15.14+dev
+ ### Add-ons client
+ ### Add-ons server
+ ### Campaigns
+ ### Editor
+ ### Multiplayer
+ ### Lua API
+ ### Packaging
+ ### Terrain
+ ### Translations
+ ### Units
+ ### User interface
+ ### WML Engine
+ ### Miscellaneous and Bug Fixes
+
 ## Version 1.15.14
  ### Add-ons client
    * Fixed: using the versions drop-down in small-screen mode returned to the title screen (issue #5810)
