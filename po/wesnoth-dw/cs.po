@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-03-21 01:03 UTC\n"
+"POT-Creation-Date: 2021-06-20 11:48 UTC\n"
 "PO-Revision-Date: 2021-03-21 12:42+0100\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
@@ -227,8 +227,8 @@ msgstr ""
 msgid "Undead Forces"
 msgstr "Nemrtvá vojska"
 
-#. [side]: type=Lich, id=Mal-Kevek
 #. [side]: type=Dark Sorcerer, id=Mal-Kevek
+#. [side]: type=Lich, id=Mal-Kevek
 #: data/campaigns/Dead_Water/scenarios/01_Invasion.cfg:89
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:126
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:39
@@ -1016,6 +1016,15 @@ msgstr "Ještěráčtí otrokáři"
 #: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:114
 msgid "Gilak"
 msgstr "Gilak"
+
+#. [unit]: type=Saurian Skirmisher
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:150
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:157
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:205
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:255
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:262
+msgid "Guardian"
+msgstr ""
 
 #. [side]: id=Raxisz, type=Saurian Ambusher, type=Saurian Ambusher, type=Saurian Flanker, type=Saurian Flanker
 #: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:170
@@ -3176,14 +3185,14 @@ msgstr ""
 "a ocasy než na jiné zbraně."
 
 #. [unstore_unit]
-#: data/campaigns/Dead_Water/units/Brawler.cfg:96
-#: data/campaigns/Dead_Water/units/Brawler.cfg:143
+#: data/campaigns/Dead_Water/units/Brawler.cfg:95
+#: data/campaigns/Dead_Water/units/Brawler.cfg:142
 msgid "stunned"
 msgstr "v omráčení"
 
 #. [unstore_unit]
-#: data/campaigns/Dead_Water/units/Brawler.cfg:97
-#: data/campaigns/Dead_Water/units/Brawler.cfg:144
+#: data/campaigns/Dead_Water/units/Brawler.cfg:96
+#: data/campaigns/Dead_Water/units/Brawler.cfg:143
 msgid "female^stunned"
 msgstr "omráčená"
 
@@ -3418,21 +3427,13 @@ msgstr ""
 "Ten lidský čaroděj nosil prsten! Možná magický. Někdo by si ho měl "
 "vyzkoušet, aby se vidělo, co dělá."
 
-#. [special_note]
-#: data/campaigns/Dead_Water/utils/specials.cfg:5
-msgid ""
-"This unit is able to stun its enemies, disrupting their zones of control."
-msgstr ""
-"Tato jednotka je schopna omračovat své nepřátele a rušit tak jejich zóny "
-"kontroly."
-
 #. [damage]: id=tail_stun
-#: data/campaigns/Dead_Water/utils/specials.cfg:12
+#: data/campaigns/Dead_Water/utils/specials.cfg:6
 msgid "stun"
 msgstr "omráčení"
 
 #. [damage]: id=tail_stun
-#: data/campaigns/Dead_Water/utils/specials.cfg:13
+#: data/campaigns/Dead_Water/utils/specials.cfg:7
 msgid ""
 "This attack hits so hard that the opponent is dazed and can no longer "
 "enforce a zone of control. The effect wears off on the opponent’s next turn."
@@ -3440,3 +3441,11 @@ msgstr ""
 "Tento útok je tak drtivý, že je zasažená jednotka omráčena a není schopna "
 "dále zajištovat svou zónu kontroly. Tento efekt pomine na začátku dalšího "
 "kola zasažené jednotky."
+
+#. [damage]: id=tail_stun
+#: data/campaigns/Dead_Water/utils/specials.cfg:8
+msgid ""
+"This unit is able to stun its enemies, disrupting their zones of control."
+msgstr ""
+"Tato jednotka je schopna omračovat své nepřátele a rušit tak jejich zóny "
+"kontroly."

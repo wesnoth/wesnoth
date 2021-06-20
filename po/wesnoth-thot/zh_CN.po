@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.14\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-02-20 21:40 UTC\n"
+"POT-Creation-Date: 2021-06-20 11:49 UTC\n"
 "PO-Revision-Date: 2020-08-10 20:16+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
@@ -165,10 +165,10 @@ msgstr "联盟"
 msgid "Pelmathidrol"
 msgstr "佩尔马希德罗"
 
+#. [side]: type=Orcish Warrior, id=Bashnark
 #. [side]: type=Orcish Warlord, id=Tan-Morgh
 #. [side]: type=Orcish Warlord, id=Tan-Garukh
 #. [side]: type=Orcish Warlord, id=Tan-Wagran
-#. [side]: type=Orcish Warrior, id=Bashnark
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/01_At_the_East_Gate.cfg:70
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_The_Siege_of_Kal_Kartha.cfg:82
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_The_Siege_of_Kal_Kartha.cfg:127
@@ -2332,9 +2332,9 @@ msgstr ""
 "力。"
 
 #. [attack]: type=impact
-#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Annalist.cfg:65
-#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Loremaster.cfg:69
-#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Witness.cfg:69
+#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Annalist.cfg:61
+#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Loremaster.cfg:64
+#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Witness.cfg:66
 msgid "bolas"
 msgstr "流星锤"
 
@@ -2464,8 +2464,28 @@ msgstr ""
 "录下来。他们学习的是一种特意与同伴们不同的战斗风格，这种战斗风格用矮人们自夸"
 "的强壮来对付自己。见证者被看作是神圣的，他们经常担任矮人氏族之间的外交使节。"
 
-#. [special_note]
-#: data/campaigns/The_Hammer_of_Thursagan/utils/abilities.cfg:5
+#. [leadership]: id=inspire
+#: data/campaigns/The_Hammer_of_Thursagan/utils/abilities.cfg:10
+msgid "inspire"
+msgstr "鼓舞"
+
+#. [leadership]: id=inspire
+#: data/campaigns/The_Hammer_of_Thursagan/utils/abilities.cfg:11
+msgid "female^inspire"
+msgstr "鼓舞"
+
+#. [leadership]: id=inspire
+#: data/campaigns/The_Hammer_of_Thursagan/utils/abilities.cfg:12
+msgid ""
+"This unit can inspire own units that are next to it, making them fight "
+"better. Adjacent own units of lower or equal level will deal 25% more damage "
+"plus 25% for each level they are below the inspiring unit."
+msgstr ""
+"此单位能鼓舞在他周围的友方单位，让他们更好地战斗。相邻的友方单位中，等级与其"
+"相同或比其低的单位将多输出25%伤害，等级每多差一级，则再多输出25%伤害。"
+
+#. [leadership]: id=inspire
+#: data/campaigns/The_Hammer_of_Thursagan/utils/abilities.cfg:13
 #, fuzzy
 #| msgid ""
 #| " The presence of this unit inspires own units next to it to deal more "
@@ -2477,26 +2497,6 @@ msgid ""
 msgstr ""
 " 此单位的存在使他周围的友方单位在战斗中造成更多伤害，虽然这只对与其同等级或比"
 "其低等级的单位有效。"
-
-#. [leadership]: id=inspire
-#: data/campaigns/The_Hammer_of_Thursagan/utils/abilities.cfg:16
-msgid "inspire"
-msgstr "鼓舞"
-
-#. [leadership]: id=inspire
-#: data/campaigns/The_Hammer_of_Thursagan/utils/abilities.cfg:17
-msgid "female^inspire"
-msgstr "鼓舞"
-
-#. [leadership]: id=inspire
-#: data/campaigns/The_Hammer_of_Thursagan/utils/abilities.cfg:18
-msgid ""
-"This unit can inspire own units that are next to it, making them fight "
-"better. Adjacent own units of lower or equal level will deal 25% more damage "
-"plus 25% for each level they are below the inspiring unit."
-msgstr ""
-"此单位能鼓舞在他周围的友方单位，让他们更好地战斗。相邻的友方单位中，等级与其"
-"相同或比其低的单位将多输出25%伤害，等级每多差一级，则再多输出25%伤害。"
 
 #: data/campaigns/The_Hammer_of_Thursagan/utils/characters.cfg:6
 msgid "Aiglondur"

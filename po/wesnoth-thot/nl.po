@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.4\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-02-20 21:40 UTC\n"
+"POT-Creation-Date: 2021-06-20 11:49 UTC\n"
 "PO-Revision-Date: 2019-06-27 17:07+0200\n"
 "Last-Translator: Merijn de Vet <merijndevet@hotmail.com>\n"
 "Language-Team: Dutch <foppe.benedictus@gmail.com>\n"
@@ -180,10 +180,10 @@ msgstr "Alliantie"
 msgid "Pelmathidrol"
 msgstr "Pelmathidrol"
 
+#. [side]: type=Orcish Warrior, id=Bashnark
 #. [side]: type=Orcish Warlord, id=Tan-Morgh
 #. [side]: type=Orcish Warlord, id=Tan-Garukh
 #. [side]: type=Orcish Warlord, id=Tan-Wagran
-#. [side]: type=Orcish Warrior, id=Bashnark
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/01_At_the_East_Gate.cfg:70
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_The_Siege_of_Kal_Kartha.cfg:82
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_The_Siege_of_Kal_Kartha.cfg:127
@@ -2475,9 +2475,9 @@ msgstr ""
 "te genezen."
 
 #. [attack]: type=impact
-#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Annalist.cfg:65
-#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Loremaster.cfg:69
-#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Witness.cfg:69
+#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Annalist.cfg:61
+#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Loremaster.cfg:64
+#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Witness.cfg:66
 #, fuzzy
 msgid "bolas"
 msgstr "bola"
@@ -2632,31 +2632,20 @@ msgstr ""
 "kracht van de dwergen tegen zichzelf te keren. Getuigen worden gezien als "
 "heiligen, en worden vaak als gezanten gebruikt tussen dwergenclans."
 
-#. [special_note]
-#: data/campaigns/The_Hammer_of_Thursagan/utils/abilities.cfg:5
-#, fuzzy
-msgid ""
-"The presence of this unit inspires own units next to it to deal more damage "
-"in combat, though this only applies to units of lower or equal level."
-msgstr ""
-"De aanwezigheid van deze krijger inspireert eigen soldaten om meer schade "
-"uit te delen in het gevect, maar dit geldt enkel voor krijgers van een lager "
-"of gelijk level."
-
 #. [leadership]: id=inspire
-#: data/campaigns/The_Hammer_of_Thursagan/utils/abilities.cfg:16
+#: data/campaigns/The_Hammer_of_Thursagan/utils/abilities.cfg:10
 #, fuzzy
 msgid "inspire"
 msgstr "Inspiratie"
 
 #. [leadership]: id=inspire
-#: data/campaigns/The_Hammer_of_Thursagan/utils/abilities.cfg:17
+#: data/campaigns/The_Hammer_of_Thursagan/utils/abilities.cfg:11
 #, fuzzy
 msgid "female^inspire"
 msgstr "Inspiratie"
 
 #. [leadership]: id=inspire
-#: data/campaigns/The_Hammer_of_Thursagan/utils/abilities.cfg:18
+#: data/campaigns/The_Hammer_of_Thursagan/utils/abilities.cfg:12
 #, fuzzy
 msgid ""
 "This unit can inspire own units that are next to it, making them fight "
@@ -2667,6 +2656,17 @@ msgstr ""
 "Deze eenheid can eigen eenheden van level 0 of 1 naast zich inspireren en "
 "ervoor zorgen dat ze beter vechten. Aanliggende eigen eenheden van level 1 "
 "zullen 25% meer schade toebrengen; eenheden van level 0 zullen 50% meer doen."
+
+#. [leadership]: id=inspire
+#: data/campaigns/The_Hammer_of_Thursagan/utils/abilities.cfg:13
+#, fuzzy
+msgid ""
+"The presence of this unit inspires own units next to it to deal more damage "
+"in combat, though this only applies to units of lower or equal level."
+msgstr ""
+"De aanwezigheid van deze krijger inspireert eigen soldaten om meer schade "
+"uit te delen in het gevect, maar dit geldt enkel voor krijgers van een lager "
+"of gelijk level."
 
 #: data/campaigns/The_Hammer_of_Thursagan/utils/characters.cfg:6
 #, fuzzy

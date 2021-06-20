@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-03-21 01:03 UTC\n"
+"POT-Creation-Date: 2021-06-20 11:48 UTC\n"
 "PO-Revision-Date: 2013-09-18 10:47+0700\n"
 "Last-Translator: Pham Thanh Nam <phamthanhnam.ptn@gmail.com>\n"
 "Language-Team: Vietnamese <>\n"
@@ -257,8 +257,8 @@ msgstr ""
 msgid "Undead Forces"
 msgstr "Lực lượng ma quái"
 
-#. [side]: type=Lich, id=Mal-Kevek
 #. [side]: type=Dark Sorcerer, id=Mal-Kevek
+#. [side]: type=Lich, id=Mal-Kevek
 #: data/campaigns/Dead_Water/scenarios/01_Invasion.cfg:89
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:126
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:39
@@ -1088,6 +1088,15 @@ msgstr "Thằn lằn buôn nô lệ"
 #: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:114
 msgid "Gilak"
 msgstr "Gilak"
+
+#. [unit]: type=Saurian Skirmisher
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:150
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:157
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:205
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:255
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:262
+msgid "Guardian"
+msgstr ""
 
 #. [side]: id=Raxisz, type=Saurian Ambusher, type=Saurian Ambusher, type=Saurian Flanker, type=Saurian Flanker
 #: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:170
@@ -3354,14 +3363,14 @@ msgstr ""
 "nắm đấm và đuôi của chính mình hơn là với các vũ khí khác."
 
 #. [unstore_unit]
-#: data/campaigns/Dead_Water/units/Brawler.cfg:96
-#: data/campaigns/Dead_Water/units/Brawler.cfg:143
+#: data/campaigns/Dead_Water/units/Brawler.cfg:95
+#: data/campaigns/Dead_Water/units/Brawler.cfg:142
 msgid "stunned"
 msgstr "bị choáng"
 
 #. [unstore_unit]
-#: data/campaigns/Dead_Water/units/Brawler.cfg:97
-#: data/campaigns/Dead_Water/units/Brawler.cfg:144
+#: data/campaigns/Dead_Water/units/Brawler.cfg:96
+#: data/campaigns/Dead_Water/units/Brawler.cfg:143
 msgid "female^stunned"
 msgstr "bị choáng"
 
@@ -3622,8 +3631,22 @@ msgstr ""
 "Tên phù thủy con người đang đeo một chiếc nhẫn! Có thể nó có phép thuật. Ai "
 "đó nên thử để xem nó làm gì."
 
-#. [special_note]
-#: data/campaigns/Dead_Water/utils/specials.cfg:5
+#. [damage]: id=tail_stun
+#: data/campaigns/Dead_Water/utils/specials.cfg:6
+msgid "stun"
+msgstr "gây choáng"
+
+#. [damage]: id=tail_stun
+#: data/campaigns/Dead_Water/utils/specials.cfg:7
+msgid ""
+"This attack hits so hard that the opponent is dazed and can no longer "
+"enforce a zone of control. The effect wears off on the opponent’s next turn."
+msgstr ""
+"Đòn tấn công này đánh mạnh đến nỗi đối thủ bị choáng váng và không thể thực "
+"thi vùng kiểm soát được nữa. Hiệu ứng mất đi ở lượt kế tiếp của đối thủ."
+
+#. [damage]: id=tail_stun
+#: data/campaigns/Dead_Water/utils/specials.cfg:8
 #, fuzzy
 #| msgid ""
 #| " This unit is able to stun its enemies, disrupting their zones of control."
@@ -3632,20 +3655,6 @@ msgid ""
 msgstr ""
 " Đơn vị này có thể khiến các kẻ thù choáng váng, phá vỡ vùng kiểm soát của "
 "chúng."
-
-#. [damage]: id=tail_stun
-#: data/campaigns/Dead_Water/utils/specials.cfg:12
-msgid "stun"
-msgstr "gây choáng"
-
-#. [damage]: id=tail_stun
-#: data/campaigns/Dead_Water/utils/specials.cfg:13
-msgid ""
-"This attack hits so hard that the opponent is dazed and can no longer "
-"enforce a zone of control. The effect wears off on the opponent’s next turn."
-msgstr ""
-"Đòn tấn công này đánh mạnh đến nỗi đối thủ bị choáng váng và không thể thực "
-"thi vùng kiểm soát được nữa. Hiệu ứng mất đi ở lượt kế tiếp của đối thủ."
 
 #, fuzzy
 #~| msgid "(Beginner)"

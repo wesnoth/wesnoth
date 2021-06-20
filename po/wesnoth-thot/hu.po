@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: hu-thot_1.5\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-02-20 21:40 UTC\n"
+"POT-Creation-Date: 2021-06-20 11:49 UTC\n"
 "PO-Revision-Date: 2020-05-10 14:28+0200\n"
 "Last-Translator: Széll András <szell.andris@gmail.com>\n"
 "Language-Team: Hungarian <>\n"
@@ -171,10 +171,10 @@ msgstr "Szövetség"
 msgid "Pelmathidrol"
 msgstr "Pelmathidrol"
 
+#. [side]: type=Orcish Warrior, id=Bashnark
 #. [side]: type=Orcish Warlord, id=Tan-Morgh
 #. [side]: type=Orcish Warlord, id=Tan-Garukh
 #. [side]: type=Orcish Warlord, id=Tan-Wagran
-#. [side]: type=Orcish Warrior, id=Bashnark
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/01_At_the_East_Gate.cfg:70
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_The_Siege_of_Kal_Kartha.cfg:82
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_The_Siege_of_Kal_Kartha.cfg:127
@@ -2410,9 +2410,9 @@ msgstr ""
 "ásványok tudományát, így képesek kikúrálni a mérgek hatásait."
 
 #. [attack]: type=impact
-#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Annalist.cfg:65
-#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Loremaster.cfg:69
-#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Witness.cfg:69
+#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Annalist.cfg:61
+#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Loremaster.cfg:64
+#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Witness.cfg:66
 msgid "bolas"
 msgstr "bola"
 
@@ -2549,8 +2549,31 @@ msgstr ""
 "személyét szentnek tekintik, és gyakran használják őket követként a törp "
 "klánok között."
 
-#. [special_note]
-#: data/campaigns/The_Hammer_of_Thursagan/utils/abilities.cfg:5
+#. [leadership]: id=inspire
+#: data/campaigns/The_Hammer_of_Thursagan/utils/abilities.cfg:10
+msgid "inspire"
+msgstr "ösztönzés"
+
+#. [leadership]: id=inspire
+#: data/campaigns/The_Hammer_of_Thursagan/utils/abilities.cfg:11
+msgid "female^inspire"
+msgstr "ösztönzés"
+
+#. [leadership]: id=inspire
+#: data/campaigns/The_Hammer_of_Thursagan/utils/abilities.cfg:12
+msgid ""
+"This unit can inspire own units that are next to it, making them fight "
+"better. Adjacent own units of lower or equal level will deal 25% more damage "
+"plus 25% for each level they are below the inspiring unit."
+msgstr ""
+"Ez az egység ösztönözni tudja a mellette álló, saját csapatába tartozó "
+"egységeket, hogy jobban harcoljanak. A szomszédos, saját csapatába tartozó, "
+"vele egyenlő vagy alacsonyabb szintű egységek 25%-kal többet sebeznek, és "
+"további 25%-kal többet minden egyes szinttől amivel az ösztönző egység alatt "
+"vannak."
+
+#. [leadership]: id=inspire
+#: data/campaigns/The_Hammer_of_Thursagan/utils/abilities.cfg:13
 #, fuzzy
 #| msgid ""
 #| " The presence of this unit inspires own units next to it to deal more "
@@ -2563,29 +2586,6 @@ msgstr ""
 " Ennek az egységnek a jelenléte ösztönzi a mellette álló egységek küzdelmét, "
 "így többet sebeznek, azonban ez csak az azonos és kisebb szintű egységekre "
 "vonatkozik."
-
-#. [leadership]: id=inspire
-#: data/campaigns/The_Hammer_of_Thursagan/utils/abilities.cfg:16
-msgid "inspire"
-msgstr "ösztönzés"
-
-#. [leadership]: id=inspire
-#: data/campaigns/The_Hammer_of_Thursagan/utils/abilities.cfg:17
-msgid "female^inspire"
-msgstr "ösztönzés"
-
-#. [leadership]: id=inspire
-#: data/campaigns/The_Hammer_of_Thursagan/utils/abilities.cfg:18
-msgid ""
-"This unit can inspire own units that are next to it, making them fight "
-"better. Adjacent own units of lower or equal level will deal 25% more damage "
-"plus 25% for each level they are below the inspiring unit."
-msgstr ""
-"Ez az egység ösztönözni tudja a mellette álló, saját csapatába tartozó "
-"egységeket, hogy jobban harcoljanak. A szomszédos, saját csapatába tartozó, "
-"vele egyenlő vagy alacsonyabb szintű egységek 25%-kal többet sebeznek, és "
-"további 25%-kal többet minden egyes szinttől amivel az ösztönző egység alatt "
-"vannak."
 
 #: data/campaigns/The_Hammer_of_Thursagan/utils/characters.cfg:6
 msgid "Aiglondur"

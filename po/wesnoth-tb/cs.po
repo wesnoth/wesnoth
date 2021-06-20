@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-02-20 21:40 UTC\n"
+"POT-Creation-Date: 2021-06-20 11:49 UTC\n"
 "PO-Revision-Date: 2021-04-19 11:44+0200\n"
 "Last-Translator: Septim <septim@centrum.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
@@ -215,10 +215,10 @@ msgstr ""
 msgid "Humans"
 msgstr "Lidé"
 
+#. [side]: type=Orcish Warlord, id=Tairach
 #. [side]: type=Dark Sorcerer, id=Rotharik
 #. [side]
 #. [side]: type=Dark Sorcerer, id=Mordak
-#. [side]: type=Orcish Warlord, id=Tairach
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:114
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:81
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:131
@@ -566,7 +566,9 @@ msgstr "Chyť únosce"
 
 #. [objective]: condition=win
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:266
-msgid "Kill the Dark Adept before his reinforcements arrive"
+#, fuzzy
+#| msgid "Kill the Dark Adept before his reinforcements arrive"
+msgid "Kill the Dark Adept before more elves arrive"
 msgstr "Zabij temného učedníka dříve než mu dorazí posily"
 
 #. [objectives]
@@ -643,6 +645,16 @@ msgstr ""
 
 #. [message]: speaker=Nil-Galion
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:392
+#, fuzzy
+#| msgid ""
+#| "We heard the sounds of battle three days ago, but the foul reek of death "
+#| "was unmistakable as the prisoner passed us; if your brother really is the "
+#| "prisoner then he is also a necromancer. Remember your brother as we all "
+#| "hope he was, and know that the prisoner’s fate will be revenge as dire as "
+#| "you could wish.\n"
+#| "\n"
+#| "Either way, nothing will be gained by your intrusion into our woods. Now "
+#| "advance no further, or you will die."
 msgid ""
 "We heard the sounds of battle three days ago, but the foul reek of death was "
 "unmistakable as the prisoner passed us; if your brother really is the "
@@ -651,7 +663,7 @@ msgid ""
 "could wish.\n"
 "\n"
 "Either way, nothing will be gained by your intrusion into our woods. Now "
-"advance no further, or you will die."
+"advance no further, for we will defend our land."
 msgstr ""
 "Slyšeli jsme hluk bitvy před třemi dny, ale když nás ten zajatec míjel, "
 "odporný pach smrti byl nezaměnitelný. Jestli je ten zajatec skutečně tvým "
@@ -698,23 +710,23 @@ msgid "I see them! There they are!"
 msgstr "Vidím je! Tam jsou!"
 
 #. [message]: speaker=Muff Toras
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:461
+#. There are no undead on the map yet, but Muff Toras summons some immediately after saying this
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:462
 msgid ""
-"Curses! If they had been an hour slower, our master’s reinforcements would "
-"already be here to meet us."
+"Curses! Had they been a few hours slower, I might have covered our tracks "
+"without arousing the elves’ suspicions. Still, no need for the disguise any "
+"more."
 msgstr ""
-"Proklatě! Kdyby se o hodinu opozdili, už bychom se tu setkali s posilami od "
-"mého pána."
 
 #. [message]: speaker=Arvith
 #. it's likely that all the elves are already dead, and Arvith is just shouting to the forest
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:497
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:498
 msgid "Well, elves? Now do you see who the necromancers are?"
 msgstr "Tak co, elfové? Už víte, kdo jsou ti nekromanti?"
 
 #. [message]: speaker=messenger_elf
 #. a elven scout rides in from off-map, takes their first look at the situation, and realises that they have no idea what's going on
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:516
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:517
 msgid ""
 "I heard sounds of battle, but did not expect to see this. I will inform the "
 "Council, they can work out who the necromancers are."
@@ -723,12 +735,12 @@ msgstr ""
 "mohou zjistit, kdo ti nekromanti jsou."
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:543
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:544
 msgid "Come on, men, let’s catch those kidnappers!"
 msgstr "Pojďte, muži, konečně chytíme ty únosce!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:557
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:558
 msgid ""
 "Hah! You have captured me, but it will avail you nothing. I sent your "
 "precious brother the mage north with half my men a day since; he will be "
@@ -739,7 +751,7 @@ msgstr ""
 "bude bezpečně uzamčen v podzemní kobce u mého pána."
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:562
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:563
 msgid ""
 "My blade is at your throat. Give us the way to my brother now, or I will "
 "spill your wretched blood on the ground."
@@ -748,47 +760,47 @@ msgstr ""
 "tvojí bídnou krví."
 
 #. [event]
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:565
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:566
 msgid "Sithrak"
 msgstr "Sithrak"
 
 #. [event]
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:566
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:567
 msgid "Eleben"
 msgstr "Eleben"
 
 #. [event]
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:567
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:568
 msgid "Jarlom"
 msgstr "Jarlom"
 
 #. [event]
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:568
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:569
 msgid "Hamik"
 msgstr "Hamik"
 
 #. [event]
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:572
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:573
 msgid "Akranbral"
 msgstr "Akranbral"
 
 #. [event]
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:573
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:574
 msgid "Drakanal"
 msgstr "Drakanal"
 
 #. [event]
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:574
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:575
 msgid "Xaskanat"
 msgstr "Xaskanat"
 
 #. [event]
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:575
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:576
 msgid "Katklagad"
 msgstr "Katklagad"
 
 #. [message]: speaker=unit
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:581
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:582
 msgid ""
 "Three days ride to the northeast, in a deserted castle. The passwords to the "
 "guards are $first_password_$first_password and $second_password_"
@@ -798,12 +810,12 @@ msgstr ""
 "jsou $first_password_$first_password a $second_password_$second_password|."
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:589
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:590
 msgid "Bind him and take him with us. If he has played us false, he will die."
 msgstr "Svaž ho a vezmi ho s námi. Pokud blafoval, zemře."
 
 #. [message]: role=Mercenary
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:602
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:603
 msgid ""
 "Captain, what are we riding into? I thought you wanted nothing to do with "
 "Baran any more, not since Toen Caric."
@@ -812,7 +824,7 @@ msgstr ""
 "nechtěl nic mít, myslím."
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:607
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:608
 msgid ""
 "I’m no longer sure. What’s between us remains, but knowing someone else has "
 "lain hands on him changes things. Mount up, and let’s get moving."
@@ -821,12 +833,12 @@ msgstr ""
 "vztáhl ruku. Do sedel a kupředu!"
 
 #. [event]
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:622
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:623
 msgid "Brena"
 msgstr "Brena"
 
 #. [message]: speaker=Brena
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:631
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:632
 msgid ""
 "Greetings. I am Brena, a knight errant. I saw you pursuing and fighting the "
 "foul undead. Are there more of them to be destroyed?"
@@ -835,7 +847,7 @@ msgstr ""
 "pronásledovat a pobíjet nemrtvé. Je ještě potřeba zničit nějaké další?"
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:636
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:637
 msgid ""
 "Aye. We think there’s a nest of them north-east of here. They’ve captured my "
 "brother."
@@ -843,7 +855,7 @@ msgstr ""
 "Jasně. Myslíme, že mají základnu na severovýchod odtud. Zajali mého bratra."
 
 #. [message]: speaker=Brena
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:641
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:642
 msgid ""
 "I bear a great hatred towards their kind. I will follow and fight them with "
 "you, if you permit."
@@ -852,32 +864,32 @@ msgstr ""
 "tebou bojovat, pokud dovolíš."
 
 #. [message]: role=Mercenary
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:646
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:647
 msgid "He would only slow us down!"
 msgstr "Bude nás jen zpomalovat!"
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:651
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:652
 msgid "It is my place to decide this."
 msgstr "Já jsem ten kdo rozhodne."
 
 #. [option]
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:653
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:654
 msgid "Oh, all right then. Come along with us."
 msgstr "Nu, proč ne. Pojďte s námi."
 
 #. [message]: speaker=Brena
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:657
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:658
 msgid "Thank you. My comrades and I will help you on your noble quest."
 msgstr "Díky. Já a mí druzi ti pomůžeme v dosažení tvého ctného cíle."
 
 #. [option]
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:662
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:663
 msgid "I am sorry. We have not the time to spare."
 msgstr "Je mi líto, nemáme času nazbyt."
 
 #. [message]: speaker=Brena
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:666
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:667
 msgid ""
 "Take this, then, for I see that you are on a quest. My comrades will help "
 "you whenever you call for them."
@@ -886,22 +898,26 @@ msgstr ""
 "pomohou kdykoliv je přivoláš."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:681
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:682
 msgid "You receive 70 pieces of gold!"
 msgstr "Dostal jsi 70 zlatých!"
 
-#. [message]: speaker=Muff Toras
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:704
-msgid "My reinforcements are here!"
-msgstr "Mé posily dorazily!"
+#. [message]: speaker=Arvith
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:711
+msgid ""
+"These elves have delayed us too long, the kidnappers’ trail will have faded "
+"by now."
+msgstr ""
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:709
-msgid "He escaped us..."
-msgstr "Unikl nám..."
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:717
+msgid ""
+"More elves are arriving; even if they believe me, the kidnappers’ trail is "
+"sure to fade before we can follow."
+msgstr ""
 
 #. [message]: speaker=Nil-Galion
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:721
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:731
 msgid ""
 "Deluded fool, you are rescuing a necromancer. I can only hope that you are "
 "too late, and that our souls will rest in peace."
@@ -910,7 +926,7 @@ msgstr ""
 "příliš pozdě a naše duše budou odpočívat v pokoji."
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:731
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:741
 msgid "Follow their back trail!"
 msgstr "Sledujte jejich stopy dále!"
 
@@ -1740,3 +1756,16 @@ msgstr "Baran"
 #: data/campaigns/Two_Brothers/utils/macros.cfg:4
 msgid "Hint:"
 msgstr "Nápověda:"
+
+#~ msgid ""
+#~ "Curses! If they had been an hour slower, our master’s reinforcements "
+#~ "would already be here to meet us."
+#~ msgstr ""
+#~ "Proklatě! Kdyby se o hodinu opozdili, už bychom se tu setkali s posilami "
+#~ "od mého pána."
+
+#~ msgid "My reinforcements are here!"
+#~ msgstr "Mé posily dorazily!"
+
+#~ msgid "He escaped us..."
+#~ msgstr "Unikl nám..."

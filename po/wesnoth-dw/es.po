@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-03-21 01:03 UTC\n"
+"POT-Creation-Date: 2021-06-20 11:48 UTC\n"
 "PO-Revision-Date: 2021-06-04 12:20+0200\n"
 "Last-Translator: Pepe <donpepe1963@gmail.com>\n"
 "Language-Team: Spanish <kde-i18n-doc@kde.org>\n"
@@ -224,8 +224,8 @@ msgstr ""
 msgid "Undead Forces"
 msgstr "Fuerzas no muertas"
 
-#. [side]: type=Lich, id=Mal-Kevek
 #. [side]: type=Dark Sorcerer, id=Mal-Kevek
+#. [side]: type=Lich, id=Mal-Kevek
 #: data/campaigns/Dead_Water/scenarios/01_Invasion.cfg:89
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:126
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:39
@@ -1024,6 +1024,15 @@ msgstr "Esclavos saurios"
 #: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:114
 msgid "Gilak"
 msgstr "Gilak"
+
+#. [unit]: type=Saurian Skirmisher
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:150
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:157
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:205
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:255
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:262
+msgid "Guardian"
+msgstr ""
 
 #. [side]: id=Raxisz, type=Saurian Ambusher, type=Saurian Ambusher, type=Saurian Flanker, type=Saurian Flanker
 #: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:170
@@ -3200,14 +3209,14 @@ msgstr ""
 "con sus propios puños y colas que con otras armas."
 
 #. [unstore_unit]
-#: data/campaigns/Dead_Water/units/Brawler.cfg:96
-#: data/campaigns/Dead_Water/units/Brawler.cfg:143
+#: data/campaigns/Dead_Water/units/Brawler.cfg:95
+#: data/campaigns/Dead_Water/units/Brawler.cfg:142
 msgid "stunned"
 msgstr "aturdido"
 
 #. [unstore_unit]
-#: data/campaigns/Dead_Water/units/Brawler.cfg:97
-#: data/campaigns/Dead_Water/units/Brawler.cfg:144
+#: data/campaigns/Dead_Water/units/Brawler.cfg:96
+#: data/campaigns/Dead_Water/units/Brawler.cfg:143
 msgid "female^stunned"
 msgstr "aturdida"
 
@@ -3446,21 +3455,13 @@ msgstr ""
 "¡El mago humano llevaba un anillo! Quizá sea mágico. Alguien debería "
 "probarlo para ver que hace."
 
-#. [special_note]
-#: data/campaigns/Dead_Water/utils/specials.cfg:5
-msgid ""
-"This unit is able to stun its enemies, disrupting their zones of control."
-msgstr ""
-"Esta unidad es capaz de aturdir a sus enemigos, neutralizando sus zonas de "
-"control."
-
 #. [damage]: id=tail_stun
-#: data/campaigns/Dead_Water/utils/specials.cfg:12
+#: data/campaigns/Dead_Water/utils/specials.cfg:6
 msgid "stun"
 msgstr "aturdir"
 
 #. [damage]: id=tail_stun
-#: data/campaigns/Dead_Water/utils/specials.cfg:13
+#: data/campaigns/Dead_Water/utils/specials.cfg:7
 msgid ""
 "This attack hits so hard that the opponent is dazed and can no longer "
 "enforce a zone of control. The effect wears off on the opponent’s next turn."
@@ -3468,6 +3469,14 @@ msgstr ""
 "Este ataque golpea con tanta fuerza que el oponente queda aturdido y ya no "
 "puede imponer una zona de control. El efecto desaparece en el siguiente "
 "turno."
+
+#. [damage]: id=tail_stun
+#: data/campaigns/Dead_Water/utils/specials.cfg:8
+msgid ""
+"This unit is able to stun its enemies, disrupting their zones of control."
+msgstr ""
+"Esta unidad es capaz de aturdir a sus enemigos, neutralizando sus zonas de "
+"control."
 
 #~ msgid "Beginner"
 #~ msgstr "Principiante"

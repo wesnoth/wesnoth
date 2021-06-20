@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.12 (wesnoth-thot)\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-02-20 21:40 UTC\n"
+"POT-Creation-Date: 2021-06-20 11:49 UTC\n"
 "PO-Revision-Date: 2019-01-22 13:22+0000\n"
 "Last-Translator: trewe <sjrs456@yandex.com>\n"
 "Language-Team: wesn-pt-trans <wesn-pt-trans-users@lists.sourceforge.net>\n"
@@ -180,10 +180,10 @@ msgid "Pelmathidrol"
 msgstr "Pelmathidrol"
 
 #
+#. [side]: type=Orcish Warrior, id=Bashnark
 #. [side]: type=Orcish Warlord, id=Tan-Morgh
 #. [side]: type=Orcish Warlord, id=Tan-Garukh
 #. [side]: type=Orcish Warlord, id=Tan-Wagran
-#. [side]: type=Orcish Warrior, id=Bashnark
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/01_At_the_East_Gate.cfg:70
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_The_Siege_of_Kal_Kartha.cfg:82
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_The_Siege_of_Kal_Kartha.cfg:127
@@ -2622,9 +2622,9 @@ msgstr ""
 
 #
 #. [attack]: type=impact
-#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Annalist.cfg:65
-#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Loremaster.cfg:69
-#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Witness.cfg:69
+#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Annalist.cfg:61
+#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Loremaster.cfg:64
+#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Witness.cfg:66
 msgid "bolas"
 msgstr "bolas"
 
@@ -2784,8 +2784,32 @@ msgstr ""
 "diferentes tribos."
 
 #
-#. [special_note]
-#: data/campaigns/The_Hammer_of_Thursagan/utils/abilities.cfg:5
+#. [leadership]: id=inspire
+#: data/campaigns/The_Hammer_of_Thursagan/utils/abilities.cfg:10
+msgid "inspire"
+msgstr "inspirar"
+
+# note: we are using the infinitive
+#. [leadership]: id=inspire
+#: data/campaigns/The_Hammer_of_Thursagan/utils/abilities.cfg:11
+msgid "female^inspire"
+msgstr "inspirar"
+
+#
+#. [leadership]: id=inspire
+#: data/campaigns/The_Hammer_of_Thursagan/utils/abilities.cfg:12
+msgid ""
+"This unit can inspire own units that are next to it, making them fight "
+"better. Adjacent own units of lower or equal level will deal 25% more damage "
+"plus 25% for each level they are below the inspiring unit."
+msgstr ""
+"Esta unidade pode inspirar unidades ao seu redor fazendo-as lutar melhor. "
+"Unidades adjacentes de um nível inferior ou igual causarão 25% mais dano "
+"multiplicado pela diferença de nível entre esta e o líder."
+
+#
+#. [leadership]: id=inspire
+#: data/campaigns/The_Hammer_of_Thursagan/utils/abilities.cfg:13
 #, fuzzy
 #| msgid ""
 #| " The presence of this unit inspires own units next to it to deal more "
@@ -2797,30 +2821,6 @@ msgid ""
 msgstr ""
 " A presença desta unidade inspira as unidades próximas a causar mais dano em "
 "combate. Só se aplica a unidades de nível igual ou menor que a dela."
-
-#
-#. [leadership]: id=inspire
-#: data/campaigns/The_Hammer_of_Thursagan/utils/abilities.cfg:16
-msgid "inspire"
-msgstr "inspirar"
-
-# note: we are using the infinitive
-#. [leadership]: id=inspire
-#: data/campaigns/The_Hammer_of_Thursagan/utils/abilities.cfg:17
-msgid "female^inspire"
-msgstr "inspirar"
-
-#
-#. [leadership]: id=inspire
-#: data/campaigns/The_Hammer_of_Thursagan/utils/abilities.cfg:18
-msgid ""
-"This unit can inspire own units that are next to it, making them fight "
-"better. Adjacent own units of lower or equal level will deal 25% more damage "
-"plus 25% for each level they are below the inspiring unit."
-msgstr ""
-"Esta unidade pode inspirar unidades ao seu redor fazendo-as lutar melhor. "
-"Unidades adjacentes de um nível inferior ou igual causarão 25% mais dano "
-"multiplicado pela diferença de nível entre esta e o líder."
 
 #
 #: data/campaigns/The_Hammer_of_Thursagan/utils/characters.cfg:6

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-02-20 21:40 UTC\n"
+"POT-Creation-Date: 2021-06-20 11:49 UTC\n"
 "PO-Revision-Date: 2019-09-10 20:06+0200\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italian <>\n"
@@ -167,10 +167,10 @@ msgstr "Alleanza"
 msgid "Pelmathidrol"
 msgstr "Pelmathidrol"
 
+#. [side]: type=Orcish Warrior, id=Bashnark
 #. [side]: type=Orcish Warlord, id=Tan-Morgh
 #. [side]: type=Orcish Warlord, id=Tan-Garukh
 #. [side]: type=Orcish Warlord, id=Tan-Wagran
-#. [side]: type=Orcish Warrior, id=Bashnark
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/01_At_the_East_Gate.cfg:70
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_The_Siege_of_Kal_Kartha.cfg:82
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_The_Siege_of_Kal_Kartha.cfg:127
@@ -2478,9 +2478,9 @@ msgstr ""
 "Testimoni, quella di curare il veleno."
 
 #. [attack]: type=impact
-#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Annalist.cfg:65
-#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Loremaster.cfg:69
-#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Witness.cfg:69
+#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Annalist.cfg:61
+#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Loremaster.cfg:64
+#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Witness.cfg:66
 msgid "bolas"
 msgstr "bolas"
 
@@ -2623,8 +2623,30 @@ msgstr ""
 "forza dei nani. La persona fisica di un Testimone è considerata sacra, "
 "perciò i Testimoni sono spesso usati come ambasciatori fra i clan dei nani."
 
-#. [special_note]
-#: data/campaigns/The_Hammer_of_Thursagan/utils/abilities.cfg:5
+#. [leadership]: id=inspire
+#: data/campaigns/The_Hammer_of_Thursagan/utils/abilities.cfg:10
+msgid "inspire"
+msgstr "ispirazione"
+
+#. [leadership]: id=inspire
+#: data/campaigns/The_Hammer_of_Thursagan/utils/abilities.cfg:11
+msgid "female^inspire"
+msgstr "ispirazione"
+
+#. [leadership]: id=inspire
+#: data/campaigns/The_Hammer_of_Thursagan/utils/abilities.cfg:12
+msgid ""
+"This unit can inspire own units that are next to it, making them fight "
+"better. Adjacent own units of lower or equal level will deal 25% more damage "
+"plus 25% for each level they are below the inspiring unit."
+msgstr ""
+"Questa unità può ispirare le unità alleate che gli sono vicine, facendole "
+"combattere meglio. Le unità adiacenti di livello uguale od inferiore a "
+"quello dell’unità ispiratrice, avranno un bonus del 25% per ogni livello di "
+"esperienza di differenza."
+
+#. [leadership]: id=inspire
+#: data/campaigns/The_Hammer_of_Thursagan/utils/abilities.cfg:13
 #, fuzzy
 #| msgid ""
 #| " The presence of this unit inspires own units next to it to deal more "
@@ -2637,28 +2659,6 @@ msgstr ""
 " La presenza di questa unità ispira le unità alleate ad essa vicine e "
 "permette loro di causare un danno maggiore in combattimento, sebbene ciò sia "
 "vero soltanto per quelle di livello inferiore o uguale al loro."
-
-#. [leadership]: id=inspire
-#: data/campaigns/The_Hammer_of_Thursagan/utils/abilities.cfg:16
-msgid "inspire"
-msgstr "ispirazione"
-
-#. [leadership]: id=inspire
-#: data/campaigns/The_Hammer_of_Thursagan/utils/abilities.cfg:17
-msgid "female^inspire"
-msgstr "ispirazione"
-
-#. [leadership]: id=inspire
-#: data/campaigns/The_Hammer_of_Thursagan/utils/abilities.cfg:18
-msgid ""
-"This unit can inspire own units that are next to it, making them fight "
-"better. Adjacent own units of lower or equal level will deal 25% more damage "
-"plus 25% for each level they are below the inspiring unit."
-msgstr ""
-"Questa unità può ispirare le unità alleate che gli sono vicine, facendole "
-"combattere meglio. Le unità adiacenti di livello uguale od inferiore a "
-"quello dell’unità ispiratrice, avranno un bonus del 25% per ogni livello di "
-"esperienza di differenza."
 
 #: data/campaigns/The_Hammer_of_Thursagan/utils/characters.cfg:6
 msgid "Aiglondur"

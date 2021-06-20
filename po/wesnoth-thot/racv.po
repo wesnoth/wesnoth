@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: racv\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-02-20 21:40 UTC\n"
+"POT-Creation-Date: 2021-06-20 11:49 UTC\n"
 "PO-Revision-Date: 2014-10-21 21:35+0100\n"
 "Last-Translator: Software Valencià <info@softwarevalencia.com>\n"
 "Language-Team: Valencian (RACV) Team\n"
@@ -184,10 +184,10 @@ msgstr "Aliança"
 msgid "Pelmathidrol"
 msgstr "Pelmathidrol"
 
+#. [side]: type=Orcish Warrior, id=Bashnark
 #. [side]: type=Orcish Warlord, id=Tan-Morgh
 #. [side]: type=Orcish Warlord, id=Tan-Garukh
 #. [side]: type=Orcish Warlord, id=Tan-Wagran
-#. [side]: type=Orcish Warrior, id=Bashnark
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/01_At_the_East_Gate.cfg:70
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_The_Siege_of_Kal_Kartha.cfg:82
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_The_Siege_of_Kal_Kartha.cfg:127
@@ -2473,9 +2473,9 @@ msgstr ""
 "verí."
 
 #. [attack]: type=impact
-#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Annalist.cfg:65
-#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Loremaster.cfg:69
-#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Witness.cfg:69
+#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Annalist.cfg:61
+#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Loremaster.cfg:64
+#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Witness.cfg:66
 msgid "bolas"
 msgstr "bolejadores"
 
@@ -2626,35 +2626,20 @@ msgstr ""
 "se'ls considera autoritats sagrades, i són freqüentment amprats com a "
 "mensagers entre clans nanos."
 
-#. [special_note]
-#: data/campaigns/The_Hammer_of_Thursagan/utils/abilities.cfg:5
-#, fuzzy
-#| msgid ""
-#| " The presence of this unit inspires own units next to it to deal more "
-#| "damage in combat, though this only applies to units of lower or equal "
-#| "level."
-msgid ""
-"The presence of this unit inspires own units next to it to deal more damage "
-"in combat, though this only applies to units of lower or equal level."
-msgstr ""
-" La presència d'esta unitat fa que les unitats del mateix bando adjacents ad "
-"ella infligixquen més mal en combat, encara que açò només s'aplica a unitats "
-"de nivell inferior o igual."
-
 #. [leadership]: id=inspire
-#: data/campaigns/The_Hammer_of_Thursagan/utils/abilities.cfg:16
+#: data/campaigns/The_Hammer_of_Thursagan/utils/abilities.cfg:10
 msgid "inspire"
 msgstr "inspirar"
 
 #. [leadership]: id=inspire
-#: data/campaigns/The_Hammer_of_Thursagan/utils/abilities.cfg:17
+#: data/campaigns/The_Hammer_of_Thursagan/utils/abilities.cfg:11
 #, fuzzy
 #| msgid "inspire"
 msgid "female^inspire"
 msgstr "inspirar"
 
 #. [leadership]: id=inspire
-#: data/campaigns/The_Hammer_of_Thursagan/utils/abilities.cfg:18
+#: data/campaigns/The_Hammer_of_Thursagan/utils/abilities.cfg:12
 #, fuzzy
 #| msgid ""
 #| "This unit can inspire own L0 or L1 units that are next to it, making them "
@@ -2669,6 +2654,21 @@ msgstr ""
 "adjacents ad ella, fent que lluiten millor. Unitats pròpies adjacents de "
 "nivell 1 causaran un 25% adicional de mal; les unitats de nivell 0 causaran "
 "un 50% adicional."
+
+#. [leadership]: id=inspire
+#: data/campaigns/The_Hammer_of_Thursagan/utils/abilities.cfg:13
+#, fuzzy
+#| msgid ""
+#| " The presence of this unit inspires own units next to it to deal more "
+#| "damage in combat, though this only applies to units of lower or equal "
+#| "level."
+msgid ""
+"The presence of this unit inspires own units next to it to deal more damage "
+"in combat, though this only applies to units of lower or equal level."
+msgstr ""
+" La presència d'esta unitat fa que les unitats del mateix bando adjacents ad "
+"ella infligixquen més mal en combat, encara que açò només s'aplica a unitats "
+"de nivell inferior o igual."
 
 #: data/campaigns/The_Hammer_of_Thursagan/utils/characters.cfg:6
 msgid "Aiglondur"

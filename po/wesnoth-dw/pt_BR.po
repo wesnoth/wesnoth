@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-03-21 01:03 UTC\n"
+"POT-Creation-Date: 2021-06-20 11:48 UTC\n"
 "PO-Revision-Date: 2020-12-20 18:22-0300\n"
 "Last-Translator: Andrei Machado <andreisp.machado@yahoo.com>\n"
 "Language-Team: none\n"
@@ -322,8 +322,8 @@ msgstr "Forças dos Mortos-Vivos"
 # File: data/campaigns/Dead_Water/scenarios/01_Invasion.cfg, line: 89
 # File: data/campaigns/Dead_Water/scenarios/02_Flight.cfg, line: 122
 # File: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg, line: 134
-#. [side]: type=Lich, id=Mal-Kevek
 #. [side]: type=Dark Sorcerer, id=Mal-Kevek
+#. [side]: type=Lich, id=Mal-Kevek
 #: data/campaigns/Dead_Water/scenarios/01_Invasion.cfg:89
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:126
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:39
@@ -1620,6 +1620,15 @@ msgstr "Lagartos Escravizadores"
 #: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:114
 msgid "Gilak"
 msgstr "Gilak"
+
+#. [unit]: type=Saurian Skirmisher
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:150
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:157
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:205
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:255
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:262
+msgid "Guardian"
+msgstr ""
 
 #
 # File: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg, line: 189
@@ -5041,8 +5050,8 @@ msgstr ""
 # File: data/campaigns/Dead_Water/units/Brawler.cfg, line: 205
 # File: data/campaigns/Dead_Water/units/Brawler.cfg, line: 285
 #. [unstore_unit]
-#: data/campaigns/Dead_Water/units/Brawler.cfg:96
-#: data/campaigns/Dead_Water/units/Brawler.cfg:143
+#: data/campaigns/Dead_Water/units/Brawler.cfg:95
+#: data/campaigns/Dead_Water/units/Brawler.cfg:142
 msgid "stunned"
 msgstr "atordoado"
 
@@ -5054,8 +5063,8 @@ msgstr "atordoado"
 # File: data/campaigns/Dead_Water/units/Brawler.cfg, line: 198
 # File: data/campaigns/Dead_Water/units/Brawler.cfg, line: 278
 #. [unstore_unit]
-#: data/campaigns/Dead_Water/units/Brawler.cfg:97
-#: data/campaigns/Dead_Water/units/Brawler.cfg:144
+#: data/campaigns/Dead_Water/units/Brawler.cfg:96
+#: data/campaigns/Dead_Water/units/Brawler.cfg:143
 msgid "female^stunned"
 msgstr "atordoada"
 
@@ -5435,23 +5444,11 @@ msgstr ""
 "colocar o anel para ver o que ele faz."
 
 #
-# File: data/campaigns/Dead_Water/utils/specials.cfg, line: 4
-# File: data/campaigns/Dead_Water/utils/specials.cfg, line: 4
-# File: data/campaigns/Dead_Water/utils/specials.cfg, line: 4
-#. [special_note]
-#: data/campaigns/Dead_Water/utils/specials.cfg:5
-msgid ""
-"This unit is able to stun its enemies, disrupting their zones of control."
-msgstr ""
-"Esta unidade é capaz de atordoar seus inimigos, interrompendo sua zona de "
-"controle."
-
-#
 # File: data/campaigns/Dead_Water/utils/specials.cfg, line: 9
 # File: data/campaigns/Dead_Water/utils/specials.cfg, line: 9
 # File: data/campaigns/Dead_Water/utils/specials.cfg, line: 9
 #. [damage]: id=tail_stun
-#: data/campaigns/Dead_Water/utils/specials.cfg:12
+#: data/campaigns/Dead_Water/utils/specials.cfg:6
 msgid "stun"
 msgstr "atordoar"
 
@@ -5460,13 +5457,25 @@ msgstr "atordoar"
 # File: data/campaigns/Dead_Water/utils/specials.cfg, line: 10
 # File: data/campaigns/Dead_Water/utils/specials.cfg, line: 10
 #. [damage]: id=tail_stun
-#: data/campaigns/Dead_Water/utils/specials.cfg:13
+#: data/campaigns/Dead_Water/utils/specials.cfg:7
 msgid ""
 "This attack hits so hard that the opponent is dazed and can no longer "
 "enforce a zone of control. The effect wears off on the opponent’s next turn."
 msgstr ""
 "Este ataque é tão forte que o oponente fica atordoado e não consegue impor a "
 "sua zona de controle. O efeito passa no próximo turno do oponente."
+
+#
+# File: data/campaigns/Dead_Water/utils/specials.cfg, line: 4
+# File: data/campaigns/Dead_Water/utils/specials.cfg, line: 4
+# File: data/campaigns/Dead_Water/utils/specials.cfg, line: 4
+#. [damage]: id=tail_stun
+#: data/campaigns/Dead_Water/utils/specials.cfg:8
+msgid ""
+"This unit is able to stun its enemies, disrupting their zones of control."
+msgstr ""
+"Esta unidade é capaz de atordoar seus inimigos, interrompendo sua zona de "
+"controle."
 
 #
 # File: data/campaigns/Dead_Water/_main.cfg, line: 16

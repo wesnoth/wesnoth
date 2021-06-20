@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.14\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-02-20 21:40 UTC\n"
+"POT-Creation-Date: 2021-06-20 11:49 UTC\n"
 "PO-Revision-Date: 2020-02-01 12:43+0100\n"
 "Last-Translator: Aaron Winter <winter.aaron93@gmail.com>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
@@ -169,10 +169,10 @@ msgstr "Allianz"
 msgid "Pelmathidrol"
 msgstr "Pelmathidrol"
 
+#. [side]: type=Orcish Warrior, id=Bashnark
 #. [side]: type=Orcish Warlord, id=Tan-Morgh
 #. [side]: type=Orcish Warlord, id=Tan-Garukh
 #. [side]: type=Orcish Warlord, id=Tan-Wagran
-#. [side]: type=Orcish Warrior, id=Bashnark
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/01_At_the_East_Gate.cfg:70
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_The_Siege_of_Kal_Kartha.cfg:82
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_The_Siege_of_Kal_Kartha.cfg:127
@@ -2472,9 +2472,9 @@ msgstr ""
 "und Mineralen heilen sie zudem Vergiftungen."
 
 #. [attack]: type=impact
-#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Annalist.cfg:65
-#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Loremaster.cfg:69
-#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Witness.cfg:69
+#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Annalist.cfg:61
+#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Loremaster.cfg:64
+#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Witness.cfg:66
 msgid "bolas"
 msgstr "Bolas"
 
@@ -2615,8 +2615,30 @@ msgstr ""
 "Waffen. Ein Skalde gilt bei Zwergen gemeinhin als heilig und unantastbar und "
 "so dienen sie zwischen den Stämmen oft als Unterhändler."
 
-#. [special_note]
-#: data/campaigns/The_Hammer_of_Thursagan/utils/abilities.cfg:5
+#. [leadership]: id=inspire
+#: data/campaigns/The_Hammer_of_Thursagan/utils/abilities.cfg:10
+msgid "inspire"
+msgstr "Begeistern"
+
+#. [leadership]: id=inspire
+#: data/campaigns/The_Hammer_of_Thursagan/utils/abilities.cfg:11
+msgid "female^inspire"
+msgstr "Begeistern"
+
+#. [leadership]: id=inspire
+#: data/campaigns/The_Hammer_of_Thursagan/utils/abilities.cfg:12
+msgid ""
+"This unit can inspire own units that are next to it, making them fight "
+"better. Adjacent own units of lower or equal level will deal 25% more damage "
+"plus 25% for each level they are below the inspiring unit."
+msgstr ""
+"Diese Einheit begeistert benachbarte Einheiten im Kampf, so dass sie mehr "
+"Schaden verursachen. Bei Einheiten gleicher Stufe erhöht sich der Schaden um "
+"25%, Einheiten niederer Stufen erhalten für jede Stufe Unterschied weitere "
+"25% Bonus."
+
+#. [leadership]: id=inspire
+#: data/campaigns/The_Hammer_of_Thursagan/utils/abilities.cfg:13
 #, fuzzy
 #| msgid ""
 #| " The presence of this unit inspires own units next to it to deal more "
@@ -2629,28 +2651,6 @@ msgstr ""
 "Die Anwesenheit dieser Einheit begeistert befreundete, benachbarte "
 "Einheiten, so dass diese mehr Schaden verursachen. Die Wirkung tritt nur bei "
 "gleichrangigen oder niederrangigen Einheiten ein."
-
-#. [leadership]: id=inspire
-#: data/campaigns/The_Hammer_of_Thursagan/utils/abilities.cfg:16
-msgid "inspire"
-msgstr "Begeistern"
-
-#. [leadership]: id=inspire
-#: data/campaigns/The_Hammer_of_Thursagan/utils/abilities.cfg:17
-msgid "female^inspire"
-msgstr "Begeistern"
-
-#. [leadership]: id=inspire
-#: data/campaigns/The_Hammer_of_Thursagan/utils/abilities.cfg:18
-msgid ""
-"This unit can inspire own units that are next to it, making them fight "
-"better. Adjacent own units of lower or equal level will deal 25% more damage "
-"plus 25% for each level they are below the inspiring unit."
-msgstr ""
-"Diese Einheit begeistert benachbarte Einheiten im Kampf, so dass sie mehr "
-"Schaden verursachen. Bei Einheiten gleicher Stufe erhöht sich der Schaden um "
-"25%, Einheiten niederer Stufen erhalten für jede Stufe Unterschied weitere "
-"25% Bonus."
 
 # Hauptmann der Ostwacht und Neffe des Fürsten Hamel
 #: data/campaigns/The_Hammer_of_Thursagan/utils/characters.cfg:6

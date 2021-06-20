@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-03-21 01:03 UTC\n"
+"POT-Creation-Date: 2021-06-20 11:48 UTC\n"
 "PO-Revision-Date: 2013-10-25 15:48+0900\n"
 "Last-Translator: mistzone <drier22@gmail.com>\n"
 "Language-Team: none\n"
@@ -246,8 +246,8 @@ msgstr ""
 msgid "Undead Forces"
 msgstr "언데드 군세"
 
-#. [side]: type=Lich, id=Mal-Kevek
 #. [side]: type=Dark Sorcerer, id=Mal-Kevek
+#. [side]: type=Lich, id=Mal-Kevek
 #: data/campaigns/Dead_Water/scenarios/01_Invasion.cfg:89
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:126
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:39
@@ -1055,6 +1055,15 @@ msgstr "사우리언 노예장들"
 #: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:114
 msgid "Gilak"
 msgstr "Gilak"
+
+#. [unit]: type=Saurian Skirmisher
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:150
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:157
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:205
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:255
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:262
+msgid "Guardian"
+msgstr ""
 
 #. [side]: id=Raxisz, type=Saurian Ambusher, type=Saurian Ambusher, type=Saurian Flanker, type=Saurian Flanker
 #: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:170
@@ -3254,14 +3263,14 @@ msgstr ""
 "게 다룬다."
 
 #. [unstore_unit]
-#: data/campaigns/Dead_Water/units/Brawler.cfg:96
-#: data/campaigns/Dead_Water/units/Brawler.cfg:143
+#: data/campaigns/Dead_Water/units/Brawler.cfg:95
+#: data/campaigns/Dead_Water/units/Brawler.cfg:142
 msgid "stunned"
 msgstr "마비됨"
 
 #. [unstore_unit]
-#: data/campaigns/Dead_Water/units/Brawler.cfg:97
-#: data/campaigns/Dead_Water/units/Brawler.cfg:144
+#: data/campaigns/Dead_Water/units/Brawler.cfg:96
+#: data/campaigns/Dead_Water/units/Brawler.cfg:143
 msgid "female^stunned"
 msgstr "마비됨"
 
@@ -3510,28 +3519,28 @@ msgstr ""
 "인간 마법사에게서 반지를 발견했다! 마법이 걸린 물건 같아. 누군가 이걸 껴서 무"
 "슨 일이 일어나는지 보는 게 좋겠어."
 
-#. [special_note]
-#: data/campaigns/Dead_Water/utils/specials.cfg:5
-#, fuzzy
-#| msgid ""
-#| " This unit is able to stun its enemies, disrupting their zones of control."
-msgid ""
-"This unit is able to stun its enemies, disrupting their zones of control."
-msgstr " 이 유닛은 적들을 마비시켜 통제 권역에 지장을 줄 수 있습니다."
-
 #. [damage]: id=tail_stun
-#: data/campaigns/Dead_Water/utils/specials.cfg:12
+#: data/campaigns/Dead_Water/utils/specials.cfg:6
 msgid "stun"
 msgstr "마비"
 
 #. [damage]: id=tail_stun
-#: data/campaigns/Dead_Water/utils/specials.cfg:13
+#: data/campaigns/Dead_Water/utils/specials.cfg:7
 msgid ""
 "This attack hits so hard that the opponent is dazed and can no longer "
 "enforce a zone of control. The effect wears off on the opponent’s next turn."
 msgstr ""
 "이 공격은 매우 강렬해서 방어자를 일시적으로 멍하게 만들어 통제 권역을 유지할 "
 "수 없게 만든다. 이 효과는 방어자의 다음번 턴에 떨어져 나간다."
+
+#. [damage]: id=tail_stun
+#: data/campaigns/Dead_Water/utils/specials.cfg:8
+#, fuzzy
+#| msgid ""
+#| " This unit is able to stun its enemies, disrupting their zones of control."
+msgid ""
+"This unit is able to stun its enemies, disrupting their zones of control."
+msgstr " 이 유닛은 적들을 마비시켜 통제 권역에 지장을 줄 수 있습니다."
 
 #, fuzzy
 #~| msgid "(Beginner)"

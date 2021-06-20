@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-03-21 01:03 UTC\n"
+"POT-Creation-Date: 2021-06-20 11:48 UTC\n"
 "PO-Revision-Date: 2018-07-11 10:25+0000\n"
 "Last-Translator: tamanegi, 2021\n"
 "Language-Team: Japanese (https://www.transifex.com/wesnoth-jp/teams/60513/"
@@ -229,8 +229,8 @@ msgstr ""
 msgid "Undead Forces"
 msgstr "アンデッド軍"
 
-#. [side]: type=Lich, id=Mal-Kevek
 #. [side]: type=Dark Sorcerer, id=Mal-Kevek
+#. [side]: type=Lich, id=Mal-Kevek
 #: data/campaigns/Dead_Water/scenarios/01_Invasion.cfg:89
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:126
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:39
@@ -1028,6 +1028,15 @@ msgstr "トカゲの奴隷使役人"
 #: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:114
 msgid "Gilak"
 msgstr "Gilak"
+
+#. [unit]: type=Saurian Skirmisher
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:150
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:157
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:205
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:255
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:262
+msgid "Guardian"
+msgstr ""
 
 #. [side]: id=Raxisz, type=Saurian Ambusher, type=Saurian Ambusher, type=Saurian Flanker, type=Saurian Flanker
 #: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:170
@@ -3188,14 +3197,14 @@ msgstr ""
 "す。"
 
 #. [unstore_unit]
-#: data/campaigns/Dead_Water/units/Brawler.cfg:96
-#: data/campaigns/Dead_Water/units/Brawler.cfg:143
+#: data/campaigns/Dead_Water/units/Brawler.cfg:95
+#: data/campaigns/Dead_Water/units/Brawler.cfg:142
 msgid "stunned"
 msgstr "スタン"
 
 #. [unstore_unit]
-#: data/campaigns/Dead_Water/units/Brawler.cfg:97
-#: data/campaigns/Dead_Water/units/Brawler.cfg:144
+#: data/campaigns/Dead_Water/units/Brawler.cfg:96
+#: data/campaigns/Dead_Water/units/Brawler.cfg:143
 msgid "female^stunned"
 msgstr "スタン"
 
@@ -3435,28 +3444,28 @@ msgstr ""
 "人間の魔術師が指輪をはめていました！ おそらくは魔法の指輪です。それがどのよう"
 "な効果を持つのかを確認するために誰かが試してみるべきです。"
 
-#. [special_note]
-#: data/campaigns/Dead_Water/utils/specials.cfg:5
-#, fuzzy
-#| msgid ""
-#| " This unit is able to stun its enemies, disrupting their zones of control."
-msgid ""
-"This unit is able to stun its enemies, disrupting their zones of control."
-msgstr " このユニットは敵を気絶させ、支配領域 (ZOC) を崩壊させます。"
-
 #. [damage]: id=tail_stun
-#: data/campaigns/Dead_Water/utils/specials.cfg:12
+#: data/campaigns/Dead_Water/utils/specials.cfg:6
 msgid "stun"
 msgstr "スタン"
 
 #. [damage]: id=tail_stun
-#: data/campaigns/Dead_Water/utils/specials.cfg:13
+#: data/campaigns/Dead_Water/utils/specials.cfg:7
 msgid ""
 "This attack hits so hard that the opponent is dazed and can no longer "
 "enforce a zone of control. The effect wears off on the opponent’s next turn."
 msgstr ""
 "この攻撃は厳しい打撃を与えるので、敵は混乱してZOCを維持することができなくなっ"
 "てしまいます。この効果は敵の次のターンでなくなります。"
+
+#. [damage]: id=tail_stun
+#: data/campaigns/Dead_Water/utils/specials.cfg:8
+#, fuzzy
+#| msgid ""
+#| " This unit is able to stun its enemies, disrupting their zones of control."
+msgid ""
+"This unit is able to stun its enemies, disrupting their zones of control."
+msgstr " このユニットは敵を気絶させ、支配領域 (ZOC) を崩壊させます。"
 
 #~ msgid "Beginner"
 #~ msgstr "初心者"

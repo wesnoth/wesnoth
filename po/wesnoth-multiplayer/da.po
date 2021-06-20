@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3+CVS\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-05-16 02:06 UTC\n"
+"POT-Creation-Date: 2021-06-20 11:49 UTC\n"
 "PO-Revision-Date: 2009-01-07 13:44+0200\n"
 "Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
@@ -1058,8 +1058,8 @@ msgstr "Revolt"
 msgid "teamname^Human"
 msgstr "Menneske"
 
-#. [then]
 #. [objective]: condition=lose
+#. [then]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:114
 #: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:274
 #, fuzzy
@@ -1199,7 +1199,9 @@ msgstr ""
 "forbi."
 
 #. [slider]: id=enemey_gold_factor
+#. [slider]: id=enemy_gold_factor
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:265
+#: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:311
 msgid "Changes the gold worth of the enemy spawns by a certain percentage"
 msgstr ""
 
@@ -1225,26 +1227,31 @@ msgstr ""
 
 #. [lua]: weather_map
 #: data/multiplayer/scenarios/2p_Dark_Forecast.lua:457
+#: data/multiplayer/scenarios/2p_Isle_of_Mists.lua:486
 msgid "Clear Weather"
 msgstr "Klart vejr"
 
 #. [lua]: weather_map
 #: data/multiplayer/scenarios/2p_Dark_Forecast.lua:463
+#: data/multiplayer/scenarios/2p_Isle_of_Mists.lua:492
 msgid "Drought"
 msgstr "Tørke"
 
 #. [lua]: weather_map
 #: data/multiplayer/scenarios/2p_Dark_Forecast.lua:475
+#: data/multiplayer/scenarios/2p_Isle_of_Mists.lua:504
 msgid "Heavy Rains"
 msgstr "Kraftigt regnvejr"
 
 #. [lua]: weather_map
 #: data/multiplayer/scenarios/2p_Dark_Forecast.lua:481
+#: data/multiplayer/scenarios/2p_Isle_of_Mists.lua:524
 msgid "Snowfall"
 msgstr "Snefald"
 
 #. [lua]: weather_map
 #: data/multiplayer/scenarios/2p_Dark_Forecast.lua:487
+#: data/multiplayer/scenarios/2p_Isle_of_Mists.lua:530
 msgid "Heavy Snowfall"
 msgstr "Kraftigt snefald"
 
@@ -1462,6 +1469,33 @@ msgid ""
 msgstr ""
 "Kun lidt er tilbage af denne tidligere rige minekoloni, nu er den et mål for "
 "plyndring og tyve."
+
+#. [lua]: final_spawn
+#: data/multiplayer/scenarios/2p_Isle_of_Mists.lua:313
+#, fuzzy
+#| msgid ""
+#| "The last and most powerful of these creatures are almost upon us. I feel "
+#| "that if we can finish them off in time, we shall be victorious."
+msgid ""
+"The last and most powerful of our enemies are upon us. If we can finish them "
+"off in time, we shall be victorious."
+msgstr ""
+"Den sidste og mest magtfulde af disse skabninger er over os. Jeg kan mærke "
+"at hvis vi ordner dem i tide, så vinder vi."
+
+#. [lua]: final_spawn
+#: data/multiplayer/scenarios/2p_Isle_of_Mists.lua:343
+msgid ""
+"As you finally defeat your last remaining foes, the dreary mists around the "
+"island seem to lift. The phantoms fade away, at last released from their "
+"eternal guardianship. You have finally cleansed the ancient shrine... for "
+"now."
+msgstr ""
+
+#. [lua]: weather_map
+#: data/multiplayer/scenarios/2p_Isle_of_Mists.lua:517
+msgid "Inundation"
+msgstr ""
 
 #. [multiplayer]: id=multiplayer_Ruined_Passage
 #: data/multiplayer/scenarios/2p_Ruined_Passage.cfg:7
@@ -1819,19 +1853,19 @@ msgstr ""
 msgid "3p — Alirok Marsh"
 msgstr "3p — Alirok Mose"
 
-#. [multiplayer]: id=multiplayer_Island_of_the_Horatii
-#. [multiplayer]: id=multiplayer_Loris_River
-#. [multiplayer]: id=multiplayer_3p_Morituri
-#. [multiplayer]: id=multiplayer_4p_Underworld
-#. [multiplayer]: id=multiplayer_4p_Morituri
 #. [multiplayer]: id=multiplayer_Alirok_Marsh
-#. [multiplayer]: id=multiplayer_Ruins_of_Terra-Dwelve
+#. [multiplayer]: id=multiplayer_Island_of_the_Horatii
+#. [multiplayer]: id=multiplayer_3p_Morituri
 #. [multiplayer]: id=multiplayer_Blue_Water_Province
-#. [multiplayer]: id=multiplayer_8p_Morituri
-#. [multiplayer]: id=multiplayer_8p_Mokena_Prairie
-#. [multiplayer]: id=multiplayer_Clash
 #. [multiplayer]: id=multiplayer_Castle_Hopping_Isle
+#. [multiplayer]: id=multiplayer_Clash
 #. [multiplayer]: id=multiplayer_4p_Hamlets
+#. [multiplayer]: id=multiplayer_Loris_River
+#. [multiplayer]: id=multiplayer_4p_Morituri
+#. [multiplayer]: id=multiplayer_Ruins_of_Terra-Dwelve
+#. [multiplayer]: id=multiplayer_4p_Underworld
+#. [multiplayer]: id=multiplayer_8p_Mokena_Prairie
+#. [multiplayer]: id=multiplayer_8p_Morituri
 #: data/multiplayer/scenarios/3p_Alirok_Marsh.cfg:6
 #: data/multiplayer/scenarios/3p_Island_of_the_Horatii.cfg:6
 #: data/multiplayer/scenarios/3p_Morituri.cfg:6

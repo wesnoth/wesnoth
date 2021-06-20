@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: he\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-05-16 02:06 UTC\n"
+"POT-Creation-Date: 2021-06-20 11:49 UTC\n"
 "PO-Revision-Date: 2006-02-15 00:16+0200\n"
 "Last-Translator: Ely Levy <nakeee@gmail.com>\n"
 "Language-Team: Hebrew\n"
@@ -169,8 +169,8 @@ msgstr "מותו של קונרד"
 msgid "Death of Delfador"
 msgstr "מותו של דלפדור"
 
-#. [side]: type=Commander, id=Konrad
 #. [side]: type=Fighter, id=Konrad
+#. [side]: type=Commander, id=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_The_Elves_Besieged.cfg:71
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:63
 #: data/campaigns/Heir_To_The_Throne/scenarios/03_The_Isle_of_Alduin.cfg:50
@@ -203,15 +203,15 @@ msgstr "מותו של דלפדור"
 msgid "Konrad"
 msgstr "קונרד"
 
-#. [side]: type=Commander, id=Konrad
-#. [side]: type=Ancient Wose, id=Haralamdum
-#. [side]: type=Elvish Enchantress, id=Bona-Melodia
-#. [side]: type=Grand Knight, id=Kaylan
 #. [side]: type=Fighter, id=Konrad
 #. [side]: type=Elvish Champion, id=Galdrad
 #. [side]: type=Elvish Shyde, id=Chantal
-#. [side]: id=Relgorn, type=Dwarvish Lord
+#. [side]: type=Commander, id=Konrad
+#. [side]: type=Grand Knight, id=Kaylan
 #. [side]: id=Geldar, type=Dwarvish Lord
+#. [side]: type=Ancient Wose, id=Haralamdum
+#. [side]: type=Elvish Enchantress, id=Bona-Melodia
+#. [side]: id=Relgorn, type=Dwarvish Lord
 #. [side]
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_The_Elves_Besieged.cfg:80
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_The_Elves_Besieged.cfg:237
@@ -255,23 +255,23 @@ msgstr ""
 msgid "Urug-Telfar"
 msgstr "אורוג-טפלר"
 
-#. [side]: type=Orcish Warrior, id=Mokolo Qimur
-#. [side]: type=Orcish Warrior, id=Halgar Du'nar
-#. [side]: type=Orcish Warrior, id=Gorlak
 #. [side]: type=Orcish Warlord, id=Urug-Telfar
 #. [side]: type=Orcish Warlord, id=Knafa-Tan
 #. [side]: type=Orcish Warlord, id=Maga-Knafa
-#. [side]: type=Orcish Warlord, id=Kior-Dal
-#. [side]: type=Orcish Warlord, id=Kojun Herolm
-#. [side]: type=Orcish Warrior, id=Mokho Kimer
-#. [side]: type=Orcish Slurbow, id=Knafa-Telfar
-#. [side]: type=Orcish Warlord, id=Urug-Tan
-#. [side]: type=Orcish Sovereign, id=Shuuga-Mool
+#. [side]: type=Orcish Warrior, id=Mokolo Qimur
 #. [side]: type=Orcish Warrior, id=Usadar Q'kai
 #. [side]: type=Orcish Warrior, id=Dwaba-Kukai
 #. [side]: type=Orcish Warrior, id=Managa'Gwin
-#. [side]: type=Orcish Warlord, id=Gaga-Breuk
+#. [side]: type=Orcish Warrior, id=Halgar Du'nar
+#. [side]: type=Orcish Warrior, id=Gorlak
 #. [side]: type=Orcish Warlord, id=Urag-Tifer
+#. [side]: type=Orcish Warlord, id=Kior-Dal
+#. [side]: type=Orcish Warlord, id=Kojun Herolm
+#. [side]: type=Orcish Warrior, id=Mokho Kimer
+#. [side]: type=Orcish Warlord, id=Gaga-Breuk
+#. [side]: type=Orcish Slurbow, id=Knafa-Telfar
+#. [side]: type=Orcish Warlord, id=Urug-Tan
+#. [side]: type=Orcish Sovereign, id=Shuuga-Mool
 #. [side]: type=Goblin Rouser
 #. [side]: type=Orcish Warlord
 #. [side]: type=Troll Warrior
@@ -953,8 +953,8 @@ msgstr "מפרץ הפנינים"
 msgid "Defeat one enemy leader, and resist the other until turns run out"
 msgstr "הבס את אחד ממנהיגי האוייב, והתנגד לשני עד שיגמר הזמן"
 
-#. [objective]: condition=win
 #. [objectives]
+#. [objective]: condition=win
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:26
 #: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:25
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:24
@@ -1398,19 +1398,19 @@ msgstr "הבס את מוף מלאל (בונוס)"
 msgid "Muff Malal"
 msgstr "מוף מלאל"
 
+#. [side]: type=Dark Sorcerer, id=Muff Malal
+#. [side]: id=Haf-Mal, type=Lich
+#. [side]: id=Jarmal-Gorg, type=Lich
+#. [side]: type=Lich, id=Galga
+#. [side]: type=Lich, id=Na-alga
+#. [side]: type=Lich, id=Selda-Mana
+#. [side]: type=Death Knight, id=Unan-Ka'tall
 #. [side]: type=Death Knight, id=Clarustus
 #. [side]: type=Death Knight, id=Merlunius
 #. [side]: type=Lich, id=Aimucasur
 #. [side]: type=Death Knight, id=Secadius
 #. [side]: type=Death Knight, id=Dafeis
 #. [side]: type=Ancient Lich, id=Muff Argulak
-#. [side]: type=Dark Sorcerer, id=Muff Malal
-#. [side]: type=Death Knight, id=Unan-Ka'tall
-#. [side]: type=Lich, id=Galga
-#. [side]: type=Lich, id=Na-alga
-#. [side]: type=Lich, id=Selda-Mana
-#. [side]: id=Haf-Mal, type=Lich
-#. [side]: id=Jarmal-Gorg, type=Lich
 #: data/campaigns/Heir_To_The_Throne/scenarios/05a_Muff_Malal_Peninsula.cfg:78
 #: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:126
 #: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:142
@@ -1604,8 +1604,8 @@ msgstr ""
 msgid "Looks like there is somebody hidden in the temple."
 msgstr ""
 
-#. [unit]: id=Moremirmu, type=Mage of Light
 #. [unit]: id=Moremirmu, type=White Mage
+#. [unit]: id=Moremirmu, type=Mage of Light
 #: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:294
 #: data/campaigns/Heir_To_The_Throne/scenarios/09_The_Valley_of_Death.cfg:258
 msgid "Moremirmu"
@@ -1709,11 +1709,11 @@ msgstr "אל אלנספר"
 msgid "Agadla"
 msgstr ""
 
-#. [side]: type=Troll Warrior, id=Haaf-Garga
-#. [side]: id=Brugg, type=Troll Warrior
-#. [side]: id=Lionel, type=Death Knight
 #. [side]: type=Orcish Warlord, id=Agadla
 #. [side]: type=Dark Sorcerer, id=Muff Jaanal
+#. [side]: id=Brugg, type=Troll Warrior
+#. [side]: id=Lionel, type=Death Knight
+#. [side]: type=Troll Warrior, id=Haaf-Garga
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:74
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:115
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:88
@@ -2246,11 +2246,11 @@ msgid "Li’sar"
 msgstr ""
 
 #. [side]: type=Princess, id=Li'sar
+#. [side]: type=General, id=Robryn
 #. [side]: type=General, id=Honber
 #. [side]: type=General, id=Josephus
 #. [side]: type=Orcish Warlord, id=Dwar-Ni
 #. [side]: type=General, id=Malatus
-#. [side]: type=General, id=Robryn
 #. [side]: type=Orcish Warlord, id=Haliel-Maga
 #. [side]: type=General, id=Heford
 #. [side]: type=Cavalier, id=Sir Kalm
@@ -4312,6 +4312,12 @@ msgstr "אני לא מאמינה שזה צריך להגמר ככה!"
 #, fuzzy
 msgid "The Sceptre of Fire"
 msgstr "שרביט האש"
+
+#. [generator]: id=cavegen
+#: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:9
+#, fuzzy
+msgid "Sceptre of Fire Caves"
+msgstr "שרביט אש"
 
 #. [part]
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:215
@@ -6964,29 +6970,29 @@ msgstr "הבס את כל מנהיגי האוייב"
 msgid "Plainsmen"
 msgstr "מישורי שלג"
 
-#. [then]
 #. [side]: type=Grand Knight, id=Sir Alric
+#. [then]
 #: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:122
 #: data/campaigns/Heir_To_The_Throne/scenarios/24_Battle_for_Wesnoth.cfg:211
 msgid "Sir Alric"
 msgstr ""
 
-#. [then]
 #. [side]: type=Grand Knight, id=Sir Ruga
+#. [then]
 #: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:150
 #: data/campaigns/Heir_To_The_Throne/scenarios/24_Battle_for_Wesnoth.cfg:202
 msgid "Sir Ruga"
 msgstr ""
 
-#. [then]
 #. [side]: type=Grand Knight, id=Sir Daryn
+#. [then]
 #: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:178
 #: data/campaigns/Heir_To_The_Throne/scenarios/24_Battle_for_Wesnoth.cfg:193
 msgid "Sir Daryn"
 msgstr ""
 
-#. [then]
 #. [side]: type=Grand Knight, id=Bayar
+#. [then]
 #: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:206
 #: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:543
 #: data/campaigns/Heir_To_The_Throne/scenarios/24_Battle_for_Wesnoth.cfg:184
@@ -7556,14 +7562,14 @@ msgstr ""
 #. [variation]: race=human
 #. [unit_type]: id=Battle Princess, race=human
 #: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:4
-#: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:105
+#: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:103
 msgid "female^Battle Princess"
 msgstr "נסיכת קרב"
 
 #. [variation]: race=human
 #. [unit_type]: id=Battle Princess, race=human
 #: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:29
-#: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:128
+#: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:126
 #, fuzzy
 #| msgid ""
 #| "A noble by birth, the Princess has learnt swordplay with the greatest "
@@ -7582,22 +7588,22 @@ msgstr ""
 
 #. [variation]: race=human
 #. [variation]
-#: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:103
-#: data/campaigns/Heir_To_The_Throne/units/Commander.cfg:102
+#: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:101
+#: data/campaigns/Heir_To_The_Throne/units/Commander.cfg:101
 #: data/campaigns/Heir_To_The_Throne/units/Fighter.cfg:58
-#: data/campaigns/Heir_To_The_Throne/units/Lord.cfg:115
-#: data/campaigns/Heir_To_The_Throne/units/Princess.cfg:63
+#: data/campaigns/Heir_To_The_Throne/units/Lord.cfg:114
+#: data/campaigns/Heir_To_The_Throne/units/Princess.cfg:61
 #, fuzzy
 #| msgid "scepter"
 msgid "with sceptre"
 msgstr "שרביט"
 
 #. [attack]: type=fire
-#: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:147
-#: data/campaigns/Heir_To_The_Throne/units/Commander.cfg:112
-#: data/campaigns/Heir_To_The_Throne/units/Fighter.cfg:66
-#: data/campaigns/Heir_To_The_Throne/units/Lord.cfg:135
-#: data/campaigns/Heir_To_The_Throne/units/Princess.cfg:107
+#: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:142
+#: data/campaigns/Heir_To_The_Throne/units/Commander.cfg:109
+#: data/campaigns/Heir_To_The_Throne/units/Fighter.cfg:65
+#: data/campaigns/Heir_To_The_Throne/units/Lord.cfg:132
+#: data/campaigns/Heir_To_The_Throne/units/Princess.cfg:102
 #, fuzzy
 msgid "sceptre of fire"
 msgstr "שרביט אש"
@@ -7605,7 +7611,7 @@ msgstr "שרביט אש"
 #. [variation]
 #. [unit_type]: id=Commander
 #: data/campaigns/Heir_To_The_Throne/units/Commander.cfg:95
-#: data/campaigns/Heir_To_The_Throne/units/Commander.cfg:106
+#: data/campaigns/Heir_To_The_Throne/units/Commander.cfg:105
 msgid ""
 "The rank of Commander is held by those who lead battle groups into combat. "
 "Possessing leadership skills, they give lower-level units in adjacent hexes "
@@ -7639,17 +7645,17 @@ msgstr ""
 "הופך אותה ליריב רציני בקרב, למרות שרוב כוחה נובע מפקודיה."
 
 #. [attack]: type=impact
-#: data/campaigns/Heir_To_The_Throne/units/Dark_Queen.cfg:25
+#: data/campaigns/Heir_To_The_Throne/units/Dark_Queen.cfg:24
 msgid "scepter"
 msgstr "שרביט"
 
 #. [attack]: type=cold
-#: data/campaigns/Heir_To_The_Throne/units/Dark_Queen.cfg:34
+#: data/campaigns/Heir_To_The_Throne/units/Dark_Queen.cfg:33
 msgid "raging blizzard"
 msgstr ""
 
 #. [variation]
-#: data/campaigns/Heir_To_The_Throne/units/Dark_Queen.cfg:95
+#: data/campaigns/Heir_To_The_Throne/units/Dark_Queen.cfg:94
 msgid "defeated"
 msgstr ""
 
@@ -7674,7 +7680,7 @@ msgstr ""
 #. [variation]
 #. [unit_type]: id=Lord
 #: data/campaigns/Heir_To_The_Throne/units/Lord.cfg:109
-#: data/campaigns/Heir_To_The_Throne/units/Lord.cfg:119
+#: data/campaigns/Heir_To_The_Throne/units/Lord.cfg:118
 msgid ""
 "The noble leaders of many troops, Lords are especially strong in melee "
 "combat, and also possess skill with the bow. Like Commanders, Lords possess "
@@ -7688,14 +7694,14 @@ msgstr ""
 #. [variation]: race=human
 #. [unit_type]: id=Princess, race=human
 #: data/campaigns/Heir_To_The_Throne/units/Princess.cfg:4
-#: data/campaigns/Heir_To_The_Throne/units/Princess.cfg:65
+#: data/campaigns/Heir_To_The_Throne/units/Princess.cfg:63
 msgid "female^Princess"
 msgstr "נסיכה"
 
 #. [variation]: race=human
 #. [unit_type]: id=Princess, race=human
 #: data/campaigns/Heir_To_The_Throne/units/Princess.cfg:29
-#: data/campaigns/Heir_To_The_Throne/units/Princess.cfg:88
+#: data/campaigns/Heir_To_The_Throne/units/Princess.cfg:86
 #, fuzzy
 #| msgid ""
 #| "A noble by birth, the Princess has learnt swordplay with the greatest "
@@ -7756,8 +7762,8 @@ msgid ""
 "defending."
 msgstr ""
 
-#. [special_note]
-#: data/campaigns/Heir_To_The_Throne/utils/abilities.cfg:35
+#. [firststrike]: id=initiative
+#: data/campaigns/Heir_To_The_Throne/utils/abilities.cfg:8
 msgid ""
 "This unit’s grasp of melee tactics allows adjacent allies to strike the "
 "first blow even when defending."

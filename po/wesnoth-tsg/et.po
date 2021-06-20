@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-04-18 02:21 UTC\n"
+"POT-Creation-Date: 2021-06-20 11:49 UTC\n"
 "PO-Revision-Date: 2011-12-29 21:21+0300\n"
 "Last-Translator: Kaido Kikkas <kakk@kakupesa.net>\n"
 "Language-Team: none\n"
@@ -143,11 +143,11 @@ msgstr "Lõuna kaardivägi"
 msgid "Urza Mathin"
 msgstr "Urza Mathin"
 
-#. [side]: type=Outlaw, id=Urza Afalas
-#. [side]: type=Rogue, id=Urza Fastik
-#. [side]: type=Outlaw, id=Jera Ilras
-#. [side]: type=Outlaw, id=Urza Nalmath
 #. [side]: type=Bandit, id=Urza Mathin
+#. [side]: type=Rogue, id=Urza Fastik
+#. [side]: type=Outlaw, id=Urza Nalmath
+#. [side]: type=Outlaw, id=Jera Ilras
+#. [side]: type=Outlaw, id=Urza Afalas
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:61
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:65
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:60
@@ -1418,9 +1418,9 @@ msgstr "Talchar"
 msgid "Ithelden"
 msgstr "Ithelden"
 
-#. [unit]: type=Elvish Avenger, id=Eltenmir
 #. [unit]: type=Elvish Outrider, id=Eltenmir
 #. [side]: type=Elvish Outrider, id=Eltenmir
+#. [unit]: type=Elvish Avenger, id=Eltenmir
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:401
 #: data/campaigns/The_South_Guard/scenarios/07a_Return_to_Kerlath.cfg:358
 #: data/campaigns/The_South_Guard/scenarios/08a_Vengeance.cfg:92
@@ -1663,12 +1663,12 @@ msgstr "Pisarate org"
 msgid "Mal A’kai"
 msgstr "Mal A'kai"
 
-#. [side]
-#. [side]: type=Lich, id=Mal M'Brin
+#. [side]: type=Dark Adept, type=Dark Sorcerer, type=Dark Sorcerer, id=Mal A'kai
 #. [side]: type=Ancient Lich, id=Mal M'Brin
 #. [side]: type=Soulless, id=Groth
 #. [side]: type=Lich, id=Mal Tera
-#. [side]: type=Dark Adept, type=Dark Sorcerer, type=Dark Sorcerer, id=Mal A'kai
+#. [side]
+#. [side]: type=Lich, id=Mal M'Brin
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:66
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:90
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:91
@@ -1937,9 +1937,9 @@ msgstr "Vähemalt sina ei tülita meid enam!"
 msgid "Mebrin! Are you there? We have come to seek your aid!"
 msgstr "Mebrin! Oled sa seal? Me tulime su abi otsima!"
 
-#. [message]: speaker=Kramak
 #. [message]: speaker=Ethiliel
 #. [message]: speaker=narrator
+#. [message]: speaker=Kramak
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:645
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:656
 #: data/campaigns/The_South_Guard/scenarios/07a_Return_to_Kerlath.cfg:238
@@ -2051,8 +2051,8 @@ msgstr ""
 msgid "Choice in the Fog"
 msgstr "Valik udus"
 
-#. [side]: type=Outlaw, id=Urza Afalas
 #. [unit]: type=Outlaw, id=Urza Afalas
+#. [side]: type=Outlaw, id=Urza Afalas
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:55
 #: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:485
 msgid "Urza Afalas"
@@ -4720,12 +4720,12 @@ msgstr ""
 "ohtlik."
 
 #. [attack]: type=impact
-#: data/campaigns/The_South_Guard/units/Eyestalk.cfg:35
+#: data/campaigns/The_South_Guard/units/Eyestalk.cfg:32
 msgid "smash"
 msgstr "hoop"
 
 #. [attack]: type=arcane
-#: data/campaigns/The_South_Guard/units/Eyestalk.cfg:59
+#: data/campaigns/The_South_Guard/units/Eyestalk.cfg:56
 msgid "gaze"
 msgstr "pilk"
 
@@ -4758,8 +4758,8 @@ msgstr ""
 "käel ja rahuliku otsustavusega."
 
 #. [attack]: type=blade
-#: data/campaigns/The_South_Guard/units/Infantry_Commander.cfg:32
-#: data/campaigns/The_South_Guard/units/Infantry_Lieutenant.cfg:30
+#: data/campaigns/The_South_Guard/units/Infantry_Commander.cfg:30
+#: data/campaigns/The_South_Guard/units/Infantry_Lieutenant.cfg:29
 msgid "glaive"
 msgstr "hellebard"
 

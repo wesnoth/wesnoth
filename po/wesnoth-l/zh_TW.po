@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.15\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-05-16 02:06 UTC\n"
+"POT-Creation-Date: 2021-06-20 11:49 UTC\n"
 "PO-Revision-Date: 2021-04-06 08:00+0800\n"
 "Last-Translator: 李信融 <magiclen0810@gmail.com>\n"
 "Language-Team: Wesnoth Traditional Chinese Team\n"
@@ -175,9 +175,9 @@ msgid "Fal Khag"
 msgstr "法爾‧哈格"
 
 #. [side]: type=Goblin Pillager, id=Fal Khag
-#. [side]: type=Orcish Warlord, id=Vashna
 #. [side]: type=Orcish Warrior, id=Urk Delek
 #. [side]: type=Saurian Oracle, id=Thhsthss
+#. [side]: type=Orcish Warlord, id=Vashna
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:86
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:106
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:131
@@ -533,14 +533,14 @@ msgstr ""
 "說到感受，我今天有股不好的感覺。我回到村莊時，最好準備好我們的狩獵隊，以防萬"
 "一……"
 
+#. [side]: type=Bandit_Peasant, id=Baldras
+#. [side]
 #. [side]: type=Bandit, id=Baldras
+#. [side]: type=Highwayman_Peasant, id=Relana
 #. [side]: type=General, id=Lord Maddock
 #. [side]: type=Rogue, id=Hans
 #. [side]: type=Highwayman, id=Baldras
 #. [side]: type=Shadow Lord, id=Helicrom
-#. [side]
-#. [side]: type=Bandit_Peasant, id=Baldras
-#. [side]: type=Highwayman_Peasant, id=Relana
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:44
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:83
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:48
@@ -561,13 +561,13 @@ msgstr "叛軍"
 msgid "Tarwen"
 msgstr "塔文"
 
+#. [side]: type=Cavalier, id=Tarwen
 #. [side]: type=General, id=Kestrel
 #. [side]: type=Master Bowman, id=Quentin
 #. [side]
 #. [side]: type=Shock Trooper, id=Linneus
 #. [side]: type=Lieutenant, id=Archarel
 #. [side]: type=General, id=Dommel
-#. [side]: type=Cavalier, id=Tarwen
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:60
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:81
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:85
@@ -2910,7 +2910,7 @@ msgstr ""
 "醒，散播著恐懼和毀滅。"
 
 #. [attack]: type=impact
-#: data/campaigns/Liberty/units/Bone_Knight.cfg:44
+#: data/campaigns/Liberty/units/Bone_Knight.cfg:42
 msgid "trample"
 msgstr "踐踏"
 
@@ -2952,7 +2952,7 @@ msgstr ""
 "巧。"
 
 #. [attack]: type=cold
-#: data/campaigns/Liberty/units/Rogue_Mage.cfg:34
+#: data/campaigns/Liberty/units/Rogue_Mage.cfg:33
 msgid "ice blast"
 msgstr "冷凍波"
 
@@ -2975,19 +2975,19 @@ msgstr ""
 "敵人和部下所敬畏。"
 
 #. [attack]: type=blade
-#: data/campaigns/Liberty/units/Shadow_Lord.cfg:35
+#: data/campaigns/Liberty/units/Shadow_Lord.cfg:33
 msgid "astral blade"
 msgstr "星之刃"
 
 #. [attack]: type=cold
-#: data/campaigns/Liberty/units/Shadow_Lord.cfg:46
-#: data/campaigns/Liberty/units/Shadow_Mage.cfg:47
+#: data/campaigns/Liberty/units/Shadow_Lord.cfg:44
+#: data/campaigns/Liberty/units/Shadow_Mage.cfg:45
 msgid "shadow bolt"
 msgstr "暗影箭"
 
 # 雖然正規的單位使用的「shadow wave」也是翻譯成暗影波，但應該不影響。
 #. [attack]: type=impact
-#: data/campaigns/Liberty/units/Shadow_Lord.cfg:58
+#: data/campaigns/Liberty/units/Shadow_Lord.cfg:56
 msgid "shadow blast"
 msgstr "暗影波"
 
