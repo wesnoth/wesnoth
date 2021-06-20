@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bg\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-06-20 14:49+0300\n"
+"POT-Creation-Date: 2021-06-20 20:27+0300\n"
 "PO-Revision-Date: 2007-05-02 22:38+0300\n"
 "Last-Translator: Nikolay Vladimirov <nikolay@vladimiroff.com>\n"
 "Language-Team: Български\n"
@@ -3008,7 +3008,7 @@ msgstr "Описание на единицата"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/editor_edit_scenario.cfg:170
-#: src/gui/dialogs/multiplayer/lobby.cpp:507
+#: src/gui/dialogs/multiplayer/lobby.cpp:511
 msgid "Experience modifier:"
 msgstr ""
 
@@ -3078,7 +3078,7 @@ msgstr ""
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/editor_edit_side.cfg:276
-#: src/gui/dialogs/multiplayer/lobby.cpp:508
+#: src/gui/dialogs/multiplayer/lobby.cpp:512
 #, fuzzy
 msgid "Gold per village:"
 msgstr "Селище"
@@ -3156,7 +3156,7 @@ msgstr "Генератор на карти"
 #. [button]: id=random_map_settings
 #: data/gui/window/editor_generate_map.cfg:128
 #: data/gui/window/mp_create_game.cfg:877
-#: src/gui/dialogs/multiplayer/lobby.cpp:506
+#: src/gui/dialogs/multiplayer/lobby.cpp:510
 #, fuzzy
 msgid "Settings"
 msgstr "Настройка на горещите клавиши"
@@ -4572,7 +4572,7 @@ msgstr ""
 #: data/gui/window/mp_create_game/default_resolution.cfg:176
 #: data/gui/window/mp_create_game/small_resolution.cfg:181
 #: data/gui/window/mp_create_game/tiny_resolution.cfg:164
-#: src/gui/dialogs/multiplayer/lobby.cpp:509
+#: src/gui/dialogs/multiplayer/lobby.cpp:513
 #, fuzzy
 #| msgid "Max hill size:"
 msgid "Map size:"
@@ -6408,7 +6408,7 @@ msgid "Attacker vulnerability vs"
 msgstr ""
 
 #: src/gui/dialogs/campaign_selection.cpp:364
-#: src/gui/dialogs/multiplayer/lobby.cpp:490
+#: src/gui/dialogs/multiplayer/lobby.cpp:494
 #, fuzzy
 #| msgid "Choose Resolution"
 msgid "active_modifications^None"
@@ -6634,12 +6634,12 @@ msgid "Unknown"
 msgstr ""
 
 #: src/gui/dialogs/game_stats.cpp:196 src/gui/dialogs/game_stats.cpp:199
-#: src/gui/dialogs/multiplayer/lobby.cpp:504
+#: src/gui/dialogs/multiplayer/lobby.cpp:508
 msgid "no"
 msgstr "не"
 
 #: src/gui/dialogs/game_stats.cpp:196 src/gui/dialogs/game_stats.cpp:199
-#: src/gui/dialogs/multiplayer/lobby.cpp:504
+#: src/gui/dialogs/multiplayer/lobby.cpp:508
 msgid "yes"
 msgstr "да"
 
@@ -6811,70 +6811,70 @@ msgid ""
 "Do you want to try to install them?"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:425
+#: src/gui/dialogs/multiplayer/lobby.cpp:429
 msgid "Games: showing $num_shown out of $num_total"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:445
+#: src/gui/dialogs/multiplayer/lobby.cpp:449
 msgid "$game_name (Era: $era_name)"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:475
+#: src/gui/dialogs/multiplayer/lobby.cpp:479
 msgid "era_or_mod^not installed"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:478
+#: src/gui/dialogs/multiplayer/lobby.cpp:482
 msgid "Era"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:485
+#: src/gui/dialogs/multiplayer/lobby.cpp:489
 #, fuzzy
 #| msgid "Choose Resolution"
 msgid "Modifications"
 msgstr "Избор на резолюция"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:510
+#: src/gui/dialogs/multiplayer/lobby.cpp:514
 #, fuzzy
 msgid "Reloaded:"
 msgstr "Създаване на нова карта"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:511
+#: src/gui/dialogs/multiplayer/lobby.cpp:515
 msgid "Shared vision:"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:512
+#: src/gui/dialogs/multiplayer/lobby.cpp:516
 msgid "Shuffle sides:"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:513
+#: src/gui/dialogs/multiplayer/lobby.cpp:517
 #, fuzzy
 msgid "Time limit:"
 msgstr "Тема"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:514
+#: src/gui/dialogs/multiplayer/lobby.cpp:518
 #, fuzzy
 msgid "Use map settings:"
 msgstr "Настройка на горещите клавиши"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:522
+#: src/gui/dialogs/multiplayer/lobby.cpp:526
 msgid ""
 "One or more add-ons need to be installed\n"
 "in order to join this game."
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:547
+#: src/gui/dialogs/multiplayer/lobby.cpp:551
 msgid "Observers allowed"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:550
+#: src/gui/dialogs/multiplayer/lobby.cpp:554
 msgid "Observers not allowed"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:788
+#: src/gui/dialogs/multiplayer/lobby.cpp:794
 msgid "lobby"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:979
+#: src/gui/dialogs/multiplayer/lobby.cpp:989
 msgid ""
 "Something is wrong with the addon version check database supporting the "
 "multiplayer lobby. Please report this at https://bugs.wesnoth.org."

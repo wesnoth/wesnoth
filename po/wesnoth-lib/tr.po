@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-lib\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-06-20 14:49+0300\n"
+"POT-Creation-Date: 2021-06-20 20:27+0300\n"
 "PO-Revision-Date: 2020-08-05 03:34+0300\n"
 "Last-Translator: Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>\n"
 "Language-Team: Turkish\n"
@@ -3048,7 +3048,7 @@ msgstr "Tanımı:"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/editor_edit_scenario.cfg:170
-#: src/gui/dialogs/multiplayer/lobby.cpp:507
+#: src/gui/dialogs/multiplayer/lobby.cpp:511
 msgid "Experience modifier:"
 msgstr "Tecrübe niteleyicisi:"
 
@@ -3110,7 +3110,7 @@ msgstr "Altın:"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/editor_edit_side.cfg:276
-#: src/gui/dialogs/multiplayer/lobby.cpp:508
+#: src/gui/dialogs/multiplayer/lobby.cpp:512
 msgid "Gold per village:"
 msgstr "Köy başına altın:"
 
@@ -3181,7 +3181,7 @@ msgstr "Harita üreteci seçin:"
 #. [button]: id=random_map_settings
 #: data/gui/window/editor_generate_map.cfg:128
 #: data/gui/window/mp_create_game.cfg:877
-#: src/gui/dialogs/multiplayer/lobby.cpp:506
+#: src/gui/dialogs/multiplayer/lobby.cpp:510
 msgid "Settings"
 msgstr "Ayarlar"
 
@@ -4531,7 +4531,7 @@ msgstr ""
 #: data/gui/window/mp_create_game/default_resolution.cfg:176
 #: data/gui/window/mp_create_game/small_resolution.cfg:181
 #: data/gui/window/mp_create_game/tiny_resolution.cfg:164
-#: src/gui/dialogs/multiplayer/lobby.cpp:509
+#: src/gui/dialogs/multiplayer/lobby.cpp:513
 msgid "Map size:"
 msgstr "Harita Boyutları:"
 
@@ -6302,7 +6302,7 @@ msgid "Attacker vulnerability vs"
 msgstr "Saldıranın yaralanabilirliği vs"
 
 #: src/gui/dialogs/campaign_selection.cpp:364
-#: src/gui/dialogs/multiplayer/lobby.cpp:490
+#: src/gui/dialogs/multiplayer/lobby.cpp:494
 msgid "active_modifications^None"
 msgstr "Yok"
 
@@ -6527,12 +6527,12 @@ msgid "Unknown"
 msgstr "Bilinmeyen"
 
 #: src/gui/dialogs/game_stats.cpp:196 src/gui/dialogs/game_stats.cpp:199
-#: src/gui/dialogs/multiplayer/lobby.cpp:504
+#: src/gui/dialogs/multiplayer/lobby.cpp:508
 msgid "no"
 msgstr "hayır"
 
 #: src/gui/dialogs/game_stats.cpp:196 src/gui/dialogs/game_stats.cpp:199
-#: src/gui/dialogs/multiplayer/lobby.cpp:504
+#: src/gui/dialogs/multiplayer/lobby.cpp:508
 msgid "yes"
 msgstr "evet"
 
@@ -6703,47 +6703,47 @@ msgstr ""
 "indirilmesi veya güncellenmesi lazım.\n"
 "Yüklemeyi denemek istiyor musunuz?"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:425
+#: src/gui/dialogs/multiplayer/lobby.cpp:429
 msgid "Games: showing $num_shown out of $num_total"
 msgstr "Oyunlar: $num_total üzerinden $num_shown gösteriliyor"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:445
+#: src/gui/dialogs/multiplayer/lobby.cpp:449
 msgid "$game_name (Era: $era_name)"
 msgstr "$game_name (Çağ: $era_name)"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:475
+#: src/gui/dialogs/multiplayer/lobby.cpp:479
 msgid "era_or_mod^not installed"
 msgstr "kurulu değil"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:478
+#: src/gui/dialogs/multiplayer/lobby.cpp:482
 msgid "Era"
 msgstr "Çağ"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:485
+#: src/gui/dialogs/multiplayer/lobby.cpp:489
 msgid "Modifications"
 msgstr "Değişiklikler"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:510
+#: src/gui/dialogs/multiplayer/lobby.cpp:514
 msgid "Reloaded:"
 msgstr "Geri yüklenmiş:"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:511
+#: src/gui/dialogs/multiplayer/lobby.cpp:515
 msgid "Shared vision:"
 msgstr "Paylaşılan görüntü:"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:512
+#: src/gui/dialogs/multiplayer/lobby.cpp:516
 msgid "Shuffle sides:"
 msgstr "Tarafları karıştır:"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:513
+#: src/gui/dialogs/multiplayer/lobby.cpp:517
 msgid "Time limit:"
 msgstr "Zaman sınırı:"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:514
+#: src/gui/dialogs/multiplayer/lobby.cpp:518
 msgid "Use map settings:"
 msgstr "Harita ayarlarını kullan:"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:522
+#: src/gui/dialogs/multiplayer/lobby.cpp:526
 msgid ""
 "One or more add-ons need to be installed\n"
 "in order to join this game."
@@ -6751,19 +6751,19 @@ msgstr ""
 "Oyuna katılmak için\n"
 "bir veya daha fazla eklentinin indirilmesi laızm."
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:547
+#: src/gui/dialogs/multiplayer/lobby.cpp:551
 msgid "Observers allowed"
 msgstr "Seyirciler kabul edilir"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:550
+#: src/gui/dialogs/multiplayer/lobby.cpp:554
 msgid "Observers not allowed"
 msgstr "Seyirciler yasak"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:788
+#: src/gui/dialogs/multiplayer/lobby.cpp:794
 msgid "lobby"
 msgstr "salon"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:979
+#: src/gui/dialogs/multiplayer/lobby.cpp:989
 msgid ""
 "Something is wrong with the addon version check database supporting the "
 "multiplayer lobby. Please report this at https://bugs.wesnoth.org."
