@@ -1,3 +1,18 @@
+## Version 1.14.17+dev
+ ### Add-ons client
+ ### Add-ons server
+ ### Campaigns
+ ### Editor
+ ### Multiplayer
+ ### Lua API
+ ### Packaging
+ ### Terrain
+ ### Translations
+ ### Units
+ ### User interface
+ ### WML Engine
+ ### Miscellaneous and Bug Fixes
+
 ## Version 1.14.17
  ### Translations
    * Updated translations: British English, Chinese (Traditional), Czech, Dutch, Indonesian, Italian, Japanese, Portuguese (Brazil), Scottish Gaelic, Spanish
