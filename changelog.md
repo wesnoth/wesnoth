@@ -1,8 +1,7 @@
-## Version 1.15.13+dev
+## Version 1.15.14
  ### Add-ons client
    * Fixed: using the versions drop-down in small-screen mode returned to the title screen (issue #5810)
    * Fixed: keyboard input in small-screen mode returned to the title screen (part of issue #3059)
- ### Add-ons server
  ### Campaigns
    * A Tale of Two Brothers
      * S02: Dialog revisions.
@@ -10,7 +9,6 @@
      * Revisions to the last two scenarios.
    * Tutorial
      * S02: Mention the acceleration factor preference.
- ### Editor
  ### Lua API
    * Pathfinding functions are now in a new wesnoth.paths module.
      * Pathfinding in map generation now takes an options table as the third argument.
@@ -61,7 +59,6 @@
    * Naga Sicarius hp changed form 55 to 53 and melee damage changed form 9 to 6, new special "deflect" added to melee attack
    * Fire Guardian can now level into Fire Wraith, experience needed to level up for Fire Guardian changed from 50 to 29
    * Revised statistics of all animal horses, Bay Horse can now level into Great Horse
- ### User interface
  ### Wesnoth Formula Language
    * The use of "side" on units and "owner" on terrain objects is now deprecated.
      Instead, you should use "side_number" or "owner_side", respectively.
