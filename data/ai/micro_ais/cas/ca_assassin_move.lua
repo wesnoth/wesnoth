@@ -70,7 +70,7 @@ function ca_assassin_move:execution(cfg)
 
             -- First get the reach of the enemy with full moves though
             enemy_copy.moves = enemy_copy.max_moves
-            local reach = wesnoth.find_reach(enemy_copy, { ignore_units = true })
+            local reach = wesnoth.paths.find_reach(enemy_copy, { ignore_units = true })
 
             enemy_copy.x = unit.x
             enemy_copy.y = unit.y + 1 -- this even works at map border

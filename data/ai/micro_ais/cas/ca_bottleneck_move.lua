@@ -186,7 +186,7 @@ local function bottleneck_move_out_of_way(unit_in_way, data)
 
     if (unit_in_way.side ~= wesnoth.current.side) then return nil end
 
-    local reach = wesnoth.find_reach(unit_in_way)
+    local reach = wesnoth.paths.find_reach(unit_in_way)
 
     local all_units = AH.get_visible_units(wesnoth.current.side)
     local occ_hexes = LS:create()
@@ -356,7 +356,7 @@ function ca_bottleneck_move:evaluation(cfg, data)
         local has_leadership = unit:matches { ability_type = "leadership" }
         local on_my_territory = BD_is_my_territory:get(unit.x, unit.y)
 
-        local reach = wesnoth.find_reach(unit)
+        local reach = wesnoth.paths.find_reach(unit)
         for _,loc in ipairs(reach) do
             local rating = bottleneck_get_rating(unit, loc[1], loc[2], has_leadership, is_healer, on_my_territory, data)
 

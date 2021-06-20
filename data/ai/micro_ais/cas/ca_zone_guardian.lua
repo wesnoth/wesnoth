@@ -21,7 +21,7 @@ end
 
 function ca_zone_guardian:execution(cfg)
     local guardian = get_guardian(cfg)
-    local reach = wesnoth.find_reach(guardian)
+    local reach = wesnoth.paths.find_reach(guardian)
 
     local zone = wml.get_child(cfg, "filter_location")
     local zone_enemy = wml.get_child(cfg, "filter_location_enemy") or zone
@@ -60,7 +60,7 @@ function ca_zone_guardian:execution(cfg)
             if attack_loc then
                 AH.robust_move_and_attack(ai, guardian, attack_loc, target)
             else  -- Otherwise move toward that enemy
-                local reach = wesnoth.find_reach(guardian)
+                local reach = wesnoth.paths.find_reach(guardian)
 
                 -- Go through all hexes the guardian can reach, find closest to target
                 -- Cannot use next_hop here since target hex is occupied by enemy
@@ -91,7 +91,7 @@ function ca_zone_guardian:execution(cfg)
             local locs_map = LS.of_pairs(AH.get_locations_no_borders(zone))
 
             -- Check out which of those hexes the guardian can reach
-            local reach_map = LS.of_pairs(wesnoth.find_reach(guardian))
+            local reach_map = LS.of_pairs(wesnoth.paths.find_reach(guardian))
             reach_map:inter(locs_map)
 
             -- If it can reach some hexes, use only reachable locations,

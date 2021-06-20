@@ -194,7 +194,7 @@ function ca_fast_move:execution(cfg)
             end
 
             -- Finally find the best move for this unit
-            local reach = wesnoth.find_reach(unit)
+            local reach = wesnoth.paths.find_reach(unit)
 
             local pre_ratings = {}
             local max_rating, best_hex = - math.huge

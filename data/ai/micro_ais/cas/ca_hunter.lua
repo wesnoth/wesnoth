@@ -130,7 +130,7 @@ function ca_hunter:execution(cfg)
     -- If we got here, this means the hunter is either returning, or resting
     if (hunter_vars.hunting_status == 'returning') then
         local home_loc = AH.get_named_loc_xy('home', cfg)
-        local goto_x, goto_y = wesnoth.find_vacant_hex(home_loc[1], home_loc[2], hunter)
+        local goto_x, goto_y = wesnoth.paths.find_vacant_hex(home_loc[1], home_loc[2], hunter)
 
         local next_hop = AH.next_hop(hunter, goto_x, goto_y)
         if next_hop then

@@ -19,7 +19,7 @@ function wesnoth.wml_actions.store_reachable_locations(cfg)
 
 	if range == "vision" then
 		for i,unit in ipairs(wesnoth.units.find_on_map(unit_filter)) do
-			local unit_reach = location_set.of_pairs(wesnoth.find_vision_range(unit))
+			local unit_reach = location_set.of_pairs(wesnoth.paths.find_vision_range(unit))
 			reach:union(unit_reach)
 		end
 	else
@@ -28,10 +28,10 @@ function wesnoth.wml_actions.store_reachable_locations(cfg)
 			if moves == "max" then
 				local saved_moves = unit.moves
 				unit.moves = unit.max_moves
-				unit_reach = location_set.of_pairs(wesnoth.find_reach(unit, reach_param))
+				unit_reach = location_set.of_pairs(wesnoth.paths.find_reach(unit, reach_param))
 				unit.moves = saved_moves
 			else
-				unit_reach = location_set.of_pairs(wesnoth.find_reach(unit, reach_param))
+				unit_reach = location_set.of_pairs(wesnoth.paths.find_reach(unit, reach_param))
 			end
 
 			if range == "attack" then

@@ -1340,7 +1340,7 @@ function ai_helper.get_dst_src_units(units, cfg)
     -- Get the dst_src location set for @units
     -- @cfg: table with optional configuration parameters:
     --   moves: if set to 'max' use max_moves of units, rather than current moves
-    --   all parameters for wesnoth.find_reach
+    --   all parameters for wesnoth.paths.find_reach
 
     local max_moves = false
     if cfg then
@@ -1353,7 +1353,7 @@ function ai_helper.get_dst_src_units(units, cfg)
         if max_moves then
             unit.moves = unit.max_moves
         end
-        local reach = wesnoth.find_reach(unit, cfg)
+        local reach = wesnoth.paths.find_reach(unit, cfg)
         if max_moves then
             unit.moves = tmp
         end
@@ -1372,7 +1372,7 @@ function ai_helper.get_dst_src(units, cfg)
     -- If @units table is given use it, otherwise use all units on the current side
     -- @cfg: table with optional configuration parameters:
     --   moves: if set to 'max' use max_moves of units, rather than current moves
-    --   all parameters for wesnoth.find_reach
+    --   all parameters for wesnoth.paths.find_reach
 
     if (not units) then
         units = wesnoth.units.find_on_map { side = wesnoth.current.side }
@@ -1384,7 +1384,7 @@ end
 function ai_helper.get_enemy_dst_src(enemies, cfg)
     -- If @enemies table is given use it, otherwise use all enemy units
     -- @cfg: table with optional configuration parameters:
-    --   all parameters for wesnoth.find_reach
+    --   all parameters for wesnoth.paths.find_reach
 
     if (not enemies) then
         enemies = wesnoth.units.find_on_map {
@@ -1513,7 +1513,7 @@ function ai_helper.next_hop(unit, x, y, cfg)
     if fan_out and ((next_hop[1] ~= next_hop_ideal[1]) or (next_hop[2] ~= next_hop_ideal[2]))
     then
         -- If we cannot get to the ideal next hop, try fanning out instead
-        local reach = wesnoth.find_reach(unit, cfg)
+        local reach = wesnoth.paths.find_reach(unit, cfg)
 
         -- Need the reach map of the unit from the ideal next hop hex
         -- There will always be another unit there, otherwise we would not have gotten here
@@ -1522,7 +1522,7 @@ function ai_helper.next_hop(unit, x, y, cfg)
         local old_x, old_y = unit.x, unit.y
         unit:extract()
         unit:to_map(next_hop_ideal[1], next_hop_ideal[2])
-        local inverse_reach = wesnoth.find_reach(unit, { ignore_units = true }) -- no ZoC
+        local inverse_reach = wesnoth.paths.find_reach(unit, { ignore_units = true }) -- no ZoC
         unit:extract()
         unit:to_map(old_x, old_y)
         unit_in_way:to_map()
@@ -1625,7 +1625,7 @@ end
 function ai_helper.get_reachmap(unit, cfg)
     -- Get all reachable hexes for @unit that are actually available; that is,
     -- hexes that, at most, have own units on them which can move out of the way.
-    -- By contrast, wesnoth.find_reach also includes hexes with allied units on
+    -- By contrast, wesnoth.paths.find_reach also includes hexes with allied units on
     -- them, as well as own unit with no moves left.
     -- Returned array is a location set, with values set to remaining MP after the
     -- unit moves to the respective hexes.
@@ -1637,7 +1637,7 @@ function ai_helper.get_reachmap(unit, cfg)
     --   exclude_occupied: if true, exclude hexes that have units on them; defaults to
     --     false, in which case hexes with own units with moves > 0 are included
     --   avoid_map: location set of hexes to be excluded
-    --   plus all other parameters to wesnoth.find_reach
+    --   plus all other parameters to wesnoth.paths.find_reach
 
     local viewing_side = cfg and cfg.viewing_side or unit.side
     ai_helper.check_viewing_side(viewing_side)
@@ -1647,7 +1647,7 @@ function ai_helper.get_reachmap(unit, cfg)
     if cfg and (cfg.moves == 'max') then unit.moves = unit.max_moves end
 
     local reachmap = LS.create()
-    local initial_reach = wesnoth.find_reach(unit, cfg)
+    local initial_reach = wesnoth.paths.find_reach(unit, cfg)
     for _,loc in ipairs(initial_reach) do
         local is_available = true
         if cfg and cfg.avoid_map and cfg.avoid_map:get(loc[1], loc[2]) then
@@ -1973,7 +1973,7 @@ function ai_helper.move_unit_out_of_way(ai, unit, cfg)
     --   labels: if set, display labels of the rating for each hex the unit can reach
     --   viewing_side: see comments at beginning of this file. Defaults to side of @unit.
     --   ignore_visibility: see comments at beginning of this file. Defaults to nil.
-    --   all other optional parameters to wesnoth.find_reach()
+    --   all other optional parameters to wesnoth.paths.find_reach()
 
     cfg = cfg or {}
     local viewing_side = cfg.viewing_side or unit.side
@@ -1986,7 +1986,7 @@ function ai_helper.move_unit_out_of_way(ai, unit, cfg)
         if (r ~= 0) then dx, dy = cfg.dx / r, cfg.dy / r end
     end
 
-    local reach = wesnoth.find_reach(unit, cfg)
+    local reach = wesnoth.paths.find_reach(unit, cfg)
     local reach_map = LS.create()
 
     local max_rating, best_hex = - math.huge
@@ -2090,7 +2090,7 @@ function ai_helper.get_attacks(units, cfg)
     --   include_occupied (false): if set, also include hexes occupied by own-side units that can move away
     --   simulate_combat (false): if set, also simulate the combat and return result (this is slow; only set if needed)
     --   ignore_visibility: see comments at beginning of this file. Defaults to side of @units
-    --   all other optional parameters to wesnoth.find_reach()
+    --   all other optional parameters to wesnoth.paths.find_reach()
     --
     -- Returns {} if no attacks can be done, otherwise table with fields:
     --   dst: { x = x, y = y } of attack position
@@ -2165,7 +2165,7 @@ function ai_helper.get_attacks(units, cfg)
         if reaches:get(unit.x, unit.y) then
             reach = reaches:get(unit.x, unit.y)
         else
-            reach = wesnoth.find_reach(unit, cfg)
+            reach = wesnoth.paths.find_reach(unit, cfg)
             reaches:insert(unit.x, unit.y, reach)
         end
 
@@ -2185,7 +2185,7 @@ function ai_helper.get_attacks(units, cfg)
                         if reaches:get(unit_in_way.x, unit_in_way.y) then
                             uiw_reach = reaches:get(unit_in_way.x, unit_in_way.y)
                         else
-                            uiw_reach = wesnoth.find_reach(unit_in_way, cfg)
+                            uiw_reach = wesnoth.paths.find_reach(unit_in_way, cfg)
                             reaches:insert(unit_in_way.x, unit_in_way.y, uiw_reach)
                         end
 

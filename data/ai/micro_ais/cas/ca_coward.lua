@@ -21,7 +21,7 @@ end
 
 function ca_coward:execution(cfg)
     local coward = get_coward(cfg)
-    local reach = wesnoth.find_reach(coward)
+    local reach = wesnoth.paths.find_reach(coward)
 
     local filter_second =
         wml.get_child(cfg, "filter_second")

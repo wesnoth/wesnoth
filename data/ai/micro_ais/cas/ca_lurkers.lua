@@ -24,7 +24,7 @@ function ca_lurkers:execution(cfg)
     -- Sort targets by hitpoints (lurkers choose lowest HP target)
     table.sort(targets, function(a, b) return (a.hitpoints < b.hitpoints) end)
 
-    local reach = LS.of_pairs(wesnoth.find_reach(lurker.x, lurker.y))
+    local reach = LS.of_pairs(wesnoth.paths.find_reach(lurker.x, lurker.y))
     local lurk_area = wml.get_child(cfg, "filter_location")
     local reachable_attack_terrain =
          LS.of_pairs(wesnoth.map.find  {

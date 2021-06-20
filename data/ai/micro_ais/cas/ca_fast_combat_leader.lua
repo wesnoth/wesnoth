@@ -88,7 +88,7 @@ function ca_fast_combat_leader:evaluation(cfg, data)
 
             local old_moves = enemy.moves
             enemy.moves = enemy.max_moves
-            local reach = wesnoth.find_reach(enemy)
+            local reach = wesnoth.paths.find_reach(enemy)
             enemy.moves = old_moves
 
             for _,loc in ipairs(reach) do

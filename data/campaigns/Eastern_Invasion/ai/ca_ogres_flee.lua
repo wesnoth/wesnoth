@@ -24,7 +24,7 @@ function ca_ogres_flee:execution()
 
     local max_rating, best_hex, best_unit = - math.huge
     for i,u in ipairs(units) do
-        local reach = wesnoth.find_reach(u)
+        local reach = wesnoth.paths.find_reach(u)
         for j,r in ipairs(reach) do
             local unit_in_way = wesnoth.units.get(r[1], r[2])
 

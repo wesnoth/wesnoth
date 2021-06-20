@@ -1171,7 +1171,7 @@ function battle_calcs.get_attack_map_unit(unit, cfg)
     end
 
     -- Find hexes the unit can reach
-    local initial_reach = wesnoth.find_reach(unit, cfg)
+    local initial_reach = wesnoth.paths.find_reach(unit, cfg)
 
     -- Put the units back out there
     if (unit.side ~= wesnoth.current.side) then
@@ -1314,7 +1314,7 @@ function battle_calcs.best_defense_map(units, cfg)
         if (unit.side ~= wesnoth.current.side) then max_moves = true end
         local old_moves = unit.moves
         if max_moves then unit.moves = unit.max_moves end
-        local reach = wesnoth.find_reach(unit, cfg)
+        local reach = wesnoth.paths.find_reach(unit, cfg)
         if max_moves then unit.moves = old_moves end
 
         for _,loc in ipairs(reach) do
@@ -1472,7 +1472,7 @@ function battle_calcs.get_attack_combos_subset(units, enemy, cfg)
             if unit_in_way then
                 -- Units on the same side are blockers if they cannot move away
                 if (unit_in_way.side == wesnoth.current.side) then
-                    local reach = wesnoth.find_reach(unit_in_way)
+                    local reach = wesnoth.paths.find_reach(unit_in_way)
                     if (#reach <= 1) then
                         blocked_hexes:insert(unit_in_way.x, unit_in_way.y)
                     end

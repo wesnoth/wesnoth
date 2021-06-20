@@ -58,7 +58,7 @@ function ca_transport:execution()
         local dst = { u.variables.destination_x, u.variables.destination_y }
 
         if (not u.variables.landed) and (M.distance_between(u.x, u.y, dst[1], dst[2]) <= u.moves) then
-            local reach = wesnoth.find_reach(u)
+            local reach = wesnoth.paths.find_reach(u)
 
             for i,r in ipairs(reach) do
                 if landing_site_map:get(r[1], r[2]) and (not unit_map:get(r[1], r[2]))
@@ -131,7 +131,7 @@ function ca_transport:execution()
     local max_rating, best_unit, best_hex = - math.huge
     for i,u in ipairs(transports) do
         local dst = { u.variables.destination_x, u.variables.destination_y }
-        local reach = wesnoth.find_reach(u)
+        local reach = wesnoth.paths.find_reach(u)
 
         local max_rating_unit, best_hex_unit = - math.huge
         for i,r in ipairs(reach) do

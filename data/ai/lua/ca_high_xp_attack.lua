@@ -110,7 +110,7 @@ function ca_attack_highxp:evaluation(cfg, data, filter_own)
                         if reaches:get(unit_in_way.x, unit_in_way.y) then
                             uiw_reach = reaches:get(unit_in_way.x, unit_in_way.y)
                         else
-                            uiw_reach = wesnoth.find_reach(unit_in_way)
+                            uiw_reach = wesnoth.paths.find_reach(unit_in_way)
                             reaches:insert(unit_in_way.x, unit_in_way.y, uiw_reach)
                         end
 
@@ -148,7 +148,7 @@ function ca_attack_highxp:evaluation(cfg, data, filter_own)
                     if reaches:get(attacker.x, attacker.y) then
                         reach = reaches:get(attacker.x, attacker.y)
                     else
-                        reach = wesnoth.find_reach(attacker)
+                        reach = wesnoth.paths.find_reach(attacker)
                         reaches:insert(attacker.x, attacker.y, reach)
                     end
 
@@ -193,7 +193,7 @@ function ca_attack_highxp:evaluation(cfg, data, filter_own)
                         if reaches:get(unit.x, unit.y) then
                             reach = reaches:get(unit.x, unit.y)
                         else
-                            reach = wesnoth.find_reach(unit)
+                            reach = wesnoth.paths.find_reach(unit)
                             reaches:insert(unit.x, unit.y, reach)
                         end
 

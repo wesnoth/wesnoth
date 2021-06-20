@@ -177,7 +177,7 @@ function ca_patrol:execution(cfg)
         then
             AH.checked_stopunit_moves(ai, patrol)
         else  -- Otherwise move toward next WP
-            local x, y = wesnoth.find_vacant_hex(patrol_vars.patrol_x, patrol_vars.patrol_y, patrol)
+            local x, y = wesnoth.paths.find_vacant_hex(patrol_vars.patrol_x, patrol_vars.patrol_y, patrol)
             local nh = AH.next_hop(patrol, x, y)
             if nh and ((nh[1] ~= patrol.x) or (nh[2] ~= patrol.y)) then
                 -- Check whether an attackable enemy comes into attack range at any hex along the way

@@ -75,7 +75,7 @@ function ca_stationed_guardian:execution(cfg)
         if attack_loc then
             AH.robust_move_and_attack(ai, guardian, attack_loc, target)
         else  -- Otherwise move toward that enemy
-            local reach = wesnoth.find_reach(guardian)
+            local reach = wesnoth.paths.find_reach(guardian)
 
             -- Go through all hexes the guardian can reach, find closest to target
             -- Cannot use next_hop here since target hex is occupied by enemy
