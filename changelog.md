@@ -1,9 +1,6 @@
-## Version 1.14.16+dev
- ### Add-ons client
- ### Campaigns
+## Version 1.14.17
  ### Translations
    * Updated translations: British English, Chinese (Traditional), Czech, Dutch, Indonesian, Italian, Japanese, Portuguese (Brazil), Scottish Gaelic, Spanish
- ### User interface
  ### Miscellaneous and Bug Fixes
    * Fixed an intermittent crash on the loading screen (issue #5629)
    * Made GUI.pyw compatible with Python 3.9 (issue #5719).
