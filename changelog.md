@@ -52,6 +52,7 @@
    * Added missing Seahorse graphics
    * Revised Jinn (unit config and graphics)
    * Fire Wraith added
+   * added LordBob's Jinn, Fire Guardian, and Fire Wraith portraits
    * Moved Naga guardian line from UtBS to core, and made some revisions
    * Dune Apothecary experience needed to level up changed from 100 to 65
    * Dune Captain experience needed to level up changed from 86 to 75
