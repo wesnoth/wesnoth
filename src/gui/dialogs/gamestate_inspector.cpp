@@ -643,7 +643,7 @@ void unit_mode_controller::show_unit(tree_view_node& node)
 	config c_unit;
 	u->write(c_unit);
 	model().set_data(config_to_string(c_unit));
-	
+
 	if(node.count_children() > 0) {
 		return;
 	}
@@ -849,7 +849,7 @@ void team_mode_controller::show_vars(tree_view_node& node, int side)
 	if(node.count_children() > 0) {
 		return;
 	}
-	
+
 	const team& t = dc().get_team(side);
 
 	for(const auto& attr : t.variables().attribute_range())
