@@ -79,20 +79,12 @@ function wc_ii_generate_scenario(nplayers, gen_args)
 			wc2_host_version = "0.8.2"
 		},
 		side = {},
-		id = "WC_II_" .. nplayers .. "p",
-		next_scenario = "WC_II_" .. nplayers .. "p",
+		id = gen_args.id,
+		next_scenario = gen_args.id,
 		description = "WC_II_" .. nplayers .. "p_desc",
 		modify_placing = false,
-		-- does this work
 		turns = scenario_data.turns,
-		experience_modifier = 100,
-		victory_when_enemies_defeated = true,
-		carryover_percentage = 0,
-		carryover_report = false,
-		carryover_add = false,
-		force_lock_settings = true,
 	}
-	table.insert(prestart_event, wml.tag.wc2_choose_difficulty {} )
 
 	-- add [side]s to the [scenario]
 	local enemy_data = scenario_data.get_enemy_data(enemy_stength)
