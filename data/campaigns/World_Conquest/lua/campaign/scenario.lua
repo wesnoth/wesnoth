@@ -62,9 +62,24 @@ on_event("prestart", function(cx)
 	wesnoth.fire_event("wc2_start")
 end)
 
--- we need to do this also after difficulöty selection.
+-- we need to do this also after difficulty selection.
 -- NOTE: this is a bit fragile, in particualr it breaks if difficulty_selection happens before the prestart event above.
 on_event("wc2_start", function(cx)
+	for side_num = 1, wml.variables.wc2_player_count do
+		wesnoth.wml_actions.wc2_start_units {
+			side = side_num
+		}
+	end
+
+	if wml.variables.wc2_difficulty.extra_training then
+		for side_num = 1, wml.variables.wc2_player_count do
+			wesnoth.wml_actions.wc2_give_random_training {
+				among="2,3,4,5,6",
+				side = side_num,
+			}
+		end
+	end
+	
 	local gold = (wml.variables.wc2_carryover or 0) + (wml.variables["wc2_difficulty.extra_gold"] or 0)
 	for i = 1, wml.variables.wc2_player_count do
 		wesnoth.sides[i].gold = wesnoth.sides[i].gold + gold
