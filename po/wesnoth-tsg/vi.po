@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-06-20 11:49 UTC\n"
+"POT-Creation-Date: 2021-06-23 15:42 UTC\n"
 "PO-Revision-Date: 2013-09-18 10:57+0700\n"
 "Last-Translator: Pham Thanh Nam <phamthanhnam.ptn@gmail.com>\n"
 "Language-Team: Vietnamese <>\n"
@@ -147,11 +147,11 @@ msgstr "Đội bảo vệ phương nam"
 msgid "Urza Mathin"
 msgstr "Urza Mathin"
 
-#. [side]: type=Bandit, id=Urza Mathin
-#. [side]: type=Rogue, id=Urza Fastik
-#. [side]: type=Outlaw, id=Urza Nalmath
-#. [side]: type=Outlaw, id=Jera Ilras
 #. [side]: type=Outlaw, id=Urza Afalas
+#. [side]: type=Rogue, id=Urza Fastik
+#. [side]: type=Outlaw, id=Jera Ilras
+#. [side]: type=Outlaw, id=Urza Nalmath
+#. [side]: type=Bandit, id=Urza Mathin
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:61
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:65
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:60
@@ -1440,9 +1440,9 @@ msgstr "Talchar"
 msgid "Ithelden"
 msgstr "Ithelden"
 
+#. [unit]: type=Elvish Avenger, id=Eltenmir
 #. [unit]: type=Elvish Outrider, id=Eltenmir
 #. [side]: type=Elvish Outrider, id=Eltenmir
-#. [unit]: type=Elvish Avenger, id=Eltenmir
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:401
 #: data/campaigns/The_South_Guard/scenarios/07a_Return_to_Kerlath.cfg:358
 #: data/campaigns/The_South_Guard/scenarios/08a_Vengeance.cfg:92
@@ -1686,12 +1686,12 @@ msgstr "Thung lũng Nước mắt"
 msgid "Mal A’kai"
 msgstr "Mal A’kai"
 
-#. [side]: type=Dark Adept, type=Dark Sorcerer, type=Dark Sorcerer, id=Mal A'kai
+#. [side]
+#. [side]: type=Lich, id=Mal M'Brin
 #. [side]: type=Ancient Lich, id=Mal M'Brin
 #. [side]: type=Soulless, id=Groth
 #. [side]: type=Lich, id=Mal Tera
-#. [side]
-#. [side]: type=Lich, id=Mal M'Brin
+#. [side]: type=Dark Adept, type=Dark Sorcerer, type=Dark Sorcerer, id=Mal A'kai
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:66
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:90
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:91
@@ -1971,9 +1971,9 @@ msgstr "Ít nhất, ngươi cũng không thể quấy rối bọn ta nữa!"
 msgid "Mebrin! Are you there? We have come to seek your aid!"
 msgstr "Mebrin! Thầy có ở đó không? Bọn em đến tìm thầy nhờ giúp đỡ!"
 
+#. [message]: speaker=Kramak
 #. [message]: speaker=Ethiliel
 #. [message]: speaker=narrator
-#. [message]: speaker=Kramak
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:645
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:656
 #: data/campaigns/The_South_Guard/scenarios/07a_Return_to_Kerlath.cfg:238
@@ -2089,8 +2089,8 @@ msgstr ""
 msgid "Choice in the Fog"
 msgstr "Lựa chọn trong sương mù"
 
-#. [unit]: type=Outlaw, id=Urza Afalas
 #. [side]: type=Outlaw, id=Urza Afalas
+#. [unit]: type=Outlaw, id=Urza Afalas
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:55
 #: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:485
 msgid "Urza Afalas"

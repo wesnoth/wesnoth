@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-06-23 10:18+0300\n"
+"POT-Creation-Date: 2021-06-23 11:42-0400\n"
 "PO-Revision-Date: 2014-06-05 22:47+0700\n"
 "Last-Translator: \n"
 "Language-Team: Vietnamese <kde-i18n-doc@kde.org>\n"
@@ -44,10 +44,10 @@ msgstr "Nhiều người chơi"
 msgid "Multiplayer_AI^Dev AI: Default AI (RCA) with Alternate Recruiting"
 msgstr ""
 
-#. [terrain_type]: id=zfarmer-fence  # AI-animal-proof fences from first scenario
-#. [terrain_type]: id=farmer-fence  # AI-animal-proof fences from first scenario
 #. [terrain_type]: id=fence
 #. [terrain_type]: id=fence_iron
+#. [terrain_type]: id=farmer-fence  # AI-animal-proof fences from first scenario
+#. [terrain_type]: id=zfarmer-fence  # AI-animal-proof fences from first scenario
 #: data/campaigns/Secrets_of_the_Ancients/utils/terrain-compat.cfg:9
 #: data/campaigns/Secrets_of_the_Ancients/utils/terrain.cfg:5
 #: data/core/terrain.cfg:489 data/core/terrain.cfg:499
@@ -1852,8 +1852,8 @@ msgid "Fake Map Border"
 msgstr ""
 
 #. [terrain_type]: id=shroud
-#. [toggle_button]: id=sort_7
 #. [toggle_button]: id=shroud
+#. [toggle_button]: id=sort_7
 #: data/core/terrain.cfg:2950 data/gui/window/editor_edit_side.cfg:179
 #: data/gui/window/game_stats.cfg:384 data/gui/window/mp_create_game.cfg:388
 msgid "Shroud"
@@ -2359,9 +2359,9 @@ msgid ""
 msgstr ""
 
 #. [button]: id=reset_option_values
+#. [button]: id=orb_defaults
 #. [button]: id=btn_reset_hotkeys
 #. [button]: id=revert_to_defaults
-#. [button]: id=orb_defaults
 #: data/gui/macros/custom_options_tree.cfg:250
 #: data/gui/window/mp_alerts_options.cfg:227
 #: data/gui/window/preferences/02_hotkeys.cfg:279
@@ -2379,8 +2379,8 @@ msgstr "Chọn người chơi"
 #. [toggle_button]: id=sort_0
 #. [label]
 #. [toggle_button]: id=sort_name
-#. [label]: id=name
 #. [toggle_button]: id=sort_1
+#. [label]: id=name
 #: data/gui/widget/addon_list.cfg:78 data/gui/window/campaign_dialog.cfg:216
 #: data/gui/window/game_load.cfg:157 data/gui/window/mp_connect.cfg:159
 #: data/gui/window/terrain_layers.cfg:45 data/gui/window/unit_list.cfg:93
@@ -2415,8 +2415,8 @@ msgid "Downloads"
 msgstr "Lượt tải về:"
 
 #. [toggle_button]: id=sort_4
-#. [toggle_button]: id=sort_1
 #. [toggle_button]: id=sort_0
+#. [toggle_button]: id=sort_1
 #: data/gui/widget/addon_list.cfg:151 data/gui/window/unit_create.cfg:147
 #: data/gui/window/unit_list.cfg:79 data/gui/window/unit_recall.cfg:33
 msgid "Type"
@@ -2459,8 +2459,8 @@ msgstr "Gỡ bỏ phần bổ sung"
 msgid "Messages waiting"
 msgstr "Tin nhắn đang chờ"
 
-#. [button]: id=click_dismiss
 #. [button]: id=close_window
+#. [button]: id=click_dismiss
 #. [button]: id=cancel
 #. [button]: id=ok
 #: data/gui/widget/chatbox.cfg:51 data/gui/widget/window_borderless.cfg:83
@@ -2778,8 +2778,8 @@ msgstr ""
 msgid "Choose the add-ons you want to remove."
 msgstr "Chọn phần bổ sung bạn muốn xóa."
 
-#. [button]: id=remove
 #. [button]: id=ok
+#. [button]: id=remove
 #: data/gui/window/addon_uninstall_list.cfg:161
 #: data/gui/window/preferences/05_multiplayer.cfg:289
 msgid "Remove"
@@ -2948,9 +2948,9 @@ msgstr "Chơi một chiến dịch"
 msgid "game^Play"
 msgstr ""
 
-#. [label]: id=title
-#. [slider]: id=enemey_gold_factor
 #. [slider]: id=enemy_gold_factor
+#. [slider]: id=enemey_gold_factor
+#. [label]: id=title
 #: data/gui/window/campaign_difficulty.cfg:53
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:263
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:309
@@ -2980,8 +2980,8 @@ msgstr "Trang:"
 msgid "Last"
 msgstr "Cuối cùng"
 
-#. [button]: id=previous_page
 #. [button]: id=previous_tip
+#. [button]: id=previous_page
 #: data/gui/window/chat_log.cfg:105 data/gui/window/title_screen.cfg:190
 msgid "Previous"
 msgstr "Trước"
@@ -2991,8 +2991,8 @@ msgstr "Trước"
 msgid "Previous page"
 msgstr "Trang trước"
 
-#. [button]: id=next_page
 #. [button]: id=next_tip
+#. [button]: id=next_page
 #: data/gui/window/chat_log.cfg:114 data/gui/window/title_screen.cfg:205
 msgid "Next"
 msgstr "Kế tiếp"
@@ -3022,31 +3022,31 @@ msgstr "Chép URL này vào bảng chọn"
 msgid "Load Core"
 msgstr "Tải trò chơi"
 
-#. [button]: id=copy_
 #. [button]: id=copy
+#. [button]: id=copy_
 #: data/gui/window/custom_tod.cfg:50 data/gui/window/game_cache_options.cfg:110
 #: data/gui/window/game_version.cfg:47
 #: data/gui/window/screenshot_notification.cfg:33
 msgid "filesystem^Copy"
 msgstr "Chép"
 
-#. [button]: id=copy_
 #. [button]: id=copy
+#. [button]: id=copy_
 #: data/gui/window/custom_tod.cfg:51 data/gui/window/game_cache_options.cfg:111
 #: data/gui/window/game_version.cfg:48
 #: data/gui/window/screenshot_notification.cfg:34
 msgid "Copy this path to clipboard"
 msgstr "Chép đường dẫn này vào bảng chọn"
 
-#. [button]: id=browse_
 #. [button]: id=browse
+#. [button]: id=browse_
 #: data/gui/window/custom_tod.cfg:66 data/gui/window/game_cache_options.cfg:126
 #: data/gui/window/game_version.cfg:63
 msgid "filesystem^Browse"
 msgstr "Duyệt"
 
-#. [button]: id=browse_
 #. [button]: id=browse
+#. [button]: id=browse_
 #: data/gui/window/custom_tod.cfg:67 data/gui/window/game_cache_options.cfg:127
 #: data/gui/window/game_version.cfg:64
 msgid "Browse this location using a file manager"
@@ -3397,15 +3397,15 @@ msgstr "Tạo"
 msgid "New Map"
 msgstr "Bản đồ mới"
 
-#. [label]
 #. [grid]
+#. [label]
 #: data/gui/window/editor_new_map.cfg:55
 #: data/gui/window/generator_settings.cfg:107
 msgid "Width:"
 msgstr "Chiều rộng:"
 
-#. [label]
 #. [grid]
+#. [label]
 #: data/gui/window/editor_new_map.cfg:82
 #: data/gui/window/generator_settings.cfg:109
 msgid "Height:"
@@ -3549,8 +3549,8 @@ msgid "Execution trace"
 msgstr "Dấu vết thi hành"
 
 #. [button]: id=cancel
-#. [button]: id=quit_without_surrender
 #. [grid]
+#. [button]: id=quit_without_surrender
 #: data/gui/window/formula_debugger.cfg:234
 #: data/gui/window/surrender_quit.cfg:99 data/gui/window/title_screen.cfg:258
 msgid "Quit"
@@ -4063,8 +4063,8 @@ msgstr "Ấn phím tắt mong muốn (Esc hủy bỏ)"
 msgid "Show or Hide Labels"
 msgstr "Hiện nhãn nổi"
 
-#. [label]
 #. [button]: id=language
+#. [label]
 #: data/gui/window/language_selection.cfg:41
 #: data/gui/window/title_screen.cfg:484
 msgid "Language"
@@ -4164,9 +4164,9 @@ msgid "Announcements"
 msgstr "Tùy chọn nâng cao"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
+#. [grid]
 #. [label]: id=title
 #. [button]: id=show_preferences
-#. [grid]
 #: data/gui/window/lobby_main.cfg:458 data/gui/window/lobby_main.cfg:653
 #: data/gui/window/preferences.cfg:213 data/gui/window/title_screen.cfg:256
 #: src/hotkey/hotkey_command.cpp:118
@@ -4381,8 +4381,8 @@ msgid ""
 "inactive or minimized) displaying desktop notifications."
 msgstr ""
 
-#. [label]
 #. [widget]: id=label
+#. [label]
 #: data/gui/window/mp_alerts_options.cfg:147
 #: data/gui/window/preferences.cfg:347
 msgid "Sound"
@@ -4854,15 +4854,15 @@ msgstr "Người lãnh đạo"
 msgid "Gender:"
 msgstr "Giới tính:"
 
-#. [toggle_button]: id=male_toggle
 #. [row]
+#. [toggle_button]: id=male_toggle
 #: data/gui/window/mp_faction_select.cfg:178
 #: data/gui/window/unit_create.cfg:225
 msgid "Male"
 msgstr "Nam"
 
-#. [toggle_button]: id=female_toggle
 #. [row]
+#. [toggle_button]: id=female_toggle
 #: data/gui/window/mp_faction_select.cfg:180
 #: data/gui/window/unit_create.cfg:236
 msgid "Female"
@@ -4889,8 +4889,8 @@ msgstr "Chọn độ phân giải"
 msgid "Starting position:"
 msgstr "Công cụ Vị trí ban đầu"
 
-#. [label]
 #. [widget]: id=name
+#. [label]
 #: data/gui/window/mp_host_game_prompt.cfg:40
 #: data/gui/window/mp_method_selection.cfg:273
 msgid "Host Networked Game"
@@ -4975,8 +4975,8 @@ msgstr "Lưu mật khẩu vào tùy thích (văn bản không mã hóa)"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#. [widget]: id=label
 #. [grid]
+#. [widget]: id=label
 #: data/gui/window/mp_method_selection.cfg:46
 #: data/gui/window/preferences.cfg:365 data/gui/window/title_screen.cfg:252
 #: src/gui/dialogs/game_load.cpp:406

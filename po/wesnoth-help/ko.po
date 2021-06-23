@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1.1+dev\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-06-23 10:17+0300\n"
+"POT-Creation-Date: 2021-06-23 11:42-0400\n"
 "PO-Revision-Date: 2013-10-25 16:24+0900\n"
 "Last-Translator: mistzone <drier22@gmail.com>\n"
 "Language-Team: none\n"
@@ -302,6 +302,7 @@ msgstr "암습"
 #. [plague]: id=plague, type=Walking Corpse
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:98
 #: data/core/macros/abilities.cfg:430 data/core/macros/abilities.cfg:441
+#: data/scenario-test.cfg:407
 msgid "plague"
 msgstr "역병"
 
@@ -339,8 +340,9 @@ msgid "slows"
 msgstr "둔화"
 
 #. [resistance]: id=steadfast
+#. [resistance]: id=melee_steadfast
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:119
-#: data/core/macros/abilities.cfg:130
+#: data/core/macros/abilities.cfg:130 data/scenario-test.cfg:367
 msgid "steadfast"
 msgstr "철벽"
 
@@ -1066,14 +1068,14 @@ msgid ""
 "to know which WML is part of each scenario."
 msgstr ""
 
-#. [editor_times]: id=deep_underground
 #. [time]: id=deep_underground
+#. [editor_times]: id=deep_underground
 #: data/core/editor/time-of-day.cfg:47 data/core/macros/schedules.cfg:127
 msgid "Deep Underground"
 msgstr "지하 심층"
 
-#. [editor_times]: id=indoors
 #. [time]: id=indoors
+#. [editor_times]: id=indoors
 #: data/core/editor/time-of-day.cfg:53 data/core/macros/schedules.cfg:104
 msgid "Indoors"
 msgstr "건물 내부"
@@ -2965,42 +2967,42 @@ msgstr ""
 "현재의 시간대는 스테이터스 창의 미니맵 밑에 보여집니다. 일반적인 낮/밤 사이클"
 "에서는 아침과 오후는 낮으로, 초경과 삼경은 밤으로 칩니다.\n"
 
+#. [topic]: id=time_of_day
 #. [time]: id=dawn
 #. [time]: id=dawn_hour
-#. [topic]: id=time_of_day
 #: data/core/help.cfg:476 data/core/macros/schedules.cfg:16
 #: data/core/macros/schedules.cfg:290
 msgid "Dawn"
 msgstr "새벽"
 
-#. [time]: id=morning
 #. [topic]: id=time_of_day
+#. [time]: id=morning
 #: data/core/help.cfg:477 data/core/macros/schedules.cfg:28
 msgid "Morning"
 msgstr "아침"
 
-#. [time]: id=afternoon
 #. [topic]: id=time_of_day
+#. [time]: id=afternoon
 #: data/core/help.cfg:478 data/core/macros/schedules.cfg:46
 msgid "Afternoon"
 msgstr "오후"
 
+#. [topic]: id=time_of_day
 #. [time]: id=dusk
 #. [time]: id=dusk_hour
-#. [topic]: id=time_of_day
 #: data/core/help.cfg:479 data/core/macros/schedules.cfg:55
 #: data/core/macros/schedules.cfg:411
 msgid "Dusk"
 msgstr "황혼"
 
-#. [time]: id=first_watch
 #. [topic]: id=time_of_day
+#. [time]: id=first_watch
 #: data/core/help.cfg:480 data/core/macros/schedules.cfg:67
 msgid "First Watch"
 msgstr "초경"
 
-#. [time]: id=second_watch
 #. [topic]: id=time_of_day
+#. [time]: id=second_watch
 #: data/core/help.cfg:481 data/core/macros/schedules.cfg:91
 msgid "Second Watch"
 msgstr "삼경"
@@ -4189,7 +4191,8 @@ msgstr ""
 "합니다."
 
 #. [resistance]: id=steadfast
-#: data/core/macros/abilities.cfg:131
+#. [resistance]: id=melee_steadfast
+#: data/core/macros/abilities.cfg:131 data/scenario-test.cfg:368
 msgid "female^steadfast"
 msgstr "철벽"
 
@@ -4484,7 +4487,7 @@ msgstr ""
 "됩니다. 이 공격은 언데드나 마을에 있는 유닛에는 통하지 않습니다."
 
 #. [plague]: id=plague, type=Walking Corpse
-#: data/core/macros/abilities.cfg:442
+#: data/core/macros/abilities.cfg:442 data/scenario-test.cfg:408
 msgid ""
 "When a unit is killed by a Plague attack, that unit is replaced with a "
 "Walking Corpse on the same side as the unit with the Plague attack. This "

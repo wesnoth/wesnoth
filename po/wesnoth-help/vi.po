@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-06-23 10:17+0300\n"
+"POT-Creation-Date: 2021-06-23 11:42-0400\n"
 "PO-Revision-Date: 2014-06-05 23:38+0700\n"
 "Last-Translator: \n"
 "Language-Team: Vietnamese <kde-i18n-doc@kde.org>\n"
@@ -304,6 +304,7 @@ msgstr "săn đêm"
 #. [plague]: id=plague, type=Walking Corpse
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:98
 #: data/core/macros/abilities.cfg:430 data/core/macros/abilities.cfg:441
+#: data/scenario-test.cfg:407
 msgid "plague"
 msgstr "bệnh dịch"
 
@@ -341,8 +342,9 @@ msgid "slows"
 msgstr "chậm"
 
 #. [resistance]: id=steadfast
+#. [resistance]: id=melee_steadfast
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:119
-#: data/core/macros/abilities.cfg:130
+#: data/core/macros/abilities.cfg:130 data/scenario-test.cfg:367
 msgid "steadfast"
 msgstr "chịu đòn"
 
@@ -1068,14 +1070,14 @@ msgid ""
 "to know which WML is part of each scenario."
 msgstr ""
 
-#. [editor_times]: id=deep_underground
 #. [time]: id=deep_underground
+#. [editor_times]: id=deep_underground
 #: data/core/editor/time-of-day.cfg:47 data/core/macros/schedules.cfg:127
 msgid "Deep Underground"
 msgstr "Sâu dưới lòng đất"
 
-#. [editor_times]: id=indoors
 #. [time]: id=indoors
+#. [editor_times]: id=indoors
 #: data/core/editor/time-of-day.cfg:53 data/core/macros/schedules.cfg:104
 msgid "Indoors"
 msgstr "Trong nhà"
@@ -3345,42 +3347,42 @@ msgstr ""
 "trạng thái. Đối với chu kỳ ngày/đêm thông thường, buổi sáng và buổi chiều "
 "tính là ngày, canh một và canh hai tính là đêm:\n"
 
+#. [topic]: id=time_of_day
 #. [time]: id=dawn
 #. [time]: id=dawn_hour
-#. [topic]: id=time_of_day
 #: data/core/help.cfg:476 data/core/macros/schedules.cfg:16
 #: data/core/macros/schedules.cfg:290
 msgid "Dawn"
 msgstr "Bình minh"
 
-#. [time]: id=morning
 #. [topic]: id=time_of_day
+#. [time]: id=morning
 #: data/core/help.cfg:477 data/core/macros/schedules.cfg:28
 msgid "Morning"
 msgstr "Buổi sáng"
 
-#. [time]: id=afternoon
 #. [topic]: id=time_of_day
+#. [time]: id=afternoon
 #: data/core/help.cfg:478 data/core/macros/schedules.cfg:46
 msgid "Afternoon"
 msgstr "Buổi chiều"
 
+#. [topic]: id=time_of_day
 #. [time]: id=dusk
 #. [time]: id=dusk_hour
-#. [topic]: id=time_of_day
 #: data/core/help.cfg:479 data/core/macros/schedules.cfg:55
 #: data/core/macros/schedules.cfg:411
 msgid "Dusk"
 msgstr "Chạng vạng"
 
-#. [time]: id=first_watch
 #. [topic]: id=time_of_day
+#. [time]: id=first_watch
 #: data/core/help.cfg:480 data/core/macros/schedules.cfg:67
 msgid "First Watch"
 msgstr "Canh một"
 
-#. [time]: id=second_watch
 #. [topic]: id=time_of_day
+#. [time]: id=second_watch
 #: data/core/help.cfg:481 data/core/macros/schedules.cfg:91
 msgid "Second Watch"
 msgstr "Canh hai"
@@ -4770,7 +4772,8 @@ msgstr ""
 "làng."
 
 #. [resistance]: id=steadfast
-#: data/core/macros/abilities.cfg:131
+#. [resistance]: id=melee_steadfast
+#: data/core/macros/abilities.cfg:131 data/scenario-test.cfg:368
 msgid "female^steadfast"
 msgstr "chịu đòn"
 
@@ -5078,7 +5081,7 @@ msgstr ""
 "dịch. Đòn này không có tác dụng với ma quái hoặc các đơn vị ở trong làng."
 
 #. [plague]: id=plague, type=Walking Corpse
-#: data/core/macros/abilities.cfg:442
+#: data/core/macros/abilities.cfg:442 data/scenario-test.cfg:408
 msgid ""
 "When a unit is killed by a Plague attack, that unit is replaced with a "
 "Walking Corpse on the same side as the unit with the Plague attack. This "

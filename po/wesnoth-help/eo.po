@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-06-23 10:17+0300\n"
+"POT-Creation-Date: 2021-06-23 11:42-0400\n"
 "PO-Revision-Date: 2008-03-01 19:31+0200\n"
 "Last-Translator: Aleksej Korgenkov <grimpanto@mail.ru>\n"
 "Language-Team: \n"
@@ -303,6 +303,7 @@ msgstr "nokta embusko"
 #. [plague]: id=plague, type=Walking Corpse
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:98
 #: data/core/macros/abilities.cfg:430 data/core/macros/abilities.cfg:441
+#: data/scenario-test.cfg:407
 msgid "plague"
 msgstr "kontaĝo"
 
@@ -340,8 +341,9 @@ msgid "slows"
 msgstr "malrapidigo"
 
 #. [resistance]: id=steadfast
+#. [resistance]: id=melee_steadfast
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:119
-#: data/core/macros/abilities.cfg:130
+#: data/core/macros/abilities.cfg:130 data/scenario-test.cfg:367
 msgid "steadfast"
 msgstr "obstina"
 
@@ -1067,14 +1069,14 @@ msgid ""
 "to know which WML is part of each scenario."
 msgstr ""
 
-#. [editor_times]: id=deep_underground
 #. [time]: id=deep_underground
+#. [editor_times]: id=deep_underground
 #: data/core/editor/time-of-day.cfg:47 data/core/macros/schedules.cfg:127
 msgid "Deep Underground"
 msgstr "Profunda subterejo"
 
-#. [editor_times]: id=indoors
 #. [time]: id=indoors
+#. [editor_times]: id=indoors
 #: data/core/editor/time-of-day.cfg:53 data/core/macros/schedules.cfg:104
 msgid "Indoors"
 msgstr ""
@@ -2902,42 +2904,42 @@ msgstr ""
 "tago/nokto, mateno kaj posttagmezo kalkuliĝas kiel tago; la unua kaj la dua "
 "patrolo kiel nokto: \n"
 
+#. [topic]: id=time_of_day
 #. [time]: id=dawn
 #. [time]: id=dawn_hour
-#. [topic]: id=time_of_day
 #: data/core/help.cfg:476 data/core/macros/schedules.cfg:16
 #: data/core/macros/schedules.cfg:290
 msgid "Dawn"
 msgstr "Tagiĝo"
 
-#. [time]: id=morning
 #. [topic]: id=time_of_day
+#. [time]: id=morning
 #: data/core/help.cfg:477 data/core/macros/schedules.cfg:28
 msgid "Morning"
 msgstr "Mateno"
 
-#. [time]: id=afternoon
 #. [topic]: id=time_of_day
+#. [time]: id=afternoon
 #: data/core/help.cfg:478 data/core/macros/schedules.cfg:46
 msgid "Afternoon"
 msgstr "Posttagmezo"
 
+#. [topic]: id=time_of_day
 #. [time]: id=dusk
 #. [time]: id=dusk_hour
-#. [topic]: id=time_of_day
 #: data/core/help.cfg:479 data/core/macros/schedules.cfg:55
 #: data/core/macros/schedules.cfg:411
 msgid "Dusk"
 msgstr "Krepusko"
 
-#. [time]: id=first_watch
 #. [topic]: id=time_of_day
+#. [time]: id=first_watch
 #: data/core/help.cfg:480 data/core/macros/schedules.cfg:67
 msgid "First Watch"
 msgstr "La unua patrolo"
 
-#. [time]: id=second_watch
 #. [topic]: id=time_of_day
+#. [time]: id=second_watch
 #: data/core/help.cfg:481 data/core/macros/schedules.cfg:91
 msgid "Second Watch"
 msgstr "La dua patrolo"
@@ -4075,7 +4077,8 @@ msgid ""
 msgstr ""
 
 #. [resistance]: id=steadfast
-#: data/core/macros/abilities.cfg:131
+#. [resistance]: id=melee_steadfast
+#: data/core/macros/abilities.cfg:131 data/scenario-test.cfg:368
 #, fuzzy
 msgid "female^steadfast"
 msgstr "obstina"
@@ -4401,7 +4404,7 @@ msgstr ""
 "nemortintoj kaj unuoj en vilaĝo."
 
 #. [plague]: id=plague, type=Walking Corpse
-#: data/core/macros/abilities.cfg:442
+#: data/core/macros/abilities.cfg:442 data/scenario-test.cfg:408
 #, fuzzy
 #| msgid ""
 #| "Plague:\n"

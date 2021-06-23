@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.9.10+dev\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-06-23 10:17+0300\n"
+"POT-Creation-Date: 2021-06-23 11:42-0400\n"
 "PO-Revision-Date: 2015-08-08 15:21+0300\n"
 "Last-Translator: Gvido Bruveris <huhims@gmail.com>\n"
 "Language-Team: none\n"
@@ -306,6 +306,7 @@ msgstr "nakts ložņa"
 #. [plague]: id=plague, type=Walking Corpse
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:98
 #: data/core/macros/abilities.cfg:430 data/core/macros/abilities.cfg:441
+#: data/scenario-test.cfg:407
 msgid "plague"
 msgstr "mēris"
 
@@ -343,8 +344,9 @@ msgid "slows"
 msgstr "sapīšana"
 
 #. [resistance]: id=steadfast
+#. [resistance]: id=melee_steadfast
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:119
-#: data/core/macros/abilities.cfg:130
+#: data/core/macros/abilities.cfg:130 data/scenario-test.cfg:367
 msgid "steadfast"
 msgstr "izturīgs"
 
@@ -1070,14 +1072,14 @@ msgid ""
 "to know which WML is part of each scenario."
 msgstr ""
 
-#. [editor_times]: id=deep_underground
 #. [time]: id=deep_underground
+#. [editor_times]: id=deep_underground
 #: data/core/editor/time-of-day.cfg:47 data/core/macros/schedules.cfg:127
 msgid "Deep Underground"
 msgstr "Dziļi pazemē"
 
-#. [editor_times]: id=indoors
 #. [time]: id=indoors
+#. [editor_times]: id=indoors
 #: data/core/editor/time-of-day.cfg:53 data/core/macros/schedules.cfg:104
 msgid "Indoors"
 msgstr "Iekštelpās"
@@ -3317,42 +3319,42 @@ msgstr ""
 "rīts un pēcpusdiena skaitās kā diena, bet pirmā un otrā sardze skaitās kā "
 "nakts:\n"
 
+#. [topic]: id=time_of_day
 #. [time]: id=dawn
 #. [time]: id=dawn_hour
-#. [topic]: id=time_of_day
 #: data/core/help.cfg:476 data/core/macros/schedules.cfg:16
 #: data/core/macros/schedules.cfg:290
 msgid "Dawn"
 msgstr "Saullēkts"
 
-#. [time]: id=morning
 #. [topic]: id=time_of_day
+#. [time]: id=morning
 #: data/core/help.cfg:477 data/core/macros/schedules.cfg:28
 msgid "Morning"
 msgstr "Rīts"
 
-#. [time]: id=afternoon
 #. [topic]: id=time_of_day
+#. [time]: id=afternoon
 #: data/core/help.cfg:478 data/core/macros/schedules.cfg:46
 msgid "Afternoon"
 msgstr "Pēcpusdiena"
 
+#. [topic]: id=time_of_day
 #. [time]: id=dusk
 #. [time]: id=dusk_hour
-#. [topic]: id=time_of_day
 #: data/core/help.cfg:479 data/core/macros/schedules.cfg:55
 #: data/core/macros/schedules.cfg:411
 msgid "Dusk"
 msgstr "Saulriets"
 
-#. [time]: id=first_watch
 #. [topic]: id=time_of_day
+#. [time]: id=first_watch
 #: data/core/help.cfg:480 data/core/macros/schedules.cfg:67
 msgid "First Watch"
 msgstr "Pirmā sardze"
 
-#. [time]: id=second_watch
 #. [topic]: id=time_of_day
+#. [time]: id=second_watch
 #: data/core/help.cfg:481 data/core/macros/schedules.cfg:91
 msgid "Second Watch"
 msgstr "Otrā sardze"
@@ -4713,7 +4715,8 @@ msgid ""
 msgstr " Šī vienība katrā gājienā reģenerējas."
 
 #. [resistance]: id=steadfast
-#: data/core/macros/abilities.cfg:131
+#. [resistance]: id=melee_steadfast
+#: data/core/macros/abilities.cfg:131 data/scenario-test.cfg:368
 msgid "female^steadfast"
 msgstr "izturīga"
 
@@ -5018,7 +5021,7 @@ msgstr ""
 "uzbrucēja pusē. Tas nestrādā uz nedzīvajiem un vienībām ciemos."
 
 #. [plague]: id=plague, type=Walking Corpse
-#: data/core/macros/abilities.cfg:442
+#: data/core/macros/abilities.cfg:442 data/scenario-test.cfg:408
 msgid ""
 "When a unit is killed by a Plague attack, that unit is replaced with a "
 "Walking Corpse on the same side as the unit with the Plague attack. This "

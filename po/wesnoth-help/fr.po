@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth_Help-1.12\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-06-23 10:17+0300\n"
+"POT-Creation-Date: 2021-06-23 11:42-0400\n"
 "PO-Revision-Date: 2021-01-22 14:47+0100\n"
 "Last-Translator: Syll <syll-dev@laposte.net>\n"
 "Language-Team: français <wesnoth@ml.free.fr>\n"
@@ -315,6 +315,7 @@ msgstr "chasseur nocturne"
 #. [plague]: id=plague, type=Walking Corpse
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:98
 #: data/core/macros/abilities.cfg:430 data/core/macros/abilities.cfg:441
+#: data/scenario-test.cfg:407
 msgid "plague"
 msgstr "peste"
 
@@ -352,8 +353,9 @@ msgid "slows"
 msgstr "ralentissement"
 
 #. [resistance]: id=steadfast
+#. [resistance]: id=melee_steadfast
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:119
-#: data/core/macros/abilities.cfg:130
+#: data/core/macros/abilities.cfg:130 data/scenario-test.cfg:367
 msgid "steadfast"
 msgstr "inébranlable"
 
@@ -1526,14 +1528,14 @@ msgstr ""
 "scenario] (ou [multiplayer]...[/multiplayer]) pour savoir quel WML fait "
 "partie de chaque scénario."
 
-#. [editor_times]: id=deep_underground
 #. [time]: id=deep_underground
+#. [editor_times]: id=deep_underground
 #: data/core/editor/time-of-day.cfg:47 data/core/macros/schedules.cfg:127
 msgid "Deep Underground"
 msgstr "Abysses souterrains"
 
-#. [editor_times]: id=indoors
 #. [time]: id=indoors
+#. [editor_times]: id=indoors
 #: data/core/editor/time-of-day.cfg:53 data/core/macros/schedules.cfg:104
 msgid "Indoors"
 msgstr "Intérieur"
@@ -3850,42 +3852,42 @@ msgstr ""
 "jour, le premier et le deuxième quart correspondent à la nuit :\n"
 "\n"
 
+#. [topic]: id=time_of_day
 #. [time]: id=dawn
 #. [time]: id=dawn_hour
-#. [topic]: id=time_of_day
 #: data/core/help.cfg:476 data/core/macros/schedules.cfg:16
 #: data/core/macros/schedules.cfg:290
 msgid "Dawn"
 msgstr "Aube"
 
-#. [time]: id=morning
 #. [topic]: id=time_of_day
+#. [time]: id=morning
 #: data/core/help.cfg:477 data/core/macros/schedules.cfg:28
 msgid "Morning"
 msgstr "Matinée"
 
-#. [time]: id=afternoon
 #. [topic]: id=time_of_day
+#. [time]: id=afternoon
 #: data/core/help.cfg:478 data/core/macros/schedules.cfg:46
 msgid "Afternoon"
 msgstr "Après-midi"
 
+#. [topic]: id=time_of_day
 #. [time]: id=dusk
 #. [time]: id=dusk_hour
-#. [topic]: id=time_of_day
 #: data/core/help.cfg:479 data/core/macros/schedules.cfg:55
 #: data/core/macros/schedules.cfg:411
 msgid "Dusk"
 msgstr "Crépuscule"
 
-#. [time]: id=first_watch
 #. [topic]: id=time_of_day
+#. [time]: id=first_watch
 #: data/core/help.cfg:480 data/core/macros/schedules.cfg:67
 msgid "First Watch"
 msgstr "Premier quart"
 
-#. [time]: id=second_watch
 #. [topic]: id=time_of_day
+#. [time]: id=second_watch
 #: data/core/help.cfg:481 data/core/macros/schedules.cfg:91
 msgid "Second Watch"
 msgstr "Deuxième quart"
@@ -5279,7 +5281,8 @@ msgstr ""
 "comme si elle était toujours stationnée dans un village."
 
 #. [resistance]: id=steadfast
-#: data/core/macros/abilities.cfg:131
+#. [resistance]: id=melee_steadfast
+#: data/core/macros/abilities.cfg:131 data/scenario-test.cfg:368
 msgid "female^steadfast"
 msgstr "inébranlable"
 
@@ -5561,7 +5564,7 @@ msgstr ""
 "vivants ou sur les unités stationnées dans les villages."
 
 #. [plague]: id=plague, type=Walking Corpse
-#: data/core/macros/abilities.cfg:442
+#: data/core/macros/abilities.cfg:442 data/scenario-test.cfg:408
 msgid ""
 "When a unit is killed by a Plague attack, that unit is replaced with a "
 "Walking Corpse on the same side as the unit with the Plague attack. This "

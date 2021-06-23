@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.15\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-06-20 11:49 UTC\n"
+"POT-Creation-Date: 2021-06-23 15:42 UTC\n"
 "PO-Revision-Date: 2021-04-06 08:35+0800\n"
 "Last-Translator: 李信融 <magiclen0810@gmail.com>\n"
 "Language-Team: Wesnoth Traditional Chinese Team\n"
@@ -1079,15 +1079,17 @@ msgstr "反抗者"
 msgid "teamname^Human"
 msgstr "人類"
 
-#. [objective]: condition=lose
 #. [then]
+#. [objective]: condition=lose
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:114
+#: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:135
 #: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:274
 msgid "Death of your leader"
 msgstr "你的首領死亡"
 
 #. [then]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:115
+#: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:136
 msgid ""
 "Since your team has only one leader, the enemy waves will not be at full "
 "strength."
@@ -1095,17 +1097,20 @@ msgstr "因為你的隊伍裡只有一位首領，敵人的攻勢將不會全開
 
 #. [else]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:118
+#: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:143
 msgid "Death of both of your team’s leaders"
 msgstr "你們的兩位首領皆死亡"
 
 #. [else]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:119
+#: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:144
 msgid ""
 "Since your team has two leaders, the enemy waves will be at full strength."
 msgstr "由於你的隊伍裡有兩位首領，敵人的攻勢將會火力全開。"
 
 #. [objective]: condition=win
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:146
+#: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:171
 msgid "Survive and defeat all enemy waves"
 msgstr "撐過敵軍所有的攻勢且存活下來"
 
@@ -1206,8 +1211,8 @@ msgstr ""
 "吸走了你的意志，你意識到自己在這片土地上的時間已經結束了。"
 
 # 原文描述不太清楚，所以在翻譯做了些補充。
-#. [slider]: id=enemey_gold_factor
 #. [slider]: id=enemy_gold_factor
+#. [slider]: id=enemey_gold_factor
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:265
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:311
 msgid "Changes the gold worth of the enemy spawns by a certain percentage"
@@ -1471,6 +1476,158 @@ msgid ""
 "Little remains of this once wealthy mining colony, now a haven for raiders "
 "and thieves."
 msgstr "幾乎已經看不出來這裡曾經是繁華的採礦聚落，現在則是搶劫者和盜賊的天堂。"
+
+#: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:4
+#, fuzzy
+#| msgid ""
+#| "Your aim is to survive the spawning waves of units and defeat the final "
+#| "archenemies.\n"
+#| "\n"
+#| "The spawning waves are randomly generated and will be different each time "
+#| "Dark Forecast is played.\n"
+#| "\n"
+#| "They appear along the north, south, and west map edges — though they are "
+#| "most likely to spawn on the west edge. The waves appear at somewhat "
+#| "regular intervals.\n"
+#| "\n"
+#| "The weather will also change randomly, affecting the layout of the map.\n"
+#| "\n"
+#| "\n"
+#| "<b>Dark Forecast was made by:</b>\n"
+#| "\n"
+#| "<span color='green'>jb:</span>\n"
+#| "• Map design, spawn groups, and scenario concept\n"
+#| "\n"
+#| "<span color='green'>Rhuvaen:</span>\n"
+#| "• WML implementation"
+msgid ""
+"Your aim is to survive spawning waves of units and defeat the final "
+"archenemies. Spawns are randomly generated and will be different each time "
+"Isle of Mists is played. The waves appear at somewhat regular intervals. The "
+"weather will also change randomly, affecting the layout of the map."
+msgstr ""
+"你的目標是在如潮水般湧來的敵人攻勢中存活下來，並且擊敗最後的主力。\n"
+"\n"
+"敵人的攻勢是隨機產生的，每次玩黑暗預測時都將會不一樣。\n"
+"\n"
+"他們會出現在地圖北方、南方、西方的邊緣，最可能出現的地方是西方的邊緣。兩波攻"
+"擊之間有一定間隔。\n"
+"\n"
+"天氣也會隨機變換，影響地圖上的地形。\n"
+"\n"
+"\n"
+"<b>黑暗預測的作者：</b>\n"
+"\n"
+"<span color='green'>jb：</span>\n"
+"• 地圖設計、產生攻勢和章節概念\n"
+"\n"
+"<span color='green'>Rhuvaen：</span>\n"
+"• WML實作"
+
+#. [multiplayer]: id=multiplayer_2p_Isle_of_Mists
+#: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:9
+#, fuzzy
+#| msgid "2p — Dark Forecast (Survival)"
+msgid "2p — Isle of Mists (Survival)"
+msgstr "2p — 黑暗預測（生存）"
+
+#. [multiplayer]: id=multiplayer_2p_Isle_of_Mists
+#: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:10
+#, fuzzy
+#| msgid ""
+#| "Dark Forecast is a survival scenario for solitaire or two-player team-"
+#| "based play against randomly-spawned AI units. Victory is achieved by "
+#| "surviving and defeating all enemy waves. During the course of play, the "
+#| "terrain will change based on random weather effects.\n"
+#| "\n"
+#| "Note: You need to use the default map settings for the scenario to work "
+#| "right."
+msgid ""
+"Isle of Mists is a survival scenario which can be played alone or with "
+"another player against randomly spawned AI units, catered for experienced "
+"players. Victory is achieved by surviving and defeating all enemy waves. "
+"During the course of play, the terrain will change based on random weather "
+"effects. Default map settings are required for the scenario to work "
+"properly. By Lord-Knightmare."
+msgstr ""
+"黑暗預測是一個生存章節，供單人進行或雙人組隊以對抗隨機產生並由AI控制的單位。"
+"獲勝的方法是挺過敵人的所有攻勢。在遊戲過程中，地形會隨著隨機天氣的影響而變"
+"化。\n"
+"\n"
+"備註：你需要使用預設的地圖設定，來讓這個章節能夠正確運作。"
+
+#. [side]
+#: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:25
+#: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:38
+#, fuzzy
+#| msgid "teamname^Monsters"
+msgid "teamname^Invaders"
+msgstr "怪物"
+
+#. [side]
+#: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:56
+#: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:83
+#: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:107
+#, fuzzy
+#| msgid "teamname^Center"
+msgid "teamname^Defenders"
+msgstr "中央"
+
+#. [label]
+#: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:189
+msgid "Healing Keep"
+msgstr ""
+
+#. [message]: speaker=narrator
+#: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:213
+#, fuzzy
+#| msgid "Dark Forecast — a random survival scenario"
+msgid "Isle of Mists — a random survival scenario"
+msgstr "黑暗預測──一個隨機的生存章節"
+
+#. [message]
+#: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:220
+msgid ""
+"You arrive near a mystic shrine, where the apparitions of ancient armies are "
+"forever trapped and doomed to eternally cleanse the isle of all interlopers."
+msgstr ""
+
+#. [message]
+#: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:224
+msgid ""
+"Phantom armies approach on the horizon. If we defeat them all, they may be "
+"released from this timeless prison."
+msgstr ""
+
+#. [message]
+#: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:228
+msgid "Let us prepare ourselves for the coming battle."
+msgstr ""
+
+#. [message]: speaker=unit
+#: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:247
+#, fuzzy
+#| msgid ""
+#| "Ugh! How can this be? Defeated by mere barbarians! My gods have forsaken "
+#| "me..."
+msgid "How can this be? My gods have forsaken me..."
+msgstr "呃啊！怎麼會這樣？敗給微不足道的野蠻人！我的神已拋棄了我……"
+
+#. [message]: speaker=second_unit
+#: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:261
+msgid ""
+"As the cold grasp of death draws nearer, you feel your spirit being "
+"separated from your body. You realize that you will soon be doomed to the "
+"same fate as the phantom guardians of the shrine."
+msgstr ""
+
+#. [message]
+#: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:283
+msgid ""
+"A dark mist rises from the land, draining your senses and your will away. "
+"You dimly realize that you will soon join the other ghosts as another "
+"faceless guardian of the ancient shrine."
+msgstr ""
 
 #. [lua]: final_spawn
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.lua:313
@@ -1859,19 +2016,19 @@ msgid "3p — Alirok Marsh"
 msgstr "3p — 阿里洛克溼地"
 
 # 因為是中文，所以開頭不需要空格。
-#. [multiplayer]: id=multiplayer_Alirok_Marsh
 #. [multiplayer]: id=multiplayer_Island_of_the_Horatii
-#. [multiplayer]: id=multiplayer_3p_Morituri
-#. [multiplayer]: id=multiplayer_Blue_Water_Province
-#. [multiplayer]: id=multiplayer_Castle_Hopping_Isle
-#. [multiplayer]: id=multiplayer_Clash
-#. [multiplayer]: id=multiplayer_4p_Hamlets
 #. [multiplayer]: id=multiplayer_Loris_River
-#. [multiplayer]: id=multiplayer_4p_Morituri
-#. [multiplayer]: id=multiplayer_Ruins_of_Terra-Dwelve
+#. [multiplayer]: id=multiplayer_3p_Morituri
 #. [multiplayer]: id=multiplayer_4p_Underworld
-#. [multiplayer]: id=multiplayer_8p_Mokena_Prairie
+#. [multiplayer]: id=multiplayer_4p_Morituri
+#. [multiplayer]: id=multiplayer_Alirok_Marsh
+#. [multiplayer]: id=multiplayer_Ruins_of_Terra-Dwelve
+#. [multiplayer]: id=multiplayer_Blue_Water_Province
 #. [multiplayer]: id=multiplayer_8p_Morituri
+#. [multiplayer]: id=multiplayer_8p_Mokena_Prairie
+#. [multiplayer]: id=multiplayer_Clash
+#. [multiplayer]: id=multiplayer_Castle_Hopping_Isle
+#. [multiplayer]: id=multiplayer_4p_Hamlets
 #: data/multiplayer/scenarios/3p_Alirok_Marsh.cfg:6
 #: data/multiplayer/scenarios/3p_Island_of_the_Horatii.cfg:6
 #: data/multiplayer/scenarios/3p_Morituri.cfg:6
