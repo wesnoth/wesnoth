@@ -790,7 +790,7 @@ static int intf_parse_shroud_bitmap(lua_State* L)
 	std::set<map_location> locs;
 	for(int x = 1; x <= temp.width(); x++) {
 		for(int y = 1; y <= temp.height(); y++) {
-			if(temp.value(x, y)) {
+			if(!temp.value(x, y)) {
 				locs.emplace(x, y, wml_loc());
 			}
 		}

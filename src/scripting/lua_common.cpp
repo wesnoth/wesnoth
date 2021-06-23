@@ -754,7 +754,7 @@ std::set<map_location> luaW_check_locationset(lua_State* L, int idx)
 	}
 	lua_len(L, idx);
 	int len = luaL_checkinteger(L, -1);
-	for(int i = 1; i < len; i++) {
+	for(int i = 1; i <= len; i++) {
 		lua_geti(L, idx, i);
 		locs.insert(luaW_checklocation(L, -1));
 		lua_pop(L, 1);
