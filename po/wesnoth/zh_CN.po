@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.14\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-06-20 14:49+0300\n"
+"POT-Creation-Date: 2021-06-23 10:08+0300\n"
 "PO-Revision-Date: 2020-08-10 20:09+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
@@ -4244,14 +4244,12 @@ msgid "Install Dependencies"
 msgstr "安装依赖项目"
 
 #. [button]: id=ok
-#. [option]
-#: data/gui/window/install_dependencies.cfg:84 data/scenario-test.cfg:2145
+#: data/gui/window/install_dependencies.cfg:84
 msgid "Yes"
 msgstr "是"
 
 #. [button]: id=cancel
-#. [option]
-#: data/gui/window/install_dependencies.cfg:95 data/scenario-test.cfg:2148
+#: data/gui/window/install_dependencies.cfg:95
 msgid "No"
 msgstr "否"
 
@@ -4442,1331 +4440,6 @@ msgstr "取消"
 #| msgid "No advancement"
 msgid "No planned advancement"
 msgstr "不能升级"
-
-#. [drains]: id=life_vortex
-#: data/scenario-test.cfg:126 data/scenario-test.cfg:519
-msgid "Life Vortex"
-msgstr ""
-
-#. [drains]: id=life_vortex
-#: data/scenario-test.cfg:127 data/scenario-test.cfg:520
-msgid ""
-"Each successful strike in a battle involving this attack causes the attacker "
-"to gain the health that his attack removed from the target.  This has no "
-"effect against nonliving targets."
-msgstr ""
-
-#. [heal_on_hit]: id=entropy
-#: data/scenario-test.cfg:134 data/scenario-test.cfg:527
-msgid "Entropy"
-msgstr ""
-
-#. [heal_on_hit]: id=entropy
-#: data/scenario-test.cfg:135 data/scenario-test.cfg:528
-msgid ""
-"Each successful strike in a battle involving this attack causes the attacker "
-"to lose 4 HP.  This has no effect against nonliving targets."
-msgstr ""
-
-#. [drains]: id=empathic_weapon
-#: data/scenario-test.cfg:160 data/scenario-test.cfg:553
-msgid "Empathic Weapon"
-msgstr ""
-
-#. [drains]: id=empathic_weapon
-#: data/scenario-test.cfg:161 data/scenario-test.cfg:554
-msgid ""
-"All damage dealt by this attack to a living target is dealt to the user as "
-"well"
-msgstr ""
-
-#. [heal_on_hit]: id=rejuvenating_weapon
-#: data/scenario-test.cfg:166 data/scenario-test.cfg:559
-msgid "Rejuvenating Weapon (10)"
-msgstr ""
-
-#. [heal_on_hit]: id=rejuvenating_weapon
-#: data/scenario-test.cfg:167 data/scenario-test.cfg:560
-msgid "Each successful strike with this weapon heals the user for 10 HP"
-msgstr ""
-
-#. [drains]: id=drains20
-#: data/scenario-test.cfg:187 data/scenario-test.cfg:580
-msgid "drains 20%"
-msgstr ""
-
-#. [drains]: id=drains20
-#: data/scenario-test.cfg:188 data/scenario-test.cfg:581
-msgid ""
-"This unit drains health from living units, healing itself for 20% of the "
-"amount of damage it deals (rounded down)."
-msgstr ""
-
-#. [heal_on_hit]: id=drains
-#: data/scenario-test.cfg:193 data/scenario-test.cfg:586
-msgid "sacrifice 5"
-msgstr ""
-
-#. [heal_on_hit]: id=drains
-#: data/scenario-test.cfg:194 data/scenario-test.cfg:587
-msgid "Each successful attack costs this unit 5 HP."
-msgstr ""
-
-#. [effect]: type=impact
-#: data/scenario-test.cfg:205 data/scenario-test.cfg:598
-msgid "life bomb"
-msgstr ""
-
-#. [heal_on_hit]: id=drains
-#: data/scenario-test.cfg:210 data/scenario-test.cfg:603
-msgid "life copy 20"
-msgstr ""
-
-#. [heal_on_hit]: id=drains
-#: data/scenario-test.cfg:211 data/scenario-test.cfg:604
-msgid "When this attack hits a living unit, the user is healed for 20 HP."
-msgstr ""
-
-#. [trait]: id=feral
-#: data/scenario-test.cfg:258
-msgid "feral"
-msgstr ""
-
-#. [trait]: id=feral
-#: data/scenario-test.cfg:259
-#, fuzzy
-#| msgid "female^neutral"
-msgid "female^feral"
-msgstr "中立"
-
-#. [trait]: id=feral
-#: data/scenario-test.cfg:260
-msgid "Receive at most 40% defense in villages"
-msgstr ""
-
-#. [trait]: id=overpowered
-#: data/scenario-test.cfg:271
-msgid "overpowered"
-msgstr ""
-
-#. [unit]: type=Peasant_unhealable
-#: data/scenario-test.cfg:295
-#, fuzzy
-#| msgid "unhealable"
-msgid "Unhealable"
-msgstr "不可治疗"
-
-#. [leadership]: id=magical_leadership
-#: data/scenario-test.cfg:339
-#, fuzzy
-#| msgid "Leadership: "
-msgid "magical leadership"
-msgstr "领导："
-
-#. [leadership]: id=magical_leadership
-#: data/scenario-test.cfg:340
-msgid "female^magical leadership"
-msgstr ""
-
-#. [leadership]: id=magical_leadership
-#: data/scenario-test.cfg:341
-msgid ""
-"This unit can lead your own units that are next to it, making them fight "
-"better with magicals weapons.\n"
-"Adjacent own units of lower level will do more damage in battle. When a unit "
-"adjacent to, of a lower level than, and on the same side as a unit with "
-"Leadership engages in combat, its attacks do 25% more damage times the "
-"difference in their levels."
-msgstr ""
-
-#. [resistance]: id=melee_steadfast
-#. This is not vanilla steadfast
-#: data/scenario-test.cfg:371
-msgid ""
-"This unit’s resistances are added to 20%, up to a maximum of 50%, when "
-"defending to melle attacks. Vulnerabilities are not affected."
-msgstr ""
-
-#. [illuminates]: id=illumination
-#: data/scenario-test.cfg:399
-msgid "darkens"
-msgstr ""
-
-#. [illuminates]: id=illumination
-#: data/scenario-test.cfg:400
-#, fuzzy
-#| msgid "female^cured"
-msgid "female^darkens"
-msgstr "已解毒"
-
-#. [illuminates]: id=illumination
-#: data/scenario-test.cfg:401
-msgid "darkens and stuff"
-msgstr ""
-
-#. [heal_on_hit]: id=sacrifice
-#: data/scenario-test.cfg:431
-msgid "Sacrifice"
-msgstr ""
-
-#. [heal_on_hit]: id=sacrifice
-#: data/scenario-test.cfg:432 data/scenario-test.cfg:446
-#, fuzzy
-#| msgid "This unit has been petrified. It may not move or attack."
-msgid "This unit sacrifices its own life in order to make more attacks."
-msgstr "此单位石化了，它不能移动或者攻击。"
-
-#. [heal_on_hit]: id=sacrifice
-#: data/scenario-test.cfg:445
-msgid "Greater Sacrifice"
-msgstr ""
-
-#. [chance_to_hit]: id=marksman_leadership
-#: data/scenario-test.cfg:485
-msgid "cantor"
-msgstr ""
-
-#. [chance_to_hit]: id=marksman_leadership
-#: data/scenario-test.cfg:486
-#, fuzzy
-#| msgid "female^chaotic"
-msgid "female^cantor"
-msgstr "混沌"
-
-#. [chance_to_hit]: id=marksman_leadership
-#: data/scenario-test.cfg:487
-msgid "This unit grants marksman to all ranged attacks of all adjacent allies."
-msgstr ""
-
-#. [label]
-#: data/scenario-test.cfg:624
-#, fuzzy
-#| msgid "Jamming:"
-msgid "Jamming Orc"
-msgstr "干扰："
-
-#. [label]
-#: data/scenario-test.cfg:625
-msgid ""
-"This unit’s ability reduces vision, that’s why 13,13 is shrouded at the "
-"start."
-msgstr ""
-
-#. [label]
-#: data/scenario-test.cfg:631
-msgid "Enhance Vision"
-msgstr ""
-
-#. [label]
-#: data/scenario-test.cfg:632
-msgid "Set the unit's vision to 15."
-msgstr ""
-
-#. [message]: speaker=unit
-#: data/scenario-test.cfg:642
-msgid "Now my Vision value is 15 and I can see 16 hex fields wide."
-msgstr ""
-
-#. [message]: speaker=unit
-#: data/scenario-test.cfg:661
-msgid "I used a chance_to_hit attack special."
-msgstr ""
-
-#. [message]: speaker=unit
-#: data/scenario-test.cfg:674 data/scenario-test.cfg:687
-msgid "I used a magical attack."
-msgstr ""
-
-#. [message]: speaker=unit
-#: data/scenario-test.cfg:700 data/scenario-test.cfg:726
-msgid "BUG: This message should never be displayed!"
-msgstr ""
-
-#. [message]: speaker=unit
-#: data/scenario-test.cfg:713
-msgid "I used a chance_to_hit type weapon special."
-msgstr ""
-
-#. [label]
-#: data/scenario-test.cfg:732
-msgid "Hero or not?"
-msgstr ""
-
-#. [label]
-#: data/scenario-test.cfg:733
-msgid "Toggle the hero status."
-msgstr ""
-
-#. [message]: speaker=unit
-#: data/scenario-test.cfg:749
-msgid "I am no longer a hero!"
-msgstr ""
-
-#. [message]: speaker=unit
-#: data/scenario-test.cfg:756
-msgid "I am now a hero!"
-msgstr ""
-
-#. [label]
-#: data/scenario-test.cfg:765
-#, fuzzy
-#| msgid "Vision Cost"
-msgid "Vision Test"
-msgstr "视野消耗"
-
-#. [label]
-#: data/scenario-test.cfg:766
-msgid "Visibility Check of (8,15)"
-msgstr ""
-
-#. [message]: speaker=narrator
-#: data/scenario-test.cfg:777
-msgid "Checking visibility of (8,15)..."
-msgstr ""
-
-#. [message]: speaker=narrator
-#: data/scenario-test.cfg:801 data/scenario-test.cfg:830
-msgid "HORRORS FILTERS ARE ALL TRUE!"
-msgstr ""
-
-#. [message]: speaker=narrator
-#: data/scenario-test.cfg:808
-msgid "You can see it, can't you?"
-msgstr ""
-
-#. [message]: speaker=narrator
-#: data/scenario-test.cfg:837
-#, fuzzy
-#| msgid "Clear Labels"
-msgid "Clear sailing!"
-msgstr "清除标签"
-
-#. [message]: speaker=narrator
-#: data/scenario-test.cfg:855
-msgid "But the fog, it blinds you!"
-msgstr ""
-
-#. [message]: speaker=narrator
-#: data/scenario-test.cfg:862 data/scenario-test.cfg:891
-msgid "HORRORS FILTERS ARE ALL FALSE!"
-msgstr ""
-
-#. [message]: speaker=narrator
-#: data/scenario-test.cfg:884
-#, fuzzy
-#| msgid "invisible: "
-msgid "It is invisible!"
-msgstr "隐形： "
-
-#. [label]
-#: data/scenario-test.cfg:912
-msgid "Teleport switch"
-msgstr ""
-
-#. [message]: speaker=narrator
-#: data/scenario-test.cfg:960
-#, fuzzy
-#| msgid "Debug mode activated!"
-msgid "Teleporters activated"
-msgstr "调试模式激活！"
-
-#. [message]: speaker=narrator
-#: data/scenario-test.cfg:972
-#, fuzzy
-#| msgid "Debug mode deactivated!"
-msgid "Teleporters deactivated"
-msgstr "调试模式关闭！"
-
-#. [unit]: type=Ghost
-#: data/scenario-test.cfg:1008
-msgid "Steadfast tester"
-msgstr ""
-
-#. [unit]: type=Silver Mage
-#: data/scenario-test.cfg:1026
-msgid "Hidden Teleporter"
-msgstr ""
-
-#. [unit]: type=Ancient Wose, id=rithrandil
-#: data/scenario-test.cfg:1055
-msgid "Rithrandil"
-msgstr ""
-
-#. [heals]: id=aura of death 4
-#. [heals]: id=aura of death 8
-#: data/scenario-test.cfg:1080 data/scenario-test.cfg:1108
-msgid "aura of death ("
-msgstr ""
-
-#. [heals]: id=aura of death 4
-#. [heals]: id=aura of death 8
-#: data/scenario-test.cfg:1081 data/scenario-test.cfg:1109
-msgid "female^aura of death ("
-msgstr ""
-
-#. [heal_on_hit]: id=fiery
-#: data/scenario-test.cfg:1136 data/scenario-test.cfg:1137
-msgid "fiery 4"
-msgstr ""
-
-#. [heal_on_hit]: id=fiery
-#: data/scenario-test.cfg:1138 data/scenario-test.cfg:1139
-msgid "A successful hit against this unit costs the opponent 4 HP."
-msgstr ""
-
-#. [effect]: type=pierce
-#: data/scenario-test.cfg:1148
-msgid "lifebow"
-msgstr ""
-
-#. [drains]: id=drains
-#: data/scenario-test.cfg:1155
-msgid "drains 100%"
-msgstr ""
-
-#. [drains]: id=drains
-#: data/scenario-test.cfg:1156
-msgid ""
-"This unit drains health from living units, healing itself for 100% of the "
-"amount of damage it deals (rounded down)."
-msgstr ""
-
-#. [side]: type=Gryphon Master
-#: data/scenario-test.cfg:1173
-msgid "Friendly Explorer"
-msgstr ""
-
-#. [label]
-#: data/scenario-test.cfg:1197
-msgid "Explore the map"
-msgstr ""
-
-#. [message]: id=rithrandil
-#: data/scenario-test.cfg:1211
-msgid "Hello there"
-msgstr ""
-
-#. [label]
-#: data/scenario-test.cfg:1237
-#, fuzzy
-#| msgid "Custom map."
-msgid "Custom dialog"
-msgstr "自定义地图。"
-
-#. [label]
-#: data/scenario-test.cfg:1377
-#, fuzzy
-#| msgid "Clear objective orders"
-msgid "objectives test"
-msgstr "清除目标命令"
-
-#. [message]: speaker=unit
-#: data/scenario-test.cfg:1404
-msgid "We should now be sharing maps with side 3!"
-msgstr ""
-
-#. [label]
-#: data/scenario-test.cfg:1408
-msgid "Rename our kind friends"
-msgstr ""
-
-#. [modify_side]
-#: data/scenario-test.cfg:1417
-#, fuzzy
-#| msgid "neutral"
-msgid "Neutral"
-msgstr "中立"
-
-#. [message]
-#: data/scenario-test.cfg:1421
-msgid "That’s right! We’re neutral!"
-msgstr ""
-
-#. [effect]: type=electrical
-#: data/scenario-test.cfg:1521
-msgid "lightning"
-msgstr ""
-
-#. [set_menu_item]: id=test98
-#: data/scenario-test.cfg:1539
-msgid "Calculate unit worth"
-msgstr ""
-
-#. [set_menu_item]: id=test99
-#: data/scenario-test.cfg:1562
-msgid "Lua"
-msgstr ""
-
-#. [message]: speaker=narrator
-#: data/scenario-test.cfg:1572
-msgid "Enter Lua code"
-msgstr ""
-
-#. [set_menu_item]: id=show_movement_range
-#: data/scenario-test.cfg:1592
-msgid "Show movement range"
-msgstr ""
-
-#. [set_menu_item]: id=show_attack_range
-#: data/scenario-test.cfg:1639
-msgid "Show attack range"
-msgstr ""
-
-#. [set_menu_item]: id=show_vision_range
-#: data/scenario-test.cfg:1688
-msgid "Show vision range"
-msgstr ""
-
-#. [set_menu_item]: id=reload_and_execute_lua_code
-#: data/scenario-test.cfg:1736
-msgid "Reload and execute Lua code"
-msgstr ""
-
-#. [message]: speaker=narrator
-#: data/scenario-test.cfg:1771
-msgid "testing prerecruit"
-msgstr ""
-
-#. [message]: speaker=unit
-#: data/scenario-test.cfg:1831
-msgid "Oh hi"
-msgstr ""
-
-#. [label]
-#: data/scenario-test.cfg:1846
-msgid "Filter Area"
-msgstr ""
-
-#. [label]
-#: data/scenario-test.cfg:1847
-msgid ""
-"Test filtering areas\n"
-"<b>filter</b> with area=test_area\n"
-"<span color='#bcb088'><b>x,y=8,11</b></span>"
-msgstr ""
-
-#. [label]
-#: data/scenario-test.cfg:1897
-msgid "randomness"
-msgstr ""
-
-#. [message]: speaker=unit
-#: data/scenario-test.cfg:1927
-msgid "What am I supposed to be doing again?"
-msgstr ""
-
-#. [message]: speaker=narrator
-#: data/scenario-test.cfg:1963
-msgid "Unit recalled from storage."
-msgstr ""
-
-#. [objective]: condition=win
-#: data/scenario-test.cfg:2013
-#, fuzzy
-#| msgid "Defeat enemy leader(s)"
-msgid "Defeat the enemy leader (he’s at 29,16!)"
-msgstr "击败敌方首领"
-
-#. [objective]: condition=win
-#: data/scenario-test.cfg:2022
-#, fuzzy
-#| msgid "Defeat enemy leader(s)"
-msgid "Defeat the enemy leader (he’s at 28,18!)"
-msgstr "击败敌方首领"
-
-#. [objective]: condition=win
-#: data/scenario-test.cfg:2031
-msgid "Defeat the enemy leader (I have no clue where he is)"
-msgstr ""
-
-#. [label]
-#: data/scenario-test.cfg:2113
-msgid "Memory phone"
-msgstr ""
-
-#. [message]: speaker=narrator
-#: data/scenario-test.cfg:2143
-msgid "Is this greeting really okay?"
-msgstr ""
-
-#. [message]: speaker=narrator
-#: data/scenario-test.cfg:2152 data/scenario-test.cfg:2178
-msgid "How would you like to be greeted?"
-msgstr ""
-
-#. [label]
-#: data/scenario-test.cfg:2210
-#, fuzzy
-#| msgid "Temple"
-msgid "Temporal Clone"
-msgstr "神庙"
-
-#. [message]: speaker=unit
-#: data/scenario-test.cfg:2245
-msgid ""
-"I have been saved and will appear here the next time this scenario is "
-"started."
-msgstr ""
-
-#. [label]
-#: data/scenario-test.cfg:2251
-msgid "Bank Teller"
-msgstr ""
-
-#. [message]: speaker=unit
-#: data/scenario-test.cfg:2275
-msgid ""
-"I have deposited our assets into our savings account. We will have access to "
-"them on future playthroughs of this scenario."
-msgstr ""
-
-#. [message]: speaker=narrator
-#: data/scenario-test.cfg:2312
-msgid ""
-"You can come if you wish, but the leader is only interested in speaking to "
-"Baldras."
-msgstr ""
-
-#. [message]: speaker=narrator
-#: data/scenario-test.cfg:2353
-msgid ""
-"Now the orcs will fight until death; nothing shall stop their bloodthirsty "
-"warriors!"
-msgstr ""
-
-#. [label]
-#: data/scenario-test.cfg:2408
-msgid "Health insurance"
-msgstr ""
-
-#. [label]
-#: data/scenario-test.cfg:2436
-msgid "Open the hell"
-msgstr ""
-
-#. [label]
-#: data/scenario-test.cfg:2441
-msgid "dialog"
-msgstr ""
-
-#. [label]
-#: data/scenario-test.cfg:2446
-#, fuzzy
-#| msgid "Launch the gamestate inspector"
-msgid "Gamestate Inspector"
-msgstr "启动游戏状态检查器"
-
-#. [message]: speaker=unit
-#: data/scenario-test.cfg:2469
-msgid "Hello world"
-msgstr ""
-
-#. [label]
-#: data/scenario-test.cfg:2475
-msgid "parrot"
-msgstr ""
-
-#. [message]: speaker=unit
-#: data/scenario-test.cfg:2487
-msgid "Who’s the parrot"
-msgstr ""
-
-#. [message]: speaker=unit
-#: data/scenario-test.cfg:2496
-msgid "Set the parrot settings."
-msgstr ""
-
-#. [text_input]
-#: data/scenario-test.cfg:2498
-#, fuzzy
-#| msgid "Chat message"
-msgid "Parrot message"
-msgstr "聊天信息"
-
-#. [option]
-#: data/scenario-test.cfg:2503
-msgid "Parrot is in denial"
-msgstr ""
-
-#. [message]: speaker=$parrot
-#: data/scenario-test.cfg:2507
-msgid "Why are you looking at me, I’m no parrot!!!"
-msgstr ""
-
-#. [message]: speaker=narrator
-#: data/scenario-test.cfg:2512
-msgid "A short time passes..."
-msgstr ""
-
-#. [option]
-#: data/scenario-test.cfg:2518
-msgid "Parrot accepted its fate"
-msgstr ""
-
-#. [label]
-#: data/scenario-test.cfg:2530
-msgid "drink"
-msgstr ""
-
-#. [message]: speaker=unit
-#: data/scenario-test.cfg:2542
-msgid "Pick your drink"
-msgstr ""
-
-#. [option]
-#: data/scenario-test.cfg:2544
-msgid "Soda"
-msgstr ""
-
-#. [option]
-#: data/scenario-test.cfg:2547
-#, fuzzy
-#| msgid "Holy Water"
-msgid "Water"
-msgstr "圣水"
-
-#. [message]: speaker=narrator
-#: data/scenario-test.cfg:2552
-msgid "Water is nice"
-msgstr ""
-
-#. [label]
-#: data/scenario-test.cfg:2561
-#, fuzzy
-#| msgid "poisoned"
-msgid "poison"
-msgstr "中毒"
-
-#. [label]
-#: data/scenario-test.cfg:2598
-msgid "Manual"
-msgstr ""
-
-#. [message]: speaker=unit
-#: data/scenario-test.cfg:2611
-msgid ""
-"Battle for Wesnoth User’s Manual\n"
-"================================\n"
-"\n"
-"Preface\n"
-"-------\n"
-"\n"
-"The Battle for Wesnoth is a turn-based strategy game with a fantasy theme.\n"
-"\n"
-"Build up a great army, gradually training raw recruits into hardened "
-"veterans. In later games, recall your toughest warriors and form a deadly "
-"host against whom none can stand! Choose units from a large pool of "
-"specialists, and hand pick a force with the right strengths to fight well on "
-"different terrains against all manner of opposition.\n"
-"\n"
-"Wesnoth has many different sagas waiting to be played out. You can battle "
-"orcs, undead, and bandits on the marches of the Kingdom of Wesnoth; fight "
-"alongside dragons in the lofty peaks, elves in the green reaches of the "
-"Aethenwood, dwarves in the great halls of Knalga, or even merfolk in the Bay "
-"of Pearls. You can fight to regain the throne of Wesnoth, or use your dread "
-"power over the Undead to dominate the land of mortals, or lead your glorious "
-"Orcish tribe to victory against the humans who dared despoil your lands.\n"
-"\n"
-"You will be able to select from among over two hundred unit types (infantry, "
-"cavalry, archers, and mages are just the beginning) and fight actions "
-"ranging from small-unit ambushes to clashes of vast armies. You can also "
-"challenge your friends – or strangers – and fight in epic multi-player "
-"fantasy battles.\n"
-"\n"
-"Battle for Wesnoth is open-source software, and a thriving community of "
-"volunteers cooperates to improve the game. You can create your own custom "
-"units, write your own scenarios, and even script full-blown campaigns. User-"
-"maintained content is available from an add-on server, and the very best of "
-"it is incorporated into Battle for Wesnoth’s official releases.\n"
-"\n"
-"Getting Started\n"
-"---------------\n"
-"\n"
-"The World\n"
-"~~~~~~~~~\n"
-"\n"
-"The known portion of the Great Continent, on which Wesnoth abides, is "
-"generally divided into three areas: the Northlands, which are generally "
-"lawless; the kingdom of Wesnoth and its occasional principality, Elensefar; "
-"and the domain of the Southwest Elves in the Aethenwood and beyond.\n"
-"\n"
-"The Kingdom of Wesnoth lies in the center of this land. Its borders are the "
-"Great River to the north, the Dulatus Hills in the east and south, the edge "
-"of the Aethenwood to the southwest, and the Ocean to the west. Elensefar, a "
-"once-province of Wesnoth, is bordered by the Great River to the north, a "
-"loosely defined line with Wesnoth to the east, the Bay of Pearls to the "
-"south, and the ocean to the west.\n"
-"\n"
-"The Northlands is the wild country north of the Great River. Various groups "
-"of orcs, dwarves, barbarians and elves populate the region.  To the north "
-"and east lies the forest of Lintanir, where the great kingdom of the North-"
-"Elves keeps to its own mysterious affairs.\n"
-"\n"
-"Over the land are scattered villages where you can heal your troops and "
-"gather the income required to support your army. You will also have to cross "
-"mountains and rivers, push through forests, hills and tundra, and cross open "
-"grassland. In each of these areas different creatures have adapted to live "
-"there and can travel more easily and fight better when they are in familiar "
-"terrain.\n"
-"\n"
-"The Creatures\n"
-"^^^^^^^^^^^^^\n"
-"\n"
-"In the world of Wesnoth there dwell humans, elves, dwarves, orcs, drakes, "
-"saurians, merfolk, nagas, and many other races yet more obscure and "
-"wondrous. In accursed lands walk undead and ghosts and specters; monsters "
-"lurk in its ruins and dungeons.  Each has adapted to particular terrains. "
-"Humans inhabit primarily the temperate grasslands. In the hills, mountains "
-"and underground caves orcs and dwarves are most at home. In the forests the "
-"elves reign supreme. In the oceans and rivers, merfolk and nagas dominate.\n"
-"\n"
-"For game purposes, the races group into factions; for example, orcs often "
-"cooperate with trolls, and elves or dwarves with humans. Some other factions "
-"reflect divisions within human society — loyalists vs. outlaws, for example. "
-"In most campaigns, you will control units drawn a single faction. But "
-"sometimes factions make alliances with others, so you may face more than one "
-"faction in a scenario."
-msgstr ""
-
-#. [label]
-#: data/scenario-test.cfg:2747
-msgid "Local ToD item test"
-msgstr ""
-
-#. [label]
-#: data/scenario-test.cfg:2767
-#, fuzzy
-#| msgid "Northerners"
-msgid "Northerners unleashed!"
-msgstr "北陆之民"
-
-#. [label]
-#: data/scenario-test.cfg:2812
-#, fuzzy
-#| msgid "Lato Light"
-msgid "Let’s fight"
-msgstr "Lato Light,Droid Sans Fallback"
-
-#. [label]
-#: data/scenario-test.cfg:2813
-msgid "Trigger attack animation."
-msgstr ""
-
-#. [label]
-#: data/scenario-test.cfg:2837
-msgid "Open, Sesame!"
-msgstr ""
-
-#. [label]
-#: data/scenario-test.cfg:2841 data/scenario-test.cfg:2880
-msgid "Let there be fog!"
-msgstr ""
-
-#. [label]
-#: data/scenario-test.cfg:2869
-msgid "Torches, attack!"
-msgstr ""
-
-#. [label]
-#: data/scenario-test.cfg:2902
-msgid "Math test"
-msgstr ""
-
-#. [message]: speaker=narrator
-#: data/scenario-test.cfg:2914
-msgid "Enter a number."
-msgstr ""
-
-#. [option]
-#: data/scenario-test.cfg:2924
-msgid "Round it"
-msgstr ""
-
-#. [option]
-#: data/scenario-test.cfg:2950
-msgid "Add something"
-msgstr ""
-
-#. [text_input]
-#: data/scenario-test.cfg:2955
-msgid "Amount to add"
-msgstr ""
-
-#. [option]
-#: data/scenario-test.cfg:2971
-msgid "Multiply"
-msgstr ""
-
-#. [text_input]
-#: data/scenario-test.cfg:2976
-msgid "Amount to multiply"
-msgstr ""
-
-#. [option]
-#: data/scenario-test.cfg:2992
-msgid "Divide by something"
-msgstr ""
-
-#. [text_input]
-#: data/scenario-test.cfg:2997
-msgid "Divisor"
-msgstr ""
-
-#. [message]: speaker=narrator
-#: data/scenario-test.cfg:3015
-#, fuzzy
-#| msgid "Cannot find era $era"
-msgid "Cannot divide by zero!"
-msgstr "无法找到$era|时代"
-
-#. [text_input]
-#. [option]
-#: data/scenario-test.cfg:3033 data/scenario-test.cfg:3038
-msgid "Modulo"
-msgstr ""
-
-#. [message]: speaker=narrator
-#: data/scenario-test.cfg:3056
-msgid "Cannot use modulus of zero!"
-msgstr ""
-
-#. [option]
-#: data/scenario-test.cfg:3074
-msgid "ints&amp;floats"
-msgstr ""
-
-#. [label]
-#: data/scenario-test.cfg:3091
-#, fuzzy
-#| msgid "Trash Pile"
-msgid "Crash test"
-msgstr "垃圾堆"
-
-#. [label]
-#: data/scenario-test.cfg:3119
-msgid "Reveal the Way"
-msgstr ""
-
-#. [label]
-#: data/scenario-test.cfg:3143
-msgid "change coloring"
-msgstr ""
-
-#. [object]: id=bleach
-#: data/scenario-test.cfg:3233
-#, fuzzy
-#| msgid "Potion of Decay"
-msgid "Potion of bleach"
-msgstr "衰退药剂"
-
-#. [object]: id=bleach
-#: data/scenario-test.cfg:3236
-msgid "Oooh tingly!!!"
-msgstr ""
-
-#. [message]: speaker=narrator
-#: data/scenario-test.cfg:3262
-msgid "Send me a thief to spy on the blondes"
-msgstr ""
-
-#. [label]
-#: data/scenario-test.cfg:3272
-msgid "BOOM!"
-msgstr ""
-
-#. [label]
-#: data/scenario-test.cfg:3294
-#, fuzzy
-#| msgid "Warning"
-msgid "Win"
-msgstr "警告"
-
-#. [label]
-#: data/scenario-test.cfg:3298
-msgid "Timeshift"
-msgstr ""
-
-#. [label]
-#: data/scenario-test.cfg:3303
-msgid "The silly dance"
-msgstr ""
-
-#. [message]: speaker=narrator
-#: data/scenario-test.cfg:3340
-msgid "Message 1 of 2: prepare for timeshift"
-msgstr ""
-
-#. [message]: speaker=narrator
-#: data/scenario-test.cfg:3347
-msgid "Message 2 of 2: timeshift imminent"
-msgstr ""
-
-#. [label]
-#: data/scenario-test.cfg:3402
-#, fuzzy
-#| msgid "This is not a multiplayer save."
-msgid "This is not a forest"
-msgstr "这不是多人游戏存档。"
-
-#. [label]
-#: data/scenario-test.cfg:3407
-msgid "This label is not immutable"
-msgstr ""
-
-#. [label]
-#: data/scenario-test.cfg:3413
-msgid "Let it snow"
-msgstr ""
-
-#. [label]
-#: data/scenario-test.cfg:3473
-msgid "Plant palms"
-msgstr ""
-
-#. [label]
-#: data/scenario-test.cfg:3515
-msgid "Flood"
-msgstr ""
-
-#. [label]
-#: data/scenario-test.cfg:3560
-msgid "Sunken"
-msgstr ""
-
-#. [label]
-#: data/scenario-test.cfg:3564
-#, fuzzy
-#| msgid "Still Another Wanderer"
-msgid "Still there"
-msgstr "又一位彷徨者"
-
-#. [message]: speaker=unit
-#: data/scenario-test.cfg:3579
-msgid "You entered a different time Zone"
-msgstr ""
-
-#. [set_menu_item]: id=test0
-#: data/scenario-test.cfg:3587
-msgid "Perform Calculation"
-msgstr ""
-
-#. [message]: speaker=unit
-#: data/scenario-test.cfg:3596
-msgid "I will prepare the incantation; what dost thou desire to know?"
-msgstr ""
-
-#. [text_input]
-#: data/scenario-test.cfg:3598
-msgid "Formula="
-msgstr ""
-
-#. [set_menu_item]: id=test1
-#: data/scenario-test.cfg:3616
-#, fuzzy
-#| msgid "Summoning Circle"
-msgid "Summon Troll"
-msgstr "召唤阵圆环"
-
-#. [command]
-#: data/scenario-test.cfg:3627
-#, fuzzy
-#| msgid "Magic Circle"
-msgid "Magic Troll"
-msgstr "魔法环"
-
-#. [set_menu_item]: id=test2
-#: data/scenario-test.cfg:3643
-msgid "Dismiss Troll"
-msgstr ""
-
-#. [set_menu_item]: id=terraform
-#: data/scenario-test.cfg:3661
-msgid "Identify terrain"
-msgstr ""
-
-#. [label]
-#: data/scenario-test.cfg:3701
-msgid "Keep out!!!"
-msgstr ""
-
-#. [label]
-#: data/scenario-test.cfg:3724
-msgid "Earn 100 XP!"
-msgstr ""
-
-#. [unstore_unit]
-#: data/scenario-test.cfg:3737
-msgid "100 XP"
-msgstr ""
-
-#. [label]
-#: data/scenario-test.cfg:3744
-msgid "test anim"
-msgstr ""
-
-#. [effect]: type=fire
-#: data/scenario-test.cfg:3758
-#, fuzzy
-#| msgid "sceptre of fire"
-msgid "ruby of fire"
-msgstr "圣火权杖"
-
-#. [label]
-#: data/scenario-test.cfg:3785
-msgid "promotions"
-msgstr ""
-
-#. [label]
-#: data/scenario-test.cfg:3800
-msgid "role test"
-msgstr ""
-
-#. [message]: role=talking_guy
-#: data/scenario-test.cfg:3814
-msgid "I have the role!"
-msgstr ""
-
-#. [label]
-#: data/scenario-test.cfg:3820
-msgid "forfeit"
-msgstr ""
-
-#. [message]
-#: data/scenario-test.cfg:3835
-msgid "No more turns for you!"
-msgstr ""
-
-#. [label]
-#: data/scenario-test.cfg:3843
-#, fuzzy
-#| msgid "Turn changed"
-msgid "map change"
-msgstr "回合改变了"
-
-#. [message]
-#: data/scenario-test.cfg:3854
-msgid "Suddenly, Elves Besieged!"
-msgstr ""
-
-#. [label]
-#: data/scenario-test.cfg:3865
-#, fuzzy
-#| msgid "Turn changed"
-msgid "map change2"
-msgstr "回合改变了"
-
-#. [message]
-#: data/scenario-test.cfg:3876
-msgid "Suddenly, Blackwater Port!"
-msgstr ""
-
-#. [label]
-#: data/scenario-test.cfg:3887
-#, fuzzy
-#| msgid "Turn changed"
-msgid "map change3"
-msgstr "回合改变了"
-
-#. [message]
-#: data/scenario-test.cfg:3898
-msgid "Suddenly, Caves!!"
-msgstr ""
-
-#. [label]
-#: data/scenario-test.cfg:3913
-msgid "livingness"
-msgstr ""
-
-#. [label]
-#: data/scenario-test.cfg:3914
-msgid ""
-"<b>Tooltip for the livingness label</b>\n"
-"\n"
-"Moving to this hex will show you:\n"
-"\n"
-"<span color='red'><b>not_living</b> Subsums every of the following:</span>\n"
-"<span color='yellow'><b>unpoisonable</b> - Some more text here.</span>\n"
-"<span color='brown'><b>undrainable</b></span> - You see that markup works "
-"here.\n"
-"<span color='green'><b>unplagueable</b> - And so on</span>"
-msgstr ""
-
-#. [label]
-#: data/scenario-test.cfg:4045
-msgid "Fogged oasis"
-msgstr ""
-
-#. [label]
-#: data/scenario-test.cfg:4054
-#, fuzzy
-#| msgid "Shroud"
-msgid "Shrouded label"
-msgstr "战场黑幕"
-
-#. [set_menu_item]: id=dynamic_ev
-#: data/scenario-test.cfg:4112
-msgid "Start Dynamic Events!"
-msgstr ""
-
-#. [message]: speaker=narrator
-#: data/scenario-test.cfg:4149
-msgid ""
-"I have been affected by the power of $functor|! To the Dark Gods with that "
-"wose-born creature!"
-msgstr ""
-
-#. [message]: speaker=narrator
-#: data/scenario-test.cfg:4150
-msgid "Urug-Telfar"
-msgstr ""
-
-#. [set_menu_item]: id=imagepath_tests
-#: data/scenario-test.cfg:4161
-msgid "Image tricks"
-msgstr ""
-
-#. [message]: speaker=unit
-#: data/scenario-test.cfg:4170
-msgid "What glamour should I cast upon our foe?"
-msgstr ""
-
-#. [option]
-#: data/scenario-test.cfg:4172
-msgid "Flip around!"
-msgstr ""
-
-#. [option]
-#: data/scenario-test.cfg:4178
-msgid "Scale up"
-msgstr ""
-
-#. [option]
-#: data/scenario-test.cfg:4184
-msgid "Scale down"
-msgstr ""
-
-#. [option]
-#: data/scenario-test.cfg:4190
-msgid "Blur 3"
-msgstr ""
-
-#. [option]
-#: data/scenario-test.cfg:4196
-msgid "Blur 100"
-msgstr ""
-
-#. [option]
-#: data/scenario-test.cfg:4202
-msgid "More red!"
-msgstr ""
-
-#. [option]
-#: data/scenario-test.cfg:4208
-#, fuzzy
-#| msgid "Bright green"
-msgid "More green!"
-msgstr "亮绿"
-
-#. [option]
-#: data/scenario-test.cfg:4214
-#, fuzzy
-#| msgid "Dark Red"
-msgid "More blue!"
-msgstr "深红"
-
-#. [option]
-#: data/scenario-test.cfg:4220
-msgid "Black and white!"
-msgstr ""
-
-#. [option]
-#: data/scenario-test.cfg:4226
-msgid "Other team"
-msgstr ""
-
-#. [option]
-#: data/scenario-test.cfg:4234
-msgid "And other team again"
-msgstr ""
-
-#. [option]
-#: data/scenario-test.cfg:4242
-msgid "Psychedellic!"
-msgstr ""
-
-#. [option]
-#: data/scenario-test.cfg:4248
-msgid "Shrooms!"
-msgstr ""
-
-#. [object]
-#: data/scenario-test.cfg:4285
-msgid "You just lost the attack you used."
-msgstr ""
-
-#. [message]
-#: data/scenario-test.cfg:4294
-msgid "Cowards! Fight me in real combat!"
-msgstr ""
-
-#. [unit]: type=Saurian Soothsayer, id=assert
-#: data/scenario-test.cfg:4305
-msgid "Neutral healer guy"
-msgstr ""
-
-#. [set_menu_item]: id=Menu_1
-#: data/scenario-test.cfg:4308
-#, fuzzy
-#| msgid "Menu"
-msgid "Menu 1"
-msgstr "菜单"
-
-#. [message]
-#: data/scenario-test.cfg:4326
-msgid "Menu 1 (only clickable on own units on castle terrain)"
-msgstr ""
-
-#. [set_menu_item]: id=Menu_2
-#: data/scenario-test.cfg:4332
-#, fuzzy
-#| msgid "Menu"
-msgid "Menu 2"
-msgstr "菜单"
-
-#. [message]
-#: data/scenario-test.cfg:4343
-msgid "Menu 2 (use_hotkey = no, so I cannot assign hotkeys to it.)"
-msgstr ""
-
-#. [set_menu_item]: id=menu_3
-#: data/scenario-test.cfg:4349
-msgid "menu 3"
-msgstr ""
-
-#. [message]: speaker=narrator
-#: data/scenario-test.cfg:4356
-msgid "menu 3: default hotkey is F6."
-msgstr ""
-
-#. [set_menu_item]: id=menu 4
-#: data/scenario-test.cfg:4362
-msgid "menu 4"
-msgstr ""
-
-#. [message]: speaker=narrator
-#: data/scenario-test.cfg:4367
-msgid "menu 4, only acessible via hotkeys"
-msgstr ""
-
-#. [language]
-#: data/scenario-test.cfg:4459
-msgid "very long"
-msgstr "非常长"
-
-#. [language]
-#: data/scenario-test.cfg:4460
-msgid "electrical"
-msgstr "电子"
 
 #. [action]: id=button-playreplay, type=image
 #: data/themes/_initial.cfg:413
@@ -10097,6 +8770,217 @@ msgstr "隐藏$player的计划"
 #: src/whiteboard/manager.cpp:1137
 msgid "Whiteboard Options"
 msgstr "白板选项"
+
+#, fuzzy
+#~| msgid "female^neutral"
+#~ msgid "female^feral"
+#~ msgstr "中立"
+
+#, fuzzy
+#~| msgid "unhealable"
+#~ msgid "Unhealable"
+#~ msgstr "不可治疗"
+
+#, fuzzy
+#~| msgid "Leadership: "
+#~ msgid "magical leadership"
+#~ msgstr "领导："
+
+#, fuzzy
+#~| msgid "female^cured"
+#~ msgid "female^darkens"
+#~ msgstr "已解毒"
+
+#, fuzzy
+#~| msgid "This unit has been petrified. It may not move or attack."
+#~ msgid "This unit sacrifices its own life in order to make more attacks."
+#~ msgstr "此单位石化了，它不能移动或者攻击。"
+
+#, fuzzy
+#~| msgid "female^chaotic"
+#~ msgid "female^cantor"
+#~ msgstr "混沌"
+
+#, fuzzy
+#~| msgid "Jamming:"
+#~ msgid "Jamming Orc"
+#~ msgstr "干扰："
+
+#, fuzzy
+#~| msgid "Vision Cost"
+#~ msgid "Vision Test"
+#~ msgstr "视野消耗"
+
+#, fuzzy
+#~| msgid "Clear Labels"
+#~ msgid "Clear sailing!"
+#~ msgstr "清除标签"
+
+#, fuzzy
+#~| msgid "invisible: "
+#~ msgid "It is invisible!"
+#~ msgstr "隐形： "
+
+#, fuzzy
+#~| msgid "Debug mode activated!"
+#~ msgid "Teleporters activated"
+#~ msgstr "调试模式激活！"
+
+#, fuzzy
+#~| msgid "Debug mode deactivated!"
+#~ msgid "Teleporters deactivated"
+#~ msgstr "调试模式关闭！"
+
+#, fuzzy
+#~| msgid "Custom map."
+#~ msgid "Custom dialog"
+#~ msgstr "自定义地图。"
+
+#, fuzzy
+#~| msgid "Clear objective orders"
+#~ msgid "objectives test"
+#~ msgstr "清除目标命令"
+
+#, fuzzy
+#~| msgid "neutral"
+#~ msgid "Neutral"
+#~ msgstr "中立"
+
+#, fuzzy
+#~| msgid "Defeat enemy leader(s)"
+#~ msgid "Defeat the enemy leader (he’s at 29,16!)"
+#~ msgstr "击败敌方首领"
+
+#, fuzzy
+#~| msgid "Defeat enemy leader(s)"
+#~ msgid "Defeat the enemy leader (he’s at 28,18!)"
+#~ msgstr "击败敌方首领"
+
+#, fuzzy
+#~| msgid "Temple"
+#~ msgid "Temporal Clone"
+#~ msgstr "神庙"
+
+#, fuzzy
+#~| msgid "Launch the gamestate inspector"
+#~ msgid "Gamestate Inspector"
+#~ msgstr "启动游戏状态检查器"
+
+#, fuzzy
+#~| msgid "Chat message"
+#~ msgid "Parrot message"
+#~ msgstr "聊天信息"
+
+#, fuzzy
+#~| msgid "Holy Water"
+#~ msgid "Water"
+#~ msgstr "圣水"
+
+#, fuzzy
+#~| msgid "poisoned"
+#~ msgid "poison"
+#~ msgstr "中毒"
+
+#, fuzzy
+#~| msgid "Northerners"
+#~ msgid "Northerners unleashed!"
+#~ msgstr "北陆之民"
+
+#, fuzzy
+#~| msgid "Lato Light"
+#~ msgid "Let’s fight"
+#~ msgstr "Lato Light,Droid Sans Fallback"
+
+#, fuzzy
+#~| msgid "Cannot find era $era"
+#~ msgid "Cannot divide by zero!"
+#~ msgstr "无法找到$era|时代"
+
+#, fuzzy
+#~| msgid "Trash Pile"
+#~ msgid "Crash test"
+#~ msgstr "垃圾堆"
+
+#, fuzzy
+#~| msgid "Potion of Decay"
+#~ msgid "Potion of bleach"
+#~ msgstr "衰退药剂"
+
+#, fuzzy
+#~| msgid "Warning"
+#~ msgid "Win"
+#~ msgstr "警告"
+
+#, fuzzy
+#~| msgid "This is not a multiplayer save."
+#~ msgid "This is not a forest"
+#~ msgstr "这不是多人游戏存档。"
+
+#, fuzzy
+#~| msgid "Still Another Wanderer"
+#~ msgid "Still there"
+#~ msgstr "又一位彷徨者"
+
+#, fuzzy
+#~| msgid "Summoning Circle"
+#~ msgid "Summon Troll"
+#~ msgstr "召唤阵圆环"
+
+#, fuzzy
+#~| msgid "Magic Circle"
+#~ msgid "Magic Troll"
+#~ msgstr "魔法环"
+
+#, fuzzy
+#~| msgid "sceptre of fire"
+#~ msgid "ruby of fire"
+#~ msgstr "圣火权杖"
+
+#, fuzzy
+#~| msgid "Turn changed"
+#~ msgid "map change"
+#~ msgstr "回合改变了"
+
+#, fuzzy
+#~| msgid "Turn changed"
+#~ msgid "map change2"
+#~ msgstr "回合改变了"
+
+#, fuzzy
+#~| msgid "Turn changed"
+#~ msgid "map change3"
+#~ msgstr "回合改变了"
+
+#, fuzzy
+#~| msgid "Shroud"
+#~ msgid "Shrouded label"
+#~ msgstr "战场黑幕"
+
+#, fuzzy
+#~| msgid "Bright green"
+#~ msgid "More green!"
+#~ msgstr "亮绿"
+
+#, fuzzy
+#~| msgid "Dark Red"
+#~ msgid "More blue!"
+#~ msgstr "深红"
+
+#, fuzzy
+#~| msgid "Menu"
+#~ msgid "Menu 1"
+#~ msgstr "菜单"
+
+#, fuzzy
+#~| msgid "Menu"
+#~ msgid "Menu 2"
+#~ msgstr "菜单"
+
+#~ msgid "very long"
+#~ msgstr "非常长"
+
+#~ msgid "electrical"
+#~ msgstr "电子"
 
 #~ msgid "Group players in lobby"
 #~ msgstr "在游戏大厅中对玩家进行分组"

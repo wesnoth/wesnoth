@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-06-20 11:49 UTC\n"
+"POT-Creation-Date: 2021-06-23 07:08 UTC\n"
 "PO-Revision-Date: 2021-04-06 08:40+0800\n"
 "Last-Translator: 李信融 <magiclen0810@gmail.com>\n"
 "Language-Team: \n"
@@ -663,10 +663,10 @@ msgstr ""
 "面對在半獸人之手下無疑的毀滅，或是面對納爾迦的洞穴中未知的命運，塔林選擇了後"
 "者。人們快速聚集，並收集他們能帶走的食物和武器，沒入那黑暗的洞穴之中。"
 
-#. [side]
 #. [side]: type=Troll, id=Knash
 #. [side]: type=Troll, id=Krog
 #. [side]: type=Troll Warrior, id=Thung
+#. [side]
 #. [side]: type=Troll Warrior, id=Tor
 #. [side]: type=Troll Hero, id=Bor
 #. [side]: type=Troll Rocklobber, id=Oof
@@ -704,14 +704,14 @@ msgstr "克羅格"
 msgid "Hamel"
 msgstr "哈莫爾"
 
+#. [side]: type=Death Knight, id=Mal Barath
+#. [side]: type=Death Knight, id=Delzath
+#. [side]: type=Death Knight, id=Mal Tath
 #. [side]: type=Ancient Lich, id=Malifor
 #. [side]: type=Draug, id=Thorin
 #. [side]: type=Draug, id=Herlin
 #. [side]: type=Draug, id=Fervin
 #. [side]: type=Draug, id=Hellian
-#. [side]: type=Death Knight, id=Mal Barath
-#. [side]: type=Death Knight, id=Delzath
-#. [side]: type=Death Knight, id=Mal Tath
 #. [side]: type=Death Knight, id=Hettel
 #. [side]: type=Death Knight, id=Tervor
 #. [side]: type=Death Knight, id=Author
@@ -1079,10 +1079,10 @@ msgstr ""
 "噢，納爾迦的矮人處於絕望的困境中，不過我們從沒忘記古老的連結。歡迎來到我們的"
 "要塞。是的，還要和我們的族長──哈莫爾領主──談話。"
 
-#. [message]: speaker=Father Morvin
-#. [message]: speaker=Ro'Arthian
 #. [message]: speaker=Tallin
 #. [message]: speaker=unit
+#. [message]: speaker=Father Morvin
+#. [message]: speaker=Ro'Arthian
 #: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:904
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1322
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2304
@@ -1558,9 +1558,9 @@ msgstr "清理礦場"
 msgid "When the party finally reached the mines, they were not disappointed."
 msgstr "當一行人終於抵達礦場時，他們並沒失望。"
 
-#. [side]: type=Lieutenant, id=Tallin
 #. [side]
 #. [side]: type=Elvish Avenger, id=Sisal
+#. [side]: type=Lieutenant, id=Tallin
 #. [side]: type=Dwarvish Lord, id=Hamel
 #: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:29
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:32
@@ -2193,9 +2193,9 @@ msgstr ""
 "哦，別去想它。我們之間不談人情債，而是要讓我們以盟友的形式聯手，以收復這些北"
 "方土地直至健全。"
 
-#. [message]: id=Elenia
 #. [message]: speaker=Father Morvin
 #. [message]: speaker=Sister Thera
+#. [message]: id=Elenia
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:625
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:737
 #: data/campaigns/Northern_Rebirth/scenarios/14a_Epilogue.cfg:275
@@ -4224,8 +4224,8 @@ msgstr "無論如何，你和那些法師保持聯繫要幹嘛？試著拯救他
 msgid "(<i>Giggle</i>) Something like that."
 msgstr "（<i>咯咯笑</i>）類似那樣的事吧。"
 
-#. [message]: speaker=Tallin
 #. [story]
+#. [message]: speaker=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:91
 #: data/campaigns/Northern_Rebirth/scenarios/09a_Introductions.cfg:234
 msgid "(<i>Rolls eyes</i>)"
@@ -4307,8 +4307,8 @@ msgstr "就這麼辦。哎，我們具體要如何到達這個山道啊？"
 msgid "And so Tallin and his party set out to secure the help of the mages."
 msgstr "於是塔林和他的隊伍啟程去取得法師們的幫助了。"
 
-#. [unit]: type=Dwarvish Lord, id=Stalrag
 #. [side]: type=Dwarvish Lord, id=Stalrag
+#. [unit]: type=Dwarvish Lord, id=Stalrag
 #. [part]
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:153
 #: data/campaigns/Northern_Rebirth/scenarios/08a_Elvish_Princess.cfg:221
@@ -4321,8 +4321,8 @@ msgstr "斯塔爾拉格"
 msgid "Liches"
 msgstr "巫妖"
 
-#. [unit]: type=Ancient Lich, id=Ro'Arthian
 #. [side]: type=Ancient Lich, id=Ro'Arthian
+#. [unit]: type=Ancient Lich, id=Ro'Arthian
 #. [modify_side]
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:222
 #: data/campaigns/Northern_Rebirth/scenarios/08a_Elvish_Princess.cfg:247

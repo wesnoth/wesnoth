@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.14\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-06-20 11:49 UTC\n"
+"POT-Creation-Date: 2021-06-23 07:08 UTC\n"
 "PO-Revision-Date: 2020-02-01 11:05+0100\n"
 "Last-Translator: Aaron Winter <winter.aaron93@gmail.com>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
@@ -730,10 +730,10 @@ msgstr ""
 "Waffen zusammen wie sie konnten und stürzten sich in die Dunkelheit der "
 "Höhlen."
 
-#. [side]
 #. [side]: type=Troll, id=Knash
 #. [side]: type=Troll, id=Krog
 #. [side]: type=Troll Warrior, id=Thung
+#. [side]
 #. [side]: type=Troll Warrior, id=Tor
 #. [side]: type=Troll Hero, id=Bor
 #. [side]: type=Troll Rocklobber, id=Oof
@@ -772,14 +772,14 @@ msgstr "Krog"
 msgid "Hamel"
 msgstr "Hamel"
 
+#. [side]: type=Death Knight, id=Mal Barath
+#. [side]: type=Death Knight, id=Delzath
+#. [side]: type=Death Knight, id=Mal Tath
 #. [side]: type=Ancient Lich, id=Malifor
 #. [side]: type=Draug, id=Thorin
 #. [side]: type=Draug, id=Herlin
 #. [side]: type=Draug, id=Fervin
 #. [side]: type=Draug, id=Hellian
-#. [side]: type=Death Knight, id=Mal Barath
-#. [side]: type=Death Knight, id=Delzath
-#. [side]: type=Death Knight, id=Mal Tath
 #. [side]: type=Death Knight, id=Hettel
 #. [side]: type=Death Knight, id=Tervor
 #. [side]: type=Death Knight, id=Author
@@ -1185,10 +1185,10 @@ msgstr ""
 "alten Schwüre sind unvergessen. So seid willkommen in unserer Zuflucht und "
 "sprecht mit Fürst Hamel."
 
-#. [message]: speaker=Father Morvin
-#. [message]: speaker=Ro'Arthian
 #. [message]: speaker=Tallin
 #. [message]: speaker=unit
+#. [message]: speaker=Father Morvin
+#. [message]: speaker=Ro'Arthian
 #: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:904
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1322
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2304
@@ -1709,9 +1709,9 @@ msgid "When the party finally reached the mines, they were not disappointed."
 msgstr ""
 "Als die Gruppe endlich die Minen erreichte, waren sie nicht enttäuscht."
 
-#. [side]: type=Lieutenant, id=Tallin
 #. [side]
 #. [side]: type=Elvish Avenger, id=Sisal
+#. [side]: type=Lieutenant, id=Tallin
 #. [side]: type=Dwarvish Lord, id=Hamel
 #: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:29
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:32
@@ -2379,9 +2379,9 @@ msgstr ""
 "schließt euch uns an, um die Nordlande wieder zu einem lebenswerten Ort zu "
 "machen!"
 
-#. [message]: id=Elenia
 #. [message]: speaker=Father Morvin
 #. [message]: speaker=Sister Thera
+#. [message]: id=Elenia
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:625
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:737
 #: data/campaigns/Northern_Rebirth/scenarios/14a_Epilogue.cfg:275
@@ -4577,8 +4577,8 @@ msgstr ""
 msgid "(<i>Giggle</i>) Something like that."
 msgstr "(<i>kicher</i>) Ja, etwas in der Art."
 
-#. [message]: speaker=Tallin
 #. [story]
+#. [message]: speaker=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:91
 #: data/campaigns/Northern_Rebirth/scenarios/09a_Introductions.cfg:234
 msgid "(<i>Rolls eyes</i>)"
@@ -4671,8 +4671,8 @@ msgstr ""
 
 # Anführer der Zwergen am Pass der »Shinsplitters« = alte Übersetzung »Schienenmalmer«, wenn man googelt (shinsplitters wesnoth) findet man auch »Felsspalter« bleiben wir zunächst bei »Felsspalter«.
 # Bemerkung des Verfassers »Stalrag: A Dwarvish Lord who is the leader of the Shinsplitters - a tribe of Dwarvish Ulfserkers (same guy from HttT, in the scenario Hostile Mountains). He has a long standing feud with the mages/liches Ro'Arthian and Ro'Sothian.«
-#. [unit]: type=Dwarvish Lord, id=Stalrag
 #. [side]: type=Dwarvish Lord, id=Stalrag
+#. [unit]: type=Dwarvish Lord, id=Stalrag
 #. [part]
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:153
 #: data/campaigns/Northern_Rebirth/scenarios/08a_Elvish_Princess.cfg:221
@@ -4686,8 +4686,8 @@ msgid "Liches"
 msgstr "Liches"
 
 # Kommentar des Kampagnenverfassers »Ro'Arthian: A Great Mage that refused to die and reincarnated as an Ancient Lich instead. Him and Ro'Sarthian are powerful liches that have the ability to control gryphyons, ogres and trolls. Although him and his brother are good at heart they have no qualms about using dark and evil means to achieve their ends.«
-#. [unit]: type=Ancient Lich, id=Ro'Arthian
 #. [side]: type=Ancient Lich, id=Ro'Arthian
+#. [unit]: type=Ancient Lich, id=Ro'Arthian
 #. [modify_side]
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:222
 #: data/campaigns/Northern_Rebirth/scenarios/08a_Elvish_Princess.cfg:247
