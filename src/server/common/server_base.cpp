@@ -586,32 +586,13 @@ std::string server_base::hash_password(const std::string& pw, const std::string&
 		return "";
 	}
 
-	std::string password = pw;
-
-	// Apparently HTML key-characters are passed to the hashing functions of phpbb in this escaped form.
-	// I will do closer investigations on this, for now let's just hope these are all of them.
-
-	// Note: we must obviously replace '&' first, I wasted some time before I figured that out... :)
-	for(std::string::size_type pos = 0; (pos = password.find('&', pos)) != std::string::npos; ++pos) {
-		password.replace(pos, 1, "&amp;");
-	}
-	for(std::string::size_type pos = 0; (pos = password.find('\"', pos)) != std::string::npos; ++pos) {
-		password.replace(pos, 1, "&quot;");
-	}
-	for(std::string::size_type pos = 0; (pos = password.find('<', pos)) != std::string::npos; ++pos) {
-		password.replace(pos, 1, "&lt;");
-	}
-	for(std::string::size_type pos = 0; (pos = password.find('>', pos)) != std::string::npos; ++pos) {
-		password.replace(pos, 1, "&gt;");
-	}
-
 	if(utils::md5::is_valid_prefix(salt)) {
-		std::string hash = utils::md5(password, utils::md5::get_salt(salt), utils::md5::get_iteration_count(salt)).base64_digest();
+		std::string hash = utils::md5(pw, utils::md5::get_salt(salt), utils::md5::get_iteration_count(salt)).base64_digest();
 		return salt+hash;
 	} else if(utils::bcrypt::is_valid_prefix(salt)) {
 		try {
 			auto bcrypt_salt = utils::bcrypt::from_salted_salt(salt);
-			auto hash = utils::bcrypt::hash_pw(password, bcrypt_salt);
+			auto hash = utils::bcrypt::hash_pw(pw, bcrypt_salt);
 			return hash.base64_digest();
 		} catch(const utils::hash_error& err) {
 			ERR_SERVER << "bcrypt hash failed for user " << username << ": " << err.what() << std::endl;
