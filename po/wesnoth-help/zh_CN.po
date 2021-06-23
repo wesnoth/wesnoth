@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.14\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-06-20 14:49+0300\n"
+"POT-Creation-Date: 2021-06-23 10:17+0300\n"
 "PO-Revision-Date: 2020-08-10 20:12+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
@@ -301,7 +301,6 @@ msgstr "夜遁"
 #. [plague]: id=plague, type=Walking Corpse
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:98
 #: data/core/macros/abilities.cfg:430 data/core/macros/abilities.cfg:441
-#: data/scenario-test.cfg:407
 msgid "plague"
 msgstr "瘟疫"
 
@@ -339,9 +338,8 @@ msgid "slows"
 msgstr "减速"
 
 #. [resistance]: id=steadfast
-#. [resistance]: id=melee_steadfast
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:119
-#: data/core/macros/abilities.cfg:130 data/scenario-test.cfg:367
+#: data/core/macros/abilities.cfg:130
 msgid "steadfast"
 msgstr "坚定"
 
@@ -4484,8 +4482,7 @@ msgid ""
 msgstr " 此单位能够再生，这让它可以治疗自己，就像一直驻扎在村庄里一样。"
 
 #. [resistance]: id=steadfast
-#. [resistance]: id=melee_steadfast
-#: data/core/macros/abilities.cfg:131 data/scenario-test.cfg:368
+#: data/core/macros/abilities.cfg:131
 msgid "female^steadfast"
 msgstr "坚定"
 
@@ -4752,7 +4749,7 @@ msgstr ""
 "位，并与进行瘟疫攻击的单位属于同一阵营。这对亡灵或在村庄中的单位不起作用。"
 
 #. [plague]: id=plague, type=Walking Corpse
-#: data/core/macros/abilities.cfg:442 data/scenario-test.cfg:408
+#: data/core/macros/abilities.cfg:442
 msgid ""
 "When a unit is killed by a Plague attack, that unit is replaced with a "
 "Walking Corpse on the same side as the unit with the Plague attack. This "
@@ -5086,19 +5083,7 @@ msgstr "长夜(3)"
 msgid "The Long Dark (4)"
 msgstr "长夜(4)"
 
-#: data/core/macros/special-notes.cfg:6 src/help/help_topic_generators.cpp:564
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "Special Notes:"
-msgid "Special Notes:"
-msgstr ""
-"\n"
-"\n"
-"特别提示："
-
-#: data/core/macros/special-notes.cfg:17
+#: data/core/macros/special-notes.cfg:12
 #, fuzzy
 #| msgid ""
 #| " Spirits have very unusual resistances to damage, and move quite slowly "
@@ -5108,7 +5093,7 @@ msgid ""
 "open water."
 msgstr " 亡魂们对伤害具有相当不寻常的抗性，但在开阔的水面上移动得很慢。"
 
-#: data/core/macros/special-notes.cfg:20
+#: data/core/macros/special-notes.cfg:15
 #, fuzzy
 #| msgid ""
 #| " This unit’s arcane attack deals tremendous damage to magical creatures, "
@@ -5119,19 +5104,19 @@ msgid ""
 msgstr ""
 " 此单位的奥术攻击对魔法造物将造成巨大的伤害，对某些凡间的生物也是如此。"
 
-#: data/core/macros/special-notes.cfg:27
+#: data/core/macros/special-notes.cfg:22
 #, fuzzy
 #| msgid " This unit is capable of basic healing."
 msgid "This unit is capable of basic healing."
 msgstr " 此单位能够简单疗伤。"
 
-#: data/core/macros/special-notes.cfg:30
+#: data/core/macros/special-notes.cfg:25
 #, fuzzy
 #| msgid " This unit is capable of rapid healing."
 msgid "This unit is capable of rapid healing."
 msgstr " 此单位能够迅速疗伤。"
 
-#: data/core/macros/special-notes.cfg:33
+#: data/core/macros/special-notes.cfg:28
 #, fuzzy
 #| msgid ""
 #| " This unit is capable of healing those around it, and curing them of "
@@ -5140,7 +5125,7 @@ msgid ""
 "This unit is capable of healing those around it, and curing them of poison."
 msgstr " 此单位能够对周围的单位进行疗伤，并解除中毒状态。"
 
-#: data/core/macros/special-notes.cfg:36
+#: data/core/macros/special-notes.cfg:31
 #, fuzzy
 #| msgid ""
 #| " This unit is capable of neutralizing the effects of poison in units "
@@ -5150,7 +5135,7 @@ msgid ""
 "it."
 msgstr " 此单位能够解除周围单位的中毒状态。"
 
-#: data/core/macros/special-notes.cfg:39
+#: data/core/macros/special-notes.cfg:34
 #, fuzzy
 #| msgid ""
 #| " This unit regenerates, which allows it to heal as though always "
@@ -5160,7 +5145,7 @@ msgid ""
 "a village."
 msgstr " 此单位能够再生，这让它可以治疗自己，就像一直驻扎在村庄里一样。"
 
-#: data/core/macros/special-notes.cfg:42
+#: data/core/macros/special-notes.cfg:37
 #, fuzzy
 #| msgid ""
 #| " The steadiness of this unit reduces damage from some attacks, but only "
@@ -5171,7 +5156,7 @@ msgid ""
 msgstr ""
 " 此单位的坚忍不拔使得它遭到某些攻击时受到的伤害下降，但这只在防御时有效。"
 
-#: data/core/macros/special-notes.cfg:45
+#: data/core/macros/special-notes.cfg:40
 #, fuzzy
 #| msgid ""
 #| " The leadership of this unit enables adjacent units of the same side to "
@@ -5184,7 +5169,7 @@ msgstr ""
 " 此单位的领导能力使得相邻的本方单位在战斗中造成更多的伤害，虽然这只对比此单位"
 "等级低的单位有效。"
 
-#: data/core/macros/special-notes.cfg:48
+#: data/core/macros/special-notes.cfg:43
 #, fuzzy
 #| msgid ""
 #| " This unit’s skill at skirmishing allows it to ignore enemies’ zones of "
@@ -5196,13 +5181,13 @@ msgstr ""
 " 此单位的散兵作战能力使其能够忽视敌人的控制区域，因而能毫无阻碍地在他们附近移"
 "动。"
 
-#: data/core/macros/special-notes.cfg:51
+#: data/core/macros/special-notes.cfg:46
 #, fuzzy
 #| msgid " Illumination increases the lighting level in adjacent areas."
 msgid "Illumination increases the lighting level in adjacent areas."
 msgstr " 照明能力会提升相邻区域的明亮程度。"
 
-#: data/core/macros/special-notes.cfg:54
+#: data/core/macros/special-notes.cfg:49
 #, fuzzy
 #| msgid ""
 #| " This unit can use one move to teleport between any two empty villages "
@@ -5214,7 +5199,7 @@ msgstr ""
 " 此单位可以花费一次移动机会，在任意两个属于此单位所属阵营的无人驻守的村庄之间"
 "传送。"
 
-#: data/core/macros/special-notes.cfg:57
+#: data/core/macros/special-notes.cfg:52
 #, fuzzy
 #| msgid ""
 #| " In woodlands, this unit’s ambush skill renders it invisible to enemies "
@@ -5226,14 +5211,14 @@ msgstr ""
 " 在树林中，此单位的伏击技能让敌人无法察觉到其存在，除非敌人与其紧邻。此单位在"
 "攻击时也会暴露自己。"
 
-#: data/core/macros/special-notes.cfg:60
+#: data/core/macros/special-notes.cfg:55
 #, fuzzy
 #| msgid ""
 #| " This unit is able to hide at night, leaving no trace of its presence."
 msgid "This unit is able to hide at night, leaving no trace of its presence."
 msgstr " 此单位能够在夜晚隐匿身形，不留蛛丝马迹。"
 
-#: data/core/macros/special-notes.cfg:63
+#: data/core/macros/special-notes.cfg:58
 #, fuzzy
 #| msgid ""
 #| " This unit can hide in villages (with the exception of water villages), "
@@ -5245,7 +5230,7 @@ msgstr ""
 " 此单位可以隐藏在村庄里（水中村庄除外）而不会被敌人发觉，除了那些与它相邻的敌"
 "人之外。"
 
-#: data/core/macros/special-notes.cfg:66
+#: data/core/macros/special-notes.cfg:61
 #, fuzzy
 #| msgid ""
 #| " This unit can move unseen in deep water, requiring no air from the "
@@ -5254,7 +5239,7 @@ msgid ""
 "This unit can move unseen in deep water, requiring no air from the surface."
 msgstr " 此单位可以在深水中移动而不被发现，它不需要呼吸水面上的空气。"
 
-#: data/core/macros/special-notes.cfg:69
+#: data/core/macros/special-notes.cfg:64
 #, fuzzy
 #| msgid ""
 #| " This unit gains 1 hitpoint added to its maximum whenever it kills a "
@@ -5264,7 +5249,7 @@ msgid ""
 "unit."
 msgstr " 此单位每杀死一个活体单位就会获得1点额外的最大生命值。"
 
-#: data/core/macros/special-notes.cfg:72
+#: data/core/macros/special-notes.cfg:67
 #, fuzzy
 #| msgid ""
 #| " Whenever its berserk attack is used, this unit continues to push the "
@@ -5275,7 +5260,7 @@ msgid ""
 msgstr ""
 " 无论何时，只要此单位使用狂暴攻击，就将不停战斗，直到它或者它的对手被杀死。"
 
-#: data/core/macros/special-notes.cfg:75
+#: data/core/macros/special-notes.cfg:70
 #, fuzzy
 #| msgid ""
 #| " If there is an enemy of the target on the opposite side of the target "
@@ -5289,7 +5274,7 @@ msgstr ""
 " 如果目标被此单位和其他对其怀有敌意的单位前后包夹，此单位就可以悄悄绕到敌人背"
 "后并背刺之，造成双倍伤害。"
 
-#: data/core/macros/special-notes.cfg:78
+#: data/core/macros/special-notes.cfg:73
 #, fuzzy
 #| msgid ""
 #| " Foes who lose their life to the plague will rise again in unlife, unless "
@@ -5299,7 +5284,7 @@ msgid ""
 "they are standing on a village."
 msgstr " 因瘟疫而丧生的敌人将重生为亡灵，除非他们在村庄里。"
 
-#: data/core/macros/special-notes.cfg:81
+#: data/core/macros/special-notes.cfg:76
 #, fuzzy
 #| msgid ""
 #| " This unit is able to slow its enemies, halving their movement speed and "
@@ -5310,7 +5295,7 @@ msgid ""
 msgstr ""
 " 此单位能够使敌人减速，让他们的移动速度和攻击伤害都减半，直到本回合结束。"
 
-#: data/core/macros/special-notes.cfg:84
+#: data/core/macros/special-notes.cfg:79
 #, fuzzy
 #| msgid ""
 #| " The ability to turn the living to stone makes this unit extremely "
@@ -5319,7 +5304,7 @@ msgid ""
 "The ability to turn the living to stone makes this unit extremely dangerous."
 msgstr " 把活人变成石头的能力使得此单位变得极其危险。"
 
-#: data/core/macros/special-notes.cfg:87
+#: data/core/macros/special-notes.cfg:82
 #, fuzzy
 #| msgid ""
 #| " This unit’s marksmanship gives it a high chance of hitting targeted "
@@ -5330,7 +5315,7 @@ msgid ""
 msgstr ""
 " 此单位的精准射术让它有很高的几率命中被瞄准的敌人，但只有在进攻时有效。"
 
-#: data/core/macros/special-notes.cfg:90
+#: data/core/macros/special-notes.cfg:85
 #, fuzzy
 #| msgid ""
 #| " This unit has magical attacks, which always have a high chance of "
@@ -5340,7 +5325,7 @@ msgid ""
 "opponent."
 msgstr " 此单位拥有魔法攻击，该攻击总是有很高的几率能命中对手。"
 
-#: data/core/macros/special-notes.cfg:93
+#: data/core/macros/special-notes.cfg:88
 #, fuzzy
 #| msgid ""
 #| " The swarming attacks of this unit become less deadly whenever its "
@@ -5350,7 +5335,7 @@ msgid ""
 "are wounded."
 msgstr " 当此单位的成员受伤时，他们的成群攻击就不那么致命了。"
 
-#: data/core/macros/special-notes.cfg:96
+#: data/core/macros/special-notes.cfg:91
 #, fuzzy
 #| msgid ""
 #| " Using a charging attack doubles both damage dealt and received; this "
@@ -5360,7 +5345,7 @@ msgid ""
 "not affect defensive retaliation."
 msgstr " 冲锋攻击将使得输出与受到的伤害都加倍。这不会影响防御时反击的杀伤力。"
 
-#: data/core/macros/special-notes.cfg:99
+#: data/core/macros/special-notes.cfg:94
 #, fuzzy
 #| msgid ""
 #| " During battle, this unit can drain life from victims to renew its own "
@@ -5369,7 +5354,7 @@ msgid ""
 "During battle, this unit can drain life from victims to renew its own health."
 msgstr " 在作战时，此单位能够从受害者身上吸取生命以补充自己的体力。"
 
-#: data/core/macros/special-notes.cfg:102
+#: data/core/macros/special-notes.cfg:97
 #, fuzzy
 #| msgid ""
 #| " The length of this unit’s weapon allows it to strike first in melee, "
@@ -5379,7 +5364,7 @@ msgid ""
 "defense."
 msgstr " 此单位的武器很长，使得他在近战中可以先发制人，甚至在防御时也是如此。"
 
-#: data/core/macros/special-notes.cfg:105
+#: data/core/macros/special-notes.cfg:100
 #, fuzzy
 #| msgid ""
 #| " The victims of this unit’s poison will continually take damage until "
@@ -5391,7 +5376,7 @@ msgstr ""
 " 此单位的毒素的受害者们将持续地受到伤害，直到他们在城镇中疗毒，或者被拥有疗毒"
 "能力的单位疗毒。"
 
-#: data/core/macros/special-notes.cfg:108
+#: data/core/macros/special-notes.cfg:103
 #, fuzzy
 #| msgid ""
 #| " This unit has a defense cap on certain terrain types — it cannot achieve "
@@ -7494,6 +7479,18 @@ msgstr ""
 #: src/help/help_topic_generators.cpp:558
 msgid "Required XP:"
 msgstr ""
+
+#: src/help/help_topic_generators.cpp:564
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "\n"
+#| "Special Notes:"
+msgid "Special Notes:"
+msgstr ""
+"\n"
+"\n"
+"特别提示："
 
 #: src/help/help_topic_generators.cpp:573
 msgid "unit help^Attacks"

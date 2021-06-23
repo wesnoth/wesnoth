@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-06-20 14:49+0300\n"
+"POT-Creation-Date: 2021-06-23 10:17+0300\n"
 "PO-Revision-Date: 2020-01-14 21:10+0100\n"
 "Last-Translator: Merijn de Vet <merijndevet@hotmail.com>\n"
 "Language-Team: Dutch <merijndevet@hotmail.com>\n"
@@ -301,7 +301,6 @@ msgstr "nachtzicht"
 #. [plague]: id=plague, type=Walking Corpse
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:98
 #: data/core/macros/abilities.cfg:430 data/core/macros/abilities.cfg:441
-#: data/scenario-test.cfg:407
 msgid "plague"
 msgstr "ziekte"
 
@@ -339,9 +338,8 @@ msgid "slows"
 msgstr "vertraagt"
 
 #. [resistance]: id=steadfast
-#. [resistance]: id=melee_steadfast
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:119
-#: data/core/macros/abilities.cfg:130 data/scenario-test.cfg:367
+#: data/core/macros/abilities.cfg:130
 msgid "steadfast"
 msgstr "standvastig"
 
@@ -4641,8 +4639,7 @@ msgstr ""
 "in een dorp staat."
 
 #. [resistance]: id=steadfast
-#. [resistance]: id=melee_steadfast
-#: data/core/macros/abilities.cfg:131 data/scenario-test.cfg:368
+#: data/core/macros/abilities.cfg:131
 msgid "female^steadfast"
 msgstr "standvastig"
 
@@ -4934,7 +4931,7 @@ msgstr ""
 "bij Ondoden en eenheden in dorpen."
 
 #. [plague]: id=plague, type=Walking Corpse
-#: data/core/macros/abilities.cfg:442 data/scenario-test.cfg:408
+#: data/core/macros/abilities.cfg:442
 msgid ""
 "When a unit is killed by a Plague attack, that unit is replaced with a "
 "Walking Corpse on the same side as the unit with the Plague attack. This "
@@ -5283,19 +5280,7 @@ msgstr "Het Lange Donker (3)"
 msgid "The Long Dark (4)"
 msgstr "Het Lange Donker (4)"
 
-#: data/core/macros/special-notes.cfg:6 src/help/help_topic_generators.cpp:564
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "Special Notes:"
-msgid "Special Notes:"
-msgstr ""
-"\n"
-"\n"
-"Bijzonderheden:"
-
-#: data/core/macros/special-notes.cfg:17
+#: data/core/macros/special-notes.cfg:12
 #, fuzzy
 #| msgid ""
 #| " Spirits have very unusual resistances to damage, and move quite slowly "
@@ -5307,7 +5292,7 @@ msgstr ""
 " Geesten zijn uitzonderlijk moeilijk te verwonden, maar bewegen traag over "
 "open water."
 
-#: data/core/macros/special-notes.cfg:20
+#: data/core/macros/special-notes.cfg:15
 #, fuzzy
 #| msgid ""
 #| " This unit’s arcane attack deals tremendous damage to magical creatures, "
@@ -5319,19 +5304,19 @@ msgstr ""
 " De witte magie aanval van deze eenheid brengt zware verwondingen toe aan "
 "magische wezens en sommige alledaagse wezens zijn ook niet veilig."
 
-#: data/core/macros/special-notes.cfg:27
+#: data/core/macros/special-notes.cfg:22
 #, fuzzy
 #| msgid " This unit is capable of basic healing."
 msgid "This unit is capable of basic healing."
 msgstr " Deze eenheid kan standaard genezing toepassen."
 
-#: data/core/macros/special-notes.cfg:30
+#: data/core/macros/special-notes.cfg:25
 #, fuzzy
 #| msgid " This unit is capable of rapid healing."
 msgid "This unit is capable of rapid healing."
 msgstr " Deze eenheid kan snelle genezing toepassen."
 
-#: data/core/macros/special-notes.cfg:33
+#: data/core/macros/special-notes.cfg:28
 #, fuzzy
 #| msgid ""
 #| " This unit is capable of healing those around it, and curing them of "
@@ -5340,7 +5325,7 @@ msgid ""
 "This unit is capable of healing those around it, and curing them of poison."
 msgstr " Deze eenheid kan degenen die hem omringen genezen, ook van vergif."
 
-#: data/core/macros/special-notes.cfg:36
+#: data/core/macros/special-notes.cfg:31
 #, fuzzy
 #| msgid ""
 #| " This unit is capable of neutralizing the effects of poison in units "
@@ -5352,7 +5337,7 @@ msgstr ""
 " Deze eenheid kan de effecten van vergif van eenheden om hem heen "
 "neutraliseren."
 
-#: data/core/macros/special-notes.cfg:39
+#: data/core/macros/special-notes.cfg:34
 #, fuzzy
 #| msgid ""
 #| " This unit regenerates, which allows it to heal as though always "
@@ -5364,7 +5349,7 @@ msgstr ""
 " Deze eenheid is herstellend. Hierdoor geneest de eenheid alsof die altijd "
 "in een dorp staat."
 
-#: data/core/macros/special-notes.cfg:42
+#: data/core/macros/special-notes.cfg:37
 #, fuzzy
 #| msgid ""
 #| " The steadiness of this unit reduces damage from some attacks, but only "
@@ -5376,7 +5361,7 @@ msgstr ""
 " De standvastigheid van deze eenheid beperkt verwondingen die hij oploopt, "
 "maar enkel tijdens het verdedigen."
 
-#: data/core/macros/special-notes.cfg:45
+#: data/core/macros/special-notes.cfg:40
 #, fuzzy
 #| msgid ""
 #| " The leadership of this unit enables adjacent units of the same side to "
@@ -5390,7 +5375,7 @@ msgstr ""
 "klappen komen daardoor harder aan bij de vijand. Dit geldt alleen bij "
 "eenheden met een lagere rang."
 
-#: data/core/macros/special-notes.cfg:48
+#: data/core/macros/special-notes.cfg:43
 #, fuzzy
 #| msgid ""
 #| " This unit’s skill at skirmishing allows it to ignore enemies’ zones of "
@@ -5403,13 +5388,13 @@ msgstr ""
 "om de Controlezone van vijanden volledig te negeren en hierdoor ongehinderd "
 "kan bewegen tussen vijandelijke eenheden."
 
-#: data/core/macros/special-notes.cfg:51
+#: data/core/macros/special-notes.cfg:46
 #, fuzzy
 #| msgid " Illumination increases the lighting level in adjacent areas."
 msgid "Illumination increases the lighting level in adjacent areas."
 msgstr " Verlichting verhoogt het lichtniveau van het omringende gebied."
 
-#: data/core/macros/special-notes.cfg:54
+#: data/core/macros/special-notes.cfg:49
 #, fuzzy
 #| msgid ""
 #| " This unit can use one move to teleport between any two empty villages "
@@ -5421,7 +5406,7 @@ msgstr ""
 " Deze eenheid kan een verplaatsing gebruiken om te teleporteren tussen twee "
 "lege bevriende dorpen."
 
-#: data/core/macros/special-notes.cfg:57
+#: data/core/macros/special-notes.cfg:52
 #, fuzzy
 #| msgid ""
 #| " In woodlands, this unit’s ambush skill renders it invisible to enemies "
@@ -5434,7 +5419,7 @@ msgstr ""
 "het bos onzichtbaar voor vijanden, behalve als ze direct naast hem staan, of "
 "als de eenheid zichzelf heeft onthuld door aan te vallen."
 
-#: data/core/macros/special-notes.cfg:60
+#: data/core/macros/special-notes.cfg:55
 #, fuzzy
 #| msgid ""
 #| " This unit is able to hide at night, leaving no trace of its presence."
@@ -5443,7 +5428,7 @@ msgstr ""
 " Deze eenheid kan zich 's nachts verstoppen, zonder enige vorm van "
 "aanwezigheid achter te laten."
 
-#: data/core/macros/special-notes.cfg:63
+#: data/core/macros/special-notes.cfg:58
 #, fuzzy
 #| msgid ""
 #| " This unit can hide in villages (with the exception of water villages), "
@@ -5456,7 +5441,7 @@ msgstr ""
 "waterdorpen) en blijft onzichtbaar voor vijanden, tenzij deze naast het dorp "
 "staan."
 
-#: data/core/macros/special-notes.cfg:66
+#: data/core/macros/special-notes.cfg:61
 #, fuzzy
 #| msgid ""
 #| " This unit can move unseen in deep water, requiring no air from the "
@@ -5467,7 +5452,7 @@ msgstr ""
 " Deze eenheid is onzichtbaar in diep water, omdat de eenheid nooit naar de "
 "oppervlakte hoeft om te ademen."
 
-#: data/core/macros/special-notes.cfg:69
+#: data/core/macros/special-notes.cfg:64
 #, fuzzy
 #| msgid ""
 #| " This unit gains 1 hitpoint added to its maximum whenever it kills a "
@@ -5479,7 +5464,7 @@ msgstr ""
 " Het maximaal aantal HP wordt verhoogt met 1 wanneer deze eenheid een "
 "levende eenheid doodt."
 
-#: data/core/macros/special-notes.cfg:72
+#: data/core/macros/special-notes.cfg:67
 #, fuzzy
 #| msgid ""
 #| " Whenever its berserk attack is used, this unit continues to push the "
@@ -5491,7 +5476,7 @@ msgstr ""
 " Als deze eenheid met razernij aanvalt, blijft het gevecht doorgaan tot een "
 "van de twee dood neervalt."
 
-#: data/core/macros/special-notes.cfg:75
+#: data/core/macros/special-notes.cfg:70
 #, fuzzy
 #| msgid ""
 #| " If there is an enemy of the target on the opposite side of the target "
@@ -5506,7 +5491,7 @@ msgstr ""
 "kan deze eenheid in de rug steken, waarbij de toegebrachte schade wordt "
 "verdubbeld."
 
-#: data/core/macros/special-notes.cfg:78
+#: data/core/macros/special-notes.cfg:73
 #, fuzzy
 #| msgid ""
 #| " Foes who lose their life to the plague will rise again in unlife, unless "
@@ -5518,7 +5503,7 @@ msgstr ""
 " Vijanden die aan de pest sterven, komen terug als ondode, tenzij ze in een "
 "dorp staan."
 
-#: data/core/macros/special-notes.cfg:81
+#: data/core/macros/special-notes.cfg:76
 #, fuzzy
 #| msgid ""
 #| " This unit is able to slow its enemies, halving their movement speed and "
@@ -5530,7 +5515,7 @@ msgstr ""
 " Deze eenheid kan zijn vijanden vertragen, waardoor hun snelheid en de "
 "effectiviteit van hun aanvallen gehalveerd worden."
 
-#: data/core/macros/special-notes.cfg:84
+#: data/core/macros/special-notes.cfg:79
 #, fuzzy
 #| msgid ""
 #| " The ability to turn the living to stone makes this unit extremely "
@@ -5541,7 +5526,7 @@ msgstr ""
 " Het vermogen levende wezens in steen te veranderen maakt deze eenheid "
 "extreem gevaarlijk."
 
-#: data/core/macros/special-notes.cfg:87
+#: data/core/macros/special-notes.cfg:82
 #, fuzzy
 #| msgid ""
 #| " This unit’s marksmanship gives it a high chance of hitting targeted "
@@ -5553,7 +5538,7 @@ msgstr ""
 " Deze scherpschutter heeft altijd een hoge kans vijanden te raken wanneer "
 "hij aanvalt."
 
-#: data/core/macros/special-notes.cfg:90
+#: data/core/macros/special-notes.cfg:85
 #, fuzzy
 #| msgid ""
 #| " This unit has magical attacks, which always have a high chance of "
@@ -5564,7 +5549,7 @@ msgid ""
 msgstr ""
 " Deze eenheid heeft magische aanvallen, die altijd een hoge raakkans hebben."
 
-#: data/core/macros/special-notes.cfg:93
+#: data/core/macros/special-notes.cfg:88
 #, fuzzy
 #| msgid ""
 #| " The swarming attacks of this unit become less deadly whenever its "
@@ -5576,7 +5561,7 @@ msgstr ""
 " De zwermaanval van deze eenheid boet aan kracht in wanneer de eenheid "
 "gewond raakt."
 
-#: data/core/macros/special-notes.cfg:96
+#: data/core/macros/special-notes.cfg:91
 #, fuzzy
 #| msgid ""
 #| " Using a charging attack doubles both damage dealt and received; this "
@@ -5588,7 +5573,7 @@ msgstr ""
 " Door een aanval in een stormloop uit te voeren worden zowel toegebrachte "
 "als ontvangen schade verdubbeld; het heeft geen effect op de verdediging."
 
-#: data/core/macros/special-notes.cfg:99
+#: data/core/macros/special-notes.cfg:94
 #, fuzzy
 #| msgid ""
 #| " During battle, this unit can drain life from victims to renew its own "
@@ -5599,7 +5584,7 @@ msgstr ""
 " Tijdens een gevecht heelt deze eenheid door het leven uit zijn slachtoffers "
 "te zuigen."
 
-#: data/core/macros/special-notes.cfg:102
+#: data/core/macros/special-notes.cfg:97
 #, fuzzy
 #| msgid ""
 #| " The length of this unit’s weapon allows it to strike first in melee, "
@@ -5611,7 +5596,7 @@ msgstr ""
 " Door zijn lange wapen is de eerste klap in een gevecht altijd voor deze "
 "eenheid, ook wanneer hij verdedigt."
 
-#: data/core/macros/special-notes.cfg:105
+#: data/core/macros/special-notes.cfg:100
 #, fuzzy
 #| msgid ""
 #| " The victims of this unit’s poison will continually take damage until "
@@ -5623,7 +5608,7 @@ msgstr ""
 " Een vergiftigd slachtoffer verzwakt elke beurt tot hij genezen kan worden "
 "in een dorp, of door een genezer."
 
-#: data/core/macros/special-notes.cfg:108
+#: data/core/macros/special-notes.cfg:103
 #, fuzzy
 #| msgid ""
 #| " This unit has a defense cap on certain terrain types — it cannot achieve "
@@ -7978,6 +7963,18 @@ msgstr "Alliantie: "
 #| msgid "Required XP: "
 msgid "Required XP:"
 msgstr "Benodigde XP: "
+
+#: src/help/help_topic_generators.cpp:564
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "\n"
+#| "Special Notes:"
+msgid "Special Notes:"
+msgstr ""
+"\n"
+"\n"
+"Bijzonderheden:"
 
 #: src/help/help_topic_generators.cpp:573
 msgid "unit help^Attacks"

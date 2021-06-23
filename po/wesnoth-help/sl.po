@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sl\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-06-20 14:49+0300\n"
+"POT-Creation-Date: 2021-06-23 10:17+0300\n"
 "PO-Revision-Date: 2010-10-04 14:32+0100\n"
 "Last-Translator: Klemen Košir <klemen913@gmail.com>\n"
 "Language-Team: Slovenian\n"
@@ -312,7 +312,6 @@ msgstr "nočni zalezovalec"
 #. [plague]: id=plague, type=Walking Corpse
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:98
 #: data/core/macros/abilities.cfg:430 data/core/macros/abilities.cfg:441
-#: data/scenario-test.cfg:407
 #, fuzzy
 msgid "plague"
 msgstr "kuga"
@@ -354,9 +353,8 @@ msgid "slows"
 msgstr "upočasni"
 
 #. [resistance]: id=steadfast
-#. [resistance]: id=melee_steadfast
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:119
-#: data/core/macros/abilities.cfg:130 data/scenario-test.cfg:367
+#: data/core/macros/abilities.cfg:130
 #, fuzzy
 msgid "steadfast"
 msgstr "neomajnost"
@@ -4017,8 +4015,7 @@ msgid ""
 msgstr ""
 
 #. [resistance]: id=steadfast
-#. [resistance]: id=melee_steadfast
-#: data/core/macros/abilities.cfg:131 data/scenario-test.cfg:368
+#: data/core/macros/abilities.cfg:131
 #, fuzzy
 msgid "female^steadfast"
 msgstr "neomajnost"
@@ -4310,7 +4307,7 @@ msgstr ""
 "v vaseh.)"
 
 #. [plague]: id=plague, type=Walking Corpse
-#: data/core/macros/abilities.cfg:442 data/scenario-test.cfg:408
+#: data/core/macros/abilities.cfg:442
 #, fuzzy
 msgid ""
 "When a unit is killed by a Plague attack, that unit is replaced with a "
@@ -4705,12 +4702,7 @@ msgstr ""
 msgid "The Long Dark (4)"
 msgstr ""
 
-#: data/core/macros/special-notes.cfg:6 src/help/help_topic_generators.cpp:564
-#, fuzzy
-msgid "Special Notes:"
-msgstr "Posebnosti orožja"
-
-#: data/core/macros/special-notes.cfg:17
+#: data/core/macros/special-notes.cfg:12
 #, fuzzy
 msgid ""
 "Spirits have very unusual resistances to damage, and move quite slowly over "
@@ -4719,7 +4711,7 @@ msgstr ""
 " Duhovi imajo nenavadne odpornosti in se čez vodna telesa premikajo precej "
 "počasi."
 
-#: data/core/macros/special-notes.cfg:20
+#: data/core/macros/special-notes.cfg:15
 #, fuzzy
 msgid ""
 "This unit’s arcane attack deals tremendous damage to magical creatures, and "
@@ -4728,17 +4720,17 @@ msgstr ""
 " Sveti napad te enote nemrtvim povzroči neznansko škodo; nekaj pa tudi "
 "živečim bitjem."
 
-#: data/core/macros/special-notes.cfg:27
+#: data/core/macros/special-notes.cfg:22
 #, fuzzy
 msgid "This unit is capable of basic healing."
 msgstr " Ta enota je sposobna osnovnega zdravljenja."
 
-#: data/core/macros/special-notes.cfg:30
+#: data/core/macros/special-notes.cfg:25
 #, fuzzy
 msgid "This unit is capable of rapid healing."
 msgstr " Ta enota je sposobna osnovnega zdravljenja."
 
-#: data/core/macros/special-notes.cfg:33
+#: data/core/macros/special-notes.cfg:28
 #, fuzzy
 msgid ""
 "This unit is capable of healing those around it, and curing them of poison."
@@ -4746,7 +4738,7 @@ msgstr ""
 " Ta enota je sposobna zdraviti druge okoli sebe in jih po potrebi "
 "razstrupiti."
 
-#: data/core/macros/special-notes.cfg:36
+#: data/core/macros/special-notes.cfg:31
 #, fuzzy
 msgid ""
 "This unit is capable of neutralizing the effects of poison in units around "
@@ -4755,19 +4747,19 @@ msgstr ""
 " Ta enota je sposobna osnovnega zdravljenja, a lahko le zadrži učinke "
 "strupa, ne more ga odstraniti."
 
-#: data/core/macros/special-notes.cfg:39
+#: data/core/macros/special-notes.cfg:34
 msgid ""
 "This unit regenerates, which allows it to heal as though always stationed in "
 "a village."
 msgstr ""
 
-#: data/core/macros/special-notes.cfg:42
+#: data/core/macros/special-notes.cfg:37
 msgid ""
 "The steadiness of this unit reduces damage from some attacks, but only while "
 "defending."
 msgstr ""
 
-#: data/core/macros/special-notes.cfg:45
+#: data/core/macros/special-notes.cfg:40
 #, fuzzy
 msgid ""
 "The leadership of this unit enables adjacent units of the same side to deal "
@@ -4776,17 +4768,17 @@ msgstr ""
 "Voditeljske sposobnosti te enote omogočajo, da se okoliške prijateljske "
 "enote bojujejo bolje, vendar to velja le za enote nižjega nivoja."
 
-#: data/core/macros/special-notes.cfg:48
+#: data/core/macros/special-notes.cfg:43
 msgid ""
 "This unit’s skill at skirmishing allows it to ignore enemies’ zones of "
 "control and thus move unhindered around them."
 msgstr ""
 
-#: data/core/macros/special-notes.cfg:51
+#: data/core/macros/special-notes.cfg:46
 msgid "Illumination increases the lighting level in adjacent areas."
 msgstr ""
 
-#: data/core/macros/special-notes.cfg:54
+#: data/core/macros/special-notes.cfg:49
 #, fuzzy
 msgid ""
 "This unit can use one move to teleport between any two empty villages "
@@ -4796,20 +4788,20 @@ msgstr ""
 "Ta enota se lahko teleportira med zavezniškimi vasmi, tako da porabi en "
 "premik."
 
-#: data/core/macros/special-notes.cfg:57
+#: data/core/macros/special-notes.cfg:52
 msgid ""
 "In woodlands, this unit’s ambush skill renders it invisible to enemies "
 "unless it is immediately adjacent or has revealed itself by attacking."
 msgstr ""
 
-#: data/core/macros/special-notes.cfg:60
+#: data/core/macros/special-notes.cfg:55
 #, fuzzy
 msgid "This unit is able to hide at night, leaving no trace of its presence."
 msgstr ""
 " Ta enota je sposobna zdraviti druge okoli sebe in jih po potrebi "
 "razstrupiti."
 
-#: data/core/macros/special-notes.cfg:63
+#: data/core/macros/special-notes.cfg:58
 #, fuzzy
 msgid ""
 "This unit can hide in villages (with the exception of water villages), and "
@@ -4821,24 +4813,24 @@ msgstr ""
 "Sovražne enote te enote, ko je v globoki vodi, ne morejo niti videti niti "
 "napasti, razen takoj po njenem napadu ali če so poleg nje."
 
-#: data/core/macros/special-notes.cfg:66
+#: data/core/macros/special-notes.cfg:61
 msgid ""
 "This unit can move unseen in deep water, requiring no air from the surface."
 msgstr ""
 
-#: data/core/macros/special-notes.cfg:69
+#: data/core/macros/special-notes.cfg:64
 msgid ""
 "This unit gains 1 hitpoint added to its maximum whenever it kills a living "
 "unit."
 msgstr ""
 
-#: data/core/macros/special-notes.cfg:72
+#: data/core/macros/special-notes.cfg:67
 msgid ""
 "Whenever its berserk attack is used, this unit continues to push the attack "
 "until either it or its enemy lies dead."
 msgstr ""
 
-#: data/core/macros/special-notes.cfg:75
+#: data/core/macros/special-notes.cfg:70
 #, fuzzy
 msgid ""
 "If there is an enemy of the target on the opposite side of the target while "
@@ -4849,65 +4841,65 @@ msgstr ""
 "Ta napad naredi dvojno škodo, če je na tarčini nasprotni strani njej "
 "sovražna enota, ki ni onesposobljena (npr. okamenela)."
 
-#: data/core/macros/special-notes.cfg:78
+#: data/core/macros/special-notes.cfg:73
 msgid ""
 "Foes who lose their life to the plague will rise again in unlife, unless "
 "they are standing on a village."
 msgstr ""
 
-#: data/core/macros/special-notes.cfg:81
+#: data/core/macros/special-notes.cfg:76
 msgid ""
 "This unit is able to slow its enemies, halving their movement speed and "
 "attack damage until they end a turn."
 msgstr ""
 
-#: data/core/macros/special-notes.cfg:84
+#: data/core/macros/special-notes.cfg:79
 msgid ""
 "The ability to turn the living to stone makes this unit extremely dangerous."
 msgstr ""
 
-#: data/core/macros/special-notes.cfg:87
+#: data/core/macros/special-notes.cfg:82
 msgid ""
 "This unit’s marksmanship gives it a high chance of hitting targeted enemies, "
 "but only on the attack."
 msgstr ""
 
-#: data/core/macros/special-notes.cfg:90
+#: data/core/macros/special-notes.cfg:85
 msgid ""
 "This unit has magical attacks, which always have a high chance of hitting an "
 "opponent."
 msgstr ""
 
-#: data/core/macros/special-notes.cfg:93
+#: data/core/macros/special-notes.cfg:88
 msgid ""
 "The swarming attacks of this unit become less deadly whenever its members "
 "are wounded."
 msgstr ""
 
-#: data/core/macros/special-notes.cfg:96
+#: data/core/macros/special-notes.cfg:91
 msgid ""
 "Using a charging attack doubles both damage dealt and received; this does "
 "not affect defensive retaliation."
 msgstr ""
 
-#: data/core/macros/special-notes.cfg:99
+#: data/core/macros/special-notes.cfg:94
 msgid ""
 "During battle, this unit can drain life from victims to renew its own health."
 msgstr ""
 
-#: data/core/macros/special-notes.cfg:102
+#: data/core/macros/special-notes.cfg:97
 msgid ""
 "The length of this unit’s weapon allows it to strike first in melee, even in "
 "defense."
 msgstr ""
 
-#: data/core/macros/special-notes.cfg:105
+#: data/core/macros/special-notes.cfg:100
 msgid ""
 "The victims of this unit’s poison will continually take damage until they "
 "can be cured in town or by a unit which cures."
 msgstr ""
 
-#: data/core/macros/special-notes.cfg:108
+#: data/core/macros/special-notes.cfg:103
 msgid ""
 "This unit has a defense cap on certain terrain types — it cannot achieve a "
 "higher defense rating on mixed terrains with such terrain types."
@@ -6586,6 +6578,11 @@ msgstr "Poravnava: "
 #, fuzzy
 msgid "Required XP:"
 msgstr "Potrebni XP: "
+
+#: src/help/help_topic_generators.cpp:564
+#, fuzzy
+msgid "Special Notes:"
+msgstr "Posebnosti orožja"
 
 #: src/help/help_topic_generators.cpp:573
 msgid "unit help^Attacks"

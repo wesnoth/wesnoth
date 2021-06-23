@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: he\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-06-20 14:49+0300\n"
+"POT-Creation-Date: 2021-06-23 10:17+0300\n"
 "PO-Revision-Date: 2009-07-13 00:55+0300\n"
 "Last-Translator: Oron Peled <oron@actcom.co.il>\n"
 "Language-Team: Hebrew\n"
@@ -335,7 +335,6 @@ msgstr "התגנבות לילה"
 #. [plague]: id=plague, type=Walking Corpse
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:98
 #: data/core/macros/abilities.cfg:430 data/core/macros/abilities.cfg:441
-#: data/scenario-test.cfg:407
 msgid "plague"
 msgstr "מגיפה"
 
@@ -373,9 +372,8 @@ msgid "slows"
 msgstr "מאט"
 
 #. [resistance]: id=steadfast
-#. [resistance]: id=melee_steadfast
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:119
-#: data/core/macros/abilities.cfg:130 data/scenario-test.cfg:367
+#: data/core/macros/abilities.cfg:130
 msgid "steadfast"
 msgstr "קור רוח"
 
@@ -4109,8 +4107,7 @@ msgid ""
 msgstr " יחידה זו מתחדשת, ויכולה להתרפאות כאילו היא תמיד נמצאת בכפר."
 
 #. [resistance]: id=steadfast
-#. [resistance]: id=melee_steadfast
-#: data/core/macros/abilities.cfg:131 data/scenario-test.cfg:368
+#: data/core/macros/abilities.cfg:131
 msgid "female^steadfast"
 msgstr "קור רוח"
 
@@ -4479,7 +4476,7 @@ msgstr ""
 "היחידה עם התקפת המגפה. (הדבר לא עובד על אל-מתים או יחידות בכפרים)."
 
 #. [plague]: id=plague, type=Walking Corpse
-#: data/core/macros/abilities.cfg:442 data/scenario-test.cfg:408
+#: data/core/macros/abilities.cfg:442
 #, fuzzy
 #| msgid ""
 #| "Plague:\n"
@@ -4920,19 +4917,7 @@ msgstr ""
 msgid "The Long Dark (4)"
 msgstr ""
 
-#: data/core/macros/special-notes.cfg:6 src/help/help_topic_generators.cpp:564
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "Special Notes:"
-msgid "Special Notes:"
-msgstr ""
-"\n"
-"\n"
-"מיוחד:"
-
-#: data/core/macros/special-notes.cfg:17
+#: data/core/macros/special-notes.cfg:12
 #, fuzzy
 #| msgid ""
 #| " Spirits have very unusual resistances to damage, and move quite slowly "
@@ -4943,7 +4928,7 @@ msgid ""
 msgstr ""
 " לרוחות יש כושר חריג להתנגדות לנזק. הן זזות באופן איטי מעל מים פתוחים. "
 
-#: data/core/macros/special-notes.cfg:20
+#: data/core/macros/special-notes.cfg:15
 #, fuzzy
 #| msgid ""
 #| " This unit’s arcane attack deals tremendous damage to magical creatures, "
@@ -4955,19 +4940,19 @@ msgstr ""
 " התקפות הקסם של יחידה זו מורידות נזק עצום ליצורים קסומים, וגם קצת לאלו "
 "הרגילים."
 
-#: data/core/macros/special-notes.cfg:27
+#: data/core/macros/special-notes.cfg:22
 #, fuzzy
 #| msgid " This unit is capable of basic healing."
 msgid "This unit is capable of basic healing."
 msgstr " יחידה זו יכולה לרפא באופן בסיסי. "
 
-#: data/core/macros/special-notes.cfg:30
+#: data/core/macros/special-notes.cfg:25
 #, fuzzy
 #| msgid " This unit is capable of basic healing."
 msgid "This unit is capable of rapid healing."
 msgstr " יחידה זו יכולה לרפא באופן בסיסי. "
 
-#: data/core/macros/special-notes.cfg:33
+#: data/core/macros/special-notes.cfg:28
 #, fuzzy
 #| msgid ""
 #| " This unit is capable of healing those around it, and curing them of "
@@ -4976,7 +4961,7 @@ msgid ""
 "This unit is capable of healing those around it, and curing them of poison."
 msgstr " יחידה זו יכולה לרפא את אלו שלידיה מפגעים או מרעל. "
 
-#: data/core/macros/special-notes.cfg:36
+#: data/core/macros/special-notes.cfg:31
 #, fuzzy
 #| msgid ""
 #| " This unit is capable of neutralizing the effects of poison in units "
@@ -4986,7 +4971,7 @@ msgid ""
 "it."
 msgstr " יחידה זו יכולה לרפא את אלו שלידיה מרעל. "
 
-#: data/core/macros/special-notes.cfg:39
+#: data/core/macros/special-notes.cfg:34
 #, fuzzy
 #| msgid ""
 #| " This unit regenerates, which allows it to heal as though always "
@@ -4996,7 +4981,7 @@ msgid ""
 "a village."
 msgstr " יחידה זו מתחדשת, ויכולה להתרפאות כאילו היא תמיד נמצאת בכפר."
 
-#: data/core/macros/special-notes.cfg:42
+#: data/core/macros/special-notes.cfg:37
 #, fuzzy
 #| msgid ""
 #| " The steadiness of this unit reduces damage from some attacks, but only "
@@ -5008,7 +4993,7 @@ msgstr ""
 " קשיחותה של יחידה זו מורידה נזק מחלק מההתקפות, אבל רק עם היחידה לא התחילה את "
 "הקרב. "
 
-#: data/core/macros/special-notes.cfg:45
+#: data/core/macros/special-notes.cfg:40
 #, fuzzy
 #| msgid ""
 #| " The leadership of this unit enables adjacent units of the same side to "
@@ -5021,7 +5006,7 @@ msgstr ""
 " מנהיגותה של יחידה זו זה מאפשרת ליחידות סמוכות מדרגה נמוכה יותר להוריד יותר "
 "נזק בקרב."
 
-#: data/core/macros/special-notes.cfg:48
+#: data/core/macros/special-notes.cfg:43
 #, fuzzy
 #| msgid ""
 #| " This unit’s skill at skirmishing allows it to ignore enemies’ zones of "
@@ -5033,13 +5018,13 @@ msgstr ""
 " מיומנות יחידה זו בהסתננות מאפשרת לה להתעלם מאזורי שליטה וכף לעבור בינם בלי "
 "להאט. "
 
-#: data/core/macros/special-notes.cfg:51
+#: data/core/macros/special-notes.cfg:46
 #, fuzzy
 #| msgid " Illumination increases the lighting level in adjacent areas."
 msgid "Illumination increases the lighting level in adjacent areas."
 msgstr " יחידה זו מאירה על משבצות סמוכות, וכך מגדילה את כוחם של יחידות סדר. "
 
-#: data/core/macros/special-notes.cfg:54
+#: data/core/macros/special-notes.cfg:49
 #, fuzzy
 #| msgid ""
 #| " This unit can use one move to teleport between any two empty villages "
@@ -5051,7 +5036,7 @@ msgstr ""
 " יחידה זו יכולה לעבור בין כל שני כפרים ידידותיים ריקים תוך שימוש באחת "
 "מנקודות התנועה שלה."
 
-#: data/core/macros/special-notes.cfg:57
+#: data/core/macros/special-notes.cfg:52
 #, fuzzy
 #| msgid ""
 #| " In woodlands, this unit’s ambush skill renders it invisible to enemies "
@@ -5063,14 +5048,14 @@ msgstr ""
 " ביערות, יכולת המארב של יחידה זו הופכת אותה לבלתי נראית לאויבים אלא עם הם "
 "סמוכים או עם היחידה תקפה בתור האחרון."
 
-#: data/core/macros/special-notes.cfg:60
+#: data/core/macros/special-notes.cfg:55
 #, fuzzy
 #| msgid ""
 #| " This unit is able to hide at night, leaving no trace of its presence."
 msgid "This unit is able to hide at night, leaving no trace of its presence."
 msgstr " יחידה זאת יכולה להתחבא בלילות בלי להשאיר סימן."
 
-#: data/core/macros/special-notes.cfg:63
+#: data/core/macros/special-notes.cfg:58
 #, fuzzy
 #| msgid ""
 #| " This unit can hide in villages (with the exception of water villages), "
@@ -5082,7 +5067,7 @@ msgstr ""
 " יחידה זו יכולה להתחבא בכפרים (חוץ מכפרי מים), ולא להראות ע\"י אויביהם, חוץ "
 "מאלו הנמצאים ממש לידם."
 
-#: data/core/macros/special-notes.cfg:66
+#: data/core/macros/special-notes.cfg:61
 #, fuzzy
 #| msgid ""
 #| " This unit can move unseen in deep water, requiring no air from the "
@@ -5091,7 +5076,7 @@ msgid ""
 "This unit can move unseen in deep water, requiring no air from the surface."
 msgstr " יחידה זו יכולה ללככת על הקרקעית במים עמוקים כך שאויביה לא יראו אותה."
 
-#: data/core/macros/special-notes.cfg:69
+#: data/core/macros/special-notes.cfg:64
 #, fuzzy
 #| msgid ""
 #| " This unit gains 1 hitpoint added to its maximum whenever it kills a "
@@ -5101,7 +5086,7 @@ msgid ""
 "unit."
 msgstr " יחידה זו מקבלת נק\"פ אחד יותר לנק\"פ המלא כשהי הורגת יצור חי."
 
-#: data/core/macros/special-notes.cfg:72
+#: data/core/macros/special-notes.cfg:67
 #, fuzzy
 #| msgid ""
 #| " Whenever its berserk attack is used, this unit continues to push the "
@@ -5111,7 +5096,7 @@ msgid ""
 "until either it or its enemy lies dead."
 msgstr " כשיחידה זו משתמשת בהתקפת טירוף קרב, הקרב ממשיף עד שאחת מהיחידות מתות."
 
-#: data/core/macros/special-notes.cfg:75
+#: data/core/macros/special-notes.cfg:70
 #, fuzzy
 #| msgid ""
 #| " If there is an enemy of the target on the opposite side of the target "
@@ -5125,7 +5110,7 @@ msgstr ""
 " אם יחידה זו מאגפת את המטרה עם יחידה אחרת העויינת למטרה, יחידה זו יכולה "
 "לדקור את מטרתה בגב ולהוריד נזק כפול בקרבות שנפתחו ע\"י יחידה זו."
 
-#: data/core/macros/special-notes.cfg:78
+#: data/core/macros/special-notes.cfg:73
 #, fuzzy
 #| msgid ""
 #| " Foes who lose their life to the plague will rise again in unlife, unless "
@@ -5135,7 +5120,7 @@ msgid ""
 "they are standing on a village."
 msgstr " אויבים שאיבדו את חייהם למגיפה יחזרו כאל-מתים עם הם לא נמצאים בכפר."
 
-#: data/core/macros/special-notes.cfg:81
+#: data/core/macros/special-notes.cfg:76
 #, fuzzy
 #| msgid ""
 #| " This unit is able to slow its enemies, halving their movement speed and "
@@ -5147,7 +5132,7 @@ msgstr ""
 " יחידה זו יכולה להאט את אויביה, וכח לחצות אד תנועתם ונזק התקפותיהם עד לסוף "
 "תורם."
 
-#: data/core/macros/special-notes.cfg:84
+#: data/core/macros/special-notes.cfg:79
 #, fuzzy
 #| msgid ""
 #| " The ability to turn the living to stone makes this unit extremely "
@@ -5156,7 +5141,7 @@ msgid ""
 "The ability to turn the living to stone makes this unit extremely dangerous."
 msgstr " יכולתה של יחידה זו להפוך את החיים לאבן הופכת אותה ליריב מסוכן. "
 
-#: data/core/macros/special-notes.cfg:87
+#: data/core/macros/special-notes.cfg:82
 #, fuzzy
 #| msgid ""
 #| " This unit’s marksmanship gives it a high chance of hitting targeted "
@@ -5167,7 +5152,7 @@ msgid ""
 msgstr ""
 " כשרון הצלפות של יחידה זו נותן לה סיכוי גבוה לפגוע באויבים עם היא פתחה באש."
 
-#: data/core/macros/special-notes.cfg:90
+#: data/core/macros/special-notes.cfg:85
 #, fuzzy
 #| msgid ""
 #| " The unit has magical attacks, which always have a high chance of hitting "
@@ -5177,7 +5162,7 @@ msgid ""
 "opponent."
 msgstr "התקפותיו של יחידה זו הינם קסומות, ולכן תמיד מקבלות סיכוי גבוה לפגוע."
 
-#: data/core/macros/special-notes.cfg:93
+#: data/core/macros/special-notes.cfg:88
 #, fuzzy
 #| msgid ""
 #| " The swarming attacks of this unit become less deadly whenever its "
@@ -5187,7 +5172,7 @@ msgid ""
 "are wounded."
 msgstr " התקפת נחיל זה הופכת לחלשה יותר שחלקים ממנו נפגעים."
 
-#: data/core/macros/special-notes.cfg:96
+#: data/core/macros/special-notes.cfg:91
 #, fuzzy
 #| msgid ""
 #| " Using a charging attack doubles both damage dealt and received; this "
@@ -5199,7 +5184,7 @@ msgstr ""
 " התקפות הסתערות מכפילות גם את הנזק שהם מורידים וגם את זה שהם סופגים בזמן "
 "התקפה."
 
-#: data/core/macros/special-notes.cfg:99
+#: data/core/macros/special-notes.cfg:94
 #, fuzzy
 #| msgid ""
 #| " During battle, this unit can drain life from victims to renew its own "
@@ -5208,7 +5193,7 @@ msgid ""
 "During battle, this unit can drain life from victims to renew its own health."
 msgstr " במהלך הקרב, יחידה זו יכולה לינוק חיים מקורבנותיה כדי לחדש את בריאותה."
 
-#: data/core/macros/special-notes.cfg:102
+#: data/core/macros/special-notes.cfg:97
 #, fuzzy
 #| msgid ""
 #| " The length of this unit’s weapon allows it to strike first in melee, "
@@ -5219,7 +5204,7 @@ msgid ""
 msgstr ""
 " אורכו של הנשק שיחידה זו נושאת נותן לה את המכה הראשונה, אפילו בזמן הגנה."
 
-#: data/core/macros/special-notes.cfg:105
+#: data/core/macros/special-notes.cfg:100
 #, fuzzy
 #| msgid ""
 #| " The victims of this unit’s poison will continually take damage until "
@@ -5231,7 +5216,7 @@ msgstr ""
 " הנפגעים מהרעל שיחידה זו נושאת יפגעו בצורה מתמשכת עד שיגיעו לכפר או ליחידה "
 "המסוגלת לרפאות רעלים."
 
-#: data/core/macros/special-notes.cfg:108
+#: data/core/macros/special-notes.cfg:103
 msgid ""
 "This unit has a defense cap on certain terrain types — it cannot achieve a "
 "higher defense rating on mixed terrains with such terrain types."
@@ -6926,6 +6911,18 @@ msgstr "נטייה: "
 #| msgid "Required XP: "
 msgid "Required XP:"
 msgstr "נק\"פ נדרש: "
+
+#: src/help/help_topic_generators.cpp:564
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "\n"
+#| "Special Notes:"
+msgid "Special Notes:"
+msgstr ""
+"\n"
+"\n"
+"מיוחד:"
 
 #: src/help/help_topic_generators.cpp:573
 msgid "unit help^Attacks"

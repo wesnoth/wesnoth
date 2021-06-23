@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth_Help-1.12\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-06-20 14:49+0300\n"
+"POT-Creation-Date: 2021-06-23 10:17+0300\n"
 "PO-Revision-Date: 2021-01-22 14:47+0100\n"
 "Last-Translator: Syll <syll-dev@laposte.net>\n"
 "Language-Team: français <wesnoth@ml.free.fr>\n"
@@ -315,7 +315,6 @@ msgstr "chasseur nocturne"
 #. [plague]: id=plague, type=Walking Corpse
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:98
 #: data/core/macros/abilities.cfg:430 data/core/macros/abilities.cfg:441
-#: data/scenario-test.cfg:407
 msgid "plague"
 msgstr "peste"
 
@@ -353,9 +352,8 @@ msgid "slows"
 msgstr "ralentissement"
 
 #. [resistance]: id=steadfast
-#. [resistance]: id=melee_steadfast
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:119
-#: data/core/macros/abilities.cfg:130 data/scenario-test.cfg:367
+#: data/core/macros/abilities.cfg:130
 msgid "steadfast"
 msgstr "inébranlable"
 
@@ -5281,8 +5279,7 @@ msgstr ""
 "comme si elle était toujours stationnée dans un village."
 
 #. [resistance]: id=steadfast
-#. [resistance]: id=melee_steadfast
-#: data/core/macros/abilities.cfg:131 data/scenario-test.cfg:368
+#: data/core/macros/abilities.cfg:131
 msgid "female^steadfast"
 msgstr "inébranlable"
 
@@ -5564,7 +5561,7 @@ msgstr ""
 "vivants ou sur les unités stationnées dans les villages."
 
 #. [plague]: id=plague, type=Walking Corpse
-#: data/core/macros/abilities.cfg:442 data/scenario-test.cfg:408
+#: data/core/macros/abilities.cfg:442
 msgid ""
 "When a unit is killed by a Plague attack, that unit is replaced with a "
 "Walking Corpse on the same side as the unit with the Plague attack. This "
@@ -5911,19 +5908,7 @@ msgstr "La longue nuit (3)"
 msgid "The Long Dark (4)"
 msgstr "La longue nuit (4)"
 
-#: data/core/macros/special-notes.cfg:6 src/help/help_topic_generators.cpp:564
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "Special Notes:"
-msgid "Special Notes:"
-msgstr ""
-"\n"
-"\n"
-"Remarques :"
-
-#: data/core/macros/special-notes.cfg:17
+#: data/core/macros/special-notes.cfg:12
 #, fuzzy
 #| msgid ""
 #| " Spirits have very unusual resistances to damage, and move quite slowly "
@@ -5935,7 +5920,7 @@ msgstr ""
 " Les fantômes ont une résistance aux dégâts assez inhabituelle et se meuvent "
 "assez lentement sur l'eau."
 
-#: data/core/macros/special-notes.cfg:20
+#: data/core/macros/special-notes.cfg:15
 #, fuzzy
 #| msgid ""
 #| " This unit’s arcane attack deals tremendous damage to magical creatures, "
@@ -5947,19 +5932,19 @@ msgstr ""
 " L'attaque sacrée de cette unité provoque des dégâts considérables sur les "
 "créatures magiques et aussi quelques dégâts sur les créatures non magiques."
 
-#: data/core/macros/special-notes.cfg:27
+#: data/core/macros/special-notes.cfg:22
 #, fuzzy
 #| msgid " This unit is capable of basic healing."
 msgid "This unit is capable of basic healing."
 msgstr " Cette unité est capable de prodiguer des soins de base."
 
-#: data/core/macros/special-notes.cfg:30
+#: data/core/macros/special-notes.cfg:25
 #, fuzzy
 #| msgid " This unit is capable of rapid healing."
 msgid "This unit is capable of rapid healing."
 msgstr " Cette unité est capable de prodiguer des soins de base."
 
-#: data/core/macros/special-notes.cfg:33
+#: data/core/macros/special-notes.cfg:28
 #, fuzzy
 #| msgid ""
 #| " This unit is capable of healing those around it, and curing them of "
@@ -5970,7 +5955,7 @@ msgstr ""
 " Cette unité est capable de soigner les unités environnantes et de les "
 "guérir du poison."
 
-#: data/core/macros/special-notes.cfg:36
+#: data/core/macros/special-notes.cfg:31
 #, fuzzy
 #| msgid ""
 #| " This unit is capable of neutralizing the effects of poison in units "
@@ -5982,7 +5967,7 @@ msgstr ""
 " Cette unité est capable de neutraliser les effets du poison sur les unités "
 "adjacentes."
 
-#: data/core/macros/special-notes.cfg:39
+#: data/core/macros/special-notes.cfg:34
 #, fuzzy
 #| msgid ""
 #| " This unit regenerates, which allows it to heal as though always "
@@ -5994,7 +5979,7 @@ msgstr ""
 " Cette unité se régénère naturellement, ce qui lui permet de se soigner "
 "comme si elle était toujours stationnée dans un village."
 
-#: data/core/macros/special-notes.cfg:42
+#: data/core/macros/special-notes.cfg:37
 #, fuzzy
 #| msgid ""
 #| " The steadiness of this unit reduces damage from some attacks, but only "
@@ -6006,7 +5991,7 @@ msgstr ""
 " Cette unité inébranlable reçoit moitié moins de dégâts lorsqu'elle se "
 "défend."
 
-#: data/core/macros/special-notes.cfg:45
+#: data/core/macros/special-notes.cfg:40
 #, fuzzy
 #| msgid ""
 #| " The leadership of this unit enables adjacent units of the same side to "
@@ -6020,7 +6005,7 @@ msgstr ""
 "plus de dégâts lors d'un combat. Cela ne s'applique qu'aux unités de niveau "
 "inférieur."
 
-#: data/core/macros/special-notes.cfg:48
+#: data/core/macros/special-notes.cfg:43
 #, fuzzy
 #| msgid ""
 #| " This unit’s skill at skirmishing allows it to ignore enemies’ zones of "
@@ -6032,13 +6017,13 @@ msgstr ""
 " La capacité de tirailleur de cette unité lui permet d'ignorer les zones de "
 "contrôle ennemies et donc de se faufiler dans les lignes ennemies."
 
-#: data/core/macros/special-notes.cfg:51
+#: data/core/macros/special-notes.cfg:46
 #, fuzzy
 #| msgid " Illumination increases the lighting level in adjacent areas."
 msgid "Illumination increases the lighting level in adjacent areas."
 msgstr " L'illumination éclaire les zones adjacentes."
 
-#: data/core/macros/special-notes.cfg:54
+#: data/core/macros/special-notes.cfg:49
 #, fuzzy
 #| msgid ""
 #| " This unit can use one move to teleport between any two empty villages "
@@ -6050,7 +6035,7 @@ msgstr ""
 " Cette unité peut se téléporter instantanément entre deux villages d'un même "
 "camp pour un point de mouvement."
 
-#: data/core/macros/special-notes.cfg:57
+#: data/core/macros/special-notes.cfg:52
 #, fuzzy
 #| msgid ""
 #| " In woodlands, this unit’s ambush skill renders it invisible to enemies "
@@ -6063,7 +6048,7 @@ msgstr ""
 "ennemis, sauf s'ils sont présents dans les zones adjacentes ou si l'unité a "
 "révélé sa présence en attaquant."
 
-#: data/core/macros/special-notes.cfg:60
+#: data/core/macros/special-notes.cfg:55
 #, fuzzy
 #| msgid ""
 #| " This unit is able to hide at night, leaving no trace of its presence."
@@ -6071,7 +6056,7 @@ msgid "This unit is able to hide at night, leaving no trace of its presence."
 msgstr ""
 " Cette unité peut se cacher la nuit, sans laisser de trace de sa présence."
 
-#: data/core/macros/special-notes.cfg:63
+#: data/core/macros/special-notes.cfg:58
 #, fuzzy
 #| msgid ""
 #| " This unit can hide in villages (with the exception of water villages), "
@@ -6083,7 +6068,7 @@ msgstr ""
 " Cette unité peut se cacher dans les villages (à l'exception des villages "
 "aquatiques), restant invisible de ses ennemis, sauf s'ils sont juste à coté."
 
-#: data/core/macros/special-notes.cfg:66
+#: data/core/macros/special-notes.cfg:61
 #, fuzzy
 #| msgid ""
 #| " This unit can move unseen in deep water, requiring no air from the "
@@ -6094,7 +6079,7 @@ msgstr ""
 " Cette unité peut se mouvoir sans être vue dans les eaux profondes, sans "
 "avoir besoin d'air de la surface."
 
-#: data/core/macros/special-notes.cfg:69
+#: data/core/macros/special-notes.cfg:64
 #, fuzzy
 #| msgid ""
 #| " This unit gains 1 hitpoint added to its maximum whenever it kills a "
@@ -6106,7 +6091,7 @@ msgstr ""
 " Cette unité gagne un point de vie rajouté à chaque fois qu'elle tue une "
 "unité vivante. Ce point de vie est aussi ajouté au maximum."
 
-#: data/core/macros/special-notes.cfg:72
+#: data/core/macros/special-notes.cfg:67
 #, fuzzy
 #| msgid ""
 #| " Whenever its berserk attack is used, this unit continues to push the "
@@ -6118,7 +6103,7 @@ msgstr ""
 " Quand son attaque de fureur berserk est utilisée, cette unité se bat "
 "jusqu'à sa mort ou jusqu'à celle de son adversaire."
 
-#: data/core/macros/special-notes.cfg:75
+#: data/core/macros/special-notes.cfg:70
 #, fuzzy
 #| msgid ""
 #| " If there is an enemy of the target on the opposite side of the target "
@@ -6133,7 +6118,7 @@ msgstr ""
 "l'attaquer en la frappant dans le dos et infliger des dégâts doublés en se "
 "glissant derrière elle."
 
-#: data/core/macros/special-notes.cfg:78
+#: data/core/macros/special-notes.cfg:73
 #, fuzzy
 #| msgid ""
 #| " Foes who lose their life to the plague will rise again in unlife, unless "
@@ -6145,7 +6130,7 @@ msgstr ""
 " Ceux qui meurent de la peste deviendront des morts-vivants, sauf s'ils sont "
 "dans un village."
 
-#: data/core/macros/special-notes.cfg:81
+#: data/core/macros/special-notes.cfg:76
 #, fuzzy
 #| msgid ""
 #| " This unit is able to slow its enemies, halving their movement speed and "
@@ -6157,7 +6142,7 @@ msgstr ""
 " Cette unité peut ralentir ses ennemis, réduisant de moitié leur déplacement "
 "et leurs dégâts jusqu'à la fin de leur tour."
 
-#: data/core/macros/special-notes.cfg:84
+#: data/core/macros/special-notes.cfg:79
 #, fuzzy
 #| msgid ""
 #| " The ability to turn the living to stone makes this unit extremely "
@@ -6167,7 +6152,7 @@ msgid ""
 msgstr ""
 " Cette capacité de pétrification rend cette unité extrêmement dangereuse."
 
-#: data/core/macros/special-notes.cfg:87
+#: data/core/macros/special-notes.cfg:82
 #, fuzzy
 #| msgid ""
 #| " This unit’s marksmanship gives it a high chance of hitting targeted "
@@ -6179,7 +6164,7 @@ msgstr ""
 " Le tir d'élite donne à cette unité de fortes chances de toucher l'ennemi, "
 "mais seulement en attaque."
 
-#: data/core/macros/special-notes.cfg:90
+#: data/core/macros/special-notes.cfg:85
 #, fuzzy
 #| msgid ""
 #| " This unit has magical attacks, which always have a high chance of "
@@ -6191,7 +6176,7 @@ msgstr ""
 " L'attaque à distance de cette unité est magique et a toujours de fortes "
 "chances de toucher sa cible."
 
-#: data/core/macros/special-notes.cfg:93
+#: data/core/macros/special-notes.cfg:88
 #, fuzzy
 #| msgid ""
 #| " The swarming attacks of this unit become less deadly whenever its "
@@ -6203,7 +6188,7 @@ msgstr ""
 " L'attaque multiple de cette unité devient moins efficace lorsqu'elle est "
 "blessée."
 
-#: data/core/macros/special-notes.cfg:96
+#: data/core/macros/special-notes.cfg:91
 #, fuzzy
 #| msgid ""
 #| " Using a charging attack doubles both damage dealt and received; this "
@@ -6215,7 +6200,7 @@ msgstr ""
 " La charge double à la fois les dégâts infligés et subis. Cela n'affecte pas "
 "la riposte."
 
-#: data/core/macros/special-notes.cfg:99
+#: data/core/macros/special-notes.cfg:94
 #, fuzzy
 #| msgid ""
 #| " During battle, this unit can drain life from victims to renew its own "
@@ -6226,7 +6211,7 @@ msgstr ""
 " Pendant un combat, cette unité draine la vie de ses victimes pour "
 "renouveler la sienne."
 
-#: data/core/macros/special-notes.cfg:102
+#: data/core/macros/special-notes.cfg:97
 #, fuzzy
 #| msgid ""
 #| " The length of this unit’s weapon allows it to strike first in melee, "
@@ -6238,7 +6223,7 @@ msgstr ""
 " La longueur de son arme permet à cette unité d'attaquer en premier au corps "
 "à corps, en attaque comme en défense."
 
-#: data/core/macros/special-notes.cfg:105
+#: data/core/macros/special-notes.cfg:100
 #, fuzzy
 #| msgid ""
 #| " The victims of this unit’s poison will continually take damage until "
@@ -6251,7 +6236,7 @@ msgstr ""
 "jusqu'à ce qu'elles soient guéries dans un village ou par une unité "
 "guérisseuse."
 
-#: data/core/macros/special-notes.cfg:108
+#: data/core/macros/special-notes.cfg:103
 #, fuzzy
 #| msgid ""
 #| " This unit has a defense cap on certain terrain types — it cannot achieve "
@@ -8590,6 +8575,18 @@ msgstr "Alignement : "
 #| msgid "Required XP: "
 msgid "Required XP:"
 msgstr "Expérience requise : "
+
+#: src/help/help_topic_generators.cpp:564
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "\n"
+#| "Special Notes:"
+msgid "Special Notes:"
+msgstr ""
+"\n"
+"\n"
+"Remarques :"
 
 #: src/help/help_topic_generators.cpp:573
 msgid "unit help^Attacks"

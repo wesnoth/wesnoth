@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: en@shaw\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-06-20 14:49+0300\n"
+"POT-Creation-Date: 2021-06-23 10:17+0300\n"
 "PO-Revision-Date: 2009-10-11 21:15-0400\n"
 "Last-Translator: Arc Riley <arcriley@ubuntu.com>\n"
 "Language-Team: Shavian English <ubuntu-l10n-en-shaw@lists.launchpad.net>\n"
@@ -331,7 +331,6 @@ msgstr "𐑯𐑲𐑑𐑕𐑑𐑷𐑒"
 #. [plague]: id=plague, type=Walking Corpse
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:98
 #: data/core/macros/abilities.cfg:430 data/core/macros/abilities.cfg:441
-#: data/scenario-test.cfg:407
 msgid "plague"
 msgstr "𐑐𐑤𐑱𐑜"
 
@@ -369,9 +368,8 @@ msgid "slows"
 msgstr "𐑕𐑤𐑴𐑟"
 
 #. [resistance]: id=steadfast
-#. [resistance]: id=melee_steadfast
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:119
-#: data/core/macros/abilities.cfg:130 data/scenario-test.cfg:367
+#: data/core/macros/abilities.cfg:130
 msgid "steadfast"
 msgstr "𐑕𐑑𐑧𐑛𐑓𐑭𐑕𐑑"
 
@@ -4140,8 +4138,7 @@ msgid ""
 msgstr "𐑞𐑦𐑕 𐑿𐑯𐑦𐑑 𐑮𐑰𐑡𐑧𐑯𐑻𐑱𐑑𐑕, 𐑢𐑦𐑗 𐑩𐑤𐑬𐑟 𐑦𐑑 𐑑 𐑣𐑰𐑤 𐑨𐑟 𐑞𐑴 𐑷𐑤𐑢𐑱𐑟 𐑕𐑑𐑱𐑖𐑩𐑯𐑛 𐑦𐑯 𐑩 𐑝𐑦𐑤𐑦𐑡."
 
 #. [resistance]: id=steadfast
-#. [resistance]: id=melee_steadfast
-#: data/core/macros/abilities.cfg:131 data/scenario-test.cfg:368
+#: data/core/macros/abilities.cfg:131
 msgid "female^steadfast"
 msgstr "𐑕𐑑𐑧𐑛𐑓𐑭𐑕𐑑"
 
@@ -4516,7 +4513,7 @@ msgstr ""
 "𐑕𐑱𐑥 𐑕𐑲𐑛 𐑨𐑟 𐑞 𐑿𐑯𐑦𐑑 𐑢𐑦𐑞 𐑞 𐑐𐑤𐑱𐑜 𐑩𐑑𐑨𐑒. 𐑞𐑦𐑕 𐑛𐑳𐑟𐑯𐑑 𐑢𐑻𐑒 𐑪𐑯 𐑳𐑯𐑛𐑧𐑛 𐑹 𐑿𐑯𐑦𐑑𐑕 𐑦𐑯 𐑝𐑦𐑤𐑦𐑡𐑦𐑟."
 
 #. [plague]: id=plague, type=Walking Corpse
-#: data/core/macros/abilities.cfg:442 data/scenario-test.cfg:408
+#: data/core/macros/abilities.cfg:442
 #, fuzzy
 #| msgid ""
 #| "Plague:\n"
@@ -4961,19 +4958,7 @@ msgstr ""
 msgid "The Long Dark (4)"
 msgstr ""
 
-#: data/core/macros/special-notes.cfg:6 src/help/help_topic_generators.cpp:564
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "Special Notes:"
-msgid "Special Notes:"
-msgstr ""
-"\n"
-"\n"
-"𐑕𐑐𐑧𐑖𐑩𐑤 𐑯𐑴𐑑𐑕:"
-
-#: data/core/macros/special-notes.cfg:17
+#: data/core/macros/special-notes.cfg:12
 #, fuzzy
 #| msgid ""
 #| " Spirits have very unusual resistances to damage, and move quite slowly "
@@ -4984,7 +4969,7 @@ msgid ""
 msgstr ""
 "𐑕𐑐𐑦𐑮𐑦𐑑𐑕 𐑣𐑨𐑝 𐑝𐑧𐑮𐑦 𐑳𐑯𐑿𐑠𐑫𐑩𐑤 𐑮𐑦𐑟𐑦𐑕𐑑𐑩𐑯𐑕𐑩𐑟 𐑑 𐑛𐑨𐑥𐑦𐑡, 𐑯 𐑥𐑵𐑝 𐑒𐑢𐑲𐑑 𐑕𐑤𐑴𐑤𐑦 𐑴𐑝𐑼 𐑴𐑐𐑩𐑯 𐑢𐑷𐑑𐑼."
 
-#: data/core/macros/special-notes.cfg:20
+#: data/core/macros/special-notes.cfg:15
 #, fuzzy
 #| msgid ""
 #| " This unit’s arcane attack deals tremendous damage to magical creatures, "
@@ -4996,19 +4981,19 @@ msgstr ""
 "𐑞𐑦𐑕 𐑿𐑯𐑦𐑑𐑕 𐑸𐑒𐑱𐑯 𐑩𐑑𐑨𐑒 𐑛𐑰𐑤𐑟 𐑑𐑮𐑦𐑥𐑧𐑯𐑛𐑩𐑕 𐑛𐑨𐑥𐑦𐑡 𐑑 𐑥𐑨𐑡𐑦𐑒𐑩𐑤 𐑒𐑮𐑰𐑗𐑼𐑟, 𐑯 𐑰𐑝𐑩𐑯 𐑕𐑳𐑥 𐑑 "
 "𐑥𐑩𐑯𐑛𐑱𐑯 𐑒𐑮𐑰𐑗𐑼𐑟."
 
-#: data/core/macros/special-notes.cfg:27
+#: data/core/macros/special-notes.cfg:22
 #, fuzzy
 #| msgid " This unit is capable of basic healing."
 msgid "This unit is capable of basic healing."
 msgstr "𐑞𐑦𐑕 𐑿𐑯𐑦𐑑 𐑦𐑟 𐑒𐑱𐑐𐑩𐑚𐑩𐑤 𐑝 𐑚𐑱𐑕𐑦𐑒 𐑣𐑰𐑤𐑦𐑙."
 
-#: data/core/macros/special-notes.cfg:30
+#: data/core/macros/special-notes.cfg:25
 #, fuzzy
 #| msgid " This unit is capable of basic healing."
 msgid "This unit is capable of rapid healing."
 msgstr "𐑞𐑦𐑕 𐑿𐑯𐑦𐑑 𐑦𐑟 𐑒𐑱𐑐𐑩𐑚𐑩𐑤 𐑝 𐑚𐑱𐑕𐑦𐑒 𐑣𐑰𐑤𐑦𐑙."
 
-#: data/core/macros/special-notes.cfg:33
+#: data/core/macros/special-notes.cfg:28
 #, fuzzy
 #| msgid ""
 #| " This unit is capable of healing those around it, and curing them of "
@@ -5017,7 +5002,7 @@ msgid ""
 "This unit is capable of healing those around it, and curing them of poison."
 msgstr "𐑞𐑦𐑕 𐑿𐑯𐑦𐑑 𐑦𐑟 𐑒𐑱𐑐𐑩𐑚𐑩𐑤 𐑝 𐑣𐑰𐑤𐑦𐑙 𐑞𐑴𐑟 𐑩𐑮𐑬𐑯𐑛 𐑦𐑑, 𐑯 𐑒𐑘𐑫𐑼𐑦𐑙 𐑞𐑧𐑥 𐑝 𐑐𐑶𐑟𐑩𐑯."
 
-#: data/core/macros/special-notes.cfg:36
+#: data/core/macros/special-notes.cfg:31
 #, fuzzy
 #| msgid ""
 #| " This unit is capable of neutralizing the effects of poison in units "
@@ -5027,7 +5012,7 @@ msgid ""
 "it."
 msgstr "𐑞𐑦𐑕 𐑿𐑯𐑦𐑑 𐑦𐑟 𐑒𐑱𐑐𐑩𐑚𐑩𐑤 𐑝 𐑯𐑵𐑑𐑮𐑩𐑤𐑲𐑟𐑦𐑙 𐑞 𐑦𐑓𐑧𐑒𐑑𐑕 𐑝 𐑐𐑶𐑟𐑩𐑯 𐑦𐑯 𐑿𐑯𐑦𐑑𐑕 𐑩𐑮𐑬𐑯𐑛 𐑦𐑑."
 
-#: data/core/macros/special-notes.cfg:39
+#: data/core/macros/special-notes.cfg:34
 #, fuzzy
 #| msgid ""
 #| " This unit regenerates, which allows it to heal as though always "
@@ -5037,7 +5022,7 @@ msgid ""
 "a village."
 msgstr "𐑞𐑦𐑕 𐑿𐑯𐑦𐑑 𐑮𐑰𐑡𐑧𐑯𐑻𐑱𐑑𐑕, 𐑢𐑦𐑗 𐑩𐑤𐑬𐑟 𐑦𐑑 𐑑 𐑣𐑰𐑤 𐑨𐑟 𐑞𐑴 𐑷𐑤𐑢𐑱𐑟 𐑕𐑑𐑱𐑖𐑩𐑯𐑛 𐑦𐑯 𐑩 𐑝𐑦𐑤𐑦𐑡."
 
-#: data/core/macros/special-notes.cfg:42
+#: data/core/macros/special-notes.cfg:37
 #, fuzzy
 #| msgid ""
 #| " The steadiness of this unit reduces damage from some attacks, but only "
@@ -5048,7 +5033,7 @@ msgid ""
 msgstr ""
 "𐑞 𐑕𐑑𐑧𐑛𐑰𐑯𐑦𐑕 𐑝 𐑞𐑦𐑕 𐑿𐑯𐑦𐑑 𐑮𐑦𐑛𐑿𐑕𐑩𐑟 𐑛𐑨𐑥𐑦𐑡 𐑓𐑮𐑪𐑥 𐑕𐑳𐑥 𐑩𐑑𐑨𐑒𐑕, 𐑚𐑳𐑑 𐑴𐑯𐑤𐑦 𐑢𐑲𐑤 𐑛𐑦𐑓𐑧𐑯𐑛𐑦𐑙."
 
-#: data/core/macros/special-notes.cfg:45
+#: data/core/macros/special-notes.cfg:40
 #, fuzzy
 #| msgid ""
 #| " The leadership of this unit enables adjacent units of the same side to "
@@ -5061,7 +5046,7 @@ msgstr ""
 "𐑞 𐑤𐑰𐑛𐑼𐑖𐑦𐑐 𐑝 𐑞𐑦𐑕 𐑿𐑯𐑦𐑑 𐑦𐑯𐑱𐑚𐑩𐑤𐑟 𐑩𐑡𐑱𐑕𐑩𐑯𐑑 𐑿𐑯𐑦𐑑𐑕 𐑝 𐑞 𐑕𐑱𐑥 𐑕𐑲𐑛 𐑑 𐑛𐑰𐑤 𐑥𐑹 𐑛𐑨𐑥𐑦𐑡 𐑦𐑯 "
 "𐑒𐑪𐑥𐑚𐑨𐑑, 𐑞𐑴 𐑞𐑦𐑕 𐑴𐑯𐑤𐑦 𐑩𐑐𐑤𐑲𐑟 𐑑 𐑿𐑯𐑦𐑑𐑕 𐑝 𐑤𐑴𐑼 𐑤𐑧𐑝𐑩𐑤."
 
-#: data/core/macros/special-notes.cfg:48
+#: data/core/macros/special-notes.cfg:43
 #, fuzzy
 #| msgid ""
 #| " This unit’s skill at skirmishing allows it to ignore enemies’ zones of "
@@ -5073,13 +5058,13 @@ msgstr ""
 "𐑞𐑦𐑕 𐑿𐑯𐑦𐑑𐑕 𐑕𐑒𐑦𐑤 𐑨𐑑 𐑕𐑒𐑻𐑥𐑦𐑖𐑦𐑙 𐑩𐑤𐑬𐑟 𐑦𐑑 𐑑 𐑦𐑜𐑯𐑹 𐑧𐑯𐑦𐑥𐑦𐑟' 𐑟𐑴𐑯𐑟 𐑝 𐑒𐑩𐑯𐑑𐑮𐑴𐑤 𐑯 𐑞𐑳𐑕 𐑥𐑵𐑝 "
 "𐑩𐑯𐑣𐑦𐑯𐑛𐑻𐑛 𐑩𐑮𐑬𐑯𐑛 𐑞𐑧𐑥."
 
-#: data/core/macros/special-notes.cfg:51
+#: data/core/macros/special-notes.cfg:46
 #, fuzzy
 #| msgid " Illumination increases the lighting level in adjacent areas."
 msgid "Illumination increases the lighting level in adjacent areas."
 msgstr "𐑦𐑤𐑵𐑥𐑩𐑯𐑱𐑖𐑩𐑯 𐑦𐑯𐑒𐑮𐑰𐑕𐑩𐑟 𐑞 𐑤𐑲𐑑𐑦𐑙 𐑤𐑧𐑝𐑩𐑤 𐑦𐑯 𐑩𐑡𐑱𐑕𐑩𐑯𐑑 𐑺𐑰𐑩𐑟."
 
-#: data/core/macros/special-notes.cfg:54
+#: data/core/macros/special-notes.cfg:49
 #, fuzzy
 #| msgid ""
 #| " This unit can use one move to teleport between any two empty villages "
@@ -5091,7 +5076,7 @@ msgstr ""
 "𐑞𐑦𐑕 𐑿𐑯𐑦𐑑 𐑒𐑨𐑯 𐑿𐑕 𐑢𐑳𐑯 𐑥𐑵𐑝 𐑑 𐑑𐑧𐑤𐑩𐑐𐑹𐑑 𐑚𐑦𐑑𐑢𐑰𐑯 𐑧𐑯𐑦 𐑑𐑵 𐑧𐑥𐑐𐑑𐑦 𐑝𐑦𐑤𐑦𐑡𐑦𐑟 𐑒𐑩𐑯𐑑𐑮𐑴𐑤𐑛 𐑚𐑲 "
 "𐑦𐑑𐑕 𐑕𐑲𐑛."
 
-#: data/core/macros/special-notes.cfg:57
+#: data/core/macros/special-notes.cfg:52
 #, fuzzy
 #| msgid ""
 #| " In woodlands, this unit’s ambush skill renders it invisible to enemies "
@@ -5103,14 +5088,14 @@ msgstr ""
 "𐑦𐑯 𐑢𐑫𐑛𐑤𐑨𐑯𐑛𐑟, 𐑞𐑦𐑕 𐑿𐑯𐑦𐑑𐑕 𐑨𐑥𐑚𐑫𐑖 𐑕𐑒𐑦𐑤 𐑮𐑧𐑯𐑛𐑻𐑟 𐑦𐑑 𐑦𐑯𐑝𐑦𐑕𐑦𐑚𐑩𐑤 𐑑 𐑧𐑯𐑦𐑥𐑦𐑟 𐑳𐑯𐑤𐑧𐑕 𐑦𐑑 𐑦𐑟 "
 "𐑦𐑥𐑰𐑛𐑾𐑑𐑤𐑰 𐑩𐑡𐑱𐑕𐑩𐑯𐑑 𐑹 𐑣𐑨𐑟 𐑮𐑦𐑝𐑰𐑤𐑛 𐑦𐑑𐑕𐑧𐑤𐑓 𐑚𐑲 𐑩𐑑𐑨𐑒𐑦𐑙."
 
-#: data/core/macros/special-notes.cfg:60
+#: data/core/macros/special-notes.cfg:55
 #, fuzzy
 #| msgid ""
 #| " This unit is able to hide at night, leaving no trace of its presence."
 msgid "This unit is able to hide at night, leaving no trace of its presence."
 msgstr "𐑞𐑦𐑕 𐑿𐑯𐑦𐑑 𐑦𐑟 𐑱𐑚𐑩𐑤 𐑑 𐑣𐑲𐑛 𐑨𐑑 𐑯𐑲𐑑, 𐑤𐑰𐑝𐑦𐑙 𐑯𐑴 𐑑𐑮𐑱𐑕 𐑝 𐑦𐑑𐑕 𐑐𐑮𐑧𐑟𐑩𐑯𐑕."
 
-#: data/core/macros/special-notes.cfg:63
+#: data/core/macros/special-notes.cfg:58
 #, fuzzy
 #| msgid ""
 #| " This unit can hide in villages (with the exception of water villages), "
@@ -5122,7 +5107,7 @@ msgstr ""
 "𐑞𐑦𐑕 𐑿𐑯𐑦𐑑 𐑒𐑨𐑯 𐑣𐑲𐑛 𐑦𐑯 𐑝𐑦𐑤𐑦𐑡𐑦𐑟 (𐑢𐑦𐑞 𐑞 𐑦𐑒𐑕𐑧𐑐𐑖𐑩𐑯 𐑝 𐑢𐑷𐑑𐑼 𐑝𐑦𐑤𐑦𐑡𐑦𐑟), 𐑯 𐑮𐑦𐑥𐑱𐑯 "
 "𐑩𐑯𐑛𐑦𐑑𐑧𐑒𐑑𐑦𐑛 𐑚𐑲 𐑦𐑑𐑕 𐑧𐑯𐑦𐑥𐑦𐑟, 𐑦𐑒𐑕𐑧𐑐𐑑 𐑚𐑲 𐑞𐑴𐑟 𐑕𐑑𐑨𐑯𐑛𐑦𐑙 𐑯𐑧𐑒𐑕𐑑 𐑑 𐑦𐑑."
 
-#: data/core/macros/special-notes.cfg:66
+#: data/core/macros/special-notes.cfg:61
 #, fuzzy
 #| msgid ""
 #| " This unit can move unseen in deep water, requiring no air from the "
@@ -5131,7 +5116,7 @@ msgid ""
 "This unit can move unseen in deep water, requiring no air from the surface."
 msgstr "𐑞𐑦𐑕 𐑿𐑯𐑦𐑑 𐑒𐑨𐑯 𐑥𐑵𐑝 𐑩𐑯𐑕𐑰𐑯 𐑦𐑯 𐑛𐑰𐑐 𐑢𐑷𐑑𐑼, 𐑮𐑦𐑒𐑢𐑲𐑼𐑦𐑙 𐑯𐑴 𐑺 𐑓𐑮𐑪𐑥 𐑞 𐑕𐑻𐑓𐑦𐑕."
 
-#: data/core/macros/special-notes.cfg:69
+#: data/core/macros/special-notes.cfg:64
 #, fuzzy
 #| msgid ""
 #| " This unit gains 1 hitpoint added to its maximum whenever it kills a "
@@ -5142,7 +5127,7 @@ msgid ""
 msgstr ""
 "𐑞𐑦𐑕 𐑿𐑯𐑦𐑑 𐑜𐑱𐑯𐑟 1 𐑣𐑦𐑑𐑐𐑶𐑯𐑑 𐑨𐑛𐑩𐑛 𐑑 𐑦𐑑𐑕 𐑥𐑨𐑒𐑕𐑦𐑥𐑩𐑥 𐑢𐑧𐑯𐑧𐑝𐑼 𐑦𐑑 𐑒𐑦𐑤𐑟 𐑩 𐑤𐑦𐑝𐑦𐑙 𐑿𐑯𐑦𐑑."
 
-#: data/core/macros/special-notes.cfg:72
+#: data/core/macros/special-notes.cfg:67
 #, fuzzy
 #| msgid ""
 #| " Whenever its berserk attack is used, this unit continues to push the "
@@ -5154,7 +5139,7 @@ msgstr ""
 "𐑢𐑧𐑯𐑧𐑝𐑼 𐑦𐑑𐑕 𐑚𐑻𐑕𐑻𐑒 𐑩𐑑𐑨𐑒 𐑦𐑟 𐑫𐑸𐑹𐑴𐑖𐑱𐑿𐑟𐑛, 𐑞𐑦𐑕 𐑿𐑯𐑦𐑑 𐑒𐑩𐑯𐑑𐑦𐑯𐑿𐑟 𐑑 𐑐𐑫𐑖 𐑞 𐑩𐑑𐑨𐑒 𐑳𐑯𐑑𐑦𐑤 𐑲𐑞𐑼 "
 "𐑦𐑑 𐑹 𐑦𐑑𐑕 𐑧𐑯𐑩𐑥𐑦 𐑤𐑲𐑟 𐑛𐑧𐑛."
 
-#: data/core/macros/special-notes.cfg:75
+#: data/core/macros/special-notes.cfg:70
 #, fuzzy
 #| msgid ""
 #| " If there is an enemy of the target on the opposite side of the target "
@@ -5168,7 +5153,7 @@ msgstr ""
 "𐑦𐑓 𐑞𐑺 𐑦𐑟 𐑩𐑯 𐑧𐑯𐑩𐑥𐑦 𐑝 𐑞 𐑑𐑸𐑜𐑧𐑑 𐑪𐑯 𐑞 𐑪𐑐𐑴𐑕𐑦𐑑 𐑕𐑲𐑛 𐑝 𐑞 𐑑𐑸𐑜𐑧𐑑 𐑢𐑲𐑤 𐑩𐑑𐑨𐑒𐑦𐑙 𐑦𐑑, 𐑞𐑦𐑕 "
 "𐑿𐑯𐑦𐑑 𐑥𐑱 𐑚𐑨𐑒𐑕𐑑𐑨𐑚, 𐑦𐑯𐑓𐑤𐑦𐑒𐑑𐑦𐑙 𐑛𐑳𐑚𐑩𐑤 𐑛𐑨𐑥𐑦𐑡 𐑚𐑲 𐑒𐑮𐑰𐑐𐑦𐑙 𐑩𐑮𐑬𐑯𐑛 𐑚𐑦𐑣𐑲𐑯𐑛 𐑞𐑨𐑑 𐑧𐑯𐑩𐑥𐑦."
 
-#: data/core/macros/special-notes.cfg:78
+#: data/core/macros/special-notes.cfg:73
 #, fuzzy
 #| msgid ""
 #| " Foes who lose their life to the plague will rise again in unlife, unless "
@@ -5180,7 +5165,7 @@ msgstr ""
 "𐑓𐑴𐑟 𐑣𐑵 𐑤𐑵𐑟 𐑞𐑺 𐑤𐑲𐑓 𐑑 𐑞 𐑐𐑤𐑱𐑜 𐑢𐑦𐑤 𐑮𐑲𐑟 𐑩𐑜𐑱𐑯 𐑦𐑯 𐑩𐑯𐑤𐑲𐑓, 𐑳𐑯𐑤𐑧𐑕 𐑞𐑱 𐑸 𐑕𐑑𐑨𐑯𐑛𐑦𐑙 𐑪𐑯 𐑩 "
 "𐑝𐑦𐑤𐑦𐑡."
 
-#: data/core/macros/special-notes.cfg:81
+#: data/core/macros/special-notes.cfg:76
 #, fuzzy
 #| msgid ""
 #| " This unit is able to slow its enemies, halving their movement speed and "
@@ -5192,7 +5177,7 @@ msgstr ""
 "𐑞𐑦𐑕 𐑿𐑯𐑦𐑑 𐑦𐑟 𐑱𐑚𐑩𐑤 𐑑 𐑕𐑤𐑴 𐑦𐑑𐑕 𐑧𐑯𐑦𐑥𐑦𐑟, 𐑣𐑨𐑝𐑦𐑙 𐑞𐑺 𐑥𐑵𐑝𐑥𐑩𐑯𐑑 𐑕𐑐𐑰𐑛 𐑯 𐑩𐑑𐑨𐑒 𐑛𐑨𐑥𐑦𐑡 𐑳𐑯𐑑𐑦𐑤 "
 "𐑞𐑱 𐑧𐑯𐑛 𐑩 𐑑𐑻𐑯."
 
-#: data/core/macros/special-notes.cfg:84
+#: data/core/macros/special-notes.cfg:79
 #, fuzzy
 #| msgid ""
 #| " The ability to turn the living to stone makes this unit extremely "
@@ -5201,7 +5186,7 @@ msgid ""
 "The ability to turn the living to stone makes this unit extremely dangerous."
 msgstr "𐑞 𐑩𐑚𐑦𐑤𐑦𐑑𐑦 𐑑 𐑑𐑻𐑯 𐑞 𐑤𐑦𐑝𐑦𐑙 𐑑 𐑕𐑑𐑴𐑯 𐑥𐑱𐑒𐑕 𐑞𐑦𐑕 𐑿𐑯𐑦𐑑 𐑦𐑒𐑕𐑑𐑮𐑰𐑥𐑤𐑦 𐑛𐑱𐑯𐑡𐑼𐑩𐑕."
 
-#: data/core/macros/special-notes.cfg:87
+#: data/core/macros/special-notes.cfg:82
 #, fuzzy
 #| msgid ""
 #| " This unit’s marksmanship gives it a high chance of hitting targeted "
@@ -5213,7 +5198,7 @@ msgstr ""
 "𐑞𐑦𐑕 𐑿𐑯𐑦𐑑𐑕 𐑥𐑸𐑒𐑕𐑥𐑩𐑯𐑖𐑦𐑐 𐑜𐑦𐑝𐑟 𐑦𐑑 𐑩 𐑣𐑲 𐑗𐑭𐑯𐑕 𐑝 𐑣𐑦𐑑𐑦𐑙 𐑑𐑸𐑜𐑩𐑑𐑦𐑛 𐑧𐑯𐑦𐑥𐑦𐑟, 𐑚𐑳𐑑 𐑴𐑯𐑤𐑦 𐑪𐑯 𐑞 "
 "𐑩𐑑𐑨𐑒."
 
-#: data/core/macros/special-notes.cfg:90
+#: data/core/macros/special-notes.cfg:85
 #, fuzzy
 #| msgid ""
 #| " The unit has magical attacks, which always have a high chance of hitting "
@@ -5223,7 +5208,7 @@ msgid ""
 "opponent."
 msgstr "𐑞 𐑿𐑯𐑦𐑑 𐑣𐑨𐑟 𐑥𐑨𐑡𐑦𐑒𐑩𐑤 𐑩𐑑𐑨𐑒𐑕, 𐑢𐑦𐑗 𐑷𐑤𐑢𐑱𐑟 𐑣𐑨𐑝 𐑩 𐑣𐑲 𐑗𐑭𐑯𐑕 𐑝 𐑣𐑦𐑑𐑦𐑙 𐑩𐑯 𐑩𐑐𐑴𐑯𐑩𐑯𐑑."
 
-#: data/core/macros/special-notes.cfg:93
+#: data/core/macros/special-notes.cfg:88
 #, fuzzy
 #| msgid ""
 #| " The swarming attacks of this unit become less deadly whenever its "
@@ -5233,7 +5218,7 @@ msgid ""
 "are wounded."
 msgstr "𐑞 𐑕𐑢𐑹𐑥𐑦𐑙 𐑩𐑑𐑨𐑒𐑕 𐑝 𐑞𐑦𐑕 𐑿𐑯𐑦𐑑 𐑚𐑦𐑒𐑳𐑥 𐑤𐑧𐑕 𐑛𐑧𐑛𐑤𐑰 𐑢𐑧𐑯𐑧𐑝𐑼 𐑦𐑑𐑕 𐑥𐑧𐑥𐑚𐑼𐑟 𐑸 𐑢𐑵𐑯𐑛𐑩𐑛."
 
-#: data/core/macros/special-notes.cfg:96
+#: data/core/macros/special-notes.cfg:91
 #, fuzzy
 #| msgid ""
 #| " Using a charging attack doubles both damage dealt and received; this "
@@ -5245,7 +5230,7 @@ msgstr ""
 "𐑿𐑟𐑦𐑙 𐑩 𐑗𐑸𐑡𐑦𐑙 𐑩𐑑𐑨𐑒 𐑛𐑩𐑚𐑩𐑤𐑟 𐑚𐑴𐑔 𐑛𐑨𐑥𐑦𐑡 𐑛𐑧𐑤𐑑 𐑯 𐑮𐑦𐑕𐑰𐑝𐑛; 𐑞𐑦𐑕 𐑛𐑴𐑟 𐑯𐑪𐑑 𐑩𐑓𐑧𐑒𐑑 𐑛𐑦𐑓𐑧𐑯𐑕𐑦𐑝 "
 "𐑮𐑰𐑑𐑨𐑤𐑰𐑱𐑖𐑩𐑯."
 
-#: data/core/macros/special-notes.cfg:99
+#: data/core/macros/special-notes.cfg:94
 #, fuzzy
 #| msgid ""
 #| " During battle, this unit can drain life from victims to renew its own "
@@ -5254,7 +5239,7 @@ msgid ""
 "During battle, this unit can drain life from victims to renew its own health."
 msgstr "𐑛𐑘𐑫𐑼𐑦𐑙 𐑚𐑨𐑑𐑩𐑤, 𐑞𐑦𐑕 𐑿𐑯𐑦𐑑 𐑒𐑨𐑯 𐑛𐑮𐑱𐑯 𐑤𐑲𐑓 𐑓𐑮𐑪𐑥 𐑝𐑦𐑒𐑑𐑩𐑥𐑟 𐑑 𐑮𐑰𐑯𐑿 𐑦𐑑𐑕 𐑴𐑯 𐑣𐑧𐑤𐑔."
 
-#: data/core/macros/special-notes.cfg:102
+#: data/core/macros/special-notes.cfg:97
 #, fuzzy
 #| msgid ""
 #| " The length of this unit’s weapon allows it to strike first in melee, "
@@ -5264,7 +5249,7 @@ msgid ""
 "defense."
 msgstr "𐑞 𐑤𐑧𐑙𐑔 𐑝 𐑞𐑦𐑕 𐑿𐑯𐑦𐑑𐑕 𐑢𐑧𐑐𐑩𐑯 𐑩𐑤𐑬𐑟 𐑦𐑑 𐑑 𐑕𐑑𐑮𐑲𐑒 𐑓𐑻𐑕𐑑 𐑦𐑯 𐑥𐑱𐑤𐑱, 𐑰𐑝𐑩𐑯 𐑦𐑯 𐑛𐑦𐑓𐑧𐑯𐑕."
 
-#: data/core/macros/special-notes.cfg:105
+#: data/core/macros/special-notes.cfg:100
 #, fuzzy
 #| msgid ""
 #| " The victims of this unit’s poison will continually take damage until "
@@ -5276,7 +5261,7 @@ msgstr ""
 "𐑞 𐑝𐑦𐑒𐑑𐑩𐑥𐑟 𐑝 𐑞𐑦𐑕 𐑿𐑯𐑦𐑑𐑕 𐑐𐑶𐑟𐑩𐑯 𐑢𐑦𐑤 𐑒𐑩𐑯𐑑𐑦𐑯𐑿𐑩𐑤𐑦 𐑑𐑱𐑒 𐑛𐑨𐑥𐑦𐑡 𐑳𐑯𐑑𐑦𐑤 𐑞𐑱 𐑒𐑨𐑯 𐑚𐑰 𐑒𐑘𐑫𐑼𐑛 "
 "𐑦𐑯 𐑑𐑬𐑯 𐑹 𐑚𐑲 𐑩 𐑿𐑯𐑦𐑑 𐑢𐑦𐑗 𐑒𐑘𐑫𐑮𐑟."
 
-#: data/core/macros/special-notes.cfg:108
+#: data/core/macros/special-notes.cfg:103
 msgid ""
 "This unit has a defense cap on certain terrain types — it cannot achieve a "
 "higher defense rating on mixed terrains with such terrain types."
@@ -7210,6 +7195,18 @@ msgstr "𐑩𐑤𐑲𐑯𐑥𐑩𐑯𐑑: "
 #| msgid "Required XP: "
 msgid "Required XP:"
 msgstr "𐑮𐑦𐑒𐑢𐑲𐑼𐑛 XP: "
+
+#: src/help/help_topic_generators.cpp:564
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "\n"
+#| "Special Notes:"
+msgid "Special Notes:"
+msgstr ""
+"\n"
+"\n"
+"𐑕𐑐𐑧𐑖𐑩𐑤 𐑯𐑴𐑑𐑕:"
 
 #: src/help/help_topic_generators.cpp:573
 msgid "unit help^Attacks"
