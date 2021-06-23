@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.5-CVS\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-06-23 10:07+0300\n"
+"POT-Creation-Date: 2021-06-23 11:36-0400\n"
 "PO-Revision-Date: 2020-12-31 10:39-0300\n"
 "Last-Translator: Andrei Machado <andreisp.machado@yahoo.com>\n"
 "Language-Team: Portuguese/Brazil\n"
@@ -68,10 +68,10 @@ msgstr ""
 # File: data/core/terrain.cfg, line: 418
 # File: data/core/terrain.cfg, line: 418
 # File: data/core/terrain.cfg, line: 418
-#. [terrain_type]: id=zfarmer-fence  # AI-animal-proof fences from first scenario
-#. [terrain_type]: id=farmer-fence  # AI-animal-proof fences from first scenario
 #. [terrain_type]: id=fence
 #. [terrain_type]: id=fence_iron
+#. [terrain_type]: id=farmer-fence  # AI-animal-proof fences from first scenario
+#. [terrain_type]: id=zfarmer-fence  # AI-animal-proof fences from first scenario
 #: data/campaigns/Secrets_of_the_Ancients/utils/terrain-compat.cfg:9
 #: data/campaigns/Secrets_of_the_Ancients/utils/terrain.cfg:5
 #: data/core/terrain.cfg:489 data/core/terrain.cfg:499
@@ -3726,9 +3726,9 @@ msgstr ""
 # File: src/hotkey_preferences_display.cpp, line: 169
 # File: src/hotkey_preferences_display.cpp, line: 169
 #. [button]: id=reset_option_values
-#. [button]: id=revert_to_defaults
-#. [button]: id=btn_reset_hotkeys
 #. [button]: id=orb_defaults
+#. [button]: id=btn_reset_hotkeys
+#. [button]: id=revert_to_defaults
 #: data/gui/macros/custom_options_tree.cfg:250
 #: data/gui/window/mp_alerts_options.cfg:227
 #: data/gui/window/preferences/02_hotkeys.cfg:279
@@ -3756,10 +3756,10 @@ msgstr "Jogadores Conectados"
 # File: data/gui/default/window/game_load.cfg, line: 265
 # File: data/gui/default/window/mp_server_list.cfg, line: 107
 #. [toggle_button]: id=sort_0
-#. [toggle_button]: id=sort_name
-#. [label]: id=name
 #. [label]
+#. [toggle_button]: id=sort_name
 #. [toggle_button]: id=sort_1
+#. [label]: id=name
 #: data/gui/widget/addon_list.cfg:78 data/gui/window/campaign_dialog.cfg:216
 #: data/gui/window/game_load.cfg:157 data/gui/window/mp_connect.cfg:159
 #: data/gui/window/terrain_layers.cfg:45 data/gui/window/unit_list.cfg:93
@@ -3807,8 +3807,8 @@ msgstr "Downloads"
 # File: data/gui/default/window/gamestate_inspector.cfg, line: 102
 # File: data/gui/default/window/unit_create.cfg, line: 131
 #. [toggle_button]: id=sort_4
-#. [toggle_button]: id=sort_1
 #. [toggle_button]: id=sort_0
+#. [toggle_button]: id=sort_1
 #: data/gui/widget/addon_list.cfg:151 data/gui/window/unit_create.cfg:147
 #: data/gui/window/unit_list.cfg:79 data/gui/window/unit_recall.cfg:33
 msgid "Type"
@@ -4217,8 +4217,8 @@ msgstr "Cancelar"
 # File: data/gui/default/window/mp_connect.cfg, line: 41
 # File: data/gui/default/window/mp_method_selection.cfg, line: 156
 # File: data/gui/default/window/mp_server_list.cfg, line: 49
-#. [label]
 #. [widget]: id=name
+#. [label]
 #: data/gui/window/addon_connect.cfg:40 data/gui/window/mp_connect.cfg:52
 #: data/gui/window/mp_method_selection.cfg:254
 msgid "Connect to Server"
@@ -4252,8 +4252,8 @@ msgstr "Servidor:"
 # File: data/gui/default/window/addon_connect.cfg, line: 148
 # File: data/gui/default/window/addon_connect.cfg, line: 147
 # File: data/gui/default/window/addon_connect.cfg, line: 148
-#. [button]: id=remove_addons
 #. [label]
+#. [button]: id=remove_addons
 #: data/gui/window/addon_connect.cfg:144
 #: data/gui/window/addon_uninstall_list.cfg:51
 msgid "Remove Add-ons"
@@ -4716,9 +4716,9 @@ msgstr "Jogar"
 # File: data/gui/default/window/campaign_difficulty.cfg, line: 57
 # File: data/gui/default/window/campaign_difficulty.cfg, line: 57
 # File: data/gui/default/window/campaign_difficulty.cfg, line: 57
-#. [label]: id=title
-#. [slider]: id=enemey_gold_factor
 #. [slider]: id=enemy_gold_factor
+#. [slider]: id=enemey_gold_factor
+#. [label]: id=title
 #: data/gui/window/campaign_difficulty.cfg:53
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:263
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:309
@@ -4769,8 +4769,8 @@ msgstr "Último"
 # File: data/gui/default/window/title_screen.cfg, line: 195
 # File: data/gui/default/window/chat_log.cfg, line: 79
 # File: data/gui/default/window/title_screen.cfg, line: 195
-#. [button]: id=previous_page
 #. [button]: id=previous_tip
+#. [button]: id=previous_page
 #: data/gui/window/chat_log.cfg:105 data/gui/window/title_screen.cfg:190
 msgid "Previous"
 msgstr "Anterior"
@@ -4800,8 +4800,8 @@ msgstr "Página anterior"
 # File: data/gui/default/window/editor_settings.cfg, line: 79
 # File: data/gui/default/window/editor_settings.cfg, line: 80
 # File: data/gui/default/window/title_screen.cfg, line: 210
-#. [button]: id=next_page
 #. [button]: id=next_tip
+#. [button]: id=next_page
 #: data/gui/window/chat_log.cfg:114 data/gui/window/title_screen.cfg:205
 msgid "Next"
 msgstr "Próximo"
@@ -4848,8 +4848,8 @@ msgstr "Copiar log para a área de tranferência"
 msgid "Load Core"
 msgstr "Carregar Core"
 
-#. [button]: id=copy_
 #. [button]: id=copy
+#. [button]: id=copy_
 #: data/gui/window/custom_tod.cfg:50 data/gui/window/game_cache_options.cfg:110
 #: data/gui/window/game_version.cfg:47
 #: data/gui/window/screenshot_notification.cfg:33
@@ -4863,23 +4863,23 @@ msgstr "Copiar"
 # File: data/gui/default/window/game_load.cfg, line: 189
 # File: data/gui/default/window/data_manage.cfg, line: 89
 # File: data/gui/default/window/game_load.cfg, line: 189
-#. [button]: id=copy_
 #. [button]: id=copy
+#. [button]: id=copy_
 #: data/gui/window/custom_tod.cfg:51 data/gui/window/game_cache_options.cfg:111
 #: data/gui/window/game_version.cfg:48
 #: data/gui/window/screenshot_notification.cfg:34
 msgid "Copy this path to clipboard"
 msgstr "Copiar este caminho para a área de tranferência"
 
-#. [button]: id=browse_
 #. [button]: id=browse
+#. [button]: id=browse_
 #: data/gui/window/custom_tod.cfg:66 data/gui/window/game_cache_options.cfg:126
 #: data/gui/window/game_version.cfg:63
 msgid "filesystem^Browse"
 msgstr "Procurar"
 
-#. [button]: id=browse_
 #. [button]: id=browse
+#. [button]: id=browse_
 #: data/gui/window/custom_tod.cfg:67 data/gui/window/game_cache_options.cfg:127
 #: data/gui/window/game_version.cfg:64
 msgid "Browse this location using a file manager"
@@ -5462,8 +5462,8 @@ msgstr "Novo Mapa"
 # File: src/mapgen_dialog.cpp, line: 121
 # File: data/gui/default/window/editor_new_map.cfg, line: 54
 # File: src/mapgen_dialog.cpp, line: 121
-#. [label]
 #. [grid]
+#. [label]
 #: data/gui/window/editor_new_map.cfg:55
 #: data/gui/window/generator_settings.cfg:107
 msgid "Width:"
@@ -5476,8 +5476,8 @@ msgstr "Largura:"
 # File: src/mapgen_dialog.cpp, line: 122
 # File: data/gui/default/window/editor_new_map.cfg, line: 81
 # File: src/mapgen_dialog.cpp, line: 122
-#. [label]
 #. [grid]
+#. [label]
 #: data/gui/window/editor_new_map.cfg:82
 #: data/gui/window/generator_settings.cfg:109
 msgid "Height:"
@@ -5595,8 +5595,8 @@ msgstr "Remove o favorito atual"
 # File: data/gui/default/window/game_load.cfg, line: 365
 # File: data/gui/default/window/game_load.cfg, line: 364
 # File: data/gui/default/window/game_load.cfg, line: 365
-#. [button]: id=delete_file
 #. [button]: id=delete
+#. [button]: id=delete_file
 #. [button]: id=server_delete
 #: data/gui/window/file_dialog.cfg:339 data/gui/window/game_load.cfg:513
 #: data/gui/window/mp_connect.cfg:284
@@ -5610,8 +5610,8 @@ msgstr "Apagar"
 # File: src/filechooser.cpp, line: 81
 # File: data/gui/default/window/folder_create.cfg, line: 43
 # File: src/filechooser.cpp, line: 81
-#. [button]: id=new_dir
 #. [label]: id=title
+#. [button]: id=new_dir
 #: data/gui/window/file_dialog.cfg:352 data/gui/window/folder_create.cfg:43
 msgid "New Folder"
 msgstr "Nova Pasta"
@@ -5732,8 +5732,8 @@ msgstr "Rota de execução"
 # File: src/hotkeys.cpp, line: 884
 # File: src/hotkeys.cpp, line: 1234
 #. [button]: id=cancel
-#. [button]: id=quit_without_surrender
 #. [grid]
+#. [button]: id=quit_without_surrender
 #: data/gui/window/formula_debugger.cfg:234
 #: data/gui/window/surrender_quit.cfg:99 data/gui/window/title_screen.cfg:258
 msgid "Quit"
@@ -6069,9 +6069,9 @@ msgstr "Manutenção"
 # File: data/gui/default/window/formula_debugger.cfg, line: 59
 # File: data/gui/default/window/formula_debugger.cfg, line: 59
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [toggle_button]: id=sort_6
 #. [image]: id=income_icon
 #. [label]: id=side_income
+#. [toggle_button]: id=sort_6
 #: data/gui/window/game_stats.cfg:118 data/gui/window/mp_join_game.cfg:273
 #: data/gui/window/mp_join_game.cfg:286
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:431
@@ -6082,8 +6082,8 @@ msgstr "Receita"
 # File: data/gui/default/window/mp_change_control.cfg, line: 21
 # File: data/gui/default/window/mp_change_control.cfg, line: 21
 # File: data/gui/default/window/mp_change_control.cfg, line: 21
-#. [toggle_button]: id=sort_1
 #. [label]: id=side_title
+#. [toggle_button]: id=sort_1
 #: data/gui/window/game_stats.cfg:297 data/gui/window/mp_change_control.cfg:22
 msgid "Side"
 msgstr "Lado"
@@ -6334,8 +6334,8 @@ msgstr "Inspeciona do estado do jogo"
 msgid "Copy this report to clipboard"
 msgstr "Copir este relatório para a área de transferência"
 
-#. [button]: id=lua
 #. [label]
+#. [button]: id=lua
 #: data/gui/window/gamestate_inspector.cfg:348
 #: data/gui/window/lua_interpreter.cfg:38
 msgid "Lua Console"
@@ -6461,8 +6461,8 @@ msgstr "Mostrar ou Esconder Rótulos"
 # File: data/gui/default/window/title_screen.cfg, line: 262
 # File: data/gui/default/window/language_selection.cfg, line: 41
 # File: data/gui/default/window/title_screen.cfg, line: 262
-#. [label]
 #. [button]: id=language
+#. [label]
 #: data/gui/window/language_selection.cfg:41
 #: data/gui/window/title_screen.cfg:484
 msgid "Language"
@@ -6522,8 +6522,8 @@ msgstr ""
 # File: data/gui/default/window/lobby_main.cfg, line: 586
 # File: data/gui/default/window/lobby_main.cfg, line: 586
 # File: data/gui/default/window/lobby_main.cfg, line: 586
-#. [toggle_button]: id=filter_with_friends
 #. [widget]: id=tab_label
+#. [toggle_button]: id=filter_with_friends
 #: data/gui/window/lobby_main.cfg:348
 #: data/gui/window/preferences/05_multiplayer.cfg:415
 msgid "Friends"
@@ -6566,9 +6566,9 @@ msgstr "Inverter filtro"
 # File: data/gui/default/window/mp_create_game.cfg, line: 41
 # File: data/gui/default/window/lobby_main.cfg, line: 686
 # File: data/gui/default/window/mp_create_game.cfg, line: 41
-#. [button]: id=create
 #. [label]
 #. [button]: id=ok
+#. [button]: id=create
 #: data/gui/window/lobby_main.cfg:399 data/gui/window/lobby_main.cfg:665
 #: data/gui/window/mp_create_game/default_resolution.cfg:45
 #: data/gui/window/mp_create_game/default_resolution.cfg:445
@@ -6607,8 +6607,8 @@ msgstr "Observar"
 # File: src/game_preferences_display.cpp, line: 205
 # File: src/game_preferences_display.cpp, line: 205
 # File: src/game_preferences_display.cpp, line: 205
-#. [button]: id=server_info
 #. [widget]: id=tab_label
+#. [button]: id=server_info
 #: data/gui/window/lobby_main.cfg:446 data/gui/window/lobby_main.cfg:688
 #: data/gui/window/server_info.cfg:168
 msgid "Announcements"
@@ -6628,9 +6628,9 @@ msgstr "Anúncios"
 # File: src/game_preferences_display.cpp, line: 63
 # File: src/hotkeys.cpp, line: 106
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [button]: id=show_preferences
-#. [label]: id=title
 #. [grid]
+#. [label]: id=title
+#. [button]: id=show_preferences
 #: data/gui/window/lobby_main.cfg:458 data/gui/window/lobby_main.cfg:653
 #: data/gui/window/preferences.cfg:213 data/gui/window/title_screen.cfg:256
 #: src/hotkey/hotkey_command.cpp:118
@@ -6706,15 +6706,15 @@ msgstr "Informações do Jogador — "
 # File: data/gui/default/window/mp_cmd_wrapper.cfg, line: 170
 # File: data/gui/default/window/mp_cmd_wrapper.cfg, line: 170
 # File: data/gui/default/window/mp_cmd_wrapper.cfg, line: 170
-#. [button]: id=add_to_friends
 #. [button]: id=add_friend
+#. [button]: id=add_to_friends
 #: data/gui/window/lobby_player_info.cfg:88
 #: data/gui/window/preferences/05_multiplayer.cfg:263
 msgid "Add Friend"
 msgstr "Adicionar como Amigo"
 
-#. [button]: id=add_to_ignores
 #. [button]: id=add_ignored
+#. [button]: id=add_to_ignores
 #: data/gui/window/lobby_player_info.cfg:99
 #: data/gui/window/preferences/05_multiplayer.cfg:276
 msgid "Block"
@@ -6919,8 +6919,8 @@ msgstr ""
 "estiver no saguão ou dentro de uma partidapor meio de alertas sonoros ou,no "
 "caso do jogo estar minimizado, com notificações no desktop."
 
-#. [label]
 #. [widget]: id=label
+#. [label]
 #: data/gui/window/mp_alerts_options.cfg:147
 #: data/gui/window/preferences.cfg:347
 msgid "Sound"
@@ -7562,8 +7562,8 @@ msgstr "Posição Inicial:"
 # File: data/gui/default/window/mp_method_selection.cfg, line: 166
 # File: data/gui/default/window/mp_host_game_prompt.cfg, line: 40
 # File: data/gui/default/window/mp_method_selection.cfg, line: 166
-#. [label]
 #. [widget]: id=name
+#. [label]
 #: data/gui/window/mp_host_game_prompt.cfg:40
 #: data/gui/window/mp_method_selection.cfg:273
 msgid "Host Networked Game"
@@ -7687,8 +7687,8 @@ msgstr "Salvar senha localmente (encriptado)"
 # File: src/gui/dialogs/game_load.cpp, line: 296
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#. [widget]: id=label
 #. [grid]
+#. [widget]: id=label
 #: data/gui/window/mp_method_selection.cfg:46
 #: data/gui/window/preferences.cfg:365 data/gui/window/title_screen.cfg:252
 #: src/gui/dialogs/game_load.cpp:406

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3+CVS\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-06-23 07:08 UTC\n"
+"POT-Creation-Date: 2021-06-23 15:36 UTC\n"
 "PO-Revision-Date: 2009-01-07 13:44+0200\n"
 "Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
@@ -1061,6 +1061,7 @@ msgstr "Menneske"
 #. [then]
 #. [objective]: condition=lose
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:114
+#: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:135
 #: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:274
 #, fuzzy
 msgid "Death of your leader"
@@ -1068,6 +1069,7 @@ msgstr "Dine holdlederes død."
 
 #. [then]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:115
+#: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:136
 msgid ""
 "Since your team has only one leader, the enemy waves will not be at full "
 "strength."
@@ -1075,18 +1077,21 @@ msgstr ""
 
 #. [else]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:118
+#: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:143
 #, fuzzy
 msgid "Death of both of your team’s leaders"
 msgstr "Dine holdlederes død."
 
 #. [else]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:119
+#: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:144
 msgid ""
 "Since your team has two leaders, the enemy waves will be at full strength."
 msgstr ""
 
 #. [objective]: condition=win
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:146
+#: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:171
 #, fuzzy
 msgid "Survive and defeat all enemy waves"
 msgstr "Overlev alle fjendtlige angreb."
@@ -1198,8 +1203,8 @@ msgstr ""
 "spøgelsestjavser fjerne din vilje, indser du at din tid i dette land er "
 "forbi."
 
-#. [slider]: id=enemey_gold_factor
 #. [slider]: id=enemy_gold_factor
+#. [slider]: id=enemey_gold_factor
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:265
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:311
 msgid "Changes the gold worth of the enemy spawns by a certain percentage"
@@ -1469,6 +1474,145 @@ msgid ""
 msgstr ""
 "Kun lidt er tilbage af denne tidligere rige minekoloni, nu er den et mål for "
 "plyndring og tyve."
+
+#: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:4
+#, fuzzy
+msgid ""
+"Your aim is to survive spawning waves of units and defeat the final "
+"archenemies. Spawns are randomly generated and will be different each time "
+"Isle of Mists is played. The waves appear at somewhat regular intervals. The "
+"weather will also change randomly, affecting the layout of the map."
+msgstr ""
+"Dit mål er at overleve de angribende bølger og besejre de sidste ærke- "
+"fjender.\n"
+"       \n"
+"Bølgerne skabes tilfældigt og vil være forskellige hver gang du spiller "
+"scenariet.\n"
+"\n"
+"\n"
+"De ankommer langs med det nordige, sydelig og vestlige hjørne - de kommer "
+"dog hovedsagelig fra det vestlige hjørne. Bølgerne kommer med regelmæssige "
+"mellemrum.\n"
+"\n"
+"\n"
+"Vejret skifter også tilfældigt, og påvirker udseendet af kortet.\n"
+"\n"
+"\n"
+"\n"
+"<span color='red'>Mørk forudsigelse er lavet af:</span>\n"
+"\n"
+"<span color='green'>jb</span>\n"
+"- kortdesign, grupper af fjender og scenariekoncept\n"
+"\n"
+"<span color='green'>Rhuvaen</span>\n"
+"— WML implementation"
+
+#. [multiplayer]: id=multiplayer_2p_Isle_of_Mists
+#: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:9
+#, fuzzy
+#| msgid "2p — Dark Forecast (Survival)"
+msgid "2p — Isle of Mists (Survival)"
+msgstr "2p — Mørk forudsigelse (Overlevelse)"
+
+#. [multiplayer]: id=multiplayer_2p_Isle_of_Mists
+#: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:10
+#, fuzzy
+#| msgid ""
+#| "Dark Forecast is a survival scenario for solitaire or two-player team-"
+#| "based play against randomly AI spawned units. Victory is achieved by "
+#| "surviving all enemy waves. During the course of play, the terrain will "
+#| "change based on random weather effects.\n"
+#| "\n"
+#| "Note: You need to use map settings for the scenario to work right."
+msgid ""
+"Isle of Mists is a survival scenario which can be played alone or with "
+"another player against randomly spawned AI units, catered for experienced "
+"players. Victory is achieved by surviving and defeating all enemy waves. "
+"During the course of play, the terrain will change based on random weather "
+"effects. Default map settings are required for the scenario to work "
+"properly. By Lord-Knightmare."
+msgstr ""
+"Mørk forudsigelse er et overlevelsesscenarie for enlige eller holdbaseret på "
+"to spillere mod tilfældige computeregenererede enheder. Sejr opnås ved at "
+"overleve alle fjendes angreb. Under spillet, vil terrænet skifte afhængig af "
+"tilfældige vejreffekter.\n"
+"\n"
+"Bemærk: Du skal bruge kortindstillinger for at det her scenarie vil virke. "
+"korrekt."
+
+#. [side]
+#: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:25
+#: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:38
+#, fuzzy
+#| msgid "teamname^Center"
+msgid "teamname^Invaders"
+msgstr "Midt"
+
+#. [side]
+#: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:56
+#: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:83
+#: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:107
+#, fuzzy
+#| msgid "teamname^Center"
+msgid "teamname^Defenders"
+msgstr "Midt"
+
+#. [label]
+#: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:189
+msgid "Healing Keep"
+msgstr ""
+
+#. [message]: speaker=narrator
+#: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:213
+#, fuzzy
+#| msgid "Dark Forecast — a random survival scenario"
+msgid "Isle of Mists — a random survival scenario"
+msgstr "Mørk forudsigelse - et tilfældigt overlevelsesscenarie"
+
+#. [message]
+#: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:220
+msgid ""
+"You arrive near a mystic shrine, where the apparitions of ancient armies are "
+"forever trapped and doomed to eternally cleanse the isle of all interlopers."
+msgstr ""
+
+#. [message]
+#: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:224
+msgid ""
+"Phantom armies approach on the horizon. If we defeat them all, they may be "
+"released from this timeless prison."
+msgstr ""
+
+#. [message]
+#: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:228
+msgid "Let us prepare ourselves for the coming battle."
+msgstr ""
+
+#. [message]: speaker=unit
+#: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:247
+#, fuzzy
+#| msgid ""
+#| "Ugh! How can this be? Defeated by mere barbarians! My gods have forsaken "
+#| "me..."
+msgid "How can this be? My gods have forsaken me..."
+msgstr ""
+"Ugh! Hvad er dette? Besejret af barbarer! Mine guder har forladt mig..."
+
+#. [message]: speaker=second_unit
+#: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:261
+msgid ""
+"As the cold grasp of death draws nearer, you feel your spirit being "
+"separated from your body. You realize that you will soon be doomed to the "
+"same fate as the phantom guardians of the shrine."
+msgstr ""
+
+#. [message]
+#: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:283
+msgid ""
+"A dark mist rises from the land, draining your senses and your will away. "
+"You dimly realize that you will soon join the other ghosts as another "
+"faceless guardian of the ancient shrine."
+msgstr ""
 
 #. [lua]: final_spawn
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.lua:313
@@ -1853,19 +1997,19 @@ msgstr ""
 msgid "3p — Alirok Marsh"
 msgstr "3p — Alirok Mose"
 
-#. [multiplayer]: id=multiplayer_Alirok_Marsh
 #. [multiplayer]: id=multiplayer_Island_of_the_Horatii
-#. [multiplayer]: id=multiplayer_3p_Morituri
-#. [multiplayer]: id=multiplayer_Blue_Water_Province
-#. [multiplayer]: id=multiplayer_Castle_Hopping_Isle
-#. [multiplayer]: id=multiplayer_Clash
-#. [multiplayer]: id=multiplayer_4p_Hamlets
 #. [multiplayer]: id=multiplayer_Loris_River
-#. [multiplayer]: id=multiplayer_4p_Morituri
-#. [multiplayer]: id=multiplayer_Ruins_of_Terra-Dwelve
+#. [multiplayer]: id=multiplayer_3p_Morituri
 #. [multiplayer]: id=multiplayer_4p_Underworld
-#. [multiplayer]: id=multiplayer_8p_Mokena_Prairie
+#. [multiplayer]: id=multiplayer_4p_Morituri
+#. [multiplayer]: id=multiplayer_Alirok_Marsh
+#. [multiplayer]: id=multiplayer_Ruins_of_Terra-Dwelve
+#. [multiplayer]: id=multiplayer_Blue_Water_Province
 #. [multiplayer]: id=multiplayer_8p_Morituri
+#. [multiplayer]: id=multiplayer_8p_Mokena_Prairie
+#. [multiplayer]: id=multiplayer_Clash
+#. [multiplayer]: id=multiplayer_Castle_Hopping_Isle
+#. [multiplayer]: id=multiplayer_4p_Hamlets
 #: data/multiplayer/scenarios/3p_Alirok_Marsh.cfg:6
 #: data/multiplayer/scenarios/3p_Island_of_the_Horatii.cfg:6
 #: data/multiplayer/scenarios/3p_Morituri.cfg:6
@@ -2312,8 +2456,8 @@ msgstr "I dette blandede landskap, kæmper fem hære for overmagten."
 msgid "5p — The Wilderlands"
 msgstr "4p — Ødemarken"
 
-#. [multiplayer]: id=multiplayer_The_Wilderlands
 #. [multiplayer]: id=multiplayer_Crusaders_Field
+#. [multiplayer]: id=multiplayer_The_Wilderlands
 #: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:58
 #: data/multiplayer/scenarios/6p_Crusaders_Field.cfg:7
 msgid " Recommended setting of 1 gold per village."

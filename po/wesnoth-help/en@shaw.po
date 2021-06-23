@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: en@shaw\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-06-23 10:06+0300\n"
+"POT-Creation-Date: 2021-06-23 11:36-0400\n"
 "PO-Revision-Date: 2009-10-11 21:15-0400\n"
 "Last-Translator: Arc Riley <arcriley@ubuntu.com>\n"
 "Language-Team: Shavian English <ubuntu-l10n-en-shaw@lists.launchpad.net>\n"
@@ -331,6 +331,7 @@ msgstr "𐑯𐑲𐑑𐑕𐑑𐑷𐑒"
 #. [plague]: id=plague, type=Walking Corpse
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:98
 #: data/core/macros/abilities.cfg:430 data/core/macros/abilities.cfg:441
+#: data/scenario-test.cfg:407
 msgid "plague"
 msgstr "𐑐𐑤𐑱𐑜"
 
@@ -368,8 +369,9 @@ msgid "slows"
 msgstr "𐑕𐑤𐑴𐑟"
 
 #. [resistance]: id=steadfast
+#. [resistance]: id=melee_steadfast
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:119
-#: data/core/macros/abilities.cfg:130
+#: data/core/macros/abilities.cfg:130 data/scenario-test.cfg:367
 msgid "steadfast"
 msgstr "𐑕𐑑𐑧𐑛𐑓𐑭𐑕𐑑"
 
@@ -1095,14 +1097,14 @@ msgid ""
 "to know which WML is part of each scenario."
 msgstr ""
 
-#. [editor_times]: id=deep_underground
 #. [time]: id=deep_underground
+#. [editor_times]: id=deep_underground
 #: data/core/editor/time-of-day.cfg:47 data/core/macros/schedules.cfg:127
 msgid "Deep Underground"
 msgstr "𐑛𐑰𐑐 𐑳𐑯𐑛𐑼𐑜𐑮𐑬𐑯𐑛"
 
-#. [editor_times]: id=indoors
 #. [time]: id=indoors
+#. [editor_times]: id=indoors
 #: data/core/editor/time-of-day.cfg:53 data/core/macros/schedules.cfg:104
 msgid "Indoors"
 msgstr ""
@@ -4138,7 +4140,8 @@ msgid ""
 msgstr "𐑞𐑦𐑕 𐑿𐑯𐑦𐑑 𐑮𐑰𐑡𐑧𐑯𐑻𐑱𐑑𐑕, 𐑢𐑦𐑗 𐑩𐑤𐑬𐑟 𐑦𐑑 𐑑 𐑣𐑰𐑤 𐑨𐑟 𐑞𐑴 𐑷𐑤𐑢𐑱𐑟 𐑕𐑑𐑱𐑖𐑩𐑯𐑛 𐑦𐑯 𐑩 𐑝𐑦𐑤𐑦𐑡."
 
 #. [resistance]: id=steadfast
-#: data/core/macros/abilities.cfg:131
+#. [resistance]: id=melee_steadfast
+#: data/core/macros/abilities.cfg:131 data/scenario-test.cfg:368
 msgid "female^steadfast"
 msgstr "𐑕𐑑𐑧𐑛𐑓𐑭𐑕𐑑"
 
@@ -4513,7 +4516,7 @@ msgstr ""
 "𐑕𐑱𐑥 𐑕𐑲𐑛 𐑨𐑟 𐑞 𐑿𐑯𐑦𐑑 𐑢𐑦𐑞 𐑞 𐑐𐑤𐑱𐑜 𐑩𐑑𐑨𐑒. 𐑞𐑦𐑕 𐑛𐑳𐑟𐑯𐑑 𐑢𐑻𐑒 𐑪𐑯 𐑳𐑯𐑛𐑧𐑛 𐑹 𐑿𐑯𐑦𐑑𐑕 𐑦𐑯 𐑝𐑦𐑤𐑦𐑡𐑦𐑟."
 
 #. [plague]: id=plague, type=Walking Corpse
-#: data/core/macros/abilities.cfg:442
+#: data/core/macros/abilities.cfg:442 data/scenario-test.cfg:408
 #, fuzzy
 #| msgid ""
 #| "Plague:\n"
