@@ -3794,19 +3794,41 @@ int game_lua_kernel::intf_cancel_action(lua_State*)
 	return 0;
 }
 
-/** Adding new time_areas dynamically with Standard Location Filters. */
+/** Adding new time_areas dynamically with Standard Location Filters.
+ * Arg 1: Area ID
+ * Arg 2: Area locations (either a filter or a list of locations)
+ * Arg 3: (optional) Area schedule - WML table with [time] tags and optional current_time=
+ */
 int game_lua_kernel::intf_add_time_area(lua_State * L)
 {
 	log_scope("time_area");
 
-	vconfig cfg(luaW_checkvconfig(L, 1));
-	const std::string id = cfg["id"];
-
+	std::string id;
 	std::set<map_location> locs;
-	const terrain_filter filter(cfg, &game_state_, false);
-	filter.get_locations(locs, true);
-	config parsed_cfg = cfg.get_parsed_config();
-	tod_man().add_time_area(id, locs, parsed_cfg);
+	vconfig cfg{config()};
+	config times;
+	
+	if(luaW_tovconfig(L, 1, cfg)) {
+		deprecated_message("Single-argument wesnoth.map.place_area is deprecated. Instead, pass ID, filter, and schedule as three separate arguments.", DEP_LEVEL::INDEFINITE, {1, 17, 0});
+		id = cfg["id"].str();
+		const terrain_filter filter(cfg, &game_state_, false);
+		filter.get_locations(locs, true);
+		times = cfg.get_parsed_config();
+	} else {
+		id = luaL_checkstring(L, 1);
+		if(!lua_isnoneornil(L, 3))
+			times = luaW_checkconfig(L, 3);
+		if(luaW_tovconfig(L, 2, cfg)) {
+			// Second argument is a location filter
+			const terrain_filter filter(cfg, &game_state_, false);
+			filter.get_locations(locs, true);
+		} else {
+			// Second argument is an array of locations
+			luaW_check_locationset(L, 2);
+		}
+	}
+	
+	tod_man().add_time_area(id, locs, times);
 	LOG_LUA << "Lua inserted time_area '" << id << "'\n";
 	return 0;
 }
