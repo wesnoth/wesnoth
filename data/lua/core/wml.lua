@@ -123,8 +123,8 @@ end
 --! Removes all matching child tags from @a cfg
 function wml.remove_children(cfg, ...)
 	for i = #cfg, 1, -1 do
-		for _,v in ipairs(...) do
-			if cfg[i] == v then
+		for j = 1, select('#', ...) do
+			if cfg[i] and cfg[i][1] == select(j, ...) then
 				table.remove(cfg, i)
 			end
 		end
