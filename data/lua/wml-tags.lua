@@ -686,17 +686,7 @@ function wml_actions.time_area(cfg)
 	if cfg.remove then
 		wml_actions.remove_time_area(cfg)
 	else
-		local times = wml.child_array(cfg, 'time')
-		if #times == 0 then
-			times = nil
-		else
-			-- current_time, if present, is part of the times, not the filters
-			times.current_time = cfg.current_time
-		end
-		local filter = wml.shallow_parsed(cfg)
-		filter.current_time = nil
-		wml.remove_children(filter, 'time')
-		wesnoth.map.place_area(cfg.id, filter, times)
+		wesnoth.map.place_area(cfg.id, cfg, cfg)
 	end
 end
 
