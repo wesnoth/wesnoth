@@ -3805,10 +3805,10 @@ int game_lua_kernel::intf_add_time_area(lua_State * L)
 
 	std::string id;
 	std::set<map_location> locs;
-	vconfig cfg{config()};
 	config times;
 
-	if(luaW_tovconfig(L, 1, cfg)) {
+	if(lua_gettop(L) == 1) {
+		vconfig cfg = luaW_checkvconfig(L, 1);
 		deprecated_message("Single-argument wesnoth.map.place_area is deprecated. Instead, pass ID, filter, and schedule as three separate arguments.", DEP_LEVEL::INDEFINITE, {1, 17, 0});
 		id = cfg["id"].str();
 		const terrain_filter filter(cfg, &game_state_, false);
@@ -3818,6 +3818,7 @@ int game_lua_kernel::intf_add_time_area(lua_State * L)
 		id = luaL_checkstring(L, 1);
 		if(!lua_isnoneornil(L, 3))
 			times = luaW_checkconfig(L, 3);
+		vconfig cfg{config()};
 		if(luaW_tovconfig(L, 2, cfg)) {
 			// Second argument is a location filter
 			const terrain_filter filter(cfg, &game_state_, false);

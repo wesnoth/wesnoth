@@ -686,7 +686,7 @@ function wml_actions.time_area(cfg)
 	if cfg.remove then
 		wml_actions.remove_time_area(cfg)
 	else
-		wesnoth.map.place_area(cfg.id, cfg, cfg)
+		wesnoth.map.place_area(cfg.id or '', cfg, cfg)
 	end
 end
 
