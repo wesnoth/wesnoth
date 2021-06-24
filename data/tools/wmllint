@@ -1480,9 +1480,6 @@ def global_sanity_check(filename, lines):
             temp_movetypes = []
             temp_races = []
             temp_advances = []
-            arcane_note_needed = False
-            spirit_note_needed = False
-            defense_cap_note_needed = False
             continue
         elif nav.element == "[/unit_type]":
             if unit_id and unit_usage:
@@ -1501,23 +1498,11 @@ def global_sanity_check(filename, lines):
                 derived_units.append((filename, nav.lineno + 1, unit_id, base_unit))
             if unit_id and not base_unit:
                 missing_notes = []
-                if arcane_note_needed and "{NOTE_ARCANE}" not in notes:
-                    missing_notes.append("{NOTE_ARCANE}")
-                if spirit_note_needed and "{NOTE_SPIRIT}" not in notes:
-                    missing_notes.append("{NOTE_SPIRIT}")
-                if defense_cap_note_needed and "{NOTE_DEFENSE_CAP}" not in notes:
-                    missing_notes.append("{NOTE_DEFENSE_CAP}")
                 for trait in traits:
                     tn = trait_note[trait]
                     if tn not in notes and tn not in missing_notes:
                         missing_notes.append(tn)
                 missing_traits = []
-                if (not arcane_note_needed) and "{NOTE_ARCANE}" in notes:
-                    missing_traits.append("type=arcane")
-                if (not spirit_note_needed) and "{NOTE_SPIRIT}" in notes:
-                    missing_traits.append("movement_type=undeadspirit")
-                if (not defense_cap_note_needed) and "{NOTE_DEFENSE_CAP}" in notes:
-                    missing_traits.append("movement_type=mounted or [defense] tag")
                 for note in notes:
                     for nt in note_trait[note]: # defaultdict makes nt a list, not a string!
                         if nt in traits:
@@ -1554,9 +1539,6 @@ def global_sanity_check(filename, lines):
             temp_movetypes = []
             temp_races = []
             temp_advances = []
-            arcane_note_needed = False
-            spirit_note_needed = False
-            defense_cap_note_needed = False
         # the glob pattern matches any WML tag starting with filter, including [filter] itself
         if '[unit_type]' in nav.ancestors() and not nav.glob_ancestors("[[]filter*[]]"):
             try:
@@ -1576,10 +1558,6 @@ def global_sanity_check(filename, lines):
                 elif key == "movement_type":
                     if '{' not in value:
                         temp_movetypes.append((filename, nav.lineno + 1, value))
-                    if value == "undeadspirit":
-                        spirit_note_needed = True
-                    elif value == "mounted":
-                        defense_cap_note_needed = True
                 elif key == "race":
                     if '{' not in value:
                         unit_race = value
@@ -1588,10 +1566,6 @@ def global_sanity_check(filename, lines):
                     advancements = value
                     if advancements.strip() != "null":
                         temp_advances.append((filename, nav.lineno + 1, advancements))
-                elif key == "type" and value == "arcane" and "[attack]" in nav.ancestors():
-                    arcane_note_needed = True
-                elif "[defense]" in nav.ancestors() and re.match(r"\-\d+",value):
-                    defense_cap_note_needed = True
             except TypeError:
                 pass
             precomment = nav.text
@@ -1599,10 +1573,6 @@ def global_sanity_check(filename, lines):
                 precomment = nav.text[:nav.text.find("#")]
             if "{NOTE" in precomment:
                 has_special_notes = True
-            # these special cases are handled better outside of notepairs
-            for note in ("{NOTE_DEFENSE_CAP}","{NOTE_SPIRIT}","{NOTE_ARCANE}"):
-                if note in precomment:
-                    notes.append(note)
             for (p, q) in notepairs:
                 if p in precomment:
                     traits.append(p)
