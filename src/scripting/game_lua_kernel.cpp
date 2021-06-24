@@ -3503,7 +3503,7 @@ int game_lua_kernel::intf_remove_label(lua_State *L)
 	if (game_display_) {
 		map_location loc = luaW_checklocation(L, 1);
 		std::string team_name;
-		
+
 		// If there's only one parameter and it's a table, check if it contains team_name
 		if(lua_gettop(L) == 1 && lua_istable(L, 1)) {
 			using namespace std::literals;
@@ -3807,7 +3807,7 @@ int game_lua_kernel::intf_add_time_area(lua_State * L)
 	std::set<map_location> locs;
 	vconfig cfg{config()};
 	config times;
-	
+
 	if(luaW_tovconfig(L, 1, cfg)) {
 		deprecated_message("Single-argument wesnoth.map.place_area is deprecated. Instead, pass ID, filter, and schedule as three separate arguments.", DEP_LEVEL::INDEFINITE, {1, 17, 0});
 		id = cfg["id"].str();
@@ -3827,7 +3827,7 @@ int game_lua_kernel::intf_add_time_area(lua_State * L)
 			luaW_check_locationset(L, 2);
 		}
 	}
-	
+
 	tod_man().add_time_area(id, locs, times);
 	LOG_LUA << "Lua inserted time_area '" << id << "'\n";
 	return 0;
