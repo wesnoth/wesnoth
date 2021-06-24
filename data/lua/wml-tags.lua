@@ -695,7 +695,7 @@ function wml_actions.time_area(cfg)
 		end
 		local filter = wml.shallow_parsed(cfg)
 		filter.current_time = nil
-		wml.remove_children(cfg, 'time')
+		wml.remove_children(filter, 'time')
 		wesnoth.map.place_area(cfg.id, filter, times)
 	end
 end
