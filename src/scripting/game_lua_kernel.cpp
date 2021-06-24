@@ -3483,7 +3483,7 @@ int game_lua_kernel::intf_delay(lua_State *L)
 	return 0;
 }
 
-int game_lua_kernel::intf_label(lua_State *L, bool add)
+int game_lua_kernel::intf_add_label(lua_State *L)
 {
 	if (game_display_) {
 		vconfig cfg(luaW_checkvconfig(L, 1));
@@ -3492,8 +3492,27 @@ int game_lua_kernel::intf_label(lua_State *L, bool add)
 
 		terrain_label label(screen.labels(), cfg.get_config());
 
-		screen.labels().set_label(label.location(), add ? label.text() : "", label.creator(), label.team_name(), label.color(),
+		screen.labels().set_label(label.location(), label.text(), label.creator(), label.team_name(), label.color(),
 				label.visible_in_fog(), label.visible_in_shroud(), label.immutable(), label.category(), label.tooltip());
+	}
+	return 0;
+}
+
+int game_lua_kernel::intf_remove_label(lua_State *L)
+{
+	if (game_display_) {
+		map_location loc = luaW_checklocation(L, 1);
+		std::string team_name;
+		
+		// If there's only one parameter and it's a table, check if it contains team_name
+		if(lua_gettop(L) == 1 && lua_istable(L, 1)) {
+			using namespace std::literals;
+			team_name = luaW_table_get_def(L, 1, "team_name", ""sv);
+		} else {
+			team_name = luaL_optstring(L, 2, "");
+		}
+
+		game_display_->labels().set_label(loc, "", -1, team_name);
 	}
 	return 0;
 }
@@ -4281,8 +4300,8 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 		{"get_owner", &dispatch<&game_lua_kernel::intf_get_village_owner>},
 		{"set_owner", &dispatch<&game_lua_kernel::intf_set_village_owner>},
 		// Label operations
-		{"add_label", &dispatch2<&game_lua_kernel::intf_label, true>},
-		{"remove_label", &dispatch2<&game_lua_kernel::intf_label, false>},
+		{"add_label", &dispatch<&game_lua_kernel::intf_add_label>},
+		{"remove_label", &dispatch<&game_lua_kernel::intf_remove_label>},
 		{"get_label", &dispatch<&game_lua_kernel::intf_get_label>},
 		// Time area operations
 		{"place_area", &dispatch<&game_lua_kernel::intf_add_time_area>},
