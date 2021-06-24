@@ -1120,7 +1120,8 @@ def is_translatable(key):
         "option_description", "option_name", "order", "plural_name", "prefix",
         "reason", "set_description", "source", "story", "summary", "victory_string",
         "defeat_string", "gold_carryover_string", "notes_string", "text", "title",
-        "title2", "tooltip", "translator_comment", "user_team_name", "side_name"
+        "title2", "tooltip", "translator_comment", "user_team_name", "side_name",
+        "special_note"
         )
     return key in translatables or (key.startswith(("type_", "range_")) and key != "type_adv_tree")
 
