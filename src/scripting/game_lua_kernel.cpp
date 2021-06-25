@@ -905,9 +905,8 @@ static void luaW_push_tod(lua_State* L, const time_of_day& tod)
 	lua_setfield(L, -2, "blue");
 }
 
-// A schedule object is just a location with a special metatable.
-// This is also valid for time area objects, which also have an "index" key identifying them.
-// The index is a secondary means of identification in case it has no locations.
+// A schedule object is an index with a special metatable.
+// The global schedule uses index -1
 void game_lua_kernel::luaW_push_schedule(lua_State* L, int area_index)
 {
 	lua_newuserdatauv(L, 0, 1);
@@ -3874,11 +3873,12 @@ int game_lua_kernel::intf_get_time_area(lua_State* L)
 int game_lua_kernel::intf_replace_schedule(lua_State * L)
 {
 	map_location loc;
-	if(luaW_tolocation(L, 1, loc)) {
+	if(luaL_testudata(L, 1, "schedule")) {
 		// Replace the global schedule with a time area's schedule
-		// The expectation is that you call schedule.replace(time_area.schedule),
-		// rather than passing a literal location.
-
+		// Replacing the global schedule with the global schedule
+		// is also supported but obviously a no-op
+		int area = luaW_check_schedule(L, 1);
+		if(area >= 0) tod_man().replace_schedule(tod_man().times(area));
 	} else {
 		vconfig cfg = luaW_checkvconfig(L, 1);
 
