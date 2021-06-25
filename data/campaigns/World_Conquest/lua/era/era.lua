@@ -309,7 +309,7 @@ end
 -- shows the recruit info dialog for the faction of the currently viewing side.
 function wesnoth.wml_actions.wc2_recruit_info(cfg)
 
-	local side_num = wesnoth.get_viewing_side()
+	local side_num = wesnoth.interface.get_viewing_side()
 	local faction = wc2_era.get_faction(side_num)
 	if not faction then
 		wesnoth.wml_actions.message {
@@ -354,7 +354,7 @@ wc2_utils.menu_item {
 		if u and u.side == wesnoth.current.side then
 			return false
 		end
-		if not wc2_era.get_faction(wesnoth.get_viewing_side()) then
+		if not wc2_era.get_faction(wesnoth.interface.get_viewing_side()) then
 			return false
 		end
 		if wc2_artifacts.is_item_at(x, y) then
