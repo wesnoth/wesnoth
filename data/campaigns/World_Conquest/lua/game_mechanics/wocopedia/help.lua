@@ -20,7 +20,7 @@ function wesnoth.wml_actions.wc2_show_wocopedia(cfg)
 	-- maps the treeview rows to pagenumber in the help page.
 	local index_map = {}
 
-	local current_side = wesnoth.get_viewing_side()
+	local current_side = wesnoth.interface.get_viewing_side()
 	local preshow = function(dialog)
 		local str_cat_mechnics = _ "Game Mechanics"
 		local str_des_mechnics = cfg.mechanics_text or
