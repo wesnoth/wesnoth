@@ -772,7 +772,7 @@ int game_lua_kernel::intf_override_shroud(lua_State *L)
 			t.clear_shroud(loc);
 		}
 	} else {
-		return luaL_argerror(L, 2, "expected list of locations");
+		return luaW_type_error(L, 2, "list of locations");
 	}
 
 	game_display_->labels().recalculate_shroud();
