@@ -685,12 +685,12 @@ class CrossRef:
                         continue
                     # handle deprecated macros
                     if "deprecated" in line:
-                        # There are three levels of macro deprecation (1, 2 and 3)
+                        # There are four levels of macro deprecation (1, 2, 3 and 4)
                         # Sometimes they have a version number in which they're
                         # scheduled for removal and sometimes they don't have it
                         # This regex seems to match every deprecated macro in mainline
                         # in version 1.15.6
-                        m = re.match(r"\s*#\s?deprecated\s(1|2|3)\s?([0-9.]*)\s?(.*)", line)
+                        m = re.match(r"\s*#\s?deprecated\s(1|2|3|4)\s?([0-9.]*)\s?(.*)", line)
                         if m:
                             here.deprecated = True
                             # leave them as strings: they'll be used for HTML output
