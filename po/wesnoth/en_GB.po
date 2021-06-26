@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2021-06-23 11:36-0400\n"
-"PO-Revision-Date: 2021-06-02 16:38+1000\n"
+"PO-Revision-Date: 2021-06-24 09:07+1000\n"
 "Last-Translator: Wedge009 <wedge009@wedge009.net>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
 "EnglishGBTranslation>\n"
@@ -5120,6 +5120,9 @@ msgid ""
 "quicker. The <i>acceleration factor</i> can be set, and turned on by "
 "default, in the <i>Preferences</i> menu’s <i>General</i> tab."
 msgstr ""
+"Holding down <b>shift</b> will make the animations for moving and fighting "
+"quicker. The <i>acceleration factor</i> can be set, and turned on by "
+"default, in the <i>Preferences</i> menu’s <i>General</i> tab."
 
 #. [tip]
 #. Translate "Change difficulty" and "Load Game" as in wesnoth-lib textdomain
@@ -6295,6 +6298,7 @@ msgstr "Warning"
 msgid ""
 "The remote server requested a password while using an insecure connection."
 msgstr ""
+"The remote server requested a password while using an insecure connection."
 
 #: src/game_initialization/multiplayer.cpp:409
 msgid "You must login first."
@@ -6382,7 +6386,7 @@ msgstr "You have made too many login attempts."
 
 #: src/game_initialization/multiplayer.cpp:452
 msgid "Password hashing failed."
-msgstr ""
+msgstr "Password hashing failed."
 
 #: src/game_initialization/playcampaign.cpp:75
 msgid "Scenario Report"
@@ -7539,7 +7543,7 @@ msgstr "Error details:"
 
 #: src/play_controller.cpp:1258
 msgid "Warning: broken campaign branches"
-msgstr ""
+msgstr "Warning: broken campaign branches"
 
 #. TRANSLATORS: This is an error that will hopefully only be seen by UMC authors and by players who have already
 #. said "okay" to a "loading saves from an old version might not work" dialog.
@@ -7550,7 +7554,10 @@ msgid_plural ""
 "Some of the possible next scenarios are missing, you might not be able to "
 "finish this campaign."
 msgstr[0] ""
+"The next scenario is missing, you will not be able to finish this campaign."
 msgstr[1] ""
+"Some of the possible next scenarios are missing, you might not be able to "
+"finish this campaign."
 
 #: src/play_controller.cpp:1271
 msgid ""
@@ -7560,11 +7567,15 @@ msgid_plural ""
 "Please report the following missing scenarios to the campaign’s author:\n"
 "$unknown_list|"
 msgstr[0] ""
+"Please report the following missing scenario to the campaign’s author:\n"
+"$unknown_list|"
 msgstr[1] ""
+"Please report the following missing scenarios to the campaign’s author:\n"
+"$unknown_list|"
 
 #: src/play_controller.cpp:1275
 msgid "Once this is fixed, you will need to restart this scenario."
-msgstr ""
+msgstr "Once this is fixed, you will need to restart this scenario."
 
 #: src/play_controller.cpp:1455
 msgid "No objectives available"
@@ -7695,10 +7706,8 @@ msgid "Type: "
 msgstr "Type: "
 
 #: src/reports.cpp:196
-#, fuzzy
-#| msgid "Specials: "
 msgid "Special Notes:"
-msgstr "Specials: "
+msgstr "Special Notes:"
 
 #: src/reports.cpp:219
 msgid "Race: "
