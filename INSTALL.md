@@ -70,6 +70,10 @@ See [here](https://github.com/wesnoth/wesnoth/blob/master/projectfiles/Xcode/REA
 ### Windows
 Wesnoth uses CMake for project configuration and vcpkg for installing dependencies. See [here](https://docs.microsoft.com/en-us/cpp/build/cmake-projects-in-visual-studio) for information on using Visual Studio with cmake. The first time it's run, vcpkg will build all the required dependencies which may take over an hour, however it will only need to be done once.
 
+NOTE 1: You will need a Windows implementation of pkg-config present in your PATH, such as [pkg-config-lite](https://sourceforge.net/projects/pkgconfiglite/).
+
+NOTE 2: The Debug configuration will currently fail to launch due to missing dlls. This is due the incorrect dlls being copied into the output directory (the Release dlls are copied, but the Debug dlls were linked). For now this can be worked around by building the Release configuration and then copying the dlls into the Debug output folder.
+
 ## SCons Build
 
 Unlike CMake or the classic "autotools" build-system (configure && make),
