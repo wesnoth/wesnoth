@@ -561,9 +561,9 @@ if __name__ == '__main__':
 
     ap = argparse.ArgumentParser()
     ap.add_argument("-C", "--config-dir",
-                    help="Specify the user configuration dir (wesnoth --config-path).")
+                    help="Specify the user configuration dir (wesnoth --userdata-path).")
     ap.add_argument("-D", "--data-dir",
-                    help="Specify the wesnoth data dir (wesnoth --path).")
+                    help="Specify the wesnoth data dir (wesnoth --data-path).")
     ap.add_argument("-l", "--language", default="all",
                     help="Specify a language to use. Else output is produced for all languages.")
     ap.add_argument("-o", "--output",
@@ -616,11 +616,11 @@ if __name__ == '__main__':
         options.wesnoth = "wesnoth"
 
     if not options.data_dir:
-        options.data_dir = shell_out([options.wesnoth, "--path"]).strip().decode("utf8")
+        options.data_dir = shell_out([options.wesnoth, "--data-path"]).strip().decode("utf8")
         print("Using " + options.data_dir + " as data dir.")
 
     if not options.config_dir:
-        options.config_dir = shell_out([options.wesnoth, "--config-path"]).strip().decode("utf8")
+        options.config_dir = shell_out([options.wesnoth, "--userdata-path"]).strip().decode("utf8")
         print("Using " + options.config_dir + " as config dir.")
 
     if not options.transdir:
