@@ -315,11 +315,9 @@ void addon_manager::pre_show(window& window)
 	if(client_.using_tls()) {
 		addr_info.select_layer(1);
 		addr_visible = addr_info.get_layer_grid(1);
-		addr_info.set_tooltip("Traffic between the game and the server is encrypted");
 	} else {
 		addr_info.select_layer(0);
 		addr_visible = addr_info.get_layer_grid(0);
-		addr_info.set_tooltip("Traffic between the game and the server is not secure");
 	}
 
 	if(addr_visible) {
