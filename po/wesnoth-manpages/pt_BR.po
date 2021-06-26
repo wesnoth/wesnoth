@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3-svn\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-22 22:21-0400\n"
-"PO-Revision-Date: 2020-12-15 07:35-0300\n"
+"POT-Creation-Date: 2021-06-23 10:18+0300\n"
+"PO-Revision-Date: 2021-06-24 10:15-0300\n"
 "Last-Translator: Andrei Machado <andreisp.machado@yahoo.com>\n"
 "Language-Team: Brazilian Portuguese <gnome-l10n-br@listas.cipsga.org.br>\n"
 "Language: pt_BR\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 2.4.2\n"
+"X-Generator: Poedit 2.4.3\n"
 
 # type: TH
 #. type: TH
@@ -29,7 +29,7 @@ msgstr "WESNOTH"
 #: doc/man/wesnoth.6:16 doc/man/wesnothd.6:16
 #, no-wrap
 msgid "2021"
-msgstr ""
+msgstr "2021"
 
 # type: TH
 #. type: TH
@@ -327,10 +327,9 @@ msgstr "habilita alguns mecanismos de deb da Lua"
 
 #. type: TP
 #: doc/man/wesnoth.6:106
-#, fuzzy, no-wrap
-#| msgid "B<--strict-validation>"
+#, no-wrap
 msgid "B<--strict-lua>"
-msgstr "B<--strict-validation>"
+msgstr "B<--strict-lua>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:109
@@ -341,7 +340,7 @@ msgstr ""
 #: doc/man/wesnoth.6:109
 #, no-wrap
 msgid "B<-D,--diff>I<\\ left-file>B<\\ >I<right-file>"
-msgstr ""
+msgstr "B<-D,--diff>I<\\ left-file>B<\\ >I<right-file>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:115
@@ -378,15 +377,13 @@ msgstr "B<--fps>"
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnoth.6:127
-#, fuzzy
-#| msgid ""
-#| "displays the number of frames per second the game is currently running "
-#| "at, in a corner of the screen."
 msgid ""
 "displays the number of frames per second the game is currently running at in "
 "a corner of the screen as well as writes these values to a file in the "
 "userdata directory."
-msgstr "exibe o número de frames por segundo do jogo num canto da tela."
+msgstr ""
+"exibe o número de frames por segundo do jogo em um canto da tela e também "
+"grava estes valores em um arquivo no diretório de dados do usuário."
 
 # type: TP
 #. type: TP
@@ -684,10 +681,9 @@ msgstr ""
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:229
-#, fuzzy, no-wrap
-#| msgid "B<--nocache>"
+#, no-wrap
 msgid "B<--nobanner>"
-msgstr "B<--nocache>"
+msgstr "B<--nobanner>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:232
@@ -739,10 +735,9 @@ msgstr "roda o jogo sem sons e música."
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:242
-#, fuzzy, no-wrap
-#| msgid "B<--script>I<\\ file>"
+#, no-wrap
 msgid "B<--output>I<\\ file>"
-msgstr "B<--script>I<\\ file>"
+msgstr "B<--output>I<\\ file>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:245
@@ -785,10 +780,9 @@ msgstr ""
 
 #. type: TP
 #: doc/man/wesnoth.6:257
-#, fuzzy, no-wrap
-#| msgid "B<-p,\\ --preprocess>I<\\ source-file/folder>B<\\ >I<target-directory>"
+#, no-wrap
 msgid "B<-P,--patch>I<\\ base-file>B<\\ >I<patch-file>"
-msgstr "B<-p,\\ --preprocess>I<\\ source-file/folder>B<\\ >I<target-directory>"
+msgstr "B<-P,--patch>I<\\ base-file>B<\\ >I<patch-file>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:262
@@ -1194,10 +1188,8 @@ msgstr "B<--validate-addon>I<\\ addon_id>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:407
-#, fuzzy
-#| msgid "validates the core WML as you play."
 msgid "validates the WML of the given addon as you play."
-msgstr "valida o core WML enquanto você joga."
+msgstr "valida o WML do addon enquanto você joga."
 
 # type: TP
 #. type: TP
@@ -1578,12 +1570,9 @@ msgstr "COPYRIGHT"
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnoth.6:532 doc/man/wesnothd.6:274
-#, fuzzy
-#| msgid ""
-#| "Copyright \\(co 2003-2018 David White E<lt>davidnwhite@verizon.netE<gt>"
 msgid "Copyright \\(co 2003-2021 David White E<lt>davidnwhite@verizon.netE<gt>"
 msgstr ""
-"Copyright \\(co 2003-2018 David White E<lt>davidnwhite@verizon.netE<gt>"
+"Copyright \\(co 2003-2021 David White E<lt>davidnwhite@verizon.netE<gt>"
 
 # type: Plain text
 #. type: Plain text
@@ -2141,7 +2130,7 @@ msgstr "Exemplo: B<versions_accepted=\"*\"> aceita qualquer versão do string."
 #: doc/man/wesnothd.6:168
 #, no-wrap
 msgid "B<deny_unregistered_login>"
-msgstr ""
+msgstr "B<deny_unregistered_login>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:173
@@ -2295,10 +2284,8 @@ msgstr "B<db_host>"
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:227
-#, fuzzy
-#| msgid "The hostname of the mail server"
 msgid "The hostname of the database server"
-msgstr "O hostname do server de email"
+msgstr "O hostname do servidor de database"
 
 # type: TP
 #. type: TP
@@ -2310,10 +2297,8 @@ msgstr "B<db_name>"
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:230
-#, fuzzy
-#| msgid "The hostname of the mail server"
 msgid "The name of the database"
-msgstr "O hostname do server de email"
+msgstr "O nome da database"
 
 # type: TP
 #. type: TP
@@ -2325,14 +2310,8 @@ msgstr "B<db_user>"
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:233
-#, fuzzy
-#| msgid ""
-#| "(for user_handler=forum) The name of the user under which to log into the "
-#| "database"
 msgid "The name of the user under which to log into the database"
-msgstr ""
-"(para user_handler=forum) O nome do usuário com o qual entrar no banco de "
-"dados"
+msgstr "O nome do usuário com o qual entrar no banco de dados"
 
 # type: TP
 #. type: TP
@@ -2344,10 +2323,8 @@ msgstr "B<db_password>"
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:236
-#, fuzzy
-#| msgid "This user's password."
 msgid "This user's password"
-msgstr "A senha deste usuário."
+msgstr "A senha deste usuário"
 
 # type: TP
 #. type: TP
@@ -2382,15 +2359,11 @@ msgstr "B<db_extra_table>"
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:242
-#, fuzzy
-#| msgid ""
-#| "(for user_handler=forum) The name of the table in which wesnothd will "
-#| "save its own data about games."
 msgid ""
 "The name of the table in which wesnothd will save its own data about users."
 msgstr ""
-"(para user_handler=forum) O nome da tabela em que wesnothd salvará a data de "
-"jogos."
+"(para user_handler=forum) O nome da tabela em que wesnothd salvará a data "
+"sobre usuários."
 
 # type: TP
 #. type: TP
@@ -2402,15 +2375,9 @@ msgstr "B<db_game_info_table>"
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:245
-#, fuzzy
-#| msgid ""
-#| "(for user_handler=forum) The name of the table in which wesnothd will "
-#| "save its own data about games."
 msgid ""
 "The name of the table in which wesnothd will save its own data about games."
-msgstr ""
-"(para user_handler=forum) O nome da tabela em que wesnothd salvará a data de "
-"jogos."
+msgstr "O nome da tabela em que wesnothd salvará a data de jogos."
 
 # type: TP
 #. type: TP
@@ -2422,16 +2389,11 @@ msgstr "B<db_game_player_info_table>"
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:248
-#, fuzzy
-#| msgid ""
-#| "(for user_handler=forum) The name of the table in which wesnothd will "
-#| "save its own data about the players in a game."
 msgid ""
 "The name of the table in which wesnothd will save its own data about the "
 "players in a game."
 msgstr ""
-"(para user_handler=forum) O nome da tabela em que wesnothd salvará a data "
-"sobre os jogadores num jogo."
+"O nome da tabela em que wesnothd salvará a data sobre os jogadores num jogo."
 
 #. type: TP
 #: doc/man/wesnothd.6:248
@@ -2442,16 +2404,12 @@ msgstr "B<db_game_modification_info_table>"
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:251
-#, fuzzy
-#| msgid ""
-#| "(for user_handler=forum) The name of the table in which wesnothd will "
-#| "save its own data about the modifications used in a game."
 msgid ""
 "The name of the table in which wesnothd will save its own data about the "
 "modifications used in a game."
 msgstr ""
-"(para user_handler=forum) O nome da tabela em que wesnothd salvará a data "
-"sobre as modificações usadas num jogo."
+"O nome da tabela em que wesnothd salvará a data sobre as modificações usadas "
+"num jogo."
 
 # type: TP
 #. type: TP
@@ -2486,15 +2444,11 @@ msgstr "B<mp_mod_group>"
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:257
-#, fuzzy
-#| msgid ""
-#| "(for user_handler=forum) The ID of the forum group to be considered as "
-#| "having moderation authority."
 msgid ""
 "The ID of the forum group to be considered as having moderation authority."
 msgstr ""
-"(para user_handler=forum) O ID do grupo do fórum que será considerado como "
-"tendo privilégios de moderador."
+"O ID do grupo do fórum que será considerado como tendo privilégios de "
+"moderador."
 
 #. type: Plain text
 #: doc/man/wesnothd.6:262
