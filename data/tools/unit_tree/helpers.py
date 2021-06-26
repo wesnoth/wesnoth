@@ -8,14 +8,14 @@ import sys, os, re, glob, shutil, copy, subprocess
 import wesnoth.wmlparser3 as wmlparser3
 
 def get_datadir(wesnoth_exe):
-    p = subprocess.Popen([wesnoth_exe, "--path"],
+    p = subprocess.Popen([wesnoth_exe, "--data-path"],
                          stdout=subprocess.PIPE,
                          stderr=subprocess.PIPE)
     out, err = p.communicate()
     return out.strip()
 
 def get_userdir(wesnoth_exe):
-    p = subprocess.Popen([wesnoth_exe, "--config-path"],
+    p = subprocess.Popen([wesnoth_exe, "--userdata-path"],
                          stdout=subprocess.PIPE,
                          stderr=subprocess.PIPE)
     out, err = p.communicate()
