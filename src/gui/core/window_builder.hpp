@@ -56,7 +56,7 @@ public:
 	std::string id;
 	std::string linked_group;
 
-	int debug_border_mode;
+	widget::debug_border debug_border_mode;
 	color_t debug_border_color;
 };
 

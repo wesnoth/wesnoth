@@ -14,12 +14,11 @@
 
 #pragma once
 
+#include "color.hpp"
 #include "gui/core/event/dispatcher.hpp"
-#include "sdl/point.hpp"
 #include "gui/widgets/event_executor.hpp"
 #include "scripting/lua_ptr.hpp"
-
-#include "color.hpp"
+#include "sdl/point.hpp"
 
 #include <string>
 
@@ -127,6 +126,14 @@ public:
 		none
 	};
 
+	enum class debug_border {
+		/** No border. */
+		none,
+		/** Single-pixel outline. */
+		outline,
+		/** Flood-filled rectangle. */
+		fill,
+	};
 
 	/***** ***** ***** Constructor and destructor. ***** ***** *****/
 
@@ -681,7 +688,7 @@ public:
 
 	redraw_action get_drawing_action() const;
 
-	void set_debug_border_mode(const unsigned debug_border_mode);
+	void set_debug_border_mode(const debug_border debug_border_mode);
 
 	void set_debug_border_color(const color_t debug_border_color);
 
@@ -713,13 +720,8 @@ private:
 	 *
 	 * The debug border is a helper border to determine where a widget is
 	 * placed. It is only intended for debugging purposes.
-	 *
-	 * Possible values:
-	 * - 0 no border
-	 * - 1 single pixel border
-	 * - 2 flood-filled rectangle
 	 */
-	unsigned debug_border_mode_;
+	debug_border debug_border_mode_;
 
 	/** The color for the debug border. */
 	color_t debug_border_color_;

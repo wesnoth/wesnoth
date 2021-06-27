@@ -44,7 +44,7 @@ widget::widget()
 	, visible_(visibility::visible)
 	, redraw_action_(redraw_action::full)
 	, clipping_rectangle_()
-	, debug_border_mode_(0)
+	, debug_border_mode_(debug_border::none)
 	, debug_border_color_(0,0,0,0)
 {
 	DBG_GUI_LF << "widget create: " << static_cast<void*>(this) << "\n";
@@ -510,7 +510,7 @@ widget::redraw_action widget::get_drawing_action() const
 										 : redraw_action_;
 }
 
-void widget::set_debug_border_mode(const unsigned debug_border_mode)
+void widget::set_debug_border_mode(const debug_border debug_border_mode)
 {
 	debug_border_mode_ = debug_border_mode;
 }
@@ -526,14 +526,14 @@ void widget::draw_debug_border()
 														  : get_rectangle();
 
 	switch(debug_border_mode_) {
-		case 0:
+		case debug_border::none:
 			/* DO NOTHING */
 			break;
-		case 1:
+		case debug_border::outline:
 			sdl::draw_rectangle(r, debug_border_color_);
 			break;
 
-		case 2:
+		case debug_border::fill:
 			sdl::fill_rectangle(r, debug_border_color_);
 			break;
 
@@ -550,15 +550,15 @@ widget::draw_debug_border(int x_offset, int y_offset)
 						 : calculate_blitting_rectangle(x_offset, y_offset);
 
 	switch(debug_border_mode_) {
-		case 0:
+		case debug_border::none:
 			/* DO NOTHING */
 			break;
 
-		case 1:
+		case debug_border::outline:
 			sdl::draw_rectangle(r, debug_border_color_);
 			break;
 
-		case 2:
+		case debug_border::fill:
 			sdl::fill_rectangle(r, debug_border_color_);
 			break;
 
