@@ -2752,7 +2752,7 @@ int game_lua_kernel::intf_play_sound(lua_State *L)
 {
 	if (play_controller_.is_skipping_replay()) return 0;
 	char const *m = luaL_checkstring(L, 1);
-	int repeats = luaL_optinteger(L, 2, 1);
+	int repeats = luaL_optinteger(L, 2, 0);
 	sound::play_sound(m, sound::SOUND_FX, repeats);
 	return 0;
 }
