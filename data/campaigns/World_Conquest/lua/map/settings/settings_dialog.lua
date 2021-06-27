@@ -30,20 +30,21 @@ end
 
 local dialog_wml = wml.load "campaigns/World_Conquest/gui/settings_dialog.cfg"
 
-function wc2_debug_settings(nplayers)
+function wc2_debug_settings()
 
 
 	local function preshow(window)
 
 		local sl_scenario = window.sl_scenario
 		local sl_map = window.sl_map
+		local sl_players = window.sl_players
 		
 		local function on_set_map()
 
 			globals.settings.scenario_num = sl_scenario.value
 
-			std_print(nplayers, globals.settings.scenario_num)
-			local generators = get_defaults(nplayers, globals.settings.scenario_num)
+			std_print(sl_players.value, globals.settings.scenario_num)
+			local generators = get_defaults(sl_players.value, globals.settings.scenario_num)
 			local map_data = generators[sl_map.value]
 			if map_data then
 	
@@ -63,15 +64,23 @@ function wc2_debug_settings(nplayers)
 
 		local function on_set_scenario()
 			globals.settings.scenario_num = sl_scenario.value
-			get_defaults(nplayers, globals.settings.scenario_num)
+			get_defaults(sl_players.value, globals.settings.scenario_num)
+			on_set_map()
+		end
+
+		local function on_set_players()
+			globals.settings.nplayers = sl_players.value
+			get_defaults(sl_players.value, globals.settings.scenario_num)
 			on_set_map()
 		end
 
 
 		sl_scenario.value = globals.settings.scenario_num or 1
 		sl_map.value = globals.settings.map_num or 1
+		sl_players.value = globals.settings.nplayers or 1
 		sl_scenario.on_modified = on_set_scenario
 		sl_map.on_modified = on_set_map
+		sl_players.on_modified = on_set_players
 
 		on_set_map()
 	end
@@ -79,6 +88,7 @@ function wc2_debug_settings(nplayers)
 	local function postshow(window)
 		globals.settings.scenario_num = window.sl_scenario.value
 		globals.settings.map_num = window.sl_map.value
+		globals.settings.nplayers = window.sl_players.value
 
 		globals.settings.length = window.sl_length.value
 		globals.settings.villages = window.sl_villages.value
