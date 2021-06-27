@@ -6,10 +6,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: wesnoth-1.15\n"
+"Project-Id-Version: wesnoth-1.16\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2021-06-23 15:36 UTC\n"
-"PO-Revision-Date: 2021-04-06 08:35+0800\n"
+"PO-Revision-Date: 2021-06-25 21:30+0800\n"
 "Last-Translator: 李信融 <magiclen0810@gmail.com>\n"
 "Language-Team: Wesnoth Traditional Chinese Team\n"
 "Language: zh_TW\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n>1);\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Poedit 2.4.3\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 
 #. [generic_multiplayer]: id=user_map
@@ -100,58 +100,48 @@ msgstr ""
 #. [lua]: f
 #. In the end-of-match summary, a side which has no units left and therefore lost. In English the loss is shown by displaying it with the text struck through.
 #: data/multiplayer/eras.lua:53
-#, fuzzy
-#| msgid "<span strikethrough='true' foreground='#%02x%02x%02x'>Side %d</span>"
 msgid ""
 "<span strikethrough='true' foreground='$side_color'>Side $side_number</"
 "span>:  Has lost all units"
-msgstr "<span strikethrough='true' foreground='#%02x%02x%02x'>陣營 %d</span>"
+msgstr ""
+"<span strikethrough='true' foreground='$side_color'>陣營 %side_number</"
+"span>：已經失去所有單位"
 
 #. [lua]: f
 #. In the end-of-match summary, any side that still has units left
 #: data/multiplayer/eras.lua:69
-#, fuzzy
-#| msgid ""
-#| "<span foreground='#%02x%02x%02x'>Side %d</span>:  Income score = %d  Unit "
-#| "score = %d  Gold = %d"
 msgid ""
 "<span foreground='$side_color'>Side $side_number</span>:  Income score = "
 "$income  Unit score = $units  Gold = $gold\n"
 "Grand total: <b>$total</b>"
 msgstr ""
-"<span foreground='#%02x%02x%02x'>陣營 %d</span>：收入得分 = %d  單位得分 = "
-"%d  金幣 = %d"
+"<span foreground='#%02x%02x%02x'>陣營 %side_number</span>：收入得分 = "
+"%income  單位得分 = %units  金幣 = %gold"
 
 #. [lua]: f
 #. In the end-of-match summary, there's a single side that's won.
 #: data/multiplayer/eras.lua:86
-#, fuzzy
-#| msgid "<span foreground='%s'>Side %d</span> has the advantage."
 msgid ""
 "<span foreground='$side_color'>Side $side_number</span> has the advantage."
-msgstr "<span foreground='%s'>陣營 %d</span> 取得了優勢。"
+msgstr "<span foreground='%s'>陣營 %side_number</span> 取得了優勢。"
 
 #. [lua]: f
 #. In the end-of-match summary, there's a two-way tie (this is only used for exactly two winning teams)
 #: data/multiplayer/eras.lua:91
-#, fuzzy
-#| msgid "Sides %s and %d are tied."
 msgid "Sides $side_number and $other_side_number are tied."
-msgstr "陣營 %s 和 %d 勢均力敵。"
+msgstr "陣營 $side_number 和 $other_side_number 平手。"
 
 #. [lua]: f
 #. In the end-of-match summary, three or more teams have all tied for the best score. $winners contains the result of formatting the conjunct list.
 #: data/multiplayer/eras.lua:96
-#, fuzzy
-#| msgid "Sides %s and %d are tied."
 msgid "Sides $winners are tied."
-msgstr "陣營 %s 和 %d 勢均力敵。"
+msgstr "陣營 $winners 平手。"
 
 #. [lua]: f
 #. "Turns Over", meaning "turn limit reached" is the title of the end-of-match summary dialog
 #: data/multiplayer/eras.lua:100
 msgid "dialog^Turns Over"
-msgstr ""
+msgstr "回合數到達上限"
 
 #. [multiplayer_side]: id=Drakes, type=random
 #: data/multiplayer/factions/drakes-aoh.cfg:4
@@ -1478,70 +1468,23 @@ msgid ""
 msgstr "幾乎已經看不出來這裡曾經是繁華的採礦聚落，現在則是搶劫者和盜賊的天堂。"
 
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:4
-#, fuzzy
-#| msgid ""
-#| "Your aim is to survive the spawning waves of units and defeat the final "
-#| "archenemies.\n"
-#| "\n"
-#| "The spawning waves are randomly generated and will be different each time "
-#| "Dark Forecast is played.\n"
-#| "\n"
-#| "They appear along the north, south, and west map edges — though they are "
-#| "most likely to spawn on the west edge. The waves appear at somewhat "
-#| "regular intervals.\n"
-#| "\n"
-#| "The weather will also change randomly, affecting the layout of the map.\n"
-#| "\n"
-#| "\n"
-#| "<b>Dark Forecast was made by:</b>\n"
-#| "\n"
-#| "<span color='green'>jb:</span>\n"
-#| "• Map design, spawn groups, and scenario concept\n"
-#| "\n"
-#| "<span color='green'>Rhuvaen:</span>\n"
-#| "• WML implementation"
 msgid ""
 "Your aim is to survive spawning waves of units and defeat the final "
 "archenemies. Spawns are randomly generated and will be different each time "
 "Isle of Mists is played. The waves appear at somewhat regular intervals. The "
 "weather will also change randomly, affecting the layout of the map."
 msgstr ""
-"你的目標是在如潮水般湧來的敵人攻勢中存活下來，並且擊敗最後的主力。\n"
-"\n"
-"敵人的攻勢是隨機產生的，每次玩黑暗預測時都將會不一樣。\n"
-"\n"
-"他們會出現在地圖北方、南方、西方的邊緣，最可能出現的地方是西方的邊緣。兩波攻"
-"擊之間有一定間隔。\n"
-"\n"
-"天氣也會隨機變換，影響地圖上的地形。\n"
-"\n"
-"\n"
-"<b>黑暗預測的作者：</b>\n"
-"\n"
-"<span color='green'>jb：</span>\n"
-"• 地圖設計、產生攻勢和章節概念\n"
-"\n"
-"<span color='green'>Rhuvaen：</span>\n"
-"• WML實作"
+"你的目標是在如潮水般湧來的敵人攻勢中存活下來，並且擊敗最後的主力。敵人的攻勢"
+"是隨機產生的，每次玩迷霧之島時都將會不一樣。兩波攻擊之間有一定間隔。天氣也會"
+"隨機變換，影響地圖上的地形。"
 
 #. [multiplayer]: id=multiplayer_2p_Isle_of_Mists
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:9
-#, fuzzy
-#| msgid "2p — Dark Forecast (Survival)"
 msgid "2p — Isle of Mists (Survival)"
-msgstr "2p — 黑暗預測（生存）"
+msgstr "2p — 迷霧之島（生存）"
 
 #. [multiplayer]: id=multiplayer_2p_Isle_of_Mists
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:10
-#, fuzzy
-#| msgid ""
-#| "Dark Forecast is a survival scenario for solitaire or two-player team-"
-#| "based play against randomly-spawned AI units. Victory is achieved by "
-#| "surviving and defeating all enemy waves. During the course of play, the "
-#| "terrain will change based on random weather effects.\n"
-#| "\n"
-#| "Note: You need to use the default map settings for the scenario to work "
-#| "right."
 msgid ""
 "Isle of Mists is a survival scenario which can be played alone or with "
 "another player against randomly spawned AI units, catered for experienced "
@@ -1550,40 +1493,32 @@ msgid ""
 "effects. Default map settings are required for the scenario to work "
 "properly. By Lord-Knightmare."
 msgstr ""
-"黑暗預測是一個生存章節，供單人進行或雙人組隊以對抗隨機產生並由AI控制的單位。"
+"迷霧之島是一個生存章節，供單人進行或雙人組隊以對抗隨機產生並由AI控制的單位。"
 "獲勝的方法是挺過敵人的所有攻勢。在遊戲過程中，地形會隨著隨機天氣的影響而變"
-"化。\n"
-"\n"
-"備註：你需要使用預設的地圖設定，來讓這個章節能夠正確運作。"
+"化。你需要使用預設的地圖設定，來讓這個章節能夠正確運作。"
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:25
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:38
-#, fuzzy
-#| msgid "teamname^Monsters"
 msgid "teamname^Invaders"
-msgstr "怪物"
+msgstr "入侵者"
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:56
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:83
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:107
-#, fuzzy
-#| msgid "teamname^Center"
 msgid "teamname^Defenders"
-msgstr "中央"
+msgstr "防禦者"
 
 #. [label]
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:189
 msgid "Healing Keep"
-msgstr ""
+msgstr "治療主堡"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:213
-#, fuzzy
-#| msgid "Dark Forecast — a random survival scenario"
 msgid "Isle of Mists — a random survival scenario"
-msgstr "黑暗預測──一個隨機的生存章節"
+msgstr "迷霧之島──一個隨機的生存章節"
 
 #. [message]
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:220
@@ -1591,27 +1526,28 @@ msgid ""
 "You arrive near a mystic shrine, where the apparitions of ancient armies are "
 "forever trapped and doomed to eternally cleanse the isle of all interlopers."
 msgstr ""
+"你抵達至一個神秘的神殿附近，古代軍隊的鬼魂永遠被困在這裡，注定要永遠清理所有"
+"小島的闖入者。"
 
+# 這裡的「approach」用得很奇怪，不照翻。
 #. [message]
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:224
 msgid ""
 "Phantom armies approach on the horizon. If we defeat them all, they may be "
 "released from this timeless prison."
 msgstr ""
+"幽靈軍隊出現於地平線上。如果我們擊敗他們全部，他們也許會從這個無盡時間的牢籠"
+"中解放。"
 
 #. [message]
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:228
 msgid "Let us prepare ourselves for the coming battle."
-msgstr ""
+msgstr "讓我們替即將來臨的戰鬥做好準備吧！"
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:247
-#, fuzzy
-#| msgid ""
-#| "Ugh! How can this be? Defeated by mere barbarians! My gods have forsaken "
-#| "me..."
 msgid "How can this be? My gods have forsaken me..."
-msgstr "呃啊！怎麼會這樣？敗給微不足道的野蠻人！我的神已拋棄了我……"
+msgstr "怎麼會這樣？我的神已拋棄了我……"
 
 #. [message]: speaker=second_unit
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:261
@@ -1620,6 +1556,8 @@ msgid ""
 "separated from your body. You realize that you will soon be doomed to the "
 "same fate as the phantom guardians of the shrine."
 msgstr ""
+"隨著死亡的冰冷之握更加接近，你感到你的精神從你的身體分離。你意識到你很快就會"
+"注定有著與神殿的守護者相同的命運。"
 
 #. [message]
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:283
@@ -1628,19 +1566,17 @@ msgid ""
 "You dimly realize that you will soon join the other ghosts as another "
 "faceless guardian of the ancient shrine."
 msgstr ""
+"一股黑霧從大地升起，抽離你的感官和你的意志。你模糊的意識到你很快就會加入其他"
+"鬼魂，成為這個古代神殿的另一名身份不詳的守護者。"
 
 #. [lua]: final_spawn
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.lua:313
-#, fuzzy
-#| msgid ""
-#| "The last and most powerful of these creatures are almost upon us. I feel "
-#| "that if we can finish them off in time, we shall be victorious."
 msgid ""
 "The last and most powerful of our enemies are upon us. If we can finish them "
 "off in time, we shall be victorious."
 msgstr ""
-"最後的、也是在這些敵人中最強的敵人就要出現了。我想如果我們能在時限內解決他們"
-"的話，我們就勝利了。"
+"我們最後的、也是最強的敵人就要出現了。我想如果我們能在時限內解決他們的話，我"
+"們就勝利了。"
 
 #. [lua]: final_spawn
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.lua:343
@@ -1650,11 +1586,13 @@ msgid ""
 "eternal guardianship. You have finally cleansed the ancient shrine... for "
 "now."
 msgstr ""
+"當你終於擊敗你最後剩下的敵人時，島嶼周圍沉悶的薄霧似乎蒸散掉了。鬼魂們緩緩消"
+"逝，終於從他們永恆的監禁中解放了。你終於清理了這個古老神殿……目前是這樣。"
 
 #. [lua]: weather_map
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.lua:517
 msgid "Inundation"
-msgstr ""
+msgstr "洪水"
 
 #. [multiplayer]: id=multiplayer_Ruined_Passage
 #: data/multiplayer/scenarios/2p_Ruined_Passage.cfg:7
@@ -2387,7 +2325,7 @@ msgstr "一個快節奏的 2v2 地圖，設定在地下深處。"
 #. [multiplayer]: id=multiplayer_Xanthe_Chaos
 #: data/multiplayer/scenarios/4p_Xanthe_Chaos.cfg:7
 msgid "4p — Xanthe Chaos"
-msgstr "4p — 桑希之混沌"
+msgstr "4p — 克薩恩希之混沌"
 
 #. [multiplayer]: id=multiplayer_Xanthe_Chaos
 #: data/multiplayer/scenarios/4p_Xanthe_Chaos.cfg:9

@@ -6,10 +6,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: wesnoth-1.15\n"
+"Project-Id-Version: wesnoth-1.16\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2021-06-23 15:36 UTC\n"
-"PO-Revision-Date: 2021-04-06 09:47+0800\n"
+"PO-Revision-Date: 2021-06-25 20:26+0800\n"
 "Last-Translator: 李信融 <magiclen0810@gmail.com>\n"
 "Language-Team: Wesnoth Traditional Chinese Team\n"
 "Language: zh_TW\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n>1);\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Poedit 2.4.3\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 
 #. [attack]: type=impact
@@ -1490,18 +1490,6 @@ msgstr "沙丘煉金術士"
 
 #. [unit_type]: id=Dune Alchemist, race=dunefolk
 #: data/core/units/dunefolk/Alchemist.cfg:25
-#, fuzzy
-#| msgid ""
-#| "To the Dunefolk, alchemy is less a form of philosophy or science, and "
-#| "more an extension of the phytology that is practiced by herbalists. "
-#| "However, in contrast to their brethrens’ focus on herbs for medicine and "
-#| "healing, many alchemists utilize various plants and naturally occurring "
-#| "venoms to concoct lethal poisons. While useful for weakening tough "
-#| "enemies, this art is viewed warily by other Dunefolk as a potent means "
-#| "for espionage and assassination. At the same time, such a tool presents a "
-#| "tremendous political advantage, so much so that almost every caravan will "
-#| "hire or train a few alchemists to maintain a reasonable level of threat "
-#| "at all times."
 msgid ""
 "To the Dunefolk, alchemy is less a form of philosophy or science, and more "
 "an extension of the phytology that is practiced by herbalists. However, in "
@@ -4906,7 +4894,7 @@ msgid ""
 "be in the employ of bandits, as they are to be in the king’s service."
 msgstr ""
 "遊俠是放蕩的人和流浪者，由於多種原因，他們選擇了躲避自己的同胞。他們把他們一"
-"生的大部分時間花在大自然的深處，也知道很多它的秘密。他們是卓越的尋路者和探險"
+"生的大部分時間花在大自然的深處，也知道很多它的祕密。他們是卓越的尋路者和探險"
 "者，而且可以找到食物和庇護所，而在那裡別人只能夠找到樹枝和石頭。\n"
 "\n"
 "這些人的存在困擾著統治者們中較專制的那些人，遊俠是騎士與擁有著大量土地的軍隊"
@@ -5280,41 +5268,34 @@ msgstr ""
 #. [unit_type]: id=Woodland Boar, race=monster
 #: data/core/units/monsters/Boar.cfg:4
 msgid "Woodland Boar"
-msgstr ""
+msgstr "林地野豬"
 
 #. [unit_type]: id=Woodland Boar, race=monster
 #: data/core/units/monsters/Boar.cfg:35
-#, fuzzy
-#| msgid ""
-#| "As Tuskers age, their already formidable teeth grow longer and more "
-#| "numerous. A mature boar gorer is a valuable asset to any farmer. And an "
-#| "angry boar gorer is a challenge even to the best hunters."
 msgid ""
 "As boars age, their already formidable teeth grow longer and more numerous. "
 "A mature, tamed boar is a valuable asset to any farmer, but an angry wild "
 "boar is a challenge even to the best hunters."
 msgstr ""
-"當獠牙獸成年時，牠們那早已令人害怕的牙齒長得更長且更多了。一個成熟的雄性獠牙"
-"獸對任何農夫來說都是個珍貴的資產，而一個生氣的雄性獠牙獸甚至對最好的獵人來說"
-"都會是個挑戰。"
+"當野豬成年時，牠們那早已令人害怕的牙齒長得更長且更多了。一個成熟的、被馴服的"
+"野豬對任何農夫來說都是個珍貴的資產，而一個生氣的野豬甚至對最好的獵人來說都會"
+"是個挑戰。"
 
 #. [attack]: type=blade
 #: data/core/units/monsters/Boar.cfg:50
 #: data/core/units/monsters/Boar_Piglet.cfg:49
 msgid "Bite"
-msgstr ""
+msgstr "咬"
 
 #. [attack]: type=pierce
 #: data/core/units/monsters/Boar.cfg:59
-#, fuzzy
-#| msgid "Tusks"
 msgid "Tusk"
-msgstr "獠牙"
+msgstr "長牙"
 
 #. [unit_type]: id=Piglet, race=monster
 #: data/core/units/monsters/Boar_Piglet.cfg:4
 msgid "Piglet"
-msgstr ""
+msgstr "小豬"
 
 #. [unit_type]: id=Piglet, race=monster
 #: data/core/units/monsters/Boar_Piglet.cfg:34
@@ -5323,6 +5304,8 @@ msgid ""
 "little less of a challenge in combat. But seldom is a piglet found that does "
 "not have a protective adult boar watching over them."
 msgstr ""
+"年幼的小豬是好奇寶寶，但與牠們的父母一樣脾氣暴躁，雖然牠們在戰鬥中比較沒有挑"
+"戰性。但很少有小豬被發現不在父母野豬的監視保護之下。"
 
 #. [unit_type]: id=Swamp Lizard, race=monster
 #: data/core/units/monsters/Crocodile.cfg:9
@@ -5445,6 +5428,9 @@ msgid ""
 "as scavengers, a burrow of fire ants can become aggressive when provoked and "
 "have even been known to attack small groups of threatening troops."
 msgstr ""
+"火蟻的體積小，但是在數量龐大時是致命的，牠們具有凶殘的尖牙，以及產生火焰的特"
+"殊能力。儘管這些生物通常起著清理腐肉的作用，當一洞火蟻被激怒時，牠們可以變得"
+"具有侵略性，甚至被認為會去攻擊有威脅性的小群部隊。"
 
 #. [attack]: type=fire
 #: data/core/units/monsters/Fire_Ant.cfg:73
@@ -5503,29 +5489,20 @@ msgstr "火焰爪"
 
 #. [unit_type]: id=Fire Wraith, race=monster
 #: data/core/units/monsters/Fire_Wraith.cfg:8
-#, fuzzy
-#| msgid "fire breath"
 msgid "Fire Wraith"
-msgstr "火焰吐息"
+msgstr "火焰怨魂"
 
 #. [unit_type]: id=Fire Wraith, race=monster
 #: data/core/units/monsters/Fire_Wraith.cfg:47
-#, fuzzy
-#| msgid ""
-#| "Fire Guardians are spirits of smoke and flame. No one is exactly sure "
-#| "where they come from, but they are occasionally summoned by powerful "
-#| "mages to do their bidding. When not being controlled they like to frolic "
-#| "in pools of lava and take great delight in burning anything they can "
-#| "reach."
 msgid ""
 "Fire Wraiths are spirits of smoke and flame. No one is exactly sure where "
 "they come from, but they are occasionally summoned by powerful mages to do "
 "their bidding. The odd armor they wear hints at a former life or creator, "
 "but whatever ancient civilization was involved has been lost to history."
 msgstr ""
-"火焰守護者是濃煙和烈火的精靈。沒有人真正地確定他們從哪裡來，但他們經常被強大"
-"的法師召喚出來為他們效命。當不被控制的時候，他們喜歡在岩漿池中嬉戲，且非常樂"
-"意把他能接觸的東西都燒得一乾二淨。"
+"火焰怨魂是濃煙和烈火的靈體。沒有人真正地確定他們從哪裡來，但他們經常被強大的"
+"法師召喚出來為他們效命。他們穿著的奇怪盔甲暗示著前世或是創造者，但無論古老的"
+"文明對此涉及了什麼，都已經遺失在歷史當中。"
 
 #. [unit_type]: id=Frost Stoat, race=monster
 #: data/core/units/monsters/Frost_Stoat.cfg:20
@@ -5534,15 +5511,6 @@ msgstr "冰霜白鼬"
 
 #. [unit_type]: id=Frost Stoat, race=monster
 #: data/core/units/monsters/Frost_Stoat.cfg:35
-#, fuzzy
-#| msgid ""
-#| "Frost Stoats are a devious rodent predominantly found in the frozen parts "
-#| "of the Northlands, although they can survive anywhere. Their most "
-#| "distinctive feature is their icy-cold front claws, which is unlike "
-#| "anything found in other wild animals. These stoats generally scavenge "
-#| "refuse or hunt smaller animals, but are quite territorial and the young "
-#| "adults have been known to attack larger intruders, including humans and "
-#| "orcs."
 msgid ""
 "Frost Stoats are devious critters predominantly found in the frozen parts of "
 "the Northlands, although they can survive anywhere. Their most distinctive "
@@ -5551,9 +5519,10 @@ msgid ""
 "animals, but are quite territorial and the young adults have been known to "
 "attack larger intruders, including humans and orcs."
 msgstr ""
-"冰霜白鼬是一種狡詐的齧齒動物，主要被發現於北方土地的冰雪地區，不過牠們可以在"
-"任何地方生存。牠們通常會獵食更小的動物，但牠們是地盤性的，且年輕的成年冰霜白"
-"鼬被認為會攻擊更大的入侵者，包括人類和半獸人。"
+"冰霜白鼬是一種狡詐的動物，主要被發現於北方土地的冰雪地區，不過牠們可以在任何"
+"地方生存。牠們最獨特的地方是牠們冰冷的前爪，這對爪子並不像其它野生動物的任何"
+"部位。這些白鼬通常會獵食更小的動物，但牠們是地盤性的，且年輕的成年冰霜白鼬被"
+"認為會攻擊更大的入侵者，包括人類和半獸人。"
 
 #. [attack]: type=cold
 #: data/core/units/monsters/Frost_Stoat.cfg:103
@@ -5642,31 +5611,24 @@ msgstr "鉗子"
 
 #. [variation]
 #: data/core/units/monsters/Giant_Scorpion.cfg:111
-#, fuzzy
-#| msgid "Sand Scuttler"
 msgid "scuttler"
-msgstr "沙蠍"
+msgstr "疾馳者"
 
 #. [variation]
 #: data/core/units/monsters/Giant_Scorpion.cfg:112
 msgid "Sand Scuttler"
-msgstr "沙蠍"
+msgstr "沙之疾馳者"
 
 # 不是很懂「an odd mix of mundane creature and elemental beast」是什麼意思。
 #. [variation]
 #: data/core/units/monsters/Giant_Scorpion.cfg:117
-#, fuzzy
-#| msgid ""
-#| "Blending in nearly seamlessly into sandy dunes, these critters are an odd "
-#| "mix of mundane creature and elemental beast. Though usually timid, Sand "
-#| "Scuttlers sometimes attack unwary travelers, especially when startled."
 msgid ""
 "Making their homes in sandy dunes, these critters are an odd mix of mundane "
 "creature and elemental beast. Though usually timid, Sand Scuttlers sometimes "
 "attack unwary travelers, especially when startled."
 msgstr ""
-"幾乎與沙丘合為一體，這些動物是普通生物和元素野獸的奇怪混合。雖然通常是溫馴"
-"的，但沙蠍有時候會攻擊不小心的旅行者，尤其是受驚時。"
+"這些動物是普通生物和元素野獸的奇怪混合，牠們在沙丘裡建造牠們的家。雖然通常是"
+"溫馴的，但沙之疾馳者有時候會攻擊不小心的旅行者，尤其是受驚時。"
 
 #. [unit_type]: id=Giant Scorpling, race=monster
 #: data/core/units/monsters/Giant_Scorpling.cfg:4
@@ -5719,7 +5681,7 @@ msgstr "蜘蛛網"
 #. [unit_type]: id=Bay Horse, race=horse
 #: data/core/units/monsters/Horse.cfg:5
 msgid "Bay Horse"
-msgstr ""
+msgstr "栗色馬"
 
 #. [unit_type]: id=Bay Horse, race=horse
 #: data/core/units/monsters/Horse.cfg:19
@@ -5729,6 +5691,9 @@ msgid ""
 "the wild plains and woodlands. Though an unencumbered horse will tend to "
 "flee if possible, they will fight back with a powerful kick when cornered."
 msgstr ""
+"栗色馬，顧名思義，更多地由牠們的顏色而不是由牠們體形或是性情來界定，從戰場至"
+"農田、原野以及林地等任何地方都可以找到牠們。雖然一匹沒有被韁繩束縛的馬有逃跑"
+"的傾向，但當牠們被逼到絕路時，牠們有可能會使用強力的踢擊來反擊。"
 
 #. [attack]: type=impact
 #: data/core/units/monsters/Horse.cfg:32 data/core/units/monsters/Horse.cfg:98
@@ -5742,10 +5707,8 @@ msgstr "踢"
 
 #. [unit_type]: id=White Horse
 #: data/core/units/monsters/Horse.cfg:74
-#, fuzzy
-#| msgid "White Mage"
 msgid "White Horse"
-msgstr "白袍法師"
+msgstr "白馬"
 
 #. [unit_type]: id=White Horse
 #: data/core/units/monsters/Horse.cfg:85
@@ -5755,13 +5718,14 @@ msgid ""
 "As if blessed by the faerie world, they have a grace and agility not found "
 "in their more common relatives."
 msgstr ""
+"有些馬有白色的部分，但牠們遠稱不上是白馬。不過存在著一個特殊的品種，只在野林"
+"中被發現，那就是白馬。彷彿是被仙境世界祝福了，牠們動作優雅、敏捷，一點都不像"
+"牠們的那些更常見的品種。"
 
 #. [unit_type]: id=Dark Horse
 #: data/core/units/monsters/Horse.cfg:140
-#, fuzzy
-#| msgid "Dark Sorcerer"
 msgid "Dark Horse"
-msgstr "黑暗術士"
+msgstr "暗馬"
 
 #. [unit_type]: id=Dark Horse
 #: data/core/units/monsters/Horse.cfg:166
@@ -5770,26 +5734,26 @@ msgid ""
 "civilized races. They leave no signs of their passage, but they have been "
 "noticed scouting camps and outposts during the night."
 msgstr ""
+"暗馬是野生動物，但牠們似乎對文明物種有奇怪的興趣。牠們沒有留下任何牠們通過的"
+"跡象，但他們曾被注意到於夜晚時正在偵察營地和哨點。"
 
 #. [attack]: type=cold
 #: data/core/units/monsters/Horse.cfg:179
 #: data/core/units/monsters/Horse_Black.cfg:50
 msgid "whinny"
-msgstr ""
+msgstr "嘶鳴"
 
 #. [male]
 #. [female]
 #: data/core/units/monsters/Horse.cfg:214
 #: data/core/units/monsters/Horse.cfg:218
-#, fuzzy
-#| msgid "female^Dark Adept"
 msgid "female^Dark Horse"
-msgstr "黑暗使徒"
+msgstr "暗馬"
 
 #. [unit_type]: id=Black Horse, race=horse
 #: data/core/units/monsters/Horse_Black.cfg:5
 msgid "Black Horse"
-msgstr ""
+msgstr "黑馬"
 
 #. [unit_type]: id=Black Horse, race=horse
 #: data/core/units/monsters/Horse_Black.cfg:25
@@ -5798,25 +5762,23 @@ msgid ""
 "their eyes and the unnerving, unnatural sound of their calls suggest they "
 "are malevolent spirits."
 msgstr ""
+"黑馬的真實性格是不可能被理解的，但牠們的眼睛裡的火焰，以及牠們不安且不自然的"
+"叫聲，表明牠們是有惡意的生物。"
 
 #. [male]
 #: data/core/units/monsters/Horse_Black.cfg:85
 msgid "Black Stallion"
-msgstr ""
+msgstr "黑色種馬"
 
 #. [female]
 #: data/core/units/monsters/Horse_Black.cfg:90
-#, fuzzy
-#| msgid "female^Mage of Light"
 msgid "female^Black Nightmare"
-msgstr "聖光法師"
+msgstr "黑色夢魘"
 
 #. [unit_type]: id=Great Horse, race=horse
 #: data/core/units/monsters/Horse_Great.cfg:5
-#, fuzzy
-#| msgid "Great Mage"
 msgid "Great Horse"
-msgstr "大法師"
+msgstr "巨馬"
 
 #. [unit_type]: id=Great Horse, race=horse
 #: data/core/units/monsters/Horse_Great.cfg:20
@@ -5826,6 +5788,9 @@ msgid ""
 "often feisty temperaments make them too difficult to tame, though many an "
 "arrogant prince or warlord has tried and failed."
 msgstr ""
+"巨馬明顯比一般被馴養的馬還要來得大，儘管牠們外表相似，牠們卻是野生的動物。牠"
+"們頑固且經常暴躁的性情使牠們難以被馴服，儘管許多傲慢的王子或軍閥嘗試過，但都"
+"失敗了。"
 
 #. [unit_type]: id=Icemonax, race=monster
 #: data/core/units/monsters/Icemonax.cfg:4
@@ -5878,18 +5843,19 @@ msgid ""
 "felt the Jinn were watching over them, driving off malign forces of the "
 "night."
 msgstr ""
+"沙漠神怪是神祕的靈體，與死者的靈魂沒有已知的關聯。他們經常從遠處被瞧見，漂過"
+"沙漠丘陵和沙丘，但不可被近距離觀察。幾乎所有遭遇牠們的記錄都顯示牠們具有敵"
+"意，但也有旅人覺得沙漠神怪在守護著他們，趕走夜晚的有害力量的案例。"
 
 #. [attack]: type=impact
 #: data/core/units/monsters/Jinn.cfg:99
 msgid "desert windblast"
-msgstr ""
+msgstr "沙漠氣浪"
 
 #. [attack]: type=fire
 #: data/core/units/monsters/Jinn.cfg:108
-#, fuzzy
-#| msgid "lightning"
 msgid "desert lightning"
-msgstr "雷電"
+msgstr "沙漠雷電"
 
 #. [unit_type]: id=Mudcrawler, race=monster
 #: data/core/units/monsters/Mudcrawler.cfg:4
@@ -5929,13 +5895,19 @@ msgid ""
 "aid to a traveler in need, usually in exchange for a small trinket or shiny "
 "bauble."
 msgstr ""
+"這些被稱為大鵰的大型猛禽生活在遠離人類城市的大片沙漠山脈中，在牠們的獵食時"
+"間，人們有時會發現牠們正在快速搜查沙地。儘管牠們龐大的身軀，大鵰傾向於獨處，"
+"很少被其他有智慧的種族遇到。牠們難以讓人找到的天性，使牠們升格到近乎神話般的"
+"地位，尤其是在沙漠的游牧民族間。\n"
+"\n"
+"不像其他的鳥類，例如獵鷹或是鷹，個人主義且聰明的大鵰幾乎是不可被馴服的。只有"
+"一個情況，大鵰也許會對旅行者提供其所需的幫助，通常是為了換取小飾品或閃亮的小"
+"玩意。 "
 
 #. [unit_type]: id=Rock Scorpion, race=monster
 #: data/core/units/monsters/Rock_Scorpion.cfg:4
-#, fuzzy
-#| msgid "Giant Scorpion"
 msgid "Rock Scorpion"
-msgstr "巨蠍"
+msgstr "石蠍"
 
 #. [unit_type]: id=Rock Scorpion, race=monster
 #: data/core/units/monsters/Rock_Scorpion.cfg:45
@@ -5946,14 +5918,16 @@ msgid ""
 "Unlike most scorpions, they do not deliver their poison with a piercing "
 "stinger, but instead spray their enemies with a noxious, volatile stream."
 msgstr ""
+"石蠍曾出現在攔路強盜和酒鬼們的故事中，但很少有證據表明牠們確實存在。牠們被描"
+"述為行動詭秘的怪物，躲藏在堅固的岩石間，有著尖銳且晶瑩剔透的爪子。不會大部分"
+"的蠍子，牠們不會藉由銳利的螫刺來傳遞牠們的毒素，而是會直接向牠們敵人噴出有"
+"毒、易揮發的液體。"
 
-# 翻譯成「水噴」會很奇怪。
+# 「water spay」翻作「水柱」，而這個用於蠍子，就翻譯成「毒柱」吧。
 #. [attack]: type=impact
 #: data/core/units/monsters/Rock_Scorpion.cfg:59
-#, fuzzy
-#| msgid "water spray"
 msgid "spray"
-msgstr "水柱"
+msgstr "毒柱"
 
 #. [unit_type]: id=Horned Scarab, race=monster
 #: data/core/units/monsters/Scarab.cfg:4
@@ -6009,10 +5983,8 @@ msgstr ""
 
 #. [unit_type]: id=Great Seahorse, race=monster
 #: data/core/units/monsters/Seahorse.cfg:5
-#, fuzzy
-#| msgid "Great Mage"
 msgid "Great Seahorse"
-msgstr "大法師"
+msgstr "巨海馬"
 
 #. [unit_type]: id=Great Seahorse, race=monster
 #: data/core/units/monsters/Seahorse.cfg:29
@@ -6024,6 +5996,10 @@ msgid ""
 "force to stun a small animal, and has thick, bony plate armor, but like all "
 "seahorses, it is a slow swimmer and cannot move over land."
 msgstr ""
+"海馬是一種有著像馬一般的頭的魚，但他們與馬類生物並沒有真實的關聯。大部分的海"
+"馬是小型、害羞的生物，牠們吃蟲子和類似的小獵物。不過巨海馬足以大到威脅漫不經"
+"心的旅行者，這種大型的變體會噴水，力道之大足以使小型動物暈眩，牠們也擁有厚厚"
+"的外骨骼盔甲，但就像所有的海馬一樣，牠是個緩慢的游泳者，且不能移動到陸地上。"
 
 #. [unit_type]: id=Skeletal Dragon, race=undead
 #: data/core/units/monsters/Skeletal_Dragon.cfg:4
@@ -6095,18 +6071,6 @@ msgstr "野生飛龍"
 # 為了更清楚描述而不照翻。
 #. [unit_type]: id=Wild Wyvern, race=monster
 #: data/core/units/monsters/Wild_Wyvern.cfg:44
-#, fuzzy
-#| msgid ""
-#| "Wyverns are large reptiles that resemble dragons, but are not the "
-#| "intelligent, magical creatures. However, the fact that they are just wild "
-#| "beasts should not cause any traveler who encounters one to dismiss the "
-#| "threat, for they are fast and fierce when threatened or hungry.\n"
-#| "\n"
-#| "Wyverns are social creatures, usually traveling in pairs or small "
-#| "groups.  Their hunting patterns and diet are difficult to discern, for "
-#| "they often work with smaller animals that would appear to be potential "
-#| "prey.  That odd behavior may be an adaptation to the harsh desert "
-#| "environments they often inhabit."
 msgid ""
 "Wyverns are large reptiles that resemble dragons, but are not the "
 "intelligent, magical creatures. However, the fact that they are just wild "
@@ -6238,10 +6202,8 @@ msgstr "納吉尼戰士"
 
 #. [unit_type]: id=Naga Guard, race=naga
 #: data/core/units/nagas/Guard.cfg:4
-#, fuzzy
-#| msgid "Royal Guard"
 msgid "Naga Guard"
-msgstr "皇家衛兵"
+msgstr "納迦守衛"
 
 #. [unit_type]: id=Naga Guard, race=naga
 #: data/core/units/nagas/Guard.cfg:22
@@ -6252,13 +6214,15 @@ msgid ""
 "mercenary activities. They are said to have a strong code of honor, though "
 "like all things naga, it is mostly a mystery to outsiders."
 msgstr ""
+"納迦在戰場上傾向於重視敏捷和優雅的動作，但更緩慢、更強壯的個體在防守重要位置"
+"方面扮演著關鍵的角色。這些守衛並不被常遇到，因為他們不參與襲擊或是僱傭活動。"
+"據說他們有著堅定的榮譽準則，不過就像納迦的所有事情一樣，這對外人來說通常是一"
+"個謎。"
 
 #. [unit_type]: id=Naga High Guard, race=naga
 #: data/core/units/nagas/Guard_High.cfg:4
-#, fuzzy
-#| msgid "Naga Fighter"
 msgid "Naga High Guard"
-msgstr "納迦戰士"
+msgstr "納迦高階守衛"
 
 #. [unit_type]: id=Naga High Guard, race=naga
 #: data/core/units/nagas/Guard_High.cfg:23
@@ -6270,21 +6234,21 @@ msgid ""
 "attacks, but the nagas can usually seek better terrain advantage in such "
 "situations."
 msgstr ""
+"精銳的納迦守衛對於任何侵入納迦據點的入侵者來說是一個堅固屏障。他們具有強大的"
+"攻擊力，而且像是更低等級的盾牌守衛一樣，要將他們從他們的崗位上趕走很困難，因"
+"為他們有著有效利用盾牌的近戰技巧。這個招數對於抵擋遠程攻擊沒有作用，但納迦通"
+"常在這樣的狀況下會尋求更好的地形優勢。"
 
 #. [attack]: type=impact
 #: data/core/units/nagas/Guard_High.cfg:37
 #: data/core/units/nagas/Guard_Shield.cfg:35
-#, fuzzy
-#| msgid "shield bash"
 msgid "shield"
-msgstr "盾擊"
+msgstr "盾"
 
 #. [unit_type]: id=Naga Shield Guard, race=naga
 #: data/core/units/nagas/Guard_Shield.cfg:4
-#, fuzzy
-#| msgid "Naga Sicarius"
 msgid "Naga Shield Guard"
-msgstr "納迦西卡里爾斯"
+msgstr "納迦盾牌守衛"
 
 #. [unit_type]: id=Naga Shield Guard, race=naga
 #: data/core/units/nagas/Guard_Shield.cfg:22
@@ -6294,6 +6258,9 @@ msgid ""
 "nothing against ranged attacks, but the nagas can usually seek better "
 "terrain advantage in such situations."
 msgstr ""
+"要將老練的納迦守衛從他們的崗位上趕走更困難，因為他們有著有效利用盾牌的近戰技"
+"巧。這個招數對於抵擋遠程攻擊沒有作用，但納迦通常在這樣的狀況下會尋求更好的地"
+"形優勢。"
 
 #. [unit_type]: id=Naga Myrmidon, race=naga
 #: data/core/units/nagas/Myrmidon.cfg:4
@@ -6339,19 +6306,6 @@ msgstr "納迦蛇夫"
 
 #. [unit_type]: id=Naga Ophidian, race=naga
 #: data/core/units/nagas/Ophidian.cfg:18
-#, fuzzy
-#| msgid ""
-#| "Experienced warriors of the Southern Naga often find work as mercenaries, "
-#| "usually hired by neighboring Dunefolk to control key waterways near the "
-#| "coastline. Due to their constant confrontations with enemy horsemen, "
-#| "Ophidians have retired the ringed blades of their youth and picked up the "
-#| "piercing bow. Though generally amicable with their wealthy employers, "
-#| "this friendliness should not be mistaken for loyalty, for the Ophidian "
-#| "are known for readily switching between rival city-state factions at the "
-#| "start of each shipping season, when demand for water-based protection is "
-#| "the highest. As a group, these nagas encourage a healthy amount of "
-#| "competition among the surface factions, ensuring their services are "
-#| "valued by one tribe or another."
 msgid ""
 "Experienced warriors of the Southern Naga often find work as mercenaries, "
 "usually hired by neighboring Dunefolk to control key waterways near the "
@@ -6367,10 +6321,12 @@ msgid ""
 "ensuring their services are valued by one tribe or another."
 msgstr ""
 "有經驗的南方納迦勇士通常會找傭兵的工作，一般會被鄰近的沙丘之民僱用，來控制海"
-"岸附近的關鍵水路。由於他們的不對與敵人的騎兵對抗，蛇夫已不使用他們年輕時候用"
-"的環刃，而是拿起具有穿刺能力的弓。雖然大體上與他們的富有僱主相處融洽，這樣的"
-"友誼不能被誤認為忠誠，因為蛇夫是以於每個運輸季節開始，也就是最需要基於水域的"
-"保護的時候，在相互競爭的城邦派系之間輕而易舉地跳槽而聞名。"
+"岸附近的關鍵水路。由於他們的不斷與敵人的騎兵對抗，蛇夫已不使用他們年輕時候用"
+"的環刃，而是拿起具有穿刺能力的短標槍。雖然大體上與他們的富有僱主相處融洽，這"
+"樣的友誼不能被誤認為忠誠，因為蛇夫是以於每個運輸季節開始，也就是最需要基於水"
+"域的保護的時候，在相互競爭的城邦派系之間輕而易舉地跳槽而聞名。作為一個團隊，"
+"這些納迦鼓勵地表的派系之間進行一些合理的競爭，以確保他們的傭兵服務受到一個部"
+"落或是另一個部落的重視。"
 
 #. [attack]: type=blade
 #: data/core/units/nagas/Ophidian.cfg:27 data/core/units/nagas/Sicarius.cfg:28
@@ -6380,7 +6336,7 @@ msgstr "曲刃"
 #. [attack]: type=pierce
 #: data/core/units/nagas/Ophidian.cfg:36 data/core/units/nagas/Sicarius.cfg:40
 msgid "jarid"
-msgstr ""
+msgstr "短標槍"
 
 #. [female]
 #: data/core/units/nagas/Ophidian.cfg:87
@@ -6423,18 +6379,6 @@ msgstr "納迦西卡里爾斯"
 
 #. [unit_type]: id=Naga Sicarius, race=naga
 #: data/core/units/nagas/Sicarius.cfg:19
-#, fuzzy
-#| msgid ""
-#| "While they sometimes still stand in as sellswords for potential Dunefolk "
-#| "allies, Naga Sicarii are more often the keepers of trade routes and "
-#| "resource beds close to waterways. For the right fee or exchange of goods, "
-#| "a Sicarius will guarantee safe travel or free access to valuable supplies "
-#| "in his territory. Rubbed the wrong way and a Sicarius becomes a fearsome "
-#| "foe, not because of their personal strength in combat, but instead due to "
-#| "the numerous allies that he can call upon to quash any potential "
-#| "nuisance. Though perfectly capable warriors when the time is necessary, "
-#| "these experienced mercenaries know perfectly well that the best methods "
-#| "for generating money are those that do not place themselves in danger."
 msgid ""
 "While they sometimes still stand in as sellswords for potential Dunefolk "
 "allies, Naga Sicarii are more often the keepers of trade routes and resource "
@@ -6455,7 +6399,10 @@ msgstr ""
 "他們的地盤上進行安全的旅行，或是自由取用珍貴的補給資源。不小心觸怒西卡里爾"
 "斯，他們會變成可怕的敵人，不是因為他們個人的戰鬥力量，而是他們會呼叫眾多盟友"
 "來平息任何潛在的麻煩事。雖然在必要的時候，這些有經驗的傭兵是完美勝任的勇士，"
-"但他們十分清楚賺錢的最佳方法是那些不會將他們自己置於險境的方法。"
+"但他們十分清楚賺錢的最佳方法是那些不會將他們自己置於險境的方法。當他們發現他"
+"們自己處在危險中時，他們的善於擺佈人的狡黠屬性會得到很好的利用，因為他們可以"
+"預測敵人的攻擊，並使用他們笨重、彎曲的曲刃在關鍵的時刻來進行偏轉或是使敵人分"
+"心。"
 
 #. [female]
 #: data/core/units/nagas/Sicarius.cfg:91
@@ -7208,16 +7155,6 @@ msgstr "巨食屍鬼"
 
 #. [unit_type]: id=Necrophage, race=undead
 #: data/core/units/undead/Corpse_Necrophage.cfg:18
-#, fuzzy
-#| msgid ""
-#| "The necrophage, or ‘devourer of the dead’, is a monstrous, corpulent "
-#| "thing, which bears only a crude resemblance to a man. They appear to be "
-#| "quite rotten in spite of their ability to move; they are rife with "
-#| "disease and poisons of the blood, and have a stench to match. But the "
-#| "most revolting fact about these fratures, apparent only to those who can "
-#| "perceive the traces of foul magic on them, is that they were somehow made "
-#| "from living men — a process about which almost nothing is known, but "
-#| "which can be nothing but nightmarish."
 msgid ""
 "The necrophage, or ‘devourer of the dead’, is a monstrous, corpulent thing, "
 "which bears only a crude resemblance to a man. They appear to be quite "
@@ -7230,7 +7167,7 @@ msgid ""
 msgstr ""
 "巨食屍鬼，或者說「死亡的暴食者」，是一個像怪物一樣、臃腫的東西，與人只有一點"
 "相似。他們看上去相當腐爛了，儘管他們還是有移動的能力。他們血液裡充斥著疾病與"
-"致命的毒素，還有與他們外貌匹配的惡臭。但是關於這些怪物最讓人反胃的事實是，他"
+"致命的毒素，還有與他們外貌匹配的惡臭。但是關於這些生物最讓人反胃的事實是，他"
 "們是以某種方式用活人做成的，這個事實只有對那些可以察覺到他們身上少量的邪惡魔"
 "法的人來說才是清晰可見的。關於這個過程是不為人知的，但它一定如噩夢一般。"
 
@@ -7261,10 +7198,8 @@ msgstr "地精"
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:189
 #: data/core/units/undead/Corpse_Walking.cfg:211
-#, fuzzy
-#| msgid "wc_variation^Wose"
 msgid "wc_variation^Horse"
-msgstr "樹人"
+msgstr "馬"
 
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:198
@@ -7299,10 +7234,8 @@ msgstr "蜥蜴人"
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:266
 #: data/core/units/undead/Corpse_Walking.cfg:265
-#, fuzzy
-#| msgid "wc_variation^Saurian"
 msgid "wc_variation^Scorpion"
-msgstr "蜥蜴人"
+msgstr "蠍"
 
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:275
@@ -7332,10 +7265,8 @@ msgstr "巨魔"
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:330
 #: data/core/units/undead/Corpse_Walking.cfg:329
-#, fuzzy
-#| msgid "wc_variation^Bat"
 msgid "wc_variation^Boar"
-msgstr "蝙蝠"
+msgstr "野豬"
 
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:338
