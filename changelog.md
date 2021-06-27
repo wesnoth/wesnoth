@@ -8,7 +8,7 @@
  ### Packaging
  ### Terrain
  ### Translations
-   * Updated translations: Portuguese (Brazil)
+   * Updated translations: Chinese (Traditional), Portuguese (Brazil)
  ### Units
  ### User interface
  ### WML Engine

@@ -6,10 +6,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: wesnoth-1.15\n"
+"Project-Id-Version: wesnoth-1.16\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2021-06-23 11:42-0400\n"
-"PO-Revision-Date: 2021-04-05 15:00+0800\n"
+"PO-Revision-Date: 2021-06-25 19:41+0800\n"
 "Last-Translator: 李信融 <magiclen0810@gmail.com>\n"
 "Language-Team: Wesnoth Traditional Chinese Team\n"
 "Language: zh_TW\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n>1);\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Poedit 2.4.3\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 
 #. [multiplayer_side]: id=Custom
@@ -222,7 +222,7 @@ msgstr "備註："
 #. [button]: id=ok
 #: data/campaigns/World_Conquest/gui/help_dialog.cfg:734
 msgid "Close"
-msgstr ""
+msgstr "關閉"
 
 #. [language]
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:147
@@ -4262,7 +4262,7 @@ msgstr "Lv"
 msgid ""
 "Use the map editor’s <i>Areas</i> menu to define regions later addressed by "
 "event or AI coding."
-msgstr "使用地圖編輯器的<i>區域</i>選項來編輯事件或設定AI。"
+msgstr "使用地圖編輯器的<i>地區</i>選項來編輯事件或設定AI。"
 
 #. [tip]
 #: data/tips.cfg:5 data/tips.cfg:9 data/tips.cfg:13
@@ -4649,8 +4649,8 @@ msgid ""
 "remaining. You will usually earn more gold this way than through capturing "
 "villages and waiting for the turns to run out."
 msgstr ""
-"在多數戰役中，提前完成目標會獲得金幣奬勵。根據地圖上占領村莊的數量和提前結束"
-"的回合數，通常會比占領多餘的村莊並等待所有回合結束獲得更多的金幣。"
+"在多數戰役中，提前完成目標會獲得金幣奬勵。根據地圖上佔領村莊的數量和提前結束"
+"的回合數，通常會比佔領多餘的村莊並等待所有回合結束獲得更多的金幣。"
 
 #. [tip]
 #: data/tips.cfg:136
@@ -4822,7 +4822,7 @@ msgstr ""
 msgid ""
 "If an enemy benefits more from a rare terrain type than you do, occupying "
 "that terrain will deprive them of its benefits."
-msgstr "如果敵人在一個特殊地形上防禦比你更好，占領那個地形可以避免讓對方獲益。"
+msgstr "如果敵人在一個特殊地形上防禦比你更好，佔領那個地形可以避免讓對方獲益。"
 
 #. [tip]
 #: data/tips.cfg:205
@@ -5004,6 +5004,7 @@ msgstr ""
 msgid "<i>― Lord Tallin of Knalga, 538 YW</i>"
 msgstr "<i>― 塔林 納爾迦領主，538 YW</i>"
 
+# 與 tutorial 的條目同步。
 #. [tip]
 #: data/tips.cfg:267
 msgid ""
@@ -5011,6 +5012,8 @@ msgid ""
 "quicker. The <i>acceleration factor</i> can be set, and turned on by "
 "default, in the <i>Preferences</i> menu’s <i>General</i> tab."
 msgstr ""
+"按住 <b>shift</b> 將會使移動和戰鬥的動畫變得更快。<i>加速係數</i>可以在<i>偏"
+"好設定</i>選單中的<i>一般</i>標籤內被設定，預設是啟用的。"
 
 #. [tip]
 #. Translate "Change difficulty" and "Load Game" as in wesnoth-lib textdomain
@@ -5789,6 +5792,7 @@ msgstr "韋諾之戰"
 msgid "Invalid Color"
 msgstr "無效的顔色"
 
+# 這邊是用於遊戲存檔的列表上的時間。盡量讓格式統一，雖然遊戲本身設計是根據現在時間和錄影時間來調整顯示的格式……
 #: src/format_time_summary.cpp:46
 msgid "%H:%M"
 msgstr "%H:%M"
@@ -5799,19 +5803,19 @@ msgstr "%I:%M %p"
 
 #: src/format_time_summary.cpp:54
 msgid "%A, %H:%M"
-msgstr "%A, %H:%M"
+msgstr "%Y-%m-%d %H:%M"
 
 #: src/format_time_summary.cpp:57
 msgid "%A, %I:%M %p"
-msgstr "%A, %I:%M %p"
+msgstr "%Y-%m-%d %I:%M %p"
 
 #: src/format_time_summary.cpp:61
 msgid "%b %d"
-msgstr "%b %d"
+msgstr "%Y-%m-%d"
 
 #: src/format_time_summary.cpp:65
 msgid "%b %d %Y"
-msgstr "%b %d %Y"
+msgstr "%Y-%m-%d"
 
 #: src/game_config.cpp:528
 msgid "Invalid color in range: "
@@ -6140,7 +6144,7 @@ msgstr "警告"
 #: src/game_initialization/multiplayer.cpp:407
 msgid ""
 "The remote server requested a password while using an insecure connection."
-msgstr ""
+msgstr "遠端伺服器要求在使用不安全連線的時候提供一個密碼。"
 
 #: src/game_initialization/multiplayer.cpp:409
 msgid "You must login first."
@@ -6222,7 +6226,7 @@ msgstr "你嘗試登入太多次了。"
 
 #: src/game_initialization/multiplayer.cpp:452
 msgid "Password hashing failed."
-msgstr ""
+msgstr "密碼雜湊失敗。"
 
 #: src/game_initialization/playcampaign.cpp:75
 msgid "Scenario Report"
@@ -6542,7 +6546,7 @@ msgstr "不可用"
 
 #: src/help/help_impl.cpp:856 src/help/help_impl.cpp:1033
 msgid "race^Miscellaneous"
-msgstr "雜項"
+msgstr "其它"
 
 #: src/help/help_impl.cpp:1056 src/reports.cpp:383
 msgid "Alignment: "
@@ -6936,10 +6940,8 @@ msgid "Debug layers from terrain under the mouse."
 msgstr "偵錯滑鼠游標所指的地形圖層。"
 
 #: src/menu_events.cpp:1246
-#, fuzzy
-#| msgid "Show fps (Frames Per Second)."
 msgid "Display and log fps (Frames Per Second)."
-msgstr "顯示FPS（每秒影格數）。"
+msgstr "顯示並記錄FPS（每秒影格數）。"
 
 #: src/menu_events.cpp:1248
 msgid "Save game."
@@ -7345,7 +7347,7 @@ msgstr "錯誤細節："
 
 #: src/play_controller.cpp:1258
 msgid "Warning: broken campaign branches"
-msgstr ""
+msgstr "警告：損壞的戰役分支"
 
 #. TRANSLATORS: This is an error that will hopefully only be seen by UMC authors and by players who have already
 #. said "okay" to a "loading saves from an old version might not work" dialog.
@@ -7355,8 +7357,8 @@ msgid ""
 msgid_plural ""
 "Some of the possible next scenarios are missing, you might not be able to "
 "finish this campaign."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "下一個章節遺失了，你將不能完成這個戰役。"
+msgstr[1] "接下來有幾個可能的章節遺失了，你也許會不能完成這個戰役。"
 
 #: src/play_controller.cpp:1271
 msgid ""
@@ -7365,12 +7367,12 @@ msgid ""
 msgid_plural ""
 "Please report the following missing scenarios to the campaign’s author:\n"
 "$unknown_list|"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "請回報以下的遺失章節給戰役的作者："
+msgstr[1] "請回報以下的遺失章節給戰役的作者："
 
 #: src/play_controller.cpp:1275
 msgid "Once this is fixed, you will need to restart this scenario."
-msgstr ""
+msgstr "一旦這個被修正了，你將需要重新啟動這個章節。"
 
 #: src/play_controller.cpp:1455
 msgid "No objectives available"
@@ -7493,10 +7495,8 @@ msgid "Type: "
 msgstr "類型："
 
 #: src/reports.cpp:196
-#, fuzzy
-#| msgid "Specials: "
 msgid "Special Notes:"
-msgstr "效果攻擊："
+msgstr "特殊備註："
 
 #: src/reports.cpp:219
 msgid "Race: "
@@ -7810,11 +7810,11 @@ msgstr "回合倒數"
 
 #: src/save_index.cpp:262
 msgid "%a %b %d %I:%M %p %Y"
-msgstr "%a %b %d %I:%M %p %Y"
+msgstr "%Y-%m-%d %I:%M %p"
 
 #: src/save_index.cpp:263
 msgid "%a %b %d %H:%M %Y"
-msgstr "%a %b %d %H:%M %Y"
+msgstr "%Y-%m-%d %H:%M"
 
 #. TRANSLATORS: This string is used as part of a filename, as in, "HttT-The Elves Besieged replay.gz"
 #: src/save_index.cpp:283 src/savegame.cpp:588
@@ -7902,6 +7902,9 @@ msgid ""
 "following characters:\n"
 "    \" * / : < > ? \\ | ~"
 msgstr ""
+"存檔名稱不能以小數點為結尾，也不能包含連續兩個小數點，或包含下列字元中的任意"
+"一個字元：\n"
+"    \" * / : < > ? \\ | ~"
 
 #: src/savegame.cpp:490
 msgid "Saved"
@@ -8334,15 +8337,15 @@ msgstr "對$player|隱藏計劃"
 msgid "Whiteboard Options"
 msgstr "白板選項"
 
-#, fuzzy
-#~| msgid "female^neutral"
-#~ msgid "female^feral"
-#~ msgstr "中立"
+#~ msgid "Group players in lobby"
+#~ msgstr "在大廳組隊"
 
-#, fuzzy
-#~| msgid "unhealable"
-#~ msgid "Unhealable"
-#~ msgstr "不可治療"
+#~ msgid ""
+#~ "Lato-Regular.ttf,DejaVuSans.ttf,Andagii.ttf,DroidSansJapanese.ttf,"
+#~ "DroidSansFallbackFull.ttf,Junicode-Regular.ttf"
+#~ msgstr ""
+#~ "Lato-Regular.ttf,DejaVuSans.ttf,Andagii.ttf,DroidSansFallbackFull.ttf,"
+#~ "DroidSansJapanese.ttf,Junicode-Regular.ttf"
 
 #~ msgid "magical leadership"
 #~ msgstr "法術領導"
@@ -8370,16 +8373,6 @@ msgstr "白板選項"
 #~ msgstr ""
 #~ "這個單位對於近戰攻擊的抗性會提升20%，最大可提升至50%。弱點不會被影響。"
 
-#, fuzzy
-#~| msgid "female^cured"
-#~ msgid "female^darkens"
-#~ msgstr "治癒"
-
-#, fuzzy
-#~| msgid "This unit has been petrified. It may not move or attack."
-#~ msgid "This unit sacrifices its own life in order to make more attacks."
-#~ msgstr "這個單位被石化了，因此可能無法移動或攻擊。"
-
 #~ msgid "cantor"
 #~ msgstr "瞄準"
 
@@ -8392,202 +8385,17 @@ msgstr "白板選項"
 #~ "這個單位在鄰接同盟單位進行遠程攻擊的時候會幫忙瞄準，使他們擁有「精準」能"
 #~ "力。"
 
-#, fuzzy
-#~| msgid "jamming:"
-#~ msgid "Jamming Orc"
-#~ msgstr "干擾："
-
-#, fuzzy
-#~| msgid "Clear Labels"
-#~ msgid "Clear sailing!"
-#~ msgstr "清除標籤"
-
-#, fuzzy
-#~| msgid "invisible: "
-#~ msgid "It is invisible!"
-#~ msgstr "不可見："
-
-#, fuzzy
-#~| msgid "Debug mode activated!"
-#~ msgid "Teleporters activated"
-#~ msgstr "偵錯模式已開啟！"
-
-#, fuzzy
-#~| msgid "Debug mode deactivated!"
-#~ msgid "Teleporters deactivated"
-#~ msgstr "偵錯模式已關閉！"
-
-#, fuzzy
-#~| msgid "steadfast"
-#~ msgid "Steadfast tester"
-#~ msgstr "堅定"
-
 #~ msgid "aura of death ("
 #~ msgstr "死亡氣息 ("
 
 #~ msgid "female^aura of death ("
 #~ msgstr "死亡氣息 ("
 
-#, fuzzy
-#~| msgid "Custom map."
-#~ msgid "Custom dialog"
-#~ msgstr "自訂地圖。"
-
-#, fuzzy
-#~| msgid "Clear objective orders"
-#~ msgid "objectives test"
-#~ msgstr "取消目標指令"
-
-#, fuzzy
-#~| msgid "neutral"
-#~ msgid "Neutral"
-#~ msgstr "中立"
-
-#, fuzzy
-#~| msgid "Defeat enemy leader(s)"
-#~ msgid "Defeat the enemy leader (he’s at 29,16!)"
-#~ msgstr "擊敗敵方首領"
-
-#, fuzzy
-#~| msgid "Defeat enemy leader(s)"
-#~ msgid "Defeat the enemy leader (he’s at 28,18!)"
-#~ msgstr "擊敗敵方首領"
-
-#, fuzzy
-#~| msgid "Temple"
-#~ msgid "Temporal Clone"
-#~ msgstr "廟宇"
-
-#, fuzzy
-#~| msgid "Launch the gamestate inspector"
-#~ msgid "Gamestate Inspector"
-#~ msgstr "啟動遊戲狀態檢視器"
-
-#, fuzzy
-#~| msgid "Chat message"
-#~ msgid "Parrot message"
-#~ msgstr "聊天訊息"
-
-#, fuzzy
-#~| msgid "Holy Water"
-#~ msgid "Water"
-#~ msgstr "聖水"
-
-#, fuzzy
-#~| msgid "poisoned"
-#~ msgid "poison"
-#~ msgstr "中毒"
-
-#, fuzzy
-#~| msgid "Northerners"
-#~ msgid "Northerners unleashed!"
-#~ msgstr "北方民族"
-
-#, fuzzy
-#~| msgid "Lato Light"
-#~ msgid "Let’s fight"
-#~ msgstr "Droid Sans Fallback,Lato Light"
-
-#, fuzzy
-#~| msgid "Cannot find era $era"
-#~ msgid "Cannot divide by zero!"
-#~ msgstr "無法找到時代：$era"
-
-#, fuzzy
-#~| msgid "Trash Pile"
-#~ msgid "Crash test"
-#~ msgstr "垃圾堆"
-
-#, fuzzy
-#~| msgid "Potion of Decay"
-#~ msgid "Potion of bleach"
-#~ msgstr "衰退藥劑"
-
-#, fuzzy
-#~| msgid "Warning"
-#~ msgid "Win"
-#~ msgstr "警告"
-
-#, fuzzy
-#~| msgid "This is not a multiplayer save."
-#~ msgid "This is not a forest"
-#~ msgstr "這不是多人連線的存檔。"
-
-#, fuzzy
-#~| msgid "Still Another Wanderer"
-#~ msgid "Still there"
-#~ msgstr "又一個流浪者"
-
-#, fuzzy
-#~| msgid "Summoning Circle"
-#~ msgid "Summon Troll"
-#~ msgstr "召喚陣圓環"
-
-#, fuzzy
-#~| msgid "Magic Circle"
-#~ msgid "Magic Troll"
-#~ msgstr "魔法陣"
-
-#, fuzzy
-#~| msgid "sceptre of fire"
-#~ msgid "ruby of fire"
-#~ msgstr "火焰權杖"
-
-#, fuzzy
-#~| msgid "Turn changed"
-#~ msgid "map change"
-#~ msgstr "交換回合"
-
-#, fuzzy
-#~| msgid "Turn changed"
-#~ msgid "map change2"
-#~ msgstr "交換回合"
-
-#, fuzzy
-#~| msgid "Turn changed"
-#~ msgid "map change3"
-#~ msgstr "交換回合"
-
-#, fuzzy
-#~| msgid "Shroud"
-#~ msgid "Shrouded label"
-#~ msgstr "戰場黑幕"
-
-#, fuzzy
-#~| msgid "Bright green"
-#~ msgid "More green!"
-#~ msgstr "亮綠"
-
-#, fuzzy
-#~| msgid "Dark blue"
-#~ msgid "More blue!"
-#~ msgstr "深藍"
-
-#, fuzzy
-#~| msgid "Menu"
-#~ msgid "Menu 1"
-#~ msgstr "主選單"
-
-#, fuzzy
-#~| msgid "Menu"
-#~ msgid "Menu 2"
-#~ msgstr "主選單"
-
 #~ msgid "very long"
 #~ msgstr "非常長"
 
 #~ msgid "electrical"
 #~ msgstr "電子"
-
-#~ msgid "Group players in lobby"
-#~ msgstr "在大廳組隊"
-
-#~ msgid ""
-#~ "Lato-Regular.ttf,DejaVuSans.ttf,Andagii.ttf,DroidSansJapanese.ttf,"
-#~ "DroidSansFallbackFull.ttf,Junicode-Regular.ttf"
-#~ msgstr ""
-#~ "Lato-Regular.ttf,DejaVuSans.ttf,Andagii.ttf,DroidSansFallbackFull.ttf,"
-#~ "DroidSansJapanese.ttf,Junicode-Regular.ttf"
 
 #~ msgid "Read the <b>Hotkeys</b> list in the <b>Preferences</b> menu."
 #~ msgstr "在<b>設定</b>選單中可以查看<b>快速鍵</b>清單。"
@@ -8632,6 +8440,9 @@ msgstr "白板選項"
 
 #~ msgid "Max HP bonus +6%"
 #~ msgstr "最大生命值奬勵+6%"
+
+#~ msgid "steadfast"
+#~ msgstr "堅定"
 
 #~ msgid "female^steadfast"
 #~ msgstr "堅定"

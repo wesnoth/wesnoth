@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the Battle for Wesnoth package.
 # 楊綮銘 <steven2880@gmail.com>, 2008.
 # 曾筠鈞 <yunchuntseng@gmail.com>, 2018.
+# 李信融 <magiclen0810@gmail.com>, 2021.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: wesnoth-1.15\n"
+"Project-Id-Version: wesnoth-1.16\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2021-06-23 11:42-0400\n"
-"PO-Revision-Date: 2021-04-09 09:00+0800\n"
+"PO-Revision-Date: 2021-06-25 19:50+0800\n"
 "Last-Translator: 李信融 <magiclen0810@gmail.com>\n"
 "Language-Team: Wesnoth Traditional Chinese Team\n"
 "Language: zh_TW\n"
@@ -17,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n>1);\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Poedit 2.4.3\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 
 #. [time]: id=underground
@@ -62,10 +63,8 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:22
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:61
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:91
-#, fuzzy
-#| msgid "This unit is capable of basic healing."
 msgid "This unit is capable of basic healing and slowing dehydration."
-msgstr "這個單位有基本治療的能力。"
+msgstr "這個單位有基本治療以及減緩脫水的能力。"
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:40
@@ -127,14 +126,10 @@ msgstr ""
 
 #. [heals]
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:97
-#, fuzzy
-#| msgid ""
-#| "This unit is capable of healing those around it, and curing them of "
-#| "poison."
 msgid ""
 "This unit is capable of healing those around it, slowing dehydration, and "
 "curing them of poison."
-msgstr "這個單位有治療那些在他附近的單位的能力，也能治癒他們的毒。"
+msgstr "這個單位有治療那些在他附近的單位的能力，也能減緩脫水、治癒他們的毒。"
 
 #. [trait]: id=healthy
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:11
@@ -815,40 +810,6 @@ msgstr "地圖/章節編輯器"
 # 最後面的警告不照翻。
 #. [topic]: id=..editor
 #: data/core/editor/help.cfg:224
-#, fuzzy
-#| msgid ""
-#| "Wesnoth’s Map and Scenario Editor allows users to create and edit the "
-#| "maps on which every Wesnoth scenario takes place. It also provides a "
-#| "limited set of features for setting up a basic scenario.\n"
-#| "\n"
-#| "The editor can be launched from the <italic>text='Map Editor'</italic> "
-#| "option at the title screen.\n"
-#| "\n"
-#| "<header>text='Editing Modes'</header>\n"
-#| "\n"
-#| "The editor features two modes of operation: terrain mode and scenario "
-#| "mode.\n"
-#| "\n"
-#| "The <ref>dst='..editor_mode_terrain' text='Terrain Mode'</ref> is similar "
-#| "to a simple paint application, with tools to <ref>dst='editor_tool_paint' "
-#| "text='paint'</ref>, <ref>dst='editor_tool_fill' text='fill'</ref>, "
-#| "<ref>dst='editor_tool_select' text='select (and copy)'</ref>, and "
-#| "<ref>dst='editor_tool_paste' text='paste'</ref>. It also has the tool for "
-#| "setting the leaders’ <ref>dst='editor_tool_starting' text='starting "
-#| "locations'</ref>.\n"
-#| "\n"
-#| "The <ref>dst='..editor_mode_scenario' text='Scenario Mode'</ref>, in "
-#| "addition to the tools available in terrain mode, adds support for adding "
-#| "<ref>dst='editor_tool_label' text='labels'</ref>, "
-#| "<ref>dst='editor_tool_scenery' text='scenery items'</ref>, "
-#| "<ref>dst='editor_tool_unit' text='units'</ref> in addition to the leader, "
-#| "and assigning <ref>dst='editor_tool_village' text='village ownership'</"
-#| "ref> at the start of the scenario. There’s also a "
-#| "<ref>dst='editor_playlist' text='playlist manager'</ref> for the music.\n"
-#| "\n"
-#| "<bold>text='Warning: the Scenario Mode is buggy in 1.14.'</bold> "
-#| "Improving it is one of the main blockers for the 1.16 release, however in "
-#| "1.14 its quality is far below that of the game and the terrain mode."
 msgid ""
 "Wesnoth’s Map and Scenario Editor allows users to create and edit the maps "
 "on which every Wesnoth scenario takes place. It also provides a limited set "
@@ -899,10 +860,7 @@ msgstr ""
 "<ref>dst='editor_tool_scenery' text='章節項目'</ref>、"
 "<ref>dst='editor_tool_unit' text='單位'</ref>，此外能指派章節開始時的"
 "<ref>dst='editor_tool_village' text='村莊擁有權'</ref>。另外還有"
-"<ref>dst='editor_playlist' text='播放清單管理器'</ref>可以處理音樂。\n"
-"\n"
-"<bold>text='警告：章節模式在1.14版本有很多臭蟲'</bold>，修正它是1.16版本的主"
-"要目標之一。"
+"<ref>dst='editor_playlist' text='播放清單管理器'</ref>可以處理音樂。"
 
 #. [topic]: id=..editor
 #: data/core/editor/help.cfg:236
@@ -4310,9 +4268,9 @@ msgstr ""
 "要移除模組，在模組伺服器連線對話框中選擇<bold>text='移除模組'</bold>。你將會"
 "看到一些選項來移除任意數量的你目前已經安裝的模組。\n"
 "\n"
-"有發佈資訊(<italic>text='.pbl'</italic>)的模組無法被移除，為了避免創作者們不"
-"小心移除它們。如果有必要，你必須使用你的平台所提供的檔案瀏覽器來手動刪除訊息"
-"檔案或是模組本身。"
+"有發佈資訊（<italic>text='.pbl'</italic>）的模組無法被移除，為了避免創作者們"
+"不小心移除它們。如果有必要，你必須使用你的平台所提供的檔案瀏覽器來手動刪除訊"
+"息檔案或是模組本身。"
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:678
@@ -4395,11 +4353,6 @@ msgstr ""
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:694
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "Toggle the display of the current frames per second.\n"
-#| "\n"
 msgid ""
 "\n"
 "Toggle the display of the current frames per second. Also writes these "
@@ -4407,7 +4360,8 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"切換顯示目前的每秒影格數。\n"
+"切換顯示目前的每秒影格數。同時將這些數值寫進存放在使用者資料目錄內的一個檔案"
+"中。\n"
 "\n"
 
 #. [topic]: id=general_commands
@@ -5101,25 +5055,21 @@ msgstr "當被用於進攻時，這種攻擊總是至少有60%的命中率。"
 #. [chance_to_hit]: id=deflect
 #: data/core/macros/abilities.cfg:489
 msgid "deflect"
-msgstr ""
+msgstr "偏轉"
 
 #. [chance_to_hit]: id=deflect
 #: data/core/macros/abilities.cfg:490
-#, fuzzy
-#| msgid ""
-#| "When used offensively, this attack always has at least a 60% chance to "
-#| "hit."
 msgid ""
 "When used defensively, this attack reduces the opponent's chance to hit by "
 "10%."
-msgstr "當被用於進攻時，這種攻擊總是至少有60%的命中率。"
+msgstr "當被用於防守時，這種攻擊總是至少有60%的命中率。"
 
 #. [chance_to_hit]: id=deflect
 #: data/core/macros/abilities.cfg:491
 msgid ""
 "This unit’s defensive techniques reduce the chance of a successful enemy "
 "attack."
-msgstr ""
+msgstr "這個單位的防禦技巧會減少敵人攻擊的成功率。"
 
 #. [chance_to_hit]: id=magical
 #: data/core/macros/abilities.cfg:505
@@ -5157,20 +5107,20 @@ msgstr ""
 #. [damage]: id=absorb
 #: data/core/macros/abilities.cfg:542
 msgid "absorb"
-msgstr ""
+msgstr "減輕"
 
 #. [damage]: id=absorb
 #: data/core/macros/abilities.cfg:543
 msgid ""
 "This attack puts the unit in good defensive position, and it absorbs some of "
 "the damage dealt by an enemy strike."
-msgstr ""
+msgstr "這個攻擊會讓單位處於良好的防守位置，它能夠減輕一些敵人攻擊造成的傷害。"
 
 #. [damage]: id=absorb
 #: data/core/macros/abilities.cfg:544
 msgid ""
 "This unit can block enemy strikes, so that it takes reduced damage when hit."
-msgstr ""
+msgstr "這個單位可以阻擋敵人的攻擊，使其擊中時造成的較少的傷害。"
 
 #. [drains]: id=drains
 #: data/core/macros/abilities.cfg:556
@@ -6229,7 +6179,7 @@ msgstr ""
 "<header>text='社會結構'</header>\n"
 "龍族是相對好戰的種族，其社會是最能被描述為有文化的軍事社會。龍族部落的核心是"
 "一小群久經沙場的勇士，他們以一個互相尊重──或僅是畏懼──的支配者為首，這些核心"
-"龍族以鐵腕來統制這個社會。每個龍族都期望能在嚴格的階級制度中爭取他們的地位，"
+"龍族以鐵腕來統治這個社會。每個龍族都期望能在嚴格的階級制度中爭取他們的地位，"
 "服從上級，以及指揮下屬。進入管理階層的唯一可能的途徑是挑戰上級，並在一次的交"
 "戰中擊敗他，這也是管理階層內部階級的建立方式。對龍族同胞使用任何形式的欺騙都"
 "毫無例外地被視為懦弱及不可接受的。\n"
@@ -6586,24 +6536,18 @@ msgstr ""
 
 #. [race]: id=horse
 #: data/core/units.cfg:183
-#, fuzzy
-#| msgid "race^Wose"
 msgid "race^Horse"
-msgstr "樹人"
+msgstr "馬"
 
 #. [race]: id=horse
 #: data/core/units.cfg:184
-#, fuzzy
-#| msgid "race+female^Ogre"
 msgid "race+female^Horse"
-msgstr "食人魔"
+msgstr "馬"
 
 #. [race]: id=horse
 #: data/core/units.cfg:185
-#, fuzzy
-#| msgid "race^Woses"
 msgid "race^Horses"
-msgstr "樹人"
+msgstr "馬"
 
 #. [race]: id=horse
 #: data/core/units.cfg:186
@@ -6618,6 +6562,13 @@ msgid ""
 "Winged horses, man-horse hybrids, and ghost horses have made their way into "
 "written history, though few can honestly claim to have seen such things."
 msgstr ""
+"馴養的馬有多種模樣和大小，從強大的戰爭衝鋒戰馬，到健壯的役馬或是敏捷的牧馬。"
+"雖然牠們比許多野獸要脆弱得多，但牠們的速度和靈活度允許野生的馬群在野外茁壯成"
+"長。\n"
+"\n"
+"馬在許多文明中一直扮演著重要的一環，所以有很多圍繞著牠們的迷思和故事也不足為"
+"奇。飛馬、人馬、幽靈馬已經被人們接受而寫入歷史，雖然只有少數人可以誠實地聲稱"
+"他們有看過這樣的生物。"
 
 #. [race]: id=human
 #: data/core/units.cfg:203
@@ -6695,7 +6646,7 @@ msgstr ""
 "\n"
 "<header>text='氏族'</header>\n"
 "韋諾東部的省份被稱為氏族的家鄉，比西部更文明的省分還擁有更多的遼闊平原以及連"
-"綿起伏的丘陵的地形組成。它們是馬上氏族的家園，與韋諾王室結盟，但獨立運作且保"
+"綿起伏的丘陵的地形組成。它們是馬背氏族的家園，與韋諾王室結盟，但獨立運作且保"
 "有他們自己的特徵。有些人認爲他們是會對王室進貢食物和士兵以換取保護的一個附庸"
 "國。而有些人說他們與韋諾西半部的人有相等地位。再說，這些東部的省份的確沒有像"
 "西部韋諾那樣的一支徵召軍隊。備戰是氏族生活的一部分，父母從小就教小孩騎馬、戰"
