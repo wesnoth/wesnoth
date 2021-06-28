@@ -103,8 +103,16 @@ local function compare_versions(a, op, b)
 	end
 end
 
+-- Core Lua functions that were removed in Lua 5.4
 unpack = wesnoth.deprecate_api('unpack', 'table.unpack', 3, '1.17', table.unpack)
-math.pow = wesnoth.deprecate_api('math.pow', '^', 3, '1.17', function(a,b) return a ^ b end)
+math.pow = wesnoth.deprecate_api('math.pow', 'a ^ b', 3, '1.17', function(a,b) return a ^ b end)
+math.atan2 = wesnoth.deprecate_api('math.atan2', 'atan', 3, '1.17', math.atan)
+math.ldexp = wesnoth.deprecate_api('math.ldexp', 'a * 2 ^ b', 3, '1.17', function(a,b) return a * 2 ^ b end)
+math.cosh = wesnoth.deprecate_api('math.cosh', '(no replacement)', 4, '1.16')
+math.sinh = wesnoth.deprecate_api('math.sinh', '(no replacement)', 4, '1.16')
+math.tanh = wesnoth.deprecate_api('math.tanh', '(no replacement)', 4, '1.16')
+math.frexp = wesnoth.deprecate_api('math.frexp', '(no replacement)', 4, '1.16')
+
 wesnoth.get_time_stamp = wesnoth.deprecate_api('wesnoth.get_time_stamp', 'wesnoth.ms_since_init', 1, nil, wesnoth.ms_since_init)
 wesnoth.compare_versions = wesnoth.deprecate_api('wesnoth.compare_versions', 'wesnoth.version', 1, nil, compare_versions, 'Use wesnoth.version to construct a version object and compare using the normal Lua comparison operators')
 
