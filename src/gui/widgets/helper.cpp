@@ -36,7 +36,7 @@ SDL_Rect create_rect(const point& origin, const point& size)
 
 font::pango_text::FONT_STYLE decode_font_style(const std::string& style)
 {
-	static std::map<std::string, font::pango_text::FONT_STYLE> font_style_map {
+	static const std::map<std::string, font::pango_text::FONT_STYLE> font_style_map {
 		{"normal",    font::pango_text::STYLE_NORMAL},
 		{"bold",      font::pango_text::STYLE_BOLD},
 		{"italic",    font::pango_text::STYLE_ITALIC},
@@ -47,12 +47,12 @@ font::pango_text::FONT_STYLE decode_font_style(const std::string& style)
 		return font::pango_text::STYLE_NORMAL;
 	}
 
-	if(font_style_map.find(style) == font_style_map.end()) {
-		ERR_GUI_G << "Unknown style '" << style << "', using 'normal' instead." << std::endl;
-		return font::pango_text::STYLE_NORMAL;
+	if(const auto i = font_style_map.find(style); i != font_style_map.end()) {
+		return i->second;
 	}
 
-	return font_style_map[style];
+	ERR_GUI_G << "Unknown style '" << style << "', using 'normal' instead." << std::endl;
+	return font::pango_text::STYLE_NORMAL;
 }
 
 color_t decode_color(const std::string& color)
