@@ -111,12 +111,16 @@ bool game_config_manager::init_game_config(FORCE_RELOAD_CONFIG force_reload)
 
 	game_config::load_config(game_config().child("game_config"));
 
-	hotkey::deactivate_all_scopes();
-	hotkey::set_scope_active(hotkey::SCOPE_MAIN_MENU);
+	// It's necessary to block the event thread while load_hotkeys() runs, otherwise keyboard input
+	// can cause a crash by accessing the list of hotkeys while it's being modified.
+	events::call_in_main_thread([this]() {
+		hotkey::deactivate_all_scopes();
+		hotkey::set_scope_active(hotkey::SCOPE_MAIN_MENU);
 
-	// Load the standard hotkeys, then apply any player customizations.
-	hotkey::load_hotkeys(game_config(), true);
-	preferences::load_hotkeys();
+		// Load the standard hotkeys, then apply any player customizations.
+		hotkey::load_hotkeys(game_config(), true);
+		preferences::load_hotkeys();
+	});
 
 	// TODO: consider making this part of preferences::manager in some fashion
 	preferences::init_advanced_manager(game_config());
