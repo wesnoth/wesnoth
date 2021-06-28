@@ -16,6 +16,7 @@
 
 #include "tstring.hpp"
 
+#include <optional>
 #include <string>
 #include <vector>
 
@@ -56,8 +57,8 @@ using credits_data = std::vector<credits_group>;
 /** Gets all credits data. */
 const credits_data& get_credits_data();
 
-/** Gets credits for a given campaign. */
-credits_data::const_iterator get_campaign_credits(const std::string& campaign);
+/** Gets credits for a given campaign. Returns a null optional if that campaign has no credits. */
+std::optional<credits_data::const_iterator> get_campaign_credits(const std::string& campaign);
 
 /** Gets credit background images for a given campaaign. */
 std::vector<std::string> get_background_images(const std::string& campaign);

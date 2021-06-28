@@ -48,10 +48,8 @@ outro::outro(const game_classification& info)
 	if(info.end_credits) {
 		text_.push_back("<span size='large'>" + info.campaign_name + "</span>");
 
-		const auto campaign_credits = about::get_campaign_credits(info.campaign);
-
-		if(campaign_credits != about::get_credits_data().end()) {
-			for(const auto& about : campaign_credits->sections) {
+		if(const auto campaign_credits = about::get_campaign_credits(info.campaign)) {
+			for(const auto& about : (*campaign_credits)->sections) {
 				if(about.names.empty()) {
 					continue;
 				}
