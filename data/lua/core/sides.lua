@@ -29,7 +29,7 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 		if type(side) == 'number' then side = wesnoth.sides[side] end
 		return side.starting_location
 	end
-	
+
 	local function place_shroud(side, shroud)
 		if type(shroud) == 'string' then
 			shroud = wesnoth.map.parse_bitmap(shroud)
