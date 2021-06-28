@@ -670,9 +670,7 @@ void preferences_dialog::post_build(window& window)
 				connect_signal_notify_modified(menu,
 					std::bind([=](widget& w) { set(pref_name, option_ids[dynamic_cast<menu_button&>(w).get_value()]); }, std::placeholders::_1));
 
-				gui2::bind_status_label<menu_button>(main_grid, "setter", [](menu_button& m)->std::string {
-					return m.get_value_string();
-				}, "value");
+				gui2::bind_status_label<menu_button>(main_grid, "setter", default_status_value_getter<menu_button>, "value");
 
 				break;
 			}
