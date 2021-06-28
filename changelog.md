@@ -13,6 +13,7 @@
  ### User interface
  ### WML Engine
  ### Miscellaneous and Bug Fixes
+   * Fixed: keyboard input during the loading screen intermittently caused a crash (issue #4447)
 
 ## Version 1.15.14
  ### Add-ons client
