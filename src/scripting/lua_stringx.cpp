@@ -72,6 +72,14 @@ static int impl_str_index(lua_State* L)
 		lua_gettable(L, -2);
 		return 1;
 	} else if(lua_type(L, 2) == LUA_TNUMBER) {
+		// get the string length and the index
+		int len = lua_rawlen(L, 1);
+		int i = luaL_checkinteger(L, 2);
+		// In order to not break ipairs, an out-of-bounds access needs to return nil
+		if(i == 0 || abs(i) > len) {
+			lua_pushnil(L);
+			return 1;
+		}
 		// return string.sub(str, key, key)
 		luaW_getglobal(L, "string", "sub");
 		lua_pushvalue(L, 1);
