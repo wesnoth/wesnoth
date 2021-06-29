@@ -54,7 +54,7 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 	wesnoth.add_modification = wesnoth.deprecate_api('wesnoth.add_modification', 'wesnoth.units.add_modification', 1, nil, wesnoth.units.add_modification)
 	wesnoth.remove_modifications = wesnoth.deprecate_api('wesnoth.remove_modifications', 'wesnoth.units.remove_modifications', 1, nil, wesnoth.units.remove_modifications)
 	wesnoth.unit_resistance = wesnoth.deprecate_api('wesnoth.unit_resistance', 'wesnoth.units.resistance_against', 1, nil, wesnoth.units.resistance)
-	wesnoth.unit_defense = wesnoth.deprecate_api('wesnoth.unit_defense', 'wesnoth.units.defense_on', 1, nil, wesnoth.units.chance_to_be_hit)
+	wesnoth.unit_defense = wesnoth.deprecate_api('wesnoth.unit_defense', 'wesnoth.units.defense_on or wesnoth.units.chance_to_be_hit', 1, nil, wesnoth.units.chance_to_be_hit)
 	wesnoth.unit_movement_cost = wesnoth.deprecate_api('wesnoth.unit_movement_cost', 'wesnoth.units.movement_on', 1, nil, wesnoth.units.movement_on)
 	wesnoth.unit_vision_cost = wesnoth.deprecate_api('wesnoth.unit_vision_cost', 'wesnoth.units.vision_on', 1, nil, wesnoth.units.vision_on)
 	wesnoth.unit_jamming_cost = wesnoth.deprecate_api('wesnoth.unit_jamming_cost', 'wesnoth.units.jamming_on', 1, nil, wesnoth.units.jamming_on)
