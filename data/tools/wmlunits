@@ -7,21 +7,23 @@ Run without arguments to see usage.
 """
 
 import argparse
+import multiprocessing
 import os
+import queue
 import shutil
+import subprocess
 import sys
 import traceback
-import subprocess
-import multiprocessing
-import queue
+
+# PyYAML needs to be downloaded and installed using a package manager, e.g. from PyPI using `pip install pyyaml`.
 import yaml
 
-import wesnoth.wmlparser3 as wmlparser3
-import unit_tree.helpers as helpers
 import unit_tree.animations as animations
+import unit_tree.helpers as helpers
 import unit_tree.html_output as html_output
 import unit_tree.overview
 import unit_tree.wiki_output as wiki_output
+import wesnoth.wmlparser3 as wmlparser3
 
 TIMEOUT = 20
 
