@@ -118,7 +118,6 @@ class game_lua_kernel : public lua_kernel_base
 	int intf_find_vision_range(lua_State *L);
 	int intf_heal_unit(lua_State *L);
 	int intf_message(lua_State *L);
-	int intf_open_help(lua_State *L);
 	int intf_play_sound(lua_State *L);
 	int intf_print(lua_State *L);
 	void put_unit_helper(const map_location& loc);
