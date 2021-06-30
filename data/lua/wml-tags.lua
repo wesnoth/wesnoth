@@ -753,7 +753,7 @@ function wml_actions.label( cfg )
 end
 
 function wml_actions.open_help(cfg)
-	gui.open_help(cfg.topic)
+	gui.show_help(cfg.topic)
 end
 
 function wml_actions.redraw(cfg)
