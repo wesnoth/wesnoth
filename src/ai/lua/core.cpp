@@ -636,7 +636,7 @@ static void push_attack_analysis(lua_State *L, const attack_analysis& aa)
 	lua_rawset(L, -3);
 
 	lua_pushstring(L, "terrain_quality");
-	lua_pushnumber(L, aa.alternative_terrain_quality);
+	lua_pushnumber(L, aa.terrain_quality);
 	lua_rawset(L, -3);
 
 	lua_pushstring(L, "alternative_terrain_quality");
