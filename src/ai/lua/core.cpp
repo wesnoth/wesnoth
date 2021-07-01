@@ -275,10 +275,7 @@ static int ai_recruit(lua_State *L, bool exec)
 	const char *unit_name = luaL_checkstring(L, 1);
 	int side = get_readonly_context(L).get_side();
 	map_location where;
-	if (!lua_isnoneornil(L, 2)) {
-		where.set_wml_x(lua_tonumber(L, 2));
-		where.set_wml_y(lua_tonumber(L, 3));
-	}
+	luaW_tolocation(L, 2, where);
 	map_location from = map_location::null_location();
 	ai::recruit_result_ptr recruit_result = ai::actions::execute_recruit_action(side,exec,std::string(unit_name),where,from);
 	return transform_ai_action(L,recruit_result);
@@ -299,10 +296,7 @@ static int ai_recall(lua_State *L, bool exec)
 	const char *unit_id = luaL_checkstring(L, 1);
 	int side = get_readonly_context(L).get_side();
 	map_location where;
-	if (!lua_isnoneornil(L, 2)) {
-		where.set_wml_x(lua_tonumber(L, 2));
-		where.set_wml_y(lua_tonumber(L, 3));
-	}
+	luaW_tolocation(L, 2, where);
 	map_location from = map_location::null_location();
 	ai::recall_result_ptr recall_result = ai::actions::execute_recall_action(side,exec,std::string(unit_id),where,from);
 	return transform_ai_action(L,recall_result);
@@ -396,7 +390,7 @@ static int cfun_ai_get_avoid(lua_State *L)
 	std::set<map_location> locs;
 	terrain_filter avoid = get_readonly_context(L).get_avoid();
 	avoid.get_locations(locs);
-	lua_push(L, locs);
+	luaW_push_locationset(L, locs);
 
 	return 1;
 }
