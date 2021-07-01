@@ -451,7 +451,7 @@ public:
 	template<typename T, typename F1, typename F2, typename F3>
 	static void filter_final(T&& src, location_set& dest, const terrain_filter&, const F1& f1, const F2& f2, const F3& f3)
 	{
-		for (const map_location &loc : src) {
+		for (map_location loc : src) {
 			if (f1(loc) && f2(loc) && f3(loc)) {
 				dest.insert(loc);
 			}

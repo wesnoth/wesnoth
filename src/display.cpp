@@ -93,7 +93,7 @@ unsigned int display::last_zoom_ = SmallZoom;
 
 // Returns index of zoom_levels which is closest match to input zoom_level
 // Assumption: zoom_levels is a sorted vector of ascending tile sizes
-int get_zoom_levels_index(unsigned int zoom_level)
+static int get_zoom_levels_index(unsigned int zoom_level)
 {
 	zoom_level = std::clamp(zoom_level, MinZoom, MaxZoom);	// ensure zoom_level is within zoom_levels bounds
 	auto iter = std::lower_bound(zoom_levels.begin(), zoom_levels.end(), zoom_level);

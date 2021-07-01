@@ -45,7 +45,7 @@ using std::string_view;
 
 ////////  SPECIAL LOCATION  ////////
 
-int impl_slocs_get(lua_State* L)
+static int impl_slocs_get(lua_State* L)
 {
 	gamemap_base& m = luaW_checkterrainmap(L, 1);
 	string_view id = luaL_checkstring(L, 2);
@@ -59,7 +59,7 @@ int impl_slocs_get(lua_State* L)
 	return 1;
 }
 
-int impl_slocs_set(lua_State* L)
+static int impl_slocs_set(lua_State* L)
 {
 	gamemap_base& m = luaW_checkterrainmap(L, 1);
 	string_view id = luaL_checkstring(L, 2);
@@ -69,7 +69,7 @@ int impl_slocs_set(lua_State* L)
 	return 0;
 }
 
-int impl_slocs_next(lua_State *L)
+static int impl_slocs_next(lua_State *L)
 {
 	gamemap_base& m = luaW_checkterrainmap(L, lua_upvalueindex(1));
 	const t_translation::starting_positions::left_map& left = m.special_locations().left;
@@ -93,7 +93,7 @@ int impl_slocs_next(lua_State *L)
 	return 2;
 }
 
-int impl_slocs_iter(lua_State *L)
+static int impl_slocs_iter(lua_State *L)
 {
 	lua_settop(L, 1);
 	lua_pushvalue(L, 1);
@@ -124,7 +124,7 @@ mapgen_gamemap::mapgen_gamemap(int w, int h, terrain_code t)
 // This can produce invalid combinations in rare case
 // where an overlay doesn't have an independent terrain definition,
 // or if you set an overlay with no base and merge mode other than OVERLAY.
-void simplemerge(t_translation::terrain_code old_t, t_translation::terrain_code& new_t, const terrain_type_data::merge_mode mode)
+static void simplemerge(t_translation::terrain_code old_t, t_translation::terrain_code& new_t, const terrain_type_data::merge_mode mode)
 {
 	switch(mode) {
 		case terrain_type_data::OVERLAY:
@@ -201,8 +201,8 @@ gamemap_base& luaW_checkterrainmap(lua_State *L, int index)
 int intf_terrainmap_create(lua_State *L)
 {
 	if(lua_isnumber(L, 1) && lua_isnumber(L, 2)) {
-		int w = lua_tonumber(L, 1);
-		int h = lua_tonumber(L, 2);
+		int w = lua_tointeger(L, 1);
+		int h = lua_tointeger(L, 2);
 		auto terrain = t_translation::read_terrain_code(luaL_checkstring(L, 3));
 		new(L) lua_map_ref(w, h, terrain);
 	} else {

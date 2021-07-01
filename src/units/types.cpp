@@ -303,7 +303,7 @@ void unit_type::build_help_index(
 	}
 
 	if(const config& abil_cfg = cfg.child("abilities")) {
-		for(const config::any_child& ab : abil_cfg.all_children_range()) {
+		for(const config::any_child ab : abil_cfg.all_children_range()) {
 			abilities_.emplace_back(ab.cfg);
 		}
 	}
@@ -316,7 +316,7 @@ void unit_type::build_help_index(
 				continue;
 			}
 
-			for(const config::any_child& ab : abil_cfg.all_children_range()) {
+			for(const config::any_child ab : abil_cfg.all_children_range()) {
 				adv_abilities_.emplace_back(ab.cfg);
 			}
 		}
@@ -593,7 +593,7 @@ int unit_type::experience_needed(bool with_acceleration) const
 bool unit_type::has_ability_by_id(const std::string& ability) const
 {
 	if(const config& abil = get_cfg().child("abilities")) {
-		for(const config::any_child& ab : abil.all_children_range()) {
+		for(const config::any_child ab : abil.all_children_range()) {
 			if(ab.cfg["id"] == ability) {
 				return true;
 			}
@@ -612,7 +612,7 @@ std::vector<std::string> unit_type::get_ability_list() const
 		return res;
 	}
 
-	for(const config::any_child& ab : abilities.all_children_range()) {
+	for(const config::any_child ab : abilities.all_children_range()) {
 		std::string id = ab.cfg["id"];
 
 		if(!id.empty()) {

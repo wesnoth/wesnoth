@@ -121,7 +121,7 @@ manager::manager()
 						message = foobar
 					[/line]
 		*/
-		for(const config::any_child& h : history.all_children_range()) {
+		for(const config::any_child h : history.all_children_range()) {
 			for(const config& l : h.cfg.child_range("line")) {
 				history_map[h.key].push_back(l["message"]);
 			}

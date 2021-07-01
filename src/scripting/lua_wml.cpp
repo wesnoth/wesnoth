@@ -58,7 +58,7 @@ static int intf_load_wml(lua_State* L)
 		preprocess = luaW_toboolean(L, 2);
 	} else if(lua_type(L, 2) == LUA_TTABLE || lua_type(L, 2) == LUA_TUSERDATA) {
 		lua_len(L, 2);
-		int n = lua_tonumber(L, -1);
+		int n = lua_tointeger(L, -1);
 		lua_pop(L, 1);
 		for(int i = 0; i < n; i++) {
 			lua_geti(L, 2, i);
@@ -175,7 +175,7 @@ static int intf_wml_merge(lua_State* L)
 		base.append_children(merge);
 	} else {
 		if(mode == "replace") {
-			for(const auto& c : merge.all_children_range()) {
+			for(const auto c : merge.all_children_range()) {
 				base.clear_children(c.key);
 			}
 		} else if(mode != "merge") {

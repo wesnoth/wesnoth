@@ -222,8 +222,8 @@ static int impl_unit_attacks_len(lua_State *L)
 static int impl_unit_attacks_next(lua_State *L)
 {
 	lua_len(L, 1);
-	int n = luaL_checknumber(L, 2) + 1;
-	int max_n = luaL_checknumber(L, -1);
+	int n = luaL_checkinteger(L, 2) + 1;
+	int max_n = luaL_checkinteger(L, -1);
 	if(n > max_n) {
 		return 0;
 	}
@@ -260,8 +260,8 @@ static int impl_unit_attack_get(lua_State *L)
 	return_string_attrib("range", attack.range());
 	return_int_attrib("damage", attack.damage());
 	return_int_attrib("number", attack.num_attacks());
-	return_int_attrib("attack_weight", attack.attack_weight());
-	return_int_attrib("defense_weight", attack.defense_weight());
+	return_float_attrib("attack_weight", attack.attack_weight());
+	return_float_attrib("defense_weight", attack.defense_weight());
 	return_int_attrib("accuracy", attack.accuracy());
 	return_int_attrib("movement_used", attack.movement_used());
 	return_int_attrib("parry", attack.parry());

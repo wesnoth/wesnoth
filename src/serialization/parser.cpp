@@ -724,7 +724,7 @@ static void write_internal(const config& cfg, std::ostream& out, std::string& te
 		write_key_val(out, i.first, i.second, tab, textdomain);
 	}
 
-	for(const config::any_child& item : cfg.all_children_range()) {
+	for(const config::any_child item : cfg.all_children_range()) {
 		if(!config::valid_tag(item.key)) {
 			ERR_CF << "Config contains invalid tag name '" << item.key << "', skipping...\n";
 			continue;

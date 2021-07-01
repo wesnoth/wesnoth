@@ -295,13 +295,13 @@ static int impl_add_animation(lua_State* L)
 
 		lua_getfield(L, 5, "value");
 		if(lua_isnumber(L, -1)) {
-			v1 = lua_tonumber(L, -1);
+			v1 = lua_tointeger(L, -1);
 		} else if(lua_istable(L, -1)) {
 			lua_rawgeti(L, -1, 1);
-			v1 = lua_tonumber(L, -1);
+			v1 = lua_tointeger(L, -1);
 			lua_pop(L, 1);
 			lua_rawgeti(L, -1, 2);
-			v2 = lua_tonumber(L, -1);
+			v2 = lua_tointeger(L, -1);
 			lua_pop(L, 1);
 		} else if(!lua_isnoneornil(L, -1)) {
 			return luaW_type_error(L, 5, "value", "number or array of two numbers");
@@ -332,7 +332,7 @@ static int impl_add_animation(lua_State* L)
 			lua_rawgeti(L, idx, 1); // red @ -3
 			lua_rawgeti(L, idx, 2); // green @ -2
 			lua_rawgeti(L, idx, 3); // blue @ -1
-			color = color_t(lua_tonumber(L, -3), lua_tonumber(L, -2), lua_tonumber(L, -1));
+			color = color_t(lua_tointeger(L, -3), lua_tointeger(L, -2), lua_tointeger(L, -1));
 			lua_pop(L, 3);
 		} else if(!lua_isnoneornil(L, -1)) {
 			return luaW_type_error(L, 5, "color", "array of three numbers");
@@ -1670,7 +1670,7 @@ int game_lua_kernel::intf_end_turn(lua_State* L)
 	//note that next_player_number = 1, next_player_number = nteams+1 both set the next team to be the first team
 	//but the later will make the turn counter change aswell fire turn end events accoringly etc.
 	if (!lua_isnoneornil(L, 1)) {
-		int npn = luaL_checknumber(L, 1);
+		int npn = luaL_checkinteger(L, 1);
 		if (npn <= 0 /*TODO: || npn > 2*nteams*/) {
 			return luaL_argerror(L, 1, "side number out of range");
 		}
@@ -3572,7 +3572,7 @@ static int cfun_exec_candidate_action(lua_State *L)
 		ca->execute();
 		return 0;
 	}
-	lua_pushinteger(L, ca->evaluate());
+	lua_pushnumber(L, ca->evaluate());
 	return 1;
 }
 
@@ -4648,7 +4648,7 @@ void game_lua_kernel::load_game(const config& level)
 
 	lua_newtable(L);
 	int k = 1;
-	for (const config::any_child &v : level.all_children_range())
+	for (const config::any_child v : level.all_children_range())
 	{
 		if (is_handled_file_tag(v.key)) continue;
 		lua_createtable(L, 2, 0);

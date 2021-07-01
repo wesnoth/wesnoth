@@ -53,7 +53,7 @@ std::string resistance_color(const int resistance)
 	return std::string("#00FF00");
 }
 
-std::string unit_level_tooltip(const int level, const std::vector<std::string> &adv_to_types, const std::vector<config> &adv_to_mods)
+static std::string unit_level_tooltip(const int level, const std::vector<std::string> &adv_to_types, const std::vector<config> &adv_to_mods)
 {
 	std::ostringstream tooltip;
 	tooltip << _("Level: ") << "<b>" << level << "</b>\n";

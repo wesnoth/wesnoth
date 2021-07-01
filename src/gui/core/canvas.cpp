@@ -892,7 +892,7 @@ void canvas::parse_cfg(const config& cfg)
 {
 	log_scope2(log_gui_parse, "Canvas: parsing config.");
 
-	for(const auto & shape : cfg.all_children_range())
+	for(const auto shape : cfg.all_children_range())
 	{
 		const std::string& type = shape.key;
 		const config& data = shape.cfg;
@@ -914,7 +914,7 @@ void canvas::parse_cfg(const config& cfg)
 		} else if(type == "pre_commit") {
 
 			/* note this should get split if more preprocessing is used. */
-			for(const auto & function : data.all_children_range())
+			for(const auto function : data.all_children_range())
 			{
 
 				if(function.key == "blur") {

@@ -239,7 +239,7 @@ std::vector<std::string> unit::get_ability_list() const
 {
 	std::vector<std::string> res;
 
-	for (const config::any_child &ab : this->abilities_.all_children_range()) {
+	for (const config::any_child ab : this->abilities_.all_children_range()) {
 		std::string id = ab.cfg["id"];
 		if (!id.empty())
 			res.push_back(std::move(id));
@@ -323,7 +323,7 @@ std::vector<std::tuple<std::string, t_string, t_string, t_string>> unit::ability
 {
 	std::vector<std::tuple<std::string, t_string,t_string,t_string>> res;
 
-	for (const config::any_child &ab : this->abilities_.all_children_range())
+	for (const config::any_child ab : this->abilities_.all_children_range())
 	{
 		add_ability_tooltip(ab, gender_, res, true);
 	}
@@ -336,7 +336,7 @@ std::vector<std::tuple<std::string, t_string, t_string, t_string>> unit::ability
 	std::vector<std::tuple<std::string, t_string,t_string,t_string>> res;
 	active_list.clear();
 
-	for (const config::any_child &ab : this->abilities_.all_children_range())
+	for (const config::any_child ab : this->abilities_.all_children_range())
 	{
 		bool active = ability_active(ab.key, ab.cfg, loc);
 		if (add_ability_tooltip(ab, gender_, res, active))
@@ -633,7 +633,7 @@ namespace {
 	                           std::vector<special_match>& id_result,
 	                           const config& parent, const std::string& id,
 	                           bool just_peeking=false) {
-		for (const config::any_child &sp : parent.all_children_range())
+		for (const config::any_child sp : parent.all_children_range())
 		{
 			if (just_peeking && (sp.key == id || sp.cfg["id"] == id)) {
 				return true; // peek succeeded; done
@@ -654,7 +654,7 @@ namespace {
 	bool get_special_children_id(std::vector<special_match>& id_result,
 	                           const config& parent, const std::string& id,
 	                           bool just_peeking=false) {
-		for (const config::any_child &sp : parent.all_children_range())
+		for (const config::any_child sp : parent.all_children_range())
 		{
 			if (just_peeking && (sp.cfg["id"] == id)) {
 				return true; // peek succeeded; done
@@ -671,7 +671,7 @@ namespace {
 	bool get_special_children_tags(std::vector<special_match>& tag_result,
 	                           const config& parent, const std::string& id,
 	                           bool just_peeking=false) {
-		for (const config::any_child &sp : parent.all_children_range())
+		for (const config::any_child sp : parent.all_children_range())
 		{
 			if (just_peeking && (sp.key == id)) {
 				return true; // peek succeeded; done
@@ -806,7 +806,7 @@ std::vector<std::pair<t_string, t_string>> attack_type::special_tooltips(
 	if ( active_list )
 		active_list->clear();
 
-	for (const config::any_child &sp : specials_.all_children_range())
+	for (const config::any_child sp : specials_.all_children_range())
 	{
 		if ( !active_list || special_active(sp.cfg, AFFECT_EITHER, sp.key) ) {
 			const t_string &name = sp.cfg["name"];
@@ -838,7 +838,7 @@ std::string attack_type::weapon_specials(bool only_active, bool is_backstab) con
 {
 	//log_scope("weapon_specials");
 	std::string res;
-	for (const config::any_child &sp : specials_.all_children_range())
+	for (const config::any_child sp : specials_.all_children_range())
 	{
 		const bool active = special_active(sp.cfg, AFFECT_EITHER, sp.key, is_backstab);
 

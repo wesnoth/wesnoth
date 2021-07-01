@@ -222,7 +222,7 @@ void cave_map_generator::cave_map_generator_job::place_chamber(const chamber& c)
 	if (c.items == nullptr || c.locs.empty()) return;
 
 	std::size_t index = 0;
-	for (const config::any_child &it : c.items->all_children_range())
+	for (const config::any_child it : c.items->all_children_range())
 	{
 		config cfg = it.cfg;
 		config &filter = cfg.child("filter");

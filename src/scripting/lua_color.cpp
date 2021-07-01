@@ -26,7 +26,7 @@ static lg::log_domain log_scripting_lua("scripting/lua");
 
 static const char colorKey[] = "color range";
 
-bool luaW_iscolor(lua_State* L, int index)
+static bool luaW_iscolor(lua_State* L, int index)
 {
 	return luaL_testudata(L, index, colorKey) != nullptr;
 }
@@ -41,14 +41,14 @@ static color_range& LuaW_checkcolor(lua_State *L, int index)
 }
 
 
-color_range* luaW_pushcolor(lua_State *L, const color_range& color)
+static color_range* luaW_pushcolor(lua_State *L, const color_range& color)
 {
 	color_range* res = new(L) color_range(color);
 	luaL_setmetatable(L, colorKey);
 	return res;
 }
 
-int luaW_pushsinglecolor(lua_State *L, const color_t& color)
+static int luaW_pushsinglecolor(lua_State *L, const color_t& color)
 {
 	lua_createtable(L, 0, 4);
 	luaW_table_set(L, -1, "r", color.r);

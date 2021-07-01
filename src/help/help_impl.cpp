@@ -394,7 +394,7 @@ const std::vector<std::string>& topic_text::parsed_text() const
 	return parsed_text_;
 }
 
-std::string time_of_day_bonus_colored(const int time_of_day_bonus)
+static std::string time_of_day_bonus_colored(const int time_of_day_bonus)
 {
 	// Use same red/green colouring scheme as time_of_day_at() in reports.cpp for consistency
 	return std::string("<format>color='") + (time_of_day_bonus > 0 ? "green" : (time_of_day_bonus < 0 ? "red" : "white")) + "' text='" + std::to_string(time_of_day_bonus) + "'</format>";

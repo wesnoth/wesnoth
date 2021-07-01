@@ -1350,7 +1350,7 @@ void unit::set_state(const std::string& state, bool value)
 
 bool unit::has_ability_by_id(const std::string& ability) const
 {
-	for(const config::any_child &ab : abilities_.all_children_range()) {
+	for(const config::any_child ab : abilities_.all_children_range()) {
 		if(ab.cfg["id"] == ability) {
 			return true;
 		}
@@ -2074,7 +2074,7 @@ void unit::apply_builtin_effect(std::string apply_to, const config& effect)
 		if(const config& ab_effect = effect.child("abilities")) {
 			set_attr_changed(UA_ABILITIES);
 			config to_append;
-			for(const config::any_child &ab : ab_effect.all_children_range()) {
+			for(const config::any_child ab : ab_effect.all_children_range()) {
 				if(!has_ability_by_id(ab.cfg["id"])) {
 					to_append.add_child(ab.key, ab.cfg);
 				}
@@ -2083,7 +2083,7 @@ void unit::apply_builtin_effect(std::string apply_to, const config& effect)
 		}
 	} else if(apply_to == "remove_ability") {
 		if(const config& ab_effect = effect.child("abilities")) {
-			for(const config::any_child &ab : ab_effect.all_children_range()) {
+			for(const config::any_child ab : ab_effect.all_children_range()) {
 				remove_ability_by_id(ab.cfg["id"]);
 			}
 		}
@@ -2397,7 +2397,7 @@ void unit::apply_modifications()
 	if(modifications_.has_child("advance")) {
 		deprecated_message("[advance]", DEP_LEVEL::PREEMPTIVE, {1, 15, 0}, "Use [advancement] instead.");
 	}
-	for (const config::any_child &mod : modifications_.all_children_range()) {
+	for (const config::any_child mod : modifications_.all_children_range()) {
 		add_modification(mod.key, mod.cfg, true);
 	}
 }

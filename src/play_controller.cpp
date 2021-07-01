@@ -1211,7 +1211,7 @@ static void find_next_scenarios(const config& parent, std::set<std::string>& res
 			result.insert(endlevel["next_scenario"]);
 		}
 	}
-	for(const auto& cfg : parent.all_children_range()) {
+	for(const auto cfg : parent.all_children_range()) {
 		find_next_scenarios(cfg.cfg, result);
 	}
 };

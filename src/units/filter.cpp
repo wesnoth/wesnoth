@@ -300,7 +300,7 @@ namespace {
 
 	void get_ability_children_id(std::vector<ability_match>& id_result,
 	                           const config& parent, const std::string& id) {
-		for (const config::any_child &sp : parent.all_children_range())
+		for (const config::any_child sp : parent.all_children_range())
 		{
 			if(sp.cfg["id"] == id) {
 				ability_match special = { sp.key, &sp.cfg };

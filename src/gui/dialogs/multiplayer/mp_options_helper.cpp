@@ -38,7 +38,7 @@ mp_options_helper::mp_options_helper(window& window, ng::create_engine& create_e
 	, visible_options_()
 	, options_data_()
 {
-	for(const auto& c : preferences::options().all_children_range()) {
+	for(const auto c : preferences::options().all_children_range()) {
 		for(const auto& saved_option : c.cfg.child_range("option")) {
 			options_data_[c.cfg["id"]][saved_option["id"]] = saved_option["value"];
 		}
@@ -223,7 +223,7 @@ void mp_options_helper::display_custom_options(const std::string& type, int node
 		tree_view_node& option_node = options_tree_.add_node("option_node", data, node_position);
 		type_node_vector.push_back(&option_node);
 
-		for(const config::any_child& opt : options.all_children_range()) {
+		for(const config::any_child opt : options.all_children_range()) {
 			data.clear();
 			item.clear();
 

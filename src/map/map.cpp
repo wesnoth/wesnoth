@@ -231,10 +231,14 @@ void gamemap_base::overlay(const gamemap_base& m, map_location loc, const std::v
 	for(int x1 = xstart; x1 != xend; ++x1) {
 		int ystart, yend, yoffset;
 		if(x1 & 1) {
-			ystart = ystart_odd , yend = yend_odd , yoffset = yoffset_odd;
+			ystart = ystart_odd;
+			yend = yend_odd;
+			yoffset = yoffset_odd;
 		}
 		else {
-			ystart = ystart_even, yend = yend_even, yoffset = yoffset_even;
+			ystart = ystart_even;
+			yend = yend_even;
+			yoffset = yoffset_even;
 		}
 		for(int y1 = ystart; y1 != yend; ++y1) {
 			const int x2 = x1 + xoffset;

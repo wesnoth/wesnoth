@@ -300,7 +300,7 @@ void title_screen::pre_show(window& win)
 	//
 	// Language
 	//
-	register_button(win, "language", hotkey::HOTKEY_LANGUAGE, [this, &win]() {
+	register_button(win, "language", hotkey::HOTKEY_LANGUAGE, [this]() {
 		try {
 			if(game_.change_language()) {
 				on_resize();

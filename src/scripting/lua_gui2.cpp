@@ -251,7 +251,7 @@ int show_gamestate_inspector(const vconfig& cfg, const game_data& data, const ga
 	return 0;
 }
 
-int show_help(lua_State *L)
+static int show_help(lua_State *L)
 {
 	help::show_help(luaL_checkstring(L, 1));
 	return 0;

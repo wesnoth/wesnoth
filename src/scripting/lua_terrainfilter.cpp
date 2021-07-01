@@ -508,7 +508,7 @@ public:
 			lua_pop(L, 1);
 		}
 		lua_geti(L, -1, 2);
-		radius_ = lua_tonumber(L, -1);
+		radius_ = lua_tointeger(L, -1);
 		lua_pop(L, 1);
 		lua_geti(L, -1, 3);
 		filter_ = build_filter(L, res_index, ks);

@@ -298,7 +298,7 @@ unit_animation::unit_animation(const config& cfg,const std::string& frame_string
 {
 	//if(!cfg["debug"].empty()) printf("DEBUG WML: FINAL\n%s\n\n",cfg.debug().c_str());
 
-	for(const config::any_child& fr : cfg.all_children_range()) {
+	for(const config::any_child fr : cfg.all_children_range()) {
 		if(fr.key == frame_string) {
 			continue;
 		}
