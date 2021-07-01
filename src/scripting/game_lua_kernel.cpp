@@ -3012,35 +3012,6 @@ int game_lua_kernel::intf_get_locations(lua_State *L)
 }
 
 /**
- * Gets all the villages matching a given filter, or all the villages on the map if no filter is given.
- * - Arg 1: WML table (optional).
- * - Ret 1: array of integer pairs.
- */
-int game_lua_kernel::intf_get_villages(lua_State *L)
-{
-	std::vector<map_location> locs = map().villages();
-	lua_newtable(L);
-	int i = 1;
-
-	vconfig filter = luaW_checkvconfig(L, 1);
-
-	filter_context & fc = game_state_;
-	for(std::vector<map_location>::const_iterator it = locs.begin(); it != locs.end(); ++it) {
-		bool matches = terrain_filter(filter, &fc, false).match(*it);
-		if (matches) {
-			lua_createtable(L, 2, 0);
-			lua_pushinteger(L, it->wml_x());
-			lua_rawseti(L, -2, 1);
-			lua_pushinteger(L, it->wml_y());
-			lua_rawseti(L, -2, 2);
-			lua_rawseti(L, -2, i);
-			++i;
-		}
-	}
-	return 1;
-}
-
-/**
  * Matches a location against the given filter.
  * - Arg 1: location.
  * - Arg 2: WML table.
