@@ -1105,14 +1105,14 @@ void config::apply_diff(const config& diff, bool track /* = false */)
 		values_[diff_track_attribute] = "modified";
 	}
 
-	if(const config& inserts = diff.child("insert")) {
-		for(const attribute& v : inserts.attribute_range()) {
+	if(const auto inserts = diff.optional_child("insert")) {
+		for(const attribute& v : inserts->attribute_range()) {
 			values_[v.first] = v.second;
 		}
 	}
 
-	if(const config& deletes = diff.child("delete")) {
-		for(const attribute& v : deletes.attribute_range()) {
+	if(const auto deletes = diff.optional_child("delete")) {
+		for(const attribute& v : deletes->attribute_range()) {
 			values_.erase(v.first);
 		}
 	}

@@ -135,10 +135,10 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 		ERR_NW << "processing network data while still having data on the replay." << std::endl;
 	}
 
-	if (const config &message = cfg.child("message"))
+	if (const auto message = cfg.optional_child("message"))
 	{
-		game_display::get_singleton()->get_chat_manager().add_chat_message(std::time(nullptr), message["sender"], message["side"],
-				message["message"], events::chat_handler::MESSAGE_PUBLIC,
+		game_display::get_singleton()->get_chat_manager().add_chat_message(std::time(nullptr), message.value()["sender"], message.value()["side"],
+				message.value()["message"], events::chat_handler::MESSAGE_PUBLIC,
 				preferences::message_bell());
 	}
 	else if (const config &whisper = cfg.child("whisper") /*&& is_observer()*/)

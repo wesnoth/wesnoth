@@ -454,16 +454,16 @@ config& replay::get_last_real_command()
  */
 static bool fix_rename_command(const config& c, config& async_child)
 {
-	if (const config &child = c.child("move"))
+	if (const auto child = c.optional_child("move"))
 	{
 		// A unit's move is being undone.
 		// Repair unsynced cmds whose locations depend on that unit's location.
 		std::vector<map_location> steps;
 
 		try {
-			read_locations(child,steps);
+			read_locations(child.value(), steps);
 		} catch(const bad_lexical_cast &) {
-			WRN_REPLAY << "Warning: Path data contained something which could not be parsed to a sequence of locations:" << "\n config = " << child.debug() << std::endl;
+			WRN_REPLAY << "Warning: Path data contained something which could not be parsed to a sequence of locations:" << "\n config = " << child->debug() << std::endl;
 		}
 
 		if (steps.empty()) {
@@ -478,12 +478,15 @@ static bool fix_rename_command(const config& c, config& async_child)
 	}
 	else
 	{
-		const config *chld = &c.child("recruit");
-		if (!*chld) chld = &c.child("recall");
-		if (*chld) {
+		auto loc = c.optional_child("recruit");
+		if(!loc) {
+			loc = c.optional_child("recall");
+		}
+
+		if(loc) {
 			// A unit is being un-recruited or un-recalled.
 			// Remove unsynced commands that would act on that unit.
-			map_location src(*chld);
+			map_location src(loc.value());
 			map_location aloc(async_child);
 			if (src == aloc) {
 				return true;
@@ -538,9 +541,9 @@ void replay::undo_cut(config& dst)
 		}
 		else if(cc["async"].to_bool(false))
 		{
-			if(config& rename = c.child("rename"))
+			if(auto rename = c.optional_child("rename"))
 			{
-				if(fix_rename_command(command(cmd_index), rename))
+				if(fix_rename_command(command(cmd_index), rename.value()))
 				{
 					//remove the command from the replay if fix_rename_command requested it.
 					remove_command(i);

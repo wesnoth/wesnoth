@@ -62,8 +62,8 @@ const config& game_config_view::find_child(config_key_type key, const std::strin
 const config& game_config_view::child(config_key_type key) const
 {
 	for(const config& cfg : cfgs_) {
-		if(const config& res = cfg.child(key)) {
-			return res;
+		if(const auto res = cfg.optional_child(key)) {
+			return res.value();
 		}
 	}
 	const config cfg;
@@ -74,8 +74,8 @@ const config& game_config_view::child(config_key_type key) const
 const config& game_config_view::child_or_empty(config_key_type key) const
 {
 	for(const config& cfg : cfgs_) {
-		if(const config& res = cfg.child(key)) {
-			return res;
+		if(const auto res = cfg.optional_child(key)) {
+			return res.value();
 		}
 	}
 	static const config cfg;

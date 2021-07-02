@@ -451,45 +451,45 @@ void stats::write(config_writer &out) const
 
 void stats::read(const config& cfg)
 {
-	if (const config &c = cfg.child("recruits")) {
-		recruits = read_str_int_map(c);
+	if (const auto c = cfg.optional_child("recruits")) {
+		recruits = read_str_int_map(c.value());
 	}
-	if (const config &c = cfg.child("recalls")) {
-		recalls = read_str_int_map(c);
+	if (const auto c = cfg.optional_child("recalls")) {
+		recalls = read_str_int_map(c.value());
 	}
-	if (const config &c = cfg.child("advances")) {
-		advanced_to = read_str_int_map(c);
+	if (const auto c = cfg.optional_child("advances")) {
+		advanced_to = read_str_int_map(c.value());
 	}
-	if (const config &c = cfg.child("deaths")) {
-		deaths = read_str_int_map(c);
+	if (const auto c = cfg.optional_child("deaths")) {
+		deaths = read_str_int_map(c.value());
 	}
-	if (const config &c = cfg.child("killed")) {
-		killed = read_str_int_map(c);
+	if (const auto c = cfg.optional_child("killed")) {
+		killed = read_str_int_map(c.value());
 	}
-	if (const config &c = cfg.child("recalls")) {
-		recalls = read_str_int_map(c);
+	if (const auto c = cfg.optional_child("recalls")) {
+		recalls = read_str_int_map(c.value());
 	}
-	if (const config &c = cfg.child("attacks")) {
-		attacks_inflicted = read_battle_result_map(c);
+	if (const auto c = cfg.optional_child("attacks")) {
+		attacks_inflicted = read_battle_result_map(c.value());
 	}
-	if (const config &c = cfg.child("defends")) {
-		defends_inflicted = read_battle_result_map(c);
+	if (const auto c = cfg.optional_child("defends")) {
+		defends_inflicted = read_battle_result_map(c.value());
 	}
-	if (const config &c = cfg.child("attacks_taken")) {
-		attacks_taken = read_battle_result_map(c);
+	if (const auto c = cfg.optional_child("attacks_taken")) {
+		attacks_taken = read_battle_result_map(c.value());
 	}
-	if (const config &c = cfg.child("defends_taken")) {
-		defends_taken = read_battle_result_map(c);
+	if (const auto c = cfg.optional_child("defends_taken")) {
+		defends_taken = read_battle_result_map(c.value());
 	}
 	by_cth_inflicted = read_by_cth_map_from_battle_result_maps(attacks_inflicted, defends_inflicted);
 	// by_cth_taken will be an empty map in old (pre-#4070) savefiles that don't have
 	// [attacks_taken]/[defends_taken] tags in their [statistics] tags
 	by_cth_taken = read_by_cth_map_from_battle_result_maps(attacks_taken, defends_taken);
-	if (const config &c = cfg.child("turn_by_cth_inflicted")) {
-		turn_by_cth_inflicted = read_by_cth_map(c);
+	if (const auto c = cfg.optional_child("turn_by_cth_inflicted")) {
+		turn_by_cth_inflicted = read_by_cth_map(c.value());
 	}
-	if (const config &c = cfg.child("turn_by_cth_taken")) {
-		turn_by_cth_taken = read_by_cth_map(c);
+	if (const auto c = cfg.optional_child("turn_by_cth_taken")) {
+		turn_by_cth_taken = read_by_cth_map(c.value());
 	}
 
 	recruit_cost = cfg["recruit_cost"].to_int();

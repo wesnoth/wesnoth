@@ -675,10 +675,10 @@ void formula_ai::on_create(){
 	}
 
 	vars_ = map_formula_callable();
-	if (const config &ai_vars = cfg_.child("vars"))
+	if (const auto ai_vars = cfg_.optional_child("vars"))
 	{
 		variant var;
-		for(const config::attribute &i : ai_vars.attribute_range()) {
+		for(const config::attribute &i : ai_vars->attribute_range()) {
 			var.serialize_from_string(i.second);
 			vars_.add(i.first, var);
 		}

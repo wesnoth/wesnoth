@@ -675,24 +675,24 @@ bool theme::set_resolution(const SDL_Rect& screen)
 
 void theme::add_object(std::size_t sw, std::size_t sh, const config& cfg)
 {
-	if(const config& c = cfg.child("main_map")) {
-		main_map_ = object(sw, sh, c);
+	if(const auto c = cfg.optional_child("main_map")) {
+		main_map_ = object(sw, sh, c.value());
 	}
 
-	if(const config& c = cfg.child("mini_map")) {
-		mini_map_ = object(sw, sh, c);
+	if(const auto c = cfg.optional_child("mini_map")) {
+		mini_map_ = object(sw, sh, c.value());
 	}
 
-	if(const config& c = cfg.child("palette")) {
-		palette_ = object(sw, sh, c);
+	if(const auto c = cfg.optional_child("palette")) {
+		palette_ = object(sw, sh, c.value());
 	}
 
-	if(const config& status_cfg = cfg.child("status")) {
-		for(const config::any_child i : status_cfg.all_children_range()) {
+	if(const auto status_cfg = cfg.optional_child("status")) {
+		for(const config::any_child i : status_cfg->all_children_range()) {
 			status_[i.key].reset(new status_item(sw, sh, i.cfg));
 		}
-		if(const config& unit_image_cfg = status_cfg.child("unit_image")) {
-			unit_image_ = object(sw, sh, unit_image_cfg);
+		if(const auto unit_image_cfg = status_cfg->optional_child("unit_image")) {
+			unit_image_ = object(sw, sh, unit_image_cfg.value());
 		} else {
 			unit_image_ = object();
 		}

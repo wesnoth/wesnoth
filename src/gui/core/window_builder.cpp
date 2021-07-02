@@ -103,29 +103,29 @@ builder_widget_ptr create_widget_builder(const config& cfg)
 	config::const_all_children_itors children = cfg.all_children_range();
 	VALIDATE(children.size() == 1, "Grid cell does not have exactly 1 child.");
 
-	if(const config& grid = cfg.child("grid")) {
-		return std::make_shared<builder_grid>(grid);
+	if(const auto grid = cfg.optional_child("grid")) {
+		return std::make_shared<builder_grid>(grid.value());
 	}
 
-	if(const config& instance = cfg.child("instance")) {
-		return std::make_shared<implementation::builder_instance>(instance);
+	if(const auto instance = cfg.optional_child("instance")) {
+		return std::make_shared<implementation::builder_instance>(instance.value());
 	}
 
-	if(const config& pane = cfg.child("pane")) {
-		return std::make_shared<implementation::builder_pane>(pane);
+	if(const auto pane = cfg.optional_child("pane")) {
+		return std::make_shared<implementation::builder_pane>(pane.value());
 	}
 
-	if(const config& viewport = cfg.child("viewport")) {
-		return std::make_shared<implementation::builder_viewport>(viewport);
+	if(const auto viewport = cfg.optional_child("viewport")) {
+		return std::make_shared<implementation::builder_viewport>(viewport.value());
 	}
 
-	for(const auto& item : widget_builder_lookup()) {
-		if(item.first == "window" || item.first == "tooltip") {
+	for(const auto& [type, builder] : widget_builder_lookup()) {
+		if(type == "window" || type == "tooltip") {
 			continue;
 		}
 
-		if(const config& c = cfg.child(item.first)) {
-			return item.second(c);
+		if(const auto c = cfg.optional_child(type)) {
+			return builder(c.value());
 		}
 	}
 
