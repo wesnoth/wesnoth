@@ -261,9 +261,17 @@ function methods:to_stable_pairs()
 	return res
 end
 
-function methods:to_wml_var(name)
+function methods:to_wml_var(name, mode)
+	mode = mode or "always_clear"
+	local is_explicit_index = name[-1] == "]"
 	local i = 0
-	wml.variables[name] = nil
+	if is_explicit_index then
+		-- explicit indexes behave always like "replace"
+	elseif mode == "append" then
+		i = wml.variables[name .. ".length"]
+	elseif mode ~= "replace" then
+		wml.variables[name] = nil
+	end
 	self:stable_iter(function(x, y, v)
 		if wml.valid(v) then
 			wml.variables[string.format("%s[%d]", name, i)] = v
