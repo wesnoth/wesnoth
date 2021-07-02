@@ -202,12 +202,20 @@ end
 
 function methods:of_pairs(t)
 	local values = self.values
+	
+	local function has_key(v, k)
+		if type(v) == 'userdata' then
+			return v[k] ~= nil
+		elseif type(v) == 'table' then
+			return rawget(v, k) ~= nil
+		end
+	end
 
 	for i,v in ipairs(t) do
 		local value_table = {}
 		local x_index
 		local y_index
-		if v.x and v.y then
+		if has_key(v, 'x') and has_key(v, 'y') then
 			x_index = "x"
 			y_index = "y"
 		else
