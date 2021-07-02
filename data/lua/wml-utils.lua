@@ -23,7 +23,7 @@ end
 
 function utils.vwriter.init(cfg, default_variable)
 	local variable = cfg.variable or default_variable
-	local is_explicit_index = string.sub(variable, string.len(variable)) == "]"
+	local is_explicit_index = variable[-1] == "]"
 	local mode = cfg.mode or "always_clear"
 	local index = 0
 	if is_explicit_index then
