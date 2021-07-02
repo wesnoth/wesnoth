@@ -662,21 +662,61 @@ void luaW_filltable(lua_State *L, const config& cfg)
 	}
 }
 
+static int impl_namedtuple_get(lua_State* L)
+{
+	if(lua_isstring(L, 2)) {
+		std::string k = lua_tostring(L, 2);
+		luaL_getmetafield(L, 1, "__names");
+		auto names = lua_check<std::vector<std::string>>(L, -1);
+		auto iter = std::find(names.begin(), names.end(), k);
+		if(iter != names.end()) {
+			int i = std::distance(names.begin(), iter) + 1;
+			lua_rawgeti(L, 1, i);
+			return 1;
+		}
+	}
+	return 0;
+}
+
+static int impl_namedtuple_tostring(lua_State* L)
+{
+	std::vector<std::string> elems;
+	for(unsigned i = 1; i <= lua_rawlen(L, 1); i++) {
+		lua_getglobal(L, "tostring");
+		lua_rawgeti(L, 1, i);
+		lua_call(L, 1, 1);
+		elems.push_back(lua_tostring(L, -1));
+	}
+	lua_push(L, "(" + utils::join(elems) + ")");
+	return 1;
+}
+
+void luaW_push_namedtuple(lua_State* L, const std::vector<std::string>& names)
+{
+	lua_createtable(L, names.size(), 0);
+	lua_createtable(L, 0, 4);
+	static luaL_Reg callbacks[] = {
+		{ "__index", &impl_namedtuple_get },
+		{ "__tostring", &impl_namedtuple_tostring },
+		{ nullptr, nullptr }
+	};
+	luaL_setfuncs(L, callbacks, 0);
+	lua_pushliteral(L, "named tuple");
+	lua_setfield(L, -2, "__metatable");
+	lua_push(L, names);
+	lua_setfield(L, -2, "__names");
+	lua_setmetatable(L, -2);
+}
+
 void luaW_pushlocation(lua_State *L, const map_location& ml)
 {
-	lua_createtable(L, 2, 0);
+	luaW_push_namedtuple(L, {"x", "y"});
 
 	lua_pushinteger(L, ml.wml_x());
 	lua_rawseti(L, -2, 1);
 
 	lua_pushinteger(L, ml.wml_y());
 	lua_rawseti(L, -2, 2);
-	
-	lua_pushinteger(L, ml.wml_x());
-	lua_setfield(L, -2, "x");
-
-	lua_pushinteger(L, ml.wml_y());
-	lua_setfield(L, -2, "y");
 }
 
 bool luaW_tolocation(lua_State *L, int index, map_location& loc) {

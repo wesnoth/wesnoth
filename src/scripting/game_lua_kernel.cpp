@@ -1803,11 +1803,7 @@ int game_lua_kernel::intf_find_path(lua_State *L)
 	lua_createtable(L, nb, 0);
 	for (int i = 0; i < nb; ++i)
 	{
-		lua_createtable(L, 2, 0);
-		lua_pushinteger(L, res.steps[i].wml_x());
-		lua_rawseti(L, -2, 1);
-		lua_pushinteger(L, res.steps[i].wml_y());
-		lua_rawseti(L, -2, 2);
+		luaW_pushlocation(L, res.steps[i]);
 		lua_rawseti(L, -2, i + 1);
 	}
 	lua_pushinteger(L, res.move_cost);
@@ -1877,7 +1873,7 @@ int game_lua_kernel::intf_find_reach(lua_State *L)
 	for (int i = 0; i < nb; ++i)
 	{
 		pathfind::paths::step &s = res.destinations[i];
-		lua_createtable(L, 2, 0);
+		luaW_push_namedtuple(L, {"x", "y", "moves_left"});
 		lua_pushinteger(L, s.curr.wml_x());
 		lua_rawseti(L, -2, 1);
 		lua_pushinteger(L, s.curr.wml_y());
@@ -2134,7 +2130,7 @@ int game_lua_kernel::intf_find_cost_map(lua_State *L)
 	int counter = 1;
 	for (const map_location& loc : location_set)
 	{
-		lua_createtable(L, 4, 0);
+		luaW_push_namedtuple(L, {"x", "y", "cost", "reach"});
 
 		lua_pushinteger(L, loc.wml_x());
 		lua_rawseti(L, -2, 1);
@@ -2147,18 +2143,6 @@ int game_lua_kernel::intf_find_cost_map(lua_State *L)
 
 		lua_pushinteger(L, cost_map.get_pair_at(loc).second);
 		lua_rawseti(L, -2, 4);
-		
-		lua_pushinteger(L, loc.wml_x());
-		lua_setfield(L, -2, "x");
-
-		lua_pushinteger(L, loc.wml_y());
-		lua_setfield(L, -2, "y");
-
-		lua_pushinteger(L, cost_map.get_pair_at(loc).first);
-		lua_setfield(L, -2, "cost");
-
-		lua_pushinteger(L, cost_map.get_pair_at(loc).second);
-		lua_setfield(L, -2, "reach");
 
 		lua_rawseti(L, -2, counter);
 		++counter;
