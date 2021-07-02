@@ -202,7 +202,7 @@ end
 
 function methods:of_pairs(t)
 	local values = self.values
-	
+
 	local function has_key(v, k)
 		if type(v) == 'userdata' then
 			return v[k] ~= nil
