@@ -760,13 +760,13 @@ static int cfun_ai_is_src_dst_enemy_valid(lua_State *L)
 static int cfun_ai_recalculate_move_maps(lua_State *L)
 {
 	get_readonly_context(L).recalculate_move_maps();
-	return 1;
+	return 0;
 }
 
 static int cfun_ai_recalculate_move_maps_enemy(lua_State *L)
 {
 	get_readonly_context(L).recalculate_move_maps_enemy();
-	return 1;
+	return 0;
 }
 
 template<typename T>
