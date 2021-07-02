@@ -1931,7 +1931,18 @@ int game_lua_kernel::intf_find_vision_range(lua_State *L)
 		vision_set.insert(d.curr);
 	}
 
-	luaW_push_locationset(L, vision_set);
+	lua_createtable(L, vision_set.size(), 0);
+	int i = 1;
+	for (const map_location& loc : vision_set)
+	{
+		lua_createtable(L, 2, 0);
+		lua_pushinteger(L, loc.wml_x());
+		lua_rawseti(L, -2, 1);
+		lua_pushinteger(L, loc.wml_y());
+		lua_rawseti(L, -2, 2);
+		lua_rawseti(L, -2, i);
+		++i;
+	}
 	return 1;
 }
 
@@ -2147,18 +2158,6 @@ int game_lua_kernel::intf_find_cost_map(lua_State *L)
 
 		lua_pushinteger(L, cost_map.get_pair_at(loc).second);
 		lua_rawseti(L, -2, 4);
-		
-		lua_pushinteger(L, loc.wml_x());
-		lua_setfield(L, -2, "x");
-
-		lua_pushinteger(L, loc.wml_y());
-		lua_setfield(L, -2, "y");
-
-		lua_pushinteger(L, cost_map.get_pair_at(loc).first);
-		lua_setfield(L, -2, "cost");
-
-		lua_pushinteger(L, cost_map.get_pair_at(loc).second);
-		lua_setfield(L, -2, "reach");
 
 		lua_rawseti(L, -2, counter);
 		++counter;
@@ -3007,7 +3006,18 @@ int game_lua_kernel::intf_get_locations(lua_State *L)
 		t_filter.get_locations(res, true);
 	}
 
-	luaW_push_locationset(L, res);
+	lua_createtable(L, res.size(), 0);
+	int i = 1;
+	for (const map_location& loc : res)
+	{
+		lua_createtable(L, 2, 0);
+		lua_pushinteger(L, loc.wml_x());
+		lua_rawseti(L, -2, 1);
+		lua_pushinteger(L, loc.wml_y());
+		lua_rawseti(L, -2, 2);
+		lua_rawseti(L, -2, i);
+		++i;
+	}
 	return 1;
 }
 
@@ -4056,7 +4066,8 @@ int game_lua_kernel::intf_toggle_fog(lua_State *L, const bool clear)
 			sides.insert(t.side()+1);
 		}
 	}
-	const auto& locs = luaW_check_locationset(L, lua_istable(L, 2) ? 2 : 1);
+	const auto& v_locs = lua_check<std::vector<map_location>>(L, lua_istable(L, 2) ? 2 : 1);
+	std::set<map_location> locs(v_locs.begin(), v_locs.end());
 
 	for(const int &side_num : sides) {
 		if(side_num < 1 || static_cast<std::size_t>(side_num) > teams().size()) {

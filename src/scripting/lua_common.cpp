@@ -671,12 +671,6 @@ void luaW_pushlocation(lua_State *L, const map_location& ml)
 
 	lua_pushinteger(L, ml.wml_y());
 	lua_rawseti(L, -2, 2);
-	
-	lua_pushinteger(L, ml.wml_x());
-	lua_setfield(L, -2, "x");
-
-	lua_pushinteger(L, ml.wml_y());
-	lua_setfield(L, -2, "y");
 }
 
 bool luaW_tolocation(lua_State *L, int index, map_location& loc) {
@@ -692,7 +686,7 @@ bool luaW_tolocation(lua_State *L, int index, map_location& loc) {
 
 	index = lua_absindex(L, index);
 
-	if (lua_istable(L, index) || lua_isuserdata(L, index)) {
+	if (lua_istable(L, index) || luaW_tounit(L, index) || luaW_tovconfig(L, index, dummy_vcfg)) {
 		map_location result;
 		int x_was_num = 0, y_was_num = 0;
 		lua_getfield(L, index, "x");
@@ -702,7 +696,7 @@ bool luaW_tolocation(lua_State *L, int index, map_location& loc) {
 		lua_pop(L, 2);
 		if (!x_was_num || !y_was_num) {
 			// If we get here and it was userdata, checking numeric indices won't help
-			// (It won't help if it was a WML table either, but there's no easy way to check that.)
+			// (It won't help if it was a config either, but there's no easy way to check that.)
 			if (lua_isuserdata(L, index)) {
 				return false;
 			}
@@ -741,7 +735,11 @@ int luaW_push_locationset(lua_State* L, const std::set<map_location>& locs)
 	lua_createtable(L, locs.size(), 0);
 	int i = 1;
 	for(const map_location& loc : locs) {
-		luaW_pushlocation(L, loc);
+		lua_createtable(L, 2, 0);
+		lua_pushinteger(L, loc.wml_x());
+		lua_rawseti(L, -2, 1);
+		lua_pushinteger(L, loc.wml_y());
+		lua_rawseti(L, -2, 2);
 		lua_rawseti(L, -2, i);
 		++i;
 	}
