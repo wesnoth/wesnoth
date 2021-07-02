@@ -1781,7 +1781,8 @@ int game_lua_kernel::intf_find_path(lua_State *L)
 
 	if(!ignore_teleport) {
 		if(viewing_side == 0) {
-			return luaL_error(L, "wesnoth.paths.find_path: ignore_teleport=false requires a valid viewing_side");
+			lua_warning(L, "wesnoth.paths.find_path: ignore_teleport=false requires a valid viewing_side; continuing with ignore_teleport=true", false);
+			ignore_teleport = true;
 		} else {
 			teleport_locations = pathfind::get_teleport_locations(*u, board().get_team(viewing_side), see_all, ignore_units);
 		}
