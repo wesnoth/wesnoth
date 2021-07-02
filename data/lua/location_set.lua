@@ -301,6 +301,10 @@ function location_set.create()
 	return setmetatable({ values = {} }, locset_meta)
 end
 
+function location_set.of_raw(data)
+	return setmetatable({ values = data }, locset_meta)
+end
+
 function location_set.of_pairs(t)
 	local s = location_set.create()
 	s:of_pairs(t)
