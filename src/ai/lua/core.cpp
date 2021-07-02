@@ -42,7 +42,6 @@
 #include "ai/lua/engine_lua.hpp"
 #include "ai/composite/contexts.hpp"
 #include "ai/default/aspect_attacks.hpp"
-#include "deprecation.hpp"
 
 #include "lua/lualib.h"
 #include "lua/lauxlib.h"
@@ -351,16 +350,9 @@ static int cfun_ai_get_targets(lua_State *L)
 	return 1;
 }
 
-// Note: If adding new uses of this macro, it will be necessary to either remove the old ones
-// (and the things so deprecated) OR add a version parameter to the macro.
-// Also note that the name MUST be a string literal.
-#define DEPRECATED_ASPECT_MESSAGE(name) \
-	deprecated_message("ai.get_" name, DEP_LEVEL::PREEMPTIVE, {1, 15, 0}, "Use ai.aspects." name " instead")
-
 // Aspect section
 static int cfun_ai_get_aggression(lua_State *L)
 {
-	DEPRECATED_ASPECT_MESSAGE("aggression");
 	double aggression = get_readonly_context(L).get_aggression();
 	lua_pushnumber(L, aggression);
 	return 1;
@@ -386,7 +378,6 @@ static int cfun_ai_get_attacks(lua_State *L)
 
 static int cfun_ai_get_avoid(lua_State *L)
 {
-	DEPRECATED_ASPECT_MESSAGE("avoid");
 	std::set<map_location> locs;
 	terrain_filter avoid = get_readonly_context(L).get_avoid();
 	avoid.get_locations(locs);
@@ -397,7 +388,6 @@ static int cfun_ai_get_avoid(lua_State *L)
 
 static int cfun_ai_get_caution(lua_State *L)
 {
-	DEPRECATED_ASPECT_MESSAGE("caution");
 	double caution = get_readonly_context(L).get_caution();
 	lua_pushnumber(L, caution);
 	return 1;
@@ -405,7 +395,6 @@ static int cfun_ai_get_caution(lua_State *L)
 
 static int cfun_ai_get_grouping(lua_State *L)
 {
-	DEPRECATED_ASPECT_MESSAGE("grouping");
 	std::string grouping = get_readonly_context(L).get_grouping();
 	lua_pushstring(L, grouping.c_str());
 	return 1;
@@ -413,7 +402,6 @@ static int cfun_ai_get_grouping(lua_State *L)
 
 static int cfun_ai_get_leader_aggression(lua_State *L)
 {
-	DEPRECATED_ASPECT_MESSAGE("leader_aggression");
 	double leader_aggression = get_readonly_context(L).get_leader_aggression();
 	lua_pushnumber(L, leader_aggression);
 	return 1;
@@ -421,7 +409,6 @@ static int cfun_ai_get_leader_aggression(lua_State *L)
 
 static int cfun_ai_get_leader_goal(lua_State *L)
 {
-	DEPRECATED_ASPECT_MESSAGE("leader_goal");
 	config goal = get_readonly_context(L).get_leader_goal();
 	luaW_pushconfig(L, goal);
 	return 1;
@@ -450,14 +437,12 @@ void visit_helper(lua_State* L, const utils::variant<bool, std::vector<std::stri
 
 static int cfun_ai_get_leader_ignores_keep(lua_State *L)
 {
-	DEPRECATED_ASPECT_MESSAGE("leader_ignores_keep");
 	visit_helper(L, get_readonly_context(L).get_leader_ignores_keep());
 	return 1;
 }
 
 static int cfun_ai_get_leader_value(lua_State *L)
 {
-	DEPRECATED_ASPECT_MESSAGE("leader_value");
 	double leader_value = get_readonly_context(L).get_leader_value();
 	lua_pushnumber(L, leader_value);
 	return 1;
@@ -465,21 +450,18 @@ static int cfun_ai_get_leader_value(lua_State *L)
 
 static int cfun_ai_get_passive_leader(lua_State *L)
 {
-	DEPRECATED_ASPECT_MESSAGE("passive_leader");
 	visit_helper(L, get_readonly_context(L).get_passive_leader());
 	return 1;
 }
 
 static int cfun_ai_get_passive_leader_shares_keep(lua_State *L)
 {
-	DEPRECATED_ASPECT_MESSAGE("passive_leader_shares_keep");
 	visit_helper(L, get_readonly_context(L).get_passive_leader_shares_keep());
 	return 1;
 }
 
 static int cfun_ai_get_recruitment_pattern(lua_State *L)
 {
-	DEPRECATED_ASPECT_MESSAGE("recruitment_pattern");
 	std::vector<std::string> recruiting = get_readonly_context(L).get_recruitment_pattern();
 	int size = recruiting.size();
 	lua_createtable(L, size, 0); // create an empty table with predefined size
@@ -494,7 +476,6 @@ static int cfun_ai_get_recruitment_pattern(lua_State *L)
 
 static int cfun_ai_get_scout_village_targeting(lua_State *L)
 {
-	DEPRECATED_ASPECT_MESSAGE("scout_village_targeting");
 	double scout_village_targeting = get_readonly_context(L).get_scout_village_targeting();
 	lua_pushnumber(L, scout_village_targeting);
 	return 1;
@@ -502,7 +483,6 @@ static int cfun_ai_get_scout_village_targeting(lua_State *L)
 
 static int cfun_ai_get_simple_targeting(lua_State *L)
 {
-	DEPRECATED_ASPECT_MESSAGE("simple_targeting");
 	bool simple_targeting = get_readonly_context(L).get_simple_targeting();
 	lua_pushboolean(L, simple_targeting);
 	return 1;
@@ -510,7 +490,6 @@ static int cfun_ai_get_simple_targeting(lua_State *L)
 
 static int cfun_ai_get_support_villages(lua_State *L)
 {
-	DEPRECATED_ASPECT_MESSAGE("support_villages");
 	bool support_villages = get_readonly_context(L).get_support_villages();
 	lua_pushboolean(L, support_villages);
 	return 1;
@@ -518,7 +497,6 @@ static int cfun_ai_get_support_villages(lua_State *L)
 
 static int cfun_ai_get_village_value(lua_State *L)
 {
-	DEPRECATED_ASPECT_MESSAGE("village_value");
 	double village_value = get_readonly_context(L).get_village_value();
 	lua_pushnumber(L, village_value);
 	return 1;
@@ -526,7 +504,6 @@ static int cfun_ai_get_village_value(lua_State *L)
 
 static int cfun_ai_get_villages_per_scout(lua_State *L)
 {
-	DEPRECATED_ASPECT_MESSAGE("villages_per_scout");
 	int villages_per_scout = get_readonly_context(L).get_villages_per_scout();
 	lua_pushnumber(L, villages_per_scout);
 	return 1;
