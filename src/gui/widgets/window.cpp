@@ -559,7 +559,9 @@ int window::show(const bool restore, const unsigned auto_close_timeout)
 			}
 
 			// Add a delay so we don't keep spinning if there's no event.
-			SDL_Delay(10);
+			if(status_ != status::CLOSED) {
+				SDL_Delay(10);
+			}
 		}
 	}
 	catch(...)
