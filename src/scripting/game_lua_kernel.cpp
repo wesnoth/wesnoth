@@ -1922,13 +1922,27 @@ int game_lua_kernel::intf_find_vision_range(lua_State *L)
 	actions::create_jamming_map(jamming_map, resources::gameboard->get_team(u->side()));
 	pathfind::vision_path res(*u, u->get_location(), jamming_map);
 
-	auto vision_set = res.edges;
-	for(auto d : res.destinations)
-	{
-		vision_set.insert(d.curr);
+	lua_createtable(L, res.destinations.size() + res.edges.size(), 0);
+	for(const auto& d : res.destinations) {
+		luaW_push_namedtuple(L, {"x", "y", "vision_left"});
+		lua_pushinteger(L, d.curr.wml_x());
+		lua_rawseti(L, -2, 1);
+		lua_pushinteger(L, d.curr.wml_y());
+		lua_rawseti(L, -2, 2);
+		lua_pushinteger(L, d.move_left);
+		lua_rawseti(L, -2, 3);
+		lua_rawseti(L, -2, lua_rawlen(L, -2) + 1);
 	}
-
-	luaW_push_locationset(L, vision_set);
+	for(const auto& e : res.edges) {
+		luaW_push_namedtuple(L, {"x", "y", "vision_left"});
+		lua_pushinteger(L, e.wml_x());
+		lua_rawseti(L, -2, 1);
+		lua_pushinteger(L, e.wml_y());
+		lua_rawseti(L, -2, 2);
+		lua_pushinteger(L, -1);
+		lua_rawseti(L, -2, 3);
+		lua_rawseti(L, -2, lua_rawlen(L, -2) + 1);
+	}
 	return 1;
 }
 
