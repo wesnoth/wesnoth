@@ -23,7 +23,6 @@
 #include "config.hpp"
 #include "deprecation.hpp"
 #include "game_config.hpp"
-#include "game_version.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
 #include "serialization/string_utils.hpp"
@@ -510,14 +509,14 @@ std::string get_next_filename(const std::string& name, const std::string& extens
 
 static bfs::path user_data_dir, user_config_dir, cache_dir;
 
-static const std::string get_version_path_suffix(const version_info& version)
+const std::string get_version_path_suffix(const version_info& version)
 {
 	std::ostringstream s;
 	s << version.major_version() << '.' << version.minor_version();
 	return s.str();
 }
 
-static const std::string& get_version_path_suffix()
+const std::string& get_version_path_suffix()
 {
 	static std::string suffix;
 
@@ -568,6 +567,9 @@ static void setup_user_data_dir()
 #if defined(__APPLE__) && !defined(__IPHONEOS__)
 	migrate_apple_config_directory_for_unsandboxed_builds();
 #endif
+	if(!file_exists(user_data_dir)) {
+		game_config::check_migration = true;
+	}
 
 	if(!create_directory_if_missing_recursive(user_data_dir)) {
 		ERR_FS << "could not open or create user data directory at " << user_data_dir.string() << '\n';
@@ -1078,6 +1080,11 @@ void write_file(const std::string& fname, const std::string& data)
 			throw io_exception("Error writing to file: '" + fname + "'");
 		}
 	}
+}
+
+void copy_file(const std::string& src, const std::string& dest)
+{
+	write_file(dest, read_file(src));
 }
 
 bool create_directory_if_missing(const std::string& dirname)

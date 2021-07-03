@@ -80,6 +80,7 @@ void _set_lobby_joins(int show);
 
 enum LOBBY_JOINS { SHOW_NONE, SHOW_FRIENDS, SHOW_ALL };
 
+void load_game_prefs();
 const std::map<std::string, acquaintance>& get_acquaintances();
 const std::string get_ignored_delim();
 std::map<std::string, std::string> get_acquaintances_nice(const std::string& filter);

@@ -43,6 +43,7 @@ std::string default_preferences_path = DEFAULT_PREFS_PATH;
 #else
 std::string default_preferences_path = "";
 #endif
+bool check_migration = false;
 
 std::string wesnoth_program_dir;
 
