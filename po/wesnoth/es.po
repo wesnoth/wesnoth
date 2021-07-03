@@ -21,7 +21,7 @@ msgstr ""
 "Project-Id-Version: Wesnoth 1.14\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2021-06-23 11:36-0400\n"
-"PO-Revision-Date: 2021-06-07 13:59+0200\n"
+"PO-Revision-Date: 2021-06-25 13:19+0200\n"
 "Last-Translator: Pepe <donpepe1963@gmail.com>\n"
 "Language-Team: Wesnoth Spanish translation\n"
 "Language: es\n"
@@ -1698,7 +1698,7 @@ msgstr ""
 msgid ""
 "This trident gives merfolk the power to throw lightning at their enemies."
 msgstr ""
-"¡Este tridente otorga a un sirénido el poder de lanzar rayos a sus enemigos!"
+"Este tridente otorga a un sirénido el poder de lanzar rayos a sus enemigos."
 
 #. [effect]: type=fire
 #: data/core/macros/items.cfg:536
@@ -5222,6 +5222,10 @@ msgid ""
 "quicker. The <i>acceleration factor</i> can be set, and turned on by "
 "default, in the <i>Preferences</i> menu’s <i>General</i> tab."
 msgstr ""
+"Si mantiene pulsado <b> Mayúscula </b>, las animaciones para moverse y "
+"luchar serán más rápidas. El <i> factor de aceleración </i> se puede "
+"configurar y activar de forma predeterminada en la pestaña <i> General </i> "
+"del menú <i> Preferencias </i>."
 
 #. [tip]
 #. Translate "Change difficulty" and "Load Game" as in wesnoth-lib textdomain
@@ -6430,6 +6434,8 @@ msgstr "Advertencia"
 msgid ""
 "The remote server requested a password while using an insecure connection."
 msgstr ""
+"El servidor remoto solicitó una contraseña mientras usaba una conexión "
+"insegura."
 
 #: src/game_initialization/multiplayer.cpp:409
 msgid "You must login first."
@@ -6526,9 +6532,10 @@ msgstr "La contraseña que introdujo es incorrecta."
 msgid "You have made too many login attempts."
 msgstr "Ha realizado demasiados intentos de acceso."
 
+# Poner resumen criptográfico en vez de hash queda muy largo. En según que ámbitos ya sabemos lo que es el hash.
 #: src/game_initialization/multiplayer.cpp:452
 msgid "Password hashing failed."
-msgstr ""
+msgstr "Error de hash de contraseña."
 
 #: src/game_initialization/playcampaign.cpp:75
 msgid "Scenario Report"
@@ -7707,7 +7714,7 @@ msgstr "Detalles del error:"
 
 #: src/play_controller.cpp:1258
 msgid "Warning: broken campaign branches"
-msgstr ""
+msgstr "Advertencia: desvíos de campaña dañados"
 
 #. TRANSLATORS: This is an error that will hopefully only be seen by UMC authors and by players who have already
 #. said "okay" to a "loading saves from an old version might not work" dialog.
@@ -7717,8 +7724,10 @@ msgid ""
 msgid_plural ""
 "Some of the possible next scenarios are missing, you might not be able to "
 "finish this campaign."
-msgstr[0] ""
+msgstr[0] "Falta el siguiente escenario, no podrá terminar esta campaña."
 msgstr[1] ""
+"Faltan algunos de los siguientes escenarios posibles, es posible que no "
+"pueda terminar esta campaña."
 
 #: src/play_controller.cpp:1271
 msgid ""
@@ -7728,11 +7737,15 @@ msgid_plural ""
 "Please report the following missing scenarios to the campaign’s author:\n"
 "$unknown_list|"
 msgstr[0] ""
+"Informe del siguiente escenario que falta al autor de la campaña:\n"
+"$unknown_list|"
 msgstr[1] ""
+"Informe los siguientes escenarios que faltan al autor de la campaña:\n"
+"$unknown_list|"
 
 #: src/play_controller.cpp:1275
 msgid "Once this is fixed, you will need to restart this scenario."
-msgstr ""
+msgstr "Una vez que esto se solucione, deberá reiniciar este escenario."
 
 #: src/play_controller.cpp:1455
 msgid "No objectives available"
@@ -7865,10 +7878,8 @@ msgid "Type: "
 msgstr "Tipo: "
 
 #: src/reports.cpp:196
-#, fuzzy
-#| msgid "Specials: "
 msgid "Special Notes:"
-msgstr "Especiales: "
+msgstr "Notas especiales:"
 
 #: src/reports.cpp:219
 msgid "Race: "
@@ -8744,20 +8755,14 @@ msgstr "Ocultar planes de $player"
 msgid "Whiteboard Options"
 msgstr "Opciones del modo pizarra"
 
-#, fuzzy
-#~| msgid "Overall"
 #~ msgid "feral"
-#~ msgstr "Total"
+#~ msgstr "salvaje"
 
-#, fuzzy
-#~| msgid "female^neutral"
 #~ msgid "female^feral"
-#~ msgstr "neutral"
+#~ msgstr "salvaje"
 
-#, fuzzy
-#~| msgid "unhealable"
 #~ msgid "Unhealable"
-#~ msgstr "incurable"
+#~ msgstr "No sanable"
 
 #~ msgid "magical leadership"
 #~ msgstr "liderazgo mágico"
@@ -8788,15 +8793,11 @@ msgstr "Opciones del modo pizarra"
 #~ "cuando se defiende de ataques cuerpo a cuerpo. Sus vulnerabilidades no se "
 #~ "ven afectadas."
 
-#, fuzzy
-#~| msgid "female^cured"
 #~ msgid "female^darkens"
-#~ msgstr "sanada"
+#~ msgstr "sombrías"
 
-#, fuzzy
-#~| msgid "This unit has been petrified. It may not move or attack."
 #~ msgid "This unit sacrifices its own life in order to make more attacks."
-#~ msgstr "Esta unidad ha sido petrificada. No se puede mover ni atacar."
+#~ msgstr "Esta unidad sacrifica su propia vida para realizar más ataques."
 
 #~ msgid "cantor"
 #~ msgstr "cantor"
@@ -8808,36 +8809,25 @@ msgstr "Opciones del modo pizarra"
 #~ "This unit grants marksman to all ranged attacks of all adjacent allies."
 #~ msgstr ""
 #~ "Esta unidad garantiza al propiedad de tirador a todos los ataques a "
-#~ "distancia de todos los aliados adyacentes"
+#~ "distancia de todos los aliados adyacentes."
 
-#, fuzzy
-#~| msgid "Jamming:"
 #~ msgid "Jamming Orc"
-#~ msgstr "Interferencia:"
+#~ msgstr "Manipulador orco"
 
-#, fuzzy
-#~| msgid "Vision Cost"
 #~ msgid "Vision Test"
-#~ msgstr "Coste de visión"
+#~ msgstr "Prueba de visión"
 
-#, fuzzy
-#~| msgid "Clear Labels"
 #~ msgid "Clear sailing!"
-#~ msgstr "Eliminar etiquetas"
+#~ msgstr "¡Borrar navegación!"
 
-#, fuzzy
 #~ msgid "It is invisible!"
-#~ msgstr "invisible: "
+#~ msgstr "¡Es invisible!"
 
-#, fuzzy
-#~| msgid "Debug mode activated!"
 #~ msgid "Teleporters activated"
-#~ msgstr "¡Modo de depuración activado!"
+#~ msgstr "Teletransportadores activados"
 
-#, fuzzy
-#~| msgid "Debug mode deactivated!"
 #~ msgid "Teleporters deactivated"
-#~ msgstr "¡Modo de depuración desactivado!"
+#~ msgstr "Teletransportadores desactivados"
 
 #~ msgid "aura of death ("
 #~ msgstr "aura de muerte ("
@@ -8845,209 +8835,128 @@ msgstr "Opciones del modo pizarra"
 #~ msgid "female^aura of death ("
 #~ msgstr "aura de muerte ("
 
-#, fuzzy
-#~| msgid "Custom map."
 #~ msgid "Custom dialog"
-#~ msgstr "Mapa personalizado."
+#~ msgstr "Diálogo personalizado"
 
-#, fuzzy
-#~| msgid "Clear objective orders"
 #~ msgid "objectives test"
-#~ msgstr "Cancelar órdenes de objetivo"
+#~ msgstr "prueba de objetivos"
 
-#, fuzzy
-#~| msgid "neutral"
 #~ msgid "Neutral"
-#~ msgstr "neutral"
+#~ msgstr "Neutral"
 
-#, fuzzy
-#~| msgid "Show moved orb"
 #~ msgid "Show movement range"
-#~ msgstr "Mostrar orbes movidos"
+#~ msgstr "Mostrar el alcance del movimiento"
 
-#, fuzzy
-#~| msgid "Filter: "
 #~ msgid "Filter Area"
-#~ msgstr "Filtro: "
+#~ msgstr "Filtrar área"
 
-#, fuzzy
-#~| msgid "Random"
 #~ msgid "randomness"
-#~ msgstr "Aleatorio"
+#~ msgstr "aleatoriedad"
 
-#, fuzzy
-#~| msgid "Defeat enemy leader(s)"
 #~ msgid "Defeat the enemy leader (he’s at 29,16!)"
-#~ msgstr "Derrotar a los líderes enemigos"
+#~ msgstr "Derrote al líder enemigo (¡está en 29,16!)"
 
-#, fuzzy
-#~| msgid "Defeat enemy leader(s)"
 #~ msgid "Defeat the enemy leader (he’s at 28,18!)"
-#~ msgstr "Derrotar a los líderes enemigos"
+#~ msgstr "Derrote al líder enemigo (¡está en 28,18!)"
 
-#, fuzzy
-#~| msgid "Temple"
 #~ msgid "Temporal Clone"
-#~ msgstr "Templo"
+#~ msgstr "Clon temporal"
 
-#, fuzzy
-#~| msgid "Launch the gamestate inspector"
 #~ msgid "Gamestate Inspector"
-#~ msgstr "Lanzar el inspector del estado de partida"
+#~ msgstr "Inspector del estado de la partida"
 
-#, fuzzy
-#~| msgid "% parry"
 #~ msgid "parrot"
-#~ msgstr "% bloqueo"
+#~ msgstr "loro"
 
-#, fuzzy
-#~| msgid "Scenario Settings"
 #~ msgid "Set the parrot settings."
-#~ msgstr "Preferencias del escenario"
+#~ msgstr "Gestione la configuración del loro"
 
-#, fuzzy
-#~| msgid "Chat message"
 #~ msgid "Parrot message"
-#~ msgstr "Mensaje de chat"
+#~ msgstr "Mensaje del loro"
 
-#, fuzzy
-#~| msgid "Holy Water"
 #~ msgid "Water"
-#~ msgstr "Agua bendita"
+#~ msgstr "Agua"
 
-#, fuzzy
-#~| msgid "poisoned"
 #~ msgid "poison"
-#~ msgstr "envenenado"
+#~ msgstr "veneno"
 
-#, fuzzy
-#~| msgid "January"
 #~ msgid "Manual"
-#~ msgstr "enero"
+#~ msgstr "Manual"
 
-#, fuzzy
-#~| msgid "Northerners"
 #~ msgid "Northerners unleashed!"
-#~ msgstr "Norteños"
+#~ msgstr "¡Norteños desatados!"
 
-#, fuzzy
-#~| msgid "Lato Light"
 #~ msgid "Let’s fight"
-#~ msgstr "Lato Light"
+#~ msgstr "Luchemos"
 
-#, fuzzy
-#~| msgid "Multiplayer"
 #~ msgid "Multiply"
-#~ msgstr "Multijugador"
+#~ msgstr "Multiplicar"
 
-#, fuzzy
-#~| msgid "Cannot find era $era"
 #~ msgid "Cannot divide by zero!"
-#~ msgstr "No se puede encontrar la era $era"
+#~ msgstr "¡No se puede dividir entre cero!"
 
-#, fuzzy
-#~| msgid "Trash Pile"
 #~ msgid "Crash test"
-#~ msgstr "Montón de desechos"
+#~ msgstr "Prueba de choque"
 
-#, fuzzy
-#~| msgid "Potion of Decay"
 #~ msgid "Potion of bleach"
-#~ msgstr "Poción de debilidad"
+#~ msgstr "Poción de lejía"
 
-#, fuzzy
-#~| msgid "Warning"
 #~ msgid "Win"
-#~ msgstr "Advertencia"
+#~ msgstr "Gana"
 
-#, fuzzy
-#~| msgid "This is not a multiplayer save."
 #~ msgid "This is not a forest"
-#~ msgstr "Ésta no es una partida guardada de multijugador."
+#~ msgstr "Esto no es un bosque"
 
-#, fuzzy
-#~| msgid "Still Another Wanderer"
 #~ msgid "Still there"
-#~ msgstr "Otro vagabundo más"
+#~ msgstr "Aún allí"
 
-#, fuzzy
-#~| msgid "Damage Calculations"
 #~ msgid "Perform Calculation"
-#~ msgstr "Cálculo del daño"
+#~ msgstr "Realizar cálculo"
 
-#, fuzzy
-#~| msgid "Run Formula"
 #~ msgid "Formula="
-#~ msgstr "Ejecutar fórmula (de IA)"
+#~ msgstr "Fórmula="
 
-#, fuzzy
-#~| msgid "Summoning Circle"
 #~ msgid "Summon Troll"
-#~ msgstr "Círculo de invocación"
+#~ msgstr "Invoca un Trol"
 
-#, fuzzy
-#~| msgid "Magic Circle"
 #~ msgid "Magic Troll"
-#~ msgstr "Círculo mágico"
+#~ msgstr "Trol mágico"
 
-#, fuzzy
-#~| msgid "Dismiss Unit"
 #~ msgid "Dismiss Troll"
-#~ msgstr "Expulsar unidad"
+#~ msgstr "Descartar trol"
 
-#, fuzzy
-#~| msgid "sceptre of fire"
 #~ msgid "ruby of fire"
-#~ msgstr "cetro de fuego"
+#~ msgstr "rubí de fuego"
 
-#, fuzzy
 #~ msgid "promotions"
-#~ msgstr "Ajustes..."
+#~ msgstr "promociones"
 
-#, fuzzy
-#~| msgid "Turn changed"
 #~ msgid "map change"
-#~ msgstr "Turno cambiado"
+#~ msgstr "cambio de mapa"
 
-#, fuzzy
-#~| msgid "Turn changed"
 #~ msgid "map change2"
-#~ msgstr "Turno cambiado"
+#~ msgstr "cambio de mapa 2"
 
-#, fuzzy
-#~| msgid "Turn changed"
 #~ msgid "map change3"
-#~ msgstr "Turno cambiado"
+#~ msgstr "cambio de mapa 3"
 
-#, fuzzy
-#~| msgid "Set Label"
 #~ msgid "Shrouded label"
-#~ msgstr "Establecer etiqueta"
+#~ msgstr "Etiqueta oculta"
 
-#, fuzzy
-#~| msgid "More >"
 #~ msgid "More red!"
-#~ msgstr "Más >"
+#~ msgstr "¡Más rojo!"
 
-#, fuzzy
-#~| msgid "Bright green"
 #~ msgid "More green!"
-#~ msgstr "Verde brillante"
+#~ msgstr "¡Más verde!"
 
-#, fuzzy
-#~| msgid "Dark blue"
 #~ msgid "More blue!"
-#~ msgstr "Azul oscuro"
+#~ msgstr "¡Más azul!"
 
-#, fuzzy
-#~| msgid "Menu"
 #~ msgid "Menu 1"
-#~ msgstr "Menú"
+#~ msgstr "Menú 1"
 
-#, fuzzy
-#~| msgid "Menu"
 #~ msgid "Menu 2"
-#~ msgstr "Menú"
+#~ msgstr "Menú 2"
 
 # Esta es una traducción literal, ya que puede tener varios significados en el idioma inglés.  Esto último se debe a que no tiene más palabras que de a entender a lo que se refiere en inglés.
 #~ msgid "very long"
@@ -11783,3 +11692,738 @@ msgstr "Opciones del modo pizarra"
 
 #~ msgid "Waiting"
 #~ msgstr "Esperando"
+
+#~ msgid "Life Vortex"
+#~ msgstr "Vórtice de vida"
+
+#~ msgid ""
+#~ "Each successful strike in a battle involving this attack causes the "
+#~ "attacker to gain the health that his attack removed from the target.  "
+#~ "This has no effect against nonliving targets."
+#~ msgstr ""
+#~ "Cada golpe exitoso en una batalla que con este ataque hace que el "
+#~ "atacante obtenga la salud que su ataque restó del objetivo.  Esto no "
+#~ "tiene ningún efecto contra los objetivos no vivos."
+
+#~ msgid "Entropy"
+#~ msgstr "Entropía"
+
+#~ msgid ""
+#~ "Each successful strike in a battle involving this attack causes the "
+#~ "attacker to lose 4 HP.  This has no effect against nonliving targets."
+#~ msgstr ""
+#~ "Cada golpe exitoso en una batalla con este ataque hace que el atacante "
+#~ "pierda 4 PV.  Esto no tiene ningún efecto contra los objetivos no vivos."
+
+#~ msgid "Empathic Weapon"
+#~ msgstr "Arma empática"
+
+#~ msgid ""
+#~ "All damage dealt by this attack to a living target is dealt to the user "
+#~ "as well"
+#~ msgstr ""
+#~ "Todo el daño infligido por este ataque a un objetivo vivo también se "
+#~ "inflige al usuario"
+
+#~ msgid "Rejuvenating Weapon (10)"
+#~ msgstr "Arma rejuvenecedora (10)"
+
+#~ msgid "Each successful strike with this weapon heals the user for 10 HP"
+#~ msgstr "Cada golpe exitoso con esta arma cura al usuario por 10 PV"
+
+#~ msgid "drains 20%"
+#~ msgstr "drena 20%"
+
+#~ msgid ""
+#~ "This unit drains health from living units, healing itself for 20% of the "
+#~ "amount of damage it deals (rounded down)."
+#~ msgstr ""
+#~ "Esta unidad drena la salud de las unidades vivas y se cura a sí misma un "
+#~ "20% de la cantidad de daño que inflige (redondeado hacia abajo)."
+
+#~ msgid "sacrifice 5"
+#~ msgstr "sacrificio 5"
+
+#~ msgid "Each successful attack costs this unit 5 HP."
+#~ msgstr "Cada ataque exitoso le cuesta a esta unidad 5 PV."
+
+#~ msgid "life bomb"
+#~ msgstr "bomba de vida"
+
+#~ msgid "life copy 20"
+#~ msgstr "copia vida 20"
+
+#~ msgid "When this attack hits a living unit, the user is healed for 20 HP."
+#~ msgstr ""
+#~ "Cuando este ataque golpea una unidad viva, el usuario se cura por 20 PV."
+
+#~ msgid "Receive at most 40% defense in villages"
+#~ msgstr "Recibe como máximo un 40% de defensa en las aldeas"
+
+#~ msgid "overpowered"
+#~ msgstr "demasiado fuerte"
+
+#~ msgid "darkens"
+#~ msgstr "sombríos"
+
+#~ msgid "darkens and stuff"
+#~ msgstr "sombríos y demás"
+
+#~ msgid "Sacrifice"
+#~ msgstr "Sacrificio"
+
+#~ msgid "Greater Sacrifice"
+#~ msgstr "Sacrificio mayor"
+
+#~ msgid ""
+#~ "This unit’s ability reduces vision, that’s why 13,13 is shrouded at the "
+#~ "start."
+#~ msgstr ""
+#~ "La capacidad de esta unidad reduce la visión, por eso 13,13 está oculto "
+#~ "al inicio."
+
+#~ msgid "Enhance Vision"
+#~ msgstr "Mejora visión"
+
+#~ msgid "Set the unit's vision to 15."
+#~ msgstr "Establece la visión de la unidad en 15."
+
+#~ msgid "Now my Vision value is 15 and I can see 16 hex fields wide."
+#~ msgstr ""
+#~ "Ahora mi valor de Visión es 15 y puedo ver hasta16 hexágonos de ancho."
+
+#~ msgid "I used a chance_to_hit attack special."
+#~ msgstr "Usé un ataque especial de tirador."
+
+#~ msgid "I used a magical attack."
+#~ msgstr "Usé un ataque mágico."
+
+#~ msgid "BUG: This message should never be displayed!"
+#~ msgstr "ERROR: ¡Este mensaje nunca debería mostrarse!"
+
+#~ msgid "I used a chance_to_hit type weapon special."
+#~ msgstr "Usé un arma especial de tipo tirador."
+
+#~ msgid "Hero or not?"
+#~ msgstr "¿Héroe o no?"
+
+#~ msgid "Toggle the hero status."
+#~ msgstr "Conmuta la condición de héroe."
+
+#~ msgid "I am no longer a hero!"
+#~ msgstr "¡Ya no soy un héroe!"
+
+#~ msgid "I am now a hero!"
+#~ msgstr "¡Ahora soy un héroe!"
+
+#~ msgid "Visibility Check of (8,15)"
+#~ msgstr "Prueba de visibilidad de (8,15)"
+
+#~ msgid "Checking visibility of (8,15)..."
+#~ msgstr "Probando la visibilidad de (8,15)..."
+
+#~ msgid "HORRORS FILTERS ARE ALL TRUE!"
+#~ msgstr "¡TODOS LOS FILTROS DE HORRORES SON VERDADEROS!"
+
+#~ msgid "You can see it, can't you?"
+#~ msgstr "Puedes verlo, ¿no?"
+
+#~ msgid "But the fog, it blinds you!"
+#~ msgstr "Pero la niebla, ¡Te ciega!"
+
+#~ msgid "HORRORS FILTERS ARE ALL FALSE!"
+#~ msgstr "¡LOS FILTROS DE HORRORES SON TODOS FALSOS!"
+
+#~ msgid "Teleport switch"
+#~ msgstr "Interruptor de teletransporte"
+
+#~ msgid "Steadfast tester"
+#~ msgstr "Probador inquebrantable"
+
+#~ msgid "Hidden Teleporter"
+#~ msgstr "Teletransportador oculto"
+
+#~ msgid "Rithrandil"
+#~ msgstr "Rithrandil"
+
+#~ msgid "fiery 4"
+#~ msgstr "fiereza 4"
+
+#~ msgid "A successful hit against this unit costs the opponent 4 HP."
+#~ msgstr "Un golpe exitoso contra esta unidad le cuesta al oponente 4 PV."
+
+#~ msgid "lifebow"
+#~ msgstr "arco vital"
+
+#~ msgid "drains 100%"
+#~ msgstr "drena 100%"
+
+#~ msgid ""
+#~ "This unit drains health from living units, healing itself for 100% of the "
+#~ "amount of damage it deals (rounded down)."
+#~ msgstr ""
+#~ "Esta unidad drena la salud de las unidades vivas y se cura a sí misma el "
+#~ "100% de la cantidad de daño que inflige (redondeado hacia abajo)."
+
+#~ msgid "Friendly Explorer"
+#~ msgstr "Explorador amistoso"
+
+#~ msgid "Explore the map"
+#~ msgstr "Explora el mapa"
+
+#~ msgid "Hello there"
+#~ msgstr "Hola allí"
+
+#~ msgid "We should now be sharing maps with side 3!"
+#~ msgstr "¡Ahora deberíamos estar compartiendo los mapas con el bando 3!"
+
+#~ msgid "Rename our kind friends"
+#~ msgstr "Cambiar el nombre de nuestros amables amigos"
+
+#~ msgid "That’s right! We’re neutral!"
+#~ msgstr "¡Eso es correcto! ¡Somos neutrales!"
+
+#~ msgid "lightning"
+#~ msgstr "relámpago"
+
+#~ msgid "Calculate unit worth"
+#~ msgstr "Calcula el valor de una unidad"
+
+#~ msgid "Lua"
+#~ msgstr "Lua"
+
+#~ msgid "Enter Lua code"
+#~ msgstr "Introduzca el código de Lua"
+
+#~ msgid "Show attack range"
+#~ msgstr "Mostrar el alcance del ataque"
+
+#~ msgid "Show vision range"
+#~ msgstr "Mostrar el alcance de la visión"
+
+#~ msgid "Reload and execute Lua code"
+#~ msgstr "Recargar y ejecutar el código de Lua"
+
+#~ msgid "testing prerecruit"
+#~ msgstr "probando reclutamiento anticipado"
+
+#~ msgid "Oh hi"
+#~ msgstr "Oh hola"
+
+#~ msgid ""
+#~ "Test filtering areas\n"
+#~ "<b>filter</b> with area=test_area\n"
+#~ "<span color='#bcb088'><b>x,y=8,11</b></span>"
+#~ msgstr ""
+#~ "Prueba filtrando áreas\n"
+#~ "<b>filtro</b> con area=test_area\n"
+#~ "<span color='#bcb088'><b>x,y=8,11</b></span>"
+
+#~ msgid "What am I supposed to be doing again?"
+#~ msgstr "¿Qué se supone que debo hacer de nuevo?"
+
+#~ msgid "Unit recalled from storage."
+#~ msgstr "Unidad reincorporada desde el reclutamiento."
+
+#~ msgid "Defeat the enemy leader (I have no clue where he is)"
+#~ msgstr "Derrote al líder enemigo (no tengo idea de donde puede estar)"
+
+# ¿qué es esto?
+#~ msgid "Memory phone"
+#~ msgstr "Memoria telefónica"
+
+#~ msgid "Is this greeting really okay?"
+#~ msgstr "¿Está este saludo realmente bien?"
+
+#~ msgid "How would you like to be greeted?"
+#~ msgstr "¿Cómo le gustaría ser saludado?"
+
+#~ msgid ""
+#~ "I have been saved and will appear here the next time this scenario is "
+#~ "started."
+#~ msgstr ""
+#~ "He sido guardada y apareceré aquí la próxima vez que se inicie este "
+#~ "escenario."
+
+#~ msgid "Bank Teller"
+#~ msgstr "Cajero"
+
+#~ msgid ""
+#~ "I have deposited our assets into our savings account. We will have access "
+#~ "to them on future playthroughs of this scenario."
+#~ msgstr ""
+#~ "He depositado nuestros activos en nuestra cuenta de ahorros. Tendremos "
+#~ "acceso a ellos en futuras partidas con este escenario."
+
+#~ msgid ""
+#~ "You can come if you wish, but the leader is only interested in speaking "
+#~ "to Baldras."
+#~ msgstr ""
+#~ "Puede venir si lo desea, pero el líder solo está interesado en hablar con "
+#~ "Baldras."
+
+#~ msgid ""
+#~ "Now the orcs will fight until death; nothing shall stop their "
+#~ "bloodthirsty warriors!"
+#~ msgstr ""
+#~ "Ahora los orcos lucharán hasta la muerte; ¡nada detendrá a sus guerreros "
+#~ "sedientos de sangre!"
+
+#~ msgid "Health insurance"
+#~ msgstr "Seguro de salud"
+
+#~ msgid "Open the hell"
+#~ msgstr "Abrir el infierno"
+
+#~ msgid "dialog"
+#~ msgstr "diálogo"
+
+#~ msgid "Hello world"
+#~ msgstr "Hola mundo"
+
+#~ msgid "Who’s the parrot"
+#~ msgstr "Quien es el loro"
+
+#~ msgid "Parrot is in denial"
+#~ msgstr "El loro está en negación"
+
+#~ msgid "Why are you looking at me, I’m no parrot!!!"
+#~ msgstr "¿Se puede saber porqué me estás mirando? ¡No soy el loro!"
+
+#~ msgid "A short time passes..."
+#~ msgstr "Pasa un corto periodo de tiempo..."
+
+#~ msgid "Parrot accepted its fate"
+#~ msgstr "El loro acepta su sino"
+
+#~ msgid "drink"
+#~ msgstr "bebida"
+
+#~ msgid "Pick your drink"
+#~ msgstr "Sirvase su bebida"
+
+#~ msgid "Soda"
+#~ msgstr "Soda"
+
+#~ msgid "Water is nice"
+#~ msgstr "El agua está bien"
+
+#~ msgid ""
+#~ "Battle for Wesnoth User’s Manual\n"
+#~ "================================\n"
+#~ "\n"
+#~ "Preface\n"
+#~ "-------\n"
+#~ "\n"
+#~ "The Battle for Wesnoth is a turn-based strategy game with a fantasy "
+#~ "theme.\n"
+#~ "\n"
+#~ "Build up a great army, gradually training raw recruits into hardened "
+#~ "veterans. In later games, recall your toughest warriors and form a deadly "
+#~ "host against whom none can stand! Choose units from a large pool of "
+#~ "specialists, and hand pick a force with the right strengths to fight well "
+#~ "on different terrains against all manner of opposition.\n"
+#~ "\n"
+#~ "Wesnoth has many different sagas waiting to be played out. You can battle "
+#~ "orcs, undead, and bandits on the marches of the Kingdom of Wesnoth; fight "
+#~ "alongside dragons in the lofty peaks, elves in the green reaches of the "
+#~ "Aethenwood, dwarves in the great halls of Knalga, or even merfolk in the "
+#~ "Bay of Pearls. You can fight to regain the throne of Wesnoth, or use your "
+#~ "dread power over the Undead to dominate the land of mortals, or lead your "
+#~ "glorious Orcish tribe to victory against the humans who dared despoil "
+#~ "your lands.\n"
+#~ "\n"
+#~ "You will be able to select from among over two hundred unit types "
+#~ "(infantry, cavalry, archers, and mages are just the beginning) and fight "
+#~ "actions ranging from small-unit ambushes to clashes of vast armies. You "
+#~ "can also challenge your friends – or strangers – and fight in epic multi-"
+#~ "player fantasy battles.\n"
+#~ "\n"
+#~ "Battle for Wesnoth is open-source software, and a thriving community of "
+#~ "volunteers cooperates to improve the game. You can create your own custom "
+#~ "units, write your own scenarios, and even script full-blown campaigns. "
+#~ "User-maintained content is available from an add-on server, and the very "
+#~ "best of it is incorporated into Battle for Wesnoth’s official releases.\n"
+#~ "\n"
+#~ "Getting Started\n"
+#~ "---------------\n"
+#~ "\n"
+#~ "The World\n"
+#~ "~~~~~~~~~\n"
+#~ "\n"
+#~ "The known portion of the Great Continent, on which Wesnoth abides, is "
+#~ "generally divided into three areas: the Northlands, which are generally "
+#~ "lawless; the kingdom of Wesnoth and its occasional principality, "
+#~ "Elensefar; and the domain of the Southwest Elves in the Aethenwood and "
+#~ "beyond.\n"
+#~ "\n"
+#~ "The Kingdom of Wesnoth lies in the center of this land. Its borders are "
+#~ "the Great River to the north, the Dulatus Hills in the east and south, "
+#~ "the edge of the Aethenwood to the southwest, and the Ocean to the west. "
+#~ "Elensefar, a once-province of Wesnoth, is bordered by the Great River to "
+#~ "the north, a loosely defined line with Wesnoth to the east, the Bay of "
+#~ "Pearls to the south, and the ocean to the west.\n"
+#~ "\n"
+#~ "The Northlands is the wild country north of the Great River. Various "
+#~ "groups of orcs, dwarves, barbarians and elves populate the region.  To "
+#~ "the north and east lies the forest of Lintanir, where the great kingdom "
+#~ "of the North-Elves keeps to its own mysterious affairs.\n"
+#~ "\n"
+#~ "Over the land are scattered villages where you can heal your troops and "
+#~ "gather the income required to support your army. You will also have to "
+#~ "cross mountains and rivers, push through forests, hills and tundra, and "
+#~ "cross open grassland. In each of these areas different creatures have "
+#~ "adapted to live there and can travel more easily and fight better when "
+#~ "they are in familiar terrain.\n"
+#~ "\n"
+#~ "The Creatures\n"
+#~ "^^^^^^^^^^^^^\n"
+#~ "\n"
+#~ "In the world of Wesnoth there dwell humans, elves, dwarves, orcs, drakes, "
+#~ "saurians, merfolk, nagas, and many other races yet more obscure and "
+#~ "wondrous. In accursed lands walk undead and ghosts and specters; monsters "
+#~ "lurk in its ruins and dungeons.  Each has adapted to particular terrains. "
+#~ "Humans inhabit primarily the temperate grasslands. In the hills, "
+#~ "mountains and underground caves orcs and dwarves are most at home. In the "
+#~ "forests the elves reign supreme. In the oceans and rivers, merfolk and "
+#~ "nagas dominate.\n"
+#~ "\n"
+#~ "For game purposes, the races group into factions; for example, orcs often "
+#~ "cooperate with trolls, and elves or dwarves with humans. Some other "
+#~ "factions reflect divisions within human society — loyalists vs. outlaws, "
+#~ "for example. In most campaigns, you will control units drawn a single "
+#~ "faction. But sometimes factions make alliances with others, so you may "
+#~ "face more than one faction in a scenario."
+#~ msgstr ""
+#~ "Manual de usuario de La batalla por Wesnoth\n"
+#~ "==================================\n"
+#~ "\n"
+#~ "Prefacio\n"
+#~ "--------\n"
+#~ "\n"
+#~ "La batalla por Wesnoth es un juego de estrategia por turnos con una "
+#~ "temática de fantasía.\n"
+#~ "\n"
+#~ "Construya un gran ejército, entrenando gradualmente a los reclutas rasos "
+#~ "para convertirlos en veteranos curtidos. ¡En juegos posteriores, "
+#~ "reincorpore a sus guerreros más duros y forme una hueste mortal contra la "
+#~ "que nadie pueda enfrentarse! Elija unidades de entre un gran grupo de "
+#~ "especialistas y seleccione un ejército con las fortalezas adecuadas para "
+#~ "luchar bien en diferentes terrenos contra todo tipo de oposición.\n"
+#~ "\n"
+#~ "Wesnoth tiene muchas sagas diferentes esperando a ser jugadas. Puede "
+#~ "luchar contra orcos, muertos vivientes y bandidos en las fronteras del "
+#~ "Reino de Wesnoth; luche junto a los dracos en los picos elevados, los "
+#~ "elfos en las verdes extensiones del bosque de Edén, los enanos en los "
+#~ "grandes salones de Knalga o incluso los tritones en la Bahía de las "
+#~ "Perlas. Puede luchar para recuperar el trono de Wesnoth, o usar su "
+#~ "terrible poder sobre los no muertos para dominar la tierra de los "
+#~ "mortales, o llevar a su gloriosa tribu orca a la victoria contra los "
+#~ "humanos que se atrevieron a despojarle de sus tierras.\n"
+#~ "\n"
+#~ "Podrá seleccionar entre más de doscientos tipos de unidades (infantería, "
+#~ "caballería, arqueros y magos son solo el comienzo) y acciones de lucha "
+#~ "que van desde emboscadas de unidades pequeñas hasta enfrentamientos de "
+#~ "vastos ejércitos. También puede desafiar a sus amigos, o a extraños, y "
+#~ "luchar en épicas batallas de fantasía multijugador.\n"
+#~ "\n"
+#~ "La batalla por Wesnoth es un software de código abierto y una pujante "
+#~ "comunidad de voluntarios coopera para mejorar el juego. Puede crear sus "
+#~ "propias unidades personalizadas, escribir sus propios escenarios e "
+#~ "incluso crear campañas en toda regla. El contenido mantenido por los "
+#~ "usuarios está disponible en un servidor adicional, y lo mejor de él está "
+#~ "incorporado en los lanzamientos oficiales de La batalla por Wesnoth.\n"
+#~ "\n"
+#~ "El comienzo\n"
+#~ "--------\n"
+#~ "\n"
+#~ "El mundo\n"
+#~ "~~~~~~~~~\n"
+#~ "\n"
+#~ "La parte conocida del Gran Continente, en la que se encuentra Wesnoth, se "
+#~ "divide generalmente en tres áreas: las Tierras Norteñas, que generalmente "
+#~ "no tienen ley; el reino de Wesnoth y su principado ocasional, Elensefar; "
+#~ "y el dominio de los Elfos del Sudoeste en el bosque de Edén y más allá.\n"
+#~ "\n"
+#~ "El Reino de Wesnoth se encuentra en el centro de esta tierra. Sus "
+#~ "fronteras son el Río Grande al norte, las Colinas Dulatus al este y al "
+#~ "sur, el borde del bosque de Edén al suroeste y el Océano al oeste. "
+#~ "Elensefar, una antigua provincia de Wesnoth, está bordeada por el Río "
+#~ "Grande al norte, una línea vagamente definida con Wesnoth al este, la "
+#~ "Bahía de las Perlas al sur y el océano al oeste.\n"
+#~ "\n"
+#~ "Las Tierras Norteñas son el territorio salvaje al norte del Gran Río. "
+#~ "Varios grupos de orcos, enanos, bárbaros y elfos pueblan la región. Al "
+#~ "norte y al este se encuentra el bosque de Lintanir, donde el gran reino "
+#~ "de los elfos del norte se ocupa de sus propios asuntos misteriosos.\n"
+#~ "\n"
+#~ "Sobre la tierra hay aldeas dispersas donde puede curar a sus tropas y "
+#~ "reunir los ingresos necesarios para mantener a su ejército. También "
+#~ "tendrá que cruzar montañas y ríos, atravesar bosques, colinas y tundra, y "
+#~ "cruzar pastizales abiertos. En cada una de estas áreas, diferentes "
+#~ "criaturas se han adaptado para vivir allí y pueden viajar más fácilmente "
+#~ "y luchar mejor cuando se encuentran en un terreno familiar.\n"
+#~ "\n"
+#~ "Las criaturas\n"
+#~ "^^^^^^^^^^^^^\n"
+#~ "\n"
+#~ "En el mundo de Wesnoth habitan humanos, elfos, enanos, orcos, dracos, "
+#~ "saurios, tritones, nagas y muchas otras razas aún más oscuras y "
+#~ "maravillosas. En tierras malditas caminan muertos vivientes, fantasmas y "
+#~ "espectros; los monstruos acechan en sus ruinas y mazmorras. Cada uno se "
+#~ "ha adaptado a terrenos particulares. Los seres humanos habitan "
+#~ "principalmente en los pastizales templados. En las colinas, montañas y "
+#~ "cuevas subterráneas, los orcos y los enanos se sienten más en casa. En "
+#~ "los bosques, los elfos reinan. En los océanos y ríos dominan los tritones "
+#~ "y los nagas.\n"
+#~ "\n"
+#~ "A efectos del juego, las razas se agrupan en facciones; por ejemplo, los "
+#~ "orcos a menudo cooperan con los troles y los elfos o enanos con los "
+#~ "humanos. Algunas otras facciones reflejan divisiones dentro de la "
+#~ "sociedad humana: leales frente a forajidos, por ejemplo. En la mayoría de "
+#~ "las campañas, controlará las unidades pertenecientes a una sola facción. "
+#~ "Pero a veces las facciones hacen alianzas con otras, por lo que puede "
+#~ "enfrentarse a más de una facción en un escenario."
+
+#~ msgid "Local ToD item test"
+#~ msgstr "Prueba local de objetos de franjas horarias"
+
+#~ msgid "Trigger attack animation."
+#~ msgstr "Activar animación de ataque."
+
+#~ msgid "Open, Sesame!"
+#~ msgstr "¡Ábrete, sésamo!"
+
+#~ msgid "Let there be fog!"
+#~ msgstr "¡Qué haya niebla!"
+
+#~ msgid "Torches, attack!"
+#~ msgstr "¡Antorchas al ataque!"
+
+#~ msgid "Math test"
+#~ msgstr "Exámen de matemáticas"
+
+#~ msgid "Enter a number."
+#~ msgstr "Introduzca un número."
+
+#~ msgid "Round it"
+#~ msgstr "Redondearlo"
+
+#~ msgid "Add something"
+#~ msgstr "Sumar algo"
+
+#~ msgid "Amount to add"
+#~ msgstr "Cantidad a sumar"
+
+#~ msgid "Amount to multiply"
+#~ msgstr "Cantidad a multiplicar"
+
+#~ msgid "Divide by something"
+#~ msgstr "Dividir entre algo"
+
+#~ msgid "Divisor"
+#~ msgstr "Divisor"
+
+# Supongo que es el dividendo.
+#~ msgid "Modulo"
+#~ msgstr "Dividendo"
+
+#~ msgid "Cannot use modulus of zero!"
+#~ msgstr "¡No pueden usarse módulos de cero!"
+
+#~ msgid "ints&amp;floats"
+#~ msgstr "ints&amp;floats"
+
+#~ msgid "Reveal the Way"
+#~ msgstr "Mostrar el camino"
+
+#~ msgid "change coloring"
+#~ msgstr "cambiar el coloreado"
+
+#~ msgid "Oooh tingly!!!"
+#~ msgstr "¡Oooh hormigueo !"
+
+# Esto cada vez tiene menos sentido. Supongo que son líneas que se usan para depurar código y que no salen ingame.
+#~ msgid "Send me a thief to spy on the blondes"
+#~ msgstr "Envíame un ladrón para espiar a las rubias"
+
+#~ msgid "BOOM!"
+#~ msgstr "¡BUM!"
+
+#~ msgid "Timeshift"
+#~ msgstr "Cambio de hora"
+
+#~ msgid "The silly dance"
+#~ msgstr "El baile tonto"
+
+#~ msgid "Message 1 of 2: prepare for timeshift"
+#~ msgstr "Mensaje 1 de 2: prepárate para el cambio de hora"
+
+#~ msgid "Message 2 of 2: timeshift imminent"
+#~ msgstr "Mensaje 2 de 2: cambio de hora inminente"
+
+#~ msgid "This label is not immutable"
+#~ msgstr "Esta etiqueta no es inmutable"
+
+#~ msgid "Let it snow"
+#~ msgstr "Haz que nieve"
+
+#~ msgid "Plant palms"
+#~ msgstr "Planta palmeras"
+
+#~ msgid "Flood"
+#~ msgstr "Inundar"
+
+#~ msgid "Sunken"
+#~ msgstr "Hundido"
+
+#~ msgid "You entered a different time Zone"
+#~ msgstr "Ha entrado en una zona horaria diferente"
+
+#~ msgid "I will prepare the incantation; what dost thou desire to know?"
+#~ msgstr "Prepararé el encantamiento; ¿Qué deseas saber?"
+
+#~ msgid "Identify terrain"
+#~ msgstr "Identifica terreno"
+
+#~ msgid "Keep out!!!"
+#~ msgstr "¡No pasar!"
+
+#~ msgid "Earn 100 XP!"
+#~ msgstr "¡Gane 100 PX!"
+
+#~ msgid "100 XP"
+#~ msgstr "100 PX"
+
+#~ msgid "test anim"
+#~ msgstr "prueba de animación"
+
+#~ msgid "role test"
+#~ msgstr "prueba de papel"
+
+#~ msgid "I have the role!"
+#~ msgstr "¡Tengo el papel!"
+
+#~ msgid "forfeit"
+#~ msgstr "perder"
+
+#~ msgid "No more turns for you!"
+#~ msgstr "¡No te quedan más turnos!"
+
+#~ msgid "Suddenly, Elves Besieged!"
+#~ msgstr "¡De repente, elfos asediados!"
+
+#~ msgid "Suddenly, Blackwater Port!"
+#~ msgstr "¡De repente, el Puerto de aguas negras!"
+
+#~ msgid "Suddenly, Caves!!"
+#~ msgstr "¡De repente, cavernas!"
+
+#~ msgid "livingness"
+#~ msgstr "vitalidad"
+
+#~ msgid ""
+#~ "<b>Tooltip for the livingness label</b>\n"
+#~ "\n"
+#~ "Moving to this hex will show you:\n"
+#~ "\n"
+#~ "<span color='red'><b>not_living</b> Subsums every of the following:</"
+#~ "span>\n"
+#~ "<span color='yellow'><b>unpoisonable</b> - Some more text here.</span>\n"
+#~ "<span color='brown'><b>undrainable</b></span> - You see that markup works "
+#~ "here.\n"
+#~ "<span color='green'><b>unplagueable</b> - And so on</span>"
+#~ msgstr ""
+#~ "<b>Herramientas para la etiqueta de vitalidad</b>\n"
+#~ "\n"
+#~ "Al moverse a este hexágono se le mostrará:\n"
+#~ "\n"
+#~ "<span color='red'><b>no viviente</b> Incluye cada uno de los siguientes:</"
+#~ "span>\n"
+#~ "<span color='yellow'><b>no envenenable</b> - Aquí hay más texto.</span>\n"
+#~ "<span color='brown'><b>no drenable</b></span> - Puede ver cómo el marcado "
+#~ "funciona aquí.\n"
+#~ "<span color='green'><b>no plagable</b> - Y así</span>"
+
+#~ msgid "Fogged oasis"
+#~ msgstr "Oasis neblinoso"
+
+#~ msgid "Start Dynamic Events!"
+#~ msgstr "¡Comienzo de los eventos dinámicos!"
+
+#~ msgid ""
+#~ "I have been affected by the power of $functor|! To the Dark Gods with "
+#~ "that wose-born creature!"
+#~ msgstr ""
+#~ "¡Me ha afectado el poder de $functor |! ¡A los Dioses Oscuros con esa "
+#~ "criatura nacida de un wose!"
+
+#~ msgid "Urug-Telfar"
+#~ msgstr "Urug-Telfar"
+
+#~ msgid "Image tricks"
+#~ msgstr "Trucos de imagen"
+
+#~ msgid "What glamour should I cast upon our foe?"
+#~ msgstr "¿Qué glamour debería lanzar sobre nuestro enemigo?"
+
+#~ msgid "Flip around!"
+#~ msgstr "¡Da la vuelta!"
+
+#~ msgid "Scale up"
+#~ msgstr "Aumentar"
+
+#~ msgid "Scale down"
+#~ msgstr "Disminuir"
+
+#~ msgid "Blur 3"
+#~ msgstr "Difuminar 3"
+
+#~ msgid "Blur 100"
+#~ msgstr "Difuminar 100"
+
+#~ msgid "Black and white!"
+#~ msgstr "¡Negro y blanco!"
+
+#~ msgid "Other team"
+#~ msgstr "Otro equipo"
+
+#~ msgid "And other team again"
+#~ msgstr "Y otro equipo más"
+
+#~ msgid "Psychedellic!"
+#~ msgstr "¡Psicodélico!"
+
+#~ msgid "Shrooms!"
+#~ msgstr "¡Hongos!"
+
+#~ msgid "You just lost the attack you used."
+#~ msgstr "Acabas de perder el ataque que usaste."
+
+#~ msgid "Cowards! Fight me in real combat!"
+#~ msgstr "¡Cobardes! ¡Luchad contra mí en un combate real!"
+
+#~ msgid "Neutral healer guy"
+#~ msgstr "Tipo sanador neutral"
+
+#~ msgid "Menu 1 (only clickable on own units on castle terrain)"
+#~ msgstr ""
+#~ "Menú 1 (solo se puede hacer clic en unidades propias en terreno de "
+#~ "castillo)"
+
+#~ msgid "Menu 2 (use_hotkey = no, so I cannot assign hotkeys to it.)"
+#~ msgstr ""
+#~ "Menú 2 (use_hotkey = no, por lo que no puedo asignarle teclas de acceso "
+#~ "rápido)."
+
+#~ msgid "menu 3"
+#~ msgstr "menú 3"
+
+#~ msgid "menu 3: default hotkey is F6."
+#~ msgstr "menú 3: la tecla de acceso rápido predeterminada es F6."
+
+#~ msgid "menu 4"
+#~ msgstr "menú 4"
+
+#~ msgid "menu 4, only acessible via hotkeys"
+#~ msgstr "menú 4, solo accesible a través de teclas de acceso rápido"

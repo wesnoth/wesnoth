@@ -20,7 +20,7 @@ msgstr ""
 "Project-Id-Version: Wesnoth 1.13\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2021-06-23 15:36 UTC\n"
-"PO-Revision-Date: 2021-06-15 13:23+0200\n"
+"PO-Revision-Date: 2021-06-25 13:45+0200\n"
 "Last-Translator: Pepe <donpepe1963@gmail.com>\n"
 "Language-Team: Wesnoth-spanish\n"
 "Language: es\n"
@@ -1033,7 +1033,7 @@ msgstr ""
 "cobarde para asistir a nuestro duelo! Tu desgracia será más angustiosa que "
 "la muerte que yo te habría dado!»\n"
 " \n"
-"Quizás no debería haber gritado tan fuerte.... "
+"Quizás no debería haber gritado tan fuerte...."
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:220
@@ -1609,74 +1609,25 @@ msgstr ""
 
 # Suena raro decir que un archienemigo sea "final", ya que los archienemigos son (incluso en la elaboración de historias) únicos, con su propio caracter. Supuse que el final significaba que "venían" al final.
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:4
-#, fuzzy
-#| msgid ""
-#| "Your aim is to survive the spawning waves of units and defeat the final "
-#| "archenemies.\n"
-#| "\n"
-#| "The spawning waves are randomly generated and will be different each time "
-#| "Dark Forecast is played.\n"
-#| "\n"
-#| "They appear along the north, south, and west map edges — though they are "
-#| "most likely to spawn on the west edge. The waves appear at somewhat "
-#| "regular intervals.\n"
-#| "\n"
-#| "The weather will also change randomly, affecting the layout of the map.\n"
-#| "\n"
-#| "\n"
-#| "<b>Dark Forecast was made by:</b>\n"
-#| "\n"
-#| "<span color='green'>jb:</span>\n"
-#| "• Map design, spawn groups, and scenario concept\n"
-#| "\n"
-#| "<span color='green'>Rhuvaen:</span>\n"
-#| "• WML implementation"
 msgid ""
 "Your aim is to survive spawning waves of units and defeat the final "
 "archenemies. Spawns are randomly generated and will be different each time "
 "Isle of Mists is played. The waves appear at somewhat regular intervals. The "
 "weather will also change randomly, affecting the layout of the map."
 msgstr ""
-"Su objetivo es sobrevivir las oleadas enemigas y derrotar a los "
-"archienemigos finales.\n"
-"\n"
-"Las oleadas enviadas son generadas aleatoriamente y serán diferentes cada "
-"vez que se juegue a Pronóstico oscuro.\n"
-"\n"
-"Aparecen a lo largo del norte, sur y oeste de los límites del mapa, aunque "
-"es más probable que aparezcan por el borde oeste. Las oleadas generadas "
-"aparecen a intervalos parcialmente regulares.\n"
-"\n"
-"La meteorología también cambiará aleatoriamente, afectando el diseño del "
-"mapa.\n"
-"\n"
-"\n"
-"<b>Pronóstico oscuro fue realizado por:</b>\n"
-"\n"
-"<span color='green'>jb</span>\n"
-"— diseño del mapa, generación de oleadas y concepto del escenario\n"
-"\n"
-"<span color='green'>Rhuvaen</span>\n"
-"— implementación WML"
+"Tu objetivo es sobrevivir a las oleadas de unidades que se van generando y "
+"derrotar a los archienemigos finales. Las formaciones se generan "
+"aleatoriamente y serán diferentes cada vez que se juegue La isla de la "
+"niebla. Las oleadas aparecen a intervalos más o menos regulares. El clima "
+"también cambiará aleatoriamente, afectando el diseño del mapa."
 
 #. [multiplayer]: id=multiplayer_2p_Isle_of_Mists
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:9
-#, fuzzy
-#| msgid "2p — Dark Forecast (Survival)"
 msgid "2p — Isle of Mists (Survival)"
-msgstr "2 jug. — Pronóstico oscuro (supervivencia)"
+msgstr "2 jug. — La isla de la Niebla (supervivencia)"
 
 #. [multiplayer]: id=multiplayer_2p_Isle_of_Mists
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:10
-#, fuzzy
-#| msgid ""
-#| "Dark Forecast is a survival scenario for solitaire or two-player team-"
-#| "based play against randomly-spawned AI units. Victory is achieved by "
-#| "surviving and defeating all enemy waves. During the course of play, the "
-#| "terrain will change based on random weather effects.\n"
-#| "\n"
-#| "Note: You need to use the default map settings for the scenario to work "
-#| "right."
 msgid ""
 "Isle of Mists is a survival scenario which can be played alone or with "
 "another player against randomly spawned AI units, catered for experienced "
@@ -1685,43 +1636,36 @@ msgid ""
 "effects. Default map settings are required for the scenario to work "
 "properly. By Lord-Knightmare."
 msgstr ""
-"Pronóstico oscuro es un escenario de supervivencia para jugar en solitario o "
-"con dos jugadores en equipo para jugar contra las unidades generadas "
-"aleatoriamente por la IA. La victoria se consigue sobreviviendo a todas las "
-"oleadas enemigas. En el transcurso del juego, el terreno cambiará basándose "
-"en fenómenos meteorológicos aleatorios.\n"
-"\n"
-"Nota: necesita utilizar los ajustes predeterminados del mapa para que el "
-"escenario funcione correctamente."
+"La isla de la niebla es un escenario de supervivencia que se puede jugar "
+"solo o con otro jugador contra unidades de IA generadas al azar, dirigido a "
+"jugadores experimentados. La victoria se logra sobreviviendo y derrotando a "
+"todas las oleadas enemigas. Durante el transcurso del juego, el terreno "
+"cambiará según efectos meteorológicos aleatorios. La configuración "
+"predeterminada del mapa es necesaria para que el escenario funcione "
+"correctamente. Por Lord-Knightmare."
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:25
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:38
-#, fuzzy
-#| msgid "teamname^Monsters"
 msgid "teamname^Invaders"
-msgstr "Monstruos"
+msgstr "Invasores"
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:56
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:83
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:107
-#, fuzzy
-#| msgid "teamname^Center"
 msgid "teamname^Defenders"
-msgstr "Equipo centro"
+msgstr "Defensores"
 
 #. [label]
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:189
 msgid "Healing Keep"
-msgstr ""
+msgstr "Torreón de sanación"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:213
-#, fuzzy
-#| msgid "Dark Forecast — a random survival scenario"
 msgid "Isle of Mists — a random survival scenario"
-msgstr "Pronóstico oscuro — un escenario de supervivencia aleatorio"
+msgstr "La isla de la niebla — un escenario de supervivencia aleatorio"
 
 #. [message]
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:220
@@ -1729,6 +1673,9 @@ msgid ""
 "You arrive near a mystic shrine, where the apparitions of ancient armies are "
 "forever trapped and doomed to eternally cleanse the isle of all interlopers."
 msgstr ""
+"Llegas cerca de un santuario místico, donde las apariciones de ejércitos "
+"antiguos quedan atrapadas para siempre y condenadas a purgar eternamente la "
+"isla de cualquier intruso."
 
 #. [message]
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:224
@@ -1736,22 +1683,18 @@ msgid ""
 "Phantom armies approach on the horizon. If we defeat them all, they may be "
 "released from this timeless prison."
 msgstr ""
+"Los ejércitos fantasma se acercan por el horizonte. Si los derrotamos a "
+"todos, es posible que se vean liberados de esta prisión eterna."
 
 #. [message]
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:228
 msgid "Let us prepare ourselves for the coming battle."
-msgstr ""
+msgstr "Preparémonos para la inminente batalla."
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:247
-#, fuzzy
-#| msgid ""
-#| "Ugh! How can this be? Defeated by mere barbarians! My gods have forsaken "
-#| "me..."
 msgid "How can this be? My gods have forsaken me..."
-msgstr ""
-"¡Ugh! ¿Cómo puede suceder esto? ¡Derrotado por simples bárbaros! Mis dioses "
-"me han abandonado..."
+msgstr "¿Cómo puede ocurrir esto? Mis dioses me han abandonado..."
 
 #. [message]: speaker=second_unit
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:261
@@ -1760,6 +1703,9 @@ msgid ""
 "separated from your body. You realize that you will soon be doomed to the "
 "same fate as the phantom guardians of the shrine."
 msgstr ""
+"A medida que se acerca la fría garra de la muerte, sientes que tu espíritu "
+"se separa de tu cuerpo. Te das cuenta de que pronto estarás condenado al "
+"mismo destino que los guardianes fantasma del santuario."
 
 #. [message]
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:283
@@ -1768,19 +1714,18 @@ msgid ""
 "You dimly realize that you will soon join the other ghosts as another "
 "faceless guardian of the ancient shrine."
 msgstr ""
+"Una espesa niebla se eleva desde la tierra, anulando tus sentidos y tu "
+"voluntad. Vagamente te das cuenta de que pronto te unirás a los otros "
+"fantasmas como un guardián sin rostro del antiguo santuario."
 
 #. [lua]: final_spawn
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.lua:313
-#, fuzzy
-#| msgid ""
-#| "The last and most powerful of these creatures are almost upon us. I feel "
-#| "that if we can finish them off in time, we shall be victorious."
 msgid ""
 "The last and most powerful of our enemies are upon us. If we can finish them "
 "off in time, we shall be victorious."
 msgstr ""
-"Las últimas y más poderosas de estas criaturas están casi sobre nosotros. "
-"Siento que si podemos acabar con ellas a tiempo, venceremos."
+"Los últimos y más poderosos de nuestros enemigos están sobre nosotros. Si "
+"podemos acabar con ellos a tiempo, venceremos."
 
 #. [lua]: final_spawn
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.lua:343
@@ -1790,11 +1735,15 @@ msgid ""
 "eternal guardianship. You have finally cleansed the ancient shrine... for "
 "now."
 msgstr ""
+"Cuando finalmente derrotas a los últimos enemigos que te quedan, las "
+"lúgubres brumas que rodean la isla parecen disiparse. Los fantasmas se "
+"desvanecen, finalmente liberados de su eterna tutela. Finalmente has "
+"limpiado el antiguo santuario ... por ahora."
 
 #. [lua]: weather_map
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.lua:517
 msgid "Inundation"
-msgstr ""
+msgstr "Inundación"
 
 #. [multiplayer]: id=multiplayer_Ruined_Passage
 #: data/multiplayer/scenarios/2p_Ruined_Passage.cfg:7
