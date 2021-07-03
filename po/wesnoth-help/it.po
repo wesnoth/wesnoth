@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2021-06-23 11:42-0400\n"
-"PO-Revision-Date: 2021-04-27 10:08+0200\n"
+"PO-Revision-Date: 2021-06-26 16:13+0200\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italiano <wesnoth-l10n-it@cirulla.net>\n"
 "Language: it\n"
@@ -71,10 +71,10 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:22
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:61
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:91
-#, fuzzy
-#| msgid "This unit is capable of basic healing."
 msgid "This unit is capable of basic healing and slowing dehydration."
-msgstr "Quest’unità è in grado di fornire cure di primo soccorso."
+msgstr ""
+"Quest’unità è in grado di fornire cure di primo soccorso e rallentare la "
+"disidratazione."
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:40
@@ -142,16 +142,12 @@ msgstr ""
 
 #. [heals]
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:97
-#, fuzzy
-#| msgid ""
-#| "This unit is capable of healing those around it, and curing them of "
-#| "poison."
 msgid ""
 "This unit is capable of healing those around it, slowing dehydration, and "
 "curing them of poison."
 msgstr ""
-"Quest’unità è in grado di guarire le unità che la circondano e di curarle "
-"dal veleno."
+"Quest’unità è in grado di guarire le unità che la circondano, rallentare la "
+"disidratazione e di curarle dal veleno."
 
 #. [trait]: id=healthy
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:11
@@ -873,40 +869,6 @@ msgstr "Editor Mappa/Scenario"
 
 #. [topic]: id=..editor
 #: data/core/editor/help.cfg:224
-#, fuzzy
-#| msgid ""
-#| "Wesnoth’s Map and Scenario Editor allows users to create and edit the "
-#| "maps on which every Wesnoth scenario takes place. It also provides a "
-#| "limited set of features for setting up a basic scenario.\n"
-#| "\n"
-#| "The editor can be launched from the <italic>text='Map Editor'</italic> "
-#| "option at the title screen.\n"
-#| "\n"
-#| "<header>text='Editing Modes'</header>\n"
-#| "\n"
-#| "The editor features two modes of operation: terrain mode and scenario "
-#| "mode.\n"
-#| "\n"
-#| "The <ref>dst='..editor_mode_terrain' text='Terrain Mode'</ref> is similar "
-#| "to a simple paint application, with tools to <ref>dst='editor_tool_paint' "
-#| "text='paint'</ref>, <ref>dst='editor_tool_fill' text='fill'</ref>, "
-#| "<ref>dst='editor_tool_select' text='select (and copy)'</ref>, and "
-#| "<ref>dst='editor_tool_paste' text='paste'</ref>. It also has the tool for "
-#| "setting the leaders’ <ref>dst='editor_tool_starting' text='starting "
-#| "locations'</ref>.\n"
-#| "\n"
-#| "The <ref>dst='..editor_mode_scenario' text='Scenario Mode'</ref>, in "
-#| "addition to the tools available in terrain mode, adds support for adding "
-#| "<ref>dst='editor_tool_label' text='labels'</ref>, "
-#| "<ref>dst='editor_tool_scenery' text='scenery items'</ref>, "
-#| "<ref>dst='editor_tool_unit' text='units'</ref> in addition to the leader, "
-#| "and assigning <ref>dst='editor_tool_village' text='village ownership'</"
-#| "ref> at the start of the scenario. There’s also a "
-#| "<ref>dst='editor_playlist' text='playlist manager'</ref> for the music.\n"
-#| "\n"
-#| "<bold>text='Warning: the Scenario Mode is buggy in 1.14.'</bold> "
-#| "Improving it is one of the main blockers for the 1.16 release, however in "
-#| "1.14 its quality is far below that of the game and the terrain mode."
 msgid ""
 "Wesnoth’s Map and Scenario Editor allows users to create and edit the maps "
 "on which every Wesnoth scenario takes place. It also provides a limited set "
@@ -961,17 +923,11 @@ msgstr ""
 "La <ref>dst='..editor_mode_scenario' text='Modalità Scenario'</ref>, oltre "
 "agli strumenti disponibili in modalità terreno, aggiunge il supporto per "
 "piazzare <ref>dst='editor_tool_label’ text='etichette'</ref>, "
-"<ref>dst='editor_tool_scenery' text='oggetti di scenario'</ref>, "
+"<ref>dst='editor_tool_scenery' text='oggetti scenografici'</ref>, "
 "<ref>dst='editor_tool_unit' text='unità'</ref> supplementari oltre il "
 "condottiero, inoltre è possibile assegnare il <ref>dst='editor_tool_village' "
 "text='possesso di un villaggio'</ref> all’inizio di uno scenario. C'è anche "
-"un <ref>dst='editor_playlist' text='gestore di scalette'</ref> per la "
-"musica.\n"
-"\n"
-"<bold>text='Attenzione: la modalità scenario della versione 1.14 ha dei "
-"bachi.'</bold> Il suo miglioramento è uno dei principali ostacoli per il "
-"rilascio della versione 1.16 e comunque, nella versione 1.14 la sua qualità "
-"è molto inferiore a quella del gioco e della modalità terreno."
+"un <ref>dst='editor_playlist' text='gestore di scalette'</ref> per la musica."
 
 #. [topic]: id=..editor
 #: data/core/editor/help.cfg:236
@@ -3058,7 +3014,7 @@ msgstr ""
 "Anche per le unità non eroiche i piccoli rischi crescono rapidamente. Mentre "
 "la storia e il dialogo solitamente hanno lo scopo di darti un legame emotivo "
 "con le tue truppe, le meccaniche di gioco premiano che questo è soltanto un "
-"gioco: c'è raramente una penalità per aver lasciato perire queste unità, "
+"gioco: c’è raramente una penalità per aver lasciato perire queste unità, "
 "oltre al fatto di non poter richiamarle negli scenari successivi. Il tuo "
 "piano di battaglia dovrebbe distribuire i rischi in base alle truppe che "
 "desideri richiamare in seguito."
@@ -3230,7 +3186,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"• Cattiva gestione delle monete d'oro. Ad alti livelli di difficoltà, "
+"• Cattiva gestione delle monete d’oro. Ad alti livelli di difficoltà, "
 "diventa importante la conquista di villaggi per aumentare le entrate e "
 "l’utilizzo di unità di basso livello e reclute fresche per ridurre le spese. "
 "Se usi molte unità di alto livello, vincerai anche facilmente in uno "
@@ -3371,7 +3327,7 @@ msgstr ""
 "La finestra “Calcolo dei danni” mostra alcune statistiche che possono "
 "aiutarti a determinare se uno scontro è stato particolarmente fortunato o "
 "sfortunato. Comunque, consultare le statistiche non sostituisce il riesame "
-"di un replay e la ricerca di errori di strategia, o un po' di fortuna nei "
+"di un replay e la ricerca di errori di strategia, o un po’ di fortuna nei "
 "momenti critici dello scontro."
 
 #. [topic]: id=combat
@@ -4835,11 +4791,6 @@ msgstr ""
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:694
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "Toggle the display of the current frames per second.\n"
-#| "\n"
 msgid ""
 "\n"
 "Toggle the display of the current frames per second. Also writes these "
@@ -4847,7 +4798,8 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"Mostra o nasconde la schermata dei fotogrammi al secondo attuali.\n"
+"Mostra o nasconde la schermata dei fotogrammi al secondo attuali. Riporta "
+"questi valori anche in un file nella directory utente.\n"
 "\n"
 
 #. [topic]: id=general_commands
@@ -5595,20 +5547,16 @@ msgstr ""
 #. [chance_to_hit]: id=deflect
 #: data/core/macros/abilities.cfg:489
 msgid "deflect"
-msgstr ""
+msgstr "deflettere"
 
 #. [chance_to_hit]: id=deflect
 #: data/core/macros/abilities.cfg:490
-#, fuzzy
-#| msgid ""
-#| "When used offensively, this attack always has at least a 60% chance to "
-#| "hit."
 msgid ""
 "When used defensively, this attack reduces the opponent's chance to hit by "
 "10%."
 msgstr ""
-"Usato in fase offensiva, questo attacco ha sempre una probabilità di colpire "
-"pari almeno al 60%."
+"Usato in fase offensiva, questo attacco riduce del 10% la probabilità di "
+"colpire di un avversario."
 
 #. [chance_to_hit]: id=deflect
 #: data/core/macros/abilities.cfg:491
@@ -5616,6 +5564,8 @@ msgid ""
 "This unit’s defensive techniques reduce the chance of a successful enemy "
 "attack."
 msgstr ""
+"Le tecniche di difesa di questa unità riducono le probabilità di successo di "
+"un attacco nemico."
 
 #. [chance_to_hit]: id=magical
 #: data/core/macros/abilities.cfg:505
@@ -5657,7 +5607,7 @@ msgstr ""
 #. [damage]: id=absorb
 #: data/core/macros/abilities.cfg:542
 msgid "absorb"
-msgstr ""
+msgstr "limitare"
 
 #. [damage]: id=absorb
 #: data/core/macros/abilities.cfg:543
@@ -5665,12 +5615,16 @@ msgid ""
 "This attack puts the unit in good defensive position, and it absorbs some of "
 "the damage dealt by an enemy strike."
 msgstr ""
+"Questo attacco mette l’unità in un buon assetto difensivo, assorbendo una "
+"parte dei danni inflitti da un colpo nemico."
 
 #. [damage]: id=absorb
 #: data/core/macros/abilities.cfg:544
 msgid ""
 "This unit can block enemy strikes, so that it takes reduced damage when hit."
 msgstr ""
+"Questa unità può bloccare i colpi nemici, in modo da subire soltanto un "
+"parte ridotta dei danni quando viene colpita."
 
 #. [drains]: id=drains
 #: data/core/macros/abilities.cfg:556
@@ -7261,25 +7215,19 @@ msgstr ""
 # da correggere se, come nome della razza, stabiliamo Pumerviglio
 #. [race]: id=horse
 #: data/core/units.cfg:183
-#, fuzzy
-#| msgid "race^Wose"
 msgid "race^Horse"
-msgstr "Wose"
+msgstr "Cavallo"
 
 #. [race]: id=horse
 #: data/core/units.cfg:184
-#, fuzzy
-#| msgid "race+female^Ogre"
 msgid "race+female^Horse"
-msgstr "Ogre"
+msgstr "Giumenta"
 
 # idem come sopra
 #. [race]: id=horse
 #: data/core/units.cfg:185
-#, fuzzy
-#| msgid "race^Woses"
 msgid "race^Horses"
-msgstr "Wose"
+msgstr "Cavalli"
 
 #. [race]: id=horse
 #: data/core/units.cfg:186
@@ -7294,6 +7242,17 @@ msgid ""
 "Winged horses, man-horse hybrids, and ghost horses have made their way into "
 "written history, though few can honestly claim to have seen such things."
 msgstr ""
+"I cavalli addomesticati si presentano in molteplici forme e varietà, dai "
+"mitici e possenti cavalli da guerra, ai robusti cavalli da tiro, fino agli "
+"agili cavalli di scorta. Sebbene più fragili di molti altri animali, la loro "
+"velocità ed astuzia consente ai cavalli inselvatichiti di prosperare in "
+"natura assieme ai loro fratelli selvaggi.\n"
+"\n"
+"I cavalli hanno rivestito un ruolo importante in molte civiltà, quindi non "
+"deve sorprendere che ci siano molti miti e storie che li riguardano. Cavalli "
+"alati, ibridi uomo-cavallo e cavalli fantasma hanno da sempre popolato le "
+"storie scritte, sebbene in pochi possano affermare in tutta coscienza di "
+"averne mai visto uno."
 
 #. [race]: id=human
 #: data/core/units.cfg:203
