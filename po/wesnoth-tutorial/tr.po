@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: wesnoth-tutorial\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2021-06-23 15:36 UTC\n"
-"PO-Revision-Date: 2020-01-14 16:56+0300\n"
+"PO-Revision-Date: 2021-07-01 08:28+0300\n"
 "Last-Translator: Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>\n"
 "Language-Team: Turkish\n"
 "Language: tr\n"
@@ -18,20 +18,18 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.8.11\n"
+"X-Generator: Poedit 2.2.1\n"
 
 #. [campaign]: id=Tutorial
 #: data/campaigns/tutorial/_main.cfg:11
 msgid "Battle Training"
-msgstr ""
+msgstr "Çarpışma Eğitimi"
 
 #. [difficulty]
 #. [campaign]: id=Tutorial
 #: data/campaigns/tutorial/_main.cfg:14 data/campaigns/tutorial/_main.cfg:30
-#, fuzzy
-#| msgid "Wesnoth Tutorial"
 msgid "Tutorial"
-msgstr "Wesnoth Öğretici"
+msgstr "Öğretici"
 
 #. [campaign]: id=Tutorial
 #: data/campaigns/tutorial/_main.cfg:21
@@ -39,11 +37,13 @@ msgid ""
 "Learn the basics of Wesnoth gameplay with a tutorial. Recommended for first "
 "time players."
 msgstr ""
+"Bu öğretici ile oyununun temellerini öğrenin. İlk kez oynayanlar için "
+"önerilir."
 
 #. [difficulty]
 #: data/campaigns/tutorial/_main.cfg:31
 msgid "Beginner"
-msgstr ""
+msgstr "Acemi"
 
 #. [label]
 #: data/campaigns/tutorial/gui/character_selection.cfg:21
@@ -121,13 +121,9 @@ msgstr "Kendini öldürtürsen"
 
 #. [disallow_end_turn]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:137
-#, fuzzy
-#| msgid ""
-#| "You cannot end your turn until you have recruited troops and captured a "
-#| "village!"
 msgid ""
 "You cannot end your turn until you have completed the lesson on movement!"
-msgstr "Birimlerinizi askere alıp bir köy ele geçirmeden eli bitiremezsiniz!"
+msgstr "Hareket dersini tamamlamadan eli bitiremezsiniz!"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:146
@@ -157,7 +153,7 @@ msgid ""
 "of the screen."
 msgstr ""
 "Bu öğretici için Konrad'ı oynuyorsunuz. Siz içkalede duruyorsunuz. Akıl "
-"hocanız Delfador ise nehrin güney tarafındadır. Fareyi bir birimin üzerine "
+"hocanız Delfador ise nehrin doğu tarafındadır. Fareyi bir birimin üzerine "
 "getirerek ekranın sağ tarafında yeteneklerinin ve durumunun bir özetini "
 "görebilirsiniz."
 
@@ -170,7 +166,7 @@ msgid ""
 "of the screen."
 msgstr ""
 "Bu öğretici için Lisar'ı oynuyorsunuz. Siz içkalede duruyorsunuz. Akıl "
-"hocanız Delfador ise nehrin güney tarafındadır. Fareyi bir birimin üzerine "
+"hocanız Delfador ise nehrin doğu tarafındadır. Fareyi bir birimin üzerine "
 "getirerek ekranın sağ tarafında yeteneklerinin ve durumunun bir özetini "
 "görebilirsiniz."
 
@@ -334,12 +330,8 @@ msgstr ""
 
 #. [disallow_end_turn]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:527
-#, fuzzy
-#| msgid ""
-#| "You cannot end your turn until you have recruited troops and captured a "
-#| "village!"
 msgid "You cannot end your turn until you have attacked the dummy!"
-msgstr "Birimlerinizi askere alıp bir köy ele geçirmeden eli bitiremezsiniz!"
+msgstr "Kuklaya saldırana kadar eli bitiremezsiniz!"
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:541
@@ -456,13 +448,9 @@ msgstr "El sonu"
 
 #. [disallow_end_turn]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:631
-#, fuzzy
-#| msgid ""
-#| "You cannot end your turn until you have recruited troops and captured a "
-#| "village!"
 msgid ""
 "You cannot end your turn until you have completed the lesson on healing!"
-msgstr "Birimlerinizi askere alıp bir köy ele geçirmeden eli bitiremezsiniz!"
+msgstr "İyileşme dersini tamamlamadan eli bitiremezsiniz!"
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:642
@@ -519,13 +507,9 @@ msgstr ""
 
 #. [disallow_end_turn]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:698
-#, fuzzy
-#| msgid ""
-#| "You cannot end your turn until you have recruited troops and captured a "
-#| "village!"
 msgid ""
 "You cannot end your turn until you have completed the lesson on recruiting!"
-msgstr "Birimlerinizi askere alıp bir köy ele geçirmeden eli bitiremezsiniz!"
+msgstr "Askere alma dersini tamamlamadan eli bitiremezsiniz!"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:707
@@ -626,13 +610,9 @@ msgstr ""
 
 #. [disallow_end_turn]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:830
-#, fuzzy
-#| msgid ""
-#| "You cannot end your turn until you have recruited troops and captured a "
-#| "village!"
 msgid ""
 "You cannot end your turn until you have completed the lesson on attacking!"
-msgstr "Birimlerinizi askere alıp bir köy ele geçirmeden eli bitiremezsiniz!"
+msgstr "Saldırı dersini tamamlamadan eli bitiremezsiniz!"
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:839
@@ -703,12 +683,6 @@ msgstr ""
 #. [message]: speaker=Delfador
 #. a strong elf, so +1 damage
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:918
-#, fuzzy
-#| msgid ""
-#| "Your elf used a sword (5×4; or 5 damage on each hit, with 4 attacks), "
-#| "which is a <i>melee</i> attack. The quintain defended with its melee "
-#| "attack (3×5; or 3 damage on each hit, with 5 attacks). The ranged attack "
-#| "(the bow) would have been safer."
 msgid ""
 "Your elf used a sword (6×4; or 6 damage on each hit, with 4 attacks), which "
 "is a <i>melee</i> attack. The quintain defended with its melee attack (3×5; "
@@ -716,7 +690,7 @@ msgid ""
 "have been safer."
 msgstr ""
 "Elf Savaşçınız bir <i>yakın dövüş</i> saldırısı yaptı ve kılıç kullandı "
-"(5-4’lük, yani 5 hasarlık 4 saldırı). Korkuluk da kendini (3-5’lik, yani 3 "
+"((6×4'lük, yani 6 hasarlık 4 saldırı). Korkuluk da kendini (3x5’lik, yani 3 "
 "hasarlık 5 saldırı) yakın dövüş silahıyla savundu. Menzilli saldırı (yay) "
 "daha güvenli olurdu."
 
@@ -726,6 +700,8 @@ msgid ""
 "Elvish Fighters normally do 5×4 damage with their swords, but this elf has "
 "the <i>strong</i> trait, which increases the damage output of melee attacks."
 msgstr ""
+"Elf Savaşçıları normalde kılıçlarıyla 5×4 hasar verir, ancak bu elf, yakın "
+"dövüş saldırılarının hasarını artıran <i>güçlü</i> mizaca sahiptir."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:928
@@ -743,18 +719,13 @@ msgstr ""
 #. [message]: speaker=Delfador
 #. a dextrous elf, so +1 damage
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:949
-#, fuzzy
-#| msgid ""
-#| "Your elf used a bow, which is a <i>ranged</i> attack (3×3; or 3 damage on "
-#| "each hit, with 3 attacks). The quintain has no ranged attack, only a "
-#| "melee attack, so it could not defend itself."
 msgid ""
 "Your elf used a bow, which is a <i>ranged</i> attack (4×3; or 4 damage on "
 "each hit, with 3 attacks). The quintain has no ranged attack, only a melee "
 "attack, so it could not defend itself."
 msgstr ""
 "Elf Savaşçınız bir <i>menzilli</i> saldırı silahı olan yayını kullandı "
-"(3-3’lük, yani 3 hasarlık 3 saldırı). Korkuluğun menzilli saldırı silahı "
+"(4x3’lük, yani 4 hasarlık 3 saldırı). Korkuluğun menzilli saldırı silahı "
 "olmadığı için bu saldırıya karşı kendini savunamadı."
 
 #. [message]: speaker=Delfador
@@ -763,6 +734,8 @@ msgid ""
 "Elvish Fighters normally do 3×3 damage with their bows, but this elf has the "
 "<i>dextrous</i> trait, which increases the damage output of ranged attacks."
 msgstr ""
+"Elf Savaşçıları normalde yaylarıyla 3×3 hasar verir, ancak bu elf, menzilli "
+"saldırıların hasarını artıran <i>becerikli</i> mizaca sahiptir."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:959
@@ -870,7 +843,7 @@ msgstr ""
 "Bir birimi seçtiğinizde, aydınlanan saha üzerinde imleci gezdirdiğinizde "
 "farklı yüzde değerleri görürsünüz. Yüzde ne kadar yüksek ise o birimin o "
 "altıgen türündeki <i>savunma</i>sı o kadar fazladır. Örneğin, çoğu birim "
-"için savunma açısından köy ve kale nehirden daha iyidir. bu kuklalar gibi "
+"için savunma açısından köy ve kale nehirden daha iyidir. bu korkuluklar gibi "
 "bazı birimlerin saldırıları <i>sihirli</i>dir, yani silahlarını saldırırken "
 "de savunurken de %70 isabetle kullanabilirler."
 
@@ -904,7 +877,7 @@ msgid ""
 "Now, Konrad, I will leave you with more dummies to practice on! After that, "
 "we have real work to do..."
 msgstr ""
-" Konrad, şimdi seni deneyim kazanman için daha fazla kukla ile başbaşa "
+"Konrad, şimdi seni deneyim kazanman için daha fazla kukla ile başbaşa "
 "bırakacağım! Asıl işimiz ondan sonra..."
 
 #. [message]: speaker=Delfador
@@ -913,8 +886,8 @@ msgid ""
 "Now, Li’sar, I will leave you with more dummies to practice on! After that, "
 "we have real work to do..."
 msgstr ""
-" Lisar, şimdi deneyim kazanman için seni daha fazla kukla ile başbaşa "
-"bırakacağım! Ondan sonra asıl işlere başlayacağız..."
+"Lisar, şimdi deneyim kazanman için seni daha fazla kukla ile başbaşa "
+"bırakacağım! Asıl işlere ondan sonra başlayacağız..."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1203
@@ -1143,13 +1116,6 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:229
-#, fuzzy
-#| msgid ""
-#| "See this dark blue water? It’s too deep for either side to cross. The "
-#| "orcs could slowly wade through that narrow band of shallow lighter-blue "
-#| "water in the north; but we could stand on the shore and force them to "
-#| "fight us from the water, where they are exposed and we are protected by "
-#| "the forest."
 msgid ""
 "See this dark blue water? It’s too deep for either side to cross. The orcs "
 "could slowly wade through that narrow band of shallow lighter-blue water in "
@@ -1290,12 +1256,6 @@ msgstr "Elf Şaman"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:317
-#, fuzzy
-#| msgid ""
-#| "The Shaman has the ability to <i>heal</i> friendly units around her. She "
-#| "also has a special attack which <i>slows</i> enemies, halving the damage "
-#| "they do for one turn. However, she’s physically weaker than fighters and "
-#| "archers, so be careful when sending her into battle."
 msgid ""
 "The Shaman has the ability to <i>heal</i> friendly units around her. She "
 "also has a special attack which <i>slows</i> enemies, halving the damage "
@@ -1303,7 +1263,7 @@ msgid ""
 "archers, so be careful when sending her into battle."
 msgstr ""
 "Şaman etrafındakileri <i>iyileştirme</i> yeteneğine sahiptir. Ayrıca "
-"düşmanları 1 el boyunca <i>yavaşlat</i>an ve daha az hasar vermelerine sebep "
+"düşmanları 1 el boyunca <i>yavaşlatan</i> ve daha az hasar vermelerine sebep "
 "olan özel bir saldırısı vardır. Ancak, fiziken Savaşçı ve Okçulardan daha "
 "zayıftır, bu bakımdan onu bir çarpışmaya gönderirken dikkatli olun."
 
@@ -1334,25 +1294,11 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:331
-#, fuzzy
-#| msgid "Weapon Specials"
 msgid "Weapon Specials"
 msgstr "Silah Özellikleri"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:333
-#, fuzzy
-#| msgid ""
-#| "Weapon specials are special attack modifiers that make certain attacks "
-#| "more powerful. In this case, the Shaman has the Slows special on her "
-#| "entangle attack. When this attack successfully hits an enemy, it will "
-#| "halve the damage they do for one turn. Other weapon specials include "
-#| "First Strike, which allows that attack to always hit first no matter who "
-#| "attacks first, and Magical, which gives that attack a constant 70% chance "
-#| "to hit.\n"
-#| "\n"
-#| "A full list of abilities and weapons specials, along with traits, may be "
-#| "found in the help (default hotkey: <b>F1</b>)."
 msgid ""
 "Weapon specials are special attack modifiers that make certain attacks more "
 "powerful. In this case, the Shaman has the Slows special on her entangle "
@@ -1547,7 +1493,7 @@ msgid ""
 "scenario begins. You can access it in the <b>Menu</b> menu."
 msgstr ""
 "Durum tablosu tarafların durumlarını ve nelerle başladığını gösterir. Sis ve "
-"örtü bu tabloda gördüğünüz detayları etkiler ve bazen bir taraf saklı "
+"örtü bu tabloda gördüğünüz ayrıntıları etkiler ve bazen bir taraf saklı "
 "olabilir; ancak senaryo başlayınca bu tabloya bakmakta yarar var. <b>Menü</"
 "b> menüsünden ulaşabilirsiniz."
 
@@ -1608,9 +1554,9 @@ msgid ""
 msgstr ""
 "Evet öyle yapabilirsin. Ancak Elflerin (ve orkların.) suda <i>savunma</i>sı "
 "kötüdür. Sığ geçitten yavaş yavaş geçerken korumasız olursun; düşmanın sana "
-"vurma ihtimali %80 olur. Elflerin ormanda savunması iyi diye sana tavsiyem "
-"ağaçlarda kalıp Orklara oradan saldırmak; Savaşçılarının vurulma ihtimali "
-"sadece %40 olur. Okçu ve Şamanlarının ise %30."
+"vurma ihtimali %80 olur. Elflerin ormanda savunması iyi olduğundan sana "
+"tavsiyem ağaçlarda kalıp Orklara oradan saldırmak; Savaşçılarının vurulma "
+"ihtimali sadece %40 olur. Okçu ve Şamanlarının ise %30."
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:609
@@ -1813,11 +1759,6 @@ msgstr ""
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:789
-#, fuzzy
-#| msgid ""
-#| "I hope my units will survive the counter-attack if I can’t take this "
-#| "grunt out this turn. I’d better grab more villages if I can and move "
-#| "everyone closer for next turn."
 msgid ""
 "I hope my units will survive the counter-attack if I can’t take this grunt "
 "out this turn. I’d better grab more villages if I can and move everyone "
@@ -1908,11 +1849,6 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:940
-#, fuzzy
-#| msgid ""
-#| "We need to occupy that village, otherwise they will take it soon! Move a "
-#| "unit into the village to stop the orcs capturing it. Whichever unit you "
-#| "choose will benefit from the village’s healing, too."
 msgid ""
 "We need to occupy that village, otherwise they will take it soon! Move a "
 "unit into the village to stop the orcs capturing it. Whichever unit you "
@@ -1950,11 +1886,11 @@ msgid ""
 "You can hover over the sky image below the minimap on the right to see the "
 "current time of day and who has the advantage."
 msgstr ""
-"Senaryo sırasında, zaman eller bittikçe ilerleyecek. Bir birlik "
-"<i>yönelmesi</i> dört farklı şekilde olabilir : Adil, Tarafsız, Kaypak, veya "
-"İntikali. Günün saatine bağlı olarak her yönelme farklı bir ödül yada ceza "
-"alıcak. Küçük haritanın altındaki gökyüzü simgesinin üzerine gelerek saati "
-"ve o saatte kimin avantajı var öğrenebilirsin."
+"Senaryo sırasında, zaman eller bittikçe ilerleyecek. Birlik <i>uyumu</i> "
+"dört farklı şekilde olabilir : Adil, Tarafsız, Kaypak, veya İntikali. Günün "
+"saatine bağlı olarak her uyum farklı bir ödül yada ceza alacak. Küçük "
+"haritanın altındaki gökyüzü simgesinin üzerine gelerek saati ve o saatte "
+"kimin daha iyi olduğunu öğrenebilirsin."
 
 #. [then]
 #. [else]
@@ -2022,7 +1958,7 @@ msgstr ""
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1021
 msgid "Speeding Up Animations"
-msgstr ""
+msgstr "Canlandırmaları Hızlandır"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1023
@@ -2031,6 +1967,9 @@ msgid ""
 "quicker. The <b>acceleration factor</b> can be set, and turned on by "
 "default, in the <b>Preferences</b> menu’s <b>General</b> tab."
 msgstr ""
+"<b>Shift</b> tuşunu basılı tutmak, hareket ve dövüş canlandırmalarını "
+"hızlandıracaktır. <b>Hızlandırma etkeni</b>, <b>Tercihler</b> menüsünün "
+"<b>Genel</b> sekmesinde ayarlanabilir ve öntanımlı etkin kılınabilir."
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1032
@@ -2173,10 +2112,6 @@ msgstr ""
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1304
-#, fuzzy
-#| msgid ""
-#| "Higher level units are powerful, but not invulnerable. We’ll miss you, "
-#| "$unit.name|."
 msgid ""
 "Higher level units are powerful, but not invulnerable. We’ll miss you, $unit."
 "name|."
@@ -2348,11 +2283,6 @@ msgstr "Aah! Sizi şimdi zafere kim yönlendirecek?"
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1489
-#, fuzzy
-#| msgid ""
-#| "You have beaten the orcs! You may want to try one of the rookie-level "
-#| "campaigns next, which include strategy hints. <i>A Tale of Two Brothers</"
-#| "i> is the easiest and is the recommended first campaign."
 msgid ""
 "You have beaten the orcs! You may want to try one of the rookie-level "
 "campaigns next, which include strategy hints. <i>A Tale of Two Brothers</i> "
@@ -2445,17 +2375,14 @@ msgstr ""
 "alabilirsiniz."
 
 #: data/campaigns/tutorial/utils/utils.cfg:126
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "<big>Click a mouse button or press the spacebar to continue...</big>"
 msgid ""
 "\n"
 "\n"
 "<big>Click a mouse button or press the spacebar to continue...</big>"
 msgstr ""
 "\n"
-"<big>Devam etmek için sol tıklayın veya boşluk tuşuna basın...</big>"
+"\n"
+"<big>Devam etmek için fareye tıklayın veya boşluk tuşuna basın...</big>"
 
 #~ msgid ""
 #~ "Certain unit types have special <i>abilities</i>. Unlike traits, which "

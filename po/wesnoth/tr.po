@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2021-06-23 11:36-0400\n"
-"PO-Revision-Date: 2020-12-14 11:15+0300\n"
+"PO-Revision-Date: 2021-07-01 09:18+0300\n"
 "Last-Translator: Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>\n"
 "Language-Team: Turkish\n"
 "Language: tr\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.8.11\n"
+"X-Generator: Poedit 2.2.1\n"
 
 #. [multiplayer_side]: id=Custom
 #: data/_main.cfg:22
@@ -58,7 +58,7 @@ msgstr "Sıkıştırma yok"
 #. [option]: id=none
 #: data/advanced_preferences.cfg:20
 msgid "save_compression_desc^Large plain text files"
-msgstr "Düz metin dosyası olarak"
+msgstr "Büyük düz metin dosyaları"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:26
@@ -133,16 +133,12 @@ msgstr "Yardım kısmında bütün birim türlerini göster"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:111
-#, fuzzy
-#| msgid ""
-#| "Show all unit types in the help (requires restart). This does not alter "
-#| "the list of encountered units"
 msgid ""
 "Show all unit types in the help (requires restart). If unset, only units "
 "that have been encountered will be shown."
 msgstr ""
 "Yardım kısmında bütün birim türlerini göster (yeniden başlatma gerekir). Bu "
-"karşılaşılmış birimler listesini etkilemez"
+"karşılaşılmış birimler listesini etkilemez."
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:118
@@ -231,7 +227,7 @@ msgstr "Notlar:"
 #. [button]: id=ok
 #: data/campaigns/World_Conquest/gui/help_dialog.cfg:734
 msgid "Close"
-msgstr ""
+msgstr "Kapat"
 
 #. [language]
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:147
@@ -382,10 +378,8 @@ msgstr "Afrikaca Tercüme"
 
 #. [about]
 #: data/core/about_i18n.cfg:26
-#, fuzzy
-#| msgid "Greek Translation"
 msgid "Ancient Greek Translation"
-msgstr "Yunanca Tercüme"
+msgstr "Eski Yunanca Tercüme"
 
 #. [about]
 #: data/core/about_i18n.cfg:34
@@ -2670,6 +2664,15 @@ msgid ""
 "Saadia,Sabiha,Safiya,Sahar,Saida,Sajida,Sakhra,Salma,Samira,Sarah,Shahd,"
 "Shatha,Sherine,Shumaila,Sumaya,Taslima,Umm,Yara,Yasmin,Zahra,Zakiya,Zaynab"
 msgstr ""
+"Abiha,Afaf,Ayşe,Ajda,Aliye,Amire,Aşrakat,Atike,Azra,Büteyna,Buşra,Çayima,"
+"Sintiya,Dalal,Dalya,Elyana,Esma,Feride,Fatma,Feyruz,Habibe,Hafize,Hayra,"
+"Halime,Hamide,Hanife,Havva,Hayat,Hessa,İbtizam,İbtizzam,İnam,Cemile,Cevahir,"
+"Cena,Jumene,Karina,Kerime,Katya,Hediye,Hayrunisa,Hayla,Haylah,Lama,Lamia,"
+"Latife,Leyal,Leyan,Leyla,Lina,Lilya,Mediha,Meha,Mahmune,Maya,Melika,Merve,"
+"Meryem,Maya,Meysun,Melissa,Nadya,Nefise,Nahla,Nayla,Nayat,Nesim,Nesrin,Necla,"
+"Nezha,Nüsha,Kistina,Rahime,Rana,Reşide,Reim,Rukiye,Sadiye,Sabiha,Safiye,"
+"Seher,Saide,Sayide,Sahra,Salme,Semra,Sarah,Şadiye,Şata,Şerine,Hümeyra,Şumeya,"
+"Teslime,Ümmühan,Yara,Yasemin,Zehra,Zekiye,Zeynep"
 
 #. Generator for male dunefolk human names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
 #: data/core/macros/names.cfg:147
@@ -3479,10 +3482,8 @@ msgstr "Altın rengi"
 
 #. [color_range]: id=darkblue
 #: data/core/team-colors.cfg:114
-#, fuzzy
-#| msgid "Dark Red"
 msgid "Dark blue"
-msgstr "Koyu Kırmızı"
+msgstr "Lacivert"
 
 #. [color_range]: id=reef
 #: data/core/team-colors.cfg:123
@@ -3640,21 +3641,14 @@ msgstr ""
 
 #. [language]
 #: data/english.cfg:17
-#, fuzzy
-#| msgid ""
-#| "Lawful units fight better during the day, and worse at night.\n"
-#| "\n"
-#| "Day: +25% Damage\n"
-#| "Night: −25% Damage"
 msgid ""
 "Liminal units fight best during the twilight times of day.\n"
 "\n"
 "Twilight: +25% Damage"
 msgstr ""
-"Adil birimler gündüz daha iyi savaşırken, gece daha kötü savaşırlar.\n"
+"İntikali birimler alacakaranlıkta daha iyi savaşır.\n"
 "\n"
-"Gündüz: +%25 Hasar\n"
-"Gece: -%25 Hasar"
+"Alacakaranık: +%25 Hasar"
 
 #. [naming]
 #. Generator for bridge labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
@@ -4050,27 +4044,20 @@ msgstr "Mağlubiyet:"
 
 #. [lua]: generate_objectives
 #: data/lua/wml/objectives.lua:57
-#, fuzzy
-#| msgid "(this turn left)"
-#| msgid_plural "(%d turns left)"
 msgid "(this turn left)"
 msgid_plural "($remaining_turns turns left)"
 msgstr[0] "(bu son el)"
-msgstr[1] "(%d el kaldı)"
+msgstr[1] "($remaining_turns el kaldı)"
 
 #. [lua]: generate_objectives
 #: data/lua/wml/objectives.lua:119
-#, fuzzy
-#| msgid "%d%% of gold carried over to the next scenario."
 msgid "$percent|% of gold carried over to the next scenario."
-msgstr "%%%d Altın bir sonraki senaryoya geçecek"
+msgstr "$percent|%  altın bir sonraki senaryoya geçecek"
 
 #. [modification]: id=plan_unit_advance
 #: data/modifications.cfg:6
-#, fuzzy
-#| msgid "No advancement"
 msgid "Plan Unit Advance"
-msgstr "Terfi yok"
+msgstr "Brim Terli Planlaması"
 
 #. [modification]: id=plan_unit_advance
 #: data/modifications.cfg:7
@@ -4080,13 +4067,15 @@ msgid ""
 "what your units advance to beforehand, either for a specific unit or for all "
 "units of the same type."
 msgstr ""
+"Çok oyunculu bir oyunda, bir birim karşı oyuncunun oynama sırasında  terfi "
+"ederse birimin terfi edeceği tür ayarlanamaz. Bu değişiklikle belli bir "
+"birimin ya da aynı türdeki tüm birimlerin hangi türe terfi edeceği önceden "
+"belirlenebilir."
 
 #. [checkbox]: id=pickadvance_force_choice
 #: data/modifications.cfg:12
-#, fuzzy
-#| msgid "No advancement"
 msgid "Force advancement planning"
-msgstr "Terfi yok"
+msgstr "Terfi planlamasını etkinleştir"
 
 #. [checkbox]: id=pickadvance_force_choice
 #: data/modifications.cfg:13
@@ -4096,32 +4085,32 @@ msgid ""
 "\n"
 "Some eras and scenarios may automatically enable this option."
 msgstr ""
+"Terfisine önceden karar verilmemiş birimlerin her görünüşünde, terfi türünü "
+"seçmeniz istenecek.\n"
+"\n"
+"Bazı çağlarda ve senaryolarda bu seçenek otomatik olarak etkinleşebilir."
 
 #. [lua]: pickadvance.show_dialog_unsynchronized
 #: data/modifications/pick_advance/dialog.lua:30
 #: data/modifications/pick_advance/main.lua:10
-#, fuzzy
-#| msgid "Advancements:"
 msgid "Plan Advancement"
-msgstr "Terfiler: "
+msgstr "Terfileri Planla"
 
 #. [lua]: pickadvance.show_dialog_unsynchronized
 #: data/modifications/pick_advance/dialog.lua:67
 msgid ""
 "This advancement is currently the default for all units of the same type"
-msgstr ""
+msgstr "Bu terfi aynı türdeki tüm birimler için şimdilik öntanımlıdır."
 
 #. [lua]: pickadvance.show_dialog_unsynchronized
 #: data/modifications/pick_advance/dialog.lua:129
 msgid "Apply to all units of this type"
-msgstr ""
+msgstr "Bu türdeki tüm birimlere uygula"
 
 #. [lua]: pickadvance.show_dialog_unsynchronized
 #: data/modifications/pick_advance/dialog.lua:145
-#, fuzzy
-#| msgid "Saved"
 msgid "Save"
-msgstr "Kaydedildi"
+msgstr "Kaydet"
 
 #. [lua]: pickadvance.show_dialog_unsynchronized
 #: data/modifications/pick_advance/dialog.lua:154
@@ -4130,17 +4119,13 @@ msgstr "İptal"
 
 #. [lua]: preshow
 #: data/modifications/pick_advance/dialog.lua:174
-#, fuzzy
-#| msgid "No advancement"
 msgid "No planned advancement"
-msgstr "Terfi yok"
+msgstr "Planlanmış terfi yok"
 
 #. [action]: id=button-playreplay, type=image
 #: data/themes/_initial.cfg:413
-#, fuzzy
-#| msgid "replay"
 msgid "replay^Play"
-msgstr "tekrar"
+msgstr "Oyna"
 
 #. [action]: id=button-playreplay, type=image
 #: data/themes/_initial.cfg:414 data/themes/_initial.cfg:574
@@ -4149,10 +4134,8 @@ msgstr "sürekli oynatır"
 
 #. [action]: id=button-stopreplay, type=image
 #: data/themes/_initial.cfg:428
-#, fuzzy
-#| msgid "replay"
 msgid "replay^Stop"
-msgstr "tekrar"
+msgstr "Durdur"
 
 #. [action]: id=button-stopreplay, type=image
 #: data/themes/_initial.cfg:429
@@ -4161,10 +4144,8 @@ msgstr "Hamleden sonra dur"
 
 #. [action]: id=button-resetreplay, type=image
 #: data/themes/_initial.cfg:444
-#, fuzzy
-#| msgid "replay"
 msgid "replay^Reset"
-msgstr "tekrar"
+msgstr "Sıfırla"
 
 #. [action]: id=button-resetreplay, type=image
 #: data/themes/_initial.cfg:445 data/themes/_initial.cfg:602
@@ -4229,7 +4210,7 @@ msgstr "Tekrar"
 #. [action]: id=button-playreplay, type=image
 #: data/themes/_initial.cfg:573
 msgid "Play"
-msgstr "Oyun"
+msgstr "Oyna"
 
 #. [action]: id=button-stopreplay, type=image
 #: data/themes/_initial.cfg:587
@@ -4273,10 +4254,8 @@ msgstr "Varsayılan tema"
 
 #. [menu]: id=menu-autosaves
 #: data/themes/default.cfg:92
-#, fuzzy
-#| msgid "End Turn"
 msgid "Load Turn..."
-msgstr "Eli Bitir"
+msgstr "Eli Yükle..."
 
 #. [menu]: id=actions-menu
 #: data/themes/default.cfg:100
@@ -4563,13 +4542,6 @@ msgstr ""
 
 #. [tip]
 #: data/tips.cfg:76
-#, fuzzy
-#| msgid ""
-#| "Poisoned units will lose eight hitpoints every turn until they are one "
-#| "point from dying. They will then remain at death’s door until the poison "
-#| "is removed. Healers can prevent a poisoned unit from deteriorating, but "
-#| "the poison will not be removed unless the unit regenerates, or begins a "
-#| "turn in a village or next to a unit with the <i>Cures</i> ability."
 msgid ""
 "Poisoned units will lose eight hitpoints every turn until they are one point "
 "from dying. They will then remain at death’s door until the poison is "
@@ -4579,9 +4551,9 @@ msgid ""
 msgstr ""
 "Zehirlenen birimler bir yaşam puanları kalana dek her el sekiz puan "
 "kaybederler. Zehir giderilene kadar ölümün eşiğinde kalırlar. Şifacılar "
-"zehrin hasar vermesini engelleyebilir ama zehir; birim yenilenene kadar veya "
+"zehrin hasar vermesini engelleyebilir ama zehir, birim yenilenene kadar veya "
 "ele bir köyde veya <i>Tedavi</i> yeteneği olan bir birimin yanında başlayana "
-"kadar geçmez."
+"kadar temizlenmez."
 
 #. [tip]
 #: data/tips.cfg:80
@@ -4908,8 +4880,8 @@ msgid ""
 "lower-level units instead."
 msgstr ""
 "Yüksek seviyeli birimler, terfi etmek yerine genelde yaşam puanlarını 3 "
-"arttırma ve canını doldurma şeklinde olan, <i>Azami Seviye Sonrası Terfi</i> "
-"(ASST) alabilirler ve bu  bir seviye terfi etmek kadar yarar sağlamaz. Bu "
+"arttırma ve canını doldurma şeklinde olan, <i>Son Seviye Sonrası Terfi</i> "
+"(SSST) alabilirler ve bu bir seviye terfi etmek kadar yarar sağlamaz. Bu "
 "açıdan, genelde daha düşük seviyeden birimleri terfi ettirmeye çalışmak daha "
 "faydalıdır."
 
@@ -4981,31 +4953,19 @@ msgstr ""
 
 #. [tip]
 #: data/tips.cfg:213
-#, fuzzy
-#| msgid ""
-#| "Try to operate units with a small number of powerful attacks—such as Dark "
-#| "Adepts, Horsemen, Orcish Grunts or Dwarvish Thunderers—in pairs or "
-#| "threes. This gives you another try whenever your first devastating attack "
-#| "misses — as inevitably happens from time to time."
 msgid ""
 "Try to operate units with a small number of powerful attacks — such as Dark "
 "Adepts, Horsemen, Orcish Grunts or Dwarvish Thunderers — in pairs or threes. "
 "This gives you another try whenever your first devastating attack misses — "
 "as inevitably happens from time to time."
 msgstr ""
-"Güçlü ama az vuran birimleri—Kara üstat, Binici, Ork İzbandut veya Cüce "
-"Gürleyiciler gibi— çifter veya üçerli olarak kullanın. Böylece biriyle "
-"yaptığınız saldırı başarısız olursa — ki bu kaçınılmazdır — bu size ikinci "
-"bir saldırı şansı verir."
+"Güçlü ama az vuran birimleri — Kara üstat, Binici, Ork İzbandut veya Cüce "
+"Gürleyiciler gibi — çifter veya üçerli olarak kullanın. Böylece biriyle "
+"yaptığınız saldırı başarısız olursa — ki arasıra böyle şeyler olur — bu size "
+"ikinci bir saldırı şansı verir."
 
 #. [tip]
 #: data/tips.cfg:217
-#, fuzzy
-#| msgid ""
-#| "Units with three or more attacks—especially magical attacks—are ideal for "
-#| "finishing off enemies with only a few hitpoints remaining. Be sure to use "
-#| "leadership—or a strong or dextrous unit—whenever the extra point or two "
-#| "of damage makes a one-hit kill possible."
 msgid ""
 "Units with three or more attacks — especially magical attacks — are ideal "
 "for finishing off enemies with only a few hitpoints remaining. Be sure to "
@@ -5013,9 +4973,9 @@ msgid ""
 "two of damage makes a one-hit kill possible."
 msgstr ""
 "3 veya daha fazla vuran birimler—özellikle sihirli vuran— az yaşam puanı "
-"kalmış düşmanları öldürmek için çok uygundur. Bir vuruşta fazladan 1 veya 2 "
-"hasar öldürmeyi sağlıyorsa lideri—veya güçlü veya becerikli birimleri— "
-"kullanmayı unutmayın."
+"kalmış düşmanları öldürmek için çok uygundur. Fazladan 1 veya 2 hasar tek "
+"vuruşta öldürmeyi sağlayacaksa lideri—veya güçlü veya becerikli birimleri— "
+"kullanmalısınız."
 
 #. [tip]
 #: data/tips.cfg:221
@@ -5132,15 +5092,13 @@ msgstr "<i>― Westin'li Sör Gerrick, VY 607</i>"
 #: data/tips.cfg:258
 msgid ""
 "Some types of terrain give unique bonuses, such as healing or illumination."
-msgstr ""
+msgstr "Bazı arazi türlerinin iyileştirme, aydınlatma gibi etkileri vardır."
 
 #. [tip]
 #. Translate the word "Flight" as a collective noun for drakes
 #: data/tips.cfg:260
-#, fuzzy
-#| msgid "<i>― Vank of Galun’s Flight, 6YW</i>"
 msgid "<i>― Galun, Flight Leader, 5YW</i>"
-msgstr "<i>― Galun'un Sürüsünden Vank, VY 6</i>"
+msgstr "<i>― Uçuş Lideri Galun, VY 5</i>"
 
 #. [tip]
 #: data/tips.cfg:263
@@ -5154,10 +5112,8 @@ msgstr ""
 
 #. [tip]
 #: data/tips.cfg:264
-#, fuzzy
-#| msgid "<i>― Lord Hamel of Knalga</i>"
 msgid "<i>― Lord Tallin of Knalga, 538 YW</i>"
-msgstr "<i>— Knalgalı Hamel Bey</i>"
+msgstr "<i>— Knalgalı Talin Bey, VY 538</i>"
 
 #. [tip]
 #: data/tips.cfg:267
@@ -5166,6 +5122,9 @@ msgid ""
 "quicker. The <i>acceleration factor</i> can be set, and turned on by "
 "default, in the <i>Preferences</i> menu’s <i>General</i> tab."
 msgstr ""
+"<b>Shift</b> tuşunu basılı tutarak canlandırmalar ve çarpışma "
+"hızlandırılabilir.  <i>Hızlandırma etkeni</i> <i>Tercihler</i> menüsünün "
+"<i>Genel</i> sekmesinden ayarlanabilir, öntanımlı etkin yapılabilir."
 
 #. [tip]
 #. Translate "Change difficulty" and "Load Game" as in wesnoth-lib textdomain
@@ -5175,6 +5134,9 @@ msgid ""
 "Select the <i>Change difficulty</i> option at the bottom of the <i>Load "
 "Game</i> screen when loading start-of-scenario save files."
 msgstr ""
+"Zorluğu sefeberlik sırasında değiştirebileceğinizi biliyor muydunuz? Ana "
+"ekranda <i>Yükle</i> düğmesiyle açılan pencerede altta bulunan <i>Zorluğu "
+"değiştir</i> seçeneği bunun içindir. "
 
 #. [tip]
 #: data/tips.cfg:277
@@ -5337,16 +5299,12 @@ msgstr ""
 "karakterlerini kullanarak farklılaştırılamaz."
 
 #: src/addon/client.cpp:214
-#, fuzzy
-#| msgid "Requesting distribution terms..."
 msgid "Requesting file index..."
-msgstr "Dağıtım şartları isteniyor..."
+msgstr "Dosya listesi isteniyor..."
 
 #: src/addon/client.cpp:230
-#, fuzzy
-#| msgid "Sending add-on <i>$addon_title</i>..."
 msgid "Sending an update pack for the add-on <i>$addon_title</i>..."
-msgstr "<i>$addon_title</i> eklentisi gönderiliyor..."
+msgstr "<i>$addon_title</i> eklentisi için güncelleme paketi gönderiliyor..."
 
 #: src/addon/client.cpp:251
 msgid "Sending add-on <i>$addon_title</i>..."
@@ -5581,39 +5539,35 @@ msgstr "Eklenti sunucusunda $addon_id ile eşleşen bir eklenti bulunamadı."
 
 #: src/addon/validation.cpp:387
 msgid "Success."
-msgstr ""
+msgstr "Başarılı."
 
 #: src/addon/validation.cpp:391
 msgid "Incorrect add-on passphrase."
-msgstr ""
+msgstr "Eklenti parolası yanlış."
 
 #: src/addon/validation.cpp:395
 msgid "Upload denied. Please contact the server administration for assistance."
-msgstr ""
+msgstr "Karşıya yükleme reddedildi. Destek için sunucu yönetimine başvurun."
 
 #: src/addon/validation.cpp:399
 msgid "Attempted to upload an update pack for a non-existent add-on."
-msgstr ""
+msgstr "Varolmayan bir eklentiye güncelleme paketi yüklenmeye çalışıldı."
 
 #: src/addon/validation.cpp:408
 msgid "No add-on data was supplied by the client."
-msgstr ""
+msgstr "İstemciden eklenti verisi gelmedi."
 
 #: src/addon/validation.cpp:412
-#, fuzzy
-#| msgid "Invalid location"
 msgid "Invalid upload pack."
-msgstr "Geçersiz yer"
+msgstr "Geçersiz güncelleme paketi."
 
 #: src/addon/validation.cpp:416
-#, fuzzy
-#| msgid "Invalid tag name"
 msgid "Invalid add-on name."
-msgstr "Geçersiz etiket adı"
+msgstr "Geçersiz eklenti adı."
 
 #: src/addon/validation.cpp:420
 msgid "Formatting character in add-on name."
-msgstr ""
+msgstr "Eklenti isminde biçemleme karakteri."
 
 #: src/addon/validation.cpp:424
 msgid ""
@@ -5627,100 +5581,99 @@ msgid ""
 "Additionally, names may not be longer than 255 characters, contain '..', or "
 "end with '.'."
 msgstr ""
+"Eklenti geçersiz dosya veya dizin isimleri içeriyor.\n"
+"\n"
+"Boşluk ve denetim karakterleri ile aşağıdaki simgelerin isimlerde "
+"kullanımına izin verilmez:\n"
+"\n"
+"    \" * / : < > ? \\ | ~\n"
+"\n"
+"Bundan başka, isimler 255 karakterden uzun olamaz, '..' içeremez ve  '.'  "
+"ile bitemez,"
 
 #: src/addon/validation.cpp:434
-#, fuzzy
-#| msgid ""
-#| "The add-on <i>$addon_title</i> contains files or directories with case "
-#| "conflicts. File or directory names may not be differently-cased versions "
-#| "of the same string."
 msgid ""
 "The add-on contains files or directories with case conflicts.\n"
 "\n"
 "Names in the same directory may not be differently-cased versions of each "
 "other."
 msgstr ""
-"<i>$addon_title</i> eklentisini Büyük-küçük harf çelişkili dosyalar "
-"içeriyor. Dosya veya dizin adları aynı dizenin farklı büyüklükteki "
-"karakterlerini kullanarak farklılaştırılamaz."
+"Eklenti büyük-küçük harf çelişkili dosya veya dizinler içeriyor.\n"
+"\n"
+"Aynı dizin altındaki dizin/dosya adlarındaki karakterler büyük/küçük "
+"yapılarak bu adlar farklılaştırılamaz."
 
 #: src/addon/validation.cpp:440
 msgid "The add-on name contains an invalid UTF-8 sequence."
-msgstr ""
+msgstr "Eklenti ismi geçersiz UTF-8 karakter içeriyor."
 
 #: src/addon/validation.cpp:449
 msgid "No add-on title specified."
-msgstr ""
+msgstr "Eklenti başlığı belirtilmemiş."
 
 #: src/addon/validation.cpp:453
 msgid "No add-on author/maintainer name specified."
-msgstr ""
+msgstr "Eklenti yazar/sürdürücüsü belirtilmemiş."
 
 #: src/addon/validation.cpp:457
 msgid "No add-on version specified."
-msgstr ""
+msgstr "Eklenti sürümü belirtilmemiş."
 
 #: src/addon/validation.cpp:461
-#, fuzzy
-#| msgid "No description available."
 msgid "No add-on description specified."
-msgstr "Bu konuda bir açıklama yok."
+msgstr "Bu eklenti için bir açıklama yok."
 
 #: src/addon/validation.cpp:465
 msgid "No add-on author/maintainer email specified."
-msgstr ""
+msgstr "Eklenti yazar/sürdürücüsünün eposta adresi belirtilmemiş."
 
 #: src/addon/validation.cpp:469
 msgid "Missing passphrase."
-msgstr ""
+msgstr "Parola eksik."
 
 #: src/addon/validation.cpp:473
 msgid "Formatting character in add-on title."
-msgstr ""
+msgstr "Eklenti başlığında biçemleme karakteri."
 
 #: src/addon/validation.cpp:477
-#, fuzzy
-#| msgid "Invalid unit type"
 msgid "Invalid or unspecified add-on type."
-msgstr "Geçersiz birim türü"
+msgstr "Geçersiz veya belirsiz eklenti türü."
 
 #: src/addon/validation.cpp:481
 msgid "Version number not greater than the latest uploaded version."
-msgstr ""
+msgstr "Sürüm numarası evvelce yüklenen sürümden büyük olmalı."
 
 #: src/addon/validation.cpp:485
 msgid "Feedback topic id is not a number."
-msgstr ""
+msgstr "Geri bildirim konu kimliği bir sayı değil. "
 
 #: src/addon/validation.cpp:489
 msgid "Feedback topic does not exist."
-msgstr ""
+msgstr "Geri bildirim konusu mevcut değil."
 
 #: src/addon/validation.cpp:493
 msgid "The add-on publish information contains an invalid UTF-8 sequence."
-msgstr ""
+msgstr "Eklenti yayınlama bilgisi geçersiz UTF-8 karakter içeriyor."
 
 #: src/addon/validation.cpp:502
 msgid "Unspecified server error."
-msgstr ""
+msgstr "Beklenmedik sunucu hatası."
 
 #: src/addon/validation.cpp:506
 msgid "Server is in read-only mode."
-msgstr ""
+msgstr "Sunucu salt-okunur kipte."
 
 #: src/addon/validation.cpp:510
-#, fuzzy
-#| msgid "You have no add-ons installed."
 msgid "Corrupted server add-ons list."
-msgstr "Kurulu eklenti yok."
+msgstr "Sunucu eklenti listesi bozuk."
 
 #: src/addon/validation.cpp:514
 msgid "Empty add-on version list on the server."
-msgstr ""
+msgstr "Sunucudaki eklenti listesi boş."
 
 #: src/addon/validation.cpp:524
 msgid "Unspecified validation failure."
-msgstr ""
+msgstr "Belirtilmemiş doğrulama hatası. "
 
 #: src/chat_command_handler.cpp:112
 msgid "Added to ignore list: $nick"
@@ -5825,6 +5778,8 @@ msgid ""
 "Send some data to the server. Can be used to verify the network connection "
 "and notice disconnects."
 msgstr ""
+"Sunucuya bir miktar veri gönderir.  Ağ bağlantısını doğrulamak ve kopmaları "
+"bildirmek için kullanılabilir."
 
 #: src/chat_command_handler.hpp:93
 msgid ""
@@ -5843,10 +5798,6 @@ msgid "Send an emotion or personal action in chat."
 msgstr "Sohbette bir duygu veya kişisel eylem gönderir."
 
 #: src/chat_command_handler.hpp:100
-#, fuzzy
-#| msgid ""
-#| "Sends a private message. You cannot send private messages to players in a "
-#| "running game you observe or play in."
 msgid ""
 "Send a private message. You cannot send private messages to players in a "
 "running game you observe or play in."
@@ -5880,11 +5831,12 @@ msgstr "Arkadaşlar veya gözardı listenizden kullanıcı adı siler."
 
 #: src/chat_command_handler.hpp:114
 msgid "<N>"
-msgstr ""
+msgstr "<N>"
 
 #: src/chat_command_handler.hpp:114
 msgid "Get a random number between 1 and N visible in the game setup lobby."
 msgstr ""
+"Oyun kurulum lobisinde görünen 1 ile N arasında rastgele bir sayı alınır. "
 
 #: src/chat_command_handler.hpp:116
 msgid "Display version information."
@@ -6092,11 +6044,11 @@ msgstr ""
 
 #: src/game_config_manager.cpp:530
 msgid "Use [modify_unit_type]\n"
-msgstr ""
+msgstr "Kullan [modify_unit_type]\n"
 
 #: src/game_config_manager.cpp:569
 msgid "instead, use the macro with the same name in the [campaign] tag"
-msgstr ""
+msgstr "bunun yerine [campaign]  etiketinde makro ismini kullan"
 
 #: src/game_config_manager.cpp:620
 msgid "The following add-on had errors and could not be loaded:"
@@ -6314,7 +6266,7 @@ msgstr "$era çağı bulunamıyor"
 
 #: src/game_initialization/multiplayer.cpp:235
 msgid "Invalid address specified for multiplayer server"
-msgstr ""
+msgstr "Çok oyunculu sunucusu için geçersiz adres belirtilmiş."
 
 #: src/game_initialization/multiplayer.cpp:270
 msgid ""
@@ -6346,7 +6298,7 @@ msgstr "Uyarı"
 #: src/game_initialization/multiplayer.cpp:407
 msgid ""
 "The remote server requested a password while using an insecure connection."
-msgstr ""
+msgstr "Uzak sunucu güvensiz bağlantı üzerinden parola isteği yaptı."
 
 #: src/game_initialization/multiplayer.cpp:409
 msgid "You must login first."
@@ -6433,7 +6385,7 @@ msgstr "Çok fazla girme girişiminde bulundunuz."
 
 #: src/game_initialization/multiplayer.cpp:452
 msgid "Password hashing failed."
-msgstr ""
+msgstr "Parola aşlama başarısız oldu."
 
 #: src/game_initialization/playcampaign.cpp:75
 msgid "Scenario Report"
@@ -6629,7 +6581,7 @@ msgstr "Görünür bir taraf bulunamadı."
 
 #: src/gui/dialogs/multiplayer/match_history.cpp:30
 msgid "Match History — $player"
-msgstr ""
+msgstr "Eşleşme Geçmişi — $player"
 
 #: src/gui/dialogs/multiplayer/player_info.cpp:105
 msgid "In game:"
@@ -6774,24 +6726,20 @@ msgid ""
 "This is a group of units, all of whom are <ref>dst='$topic_id' "
 "text='$help_taxonomy'</ref>"
 msgstr ""
+"Bu, tümü <ref>dst='$topic_id' text='$help_taxonomy'</ref> olan bir birim "
+"grubudur."
 
 #: src/help/help_impl.cpp:1080
-#, fuzzy
-#| msgid "<header>text='Units with this ability'</header>"
 msgid "<header>text='Subgroups of units within this group'</header>"
-msgstr "<header>text='Bu yeteneğe sahip birimler'</header>"
+msgstr "<header>text='Bu grubun altındaki birim grupları'</header>"
 
 #: src/help/help_impl.cpp:1082
-#, fuzzy
-#| msgid "<header>text='Units of this race'</header>"
 msgid "<header>text='Groups of units within this race'</header>"
-msgstr "<header>text='Bu ırkın birimleri'</header>"
+msgstr "<header>text='Bu ırkın birim grupları'</header>"
 
 #: src/help/help_impl.cpp:1091
-#, fuzzy
-#| msgid "<header>text='Units of this race'</header>"
 msgid "<header>text='Units of this group'</header>"
-msgstr "<header>text='Bu ırkın birimleri'</header>"
+msgstr "<header>text='Bu grubun birimleri'</header>"
 
 #: src/help/help_impl.cpp:1093
 msgid "<header>text='Units of this race'</header>"
@@ -6977,8 +6925,8 @@ msgid "Error: there’s an unknown unit type on your recruit list: $unknown_ids"
 msgid_plural ""
 "Error: there are several unknown unit types on your recruit list: "
 "$unknown_ids"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Hata: Birim çağırma listenizde bilinmeyen birim tür var."
+msgstr[1] "Hata: Birim çağırma listenizde bilinmeyen birim türleri var."
 
 #: src/menu_events.cpp:274
 msgid "You have no units available to recruit."
@@ -7105,26 +7053,23 @@ msgstr "Bir tarafın denetimini YZ'ya verir veya ondan alır."
 #. which must be a side-number and then optionally one of "on", "off" or "full".
 #. As with the command's name, "on", "off" and "full" are hardcoded, and shouldn't change in the translation.
 #: src/menu_events.cpp:1228
-#, fuzzy
-#| msgid ""
-#| "[<side> [on/off]]\n"
-#| "“on” = enable control by the AI, “off” = side is controlled by the player"
 msgid ""
 "[<side> [on/off/full]]\n"
 "“on” = enable but retain vision, “full” = as if it’s controlled by another "
 "player"
 msgstr ""
-"[<taraf> [on/off]]\n"
-"“on” = denetimi YZ'ye verir, “off” = denetimi oyuncuya verir"
+"[<taraf> [on/off]/full]\n"
+"“on” = etkinleşir ama görüş korunur , “full” = denetim diğer oyuncuya "
+"verilmiş gibi olur"
 
 #: src/menu_events.cpp:1229
 msgid "Change terrain type of current hex"
-msgstr ""
+msgstr "Geçerli altıgenin arazi türünü değiştir"
 
 #. TRANSLATORS: [both|base|overlay] are hardcoded literal arguments and shouldn't be translated.
 #: src/menu_events.cpp:1231
 msgid "<terrain type> [both|base|overlay]"
-msgstr ""
+msgstr "<arazi türü> [both|base|overlay]"
 
 #: src/menu_events.cpp:1232
 msgid "Switch a side to/from idle state."
@@ -7170,10 +7115,8 @@ msgid "Debug layers from terrain under the mouse."
 msgstr "Farenin altındaki arazinin katmanlarını ayıkla."
 
 #: src/menu_events.cpp:1246
-#, fuzzy
-#| msgid "Show fps (Frames Per Second)."
 msgid "Display and log fps (Frames Per Second)."
-msgstr "Saniyedeki kara sayısını gösterir."
+msgstr "Saniyedeki kara sayısını gösterir ve kaydeder."
 
 #: src/menu_events.cpp:1248
 msgid "Save game."
@@ -7372,7 +7315,7 @@ msgstr "Ağdaki ‘$side’ tarafı için droid başarısız."
 msgid ""
 "It is not allowed to change a side from AI to human control when it's not "
 "your turn."
-msgstr ""
+msgstr "Sıranız gelmeden bir tarafı YZ'dan insana çeviremezsiniz."
 
 #: src/menu_events.cpp:1507 src/menu_events.cpp:1563
 msgid "Side '$side' controller is now controlled by: AI."
@@ -7387,33 +7330,27 @@ msgid "Side '$side' controller is now controlled by: human."
 msgstr "'$side' tarafının denetimi artık şunun elinde: insan."
 
 #: src/menu_events.cpp:1525
-#, fuzzy
-#| msgid "Side '$side' is already droided."
 msgid "Side '$side' is already not droided."
-msgstr "'$side' tarafı zaten droidlenmiş."
+msgstr "'$side' tarafı zaten droidlenmemiş."
 
 #: src/menu_events.cpp:1529
 msgid ""
 "It is not allowed to change a side from human to AI control when it's not "
 "your turn."
-msgstr ""
+msgstr "Sıranız gelmeden bir tarafı insandan YZ'ya çeviremezsiniz."
 
 #: src/menu_events.cpp:1539
-#, fuzzy
-#| msgid "Side '$side' controller is now controlled by: AI."
 msgid "Side '$side' controller is now fully controlled by: AI."
-msgstr "'$side' tarafının denetimi artık şunun elinde: YZ."
+msgstr "'$side' tarafının denetimi tamamen artık şunun elinde: YZ."
 
 #: src/menu_events.cpp:1541
-#, fuzzy
-#| msgid "Side '$side' is already droided."
 msgid "Side '$side' is already fully AI controlled."
-msgstr "'$side' tarafı zaten droidlenmiş."
+msgstr "'$side' tarafı zaten tamamen YZ denetiminde."
 
 #: src/menu_events.cpp:1566
 msgid ""
 "Invalid action provided for side '$side'. Valid actions are: on, off, full."
-msgstr ""
+msgstr "'$side' tarafı için geçersiz eylem. Geçerli eylemler: on, off, full."
 
 #: src/menu_events.cpp:1608
 msgid "Can't idle invalid side: '$side'."
@@ -7597,7 +7534,7 @@ msgstr "Hata ayrıntıları:"
 
 #: src/play_controller.cpp:1258
 msgid "Warning: broken campaign branches"
-msgstr ""
+msgstr "Uyarı: Bozuk seferberlik dalları"
 
 #. TRANSLATORS: This is an error that will hopefully only be seen by UMC authors and by players who have already
 #. said "okay" to a "loading saves from an old version might not work" dialog.
@@ -7607,8 +7544,8 @@ msgid ""
 msgid_plural ""
 "Some of the possible next scenarios are missing, you might not be able to "
 "finish this campaign."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Sonraki senaryo eksik, seferberlik bitirilemeyecek."
+msgstr[1] "Sonraki senaryolar eksik, seferberlik bitirilemeyecek."
 
 #: src/play_controller.cpp:1271
 msgid ""
@@ -7618,11 +7555,15 @@ msgid_plural ""
 "Please report the following missing scenarios to the campaign’s author:\n"
 "$unknown_list|"
 msgstr[0] ""
+"Lütfen aşağıdaki eksik senaryoyu seferberlik yazarına bildirin:\n"
+"$unknown_list|"
 msgstr[1] ""
+"Lütfen aşağıdaki eksik senaryoları seferberlik yazarına bildirin:\n"
+"$unknown_list|"
 
 #: src/play_controller.cpp:1275
 msgid "Once this is fixed, you will need to restart this scenario."
-msgstr ""
+msgstr "Bu düzeltilince, bu senaryoyu yeniden başlatmalısınız."
 
 #: src/play_controller.cpp:1455
 msgid "No objectives available"
@@ -7752,10 +7693,8 @@ msgid "Type: "
 msgstr "Tür: "
 
 #: src/reports.cpp:196
-#, fuzzy
-#| msgid "Specials: "
 msgid "Special Notes:"
-msgstr "Özeller: "
+msgstr "Özel Bilgiler:"
 
 #: src/reports.cpp:219
 msgid "Race: "
@@ -7763,7 +7702,7 @@ msgstr "Irk: "
 
 #: src/reports.cpp:238
 msgid "Side: <b>$side_name</b> ($color_name)"
-msgstr ""
+msgstr "Taraf: <b>$side_name</b> ($color_name)"
 
 #: src/reports.cpp:316
 msgid "Trait: "
@@ -7958,13 +7897,11 @@ msgstr[1] "Saldırılar"
 #. TRANSLATORS: This string is shown in the sidebar beneath the word "Attacks" when a unit can attack multiple times per turn
 #: src/reports.cpp:1133
 msgid "Remaining: $left/$max"
-msgstr ""
+msgstr "Kalan: $left/$max"
 
 #: src/reports.cpp:1137
-#, fuzzy
-#| msgid "This is not a multiplayer save."
 msgid "This unit can attack multiple times per turn."
-msgstr "Bu çok oyunculu bir oyun kaydı değil."
+msgstr "Bu birim bir elde birden fazla saldırı yapabilir."
 
 #: src/reports.cpp:1229
 msgid "Time of day schedule:"
@@ -8121,6 +8058,20 @@ msgid ""
 "\n"
 "Do you wish to continue?"
 msgstr ""
+"Bu kayıt oyunun farklı bir sürümüne ait ($version_number|), bu sürümde "
+"çalışmayabilir.\n"
+"\n"
+"<b>Uyarı:</b> Seferberlik ortalarında yapılan kayıtların başarısız olma "
+"olasılığı yüksektir. Ya eski sürümü kullanmalı ya da seferberliği yeniden "
+"başlatmalısınız. Kaydedilmiş bir oyun başarıyla yükleniyor gibi görünse "
+"bile, oyun dengesi ve hikaye ilerlemesi gibi daha incelikli özellikler "
+"etkilenebilir. Zorluk, meydan okuma, <i>eğlence</i> eksik olabilir. \n"
+"\n"
+"Örneğin, seferberlik ilk senaryolarda daha az düşmanla yeniden "
+"dengelenebilir, ancak geri çağırma listeniz sonraki senaryolarda buna bağlı "
+"olarak daha az deneyimli olacaktır.\n"
+"\n"
+"Devam etmek istiyor musunuz?"
 
 #: src/savegame.cpp:274 src/savegame.cpp:320
 msgid "Load Game"
@@ -8157,6 +8108,9 @@ msgid ""
 "following characters:\n"
 "    \" * / : < > ? \\ | ~"
 msgstr ""
+"Oyunu kayedederken kullanacağınız isim bir nokta ile bitemez, aşağıdaki "
+"karakterleri ve iki nokta yanyana içeremez.\n"
+"    \" * / : < > ? \\ | ~"
 
 #: src/savegame.cpp:490
 msgid "Saved"
@@ -8379,7 +8333,7 @@ msgstr "girdi"
 #. Translate the quotation marks only; leave "color_id" untranslated, as it's a variable name.
 #: src/team.cpp:1006
 msgid "“$color_id”"
-msgstr ""
+msgstr "“$color_id”"
 
 #: src/terrain/terrain.cpp:192
 msgid "Allied village"
