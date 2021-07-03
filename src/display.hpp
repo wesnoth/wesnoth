@@ -193,6 +193,7 @@ public:
 	 * Used for special effects like flashes.
 	 */
 	void adjust_color_overlay(int r, int g, int b);
+	tod_color get_color_overlay() const { return color_adjust_; }
 
 
 	/** Gets the underlying screen object. */
