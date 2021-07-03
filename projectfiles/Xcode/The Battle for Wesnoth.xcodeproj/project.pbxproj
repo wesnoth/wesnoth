@@ -1287,6 +1287,7 @@
 		EC84246D18F30D9100FC1EEF /* synced_commands.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC84246218F30D9100FC1EEF /* synced_commands.cpp */; };
 		EC84246E18F30D9100FC1EEF /* synced_context.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC84246418F30D9100FC1EEF /* synced_context.cpp */; };
 		EC84247118F30DB700FC1EEF /* exception.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC84246F18F30DB700FC1EEF /* exception.cpp */; };
+		EC86E1F42691568200209B49 /* migrate_version_selection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC86E1F32691568200209B49 /* migrate_version_selection.cpp */; };
 		ECA1E0F21A1271AC00426E00 /* lua_gui2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECA1E0F11A1271AC00426E00 /* lua_gui2.cpp */; };
 		ECA1E1011A12755B00426E00 /* mapgen_lua_kernel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECA1E1001A12755B00426E00 /* mapgen_lua_kernel.cpp */; };
 		ECA4A67B1A1EC319006BCCF2 /* lua_fileops.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECA4A6781A1EC319006BCCF2 /* lua_fileops.cpp */; };
@@ -2689,6 +2690,7 @@
 		EC84246518F30D9100FC1EEF /* synced_context.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = synced_context.hpp; sourceTree = "<group>"; };
 		EC84246F18F30DB700FC1EEF /* exception.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = exception.cpp; sourceTree = "<group>"; };
 		EC84247018F30DB700FC1EEF /* exception.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = exception.hpp; sourceTree = "<group>"; };
+		EC86E1F32691568200209B49 /* migrate_version_selection.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = migrate_version_selection.cpp; sourceTree = "<group>"; };
 		EC89A1061879D17D00A3B0B1 /* lapi.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lapi.cpp; sourceTree = "<group>"; };
 		EC89A1071879D17D00A3B0B1 /* lauxlib.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lauxlib.cpp; sourceTree = "<group>"; };
 		EC89A1081879D17D00A3B0B1 /* lbaselib.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lbaselib.cpp; sourceTree = "<group>"; };
@@ -3586,6 +3588,7 @@
 				46F92CB02174F6A300602C1C /* lua_interpreter.hpp */,
 				46F92C662174F6A300602C1C /* message.cpp */,
 				46F92CF42174F6A300602C1C /* message.hpp */,
+				EC86E1F32691568200209B49 /* migrate_version_selection.cpp */,
 				46F92C752174F6A300602C1C /* modal_dialog.cpp */,
 				46F92C902174F6A300602C1C /* modal_dialog.hpp */,
 				46F92C722174F6A300602C1C /* modeless_dialog.cpp */,
@@ -5139,6 +5142,7 @@
 				46F92E252174F6A400602C1C /* faction_select.cpp in Sources */,
 				F4D2DECB14DCA1D000CAFF31 /* client.cpp in Sources */,
 				EC49A38219F34F1200E78528 /* clipboard.cpp in Sources */,
+				EC86E1F42691568200209B49 /* migrate_version_selection.cpp in Sources */,
 				EC179B891E91475300B4178C /* variant_value.cpp in Sources */,
 				B5599B7E0EC62181008DD061 /* color_range.cpp in Sources */,
 				ECFA82E3184E59F3006782FB /* command_executor.cpp in Sources */,

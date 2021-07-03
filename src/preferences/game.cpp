@@ -73,6 +73,53 @@ namespace preferences
 manager::manager()
 	: base()
 {
+	load_game_prefs();
+}
+
+manager::~manager()
+{
+	config campaigns;
+	for(const auto& elem : completed_campaigns) {
+		config cmp;
+		cmp["name"] = elem.first;
+		cmp["difficulty_levels"] = utils::join(elem.second);
+		campaigns.add_child("campaign", cmp);
+	}
+
+	preferences::set_child("completed_campaigns", campaigns);
+
+	preferences::set("encountered_units", utils::join(encountered_units_set));
+	t_translation::ter_list terrain(encountered_terrains_set.begin(), encountered_terrains_set.end());
+	preferences::set("encountered_terrain_list", t_translation::write_list(terrain));
+
+	/* Structure of the history
+		[history]
+			[history_id]
+				[line]
+					message = foobar
+				[/line]
+	*/
+	config history;
+	for(const auto& history_id : history_map) {
+		config history_id_cfg; // [history_id]
+		for(const std::string& line : history_id.second) {
+			config cfg; // [line]
+
+			cfg["message"] = line;
+			history_id_cfg.add_child("line", std::move(cfg));
+		}
+
+		history.add_child(history_id.first, history_id_cfg);
+	}
+	preferences::set_child("history", history);
+
+	history_map.clear();
+	encountered_units_set.clear();
+	encountered_terrains_set.clear();
+}
+
+void load_game_prefs()
+{
 	set_music_volume(music_volume());
 	set_sound_volume(sound_volume());
 
@@ -127,48 +174,6 @@ manager::manager()
 			}
 		}
 	}
-}
-
-manager::~manager()
-{
-	config campaigns;
-	for(const auto& elem : completed_campaigns) {
-		config cmp;
-		cmp["name"] = elem.first;
-		cmp["difficulty_levels"] = utils::join(elem.second);
-		campaigns.add_child("campaign", cmp);
-	}
-
-	preferences::set_child("completed_campaigns", campaigns);
-
-	preferences::set("encountered_units", utils::join(encountered_units_set));
-	t_translation::ter_list terrain(encountered_terrains_set.begin(), encountered_terrains_set.end());
-	preferences::set("encountered_terrain_list", t_translation::write_list(terrain));
-
-	/* Structure of the history
-		[history]
-			[history_id]
-				[line]
-					message = foobar
-				[/line]
-	*/
-	config history;
-	for(const auto& history_id : history_map) {
-		config history_id_cfg; // [history_id]
-		for(const std::string& line : history_id.second) {
-			config cfg; // [line]
-
-			cfg["message"] = line;
-			history_id_cfg.add_child("line", std::move(cfg));
-		}
-
-		history.add_child(history_id.first, history_id_cfg);
-	}
-	preferences::set_child("history", history);
-
-	history_map.clear();
-	encountered_units_set.clear();
-	encountered_terrains_set.clear();
 }
 
 static void load_acquaintances()

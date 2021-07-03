@@ -27,6 +27,7 @@
 #include <vector>
 
 #include "exceptions.hpp"
+#include "game_version.hpp"
 
 class config;
 class game_config_view;
@@ -121,14 +122,15 @@ static const blacklist_pattern_list default_blacklist{
 };
 
 /**
- * Populates 'files' with all the files and
- * 'dirs' with all the directories in dir.
- * If files or dirs are nullptr they will not be used.
+ * Get a list of all files and/or directories in a given directory.
  *
- * mode: determines whether the entire path or just the filename is retrieved.
- * filter: determines if we skip images and sounds directories
- * reorder: triggers the special handling of _main.cfg and _final.cfg
- * checksum: can be used to store checksum info
+ * @param dir The directory to examine.
+ * @param[out] files The files in @a dir. Won't be used if nullptr.
+ * @param[out] dirs The directories in @a dir. Won't be used if nullptr.
+ * @param mode Determines whether the entire path or just the filename is retrieved.
+ * @param filter Determines if we skip images and sounds directories.
+ * @param reorder Triggers the special handling of _main.cfg and _final.cfg.
+ * @param[out] checksum Can be used to store checksum info.
  */
 void get_files_in_dir(const std::string &dir,
                       std::vector<std::string>* files,
@@ -149,6 +151,8 @@ std::string get_saves_dir();
 std::string get_intl_dir();
 std::string get_screenshot_dir();
 std::string get_addons_dir();
+const std::string get_version_path_suffix(const version_info& version);
+const std::string& get_version_path_suffix();
 
 /**
  * Get the next free filename using "name + number (3 digits) + extension"
@@ -208,6 +212,13 @@ filesystem::scoped_istream istream_file(const std::string& fname, bool treat_fai
 filesystem::scoped_ostream ostream_file(const std::string& fname, std::ios_base::openmode mode = std::ios_base::binary, bool create_directory = true);
 /** Throws io_exception if an error occurs. */
 void write_file(const std::string& fname, const std::string& data);
+/**
+ * Read a file and then writes it back out.
+ *
+ * @param src The source file.
+ * @param dest The destination of the copied file.
+ */
+void copy_file(const std::string& src, const std::string& dest);
 
 std::string read_map(const std::string& name);
 

@@ -63,6 +63,7 @@ namespace preferences {
 	void disable_preferences_save();
 
 	config* get_prefs();
+	void load_base_prefs();
 
 	std::string core_id();
 	void set_core_id(const std::string& root);
