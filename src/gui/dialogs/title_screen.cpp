@@ -32,6 +32,7 @@
 #include "gui/dialogs/language_selection.hpp"
 #include "gui/dialogs/lua_interpreter.hpp"
 #include "gui/dialogs/message.hpp"
+#include "gui/dialogs/migrate_version_selection.hpp"
 #include "gui/dialogs/multiplayer/mp_host_game_prompt.hpp"
 #include "gui/dialogs/multiplayer/mp_method_selection.hpp"
 #include "gui/dialogs/preferences_dialog.hpp"
@@ -338,6 +339,12 @@ void title_screen::pre_show(window& win)
 	auto clock = find_widget<button>(&win, "clock", false, false);
 	if(clock) {
 		clock->set_visible(show_debug_clock_button ? widget::visibility::visible : widget::visibility::invisible);
+	}
+
+	// if the userdata directories were created fresh when wesnoth started this time
+	// then check for any migration from a previous version
+	if(game_config::did_userdata_setup) {
+		gui2::dialogs::migrate_version_selection::execute();
 	}
 }
 

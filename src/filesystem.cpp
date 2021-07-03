@@ -568,6 +568,9 @@ static void setup_user_data_dir()
 #if defined(__APPLE__) && !defined(__IPHONEOS__)
 	migrate_apple_config_directory_for_unsandboxed_builds();
 #endif
+	if(!file_exists(user_data_dir)) {
+		game_config::did_userdata_setup = true;
+	}
 
 	if(!create_directory_if_missing_recursive(user_data_dir)) {
 		ERR_FS << "could not open or create user data directory at " << user_data_dir.string() << '\n';
@@ -1078,6 +1081,11 @@ void write_file(const std::string& fname, const std::string& data)
 			throw io_exception("Error writing to file: '" + fname + "'");
 		}
 	}
+}
+
+void copy_file(const std::string& src, const std::string& dest)
+{
+	write_file(dest, read_file(src));
 }
 
 bool create_directory_if_missing(const std::string& dirname)
