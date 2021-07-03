@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2021-06-23 11:36-0400\n"
-"PO-Revision-Date: 2020-12-28 11:24-0300\n"
+"PO-Revision-Date: 2021-06-27 16:05-0300\n"
 "Last-Translator: Andrei Machado <andreisp.machado@yahoo.com>\n"
 "Language-Team: Portuguese - Brasil\n"
 "Language: pt_BR\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 2.4.2\n"
+"X-Generator: Poedit 2.4.3\n"
 
 #
 # File: src/menu_events.cpp, line: 3119
@@ -620,10 +620,8 @@ msgstr "Tradução para o Africâner"
 # File: data/core/about.cfg, line: 2071
 #. [about]
 #: data/core/about_i18n.cfg:26
-#, fuzzy
-#| msgid "Greek Translation"
 msgid "Ancient Greek Translation"
-msgstr "Tradução para o Grego"
+msgstr "Tradução para o Grego Antigo"
 
 #
 # File: data/core/about.cfg, line: 1337
@@ -3613,6 +3611,15 @@ msgid ""
 "Saadia,Sabiha,Safiya,Sahar,Saida,Sajida,Sakhra,Salma,Samira,Sarah,Shahd,"
 "Shatha,Sherine,Shumaila,Sumaya,Taslima,Umm,Yara,Yasmin,Zahra,Zakiya,Zaynab"
 msgstr ""
+"Abiha,Afaf,A'isha,Ajda,Aliya,Amira,Ashraqat,Atikah,Azra,Boutheina,Bushra,"
+"Chaima,Cynthia,Dalal,Dalia,Eliana,Esma,Farida,Fatima,Feyrouz,Habiba,Hafsa,"
+"Hajra,Halima,Hamida,Hanifa,Havva,Hayat,Hessa,Ibtisam,Ibtissam,Inaam,Jamila,"
+"Jawahir,Jena,Jumana,Kareena,Karima,Katya,Khadija,Khairunnisa,Khawla,Khawlah,"
+"Lama,Lamia,Latifa,Layal,Layan,Leila,Lina,Lulwa,Madiha,Maha,Mahmuna,Mai,"
+"Malika,Marwa,Maryam,Maya,Maysoon,Melissa,Nadia,Nafisa,Nahla,Naila,Najat,"
+"Nasim,Nasrin,Nejla,Nezha,Niusha,Qistina,Rahima,Rana,Rashida,Reem,Ruqayya,"
+"Saadia,Sabiha,Safiya,Sahar,Saida,Sajida,Sakhra,Salma,Samira,Sarah,Shahd,"
+"Shatha,Sherine,Shumaila,Sumaya,Taslima,Umm,Yara,Yasmin,Zahra,Zakiya,Zaynab"
 
 #. Generator for male dunefolk human names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
 #: data/core/macros/names.cfg:147
@@ -4583,10 +4590,8 @@ msgstr "Dourado"
 # File: data/core/team-colors.cfg, line: 26
 #. [color_range]: id=darkblue
 #: data/core/team-colors.cfg:114
-#, fuzzy
-#| msgid "Dark Red"
 msgid "Dark blue"
-msgstr "Vermelho Escuro"
+msgstr "Azul Escuro"
 
 #. [color_range]: id=reef
 #: data/core/team-colors.cfg:123
@@ -5691,10 +5696,8 @@ msgstr "O tema padrão"
 # File: src/multiplayer_create.cpp, line: 126
 #. [menu]: id=menu-autosaves
 #: data/themes/default.cfg:92
-#, fuzzy
-#| msgid "Load Game..."
 msgid "Load Turn..."
-msgstr "Carregar Jogo..."
+msgstr "Carregar Turno..."
 
 #
 # File: data/themes/default.cfg, line: 123
@@ -7184,10 +7187,8 @@ msgstr ""
 # File: data/hardwired/tips.cfg, line: 233
 #. [tip]
 #: data/tips.cfg:264
-#, fuzzy
-#| msgid "<i>― Lord Hamel of Knalga</i>"
 msgid "<i>― Lord Tallin of Knalga, 538 YW</i>"
-msgstr "<i>― Lorde Hamel de Knalga</i>"
+msgstr "<i>― Lorde Tallin de Knalga, 538 YW</i>"
 
 #. [tip]
 #: data/tips.cfg:267
@@ -7974,10 +7975,8 @@ msgstr "Local inválido"
 # File: src/serialization/parser.cpp, line: 170
 # File: src/serialization/parser.cpp, line: 218
 #: src/addon/validation.cpp:416
-#, fuzzy
-#| msgid "Invalid tag name"
 msgid "Invalid add-on name."
-msgstr "Nome de tag inválido"
+msgstr "Nome de add-on inválido."
 
 #: src/addon/validation.cpp:420
 msgid "Formatting character in add-on name."
@@ -8378,10 +8377,6 @@ msgstr "Envia uma ação cpessoal ou um emoticon no chat."
 # File: src/menu_events.cpp, line: 1783
 # File: src/menu_events.cpp, line: 1783
 #: src/chat_command_handler.hpp:100
-#, fuzzy
-#| msgid ""
-#| "Sends a private message. You cannot send private messages to players in a "
-#| "running game you observe or play in."
 msgid ""
 "Send a private message. You cannot send private messages to players in a "
 "running game you observe or play in."
@@ -10164,22 +10159,16 @@ msgid ""
 msgstr ""
 
 #: src/help/help_impl.cpp:1080
-#, fuzzy
-#| msgid "<header>text='Units with this ability'</header>"
 msgid "<header>text='Subgroups of units within this group'</header>"
-msgstr "<header>text='Units com esta habilidade'</header>"
+msgstr "<header>text=\"Subgrupos de unidades dentro desta raça\"</header>"
 
 #: src/help/help_impl.cpp:1082
-#, fuzzy
-#| msgid "<header>text='Units of this race'</header>"
 msgid "<header>text='Groups of units within this race'</header>"
-msgstr "<header>text='Unidades desta raça'</header>"
+msgstr "<header>text=\"Grupos de unidades dentro desta raça\"</header>"
 
 #: src/help/help_impl.cpp:1091
-#, fuzzy
-#| msgid "<header>text='Units of this race'</header>"
 msgid "<header>text='Units of this group'</header>"
-msgstr "<header>text='Unidades desta raça'</header>"
+msgstr "<header>text=\"Unidades deste grupo\"</header>"
 
 #: src/help/help_impl.cpp:1093
 msgid "<header>text='Units of this race'</header>"
@@ -10725,7 +10714,7 @@ msgstr ""
 #. TRANSLATORS: [both|base|overlay] are hardcoded literal arguments and shouldn't be translated.
 #: src/menu_events.cpp:1231
 msgid "<terrain type> [both|base|overlay]"
-msgstr ""
+msgstr "<tipo do terreno> [both|base|overlay]"
 
 #
 # File: src/menu_events.cpp, line: 1963
@@ -11811,10 +11800,8 @@ msgstr "Tipo: "
 # File: src/reports.cpp, line: 713
 # File: src/reports.cpp, line: 713
 #: src/reports.cpp:196
-#, fuzzy
-#| msgid "Specials: "
 msgid "Special Notes:"
-msgstr "Efeitos: "
+msgstr "Notas Especiais:"
 
 #
 # File: src/reports.cpp, line: 198
@@ -12231,10 +12218,8 @@ msgstr ""
 # File: src/savegame.cpp, line: 739
 # File: src/savegame.cpp, line: 739
 #: src/reports.cpp:1137
-#, fuzzy
-#| msgid "This is not a multiplayer save."
 msgid "This unit can attack multiple times per turn."
-msgstr "Este não é um save de multiplayer."
+msgstr "Esta unidade consegue atacar múltiplas vezes por turno."
 
 #
 # File: src/reports.cpp, line: 689
@@ -13006,7 +12991,7 @@ msgstr "input"
 #. Translate the quotation marks only; leave "color_id" untranslated, as it's a variable name.
 #: src/team.cpp:1006
 msgid "“$color_id”"
-msgstr ""
+msgstr "“$color_id”"
 
 #
 # File: src/terrain.cpp, line: 163
@@ -13383,23 +13368,28 @@ msgstr "Esconder planos para $player"
 msgid "Whiteboard Options"
 msgstr "Opções do Quadro-Branco"
 
+#~ msgid "Entropy"
+#~ msgstr "entropia"
+
+#~ msgid "drains 20%"
+#~ msgstr "dreno 20%"
+
+#~ msgid "sacrifice 5"
+#~ msgstr "sacrifício 5"
+
 #
 # File: src/statistics_dialog.cpp, line: 284
 # File: src/statistics_dialog.cpp, line: 284
 # File: src/statistics_dialog.cpp, line: 284
-#, fuzzy
-#~| msgid "Overall"
 #~ msgid "feral"
-#~ msgstr "Geral"
+#~ msgstr "selvagem"
 
 #
 # File: src/unit_types.cpp, line: 819
 # File: src/unit_types.cpp, line: 819
 # File: src/unit_types.cpp, line: 819
-#, fuzzy
-#~| msgid "female^neutral"
 #~ msgid "female^feral"
-#~ msgstr "neutra"
+#~ msgstr "selvagem"
 
 #
 # File: data/lua/wml-tags.lua, line: 11451
@@ -13429,6 +13419,9 @@ msgstr "Opções do Quadro-Branco"
 #~ msgid "female^darkens"
 #~ msgstr "curada"
 
+#~ msgid "Sacrifice"
+#~ msgstr "Sacrifício"
+
 #
 # File: src/reports.cpp, line: 320
 # File: src/reports.cpp, line: 320
@@ -13456,14 +13449,28 @@ msgstr "Opções do Quadro-Branco"
 #~ msgid "Jamming Orc"
 #~ msgstr "Interferencia:"
 
+#~ msgid "BUG: This message should never be displayed!"
+#~ msgstr "BUG: Esta mensagem jamais deveria aparecer!"
+
+#~ msgid "Hero or not?"
+#~ msgstr "Herói ou não?"
+
+#, fuzzy
+#~ msgid "Toggle the hero status."
+#~ msgstr "Alterna o "
+
+#~ msgid "I am no longer a hero!"
+#~ msgstr "Eu não sou mais um herói!"
+
+#~ msgid "I am now a hero!"
+#~ msgstr "Agora eu sou um herói!"
+
 #
 # File: src/reports.cpp, line: 560
 # File: src/reports.cpp, line: 560
 # File: src/reports.cpp, line: 560
-#, fuzzy
-#~| msgid "Vision Cost"
 #~ msgid "Vision Test"
-#~ msgstr "Custo de Visão"
+#~ msgstr "Teste de Visão"
 
 #
 # File: data/core/macros/ai_controller.cfg, line: 474
@@ -13501,11 +13508,17 @@ msgstr "Opções do Quadro-Branco"
 #~ msgid "Teleporters deactivated"
 #~ msgstr "Modo debug desativado!"
 
+#~ msgid "Rithrandil"
+#~ msgstr "Rithrandil"
+
 #~ msgid "aura of death ("
 #~ msgstr "aura de morte ("
 
 #~ msgid "female^aura of death ("
 #~ msgstr "aura da morte ("
+
+#~ msgid "drains 100%"
+#~ msgstr "dreno 100%"
 
 #
 # File: src/menu_events.cpp, line: 3119
@@ -13532,10 +13545,17 @@ msgstr "Opções do Quadro-Branco"
 # File: src/unit_types.cpp, line: 818
 # File: src/unit_types.cpp, line: 818
 # File: src/unit_types.cpp, line: 818
-#, fuzzy
-#~| msgid "neutral"
 #~ msgid "Neutral"
-#~ msgstr "neutro"
+#~ msgstr "Neutro"
+
+#~ msgid "lightning"
+#~ msgstr "relâmpago"
+
+#~ msgid "Calculate unit worth"
+#~ msgstr "Calculando ovalorda unidade"
+
+#~ msgid "Lua"
+#~ msgstr "Lua"
 
 #
 # File: src/addon/manager_ui.cpp, line: 701
@@ -13633,10 +13653,8 @@ msgstr "Opções do Quadro-Branco"
 # File: data/core/macros/items.cfg, line: 270
 # File: data/core/macros/items.cfg, line: 270
 # File: data/core/macros/items.cfg, line: 270
-#, fuzzy
-#~| msgid "Holy Water"
 #~ msgid "Water"
-#~ msgstr "Água Benta"
+#~ msgstr "Água"
 
 #
 # File: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg, line: 311
@@ -13648,10 +13666,11 @@ msgstr "Opções do Quadro-Branco"
 # File: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg, line: 311
 # File: data/lua/wml-tags.lua, line: 1116
 # File: src/actions/attack.cpp, line: 800
-#, fuzzy
-#~| msgid "poisoned"
 #~ msgid "poison"
-#~ msgstr "envenenado"
+#~ msgstr "Veneno"
+
+#~ msgid "Manual"
+#~ msgstr "Manual"
 
 #, fuzzy
 #~| msgid "Northerners"
@@ -13662,6 +13681,15 @@ msgstr "Opções do Quadro-Branco"
 #~| msgid "Lato Light"
 #~ msgid "Let’s fight"
 #~ msgstr "Lato Light"
+
+#~ msgid "Open, Sesame!"
+#~ msgstr "Abra-te Sésamo!"
+
+#~ msgid "Torches, attack!"
+#~ msgstr "Tochas, ataque!"
+
+#~ msgid "Math test"
+#~ msgstr "Teste de matemática"
 
 #
 # File: src/dialogs.cpp, line: 850
@@ -13699,10 +13727,8 @@ msgstr "Opções do Quadro-Branco"
 # File: src/multiplayer.cpp, line: 258
 # File: src/multiplayer.cpp, line: 258
 # File: src/multiplayer.cpp, line: 258
-#, fuzzy
-#~| msgid "Warning"
 #~ msgid "Win"
-#~ msgstr "Atenção"
+#~ msgstr "Vencer"
 
 #
 # File: src/savegame.cpp, line: 739
@@ -13730,6 +13756,9 @@ msgstr "Opções do Quadro-Branco"
 #~ msgid "Perform Calculation"
 #~ msgstr "Cálculo de Danos"
 
+#~ msgid "Formula="
+#~ msgstr "Fórmula="
+
 #, fuzzy
 #~| msgid "Summoning Circle"
 #~ msgid "Summon Troll"
@@ -13752,6 +13781,9 @@ msgstr "Opções do Quadro-Branco"
 #~ msgid "Dismiss Troll"
 #~ msgstr "Despedir Unidade"
 
+#~ msgid "100 XP"
+#~ msgstr "100 XP"
+
 #
 # File: data/core/macros/items.cfg, line: 544
 # File: data/core/macros/items.cfg, line: 544
@@ -13765,9 +13797,8 @@ msgstr "Opções do Quadro-Branco"
 # File: src/multiplayer_create.cpp, line: 99
 # File: src/multiplayer_create.cpp, line: 99
 # File: src/multiplayer_create.cpp, line: 99
-#, fuzzy
 #~ msgid "promotions"
-#~ msgstr "Configurações..."
+#~ msgstr "promoções"
 
 #
 # File: src/playmp_controller.cpp, line: 96
@@ -13817,6 +13848,9 @@ msgstr "Opções do Quadro-Branco"
 #~ msgid "Shrouded label"
 #~ msgstr "Escuridão"
 
+#~ msgid "Urug-Telfar"
+#~ msgstr "Urug-Telfar"
+
 #
 # File: src/leader_scroll_dialog.cpp, line: 164
 # File: src/menu_events.cpp, line: 303
@@ -13824,24 +13858,24 @@ msgstr "Opções do Quadro-Branco"
 # File: src/menu_events.cpp, line: 303
 # File: src/leader_scroll_dialog.cpp, line: 164
 # File: src/menu_events.cpp, line: 303
-#, fuzzy
-#~| msgid "More >"
 #~ msgid "More red!"
-#~ msgstr "Mais >"
+#~ msgstr "Mais vermelho!"
 
-#, fuzzy
-#~| msgid "Bright green"
 #~ msgid "More green!"
-#~ msgstr "Verde claro"
+#~ msgstr "Mais verde!"
 
 #
 # File: data/core/team-colors.cfg, line: 26
 # File: data/core/team-colors.cfg, line: 26
 # File: data/core/team-colors.cfg, line: 26
-#, fuzzy
-#~| msgid "Dark Red"
 #~ msgid "More blue!"
-#~ msgstr "Vermelho Escuro"
+#~ msgstr "Mais azul!"
+
+#~ msgid "Other team"
+#~ msgstr "Outro time"
+
+#~ msgid "Psychedellic!"
+#~ msgstr "Psicodélico!"
 
 #
 # File: data/themes/default.cfg, line: 112
@@ -13856,10 +13890,8 @@ msgstr "Opções do Quadro-Branco"
 # File: data/themes/dfool.cfg, line: 131
 # File: data/themes/experimental.cfg, line: 93
 # File: data/themes/widescreen.cfg, line: 137
-#, fuzzy
-#~| msgid "Menu"
 #~ msgid "Menu 1"
-#~ msgstr "Menu"
+#~ msgstr "Menu 1"
 
 #
 # File: data/themes/default.cfg, line: 112
@@ -13874,10 +13906,14 @@ msgstr "Opções do Quadro-Branco"
 # File: data/themes/dfool.cfg, line: 131
 # File: data/themes/experimental.cfg, line: 93
 # File: data/themes/widescreen.cfg, line: 137
-#, fuzzy
-#~| msgid "Menu"
 #~ msgid "Menu 2"
-#~ msgstr "Menu"
+#~ msgstr "Menu 2"
+
+#~ msgid "menu 3"
+#~ msgstr "menu 3"
+
+#~ msgid "menu 4"
+#~ msgstr "menu 4"
 
 #
 # File: data/scenario-test.cfg, line: 3670
