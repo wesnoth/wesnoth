@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2021-06-23 11:42-0400\n"
-"PO-Revision-Date: 2021-06-08 13:30+0200\n"
+"PO-Revision-Date: 2021-06-25 13:19+0200\n"
 "Last-Translator: Pepe <donpepe1963@gmail.com>\n"
 "Language-Team: Spanish <kde-i18n-doc@kde.org>\n"
 "Language: es\n"
@@ -272,10 +272,8 @@ msgstr "Adoquines con maleza"
 
 #. [terrain_type]: id=road_icy
 #: data/core/terrain.cfg:271
-#, fuzzy
-#| msgid "Clean Gray Cobbles"
 msgid "Icy Cobbles"
-msgstr "Adoquines limpios grises"
+msgstr "Adoquines con hielo"
 
 #. [terrain_type]: id=ice
 #: data/core/terrain.cfg:284
@@ -473,10 +471,8 @@ msgstr "Gran árbol"
 
 #. [terrain_type]: id=great_tree_snowy
 #: data/core/terrain.cfg:574
-#, fuzzy
-#| msgid "Great Tree"
 msgid "Snowy Great Tree"
-msgstr "Gran árbol"
+msgstr "Gran árbol nevado"
 
 #. [terrain_type]: id=great_tree_dead
 #: data/core/terrain.cfg:586
@@ -485,10 +481,8 @@ msgstr "Gran árbol muerto"
 
 #. [terrain_type]: id=great_tree_dead_oak
 #: data/core/terrain.cfg:598
-#, fuzzy
-#| msgid "Dead Great Tree"
 msgid "Dead Great Oak Tree"
-msgstr "Gran árbol muerto"
+msgstr "Gran roble muerto"
 
 #. [terrain_type]: id=tropical_forest
 #. [terrain_type]: id=rainforest
@@ -2465,11 +2459,11 @@ msgstr "Estoy de acuerdo"
 
 #: data/gui/window/addon_manager.cfg:9
 msgid "Traffic between the game and server is not secure"
-msgstr ""
+msgstr "La comunicación entre el juego y el servidor no es segura"
 
 #: data/gui/window/addon_manager.cfg:13
 msgid "Traffic between the game and server is encrypted"
-msgstr ""
+msgstr "La comunicación entre el juego y el servidor está encriptada"
 
 #. [label]: id=byline
 #: data/gui/window/addon_manager.cfg:154
@@ -2586,8 +2580,6 @@ msgstr "Gestor de complementos"
 #. [button]: id=details_toggle
 #: data/gui/window/addon_manager.cfg:1003 src/gui/dialogs/addon/manager.cpp:510
 #: src/gui/dialogs/addon/manager.cpp:745
-#, fuzzy
-#| msgid "Addon Details"
 msgid "Add-on Details"
 msgstr "Detalles del complemento"
 
@@ -3729,10 +3721,11 @@ msgstr "Copiar"
 msgid "Copy the full report to clipboard"
 msgstr "Copiar el informe completo al porta-papeles"
 
+# Traducir un asterisco?
 #. [label]
 #: data/gui/window/gamestate_inspector.cfg:16
 msgid "inspector tree item^•"
-msgstr ""
+msgstr "•"
 
 #. [label]
 #: data/gui/window/gamestate_inspector.cfg:94
@@ -3926,7 +3919,7 @@ msgstr "Preferencias"
 #. [button]: id=view_match_history
 #: data/gui/window/lobby_main.cfg:516
 msgid "Match History"
-msgstr ""
+msgstr "Historial del encuentro"
 
 #. [button]: id=quit
 #: data/gui/window/lobby_main.cfg:533 data/gui/window/lobby_main.cfg:627

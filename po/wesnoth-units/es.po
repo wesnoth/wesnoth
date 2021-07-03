@@ -20,7 +20,7 @@ msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2021-06-23 15:42 UTC\n"
-"PO-Revision-Date: 2021-06-15 13:22+0200\n"
+"PO-Revision-Date: 2021-06-25 13:23+0200\n"
 "Last-Translator: Pepe <donpepe1963@gmail.com>\n"
 "Language-Team: wesnoth-es-trad-1_14@googlegroups.com\n"
 "Language: es\n"
@@ -5916,11 +5916,6 @@ msgstr "Cerdito"
 
 #. [unit_type]: id=Piglet, race=monster
 #: data/core/units/monsters/Boar_Piglet.cfg:34
-#, fuzzy
-#| msgid ""
-#| "Young piglets are curious but just as ill-tempered as their parents, if a "
-#| "little less of a challenge in combat.  But seldom is a piglet found that "
-#| "does not have a protective adult boar watching over them."
 msgid ""
 "Young piglets are curious but just as ill-tempered as their parents, if a "
 "little less of a challenge in combat. But seldom is a piglet found that does "
@@ -6067,9 +6062,9 @@ msgid ""
 msgstr ""
 "Pequeñas pero mortales en números grandes, las hormigas de fuego poseen "
 "colmillos feroces y una habilidad inusual para generar fuego. Aunque estas "
-"criaturas ser carroñeras, una madriguera de hormigas de fuego puede volverse "
-"agresiva cuando se la provoca e incluso se sabe que ataca a grupos pequeños "
-"de tropas amenazantes."
+"criaturas suelen ser carroñeras, una madriguera de hormigas de fuego puede "
+"volverse agresiva cuando se la provoca e incluso se sabe que ataca a grupos "
+"pequeños de tropas amenazantes."
 
 #. [attack]: type=fire
 #: data/core/units/monsters/Fire_Ant.cfg:73
@@ -6133,20 +6128,11 @@ msgstr "garras ardientes"
 
 #. [unit_type]: id=Fire Wraith, race=monster
 #: data/core/units/monsters/Fire_Wraith.cfg:8
-#, fuzzy
-#| msgid "fire breath"
 msgid "Fire Wraith"
-msgstr "aliento de fuego"
+msgstr "Aliento de fuego"
 
 #. [unit_type]: id=Fire Wraith, race=monster
 #: data/core/units/monsters/Fire_Wraith.cfg:47
-#, fuzzy
-#| msgid ""
-#| "Fire Guardians are spirits of smoke and flame. No one is exactly sure "
-#| "where they come from, but they are occasionally summoned by powerful "
-#| "mages to do their bidding. When not being controlled they like to frolic "
-#| "in pools of lava and take great delight in burning anything they can "
-#| "reach."
 msgid ""
 "Fire Wraiths are spirits of smoke and flame. No one is exactly sure where "
 "they come from, but they are occasionally summoned by powerful mages to do "
@@ -6155,9 +6141,9 @@ msgid ""
 msgstr ""
 "Los guardianes de fuego son espíritus de llamas y humo. Nadie sabe con "
 "exactitud de donde han salido, aunque en ocasiones se ha visto a magos "
-"poderosos invocándolos para cumplir su función. Si no están bajo el control "
-"de un mago, les gusta retozar en lagos de lava y disfrutan quemando "
-"cualquier cosa que se ponga a su alcance."
+"poderosos invocándolos para cumplir alguna tarea. La extraña armadura que "
+"portan es indicio de una vida anterior o de un creador, pero cualquier "
+"civilización antigua involucrada se ha perdido en la historia."
 
 #. [unit_type]: id=Frost Stoat, race=monster
 #: data/core/units/monsters/Frost_Stoat.cfg:20
@@ -6167,15 +6153,6 @@ msgstr "Armiño de hielo"
 # En realidad no es un roedor, es un mustélido y se alimenta de roedores.
 #. [unit_type]: id=Frost Stoat, race=monster
 #: data/core/units/monsters/Frost_Stoat.cfg:35
-#, fuzzy
-#| msgid ""
-#| "Frost Stoats are a devious rodent predominantly found in the frozen parts "
-#| "of the Northlands, although they can survive anywhere. Their most "
-#| "distinctive feature is their icy-cold front claws, which is unlike "
-#| "anything found in other wild animals. These stoats generally scavenge "
-#| "refuse or hunt smaller animals, but are quite territorial and the young "
-#| "adults have been known to attack larger intruders, including humans and "
-#| "orcs."
 msgid ""
 "Frost Stoats are devious critters predominantly found in the frozen parts of "
 "the Northlands, although they can survive anywhere. Their most distinctive "
@@ -6184,7 +6161,7 @@ msgid ""
 "animals, but are quite territorial and the young adults have been known to "
 "attack larger intruders, including humans and orcs."
 msgstr ""
-"Los armiños de hielo son un taimado mustélido que se encuentra "
+"Los armiños de hielo son una criatura taimada que se encuentra "
 "predominantemente en las partes heladas de las Tierras del Norte, aunque "
 "pueden sobrevivir en cualquier lugar. Su característica más distintiva son "
 "sus garras delanteras heladas, que no se parecen a nada que tengan otros "
@@ -6283,15 +6260,17 @@ msgstr "aguijón"
 msgid "pincers"
 msgstr "pinzas"
 
+# No veo la foto. No sé si es un alacrán o un escarabajo o lo que sea.
 #. [variation]
 #: data/core/units/monsters/Giant_Scorpion.cfg:111
 msgid "scuttler"
-msgstr "escurridor"
+msgstr "rastrero"
 
+# Parece que es otro escorpión
 #. [variation]
 #: data/core/units/monsters/Giant_Scorpion.cfg:112
 msgid "Sand Scuttler"
-msgstr "Escurridor de la arena"
+msgstr "Alacrán de la arena"
 
 #. [variation]
 #: data/core/units/monsters/Giant_Scorpion.cfg:117
@@ -6365,12 +6344,23 @@ msgstr "Caballo de la bahía"
 
 #. [unit_type]: id=Bay Horse, race=horse
 #: data/core/units/monsters/Horse.cfg:19
+#, fuzzy
+#| msgid ""
+#| "Bay horses are defined more by their coloration than their size or "
+#| "temperment, and can be found anywhere from the battlefield to the farm to "
+#| "the wild plains and woodlands. Though an unencumbered horse will tend to "
+#| "flee if possible, they will fight back with a powerful kick when cornered."
 msgid ""
 "Bay horses are defined more by their coloration than their size or "
 "temperament, and can be found anywhere from the battlefield to the farm to "
 "the wild plains and woodlands. Though an unencumbered horse will tend to "
 "flee if possible, they will fight back with a powerful kick when cornered."
 msgstr ""
+"Los caballos de la bahía se definen más por su coloración que por su tamaño "
+"o temperamento, y se pueden encontrar en cualquier lugar, desde el campo de "
+"batalla hasta la granja, las llanuras salvajes y los bosques. Aunque un "
+"caballo sin trabas tenderá a huir si es posible, contraatacará con una "
+"poderosa coz cuando esté acorralado."
 
 #. [attack]: type=impact
 #: data/core/units/monsters/Horse.cfg:32 data/core/units/monsters/Horse.cfg:98
@@ -6380,7 +6370,7 @@ msgstr ""
 #: data/core/units/monsters/Wild_Wyvern.cfg:86
 #: data/core/units/orcs/Nightblade.cfg:34
 msgid "kick"
-msgstr "patada"
+msgstr "coz"
 
 #. [unit_type]: id=White Horse
 #: data/core/units/monsters/Horse.cfg:74
@@ -6389,12 +6379,6 @@ msgstr "Caballo níveo"
 
 #. [unit_type]: id=White Horse
 #: data/core/units/monsters/Horse.cfg:85
-#, fuzzy
-#| msgid ""
-#| "Some horses have a white color, and they are merely white horses.  But "
-#| "there exist a special breed, found only in the wild woods, that are White "
-#| "Horses.  As if blessed by the faerie world, they have a grace and agility "
-#| "not found in their more common relatives."
 msgid ""
 "Some horses have a white color, and they are merely white horses. But there "
 "exist a special breed, found only in the wild woods, that are White Horses. "
@@ -6413,11 +6397,6 @@ msgstr "Caballo oscuro"
 
 #. [unit_type]: id=Dark Horse
 #: data/core/units/monsters/Horse.cfg:166
-#, fuzzy
-#| msgid ""
-#| "Dark Horses are wild animals, but they seem to take an odd interest in "
-#| "the civilized races.  They leave no signs of their passage, but they have "
-#| "been noticed scouting camps and outposts during the night."
 msgid ""
 "Dark Horses are wild animals, but they seem to take an odd interest in the "
 "civilized races. They leave no signs of their passage, but they have been "
@@ -6425,7 +6404,7 @@ msgid ""
 msgstr ""
 "Los caballos oscuros son animales salvajes, pero parecen tener un interés "
 "extraño en las razas civilizadas. No dejan señales de su paso, pero se les "
-"ha notado explorando campamentos y puestos de avanzada durante la noche."
+"ha visto explorando campamentos y puestos de avanzada durante la noche."
 
 #. [attack]: type=cold
 #: data/core/units/monsters/Horse.cfg:179
@@ -6479,6 +6458,11 @@ msgid ""
 "often feisty temperaments make them too difficult to tame, though many an "
 "arrogant prince or warlord has tried and failed."
 msgstr ""
+"Los caballos colosales son significativamente más grandes que el caballo "
+"domestico común, pero a pesar de su apariencia similar, son animales "
+"salvajes. Su temperamento obstinado y a menudo luchador los hace demasiado "
+"difíciles de domesticar, aunque muchos príncipes o señores de la guerra "
+"arrogantes lo han intentado y han fallado."
 
 #. [unit_type]: id=Icemonax, race=monster
 #: data/core/units/monsters/Icemonax.cfg:4
@@ -6535,18 +6519,22 @@ msgid ""
 "felt the Jinn were watching over them, driving off malign forces of the "
 "night."
 msgstr ""
+"Los genios son espíritus misteriosos, sin relación conocida con las almas de "
+"los difuntos. A menudo se ven desde la distancia, a la deriva a través de "
+"las colinas y dunas del desierto, pero desafían una observación cercana. "
+"Casi todos los encuentros registrados han sido de naturaleza hostil, pero ha "
+"habido casos en los que los viajeros sintieron que los genios los vigilaban, "
+"ahuyentando las fuerzas malignas de la noche."
 
 #. [attack]: type=impact
 #: data/core/units/monsters/Jinn.cfg:99
 msgid "desert windblast"
-msgstr ""
+msgstr "golpe de viento desértico"
 
 #. [attack]: type=fire
 #: data/core/units/monsters/Jinn.cfg:108
-#, fuzzy
-#| msgid "lightning"
 msgid "desert lightning"
-msgstr "relámpago"
+msgstr "relámpago desértico"
 
 #. [unit_type]: id=Mudcrawler, race=monster
 #: data/core/units/monsters/Mudcrawler.cfg:4
@@ -6591,12 +6579,12 @@ msgid ""
 msgstr ""
 "Lejos de las ciudades humanas, en las grandes montañas del desierto, las "
 "grandes aves de rapiña conocidas como Rucs a veces se pueden encontrar "
-"rápidamente recorriendo la arena en sus cacerías. A pesar de su gran tamaño, "
-"los Rucs tienden a ser solitarios y rara vez se encuentran con otras razas "
+"recorriendo rápidamente la arena en sus cacerías. A pesar de su gran tamaño, "
+"los Rucs tienden a ser solitarios y rara vez se juntan con otras razas "
 "inteligentes. Su naturaleza esquiva los ha elevado a un estatus casi "
 "mitológico, particularmente entre los nómadas de los desiertos.\n"
 "\n"
-"A diferencia de otras aves, como los halcones, los Rucs individualistas e "
+"A diferencia de otras aves, como los halcones, los Rucs, individualistas e "
 "inteligentes son casi indomables. Solo en ocasiones, un Ruc puede ofrecer su "
 "ayuda a un viajero que lo necesite, generalmente a cambio de una pequeña "
 "baratija o chuchería brillante."
@@ -6608,14 +6596,6 @@ msgstr "Escorpión roqueño"
 
 #. [unit_type]: id=Rock Scorpion, race=monster
 #: data/core/units/monsters/Rock_Scorpion.cfg:45
-#, fuzzy
-#| msgid ""
-#| "Rock scorpions have featured in tales of highwaymen and drunks, but there "
-#| "has been scant evidence that they truly exist.  They've been described as "
-#| "stealthy monsters with a hide of solid rock, and sharp, crystalline "
-#| "claws.  Unlike most scorpions, they do not deliver their poison with a "
-#| "piercing stinger, but instead spray their enemies with a noxious, "
-#| "volatile stream."
 msgid ""
 "Rock scorpions have featured in tales of highwaymen and drunks, but there "
 "has been scant evidence that they truly exist. They've been described as "
@@ -6700,15 +6680,6 @@ msgstr "Gran caballo de mar"
 
 #. [unit_type]: id=Great Seahorse, race=monster
 #: data/core/units/monsters/Seahorse.cfg:29
-#, fuzzy
-#| msgid ""
-#| "Seahorses are a variety of fish that have a horse-like head, but they "
-#| "have no real connection to equines.  Most seahorses are small, shy "
-#| "creatures that eat bugs and similar small prey, but Great Seahorses are "
-#| "large enough to threaten unwary travelers.  This large variety can spit "
-#| "water with enough force to stun a small animal, and has thick, bony plate "
-#| "armor, but like all seahorses, it is a slow swimmer and cannot move over "
-#| "land."
 msgid ""
 "Seahorses are a variety of fish that have a horse-like head, but they have "
 "no real connection to equines. Most seahorses are small, shy creatures that "
@@ -6802,18 +6773,6 @@ msgstr "Guiverno salvaje"
 
 #. [unit_type]: id=Wild Wyvern, race=monster
 #: data/core/units/monsters/Wild_Wyvern.cfg:44
-#, fuzzy
-#| msgid ""
-#| "Wyverns are large reptiles that resemble dragons, but are not the "
-#| "intelligent, magical creatures. However, the fact that they are just wild "
-#| "beasts should not cause any traveler who encounters one to dismiss the "
-#| "threat, for they are fast and fierce when threatened or hungry.\n"
-#| "\n"
-#| "Wyverns are social creatures, usually traveling in pairs or small "
-#| "groups.  Their hunting patterns and diet are difficult to discern, for "
-#| "they often work with smaller animals that would appear to be potential "
-#| "prey.  That odd behavior may be an adaptation to the harsh desert "
-#| "environments they often inhabit."
 msgid ""
 "Wyverns are large reptiles that resemble dragons, but are not the "
 "intelligent, magical creatures. However, the fact that they are just wild "
@@ -6957,10 +6916,8 @@ msgstr "Luchadora nagini"
 
 #. [unit_type]: id=Naga Guard, race=naga
 #: data/core/units/nagas/Guard.cfg:4
-#, fuzzy
-#| msgid "Royal Guard"
 msgid "Naga Guard"
-msgstr "Guardia real"
+msgstr "Guardián naga"
 
 #. [unit_type]: id=Naga Guard, race=naga
 #: data/core/units/nagas/Guard.cfg:22
@@ -6971,16 +6928,28 @@ msgid ""
 "mercenary activities. They are said to have a strong code of honor, though "
 "like all things naga, it is mostly a mystery to outsiders."
 msgstr ""
+"Los nagas tienden a valorar la agilidad y la gracia en el campo de batalla, "
+"pero los individuos más lentos y fuertes juegan un papel clave en la defensa "
+"de posiciones importantes. Estos guardianes no son vistos a menudo, ya que "
+"no participan en incursiones o actividades mercenarias. Se dice que tienen "
+"un fuerte código de honor, aunque como todas las cosas naga, es sobre todo "
+"un misterio para los forasteros."
 
 #. [unit_type]: id=Naga High Guard, race=naga
 #: data/core/units/nagas/Guard_High.cfg:4
-#, fuzzy
-#| msgid "Naga Fighter"
 msgid "Naga High Guard"
-msgstr "Luchador naga"
+msgstr "Alto guardián naga"
 
 #. [unit_type]: id=Naga High Guard, race=naga
 #: data/core/units/nagas/Guard_High.cfg:23
+#, fuzzy
+#| msgid ""
+#| "The elite naga guards are a rigid barrier to any invaders of a naga "
+#| "stronghold. They have powerful stikes and, like the lesser Shield Guard, "
+#| "they are difficult to dislodge from their posts because of effective use "
+#| "of a shield in melee techniques. This tactic does nothing against ranged "
+#| "attacks, but the nagas can usually seek better terrain advantage in such "
+#| "situations."
 msgid ""
 "The elite naga guards are a rigid barrier to any invaders of a naga "
 "stronghold. They have powerful strikes and, like the lesser Shield Guard, "
@@ -6989,20 +6958,23 @@ msgid ""
 "attacks, but the nagas can usually seek better terrain advantage in such "
 "situations."
 msgstr ""
+"Los guardianes naga de élite son una sólida barrera contra cualquier invasor "
+"de una fortaleza naga. Tienen ataques poderosos y, al igual que el guardián "
+"menor, son difíciles de desalojar de sus puestos debido al uso efectivo de "
+"un escudo en las técnicas cuerpo a cuerpo. Esta táctica no sirve de nada "
+"contra los ataques a distancia, pero los naga generalmente pueden buscar "
+"alguna ventaja del terreno en tales situaciones."
 
 #. [attack]: type=impact
 #: data/core/units/nagas/Guard_High.cfg:37
 #: data/core/units/nagas/Guard_Shield.cfg:35
-#, fuzzy
-#| msgid "shield bash"
 msgid "shield"
-msgstr "golpe de escudo"
+msgstr "escudazo"
 
 #. [unit_type]: id=Naga Shield Guard, race=naga
 #: data/core/units/nagas/Guard_Shield.cfg:4
-#, fuzzy
 msgid "Naga Shield Guard"
-msgstr "Carnicero draco"
+msgstr "Guardián del escudo naga"
 
 #. [unit_type]: id=Naga Shield Guard, race=naga
 #: data/core/units/nagas/Guard_Shield.cfg:22
@@ -7012,6 +6984,10 @@ msgid ""
 "nothing against ranged attacks, but the nagas can usually seek better "
 "terrain advantage in such situations."
 msgstr ""
+"Los guardianes naga veteranos son más difíciles de desalojar de sus puestos "
+"debido al uso eficaz de un escudo en las técnicas cuerpo a cuerpo. Esta "
+"táctica no hace nada contra los ataques a distancia, pero los naga "
+"generalmente pueden buscar alguna ventaja del terreno en tales situaciones."
 
 #. [unit_type]: id=Naga Myrmidon, race=naga
 #: data/core/units/nagas/Myrmidon.cfg:4
@@ -7062,19 +7038,6 @@ msgstr "Ofidio naga"
 
 #. [unit_type]: id=Naga Ophidian, race=naga
 #: data/core/units/nagas/Ophidian.cfg:18
-#, fuzzy
-#| msgid ""
-#| "Experienced warriors of the Southern Naga often find work as mercenaries, "
-#| "usually hired by neighboring Dunefolk to control key waterways near the "
-#| "coastline. Due to their constant confrontations with enemy horsemen, "
-#| "Ophidians have retired the ringed blades of their youth and picked up the "
-#| "piercing bow. Though generally amicable with their wealthy employers, "
-#| "this friendliness should not be mistaken for loyalty, for the Ophidian "
-#| "are known for readily switching between rival city-state factions at the "
-#| "start of each shipping season, when demand for water-based protection is "
-#| "the highest. As a group, these nagas encourage a healthy amount of "
-#| "competition among the surface factions, ensuring their services are "
-#| "valued by one tribe or another."
 msgid ""
 "Experienced warriors of the Southern Naga often find work as mercenaries, "
 "usually hired by neighboring Dunefolk to control key waterways near the "
@@ -7093,14 +7056,15 @@ msgstr ""
 "como mercenarios, generalmente contratados por sus vecinos barjanes para "
 "controlar vías fluviales clave cerca de la costa. Debido a sus constantes "
 "enfrentamientos con jinetes enemigos, los Ofidios han abandonado los anillos "
-"arrojadizos de su juventud y han optado por el punzante arco. Aunque se "
-"muestren amigables con sus empleadores adinerados, esta actitud no debe "
-"confundirse con lealtad, ya que los ofidios son conocidos por cambiar "
-"fácilmente entre facciones de ciudades-estado rivales al comienzo de cada "
-"temporada de embarque, cuando la demanda de protección en zonas acuáticas es "
-"mayor. Como grupo, estos naga alientan una lucrativa competencia entre las "
-"facciones terrestres, lo que garantiza que sus servicios sean valorados por "
-"una tribu u otra."
+"arrojadizos de su juventud y han optado por la punzante jarid, un tipo de "
+"jabalina pequeña que los nagas han hecho más letal al agregar plomo extraído "
+"del lastre de los barcos hundidos. Aunque se muestren amigables con sus "
+"empleadores adinerados, esta actitud no debe confundirse con lealtad, ya que "
+"los ofidios son conocidos por cambiar fácilmente entre facciones de ciudades-"
+"estado rivales al comienzo de cada temporada de embarque, cuando la demanda "
+"de protección en zonas acuáticas es mayor. Como grupo, estos naga alientan "
+"una lucrativa competencia entre las facciones terrestres, lo que garantiza "
+"que sus servicios sean valorados por una tribu u otra."
 
 #. [attack]: type=blade
 #: data/core/units/nagas/Ophidian.cfg:27 data/core/units/nagas/Sicarius.cfg:28
@@ -7110,7 +7074,7 @@ msgstr "espada curva"
 #. [attack]: type=pierce
 #: data/core/units/nagas/Ophidian.cfg:36 data/core/units/nagas/Sicarius.cfg:40
 msgid "jarid"
-msgstr ""
+msgstr "jarid"
 
 #. [female]
 #: data/core/units/nagas/Ophidian.cfg:87
@@ -7154,18 +7118,6 @@ msgstr "Sicario naga"
 
 #. [unit_type]: id=Naga Sicarius, race=naga
 #: data/core/units/nagas/Sicarius.cfg:19
-#, fuzzy
-#| msgid ""
-#| "While they sometimes still stand in as sellswords for potential Dunefolk "
-#| "allies, Naga Sicarii are more often the keepers of trade routes and "
-#| "resource beds close to waterways. For the right fee or exchange of goods, "
-#| "a Sicarius will guarantee safe travel or free access to valuable supplies "
-#| "in his territory. Rubbed the wrong way and a Sicarius becomes a fearsome "
-#| "foe, not because of their personal strength in combat, but instead due to "
-#| "the numerous allies that he can call upon to quash any potential "
-#| "nuisance. Though perfectly capable warriors when the time is necessary, "
-#| "these experienced mercenaries know perfectly well that the best methods "
-#| "for generating money are those that do not place themselves in danger."
 msgid ""
 "While they sometimes still stand in as sellswords for potential Dunefolk "
 "allies, Naga Sicarii are more often the keepers of trade routes and resource "
@@ -7184,14 +7136,17 @@ msgstr ""
 "Aunque aún actúan de vez en cuando como mercenarios para los potenciales "
 "aliados barjanes, los sicarios naga suelen ser los guardianes de las rutas "
 "comerciales y los recursos naturales cercanos a las vías fluviales. Por la "
-"tarifa correcta o el intercambio de bienes, un sicario garantizará un viaje "
-"seguro o libre acceso a suministros valiosos en su territorio. Si se le "
-"trata de la manera incorrecta, un sicario se convierte en un enemigo "
+"tarifa adecuada o por el intercambio de bienes, un sicario garantizará un "
+"viaje seguro o libre acceso a suministros valiosos en su territorio. Si se "
+"le trata de la manera incorrecta, un sicario se convierte en un enemigo "
 "temible, no por su fuerza personal en el combate, sino por los numerosos "
 "aliados a los que puede recurrir para acabar con cualquier posible molestia. "
 "Aunque son guerreros perfectamente capaces en tiempos de necesidad, estos "
 "mercenarios experimentados saben perfectamente que los mejores métodos para "
-"ganar dinero son aquellos con los que no se ponen en peligro."
+"ganar dinero son aquellos con los que no ponen su vida en peligro. Cuando se "
+"encuentran en peligro, su astucia manipuladora les resulta muy útil, ya que "
+"pueden anticipar muchos ataques enemigos y usar su espada pesada y curva "
+"para desviar o distraer en el momento crítico."
 
 #. [female]
 #: data/core/units/nagas/Sicarius.cfg:91
@@ -7315,14 +7270,14 @@ msgstr ""
 "giraba y giraba en espiral en una danza de mareante furia. Se sintió "
 "levantado del suelo, girando a una velocidad tremenda, completamente "
 "indefenso a merced de la ira de Zefra. Con el rostro vuelto hacia arriba por "
-"el terror, soltó sus espadas y de repente lo vio en el torbellino de la "
+"el terror, soltó sus armas y de repente lo vio en el torbellino de la "
 "tempestad: el movimiento giratorio de los chakras anillados, modelado en el "
 "mismo viento.\n"
 "\n"
 "Tan rápido como llegó la tormenta, se desvaneció, dejando a Xylrix "
 "contemplando sus armas rotas. Cuando finalmente regresó a su casa muchos "
 "días después, anunció su nuevo nombre: Zephyr, un guerrero que sirve al "
-"Viento en el que vuelan sus espadas.\n"
+"Viento en el que vuelan sus armas.\n"
 "\n"
 "Si bien los viejos cuentos impulsan a los guerreros de élite de este legado "
 "a centrarse en el anillo arrojadizo, esto no significa que sean débiles en "
@@ -7512,7 +7467,7 @@ msgstr ""
 "Los asesinos orcos más experimentados suelen operar como mercenarios "
 "especializados en «resolver conflictos internos» y rara vez participan en "
 "batallas de mayor escala. Sorprendentemente hábiles y curtidos en la lucha "
-"por su trabajo, estos orcos rara vez prometen su lealtad a una tribu en "
+"debido a su trabajo, estos orcos rara vez prometen su lealtad a una tribu en "
 "particular, sino que ofrecen sus servicios a quienquiera que sea el mejor "
 "postor. Cuando se llega a un acuerdo y se realiza el pago necesario, el "
 "asesino ataca rápida y silenciosamente a su objetivo, eliminándolo "
@@ -7569,7 +7524,7 @@ msgid ""
 "‘Slayers’ by their enemies."
 msgstr ""
 "Los hábiles asesinos orcos son tropas encubiertas sorprendentemente ágiles "
-"que logran su gran agilidad al renunciar a la pesada armadura de sus "
+"que logran esa gran agilidad al renunciar a la pesada armadura de sus "
 "hermanos. Su arma preferida, el veneno, a menudo es criticada por ser una "
 "herramienta maliciosa impropia para los usos comunes de una guerra formal. "
 "La mayoría de los orcos, sin embargo, no reconocen tales leyes de combate y "
@@ -7630,13 +7585,13 @@ msgid ""
 msgstr ""
 "Aunque los orcos tienden a ser de naturaleza bastante tribal, de vez en "
 "cuando surge una situación que impulsa a varios clanes a unir fuerzas bajo "
-"un único soberano poderoso. En virtud de la posición, un orco así debe "
+"un único soberano poderoso. En virtud de esa posición, un orco así debe "
 "poseer la fuerza y ​​la astucia para liderar una gran horda de guerreros y "
 "casi invariablemente poseer un carisma inherente que es una rareza "
 "excepcional entre los de su especie. El camino hacia tal estatus es variado; "
-"a veces, una tribu poderosa puede conquistar a los menores y absorber a los "
-"guerreros derrotados en sus filas, mientras que otras circunstancias exigen "
-"el nombramiento por un consejo de chamanes, donde el de soberano se "
+"a veces, una tribu poderosa puede conquistar a otras menores y absorber a "
+"los guerreros derrotados en sus filas, mientras que otras circunstancias "
+"exigen el nombramiento por un consejo de chamanes, donde el de soberano se "
 "convierte en un título temporal, pero formal. En cualquier caso, el jefe de "
 "guerra es el eje fundamental de la horda, que se disuelve rápidamente en "
 "clanes individuales una vez que se extingue la fuerza de su liderazgo."
@@ -7692,9 +7647,9 @@ msgid ""
 "fighters, who lack the training and finesse to act on more complex "
 "strategies."
 msgstr ""
-"El manejo de la espada orco se centra casi estrictamente en la ofensiva, "
+"El manejo orco de la espada se centra casi estrictamente en la ofensiva, "
 "haciendo uso de su vigor natural para sobrevivir a sus oponentes a través de "
-"pura resistencia. Por lo tanto, se ve comúnmente a un guerrero orco más "
+"pura fortaleza. Por lo tanto, se ve comúnmente a un guerrero orco más "
 "experimentado empuñando dos espadas, prefiriendo renunciar a un escudo y en "
 "su lugar intercambiar más golpes con los enemigos en combate cuerpo a "
 "cuerpo. Aunque es una táctica bastante brutal, sigue siendo muy eficaz para "
