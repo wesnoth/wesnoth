@@ -323,6 +323,8 @@ static int impl_unit_get(lua_State *L)
 	return_int_attrib("max_moves", u.total_movement());
 	return_int_attrib("max_attacks", u.max_attacks());
 	return_int_attrib("attacks_left", u.attacks_left());
+	return_int_attrib("vision", u.vision());
+	return_int_attrib("jamming", u.jamming());
 	return_tstring_attrib("name", u.name());
 	return_tstring_attrib("description", u.unit_description());
 	return_bool_attrib("canrecruit", u.can_recruit());
