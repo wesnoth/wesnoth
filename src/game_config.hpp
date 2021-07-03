@@ -71,6 +71,7 @@ namespace game_config
 
 	extern std::string path;
 	extern std::string default_preferences_path;
+	extern bool check_migration;
 
 	struct server_info
 	{

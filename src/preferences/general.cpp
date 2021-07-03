@@ -84,25 +84,7 @@ base_manager::base_manager()
 {
 	event_handler_.join_global();
 
-	try{
-#ifdef DEFAULT_PREFS_PATH
-		filesystem::scoped_istream stream = filesystem::istream_file(filesystem::get_default_prefs_file(),false);
-		read(prefs, *stream);
-
-		config user_prefs;
-		stream = filesystem::istream_file(filesystem::get_prefs_file());
-		read(user_prefs, *stream);
-
-		prefs.merge_with(user_prefs);
-#else
-		filesystem::scoped_istream stream = filesystem::istream_file(filesystem::get_prefs_file(),false);
-		read(prefs, *stream);
-#endif
-	} catch(const config::error& e) {
-		ERR_CFG << "Error loading preference, message: "
-				<< e.what()
-				<< std::endl;
-	}
+	preferences::load_base_prefs();
 	preferences::load_credentials();
 }
 
@@ -248,6 +230,29 @@ void disable_preferences_save() {
 config* get_prefs(){
 	config* pointer = &prefs;
 	return pointer;
+}
+
+void load_base_prefs() {
+	try{
+#ifdef DEFAULT_PREFS_PATH
+		filesystem::scoped_istream stream = filesystem::istream_file(filesystem::get_default_prefs_file(),false);
+		read(prefs, *stream);
+
+		config user_prefs;
+		stream = filesystem::istream_file(filesystem::get_prefs_file());
+		read(user_prefs, *stream);
+
+		prefs.merge_with(user_prefs);
+#else
+		prefs.clear();
+		filesystem::scoped_istream stream = filesystem::istream_file(filesystem::get_prefs_file(),false);
+		read(prefs, *stream);
+#endif
+	} catch(const config::error& e) {
+		ERR_CFG << "Error loading preference, message: "
+				<< e.what()
+				<< std::endl;
+	}
 }
 
 
