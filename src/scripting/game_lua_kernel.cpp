@@ -1670,8 +1670,9 @@ int game_lua_kernel::intf_end_turn(lua_State* L)
 	//note that next_player_number = 1, next_player_number = nteams+1 both set the next team to be the first team
 	//but the later will make the turn counter change aswell fire turn end events accoringly etc.
 	if (!lua_isnoneornil(L, 1)) {
+		int max = 2 * teams().size();
 		int npn = luaL_checkinteger(L, 1);
-		if (npn <= 0 /*TODO: || npn > 2*nteams*/) {
+		if (npn <= 0 || npn > max) {
 			return luaL_argerror(L, 1, "side number out of range");
 		}
 		resources::controller->gamestate().next_player_number_ = npn;
