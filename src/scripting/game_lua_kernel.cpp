@@ -3415,6 +3415,18 @@ int game_lua_kernel::intf_color_adjust(lua_State *L)
 	return 0;
 }
 
+int game_lua_kernel::intf_get_color_adjust(lua_State *L)
+{
+	if(game_display_) {
+		auto color = game_display_->get_color_overlay();
+		lua_pushinteger(L, color.r);
+		lua_pushinteger(L, color.g);
+		lua_pushinteger(L, color.b);
+		return 3;
+	}
+	return 0;
+}
+
 /**
  * Delays engine for a while.
  * - Arg 1: integer.
@@ -4385,6 +4397,7 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 	static luaL_Reg const intf_callbacks[] {
 		{"add_hex_overlay", &dispatch<&game_lua_kernel::intf_add_tile_overlay>},
 		{"remove_hex_overlay", &dispatch<&game_lua_kernel::intf_remove_tile_overlay>},
+		{"get_color_adjust", &dispatch<&game_lua_kernel::intf_get_color_adjust>},
 		{"color_adjust", &dispatch<&game_lua_kernel::intf_color_adjust>},
 		{"delay", &dispatch<&game_lua_kernel::intf_delay>},
 		{"deselect_hex", &dispatch<&game_lua_kernel::intf_deselect_hex>},
