@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2021-06-23 11:36-0400\n"
-"PO-Revision-Date: 2021-05-23 16:48+0200\n"
+"PO-Revision-Date: 2021-06-26 15:21+0200\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -5197,6 +5197,10 @@ msgid ""
 "quicker. The <i>acceleration factor</i> can be set, and turned on by "
 "default, in the <i>Preferences</i> menu’s <i>General</i> tab."
 msgstr ""
+"Tenendo premuto il tasto <b>Maiuscolo (shift)</b>, le animazioni dei "
+"movimenti e degli attacchi saranno velocizzate. Il <i>fattore di "
+"accelerazione</i> può essere cambiato e attivato di default, nel menu "
+"<i>Preferencze</i>, sezione <i>Generiche</i>."
 
 #. [tip]
 #. Translate "Change difficulty" and "Load Game" as in wesnoth-lib textdomain
@@ -6430,6 +6434,8 @@ msgstr "Attenzione"
 msgid ""
 "The remote server requested a password while using an insecure connection."
 msgstr ""
+"Il server remoto ha richiesto una password durante l’utilizzo di una "
+"connessione insicura."
 
 #: src/game_initialization/multiplayer.cpp:409
 msgid "You must login first."
@@ -6524,7 +6530,7 @@ msgstr "Hai effettuato troppi tentativi di accesso."
 
 #: src/game_initialization/multiplayer.cpp:452
 msgid "Password hashing failed."
-msgstr ""
+msgstr "Fase di hashing della password fallita."
 
 #: src/game_initialization/playcampaign.cpp:75
 msgid "Scenario Report"
@@ -7710,7 +7716,7 @@ msgstr "Dettagli sull’errore:"
 
 #: src/play_controller.cpp:1258
 msgid "Warning: broken campaign branches"
-msgstr ""
+msgstr "Attenzione: diramazioni della campagna non valide"
 
 #. TRANSLATORS: This is an error that will hopefully only be seen by UMC authors and by players who have already
 #. said "okay" to a "loading saves from an old version might not work" dialog.
@@ -7721,7 +7727,10 @@ msgid_plural ""
 "Some of the possible next scenarios are missing, you might not be able to "
 "finish this campaign."
 msgstr[0] ""
+"Manca il prossimo scenario: non sarai in grado di terminare questa campagna."
 msgstr[1] ""
+"Mancano alcuni dei prossimi scenari possibili: potresti non essere in grado "
+"di terminare questa campagna."
 
 #: src/play_controller.cpp:1271
 msgid ""
@@ -7731,11 +7740,17 @@ msgid_plural ""
 "Please report the following missing scenarios to the campaign’s author:\n"
 "$unknown_list|"
 msgstr[0] ""
+"Si prega di notificare all’autore della campagna che il seguente scenario "
+"manca:\n"
+"$unknown_list|"
 msgstr[1] ""
+"Si prega di notificare all’autore della campagna che i seguenti scenari "
+"mancano:\n"
+"$unknown_list|"
 
 #: src/play_controller.cpp:1275
 msgid "Once this is fixed, you will need to restart this scenario."
-msgstr ""
+msgstr "Quando l’errore verrà sanato, dovrai riavviare questo scenario."
 
 #: src/play_controller.cpp:1455
 msgid "No objectives available"
@@ -7867,10 +7882,8 @@ msgid "Type: "
 msgstr "Tipo: "
 
 #: src/reports.cpp:196
-#, fuzzy
-#| msgid "Specials: "
 msgid "Special Notes:"
-msgstr "Attacchi speciali: "
+msgstr "Note speciali:"
 
 #: src/reports.cpp:219
 msgid "Race: "
@@ -8748,12 +8761,10 @@ msgid "Whiteboard Options"
 msgstr "Opzioni della lavagna"
 
 #, fuzzy
-#~| msgid "female^neutral"
 #~ msgid "female^feral"
 #~ msgstr "neutrale"
 
 #, fuzzy
-#~| msgid "unhealable"
 #~ msgid "Unhealable"
 #~ msgstr "incurabile"
 
@@ -8788,12 +8799,10 @@ msgstr "Opzioni della lavagna"
 #~ "vengono alterate."
 
 #, fuzzy
-#~| msgid "female^cured"
 #~ msgid "female^darkens"
 #~ msgstr "curata"
 
 #, fuzzy
-#~| msgid "This unit has been petrified. It may not move or attack."
 #~ msgid "This unit sacrifices its own life in order to make more attacks."
 #~ msgstr "Quest’unità è stata pietrificata: non può muoversi né attaccare."
 
@@ -8810,37 +8819,30 @@ msgstr "Opzioni della lavagna"
 #~ "distanza delle unità ad essa adiacenti."
 
 #, fuzzy
-#~| msgid "Jamming:"
 #~ msgid "Jamming Orc"
 #~ msgstr "Disturbo:"
 
 #, fuzzy
-#~| msgid "Vision Cost"
 #~ msgid "Vision Test"
 #~ msgstr "Costo di visione"
 
 #, fuzzy
-#~| msgid "Clear Labels"
 #~ msgid "Clear sailing!"
 #~ msgstr "Elimina etichette"
 
 #, fuzzy
-#~| msgid "invisible: "
 #~ msgid "It is invisible!"
 #~ msgstr "invisibile: "
 
 #, fuzzy
-#~| msgid "Debug mode activated!"
 #~ msgid "Teleporters activated"
 #~ msgstr "Modalità di debug attivata!"
 
 #, fuzzy
-#~| msgid "Debug mode deactivated!"
 #~ msgid "Teleporters deactivated"
 #~ msgstr "Modalità di debug disattivata!"
 
 #, fuzzy
-#~| msgid "steadfast"
 #~ msgid "Steadfast tester"
 #~ msgstr "fermezza"
 
@@ -8851,149 +8853,120 @@ msgstr "Opzioni della lavagna"
 #~ msgstr "aura mortale ("
 
 #, fuzzy
-#~| msgid "Custom map."
 #~ msgid "Custom dialog"
 #~ msgstr "Mappa personalizzata."
 
 #, fuzzy
-#~| msgid "Clear objective orders"
 #~ msgid "objectives test"
 #~ msgstr "Annulla gli ordini relativi all’obiettivo"
 
 #, fuzzy
-#~| msgid "neutral"
 #~ msgid "Neutral"
 #~ msgstr "neutrale"
 
 #, fuzzy
-#~| msgid "Defeat enemy leader(s)"
 #~ msgid "Defeat the enemy leader (he’s at 29,16!)"
 #~ msgstr "Sconfiggi il condottiero nemico (o i condottieri nemici)"
 
 #, fuzzy
-#~| msgid "Defeat enemy leader(s)"
 #~ msgid "Defeat the enemy leader (he’s at 28,18!)"
 #~ msgstr "Sconfiggi il condottiero nemico (o i condottieri nemici)"
 
 #, fuzzy
-#~| msgid "Temple"
 #~ msgid "Temporal Clone"
 #~ msgstr "Tempio"
 
 # se va bene qui, va bene anche nel file Lib
 #, fuzzy
-#~| msgid "Launch the gamestate inspector"
 #~ msgid "Gamestate Inspector"
 #~ msgstr "Avvia l’ispettore di stato della partita"
 
 #, fuzzy
-#~| msgid "Chat message"
 #~ msgid "Parrot message"
 #~ msgstr "Messaggio di chat"
 
 #, fuzzy
-#~| msgid "Holy Water"
 #~ msgid "Water"
 #~ msgstr "Acqua santa"
 
 #, fuzzy
-#~| msgid "poisoned"
 #~ msgid "poison"
 #~ msgstr "avvelenato"
 
 #, fuzzy
-#~| msgid "Northerners"
 #~ msgid "Northerners unleashed!"
 #~ msgstr "Settentrionali"
 
 #, fuzzy
-#~| msgid "Lato Light"
 #~ msgid "Let’s fight"
 #~ msgstr "Lato Light"
 
 #, fuzzy
-#~| msgid "Cannot find era $era"
 #~ msgid "Cannot divide by zero!"
 #~ msgstr "Impossibile trovare l’era $era"
 
 #, fuzzy
-#~| msgid "Trash Pile"
 #~ msgid "Crash test"
 #~ msgstr "Cumulo di rifiuti"
 
 #, fuzzy
-#~| msgid "Potion of Decay"
 #~ msgid "Potion of bleach"
 #~ msgstr "Pozione del deperimento"
 
 # è corretto così? Verificare
 #, fuzzy
-#~| msgid "Warning"
 #~ msgid "Win"
 #~ msgstr "Attenzione"
 
 #, fuzzy
-#~| msgid "This is not a multiplayer save."
 #~ msgid "This is not a forest"
 #~ msgstr "Questo salvataggio non appartiene a una partita multigiocatore."
 
 #, fuzzy
-#~| msgid "Still Another Wanderer"
 #~ msgid "Still there"
 #~ msgstr "Ancora un altro vagabondo"
 
 #, fuzzy
-#~| msgid "Summoning Circle"
 #~ msgid "Summon Troll"
 #~ msgstr "Circolo d’evocazione"
 
 #, fuzzy
-#~| msgid "Magic Circle"
 #~ msgid "Magic Troll"
 #~ msgstr "Circolo magico"
 
 #, fuzzy
-#~| msgid "sceptre of fire"
 #~ msgid "ruby of fire"
 #~ msgstr "scettro di fuoco"
 
 #, fuzzy
-#~| msgid "Turn changed"
 #~ msgid "map change"
 #~ msgstr "Turno cambiato"
 
 #, fuzzy
-#~| msgid "Turn changed"
 #~ msgid "map change2"
 #~ msgstr "Turno cambiato"
 
 #, fuzzy
-#~| msgid "Turn changed"
 #~ msgid "map change3"
 #~ msgstr "Turno cambiato"
 
 #, fuzzy
-#~| msgid "Shroud"
 #~ msgid "Shrouded label"
 #~ msgstr "Oscurità"
 
 #, fuzzy
-#~| msgid "Bright green"
 #~ msgid "More green!"
 #~ msgstr "Verde brillante"
 
 #, fuzzy
-#~| msgid "Dark blue"
 #~ msgid "More blue!"
 #~ msgstr "Blu scuro"
 
 #, fuzzy
-#~| msgid "Menu"
 #~ msgid "Menu 1"
 #~ msgstr "Menù"
 
 #, fuzzy
-#~| msgid "Menu"
 #~ msgid "Menu 2"
 #~ msgstr "Menù"
 

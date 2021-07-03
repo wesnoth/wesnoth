@@ -1,12 +1,12 @@
 # Copyright (C) 2017-2018 Wesnoth development team
-# Antonio 'Antro' Rosella <arosella@yahoo.com>, 2017-2019
+# Antonio 'Antro' Rosella <arosella@yahoo.com>, 2017-2021
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2021-06-23 15:36 UTC\n"
-"PO-Revision-Date: 2019-09-07 17:00+0200\n"
+"PO-Revision-Date: 2021-06-27 11:38+0200\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: \n"
 "Language: it\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Poedit 2.4.2\n"
 
 #. [campaign]: id=Secrets of the Ancients
 #. [editor_group]: id=sota
@@ -90,37 +90,37 @@ msgstr "Grafica addizionale"
 #. [label]
 #: data/campaigns/Secrets_of_the_Ancients/gui/zombie_recruit_dialog.cfg:108
 msgid "Lvl 0"
-msgstr ""
+msgstr "Liv 0"
 
 #. [label]
 #: data/campaigns/Secrets_of_the_Ancients/gui/zombie_recruit_dialog.cfg:130
 msgid "Undead"
-msgstr ""
+msgstr "Non-morto"
 
 #. [label]
 #: data/campaigns/Secrets_of_the_Ancients/gui/zombie_recruit_dialog.cfg:173
 msgid "Traits"
-msgstr ""
+msgstr "Caratteristiche"
 
 #. [label]
 #: data/campaigns/Secrets_of_the_Ancients/gui/zombie_recruit_dialog.cfg:207
 msgid "Attacks"
-msgstr ""
+msgstr "Attacchi"
 
 #. [label]
 #: data/campaigns/Secrets_of_the_Ancients/gui/zombie_recruit_dialog.cfg:275
 msgid "Choose a Corpse"
-msgstr ""
+msgstr "Scegli un cadavere"
 
 #. [button]
 #: data/campaigns/Secrets_of_the_Ancients/gui/zombie_recruit_dialog.cfg:341
 msgid "Recruit"
-msgstr ""
+msgstr "Recluta"
 
 #. [button]: id=cancel
 #: data/campaigns/Secrets_of_the_Ancients/gui/zombie_recruit_dialog.cfg:347
 msgid "Cancel"
-msgstr ""
+msgstr "Annulla"
 
 #. [scenario]: id=01_Slipping_Away
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/01_Slipping_Away.cfg:22
@@ -334,6 +334,9 @@ msgid ""
 "killed and not immediately raised as a corpse, its corpse type will be "
 "permanently added to the recruit list instead."
 msgstr ""
+"<span color='cyan'>Nota Speciale: </span>In questa campagna, se una unità "
+"viene uccisa e non viene immediatamente resuscitata come cadavere, il suo "
+"tipo di cadavere verrà aggiunto nella lista di quelli recrutabili."
 
 #. [message]: speaker=Ardonna
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/01_Slipping_Away.cfg:327
@@ -414,17 +417,17 @@ msgstr "Guardie"
 #. [set_variable]
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:92
 msgid "Raise Walking Corpse (8 Gold)"
-msgstr "Rianima morto vivente (8 mo)"
+msgstr "Rianima Morto Vivente (8 mo)"
 
 #. [set_variable]
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:99
 msgid "Raise Skeleton (15 Gold)"
-msgstr "Rianima scheletro (15 mo)"
+msgstr "Rianima Scheletro (15 mo)"
 
 #. [set_variable]
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:106
 msgid "Raise Skeleton Archer (14 Gold)"
-msgstr "Rianima scheletro arciere (14 mo)"
+msgstr "Rianima Scheletro Arciere (14 mo)"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:159
@@ -460,7 +463,7 @@ msgid ""
 "of Healing"
 msgstr ""
 "  Tempio\n"
-"di guarigione"
+"di Guarigione"
 
 #. [event]
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:283
@@ -528,7 +531,7 @@ msgstr ""
 #. [set_menu_item]: id=summon_bat
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:454
 msgid "Summon the Bat (20 gold)"
-msgstr "Evoca un pipistrello (20 monete)"
+msgstr "Evoca un pipistrello (20 mo)"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:494
@@ -884,6 +887,14 @@ msgid ""
 "defensive, and while his hatred of me was unabated, his desire to live made "
 "him somewhat malleable."
 msgstr ""
+"22 III, 23 AW\n"
+"\n"
+"La ricerca talvolta richiede sperimentazione, quindi ho iniziato. Sapevo che "
+"il bandito era intenzionato a rapinarmi, e dopo aver ucciso la sua amata, "
+"voleva torturarmi e uccidermi. Adesso che avevo il il controllo della "
+"situazione, era spaventato e sulla difensiva, e mentre il suo odio verso di "
+"me non diminuiva, il suo desiderio di vivere lo rendeva in qualche modo... "
+"malleabile."
 
 #. [part]
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/04_Becalmed.cfg:58
@@ -902,6 +913,20 @@ msgid ""
 "from a thousand suns - I could feel it more strongly than the fear or hunger "
 "from any of my pets..."
 msgstr ""
+"Gli ho passato un fiasco di vino, per metterlo a suo agio. Mi guardava con "
+"sospetto, poi ha bevuto un sorso, osservando le mie intenzioni. Ho quindi "
+"messo una parte del mio oro sul tavolo e i suoi occhi si sono messi a "
+"fissarla.\n"
+"\n"
+"Poi ho messo sul tavolo un anello strappato al bandito chiamato ’Mossa’, il "
+"suo complice preferito. Il suo sguardo si spostava dall’oro all’anello, e "
+"poi velocemente ai miei occhi. Se non fosse stato legato alla sedia, mi "
+"avrebbe attaccato.\n"
+"\n"
+"Ho aggiunto altro oro al mucchio, ma non lo ha notato: continuava a fissarmi "
+"con uno sguardo pieno di odio. La sete di vendetta si irradiava da lui come "
+"il calore di mille soli: la sentivo più forte della paura o della fame di "
+"qualsiasi altro mio animaletto domestico..."
 
 #. [part]
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/04_Becalmed.cfg:75
@@ -917,6 +942,17 @@ msgid ""
 "flensed from his being, he calmed down.  Now hairless, bloody, naked, and "
 "unthinking, the bandit was unrecognizable as the man he once was."
 msgstr ""
+"Questa ricca vena nella forza vitale del bandito non assomigliava a nulla "
+"che avessi mai visto, ma ne sapevo abbastanza per piegare la sua fame alla "
+"mia volontà. Con ulteriori studi, un giorno potrei essere in grado di "
+"fermarlo lì, ma oggi non potrei farlo: la fame risoluta ha consumato l’uomo "
+"e tutto quello che potevo fare era soltanto controllarne la sua direzione.\n"
+"\n"
+"Il bandito ululò, si dibatté, si strappò le vesti e ruppe le funi che lo "
+"legavano, fino a strapparsi la qua stessa carne. Alla fine, quando dal suo "
+"essere si fu allontanato tutto tranne la fame, si calmò. Ora glabro, "
+"sanguinante, nudo e incapace di pensare, il bandito era irriconoscibile come "
+"l’uomo che era una volta."
 
 #. [part]
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/04_Becalmed.cfg:93
@@ -926,6 +962,11 @@ msgid ""
 "could. In some ways, this experiment was a failure, but the creature it "
 "created would be useful..."
 msgstr ""
+"Non c’è dubbio che qualunque cosa fosse rimasta all’interno della mente, "
+"borbottava su ciò che era diventata, ma ora il bandito era il mio burattino "
+"e ho ricucito le sue ferite come meglio potevo. In un certo senso, questo "
+"esperimento è stato un fallimento, ma la creatura che ha generato potrebbe "
+"rivelarsi utile..."
 
 #. [part]
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/04_Becalmed.cfg:100
@@ -2329,16 +2370,6 @@ msgstr "Il campo di battaglia"
 
 #. [part]
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/11_Battleground.cfg:18
-#, fuzzy
-#| msgid ""
-#| "11 IV, 23 YW\n"
-#| "\n"
-#| "Rastaban seems like an acceptable ally. He is quite different from the "
-#| "stodgy teachers at the academy who were so full of themselves and loved "
-#| "to hear themselves talk. He also never once disparaged me for being a "
-#| "girl or even mentioned my hair. As long as he continues to respect me, "
-#| "everything will go fine. If not, well, I am surrounded by the remnants of "
-#| "those who assumed I was weak."
 msgid ""
 "11 IV, 23 YW\n"
 "\n"
@@ -3168,7 +3199,7 @@ msgstr "A queste altitudini vivono... i grifoni. Dobbiamo essere prudenti."
 #. [message]: speaker=Vendraxis
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/15_Mountain_Pass.cfg:363
 msgid "Yesss. The danger I sssensed is here."
-msgstr ""
+msgstr "Sssicuro. Il pericolo che ho percepito è qui."
 
 #. [scenario]: id=16_The_Mage
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/16_The_Mage.cfg:9
@@ -4076,12 +4107,14 @@ msgstr ""
 #. [message]: speaker=Fizztsars
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:588
 msgid "Except for the male of oursss with them. He will come with usss."
-msgstr ""
+msgstr "Ad eccezione del nossstro massschio con loro. Lui verrà con noi."
 
 #. [message]: speaker=Vendraxis
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:592
 msgid "No! I will not return yet, I still have sssecrets to learn!"
 msgstr ""
+"No! Non ritornerò ancora con voi, ci sssono altri sssegreti che devo "
+"apprendere!"
 
 #. [unit]: type=Dwarvish Dragonguard, id=Thrigalurd
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:619
@@ -4459,24 +4492,26 @@ msgstr ""
 #. and some fly.
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:92
 msgid "All Corpses"
-msgstr ""
+msgstr "Tutti i cadaveri"
 
 #. [unit_type]: id=SotA Walking Corpse_Dummy, race=undead
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:104
 msgid "Choose this “unit” to get a list of available corpses."
 msgstr ""
+"Scegli questa “unità” per visualizzare una lista con tutti i cadaveri "
+"disponibili."
 
 #. [unit_type]: id=SotA Flying Corpse_Gryphon
 #. [unit_type]: id=SotA Flying Corpse_Bat
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:156
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:314
 msgid "Flying Corpse"
-msgstr ""
+msgstr "Cadavere Volante"
 
 #. [unit_type]: id=SotA Swimming Corpse
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:204
 msgid "Swimming Corpse"
-msgstr ""
+msgstr "Cadavere Acquatico"
 
 #: data/campaigns/Secrets_of_the_Ancients/utils/characters.cfg:7
 #: data/campaigns/Secrets_of_the_Ancients/utils/sota-utils.cfg:7
@@ -4579,31 +4614,32 @@ msgstr "Mi mancherai."
 #: data/campaigns/Secrets_of_the_Ancients/utils/sota-utils.cfg:307
 msgid "Now I will never learn the sssecret of exssstending my ssspan."
 msgstr ""
+"Adessso non apprenderò più il sssegreto per essstendere la mi esssissstenza"
 
 #. [message]: speaker=Carcyn
 #: data/campaigns/Secrets_of_the_Ancients/utils/sota-utils.cfg:323
 msgid "I'm going to miss him."
-msgstr ""
+msgstr "Mi mancherà."
 
 #. [message]: speaker=Ras-Tabahn
 #: data/campaigns/Secrets_of_the_Ancients/utils/sota-utils.cfg:329
 msgid "Unfortunate. He was useful."
-msgstr ""
+msgstr "Peccato. Era utile."
 
 #. [message]: speaker=Shynal
 #: data/campaigns/Secrets_of_the_Ancients/utils/sota-utils.cfg:340
 msgid "Yes, he was helpful."
-msgstr ""
+msgstr "Sì, era utile."
 
 #. [message]: speaker=Ardonna
 #: data/campaigns/Secrets_of_the_Ancients/utils/sota-utils.cfg:346
 msgid "Indeed, he will be missed."
-msgstr ""
+msgstr "Infatti, ci mancherà."
 
 #. [message]: speaker=Ardonna
 #: data/campaigns/Secrets_of_the_Ancients/utils/sota-utils.cfg:368
 msgid "Don't worry, my pet. I can save you."
-msgstr ""
+msgstr "Non ti preccupare, piccolo mio. Posso salvarti."
 
 #. [message]: speaker=$unit.id
 #: data/campaigns/Secrets_of_the_Ancients/utils/sota-utils.cfg:424
@@ -4855,225 +4891,175 @@ msgstr "Vuoto a metà"
 #. shown instead of the unit_type name in the recruitment dialog
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:24
 msgid "recruit^Flying Corpse (Bat)"
-msgstr ""
+msgstr "Cadavere Volante (Pipistrello)"
 
 #. [value]: type=SotA Flying Corpse_Bat
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:25
-#, fuzzy
-#| msgid "You can now recruit ghosts!"
 msgid "You can now raise bat corpses!"
-msgstr "Ora puoi reclutare i fantasmi!"
+msgstr "Ora puoi rianimare cadaveri di pipistrello!"
 
 #. [value]: type=SotA Walking Corpse_Rat
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:30
-#, fuzzy
-#| msgid "Raise Walking Corpse (8 Gold)"
 msgid "recruit^Walking Corpse (Rat)"
-msgstr "Rianima morto vivente (8 mo)"
+msgstr "Morto Vivente (Ratto)"
 
 #. [value]: type=SotA Walking Corpse_Rat
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:31
-#, fuzzy
-#| msgid "You can now recruit ghosts!"
 msgid "You can now raise rat corpses!"
-msgstr "Ora puoi reclutare i fantasmi!"
+msgstr "Ora puoi rianimare cadaveri di ratto!"
 
 #. [value]: type=SotA Walking Corpse_Wolf
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:36
-#, fuzzy
-#| msgid "Raise Walking Corpse (8 Gold)"
 msgid "recruit^Walking Corpse (Wolf)"
-msgstr "Rianima morto vivente (8 mo)"
+msgstr "Morto Vivente (Lupo)"
 
 #. [value]: type=SotA Walking Corpse_Wolf
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:37
-#, fuzzy
-#| msgid "You can now recruit chocobones!"
 msgid "You can now raise wolf corpses!"
-msgstr "Ora puoi reclutare i cavalcaossi!"
+msgstr "Ora puoi rianimare cadaveri di lupo!"
 
 #. [value]: type=SotA Walking Corpse_Human
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:42
-#, fuzzy
-#| msgid "Raise Walking Corpse (8 Gold)"
 msgid "recruit^Walking Corpse (Human)"
-msgstr "Rianima morto vivente (8 mo)"
+msgstr "Morto Vivente (Umano)"
 
 #. [value]: type=SotA Walking Corpse_Human
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:43
-#, fuzzy
-#| msgid "You can now recruit ghosts!"
 msgid "You can now raise human corpses!"
-msgstr "Ora puoi reclutare i fantasmi!"
+msgstr "Ora puoi rianimare cadaveri umani!"
 
 #. [value]: type=SotA Walking Corpse_Mounted
 #. the mount is an undead horse (not a wolf), this is shown instead of the unit_type name in the recruitment dialog
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:49
-#, fuzzy
-#| msgid "Raise Walking Corpse (8 Gold)"
 msgid "recruit^Walking Corpse (Mounted)"
-msgstr "Rianima morto vivente (8 mo)"
+msgstr "Morto Vivente (Cavaliere)"
 
 #. [value]: type=SotA Walking Corpse_Mounted
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:50
-#, fuzzy
-#| msgid "You can now recruit ghosts!"
 msgid "You can now raise mounted corpses!"
-msgstr "Ora puoi reclutare i fantasmi!"
+msgstr "Ora puoi rianimare cadaveri di cavalieri!"
 
 #. [value]: type=SotA Walking Corpse_Wolf Rider
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:55
-#, fuzzy
-#| msgid "Raise Walking Corpse (8 Gold)"
 msgid "recruit^Walking Corpse (Wolf Rider)"
-msgstr "Rianima morto vivente (8 mo)"
+msgstr "Morto Vivente (Cavalcalupi)"
 
 #. [value]: type=SotA Walking Corpse_Wolf Rider
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:56
-#, fuzzy
-#| msgid "You can now recruit ghosts!"
 msgid "You can now raise wolf rider corpses!"
-msgstr "Ora puoi reclutare i fantasmi!"
+msgstr "Ora puoi rianimare cadaveri di cavalcalupi!"
 
 #. [value]: type=SotA Swimming Corpse
 #. this is used for both naga and merfolk zombies
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:62
 msgid "recruit^Swimming Corpse"
-msgstr ""
+msgstr "Cadavere Acquatico"
 
 #. [value]: type=SotA Swimming Corpse
 #. this is used for both naga and merfolk zombies
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:64
-#, fuzzy
-#| msgid "You can now recruit ghosts!"
 msgid "You can now raise swimming corpses!"
-msgstr "Ora puoi reclutare i fantasmi!"
+msgstr "Ora puoi rianimare cadaveri acquatici!"
 
 #. [value]: type=SotA Walking Corpse_Saurian
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:69
 msgid "recruit^Walking Corpse (Saurian)"
-msgstr ""
+msgstr "Morto Vivente (Sauro)"
 
 #. [value]: type=SotA Walking Corpse_Saurian
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:70
-#, fuzzy
-#| msgid "You can now recruit ghosts!"
 msgid "You can now raise saurian corpses!"
-msgstr "Ora puoi reclutare i fantasmi!"
+msgstr "Ora puoi rianimare cadaveri di sauro!"
 
 #. [value]: type=SotA Walking Corpse_Wose
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:75
-#, fuzzy
-#| msgid "Raise Walking Corpse (8 Gold)"
 msgid "recruit^Walking Corpse (Wose)"
-msgstr "Rianima morto vivente (8 mo)"
+msgstr "Morto Vivente (Wose)"
 
 #. [value]: type=SotA Walking Corpse_Wose
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:76
-#, fuzzy
-#| msgid "You can now recruit chocobones!"
 msgid "You can now raise wose corpses!"
-msgstr "Ora puoi reclutare i cavalcaossi!"
+msgstr "Ora puoi rianimare cadaveri di wose!"
 
 #. [value]: type=SotA Walking Corpse_Goblin
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:81
-#, fuzzy
-#| msgid "Raise Walking Corpse (8 Gold)"
 msgid "recruit^Walking Corpse (Goblin)"
-msgstr "Rianima morto vivente (8 mo)"
+msgstr "Rianima Morto Vivente (Goblin)"
 
 #. [value]: type=SotA Walking Corpse_Goblin
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:82
-#, fuzzy
-#| msgid "You can now recruit ghouls!"
 msgid "You can now raise goblin corpses!"
-msgstr "Ora puoi reclutare i divoratori di cadaveri!"
+msgstr "Ora puoi rianimare cadaveri di goblin!"
 
 #. [value]: type=SotA Flying Corpse_Gryphon
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:87
 msgid "recruit^Flying Corpse (Gryphon)"
-msgstr ""
+msgstr "Cadavere Volante (Grifone)"
 
 #. [value]: type=SotA Flying Corpse_Gryphon
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:88
-#, fuzzy
-#| msgid "You can now recruit ghosts!"
 msgid "You can now raise gryphon corpses!"
-msgstr "Ora puoi reclutare i fantasmi!"
+msgstr "Ora puoi rianimare cadaveri di grifone!"
 
 #. [value]: type=SotA Walking Corpse_Spider
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:93
-#, fuzzy
-#| msgid "Raise Walking Corpse (8 Gold)"
 msgid "recruit^Walking Corpse (Spider)"
-msgstr "Rianima morto vivente (8 mo)"
+msgstr "Rianima Morto Vivente (Ragno)"
 
 #. [value]: type=SotA Walking Corpse_Spider
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:94
-#, fuzzy
-#| msgid "You can now recruit ghosts!"
 msgid "You can now raise spider corpses!"
-msgstr "Ora puoi reclutare i fantasmi!"
+msgstr "Ora puoi rianimare cadaveri di ragno!"
 
 #. [value]: type=SotA Walking Corpse_Troll
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:99
-#, fuzzy
-#| msgid "Raise Walking Corpse (8 Gold)"
 msgid "recruit^Walking Corpse (Troll)"
-msgstr "Rianima morto vivente (8 mo)"
+msgstr "Rianima Morto Vivente (Troll)"
 
 #. [value]: type=SotA Walking Corpse_Troll
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:100
-#, fuzzy
-#| msgid "You can now recruit ghosts!"
 msgid "You can now raise troll corpses!"
-msgstr "Ora puoi reclutare i fantasmi!"
+msgstr "Ora puoi rianimare cadaveri di troll!"
 
 #. [value]: type=SotA Walking Corpse_Dwarf
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:105
-#, fuzzy
-#| msgid "Raise Walking Corpse (8 Gold)"
 msgid "recruit^Walking Corpse (Dwarf)"
-msgstr "Rianima morto vivente (8 mo)"
+msgstr "Rianima Morto Vivente (Nano)"
 
 #. [value]: type=SotA Walking Corpse_Dwarf
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:106
-#, fuzzy
-#| msgid "You can now recruit dark adepts!"
 msgid "You can now raise dwarf corpses!"
-msgstr "Ora puoi reclutare gli adepti dell’Oscurità!"
+msgstr "Ora puoi rianimare cadaveri di nano!"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:372
 msgid "A lua error has occurred, and a corpse cannot be recruited."
-msgstr ""
+msgstr "Si è verificato un errore lua e non è possibile reclutare un cadavere."
 
 #. [lua]: select
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:24
 msgid "HP: "
-msgstr ""
+msgstr "PF: "
 
 #. [lua]: select
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:24
 msgid "MP: "
-msgstr ""
+msgstr "PM: "
 
 #. [lua]: select
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:24
 msgid "XP: "
-msgstr ""
+msgstr "PE: "
 
 #. [lua]: postshow
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:89
 msgid "There are no corpses available."
-msgstr ""
+msgstr "Non ci sono cadaveri a disposizione."
 
 #. [lua]: postshow
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:94
-#, fuzzy
-#| msgid "You don't have enough gold to raise that unit."
 msgid "You do not have enough gold to recruit that unit"
-msgstr "Non disponi di oro a sufficienza per rianimare quell’unità."
+msgstr "Non disponi di oro a sufficienza per reclutare quell’unità"
 
 #~ msgid ""
 #~ "22 III, 23 YW\n"
