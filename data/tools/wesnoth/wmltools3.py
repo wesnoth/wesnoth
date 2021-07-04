@@ -585,6 +585,8 @@ class CrossRef:
     def scan_for_definitions(self, namespace, filename):
         ignoreflag = False
         conditionalsflag = False
+        temp_docstrings = {}
+        current_docstring = None
         with codecs.open(filename, "r", "utf8") as dfp:
             state = "outside"
             latch_unit = in_base_unit = in_theme = False
@@ -649,8 +651,36 @@ class CrossRef:
                         here = Reference(namespace, filename, n+1, line, args=tokens[2:], optional_args=[])
                         here.hash = hashlib.md5()
                         here.docstring = line.lstrip()[8:] # Strip off #define_
+                        current_docstring = None
+                        if name in temp_docstrings:
+                            here.docstring += temp_docstrings[name]
+                            del temp_docstrings[name]
                         state = "macro_header"
                     continue
+                if state in ('outside', 'external_docstring'):
+                    # allow starting new docstrings even one after another
+                    m = re.match(r"\s*# wmlscope: docstring (\w+)", line)
+                    if m:
+                        current_docstring = m.group(1)
+                        # what if someone tries to define a docstring twice for the same macro?
+                        # In this case, warn and overwrite the old one
+                        if current_docstring in temp_docstrings:
+                            print("Redefining a docstring for macro {} at {}, line {}".format(m.group(1),
+                                                                                              filename,
+                                                                                              n+1),
+                                  file=sys.stderr)
+                        temp_docstrings[current_docstring] = ""
+                        state = "external_docstring"
+                        continue
+                if state == 'external_docstring':
+                    # stop collecting the docstring on the first non-comment line (even if it's empty)
+                    # if the line starts with a #define or another docstring directive
+                    # it'll be handled in the blocks above
+                    if line.lstrip().startswith("#"):
+                        temp_docstrings[current_docstring] += line.lstrip()[1:]
+                    else:
+                        current_docstring = None
+                        state = 'outside'
                 elif state != 'outside' and line.strip().endswith("#enddef"):
                     here.hash.update(line.encode("utf8"))
                     here.hash = here.hash.digest()
@@ -732,6 +762,15 @@ class CrossRef:
                                 self.unit_ids[uid] = []
                             self.unit_ids[uid].append(Reference(namespace, filename, n+1))
                             latch_unit= False
+        # handling of the file is over, but there are some external docstring still around
+        # this happens if someone defined an external docstring *after* the macro it refers to
+        # or to a macro which isn't even in the file
+        # warn if that's the case
+        if temp_docstrings: # non-empty dictionaries cast as True
+            print("Docstrings defined after their macros or referring to a missing \
+macro found in {}: {}".format(filename,
+                              ", ".join(temp_docstrings.keys())),
+                  file=sys.stderr)
     def __init__(self, dirpath=[], exclude="", warnlevel=0, progress=False):
         "Build cross-reference object from the specified filelist."
         self.filelist = Forest(dirpath, exclude)
