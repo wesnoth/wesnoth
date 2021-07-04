@@ -146,7 +146,7 @@ namespace
 			std::ostringstream err;
 			err << "Error opening language file for " << lang << ", textdomain " << dom
 				<< ":\n  " << detail << '\n';
-			ERR_G << err.rdbuf() << std::flush;
+			ERR_G << err.str() << std::flush;
 			throw game::error(err.str());
 		}
 
