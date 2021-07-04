@@ -114,5 +114,6 @@ helper.round = wesnoth.deprecate_api('helper.round', 'mathx.round', 1, nil, math
 helper.shuffle = wesnoth.deprecate_api('helper.shuffle', 'mathx.shuffle', 1, nil, mathx.shuffle)
 helper.all_teams = wesnoth.deprecate_api('helper.all_teams', 'wesnoth.sides.iter', 1, nil, helper.all_teams)
 helper.get_sides = wesnoth.deprecate_api('helper.get_sides', 'wesnoth.sides.iter', 1, nil, helper.get_sides)
+helper.adjacent_tiles = wesnoth.deprecate_api('helper.adjacent_tiles', 'wesnoth.map.iter_adjacent', 1, nil, helper.adjacent_tiles)
 
 return helper

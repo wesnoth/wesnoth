@@ -65,6 +65,24 @@ if wesnoth.kernel_type() ~= "Application Lua Kernel" then
 			return code
 		end
 	end
+
+	function wesnoth.map.iter_adjacent(map, ...)
+		local where, n = wesnoth.read_location(...)
+		if n == 0 then error('wesnoth.map.iter_adjacent: missing location') end
+		local with_borders = select(n + 1, ...)
+		local adj = {wesnoth.map.get_adjacent_hexes(where)}
+		local i = 0
+		return function()
+			while i < #adj do
+				i = i + 1
+				local u, v = adj[i].x, adj[i].y
+				if map:on_board(u, v, with_borders) then
+					return u, v
+				end
+			end
+			return nil
+		end
+	end
 end
 
 if wesnoth.kernel_type() == "Game Lua Kernel" then
