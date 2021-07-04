@@ -17,6 +17,20 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 	}
 	setmetatable(wesnoth.sides, sides_mt)
 
+	function wesnoth.sides.iter(filter)
+		local function f(s)
+			local i = s.i
+			while i < #wesnoth.sides do
+				i = i + 1
+				if filter == nil or wesnoth.sides.matches(i, filter) then
+					s.i = i
+					return wesnoth.sides[i], i
+				end
+			end
+		end
+		return f, { i = 0 }
+	end
+
 	-- Deprecated functions
 	function wesnoth.set_side_variable(side, var, val)
 		wesnoth.sides[side].variables[var] = val
