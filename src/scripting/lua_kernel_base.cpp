@@ -432,6 +432,31 @@ static int intf_deprecated_message(lua_State* L) {
 }
 
 /**
+ * Converts a Lua array to a named tuple.
+ * Arg 1: A Lua array
+ * Arg 2: An array of strings
+ * Ret: A copy of arg 1 that's now a named tuple with the names in arg 2.
+ * The copy will only include the array portion of the input array.
+ * Any non-integer keys or non-consecutive keys will be gone.
+ * Note: This exists so that wml.tag can use it but is not really intended as a public API.
+ */
+static int intf_named_tuple(lua_State* L)
+{
+	if(!lua_istable(L, 1)) {
+		return luaW_type_error(L, 1, lua_typename(L, LUA_TTABLE));
+	}
+	auto names = lua_check<std::vector<std::string>>(L, 2);
+	lua_len(L, 1);
+	int len = luaL_checkinteger(L, -1);
+	luaW_push_namedtuple(L, names);
+	for(int i = 1; i <= std::max<int>(len, names.size()); i++) {
+		lua_geti(L, 1, i);
+		lua_seti(L, -2, i);
+	}
+	return 1;
+}
+
+/**
 * Returns the time stamp, exactly as [set_variable] time=stamp does.
 * - Ret 1: integer
 */
@@ -537,6 +562,7 @@ lua_kernel_base::lua_kernel_base()
 		{ "compile_formula",          &lua_formula_bridge::intf_compile_formula},
 		{ "eval_formula",             &lua_formula_bridge::intf_eval_formula},
 		{ "name_generator",           &intf_name_generator           },
+		{ "named_tuple",              &intf_named_tuple              },
 		{ "log",                      &intf_log                      },
 		{ "ms_since_init",            &intf_ms_since_init           },
 		{ "get_language",             &intf_get_language             },
