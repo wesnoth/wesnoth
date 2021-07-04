@@ -191,9 +191,18 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 	--- Calling wml.fire isn't the same as calling wesnoth.wml_actions[name] due to the passed vconfig userdata
 	--- which also provides "constness" of the passed wml object from the point of view of the caller.
 	--- So please don't remove since it's not deprecated.
-	function wml.fire(name, cfg)
-		wesnoth.wml_actions[name](wml.tovconfig(cfg or {}))
-	end
+	wml.fire = setmetatable({}, {
+		__metatable = "WML Actions",
+		__call = function(_, name, cfg)
+			wesnoth.wml_actions[name](wml.tovconfig(cfg or {}))
+		end,
+		__index = function(self, tag)
+			return function(cfg) self(tag, cfg) end
+		end,
+		__newindex = function(_, tag)
+			error('cannot assign to wml.fire.' .. tag)
+		end,
+	})
 end
 
 if wesnoth.kernel_type() ~= "Application Lua Kernel" then
@@ -457,6 +466,8 @@ end
 
 if wesnoth.kernel_type() == "Game Lua Kernel" then
 	wesnoth.set_variable = wesnoth.deprecate_api('wesnoth.set_variable', 'wml.variables', 1, nil, wml.set_variable)
-	wesnoth.fire = wesnoth.deprecate_api('wesnoth.fire', 'wml.fire', 1, nil, wml.fire)
+	wesnoth.fire = wesnoth.deprecate_api('wesnoth.fire', 'wml.fire', 1, nil, function(name, cfg)
+		wesnoth.wml_actions[name](wml.tovconfig(cfg or {}))
+	end)
 	wesnoth.eval_conditional = wesnoth.deprecate_api('wesnoth.eval_conditional', 'wml.eval_conditional', 1, nil, wml.eval_conditional)
 end

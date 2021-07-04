@@ -44,6 +44,7 @@ end
 local fire_action_mt = {
 	__metatable = "WML actions",
 	__index = function(t, n)
+		wesnoth.deprecated_message('helper.set_wml_action_metatable', 3, '1.19', 'Use wml.fire instead - wml.fire.tag_name(arguments)')
 		return function(cfg) wml.fire(n, cfg) end
 	end
 }
