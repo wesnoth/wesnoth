@@ -112,5 +112,7 @@ helper.get_user_choice = wesnoth.deprecate_api('helper.get_user_choice', 'gui.ge
 helper.rand = wesnoth.deprecate_api('helper.rand', 'mathx.random_choice', 1, nil, mathx.random_choice)
 helper.round = wesnoth.deprecate_api('helper.round', 'mathx.round', 1, nil, mathx.round)
 helper.shuffle = wesnoth.deprecate_api('helper.shuffle', 'mathx.shuffle', 1, nil, mathx.shuffle)
+helper.all_teams = wesnoth.deprecate_api('helper.all_teams', 'wesnoth.sides.iter', 1, nil, helper.all_teams)
+helper.get_sides = wesnoth.deprecate_api('helper.get_sides', 'wesnoth.sides.iter', 1, nil, helper.get_sides)
 
 return helper
