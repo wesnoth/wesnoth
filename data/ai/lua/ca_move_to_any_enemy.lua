@@ -3,7 +3,6 @@
 -- only kicks in when the AI would do nothing else. It prevents the AI from
 -- being inactive on maps without enemy leaders and villages.
 
-local H = wesnoth.require "helper"
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
 
 local MTAE_unit, MTAE_destination
@@ -41,7 +40,7 @@ function ca_move_to_any_enemy:evaluation(cfg, data, filter_own)
             -- We only need to look at adjacent hexes. And we don't worry whether they
             -- are occupied by other enemies. If that is the case, no path will be found,
             -- but one of those enemies will later be found as potential target.
-            for xa,ya in H.adjacent_tiles(e.x, e.y) do
+            for xa,ya in wesnoth.current.map:iter_adjacent(e) do
                 if (not avoid_map:get(xa, ya)) then
                     local path, cost = AH.find_path_with_avoid(u, xa, ya, avoid_map)
                     if (cost < best_cost) then

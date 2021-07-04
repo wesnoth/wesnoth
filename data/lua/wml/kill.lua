@@ -1,4 +1,3 @@
-local helper = wesnoth.require "helper"
 local location_set = wesnoth.require "location_set"
 
 local kill_recursion_preventer = location_set.create()

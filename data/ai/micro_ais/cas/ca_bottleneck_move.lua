@@ -1,4 +1,3 @@
-local H = wesnoth.require "helper"
 local LS = wesnoth.require "location_set"
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
 local BC = wesnoth.require "ai/lua/battle_calcs.lua"
@@ -87,7 +86,7 @@ local function bottleneck_create_positioning_map(max_value, data)
     -- Only store those that are not in enemy territory.
     local map = LS.create()
     BD_def_map:iter(function(x, y, v)
-        for xa,ya in H.adjacent_tiles(x, y) do
+        for xa,ya in wesnoth.current.map:iter_adjacent(x, y) do
             if BD_is_my_territory:get(xa, ya) then
                 local rating = BD_def_map:get(x, y) or 0
                 rating = rating + (map:get(xa, ya) or 0)
@@ -136,7 +135,7 @@ local function bottleneck_get_rating(unit, x, y, has_leadership, is_healer, on_m
 
         -- If leadership unit is injured -> prefer hexes next to healers
         if (unit.hitpoints < unit.max_hitpoints) then
-            for xa,ya in H.adjacent_tiles(x, y) do
+            for xa,ya in wesnoth.current.map:iter_adjacent(x, y) do
                 local adjacent_unit = wesnoth.units.get(xa, ya)
                 if adjacent_unit and (adjacent_unit.usage == "healer") then
                     leadership_rating = leadership_rating + 100
@@ -276,7 +275,7 @@ function ca_bottleneck_move:evaluation(cfg, data)
     local healers = wesnoth.units.find_on_map { side = wesnoth.current.side, ability = "healing" }
     BD_healing_map = LS.create()
     for _,healer in ipairs(healers) do
-        for xa,ya in H.adjacent_tiles(healer.x, healer.y) do
+        for xa,ya in wesnoth.current.map:iter_adjacent(healer) do
             -- Cannot be on the line, and needs to be in own territory
             if BD_is_my_territory:get(xa, ya) then
                 local min_dist = math.huge
@@ -322,7 +321,7 @@ function ca_bottleneck_move:evaluation(cfg, data)
     local enemies = AH.get_attackable_enemies()
     local attacks = {}
     for _,enemy in ipairs(enemies) do
-        for xa,ya in H.adjacent_tiles(enemy.x, enemy.y) do
+        for xa,ya in wesnoth.current.map:iter_adjacent(enemy) do
             if BD_is_my_territory:get(xa, ya) then
                 local unit_in_way = wesnoth.units.get(xa, ya)
                 if (not AH.is_visible_unit(wesnoth.current.side, unit_in_way)) then

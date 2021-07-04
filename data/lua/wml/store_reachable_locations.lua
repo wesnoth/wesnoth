@@ -1,4 +1,3 @@
-local helper = wesnoth.require "helper"
 local location_set = wesnoth.require "location_set"
 
 function wesnoth.wml_actions.store_reachable_locations(cfg)
@@ -37,7 +36,7 @@ function wesnoth.wml_actions.store_reachable_locations(cfg)
 			if range == "attack" then
 				unit_reach:iter(function(x, y)
 					reach:insert(x, y)
-					for u,v in helper.adjacent_tiles(x, y) do
+					for u,v in wesnoth.current.map:iter_adjacent(x, y) do
 						reach:insert(u, v)
 					end
 				end)

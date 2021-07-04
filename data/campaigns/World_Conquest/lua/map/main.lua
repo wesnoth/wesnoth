@@ -1,5 +1,4 @@
 _ = wesnoth.textdomain 'wesnoth-wc'
-helper = wesnoth.require("helper")
 utils = wesnoth.require("wml-utils")
 functional = wesnoth.require("functional")
 wc2_convert = wesnoth.dofile("./../shared_utils/wml_converter.lua")

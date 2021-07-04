@@ -2,8 +2,7 @@ return {
     init = function()
         local priority_target = {}
 
-        local H = wesnoth.require "helper"
-        local W = H.set_wml_action_metatable {}
+        local W = wml.fire
         local AH = wesnoth.require "ai/lua/ai_helper.lua"
 
         function priority_target:change_attacks_aspect(target_id)

@@ -1,4 +1,3 @@
-local H = wesnoth.require "helper"
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
 local MAIUV = wesnoth.require "ai/micro_ais/micro_ai_unit_variables.lua"
 local WMPF = wesnoth.require "ai/micro_ais/cas/ca_wolves_multipacks_functions.lua"
@@ -99,7 +98,7 @@ function ca_wolves_multipacks_attack:execution(cfg)
                     -- Also, any target sitting next to a wolf of the same pack that has
                     -- no attacks left is priority targeted (in order to stick with
                     -- the same target for all wolves of the pack)
-                    for xa,ya in H.adjacent_tiles(target.x, target.y) do
+                    for xa,ya in wesnoth.current.map:iter_adjacent(target) do
                         local adj_unit = wesnoth.units.get(xa, ya)
                         if adj_unit then
                             local unit_pack_number = MAIUV.get_mai_unit_variables(adj_unit, cfg.ai_id, "pack_number")

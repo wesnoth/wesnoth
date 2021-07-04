@@ -1,4 +1,3 @@
-local H = wesnoth.require "helper"
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
 local LS = wesnoth.require "location_set"
 local M = wesnoth.map
@@ -815,7 +814,7 @@ function battle_calcs.attack_rating(attacker, defender, dst, cfg, cache)
     damage = damage - 1.25 * wesnoth.terrain_types[map[dst]].healing
 
     -- Equivalently, if attack is adjacent to an unoccupied healing location, that's bad
-    for xa,ya in H.adjacent_tiles(dst[1], dst[2]) do
+    for xa,ya in wesnoth.current.map:iter_adjacent(dst) do
         local healing = wesnoth.terrain_types[map[{xa, ya}]].healing
         if (healing > 0) and (not wesnoth.units.get(xa, ya)) then
             damage = damage + 1.25 * healing
@@ -1181,7 +1180,7 @@ function battle_calcs.get_attack_map_unit(unit, cfg)
     for _,loc in ipairs(initial_reach) do
         reach.units:insert(loc[1], loc[2], 1)
         reach.hitpoints:insert(loc[1], loc[2], unit.hitpoints)
-        for xa,ya in H.adjacent_tiles(loc[1], loc[2]) do
+        for xa,ya in wesnoth.current.map:iter_adjacent(loc) do
             reach.units:insert(xa, ya, 1)
             reach.hitpoints:insert(xa, ya, unit.hitpoints)
         end
@@ -1467,7 +1466,7 @@ function battle_calcs.get_attack_combos_subset(units, enemy, cfg)
     -- For units on other sides we always assume that they can move away
     local blocked_hexes = LS.create()
     if units[1] and (units[1].side == wesnoth.current.side) then
-        for xa,ya in H.adjacent_tiles(enemy.x, enemy.y) do
+        for xa,ya in wesnoth.current.map:iter_adjacent(enemy) do
             local unit_in_way = wesnoth.units.get(xa, ya)
             if unit_in_way then
                 -- Units on the same side are blockers if they cannot move away
@@ -1502,7 +1501,7 @@ function battle_calcs.get_attack_combos_subset(units, enemy, cfg)
 
         local locs = {}  -- attack locations for this unit
 
-        for xa,ya in H.adjacent_tiles(enemy.x, enemy.y) do
+        for xa,ya in wesnoth.current.map:iter_adjacent(enemy) do
 
             local loc = {}  -- attack location information for this unit for this hex
 
