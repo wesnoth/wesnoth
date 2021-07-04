@@ -1,5 +1,7 @@
 --! #textdomain wesnoth
 
+wesnoth.deprecated_message('helper.lua', 3, '1.19', 'Everything in this module has been moved into the core modules')
+
 local helper = {}
 
 local wml_actions = wesnoth.wml_actions
