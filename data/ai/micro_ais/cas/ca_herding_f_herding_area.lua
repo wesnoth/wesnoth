@@ -1,5 +1,4 @@
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
-local H = wesnoth.require "helper"
 local LS = wesnoth.require "location_set"
 
 return function(cfg)
@@ -16,7 +15,7 @@ return function(cfg)
 
     -- Then, also exclude hexes next to herding_perimeter; some of the functions work better like that
     herding_area:iter( function(x, y, v)
-        for xa, ya in H.adjacent_tiles(x, y) do
+        for xa, ya in wesnoth.current.map:iter_adjacent(x, y) do
             if (wesnoth.map.matches(xa, ya, location_filter) ) then
                 herding_area:remove(x, y)
             end

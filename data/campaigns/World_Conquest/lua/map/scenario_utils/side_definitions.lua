@@ -5,7 +5,6 @@
 ---------------------------------------------------------
 
 _ = wesnoth.textdomain "wesnoth-wc"
-helper = wesnoth.require("helper")
 
 local function table_join(t1, t2)
 	local r = {}

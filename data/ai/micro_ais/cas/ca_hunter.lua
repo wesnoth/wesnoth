@@ -1,4 +1,3 @@
-local H = wesnoth.require "helper"
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
 local MAIUV = wesnoth.require "ai/micro_ais/micro_ai_unit_variables.lua"
 local M = wesnoth.map
@@ -13,7 +12,7 @@ local function hunter_attack_weakest_adj_enemy(ai, hunter)
     if (hunter.attacks_left == 0) then return 'no_attack' end
 
     local min_hp, target = math.huge
-    for xa,ya in H.adjacent_tiles(hunter.x, hunter.y) do
+    for xa,ya in wesnoth.current.map:iter_adjacent(hunter) do
         local enemy = wesnoth.units.get(xa, ya)
         if AH.is_attackable_enemy(enemy) then
             if (enemy.hitpoints < min_hp) then
@@ -81,7 +80,7 @@ function ca_hunter:execution(cfg)
 
             -- Huge rating bonus if this is next to an enemy
             local enemy_hp = 500
-            for xa,ya in H.adjacent_tiles(x, y) do
+            for xa,ya in wesnoth.current.map:iter_adjacent(x, y) do
                 local enemy = wesnoth.units.get(xa, ya)
                 if AH.is_attackable_enemy(enemy) then
                     if (enemy.hitpoints < enemy_hp) then enemy_hp = enemy.hitpoints end

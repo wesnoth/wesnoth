@@ -1,4 +1,3 @@
-local H = wesnoth.require "helper"
 local LS = wesnoth.require "location_set"
 local F = wesnoth.require "functional"
 local M = wesnoth.map
@@ -598,7 +597,7 @@ function ai_helper.find_opposite_hex_adjacent(hex, center_hex)
     -- y is slightly more tricky, because of the hexagonal shape, but there's a trick
     -- that saves us from having to build in a lot of if statements
     -- Among the adjacent hexes, it is the one with the correct x, and y _different_ from hex[2]
-    for xa,ya in H.adjacent_tiles(center_hex[1], center_hex[2]) do
+    for xa,ya in wesnoth.current.map:iter_adjacent(center_hex) do
         if (xa == opp_x) and (ya ~= hex[2]) then return { xa, ya } end
     end
 
@@ -1201,7 +1200,7 @@ function ai_helper.get_attackable_enemies(filter, side, cfg)
             local is_avoided = false
             if cfg and cfg.avoid_map then
                 is_avoided = true
-                for xa,ya in H.adjacent_tiles(unit.x, unit.y) do
+                for xa,ya in wesnoth.current.map:iter_adjacent(unit) do
                     if (not cfg.avoid_map:get(xa, ya)) then
                         is_avoided = false
                         break
@@ -1905,7 +1904,7 @@ function ai_helper.find_path_with_avoid(unit, x, y, avoid_map, options)
     if (not options.ignore_enemies) and (not unit:ability("skirmisher")) then
         enemy_map:iter(function(x, y, level)
             if (level > 0) then
-                for xa,ya in H.adjacent_tiles(x, y) do
+                for xa,ya in wesnoth.current.map:iter_adjacent(x, y) do
                     enemy_zoc_map:insert(xa, ya, level)
                 end
             end
@@ -2144,7 +2143,7 @@ function ai_helper.get_attacks(units, cfg)
 
     local attack_hex_map = LS.create()
     enemy_map:iter(function(e_x, e_y, i)
-        for xa,ya in H.adjacent_tiles(e_x, e_y) do
+        for xa,ya in wesnoth.current.map:iter_adjacent(e_x, e_y) do
             -- If there's no unit of another side on this hex, include it
             -- as possible attack location (this includes hexes occupied
             -- by own units at this time)
@@ -2359,7 +2358,7 @@ function ai_helper.get_attack_combos(units, enemy, cfg)
     -- Find which units in @units can get to hexes next to the enemy
     local attacks_dst_src = {}
     local found_attacks = false
-    for xa,ya in H.adjacent_tiles(enemy.x, enemy.y) do
+    for xa,ya in wesnoth.current.map:iter_adjacent(enemy) do
         -- Make sure the hex is not occupied by unit that cannot move out of the way
 
         local dst = xa * 1000 + ya

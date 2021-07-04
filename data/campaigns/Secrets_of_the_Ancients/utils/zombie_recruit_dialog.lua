@@ -1,6 +1,5 @@
-local H = wesnoth.require "helper"
 local T = wml.tag
-local W = H.set_wml_action_metatable {}
+local W = wml.fire
 local _ = wesnoth.textdomain 'wesnoth-sota'
 
 -- After preshow, this variable will hold the unit_types being shown in the listbox.

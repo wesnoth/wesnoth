@@ -1,4 +1,3 @@
-local H = wesnoth.require "helper"
 local LS = wesnoth.require "location_set"
 local M = wesnoth.map
 local T = wml.tag
@@ -72,7 +71,7 @@ function ca_transport:execution()
                     -- This is mostly to avoid it being across the bay in SotBE S6
                     local adj_tiles = {}
                     if (rating >= -0.05) then
-                        for x,y in H.adjacent_tiles(r[1], r[2]) do
+                        for x,y in wesnoth.current.map:iter_adjacent(r) do
                             if (not unit_map:get(x, y)) then
                                 if wesnoth.map.matches(x, y, { terrain = "!, W*" }) then
                                     rating = rating + 1

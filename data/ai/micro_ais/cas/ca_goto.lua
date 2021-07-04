@@ -1,4 +1,3 @@
-local H = wesnoth.require "helper"
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
 local BC = wesnoth.require "ai/lua/battle_calcs.lua"
 local LS = wesnoth.require "location_set"
@@ -122,7 +121,7 @@ function ca_goto:execution(cfg, data)
             enemy_map:insert(enemy.x, enemy.y, (enemy_map:get(enemy.x, enemy.y) or 0) + 1000)
         end
         for _,enemy in ipairs(live_enemies) do
-            for xa,ya in H.adjacent_tiles(enemy.x, enemy.y) do
+            for xa,ya in wesnoth.current.map:iter_adjacent(enemy) do
                 enemy_map:insert(xa, ya, (enemy_map:get(xa, ya) or 0) + 10)
             end
         end

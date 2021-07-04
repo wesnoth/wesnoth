@@ -1,4 +1,3 @@
-local helper = wesnoth.require("helper")
 local T = wml.tag
 local _ = wesnoth.textdomain 'wesnoth-wc'
 

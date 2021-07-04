@@ -1,4 +1,3 @@
-local H = wesnoth.require "helper"
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
 local F = wesnoth.require "functional"
 
@@ -97,7 +96,7 @@ function ca_coward:execution(cfg)
     -- If 'attack_if_trapped' is set, the coward attacks the weakest unit it ends up next to
     if cfg.attack_if_trapped then
         local max_rating, best_target = - math.huge
-        for xa,ya in H.adjacent_tiles(coward.x, coward.y) do
+        for xa,ya in wesnoth.current.map:iter_adjacent(coward) do
             local target = wesnoth.units.get(xa, ya)
             if target and wesnoth.sides.is_enemy(coward.side, target.side) then
                 local rating = - target.hitpoints

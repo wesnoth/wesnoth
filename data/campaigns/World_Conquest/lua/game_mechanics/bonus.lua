@@ -1,6 +1,5 @@
 local _ = wesnoth.textdomain 'wesnoth-wc'
 local on_event = wesnoth.require("on_event")
-local helper = wesnoth.require("helper")
 
 local bonus = {}
 bonus.sceneries = {}

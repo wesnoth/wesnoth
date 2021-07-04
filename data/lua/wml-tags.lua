@@ -1,4 +1,3 @@
-local helper = wesnoth.require "helper"
 local utils = wesnoth.require "wml-utils"
 local wml_actions = wesnoth.wml_actions
 local T = wml.tag
@@ -548,7 +547,7 @@ end
 
 function wml_actions.store_side(cfg)
 	local writer = utils.vwriter.init(cfg, "side")
-	for t, side_number in helper.get_sides(cfg) do
+	for t, side_number in wesnoth.sides.iter(cfg) do
 		local container = t.__cfg
 		-- set values not properly handled by the __cfg
 		container.income = t.total_income
