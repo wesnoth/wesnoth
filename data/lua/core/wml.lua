@@ -136,7 +136,9 @@ end
 local create_tag_mt = {
 	__metatable = "WML tag builder",
 	__index = function(self, n)
-		return function(cfg) return { n, cfg } end
+		return function(cfg)
+			return wesnoth.named_tuple({ n, cfg }, {"tag", "contents"})
+		end
 	end
 }
 

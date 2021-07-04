@@ -647,7 +647,7 @@ void luaW_filltable(lua_State *L, const config& cfg)
 	int k = 1;
 	for (const config::any_child ch : cfg.all_children_range())
 	{
-		lua_createtable(L, 2, 0);
+		luaW_push_namedtuple(L, {"tag", "contents"});
 		lua_pushstring(L, ch.key.c_str());
 		lua_rawseti(L, -2, 1);
 		lua_newtable(L);
