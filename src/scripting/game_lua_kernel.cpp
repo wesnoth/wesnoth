@@ -1454,7 +1454,7 @@ int game_lua_kernel::impl_scenario_get(lua_State *L)
 	return_string_attrib("type", classification.campaign_type.to_string());
 	return_string_attrib("difficulty", classification.difficulty);
 	return_bool_attrib("show_credits", classification.end_credits);
-	return_string_attrib("end_text", classification.end_text);
+	return_tstring_attrib("end_text", classification.end_text);
 	return_int_attrib("end_text_duration", classification.end_text_duration);
 	if(!classification.campaign.empty()) {
 		return_cfgref_attrib("campaign", find_addon("campaign", classification.campaign));
@@ -1513,7 +1513,7 @@ int game_lua_kernel::impl_scenario_set(lua_State *L)
 
 	game_classification& classification = play_controller_.get_classification();
 	modify_bool_attrib("show_credits", classification.end_credits = value);
-	modify_string_attrib("end_text", classification.end_text = value);
+	modify_tstring_attrib("end_text", classification.end_text = value);
 	modify_int_attrib("end_text_duration", classification.end_text_duration = value);
 	if(strcmp(m, "end_level_data") == 0) {
 		vconfig cfg(luaW_checkvconfig(L, 3));
