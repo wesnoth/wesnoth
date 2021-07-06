@@ -135,19 +135,18 @@ namespace
 					const auto& cat = spirit_po::default_catalog::from_istream(*po_file);
 					extra_messages_.emplace(get_base().domain(domain), cat);
 				} catch(const spirit_po::catalog_exception& e) {
-					throw_po_error(lang_name_long, domain, e.what());
+					// Treat any parsing error in the same way as the file not existing - just leave
+					// this domain untranslated but continue to load other domains.
+					log_po_error(lang_name_long, domain, e.what());
 				} catch(const std::ios::failure&) {
-					throw_po_error(lang_name_long, domain, strerror(errno));
+					log_po_error(lang_name_long, domain, strerror(errno));
 				}
 			}
 		}
 
-		[[noreturn]] static void throw_po_error(const std::string& lang, const std::string& dom, const std::string& detail) {
-			std::ostringstream err;
-			err << "Error opening language file for " << lang << ", textdomain " << dom
-				<< ":\n  " << detail << '\n';
-			ERR_G << err.str() << std::flush;
-			throw game::error(err.str());
+		static void log_po_error(const std::string& lang, const std::string& dom, const std::string& detail) {
+			ERR_G << "Error opening language file for " << lang << ", textdomain " << dom
+				<< ":\n  " << detail << '\n' << std::flush;
 		}
 
 		const char* get(int domain_id, const char* ctx, const char* msg_id) const override
