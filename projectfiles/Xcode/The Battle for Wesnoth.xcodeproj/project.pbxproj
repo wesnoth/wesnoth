@@ -816,7 +816,7 @@
 		91A215CD1CAD969200927AEA /* lobby_info.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55BE04911234B1A00154E6C /* lobby_info.cpp */; };
 		91A215E21CAD9B9000927AEA /* libpango-1.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EC5C242E18EF07B4001FA499 /* libpango-1.0.0.dylib */; };
 		91A215E31CAD9B9000927AEA /* libpangocairo-1.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EC5C242F18EF07B4001FA499 /* libpangocairo-1.0.0.dylib */; };
-		91A41F901CA22A98008B10D5 /* libreadline.8.0.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = ECA9E7461CA20AA800A947D6 /* libreadline.8.0.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		91A41F901CA22A98008B10D5 /* libreadline.8.1.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = ECA9E7461CA20AA800A947D6 /* libreadline.8.1.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		91B621A21B76A3CC00B00E0F /* build_info.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91B621A11B76A3CC00B00E0F /* build_info.cpp */; };
 		91B621BA1B76B2C900B00E0F /* version.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91B621B91B76B2C900B00E0F /* version.cpp */; };
 		91B6220A1B76C0A600B00E0F /* libcairo.2.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = B513B2270ED36BFB0006E551 /* libcairo.2.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
@@ -1039,7 +1039,6 @@
 		91E3570B1CACC9B200774252 /* singleplayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC2F600C1A048E220018C9D6 /* singleplayer.cpp */; };
 		91ECD5D21BA11A5200B25CF1 /* unit_creator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91ECD5D01BA11A5200B25CF1 /* unit_creator.cpp */; };
 		91F8E12E260A25E2002312BA /* lua_mathx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91F8E12D260A25E1002312BA /* lua_mathx.cpp */; };
-		91F8E135260A2676002312BA /* lua_audio.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91F8E133260A2676002312BA /* lua_audio.cpp */; };
 		91FAC70A1C7FBC3400DAB2C3 /* lua_formula_bridge.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91FAC7091C7FBC2C00DAB2C3 /* lua_formula_bridge.cpp */; };
 		91FBBAD81CB6BC3F00470BFE /* filesystem_sdl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91FBBAD71CB6BC3F00470BFE /* filesystem_sdl.cpp */; };
 		91FBBADB1CB6D1B700470BFE /* markov_generator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91FBBAD91CB6D1B700470BFE /* markov_generator.cpp */; };
@@ -1296,7 +1295,7 @@
 		ECA563871A47BA36006278A5 /* hotkey_handler_mp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECA563831A47BA36006278A5 /* hotkey_handler_mp.cpp */; };
 		ECA563891A47BA36006278A5 /* hotkey_handler_sp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECA563851A47BA36006278A5 /* hotkey_handler_sp.cpp */; };
 		ECA5638A1A47BA36006278A5 /* hotkey_handler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECA563861A47BA36006278A5 /* hotkey_handler.cpp */; };
-		ECA9E7471CA20AA800A947D6 /* libreadline.8.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = ECA9E7461CA20AA800A947D6 /* libreadline.8.0.dylib */; };
+		ECA9E7471CA20AA800A947D6 /* libreadline.8.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = ECA9E7461CA20AA800A947D6 /* libreadline.8.1.dylib */; };
 		ECAB84551B0C1934001A3EB7 /* shroud_clearing_action.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECAB844E1B0C1933001A3EB7 /* shroud_clearing_action.cpp */; };
 		ECAB84561B0C1934001A3EB7 /* undo_action.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECAB844F1B0C1933001A3EB7 /* undo_action.cpp */; };
 		ECAB84571B0C1934001A3EB7 /* undo_dismiss_action.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECAB84501B0C1933001A3EB7 /* undo_dismiss_action.cpp */; };
@@ -1330,7 +1329,7 @@
 		ECF0F80123A09929004A2011 /* lua_stringx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECF0F80023A09929004A2011 /* lua_stringx.cpp */; };
 		ECF0F80323A09933004A2011 /* lua_wml.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECF0F80223A09932004A2011 /* lua_wml.cpp */; };
 		ECF44F6A1FC8A82B00B404D6 /* make.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECF44F681FC8A82A00B404D6 /* make.cpp */; };
-		ECF9D43D19F3FF9400E6C9D9 /* filesystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECF9D43C19F3FF9400E6C9D9 /* filesystem.cpp */; settings = {COMPILER_FLAGS = "-DPREFERENCES_DIR='\"Library/Application Support/Wesnoth_1.15\"' -DHAS_RELATIVE_LOCALEDIR"; }; };
+		ECF9D43D19F3FF9400E6C9D9 /* filesystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECF9D43C19F3FF9400E6C9D9 /* filesystem.cpp */; settings = {COMPILER_FLAGS = "-DPREFERENCES_DIR='\"Library/Application Support/Wesnoth_1.17\"' -DHAS_RELATIVE_LOCALEDIR"; }; };
 		ECF9D43E19F3FF9400E6C9D9 /* filesystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECF9D43C19F3FF9400E6C9D9 /* filesystem.cpp */; };
 		ECFA82E3184E59F3006782FB /* command_executor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECFA82DA184E59F3006782FB /* command_executor.cpp */; };
 		ECFA82E4184E59F3006782FB /* hotkey_command.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECFA82DC184E59F3006782FB /* hotkey_command.cpp */; };
@@ -1425,7 +1424,7 @@
 				46515C452569CE3400084CE2 /* libcrypto.1.1.dylib in Copy Frameworks */,
 				91B6221B1B76C0A600B00E0F /* libpng16.16.dylib in Copy Frameworks */,
 				4674EE9D24CD1E64007C18CE /* libfribidi.0.dylib in Copy Frameworks */,
-				91A41F901CA22A98008B10D5 /* libreadline.8.0.dylib in Copy Frameworks */,
+				91A41F901CA22A98008B10D5 /* libreadline.8.1.dylib in Copy Frameworks */,
 			);
 			name = "Copy Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2236,7 +2235,6 @@
 		91EF6C001C9E22E400E2A733 /* reference_counter.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = reference_counter.hpp; sourceTree = "<group>"; };
 		91F8E12C260A25E1002312BA /* lua_mathx.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = lua_mathx.hpp; sourceTree = "<group>"; };
 		91F8E12D260A25E1002312BA /* lua_mathx.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lua_mathx.cpp; sourceTree = "<group>"; };
-		91F8E133260A2676002312BA /* lua_audio.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lua_audio.cpp; sourceTree = "<group>"; };
 		91FAC7081C7F931900DAB2C3 /* lua_formula_bridge.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = lua_formula_bridge.hpp; sourceTree = "<group>"; };
 		91FAC7091C7FBC2C00DAB2C3 /* lua_formula_bridge.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lua_formula_bridge.cpp; sourceTree = "<group>"; };
 		91FBBAD71CB6BC3F00470BFE /* filesystem_sdl.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = filesystem_sdl.cpp; sourceTree = "<group>"; };
@@ -2729,7 +2727,7 @@
 		ECA563831A47BA36006278A5 /* hotkey_handler_mp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = hotkey_handler_mp.cpp; sourceTree = "<group>"; };
 		ECA563851A47BA36006278A5 /* hotkey_handler_sp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = hotkey_handler_sp.cpp; sourceTree = "<group>"; };
 		ECA563861A47BA36006278A5 /* hotkey_handler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = hotkey_handler.cpp; sourceTree = "<group>"; };
-		ECA9E7461CA20AA800A947D6 /* libreadline.8.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libreadline.8.0.dylib; path = lib/libreadline.8.0.dylib; sourceTree = "<group>"; };
+		ECA9E7461CA20AA800A947D6 /* libreadline.8.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libreadline.8.1.dylib; path = lib/libreadline.8.1.dylib; sourceTree = "<group>"; };
 		ECAB844E1B0C1933001A3EB7 /* shroud_clearing_action.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = shroud_clearing_action.cpp; sourceTree = "<group>"; };
 		ECAB844F1B0C1933001A3EB7 /* undo_action.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = undo_action.cpp; sourceTree = "<group>"; };
 		ECAB84501B0C1933001A3EB7 /* undo_dismiss_action.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = undo_dismiss_action.cpp; sourceTree = "<group>"; };
@@ -2824,7 +2822,7 @@
 			files = (
 				468A5BAF258CD3F8004A80EF /* libboost_random-mt.dylib in Frameworks */,
 				46406DF1230DA73E0069492E /* Security.framework in Frameworks */,
-				ECA9E7471CA20AA800A947D6 /* libreadline.8.0.dylib in Frameworks */,
+				ECA9E7471CA20AA800A947D6 /* libreadline.8.1.dylib in Frameworks */,
 				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
 				46A72F4524D7108A0033B5A9 /* CoreGraphics.framework in Frameworks */,
 				F4D2A99614DAED0E00CAFF31 /* CoreFoundation.framework in Frameworks */,
@@ -3351,7 +3349,7 @@
 				91C554661D77A545002DB0C8 /* libpcre.1.dylib */,
 				B513B2280ED36BFB0006E551 /* libpixman-1.0.dylib */,
 				EC5C243118EF07B4001FA499 /* libpng16.16.dylib */,
-				ECA9E7461CA20AA800A947D6 /* libreadline.8.0.dylib */,
+				ECA9E7461CA20AA800A947D6 /* libreadline.8.1.dylib */,
 				464C0362228361B5007D2741 /* libSDL2_image-2.0.0.dylib */,
 				464C0368228361B7007D2741 /* libSDL2_mixer-2.0.0.dylib */,
 				464C0365228361B6007D2741 /* libSDL2_net-2.0.0.dylib */,
@@ -4671,9 +4669,7 @@
 				91B621E21B76BAF300B00E0F /* context.hpp */,
 				EC218EA21A106673007C910C /* game_lua_kernel.cpp */,
 				91B621E41B76BB0100B00E0F /* game_lua_kernel.hpp */,
-				91F8E133260A2676002312BA /* lua_audio.cpp */,
 				EC3863621EB6286E0048B0C8 /* lua_audio.cpp */,
-				EC3863631EB6286E0048B0C8 /* lua_audio.hpp */,
 				461DC52B241F836200B9DD10 /* lua_color.cpp */,
 				461DC52C241F836200B9DD10 /* lua_color.hpp */,
 				EC218E9E1A106648007C910C /* lua_common.cpp */,
@@ -5535,7 +5531,6 @@
 				46F92E732174F6A400602C1C /* addon_list.cpp in Sources */,
 				46F92E8D2174F6A400602C1C /* password_box.cpp in Sources */,
 				46F92DF92174F6A400602C1C /* unit_list.cpp in Sources */,
-				91F8E135260A2676002312BA /* lua_audio.cpp in Sources */,
 				46F92E952174F6A400602C1C /* spacer.cpp in Sources */,
 				627F1EDB175AF35C000042E0 /* aspect_advancements.cpp in Sources */,
 				EC386CF1195119AA006004ED /* animation_component.cpp in Sources */,
