@@ -35,6 +35,8 @@
 		461CE967205C3A8700E6E98F /* base64.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 469BDB53205C357400DBF748 /* base64.cpp */; };
 		461DC52D241F836300B9DD10 /* lua_color.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 461DC52B241F836200B9DD10 /* lua_color.cpp */; };
 		461DC52E241F875A00B9DD10 /* lua_color.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 461DC52B241F836200B9DD10 /* lua_color.cpp */; };
+		46341A9026982FA900D82F7C /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C58BBDF21822A930078D25A /* Security.framework */; };
+		46341A9126982FF200D82F7C /* lua_mathx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91F8E12D260A25E1002312BA /* lua_mathx.cpp */; };
 		463896712034180900075E54 /* deprecation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 463896702034180900075E54 /* deprecation.cpp */; };
 		463896722034180900075E54 /* deprecation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 463896702034180900075E54 /* deprecation.cpp */; };
 		46406DE9230DA7030069492E /* libogg.0.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 464C0363228361B6007D2741 /* libogg.0.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
@@ -2931,6 +2933,7 @@
 				468A5B9C258CD3B5004A80EF /* libboost_thread-mt.dylib in Frameworks */,
 				4674EE9E24CD1EC1007C18CE /* libfribidi.0.dylib in Frameworks */,
 				91C554691D77A545002DB0C8 /* libpcre.1.dylib in Frameworks */,
+				46341A9026982FA900D82F7C /* Security.framework in Frameworks */,
 				46515C322569CE0B00084CE2 /* libssl.1.1.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -6235,6 +6238,7 @@
 				916407791D3C371E0057C4DE /* markov_generator.cpp in Sources */,
 				46F92E062174F6A400602C1C /* preferences_dialog.cpp in Sources */,
 				46F92DD02174F6A300602C1C /* label_settings.cpp in Sources */,
+				46341A9126982FF200D82F7C /* lua_mathx.cpp in Sources */,
 				9164077A1D3C37350057C4DE /* filesystem_sdl.cpp in Sources */,
 				46F92E282174F6A400602C1C /* mp_create_game.cpp in Sources */,
 				9164077B1D3C37470057C4DE /* lua_formula_bridge.cpp in Sources */,
