@@ -338,6 +338,7 @@ WML_HANDLER_FUNCTION(do_command,, cfg)
 			/*show*/ true,
 			/*error_handler*/ &on_replay_error
 		);
+		ai::manager::get_singleton().raise_gamestate_changed();
 	}
 }
 
