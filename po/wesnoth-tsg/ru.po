@@ -1,13 +1,13 @@
 # translation of ru.po to
 # Azamat H. Hackimov <azamat.hackimov@gmail.com>, 2006.
 # Fedor Khod'kov <fedor76@istra.ru>, 2009-2014
-# Artem Khrapov (kabachuha) <artemkhrapov2001@yandex.ru>, 2020.
+# Artem Khrapov (kabachuha) <artemkhrapov2001@yandex.ru>, 2020-2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-tsg.po\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-06-23 15:42 UTC\n"
-"PO-Revision-Date: 2020-09-07 18:17+0300\n"
+"POT-Creation-Date: 2021-06-23 15:36 UTC\n"
+"PO-Revision-Date: 2021-07-03 21:25+0300\n"
 "Last-Translator: Artem Khrapov <artemkhrapov2001@yandex.ru>\n"
 "Language-Team: https://wiki.wesnoth.org/RussianTranslation\n"
 "Language: ru\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 2.4.1\n"
+"X-Generator: Poedit 3.0\n"
 "X-Poedit-Bookmarks: -1,139,-1,-1,-1,-1,-1,-1,-1,-1\n"
 "X-Poedit-SourceCharset: utf-8\n"
 
@@ -48,10 +48,8 @@ msgstr ""
 
 #. [campaign]: id=The_South_Guard
 #: data/campaigns/The_South_Guard/_main.cfg:22
-#, fuzzy
-#| msgid "(Rookie level, 9 scenarios.)"
 msgid "(Novice level, 8 scenarios.)"
-msgstr "(Для начинающих, 9 сценариев.)"
+msgstr "(Для начинающих, 8 сценариев.)"
 
 #. [campaign]: id=The_South_Guard
 #: data/campaigns/The_South_Guard/_main.cfg:25
@@ -90,10 +88,8 @@ msgstr "Разработка кампании"
 
 #. [about]
 #: data/campaigns/The_South_Guard/_main.cfg:38
-#, fuzzy
-#| msgid "Campaign Design"
 msgid "Latest Campaign Revision"
-msgstr "Разработка кампании"
+msgstr "Последняя переработка кампании"
 
 #. [about]
 #: data/campaigns/The_South_Guard/_main.cfg:44
@@ -2410,10 +2406,6 @@ msgstr ""
 #. [message]: speaker=narrator
 #. All of Urza Afalas’s units have been transferred to the player’s side. The troops who attacked or were recruited last turn can’t attack this turn; the others can. The “disengaged” orb is the one used for Under the Burning Sun’s disengage ability.
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:875
-#, fuzzy
-#| msgid ""
-#| "Urza Afalas’s troops are exhausted from battle and cannot attack this "
-#| "turn, but are still able to withdraw and reposition themselves."
 msgid ""
 "Many of Urza Afalas’s troops are exhausted from battle and cannot attack "
 "this turn, but are still able to withdraw and reposition themselves.\n"
@@ -2422,7 +2414,10 @@ msgid ""
 "orb."
 msgstr ""
 "Войска Урзы Афаласа измотаны сражением, они не смогут атаковать в течение "
-"этого хода, но все ещё способны отступить и перегруппироваться."
+"этого хода, но все ещё способны отступить и перегруппироваться.\n"
+"\n"
+"Бойцы, которые могут передвигаться, но не могут атаковать, помечены шаром "
+"<i>выхода из боя</i>."
 
 #. [message]: speaker=Urza Afalas
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:909
@@ -2720,8 +2715,6 @@ msgstr "Мал Маул"
 
 #. ['unit name']
 #: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:303
-#, fuzzy
-#| msgid "Mal Maul"
 msgid "female^Mal Maul"
 msgstr "Мал Маул"
 
@@ -5342,17 +5335,6 @@ msgstr ""
 #. [part]
 #. Epilogue B
 #: data/campaigns/The_South_Guard/utils/sg_story.cfg:188
-#, fuzzy
-#| msgid ""
-#| "After the battle, Deoran led an expedition to the southern border posts, "
-#| "where the forts had been smashed into crumbled ruins, and blood and "
-#| "broken weapons were scattered all about. He silently cursed the lich for "
-#| "the lack of bodies at the site of the battle, but deep down, he had known "
-#| "that that would be the fate of the men who had valiantly given their "
-#| "lives so that Westin might survive the undead onslaught. Still, he found "
-#| "small consolation in locating Sir Gerrick’s sword and shield and bearing "
-#| "them back with him to Westin. Those he placed atop Gerrick’s mound, where "
-#| "they became a symbol of sacrifice, and loyalty, and valor."
 msgid ""
 "After the battle, Deoran led an expedition to the southern border posts, "
 "where the forts had been smashed into crumbled ruins, and blood and broken "
