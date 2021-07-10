@@ -1,15 +1,15 @@
 # Turkish translations for Battle for Wesnoth package.
-# Copyright (C) 2019 Wesnoth development team
+# Copyright (C) 2021 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 #
 # ihsan Haluk AKIN <ihsan_akin@yahoo.com>, 2005, 2006.
-# Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>, 2008,...,2019.
+# Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>, 2008,...,2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-ei\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2021-06-23 15:36 UTC\n"
-"PO-Revision-Date: 2020-01-19 15:20+0300\n"
+"PO-Revision-Date: 2021-07-08 06:52+0300\n"
 "Last-Translator: Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>\n"
 "Language-Team: Turkish\n"
 "Language: tr\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.8.11\n"
+"X-Generator: Poedit 2.2.1\n"
 
 #. [campaign]: id=Eastern_Invasion
 #: data/campaigns/Eastern_Invasion/_main.cfg:13
@@ -52,7 +52,7 @@ msgstr "Silahşör"
 #. [campaign]: id=Eastern_Invasion
 #: data/campaigns/Eastern_Invasion/_main.cfg:20
 msgid "Difficult"
-msgstr ""
+msgstr "Zor"
 
 #. [campaign]: id=Eastern_Invasion
 #: data/campaigns/Eastern_Invasion/_main.cfg:20
@@ -74,10 +74,8 @@ msgstr ""
 
 #. [campaign]: id=Eastern_Invasion
 #: data/campaigns/Eastern_Invasion/_main.cfg:24
-#, fuzzy
-#| msgid "(Novice level, 16 scenarios.)"
 msgid "(Intermediate level, 16 scenarios.)"
-msgstr "(Toy seviyesi, 16 senaryo)"
+msgstr "(Orta seviye, 16 senaryo)"
 
 #. [about]
 #: data/campaigns/Eastern_Invasion/_main.cfg:28
@@ -171,13 +169,6 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:40
-#, fuzzy
-#| msgid ""
-#| "In the days of the king Garard I, two strong-points had been built along "
-#| "the near bank of the Weldyn, south of Soradoc, to stop bandits and orcish "
-#| "raiders out of the Estmarks from entering Wesnoth. But in later years the "
-#| "River Guard posts had been abandoned, as colonists spread into the "
-#| "Estmarks and the orcs were driven in retreat north of the Great River."
 msgid ""
 "In the days of King Garard I, two strong-points had been built along the "
 "near bank of the Weldyn, south of Soradoc, to stop bandits and orcish "
@@ -185,7 +176,7 @@ msgid ""
 "River Guard posts had been abandoned, as colonists spread into the Estmarks "
 "and the orcs were driven in retreat north of the Great River."
 msgstr ""
-"Kral I. Garard  zamanında, Soradok'un güneyinde, Veldin nehrinin kıyı "
+"Kral I. Garard zamanında, Soradok'un güneyinde, Veldin nehrinin kıyı "
 "şeridinde, haydutları engellemek ve akıncıların Vesnot'a girmelerini "
 "engellemek için iki güçlü karakol inşa edildi. Fakat sonraki yıllarda, Nehir "
 "Koruma karakolları terkedildi; sömürgeciler Estmark'a yayıldı ve orklar "
@@ -598,10 +589,6 @@ msgstr "Kim var orada?"
 
 #. [message]: speaker=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:328
-#, fuzzy
-#| msgid ""
-#| "We are soldiers of the king of Wesnoth. Will you help us fight these "
-#| "trolls?"
 msgid ""
 "We are soldiers of the King of Wesnoth. Will you help us fight these trolls?"
 msgstr ""
@@ -1575,7 +1562,7 @@ msgstr "Mal-Arnay"
 #. [message]: speaker=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/06_Two_Paths.cfg:145
 msgid "It looks like the road splits here. Which way shall we go?"
-msgstr " Yol burada ikiye ayrılıyor gibi görünüyor. Hangi yoldan gideceğiz?"
+msgstr "Yol burada ikiye ayrılıyor gibi görünüyor. Hangi yoldan gideceğiz?"
 
 #. [message]: speaker=Owaec
 #: data/campaigns/Eastern_Invasion/scenarios/06_Two_Paths.cfg:150
@@ -1641,7 +1628,7 @@ msgstr ""
 #. [message]: speaker=Wak-Rano
 #: data/campaigns/Eastern_Invasion/scenarios/06_Two_Paths.cfg:175
 msgid "Perhaps he will die, and I will win our battle without fighting."
-msgstr " Belki ölürsün, o zaman savaşı dövüşmeden kazanmış olurum."
+msgstr "Belki ölürsün, o zaman savaşı dövüşmeden kazanmış olurum."
 
 #. [message]: speaker=Mal-Arnai
 #: data/campaigns/Eastern_Invasion/scenarios/06_Two_Paths.cfg:180
@@ -1708,19 +1695,14 @@ msgstr ""
 
 #. [message]: speaker=Owaec
 #: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:157
-#, fuzzy
-#| msgid ""
-#| "Across this river lie the Northlands. If we can get there, we may be able "
-#| "to get some ogres to help us — but the orcs will definitely attack us "
-#| "before that happens."
 msgid ""
 "Across this river lie the Northlands. If we can get there, we may be able to "
 "get some ogres to help us — but the orcs will definitely attack us before "
 "that happens."
 msgstr ""
 "Bu ırmak kuzey topraklarına doğru uzanıyor. Eğer oraya gidebilirsek, bize "
-"yardım etmeleri için bir kaç tepegöz bulabiliriz — ama biz daha oraya "
-"varamadan orklar bize kesin saldıracaktır."
+"yardım etmeleri için bir kaç tepegöz bulabiliriz — ama daha oraya varamadan "
+"orklar bize kesin saldıracaktır."
 
 #. [message]: speaker=Grug
 #: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:161
@@ -1847,11 +1829,6 @@ msgstr ""
 
 #. [message]: speaker=Owaec
 #: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:121
-#, fuzzy
-#| msgid ""
-#| "Across this river lie the Northlands. Ogres live there, as do orcs. We "
-#| "should proceed with caution. The undead are dangerous, but the orcs may "
-#| "be more dangerous still."
 msgid ""
 "Across this river lie the Northlands. Ogres live there, as do orcs. We "
 "should proceed with caution. The undead are dangerous, but the orcs may be "
@@ -1859,7 +1836,7 @@ msgid ""
 msgstr ""
 "Bu ırmak kuzey topraklarına doğru uzanıyor. Tepegözler orada yaşar. Ama "
 "orklar da orada yaşar. Dikkatlice ilerlemeliyiz. Arkamızdaki yarı ölüler "
-"tehlikeli ama orklar daha da tehlikeli olabilirler."
+"tehlikeli ama orklar daha da tehlikeli olabilir."
 
 #. [message]: speaker=Mal-un-Karad
 #: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:125
@@ -1874,7 +1851,7 @@ msgstr ""
 #. "Wake" doesn't mean "raise undead" here. The reinforcements are sea creatures, they're alive but hidden underwater.
 #: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:135
 msgid "Time to wake my reinforcements!"
-msgstr ""
+msgstr "Uyanma vakti desteklerim!"
 
 #. [message]: speaker=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:252
@@ -2263,8 +2240,6 @@ msgstr ""
 
 #. [message]: speaker=Owaec
 #: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:151
-#, fuzzy
-#| msgid "But what happened to the people who lived there?"
 msgid "But what happened to the people who lived there?"
 msgstr "Fakat orada yaşayanlara ne oldu?"
 
@@ -2288,10 +2263,8 @@ msgstr ""
 
 #. [label]
 #: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:164
-#, fuzzy
-#| msgid "Move Dacyn to the stronghold"
 msgid "The stronghold"
-msgstr "Dasin'i kaleye götür"
+msgstr "Kale"
 
 #. [message]: speaker=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:194
@@ -2594,10 +2567,8 @@ msgstr "Önce altımızı geri almalıyız! Hazinelerine katmış olmalılar."
 
 #. [objective]: condition=win
 #: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:1113
-#, fuzzy
-#| msgid "Move Gweddry to the tunnel exit"
 msgid "Move Gweddry to the western exit"
-msgstr "Givedri’yi tünel çıkışına götür"
+msgstr "Givedri’yi batı çıkışına götür"
 
 #. [objective]: condition=win
 #: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:1117
@@ -2672,10 +2643,8 @@ msgstr "Ran-Lar"
 
 #. [objective]: condition=win
 #: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:150
-#, fuzzy
-#| msgid "Destroy the bridge OR defeat all enemies"
 msgid "Destroy the bridge"
-msgstr "Köprüyü yok et VEYA bütün düşmanları öldür"
+msgstr "Köprüyü yık"
 
 #. [note]
 #: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:175
@@ -3360,7 +3329,7 @@ msgstr "Evet. Sanırım öyle yapmalıyız..."
 #. [option]
 #: data/campaigns/Eastern_Invasion/scenarios/16_Weldyn_under_Attack.cfg:310
 msgid "challenge Mal-Ravanal to a duel."
-msgstr " Mal-Ravanal'ı düelloya davet et."
+msgstr "Mal-Ravanal'ı düelloya davet et."
 
 #. [message]: speaker=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/16_Weldyn_under_Attack.cfg:314
@@ -3931,10 +3900,6 @@ msgstr ""
 
 #. [attacks]: id=shock
 #: data/campaigns/Eastern_Invasion/utils/abilities.cfg:10
-#, fuzzy
-#| msgid ""
-#| " This unit’s melee attack can overwhelm the defenses of enemies, "
-#| "preventing them from retaliating as effectively."
 msgid ""
 "This unit’s melee attack can overwhelm the defenses of enemies, preventing "
 "them from retaliating as effectively."
@@ -4088,13 +4053,3 @@ msgstr "Ben bu nesneyi kullanmak için uygun değilim. Başka biri alsın."
 #: data/campaigns/Eastern_Invasion/utils/macros.cfg:67
 msgid "Holy Amulet"
 msgstr "Okunmuş Tılsım"
-
-#~ msgid "Creatures from the deep, I summon thee to destroy this foe!"
-#~ msgstr ""
-#~ "Derinlerdeki yaratıklar, bu düşmanı yoketmeniz için sizi çağırıyorum!"
-
-#~ msgid "Easy"
-#~ msgstr "Kolay"
-
-#~ msgid "Gweddry reaches the western exit"
-#~ msgstr "Gıvedri batı çıkışına ulaşırsa"
