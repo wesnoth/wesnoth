@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2021-06-23 11:36-0400\n"
-"PO-Revision-Date: 2021-06-09 21:20+0200\n"
+"PO-Revision-Date: 2021-07-09 23:00+0200\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
@@ -63,10 +63,9 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:22
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:61
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:91
-#, fuzzy
-#| msgid "This unit is capable of basic healing."
 msgid "This unit is capable of basic healing and slowing dehydration."
-msgstr "Tato jednotka dokáže poskytnout základní léčení."
+msgstr ""
+"Tato jednotka dokáže poskytnout základní léčení a zpomalit dehydrataci."
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:40
@@ -132,16 +131,12 @@ msgstr ""
 
 #. [heals]
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:97
-#, fuzzy
-#| msgid ""
-#| "This unit is capable of healing those around it, and curing them of "
-#| "poison."
 msgid ""
 "This unit is capable of healing those around it, slowing dehydration, and "
 "curing them of poison."
 msgstr ""
-"Tato jednotka je schopna jednak léčit, ale také uzdravovat okolní jednotky "
-"z otravy."
+"Tato jednotka je schopna ty okolo sebe jednak léčit, ale také u nich "
+"zpomalit dehydrataci a uzdravit je z otravy."
 
 #. [trait]: id=healthy
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:11
@@ -3171,7 +3166,7 @@ msgstr ""
 "nejsi ostřílený hráč, je daleko pravděpodobnější, že tvá porážka byla "
 "způsobena jednou z <italic>text='obvyklých'</italic> chyb uvedených výše "
 "a nesvědčí o chybě v tažení. Avšak pokud si stejně myslíš, že jsi objevil "
-"chybu, tak ji každopádně nahlaš!"
+"chybu, tak ji každopádně nahlas!"
 
 #. [topic]: id=whylost
 #: data/core/help.cfg:337
@@ -5335,18 +5330,16 @@ msgstr "Tento útok má vždy alespoň 60% šanci zásahu, je-li užit ofensivn�
 #. [chance_to_hit]: id=deflect
 #: data/core/macros/abilities.cfg:489
 msgid "deflect"
-msgstr ""
+msgstr "odražení"
 
 #. [chance_to_hit]: id=deflect
 #: data/core/macros/abilities.cfg:490
-#, fuzzy
-#| msgid ""
-#| "When used offensively, this attack always has at least a 60% chance to "
-#| "hit."
 msgid ""
 "When used defensively, this attack reduces the opponent's chance to hit by "
 "10%."
-msgstr "Tento útok má vždy alespoň 60% šanci zásahu, je-li užit ofensivně."
+msgstr ""
+"Pokud je tento útok použit defenzivně, snižuje o 10 % šanci protivníka na "
+"zásah."
 
 #. [chance_to_hit]: id=deflect
 #: data/core/macros/abilities.cfg:491
@@ -5354,6 +5347,7 @@ msgid ""
 "This unit’s defensive techniques reduce the chance of a successful enemy "
 "attack."
 msgstr ""
+"Obranné techniky této jednotky snižují šanci na úspěšný útok nepřítele."
 
 #. [chance_to_hit]: id=magical
 #: data/core/macros/abilities.cfg:505
@@ -5394,7 +5388,7 @@ msgstr ""
 #. [damage]: id=absorb
 #: data/core/macros/abilities.cfg:542
 msgid "absorb"
-msgstr ""
+msgstr "zmírnění"
 
 #. [damage]: id=absorb
 #: data/core/macros/abilities.cfg:543
@@ -5402,12 +5396,16 @@ msgid ""
 "This attack puts the unit in good defensive position, and it absorbs some of "
 "the damage dealt by an enemy strike."
 msgstr ""
+"Tento útok staví jednotku do dobrého obranného postavení a tlumí část "
+"poškození utrženého při úderu nepřítele."
 
 #. [damage]: id=absorb
 #: data/core/macros/abilities.cfg:544
 msgid ""
 "This unit can block enemy strikes, so that it takes reduced damage when hit."
 msgstr ""
+"Tato jednotka může blokovat údery nepřátel, takže při zásahu utrpí menší "
+"poškození."
 
 #. [drains]: id=drains
 #: data/core/macros/abilities.cfg:556
