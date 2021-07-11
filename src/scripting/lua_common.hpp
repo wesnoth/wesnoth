@@ -217,7 +217,7 @@ int luaW_pcall_internal(lua_State *L, int nArgs, int nRets);
 int luaW_type_error(lua_State *L, int narg, const char *tname);
 int luaW_type_error(lua_State *L, int narg, const char* kpath, const char *tname);
 
-#define deprecate_attrib(name, prefix, level, version, msg) deprecated_message(prefix "." #name, DEP_LEVEL::level, version, msg)
+#define deprecate_attrib(name, prefix, level, version, msg) deprecated_message(prefix "." name, DEP_LEVEL::level, version, msg)
 
 #define return_deprecated_attrib(type_macro, name, accessor, prefix, level, version, msg) \
 	type_macro(name, ( \
