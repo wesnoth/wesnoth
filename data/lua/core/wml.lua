@@ -7,6 +7,7 @@ local function ensure_config(cfg)
 	end
 	if type(cfg) == 'userdata' then
 		if getmetatable(cfg) == 'wml object' then return true end
+		if getmetatable(cfg) == 'mp settings' then return true end
 		error("Expected a table or wml object but got " .. getmetatable(cfg), 3)
 	else
 		error("Expected a table or wml object but got " .. type(cfg), 3)
