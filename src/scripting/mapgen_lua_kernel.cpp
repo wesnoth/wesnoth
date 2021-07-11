@@ -300,10 +300,12 @@ void mapgen_lua_kernel::user_config(const char * prog, const config & generator)
 
 int mapgen_lua_kernel::intf_get_variable(lua_State *L)
 {
-
 	char const *m = luaL_checkstring(L, 1);
-	variable_access_const v(m, vars_ ? *vars_ : config());
-	return luaW_pushvariable(L, v) ? 1 : 0;
+	if(vars_) {
+		variable_access_const v(m, *vars_);
+		return luaW_pushvariable(L, v) ? 1 : 0;
+	}
+	return 0;
 }
 
 int mapgen_lua_kernel::intf_get_all_vars(lua_State *L) {
