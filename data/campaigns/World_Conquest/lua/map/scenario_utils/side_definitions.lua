@@ -61,7 +61,7 @@ local function add_player_side(scenario, scenario_num, gold)
 		user_team_name = _ "Allies",
 		fog = true,
 		village_gold = 2,
-		share_view = true,
+		share_vision = "all",
 		terrain_liked = "",
 	}
 	if scenario_num == 1 then
