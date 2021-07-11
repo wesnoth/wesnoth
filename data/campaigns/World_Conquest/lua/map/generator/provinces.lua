@@ -12,17 +12,17 @@ local function generate(length, villages, castle, iterations, size, players, isl
 
 	res.height = {
 		-- list of common terrain types which come in at different heights, from highest to lowest
-		dr_height(990, "Uh^Uf"),
+		dr_height(990, "Uh^Tf"),
 		dr_height(980, "Qxu"),
 		dr_height(970, "Uh"),
-		dr_height(950, "Uu^Uf"),
+		dr_height(950, "Uu^Tf"),
 		dr_height(920, "Uu"),
 		dr_height(915, "Qxu"),
 		dr_height(895, "Uh"),
-		dr_height(885, "Uu^Uf"),
+		dr_height(885, "Uu^Tf"),
 		dr_height(860, "Uu"),
 		dr_height(840, "Uh"),
-		dr_height(830, "Uu^Uf"),
+		dr_height(830, "Uu^Tf"),
 		dr_height(800, "Uu"),
 		dr_height(750, "Xu"),
 		dr_height(725, "Mm^Xm"),
@@ -161,15 +161,15 @@ local function generate(length, villages, castle, iterations, size, players, isl
 			rating=1
 		},
 		dr_village {
-			terrain="Uu^Uf",
+			terrain="Uu^Tf",
 			convert_to="Uu^Vud",
-			adjacent_liked="Hh^Uf,Hh,Mm,Uu,Uh,Xu,Qxu,Uu,Uu^Uf,Uu^Uf,Uh^Uf",
+			adjacent_liked="Hh^Tf,Hh,Mm,Uu,Uh,Xu,Qxu,Uu,Uu^Tf,Uu^Tf,Uh^Tf",
 			rating=3
 		},
 		dr_village {
-			terrain="Uh^Uf",
+			terrain="Uh^Tf",
 			convert_to="Uh^Vud",
-			adjacent_liked="Hh^Uf,Hh,Mm,Uu,Uh,Xu,Qxu,Uu,Uu^Uf,Uh^Uf,Uh^Uf",
+			adjacent_liked="Hh^Tf,Hh,Mm,Uu,Uh,Xu,Qxu,Uu,Uu^Tf,Uh^Tf,Uh^Tf",
 			rating=2
 		},
 	}

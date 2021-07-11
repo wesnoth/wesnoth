@@ -164,7 +164,7 @@ local wild_replacement_chances_zone_1_4 = {
 local wild_replacement_chances_zone_2_1 = {
 	default = {
 		wct_terrain_replace { terrain = "Gg" },
-		wct_terrain_replace { terrain = "Gg^Fp,Gg^Fp,Hh,Hh,Hh^Fp,Gg^Fp,Gg^Fp,Hh,Hh,Hh^Fp,Mm,Gg^Uf,Gg^Fmf", percentage = 20, strict = false}
+		wct_terrain_replace { terrain = "Gg^Fp,Gg^Fp,Hh,Hh,Hh^Fp,Gg^Fp,Gg^Fp,Hh,Hh,Hh^Fp,Mm,Gg^Tf,Gg^Fmf", percentage = 20, strict = false}
 	},
 	chances = {
 		{
@@ -187,13 +187,13 @@ local wild_replacement_chances_zone_2_1 = {
 local wild_replacement_chances_zone_2_2 = {
 	default = {
 		wct_terrain_replace { terrain = "Gg,Gg,Gg,Ss"},
-		wct_terrain_replace { terrain = "Gg^Fp,Gg^Fms,Hh,Hh,Hh^Fms,Gg^Fms,Gg^Fds,Hh,Hh,Hh^Fp,Mm,Gg^Uf,Gg^Fds,Gg^Fp", percentage = 20, strict = false}
+		wct_terrain_replace { terrain = "Gg^Fp,Gg^Fms,Hh,Hh,Hh^Fms,Gg^Fms,Gg^Fds,Hh,Hh,Hh^Fp,Mm,Gg^Tf,Gg^Fds,Gg^Fp", percentage = 20, strict = false}
 	},
 	chances = {
 		{
 			value=1,
 			command = {
-				wct_terrain_replace { terrain = "Ss,Ss,Ss,Ss,Ss,Ss,Ss^Uf"}
+				wct_terrain_replace { terrain = "Ss,Ss,Ss,Ss,Ss,Ss,Ss^Tf"}
 			}
 		}
 	}
@@ -202,7 +202,7 @@ local wild_replacement_chances_zone_2_2 = {
 local wild_replacement_chances_zone_2_3 = {
 	default = {
 		wct_terrain_replace { terrain = "Gg,Gs,Ss"},
-		wct_terrain_replace { terrain = "Gg^Fds,Gg^Fms,Hh,Hh,Hh^Fms,Gg^Ftr,Gg^Ftr,Hh,Hh,Hh^Fds,Mm,Hh^Uf,Gs^Ftp,Gs^Fds,Gs^Ftp", percentage = 20, strict = false}
+		wct_terrain_replace { terrain = "Gg^Fds,Gg^Fms,Hh,Hh,Hh^Fms,Gg^Ftr,Gg^Ftr,Hh,Hh,Hh^Fds,Mm,Hh^Tf,Gs^Ftp,Gs^Fds,Gs^Ftp", percentage = 20, strict = false}
 	},
 	chances = {
 		{
@@ -217,7 +217,7 @@ local wild_replacement_chances_zone_2_3 = {
 local wild_replacement_chances_zone_2_4 = {
 	default = {
 		wct_terrain_replace { terrain = "Gs" },
-		wct_terrain_replace { terrain = "Gs^Fds,Gs^Ftp,Hh,Hh,Hh^Ftp,Gs^Fts,Gs^Ft,Hh,Hh,Hh^Fds,Md,Hh^Uf,Gs^Ftp,Gs^Ftd", percentage = 20, strict = false}
+		wct_terrain_replace { terrain = "Gs^Fds,Gs^Ftp,Hh,Hh,Hh^Ftp,Gs^Fts,Gs^Ft,Hh,Hh,Hh^Fds,Md,Hh^Tf,Gs^Ftp,Gs^Ftd", percentage = 20, strict = false}
 	},
 	chances = {
 		{
@@ -245,7 +245,7 @@ local wild_replacement_chances_zone_2_4 = {
 local wild_replacement_chances_zone_3_1 = {
 	default = {
 		wct_terrain_replace { terrain = "Gg" },
-		wct_terrain_replace { terrain = "Gg^Fp,Gg^Fp,Hh,Hh,Hh^Fp,Gg^Fp,Gg^Fp,Hh,Hh,Hh^Fp,Mm,Gg^Uf,Gg^Fmf", percentage = 25, strict = false}
+		wct_terrain_replace { terrain = "Gg^Fp,Gg^Fp,Hh,Hh,Hh^Fp,Gg^Fp,Gg^Fp,Hh,Hh,Hh^Fp,Mm,Gg^Tf,Gg^Fmf", percentage = 25, strict = false}
 	},
 	chances = {
 		{
@@ -268,13 +268,13 @@ local wild_replacement_chances_zone_3_1 = {
 local wild_replacement_chances_zone_3_2 = {
 	default = {
 		wct_terrain_replace { terrain = "Gg" },
-		wct_terrain_replace { terrain = "Gg^Fp,Gg^Fms,Hh,Hh,Hh^Fms,Gg^Fms,Gg^Fds,Hh,Hh,Hh^Fp,Mm,Gg^Uf,Gg^Fds,Gg^Fp", percentage = 25, strict = false}
+		wct_terrain_replace { terrain = "Gg^Fp,Gg^Fms,Hh,Hh,Hh^Fms,Gg^Fms,Gg^Fds,Hh,Hh,Hh^Fp,Mm,Gg^Tf,Gg^Fds,Gg^Fp", percentage = 25, strict = false}
 	},
 	chances = {
 		{
 			value=1,
 			command = {
-				wct_terrain_replace { terrain = "Ss,Ss,Ss,Ss,Ss,Ss,Ss^Uf"}
+				wct_terrain_replace { terrain = "Ss,Ss,Ss,Ss,Ss,Ss,Ss^Tf"}
 			}
 		}
 	}
@@ -283,7 +283,7 @@ local wild_replacement_chances_zone_3_2 = {
 local wild_replacement_chances_zone_3_3 = {
 	default = {
 		wct_terrain_replace { terrain = "Gg,Gg,Gs"},
-		wct_terrain_replace { terrain = "Gg^Fds,Gg^Fms,Hh,Hh,Hh^Fms,Gg^Ftr,Gg^Ftr,Hh,Hh,Hh^Fds,Mm,Hh^Uf,Gs^Ftp,Gs^Fds,Gs^Ftp", percentage = 25, strict = false}
+		wct_terrain_replace { terrain = "Gg^Fds,Gg^Fms,Hh,Hh,Hh^Fms,Gg^Ftr,Gg^Ftr,Hh,Hh,Hh^Fds,Mm,Hh^Tf,Gs^Ftp,Gs^Fds,Gs^Ftp", percentage = 25, strict = false}
 	},
 	chances = {
 		{
@@ -298,7 +298,7 @@ local wild_replacement_chances_zone_3_3 = {
 local wild_replacement_chances_zone_3_4 = {
 	default = {
 		wct_terrain_replace { terrain = "Gs" },
-		wct_terrain_replace { terrain = "Gs^Fds,Gs^Ftp,Hh,Hh,Hh^Ftp,Gs^Fts,Gs^Ft,Hh,Hh,Hh^Fds,Md,Hh^Uf,Gs^Ftp,Gs^Ftd", percentage = 25, strict = false}
+		wct_terrain_replace { terrain = "Gs^Fds,Gs^Ftp,Hh,Hh,Hh^Ftp,Gs^Fts,Gs^Ft,Hh,Hh,Hh^Fds,Md,Hh^Tf,Gs^Ftp,Gs^Ftd", percentage = 25, strict = false}
 	},
 	chances = {
 		{
@@ -332,7 +332,7 @@ local wild_replacement_chances_zone_3_4 = {
 local wild_replacement_chances_zone_4_1 = {
 	default = {
 		wct_terrain_replace { terrain = "Gg" },
-		wct_terrain_replace { terrain = "Gg^Fp,Gg^Fp,Hh,Hh,Hh^Fp,Gg^Fp,Gg^Fp,Hh,Hh,Hh^Fp,Mm,Gg^Uf,Hh,Hh,Hh^Fp,Ms,Hh,Hh,Hh^Fp,Gg^Fmf", percentage = 52, strict = false}
+		wct_terrain_replace { terrain = "Gg^Fp,Gg^Fp,Hh,Hh,Hh^Fp,Gg^Fp,Gg^Fp,Hh,Hh,Hh^Fp,Mm,Gg^Tf,Hh,Hh,Hh^Fp,Ms,Hh,Hh,Hh^Fp,Gg^Fmf", percentage = 52, strict = false}
 	},
 	chances = {
 		{
@@ -347,13 +347,13 @@ local wild_replacement_chances_zone_4_1 = {
 local wild_replacement_chances_zone_4_2 = {
 	default = {
 		wct_terrain_replace { terrain = "Gg,Gg^Efm"},
-		wct_terrain_replace { terrain = "Gg^Fp,Gg^Fms,Hh,Hh,Hh^Fms,Gg^Fms,Gg^Fds,Hh,Hh,Hh^Fp,Mm,Gg^Uf,Hh,Hh,Hh^Fp,Mm,Hh,Hh,Hh^Fp,Gg^Fds,Gg^Fp", percentage = 52, strict = false}
+		wct_terrain_replace { terrain = "Gg^Fp,Gg^Fms,Hh,Hh,Hh^Fms,Gg^Fms,Gg^Fds,Hh,Hh,Hh^Fp,Mm,Gg^Tf,Hh,Hh,Hh^Fp,Mm,Hh,Hh,Hh^Fp,Gg^Fds,Gg^Fp", percentage = 52, strict = false}
 	},
 	chances = {
 		{
 			value=1,
 			command = {
-				wct_terrain_replace { terrain = "Ss,Ss,Ss,Ss,Ss,Ss,Ss^Uf"}
+				wct_terrain_replace { terrain = "Ss,Ss,Ss,Ss,Ss,Ss,Ss^Tf"}
 			}
 		}
 	}
@@ -362,7 +362,7 @@ local wild_replacement_chances_zone_4_2 = {
 local wild_replacement_chances_zone_4_3 = {
 	default = {
 		wct_terrain_replace { terrain = "Gg,Gg,Gs"},
-		wct_terrain_replace { terrain = "Gg^Fds,Gg^Fms,Hh,Hh,Hh^Fms,Gg^Ftr,Gg^Ftr,Hh,Hh,Hh^Fds,Mm,Hh^Uf,Hh,Hh,Hh^Fds,Mm,Hh,Hh,Hh^Fds,Gs^Fds,Gs^Ftp", percentage = 52, strict = false}
+		wct_terrain_replace { terrain = "Gg^Fds,Gg^Fms,Hh,Hh,Hh^Fms,Gg^Ftr,Gg^Ftr,Hh,Hh,Hh^Fds,Mm,Hh^Tf,Hh,Hh,Hh^Fds,Mm,Hh,Hh,Hh^Fds,Gs^Fds,Gs^Ftp", percentage = 52, strict = false}
 	},
 	chances = {
 		{
@@ -377,7 +377,7 @@ local wild_replacement_chances_zone_4_3 = {
 local wild_replacement_chances_zone_4_4 = {
 	default = {
 		wct_terrain_replace { terrain = "Gs" },
-		wct_terrain_replace { terrain = "Gs^Fds,Gs^Ftp,Hh,Hh,Hh^Ftp,Gs^Fts,Gs^Ft,Hh,Hh,Hh^Fds,Md,Hh^Uf,Hh,Hh,Hh^Fds,Md,Hh,Hh,Hh^Fds,Gs^Ftp", percentage = 52, strict = false}
+		wct_terrain_replace { terrain = "Gs^Fds,Gs^Ftp,Hh,Hh,Hh^Ftp,Gs^Fts,Gs^Ft,Hh,Hh,Hh^Fds,Md,Hh^Tf,Hh,Hh,Hh^Fds,Md,Hh,Hh,Hh^Fds,Gs^Ftp", percentage = 52, strict = false}
 	},
 	chances = {
 		{
@@ -432,7 +432,7 @@ local wild_replacement_chances_zone_5_1 = {
 
 local wild_replacement_chances_zone_5_2 = {
 	default = {
-		wct_terrain_replace { terrain = "Gg^Fp,Gg^Fms,Hh,Hh,Hh^Fms,Gg^Fms,Gg^Fds,Hh,Hh,Hh^Fp,Hh^Fp,Mm,Gg^Uf,Mm,Mm,Mm,Mm,Mm,Mm,Mm,Mm,Gg,Gg,Gg,Gg,Gg,Gg,Gg,Hh^Fp,Gg^Fds,Hh"}
+		wct_terrain_replace { terrain = "Gg^Fp,Gg^Fms,Hh,Hh,Hh^Fms,Gg^Fms,Gg^Fds,Hh,Hh,Hh^Fp,Hh^Fp,Mm,Gg^Tf,Mm,Mm,Mm,Mm,Mm,Mm,Mm,Mm,Gg,Gg,Gg,Gg,Gg,Gg,Gg,Hh^Fp,Gg^Fds,Hh"}
 	},
 	chances = {
 		{
@@ -446,7 +446,7 @@ local wild_replacement_chances_zone_5_2 = {
 
 local wild_replacement_chances_zone_5_3 = {
 	default = {
-		wct_terrain_replace { terrain = "Gg^Fds,Gg^Fms,Hh,Hh,Hh^Fms,Hh^Fms,Gg^Ftr,Gg^Ftr,Hh,Hh,Hh^Fds,Mm,Hh^Uf,Mm,Mm,Mm,Mm,Mm,Mm,Mm,Mm,Gg,Gg,Gs,Gg,Gg,Gs,Gg,Gs^Ftp,Gs^Fds,Hh"}
+		wct_terrain_replace { terrain = "Gg^Fds,Gg^Fms,Hh,Hh,Hh^Fms,Hh^Fms,Gg^Ftr,Gg^Ftr,Hh,Hh,Hh^Fds,Mm,Hh^Tf,Mm,Mm,Mm,Mm,Mm,Mm,Mm,Mm,Gg,Gg,Gs,Gg,Gg,Gs,Gg,Gs^Ftp,Gs^Fds,Hh"}
 	},
 	chances = {
 		{
@@ -460,7 +460,7 @@ local wild_replacement_chances_zone_5_3 = {
 
 local wild_replacement_chances_zone_5_4 = {
 	default = {
-		wct_terrain_replace { terrain = "Gs^Fds,Gs^Ftp,Hh,Hh,Hh^Ftp,Gs^Fts,Gs^Ft,Hh,Hh,Hh^Fds,Hh^Fds,Md,Hh^Uf,Md,Md,Md,Md,Md,Md,Md,Md,Gg,Gs,Gg,Gs,Gg,Gs,Gs,Gs^Ftp,Gs^Ftr,Hh"}
+		wct_terrain_replace { terrain = "Gs^Fds,Gs^Ftp,Hh,Hh,Hh^Ftp,Gs^Fts,Gs^Ft,Hh,Hh,Hh^Fds,Hh^Fds,Md,Hh^Tf,Md,Md,Md,Md,Md,Md,Md,Md,Gg,Gs,Gg,Gs,Gg,Gs,Gs,Gs^Ftp,Gs^Ftr,Hh"}
 	},
 	chances = {
 		{
@@ -501,7 +501,7 @@ local wild_replacement_chances_zone_6_1 = {
 
 local wild_replacement_chances_zone_6_2 = {
 	default = {
-		wct_terrain_replace { terrain = "Mm,Ms^Xm,Mm^Xm,Mm^Xm,Mm,Ms^Xm,Mm^Xm,Mm^Xm,Mm,Ms^Xm,Mm^Xm,Mm^Xm,Hh^Fp,Hh^Uf,Gg,Hh^Fms,Hh"}
+		wct_terrain_replace { terrain = "Mm,Ms^Xm,Mm^Xm,Mm^Xm,Mm,Ms^Xm,Mm^Xm,Mm^Xm,Mm,Ms^Xm,Mm^Xm,Mm^Xm,Hh^Fp,Hh^Tf,Gg,Hh^Fms,Hh"}
 	},
 	chances = {
 		{
@@ -515,7 +515,7 @@ local wild_replacement_chances_zone_6_2 = {
 
 local wild_replacement_chances_zone_6_3 = {
 	default = {
-		wct_terrain_replace { terrain = "Mm,Mm^Xm,Mm^Xm,Mm^Xm,Mm,Mm^Xm,Mm^Xm,Mm^Xm,Mm,Mm^Xm,Mm^Xm,Mm^Xm,Hh^Fms,Hh^Uf,Gg,Hh^Fds,Hh"}
+		wct_terrain_replace { terrain = "Mm,Mm^Xm,Mm^Xm,Mm^Xm,Mm,Mm^Xm,Mm^Xm,Mm^Xm,Mm,Mm^Xm,Mm^Xm,Mm^Xm,Hh^Fms,Hh^Tf,Gg,Hh^Fds,Hh"}
 	},
 	chances = {
 		{
@@ -529,7 +529,7 @@ local wild_replacement_chances_zone_6_3 = {
 
 local wild_replacement_chances_zone_6_4 = {
 	default = {
-		wct_terrain_replace { terrain = "Md,Md^Xm,Md^Xm,Md^Xm,Md,Md^Xm,Md^Xm,Md^Xm,Md,Md^Xm,Md^Xm,Md^Xm,Hh^Fds,Hh^Uf,Gs,Hh^Ftp,Hh"}
+		wct_terrain_replace { terrain = "Md,Md^Xm,Md^Xm,Md^Xm,Md,Md^Xm,Md^Xm,Md^Xm,Md,Md^Xm,Md^Xm,Md^Xm,Hh^Fds,Hh^Tf,Gs,Hh^Ftp,Hh"}
 	},
 	chances = {
 		{
@@ -548,7 +548,7 @@ local wild_replacement_chances_zone_6_4 = {
 		{
 			value=1,
 			command = {
-				wct_terrain_replace { terrain = "Sm,Sm,Sm,Sm,Sm,Sm^Uf,Mm,Hh"}
+				wct_terrain_replace { terrain = "Sm,Sm,Sm,Sm,Sm,Sm^Tf,Mm,Hh"}
 			}
 		}
 	}
@@ -588,7 +588,7 @@ local wild_replacement_chances_zone_7_1 = {
 
 local wild_replacement_chances_zone_7_2 = {
 	default = {
-		wct_terrain_replace { terrain = "Uu,Uh,Uu,Uh,Uu,Uh,Uu,Uh,Uu,Uh,Uu,Uh,Uu,Uu,Re,Ww,Wwf,Qxu,Uu^Uf,Uh,Uu,Uu,Uh,Uu,Uu^Em,Uu^Uf"}
+		wct_terrain_replace { terrain = "Uu,Uh,Uu,Uh,Uu,Uh,Uu,Uh,Uu,Uh,Uu,Uh,Uu,Uu,Re,Ww,Wwf,Qxu,Uu^Tf,Uh,Uu,Uu,Uh,Uu,Uu^Em,Uu^Tf"}
 	},
 	chances = {
 		{
@@ -626,13 +626,13 @@ local wild_replacement_chances_zone_7_2 = {
 
 local wild_replacement_chances_zone_7_3 = {
 	default = {
-		wct_terrain_replace { terrain = "Uu,Uh,Uu,Uh,Uu,Uh,Uu,Uh,Uu,Uh,Uu,Uu^Uf,Uu,Uu,Re,Uh^Uf,Wwf,Ql,Uu^Uf,Uh,Uu,Uu,Uh,Uu,Uu^Em,Uu^Uf"}
+		wct_terrain_replace { terrain = "Uu,Uh,Uu,Uh,Uu,Uh,Uu,Uh,Uu,Uh,Uu,Uu^Tf,Uu,Uu,Re,Uh^Tf,Wwf,Ql,Uu^Tf,Uh,Uu,Uu,Uh,Uu,Uu^Em,Uu^Tf"}
 	},
 	chances = {
 		{
 			value=1,
 			command = {
-				wct_terrain_replace { terrain = "Gll^Uf"}
+				wct_terrain_replace { terrain = "Gll^Tf"}
 			}
 		},
 		{
@@ -646,7 +646,7 @@ local wild_replacement_chances_zone_7_3 = {
 
 local wild_replacement_chances_zone_7_4 = {
 	default = {
-		wct_terrain_replace { terrain = "Ql,Uh,Uu,Uu^Uf,Uh^Uf,Uh,Uu,Ql,Uh,Uu,Re,Ur,Uh,Uu,Uu,Uh,Uu,Uu^Em,Uu^Uf"}
+		wct_terrain_replace { terrain = "Ql,Uh,Uu,Uu^Tf,Uh^Tf,Uh,Uu,Ql,Uh,Uu,Re,Ur,Uh,Uu,Uu,Uh,Uu,Uu^Em,Uu^Tf"}
 	},
 	chances = {
 		{
@@ -659,7 +659,7 @@ local wild_replacement_chances_zone_7_4 = {
 		{
 			value=1,
 			command = {
-				wct_terrain_replace { terrain = "Sm,Sm,Sm,Sm,Sm,Sm,Sm^Uf"}
+				wct_terrain_replace { terrain = "Sm,Sm,Sm,Sm,Sm,Sm,Sm^Tf"}
 			}
 		}
 	}

@@ -25,15 +25,15 @@ local function generate(length, villages, castle, iterations, size, players, isl
 
 	res.height = {
 		dr_height(955, "Uh"),
-		dr_height(945, "Uu^Uf"),
+		dr_height(945, "Uu^Tf"),
 		dr_height(900, "Uu"),
 		dr_height(855, "Uh"),
-		dr_height(845, "Uu^Uf"),
+		dr_height(845, "Uu^Tf"),
 		dr_height(825, "Uu"),
 		dr_height(775, "Xu"),
 		dr_height(750, "Mm^Xm"),
 		dr_height(700, "Mm"),
-		dr_height(690, "Hh^Uf"),
+		dr_height(690, "Hh^Tf"),
 		dr_height(660, "Hh^Fp"),
 		dr_height(625, "Hh"),
 		dr_height(540, "Gg"),
@@ -103,38 +103,38 @@ local function generate(length, villages, castle, iterations, size, players, isl
 		dr_village {
 			terrain="Hh",
 			convert_to="Hh^Vd",
-			adjacent_liked="Gg, Gs, Wwt, Wwrt, Re, Gg, Gs, Re, Gg, Gs, Hh, Hh^Fp, Hh^Uf, Mm",
+			adjacent_liked="Gg, Gs, Wwt, Wwrt, Re, Gg, Gs, Re, Gg, Gs, Hh, Hh^Fp, Hh^Tf, Mm",
 			rating=5
 		},
 		dr_village {
 			terrain="Hh^Fp",
 			convert_to="Hh^Vd",
-			adjacent_liked="Gg, Gs, Wwt, Wwrt, Re, Gg, Gs, Re, Gg, Gs, Hh, Hh^Fp, Hh^Uf, Mm",
+			adjacent_liked="Gg, Gs, Wwt, Wwrt, Re, Gg, Gs, Re, Gg, Gs, Hh, Hh^Fp, Hh^Tf, Mm",
 			rating=4
 		},
 		dr_village {
-			terrain="Hh^Uf",
+			terrain="Hh^Tf",
 			convert_to="Hh^Vd",
-			adjacent_liked="Gg, Gs, Wwt, Wwrt, Re, Gg, Gs, Re, Rd, Rb, Gg, Gs, Hh, Hh^Fp, Hh^Uf, Mm",
+			adjacent_liked="Gg, Gs, Wwt, Wwrt, Re, Gg, Gs, Re, Rd, Rb, Gg, Gs, Hh, Hh^Fp, Hh^Tf, Mm",
 			rating=3
 		},
 		dr_village {
 			terrain="Mm",
 			convert_to="Mm^Vd",
-			adjacent_liked="Gg, Gs, Wwt, Wwrt, Re, Gg, Gs, Re, Rd, Rb, Gg, Gs, Hh, Hh^Fp, Hh^Uf, Mm",
+			adjacent_liked="Gg, Gs, Wwt, Wwrt, Re, Gg, Gs, Re, Rd, Rb, Gg, Gs, Hh, Hh^Fp, Hh^Tf, Mm",
 			rating=3
 		},
 		-- cave villages
 		dr_village {
 			terrain="Uu",
 			convert_to="Uu^Vu",
-			adjacent_liked="Hh,Hh^Fp,Mm,Uu,Uh,Hh^Uf,Xu,Uu^Uf,Mm^Xm",
+			adjacent_liked="Hh,Hh^Fp,Mm,Uu,Uh,Hh^Tf,Xu,Uu^Tf,Mm^Xm",
 			rating=4
 		},
 		dr_village {
 			terrain="Uh",
 			convert_to="Uu^Vu",
-			adjacent_liked="Hh,Hh^Fp,Mm,Uu,Uh,Hh^Uf,Xu,Uu^Uf,Mm^Xm",
+			adjacent_liked="Hh,Hh^Fp,Mm,Uu,Uh,Hh^Tf,Xu,Uu^Tf,Mm^Xm",
 			rating=4
 		},
 		-- water villages

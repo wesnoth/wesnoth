@@ -1,8 +1,8 @@
 -- Springs
 function world_conquest_tek_map_repaint_2a()
-	world_conquest_tek_map_rebuild("Uu,Uu^Uf,Uh,Uu^Uf,Uu,Uh,Ql,Qxu,Xu,Ww,Ww", 3)
+	world_conquest_tek_map_rebuild("Uu,Uu^Tf,Uh,Uu^Tf,Uu,Uh,Ql,Qxu,Xu,Ww,Ww", 3)
 	world_conquest_tek_map_decoration_2a()
-	world_conquest_tek_map_dirt("Gg^Uf,Gg^Uf,Gg^Uf,Gs^Uf")
+	world_conquest_tek_map_dirt("Gg^Tf,Gg^Tf,Gg^Tf,Gs^Tf")
 end
 
 function world_conquest_tek_map_decoration_2a()
@@ -106,7 +106,7 @@ function world_conquest_tek_map_decoration_2a()
 		f.all(
 			f.terrain("Hh^Fp"),
 			f.radius(3, f.all(
-				f.terrain("Ql,Uu,Hu,Uu^Uf,Qxu,Mv"),
+				f.terrain("Ql,Uu,Hu,Uu^Tf,Qxu,Mv"),
 				f.none(
 					f.radius(3, f.terrain("Ds,Dd,Hd"))
 				)

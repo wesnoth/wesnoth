@@ -1,6 +1,6 @@
 -- Wicked
 function world_conquest_tek_map_repaint_4e()
-	wct_reduce_wall_clusters("Uu,Uu,Uu,Uu,Uu,Uu,Uu,Uu,Uh,Uh,Uh,Uh,Uu^Uf,Wwf,Ur,Qxu,Ql,Wwg")
+	wct_reduce_wall_clusters("Uu,Uu,Uu,Uu,Uu,Uu,Uu,Uu,Uh,Uh,Uh,Uh,Uu^Tf,Wwf,Ur,Qxu,Ql,Wwg")
 	wct_fill_lava_chasms()
 	-- soft rough terrain around caves
 	set_terrain { "Aa,Aa,Gs",
@@ -12,7 +12,7 @@ function world_conquest_tek_map_repaint_4e()
 		fraction = 4,
 	}
 	set_terrain { "Gs,Gg,Gg",
-		f.terrain("H*^Uf,Hh,Hhd"),
+		f.terrain("H*^Tf,Hh,Hhd"),
 		fraction = 3,
 	}
 	set_terrain { "Aa,Aa,Aa,Gs",
@@ -173,7 +173,7 @@ function world_conquest_tek_map_repaint_4e()
 	}
 
 	-- swamp mushrooms east
-	set_terrain { "Ss^Uf",
+	set_terrain { "Ss^Tf",
 		f.all(
 			f.terrain("S*"),
 			f.none(

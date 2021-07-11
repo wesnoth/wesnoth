@@ -2,28 +2,28 @@
 
 function world_conquest_tek_map_repaint_4b()
 	set_terrain { "Ql,Md,Md^Xm",
-		f.terrain("U*,U*^Uf"),
+		f.terrain("U*,U*^Tf"),
 		exact = false,
 		percentage = 10,
 	}
-	set_terrain { "Ql,Uu,Uh,Uh,Uu^Uf,Qxu,Uh^Uf",
+	set_terrain { "Ql,Uu,Uh,Uh,Uu^Tf,Qxu,Uh^Tf",
 		f.terrain("Xu"),
 	}
-	set_terrain { "Ql,Uu^Uf,Qxu,Uh^Uf,Uh,Uh,Uu,Ql,Md",
+	set_terrain { "Ql,Uu^Tf,Qxu,Uh^Tf,Uh,Uh,Uu,Ql,Md",
 		f.terrain("Mm^Xm"),
 		fraction = 2,
 	}
-	set_terrain { "Ql,Uu^Uf,Qxu,Uh^Uf",
+	set_terrain { "Ql,Uu^Tf,Qxu,Uh^Tf",
 		f.all(
 			f.terrain("Hh^F*"),
-			f.adjacent(f.terrain("Ql,Uu,Uh,Uu^Uf,Qxu,Uh^Uf"))
+			f.adjacent(f.terrain("Ql,Uu,Uh,Uu^Tf,Qxu,Uh^Tf"))
 		),
 		fraction = 3,
 	}
 	set_terrain { "Uh",
 		f.all(
 			f.terrain("Hh"),
-			f.adjacent(f.terrain("Ql,Uu,Uh,Uu^Uf,Qxu,Uh^Uf,Ur"))
+			f.adjacent(f.terrain("Ql,Uu,Uh,Uu^Tf,Qxu,Uh^Tf,Ur"))
 		),
 		fraction = 3,
 	}
@@ -281,7 +281,7 @@ function world_conquest_tek_map_repaint_4b()
 	local r = mathx.random_choice(tostring(total_tiles // 600) .. ".." .. tostring(total_tiles // 300))
 
 	for mush_i = 1, math.min(r, #terrain_to_change) do
-		map[terrain_to_change[mush_i]] = "Hhd^Uf"
+		map[terrain_to_change[mush_i]] = "Hhd^Tf"
 	end
 	-- chances of few orcish castles
 	wct_possible_map4_castle("Co", 2)
