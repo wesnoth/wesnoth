@@ -1430,6 +1430,7 @@ static int impl_mp_settings_get(lua_State* L)
 	const mp_game_settings& settings = static_cast<play_controller*>(p)->get_mp_settings();
 	if(lua_type(L, 2) == LUA_TNUMBER) {
 		// Simulates a WML table with one [options] child and a variable number of [addon] children
+		// TODO: Deprecate this -> mp_settings.options and mp_settings.addons
 		size_t i = luaL_checkinteger(L, 2);
 		if(i == 1) {
 			lua_createtable(L, 2, 0);
@@ -1457,30 +1458,33 @@ static int impl_mp_settings_get(lua_State* L)
 		}
 	} else {
 		char const *m = luaL_checkstring(L, 2);
-		return_string_attrib("scenario", settings.name);
+		return_string_attrib("scenario", settings.name); // TODO: Deprecate this -> mp_settings.game_name
+		return_string_attrib("game_name", settings.name);
 		return_string_attrib("hash", settings.hash);
-		return_string_attrib("mp_era_name", settings.mp_era_name);
-		return_string_attrib("mp_scenario", settings.mp_scenario);
-		return_string_attrib("mp_scenario_name", settings.mp_scenario_name);
-		return_string_attrib("mp_campaign", settings.mp_campaign);
-		return_string_attrib("side_users", utils::join_map(settings.side_users));
+		return_string_attrib("mp_era_name", settings.mp_era_name); // TODO: Deprecate this -> scenario.era.name
+		return_string_attrib("mp_scenario", settings.mp_scenario); // TODO: Deprecate this -> scenario.id
+		return_string_attrib("mp_scenario_name", settings.mp_scenario_name); // TODO: Deprecate this -> scenario.name
+		return_string_attrib("mp_campaign", settings.mp_campaign); // TODO: Deprecate this -> scenario.campaign.id
+		return_string_attrib("side_users", utils::join_map(settings.side_users)); // TODO: Deprecate this -> mp_settings.side_players
 		return_int_attrib("experience_modifier", settings.xp_modifier);
 		return_bool_attrib("mp_countdown", settings.mp_countdown);
 		return_int_attrib("mp_countdown_init_time", settings.mp_countdown_init_time);
 		return_int_attrib("mp_countdown_turn_bonus", settings.mp_countdown_turn_bonus);
 		return_int_attrib("mp_countdown_reservoir_bonus", settings.mp_countdown_reservoir_time);
 		return_int_attrib("mp_countdown_action_bonus", settings.mp_countdown_action_bonus);
-		return_int_attrib("mp_num_turns", settings.num_turns);
+		return_int_attrib("mp_num_turns", settings.num_turns); // TODO: Deprecate this -> scenario.turns
 		return_int_attrib("mp_village_gold", settings.village_gold);
 		return_int_attrib("mp_village_support", settings.village_support);
 		return_bool_attrib("mp_fog", settings.fog_game);
 		return_bool_attrib("mp_shroud", settings.shroud_game);
 		return_bool_attrib("mp_use_map_settings", settings.use_map_settings);
 		return_bool_attrib("mp_random_start_time", settings.random_start_time);
-		return_bool_attrib("observer", settings.allow_observers);
+		return_bool_attrib("observer", settings.allow_observers); // TODO: Deprecate this -> mp_settings.allow_observers
+		return_bool_attrib("allow_observers", settings.allow_observers);
 		return_bool_attrib("private_replay", settings.private_replay);
 		return_bool_attrib("shuffle_sides", settings.shuffle_sides);
 		return_string_attrib("random_faction_mode", settings.random_faction_mode.to_string());
+		return_cfgref_attrib("options", settings.options);
 		if(strcmp(m, "savegame") == 0) {
 			auto savegame = settings.saved_game;
 			if(savegame == mp_game_settings::SAVED_GAME_MODE::NONE) {
@@ -1490,10 +1494,52 @@ static int impl_mp_settings_get(lua_State* L)
 			}
 			return 1;
 		}
+		if(strcmp(m, "side_players") == 0) {
+			lua_push(L, settings.side_users);
+			return 1;
+		}
+		if(strcmp(m, "addons") == 0) {
+			for(const auto& [id, addon] : settings.addons) {
+				lua_createtable(L, 0, 4);
+				lua_push(L, id);
+				lua_setfield(L, -2, "id");
+				lua_push(L, addon.name);
+				lua_setfield(L, -2, "name");
+				lua_pushboolean(L, addon.required);
+				lua_setfield(L, -2, "required");
+				if(addon.min_version) {
+					luaW_getglobal(L, "wesnoth", "version");
+					lua_push(L, addon.min_version->str());
+					lua_call(L, 1, 1);
+					lua_setfield(L, -2, "min_version");
+				}
+				if(addon.version) {
+					luaW_getglobal(L, "wesnoth", "version");
+					lua_push(L, addon.version->str());
+					lua_call(L, 1, 1);
+					lua_setfield(L, -2, "version");
+				}
+				lua_createtable(L, addon.content.size(), 0);
+				for(const auto& content : addon.content) {
+					lua_createtable(L, 0, 3);
+					lua_push(L, content.id);
+					lua_setfield(L, -2, "id");
+					lua_push(L, content.name);
+					lua_setfield(L, -2, "name");
+					lua_push(L, content.type);
+					lua_setfield(L, -2, "type");
+					lua_seti(L, -2, lua_rawlen(L, -2) + 1);
+				}
+				lua_setfield(L, -2, "content");
+			}
+			return 1;
+		}
 		// Deprecated things that were moved out of mp_settings and into game_classification
 		const game_classification& game = static_cast<play_controller*>(p)->get_classification();
 		return_string_attrib_deprecated("mp_era", "wesnoth.scenario.mp_settings", INDEFINITE, "1.17", "Use wesnoth.scenario.era.id instead", game.era_id);
 		return_string_attrib_deprecated("active_mods", "wesnoth.scenario.mp_settings", INDEFINITE, "1.17", "Use wesnoth.scenario.modifications instead (returns an array of modification tables)", utils::join(game.active_mods));
+		// Expose the raw config; this is a way to ensure any new stuff can be accessed even if someone forgot to add it here.
+		return_cfgref_attrib("__cfg", settings.to_config());
 	}
 	return 0;
 }
@@ -1521,6 +1567,7 @@ int game_lua_kernel::impl_scenario_get(lua_State *L)
 	return_int_attrib("turns", tod_man().number_of_turns());
 	return_string_attrib("next", gamedata().next_scenario());
 	return_string_attrib("id", gamedata().get_id());
+	return_tstring_attrib("name", play_controller_.get_scenario_name());
 	return_vector_string_attrib("defeat_music", gamedata().get_defeat_music());
 	return_vector_string_attrib("victory_music", gamedata().get_victory_music());
 	if(strcmp(m, "resources") == 0) {
