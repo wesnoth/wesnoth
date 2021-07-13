@@ -1458,28 +1458,28 @@ static int impl_mp_settings_get(lua_State* L)
 		}
 	} else {
 		char const *m = luaL_checkstring(L, 2);
-		return_string_attrib("scenario", settings.name); // TODO: Deprecate this -> mp_settings.game_name
+		return_string_attrib("scenario", settings.name);
 		return_string_attrib("game_name", settings.name);
 		return_string_attrib("hash", settings.hash);
-		return_string_attrib("mp_era_name", settings.mp_era_name); // TODO: Deprecate this -> scenario.era.name
-		return_string_attrib("mp_scenario", settings.mp_scenario); // TODO: Deprecate this -> scenario.id
-		return_string_attrib("mp_scenario_name", settings.mp_scenario_name); // TODO: Deprecate this -> scenario.name
-		return_string_attrib("mp_campaign", settings.mp_campaign); // TODO: Deprecate this -> scenario.campaign.id
-		return_string_attrib("side_users", utils::join_map(settings.side_users)); // TODO: Deprecate this -> mp_settings.side_players
+		return_string_attrib("mp_era_name", settings.mp_era_name);
+		return_string_attrib("mp_scenario", settings.mp_scenario);
+		return_string_attrib("mp_scenario_name", settings.mp_scenario_name);
+		return_string_attrib("mp_campaign", settings.mp_campaign);
+		return_string_attrib("side_users", utils::join_map(settings.side_users));
 		return_int_attrib("experience_modifier", settings.xp_modifier);
 		return_bool_attrib("mp_countdown", settings.mp_countdown);
 		return_int_attrib("mp_countdown_init_time", settings.mp_countdown_init_time);
 		return_int_attrib("mp_countdown_turn_bonus", settings.mp_countdown_turn_bonus);
 		return_int_attrib("mp_countdown_reservoir_bonus", settings.mp_countdown_reservoir_time);
 		return_int_attrib("mp_countdown_action_bonus", settings.mp_countdown_action_bonus);
-		return_int_attrib("mp_num_turns", settings.num_turns); // TODO: Deprecate this -> scenario.turns
+		return_int_attrib("mp_num_turns", settings.num_turns);
 		return_int_attrib("mp_village_gold", settings.village_gold);
 		return_int_attrib("mp_village_support", settings.village_support);
 		return_bool_attrib("mp_fog", settings.fog_game);
 		return_bool_attrib("mp_shroud", settings.shroud_game);
 		return_bool_attrib("mp_use_map_settings", settings.use_map_settings);
 		return_bool_attrib("mp_random_start_time", settings.random_start_time);
-		return_bool_attrib("observer", settings.allow_observers); // TODO: Deprecate this -> mp_settings.allow_observers
+		return_bool_attrib("observer", settings.allow_observers);
 		return_bool_attrib("allow_observers", settings.allow_observers);
 		return_bool_attrib("private_replay", settings.private_replay);
 		return_bool_attrib("shuffle_sides", settings.shuffle_sides);
