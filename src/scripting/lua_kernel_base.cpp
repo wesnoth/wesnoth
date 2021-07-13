@@ -99,7 +99,7 @@ static int impl_version_get(lua_State* L)
 		int n = lua_tointeger(L, 2) - 1;
 		auto& components = vers.components();
 		if(n >= 0 && size_t(n) < components.size()) {
-			lua_pushinteger(L, vers.components()[n - 1]);
+			lua_pushinteger(L, vers.components()[n]);
 		} else {
 			lua_pushnil(L);
 		}
@@ -152,7 +152,7 @@ static int intf_make_version(lua_State* L)
 	}
 	// If it's a string, parse it; otherwise build from components
 	// The components method only supports canonical versions
-	if(lua_isstring(L, 1)) {
+	if(lua_type(L, 1) == LUA_TSTRING) {
 		new(L) version_info(lua_check<std::string>(L, 1));
 	} else {
 		int major = luaL_checkinteger(L, 1), minor = luaL_optinteger(L, 2, 0), rev = luaL_optinteger(L, 3, 0);
