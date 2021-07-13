@@ -38,6 +38,7 @@ game_data::game_data(const config& level)
 	, variables_(level.child_or_empty("variables"))
 	, phase_(INITIAL)
 	, can_end_turn_(level["can_end_turn"].to_bool(true))
+	, cannot_end_turn_reason_(level["cannot_end_turn_reason"])
 	, next_scenario_(level["next_scenario"])
 	, id_(level["id"])
 	, theme_(level["theme"])
@@ -131,6 +132,7 @@ void game_data::write_snapshot(config& cfg) const
 	cfg["victory_music"] = utils::join(victory_music_);
 
 	cfg["can_end_turn"] = can_end_turn_;
+	cfg["cannot_end_turn_reason"] = cannot_end_turn_reason_;
 
 	cfg["random_seed"] = rng_.get_random_seed_str();
 	cfg["random_calls"] = rng_.get_random_calls();
