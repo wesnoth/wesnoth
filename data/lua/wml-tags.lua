@@ -894,7 +894,7 @@ function wesnoth.wml_actions.zoom(cfg)
 end
 
 function wesnoth.wml_actions.story(cfg)
-	local title = cfg.title or wml.error "Missing title key in [story] ActionWML"
+	local title = cfg.title or wesnoth.scenario.name
 	gui.show_story(cfg, title)
 end
 
