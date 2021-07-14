@@ -20,7 +20,7 @@ function world_conquest_tek_map_repaint_3f()
 		fraction = 4,
 	}
 	set_terrain { "Gd",
-		f.terrain("Hh,Hh^F*,Hh^Uf"),
+		f.terrain("Hh,Hh^F*,Hh^Tf"),
 		fraction = 4,
 	}
 	set_terrain { "Ss",
@@ -32,7 +32,7 @@ function world_conquest_tek_map_repaint_3f()
 		fraction = 5,
 		layer = "overlay",
 	}
-	set_terrain { "*^Uf",
+	set_terrain { "*^Tf",
 		f.terrain("G*"),
 		fraction = 13,
 		layer = "overlay",

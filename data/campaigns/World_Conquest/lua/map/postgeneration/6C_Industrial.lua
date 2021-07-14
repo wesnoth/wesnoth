@@ -582,7 +582,7 @@ local function world_conquest_tek_map_decoration_6c()
 	}
 
 	-- rough extra terrain noise
-	set_terrain { "Gs^Fp,Gs^Fp,Gs^Fp,Gs^Fp,Gs^Fp,Gs^Fmw,Gs^Fmf,Hh^Fp,Hh,Hh,Mm,Mm,Gs^Uf",
+	set_terrain { "Gs^Fp,Gs^Fp,Gs^Fp,Gs^Fp,Gs^Fp,Gs^Fmw,Gs^Fmf,Hh^Fp,Hh,Hh,Mm,Mm,Gs^Tf",
 		f.all(
 			f.terrain("G*"),
 			f.adjacent(f.terrain("Sm^*,C*^*,K*^*,W*^*,*^V*,Ds"), nil, 0)
@@ -637,7 +637,7 @@ local function world_conquest_tek_map_repaint_6c()
 	-- soft hills clusters
 	set_terrain { "Gs,Gs,Gg,Gs,Gs,Gg,Gs,Gs,Gg,Gs,Gs,Gg,Hh^Fp",
 		f.all(
-			f.terrain("Hh,Hh^F*,Hh^Uf"),
+			f.terrain("Hh,Hh^F*,Hh^Tf"),
 			f.adjacent(f.terrain("H*^*,M*^*,C*,K*^*"), nil, 6)
 		),
 		fraction = 2,

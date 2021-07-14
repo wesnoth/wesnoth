@@ -25,18 +25,18 @@ local function generate(length, villages, castle, iterations, size, players, isl
 
 	res.height = {
 		dr_height(955, "Uh"),
-		dr_height(945, "Uu^Uf"),
+		dr_height(945, "Uu^Tf"),
 		dr_height(900, "Uu"),
 		dr_height(855, "Uh"),
-		dr_height(845, "Uu^Uf"),
+		dr_height(845, "Uu^Tf"),
 		dr_height(825, "Uu"),
 		dr_height(775, "Xu"),
 		dr_height(750, "Mm^Xm"),
 		dr_height(700, "Mm"),
-		dr_height(690, "Hh^Uf"),
+		dr_height(690, "Hh^Tf"),
 		dr_height(660, "Hh^Fds"),
 		dr_height(625, "Hh"),
-		dr_height(615, "Hh^Uf"),
+		dr_height(615, "Hh^Tf"),
 		dr_height(600, "Hh^Fds"),
 		dr_height(500, "Gd"),
 		dr_height(310, "Gs"),
@@ -55,7 +55,7 @@ local function generate(length, villages, castle, iterations, size, players, isl
 		dr_bridge("Ww", "Ww^Bw", "Wwf", 45),
 		dr_road("Hh", "Rb", 55),
 		dr_road("Hh^Fds", "Rb", 55),
-		dr_road("Hh^Uf", "Rb", 55),
+		dr_road("Hh^Tf", "Rb", 55),
 		dr_road("Mm", "Rb", 70),
 		dr_road("Rb", "Rb", 4),
 	}
@@ -75,7 +75,7 @@ local function generate(length, villages, castle, iterations, size, players, isl
 		dr_village {
 			terrain = "Gd",
 			convert_to="Gg^Vo",
-			adjacent_liked="Gg, Gs, Ww, Rb, Gd, Gs, Rb, Gg, Gs, Hh, Mm, Hh^Fds, Hh^Uf",
+			adjacent_liked="Gg, Gs, Ww, Rb, Gd, Gs, Rb, Gg, Gs, Hh, Mm, Hh^Fds, Hh^Tf",
 			rating=8
 		},
 		dr_village {
@@ -98,7 +98,7 @@ local function generate(length, villages, castle, iterations, size, players, isl
 			rating=6
 		},
 		dr_village {
-			terrain="Hh^Uf",
+			terrain="Hh^Tf",
 			convert_to="Hh^Vo",
 			adjacent_liked="Gs, Gs, Ww, Rb, Rb, Gd, Gd, Rb, Rb, Gd, Hh, Hh^Fds, Hh^Uf, Mm",
 			rating=6
@@ -123,7 +123,7 @@ local function generate(length, villages, castle, iterations, size, players, isl
 			rating=6
 		},
 		dr_village {
-			terrain="Uu^Uf",
+			terrain="Uu^Tf",
 			convert_to="Uu^Vud",
 			adjacent_liked="Hh,Uu,Mm,Uu,Uh,Uh,Uh,Hh^Uf,Xu,Uu^Uf,Mm^Xm",
 			rating=6

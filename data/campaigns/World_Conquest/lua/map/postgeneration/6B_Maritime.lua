@@ -336,7 +336,7 @@ function world_conquest_tek_map_decoration_6b()
 		),
 		fraction = 8,
 	}
-	set_terrain { "Gs^Fp,Hh^Fp,Hh,Mm,Gs^Fp,Ss^Uf,Ss^Uf,Ss^Uf",
+	set_terrain { "Gs^Fp,Hh^Fp,Hh,Mm,Gs^Fp,Ss^Uf,Ss^Uf,Ss^Tf",
 		f.all(
 			f.terrain("Ss"),
 			f.none(
@@ -347,7 +347,7 @@ function world_conquest_tek_map_decoration_6b()
 	}
 
 	-- some mushrooms on hills near river or caves
-	set_terrain { "Hh^Uf",
+	set_terrain { "Hh^Tf",
 		f.all(
 			f.terrain("Hh,Hh^F*"),
 			f.radius(5, f.terrain("Ww,Wwf,U*^*"))
