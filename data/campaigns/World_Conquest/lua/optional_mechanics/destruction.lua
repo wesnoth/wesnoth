@@ -66,7 +66,7 @@ on_event("die", function(cx)
 	elseif loc:matches{terrain = "Kd"} then
 		map[loc] = "Kdr^Es"
 
-	elseif loc:matches{terrain = "Gg^Fmf,Gg^Fdf,Gg^Fp,Gg^Uf,Gs^Fmf,Gs^Fdf,Gs^Fp,Gs^Uf"} then
+	elseif loc:matches{terrain = "Gg^Fmf,Gg^Fdf,Gg^Fp,Gg^Uf,Gs^Fmf,Gs^Fdf,Gs^Fp,Gs^Tf"} then
 		map[loc] = "Gll^"
 
 	elseif loc:matches{terrain = "Cv^Fds"} then

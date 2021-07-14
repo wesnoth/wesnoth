@@ -114,9 +114,9 @@ function wct_expand_snow()
 			f.adjacent(f.terrain("Aa^*,Ai,Ms*^*,Ha^*,Kha,Cha"))
 		),
 	}
-	set_terrain { "Ha^Uf",
+	set_terrain { "Ha^Tf",
 		f.all(
-			f.terrain("Hh^Uf"),
+			f.terrain("Hh^Tf"),
 			f.adjacent(f.terrain("Aa^*,Ai,Ms*^*,Ha^*,Kha,Cha"), nil, "3-6")
 		),
 	}

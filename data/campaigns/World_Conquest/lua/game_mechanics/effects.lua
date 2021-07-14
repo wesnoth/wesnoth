@@ -1,7 +1,7 @@
 local _ = wesnoth.textdomain 'wesnoth-wc'
 local T = wml.tag
 
-local terrain_map = { fungus = "Uft", cave = "Ut", sand = "Dt", 
+local terrain_map = { fungus = "Tt", cave = "Ut", sand = "Dt", 
 	reef = "Wrt", hills = "Ht", swamp_water = "St", shallow_water = "Wst", castle = "Ct",
 	mountains = "Mt", deep_water = "Wdt", flat = "Gt", forest = "Ft", frozen = "At",
 	village = "Vt", impassable = "Xt", unwalkable = "Qt", rails = "Rt"

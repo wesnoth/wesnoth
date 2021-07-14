@@ -50,7 +50,7 @@ function world_conquest_tek_map_rebuild(cave, reef)
 	local r = mathx.random_choice(tostring(total_tiles // 500) .. ".." .. tostring(total_tiles // 250))
 	-- just to be sure.
 	r = tonumber(r)
-	set_terrain { "Hh^Uf",
+	set_terrain { "Hh^Tf",
 		f.all(
 			f.terrain("Hh,Hh^F*"),
 			f.adjacent(f.terrain("A*^*,Ms^*,Ha^*"), nil, 0),

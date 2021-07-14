@@ -2,7 +2,7 @@
 function world_conquest_tek_map_repaint_2a()
 	world_conquest_tek_map_rebuild("Uu,Uu^Uf,Uh,Uu^Uf,Uu,Uh,Ql,Qxu,Xu,Ww,Ww", 3)
 	world_conquest_tek_map_decoration_2a()
-	world_conquest_tek_map_dirt("Gg^Uf,Gg^Uf,Gg^Uf,Gs^Uf")
+	world_conquest_tek_map_dirt("Gg^Uf,Gg^Uf,Gg^Uf,Gs^Tf")
 end
 
 function world_conquest_tek_map_decoration_2a()

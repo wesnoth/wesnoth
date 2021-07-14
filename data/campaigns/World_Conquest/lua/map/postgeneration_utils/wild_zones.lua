@@ -193,7 +193,7 @@ local wild_replacement_chances_zone_2_2 = {
 		{
 			value=1,
 			command = {
-				wct_terrain_replace { terrain = "Ss,Ss,Ss,Ss,Ss,Ss,Ss^Uf"}
+				wct_terrain_replace { terrain = "Ss,Ss,Ss,Ss,Ss,Ss,Ss^Tf"}
 			}
 		}
 	}
@@ -274,7 +274,7 @@ local wild_replacement_chances_zone_3_2 = {
 		{
 			value=1,
 			command = {
-				wct_terrain_replace { terrain = "Ss,Ss,Ss,Ss,Ss,Ss,Ss^Uf"}
+				wct_terrain_replace { terrain = "Ss,Ss,Ss,Ss,Ss,Ss,Ss^Tf"}
 			}
 		}
 	}
@@ -353,7 +353,7 @@ local wild_replacement_chances_zone_4_2 = {
 		{
 			value=1,
 			command = {
-				wct_terrain_replace { terrain = "Ss,Ss,Ss,Ss,Ss,Ss,Ss^Uf"}
+				wct_terrain_replace { terrain = "Ss,Ss,Ss,Ss,Ss,Ss,Ss^Tf"}
 			}
 		}
 	}
@@ -588,7 +588,7 @@ local wild_replacement_chances_zone_7_1 = {
 
 local wild_replacement_chances_zone_7_2 = {
 	default = {
-		wct_terrain_replace { terrain = "Uu,Uh,Uu,Uh,Uu,Uh,Uu,Uh,Uu,Uh,Uu,Uh,Uu,Uu,Re,Ww,Wwf,Qxu,Uu^Uf,Uh,Uu,Uu,Uh,Uu,Uu^Em,Uu^Uf"}
+		wct_terrain_replace { terrain = "Uu,Uh,Uu,Uh,Uu,Uh,Uu,Uh,Uu,Uh,Uu,Uh,Uu,Uu,Re,Ww,Wwf,Qxu,Uu^Uf,Uh,Uu,Uu,Uh,Uu,Uu^Em,Uu^Tf"}
 	},
 	chances = {
 		{
@@ -626,13 +626,13 @@ local wild_replacement_chances_zone_7_2 = {
 
 local wild_replacement_chances_zone_7_3 = {
 	default = {
-		wct_terrain_replace { terrain = "Uu,Uh,Uu,Uh,Uu,Uh,Uu,Uh,Uu,Uh,Uu,Uu^Uf,Uu,Uu,Re,Uh^Uf,Wwf,Ql,Uu^Uf,Uh,Uu,Uu,Uh,Uu,Uu^Em,Uu^Uf"}
+		wct_terrain_replace { terrain = "Uu,Uh,Uu,Uh,Uu,Uh,Uu,Uh,Uu,Uh,Uu,Uu^Uf,Uu,Uu,Re,Uh^Uf,Wwf,Ql,Uu^Uf,Uh,Uu,Uu,Uh,Uu,Uu^Em,Uu^Tf"}
 	},
 	chances = {
 		{
 			value=1,
 			command = {
-				wct_terrain_replace { terrain = "Gll^Uf"}
+				wct_terrain_replace { terrain = "Gll^Tf"}
 			}
 		},
 		{
@@ -646,7 +646,7 @@ local wild_replacement_chances_zone_7_3 = {
 
 local wild_replacement_chances_zone_7_4 = {
 	default = {
-		wct_terrain_replace { terrain = "Ql,Uh,Uu,Uu^Uf,Uh^Uf,Uh,Uu,Ql,Uh,Uu,Re,Ur,Uh,Uu,Uu,Uh,Uu,Uu^Em,Uu^Uf"}
+		wct_terrain_replace { terrain = "Ql,Uh,Uu,Uu^Uf,Uh^Uf,Uh,Uu,Ql,Uh,Uu,Re,Ur,Uh,Uu,Uu,Uh,Uu,Uu^Em,Uu^Tf"}
 	},
 	chances = {
 		{
@@ -659,7 +659,7 @@ local wild_replacement_chances_zone_7_4 = {
 		{
 			value=1,
 			command = {
-				wct_terrain_replace { terrain = "Sm,Sm,Sm,Sm,Sm,Sm,Sm^Uf"}
+				wct_terrain_replace { terrain = "Sm,Sm,Sm,Sm,Sm,Sm,Sm^Tf"}
 			}
 		}
 	}
