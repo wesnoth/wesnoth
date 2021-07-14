@@ -30,7 +30,7 @@ function world_conquest_tek_map_repaint_3e()
 		fraction = 9,
 	}
 	set_terrain { "Gg",
-		f.terrain("Hh,Hh^F*,Hh^Uf"),
+		f.terrain("Hh,Hh^F*,Hh^Tf"),
 		fraction = 4,
 	}
 	set_terrain { "Ds^Ftd",

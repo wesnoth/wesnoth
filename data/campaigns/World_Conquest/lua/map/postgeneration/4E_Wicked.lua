@@ -173,7 +173,7 @@ function world_conquest_tek_map_repaint_4e()
 	}
 
 	-- swamp mushrooms east
-	set_terrain { "Ss^Uf",
+	set_terrain { "Ss^Tf",
 		f.all(
 			f.terrain("S*"),
 			f.none(

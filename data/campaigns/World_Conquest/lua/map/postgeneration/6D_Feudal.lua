@@ -166,7 +166,7 @@ local function world_conquest_tek_map_repaint_6d()
 		f.terrain("Uu"),
 		fraction = 4,
 	}
-	set_terrain { "Qxu,Uh^Uf,Ql,Urb,Urb,Urb,Urb,Urb,Urb,Urb,Urb,Urb,Urb,Urb,Urb,Urb,Urb,Uh,Uh,Uu^Uf",
+	set_terrain { "Qxu,Uh^Uf,Ql,Urb,Urb,Urb,Urb,Urb,Urb,Urb,Urb,Urb,Urb,Urb,Urb,Urb,Urb,Uh,Uh,Uu^Tf",
 		f.terrain("Uu"),
 		fraction = 5,
 	}
@@ -213,7 +213,7 @@ local function world_conquest_tek_map_repaint_6d()
 		f.terrain("Hh"),
 		fraction = 5,
 	}
-	set_terrain { "Hh^Fp,Hh^Uf",
+	set_terrain { "Hh^Fp,Hh^Tf",
 		f.terrain("Hh"),
 		fraction = 12,
 	}
@@ -221,7 +221,7 @@ local function world_conquest_tek_map_repaint_6d()
 		f.terrain("Hhd"),
 		fraction = 5,
 	}
-	set_terrain { "Hhd^Fp,Hhd^Fp,Hh^Uf,Gg^Uf",
+	set_terrain { "Hhd^Fp,Hhd^Fp,Hh^Uf,Gg^Tf",
 		f.terrain("Hhd"),
 		fraction = 10,
 	}

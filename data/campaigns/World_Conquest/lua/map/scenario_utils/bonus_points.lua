@@ -191,7 +191,7 @@ function wct_bonus_chose_scenery(loc, theme, filter_extra)
 			f.terrain("G*"),
 			f.adjacent(f.terrain("Ss")),
 			f.adjacent(f.terrain("Hh^*,Ha^*")),
-			f.adjacent(f.terrain("G*^F*,A*^F*,G*^Uf"))
+			f.adjacent(f.terrain("G*^F*,A*^F*,G*^Tf"))
 		)) then
 
 		scenery = scenery .. "," .. "temple_green_g,temple_green_g,temple_green_g,temple_green_g2,temple_green_g2"
