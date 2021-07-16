@@ -1450,6 +1450,7 @@ bool game::remove_player(player_iterator player, const bool disconnect, const bo
 	}
 
 	if(game_ended || destruct) {
+		owner_ = player_connections_.end();
 		return game_ended;
 	}
 
