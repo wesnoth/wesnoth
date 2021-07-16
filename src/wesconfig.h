@@ -40,12 +40,11 @@
   #undef VERSION
 #endif
 
-// TODO: undo changes to this file before merge
-#define VERSION "1.16.0"
+#define VERSION "1.15.14+dev"
 
 // Used for the Windows executables' version info resource.
 #define RC_VERSION_MAJOR        1
-#define RC_VERSION_MINOR        16
-#define RC_VERSION_REVISION     0
+#define RC_VERSION_MINOR        15
+#define RC_VERSION_REVISION     15
 
 #endif
