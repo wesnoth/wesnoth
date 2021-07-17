@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: wesnoth-help\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2021-06-23 11:36-0400\n"
-"PO-Revision-Date: 2021-07-05 01:56+0300\n"
+"PO-Revision-Date: 2021-07-14 13:54+0300\n"
 "Last-Translator: Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>\n"
 "Language-Team: Turkish\n"
 "Language: tr\n"
@@ -1481,18 +1481,18 @@ msgid ""
 "\n"
 msgstr ""
 "Vesnot takviminde bir yıl oniki aydan oluşur. Bunlar, sırasıyla:\n"
-"Akateş\n"
-"Aykızıl\n"
-"Tohumsaç\n"
-"Derinkök\n"
-"Çiçekliay\n"
+"Beyazay\n"
+"Donukay\n"
+"Tohumayı\n"
+"Yağmurayı\n"
+"Piknikayı\n"
 "Dikenliay\n"
-"Kutupyıldızı\n"
-"Tütenateş\n"
-"Tohumluk\n"
-"Hasatlık\n"
-"Ayçiçek\n"
-"Karaşimşek\n"
+"Sıcakay\n"
+"Tütenay\n"
+"Serinay\n"
+"Ekimayı\n"
+"Pusluay\n"
+"Soğukay\n"
 "\n"
 
 #. [section]: id=geography
@@ -2847,7 +2847,7 @@ msgstr ""
 "arkadaşlarıyla tartışırken, diğer oyuncuların genellikle son dövüş veya sis "
 "açığa çıkarma hareketi sırasında anlık bir görüntüye baktıklarını unutmayın. "
 "Sohbet iletileri ve harita etiketleri anında gönderilir, ancak bu, geri "
-"alınabilir hareketlerin gönderilmesine neden olmaz. "
+"alınabilir hareketlerin gönderilmesine neden olmaz."
 
 #. [topic]: id=saveload
 #: data/core/help.cfg:291
@@ -2915,7 +2915,7 @@ msgstr ""
 "dengelenmiştir. Yerleşik seferberliklerde, zorluk arttıkça, genellikle daha "
 "fazla düşmanınız ve dolayısıyla daha fazla deneyimli biriminiz olur. Bu, "
 "oyuncunun iki veya üçüncü seviye birimleri kaybetmekle başa çıkacak kadar "
-"yeterli birlik yetiştirebileceğini varsayan bir dengelemeyle sonuçlanır "
+"yeterli birlik yetiştirebileceğini varsayan bir dengelemeyle sonuçlanır."
 
 #. [topic]: id=saveload
 #: data/core/help.cfg:301
@@ -3599,7 +3599,7 @@ msgstr ""
 "yoktur.\n"
 "• Bu birimlerden herhangi birini kaybetmek, hemen bitmediğini varsayarsak, "
 "seferberliğin geri kalanı için bir olumsuzluktur. \n"
-"• Bu birimler asla askere alımlarda ortaya çıkmaz. "
+"• Bu birimler asla askere alımlarda ortaya çıkmaz."
 
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:466
@@ -5407,7 +5407,7 @@ msgid ""
 "the damage dealt by an enemy strike."
 msgstr ""
 "Bu saldırı, birimi iyi bir savunma konumuna getirir ve bir düşman "
-"saldırısının verdiği hasarın bir kısmını emer. "
+"saldırısının verdiği hasarın bir kısmını emer."
 
 #. [damage]: id=absorb
 #: data/core/macros/abilities.cfg:544
@@ -5658,7 +5658,7 @@ msgid ""
 "This unit’s arcane attack deals tremendous damage to magical creatures, and "
 "even some to mundane creatures."
 msgstr ""
-" Bu birimin gizemli saldırısı sihirli yaratıklara ve hatta bazı sıradan "
+"Bu birimin gizemli saldırısı sihirli yaratıklara ve hatta bazı sıradan "
 "yaratıklara çok büyük hasarlar verir."
 
 #: data/core/macros/special-notes.cfg:27
@@ -7962,7 +7962,7 @@ msgstr "Seviye"
 
 #: src/help/help_topic_generators.cpp:321
 msgid "Advances from: "
-msgstr "Şundan terfi eder:"
+msgstr "Şundan terfi eder: "
 
 #: src/help/help_topic_generators.cpp:323
 msgid "Advances to: "
@@ -7978,7 +7978,7 @@ msgstr "Temel birimler: "
 
 #: src/help/help_topic_generators.cpp:375
 msgid "Variations: "
-msgstr "Çeşitleri:"
+msgstr "Çeşitleri: "
 
 #: src/help/help_topic_generators.cpp:399
 msgid "race^Miscellaneous"
@@ -8015,14 +8015,14 @@ msgstr "Hamle:"
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:536
 msgid "Vision:"
-msgstr "Görüş: "
+msgstr "Görüş:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:542
 msgid "Jamming:"
-msgstr "Sıkışma: "
+msgstr "Sıkışma:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
@@ -8036,7 +8036,7 @@ msgstr "Bedel:"
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:551
 msgid "Alignment:"
-msgstr "Yönelim: "
+msgstr "Yönelim:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  It uses
 #. non-breaking spaces to prevent unpleasant line breaks (issue #3256).  In the
@@ -8051,7 +8051,7 @@ msgstr "Saldırılar"
 
 #: src/help/help_topic_generators.cpp:580
 msgid "unit help^Name"
-msgstr "İsim:"
+msgstr "İsim"
 
 #: src/help/help_topic_generators.cpp:582
 msgid "Range"
@@ -8059,7 +8059,7 @@ msgstr "Silah menzili"
 
 #: src/help/help_topic_generators.cpp:583
 msgid "Type"
-msgstr "Tür:"
+msgstr "Tür"
 
 #: src/help/help_topic_generators.cpp:584
 msgid "Special"
