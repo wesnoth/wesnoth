@@ -14,6 +14,7 @@
  ### WML Engine
  ### Miscellaneous and Bug Fixes
    * Fixed: keyboard input during the loading screen intermittently caused a crash (issue #4447)
+   * AI: fixed custom synced commands not changing the game state
 
 ## Version 1.15.14
  ### Add-ons client
