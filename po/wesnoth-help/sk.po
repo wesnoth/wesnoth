@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.2\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-06-23 11:36-0400\n"
+"POT-Creation-Date: 2021-07-18 11:59+0300\n"
 "PO-Revision-Date: 2014-10-23 21:33+0100\n"
 "Last-Translator: aceman <acelists@atlas.sk>\n"
 "Language-Team: none\n"
@@ -304,7 +304,6 @@ msgstr "nočné zakrádanie"
 #. [plague]: id=plague, type=Walking Corpse
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:98
 #: data/core/macros/abilities.cfg:430 data/core/macros/abilities.cfg:441
-#: data/scenario-test.cfg:407
 msgid "plague"
 msgstr "choroba"
 
@@ -342,9 +341,8 @@ msgid "slows"
 msgstr "spomaľuje"
 
 #. [resistance]: id=steadfast
-#. [resistance]: id=melee_steadfast
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:119
-#: data/core/macros/abilities.cfg:130 data/scenario-test.cfg:367
+#: data/core/macros/abilities.cfg:130
 msgid "steadfast"
 msgstr "neoblomný"
 
@@ -1070,14 +1068,14 @@ msgid ""
 "to know which WML is part of each scenario."
 msgstr ""
 
-#. [time]: id=deep_underground
 #. [editor_times]: id=deep_underground
+#. [time]: id=deep_underground
 #: data/core/editor/time-of-day.cfg:47 data/core/macros/schedules.cfg:127
 msgid "Deep Underground"
 msgstr "Hlboké podzemie"
 
-#. [time]: id=indoors
 #. [editor_times]: id=indoors
+#. [time]: id=indoors
 #: data/core/editor/time-of-day.cfg:53 data/core/macros/schedules.cfg:104
 msgid "Indoors"
 msgstr "V dome"
@@ -4636,8 +4634,7 @@ msgstr ""
 " Táto jednotka regeneruje, takže sa uzdravuje, akoby bola stále v dedine."
 
 #. [resistance]: id=steadfast
-#. [resistance]: id=melee_steadfast
-#: data/core/macros/abilities.cfg:131 data/scenario-test.cfg:368
+#: data/core/macros/abilities.cfg:131
 msgid "female^steadfast"
 msgstr "neoblomná"
 
@@ -4944,7 +4941,7 @@ msgstr ""
 "zabila. Toto neplatí na Nemŕtvych a na jednotky v dedine."
 
 #. [plague]: id=plague, type=Walking Corpse
-#: data/core/macros/abilities.cfg:442 data/scenario-test.cfg:408
+#: data/core/macros/abilities.cfg:442
 msgid ""
 "When a unit is killed by a Plague attack, that unit is replaced with a "
 "Walking Corpse on the same side as the unit with the Plague attack. This "

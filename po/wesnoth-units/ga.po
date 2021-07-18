@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ga\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-06-23 15:36 UTC\n"
+"POT-Creation-Date: 2021-07-18 09:00 UTC\n"
 "PO-Revision-Date: 2012-02-22 15:27-0800\n"
 "Last-Translator: Carson Callis aka Mountian_King <tree_rings@rocketmail."
 "com>\n"
@@ -345,6 +345,7 @@ msgid "saber"
 msgstr "ráipéar"
 
 #. [unit_type]: id=Walking Corpse, race=undead
+#. [unit_type]: id=Walking Corpse Shynal, race=undead
 #. [unit_type]: id=SotA Walking Corpse_Human
 #. [unit_type]: id=SotA Walking Corpse_Dwarf
 #. [unit_type]: id=SotA Walking Corpse_Goblin
@@ -356,7 +357,6 @@ msgstr "ráipéar"
 #. [unit_type]: id=SotA Walking Corpse_Wolf Rider
 #. [unit_type]: id=SotA Walking Corpse_Spider
 #. [unit_type]: id=SotA Walking Corpse_Rat
-#. [unit_type]: id=Walking Corpse Shynal, race=undead
 #: data/campaigns/Secrets_of_the_Ancients/units/Corpse_Shynal.cfg:4
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:110
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:125
@@ -404,8 +404,8 @@ msgstr ""
 #. [unit_type]: id=SotA Soulless_Troll
 #. [unit_type]: id=SotA Soulless_Wose
 #. [unit_type]: id=SotA Soulless_Wolf Rider
-#. [attack]: type=cold
 #. [attack]: type=fire
+#. [attack]: type=cold
 #: data/campaigns/Secrets_of_the_Ancients/units/Corpse_Shynal.cfg:35
 #: data/campaigns/Secrets_of_the_Ancients/units/Necro_Ancient_Lich.cfg:32
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:113
@@ -520,8 +520,8 @@ msgid "fangs"
 msgstr "starrfhiacla"
 
 #. [attack]: type=blade
-#. [attack]: type=cold
 #. [attack]: type=pierce
+#. [attack]: type=cold
 #. [variation]
 #. [unit_type]: id=SotA Walking Corpse_Rat
 #. [unit_type]: id=SotA Soulless_Rat
@@ -1071,8 +1071,8 @@ msgstr "crúba chatha"
 #: data/core/units/drakes/Inferno.cfg:40 data/core/units/drakes/Sky.cfg:59
 #: data/core/units/drakes/Warrior.cfg:34
 #: data/core/units/monsters/Fire_Dragon.cfg:50
-#: data/core/units/monsters/Fire_Guardian.cfg:37
-#: data/core/units/monsters/Fire_Wraith.cfg:59
+#: data/core/units/monsters/Fire_Guardian.cfg:58
+#: data/core/units/monsters/Fire_Wraith.cfg:67
 msgid "fire breath"
 msgstr "anáil thine"
 
@@ -4574,8 +4574,8 @@ msgid ""
 msgstr ""
 
 #. [attack]: type=fire
-#: data/core/units/monsters/Fire_Guardian.cfg:28
-#: data/core/units/monsters/Fire_Wraith.cfg:50
+#: data/core/units/monsters/Fire_Guardian.cfg:49
+#: data/core/units/monsters/Fire_Wraith.cfg:58
 msgid "fire claws"
 msgstr "crúba tine"
 
@@ -4587,7 +4587,7 @@ msgid "Fire Wraith"
 msgstr "anáil thine"
 
 #. [unit_type]: id=Fire Wraith, race=monster
-#: data/core/units/monsters/Fire_Wraith.cfg:47
+#: data/core/units/monsters/Fire_Wraith.cfg:55
 msgid ""
 "Fire Wraiths are spirits of smoke and flame. No one is exactly sure where "
 "they come from, but they are occasionally summoned by powerful mages to do "
@@ -5119,9 +5119,9 @@ msgstr ""
 msgid "Wolf"
 msgstr "Faolchú"
 
-#. [unit_type]: id=Great Wolf, race=wolf
 #. [unit_type]: id=Wolf, race=wolf
 #. [unit_type]: id=Direwolf, race=wolf
+#. [unit_type]: id=Great Wolf, race=wolf
 #: data/core/units/monsters/Wolf.cfg:34
 #: data/core/units/monsters/Wolf_Dire.cfg:19
 #: data/core/units/monsters/Wolf_Great.cfg:19

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-06-23 11:36-0400\n"
+"POT-Creation-Date: 2021-07-18 12:00+0300\n"
 "PO-Revision-Date: 2020-08-31 09:44+0200\n"
 "Last-Translator: Piotr Makarewicz <sxpgch@gmail.com>\n"
 "Language-Team: z.banach@wsisiz.edu.pl\n"
@@ -50,10 +50,10 @@ msgstr "Powiadomienia gry wieloosobowej"
 msgid "Multiplayer_AI^Dev AI: Default AI (RCA) with Alternate Recruiting"
 msgstr ""
 
+#. [terrain_type]: id=zfarmer-fence  # AI-animal-proof fences from first scenario
+#. [terrain_type]: id=farmer-fence  # AI-animal-proof fences from first scenario
 #. [terrain_type]: id=fence
 #. [terrain_type]: id=fence_iron
-#. [terrain_type]: id=farmer-fence  # AI-animal-proof fences from first scenario
-#. [terrain_type]: id=zfarmer-fence  # AI-animal-proof fences from first scenario
 #: data/campaigns/Secrets_of_the_Ancients/utils/terrain-compat.cfg:9
 #: data/campaigns/Secrets_of_the_Ancients/utils/terrain.cfg:5
 #: data/core/terrain.cfg:489 data/core/terrain.cfg:499
@@ -61,7 +61,7 @@ msgid "Fence"
 msgstr "Płot"
 
 #. [row]
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:193
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:196
 #: data/gui/window/mp_faction_select.cfg:176
 #, fuzzy
 #| msgid "Random"
@@ -2242,9 +2242,9 @@ msgid ""
 msgstr "Skonfiguruj wybrane modyfikacje niestandardowe."
 
 #. [button]: id=reset_option_values
-#. [button]: id=orb_defaults
-#. [button]: id=btn_reset_hotkeys
 #. [button]: id=revert_to_defaults
+#. [button]: id=btn_reset_hotkeys
+#. [button]: id=orb_defaults
 #: data/gui/macros/custom_options_tree.cfg:250
 #: data/gui/window/mp_alerts_options.cfg:227
 #: data/gui/window/preferences/02_hotkeys.cfg:279
@@ -2260,10 +2260,10 @@ msgid "Connected Players"
 msgstr "Wybierz gracza"
 
 #. [toggle_button]: id=sort_0
-#. [label]
 #. [toggle_button]: id=sort_name
-#. [toggle_button]: id=sort_1
 #. [label]: id=name
+#. [label]
+#. [toggle_button]: id=sort_1
 #: data/gui/widget/addon_list.cfg:78 data/gui/window/campaign_dialog.cfg:216
 #: data/gui/window/game_load.cfg:157 data/gui/window/mp_connect.cfg:159
 #: data/gui/window/terrain_layers.cfg:45 data/gui/window/unit_list.cfg:93
@@ -2292,8 +2292,8 @@ msgid "Downloads"
 msgstr "Liczba pobrań"
 
 #. [toggle_button]: id=sort_4
-#. [toggle_button]: id=sort_0
 #. [toggle_button]: id=sort_1
+#. [toggle_button]: id=sort_0
 #: data/gui/widget/addon_list.cfg:151 data/gui/window/unit_create.cfg:147
 #: data/gui/window/unit_list.cfg:79 data/gui/window/unit_recall.cfg:33
 msgid "Type"
@@ -2323,7 +2323,7 @@ msgstr "Opublikuj dodatek"
 #. [button]: id=single_uninstall
 #. [button]: id=uninstall
 #: data/gui/widget/addon_list.cfg:435 data/gui/window/addon_manager.cfg:314
-#: src/gui/dialogs/addon/manager.cpp:929
+#: src/gui/dialogs/addon/manager.cpp:927
 msgid "Uninstall add-on"
 msgstr "Usuń dodatek"
 
@@ -2388,6 +2388,7 @@ msgstr "Hasło:"
 #: data/gui/window/editor_edit_side.cfg:442 data/gui/window/file_dialog.cfg:437
 #: data/gui/window/folder_create.cfg:119 data/gui/window/label_settings.cfg:137
 #: data/gui/window/language_selection.cfg:148 data/gui/window/logging.cfg:259
+#: data/gui/window/migrate_version_selection.cfg:114
 #: data/gui/window/mp_change_control.cfg:203
 #: data/gui/window/mp_faction_select.cfg:388
 #: data/gui/window/mp_join_game_password_prompt.cfg:136
@@ -2442,8 +2443,8 @@ msgstr "OK"
 msgid "Cancel"
 msgstr "Anuluj"
 
-#. [widget]: id=name
 #. [label]
+#. [widget]: id=name
 #: data/gui/window/addon_connect.cfg:40 data/gui/window/mp_connect.cfg:52
 #: data/gui/window/mp_method_selection.cfg:254
 msgid "Connect to Server"
@@ -2459,8 +2460,8 @@ msgstr "Połączysz się teraz z serwerem żeby pobrać dodatki."
 msgid "Server:"
 msgstr "Serwer:"
 
-#. [label]
 #. [button]: id=remove_addons
+#. [label]
 #: data/gui/window/addon_connect.cfg:144
 #: data/gui/window/addon_uninstall_list.cfg:51
 msgid "Remove Add-ons"
@@ -2571,7 +2572,7 @@ msgstr "Zależności:"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=dependencies
-#: data/gui/window/addon_manager.cfg:620 src/gui/dialogs/addon/manager.cpp:1007
+#: data/gui/window/addon_manager.cfg:620 src/gui/dialogs/addon/manager.cpp:1005
 msgid "addon_dependencies^None"
 msgstr "Brak"
 
@@ -2582,7 +2583,7 @@ msgstr "Tłumaczenia:"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=translations
-#: data/gui/window/addon_manager.cfg:654 src/gui/dialogs/addon/manager.cpp:1021
+#: data/gui/window/addon_manager.cfg:654 src/gui/dialogs/addon/manager.cpp:1019
 msgid "translations^None"
 msgstr "Brak"
 
@@ -2615,8 +2616,8 @@ msgstr "Dodatki"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=details_toggle
-#: data/gui/window/addon_manager.cfg:1003 src/gui/dialogs/addon/manager.cpp:510
-#: src/gui/dialogs/addon/manager.cpp:745
+#: data/gui/window/addon_manager.cfg:1003 src/gui/dialogs/addon/manager.cpp:508
+#: src/gui/dialogs/addon/manager.cpp:743
 #, fuzzy
 #| msgid "Addon Details"
 msgid "Add-on Details"
@@ -2801,9 +2802,9 @@ msgstr "Rozegraj kampanię"
 msgid "game^Play"
 msgstr "Graj"
 
-#. [slider]: id=enemy_gold_factor
-#. [slider]: id=enemey_gold_factor
 #. [label]: id=title
+#. [slider]: id=enemey_gold_factor
+#. [slider]: id=enemy_gold_factor
 #: data/gui/window/campaign_difficulty.cfg:53
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:263
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:309
@@ -2831,8 +2832,8 @@ msgstr "Strona:"
 msgid "Last"
 msgstr "Ostatnia"
 
-#. [button]: id=previous_tip
 #. [button]: id=previous_page
+#. [button]: id=previous_tip
 #: data/gui/window/chat_log.cfg:105 data/gui/window/title_screen.cfg:190
 msgid "Previous"
 msgstr "Poprzednia"
@@ -2842,8 +2843,8 @@ msgstr "Poprzednia"
 msgid "Previous page"
 msgstr "Poprzednia Strona"
 
-#. [button]: id=next_tip
 #. [button]: id=next_page
+#. [button]: id=next_tip
 #: data/gui/window/chat_log.cfg:114 data/gui/window/title_screen.cfg:205
 msgid "Next"
 msgstr "Następna"
@@ -2869,31 +2870,31 @@ msgstr "Skopiuj te wpisy do schowka"
 msgid "Load Core"
 msgstr "Wczytaj zestaw plików podstawowych"
 
-#. [button]: id=copy
 #. [button]: id=copy_
+#. [button]: id=copy
 #: data/gui/window/custom_tod.cfg:50 data/gui/window/game_cache_options.cfg:110
 #: data/gui/window/game_version.cfg:47
 #: data/gui/window/screenshot_notification.cfg:33
 msgid "filesystem^Copy"
 msgstr "Skopiuj"
 
-#. [button]: id=copy
 #. [button]: id=copy_
+#. [button]: id=copy
 #: data/gui/window/custom_tod.cfg:51 data/gui/window/game_cache_options.cfg:111
 #: data/gui/window/game_version.cfg:48
 #: data/gui/window/screenshot_notification.cfg:34
 msgid "Copy this path to clipboard"
 msgstr "Skopiuj tę ścieżkę do schowka"
 
-#. [button]: id=browse
 #. [button]: id=browse_
+#. [button]: id=browse
 #: data/gui/window/custom_tod.cfg:66 data/gui/window/game_cache_options.cfg:126
 #: data/gui/window/game_version.cfg:63
 msgid "filesystem^Browse"
 msgstr "Przeglądaj"
 
-#. [button]: id=browse
 #. [button]: id=browse_
+#. [button]: id=browse
 #: data/gui/window/custom_tod.cfg:67 data/gui/window/game_cache_options.cfg:127
 #: data/gui/window/game_version.cfg:64
 msgid "Browse this location using a file manager"
@@ -2970,7 +2971,7 @@ msgstr "Usuń ustawienie pory dnia"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/depcheck_confirm_change.cfg:40
-#: src/gui/dialogs/addon/manager.cpp:902 src/gui/dialogs/file_dialog.cpp:302
+#: src/gui/dialogs/addon/manager.cpp:900 src/gui/dialogs/file_dialog.cpp:302
 #: src/gui/dialogs/file_dialog.cpp:728
 msgid "Confirm"
 msgstr "Potwierdź"
@@ -3228,15 +3229,15 @@ msgstr "Generuj"
 msgid "New Map"
 msgstr "Nowa mapa"
 
-#. [grid]
 #. [label]
+#. [grid]
 #: data/gui/window/editor_new_map.cfg:55
 #: data/gui/window/generator_settings.cfg:107
 msgid "Width:"
 msgstr "Szerokość:"
 
-#. [grid]
 #. [label]
+#. [grid]
 #: data/gui/window/editor_new_map.cfg:82
 #: data/gui/window/generator_settings.cfg:109
 msgid "Height:"
@@ -3308,16 +3309,16 @@ msgstr "Stwórz zakładkę z obecnym folderem"
 msgid "Removes the current bookmark"
 msgstr "Usuwa obecną zakładkę"
 
-#. [button]: id=delete
 #. [button]: id=delete_file
+#. [button]: id=delete
 #. [button]: id=server_delete
 #: data/gui/window/file_dialog.cfg:339 data/gui/window/game_load.cfg:513
 #: data/gui/window/mp_connect.cfg:284
 msgid "Delete"
 msgstr "Usuń"
 
-#. [label]: id=title
 #. [button]: id=new_dir
+#. [label]: id=title
 #: data/gui/window/file_dialog.cfg:352 data/gui/window/folder_create.cfg:43
 msgid "New Folder"
 msgstr "Nowy folder"
@@ -3378,8 +3379,8 @@ msgid "Execution trace"
 msgstr "Ślad wykonania"
 
 #. [button]: id=cancel
-#. [grid]
 #. [button]: id=quit_without_surrender
+#. [grid]
 #: data/gui/window/formula_debugger.cfg:234
 #: data/gui/window/surrender_quit.cfg:99 data/gui/window/title_screen.cfg:258
 msgid "Quit"
@@ -3593,17 +3594,17 @@ msgid "Upkeep"
 msgstr "Utrzymanie"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
+#. [toggle_button]: id=sort_6
 #. [image]: id=income_icon
 #. [label]: id=side_income
-#. [toggle_button]: id=sort_6
 #: data/gui/window/game_stats.cfg:118 data/gui/window/mp_join_game.cfg:273
 #: data/gui/window/mp_join_game.cfg:286
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:431
 msgid "Income"
 msgstr "Dochód"
 
-#. [label]: id=side_title
 #. [toggle_button]: id=sort_1
+#. [label]: id=side_title
 #: data/gui/window/game_stats.cfg:297 data/gui/window/mp_change_control.cfg:22
 msgid "Side"
 msgstr "Strona"
@@ -3780,8 +3781,8 @@ msgstr "Inspektor stanu gry"
 msgid "Copy this report to clipboard"
 msgstr "Skopiuj ten raport do schowka"
 
-#. [label]
 #. [button]: id=lua
+#. [label]
 #: data/gui/window/gamestate_inspector.cfg:348
 #: data/gui/window/lua_interpreter.cfg:38
 msgid "Lua Console"
@@ -3852,8 +3853,8 @@ msgstr "Wciśnij wybrany skrót (Esc anuluje)"
 msgid "Show or Hide Labels"
 msgstr "Pokaż lub ukryj etykiety"
 
-#. [button]: id=language
 #. [label]
+#. [button]: id=language
 #: data/gui/window/language_selection.cfg:41
 #: data/gui/window/title_screen.cfg:484
 msgid "Language"
@@ -3889,8 +3890,8 @@ msgstr "Wolne miejsca"
 msgid "Only show games with vacant slots"
 msgstr ""
 
-#. [widget]: id=tab_label
 #. [toggle_button]: id=filter_with_friends
+#. [widget]: id=tab_label
 #: data/gui/window/lobby_main.cfg:348
 #: data/gui/window/preferences/05_multiplayer.cfg:415
 msgid "Friends"
@@ -3918,9 +3919,9 @@ msgstr ""
 msgid "Invert filter"
 msgstr "Odwróć filtr"
 
+#. [button]: id=create
 #. [label]
 #. [button]: id=ok
-#. [button]: id=create
 #: data/gui/window/lobby_main.cfg:399 data/gui/window/lobby_main.cfg:665
 #: data/gui/window/mp_create_game/default_resolution.cfg:45
 #: data/gui/window/mp_create_game/default_resolution.cfg:445
@@ -3941,8 +3942,8 @@ msgstr "Dołącz"
 msgid "Observe"
 msgstr "Obserwuj"
 
-#. [widget]: id=tab_label
 #. [button]: id=server_info
+#. [widget]: id=tab_label
 #: data/gui/window/lobby_main.cfg:446 data/gui/window/lobby_main.cfg:688
 #: data/gui/window/server_info.cfg:168
 #, fuzzy
@@ -3951,9 +3952,9 @@ msgid "Announcements"
 msgstr "Awanse"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [grid]
-#. [label]: id=title
 #. [button]: id=show_preferences
+#. [label]: id=title
+#. [grid]
 #: data/gui/window/lobby_main.cfg:458 data/gui/window/lobby_main.cfg:653
 #: data/gui/window/preferences.cfg:213 data/gui/window/title_screen.cfg:256
 #: src/hotkey/hotkey_command.cpp:118
@@ -4005,15 +4006,15 @@ msgstr "Poczekalnia wieloosobowa"
 msgid "Player Info — "
 msgstr "Informacje o graczu - "
 
-#. [button]: id=add_friend
 #. [button]: id=add_to_friends
+#. [button]: id=add_friend
 #: data/gui/window/lobby_player_info.cfg:88
 #: data/gui/window/preferences/05_multiplayer.cfg:263
 msgid "Add Friend"
 msgstr "Dodaj przyjaciela"
 
-#. [button]: id=add_ignored
 #. [button]: id=add_to_ignores
+#. [button]: id=add_ignored
 #: data/gui/window/lobby_player_info.cfg:99
 #: data/gui/window/preferences/05_multiplayer.cfg:276
 msgid "Block"
@@ -4131,6 +4132,24 @@ msgstr "Wyczyść konsolę"
 msgid "Clear the log area"
 msgstr "Wyczyść listę komunikatów"
 
+#. [label]
+#: data/gui/window/migrate_version_selection.cfg:40
+msgid "Data Migration"
+msgstr ""
+
+#. [label]
+#: data/gui/window/migrate_version_selection.cfg:53
+msgid ""
+"Choose which version of Wesnoth to import your data from.\n"
+"Some settings will not take effect until Wesnoth is restarted."
+msgstr ""
+
+#. [button]: id=cancel
+#: data/gui/window/migrate_version_selection.cfg:127
+#: data/gui/window/story_viewer.cfg:131
+msgid "Skip"
+msgstr "Pomiń"
+
 #. [label]: id=title
 #: data/gui/window/mp_alerts_options.cfg:95
 msgid "Multiplayer Alerts"
@@ -4147,8 +4166,8 @@ msgstr ""
 "poczekalni; do wyboru masz powiadomienia dźwiękowe lub (jeśli okno gry jest "
 "nieaktywne lub zminimalizowane) powiadomienia systemowe."
 
-#. [widget]: id=label
 #. [label]
+#. [widget]: id=label
 #: data/gui/window/mp_alerts_options.cfg:147
 #: data/gui/window/preferences.cfg:347
 msgid "Sound"
@@ -4602,8 +4621,8 @@ msgstr "Wybierz frakcję"
 msgid "Starting position:"
 msgstr "Pozycje początkowe:"
 
-#. [widget]: id=name
 #. [label]
+#. [widget]: id=name
 #: data/gui/window/mp_host_game_prompt.cfg:40
 #: data/gui/window/mp_method_selection.cfg:273
 msgid "Host Networked Game"
@@ -4682,8 +4701,8 @@ msgstr "Zapisz hasło lokalnie (zaszyfrowane)"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#. [grid]
 #. [widget]: id=label
+#. [grid]
 #: data/gui/window/mp_method_selection.cfg:46
 #: data/gui/window/preferences.cfg:365 data/gui/window/title_screen.cfg:252
 #: src/gui/dialogs/game_load.cpp:406
@@ -5456,11 +5475,6 @@ msgid ""
 "Red values indicate this side fared worse than expected."
 msgstr ""
 
-#. [button]: id=cancel
-#: data/gui/window/story_viewer.cfg:131
-msgid "Skip"
-msgstr "Pomiń"
-
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=lblTitle
 #: data/gui/window/surrender_quit.cfg:40 src/hotkey/hotkey_command.cpp:124
@@ -5818,22 +5832,22 @@ msgid "operating_system^<unknown>"
 msgstr "<nieznany>"
 
 #. TRANSLATORS: translate the part inside <...> only
-#: src/filesystem.cpp:635
+#: src/filesystem.cpp:637
 msgid "--userdata-dir=<relative path that doesn't start with a period>"
 msgstr ""
 
-#: src/filesystem.cpp:638
+#: src/filesystem.cpp:640
 msgid ""
 "Use an absolute path, or a relative path that starts with a period and a "
 "backslash"
 msgstr ""
 
 #. TRANSLATORS: translate the part inside <...> only
-#: src/filesystem.cpp:703 src/filesystem.cpp:724
+#: src/filesystem.cpp:705 src/filesystem.cpp:726
 msgid "--userdata-dir=<relative path>"
 msgstr ""
 
-#: src/filesystem.cpp:706 src/filesystem.cpp:727
+#: src/filesystem.cpp:708 src/filesystem.cpp:729
 msgid ""
 "Use absolute paths. Relative paths are deprecated because they are "
 "interpreted relative to $HOME"
@@ -5849,7 +5863,7 @@ msgstr ""
 #. other's resources rather than duplicating them. For example,
 #. Swedish (sv) and Danish (da) are such, so Swedish translator could
 #. translate this message as "sv,da", while Danish as "da,sv".
-#: src/filesystem.cpp:1633
+#: src/filesystem.cpp:1640
 msgid "language code for localized resources^en_US"
 msgstr "pl_PL"
 
@@ -6225,41 +6239,41 @@ msgstr "Opublikowany, zepsuty"
 msgid "addon_state^Unknown"
 msgstr "Nieznany"
 
-#: src/gui/dialogs/addon/manager.cpp:401
+#: src/gui/dialogs/addon/manager.cpp:399
 msgid "ascending"
 msgstr "rosnąco"
 
 #. TRANSLATORS: Sorting order of dates, oldest first
-#: src/gui/dialogs/addon/manager.cpp:403
+#: src/gui/dialogs/addon/manager.cpp:401
 msgid "oldest to newest"
 msgstr "od najstarszych do najnowszych"
 
-#: src/gui/dialogs/addon/manager.cpp:406
+#: src/gui/dialogs/addon/manager.cpp:404
 msgid "descending"
 msgstr "malejąco"
 
 #. TRANSLATORS: Sorting order of dates, newest first
-#: src/gui/dialogs/addon/manager.cpp:408
+#: src/gui/dialogs/addon/manager.cpp:406
 msgid "newest to oldest"
 msgstr "od najnowszych do najstarszych"
 
-#: src/gui/dialogs/addon/manager.cpp:507
+#: src/gui/dialogs/addon/manager.cpp:505
 msgid "addons^Back to List"
 msgstr "Powrót do listy"
 
-#: src/gui/dialogs/addon/manager.cpp:519
+#: src/gui/dialogs/addon/manager.cpp:517
 msgid "An error occurred while downloading the add-ons list from the server."
 msgstr "Wystąpił błąd podczas pobierania listy dodatków z serwera."
 
-#: src/gui/dialogs/addon/manager.cpp:555
+#: src/gui/dialogs/addon/manager.cpp:553
 msgid "No Add-ons Available"
 msgstr "Brak dostępnych dodatków"
 
-#: src/gui/dialogs/addon/manager.cpp:555
+#: src/gui/dialogs/addon/manager.cpp:553
 msgid "There are no add-ons available for download from this server."
 msgstr "Nie ma dodatków możliwych do pobrania z tego serwera."
 
-#: src/gui/dialogs/addon/manager.cpp:787
+#: src/gui/dialogs/addon/manager.cpp:785
 msgid ""
 "The following add-on appears to have publishing or version control "
 "information stored locally, and will not be removed:"
@@ -6267,15 +6281,15 @@ msgstr ""
 "Następujący dodatek zdaje się posiadać lokalnie zapisaną informację o "
 "publikacji lub wersji i nie zostanie usunięty:"
 
-#: src/gui/dialogs/addon/manager.cpp:795
+#: src/gui/dialogs/addon/manager.cpp:793
 msgid "The following add-on could not be deleted properly:"
 msgstr "Następujący dodatek nie mógł zostać poprawnie usunięty:"
 
-#: src/gui/dialogs/addon/manager.cpp:848
+#: src/gui/dialogs/addon/manager.cpp:846
 msgid "Warning"
 msgstr "Ostrzeżenie"
 
-#: src/gui/dialogs/addon/manager.cpp:849
+#: src/gui/dialogs/addon/manager.cpp:847
 msgid ""
 "The remote version of this add-on is greater or equal to the version being "
 "uploaded. Do you really wish to continue?"
@@ -6283,26 +6297,26 @@ msgstr ""
 "Zdalna wersja tego dodatku jest większa lub równa od wersji, którą próbujesz "
 "opublikować. Czy naprawdę chcesz kontynuować?"
 
-#: src/gui/dialogs/addon/manager.cpp:865
+#: src/gui/dialogs/addon/manager.cpp:863
 msgid "Invalid icon path. Make sure the path points to a valid image."
 msgstr ""
 "Niewłaściwa ścieżka do ikon. Upewnij się, że ścieżka wskazuje prawidłowy "
 "obrazek."
 
-#: src/gui/dialogs/addon/manager.cpp:868 src/gui/dialogs/addon/manager.cpp:910
+#: src/gui/dialogs/addon/manager.cpp:866 src/gui/dialogs/addon/manager.cpp:908
 msgid "The server responded with an error:"
 msgstr "Serwer odpowiedział informacją o błędzie:"
 
-#: src/gui/dialogs/addon/manager.cpp:871
+#: src/gui/dialogs/addon/manager.cpp:869
 msgid "The add-on was rejected by the server:"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:886 src/gui/dialogs/addon/manager.cpp:913
+#: src/gui/dialogs/addon/manager.cpp:884 src/gui/dialogs/addon/manager.cpp:911
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:500
 msgid "Response"
 msgstr "Odpowiedź"
 
-#: src/gui/dialogs/addon/manager.cpp:898
+#: src/gui/dialogs/addon/manager.cpp:896
 msgid ""
 "Deleting '$addon|' will permanently erase its download and upload counts on "
 "the add-ons server. Do you really wish to continue?"
@@ -6310,11 +6324,11 @@ msgstr ""
 "Skasowanie „$addon” trwale usunie jego statystyki pobrać i aktualizacji z "
 "serwera dodatków. Czy naprawdę chcesz kontynuować?"
 
-#: src/gui/dialogs/addon/manager.cpp:930
+#: src/gui/dialogs/addon/manager.cpp:928
 msgid "Do you want to uninstall '$addon|'?"
 msgstr "Czy chcesz usunąć „$addon|”?"
 
-#: src/gui/dialogs/addon/manager.cpp:1024
+#: src/gui/dialogs/addon/manager.cpp:1022
 msgid "url^None"
 msgstr "Brak"
 
@@ -8189,11 +8203,11 @@ msgstr "Znajdź plik wykonywalny serwera"
 msgid "Select"
 msgstr "Zaznacz"
 
-#: src/preferences/game.cpp:875
+#: src/preferences/game.cpp:880
 msgid "[%H:%M]"
 msgstr "[%H:%M]"
 
-#: src/preferences/game.cpp:877
+#: src/preferences/game.cpp:882
 msgid "[%I:%M %p]"
 msgstr "[%I:%M %p]"
 

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-06-23 07:08 UTC\n"
+"POT-Creation-Date: 2021-07-18 09:00 UTC\n"
 "PO-Revision-Date: 2020-08-25 23:55 UTC\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -169,16 +169,17 @@ msgstr ""
 
 #. [label]
 #: data/campaigns/World_Conquest/gui/settings_dialog.cfg:50
+msgid " players: "
+msgstr ""
+
+#. [label]
+#: data/campaigns/World_Conquest/gui/settings_dialog.cfg:64
 msgid " scenario: "
 msgstr ""
 
 #. [label]
-#: data/campaigns/World_Conquest/gui/settings_dialog.cfg:63
+#: data/campaigns/World_Conquest/gui/settings_dialog.cfg:85
 msgid " map: "
-msgstr ""
-
-#: data/campaigns/World_Conquest/lua/campaign/difficulty.lua:6
-msgid "Choose difficulty level:"
 msgstr ""
 
 #: data/campaigns/World_Conquest/lua/campaign/enemy_themed.lua:5
@@ -2012,20 +2013,20 @@ msgstr ""
 msgid " (not available for players)"
 msgstr ""
 
-#. [lua]: wc_ii_generate_scenario
 #. [lua]: wct_store_possible_encampment_ford
-#: data/campaigns/World_Conquest/lua/map/main.lua:138
+#. [lua]: wc_ii_generate_scenario
+#: data/campaigns/World_Conquest/lua/map/main.lua:129
 #: data/campaigns/World_Conquest/lua/map/postgeneration/1A_Start.lua:146
 msgid "Start"
 msgstr ""
 
 #. [lua]: wc_ii_generate_scenario
-#: data/campaigns/World_Conquest/lua/map/main.lua:140
+#: data/campaigns/World_Conquest/lua/map/main.lua:131
 msgid "Scenario"
 msgstr ""
 
 #. [lua]: wc_ii_generate_scenario
-#: data/campaigns/World_Conquest/lua/map/main.lua:142
+#: data/campaigns/World_Conquest/lua/map/main.lua:133
 msgid "Final Battle"
 msgstr ""
 
@@ -2994,4 +2995,9 @@ msgid ""
 "A randomly generated cooperative campaign for 3 players. It has 6 level of "
 "difficulties.\n"
 "(Expert level, 5 scenarios.)"
+msgstr ""
+
+#. [campaign]: id=WC_II_{PLAYERS}p, description={WC_II_CAMPAIGN_DESC_{PLAYERS}P}, type=mp
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:73
+msgid "WC"
 msgstr ""

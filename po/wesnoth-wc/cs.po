@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-05-16 02:06 UTC\n"
+"POT-Creation-Date: 2021-07-18 09:00 UTC\n"
 "PO-Revision-Date: 2021-04-19 16:04+0200\n"
 "Last-Translator: Septim <septim@centrum.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
@@ -180,17 +180,18 @@ msgstr "Nastavení mapy"
 
 #. [label]
 #: data/campaigns/World_Conquest/gui/settings_dialog.cfg:50
+msgid " players: "
+msgstr ""
+
+#. [label]
+#: data/campaigns/World_Conquest/gui/settings_dialog.cfg:64
 msgid " scenario: "
 msgstr " scénář: "
 
 #. [label]
-#: data/campaigns/World_Conquest/gui/settings_dialog.cfg:63
+#: data/campaigns/World_Conquest/gui/settings_dialog.cfg:85
 msgid " map: "
 msgstr " mapa: "
-
-#: data/campaigns/World_Conquest/lua/campaign/difficulty.lua:6
-msgid "Choose difficulty level:"
-msgstr "Vyber obtížnost:"
 
 #: data/campaigns/World_Conquest/lua/campaign/enemy_themed.lua:5
 msgid "$name|'s pet"
@@ -2402,20 +2403,20 @@ msgstr " (předmět není dostupný pro nepřátele)"
 msgid " (not available for players)"
 msgstr " (předmět není dostupný pro hráče)"
 
-#. [lua]: wc_ii_generate_scenario
 #. [lua]: wct_store_possible_encampment_ford
-#: data/campaigns/World_Conquest/lua/map/main.lua:138
+#. [lua]: wc_ii_generate_scenario
+#: data/campaigns/World_Conquest/lua/map/main.lua:129
 #: data/campaigns/World_Conquest/lua/map/postgeneration/1A_Start.lua:146
 msgid "Start"
 msgstr ""
 
 #. [lua]: wc_ii_generate_scenario
-#: data/campaigns/World_Conquest/lua/map/main.lua:140
+#: data/campaigns/World_Conquest/lua/map/main.lua:131
 msgid "Scenario"
 msgstr "Scénář"
 
 #. [lua]: wc_ii_generate_scenario
-#: data/campaigns/World_Conquest/lua/map/main.lua:142
+#: data/campaigns/World_Conquest/lua/map/main.lua:133
 msgid "Final Battle"
 msgstr "Závěrečná bitva"
 
@@ -3534,6 +3535,14 @@ msgstr ""
 "Náhodně generované kooperativní tažení pro tři hráče. Lze nastavit 6 úrovní "
 "obtížnosti.\n"
 "(Úroveň expert, 5 scénářů.)"
+
+#. [campaign]: id=WC_II_{PLAYERS}p, description={WC_II_CAMPAIGN_DESC_{PLAYERS}P}, type=mp
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:73
+msgid "WC"
+msgstr ""
+
+#~ msgid "Choose difficulty level:"
+#~ msgstr "Vyber obtížnost:"
 
 #~ msgid "Yes (enter)"
 #~ msgstr "Ano (Enter)"
