@@ -49,6 +49,9 @@ static lg::log_domain log_ai_recruitment("ai/recruitment");
 #define LOG_AI_RECRUITMENT LOG_STREAM(info, log_ai_recruitment)
 #define ERR_AI_RECRUITMENT LOG_STREAM(err, log_ai_recruitment)
 
+static lg::log_domain log_wml("wml");
+#define ERR_WML LOG_STREAM(err, log_wml)
+
 namespace ai {
 
 namespace default_recruitment {
@@ -246,7 +249,8 @@ void recruitment::execute() {
 		// Add team recruits.
 		for (const std::string& recruit : current_team().recruits()) {
 			if (!unit_types.find(recruit)) {
-				lg::wml_error() << "Unit-type \"" << recruit << "\" doesn't exist.\n";
+				lg::log_to_chat() << "Unit-type \"" << recruit << "\" doesn't exist.\n";
+				ERR_WML << "Unit-type \"" << recruit << "\" doesn't exist.";
 			}
 			data.recruits.insert(recruit);
 			data.scores[recruit] = 0.0;
@@ -256,7 +260,8 @@ void recruitment::execute() {
 		// Add extra recruits.
 		for (const std::string& recruit : leader->recruits()) {
 			if (!unit_types.find(recruit)) {
-				lg::wml_error() << "Unit-type \"" << recruit << "\" doesn't exist.\n";
+				lg::log_to_chat() << "Unit-type \"" << recruit << "\" doesn't exist.\n";
+				ERR_WML << "Unit-type \"" << recruit << "\" doesn't exist.";
 			}
 			data.recruits.insert(recruit);
 			data.scores[recruit] = 0.0;

@@ -24,10 +24,13 @@ class UnitTestResult(enum.Enum):
     TIMEOUT = 2
     FAIL_LOADING_REPLAY = 3
     FAIL_PLAYING_REPLAY = 4
-    FAIL_BROKE_STRICT = 5
     FAIL_WML_EXCEPTION = 6
     FAIL_BY_DEFEAT = 7
     PASS_BY_VICTORY = 8
+    BROKE_STRICT_TEST_PASS = 9
+    BROKE_STRICT_TEST_FAIL = 10
+    BROKE_STRICT_TEST_FAIL_BY_DEFEAT = 11
+    BROKE_STRICT_TEST_PASS_BY_VICTORY = 12
     
     def __str__(self):
         return str(self.value) + ' ' + self.name
@@ -188,7 +191,12 @@ class WesnothRunner:
             if self.verbose >= Verbosity.NAMES_OF_TESTS_RUN:
                 print('Skipping test', test_list[0].name, 'because timeout is disabled')
             return
-        if expected_result == UnitTestResult.FAIL_BROKE_STRICT and not options.strict_mode:
+        if (
+                expected_result == UnitTestResult.BROKE_STRICT_TEST_PASS or
+                expected_result == UnitTestResult.BROKE_STRICT_TEST_FAIL or
+                expected_result == UnitTestResult.BROKE_STRICT_TEST_FAIL_BY_DEFEAT or
+                expected_result == UnitTestResult.BROKE_STRICT_TEST_PASS_BY_VICTORY
+            ) and not options.strict_mode:
             test_summary.skip_test(test_list)
             if self.verbose >= Verbosity.NAMES_OF_TESTS_RUN:
                 print('Skipping test', test_list[0].name, 'because strict mode is disabled')

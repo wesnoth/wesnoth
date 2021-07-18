@@ -42,6 +42,9 @@ static lg::log_domain log_config("config");
 #define WRN_CF LOG_STREAM(warn, log_config)
 #define DBG_CF LOG_STREAM(debug, log_config)
 
+static lg::log_domain log_wml("wml");
+#define ERR_WML LOG_STREAM(err, log_wml)
+
 using namespace unit_filter_impl;
 
 unit_filter::unit_filter(vconfig cfg)
@@ -712,7 +715,8 @@ void unit_filter_compound::fill(vconfig cfg)
 					}
 					return true;
 				} catch(const wfl::formula_error& e) {
-					lg::wml_error() << "Formula error in unit filter: " << e.type << " at " << e.filename << ':' << e.line << ")\n";
+					lg::log_to_chat() << "Formula error in unit filter: " << e.type << " at " << e.filename << ':' << e.line << ")\n";
+					ERR_WML << "Formula error in unit filter: " << e.type << " at " << e.filename << ':' << e.line << ")";
 					// Formulae with syntax errors match nothing
 					return false;
 				}

@@ -53,6 +53,9 @@ static lg::log_domain log_scripting_lua("scripting/lua");
 #define WRN_LUA LOG_STREAM(warn, log_scripting_lua)
 #define ERR_LUA LOG_STREAM(err, log_scripting_lua)
 
+static lg::log_domain log_wml("wml");
+#define ERR_WML LOG_STREAM(err, log_wml)
+
 namespace lua_common {
 
 /**
@@ -1124,7 +1127,8 @@ bool luaW_pcall(lua_State *L, int nArgs, int nRets, bool allow_wml_error)
 			if (allow_wml_error && strncmp(m, "~wml:", 5) == 0) {
 				m += 5;
 				char const *e = strstr(m, "stack traceback");
-				lg::wml_error() << std::string(m, e ? e - m : strlen(m));
+				lg::log_to_chat() << std::string(m, e ? e - m : strlen(m)) << '\n';
+				ERR_WML << std::string(m, e ? e - m : strlen(m));
 			} else if (allow_wml_error && strncmp(m, "~lua:", 5) == 0) {
 				m += 5;
 				char const *e = nullptr, *em = m;

@@ -38,6 +38,9 @@ static lg::log_domain log_config("config");
 #define ERR_CF LOG_STREAM(err, log_config)
 #define DBG_CF LOG_STREAM(debug, log_config)
 
+static lg::log_domain log_wml("wml");
+#define ERR_WML LOG_STREAM(err, log_wml)
+
 namespace
 {
 // std::map::operator[] does not support heterogeneous lookup so we need this to work around.
@@ -217,7 +220,8 @@ bool config::has_old_attribute(config_key_type key, const std::string& old_key, 
 		return true;
 	} else if(values_.find(old_key) != values_.end()) {
 		if(!msg.empty()) {
-			lg::wml_error() << msg;
+			lg::log_to_chat() << msg << '\n';
+			ERR_WML << msg;
 		}
 
 		return true;
@@ -799,7 +803,8 @@ const config::attribute_value& config::get_old_attribute(
 			const std::string what = formatter() << "[" << in_tag << "]" << old_key << "=";
 			const std::string msg  = formatter() << "Use " << key << "= instead.";
 			deprecated_message(what, DEP_LEVEL::INDEFINITE, "", msg);
-			lg::wml_error() << msg;
+			lg::log_to_chat() << msg << '\n';
+			ERR_WML << msg;
 		}
 
 		return i->second;

@@ -136,6 +136,9 @@ static lg::log_domain log_scripting_lua("scripting/lua");
 #define WRN_LUA LOG_STREAM(warn, log_scripting_lua)
 #define ERR_LUA LOG_STREAM(err, log_scripting_lua)
 
+static lg::log_domain log_wml("wml");
+#define ERR_WML LOG_STREAM(err, log_wml)
+
 std::vector<config> game_lua_kernel::preload_scripts;
 config game_lua_kernel::preload_config;
 
@@ -4164,7 +4167,8 @@ int game_lua_kernel::intf_log(lua_State *L)
 	const std::string& msg = lua_isstring(L, 2) ? luaL_checkstring(L, 2) : luaL_checkstring(L, 1);
 
 	if(logger == "wml" || logger == "WML") {
-		lg::wml_error() << msg << '\n';
+		lg::log_to_chat() << msg << '\n';
+		ERR_WML << msg;
 	} else {
 		bool in_chat = luaW_toboolean(L, -1);
 		game_state_.events_manager_->pump().put_wml_message(logger,msg,in_chat);
@@ -5035,7 +5039,8 @@ bool game_lua_kernel::run_wml_conditional(const std::string& cmd, const vconfig&
 
 	// If an invalid coniditional tag is used, consider it a pass.
 	if(!luaW_getglobal(L, "wesnoth", "wml_conditionals", cmd)) {
-		lg::wml_error() << "unknown conditional wml: [" << cmd << "]\n";
+		lg::log_to_chat() << "unknown conditional wml: [" << cmd << "]\n";
+		ERR_WML << "unknown conditional wml: [" << cmd << "]";
 		return true;
 	}
 
