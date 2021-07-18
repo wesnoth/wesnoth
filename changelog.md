@@ -1,18 +1,8 @@
-## Version 1.15.14+dev
- ### Add-ons client
- ### Add-ons server
- ### Campaigns
- ### Editor
- ### Multiplayer
- ### Lua API
- ### Packaging
- ### Terrain
+## Version 1.15.15
  ### Translations
    * Updated translations: British English, Bulgarian, Chinese (Traditional), Czech, Italian, Portuguese (Brazil), Russian, Spanish, Turkish
- ### Units
  ### User interface
    * Added a prompt to allow migrating settings and redownloading add-ons used in a previous version of Wesnoth when starting a new versions for the first time.
- ### WML Engine
  ### Miscellaneous and Bug Fixes
    * Fixed: keyboard input during the loading screen intermittently caused a crash (issue #4447)
    * AI: fixed custom synced commands not changing the game state
