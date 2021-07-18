@@ -26,6 +26,9 @@
 #include "utils/name_generator.hpp"
 #include "utils/name_generator_factory.hpp"
 
+static lg::log_domain log_wml("wml");
+#define ERR_WML LOG_STREAM(err, log_wml)
+
 /** Dummy race used when a race is not yet known. */
 const unit_race unit_race::null_race;
 /** Standard string id (not translatable) for FEMALE */
@@ -77,10 +80,12 @@ unit_race::unit_race(const config& cfg) :
 
 {
 	if (id_.empty()) {
-		lg::wml_error() << "[race] '" << cfg["name"] << "' is missing an id field.";
+		lg::log_to_chat() << "[race] '" << cfg["name"] << "' is missing an id field.\n";
+		ERR_WML << "[race] '" << cfg["name"] << "' is missing an id field.";
 	}
 	if (plural_name_.empty()) {
-		lg::wml_error() << "[race] '" << cfg["name"] << "' is missing a plural_name field.";
+		lg::log_to_chat() << "[race] '" << cfg["name"] << "' is missing a plural_name field.\n";
+		ERR_WML << "[race] '" << cfg["name"] << "' is missing a plural_name field.";
 		plural_name_ = (cfg["name"]);
 	}
 

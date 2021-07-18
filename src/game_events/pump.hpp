@@ -148,7 +148,7 @@ private:
 
 	void fill_wml_messages_map(std::map<std::string, int>& msg_map, std::stringstream& source);
 
-	void show_wml_messages(std::stringstream& source, const std::string& caption, bool to_cerr);
+	void show_wml_messages(std::stringstream& source, const std::string& caption);
 
 	void show_wml_errors();
 

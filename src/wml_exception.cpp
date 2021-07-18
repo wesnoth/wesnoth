@@ -29,6 +29,9 @@
 static lg::log_domain log_engine("engine");
 #define WRN_NG LOG_STREAM(warn, log_engine)
 
+static lg::log_domain log_wml("wml");
+#define ERR_WML LOG_STREAM(err, log_wml)
+
 void throw_wml_exception(
 		  const char* cond
 		, const char* file
@@ -149,12 +152,9 @@ const config::attribute_value& get_renamed_config_attribute(
 
 	result = cfg.get(deprecated_key);
 	if(result) {
-		lg::wml_error()
-			<< deprecated_renamed_wml_key_warning(
-				  deprecated_key
-				, key
-				, removal_version)
-			<< '\n';
+		std::string msg = deprecated_renamed_wml_key_warning(deprecated_key, key, removal_version);
+		lg::log_to_chat() << msg << '\n';
+		ERR_WML << msg;
 
 		return *result;
 	}
