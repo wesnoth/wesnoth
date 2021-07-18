@@ -285,7 +285,7 @@ void scope_logger::do_log_exit() noexcept
 	output | formatter() << "} END: " << str_ << " (took " << ticks << "ms)\n";
 }
 
-std::stringstream& wml_error()
+std::stringstream& log_to_chat()
 {
 	static std::stringstream lg;
 	return lg;

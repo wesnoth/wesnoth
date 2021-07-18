@@ -43,6 +43,9 @@ static lg::log_domain log_unit("unit");
 #define DBG_UT LOG_STREAM(debug, log_unit)
 #define ERR_UT LOG_STREAM(err, log_unit)
 
+static lg::log_domain log_wml("wml");
+#define ERR_WML LOG_STREAM(err, log_wml)
+
 attack_type::attack_type(const config& cfg) :
 	self_loc_(),
 	other_loc_(),
@@ -222,7 +225,8 @@ static bool matches_simple_filter(const attack_type & attack, const config & fil
 				return false;
 			}
 		} catch(const wfl::formula_error& e) {
-			lg::wml_error() << "Formula error in weapon filter: " << e.type << " at " << e.filename << ':' << e.line << ")\n";
+			lg::log_to_chat() << "Formula error in weapon filter: " << e.type << " at " << e.filename << ':' << e.line << ")\n";
+			ERR_WML << "Formula error in weapon filter: " << e.type << " at " << e.filename << ':' << e.line << ")";
 			// Formulae with syntax errors match nothing
 			return false;
 		}

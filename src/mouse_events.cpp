@@ -53,6 +53,9 @@ static lg::log_domain log_engine("engine");
 #define ERR_NG LOG_STREAM(err, log_engine)
 #define LOG_NG LOG_STREAM(info, log_engine)
 
+static lg::log_domain log_wml("wml");
+#define ERR_WML LOG_STREAM(err, log_wml)
+
 namespace events
 {
 mouse_handler::mouse_handler(game_display* gui, play_controller& pc)
@@ -1296,7 +1299,8 @@ void mouse_handler::attack_enemy(const map_location& attacker_loc, const map_loc
 	try {
 		attack_enemy_(attacker_loc, defender_loc, choice);
 	} catch(const std::bad_alloc&) {
-		lg::wml_error() << "Memory exhausted a unit has either a lot hitpoints or a negative amount.\n";
+		lg::log_to_chat() << "Memory exhausted a unit has either a lot hitpoints or a negative amount.\n";
+		ERR_WML << "Memory exhausted a unit has either a lot hitpoints or a negative amount.";
 	}
 }
 

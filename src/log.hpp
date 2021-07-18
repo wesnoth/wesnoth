@@ -60,6 +60,14 @@
 
 namespace lg {
 
+enum severity
+{
+	LG_ERROR=0,
+	LG_WARN=1,
+	LG_INFO=2,
+	LG_DEBUG=3
+};
+
 /**
  * Helper class to redirect the output of the logger in a certain scope.
  *
@@ -142,6 +150,14 @@ public:
 		return severity_ > domain.domain_->second;
 	}
 
+	/**
+	 * Returns following values depending on the logger:
+	 * error: 0
+	 * warn: 1
+	 * info: 2
+	 * debug: 3
+	 * See also the lg::severity enum.
+	 */
 	int get_severity() const
 	{
 		return severity_;
@@ -191,15 +207,10 @@ private:
 };
 
 /**
- * Use this logger to send errors due to deprecated WML.
- * The preferred format is:
- * xxx is deprecated; support will be removed in version X. or
- * xxx is deprecated; support has been removed in version X.
- *
- * After every wml-event the errors are shown to the user,
- * so they can inform the campaign maintainer.
+ * Use this to show WML errors in the ingame chat.
+ * After every WML event the errors are shown to the user so they can inform the campaign maintainer.
  */
-std::stringstream& wml_error();
+std::stringstream& log_to_chat();
 
 } // namespace lg
 

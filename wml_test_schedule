@@ -44,7 +44,7 @@
 # Security test
 #
 0 cve_2018_1999023
-5 cve_2018_1999023_2
+9 cve_2018_1999023_2
 #
 # Test Check Victory (If this isn't working other tests may have dubious value)
 #
@@ -76,7 +76,7 @@
 # WML API tests
 #
 0 two_plus_two
-1 two_plus_two_fail
+10 two_plus_two_fail
 0 order_of_nested_events
 0 test_clear_one
 0 test_clear_two
@@ -85,12 +85,12 @@
 0 units_offmap_goto_recall
 0 recall_by_unit_tag
 0 test_move
-5 test_move_fail_1
-5 test_move_fail_2
-5 test_move_fail_3
-5 test_move_fail_4
-5 test_move_fail_5
-5 test_move_fail_6
+9 test_move_fail_1
+9 test_move_fail_2
+9 test_move_fail_3
+9 test_move_fail_4
+9 test_move_fail_5
+9 test_move_fail_6
 0 test_move_unit
 0 test_move_unit_in_circle
 0 sighted_on_move
@@ -151,7 +151,7 @@
 0 events-test_defeat
 0 events-test_die
 0 test_store_unit_defense_on
-5 test_store_unit_defense_deprecated
+9 test_store_unit_defense_deprecated
 # Terrain mask tests
 0 test_terrain_mask_simple_nop
 0 test_terrain_mask_simple_set
@@ -266,7 +266,7 @@
 # Interface tests
 #
 0 test_wml_menu_items_1
-1 test_wml_menu_items_2
+10 test_wml_menu_items_2
 0 test_wml_menu_items_3
 #
 # Conditional tests
@@ -278,19 +278,19 @@
 0 filter_this_unit_tl
 0 filter_this_unit_formula
 0 filter_formula_unit
-5 filter_formula_unit_error
+9 filter_formula_unit_error
 # Interrupt tag tests
 0 check_interrupts_break
 0 check_interrupts_return
 0 check_interrupts_continue
 0 check_interrupts_break_global
 0 check_interrupts_return_nested
-0 check_interrupts_continue_global
+9 check_interrupts_continue_global
 0 check_interrupts_elseif
 0 check_interrupts_case
 # For-loop tests
-0 forloop_all_zero
-0 forloop_step_zero
+9 forloop_all_zero
+9 forloop_step_zero
 0 forloop_once_positive
 0 forloop_once_negative
 0 forloop_twice_matched
@@ -336,4 +336,4 @@
 # Warnings about WML
 0 unknown_scenario_false_positives
 0 unknown_scenario_interpolated
-5 unknown_scenario_1_0
+9 unknown_scenario_1_0
