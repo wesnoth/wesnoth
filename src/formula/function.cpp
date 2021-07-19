@@ -543,11 +543,18 @@ DEFINE_WFL_FUNCTION(acos, 1, 1)
 	return variant(result, variant::DECIMAL_VARIANT);
 }
 
-DEFINE_WFL_FUNCTION(atan, 1, 1)
+DEFINE_WFL_FUNCTION(atan, 1, 2)
 {
-	const double num = args()[0]->evaluate(variables, fdb).as_decimal() / 1000.0;
-	const double result = std::atan(num) * 180.0 / pi<double>();
-	return variant(result, variant::DECIMAL_VARIANT);
+	if(args().size() == 1) {
+		const double num = args()[0]->evaluate(variables, fdb).as_decimal() / 1000.0;
+		const double result = std::atan(num) * 180.0 / pi<double>();
+		return variant(result, variant::DECIMAL_VARIANT);
+	} else {
+		const double y = args()[0]->evaluate(variables, fdb).as_decimal() / 1000.0;
+		const double x = args()[1]->evaluate(variables, fdb).as_decimal() / 1000.0;
+		const double result = std::atan2(y, x) * 180.0 / pi<double>();
+		return variant(result, variant::DECIMAL_VARIANT);
+	}
 }
 
 DEFINE_WFL_FUNCTION(sqrt, 1, 1)
