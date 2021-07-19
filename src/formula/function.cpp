@@ -687,6 +687,25 @@ DEFINE_WFL_FUNCTION(wave, 1, 1)
 	return variant(static_cast<int>(std::sin(angle) * 1000.0));
 }
 
+DEFINE_WFL_FUNCTION(lerp, 3, 3)
+{
+	const double lo = args()[0]->evaluate(variables, add_debug_info(fdb, 0, "lerp:lo")).as_decimal() / 1000.0;
+	const double hi = args()[1]->evaluate(variables, add_debug_info(fdb, 1, "lerp:hi")).as_decimal() / 1000.0;;
+	const double alpha = args()[2]->evaluate(variables, add_debug_info(fdb, 2, "lerp:alpha")).as_decimal() / 1000.0;;
+	return variant(static_cast<int>((lo + alpha * (hi - lo)) * 1000.0), variant::DECIMAL_VARIANT);
+}
+
+DEFINE_WFL_FUNCTION(clamp, 3, 3)
+{
+	const variant val = args()[0]->evaluate(variables, add_debug_info(fdb, 0, "clamp:value"));
+	const variant lo = args()[1]->evaluate(variables, add_debug_info(fdb, 1, "clamp:lo"));
+	const variant hi = args()[2]->evaluate(variables, add_debug_info(fdb, 2, "clamp:hi"));
+	if(val.is_int() && lo.is_int() && hi.is_int()) {
+		return variant(std::clamp<int>(val.as_int(), lo.as_int(), hi.as_int()));
+	}
+	return variant(static_cast<int>(std::clamp<int>(val.as_decimal(), lo.as_decimal(), hi.as_decimal())), variant::DECIMAL_VARIANT);
+}
+
 namespace
 {
 class variant_comparator : public formula_callable
@@ -1540,6 +1559,8 @@ std::shared_ptr<function_symbol_table> function_symbol_table::get_builtins()
 		DECLARE_WFL_FUNCTION(pi);
 		DECLARE_WFL_FUNCTION(hypot);
 		DECLARE_WFL_FUNCTION(type);
+		DECLARE_WFL_FUNCTION(lerp);
+		DECLARE_WFL_FUNCTION(clamp);
 	}
 
 	return std::shared_ptr<function_symbol_table>(&functions_table, [](function_symbol_table*) {});
