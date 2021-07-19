@@ -272,9 +272,9 @@ std::unique_ptr<wesnothd_connection> mp_manager::open_connection(std::string hos
 		}
 
 		// Check for "redirect" messages
-		if(const config& redirect = data.child("redirect")) {
-			auto redirect_host = redirect["host"].str();
-			auto redirect_port = redirect["port"].str("15000");
+		if(const auto redirect = data.optional_child("redirect")) {
+			auto redirect_host = (*redirect)["host"].str();
+			auto redirect_port = (*redirect)["port"].str("15000");
 
 			bool recorded_host;
 			std::tie(std::ignore, recorded_host) = shown_hosts.emplace(redirect_host, redirect_port);
@@ -304,8 +304,8 @@ std::unique_ptr<wesnothd_connection> mp_manager::open_connection(std::string hos
 			conn->send_data(res);
 		}
 
-		if(const config& error = data.child("error")) {
-			throw wesnothd_rejected_client_error(error["message"].str());
+		if(const auto error = data.optional_child("error")) {
+			throw wesnothd_rejected_client_error((*error)["message"].str());
 		}
 
 		// Continue if we did not get a direction to login
@@ -348,10 +348,10 @@ std::unique_ptr<wesnothd_connection> mp_manager::open_connection(std::string hos
 				}
 			}
 
-			config* error = &data.child("error");
+			auto error = data.optional_child("error");
 
 			// ... and get us out of here if the server did not complain
-			if(!*error) break;
+			if(!error) break;
 
 			do {
 				std::string password = preferences::password(host, login);
@@ -381,10 +381,10 @@ std::unique_ptr<wesnothd_connection> mp_manager::open_connection(std::string hos
 
 					gui2::dialogs::loading_screen::progress(loading_stage::login_response);
 
-					error = &data.child("error");
+					error = data.optional_child("error");
 
 					// ... and get us out of here if the server is happy now
-					if(!*error) break;
+					if(!error) break;
 				}
 
 				// Providing a password either was not attempted because we did not
@@ -396,9 +396,9 @@ std::unique_ptr<wesnothd_connection> mp_manager::open_connection(std::string hos
 				utils::string_map i18n_symbols;
 				i18n_symbols["nick"] = login;
 
-				const bool has_extra_data = error->has_child("data");
-				if(has_extra_data) {
-					i18n_symbols["duration"] = utils::format_timespan((*error).child("data")["duration"]);
+				const auto extra_data = error->optional_child("data");
+				if(extra_data) {
+					i18n_symbols["duration"] = utils::format_timespan((*extra_data)["duration"]);
 				}
 
 				const std::string ec = (*error)["error_code"];
@@ -421,19 +421,19 @@ std::unique_ptr<wesnothd_connection> mp_manager::open_connection(std::string hos
 					error_message = VGETTEXT("The nickname ‘$nick’ is not registered on this server.", i18n_symbols)
 							+ _(" This server disallows unregistered nicknames.");
 				} else if(ec == MP_NAME_AUTH_BAN_USER_ERROR) {
-					if(has_extra_data) {
+					if(extra_data) {
 						error_message = VGETTEXT("The nickname ‘$nick’ is banned on this server’s forums for $duration|.", i18n_symbols);
 					} else {
 						error_message = VGETTEXT("The nickname ‘$nick’ is banned on this server’s forums.", i18n_symbols);
 					}
 				} else if(ec == MP_NAME_AUTH_BAN_IP_ERROR) {
-					if(has_extra_data) {
+					if(extra_data) {
 						error_message = VGETTEXT("Your IP address is banned on this server’s forums for $duration|.", i18n_symbols);
 					} else {
 						error_message = _("Your IP address is banned on this server’s forums.");
 					}
 				} else if(ec == MP_NAME_AUTH_BAN_EMAIL_ERROR) {
-					if(has_extra_data) {
+					if(extra_data) {
 						error_message = VGETTEXT("The email address for the nickname ‘$nick’ is banned on this server’s forums for $duration|.", i18n_symbols);
 					} else {
 						error_message = VGETTEXT("The email address for the nickname ‘$nick’ is banned on this server’s forums.", i18n_symbols);
@@ -472,13 +472,13 @@ std::unique_ptr<wesnothd_connection> mp_manager::open_connection(std::string hos
 			} while(login == preferences::login());
 
 			// Somewhat hacky...
-			// If we broke out of the do-while loop above error is still going to be nullptr
-			if(!*error) break;
+			// If we broke out of the do-while loop above error is still going to be nullopt
+			if(!error) break;
 		} // end login loop
 
-		if(const config& join_lobby = data.child("join_lobby")) {
+		if(const auto join_lobby = data.optional_child("join_lobby")) {
 			// Note any session data sent with the response. This should be the only place session_info is set.
-			session_info = { join_lobby };
+			session_info = { join_lobby.value() };
 
 			// All done!
 			break;
