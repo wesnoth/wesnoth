@@ -95,4 +95,12 @@ function mathx.shuffle(t, random_func)
 	end
 end
 
+function mathx.lerp(lo, hi, alpha)
+	return lo + alpha * (hi - lo)
+end
+
+function mathx.clamp(val, lo, hi)
+	return math.min(hi, math.max(lo, val))
+end
+
 wesnoth.random = wesnoth.deprecate_api('wesnoth.random', 'mathx.random', 1, nil, mathx.random)
