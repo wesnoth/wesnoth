@@ -67,7 +67,7 @@ if wesnoth.kernel_type() ~= "Application Lua Kernel" then
 	end
 
 	function wesnoth.map.iter_adjacent(map, ...)
-		local where, n = wesnoth.read_location(...)
+		local where, n = wesnoth.map.read_location(...)
 		if n == 0 then error('wesnoth.map.iter_adjacent: missing location') end
 		local with_borders = select(n + 1, ...)
 		local adj = {wesnoth.map.get_adjacent_hexes(where)}
