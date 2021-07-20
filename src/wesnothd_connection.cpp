@@ -251,7 +251,20 @@ void wesnothd_connection::wait_for_handshake()
 	LOG_NW << "Waiting for handshake" << std::endl;
 
 	try {
-		handshake_finished_.get_future().get();
+		// TODO: make this duration customizable. Should default to 1 minute.
+		const std::chrono::seconds timeout { 60 };
+
+		switch(auto future = handshake_finished_.get_future(); future.wait_for(timeout)) {
+		case std::future_status::ready:
+			// This is a void future, so this just serves to re-throw any system_error exceptions
+			// stored by the worker thread. Additional handling occurs in the catch block below.
+			future.get();
+			break;
+		case std::future_status::timeout:
+			throw error(boost::asio::error::make_error_code(boost::asio::error::timed_out));
+		default:
+			break;
+		}
 	} catch(const boost::system::system_error& err) {
 		if(err.code() == boost::asio::error::operation_aborted || err.code() == boost::asio::error::eof) {
 			return;
