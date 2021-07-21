@@ -11,6 +11,7 @@
    * Updated translations: Bulgarian, Chinese (Traditional), Czech, Italian, Portuguese (Brazil), Russian, Spanish, Turkish
  ### Units
  ### User interface
+   * The names of the abilities used as specials appear in the attack prediction window with specials weapons
    * Added a prompt to allow migrating settings and redownloading add-ons used in a previous version of Wesnoth when starting a new versions for the first time.
  ### WML Engine
  ### Miscellaneous and Bug Fixes
