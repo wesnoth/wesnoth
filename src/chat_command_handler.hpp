@@ -33,11 +33,7 @@ protected:
 	void do_emote();
 	void do_network_send();
 	void do_network_send_req_arg();
-	void do_room_query();
-	void do_room_query_noarg();
-	void do_gen_room_query();
 	void do_whisper();
-	void do_chanmsg();
 	void do_log();
 	void do_ignore();
 	void do_friend();
@@ -117,20 +113,6 @@ protected:
 			_("Display version information."));
 		register_command("info", &chat_command_handler::do_info,
 			_("Request information about a nickname."), _("<nickname>"));
-		register_command("join", &chat_command_handler::do_network_send_req_arg,
-			_("Join a room."), _("<room>"));
-		register_alias("join", "j");
-		register_command("part", &chat_command_handler::do_network_send_req_arg,
-			_("Part a room."), _("<room>"));
-		register_command("names", &chat_command_handler::do_room_query,
-			_("List room members."), _("<room>"));
-		register_command("rooms", &chat_command_handler::do_room_query_noarg,
-			_("List available rooms."));
-		register_command("room", &chat_command_handler::do_chanmsg,
-			_("Room message."), _("<room> <msg>"));
-		register_command("room_query", &chat_command_handler::do_gen_room_query,
-			_("Room query."), _("<room> <type> [value]"));
-		register_alias("room_query", "rq");
 	}
 private:
 	chat_handler& chat_handler_;
