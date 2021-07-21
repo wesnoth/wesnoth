@@ -49,49 +49,12 @@ void chat_command_handler::do_network_send_req_arg()
 	do_network_send();
 }
 
-void chat_command_handler::do_room_query_noarg()
-{
-	config data;
-	config& q = data.add_child("room_query");
-	q.add_child(get_cmd());
-	chat_handler_.send_to_server(data);
-}
-
-void chat_command_handler::do_room_query()
-{
-	if (get_data(1).empty()) return command_failed_need_arg(1);
-	config data;
-	config& q = data.add_child("room_query");
-	q["room"] = get_arg(1);
-	q.add_child(get_cmd());
-	chat_handler_.send_to_server(data);
-}
-
-void chat_command_handler::do_gen_room_query()
-{
-	if (get_data(1).empty()) return command_failed_need_arg(1);
-	config data;
-	config& q = data.add_child("room_query");
-	q["room"] = get_arg(1);
-	config& c = q.add_child(get_arg(2));
-	c["value"] = get_data(3);
-	chat_handler_.send_to_server(data);
-}
-
 void chat_command_handler::do_whisper()
 {
 	if (get_data(1).empty()) return command_failed_need_arg(1);
 	if (get_data(2).empty()) return command_failed_need_arg(2);
 	chat_handler_.send_whisper(get_arg(1), get_data(2));
 	chat_handler_.add_whisper_sent(get_arg(1), get_data(2));
-}
-
-void chat_command_handler::do_chanmsg()
-{
-	if (get_data(1).empty()) return command_failed_need_arg(1);
-	if (get_data(2).empty()) return command_failed_need_arg(2);
-	chat_handler_.send_chat_room_message(get_arg(1), get_data(2));
-	chat_handler_.add_chat_room_message_sent(get_arg(1), get_data(2));
 }
 
 void chat_command_handler::do_log()
