@@ -244,12 +244,6 @@ public:
 
 	void close_window_button_callback(std::string room_name, bool& handled, bool& halt);
 
-	void process_room_join(const ::config& data);
-
-	void process_room_part(const ::config& data);
-
-	void process_room_query_response(const ::config& data);
-
 	void process_message(const ::config& data, bool whisper = false);
 
 	void process_network_data(const ::config& data);
