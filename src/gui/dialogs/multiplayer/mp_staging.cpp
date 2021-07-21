@@ -453,7 +453,7 @@ void mp_staging::select_leader_callback(ng::side_engine_ptr side, grid& row_grid
 template<void(ng::side_engine::*fptr)(int)>
 void mp_staging::on_side_slider_change(ng::side_engine_ptr side, slider& slider)
 {
-	((*side).*fptr)(slider.get_value());
+	std::invoke(fptr, side, slider.get_value());
 
 	set_state_changed();
 }
