@@ -541,16 +541,6 @@ void chatbox::close_window(std::size_t idx)
 		return;
 	}
 
-	if(t.whisper == false) {
-		// closing a room window -- send a part to the server
-		::config data, msg;
-		msg["room"] = t.name;
-		msg["player"] = preferences::login();
-		data.add_child("room_part", std::move(msg));
-
-		send_to_server(data);
-	}
-
 	// Check if we're closing the currently-active window.
 	const bool active_changed = idx == active_window_;
 
@@ -613,119 +603,6 @@ mp::room_info* chatbox::active_window_room()
 	return chat_info_.get_room(t.name);
 }
 
-void chatbox::process_room_join(const ::config& data)
-{
-	const std::string& room = data["room"];
-	const std::string& player = data["player"];
-
-	DBG_LB << "room join: " << room << " " << player << "\n";
-
-	mp::room_info* r = chat_info_.get_room(room);
-	if(r) {
-		if(player == preferences::login()) {
-			if(const auto& members = data.child("members")) {
-				r->process_room_members(members);
-			}
-		} else {
-			r->add_member(player);
-
-			/* TODO: add/use preference */
-			add_room_window_message(room, "server", VGETTEXT("$player has entered the room", {{"player", player}}));
-		}
-
-		if(r == active_window_room()) {
-			active_window_changed_callback_();
-		}
-	} else {
-		if(player == preferences::login()) {
-			lobby_chat_window* t = room_window_open(room, true);
-
-			chat_info_.open_room(room);
-			r = chat_info_.get_room(room);
-			assert(r);
-
-			if(const auto& members = data.child("members")) {
-				r->process_room_members(members);
-			}
-
-			switch_to_window(t);
-
-			const std::string& topic = data["topic"];
-			if(!topic.empty()) {
-				add_chat_room_message_received("room", "server", room + ": " + topic);
-			}
-		} else {
-			LOG_LB << "Discarding join info for a room the player is not in\n";
-		}
-	}
-}
-
-void chatbox::process_room_part(const ::config& data)
-{
-	// TODO: close room window when the part message is sent
-	const std::string& room = data["room"];
-	const std::string& player = data["player"];
-
-	DBG_LB << "Room part: " << room << " " << player << "\n";
-
-	if(mp::room_info* r = chat_info_.get_room(room)) {
-		r->remove_member(player);
-
-		/* TODO: add/use preference */
-		add_room_window_message(room, "server", VGETTEXT("$player has left the room", {{"player", player}}));
-		if(active_window_room() == r) {
-			active_window_changed_callback_();
-		}
-	} else {
-		LOG_LB << "Discarding part info for a room the player is not in\n";
-	}
-}
-
-void chatbox::process_room_query_response(const ::config& data)
-{
-	const std::string& room = data["room"];
-	const std::string& message = data["message"];
-
-	DBG_LB << "room query response: " << room << " " << message << "\n";
-
-	if(room.empty()) {
-		if(!message.empty()) {
-			add_active_window_message("server", message);
-		}
-
-		if(const ::config& rooms = data.child("rooms")) {
-			// TODO: this should really open a nice join room dialog instead
-			std::stringstream ss;
-			ss << "Rooms:";
-
-			for(const auto & r : rooms.child_range("room")) {
-				ss << " " << r["name"];
-			}
-
-			add_active_window_message("server", ss.str());
-		}
-	} else {
-		if(room_window_open(room, false)) {
-			if(!message.empty()) {
-				add_chat_room_message_received(room, "server", message);
-			}
-
-			if(const ::config& members = data.child("members")) {
-				mp::room_info* r = chat_info_.get_room(room);
-				assert(r);
-				r->process_room_members(members);
-				if(r == active_window_room()) {
-					active_window_changed_callback_();
-				}
-			}
-		} else {
-			if(!message.empty()) {
-				add_active_window_message("server", room + ": " + message);
-			}
-		}
-	}
-}
-
 void chatbox::process_message(const ::config& data, bool whisper /*= false*/)
 {
 	std::string sender = data["sender"];
@@ -780,12 +657,6 @@ void chatbox::process_network_data(const ::config& data)
 		process_message(*message);
 	} else if(const auto whisper = data.optional_child("whisper")) {
 		process_message(*whisper, true);
-	} else if(const auto room_join = data.optional_child("room_join")) {
-		process_room_join(*room_join);
-	} else if(const auto room_part = data.optional_child("room_part")) {
-		process_room_part(*room_part);
-	} else if(const auto room_query_response = data.optional_child("room_query_response")) {
-		process_room_query_response(*room_query_response);
 	}
 }
 
