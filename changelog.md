@@ -10,6 +10,7 @@
  ### Translations
  ### Units
  ### User interface
+   * The names of the abilities used as specials appear in the attack prediction window with specials weapons
  ### WML Engine
  ### Miscellaneous and Bug Fixes
 
