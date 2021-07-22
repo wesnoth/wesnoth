@@ -29,7 +29,7 @@ function ca_move_to_any_enemy:evaluation(cfg, data, filter_own)
 
     -- In principle we don't even need to pass avoid_map here, as the loop below also
     -- checks this, but we might as well eliminate unreachable enemies right away
-    local enemies = AH.get_attackable_enemies({}, wesnoth.current.sude, { avoid_map = avoid_map })
+    local enemies = AH.get_attackable_enemies({}, wesnoth.current.side, { avoid_map = avoid_map })
 
     local unit, destination
     -- Find first unit that can reach a hex adjacent to an enemy, and find closest enemy of those reachable.
