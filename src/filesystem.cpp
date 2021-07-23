@@ -839,7 +839,7 @@ std::vector<other_version_dir> find_other_version_saves_dirs()
 	std::vector<other_version_dir> result;
 
 	// For 1.16, check for saves from all versions up to 1.20.
-	for(auto minor = ms_ver.minor_version(); minor <= w_ver.minor_version() + 4; ++minor) {
+	for(auto minor = w_ver.minor_version() + 4; minor >= ms_ver.minor_version(); --minor) {
 		if(minor == w_ver.minor_version())
 			continue;
 
