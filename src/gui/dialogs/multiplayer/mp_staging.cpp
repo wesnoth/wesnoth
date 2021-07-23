@@ -151,7 +151,7 @@ tree_view_node& mp_staging::add_side_to_team_node(ng::side_engine_ptr side, T&&.
 		std::map<std::string, string_map> tree_data;
 		string_map tree_item;
 
-		tree_item["label"] = (formatter() << _("Team:") << " " << side->user_team_name()).str();
+		tree_item["label"] = side->user_team_name();
 		tree_data.emplace("tree_view_node_label", tree_item);
 
 		team_node = &tree.add_node("team_header", tree_data);
