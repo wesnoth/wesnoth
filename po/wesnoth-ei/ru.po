@@ -20,7 +20,7 @@ msgstr ""
 "Project-Id-Version: wesnoth-ei\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2021-06-23 15:42 UTC\n"
-"PO-Revision-Date: 2020-10-18 16:02+0300\n"
+"PO-Revision-Date: 2021-07-19 18:20+0300\n"
 "Last-Translator: Artem Khrapov <artemkhrapov2001@yandex.ru>\n"
 "Language-Team: https://wiki.wesnoth.org/RussianTranslation\n"
 "Language: ru\n"
@@ -29,7 +29,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 2.4.1\n"
+"X-Generator: Poedit 3.0\n"
 "X-Poedit-SourceCharset: utf-8\n"
 
 #. [campaign]: id=Eastern_Invasion
@@ -65,7 +65,7 @@ msgstr "Меченосец"
 #. [campaign]: id=Eastern_Invasion
 #: data/campaigns/Eastern_Invasion/_main.cfg:20
 msgid "Difficult"
-msgstr ""
+msgstr "Очень сложный"
 
 #. [campaign]: id=Eastern_Invasion
 #: data/campaigns/Eastern_Invasion/_main.cfg:20
@@ -87,10 +87,8 @@ msgstr ""
 
 #. [campaign]: id=Eastern_Invasion
 #: data/campaigns/Eastern_Invasion/_main.cfg:24
-#, fuzzy
-#| msgid "(Novice level, 16 scenarios.)"
 msgid "(Intermediate level, 16 scenarios.)"
-msgstr "(Для начинающих, 16 сценариев.)"
+msgstr "(Средний уровень сложности, 16 сценариев.)"
 
 #. [about]
 #: data/campaigns/Eastern_Invasion/_main.cfg:28
@@ -183,13 +181,6 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:40
-#, fuzzy
-#| msgid ""
-#| "In the days of the king Garard I, two strong-points had been built along "
-#| "the near bank of the Weldyn, south of Soradoc, to stop bandits and orcish "
-#| "raiders out of the Estmarks from entering Wesnoth. But in later years the "
-#| "River Guard posts had been abandoned, as colonists spread into the "
-#| "Estmarks and the orcs were driven in retreat north of the Great River."
 msgid ""
 "In the days of King Garard I, two strong-points had been built along the "
 "near bank of the Weldyn, south of Soradoc, to stop bandits and orcish "
@@ -197,11 +188,11 @@ msgid ""
 "River Guard posts had been abandoned, as colonists spread into the Estmarks "
 "and the orcs were driven in retreat north of the Great River."
 msgstr ""
-"Во времена короля Гарарда I на юго-восточной границе Велдина, южнее "
-"Сорадока, были построены две заставы, дабы не пускать орков и разбойников из "
-"Эстмарка в Веснот. В последующие годы, однако, посты Речной Стражи были "
-"оставлены, поскольку по Эстмаркским Холмам расселились колонисты, а орков "
-"вытеснили севернее Великой Реки."
+"Во времена короля Гарарда I на берегу реки Велдин, южнее Сорадока, были "
+"построены две заставы, дабы не пускать орков и разбойников из Эстмарка в "
+"Веснот. В последующие годы, однако, посты Речной Стражи были оставлены, "
+"поскольку по Эстмаркским Холмам расселились колонисты, а орков вытеснили "
+"севернее Великой Реки."
 
 #. [part]
 #: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:44
@@ -611,10 +602,6 @@ msgstr "Кто идёт?"
 
 #. [message]: speaker=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:328
-#, fuzzy
-#| msgid ""
-#| "We are soldiers of the king of Wesnoth. Will you help us fight these "
-#| "trolls?"
 msgid ""
 "We are soldiers of the King of Wesnoth. Will you help us fight these trolls?"
 msgstr "Мы солдаты веснотской короны. Поможете нам побороть этих троллей?"
@@ -625,7 +612,7 @@ msgid ""
 "Aye, we’ll help ye, for we have nae love for the trolls. Anyone attacked by "
 "them deserves some help, I think."
 msgstr ""
-"Да, мы поможем вам, мы тоже недолюбливаем их. Думаю, любой, на кого они "
+"Да, мы вам поможем, мы тоже недолюбливаем их. Думаю, любой, на кого они "
 "напали, может рассчитывать на помощь."
 
 #. [message]: speaker=Dacyn
@@ -1869,7 +1856,7 @@ msgstr ""
 #. "Wake" doesn't mean "raise undead" here. The reinforcements are sea creatures, they're alive but hidden underwater.
 #: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:135
 msgid "Time to wake my reinforcements!"
-msgstr ""
+msgstr "Время пробудить подкрепления!"
 
 #. [message]: speaker=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:252
@@ -2273,10 +2260,8 @@ msgstr ""
 
 #. [label]
 #: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:164
-#, fuzzy
-#| msgid "Move Dacyn to the stronghold"
 msgid "The stronghold"
-msgstr "Отправьте Дацина к цитадели"
+msgstr "Цитадель"
 
 #. [message]: speaker=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:194
@@ -2578,10 +2563,8 @@ msgstr ""
 
 #. [objective]: condition=win
 #: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:1113
-#, fuzzy
-#| msgid "Move Gweddry to the tunnel exit"
 msgid "Move Gweddry to the western exit"
-msgstr "Отправьте Гведдри к выходу из туннеля"
+msgstr "Отправьте Гведдри к выходу на западе"
 
 #. [objective]: condition=win
 #: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:1117
@@ -2657,10 +2640,8 @@ msgstr "Ран-Лар"
 
 #. [objective]: condition=win
 #: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:150
-#, fuzzy
-#| msgid "Destroy the bridge OR defeat all enemies"
 msgid "Destroy the bridge"
-msgstr "Уничтожить мост ИЛИ победить всех противников"
+msgstr "Уничтожьте мост"
 
 #. [note]
 #: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:175
@@ -3904,15 +3885,11 @@ msgstr ""
 
 #. [attacks]: id=shock
 #: data/campaigns/Eastern_Invasion/utils/abilities.cfg:10
-#, fuzzy
-#| msgid ""
-#| " This unit’s melee attack can overwhelm the defenses of enemies, "
-#| "preventing them from retaliating as effectively."
 msgid ""
 "This unit’s melee attack can overwhelm the defenses of enemies, preventing "
 "them from retaliating as effectively."
 msgstr ""
-" Атака этого бойца может сокрушить защиту врагов в ближнем бою, предотвращая "
+"Атака этого бойца может сокрушить защиту врагов в ближнем бою, предотвращая "
 "их ответные действия."
 
 #: data/campaigns/Eastern_Invasion/utils/character-definitions.cfg:15

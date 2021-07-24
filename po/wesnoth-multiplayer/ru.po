@@ -1,6 +1,6 @@
 # #-#-#-#-#  wesnoth.cpp.po (Battle for Wesnoth VERSION)  #-#-#-#-#
 # Russian translations for Battle for Wesnoth package.
-# Copyright (C) 2007 Wesnoth development team
+# Copyright (C) 2007-2021 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 #
 # Translators:
@@ -9,13 +9,13 @@
 # Sergey Khlutchin (Khlut) - Sergey.Khlutchin@gmail.com
 # Azamat H. Hackimov <azamat.hackimov@gmail.com>, 2006, 2007.
 # Fedor Khodkov <fkhodkov@gmail.com>, 2014
-# Artem Khrapov (kabachuha) <artemkhrapov2001@yandex.ru>, 2020.
+# Artem Khrapov (kabachuha) <artemkhrapov2001@yandex.ru>, 2020-2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-multiplayer\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2021-06-23 15:42 UTC\n"
-"PO-Revision-Date: 2020-11-29 19:24+0300\n"
+"PO-Revision-Date: 2021-07-21 17:56+0300\n"
 "Last-Translator: Artem Khrapov <artemkhrapov2001@yandex.ru>\n"
 "Language-Team: https://wiki.wesnoth.org/RussianTranslation\n"
 "Language: ru\n"
@@ -24,7 +24,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 2.4.2\n"
+"X-Generator: Poedit 3.0\n"
 "X-Poedit-SourceCharset: utf-8\n"
 
 #. [generic_multiplayer]: id=user_map
@@ -111,59 +111,50 @@ msgstr ""
 #. [lua]: f
 #. In the end-of-match summary, a side which has no units left and therefore lost. In English the loss is shown by displaying it with the text struck through.
 #: data/multiplayer/eras.lua:53
-#, fuzzy
-#| msgid "<span strikethrough='true' foreground='#%02x%02x%02x'>Side %d</span>"
 msgid ""
 "<span strikethrough='true' foreground='$side_color'>Side $side_number</"
 "span>:  Has lost all units"
 msgstr ""
-"<span strikethrough='true' foreground='#%02x%02x%02x'>Сторона %d</span>"
+"<span strikethrough='true' foreground='$side_color'>Сторона $side_number</"
+"span> потеряла всех бойцов"
 
 #. [lua]: f
 #. In the end-of-match summary, any side that still has units left
 #: data/multiplayer/eras.lua:69
-#, fuzzy
-#| msgid ""
-#| "<span foreground='#%02x%02x%02x'>Side %d</span>:  Income score = %d  Unit "
-#| "score = %d  Gold = %d"
 msgid ""
 "<span foreground='$side_color'>Side $side_number</span>:  Income score = "
 "$income  Unit score = $units  Gold = $gold\n"
 "Grand total: <b>$total</b>"
 msgstr ""
-"<span foreground='#%02x%02x%02x'>Сторона %d</span>:  Доход = %d  Бойцы = %d  "
-"Золото = %d"
+"<span foreground='$side_color'>Сторона $side_number</span>:  Очки за доход = "
+"$income  Очки за бойцов = $units  Золото = $gold\n"
+"Итоговые очки: <b>$total</b>"
 
 #. [lua]: f
 #. In the end-of-match summary, there's a single side that's won.
 #: data/multiplayer/eras.lua:86
-#, fuzzy
-#| msgid "<span foreground='%s'>Side %d</span> has the advantage."
 msgid ""
 "<span foreground='$side_color'>Side $side_number</span> has the advantage."
-msgstr "Преимущество у <span foreground='%s'>Стороны %d</span>."
+msgstr ""
+"Преимущество у <span foreground='$side_color'>Стороны $side_number</span>."
 
 #. [lua]: f
 #. In the end-of-match summary, there's a two-way tie (this is only used for exactly two winning teams)
 #: data/multiplayer/eras.lua:91
-#, fuzzy
-#| msgid "Sides %s and %d are tied."
 msgid "Sides $side_number and $other_side_number are tied."
-msgstr "%s и %d сторон связаны."
+msgstr "Стороны $side_number и $other_side_number связаны."
 
 #. [lua]: f
 #. In the end-of-match summary, three or more teams have all tied for the best score. $winners contains the result of formatting the conjunct list.
 #: data/multiplayer/eras.lua:96
-#, fuzzy
-#| msgid "Sides %s and %d are tied."
 msgid "Sides $winners are tied."
-msgstr "%s и %d сторон связаны."
+msgstr "Стороны $winners связаны."
 
 #. [lua]: f
 #. "Turns Over", meaning "turn limit reached" is the title of the end-of-match summary dialog
 #: data/multiplayer/eras.lua:100
 msgid "dialog^Turns Over"
-msgstr ""
+msgstr "Конец ходов"
 
 #. [multiplayer_side]: id=Drakes, type=random
 #: data/multiplayer/factions/drakes-aoh.cfg:4
@@ -509,7 +500,7 @@ msgstr "Эфирый пузырь урчит"
 #. [multiplayer]: id=multiplayer_Arcanclave_Citadel
 #: data/multiplayer/scenarios/2p_Arcanclave_Citadel.cfg:6
 msgid "2p — Arcanclave Citadel"
-msgstr "2и - Цитадель Арханклава"
+msgstr "2и — Цитадель Арханклава"
 
 #. [multiplayer]: id=multiplayer_Arcanclave_Citadel
 #: data/multiplayer/scenarios/2p_Arcanclave_Citadel.cfg:7
@@ -618,7 +609,7 @@ msgstr "Запад"
 #. [multiplayer]: id=multiplayer_Basilisk
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:37
 msgid "2p — Caves of the Basilisk"
-msgstr "2и - Пещеры Василиска"
+msgstr "2и — Пещеры Василиска"
 
 #. [multiplayer]: id=multiplayer_Basilisk
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:39
@@ -1566,28 +1557,6 @@ msgstr ""
 "прибежище бандитов и воров."
 
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:4
-#, fuzzy
-#| msgid ""
-#| "Your aim is to survive the spawning waves of units and defeat the final "
-#| "archenemies.\n"
-#| "\n"
-#| "The spawning waves are randomly generated and will be different each time "
-#| "Dark Forecast is played.\n"
-#| "\n"
-#| "They appear along the north, south, and west map edges — though they are "
-#| "most likely to spawn on the west edge. The waves appear at somewhat "
-#| "regular intervals.\n"
-#| "\n"
-#| "The weather will also change randomly, affecting the layout of the map.\n"
-#| "\n"
-#| "\n"
-#| "<b>Dark Forecast was made by:</b>\n"
-#| "\n"
-#| "<span color='green'>jb:</span>\n"
-#| "• Map design, spawn groups, and scenario concept\n"
-#| "\n"
-#| "<span color='green'>Rhuvaen:</span>\n"
-#| "• WML implementation"
 msgid ""
 "Your aim is to survive spawning waves of units and defeat the final "
 "archenemies. Spawns are randomly generated and will be different each time "
@@ -1595,45 +1564,17 @@ msgid ""
 "weather will also change randomly, affecting the layout of the map."
 msgstr ""
 "Ваша цель — выжить, отбить волны врагов, а под конец — победить их "
-"предводителей.\n"
-"\n"
-"Волны генерируются случайно, и будут разными каждый раз, что вы играете в "
-"Мрачный Прогноз.\n"
-"\n"
-"Они появляются на северном, южном и западном краях карты — чаще всего на "
-"западном. Волны идут с почти равными интервалами.\n"
-"\n"
-"\n"
-"Погода будет меняться случайно, меняя карту.\n"
-"\n"
-"\n"
-"\n"
-"<b>Мрачный Прогноз создали:</b>\n"
-"\n"
-"<span color='green'>jb</span>\n"
-"• дизайн карты, порождение волн, и концепция сценария\n"
-"\n"
-"<span color='green'>Rhuvaen</span>\n"
-"• реализация WML"
+"предводителей. Волны генерируются случайно, и будут разными каждый раз, что "
+"вы играете в Остров Туманов. Волны идут с почти равными интервалами. Погода "
+"будет меняться произвольным образом, влияя на карту."
 
 #. [multiplayer]: id=multiplayer_2p_Isle_of_Mists
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:9
-#, fuzzy
-#| msgid "2p — Dark Forecast (Survival)"
 msgid "2p — Isle of Mists (Survival)"
-msgstr "2и — Мрачный прогноз (выживание)"
+msgstr "2и — Остров Туманов (Выживание)"
 
 #. [multiplayer]: id=multiplayer_2p_Isle_of_Mists
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:10
-#, fuzzy
-#| msgid ""
-#| "Dark Forecast is a survival scenario for solitaire or two-player team-"
-#| "based play against randomly-spawned AI units. Victory is achieved by "
-#| "surviving and defeating all enemy waves. During the course of play, the "
-#| "terrain will change based on random weather effects.\n"
-#| "\n"
-#| "Note: You need to use the default map settings for the scenario to work "
-#| "right."
 msgid ""
 "Isle of Mists is a survival scenario which can be played alone or with "
 "another player against randomly spawned AI units, catered for experienced "
@@ -1642,42 +1583,35 @@ msgid ""
 "effects. Default map settings are required for the scenario to work "
 "properly. By Lord-Knightmare."
 msgstr ""
-"Мрачный Прогноз — сценарий на выживание для одного или двух игроков, "
-"играющих вместе против случайно порождаемых войск компьютера. Вы побеждаете, "
-"если переживёте все волны нападающих. Во время игры местность будет "
-"случайным образом меняться в зависимости от погоды.\n"
-"\n"
-"Примечание: Чтобы сценарий работал, включите настройку «Использовать "
-"настройки карты»."
+"Остров Туманов — сценарий на выживание для одного или двух игроков, играющих "
+"вместе против случайно порождаемых войск компьютера. Сценарий заточен под "
+"опытных игроков. Вы побеждаете, если переживёте все волны врагов. Во время "
+"игры местность будет случайным образом меняться в зависимости от погоды. "
+"Чтобы сценарий работал, включите настройку «Использовать настройки карты». "
+"Автор: Lord-Knightmare."
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:25
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:38
-#, fuzzy
-#| msgid "teamname^Monsters"
 msgid "teamname^Invaders"
-msgstr "Чудовища"
+msgstr "Захватчики"
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:56
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:83
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:107
-#, fuzzy
-#| msgid "teamname^Center"
 msgid "teamname^Defenders"
-msgstr "Центр"
+msgstr "Защитники"
 
 #. [label]
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:189
 msgid "Healing Keep"
-msgstr ""
+msgstr "Лечебный лагерь"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:213
-#, fuzzy
-#| msgid "Dark Forecast — a random survival scenario"
 msgid "Isle of Mists — a random survival scenario"
-msgstr "Мрачный Прогноз — сценарий на выживание, случайный"
+msgstr "Остров Туманов — сценарий на выживание, непредсказуемый"
 
 #. [message]
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:220
@@ -1685,6 +1619,9 @@ msgid ""
 "You arrive near a mystic shrine, where the apparitions of ancient armies are "
 "forever trapped and doomed to eternally cleanse the isle of all interlopers."
 msgstr ""
+"Вы прибываете к загадочному храму, месту, где духи армий древности связаны "
+"навсегда и обречены до скончания веков защищать остров от любых "
+"посягательств."
 
 #. [message]
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:224
@@ -1692,21 +1629,18 @@ msgid ""
 "Phantom armies approach on the horizon. If we defeat them all, they may be "
 "released from this timeless prison."
 msgstr ""
+"На горизонте показались призрачные полчища. Ежели мы победим их всех, быть "
+"может, они освободятся из этой извечной темницы."
 
 #. [message]
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:228
 msgid "Let us prepare ourselves for the coming battle."
-msgstr ""
+msgstr "Подготовимся к грядущей битве."
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:247
-#, fuzzy
-#| msgid ""
-#| "Ugh! How can this be? Defeated by mere barbarians! My gods have forsaken "
-#| "me..."
 msgid "How can this be? My gods have forsaken me..."
-msgstr ""
-"Охх! Как такое возможно? Простые варвары меня победили! Боги оставили меня..."
+msgstr "Как такое возможно? Боги оставили меня..."
 
 #. [message]: speaker=second_unit
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:261
@@ -1715,6 +1649,9 @@ msgid ""
 "separated from your body. You realize that you will soon be doomed to the "
 "same fate as the phantom guardians of the shrine."
 msgstr ""
+"Когда прохладная длань смерти приближается к вам, вы чувствуете, как ваш дух "
+"отделяется от тела. Вы осознаёте: скоро вас поджидает та же участь, что и у "
+"призрачных стражей святилища."
 
 #. [message]
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:283
@@ -1723,19 +1660,18 @@ msgid ""
 "You dimly realize that you will soon join the other ghosts as another "
 "faceless guardian of the ancient shrine."
 msgstr ""
+"С земли поднимается тёмная пелена, она высасывает ваши чувства и волю. Вы "
+"смутно осознаёте, что скоро вы присоединитесь к остальным призракам, "
+"безлицым стражам древней святыни."
 
 #. [lua]: final_spawn
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.lua:313
-#, fuzzy
-#| msgid ""
-#| "The last and most powerful of these creatures are almost upon us. I feel "
-#| "that if we can finish them off in time, we shall be victorious."
 msgid ""
 "The last and most powerful of our enemies are upon us. If we can finish them "
 "off in time, we shall be victorious."
 msgstr ""
-"Последние, самые могучие из этих тварей идут на нас. Думаю, если мы с ними "
-"расправимся, то победим окончательно."
+"Последние, самые могучие из этих тварей идут на нас. Думаю, если мы вовремя "
+"с ними расправимся, то победим окончательно."
 
 #. [lua]: final_spawn
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.lua:343
@@ -1745,11 +1681,14 @@ msgid ""
 "eternal guardianship. You have finally cleansed the ancient shrine... for "
 "now."
 msgstr ""
+"Как только вы побеждаете последних из врагов, безотрадная мгла вокруг "
+"острова начинает рассеиваться. Фантомы угасают, наконец-то они освободились "
+"из-под вечной его опеки. Вы очистили древний храм... пока что."
 
 #. [lua]: weather_map
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.lua:517
 msgid "Inundation"
-msgstr ""
+msgstr "Наводнение"
 
 #. [multiplayer]: id=multiplayer_Ruined_Passage
 #: data/multiplayer/scenarios/2p_Ruined_Passage.cfg:7
@@ -2372,7 +2311,7 @@ msgstr "Северо-восток"
 #. [checkbox]: id=simple_background
 #: data/multiplayer/scenarios/4p_Isars_Cross.cfg:67
 msgid "Disable Background Image"
-msgstr ""
+msgstr "Отключить изображение фона"
 
 #. [checkbox]: id=simple_background
 #. Tooltip for the Isar's Cross map, makes the map look as it did in Wesnoth 1.14 and earlier
@@ -2380,7 +2319,7 @@ msgstr ""
 msgid ""
 "Show a blank area outside the map, instead of the floating island with "
 "cliffs."
-msgstr ""
+msgstr "Показать пустую область вне карты вместо парящего острова со скалами."
 
 #. [multiplayer]: id=multiplayer_King_of_the_Hill
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:7
