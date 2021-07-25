@@ -19,7 +19,7 @@ Note that the mainline campaigns are now using correct typography,
 including sexed quotes and en and em dashes. These will appear as three byte
 sequences if you are not using a viewer that supports UTF-8. 
 
-### Text Issues: Typos, grammar mistakes, suggested improvemetns
+### Text Issues: Typos, grammar mistakes, suggested improvements
 
 * Is the text in English? If not, what language is it in?
 
