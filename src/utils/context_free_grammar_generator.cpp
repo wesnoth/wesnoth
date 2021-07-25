@@ -28,6 +28,9 @@
 
 #include <boost/algorithm/string.hpp>
 
+static lg::log_domain log_wml("wml");
+#define ERR_WML LOG_STREAM(err, log_wml)
+
 context_free_grammar_generator::~context_free_grammar_generator()
 {
 }
@@ -143,7 +146,8 @@ std::string context_free_grammar_generator::print_nonterminal(const std::string&
 
 		std::map<std::string,nonterminal>::const_iterator found = nonterminals_.find(name);
 		if (found == nonterminals_.end()) {
-			lg::wml_error() << "[context_free_grammar_generator] Warning: needed nonterminal" << name << " not defined";
+			lg::log_to_chat() << "[context_free_grammar_generator] Warning: needed nonterminal " << name << " not defined\n";
+			ERR_WML << "[context_free_grammar_generator] Warning: needed nonterminal " << name << " not defined";
 			return "!" + name;
 		}
 		const context_free_grammar_generator::nonterminal& got = found->second;

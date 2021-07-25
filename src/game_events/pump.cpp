@@ -343,9 +343,11 @@ void wml_event_pump::fill_wml_messages_map(std::map<std::string, int>& msg_map, 
  * the number of times that message was encountered.
  * The order in which the messages are shown does not need
  * to be the order in which these messages are encountered.
- * Messages are also written to std::cerr if to_cerr is true.
+ *
+ * @param source The source to be parsed before being displayed.
+ * @param caption The text to display before each message parsed from @a source.
  */
-void wml_event_pump::show_wml_messages(std::stringstream& source, const std::string& caption, bool to_cerr)
+void wml_event_pump::show_wml_messages(std::stringstream& source, const std::string& caption)
 {
 	// Get all unique messages in messages,
 	// with the number of encounters for these messages
@@ -362,10 +364,6 @@ void wml_event_pump::show_wml_messages(std::stringstream& source, const std::str
 
 		game_display::get_singleton()->get_chat_manager().add_chat_message(
 			std::time(nullptr), caption, 0, msg.str(), events::chat_handler::MESSAGE_PUBLIC, false);
-
-		if(to_cerr) {
-			std::cerr << caption << ": " << msg.str() << '\n';
-		}
 	}
 }
 
@@ -380,9 +378,7 @@ void wml_event_pump::show_wml_messages(std::stringstream& source, const std::str
  */
 void wml_event_pump::show_wml_errors()
 {
-	static const std::string caption("Invalid WML found");
-
-	show_wml_messages(lg::wml_error(), caption, true);
+	show_wml_messages(lg::log_to_chat(), "");
 }
 
 /**
@@ -394,9 +390,7 @@ void wml_event_pump::show_wml_errors()
  */
 void wml_event_pump::show_wml_messages()
 {
-	static const std::string caption("WML");
-
-	show_wml_messages(impl_->wml_messages_stream, caption, false);
+	show_wml_messages(impl_->wml_messages_stream, "WML: ");
 }
 
 void wml_event_pump::put_wml_message(

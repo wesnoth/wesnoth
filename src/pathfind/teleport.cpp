@@ -28,6 +28,9 @@
 static lg::log_domain log_engine("engine");
 #define ERR_PF LOG_STREAM(err, log_engine)
 
+static lg::log_domain log_wml("wml");
+#define ERR_WML LOG_STREAM(err, log_wml)
+
 namespace pathfind {
 
 
@@ -287,7 +290,8 @@ manager::manager(const config &cfg) : tunnels_(), id_(cfg["next_teleport_group_i
 	for(int i = 0; i < tunnel_count; ++i) {
 		const config& t = cfg.child("tunnel", i);
 		if(!t["saved"].to_bool()) {
-			lg::wml_error() << "Do not use [tunnel] directly in a [scenario]. Use it in an [event] or [abilities] tag.\n";
+			lg::log_to_chat() << "Do not use [tunnel] directly in a [scenario]. Use it in an [event] or [abilities] tag.\n";
+			ERR_WML << "Do not use [tunnel] directly in a [scenario]. Use it in an [event] or [abilities] tag.";
 			continue;
 		}
 		const teleport_group tunnel(t);

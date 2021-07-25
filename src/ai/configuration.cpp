@@ -37,6 +37,9 @@ static lg::log_domain log_ai_configuration("ai/config");
 #define WRN_AI_CONFIGURATION LOG_STREAM(warn, log_ai_configuration)
 #define ERR_AI_CONFIGURATION LOG_STREAM(err, log_ai_configuration)
 
+static lg::log_domain log_wml("wml");
+#define ERR_WML LOG_STREAM(err, log_wml)
+
 void configuration::init(const game_config_view &game_config)
 {
 	ai_configurations_.clear();
@@ -292,7 +295,8 @@ void configuration::expand_simplified_aspects(side_number side, config &cfg) {
 				algorithm = aiparam["ai_algorithm"].str();
 				base_config = get_ai_config_for(algorithm);
 			} else if(algorithm != aiparam["ai_algorithm"]) {
-				lg::wml_error() << "side " << side << " has two [ai] tags with contradictory ai_algorithm - the first one will take precedence.\n";
+				lg::log_to_chat() << "side " << side << " has two [ai] tags with contradictory ai_algorithm - the first one will take precedence.\n";
+				ERR_WML << "side " << side << " has two [ai] tags with contradictory ai_algorithm - the first one will take precedence.";
 			}
 		}
 		std::deque<std::pair<std::string, config>> facet_configs;

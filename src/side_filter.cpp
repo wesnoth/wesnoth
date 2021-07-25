@@ -39,6 +39,9 @@
 static lg::log_domain log_engine_sf("engine/side_filter");
 #define ERR_NG LOG_STREAM(err, log_engine_sf)
 
+static lg::log_domain log_wml("wml");
+#define ERR_WML LOG_STREAM(err, log_wml)
+
 side_filter::~side_filter() {}
 
 side_filter::side_filter(const vconfig& cfg, const filter_context * fc,  bool flat_tod)
@@ -239,7 +242,8 @@ bool side_filter::match_internal(const team &t) const
 			}
 			return true;
 		} catch(const wfl::formula_error& e) {
-			lg::wml_error() << "Formula error in side filter: " << e.type << " at " << e.filename << ':' << e.line << ")\n";
+			lg::log_to_chat() << "Formula error in side filter: " << e.type << " at " << e.filename << ':' << e.line << ")\n";
+			ERR_WML << "Formula error in side filter: " << e.type << " at " << e.filename << ':' << e.line << ")";
 			// Formulae with syntax errors match nothing
 			return false;
 		}

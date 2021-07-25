@@ -19,6 +19,9 @@
 #include "utils/markov_generator.hpp"
 #include "formula/string_utils.hpp"
 
+static lg::log_domain log_wml("wml");
+#define ERR_WML LOG_STREAM(err, log_wml)
+
 std::string name_generator::generate(const std::map<std::string,std::string>& variables) const {
 	return utils::interpolate_variables_into_string(generate(), &variables);
 }
@@ -42,7 +45,8 @@ void name_generator_factory::add_name_generator_from_config(const config& config
 			return;
 		}
 		catch (const name_generator_invalid_exception& ex) {
-			lg::wml_error() << ex.what() << '\n';
+			lg::log_to_chat() << ex.what() << '\n';
+			ERR_WML << ex.what();
 		}
 	}
 
