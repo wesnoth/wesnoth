@@ -46,17 +46,28 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 
 	local function place_shroud(side, shroud)
 		if type(shroud) == 'string' then
-			shroud = wesnoth.map.parse_bitmap(shroud)
+			if shroud == 'all' then
+				wesnoth.sides.override_shroud(side, {})
+			else
+				local ls = wesnoth.require "location_set"
+				local clear = ls.of_shroud_data(shroud)
+				shroud = ls.create()
+				for x,y in wesnoth.current.map:iter() do
+					if not clear(x,y) then
+						shroud:insert(x,y)
+					end
+				end
+				wesnoth.sides.place_shroud(side, shroud:to_pairs())
+			end
+		else
+			wesnoth.sides.place_shroud(side, shroud)
 		end
-		wesnoth.sides.place_shroud(side, shroud)
 	end
 	local function remove_shroud(side, shroud)
 		if type(shroud) == 'string' then
-			if shroud == 'all' then
-				wesnoth.sides.override_shroud(side, {})
-				return
-			end
-			shroud = wesnoth.map.parse_bitmap(shroud)
+			-- This may look wrong, but it's replicating the (undocumented) behaviour in 1.14
+			wesnoth.place_shroud(side, shroud)
+			return
 		end
 		wesnoth.sides.remove_shroud(side, shroud)
 	end
