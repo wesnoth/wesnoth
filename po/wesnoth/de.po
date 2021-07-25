@@ -4102,20 +4102,15 @@ msgstr "Niederlage:"
 
 #. [lua]: generate_objectives
 #: data/lua/wml/objectives.lua:57
-#, fuzzy
-#| msgid "(this turn left)"
-#| msgid_plural "(%d turns left)"
 msgid "(this turn left)"
 msgid_plural "($remaining_turns turns left)"
 msgstr[0] "(diese Runde verbleibt)"
-msgstr[1] "(%d Runden verbleiben)"
+msgstr[1] "($remaining_turns Runden verbleiben)"
 
 #. [lua]: generate_objectives
 #: data/lua/wml/objectives.lua:119
-#, fuzzy
-#| msgid "%d%% of gold carried over to the next scenario."
 msgid "$percent|% of gold carried over to the next scenario."
-msgstr "%d%% Goldstücke werden ins nächste Szenario übernommen."
+msgstr "$percent|% Goldstücke werden ins nächste Szenario übernommen."
 
 #. [modification]: id=plan_unit_advance
 #: data/modifications.cfg:6
@@ -10591,9 +10586,6 @@ msgstr "Planungsmodus Optionen"
 #~ msgid "No era"
 #~ msgstr "Keine Epoche"
 
-#~ msgid "(%d turns left)"
-#~ msgstr "(%d Runden verbleiben)"
-
 #~ msgid "Do you really want to dismiss him?"
 #~ msgstr "Möchtet Ihr ihn wirklich entlassen?"
 
@@ -11032,9 +11024,6 @@ msgstr "Planungsmodus Optionen"
 #~ msgstr ""
 #~ "Der Spielstand kann nicht gelanden werden, da die Versionsinformation "
 #~ "($version_number|) beschädigt ist."
-
-#~ msgid "%d%% of gold carried over to the next scenario."
-#~ msgstr "%d%% Goldstücke werden ins nächste Szenario übernommen."
 
 #~ msgid "Choose weapon:"
 #~ msgstr "Waffe auswählen:"

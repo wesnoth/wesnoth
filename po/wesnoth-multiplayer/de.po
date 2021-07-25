@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.14\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2021-07-18 09:00 UTC\n"
-"PO-Revision-Date: 2021-07-23 16:28+0200\n"
+"PO-Revision-Date: 2021-07-25 16:22+0200\n"
 "Last-Translator: Severin Glöckner <severin.gloeckner@stud.htwk-leipzig.de>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
 "Language: de_DE\n"
@@ -1155,7 +1155,9 @@ msgstr ""
 "Dunkle Aussichten ist ein Szenario für ein oder zwei Bündnisspieler, in der "
 "gegen zufällig auftauchende Feinde angetreten werden muss. Der Sieg ist "
 "sicher, wenn alle gegnerischen Wellen zurückgeschlagen werden. Während des "
-"Spiels beeinflusst das Wetter die vorherrschenden Geländebedingungen."
+"Spiels beeinflusst das Wetter die vorherrschenden Geländebedingungen.\n"
+"\n"
+"Für diese Szenario ist es nötig, die Kartenvorgaben zu nutzen."
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:21
@@ -1596,28 +1598,6 @@ msgstr ""
 "geblieben. Nun ist es ein Ort, an dem sich allerlei Gesindel herumtreibt."
 
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:4
-#, fuzzy
-#| msgid ""
-#| "Your aim is to survive the spawning waves of units and defeat the final "
-#| "archenemies.\n"
-#| "\n"
-#| "The spawning waves are randomly generated and will be different each time "
-#| "Dark Forecast is played.\n"
-#| "\n"
-#| "They appear along the north, south, and west map edges — though they are "
-#| "most likely to spawn on the west edge. The waves appear at somewhat "
-#| "regular intervals.\n"
-#| "\n"
-#| "The weather will also change randomly, affecting the layout of the map.\n"
-#| "\n"
-#| "\n"
-#| "<b>Dark Forecast was made by:</b>\n"
-#| "\n"
-#| "<span color='green'>jb:</span>\n"
-#| "• Map design, spawn groups, and scenario concept\n"
-#| "\n"
-#| "<span color='green'>Rhuvaen:</span>\n"
-#| "• WML implementation"
 msgid ""
 "Your aim is to survive spawning waves of units and defeat the final "
 "archenemies. Spawns are randomly generated and will be different each time "
@@ -1625,48 +1605,18 @@ msgid ""
 "weather will also change randomly, affecting the layout of the map."
 msgstr ""
 "Euer Ziel besteht darin, alle Wellen des Gegners zurückzuschlagen und "
-"schließlich die Anführer zur Strecke zu bringen.\n"
-"\n"
-"Die Wellen werden zufällig generiert und sind damit bei jedem Spiel "
-"unterschiedlich.\n"
-"\n"
-"\n"
-"Eure Feinde können am Nord-, Süd- sowie Westrand der Karte auftauchen, "
-"jedoch werden die Meisten direkt aus Westen angreifen. Die Wellen erscheinen "
-"in ungefähr gleichen Abständen.\n"
-"\n"
-"\n"
-"Das Wetter ändert sich ebenfalls zufällig und beeinflusst das Gelände der "
-"Karte.\n"
-"\n"
-"\n"
-"\n"
-"<b>Dunkle Aussichten wurde erstellt von:</b>\n"
-"\n"
-"<span color='green'>jb</span>\n"
-"• Kartengestaltung, Gegnerwellen und Szenariokonzept\n"
-"\n"
-"<span color='green'>Rhuvaen</span>\n"
-"• WML-Implementierung"
+"schließlich die Anführer zur Strecke zu bringen. Die Wellen werden zufällig "
+"generiert und sind damit bei jedem Spiel unterschiedlich. Sie erscheinen in "
+"ungefähr gleichen Abständen. Das Wetter ändert sich ebenfalls zufällig und "
+"beeinflusst das Gelände der Karte."
 
 #. [multiplayer]: id=multiplayer_2p_Isle_of_Mists
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:9
-#, fuzzy
-#| msgid "2p — Dark Forecast (Survival)"
 msgid "2p — Isle of Mists (Survival)"
-msgstr "2S – Dunkle Aussichten (Überleben)"
+msgstr "2S – Insel der Nebel (Überleben)"
 
 #. [multiplayer]: id=multiplayer_2p_Isle_of_Mists
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:10
-#, fuzzy
-#| msgid ""
-#| "Dark Forecast is a survival scenario for solitaire or two-player team-"
-#| "based play against randomly-spawned AI units. Victory is achieved by "
-#| "surviving and defeating all enemy waves. During the course of play, the "
-#| "terrain will change based on random weather effects.\n"
-#| "\n"
-#| "Note: You need to use the default map settings for the scenario to work "
-#| "right."
 msgid ""
 "Isle of Mists is a survival scenario which can be played alone or with "
 "another player against randomly spawned AI units, catered for experienced "
@@ -1675,39 +1625,38 @@ msgid ""
 "effects. Default map settings are required for the scenario to work "
 "properly. By Lord-Knightmare."
 msgstr ""
-"Dunkle Aussichten ist ein Szenario für ein oder zwei Bündnisspieler, in der "
-"gegen zufällig auftauchende Feinde angetreten werden muss. Der Sieg ist "
-"sicher, wenn alle gegnerischen Wellen zurückgeschlagen werden. Während des "
-"Spiels beeinflusst das Wetter die vorherrschenden Geländebedingungen."
+"Insel der Nebel ist ein Szenario für ein oder zwei erfahrene Bündnisspieler, "
+"in der gegen zufällig auftauchende Feinde angetreten werden muss. Der Sieg "
+"ist sicher, wenn alle gegnerischen Wellen zurückgeschlagen werden. Während "
+"des Spiels beeinflusst das Wetter die vorherrschenden Geländebedingungen.\n"
+"\n"
+"Für dieses Szenario ist es nötig, die Kartenvorgaben zu nutzen.\n"
+"\n"
+"Entwickelt von Lord-Knightmare und dem Szenario »Dunkle Aussichten«."
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:25
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:38
-#, fuzzy
-#| msgid "teamname^Monsters"
 msgid "teamname^Invaders"
-msgstr "Monster"
+msgstr "Geiste"
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:56
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:83
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:107
-#, fuzzy
-#| msgid "teamname^Center"
 msgid "teamname^Defenders"
-msgstr "Zentral"
+msgstr "Exorzisten"
 
+# Auf das centrale Feld des Szenario Insel der Nebel bleibt eine verbunde AI Einheit mit cures,heals+8.
 #. [label]
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:189
 msgid "Healing Keep"
-msgstr ""
+msgstr "Heilerin"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:213
-#, fuzzy
-#| msgid "Dark Forecast — a random survival scenario"
 msgid "Isle of Mists — a random survival scenario"
-msgstr "Dunkle Aussichten – ein zufallsabhängiges Überlebensszenario"
+msgstr "Insel der Nebel – ein zufallsabhängiges Überlebensszenario"
 
 #. [message]
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:220
@@ -1730,14 +1679,8 @@ msgstr ""
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:247
-#, fuzzy
-#| msgid ""
-#| "Ugh! How can this be? Defeated by mere barbarians! My gods have forsaken "
-#| "me..."
 msgid "How can this be? My gods have forsaken me..."
-msgstr ""
-"Argh! Wie konnte das geschehen? Von stinkenden Barbaren bezwungen! Die "
-"Götter müssen mich verlassen haben…"
+msgstr "Wie konnte das geschehen? Die Götter müssen mich verlassen haben…"
 
 #. [message]: speaker=second_unit
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:261
@@ -1757,16 +1700,12 @@ msgstr ""
 
 #. [lua]: final_spawn
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.lua:313
-#, fuzzy
-#| msgid ""
-#| "The last and most powerful of these creatures are almost upon us. I feel "
-#| "that if we can finish them off in time, we shall be victorious."
 msgid ""
 "The last and most powerful of our enemies are upon us. If we can finish them "
 "off in time, we shall be victorious."
 msgstr ""
-"Nun zeigen sich endlich jene, die hinter den Angriffen stecken. Um zu "
-"siegen, müssen wir sie so schnell wie möglich besiegen."
+"Endlich zeigen sich die letzte und starkste unsere Gegner. Um zu siegen, "
+"müssen wir sie so schnell wie möglich besiegen."
 
 #. [lua]: final_spawn
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.lua:343
@@ -1780,7 +1719,7 @@ msgstr ""
 #. [lua]: weather_map
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.lua:517
 msgid "Inundation"
-msgstr ""
+msgstr "Überschwemmen"
 
 #. [multiplayer]: id=multiplayer_Ruined_Passage
 #: data/multiplayer/scenarios/2p_Ruined_Passage.cfg:7
@@ -2418,7 +2357,7 @@ msgstr "Nordost"
 #. [checkbox]: id=simple_background
 #: data/multiplayer/scenarios/4p_Isars_Cross.cfg:67
 msgid "Disable Background Image"
-msgstr ""
+msgstr "Deaktiviere Hintergrundbild"
 
 #. [checkbox]: id=simple_background
 #. Tooltip for the Isar's Cross map, makes the map look as it did in Wesnoth 1.14 and earlier
@@ -2427,6 +2366,7 @@ msgid ""
 "Show a blank area outside the map, instead of the floating island with "
 "cliffs."
 msgstr ""
+"Zeigen nur eine einfarbige Umrahmung, statt der fliegenden Insel mit Klippen."
 
 #. [multiplayer]: id=multiplayer_King_of_the_Hill
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:7
@@ -3028,107 +2968,3 @@ msgid ""
 msgstr ""
 "Ein Wesnoth-Leistungsvergleich, der folgende Einstellungen verwendet: --no-"
 "delay --multiplayer --scenario=wesbench_shroud_walk --exit-at-end."
-
-#~ msgid "Grand total: <b>%d</b>"
-#~ msgstr "Gesamtpunkte: <b>%d</b>"
-
-#, fuzzy
-#~ msgid "Age of Heroes + Khalifate"
-#~ msgstr "Zeit der Helden"
-
-#~ msgid "Aethermaw — Created by Doc Paterson"
-#~ msgstr "Allschlund – von Doc Paterson"
-
-#, fuzzy
-#~| msgid ""
-#~| "The Great Mage Sulla has transported your armies to this bizarre nexus, "
-#~| "and demands that you amuse her by doing battle.\n"
-#~| "\n"
-#~| "\n"
-#~| "\n"
-#~| "\n"
-#~| "<span color='red'>Note:</span>\n"
-#~| "\n"
-#~| "<span color='green'>Units may not move into a hex with a rock cairn. "
-#~| "They may, however, be recruited to, and move from, such hexes.</span>\n"
-#~| "\n"
-#~| "<span color='green'>Beginning on turn 4, the Great Mage Sulla will begin "
-#~| "to unite the two halves of the battlefield. The process will be complete "
-#~| "by the end of turn 6.</span>\n"
-#~ msgid ""
-#~ "The Great Mage Sulla has transported your armies to this bizarre nexus, "
-#~ "and demands that you amuse her by doing battle.\n"
-#~ "\n"
-#~ "<span color='red'>Note:</span>\n"
-#~ "\n"
-#~ "<span color='green'>Units may not move into a hex with a rock cairn. They "
-#~ "may, however, be recruited to, and move from, such hexes.</span>\n"
-#~ "\n"
-#~ "<span color='green'>Beginning on turn 4, the Great Mage Sulla will begin "
-#~ "to unite the two halves of the battlefield. The process will be complete "
-#~ "by the end of turn 6.</span>\n"
-#~ msgstr ""
-#~ "Die Großmagierin Sulla verbrachte Deine Truppen in dieses wundersame "
-#~ "Land. Erfüllt ihre Wünsche und kämpft zu ihrem Ergötzen.\n"
-#~ "\n"
-#~ "\n"
-#~ "\n"
-#~ "\n"
-#~ "<span color='red'>Hinweis:</span>\n"
-#~ "\n"
-#~ "<span color='green'>Einheiten können kein Feld mit einem Obelisken "
-#~ "betreten. Sie können jedoch dorthin einberufen werden und diese Felder "
-#~ "verlassen.</span>\n"
-#~ "\n"
-#~ "<span color='green'>Mit der vierten Runde wird die Großmagierin Sulla "
-#~ "beginnen, die Hälften des Schlachtfeldes zu vereinen. Mit dem Ende der "
-#~ "sechsten Runde wird dies vollbracht sein.</span>\n"
-
-#~ msgid ""
-#~ "Congratulations for surviving the map that so many people claim is "
-#~ "impossible. Frankly, I haven’t got a clue as to how you did it, so send "
-#~ "me the replay by mail to: roze@roze.mine.nu. Thank You!"
-#~ msgstr ""
-#~ "Herzlichen Glückwunsch, dass Ihr diese Karte überlebt habt, was, wie "
-#~ "viele Leute behaupten, unmöglich ist. Deshalb kann ich mir nicht "
-#~ "vorstellen, wie ihr es geschafft haben wollt. Also sendet mir die "
-#~ "Aufzeichnung Eures Spiels an roze@roze.mine.nu (auf Englisch). Danke!"
-
-#~ msgid "Random map by YAMG"
-#~ msgstr "Zufallskarte von YAMG"
-
-#~ msgid "Custom"
-#~ msgstr "Benutzerdefiniert"
-
-#~ msgid "4p — Lagoon"
-#~ msgstr "4S – Die Lagune"
-
-#~ msgid "Four factions contend for dominance over this watery settlement."
-#~ msgstr "Vier Fraktionen streiten um die Herrschaft über dieses Seengebiet."
-
-#~ msgid "Single player mode — uses the reduced strength spawns."
-#~ msgstr "Einzelspielermodus – Reduzierte Truppenstärke des Feindes"
-
-#~ msgid "Two player mode — uses the full strength spawns."
-#~ msgstr "Zweispielermodus – Volle Truppenstärke des Feindes"
-
-#~ msgid "Survive and defeat the waves of opposition."
-#~ msgstr "Überlebt, indem Ihr die Truppen Eures Feindes zurückschlagt"
-
-#~ msgid "Lose all your team’s leaders"
-#~ msgstr "Eure Anführer fallen in der Schlacht"
-
-#~ msgid "teamname^South-West"
-#~ msgstr "Südwest"
-
-#~ msgid "teamname^North-East"
-#~ msgstr "Nordost"
-
-#~ msgid "teamname^South-East"
-#~ msgstr "Südost"
-
-#~ msgid "teamname^North-West"
-#~ msgstr "Nordwest"
-
-#~ msgid "Survive for 32 turns."
-#~ msgstr "Überlebt für 32 Runden."
