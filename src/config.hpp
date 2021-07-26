@@ -47,6 +47,7 @@
 #include <boost/range/iterator_range.hpp>
 
 using config_key_type = std::string_view;
+enum class DEP_LEVEL : uint8_t;
 
 class config;
 class enum_tag;
@@ -387,6 +388,26 @@ public:
 	 * @returns                   The wanted child node.
 	 */
 	const config& child(config_key_type key, const std::string& parent) const;
+	
+	/**
+	 * Get a deprecated child and log a deprecation message
+	 * @param old_key The deprecated child to return if present
+	 * @param in_tag The name of the tag this child appears in
+	 * @param level The deprecation level
+	 * @param message An explanation of the deprecation, possibly mentioning an alternative
+	 * @note The deprecation message will be a level 3 deprecation.
+	 */
+	utils::optional_reference<const config> get_deprecated_child(config_key_type old_key, const std::string& in_tag, DEP_LEVEL level, const std::string& message) const;
+	
+	/**
+	 * Get a deprecated child rangw and log a deprecation message
+	 * @param old_key The deprecated child to return if present
+	 * @param in_tag The name of the tag this child appears in
+	 * @param level The deprecation level
+	 * @param message An explanation of the deprecation, possibly mentioning an alternative
+	 * @note The deprecation message will be a level 3 deprecation.
+	 */
+	const_child_itors get_deprecated_child_range(config_key_type old_key, const std::string& in_tag, DEP_LEVEL level, const std::string& message) const;
 
 	config& add_child(config_key_type key);
 	config& add_child(config_key_type key, const config& val);
@@ -456,9 +477,24 @@ public:
 	/**
 	 * Function to handle backward compatibility
 	 * Get the value of key and if missing try old_key
-	 * and log msg as a WML error (if not empty)
+	 * and log a deprecation message
+	 * @param key The non-deprecated attribute to return
+	 * @param old_key The deprecated attribute to return if @a key is missing
+	 * @param in_tag The name of the tag these attributes appear in
+	 * @param message An explanation of the deprecation, to be output if @a old_key is present.
+	 * @note The deprecation message will be a level 1 deprecation.
 	*/
-	const attribute_value &get_old_attribute(config_key_type key, const std::string &old_key, const std::string& in_tag = "") const;
+	const attribute_value &get_old_attribute(config_key_type key, const std::string &old_key, const std::string& in_tag, const std::string& message = "") const;
+	
+	/**
+	 * Get a deprecated attribute without a direct substitute,
+	 * and log a deprecation message
+	 * @param old_key The deprecated attribute to return if present
+	 * @param in_tag The name of the tag this attribute appears in
+	 * @param level The deprecation level 
+	 * @param message An explanation of the deprecation, possibly mentioning an alternative
+	 */
+	const attribute_value& get_deprecated_attribute(config_key_type old_key, const std::string& in_tag, DEP_LEVEL level, const std::string& message) const;
 
 	/**
 	 * Inserts an attribute into the config
@@ -478,12 +514,6 @@ public:
 	config &child_or_add(config_key_type key);
 
 	bool has_attribute(config_key_type key) const;
-	/**
-	 * Function to handle backward compatibility
-	 * Check if has key or old_key
-	 * and log msg as a WML error (if not empty)
-	*/
-	bool has_old_attribute(config_key_type key, const std::string &old_key, const std::string& msg = "") const;
 
 	void remove_attribute(config_key_type key);
 	void merge_attributes(const config &);

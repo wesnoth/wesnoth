@@ -212,23 +212,6 @@ bool config::has_attribute(config_key_type key) const
 	return values_.find(key) != values_.end();
 }
 
-bool config::has_old_attribute(config_key_type key, const std::string& old_key, const std::string& msg) const
-{
-	check_valid();
-	if(values_.find(key) != values_.end()) {
-		return true;
-	} else if(values_.find(old_key) != values_.end()) {
-		if(!msg.empty()) {
-			lg::log_to_chat() << msg << '\n';
-			ERR_WML << msg;
-		}
-
-		return true;
-	}
-
-	return false;
-}
-
 void config::remove_attribute(config_key_type key)
 {
 	check_valid();
@@ -498,6 +481,32 @@ config& config::child_or_add(config_key_type key)
 	}
 
 	return add_child(key);
+}
+
+utils::optional_reference<const config> config::get_deprecated_child(config_key_type old_key, const std::string& in_tag, DEP_LEVEL level, const std::string& message) const {
+	check_valid();
+	
+	if(auto i = children_.find(old_key); i != children_.end() && !i->second.empty()) {
+		const std::string what = formatter() << "[" << in_tag << "][" << old_key << "]";
+		deprecated_message(what, level, "", message);
+		return *i->second.front();
+	}
+	
+	return std::nullopt;
+}
+
+config::const_child_itors config::get_deprecated_child_range(config_key_type old_key, const std::string& in_tag, DEP_LEVEL level, const std::string& message) const {
+	check_valid();
+	static child_list dummy;
+	const child_list* p = &dummy;
+	
+	if(auto i = children_.find(old_key); i != children_.end() && !i->second.empty()) {
+		const std::string what = formatter() << "[" << in_tag << "][" << old_key << "]";
+		deprecated_message(what, level, "", message);
+		p = &i->second;
+	}
+	
+	return const_child_itors(const_child_iterator(p->begin()), const_child_iterator(p->end()));
 }
 
 config& config::add_child(config_key_type key)
@@ -786,10 +795,15 @@ config::attribute_value& config::operator[](config_key_type key)
 	return res->second;
 }
 
-const config::attribute_value& config::get_old_attribute(
-		config_key_type key, const std::string& old_key, const std::string& in_tag) const
+const config::attribute_value& config::get_old_attribute(config_key_type key, const std::string& old_key, const std::string& in_tag, const std::string& message) const
 {
 	check_valid();
+	
+	if(has_attribute(old_key)) {
+		const std::string what = formatter() << "[" << in_tag << "]" << old_key << "=";
+		const std::string msg  = formatter() << "Use " << key << "= instead. " << message;
+		deprecated_message(what, DEP_LEVEL::INDEFINITE, "", msg);
+	}
 
 	attribute_map::const_iterator i = values_.find(key);
 	if(i != values_.end()) {
@@ -798,17 +812,22 @@ const config::attribute_value& config::get_old_attribute(
 
 	i = values_.find(old_key);
 	if(i != values_.end()) {
-		if(!in_tag.empty()) {
-			const std::string what = formatter() << "[" << in_tag << "]" << old_key << "=";
-			const std::string msg  = formatter() << "Use " << key << "= instead.";
-			deprecated_message(what, DEP_LEVEL::INDEFINITE, "", msg);
-			lg::log_to_chat() << msg << '\n';
-			ERR_WML << msg;
-		}
-
 		return i->second;
 	}
 
+	static const attribute_value empty_attribute;
+	return empty_attribute;
+}
+
+const config::attribute_value& config::get_deprecated_attribute(config_key_type old_key, const std::string& in_tag, DEP_LEVEL level, const std::string& message) const {
+	check_valid();
+	
+	if(auto i = values_.find(old_key); i != values_.end()) {
+		const std::string what = formatter() << "[" << in_tag << "]" << old_key << "=";
+		deprecated_message(what, level, "", message);
+		return i->second;
+	}
+	
 	static const attribute_value empty_attribute;
 	return empty_attribute;
 }
