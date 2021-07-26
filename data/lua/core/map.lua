@@ -209,8 +209,8 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 	end
 
 	local find_locations = wesnoth.map.find
-	function wesnoth.map.find(cfg)
-		local hexes = find_locations(cfg)
+	function wesnoth.map.find(cfg, ref_unit)
+		local hexes = find_locations(cfg, ref_unit)
 		for i = 1, #hexes do
 			hexes[i] = wesnoth.map.get(hexes[i][1], hexes[i][2])
 		end
