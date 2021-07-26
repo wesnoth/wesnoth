@@ -56,6 +56,12 @@ function locset_meta:__bxor(other)
 	return new
 end
 
+if wesnoth.current then
+	function locset_meta:__bnot(other)
+		return self:invert(wesnoth.current.map)
+	end
+end
+
 function locset_meta:__sub(other)
 	local new = self:clone()
 	new:diff(other)
@@ -158,6 +164,28 @@ function methods:symm(s)
 			values[p] = v
 		end
 	end
+end
+
+function methods:invert(width, height, border_size)
+	if type(width) == 'number' and type(height) == 'number' then
+		border_size = border_size or 0
+	elseif type(width) == 'userdata' and getmetatable(width) == 'terrain map' then
+		local map = width
+		width = map.playable_width
+		height = map.playable_height
+		border_size = map.border_size
+	else
+		error('Invalid arguments to location_set:invert - expected a map or map dimensions', 2)
+	end
+	local new = location_set.create()
+	for x = 1 - border_size, width + border_size do
+		for y = 1 - border_size, height + border_size do
+			if not self:get(x, y) then
+				new:insert(x, y)
+			end
+		end
+	end
+	return new
 end
 
 function methods:filter(f)
