@@ -26,6 +26,7 @@
 #include "serialization/parser.hpp"
 #include "serialization/preprocessor.hpp"
 #include "game_config_view.hpp"
+#include "deprecation.hpp"
 #include <vector>
 #include <deque>
 #include <set>
@@ -290,6 +291,9 @@ void configuration::expand_simplified_aspects(side_number side, config &cfg) {
 		}
 		if (aiparam.has_attribute("engine")) {
 			engine = aiparam["engine"].str();
+			if(engine == "fai") {
+				deprecated_message("FormulaAI", DEP_LEVEL::FOR_REMOVAL, "1.17", "FormulaAI is slated to be removed. Use equivalent Lua AIs instead");
+			}
 		}
 		if (aiparam.has_attribute("ai_algorithm")) {
 			if (algorithm.empty()) {
@@ -317,6 +321,12 @@ void configuration::expand_simplified_aspects(side_number side, config &cfg) {
 			if (just_copy_tags.count(child.key)) {
 				// These aren't simplified, so just copy over unchanged.
 				parsed_config.add_child(child.key, child.cfg);
+				if(
+				   (child.key != "modify_ai" && child.cfg["engine"] == "fai") ||
+				   (child.key == "modify_ai" && child.cfg.all_children_count() > 0 && child.cfg.all_children_range().front().cfg["engine"] == "fai")
+				) {
+					deprecated_message("FormulaAI", DEP_LEVEL::FOR_REMOVAL, "1.17", "FormulaAI is slated to be removed. Use equivalent Lua AIs instead");
+				}
 				continue;
 			} else if(old_goal_tags.count(child.key)) {
 				// A simplified goal, mainly kept around just for backwards compatibility.
@@ -374,6 +384,7 @@ void configuration::expand_simplified_aspects(side_number side, config &cfg) {
 	// Support old recruitment aspect syntax
 	for(auto& child : parsed_config.child_range("aspect")) {
 		if(child["id"] == "recruitment") {
+			deprecated_message("AI recruitment aspect", DEP_LEVEL::INDEFINITE, "", "Use the recruitment_instructions aspect instead");
 			child["id"] = "recruitment_instructions";
 		}
 	}
