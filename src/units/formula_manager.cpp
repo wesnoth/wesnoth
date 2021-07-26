@@ -19,6 +19,7 @@
 #include "formula/formula.hpp"
 #include "map/location.hpp"
 #include "log.hpp"
+#include "deprecation.hpp"
 
 void unit_formula_manager::add_formula_var(std::string str,wfl:: variant var)
 {
@@ -28,16 +29,16 @@ void unit_formula_manager::add_formula_var(std::string str,wfl:: variant var)
 
 void unit_formula_manager::read(const config & ai)
 {
-	unit_formula_ = ai["formula"].str();
-	unit_loop_formula_ = ai["loop_formula"].str();
-	unit_priority_formula_ = ai["priority"].str();
+	unit_formula_ = ai.get_deprecated_attribute("formula", "unit][ai", DEP_LEVEL::FOR_REMOVAL, "FormulaAI will be removed in 1.17").str();
+	unit_loop_formula_ = ai.get_deprecated_attribute("loop_formula", "unit][ai", DEP_LEVEL::FOR_REMOVAL, "FormulaAI will be removed in 1.17").str();
+	unit_priority_formula_ = ai.get_deprecated_attribute("priority", "unit][ai", DEP_LEVEL::FOR_REMOVAL, "FormulaAI will be removed in 1.17").str();
 
-	if (const config &ai_vars = ai.child("vars"))
+	if (auto ai_vars = ai.get_deprecated_child("vars", "unit][ai", DEP_LEVEL::FOR_REMOVAL, "FormulaAI will be removed in 1.17"))
 	{
 		formula_vars_ = std::make_shared<wfl::map_formula_callable>();
 
 		wfl::variant var;
-		for (const config::attribute &i : ai_vars.attribute_range()) {
+		for (const config::attribute &i : ai_vars->attribute_range()) {
 			var.serialize_from_string(i.second);
 			formula_vars_->add(i.first, var);
 		}
