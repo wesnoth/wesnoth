@@ -324,7 +324,9 @@ end
 
 function methods:to_triples()
     local res = {}
-    self:iter(function(x, y, v) table.insert(res, { x, y, v }) end)
+    self:iter(function(x, y, v)
+		table.insert(res, wesnoth.named_tuple({ x, y, v }, {"x", "y", "value"}))
+	end)
     return res
 end
 
