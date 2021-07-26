@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2016 - 2018 by Sergey Popov <loonycyborg@gmail.com>
+	Copyright (C) 2016 - 2021
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify

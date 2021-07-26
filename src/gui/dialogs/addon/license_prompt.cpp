@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2020 by Iris Morelle <shadowm@wesnoth.org>
+	Copyright (C) 2020 - 2021
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
