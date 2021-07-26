@@ -761,8 +761,8 @@ listbox& preferences_dialog::setup_hotkey_list()
 	t_string& row_is_g_markup = row_data["lbl_is_game"]["use_markup"];
 	t_string& row_is_e        = row_data["lbl_is_editor"]["label"];
 	t_string& row_is_e_markup = row_data["lbl_is_editor"]["use_markup"];
-	t_string& row_is_t        = row_data["lbl_is_titlescreen"]["label"];
-	t_string& row_is_t_markup = row_data["lbl_is_titlescreen"]["use_markup"];
+	t_string& row_is_m        = row_data["lbl_is_mainmenu"]["label"];
+	t_string& row_is_m_markup = row_data["lbl_is_mainmenu"]["use_markup"];
 
 	listbox& hotkey_list = find_widget<listbox>(get_window(), "list_hotkeys", false);
 
@@ -772,7 +772,7 @@ listbox& preferences_dialog::setup_hotkey_list()
 	// These translated initials should match those used in data/gui/window/preferences/02_hotkeys.cfg
 	std::string text_game_feature_on = "<span color='#0f0'>" + _("game_hotkeys^G") + "</span>";
 	std::string text_editor_feature_on = "<span color='#0f0'>" + _("editor_hotkeys^E") + "</span>";
-	std::string text_title_feature_on = "<span color='#0f0'>" + _("titlescreen_hotkeys^T") + "</span>";
+	std::string text_mainmenu_feature_on = "<span color='#0f0'>" + _("mainmenu_hotkeys^M") + "</span>";
 
 	for(const auto& hotkey_item : hotkey::get_hotkey_commands()) {
 		if(hotkey_item.hidden) {
@@ -793,8 +793,8 @@ listbox& preferences_dialog::setup_hotkey_list()
 		row_is_g_markup = "true";
 		row_is_e = hotkey_item.scope[hotkey::SCOPE_EDITOR]    ? text_editor_feature_on : "";
 		row_is_e_markup = "true";
-		row_is_t = hotkey_item.scope[hotkey::SCOPE_MAIN_MENU] ? text_title_feature_on : "";
-		row_is_t_markup = "true";
+		row_is_m = hotkey_item.scope[hotkey::SCOPE_MAIN_MENU] ? text_mainmenu_feature_on : "";
+		row_is_m_markup = "true";
 
 		hotkey_list.add_row(row_data);
 	}
