@@ -277,7 +277,11 @@ function methods:of_triples(t)
     -- Create a location set from a table of 3-element tables
     -- Elements 1 and 2 are x,y coordinates, #3 is value to be inserted
     for k,v in pairs(t) do
-        self:insert(v[1], v[2], v[3])
+		if #v == 0 then
+			self:insert(v.x, v.y, v.value)
+		else
+			self:insert(v[1], v[2], v[3])
+		end
     end
 end
 
