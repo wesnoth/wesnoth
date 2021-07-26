@@ -1,5 +1,5 @@
 /*
-qCopyright (C) 2011 - 2021
+	Copyright (C) 2011 - 2021
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
