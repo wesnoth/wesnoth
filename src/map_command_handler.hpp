@@ -389,27 +389,11 @@ protected:
 		return aliases;
 	}
 private:
-	static command_map command_map_;
-	static command_alias_map command_alias_map_;
-	static bool help_on_unknown_;
-	static bool show_unavailable_;
-	static std::string cmd_prefix_;
+	static inline command_map command_map_ {};
+	static inline command_alias_map command_alias_map_ {};
+	static inline bool help_on_unknown_ = true;
+	static inline bool show_unavailable_ = false;
+	static inline std::string cmd_prefix_ {};
 };
-
-//static member definitions
-template <class Worker>
-typename map_command_handler<Worker>::command_map map_command_handler<Worker>::command_map_;
-
-template <class Worker>
-typename map_command_handler<Worker>::command_alias_map map_command_handler<Worker>::command_alias_map_;
-
-template <class Worker>
-bool map_command_handler<Worker>::help_on_unknown_ = true;
-
-template <class Worker>
-bool map_command_handler<Worker>::show_unavailable_ = false;
-
-template <class Worker>
-std::string map_command_handler<Worker>::cmd_prefix_;
 
 }
