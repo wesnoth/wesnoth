@@ -1,5 +1,6 @@
 /*
 	Copyright (C) 2012 - 2021
+	by Boldizsár Lipka <lipkab@zoho.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
