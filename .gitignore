@@ -50,7 +50,6 @@ projectfiles/**/*objs*
 
 # Visual Studio
 projectfiles/VC*
-!projectfiles/VC12
 !projectfiles/VC16
 projectfiles/VC*/.vs/
 projectfiles/VC*/*.vc.*db
@@ -97,9 +96,7 @@ stamp-h1
 # build directories
 /wesnoth*
 /wesnothd*
-wesnothd/
 /campaignd*
-campaignd/
 /cutter*
 cutter/
 /exploder*
@@ -205,6 +202,12 @@ fonts/.uuid
 *~
 .deps
 .dirstamp
+*.cfg-bak
+*.orig
+
+# might be good to have, but not in data
+data/**/*.xcf
+data/**/*.psd
 
 # uncategorized
 revision*
@@ -213,3 +216,4 @@ config.h
 .kdev*
 callgrind.out.*
 data/dist
+clean.sh
