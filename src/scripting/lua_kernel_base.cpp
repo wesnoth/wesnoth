@@ -23,6 +23,7 @@
 #include "seed_rng.hpp"
 #include "deprecation.hpp"
 #include "language.hpp"                 // for get_language
+#include "team.hpp" // for shroud_map
 
 #ifdef DEBUG_LUA
 #include "scripting/debug_lua.hpp"
@@ -457,6 +458,35 @@ static int intf_named_tuple(lua_State* L)
 	return 1;
 }
 
+static int intf_parse_shroud_bitmap(lua_State* L)
+{
+	shroud_map temp;
+	temp.set_enabled(true);
+	temp.read(luaL_checkstring(L, 1));
+	std::set<map_location> locs;
+	for(int x = 1; x <= temp.width(); x++) {
+		for(int y = 1; y <= temp.height(); y++) {
+			if(!temp.value(x, y)) {
+				locs.emplace(x, y, wml_loc());
+			}
+		}
+	}
+	luaW_push_locationset(L, locs);
+	return 1;
+}
+
+static int intf_make_shroud_bitmap(lua_State* L)
+{
+	shroud_map temp;
+	temp.set_enabled(true);
+	auto locs = luaW_check_locationset(L, 1);
+	for(const auto& loc : locs) {
+		temp.clear(loc.wml_x(), loc.wml_y());
+	}
+	lua_push(L, temp.write());
+	return 1;
+}
+
 /**
 * Returns the time stamp, exactly as [set_variable] time=stamp does.
 * - Ret 1: integer
@@ -631,6 +661,9 @@ lua_kernel_base::lua_kernel_base()
 		{ "distance_between",		&lua_map_location::intf_distance_between		},
 		{ "get_in_basis_N_NE",		&lua_map_location::intf_get_in_basis_N_NE		},
 		{ "get_relative_dir",		&lua_map_location::intf_get_relative_dir		},
+		// Shroud bitmaps
+		{"parse_bitmap", intf_parse_shroud_bitmap},
+		{"make_bitmap", intf_make_shroud_bitmap},
 		{ nullptr, nullptr }
 	};
 
