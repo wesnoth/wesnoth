@@ -1,5 +1,7 @@
 /*
-	Copyright (C) 2008 - 2021
+	Copyright (C) 2012 - 2021
+	by Iris Morelle <shadowm2006@gmail.com>
+	Copyright (C) 2008 - 2018 by Jörg Hinrichs <joerg.hinrichs@alice-dsl.de>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify

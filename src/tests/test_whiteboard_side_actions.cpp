@@ -1,5 +1,6 @@
 /*
 	Copyright (C) 2012 - 2021
+	by Étienne Simon <etienne.jl.simon@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify

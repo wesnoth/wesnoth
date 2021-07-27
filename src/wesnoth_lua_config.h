@@ -1,5 +1,6 @@
 /*
 	Copyright (C) 2016 - 2021
+	Gregory A Lundberg
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify

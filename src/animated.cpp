@@ -1,5 +1,6 @@
 /*
 	Copyright (C) 2007 - 2021
+	by Jeremy Rosen <jeremy.rosen@enst-bretagne.fr>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify

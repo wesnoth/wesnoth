@@ -1,5 +1,7 @@
 /*
-	Copyright (C) 2003 - 2021
+	Copyright (C) 2008 - 2021
+	by Iris Morelle <shadowm2006@gmail.com>
+	Copyright (C) 2003 - 2008 by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify

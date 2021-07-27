@@ -1,5 +1,6 @@
 /*
 	Copyright (C) 2013 - 2021
+	by Maxim Biro <nurupo.contributions@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
