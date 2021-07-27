@@ -1,5 +1,7 @@
 /*
-	Copyright (C) 2003 - 2021
+	Copyright (C) 2005 - 2021
+	by Philippe Plantier <ayin@anathas.org>
+	Copyright (C) 2003 - 2005 by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify

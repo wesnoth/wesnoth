@@ -1,5 +1,6 @@
 /*
 	Copyright (C) 2006 - 2021
+	by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify

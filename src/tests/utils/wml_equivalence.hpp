@@ -1,5 +1,6 @@
 /*
 	Copyright (C) 2020 - 2021
+	by CrawlCycle <73139676+CrawlCycle@users.noreply.github.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
