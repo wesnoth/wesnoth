@@ -718,10 +718,17 @@ void saved_game::set_data(config& cfg)
 
 	// Serversided replays can contain multiple [replay]
 	for(config& replay : cfg.child_range("replay")) {
+		carryover_info sides(carryover_);
+		sides.rng().set_replay_data(replay);
+		// This calls clears content of the replay :/
 		replay_data_.append_config(replay);
 	}
 
 	replay_data_.set_to_end();
+
+	if(config& replay_start = cfg.child("replay_start")) {
+		config& replay = cfg.child("replay");
+	}
 
 	if(config& snapshot = cfg.child("snapshot")) {
 		this->starting_point_type_ = STARTING_POINT_SNAPSHOT;

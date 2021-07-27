@@ -204,10 +204,19 @@ namespace
 }
 std::string synced_context::generate_random_seed()
 {
+	std::string return_val;
 	config retv_c = synced_context::ask_server_choice(random_server_choice());
-	config::attribute_value seed_val = retv_c["new_seed"];
+	if(retv_c.has_attribute("current_seed"))
+	{
+		config::attribute_value seed_val = retv_c["current_seed"];
+		config::attribute_value random_calls_val = retv_c["random_calls"];
+		return_val = ";"+seed_val.str()+";"+random_calls_val.str();
+	} else {
+		config::attribute_value seed_val = retv_c["new_seed"];
+		return_val = seed_val.str();
+	}
 
-	return seed_val.str();
+	return return_val;
 }
 
 bool synced_context::is_simultaneously()

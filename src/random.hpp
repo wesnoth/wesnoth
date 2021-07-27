@@ -14,6 +14,8 @@
 
 #pragma once
 
+#include "wesconfig.h"
+#include "game_version.hpp"
 #include <cstdlib> //needed for RAND_MAX
 #include <cstdint>
 #include <iterator> //needed for std::distance
@@ -21,6 +23,8 @@
 
 namespace randomness
 {
+	extern version_info loaded_version;
+
 	/**
 		this class does not give synced random results derived classes might do.
 	*/
@@ -88,6 +92,8 @@ namespace randomness
 		 */
 		virtual bool is_networked() const { return false; }
 
+	void set_loaded_version(version_info version) const {*loaded_version_ = version;}
+
 	protected:
 		virtual uint32_t next_random_impl() = 0;
 		unsigned int random_calls_;
@@ -98,6 +104,12 @@ namespace randomness
 		 *  @param max		The maximum value produced.
 		 */
 		int get_random_int_in_range_zero_to(int max);
+
+	/** First version to use this RNG engine. */
+	version_info first_version_ = version_info("1.13.0");
+
+	/** The version for the RNG engine. */
+	version_info* loaded_version_ = &loaded_version;
 	};
 
 	/**

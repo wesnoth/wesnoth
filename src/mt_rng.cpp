@@ -14,8 +14,12 @@
 
 #include "mt_rng.hpp"
 #include "seed_rng.hpp"
+#include "random.hpp"
+#include "simple_rng_1_12.hpp"
 #include "config.hpp"
 #include "log.hpp"
+#include "wesconfig.h"
+#include "game_version.hpp"
 #include <sstream>
 #include <iomanip>
 static lg::log_domain log_random("random");
@@ -40,7 +44,9 @@ mt_rng::mt_rng(uint32_t seed)
 	: random_seed_(seed)
 	, mt_(random_seed_)
 	, random_calls_(0)
+    , legacy_rng_()
 {
+    *loaded_version_ = version_info(VERSION);
 }
 
 
@@ -48,9 +54,29 @@ mt_rng::mt_rng(const config& cfg) :
 	random_seed_(42),
 	mt_(random_seed_), //we don't have the seed at construction time, we have to seed after construction in this case. Constructing an mt19937 is somewhat expensive, apparently has about 2kb of private memory.
 	random_calls_(0)
+    , legacy_rng_()
 {
+	if(fallback_to_legacy_rng())
+	{
+		legacy_rng_ = rand_rng::simple_rng_1_12(cfg);
+	}
 	config::attribute_value seed = cfg["random_seed"];
 	seed_random(seed.str(), cfg["random_calls"].to_int(0));
+}
+
+void mt_rng::set_replay_data(const config& cfg)
+{
+	if(cfg.has_attribute("version"))
+	{
+		DBG_RND << "Received version: " << cfg["version"] << "\n";
+		*loaded_version_ = version_info(cfg["version"]);
+
+		if(fallback_to_legacy_rng())
+		{
+			legacy_rng_ = rand_rng::simple_rng_1_12(cfg);
+			legacy_rng_.set_replay_data(cfg);
+		}
+	}
 }
 
 bool mt_rng::operator== (const mt_rng & other) const {
@@ -63,16 +89,35 @@ uint32_t mt_rng::get_next_random()
 {
 	uint32_t result = mt_();
 	++random_calls_;
-	DBG_RND << "pulled user random " << result
+	if(fallback_to_legacy_rng()) return legacy_rng_.get_next_random();
+	DBG_RND << "mt_rng pulled user random " << result
 		<< " for call " << random_calls_
 		<< " with seed " << std::hex << random_seed_ << std::endl;
 
 	return result;
 }
 
+void mt_rng::next_side_turn_simulation()
+{
+	if(fallback_to_legacy_rng()) legacy_rng_.next_side_turn_simulation();
+}
+
 void mt_rng::rotate_random()
 {
+	if(fallback_to_legacy_rng()) legacy_rng_.rotate_random();
 	seed_random(mt_(),0);
+}
+
+uint32_t mt_rng::get_random_seed() const
+{
+	if(fallback_to_legacy_rng()) return legacy_rng_.get_random_seed();
+	else return random_seed_;
+}
+
+unsigned int mt_rng::get_random_calls() const
+{
+	if(fallback_to_legacy_rng()) return legacy_rng_.get_random_calls();
+	else return random_calls_;
 }
 
 void mt_rng::seed_random(const uint32_t seed, const unsigned int call_count)
@@ -81,8 +126,12 @@ void mt_rng::seed_random(const uint32_t seed, const unsigned int call_count)
 	mt_.seed(random_seed_);
 	mt_.discard(call_count);
 	random_calls_ = call_count;
-	DBG_RND << "Seeded random with " << std::hex << random_seed_ << std::dec << " with "
-		<< random_calls_ << " calls." << std::endl;
+	DBG_RND << "Select RNG by comparing loaded " << loaded_version_->str() << " and " << first_version_.str() << "\n";
+	if(fallback_to_legacy_rng())
+		legacy_rng_.seed_random(seed, call_count);
+	else
+		DBG_RND << "Seeded random with " << std::hex << random_seed_ << std::dec << " with "
+			<< random_calls_ << " calls." << std::endl;
 }
 
 void mt_rng::seed_random(const std::string & seed_str, const unsigned int call_count)

@@ -14,8 +14,12 @@
 
 #pragma once
 
+#include "game_version.hpp"
+#include "simple_rng_1_12.hpp"
+#include "random.hpp"
 #include <cstdint>
 #include <random>
+
 
 class config;
 
@@ -32,6 +36,9 @@ public:
 	mt_rng();
 	explicit mt_rng(const config& cfg);
 	explicit mt_rng(uint32_t seed);
+
+	void set_replay_data(const config& cfg);
+
 	/** Get a new random number. */
 	uint32_t get_next_random();
 
@@ -50,9 +57,11 @@ public:
 	 */
 	void rotate_random();
 
-	uint32_t get_random_seed() const { return random_seed_; }
+	uint32_t get_random_seed() const;
 	std::string get_random_seed_str() const;
-	unsigned int get_random_calls() const { return random_calls_; }
+	unsigned int get_random_calls() const;
+
+	void next_side_turn_simulation();
 
 	//Comparisons, mainly used for testing
 	bool operator== (const mt_rng &other) const;
@@ -79,6 +88,17 @@ private:
 	 *                      required.
 	 */
 	void seed_random(const uint32_t seed, const unsigned int call_count = 0);
+
+	/** First version to use this RNG engine. */
+	version_info first_version_ = version_info("1.13.0");
+
+	/** The version for the RNG engine. */
+	version_info* loaded_version_ = &loaded_version;
+
+	bool fallback_to_legacy_rng() const { return *loaded_version_ < first_version_; }
+
+	/** The legacy RNG engine use for old versions. */
+	rand_rng::simple_rng_1_12 legacy_rng_;
 };
 
 } // ends randomness namespace

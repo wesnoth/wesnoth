@@ -865,7 +865,7 @@ REPLAY_RETURN do_replay_handle(bool one_move)
 			}
 			else
 			{
-				LOG_REPLAY << "found commandname " << commandname << "in replay";
+				LOG_REPLAY << "found commandname " << commandname << " in replay" << std::endl;
 
 				if((*cfg)["from_side"].to_int(0) != resources::controller->current_side()) {
 					ERR_REPLAY << "received a synced [command] from side " << (*cfg)["from_side"].to_int(0) << ". Expacted was a [command] from side " << resources::controller->current_side() << "\n";

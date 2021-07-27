@@ -35,14 +35,25 @@ namespace randomness
 		//getting here means random was called form inside a synced context.
 		uint32_t retv = gen_.get_next_random();
 
-		LOG_RND << "randomness::rng::next_random_impl returned " << retv;
+		LOG_RND << "randomness::rng::next_random_impl returned " << retv << std::endl;
 		return retv;
 	}
 
 	void synced_rng::initialize()
 	{
-		std::string new_seed = seed_generator_();
-		gen_.seed_random(new_seed, 0);
+		std::string return_val = seed_generator_();
+		std::string new_seed;
+		std::string random_calls = "0";
+		if(return_val.front() == ';')
+		{
+			size_t pos = 1;
+			size_t split = return_val.find(';', pos);
+			new_seed.assign(return_val, /*pos=*/ pos, /*len=*/ split-1);
+			random_calls.assign(return_val, /*pos=*/ split+1, /* len=npos*/ std::string::npos);
+		} else {
+			new_seed = return_val;
+		}
+		gen_.seed_random(new_seed, std::stoi(random_calls));
 		has_valid_seed_ = true;
 	}
 

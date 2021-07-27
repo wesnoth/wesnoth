@@ -13,6 +13,8 @@
 */
 
 #include "random.hpp"
+#include "wesconfig.h"
+#include "game_version.hpp"
 #include "log.hpp"
 
 #include <boost/random/random_device.hpp>
@@ -56,6 +58,8 @@ namespace {
 
 namespace randomness
 {
+
+	version_info loaded_version = version_info(VERSION);
 
 	rng* generator = &rng::default_instance();
 
