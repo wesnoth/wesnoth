@@ -23,6 +23,8 @@
 #include "scripting/lua_pathfind_cost_calculator.hpp"
 #include "scripting/lua_terrainfilter.hpp"
 #include "scripting/lua_terrainmap.hpp"
+#include "deprecation.hpp"
+#include "game_version.hpp"
 
 #include <ostream>
 #include <string>
@@ -129,6 +131,10 @@ static int intf_default_generate_height_map(lua_State *L)
 	int height = luaL_checkinteger(L, 2);
 
 	config cfg = luaW_checkconfig(L, 3);
+	
+	if(!cfg.has_attribute("location_set")) {
+		deprecated_message("generate_height_map(..., {location_set=false})", DEP_LEVEL::PREEMPTIVE, "1.17", "The default value of this option will be changed to true in 1.17.");
+	}
 
 	int iterations = cfg["iterations"].to_int(1);
 	int hill_size = cfg["hill_size"].to_int(1);
@@ -136,6 +142,7 @@ static int intf_default_generate_height_map(lua_State *L)
 	int center_x = cfg["center_x"].to_int(width/2);
 	int center_y = cfg["center_y"].to_int(height/2);
 	bool flip_layout = cfg["flip_format"].to_bool();
+	bool as_locset = cfg["location_set"].to_bool(false);
 	uint32_t seed = cfg["seed"].to_int(0);
 
 	if(!cfg.has_attribute("seed")) {
@@ -146,12 +153,18 @@ static int intf_default_generate_height_map(lua_State *L)
 	lua_createtable (L, width * height, 0);
 	assert(int(res.size()) == width);
 	assert((width == 0 || int(res[0].size()) == height));
+	std::hash<map_location> loc_hash;
 	for(int x = 0; x != width; ++x) {
 		for(int y = 0; y != height; ++y) {
 			int h = res[x][y];
-			int i = flip_layout ? (y + x * height) : (x + y * width);
 			lua_pushinteger (L, h);
-			lua_rawseti(L, -2, i);
+			if(as_locset) {
+				map_location loc(flip_layout ? y : x, flip_layout ? x : y, wml_loc());
+				lua_rawseti(L, -2, loc_hash(loc));
+			} else {
+				int i = flip_layout ? (y + x * height) : (x + y * width);
+				lua_rawseti(L, -2, i);
+			}
 		}
 	}
 	return 1;
