@@ -306,7 +306,7 @@ if wesnoth.kernel_type() == "Mapgen Lua Kernel" then
 			return f.all(f.x(loc[1]), f.y(loc[2]))
 		end
 	}
-	
+
 	-- More map module stuff
 	wesnoth.create_filter = wesnoth.deprecate_api('wesnoth.create_filter', 'wesnoth.map.filter', 1, nil, wesnoth.map.filter)
 	wesnoth.create_map = wesnoth.deprecate_api('wesnoth.create_map', 'wesnoth.map.create', 1, nil, wesnoth.map.create)

@@ -130,7 +130,7 @@ static int intf_default_generate_height_map(lua_State *L)
 	int height = luaL_checkinteger(L, 2);
 
 	config cfg = luaW_checkconfig(L, 3);
-	
+
 	if(!cfg.has_attribute("location_set")) {
 		deprecated_message("generate_height_map(..., {location_set=false})", DEP_LEVEL::PREEMPTIVE, "1.17", "The default value of this option will be changed to true in 1.17.");
 	}

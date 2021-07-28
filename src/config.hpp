@@ -388,7 +388,7 @@ public:
 	 * @returns                   The wanted child node.
 	 */
 	const config& child(config_key_type key, const std::string& parent) const;
-	
+
 	/**
 	 * Get a deprecated child and log a deprecation message
 	 * @param old_key The deprecated child to return if present
@@ -398,7 +398,7 @@ public:
 	 * @note The deprecation message will be a level 3 deprecation.
 	 */
 	utils::optional_reference<const config> get_deprecated_child(config_key_type old_key, const std::string& in_tag, DEP_LEVEL level, const std::string& message) const;
-	
+
 	/**
 	 * Get a deprecated child rangw and log a deprecation message
 	 * @param old_key The deprecated child to return if present
@@ -485,13 +485,13 @@ public:
 	 * @note The deprecation message will be a level 1 deprecation.
 	*/
 	const attribute_value &get_old_attribute(config_key_type key, const std::string &old_key, const std::string& in_tag, const std::string& message = "") const;
-	
+
 	/**
 	 * Get a deprecated attribute without a direct substitute,
 	 * and log a deprecation message
 	 * @param old_key The deprecated attribute to return if present
 	 * @param in_tag The name of the tag this attribute appears in
-	 * @param level The deprecation level 
+	 * @param level The deprecation level
 	 * @param message An explanation of the deprecation, possibly mentioning an alternative
 	 */
 	const attribute_value& get_deprecated_attribute(config_key_type old_key, const std::string& in_tag, DEP_LEVEL level, const std::string& message) const;

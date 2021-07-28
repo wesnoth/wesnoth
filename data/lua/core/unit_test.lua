@@ -43,7 +43,7 @@ if rawget(_G, 'unit_test') ~= nil then
 	function unit_test.log(prefix, message)
 		std_print(prefix .. ': ' .. message)
 	end
-	
+
 	-- This is a way to ensure that all assertions contain a descriptive message
 	setmetatable(unit_test, {
 		__newindex = function(self, key, val)
