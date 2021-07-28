@@ -21,20 +21,22 @@ wesnoth.game_events.on_event = function(eventname)
 end
 
 
-local function on_event(eventname, arg1, arg2)
+---Handle an event
+---@param eventname string
+---@param priority? number
+---@param fcn fun(ctx:event_context)
+local function on_event(eventname, priority, fcn)
 	if string.match(eventname, ",") then
 		for _,elem in ipairs((eventname or ""):split()) do
-			on_event(elem, arg1, arg2)
+			on_event(elem, priority, fcn)
 		end
 		return
 	end
-	local priority = 0
 	local handler
-	if type(arg1) == "function" then
-		handler = arg1
+	if type(priority) == "function" then
+		handler = priority
 	else
-		priority = arg1
-		handler = arg2
+		handler = fcn
 	end
 	eventname = string.gsub(eventname, " ", "_")
 	event_handlers[eventname] = event_handlers[eventname] or {}

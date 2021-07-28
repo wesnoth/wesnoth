@@ -7,14 +7,15 @@ print("Loading Lua core files...")
 local _ = wesnoth.textdomain "wesnoth"
 
 -- Marks a function or subtable as deprecated.
--- Parameters:
----- elem_name: the full name of the element being deprecated (including the module)
----- replacement: the name of the element that will replace it (including the module)
----- level: deprecation level (1-4)
----- version: the version at which the element may be removed (level 2 or 3 only)
----- Set to nil if deprecation level is 1 or 4
----- elem: The actual element being deprecated, ignored if level is 4
----- detail_msg: An optional message to add to the deprecation message
+---@generic T
+---@param elem_name string the full name of the element being deprecated (including the module)
+---@param replacement string the name of the element that will replace it (including the module)
+---@param level '1'|'2'|'3'|'4' deprecation level (1-4)
+---@param version string|nil the version at which the element may be removed (level 2 or 3 only)
+--- Set to nil if deprecation level is 1 or 4
+---@param elem T The actual element being deprecated, ignored if level is 4
+---@param detail_msg? string An optional message to add to the deprecation message
+---@return T
 function wesnoth.deprecate_api(elem_name, replacement, level, version, elem, detail_msg)
 	if wesnoth.game_config.strict_lua then return nil end
 	local message = detail_msg or ''

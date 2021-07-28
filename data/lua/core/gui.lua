@@ -2,6 +2,9 @@
 --[========[GUI2 Dialog Manipulations]========]
 print("Loading GUI module...")
 
+---Show a basic alert dialog with a single button
+---@param title string Dialog title string
+---@param msg string Detail message
 function gui.alert(title, msg)
 	if not msg then
 		msg = title;
@@ -10,6 +13,10 @@ function gui.alert(title, msg)
 	gui.show_prompt(title, msg, "ok", true)
 end
 
+---Show a basic prompt dialog with two buttons
+---@param title string Dialog title string
+---@param msg string Detail message
+---@return boolean #True if OK or Yes was clicked
 function gui.confirm(title, msg)
 	if not msg then
 		msg = title;
@@ -18,13 +25,10 @@ function gui.confirm(title, msg)
 	return gui.show_prompt(title, msg, "yes_no", true)
 end
 
---! Displays a WML message box with attributes from table @attr and options
---! from table @options.
---! @return the index of the selected option.
---! @code
---! local result = gui.get_user_choice({ speaker = "narrator" },
---!     { "Choice 1", "Choice 2" })
---! @endcode
+---Displays a WML message box with attributes from attr and options from options.
+---@param attr WML
+---@param options string[]
+---@return integer #the index of the selected option.
 function gui.get_user_choice(attr, options)
 	local result = 0
 	function gui.__user_choice_helper(i)

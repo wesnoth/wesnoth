@@ -11,6 +11,11 @@ local function revindex(p)
 	return x, p - x * 16384 - 2000
 end
 
+---@alias location_set_operation fun(x:integer, y:integer, value:any):boolean
+---@alias location_set_resolver fun(x:integer, y:integer, old:any, new:any):any
+---A set of locations, with an optional associated value for each one.
+---@class location_set
+---@field values table<integer, any>
 local methods = {}
 local locset_meta = {}
 
@@ -74,10 +79,14 @@ function locset_meta:__tostring()
 	return '{' .. stringx.join_map(res, '; ', ' = ') .. '}'
 end
 
+---Test if the set is empty
+---@return boolean
 function methods:empty()
 	return (not next(self.values))
 end
 
+---Count the number of locations in the set
+---@return integer
 function methods:size()
 	local sz = 0
 	for p,v in pairs(self.values) do
@@ -86,10 +95,14 @@ function methods:size()
 	return sz
 end
 
+---Remove all locations from the set
 function methods:clear()
 	self.values = {}
 end
 
+---Look up a location in the set
+---@overload fun(x:integer, y:integer):any
+---@overload fun(loc:location):any
 function methods:get(...)
 	local loc = wesnoth.map.read_location(...)
 	if loc ~= nil then
@@ -98,6 +111,9 @@ function methods:get(...)
 	return nil
 end
 
+---Add a location to the set
+---@overload fun(x:integer, y:integer, value?:any)
+---@overload fun(loc:location, value?:any)
 function methods:insert(...)
 	local loc, n = wesnoth.map.read_location(...)
 	if loc ~= nil then
@@ -106,6 +122,9 @@ function methods:insert(...)
 	end
 end
 
+---Remove a location from the set
+---@overload fun(x:integer, y:integer)
+---@overload fun(loc:location:unit)
 function methods:remove(...)
 	local loc = wesnoth.map.read_location(...)
 	if loc ~= nil then
@@ -113,6 +132,10 @@ function methods:remove(...)
 	end
 end
 
+---Create a copy of the set
+---This is a shallow copy - if the values are tables they will still
+---be referenced by the original set
+---@return location_set
 function methods:clone()
 	local new = location_set.create()
 	for p,v in pairs(self.values) do
@@ -121,6 +144,8 @@ function methods:clone()
 	return new
 end
 
+---Take the union of two sets, replacing duplicate values
+---@param s location_set The other set to merge in
 function methods:union(s)
 	local values = self.values
 	for p,v in pairs(s.values) do
@@ -128,6 +153,10 @@ function methods:union(s)
 	end
 end
 
+---Take the union of two sets, merging duplicate values
+---@param s location_set The other set to merge in
+---@param f location_set_resolver A function which is used to resolve conflicts.
+---It will be called for every element of the right-hand set.
 function methods:union_merge(s, f)
 	local values = self.values
 	for p,v in pairs(s.values) do
@@ -136,6 +165,9 @@ function methods:union_merge(s, f)
 	end
 end
 
+---Take the intersection of two sets, by removing any elements in the left set that
+---are missing from the right set.
+---@param s location_set The other set to intersect with
 function methods:inter(s)
 	local values = self.values
 	local nvalues = {}
@@ -145,6 +177,10 @@ function methods:inter(s)
 	self.values = nvalues
 end
 
+---Take the union of two sets, merging duplicate values
+---@param s location_set The other set to merge in
+---@param f location_set_resolver A function which is used to resolve conflicts.
+---It will be called for every element common to both sets.
 function methods:inter_merge(s, f)
 	local values = s.values
 	local nvalues = {}
@@ -155,6 +191,9 @@ function methods:inter_merge(s, f)
 	self.values = nvalues
 end
 
+---Take the relative complement of two location sets.
+---This removes any elements from the left set that are also in the right set.
+---@param s location_set
 function methods:diff(s)
 	local values = self.values
 	for p,v in pairs(s.values) do
@@ -162,6 +201,10 @@ function methods:diff(s)
 	end
 end
 
+---Take the symmetric difference of two location sets.
+---This removes any elements that are common to both sets,
+---while adding new elements to the left set if they only exist in the right.
+---@param s location_set
 function methods:symm(s)
 	local values = self.values
 	for p,v in pairs(s.values) do
@@ -173,6 +216,13 @@ function methods:symm(s)
 	end
 end
 
+---Take the absolute complement of the location set
+---The resulting set has no values associated with each location.
+---@param width integer The width of the map
+---@param height integer The height of the map
+---@param border_size integer The border size of the map
+---@return location_set
+---@overload fun(map:terrain_map):location_set
 function methods:invert(width, height, border_size)
 	if type(width) == 'number' and type(height) == 'number' then
 		border_size = border_size or 0
@@ -195,6 +245,10 @@ function methods:invert(width, height, border_size)
 	return new
 end
 
+---Filter the set for elements that satisfy a given condition.
+---Returns a new set containing only the matching values.
+---@param f location_set_operation The condition to test
+---@return location_set
 function methods:filter(f)
 	local nvalues = {}
 	for p,v in pairs(self.values) do
@@ -204,6 +258,10 @@ function methods:filter(f)
 	return setmetatable({ values = nvalues }, locset_meta)
 end
 
+---Iterate over the location set.
+---If passed no arguments, it can be used in a range-for loop.
+---@param f location_set_operation
+---@overload fun():fun()
 function methods:iter(f)
 	if f == nil then
 		local locs = self
@@ -217,6 +275,10 @@ function methods:iter(f)
 	end
 end
 
+---Iterate over the location set in a sorted order.
+---If passed no arguments, it can be used in a range-for loop.
+---@param f location_set_operation
+---@overload fun():fun()
 function methods:stable_iter(f)
 	if f == nil then
 		local locs = self
@@ -235,6 +297,9 @@ function methods:stable_iter(f)
 	end
 end
 
+---Add a series of locations to the set.
+---If the location tables have extra information in them, it will be used as the value.
+---@param t location[]
 function methods:of_pairs(t)
 	local values = self.values
 
@@ -270,6 +335,9 @@ function methods:of_pairs(t)
 	end
 end
 
+---Add locations stored in a WML variable.
+---If the location tables have extra information in them, it will be used as the value.
+---@param name string
 function methods:of_wml_var(name)
 	local values = self.values
 	for i = 0, wml.variables[name .. ".length"] - 1 do
@@ -280,6 +348,9 @@ function methods:of_wml_var(name)
 	end
 end
 
+---Add a series of locations to the set.
+---The third element of each location is used as the value.
+---@param t location_triple[]
 function methods:of_triples(t)
     -- Create a location set from a table of 3-element tables
     -- Elements 1 and 2 are x,y coordinates, #3 is value to be inserted
@@ -292,19 +363,26 @@ function methods:of_triples(t)
     end
 end
 
+--- Add values from a table of location->element mappings
+--- Keys can be of the form {x,y} or {x=x,y=y}, or a location-like object such as a unit
+---@param t table<location, any>
 function methods:of_map(t)
-	-- Create a location set from a table of location->element mappings
-	-- Keys can be of the form {x,y} or {x=x,y=y}, or a location-like object such as a unit
 	for k,v in pairs(t) do
 		local loc = wesnoth.read_location(k)
 		self:insert(loc.x, loc.y, v)
 	end
 end
 
+---Add a series of locations from a shroud data string.
+---Each location indicated by a 1 will be added to the set.
+---@param data string
 function methods:of_shroud_data(data)
 	self:of_pairs(wesnoth.map.parse_bitmap(data))
 end
 
+---Convert the set to an array of locations.
+---The value will not be stored in the output array.
+---@return location[]
 function methods:to_pairs()
 	local res = {}
 	self:iter(function(x, y)
@@ -313,6 +391,9 @@ function methods:to_pairs()
 	return res
 end
 
+---Convert the set to an array of locations in a sorted order.
+---The value will not be stored in the output array.
+---@return location[]
 function methods:to_stable_pairs()
 	local res = {}
 	self:stable_iter(function(x, y)
@@ -321,6 +402,9 @@ function methods:to_stable_pairs()
 	return res
 end
 
+---Store the set in a WML variable
+---@param name string
+---@param mode "'always_clear'"|"'append'"|"'replace'"
 function methods:to_wml_var(name, mode)
 	mode = mode or "always_clear"
 	local is_explicit_index = name[-1] == "]"
@@ -347,6 +431,8 @@ function methods:to_wml_var(name, mode)
 	end)
 end
 
+---Convert the set to an array of triples - locations with an extra element for the value.
+---@return location_triple[]
 function methods:to_triples()
     local res = {}
     self:iter(function(x, y, v)
@@ -355,6 +441,8 @@ function methods:to_triples()
     return res
 end
 
+---Convert the set to a map of location -> value
+---@return table<location, any>
 function methods:to_map()
 	local res = {}
 	self:iter(function(x, y, v)
@@ -363,10 +451,16 @@ function methods:to_map()
 	return res
 end
 
+---Convert the set to a shroud data string
+--- Each location in the set will be a 1 in the output string.
+---@return string
 function methods:to_shroud_data()
 	return wesnoth.map.make_bitmap(self:to_pairs())
 end
 
+---Select a random location from the set
+---@return integer #x
+---@return integer #y
 function methods:random()
 	-- Select a random hex from the hexes in the location set
 	-- This seems "inelegant", but I can't come up with another way without creating an extra array
@@ -380,38 +474,64 @@ function methods:random()
 	return xr, yr
 end
 
+---Create a new empty location set.
+---@return location_set
 function location_set.create()
 	return setmetatable({ values = {} }, locset_meta)
 end
 
+---Create a location set from raw indexed data.
+---The data must be formatted the same way as the values of a location set.
+---@param data table<integer, any>
+---@return location_set
 function location_set.of_raw(data)
 	return setmetatable({ values = data }, locset_meta)
 end
 
+---Create a set with locations from an array.
+---If the location tables have extra information in them, it will be used as the value.
+---@param t location[]
+---@return location_set
 function location_set.of_pairs(t)
 	local s = location_set.create()
 	s:of_pairs(t)
 	return s
 end
 
+---Create a set with locations from a WML variable.
+---If the location tables have extra information in them, it will be used as the value.
+---@param name string
+---@return location_set
 function location_set.of_wml_var(name)
 	local s = location_set.create()
 	s:of_wml_var(name)
 	return s
 end
 
+---Create a set with locations from an array.
+---The third element of each location is used as the value.
+---@param t location_triple[]
+---@return location_set
 function location_set.of_triples(t)
     local s = location_set.create()
     s:of_triples(t)
     return s
 end
 
+--- Create a set from a table of location->element mappings
+--- Keys can be of the form {x,y} or {x=x,y=y}, or a location-like object such as a unit
+---@param t table<location, any>
+---@return location_set
 function location_set.of_map(t)
 	local s = location_set.create()
 	s:of_map(t)
 	return s
 end
 
+---Create a set with locations from a shroud data string.
+---Each location indicated by a 1 will be added to the set.
+---@param data string
+---@return location_set
 function location_set.of_shroud_data(data)
 	local s = location_set.create()
 	s:of_shroud_data(data)

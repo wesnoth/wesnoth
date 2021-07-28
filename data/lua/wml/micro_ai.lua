@@ -1,5 +1,11 @@
 local MAIH = wesnoth.require("ai/micro_ais/micro_ai_helper.lua")
 
+---@class ca_info
+---@field ca_id string The base ID used for the candidate action
+---@field location string Path to the Lua file that defines the candidate action
+---@field score number The maximum score the candidate action can return
+
+---@type table<string, fun(cfg:WML):string[],string[],ca_info>
 wesnoth.micro_ais = {}
 
 -- Load all default MicroAIs

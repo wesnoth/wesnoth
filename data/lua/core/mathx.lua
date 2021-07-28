@@ -1,6 +1,10 @@
 --[========[Additional mathematical functions]========]
 print("Loading mathx module...")
 
+---Pick a random choice from a list of value_second
+---@param possible_values string|table
+---@param random_func fun(a:integer,b:integer):number
+---@return number|string
 function mathx.random_choice(possible_values, random_func)
 	random_func = random_func or mathx.random
 	assert(type(possible_values) == "table" or type(possible_values) == "string",
@@ -83,6 +87,9 @@ function mathx.random_choice(possible_values, random_func)
 	return nil
 end
 
+---Randomize the order of an array
+---@param t any[]
+---@param random_func fun(a:number,b:number):number
 function mathx.shuffle(t, random_func)
 	random_func = random_func or mathx.random
 	-- since tables are passed by reference, this is an in-place shuffle
@@ -95,10 +102,20 @@ function mathx.shuffle(t, random_func)
 	end
 end
 
+---Compute a linear interpolation
+---@param lo number
+---@param hi number
+---@param alpha number
+---@return number
 function mathx.lerp(lo, hi, alpha)
 	return lo + alpha * (hi - lo)
 end
 
+---Clamp a number into a specified range
+---@param val number
+---@param lo number
+---@param hi number
+---@return number
 function mathx.clamp(val, lo, hi)
 	return math.min(hi, math.max(lo, val))
 end
