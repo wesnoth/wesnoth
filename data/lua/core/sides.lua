@@ -50,14 +50,8 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 				wesnoth.sides.override_shroud(side, {})
 			else
 				local ls = wesnoth.require "location_set"
-				local clear = ls.of_shroud_data(shroud)
-				shroud = ls.create()
-				for x,y in wesnoth.current.map:iter() do
-					if not clear(x,y) then
-						shroud:insert(x,y)
-					end
-				end
-				wesnoth.sides.place_shroud(side, shroud:to_pairs())
+				shroud = ls.of_shroud_data(shroud)
+				wesnoth.sides.place_shroud(side, (~shroud):to_pairs())
 			end
 		else
 			wesnoth.sides.place_shroud(side, shroud)
