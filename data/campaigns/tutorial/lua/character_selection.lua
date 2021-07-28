@@ -11,7 +11,10 @@ function wml_actions.select_character()
 	local character_selection_dialog = wml.load "campaigns/tutorial/gui/character_selection.cfg"
 	local dialog_wml = wml.get_child(character_selection_dialog, 'resolution')
 
-	local character = gui.show_dialog(dialog_wml)
+	local result = wesnoth.sync.evaluate_single(function()
+		return { value = gui.show_dialog(dialog_wml) }
+	end)
+	local character = result.value
 	local unit = wml.variables.student_store
 
 	if character == 2 then
