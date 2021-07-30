@@ -53,10 +53,8 @@ tree_view_node::tree_view_node(const std::string& id,
 		return;
 	}
 
-	for(const auto& node_definition : get_tree_view().get_node_definitions()) {
-		if(node_definition.id != id) {
-			continue;
-		}
+	if(const auto opt = get_tree_view().get_node_definition(id)) {
+		const auto& node_definition = **opt;
 
 		node_definition.builder->build(&grid_);
 		init_grid(&grid_, data);
@@ -104,12 +102,9 @@ tree_view_node::tree_view_node(const std::string& id,
 				label_->set_value(true);
 			}
 		}
-
-		return;
+	} else {
+		FAIL_WITH_DEV_MESSAGE(_("Unknown builder id for tree view node."), id);
 	}
-
-	// Only reached if no matching node definition was found in the above loop
-	FAIL_WITH_DEV_MESSAGE(_("Unknown builder id for tree view node."), id);
 }
 
 tree_view_node::~tree_view_node()
