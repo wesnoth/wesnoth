@@ -181,6 +181,15 @@ void mp_game_settings::update_addon_requirements(const config & cfg) {
 
 	mp_game_settings::addon_version_info new_data(cfg);
 
+	// if the add-on doesn't require all players have it, then min_version is irrelevant
+	if(!new_data.required) {
+		new_data.min_version = {};
+	}
+	// else if it is required and no min_version was explicitly specified, default the min_version to the add-on's version
+	else if(new_data.required && !new_data.min_version) {
+		new_data.min_version = new_data.version;
+	}
+
 	std::map<std::string, addon_version_info>::iterator it = addons.find(cfg["id"].str());
 	// Check if this add-on already has an entry as a dependency for this scenario. If so, try to reconcile their version info,
 	// by taking the larger of the min versions. The version should be the same for all WML from the same add-on...
@@ -200,17 +209,13 @@ void mp_game_settings::update_addon_requirements(const config & cfg) {
 		if(new_data.required) {
 			addon.required = true;
 
-			if (new_data.min_version) {
-				if (!addon.min_version || (*new_data.min_version > *addon.min_version)) {
-					addon.min_version = *new_data.min_version;
-				}
+			// if the existing entry for the add-on didn't have a min_version or had a lower min_version, update it to this min_version
+			if (!addon.min_version || *new_data.min_version > *addon.min_version) {
+				addon.min_version = new_data.min_version;
 			}
 		}
 	} else {
-		// Didn't find this addon-id in the map, so make a new entry without setting the min_version.
-		if(!new_data.required) {
-			new_data.min_version.reset();
-		}
+		// Didn't find this addon-id in the map, so make a new entry.
 		addons.emplace(cfg["id"].str(), new_data);
 	}
 }
