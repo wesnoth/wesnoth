@@ -766,10 +766,9 @@ void menu_handler::create_unit(mouse_handler& mousehandler)
 	assert(gui_ != nullptr);
 
 	// Let the user select the kind of unit to create.
-	type_gender_variation selection = choose_unit();
-	if(std::get<0>(selection) != nullptr) {
+	if(const auto& [type, gender, variation] = choose_unit(); type != nullptr) {
 		// Make it so.
-		create_and_place(*gui_, pc_.get_map(), pc_.get_units(), destination, *std::get<0>(selection), std::get<1>(selection), std::get<2>(selection));
+		create_and_place(*gui_, pc_.get_map(), pc_.get_units(), destination, *type, gender, variation);
 	}
 }
 
