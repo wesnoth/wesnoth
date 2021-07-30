@@ -487,13 +487,13 @@ config& config::child_or_add(config_key_type key)
 
 utils::optional_reference<const config> config::get_deprecated_child(config_key_type old_key, const std::string& in_tag, DEP_LEVEL level, const std::string& message) const {
 	check_valid();
-	
+
 	if(auto i = children_.find(old_key); i != children_.end() && !i->second.empty()) {
 		const std::string what = formatter() << "[" << in_tag << "][" << old_key << "]";
 		deprecated_message(what, level, "", message);
 		return *i->second.front();
 	}
-	
+
 	return std::nullopt;
 }
 
@@ -501,13 +501,13 @@ config::const_child_itors config::get_deprecated_child_range(config_key_type old
 	check_valid();
 	static child_list dummy;
 	const child_list* p = &dummy;
-	
+
 	if(auto i = children_.find(old_key); i != children_.end() && !i->second.empty()) {
 		const std::string what = formatter() << "[" << in_tag << "][" << old_key << "]";
 		deprecated_message(what, level, "", message);
 		p = &i->second;
 	}
-	
+
 	return const_child_itors(const_child_iterator(p->begin()), const_child_iterator(p->end()));
 }
 
@@ -800,7 +800,7 @@ config::attribute_value& config::operator[](config_key_type key)
 const config::attribute_value& config::get_old_attribute(config_key_type key, const std::string& old_key, const std::string& in_tag, const std::string& message) const
 {
 	check_valid();
-	
+
 	if(has_attribute(old_key)) {
 		const std::string what = formatter() << "[" << in_tag << "]" << old_key << "=";
 		const std::string msg  = formatter() << "Use " << key << "= instead. " << message;
@@ -823,13 +823,13 @@ const config::attribute_value& config::get_old_attribute(config_key_type key, co
 
 const config::attribute_value& config::get_deprecated_attribute(config_key_type old_key, const std::string& in_tag, DEP_LEVEL level, const std::string& message) const {
 	check_valid();
-	
+
 	if(auto i = values_.find(old_key); i != values_.end()) {
 		const std::string what = formatter() << "[" << in_tag << "]" << old_key << "=";
 		deprecated_message(what, level, "", message);
 		return i->second;
 	}
-	
+
 	static const attribute_value empty_attribute;
 	return empty_attribute;
 }
