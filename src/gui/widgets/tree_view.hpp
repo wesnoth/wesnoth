@@ -60,6 +60,7 @@ class tree_view_node;
 class tree_view : public scrollbar_container
 {
 	friend struct implementation::builder_tree_view;
+	friend struct implementation::tree_node;
 	friend class tree_view_node;
 
 public:
@@ -142,7 +143,10 @@ protected:
 
 	/** Inherited from scrollbar_container. */
 	void handle_key_right_arrow(SDL_Keymod modifier, bool& handled) override;
+
 private:
+	static inline const std::string root_node_id = "root";
+
 	/**
 	 * @todo evaluate which way the dependency should go.
 	 *

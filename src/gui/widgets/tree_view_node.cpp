@@ -48,7 +48,7 @@ tree_view_node::tree_view_node(const std::string& id,
 	grid_.set_parent(this);
 	set_parent(&parent_tree_view);
 
-	if(id == "root") {
+	if(id == tree_view::root_node_id) {
 		unfolded_ = true;
 		return;
 	}
