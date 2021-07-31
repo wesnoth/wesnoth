@@ -78,13 +78,11 @@ public:
 	 * The motivation here is to provide a way to add multiple children without calculating the trees size for each child added.
 	 * This is a waste of time since the results of that resizing will be immediately thrown out except for the final child added.
 	 *
-	 * @param id The id of the node definition to use for the new nodes.
-	 * @param data data.first is a unique identifying value to be associated to the respective tree_view_node that's returned.
-	 * 			   data.second is the data to provide to the tree_node_view's constructor.
-	 * @return return_value.first is data.first
-	 * 		   return_value.second is the tree_view_node created from data.second
+	 * @param id                  The id of the node definition to use for the new nodes.
+	 * @param data                A vector of the data to provide to the tree_node_view's constructor.
+	 * @return                    A vector of pointers to the newly created nodes.
 	 */
-	std::map<std::string, std::shared_ptr<gui2::tree_view_node>> replace_children(const std::string& id, const std::map<std::string, std::map<std::string /* widget id */, string_map>>& data);
+	std::vector<std::shared_ptr<gui2::tree_view_node>> replace_children(const std::string& id, const std::vector<std::map<std::string /* widget id */, string_map>>& data);
 
 	/**
 	 * Adds a previously-constructed node as a child of this node at the given position.

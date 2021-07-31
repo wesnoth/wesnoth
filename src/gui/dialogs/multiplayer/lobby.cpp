@@ -65,52 +65,7 @@ static lg::log_domain log_lobby("lobby");
 
 namespace gui2::dialogs
 {
-
 REGISTER_DIALOG(mp_lobby)
-
-void sub_player_list::init(window& w, const std::string& lbl, const bool unfolded)
-{
-	tree_view& parent_tree = find_widget<tree_view>(&w, "player_tree", false);
-
-	std::map<std::string, string_map> tree_group_item;
-	tree_group_item["tree_view_node_label"]["label"] = lbl;
-
-	tree = &parent_tree.add_node("player_group", tree_group_item);
-
-	if(unfolded) {
-		tree->unfold();
-	}
-
-	tree_label = find_widget<label>(tree, "tree_view_node_label", false, true);
-	label_player_count = find_widget<label>(tree, "player_count", false, true);
-
-	assert(tree_label);
-	assert(label_player_count);
-}
-
-void sub_player_list::update_player_count_label()
-{
-	assert(tree);
-	assert(label_player_count);
-
-	/**
-	 * @todo Make sure setting visible resizes the widget.
-	 *
-	 * It doesn't work here since invalidate_layout is blocked, but the
-	 * widget should also be able to handle it itself. Once done the
-	 * setting of the label text can also be removed.
-	 */
-	label_player_count->set_label((formatter() << "(" << tree->count_children() << ")").str());
-}
-
-void player_list::init(window& w)
-{
-	active_game.init(w, _("Selected Game"), true);
-	lobby_players.init(w, _("Lobby"), true);
-	other_games.init(w, _("Other Games"));
-
-	tree = find_widget<tree_view>(&w, "player_tree", false, true);
-}
 
 bool mp_lobby::logout_prompt()
 {
@@ -148,7 +103,7 @@ mp_lobby::mp_lobby(mp::lobby_info& info, wesnothd_connection& connection, int& j
 		  std::bind(&mp_lobby::game_filter_change_callback, this)))
 	, filter_text_(nullptr)
 	, selected_game_id_()
-	, player_list_()
+	, player_list_(std::bind(&mp_lobby::user_dialog_callback, this, std::placeholders::_1))
 	, player_list_dirty_(true)
 	, gamelist_dirty_(true)
 	, last_lobby_update_(0)
@@ -591,109 +546,7 @@ void mp_lobby::update_playerlist()
 	DBG_LB << "Playerlist update: " << lobby_info_.users().size() << "\n";
 	lobby_info_.update_user_statuses(selected_game_id_);
 
-	assert(player_list_.active_game.tree);
-	assert(player_list_.other_games.tree);
-	assert(player_list_.lobby_players.tree);
-
-	unsigned scrollbar_position = player_list_.tree->get_vertical_scrollbar_item_position();
-
-	player_list_.active_game.tree->clear();
-	player_list_.other_games.tree->clear();
-	player_list_.lobby_players.tree->clear();
-
-	std::map<std::string, std::map<std::string, string_map>> lobby_player_items;
-	std::map<std::string, std::map<std::string, string_map>> active_game_items;
-	std::map<std::string, std::map<std::string, string_map>> other_game_items;
-	for(const auto& user : lobby_info_.users()) {
-		std::string name = user.name;
-
-		std::stringstream icon_ss;
-
-		icon_ss << "lobby/status";
-		switch(user.state) {
-			case mp::user_info::user_state::LOBBY:
-				icon_ss << "-lobby";
-				break;
-			case mp::user_info::user_state::SEL_GAME:
-				name = colorize(name, {0, 255, 255});
-				icon_ss << (user.observing ? "-obs" : "-playing");
-				break;
-			case mp::user_info::user_state::GAME:
-				name = colorize(name, font::GRAY_COLOR);
-				icon_ss << (user.observing ? "-obs" : "-playing");
-				break;
-			default:
-				ERR_LB << "Bad user state in lobby: " << user.name << ": " << static_cast<int>(user.state) << "\n";
-				continue;
-		}
-
-		switch(user.relation) {
-			case mp::user_info::user_relation::ME:
-				icon_ss << "-s";
-				break;
-			case mp::user_info::user_relation::NEUTRAL:
-				icon_ss << "-n";
-				break;
-			case mp::user_info::user_relation::FRIEND:
-				icon_ss << "-f";
-				break;
-			case mp::user_info::user_relation::IGNORED:
-				icon_ss << "-i";
-				break;
-			default:
-				ERR_LB << "Bad user relation in lobby: " << static_cast<int>(user.relation) << "\n";
-		}
-
-		icon_ss << ".png";
-
-		string_map tree_group_field;
-		std::map<std::string, string_map> tree_group_item;
-
-		/*** Add tree item ***/
-		tree_group_field["label"] = icon_ss.str();
-		tree_group_item["icon"] = tree_group_field;
-
-		tree_group_field["label"] = name;
-		tree_group_field["use_markup"] = "true";
-		tree_group_item["name"] = tree_group_field;
-
-		switch(user.state) {
-			case mp::user_info::user_state::LOBBY:
-				lobby_player_items[user.name] = tree_group_item;
-				break;
-			case mp::user_info::user_state::SEL_GAME:
-				active_game_items[user.name] = tree_group_item;
-				break;
-			case mp::user_info::user_state::GAME:
-				other_game_items[user.name] = tree_group_item;
-				break;
-			default:
-				ERR_LB << "Bad user state in lobby: " << user.name << ": " << static_cast<int>(user.state) << "\n";
-				continue;
-		}
-	}
-
-	for(const auto& player : player_list_.active_game.tree->replace_children("player", active_game_items)) {
-		 connect_signal_mouse_left_double_click(find_widget<toggle_panel>(player.second.get(), "tree_view_node_label", false),
-		 	std::bind(&mp_lobby::user_dialog_callback, this, lobby_info_.get_user(player.first)));
-	}
-	for(const auto& player : player_list_.lobby_players.tree->replace_children("player", lobby_player_items)) {
-		 connect_signal_mouse_left_double_click(find_widget<toggle_panel>(player.second.get(), "tree_view_node_label", false),
-		 	std::bind(&mp_lobby::user_dialog_callback, this, lobby_info_.get_user(player.first)));
-	}
-	for(const auto& player : player_list_.other_games.tree->replace_children("player", other_game_items)) {
-		 connect_signal_mouse_left_double_click(find_widget<toggle_panel>(player.second.get(), "tree_view_node_label", false),
-		 	std::bind(&mp_lobby::user_dialog_callback, this, lobby_info_.get_user(player.first)));
-	}
-
-	player_list_.active_game.update_player_count_label();
-	player_list_.lobby_players.update_player_count_label();
-	player_list_.other_games.update_player_count_label();
-
-	// Don't attempt to restore the scroll position if the window hasn't been laid out yet
-	if(player_list_.tree->get_origin() != point{-1, -1}) {
-		player_list_.tree->set_vertical_scrollbar_item_position(scrollbar_position);
-	}
+	player_list_.update(lobby_info_.users());
 
 	player_list_dirty_ = false;
 	last_lobby_update_ = SDL_GetTicks();

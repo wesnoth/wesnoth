@@ -182,21 +182,19 @@ tree_view_node& tree_view_node::add_child_impl(std::shared_ptr<tree_view_node>&&
 	return node;
 }
 
-std::map<std::string, std::shared_ptr<gui2::tree_view_node>> tree_view_node::replace_children(const std::string& id, const std::map<std::string, std::map<std::string /* widget id */, string_map>>& data)
+std::vector<std::shared_ptr<gui2::tree_view_node>> tree_view_node::replace_children(const std::string& id, const std::vector<std::map<std::string /* widget id */, string_map>>& data)
 {
-	std::map<std::string, std::shared_ptr<gui2::tree_view_node>> nodes;
+	std::vector<std::shared_ptr<gui2::tree_view_node>> nodes;
 	clear();
 
-	if(data.size() == 0)
-	{
+	if(data.size() == 0) {
 		return nodes;
 	}
 
 	int width_modification = 0;
 
-	for(const auto& d : data)
-	{
-		std::shared_ptr<gui2::tree_view_node> new_node = std::make_shared<tree_view_node>(id, this, get_tree_view(), d.second);
+	for(const auto& d : data) {
+		std::shared_ptr<gui2::tree_view_node> new_node = std::make_shared<tree_view_node>(id, this, get_tree_view(), d);
 		std::shared_ptr<gui2::tree_view_node> node = *children_.insert(children_.end(), std::move(new_node));
 
 		// NOTE: we currently don't support moving nodes between different trees, so this
@@ -206,7 +204,7 @@ std::map<std::string, std::shared_ptr<gui2::tree_view_node>> tree_view_node::rep
 		// Safety check. Might only fail if someone accidentally removed the parent_node_ setter in add_child().
 		assert(node->parent_node_ == this);
 
-		nodes[d.first] = node;
+		nodes.push_back(node);
 
 		if(is_folded()) {
 			continue;
