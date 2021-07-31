@@ -221,12 +221,8 @@ void lobby_info::process_userlist()
 
 	users_.clear();
 	for(const auto& c : gamelist_.child_range("user")) {
-		users_.emplace_back(c);
-	}
+		user_info& ui = users_.emplace_back(c);
 
-	std::stable_sort(users_.begin(), users_.end());
-
-	for(auto& ui : users_) {
 		if(ui.game_id == 0) {
 			continue;
 		}
@@ -248,6 +244,8 @@ void lobby_info::process_userlist()
 			break;
 		}
 	}
+
+	std::stable_sort(users_.begin(), users_.end());
 }
 
 void lobby_info::sync_games_display_status()
