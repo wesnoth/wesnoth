@@ -166,7 +166,7 @@ local function world_conquest_tek_map_repaint_6d()
 		f.terrain("Uu"),
 		fraction = 4,
 	}
-	set_terrain { "Qxu,Uh^Uf,Ql,Urb,Urb,Urb,Urb,Urb,Urb,Urb,Urb,Urb,Urb,Urb,Urb,Urb,Urb,Uh,Uh,Uu^Tf",
+	set_terrain { "Qxu,Uh^Tf,Ql,Urb,Urb,Urb,Urb,Urb,Urb,Urb,Urb,Urb,Urb,Urb,Urb,Urb,Urb,Uh,Uh,Uu^Tf",
 		f.terrain("Uu"),
 		fraction = 5,
 	}
@@ -175,7 +175,7 @@ local function world_conquest_tek_map_repaint_6d()
 	wct_volcanos()
 	wct_volcanos_dirt()
 	wct_break_walls("M*^Xm", "Mm,Mm,Hh,Hh,Hh^Fp,Hh^Fp,Hh^Tf,Hh^Tf,Gs^Fp,Rb,Rb,Rb")
-	wct_break_walls("X*", "Uh,Uh,Uh,Uh,Uh^Uf,Uu^Tf,Uu,Rd,Rd,Rd")
+	wct_break_walls("X*", "Uh,Uh,Uh,Uh,Uh^Tf,Uu^Tf,Uu,Rd,Rd,Rd")
 	set_terrain { "Mm^Xm",
 		f.all(
 			f.terrain("X*"),
@@ -227,11 +227,11 @@ local function world_conquest_tek_map_repaint_6d()
 	}
 
 	-- extra rough terrain
-	set_terrain { "Gg^Fp,Gg^Fp,Gg^Fp,Gg^Fp,Gg^Fp,Gg^Fp,Gg^Fp,Gg^Fp,Gg^Fp,Gg^Fp,Gg^Fp,Gg^Fp,Gg^Fp,Gg^Fp,Gg^Fp,Gg^Fp,Hh,Hh,Hh,Hh,Hh,Hh,Hh,Hh,Hhd^Fp,Hhd^Fp,Mm,Mm,Mm,Gg^Uf,Hh^Tf,Ss",
+	set_terrain { "Gg^Fp,Gg^Fp,Gg^Fp,Gg^Fp,Gg^Fp,Gg^Fp,Gg^Fp,Gg^Fp,Gg^Fp,Gg^Fp,Gg^Fp,Gg^Fp,Gg^Fp,Gg^Fp,Gg^Fp,Gg^Fp,Hh,Hh,Hh,Hh,Hh,Hh,Hh,Hh,Hhd^Fp,Hhd^Fp,Mm,Mm,Mm,Gg^Tf,Hh^Tf,Ss",
 		f.terrain("Gg"),
 		fraction = 3,
 	}
-	set_terrain { "Gs^Fp,Gs^Fp,Gs^Fp,Gs^Fp,Gs^Fp,Gs^Fp,Gs^Fp,Gs^Fp,Gs^Fp,Gs^Fp,Gs^Fp,Gs^Fp,Gs^Fp,Gs^Fp,Gs^Fp,Gs^Fp,Hh,Hh,Hh,Hh,Hh,Hh,Hh,Hh,Hh^Fp,Hh^Fp,Mm,Mm,Mm,Gs^Uf,Hh^Tf,Ss",
+	set_terrain { "Gs^Fp,Gs^Fp,Gs^Fp,Gs^Fp,Gs^Fp,Gs^Fp,Gs^Fp,Gs^Fp,Gs^Fp,Gs^Fp,Gs^Fp,Gs^Fp,Gs^Fp,Gs^Fp,Gs^Fp,Gs^Fp,Hh,Hh,Hh,Hh,Hh,Hh,Hh,Hh,Hh^Fp,Hh^Fp,Mm,Mm,Mm,Gs^Tf,Hh^Tf,Ss",
 		f.terrain("Gs"),
 		fraction = 4,
 	}

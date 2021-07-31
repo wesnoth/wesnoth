@@ -12,7 +12,7 @@ function world_conquest_tek_map_repaint_4e()
 		fraction = 4,
 	}
 	set_terrain { "Gs,Gg,Gg",
-		f.terrain("H*^Uf,Hh,Hhd"),
+		f.terrain("H*^Tf,Hh,Hhd"),
 		fraction = 3,
 	}
 	set_terrain { "Aa,Aa,Aa,Gs",

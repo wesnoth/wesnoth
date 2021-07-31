@@ -10,7 +10,7 @@ function world_conquest_tek_map_repaint_2d()
 		),
 	}
 
-	world_conquest_tek_map_dirt("Gg^Uf,Gg^Uf,Gg^Uf,Gs^Tf")
+	world_conquest_tek_map_dirt("Gg^Tf,Gg^Tf,Gg^Tf,Gs^Tf")
 end
 
 function wct_provinces_castle(terrain_to_change, terrain)

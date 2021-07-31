@@ -104,7 +104,7 @@ local function wct_dirty_deltas()
 	local terrain_to_change = wct_store_possible_dirty_delta()
 	while #terrain_to_change > 0 do
 		local loc = 1 -- todo: maybe use  terrain_to_change[mathx.random(#terrain_to_change)]
-		local ter = mathx.random_choice("Gs,Hh^Tf,Cud,Gs^Uf,Gs,Hh,Ds^Edt,Ds,Hh^Fmf,Gs,Gs^Fmf")
+		local ter = mathx.random_choice("Gs,Hh^Tf,Cud,Gs^Tf,Gs,Hh,Ds^Edt,Ds,Hh^Fmf,Gs,Gs^Fmf")
 		map[loc] = ter
 		terrain_to_change = wct_store_possible_dirty_delta()
 	end
@@ -472,7 +472,7 @@ local function world_conquest_tek_map_decoration_6c()
 		fraction = 6,
 		layer = "base",
 	}
-	set_terrain { "*^Fp,*^Fp,*^Fp,*^Fms,*^Fms,*^Fmf,*^Fmf,*^Uf,*^Fds,*^Fms,*^Fms,*^Fet,*^Efm,*",
+	set_terrain { "*^Fp,*^Fp,*^Fp,*^Fms,*^Fms,*^Fmf,*^Fmf,*^Tf,*^Fds,*^Fms,*^Fms,*^Fet,*^Efm,*",
 		f.all(
 			f.terrain("Hh,G*"),
 			f.radius(3, f.any(

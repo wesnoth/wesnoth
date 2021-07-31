@@ -1,7 +1,7 @@
 -- Coral
 function world_conquest_tek_map_repaint_3e()
 	set_terrain { "Ur",
-		f.terrain("U*^Uf,U*"),
+		f.terrain("U*^Tf,U*"),
 		fraction = 8,
 	}
 

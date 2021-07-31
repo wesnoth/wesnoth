@@ -336,7 +336,7 @@ function world_conquest_tek_map_decoration_6b()
 		),
 		fraction = 8,
 	}
-	set_terrain { "Gs^Fp,Hh^Fp,Hh,Mm,Gs^Fp,Ss^Uf,Ss^Uf,Ss^Tf",
+	set_terrain { "Gs^Fp,Hh^Fp,Hh,Mm,Gs^Fp,Ss^Tf,Ss^Tf,Ss^Tf",
 		f.all(
 			f.terrain("Ss"),
 			f.none(

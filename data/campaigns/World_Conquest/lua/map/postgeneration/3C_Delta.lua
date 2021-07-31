@@ -72,7 +72,7 @@ function wct_noise_delta()
 		f.terrain("Dd"),
 		fraction = 5,
 	}
-	set_terrain { "Ur,Uue^Uf,Uue^Dr,Uue",
+	set_terrain { "Ur,Uue^Tf,Uue^Dr,Uue",
 		f.terrain("U*,U*^Tf"),
 		fraction = 3,
 	}
@@ -119,7 +119,7 @@ function world_conquest_tek_map_decoration_3c()
 		f.terrain("Wwf"),
 		fraction = 9,
 	}
-	set_terrain { "Ss,Ss,Ss,Ds^Ftd,Ss,Mm,Ss,Ww,Ss,Hd,Ss,Gs^Uf,Ww,Gg,Ss",
+	set_terrain { "Ss,Ss,Ss,Ds^Ftd,Ss,Mm,Ss,Ww,Ss,Hd,Ss,Gs^Tf,Ww,Gg,Ss",
 		f.terrain("Wwf"),
 		fraction = 2,
 	}
@@ -261,7 +261,7 @@ function world_conquest_tek_map_decoration_3c()
 	set_terrain { "Ds",
 		f.all(
 			f.adjacent(f.terrain("Wo")),
-			f.terrain("Hh^Tf,G*^Uf,Mm")
+			f.terrain("Hh^Tf,G*^Tf,Mm")
 		),
 	}
 	set_terrain { "Hh",

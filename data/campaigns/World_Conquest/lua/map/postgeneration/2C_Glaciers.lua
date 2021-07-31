@@ -1,6 +1,6 @@
 -- Glaciers
 function world_conquest_tek_map_repaint_2c()
-	wct_reduce_wall_clusters("Uu,Uu^Tf,Uh,Uh^Uf,Uu,Uh,Ai,Ai,Xu,Ai,Ai")
+	wct_reduce_wall_clusters("Uu,Uu^Tf,Uh,Uh^Tf,Uu,Uh,Ai,Ai,Xu,Ai,Ai")
 	world_conquest_tek_map_decoration_2c()
 	wct_randomize_snowed_forest()
 end

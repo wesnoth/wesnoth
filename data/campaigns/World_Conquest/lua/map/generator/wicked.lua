@@ -123,7 +123,7 @@ local function generate(length, villages, castle, iterations, size, players, isl
 		dr_village {
 			terrain="Uh^Tf",
 			convert_to="Uh^Vu",
-			adjacent_liked="Hh^Tf,Hh,Mm,Uu,Uh,Xu,Qxu,Uu,Uu^Tf,Uh^Uf,Uh^Tf",
+			adjacent_liked="Hh^Tf,Hh,Mm,Uu,Uh,Xu,Qxu,Uu,Uu^Tf,Uh^Tf,Uh^Tf",
 			rating=5
 		},
 		dr_village {

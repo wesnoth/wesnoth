@@ -217,7 +217,7 @@ local function generate(length, villages, castle, iterations, size, players, isl
 		},
 	}
 	res.castle = {
-		valid_terrain="Gs, Gg, Hh, Ha, Hh^Tf, Gs^Uf, Ss, Dd, Aa",
+		valid_terrain="Gs, Gg, Hh, Ha, Hh^Tf, Gs^Tf, Ss, Dd, Aa",
 		min_distance=16,
 	}
 
