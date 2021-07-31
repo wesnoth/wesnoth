@@ -15,7 +15,6 @@
 
 #include "game_initialization/multiplayer.hpp"
 
-#include "addon/manager.hpp" // for installed_addons
 #include "build_info.hpp"
 #include "commandline_options.hpp"
 #include "connect_engine.hpp"
@@ -158,7 +157,7 @@ mp_manager::mp_manager(const std::optional<std::string> host)
 	, connection(nullptr)
 	, session_info()
 	, state()
-	, lobby_info(::installed_addons())
+	, lobby_info()
 {
 	state.classification().campaign_type = game_classification::CAMPAIGN_TYPE::MULTIPLAYER;
 
@@ -503,11 +502,7 @@ void mp_manager::run_lobby_loop()
 		gcm->reload_changed_game_config();
 		gcm->load_game_config_for_create(true); // NOTE: Using reload_changed_game_config only doesn't seem to work here
 
-		// This function does not refer to an addon database, it calls filesystem functions.
-		// For the sanity of the mp lobby, this list should be fixed for the entire lobby session,
-		// even if the user changes the contents of the addon directory in the meantime.
-		// TODO: do we want to handle fetching the installed addons in the lobby_info ctor?
-		lobby_info.set_installed_addons(::installed_addons());
+		lobby_info.refresh_installed_addons_cache();
 
 		connection->send_data(config("refresh_lobby"));
 	}

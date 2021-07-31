@@ -15,6 +15,7 @@
 
 #include "game_initialization/lobby_info.hpp"
 
+#include "addon/manager.hpp" // for installed_addons
 #include "gettext.hpp"
 #include "log.hpp"
 #include "map/exception.hpp"
@@ -36,8 +37,8 @@ static lg::log_domain log_lobby("lobby");
 
 namespace mp
 {
-lobby_info::lobby_info(const std::vector<std::string>& installed_addons)
-	: installed_addons_(installed_addons)
+lobby_info::lobby_info()
+	: installed_addons_()
 	, gamelist_()
 	, gamelist_initialized_(false)
 	, games_by_id_()
@@ -47,6 +48,15 @@ lobby_info::lobby_info(const std::vector<std::string>& installed_addons)
 	, game_filter_invert_(false)
 	, games_visibility_()
 {
+	refresh_installed_addons_cache();
+}
+
+void lobby_info::refresh_installed_addons_cache()
+{
+	// This function does not refer to an addon database, it calls filesystem functions.
+	// For the sanity of the mp lobby, this list should be fixed for the entire lobby session,
+	// even if the user changes the contents of the addon directory in the meantime.
+	installed_addons_ = ::installed_addons();
 }
 
 void do_notify(notify_mode mode, const std::string& sender, const std::string& message)
