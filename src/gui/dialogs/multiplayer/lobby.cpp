@@ -179,11 +179,6 @@ void modify_grid_with_data(grid* grid, const std::map<std::string, string_map>& 
 	}
 }
 
-std::string colorize(const std::string& str, const color_t& color)
-{
-	return (formatter() << font::span_color(color) << str << "</span>").str();
-}
-
 bool handle_addon_requirements_gui(const std::vector<mp::game_info::required_addon>& reqs, mp::game_info::addon_req addon_outcome)
 {
 	if(addon_outcome == mp::game_info::addon_req::CANNOT_SATISFY) {
@@ -408,13 +403,13 @@ std::map<std::string, string_map> mp_lobby::make_game_row_data(const mp::game_in
 		{"era_name", game.era}
 	});
 
-	item["label"] = game.vacant_slots > 0 ? colorize(game.name, color_string) : game.name;
+	item["label"] = game.vacant_slots > 0 ? font::span_color(color_string, game.name) : game.name;
 	data.emplace("name", item);
 
-	item["label"] = colorize(game.type_marker + "<i>" + scenario_text + "</i>", font::GRAY_COLOR);
+	item["label"] = font::span_color(font::GRAY_COLOR, game.type_marker + "<i>" + scenario_text + "</i>");
 	data.emplace("scenario", item);
 
-	item["label"] = colorize(game.status, color_string);
+	item["label"] = font::span_color(color_string, game.status);
 	data.emplace("status", item);
 
 	return data;
@@ -436,14 +431,14 @@ void mp_lobby::adjust_game_row_contents(const mp::game_info& game, grid* grid, b
 		ss << ' ' << font::span_color(font::BAD_COLOR) << "(" << _("era_or_mod^not installed") << ")</span>";
 	};
 
-	ss << "<big>" << colorize(_("Era"), font::TITLE_COLOR) << "</big>\n" << game.era;
+	ss << "<big>" << font::span_color(font::TITLE_COLOR, _("Era")) << "</big>\n" << game.era;
 
 	if(!game.have_era) {
 		// NOTE: not using colorize() here deliberately to avoid awkward string concatenation.
 		mark_missing();
 	}
 
-	ss << "\n\n<big>" << colorize(_("Modifications"), font::TITLE_COLOR) << "</big>\n";
+	ss << "\n\n<big>" << font::span_color(font::TITLE_COLOR, _("Modifications")) << "</big>\n";
 
 	auto mods = game.mod_info;
 
@@ -464,7 +459,7 @@ void mp_lobby::adjust_game_row_contents(const mp::game_info& game, grid* grid, b
 	// TODO: move to some general area of the code.
 	const auto yes_or_no = [](bool val) { return val ? _("yes") : _("no"); };
 
-	ss << "\n<big>" << colorize(_("Settings"), font::TITLE_COLOR) << "</big>\n";
+	ss << "\n<big>" << font::span_color(font::TITLE_COLOR, _("Settings")) << "</big>\n";
 	ss << _("Experience modifier:")   << " " << game.xp << "\n";
 	ss << _("Gold per village:")      << " " << game.gold << "\n";
 	ss << _("Map size:")              << " " << game.map_size_info << "\n";
