@@ -41,26 +41,13 @@ player_list_helper::sub_list::sub_list(tree_view* parent_tree, const std::string
 		root->unfold();
 	}
 
-	tree_label = find_widget<label>(root, "tree_view_node_label", false, true);
 	label_player_count = find_widget<label>(root, "player_count", false, true);
-
-	assert(tree_label);
 	assert(label_player_count);
 }
 
 void player_list_helper::sub_list::update_player_count_label()
 {
-	assert(root);
-	assert(label_player_count);
-
-	/**
-	 * @todo Make sure setting visible resizes the widget.
-	 *
-	 * It doesn't work here since invalidate_layout is blocked, but the
-	 * widget should also be able to handle it itself. Once done the
-	 * setting of the label text can also be removed.
-	 */
-	label_player_count->set_label((formatter() << "(" << root->count_children() << ")").str());
+	label_player_count->set_label(std::to_string(root->count_children()));
 }
 
 namespace
@@ -77,12 +64,7 @@ struct update_pod
 
 void player_list_helper::update(std::vector<mp::user_info>& user_info)
 {
-	unsigned scrollbar_position = tree->get_vertical_scrollbar_item_position();
-
-	for(auto& list : player_lists) {
-		list.root->clear();
-	}
-
+	const unsigned scrollbar_position = tree->get_vertical_scrollbar_item_position();
 	std::array<update_pod, std::tuple_size<decltype(player_lists)>::value> inputs{};
 
 	for(auto& user : user_info) {

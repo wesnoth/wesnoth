@@ -49,7 +49,6 @@ private:
 
 		tree_view_node* root;
 
-		label* tree_label;
 		label* label_player_count;
 	};
 
