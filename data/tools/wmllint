@@ -1352,10 +1352,6 @@ def local_sanity_check(filename, nav, key, prefix, value, comment):
                            and not nav.element.startswith("[filter") and \
                            nav.element not in custom_conditionals:
             print(errlead + 'illegal child of [if]:', nav.element)
-    # Check for fluky credit parts
-    if parent == "[entry]":
-        if key == "email" and " " in value:
-            print(errlead + 'space in email name')
     # Check for various things that shouldn't be outside an [ai] tag
     if not in_definition and not in_call and "[ai]" not in nav.ancestors() and not ignored:
         if key in ("number_of_possible_recruits_to_force_recruit",
