@@ -31,7 +31,7 @@ class tree_view;
 class tree_view_node;
 class window;
 
-class player_list_helper
+class lobby_player_list_helper
 {
 public:
 	void init(window& w);
@@ -62,7 +62,7 @@ private:
 	std::function<void(mp::user_info*)> user_callback;
 
 public:
-	player_list_helper(decltype(user_callback) ucb)
+	lobby_player_list_helper(decltype(user_callback) ucb)
 		: player_lists()
 		, tree(nullptr)
 		, user_callback(ucb)

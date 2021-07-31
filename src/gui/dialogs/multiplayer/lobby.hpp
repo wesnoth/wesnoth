@@ -164,7 +164,7 @@ private:
 
 	int selected_game_id_;
 
-	player_list_helper player_list_;
+	lobby_player_list_helper player_list_;
 
 	bool player_list_dirty_;
 

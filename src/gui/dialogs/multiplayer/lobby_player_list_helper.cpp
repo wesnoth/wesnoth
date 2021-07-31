@@ -30,7 +30,7 @@ static lg::log_domain log_lobby("lobby");
 
 namespace gui2
 {
-player_list_helper::sub_list::sub_list(tree_view* parent_tree, const std::string& lbl, const bool unfolded)
+lobby_player_list_helper::sub_list::sub_list(tree_view* parent_tree, const std::string& lbl, const bool unfolded)
 {
 	std::map<std::string, string_map> tree_group_item;
 	tree_group_item["tree_view_node_label"]["label"] = lbl;
@@ -45,7 +45,7 @@ player_list_helper::sub_list::sub_list(tree_view* parent_tree, const std::string
 	assert(label_player_count);
 }
 
-void player_list_helper::sub_list::update_player_count_label()
+void lobby_player_list_helper::sub_list::update_player_count_label()
 {
 	label_player_count->set_label(std::to_string(root->count_children()));
 }
@@ -62,7 +62,7 @@ struct update_pod
 };
 } // namespace
 
-void player_list_helper::update(std::vector<mp::user_info>& user_info)
+void lobby_player_list_helper::update(std::vector<mp::user_info>& user_info)
 {
 	const unsigned scrollbar_position = tree->get_vertical_scrollbar_item_position();
 	std::array<update_pod, std::tuple_size<decltype(player_lists)>::value> inputs{};
@@ -165,7 +165,7 @@ void player_list_helper::update(std::vector<mp::user_info>& user_info)
 	}
 }
 
-void player_list_helper::init(window& w)
+void lobby_player_list_helper::init(window& w)
 {
 	tree = find_widget<tree_view>(&w, "player_tree", false, true);
 
