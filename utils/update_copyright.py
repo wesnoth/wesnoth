@@ -6,9 +6,15 @@
 ###
 
 from datetime import date
+from enum import Enum
 import os
 import re
 import sys
+
+class Found(Enum):
+    MISSING = 0
+    OLD = 1
+    NEW = 2
 
 previous_year = str(date.today().year-1)
 if len(sys.argv) == 2:
@@ -37,20 +43,20 @@ for root, dirs, files in os.walk('src'):
     for file in files:
         if re.search(extensions, file):
             lines = []
-            found = 0
+            found = Found.MISSING
             with open(os.path.join(root, file), 'r') as f:
                 lines = f.readlines()
                 for index,line in enumerate(lines):
                     if re.search(old_copyright, line):
-                        found = 1
+                        found = Found.OLD
                         lines[index] = lines[index][:-5] + new_year + "\n"
                         break
                     elif re.search(new_copyright, line):
-                        found = 2
-            if found == 1 and len(lines) > 0:
+                        found = Found.NEW
+            if found == Found.OLD and len(lines) > 0:
                 with open(os.path.join(root, file), 'w') as f:
                     f.writelines(lines)
-            elif found == 2:
+            elif found == Found.NEW:
                 print("Found existing copyright notice in file: "+root+"/"+file)
             else:
                 print("Found no copyright notice to update in file: "+root+"/"+file)
