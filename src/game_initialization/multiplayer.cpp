@@ -183,8 +183,8 @@ mp_manager::mp_manager(const std::optional<std::string> host)
 				while(!stop) {
 					connection->wait_and_receive_data(data);
 
-					if(const config& error = data.child("error")) {
-						throw wesnothd_error(error["message"]);
+					if(const auto error = data.optional_child("error")) {
+						throw wesnothd_error((*error)["message"]);
 					}
 
 					else if(data.has_child("gamelist")) {
@@ -201,8 +201,8 @@ mp_manager::mp_manager(const std::optional<std::string> host)
 						}
 					}
 
-					else if(const config& gamelist_diff = data.child("gamelist_diff")) {
-						this->lobby_info.process_gamelist_diff(gamelist_diff);
+					else if(const auto gamelist_diff = data.optional_child("gamelist_diff")) {
+						this->lobby_info.process_gamelist_diff(*gamelist_diff);
 					}
 				}
 			});
@@ -254,11 +254,11 @@ std::unique_ptr<wesnothd_connection> mp_manager::open_connection(std::string hos
 		data.clear();
 		conn->wait_and_receive_data(data);
 
-		if(data.has_child("reject") || data.has_attribute("version")) {
+		if(const auto reject = data.optional_child("reject"); reject || data.has_attribute("version")) {
 			std::string version;
 
-			if(const config& reject = data.child("reject")) {
-				version = reject["accepted_versions"].str();
+			if(reject) {
+				version = (*reject)["accepted_versions"].str();
 			} else {
 				// Backwards-compatibility "version" attribute
 				version = data["version"].str();
@@ -327,16 +327,16 @@ std::unique_ptr<wesnothd_connection> mp_manager::open_connection(std::string hos
 
 			gui2::dialogs::loading_screen::progress(loading_stage::login_response);
 
-			if(const config& warning = data.child("warning")) {
+			if(const auto warning = data.optional_child("warning")) {
 				std::string warning_msg;
 
-				if(warning["warning_code"] == MP_NAME_INACTIVE_WARNING) {
+				if((*warning)["warning_code"] == MP_NAME_INACTIVE_WARNING) {
 					warning_msg = VGETTEXT("The nickname ‘$nick’ is inactive. "
 						"You cannot claim ownership of this nickname until you "
 						"activate your account via email or ask an "
 						"administrator to do it for you.", {{"nick", login}});
 				} else {
-					warning_msg = warning["message"].str();
+					warning_msg = (*warning)["message"].str();
 				}
 
 				warning_msg += "\n\n";
