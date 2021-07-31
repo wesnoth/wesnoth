@@ -1,6 +1,6 @@
-# translation of ru.po to
+# translation of wesnoth-lib to
 # Russian translations for Battle for Wesnoth package.
-# Copyright (C) 2004-2013 Wesnoth development team
+# Copyright (C) 2004-2021 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 # Translators:
 # Alexandr Menovchicov (VaM) - orders@kypi.ru
@@ -11,51 +11,48 @@
 # Azamat H. Hackimov <azamat.hackimov@gmail.com>, 2006.
 # O_o <mm-94@mail.ru>, 2010.
 # Fedor Khodkov, 2014
+# Artem Khrapov (kabachuha) <artemkhrapov2001@yandex.ru>, 2020-2021
 msgid ""
 msgstr ""
-"Project-Id-Version: wesnoth-lib.po\n"
+"Project-Id-Version: wesnoth-lib\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2021-06-23 11:42-0400\n"
-"PO-Revision-Date: 2019-09-21 22:33+0400\n"
-"Last-Translator: Fedor Khod'kov <fkhodkov@gmail.com>\n"
-"Language-Team: \n"
+"PO-Revision-Date: 2021-07-26 22:01+0300\n"
+"Last-Translator: Artem Khrapov <artemkhrapov2001@yandex.ru>\n"
+"Language-Team: https://wiki.wesnoth.org/RussianTranslation\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 1.8.6\n"
+"X-Generator: Poedit 3.0\n"
 "X-Poedit-SourceCharset: utf-8\n"
 
 #. [ai]: id=ai_default_rca
 #: data/ai/ais/ai_default_rca.cfg:9
 msgid "Multiplayer_AI^Default AI (RCA)"
-msgstr ""
+msgstr "Обычный ИИ (RCA)"
 
 #. [ai]: id=ai_default_rca_1_14
 #: data/ai/ais/ai_default_rca_1_14.cfg:9
 msgid "Multiplayer_AI^Old Default AI (1.14 version)"
-msgstr ""
+msgstr "Старый обычный ИИ (версия 1.14)"
 
 #. [ai]: id=experimental_ai
 #: data/ai/ais/ai_experimental.cfg:11
-#, fuzzy
-#| msgid "Multiplayer Alerts"
 msgid "Multiplayer_AI^Experimental AI"
-msgstr "Оповещения мультиплеера"
+msgstr "Испытательный ИИ"
 
 #. [ai]: id=idle_ai
 #: data/ai/ais/idle_ai.cfg:4
-#, fuzzy
-#| msgid "Multiplayer Alerts"
 msgid "Multiplayer_AI^Dev AI: Idle AI"
-msgstr "Оповещения мультиплеера"
+msgstr "В разработке: Пассивный ИИ"
 
 #. [ai]: id=ai_default_rca_alternate_recruiting
 #: data/ai/dev/ai_default_rca_alternate_recruiting.cfg:10
 msgid "Multiplayer_AI^Dev AI: Default AI (RCA) with Alternate Recruiting"
-msgstr ""
+msgstr "В разработке: Обычный ИИ (RCA) с вариациями вербовки"
 
 #. [terrain_type]: id=fence
 #. [terrain_type]: id=fence_iron
@@ -70,10 +67,8 @@ msgstr "Забор"
 #. [row]
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:193
 #: data/gui/window/mp_faction_select.cfg:176
-#, fuzzy
-#| msgid "Random"
 msgid "gender^Random"
-msgstr "Случайно"
+msgstr "Случайный"
 
 #. [terrain_type]: id=deep_water_gray
 #. [terrain_type]: id=deep_water_medium
@@ -279,10 +274,8 @@ msgstr "Заросшие камни"
 
 #. [terrain_type]: id=road_icy
 #: data/core/terrain.cfg:271
-#, fuzzy
-#| msgid "Clean Gray Cobbles"
 msgid "Icy Cobbles"
-msgstr "Чистые серые камни"
+msgstr "Ледяные булыжники"
 
 #. [terrain_type]: id=ice
 #: data/core/terrain.cfg:284
@@ -385,10 +378,8 @@ msgstr "Камни"
 
 #. [terrain_type]: id=snowbits_small
 #: data/core/terrain.cfg:396
-#, fuzzy
-#| msgid "Snow"
 msgid "Snowbits"
-msgstr "Снег"
+msgstr "Комки снега"
 
 #. [terrain_type]: id=mushrooms_small
 #: data/core/terrain.cfg:405
@@ -437,10 +428,8 @@ msgstr "Горящая жаровня"
 
 #. [terrain_type]: id=fence_iron
 #: data/core/terrain.cfg:500
-#, fuzzy
-#| msgid "Fence"
 msgid "Iron Fence"
-msgstr "Забор"
+msgstr "Железный забор"
 
 #. [terrain_type]: id=sand_drifts
 #: data/core/terrain.cfg:509
@@ -479,10 +468,8 @@ msgstr "Большое дерево"
 
 #. [terrain_type]: id=great_tree_snowy
 #: data/core/terrain.cfg:574
-#, fuzzy
-#| msgid "Great Tree"
 msgid "Snowy Great Tree"
-msgstr "Большое дерево"
+msgstr "Заснеженное большое дерево"
 
 #. [terrain_type]: id=great_tree_dead
 #: data/core/terrain.cfg:586
@@ -491,10 +478,8 @@ msgstr "Мёртвое большое дерево"
 
 #. [terrain_type]: id=great_tree_dead_oak
 #: data/core/terrain.cfg:598
-#, fuzzy
-#| msgid "Dead Great Tree"
 msgid "Dead Great Oak Tree"
-msgstr "Мёртвое большое дерево"
+msgstr "Мёртвое большое дерево дуба"
 
 #. [terrain_type]: id=tropical_forest
 #. [terrain_type]: id=rainforest
@@ -679,10 +664,8 @@ msgstr "Базовый каменный пол"
 
 #. [terrain_type]: id=ancient_stone_floor
 #: data/core/terrain.cfg:894
-#, fuzzy
-#| msgid "Stone Floor"
 msgid "Ancient Stone Floor"
-msgstr "Каменный пол"
+msgstr "Древний каменный пол"
 
 #. [terrain_type]: id=rug_floor
 #. [terrain_type]: id=rug2_floor
@@ -772,10 +755,8 @@ msgstr "Грибная роща"
 
 #. [terrain_type]: id=fungus_grove_old
 #: data/core/terrain.cfg:1009
-#, fuzzy
-#| msgid "Lit Mushroom Grove"
 msgid "Non-mixed Mushroom Grove"
-msgstr "Освещенная грибная роща"
+msgstr "Несмешанная грибная роща"
 
 #. [terrain_type]: id=fungus_grove_old
 #. [terrain_type]: id=fungus_beam_old
@@ -791,6 +772,13 @@ msgid ""
 "fungus are wanted, 'Tb' is a mushroom base terrain, which can be used with "
 "or without '^Tf' on top."
 msgstr ""
+"Покрытия '^Uf' и '^Ufi' выводятся из использования, поскольку хотя графика "
+"изображает покрытие с другой местностью под ним, коэффициенты защиты и "
+"перемещения принадлежат только местности грибов, не обращая внимания на "
+"территорию под ними. Рекомендованная замена: '^Tf' и '^Tfi' — они выглядят "
+"точно также, но их свойства совпадают с тем, что изображено на экране. Для "
+"клеток, которым необходимы значения чистой грибной местности, можно "
+"поместить 'Tb' как основу, '^Tf' наверх устанавливать необязательно."
 
 #. [terrain_type]: id=fungus_grove_old
 #. [terrain_type]: id=fungus_beam_old
@@ -804,13 +792,16 @@ msgid ""
 "defense and movement costs are purely based on the unit’s stats for "
 "<italic>text='Fungus'</italic>."
 msgstr ""
+"В гномьих былинах описаны различные разновидности грибов — трудность "
+"перехода по губчатой грибнице под некоторыми из них не имеет никакого "
+"отношения с почвой под ногами, даже если она всё ещё видна. Защищённость и "
+"цена передвижения по местности зависят исключительно от того, как боец "
+"приспособлен к <italic>text='Грибам'</italic>."
 
 #. [terrain_type]: id=fungus_beam_old
 #: data/core/terrain.cfg:1028
-#, fuzzy
-#| msgid "Lit Mushroom Grove"
 msgid "Lit Non-mixed Mushroom Grove"
-msgstr "Освещенная грибная роща"
+msgstr "Освещенная несмешанная грибная роща"
 
 #. [terrain_type]: id=fungus_beam
 #: data/core/terrain.cfg:1060
@@ -820,7 +811,7 @@ msgstr "Освещенная грибная роща"
 #. [terrain_type]: id=fungus_floor
 #: data/core/terrain.cfg:1072 data/core/terrain.cfg:1073
 msgid "Mycelium"
-msgstr ""
+msgstr "Грибница"
 
 #. [terrain_type]: id=rocky_cave
 #. [terrain_type]: id=earthy_rocky_cave
@@ -832,20 +823,6 @@ msgstr "Скалистая пещера"
 #. [terrain_type]: id=rocky_cave
 #. [terrain_type]: id=earthy_rocky_cave
 #: data/core/terrain.cfg:1088 data/core/terrain.cfg:1104
-#, fuzzy
-#| msgid ""
-#| "<italic>text='Rockbound cave'</italic> terrain is formed by the action of "
-#| "water and wind, carrying erosive particles that carve the rock. It "
-#| "resembles a scraggy underground cavern which shoulders defense, but is "
-#| "hard for most units to traverse. Only settlers of caves, such as dwarves "
-#| "and trolls, are fully capable of navigating such topography.\n"
-#| "\n"
-#| "Most units have about 50% defense in rocky caves, whereas cavalry are "
-#| "limited to 40%. Dwarves, by dint of their small size, enjoy 60% defense "
-#| "in rockbound caves.\n"
-#| "\n"
-#| "Occasionally caves are <ref>dst='terrain_illuminated_cave' "
-#| "text='illuminated'</ref>."
 msgid ""
 "<italic>text='Rockbound cave'</italic> terrain is formed by the action of "
 "water and wind, carrying erosive particles that carve the rock. It resembles "
@@ -869,15 +846,13 @@ msgstr ""
 "Большинство бойцов получают 50% защиты в скалистых пещерах, а кавалерия — "
 "только 40%. Гномы получают 60% защиты.\n"
 "\n"
-"Иногда пещеры бывают <ref>dst='terrain_illuminated_cave' text='освещены'</"
-"ref>."
+"Иногда пещеры бывают <italic>dst='terrain_illuminated_cave' text='освещены'</"
+"italic>."
 
 #. [terrain_type]: id=earthy_rocky_cave
 #: data/core/terrain.cfg:1099
-#, fuzzy
-#| msgid "Rockbound Cave"
 msgid "Earthy Rockbound Cave"
-msgstr "Скалистая пещера"
+msgstr "Земляная каменистая пещера"
 
 #. [terrain_type]: id=mine_rails
 #. [terrain_type]: id=mine_railsdiag1
@@ -1025,38 +1000,28 @@ msgstr "Чистая каменная стена"
 
 #. [terrain_type]: id=wall_stone_ancient
 #: data/core/terrain.cfg:1382
-#, fuzzy
-#| msgid "Lit Stone Wall"
 msgid "Ancient Stone Wall"
-msgstr "Освещенная каменная стена"
+msgstr "Древняя каменная стена"
 
 #. [terrain_type]: id=wall_stone_tomb
 #: data/core/terrain.cfg:1392
-#, fuzzy
-#| msgid "Cave Wall"
 msgid "Catacombs Wall"
-msgstr "Стена пещеры"
+msgstr "Стена катакомб"
 
 #. [terrain_type]: id=wall_stone_tomb
 #: data/core/terrain.cfg:1393
-#, fuzzy
-#| msgid "Clean Stone Wall"
 msgid "Catacombs Stone Wall"
-msgstr "Чистая каменная стена"
+msgstr "Каменная стена катакомб"
 
 #. [terrain_type]: id=wall_stone_overgrown
 #: data/core/terrain.cfg:1403
-#, fuzzy
-#| msgid "Overgrown Cobbles"
 msgid "Overgrown Wall"
-msgstr "Заросшие камни"
+msgstr "Заросшая стена"
 
 #. [terrain_type]: id=wall_stone_overgrown
 #: data/core/terrain.cfg:1404
-#, fuzzy
-#| msgid "Clean Stone Wall"
 msgid "Overgrown Stone Wall"
-msgstr "Чистая каменная стена"
+msgstr "Заросшая каменная стена"
 
 #. [terrain_type]: id=portal_gate_rusty_sw
 #. [terrain_type]: id=portal_gate_rusty_se
@@ -1432,17 +1397,13 @@ msgstr "Разрушенный замок эльфов"
 
 #. [terrain_type]: id=elven_castle_winter
 #: data/core/terrain.cfg:2141
-#, fuzzy
-#| msgid "Elven Castle"
 msgid "Winter Elven Castle"
-msgstr "Замок эльфов"
+msgstr "Заснеженный замок эльфов"
 
 #. [terrain_type]: id=dwarven_castle
 #: data/core/terrain.cfg:2153
-#, fuzzy
-#| msgid "Dwarven Castle"
 msgid "Dwarven Underground Castle"
-msgstr "Замок гномов"
+msgstr "Подземный замок гномов"
 
 #. [terrain_type]: id=dwarven_castle2
 #: data/core/terrain.cfg:2165
@@ -1451,17 +1412,13 @@ msgstr "Замок гномов"
 
 #. [terrain_type]: id=dwarven_castle_ruin
 #: data/core/terrain.cfg:2177
-#, fuzzy
-#| msgid "Dwarven Castle"
 msgid "Dwarven Castle Ruins"
-msgstr "Замок гномов"
+msgstr "Разрушенный замок гномов"
 
 #. [terrain_type]: id=dwarven_castle_winter
 #: data/core/terrain.cfg:2189
-#, fuzzy
-#| msgid "Dwarven Castle"
 msgid "Winter Dwarven Castle"
-msgstr "Замок гномов"
+msgstr "Заснеженный замок гномов"
 
 #. [terrain_type]: id=ruin
 #. [terrain_type]: id=sunkenruin
@@ -1594,17 +1551,13 @@ msgstr "Разрушенная цитадель эльфов"
 
 #. [terrain_type]: id=elven_keep_winter
 #: data/core/terrain.cfg:2433
-#, fuzzy
-#| msgid "Elven Keep Ruin"
 msgid "Winter Elven Keep"
-msgstr "Разрушенная цитадель эльфов"
+msgstr "Заснеженная цитадель эльфов"
 
 #. [terrain_type]: id=dwarven_keep
 #: data/core/terrain.cfg:2446
-#, fuzzy
-#| msgid "Dwarven Castle Keep"
 msgid "Dwarven Underground Keep"
-msgstr "Цитадель гномов"
+msgstr "Подземная цитадель гномов"
 
 #. [terrain_type]: id=dwarven_keep2
 #: data/core/terrain.cfg:2459
@@ -1613,17 +1566,13 @@ msgstr "Цитадель гномов"
 
 #. [terrain_type]: id=dwarven_keep_ruin
 #: data/core/terrain.cfg:2472
-#, fuzzy
-#| msgid "Dwarven Castle Keep"
 msgid "Dwarven Ruin Keep"
-msgstr "Цитадель гномов"
+msgstr "Разрушенная цитадель гномов"
 
 #. [terrain_type]: id=dwarven_keep_winter
 #: data/core/terrain.cfg:2485
-#, fuzzy
-#| msgid "Dwarven Castle Keep"
 msgid "Winter Dwarven Keep"
-msgstr "Цитадель гномов"
+msgstr "Заснеженная цитадель гномов"
 
 #. [terrain_type]: id=ruined_keep
 #. [terrain_type]: id=sunken_keep
@@ -1838,18 +1787,6 @@ msgstr "Грибы"
 
 #. [terrain_type]: id=fungus
 #: data/core/terrain.cfg:2991
-#, fuzzy
-#| msgid ""
-#| "<italic>text='Mushroom groves'</italic> are vast underground forests of "
-#| "giant mushrooms,\n"
-#| "which thrive in the damp darkness. Most units have trouble negotiating "
-#| "the spongy floor of smaller fungi, but they have plenty of cover behind "
-#| "the larger stalks. Mounted units, however, become completely mired and "
-#| "lack proper freedom of movement in combat. Undead units have a natural "
-#| "affinity for decay and function quite well in mushroom forests.\n"
-#| "\n"
-#| "Most units receive 50% to 60% defense in mushroom groves, whereas cavalry "
-#| "receive only 20%."
 msgid ""
 "<italic>text='Mushroom groves'</italic> are vast underground forests of "
 "giant mushrooms, which thrive in the damp darkness. Most units have trouble "
@@ -1862,8 +1799,7 @@ msgid ""
 "receive only 20%."
 msgstr ""
 "<italic>text='Грибные рощи'</italic> - огромные подземные леса гигантских "
-"грибов,\n"
-"которые растут в сырой темноте. Большинство бойцов сталкиваются с "
+"грибов, которые растут в сырой темноте. Большинство бойцов сталкиваются с "
 "затруднениями при передвижении по рыхлой поверхности, образованной "
 "маленькими грибами, зато они могут хорошо укрываться за стволами больших. "
 "Верховые бойцы, однако, полностью погрязают в этой грибной массе и не имеют "
@@ -1875,24 +1811,6 @@ msgstr ""
 
 #. [terrain_type]: id=cave
 #: data/core/terrain.cfg:3002
-#, fuzzy
-#| msgid ""
-#| "<italic>text='Cave'</italic> terrain represents any underground cavern "
-#| "with enough room for a unit to pass.\n"
-#| "Most units are wholly unfamiliar with the terrain, and thus are both "
-#| "slowed down and hindered in defense. Dwarves and trolls, who make their "
-#| "homes in caves, both have a relatively easy time navigating this terrain, "
-#| "especially dwarves, who by dint of their small size can navigate many "
-#| "obstacles that other races cannot. Occasionally caves are "
-#| "<ref>dst='terrain_illuminated_cave' text='illuminated'</ref>.\n"
-#| "\n"
-#| "Rare patches of the underground world are illuminated by light from the "
-#| "surface shining down into the gloomy darkness. This provides an attack "
-#| "bonus for lawful units and removes the attack bonus from chaotic units. "
-#| "In all other regards this terrain is functionally identical to normal "
-#| "cave terrains.\n"
-#| "\n"
-#| "Most units receive 20 to 40% defense in caves, whereas dwarves have 50%."
 msgid ""
 "<italic>text='Cave'</italic> terrain represents any underground cavern with "
 "enough room for a unit to pass.\n"
@@ -1918,8 +1836,8 @@ msgstr ""
 "гномы и тролли, что живут в пещерах, легко передвигаются по этой "
 "поверхности, особенно гномы, которые благодаря своему небольшому размеру "
 "могут проходить через препятствия, непреодолимые для бойцов других рас. "
-"Иногда пещеры могут быть <ref>dst='terrain_illuminated_cave' "
-"text='освещены'</ref>.\n"
+"Иногда пещеры могут быть <italic>dst='terrain_illuminated_cave' "
+"text='освещены'</italic>.\n"
 "\n"
 "Очень редко в подземельях встречаются места, которые освещены светом с "
 "поверхности, падающим в сумрак темноты. В таких местах порядочные бойцы "
@@ -1955,17 +1873,6 @@ msgstr ""
 
 #. [terrain_type]: id=hills
 #: data/core/terrain.cfg:3046
-#, fuzzy
-#| msgid ""
-#| "<italic>text='Hills'</italic> represent any reasonably rough terrain,\n"
-#| "with enough dips and rises in the ground to provide some cover. Hills are "
-#| "difficult for most troops to navigate. Dwarves, trolls, and orcs have "
-#| "enough familiarity with the terrain that they can pass through it without "
-#| "being slowed down. Cavalry have enough trouble navigating the terrain "
-#| "that any defensive aid lent by cover is negated.\n"
-#| "\n"
-#| "Most units have about 50% defense in hills, whereas cavalry are limited "
-#| "to 40%. Dwarves enjoy 60% defense in hills."
 msgid ""
 "<italic>text='Hills'</italic> represent any reasonably rough terrain, with "
 "enough dips and rises in the ground to provide some cover. Hills are "
@@ -1978,13 +1885,12 @@ msgid ""
 "40%. Dwarves enjoy 60% defense in hills."
 msgstr ""
 "<italic>text='Холмы'</italic> представляют собой любой неровный тип "
-"местности,\n"
-"имеющий достаточно подъемов и впадин на поверхности, чтобы предоставить "
-"некоторую защиту. Холмы замедляют передвижение большинства типов бойцов. "
-"Гномы, тролли и орки достаточно хорошо знакомы с этим типом местности, "
-"поэтому могут передвигаться через холмы без затруднений. Кавалерия "
-"испытывает проблемы при передвижении через этот тип местности, так что "
-"теряет все преимущества в защите, которые она здесь получает.\n"
+"местности, имеющий достаточно подъемов и впадин на поверхности, чтобы "
+"предоставить некоторую защиту. Холмы замедляют передвижение большинства "
+"типов бойцов. Гномы, тролли и орки достаточно хорошо знакомы с этим типом "
+"местности, поэтому могут передвигаться через холмы без затруднений. "
+"Кавалерия испытывает проблемы при передвижении через этот тип местности, так "
+"что теряет все преимущества в защите от возможных укрытий.\n"
 "\n"
 "Большинство бойцов имеет уровень защиты в 50% в холмах, в то время как "
 "кавалерия ограничена 40%. Гномы получают 60% защиты в холмах."
@@ -2269,12 +2175,11 @@ msgstr "Поиск"
 
 #. [label]: id=no_options_notice
 #: data/gui/macros/custom_options_tree.cfg:26
-#, fuzzy
-#| msgid "Configure settings for the selected custom modifications."
 msgid ""
 "There are no custom options available for the selected era, game, or "
 "modification."
-msgstr "Настройте параметры для выбранных пользовательских изменений."
+msgstr ""
+"Для выбранной эры, игры или модификации нет доступных пользовательских опций."
 
 #. [button]: id=reset_option_values
 #. [button]: id=orb_defaults
@@ -2289,10 +2194,8 @@ msgstr "По умолчанию"
 
 #. [label]
 #: data/gui/macros/player_list_panel.cfg:30
-#, fuzzy
-#| msgid "Choose Player"
 msgid "Connected Players"
-msgstr "Выберите игрока"
+msgstr "Подключенные игроки"
 
 #. [toggle_button]: id=sort_0
 #. [label]
@@ -2403,7 +2306,7 @@ msgstr "Профиль"
 #. [label]
 #: data/gui/window/addon_auth.cfg:41
 msgid "Authenticate"
-msgstr ""
+msgstr "Аутентификация"
 
 #. [label]
 #: data/gui/window/addon_auth.cfg:71 data/gui/window/mp_create_game.cfg:990
@@ -2508,10 +2411,8 @@ msgstr "Подключиться"
 
 #. [label]
 #: data/gui/window/addon_license_prompt.cfg:39
-#, fuzzy
-#| msgid "addons_order^Type ($order)"
 msgid "addons_server^Terms"
-msgstr "Тип ($order)"
+msgstr "Условия"
 
 #. [label]: id=message
 #: data/gui/window/addon_license_prompt.cfg:54
@@ -2519,19 +2420,21 @@ msgid ""
 "Before uploading content to this server, you must accept the following "
 "distribution terms by choosing “I Agree”."
 msgstr ""
+"Перед тем, как загрузить содержимое на этот сервер, Вы должны принять "
+"следующие условия распространения, выбрав “Я соглашаюсь”."
 
 #. [button]: id=ok
 #: data/gui/window/addon_license_prompt.cfg:103
 msgid "I Agree"
-msgstr ""
+msgstr "Я соглашаюсь"
 
 #: data/gui/window/addon_manager.cfg:9
 msgid "Traffic between the game and server is not secure"
-msgstr ""
+msgstr "Соединение между игрой и сервером небезопасно"
 
 #: data/gui/window/addon_manager.cfg:13
 msgid "Traffic between the game and server is encrypted"
-msgstr ""
+msgstr "Соединение между игрой и сервером зашифровано"
 
 #. [label]: id=byline
 #: data/gui/window/addon_manager.cfg:154
@@ -2545,10 +2448,8 @@ msgstr "Версия:"
 
 #. [menu_button]: id=version_filter
 #: data/gui/window/addon_manager.cfg:203
-#, fuzzy
-#| msgid "Delete add-on from server"
 msgid "Select the add-on version"
-msgstr "Удалить аддон с сервера"
+msgstr "Выберите версию аддона"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [scroll_label]: id=description
@@ -2619,19 +2520,17 @@ msgstr "Переводы:"
 #. [label]: id=translations
 #: data/gui/window/addon_manager.cfg:654 src/gui/dialogs/addon/manager.cpp:1021
 msgid "translations^None"
-msgstr "Нет"
+msgstr "Отсутствуют"
 
 #. [label]
 #: data/gui/window/addon_manager.cfg:672 data/gui/window/addon_manager.cfg:791
 msgid "Tags:"
-msgstr ""
+msgstr "Теги:"
 
 #. [text_box]: id=filter
 #: data/gui/window/addon_manager.cfg:725
-#, fuzzy
-#| msgid "Filters on addon description, version, type or author."
 msgid "Filters on addon description, version, type or author"
-msgstr "Фильтры по описанию, версии, типу или автору аддона."
+msgstr "Фильтры по описанию, версии, типу или автору аддона"
 
 #. [label]
 #: data/gui/window/addon_manager.cfg:738
@@ -2652,10 +2551,8 @@ msgstr "Менеджер аддонов"
 #. [button]: id=details_toggle
 #: data/gui/window/addon_manager.cfg:1003 src/gui/dialogs/addon/manager.cpp:510
 #: src/gui/dialogs/addon/manager.cpp:745
-#, fuzzy
-#| msgid "Addon Details"
 msgid "Add-on Details"
-msgstr "Описание аддона"
+msgstr "Подробности аддона"
 
 #. [button]: id=update_all
 #: data/gui/window/addon_manager.cfg:1024
@@ -2743,10 +2640,8 @@ msgstr "Сортировать по полному названию кампан
 
 #. [toggle_button]: id=sort_time
 #: data/gui/window/campaign_dialog.cfg:230
-#, fuzzy
-#| msgid "Time limit:"
 msgid "Timeline"
-msgstr "Лимит времени:"
+msgstr "История"
 
 #. [toggle_button]: id=sort_time
 #: data/gui/window/campaign_dialog.cfg:231
@@ -2764,34 +2659,32 @@ msgstr "Модификации:"
 #. [label]
 #: data/gui/window/campaign_dialog.cfg:306
 msgid "Combat:"
-msgstr ""
+msgstr "Сражения:"
 
 #. [option]
 #: data/gui/window/campaign_dialog.cfg:321
-#, fuzzy
-#| msgid "Default"
 msgid "Default RNG"
-msgstr "По умолчанию"
+msgstr "ГСЧ по умолчанию"
 
 #. [option]
 #: data/gui/window/campaign_dialog.cfg:322
 msgid "Reloading alters future combat outcomes"
-msgstr ""
+msgstr "Загрузка влияет на будущие исходы сражений"
 
 #. [option]
 #: data/gui/window/campaign_dialog.cfg:325
 msgid "Predictable RNG"
-msgstr ""
+msgstr "Предсказуемый ГСЧ"
 
 #. [option]
 #: data/gui/window/campaign_dialog.cfg:326
 msgid "Combat outcomes remain constant when reloading"
-msgstr ""
+msgstr "При загрузке исходы сражений остаются неизменными"
 
 #. [option]
 #: data/gui/window/campaign_dialog.cfg:329
 msgid "Biased RNG (experimental)"
-msgstr ""
+msgstr "Предвзятый ГСЧ (испытательный)"
 
 #. [option]
 #: data/gui/window/campaign_dialog.cfg:330
@@ -2799,30 +2692,28 @@ msgid ""
 "Combat outcomes are more in line with displayed probabilities and unaffected "
 "by reloading"
 msgstr ""
+"Исходы сражений сильнее соответствуют указанным вероятностям, и не "
+"изменяются перезапуском"
 
 #. [label]
 #: data/gui/window/campaign_dialog.cfg:345
-#, fuzzy
-#| msgid "Difficulty: "
 msgid "Difficulty:"
-msgstr "Сложность: "
+msgstr "Сложность:"
 
 #. [option]
 #: data/gui/window/campaign_dialog.cfg:359
 msgid "Easy"
-msgstr ""
+msgstr "Лёгкий"
 
 #. [option]
 #: data/gui/window/campaign_dialog.cfg:362
-#, fuzzy
-#| msgid "Normal Rug"
 msgid "Normal"
-msgstr "Обычный ковер"
+msgstr "Нормальный"
 
 #. [option]
 #: data/gui/window/campaign_dialog.cfg:365
 msgid "Hard"
-msgstr ""
+msgstr "Сложный"
 
 #. [label]
 #: data/gui/window/campaign_dialog.cfg:422
@@ -2833,7 +2724,7 @@ msgstr "Играть кампанию"
 #: data/gui/window/campaign_dialog.cfg:486
 #: data/gui/window/campaign_difficulty.cfg:221
 msgid "game^Play"
-msgstr ""
+msgstr "Играть"
 
 #. [slider]: id=enemy_gold_factor
 #. [slider]: id=enemey_gold_factor
@@ -3513,7 +3404,7 @@ msgstr "Загрузить игру"
 #. [menu_button]: id=dirList
 #: data/gui/window/game_load.cfg:311
 msgid "Show saves from a different version of Wesnoth"
-msgstr ""
+msgstr "Показать сохранения из другой версии Веснота"
 
 #. [toggle_button]: id=change_difficulty
 #: data/gui/window/game_load.cfg:496
@@ -3733,12 +3624,12 @@ msgstr "Кэш:"
 #. [grid]
 #: data/gui/window/game_version.cfg:139
 msgid "Logs:"
-msgstr ""
+msgstr "Журнал:"
 
 #. [button]: id=open_stderr
 #: data/gui/window/game_version.cfg:164
 msgid "Open Log File"
-msgstr "Открыть файл логов"
+msgstr "Открыть файл журнала"
 
 #. [button]: id=open_stderr
 #: data/gui/window/game_version.cfg:165
@@ -3771,7 +3662,7 @@ msgstr "Следующие функции были выбраны при соз�
 #. [label]
 #: data/gui/window/game_version.cfg:457
 msgid "The Battle for Wesnoth"
-msgstr "Битва за Веснота"
+msgstr "Битва за Веснот"
 
 #. [widget]: id=tab_label
 #: data/gui/window/game_version.cfg:536
@@ -3801,7 +3692,7 @@ msgstr "Скопировать этот отчет в буфер"
 #. [label]
 #: data/gui/window/gamestate_inspector.cfg:16
 msgid "inspector tree item^•"
-msgstr ""
+msgstr "•"
 
 #. [label]
 #: data/gui/window/gamestate_inspector.cfg:94
@@ -3921,7 +3812,7 @@ msgstr "Свободные места"
 #. [toggle_button]: id=filter_vacant_slots
 #: data/gui/window/lobby_main.cfg:336
 msgid "Only show games with vacant slots"
-msgstr ""
+msgstr "Показать игры только со свободными слотами"
 
 #. [widget]: id=tab_label
 #. [toggle_button]: id=filter_with_friends
@@ -3933,19 +3824,17 @@ msgstr "Друзья"
 #. [toggle_button]: id=filter_with_friends
 #: data/gui/window/lobby_main.cfg:349
 msgid "Only show games with friends"
-msgstr ""
+msgstr "Показать только игры с друзьями"
 
 #. [toggle_button]: id=filter_with_ignored
 #: data/gui/window/lobby_main.cfg:361
-#, fuzzy
-#| msgid "Choose Player"
 msgid "Blocked players"
-msgstr "Выберите игрока"
+msgstr "Заблокированные игроки"
 
 #. [toggle_button]: id=filter_with_ignored
 #: data/gui/window/lobby_main.cfg:362
 msgid "Show games that include players you have blocked"
-msgstr ""
+msgstr "Показать игры, в которых участвуют заблокированные Вами игроки"
 
 #. [toggle_button]: id=filter_invert
 #: data/gui/window/lobby_main.cfg:374
@@ -3979,10 +3868,8 @@ msgstr "Наблюдать"
 #. [button]: id=server_info
 #: data/gui/window/lobby_main.cfg:446 data/gui/window/lobby_main.cfg:688
 #: data/gui/window/server_info.cfg:168
-#, fuzzy
-#| msgid "Advancements"
 msgid "Announcements"
-msgstr "Продвижения"
+msgstr "Объявления"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [grid]
@@ -3997,7 +3884,7 @@ msgstr "Настройки"
 #. [button]: id=view_match_history
 #: data/gui/window/lobby_main.cfg:516
 msgid "Match History"
-msgstr ""
+msgstr "История игр"
 
 #. [button]: id=quit
 #: data/gui/window/lobby_main.cfg:533 data/gui/window/lobby_main.cfg:627
@@ -4095,10 +3982,8 @@ msgstr "Кикнуть/забанить"
 
 #. [button]: id=stopgame
 #: data/gui/window/lobby_player_info.cfg:272
-#, fuzzy
-#| msgid "Load Game"
 msgid "Stop Game"
-msgstr "Загрузить игру"
+msgstr "Остановить игру"
 
 #: data/gui/window/logging.cfg:20
 msgid "Debug level logging: maximum information"
@@ -4127,35 +4012,33 @@ msgstr "Опции лога"
 
 #. [label]
 #: data/gui/window/logging.cfg:192
-#, fuzzy
-#| msgid "Log Cabin"
 msgid "Log Domain"
-msgstr "Деревянный домик"
+msgstr "Категория журнала"
 
 #. [row]
 #: data/gui/window/logging.cfg:196
 msgid "log_level^Debug"
-msgstr ""
+msgstr "Отладка"
 
 #. [row]
 #: data/gui/window/logging.cfg:197
 msgid "log_level^Info"
-msgstr ""
+msgstr "Сведения"
 
 #. [row]
 #: data/gui/window/logging.cfg:198
 msgid "log_level^Warning"
-msgstr ""
+msgstr "Замечания"
 
 #. [row]
 #: data/gui/window/logging.cfg:199
 msgid "log_level^Error"
-msgstr ""
+msgstr "Ошибки"
 
 #. [row]
 #: data/gui/window/logging.cfg:200
 msgid "log_level^None"
-msgstr ""
+msgstr "Отключено"
 
 #. [button]: id=clear
 #: data/gui/window/lua_interpreter.cfg:117
@@ -4203,10 +4086,8 @@ msgstr "Лобби"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:184
-#, fuzzy
-#| msgid "Player joins:"
 msgid "Player joins"
-msgstr "Игроки присоединились:"
+msgstr "Присоединился игрок"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:184
@@ -4215,10 +4096,8 @@ msgstr "Когда игрок присоединяется к лобби или 
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:185
-#, fuzzy
-#| msgid "Player leaves:"
 msgid "Player leaves"
-msgstr "Игроки выходят:"
+msgstr "Вышел игрок"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:185
@@ -4232,17 +4111,13 @@ msgstr "Когда пришло приватное сообщение"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:186
-#, fuzzy
-#| msgid "Whisper:"
 msgid "Whisper"
-msgstr "Приватное сообщение:"
+msgstr "Приватное сообщение"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:187
-#, fuzzy
-#| msgid "Friend message:"
 msgid "Friend message"
-msgstr "Сообщение от друга:"
+msgstr "Сообщение от друга"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:187
@@ -4251,10 +4126,8 @@ msgstr "Когда пришло сообщение от друга"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:188
-#, fuzzy
-#| msgid "Public message:"
 msgid "Public message"
-msgstr "Публичное сообщение:"
+msgstr "Публичное сообщение"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:188
@@ -4263,10 +4136,8 @@ msgstr "Когда пришло публичное сообщение"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:189
-#, fuzzy
-#| msgid "Server message:"
 msgid "Server message"
-msgstr "Сообщение сервера:"
+msgstr "Сообщение сервера"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:189
@@ -4275,10 +4146,8 @@ msgstr "Когда пришло сообщение от сервера"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:190
-#, fuzzy
-#| msgid "Ready to start:"
 msgid "Ready to start"
-msgstr "Готово к старту:"
+msgstr "Готово к старту"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:190
@@ -4287,10 +4156,8 @@ msgstr "Когда игра, которую вы создали, готова к
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:191
-#, fuzzy
-#| msgid "Game has begun:"
 msgid "Game has begun"
-msgstr "Игра началась:"
+msgstr "Игра началась"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:191
@@ -4299,10 +4166,8 @@ msgstr "Когда создатель (не Вы) начал игру"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:192
-#, fuzzy
-#| msgid "Turn changed:"
 msgid "Turn changed"
-msgstr "Завершен ход:"
+msgstr "Завершен ход"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:192
@@ -4311,17 +4176,13 @@ msgstr "Когда начался новый ход"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:193
-#, fuzzy
-#| msgid "Game data:"
 msgid "Game created"
-msgstr "Данные игры:"
+msgstr "Игра создана"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:193
-#, fuzzy
-#| msgid "When a new turn has begun"
 msgid "When a new game has been created"
-msgstr "Когда начался новый ход"
+msgstr "Когда новая игра была создана"
 
 #. [button]: id=revert_to_defaults
 #: data/gui/window/mp_alerts_options.cfg:228
@@ -4340,17 +4201,13 @@ msgstr "Сменить управление"
 
 #. [label]
 #: data/gui/window/mp_connect.cfg:71
-#, fuzzy
-#| msgid "Log on to the official Wesnoth multiplayer server"
 msgid "Choose or enter the address of a multiplayer server."
-msgstr "Зайти на официальный мультиплеерный сервер Веснота"
+msgstr "Выбрать или ввести адрес сервера мультиплеера."
 
 #. [label]
 #: data/gui/window/mp_connect.cfg:101
-#, fuzzy
-#| msgid "Address"
 msgid "Address:"
-msgstr "Адрес"
+msgstr "Адрес:"
 
 #. [label]: id=address
 #: data/gui/window/mp_connect.cfg:176
@@ -4359,10 +4216,8 @@ msgstr "Адрес"
 
 #. [button]: id=server_add
 #: data/gui/window/mp_connect.cfg:270
-#, fuzzy
-#| msgid "Address"
 msgid "Add"
-msgstr "Адрес"
+msgstr "Добавить"
 
 #. [label]
 #: data/gui/window/mp_create_game.cfg:119
@@ -4376,10 +4231,8 @@ msgstr "Случайные фракции:"
 
 #. [label]
 #: data/gui/window/mp_create_game.cfg:156
-#, fuzzy
-#| msgid "Allow for mirror matchups when random factions are chosen."
 msgid "Allow for mirror matchups when random factions are chosen"
-msgstr "Разрешить зеркальные матчапы когда выбраны случайные фракции."
+msgstr "Разрешить зеркальных соперников когда выбраны случайные фракции"
 
 #. [toggle_button]: id=use_map_settings
 #: data/gui/window/mp_create_game.cfg:313
@@ -4572,14 +4425,12 @@ msgid "Stricter checks for out-of-sync errors"
 msgstr "Более строгие проверки ошибок асинхронизации"
 
 #: data/gui/window/mp_create_game.cfg:941
-#, fuzzy
-#| msgid "Save Replay"
 msgid "Private Replay"
-msgstr "Сохранить повтор"
+msgstr "Закрытый реплей"
 
 #: data/gui/window/mp_create_game.cfg:941
 msgid "Whether the replay will be publicly available"
-msgstr ""
+msgstr "Будет ли реплей в свободном доступе"
 
 #. [label]
 #: data/gui/window/mp_create_game.cfg:957
@@ -4588,10 +4439,6 @@ msgstr "Название игры:"
 
 #. [text_box]: id=game_password
 #: data/gui/window/mp_create_game.cfg:1004
-#, fuzzy
-#| msgid ""
-#| "Set the password that people wanting to join your game as players must "
-#| "enter."
 msgid ""
 "Set the password that people wanting to join your game as players must enter"
 msgstr ""
@@ -4804,7 +4651,7 @@ msgstr "Я готов"
 #. [text]
 #: data/gui/window/outro.cfg:49
 msgid "Press ESC to skip"
-msgstr ""
+msgstr "Нажмите ESC, чтобы пропустить"
 
 #. [widget]: id=label
 #: data/gui/window/preferences.cfg:311
@@ -4975,10 +4822,8 @@ msgstr "Фильтр:"
 
 #. [text_box]: id=filter
 #: data/gui/window/preferences/02_hotkeys.cfg:50
-#, fuzzy
-#| msgid "Filters on hotkey description."
 msgid "Filters on hotkey description"
-msgstr "Фильтры по описанию горячих клавиш."
+msgstr "Фильтры по описанию горячих клавиш"
 
 #. [toggle_button]: id=sort_0
 #: data/gui/window/preferences/02_hotkeys.cfg:94
@@ -5150,16 +4995,12 @@ msgstr "Лимит FPS"
 
 #. [toggle_button]: id=fps_limiter
 #: data/gui/window/preferences/03_display.cfg:275
-#, fuzzy
-#| msgid ""
-#| "Disabling this increases CPU usage to 100% but may slightly improve "
-#| "performance at high resolutions"
 msgid ""
 "Disabling this increases CPU usage, but may slightly improve performance "
 "(requires restart to take effect)"
 msgstr ""
-"Отключение этого увеличивает загрузку ЦП до 100%, но может немного повысить "
-"производительность при высоком разрешении"
+"Отключение этого увеличивает загрузку ЦП, но может немного повысить "
+"производительность (требует перезапуска игры)"
 
 #. [button]: id=choose_theme
 #: data/gui/window/preferences/03_display.cfg:290
@@ -5359,10 +5200,8 @@ msgstr "Удалить этого игрока из списка"
 
 #. [label]: id=no_friends_notice
 #: data/gui/window/preferences/05_multiplayer.cfg:311
-#, fuzzy
-#| msgid "You have not befriended or ignored any other players."
 msgid "You have not befriended or blocked any other players."
-msgstr "Вы не делали друзьями и не игнорировали никаких других игроков."
+msgstr "Вы не добавляли в друзья и не блокировали никаких других игроков."
 
 #. [button]: id=open
 #: data/gui/window/screenshot_notification.cfg:49
@@ -5396,15 +5235,13 @@ msgstr "Показывать шары с частичным запасом хо�
 
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:110
-#, fuzzy
-#| msgid "Show enemy orb"
 msgid "Show disengaged orb"
-msgstr "Показывать шары противника"
+msgstr "Показывать шар выхода из боя"
 
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:110
 msgid "This uses the colors for partial and moved orbs."
-msgstr ""
+msgstr "Использовать цвета шаров с частичным и исчерпанным запасом хода."
 
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:111
@@ -5423,10 +5260,8 @@ msgstr "Показывать шары противника"
 
 #. [label]: id=asdf
 #: data/gui/window/server_info.cfg:79
-#, fuzzy
-#| msgid "Map Information"
 msgid "Server Information"
-msgstr "Информация о карте"
+msgstr "Информация о сервере"
 
 #. [label]
 #: data/gui/window/sp_options_configure.cfg:44
@@ -5464,16 +5299,20 @@ msgid ""
 "The sum (or difference) of the two numbers in parentheses is the actual "
 "number of hitpoints inflicted/taken."
 msgstr ""
+"Различие полученного исхода и ожидания, в процентах.\n"
+"Первое число в скобках — ожидаемые очки нанесённого/принятого урона.\n"
+"Сумма (или разность) двух чисел в скобках есть известное число нанесённого/"
+"принятого урона."
 
 #. [column]
 #: data/gui/window/statistics_dialog.cfg:561
 msgid "stats dialog^Ratio of actual to expected"
-msgstr ""
+msgstr "Отношение полученного к ожидаемому"
 
 #. [column]
 #: data/gui/window/statistics_dialog.cfg:576
 msgid "Hits"
-msgstr ""
+msgstr "Попадания"
 
 #. [column]
 #: data/gui/window/statistics_dialog.cfg:579
@@ -5489,6 +5328,18 @@ msgid ""
 "Green values indicate this side fared better than expected.\n"
 "Red values indicate this side fared worse than expected."
 msgstr ""
+"<i>Априорная</i> вероятность нанести/получить такое количество попаданий, в "
+"процентах.\n"
+"\n"
+"Говоря интуитивно, это — мера того, насколько на эту сторону повлияла "
+"случайность.\n"
+"Значения от 0 до 50 сообщают, что число попаданий было меньшим, чем "
+"ожидалось.\n"
+"Значения от 50 до 100 сообщают, что число попаданий было большим, чем "
+"ожидалось.\n"
+"\n"
+"Зелёные значения показывают, что сторона справилась лучше, чем ожидалось.\n"
+"Красные значения показывают, что сторона справилась хуже, чем ожидалось."
 
 #. [button]: id=cancel
 #: data/gui/window/story_viewer.cfg:131
@@ -5679,7 +5530,7 @@ msgstr "Кем должен стать наш победоносный боец?
 #. [button]: id=damage_calculation
 #: data/gui/window/unit_attack.cfg:192
 msgid "Damage Calculation"
-msgstr "Подсчет Урона"
+msgstr "Подсчет урона"
 
 #. [button]: id=ok
 #: data/gui/window/unit_attack.cfg:220
@@ -5693,10 +5544,8 @@ msgstr "Атаковать врага"
 
 #. [label]
 #: data/gui/window/unit_create.cfg:55
-#, fuzzy
-#| msgid "Delete Unit"
 msgid "Create Unit"
-msgstr "Удалить бойца"
+msgstr "Создать бойца"
 
 #. [toggle_button]: id=sort_0
 #: data/gui/window/unit_create.cfg:134
@@ -5753,7 +5602,7 @@ msgstr "Призвать бойца"
 #. [text_box]: id=filter_box
 #: data/gui/window/unit_recall.cfg:311
 msgid "Search for unit name, unit type name, unit level, or trait"
-msgstr ""
+msgstr "Искать бойца по его имени, типу, уровню, или особенностям"
 
 #. [button]: id=rename
 #: data/gui/window/unit_recall.cfg:401
@@ -5799,23 +5648,23 @@ msgstr "Детали:"
 
 #: src/build_info.cpp:271
 msgid "feature^Lua console completion"
-msgstr "Lua консоль завершена"
+msgstr "Автодополнение в консоле Lua"
 
 #: src/build_info.cpp:278
 msgid "feature^D-Bus notifications back end"
-msgstr "D-Bus уведомления сервера"
+msgstr "Всплывающие уведомления через D-Bus"
 
 #: src/build_info.cpp:287
 msgid "feature^Win32 notifications back end"
-msgstr "Win32 уведомления сервера"
+msgstr "Всплывающие уведомления через Win32 API"
 
 #: src/build_info.cpp:293
 msgid "feature^Cocoa notifications back end"
-msgstr "Cocoa уведомления сервера"
+msgstr "Всплывающие уведомления через Cocoa"
 
 #: src/build_info.cpp:331 src/desktop/version.cpp:121
 msgid "cpu_architecture^<unknown>"
-msgstr ""
+msgstr "<неизвестная>"
 
 #: src/desktop/paths.cpp:96
 msgid "filesystem_path_system^Volumes"
@@ -5852,24 +5701,28 @@ msgstr "<неизвестна>"
 #. TRANSLATORS: translate the part inside <...> only
 #: src/filesystem.cpp:635
 msgid "--userdata-dir=<relative path that doesn't start with a period>"
-msgstr ""
+msgstr "--userdata-dir=<относительный путь, который не начинается с точки>"
 
 #: src/filesystem.cpp:638
 msgid ""
 "Use an absolute path, or a relative path that starts with a period and a "
 "backslash"
 msgstr ""
+"Используйте абсолютный путь или относительный путь, который начинается с "
+"точки и наклонной черты"
 
 #. TRANSLATORS: translate the part inside <...> only
 #: src/filesystem.cpp:703 src/filesystem.cpp:724
 msgid "--userdata-dir=<relative path>"
-msgstr ""
+msgstr "--userdata-dir=<относительный путь>"
 
 #: src/filesystem.cpp:706 src/filesystem.cpp:727
 msgid ""
 "Use absolute paths. Relative paths are deprecated because they are "
 "interpreted relative to $HOME"
 msgstr ""
+"Используйте абсолютный путь. Относительные пути устарели, поскольку они "
+"рассчитываются относительно $HOME"
 
 #. TRANSLATORS: This is the language code which will be used
 #. to store and fetch localized non-textual resources, such as images,
@@ -5999,15 +5852,15 @@ msgstr "Размер шрифта текста 0."
 
 #: src/gui/core/canvas.cpp:834
 msgid "Area to draw has negative size"
-msgstr ""
+msgstr "У рисуемой области отрицательный размер"
 
 #: src/gui/core/canvas.cpp:836
 msgid "Area to draw is larger than widget size"
-msgstr ""
+msgstr "Размер рисуемой области больше размера элемента"
 
 #: src/gui/core/widget_definition.cpp:30
 msgid "No state or draw section defined."
-msgstr "Не определёно состояние или секция отрисовки."
+msgstr "Не определено состояние или область отрисовки."
 
 #: src/gui/core/widget_definition.cpp:69 src/gui/core/window_builder.cpp:142
 msgid "No resolution defined."
@@ -6028,16 +5881,16 @@ msgid "No grid defined."
 msgstr "Сетка не определена."
 
 #: src/gui/core/window_builder.cpp:230
-#, fuzzy
-#| msgid "A row must have a column."
 msgid "Grid '$grid' row $row must have at least one column."
-msgstr "У строки должен быть столбец."
+msgstr "У строки $row таблицы '$grid' должен быть хотя бы один столбец."
 
 #: src/gui/core/window_builder.cpp:242
 msgid ""
 "Grid '$grid' row $row has a differing number of columns ($found found, "
 "$expected expected)"
 msgstr ""
+"Количество столбцов строки $row не соответствует остальной таблице "
+"'$grid' (найдено $found, ожидалось $expected)"
 
 #: src/gui/dialogs/addon/manager.cpp:161
 msgid "addons_view^All Add-ons"
@@ -6141,61 +5994,59 @@ msgstr "Первая загрузка ($datelike_order)"
 
 #: src/gui/dialogs/addon/manager.cpp:222
 msgid "addon_tag^Cooperative"
-msgstr ""
+msgstr "Совместный"
 
 #. TRANSLATORS: tooltip in the drop-down menu for filtering add-ons
 #: src/gui/dialogs/addon/manager.cpp:224
 msgid "addon_tag^All human players are on the same team, versus the AI"
-msgstr ""
+msgstr "Все игроки находятся в одной команде, противостоящей ИИ"
 
 #: src/gui/dialogs/addon/manager.cpp:225
 msgid "addon_tag^Cosmetic"
-msgstr ""
+msgstr "Внешний вид"
 
 #. TRANSLATORS: tooltip in the drop-down menu for filtering add-ons
 #: src/gui/dialogs/addon/manager.cpp:227
 msgid "addon_tag^These make the game look different, without changing gameplay"
-msgstr ""
+msgstr "Меняет внешний вид игры, не влияя на игровой процесс"
 
 #: src/gui/dialogs/addon/manager.cpp:228
-#, fuzzy
-#| msgid "Difficulty"
 msgid "addon_tag^Difficulty"
 msgstr "Сложность"
 
 #. TRANSLATORS: tooltip in the drop-down menu for filtering add-ons
 #: src/gui/dialogs/addon/manager.cpp:230
 msgid "addon_tag^Can make campaigns easier or harder"
-msgstr ""
+msgstr "Может сделать кампании легче или сложнее"
 
 #: src/gui/dialogs/addon/manager.cpp:231
 msgid "addon_tag^RNG"
-msgstr ""
+msgstr "ГСЧ"
 
 #. TRANSLATORS: tooltip in the drop-down menu for filtering add-ons
 #: src/gui/dialogs/addon/manager.cpp:233
 msgid ""
 "addon_tag^Modify the randomness in the combat mechanics, or remove it "
 "entirely"
-msgstr ""
+msgstr "Влияет на случайности в механике сражения, или отключает их полностью"
 
 #: src/gui/dialogs/addon/manager.cpp:234
 msgid "addon_tag^Survival"
-msgstr ""
+msgstr "Выживание"
 
 #. TRANSLATORS: tooltip in the drop-down menu for filtering add-ons
 #: src/gui/dialogs/addon/manager.cpp:236
 msgid "addon_tag^Fight against waves of enemies"
-msgstr ""
+msgstr "Борьба против волн врагов"
 
 #: src/gui/dialogs/addon/manager.cpp:237
 msgid "addon_tag^Terraforming"
-msgstr ""
+msgstr "Терраформирование"
 
 #. TRANSLATORS: tooltip in the drop-down menu for filtering add-ons
 #: src/gui/dialogs/addon/manager.cpp:239
 msgid "addon_tag^Players can change the terrain"
-msgstr ""
+msgstr "Игроки могут менять местность"
 
 #: src/gui/dialogs/addon/manager.cpp:262 src/gui/widgets/addon_list.cpp:103
 msgid "addon_state^Not installed"
@@ -6327,7 +6178,7 @@ msgstr "Сервер ответил с ошибкой:"
 
 #: src/gui/dialogs/addon/manager.cpp:871
 msgid "The add-on was rejected by the server:"
-msgstr ""
+msgstr "В загрузке аддона отказано сервером:"
 
 #: src/gui/dialogs/addon/manager.cpp:886 src/gui/dialogs/addon/manager.cpp:913
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:500
@@ -6359,16 +6210,12 @@ msgid "Defender resistance vs"
 msgstr "Сопротивление защитника против"
 
 #: src/gui/dialogs/attack_predictions.cpp:194
-#, fuzzy
-#| msgid "Attacker vulnerability vs"
 msgid "Defender vulnerability vs"
-msgstr "Уязвимость атакующего против"
+msgstr "Уязвимость защищающегося против"
 
 #: src/gui/dialogs/attack_predictions.cpp:198
-#, fuzzy
-#| msgid "Defender resistance vs"
 msgid "Attacker resistance vs"
-msgstr "Сопротивление защитника против"
+msgstr "Сопротивляемость атакующего против"
 
 #: src/gui/dialogs/attack_predictions.cpp:200
 msgid "Attacker vulnerability vs"
@@ -6524,26 +6371,20 @@ msgid "The game data cache could not be purged."
 msgstr "Данные кэша не могут быть полностью удалены."
 
 #: src/gui/dialogs/game_load.cpp:74
-#, fuzzy
-#| msgid "Saved Games"
 msgid "No Saved Games"
-msgstr "Сохраненные игры"
+msgstr "Нет сохранённых игр"
 
 #: src/gui/dialogs/game_load.cpp:74
-#, fuzzy
-#| msgid "There are no alternative video modes available"
 msgid "There are no saved games to load."
-msgstr "Нет доступных альтернативных видеорежимов"
+msgstr "Нет сохранений, доступных для загрузки."
 
 #: src/gui/dialogs/game_load.cpp:143
 msgid "game_version^Current Version"
-msgstr ""
+msgstr "Текущая версия"
 
 #: src/gui/dialogs/game_load.cpp:147
-#, fuzzy
-#| msgid "Version $version"
 msgid "game_version^Wesnoth $version"
-msgstr "Версия $version"
+msgstr "Веснот $version"
 
 #: src/gui/dialogs/game_load.cpp:284
 msgid "The selected file is corrupt: "
@@ -6748,10 +6589,8 @@ msgid "Do you really want to log out?"
 msgstr "Вы действительно хотите выйти?"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:233
-#, fuzzy
-#| msgid "Incompatible User-made Content."
 msgid "Incompatible User-made Content"
-msgstr "Несовместимый пользовательский контент."
+msgstr "Несовместимый пользовательский контент"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:234
 msgid ""
@@ -6763,10 +6602,8 @@ msgstr ""
 "которые несовместимы с вашей версией. Можно предложить хосту обновить аддоны."
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:249
-#, fuzzy
-#| msgid "Missing User-made Content."
 msgid "Missing User-made Content"
-msgstr "Отсутствует пользовательский контент."
+msgstr "Отсутствует пользовательский контент"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:250
 msgid ""
@@ -6859,10 +6696,8 @@ msgid "Side $side"
 msgstr "Сторона $side"
 
 #: src/gui/dialogs/multiplayer/mp_connect.cpp:185
-#, fuzzy
-#| msgid "Server:"
 msgid "Add Server"
-msgstr "Сервер:"
+msgstr "Добавить сервер"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:97
 msgid "Scenarios"
@@ -6929,10 +6764,8 @@ msgstr "Выбранная игра не имеет сторон!"
 
 #. TRANSLATORS: This sentence will be followed by some details of the error, most likely the "Map could not be loaded" message from create_engine.cpp
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:827
-#, fuzzy
-#| msgid "The selected game has no sides!"
 msgid "The selected game cannot be created."
-msgstr "Выбранная игра не имеет сторон!"
+msgstr "Не получается создать выбранную игру."
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:899
 msgid "Choose Starting Scenario"
@@ -7047,11 +6880,11 @@ msgstr "За этот ход"
 
 #: src/gui/dialogs/statistics_dialog.cpp:214
 msgid "Actual hit rates, by chance to hit:"
-msgstr ""
+msgstr "Фактическая частота попаданий, по вероятности попадания:"
 
 #: src/gui/dialogs/statistics_dialog.cpp:216
 msgid "(no attacks have taken place yet)"
-msgstr ""
+msgstr "(атаки ещё не произошли)"
 
 #: src/gui/dialogs/statistics_dialog.cpp:324
 msgid ""
@@ -7062,6 +6895,10 @@ msgid ""
 "The sum (or difference) of the two numbers in parentheses is the actual "
 "number of hits inflicted/taken."
 msgstr ""
+"Различие полученного исхода и ожидания, в процентах.\n"
+"Первое число в скобках — ожидаемые очки нанесённых/принятых попаданий.\n"
+"Сумма (или разность) двух чисел в скобках есть фактическое число нанесённых/"
+"принятых попаданий."
 
 #: src/gui/dialogs/statistics_dialog.cpp:368
 msgid "Recruits"
@@ -7107,17 +6944,19 @@ msgstr "Выберите тест"
 
 #: src/gui/dialogs/unit_create.cpp:197
 msgid "unit_variation^Default Variation"
-msgstr ""
+msgstr "Вариация по умолчанию"
 
 #: src/gui/dialogs/unit_recall.cpp:223
 msgid ""
 "This unit cannot be recalled because you will not have enough gold at this "
 "point in your plan."
 msgstr ""
+"Этот боец не может быть призван, потому что у вас не будет достаточно золота "
+"на данный момент согласно вашему плану."
 
 #: src/gui/dialogs/unit_recall.cpp:225
 msgid "This unit cannot be recalled because you do not have enough gold."
-msgstr ""
+msgstr "Этот боец не может быть призван, потому что у вас недостаточно золота."
 
 #: src/gui/dialogs/unit_recall.cpp:321 src/hotkey/hotkey_command.cpp:96
 msgid "Rename Unit"
@@ -7179,18 +7018,14 @@ msgstr "приватное сообщение пользователю $receiver
 
 #: src/gui/widgets/chatbox.cpp:388
 msgid "Joined <i>$name</i>"
-msgstr ""
+msgstr "Присоединился игрок <i>$name</i>"
 
 #: src/gui/widgets/chatbox.cpp:394
-#, fuzzy
-#| msgid ""
-#| "Whisper session with <i>“$name”</i> started. If you do not want to "
-#| "receive messages from this user, type <i>/ignore $name</i>"
 msgid ""
 "Started private message with <i>$name</i>. If you do not want to receive "
 "messages from this player, type <i>/ignore $name</i>"
 msgstr ""
-"Приватный чат с <i>“$name”</i>. Если Вы не хотите получать сообщения от "
+"Начат приватный чат с <i>$name</i>. Если Вы не хотите получать сообщения от "
 "этого пользователя, наберите <i>/ignore $name</i>"
 
 #: src/gui/widgets/chatbox.cpp:633
@@ -7211,10 +7046,8 @@ msgstr ""
 "Открытие ссылки не поддерживается, обратитесь к вашему менеджеру сборки"
 
 #: src/gui/widgets/label.cpp:143
-#, fuzzy
-#| msgid "Copied link!"
 msgid "Open link?"
-msgstr "Ссылка скопирована!"
+msgstr "Открыть ссылку?"
 
 #: src/gui/widgets/label.cpp:174
 msgid "Copied link!"
@@ -7467,10 +7300,8 @@ msgid "End Unit Turn"
 msgstr "Завершить ход бойца"
 
 #: src/hotkey/hotkey_command.cpp:84
-#, fuzzy
-#| msgid "Scroll Left"
 msgid "Scroll to Leader"
-msgstr "Прокрутить влево"
+msgstr "Прокрутить к лидеру"
 
 #: src/hotkey/hotkey_command.cpp:85
 msgid "Undo"
@@ -7501,10 +7332,8 @@ msgid "Map Screenshot"
 msgstr "Сделать скриншот карты"
 
 #: src/hotkey/hotkey_command.cpp:93
-#, fuzzy
-#| msgid "Accelerated speed"
 msgid "Toggle Accelerated Speed"
-msgstr "Ускоренные движения"
+msgstr "Вкл/выкл ускоренные движения"
 
 #: src/hotkey/hotkey_command.cpp:94
 msgid "Terrain Description"
@@ -7575,8 +7404,6 @@ msgid "Kill Unit (Debug!)"
 msgstr "Убить бойца (Отладка!)"
 
 #: src/hotkey/hotkey_command.cpp:119
-#, fuzzy
-#| msgid "Scenario Objectives"
 msgid "Objectives"
 msgstr "Задачи сценария"
 
@@ -7589,8 +7416,6 @@ msgid "Continue Network Game"
 msgstr "Продолжить сетевую игру"
 
 #: src/hotkey/hotkey_command.cpp:125
-#, fuzzy
-#| msgid "Quit to Main Menu"
 msgid "Quit to Menu"
 msgstr "Выйти в главное меню"
 
@@ -7639,22 +7464,16 @@ msgid "Next Move"
 msgstr "Следующий ход"
 
 #: src/hotkey/hotkey_command.cpp:138
-#, fuzzy
-#| msgid "Full Map"
 msgid "View: Full Map"
-msgstr "Вся карта"
+msgstr "Обзор: Вся карта"
 
 #: src/hotkey/hotkey_command.cpp:139
-#, fuzzy
-#| msgid "Each Team"
 msgid "View: Each Team"
-msgstr "Каждая команда"
+msgstr "Обзор: Каждая команда"
 
 #: src/hotkey/hotkey_command.cpp:140
-#, fuzzy
-#| msgid "Human Team"
 msgid "View: Human Team"
-msgstr "Команда людей"
+msgstr "Обзор: Команда людей"
 
 #: src/hotkey/hotkey_command.cpp:141
 msgid "Skip Animation"
@@ -7856,10 +7675,8 @@ msgid "Item Tool"
 msgstr "Инструмент «предмет»"
 
 #: src/hotkey/hotkey_command.cpp:198
-#, fuzzy
-#| msgid "Left mouse button sets or drags a label, right clears."
 msgid "Left mouse button sets a new item."
-msgstr "Левая кнопка мыши задаёт или перемещает метку, правая удаляет."
+msgstr "Левая кнопка мыши кладёт новый предмет."
 
 #: src/hotkey/hotkey_command.cpp:199
 msgid ""
@@ -8095,8 +7912,6 @@ msgid "Update Shroud Now"
 msgstr "Обновить пелену"
 
 #: src/hotkey/hotkey_command.cpp:269
-#, fuzzy
-#| msgid "Continue Move"
 msgid "Continue Interrupted Move"
 msgstr "Продолжить движение"
 
@@ -8114,17 +7929,15 @@ msgstr "Сказать всем"
 
 #: src/hotkey/hotkey_command.cpp:274
 msgid "Help about save-loading"
-msgstr ""
+msgstr "Больше о сохранениях и загрузке"
 
 #: src/hotkey/hotkey_command.cpp:274
 msgid "Hint: save-loading is unnecessary"
-msgstr ""
+msgstr "Подсказка: загружаться из сохранений необязательно"
 
 #: src/hotkey/hotkey_command.cpp:276
-#, fuzzy
-#| msgid "Enter User Command"
 msgid "Enter Command"
-msgstr "Ввести команду пользователя"
+msgstr "Ввести команду"
 
 #: src/hotkey/hotkey_command.cpp:277
 msgid "Custom Command"
@@ -8135,10 +7948,8 @@ msgid "Run Formula"
 msgstr "Запустить формулу"
 
 #: src/hotkey/hotkey_command.cpp:279
-#, fuzzy
-#| msgid "Player Chat"
 msgid "Clear Chat"
-msgstr "Чат игроков"
+msgstr "Очистить чат"
 
 #: src/hotkey/hotkey_command.cpp:281
 msgid "Change Language"
@@ -8231,10 +8042,6 @@ msgid "[%I:%M %p]"
 msgstr "[%I:%M %p]"
 
 #: src/terrain/translation.cpp:712
-#, fuzzy
-#| msgid ""
-#| "A terrain with a string with more than 4 characters has been found, the "
-#| "affected terrain is :"
 msgid ""
 "A terrain with a string with more than 4 characters has been found, the "
 "affected terrain is:"
@@ -8279,6 +8086,16 @@ msgstr ""
 "Клавиша '$deprecated_key' переименована в '$key'. Она будет удалена в версии "
 "$removal_version."
 
+#~ msgid "Data Migration"
+#~ msgstr "Перенос данных"
+
+#~ msgid ""
+#~ "Choose which version of Wesnoth to import your data from.\n"
+#~ "Some settings will not take effect until Wesnoth is restarted."
+#~ msgstr ""
+#~ "Выберите, из какой версии Веснота импортировать Ваши данные.\n"
+#~ "Некоторые настройки не вступят в силу, пока Вы не перезапустите игру."
+
 #~ msgid "Multiplayer server login dialog"
 #~ msgstr "Диалог входа на мультиплеерный сервер"
 
@@ -8301,7 +8118,7 @@ msgstr ""
 #~ msgstr "Начало текста за пределами подложки."
 
 #~ msgid "feature^Legacy bidirectional rendering"
-#~ msgstr "Устаревший двунаправленный рендеринг"
+#~ msgstr "Устаревший двунаправленный рендеринг текста"
 
 #~ msgid "The maximum text width is less than 1."
 #~ msgstr "Максимальная ширина текста меньше 1."
@@ -8368,8 +8185,6 @@ msgstr ""
 #~ msgid "Screenshots..."
 #~ msgstr "Скриншоты..."
 
-#, fuzzy
-#~| msgid "feature^JPG screenshots"
 #~ msgid "feature^JPEG screenshots"
 #~ msgstr "Скриншоты в JPG"
 
