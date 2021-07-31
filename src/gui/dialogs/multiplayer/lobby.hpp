@@ -25,17 +25,13 @@
 #include "quit_confirmation.hpp"
 
 class wesnothd_connection;
-class game_config_view;
 
 namespace gui2
 {
 class grid;
-class label;
 class listbox;
 class text_box;
 class window;
-class multi_page;
-class toggle_button;
 class chatbox;
 
 namespace dialogs
@@ -70,8 +66,6 @@ public:
 		CREATE,
 		RELOAD_CONFIG
 	};
-
-protected:
 
 private:
 	void update_selected_game();
@@ -147,8 +141,6 @@ private:
 
 	virtual void post_show(window& window) override;
 
-	const game_config_view& game_config_;
-
 	listbox* gamelistbox_;
 
 	mp::lobby_info& lobby_info_;
@@ -189,8 +181,8 @@ private:
 
 	friend struct lobby_delay_gamelist_update_guard;
 
-	static std::string server_information_;
-	static std::string announcements_;
+	static inline std::string server_information_ = "";
+	static inline std::string announcements_ = "";
 };
 
 } // namespace dialogs

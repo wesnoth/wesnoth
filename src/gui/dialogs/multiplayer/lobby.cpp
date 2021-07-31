@@ -35,9 +35,7 @@
 #include "gui/widgets/chatbox.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/text_box.hpp"
-#include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/toggle_panel.hpp"
-#include "gui/widgets/tree_view_node.hpp"
 #include "gui/dialogs/server_info_dialog.hpp"
 
 #include "addon/client.hpp"
@@ -47,12 +45,11 @@
 #include "font/text_formatting.hpp"
 #include "formatter.hpp"
 #include "formula/string_utils.hpp"
-#include "game_config_manager.hpp"
 #include "preferences/game.hpp"
 #include "gettext.hpp"
 #include "help/help.hpp"
 #include "preferences/lobby.hpp"
-#include "playmp_controller.hpp"
+#include "video.hpp"
 #include "wesnothd_connection.hpp"
 
 #include <functional>
@@ -72,12 +69,8 @@ bool mp_lobby::logout_prompt()
 	return show_prompt(_("Do you really want to log out?"));
 }
 
-std::string mp_lobby::announcements_ = "";
-std::string mp_lobby::server_information_ = "";
-
 mp_lobby::mp_lobby(mp::lobby_info& info, wesnothd_connection& connection, int& joined_game)
 	: quit_confirmation(&mp_lobby::logout_prompt)
-	, game_config_(game_config_manager::get()->game_config())
 	, gamelistbox_(nullptr)
 	, lobby_info_(info)
 	, chatbox_(nullptr)
@@ -569,11 +562,7 @@ void mp_lobby::update_selected_game()
 
 bool mp_lobby::exit_hook(window& window)
 {
-	if(window.get_retval() == retval::CANCEL) {
-		return quit();
-	}
-
-	return true;
+	return window.get_retval() == retval::CANCEL ? quit() : true;
 }
 
 void mp_lobby::pre_show(window& window)
@@ -699,7 +688,6 @@ void mp_lobby::pre_show(window& window)
 	}, true);
 
 	plugins_context_->set_accessor("game_list",   [this](const config&) { return lobby_info_.gamelist(); });
-	//plugins_context_->set_accessor("game_config", [this](const config&) { return game_config_; });
 }
 
 void mp_lobby::post_show(window& /*window*/)
