@@ -104,7 +104,7 @@ local function wct_dirty_deltas()
 	local terrain_to_change = wct_store_possible_dirty_delta()
 	while #terrain_to_change > 0 do
 		local loc = 1 -- todo: maybe use  terrain_to_change[mathx.random(#terrain_to_change)]
-		local ter = mathx.random_choice("Gs,Hh^Uf,Cud,Gs^Uf,Gs,Hh,Ds^Edt,Ds,Hh^Fmf,Gs,Gs^Fmf")
+		local ter = mathx.random_choice("Gs,Hh^Tf,Cud,Gs^Uf,Gs,Hh,Ds^Edt,Ds,Hh^Fmf,Gs,Gs^Fmf")
 		map[loc] = ter
 		terrain_to_change = wct_store_possible_dirty_delta()
 	end
@@ -653,7 +653,7 @@ local function world_conquest_tek_map_repaint_6c()
 
 	world_conquest_tek_map_decoration_6c()
 
-	wct_reduce_wall_clusters("Uu,Uu^Uf,Uh,Uu^Uf,Uu,Uu^Uf,Uh,Ql,Qxu,Xu,Uu,Rb")
+	wct_reduce_wall_clusters("Uu,Uu^Tf,Uh,Uu^Tf,Uu,Uu^Tf,Uh,Ql,Qxu,Xu,Uu,Rb")
 	wct_fill_lava_chasms()
 	wct_volcanos()
 	wct_volcanos_dirt()

@@ -142,19 +142,19 @@ local function generate(length, villages, castle, iterations, size, players, isl
 		dr_village {
 			terrain="Uu",
 			convert_to="Uu^Vo",
-			adjacent_liked="Urb,Hh,Mm,Uu,Uh,Xu,Mm^Xm,Uu^Uf,Uu,Uh,Ww,Ww",
+			adjacent_liked="Urb,Hh,Mm,Uu,Uh,Xu,Mm^Xm,Uu^Tf,Uu,Uh,Ww,Ww",
 			rating=5
 		},
 		dr_village {
 			terrain="Uu^Tf",
 			convert_to="Uh^Vo",
-			adjacent_liked="Urb,Hh,Mm,Uu,Uh,Xu,Mm^Xm,Uu^Uf,Uu,Uh,Ww,Ww",
+			adjacent_liked="Urb,Hh,Mm,Uu,Uh,Xu,Mm^Xm,Uu^Tf,Uu,Uh,Ww,Ww",
 			rating=5
 		},
 		dr_village {
 			terrain="Uh",
 			convert_to="Uu^Vo",
-			adjacent_liked="Urb,Hh,Mm,Uu,Uh,Xu,Mm^Xm,Uu^Uf,Uu,Uh,Ww,Ww",
+			adjacent_liked="Urb,Hh,Mm,Uu,Uh,Xu,Mm^Xm,Uu^Tf,Uu,Uh,Ww,Ww",
 			rating=5
 		},
 		-- villages in forest
@@ -217,7 +217,7 @@ local function generate(length, villages, castle, iterations, size, players, isl
 		},
 	}
 	res.castle = {
-		valid_terrain="Gs, Gg, Hh, Ha, Hh^Uf, Gs^Uf, Ss, Dd, Aa",
+		valid_terrain="Gs, Gg, Hh, Ha, Hh^Tf, Gs^Uf, Ss, Dd, Aa",
 		min_distance=16,
 	}
 

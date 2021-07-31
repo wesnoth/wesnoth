@@ -111,7 +111,7 @@ function world_conquest_tek_map_decoration_3c()
 			)
 		),
 	}
-	set_terrain { "Gs,Gg,Hh^Ft,Ss,Ss,Hh,Ss,Mm,Ss,Hh^Uf,Ww,Gg,Ss,Ww,Ss",
+	set_terrain { "Gs,Gg,Hh^Ft,Ss,Ss,Hh,Ss,Mm,Ss,Hh^Tf,Ww,Gg,Ss,Ww,Ss",
 		f.terrain("Wwf"),
 		fraction = 2,
 	}
@@ -152,7 +152,7 @@ function world_conquest_tek_map_decoration_3c()
 			f.terrain("Dd,Ds,Xuce")
 		),
 	}
-	set_terrain { "Hh^Uf,Mm,Gg,Gs,Ss,Ds^Ftd,Hh,Hh^Ftp",
+	set_terrain { "Hh^Tf,Mm,Gg,Gs,Ss,Ds^Ftd,Hh,Hh^Ftp",
 		f.all(
 			f.terrain("Xuce"),
 			f.radius(3, f.terrain("K*^*"))
@@ -261,7 +261,7 @@ function world_conquest_tek_map_decoration_3c()
 	set_terrain { "Ds",
 		f.all(
 			f.adjacent(f.terrain("Wo")),
-			f.terrain("Hh^Uf,G*^Uf,Mm")
+			f.terrain("Hh^Tf,G*^Uf,Mm")
 		),
 	}
 	set_terrain { "Hh",

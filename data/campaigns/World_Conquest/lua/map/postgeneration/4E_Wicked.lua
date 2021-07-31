@@ -1,6 +1,6 @@
 -- Wicked
 function world_conquest_tek_map_repaint_4e()
-	wct_reduce_wall_clusters("Uu,Uu,Uu,Uu,Uu,Uu,Uu,Uu,Uh,Uh,Uh,Uh,Uu^Uf,Wwf,Ur,Qxu,Ql,Wwg")
+	wct_reduce_wall_clusters("Uu,Uu,Uu,Uu,Uu,Uu,Uu,Uu,Uh,Uh,Uh,Uh,Uu^Tf,Wwf,Ur,Qxu,Ql,Wwg")
 	wct_fill_lava_chasms()
 	-- soft rough terrain around caves
 	set_terrain { "Aa,Aa,Gs",

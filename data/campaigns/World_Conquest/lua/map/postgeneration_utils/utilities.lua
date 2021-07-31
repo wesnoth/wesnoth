@@ -54,7 +54,7 @@ function world_conquest_tek_map_rebuild(cave, reef)
 		f.all(
 			f.terrain("Hh,Hh^F*"),
 			f.adjacent(f.terrain("A*^*,Ms^*,Ha^*"), nil, 0),
-			f.radius(2, f.terrain("Mm,Md,Xu,Mm^Xm,Uu,Uh,Uu^Uf,Ql,Qxu,Mv"))
+			f.radius(2, f.terrain("Mm,Md,Xu,Mm^Xm,Uu,Uh,Uu^Tf,Ql,Qxu,Mv"))
 		),
 		nlocs = r,
 	}

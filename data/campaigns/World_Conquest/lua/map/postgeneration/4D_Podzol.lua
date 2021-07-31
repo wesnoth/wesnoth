@@ -18,7 +18,7 @@ local function world_conquest_tek_map_repaint_4d()
 		percentage = 8,
 	}
 	set_terrain { "Mm,Gll,Gll",
-		f.terrain("Hh^Uf,Ss,Hh,Gll^Tf"),
+		f.terrain("Hh^Tf,Ss,Hh,Gll^Tf"),
 		exact = false,
 		percentage = 9,
 	}

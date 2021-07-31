@@ -2,7 +2,7 @@
 
 function world_conquest_tek_map_repaint_2d()
 	world_conquest_tek_map_decoration_2d()
-	world_conquest_tek_map_rebuild("Uu,Uu^Uf,Uu^Dr,Ql,Qxu,Cud", 2)
+	world_conquest_tek_map_rebuild("Uu,Uu^Tf,Uu^Dr,Ql,Qxu,Cud", 2)
 	set_terrain { "Uh",
 		f.all(
 			f.adjacent(f.terrain("Ch*,Kh*,Cd,Cv^Fds,Ce,Co*")),

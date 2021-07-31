@@ -5,7 +5,7 @@ function world_conquest_tek_map_repaint_3f()
 		fraction = 10,
 	}
 
-	wct_reduce_wall_clusters("Uu,Uu^Uf,Uh,Uu^Uf,Uu,Uh,Uu,Uu,Qxu,Uu,Wwf")
+	wct_reduce_wall_clusters("Uu,Uu^Tf,Uh,Uu^Tf,Uu,Uh,Uu,Uu,Qxu,Uu,Wwf")
 
 	-- soft rough terrain generated
 	local terrain_to_change = wct_store_cave_passages_candidates()

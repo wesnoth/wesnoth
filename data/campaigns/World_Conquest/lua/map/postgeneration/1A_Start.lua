@@ -1,6 +1,6 @@
 
 function world_conquest_tek_map_repaint_1()
-	world_conquest_tek_map_rebuild("Uu,Uu^Uf,Uh,Uu^Uf,Uu,Ai,Uh,Ql,Qxu,Xu", 3)
+	world_conquest_tek_map_rebuild("Uu,Uu^Tf,Uh,Uu^Tf,Uu,Ai,Uh,Ql,Qxu,Xu", 3)
 	world_conquest_tek_map_decoration_1()
 	world_conquest_tek_map_dirt("Gg^Tf")
 end

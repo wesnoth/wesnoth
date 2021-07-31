@@ -69,7 +69,7 @@ local function generate(length, villages, castle, iterations, size, players, isl
 		dr_village {
 			terrain = "Gs",
 			convert_to="Gs^Ve",
-			adjacent_liked="Gg, Gs, Ww, Rb, Rb, Rb, Gd, Rb, Rb, Gs, Hh, Hh^Fds, Hh^Uf, Gg, Gs",
+			adjacent_liked="Gg, Gs, Ww, Rb, Rb, Rb, Gd, Rb, Rb, Gs, Hh, Hh^Fds, Hh^Tf, Gg, Gs",
 			rating=9
 		},
 		dr_village {
@@ -88,44 +88,44 @@ local function generate(length, villages, castle, iterations, size, players, isl
 		dr_village {
 			terrain="Hh",
 			convert_to="Hh^Vo",
-			adjacent_liked="Gs, Gs, Ww, Rb, Rb, Gd, Gd, Rb, Rb, Gd, Hh, Hh^Fds, Hh^Uf, Mm",
+			adjacent_liked="Gs, Gs, Ww, Rb, Rb, Gd, Gd, Rb, Rb, Gd, Hh, Hh^Fds, Hh^Tf, Mm",
 			rating=6
 		},
 		dr_village {
 			terrain="Hh^Fds",
 			convert_to="Hh^Vo",
-			adjacent_liked="Gs, Gs, Ww, Rb, Rb, Gd, Gd, Rb, Rb, Gd, Hh, Hh^Fds, Hh^Uf, Mm",
+			adjacent_liked="Gs, Gs, Ww, Rb, Rb, Gd, Gd, Rb, Rb, Gd, Hh, Hh^Fds, Hh^Tf, Mm",
 			rating=6
 		},
 		dr_village {
 			terrain="Hh^Tf",
 			convert_to="Hh^Vo",
-			adjacent_liked="Gs, Gs, Ww, Rb, Rb, Gd, Gd, Rb, Rb, Gd, Hh, Hh^Fds, Hh^Uf, Mm",
+			adjacent_liked="Gs, Gs, Ww, Rb, Rb, Gd, Gd, Rb, Rb, Gd, Hh, Hh^Fds, Hh^Tf, Mm",
 			rating=6
 		},
 		dr_village {
 			terrain="Mm",
 			convert_to="Mm^Vo",
-			adjacent_liked="Gs, Gs, Ww, Rb, Rb, Gd, Gd, Rb, Rb, Gd, Hh, Hh^Fds, Hh^Uf, Mm",
+			adjacent_liked="Gs, Gs, Ww, Rb, Rb, Gd, Gd, Rb, Rb, Gd, Hh, Hh^Fds, Hh^Tf, Mm",
 			rating=5
 		},
 		-- cave villages
 		dr_village {
 			terrain="Uu",
 			convert_to="Uu^Vud",
-			adjacent_liked="Hh,Uu,Mm,Uu,Uh,Uh,Uh,Hh^Uf,Xu,Uu^Uf,Mm^Xm",
+			adjacent_liked="Hh,Uu,Mm,Uu,Uh,Uh,Uh,Hh^Tf,Xu,Uu^Tf,Mm^Xm",
 			rating=6
 		},
 		dr_village {
 			terrain="Uh",
 			convert_to="Uu^Vud",
-			adjacent_liked="Hh,Uu,Mm,Uu,Uh,Uh,Uh,Hh^Uf,Xu,Uu^Uf,Mm^Xm",
+			adjacent_liked="Hh,Uu,Mm,Uu,Uh,Uh,Uh,Hh^Tf,Xu,Uu^Tf,Mm^Xm",
 			rating=6
 		},
 		dr_village {
 			terrain="Uu^Tf",
 			convert_to="Uu^Vud",
-			adjacent_liked="Hh,Uu,Mm,Uu,Uh,Uh,Uh,Hh^Uf,Xu,Uu^Uf,Mm^Xm",
+			adjacent_liked="Hh,Uu,Mm,Uu,Uh,Uh,Uh,Hh^Tf,Xu,Uu^Tf,Mm^Xm",
 			rating=6
 		},
 		-- water villages
