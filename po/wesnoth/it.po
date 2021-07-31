@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-06-23 11:36-0400\n"
-"PO-Revision-Date: 2021-06-26 15:21+0200\n"
+"POT-Creation-Date: 2021-06-23 11:42-0400\n"
+"PO-Revision-Date: 2021-07-29 16:46+0200\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -4074,7 +4074,7 @@ msgstr "Sconfitta:"
 msgid "(this turn left)"
 msgid_plural "($remaining_turns turns left)"
 msgstr[0] "(ultimo turno)"
-msgstr[1] "(%d turni rimasti)"
+msgstr[1] "($remaining_turns turni rimasti)"
 
 #. [lua]: generate_objectives
 #: data/lua/wml/objectives.lua:119
@@ -5631,9 +5631,12 @@ msgstr ""
 "estensioni dal server."
 
 #: src/addon/manager_ui.cpp:282
+#, fuzzy
+#| msgid ""
+#| "Could not find add-ons matching the ids $addon_ids on the add-on server."
 msgid "Could not find an add-on matching id $addon_id on the add-on server."
 msgstr ""
-"Non è stato possibile trovare un’estensione corrispondente all’ID $addon_id "
+"Non è stato possibile trovare estensioni corrispondenti agli ID $addon_id "
 "sul server delle estensioni."
 
 #: src/addon/validation.cpp:387
