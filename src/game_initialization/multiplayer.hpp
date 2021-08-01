@@ -15,6 +15,7 @@
 
 #pragma once
 
+#include <functional>
 #include <string>
 
 class commandline_options;
@@ -67,4 +68,20 @@ bool logged_in_as_moderator();
 /** Gets the forum profile link for the given user. */
 std::string get_profile_link(int user_id);
 
-}
+/** Attempts to send given data to server if a connection is open. */
+void yeet_to_server(const config& data);
+
+/** RAII helper class to register a network handler. */
+class network_registrar
+{
+public:
+	using handler = std::function<void(const config&)>;
+
+	network_registrar(handler func);
+	~network_registrar();
+
+private:
+	std::function<void()> remove_handler{};
+};
+
+} // namespace mp

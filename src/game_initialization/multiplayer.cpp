@@ -52,6 +52,8 @@
 
 static lg::log_domain log_mp("mp/main");
 #define DBG_MP LOG_STREAM(debug, log_mp)
+#define LOG_MP LOG_STREAM(info, log_mp)
+#define WRN_MP LOG_STREAM(warn, log_mp)
 #define ERR_MP LOG_STREAM(err, log_mp)
 
 namespace mp
@@ -67,6 +69,7 @@ class mp_manager
 public:
 	// Declare this as a friend to allow direct access to enter_create_mode
 	friend void mp::start_local_game();
+	friend void mp::yeet_to_server(const config&);
 
 	mp_manager(const std::optional<std::string> host);
 
@@ -144,10 +147,17 @@ private:
 
 	mp::lobby_info lobby_info;
 
+	std::list<mp::network_registrar::handler> process_handlers;
+
 public:
 	const session_metadata& get_session_info() const
 	{
 		return session_info;
+	}
+
+	auto add_network_handler(decltype(process_handlers)::value_type func)
+	{
+		return [this, iter = process_handlers.insert(process_handlers.end(), func)]() { process_handlers.erase(iter); };
 	}
 };
 
@@ -158,6 +168,7 @@ mp_manager::mp_manager(const std::optional<std::string> host)
 	, session_info()
 	, state()
 	, lobby_info()
+	, process_handlers()
 {
 	state.classification().campaign_type = game_classification::CAMPAIGN_TYPE::MULTIPLAYER;
 
@@ -202,6 +213,13 @@ mp_manager::mp_manager(const std::optional<std::string> host)
 
 					else if(const auto gamelist_diff = data.optional_child("gamelist_diff")) {
 						this->lobby_info.process_gamelist_diff(*gamelist_diff);
+					}
+
+					else {
+						// No special actions to take. Pass the data on to the network handlers.
+						for(const auto& handler : process_handlers) {
+							handler(data);
+						}
 					}
 				}
 			});
@@ -821,6 +839,27 @@ std::string get_profile_link(int user_id)
 	}
 
 	return "";
+}
+
+void yeet_to_server(const config& data)
+{
+	if(manager && manager->connection) {
+		manager->connection->send_data(data);
+	}
+}
+
+network_registrar::network_registrar(handler func)
+{
+	if(manager /*&& manager->connection*/) {
+		remove_handler = manager->add_network_handler(func);
+	}
+}
+
+network_registrar::~network_registrar()
+{
+	if(remove_handler) {
+		remove_handler();
+	}
 }
 
 } // end namespace mp
