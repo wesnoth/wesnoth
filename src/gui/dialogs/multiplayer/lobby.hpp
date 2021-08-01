@@ -115,7 +115,7 @@ private:
 
 	void refresh_lobby();
 
-	void game_filter_reload();
+	void game_filter_init();
 
 	void game_filter_change_callback();
 

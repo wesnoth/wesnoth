@@ -632,7 +632,8 @@ void mp_lobby::pre_show(window& window)
 
 	chatbox_->room_window_open(N_("lobby"), true, false);
 	chatbox_->active_window_changed();
-	game_filter_reload();
+
+	game_filter_init();
 
 	// Force first update to be directly.
 	update_gamelist();
@@ -930,54 +931,48 @@ void mp_lobby::show_server_info()
 	server_info::display(server_information_, announcements_);
 }
 
-void mp_lobby::game_filter_reload()
+void mp_lobby::game_filter_init()
 {
-	lobby_info_.clear_game_filter();
+	lobby_info_.clear_game_filters();
 
-	for(const auto& s : utils::split(filter_text_->get_value(), ' ')) {
-		lobby_info_.add_game_filter([s](const mp::game_info& info)->bool {
-			return info.match_string_filter(s);
-		});
-	}
+	lobby_info_.add_game_filter([this](const mp::game_info& info) {
+		for(const auto& s : utils::split(filter_text_->get_value(), ' ')) {
+			if(!info.match_string_filter(s)) {
+				return false;
+			}
+		}
 
-	window& window = *get_window();
+		return true;
+	});
 
-	// TODO: make changing friend/ignore lists trigger a refresh
-	if(filter_friends_->get_widget_value(window)) {
-		lobby_info_.add_game_filter([](const mp::game_info& info)->bool {
-			return info.has_friends == true;
-		});
-	}
+	lobby_info_.add_game_filter([this](const mp::game_info& info) {
+		return filter_friends_->get_widget_value(*get_window()) ? info.has_friends == true : true;
+	});
 
 	// Unlike the friends filter, this is an inclusion filter (do we want to also show
 	// games with blocked players) rather than an exclusion filter (do we want to show
 	// only games with friends).
-	if(filter_ignored_->get_widget_value(window) == false) {
-		lobby_info_.add_game_filter([](const mp::game_info& info)->bool {
-			return info.has_ignored == false;
-		});
-	}
+	lobby_info_.add_game_filter([this](const mp::game_info& info) {
+		return filter_ignored_->get_widget_value(*get_window()) == false ? info.has_ignored == false : true;
+	});
 
-	if(filter_slots_->get_widget_value(window)) {
-		lobby_info_.add_game_filter([](const mp::game_info& info)->bool {
-			return info.vacant_slots > 0;
-		});
-	}
+	lobby_info_.add_game_filter([this](const mp::game_info& info) {
+		return filter_slots_->get_widget_value(*get_window()) ? info.vacant_slots > 0 : true;
+	});
 
-	lobby_info_.set_game_filter_invert(filter_invert_->get_widget_value(window));
+	lobby_info_.set_game_filter_invert(
+		[this](bool val) { return filter_invert_->get_widget_value(*get_window()) ? !val : val; });
 }
 
 void mp_lobby::game_filter_keypress_callback(const SDL_Keycode key)
 {
 	if(key == SDLK_RETURN || key == SDLK_KP_ENTER) {
-		game_filter_reload();
 		update_gamelist_filter();
 	}
 }
 
 void mp_lobby::game_filter_change_callback()
 {
-	game_filter_reload();
 	update_gamelist_filter();
 }
 

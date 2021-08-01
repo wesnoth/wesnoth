@@ -73,13 +73,13 @@ public:
 	}
 
 	/** Clears all game filter functions. */
-	void clear_game_filter()
+	void clear_game_filters()
 	{
 		game_filters_.clear();
 	}
 
 	/** Sets whether the result of each game filter should be inverted. */
-	void set_game_filter_invert(bool value)
+	void set_game_filter_invert(std::function<bool(bool)> value)
 	{
 		game_filter_invert_ = value;
 	}
@@ -145,7 +145,7 @@ private:
 
 	std::vector<game_filter_func> game_filters_;
 
-	bool game_filter_invert_;
+	std::function<bool(bool)> game_filter_invert_;
 
 	boost::dynamic_bitset<> games_visibility_;
 };

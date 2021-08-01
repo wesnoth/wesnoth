@@ -352,22 +352,15 @@ void lobby_info::make_games_vector()
 	games_visibility_.flip();
 }
 
-bool lobby_info::is_game_visible(const game_info& game) {
-	bool show = true;
-
+bool lobby_info::is_game_visible(const game_info& game)
+{
 	for(const auto& filter_func : game_filters_) {
-		show = filter_func(game);
-
-		if(!show) {
-			break;
+		if(!game_filter_invert_(filter_func(game))) {
+			return false;
 		}
 	}
 
-	if(game_filter_invert_) {
-		show = !show;
-	}
-
-	return show;
+	return true;
 }
 
 void lobby_info::apply_game_filter()
