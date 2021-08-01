@@ -17,7 +17,6 @@
 #include "gui/widgets/chatbox.hpp"
 
 #include "gui/auxiliary/find_widget.hpp"
-
 #include "gui/core/register_widget.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/image.hpp"
@@ -32,13 +31,13 @@
 #include "font/pango/escape.hpp"
 #include "formatter.hpp"
 #include "formula/string_utils.hpp"
+#include "game_initialization/multiplayer.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
 #include "preferences/credentials.hpp"
 #include "preferences/game.hpp"
 #include "preferences/lobby.hpp"
 #include "scripting/plugins/manager.hpp"
-#include "wesnothd_connection.hpp"
 
 static lg::log_domain log_lobby("lobby");
 #define DBG_LB LOG_STREAM(debug, log_lobby)
@@ -63,7 +62,6 @@ chatbox::chatbox(const implementation::builder_chatbox& builder)
 	, active_window_(0)
 	, active_window_changed_callback_()
 	, chat_info_()
-	, wesnothd_connection_(nullptr)
 	, log_(nullptr)
 {
 	// We only implement a RECEIVE_KEYBOARD_FOCUS handler; LOSE_KEYBOARD_FOCUS
@@ -476,9 +474,7 @@ void chatbox::close_window_button_callback(std::string room_name, bool& handled,
 
 void chatbox::send_to_server(const ::config& cfg)
 {
-	if(wesnothd_connection_) {
-		wesnothd_connection_->send_data(cfg);
-	}
+	mp::yeet_to_server(cfg);
 }
 
 void chatbox::increment_waiting_whispers(const std::string& name)

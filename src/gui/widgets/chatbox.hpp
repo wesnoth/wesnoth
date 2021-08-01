@@ -24,7 +24,6 @@
 #include <string>
 
 class config;
-class wesnothd_connection;
 
 namespace gui2
 {
@@ -85,11 +84,6 @@ public:
 		active_window_changed_callback_ = f;
 	}
 
-	void set_wesnothd_connection(wesnothd_connection& c)
-	{
-		wesnothd_connection_ = &c;
-	}
-
 	void load_log(std::map<std::string, chatroom_log>& log, bool show_lobby);
 
 protected:
@@ -141,8 +135,6 @@ private:
 	std::function<void(void)> active_window_changed_callback_;
 
 	mp::chat_info chat_info_;
-
-	wesnothd_connection* wesnothd_connection_;
 
 	std::map<std::string, chatroom_log>* log_;
 

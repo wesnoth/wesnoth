@@ -242,8 +242,6 @@ void mp_join_game::pre_show(window& window)
 	//
 	chatbox& chat = find_widget<chatbox>(&window, "chat", false);
 
-	chat.set_wesnothd_connection(network_connection_);
-
 	chat.room_window_open(N_("this game"), true, false);
 	chat.active_window_changed();
 	chat.load_log(default_chat_log, false);
