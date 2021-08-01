@@ -45,7 +45,7 @@ lobby_info::lobby_info()
 	, games_()
 	, users_()
 	, game_filters_()
-	, game_filter_invert_(false)
+	, game_filter_invert_()
 	, games_visibility_()
 {
 	refresh_installed_addons_cache();
