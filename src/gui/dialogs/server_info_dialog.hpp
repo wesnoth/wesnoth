@@ -16,11 +16,7 @@
 
 #include "gui/dialogs/modal_dialog.hpp"
 
-namespace gui2
-{
-class listbox;
-
-namespace dialogs
+namespace gui2::dialogs
 {
 class server_info : public modal_dialog
 {
@@ -28,17 +24,14 @@ public:
 	/**
 	 * Constructor.
 	 */
-	server_info(const std::string& info, const std::string& announcement);
+	server_info();
 
 	/**
 	 * The display function.
 	 *
 	 * See @ref modal_dialog for more information.
 	 */
-	static void display(const std::string& info, const std::string& announcements)
-	{
-		server_info(info, announcements).show();
-	}
+	DEFINE_SIMPLE_DISPLAY_WRAPPER(server_info)
 
 private:
 	virtual const std::string& window_id() const override;
@@ -46,9 +39,5 @@ private:
 	virtual void pre_show(window& window) override;
 
 	void tab_switch_callback();
-
-	const std::string& server_information_;
-	const std::string& announcements_;
 };
-}
 }
