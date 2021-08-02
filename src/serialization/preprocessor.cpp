@@ -182,7 +182,7 @@ void preproc_define::write(config_writer& writer, const std::string& name) const
 	writer.write_key_val("textdomain", textdomain);
 	writer.write_key_val("linenum", std::to_string(linenum));
 	writer.write_key_val("location", get_location(location));
-	
+
 	if(is_deprecated()) {
 		writer.open_child("deprecated");
 		writer.write_key_val("level", int(*deprecation_level));
@@ -194,7 +194,7 @@ void preproc_define::write(config_writer& writer, const std::string& name) const
 	for(const std::string& arg : arguments) {
 		write_argument(writer, arg);
 	}
-	
+
 	for(const auto& [key, default_value] : optional_arguments) {
 		write_argument(writer, key, default_value);
 	}
@@ -217,7 +217,7 @@ void preproc_define::read(const config& cfg)
 	textdomain = cfg["textdomain"].str();
 	linenum = cfg["linenum"];
 	location = cfg["location"].str();
-	
+
 	if(auto deprecated = cfg.optional_child("deprecated")) {
 		deprecation_level = DEP_LEVEL(deprecated.value()["level"].to_int());
 		deprecation_version = deprecated.value()["version"].str();
