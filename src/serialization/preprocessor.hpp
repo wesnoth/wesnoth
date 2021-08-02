@@ -97,6 +97,7 @@ struct preproc_define
 
 	void write(config_writer&, const std::string&) const;
 	void write_argument(config_writer&, const std::string&) const;
+	void write_argument(config_writer&, const std::string&, const std::string&) const;
 
 	void read(const config&);
 	void read_argument(const config&);
