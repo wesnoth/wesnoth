@@ -161,6 +161,17 @@ void preproc_define::write_argument(config_writer& writer, const std::string& ar
 	writer.close_child(key);
 }
 
+void preproc_define::write_argument(config_writer& writer, const std::string& arg, const std::string& default_value) const
+{
+	const std::string key = "argument";
+
+	writer.open_child(key);
+
+	writer.write_key_val("name", arg);
+	writer.write_key_val("default", default_value);
+	writer.close_child(key);
+}
+
 void preproc_define::write(config_writer& writer, const std::string& name) const
 {
 	const std::string key = "preproc_define";
@@ -183,13 +194,21 @@ void preproc_define::write(config_writer& writer, const std::string& name) const
 	for(const std::string& arg : arguments) {
 		write_argument(writer, arg);
 	}
+	
+	for(const auto& [key, default_value] : optional_arguments) {
+		write_argument(writer, key, default_value);
+	}
 
 	writer.close_child(key);
 }
 
 void preproc_define::read_argument(const config& cfg)
 {
-	arguments.push_back(cfg["name"]);
+	if(cfg.has_attribute("default")) {
+		optional_arguments.emplace(cfg["name"], cfg["default"]);
+	} else {
+		arguments.push_back(cfg["name"]);
+	}
 }
 
 void preproc_define::read(const config& cfg)
