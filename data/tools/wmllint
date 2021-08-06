@@ -605,6 +605,11 @@ linechanges = (
         # Changes just before 1.9.2
         ("[removeitem]", "[remove_item]"),
         ("[/removeitem]", "[/remove_item]"),
+        # Changes introduced in the 1.9.x cycle
+        ("TRANSITION_BASE_Ls", "TRANSITION_RESTRICTED_Ls"),
+        ("TRANSITION_BASE_LF", "TRANSITION_RESTRICTED_LF"),
+        ("TRANSITION_BASE_LB", "TRANSITION_RESTRICTED_LB"),
+        ("TRANSITION_BASE_L", "TRANSITION_RESTRICTED_L"),
         # Changes just before 1.11.0
         ("viewing_side", "side"),
         ("duration=level", "duration=scenario"), # Note: this may be removed after 1.11.2, so an actual duration=level can be implemented
