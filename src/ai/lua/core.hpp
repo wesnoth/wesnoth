@@ -48,6 +48,7 @@ public:
 	void get_arguments(config &) const;
 	void set_arguments(const config &);
 	void push_ai_table();
+	void apply_micro_ai(const config& cfg);
 	static void init(lua_State *L);
 	friend class ::game_lua_kernel;
 	friend class lua_ai_load;

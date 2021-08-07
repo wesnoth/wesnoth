@@ -57,6 +57,8 @@ public:
 
 	virtual std::string evaluate(const std::string &str);
 
+	void apply_micro_ai(const config& cfg);
+
 	/**
 	 * Method that pushes the AI table of the lua_context on the stack
 	 * for debugging purposes
