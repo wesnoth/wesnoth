@@ -54,7 +54,7 @@ function ca_stationed_guardian:execution(cfg)
         -- Find tiles adjacent to the target
         -- Save the one with the highest defense rating that guardian can reach
         local best_defense, attack_loc = - math.huge
-        for xa,ya in wesnoth.current.map:iter_adjacent(target.x) do
+        for xa,ya in wesnoth.current.map:iter_adjacent(target) do
             -- Only consider unoccupied hexes
             local unit_in_way = wesnoth.units.get(xa, ya)
             if (not AH.is_visible_unit(wesnoth.current.side, unit_in_way))
