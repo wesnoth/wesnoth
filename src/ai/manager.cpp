@@ -207,6 +207,17 @@ void holder::append_ai(const config& cfg)
 			ai_->add_stage(stage);
 		}
 	}
+	for(config mod : cfg.child_range("modify_ai")) {
+		if (!mod.has_attribute("side")) {
+			mod["side"] = side_context_->get_side();
+		}
+		modify_ai(mod);
+	}
+	for(config micro : cfg.child_range("micro_ai")) {
+		micro["side"] = side_context_->get_side();
+		micro["action"] = "add";
+		micro_ai(micro);
+	}
 }
 
 config holder::to_config() const
