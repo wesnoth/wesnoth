@@ -40,6 +40,7 @@
 #include "game_config.hpp"              // for debug
 #include "ai/lua/aspect_advancements.hpp"
 #include "ai/registry.hpp"              // for init
+#include "ai/lua/engine_lua.hpp"
 
 #include <algorithm>                    // for min
 #include <cassert>                     // for assert
@@ -107,7 +108,12 @@ void holder::init( side_number side )
 			}
 			modify_ai(mod_ai);
 		}
-		cfg_.clear_children("modify_ai");
+		for(config& micro : cfg_.child_range("micro_ai")) {
+			micro["side"] = side;
+			micro["action"] = "add";
+			micro_ai(micro);
+		}
+		cfg_.clear_children("modify_ai", "micro_ai");
 
 		std::vector<engine_ptr> engines = ai_->get_engines();
 		for (std::vector<engine_ptr>::iterator it = engines.begin(); it != engines.end(); ++it)
@@ -138,6 +144,19 @@ ai_composite& holder::get_ai_ref()
 	assert(this->ai_);
 
 	return *this->ai_;
+}
+
+void holder::micro_ai(const config& cfg)
+{
+	if (!this->ai_) {
+		this->init(this->side_);
+	}
+	assert(this->ai_);
+
+	auto engine = this->ai_->get_engine_by_cfg(config{"engine", "lua"});
+	if(auto lua = std::dynamic_pointer_cast<engine_lua>(engine)) {
+		lua->apply_micro_ai(cfg);
+	}
 }
 
 void holder::modify_ai(const config &cfg)

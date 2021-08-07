@@ -63,6 +63,7 @@ public:
 	config to_config() const;
 
 	void modify_ai(const config& cfg);
+	void micro_ai(const config& cfg);
 
 	void append_ai(const config& cfg);
 

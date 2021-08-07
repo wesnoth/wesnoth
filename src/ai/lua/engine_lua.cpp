@@ -385,6 +385,11 @@ std::string engine_lua::evaluate(const std::string &/*str*/)
 	return "";
 }
 
+void engine_lua::apply_micro_ai(const config &cfg)
+{
+	lua_ai_context_->apply_micro_ai(cfg);
+}
+
 config engine_lua::to_config() const
 {
 	config cfg = engine::to_config();

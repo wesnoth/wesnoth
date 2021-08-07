@@ -952,6 +952,13 @@ static size_t generate_and_push_ai_state(lua_State* L, ai::engine_lua* engine)
 	return length_ai + 1;
 }
 
+void lua_ai_context::apply_micro_ai(const config &cfg)
+{
+	luaW_getglobal(L, "wesnoth", "wml_actions", "micro_ai");
+	luaW_pushconfig(L, cfg);
+	luaW_pcall(L, 1, 0);
+}
+
 lua_ai_context* lua_ai_context::create(lua_State *L, char const *code, ai::engine_lua *engine)
 {
 	int res_ai = luaL_loadbufferx(L, code, strlen(code), /*name*/ code, "t"); // [-1: AI code]
