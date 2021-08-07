@@ -5,8 +5,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth_Tutorial-1.12\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-06-23 15:42 UTC\n"
-"PO-Revision-Date: 2020-06-01 11:00+0200\n"
+"POT-Creation-Date: 2021-06-23 15:36 UTC\n"
+"PO-Revision-Date: 2021-07-06 11:10+0200\n"
 "Last-Translator: Syll <syll-dev@laposte.net>\n"
 "Language-Team: French <wesnoth@ml.free.fr>\n"
 "Language: fr\n"
@@ -14,20 +14,18 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 2.2.1\n"
+"X-Generator: Poedit 3.0\n"
 
 #. [campaign]: id=Tutorial
 #: data/campaigns/tutorial/_main.cfg:11
 msgid "Battle Training"
-msgstr ""
+msgstr "Entraînement au combat"
 
 #. [difficulty]
 #. [campaign]: id=Tutorial
 #: data/campaigns/tutorial/_main.cfg:14 data/campaigns/tutorial/_main.cfg:30
-#, fuzzy
-#| msgid "Wesnoth Tutorial"
 msgid "Tutorial"
-msgstr "Didacticiel de Wesnoth"
+msgstr "Didacticiel"
 
 #. [campaign]: id=Tutorial
 #: data/campaigns/tutorial/_main.cfg:21
@@ -35,11 +33,13 @@ msgid ""
 "Learn the basics of Wesnoth gameplay with a tutorial. Recommended for first "
 "time players."
 msgstr ""
+"Apprenez les bases du jeu Wesnoth lors d'un didacticiel. Recommandé pour les "
+"nouveaux joueurs."
 
 #. [difficulty]
 #: data/campaigns/tutorial/_main.cfg:31
 msgid "Beginner"
-msgstr ""
+msgstr "Débutant"
 
 # À l'infinitif comme le titre de la boîte de dialogue de confirmation quand on veut quitter la partie ("Quitter"). Sauf si quelqu'un a une autre référence.
 #. [label]
@@ -118,15 +118,11 @@ msgstr "Vous faire tuer"
 
 #. [disallow_end_turn]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:137
-#, fuzzy
-#| msgid ""
-#| "You cannot end your turn until you have recruited troops and captured a "
-#| "village!"
 msgid ""
 "You cannot end your turn until you have completed the lesson on movement!"
 msgstr ""
-"Vous ne pouvez pas terminer votre tour avant d'avoir recruter des troupes et "
-"capturé un village !"
+"Vous ne pouvez pas terminer votre tour avant d'avoir terminé votre leçon sur "
+"les déplacements !"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:146
@@ -339,14 +335,9 @@ msgstr ""
 
 #. [disallow_end_turn]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:527
-#, fuzzy
-#| msgid ""
-#| "You cannot end your turn until you have recruited troops and captured a "
-#| "village!"
 msgid "You cannot end your turn until you have attacked the dummy!"
 msgstr ""
-"Vous ne pouvez pas terminer votre tour avant d'avoir recruter des troupes et "
-"capturé un village !"
+"Vous ne pouvez pas terminer votre tour avant d'avoir attaquer le jouet !"
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:541
@@ -465,15 +456,11 @@ msgstr "Terminez votre tour"
 
 #. [disallow_end_turn]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:631
-#, fuzzy
-#| msgid ""
-#| "You cannot end your turn until you have recruited troops and captured a "
-#| "village!"
 msgid ""
 "You cannot end your turn until you have completed the lesson on healing!"
 msgstr ""
-"Vous ne pouvez pas terminer votre tour avant d'avoir recruter des troupes et "
-"capturé un village !"
+"Vous ne pouvez pas terminer votre tour avant d'avoir terminé votre leçon sur "
+"les soins !"
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:642
@@ -535,15 +522,11 @@ msgstr ""
 
 #. [disallow_end_turn]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:698
-#, fuzzy
-#| msgid ""
-#| "You cannot end your turn until you have recruited troops and captured a "
-#| "village!"
 msgid ""
 "You cannot end your turn until you have completed the lesson on recruiting!"
 msgstr ""
-"Vous ne pouvez pas terminer votre tour avant d'avoir recruter des troupes et "
-"capturé un village !"
+"Vous ne pouvez pas terminer votre tour avant d'avoir terminé votre leçon sur "
+"les recrutements !"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:707
@@ -650,15 +633,11 @@ msgstr ""
 
 #. [disallow_end_turn]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:830
-#, fuzzy
-#| msgid ""
-#| "You cannot end your turn until you have recruited troops and captured a "
-#| "village!"
 msgid ""
 "You cannot end your turn until you have completed the lesson on attacking!"
 msgstr ""
-"Vous ne pouvez pas terminer votre tour avant d'avoir recruter des troupes et "
-"capturé un village !"
+"Vous ne pouvez pas terminer votre tour avant d'avoir terminé votre leçon sur "
+"les attaques !"
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:839
@@ -733,22 +712,17 @@ msgstr ""
 #. [message]: speaker=Delfador
 #. a strong elf, so +1 damage
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:918
-#, fuzzy
-#| msgid ""
-#| "Your elf used a sword (5×4; or 5 damage on each hit, with 4 attacks), "
-#| "which is a <i>melee</i> attack. The quintain defended with its melee "
-#| "attack (3×5; or 3 damage on each hit, with 5 attacks). The ranged attack "
-#| "(the bow) would have been safer."
 msgid ""
 "Your elf used a sword (6×4; or 6 damage on each hit, with 4 attacks), which "
 "is a <i>melee</i> attack. The quintain defended with its melee attack (3×5; "
 "or 3 damage on each hit, with 5 attacks). The ranged attack (the bow) would "
 "have been safer."
 msgstr ""
-"Votre elfe a utilisé une épée (5x4, soit 5 points de dégâts pour chaque "
+"Votre elfe a utilisé une épée (6x4, soit 6 points de dégâts pour chaque "
 "touche, avec 4 attaques), qui est une arme de <i>corps-à-corps</i>. La "
-"quintaine s'est défendue avec son arme de corps-à-corps (3x5). L'attaque à "
-"distance aurait été plus sûre."
+"quintaine s'est défendue avec son arme de corps-à-corps (3x5, soit 3 points "
+"de dégâts pour chaque touche, avec 5 attaques). L'attaque à distance (l'arc) "
+"aurait été plus sûre."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:922
@@ -756,6 +730,9 @@ msgid ""
 "Elvish Fighters normally do 5×4 damage with their swords, but this elf has "
 "the <i>strong</i> trait, which increases the damage output of melee attacks."
 msgstr ""
+"Les guerriers elfes font normalement 5x4 point de dégâts avec leur épée, "
+"mais cet elfe a le trait <i>fort</i>, ce qui accroît ses dommages avec "
+"l'attaque de corps-à-corps."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:928
@@ -773,18 +750,13 @@ msgstr ""
 #. [message]: speaker=Delfador
 #. a dextrous elf, so +1 damage
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:949
-#, fuzzy
-#| msgid ""
-#| "Your elf used a bow, which is a <i>ranged</i> attack (3×3; or 3 damage on "
-#| "each hit, with 3 attacks). The quintain has no ranged attack, only a "
-#| "melee attack, so it could not defend itself."
 msgid ""
 "Your elf used a bow, which is a <i>ranged</i> attack (4×3; or 4 damage on "
 "each hit, with 3 attacks). The quintain has no ranged attack, only a melee "
 "attack, so it could not defend itself."
 msgstr ""
-"Votre elfe a utilisé un arc, qui est une attaque <i>à distance</i> (3x3, "
-"soit 3 points de dégâts pour chaque touche, avec 3 attaques). La quintaine "
+"Votre elfe a utilisé un arc, qui est une attaque <i>à distance</i> (4x3, "
+"soit 4 points de dégâts pour chaque touche, avec 3 attaques). La quintaine "
 "n'a pas d'attaque à distance, mais seulement une attaque de corps-à-corps ; "
 "elle n'a donc pas été en mesure de se défendre."
 
@@ -794,6 +766,9 @@ msgid ""
 "Elvish Fighters normally do 3×3 damage with their bows, but this elf has the "
 "<i>dextrous</i> trait, which increases the damage output of ranged attacks."
 msgstr ""
+"Les guerriers elfes font normalement 3x3 point de dégâts avec leur arc, mais "
+"cet elfe a le trait <i>habile</i>, ce qui accroît ses dommages avec "
+"l'attaque à distance."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:959
@@ -2092,7 +2067,7 @@ msgstr ""
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1021
 msgid "Speeding Up Animations"
-msgstr ""
+msgstr "Accélérer les animations"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1023
@@ -2101,6 +2076,10 @@ msgid ""
 "quicker. The <b>acceleration factor</b> can be set, and turned on by "
 "default, in the <b>Preferences</b> menu’s <b>General</b> tab."
 msgstr ""
+"Maintenir la touche <b>Majuscule</b> rendra les animations de déplacement et "
+"de combat plus rapide. Le <i>facteur d’accélération</i> peut être défini et "
+"activer par défaut dans le menu <i>préférences</i> de l'onglet <i>Général</"
+"i>."
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1032
@@ -2524,15 +2503,12 @@ msgstr ""
 "actions si vous faites une erreur."
 
 #: data/campaigns/tutorial/utils/utils.cfg:126
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "<big>Click a mouse button or press the spacebar to continue...</big>"
 msgid ""
 "\n"
 "\n"
 "<big>Click a mouse button or press the spacebar to continue...</big>"
 msgstr ""
+"\n"
 "\n"
 "<big>Appuyez sur un bouton de la souris ou sur la barre d'espace pour "
 "continuer...</big>"

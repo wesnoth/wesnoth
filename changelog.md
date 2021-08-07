@@ -8,7 +8,7 @@
  ### Packaging
  ### Terrain
  ### Translations
-   * Updated translations: Bulgarian, Chinese (Traditional), Czech, Italian, Portuguese (Brazil), Russian, Spanish, Turkish
+   * Updated translations: Bulgarian, Chinese (Traditional), Czech, French, Italian, Portuguese (Brazil), Russian, Spanish, Turkish
  ### Units
  ### User interface
    * The names of the abilities used as specials appear in the attack prediction window with specials weapons

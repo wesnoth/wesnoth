@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: Wesnoth_Lib-1.12\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2021-06-23 11:42-0400\n"
-"PO-Revision-Date: 2021-02-08 16:04+0100\n"
+"PO-Revision-Date: 2021-07-06 11:54+0200\n"
 "Last-Translator: Clémence\n"
 "Language-Team: French <wesnothfr@lists.tuxfamily.org>\n"
 "Language: fr\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 2.4.2\n"
+"X-Generator: Poedit 3.0\n"
 
 #. [ai]: id=ai_default_rca
 #: data/ai/ais/ai_default_rca.cfg:9
@@ -60,8 +60,6 @@ msgstr "Clôture"
 #. [row]
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:193
 #: data/gui/window/mp_faction_select.cfg:176
-#, fuzzy
-#| msgid "Random"
 msgid "gender^Random"
 msgstr "Aléatoire"
 
@@ -269,10 +267,8 @@ msgstr "Pavés envahis par la végétation"
 
 #. [terrain_type]: id=road_icy
 #: data/core/terrain.cfg:271
-#, fuzzy
-#| msgid "Clean Gray Cobbles"
 msgid "Icy Cobbles"
-msgstr "Pavés gris entretenus"
+msgstr "Pavés gelés"
 
 #. [terrain_type]: id=ice
 #: data/core/terrain.cfg:284
@@ -2326,7 +2322,7 @@ msgstr "Profil"
 #. [label]
 #: data/gui/window/addon_auth.cfg:41
 msgid "Authenticate"
-msgstr ""
+msgstr "Authentification"
 
 #. [label]
 #: data/gui/window/addon_auth.cfg:71 data/gui/window/mp_create_game.cfg:990
@@ -2452,11 +2448,11 @@ msgstr "J'accepte"
 
 #: data/gui/window/addon_manager.cfg:9
 msgid "Traffic between the game and server is not secure"
-msgstr ""
+msgstr "Le trafic entre le jeu et le serveur n'est pas sécurisé"
 
 #: data/gui/window/addon_manager.cfg:13
 msgid "Traffic between the game and server is encrypted"
-msgstr ""
+msgstr "Le trafic entre le jeu et le serveur est chiffré"
 
 #. [label]: id=byline
 #: data/gui/window/addon_manager.cfg:154
@@ -2470,10 +2466,8 @@ msgstr "Version :"
 
 #. [menu_button]: id=version_filter
 #: data/gui/window/addon_manager.cfg:203
-#, fuzzy
-#| msgid "Delete add-on from server"
 msgid "Select the add-on version"
-msgstr "Supprimer l'extension du serveur"
+msgstr "Sélectionne la version de l'extension"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [scroll_label]: id=description
@@ -2577,8 +2571,6 @@ msgstr "Gestionnaire d'extensions"
 #. [button]: id=details_toggle
 #: data/gui/window/addon_manager.cfg:1003 src/gui/dialogs/addon/manager.cpp:510
 #: src/gui/dialogs/addon/manager.cpp:745
-#, fuzzy
-#| msgid "Addon Details"
 msgid "Add-on Details"
 msgstr "Détails de l'extension"
 
@@ -2668,10 +2660,8 @@ msgstr "Trier par le nom complet de la campagne par ordre alphabétique"
 
 #. [toggle_button]: id=sort_time
 #: data/gui/window/campaign_dialog.cfg:230
-#, fuzzy
-#| msgid "Time limit:"
 msgid "Timeline"
-msgstr "Limite de temps :"
+msgstr "Chronologie"
 
 #. [toggle_button]: id=sort_time
 #: data/gui/window/campaign_dialog.cfg:231
@@ -2688,34 +2678,32 @@ msgstr "Modifications :"
 #. [label]
 #: data/gui/window/campaign_dialog.cfg:306
 msgid "Combat:"
-msgstr ""
+msgstr "Combat :"
 
 #. [option]
 #: data/gui/window/campaign_dialog.cfg:321
-#, fuzzy
-#| msgid "Default"
 msgid "Default RNG"
-msgstr "Défaut"
+msgstr "RNG par défaut"
 
 #. [option]
 #: data/gui/window/campaign_dialog.cfg:322
 msgid "Reloading alters future combat outcomes"
-msgstr ""
+msgstr "Le rechargement altère l'issue des prochains combats"
 
 #. [option]
 #: data/gui/window/campaign_dialog.cfg:325
 msgid "Predictable RNG"
-msgstr ""
+msgstr "RNG prévisible"
 
 #. [option]
 #: data/gui/window/campaign_dialog.cfg:326
 msgid "Combat outcomes remain constant when reloading"
-msgstr ""
+msgstr "L'issue des combats reste constante lors d'un rechargement"
 
 #. [option]
 #: data/gui/window/campaign_dialog.cfg:329
 msgid "Biased RNG (experimental)"
-msgstr ""
+msgstr "RNG biaisé (expérimental)"
 
 #. [option]
 #: data/gui/window/campaign_dialog.cfg:330
@@ -2723,6 +2711,8 @@ msgid ""
 "Combat outcomes are more in line with displayed probabilities and unaffected "
 "by reloading"
 msgstr ""
+"L'issue des combats est plus en phase avec les probabilités affichées et "
+"n'est pas affectée par un rechargement"
 
 #. [label]
 #: data/gui/window/campaign_dialog.cfg:345
@@ -4237,10 +4227,8 @@ msgstr "Changer le contrôle"
 
 #. [label]
 #: data/gui/window/mp_connect.cfg:71
-#, fuzzy
-#| msgid "Log on to the official Wesnoth multiplayer server"
 msgid "Choose or enter the address of a multiplayer server."
-msgstr "Se connecter au serveur multijoueur officiel de Wesnoth"
+msgstr "Choisissez ou entrez l'adresse du serveur multijoueur."
 
 #. [label]
 #: data/gui/window/mp_connect.cfg:101
@@ -4254,7 +4242,6 @@ msgstr "Adresse"
 
 #. [button]: id=server_add
 #: data/gui/window/mp_connect.cfg:270
-#, fuzzy
 msgid "Add"
 msgstr "Ajouter"
 
@@ -4270,12 +4257,10 @@ msgstr "Match de faction aléatoire :"
 
 #. [label]
 #: data/gui/window/mp_create_game.cfg:156
-#, fuzzy
-#| msgid "Allow for mirror matchups when random factions are chosen."
 msgid "Allow for mirror matchups when random factions are chosen"
 msgstr ""
 "Autoriser les matchs miroirs lorsque des factions aléatoires sont "
-"sélectionnées."
+"sélectionnées"
 
 #. [toggle_button]: id=use_map_settings
 #: data/gui/window/mp_create_game.cfg:313
@@ -4484,15 +4469,11 @@ msgstr "Nom du jeu :"
 
 #. [text_box]: id=game_password
 #: data/gui/window/mp_create_game.cfg:1004
-#, fuzzy
-#| msgid ""
-#| "Set the password that people wanting to join your game as players must "
-#| "enter."
 msgid ""
 "Set the password that people wanting to join your game as players must enter"
 msgstr ""
 "Choisissez le mot de passe qui devra être entré par ceux qui rejoindront "
-"votre partie."
+"votre partie"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
@@ -4703,7 +4684,6 @@ msgstr "Je suis prêt"
 
 #. [text]
 #: data/gui/window/outro.cfg:49
-#, fuzzy
 msgid "Press ESC to skip"
 msgstr "Appuyez sur ESC pour sauter"
 
@@ -4880,10 +4860,8 @@ msgstr "Filtre : "
 
 #. [text_box]: id=filter
 #: data/gui/window/preferences/02_hotkeys.cfg:50
-#, fuzzy
-#| msgid "Filters on hotkey description."
 msgid "Filters on hotkey description"
-msgstr "Filtre sur la description des raccourcis clavier."
+msgstr "Filtre sur la description des raccourcis clavier"
 
 #. [toggle_button]: id=sort_0
 #: data/gui/window/preferences/02_hotkeys.cfg:94
@@ -5259,8 +5237,6 @@ msgstr "Enlever cet utilisateur de votre liste"
 
 #. [label]: id=no_friends_notice
 #: data/gui/window/preferences/05_multiplayer.cfg:311
-#, fuzzy
-#| msgid "You have not befriended or ignored any other players."
 msgid "You have not befriended or blocked any other players."
 msgstr "Vous n'avez aucun joueur en ami ou en ignoré."
 
@@ -5652,8 +5628,6 @@ msgstr "Rappeler l'unité"
 
 #. [text_box]: id=filter_box
 #: data/gui/window/unit_recall.cfg:311
-#, fuzzy
-#| msgid "Search for unit name, unit type name, unit level, or trait."
 msgid "Search for unit name, unit type name, unit level, or trait"
 msgstr ""
 "Recherche à partir du nom de l'unité, de son type, de son niveau ou de ses "
@@ -5718,8 +5692,6 @@ msgid "feature^Cocoa notifications back end"
 msgstr "Notifications via le back-end Cocoa"
 
 #: src/build_info.cpp:331 src/desktop/version.cpp:121
-#, fuzzy
-#| msgid "cpu_archictecture^<unknown>"
 msgid "cpu_architecture^<unknown>"
 msgstr "<inconnu>"
 
@@ -6064,8 +6036,6 @@ msgid "addon_tag^These make the game look different, without changing gameplay"
 msgstr ""
 
 #: src/gui/dialogs/addon/manager.cpp:228
-#, fuzzy
-#| msgid "Difficulty"
 msgid "addon_tag^Difficulty"
 msgstr "Difficulté"
 
@@ -6436,16 +6406,12 @@ msgid "The game data cache could not be purged."
 msgstr "Le cache des données du jeu ne peut pas être purgé."
 
 #: src/gui/dialogs/game_load.cpp:74
-#, fuzzy
-#| msgid "Saved Games"
 msgid "No Saved Games"
-msgstr "Parties sauvegardées"
+msgstr "Aucune partie sauvegardée"
 
 #: src/gui/dialogs/game_load.cpp:74
-#, fuzzy
-#| msgid "There are no alternative video modes available"
 msgid "There are no saved games to load."
-msgstr "Il n'y a pas d'autre mode vidéo disponible"
+msgstr "Il n'y a pas pas de partie sauvegardée à charger."
 
 #: src/gui/dialogs/game_load.cpp:143
 msgid "game_version^Current Version"
@@ -6766,10 +6732,8 @@ msgid "Side $side"
 msgstr "Camp $side"
 
 #: src/gui/dialogs/multiplayer/mp_connect.cpp:185
-#, fuzzy
-#| msgid "Server:"
 msgid "Add Server"
-msgstr "Serveur :"
+msgstr "Ajouter un serveur"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:97
 msgid "Scenarios"
@@ -7093,10 +7057,6 @@ msgid "Joined <i>$name</i>"
 msgstr ""
 
 #: src/gui/widgets/chatbox.cpp:394
-#, fuzzy
-#| msgid ""
-#| "Whisper session with <i>“$name”</i> started. If you do not want to "
-#| "receive messages from this user, type <i>/ignore $name</i>"
 msgid ""
 "Started private message with <i>$name</i>. If you do not want to receive "
 "messages from this player, type <i>/ignore $name</i>"
@@ -7377,10 +7337,8 @@ msgid "End Unit Turn"
 msgstr "Finir le tour de l'unité"
 
 #: src/hotkey/hotkey_command.cpp:84
-#, fuzzy
-#| msgid "Scroll Left"
 msgid "Scroll to Leader"
-msgstr "Défiler vers la gauche"
+msgstr "Défiler vers le chef"
 
 #: src/hotkey/hotkey_command.cpp:85
 msgid "Undo"
@@ -7411,10 +7369,8 @@ msgid "Map Screenshot"
 msgstr "Capture d'écran de la carte"
 
 #: src/hotkey/hotkey_command.cpp:93
-#, fuzzy
-#| msgid "Accelerated speed"
 msgid "Toggle Accelerated Speed"
-msgstr "Turbo"
+msgstr "Activer le mode turbo"
 
 #: src/hotkey/hotkey_command.cpp:94
 msgid "Terrain Description"
@@ -7485,10 +7441,8 @@ msgid "Kill Unit (Debug!)"
 msgstr "Tuer l'unité (débug !)"
 
 #: src/hotkey/hotkey_command.cpp:119
-#, fuzzy
-#| msgid "Scenario Objectives"
 msgid "Objectives"
-msgstr "Objectifs du scénario"
+msgstr "Objectifs"
 
 #: src/hotkey/hotkey_command.cpp:122
 msgid "Pause Network Game"
@@ -7499,10 +7453,8 @@ msgid "Continue Network Game"
 msgstr "Reprendre le jeu en réseau"
 
 #: src/hotkey/hotkey_command.cpp:125
-#, fuzzy
-#| msgid "Quit to Main Menu"
 msgid "Quit to Menu"
-msgstr "Quitter pour l'écran d'accueil"
+msgstr "Quitter vers le menu"
 
 #: src/hotkey/hotkey_command.cpp:126
 msgid "Set Team Label"
@@ -8005,10 +7957,8 @@ msgid "Update Shroud Now"
 msgstr "Mettre à jour le voile"
 
 #: src/hotkey/hotkey_command.cpp:269
-#, fuzzy
-#| msgid "Continue Move"
 msgid "Continue Interrupted Move"
-msgstr "Continuer le déplacement"
+msgstr "Continuer le déplacement interrompu"
 
 #: src/hotkey/hotkey_command.cpp:270
 msgid "Find Label or Unit"
@@ -8031,10 +7981,8 @@ msgid "Hint: save-loading is unnecessary"
 msgstr ""
 
 #: src/hotkey/hotkey_command.cpp:276
-#, fuzzy
-#| msgid "Enter User Command"
 msgid "Enter Command"
-msgstr "Saisir une commande utilisateur"
+msgstr "Saisir une commande"
 
 #: src/hotkey/hotkey_command.cpp:277
 msgid "Custom Command"
@@ -8045,10 +7993,8 @@ msgid "Run Formula"
 msgstr "Évaluer une formule d'IA"
 
 #: src/hotkey/hotkey_command.cpp:279
-#, fuzzy
-#| msgid "Player Chat"
 msgid "Clear Chat"
-msgstr "Discussion entre joueurs"
+msgstr "Effacer la discussion"
 
 #: src/hotkey/hotkey_command.cpp:281
 msgid "Change Language"
