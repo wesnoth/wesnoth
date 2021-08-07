@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-multiplayer\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-06-23 15:36 UTC\n"
-"PO-Revision-Date: 2021-07-01 07:30+0300\n"
+"POT-Creation-Date: 2021-06-23 15:42 UTC\n"
+"PO-Revision-Date: 2021-08-03 03:00+0300\n"
 "Last-Translator: Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>\n"
 "Language-Team: Turkish <>\n"
 "Language: tr\n"
@@ -112,7 +112,7 @@ msgid ""
 "<span strikethrough='true' foreground='$side_color'>Side $side_number</"
 "span>:  Has lost all units"
 msgstr ""
-"<span strikethrough='true' foreground='#%02x%02x%02x'>$side_number. taraf</"
+"<span strikethrough='true' foreground='$side_color'>$side_number|. taraf</"
 "span>: Tüm birimlerini kaybetti"
 
 #. [lua]: f
@@ -123,27 +123,29 @@ msgid ""
 "$income  Unit score = $units  Gold = $gold\n"
 "Grand total: <b>$total</b>"
 msgstr ""
-"<span foreground='#%02x%02x%02x'>$side_number. Taraf</span>:  Gelir durumu = "
-"$income Birim durumu = $units  Altın = $gold"
+"<span foreground='$side_color'>$side_number|. Taraf</span>:  Gelir durumu = "
+"$income Birim durumu = $units  Altın = $gold\n"
+"Ana toplam: <b>$total</b>"
 
 #. [lua]: f
 #. In the end-of-match summary, there's a single side that's won.
 #: data/multiplayer/eras.lua:86
 msgid ""
 "<span foreground='$side_color'>Side $side_number</span> has the advantage."
-msgstr "<span foreground='%s'>$side_number. taraf</span>ın üstünlüğü var."
+msgstr ""
+"<span foreground='$side_color'>$side_number|. taraf</span>ın üstünlüğü var."
 
 #. [lua]: f
 #. In the end-of-match summary, there's a two-way tie (this is only used for exactly two winning teams)
 #: data/multiplayer/eras.lua:91
 msgid "Sides $side_number and $other_side_number are tied."
-msgstr "Taralar $side_number ve $other_side_number bağlı."
+msgstr "Taralar $side_number ve $other_side_number berabere."
 
 #. [lua]: f
 #. In the end-of-match summary, three or more teams have all tied for the best score. $winners contains the result of formatting the conjunct list.
 #: data/multiplayer/eras.lua:96
 msgid "Sides $winners are tied."
-msgstr "Taraflar $winners bağlı."
+msgstr "Taraflar $winners berabere."
 
 #. [lua]: f
 #. "Turns Over", meaning "turn limit reached" is the title of the end-of-match summary dialog
