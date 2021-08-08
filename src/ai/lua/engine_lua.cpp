@@ -205,6 +205,15 @@ public:
 		lua_candidate_action_wrapper_base::execute();
 		this->disable(); // we do not want to execute the same sticky CA twice -> will be moved out to Lua later
 	}
+
+	virtual config to_config() const
+	{
+		config cfg = lua_candidate_action_wrapper::to_config();
+		cfg["sticky"] = true;
+		cfg["unit_x"] = bound_unit_->get_location().wml_x();
+		cfg["unit_y"] = bound_unit_->get_location().wml_y();
+		return cfg;
+	}
 private:
 	unit_ptr bound_unit_;
 
