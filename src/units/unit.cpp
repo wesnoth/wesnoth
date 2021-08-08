@@ -537,6 +537,24 @@ void unit::init(const config& cfg, bool use_traits, const vconfig* vcfg)
 			mai["action"] = "add";
 			ai_events.add_child("micro_ai", mai);
 		}
+		for(config ca : ai.child_range("candidate_action")) {
+			ca.clear_children("filter_own");
+			ca.add_child("filter_own")["id"] = id();
+			// Sticky candidate actions not supported here (they cause a crash because the unit isn't on the map yet)
+			ca.remove_attribute("sticky");
+			std::string stage = "main_loop";
+			if(ca.has_attribute("stage")) {
+				stage = ca["stage"].str();
+				ca.remove_attribute("stage");
+			}
+			config mod{
+				"action", "add",
+				"side", side(),
+				"path", "stage[" + stage + "].candidate_action[]",
+				"candidate_action", ca,
+			};
+			ai_events.add_child("modify_ai", mod);
+		}
 		if(ai_events.all_children_count() > 0) {
 			ai::manager::get_singleton().append_active_ai_for_side(side(), ai_events);
 		}
