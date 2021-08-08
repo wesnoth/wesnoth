@@ -20,6 +20,7 @@
 
 #include "units/unit.hpp"
 
+#include "ai/manager.hpp"
 #include "color.hpp"
 #include "deprecation.hpp"
 #include "display.hpp"
@@ -528,6 +529,17 @@ void unit::init(const config& cfg, bool use_traits, const vconfig* vcfg)
 
 	if(const config& ai = cfg.child("ai")) {
 		formula_man_->read(ai);
+		config ai_events;
+		for(config mai : ai.child_range("micro_ai")) {
+			mai.clear_children("filter");
+			mai.add_child("filter")["id"] = id();
+			mai["side"] = side();
+			mai["action"] = "add";
+			ai_events.add_child("micro_ai", mai);
+		}
+		if(ai_events.all_children_count() > 0) {
+			ai::manager::get_singleton().append_active_ai_for_side(side(), ai_events);
+		}
 	}
 
 	// Don't use the unit_type's attacks if this config has its own defined
