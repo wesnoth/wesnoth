@@ -619,7 +619,11 @@ void image_shape::draw(surface& canvas,
 				DBG_GUI_D << "Image: scaling from " << image_->w << ','
 						  << image_->h << " to " << w << ',' << h << ".\n";
 
-				surf = scale_surface_legacy(image_, w, h);
+				if(resize_mode_ == scale_sharp) {
+					surf = scale_surface_sharp(image_, w, h);
+				} else {
+					surf = scale_surface_legacy(image_, w, h);
+				}
 			}
 		}
 		src_clip.w = w;
@@ -656,6 +660,8 @@ image_shape::resize_mode image_shape::get_resize_mode(const std::string& resize_
 		return image_shape::tile_center;
 	} else if(resize_mode == "stretch") {
 		return image_shape::stretch;
+	} else if(resize_mode == "scale_sharp") {
+		return image_shape::scale_sharp;
 	} else {
 		if(!resize_mode.empty() && resize_mode != "scale") {
 			ERR_GUI_E << "Invalid resize mode '" << resize_mode

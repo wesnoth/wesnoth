@@ -385,6 +385,7 @@ private:
 	 */
 	enum resize_mode {
 		scale,
+		scale_sharp,
 		stretch,
 		tile,
 		tile_center,
