@@ -578,14 +578,14 @@ void image_shape::draw(surface& canvas,
 		surf = image_;
 	}
 	else { // assert((w != 0) || (h != 0))
-		if(w == 0 && resize_mode_ == stretch) {
+		if(w == 0 && resize_mode_ == resize_mode::stretch) {
 			DBG_GUI_D << "Image: vertical stretch from " << image_->w << ','
 					  << image_->h << " to a height of " << h << ".\n";
 
 			surf = stretch_surface_vertical(image_, h);
 			w = image_->w;
 		}
-		else if(h == 0 && resize_mode_ == stretch) {
+		else if(h == 0 && resize_mode_ == resize_mode::stretch) {
 			DBG_GUI_D << "Image: horizontal stretch from " << image_->w
 					  << ',' << image_->h << " to a width of " << w
 					  << ".\n";
@@ -600,18 +600,18 @@ void image_shape::draw(surface& canvas,
 			if(h == 0) {
 				h = image_->h;
 			}
-			if(resize_mode_ == tile) {
+			if(resize_mode_ == resize_mode::tile) {
 				DBG_GUI_D << "Image: tiling from " << image_->w << ','
 						  << image_->h << " to " << w << ',' << h << ".\n";
 
 				surf = tile_surface(image_, w, h, false);
-			} else if(resize_mode_ == tile_center) {
+			} else if(resize_mode_ == resize_mode::tile_center) {
 				DBG_GUI_D << "Image: tiling centrally from " << image_->w << ','
 						  << image_->h << " to " << w << ',' << h << ".\n";
 
 				surf = tile_surface(image_, w, h, true);
 			} else {
-				if(resize_mode_ == stretch) {
+				if(resize_mode_ == resize_mode::stretch) {
 					ERR_GUI_D << "Image: failed to stretch image, "
 								 "fall back to scaling.\n";
 				}
@@ -619,7 +619,7 @@ void image_shape::draw(surface& canvas,
 				DBG_GUI_D << "Image: scaling from " << image_->w << ','
 						  << image_->h << " to " << w << ',' << h << ".\n";
 
-				if(resize_mode_ == scale_sharp) {
+				if(resize_mode_ == resize_mode::scale_sharp) {
 					surf = scale_surface_sharp(image_, w, h);
 				} else {
 					surf = scale_surface_legacy(image_, w, h);
@@ -655,19 +655,19 @@ void image_shape::draw(surface& canvas,
 image_shape::resize_mode image_shape::get_resize_mode(const std::string& resize_mode)
 {
 	if(resize_mode == "tile") {
-		return image_shape::tile;
+		return resize_mode::tile;
 	} else if(resize_mode == "tile_center") {
-		return image_shape::tile_center;
+		return resize_mode::tile_center;
 	} else if(resize_mode == "stretch") {
-		return image_shape::stretch;
+		return resize_mode::stretch;
 	} else if(resize_mode == "scale_sharp") {
-		return image_shape::scale_sharp;
+		return resize_mode::scale_sharp;
 	} else {
 		if(!resize_mode.empty() && resize_mode != "scale") {
 			ERR_GUI_E << "Invalid resize mode '" << resize_mode
 					  << "' falling back to 'scale'.\n";
 		}
-		return image_shape::scale;
+		return resize_mode::scale;
 	}
 }
 

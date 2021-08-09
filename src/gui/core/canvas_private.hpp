@@ -383,7 +383,7 @@ private:
 	 * If the image is smaller is needed it needs to resized, how is determined
 	 * by the value of this enum.
 	 */
-	enum resize_mode {
+	enum class resize_mode {
 		scale,
 		scale_sharp,
 		stretch,
