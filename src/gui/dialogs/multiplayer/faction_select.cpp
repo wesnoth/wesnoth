@@ -16,21 +16,21 @@
 
 #include "gui/dialogs/multiplayer/faction_select.hpp"
 
+#include "formatter.hpp"
 #include "game_config_manager.hpp"
+#include "gettext.hpp"
 #include "gui/auxiliary/find_widget.hpp"
 #include "gui/core/log.hpp"
-#include "gui/widgets/listbox.hpp"
-#include "gui/widgets/settings.hpp"
-#include "gui/widgets/image.hpp"
-#include "gui/widgets/label.hpp"
 #include "gui/widgets/button.hpp"
+#include "gui/widgets/drawing.hpp"
+#include "gui/widgets/label.hpp"
+#include "gui/widgets/listbox.hpp"
 #include "gui/widgets/menu_button.hpp"
+#include "gui/widgets/settings.hpp"
 #include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/window.hpp"
-#include "formatter.hpp"
-#include "gettext.hpp"
 #include "help/help.hpp"
-#include "preferences/game.hpp"	// for encountered_units
+#include "preferences/game.hpp" // for encountered_units
 #include "units/types.hpp"
 
 #include <functional>
@@ -211,10 +211,10 @@ void faction_select::update_leader_image()
 
 	if(const unit_type* ut = unit_types.find(flg_manager_.current_leader())) {
 		const unit_type& utg = ut->get_gender_unit_type(flg_manager_.current_gender());
-		leader_image = formatter() << utg.image() << "~RC(" << utg.flag_rgb() << ">" << tc_color_ << ")" << "~SCALE_INTO_SHARP(144,144)";
+		leader_image = formatter() << utg.image() << "~RC(" << utg.flag_rgb() << ">" << tc_color_ << ")";
 	}
 
-	find_widget<image>(get_window(), "leader_image", false).set_label(leader_image);
+	find_widget<drawing>(get_window(), "leader_image", false).set_label(leader_image);
 }
 
 void faction_select::post_show(window& /*window*/)
