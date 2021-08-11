@@ -22,7 +22,7 @@ local function generate(length, villages, castle, iterations, size, players, isl
 		dr_height(715, "Hh"),
 		dr_height(710, "Hh^Fp"),
 		dr_height(685, "Hh"),
-		dr_height(675, "Hh^Uf"),
+		dr_height(675, "Hh^Tf"),
 		dr_height(650, "Hh"),
 		dr_height(645, "Hh^Fp"),
 		dr_height(610, "Hh"),
@@ -34,9 +34,9 @@ local function generate(length, villages, castle, iterations, size, players, isl
 		dr_height(420, "Hh^Fp"),
 		dr_height(410, "Gg"),
 		dr_height(400, "Mm"),
-		dr_height(395, "Gs^Uf"),
+		dr_height(395, "Gs^Tf"),
 		dr_height(380, "Ss"),
-		dr_height(375, "Gs^Uf"),
+		dr_height(375, "Gs^Tf"),
 		dr_height(360, "Gg"),
 		dr_height(340, "Hh^Fp"),
 		dr_height(320, "Gg"),
@@ -55,22 +55,22 @@ local function generate(length, villages, castle, iterations, size, players, isl
 
 		-- DR_CONVERT MIN_HT MAX_HT MIN_TMP MAX_TMP FROM TO
 		-- low temperatures
-		dr_convert(80, 999, 0, 375, "Gg, Gs^Uf", "Aa"),
+		dr_convert(80, 999, 0, 375, "Gg, Gs^Tf", "Aa"),
 		dr_convert(250, 999, 0, 375, "Ss", "Ai"),
 		dr_convert(80, 999, 370, 425, "Gg", "Gs"),
 		dr_convert(80, 999, 0, 375, "Gs^Fp", "Aa^Fpa"),
 		dr_convert(80, 999, 375, 425, "Gs^Fp", "Gs^Fmw"),
-		dr_convert(0, 999, 0, 400, "Hh^Fp, Hh^Uf", "Ha^Fpa"),
+		dr_convert(0, 999, 0, 400, "Hh^Fp, Hh^Tf", "Ha^Fpa"),
 		dr_convert(80, 999, 400, 450, "Hh^Fp", "Hh^Fmw"),
 		dr_convert(0, 999, 0, 425, "Hh", "Ha"),
 		dr_convert(0, 999, 0, 450, "Mm", "Ms"),
 		dr_convert(750, 999, 0, 460, "Mm^Xm", "Ms^Xm"),
 		-- fungus
-		dr_convert(850, 950, 500, 525, "Uu, Uh", "Uu^Uf"),
-		dr_convert(850, 950, 550, 575, "Uu, Uh", "Uu^Uf"),
-		dr_convert(850, 950, 600, 625, "Uu, Uh", "Uu^Uf"),
+		dr_convert(850, 950, 500, 525, "Uu, Uh", "Uu^Tf"),
+		dr_convert(850, 950, 550, 575, "Uu, Uh", "Uu^Tf"),
+		dr_convert(850, 950, 600, 625, "Uu, Uh", "Uu^Tf"),
 		-- high temperatures
-		dr_convert(825, 999, 850, 999, "Uu, Uh, Uu^Uf", "Ql"),
+		dr_convert(825, 999, 850, 999, "Uu, Uh, Uu^Tf", "Ql"),
 		dr_convert(0, 999, 800, 999, "Gg", "Dd"),
 		dr_convert(250, 999, 800, 999, "Ss", "Dd^Do"),
 		dr_convert(80, 999, 750, 800, "Gg", "Gs"),
@@ -93,7 +93,7 @@ local function generate(length, villages, castle, iterations, size, players, isl
 		dr_road("Hh^Fmf", "Urb", 30),
 		dr_road("Hh^Fmw", "Urb", 30),
 		dr_road("Hh^Fms", "Urb", 30),
-		dr_road("Hh^Uf", "Urb", 25),
+		dr_road("Hh^Tf", "Urb", 25),
 		dr_road("Mm", "Urb", 40),
 		dr_road("Mm^Xm", "Urb", 75),
 		dr_bridge("Ql", "Ql^Bs", "Urb", 100),
@@ -142,19 +142,19 @@ local function generate(length, villages, castle, iterations, size, players, isl
 		dr_village {
 			terrain="Uu",
 			convert_to="Uu^Vo",
-			adjacent_liked="Urb,Hh,Mm,Uu,Uh,Xu,Mm^Xm,Uu^Uf,Uu,Uh,Ww,Ww",
+			adjacent_liked="Urb,Hh,Mm,Uu,Uh,Xu,Mm^Xm,Uu^Tf,Uu,Uh,Ww,Ww",
 			rating=5
 		},
 		dr_village {
-			terrain="Uu^Uf",
+			terrain="Uu^Tf",
 			convert_to="Uh^Vo",
-			adjacent_liked="Urb,Hh,Mm,Uu,Uh,Xu,Mm^Xm,Uu^Uf,Uu,Uh,Ww,Ww",
+			adjacent_liked="Urb,Hh,Mm,Uu,Uh,Xu,Mm^Xm,Uu^Tf,Uu,Uh,Ww,Ww",
 			rating=5
 		},
 		dr_village {
 			terrain="Uh",
 			convert_to="Uu^Vo",
-			adjacent_liked="Urb,Hh,Mm,Uu,Uh,Xu,Mm^Xm,Uu^Uf,Uu,Uh,Ww,Ww",
+			adjacent_liked="Urb,Hh,Mm,Uu,Uh,Xu,Mm^Xm,Uu^Tf,Uu,Uh,Ww,Ww",
 			rating=5
 		},
 		-- villages in forest
@@ -217,7 +217,7 @@ local function generate(length, villages, castle, iterations, size, players, isl
 		},
 	}
 	res.castle = {
-		valid_terrain="Gs, Gg, Hh, Ha, Hh^Uf, Gs^Uf, Ss, Dd, Aa",
+		valid_terrain="Gs, Gg, Hh, Ha, Hh^Tf, Gs^Tf, Ss, Dd, Aa",
 		min_distance=16,
 	}
 

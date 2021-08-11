@@ -162,11 +162,11 @@ local function world_conquest_tek_map_repaint_6d()
 	roads_to_feudal_castle(5)
 	-- rebuild cave
 	wct_reduce_wall_clusters("Uu")
-	set_terrain { "Uh,Uh,Uu^Uf,Uh,Uh,Uu^Uf,Uh,Uh,Uu^Uf,Uh,Uh,Uu^Uf,Uh,Uh,Uu^Uf,Uh,Uu^Uf,Uu,Qxu,Qxu,Ql",
+	set_terrain { "Uh,Uh,Uu^Tf,Uh,Uh,Uu^Tf,Uh,Uh,Uu^Tf,Uh,Uh,Uu^Tf,Uh,Uh,Uu^Tf,Uh,Uu^Tf,Uu,Qxu,Qxu,Ql",
 		f.terrain("Uu"),
 		fraction = 4,
 	}
-	set_terrain { "Qxu,Uh^Uf,Ql,Urb,Urb,Urb,Urb,Urb,Urb,Urb,Urb,Urb,Urb,Urb,Urb,Urb,Urb,Uh,Uh,Uu^Uf",
+	set_terrain { "Qxu,Uh^Tf,Ql,Urb,Urb,Urb,Urb,Urb,Urb,Urb,Urb,Urb,Urb,Urb,Urb,Urb,Urb,Uh,Uh,Uu^Tf",
 		f.terrain("Uu"),
 		fraction = 5,
 	}
@@ -174,8 +174,8 @@ local function world_conquest_tek_map_repaint_6d()
 	wct_fill_lava_chasms()
 	wct_volcanos()
 	wct_volcanos_dirt()
-	wct_break_walls("M*^Xm", "Mm,Mm,Hh,Hh,Hh^Fp,Hh^Fp,Hh^Uf,Hh^Uf,Gs^Fp,Rb,Rb,Rb")
-	wct_break_walls("X*", "Uh,Uh,Uh,Uh,Uh^Uf,Uu^Uf,Uu,Rd,Rd,Rd")
+	wct_break_walls("M*^Xm", "Mm,Mm,Hh,Hh,Hh^Fp,Hh^Fp,Hh^Tf,Hh^Tf,Gs^Fp,Rb,Rb,Rb")
+	wct_break_walls("X*", "Uh,Uh,Uh,Uh,Uh^Tf,Uu^Tf,Uu,Rd,Rd,Rd")
 	set_terrain { "Mm^Xm",
 		f.all(
 			f.terrain("X*"),
@@ -213,7 +213,7 @@ local function world_conquest_tek_map_repaint_6d()
 		f.terrain("Hh"),
 		fraction = 5,
 	}
-	set_terrain { "Hh^Fp,Hh^Uf",
+	set_terrain { "Hh^Fp,Hh^Tf",
 		f.terrain("Hh"),
 		fraction = 12,
 	}
@@ -221,17 +221,17 @@ local function world_conquest_tek_map_repaint_6d()
 		f.terrain("Hhd"),
 		fraction = 5,
 	}
-	set_terrain { "Hhd^Fp,Hhd^Fp,Hh^Uf,Gg^Uf",
+	set_terrain { "Hhd^Fp,Hhd^Fp,Hh^Tf,Gg^Tf",
 		f.terrain("Hhd"),
 		fraction = 10,
 	}
 
 	-- extra rough terrain
-	set_terrain { "Gg^Fp,Gg^Fp,Gg^Fp,Gg^Fp,Gg^Fp,Gg^Fp,Gg^Fp,Gg^Fp,Gg^Fp,Gg^Fp,Gg^Fp,Gg^Fp,Gg^Fp,Gg^Fp,Gg^Fp,Gg^Fp,Hh,Hh,Hh,Hh,Hh,Hh,Hh,Hh,Hhd^Fp,Hhd^Fp,Mm,Mm,Mm,Gg^Uf,Hh^Uf,Ss",
+	set_terrain { "Gg^Fp,Gg^Fp,Gg^Fp,Gg^Fp,Gg^Fp,Gg^Fp,Gg^Fp,Gg^Fp,Gg^Fp,Gg^Fp,Gg^Fp,Gg^Fp,Gg^Fp,Gg^Fp,Gg^Fp,Gg^Fp,Hh,Hh,Hh,Hh,Hh,Hh,Hh,Hh,Hhd^Fp,Hhd^Fp,Mm,Mm,Mm,Gg^Tf,Hh^Tf,Ss",
 		f.terrain("Gg"),
 		fraction = 3,
 	}
-	set_terrain { "Gs^Fp,Gs^Fp,Gs^Fp,Gs^Fp,Gs^Fp,Gs^Fp,Gs^Fp,Gs^Fp,Gs^Fp,Gs^Fp,Gs^Fp,Gs^Fp,Gs^Fp,Gs^Fp,Gs^Fp,Gs^Fp,Hh,Hh,Hh,Hh,Hh,Hh,Hh,Hh,Hh^Fp,Hh^Fp,Mm,Mm,Mm,Gs^Uf,Hh^Uf,Ss",
+	set_terrain { "Gs^Fp,Gs^Fp,Gs^Fp,Gs^Fp,Gs^Fp,Gs^Fp,Gs^Fp,Gs^Fp,Gs^Fp,Gs^Fp,Gs^Fp,Gs^Fp,Gs^Fp,Gs^Fp,Gs^Fp,Gs^Fp,Hh,Hh,Hh,Hh,Hh,Hh,Hh,Hh,Hh^Fp,Hh^Fp,Mm,Mm,Mm,Gs^Tf,Hh^Tf,Ss",
 		f.terrain("Gs"),
 		fraction = 4,
 	}

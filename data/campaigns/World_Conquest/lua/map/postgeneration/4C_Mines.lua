@@ -252,12 +252,12 @@ function world_conquest_tek_map_repaint_4c()
 	wct_reduce_wall_clusters("Uu^Br/,Uu^Br\\,Uu^Br|,Uu^Dr,Qxu")
 	world_conquest_tek_map_decoration_4c()
 	wct_fill_lava_chasms()
-	world_conquest_tek_map_dirt("Gg^Uf,Gg^Uf,Gs^Uf")
+	world_conquest_tek_map_dirt("Gg^Tf,Gg^Tf,Gs^Tf")
 end
 function wct_map_4c_post_bunus_decoration()
 	-- dwarvish forges and keeps
 	local terrain_to_change = map:find(f.all(
-		f.terrain("*^Uf"),
+		f.terrain("*^Tf"),
 		f.adjacent(f.terrain("*^Vud"))
 	))
 

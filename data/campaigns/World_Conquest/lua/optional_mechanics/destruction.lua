@@ -36,7 +36,7 @@ on_event("die", function(cx)
 	if wml.variables.wc2_config_enable_terrain_destruction == false then
 		return
 	end
-	if not loc:matches{terrain = "K*^*,C*^*,*^Fet,G*^F*,G*^Uf,A*,*^B*,Rrc,Iwr,*^Vhh,*^Vh*,*^Fda*"} then
+	if not loc:matches{terrain = "K*^*,C*^*,*^Fet,G*^F*,G*^Tf,A*,*^B*,Rrc,Iwr,*^Vhh,*^Vh*,*^Fda*"} then
 		return
 	end
 	local function item(image)
@@ -66,7 +66,7 @@ on_event("die", function(cx)
 	elseif loc:matches{terrain = "Kd"} then
 		map[loc] = "Kdr^Es"
 
-	elseif loc:matches{terrain = "Gg^Fmf,Gg^Fdf,Gg^Fp,Gg^Uf,Gs^Fmf,Gs^Fdf,Gs^Fp,Gs^Uf"} then
+	elseif loc:matches{terrain = "Gg^Fmf,Gg^Fdf,Gg^Fp,Gg^Tf,Gs^Fmf,Gs^Fdf,Gs^Fp,Gs^Tf"} then
 		map[loc] = "Gll^"
 
 	elseif loc:matches{terrain = "Cv^Fds"} then

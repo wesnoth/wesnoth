@@ -16,7 +16,7 @@ local function generate(length, villages, castle, iterations, size, players, isl
 		dr_height(765, "Xu"),
 		dr_height(750, "Mm^Xm"),
 		dr_height(700, "Mm"),
-		dr_height(680, "Hh^Uf"),
+		dr_height(680, "Hh^Tf"),
 		dr_height(650, "Gs^Fp"),
 		dr_height(625, "Hh^Fp"),
 		dr_height(575, "Hh"),
@@ -40,13 +40,13 @@ local function generate(length, villages, castle, iterations, size, players, isl
 		dr_convert(450, 525, 425, 525, "Gs", "Sm"),
 		dr_convert(450, 490, 375, 425, "Gs", "Wwg"),
 		dr_convert(490, 525, 375, 425, "Gs", "Wwrg"),
-		dr_convert(450, 525, 225, 375, "Gs", "Gs^Uf"),
+		dr_convert(450, 525, 225, 375, "Gs", "Gs^Tf"),
 		dr_convert(450, 525, 10, 225, "Gs", "Gg^Fet"),
 		dr_convert(100, 999, 560, 999, "Gs", "Gd"),
 		dr_convert(100, 999, 10, 385, "Gs", "Gg"),
 		dr_convert(75, 999, 600, 999, "Ds", "Dd"),
 		dr_convert(200, 999, 600, 999, "Hh", "Hhd"),
-		dr_convert(200, 999, 650, 999, "Hh^Uf", "Hhd^Uf"),
+		dr_convert(200, 999, 650, 999, "Hh^Tf", "Hhd^Tf"),
 		dr_convert(200, 999, 600, 999, "Mm", "Md"),
 
 		-- DR_TEMPERATURE FROM MIN MAX TO),
@@ -67,8 +67,8 @@ local function generate(length, villages, castle, iterations, size, players, isl
 		dr_temperature("Uu,Uh", 850, 999, "Ql"),
 		dr_temperature("Uu", 725, 850, "Uue"),
 		dr_temperature("Uh", 725, 850, "Uue^Dr"),
-		dr_temperature("Uu", 700, 725, "Uue^Uf"),
-		dr_temperature("Uu", 575, 600, "Uu^Uf"),
+		dr_temperature("Uu", 700, 725, "Uue^Tf"),
+		dr_temperature("Uu", 575, 600, "Uu^Tf"),
 	}
 	res.road_cost = {
 		dr_road("Gg", "Re", 10),
@@ -91,7 +91,7 @@ local function generate(length, villages, castle, iterations, size, players, isl
 		dr_road("Dd", "Re", 15),
 		dr_road("Gs", "Re", 9),
 		dr_road("Gd", "Re", 10),
-		dr_road("Gs^Uf", "Re", 12),
+		dr_road("Gs^Tf", "Re", 12),
 		dr_road("Gs^Ftr", "Re", 20),
 		dr_road("Gs^Ftp", "Re", 20),
 		dr_road("Gs^Fet", "Re", 20),
@@ -112,9 +112,9 @@ local function generate(length, villages, castle, iterations, size, players, isl
 			rating=4
 		},
 		dr_village {
-			terrain = "Gs^Uf",
+			terrain = "Gs^Tf",
 			convert_to="Gs^Vh",
-			adjacent_liked="Gg, Gs, Gs^Uf, Gs^Uf, Gs^Uf, Gd, Re, Re, Gs^Ftr, Gs^Ftp, Gs^Fet, Gg^Ft, Gd^Fdf, Gd^Fetd, Hh, Mm, Hh^Ft, Hh^Ftp, Hhd^Fmf, Hhd",
+			adjacent_liked="Gg, Gs, Gs^Tf, Gs^Tf, Gs^Tf, Gd, Re, Re, Gs^Ftr, Gs^Ftp, Gs^Fet, Gg^Ft, Gd^Fdf, Gd^Fetd, Hh, Mm, Hh^Ft, Hh^Ftp, Hhd^Fmf, Hhd",
 			rating=8
 		},
 		dr_village {

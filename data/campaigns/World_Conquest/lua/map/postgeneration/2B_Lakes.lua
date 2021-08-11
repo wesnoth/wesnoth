@@ -108,7 +108,7 @@ local function world_conquest_tek_map_repaint_2b()
 		set_terrain { "Ai",
 			f.all(
 				f.terrain("Ww,Wwg,Wo,Wog"),
-				f.adjacent(f.terrain("*^Uf"), nil, 0),
+				f.adjacent(f.terrain("*^Tf"), nil, 0),
 				f.none(
 					f.find_in("oceanic")
 				)
@@ -120,21 +120,21 @@ local function world_conquest_tek_map_repaint_2b()
 		set_terrain { "Ms",
 			f.all(
 				f.terrain("M*"),
-				f.adjacent(f.terrain("*^Uf"), nil, 0),
+				f.adjacent(f.terrain("*^Tf"), nil, 0),
 				f.radius(2, f.terrain("Ai"))
 			),
 		}
 		set_terrain { "Ha",
 			f.all(
 				f.terrain("Hh"),
-				f.adjacent(f.terrain("*^Uf"), nil, 0),
+				f.adjacent(f.terrain("*^Tf"), nil, 0),
 				f.radius(1, f.terrain("Ai"))
 			),
 		}
 		set_terrain { "Ha^Fpa",
 			f.all(
 				f.terrain("Hh^F*"),
-				f.adjacent(f.terrain("*^Uf"), nil, 0),
+				f.adjacent(f.terrain("*^Tf"), nil, 0),
 				f.radius(1, f.terrain("Ai"))
 			),
 		}
@@ -220,7 +220,7 @@ function world_conquest_tek_map_constructor_lakes()
 	}
 
 	-- add mushrooms
-	set_terrain { "Gg^Uf",
+	set_terrain { "Gg^Tf",
 		f.all(
 			f.adjacent(f.terrain("Wwt^*,Wot,Wwf")),
 			f.adjacent(f.terrain("A*^*,Ha^*,Ms^*"), nil, 0),
@@ -233,7 +233,7 @@ function world_conquest_tek_map_constructor_lakes()
 
 	local r = mathx.random_choice(tostring(total_tiles // 675) .. ".." .. tostring(total_tiles // 285))
 
-	set_terrain { "Hh^Uf",
+	set_terrain { "Hh^Tf",
 		f.all(
 			f.terrain("Hh^F*,Hh"),
 			f.adjacent(f.terrain("A*^*,Ha^*,Ms^*"), nil, 0)

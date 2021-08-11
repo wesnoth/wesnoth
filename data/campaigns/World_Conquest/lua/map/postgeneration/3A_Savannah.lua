@@ -1,10 +1,10 @@
 -- Savannah
 
 function world_conquest_tek_map_repaint_3a()
-	world_conquest_tek_map_rebuild("Uu,Uu^Uf,Uh,Uu^Uf,Uu,Uu^Uf,Uh,Ql,Qxu,Xu", 2)
+	world_conquest_tek_map_rebuild("Uu,Uu^Tf,Uh,Uu^Tf,Uu,Uu^Tf,Uh,Ql,Qxu,Xu", 2)
 	world_conquest_tek_castle_swamp_bridges()
 	world_conquest_tek_map_decoration_3a()
-	world_conquest_tek_map_dirt("Gs^Uf")
+	world_conquest_tek_map_dirt("Gs^Tf")
 end
 
 function world_conquest_tek_map_decoration_3a()
@@ -71,9 +71,9 @@ function world_conquest_tek_map_decoration_3a()
 			f.adjacent(f.terrain("G*^F*"), nil, "0-1")
 		),
 	}
-	set_terrain { "Hhd^Uf",
+	set_terrain { "Hhd^Tf",
 		f.all(
-			f.terrain("Hh^Uf"),
+			f.terrain("Hh^Tf"),
 			f.adjacent(f.terrain("Dd,Hd"), nil, "2-6"),
 			f.adjacent(f.terrain("Ss,Wwt,Wot,Wwrt"), nil, 0)
 		),
@@ -81,21 +81,21 @@ function world_conquest_tek_map_decoration_3a()
 	set_terrain { "Hhd",
 		f.all(
 			f.terrain("Hh"),
-			f.adjacent(f.terrain("Dd,Hd,Hhd^Uf"), nil, "2-6"),
+			f.adjacent(f.terrain("Dd,Hd,Hhd^Tf"), nil, "2-6"),
 			f.adjacent(f.terrain("Ss,Wwt,Wot,Wwrt"), nil, 0)
 		),
 	}
 	set_terrain { "Md",
 		f.all(
 			f.terrain("Mm"),
-			f.adjacent(f.terrain("Dd,Hd,Hhd,Hhd^Uf"), nil, "2-6")
+			f.adjacent(f.terrain("Dd,Hd,Hhd,Hhd^Tf"), nil, "2-6")
 		),
 	}
 	set_terrain { "Hh^Vl",
 		f.all(
 			f.terrain("Hh^Vhh"),
 			f.none(
-				f.radius(2, f.terrain("M*^*,Xu,Uu,Uh,Uu^Uf,Ds,Dd,Hd,Ql,Qxu"))
+				f.radius(2, f.terrain("M*^*,Xu,Uu,Uh,Uu^Tf,Ds,Dd,Hd,Ql,Qxu"))
 			)
 		),
 	}

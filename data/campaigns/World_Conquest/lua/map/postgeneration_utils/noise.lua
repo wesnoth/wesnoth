@@ -45,8 +45,8 @@ function world_conquest_tek_map_noise_classic(tree)
 			per_thousand = 222,
 			exact = false,
 		},
-		{ "Ur,Uu^Uf,Uh,Uu",
-			f.terrain("Uu,Uh,Uu^Uf"),
+		{ "Ur,Uu^Tf,Uh,Uu",
+			f.terrain("Uu,Uh,Uu^Tf"),
 			per_thousand = 420,
 			exact = false,
 		},
@@ -87,7 +87,7 @@ function world_conquest_tek_map_noise_classic(tree)
 			f.all(
 				f.terrain("Mm^Xm"),
 				f.adjacent(f.terrain("Xu")),
-				f.adjacent(f.terrain("Uu,Uh,Uu^Uf")),
+				f.adjacent(f.terrain("Uu,Uh,Uu^Tf")),
 				f.adjacent(f.none(
 					f.terrain("Uu,Uh,Uu^Uh,Xu")
 				))
@@ -126,8 +126,8 @@ function world_conquest_tek_map_noise_maritime()
 			per_thousand = 222,
 			exact = false,
 		},
-		{ "Ur,Uu^Uf,Uh,Uu",
-			f.terrain("Uu,Uh,Uu^Uf"),
+		{ "Ur,Uu^Tf,Uh,Uu",
+			f.terrain("Uu,Uh,Uu^Tf"),
 			per_thousand = 410,
 			exact = false,
 		},
@@ -160,7 +160,7 @@ function world_conquest_tek_map_noise_maritime()
 			f.all(
 				f.terrain("Mm^Xm"),
 				f.adjacent(f.terrain("Xu")),
-				f.adjacent(f.terrain("Uu,Uh,Uu^Uf")),
+				f.adjacent(f.terrain("Uu,Uh,Uu^Tf")),
 				f.adjacent(f.none(
 					f.terrain("Uu,Uh,Uu^Uh,Xu")
 				))
