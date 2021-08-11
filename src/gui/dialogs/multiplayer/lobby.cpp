@@ -741,6 +741,14 @@ void mp_lobby::process_network_data(const config& data)
 		process_gamelist(data);
 	} else if(const config& gamelist_diff = data.child("gamelist_diff")) {
 		process_gamelist_diff(gamelist_diff);
+	} else if(const config& info = data.child("message")) {
+		if(info["type"] == "server_info") {
+			server_information_ = info["message"].str();
+			return;
+		} else if(info["type"] == "announcements") {
+			announcements_ = info["message"].str();
+			return;
+		}
 	}
 
 	chatbox_->process_network_data(data);
@@ -919,7 +927,7 @@ void mp_lobby::show_preferences_button_callback()
 
 void mp_lobby::show_server_info()
 {
-	server_info::display();
+	server_info::display(server_information_, announcements_);
 }
 
 void mp_lobby::game_filter_init()

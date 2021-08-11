@@ -105,8 +105,6 @@ private:
 		session_metadata(const config& cfg)
 			: is_moderator(cfg["is_moderator"].to_bool(false))
 			, profile_url_prefix(cfg["profile_url_prefix"].str())
-			, server_info(cfg["server_info"].str())
-			, announcements(cfg["announcements"].str())
 		{
 		}
 
@@ -115,9 +113,6 @@ private:
 
 		/** The external URL prefix for player profiles (empty if the server doesn't have an attached database). */
 		std::string profile_url_prefix;
-
-		std::string server_info;
-		std::string announcements;
 	};
 
 	/** Opens a new server connection and prompts the client for login credentials, if necessary. */
@@ -844,16 +839,6 @@ std::string get_profile_link(int user_id)
 	}
 
 	return "";
-}
-
-std::pair<std::string, std::string> get_server_info_and_announcements()
-{
-	if(manager) {
-		const auto& si = manager->get_session_info();
-		return {si.server_info, si.announcements};
-	} else {
-		return {};
-	}
 }
 
 void yeet_to_server(const config& data)

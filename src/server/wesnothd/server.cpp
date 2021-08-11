@@ -761,12 +761,8 @@ void server::login_client(boost::asio::yield_context yield, SocketPtr socket)
 	}
 
 	simple_wml::document join_lobby_response;
-	auto& jl = join_lobby_response.root().add_child("join_lobby");
-	jl.set_attr("is_moderator", is_moderator ? "yes" : "no");
-	jl.set_attr("profile_url_prefix", "https://r.wesnoth.org/u");
-	jl.set_attr("server_info", information_.c_str());
-	jl.set_attr("announcements", (announcements_ + tournaments_).c_str());
-
+	join_lobby_response.root().add_child("join_lobby").set_attr("is_moderator", is_moderator ? "yes" : "no");
+	join_lobby_response.root().child("join_lobby")->set_attr_dup("profile_url_prefix", "https://r.wesnoth.org/u");
 	coro_send_doc(socket, join_lobby_response, yield[ec]);
 	if(check_error(ec, socket)) return;
 
@@ -1080,6 +1076,8 @@ template<class SocketPtr> void server::handle_player(boost::asio::yield_context 
 	if(!motd_.empty()) {
 		send_server_message(player, motd_+'\n'+announcements_+tournaments_, "motd");
 	}
+	send_server_message(player, information_, "server_info");
+	send_server_message(player, announcements_+tournaments_, "announcements");
 	if(version_info(player_data.version()) < secure_version ){
 		send_server_message(player, "You are using version " + player_data.version() + " which has known security issues that can be used to compromise your computer. We strongly recommend updating to a Wesnoth version " + secure_version.str() + " or newer!", "alert");
 	}

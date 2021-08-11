@@ -68,8 +68,6 @@ bool logged_in_as_moderator();
 /** Gets the forum profile link for the given user. */
 std::string get_profile_link(int user_id);
 
-std::pair<std::string, std::string> get_server_info_and_announcements();
-
 /** Attempts to send given data to server if a connection is open. */
 void yeet_to_server(const config& data);
 

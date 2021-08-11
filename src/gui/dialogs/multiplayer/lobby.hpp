@@ -180,6 +180,9 @@ private:
 	int& joined_game_id_;
 
 	friend struct lobby_delay_gamelist_update_guard;
+
+	static inline std::string server_information_ = "";
+	static inline std::string announcements_ = "";
 };
 
 } // namespace dialogs

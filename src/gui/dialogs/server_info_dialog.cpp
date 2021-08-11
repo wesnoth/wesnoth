@@ -16,27 +16,30 @@
 
 #include "gui/dialogs/server_info_dialog.hpp"
 
-#include "game_initialization/multiplayer.hpp"
 #include "gui/auxiliary/find_widget.hpp"
+#include "gui/widgets/label.hpp"
 #include "gui/widgets/listbox.hpp"
 #include "gui/widgets/stacked_widget.hpp"
 #include "gui/widgets/window.hpp"
 
 namespace gui2::dialogs
 {
+
 REGISTER_DIALOG(server_info)
 
-server_info::server_info()
+server_info::server_info(const std::string& info, const std::string& announcements)
+: server_information_(info)
+, announcements_(announcements)
 {
-	const auto& [info, announcements] = mp::get_server_info_and_announcements();
 
-	register_label("server_information", true, info);
-	register_label("announcements", true, announcements);
 }
 
 void server_info::pre_show(window& window)
 {
-	stacked_widget& pager = find_widget<stacked_widget>(&window, "tabs_container", false);
+   find_widget<label>(&window, "server_information", false).set_label(server_information_);
+   find_widget<label>(&window, "announcements", false).set_label(announcements_);
+
+   stacked_widget& pager = find_widget<stacked_widget>(&window, "tabs_container", false);
 	pager.select_layer(0);
 
 	listbox& tab_bar = find_widget<listbox>(&window, "tab_bar", false);
@@ -54,4 +57,4 @@ void server_info::tab_switch_callback()
 	pager.select_layer(std::max<int>(0, tab_bar.get_selected_row()));
 }
 
-} // namespace gui2::dialogs
+}
