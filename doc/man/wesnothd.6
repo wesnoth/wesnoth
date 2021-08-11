@@ -122,6 +122,11 @@ Determines whether the rooms file should be read and written to in compressed fo
 .B connections_allowed
 The number of allowed connections from the same IP. \fB0\fR means infinite. (default: \fB5\fR)
 .TP
+.B deny_unregistered_login
+Whether to prevent users who are not registered with the
+.B user_handler
+being used from logging in. (default: false)
+.TP
 .B disallow_names
 Names/nicks that are not accepted by the server. \fB*\fR and \fB?\fR from wildcard patterns are supported. See
 .BR glob (7)
@@ -177,11 +182,6 @@ A comma separated list of version strings to be accepted by the server. \fB*\fR 
 (defaults to the corresponding wesnoth version)
 .br
 Example: \fBversions_accepted="*"\fR accepts any version string.
-.TP
-.B deny_unregistered_login
-Whether to prevent users who are not registered with the
-.B user_handler
-being used from logging in. (default: false)
 .
 .SS "Global tags:"
 .
