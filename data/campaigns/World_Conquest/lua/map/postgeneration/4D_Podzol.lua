@@ -18,7 +18,7 @@ local function world_conquest_tek_map_repaint_4d()
 		percentage = 8,
 	}
 	set_terrain { "Mm,Gll,Gll",
-		f.terrain("Hh^Uf,Ss,Hh,Gll^Tf"),
+		f.terrain("Hh^Tf,Ss,Hh,Gll^Tf"),
 		exact = false,
 		percentage = 9,
 	}
@@ -51,7 +51,7 @@ local function world_conquest_tek_map_repaint_4d()
 		exact = false,
 		percentage = 10,
 	}
-	set_terrain { "Hh,Mm,Gll^Fp,Gll^Fp,Gll^Fp,Gll^Fp,Hh^Fp,Gll^Uf,Hh^Tf",
+	set_terrain { "Hh,Mm,Gll^Fp,Gll^Fp,Gll^Fp,Gll^Fp,Hh^Fp,Gll^Tf,Hh^Tf",
 		f.all(
 			f.terrain("Gll"),
 			f.adjacent(f.terrain("G*,R*,Ww,A*,Gll^Efm"), nil, 6)

@@ -1,11 +1,11 @@
 -- Coral
 function world_conquest_tek_map_repaint_3e()
 	set_terrain { "Ur",
-		f.terrain("U*^Uf,U*"),
+		f.terrain("U*^Tf,U*"),
 		fraction = 8,
 	}
 
-	wct_reduce_wall_clusters("Uu,Uu^Uf,Uh,Uu^Uf,Uu,Uh,Ur,Uu,Ur,Uu,Ur")
+	wct_reduce_wall_clusters("Uu,Uu^Tf,Uh,Uu^Tf,Uu,Uh,Ur,Uu,Ur,Uu,Ur")
 	set_terrain { "Xu",
 		f.all(
 			f.adjacent(f.terrain("U*^*")),

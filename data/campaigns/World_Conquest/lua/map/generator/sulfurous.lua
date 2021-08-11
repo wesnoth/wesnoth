@@ -114,7 +114,7 @@ local function generate(length, villages, castle, iterations, size, players, isl
 		dr_village {
 			terrain = "Gs^Tf",
 			convert_to="Gs^Vh",
-			adjacent_liked="Gg, Gs, Gs^Uf, Gs^Uf, Gs^Uf, Gd, Re, Re, Gs^Ftr, Gs^Ftp, Gs^Fet, Gg^Ft, Gd^Fdf, Gd^Fetd, Hh, Mm, Hh^Ft, Hh^Ftp, Hhd^Fmf, Hhd",
+			adjacent_liked="Gg, Gs, Gs^Tf, Gs^Tf, Gs^Tf, Gd, Re, Re, Gs^Ftr, Gs^Ftp, Gs^Fet, Gg^Ft, Gd^Fdf, Gd^Fetd, Hh, Mm, Hh^Ft, Hh^Ftp, Hhd^Fmf, Hhd",
 			rating=8
 		},
 		dr_village {

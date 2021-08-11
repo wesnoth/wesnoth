@@ -336,7 +336,7 @@ function world_conquest_tek_map_decoration_6b()
 		),
 		fraction = 8,
 	}
-	set_terrain { "Gs^Fp,Hh^Fp,Hh,Mm,Gs^Fp,Ss^Uf,Ss^Uf,Ss^Tf",
+	set_terrain { "Gs^Fp,Hh^Fp,Hh,Mm,Gs^Fp,Ss^Tf,Ss^Tf,Ss^Tf",
 		f.all(
 			f.terrain("Ss"),
 			f.none(
@@ -408,7 +408,7 @@ function world_conquest_tek_map_decoration_6b()
 end
 
 function world_conquest_tek_map_repaint_6b()
-	wct_reduce_wall_clusters("Uu,Uu^Uf,Uh,Uu^Uf,Uu,Uu^Uf,Uh,Ql,Qxu,Xu,Uu,Ur")
+	wct_reduce_wall_clusters("Uu,Uu^Tf,Uh,Uu^Tf,Uu,Uu^Tf,Uh,Ql,Qxu,Xu,Uu,Ur")
 	wct_fill_lava_chasms()
 	wct_volcanos()
 	world_conquest_tek_map_decoration_6b()

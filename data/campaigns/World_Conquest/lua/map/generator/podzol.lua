@@ -53,7 +53,7 @@ local function generate(length, villages, castle, iterations, size, players, isl
 		dr_convert(410, 750, 10, 465, "Gll,Gll^Tf", "Gd"),
 		dr_convert(650, 750, 10, 540, "Hh,Hhd", "Ha"),
 		dr_convert(650, 750, 10, 510, "Hh^Fp", "Ha^Fpa"),
-		dr_convert(650, 750, 10, 415, "Hh^Uf,Hhd^Tf", "Ha^Tf"),
+		dr_convert(650, 750, 10, 415, "Hh^Tf,Hhd^Tf", "Ha^Tf"),
 		dr_convert(375, 750, 10, 390, "Ss", "Ai"),
 		dr_convert(450, 750, 650, 675, "Gll", "Gll^Fet"),
 		dr_convert(100, 300, 800, 850, "Gll", "Gll^Em"),
@@ -70,7 +70,7 @@ local function generate(length, villages, castle, iterations, size, players, isl
 		dr_temperature("Uu", 100, 300, "Ai"),
 		dr_temperature("Uu", 650, 700, "Uu^Tf"),
 		dr_temperature("Uh", 675, 725, "Uh^Tf"),
-		dr_temperature("(Uu,Uh,Uu^Uf)", 850, 999, "Ql"),
+		dr_temperature("(Uu,Uh,Uu^Tf)", 850, 999, "Ql"),
 		dr_temperature("Qxu", 800, 999, "Ql"),
 	}
 	res.road_cost = {
@@ -135,13 +135,13 @@ local function generate(length, villages, castle, iterations, size, players, isl
 		dr_village {
 			terrain="Uu",
 			convert_to="Uu^Vo",
-			adjacent_liked="Ai,Hh,Mm,Uu,Uh,Uu^Uf,Xu,Rb",
+			adjacent_liked="Ai,Hh,Mm,Uu,Uh,Uu^Tf,Xu,Rb",
 			rating=4
 		},
 		dr_village {
 			terrain="Uh",
 			convert_to="Uh^Vud",
-			adjacent_liked="Ai,Hh,Mm,Uu,Uh,Uu^Uf,Xu,Rb",
+			adjacent_liked="Ai,Hh,Mm,Uu,Uh,Uu^Tf,Xu,Rb",
 			rating=3
 		},
 		dr_village {
@@ -201,7 +201,7 @@ local function generate(length, villages, castle, iterations, size, players, isl
 		},
 	}
 	res.castle = {
-		valid_terrain="Gll, Gd, Hh, Gll^Ft, Gll^Efm, Gll^Fet, Gll^Ftr, Ss, Ai, Gll^Uf, Hh^Uf, Hh^Fp, Aa, Ha, Ha^Fpa, Mm, Ms",
+		valid_terrain="Gll, Gd, Hh, Gll^Ft, Gll^Efm, Gll^Fet, Gll^Ftr, Ss, Ai, Gll^Tf, Hh^Tf, Hh^Fp, Aa, Ha, Ha^Fpa, Mm, Ms",
 		min_distance=13,
 	}
 

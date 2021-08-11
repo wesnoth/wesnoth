@@ -1,7 +1,7 @@
 -- Savannah
 
 function world_conquest_tek_map_repaint_3a()
-	world_conquest_tek_map_rebuild("Uu,Uu^Uf,Uh,Uu^Uf,Uu,Uu^Uf,Uh,Ql,Qxu,Xu", 2)
+	world_conquest_tek_map_rebuild("Uu,Uu^Tf,Uh,Uu^Tf,Uu,Uu^Tf,Uh,Ql,Qxu,Xu", 2)
 	world_conquest_tek_castle_swamp_bridges()
 	world_conquest_tek_map_decoration_3a()
 	world_conquest_tek_map_dirt("Gs^Tf")
@@ -95,7 +95,7 @@ function world_conquest_tek_map_decoration_3a()
 		f.all(
 			f.terrain("Hh^Vhh"),
 			f.none(
-				f.radius(2, f.terrain("M*^*,Xu,Uu,Uh,Uu^Uf,Ds,Dd,Hd,Ql,Qxu"))
+				f.radius(2, f.terrain("M*^*,Xu,Uu,Uh,Uu^Tf,Ds,Dd,Hd,Ql,Qxu"))
 			)
 		),
 	}
