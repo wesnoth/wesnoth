@@ -103,38 +103,38 @@ local function generate(length, villages, castle, iterations, size, players, isl
 		dr_village {
 			terrain="Hh",
 			convert_to="Hh^Vd",
-			adjacent_liked="Gg, Gs, Wwt, Wwrt, Re, Gg, Gs, Re, Gg, Gs, Hh, Hh^Fp, Hh^Uf, Mm",
+			adjacent_liked="Gg, Gs, Wwt, Wwrt, Re, Gg, Gs, Re, Gg, Gs, Hh, Hh^Fp, Hh^Tf, Mm",
 			rating=5
 		},
 		dr_village {
 			terrain="Hh^Fp",
 			convert_to="Hh^Vd",
-			adjacent_liked="Gg, Gs, Wwt, Wwrt, Re, Gg, Gs, Re, Gg, Gs, Hh, Hh^Fp, Hh^Uf, Mm",
+			adjacent_liked="Gg, Gs, Wwt, Wwrt, Re, Gg, Gs, Re, Gg, Gs, Hh, Hh^Fp, Hh^Tf, Mm",
 			rating=4
 		},
 		dr_village {
 			terrain="Hh^Tf",
 			convert_to="Hh^Vd",
-			adjacent_liked="Gg, Gs, Wwt, Wwrt, Re, Gg, Gs, Re, Rd, Rb, Gg, Gs, Hh, Hh^Fp, Hh^Uf, Mm",
+			adjacent_liked="Gg, Gs, Wwt, Wwrt, Re, Gg, Gs, Re, Rd, Rb, Gg, Gs, Hh, Hh^Fp, Hh^Tf, Mm",
 			rating=3
 		},
 		dr_village {
 			terrain="Mm",
 			convert_to="Mm^Vd",
-			adjacent_liked="Gg, Gs, Wwt, Wwrt, Re, Gg, Gs, Re, Rd, Rb, Gg, Gs, Hh, Hh^Fp, Hh^Uf, Mm",
+			adjacent_liked="Gg, Gs, Wwt, Wwrt, Re, Gg, Gs, Re, Rd, Rb, Gg, Gs, Hh, Hh^Fp, Hh^Tf, Mm",
 			rating=3
 		},
 		-- cave villages
 		dr_village {
 			terrain="Uu",
 			convert_to="Uu^Vu",
-			adjacent_liked="Hh,Hh^Fp,Mm,Uu,Uh,Hh^Uf,Xu,Uu^Uf,Mm^Xm",
+			adjacent_liked="Hh,Hh^Fp,Mm,Uu,Uh,Hh^Tf,Xu,Uu^Tf,Mm^Xm",
 			rating=4
 		},
 		dr_village {
 			terrain="Uh",
 			convert_to="Uu^Vu",
-			adjacent_liked="Hh,Hh^Fp,Mm,Uu,Uh,Hh^Uf,Xu,Uu^Uf,Mm^Xm",
+			adjacent_liked="Hh,Hh^Fp,Mm,Uu,Uh,Hh^Tf,Xu,Uu^Tf,Mm^Xm",
 			rating=4
 		},
 		-- water villages

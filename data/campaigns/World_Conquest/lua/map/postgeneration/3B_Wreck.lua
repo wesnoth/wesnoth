@@ -1,6 +1,6 @@
 -- Wreck
 function world_conquest_tek_map_repaint_3b()
-	world_conquest_tek_map_rebuild("Uu,Uu^Uf,Uh,Uu^Uf,Uu,Uu^Uf,Uh,Ql,Qxu,Xu", 3)
+	world_conquest_tek_map_rebuild("Uu,Uu^Tf,Uh,Uu^Tf,Uu,Uu^Tf,Uh,Ql,Qxu,Xu", 3)
 	world_conquest_tek_map_decoration_3b()
 	world_conquest_tek_map_dirt("Gs^Tf")
 end

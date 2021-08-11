@@ -117,7 +117,7 @@ function repaint(map_data)
 	}
 	set_terrain { "Xu",
 		f.all(
-			f.terrain("Uu,Uh,Uu^Uf,Uh^Tf"),
+			f.terrain("Uu,Uh,Uu^Tf,Uh^Tf"),
 			f.adjacent(f.terrain("G*^*,H*^*")),
 			f.adjacent(f.terrain("*^Xm"), nil, 0)
 		),

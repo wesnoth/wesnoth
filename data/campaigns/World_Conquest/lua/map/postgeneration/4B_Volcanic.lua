@@ -6,24 +6,24 @@ function world_conquest_tek_map_repaint_4b()
 		exact = false,
 		percentage = 10,
 	}
-	set_terrain { "Ql,Uu,Uh,Uh,Uu^Uf,Qxu,Uh^Tf",
+	set_terrain { "Ql,Uu,Uh,Uh,Uu^Tf,Qxu,Uh^Tf",
 		f.terrain("Xu"),
 	}
-	set_terrain { "Ql,Uu^Uf,Qxu,Uh^Uf,Uh,Uh,Uu,Ql,Md",
+	set_terrain { "Ql,Uu^Tf,Qxu,Uh^Tf,Uh,Uh,Uu,Ql,Md",
 		f.terrain("Mm^Xm"),
 		fraction = 2,
 	}
-	set_terrain { "Ql,Uu^Uf,Qxu,Uh^Tf",
+	set_terrain { "Ql,Uu^Tf,Qxu,Uh^Tf",
 		f.all(
 			f.terrain("Hh^F*"),
-			f.adjacent(f.terrain("Ql,Uu,Uh,Uu^Uf,Qxu,Uh^Tf"))
+			f.adjacent(f.terrain("Ql,Uu,Uh,Uu^Tf,Qxu,Uh^Tf"))
 		),
 		fraction = 3,
 	}
 	set_terrain { "Uh",
 		f.all(
 			f.terrain("Hh"),
-			f.adjacent(f.terrain("Ql,Uu,Uh,Uu^Uf,Qxu,Uh^Uf,Ur"))
+			f.adjacent(f.terrain("Ql,Uu,Uh,Uu^Tf,Qxu,Uh^Tf,Ur"))
 		),
 		fraction = 3,
 	}
