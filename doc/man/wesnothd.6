@@ -160,6 +160,18 @@ Path to a file where the room info should be stored. This file is read on server
 .B save_replays
 Defines whether the server will automatically save replays of games. (default: \fBfalse\fR)
 .TP
+.B tls_enabled
+Enable use of TLS. If true, requires 3 following options to be set too.
+.TP
+.B tls_fullchain
+TLS full certificate chain in .pem format
+.TP
+.B tls_private_key
+private key for TLS in .pem format
+.TP
+.B tls_dh
+TLS DH parameters, as .pem file. Generate with \fBopenssl dhparam -out filename.pem 4096\fR
+.TP
 .B versions_accepted
 A comma separated list of version strings to be accepted by the server. \fB*\fR and \fB?\fR from wildcard patterns are supported.
 (defaults to the corresponding wesnoth version)
@@ -254,17 +266,6 @@ The name of the table in which your phpbb forums saves its user group data. Most
 .TP
 .B mp_mod_group
 The ID of the forum group to be considered as having moderation authority.
-.B tls_enabled
-Enable use of TLS. If true, requires 3 following options to be set too.
-.TP
-.B tls_fullchain
-TLS full certificate chain in .pem format
-.TP
-.B tls_private_key
-private key for TLS in .pem format
-.TP
-.B tls_dh
-TLS DH parameters, as .pem file. Generate with \fBopenssl dhparam -out filename.pem 4096\fR
 .RE
 .
 .SH EXIT STATUS
