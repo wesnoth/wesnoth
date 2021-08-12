@@ -1244,7 +1244,7 @@ protected:
 		register_command(
 				"layers", &console_handler::do_layers, _("Debug layers from terrain under the mouse."), "", "D");
 		register_command("fps", &console_handler::do_fps, _("Display and log fps (Frames Per Second)."));
-		register_command("benchmark", &console_handler::do_benchmark);
+		register_command("benchmark", &console_handler::do_benchmark, _("Similar to the 'fps' command, but also forces everything to redraw instead of only things that have changed."));
 		register_command("save", &console_handler::do_save, _("Save game."));
 		register_alias("save", "w");
 		register_command("quit", &console_handler::do_quit, _("Quit game."));
