@@ -175,7 +175,9 @@ being used from logging in. (default: false)
 .
 .P
 .B [redirect]
-A tag to specify a server to redirect certain client versions to.
+A tag to specify a server to redirect certain client versions to. Is not used if
+.B versions_accepted
+is not set.
 .RS
 .TP
 .B host
@@ -213,13 +215,14 @@ Accepts the same keys as
 .RE
 .P
 .B [user_handler]
-Configures the user handler. Available keys vary depending on which user handler is set with the
-.B user_handler
-key. If no
+Configures the user handler. If no
 .B [user_handler]
 section is present in the configuration the server will run without any nick registration service. All additional tables that are needed for the
 .B forum_user_handler
-to function can be found in table_definitions.sql in the Wesnoth source repository.
+to function can be found in table_definitions.sql in the Wesnoth source repository. Requires mysql support enabled. For cmake this is
+.B ENABLE_MYSQL
+and for scons this is
+.B forum_user_handler.
 .RS
 .TP
 .B db_host
