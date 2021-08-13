@@ -1046,7 +1046,6 @@ void addon_manager::on_addon_select()
 		for(const auto& f : info->versions) {
 			version_filter_entries.emplace_back("label", f.str());
 		}
-		version_filter.set_active(true);
 	} else {
 		action_stack.select_layer(1);
 
@@ -1056,9 +1055,10 @@ void addon_manager::on_addon_select()
 
 		// Show only the version to be published
 		version_filter_entries.emplace_back("label", info->current_version.str());
-		version_filter.set_active(false);
 	}
+
 	version_filter.set_values(version_filter_entries);
+	version_filter.set_active(version_filter_entries.size() > 1);
 }
 
 void addon_manager::on_selected_version_change()
