@@ -46,6 +46,7 @@
 #include "gui/widgets/text_box.hpp"
 #include "gui/widgets/window.hpp"
 #include "serialization/string_utils.hpp"
+#include "format_time_summary.hpp"
 #include "formula/string_utils.hpp"
 #include "picture.hpp"
 #include "language.hpp"
@@ -952,19 +953,10 @@ void addon_manager::show_help()
 
 static std::string format_addon_time(std::time_t time)
 {
-	if(time) {
-		std::ostringstream ss;
-
-		const char* format = preferences::use_twelve_hour_clock_format()
-			? "%Y-%m-%d %I:%M %p"
-			: "%Y-%m-%d %H:%M";
-
-		ss << std::put_time(std::localtime(&time), format);
-
-		return ss.str();
+	if(!time) {
+		return font::unicode_em_dash;
 	}
-
-	return font::unicode_em_dash;
+	return utils::format_time_summary(time);
 }
 
 void addon_manager::on_addon_select()
