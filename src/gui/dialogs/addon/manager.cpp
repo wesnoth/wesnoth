@@ -956,8 +956,8 @@ static std::string format_addon_time(std::time_t time)
 		std::ostringstream ss;
 
 		const char* format = preferences::use_twelve_hour_clock_format()
-			? "%Y-%m-%d %I:%M %p"
-			: "%Y-%m-%d %H:%M";
+			? "%B %d %Y, %I:%M %p"
+			: "%B %d %Y, %H:%M";
 
 		ss << std::put_time(std::localtime(&time), format);
 
