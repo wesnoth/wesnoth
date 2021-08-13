@@ -100,11 +100,11 @@ config initial_level_config(saved_game& state)
 
 	if(!era_cfg) {
 		if(params.saved_game == mp_game_settings::SAVED_GAME_MODE::NONE) {
-			throw config::error(VGETTEXT("Cannot find era $era", {{"era", era}}));
+			throw config::error(VGETTEXT("Cannot find era '$era'", {{"era", era}}));
 		}
 
 		// FIXME: @todo We should tell user about missing era but still load game...
-		WRN_CF << "Missing era in MP load game " << era << std::endl;
+		WRN_CF << "Missing era in MP load game '" << era << "'" << std::endl;
 
 	} else {
 		level.add_child("era", era_cfg);
