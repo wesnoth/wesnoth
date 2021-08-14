@@ -46,6 +46,12 @@ function functional.choose(input, value)
     -- Equivalent of choose() function in Formula AI
     -- Returns element of a table with the largest @value (a function)
     -- Also returns the max value and the index
+	if value == nil then
+		value = function(v) return v end
+	elseif type(value) ~= 'function' then
+		local key = value
+		value = function(v) return v[key] end
+	end
 
     local max_value, best_input, best_key = -math.huge
     for k,v in ipairs(input) do
@@ -62,6 +68,12 @@ function functional.choose_map(input, value)
     -- Equivalent of choose() function in Formula AI
     -- Returns element of a table with the largest @value (a function)
     -- Also returns the max value and the index
+	if value == nil then
+		value = function(k, v) return v end
+	elseif type(value) ~= 'function' then
+		local key = value
+		value = function(k, v) return v[key] end
+	end
 
     local max_value, best_input, best_key = -math.huge
     for k,v in pairs(input) do
