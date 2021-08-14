@@ -4,26 +4,26 @@
 # Traduction anglaise du package Battle for Wesnoth.
 # Copyright (C) 2004 THE Battle for Wesnoth'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the Battle for Wesnoth package.
-# French Wesnoth translation team <wesnoth@ml.free.fr>, 2004.
+# French Wesnoth translation team <wesnothfr@lists.tuxfamily.org>, 2004.
 # Guillaume Melquiond <guillaume.melquiond@gmail.com>, 2009.
 # Guillaume Pascal <guillaume.pascal43@laposte.net>, 2011, 2013.
 # Guigou Guillaume <guillaume.guigou@orange.fr>, 2013.
 # Mathieu Guilbaud <mathieu@guim.info>, 2018.
-# Syll <syll-dev@laposte.net>, 2018.
+# Syll <syll-dev@laposte.net>, 2018, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth-1.12\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2021-06-23 11:42-0400\n"
-"PO-Revision-Date: 2021-01-26 11:07+0100\n"
-"Last-Translator: Syll <syll-dev@laposte.net>\n"
-"Language-Team: French <wesnoth@ml.free.fr>\n"
+"PO-Revision-Date: 2021-08-14 14:25+0200\n"
+"Last-Translator: Clemence <.>\n"
+"Language-Team: French <>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 2.4.2\n"
+"X-Generator: Poedit 3.0\n"
 
 #. [multiplayer_side]: id=Custom
 #: data/_main.cfg:22
@@ -3508,10 +3508,8 @@ msgstr "Or"
 
 #. [color_range]: id=darkblue
 #: data/core/team-colors.cfg:114
-#, fuzzy
-#| msgid "Dark Red"
 msgid "Dark blue"
-msgstr "Rouge foncé"
+msgstr "Bleu foncé"
 
 #. [color_range]: id=reef
 #: data/core/team-colors.cfg:123
@@ -4125,10 +4123,8 @@ msgstr "$percent|% de l'or sera conservé dans le scénario suivant."
 
 #. [modification]: id=plan_unit_advance
 #: data/modifications.cfg:6
-#, fuzzy
-#| msgid "XP to advance"
 msgid "Plan Unit Advance"
-msgstr "XP pour évoluer"
+msgstr "Planificateur d'avancement des unités "
 
 #. [modification]: id=plan_unit_advance
 #: data/modifications.cfg:7
@@ -4138,13 +4134,16 @@ msgid ""
 "what your units advance to beforehand, either for a specific unit or for all "
 "units of the same type."
 msgstr ""
+"Lors de jeux multijoueurs, si l'une de vos unité doit passer un niveau "
+"pendant le tour d'un adversaire, vous ne pouvez pas faire le choix entre les "
+"évolutions possible. Avec cet option vous pouvez définir à l'avance ce "
+"choix, que ce soit pour une unité spécifique ou pour toutes les unités de "
+"même type. "
 
 #. [checkbox]: id=pickadvance_force_choice
 #: data/modifications.cfg:12
-#, fuzzy
-#| msgid "No advancement"
 msgid "Force advancement planning"
-msgstr "Pas d'avancement"
+msgstr "Force la planification des avancements"
 
 #. [checkbox]: id=pickadvance_force_choice
 #: data/modifications.cfg:13
@@ -4154,32 +4153,34 @@ msgid ""
 "\n"
 "Some eras and scenarios may automatically enable this option."
 msgstr ""
+"Il vous sera demandé de choisir l'avancement souhaité chaque fois "
+"qu'apparaîtra une unité non affecté.\n"
+"\n"
+"Certaines Ères et certains scénarios peuvent activer automatiquement cette "
+"option."
 
 #. [lua]: pickadvance.show_dialog_unsynchronized
 #: data/modifications/pick_advance/dialog.lua:30
 #: data/modifications/pick_advance/main.lua:10
-#, fuzzy
-#| msgid "Delay Advancements"
 msgid "Plan Advancement"
-msgstr "Avancements repoussés :"
+msgstr "Avancement planifié"
 
 #. [lua]: pickadvance.show_dialog_unsynchronized
 #: data/modifications/pick_advance/dialog.lua:67
 msgid ""
 "This advancement is currently the default for all units of the same type"
 msgstr ""
+"Cet avancement est  l'option par défaut pour toutes les unités du même type"
 
 #. [lua]: pickadvance.show_dialog_unsynchronized
 #: data/modifications/pick_advance/dialog.lua:129
 msgid "Apply to all units of this type"
-msgstr ""
+msgstr "Appliquer à toutes les unités de même type"
 
 #. [lua]: pickadvance.show_dialog_unsynchronized
 #: data/modifications/pick_advance/dialog.lua:145
-#, fuzzy
-#| msgid "Saved"
 msgid "Save"
-msgstr "Sauvegardé"
+msgstr "Sauvegarder"
 
 #. [lua]: pickadvance.show_dialog_unsynchronized
 #: data/modifications/pick_advance/dialog.lua:154
@@ -4188,17 +4189,13 @@ msgstr "Annuler"
 
 #. [lua]: preshow
 #: data/modifications/pick_advance/dialog.lua:174
-#, fuzzy
-#| msgid "No advancement"
 msgid "No planned advancement"
-msgstr "Pas d'avancement"
+msgstr "Pas d'avancement prévu"
 
 #. [action]: id=button-playreplay, type=image
 #: data/themes/_initial.cfg:413
-#, fuzzy
-#| msgid "replay"
 msgid "replay^Play"
-msgstr "revoir la partie"
+msgstr "Lire"
 
 #. [action]: id=button-playreplay, type=image
 #: data/themes/_initial.cfg:414 data/themes/_initial.cfg:574
@@ -4207,10 +4204,8 @@ msgstr "Revoir la partie sans interruption"
 
 #. [action]: id=button-stopreplay, type=image
 #: data/themes/_initial.cfg:428
-#, fuzzy
-#| msgid "replay"
 msgid "replay^Stop"
-msgstr "revoir la partie"
+msgstr "Stop"
 
 #. [action]: id=button-stopreplay, type=image
 #: data/themes/_initial.cfg:429
@@ -4219,10 +4214,8 @@ msgstr "Pause après le déplacement en cours"
 
 #. [action]: id=button-resetreplay, type=image
 #: data/themes/_initial.cfg:444
-#, fuzzy
-#| msgid "replay"
 msgid "replay^Reset"
-msgstr "revoir la partie"
+msgstr "Recommencer"
 
 #. [action]: id=button-resetreplay, type=image
 #: data/themes/_initial.cfg:445 data/themes/_initial.cfg:602
@@ -4331,10 +4324,8 @@ msgstr "Le thème par défaut."
 
 #. [menu]: id=menu-autosaves
 #: data/themes/default.cfg:92
-#, fuzzy
-#| msgid "Load Game..."
 msgid "Load Turn..."
-msgstr "Chargement du jeu..."
+msgstr "Chargement du tour..."
 
 #. [menu]: id=actions-menu
 #: data/themes/default.cfg:100
@@ -5241,6 +5232,9 @@ msgid ""
 "quicker. The <i>acceleration factor</i> can be set, and turned on by "
 "default, in the <i>Preferences</i> menu’s <i>General</i> tab."
 msgstr ""
+"Maintenir <b>majuscule</b> pour faire défiler plus vite les animations de "
+"déplacement et de combat.Le <i>facteur d'accélération</i> peut être activé "
+"et défini dans le menu<i>Préférences</i> de l'onglet <i>Général</i>."
 
 #. [tip]
 #. Translate "Change difficulty" and "Load Game" as in wesnoth-lib textdomain
@@ -5665,6 +5659,9 @@ msgstr ""
 "depuis le serveur."
 
 #: src/addon/manager_ui.cpp:282
+#, fuzzy
+#| msgid ""
+#| "Could not find add-ons matching the ids $addon_ids on the add-on server."
 msgid "Could not find an add-on matching id $addon_id on the add-on server."
 msgstr "L'extension $addon_id n'a pas été trouvée sur le serveur d'extensions."
 
@@ -6451,6 +6448,8 @@ msgstr "Avertissement"
 msgid ""
 "The remote server requested a password while using an insecure connection."
 msgstr ""
+"Le serveur distant utilise une connexion non sécurisé et demande un mot de "
+"passe "
 
 #: src/game_initialization/multiplayer.cpp:409
 msgid "You must login first."
@@ -6543,7 +6542,7 @@ msgstr "Vous avez réalisé trop de tentatives d'authentification."
 
 #: src/game_initialization/multiplayer.cpp:452
 msgid "Password hashing failed."
-msgstr ""
+msgstr "Le hachage du mot de passe à échoué."
 
 #: src/game_initialization/playcampaign.cpp:75
 msgid "Scenario Report"
@@ -6745,7 +6744,7 @@ msgstr "Aucun camp visible trouvé."
 
 #: src/gui/dialogs/multiplayer/match_history.cpp:30
 msgid "Match History — $player"
-msgstr ""
+msgstr "Historique de match — $player"
 
 #: src/gui/dialogs/multiplayer/player_info.cpp:105
 msgid "In game:"
@@ -7291,10 +7290,8 @@ msgid "Debug layers from terrain under the mouse."
 msgstr "Déboguer les calques des terrains sous la souris."
 
 #: src/menu_events.cpp:1246
-#, fuzzy
-#| msgid "Show fps (Frames Per Second)."
 msgid "Display and log fps (Frames Per Second)."
-msgstr "Affiche les IPS (Images par seconde)."
+msgstr "Affichage et journalisation des IPS (Images par seconde)."
 
 #: src/menu_events.cpp:1248
 msgid "Save game."
@@ -7727,7 +7724,7 @@ msgstr "Détails de l'erreur :"
 
 #: src/play_controller.cpp:1258
 msgid "Warning: broken campaign branches"
-msgstr ""
+msgstr "Avertissement : branches de campagnes cassées "
 
 #. TRANSLATORS: This is an error that will hopefully only be seen by UMC authors and by players who have already
 #. said "okay" to a "loading saves from an old version might not work" dialog.
@@ -7738,7 +7735,10 @@ msgid_plural ""
 "Some of the possible next scenarios are missing, you might not be able to "
 "finish this campaign."
 msgstr[0] ""
+"Le prochain scénario manque, vous ne pourrez pas finir cette campagne."
 msgstr[1] ""
+"Certains des scénarios possible suivant manquent, il est possible que vous "
+"ne puissiez finir cette campagne."
 
 #: src/play_controller.cpp:1271
 msgid ""
@@ -7748,11 +7748,15 @@ msgid_plural ""
 "Please report the following missing scenarios to the campaign’s author:\n"
 "$unknown_list|"
 msgstr[0] ""
+"Merci de signaler le scénario manquant à l'auteur de la campagne :\n"
+"$unknown_list|"
 msgstr[1] ""
+"Merci de signaler les scénarios manquant à l'auteur de la campagne :\n"
+"$unknown_list|"
 
 #: src/play_controller.cpp:1275
 msgid "Once this is fixed, you will need to restart this scenario."
-msgstr ""
+msgstr "Une fois le problème résolu, vous devrez redémarrer ce scénario."
 
 #: src/play_controller.cpp:1455
 msgid "No objectives available"
@@ -7885,16 +7889,8 @@ msgid "Type: "
 msgstr "Type : "
 
 #: src/reports.cpp:196
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "Special Notes:"
 msgid "Special Notes:"
-msgstr ""
-"\n"
-"\n"
-"Remarques :"
+msgstr "Remarques :"
 
 #: src/reports.cpp:219
 msgid "Race: "
@@ -8273,6 +8269,21 @@ msgid ""
 "\n"
 "Do you wish to continue?"
 msgstr ""
+"Cette sauvegarde provient d'une version différente du jeu "
+"($version_number|), et peut ne pas fonctionner avec la version actuelle.\n"
+"\n"
+"<b>Attention :</b> Les sauvegardes en milieu de campagnes ont le plus de "
+"chances d'échouer, et vous devriez soit utiliser l'ancienne version ou "
+"recommencer la campagne. Même si une sauvegarde parait s'être chargée avec "
+"succès, des aspects plus subtils comme l'équilibre du jeu et la progression "
+"de l'histoire peuvent être touchés. La difficulté, le défi et le <i>fun</i> "
+"peuvent faire défaut.\n"
+"\n"
+"Par exemple, la campagne peut avoir été rééquilibrée avec moins d'ennemis "
+"dans les précédents scénarios, mais s'attendre à ce que les unités à "
+"rappeler aient en conséquence moins d'expérience dans le dernier scénario.\n"
+"\n"
+"Souhaitez-vous continuer ? "
 
 #: src/savegame.cpp:274 src/savegame.cpp:320
 msgid "Load Game"
@@ -8311,6 +8322,9 @@ msgid ""
 "following characters:\n"
 "    \" * / : < > ? \\ | ~"
 msgstr ""
+"Les noms des sauvegardes ne devraient pas se terminer avec un point ou "
+"contenir deux points ou l'un des caractères suivants :\n"
+" \" * / : < > ? \\ | ~"
 
 #: src/savegame.cpp:490
 msgid "Saved"
