@@ -285,6 +285,15 @@ function methods:of_triples(t)
     end
 end
 
+function methods:of_map(t)
+	-- Create a location set from a table of location->element mappings
+	-- Keys can be of the form {x,y} or {x=x,y=y}, or a location-like object such as a unit
+	for k,v in pairs(t) do
+		local loc = wesnoth.read_location(k)
+		self:insert(loc.x, loc.y, v)
+	end
+end
+
 function methods:of_shroud_data(data)
 	self:of_pairs(wesnoth.map.parse_bitmap(data))
 end
@@ -334,6 +343,14 @@ function methods:to_triples()
     return res
 end
 
+function methods:to_map()
+	local res = {}
+	self:iter(function(x, y, v)
+		res[wesnoth.named_tuple({x, y}, {"x", "y"})] = v
+	end)
+	return res
+end
+
 function methods:to_shroud_data()
 	return wesnoth.map.make_bitmap(self:to_pairs())
 end
@@ -375,6 +392,12 @@ function location_set.of_triples(t)
     local s = location_set.create()
     s:of_triples(t)
     return s
+end
+
+function location_set.of_map(t)
+	local s = location_set.create()
+	s:of_map(t)
+	return s
 end
 
 function location_set.of_shroud_data(data)
