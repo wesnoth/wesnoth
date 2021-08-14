@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2021-07-18 12:00+0300\n"
-"PO-Revision-Date: 2021-07-03 11:54+0200\n"
+"PO-Revision-Date: 2021-07-19 21:59+0200\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
@@ -5580,12 +5580,11 @@ msgid "An error occurred while downloading the add-ons list from the server."
 msgstr "Při stahování seznamu rozšíření ze serveru došlo k chybě."
 
 #: src/addon/manager_ui.cpp:295
-#, fuzzy
-#| msgid "Could not find an add-on matching id $addon_id on the add-on server."
 msgid ""
 "Could not find add-ons matching the ids $addon_ids on the add-on server."
 msgstr ""
-"Na tomto serveru nejsou dostupné žádné aktualizace rozšíření $addon_id."
+"Na serveru s rozšířeními se nepodařilo najít rozšíření odpovídající "
+"identifikátorům $addon_ids."
 
 #: src/addon/validation.cpp:387
 msgid "Success."
