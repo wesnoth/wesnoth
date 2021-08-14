@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2021-06-23 15:42 UTC\n"
-"PO-Revision-Date: 2021-07-07 19:47+0200\n"
+"PO-Revision-Date: 2021-08-04 23:33+0200\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
@@ -5954,15 +5954,6 @@ msgstr "Obří lasice sněžná"
 # V originále je hlodavec, ale lasice je šelma.
 #. [unit_type]: id=Frost Stoat, race=monster
 #: data/core/units/monsters/Frost_Stoat.cfg:35
-#, fuzzy
-#| msgid ""
-#| "Frost Stoats are a devious rodent predominantly found in the frozen parts "
-#| "of the Northlands, although they can survive anywhere. Their most "
-#| "distinctive feature is their icy-cold front claws, which is unlike "
-#| "anything found in other wild animals. These stoats generally scavenge "
-#| "refuse or hunt smaller animals, but are quite territorial and the young "
-#| "adults have been known to attack larger intruders, including humans and "
-#| "orcs."
 msgid ""
 "Frost Stoats are devious critters predominantly found in the frozen parts of "
 "the Northlands, although they can survive anywhere. Their most distinctive "
@@ -6157,6 +6148,10 @@ msgid ""
 "the wild plains and woodlands. Though an unencumbered horse will tend to "
 "flee if possible, they will fight back with a powerful kick when cornered."
 msgstr ""
+"Pro hnědohříváky je typické spíše jejich zbarvení než velikost či "
+"temperament. Lze je najít kdekoli od bitevního pole přes farmu až po divoké "
+"pláně a lesy. Ačkoli neosedlaný kůň má tendenci utíkat, když je to možné, v "
+"případě zahnání do kouta se brání silnými kopanci."
 
 #. [attack]: type=impact
 #: data/core/units/monsters/Horse.cfg:32 data/core/units/monsters/Horse.cfg:98
@@ -6175,7 +6170,6 @@ msgstr "Bělohřívák"
 
 #. [unit_type]: id=White Horse
 #: data/core/units/monsters/Horse.cfg:85
-#, fuzzy
 msgid ""
 "Some horses have a white color, and they are merely white horses. But there "
 "exist a special breed, found only in the wild woods, that are White Horses. "
@@ -6240,12 +6234,12 @@ msgstr "Černý hřebec"
 #. [female]
 #: data/core/units/monsters/Horse_Black.cfg:90
 msgid "female^Black Nightmare"
-msgstr "Noční můra"
+msgstr "Černá můra"
 
 #. [unit_type]: id=Great Horse, race=horse
 #: data/core/units/monsters/Horse_Great.cfg:5
 msgid "Great Horse"
-msgstr "Shirský kůň"
+msgstr "Velký kůň"
 
 #. [unit_type]: id=Great Horse, race=horse
 #: data/core/units/monsters/Horse_Great.cfg:20
@@ -6255,6 +6249,10 @@ msgid ""
 "often feisty temperaments make them too difficult to tame, though many an "
 "arrogant prince or warlord has tried and failed."
 msgstr ""
+"Velcí koně jsou výrazně větší než běžní domestikovaní koně, ale navzdory "
+"podobnému vzhledu jsou to divoká zvířata. Jejich tvrdohlavý a často vzteklý "
+"temperament způsobuje, že je příliš obtížné je zkrotit. Ačkoli se o to "
+"pokusil nejeden arogantní kníže či vojevůdce, nikdo neuspěl."
 
 #. [unit_type]: id=Icemonax, race=monster
 #: data/core/units/monsters/Icemonax.cfg:4
@@ -6311,18 +6309,22 @@ msgid ""
 "felt the Jinn were watching over them, driving off malign forces of the "
 "night."
 msgstr ""
+"Džinové jsou tajemní duchové, o nichž není známo, že by měli nějaký vztah k "
+"duším zemřelých. Často je lze spatřit zdálky, jak se vznášejí po pouštních "
+"kopcích a dunách, ale bližšímu pozorování se vyhýbají. Téměř všechna "
+"zaznamenaná setkání byla nepřátelské povahy, ale vyskytly se i případy, kdy "
+"cestovatelé měli pocit, že nad nimi džinové bdí a zahánějí zlé síly noci."
 
+# chamsin?
 #. [attack]: type=impact
 #: data/core/units/monsters/Jinn.cfg:99
 msgid "desert windblast"
-msgstr ""
+msgstr "pouštní smršť"
 
 #. [attack]: type=fire
 #: data/core/units/monsters/Jinn.cfg:108
-#, fuzzy
-#| msgid "lightning"
 msgid "desert lightning"
-msgstr "blesk"
+msgstr "pouštní blesk"
 
 #. [unit_type]: id=Mudcrawler, race=monster
 #: data/core/units/monsters/Mudcrawler.cfg:4
@@ -6384,14 +6386,6 @@ msgstr "Obří škorpion skalní"
 
 #. [unit_type]: id=Rock Scorpion, race=monster
 #: data/core/units/monsters/Rock_Scorpion.cfg:45
-#, fuzzy
-#| msgid ""
-#| "Rock scorpions have featured in tales of highwaymen and drunks, but there "
-#| "has been scant evidence that they truly exist.  They've been described as "
-#| "stealthy monsters with a hide of solid rock, and sharp, crystalline "
-#| "claws.  Unlike most scorpions, they do not deliver their poison with a "
-#| "piercing stinger, but instead spray their enemies with a noxious, "
-#| "volatile stream."
 msgid ""
 "Rock scorpions have featured in tales of highwaymen and drunks, but there "
 "has been scant evidence that they truly exist. They've been described as "
@@ -6474,15 +6468,6 @@ msgstr "Velký mořský koník"
 
 #. [unit_type]: id=Great Seahorse, race=monster
 #: data/core/units/monsters/Seahorse.cfg:29
-#, fuzzy
-#| msgid ""
-#| "Seahorses are a variety of fish that have a horse-like head, but they "
-#| "have no real connection to equines.  Most seahorses are small, shy "
-#| "creatures that eat bugs and similar small prey, but Great Seahorses are "
-#| "large enough to threaten unwary travelers.  This large variety can spit "
-#| "water with enough force to stun a small animal, and has thick, bony plate "
-#| "armor, but like all seahorses, it is a slow swimmer and cannot move over "
-#| "land."
 msgid ""
 "Seahorses are a variety of fish that have a horse-like head, but they have "
 "no real connection to equines. Most seahorses are small, shy creatures that "
@@ -6494,10 +6479,10 @@ msgstr ""
 "Mořští koníci jsou druh ryb, které mají koňskou hlavu, ale nemají žádnou "
 "skutečnou souvislost s koňovitými. Většina mořských koníků jsou malá, plachá "
 "stvoření, která žerou brouky a podobnou malou kořist, ale velcí mořští "
-"koníci jsou dostatečně velcí, aby ohrožovali i neopatrné cestovatele. Toto "
-"velké plemeno dokáže plivat vodu s takovou silou, že omráčí menší zvíře, a "
-"také má tlusté kostnaté brnění. Stejně jako všichni mořští koníci patří ale "
-"mezi pomalé plavce a nemůže se pohybovat po zemi."
+"koníci jsou dostatečně velcí, aby mohli ohrozit i neopatrné cestovatele. "
+"Toto velké plemeno dokáže plivat vodu s takovou silou, že omráčí menší "
+"zvíře, a také má tlusté kostnaté brnění. Stejně jako všichni mořští koníci "
+"patří ale mezi pomalé plavce a nemůže se pohybovat po zemi."
 
 #. [unit_type]: id=Skeletal Dragon, race=undead
 #: data/core/units/monsters/Skeletal_Dragon.cfg:4
@@ -6572,18 +6557,6 @@ msgstr "Divoká wyverna"
 
 #. [unit_type]: id=Wild Wyvern, race=monster
 #: data/core/units/monsters/Wild_Wyvern.cfg:44
-#, fuzzy
-#| msgid ""
-#| "Wyverns are large reptiles that resemble dragons, but are not the "
-#| "intelligent, magical creatures. However, the fact that they are just wild "
-#| "beasts should not cause any traveler who encounters one to dismiss the "
-#| "threat, for they are fast and fierce when threatened or hungry.\n"
-#| "\n"
-#| "Wyverns are social creatures, usually traveling in pairs or small "
-#| "groups.  Their hunting patterns and diet are difficult to discern, for "
-#| "they often work with smaller animals that would appear to be potential "
-#| "prey.  That odd behavior may be an adaptation to the harsh desert "
-#| "environments they often inhabit."
 msgid ""
 "Wyverns are large reptiles that resemble dragons, but are not the "
 "intelligent, magical creatures. However, the fact that they are just wild "
@@ -6724,10 +6697,8 @@ msgstr "Nága bojovnice"
 
 #. [unit_type]: id=Naga Guard, race=naga
 #: data/core/units/nagas/Guard.cfg:4
-#, fuzzy
-#| msgid "Royal Guard"
 msgid "Naga Guard"
-msgstr "Královská stráž"
+msgstr "Nága stráž"
 
 #. [unit_type]: id=Naga Guard, race=naga
 #: data/core/units/nagas/Guard.cfg:22
@@ -6738,13 +6709,16 @@ msgid ""
 "mercenary activities. They are said to have a strong code of honor, though "
 "like all things naga, it is mostly a mystery to outsiders."
 msgstr ""
+"Nágy si na bojišti cení spíše hbitosti a ladnosti, ale při obraně důležitých "
+"pozic hrají klíčovou roli pomalejší a silnější jedinci. S těmito strážci se "
+"lze setkat jen zřídka, protože se neúčastní nájezdů ani žoldnéřských "
+"aktivit. Říká se o nich, že mají silný kodex cti, ačkoli jako všechno okolo "
+"nág je i toto pro cizince zahaleno nejasností."
 
 #. [unit_type]: id=Naga High Guard, race=naga
 #: data/core/units/nagas/Guard_High.cfg:4
-#, fuzzy
-#| msgid "Naga Fighter"
 msgid "Naga High Guard"
-msgstr "Nága bojovník"
+msgstr "Nága nejvyšší stráž"
 
 #. [unit_type]: id=Naga High Guard, race=naga
 #: data/core/units/nagas/Guard_High.cfg:23
@@ -6756,21 +6730,23 @@ msgid ""
 "attacks, but the nagas can usually seek better terrain advantage in such "
 "situations."
 msgstr ""
+"Elitní stráže představují v državách nág pro všechny případné útočníky "
+"pevnou bariéru. Dokáží rozdávat silné údery a podobně jako méně zkušené "
+"štítonoše je obtížné je z jejich stanovišť vypudit kvůli efektivnímu využití "
+"štítu v technikách boje zblízka. Proti útokům na dálku tato taktika moc "
+"nepomůže, ale v takových situacích mohou nágy obvykle vyhledat terénní "
+"výhodu."
 
 #. [attack]: type=impact
 #: data/core/units/nagas/Guard_High.cfg:37
 #: data/core/units/nagas/Guard_Shield.cfg:35
-#, fuzzy
-#| msgid "shield bash"
 msgid "shield"
-msgstr "úder štítem"
+msgstr "štít"
 
 #. [unit_type]: id=Naga Shield Guard, race=naga
 #: data/core/units/nagas/Guard_Shield.cfg:4
-#, fuzzy
-#| msgid "Naga Sicarius"
 msgid "Naga Shield Guard"
-msgstr "Sikarián"
+msgstr "Nága štítonoš"
 
 #. [unit_type]: id=Naga Shield Guard, race=naga
 #: data/core/units/nagas/Guard_Shield.cfg:22
@@ -6780,6 +6756,10 @@ msgid ""
 "nothing against ranged attacks, but the nagas can usually seek better "
 "terrain advantage in such situations."
 msgstr ""
+"Zkušené stráže nág je obtížnější vystrnadit z jejich pozic, protože při "
+"technikách boje zblízka účinně využívají štít. Proti útokům na dálku tato "
+"taktika moc nepomůže, ale v takových situacích mohou nágy obvykle vyhledat "
+"terénní výhodu."
 
 #. [unit_type]: id=Naga Myrmidon, race=naga
 #: data/core/units/nagas/Myrmidon.cfg:4
@@ -6828,19 +6808,6 @@ msgstr "Ofidián"
 
 #. [unit_type]: id=Naga Ophidian, race=naga
 #: data/core/units/nagas/Ophidian.cfg:18
-#, fuzzy
-#| msgid ""
-#| "Experienced warriors of the Southern Naga often find work as mercenaries, "
-#| "usually hired by neighboring Dunefolk to control key waterways near the "
-#| "coastline. Due to their constant confrontations with enemy horsemen, "
-#| "Ophidians have retired the ringed blades of their youth and picked up the "
-#| "piercing bow. Though generally amicable with their wealthy employers, "
-#| "this friendliness should not be mistaken for loyalty, for the Ophidian "
-#| "are known for readily switching between rival city-state factions at the "
-#| "start of each shipping season, when demand for water-based protection is "
-#| "the highest. As a group, these nagas encourage a healthy amount of "
-#| "competition among the surface factions, ensuring their services are "
-#| "valued by one tribe or another."
 msgid ""
 "Experienced warriors of the Southern Naga often find work as mercenaries, "
 "usually hired by neighboring Dunefolk to control key waterways near the "
@@ -6858,14 +6825,16 @@ msgstr ""
 "Zkušení válečníci jižních nág jsou často zaměstnávani jako žoldáci. Obvykle "
 "si je pro kontrolu klíčových vodních cest v blízkosti pobřeží najímají "
 "jejich sousedé pouštní lidé. Kvůli neustálým střetům s nepřátelskými jezdci "
-"odložili ofidiáni prstencové čepele svého mládí a pozvedli průrazné luky. "
-"Přestože se svými bohatými zaměstnavateli udržují přátelské vztahy, neměla "
-"by být tato přívětivost zaměňována s loajalitou. Neboť ofidiáni jsou známí "
-"tím, že na začátku každé námořní sezóny, kdy je poptávka po ochraně lodního "
-"provozu nejvyšší, se nechají snadno přetáhnout do služeb soupeřící frakce "
-"městských států. Společným zájmem těchto nág je, aby existovalo mezi "
-"„suchozemskými“ frakcemi zdravé množství konkurence a bylo tak zajištěno, že "
-"si jejich služeb budou považovat různé kmeny či klany."
+"odložili ofidiáni prstencové čepele svého mládí a pozvedli průrazné jaridy. "
+"Tyto krátké oštěpy pak učinili ještě smrtonosnějšími přidáním olova "
+"získaného z balastů potopených lodí. Přestože se svými bohatými "
+"zaměstnavateli udržují přátelské vztahy, neměla by být tato přívětivost "
+"zaměňována s loajalitou. Neboť ofidiáni jsou známí tím, že na začátku každé "
+"námořní sezóny, kdy je poptávka po ochraně lodního provozu nejvyšší, se "
+"nechají snadno přetáhnout do služeb soupeřící frakce městských států. "
+"Společným zájmem těchto nág je, aby existovalo mezi „suchozemskými“ frakcemi "
+"zdravé množství konkurence a bylo tak zajištěno, že si jejich služeb budou "
+"považovat různé kmeny či klany."
 
 # Tohle by chtělo ještě vylepšit (konkretizovat). Možnosti: kukri/bichuwa/kirpan/karambit. Všechno to jsou neceremoniální zakřivené zbraně „indického“ okruhu, délky tesáku.
 #. [attack]: type=blade
@@ -6876,7 +6845,7 @@ msgstr "zakřivená čepel"
 #. [attack]: type=pierce
 #: data/core/units/nagas/Ophidian.cfg:36 data/core/units/nagas/Sicarius.cfg:40
 msgid "jarid"
-msgstr ""
+msgstr "jarid"
 
 #. [female]
 #: data/core/units/nagas/Ophidian.cfg:87
@@ -6921,18 +6890,6 @@ msgstr "Sikarián"
 
 #. [unit_type]: id=Naga Sicarius, race=naga
 #: data/core/units/nagas/Sicarius.cfg:19
-#, fuzzy
-#| msgid ""
-#| "While they sometimes still stand in as sellswords for potential Dunefolk "
-#| "allies, Naga Sicarii are more often the keepers of trade routes and "
-#| "resource beds close to waterways. For the right fee or exchange of goods, "
-#| "a Sicarius will guarantee safe travel or free access to valuable supplies "
-#| "in his territory. Rubbed the wrong way and a Sicarius becomes a fearsome "
-#| "foe, not because of their personal strength in combat, but instead due to "
-#| "the numerous allies that he can call upon to quash any potential "
-#| "nuisance. Though perfectly capable warriors when the time is necessary, "
-#| "these experienced mercenaries know perfectly well that the best methods "
-#| "for generating money are those that do not place themselves in danger."
 msgid ""
 "While they sometimes still stand in as sellswords for potential Dunefolk "
 "allies, Naga Sicarii are more often the keepers of trade routes and resource "
@@ -6957,7 +6914,10 @@ msgstr ""
 "povolat k potlačení jakékoli potenciální nepříjemnosti. Sikariáni jsou "
 "zkušení žoldnéři, kteří dokážou být v čase války, když je to nezbytné, i "
 "schopnými válečníky. A velmi dobře vědí, že nejlepšími metodami pro "
-"získávání peněz jsou ty, které je neohrožují."
+"získávání peněz jsou ty, které je neohrožují. Když už se v nebezpečí "
+"ocitnou, dobře využijí svou manipulativní lstivost. Dokáží předvídat mnohé "
+"nepřátelské údery a v kritickém okamžiku použít svou těžkou zakřivenou čepel "
+"k odvrácení útoku či odvedení pozornosti."
 
 #. [female]
 #: data/core/units/nagas/Sicarius.cfg:91
@@ -8503,14 +8463,5 @@ msgid ""
 "These woses are able to command forest plants such as vines and creepers to "
 "hinder their enemies."
 msgstr ""
-"Tito stromový muži jsou schopni přikázat lesním rostlinám, jako je réva a "
+"Tito stromoví muži jsou schopni přikázat lesním rostlinám, jako je réva a "
 "jiné popínavky, aby blokovaly nepřátele."
-
-#~ msgid "Horses need a better description."
-#~ msgstr "Koně potřebují lepší popis."
-
-#~ msgid "Great Horses need a better description."
-#~ msgstr "Shirští koně potřebují lepší popis."
-
-#~ msgid "desert fire"
-#~ msgstr "pouštní oheň"
