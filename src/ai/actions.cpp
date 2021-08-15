@@ -377,8 +377,8 @@ bool move_result::test_route(const unit &un)
 		return false;
 	}
 
-	if (!to_.valid()) {
-		set_error(E_NO_ROUTE);
+	if (!to_.valid() || !resources::gameboard->map().on_board(to_)) {
+		set_error(E_OFF_MAP);
 		return false;
 	}
 
@@ -1092,6 +1092,7 @@ const std::string& actions::get_error_name(int error_code)
 		error_names_.emplace(move_result::E_AMBUSHED, "move_result::E_AMBUSHED");
 		error_names_.emplace(move_result::E_FAILED_TELEPORT, "move_result::E_FAILED_TELEPORT");
 		error_names_.emplace(move_result::E_NO_ROUTE, "move_result::E_NO_ROUTE");
+		error_names_.emplace(move_result::E_OFF_MAP, "move_result::E_OFF_MAP");
 
 		error_names_.emplace(recall_result::E_NOT_AVAILABLE_FOR_RECALLING, "recall_result::E_NOT_AVAILABLE_FOR_RECALLING");
 		error_names_.emplace(recall_result::E_NO_GOLD, "recall_result::E_NO_GOLD");
