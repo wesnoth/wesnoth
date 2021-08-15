@@ -300,13 +300,17 @@ end
 
 function methods:to_pairs()
 	local res = {}
-	self:iter(function(x, y) table.insert(res, { x, y }) end)
+	self:iter(function(x, y)
+		table.insert(res, wesnoth.named_tuple({ x, y }, {'x', 'y'}))
+	end)
 	return res
 end
 
 function methods:to_stable_pairs()
 	local res = {}
-	self:stable_iter(function(x, y) table.insert(res, { x, y }) end)
+	self:stable_iter(function(x, y)
+		table.insert(res, wesnoth.named_tuple({ x, y }, {'x', 'y'}))
+	end)
 	return res
 end
 
