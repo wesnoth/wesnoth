@@ -86,6 +86,14 @@ function functional.choose_map(input, value)
     return {key = best_key, value = best_input}, max_value
 end
 
+function functional.map_array(input, formula)
+	local mapped_table = {}
+	for n,v in ipairs(input) do
+		table.insert(mapped_table, formula(v))
+	end
+	return mapped_table
+end
+
 function functional.map(input, formula)
 	local mapped_table = {}
 	for k,v in pairs(input) do
