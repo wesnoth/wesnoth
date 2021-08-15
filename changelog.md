@@ -2,6 +2,8 @@
  ### Add-ons client
  ### Add-ons server
  ### Campaigns
+   * Liberty
+     * S06: Enforce failure condition for allied team (issue #6019)
  ### Editor
  ### Multiplayer
  ### Lua API
