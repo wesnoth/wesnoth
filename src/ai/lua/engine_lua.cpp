@@ -52,8 +52,6 @@ static lg::log_domain log_ai_engine_lua("ai/engine/lua");
 #pragma warning(disable:4250)
 #endif
 
-typedef std::shared_ptr< lua_object<int> > lua_int_obj;
-
 class lua_candidate_action_wrapper_base : public candidate_action {
 
 public:
@@ -67,7 +65,7 @@ public:
 
 	virtual double evaluate()
 	{
-		lua_int_obj l_obj(new lua_object<int>());
+		auto l_obj = std::make_shared<lua_object<double>>();
 
 		if (evaluation_action_handler_) {
 			evaluation_action_handler_->handle(serialized_evaluation_state_, serialized_filterown_, true, l_obj);
@@ -75,7 +73,7 @@ public:
 			return BAD_SCORE;
 		}
 
-		std::shared_ptr<int> result = l_obj->get();
+		std::shared_ptr<double> result = l_obj->get();
 
 		return result ? *result : 0.0;
 	}
