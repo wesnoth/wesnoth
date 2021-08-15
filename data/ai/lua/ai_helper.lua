@@ -31,6 +31,18 @@ local ai_helper = {}
 
 ----- Debugging helper functions ------
 
+function ai_helper.print_hp_distribution(hp_distribution, print)
+    -- You can pass std_print as the second argument if you prefer output to the console
+    -- Any other function taking a single argument will also work.
+    print = print or _G.print
+    -- hp_distribution is sort of an array, but unlike most Lua arrays it's 0-index
+    for i = 0, #hp_distribution - 1 do
+        if hp_distribution[i] > 0 then
+            print(('P(hp = $hp) = $prob%'):vformat{hp = i, prob = hp_distribution[i] * 100})
+        end
+    end
+end
+
 function ai_helper.show_messages()
     -- Returns true or false (hard-coded). To be used to
     -- show messages if in debug mode.
