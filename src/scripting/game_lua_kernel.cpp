@@ -1848,12 +1848,12 @@ int game_lua_kernel::intf_find_path(lua_State *L)
 	}
 
 	dst = luaW_checklocation(L, arg);
-	++arg;
 
 	if (!board().map().on_board(src))
 		return luaL_argerror(L, 1, "invalid location");
 	if (!board().map().on_board(dst))
-		return luaL_argerror(L, arg - 2, "invalid location");
+		return luaL_argerror(L, arg, "invalid location");
+	++arg;
 
 	const gamemap &map = board().map();
 	bool ignore_units = false, see_all = false, ignore_teleport = false;
