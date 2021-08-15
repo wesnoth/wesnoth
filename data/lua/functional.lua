@@ -77,11 +77,7 @@ end
 function functional.map(input, formula)
 	local mapped_table = {}
 	for k,v in pairs(input) do
-		if type(k) == 'number' then
-			table.insert(mapped_table, formula(v))
-		else
-			mapped_table[k] = formula(v, k)
-		end
+		mapped_table[k] = formula(v, k)
 	end
 	return mapped_table
 end
