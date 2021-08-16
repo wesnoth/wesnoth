@@ -997,10 +997,6 @@ void addon_manager::on_addon_select()
 	find_widget<styled_widget>(parent, "created", false).set_label(format_addon_time(info->created));
 	find_widget<styled_widget>(parent, "updated", false).set_label(format_addon_time(info->updated));
 
-	// Although this is a user-visible string, use utils::join instead of format_conjunct_list
-	// because "x, y, z" is clearer than "x, y and z" in this context.
-	find_widget<styled_widget>(parent, "tags", false).set_label(utils::join(info->tags, ", "));
-
 	find_widget<styled_widget>(parent, "dependencies", false).set_label(!info->depends.empty()
 		? make_display_dependencies(info->id, addons_, tracking_info_)
 		: _("addon_dependencies^None"));
