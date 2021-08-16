@@ -4,18 +4,44 @@
  ### Campaigns
    * Liberty
      * S06: Enforce failure condition for allied team (issue #6019)
+   * The South Guard
+     * S8b: Reduced difficulty
+   * Tutorial
+     * S01: Don't let the first Quintain chase the player to a village (PR #5968)
+     * S01: Synchronise the choice of character dialog, so that replays don't get OOS (issue #5926)
+     * S01: Fix some glitches on HDPI displays (PR #6005)
+   * Secrets of the Ancients
+     * Synchronise the walking corpse recruitment dialog, so that replays don't get OOS (issue #5334)
+   * Under the Burning Suns
+     * S09: Reveal the boss of the scenario at the end of part 1 (issue #5540)
+   * World Conquest
+     * Add campaign icons, campaign image and credits (PR #5958)
+     * Update to new mushroom terrain from the deprecated mushroom terrain (issue #5135, PR #5960)
  ### Editor
  ### Multiplayer
+   * If an add-on needs to be installed on all players' devices but doesn't specify a min version, assume it needs the latest (issue #5004)
  ### Lua API
  ### Packaging
  ### Terrain
+   * Fix transition between snowy mountains and castles (issue #6016)
  ### Translations
    * Updated translations: British English, Chinese (Traditional), Czech, French, Italian, Polish, Portuguese (Brazil), Russian, Turkish
  ### Units
+   * Added and improved Naga animations (issue #5980, PR #6012)
+   * Added Troll defense animations (PR #5964)
  ### User interface
    * The names of the abilities used as specials appear in the attack prediction window with specials weapons
+   * In the Load Game dialog, list directories from previous versions in decending order
+   * Refined design of the Faction Select screen
+   * Made the campaign selection on bigger on HDPI screens (PR #6013)
  ### WML Engine
  ### Miscellaneous and Bug Fixes
+   * Added a timeout when connecting to the wesnothd server
+   * Improved logging of deprecation messages, fixing duplication and missing timestamps (issue #5942)
+   * Added `[era]` attributes to the schema
+   * Added to wmllint an automatic update of four terrain-graphics macros
+   * Removed wmllint's check for spaces in e-mail addresses
+   * Standardised the date line of copyright statements, and updated them to 2021
 
 ## Version 1.15.15
  ### Translations
