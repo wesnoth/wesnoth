@@ -25,7 +25,7 @@
  ### Terrain
    * Fix transition between snowy mountains and castles (issue #6016)
  ### Translations
-   * Updated translations: British English, Chinese (Traditional), Czech, Finnish, French, Italian, Polish, Portuguese (Brazil), Russian, Turkish
+   * Updated translations: British English, Chinese (Traditional), Czech, Finnish, French, Indonesian, Italian, Polish, Portuguese (Brazil), Russian, Turkish
  ### Units
    * Added and improved Naga animations (issue #5980, PR #6012)
    * Added Troll defense animations (PR #5964)
