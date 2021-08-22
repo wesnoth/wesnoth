@@ -13,7 +13,7 @@
  ### WML Engine
  ### Miscellaneous and Bug Fixes
 
-## Version 1.15.15+dev
+## Version 1.15.15
  ### Campaigns
    * Liberty
      * S06: Enforce failure condition for allied team (issue #6019)
