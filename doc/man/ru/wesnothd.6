@@ -164,8 +164,8 @@ restart (перезагрузка) запросы будут проигнори�
 Пример: \fBversions_accepted="*"\fP принимает строку с любой версией.
 .TP 
 \fBdeny_unregistered_login\fP
-Whether to prevent users who are not registered with the \fBuser_handler\fP
-being used from logging in. (default: false)
+Запретить ли пользователям, которые не зарегистрированы через используемый
+\fBuser_handler\fP, вход в систему. (по умолчанию: false \- не запрещать)
 .
 .SS "Глобальные тэги:"
 .
@@ -214,42 +214,42 @@ being used from logging in. (default: false)
 .RS
 .TP 
 \fBdb_host\fP
-The hostname of the database server
+Имя хоста сервера базы данных
 .TP 
 \fBdb_name\fP
-The name of the database
+Имя базы данных
 .TP 
 \fBdb_user\fP
-The name of the user under which to log into the database
+Имя пользователя для входа в базу данных
 .TP 
 \fBdb_password\fP
-This user's password
+Пароль пользвателя
 .TP 
 \fBdb_users_table\fP
-The name of the table in which your phpbb forums saves its user data. Most
-likely this will be <table\-prefix>_users (e.g. phpbb3_users).
+Название таблицы где ваш phpbb форум хранит данные о пользователях. Скорее
+всего, это <префикс\-таблицы>_users (т.е. phpbb3_users).
 .TP 
 \fBdb_extra_table\fP
-The name of the table in which wesnothd will save its own data about users.
+Название таблицы, в которой wesnothd сохранит свои данные об играх.
 .TP 
 \fBdb_game_info_table\fP
-The name of the table in which wesnothd will save its own data about games.
+Название таблицы, в которой wesnothd сохранит свои данные об играх.
 .TP 
 \fBdb_game_player_info_table\fP
-The name of the table in which wesnothd will save its own data about the
-players in a game.
+Название таблицы, в которой wesnothd сохранит свои данные о пользователях в
+игре.
 .TP 
 \fBdb_game_modification_info_table\fP
-The name of the table in which wesnothd will save its own data about the
-modifications used in a game.
+Название таблицы, в которой wesnothd сохранит свои данные о модификациях,
+используемых в игре.
 .TP 
 \fBdb_user_group_table\fP
-The name of the table in which your phpbb forums saves its user group
-data. Most likely this will be <table\-prefix>_user_group
-(e.g. phpbb3_user_group).
+Название таблицы, где Ваш phpbb форум хранит данные о группах
+пользователей. Скорее всего это <префикс\-таблицы>_user_group
+(т.е. phpbb3_user_group).
 .TP 
 \fBmp_mod_group\fP
-The ID of the forum group to be considered as having moderation authority.
+Идентификатор группы пользователей форума, имеющих полномочия модератора.
 .RE
 .
 .SH "КОД ВЫХОДА"
@@ -270,7 +270,7 @@ Soliton <soliton.de@gmail.com> и Томасом Баумхаером
 .
 .SH "АВТОРСКОЕ ПРАВО"
 .
-Copyright \(co 2003\-2021 David White <davidnwhite@verizon.net>
+Авторское право \(co Дэвид Уайт, 2003\-2021 <davidnwhite@verizon.net>
 .br
 Это — Свободное программное обеспечение; эта программа находится под
 лицензией GPL версии 2, опубликованной Фондом свободного программного

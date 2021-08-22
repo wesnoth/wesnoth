@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-07-18 09:00 UTC\n"
+"POT-Creation-Date: 2021-08-22 03:31 UTC\n"
 "PO-Revision-Date: 2021-08-04 23:35+0200\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
@@ -75,8 +75,8 @@ msgstr "inkoust"
 #: data/core/units/dunefolk/Sunderer.cfg:32
 #: data/core/units/dunefolk/Windbolt.cfg:32
 #: data/core/units/humans/Loyalist_Heavy_Infantryman.cfg:23
-#: data/core/units/nagas/Guard.cfg:27 data/core/units/nagas/Guard_High.cfg:29
-#: data/core/units/nagas/Guard_Shield.cfg:27
+#: data/core/units/nagas/Guard.cfg:27 data/core/units/nagas/Guard_High.cfg:36
+#: data/core/units/nagas/Guard_Shield.cfg:35
 msgid "mace"
 msgstr "palcát"
 
@@ -346,7 +346,6 @@ msgid "saber"
 msgstr "šavle"
 
 #. [unit_type]: id=Walking Corpse, race=undead
-#. [unit_type]: id=Walking Corpse Shynal, race=undead
 #. [unit_type]: id=SotA Walking Corpse_Human
 #. [unit_type]: id=SotA Walking Corpse_Dwarf
 #. [unit_type]: id=SotA Walking Corpse_Goblin
@@ -358,6 +357,7 @@ msgstr "šavle"
 #. [unit_type]: id=SotA Walking Corpse_Wolf Rider
 #. [unit_type]: id=SotA Walking Corpse_Spider
 #. [unit_type]: id=SotA Walking Corpse_Rat
+#. [unit_type]: id=Walking Corpse Shynal, race=undead
 #: data/campaigns/Secrets_of_the_Ancients/units/Corpse_Shynal.cfg:4
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:110
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:125
@@ -408,8 +408,8 @@ msgstr ""
 #. [unit_type]: id=SotA Soulless_Troll
 #. [unit_type]: id=SotA Soulless_Wose
 #. [unit_type]: id=SotA Soulless_Wolf Rider
-#. [attack]: type=fire
 #. [attack]: type=cold
+#. [attack]: type=fire
 #: data/campaigns/Secrets_of_the_Ancients/units/Corpse_Shynal.cfg:35
 #: data/campaigns/Secrets_of_the_Ancients/units/Necro_Ancient_Lich.cfg:32
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:113
@@ -524,8 +524,8 @@ msgid "fangs"
 msgstr "tesáky"
 
 #. [attack]: type=blade
-#. [attack]: type=pierce
 #. [attack]: type=cold
+#. [attack]: type=pierce
 #. [variation]
 #. [unit_type]: id=SotA Walking Corpse_Rat
 #. [unit_type]: id=SotA Soulless_Rat
@@ -6589,9 +6589,9 @@ msgstr ""
 msgid "Wolf"
 msgstr "Vlk"
 
+#. [unit_type]: id=Great Wolf, race=wolf
 #. [unit_type]: id=Wolf, race=wolf
 #. [unit_type]: id=Direwolf, race=wolf
-#. [unit_type]: id=Great Wolf, race=wolf
 #: data/core/units/monsters/Wolf.cfg:34
 #: data/core/units/monsters/Wolf_Dire.cfg:19
 #: data/core/units/monsters/Wolf_Great.cfg:19
@@ -6669,7 +6669,7 @@ msgid "chakri"
 msgstr "čakri"
 
 #. [female]
-#: data/core/units/nagas/Dirkfang.cfg:94
+#: data/core/units/nagas/Dirkfang.cfg:93
 msgid "Nagini Dirkfang"
 msgstr "Mladá nága ostrobřitka"
 
@@ -6741,8 +6741,8 @@ msgstr ""
 "výhodu."
 
 #. [attack]: type=impact
-#: data/core/units/nagas/Guard_High.cfg:37
-#: data/core/units/nagas/Guard_Shield.cfg:35
+#: data/core/units/nagas/Guard_High.cfg:44
+#: data/core/units/nagas/Guard_Shield.cfg:43
 msgid "shield"
 msgstr "štít"
 
@@ -6882,7 +6882,7 @@ msgid "chakram"
 msgstr "čakram"
 
 #. [female]
-#: data/core/units/nagas/Ringcaster.cfg:93
+#: data/core/units/nagas/Ringcaster.cfg:103
 msgid "Nagini Ringcaster"
 msgstr "Nága vrhačka prstenců"
 

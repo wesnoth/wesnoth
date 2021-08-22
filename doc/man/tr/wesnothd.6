@@ -167,8 +167,8 @@ listesi. Dosya ismi kalıp karakterlerinden \fB*\fP ve
 Örnek: \fBversions_accepted="*"\fP her sürüm dizgesi kabul edilir.
 .TP 
 \fBdeny_unregistered_login\fP
-Whether to prevent users who are not registered with the \fBuser_handler\fP
-being used from logging in. (default: false)
+Kullanılmakta olan \fBuser_handler\fP bölümünde kayıtlı olmayan kullanıcıların
+oturum açmasının engellenip engellenmeyeceği (öntanımlı: false)
 .
 .SS "Genel etiketler:"
 .
@@ -218,42 +218,45 @@ bulunabilir.
 .RS
 .TP 
 \fBdb_host\fP
-The hostname of the database server
+Veritabanı sunucusunun konak adı
 .TP 
 \fBdb_name\fP
-The name of the database
+Veritabanı adı
 .TP 
 \fBdb_user\fP
-The name of the user under which to log into the database
+Veritabanına oturum açacak kullanıcının adı
 .TP 
 \fBdb_password\fP
-This user's password
+Bu kullanıcının parolası
 .TP 
 \fBdb_users_table\fP
-The name of the table in which your phpbb forums saves its user data. Most
-likely this will be <table\-prefix>_users (e.g. phpbb3_users).
+phpbb forumlarınızın kullanıcı verilerini saklayacağı tablonun ismi. Bu
+tablo genellikle şöyle belirtilir: <tablo\-öneki>_users (örnek:
+phpbb3_users).
 .TP 
 \fBdb_extra_table\fP
-The name of the table in which wesnothd will save its own data about users.
+wesnothd uygulamasının kullanıcılar hakkındaki kendi verilerini kaydedeceği
+tablonun adı.
 .TP 
 \fBdb_game_info_table\fP
-The name of the table in which wesnothd will save its own data about games.
+wesnothd uygulamasının oyunlar hakkındaki kendi verilerini kaydedeceği
+tablonun adı.
 .TP 
 \fBdb_game_player_info_table\fP
-The name of the table in which wesnothd will save its own data about the
-players in a game.
+wesnothd uygulamasının bir oyundaki oyuncular hakkındaki kendi verilerini
+kaydedeceği tablonun adı.
 .TP 
 \fBdb_game_modification_info_table\fP
-The name of the table in which wesnothd will save its own data about the
-modifications used in a game.
+wesnothd uygulamasının bir oyunda yapılan değişiklikler hakkında kendi
+verilerini kaydedeceği tablonun adı.
 .TP 
 \fBdb_user_group_table\fP
-The name of the table in which your phpbb forums saves its user group
-data. Most likely this will be <table\-prefix>_user_group
-(e.g. phpbb3_user_group).
+phpbb forumlarınızdaki kullanıcıların grup verilerinin saklanacağı tablonun
+ismi. Bu tablo genellikle şöyle belirtilir:
+<tablo\-öneki>_users_group (örnek: phpbb3_users_group).
 .TP 
 \fBmp_mod_group\fP
-The ID of the forum group to be considered as having moderation authority.
+Yönetme yetkisine sahip olduğu kabul edilecek forum grubunun kimliği.
 .RE
 .
 .SH "ÇIKIŞ DURUMU"
@@ -271,11 +274,11 @@ sayfası ilk defa Cyril Bouthors <cyril@bouthors.org> tarafından
 yazılmış Nilgün Belma Bugüner <nilgun@belgeler.org> tarafından
 Türkçeye çevrilmiştir.
 .br
-oyunun ana sayfasını ziyaret etmeyi unutmayın: http://www.wesnoth.org/
+Oyunun ana sayfasını ziyaret etmeyi unutmayın: http://www.wesnoth.org/
 .
 .SH "TELİF HAKKI"
 .
-Copyright \(co 2003\-2021 David White <davidnwhite@verizon.net>
+Copyright  © 2003\-2021 David White <davidnwhite@verizon.net>
 .br
 Bu bir özgür yazılımdır; GNU Genel Kamu Lisansının 2. sürümünün (GPLv2)
 koşullarına bağlı kalarak kopyalarını yeniden dağıtabilirsiniz. Yasaların

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth 1.1.1\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-07-18 11:59+0300\n"
+"POT-Creation-Date: 2021-08-21 23:31-0400\n"
 "PO-Revision-Date: 2009-04-05 10:50+0100\n"
 "Last-Translator: Gaute Storli Nielsen <gauteamus(at)gmail(dot)com>\n"
 "Language-Team: None\n"
@@ -224,7 +224,7 @@ msgid "cures"
 msgstr "kurerer"
 
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:35
-#: src/help/help_topic_generators.cpp:701
+#: src/help/help_topic_generators.cpp:702
 msgid "Defense"
 msgstr "Forsvar"
 
@@ -339,7 +339,7 @@ msgid "regenerates"
 msgstr "regenererer"
 
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:107
-#: src/help/help_topic_generators.cpp:662
+#: src/help/help_topic_generators.cpp:663
 msgid "Resistances"
 msgstr "Motstander"
 
@@ -366,7 +366,7 @@ msgid "steadfast"
 msgstr "standhaftig"
 
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:122
-#: src/help/help_topic_generators.cpp:581
+#: src/help/help_topic_generators.cpp:582
 msgid "Strikes"
 msgstr "Slag"
 
@@ -1087,14 +1087,14 @@ msgid ""
 "to know which WML is part of each scenario."
 msgstr ""
 
-#. [editor_times]: id=deep_underground
 #. [time]: id=deep_underground
+#. [editor_times]: id=deep_underground
 #: data/core/editor/time-of-day.cfg:47 data/core/macros/schedules.cfg:127
 msgid "Deep Underground"
 msgstr "Dypt underjordisk"
 
-#. [editor_times]: id=indoors
 #. [time]: id=indoors
+#. [editor_times]: id=indoors
 #: data/core/editor/time-of-day.cfg:53 data/core/macros/schedules.cfg:104
 msgid "Indoors"
 msgstr ""
@@ -1493,8 +1493,8 @@ msgstr "Spillbarhet"
 #. [section]: id=traits_section
 #. [topic]: id=..traits_section
 #: data/core/help.cfg:29 data/core/help.cfg:531
-#: src/help/help_topic_generators.cpp:438
-#: src/help/help_topic_generators.cpp:461
+#: src/help/help_topic_generators.cpp:439
+#: src/help/help_topic_generators.cpp:462
 msgid "Traits"
 msgstr "Karaktertrekk"
 
@@ -4792,7 +4792,7 @@ msgstr ""
 msgid "The Long Dark (4)"
 msgstr ""
 
-#: data/core/macros/special-notes.cfg:6 src/help/help_topic_generators.cpp:564
+#: data/core/macros/special-notes.cfg:6 src/help/help_topic_generators.cpp:565
 #, fuzzy
 msgid "Special Notes:"
 msgstr "Spesial"
@@ -6602,92 +6602,92 @@ msgid ""
 "home."
 msgstr ""
 
-#: src/help/help.cpp:212
+#: src/help/help.cpp:213
 msgid "Close"
 msgstr "Lukk"
 
-#: src/help/help.cpp:215
+#: src/help/help.cpp:216
 msgid "Help"
 msgstr "Hjelp"
 
-#: src/help/help.cpp:269 src/help/help.cpp:273
+#: src/help/help.cpp:270 src/help/help.cpp:274
 #, fuzzy
 #| msgid "Parse error when parsing help text: "
 msgid "Parse error when parsing help text:"
 msgstr "Feil med hjelpeteksten: "
 
-#: src/help/help_topic_generators.cpp:63
+#: src/help/help_topic_generators.cpp:64
 msgid "Best of"
 msgstr ""
 
-#: src/help/help_topic_generators.cpp:63
+#: src/help/help_topic_generators.cpp:64
 msgid "Worst of"
 msgstr ""
 
-#: src/help/help_topic_generators.cpp:156
+#: src/help/help_topic_generators.cpp:157
 #, fuzzy
 #| msgid "Terrain"
 msgid "Base Terrain: "
 msgstr "Terreng"
 
-#: src/help/help_topic_generators.cpp:176
+#: src/help/help_topic_generators.cpp:177
 #, fuzzy
 #| msgid "Movement Cost"
 msgid "Movement properties: "
 msgstr "Forflytningskostnad"
 
-#: src/help/help_topic_generators.cpp:180
+#: src/help/help_topic_generators.cpp:181
 msgid "Defense properties: "
 msgstr ""
 
-#: src/help/help_topic_generators.cpp:260
+#: src/help/help_topic_generators.cpp:261
 #, fuzzy
 #| msgid "level"
 msgid "Level"
 msgstr "grad"
 
-#: src/help/help_topic_generators.cpp:321
+#: src/help/help_topic_generators.cpp:322
 #, fuzzy
 msgid "Advances from: "
 msgstr "Forfremmes til: "
 
-#: src/help/help_topic_generators.cpp:323
+#: src/help/help_topic_generators.cpp:324
 #, fuzzy
 msgid "Advances to: "
 msgstr "Forfremmes til: "
 
-#: src/help/help_topic_generators.cpp:352
+#: src/help/help_topic_generators.cpp:353
 #, fuzzy
 #| msgid "Terrain"
 msgid "Base unit: "
 msgstr "Terreng"
 
-#: src/help/help_topic_generators.cpp:357
+#: src/help/help_topic_generators.cpp:358
 #, fuzzy
 #| msgid "Terrain"
 msgid "Base units: "
 msgstr "Terreng"
 
-#: src/help/help_topic_generators.cpp:375
+#: src/help/help_topic_generators.cpp:376
 #, fuzzy
 msgid "Variations: "
 msgstr "Fraksjon"
 
-#: src/help/help_topic_generators.cpp:399
+#: src/help/help_topic_generators.cpp:400
 #, fuzzy
 msgid "race^Miscellaneous"
 msgstr "Diverse"
 
-#: src/help/help_topic_generators.cpp:401
+#: src/help/help_topic_generators.cpp:402
 #, fuzzy
 msgid "Race: "
 msgstr "stridskølle"
 
-#: src/help/help_topic_generators.cpp:471
+#: src/help/help_topic_generators.cpp:472
 msgid "Abilities: "
 msgstr "Egenskaper: "
 
-#: src/help/help_topic_generators.cpp:497
+#: src/help/help_topic_generators.cpp:498
 #, fuzzy
 msgid "Ability Upgrades: "
 msgstr "Egenskaper: "
@@ -6695,7 +6695,7 @@ msgstr "Egenskaper: "
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:527
+#: src/help/help_topic_generators.cpp:528
 #, fuzzy
 #| msgid "HP: "
 msgid "HP:"
@@ -6704,7 +6704,7 @@ msgstr "HP: "
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:531
+#: src/help/help_topic_generators.cpp:532
 #, fuzzy
 #| msgid "Moves: "
 msgid "Moves:"
@@ -6713,14 +6713,14 @@ msgstr "Flytt: "
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:536
+#: src/help/help_topic_generators.cpp:537
 msgid "Vision:"
 msgstr ""
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:542
+#: src/help/help_topic_generators.cpp:543
 #, fuzzy
 msgid "Jamming:"
 msgstr "sverm"
@@ -6728,7 +6728,7 @@ msgstr "sverm"
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:547
+#: src/help/help_topic_generators.cpp:548
 #, fuzzy
 #| msgid "Cost: "
 msgid "Cost:"
@@ -6737,7 +6737,7 @@ msgstr "Kostnad:"
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:551
+#: src/help/help_topic_generators.cpp:552
 #, fuzzy
 #| msgid "Alignment: "
 msgid "Alignment:"
@@ -6746,67 +6746,67 @@ msgstr "Sinnelag: "
 #. TRANSLATORS: This string is used in the help page of a single unit.  It uses
 #. non-breaking spaces to prevent unpleasant line breaks (issue #3256).  In the
 #. translation use non-breaking spaces as appropriate for the target language.
-#: src/help/help_topic_generators.cpp:558
+#: src/help/help_topic_generators.cpp:559
 #, fuzzy
 #| msgid "Required XP: "
 msgid "Required XP:"
 msgstr "Nødvendig XP: "
 
-#: src/help/help_topic_generators.cpp:573
+#: src/help/help_topic_generators.cpp:574
 #, fuzzy
 msgid "unit help^Attacks"
 msgstr "Avslutt spillet"
 
-#: src/help/help_topic_generators.cpp:580
+#: src/help/help_topic_generators.cpp:581
 #, fuzzy
 msgid "unit help^Name"
 msgstr "Avslutt spillet"
 
-#: src/help/help_topic_generators.cpp:582
+#: src/help/help_topic_generators.cpp:583
 msgid "Range"
 msgstr "Rekkevidde"
 
-#: src/help/help_topic_generators.cpp:583
+#: src/help/help_topic_generators.cpp:584
 msgid "Type"
 msgstr "Type"
 
-#: src/help/help_topic_generators.cpp:584
+#: src/help/help_topic_generators.cpp:585
 msgid "Special"
 msgstr "Spesial"
 
-#: src/help/help_topic_generators.cpp:666
+#: src/help/help_topic_generators.cpp:667
 msgid "Attack Type"
 msgstr "Angrepstype"
 
-#: src/help/help_topic_generators.cpp:667
+#: src/help/help_topic_generators.cpp:668
 msgid "Resistance"
 msgstr "Motstand"
 
-#: src/help/help_topic_generators.cpp:696
+#: src/help/help_topic_generators.cpp:697
 #, fuzzy
 #| msgid "Terrain Modifiers"
 msgid "Terrain Modifiers"
 msgstr "Terrengmodifikatorer"
 
-#: src/help/help_topic_generators.cpp:700
+#: src/help/help_topic_generators.cpp:701
 msgid "Terrain"
 msgstr "Terreng"
 
-#: src/help/help_topic_generators.cpp:702
+#: src/help/help_topic_generators.cpp:703
 msgid "Movement Cost"
 msgstr "Forflytningskostnad"
 
-#: src/help/help_topic_generators.cpp:706
+#: src/help/help_topic_generators.cpp:707
 #, fuzzy
 #| msgid "Defense"
 msgid "Defense Cap"
 msgstr "Forsvar"
 
-#: src/help/help_topic_generators.cpp:711
+#: src/help/help_topic_generators.cpp:712
 msgid "Vision Cost"
 msgstr ""
 
-#: src/help/help_topic_generators.cpp:715
+#: src/help/help_topic_generators.cpp:716
 msgid "Jamming Cost"
 msgstr ""
 

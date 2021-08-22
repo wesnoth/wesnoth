@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3.2+svn\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-07-18 09:00 UTC\n"
+"POT-Creation-Date: 2021-08-22 03:31 UTC\n"
 "PO-Revision-Date: 2021-08-12 18:29+0700\n"
 "Last-Translator: Neko Nekowazarashi <i.musthafa66@gmail.com>\n"
 "Language-Team: Indonesian <kde-i18n-doc@kde.org>\n"
@@ -41,28 +41,28 @@ msgid "Beginner"
 msgstr "Pemula"
 
 #. [label]
-#: data/campaigns/tutorial/gui/character_selection.cfg:21
+#: data/campaigns/tutorial/gui/character_selection.cfg:19
 msgid "Select Character"
 msgstr "Pilik karakter"
 
 #. [label]
-#: data/campaigns/tutorial/gui/character_selection.cfg:32
+#: data/campaigns/tutorial/gui/character_selection.cfg:30
 msgid "Who do you want to play?"
 msgstr "Siapakah yang ingin Anda mainkan?"
 
-#. [button]
 #. [side]: type=Fighter, id=student
-#: data/campaigns/tutorial/gui/character_selection.cfg:63
+#. [button]
+#: data/campaigns/tutorial/gui/character_selection.cfg:61
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:33
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:30
 msgid "Konrad"
 msgstr "Konrad"
 
-#. [button]
 #. [modify_side]
+#. [button]
 #. [lua]: wml_actions.select_character
-#: data/campaigns/tutorial/gui/character_selection.cfg:72
-#: data/campaigns/tutorial/lua/character_selection.lua:21
+#: data/campaigns/tutorial/gui/character_selection.cfg:70
+#: data/campaigns/tutorial/lua/character_selection.lua:24
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:178
 msgid "Li’sar"
 msgstr "Li’sar"
@@ -341,8 +341,8 @@ msgstr "Haruskah aku mundur?"
 msgid "female^Should I retreat?"
 msgstr "Haruskah aku mundur?"
 
-#. [message]: speaker=Delfador
 #. [message]: speaker=Galdrad
+#. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:557
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1066
 msgid "Good idea!"
@@ -426,17 +426,17 @@ msgstr ""
 "dalam jangkauan beberapa gilirian. Anda bisa melihat giliran keberapa dan "
 "batas maksimum giliran di sebelah ikon bendera di bagian atas layar."
 
-#. [event]
 #. [else]
+#. [event]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:621
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:688
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:796
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:701
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:809
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:509
 msgid "End your turn"
 msgstr "Selesaikan giliranmu"
 
 #. [disallow_end_turn]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:631
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:644
 msgid ""
 "You cannot end your turn until you have completed the lesson on healing!"
 msgstr ""
@@ -444,19 +444,19 @@ msgstr ""
 "menyelesaikan pelatihan dalam penyembuhan!"
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:642
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:655
 msgid "Ouch! I need to heal! Only $student_hp hitpoints left!"
 msgstr ""
 "Aduh! Aku butuh penyembuhan! Hanya $student_hp poin serang yang tersisa!"
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:643
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:656
 msgid "female^Ouch! I need to heal! Only $student_hp hitpoints left!"
 msgstr ""
 "Aduh! Aku butuh penyembuhan! Hanya $student_hp poin serang yang tersisa!"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:648
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:661
 msgid ""
 "There are two villages within your reach. Visiting villages is a good idea, "
 "and ending your turn on one will heal you. To a village!"
@@ -465,27 +465,27 @@ msgstr ""
 "menyelesaikan giliranmu disana akan menyembuhkanmu. Ke desa!"
 
 #. [label]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:653
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:666
 msgid "Village"
 msgstr "Desa"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:666
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:679
 msgid "Move Konrad to a nearby village"
 msgstr "Gerakkan Konrad ke desa tersebut"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:668
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:681
 msgid "Move Li’sar to a nearby village"
 msgstr "Gerakkan Li'sar ke desa tersebut"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:681
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:694
 msgid "Villages"
 msgstr "Pedesaan"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:683
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:696
 msgid ""
 "You have captured a village! It now flies your colors and has been added to "
 "your total village count (the house icon at the top of the screen shows how "
@@ -500,7 +500,7 @@ msgstr ""
 "tiap desa yang Anda kendalikan."
 
 #. [disallow_end_turn]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:698
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:711
 msgid ""
 "You cannot end your turn until you have completed the lesson on recruiting!"
 msgstr ""
@@ -508,7 +508,7 @@ msgstr ""
 "menyelesaikan pelatihan dalam perekrutan!"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:707
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:720
 msgid ""
 "Since you started your turn on a village, you regained some health! Villages "
 "heal units 8 hitpoints per turn, or enough to top off their health, "
@@ -521,23 +521,23 @@ msgstr ""
 "$student_hp_heal_amount poin serang."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:712
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:725
 msgid "Now, it’s time to summon some help against that quintain."
 msgstr ""
 "Sekarang waktunya memanggil beberapa bantuan melawan boneka target itu."
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:717
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:730
 msgid "I’ll recruit some elves!"
 msgstr "Aku akan merekrut beberapa elf!"
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:718
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:731
 msgid "female^I’ll recruit some elves!"
 msgstr "Aku akan merekrut beberapa elf!"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:723
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:736
 msgid ""
 "A splendid idea! It’s probably best not to attempt attacking the quintain "
 "this turn. Instead, you should return to the keep and recruit two units; you "
@@ -548,27 +548,27 @@ msgstr ""
 "dua unit; kau memiliki banyak emas untuk itu."
 
 #. [label]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:728
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:741
 msgid "Keep"
 msgstr "Benteng"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:742
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:755
 msgid "Move Konrad to the keep"
 msgstr "Gerakkan Konrad ke Benteng"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:744
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:757
 msgid "Move Li’sar to the keep"
 msgstr "Gerakkan Li'sar ke Benteng"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:762
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:775
 msgid "Recruiting"
 msgstr "Merekrut"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:764
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:777
 msgid ""
 "Whenever you’re on a <i>keep</i>, you can <i>recruit</i> units on the castle "
 "tiles around it by right-clicking and selecting <b>Recruit</b>. Note that "
@@ -583,17 +583,17 @@ msgstr ""
 "skenario ini, Anda hanya punya satu unit untuk dipilih: Elf Petarung."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:767
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:780
 msgid "Recruit two Elvish Fighters"
 msgstr "Rekrut dua Elf Petarung"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:786
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:799
 msgid "Traits"
 msgstr "Ciri"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:788
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:801
 msgid ""
 "Be sure to examine the <i>traits</i> of your new recruits. They are listed "
 "under its race in the sidebar. Traits can subtly affect how you use your "
@@ -608,7 +608,7 @@ msgstr ""
 "memerlukan 20% lebih sedikit pengalaman untuk naik level."
 
 #. [disallow_end_turn]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:830
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:843
 msgid ""
 "You cannot end your turn until you have completed the lesson on attacking!"
 msgstr ""
@@ -616,7 +616,7 @@ msgstr ""
 "menyelesaikan pelatihan dalam menyerang!"
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:839
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:852
 msgid ""
 "Hey, the quintain just healed 2 hitpoints! I’d better attack it at once!"
 msgstr ""
@@ -624,7 +624,7 @@ msgstr ""
 "secara serentak!"
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:840
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:853
 msgid ""
 "female^Hey, the quintain just healed 2 hitpoints! I’d better attack it at "
 "once!"
@@ -633,14 +633,14 @@ msgstr ""
 "secara serentak!"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:845
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:858
 msgid "Yes, if a unit doesn’t do anything for a turn, it will slowly heal."
 msgstr ""
 "Ya, bila sebuah unit tidak melakukan apapun pada satu giliran, ia akan "
 "tersembukan sedikit-sedikit."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:850
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:863
 msgid ""
 "Before you send your fighters against the quintain, you should know they "
 "have two kinds of attack..."
@@ -649,19 +649,19 @@ msgstr ""
 "bahwa itu punya dua macam serangan..."
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:855
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:868
 msgid "I’ll tell them to use the one that does more damage!"
 msgstr ""
 "Aku memberitahu mereka untuk menggunakan yang menyebabkan luka lebih besar!"
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:856
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:869
 msgid "female^I’ll tell them to use the one that does more damage!"
 msgstr ""
 "Aku memberitahu mereka untuk menggunakan yang menyebabkan luka lebih besar!"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:861
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:874
 msgid ""
 "And which would that be? The sword (5×4; or 5 damage on each hit, with 4 "
 "attacks) or the bow (3×3; or 3 damage on each hit, with 3 attacks)? I "
@@ -672,12 +672,12 @@ msgstr ""
 "mengetahuinya..."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:864
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:877
 msgid "Attack the quintain with your fighters"
 msgstr "Serang boneka target dengan petarung Anda"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:875
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:888
 msgid ""
 "You wouldn’t do anything stupid like charging that quintain yourself again, "
 "now would you? Use the fighters you recruited first; they’ll be a lot of "
@@ -689,7 +689,7 @@ msgstr ""
 
 #. [message]: speaker=Delfador
 #. a strong elf, so +1 damage
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:918
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:931
 msgid ""
 "Your elf used a sword (6×4; or 6 damage on each hit, with 4 attacks), which "
 "is a <i>melee</i> attack. The quintain defended with its melee attack (3×5; "
@@ -702,7 +702,7 @@ msgstr ""
 "kena dengan 5 kali menyerang). Serangan jarak jauh (busur) lebih aman."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:922
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:935
 msgid ""
 "Elvish Fighters normally do 5×4 damage with their swords, but this elf has "
 "the <i>strong</i> trait, which increases the damage output of melee attacks."
@@ -712,7 +712,7 @@ msgstr ""
 "oleh serangan jarak dekat."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:928
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:941
 msgid ""
 "Your elf used a sword (5×4; or 5 damage on each hit, with 4 attacks), which "
 "is a <i>melee</i> attack. The quintain defended with its melee attack (3×5; "
@@ -726,7 +726,7 @@ msgstr ""
 
 #. [message]: speaker=Delfador
 #. a dextrous elf, so +1 damage
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:949
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:962
 msgid ""
 "Your elf used a bow, which is a <i>ranged</i> attack (4×3; or 4 damage on "
 "each hit, with 3 attacks). The quintain has no ranged attack, only a melee "
@@ -738,7 +738,7 @@ msgstr ""
 "melindungi dirinya sendiri."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:953
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:966
 msgid ""
 "Elvish Fighters normally do 3×3 damage with their bows, but this elf has the "
 "<i>dextrous</i> trait, which increases the damage output of ranged attacks."
@@ -748,7 +748,7 @@ msgstr ""
 "ditimbulkan oleh serangan jarak jauh."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:959
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:972
 msgid ""
 "Your elf used a bow, which is a <i>ranged</i> attack (3×3; or 3 damage on "
 "each hit, with 3 attacks). The quintain has no ranged attack, only a melee "
@@ -760,22 +760,22 @@ msgstr ""
 "melindungi dirinya sendiri."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:976
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:989
 msgid "Keep attacking with both elves until the quintain is finished!"
 msgstr "Tetaplah menyerang dengan elf hingga si boneka targetnya kalah!"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:991
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1004
 msgid "Maybe you should recruit another elf?"
 msgstr "Mungkin kau seharusnya merekrut elf lagi?"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1001
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1014
 msgid "Unit Descriptions"
 msgstr "Deskripsi Unit"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1003
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1016
 msgid ""
 "You can right click on a unit to see a detailed <b>Unit Description</b>."
 msgstr ""
@@ -783,12 +783,12 @@ msgstr ""
 "b> terperinci."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1013
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1026
 msgid "Protect Your Troops"
 msgstr "Lindungi Pasukan Anda"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1015
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1028
 msgid ""
 "Remember to pull back wounded units into villages and recruit more if "
 "needed. Take special care of units with the highest <i>experience points "
@@ -800,12 +800,12 @@ msgstr ""
 "dapat naik ke level berikutnya dan menjadi lebih kuat."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1025
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1038
 msgid "Support"
 msgstr "Mendukung"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1027
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1040
 msgid ""
 "Each village you control will <i>support</i> one unit for free. After that, "
 "each unit costs you one gold per turn."
@@ -814,17 +814,17 @@ msgstr ""
 "Setelah itu, setiap unit berharga satu emas per giliran."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1037
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1050
 msgid "You had really better finish off that quintain."
 msgstr "Kau benar-benar harus mengalahkan boneka target itu."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1047
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1060
 msgid "Advancement"
 msgstr "Penaikan Pangkat"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1049
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1062
 msgid ""
 "When a unit gains enough experience points (the <i>experience bar</i>, if "
 "present, is on the <b>right</b> of the <i>hitpoints bar</i>), it will gain a "
@@ -840,12 +840,12 @@ msgstr ""
 "level satu."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1059
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1072
 msgid "Defenses"
 msgstr "Pertahanan"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1062
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1075
 msgid ""
 "Whenever one of your units is selected, you’ll see varying percentages as "
 "you move the mouse over the map. The higher the percentage, the more "
@@ -864,23 +864,23 @@ msgstr ""
 "peduli di medan mana target mereka berada."
 
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1074
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1087
 msgid "Agh! This training is too much for me..."
 msgstr "Ugh! Pelatihan ini terlalu susah untukku..."
 
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1075
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1088
 msgid "female^Agh! This training is too much for me..."
 msgstr "Ugh! Pelatihan ini terlalu susah untukku..."
 
 #. [message]: speaker=second_unit
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1111
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1124
 msgid "The quintain is destroyed, and I have gained more experience!"
 msgstr ""
 "Boneka targetnya telah terkalahkan dan aku mendapatkan banyak pengalaman!"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1116
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1129
 msgid ""
 "Yes, you gain experience through battle, especially by killing an opponent. "
 "Gain enough experience and you’ll become more powerful."
@@ -890,7 +890,7 @@ msgstr ""
 "kuat."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1122
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1135
 msgid ""
 "Now, Konrad, I will leave you with more dummies to practice on! After that, "
 "we have real work to do..."
@@ -899,7 +899,7 @@ msgstr ""
 "kau latihan! Setelahnya, kita ada pekerjaan serius yang harus dilakukan..."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1127
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1140
 msgid ""
 "Now, Li’sar, I will leave you with more dummies to practice on! After that, "
 "we have real work to do..."
@@ -908,12 +908,12 @@ msgstr ""
 "kau latihan! Setelahnya, kita ada pekerjaan serius yang harus dilakukan..."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1203
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1216
 msgid "Note"
 msgstr "Catatan"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1205
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1218
 msgid ""
 "These dummies only attack if you are a single tile away. With care, you "
 "should be able to kill them one at a time."
@@ -923,7 +923,7 @@ msgstr ""
 "satu demi satu."
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1214
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1227
 msgid ""
 "Well, I think I know the basics. Onwards! Maybe I can fight in a real battle "
 "next?"
@@ -932,7 +932,7 @@ msgstr ""
 "bertarung di pertarungan yang sesungguhnya?"
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1215
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1228
 msgid ""
 "female^Well, I think I know the basics. Onwards! Maybe I can fight in a real "
 "battle next?"
@@ -941,12 +941,12 @@ msgstr ""
 "bertarung di pertarungan yang sesungguhnya?"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1231
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1244
 msgid "Victory"
 msgstr "Kemenangan"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1233
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1246
 #, fuzzy
 #| msgid ""
 #| "After your victory notice, the map will be grayed out to indicate that "
@@ -2443,8 +2443,8 @@ msgstr ""
 msgid "Fighter"
 msgstr "Petarung"
 
-#. [unit_type]: id=Fighter, race=human
 #. [unit_type]: id=Fighteress, race=human
+#. [unit_type]: id=Fighter, race=human
 #: data/campaigns/tutorial/units/Fighter.cfg:18
 #: data/campaigns/tutorial/units/Fighteress.cfg:20
 msgid ""
@@ -2480,8 +2480,8 @@ msgstr ""
 msgid "Warrior"
 msgstr ""
 
-#. [unit_type]: id=Warrior, race=human
 #. [unit_type]: id=Warrioress, race=human
+#. [unit_type]: id=Warrior, race=human
 #: data/campaigns/tutorial/units/Warrior.cfg:19
 #: data/campaigns/tutorial/units/Warrioress.cfg:21
 msgid ""
