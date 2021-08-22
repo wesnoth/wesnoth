@@ -1,6 +1,4 @@
 ## Version 1.15.15+dev
- ### Add-ons client
- ### Add-ons server
  ### Campaigns
    * Liberty
      * S06: Enforce failure condition for allied team (issue #6019)
@@ -17,11 +15,8 @@
    * World Conquest
      * Add campaign icons, campaign image and credits (PR #5958)
      * Update to new mushroom terrain from the deprecated mushroom terrain (issue #5135, PR #5960)
- ### Editor
  ### Multiplayer
    * If an add-on needs to be installed on all players' devices but doesn't specify a min version, assume it needs the latest (issue #5004)
- ### Lua API
- ### Packaging
  ### Terrain
    * Fix transition between snowy mountains and castles (issue #6016)
  ### Translations
@@ -34,7 +29,6 @@
    * In the Load Game dialog, list directories from previous versions in decending order
    * Refined design of the Faction Select screen
    * Made the campaign selection on bigger on HDPI screens (PR #6013)
- ### WML Engine
  ### Miscellaneous and Bug Fixes
    * Added a timeout when connecting to the wesnothd server
    * Improved logging of deprecation messages, fixing duplication and missing timestamps (issue #5942)
