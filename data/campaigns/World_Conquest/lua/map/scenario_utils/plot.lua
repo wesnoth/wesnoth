@@ -83,6 +83,7 @@ function add_plot(scenario, scenario_num, nplayers)
 			result = "victory",
 			music = "sad.ogg",
 			end_text = _"The End",
+			next_scenario = "",
 		})
 	end
 end
