@@ -3853,7 +3853,7 @@ msgid ""
 "\t"
 msgstr ""
 "\n"
-"\t\tsuffix=ów|owice|owo|owzgórze|ogóra\n"
+"\t\tsuffix=ów|owice|owo|owe Wzgórze|owa Góra\n"
 "\t\tmain=$base{!}{suffix}\n"
 "\t"
 
@@ -3869,7 +3869,7 @@ msgid ""
 msgstr ""
 "\n"
 "\t\tprefix=$base{!}|$mountain{!}\n"
-"\t\tsuffix=owy Wierch|owa Góra|owice|ów\n"
+"\t\tsuffix=owa Góra|owy Wierch|owice|ów\n"
 "\t\tmain={prefix}{suffix}\n"
 "\t"
 
@@ -3883,9 +3883,8 @@ msgid ""
 "\t"
 msgstr ""
 "\n"
-"\t\tprefix=$base{!}|$mountain{!}\n"
-"\t\tsuffix=ów|owa|owy Szczyt|owy Wierch|owy Wierch|owa Góra|owa Góra\n"
-"\t\tmain={prefix}{suffix}\n"
+"\t\tsuffix=owa|enica|olica|owa Góra|owa Góra|owy Wierch|owy Wierch\n"
+"\t\tmain=$base{!}{suffix}\n"
 "\t"
 
 #. [village_naming]
@@ -4053,8 +4052,8 @@ msgstr "Porażka:"
 msgid "(this turn left)"
 msgid_plural "($remaining_turns turns left)"
 msgstr[0] "(została ta tura)"
-msgstr[1] "(zostały %d tury)"
-msgstr[2] "(zostało %d tur)"
+msgstr[1] "(zostały $remaining_turns tury)"
+msgstr[2] "(zostało $remaining_turns tur)"
 
 #. [lua]: generate_objectives
 #: data/lua/wml/objectives.lua:119
@@ -5248,14 +5247,14 @@ msgstr "Teleportowanie niemożliwe! Zajęty punkt docelowy"
 #: src/actions/move.cpp:1127
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
-msgstr[0] "$friends przyjazna"
+msgstr[0] "1 przyjazna"
 msgstr[1] "$friends przyjazne"
 msgstr[2] "$friends przyjaznych"
 
 #: src/actions/move.cpp:1128
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
-msgstr[0] "$enemies wroga"
+msgstr[0] "1 wroga"
 msgstr[1] "$enemies wrogie"
 msgstr[2] "$enemies wrogich"
 
@@ -5283,7 +5282,7 @@ msgstr "(naciśnij $hotkey, by kontynuować ruch)"
 
 #: src/addon/client.cpp:77
 msgid "Connecting to $server_address|..."
-msgstr "Łączenie z serwerem... ($server_adress|)"
+msgstr "Łączenie z serwerem... ($server_address|)"
 
 #: src/addon/client.cpp:124
 msgid "Downloading list of add-ons..."
@@ -5651,7 +5650,7 @@ msgid ""
 "Names in the same directory may not be differently-cased versions of each "
 "other."
 msgstr ""
-"Dodatek <i>$addon_title</i> zawiera pliki lub foldery z kolizją nazw.\n"
+"Dodatek zawiera pliki lub foldery z kolizją nazw.\n"
 "\n"
 "Nazwy w tym samym folderze nie mogą być takie same ze zmienioną wielkością "
 "liter."
@@ -6541,11 +6540,9 @@ msgid_plural ""
 msgstr[0] ""
 "Następny scenariusz rozpoczniesz z minimalną zdefiniowaną ilością złota."
 msgstr[1] ""
-"Następny scenariusz rozpoczniesz z $gold sztukami złota plus minimalną "
-"ilością początkową."
+"Następny scenariusz rozpoczniesz z minimalną zdefiniowaną ilością złota."
 msgstr[2] ""
-"Następny scenariusz rozpoczniesz z $gold sztukami złota plus minimalną "
-"ilością początkową."
+"Następny scenariusz rozpoczniesz z minimalną zdefiniowaną ilością złota."
 
 #: src/game_initialization/playcampaign.cpp:164
 msgid ""
@@ -8275,7 +8272,7 @@ msgstr "Nieoczekiwane znaki na początku wiersza"
 
 #: src/serialization/parser.cpp:183
 msgid "Missing closing tag for tag [$tag]"
-msgstr "Brakujący znacznik zamykający dla znacznika $tag w $pos"
+msgstr "Brakujący znacznik zamykający dla znacznika [$tag]"
 
 #: src/serialization/parser.cpp:184
 msgid "expected at $pos"
@@ -8311,9 +8308,7 @@ msgstr "Nieoczekiwany znacznik zamykający"
 
 #: src/serialization/parser.cpp:271
 msgid "Found invalid closing tag [/$tag2] for tag [$tag1]"
-msgstr ""
-"Znaleziono błędny znacznik zamykający [/$tag2] dla znacznika [$tag1] "
-"(otwarty w $pos)"
+msgstr "Znaleziono błędny znacznik zamykający [/$tag2] dla znacznika [$tag1] "
 
 #: src/serialization/parser.cpp:273
 msgid "closed at $pos"
@@ -8337,7 +8332,7 @@ msgstr "w $pos"
 
 #: src/serialization/parser.cpp:484
 msgid "Value: '$value' Previous: '$previous_value'"
-msgstr "$error, wartość '$value', poprzednia '$previous_value' na pozycji $pos"
+msgstr "Wartość: '$value' Poprzednia '$previous_value'"
 
 #: src/serialization/string_utils.cpp:551
 msgid "prefix_milli^m"
