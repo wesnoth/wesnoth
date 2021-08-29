@@ -557,43 +557,7 @@ public:
 	void operator()(const std::string& s) const
 	{
 		indent();
-		out_ << key_ << '=';
-		if(s.find("{") == std::string::npos) {
-			out_ << '"' << escaped_string(s) << '"' << '\n';
-		} else if(s.find(">>") == std::string::npos) {
-			out_ << "<<" << s << ">>" << '\n';
-		} else {
-			for(size_t i = 0, brace = s.find("{"); i < s.size(); brace = s.find("{", i + 1)) {
-				out_ << '"' << escaped_string(s.substr(i, brace - i)) << '"';
-				if(brace == std::string::npos) break;
-				out_ << "<<" << s[brace];
-				// Now go until the matching closing brace
-				size_t brace_nesting = 1;
-				bool in_shift = false;
-				for(i = brace + 1; brace_nesting > 0 && i < s.size(); i++) {
-					if(in_shift) {
-						if(s[i] == '>') {
-							out_ << R"""(>>">>"<<)""";
-						} else {
-							out_ << s[i-1];
-						}
-						in_shift = false;
-						continue;
-					}
-					if(s[i] == '{') {
-						brace_nesting++;
-					} else if(s[i] == '}') {
-						brace_nesting--;
-					} else if(s[i] == '>') {
-						in_shift = true;
-						continue;
-					}
-					out_ << s[i];
-				}
-				out_ << ">>";
-			}
-			out_ << '\n';
-		}
+		out_ << key_ << '=' << '"' << escaped_string(s) << '"' << '\n';
 	}
 
 	void operator()(const t_string& s) const;
