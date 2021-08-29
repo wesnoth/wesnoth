@@ -347,7 +347,8 @@ public:
 	bool matches(const gamemap_base&, map_location l) override
 	{
 		LOG_MATCHES(x);
-		return l.x >= 0 && l.x < int(filter_.size()) && filter_[l.x];
+		const auto value = l.wml_x();
+		return value >= 0 && value < int(filter_.size()) && filter_[value];
 	}
 	dynamic_bitset filter_;
 };
@@ -367,7 +368,8 @@ public:
 	bool matches(const gamemap_base&, map_location l) override
 	{
 		LOG_MATCHES(y);
-		return l.y >= 0 && l.y < int(filter_.size()) && filter_[l.y];
+		const auto value = l.wml_y();
+		return value >= 0 && value < int(filter_.size()) && filter_[value];
 	}
 
 	dynamic_bitset filter_;
