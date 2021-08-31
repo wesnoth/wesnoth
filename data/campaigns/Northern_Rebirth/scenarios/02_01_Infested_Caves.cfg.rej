@@ -1,0 +1,142 @@
+***************
+*** 4,10 ****
+      id=02_01_Infested_Caves
+      name= _ "Infested Caves"
+      map_data="{campaigns/Northern_Rebirth/maps/02_01_Infested_Caves.map}"
+-     {TURNS 55 50 45}
+      next_scenario=02_02_Meeting_With_Dwarves
+  
+      {UNDERGROUND}
+--- 4,10 ----
+      id=02_01_Infested_Caves
+      name= _ "Infested Caves"
+      map_data="{campaigns/Northern_Rebirth/maps/02_01_Infested_Caves.map}"
++     {TURNS 60 50 45}
+      next_scenario=02_02_Meeting_With_Dwarves
+  
+      {UNDERGROUND}
+***************
+*** 95,101 ****
+          side=4
+          controller=ai
+          recruit=Dwarvish Fighter,Dwarvish Thunderer,Dwarvish Guardsman,Dwarvish Scout
+-         {GOLD 130 120 100}
+          team_name=rebels
+          user_team_name= _ "Rebels"
+          {FLAG_VARIANT knalgan}
+--- 106,113 ----
+          side=4
+          controller=ai
+          recruit=Dwarvish Fighter,Dwarvish Thunderer,Dwarvish Guardsman,Dwarvish Scout
++         {GOLD 190 120 100}
++         {INCOME 12 10 9}
+          team_name=rebels
+          user_team_name= _ "Rebels"
+          {FLAG_VARIANT knalgan}
+***************
+*** 118,124 ****
+              [/avoid]
+          [/ai]
+  
+-         # The first one is a Steelclad, he guards a critical location from the skeletons.
+          # If he goes down, it's assumed he was killed by Trolls, which probably means
+          # that the Trolls killed two Skeleton sides and became very strong, and they
+          # will trigger afterwards the event which gives a big boost to the dwarves.
+--- 130,136 ----
+              [/avoid]
+          [/ai]
+  
++         # The first one is a Steelclad, he guards at a bottleneck, killing skeletons.
+          # If he goes down, it's assumed he was killed by Trolls, which probably means
+          # that the Trolls killed two Skeleton sides and became very strong, and they
+          # will trigger afterwards the event which gives a big boost to the dwarves.
+***************
+*** 152,159 ****
+          side=6
+          controller=ai
+          recruit=Troll Whelp,Troll,Troll Rocklobber
+-         {GOLD 300 400 500}
+-         {INCOME 10 14 18}
+          team_name=trolls
+          user_team_name= _ "Trolls"
+  
+--- 164,171 ----
+          side=6
+          controller=ai
+          recruit=Troll Whelp,Troll,Troll Rocklobber
++         {GOLD 250 400 500}
++         {INCOME 8 14 18}
+          team_name=trolls
+          user_team_name= _ "Trolls"
+  
+***************
+*** 172,187 ****
+              [/avoid]
+          [/ai]
+  
+-         {NOTRAIT_UNIT () "Troll Rocklobber" 39 5} {GUARDIAN} {NO_UPKEEP}
+-         {NOTRAIT_UNIT () "Troll Rocklobber" 39 11} {GUARDIAN} {NO_UPKEEP}
+      [/side]
+  
+      [side]
+          side=7
+          controller=ai
+          recruit=Skeleton,Skeleton Archer
+-         {GOLD 250 350 450}
+-         {INCOME 4 6 8}
+          team_name=undead
+          user_team_name= _ "Undead"
+          {FLAG_VARIANT undead}
+--- 184,199 ----
+              [/avoid]
+          [/ai]
+  
++         {NOTRAIT_UNIT () "Troll Rocklobber" 39 5} {GUARDIAN}
++         {NOTRAIT_UNIT () "Troll Rocklobber" 39 11} {GUARDIAN}
+      [/side]
+  
+      [side]
+          side=7
+          controller=ai
+          recruit=Skeleton,Skeleton Archer
++         {GOLD 210 350 450}
++         {INCOME 2 6 8}
+          team_name=undead
+          user_team_name= _ "Undead"
+          {FLAG_VARIANT undead}
+***************
+*** 196,203 ****
+          side=8
+          controller=ai
+          recruit=Skeleton,Skeleton Archer
+-         {GOLD 250 350 450}
+-         {INCOME 4 6 8}
+  
+          team_name=undead
+          user_team_name= _ "Undead"
+--- 208,215 ----
+          side=8
+          controller=ai
+          recruit=Skeleton,Skeleton Archer
++         {GOLD 210 350 450}
++         {INCOME 2 6 8}
+  
+          team_name=undead
+          user_team_name= _ "Undead"
+***************
+*** 209,215 ****
+          canrecruit=yes
+  
+          # controlled by Micro AI, more meatshield than guard
+-         {NAMED_NOTRAIT_UNIT () "Skeleton Archer" 24 2 (skeleton_return_guard) ()} {NO_UPKEEP}
+      [/side]
+  
+      # And an empty side for the bat used in flavor event
+--- 221,227 ----
+          canrecruit=yes
+  
+          # controlled by Micro AI, more meatshield than guard
++         {NAMED_NOTRAIT_UNIT () "Skeleton Archer" 24 2 (skeleton_return_guard) ()}
+      [/side]
+  
+      # And an empty side for the bat used in flavor event
