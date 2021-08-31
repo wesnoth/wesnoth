@@ -65,10 +65,12 @@ end)
 -- we need to do this also after difficulty selection.
 -- NOTE: this is a bit fragile, in particualr it breaks if difficulty_selection happens before the prestart event above.
 on_event("wc2_start", function(cx)
-	for side_num = 1, wml.variables.wc2_player_count do
-		wesnoth.wml_actions.wc2_start_units {
-			side = side_num
-		}
+	if wml.variables.wc2_scenario == 1 then
+		for side_num = 1, wml.variables.wc2_player_count do
+			wesnoth.wml_actions.wc2_start_units {
+				side = side_num
+			}
+		end
 	end
 
 	if wml.variables.wc2_difficulty.extra_training then
