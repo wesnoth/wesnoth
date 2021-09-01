@@ -2,6 +2,7 @@
  ### Add-ons client
  ### Add-ons server
  ### Campaigns
+   * World Conquest is re-enabled.
  ### Editor
  ### Multiplayer
  ### Lua API
