@@ -14,6 +14,7 @@
  ### User interface
  ### WML Engine
  ### Miscellaneous and Bug Fixes
+   * Messenger MAI: fixed bug of own units sometimes blocking the path to a waypoint for the messenger
 
 ## Version 1.15.15
  ### Campaigns
