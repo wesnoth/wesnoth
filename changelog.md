@@ -1,22 +1,13 @@
-## Version 1.15.16+dev
- ### Add-ons client
- ### Add-ons server
+## Version 1.15.17
  ### Campaigns
    * World Conquest is re-enabled.
- ### Editor
- ### Multiplayer
- ### Lua API
- ### Packaging
- ### Terrain
  ### Translations
    * Updated translations: British English, Polish
- ### Units
- ### User interface
- ### WML Engine
  ### Miscellaneous and Bug Fixes
    * Messenger MAI: fixed bug of own units sometimes blocking the path to a waypoint for the messenger
+   * A bug that would corrupt WML sent to the multiplayer and add-ons server was fixed.
 
-## Version 1.15.15
+## Version 1.15.16
  ### Campaigns
    * Liberty
      * S06: Enforce failure condition for allied team (issue #6019)
