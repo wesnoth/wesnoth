@@ -230,7 +230,7 @@ public:
 
 	/**
 	 * Mute an observer or give a message of all currently muted observers if no name is given.
-	 * 
+	 *
 	 * @param mute The observer to mute. Empty if sending a message to muted observers.
 	 * @param muter The player doing the muting.
 	 */
