@@ -699,7 +699,6 @@ void game::mute_observer(const simple_wml::node& mute, player_iterator muter)
 	auto user { find_user(username) };
 
 	/*
-	 * Mute an observer or give a message of all currently muted observers if no name is given.
 	 * @todo FIXME: Maybe rather save muted nicks as a set of strings and also allow muting of usernames not in the game.
 	 */
 	if(!user || !is_observer(*user)) {
