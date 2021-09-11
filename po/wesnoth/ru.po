@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2021-06-23 11:42-0400\n"
-"PO-Revision-Date: 2021-08-20 20:57+0300\n"
+"PO-Revision-Date: 2021-09-07 11:59+0300\n"
 "Last-Translator: Artem Khrapov <artemkhrapov2001@yandex.ru>\n"
 "Language-Team: https://wiki.wesnoth.org/RussianTranslation\n"
 "Language: ru\n"
@@ -6325,8 +6325,10 @@ msgid "Defeat enemy leader(s)"
 msgstr "Убейте лидера(ов) противника"
 
 #: src/game_initialization/mp_game_utils.cpp:101
+#, fuzzy
+#| msgid "Cannot find era '$era'"
 msgid "Cannot find era $era"
-msgstr "Эра $era не найдена"
+msgstr "Эра «$era» не найдена"
 
 #: src/game_initialization/multiplayer.cpp:235
 msgid "Invalid address specified for multiplayer server"
