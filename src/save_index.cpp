@@ -213,6 +213,7 @@ std::shared_ptr<save_index_class> save_index_class::default_saves_dir()
 	return instance;
 }
 
+/** Filter file names based on input string. */
 class filename_filter
 {
 public:
@@ -230,6 +231,22 @@ private:
 	std::string filter_;
 };
 
+/** Ignore certain files - in particular, the auto-generated Steam cloud record. */
+class filename_ignore
+{
+public:
+	bool operator()(const std::string& filename) const
+	{
+		return std::find(files_to_ignore_.begin(), files_to_ignore_.end(), filename) != files_to_ignore_.end();
+	}
+
+private:
+	/* 'The file steam_autocloud.vdf will be created in each location specified by your Steamworks cloud paths.
+		This file is used by Steam, and can be ignored by your game.'
+		Reference: https://partner.steamgames.com/doc/features/cloud */
+	const std::vector<std::string> files_to_ignore_ = std::vector {std::string {"steam_autocloud.vdf"}};
+};
+
 /** Get a list of available saves. */
 std::vector<save_info> save_index_class::get_saves_list(const std::string* filter)
 {
@@ -238,6 +255,7 @@ std::vector<save_info> save_index_class::get_saves_list(const std::string* filte
 	std::vector<std::string> filenames;
 	filesystem::get_files_in_dir(dir(), &filenames);
 
+	filenames.erase(std::remove_if(filenames.begin(), filenames.end(), filename_ignore()), filenames.end());
 	if(filter) {
 		filenames.erase(
 			std::remove_if(filenames.begin(), filenames.end(), filename_filter(*filter)), filenames.end());
