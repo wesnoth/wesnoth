@@ -241,9 +241,8 @@ public:
 	}
 
 private:
-	/* 'The file steam_autocloud.vdf will be created in each location specified by your Steamworks cloud paths.
-		This file is used by Steam, and can be ignored by your game.'
-		Reference: https://partner.steamgames.com/doc/features/cloud */
+	/* Steam documentation indicates games can ignore its auto-generated 'steam_autocloud.vdf'.
+	   Reference: https://partner.steamgames.com/doc/features/cloud (under Steam Auto-Cloud section as of September 2021) */
 	const std::vector<std::string> files_to_ignore_ = std::vector {std::string {"steam_autocloud.vdf"}};
 };
 
