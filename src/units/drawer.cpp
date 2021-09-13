@@ -348,9 +348,10 @@ void unit_drawer::redraw_unit (const unit & u) const
 	const t_translation::terrain_code terrain_dst = map.get_terrain(dst);
 	const terrain_type& terrain_dst_info = map.get_terrain_info(terrain_dst);
 
-	int height_adjust_unit = static_cast<int>((terrain_info.unit_height_adjust() * (1.0 - adjusted_params.offset) +
-											  terrain_dst_info.unit_height_adjust() * adjusted_params.offset) *
-											  zoom_factor);
+	// height_adjust_unit is not scaled by zoom_factor here otherwise it results in a squared offset that results in #5974
+	// It appears the tiles and units are scaled together somewhere else
+	int height_adjust_unit = static_cast<int>(terrain_info.unit_height_adjust() * (1.0 - adjusted_params.offset) +
+											  terrain_dst_info.unit_height_adjust() * adjusted_params.offset);
 	if (is_flying && height_adjust_unit < 0) {
 		height_adjust_unit = 0;
 	}
