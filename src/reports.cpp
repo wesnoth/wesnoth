@@ -599,7 +599,8 @@ static config unit_defense(reports::context & rc, const unit* u, const map_locat
 	}
 
 	tooltip << "<b>" << _("Defense: ") << span_color(color)  << def << '%' << naps << "</b>";
-	return text_report(str.str(), tooltip.str());
+	const std::string has_variations_prefix = (u->type().show_variations_in_help() ? ".." : "");
+	return text_report(str.str(), tooltip.str(), has_variations_prefix + "unit_" + u->type_id());
 }
 REPORT_GENERATOR(unit_defense,rc)
 {
