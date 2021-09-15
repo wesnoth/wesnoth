@@ -117,6 +117,8 @@ void unit_attack::pre_show(window& window)
 
 		std::string attw_specials = attacker_weapon.weapon_specials(true, attacker.backstab_pos);
 		std::string defw_specials = defender_weapon.weapon_specials(true);
+		std::string attw_abilities = attacker_weapon.weapon_abilities();
+		std::string defw_abilities = defender_weapon.weapon_abilities();
 
 		if(!attw_specials.empty()) {
 			attw_specials = " " + attw_specials;
@@ -126,17 +128,33 @@ void unit_attack::pre_show(window& window)
 			defw_specials = " " + defw_specials;
 		}
 
+		if(!attw_abilities.empty() && !attw_specials.empty()) {
+			attw_abilities = ", \n" + attw_abilities;
+		}
+		else if(!attw_abilities.empty()) {
+			attw_abilities = " " + attw_abilities;
+		}
+
+		if(!defw_abilities.empty() && !defw_specials.empty()) {
+			defw_abilities = ", \n" + defw_abilities;
+		}
+		else if(!defw_abilities.empty()) {
+			defw_abilities = " " + defw_abilities;
+		}
+
 		std::stringstream attacker_stats, defender_stats;
 
 		// Use attacker/defender.num_blows instead of attacker/defender_weapon.num_attacks() because the latter does not consider the swarm weapon special
 		attacker_stats << "<b>" << attw_name << "</b>" << "\n"
 			<< attacker.damage << font::weapon_numbers_sep << attacker.num_blows
-			<< attw_specials << "\n"
+			<< attw_specials
+			<< attw_abilities << "\n"
 			<< font::span_color(a_cth_color) << attacker.chance_to_hit << "%</span>";
 
 		defender_stats << "<b>" << defw_name << "</b>" << "\n"
 			<< defender.damage << font::weapon_numbers_sep << defender.num_blows
-			<< defw_specials << "\n"
+			<< defw_specials
+			<< defw_abilities << "\n"
 			<< font::span_color(d_cth_color) << defender.chance_to_hit << "%</span>";
 
 		std::map<std::string, string_map> data;

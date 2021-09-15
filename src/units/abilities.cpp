@@ -858,23 +858,37 @@ std::string attack_type::weapon_specials(bool only_active, bool is_backstab) con
 			if (only_active && !active) res += "</span>";
 		}
 	}
+	return res;
+}
 
+static std::pair<std::string, std::set<std::string>> add_name(std::string res, bool active, const config::any_child sp, std::set<std::string> checking_name)
+{
+	if (active) {
+ 	const std::string& name = sp.cfg["name"].str();
+
+	if (!name.empty() && checking_name.count(name) == 0) {
+		checking_name.insert(name);
+		if (!res.empty()) res += ", ";
+		res += font::span_color(font::BUTTON_COLOR);
+		res += name;
+		res += "</span>";
+	}
+	}
+	return {res, checking_name};
+}
+
+std::string attack_type::weapon_abilities() const
+{
+	std::string res;
+	std::set<std::string> checking_name;
 	assert(display::get_singleton());
 	const unit_map& units = display::get_singleton()->get_units();
 	if(self_){
-		std::set<std::string> checking_name;
 		for (const config::any_child sp : (*self_).abilities().all_children_range()){
 			const bool active = check_self_abilities_impl(shared_from_this(), other_attack_, sp.cfg, self_, self_loc_, AFFECT_SELF, sp.key);
 
-			const std::string& name = active ? sp.cfg["name"].str() : "";
-
-			if (!name.empty() && checking_name.count(name) == 0) {
-				checking_name.insert(name);
-				if (!res.empty()){
-					res += ", ";
-				}
-				res += name;
-			}
+			res = add_name(res, active, sp, checking_name).first;
+			checking_name = add_name(res, active, sp, checking_name).second;
 		}
 		const auto adjacent = get_adjacent_tiles(self_loc_);
 		for(unsigned i = 0; i < adjacent.size(); ++i) {
@@ -886,21 +900,36 @@ std::string attack_type::weapon_specials(bool only_active, bool is_backstab) con
 			for (const config::any_child sp : (*it).abilities().all_children_range()){
 				const bool active = check_adj_abilities_impl(shared_from_this(), other_attack_, sp.cfg, self_, *it, i, self_loc_, AFFECT_SELF, sp.key);
 
-				const std::string& name = active ? sp.cfg["name"].str() : "";
+				res = add_name(res, active, sp, checking_name).first;
+				checking_name = add_name(res, active, sp, checking_name).second;
+			}
+		}
+	}
 
-				if (!name.empty() && checking_name.count(name) == 0) {
-					checking_name.insert(name);
-					if (!res.empty()){
-						res += ", ";
-					}
-					res += name;
-				}
+	if(other_){
+		for (const config::any_child sp : (*other_).abilities().all_children_range()){
+			const bool active = check_self_abilities_impl(other_attack_, shared_from_this(), sp.cfg, other_, other_loc_, AFFECT_OTHER, sp.key);
+
+			res = add_name(res, active, sp, checking_name).first;
+			checking_name = add_name(res, active, sp, checking_name).second;
+		}
+		const auto adjacent = get_adjacent_tiles(other_loc_);
+		for(unsigned i = 0; i < adjacent.size(); ++i) {
+			const unit_map::const_iterator it = units.find(adjacent[i]);
+			if (it == units.end() || it->incapacitated())
+				continue;
+			if(&*it == other_.get())
+				continue;
+			for (const config::any_child sp : (*it).abilities().all_children_range()){
+				const bool active = check_adj_abilities_impl(other_attack_, shared_from_this(), sp.cfg, other_, *it, i, other_loc_, AFFECT_OTHER, sp.key);
+
+				res = add_name(res, active, sp, checking_name).first;
+				checking_name = add_name(res, active, sp, checking_name).second;
 			}
 		}
 	}
 	return res;
 }
-
 
 /**
  * Sets the context under which specials will be checked for being active.
