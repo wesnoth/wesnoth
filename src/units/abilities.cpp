@@ -864,7 +864,7 @@ std::string attack_type::weapon_specials(bool only_active, bool is_backstab) con
 	if(self_){
 		std::set<std::string> checking_name;
 		for (const config::any_child &sp : (*self_).abilities().all_children_range()){
-			const bool active = check_self_abilities_impl(shared_from_this(), other_attack_, sp.cfg, self_, self_loc_, AFFECT_EITHER, sp.key);
+			const bool active = check_self_abilities_impl(shared_from_this(), other_attack_, sp.cfg, self_, self_loc_, AFFECT_SELF, sp.key);
 
 			const std::string& name = active ? sp.cfg["name"].str() : "";
 
@@ -884,7 +884,7 @@ std::string attack_type::weapon_specials(bool only_active, bool is_backstab) con
 			if(&*it == self_.get())
 				continue;
 			for (const config::any_child &sp : (*it).abilities().all_children_range()){
-				const bool active = check_adj_abilities_impl(shared_from_this(), other_attack_, sp.cfg, self_, *it, i, self_loc_, AFFECT_EITHER, sp.key);
+				const bool active = check_adj_abilities_impl(shared_from_this(), other_attack_, sp.cfg, self_, *it, i, self_loc_, AFFECT_SELF, sp.key);
 
 				const std::string& name = active ? sp.cfg["name"].str() : "";
 
