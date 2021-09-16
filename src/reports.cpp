@@ -1269,13 +1269,12 @@ static config time_of_day_at(reports::context & rc, const map_location& mouseove
 	std::string chaotic_color("white");
 	std::string liminal_color("white");
 
-	// Use same red/green colouring scheme as time_of_day_bonus_colored() in help/help_impl.cpp for consistency
 	if (b != 0) {
-		lawful_color  = (b > 0) ? "green" : "red";
-		chaotic_color = (b < 0) ? "green" : "red";
+		lawful_color  = (b > 0) ? "#0f0" : "#f00";
+		chaotic_color = (b < 0) ? "#0f0" : "#f00";
 	}
 	if (l != 0) {
-		liminal_color = (l > 0) ? "green" : "red";
+		liminal_color = (l > 0) ? "#0f0" : "#f00";
 	}
 	tooltip << _("Time of day:") << " <b>" << tod.name << "</b>\n"
 		<< _("Lawful units: ") << "<span foreground=\"" << lawful_color  << "\">"
