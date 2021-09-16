@@ -427,8 +427,15 @@ void game_load::evaluate_summary_string(std::stringstream& str, const config& cf
 		str << _("Scenario start");
 	}
 
-	str << "\n" << _("Difficulty: ")
-		<< difficulty_human_str;
+	// Only makes sense to display difficulty for SP campaigns:
+	try {
+		if (game_classification::CAMPAIGN_TYPE::string_to_enum(campaign_type).v == game_classification::CAMPAIGN_TYPE::SCENARIO) {
+			str << "\n" << _("Difficulty: ") << difficulty_human_str;
+		}
+	}
+	catch (const bad_enum_cast&) {
+		str << campaign_type;
+	}
 
 	if(!cfg_summary["version"].empty()) {
 		str << "\n" << _("Version: ") << cfg_summary["version"];
