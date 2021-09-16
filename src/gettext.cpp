@@ -411,15 +411,33 @@ std::string dsgettext (const char * domainname, const char *msgid)
 	return msgval;
 }
 
+namespace {
+
+inline const char* is_unlocalized_string2(const std::string& str, const char* singular, const char* plural)
+{
+	if (str == singular) {
+		return singular;
+	}
+
+	if (str == plural) {
+		return plural;
+	}
+
+	return nullptr;
+}
+
+}
+
 std::string dsngettext (const char * domainname, const char *singular, const char *plural, int n)
 {
 	//TODO: only the next line needs to be in the lock.
 	std::scoped_lock lock(get_mutex());
 	std::string msgval = bl::dngettext(domainname, singular, plural, n, get_manager().get_locale());
-	if (msgval == singular) {
-		const char* firsthat = std::strchr (singular, '^');
+	auto original = is_unlocalized_string2(msgval, singular, plural);
+	if (original) {
+		const char* firsthat = std::strchr (original, '^');
 		if (firsthat == nullptr)
-			msgval = singular;
+			msgval = original;
 		else
 			msgval = firsthat + 1;
 	}
