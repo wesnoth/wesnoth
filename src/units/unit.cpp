@@ -1829,7 +1829,7 @@ std::string unit::describe_builtin_effect(std::string apply_to, const config& ef
 		if(!increase_total.empty()) {
 			return VGETTEXT(
 				"<span color=\"$color\">$number_or_percent</span> HP",
-				{{"number_or_percent", utils::print_modifier(increase_total)}, {"color", increase_total[0] == '-' ? "red" : "green"}});
+				{{"number_or_percent", utils::print_modifier(increase_total)}, {"color", increase_total[0] == '-' ? "#f00" : "#0f0"}});
 		}
 	} else {
 		const std::string& increase = effect["increase"];
@@ -1841,31 +1841,31 @@ std::string unit::describe_builtin_effect(std::string apply_to, const config& ef
 				"<span color=\"$color\">$number_or_percent</span> move",
 				"<span color=\"$color\">$number_or_percent</span> moves",
 				std::stoi(increase),
-				{{"number_or_percent", utils::print_modifier(increase)}, {"color", increase[0] == '-' ? "red" : "green"}});
+				{{"number_or_percent", utils::print_modifier(increase)}, {"color", increase[0] == '-' ? "#f00" : "#0f0"}});
 		} else if(apply_to == "vision") {
 			return VGETTEXT(
 				"<span color=\"$color\">$number_or_percent</span> vision",
-				{{"number_or_percent", utils::print_modifier(increase)}, {"color", increase[0] == '-' ? "red" : "green"}});
+				{{"number_or_percent", utils::print_modifier(increase)}, {"color", increase[0] == '-' ? "#f00" : "#0f0"}});
 		} else if(apply_to == "jamming") {
 			return VGETTEXT(
 				"<span color=\"$color\">$number_or_percent</span> jamming",
-				{{"number_or_percent", utils::print_modifier(increase)}, {"color", increase[0] == '-' ? "red" : "green"}});
+				{{"number_or_percent", utils::print_modifier(increase)}, {"color", increase[0] == '-' ? "#f00" : "#0f0"}});
 		} else if(apply_to == "max_experience") {
 			// Unlike others, decreasing experience is a *GOOD* thing
 			return VGETTEXT(
 				"<span color=\"$color\">$number_or_percent</span> XP to advance",
-				{{"number_or_percent", utils::print_modifier(increase)}, {"color", increase[0] == '-' ? "green" : "red"}});
+				{{"number_or_percent", utils::print_modifier(increase)}, {"color", increase[0] == '-' ? "#0f0" : "#f00"}});
 		} else if(apply_to == "max_attacks") {
 			return VNGETTEXT(
 					"<span color=\"$color\">$number_or_percent</span> attack per turn",
 					"<span color=\"$color\">$number_or_percent</span> attacks per turn",
 					std::stoi(increase),
-					{{"number_or_percent", utils::print_modifier(increase)}, {"color", increase[0] == '-' ? "red" : "green"}});
+					{{"number_or_percent", utils::print_modifier(increase)}, {"color", increase[0] == '-' ? "#f00" : "#0f0"}});
 		} else if(apply_to == "recall_cost") {
 			// Unlike others, decreasing recall cost is a *GOOD* thing
 			return VGETTEXT(
 				"<span color=\"$color\">$number_or_percent</span> cost to recall",
-				{{"number_or_percent", utils::print_modifier(increase)}, {"color", increase[0] == '-' ? "green" : "red"}});
+				{{"number_or_percent", utils::print_modifier(increase)}, {"color", increase[0] == '-' ? "#0f0" : "#f00"}});
 		}
 	}
 	return "";
