@@ -24,7 +24,6 @@
  ### Translations
    * Updated translations: Czech, Italian, Portuguese (Brazil), Russian
  ### Units
-   * Added the Skeleton Rider, Bone Knight and Death Squire to core from Liberty.
  ### User interface
  ### WML Engine
  ### Miscellaneous and Bug Fixes
