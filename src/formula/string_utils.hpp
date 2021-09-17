@@ -83,7 +83,7 @@ std::string format_disjunct_list(const t_string& empty, const std::vector<t_stri
  * @return A string such as "6 days, 12 hours, 4 minutes, 13 seconds". Years,
  *         months and weeks are also considered.
  */
-std::string format_timespan(std::time_t time);
+std::string format_timespan(std::time_t time, bool detailed = false);
 }
 
 /**
