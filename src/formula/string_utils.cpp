@@ -289,7 +289,7 @@ std::string format_disjunct_list(const t_string& empty, const std::vector<t_stri
 	return VGETTEXT("disjunct end^$prefix, or $last", {{"prefix", prefix}, {"last", elems.back()}});
 }
 
-std::string format_timespan(std::time_t time)
+std::string format_timespan(std::time_t time, bool detailed)
 {
 	if(time <= 0) {
 		return _("timespan^expired");
@@ -326,6 +326,9 @@ std::string format_timespan(std::time_t time)
 			time -= secs * amount;
 			i18n["num"] = std::to_string(amount);
 			display_text.emplace_back(VNGETTEXT(fmt_singular, fmt_plural, amount, i18n));
+			if(!detailed) {
+				break;
+			}
 		}
 	}
 
