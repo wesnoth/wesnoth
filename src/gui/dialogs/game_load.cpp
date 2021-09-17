@@ -439,6 +439,8 @@ void game_load::evaluate_summary_string(std::stringstream& str, const config& cf
 					str << ss.str();
 				}
 				catch (const config::error&) {
+					// fall back to standard difficulty string in case of exception
+					str << string_table[cfg_summary["difficulty"]];
 				}
 			}
 			else {
