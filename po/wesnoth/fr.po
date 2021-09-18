@@ -8,14 +8,14 @@
 # Guillaume Melquiond <guillaume.melquiond@gmail.com>, 2009.
 # Guillaume Pascal <guillaume.pascal43@laposte.net>, 2011, 2013.
 # Guigou Guillaume <guillaume.guigou@orange.fr>, 2013.
-# Mathieu Guilbaud <mathieu@guim.info>, 2018.
+# Mathieu Guilbaud <mathieu@guim.info>, 2018, 2021.
 # Syll <syll-dev@laposte.net>, 2018, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth-1.12\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2021-08-21 23:31-0400\n"
-"PO-Revision-Date: 2021-08-14 14:25+0200\n"
+"PO-Revision-Date: 2021-09-17 06:17+0200\n"
 "Last-Translator: Clemence <.>\n"
 "Language-Team: French <>\n"
 "Language: fr\n"
@@ -5662,7 +5662,8 @@ msgstr ""
 #: src/addon/manager_ui.cpp:296
 msgid ""
 "Could not find add-ons matching the ids $addon_ids on the add-on server."
-msgstr "L'extension $addon_id n'a pas été trouvée sur le serveur d'extensions."
+msgstr ""
+"L'extension $addon_ids n'a pas été trouvée sur le serveur d'extensions."
 
 #: src/addon/validation.cpp:388
 msgid "Success."
@@ -6406,10 +6407,8 @@ msgid "Defeat enemy leader(s)"
 msgstr "Tuez tous les chefs ennemis"
 
 #: src/game_initialization/mp_game_utils.cpp:103
-#, fuzzy
-#| msgid "Cannot find era $era"
 msgid "Cannot find era '$era'"
-msgstr "Ère $era introuvable"
+msgstr "Ère « $era » introuvable"
 
 #: src/game_initialization/multiplayer.cpp:236
 msgid "Invalid address specified for multiplayer server"
@@ -7113,7 +7112,7 @@ msgstr "Erreur interne. Merci de remonter ce bug ! Détails :\n"
 
 #: src/menu_events.cpp:316
 msgid "You cannot recruit a $unit_type_name at this time."
-msgstr "Vous ne pouvez pas recruter une unité $unit_type_nam actuellement."
+msgstr "Vous ne pouvez pas recruter une unité $unit_type_name actuellement."
 
 #. TRANSLATORS: "plan" refers to Planning Mode
 #: src/menu_events.cpp:330
