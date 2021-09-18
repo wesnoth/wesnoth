@@ -4,28 +4,28 @@
 # Traduction anglaise du package Battle for Wesnoth.
 # Copyright (C) 2004 THE Battle for Wesnoth'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the Battle for Wesnoth package.
+#
 # French Wesnoth translation team <wesnoth@ml.free.fr>, 2004.
 # Guillaume Melquiond <guillaume.melquiond@gmail.com>, 2009.
 # Guillaume Pascal <guillaume.pascal43@laposte.net>, 2011, 2012, 2013.
 # Guigou Guillaume <guillaume.guigou@orange.fr>, 2013.
 # Rémi BERTHO <remi.bertho@gmail.com>, 2014.
 # Mathieu GUILBAUD < mathieu@guim.info>, 2018, 2019.
-# Syll <syll-dev@laposte.net>, 2019.
-#
+# Syll <syll-dev@laposte.net>, 2019, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth_Help-1.12\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2021-06-23 11:42-0400\n"
-"PO-Revision-Date: 2021-01-22 14:47+0100\n"
-"Last-Translator: Syll <syll-dev@laposte.net>\n"
-"Language-Team: français <wesnoth@ml.free.fr>\n"
+"PO-Revision-Date: 2021-09-17 06:53+0200\n"
+"Last-Translator: Clemence <.>\n"
+"Language-Team: French <wesnothfr@lists.tuxfamily.org>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 2.4.2\n"
+"X-Generator: Poedit 3.0\n"
 
 #. [time]: id=underground
 #. [editor_times]: id=underground
@@ -71,10 +71,10 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:22
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:61
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:91
-#, fuzzy
-#| msgid " This unit is capable of basic healing."
 msgid "This unit is capable of basic healing and slowing dehydration."
-msgstr " Cette unité est capable de prodiguer des soins de base."
+msgstr ""
+"Cette unité est capable de prodiguer des soins de base et de ralentir la "
+"déshydratation."
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:40
@@ -112,29 +112,16 @@ msgstr ""
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:70
-#, fuzzy
-#| msgid "heals +4"
 msgid "heals +12"
-msgstr "soins +4"
+msgstr "soins +12"
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:71
-#, fuzzy
-#| msgid "female^heals +4"
 msgid "female^heals +12"
-msgstr "soins +4"
+msgstr "soins +12"
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:72
-#, fuzzy
-#| msgid ""
-#| "This unit combines herbal remedies with magic to heal units more quickly "
-#| "than is normally possible on the battlefield.\n"
-#| "\n"
-#| "A unit cared for by this healer may heal up to 8 HP per turn, or stop "
-#| "poison from taking effect for that turn.\n"
-#| "A poisoned unit cannot be cured of its poison by a healer, and must seek "
-#| "the care of a village or a unit that can cure."
 msgid ""
 "This unit combines herbal remedies with magic to heal units more quickly "
 "than is normally possible on the battlefield.\n"
@@ -148,23 +135,19 @@ msgstr ""
 "magiques pour soigner plus rapidement que la normale sur le champ de "
 "bataille.\n"
 "\n"
-"Une unité soignée peut soit regagner jusqu'à 8 points de vie, soit ne pas "
+"Une unité soignée peut soit regagner jusqu'à 12 points de vie, soit ne pas "
 "subir les effets du poison ce tour-ci.\n"
 "Une unité empoisonnée ne peut pas être traitée par un soigneur, mais devra "
 "trouver un village ou une unité avec la capacité de guérison."
 
 #. [heals]
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:97
-#, fuzzy
-#| msgid ""
-#| " This unit is capable of healing those around it, and curing them of "
-#| "poison."
 msgid ""
 "This unit is capable of healing those around it, slowing dehydration, and "
 "curing them of poison."
 msgstr ""
-" Cette unité est capable de soigner les unités environnantes et de les "
-"guérir du poison."
+"Cette unité est capable de soigner les unités environnantes, ralentir la "
+"déshydratation et de les guérir du poison."
 
 #. [trait]: id=healthy
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:11
@@ -877,40 +860,6 @@ msgstr "Éditeur de carte/scénario"
 
 #. [topic]: id=..editor
 #: data/core/editor/help.cfg:224
-#, fuzzy
-#| msgid ""
-#| "Wesnoth’s Map and Scenario Editor allows users to create and edit the "
-#| "maps on which every Wesnoth scenario takes place. It also provides a "
-#| "limited set of features for setting up a basic scenario.\n"
-#| "\n"
-#| "The editor can be launched from the <italic>text='Map Editor'</italic> "
-#| "option at the title screen.\n"
-#| "\n"
-#| "<header>text='Editing Modes'</header>\n"
-#| "\n"
-#| "The editor features two modes of operation: terrain mode and scenario "
-#| "mode.\n"
-#| "\n"
-#| "The <ref>dst='..editor_mode_terrain' text='Terrain Mode'</ref> is similar "
-#| "to a simple paint application, with tools to <ref>dst='editor_tool_paint' "
-#| "text='paint'</ref>, <ref>dst='editor_tool_fill' text='fill'</ref>, "
-#| "<ref>dst='editor_tool_select' text='select (and copy)'</ref>, and "
-#| "<ref>dst='editor_tool_paste' text='paste'</ref>. It also has the tool for "
-#| "setting the leaders’ <ref>dst='editor_tool_starting' text='starting "
-#| "locations'</ref>.\n"
-#| "\n"
-#| "The <ref>dst='..editor_mode_scenario' text='Scenario Mode'</ref>, in "
-#| "addition to the tools available in terrain mode, adds support for adding "
-#| "<ref>dst='editor_tool_label' text='labels'</ref>, "
-#| "<ref>dst='editor_tool_scenery' text='scenery items'</ref>, "
-#| "<ref>dst='editor_tool_unit' text='units'</ref> in addition to the leader, "
-#| "and assigning <ref>dst='editor_tool_village' text='village ownership'</"
-#| "ref> at the start of the scenario. There’s also a "
-#| "<ref>dst='editor_playlist' text='playlist manager'</ref> for the music.\n"
-#| "\n"
-#| "<bold>text='Warning: the Scenario Mode is buggy in 1.14.'</bold> "
-#| "Improving it is one of the main blockers for the 1.16 release, however in "
-#| "1.14 its quality is far below that of the game and the terrain mode."
 msgid ""
 "Wesnoth’s Map and Scenario Editor allows users to create and edit the maps "
 "on which every Wesnoth scenario takes place. It also provides a limited set "
@@ -950,7 +899,7 @@ msgstr ""
 "\n"
 "<header>text='Modes d\\'édition'</header>\n"
 "\n"
-"L'éditeur procure deux modes d'édition : terrain et scénario.\n"
+"L'éditeur comporte deux modes d'édition : terrain et scénario.\n"
 "\n"
 "Le <ref>dst='..editor_mode_terrain' text='mode terrain'</ref> est similaire "
 "à une application de peinture, avec des outils pour "
@@ -967,13 +916,8 @@ msgstr ""
 "d'<ref>dst='editor_tool_scenery' text='objets'</ref>, "
 "d'<ref>dst='editor_tool_unit' text='unités'</ref> en plus des chefs, et "
 "l'assignation <ref>dst='editor_tool_village' text='des villages'</ref> en "
-"début de scénario. Il y a également le gestionnaire de "
-"<ref>dst='editor_playlist' text='listes de lecture'</ref> pour la musique.\n"
-"\n"
-"<bold>text='Attention : le mode scénario contient des bogues dans la version "
-"1.14.'</bold> Son amélioration est un des points bloquant de la version "
-"1.16, bien que dans la version 1.14 sa qualité soit bien en deçà du jeu et "
-"du mode terrain."
+"début de scénario. Il y a également <ref>dst='editor_playlist' text='le "
+"gestionnaire de listes de lecture'</ref> pour la musique."
 
 #. [topic]: id=..editor
 #: data/core/editor/help.cfg:236
@@ -1052,13 +996,13 @@ msgstr ""
 "Les fonctionnalités de l'éditeur de terrain sont similaires à celles d'une "
 "application simple de dessin.\n"
 "\n"
-"La barre latérale de droite contient, de haut en bas, la mini-carte, la "
+"La barre latérale de droite comprend, de haut en bas, la mini-carte, la "
 "boîte à outils (voir la page dédiée de chaque outil), les options de "
 "l'outil, et la <ref>dst='editor_palette' text='palette'</ref>.\n"
 "\n"
-"Lorsque sauvegardée en utilisant l'emplacement par défaut de « Sauvegarder "
-"la carte sous », la carte se trouve dans le type de jeu « Carte utilisateur "
-"» de l'écran « Créer un jeu »."
+"Vous retrouvez votre carte, une fois sauvegardée avec \"sauvegarder sous\" "
+"dans le répertoire par défaut, dans le type de jeu \"cartes d'utilisateur\" "
+"de la boite de dialogue \"créer une partie\" du mode multijoueur"
 
 #. [topic]: id=..editor_mode_scenario
 #: data/core/editor/help.cfg:268
@@ -1121,7 +1065,11 @@ msgstr ""
 "\n"
 "Si vous éditez déjà une carte en mode terrain, utilisez « Sauvegarder le "
 "scénario comme » du menu « Fichier » ; cela passera l'éditeur en mode "
-"scénario."
+"scénario.\n"
+"\n"
+"Pour charger une carte créée dans l'éditeur de scénarios, utilisez \"charger "
+"une carte\" du menu \"fichier\", et sélectionnez le fichier .cfg (au lieu "
+"de .map)."
 
 #. [topic]: id=..editor_mode_scenario
 #: data/core/editor/help.cfg:285
@@ -1548,18 +1496,18 @@ msgstr "Encyclopédie"
 
 #. [topic]: id=..encyclopedia
 #: data/core/encyclopedia/_main.cfg:14
-#, fuzzy
-#| msgid "<ref>dst='..geography' text='Geography'</ref>"
 msgid ""
 "<ref>dst='..calendar' text='Calendar'</ref>\n"
 "<ref>dst='..geography' text='Geography'</ref>"
-msgstr "<ref>dst='..geography' text='Géographie'</ref>"
+msgstr ""
+"<ref>dst='..calendar' text='Calendrier'</ref>\n"
+"<ref>dst='..geography' text='Géographie'</ref>"
 
 #. [section]: id=calendar
 #. [topic]: id=..calendar
 #: data/core/encyclopedia/calendar.cfg:5 data/core/encyclopedia/calendar.cfg:13
 msgid "Calendar"
-msgstr ""
+msgstr "Calendrier"
 
 #. [topic]: id=..calendar
 #: data/core/encyclopedia/calendar.cfg:14
@@ -1581,6 +1529,22 @@ msgid ""
 "Blackfire\n"
 "\n"
 msgstr ""
+"Chaque année du calendrier de Wesnoth est composée de 12 mois. Ils sont, "
+"dans l'ordre : \n"
+"\n"
+"Whitefire\n"
+"Bleeding Moon\n"
+"Scatterseed\n"
+"Deeproot\n"
+"Scryer’s Bloom\n"
+"Thorntress\n"
+"Summit Star\n"
+"Kindlefire\n"
+"Stillseed\n"
+"Reaper’s Moon\n"
+"Verglas Bloom\n"
+"Blackfire\n"
+"\n"
 
 #. [section]: id=geography
 #. [topic]: id=..geography
@@ -1843,46 +1807,44 @@ msgstr ""
 "des forêts denses dont la Forêt d'Aethen peut être considérée comme la "
 "partie la plus au nord.\n"
 "\n"
-"    • Cités remarquables :\n"
-"          ◦ Weldyn : La capitale de Wesnoth.\n"
-"          ◦ Aldril : Cité située dans la Baie des Perles.\n"
-"          ◦ Port d'Aiguenoire : Cité au sud de la Baie des Perles.\n"
-"          ◦ Carcyn : Située entre les Bois Gris et le Grand Fleuve.\n"
-"          ◦ Dan’Tonk : La plus grande cité de Wesnoth, située au centre du "
+"<header>text='Cités remarquables :'</header>\n"
+"    • Weldyn : La capitale de Wesnoth.\n"
+"    • Aldril : Cité située dans la Baie des Perles.\n"
+"     • Port d'Aiguenoire : Cité au sud de la Baie des Perles.\n"
+"    • Carcyn : Située entre les Bois Gris et le Grand Fleuve.\n"
+"    • Dan’Tonk : La plus grande cité de Wesnoth, située au centre du "
 "royaume, juste au nord-ouest de Weldyn.\n"
-"          ◦ Soradoc : Le poste frontière le plus au nord de Wesnoth, qui "
-"contrôle la confluence de la rivière Weldyn et du Grand Fleuve.\n"
-"          ◦ Fort Tahn : Le poste frontière le plus au sud, qui contrôle la "
-"traversée nord/sud du fleuve Aethen.\n"
-"          ◦ Tath : Importante cité fortifiée au nord de Dan’Tonk, exerce un "
-"contrôle sur les terres sauvages à l'est des Collines Brunes et au nord du "
-"Gué d'Abez.\n"
+"    • Soradoc : Le poste frontière le plus au nord de Wesnoth, qui contrôle "
+"la zone de confluence de la rivière Weldyn et du Grand Fleuve.\n"
+"    • Fort Tahn : Le poste frontière le plus au sud, qui contrôle la route "
+"nord/sud traversant la rivière Aethen.\n"
+"    • Tath : Importante cité fortifiée au nord de Dan’Tonk, elle domine les "
+"terres sauvages à l'est des Collines Brunes et au nord du Gué d'Abez.\n"
 "\n"
-"    • Lieux remarquables :\n"
-"          ◦ Montagne aux Griffons : Terre des légendaires griffons\n"
-"          ◦ Gué d'Abez : Partie peu profonde du Grand Fleuve, il est le plus "
+"<header>text='lieux remarquables :'</header>\n"
+"    • La Montagne aux Griffons : Demeure des légendaires griffons\n"
+"    • Le Gué d'Abez : Partie peu profonde du Grand Fleuve, il est le plus "
 "souvent contrôlé par les armées de Wesnoth\n"
-"          ◦ Fleuve Weldyn : Il dérive du Grand Fleuve pour aller vers le "
-"sud\n"
-"          ◦ Grande Plaine Centrale : Zone entourée par Weldyn, Dan’Tonk et "
-"Fort Tahn, cette plaine est le grenier à blé de Wesnoth et abrite la plus "
-"grande partie de sa population\n"
-"          ◦ Collines Dulatus : Ces collines vallonnées au bord de la Grande "
-"Plaine Centrale contribuent largement au bétail et à l'agriculture de "
-"Wesnoth\n"
-"          ◦ Collines Ocres : Terres arides autour de la Montagne aux "
-"Griffons, peu peuplées et parfois très dangereuses.\n"
-"          ◦ Plaines aux Chevaux : Région de plaines herbeuses juste au sud "
-"du Grand Fleuve, entourée de la Forêt de Glyn à l'ouest et du fleuve Weldyn "
-"à l'est ; la partie sud rejoint la Plaine Centrale. Terre des puissants "
+"    • Le Fleuve Weldyn : Il dérive du Grand Fleuve pour aller vers le sud\n"
+"    • La Grande Plaine Centrale : Zone entourée par Weldyn, Dan’Tonk et Fort "
+"Tahn, cette plaine est le grenier à blé de Wesnoth et abrite la plus grande "
+"partie de sa population\n"
+"    • Les Collines Dulatus : Ces collines vallonnées au bord de la Grande "
+"Plaine Centrale fournissent une grande partie du bétail et de l'agriculture "
+"de Wesnoth\n"
+"    • Les Collines Ocres : Terres arides autour de la Montagne aux Griffons, "
+"peu peuplées et parfois très dangereuses.\n"
+"    • Les Plaines aux Chevaux : Région de plaines herbeuses juste au sud du "
+"Grand Fleuve, entourée de la Forêt de Glyn à l'ouest et du fleuve Weldyn à "
+"l'est ; la partie sud rejoint la Plaine Centrale. Terre des puissants "
 "Clans ; les meilleurs chevaux de Wesnoth sont élevés ici.\n"
-"          ◦ Collines Estmark : Vaste zone s'étalant au sud du Grand Fleuve "
-"et à l'est du fleuve Weldyn. La partie la plus au nord, la plus proche du "
+"    • Les Collines Estmark : Vaste zone s'étalant au sud du Grand Fleuve et "
+"à l'est du fleuve Weldyn. La partie la plus au nord, la plus proche du "
 "fleuve Weldyn, a été colonisée à diverses périodes par des Wesnothiens, mais "
 "le contrôle du Royaume y est mince et le banditisme courant.\n"
-"          ◦ Forêt de Glyn : Parfois aussi appelée Forêt Royale, elle a "
-"hérité du nom d'un fils de Haldric II.\n"
-"          ◦ Bois Gris : Vaste forêt au cœur des terres sauvages de Wesnoth, "
+"    • La Forêt de Glyn : Parfois aussi appelée Forêt Royale, elle a hérité "
+"du nom d'un fils de Haldric II.\n"
+"    • Les Bois Gris : Vaste forêt au cœur des terres sauvages de Wesnoth, "
 "située entre Carcyn et Aldril et réputée pour être hantée."
 
 #. [topic]: id=elensefar
@@ -3031,16 +2993,8 @@ msgstr ""
 
 #. [topic]: id=shroud_and_fog
 #: data/core/help.cfg:282
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<header>text='Multiplayer Eras and Factions'</header>"
 msgid "<header>text='Multiplayer and undo'</header>"
-msgstr ""
-"\n"
-"\n"
-"<header>text='Ères multijoueurs et Factions'</header>"
+msgstr "<header>text='Multijoueurs et annulation'</header>"
 
 #. [topic]: id=shroud_and_fog
 #: data/core/help.cfg:284
@@ -3052,6 +3006,13 @@ msgid ""
 "move. Chat messages and map labels are sent immediately, however they don’t "
 "cause the undoable moves to be sent."
 msgstr ""
+"Dans les jeux multi-joueurs, les mouvements envoyés sur le réseau ne peuvent "
+"pas être annulés. Le jeu retarde l'envoi des données pour essayer de "
+"préserver votre capacité d'annulation. Lorsque vous discutez avec vos "
+"coéquipiers, n'oubliez pas que les autres joueurs sont en train de voir un "
+"instantané du dernier combat ou du dernier mouvement révélant le brouillard. "
+"Les messages du chat et les étiquettes de carte sont envoyés immédiatement, "
+"mais ils ne permettent pas de voir les mouvements annulable."
 
 #. [topic]: id=saveload
 #: data/core/help.cfg:291
@@ -3060,15 +3021,6 @@ msgstr "Sauvegarder-recharger"
 
 #. [topic]: id=saveload
 #: data/core/help.cfg:292
-#, fuzzy
-#| msgid ""
-#| "Random numbers are part of Wesnoth, attacks can fail and units can die "
-#| "due to bad luck. This is an expected part of the game, and one of the "
-#| "aims of the game is that a sufficiently skilled player should be able to "
-#| "complete all of the mainline campaigns, on hard, without needing to save-"
-#| "load. Going back to a previous turn to try a different strategy is a part "
-#| "of learning the game, but we recommend against reloading merely to try "
-#| "the same strategy again while hoping for better luck."
 msgid ""
 "Random numbers are part of Wesnoth, attacks can fail and units can die due "
 "to bad luck — this is an expected part of the game. Going back to a previous "
@@ -3076,14 +3028,11 @@ msgid ""
 "recommend against reloading merely to try the same strategy again while "
 "hoping for better luck."
 msgstr ""
-"Les nombres aléatoires sont une partie de Wesnoth, les attaques peuvent "
-"échouer et les unités peuvent mourir faute de chance. C'est une facette "
-"attendue du jeu, et l'un des buts est qu'un joueur suffisamment expérimenté "
-"puisse terminer toutes les principales campagnes, au niveau difficile, sans "
-"avoir besoin de recharger une partie. Revenir à un précédent tour pour "
-"essayer une autre stratégie fait partie du jeu, mais nous ne recommandons "
-"pas de recharger pour essayer toujours la même stratégie en espérant plus de "
-"chance."
+"Les réussites aléatoires font partie de Wesnoth, les attaques peuvent "
+"échouer et les unités peuvent mourir faute de chance. Cela fait entièrement "
+"parti du jeu. Revenir à un tour précédant pour essayer une autre stratégie "
+"permet d'apprendre à mieux jouer, mais nous vous déconseillons  de recharger "
+"pour tenter à nouveau la même stratégie en espérant avoir plus de chance."
 
 #. [topic]: id=saveload
 #: data/core/help.cfg:294
@@ -3103,16 +3052,15 @@ msgid ""
 "<italic>text='expect'</italic> one of them to die about every 20 turns. So, "
 "you’ll rarely make it through a scenario without having it happen."
 msgstr ""
-"\n"
-"\n"
-"Un des défis du jeu est d'arriver à protéger vos héros. De petits risques "
-"s’accumulent vite : si vous avez cinq unités importantes, et qu'elles ont "
-"chacune 1% de chance de mort à chaque tour, vous pouvez "
-"<italic>text='espérer'</italic> en voir une disparaître tous les 20 tours. "
-"Ainsi, vous ne pourrez que rarement terminer un scénario sans en perdre."
+"Un des défis du jeu est d'arriver à protéger vos héros. Les dégâts "
+"légerss’accumulent rapidement : si vous avez cinq unités importantes, et "
+"qu'elles ont chacune 1% de chance de mort à chaque tour, vous pouvez "
+"<italic>text='craindre</italic> d'en voir une disparaître tous les 20 tours. "
+"C'est pourquoi vous terminerez rarement un scénario sans perte."
 
 #. [topic]: id=saveload
 #: data/core/help.cfg:297
+#, fuzzy
 msgid ""
 "Small risks build up for your non-hero units too. While the story and "
 "dialogue usually aim to give you some emotional bond with your troops, the "
@@ -3121,9 +3069,16 @@ msgid ""
 "them in future scenarios. Your battle plan should distribute the risks based "
 "on which troops you want to recall later."
 msgstr ""
+"Vos unités non héroïques rencontre aussi des difficultés. Si l'histoire et  "
+"les dialogues visent à créer un lien avec vos troupes, les mécanismes du jeu "
+"récompensent le fait de se rappeler que ce n'est qu'un jeu - il y a rarement "
+"de pénalité si ces unités périssent, si ce n'est l'impossibilité de les "
+"rappeler dans les scénarios suivants. Votre plan de bataille doit répartir "
+"les risques en fonction des troupes que vous souhaitez pouvoir rappeler."
 
 #. [topic]: id=saveload
 #: data/core/help.cfg:299
+#, fuzzy
 msgid ""
 "The difficulty levels are balanced assuming that the player won’t save-load. "
 "In the mainline campaigns, harder difficulties generally have more enemies "
@@ -3131,6 +3086,12 @@ msgid ""
 "assuming that the player will be able to train enough troops to cope with "
 "losing some level two or level three units."
 msgstr ""
+"Les niveaux de difficulté sont équilibrés en partant du principe que les "
+"joueurs ne vont pas sauvegarder/charger. Dans les campagnes officielles, les "
+"niveaux les plus haut ont souvent plus d'ennemis et donc plus de point "
+"d'expérience possible; elles seront équilibrées si le joueur peut recruter "
+"assez d'unités pour faire face à la perte de quelques unités de niveau 2 ou "
+"3."
 
 #. [topic]: id=saveload
 #: data/core/help.cfg:301
@@ -3144,10 +3105,8 @@ msgid ""
 "That said, it’s a game; the best way to play it is whichever way gives you "
 "the most enjoyment."
 msgstr ""
-"\n"
-"\n"
 "Cela dit, Wesnoth reste un jeu ; la meilleure façon d'y jouer est celle qui "
-"vous procure le plus d'amusement."
+"vous amuse le plus."
 
 #. [topic]: id=whylost
 #: data/core/help.cfg:308
@@ -3278,13 +3237,13 @@ msgstr ""
 "niveau facile, les campagnes supposent que vous avez de l'<italic>text='or "
 "restant'</italic> et quelques unités avancées dans votre liste de rappel. "
 "(Ces concepts sont expliqués dans le tutoriel).Si vous gagnez un scénario en "
-"perdant la plupart de vos unités avancées et de votre or, les scénarios "
+"perdant la plupart de vos unités avancées et votre or, les scénarios "
 "suivants seront très difficiles à passer, même pour un joueur expérimenté. "
 "Si vous vous trouvez dans cette situation, vous pouvez essayer de retourner "
-"en arrière d'un scénario ou deux pour vaincre de façon plus convaincante, ou "
+"en arrière d'un scénario ou deux pour vaincre de façon plus probante, ou "
 "bien de réduire la difficulté. (Cependant, souvenez-vous que "
-"<italic>text='certaines'</italic> pertes sont attendues, spécialement lors "
-"des niveaux difficiles."
+"<italic>text='certaines'</italic> pertes sont attendues, surtout dans les "
+"niveaux difficiles."
 
 #. [topic]: id=whylost
 #: data/core/help.cfg:323
@@ -3684,19 +3643,24 @@ msgstr ""
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:382
+#, fuzzy
 msgid "Orbs and ellipses"
-msgstr ""
+msgstr "Orbes et ellipses"
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:383
+#, fuzzy
 msgid ""
 "There are colored indicators above the energy bars of some units, consisting "
 "of a colored orb (and sometimes a <ref>dst='crowns' text='crown'</ref>)."
 msgstr ""
+"Il y a des indicateurs au dessus de la barre d'énergie de certaines unités, "
+"une orbe colorée (et parfois une <ref>dst='crowns' text='couronne'</ref>)."
 
 #. [topic]: id=orbs
 #. The help page has a set of images above this paragraph, in the same order as the bullet points
 #: data/core/help.cfg:395
+#, fuzzy
 msgid ""
 "The orbs show whether the unit can move or attack. The statuses and their "
 "standard colors are:\n"
@@ -3722,6 +3686,31 @@ msgid ""
 "• Enemy units normally don’t have orbs, however these can be enabled in the "
 "advanced preference “Customize orb colors”."
 msgstr ""
+"Les orbes montre quand une unité peut se déplacer ou attaquer. Leur statuts "
+"et leurs couleurs standards sont : • <bold>text='vert'</bold> Si l'unité n'a "
+"ni bougé ni attaqué à ce tour.\n"
+"• <bold>text='Jaune'</bold> Si l'unité à bougé (ou attaqué), et peut encore "
+"bouger. Elle peut aussi être capable de bouger plus loin.\n"
+"• <bold>text='Rouge'</bold> Si l'unité ne peut plus se déplacer ni attaquer "
+"ce tour.\n"
+"    • Rouge est utilisé aussi après la commande \"finir le tour de l'unité"
+"\", et,\n"
+"    • quand une unité est au milieu d'un mouvement multi-turn (il lui a été "
+"demandé de se déplacer plus loin qu'elle pouvait pour ce tour).\n"
+"• <bold>text='Rouge et jaune'</bold>Si l'unité s'est déplacée (ou a "
+"attaqué), peut encore bouger mais ne peut plus attaquer.\n"
+"    • Cela peut arriver dans certaines campagnes avec des évenements ou "
+"capacités spécifique, par exemple la capacité <italic>text='disengage'</"
+"italic> dans la campagne <italic>text='Sous les soleils brulants'</italic>.\n"
+"• <bold>text='Bleue'</bold> pour les unités alliées, en dehors du tour de "
+"celui-ci.\n"
+"    •Durant le tour de l'allié, ses unités auront les orbes de couleurs "
+"correspondantes à leurs mouvements, cependant leurs mouvements et l'orbe "
+"correspondante ne s'afficheront pas forcément en temps réel comme expliqué "
+"dans <ref>dst='shroud_and_fog' text='Voile et brouillard de guerre'</ref>.\n"
+"• Normalement, les unités ennemies n'ont pas d'orbes, mais il est possible "
+"de les activer dans les options avancées \"Personnaliser les couleurs des "
+"orbes\". "
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:407
@@ -3738,14 +3727,19 @@ msgstr ""
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:410
+#, fuzzy
 msgid ""
 "A team-colored shape is drawn on the ground under each unit. This is called "
 "the “ellipse”, although some units’ ellipses are not elliptical."
 msgstr ""
+"Une forme au couleur de l'équipe est dessinée sur le sol sous chaque unité. "
+"Elle est appelée \"ellipse\" quand bien même certaines ne soient pas de "
+"forme elliptique. "
 
 #. [topic]: id=orbs
 #. The help page has a set of images above this paragraph, in the same order as the bullet points
 #: data/core/help.cfg:421
+#, fuzzy
 msgid ""
 "• Most units have a circular ellipse.\n"
 "• Units that can recruit have a seven-pointed star.\n"
@@ -3756,23 +3750,38 @@ msgid ""
 "• Some campaigns start with a level zero leader. Able to recruit but lacking "
 "a ZoC, these units have a broken outline version of the seven-pointed star."
 msgstr ""
+"• La plupart des unités on une ellipse circulaire.\n"
+"• Les unités qui peuvent recruter ont une étoile à 7 branches.\n"
+"• <ref>dst='crowns' text='Héros'</ref> ont une variante de l'étoile à 7 "
+"branches, ces unités ne peuvent pas recruter.\n"
+"• Les unités sans <ref>dst='movement' text='zone de contrôle'</ref> ont une "
+"ellipse pointillée.\n"
+"• Certaine campagnes commence avec un chef de niveau zéro. Capable de "
+"recruter mais sans zone de contrôle, ces unités ont une version pointillée "
+"de l'étoile à 7 branches."
 
 #. [topic]: id=crowns
 #: data/core/help.cfg:432
+#, fuzzy
 msgid "Crowns and loyal markers"
-msgstr ""
+msgstr "Marqueurs couronnes et loyal."
 
 #. [topic]: id=crowns
 #: data/core/help.cfg:433
+#, fuzzy
 msgid ""
 "Some units have an additional marker superimposed on their <ref>dst='orbs' "
 "text='orb'</ref>, and a corresponding shape to their <ref>dst='orbs' "
 "text='ellipses'</ref>:"
 msgstr ""
+"Certaines unités ont un marqueur supplémentaire superposé sur leur "
+"<ref>dst='orbs' text='orbe'</ref>, et une forme correspondante pour leur "
+"<ref>dst='orbs' text='ellipses'</ref>:"
 
 #. [topic]: id=crowns
 #. The help page has a set of images above this paragraph, in the same order as the first set of bullet points, showing what the "loyal icon" is and the difference between "silver" and "blueish-silver".
 #: data/core/help.cfg:448
+#, fuzzy
 msgid ""
 "• Leaders are shown with a <bold>text='gold crown'</bold>.\n"
 "• Heroes have a <bold>text='blueish-silver crown'</bold>.\n"
@@ -3794,6 +3803,27 @@ msgid ""
 "campaign, assuming it doesn’t end immediately.\n"
 "• These units will never occur as random recruits."
 msgstr ""
+"•Les meneurs sont représentés avec une<bold>text='couronne d'or'</bold>.\n"
+"• Les héros ont une <bold>text='couronne bleu-argent'</bold>.\n"
+"• les meneurs secondaires sont représentés avec une <bold>text='couronne "
+"d'argent'</bold>.\n"
+"• <ref>dst='traits_loyal' text='unités loyales'</ref> ont "
+"les<bold>text='icône loyale'</bold>.\n"
+"\n"
+"Parmi ces catégories, seuls les meneurs sont intégrés dans les règles de "
+"base du jeu. Les autres se trouvent dans les campagnes, et sont des "
+"personnages qui font partie de la narration. Les règles exactes les "
+"concernant sont définies par leur campagne, qui peut s'écarter des attentes "
+"standard à leur égard : \n"
+"\n"
+"• La mort d'un héros entraîne une défaite immédiate..\n"
+"• .La mort d'un meneur secondaire n'entraîne pas de défaite immédiate, même "
+"s'il peut recruter.\n"
+"• Toutes ces unités ont l'avantage principal du trait loyal, à savoir "
+"qu'elles ne coûtent rien en entretien.\n"
+"• Perdre l'une de ces unités crée un désavantage pour le reste de la "
+"campagne, si elle ne s'arrête pas aussitôt.\n"
+"• Ces unité ne seront jamais recrutées par hasard."
 
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:466
@@ -4816,6 +4846,14 @@ msgid ""
 "supplied.\n"
 "\n"
 msgstr ""
+"\n"
+"Sélectionne le contrôle d'un camp entre humain et IA. Le second paramètre "
+"peut-être \"on\" pour donner le contrôle du camp à un humain, \"off\" pour "
+"le donner à l'IA, ou \"full\" pour que le tour de l'IA soit le même que le "
+"tour d'un autre joueur. Si aucun second paramètre n'est  défini, il bascule "
+"entre \"on\" et \"off\". Si aucun paramètre n'est défini, le camp par défaut "
+"est celui du joueur actif.\n"
+"\n"
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:691
@@ -5298,7 +5336,7 @@ msgstr ""
 #. [chance_to_hit]: id=diversion
 #: data/core/macros/abilities.cfg:145
 msgid "diversion"
-msgstr ""
+msgstr "Diversion"
 
 #. [chance_to_hit]: id=diversion
 #: data/core/macros/abilities.cfg:146
@@ -5431,15 +5469,16 @@ msgstr ""
 
 #. [hides]: id=burrow
 #: data/core/macros/abilities.cfg:302
+#, fuzzy
 msgid "burrow"
-msgstr ""
+msgstr "enfouissement"
 
 #. [hides]: id=burrow
 #: data/core/macros/abilities.cfg:303
 #, fuzzy
 #| msgid "female^slow"
 msgid "female^burrow"
-msgstr "lente"
+msgstr "enfouissement"
 
 #. [hides]: id=burrow
 #: data/core/macros/abilities.cfg:304
@@ -5611,8 +5650,9 @@ msgstr ""
 
 #. [chance_to_hit]: id=deflect
 #: data/core/macros/abilities.cfg:489
+#, fuzzy
 msgid "deflect"
-msgstr ""
+msgstr "Esquive"
 
 #. [chance_to_hit]: id=deflect
 #: data/core/macros/abilities.cfg:490
@@ -5629,10 +5669,13 @@ msgstr ""
 
 #. [chance_to_hit]: id=deflect
 #: data/core/macros/abilities.cfg:491
+#, fuzzy
 msgid ""
 "This unit’s defensive techniques reduce the chance of a successful enemy "
 "attack."
 msgstr ""
+"Les techniques défensives de cette unité réduit les chances de réussite "
+"d'une attaque ennemie."
 
 #. [chance_to_hit]: id=magical
 #: data/core/macros/abilities.cfg:505
@@ -5672,21 +5715,26 @@ msgstr ""
 
 #. [damage]: id=absorb
 #: data/core/macros/abilities.cfg:542
+#, fuzzy
 msgid "absorb"
-msgstr ""
+msgstr "Amorti"
 
 #. [damage]: id=absorb
 #: data/core/macros/abilities.cfg:543
+#, fuzzy
 msgid ""
 "This attack puts the unit in good defensive position, and it absorbs some of "
 "the damage dealt by an enemy strike."
 msgstr ""
+"Cette attaque met l'unité en défense et amorti une partie des dommages "
+"infligés par une frappe ennemie.  "
 
 #. [damage]: id=absorb
 #: data/core/macros/abilities.cfg:544
+#, fuzzy
 msgid ""
 "This unit can block enemy strikes, so that it takes reduced damage when hit."
-msgstr ""
+msgstr "Cette unité pare les coups ennemi et réduit les dommages subis. "
 
 #. [drains]: id=drains
 #: data/core/macros/abilities.cfg:556
@@ -7108,6 +7156,7 @@ msgstr "Elfes"
 
 #. [race]: id=elf
 #: data/core/units.cfg:111
+#, fuzzy
 msgid ""
 "Compared to humans, elves are somewhat taller, more agile but less sturdy. "
 "They have slightly pointy ears, pale skin and usually blond hair. Few "
@@ -7172,6 +7221,71 @@ msgid ""
 "tradition, in both Wesmere and Lintanir, an enchantress from the order of "
 "elven mystics is also called upon to facilitate the transition of power."
 msgstr ""
+"Comparés aux humains, les elfes sont un peu plus grand, plus agile mais "
+"moins robustes. Ils ont des oreilles pointues, une peau pale et en général "
+"les cheveux blonds. Il n'y a pas de plus grande différence entre les elfes "
+"et les humains que leur étonnante longévité - la plupart, sauf en cas de "
+"maladie, accident ou guerre, vivent au moins deux siècles. Bien que certains "
+"elfes, possédant une grande aptitude à la magie, soient connus pour vivre "
+"plus longtemps, la plupart dépérissent autour des 250, 300 ans et succombent "
+"rapidement ensuite.\n"
+"\n"
+"La plupart des elfes ont une affection profonde pour la nature sauvage et ne "
+"sont pas à l'aise dans les lieux ouverts, sans végétaux. Ils vivent "
+"principalement dans les forêts du Grand Continent, la forêt d'Aethen dans le "
+"sud-ouest, Wesmere dans le nord ouest, et la grande forêt du nord que borde "
+"au sud la forêt de Lintanir.\n"
+"\n"
+"Les elfes sont la plus ancienne race du continent, à l'exception peut-être "
+"des trolls. Nombres de leurs monuments ne peuvent être datés avec certitude, "
+"mais sont, sans aucun doutes, présents depuis plusieurs millénaires.\n"
+"\n"
+"<header>text='Magie</header>\n"
+"Bien que les elfes soient des créatures bien différentes du légendaire "
+"peuple des fées, leur magie à un lien avec lui et est la source de leurs "
+"sens exceptionnellement aiguisés et de leur longévité.  La magie des elfes "
+"se divisent en deux voies, l'une se concentre sur la manipulation du monde "
+"terrestre ou naturel, l'autre sur la divination dans le plan des arcanes. "
+"Plus commune est la voie de l'altération corporelle, plus tangible que les "
+"effets de son pendant dans les arcanes. Bien que la magie naturelle elfique "
+"ne soit pas adaptée au combat, sa puissante capacité à exploiter les "
+"énergies terrestres pour nourrir et protéger est la principale raison de "
+"l'efficacité des soins elfiques ainsi que de la beauté et de la vitalité de "
+"leurs forêts. \n"
+"\n"
+"Ceux qui suivent la voie mystique sont également appréciés des autres elfes, "
+"mais leur motivations et capacités ne sont pas toujours comprises en dehors "
+"de leur ordre. Ceux qui vont au plus loin dans cette voie prennent plus de "
+"traits féérique, gagnent une extraordinaire perception et longévité, mais "
+"deviennent aussi plus sensible et peuvent même être brûlés en présence de "
+"fer.\n"
+"\n"
+"<header>text='Culture'</header>\n"
+"Les elfes passent la plupart grande partie de leur temps à affuter leurs "
+"compétences. Ceux qui ne sont pas disciples d'un art magique consacrent leur "
+"temps à s'entrainer, souvent dans un but sportif. En conséquence, les elfes "
+"excellent en archerie, une compétence particulièrement utile et appréciée "
+"pour la guerre. Ce sont aussi des musiciens renommés, particulièrement doué "
+"pour les instruments à vent et à cordes pincées dans de petits ensembles. "
+"Les harpes Aeolian de la forêt d'Aethen, par exemple, sont fabriquées à "
+"partir du bois fin d'if des elfes et sont réputées pour leur son doux et "
+"léger. \n"
+"\n"
+"<header>text='Société'</header>\n"
+"La société elfe est en gros, divisée en 3 factions : une pseudo-militaire "
+"responsable de la défense des forêts, les paisibles civils, en général "
+"artisans et artistes, et soignants et mystiques qui maintiennent le lien des "
+"elfes avec faërie. Les nobles, responsables de la gouvernance de ces "
+"différentes facettes, sont considérées comme des serviteurs de l'ordre "
+"social général plutôt que strictement des dirigeants. Le protocole de "
+"selection de ceux-ci différe des différends conclave elfes, avec le conseil "
+"de gouvernance de Wesmere - Le Ka'lian - élu et la noblesse de Lintanir "
+"généralement héritées.\n"
+"\n"
+"En période de conflit, la hiérarchie du commandement est plus accomodante, "
+"l'aristocratie ordinaire s'en remettant aux maréchaux plus enclins à la "
+"guerre. Par tradition, à Wesmere comme à Lintanir, une enchanteresse de "
+"l'ordre des mystiques est appelée pour faciliter la transition du pouvoir."
 
 #. [race]: id=falcon
 #: data/core/units.cfg:137
@@ -7297,24 +7411,25 @@ msgstr ""
 #, fuzzy
 #| msgid "race^Wose"
 msgid "race^Horse"
-msgstr "Wose"
+msgstr "Cheval"
 
 #. [race]: id=horse
 #: data/core/units.cfg:184
 #, fuzzy
 #| msgid "race+female^Ogre"
 msgid "race+female^Horse"
-msgstr "Ogresse"
+msgstr "Jument"
 
 #. [race]: id=horse
 #: data/core/units.cfg:185
 #, fuzzy
 #| msgid "race^Woses"
 msgid "race^Horses"
-msgstr "Woses"
+msgstr "Chevaux"
 
 #. [race]: id=horse
 #: data/core/units.cfg:186
+#, fuzzy
 msgid ""
 "Domesticated horses come in many shapes and sizes, from mighty war chargers, "
 "to sturdy draught horses or agile stock horses.  While they are more fragile "
@@ -7326,6 +7441,17 @@ msgid ""
 "Winged horses, man-horse hybrids, and ghost horses have made their way into "
 "written history, though few can honestly claim to have seen such things."
 msgstr ""
+"Les chevaux domestiqués se présentent sous de nombreuses formes et tailles, "
+"qu'il s'agisse de puissants chevaux de guerre, de robustes chevaux de trait "
+"ou d'agiles chevaux de course.  Bien qu'ils soient plus fragiles que de "
+"nombreuses bêtes, leur vitesse et leur ruse permettent aux chevaux sauvages "
+"de prospérer dans la nature, auprès de leurs congénères.\n"
+"\n"
+"Les chevaux ont joué un rôle important dans de nombreuses civilisations.Il "
+"n'est donc pas surprenant que de nombreux mythes et histoires leur soient "
+"consacrés.  Les chevaux ailés, les hybrides homme-cheval et les chevaux "
+"fantômes ont fait leur chemin dans l'histoire écrite, bien que peu de gens "
+"puissent honnêtement prétendre avoir vu de telles choses."
 
 #. [race]: id=human
 #: data/core/units.cfg:203
@@ -8451,12 +8577,14 @@ msgid "Parse error when parsing help text:"
 msgstr "Erreur d'analyse lors de la lecture du texte d'aide : "
 
 #: src/help/help_topic_generators.cpp:63
+#, fuzzy
 msgid "Best of"
-msgstr ""
+msgstr "Le meilleur"
 
 #: src/help/help_topic_generators.cpp:63
+#, fuzzy
 msgid "Worst of"
-msgstr ""
+msgstr "Le pire"
 
 #: src/help/help_topic_generators.cpp:156
 msgid "Base Terrain: "
@@ -8469,8 +8597,9 @@ msgid "Movement properties: "
 msgstr "Coût des mouvements"
 
 #: src/help/help_topic_generators.cpp:180
+#, fuzzy
 msgid "Defense properties: "
-msgstr ""
+msgstr "Caractéristiques de défense : "
 
 #: src/help/help_topic_generators.cpp:260
 #, fuzzy

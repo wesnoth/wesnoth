@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: Wesnoth_Lib-1.12\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2021-06-23 11:42-0400\n"
-"PO-Revision-Date: 2021-07-06 11:54+0200\n"
+"PO-Revision-Date: 2021-09-17 06:56+0200\n"
 "Last-Translator: Clémence\n"
 "Language-Team: French <wesnothfr@lists.tuxfamily.org>\n"
 "Language: fr\n"
@@ -785,6 +785,11 @@ msgid ""
 "defense and movement costs are purely based on the unit’s stats for "
 "<italic>text='Fungus'</italic>."
 msgstr ""
+"Les contes des nains décrivent différents types de champignons — avec "
+"certains types, la difficulté de se mouvoir sur un sol spongieux n'a aucun "
+"lien avec le sol en dessous, même lorsque le sol est encore visible. Les "
+"coûts de déplacement et de défense sont uniquement basés sur les "
+"statistiques de l'unité pour le terrain <italic>text='Champignon'</italic>."
 
 #. [terrain_type]: id=fungus_beam_old
 #: data/core/terrain.cfg:1028
@@ -2429,10 +2434,8 @@ msgstr "Se connecter"
 
 #. [label]
 #: data/gui/window/addon_license_prompt.cfg:39
-#, fuzzy
-#| msgid "addons_order^Type ($order)"
 msgid "addons_server^Terms"
-msgstr "Type ($order)"
+msgstr "Conditions"
 
 #. [label]: id=message
 #: data/gui/window/addon_license_prompt.cfg:54
@@ -2440,6 +2443,8 @@ msgid ""
 "Before uploading content to this server, you must accept the following "
 "distribution terms by choosing “I Agree”."
 msgstr ""
+"Avant d'envoyer du contenu à ce serveur, vous devez accepter les conditions "
+"de distribution suivantes en choisissant « J’accepte »"
 
 #. [button]: id=ok
 #: data/gui/window/addon_license_prompt.cfg:103
@@ -2543,14 +2548,12 @@ msgstr "Aucune"
 #. [label]
 #: data/gui/window/addon_manager.cfg:672 data/gui/window/addon_manager.cfg:791
 msgid "Tags:"
-msgstr ""
+msgstr "Étiquettes :"
 
 #. [text_box]: id=filter
 #: data/gui/window/addon_manager.cfg:725
-#, fuzzy
-#| msgid "Filters on addon description, version, type or author."
 msgid "Filters on addon description, version, type or author"
-msgstr "Filtre sur les descriptions, versions , types ou auteurs d'extensions."
+msgstr "Filtre sur les descriptions, versions , types ou auteurs d'extensions"
 
 #. [label]
 #: data/gui/window/addon_manager.cfg:738
@@ -3644,7 +3647,7 @@ msgstr "Cache :"
 #. [grid]
 #: data/gui/window/game_version.cfg:139
 msgid "Logs:"
-msgstr ""
+msgstr "Journaux :"
 
 #. [button]: id=open_stderr
 #: data/gui/window/game_version.cfg:164
@@ -3714,7 +3717,7 @@ msgstr "Copier ce rapport dans le presse-papier"
 #. [label]
 #: data/gui/window/gamestate_inspector.cfg:16
 msgid "inspector tree item^•"
-msgstr ""
+msgstr "•"
 
 #. [label]
 #: data/gui/window/gamestate_inspector.cfg:94
@@ -3909,7 +3912,7 @@ msgstr "Préférences"
 #. [button]: id=view_match_history
 #: data/gui/window/lobby_main.cfg:516
 msgid "Match History"
-msgstr ""
+msgstr "Historique des matchs"
 
 #. [button]: id=quit
 #: data/gui/window/lobby_main.cfg:533 data/gui/window/lobby_main.cfg:627
@@ -5349,7 +5352,7 @@ msgstr ""
 #. [column]
 #: data/gui/window/statistics_dialog.cfg:576
 msgid "Hits"
-msgstr ""
+msgstr "attaques"
 
 #. [column]
 #: data/gui/window/statistics_dialog.cfg:579
@@ -5737,6 +5740,8 @@ msgid ""
 "Use an absolute path, or a relative path that starts with a period and a "
 "backslash"
 msgstr ""
+"Utilise un chemin absolu ou relatif qui commence par un point et une barre "
+"oblique"
 
 #. TRANSLATORS: translate the part inside <...> only
 #: src/filesystem.cpp:703 src/filesystem.cpp:724
@@ -5748,6 +5753,8 @@ msgid ""
 "Use absolute paths. Relative paths are deprecated because they are "
 "interpreted relative to $HOME"
 msgstr ""
+"Utilisez des chemin absolus. Les chemins relatifs sont dépréciés car ils "
+"sont interprétés relativement à la variable $HOME"
 
 #. TRANSLATORS: This is the language code which will be used
 #. to store and fetch localized non-textual resources, such as images,
@@ -5877,11 +5884,11 @@ msgstr "Le texte a une taille de police de 0."
 
 #: src/gui/core/canvas.cpp:834
 msgid "Area to draw has negative size"
-msgstr ""
+msgstr "L'aire à dessiner a une taille négative"
 
 #: src/gui/core/canvas.cpp:836
 msgid "Area to draw is larger than widget size"
-msgstr ""
+msgstr "L'aire à dessiner est plus grande que le widget"
 
 #: src/gui/core/widget_definition.cpp:30
 msgid "No state or draw section defined."
@@ -6019,21 +6026,21 @@ msgstr "Date d'envoi initiale ($datelike_order)"
 
 #: src/gui/dialogs/addon/manager.cpp:222
 msgid "addon_tag^Cooperative"
-msgstr ""
+msgstr "Coopératif"
 
 #. TRANSLATORS: tooltip in the drop-down menu for filtering add-ons
 #: src/gui/dialogs/addon/manager.cpp:224
 msgid "addon_tag^All human players are on the same team, versus the AI"
-msgstr ""
+msgstr "Tous les joueurs humains dans la même équipe, contre l'IA"
 
 #: src/gui/dialogs/addon/manager.cpp:225
 msgid "addon_tag^Cosmetic"
-msgstr ""
+msgstr "Cosmétique"
 
 #. TRANSLATORS: tooltip in the drop-down menu for filtering add-ons
 #: src/gui/dialogs/addon/manager.cpp:227
 msgid "addon_tag^These make the game look different, without changing gameplay"
-msgstr ""
+msgstr "Modifie l'apparence du jeu sans changer les règles"
 
 #: src/gui/dialogs/addon/manager.cpp:228
 msgid "addon_tag^Difficulty"
@@ -6042,11 +6049,11 @@ msgstr "Difficulté"
 #. TRANSLATORS: tooltip in the drop-down menu for filtering add-ons
 #: src/gui/dialogs/addon/manager.cpp:230
 msgid "addon_tag^Can make campaigns easier or harder"
-msgstr ""
+msgstr "Peut rendre les campagnes plus faciles ou plus difficiles"
 
 #: src/gui/dialogs/addon/manager.cpp:231
 msgid "addon_tag^RNG"
-msgstr ""
+msgstr "RNG"
 
 #. TRANSLATORS: tooltip in the drop-down menu for filtering add-ons
 #: src/gui/dialogs/addon/manager.cpp:233
@@ -6054,24 +6061,25 @@ msgid ""
 "addon_tag^Modify the randomness in the combat mechanics, or remove it "
 "entirely"
 msgstr ""
+"Modifie l'aléatoire dans les mécanismes de combat, ou l'enlève complètement"
 
 #: src/gui/dialogs/addon/manager.cpp:234
 msgid "addon_tag^Survival"
-msgstr ""
+msgstr "Survie"
 
 #. TRANSLATORS: tooltip in the drop-down menu for filtering add-ons
 #: src/gui/dialogs/addon/manager.cpp:236
 msgid "addon_tag^Fight against waves of enemies"
-msgstr ""
+msgstr "Repousser des vagues d'ennemis"
 
 #: src/gui/dialogs/addon/manager.cpp:237
 msgid "addon_tag^Terraforming"
-msgstr ""
+msgstr "Terraformation"
 
 #. TRANSLATORS: tooltip in the drop-down menu for filtering add-ons
 #: src/gui/dialogs/addon/manager.cpp:239
 msgid "addon_tag^Players can change the terrain"
-msgstr ""
+msgstr "Les joueurs peuvent modifier le terrain"
 
 #: src/gui/dialogs/addon/manager.cpp:262 src/gui/widgets/addon_list.cpp:103
 msgid "addon_state^Not installed"
@@ -8137,6 +8145,17 @@ msgid ""
 msgstr ""
 "La clef « $deprecated_key » a été remplacée par « $key ». « $deprecated_key "
 "» ne sera plus maintenue à partir de la version $removal_version."
+
+#~ msgid "Data Migration"
+#~ msgstr "Migration de données"
+
+#~ msgid ""
+#~ "Choose which version of Wesnoth to import your data from.\n"
+#~ "Some settings will not take effect until Wesnoth is restarted."
+#~ msgstr ""
+#~ "Choisissez la version de Wesnoth à partir de laquelle importer vos "
+#~ "données.\n"
+#~ "Certains réglages ne prendront pas effet avant un redémarrage de Wesnoth."
 
 #~ msgid "Multiplayer server login dialog"
 #~ msgstr "Fenêtre de connexion au serveur multijoueur"
