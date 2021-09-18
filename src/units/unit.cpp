@@ -2734,6 +2734,9 @@ std::string get_checksum(const unit& u)
 			config& child_spec = child.add_child("specials", spec);
 
 			child_spec.recursive_clear_value("description");
+			child_spec.recursive_clear_value("description_inactive");
+			child_spec.recursive_clear_value("name");
+			child_spec.recursive_clear_value("name_inactive");
 		}
 	}
 
