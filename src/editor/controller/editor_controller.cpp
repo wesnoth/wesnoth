@@ -877,6 +877,10 @@ bool editor_controller::do_execute_command(const hotkey::hotkey_command& cmd, in
 		// map specific
 		case HOTKEY_EDITOR_MAP_CLOSE:
 			context_manager_->close_current_context();
+			// Copy behaviour from when switching windows to always reset the active tool to the Paint Tool
+			// This avoids the situation of having a scenario-specific tool active in a map context which can cause a crash if used
+			// Not elegant but at least avoids a potential crash and is consistent with existing behaviour
+			toolkit_->hotkey_set_mouse_action(HOTKEY_EDITOR_TOOL_PAINT);
 			return true;
 		case HOTKEY_EDITOR_MAP_LOAD:
 			context_manager_->load_map_dialog();
