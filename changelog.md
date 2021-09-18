@@ -11,10 +11,12 @@
  ### Terrain
  ### Translations
    * Updated translations: Bulgarian, Chinese (Traditional), Czech, Finnish, French, Indonesian, Italian, Polish, Portuguese (Brazil), Russian, Spanish, Turkish
+   * gettext plural forms now have caret prefixes stripped as well (PR #6094).
  ### Units
  ### User interface
    * The names of the abilities used as specials appear in the attack prediction window with specials weapons
    * Added a prompt to allow migrating settings and redownloading add-ons used in a previous version of Wesnoth when starting a new versions for the first time.
+   * Ban expiry intervals in the MP UI now only mention the most significant time unit (e.g. "3 minutes" instead of "3 minutes, and 20 seconds") (PR #6097).
  ### WML Engine
  ### Miscellaneous and Bug Fixes
    * Fixed: keyboard input during the loading screen intermittently caused a crash (issue #4447)
