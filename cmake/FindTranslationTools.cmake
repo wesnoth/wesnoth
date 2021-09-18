@@ -26,6 +26,7 @@ set(GETTEXT_XGETTEXT_OPTIONS
 	--keyword=vgettext
 	--keyword=VGETTEXT
 	--keyword=_n:1,2
+	--keyword=N_n:1,2
 	--keyword=sngettext:1,2
 	--keyword=vngettext:1,2
 	--keyword=VNGETTEXT:1,2

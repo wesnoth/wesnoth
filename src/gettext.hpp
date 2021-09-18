@@ -99,3 +99,4 @@ namespace translation
 
 #define gettext_noop(String) String
 #define N_(String) gettext_noop (String)
+#define N_n(String1, String2) String1, String2
