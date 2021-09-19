@@ -444,19 +444,19 @@ void game_load::evaluate_summary_string(std::stringstream& str, const config& cf
 				}
 			}
 			else {
-				str << _("N/A");
+				str << "—";
 			}
 
 			break;
 		}
 		case game_classification::CAMPAIGN_TYPE::TUTORIAL:
 		case game_classification::CAMPAIGN_TYPE::TEST:
-			str << _("N/A");
+			str << "—";
 			break;
 		}
 	}
 	catch (const bad_enum_cast&) {
-		str << _("N/A");
+		str << "—";
 	}
 
 	if(!cfg_summary["version"].empty()) {
