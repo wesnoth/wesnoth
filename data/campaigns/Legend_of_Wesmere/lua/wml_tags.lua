@@ -53,7 +53,7 @@ function wesnoth.wml_actions.replace_map_section(cfg)
 		y = y + 1
 	end
 	local new_map = table.concat(t, '\n')
-	wesnoth.wml_actions.replace_map { map = new_map, expand = true, shrink = true }
+	wesnoth.wml_actions.replace_map { map_data = new_map, expand = true, shrink = true }
 end
 
 function wesnoth.wml_actions.unstore_left_behind_units(cfg)
