@@ -38,6 +38,7 @@
 #include "gui/dialogs/preferences_dialog.hpp"
 #include "gui/dialogs/screenshot_notification.hpp"
 #include "gui/dialogs/simple_item_selector.hpp"
+#include "language.hpp"
 #include "log.hpp"
 #include "preferences/game.hpp"
 //#define DEBUG_TOOLTIP
@@ -58,6 +59,8 @@
 
 #include <algorithm>
 #include <functional>
+
+#include <boost/algorithm/string/erase.hpp>
 
 static lg::log_domain log_config("config");
 #define ERR_CF LOG_STREAM(err, log_config)
@@ -310,6 +313,23 @@ void title_screen::pre_show(window& win)
 			gui2::show_error_message(e.what());
 		}
 	});
+
+	if(auto* lang_button = find_widget<button>(&win, "language", false, false); lang_button) {
+		const auto& locale = translation::get_effective_locale_info();
+		const auto& langs = get_languages(true);
+
+		auto lang_def = std::find_if(langs.begin(), langs.end(), [&](language_def const& lang) {
+			// Just assume everything is UTF-8 (it should be as long as we're called Wesnoth)
+			// and strip the charset from the Boost locale identifier.
+			const auto& boost_name = boost::algorithm::erase_first_copy(locale.name(), ".UTF-8");
+			// std::cerr << lang.localename << '/' << boost_name << '\n';
+			return lang.localename == boost_name;
+		});
+
+		// If somehow the locale doesn't match a known translation, use the
+		// locale identifier as a last resort
+		lang_button->set_label(lang_def != langs.end() ? lang_def->language.str() : locale.name());
+	}
 
 	//
 	// Preferences
