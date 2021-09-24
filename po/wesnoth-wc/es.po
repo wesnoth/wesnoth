@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2021-08-22 03:31 UTC\n"
-"PO-Revision-Date: 2021-09-23 10:34+0200\n"
+"PO-Revision-Date: 2021-09-24 13:24-0300\n"
 "Last-Translator: Pepe <donpepe1963@gmail.com>\n"
 "Language-Team: none\n"
 "Language: es\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.3\n"
+"X-Generator: Poedit 3.0\n"
 
 #. [advancement]: id=amla_default
 #: data/campaigns/World_Conquest/era/campaign/heroes.cfg:142
@@ -1759,10 +1759,8 @@ msgstr "nivel $level"
 
 #. [lua]: training.generate_message
 #: data/campaigns/World_Conquest/lua/game_mechanics/training.lua:143
-#, fuzzy
-#| msgid "$chance| chance to $arrow $desc"
 msgid "$chance| chance to $arrow $desc"
-msgstr "$chance| posibilidad de $arrow $desc"
+msgstr "$chance| posibilidad de $arrow $desc"
 
 #. [lua]: training.apply
 #: data/campaigns/World_Conquest/lua/game_mechanics/training.lua:219
@@ -2828,15 +2826,11 @@ msgstr "Aldea/Castillo: +5 defensa"
 
 #. [chance]
 #: data/campaigns/World_Conquest/resources/data/training.cfg:655
-#, fuzzy
-#| msgid ""
-#| "$terrain|: +$def| defense and full movement, +$res| resistance vs "
-#| "$dmg_type|"
 msgid ""
 "$terrain|: +$def| defense and full movement, +$res| resistance vs $dmg_type|"
 msgstr ""
-"$terrain|: +$def| defensa y movimiento completo, +$res| resistencia vs "
-"$dmg_type|"
+"$terrain|: +$def| defensa y movimiento completo, +$res|"
+" resistencia contra $dmg_type|"
 
 #. [chance]
 #: data/campaigns/World_Conquest/resources/data/training.cfg:684
@@ -2850,10 +2844,8 @@ msgstr "+movimientos defensa"
 
 #. [chance]
 #: data/campaigns/World_Conquest/resources/data/training.cfg:705
-#, fuzzy
-#| msgid "melee: optional charge"
 msgid "melee: optional charge"
-msgstr "cuerpo a cuerpo: ataque opcional"
+msgstr "cuerpo a cuerpo: ataque opcional"
 
 #. [chance]
 #: data/campaigns/World_Conquest/resources/data/training.cfg:730
@@ -3393,10 +3385,8 @@ msgid "Full movement on turn recruited or recalled"
 msgstr "Movimiento completo en turno al ser reclutado o reincorporado"
 
 #: data/campaigns/World_Conquest/resources/strings/effects.cfg:64
-#, fuzzy
-#| msgid "optional charge"
 msgid "optional charge"
-msgstr "ataque opcional"
+msgstr "ataque opcional"
 
 #: data/campaigns/World_Conquest/resources/strings/effects.cfg:67
 msgid "tenacity"
@@ -3408,16 +3398,12 @@ msgstr ""
 "Las vulnerabilidades de esta unidad se reducen a la mitad cuando se defiende."
 
 #: data/campaigns/World_Conquest/resources/strings/effects.cfg:73
-#, fuzzy
-#| msgid "free upkeep"
 msgid "free upkeep"
-msgstr "sin mantenimiento"
+msgstr "sin mantenimiento"
 
 #: data/campaigns/World_Conquest/resources/strings/effects.cfg:76
-#, fuzzy
-#| msgid "full movement"
 msgid "full movement"
-msgstr "movimiento completo"
+msgstr "movimiento completo"
 
 #: data/campaigns/World_Conquest/resources/strings/effects.cfg:79
 msgid "terrain^water"
@@ -3433,7 +3419,7 @@ msgstr "consumido por un ser vivo:"
 
 #: data/campaigns/World_Conquest/resources/strings/effects.cfg:88
 msgid "up to"
-msgstr ""
+msgstr "hasta"
 
 #: data/campaigns/World_Conquest/resources/strings/effects.cfg:91
 msgid "disengage"
