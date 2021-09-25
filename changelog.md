@@ -13,6 +13,7 @@
      * Avoid dehydration status icon persisting into the next scenario (issue #5687)
      * Correct Traveler’s Ring description (issue #6043)
  ### Editor
+   * Avoid rare crash situation after editing scenarios (issue #5883)
  ### Multiplayer
  ### Lua API
  ### Packaging
@@ -22,13 +23,12 @@
    * gettext plural forms now have caret prefixes stripped as well (PR #6094).
  ### Units
  ### User interface
+   * Steam cloud file is no longer listed in the Load Game dialog.
+   * Redefine green text in dialogs and tool-tips so they are no longer ‘too dark’ with recent Pango versions (issue #4348)
    * Gave the main menu's Language button a label again, now displaying the current language.
    * Tweaked margins around the main menu's bottom row.
  ### WML Engine
  ### Miscellaneous and Bug Fixes
-   * Steam cloud file is no longer listed in the Load Game dialog.
-   * Redefine green text in dialogs and tool-tips so they are no longer ‘too dark’ with recent Pango versions (issue #4348)
-   * Editor: Avoid rare crash situation after editing scenarios (issue #5883)
 
 ## Version 1.15.17
  ### Campaigns
