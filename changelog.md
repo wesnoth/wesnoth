@@ -12,6 +12,8 @@
     * gettext plural forms now have caret prefixes stripped as well (PR #6094).
  ### Units
  ### User interface
+    * Gave the main menu's Language button a label again, now displaying the current language.
+    * Tweaked margins around the main menu's bottom row.
  ### WML Engine
  ### Miscellaneous and Bug Fixes
 
