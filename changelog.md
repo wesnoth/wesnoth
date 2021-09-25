@@ -27,8 +27,10 @@
    * Redefine green text in dialogs and tool-tips so they are no longer ‘too dark’ with recent Pango versions (issue #4348)
    * Gave the main menu's Language button a label again, now displaying the current language.
    * Tweaked margins around the main menu's bottom row.
+   * Difficulty no longer displayed in the Load Game dialog when it is not relevant to a save file (issue #5321)
  ### WML Engine
  ### Miscellaneous and Bug Fixes
+   * Correct unit display adjustments on certain tiles when at zoom level other than 100% (issue #5974)
 
 ## Version 1.15.17
  ### Campaigns
