@@ -2,26 +2,41 @@
  ### Add-ons client
  ### Add-ons server
  ### Campaigns
+   * Delfador’s Memoirs
+     * S07: Clarified objectives (issue #5608)
    * Liberty
      * S06: Enforce failure condition for allied team (issue #6019)
+   * Northern Rebirth
+     * Give Eryssa’s side a consistent team color (issue #5375)
+   * The Rise of Wesnoth
+     * Remove time-runs-out lose condition for final scenario (issue #6109)
+   * Under the Burning Suns
+     * Avoid a few possibilities where the Dust Devil could speak (issue #4892)
+     * Avoid dehydration status icon persisting into the next scenario (issue #5687)
+     * Correct Traveler’s Ring description (issue #6043)
  ### Editor
  ### Multiplayer
  ### Lua API
  ### Packaging
  ### Terrain
  ### Translations
-   * Updated translations: British English, Bulgarian, Chinese (Traditional), Czech, Finnish, French, Indonesian, Italian, Polish, Portuguese (Brazil), Russian, Spanish, Turkish
+   * Updated translations: British English, Bulgarian, Chinese (Traditional), Czech, Finnish, French, Indonesian, Italian, Polish, Portuguese (Brazil), Russian, Spanish, Turkish.
    * gettext plural forms now have caret prefixes stripped as well (PR #6094).
  ### Units
  ### User interface
    * The names of the abilities used as specials appear in the attack prediction window with specials weapons
    * Added a prompt to allow migrating settings and redownloading add-ons used in a previous version of Wesnoth when starting a new versions for the first time.
    * Ban expiry intervals in the MP UI now only mention the most significant time unit (e.g. "3 minutes" instead of "3 minutes, and 20 seconds") (PR #6097).
+   * Gave the main menu's Language button a label again, now displaying the current language.
+   * Tweaked margins around the main menu's bottom row.
  ### WML Engine
  ### Miscellaneous and Bug Fixes
    * Fixed: keyboard input during the loading screen intermittently caused a crash (issue #4447)
    * AI: fixed custom synced commands not changing the game state
    * Messenger MAI: fixed bug of own units sometimes blocking the path to a waypoint for the messenger
+   * Steam cloud file is no longer listed in the Load Game dialog.
+   * Redefine green text in dialogs and tool-tips so they are no longer ‘too dark’ with recent Pango versions (issue #4348)
+   * Editor: Avoid rare crash situation after editing scenarios (issue #5883)
 
 ## Version 1.15.14
  ### Add-ons client
