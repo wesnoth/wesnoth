@@ -15,6 +15,7 @@
      * Avoid dehydration status icon persisting into the next scenario (issue #5687)
      * Correct Traveler’s Ring description (issue #6043)
  ### Editor
+   * Avoid rare crash situation after editing scenarios (issue #5883)
  ### Multiplayer
  ### Lua API
  ### Packaging
@@ -27,6 +28,8 @@
    * The names of the abilities used as specials appear in the attack prediction window with specials weapons
    * Added a prompt to allow migrating settings and redownloading add-ons used in a previous version of Wesnoth when starting a new versions for the first time.
    * Ban expiry intervals in the MP UI now only mention the most significant time unit (e.g. "3 minutes" instead of "3 minutes, and 20 seconds") (PR #6097).
+   * Steam cloud file is no longer listed in the Load Game dialog.
+   * Redefine green text in dialogs and tool-tips so they are no longer ‘too dark’ with recent Pango versions (issue #4348)
    * Gave the main menu's Language button a label again, now displaying the current language.
    * Tweaked margins around the main menu's bottom row.
  ### WML Engine
@@ -34,9 +37,6 @@
    * Fixed: keyboard input during the loading screen intermittently caused a crash (issue #4447)
    * AI: fixed custom synced commands not changing the game state
    * Messenger MAI: fixed bug of own units sometimes blocking the path to a waypoint for the messenger
-   * Steam cloud file is no longer listed in the Load Game dialog.
-   * Redefine green text in dialogs and tool-tips so they are no longer ‘too dark’ with recent Pango versions (issue #4348)
-   * Editor: Avoid rare crash situation after editing scenarios (issue #5883)
 
 ## Version 1.15.14
  ### Add-ons client
