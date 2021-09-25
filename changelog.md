@@ -32,11 +32,13 @@
    * Redefine green text in dialogs and tool-tips so they are no longer ‘too dark’ with recent Pango versions (issue #4348)
    * Gave the main menu's Language button a label again, now displaying the current language.
    * Tweaked margins around the main menu's bottom row.
+   * Difficulty no longer displayed in the Load Game dialog when it is not relevant to a save file (issue #5321)
  ### WML Engine
  ### Miscellaneous and Bug Fixes
    * Fixed: keyboard input during the loading screen intermittently caused a crash (issue #4447)
    * AI: fixed custom synced commands not changing the game state
    * Messenger MAI: fixed bug of own units sometimes blocking the path to a waypoint for the messenger
+   * Correct unit display adjustments on certain tiles when at zoom level other than 100% (issue #5974)
 
 ## Version 1.15.14
  ### Add-ons client
