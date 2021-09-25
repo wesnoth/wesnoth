@@ -394,13 +394,8 @@ std::pair<float, float> CVideo::get_dpi() const
 		// this multiplication.
 		//
 		// For more info see issue: https://github.com/wesnoth/wesnoth/issues/5019
-		SDL_version sdl_version;
-		SDL_GetVersion(&sdl_version);
 
-		const version_info sdl_version_info(sdl_version.major, sdl_version.minor, sdl_version.patch);
-		const version_info version_to_compare(2, 0, 12);
-
-		if (sdl_version_info >= version_to_compare) {
+		if(sdl_get_version() >= version_info{2, 0, 12}) {
 			float scale_factor = desktop::apple::get_scale_factor(window->get_display_index());
 			hdpi /= scale_factor;
 			vdpi /= scale_factor;
