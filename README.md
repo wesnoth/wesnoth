@@ -41,7 +41,7 @@ To build the game from source, see [INSTALL](/INSTALL.md) for instructions.
 Contributing
 ------------
 
-Wesnoth is most in need of skilled C++ developers (C++ 11 and later), however there are things that nearly anyone can help with from simpler tasks in C++, the Lua and WML used for content scripting, Python used by various external tools, and even things like play testing and giving feedback on updated campaigns.  Additionally, Wesnoth lacks art for a variety of unit animations - anyone who would be interested in lending a hand updating existing unit sprites or creating animations should take a look at the Art Forum as well as contact our current art director.
+Wesnoth is most in need of skilled C++ developers (C++14 and later), however there are things that nearly anyone can help with from simpler tasks in C++, the Lua and WML used for content scripting, Python used by various external tools, and even things like play testing and giving feedback on updated campaigns. Additionally, Wesnoth lacks art for a variety of unit animations - anyone who would be interested in lending a hand updating existing unit sprites or creating animations should take a look at the Art Forum as well as contact our current art director.
 
 See also: [CONTRIBUTING](/CONTRIBUTING.md)
 
@@ -57,7 +57,7 @@ Donations can be sent via [Liberapay](https://liberapay.com/Wesnoth) as well as 
 License
 -------
 
-All source code is licensed under the GNU GPL v2+.  Most art and music is also licensed under the GNU GPL v2+, however new contributions are now licensed under the Creative Commons BY-SA v4.0. For more detailed information on Wesnoth's licensing, see the wiki:
+All source code is licensed under the GNU GPL v2+. Most art and music is also licensed under the GNU GPL v2+, however new contributions are now licensed under the Creative Commons BY-SA v4.0. For more detailed information on Wesnoth's licensing, see the wiki:
 
   <https://wiki.wesnoth.org/Wesnoth:Copyrights>
 
