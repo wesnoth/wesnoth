@@ -19,7 +19,7 @@
  ### Packaging
  ### Terrain
  ### Translations
-   * Updated translations: British English, Bulgarian, Czech, French, Portuguese (Brazil), Russian, Spanish.
+   * Updated translations: British English, Bulgarian, Czech, French, Italian, Portuguese (Brazil), Russian, Spanish.
    * gettext plural forms now have caret prefixes stripped as well (PR #6094).
  ### Units
  ### User interface
