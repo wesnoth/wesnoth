@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2021-06-23 11:42-0400\n"
-"PO-Revision-Date: 2021-09-06 12:17-0300\n"
+"PO-Revision-Date: 2021-09-23 08:40-0300\n"
 "Last-Translator: Andrei Machado <andreisp.machado@yahoo.com>\n"
 "Language-Team: Portuguese - Brasil\n"
 "Language: pt_BR\n"
@@ -95,10 +95,8 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:22
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:61
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:91
-#, fuzzy
-#| msgid "This unit is capable of basic healing."
 msgid "This unit is capable of basic healing and slowing dehydration."
-msgstr "Esta unidade é capaz de curar."
+msgstr "Esta unidade é capaz de curar e previnir desidratação."
 
 #
 # File: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg, line: 44
@@ -212,16 +210,12 @@ msgstr ""
 # File: data/core/macros/special-notes.cfg, line: 20
 #. [heals]
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:97
-#, fuzzy
-#| msgid ""
-#| "This unit is capable of healing those around it, and curing them of "
-#| "poison."
 msgid ""
 "This unit is capable of healing those around it, slowing dehydration, and "
 "curing them of poison."
 msgstr ""
-"Esta unidade é capaz de curar aqueles ao seu redor, e também de remover "
-"envenenamento."
+"Esta unidade é capaz de curar aqueles ao seu redor, previnir desidratação, e "
+"também de remover envenenamento."
 
 #
 # File: data/core/macros/traits.cfg, line: 172
@@ -876,7 +870,7 @@ msgstr ""
 #. [topic]: id=editor_tool_scenery
 #: data/core/editor/help.cfg:145
 msgid "Item Tool (Scenery Tool)"
-msgstr ""
+msgstr "Ferramenta de Itens (Ferramenta de Decoração)"
 
 #. [topic]: id=editor_tool_scenery
 #: data/core/editor/help.cfg:146
@@ -963,7 +957,7 @@ msgid ""
 "<italic>text='[time_area]'</italic> tags to the scenario. Although the tag’s "
 "name implies time, it is now more generic and can be used for other purposes "
 "without needing to change the time-of-day schedule in the area."
-msgstr ""
+msgstr "Cronograma do dia na área"
 
 #. [topic]: id=editor_playlist
 #: data/core/editor/help.cfg:212
@@ -1115,7 +1109,7 @@ msgstr ""
 #. [topic]: id=editor_separate_events_file
 #: data/core/editor/help.cfg:297
 msgid "Using a separate file for WML events"
-msgstr ""
+msgstr "Usando um arquivo separado para eventos WML"
 
 #. [topic]: id=editor_separate_events_file
 #: data/core/editor/help.cfg:298
@@ -1187,10 +1181,8 @@ msgstr ""
 #. [topic]: id=editor_time_schedule
 #. Time of Day and Schedule Editor, please use a short string as it will be used in the left-hand pane of the help browser
 #: data/core/editor/help.cfg:345
-#, fuzzy
-#| msgid "Time Schedule Editor"
 msgid "ToD and Schedule Editor"
-msgstr "Editor de Período do Dia"
+msgstr "Editor de Período do Dia e Cronograma"
 
 #. [topic]: id=editor_time_schedule
 #: data/core/editor/help.cfg:346
@@ -3930,7 +3922,7 @@ msgstr ""
 #. [topic]: id=crowns
 #: data/core/help.cfg:432
 msgid "Crowns and loyal markers"
-msgstr "Coroas e marcadores de lealdade."
+msgstr "Coroas e marcadores de lealdade"
 
 #. [topic]: id=crowns
 #: data/core/help.cfg:433
@@ -5176,11 +5168,6 @@ msgstr ""
 # File: data/core/help.cfg, line: 874
 #. [topic]: id=general_commands
 #: data/core/help.cfg:694
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "Toggle the display of the current frames per second.\n"
-#| "\n"
 msgid ""
 "\n"
 "Toggle the display of the current frames per second. Also writes these "
@@ -5188,7 +5175,8 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"Alterna o mostrador do número de frames por segundo.\n"
+"Alterna o mostrador do número de frames por segundo. Também salva esses "
+"valores em um arquivo no diretório userdata.\n"
 "\n"
 
 #
@@ -6299,16 +6287,12 @@ msgstr ""
 # File: data/core/macros/abilities.cfg, line: 629
 #. [chance_to_hit]: id=deflect
 #: data/core/macros/abilities.cfg:490
-#, fuzzy
-#| msgid ""
-#| "When used offensively, this attack always has at least a 60% chance to "
-#| "hit."
 msgid ""
 "When used defensively, this attack reduces the opponent's chance to hit by "
 "10%."
 msgstr ""
-"Quando usado ofensivamente, esse ataque sempre tem pelo menos 60% de chance "
-"de acertar."
+"Quando usado defensivamente, esse ataque reduz a chance de acerto do "
+"oponente em 10%"
 
 #. [chance_to_hit]: id=deflect
 #: data/core/macros/abilities.cfg:491
@@ -8542,10 +8526,8 @@ msgstr ""
 # File: data/core/units.cfg, line: 322
 #. [race]: id=horse
 #: data/core/units.cfg:183
-#, fuzzy
-#| msgid "race^Wose"
 msgid "race^Horse"
-msgstr "Wose"
+msgstr "Cavalo"
 
 #
 # File: data/core/units.cfg, line: 242
@@ -8553,10 +8535,8 @@ msgstr "Wose"
 # File: data/core/units.cfg, line: 242
 #. [race]: id=horse
 #: data/core/units.cfg:184
-#, fuzzy
-#| msgid "race+female^Ogre"
 msgid "race+female^Horse"
-msgstr "Ogra"
+msgstr "Égua"
 
 #
 # File: data/core/units.cfg, line: 323
@@ -8564,10 +8544,8 @@ msgstr "Ogra"
 # File: data/core/units.cfg, line: 323
 #. [race]: id=horse
 #: data/core/units.cfg:185
-#, fuzzy
-#| msgid "race^Woses"
 msgid "race^Horses"
-msgstr "Woses"
+msgstr "Cavalos"
 
 #. [race]: id=horse
 #: data/core/units.cfg:186
