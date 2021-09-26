@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-08-21 23:31-0400\n"
+"POT-Creation-Date: 2021-09-25 21:03-0300\n"
 "PO-Revision-Date: 2005-08-10 16:44+0200\n"
 "Last-Translator: Mikel Olasagasti <hey_neken@mundurat.net>\n"
 "Language-Team: Basque\n"
@@ -2258,8 +2258,7 @@ msgstr ""
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
-#: data/gui/window/addon_auth.cfg:119 data/gui/window/core_dialog.cfg:227
-#: data/gui/window/custom_tod.cfg:431
+#: data/gui/window/addon_auth.cfg:119 data/gui/window/custom_tod.cfg:431
 #: data/gui/window/depcheck_select_new.cfg:151
 #: data/gui/window/edit_label.cfg:139 data/gui/window/edit_text.cfg:116
 #: data/gui/window/editor_edit_label.cfg:301
@@ -2289,7 +2288,7 @@ msgstr "Ados"
 #: data/gui/window/addon_uninstall_list.cfg:174
 #: data/gui/window/campaign_dialog.cfg:497
 #: data/gui/window/campaign_difficulty.cfg:234
-#: data/gui/window/core_dialog.cfg:240 data/gui/window/custom_tod.cfg:444
+#: data/gui/window/core_dialog.cfg:241 data/gui/window/custom_tod.cfg:444
 #: data/gui/window/depcheck_select_new.cfg:165
 #: data/gui/window/edit_label.cfg:153 data/gui/window/edit_text.cfg:130
 #: data/gui/window/editor_edit_label.cfg:315
@@ -2766,6 +2765,13 @@ msgstr ""
 #| msgid "Load Game"
 msgid "Load Core"
 msgstr "Jokua kargatu"
+
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
+#. [button]: id=ok
+#: data/gui/window/core_dialog.cfg:228 src/preferences/display.cpp:171
+#, fuzzy
+msgid "Select"
+msgstr "Dena hautatu"
 
 #. [button]: id=copy
 #. [button]: id=copy_
@@ -3819,7 +3825,7 @@ msgstr "Eraktutsi etiketa flotagarriak"
 #. [button]: id=language
 #. [label]
 #: data/gui/window/language_selection.cfg:41
-#: data/gui/window/title_screen.cfg:484
+#: data/gui/window/title_screen.cfg:486
 msgid "Language"
 msgstr ""
 
@@ -4669,7 +4675,7 @@ msgstr ""
 #. [widget]: id=label
 #: data/gui/window/mp_method_selection.cfg:46
 #: data/gui/window/preferences.cfg:365 data/gui/window/title_screen.cfg:252
-#: src/gui/dialogs/game_load.cpp:407
+#: src/gui/dialogs/game_load.cpp:395
 #, fuzzy
 msgid "Multiplayer"
 msgstr "jokalaria"
@@ -4773,7 +4779,7 @@ msgid "Advanced"
 msgstr "Aurreratua"
 
 #. [button]: id=about
-#: data/gui/window/preferences.cfg:419 data/gui/window/title_screen.cfg:463
+#: data/gui/window/preferences.cfg:419 data/gui/window/title_screen.cfg:465
 msgid "Display the game version and build information"
 msgstr ""
 
@@ -5625,7 +5631,7 @@ msgid "Quit the game"
 msgstr "Jokutik irten"
 
 #. [button]: id=language
-#: data/gui/window/title_screen.cfg:485
+#: data/gui/window/title_screen.cfg:487
 msgid "Change the language"
 msgstr "Hizkuntza aldatu"
 
@@ -6511,47 +6517,47 @@ msgstr ""
 msgid "The selected file is corrupt: "
 msgstr ""
 
-#: src/gui/dialogs/game_load.cpp:358
+#: src/gui/dialogs/game_load.cpp:357
 msgid "(Invalid)"
 msgstr ""
 
-#: src/gui/dialogs/game_load.cpp:398
+#: src/gui/dialogs/game_load.cpp:386
 msgid "Campaign: $campaign_name"
 msgstr ""
 
-#: src/gui/dialogs/game_load.cpp:410
+#: src/gui/dialogs/game_load.cpp:398
 #, fuzzy
 msgid "Tutorial"
 msgstr "Elkarrizketak"
 
-#: src/gui/dialogs/game_load.cpp:413
+#: src/gui/dialogs/game_load.cpp:401
 msgid "Test scenario"
 msgstr ""
 
-#: src/gui/dialogs/game_load.cpp:423
+#: src/gui/dialogs/game_load.cpp:411
 #, fuzzy
 msgid "Replay"
 msgstr "jokalaria"
 
-#: src/gui/dialogs/game_load.cpp:425
+#: src/gui/dialogs/game_load.cpp:413
 #, fuzzy
 msgid "Turn"
 msgstr "Bukatu txanda"
 
-#: src/gui/dialogs/game_load.cpp:427
+#: src/gui/dialogs/game_load.cpp:415
 #, fuzzy
 msgid "Scenario start"
 msgstr "Guda-guneko helburuak"
 
-#: src/gui/dialogs/game_load.cpp:430
+#: src/gui/dialogs/game_load.cpp:418
 msgid "Difficulty: "
 msgstr ""
 
-#: src/gui/dialogs/game_load.cpp:434
+#: src/gui/dialogs/game_load.cpp:463
 msgid "Version: "
 msgstr ""
 
-#: src/gui/dialogs/game_load.cpp:439
+#: src/gui/dialogs/game_load.cpp:468
 #, fuzzy
 #| msgid "Choose Resolution"
 msgid "Modifications: "
@@ -6580,7 +6586,7 @@ msgid "yes"
 msgstr "bai"
 
 #: src/gui/dialogs/game_version_dialog.cpp:105
-#: src/gui/dialogs/title_screen.cpp:195
+#: src/gui/dialogs/title_screen.cpp:198
 msgid "Version $version"
 msgstr ""
 
@@ -7070,11 +7076,11 @@ msgstr ""
 msgid "$count|× $name"
 msgstr ""
 
-#: src/gui/dialogs/title_screen.cpp:111 src/hotkey/hotkey_command.cpp:92
+#: src/gui/dialogs/title_screen.cpp:114 src/hotkey/hotkey_command.cpp:92
 msgid "Screenshot"
 msgstr "Pantaila argazkia"
 
-#: src/gui/dialogs/title_screen.cpp:410
+#: src/gui/dialogs/title_screen.cpp:430
 #, fuzzy
 #| msgid "Choose Resolution"
 msgid "Choose Test"
@@ -8281,11 +8287,6 @@ msgstr ""
 #: src/preferences/display.cpp:169
 msgid "Find Server Application"
 msgstr ""
-
-#: src/preferences/display.cpp:171
-#, fuzzy
-msgid "Select"
-msgstr "Dena hautatu"
 
 #: src/preferences/game.cpp:881
 msgid "[%H:%M]"

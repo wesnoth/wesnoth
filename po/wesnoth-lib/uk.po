@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.11\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-08-21 23:31-0400\n"
+"POT-Creation-Date: 2021-09-25 21:03-0300\n"
 "PO-Revision-Date: 2019-01-29 15:03+0200\n"
 "Last-Translator: AncientGeneral <greatgeneral12 {AT} gmail.com>\n"
 "Language-Team: \n"
@@ -2386,8 +2386,7 @@ msgstr "Пароль:"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
-#: data/gui/window/addon_auth.cfg:119 data/gui/window/core_dialog.cfg:227
-#: data/gui/window/custom_tod.cfg:431
+#: data/gui/window/addon_auth.cfg:119 data/gui/window/custom_tod.cfg:431
 #: data/gui/window/depcheck_select_new.cfg:151
 #: data/gui/window/edit_label.cfg:139 data/gui/window/edit_text.cfg:116
 #: data/gui/window/editor_edit_label.cfg:301
@@ -2417,7 +2416,7 @@ msgstr "Гаразд"
 #: data/gui/window/addon_uninstall_list.cfg:174
 #: data/gui/window/campaign_dialog.cfg:497
 #: data/gui/window/campaign_difficulty.cfg:234
-#: data/gui/window/core_dialog.cfg:240 data/gui/window/custom_tod.cfg:444
+#: data/gui/window/core_dialog.cfg:241 data/gui/window/custom_tod.cfg:444
 #: data/gui/window/depcheck_select_new.cfg:165
 #: data/gui/window/edit_label.cfg:153 data/gui/window/edit_text.cfg:130
 #: data/gui/window/editor_edit_label.cfg:315
@@ -2874,6 +2873,12 @@ msgstr "Копіювати цей лог до буфера обміну"
 #: data/gui/window/core_dialog.cfg:44
 msgid "Load Core"
 msgstr "Завантажити компоненти"
+
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
+#. [button]: id=ok
+#: data/gui/window/core_dialog.cfg:228 src/preferences/display.cpp:171
+msgid "Select"
+msgstr "Вибрати"
 
 #. [button]: id=copy
 #. [button]: id=copy_
@@ -3860,7 +3865,7 @@ msgstr "Показувати або сховати мітки"
 #. [button]: id=language
 #. [label]
 #: data/gui/window/language_selection.cfg:41
-#: data/gui/window/title_screen.cfg:484
+#: data/gui/window/title_screen.cfg:486
 msgid "Language"
 msgstr "Мова"
 
@@ -4701,7 +4706,7 @@ msgstr "Зберігати пароль локально (зашифровано
 #. [widget]: id=label
 #: data/gui/window/mp_method_selection.cfg:46
 #: data/gui/window/preferences.cfg:365 data/gui/window/title_screen.cfg:252
-#: src/gui/dialogs/game_load.cpp:407
+#: src/gui/dialogs/game_load.cpp:395
 msgid "Multiplayer"
 msgstr "Мультриплеєр"
 
@@ -4797,7 +4802,7 @@ msgid "Advanced"
 msgstr "Додатково"
 
 #. [button]: id=about
-#: data/gui/window/preferences.cfg:419 data/gui/window/title_screen.cfg:463
+#: data/gui/window/preferences.cfg:419 data/gui/window/title_screen.cfg:465
 msgid "Display the game version and build information"
 msgstr "Показати версію гри та інформацію про збірку"
 
@@ -5635,7 +5640,7 @@ msgid "Quit the game"
 msgstr "Вийти з гри"
 
 #. [button]: id=language
-#: data/gui/window/title_screen.cfg:485
+#: data/gui/window/title_screen.cfg:487
 msgid "Change the language"
 msgstr "Змінити мову"
 
@@ -6523,43 +6528,43 @@ msgstr "Версія $version"
 msgid "The selected file is corrupt: "
 msgstr "Вибраний файл пошкоджений: "
 
-#: src/gui/dialogs/game_load.cpp:358
+#: src/gui/dialogs/game_load.cpp:357
 msgid "(Invalid)"
 msgstr "(Недійсний)"
 
-#: src/gui/dialogs/game_load.cpp:398
+#: src/gui/dialogs/game_load.cpp:386
 msgid "Campaign: $campaign_name"
 msgstr "Кампанія: $campaign_name"
 
-#: src/gui/dialogs/game_load.cpp:410
+#: src/gui/dialogs/game_load.cpp:398
 msgid "Tutorial"
 msgstr "Посібник"
 
-#: src/gui/dialogs/game_load.cpp:413
+#: src/gui/dialogs/game_load.cpp:401
 msgid "Test scenario"
 msgstr "Тестовий сценарій"
 
-#: src/gui/dialogs/game_load.cpp:423
+#: src/gui/dialogs/game_load.cpp:411
 msgid "Replay"
 msgstr "Повтор"
 
-#: src/gui/dialogs/game_load.cpp:425
+#: src/gui/dialogs/game_load.cpp:413
 msgid "Turn"
 msgstr "Хід"
 
-#: src/gui/dialogs/game_load.cpp:427
+#: src/gui/dialogs/game_load.cpp:415
 msgid "Scenario start"
 msgstr "Початок сценарію"
 
-#: src/gui/dialogs/game_load.cpp:430
+#: src/gui/dialogs/game_load.cpp:418
 msgid "Difficulty: "
 msgstr "Складність: "
 
-#: src/gui/dialogs/game_load.cpp:434
+#: src/gui/dialogs/game_load.cpp:463
 msgid "Version: "
 msgstr "Версія: "
 
-#: src/gui/dialogs/game_load.cpp:439
+#: src/gui/dialogs/game_load.cpp:468
 msgid "Modifications: "
 msgstr "Модифікації: "
 
@@ -6586,7 +6591,7 @@ msgid "yes"
 msgstr "так"
 
 #: src/gui/dialogs/game_version_dialog.cpp:105
-#: src/gui/dialogs/title_screen.cpp:195
+#: src/gui/dialogs/title_screen.cpp:198
 msgid "Version $version"
 msgstr "Версія $version"
 
@@ -7065,11 +7070,11 @@ msgstr "Отримано"
 msgid "$count|× $name"
 msgstr ""
 
-#: src/gui/dialogs/title_screen.cpp:111 src/hotkey/hotkey_command.cpp:92
+#: src/gui/dialogs/title_screen.cpp:114 src/hotkey/hotkey_command.cpp:92
 msgid "Screenshot"
 msgstr "Знімок екрану"
 
-#: src/gui/dialogs/title_screen.cpp:410
+#: src/gui/dialogs/title_screen.cpp:430
 msgid "Choose Test"
 msgstr "Виберіть тест"
 
@@ -8185,10 +8190,6 @@ msgstr ""
 #: src/preferences/display.cpp:169
 msgid "Find Server Application"
 msgstr "Знайти додаток серверу"
-
-#: src/preferences/display.cpp:171
-msgid "Select"
-msgstr "Вибрати"
 
 #: src/preferences/game.cpp:881
 msgid "[%H:%M]"

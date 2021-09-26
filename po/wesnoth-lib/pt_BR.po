@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.5-CVS\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-08-21 23:31-0400\n"
+"POT-Creation-Date: 2021-09-25 21:03-0300\n"
 "PO-Revision-Date: 2020-12-31 10:39-0300\n"
 "Last-Translator: Andrei Machado <andreisp.machado@yahoo.com>\n"
 "Language-Team: Portuguese/Brazil\n"
@@ -4035,8 +4035,7 @@ msgstr "Senha:"
 # File: src/gui/dialogs/message.cpp, line: 169
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
-#: data/gui/window/addon_auth.cfg:119 data/gui/window/core_dialog.cfg:227
-#: data/gui/window/custom_tod.cfg:431
+#: data/gui/window/addon_auth.cfg:119 data/gui/window/custom_tod.cfg:431
 #: data/gui/window/depcheck_select_new.cfg:151
 #: data/gui/window/edit_label.cfg:139 data/gui/window/edit_text.cfg:116
 #: data/gui/window/editor_edit_label.cfg:301
@@ -4172,7 +4171,7 @@ msgstr "OK"
 #: data/gui/window/addon_uninstall_list.cfg:174
 #: data/gui/window/campaign_dialog.cfg:497
 #: data/gui/window/campaign_difficulty.cfg:234
-#: data/gui/window/core_dialog.cfg:240 data/gui/window/custom_tod.cfg:444
+#: data/gui/window/core_dialog.cfg:241 data/gui/window/custom_tod.cfg:444
 #: data/gui/window/depcheck_select_new.cfg:165
 #: data/gui/window/edit_label.cfg:153 data/gui/window/edit_text.cfg:130
 #: data/gui/window/editor_edit_label.cfg:315
@@ -4848,6 +4847,16 @@ msgstr "Copiar log para a área de tranferência"
 #: data/gui/window/core_dialog.cfg:44
 msgid "Load Core"
 msgstr "Carregar Core"
+
+#
+# File: data/gui/default/window/mp_server_list.cfg, line: 217
+# File: data/gui/default/window/mp_server_list.cfg, line: 217
+# File: data/gui/default/window/mp_server_list.cfg, line: 217
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
+#. [button]: id=ok
+#: data/gui/window/core_dialog.cfg:228 src/preferences/display.cpp:171
+msgid "Select"
+msgstr "Selecionar"
 
 #. [button]: id=copy
 #. [button]: id=copy_
@@ -6465,7 +6474,7 @@ msgstr "Mostrar ou Esconder Rótulos"
 #. [button]: id=language
 #. [label]
 #: data/gui/window/language_selection.cfg:41
-#: data/gui/window/title_screen.cfg:484
+#: data/gui/window/title_screen.cfg:486
 msgid "Language"
 msgstr "Idioma"
 
@@ -7683,7 +7692,7 @@ msgstr "Salvar senha localmente (encriptado)"
 #. [widget]: id=label
 #: data/gui/window/mp_method_selection.cfg:46
 #: data/gui/window/preferences.cfg:365 data/gui/window/title_screen.cfg:252
-#: src/gui/dialogs/game_load.cpp:407
+#: src/gui/dialogs/game_load.cpp:395
 msgid "Multiplayer"
 msgstr "Multiplayer"
 
@@ -7827,7 +7836,7 @@ msgid "Advanced"
 msgstr "Avançado"
 
 #. [button]: id=about
-#: data/gui/window/preferences.cfg:419 data/gui/window/title_screen.cfg:463
+#: data/gui/window/preferences.cfg:419 data/gui/window/title_screen.cfg:465
 msgid "Display the game version and build information"
 msgstr "Mostra a versão do jogo e as informações da build"
 
@@ -9119,7 +9128,7 @@ msgstr "Sair do Jogo"
 # File: data/gui/default/window/title_screen.cfg, line: 262
 # File: data/gui/default/window/title_screen.cfg, line: 262
 #. [button]: id=language
-#: data/gui/window/title_screen.cfg:485
+#: data/gui/window/title_screen.cfg:487
 msgid "Change the language"
 msgstr "Mudar o idioma"
 
@@ -10360,7 +10369,7 @@ msgstr "O jogo selecionado não possui lados: "
 # File: src/gui/dialogs/game_load.cpp, line: 269
 # File: src/gui/dialogs/game_load.cpp, line: 269
 # File: src/gui/dialogs/game_load.cpp, line: 269
-#: src/gui/dialogs/game_load.cpp:358
+#: src/gui/dialogs/game_load.cpp:357
 msgid "(Invalid)"
 msgstr "(Inválido)"
 
@@ -10368,7 +10377,7 @@ msgstr "(Inválido)"
 # File: src/gui/dialogs/game_load.cpp, line: 289
 # File: src/gui/dialogs/game_load.cpp, line: 289
 # File: src/gui/dialogs/game_load.cpp, line: 289
-#: src/gui/dialogs/game_load.cpp:398
+#: src/gui/dialogs/game_load.cpp:386
 msgid "Campaign: $campaign_name"
 msgstr "Campanha: $campaign_name"
 
@@ -10379,7 +10388,7 @@ msgstr "Campanha: $campaign_name"
 # File: src/gui/dialogs/game_load.cpp, line: 298
 # File: data/gui/default/window/title_screen.cfg, line: 256
 # File: src/gui/dialogs/game_load.cpp, line: 298
-#: src/gui/dialogs/game_load.cpp:410
+#: src/gui/dialogs/game_load.cpp:398
 msgid "Tutorial"
 msgstr "Tutorial"
 
@@ -10387,7 +10396,7 @@ msgstr "Tutorial"
 # File: src/gui/dialogs/game_load.cpp, line: 300
 # File: src/gui/dialogs/game_load.cpp, line: 300
 # File: src/gui/dialogs/game_load.cpp, line: 300
-#: src/gui/dialogs/game_load.cpp:413
+#: src/gui/dialogs/game_load.cpp:401
 msgid "Test scenario"
 msgstr "Cenário de teste"
 
@@ -10395,7 +10404,7 @@ msgstr "Cenário de teste"
 # File: src/gui/dialogs/game_load.cpp, line: 308
 # File: src/gui/dialogs/game_load.cpp, line: 308
 # File: src/gui/dialogs/game_load.cpp, line: 308
-#: src/gui/dialogs/game_load.cpp:423
+#: src/gui/dialogs/game_load.cpp:411
 msgid "Replay"
 msgstr "Replay"
 
@@ -10403,7 +10412,7 @@ msgstr "Replay"
 # File: src/gui/dialogs/game_load.cpp, line: 310
 # File: src/gui/dialogs/game_load.cpp, line: 310
 # File: src/gui/dialogs/game_load.cpp, line: 310
-#: src/gui/dialogs/game_load.cpp:425
+#: src/gui/dialogs/game_load.cpp:413
 msgid "Turn"
 msgstr "Turno"
 
@@ -10411,7 +10420,7 @@ msgstr "Turno"
 # File: src/gui/dialogs/game_load.cpp, line: 312
 # File: src/gui/dialogs/game_load.cpp, line: 312
 # File: src/gui/dialogs/game_load.cpp, line: 312
-#: src/gui/dialogs/game_load.cpp:427
+#: src/gui/dialogs/game_load.cpp:415
 msgid "Scenario start"
 msgstr "Início do Cenário"
 
@@ -10419,7 +10428,7 @@ msgstr "Início do Cenário"
 # File: src/gui/dialogs/game_load.cpp, line: 315
 # File: src/gui/dialogs/game_load.cpp, line: 315
 # File: src/gui/dialogs/game_load.cpp, line: 315
-#: src/gui/dialogs/game_load.cpp:430
+#: src/gui/dialogs/game_load.cpp:418
 msgid "Difficulty: "
 msgstr "Dificuldade: "
 
@@ -10427,7 +10436,7 @@ msgstr "Dificuldade: "
 # File: src/gui/dialogs/game_load.cpp, line: 319
 # File: src/gui/dialogs/game_load.cpp, line: 319
 # File: src/gui/dialogs/game_load.cpp, line: 319
-#: src/gui/dialogs/game_load.cpp:434
+#: src/gui/dialogs/game_load.cpp:463
 msgid "Version: "
 msgstr "Versão: "
 
@@ -10435,7 +10444,7 @@ msgstr "Versão: "
 # File: data/gui/default/window/mp_create_game_choose_mods.cfg, line: 54
 # File: data/gui/default/window/mp_create_game_choose_mods.cfg, line: 54
 # File: data/gui/default/window/mp_create_game_choose_mods.cfg, line: 54
-#: src/gui/dialogs/game_load.cpp:439
+#: src/gui/dialogs/game_load.cpp:468
 msgid "Modifications: "
 msgstr "Modificações: "
 
@@ -10478,7 +10487,7 @@ msgstr "sim"
 # File: src/gui/dialogs/title_screen.cpp, line: 297
 # File: src/gui/dialogs/title_screen.cpp, line: 297
 #: src/gui/dialogs/game_version_dialog.cpp:105
-#: src/gui/dialogs/title_screen.cpp:195
+#: src/gui/dialogs/title_screen.cpp:198
 msgid "Version $version"
 msgstr "Versão $version"
 
@@ -11228,7 +11237,7 @@ msgstr "$count|× $name"
 # File: src/hotkeys.cpp, line: 1185
 # File: src/hotkeys.cpp, line: 83
 # File: src/hotkeys.cpp, line: 1185
-#: src/gui/dialogs/title_screen.cpp:111 src/hotkey/hotkey_command.cpp:92
+#: src/gui/dialogs/title_screen.cpp:114 src/hotkey/hotkey_command.cpp:92
 msgid "Screenshot"
 msgstr "Captura de Tela"
 
@@ -11236,7 +11245,7 @@ msgstr "Captura de Tela"
 # File: src/game_preferences_display.cpp, line: 1279
 # File: src/game_preferences_display.cpp, line: 1302
 # File: src/game_preferences_display.cpp, line: 1302
-#: src/gui/dialogs/title_screen.cpp:410
+#: src/gui/dialogs/title_screen.cpp:430
 msgid "Choose Test"
 msgstr "Escolher Teste"
 
@@ -13274,14 +13283,6 @@ msgstr ""
 #: src/preferences/display.cpp:169
 msgid "Find Server Application"
 msgstr "Encontre o aplicativo do servidor"
-
-#
-# File: data/gui/default/window/mp_server_list.cfg, line: 217
-# File: data/gui/default/window/mp_server_list.cfg, line: 217
-# File: data/gui/default/window/mp_server_list.cfg, line: 217
-#: src/preferences/display.cpp:171
-msgid "Select"
-msgstr "Selecionar"
 
 #
 # File: src/game_preferences.cpp, line: 895

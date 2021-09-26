@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth_Lib-1.12\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-08-21 23:31-0400\n"
+"POT-Creation-Date: 2021-09-25 21:03-0300\n"
 "PO-Revision-Date: 2021-09-17 06:56+0200\n"
 "Last-Translator: Clémence\n"
 "Language-Team: French <wesnothfr@lists.tuxfamily.org>\n"
@@ -2338,8 +2338,7 @@ msgstr "Mot de passe :"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
-#: data/gui/window/addon_auth.cfg:119 data/gui/window/core_dialog.cfg:227
-#: data/gui/window/custom_tod.cfg:431
+#: data/gui/window/addon_auth.cfg:119 data/gui/window/custom_tod.cfg:431
 #: data/gui/window/depcheck_select_new.cfg:151
 #: data/gui/window/edit_label.cfg:139 data/gui/window/edit_text.cfg:116
 #: data/gui/window/editor_edit_label.cfg:301
@@ -2369,7 +2368,7 @@ msgstr "OK"
 #: data/gui/window/addon_uninstall_list.cfg:174
 #: data/gui/window/campaign_dialog.cfg:497
 #: data/gui/window/campaign_difficulty.cfg:234
-#: data/gui/window/core_dialog.cfg:240 data/gui/window/custom_tod.cfg:444
+#: data/gui/window/core_dialog.cfg:241 data/gui/window/custom_tod.cfg:444
 #: data/gui/window/depcheck_select_new.cfg:165
 #: data/gui/window/edit_label.cfg:153 data/gui/window/edit_text.cfg:130
 #: data/gui/window/editor_edit_label.cfg:315
@@ -2816,6 +2815,12 @@ msgstr "Copier ce journal dans le presse-papier"
 #: data/gui/window/core_dialog.cfg:44
 msgid "Load Core"
 msgstr "Charger le noyau"
+
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
+#. [button]: id=ok
+#: data/gui/window/core_dialog.cfg:228 src/preferences/display.cpp:171
+msgid "Select"
+msgstr "Sélectionner"
 
 #. [button]: id=copy
 #. [button]: id=copy_
@@ -3809,7 +3814,7 @@ msgstr "Afficher ou masquer les notes"
 #. [button]: id=language
 #. [label]
 #: data/gui/window/language_selection.cfg:41
-#: data/gui/window/title_screen.cfg:484
+#: data/gui/window/title_screen.cfg:486
 msgid "Language"
 msgstr "Langue"
 
@@ -4616,7 +4621,7 @@ msgstr "Sauvegarder le mot de passe en local (chiffré)"
 #. [widget]: id=label
 #: data/gui/window/mp_method_selection.cfg:46
 #: data/gui/window/preferences.cfg:365 data/gui/window/title_screen.cfg:252
-#: src/gui/dialogs/game_load.cpp:407
+#: src/gui/dialogs/game_load.cpp:395
 msgid "Multiplayer"
 msgstr "Multijoueur"
 
@@ -4712,7 +4717,7 @@ msgid "Advanced"
 msgstr "Options avancées"
 
 #. [button]: id=about
-#: data/gui/window/preferences.cfg:419 data/gui/window/title_screen.cfg:463
+#: data/gui/window/preferences.cfg:419 data/gui/window/title_screen.cfg:465
 msgid "Display the game version and build information"
 msgstr "Affiche les informations de version et de compilation"
 
@@ -5544,7 +5549,7 @@ msgid "Quit the game"
 msgstr "Quitter la partie"
 
 #. [button]: id=language
-#: data/gui/window/title_screen.cfg:485
+#: data/gui/window/title_screen.cfg:487
 msgid "Change the language"
 msgstr "Changer de langue"
 
@@ -6434,43 +6439,43 @@ msgstr "Wesnoth $version"
 msgid "The selected file is corrupt: "
 msgstr "Le fichier sélectionné est corrompu : "
 
-#: src/gui/dialogs/game_load.cpp:358
+#: src/gui/dialogs/game_load.cpp:357
 msgid "(Invalid)"
 msgstr "(Invalide)"
 
-#: src/gui/dialogs/game_load.cpp:398
+#: src/gui/dialogs/game_load.cpp:386
 msgid "Campaign: $campaign_name"
 msgstr "Campagne : $campaign_name"
 
-#: src/gui/dialogs/game_load.cpp:410
+#: src/gui/dialogs/game_load.cpp:398
 msgid "Tutorial"
 msgstr "Tutoriel"
 
-#: src/gui/dialogs/game_load.cpp:413
+#: src/gui/dialogs/game_load.cpp:401
 msgid "Test scenario"
 msgstr "Tester un scénario"
 
-#: src/gui/dialogs/game_load.cpp:423
+#: src/gui/dialogs/game_load.cpp:411
 msgid "Replay"
 msgstr "Film"
 
-#: src/gui/dialogs/game_load.cpp:425
+#: src/gui/dialogs/game_load.cpp:413
 msgid "Turn"
 msgstr "Tour"
 
-#: src/gui/dialogs/game_load.cpp:427
+#: src/gui/dialogs/game_load.cpp:415
 msgid "Scenario start"
 msgstr "Début du scénario"
 
-#: src/gui/dialogs/game_load.cpp:430
+#: src/gui/dialogs/game_load.cpp:418
 msgid "Difficulty: "
 msgstr "Difficulté : "
 
-#: src/gui/dialogs/game_load.cpp:434
+#: src/gui/dialogs/game_load.cpp:463
 msgid "Version: "
 msgstr "Version : "
 
-#: src/gui/dialogs/game_load.cpp:439
+#: src/gui/dialogs/game_load.cpp:468
 msgid "Modifications: "
 msgstr "Modifications : "
 
@@ -6497,7 +6502,7 @@ msgid "yes"
 msgstr "oui"
 
 #: src/gui/dialogs/game_version_dialog.cpp:105
-#: src/gui/dialogs/title_screen.cpp:195
+#: src/gui/dialogs/title_screen.cpp:198
 msgid "Version $version"
 msgstr "Version $version"
 
@@ -6974,11 +6979,11 @@ msgstr "Reçu"
 msgid "$count|× $name"
 msgstr "$count|× $name"
 
-#: src/gui/dialogs/title_screen.cpp:111 src/hotkey/hotkey_command.cpp:92
+#: src/gui/dialogs/title_screen.cpp:114 src/hotkey/hotkey_command.cpp:92
 msgid "Screenshot"
 msgstr "Capture d'écran"
 
-#: src/gui/dialogs/title_screen.cpp:410
+#: src/gui/dialogs/title_screen.cpp:430
 msgid "Choose Test"
 msgstr "Choix du test"
 
@@ -8078,10 +8083,6 @@ msgstr ""
 #: src/preferences/display.cpp:169
 msgid "Find Server Application"
 msgstr "Rechercher le serveur d’application"
-
-#: src/preferences/display.cpp:171
-msgid "Select"
-msgstr "Sélectionner"
 
 #: src/preferences/game.cpp:881
 msgid "[%H:%M]"
