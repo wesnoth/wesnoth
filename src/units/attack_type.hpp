@@ -83,7 +83,6 @@ public:
 	unit_ability_list get_specials(const std::string& special) const;
 	std::vector<std::pair<t_string, t_string>> special_tooltips(boost::dynamic_bitset<>* active_list = nullptr) const;
 	std::string weapon_specials(bool only_active=false, bool is_backstab=false) const;
-	std::string weapon_abilities() const;
 
 	/** Calculates the number of attacks this weapon has, considering specials. */
 	void modified_attacks(bool is_backstab, unsigned & min_attacks,
