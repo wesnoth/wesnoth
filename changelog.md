@@ -1,6 +1,4 @@
-## Version 1.15.17+dev
- ### Add-ons client
- ### Add-ons server
+## Version 1.15.18
  ### Campaigns
    * Delfador’s Memoirs
      * S07: Clarified objectives (issue #5608)
@@ -14,21 +12,15 @@
      * Correct Traveler’s Ring description (issue #6043)
  ### Editor
    * Avoid rare crash situation after editing scenarios (issue #5883)
- ### Multiplayer
- ### Lua API
- ### Packaging
- ### Terrain
  ### Translations
    * Updated translations: British English, Bulgarian, Czech, French, Italian, Portuguese (Brazil), Russian, Spanish.
    * gettext plural forms now have caret prefixes stripped as well (PR #6094).
- ### Units
  ### User interface
    * Steam cloud file is no longer listed in the Load Game dialog.
    * Redefine green text in dialogs and tool-tips so they are no longer ‘too dark’ with recent Pango versions (issue #4348)
    * Gave the main menu's Language button a label again, now displaying the current language.
    * Tweaked margins around the main menu's bottom row.
    * Difficulty no longer displayed in the Load Game dialog when it is not relevant to a save file (issue #5321)
- ### WML Engine
  ### Miscellaneous and Bug Fixes
    * Correct unit display adjustments on certain tiles when at zoom level other than 100% (issue #5974)
 
