@@ -5,6 +5,7 @@
  ### Editor
  ### Multiplayer
  ### Lua API
+   * Fixed `wesnoth.audio.volume = N` always setting volume to 0.
  ### Packaging
  ### Terrain
  ### Translations
