@@ -362,7 +362,7 @@ std::string os_version()
 			break;
 		case 1000:
 			if(v.wProductType == VER_NT_WORKSTATION) {
-				version = "10";
+				version = v.dwBuildNumber < 22000 ? "10" : "11";
 				const auto& release_id = windows_release_id();
 				if(!release_id.empty()) {
 					version += ' ';
