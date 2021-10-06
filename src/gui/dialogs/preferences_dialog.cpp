@@ -454,6 +454,12 @@ void preferences_dialog::post_build(window& window)
 	register_bool("fps_limiter", true,
 		[]() { return draw_delay() != 0; }, [](bool v) { set_draw_delay(v ? -1 : 0); });
 
+	/* VSYNC */
+	register_bool("vsync", true, vsync, set_vsync);
+	if(!CVideo::get_singleton().supports_vsync()) {
+		find_widget<widget>(&window, "vsync", false).set_visible(gui2::widget::visibility::invisible);
+	}
+
 	/* SELECT THEME */
 	connect_signal_mouse_left_click(
 			find_widget<button>(&window, "choose_theme", false),

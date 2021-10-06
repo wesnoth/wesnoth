@@ -220,8 +220,14 @@ void CVideo::init_window()
 		window_flags |= SDL_WINDOW_MAXIMIZED;
 	}
 
+	uint32_t renderer_flags = SDL_RENDERER_SOFTWARE;
+	if(supports_vsync() && preferences::vsync()) {
+		LOG_DP << "VSYNC on\n";
+		renderer_flags |= SDL_RENDERER_PRESENTVSYNC;
+	}
+
 	// Initialize window
-	window.reset(new sdl::window("", x, y, w, h, window_flags, SDL_RENDERER_SOFTWARE));
+	window.reset(new sdl::window("", x, y, w, h, window_flags, renderer_flags));
 
 	std::cerr << "Setting mode to " << w << "x" << h << std::endl;
 
@@ -488,6 +494,11 @@ point CVideo::current_resolution()
 bool CVideo::is_fullscreen() const
 {
 	return (window->get_flags() & SDL_WINDOW_FULLSCREEN_DESKTOP) != 0;
+}
+
+bool CVideo::supports_vsync() const
+{
+	return sdl_get_version() >= version_info{2, 0, 17};
 }
 
 int CVideo::set_help_string(const std::string& str)

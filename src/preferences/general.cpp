@@ -416,6 +416,11 @@ bool fullscreen()
 	return get("fullscreen", true);
 }
 
+bool vsync()
+{
+	return get("vsync", true);
+}
+
 void _set_resolution(const point& res)
 {
 	preferences::set("xresolution", std::to_string(res.x));
@@ -430,6 +435,11 @@ void _set_maximized(bool ison)
 void _set_fullscreen(bool ison)
 {
 	prefs["fullscreen"] = ison;
+}
+
+void set_vsync(bool ison)
+{
+	prefs["vsync"] = ison;
 }
 
 bool turbo()
