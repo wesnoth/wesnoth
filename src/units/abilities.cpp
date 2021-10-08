@@ -831,7 +831,11 @@ std::vector<std::pair<t_string, t_string>> attack_type::special_tooltips(
 	return res;
 }
 
-static std::pair<std::string, std::set<std::string>> add_name(std::string res, bool active, const config::any_child sp, std::set<std::string> checking_name)
+/**
+ * static used in weapon_specials (bool only_active, bool is_backstab) and
+ * return string for the abilities used like weapon of *this.
+ */
+static std::string add_name(std::string res, bool active, const config::any_child sp, std::set<std::string>& checking_name)
 {
 	if (active) {
 		const std::string& name = sp.cfg["name"].str();
@@ -839,12 +843,10 @@ static std::pair<std::string, std::set<std::string>> add_name(std::string res, b
 		if (!name.empty() && checking_name.count(name) == 0) {
 			checking_name.insert(name);
 			if (!res.empty()) res += ", ";
-			res += font::span_color(font::BUTTON_COLOR);
-			res += name;
-			res += "</span>";
+			res += font::span_color(font::BUTTON_COLOR) + name + "</span>";
 		}
 	}
-	return {res, checking_name};
+	return res;
 }
 
 /**
@@ -876,16 +878,13 @@ std::string attack_type::weapon_specials(bool only_active, bool is_backstab) con
 	}
 	std::string w_abilities;
 	std::set<std::string> checking_name;
-	std::pair <std::string, std::set<std::string>> pair_name_checking;
 	assert(display::get_singleton());
 	const unit_map& units = display::get_singleton()->get_units();
 	if(self_){
 		for (const config::any_child sp : (*self_).abilities().all_children_range()){
 			const bool active = check_self_abilities_impl(shared_from_this(), other_attack_, sp.cfg, self_, self_loc_, AFFECT_SELF, sp.key);
 
-			pair_name_checking = add_name(w_abilities, active, sp, checking_name);
-			w_abilities = pair_name_checking.first;
-			checking_name = pair_name_checking.second;
+			w_abilities = add_name(w_abilities, active, sp, checking_name);
 		}
 		const auto adjacent = get_adjacent_tiles(self_loc_);
 		for(unsigned i = 0; i < adjacent.size(); ++i) {
@@ -897,9 +896,7 @@ std::string attack_type::weapon_specials(bool only_active, bool is_backstab) con
 			for (const config::any_child sp : (*it).abilities().all_children_range()){
 				const bool active = check_adj_abilities_impl(shared_from_this(), other_attack_, sp.cfg, self_, *it, i, self_loc_, AFFECT_SELF, sp.key);
 
-				pair_name_checking = add_name(w_abilities, active, sp, checking_name);
-				w_abilities = pair_name_checking.first;
-				checking_name = pair_name_checking.second;
+				w_abilities = add_name(w_abilities, active, sp, checking_name);
 			}
 		}
 	}
@@ -908,9 +905,7 @@ std::string attack_type::weapon_specials(bool only_active, bool is_backstab) con
 		for (const config::any_child sp : (*other_).abilities().all_children_range()){
 			const bool active = check_self_abilities_impl(other_attack_, shared_from_this(), sp.cfg, other_, other_loc_, AFFECT_OTHER, sp.key);
 
-			pair_name_checking = add_name(w_abilities, active, sp, checking_name);
-			w_abilities = pair_name_checking.first;
-			checking_name = pair_name_checking.second;
+			w_abilities = add_name(w_abilities, active, sp, checking_name);
 		}
 		const auto adjacent = get_adjacent_tiles(other_loc_);
 		for(unsigned i = 0; i < adjacent.size(); ++i) {
@@ -922,9 +917,7 @@ std::string attack_type::weapon_specials(bool only_active, bool is_backstab) con
 			for (const config::any_child sp : (*it).abilities().all_children_range()){
 				const bool active = check_adj_abilities_impl(other_attack_, shared_from_this(), sp.cfg, other_, *it, i, other_loc_, AFFECT_OTHER, sp.key);
 
-				pair_name_checking = add_name(w_abilities, active, sp, checking_name);
-				w_abilities = pair_name_checking.first;
-				checking_name = pair_name_checking.second;
+				w_abilities = add_name(w_abilities, active, sp, checking_name);
 			}
 		}
 	}
