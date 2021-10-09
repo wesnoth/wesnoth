@@ -17,8 +17,6 @@
 
 ## Version 1.15.18
  ### Campaigns
-   * Delfador’s Memoirs
-     * S07: Clarified objectives (issue #5608)
    * Northern Rebirth
      * Give Eryssa’s side a consistent team color (issue #5375)
    * The Rise of Wesnoth
@@ -26,7 +24,6 @@
    * Under the Burning Suns
      * Avoid a few possibilities where the Dust Devil could speak (issue #4892)
      * Avoid dehydration status icon persisting into the next scenario (issue #5687)
-     * Correct Traveler’s Ring description (issue #6043)
  ### Editor
    * Avoid rare crash situation after editing scenarios (issue #5883)
  ### Translations
