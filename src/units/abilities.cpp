@@ -832,21 +832,23 @@ std::vector<std::pair<t_string, t_string>> attack_type::special_tooltips(
 }
 
 /**
- * static used in weapon_specials (bool only_active, bool is_backstab) and 
- * return string for the abilities used like weapon of *this.
+ * static used in weapon_specials (bool only_active, bool is_backstab) and
+ * Returns a string and a set_string for the weapon_specials function below.
+ * @param[in,out] weapon_abilities the string modified and returned
+ * @param[in] active, the boolean for determine if @name can be added or not
+ * @param[in,out] checking_name the  reference for checking if @name already added
  */
-static std::string add_name(std::string res, bool active, const config::any_child sp, std::set<std::string>& checking_name)
+static void add_name(std::string& weapon_abilities, bool active, const config::any_child sp, std::set<std::string>& checking_name)
 {
 	if (active) {
 		const std::string& name = sp.cfg["name"].str();
 
 		if (!name.empty() && checking_name.count(name) == 0) {
 			checking_name.insert(name);
-			if (!res.empty()) res += ", ";
-			res += font::span_color(font::BUTTON_COLOR) + name + "</span>";
+			if (!weapon_abilities.empty()) weapon_abilities += ", ";
+			weapon_abilities += font::span_color(font::BUTTON_COLOR, name);
 		}
 	}
-	return res;
 }
 
 /**
@@ -876,7 +878,7 @@ std::string attack_type::weapon_specials(bool only_active, bool is_backstab) con
 			if (only_active && !active) res += "</span>";
 		}
 	}
-	std::string w_abilities;
+	std::string weapon_abilities;
 	std::set<std::string> checking_name;
 	assert(display::get_singleton());
 	const unit_map& units = display::get_singleton()->get_units();
@@ -884,7 +886,7 @@ std::string attack_type::weapon_specials(bool only_active, bool is_backstab) con
 		for (const config::any_child &sp : (*self_).abilities().all_children_range()){
 			const bool active = check_self_abilities_impl(shared_from_this(), other_attack_, sp.cfg, self_, self_loc_, AFFECT_SELF, sp.key);
 
-			w_abilities = add_name(w_abilities, active, sp, checking_name);
+			add_name(weapon_abilities, active, sp, checking_name);
 		}
 		const auto adjacent = get_adjacent_tiles(self_loc_);
 		for(unsigned i = 0; i < adjacent.size(); ++i) {
@@ -896,7 +898,7 @@ std::string attack_type::weapon_specials(bool only_active, bool is_backstab) con
 			for (const config::any_child &sp : (*it).abilities().all_children_range()){
 				const bool active = check_adj_abilities_impl(shared_from_this(), other_attack_, sp.cfg, self_, *it, i, self_loc_, AFFECT_SELF, sp.key);
 
-				w_abilities = add_name(w_abilities, active, sp, checking_name);
+				add_name(weapon_abilities, active, sp, checking_name);
 			}
 		}
 	}
@@ -905,7 +907,7 @@ std::string attack_type::weapon_specials(bool only_active, bool is_backstab) con
 		for (const config::any_child &sp : (*other_).abilities().all_children_range()){
 			const bool active = check_self_abilities_impl(other_attack_, shared_from_this(), sp.cfg, other_, other_loc_, AFFECT_OTHER, sp.key);
 
-			w_abilities = add_name(w_abilities, active, sp, checking_name);
+			weapon_abilities = add_name(weapon_abilities, active, sp, checking_name);
 		}
 		const auto adjacent = get_adjacent_tiles(other_loc_);
 		for(unsigned i = 0; i < adjacent.size(); ++i) {
@@ -917,16 +919,15 @@ std::string attack_type::weapon_specials(bool only_active, bool is_backstab) con
 			for (const config::any_child &sp : (*it).abilities().all_children_range()){
 				const bool active = check_adj_abilities_impl(other_attack_, shared_from_this(), sp.cfg, other_, *it, i, other_loc_, AFFECT_OTHER, sp.key);
 
-				w_abilities = add_name(w_abilities, active, sp, checking_name);
+				add_name(weapon_abilities, active, sp, checking_name);
 			}
 		}
 	}
-	if(!w_abilities.empty() && !res.empty()) {
-		w_abilities = ", \n" + w_abilities;
-		res += w_abilities;
-	} else if (!w_abilities.empty()){
-		w_abilities = " " + w_abilities;
-		res = w_abilities;
+	if(!weapon_abilities.empty() && !res.empty()) {
+		weapon_abilities = ", \n" + weapon_abilities;
+		res += weapon_abilities;
+	} else if (!weapon_abilities.empty()){
+		res = weapon_abilities;
 	}
 	return res;
 }
