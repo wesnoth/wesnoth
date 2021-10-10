@@ -191,7 +191,8 @@ static bool make_change_diff(const simple_wml::node& src,
 static std::string player_status(const wesnothd::player_record& player)
 {
 	std::ostringstream out;
-	out << "'" << player.name() << "' @ " << player.client_ip();
+	out << "'" << player.name() << "' @ " << player.client_ip()
+		<< " logged on for " << lg::get_timespan(std::chrono::duration_cast<std::chrono::seconds>(std::chrono::steady_clock::now() - player.login_time).count());
 	return out.str();
 }
 
