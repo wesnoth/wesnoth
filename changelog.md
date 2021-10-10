@@ -2,6 +2,8 @@
  ### Add-ons client
  ### Add-ons server
  ### Campaigns
+   * Sceptre of Fire
+     * S06: Fix some WML variable handling causing autodefeat in S06 or rune-equip bugs in a later scenario (issue #6146)
  ### Editor
  ### Multiplayer
  ### Lua API
