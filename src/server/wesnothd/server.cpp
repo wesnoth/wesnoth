@@ -2428,7 +2428,7 @@ void server::status_handler(
 		}
 	}
 
-	const bool match_ip = (std::count(parameters.begin(), parameters.end(), '.') >= 1);
+	const bool match_ip = ((std::count(parameters.begin(), parameters.end(), '.') >= 1) || (std::count(parameters.begin(), parameters.end(), ':') >= 1));
 	for(const auto& player : player_connections_) {
 		if(parameters.empty() || parameters == "*" ||
 			(match_ip  && utils::wildcard_string_match(player.client_ip(), parameters)) ||
