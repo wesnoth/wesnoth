@@ -81,6 +81,9 @@ namespace preferences {
 	bool fullscreen();
 	void _set_fullscreen(bool ison);
 
+	bool vsync();
+	void set_vsync(bool ison);
+
 	bool turbo();
 	void _set_turbo(bool ison);
 

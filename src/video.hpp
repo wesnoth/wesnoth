@@ -105,6 +105,8 @@ public:
 
 	bool is_fullscreen() const;
 
+	bool supports_vsync() const;
+
 	bool set_resolution(const unsigned width, const unsigned height);
 
 	/**

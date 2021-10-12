@@ -25,6 +25,7 @@
    * gettext plural forms now have caret prefixes stripped as well (PR #6094).
  ### Units
  ### User interface
+   * Added a VSync option (issue #5018). This defaults to enabled and is available in Preferences -> Display only with SDL 2.0.17 and later as older versions do not support VSync with the software renderer.
    * The names of the abilities used as specials appear in the attack prediction window with specials weapons
    * Added a prompt to allow migrating settings and redownloading add-ons used in a previous version of Wesnoth when starting a new versions for the first time.
    * Ban expiry intervals in the MP UI now only mention the most significant time unit (e.g. "3 minutes" instead of "3 minutes, and 20 seconds") (PR #6097).

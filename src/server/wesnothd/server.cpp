@@ -191,7 +191,8 @@ static bool make_change_diff(const simple_wml::node& src,
 static std::string player_status(const wesnothd::player_record& player)
 {
 	std::ostringstream out;
-	out << "'" << player.name() << "' @ " << player.client_ip();
+	out << "'" << player.name() << "' @ " << player.client_ip()
+		<< " logged on for " << lg::get_timespan(std::chrono::duration_cast<std::chrono::seconds>(std::chrono::steady_clock::now() - player.login_time).count());
 	return out.str();
 }
 
@@ -2427,7 +2428,7 @@ void server::status_handler(
 		}
 	}
 
-	const bool match_ip = (std::count(parameters.begin(), parameters.end(), '.') >= 1);
+	const bool match_ip = ((std::count(parameters.begin(), parameters.end(), '.') >= 1) || (std::count(parameters.begin(), parameters.end(), ':') >= 1));
 	for(const auto& player : player_connections_) {
 		if(parameters.empty() || parameters == "*" ||
 			(match_ip  && utils::wildcard_string_match(player.client_ip(), parameters)) ||
