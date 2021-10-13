@@ -14,6 +14,7 @@
      * Avoid a few possibilities where the Dust Devil could speak (issue #4892)
      * Avoid dehydration status icon persisting into the next scenario (issue #5687)
      * Correct Traveler’s Ring description (issue #6043)
+     * S05: Avoid village just taken by the player being re-assigned to the enemy (issue #6187)
  ### Editor
    * Avoid rare crash situation after editing scenarios (issue #5883)
  ### Multiplayer
