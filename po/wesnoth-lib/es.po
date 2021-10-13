@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2021-06-23 11:42-0400\n"
-"PO-Revision-Date: 2021-09-23 10:03+0200\n"
+"PO-Revision-Date: 2021-09-24 14:01+0200\n"
 "Last-Translator: Pepe <donpepe1963@gmail.com>\n"
 "Language-Team: Spanish <kde-i18n-doc@kde.org>\n"
 "Language: es\n"
@@ -5913,9 +5913,10 @@ msgstr "El tamaño de la fuente del texto es 0."
 msgid "Area to draw has negative size"
 msgstr "El área a dibujar tiene un tamaño negativo"
 
+# la verdad es que no me gusta la palabra widget
 #: src/gui/core/canvas.cpp:836
 msgid "Area to draw is larger than widget size"
-msgstr "El área a dibujar es mayor que el tamaño del del artículo"
+msgstr "El área a dibujar es mayor que el tamaño del widget"
 
 #: src/gui/core/widget_definition.cpp:30
 msgid "No state or draw section defined."
@@ -7107,7 +7108,7 @@ msgstr "$player ha salido de la estancia"
 
 #: src/gui/widgets/helper.cpp:96
 msgid "Mandatory widget '$id' hasn't been defined."
-msgstr "La utilidad obligatoria «$id» no ha sido definida."
+msgstr "El widget obligatorio «$id» no ha sido definido."
 
 #: src/gui/widgets/label.cpp:125
 msgid "Opening links is not supported, contact your packager"
@@ -7168,7 +7169,7 @@ msgstr "Tamaño inválido."
 
 #: src/gui/widgets/size_lock.cpp:121
 msgid "No widget defined."
-msgstr "No se ha definido una herramienta."
+msgstr "No se ha definido un widget."
 
 #: src/gui/widgets/slider.cpp:354
 msgid "The number of value_labels and values don't match."
@@ -7182,7 +7183,7 @@ msgstr "No se ha definido ninguna pila de capas."
 
 #: src/gui/widgets/styled_widget.cpp:607
 msgid "Found a widget with a helptip and without a tooltip."
-msgstr "Se encontró una utilidad con ayuda y sin descripción emergente."
+msgstr "Se encontró un widget con ayuda y sin descripción emergente."
 
 #: src/gui/widgets/tree_view.cpp:299
 msgid "No nodes defined for a tree view."
