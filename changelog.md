@@ -4,6 +4,8 @@
  ### Campaigns
    * Sceptre of Fire
      * S06: Fix some WML variable handling causing autodefeat in S06 or rune-equip bugs in a later scenario (issue #6146)
+   * Under the Burning Suns
+     * S05: Avoid village just taken by the player being re-assigned to the enemy (issue #6187)
  ### Editor
  ### Multiplayer
  ### Lua API
