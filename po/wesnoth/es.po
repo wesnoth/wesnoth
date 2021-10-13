@@ -21,7 +21,7 @@ msgstr ""
 "Project-Id-Version: Wesnoth 1.14\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2021-06-23 11:42-0400\n"
-"PO-Revision-Date: 2021-09-23 10:00+0200\n"
+"PO-Revision-Date: 2021-09-24 14:09+0200\n"
 "Last-Translator: Pepe <donpepe1963@gmail.com>\n"
 "Language-Team: Wesnoth Spanish translation\n"
 "Language: es\n"
@@ -203,7 +203,7 @@ msgstr ""
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:157
 msgid "Show deprecation messages in-game"
-msgstr "Mostrar mensajes sobre exclusiones durante la partida"
+msgstr "Mostrar mensajes sobre APIs obsoletas durante la partida"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:158
@@ -212,10 +212,10 @@ msgid ""
 "will still be shown in the log, even if this is disabled. In addition, the "
 "deprecation log-domain controls how many messages are printed."
 msgstr ""
-"Muestra avisos acerca de API excluida en el área de chat durante la partida. "
-"Estos mensajes aún se mostrarán en el registro, incluso si esto está "
-"deshabilitado. Además, el registro de dominio de exclusión controla cuantos "
-"mensajes se imprimen."
+"Muestra avisos acerca de APIs obsoletas en el área de chat durante la "
+"partida. Estos mensajes aún se mostrarán en el registro, incluso si esto "
+"está deshabilitado. Además, el registro de dominio de exclusión controla "
+"cuantos mensajes se imprimen."
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [unstore_unit]
@@ -6038,23 +6038,24 @@ msgstr "susurro: $sender"
 
 #: src/deprecation.cpp:39
 msgid "$elem has been deprecated indefinitely."
-msgstr "$elem ha sido excluido indefinidamente."
+msgstr "$elem ha quedado obsoleto indefinidamente."
 
 #: src/deprecation.cpp:46
 msgid "$elem has been deprecated and may be removed in version $version."
-msgstr "$elem ha sido excluido y podría ser eliminado en la versión $version."
+msgstr ""
+"$elem ha quedado obsoleto y podría ser eliminado en la versión $version."
 
 #: src/deprecation.cpp:48
 msgid "$elem has been deprecated and may be removed at any time."
-msgstr "$elem ha sido excluido y podría ser borrado en cualquier momento."
+msgstr "$elem ha quedado obsoleto y podría ser borrado en cualquier momento."
 
 #: src/deprecation.cpp:55
 msgid "$elem has been deprecated and will be removed in version $version."
-msgstr "$elem ha sido excluido y será eliminado en la versión $version."
+msgstr "$elem ha quedado obsoleto y será eliminado en la versión $version."
 
 #: src/deprecation.cpp:60
 msgid "$elem has been deprecated and removed."
-msgstr "$elem ha sido excluido y eliminado."
+msgstr "$elem ha quedado obsoleto y eliminado."
 
 #: src/desktop/notifications.cpp:82
 msgid "Chat message"
