@@ -833,10 +833,11 @@ std::vector<std::pair<t_string, t_string>> attack_type::special_tooltips(
 
 /**
  * static used in weapon_specials (bool only_active, bool is_backstab) and
- * Returns a string and a set_string for the weapon_specials function below.
+ * @return a string and a set_string for the weapon_specials function below.
  * @param[in,out] weapon_abilities the string modified and returned
- * @param[in] active, the boolean for determine if @name can be added or not
- * @param[in,out] checking_name the  reference for checking if @name already added
+ * @param[in] active the boolean for determine if @name can be added or not
+ * @param[in] sp reference to ability to check
+ * @param[in,out] checking_name the reference for checking if @name already added
  */
 static void add_name(std::string& weapon_abilities, bool active, const config::any_child sp, std::set<std::string>& checking_name)
 {
