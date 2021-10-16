@@ -4,16 +4,15 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 # Translators:
-# RatArmy <broadbarredfirefish@gmail.com>, 2020
-# tamanegi, 2021
+# RatArmy, 2021
 #
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2021-05-22 22:21-0400\n"
-"PO-Revision-Date: 2018-05-06 10:25+0000\n"
-"Last-Translator: tamanegi, 2021\n"
+"POT-Creation-Date: 2021-06-23 10:18+0300\n"
+"PO-Revision-Date: 2021-06-26 08:32+0000\n"
+"Last-Translator: RatArmy, 2021\n"
 "Language-Team: Japanese (https://www.transifex.com/wesnoth-jp/teams/60513/"
 "ja/)\n"
 "Language: ja\n"
@@ -300,21 +299,20 @@ msgstr "一部の Lua デバッグ機構を有効にする。"
 
 #. type: TP
 #: doc/man/wesnoth.6:106
-#, fuzzy, no-wrap
-#| msgid "B<--strict-validation>"
+#, no-wrap
 msgid "B<--strict-lua>"
 msgstr "B<--strict-validation>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:109
 msgid "disallow deprecated Lua API calls"
-msgstr ""
+msgstr "非推奨のLua APIコールを許可しない。"
 
 #. type: TP
 #: doc/man/wesnoth.6:109
 #, no-wrap
 msgid "B<-D,--diff>I<\\ left-file>B<\\ >I<right-file>"
-msgstr ""
+msgstr "B<-D,--diff>I<\\ 左ファイル>B<\\ >I<右ファイル>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:115
@@ -323,6 +321,9 @@ msgid ""
 "them through B<-p> first). Outputs the diff as DiffWML on standard output or "
 "to the file indicated by I<--output>."
 msgstr ""
+"2つのWMLファイルを比較する。比較前に前処理は行われないため、前処理が必要であ"
+"れば、 B<-p> を前につけて実行すること。差分はDiffWMLファイルとして標準出力ま"
+"たは I<--output> で指定したファイルに出力される。"
 
 #. type: TP
 #: doc/man/wesnoth.6:115
@@ -347,15 +348,13 @@ msgstr "B<--fps>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:127
-#, fuzzy
-#| msgid ""
-#| "displays the number of frames per second the game is currently running "
-#| "at, in a corner of the screen."
 msgid ""
 "displays the number of frames per second the game is currently running at in "
 "a corner of the screen as well as writes these values to a file in the "
 "userdata directory."
-msgstr "ゲーム実行時の秒当たりのフレーム数(FPS)をスクリーンの隅に表示する。"
+msgstr ""
+"FPSを画面の隅に表示し、ユーザーデータディレクトリ内のファイルにその値を書き込"
+"む。"
 
 #. type: TP
 #: doc/man/wesnoth.6:127
@@ -617,15 +616,14 @@ msgstr ""
 
 #. type: TP
 #: doc/man/wesnoth.6:229
-#, fuzzy, no-wrap
-#| msgid "B<--nocache>"
+#, no-wrap
 msgid "B<--nobanner>"
-msgstr "B<--nocache>"
+msgstr "B<--nobanner>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:232
 msgid "suppress the startup banner."
-msgstr ""
+msgstr "起動時のバナーを抑制する。"
 
 #. type: TP
 #: doc/man/wesnoth.6:232
@@ -666,15 +664,14 @@ msgstr "効果音やBGMなしでゲームを実行する。"
 
 #. type: TP
 #: doc/man/wesnoth.6:242
-#, fuzzy, no-wrap
-#| msgid "B<--script>I<\\ file>"
+#, no-wrap
 msgid "B<--output>I<\\ file>"
-msgstr "B<--script>I<\\ file>"
+msgstr "B<--output>I<\\ ファイル>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:245
 msgid "output to the specified file. Applicable to diffing operations."
-msgstr ""
+msgstr "指定したファイルに出力する。差分をとる操作のみに適用可能。"
 
 #. type: TP
 #: doc/man/wesnoth.6:245
@@ -708,10 +705,9 @@ msgstr ""
 
 #. type: TP
 #: doc/man/wesnoth.6:257
-#, fuzzy, no-wrap
-#| msgid "B<-p,\\ --preprocess>I<\\ source-file/folder>B<\\ >I<target-directory>"
+#, no-wrap
 msgid "B<-P,--patch>I<\\ base-file>B<\\ >I<patch-file>"
-msgstr "B<-p,\\ --preprocess>I<\\ source-file/folder>B<\\ >I<target-directory>"
+msgstr "B<-P,--patch>I<\\ ベースファイル>B<\\ >I<パッチファイル>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:262
@@ -720,6 +716,9 @@ msgid ""
 "files.  Outputs the patched WML to standard output or to the file indicated "
 "by I<--output>."
 msgstr ""
+"DiffWMLパッチをWMLファイルに適用する。どちらのファイルに対しても前処理は行わ"
+"れない。標準出力または I<--output> で指定したファイルにパッチを適用したWMLを"
+"出力する。"
 
 #. type: TP
 #: doc/man/wesnoth.6:262
@@ -981,15 +980,14 @@ msgstr ""
 
 #. type: TP
 #: doc/man/wesnoth.6:366
-#, fuzzy, no-wrap
-#| msgid "B<--scenario>I<\\ value>"
+#, no-wrap
 msgid "B<-S,--use-schema>I<\\ path>"
-msgstr "B<--scenario>I<\\ value>"
+msgstr "B<-S,--use-schema>I<\\ パス>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:370
 msgid "sets the WML schema for use with B<-V,--validate>."
-msgstr ""
+msgstr "B<-V,--validate> と合わせてWMLスキーマを設定する。"
 
 #. type: TP
 #: doc/man/wesnoth.6:370
@@ -1073,50 +1071,47 @@ msgstr "サーバーへの接続時、他の設定を無視して、 I<username>
 
 #. type: TP
 #: doc/man/wesnoth.6:401
-#, fuzzy, no-wrap
-#| msgid "B<--data-path>"
+#, no-wrap
 msgid "B<--validate>I<\\ path>"
-msgstr "B<--data-path>"
+msgstr "B<--validate>I<\\ パス>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:404
 msgid "validates a file against the WML schema."
-msgstr ""
+msgstr "ファイルがWMLスキーマに批准しているか検証を行う。"
 
 #. type: TP
 #: doc/man/wesnoth.6:404
 #, no-wrap
 msgid "B<--validate-addon>I<\\ addon_id>"
-msgstr ""
+msgstr "B<--validate-addon>I<\\ アドオンid>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:407
 msgid "validates the WML of the given addon as you play."
-msgstr ""
+msgstr "指定したアドオンのWMLをプレイ可能か検証する。"
 
 #. type: TP
 #: doc/man/wesnoth.6:407
-#, fuzzy, no-wrap
-#| msgid "B<--validcache>"
+#, no-wrap
 msgid "B<--validate-core>"
-msgstr "B<--validcache>"
+msgstr "B<--validate-core>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:410
 msgid "validates the core WML as you play."
-msgstr ""
+msgstr "コアWMLがプレイ可能か検証する。"
 
 #. type: TP
 #: doc/man/wesnoth.6:410
-#, fuzzy, no-wrap
-#| msgid "B<--validcache>"
+#, no-wrap
 msgid "B<--validate-schema \\ path>"
-msgstr "B<--validcache>"
+msgstr "B<--validate-schema \\ パス>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:413
 msgid "validates a file as a WML schema."
-msgstr ""
+msgstr "ファイルをWMLスキーマとして検証する。"
 
 #. type: TP
 #: doc/man/wesnoth.6:413
@@ -1920,7 +1915,7 @@ msgstr ""
 #: doc/man/wesnothd.6:168
 #, no-wrap
 msgid "B<deny_unregistered_login>"
-msgstr ""
+msgstr "B<deny_unregistered_login>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:173
@@ -1928,6 +1923,8 @@ msgid ""
 "Whether to prevent users who are not registered with the B<user_handler> "
 "being used from logging in. (default: false)"
 msgstr ""
+"B<user_handler> に登録されていないユーザーのログインを拒否する。（デフォル"
+"ト：false）"
 
 #. type: SS
 #: doc/man/wesnothd.6:174
@@ -2055,10 +2052,8 @@ msgstr "B<db_host>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:227
-#, fuzzy
-#| msgid "The hostname of the mail server"
 msgid "The hostname of the database server"
-msgstr "メールサーバーのホスト名"
+msgstr "データベースサーバーのホスト名"
 
 #. type: TP
 #: doc/man/wesnothd.6:227
@@ -2068,10 +2063,8 @@ msgstr "B<db_name>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:230
-#, fuzzy
-#| msgid "The hostname of the mail server"
 msgid "The name of the database"
-msgstr "メールサーバーのホスト名"
+msgstr "データベース名"
 
 #. type: TP
 #: doc/man/wesnothd.6:230
@@ -2081,12 +2074,8 @@ msgstr "B<db_user>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:233
-#, fuzzy
-#| msgid ""
-#| "(for user_handler=forum) The name of the user under which to log into the "
-#| "database"
 msgid "The name of the user under which to log into the database"
-msgstr "(user_handler=forum のとき) データベースにログインするユーザー名"
+msgstr "データベースにログインするユーザーの名前"
 
 #. type: TP
 #: doc/man/wesnothd.6:233
@@ -2096,10 +2085,8 @@ msgstr "B<db_password>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:236
-#, fuzzy
-#| msgid "This user's password."
 msgid "This user's password"
-msgstr "このユーザーのパスワード。"
+msgstr "ユーザーのパスワード"
 
 #. type: TP
 #: doc/man/wesnothd.6:236
@@ -2109,18 +2096,12 @@ msgstr "B<db_users_table>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:239
-#, fuzzy
-#| msgid ""
-#| "(for user_handler=forum) The name of the table in which your phpbb forums "
-#| "saves its user data. Most likely this will be E<lt>table-"
-#| "prefixE<gt>_users (e.g. phpbb3_users)."
 msgid ""
 "The name of the table in which your phpbb forums saves its user data. Most "
 "likely this will be E<lt>table-prefixE<gt>_users (e.g. phpbb3_users)."
 msgstr ""
-"(user_handler=forum のとき) あなたの phpbb フォーラムがユーザーデータを保存す"
-"るテーブル名。最もありそうなのは E<lt>table-prefixE<gt>_users (例えば "
-"phpbb3_users)。"
+"phpbbフォーラムがユーザーデータを保存するテーブル名。E<lt>table-"
+"prefixE<gt>_users （例：phpbb3_users）である可能性が高い。"
 
 #. type: TP
 #: doc/man/wesnothd.6:239
@@ -2130,15 +2111,9 @@ msgstr "B<db_extra_table>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:242
-#, fuzzy
-#| msgid ""
-#| "(for user_handler=forum) The name of the table in which wesnothd will "
-#| "save its own data about games."
 msgid ""
 "The name of the table in which wesnothd will save its own data about users."
-msgstr ""
-"（user_handler=forum のとき）ゲームに関するデータを wesnothd が保存するテーブ"
-"ルの名前。"
+msgstr "ユーザーに関するデータをwesnothdが保存するテーブル名。"
 
 #. type: TP
 #: doc/man/wesnothd.6:242
@@ -2148,15 +2123,9 @@ msgstr "B<db_game_info_table>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:245
-#, fuzzy
-#| msgid ""
-#| "(for user_handler=forum) The name of the table in which wesnothd will "
-#| "save its own data about games."
 msgid ""
 "The name of the table in which wesnothd will save its own data about games."
-msgstr ""
-"（user_handler=forum のとき）ゲームに関するデータを wesnothd が保存するテーブ"
-"ルの名前。"
+msgstr "ゲームに関するデータをwesnothdが保存するテーブル名。"
 
 #. type: TP
 #: doc/man/wesnothd.6:245
@@ -2166,16 +2135,10 @@ msgstr "B<db_game_player_info_table>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:248
-#, fuzzy
-#| msgid ""
-#| "(for user_handler=forum) The name of the table in which wesnothd will "
-#| "save its own data about the players in a game."
 msgid ""
 "The name of the table in which wesnothd will save its own data about the "
 "players in a game."
-msgstr ""
-"（user_handler=forum のとき）プレイヤーに関するデータを wesnothd が保存する"
-"テーブルの名前。"
+msgstr "ゲーム内プレイヤーに関するデータをwesnothdが保存するテーブル名。"
 
 #. type: TP
 #: doc/man/wesnothd.6:248
@@ -2185,16 +2148,10 @@ msgstr "B<db_game_modification_info_table>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:251
-#, fuzzy
-#| msgid ""
-#| "(for user_handler=forum) The name of the table in which wesnothd will "
-#| "save its own data about the modifications used in a game."
 msgid ""
 "The name of the table in which wesnothd will save its own data about the "
 "modifications used in a game."
-msgstr ""
-"（user_handler=forum のとき）ゲームで使用された Mod に関するデータを "
-"wesnothd が保存するテーブルの名前。"
+msgstr "ゲームで使用されるMODに関するデータをwesnothdが保存するテーブル名。"
 
 #. type: TP
 #: doc/man/wesnothd.6:251
@@ -2204,19 +2161,13 @@ msgstr "B<db_user_group_table>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:254
-#, fuzzy
-#| msgid ""
-#| "(for user_handler=forum) The name of the table in which your phpbb forums "
-#| "saves its user group data. Most likely this will be E<lt>table-"
-#| "prefixE<gt>_user_group (e.g. phpbb3_user_group)."
 msgid ""
 "The name of the table in which your phpbb forums saves its user group data. "
 "Most likely this will be E<lt>table-prefixE<gt>_user_group (e.g. "
 "phpbb3_user_group)."
 msgstr ""
-"（user_handler=forum のとき）あなたの phpbb フォーラムがユーザーグループデー"
-"タを保存するテーブル名。最もありそうなのは E<lt>table-"
-"prefixE<gt>_user_group（例えば phpbb3_user_group）。"
+"ユーザーグループデータをphpbbフォーラムが保存するテーブル名。E<lt>table-"
+"prefixE<gt>_user_group （例：phpbb3_user_group）である可能性が高い"
 
 #. type: TP
 #: doc/man/wesnothd.6:254
@@ -2226,14 +2177,9 @@ msgstr "B<mp_mod_group>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:257
-#, fuzzy
-#| msgid ""
-#| "(for user_handler=forum) The ID of the forum group to be considered as "
-#| "having moderation authority."
 msgid ""
 "The ID of the forum group to be considered as having moderation authority."
-msgstr ""
-"（user_handler=forumのとき）モデレーション権限を持つフォーラムグループのID。"
+msgstr "モデレーション権限を持つフォーラムグループのID。"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:262
@@ -2265,84 +2211,3 @@ msgstr ""
 #: doc/man/wesnothd.6:281
 msgid "B<wesnoth>(6)"
 msgstr "B<wesnoth>(6)"
-
-#, no-wrap
-#~ msgid "B<user_handler>"
-#~ msgstr "B<user_handler>"
-
-#~ msgid ""
-#~ "The name of the user handler to use. Currently available user handlers "
-#~ "are B<forum> (to connect wesnothd to a phpbb forum database) and "
-#~ "B<sample> (a sample implementation of the user handler interface, if you "
-#~ "use this on anything real you are insane). The default value is B<forum>. "
-#~ "You must also add a B<[user_handler]> section, see below."
-#~ msgstr ""
-#~ "使用するユーザーハンドラの名前。現在利用可能なユーザーハンドラは B<forum> "
-#~ "(wesnothd を phpbb フォーラムデータベースに接続する) と B<sample> (ユー"
-#~ "ザーハンドラインターフェースのサンプル実装。もし何かしら本当にこれを使用す"
-#~ "るならあなたは発狂する)。既定値は B<forum>。下記の B<[user_handler]> セク"
-#~ "ションも追加しなければならならい。"
-
-#~ msgid "(for user_handler=forum) The hostname of the database server"
-#~ msgstr "(user_handler=forum のとき) データベースサーバーのホスト名"
-
-#~ msgid "(for user_handler=forum) The name of the database"
-#~ msgstr "(user_handler=forum のとき) データベース名"
-
-#~ msgid "(for user_handler=forum) This user's password"
-#~ msgstr "(user_handler=forum のとき) このユーザーのパスワード"
-
-#~ msgid ""
-#~ "(for user_handler=forum) The name of the table in which wesnothd will "
-#~ "save its own data about users. You will have to create this table "
-#~ "manually."
-#~ msgstr ""
-#~ "（user_handler=forum のとき）ユーザに関するデータを wesnothd が保存する"
-#~ "テーブルの名前。このテーブルは手動で作成する必要がある。"
-
-#, no-wrap
-#~ msgid "B<user_expiration>"
-#~ msgstr "B<user_expiration>"
-
-#~ msgid ""
-#~ "(for user_handler=sample) The time after which a registered nick expires "
-#~ "(in days)."
-#~ msgstr ""
-#~ "(user_handler=sample のとき) 登録されたニックネームが期限切れになる時間(単"
-#~ "位は日)。"
-
-#~ msgid ""
-#~ "B<[mail]> Configures an SMTP server through which the user handler can "
-#~ "send mail. Currently only used by the sample user handler."
-#~ msgstr ""
-#~ "B<[mail]> で SMTP サーバユーザーハンドラがメールを送れるサーバーを設定す"
-#~ "る。現在はサンプルのユーザーハンドラとしてのみ使用される。"
-
-#, no-wrap
-#~ msgid "B<server>"
-#~ msgstr "B<server>"
-
-#, no-wrap
-#~ msgid "B<username>"
-#~ msgstr "B<username>"
-
-#~ msgid "The user name under which to log into the mail server."
-#~ msgstr "メールサーバーにログインするユーザー名。"
-
-#, no-wrap
-#~ msgid "B<password>"
-#~ msgstr "B<password>"
-
-#, no-wrap
-#~ msgid "B<from_address>"
-#~ msgstr "B<from_address>"
-
-#~ msgid "The reply-to address of you mail."
-#~ msgstr "あなたのメールの返信先アドレス。"
-
-#, no-wrap
-#~ msgid "B<mail_port>"
-#~ msgstr "B<mail_port>"
-
-#~ msgid "The port on which your mail server is running. Default is 25."
-#~ msgstr "あなたのメールサーバーが動作しているポート。既定値は 25。"

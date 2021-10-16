@@ -1,18 +1,14 @@
 #
 # Translators:
-# IWAI, Masaharu <iwaim.sub@gmail.com>, 2018
-# 家庭的の人 <kateitekino_hito@yahoo.co.jp>, 2018
-# 堀 秀幸 <Hide.HORI@gmail.com>, 2018
-# tamanegi, 2019
-# RatArmy <broadbarredfirefish@gmail.com>, 2019
+# RatArmy, 2021
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2021-06-23 15:42 UTC\n"
-"PO-Revision-Date: 2018-05-06 10:23+0000\n"
-"Last-Translator: RatArmy <broadbarredfirefish@gmail.com>, 2019\n"
+"PO-Revision-Date: 2021-06-26 08:33+0000\n"
+"Last-Translator: RatArmy, 2021\n"
 "Language-Team: Japanese (https://www.transifex.com/wesnoth-jp/teams/60513/"
 "ja/)\n"
 "Language: ja\n"
@@ -95,37 +91,37 @@ msgstr "追加のアートワーク"
 #. [label]
 #: data/campaigns/Secrets_of_the_Ancients/gui/zombie_recruit_dialog.cfg:108
 msgid "Lvl 0"
-msgstr ""
+msgstr "レベル 0"
 
 #. [label]
 #: data/campaigns/Secrets_of_the_Ancients/gui/zombie_recruit_dialog.cfg:130
 msgid "Undead"
-msgstr ""
+msgstr "アンデッド"
 
 #. [label]
 #: data/campaigns/Secrets_of_the_Ancients/gui/zombie_recruit_dialog.cfg:173
 msgid "Traits"
-msgstr ""
+msgstr "特性"
 
 #. [label]
 #: data/campaigns/Secrets_of_the_Ancients/gui/zombie_recruit_dialog.cfg:207
 msgid "Attacks"
-msgstr ""
+msgstr "攻撃"
 
 #. [label]
 #: data/campaigns/Secrets_of_the_Ancients/gui/zombie_recruit_dialog.cfg:275
 msgid "Choose a Corpse"
-msgstr ""
+msgstr "死体の選択"
 
 #. [button]
 #: data/campaigns/Secrets_of_the_Ancients/gui/zombie_recruit_dialog.cfg:341
 msgid "Recruit"
-msgstr ""
+msgstr "雇用"
 
 #. [button]: id=cancel
 #: data/campaigns/Secrets_of_the_Ancients/gui/zombie_recruit_dialog.cfg:347
 msgid "Cancel"
-msgstr ""
+msgstr "キャンセル"
 
 #. [scenario]: id=01_Slipping_Away
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/01_Slipping_Away.cfg:22
@@ -317,6 +313,9 @@ msgid ""
 "killed and not immediately raised as a corpse, its corpse type will be "
 "permanently added to the recruit list instead."
 msgstr ""
+"<span color='cyan'>特記事項：</span>このキャンペーンでは、ユニットが倒された"
+"時にすぐにアンデッドとして蘇らなかった場合、その死体の種類が雇用リストに永続"
+"的に追加されます。"
 
 #. [message]: speaker=Ardonna
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/01_Slipping_Away.cfg:327
@@ -832,6 +831,12 @@ msgid ""
 "defensive, and while his hatred of me was unabated, his desire to live made "
 "him somewhat malleable."
 msgstr ""
+"Wesnoth 歴 23 年 3 月 22 日\n"
+"\n"
+"研究に実験は付き物だし、私も始めた。あの山賊はもともと私から略奪しようとして"
+"たし、そのうえ彼の恋人を殺した私を拷問して殺そうとしてた。今や彼は私に命を握"
+"られて怯えてた。私への憎しみは衰えてないけど、命惜しさから少しは言うことを聞"
+"いてくれるようになった。"
 
 #. [part]
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/04_Becalmed.cfg:58
@@ -850,6 +855,17 @@ msgid ""
 "from a thousand suns - I could feel it more strongly than the fear or hunger "
 "from any of my pets..."
 msgstr ""
+"山賊を休ませるため、ぶどう酒を入れた革袋をあげた。彼は疑うような目で見た後、"
+"私の様子を伺いながら少しずつ飲んでた。そして私がゴールドの一部を机の上に置く"
+"と、彼の目はそれに釘付けになった。\n"
+"\n"
+"さらに彼の恋人「Mossa」から奪った指輪を机に置いた。彼の視線はゴールドから指輪"
+"に移り、そして私の両目に素早く移った。もし彼が椅子に縛り付けられていなかった"
+"ら、襲い掛かってきただろう。\n"
+"\n"
+"さらにゴールドを追加で積み重ねてみたけど彼は興味を示さなくて、憎しみのこもっ"
+"た目で睨んでくるだけ。千の太陽が放つ熱のように復讐への渇望が放たれていた。そ"
+"の思いは、私のペットたちの恐れや飢えよりも強烈に感じた。"
 
 #. [part]
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/04_Becalmed.cfg:75
@@ -865,6 +881,15 @@ msgid ""
 "flensed from his being, he calmed down.  Now hairless, bloody, naked, and "
 "unthinking, the bandit was unrecognizable as the man he once was."
 msgstr ""
+"山賊の生命力の豊富な流れは今までに見たことないほどだったけど、私の意志で屈服"
+"させられることはすでに分かってた。これまではそこまでの段階で我慢してたけど、"
+"今日はさらに調べてみちゃった。純粋な渇望を彼自身に向かうようにコントロールす"
+"ることで、自らを渇望で焼き尽くすように仕向けることができたんだ！\n"
+"\n"
+"山賊は吠え、転げまわり、服と拘束を引き裂き、ついには彼自身の肉を抉った。さら"
+"には、渇望以外のものが山賊から剝ぎ取られたとき、彼は静かになった。今や髪の毛"
+"一本残っておらず、血だらけで、裸で、思考能力を失っちゃって、もう同一人物とは"
+"思えないや。"
 
 #. [part]
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/04_Becalmed.cfg:93
@@ -874,6 +899,10 @@ msgid ""
 "could. In some ways, this experiment was a failure, but the creature it "
 "created would be useful..."
 msgstr ""
+"山賊だった何かはわけのわからない喚きをあげているが、その喚きの中にはもう意志"
+"を感じられない。私の操り人形となってしまったので、とりあえずできる限りの傷は"
+"縫ってあげた。なんやかんやでこの実験は失敗しちゃったけど、できあがったこの生"
+"き物は便利だね..."
 
 #. [part]
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/04_Becalmed.cfg:100
@@ -2191,16 +2220,6 @@ msgstr "戦場"
 
 #. [part]
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/11_Battleground.cfg:18
-#, fuzzy
-#| msgid ""
-#| "11 IV, 23 YW\n"
-#| "\n"
-#| "Rastaban seems like an acceptable ally. He is quite different from the "
-#| "stodgy teachers at the academy who were so full of themselves and loved "
-#| "to hear themselves talk. He also never once disparaged me for being a "
-#| "girl or even mentioned my hair. As long as he continues to respect me, "
-#| "everything will go fine. If not, well, I am surrounded by the remnants of "
-#| "those who assumed I was weak."
 msgid ""
 "11 IV, 23 YW\n"
 "\n"
@@ -2961,7 +2980,7 @@ msgstr "この高度なら...グリフォンか。気をつけねばならん。
 #. [message]: speaker=Vendraxis
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/15_Mountain_Pass.cfg:363
 msgid "Yesss. The danger I sssensed is here."
-msgstr ""
+msgstr "そのとおりぃぃ。脅威ぃを感じるぅ。"
 
 #. [scenario]: id=16_The_Mage
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/16_The_Mage.cfg:9
@@ -3802,12 +3821,12 @@ msgstr "どうも、Fizztsars。この生き物を確実に葬ってやろう。
 #. [message]: speaker=Fizztsars
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:588
 msgid "Except for the male of oursss with them. He will come with usss."
-msgstr ""
+msgstr "同族のぉぉあの男は別だ。彼は我々ぇぇの元に戻るだろう。"
 
 #. [message]: speaker=Vendraxis
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:592
 msgid "No! I will not return yet, I still have sssecrets to learn!"
-msgstr ""
+msgstr "断るぅ！まだ戻らぬぅ、まだ学ぶべきぃ秘密があるぅ！"
 
 #. [unit]: type=Dwarvish Dragonguard, id=Thrigalurd
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:619
@@ -4157,24 +4176,24 @@ msgstr ""
 #. and some fly.
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:92
 msgid "All Corpses"
-msgstr ""
+msgstr "すべての死体"
 
 #. [unit_type]: id=SotA Walking Corpse_Dummy, race=undead
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:104
 msgid "Choose this “unit” to get a list of available corpses."
-msgstr ""
+msgstr "利用可能な死体の一覧を表示するにはこの「ユニット」を選択してください。"
 
 #. [unit_type]: id=SotA Flying Corpse_Gryphon
 #. [unit_type]: id=SotA Flying Corpse_Bat
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:156
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:314
 msgid "Flying Corpse"
-msgstr ""
+msgstr "飛ぶ死体"
 
 #. [unit_type]: id=SotA Swimming Corpse
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:204
 msgid "Swimming Corpse"
-msgstr ""
+msgstr "泳ぐ死体"
 
 #: data/campaigns/Secrets_of_the_Ancients/utils/characters.cfg:7
 #: data/campaigns/Secrets_of_the_Ancients/utils/sota-utils.cfg:7
@@ -4274,32 +4293,32 @@ msgstr "さようなら。"
 #. [message]: speaker=Vendraxis
 #: data/campaigns/Secrets_of_the_Ancients/utils/sota-utils.cfg:307
 msgid "Now I will never learn the sssecret of exssstending my ssspan."
-msgstr ""
+msgstr "もはや延命ぃの秘密を学ぶことはできぬぅぅ。"
 
 #. [message]: speaker=Carcyn
 #: data/campaigns/Secrets_of_the_Ancients/utils/sota-utils.cfg:323
 msgid "I'm going to miss him."
-msgstr ""
+msgstr "彼がいないと寂しくなりそうだ。"
 
 #. [message]: speaker=Ras-Tabahn
 #: data/campaigns/Secrets_of_the_Ancients/utils/sota-utils.cfg:329
 msgid "Unfortunate. He was useful."
-msgstr ""
+msgstr "不幸なことじゃ。彼は有能であったのに。"
 
 #. [message]: speaker=Shynal
 #: data/campaigns/Secrets_of_the_Ancients/utils/sota-utils.cfg:340
 msgid "Yes, he was helpful."
-msgstr ""
+msgstr "ええ、彼は役立ってくれたわ。"
 
 #. [message]: speaker=Ardonna
 #: data/campaigns/Secrets_of_the_Ancients/utils/sota-utils.cfg:346
 msgid "Indeed, he will be missed."
-msgstr ""
+msgstr "そうだね。寂しくなるな。"
 
 #. [message]: speaker=Ardonna
 #: data/campaigns/Secrets_of_the_Ancients/utils/sota-utils.cfg:368
 msgid "Don't worry, my pet. I can save you."
-msgstr ""
+msgstr "心配しないで。今助けるよ。"
 
 #. [message]: speaker=$unit.id
 #: data/campaigns/Secrets_of_the_Ancients/utils/sota-utils.cfg:424
@@ -4546,262 +4565,172 @@ msgstr "半分空っぽ"
 #. shown instead of the unit_type name in the recruitment dialog
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:24
 msgid "recruit^Flying Corpse (Bat)"
-msgstr ""
+msgstr "飛ぶ死体（コウモリ）"
 
 #. [value]: type=SotA Flying Corpse_Bat
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:25
-#, fuzzy
-#| msgid "You can now recruit ghosts!"
 msgid "You can now raise bat corpses!"
-msgstr "ゴーストを雇用できるようになった！"
+msgstr "コウモリの死体を蘇らせることができるようになりました！"
 
 #. [value]: type=SotA Walking Corpse_Rat
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:30
-#, fuzzy
-#| msgid "Raise Walking Corpse (8 Gold)"
 msgid "recruit^Walking Corpse (Rat)"
-msgstr "歩く死体を呼び出す（8ゴールド）"
+msgstr "歩く死体（ネズミ）"
 
 #. [value]: type=SotA Walking Corpse_Rat
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:31
-#, fuzzy
-#| msgid "You can now recruit ghosts!"
 msgid "You can now raise rat corpses!"
-msgstr "ゴーストを雇用できるようになった！"
+msgstr "ネズミの死体を蘇らせることができるようになりました！"
 
 #. [value]: type=SotA Walking Corpse_Wolf
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:36
-#, fuzzy
-#| msgid "Raise Walking Corpse (8 Gold)"
 msgid "recruit^Walking Corpse (Wolf)"
-msgstr "歩く死体を呼び出す（8ゴールド）"
+msgstr "歩く死体（狼）"
 
 #. [value]: type=SotA Walking Corpse_Wolf
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:37
-#, fuzzy
-#| msgid "You can now recruit chocobones!"
 msgid "You can now raise wolf corpses!"
-msgstr "チョコボーンが雇えるようになった！"
+msgstr "狼の死体を蘇らせることができるようになりました！"
 
 #. [value]: type=SotA Walking Corpse_Human
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:42
-#, fuzzy
-#| msgid "Raise Walking Corpse (8 Gold)"
 msgid "recruit^Walking Corpse (Human)"
-msgstr "歩く死体を呼び出す（8ゴールド）"
+msgstr "歩く死体（人間）"
 
 #. [value]: type=SotA Walking Corpse_Human
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:43
-#, fuzzy
-#| msgid "You can now recruit ghosts!"
 msgid "You can now raise human corpses!"
-msgstr "ゴーストを雇用できるようになった！"
+msgstr "人間の死体を蘇らせることができるようになりました！"
 
 #. [value]: type=SotA Walking Corpse_Mounted
 #. the mount is an undead horse (not a wolf), this is shown instead of the unit_type name in the recruitment dialog
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:49
-#, fuzzy
-#| msgid "Raise Walking Corpse (8 Gold)"
 msgid "recruit^Walking Corpse (Mounted)"
-msgstr "歩く死体を呼び出す（8ゴールド）"
+msgstr "歩く死体（騎乗）"
 
 #. [value]: type=SotA Walking Corpse_Mounted
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:50
-#, fuzzy
-#| msgid "You can now recruit ghosts!"
 msgid "You can now raise mounted corpses!"
-msgstr "ゴーストを雇用できるようになった！"
+msgstr "騎乗した死体を蘇らせることができるようになりました！"
 
 #. [value]: type=SotA Walking Corpse_Wolf Rider
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:55
-#, fuzzy
-#| msgid "Raise Walking Corpse (8 Gold)"
 msgid "recruit^Walking Corpse (Wolf Rider)"
-msgstr "歩く死体を呼び出す（8ゴールド）"
+msgstr "歩く死体（ウルフライダー）"
 
 #. [value]: type=SotA Walking Corpse_Wolf Rider
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:56
-#, fuzzy
-#| msgid "You can now recruit ghosts!"
 msgid "You can now raise wolf rider corpses!"
-msgstr "ゴーストを雇用できるようになった！"
+msgstr "ウルフライダーの死体を蘇らせることができるようになりました！"
 
 #. [value]: type=SotA Swimming Corpse
 #. this is used for both naga and merfolk zombies
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:62
 msgid "recruit^Swimming Corpse"
-msgstr ""
+msgstr "泳ぐ死体"
 
 #. [value]: type=SotA Swimming Corpse
 #. this is used for both naga and merfolk zombies
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:64
-#, fuzzy
-#| msgid "You can now recruit ghosts!"
 msgid "You can now raise swimming corpses!"
-msgstr "ゴーストを雇用できるようになった！"
+msgstr "泳ぐ死体を蘇らせることができるようになりました！"
 
 #. [value]: type=SotA Walking Corpse_Saurian
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:69
 msgid "recruit^Walking Corpse (Saurian)"
-msgstr ""
+msgstr "歩く死体（トカゲ）"
 
 #. [value]: type=SotA Walking Corpse_Saurian
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:70
-#, fuzzy
-#| msgid "You can now recruit ghosts!"
 msgid "You can now raise saurian corpses!"
-msgstr "ゴーストを雇用できるようになった！"
+msgstr "トカゲの死体を蘇らせることができるようになりました！"
 
 #. [value]: type=SotA Walking Corpse_Wose
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:75
-#, fuzzy
-#| msgid "Raise Walking Corpse (8 Gold)"
 msgid "recruit^Walking Corpse (Wose)"
-msgstr "歩く死体を呼び出す（8ゴールド）"
+msgstr "歩く死体（ウーズ）"
 
 #. [value]: type=SotA Walking Corpse_Wose
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:76
-#, fuzzy
-#| msgid "You can now recruit chocobones!"
 msgid "You can now raise wose corpses!"
-msgstr "チョコボーンが雇えるようになった！"
+msgstr "ウーズの死体を蘇らせることができるようになりました！"
 
 #. [value]: type=SotA Walking Corpse_Goblin
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:81
-#, fuzzy
-#| msgid "Raise Walking Corpse (8 Gold)"
 msgid "recruit^Walking Corpse (Goblin)"
-msgstr "歩く死体を呼び出す（8ゴールド）"
+msgstr "歩く死体（ゴブリン）"
 
 #. [value]: type=SotA Walking Corpse_Goblin
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:82
-#, fuzzy
-#| msgid "You can now recruit ghouls!"
 msgid "You can now raise goblin corpses!"
-msgstr "グールが雇用できるようになった！"
+msgstr "ゴブリンの死体を蘇らせることができるようになりました！"
 
 #. [value]: type=SotA Flying Corpse_Gryphon
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:87
 msgid "recruit^Flying Corpse (Gryphon)"
-msgstr ""
+msgstr "飛ぶ死体（グリフォン）"
 
 #. [value]: type=SotA Flying Corpse_Gryphon
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:88
-#, fuzzy
-#| msgid "You can now recruit ghosts!"
 msgid "You can now raise gryphon corpses!"
-msgstr "ゴーストを雇用できるようになった！"
+msgstr "グリフォンの死体を蘇らせることができるようになりました！"
 
 #. [value]: type=SotA Walking Corpse_Spider
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:93
-#, fuzzy
-#| msgid "Raise Walking Corpse (8 Gold)"
 msgid "recruit^Walking Corpse (Spider)"
-msgstr "歩く死体を呼び出す（8ゴールド）"
+msgstr "歩く死体（クモ）"
 
 #. [value]: type=SotA Walking Corpse_Spider
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:94
-#, fuzzy
-#| msgid "You can now recruit ghosts!"
 msgid "You can now raise spider corpses!"
-msgstr "ゴーストを雇用できるようになった！"
+msgstr "クモの死体を蘇らせることができるようになりました！"
 
 #. [value]: type=SotA Walking Corpse_Troll
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:99
-#, fuzzy
-#| msgid "Raise Walking Corpse (8 Gold)"
 msgid "recruit^Walking Corpse (Troll)"
-msgstr "歩く死体を呼び出す（8ゴールド）"
+msgstr "歩く死体（トロル）"
 
 #. [value]: type=SotA Walking Corpse_Troll
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:100
-#, fuzzy
-#| msgid "You can now recruit ghosts!"
 msgid "You can now raise troll corpses!"
-msgstr "ゴーストを雇用できるようになった！"
+msgstr "トロルの死体を蘇らせることができるようになりました！"
 
 #. [value]: type=SotA Walking Corpse_Dwarf
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:105
-#, fuzzy
-#| msgid "Raise Walking Corpse (8 Gold)"
 msgid "recruit^Walking Corpse (Dwarf)"
-msgstr "歩く死体を呼び出す（8ゴールド）"
+msgstr "歩く死体（ドワーフ）"
 
 #. [value]: type=SotA Walking Corpse_Dwarf
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:106
-#, fuzzy
-#| msgid "You can now recruit dark adepts!"
 msgid "You can now raise dwarf corpses!"
-msgstr "暗黒僧を雇用できるようになった！"
+msgstr "ドワーフの死体を蘇らせることができるようになりました！"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:372
 msgid "A lua error has occurred, and a corpse cannot be recruited."
-msgstr ""
+msgstr "Lua のエラーが発生し、死体を雇用できませんでした。"
 
 #. [lua]: select
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:24
 msgid "HP: "
-msgstr ""
+msgstr "HP："
 
 #. [lua]: select
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:24
 msgid "MP: "
-msgstr ""
+msgstr "MP："
 
 #. [lua]: select
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:24
 msgid "XP: "
-msgstr ""
+msgstr "XP："
 
 #. [lua]: postshow
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:89
 msgid "There are no corpses available."
-msgstr ""
+msgstr "死体が存在しません。"
 
 #. [lua]: postshow
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:94
-#, fuzzy
-#| msgid "You don't have enough gold to raise that unit."
 msgid "You do not have enough gold to recruit that unit"
-msgstr "ユニットを呼び出すためのゴールドが足りません。"
-
-#~ msgid ""
-#~ "22 III, 23 YW\n"
-#~ "\n"
-#~ "Research sometimes requires experiments, so I began. I forced my will "
-#~ "into the life-force pathways of the bandit, thus turning him into my "
-#~ "puppet. He resisted, but on account of my recent practice, my will proved "
-#~ "the stronger. More strangely, the inside of his body also resisted, "
-#~ "attacking me, the invader. However, since I wasn’t physically there, it "
-#~ "ended up attacking itself! Over a period of hours, slabs of flesh became "
-#~ "weak and threatened to fall off his frame. I was obliged to stitch them "
-#~ "in place."
-#~ msgstr ""
-#~ "Wesnoth歴23年3月22日\n"
-#~ "\n"
-#~ "実験を始めることにした。研究には実験が付き物だし。あの山賊の生命の経路に私"
-#~ "の意志を強制的に流し込むと、彼を思いのままに操れるようになった。彼は抵抗し"
-#~ "ていたが、私は練習を積んできたので強靭な意志を発揮することができた。奇妙な"
-#~ "ことに、彼は体の内部でも抵抗をして、侵略者である私を攻撃してきた。しかし、"
-#~ "私は物理的には彼の体内には存在しないために、結果として彼自身を傷つけること"
-#~ "になった。何時間も後には、弱った肉が彼自身から剥がれ落ちかけていた。私はそ"
-#~ "れが剥がれぬよう縫い付けなきゃいけなかった。"
-
-#~ msgid ""
-#~ "Some of the bandit’s companions had perished in better condition than the "
-#~ "leader, and I got the idea to add their flesh to my puppet. I stitched on "
-#~ "muscles where they seemed to fit, and used enchantments to improve the "
-#~ "bonding, thus improving the strength of the creature. At first, each new "
-#~ "piece of flesh caused another violent reaction from the body’s defenses. "
-#~ "Eventually, the reactions weakened, and the body stabilized in its new "
-#~ "configuration, though by this time it was suppurating and unrecognizable. "
-#~ "The mind inside gibbered at what it had become, but the bandit had wished "
-#~ "for me a fate worse than death, so it didn’t seem unfair."
-#~ msgstr ""
-#~ "山賊たちの死体には状態が良いのもあって、その肉を「人形」に付け足すことにし"
-#~ "た。肉を筋肉の適した箇所に縫い付け、魔法によってより強く結びつけた。そのお"
-#~ "かげで、この生き物はより強くなった。まず、新しい肉片によってより激しい拒絶"
-#~ "反応が生じた。やがて反応は弱まり、体は新たな構造に順応した。その間、体は化"
-#~ "膿して見る影も無くなっちゃった。中の精神は喚き散らしていたけど、あの山賊は"
-#~ "自らこの運命を望んだ。これは公正な取引だよ。"
+msgstr "そのユニットを雇用するにはゴールドが足りません。"

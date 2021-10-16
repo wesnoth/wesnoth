@@ -1,11 +1,16 @@
+#
+# Translators:
+# tamanegi, 2021
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2021-06-23 15:42 UTC\n"
-"PO-Revision-Date: 2020-08-25 23:55 UTC\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2021-06-26 08:34+0000\n"
+"Last-Translator: tamanegi, 2021\n"
+"Language-Team: Japanese (https://www.transifex.com/wesnoth-jp/teams/60513/"
+"ja/)\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -15,55 +20,55 @@ msgstr ""
 #. [advancement]: id=amla_default
 #: data/campaigns/World_Conquest/era/campaign/heroes.cfg:142
 msgid "Max HP bonus +6%"
-msgstr ""
+msgstr "最大 HP +6"
 
 #: data/campaigns/World_Conquest/era/campaign/strings.cfg:4
 msgid "heroic"
-msgstr ""
+msgstr "英雄"
 
 #: data/campaigns/World_Conquest/era/campaign/strings.cfg:7
 msgid "female^heroic"
-msgstr ""
+msgstr "英雄"
 
 #: data/campaigns/World_Conquest/era/campaign/strings.cfg:10
 msgid "expert"
-msgstr ""
+msgstr "熟練"
 
 #: data/campaigns/World_Conquest/era/campaign/strings.cfg:13
 msgid "female^expert"
-msgstr ""
+msgstr "熟練"
 
 #: data/campaigns/World_Conquest/era/campaign/strings.cfg:16
 msgid "epic"
-msgstr ""
+msgstr "至高"
 
 #: data/campaigns/World_Conquest/era/campaign/strings.cfg:19
 msgid "female^epic"
-msgstr ""
+msgstr "至高"
 
 #: data/campaigns/World_Conquest/era/campaign/strings.cfg:22
 msgid "Always AMLA with 60 XP and raises maximum health by 6 HP."
-msgstr ""
+msgstr "最高位後昇進（AMLA）の必要経験を 60 に固定、AMLA 時に HP +6"
 
 #: data/campaigns/World_Conquest/era/campaign/strings.cfg:25
 msgid "legendary"
-msgstr ""
+msgstr "伝説"
 
 #: data/campaigns/World_Conquest/era/campaign/strings.cfg:28
 msgid "female^legendary"
-msgstr ""
+msgstr "伝説"
 
 #: data/campaigns/World_Conquest/era/campaign/strings.cfg:31
 msgid "Special advancement to Chocobone enabled."
-msgstr ""
+msgstr "チョコボーンへの昇格が可能です"
 
 #: data/campaigns/World_Conquest/era/campaign/strings.cfg:34
 msgid "Special advancement to Goblin Pillager enabled."
-msgstr ""
+msgstr "ゴブリンの略奪兵への昇格が可能です"
 
 #: data/campaigns/World_Conquest/era/factions/strings.cfg:7
 msgid "World Conquest"
-msgstr ""
+msgstr "世界征服"
 
 #: data/campaigns/World_Conquest/era/factions/strings.cfg:10
 msgid ""
@@ -73,181 +78,189 @@ msgid ""
 "Includes an in-game help to know pairs status, with a right-click on an "
 "empty hex."
 msgstr ""
+"ユニットは雇用リスト中で一対のペアとして定義されます; ユニットを雇用すると、"
+"そのユニットはリストから消え、替わりにペアとなっているユニットがリストに登録"
+"されます。この時代は「世界征服 II」での利用を前提としています。\n"
+"ゲーム中、空のヘクスを右クリックすると現れるヘルプで雇用ペアの状態を確認でき"
+"ます。"
 
 #: data/campaigns/World_Conquest/era/factions/strings.cfg:14
 msgid "The Horde"
-msgstr ""
+msgstr "大軍"
 
 #: data/campaigns/World_Conquest/era/factions/strings.cfg:17
 msgid "The Alliance"
-msgstr ""
+msgstr "同盟"
 
 #: data/campaigns/World_Conquest/era/factions/strings.cfg:20
 msgid "The Guild"
-msgstr ""
+msgstr "ギルド"
 
 #: data/campaigns/World_Conquest/era/factions/strings.cfg:23
 msgid "The Trust"
-msgstr ""
+msgstr "義勇"
 
 #: data/campaigns/World_Conquest/era/factions/strings.cfg:26
 msgid "The Gang"
-msgstr ""
+msgstr "ギャング"
 
 #: data/campaigns/World_Conquest/era/factions/strings.cfg:29
 msgid "The Cult"
-msgstr ""
+msgstr "狂信者"
 
 #: data/campaigns/World_Conquest/era/factions/strings.cfg:32
 msgid "The Militia"
-msgstr ""
+msgstr "民兵"
 
 #: data/campaigns/World_Conquest/era/factions/strings.cfg:35
 msgid "The Scourge"
-msgstr ""
+msgstr "災厄"
 
 #: data/campaigns/World_Conquest/era/factions/strings.cfg:38
 msgid "The Hand"
-msgstr ""
+msgstr "支配者"
 
 #: data/campaigns/World_Conquest/era/factions/strings.cfg:41
 msgid "The Empire"
-msgstr ""
+msgstr "帝国"
 
 #. [label]: id=title
 #. [lua]: root_node.on_modified
 #: data/campaigns/World_Conquest/gui/help_dialog.cfg:49
 #: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:246
 msgid "WoCopedia"
-msgstr ""
+msgstr "世界征服の手引き"
 
 #. [label]: id=title
 #. [lua]: preshow
 #: data/campaigns/World_Conquest/gui/help_dialog.cfg:571
 #: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:47
 msgid "Settings"
-msgstr ""
+msgstr "設定"
 
 #. [label]
 #: data/campaigns/World_Conquest/gui/help_dialog.cfg:670
 msgid "Difficulty"
-msgstr ""
+msgstr "難易度"
 
 #. [label]: id=title
 #: data/campaigns/World_Conquest/gui/invest_dialog.cfg:34
 msgid "Choose a bonus for your team"
-msgstr ""
+msgstr "どのボーナスを取得しますか？"
 
 #. [label]: id=title
 #: data/campaigns/World_Conquest/gui/invest_tellunit.cfg:24
 msgid "You got"
-msgstr ""
+msgstr "獲得"
 
 #. [button]: id=ok
 #: data/campaigns/World_Conquest/gui/invest_tellunit.cfg:58
 msgid "OK"
-msgstr ""
+msgstr "OK"
 
 #. [label]: id=title
 #: data/campaigns/World_Conquest/gui/pickup_confirmation.cfg:24
 msgid "Pick up item?"
-msgstr ""
+msgstr "アイテムを拾いますか？"
 
 #. [button]: id=res_yes
 #: data/campaigns/World_Conquest/gui/pickup_confirmation.cfg:62
 msgid "Yes"
-msgstr ""
+msgstr "はい"
 
 #. [button]: id=res_no
 #: data/campaigns/World_Conquest/gui/pickup_confirmation.cfg:72
 msgid "No"
-msgstr ""
+msgstr "いいえ"
 
 #. [label]: id=title
 #: data/campaigns/World_Conquest/gui/settings_dialog.cfg:29
 msgid "Map Settings"
-msgstr ""
+msgstr "マップ設定"
 
 #. [label]
 #: data/campaigns/World_Conquest/gui/settings_dialog.cfg:50
 msgid " scenario: "
-msgstr ""
+msgstr " シナリオ： "
 
 #. [label]
 #: data/campaigns/World_Conquest/gui/settings_dialog.cfg:63
 msgid " map: "
-msgstr ""
+msgstr " マップ： "
 
 #: data/campaigns/World_Conquest/lua/campaign/difficulty.lua:6
 msgid "Choose difficulty level:"
-msgstr ""
+msgstr "難易度を選んでください："
 
 #: data/campaigns/World_Conquest/lua/campaign/enemy_themed.lua:5
 msgid "$name|'s pet"
-msgstr ""
+msgstr "$name| のペット"
 
 #: data/campaigns/World_Conquest/lua/campaign/objectives.lua:5
 msgid "Defeat all enemy leaders and commanders"
-msgstr ""
+msgstr "全ての敵リーダーと指揮官を倒す"
 
 #: data/campaigns/World_Conquest/lua/campaign/objectives.lua:6
 msgid "Turns run out"
-msgstr ""
+msgstr "時間切れ"
 
 #: data/campaigns/World_Conquest/lua/campaign/objectives.lua:7
 msgid "Lose your leader and all your commanders"
-msgstr ""
+msgstr "陣営のリーダーと全ての指揮官を失う"
 
 #: data/campaigns/World_Conquest/lua/campaign/objectives.lua:10
 msgid "An in-game help is available: right-click on any empty hex."
-msgstr ""
+msgstr "ゲーム内ヘルプが利用可能です： 空きヘクスで右クリックから呼び出せます"
 
 #: data/campaigns/World_Conquest/lua/era/era.lua:12
 msgid "Tell me how my recruit works"
-msgstr ""
+msgstr "陣営の雇用リストを確認する"
 
 #: data/campaigns/World_Conquest/lua/era/era.lua:13
 msgid ""
 "Every time you recruit a unit, it is replaced in your recruit list by its "
 "pair. The following pairs can also be found here:"
 msgstr ""
+"ユニットを雇用すると、そのユニットはリストから消え、替わりにペアとなっている"
+"ユニットがリストに登録されます。陣営の雇用ペアのリストは以下の通りです。(左側"
+"が現在雇用可能なユニットです)"
 
 #. [lua]: wesnoth.wml_actions.wc2_recruit_info
 #: data/campaigns/World_Conquest/lua/era/era.lua:319
 msgid "You are not using a WC2 faction."
-msgstr ""
+msgstr "「世界征服 II」の時代を使っていません。"
 
 #. [lua]: artifacts.give_item
 #: data/campaigns/World_Conquest/lua/game_mechanics/artifacts.lua:146
 msgid "I cannot pick up that item."
-msgstr ""
+msgstr "私はこのアイテムを使えません。"
 
 #. [lua]: wesnoth.wml_actions.wc2_show_item_info
 #: data/campaigns/World_Conquest/lua/game_mechanics/artifacts.lua:228
 msgid "Remind me what this item does"
-msgstr ""
+msgstr "アイテムの効果を確認する"
 
 #. [lua]: wesnoth.wml_actions.wc2_place_bonus
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus.lua:24
 msgid "place"
-msgstr ""
+msgstr "場所"
 
 #. [lua]: span_font_family
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus.lua:34
 msgid "$name's $type"
-msgstr ""
+msgstr "$name| の$type"
 
 #. [lua]: bonus.found_artifact
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus.lua:149
 msgid "Hey, I found some treasure!"
-msgstr ""
+msgstr "おい、宝を見つけたぞ！"
 
 #. [lua]: bonus.found_hero
 #. [lua]: bonus.found_training
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus.lua:164
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus.lua:196
 msgid "Someone is here!"
-msgstr ""
+msgstr "誰かいるぞ！"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:3
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:5
@@ -269,30 +282,30 @@ msgstr ""
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:95
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:101
 msgid "Bane"
-msgstr ""
+msgstr "破滅"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:3
 msgid "Cargo"
-msgstr ""
+msgstr "積荷"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:3
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:11
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:13
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:15
 msgid "Disaster"
-msgstr ""
+msgstr "惨事"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:3
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:79
 msgid "Expedition"
-msgstr ""
+msgstr "探検隊"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:3
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:13
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:15
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:19
 msgid "Massacre"
-msgstr ""
+msgstr "大虐殺"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:3
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:5
@@ -317,7 +330,7 @@ msgstr ""
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:101
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:103
 msgid "Point"
-msgstr ""
+msgstr "場所"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:3
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:5
@@ -357,11 +370,11 @@ msgstr ""
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:101
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:103
 msgid "Rest"
-msgstr ""
+msgstr "安息地"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:3
 msgid "Rocks"
-msgstr ""
+msgstr "岩礁"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:3
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:9
@@ -387,7 +400,7 @@ msgstr ""
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:93
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:97
 msgid "Route"
-msgstr ""
+msgstr "道"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:3
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:11
@@ -411,7 +424,7 @@ msgstr ""
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:101
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:103
 msgid "Ruin"
-msgstr ""
+msgstr "廃墟"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:3
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:11
@@ -429,12 +442,12 @@ msgstr ""
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:101
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:103
 msgid "Vestige"
-msgstr ""
+msgstr "痕跡"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:3
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:59
 msgid "Waters"
-msgstr ""
+msgstr "水域"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:5
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:7
@@ -457,7 +470,7 @@ msgstr ""
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:95
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:101
 msgid "Curse"
-msgstr ""
+msgstr "呪い"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:5
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:7
@@ -481,7 +494,7 @@ msgstr ""
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:101
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:103
 msgid "Exile"
-msgstr ""
+msgstr "追放"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:5
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:7
@@ -514,7 +527,7 @@ msgstr ""
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:101
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:103
 msgid "Lair"
-msgstr ""
+msgstr "巣穴"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:5
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:7
@@ -550,61 +563,61 @@ msgstr ""
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:101
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:103
 msgid "Passage"
-msgstr ""
+msgstr "通路"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:7
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:9
 msgid "Death"
-msgstr ""
+msgstr "死地"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:7
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:19
 msgid "Quagmire"
-msgstr ""
+msgstr "泥沼"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:9
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:13
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:17
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:63
 msgid "Cemetery"
-msgstr ""
+msgstr "共同墓地"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:9
 msgid "Desert"
-msgstr ""
+msgstr "砂漠"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:9
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:11
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:19
 msgid "Desolation"
-msgstr ""
+msgstr "荒地"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:9
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:21
 msgid "Despair"
-msgstr ""
+msgstr "絶望"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:9
 msgid "Wasteland"
-msgstr ""
+msgstr "荒野"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:11
 msgid "Destruction"
-msgstr ""
+msgstr "残骸"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:17
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:21
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:51
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:83
 msgid "Cave"
-msgstr ""
+msgstr "洞窟"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:17
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:23
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:63
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:67
 msgid "Graveyard"
-msgstr ""
+msgstr "墓地"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:17
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:21
@@ -614,31 +627,31 @@ msgstr ""
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:51
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:81
 msgid "Grotto"
-msgstr ""
+msgstr "岩屋"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:19
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:101
 msgid "Bog"
-msgstr ""
+msgstr "湿地"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:19
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:21
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:59
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:61
 msgid "Hideout"
-msgstr ""
+msgstr "隠れ家"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:21
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:25
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:49
 msgid "Den"
-msgstr ""
+msgstr "アジト"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:21
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:25
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:27
 msgid "Dungeon"
-msgstr ""
+msgstr "迷宮"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:21
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:25
@@ -646,7 +659,7 @@ msgstr ""
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:49
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:51
 msgid "Mine"
-msgstr ""
+msgstr "鉱山"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:21
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:23
@@ -660,7 +673,7 @@ msgstr ""
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:83
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:101
 msgid "Secret"
-msgstr ""
+msgstr "秘密"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:23
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:85
@@ -671,11 +684,11 @@ msgstr ""
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:95
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:99
 msgid "Crypt"
-msgstr ""
+msgstr "遺体安置所"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:23
 msgid "Dream"
-msgstr ""
+msgstr "夢"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:23
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:85
@@ -685,37 +698,37 @@ msgstr ""
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:93
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:95
 msgid "Mausoleum"
-msgstr ""
+msgstr "霊廟"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:23
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:63
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:81
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:95
 msgid "Ossuary"
-msgstr ""
+msgstr "納骨堂"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:25
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:27
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:91
 msgid "Peak"
-msgstr ""
+msgstr "頂上"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:25
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:51
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:77
 msgid "Quarry"
-msgstr ""
+msgstr "採石場"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:25
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:51
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:77
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:79
 msgid "Site"
-msgstr ""
+msgstr "拠点"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:27
 msgid "Destiny"
-msgstr ""
+msgstr "運命"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:27
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:33
@@ -747,21 +760,21 @@ msgstr ""
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:99
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:101
 msgid "Domain"
-msgstr ""
+msgstr "領域"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:27
 msgid "Door"
-msgstr ""
+msgstr "扉"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:27
 msgid "Gate"
-msgstr ""
+msgstr "門"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:29
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:31
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:75
 msgid "Armory"
-msgstr ""
+msgstr "武器庫"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:29
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:31
@@ -778,21 +791,21 @@ msgstr ""
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:97
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:99
 msgid "Enclave"
-msgstr ""
+msgstr "飛び地"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:29
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:31
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:73
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:75
 msgid "Fair"
-msgstr ""
+msgstr "展示場"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:29
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:31
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:73
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:75
 msgid "Festival"
-msgstr ""
+msgstr "祭り"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:29
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:31
@@ -801,7 +814,7 @@ msgstr ""
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:87
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:89
 msgid "Market"
-msgstr ""
+msgstr "市場"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:29
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:33
@@ -812,7 +825,7 @@ msgstr ""
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:75
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:87
 msgid "Path"
-msgstr ""
+msgstr "小道"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:29
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:33
@@ -823,14 +836,14 @@ msgstr ""
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:75
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:87
 msgid "Road"
-msgstr ""
+msgstr "道路"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:29
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:31
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:73
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:75
 msgid "Tournament"
-msgstr ""
+msgstr "トーナメント"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:31
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:45
@@ -849,7 +862,7 @@ msgstr ""
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:97
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:99
 msgid "Refuge"
-msgstr ""
+msgstr "避難所"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:35
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:37
@@ -859,96 +872,96 @@ msgstr ""
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:85
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:91
 msgid "Memory"
-msgstr ""
+msgstr "記念碑"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:35
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:37
 msgid "Rock"
-msgstr ""
+msgstr "岩"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:35
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:39
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:41
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:43
 msgid "Triumph"
-msgstr ""
+msgstr "勝利"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:41
 msgid "Monolith"
-msgstr ""
+msgstr "モノリス"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:43
 msgid "Obelisk"
-msgstr ""
+msgstr "オベリスク"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:47
 msgid "Desire"
-msgstr ""
+msgstr "願望"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:49
 msgid "Well"
-msgstr ""
+msgstr "井戸"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:53
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:57
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:93
 msgid "Cliff"
-msgstr ""
+msgstr "断崖"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:53
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:77
 msgid "Plateau"
-msgstr ""
+msgstr "台地"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:55
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:57
 msgid "Bay"
-msgstr ""
+msgstr "入り江"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:55
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:57
 msgid "Coast"
-msgstr ""
+msgstr "海岸"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:55
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:57
 msgid "Harbor"
-msgstr ""
+msgstr "港"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:55
 msgid "Lighthouse"
-msgstr ""
+msgstr "灯台"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:55
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:57
 msgid "Port"
-msgstr ""
+msgstr "船着場"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:55
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:57
 msgid "Seaport"
-msgstr ""
+msgstr "海港"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:55
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:57
 msgid "Shore"
-msgstr ""
+msgstr "岸辺"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:57
 msgid "Beacon"
-msgstr ""
+msgstr "かがり火"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:57
 msgid "Signal"
-msgstr ""
+msgstr "信号"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:61
 msgid "Marsh"
-msgstr ""
+msgstr "沼地"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:63
 msgid "Delirium"
-msgstr ""
+msgstr "錯乱"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:67
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:81
@@ -960,43 +973,43 @@ msgstr ""
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:97
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:99
 msgid "Conclave"
-msgstr ""
+msgstr "秘密会議"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:69
 msgid "Farm"
-msgstr ""
+msgstr "農場"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:69
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:97
 msgid "Field"
-msgstr ""
+msgstr "野原"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:69
 msgid "Granary"
-msgstr ""
+msgstr "穀物庫"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:69
 msgid "Grassland"
-msgstr ""
+msgstr "草原"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:69
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:97
 msgid "Meadow"
-msgstr ""
+msgstr "牧草地"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:69
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:97
 msgid "Prairie"
-msgstr ""
+msgstr "大草原"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:69
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:97
 msgid "Shire"
-msgstr ""
+msgstr "領土"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:69
 msgid "Windmill"
-msgstr ""
+msgstr "風車"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:71
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:73
@@ -1004,15 +1017,15 @@ msgstr ""
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:77
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:79
 msgid "Outpost"
-msgstr ""
+msgstr "前線基地"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:77
 msgid "Shelter"
-msgstr ""
+msgstr "シェルター"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:81
 msgid "Altar"
-msgstr ""
+msgstr "祭壇"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:81
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:85
@@ -1022,19 +1035,19 @@ msgstr ""
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:93
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:95
 msgid "Oracle"
-msgstr ""
+msgstr "神託所"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:85
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:87
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:89
 msgid "Academy"
-msgstr ""
+msgstr "学院"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:85
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:87
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:89
 msgid "Library"
-msgstr ""
+msgstr "図書館"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:85
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:87
@@ -1043,13 +1056,13 @@ msgstr ""
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:93
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:99
 msgid "Sanctuary"
-msgstr ""
+msgstr "聖域"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:85
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:87
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:89
 msgid "School"
-msgstr ""
+msgstr "学校"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:85
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:87
@@ -1057,7 +1070,7 @@ msgstr ""
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:91
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:93
 msgid "Shrine"
-msgstr ""
+msgstr "神殿"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:85
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:87
@@ -1065,51 +1078,51 @@ msgstr ""
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:91
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:93
 msgid "Temple"
-msgstr ""
+msgstr "寺院"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:95
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:101
 msgid "Decay"
-msgstr ""
+msgstr "腐敗"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:95
 msgid "Moor"
-msgstr ""
+msgstr "原野"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:95
 msgid "Perversion"
-msgstr ""
+msgstr "背徳"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:97
 msgid "Glade"
-msgstr ""
+msgstr "低湿地"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:97
 msgid "Tree"
-msgstr ""
+msgstr "樹"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:99
 msgid "Observatory"
-msgstr ""
+msgstr "観測所"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:99
 msgid "Tower"
-msgstr ""
+msgstr "塔"
 
 #. [lua]: wc2_invest.invest
 #: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest.lua:142
 msgid "WC2 Invest"
-msgstr ""
+msgstr "WC2 Invest"
 
 #. [lua]: gui.widget.add_invest_item
 #: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:55
 msgid "Artifacts"
-msgstr ""
+msgstr "アーティファクト"
 
 #. [lua]: gui.widget.add_invest_item
 #: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:74
 msgid "Heroes"
-msgstr ""
+msgstr "ヒーロー"
 
 #. [lua]: gui.widget.add_invest_item
 #: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:77
@@ -1117,76 +1130,78 @@ msgid ""
 "Commanders will take your leader’s place when the leader dies, possible "
 "commanders:"
 msgstr ""
+"リーダーの死亡時、指揮官はリーダーの役割を引き継ぐことができます。指揮官の候"
+"補リスト："
 
 #. [lua]: gui.widget.add_invest_item
 #: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:84
 msgid "Commander"
-msgstr ""
+msgstr "指揮官"
 
 #. [lua]: gui.widget.add_invest_item
 #: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:84
 msgid "promote to leader"
-msgstr ""
+msgstr "予備のリーダー"
 
 #. [lua]: gui.widget.add_invest_item
 #: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:102
 msgid "possible units:"
-msgstr ""
+msgstr "候補リスト："
 
 #. [lua]: gui.widget.add_invest_item
 #: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:109
 msgid "Deserter"
-msgstr ""
+msgstr "脱走兵"
 
 #. [lua]: gui.widget.add_invest_item
 #. [lua]: preshow
 #: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:117
 #: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:44
 msgid "Training"
-msgstr ""
+msgstr "トレーニング"
 
 #. [lua]: gui.widget.add_invest_item
 #: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:124
 msgid "$name Training"
-msgstr ""
+msgstr "$name|トレーニング"
 
 #. [lua]: gui.widget.add_invest_item
 #: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:134
 msgid "After:"
-msgstr ""
+msgstr "適用後："
 
 #. [lua]: gui.widget.add_invest_item
 #: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:134
 msgid "Before:"
-msgstr ""
+msgstr "適用前："
 
 #. [lua]: gui.widget.add_invest_item
 #: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:139
 msgid "Other"
-msgstr ""
+msgstr "その他"
 
 #. [lua]: gui.widget.add_invest_item
 #: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:143
 msgid "+70 gold and +1 village"
-msgstr ""
+msgstr "+70 ゴールド、村 +1"
 
 #. [lua]: gui.widget.add_invest_item
 #: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:148
 msgid "Stock up supplies"
-msgstr ""
+msgstr "物資を蓄える"
 
 #. [lua]: gui.widget.add_invest_item
 #: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:153
 msgid "Gives 70 gold and places a village on your keep."
-msgstr ""
+msgstr "70 ゴールドを与え、あなたの主塔に村を一つ作る"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/promote_commander.lua:5
 msgid "No! This is the end!"
-msgstr ""
+msgstr "まだだ！まだ終わりでは無い！"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/promote_commander.lua:6
 msgid "Don’t lose heart comrades, we can still win this battle."
-msgstr ""
+msgstr "同志たちよ、諦めるな！我々はまだ戦えるぞ。"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/random_names.lua:2
 msgid ""
@@ -1457,58 +1472,324 @@ msgid ""
 "Zogier,Zora,Zorgal,Zorugoth,Zoruleive,Zouhan,Zouridga,Zubayr,Zuhayr,Zuree,"
 "Zzupde"
 msgstr ""
+"Aban,Abidin,Acacalide,Acimaëli,Acratoforo,Actarof,Adham,Adnan,Adramitio,Ael-"
+"Lagaleth,Aereste,Agshirt,Ahyaul,Aigaitha,Aigaithil,Aigaithol,Aigalam,"
+"Aigaling,Aigalir,Aigalol,Aigalsin,Aigatan,Aigatlod,Aigatsel,Aigatsol,Aigatu,"
+"Aigcataz,Aigcatil,Aigcating,Aigcatim,Aigcatsol,Aigcatur,Aigdring,Aigdril,"
+"Aigdersil,Aigdursol,Aigthain,Aigthasim,Aigthaug,Ainhuol,Ainuel,Aj Taum,"
+"Akoark,Akort,Akzalk,Alabrylla,Alaebrylla,Alaeniver,Alaitha,Alaith,Alaithol,"
+"Alaithsol,Alaithu,Alalil,Alalla,Alalol,Alalsol,Alalum,Alamade,Alamaitheol,"
+"Alanamix,Alaryan,Alatarc,Alating,Alatlor,Alatsil,Alberast,Aldarsol,Aldram,"
+"Aldril,Aldring,Aldrinm,Aldrulo,Aldrol,Aldumcatil,Aldura,Aldurlosp,Aldurol,"
+"Aleacla,Aleara,Alearka,Alena,Alengwen,Aleuksia,Al-Kuz,Alianora,Aligbrula,"
+"Alilonna,Alim,Alinash,Alingwen,Alinoe,Alistre,Almarcy,Alminzo,Alolonna,Alora,"
+"Althaam,Althail,Althalea,Althalo,Althaol,Althasil,Althasol,Althau,Althiela,"
+"Alubrylla,Aluneire,Aluniver,Aluryan,Alussa,Alwcla,Alwllyra,Alwlyan,Alwna,"
+"Alynoic,Alyra,Alyryan,Almahdi,Altaf,Amedë,Amilmaldur,Amorfir,Amowyn,Amprixta,"
+"Anaitharl,Anaithing,Anaithu,Analil,Anallom,Analol,Analsil,Analuh,Anataj,"
+"Anating,Anatir,Anatol,Anatsol,Ancataz,Ancatil,Ancatol,Ancattu,Andril,Andrih,"
+"Andrulop,Andrun,Anduril,Andurol,Andursol,Anduru,Anerion,Anexir,Anglachem,"
+"Anilad,Anilgawyn,Anitraz,Ankthorez,Anoithil,Anoush,Antarah,Anthaal,Anthaing,"
+"Anthaim,Anthaol,Anthasil,Anthasor,Anthaul,Anui,Anundil,Ardenia,Arnenvier,"
+"Arkarm,Arix,Arnondo,Asadel,Asbasalieg,Asgalioth,Asgertase,Asgriah,Ashraf,"
+"Asvetro,Athir,Atrede,Aufiloch,Auginet,Augithad,Augaithing,Augaithsil,"
+"Augaithur,Augalam,Augaling,Augating,Augatlo,Augatol,Augatsil,Augcatil,"
+"Augcatun,Augdrin,Augdrur,Augdursil,Augdura,Augduril,Augdursol,Augduruh,"
+"Augthail,Augthaim,Augthalo,Augthaol,Aungubulang,Ausrethgul,Auuglann,"
+"Auxdornath,Avenore,Axiz,Azimur,Azkabin,Azluheb,Azorein,Azurena,Azurix,Baart,"
+"Babreca,Bacbouc,Badri,Baelgaltir,Bagar,Baha,Bahamix,Bahiyy,Bahlagdi,"
+"Bahldrusk,Bahomet,Balfelor,Bakr,Bakri,Baligh,Balqueria,Bandar,Baogrish,"
+"Baradug,Barag,Barakah,Barbag,Barguntil,Barkuk,Barnasab,Bashnak,Baugahler,"
+"Baugdurol,Bayhar,Belineur,Belandil,Beleumaodir,Belise,Belithraldor,Belondel,"
+"Belurmeinseil,Belyrion,Bentesicime,Beolduf,Beraorg,Bercenego,Bergsnoth,"
+"Berigstan,Berq Tzerit,Bersevian,Beuchaliol,Bhunk,Bicoru,Bidush,Bielura,"
+"Bierthur,Bifix,Bik,Bilal,Bilerau,Bilg,Bilo,Binak,Biol,Biothfeorst,Birt,Bishr,"
+"Bisiluash,Bistemut,Biung,Bjouz,Bloik,Blokkar,Blygwyn,Bogdush,Bogor,Bok,Bolg,"
+"Bolunir,Bomduril,Borduntur,Borig,Borkuk,Borosnoat,Bort,Boshnak,Boulosh,"
+"Braedda,Brakor,Brassa,Bravyan,Breabrylla,Breall,Brealla,Brealonna,Breana,"
+"Brell,Brellyra,Brera,Brerka,Breryan,Bricla,Brirka,Brithaithol,Britomartix,"
+"Brobrylla,Brogk,Brollyra,Brona,Bronoic,Brora,Brugaranti,Brugung,Brungwen,"
+"Bruorka,Bruryan,Brwra,Brycla,Brynoic,Bukkak,Bulruk,Budail,Budush,Bugdish,Buk,"
+"Bunak,Burag,Burg,Burgaur,Burhan,Burk,Buurk,Cael Einur,Caella,Caena,Caengwen,"
+"Caervecuto,Caevyan,Caldur,Calebrindel,Calebrindir,Calianasa,Calimire,"
+"Calisbia,Calla,Calusa,Calówien,Canduil,Caranfir,Carang,Carduan,Caribdi,Carla,"
+"Carseglio,Cassa,Cealonna,Cecropido,Celang,Cera,Ceryan,Cewdda,Chagron,Chamil,"
+"Chiona,Churumol,Cibrylla,Cicla,Cinoic,Cira,Cirduel,Cirsai,Cissa,Cithraldur,"
+"Clacla,Claella,Claelyan,Claenoic,Clalla,Clallyra,Clara,Clarka,Clavyan,"
+"Cleacla,Cleall,Clealyan,Cleana,Cleezi,Clemirfone,Clenoic,Clezz,Clibrylla,"
+"Clill,Clillyra,Clilyan,Clinoic,Clissa,Clobrylla,Clollyra,Clona,Clothildrien,"
+"Clungwen,Clurka,Cluvyan,Clwdda,Clwlla,Clwvyan,Clydda,Clylla,Colgton,Cora,"
+"Coranthyo,Corkkar,Corodro,Corugush,Coryan,Cradagon,Crespuo,Crudvo,Crysgarin,"
+"Cucla,Cudda,Cundir,Curcopia,Curnacuyac,Curyan,Cwleina,Cwengwen,Cywivyan,"
+"Cydda,Cylasu,Cylla,Cyllyra,Cylyan,Cyniver,Cyvyan,Dabirmiliun,Dabnusagosh,"
+"Daedda,Daelyan,Daengwen,Daenoic,Dagnea,Dalaleika,Dallyra,Dalmalso,Damell,"
+"Dangwen,Danmonlulbam,Dara,Dassa,Deanoic,Deassa,Deborisa,Deimiluel,Delandel,"
+"Delaraldur,Delkkak,Della,Delilmaldor,Deliol,Delorion,Delundil,Demalot,Demla,"
+"Denya,Derceto,Deucalion,Devyan,Deyalh,Dhakwan,Dhogari,Dicla,Dijuf,Diniver,"
+"Dinsill,Dirala,Dirraquio,Dissa,Dobielon,Doburah,Dollyra,Donmolig,Dornoth,"
+"Dorobal,Doromina,Drahganilo,Drasan,Drensig,Drethmol,Dullyra,Dulonna,"
+"Dulaithil,Dulaithing,Dulaithlot,Dulaithsil,Dulaithsol,Dulalat,Dulalin,"
+"Dulalsil,Dulatil,Dulating,Dulatol,Dulatsol,Dulatur,Dulcatil,Dulcating,"
+"Dulcatlom,Duldril,Duldrik,Duldralo,Duldrol,Dulprisil,Duldruz,Duldurag,"
+"Dulduring,Duldursil,Duldurur,Dulnica,Dulthalol,Dulthasil,Dulthasol,Dulthaun,"
+"Dumanti,Dumuthi,Durbag,Durktuver,Duselia,Dwbrylla,Dwdda,Dwna,Dwnoic,Dwra,"
+"Dybrylla,Dydda,Dyssa,Eäréwiel,Eärilmadë,Ealumox,Ebernith,Ebougrush,Ebraham,"
+"Edalei,Edusten,Eefur,Efnix,Efnushguraj,Egnosian,Egulym,Einidia,Eisal,Eitcha,"
+"Eki,Eladrieng,Elacla,Elaedda,Elaell,Elaelonna,Elaessa,Elaevyan,Elaiseng,"
+"Elallyra,Elalonna,Elara,Elavern,Elebrildor,Elebrindel,Elélan,Elémbor,Elemir,"
+"Elealla,Eleanoic,Elenoic,Elerka,Eleusinion,Eliomir,Eliondil,Elithae,Elivyan,"
+"Elomuar,Elorfilad,Elradrien,Elrioldor,Elriolith,Elrorfir,Elsviriz,Elueso,"
+"Elulonna,Elurka,Elval,Elvandir,Elvaramir,Elvioldur,Elwllyra,Elwlonna,"
+"Elwngwen,Elwra,Elycla,Elyllyra,Elyngwen,Elyniver,Elyrion,Elyrka,Elzea,"
+"Enariol,Endaira,Endornathain,Enuilamde,Eowimbor,Eowiomir,Eowyla,Eponure,"
+"Eradash,Eradiush,Eragdish,Eragor,Eranak,Erang,Erarg,Erart,Erigdush,Erik,"
+"Erinak,Eriol,Erirag,Erirbag,Erirg,Erirt,Erishnak,Eriurk,Erogdush,Erok,Erong,"
+"Erorbag,Ertjon,Erudish,Erugar,Erugdush,Erulo,Erunk,Eruol,Erurag,Eruurk,Eshi,"
+"Eshkyrech,Esmodrigor,Estielem,Estinfalide,Estumbuprag,Etsenia,Eubuleo,"
+"Eugabor,Eulimn,Eulqaia,Eurinoa,Eur Masup,Evirigna,Evouli,Exnaug,Eyyu,Ezneale,"
+"Fabudain,Fadriendel,Faduhc,Faeminyon,Faervilim,Faiminei,Faisulal,Falvila,"
+"Fanthurfin,Falulmisso,Famyih,Fanaithsil,Farandir,Farlamir,Farseluo,Faugamel,"
+"Fazzi,Fáwyn,Feagoil,Febarnet,Feplerchaun,Ferabela,Ferdigan,Ferfamora,"
+"Fersijadmul,Festum,Feyz,Fgor,Fizlandilu,Fienar,Figalfin,Filanur,Filictor,"
+"Filvarëule,Finafgol,Findolith,Finduanor,Fioril,Fiorlah,Fizztrax,Flaamenthil,"
+"Flixta,Flizzil,Floqke,Fnigah,Foiginoch,Folmagauh,Fondarea,Fongaorn,Formontor,"
+"Forouzandeh,Fougul,Foutum,Fódë,Frellah,Freomeda,Frikeq,Frizzle,Fraonderic,"
+"Ftiotide,Fudail,Fuensithiem,Fuitheck,Furlamthaol,Furviramo,Fusenoyc,Fymn,"
+"Fyrion,Gabithol,Gadash,Gadriendil,Gadrieng,Gagdush,Gagor,Galalith,Galar,"
+"Galeck,Galela,Galeldur,Galelith,Galo,Galsh,Gamal,Gamilenao,Ganak,Ganamau,"
+"Ganelfir,Gaunk,Gaol,Garadin,Garag,Garaldor,Garchin,Gark,Garkuk,Garlan,Garlin,"
+"Garruj,Garushi,Garzilium,Gashnak,Gashinar,Gasthol,Gaugramelo,Gaunthelar,"
+"Gaushii,Gaustun,Gawna,Gegchi,Gelka,Gelknick,Genoro,Gerchog,Gewcla,Ghafur,"
+"Ghakhan,Ghani,Ghayth,Gienk,Gigor,Gillan,Gillohn,Ginak,Ging,Giombor,Girt,"
+"Gisharri,Glamadriel,Glamaithil,Glamaithim,Glamaithol,Glamaithsol,Glamalil,"
+"Glamaling,Glamalir,Glamallot,Glamaluf,Glamatug,Glamcatah,Glamcatil,Glamcatu,"
+"Glamdran,Glamdril,Glamdrelo,Glamdirsol,Glamdurain,Glamduring,Glamdurix,"
+"Glamthaal,Glamthasil,Glamthasol,Glamthaug,Glararil,Glaunurg,Glilmal,Glimir,"
+"Glomin,Glómir,Gnukk,Goark,Gogdish,Gogdush,Gomaithar,Gomaithil,Gomaithsol,"
+"Gomalil,Gomalux,Gomatarr,Gomatil,Gomating,Gomativ,Gomcatil,Gomcatlo,Gomdrah,"
+"Gomdril,Gomdring,Gomdrim,Gomdrol,Gomduri,Gomdurloh,Gomdursil,Gomdursol,"
+"Gomdurup,Gomthaatz,Gomthalor,Gomthasol,Gorfindil,Gorospkin,Gort,Goruk,Gorzol,"
+"Goshnak,Goust,Gozmiog,Grada,Grahklin,Grak,Gralg,Gralo,Granak,Graol,Graoug,"
+"Grarbag,Greragrog,Greth,Gribbel,Gridash,Griedush,Gridda,Grigar,Grignish,"
+"Grigor,Grilg,Grilo,Grink,Grirg,Grishnak,Grishuglunakh,Grithmau,Grodish,"
+"Grogar,Grolg,Gronk,Grorag,Grorg,Grork,Grort,Groshnak,Grotish,Grouk,Grudash,"
+"Grugdish,Grugdush,Gruk,Grulo,Grunk,Gruol,Grurg,Grurt,Gruurk,Grymma,Gugdish,"
+"Gugdush,Gulcating,Gulg,Gulo,Gumbundulun,Gumalsil,Gunak,Guong,Gurbag,Gurt,"
+"Gushnak,Gurk,Gurm,Guthmorcobel,Gwaera,Gwaessa,Gweacla,Gwedda,Gwerka,Gwicla,"
+"Gwirka,Gwobrylla,Gwoll,Gwona,Gwongwen,Gwonoic,Gworyan,Gwullyra,Gwussa,Gwycla,"
+"Gwydda,Gywvyan,Habohl,Habudamil,Hachuel,Hadash,Haderald,Hadiel,Hadum,"
+"Hafmaihjin,Hagar,Hagdelstaf,Hagdush,Hagor,Haik,Hakam,Halimanir,"
+"Hanfonderlincan,Hank,Haragdinul,Hareth,Harith,Harrmukhag,Harpalice,Harquem,"
+"Hashnak,Hasz,Hathnei,Haub,Haugduring,Haurapitko,Hausieg,Hayanami,Hayanee,"
+"Hebril,Heffez,Hegledna,Heldra,Herbet,Hertrazzir,Herudo,Hesz,Hezzi,Hidaspe,"
+"Hidush,Higduhn,Hilal,Hilg,Hilgarion,Hilmariand,Hilonome,Hilsmagath,Hinak,"
+"Hing,Hiol,Hiragna,Hirg,Hisiloem,Hobgar,Hodul,Hogor,Hoi,Hoidish,Holinurie,"
+"Holruk,Hong,Hool,Horbag,Horfindel,Horgsten,Hort,Hougssen,Housneak,Huadash,"
+"Hualg,Huchnubulo,Hudish,Huesk,Hugor,Huk,Hulo,Huol,Hurag,Hurbag,Hurimtum,Hurk,"
+"Hushnak,Huurk,Huyagharu,Ibmaecire,Ibmahalej,Ibsongord,Ichtka,Ictareuse,"
+"Idaluam,Idrasil,Iekal,Ifianasa,Ifbajimn,Igfeniorth,Igmavenar,Ihbur,Ihmusif,"
+"Ikatere,Ilamound,Ilisiade,Illa,Ilmiwir,Ilsalaah,Inai,Inalai,Inexi,Iraene,"
+"Irele,Iridelia,Irix,Iripza,Irobryne,Isadrieng,Isaurico,Iselan,Isilmandel,"
+"Isirion,Isorfilad,Isorfindir,Isurnym,Isuwyn,Isyndel,Isáwen,Isebridien,"
+"Isebrinia,Isemlath,Isendra,Iséng,Iseviel,Isil-Garith,Isithradien,Isithrarith,"
+"Isithrawiel,Isóthien,Ismozg,Issalai,Istirazu,Ithlurnae,Ivayinna,Iverone,"
+"Ivinhao,Ivonitha,Iznoud,Jabuoc,Jacla,Jadnor,Jaena,Jaerka,Jaevyan,Jalasad,"
+"Jalika,Jalyan,Jana,Jarame,Jarka,Jasmuniure,Jassa,Jaugwan,Jaumalon,Jawhar,"
+"Jeabrylla,Jealla,Jeanoic,Jelifem,Jemara,Jeniver,Jerco,Jerguo,Jeudriel,Jezzix,"
+"Jibran,Jibril,Jiel Dahr,Jiryan,Jissa,Jizz,Joll,Jolla,Jona,Jongwen,Jonoic,"
+"Jora,Jorka,Jovyan,Jowe,Jubair,Judda,Juffarin,Jugrund,Jull,Julonna,Jumah,"
+"Junayd,Jura,Jureh,Jusif,Juturne,Juwain,Jwll,Jwlyan,Jycla,Jyniver,Jynoic,"
+"Jyrka,Jyvyan,Kadar,Kadin,Kadir,Kahil,Kalesiw,Kaliez,Kalinthya,Kalknix,Kall,"
+"Kalynteri,Kategard,Karak,Karbuk,Kargnak,Karterak,Karum,Kauthyn,Kayrak,"
+"Kegchitosh,Kelkrar,Kepz,Kernix,Kersezz,Kerta,Kertrasz,Kerx,Kerxenix,Kezz,"
+"Khaliq,Khayr,Khimessei,Kiryle,Klexaz,Klezyx,Khangatilha,Kiepp,Kierkugar,"
+"Kilkrar,Kingrok,Kitara,Kladiul,Klept,Klowe,Klud,Koen,Kognucha,Kokkan,Kolbyn,"
+"Koleri,Kolk,Komak,Koqeiri,Koqnir,Korgnak,Koria,Kork,Koruck,Koslourg,Kou "
+"Korul,Kórrigan,Kramak,Krog,Krukrak,Krumuk,Kruo,Kuknuk,Kurkur,Kurmak,Krisva,"
+"Konstentyn,Korim,Koschye,Krarax,Krenarex,Krex,Krinex,Kroo,Kropstin,Kthulju,"
+"Kurmalund,Kushana,Kyrtk,Laeniver,Laenoic,Laeryan,Lagrest,Lagusster,"
+"Laivaergne,Laizix,Lalaith,Lamatro,Langwen,Laomedontu,Laphira,Larka,Lassa,"
+"Lauvin,Lazki,Lealonna,Lealyan,Ledda,Legilad,Legorfindil,Legorfirion,"
+"Legorniath,Leifarom,Leivura,Lelonna,Lelyan,Lengwen,Leprethnaum,Lerka,Lessa,"
+"Leucotoe,Leukritia,Leuria,Lewlla,Licurgo,Lidda,Lill,Lilupar,Lina,Lipku,Lirka,"
+"Liryan,Lisgurerg,Lisidice,Lisuvik,Livyan,Lixeez,Loberta,Lobrishg,Locla,Lodda,"
+"Lollyra,Lolonna,Lomurg,Lophareon,Lorbuc,Lorquiel,Lortand,Lorthac,Lorthik,"
+"Loturni,Loubregarc,Loungodul,Lowryan,Luanud,Luargko,Lucanaor,Lugoum,Lullah,"
+"Lulyan,Lungwen,Lunoic,Luriniel,Luryan,Luvatamir,Lwcla,Lwnoic,Lycla,Lylla,"
+"Lylyan,Lyna,Lynoic,Lómariand,Maecla,Maeniver,Maerilna,Magirilion,Mahjub,"
+"Mahmud,Mahrul,Maijzasal,Maimun,Makron,Malaputo,Malatare,Maldurse,Mamurio,"
+"Mansrabunag,Maraldur,Mariudan,Markaak,Mar Kaog,Markuk,Marthaol,Maru,Marvin,"
+"Masaw,Masude,Masulami,Mausika,Mavyan,Meacla,Mealyan,Meana,Meangwen,Meanoic,"
+"Medda,Medesicaste,Meglusur,Megrollu,Meiseleng,Mejmed,Melalin,Meleagride,"
+"Melesagor,Melianur,Melicenea,Melifior,Melisteo,Mengwen,Meniver,Meradda,"
+"Meraecla,Meraelyan,Merall,Merallyra,Merana,Meranoic,Merealonna,Mereangwen,"
+"Mereaniver,Merebrylla,Merella,Merengwen,Meressa,Mergcan,Merilyan,Merina,"
+"Merinoic,Merissa,Merivyan,Merknik,Merogiv,Merolla,Merolyan,Merona,Meroniver,"
+"Mersulla,Merubrylla,Merulda,Merurka,Merwlla,Merwnoic,Merwryan,Merydda,"
+"Merylyan,Mesligfor,Messa,Meuj,Merask,Meyumn,Mhoro,Midsidrie,Migly,Milandra,"
+"Milonna,Minoloti,Miomir,Mireyah,Mirsha,Miskapuo,Mithrand,Miyen Kha,Mohrouh,"
+"Molokti,Molyan,Mondir,Moniver,Monsantir,Mor Drokuhr,Morduf,Morelna,Morgemil,"
+"Morisyeva,Morridgen,Moruboa,Morunthya,Morwen,Mossa,Mosgarnaruth,Mot,Mouresla,"
+"Moxanzz,Mubdugollush,Mudda,Mughni,Muhodre,Mulcatsol,Mullyra,Mulyan,Muneirwe,"
+"Munsif,Muntasir,Muqtadir,Murad,Murid,Murshid,Murstain,Murtada,Muryan,"
+"Musawwir,Mwbrylla,Mwlyan,Mwngwen,Mwnoic,Mycla,Myall,Mylla,Myngol,Myra,Myvyan,"
+"Mylith,Nabrylla,Nadrieldor,Naecla,Naell,Nalith,Nalyan,Nangwen,Naraithil,"
+"Naraithing,Naraithol,Naraithsil,Naraithsol,Naraithum,Naralan,Naralil,"
+"Naralsil,Naraluh,Naratlol,Naratsil,Narcating,Narcativ,Narcatol,Narcatsil,"
+"Narcatsol,Nardrab,Nardril,Nardring,Nardrig,Nardrol,Nardarsil,Nardrsol,"
+"Nardrul,Nardurah,Narduril,Nardurol,Nargak,Nargig,Narthalo,Nasdrubolish,"
+"Nathlaroel,Naucrati,Naumaragoth,Naxisz,Nazmi,Nealla,Neallyra,Nealonna,Nearof,"
+"Neavyan,Nemertex,Nera,Nerogish,Nessa,Ngondo,Nibalusg,Nibiru,Nibrash,Nidal,"
+"Nieron,Nimbuel,Nimdroth,Ninoic,Niryan,Nivyan,Nix,Noalor,Nobrylla,Nocht,"
+"Noctaul,Nolla,Nonoic,Nokan,Norfilith,Norfindir,Norka,Noryan,Noughalya,Nuaym,"
+"Nucla,Nuhayd,Nuhmu,Nulla,Nulyan,Numair,Numan,Nungwen,Nuri,Nusktar,Nusrah,"
+"Nuvyan,Nuyll,Nwllyra,Nwryan,Nwvyan,Nybrylla,Nylyan,Nymn,Nyryan,Nyssa,Nyvyan,"
+"Obeor,Odailuo,Oden,Odiel,Odo,Odoacru,Odurme,Oenoxoe,Ofirion,Ogdenescu,Ogi "
+"Kegnach,Ogliara,Ohcan,Ohecyn,Oktubahli,Olamdursol,Olath,Olegar,Oleif,Oleiron,"
+"Olineur,Olk,Olufarin,Omerith,Omoran,Onesipo,Onore,Onyi,Oona,Opalei,"
+"Orguathise,Orguel,Orialdur,Oridash,Orkut,Orleomyr,Ormagg,Orofarnië,Oroloqi,"
+"Orrh,Orsendur,Orsifal,Orsil,Orugusk,Osarcyn,Osbuhgnax,Oselienn,Oshibi,Osse,"
+"Osteron,Othroshagrat,Otogarim,Otride,Otsere,Ougdram,Oumina,Owac,Owadd,"
+"Owaddyn,Owaecyn,Owaedry,Owain,Owaryn,Oweran,Owercyn,Owidry,Owinyc,Owodd,"
+"Owoddry,Owogwyn,Owollyn,Oworcyn,Oworraent,Owuddyn,Owugwyn,Owur,Owyran,Oxpeii,"
+"Padrusil,Pagdish,Pagor,Pahsur,Paige,Palo,Pambedrumne,Pamirie,Paol,Parag,"
+"Parduthal,Parsifeluem,Parviz,Pashnak,Paskemuthar,Pausul,Pedergish,Pegrorausg,"
+"Pelaithaz,Pelaithil,Pelaithing,Pelaithiq,Pelaithlot,Pelaithol,Pelaithsil,"
+"Pelaithsol,Pelalil,Pelaling,Pelalsil,Pelalsol,Pelalum,Pelatil,Pelating,"
+"Pelatol,Pelatsil,Pelatur,Pelcating,Pelcatlop,Pelcatol,Peldrat,Peldril,"
+"Peldrsol,Peldruh,Pelduril,Pelduring,Pelduri,Peldurol,Peldursol,Peldurum,"
+"Pelthaal,Pelthasil,Pelusso,Persidul,Perthwan,Pesralg,Pestiurn,Phalaxi,Phoebe,"
+"Phutalmo,Pidush,Pigrush,Pilg,Pinak,Piper,Pirgasb,Plaxih,Plesix,Podager,"
+"Podish,Podusg,Poledean,Polg,Porbag,Porg,Pourk,Poret,Porfildur,Poshnak,"
+"Pradish,Pragdush,Pragor,Pralg,Pralo,Prang,Praol,Prarag,Prarg,Prark,Prartsag,"
+"Prashnak,Praurk,Prerfosurz,Presch,Pridish,Prigar,Prigdish,Prigor,Prilg,Prilo,"
+"Prinak,Priol,Prirbag,Prirg,Prirt,Priurk,Prodash,Progush,Prolg,Prolo,Pronak,"
+"Prong,Pronk,Prool,Prourk,Prudish,Prugar,Prugdish,Pruk,Prunak,Prunk,Prurbarg,"
+"Prurg,Pruurk,Psipocum,Ptoliporto,Puladam,Pulg,Pulo,Punak,Punhg,Purag,Purg,"
+"Pusmahalu,Pustten,Puurk,Pyanepsie,Pyldur,Pyturc,Qadir,Qahhar,Qalioqe,Qam,"
+"Qanatloc,Qawi,Qayyum,Qeg Verkum,Qilenrama,Qitanira,Qizzeq,Quarismesta,Quddul,"
+"Quirenia,Quirisofo,Quisadz,Quroqoniba,Rabarecnu,Rabolux,Radash,Raebrylla,"
+"Raera,Raerka,Ragar,Ragdish,Rah,Rahlea,Rahunlar,Raithuin,Rakovisu,Ralonna,"
+"Raluenil,Ramnusia,Rang,Ranko,Ransevkurr,Raol,Rara,Rarag,Rarbag,Rark,Rarka,"
+"Rashid,Rashnak,Rassa,Rastud,Raurk,Ravsnuc,Rawdda,Razzaq,Reacla,Realla,Reana,"
+"Reangwen,Reh Shai,Rella,Relyan,Rengwen,Rei,Reknak,Renuto,Rerka,Reshan,Revyan,"
+"Rewllyra,Riamn,Rialna,Rik,Rileg,Rilluna,Rilmandil,Rilmasil,Rilyan,"
+"Rimilmandir,Rinak,Rirg,Rirka,Rithrandil,Riwlla,Roacura,Rodry,Rodush,Rogdish,"
+"Rohul,Roirk,Rolduen,Rolo,Ronak,Rorfindil,Rorta,Roth,Rubenof,Rucla,Rudash,"
+"Rufaroz,Rugar,Rugdish,Ruhnar,Ruk,Rulairuki,Runadrieng,Rung,Ruol,Rurag,Ruryan,"
+"Rushnak,Ruslika,Ruvlonna,Rwngwen,Rybrylla,Ryna,Ryngwen,Rynk,Rytuirka,Sador,"
+"Saell,Saellyra,Saenuber,Saerka,Saessa,Sahnor,Saibarini,Sailik,Salanix,"
+"Salimeh,Salik,Sallyra,Salmiegar,Salmiriem,Samosatu,Sandix,Sangaratil,Sanoic,"
+"Sanrauv,Saprazz,Sapnux,Saqr,Sara,Saria,Sariyah,Sarjine,Sarrusavag,Sarumegor,"
+"Sasegar,Sassa,Sati,Satral,Savnish,Schohozarog,Scorbu,Searka,Sebetide,Sebrun,"
+"Sehetti,Seif Girud,Seliandra,Selinunt,Seluomon,Sembriolibam,Semirami,Sena,"
+"Senoic,Sentinumo,Senzlerne,Seplattin,Seprorian,Sera,Sergustu,Serieva,Seulona,"
+"Sgalisse,Sgriag,Shaelmoc,Shakur,Siddiq,Sieulieare,Sigrery,Sigwuverno,"
+"Silfeleng,Sillumatti,Silmiril,Silonna,Sinan,Sinderul,Sinobia,Sira,Siraj,"
+"Sireyan,Sirvou,Sivnisiek,Skalix,Skandim,Skazix,Skeely,Skeezun,Sklizle,Skloe,"
+"Skorh,Skrez,Slive,Slizil,Slughirago,Slouag,Smirgaurn,Smirk,Sniuhgor,"
+"Sodelstan,Soederlein,Soereng,Sofian,Soldevig,Soleinth,Sonna,Soraceno,Sorekol,"
+"Sorfind,Sorivor,Sorka,Sorolle,Sougorn,Sowngwen,Soxgeurt,Sprizz,Sqal,Srygor,"
+"Ssexur,Sterizz,Stur,Subhi,Subrylla,Sucrator,Sufyan,Sugner,Suhayb,Sull,"
+"Sulonna,Sulyan,Suniong,Suqruto,Sura,Surdakhaur,Sussa,Suvok,Sverunidgi,"
+"Svignir,Swanoic,Swlla,Swlyan,Swvyan,Sylar,Syllyra,Sylyan,Syssa,Tadriendir,"
+"Tagnia,Takolak,Talerez,Tallasue,Talsthaf,Taltibio,Tanaël,Taral,Taraldur,"
+"Tarcatum,Tarex,Tarigolin,Tarnix,Tarsaff,Tarthmoul,Tarysth,Tauh,Taumacu,"
+"Tavyscite,Tawfiq,Tawhid,Tawwab,Taxiarqi,Taymullah,Taysir,Tel-Fabiel,Telxipea,"
+"Temisnioz,Teptum,Tequely,Terpsicore,Terthasol,Tesmurad,Teugarsen,Thael,"
+"Thalaisiel,Tharil-Garën,Thessaly,Thirgoalin,Thorsgan,Thrambor,Thraom,Thraral,"
+"Thrilgamir,Thrilmandel,Thrimir,Thrion,Throlar,Thrund,Thryriand,Thyndamara,"
+"Tilgan,Tilmalad,Timoh,Tinimir,Tinindil,Tinithrar,Tinoldor,Tinond,Tinorfind,"
+"Timbirtidul,Tirasch,Tirax,Tirix,Tissamo,Tiznuscievi,Tombadulum,Torval,"
+"Torfildur,Torquc,Trabuk,Trakkon,Trathdurl,Treidursol,Tremacalo,Trithaithan,"
+"Trithaithil,Trithaithif,Trithaithlov,Trithaithsil,Trinaithsol,Trirtaithu,"
+"Trigalilh,Trithalol,Trithata,Trislatil,Trithatloh,Triwatsol,Trithcatlo,"
+"Trithcatsol,Trithcatug,Trithdril,Trithdring,Trithdrim,Trithdrloh,Trithdrun,"
+"Trithduril,Trithduring,Trithdurlom,Trithdurol,Trithdursil,Trithduru,Trithaap,"
+"Trimathail,Triththaing,Triththauq,Trogish,Tufail,Tujcara,Tunorfiwyn,Uarso,"
+"Ubereo,Ucalea,Udirne,Udomaela,Uffestux,Ugmelorth,Uksul,Ulmë,Umutno,"
+"Unadrieldor,Unadrier,Unalah,Unaraldur,Unaril,Unénia,Uneldor,Ungolyost,Unil-"
+"Gadia,Unilmadia,Unindra,Uniolia,Uniolith,Unionia,Unioril,Unondir,Unorfildor,"
+"Unorfiril,Unorfiwen,Unulad,Unóndra,Unuviel,Unynia,Uradriela,Uraclya,"
+"Uradriedia,Urambar,Uránia,Urárith,Urebriclya,Ureclya,Urilmadia,Urilmawiel,"
+"Uriolia,Urkar,Urkiark,Usguthmaonu,Ushvasali,Uspai,Usthinier,Utter,Utok,Uzra,"
+"Vaclo,Vadoish,Vadush,Vaescansa,Vak,Vaklin,Valcemlegduf,Valinior,Valnirra,"
+"Valnit,Valnor,Vandir,Varag,Varala,Vararion,Varbag,Vashitt,Vaudash,Vebril,"
+"Vebrilah,Vebrinduil,Velisk,Vellin,Velnick,Venduvalo,Venezh,Veralon,Veramo,"
+"Verath,Verditt,Verilial,Verkon,Verlinn,Vermad,Vernoro,Verra,Vertick,"
+"Verusagno,Veshtar,Veskalica,Vigar,Vigdish,Vigor,Vihlo,Vilg,Vilsug,Vink,Virag,"
+"Virishneya,Virnella,Viroika,Virrugo,Virt,Virugusso,Vishnak,Vitrusgha,"
+"Vixezburto,Vladnir,Vladuanov,Vogdish,Vogor,Volugnaso,Vonak,Vorfin,Vorfindil,"
+"Vorg,Vork,Voshnak,Vougielan,Vourk,Vradash,Vragar,Vragdush,Vragor,Vralo,Vrang,"
+"Vrarbag,Vrarg,Vrart,Vraurk,Vren,Vridash,Vridish,Vrigor,Vrinak,Vring,Vrirt,"
+"Vrishnak,Vriurk,Vrodash,Vrogar,Vrogor,Vrolo,Vrong,Vrorg,Vrork,Vrudish,"
+"Vrugdush,Vrulg,Vrung,Vruol,Vrurg,Vrurt,Vruurk,Vudish,Vugnael,Vuk,Vulg,Vulo,"
+"Vulsulta,Vumla,Vunak,Vurag,Vurbag,Vurg,Vushnak,Vushtin,Vylgrid,Wadud,Wajid,"
+"Wakh,Wakil,Walayla,Warathan,Warith,Wedielya,Wendomilla,Weira,Westraz,"
+"Widviringio,Wiggur,Wilnira,Wilp,Windego,Wintfeil,Wonrunmaldin,Worolusga,"
+"Wotiah,Wurgturah,Xaffrasz,Xaigatil,Xaihan,Xalertha,Xarangat,Xartrez,Xasz,"
+"Xaztex,Xeminei,Xenghir,Xerxix,Xibir,Xiesza,Xirasz,Xirr,Xirtra,Xirz,Xiterz,"
+"Xixzart,Xoishcan,Xoloshiva,Xour,Xue,Xu Ghamul,Yanirah,Yarabo,Yatungoa,Yaugol,"
+"Yazan,Yazid,Yeamila,Yeseriz,Ygrille,Ylena,Ylogcan,Yogthila,Yowuddry,Yrt,"
+"Ysacla,Ysaenoic,Ysaerka,Ysanoic,Yseacla,Ysealonna,Ysealyan,Ysedda,Ysell,"
+"Yselonna,Ysilyan,Ysinoic,Ysodda,Ysongwen,Ysura,Yswniver,Ysycla,Ysylla,"
+"Ysylyan,Ysyrka,Ysyssa,Yuhgurtah,Yunur,Yuraena,Yuriaz,Yushua,Yusri,Yutarh,"
+"Zaembriel,Zagriw,Zahir,Zaki,Zakwan,Zalamua,Zalde,Zalmut,Zandler,Zarep,Zazabi,"
+"Zburait,Zebeli,Zedrix,Zeikhal,Zeliste,Zenur,Zhiro,Ziembieth,Zilrix,Ziyad,"
+"Zogier,Zora,Zorgal,Zorugoth,Zoruleive,Zouhan,Zouridga,Zubayr,Zuhayr,Zuree,"
+"Zzupde"
 
 #. [lua]: training.describe_training_level
 #: data/campaigns/World_Conquest/lua/game_mechanics/training.lua:111
 msgid "$name Training Maximum Level"
-msgstr ""
+msgstr "$name|トレーニング最大レベル"
 
 #. [lua]: training.describe_training_level
 #: data/campaigns/World_Conquest/lua/game_mechanics/training.lua:115
 msgid "$name Training level $level"
-msgstr ""
+msgstr "$name|トレーニング レベル $level"
 
 #. [lua]: training.describe_training_level2
 #: data/campaigns/World_Conquest/lua/game_mechanics/training.lua:124
 msgid "Maximum Level"
-msgstr ""
+msgstr "最大レベル"
 
 #. [lua]: training.describe_training_level2
 #: data/campaigns/World_Conquest/lua/game_mechanics/training.lua:126
 msgid "level $level"
-msgstr ""
+msgstr "レベル $level"
 
 #. [lua]: training.generate_message
 #: data/campaigns/World_Conquest/lua/game_mechanics/training.lua:143
 msgid "$chance| chance to $arrow $desc"
-msgstr ""
+msgstr "$chance| の確率 $arrow $desc"
 
 #. [lua]: training.apply
 #: data/campaigns/World_Conquest/lua/game_mechanics/training.lua:219
 msgid "trained"
-msgstr ""
+msgstr "訓練"
 
 #. [lua]: training.apply
 #: data/campaigns/World_Conquest/lua/game_mechanics/training.lua:220
 msgid "female^trained"
-msgstr ""
+msgstr "訓練"
 
 #. [lua]: training.describe_bonus
 #: data/campaigns/World_Conquest/lua/game_mechanics/training.lua:272
 msgid "Nothing to learn here"
-msgstr ""
+msgstr "学べることはありません"
 
 #. [lua]: training.describe_bonus
 #: data/campaigns/World_Conquest/lua/game_mechanics/training.lua:274
 msgid "From $level_before to $level_after"
-msgstr ""
+msgstr "レベル $level_before から $level_after"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:5
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:57
 msgid ""
 "You look like you could use some help. Mind if I join in? It’s been a while "
 "since I had a good fight!"
-msgstr ""
+msgstr "あなた方に味方しても良いだろうか？最近は良い戦いができてないのでな！"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:6
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:273
@@ -1518,33 +1799,35 @@ msgstr ""
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:340
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:349
 msgid "Excellent. We could always use more help."
-msgstr ""
+msgstr "素晴らしい。手助けならば大歓迎だ！"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:9
 msgid "’bout time. Been forever since I had a good fight, eh?"
-msgstr ""
+msgstr "近頃ずっとマトモな戦いができてない。俺も混ぜてくれよ？"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:14
 msgid "Who you? I help you smash!"
-msgstr ""
+msgstr "オマエ誰？オレ、オマエと一緒戦う！"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:19
 msgid ""
 "My clan was destroyed long ago, leaving me to fend for myself. Let me join "
 "your army and I will fight as though your clan was my own!"
 msgstr ""
+"ずっと前にクランが潰されてからは、一人ぼっちでやってきた。仲間にしてくれれ"
+"ば、お前たちのことを家族と思って一緒に戦うぞ！"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:24
 msgid "Hey boss. Looks like you’ve got some prey that need killing."
-msgstr ""
+msgstr "よお大将、誰か殺したいヤツがいるようだな。"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:29
 msgid "I hunts. I join you, I hunts good for you!"
-msgstr ""
+msgstr "オレ狩る。オマエ仲間。オレ、オマエのために狩る！"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:34
 msgid "Very well. But take care where your dog does its stuff."
-msgstr ""
+msgstr "それは良い。しかし、犬が「する」場所には注意を払うように。"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:38
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:372
@@ -1552,6 +1835,8 @@ msgid ""
 "Heh, looks like you whelps might be getting in over your heads. Good thing "
 "I’m here now to win this fight for ya, huh?"
 msgstr ""
+"フン、小僧共、オツムが足りてないようだな。しかしオレに出会えるとはツイている"
+"な。オレがいれば百人力だぞ？"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:43
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:362
@@ -1559,49 +1844,55 @@ msgid ""
 "I too have come a long way to this strange land. Perhaps we were destined to "
 "join blades here."
 msgstr ""
+"私もこの奇妙な地を長く旅して来た。我々はここで出会い、力を合わせる運命だった"
+"のだろう。"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:48
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:86
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:95
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:152
 msgid "Looks like we fished some tasty help."
-msgstr ""
+msgstr "うまそうな仲間が釣れたようだぞ。"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:52
 msgid "Need a friendly blade?"
-msgstr ""
+msgstr "信頼できる刃はいらないか？"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:62
 msgid ""
 "The mother forest sends you her blessings. Let us join together against her "
 "foes."
-msgstr ""
+msgstr "あなた方に母なる森の祝福を。手を取り合って敵に立ち向かいましょう。"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:67
 msgid "Yeah, flower power!"
-msgstr ""
+msgstr "イエー！草花の力を！"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:71
 msgid ""
 "I offer you the service of my arrows and my steed. You will find none that "
 "fly faster than either."
-msgstr ""
+msgstr "我が力になろう。我が弓、そして友たる馬、その疾さを篤と見よ！"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:76
 msgid "Hmm! Welcome, tree-friends. We will pound our enemies into dust!"
-msgstr ""
+msgstr "ムムム！ようこそ、我等樹木の友よ。敵を粉々に打ち砕いてやりましょう！"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:81
 msgid ""
 "Greetings, friends. I am a lone hunter and have no legions of warriors to "
 "offer you, but I will gladly lend my arms to your cause."
 msgstr ""
+"ごきげんよう、友よ。私は一人ぼっちの漁師で、軍勢を提供することはできません。"
+"しかし、力の限り戦うと誓いましょう。"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:90
 msgid ""
 "You have come a long way over the ocean, yet I see that you know little of "
 "her ways. Let me show you."
 msgstr ""
+"ここに来るまでに長く海を越えてきたのでしょう。それでもあなた方の知らないこと"
+"はたくさんあります。私が教えてあげましょう。"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:99
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:137
@@ -1609,16 +1900,22 @@ msgid ""
 "You’re not from around here, but I seem to find myself between employers at "
 "the moment and I’m not picky. I’ll fight for you, if you’ll have me."
 msgstr ""
+"ここらの者では無いようだ。しかし、気に入った。私の雇い主になってみるつもりは"
+"ないか？私は役に立つぞ。"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:104
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:113
 msgid "Of course. How could a girl say no to a man riding a horse?"
 msgstr ""
+"歓迎します。あなたのような馬上の男性に女の子が「ノー」と言えるわけがないで"
+"しょう？"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:108
 msgid ""
 "Hurrah! Now THIS is a battle too grand to be missed. Save some for me, eh?"
 msgstr ""
+"ウラーー！こんなでかい戦いを見逃せるわけがないだろう！オレにもちょっとわけて"
+"くれよ、な？"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:117
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:353
@@ -1627,24 +1924,30 @@ msgid ""
 "Ho there, friends! I am but a soldier of humble circumstances, yet long have "
 "I dreamed of joining great wars beyond our shores. Let me join your mission!"
 msgstr ""
+"よお！俺はしがない兵士だが、海の向こうで大きな戦争に参加するのが夢なんだ。だ"
+"からオレを仲間にしてくれよ！"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:122
 msgid ""
 "Looks like you’re a bit down on your luck, my friends. But now that I am "
 "here, there’s nothing to worry about!"
-msgstr ""
+msgstr "よお、しけたツラをしているな。しかしオレがいれば何も心配いらないぜ！"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:127
 msgid ""
 "Finally reinforcements are here! I’ve been pinned down for days. Help me "
 "fight my way out of here and I’ll gladly follow you!"
 msgstr ""
+"やっと援軍が来た！私は何日もここに釘付けになっていました。道を切り開くつもり"
+"ならば、喜んで手を貸しましょう！"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:132
 msgid ""
 "Greetings, my lords. I have watched your battle from afar and yearn to join "
 "such a glorious campaign. I pledge myself to your service!"
 msgstr ""
+"こんにちは、我が君よ。遠方よりあなた方の戦いを見て、私もこのような名誉ある戦"
+"に身を投じたいと心より思いました。これよりあなたの命に従いましょう！"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:142
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:357
@@ -1652,6 +1955,8 @@ msgid ""
 "Long have I studied the ways of lore, and I have much wisdom to offer. Allow "
 "me to guide you on your quest and together we will accomplish great things!"
 msgstr ""
+"長き時をかけて学んだこの知識、必ずやお役に立つでしょう。この冒険の旅の案内、"
+"私にお任せください。共に大いなる名声を勝ち取りましょう！"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:147
 msgid ""
@@ -1659,23 +1964,31 @@ msgid ""
 "have few warriors to spare among us, I would gladly lend my trident to your "
 "cause."
 msgstr ""
+"初めまして、あなた方が窮地にあると聞きました。我々マーフォークも余裕が無く、"
+"十分な戦力を送ることはかないませんが、せめて私とこのトライデントが力の限りお"
+"手伝いしましょう。"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:156
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:210
 msgid "Having trouble, eh? Never worry, lads, we’ll sort ’em out soon enough!"
 msgstr ""
+"何か問題か、ん？心配いらんぞ小僧。ワシが全部まとめてぶった切ってくれる！"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:161
 msgid ""
 "You’ve got me, guv, it’s a fair cop! Just lemme work for you instead. You "
 "won’t regret it, guv, I promise!"
 msgstr ""
+"俺を捕らえたダンナ、あんたは腐ったオマワリとは違うよな？あんたのために働くか"
+"らここは見逃してくれ！後悔はさせねえから！"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:166
 msgid ""
 "Listen up, ye primitive screwheads! This... is me BOOM STICK. Lemme show you "
 "what this baby can do!"
 msgstr ""
+"聞け、そこの無学な者よ！これは……ワシの「爆音棒」。この泣き虫の泣き声、お前に"
+"も聞かせてやろう！"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:171
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:306
@@ -1683,12 +1996,14 @@ msgid ""
 "What, you want my help? A guy like me? Huh, that’s rich. Oh well... let’s "
 "give it a shot, eh?"
 msgstr ""
+"何だ、俺の力を貸せだと？俺なんかの？フン、正気か……？まあいいさ…… あれを射てば"
+"いいんだろう？"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:176
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:382
 msgid ""
 "A soldier is no good without something to fight for. Let me fight for you!"
-msgstr ""
+msgstr "兵士は何の目的も無く戦うことはできん。ワシはお前たちのために戦おう！"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:181
 msgid ""
@@ -1696,86 +2011,103 @@ msgid ""
 "right? Looks like you might be in a tight spot, but don’t worry. No one’s "
 "better at getting out of tight spots than me, boss!"
 msgstr ""
+"おいおい、落ち着けって！俺は別に何もしちゃいない。困った時はお互いさまだろ"
+"う？何かヤバい状況みたいだが心配するな。俺はこういうのを切り抜けるのが大の得"
+"意なんだぜ！"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:186
 msgid "Chin up, lads. Today is a good day to die!"
-msgstr ""
+msgstr "アゴをあげろ、小僧！今日は死ぬには良い日だぞ！"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:191
 msgid "Brave words. Welcome to The Fight Club..."
-msgstr ""
+msgstr "勇ましいな。ファイト・クラブへようこそ……"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:194
 msgid "Brave words. Welcome little big man."
-msgstr ""
+msgstr "勇ましいな。小さいが大きい男よ、歓迎するぞ。"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:198
 msgid "Need a hand? Me an’ me bird can get just about anywheres you need."
-msgstr ""
+msgstr "手が要る？ワシらならすぐにどこにでも向かってやれるぞ。"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:203
 msgid "Sounds good. You scared me for a moment."
-msgstr ""
+msgstr "それは良い。一瞬悪寒が走ったのは気のせいだな、うん。"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:206
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:248
 msgid "Cool. We could always need more air power."
-msgstr ""
+msgstr "素晴らしい。空を飛べるやつが増えるのはいいことだ。"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:215
 msgid ""
 "The ancient spirits tell me my destiny lies with yours. My sword is at your "
 "command."
 msgstr ""
+"太古の霊魂が言うには、我が運命はお前たちと共にあるらしい。ならば我が刃を捧げ"
+"よう。"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:220
 msgid ""
 "Stand fast, for I bring you the strength of dragons to assist you in your "
 "battle!"
 msgstr ""
+"ここがふんばり所だぞ！お前たちの戦い、私がドラゴンの力でもって助けてやろう！"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:225
 msgid ""
 "Today is a most auspicious day for you, for I deem you worthy of the power "
 "of dragonfire. Show me your foes and I will incinerate them!"
 msgstr ""
+"今日は良い日だ。お前たちがドラゴンの炎を用いるに相応しいと私が認めた日なのだ"
+"から。さあ敵はどこだ！全て焼き払ってくれよう！"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:230
 msgid "Perfect. We can always use more firepower."
-msgstr ""
+msgstr "完璧だ。炎の力はいくらあっても足りないのだから。"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:234
 msgid ""
 "You no fight good enough, no have saurian way. I show you way of saurian!"
 msgstr ""
+"お前戦い下手くそ。トカゲのやりかた知らない。俺がトカゲのやりかた見せてやる！"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:239
 msgid "Sure, bro..."
-msgstr ""
+msgstr "兄弟……そうだな……そうかもな…"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:243
 msgid ""
 "You may be out to take over the land and the seas, but you’ll never get "
 "anywhere without control of the skies. Fortunately I’m here to help you!"
 msgstr ""
+"大地や海を支配するには空の支配が欠かせない。お前たちは幸運だ、私がその助けと"
+"なってやるのだから！"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:252
 msgid ""
 "Tribe fall long time ago, now tribe lost. This last fight of tribe. I fight "
 "with you, make last very great!"
 msgstr ""
+"一族ずっと前に滅びた、もう一族無い。俺の戦い一族の最後の戦い。俺、お前と一緒"
+"戦う。一族の最期は華々しく！"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:257
 msgid ""
 "Don’t hit me! I’m just your average regular friendly talking skeleton, see? "
 "Looks like you fellows could use some help!"
 msgstr ""
+"攻撃しないで！私はとっても普通で平均的、それでいて友好的に会話ができる、とっ"
+"てもありふれたスケルトンですよ？おやおや、私の力がお役に立ちそうでしょうか？"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:262
 msgid ""
 "I am called forth from eternal rest, bound to follow he who called me. Show "
 "me the enemy, master!"
 msgstr ""
+"我、汝の呼びかけに応じ、永遠の眠りより戻りたり。敵は何処ぞ、今こそ我が力を示"
+"さん！"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:267
 msgid ""
@@ -1783,10 +2115,13 @@ msgid ""
 "I say! I’m sure we’ll make a simply smashing team-up. We can sort this lot "
 "out and be done by tea, what?"
 msgstr ""
+"ねえ、そこの君！なんか困っているようだね。そんなクヨクヨしちゃだめ！ボクらが"
+"力を合わせればあんなヤツラは大したことないんだから！それで、さっさと片付けて"
+"お茶でもするってのはどう？"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:270
 msgid "Have at thee, unholy abomin... wait, huh?"
-msgstr ""
+msgstr "出たな不浄な化け物め………って、あれっ？"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:277
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:377
@@ -1794,71 +2129,78 @@ msgid ""
 "You may not trust me or my reasons, but it seems you are not in a position "
 "to be choosy about your allies. Let me assist you and you just may survive."
 msgstr ""
+"お前は私を信じられないだろう。それでも、お前には選り好みをする余裕はあるま"
+"い。生き残りたいのならば我が力を頼るのだ、そうするしかないのだろう？"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:282
 msgid ""
 "Who calls me from my slumber? I sense a great battle being joined. Point me "
 "towards the enemy and I will feast upon their very souls!"
 msgstr ""
+"永遠の眠りを妨げる者は誰だ？これは……大きな戦があるというのか？ならば敵を示"
+"せ、私がその魂を喰らい尽くしてやろう！"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:287
 msgid "Skreeeeeeee!"
-msgstr ""
+msgstr "キィィーーーーーー！"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:290
 msgid ""
 "This creature seems unusually intelligent for its kind. Perhaps it will help "
 "us!"
 msgstr ""
+"こいつはこの種族としてはありえない程に賢いようだ。力を貸してくれるかもしれな"
+"い！"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:297
 msgid "You friend are? I friend help!"
-msgstr ""
+msgstr "おまえトモダチ？トモダチ助ける！"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:302
 msgid "Me friend. We can play together."
-msgstr ""
+msgstr "おれトモダチ。イッショにアソブ。"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:311
 msgid "Ah, please no hurtings me! I helps you, see?"
-msgstr ""
+msgstr "ああ、いじめないで！俺がんばる、許して？"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:314
 msgid "Fine. We could need a small help."
-msgstr ""
+msgstr "ああ。できるだけがんばってくれ。"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:317
 msgid "Excellent. We could always need cannon fodder."
-msgstr ""
+msgstr "すばらしい。使い捨て要員はどれだけいても足りないくらいだからな。"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:324
 msgid "..."
-msgstr ""
+msgstr "……"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:327
 msgid "Odd, it doesn’t seem to attack. I wonder if we can use it?"
-msgstr ""
+msgstr "なんだ、攻撃してこないな？仲間になりたいのか？"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:335
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:344
 msgid "Oooh oooh oooh! I want to help! Pick me, pick me!"
 msgstr ""
+"オ〜オ〜オ〜！俺はお前を助けたい！さあ連れてけ、連れてってくれよ、なあ！"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:337
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:346
 msgid "...fine. I guess."
-msgstr ""
+msgstr "……ああ、まあ良いんじゃないか。"
 
 #. [lua]: preshow
 #: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:25
 #: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:27
 msgid "Game Mechanics"
-msgstr ""
+msgstr "ゲームの特殊設定"
 
 #. [lua]: preshow
 #: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:28
 msgid "<b>Gold</b>\n"
-msgstr ""
+msgstr "<b>ゴールド</b>\n"
 
 #. [lua]: preshow
 #: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:29
@@ -1868,11 +2210,15 @@ msgid ""
 "not directly related to the carryover amount.\n"
 "\n"
 msgstr ""
+"シナリオ間のゴールド引き継ぎ率は 15% で、全プレイヤーに均等に配られます。負の"
+"値の場合は引き継がれません。早期終了ボーナスについてはプレイヤー数で割られた"
+"形で配分されます。(単に村を占領して待つよりはおトクです。)\n"
+"\n"
 
 #. [lua]: preshow
 #: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:30
 msgid "<b>Autorecall</b>\n"
-msgstr ""
+msgstr "<b>自動召還</b>\n"
 
 #. [lua]: preshow
 #: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:31
@@ -1881,11 +2227,14 @@ msgid ""
 "scenario with no cost (up to castle size).\n"
 "\n"
 msgstr ""
+"<b>英雄</b>特性を持つユニットはシナリオ開始時に無料で召還されます。(ただし、"
+"城のサイズまで)\n"
+"\n"
 
 #. [lua]: preshow
 #: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:32
 msgid "<b>Recall Cost</b>\n"
-msgstr ""
+msgstr "<b>召還コスト</b>\n"
 
 #. [lua]: preshow
 #: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:33
@@ -1893,11 +2242,13 @@ msgid ""
 "Units costing less than 17 gold are cheaper to recall.\n"
 "\n"
 msgstr ""
+"17 ゴールド未満のコストのユニットは召還コストが安くなります。\n"
+"\n"
 
 #. [lua]: preshow
 #: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:34
 msgid "<b>Training</b>\n"
-msgstr ""
+msgstr "<b>トレーニング</b>\n"
 
 #. [lua]: preshow
 #: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:35
@@ -1908,11 +2259,16 @@ msgid ""
 "another’s.\n"
 "\n"
 msgstr ""
+"新しいユニットを雇用する時にはいつもトレーニングの効果が適用されます。もしユ"
+"ニットがトレーニングによって能力を向上させた場合、その内容はユニットについた"
+"「訓練」特性で確認できます。トレーニングによって能力向上を得る確率について"
+"は、各要素について独立に判定され、他の要素の可否等には影響を受けません。\n"
+"\n"
 
 #. [lua]: preshow
 #: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:36
 msgid "<b>Upkeep</b>\n"
-msgstr ""
+msgstr "<b>維持費</b>\n"
 
 #. [lua]: preshow
 #: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:37
@@ -1921,11 +2277,14 @@ msgid ""
 "free upkeep.\n"
 "\n"
 msgstr ""
+"<b>英雄</b>特性を持つユニットと、<b>アーティファクト</b>を持つユニットは維持"
+"費がかかりません。\n"
+"\n"
 
 #. [lua]: preshow
 #: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:38
 msgid "<b>Bonus Points</b>\n"
-msgstr ""
+msgstr "<b>ボーナスポイント</b>\n"
 
 #. [lua]: preshow
 #: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:39
@@ -1935,11 +2294,15 @@ msgid ""
 "units and either contain artifacts, loyal units, or training.\n"
 "\n"
 msgstr ""
+"各シナリオでは、マップ上にプレイヤー数と同じ数のボーナスポイントが作られま"
+"す。ユニットをボーナスポイントまで移動させると、アーティファクト、忠義ユニッ"
+"ト、トレーニングのいずれかが得られます。\n"
+"\n"
 
 #. [lua]: preshow
 #: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:40
 msgid "<b>Army discipline</b>\n"
-msgstr ""
+msgstr "<b>軍隊の訓練</b>\n"
 
 #. [lua]: preshow
 #: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:41
@@ -1950,11 +2313,14 @@ msgid ""
 "be advanced.\n"
 "\n"
 msgstr ""
+"シナリオ 1 から 3 の間は、(トレーニングの合計レベル) * 4% の確率で 2 レベル"
+"アップしてくれる優秀なトレーナーが現れます。シナリオ 4 以降では全てのトレー"
+"ナーが優秀なトレーナーになり、必ず 2 レベル上げてくれます。\n"
 
 #. [lua]: preshow
 #: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:43
 msgid "Feedback"
-msgstr ""
+msgstr "フィードバック"
 
 #. [lua]: preshow
 #: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:43
@@ -1971,11 +2337,14 @@ msgid ""
 "recruited units. The following list shows all available training, the "
 "training you currently have is marked in green."
 msgstr ""
+"トレーニングは新規に雇用するユニットの能力を向上させます。既に雇用されている"
+"ユニットには適用されません。可能なトレーニングは以下の通りです。すでに獲得し"
+"たトレーニングについては緑で記述しています。"
 
 #. [lua]: preshow
 #: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:45
 msgid "Items"
-msgstr ""
+msgstr "アーティファクト"
 
 #. [lua]: preshow
 #: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:45
@@ -1985,11 +2354,18 @@ msgid ""
 "on a map in a bonus point; 3) By dropping from enemies in later scenarios. "
 "Note, however, that not all units can pick up all items."
 msgstr ""
+"アーティファクトを得ることで、ユニットはさらに強くなります。アーティファクト"
+"の入手方法は３つあります。\n"
+"(1) シナリオ開始時のボーナスで選択する。\n"
+"(2) マップ上のボーナスポイントで発見する。\n"
+"(3) 後のシナリオで、敵がドロップしたものを拾う。\n"
+"アーティファクトによっては、使うことができるユニットが限られていることがあり"
+"ます。"
 
 #. [lua]: preshow
 #: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:46
 msgid "Factions"
-msgstr ""
+msgstr "陣営"
 
 #. [lua]: preshow
 #: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:46
@@ -2002,104 +2378,111 @@ msgid ""
 "heroes, deserters, and random leaders also depend on your factions; the "
 "items you can get do not depend on the faction you choose."
 msgstr ""
+"世界征服 II の時代にはいくつかの陣営が含まれています。それらは基本的に標準の"
+"陣営を二つ組み合わせて作られています。一方はヒーラーを含む陣営（ドレーク、反"
+"乱軍、忠誠軍）で、もう一方はヒーラーがいない陣営（オーク、ドワーフ、アンデッ"
+"ド）を使うようになっています。雇用リストもスワップ式となっており、欲しいユ"
+"ニットを雇用する前に別のユニットを雇用することが必要になるかもしれません。陣"
+"営によって利用できるヒーロー、脱走兵、ランダムリーダーも異なっています。しか"
+"し、アーティファクトについては陣営によらず共通です。"
 
 #. [lua]: type_icon
 #: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:171
 msgid " (not available for enemies)"
-msgstr ""
+msgstr "(敵は利用できません)"
 
 #. [lua]: type_icon
 #: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:172
 msgid " (not available for players)"
-msgstr ""
+msgstr "(プレイヤーは利用できません)"
 
 #. [lua]: wc_ii_generate_scenario
 #. [lua]: wct_store_possible_encampment_ford
 #: data/campaigns/World_Conquest/lua/map/main.lua:138
 #: data/campaigns/World_Conquest/lua/map/postgeneration/1A_Start.lua:146
 msgid "Start"
-msgstr ""
+msgstr "スタート"
 
 #. [lua]: wc_ii_generate_scenario
 #: data/campaigns/World_Conquest/lua/map/main.lua:140
 msgid "Scenario"
-msgstr ""
+msgstr "シナリオ"
 
 #. [lua]: wc_ii_generate_scenario
 #: data/campaigns/World_Conquest/lua/map/main.lua:142
 msgid "Final Battle"
-msgstr ""
+msgstr "最終戦"
 
 #. [lua]: wct_map_2a_post_bunus_decoration
 #: data/campaigns/World_Conquest/lua/map/postgeneration/2A_Springs.lua:183
 msgid "water^Springs"
-msgstr ""
+msgstr "水源地"
 
 #. [lua]: world_conquest_tek_map_decoration_2c
 #: data/campaigns/World_Conquest/lua/map/postgeneration/2C_Glaciers.lua:208
 msgid "Glaciers"
-msgstr ""
+msgstr "氷河"
 
 #. [lua]: wct_map_2d_post_bunus_decoration
 #: data/campaigns/World_Conquest/lua/map/postgeneration/2D_Provinces.lua:165
 msgid "Provinces"
-msgstr ""
+msgstr "田舎"
 
 #. [lua]: wct_map_2f_post_bunus_decoration
 #: data/campaigns/World_Conquest/lua/map/postgeneration/2F_Clayey.lua:127
 msgid "Clayey"
-msgstr ""
+msgstr "粘土"
 
 #. [lua]: wct_map_3c_post_bunus_decoration
 #: data/campaigns/World_Conquest/lua/map/postgeneration/3C_Delta.lua:396
 msgid "river^Delta"
-msgstr ""
+msgstr "三角州"
 
 #. [lua]: world_conquest_tek_map_repaint_3d
 #: data/campaigns/World_Conquest/lua/map/postgeneration/3D_Sulfurous.lua:62
 msgid "Sulfurous"
-msgstr ""
+msgstr "硫黄谷"
 
 #. [lua]: wct_map_3e_post_bunus_decoration
 #: data/campaigns/World_Conquest/lua/map/postgeneration/3E_Coral.lua:79
 msgid "made of^Coral"
-msgstr ""
+msgstr "珊瑚礁"
 
 #. [lua]: wct_map_4a_post_bunus_decoration
 #: data/campaigns/World_Conquest/lua/map/postgeneration/4A_Thermal.lua:201
 msgid "Thermal"
-msgstr ""
+msgstr "熱気"
 
 #. [lua]: world_conquest_tek_map_repaint_4b
 #: data/campaigns/World_Conquest/lua/map/postgeneration/4B_Volcanic.lua:416
 msgid "Volcanic"
-msgstr ""
+msgstr "火山地帯"
 
 #. [lua]: wct_map_4d_post_bunus_decoration
 #: data/campaigns/World_Conquest/lua/map/postgeneration/4D_Podzol.lua:135
 msgid "Podzol"
-msgstr ""
+msgstr "ポドゾル"
 
 #. [lua]: wct_map_4e_post_bunus_decoration
 #: data/campaigns/World_Conquest/lua/map/postgeneration/4E_Wicked.lua:644
 msgid "Wicked"
-msgstr ""
+msgstr "不快"
 
 #. [lua]: wild_store_roads_in_cave_zone
 #: data/campaigns/World_Conquest/lua/map/postgeneration/4F_Wild.lua:268
 msgid "Wild"
-msgstr ""
+msgstr "原野"
 
 #. [lua]: world_conquest_tek_map_repaint_6d
 #: data/campaigns/World_Conquest/lua/map/postgeneration/6D_Feudal.lua:473
 msgid "Feudal"
-msgstr ""
+msgstr "封建領主"
 
 #. [lua]: end_message
 #: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:34
 #: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:38
 msgid "To war! Prepare to defend yourselves!"
-msgstr ""
+msgstr "戦だ！準備は良いか！"
 
 #. [lua]: end_message
 #: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:35
@@ -2107,6 +2490,8 @@ msgid ""
 "Why do we fight amongst ourselves? We should band together and take the "
 "coast with our combined forces!"
 msgstr ""
+"我々の間で争う必要は無いでしょう？共に力を合わせ、この海岸を手に入れましょ"
+"う！"
 
 #. [lua]: end_message
 #: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:36
@@ -2114,50 +2499,52 @@ msgid ""
 "You speak truly; together we can overpower the rest. After that, who knows? "
 "Together we could go on to conquer other lands across the sea!"
 msgstr ""
+"その通りだ。力を合わせねば敵には勝てない。勝った後？それはその時のことだ。さ"
+"あ、共に行こう！海の向こうの地までも征服するのだ！"
 
 #. [lua]: end_message
 #: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:40
 msgid ""
 "Foolish upstarts. You will never defeat us! Come, my allies. Let us crush "
 "them!"
-msgstr ""
+msgstr "愚かな侵入者め。貴様等に我等は倒せん！集え、同志たちよ！奴等を潰すぞ！"
 
 #. [lua]: end_message
 #: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:41
 msgid "Yes! We will drive them into the sea!"
-msgstr ""
+msgstr "おう！奴等を海に追い返すぞ！"
 
 #. [lua]: end_message
 #: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:42
 msgid "Never fear! Your trusted friends stand beside you!"
-msgstr ""
+msgstr "恐れるな！お前たちの横には信頼できる友がいるのだから！"
 
 #. [lua]: end_message
 #: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:44
 #: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:58
 msgid "Victory is ours! Let us set sail in search of new lands to conquer!"
-msgstr ""
+msgstr "我等の勝利だ！さあ、海を渡り次の地を征服するのだ！"
 
 #. [lua]: end_message
 #: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:47
 msgid "Ahhh. Just look at these fertile lands, ripe for conquest!"
-msgstr ""
+msgstr "おおーー、なんという肥沃な土地！是非とも征服しなければ！"
 
 #. [lua]: end_message
 #: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:48
 msgid "What’s this?! Foreign invaders have set foot upon our shores!"
-msgstr ""
+msgstr "何だと？外部からの侵略者が我等の浜に入ったのか！"
 
 #. [lua]: end_message
 #: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:49
 msgid ""
 "We’ll send them back to where they came from quick enough. All troops, to me!"
-msgstr ""
+msgstr "速やかに元の場所へ追い返すだけだ。皆、我に続け！"
 
 #. [lua]: end_message
 #: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:51
 msgid "We win! Truly ours will be a glorious empire!"
-msgstr ""
+msgstr "勝ったぞ！われらが栄光ある帝国となる日も近いな！"
 
 #. [lua]: end_message
 #: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:52
@@ -2166,6 +2553,8 @@ msgid ""
 "the savage coast of Moragdu, notorious for its corsairs, before we can "
 "advance further."
 msgstr ""
+"気が早いぞ！先へ進み、東の大陸にたどりつくには、悪名高い海賊のいる Moragdu の"
+"危険な浜辺を抑えねばならん。"
 
 #. [lua]: end_message
 #: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:54
@@ -2173,13 +2562,15 @@ msgid ""
 "What’s this? It is a long time since strangers have set foot upon Moragdu — "
 "and in such great numbers too!"
 msgstr ""
+"なんだ？Moragdu に侵入者が来るのは久しぶりだな ── それもこんな大軍が来ると"
+"は！"
 
 #. [lua]: end_message
 #: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:55
 msgid ""
 "The time of prophecies is upon us! The destroyers have arrived from beyond "
 "the sea!"
-msgstr ""
+msgstr "予言の時が来たのだ！海を越え、破壊者が来た！"
 
 #. [lua]: end_message
 #: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:56
@@ -2187,11 +2578,13 @@ msgid ""
 "I don’t know what the lizard is babbling about, but we’ll sort these "
 "‘destroyers’ out quickly enough."
 msgstr ""
+"そのトカゲが何をわめているかは知らんが、その「破壊者」とやらを片付けてしまえ"
+"ば良いのだろう。"
 
 #. [lua]: end_message
 #: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:61
 msgid "Ready yourselves, men! The conquering hordes are upon us!"
-msgstr ""
+msgstr "準備しろ、野郎ども！侵略軍が来たぞ！"
 
 #. [lua]: end_message
 #: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:62
@@ -2199,11 +2592,13 @@ msgid ""
 "Word has come to our island of your victories. Your army is impressive, but "
 "it will avail you not."
 msgstr ""
+"お前たちの勝利はわれらの元にも届いている。素晴らしい軍勢だ。しかし、ここでは"
+"通じない。"
 
 #. [lua]: end_message
 #: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:63
 msgid "Indeed. You come this far, and no farther!"
-msgstr ""
+msgstr "まさに。ここまで来れても、この先には行けんぞ！"
 
 #. [lua]: end_message
 #: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:64
@@ -2211,21 +2606,23 @@ msgid ""
 "Hah! We didn’t come all this way just to give up and go home. We will "
 "destroy you as we have destroyed all that have stood before us!"
 msgstr ""
+"ハン！ここまで来ておいておとなしく帰るつもりは無い。そしてやることはいつも同"
+"じ、目の前の敵を討ち滅ぼすだけだ！"
 
 #. [lua]: end_message
 #: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:65
 msgid "So be it. We stand squarely behind our allies."
-msgstr ""
+msgstr "好きにしろ。我等は仲間たちの後ろに立つのみだ。"
 
 #. [lua]: end_message
 #: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:66
 msgid "You are not the only ones with allies! We’ll push on till the end!"
-msgstr ""
+msgstr "仲間がいるのはそっちだけじゃない！最後まで突き進むだけだ！"
 
 #. [lua]: end_message
 #: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:68
 msgid "Onwards to the ships!"
-msgstr ""
+msgstr "さあ、船に乗り込め！"
 
 #. [lua]: end_message
 #: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:69
@@ -2233,6 +2630,8 @@ msgid ""
 "We have travelled great oceans and brought low mighty empires. Should we not "
 "wait until our forces regain their strength?"
 msgstr ""
+"これまで大海を渡り、それなりの力を持った勢力となることができた。しかし、戦力"
+"も相応に消耗している。ここらで少し待ち、力を回復させた方が良いのでは？"
 
 #. [lua]: end_message
 #: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:70
@@ -2240,6 +2639,7 @@ msgid ""
 "One last effort! We better finish our campaign when we hold initiative, "
 "before Winter arrives."
 msgstr ""
+"最後の一押しだ！冬が来る前、我等に主導権がある今の内に遠征を完了しなければ！"
 
 #. [lua]: end_message
 #: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:74
@@ -2247,11 +2647,13 @@ msgid ""
 "Finally we come to the shores of the last continent. Here at the edge of the "
 "world our empire shall be made complete."
 msgstr ""
+"ついに最後の大陸へとたどり着いた。この世界の端で、我等の帝国は完成を迎えるの"
+"だ。"
 
 #. [lua]: end_message
 #: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:75
 msgid "Never! Your mad quest ends here, tyrant."
-msgstr ""
+msgstr "そうはさせん！暴君よ、貴様等の狂った冒険もここまでだ！"
 
 #. [lua]: end_message
 #: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:76
@@ -2259,45 +2661,49 @@ msgid ""
 "All the peoples of the world stand against you. Though we would be enemies "
 "otherwise, we are united in our cause. We must stop you!"
 msgstr ""
+"世界の全てが貴様等に立ち向かっているのだ。そのために敵対していた我等も手を取"
+"り合った。何としてもここで貴様達を止めてみせる！"
 
 #. [lua]: end_message
 #: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:77
 msgid "No, not all of them. Today our full strength stands behind our allies!"
 msgstr ""
+"世界の全てが敵になったわけではない。今、我等の背にある大いなる力は我等の味方"
+"なのだから！"
 
 #. [lua]: end_message
 #: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:79
 msgid "That’s it, our work is done here!"
-msgstr ""
+msgstr "やったぞ！これで仕事は終わりだ！"
 
 #. [lua]: end_message
 #: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:80
 msgid "The whole world is now ours to command!"
-msgstr ""
+msgstr "これで世界は私たちのものだ！"
 
 #. [lua]: end_message
 #: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:81
 msgid "It was hard, but I almost regret the fun is over."
-msgstr ""
+msgstr "大変だったが、最大の楽しみが終わってしまったようにも感じるな。"
 
 #. [lua]: end_message
 #: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:85
 msgid "The End"
-msgstr ""
+msgstr "The End"
 
 #. [lua]: add_enemy_side
 #: data/campaigns/World_Conquest/lua/map/scenario_utils/side_definitions.lua:38
 msgid "Enemies"
-msgstr ""
+msgstr "敵"
 
 #. [lua]: add_player_side
 #: data/campaigns/World_Conquest/lua/map/scenario_utils/side_definitions.lua:61
 msgid "Allies"
-msgstr ""
+msgstr "友軍"
 
 #: data/campaigns/World_Conquest/lua/optional_mechanics/pick_advance.lua:10
 msgid "Preset Advancement"
-msgstr ""
+msgstr "レベルアップ先の事前設定"
 
 #. [lua]: wesnoth.wml_actions.wc2_pya_pick
 #: data/campaigns/World_Conquest/lua/optional_mechanics/pick_advance.lua:41
@@ -2306,129 +2712,138 @@ msgid ""
 "\n"
 "What are your new orders?"
 msgstr ""
+"現在指定されているレベルアップ先は $name です。\n"
+"\n"
+"どれに変更しますか？"
 
 #. [lua]: wesnoth.wml_actions.wc2_pya_pick
 #: data/campaigns/World_Conquest/lua/optional_mechanics/pick_advance.lua:48
 msgid "Random"
-msgstr ""
+msgstr "ランダム"
 
 #: data/campaigns/World_Conquest/lua/optional_mechanics/unitmarker.lua:12
 msgid "Special Overlay"
-msgstr ""
+msgstr "ユニットに特別なマークを与える/外す"
 
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:6
 msgid " and "
-msgstr ""
+msgstr " と "
 
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:9
 msgid "damage"
-msgstr ""
+msgstr "ダメージ"
 
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:12
 msgid " resistance vs "
-msgstr ""
+msgstr " 耐性増加 "
 
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:15
 msgid "moves"
-msgstr ""
+msgstr "移動力"
 
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:18
 msgid "strike"
-msgstr ""
+msgstr "攻撃回数"
 
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:21
 msgid "XP to advance"
-msgstr ""
+msgstr "レベルアップに必要な経験"
 
 #. [chance]
 #: data/campaigns/World_Conquest/resources/data/training.cfg:308
 msgid "$range|: $special|"
-msgstr ""
+msgstr "$range|: $special|"
 
 #. [chance]
 #: data/campaigns/World_Conquest/resources/data/training.cfg:522
 msgid "+$boost| moves"
-msgstr ""
+msgstr "+$boost| 移動力"
 
 #. [chance]
 #: data/campaigns/World_Conquest/resources/data/training.cfg:536
 msgid "$range|: +$boost| damage"
-msgstr ""
+msgstr "$range|: +$boost| ダメージ"
 
 #. [chance]
 #: data/campaigns/World_Conquest/resources/data/training.cfg:552
 msgid "$range|: +1 damage per level"
-msgstr ""
+msgstr "$range|: レベルあたり +1 ダメージ"
 
 #. [chance]
 #: data/campaigns/World_Conquest/resources/data/training.cfg:568
 msgid "+$hitpoints| hitpoints"
-msgstr ""
+msgstr "+$hitpoints| HP"
 
 #. [chance]
 #: data/campaigns/World_Conquest/resources/data/training.cfg:583
 msgid "+$hitpoints| hitpoints per level"
-msgstr ""
+msgstr "レベルあたり +$hitpoints| HP"
 
 #. [chance]
 #: data/campaigns/World_Conquest/resources/data/training.cfg:599
 msgid "$value| XP to advance"
-msgstr ""
+msgstr "レベルアップに必要な経験 $value"
 
 #. [chance]
 #: data/campaigns/World_Conquest/resources/data/training.cfg:623
 msgid "Village/Castle: +5 defense"
-msgstr ""
+msgstr "村/城： 回避率 +5"
 
 #. [chance]
 #: data/campaigns/World_Conquest/resources/data/training.cfg:655
 msgid ""
 "$terrain|: +$def| defense and full movement, +$res| resistance vs $dmg_type|"
 msgstr ""
+"$terrain|の移動コストを 1 にし、回避率を +$def|。さらに$dmg_type|耐性を +"
+"$res|"
 
 #. [chance]
 #: data/campaigns/World_Conquest/resources/data/training.cfg:684
 msgid "$terrain|: +10 defense and full movement"
-msgstr ""
+msgstr "$terrain| の移動コストを 1 にし、回避率を +10"
 
 #. [chance]
 #: data/campaigns/World_Conquest/resources/data/training.cfg:695
 msgid "+moves defense"
-msgstr ""
+msgstr "回避率を移動力 % 増やす"
 
 #. [chance]
 #: data/campaigns/World_Conquest/resources/data/training.cfg:705
 msgid "melee: optional charge"
-msgstr ""
+msgstr "近接攻撃に突撃を付与"
 
 #. [chance]
 #: data/campaigns/World_Conquest/resources/data/training.cfg:730
 msgid "$range|: arcane and +25% damage"
-msgstr ""
+msgstr "近接攻撃を秘術にし、ダメージ +25%"
 
 #: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:4
 msgid "Adamant armor"
-msgstr ""
+msgstr "堅牢の鎧"
 
 #: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:7
 msgid ""
 "The sturdy plates of this lightweight armor increase the user’s physical "
 "resistances (to a maximum of 10%) and grants the steadfast ability."
 msgstr ""
+"軽量ながらも非常に頑丈な鎧は物理攻撃への耐性を最低でも +10 % まで強化（+10 % "
+"未満の耐性のみを強化します）し、「装甲」能力を与えます。"
 
 #: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:10
 msgid "Assassin’s ring"
-msgstr ""
+msgstr "暗殺者の指輪"
 
 #: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:13
 msgid ""
 "This plain ring with a pleasantly smooth and slippery surface gives its "
 "owner unmatched sneak attacking skills."
 msgstr ""
+"この表面がとてもなめらかでツルツルとした地味な指輪を身につけると、優れた「奇"
+"襲」の技術が得られます。"
 
 #: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:16
 msgid "Azure pearl"
-msgstr ""
+msgstr "蒼海の真珠"
 
 #: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:19
 msgid ""
@@ -2436,73 +2851,86 @@ msgid ""
 "was air, strongly improving their mobility in water and granting the "
 "submerge ability."
 msgstr ""
+"この素晴らしい指輪を身につけると、水中を空気中のように動くことができます。水"
+"地形での移動が容易になり、「潜水」能力が得られます。"
 
 #: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:22
 msgid "Bezoar"
-msgstr ""
+msgstr "緑の胃石"
 
 #: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:25
 msgid ""
 "This shamanic totem protects from poison, drain, and plague. Bearers of the "
 "totem are immune to fear and their vulnerabilities are reduced."
 msgstr ""
+"この呪術のトーテムは毒、生命吸収、疫病を妨げる効果があります。トーテムの所有"
+"者は恐怖することがなくなり、その弱点もいくらかカバーされることでしょう。"
 
 #: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:28
 msgid "Blood ring"
-msgstr ""
+msgstr "鮮血の指輪"
 
 #: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:31
 msgid ""
 "This pulsing ring empowers the bearer’s melee attacks with the ability to "
 "drain lifeforce from their victim."
 msgstr ""
+"この脈を打つ奇妙な指輪を身につけると、近接攻撃で敵の生命力を奪うことができる"
+"ようになるでしょう。"
 
 #: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:34
 msgid "Cursed symbol of life"
-msgstr ""
+msgstr "呪われた命の魔除け"
 
 #: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:37
 msgid ""
 "This vampiric amulet allows a unit to drain enemy life from a safe distance."
-msgstr ""
+msgstr "この吸血鬼の魔除けの所持者は離れた敵の生命力を奪うことができます。"
 
 #: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:40
 msgid "Eagle eye longbow"
-msgstr ""
+msgstr "鷹の目の長弓"
 
 #: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:43
 msgid ""
 "This enchanted longbow enhances the wielder’s ranged attacks with uncanny "
 "precision and increased damage."
 msgstr ""
+"この魔法の弓は所持者の遠隔攻撃ダメージを増加させ、さらにその正確性をも向上さ"
+"せます。"
 
 #: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:46
 msgid "Forbidden grimoire"
-msgstr ""
+msgstr "忘れられたグリモワール"
 
 #: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:49
 msgid ""
 "This unholy manual gives the user the arcane knowledge to resurrect enemies "
 "slain in melee combat as the walking dead."
 msgstr ""
+"この不浄な手引書には、近接攻撃で殺害した敵を歩く死体として蘇生させるための知"
+"識が記されています。"
 
 #: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:52
 msgid "Forcefield"
-msgstr ""
+msgstr "フォースフィールド"
 
 #: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:55
 msgid "adjacent enemies do 13% less damage"
-msgstr ""
+msgstr "隣接する敵が与えるダメージが 13% 減少します"
 
 #: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:58
 msgid ""
 "Charged with intense magic, this shield generates a forcefield causing "
 "adjacent enemies to inflict less damage around the wielder."
 msgstr ""
+"濃密な魔術が込められたこの盾は、特殊な力場を作り、隣接する敵の攻撃能力を下げ"
+"ることができます。所有者に隣接した敵ユニットの与えるダメージは 13% 減少されま"
+"す。"
 
 #: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:61
 msgid "Ghast’s marrow"
-msgstr ""
+msgstr "ガストの髄液"
 
 #: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:64
 msgid ""
@@ -2510,19 +2938,24 @@ msgid ""
 "for more blood. Every time a foe is slain, a part of his lifeforce is "
 "eternally claimed through arcane ghoulish powers."
 msgstr ""
+"この身の毛もよだつ薬を飲んだ者は、不浄な餓えに満たされ、血を欲するようになり"
+"ます。そして、その神秘的で不浄な力により、殺した敵の生命力の一部を取り込むこ"
+"とができるようになるでしょう。"
 
 #: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:67
 msgid "Root of the Elder Wose"
-msgstr ""
+msgstr "老ウーズの根"
 
 #: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:70
 msgid ""
 " Dwarven forged, this blunt weapon mimics the crushing power of the Wose."
 msgstr ""
+"このドワーフによって製造された武骨な武器を使えば、ウーズのように敵を粉砕でき"
+"るでしょう。"
 
 #: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:73
 msgid "Cruel spike"
-msgstr ""
+msgstr "残虐な角"
 
 #: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:76
 msgid ""
@@ -2530,20 +2963,24 @@ msgid ""
 "unit’s melee strikes are doubled in power when attacking, but the same is "
 "true for the retaliation strike of the defender."
 msgstr ""
+"この魔法の槍は所有者の激情を駆り立てます。所有者の近接攻撃の威力は倍になりま"
+"すが、反撃の威力も倍になってしまいます。"
 
 #: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:79
 msgid "Heart of fire"
-msgstr ""
+msgstr "炎の心臓"
 
 #: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:82
 msgid ""
 "This magic orb infuses the wielder’s melee attacks with fiery power, "
 "changing their damage type. It also improves fire resistance."
 msgstr ""
+"この魔法の宝珠は所有者の近接攻撃に炎の力をもたらします。近接攻撃のダメージ型"
+"は火炎となり、火炎攻撃への耐性も向上するでしょう。"
 
 #: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:85
 msgid "Herald armor"
-msgstr ""
+msgstr "布告者の鎧"
 
 #: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:88
 msgid ""
@@ -2551,50 +2988,61 @@ msgid ""
 "body and soul. This effect will heal allies, blind evil, and preemptively "
 "smite those who seek to do harm."
 msgstr ""
+"この黄金で作られた薄く、神聖な鎧は清らかな光を放ち、装着者の身体と魂を照らし"
+"ています。装備者は仲間を癒し、邪悪を押さえつけ、危害を加えようとする敵の機先"
+"を制して先制攻撃を加えることができるようになるでしょう。"
 
 #: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:91
 msgid "Holy water"
-msgstr ""
+msgstr "聖水"
 
 #: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:94
 msgid ""
 "This sacred vial anoints melee attacks with arcane power, increasing their "
 "damage and changing their damage type. It also increases arcane resistance."
 msgstr ""
+"この神聖な小びんは、近接攻撃のダメージを増加させ、さらにダメージ型を秘術属性"
+"にします。また、秘術に対する耐性を高めてくれます。"
 
 #: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:97
 msgid "Ice bow"
-msgstr ""
+msgstr "氷の弓"
 
 #: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:100
 msgid ""
 "Draw this magical bow summon an ice arrow that will freeze and slow its "
 "target upon hit."
 msgstr ""
+"この魔法の弓を引き絞ると氷の矢を召喚できます。その矢が敵に当たれば、敵は凍り"
+"つき、遅くなってしまうでしょう。"
 
 #: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:103
 msgid "Medicinal herbs"
-msgstr ""
+msgstr "薬用ハーブ"
 
 #: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:106
 msgid ""
 "These potent herbs give the bearer the ability to heal adjacent units and "
 "cure their poison."
 msgstr ""
+"この良く効くハーブを持ったユニットは、隣接する味方の傷を癒し、毒を治療するこ"
+"とができるようになります。"
 
 #: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:109
 msgid "Melange"
-msgstr ""
+msgstr "メイラーンジ"
 
 #: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:112
 msgid ""
 "This exotic drug of organic origin enhances user’s vitality and awareness. "
 "It has no effect when consumed by undead."
 msgstr ""
+"この天然物から作られた異国の薬は、使用者の生命力と知覚力を向上させます。ただ"
+"し、アンデッドには効果はありません。"
 
 #: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:115
 msgid "Ring of frostbite"
-msgstr ""
+msgstr "凍牙の指輪"
 
 #: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:118
 msgid ""
@@ -2602,48 +3050,55 @@ msgid ""
 "their damage to cold and allowing them to inflict deathly chills that slow "
 "the enemy."
 msgstr ""
+"この冷たい指輪は所有者の近接攻撃に凍てついた氷の力をまとわせます。近接攻撃の"
+"ダメージ型は冷気に変更され、ダメージを敵に与えた際、その強力な冷気により敵を"
+"遅くさせることができるようになります。"
 
 #: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:121
 msgid "Ring of power"
-msgstr ""
+msgstr "魔力の指輪"
 
 #: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:124
 msgid ""
 "Wearing this ring enhances damage with arcane and elemental attacks, "
 "allowing using them with supernatural skill and presence."
 msgstr ""
+"この指輪を身につけると、超自然的な存在や技術を扱えるようになり、秘術や各種魔"
+"術攻撃のダメージが向上します。"
 
 #: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:127
 msgid "Runic sword"
-msgstr ""
+msgstr "ルーンの剣"
 
 #: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:130
 msgid ""
 "This magic sword empowers the wielder’s melee attacks with the magical "
 "property."
-msgstr ""
+msgstr "この魔法の剣は、使用者の近接攻撃に魔法の性質を与えます。"
 
 #: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:133
 msgid "Staff of radiance"
-msgstr ""
+msgstr "光輝の杖"
 
 #: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:136
 msgid "This sacred rod can unleash brilliant bursts of luminous energy."
-msgstr ""
+msgstr "この神聖な杖は、光のエネルギーを打ち出し、眩い爆発を引き起こします。"
 
 #: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:139
 msgid "Stormbringer"
-msgstr ""
+msgstr "ストームブリンガー"
 
 #: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:142
 msgid ""
 "This tormented sword causes rage in any who wield it. Melee attacks will "
 "gain the fury ability pressing engagement for 3 rounds."
 msgstr ""
+"この呪われた剣は所有者の怒りを駆り立てます。所有者の近接攻撃は３ラウンドの狂"
+"戦能力を獲得します。"
 
 #: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:145
 msgid "Sylph bow"
-msgstr ""
+msgstr "シルフの弓"
 
 #: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:148
 msgid ""
@@ -2651,78 +3106,86 @@ msgid ""
 "power with each generation and speeds up the wielders movements so that more "
 "strikes can be landed before the engagement is over."
 msgstr ""
+"このルーンの弓はエルフの秘宝で、女王から王女へと受け継がれ、世代を経るたびに"
+"その力を増しています。所有者は動きを加速され、交戦中の攻撃回数が増加します。"
 
 #: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:151
 msgid "Terror disguise"
-msgstr ""
+msgstr "恐慌の扮装"
 
 #: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:154
 msgid ""
 "This cursed outfit spreads a trail of darkness, harming those who get too "
 "close."
-msgstr ""
+msgstr "この呪われた衣服は闇を周囲にまき散らし、近寄る敵を傷つけます。"
 
 #: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:157
 msgid "The Key"
-msgstr ""
+msgstr "鍵"
 
 #: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:160
 msgid "This magical object opens the gateway between dimensions."
-msgstr ""
+msgstr "この魔法の品は次元を隔てるゲートを開くことができます。"
 
 #: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:163
 msgid "Tome of secrets"
-msgstr ""
+msgstr "秘密の書"
 
 #: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:166
 msgid "This forgotten book imparts ancient knowledge to the reader."
-msgstr ""
+msgstr "この忘れられた書は、読んだ者に古代の知識を授けます。"
 
 #: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:169
 msgid "Trident of storms"
-msgstr ""
+msgstr "ストームトライデント"
 
 #: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:172
 msgid ""
 "This legendary trident can summon lightning from the heavens, granting its "
 "wielder magical ranged fire attack."
 msgstr ""
+"この伝説的なトライデントは、天上より雷を呼び出し、遠方より敵対者に大きな火炎"
+"ダメージを与えることができます。"
 
 #: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:175
 msgid "Trolls blood potion"
-msgstr ""
+msgstr "トロルの血薬"
 
 #: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:178
 msgid "This foul-smelling potion allows the imbiber to regenerate health."
-msgstr ""
+msgstr "この不快な臭いのポーションは、摂取者に再生能力を与えます。"
 
 #: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:181
 msgid "Ointment of venom"
-msgstr ""
+msgstr "毒軟膏"
 
 #: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:184
 msgid ""
 "This deadly poison envenoms the user’s blade and pierce attacks, increasing "
 "damage and allowing them to inflict poison."
 msgstr ""
+"この強力な毒を斬撃、刺突武器に塗布すると、敵に与えるダメージが大きくなり、さ"
+"らに毒を与えられるようになります。"
 
 #: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:187
 msgid "War banner"
-msgstr ""
+msgstr "戦旗"
 
 #: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:190
 msgid "adjacent allies do 20% more damage"
-msgstr ""
+msgstr "隣接する味方ユニットの与えるダメージが 20% 増加します"
 
 #: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:193
 msgid ""
 "This inspiring banner rallies the bearer’s allies to war, imparting a damage "
 "bonus to the allied units around it."
 msgstr ""
+"戦士の心を鼓舞するこの旗は、友軍を勇気づけます。旗手に隣接する友軍ユニットは"
+"より多くのダメージを与えられるようになります。"
 
 #: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:196
 msgid "Winged scepter"
-msgstr ""
+msgstr "翼の笏"
 
 #: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:199
 msgid ""
@@ -2730,42 +3193,49 @@ msgid ""
 "making it a breeze to move through most terrain. Units that can already fly "
 "get improved defenses."
 msgstr ""
+"この笏は驚くべきことに、所有者に飛行能力を与え、ほとんどの地形をそよ風のよう"
+"に軽々と移動できるようにします。既に飛行能力を持っているユニットが使った場合"
+"は回避率だけが変化します。"
 
 #: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:202
 msgid "Winter’s bloom"
-msgstr ""
+msgstr "冬の花"
 
 #: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:205
 msgid ""
 "This delicate blossom rarely found in snowy peaks, is strongly appreciated "
 "for its beneficial effects on health."
 msgstr ""
+"この優美な花は雪で覆われた山頂で極めてまれに見つかります。生命力を強化する強"
+"い力があるため、非常に大事にされています。"
 
 #: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:208
 msgid "Zephyr cloak"
-msgstr ""
+msgstr "そよ風のクローク"
 
 #: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:211
 msgid ""
 "This lightweight cloak renders its wearer almost invisible in the darkness "
 "and lets them move with fluid grace past enemies with ease."
 msgstr ""
+"この軽量のクロークは、装着者を森や闇の中でほぼ不可視にし、さらに敵のそばを容"
+"易にすり抜けられるようにします。"
 
 #: data/campaigns/World_Conquest/resources/strings/effects.cfg:4
 msgid "staff of radiance"
-msgstr ""
+msgstr "光輝の杖"
 
 #: data/campaigns/World_Conquest/resources/strings/effects.cfg:7
 msgid "storm trident"
-msgstr ""
+msgstr "ストームトライデント"
 
 #: data/campaigns/World_Conquest/resources/strings/effects.cfg:10
 msgid "ice bow"
-msgstr ""
+msgstr "氷の弓"
 
 #: data/campaigns/World_Conquest/resources/strings/effects.cfg:13
 msgid "banner"
-msgstr ""
+msgstr "戦旗"
 
 #: data/campaigns/World_Conquest/resources/strings/effects.cfg:16
 msgid ""
@@ -2773,10 +3243,13 @@ msgid ""
 "better. Adjacent allied units will do 20% more damage. This is cumulative "
 "with leadership."
 msgstr ""
+"このユニットは隣接する友軍ユニットを鼓舞し、その戦闘能力を向上させます。隣接"
+"するユニットは 20% のダメージボーナスを得ます。この効果は統率とは独立してお"
+"り、統率の効果を重ねることができます。"
 
 #: data/campaigns/World_Conquest/resources/strings/effects.cfg:19
 msgid "corruption"
-msgstr ""
+msgstr "退廃"
 
 #: data/campaigns/World_Conquest/resources/strings/effects.cfg:22
 msgid ""
@@ -2784,10 +3257,13 @@ msgid ""
 "units lose 6 HP or are reduced to 1 HP. Corruption cannot, of itself, kill a "
 "unit."
 msgstr ""
+"このユニットは自分の陣営のターン開始時に隣接する敵ユニットを蝕みます。影響を"
+"受けたユニットは HP を 6 失うか、HP が 1 になります。この効果でユニットが死ぬ"
+"ことはありません。"
 
 #: data/campaigns/World_Conquest/resources/strings/effects.cfg:25
 msgid "darkness"
-msgstr ""
+msgstr "暗転"
 
 #: data/campaigns/World_Conquest/resources/strings/effects.cfg:28
 msgid ""
@@ -2795,72 +3271,84 @@ msgid ""
 "and lawful units fight worse. Any units adjacent to this unit will fight as "
 "if it were dusk when it is day, and as if it were night when it is dusk."
 msgstr ""
+"周囲を暗くして、混沌ユニットを強化し、秩序ユニットを弱体化させます。暗転ユ"
+"ニット自身と隣接するユニットは、日中には夕暮れのように、夕暮れには夜であるか"
+"のように戦うことになります。"
 
 #: data/campaigns/World_Conquest/resources/strings/effects.cfg:31
 msgid "distract"
-msgstr ""
+msgstr "撹乱"
 
 #: data/campaigns/World_Conquest/resources/strings/effects.cfg:34
 msgid "Allied units ignore enemy zones of control adjacent to this unit."
 msgstr ""
+"友軍ユニットはこのユニットに隣接する敵ユニットの支配領域（ZOC）を無視できま"
+"す。"
 
 #: data/campaigns/World_Conquest/resources/strings/effects.cfg:37
 msgid "flight"
-msgstr ""
+msgstr "飛行"
 
 #: data/campaigns/World_Conquest/resources/strings/effects.cfg:40
 msgid ""
 "Full movement and up to 50% defense in all terrains but cave or mushroom "
 "grove."
 msgstr ""
+"洞窟とキノコの森以外の全ての地形の移動コストを 1 にし、回避率を最大 50 % にし"
+"ます。"
 
 #: data/campaigns/World_Conquest/resources/strings/effects.cfg:43
 msgid "swim"
-msgstr ""
+msgstr "水泳"
 
 #: data/campaigns/World_Conquest/resources/strings/effects.cfg:46
 msgid ""
 "Full movement and up to 60% defense in water or swamp and up to 70% defense "
 "in reef."
 msgstr ""
+"水や沼地の地形で最大 60 % の回避率、暗礁で最大 70% の回避率を得られ、さらにそ"
+"れら地形での移動コストが 1 になります。"
 
 #: data/campaigns/World_Conquest/resources/strings/effects.cfg:49
 msgid "forcefield"
-msgstr ""
+msgstr "力場"
 
 #: data/campaigns/World_Conquest/resources/strings/effects.cfg:52
 msgid "Adjacent enemies do 13% less damage."
-msgstr ""
+msgstr "隣接する敵の与えるダメージが 13% 減少します。"
 
 #: data/campaigns/World_Conquest/resources/strings/effects.cfg:55
 msgid "fury"
-msgstr ""
+msgstr "憤怒"
 
 #: data/campaigns/World_Conquest/resources/strings/effects.cfg:58
 msgid ""
 "Whether used offensively or defensively, this attack presses the engagement "
 "until one of the combatants is slain, or 3 rounds of attacks have occurred."
 msgstr ""
+"攻撃時・防御時の両方において、この攻撃が戦いで使われた場合、いずれかの戦闘ユ"
+"ニットが倒れるまで交戦をやめません。もしくは、 3 回の攻撃が行われると終了しま"
+"す。"
 
 #: data/campaigns/World_Conquest/resources/strings/effects.cfg:61
 msgid "Full movement on turn recruited or recalled"
-msgstr ""
+msgstr "雇用・召還されたターンに移動力が最大まで回復します"
 
 #: data/campaigns/World_Conquest/resources/strings/effects.cfg:64
 msgid "optional charge"
-msgstr ""
+msgstr "突撃を追加"
 
 #: data/campaigns/World_Conquest/resources/strings/effects.cfg:67
 msgid "tenacity"
-msgstr ""
+msgstr "不屈"
 
 #: data/campaigns/World_Conquest/resources/strings/effects.cfg:70
 msgid "This unit’s vulnerabilities are halved when defending."
-msgstr ""
+msgstr "防御時はユニットの弱点属性のダメージが半減されます"
 
 #: data/campaigns/World_Conquest/resources/strings/effects.cfg:73
 msgid "free upkeep"
-msgstr ""
+msgstr "維持費ゼロ"
 
 #: data/campaigns/World_Conquest/resources/strings/effects.cfg:76
 msgid "full movement"
@@ -2876,21 +3364,23 @@ msgstr ""
 
 #: data/campaigns/World_Conquest/resources/strings/effects.cfg:85
 msgid "no undead^consumed by a living being:"
-msgstr ""
+msgstr "非アンデッド専用："
 
 #: data/campaigns/World_Conquest/resources/strings/effects.cfg:88
 msgid "up to"
-msgstr ""
+msgstr "最大"
 
 #: data/campaigns/World_Conquest/resources/strings/effects.cfg:91
 msgid "disengage"
-msgstr ""
+msgstr "離脱"
 
 #: data/campaigns/World_Conquest/resources/strings/effects.cfg:94
 msgid ""
 "Attack with this weapon gives unit 1 moves at end of combat (unit doesn’t "
 "gain a new attack)."
 msgstr ""
+"この武器で攻撃すると戦闘終了後に移動力が 1  残ります（攻撃可能回数は回復しま"
+"せん）。"
 
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:4
 msgid "per level"
@@ -2898,7 +3388,7 @@ msgstr ""
 
 #: data/campaigns/World_Conquest/resources/strings/training.cfg:4
 msgid "Melee Combat"
-msgstr ""
+msgstr "近接戦闘"
 
 #: data/campaigns/World_Conquest/resources/strings/training.cfg:7
 msgid ""
@@ -2906,10 +3396,12 @@ msgid ""
 "much use on the field, but I bet I can teach your men a thing or two about "
 "swordplay."
 msgstr ""
+"助けが必要か？ワシのような年寄は戦場では役に立たないが、お前にちょっと剣術を"
+"教えてやることはできるぞ。"
 
 #: data/campaigns/World_Conquest/resources/strings/training.cfg:10
 msgid "Ranger Tactics"
-msgstr ""
+msgstr "レンジャー"
 
 #: data/campaigns/World_Conquest/resources/strings/training.cfg:13
 msgid ""
@@ -2917,10 +3409,13 @@ msgid ""
 "for you, but I will gladly instruct your recruits in the art of the ranger, "
 "that they may better fight on their own."
 msgstr ""
+"あなたの理念には賛同できるが、これは私の戦いでは無い。共に戦うことはできない"
+"が、そちらの新兵達にレンジャーの技を教えてやろう。我流でやらせるより多少マシ"
+"にはなるだろう。"
 
 #: data/campaigns/World_Conquest/resources/strings/training.cfg:16
 msgid "Health"
-msgstr ""
+msgstr "体力"
 
 #: data/campaigns/World_Conquest/resources/strings/training.cfg:19
 msgid ""
@@ -2929,10 +3424,13 @@ msgid ""
 "steel in your backbone. When I’m through with you you’ll be able to keep on "
 "going no matter the odds!"
 msgstr ""
+"過酷な戦いが待っているようだな。ワシにはしがらみが多すぎて直接に手は貸せない"
+"が、少しここで戦場で生き抜くコツを教えてやることくらいならできるぞ。これをき"
+"ちんと身につければ、今後何があろうとも必ずや生き延びられる！"
 
 #: data/campaigns/World_Conquest/resources/strings/training.cfg:22
 msgid "Movement"
-msgstr ""
+msgstr "移動"
 
 #: data/campaigns/World_Conquest/resources/strings/training.cfg:25
 msgid ""
@@ -2942,10 +3440,14 @@ msgid ""
 "I’ll teach you how to break out of those dreary marching formations and step "
 "light as a feather!"
 msgstr ""
+"何だ、私に手を貸せだと？良い年をして、何をバカなことを！戦場なんぞ、私のいる"
+"場所では無い ── ドラマも無く、品も無く、ロマンスも無いのだから！洗練された技"
+"なぞ何も無いのだ！！理解できていないようだから、教えてやろう。あのようなくだ"
+"らない戦列を切り抜け、羽のように軽やかに踊ることができる技を！"
 
 #: data/campaigns/World_Conquest/resources/strings/training.cfg:28
 msgid "Combat Experience"
-msgstr ""
+msgstr "戦闘経験"
 
 #: data/campaigns/World_Conquest/resources/strings/training.cfg:31
 msgid ""
@@ -2954,34 +3456,42 @@ msgid ""
 "for you. I know what real battle is like; by the time I’m through with ’em, "
 "your newbies might have some idea of it too."
 msgstr ""
+"戦列に加われと？ダメだ、小僧。私の才能は前線で浪費するべきでは無いのだ。代わ"
+"りに新兵を鍛えてやろう。役に立つようにしてやれるぞ。これまで戦場で長く過ごし"
+"ていたから、私は本当の戦闘を良く知っている。その経験を新兵達に伝えれば、彼ら"
+"も何かを得られるかもしれない。"
 
 #: data/campaigns/World_Conquest/resources/strings/training.cfg:34
 msgid "Dark"
-msgstr ""
+msgstr "ダーク"
 
 #: data/campaigns/World_Conquest/resources/strings/training.cfg:37
 msgid ""
 "I haven’t lived centuries fighting others’ battles, but I could combat "
 "boredom teaching your men a couple of things about dark techniques."
 msgstr ""
+"私は自分で戦うつもりは全く無いが、ヒマつぶしにお前たちに闇の技術をちょっと教"
+"えてやってもいいぞ。"
 
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:5
 msgid "World Conquest 1p"
-msgstr ""
+msgstr "世界征服 1p"
 
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:8
 msgid "World Conquest 2p"
-msgstr ""
+msgstr "世界征服 2p"
 
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:11
 msgid "World Conquest 3p"
-msgstr ""
+msgstr "世界征服 3p"
 
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:14
 msgid ""
 "A randomly generated campaign for 1 player. It has 6 level of difficulties.\n"
 "(Expert level, 5 scenarios.)"
 msgstr ""
+"１人用のランダム生成のキャンペーン。６つの難易度があります。\n"
+"(達人レベル、5 シナリオ)"
 
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:18
 msgid ""
@@ -2989,6 +3499,8 @@ msgid ""
 "difficulties.\n"
 "(Expert level, 5 scenarios.)"
 msgstr ""
+"２人用の協力型ランダム生成キャンペーン。６つの難易度があります。\n"
+"(達人レベル、5 シナリオ)"
 
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:22
 msgid ""
@@ -2996,3 +3508,5 @@ msgid ""
 "difficulties.\n"
 "(Expert level, 5 scenarios.)"
 msgstr ""
+"３人用の協力型ランダム生成キャンペーン。６つの難易度があります。\n"
+"(達人レベル、5 シナリオ)"
