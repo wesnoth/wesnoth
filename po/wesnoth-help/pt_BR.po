@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2021-06-23 11:42-0400\n"
-"PO-Revision-Date: 2021-09-23 08:40-0300\n"
+"PO-Revision-Date: 2021-10-03 10:18-0300\n"
 "Last-Translator: Andrei Machado <andreisp.machado@yahoo.com>\n"
 "Language-Team: Portuguese - Brasil\n"
 "Language: pt_BR\n"
@@ -851,7 +851,7 @@ msgstr ""
 #. [topic]: id=editor_tool_label
 #: data/core/editor/help.cfg:129
 msgid "Label Tool"
-msgstr "Ferramenta de Etiquetas"
+msgstr "Ferramenta de Rótulos"
 
 #. [topic]: id=editor_tool_label
 #: data/core/editor/help.cfg:130
@@ -866,6 +866,15 @@ msgid ""
 "This tool is only available in Scenario Mode; the decorations are "
 "implemented in the scenario using WML’s <italic>text='[label]'</italic> tag."
 msgstr ""
+"Coloca rótulos de texto no mapa.\n"
+"\n"
+"• Botão esquerdo abrirá uma caixa de diálogo para criar um novo rótulo ou "
+"editar um rótulo já existente.\n"
+"• Botão direito deleta.\n"
+"• Arraste e solte com o botão esquerdo para mover os rótulos.\n"
+"\n"
+"Esta ferramenta só está disponível no Modo de Cenário; as decorações são "
+"implementadas no cenário usando a tag WML <italic>text='[label]'</italic>."
 
 #. [topic]: id=editor_tool_scenery
 #: data/core/editor/help.cfg:145
@@ -934,6 +943,7 @@ msgstr "Áreas Nomeadas"
 
 #. [topic]: id=editor_named_area
 #: data/core/editor/help.cfg:191
+#, fuzzy
 msgid ""
 "This tool create sets of tiles that can be used in WML scripts’ Standard "
 "Location Filters (a concept explained in detail on the Wiki), by using the "
@@ -5998,7 +6008,7 @@ msgstr ""
 #. [hides]: id=burrow
 #: data/core/macros/abilities.cfg:302
 msgid "burrow"
-msgstr ""
+msgstr "entocar"
 
 #
 # File: data/core/macros/traits.cfg, line: 251
@@ -6006,10 +6016,8 @@ msgstr ""
 # File: data/core/macros/traits.cfg, line: 251
 #. [hides]: id=burrow
 #: data/core/macros/abilities.cfg:303
-#, fuzzy
-#| msgid "female^slow"
 msgid "female^burrow"
-msgstr "lenta"
+msgstr "entocar"
 
 #
 # File: data/core/macros/abilities.cfg, line: 408
@@ -6279,7 +6287,7 @@ msgstr ""
 #. [chance_to_hit]: id=deflect
 #: data/core/macros/abilities.cfg:489
 msgid "deflect"
-msgstr ""
+msgstr "defletir"
 
 #
 # File: data/core/macros/abilities.cfg, line: 629
@@ -6292,7 +6300,7 @@ msgid ""
 "10%."
 msgstr ""
 "Quando usado defensivamente, esse ataque reduz a chance de acerto do "
-"oponente em 10%"
+"oponente em 10%."
 
 #. [chance_to_hit]: id=deflect
 #: data/core/macros/abilities.cfg:491
@@ -6300,6 +6308,7 @@ msgid ""
 "This unit’s defensive techniques reduce the chance of a successful enemy "
 "attack."
 msgstr ""
+"As técnicas defensivas desta unidade reduzem a chance do inimigo acertá-la."
 
 #
 # File: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg, line: 771
@@ -6358,7 +6367,7 @@ msgstr ""
 #. [damage]: id=absorb
 #: data/core/macros/abilities.cfg:542
 msgid "absorb"
-msgstr ""
+msgstr "absorver"
 
 #. [damage]: id=absorb
 #: data/core/macros/abilities.cfg:543
@@ -6366,6 +6375,8 @@ msgid ""
 "This attack puts the unit in good defensive position, and it absorbs some of "
 "the damage dealt by an enemy strike."
 msgstr ""
+"Este ataque coloca a unidade em uma boa posição defensiva, absorvendo uma "
+"parte do dano causado pelo ataque do inimigo."
 
 #. [damage]: id=absorb
 #: data/core/macros/abilities.cfg:544
