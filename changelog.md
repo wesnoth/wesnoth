@@ -31,7 +31,7 @@
  ### Editor
    * Avoid rare crash situation after editing scenarios (issue #5883)
  ### Translations
-   * Updated translations: British English, Bulgarian, Czech, French, Italian, Portuguese (Brazil), Russian, Spanish.
+   * Updated translations: British English, Bulgarian, Czech, French, Italian, Japanese, Portuguese (Brazil), Russian, Spanish.
    * gettext plural forms now have caret prefixes stripped as well (PR #6094).
  ### User interface
    * Steam cloud file is no longer listed in the Load Game dialog.
