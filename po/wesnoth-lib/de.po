@@ -5,12 +5,14 @@
 #  Rhonda D'Vine <rhonda@deb.at>, 2010
 #  Oliver 'Crommy' Lange <oli-lange@web.de>, 2010 - 2012
 #  Aaron Winter <winter.aaron93@gmail.com>, 2018
+#  Mathias Lang <heindal@scherbia.de>, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.14\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2021-09-25 21:03-0300\n"
-"PO-Revision-Date: 2021-07-26 11:01+0200\n"
+"PO-Revision-Date: 2021-10-12 19:42+0200\n"
 "Last-Translator: Aaron Winter <winter.aaron93@gmail.com>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
 "Language: de_DE\n"
@@ -18,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.4.1\n"
+"X-Generator: Poedit 3.0\n"
 
 #. [ai]: id=ai_default_rca
 #: data/ai/ais/ai_default_rca.cfg:9
@@ -269,10 +271,8 @@ msgstr "Überwucherter Pflasterstein"
 
 #. [terrain_type]: id=road_icy
 #: data/core/terrain.cfg:271
-#, fuzzy
-#| msgid "Clean Gray Cobbles"
 msgid "Icy Cobbles"
-msgstr "Sauberer Pflasterstein"
+msgstr "Vereister Pflasterstein"
 
 #. [terrain_type]: id=ice
 #: data/core/terrain.cfg:284
@@ -377,10 +377,8 @@ msgstr "Steine"
 
 #. [terrain_type]: id=snowbits_small
 #: data/core/terrain.cfg:396
-#, fuzzy
-#| msgid "Snow"
 msgid "Snowbits"
-msgstr "Schnee"
+msgstr "Schneehaufen"
 
 #. [terrain_type]: id=mushrooms_small
 #: data/core/terrain.cfg:405
@@ -429,10 +427,8 @@ msgstr "Brennendes Kohlenbecken"
 
 #. [terrain_type]: id=fence_iron
 #: data/core/terrain.cfg:500
-#, fuzzy
-#| msgid "Fence"
 msgid "Iron Fence"
-msgstr "Zaun"
+msgstr "Eiserner Zaun"
 
 #. [terrain_type]: id=sand_drifts
 #: data/core/terrain.cfg:509
@@ -471,10 +467,8 @@ msgstr "Bedeutsamer Baum"
 
 #. [terrain_type]: id=great_tree_snowy
 #: data/core/terrain.cfg:574
-#, fuzzy
-#| msgid "Great Tree"
 msgid "Snowy Great Tree"
-msgstr "Bedeutsamer Baum"
+msgstr "Schneebedeckter großer Baum"
 
 #. [terrain_type]: id=great_tree_dead
 #: data/core/terrain.cfg:586
@@ -483,10 +477,8 @@ msgstr "Morscher Baumriese"
 
 #. [terrain_type]: id=great_tree_dead_oak
 #: data/core/terrain.cfg:598
-#, fuzzy
-#| msgid "Dead Great Tree"
 msgid "Dead Great Oak Tree"
-msgstr "Morscher Baumriese"
+msgstr "Morscher Eichenbaum"
 
 #. [terrain_type]: id=tropical_forest
 #. [terrain_type]: id=rainforest
@@ -671,10 +663,8 @@ msgstr "Steinboden"
 
 #. [terrain_type]: id=ancient_stone_floor
 #: data/core/terrain.cfg:894
-#, fuzzy
-#| msgid "Stone Floor"
 msgid "Ancient Stone Floor"
-msgstr "Steinboden"
+msgstr "Antiker Steinboden"
 
 #. [terrain_type]: id=rug_floor
 #. [terrain_type]: id=rug2_floor
@@ -764,10 +754,8 @@ msgstr "Pilzhain"
 
 #. [terrain_type]: id=fungus_grove_old
 #: data/core/terrain.cfg:1009
-#, fuzzy
-#| msgid "Lit Mushroom Grove"
 msgid "Non-mixed Mushroom Grove"
-msgstr "Heller Pilzhain"
+msgstr "Reiner Pilzhain"
 
 #. [terrain_type]: id=fungus_grove_old
 #. [terrain_type]: id=fungus_beam_old
@@ -799,10 +787,8 @@ msgstr ""
 
 #. [terrain_type]: id=fungus_beam_old
 #: data/core/terrain.cfg:1028
-#, fuzzy
-#| msgid "Lit Mushroom Grove"
 msgid "Lit Non-mixed Mushroom Grove"
-msgstr "Heller Pilzhain"
+msgstr "Erleuchteter reiner Pilzhain"
 
 #. [terrain_type]: id=fungus_beam
 #: data/core/terrain.cfg:1060
@@ -812,7 +798,7 @@ msgstr "Heller Pilzhain"
 #. [terrain_type]: id=fungus_floor
 #: data/core/terrain.cfg:1072 data/core/terrain.cfg:1073
 msgid "Mycelium"
-msgstr ""
+msgstr "Myzel"
 
 #. [terrain_type]: id=rocky_cave
 #. [terrain_type]: id=earthy_rocky_cave
@@ -851,10 +837,8 @@ msgstr ""
 
 #. [terrain_type]: id=earthy_rocky_cave
 #: data/core/terrain.cfg:1099
-#, fuzzy
-#| msgid "Rockbound Cave"
 msgid "Earthy Rockbound Cave"
-msgstr "Unwegsame Höhle"
+msgstr "Erdige unwegsame Höhle"
 
 #. [terrain_type]: id=mine_rails
 #. [terrain_type]: id=mine_railsdiag1
@@ -1003,38 +987,28 @@ msgstr "Saubere Steinmauer"
 
 #. [terrain_type]: id=wall_stone_ancient
 #: data/core/terrain.cfg:1382
-#, fuzzy
-#| msgid "Lit Stone Wall"
 msgid "Ancient Stone Wall"
-msgstr "Beleuchtete Steinmauer"
+msgstr "Antike Steinmauer"
 
 #. [terrain_type]: id=wall_stone_tomb
 #: data/core/terrain.cfg:1392
-#, fuzzy
-#| msgid "Cave Wall"
 msgid "Catacombs Wall"
-msgstr "Höhlenwand"
+msgstr "Katakomben Mauer"
 
 #. [terrain_type]: id=wall_stone_tomb
 #: data/core/terrain.cfg:1393
-#, fuzzy
-#| msgid "Clean Stone Wall"
 msgid "Catacombs Stone Wall"
-msgstr "Saubere Steinmauer"
+msgstr "Katakomben Steinmauer"
 
 #. [terrain_type]: id=wall_stone_overgrown
 #: data/core/terrain.cfg:1403
-#, fuzzy
-#| msgid "Overgrown Cobbles"
 msgid "Overgrown Wall"
-msgstr "Überwucherter Pflasterstein"
+msgstr "Überwucherte Mauer"
 
 #. [terrain_type]: id=wall_stone_overgrown
 #: data/core/terrain.cfg:1404
-#, fuzzy
-#| msgid "Clean Stone Wall"
 msgid "Overgrown Stone Wall"
-msgstr "Saubere Steinmauer"
+msgstr "Überwucherte Steinmauer"
 
 #. [terrain_type]: id=portal_gate_rusty_sw
 #. [terrain_type]: id=portal_gate_rusty_se
@@ -1413,17 +1387,13 @@ msgstr "Elfische Burgruine"
 
 #. [terrain_type]: id=elven_castle_winter
 #: data/core/terrain.cfg:2141
-#, fuzzy
-#| msgid "Elven Castle"
 msgid "Winter Elven Castle"
-msgstr "Elfische Burg"
+msgstr "Elfische Winterburg"
 
 #. [terrain_type]: id=dwarven_castle
 #: data/core/terrain.cfg:2153
-#, fuzzy
-#| msgid "Dwarven Castle"
 msgid "Dwarven Underground Castle"
-msgstr "Zwergische Burg"
+msgstr "Zwergische Untergrundfestung"
 
 #. [terrain_type]: id=dwarven_castle2
 #: data/core/terrain.cfg:2165
@@ -1432,17 +1402,13 @@ msgstr "Zwergische Burg"
 
 #. [terrain_type]: id=dwarven_castle_ruin
 #: data/core/terrain.cfg:2177
-#, fuzzy
-#| msgid "Dwarven Castle"
 msgid "Dwarven Castle Ruins"
-msgstr "Zwergische Burg"
+msgstr "Zwergische Burgruinen"
 
 #. [terrain_type]: id=dwarven_castle_winter
 #: data/core/terrain.cfg:2189
-#, fuzzy
-#| msgid "Dwarven Castle"
 msgid "Winter Dwarven Castle"
-msgstr "Zwergische Burg"
+msgstr "Zwergische Winterburg"
 
 #. [terrain_type]: id=ruin
 #. [terrain_type]: id=sunkenruin
@@ -1575,17 +1541,13 @@ msgstr "Elfische Burgfriedruine"
 
 #. [terrain_type]: id=elven_keep_winter
 #: data/core/terrain.cfg:2433
-#, fuzzy
-#| msgid "Elven Keep Ruin"
 msgid "Winter Elven Keep"
-msgstr "Elfische Burgfriedruine"
+msgstr "Elfischer Winterburgfried"
 
 #. [terrain_type]: id=dwarven_keep
 #: data/core/terrain.cfg:2446
-#, fuzzy
-#| msgid "Dwarven Castle Keep"
 msgid "Dwarven Underground Keep"
-msgstr "Zwergischer Burgfried"
+msgstr "Zwergischer Untergrundburgfried"
 
 #. [terrain_type]: id=dwarven_keep2
 #: data/core/terrain.cfg:2459
@@ -1594,17 +1556,13 @@ msgstr "Zwergischer Burgfried"
 
 #. [terrain_type]: id=dwarven_keep_ruin
 #: data/core/terrain.cfg:2472
-#, fuzzy
-#| msgid "Dwarven Castle Keep"
 msgid "Dwarven Ruin Keep"
-msgstr "Zwergischer Burgfried"
+msgstr "Zwergischer Burgfriedruine"
 
 #. [terrain_type]: id=dwarven_keep_winter
 #: data/core/terrain.cfg:2485
-#, fuzzy
-#| msgid "Dwarven Castle Keep"
 msgid "Winter Dwarven Keep"
-msgstr "Zwergischer Burgfried"
+msgstr "Zwergischer Winterburgfried"
 
 #. [terrain_type]: id=ruined_keep
 #. [terrain_type]: id=sunken_keep
@@ -1820,18 +1778,6 @@ msgstr "Pilzhain"
 
 #. [terrain_type]: id=fungus
 #: data/core/terrain.cfg:2991
-#, fuzzy
-#| msgid ""
-#| "<italic>text='Mushroom groves'</italic> are vast underground forests of "
-#| "giant mushrooms,\n"
-#| "which thrive in the damp darkness. Most units have trouble negotiating "
-#| "the spongy floor of smaller fungi, but they have plenty of cover behind "
-#| "the larger stalks. Mounted units, however, become completely mired and "
-#| "lack proper freedom of movement in combat. Undead units have a natural "
-#| "affinity for decay and function quite well in mushroom forests.\n"
-#| "\n"
-#| "Most units receive 50% to 60% defense in mushroom groves, whereas cavalry "
-#| "receive only 20%."
 msgid ""
 "<italic>text='Mushroom groves'</italic> are vast underground forests of "
 "giant mushrooms, which thrive in the damp darkness. Most units have trouble "
@@ -1844,13 +1790,12 @@ msgid ""
 "receive only 20%."
 msgstr ""
 "<italic>text='Pilzhaine'</italic> sind große Untergrundwälder bestehend aus "
-"riesigen Pilzen, \n"
-"welche in der feuchten Dunkelheit gut wachsen. Die meisten Einheiten sind "
-"durch den weichen, schwammartigen Boden in ihrer Bewegung eingeschränkt, "
-"doch haben sie gute Deckung hinter größeren Pilzen. Berittene Einheiten "
-"jedoch büßen ihren Bewegungsfreiraum im Kampf vollständig ein. Untote "
-"Einheiten haben eine natürliche Neigung zum Zerfall und finden sich in den "
-"Pilzhainen bestens zurecht.\n"
+"riesigen Pilzen, welche in der feuchten Dunkelheit gut wachsen. Die meisten "
+"Einheiten sind durch den weichen, schwammartigen Boden in ihrer Bewegung "
+"eingeschränkt, doch haben sie gute Deckung hinter größeren Pilzen. Berittene "
+"Einheiten jedoch büßen ihren Bewegungsfreiraum im Kampf vollständig ein. "
+"Untote Einheiten haben eine natürliche Neigung zum Zerfall und finden sich "
+"in den Pilzhainen bestens zurecht.\n"
 "\n"
 "Die meisten Einheiten erhalten 50% bis 60% Verteidigung in Pilzhainen, "
 "wohingegen Reiter nur 20% erhalten."
@@ -1918,17 +1863,6 @@ msgstr ""
 
 #. [terrain_type]: id=hills
 #: data/core/terrain.cfg:3046
-#, fuzzy
-#| msgid ""
-#| "<italic>text='Hills'</italic> represent any reasonably rough terrain,\n"
-#| "with enough dips and rises in the ground to provide some cover. Hills are "
-#| "difficult for most troops to navigate. Dwarves, trolls, and orcs have "
-#| "enough familiarity with the terrain that they can pass through it without "
-#| "being slowed down. Cavalry have enough trouble navigating the terrain "
-#| "that any defensive aid lent by cover is negated.\n"
-#| "\n"
-#| "Most units have about 50% defense in hills, whereas cavalry are limited "
-#| "to 40%. Dwarves enjoy 60% defense in hills."
 msgid ""
 "<italic>text='Hills'</italic> represent any reasonably rough terrain, with "
 "enough dips and rises in the ground to provide some cover. Hills are "
@@ -1940,12 +1874,12 @@ msgid ""
 "Most units have about 50% defense in hills, whereas cavalry are limited to "
 "40%. Dwarves enjoy 60% defense in hills."
 msgstr ""
-"<italic>text='Hügel'</italic> repräsentieren hügeliges Gelände, \n"
-"mit genug Erhöhungen und Einbuchtungen, um etwas Deckung zu gewährleisten. "
-"Für die meisten Truppen ist es schwierig, auf hügeligem Gelände zu "
-"navigieren. Zwerge, Trolle und Orks sind zur Genüge mit dem Gelände "
-"vertraut, um sie ohne Komplikationen bereisen zu können. Reiter haben jedoch "
-"Schwierigkeiten, dieses Gelände zu bereisen, wodurch sie jegliche Deckung "
+"<italic>text='Hügel'</italic> repräsentieren hügeliges Gelände, mit genug "
+"Erhöhungen und Einbuchtungen, um etwas Deckung zu gewährleisten. Für die "
+"meisten Truppen ist es schwierig, auf hügeligem Gelände zu navigieren. "
+"Zwerge, Trolle und Orks sind zur Genüge mit dem Gelände vertraut, um sie "
+"ohne Komplikationen bereisen zu können. Reiter haben jedoch Schwierigkeiten "
+"sich auf diesem Gelände zurechtzufinden, wodurch sie jegliche Deckung "
 "verlieren.\n"
 "\n"
 "Die meisten Einheiten haben etwa 50% Verteidigung. Reiter sind auf maximal "
@@ -2235,13 +2169,12 @@ msgstr "Suche"
 
 #. [label]: id=no_options_notice
 #: data/gui/macros/custom_options_tree.cfg:26
-#, fuzzy
-#| msgid "Configure settings for the selected custom modifications."
 msgid ""
 "There are no custom options available for the selected era, game, or "
 "modification."
 msgstr ""
-"Konfiguriere Einstellungen für ausgewählte benutzerdefinierte Modifikationen."
+"Es gibt keine Standardeinstellungen für die ausgewählte benutzerdefinierte "
+"Modifikation."
 
 #. [button]: id=reset_option_values
 #. [button]: id=orb_defaults
@@ -2311,7 +2244,6 @@ msgstr "Erweiterung installieren"
 msgid "Update add-on"
 msgstr "Erweiterung aktualisieren"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=single_publish
 #. [button]: id=publish
 #: data/gui/widget/addon_list.cfg:412 data/gui/window/addon_manager.cfg:337
@@ -2319,7 +2251,6 @@ msgstr "Erweiterung aktualisieren"
 msgid "Publish add-on"
 msgstr "Erweiterung veröffentlichen"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=single_uninstall
 #. [button]: id=uninstall
 #: data/gui/widget/addon_list.cfg:435 data/gui/window/addon_manager.cfg:314
@@ -2368,7 +2299,7 @@ msgstr "Profil"
 #. [label]
 #: data/gui/window/addon_auth.cfg:41
 msgid "Authenticate"
-msgstr ""
+msgstr "Authentifiziere"
 
 #. [label]
 #: data/gui/window/addon_auth.cfg:71 data/gui/window/mp_create_game.cfg:990
@@ -2377,7 +2308,6 @@ msgstr ""
 msgid "Password:"
 msgstr "Passwort:"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
 #: data/gui/window/addon_auth.cfg:119 data/gui/window/custom_tod.cfg:431
 #: data/gui/window/depcheck_select_new.cfg:151
@@ -2402,7 +2332,6 @@ msgstr "Passwort:"
 msgid "OK"
 msgstr "Okay"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=cancel
 #: data/gui/window/addon_auth.cfg:133 data/gui/window/addon_connect.cfg:211
 #: data/gui/window/addon_license_prompt.cfg:114
@@ -2484,19 +2413,21 @@ msgid ""
 "Before uploading content to this server, you must accept the following "
 "distribution terms by choosing “I Agree”."
 msgstr ""
+"Bevor du Inhalte auf diesen Server überträgst, musst du die folgenden "
+"Vereinbarungen mit \"Ich stimme zu\" akzeptieren."
 
 #. [button]: id=ok
 #: data/gui/window/addon_license_prompt.cfg:103
 msgid "I Agree"
-msgstr ""
+msgstr "Ich stimme zu"
 
 #: data/gui/window/addon_manager.cfg:9
 msgid "Traffic between the game and server is not secure"
-msgstr ""
+msgstr "Datenübertragung zwischen Spiel und Server ist nicht sicher"
 
 #: data/gui/window/addon_manager.cfg:13
 msgid "Traffic between the game and server is encrypted"
-msgstr ""
+msgstr "Datenübertragung zwischen Spiel und Server ist verschlüsselt"
 
 #. [label]: id=byline
 #: data/gui/window/addon_manager.cfg:154
@@ -2510,12 +2441,9 @@ msgstr "Version:"
 
 #. [menu_button]: id=version_filter
 #: data/gui/window/addon_manager.cfg:203
-#, fuzzy
-#| msgid "Delete add-on from server"
 msgid "Select the add-on version"
-msgstr "Erweiterung vom Server löschen"
+msgstr "Wähle die Version der Erweiterung"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [scroll_label]: id=description
 #: data/gui/window/addon_manager.cfg:227
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:576
@@ -2569,7 +2497,6 @@ msgstr "Webseite:"
 msgid "Dependencies:"
 msgstr "Abhängigkeiten:"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=dependencies
 #: data/gui/window/addon_manager.cfg:620 src/gui/dialogs/addon/manager.cpp:1006
 msgid "addon_dependencies^None"
@@ -2580,7 +2507,6 @@ msgstr "Keine"
 msgid "Translations:"
 msgstr "Übersetzungen:"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=translations
 #: data/gui/window/addon_manager.cfg:654 src/gui/dialogs/addon/manager.cpp:1020
 msgid "translations^None"
@@ -2589,14 +2515,12 @@ msgstr "Keine"
 #. [label]
 #: data/gui/window/addon_manager.cfg:672 data/gui/window/addon_manager.cfg:791
 msgid "Tags:"
-msgstr ""
+msgstr "Tags:"
 
 #. [text_box]: id=filter
 #: data/gui/window/addon_manager.cfg:725
-#, fuzzy
-#| msgid "Filters on addon description, version, type or author."
 msgid "Filters on addon description, version, type or author"
-msgstr "Filter auf Erweiterungsbeschreibung, -version, -typ und -author."
+msgstr "Filtert nach Beschreibung, Version, Typ und Autor der Erweiterung"
 
 #. [label]
 #: data/gui/window/addon_manager.cfg:738
@@ -2613,14 +2537,11 @@ msgstr "Reihenfolge:"
 msgid "Add-ons Manager"
 msgstr "Erweiterungen"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=details_toggle
 #: data/gui/window/addon_manager.cfg:1003 src/gui/dialogs/addon/manager.cpp:509
 #: src/gui/dialogs/addon/manager.cpp:744
-#, fuzzy
-#| msgid "Addon Details"
 msgid "Add-on Details"
-msgstr "Erweiterungsdetails"
+msgstr "Details zur Erweiterung"
 
 #. [button]: id=update_all
 #: data/gui/window/addon_manager.cfg:1024
@@ -2664,7 +2585,7 @@ msgstr "Führungsqualitäten"
 #. [grid]
 #: data/gui/window/attack_predictions.cfg:86
 msgid "Slowed penalty"
-msgstr "verlangsamt"
+msgstr "Verlangsamt"
 
 #. [grid]
 #: data/gui/window/attack_predictions.cfg:90
@@ -2708,10 +2629,8 @@ msgstr "Sortiert nach Kampagnennamen in alphabetischer Reihenfolge"
 
 #. [toggle_button]: id=sort_time
 #: data/gui/window/campaign_dialog.cfg:230
-#, fuzzy
-#| msgid "Time limit:"
 msgid "Timeline"
-msgstr "Zeitbegrenzung:"
+msgstr "Zeitleiste"
 
 #. [toggle_button]: id=sort_time
 #: data/gui/window/campaign_dialog.cfg:231
@@ -2728,34 +2647,32 @@ msgstr "Modifikationen:"
 #. [label]
 #: data/gui/window/campaign_dialog.cfg:306
 msgid "Combat:"
-msgstr ""
+msgstr "Kämpfe:"
 
 #. [option]
 #: data/gui/window/campaign_dialog.cfg:321
-#, fuzzy
-#| msgid "Default"
 msgid "Default RNG"
-msgstr "Standard"
+msgstr "Standard Zufall"
 
 #. [option]
 #: data/gui/window/campaign_dialog.cfg:322
 msgid "Reloading alters future combat outcomes"
-msgstr ""
+msgstr "Laden eines Spielstandes verändert die Ausgänge von Kämpfen"
 
 #. [option]
 #: data/gui/window/campaign_dialog.cfg:325
 msgid "Predictable RNG"
-msgstr ""
+msgstr "Vorhersehbarer Zufall"
 
 #. [option]
 #: data/gui/window/campaign_dialog.cfg:326
 msgid "Combat outcomes remain constant when reloading"
-msgstr ""
+msgstr "Ausgang eines Kampfes bleibt auch beim Laden eines Spielstandes gleich"
 
 #. [option]
 #: data/gui/window/campaign_dialog.cfg:329
 msgid "Biased RNG (experimental)"
-msgstr ""
+msgstr "Voreingenommener Zufall (experimentell)"
 
 #. [option]
 #: data/gui/window/campaign_dialog.cfg:330
@@ -2763,30 +2680,28 @@ msgid ""
 "Combat outcomes are more in line with displayed probabilities and unaffected "
 "by reloading"
 msgstr ""
+"Der Ausgang eines Kampfes wird durch die gezeigten Wahrscheinlichkeiten "
+"beeinflusst nicht durch das Laden des Spielstandes."
 
 #. [label]
 #: data/gui/window/campaign_dialog.cfg:345
-#, fuzzy
-#| msgid "Difficulty: "
 msgid "Difficulty:"
-msgstr "Schwierigkeitsgrad: "
+msgstr "Schwierigkeitsgrad:"
 
 #. [option]
 #: data/gui/window/campaign_dialog.cfg:359
 msgid "Easy"
-msgstr ""
+msgstr "Leicht"
 
 #. [option]
 #: data/gui/window/campaign_dialog.cfg:362
-#, fuzzy
-#| msgid "Normal Rug"
 msgid "Normal"
-msgstr "Teppich"
+msgstr "Normal"
 
 #. [option]
 #: data/gui/window/campaign_dialog.cfg:365
 msgid "Hard"
-msgstr ""
+msgstr "Hart"
 
 #. [label]
 #: data/gui/window/campaign_dialog.cfg:422
@@ -2813,7 +2728,6 @@ msgstr "Schwierigkeitsgrad"
 msgid "Select difficulty:"
 msgstr "Wählt den Schwierigkeitsgrad:"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/chat_log.cfg:36 src/hotkey/hotkey_command.cpp:276
 msgid "Chat Log"
@@ -2867,7 +2781,6 @@ msgstr "Log in die Zwischenablage kopieren"
 msgid "Load Core"
 msgstr "Lade Kern"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
 #: data/gui/window/core_dialog.cfg:228 src/preferences/display.cpp:171
 msgid "Select"
@@ -2908,7 +2821,6 @@ msgstr "Verzeichnis im Dateimanager öffnen"
 msgid "Edit Time Schedule"
 msgstr "Bearbeite Tagesablauf"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/custom_tod.cfg:177
 #: data/gui/window/editor_edit_scenario.cfg:106
@@ -2972,7 +2884,6 @@ msgstr "Neuer Tagesablauf"
 msgid "Delete ToD"
 msgstr "Lösche Tagesablauf"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/depcheck_confirm_change.cfg:40
 #: src/gui/dialogs/addon/manager.cpp:901 src/gui/dialogs/file_dialog.cpp:303
@@ -2985,7 +2896,6 @@ msgstr "Bestätigen"
 msgid "Would you like to apply the changes?"
 msgstr "Möchtet Ihr die Änderungen übernehmen?"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
 #: data/gui/window/depcheck_confirm_change.cfg:128
 #: data/gui/window/game_delete.cfg:107
@@ -2996,7 +2906,6 @@ msgstr "Möchtet Ihr die Änderungen übernehmen?"
 msgid "Yes"
 msgstr "Ja"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=cancel
 #: data/gui/window/depcheck_confirm_change.cfg:142
 #: data/gui/window/game_delete.cfg:121
@@ -3077,7 +2986,6 @@ msgstr "ID:"
 msgid "Description:"
 msgstr "Beschreibung:"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/editor_edit_scenario.cfg:170
 #: src/gui/dialogs/multiplayer/lobby.cpp:513
@@ -3139,7 +3047,6 @@ msgstr "In Spielübersicht ausblenden"
 msgid "Gold:"
 msgstr "Gold:"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/editor_edit_side.cfg:276
 #: src/gui/dialogs/multiplayer/lobby.cpp:514
@@ -3161,7 +3068,6 @@ msgstr "Unterhalt pro Dorf:"
 msgid "Controller:"
 msgstr "Spielertyp:"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [row]
 #: data/gui/window/editor_edit_side.cfg:372 src/gui/dialogs/game_stats.cpp:70
 msgid "controller^Human"
@@ -3197,7 +3103,6 @@ msgstr "Schleier der Finsternis"
 msgid "vision^None"
 msgstr "Keine"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/editor_generate_map.cfg:43 src/hotkey/hotkey_command.cpp:240
 msgid "Generate Map"
@@ -3208,7 +3113,6 @@ msgstr "Karte erzeugen"
 msgid "Choose a map generator:"
 msgstr "Wählt einen Zufallskartengenerator:"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=settings
 #. [button]: id=random_map_settings
 #: data/gui/window/editor_generate_map.cfg:128
@@ -3227,7 +3131,6 @@ msgstr "Numerischer Startwert:"
 msgid "Generate"
 msgstr "Erzeugen"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=title
 #: data/gui/window/editor_new_map.cfg:36 src/hotkey/hotkey_command.cpp:172
 msgid "New Map"
@@ -3252,7 +3155,6 @@ msgstr "Höhe:"
 msgid "Create"
 msgstr "Erstellen"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/editor_resize_map.cfg:35 src/hotkey/hotkey_command.cpp:239
 msgid "Resize Map"
@@ -3472,7 +3374,6 @@ msgstr "Truppen in Reserve:"
 msgid "Date"
 msgstr "Datum"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=lblTitle
 #. [button]: id=load_game
 #: data/gui/window/game_load.cfg:292 data/gui/window/mp_create_game.cfg:898
@@ -3483,7 +3384,7 @@ msgstr "Spielstand laden"
 #. [menu_button]: id=dirList
 #: data/gui/window/game_load.cfg:311
 msgid "Show saves from a different version of Wesnoth"
-msgstr ""
+msgstr "Zeige gespeicherte Spiele aus anderen Wesnothversionen"
 
 #. [toggle_button]: id=change_difficulty
 #: data/gui/window/game_load.cfg:496
@@ -3503,7 +3404,7 @@ msgstr "Spielverlauf anzeigen"
 #. [toggle_button]: id=show_replay
 #: data/gui/window/game_load.cfg:539
 msgid "Play the embedded replay from the saved game if applicable"
-msgstr "Spiele die Aufzeichnung der gespeicherten Partie ab, falls vorhanden."
+msgstr "Spiele die Aufzeichnung der gespeicherten Partie ab, falls vorhanden"
 
 #. [toggle_button]: id=cancel_orders
 #: data/gui/window/game_load.cfg:558
@@ -3515,7 +3416,7 @@ msgstr "Befehle verwerfen"
 msgid "Cancel any pending unit movements in the saved game"
 msgstr ""
 "Breche alle ausstehenden Bewegungen von Einheiten in einer gespeicherten "
-"Partie ab."
+"Partie ab"
 
 #. [button]: id=browse_saves_folder
 #: data/gui/window/game_load.cfg:599
@@ -3528,14 +3429,12 @@ msgstr "Öffne Ordner mit gespeicherten Spielständen"
 msgid "Load"
 msgstr "Laden"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=lblTitle
 #: data/gui/window/game_save.cfg:42 data/gui/window/game_save_message.cfg:42
 #: data/gui/window/game_save_oos.cfg:42 src/hotkey/hotkey_command.cpp:100
 msgid "Save Game"
 msgstr "Spiel speichern"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
 #. [button]: id=save
 #: data/gui/window/game_save.cfg:120
@@ -3574,14 +3473,12 @@ msgstr "Heerführer"
 msgid "Team"
 msgstr "Allianz"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [toggle_button]: id=sort_2
 #: data/gui/window/game_stats.cfg:63
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:426
 msgid "Gold"
 msgstr "Gold"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [toggle_button]: id=sort_3
 #: data/gui/window/game_stats.cfg:76
 #: src/generators/default_map_generator.cpp:198
@@ -3598,7 +3495,6 @@ msgstr "Einheiten"
 msgid "Upkeep"
 msgstr "Unterhaltskosten"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [image]: id=income_icon
 #. [label]: id=side_income
 #. [toggle_button]: id=sort_6
@@ -3650,7 +3546,6 @@ msgstr ""
 "Unterhalt\n"
 "pro Dorf"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=title
 #: data/gui/window/game_stats.cfg:705 src/gui/dialogs/game_stats.cpp:254
 msgid "Current Status"
@@ -3661,7 +3556,6 @@ msgstr "Übersicht (Parteien)"
 msgid "Game Stats"
 msgstr "Übersicht (Parteien)"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [widget]: id=tab_label
 #: data/gui/window/game_stats.cfg:793 src/gui/dialogs/game_stats.cpp:254
 msgid "Scenario Settings"
@@ -3705,7 +3599,7 @@ msgstr "Cache:"
 #. [grid]
 #: data/gui/window/game_version.cfg:139
 msgid "Logs:"
-msgstr ""
+msgstr "Logs:"
 
 #. [button]: id=open_stderr
 #: data/gui/window/game_version.cfg:164
@@ -3895,7 +3789,7 @@ msgstr "Freie Plätze"
 #. [toggle_button]: id=filter_vacant_slots
 #: data/gui/window/lobby_main.cfg:336
 msgid "Only show games with vacant slots"
-msgstr ""
+msgstr "Zeige nur Spiele mit offenen Plätzen"
 
 #. [widget]: id=tab_label
 #. [toggle_button]: id=filter_with_friends
@@ -3907,19 +3801,17 @@ msgstr "Freunde"
 #. [toggle_button]: id=filter_with_friends
 #: data/gui/window/lobby_main.cfg:349
 msgid "Only show games with friends"
-msgstr ""
+msgstr "Zeige nur Spiele mit Freunden"
 
 #. [toggle_button]: id=filter_with_ignored
 #: data/gui/window/lobby_main.cfg:361
-#, fuzzy
-#| msgid "Connected Players"
 msgid "Blocked players"
-msgstr "Angemeldete Spieler"
+msgstr "Blockierte Spieler"
 
 #. [toggle_button]: id=filter_with_ignored
 #: data/gui/window/lobby_main.cfg:362
 msgid "Show games that include players you have blocked"
-msgstr ""
+msgstr "Zeige Spiele mit von dir geblockten Spielern"
 
 #. [toggle_button]: id=filter_invert
 #: data/gui/window/lobby_main.cfg:374
@@ -3953,12 +3845,9 @@ msgstr "Beobachten"
 #. [button]: id=server_info
 #: data/gui/window/lobby_main.cfg:446 data/gui/window/lobby_main.cfg:688
 #: data/gui/window/server_info.cfg:168
-#, fuzzy
-#| msgid "Advancements"
 msgid "Announcements"
-msgstr "Stufenaufstiege"
+msgstr "Ankündigungen"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [grid]
 #. [label]: id=title
 #. [button]: id=show_preferences
@@ -3971,7 +3860,7 @@ msgstr "Einstellungen"
 #. [button]: id=view_match_history
 #: data/gui/window/lobby_main.cfg:516
 msgid "Match History"
-msgstr ""
+msgstr "Spielehistorie"
 
 #. [button]: id=quit
 #: data/gui/window/lobby_main.cfg:533 data/gui/window/lobby_main.cfg:627
@@ -4001,7 +3890,7 @@ msgstr "Blind betreten"
 #. [option]
 #: data/gui/window/lobby_main.cfg:563 data/gui/window/lobby_main.cfg:725
 msgid "Do not show the map until given control of a side"
-msgstr "Zeige die Karte nicht an, bevor eine Partei an der Reihe ist."
+msgstr "Zeige die Karte nicht an, bevor eine Partei an der Reihe ist"
 
 #. [label]
 #: data/gui/window/lobby_main.cfg:615 data/gui/window/lobby_main.cfg:832
@@ -4099,10 +3988,8 @@ msgstr "Logging-Einstellungen"
 
 #. [label]
 #: data/gui/window/logging.cfg:192
-#, fuzzy
-#| msgid "Log Cabin"
 msgid "Log Domain"
-msgstr "Landhof"
+msgstr "Log Domaine"
 
 #. [row]
 #: data/gui/window/logging.cfg:196
@@ -4142,7 +4029,7 @@ msgstr "Leere die Logfläche"
 #. [label]
 #: data/gui/window/migrate_version_selection.cfg:40
 msgid "Data Migration"
-msgstr ""
+msgstr "Datenmigration"
 
 #. [label]
 #: data/gui/window/migrate_version_selection.cfg:53
@@ -4150,6 +4037,8 @@ msgid ""
 "Choose which version of Wesnoth to import your data from.\n"
 "Some settings will not take effect until Wesnoth is restarted."
 msgstr ""
+"Wähle die Version von Wesnoth von der du die Daten importieren willst.\n"
+"Einige Einstellungen werden erst funktionieren wenn du Wesnoth neu startest."
 
 #. [button]: id=cancel
 #: data/gui/window/migrate_version_selection.cfg:127
@@ -4192,10 +4081,8 @@ msgstr "In der Lobby"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:184
-#, fuzzy
-#| msgid "Player joins:"
 msgid "Player joins"
-msgstr "Spieler beigetreten:"
+msgstr "Spieler beigetreten"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:184
@@ -4204,10 +4091,8 @@ msgstr "Wenn ein Spieler die Lobby oder das Spiel betritt"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:185
-#, fuzzy
-#| msgid "Player leaves:"
 msgid "Player leaves"
-msgstr "Spieler verlässt:"
+msgstr "Spieler verlässt"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:185
@@ -4221,17 +4106,13 @@ msgstr "Wenn eine Flüster-Nachricht erhalten wird"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:186
-#, fuzzy
-#| msgid "Whisper:"
 msgid "Whisper"
-msgstr "Flüstert:"
+msgstr "Flüstert"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:187
-#, fuzzy
-#| msgid "Friend message:"
 msgid "Friend message"
-msgstr "Private Nachricht:"
+msgstr "Private Nachricht"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:187
@@ -4240,10 +4121,8 @@ msgstr "Wenn eine Nachricht von einem Freund erhalten wurde"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:188
-#, fuzzy
-#| msgid "Public message:"
 msgid "Public message"
-msgstr "Öffentliche Nachricht:"
+msgstr "Öffentliche Nachricht"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:188
@@ -4252,10 +4131,8 @@ msgstr "Wenn eine öffentliche Nachricht erhalten wurde"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:189
-#, fuzzy
-#| msgid "Server message:"
 msgid "Server message"
-msgstr "Server Nachricht:"
+msgstr "Server Nachricht"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:189
@@ -4264,10 +4141,8 @@ msgstr "Wenn eine Nachricht von einem Server erhalten wurde"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:190
-#, fuzzy
-#| msgid "Ready to start:"
 msgid "Ready to start"
-msgstr "Bereit zum Spielen:"
+msgstr "Bereit zum Spielen"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:190
@@ -4276,10 +4151,8 @@ msgstr "Wenn das Spiel, welches du bereitstellst, gestartet werden kann"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:191
-#, fuzzy
-#| msgid "Game has begun:"
 msgid "Game has begun"
-msgstr "Die Partie hat begonnen:"
+msgstr "Die Partie hat begonnen"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:191
@@ -4288,10 +4161,8 @@ msgstr "Wenn der Host (nicht Ihr) die Partie gestartet hat"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:192
-#, fuzzy
-#| msgid "Turn changed:"
 msgid "Turn changed"
-msgstr "Zug gewechselt:"
+msgstr "Zug gewechselt"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:192
@@ -4300,10 +4171,8 @@ msgstr "Wenn ein Zug begonnen hat"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:193
-#, fuzzy
-#| msgid "Game created:"
 msgid "Game created"
-msgstr "Spiel eröffnet:"
+msgstr "Spiel eröffnet"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:193
@@ -4327,17 +4196,13 @@ msgstr "Kontrolle ändern"
 
 #. [label]
 #: data/gui/window/mp_connect.cfg:71
-#, fuzzy
-#| msgid "Log on to the official Wesnoth multiplayer server"
 msgid "Choose or enter the address of a multiplayer server."
-msgstr "Beim offiziellen Wesnoth-Server anmelden"
+msgstr "Wähle einen Multiplayer Server oder gib eine Adresse ein."
 
 #. [label]
 #: data/gui/window/mp_connect.cfg:101
-#, fuzzy
-#| msgid "Address"
 msgid "Address:"
-msgstr "Adresse"
+msgstr "Adresse:"
 
 #. [label]: id=address
 #: data/gui/window/mp_connect.cfg:176
@@ -4346,10 +4211,8 @@ msgstr "Adresse"
 
 #. [button]: id=server_add
 #: data/gui/window/mp_connect.cfg:270
-#, fuzzy
-#| msgid "Address"
 msgid "Add"
-msgstr "Adresse"
+msgstr "Hinzufügen"
 
 #. [label]
 #: data/gui/window/mp_create_game.cfg:119
@@ -4363,10 +4226,8 @@ msgstr "Zufällige Fraktionen:"
 
 #. [label]
 #: data/gui/window/mp_create_game.cfg:156
-#, fuzzy
-#| msgid "Allow for mirror matchups when random factions are chosen."
 msgid "Allow for mirror matchups when random factions are chosen"
-msgstr "Erlaubt gespiegelte Parteien wenn zufällige Fraktionen gewählt wurden"
+msgstr "Erlaubt gleiche Fraktionen wenn zufällige Fraktionen gewählt wurden"
 
 #. [toggle_button]: id=use_map_settings
 #: data/gui/window/mp_create_game.cfg:313
@@ -4500,7 +4361,6 @@ msgstr "Aktionsbonus"
 msgid "Time for each attack, recruit, and capture"
 msgstr "Zeit für jeden Angriff, jede Ausbildung und Einnahme"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [widget]: id=tab_label
 #. [widget]: id=label
 #: data/gui/window/mp_create_game.cfg:533 data/gui/window/preferences.cfg:292
@@ -4564,7 +4424,7 @@ msgstr "Privates Spiel"
 
 #: data/gui/window/mp_create_game.cfg:941
 msgid "Whether the replay will be publicly available"
-msgstr "Stelle das Replay nicht öffentlich zur Verfügung."
+msgstr "Stelle das Replay nicht öffentlich zur Verfügung"
 
 #. [label]
 #: data/gui/window/mp_create_game.cfg:957
@@ -4573,17 +4433,12 @@ msgstr "Name der Partie:"
 
 #. [text_box]: id=game_password
 #: data/gui/window/mp_create_game.cfg:1004
-#, fuzzy
-#| msgid ""
-#| "Set the password that people wanting to join your game as players must "
-#| "enter."
 msgid ""
 "Set the password that people wanting to join your game as players must enter"
 msgstr ""
-"Legt das Passwort fest, welches Spieler benötigen, um Eurer Partie "
-"beizutreten."
+"Lege das Passwort fest, welches Spieler benötigen, um deinem Spiel "
+"beizutreten"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/mp_create_game/default_resolution.cfg:176
 #: data/gui/window/mp_create_game/small_resolution.cfg:181
@@ -4660,7 +4515,6 @@ msgstr "Verlassen"
 msgid "Game Lobby"
 msgstr "Spiel Lobby"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=status_label
 #: data/gui/window/mp_join_game.cfg:491 data/gui/window/mp_staging.cfg:614
 #: data/gui/window/mp_staging.cfg:806
@@ -4694,7 +4548,6 @@ msgstr "Euer Name:"
 msgid "Save password locally (encrypted)"
 msgstr "Speichert das Passwort in der Konfigurationsdatei (verschlüsselt)"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #. [grid]
 #. [widget]: id=label
@@ -4776,7 +4629,7 @@ msgstr "Spiel starten"
 #. [text]
 #: data/gui/window/outro.cfg:49
 msgid "Press ESC to skip"
-msgstr ""
+msgstr "Drücke ESC um abzubrechen"
 
 #. [widget]: id=label
 #: data/gui/window/preferences.cfg:311
@@ -4843,7 +4696,7 @@ msgid ""
 msgstr ""
 "Die Geschwindigkeit, mit welcher Einheiten sich bewegen und Animationen "
 "abgespielt werden, wenn »Geschwindigkeit erhöhen« aktiviert ist oder während "
-"des Spiels »Shift« gedrückt wird."
+"des Spiels »Shift« gedrückt wird"
 
 #. [toggle_button]: id=disable_auto_moves
 #: data/gui/window/preferences/01_general.cfg:100
@@ -4920,7 +4773,7 @@ msgid ""
 "Delete previous auto-saves on victory in all modes and defeat in multiplayer"
 msgstr ""
 "Automatische Spielstände bei Sieg löschen, im Mehrspielermodus auch bei "
-"Niederlage."
+"Niederlage"
 
 #. [column]
 #: data/gui/window/preferences/01_general.cfg:197
@@ -4955,10 +4808,8 @@ msgstr "Filter:"
 
 #. [text_box]: id=filter
 #: data/gui/window/preferences/02_hotkeys.cfg:50
-#, fuzzy
-#| msgid "Filters on hotkey description."
 msgid "Filters on hotkey description"
-msgstr "Filtere nach Tastenkürzel-Beschreibung."
+msgstr "Filtere nach Tastenkürzel-Beschreibung"
 
 #. [toggle_button]: id=sort_0
 #: data/gui/window/preferences/02_hotkeys.cfg:94
@@ -4970,7 +4821,6 @@ msgstr "Aktion"
 msgid "Hotkey"
 msgstr "Tastenkürzel"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [toggle_button]: id=sort_2
 #. Translate G as the initial letter for Game
 #: data/gui/window/preferences/02_hotkeys.cfg:118
@@ -4983,7 +4833,6 @@ msgstr "S"
 msgid "Available in game"
 msgstr "Verfügbar im Spiel"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [toggle_button]: id=sort_3
 #. Translate E as the initial letter for Editor
 #: data/gui/window/preferences/02_hotkeys.cfg:131
@@ -4996,7 +4845,6 @@ msgstr "E"
 msgid "Available in editor"
 msgstr "Verfügbar im Editor"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [toggle_button]: id=sort_4
 #. Translate T as the initial letter for Title Screen
 #: data/gui/window/preferences/02_hotkeys.cfg:144
@@ -5130,16 +4978,12 @@ msgstr "FPS Begrenzung"
 
 #. [toggle_button]: id=fps_limiter
 #: data/gui/window/preferences/03_display.cfg:275
-#, fuzzy
-#| msgid ""
-#| "Disabling this increases CPU usage to 100% but may slightly improve "
-#| "performance at high resolutions"
 msgid ""
 "Disabling this increases CPU usage, but may slightly improve performance "
 "(requires restart to take effect)"
 msgstr ""
-"Das Deaktivieren dieser Option erhöht die CPU Auslastung um 100%, könnte "
-"aber die Performance bei hohen Auflösungen leicht verbessern"
+"Das Deaktivieren dieser Option erhöht die CPU Auslastung, erhöht die "
+"Performance bei hohen Auflösungen (benötigt Neustart um zu wirken)"
 
 #. [button]: id=choose_theme
 #: data/gui/window/preferences/03_display.cfg:290
@@ -5338,11 +5182,9 @@ msgstr "Entfernt den Spieler von Eurer Liste"
 
 #. [label]: id=no_friends_notice
 #: data/gui/window/preferences/05_multiplayer.cfg:311
-#, fuzzy
-#| msgid "You have not befriended or ignored any other players."
 msgid "You have not befriended or blocked any other players."
 msgstr ""
-"Ihr hast Euch noch nicht mit anderen Spielern angefreundet oder ignoriert "
+"Ihr habt Euch noch nicht mit anderen Spielern angefreundet oder ignoriert "
 "sie."
 
 #. [button]: id=open
@@ -5425,7 +5267,6 @@ msgstr ""
 msgid "Overall"
 msgstr "Insgesamt"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=title
 #: data/gui/window/statistics_dialog.cfg:490 src/hotkey/hotkey_command.cpp:122
 msgid "Statistics"
@@ -5473,7 +5314,6 @@ msgid ""
 "Red values indicate this side fared worse than expected."
 msgstr ""
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=lblTitle
 #: data/gui/window/surrender_quit.cfg:40 src/hotkey/hotkey_command.cpp:125
 msgid "Surrender Game"
@@ -5555,7 +5395,6 @@ msgstr "Flaggen"
 msgid "Choose Theme"
 msgstr "Grafikthema wählen"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=help
 #: data/gui/window/title_screen.cfg:174 src/hotkey/hotkey_command.cpp:274
 msgid "Help"
@@ -5672,10 +5511,8 @@ msgstr "Gegner angreifen"
 
 #. [label]
 #: data/gui/window/unit_create.cfg:55
-#, fuzzy
-#| msgid "Delete Unit"
 msgid "Create Unit"
-msgstr "Einheit löschen"
+msgstr "Erstelle Einheit"
 
 #. [toggle_button]: id=sort_0
 #: data/gui/window/unit_create.cfg:134
@@ -5709,7 +5546,6 @@ msgstr "S"
 msgid "XP"
 msgstr "EP"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [toggle_button]: id=sort_6
 #. [toggle_button]: id=sort_4
 #: data/gui/window/unit_list.cfg:176 data/gui/window/unit_recall.cfg:89
@@ -5718,7 +5554,6 @@ msgstr "EP"
 msgid "Traits"
 msgstr "Charakteristiken"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/unit_list.cfg:367 src/hotkey/hotkey_command.cpp:121
 msgid "Unit List"
@@ -5731,12 +5566,10 @@ msgstr "Einheit einberufen"
 
 #. [text_box]: id=filter_box
 #: data/gui/window/unit_recall.cfg:311
-#, fuzzy
-#| msgid "Search for unit name, unit type name, unit level, or trait."
 msgid "Search for unit name, unit type name, unit level, or trait"
 msgstr ""
 "Sucht nach Einseitennamen, Namen des Typs, der Stufe oder einer "
-"Charakteristik."
+"Charakteristik"
 
 #. [button]: id=rename
 #: data/gui/window/unit_recall.cfg:401
@@ -5748,7 +5581,6 @@ msgstr "Umbenennen"
 msgid "Dismiss"
 msgstr "Entlassen"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
 #: data/gui/window/unit_recall.cfg:450 src/hotkey/hotkey_command.cpp:106
 msgid "Recall"
@@ -5759,13 +5591,11 @@ msgstr "Einberufen"
 msgid "Recruit Unit"
 msgstr "Einheit ausbilden"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
 #: data/gui/window/unit_recruit.cfg:231 src/hotkey/hotkey_command.cpp:104
 msgid "Recruit"
 msgstr "Ausbilden"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/wml_error.cfg:40 src/gui/dialogs/message.cpp:211
 #: src/gui/dialogs/preferences_dialog.cpp:236
@@ -5773,7 +5603,6 @@ msgstr "Ausbilden"
 msgid "Error"
 msgstr "Fehler"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=details_heading
 #: data/gui/window/wml_error.cfg:112 src/gui/dialogs/multiplayer/lobby.cpp:239
 #: src/gui/dialogs/multiplayer/lobby.cpp:255 src/gui/dialogs/wml_error.cpp:161
@@ -6315,7 +6144,7 @@ msgstr "Der Server antwortete mit einem Fehler:"
 
 #: src/gui/dialogs/addon/manager.cpp:870
 msgid "The add-on was rejected by the server:"
-msgstr ""
+msgstr "Die Erweiterung wurde vom Server abgelehnt:"
 
 #: src/gui/dialogs/addon/manager.cpp:885 src/gui/dialogs/addon/manager.cpp:912
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:501
@@ -6372,7 +6201,7 @@ msgstr "Keine"
 msgid "Clipboard support not found, contact your packager"
 msgstr ""
 "Zwischenablage-Unterstützung nicht gefunden, wendet Euch an Euren "
-"Paketbetreuer."
+"Paketbetreuer"
 
 #: src/gui/dialogs/depcheck_confirm_change.cpp:39
 msgid "$requester requires the following modifications to be enabled:"
@@ -6510,26 +6339,20 @@ msgid "The game data cache could not be purged."
 msgstr "Spieldaten-Cache konnte nicht vollständig geleert werden."
 
 #: src/gui/dialogs/game_load.cpp:75
-#, fuzzy
-#| msgid "Saved Games"
 msgid "No Saved Games"
-msgstr "Gespeicherte Spielstände"
+msgstr "Keine gespeicherten Spielstände"
 
 #: src/gui/dialogs/game_load.cpp:75
-#, fuzzy
-#| msgid "There are no alternative video modes available"
 msgid "There are no saved games to load."
-msgstr "Es sind keine weitere Videomodi verfügbar"
+msgstr "Es gibt keine gespeicherten Spielstände zum Laden."
 
 #: src/gui/dialogs/game_load.cpp:144
 msgid "game_version^Current Version"
-msgstr ""
+msgstr "game_version^Derzeitige Version"
 
 #: src/gui/dialogs/game_load.cpp:148
-#, fuzzy
-#| msgid "Version $version"
 msgid "game_version^Wesnoth $version"
-msgstr "Version $version"
+msgstr "game_version^Wesnoth $version"
 
 #: src/gui/dialogs/game_load.cpp:285
 msgid "The selected file is corrupt: "
@@ -6573,7 +6396,7 @@ msgstr "Version: "
 
 #: src/gui/dialogs/game_load.cpp:468
 msgid "Modifications: "
-msgstr "Modifikationen:"
+msgstr "Modifikationen: "
 
 #: src/gui/dialogs/game_stats.cpp:70
 msgid "controller^AI"
@@ -6733,10 +6556,8 @@ msgid "Do you really want to log out?"
 msgstr "Wollt Ihr Euch wirklich abmelden?"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:235
-#, fuzzy
-#| msgid "Incompatible User-made Content."
 msgid "Incompatible User-made Content"
-msgstr "Inkompatibler von Nutzern erstellter Inhalt."
+msgstr "Inkompatibler von Nutzern erstellter Inhalt"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:236
 msgid ""
@@ -6749,10 +6570,8 @@ msgstr ""
 "Host vorschlagen, seine Erweiterungen zu aktualisieren."
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:251
-#, fuzzy
-#| msgid "Missing User-made Content."
 msgid "Missing User-made Content"
-msgstr "Fehlende Erweiterungen"
+msgstr "Fehlender nutzererstellter Inhalt"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:252
 msgid ""
@@ -6839,17 +6658,15 @@ msgid ""
 "contact your package manager"
 msgstr ""
 "Diese Version von Wesnoth beinhaltet keine Unterstützung von Desktop-"
-"Benachrichtigungen. Bitte kontaktiert Euren Paketbetreuer."
+"Benachrichtigungen. Bitte kontaktiert Euren Paketbetreuer"
 
 #: src/gui/dialogs/multiplayer/mp_change_control.cpp:83
 msgid "Side $side"
 msgstr "Partei $side"
 
 #: src/gui/dialogs/multiplayer/mp_connect.cpp:186
-#, fuzzy
-#| msgid "Server:"
 msgid "Add Server"
-msgstr "Server:"
+msgstr "Server hinzufügen"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:98
 msgid "Scenarios"
@@ -6904,7 +6721,7 @@ msgstr ""
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:522
 msgid "No eras available for this game."
-msgstr "Keine Epochen für diese Partie verfügbar"
+msgstr "Keine Epochen für diese Partie verfügbar."
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:724
 msgid "number of players^$min to $max"
@@ -6916,10 +6733,8 @@ msgstr "Die gewählte Partie hat keine Parteien!"
 
 #. TRANSLATORS: This sentence will be followed by some details of the error, most likely the "Map could not be loaded" message from create_engine.cpp
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:828
-#, fuzzy
-#| msgid "The selected game has no sides!"
 msgid "The selected game cannot be created."
-msgstr "Die gewählte Partie hat keine Parteien!"
+msgstr "Die gewählte Partie kann nicht erstellt werden."
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:900
 msgid "Choose Starting Scenario"
@@ -6981,7 +6796,7 @@ msgstr "Ungültiger Spielername"
 
 #: src/gui/dialogs/preferences_dialog.cpp:283
 msgid "Not on friends or ignore lists"
-msgstr "Nicht auf der Freundes- oder Ignorier-Liste."
+msgstr "Nicht auf der Freundes- oder Ignorier-Liste"
 
 #: src/gui/dialogs/preferences_dialog.cpp:812
 #: src/gui/dialogs/preferences_dialog.cpp:882
@@ -7030,11 +6845,11 @@ msgstr "Diese Runde"
 
 #: src/gui/dialogs/statistics_dialog.cpp:215
 msgid "Actual hit rates, by chance to hit:"
-msgstr ""
+msgstr "Derzeitige Chance für einen Treffer:"
 
 #: src/gui/dialogs/statistics_dialog.cpp:217
 msgid "(no attacks have taken place yet)"
-msgstr ""
+msgstr "(es hat bisher kein Angriff stattgefunden)"
 
 #: src/gui/dialogs/statistics_dialog.cpp:325
 msgid ""
@@ -7045,6 +6860,11 @@ msgid ""
 "The sum (or difference) of the two numbers in parentheses is the actual "
 "number of hits inflicted/taken."
 msgstr ""
+"stats dialog^Unterschied zwischen aktuellen und erwarteten Resultat als "
+"Prozentwert.\n"
+"Die erste Zahl in den Klammern zeigt die die Anzahl der erwarteten Treffer.\n"
+"Die wirkliche Anzahl der Treffer zeigt sich im Vergleich mit der zweiten "
+"Zahl in der Klammer und liegt in der Regel irgendwo dazwischen."
 
 #: src/gui/dialogs/statistics_dialog.cpp:369
 msgid "Recruits"
@@ -7102,8 +6922,7 @@ msgstr ""
 
 #: src/gui/dialogs/unit_recall.cpp:226
 msgid "This unit cannot be recalled because you do not have enough gold."
-msgstr ""
-"diese Einheit kann nicht Einberufen werden, da Ihr zu wenige Gold habt."
+msgstr "Diese Einheit kann nicht Einberufen werden, da Ihr zu wenig Gold habt."
 
 #: src/gui/dialogs/unit_recall.cpp:322 src/hotkey/hotkey_command.cpp:97
 msgid "Rename Unit"
@@ -7167,20 +6986,16 @@ msgstr "an $receiver senden"
 
 #: src/gui/widgets/chatbox.cpp:389
 msgid "Joined <i>$name</i>"
-msgstr ""
+msgstr "<i>$name</i> ist beigetreten"
 
 #: src/gui/widgets/chatbox.cpp:395
-#, fuzzy
-#| msgid ""
-#| "Whisper session with <i>“$name”</i> started. If you do not want to "
-#| "receive messages from this user, type <i>/ignore $name</i>"
 msgid ""
 "Started private message with <i>$name</i>. If you do not want to receive "
 "messages from this player, type <i>/ignore $name</i>"
 msgstr ""
 "Private Nachrichtensitzung mit <i>$name</i> gestartet. Wenn Ihr von diesem "
-"Benutzer keine Nachrichten mehr erhalten wollt, führt den Befehl »/ignore "
-"$name« aus."
+"Benutzer keine Nachrichten mehr erhalten wollt, führt den Befehl <i>/ignore "
+"$Name</i> aus"
 
 #: src/gui/widgets/chatbox.cpp:634
 msgid "$player has entered the room"
@@ -7198,13 +7013,11 @@ msgstr "Benötigtes Steuerelement »$id« wurde nicht definiert."
 msgid "Opening links is not supported, contact your packager"
 msgstr ""
 "Das Öffnen von Links wird nicht unterstützt. Bitte kontaktiert Euren "
-"Paketbetreuer."
+"Paketbetreuer"
 
 #: src/gui/widgets/label.cpp:144
-#, fuzzy
-#| msgid "Copied link!"
 msgid "Open link?"
-msgstr "Link kopiert!"
+msgstr "Link öffnen?"
 
 #: src/gui/widgets/label.cpp:175
 msgid "Copied link!"
@@ -7846,12 +7659,8 @@ msgid "Item Tool"
 msgstr "Gegenstandswerkzeug"
 
 #: src/hotkey/hotkey_command.cpp:199
-#, fuzzy
-#| msgid "Left mouse button sets or drags a label, right clears."
 msgid "Left mouse button sets a new item."
-msgstr ""
-"Die linke Maustaste platziert oder verschiebt die Beschriftung, die Rechte "
-"löscht sie."
+msgstr "Die linke Maustaste platziert ein neues Item."
 
 #: src/hotkey/hotkey_command.cpp:200
 msgid ""
@@ -8112,17 +7921,15 @@ msgstr "Nachricht an alle"
 
 #: src/hotkey/hotkey_command.cpp:275
 msgid "Help about save-loading"
-msgstr ""
+msgstr "Hilfe zum Speichern und Laden"
 
 #: src/hotkey/hotkey_command.cpp:275
 msgid "Hint: save-loading is unnecessary"
-msgstr ""
+msgstr "Hinweis: Speichern und Laden ist unnötig"
 
 #: src/hotkey/hotkey_command.cpp:277
-#, fuzzy
-#| msgid "Enter User Command"
 msgid "Enter Command"
-msgstr "Kommandozeile öffnen"
+msgstr "Öffne Kommandozeile"
 
 #: src/hotkey/hotkey_command.cpp:278
 msgid "Custom Command"
@@ -8133,10 +7940,8 @@ msgid "Run Formula"
 msgstr "Formel ausführen"
 
 #: src/hotkey/hotkey_command.cpp:280
-#, fuzzy
-#| msgid "Player Chat"
 msgid "Clear Chat"
-msgstr "Spieler Chat"
+msgstr "Chat leeren"
 
 #: src/hotkey/hotkey_command.cpp:282
 msgid "Change Language"
@@ -8227,15 +8032,11 @@ msgid "[%I:%M %p]"
 msgstr "[%I:%M %p]"
 
 #: src/terrain/translation.cpp:713
-#, fuzzy
-#| msgid ""
-#| "A terrain with a string with more than 4 characters has been found, the "
-#| "affected terrain is :"
 msgid ""
 "A terrain with a string with more than 4 characters has been found, the "
 "affected terrain is:"
 msgstr ""
-"Ein Gelände mit mehr als vier Zeichen wurde gefunden. Das betroffen Gelände "
+"Ein Gelände mit mehr als vier Zeichen wurde gefunden. Das betroffene Gelände "
 "ist:"
 
 #: src/wml_exception.cpp:66

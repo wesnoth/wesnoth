@@ -7,13 +7,14 @@
 #  Elias Pschernig <allefant@allefant.com>, 2012.
 #  Aaron Winter <winter.aaron93@gmail.com>, 2018
 #  Severin Glöckner <severin.gloeckner@stud.htwk-leipzig.de>, 2018
-#
+#  Mathias Lang <heindal@scherbia.de>, 2021
+#  
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.14\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2021-09-25 21:03-0300\n"
-"PO-Revision-Date: 2020-11-23 01:13+0100\n"
+"PO-Revision-Date: 2021-10-13 00:28+0200\n"
 "Last-Translator: Aaron Winter <winter.aaron93@gmail.com>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
 "Language: de_DE\n"
@@ -21,7 +22,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.4.1\n"
+"X-Generator: Poedit 3.0\n"
 
 #. [multiplayer_side]: id=Custom
 #: data/_main.cfg:22
@@ -138,16 +139,12 @@ msgstr "Alle Einheitentypen in der Hilfe anzeigen"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:111
-#, fuzzy
-#| msgid ""
-#| "Show all unit types in the help (requires restart). This does not alter "
-#| "the list of encountered units"
 msgid ""
 "Show all unit types in the help (requires restart). If unset, only units "
 "that have been encountered will be shown."
 msgstr ""
-"Beschreibt alle Einheiten in der Hilfe (Neustart erforderlich). Die Liste "
-"der Einheiten, denen man bereits begegnet ist, bleibt unverändert"
+"Zeigt alle Einheiten in der Hilfe (Neustart erforderlich). Ist dies nicht "
+"gewählt, sieht man nur die Einheiten, denen man bereits begegnet ist."
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:118
@@ -212,7 +209,6 @@ msgstr ""
 "Zusätzlich kontrolliert der Log-Domäne über veralteten Code, wie viele "
 "Nachrichten angezeigt werden."
 
-#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [unstore_unit]
 #. [lua]: set_status
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:365
@@ -233,7 +229,6 @@ msgstr "Dreizack des Sturms"
 msgid "Gold carryover:"
 msgstr "Mitgebrachtes Gold:"
 
-#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [note]
 #. [lua]: generate_objectives
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:248
@@ -401,10 +396,8 @@ msgstr "Afrikaanse Übersetzung"
 
 #. [about]
 #: data/core/about_i18n.cfg:26
-#, fuzzy
-#| msgid "Greek Translation"
 msgid "Ancient Greek Translation"
-msgstr "Griechische Übersetzung"
+msgstr "Altgriechische Übersetzung"
 
 #. [about]
 #: data/core/about_i18n.cfg:34
@@ -1553,7 +1546,7 @@ msgid ""
 "victory."
 msgstr ""
 "Mit diesem Goldstück wünsche ich mir, dass diese Schlacht rasch enden und "
-"uns ein Sieg beschert sein möge!"
+"uns ein Sieg beschert sein möge."
 
 #. [option]
 #: data/core/macros/items.cfg:40
@@ -1565,7 +1558,7 @@ msgstr "Unmengen an Gold"
 msgid "I wish this single gold coin be returned ten-fold to me."
 msgstr ""
 "Ich wünsche mir, das Zehnfache des Goldes hier fände den Weg in meine "
-"Taschen!"
+"Taschen."
 
 #. [option]
 #: data/core/macros/items.cfg:54
@@ -1576,7 +1569,7 @@ msgstr "Frieden für ganz Wesnoth."
 #: data/core/macros/items.cfg:62
 msgid "The only thing worth wishing for is peace throughout the land."
 msgstr ""
-"Das Einzige was eines Wunsches wert ist, wäre Frieden im gesamten Land!"
+"Das Einzige was eines Wunsches wert ist, wäre Frieden im gesamten Land."
 
 # …bereichert um ein Zitat von Charles Dickens: "Wünsche sind nie klug. Das ist
 # sogar das beste an ihnen."
@@ -1598,12 +1591,12 @@ msgstr "Ein großes Wohlgefühl durchdringt den Trinkenden."
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:211
 msgid "You are not worthy of healing."
-msgstr "Du verdienst es nicht, geheilt zu werden!"
+msgstr "Du verdienst es nicht, geheilt zu werden."
 
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:249
 msgid "Poison is seeping through the veins of this unit at this very moment."
-msgstr "Und just durchströmt ein übles Gift die Adern dieser Einheit…"
+msgstr "Und just durchströmt ein übles Gift die Adern dieser Einheit."
 
 #: data/core/macros/items.cfg:278
 msgid ""
@@ -1654,7 +1647,7 @@ msgstr "Trank des Verfalls"
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:363
 msgid "This poor unit drank something really bad."
-msgstr "Da hat aber jemand etwas wirklich Ungesundes getrunken…"
+msgstr "Da hat aber jemand etwas wirklich Ungesundes getrunken."
 
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:398
@@ -1687,7 +1680,7 @@ msgstr "Stab der Geschwindigkeit"
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:479
 msgid "This staff will grant the bearer swift movement."
-msgstr "Dieser Stab verhilft dem Träger zu leichtfüßigem Schritt!"
+msgstr "Dieser Stab verhilft dem Träger zu leichtfüßigem Schritt."
 
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:480
@@ -1732,7 +1725,7 @@ msgid ""
 "This trident gives merfolk the power to throw lightning at their enemies."
 msgstr ""
 "Dieser Dreizack verleiht einem Wassermann die Macht, Blitze auf seine Feinde "
-"zu schleudern!"
+"zu schleudern."
 
 #. [effect]: type=fire
 #: data/core/macros/items.cfg:560
@@ -3523,10 +3516,8 @@ msgstr "Gold"
 
 #. [color_range]: id=darkblue
 #: data/core/team-colors.cfg:114
-#, fuzzy
-#| msgid "Dark Red"
 msgid "Dark blue"
-msgstr "Dunkelrot"
+msgstr "Dunkelblau"
 
 #. [color_range]: id=reef
 #: data/core/team-colors.cfg:123
@@ -3588,7 +3579,6 @@ msgstr "Höhle"
 msgid "Fungus"
 msgstr "Pilzhain"
 
-#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=village
 #: data/core/team-colors.cfg:195 src/terrain/terrain.cpp:188
 msgid "Village"
@@ -3619,13 +3609,11 @@ msgstr "Unbegehbar"
 msgid "Impassable"
 msgstr "Unpassierbar"
 
-#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=fog
 #: data/core/team-colors.cfg:231 src/game_initialization/lobby_data.cpp:446
 msgid "Fog"
 msgstr "Nebel"
 
-#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=shroud
 #: data/core/team-colors.cfg:237 src/game_initialization/lobby_data.cpp:449
 #: src/game_initialization/lobby_data.cpp:452
@@ -3640,7 +3628,7 @@ msgstr "Standard"
 #. [core]: id=default
 #: data/cores.cfg:8
 msgid "The standard Wesnoth core."
-msgstr "Der Standard Wesnoth-Kern"
+msgstr "Der Standard Wesnoth-Kern."
 
 # Hinweis betr. Original- und Übersetzungs-String:
 # Die Kombi " \+n" bewirkt den Umbruch einer Textzeile, fügt aber KEINE Leerzeile ein!
@@ -3692,22 +3680,15 @@ msgstr ""
 # siehe: bug #21649  Consecutive line breaks not rendered as expected with Pango/Cairo (GUI2, etc.)
 #. [language]
 #: data/english.cfg:17
-#, fuzzy
-#| msgid ""
-#| "Lawful units fight better during the day, and worse at night.\n"
-#| "\n"
-#| "Day: +25% Damage\n"
-#| "Night: −25% Damage"
 msgid ""
 "Liminal units fight best during the twilight times of day.\n"
 "\n"
 "Twilight: +25% Damage"
 msgstr ""
-"Redliche Einheiten können bei Tag besser kämpfen als andere. Mit Anbruch der "
-"Dämmerung aber sinkt ihr Kampfesmut.\n"
+"Zwielichtige Einheiten kämpfen in der Übergangphase zwischen Tag und Nacht "
+"deutlich besser als andere.\n"
 "\n"
-"Tag: +25% Schaden\n"
-"Nacht: −25% Schaden"
+"Zwielicht: +25% Schaden"
 
 #. [naming]
 #. Generator for bridge labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
@@ -4000,7 +3981,6 @@ msgstr "Ja"
 msgid "No"
 msgstr "Nein"
 
-#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=title
 #: data/gui/window/screenshot_notification.cfg:95
 #: src/hotkey/command_executor.cpp:633
@@ -4032,7 +4012,6 @@ msgstr "Oldania ADF Std"
 msgid "(Note: You should use $replacement instead in new code)"
 msgstr "(Anmerkung: Sie sollten stattdessen $replacement in Ihrem Code nutzen)"
 
-#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: wesnoth.deprecate_api
 #: data/lua/core/_initial.lua:28 src/deprecation.cpp:69
 msgid "Invalid deprecation level $level (should be 1-4)"
@@ -4043,31 +4022,26 @@ msgstr "Ungültige Deprekationsstufe $level (nur 1-4 erlaubt)"
 msgid "Invalid deprecation level (should be 1-4)"
 msgstr "Ungültige Deprekationsstufe (nur 1-4 erlaubt)"
 
-#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
 #: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1075
 msgid "female^poisoned"
 msgstr "vergiftet"
 
-#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
 #: data/lua/wml/harm_unit.lua:128 src/actions/attack.cpp:1082
 msgid "female^slowed"
 msgstr "verlangsamt"
 
-#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
 #: data/lua/wml/harm_unit.lua:128 src/actions/attack.cpp:1082
 msgid "slowed"
 msgstr "verlangsamt"
 
-#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
 #: data/lua/wml/harm_unit.lua:129 src/actions/attack.cpp:1088
 msgid "female^petrified"
 msgstr "versteinert"
 
-#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
 #: data/lua/wml/harm_unit.lua:129 src/actions/attack.cpp:1088
 msgid "petrified"
@@ -4083,14 +4057,12 @@ msgstr "unheilbar"
 msgid "unhealable"
 msgstr "unheilbar"
 
-#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: wesnoth.wml_actions.message
 #: data/lua/wml/message.lua:432 src/scripting/game_lua_kernel.cpp:3019
 #: src/scripting/game_lua_kernel.cpp:3054
 msgid "input"
 msgstr "Eingabe"
 
-#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: generate_objectives
 #: data/lua/wml/objectives.lua:36 src/game_initialization/mp_game_utils.cpp:76
 msgid "Victory:"
@@ -4148,10 +4120,8 @@ msgstr ""
 #. [lua]: pickadvance.show_dialog_unsynchronized
 #: data/modifications/pick_advance/dialog.lua:30
 #: data/modifications/pick_advance/main.lua:10
-#, fuzzy
-#| msgid "Advancements:"
 msgid "Plan Advancement"
-msgstr "Stufenaufstiege:"
+msgstr "Stufenaufstieg"
 
 #. [lua]: pickadvance.show_dialog_unsynchronized
 #: data/modifications/pick_advance/dialog.lua:67
@@ -4414,7 +4384,7 @@ msgid ""
 msgstr ""
 "Durch den Karteneditor erstellte Szenarien können im Mehrspielermodus unter "
 "dem Punkt »Eigene Karten« ausgewählt werden, sofern diese im vordefiniertem "
-"Ordner gespeichert wurden. "
+"Ordner gespeichert wurden."
 
 #. [tip]
 #: data/tips.cfg:16
@@ -4545,7 +4515,7 @@ msgid ""
 msgstr ""
 "Nachdem Ihr einige Szenarien gespielt habt, solltet Ihr in der <b>Hilfe</b> "
 "den Abschnitt <b>Spielregeln</b> zu Rate ziehen. Im weiteren Spielverlauf "
-"wird tieferes Wissen über die Spielmechanik sehr hilfreich sein."
+"wird tieferes Wissen über die Spielmechanik sehr hilfreich sein!"
 
 #. [tip]
 #: data/tips.cfg:48
@@ -4702,7 +4672,7 @@ msgstr ""
 "sich in diesem Zug nicht weiter bewegen. Damit können zwischen Einheiten "
 "zwei freie Felder liegen, die dennoch eine Barriere für den Gegner bilden. "
 "Aufgepasst: Plänkler haben die Fähigkeit, kontrollierte Gebiete ungehindert "
-"zu durchqueren!"
+"zu durchqueren."
 
 #. [tip]
 #: data/tips.cfg:88
@@ -5148,7 +5118,7 @@ msgid ""
 msgstr ""
 "Überlegt es Euch zweimal, bevor Ihr eine Einheit entlasst, egal wie wenig "
 "Erfahrungspunkte sie besitzt. Manchmal gäbe man viel darum, vorher genau zu "
-"wissen, über welche Fähigkeiten ein Neuankömmling verfügt…"
+"wissen, über welche Fähigkeiten ein Neuankömmling verfügt."
 
 #. [tip]
 #: data/tips.cfg:225
@@ -5384,7 +5354,7 @@ msgstr "Hinterhalt!"
 
 #: src/actions/move.cpp:1111
 msgid "Failed teleport! Exit not empty"
-msgstr "Teleportation fehlgeschlagen! Ziel ist besetzt."
+msgstr "Teleportation fehlgeschlagen! Ziel ist besetzt"
 
 #: src/actions/move.cpp:1127
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
@@ -5641,7 +5611,7 @@ msgstr "B"
 
 #: src/addon/manager_ui.cpp:83 src/addon/manager_ui.cpp:303
 msgid "Network communication error."
-msgstr "Netzwerkverbindungsfehler"
+msgstr "Netzwerkverbindungsfehler."
 
 #: src/addon/manager_ui.cpp:86 src/addon/manager_ui.cpp:306
 msgid "Remote host disconnected."
@@ -5696,10 +5666,10 @@ msgid_plural ""
 "information stored locally, and will not be removed:"
 msgstr[0] ""
 "Die folgende Erweiterung enthält scheinbar lokale Veröffentlichungs- bzw. "
-"Versionskontrolinformationen und wird deshalb nicht entfernt."
+"Versionskontrolinformationen und wird deshalb nicht entfernt:"
 msgstr[1] ""
 "Die folgenden Erweiterungen enthalten scheinbar lokale Veröffentlichungs- "
-"bzw. Versionskontrolinformationen und werden deshalb nicht entfernt."
+"bzw. Versionskontrolinformationen und werden deshalb nicht entfernt:"
 
 #: src/addon/manager_ui.cpp:204
 msgid "The following add-on could not be deleted properly:"
@@ -6879,7 +6849,7 @@ msgstr "Nur in einem Szenario verfügbar."
 
 #: src/help/help_impl.cpp:410 src/help/help_impl.cpp:446
 msgid "Time of Day Schedule"
-msgstr "Tagesablauf:"
+msgstr "Tagesablauf"
 
 #: src/help/help_impl.cpp:437
 msgid "Lawful Bonus:"
@@ -7582,7 +7552,7 @@ msgstr ""
 
 #: src/menu_events.cpp:1508 src/menu_events.cpp:1564
 msgid "Side '$side' controller is now controlled by: AI."
-msgstr "Partei »$side« wird nun gesteuert von: KI"
+msgstr "Partei »$side« wird nun gesteuert von: KI."
 
 #: src/menu_events.cpp:1510
 msgid "Side '$side' is already droided."
@@ -7590,7 +7560,7 @@ msgstr "Partei »$side« wird bereits auf diese Weise gesteuert."
 
 #: src/menu_events.cpp:1524 src/menu_events.cpp:1556
 msgid "Side '$side' controller is now controlled by: human."
-msgstr "Partei »$side« wird nun gesteuert von: Mensch"
+msgstr "Partei »$side« wird nun gesteuert von: Mensch."
 
 #: src/menu_events.cpp:1526
 #, fuzzy
@@ -7996,10 +7966,8 @@ msgstr "Typ: "
 # vorher:
 # Waffenfähigkeiten:
 #: src/reports.cpp:197
-#, fuzzy
-#| msgid "Specials: "
 msgid "Special Notes:"
-msgstr "Besonderheiten: "
+msgstr "Besonderheiten:"
 
 #: src/reports.cpp:220
 msgid "Race: "
@@ -8007,7 +7975,7 @@ msgstr "Spezies: "
 
 #: src/reports.cpp:239
 msgid "Side: <b>$side_name</b> ($color_name)"
-msgstr ""
+msgstr "Seite: <b>$side_name</b> ($color_name)"
 
 #: src/reports.cpp:317
 msgid "Trait: "
@@ -8231,13 +8199,11 @@ msgstr[1] "Angriffe"
 #. TRANSLATORS: This string is shown in the sidebar beneath the word "Attacks" when a unit can attack multiple times per turn
 #: src/reports.cpp:1135
 msgid "Remaining: $left/$max"
-msgstr ""
+msgstr "Verbleibend: $left/$max"
 
 #: src/reports.cpp:1139
-#, fuzzy
-#| msgid "This is not a multiplayer save."
 msgid "This unit can attack multiple times per turn."
-msgstr "Dies ist kein Mehrspieler-Spielstand."
+msgstr "Diese Einheit kann mehrmals pro Runde angreifen."
 
 #: src/reports.cpp:1231
 msgid "Time of day schedule:"
@@ -9247,7 +9213,7 @@ msgstr "Planungsmodus Optionen"
 
 #, fuzzy
 #~| msgid " resistance vs "
-#~ msgid " resistance vs "
+#~ msgid " resistance vs "
 #~ msgstr " resistent gegen "
 
 #, fuzzy
@@ -9483,8 +9449,8 @@ msgstr "Planungsmodus Optionen"
 #~ msgid "Alignment:"
 #~ msgstr "Tag-/Nachteinfluss:"
 
-#~ msgid "Required XP:"
-#~ msgstr "Benötigte EP:"
+#~ msgid "Required XP:"
+#~ msgstr "Benötigte EP:"
 
 #~ msgid "unit help^Attacks"
 #~ msgstr "Angriffe"
