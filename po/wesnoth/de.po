@@ -4624,13 +4624,6 @@ msgstr ""
 
 #. [tip]
 #: data/tips.cfg:76
-#, fuzzy
-#| msgid ""
-#| "Poisoned units will lose eight hitpoints every turn until they are one "
-#| "point from dying. They will then remain at death’s door until the poison "
-#| "is removed. Healers can prevent a poisoned unit from deteriorating, but "
-#| "the poison will not be removed unless the unit regenerates, or begins a "
-#| "turn in a village or next to a unit with the <i>Cures</i> ability."
 msgid ""
 "Poisoned units will lose eight hitpoints every turn until they are one point "
 "from dying. They will then remain at death’s door until the poison is "
@@ -4642,8 +4635,8 @@ msgstr ""
 "schließlich nur noch 1 Lebenspunkt von ihrem Tod trennt. Bis das Gift "
 "kuriert ist, werden sie in diesem bedauernswerten Zustand verbleiben. Heiler "
 "können die Wirkung des Giftes aufhalten, aber nicht aufheben. Nur der "
-"Aufenthalt in einem Dorf oder die Behandlung durch eine Einheit, mit der "
-"Fertigkeit <i>Kurieren</i> schafft Abhilfe."
+"Aufenthalt in einem Dorf oder einer Oase, oder die Behandlung durch eine "
+"Einheit mit der Fertigkeit <i>Kurieren</i>, schafft Abhilfe."
 
 #. [tip]
 #: data/tips.cfg:80
@@ -4841,7 +4834,7 @@ msgid ""
 "make room for you on their keep so you can recruit from there, and you can "
 "even capture an enemy’s keep and use that."
 msgstr ""
-"Euer <i>Heerführer</i> kann in jeder Bug Einheiten ausbilden oder "
+"Euer <i>Heerführer</i> kann in jeder Burg Einheiten ausbilden oder "
 "einberufen, nicht nur in der Startburg. Ihr könnt gegnerische Festungen "
 "einnehmen und von dort aus Einheiten in die Schlacht rufen. Bisweilen ist "
 "ein Verbündeter sogar gewillt, in seinem Lager für Euren Anführer Platz zum "
@@ -5071,12 +5064,6 @@ msgstr ""
 
 #. [tip]
 #: data/tips.cfg:213
-#, fuzzy
-#| msgid ""
-#| "Try to operate units with a small number of powerful attacks—such as Dark "
-#| "Adepts, Horsemen, Orcish Grunts or Dwarvish Thunderers—in pairs or "
-#| "threes. This gives you another try whenever your first devastating attack "
-#| "misses — as inevitably happens from time to time."
 msgid ""
 "Try to operate units with a small number of powerful attacks — such as Dark "
 "Adepts, Horsemen, Orcish Grunts or Dwarvish Thunderers — in pairs or threes. "
@@ -5091,12 +5078,6 @@ msgstr ""
 
 #. [tip]
 #: data/tips.cfg:217
-#, fuzzy
-#| msgid ""
-#| "Units with three or more attacks—especially magical attacks—are ideal for "
-#| "finishing off enemies with only a few hitpoints remaining. Be sure to use "
-#| "leadership—or a strong or dextrous unit—whenever the extra point or two "
-#| "of damage makes a one-hit kill possible."
 msgid ""
 "Units with three or more attacks — especially magical attacks — are ideal "
 "for finishing off enemies with only a few hitpoints remaining. Be sure to "
@@ -5694,13 +5675,11 @@ msgid "An error occurred while downloading the add-ons list from the server."
 msgstr "Beim Herunterladen der Erweiterungsliste ist ein Fehler aufgetreten."
 
 #: src/addon/manager_ui.cpp:296
-#, fuzzy
-#| msgid "Could not find an add-on matching id $addon_id on the add-on server."
 msgid ""
 "Could not find add-ons matching the ids $addon_ids on the add-on server."
 msgstr ""
-"Es konnte keine Erweiterung mit der id $addon_id auf dem Add-on Server "
-"gefunden werden."
+"Es konnte keine Erweiterung mit einer id aus die Liste »$addon_ids« auf dem "
+"Add-on Server gefunden werden."
 
 #: src/addon/validation.cpp:388
 msgid "Success."
@@ -5752,20 +5731,17 @@ msgid ""
 msgstr ""
 
 #: src/addon/validation.cpp:435
-#, fuzzy
-#| msgid ""
-#| "The add-on <i>$addon_title</i> contains files or directories with case "
-#| "conflicts. File or directory names may not be differently-cased versions "
-#| "of the same string."
 msgid ""
 "The add-on contains files or directories with case conflicts.\n"
 "\n"
 "Names in the same directory may not be differently-cased versions of each "
 "other."
 msgstr ""
-"Die Erweiterung <i>$addon_title</i> beinhaltet Dateien oder Verzeichnisse "
-"mit Groß-/Kleinschreibungsproblemen. Dateien und Verzeichnisse sollten nicht "
-"mehrmals in verschiedener Schreibweise vorhanden sein."
+"Die Erweiterung beinhaltet Dateien oder Verzeichnisse mit Groß-/"
+"Kleinschreibungsproblemen.\n"
+"\n"
+"Dateien und Verzeichnisse sollten nicht mehrmals in verschiedener "
+"Schreibweise vorhanden sein."
 
 #: src/addon/validation.cpp:441
 msgid "The add-on name contains an invalid UTF-8 sequence."
@@ -6007,11 +5983,14 @@ msgstr "Entfernt einen Benutzer von Eurer Ignorieren-Liste."
 
 #: src/chat_command_handler.hpp:115
 msgid "<N>"
-msgstr ""
+msgstr "<N>"
 
+# Der Server wird mit nicht übersetztbare "user rolled a die [1 - N] and got a X" antworten.
 #: src/chat_command_handler.hpp:115
 msgid "Get a random number between 1 and N visible in the game setup lobby."
 msgstr ""
+"Werfen einen Spielwürfel mit Ziffern 1 bis N. In Spiellobby wird der "
+"Mitspieler das Ergebnis mitteilt."
 
 #: src/chat_command_handler.hpp:117
 msgid "Display version information."
@@ -6451,10 +6430,8 @@ msgid "Defeat enemy leader(s)"
 msgstr "Besiegt alle gegnerischen Anführer"
 
 #: src/game_initialization/mp_game_utils.cpp:103
-#, fuzzy
-#| msgid "Cannot find era $era"
 msgid "Cannot find era '$era'"
-msgstr "Die Epoche $era wurde nicht gefunden"
+msgstr "Die Epoche '$era' wurde nicht gefunden"
 
 #: src/game_initialization/multiplayer.cpp:236
 msgid "Invalid address specified for multiplayer server"
@@ -7278,6 +7255,11 @@ msgid ""
 "“on” = enable but retain vision, “full” = as if it’s controlled by another "
 "player"
 msgstr ""
+"[»side« [on/off/full]]\n"
+"»on« = übergaben die Kontrolle über eine Partei an den KI aber noch "
+"beobachten,\n"
+"»full« = KI steuert und die Sichtbarkeit ist wie es an einen anderen Spieler "
+"übergaben ist"
 
 #: src/menu_events.cpp:1230
 msgid "Change terrain type of current hex"
@@ -7286,7 +7268,7 @@ msgstr ""
 #. TRANSLATORS: [both|base|overlay] are hardcoded literal arguments and shouldn't be translated.
 #: src/menu_events.cpp:1232
 msgid "<terrain type> [both|base|overlay]"
-msgstr ""
+msgstr "»Geländekürzel« [both|base|overlay]"
 
 #: src/menu_events.cpp:1233
 msgid "Switch a side to/from idle state."
@@ -7563,8 +7545,6 @@ msgid "Side '$side' controller is now controlled by: human."
 msgstr "Partei »$side« wird nun gesteuert von: Mensch."
 
 #: src/menu_events.cpp:1526
-#, fuzzy
-#| msgid "Side '$side' is already droided."
 msgid "Side '$side' is already not droided."
 msgstr "Partei »$side« wird bereits auf diese Weise gesteuert."
 
@@ -7581,8 +7561,6 @@ msgid "Side '$side' controller is now fully controlled by: AI."
 msgstr "Partei »$side« wird nun gesteuert von: KI"
 
 #: src/menu_events.cpp:1542
-#, fuzzy
-#| msgid "Side '$side' is already droided."
 msgid "Side '$side' is already fully AI controlled."
 msgstr "Partei »$side« wird bereits auf diese Weise gesteuert."
 
@@ -8631,7 +8609,7 @@ msgstr "eine Eingabe"
 #. Translate the quotation marks only; leave "color_id" untranslated, as it's a variable name.
 #: src/team.cpp:1007
 msgid "“$color_id”"
-msgstr ""
+msgstr "»$color_id«"
 
 #: src/terrain/terrain.cpp:193
 msgid "Allied village"
