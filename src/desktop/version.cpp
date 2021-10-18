@@ -97,7 +97,11 @@ std::string windows_release_id()
 	char buf[256]{""};
 	DWORD size = sizeof(buf);
 
-	const auto res = RegGetValueA(HKEY_LOCAL_MACHINE, "SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion", "ReleaseId", RRF_RT_REG_SZ, nullptr, buf, &size);
+	auto res = RegGetValueA(HKEY_LOCAL_MACHINE, "SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion", "DisplayVersion", RRF_RT_REG_SZ, nullptr, buf, &size);
+	if(res != ERROR_SUCCESS) {
+		res = RegGetValueA(HKEY_LOCAL_MACHINE, "SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion", "ReleaseId", RRF_RT_REG_SZ, nullptr, buf, &size);
+	}
+
 	return std::string{res == ERROR_SUCCESS ? buf : ""};
 }
 
