@@ -884,7 +884,7 @@ std::string attack_type::weapon_specials(bool only_active, bool is_backstab) con
 	assert(display::get_singleton());
 	const unit_map& units = display::get_singleton()->get_units();
 	if(self_){
-		for (const config::any_child sp : (*self_).abilities().all_children_range()){
+		for (const config::any_child sp : self_->abilities().all_children_range()){
 			const bool active = check_self_abilities_impl(shared_from_this(), other_attack_, sp.cfg, self_, self_loc_, AFFECT_SELF, sp.key);
 
 			add_name(weapon_abilities, active, sp, checking_name);
@@ -896,7 +896,7 @@ std::string attack_type::weapon_specials(bool only_active, bool is_backstab) con
 				continue;
 			if(&*it == self_.get())
 				continue;
-			for (const config::any_child sp : (*it).abilities().all_children_range()){
+			for (const config::any_child sp : it->abilities().all_children_range()){
 				const bool active = check_adj_abilities_impl(shared_from_this(), other_attack_, sp.cfg, self_, *it, i, self_loc_, AFFECT_SELF, sp.key);
 
 				add_name(weapon_abilities, active, sp, checking_name);
@@ -905,7 +905,7 @@ std::string attack_type::weapon_specials(bool only_active, bool is_backstab) con
 	}
 
 	if(other_){
-		for (const config::any_child sp : (*other_).abilities().all_children_range()){
+		for (const config::any_child sp : other_->abilities().all_children_range()){
 			const bool active = check_self_abilities_impl(other_attack_, shared_from_this(), sp.cfg, other_, other_loc_, AFFECT_OTHER, sp.key);
 
 			add_name(weapon_abilities, active, sp, checking_name);
@@ -917,7 +917,7 @@ std::string attack_type::weapon_specials(bool only_active, bool is_backstab) con
 				continue;
 			if(&*it == other_.get())
 				continue;
-			for (const config::any_child sp : (*it).abilities().all_children_range()){
+			for (const config::any_child sp : it->abilities().all_children_range()){
 				const bool active = check_adj_abilities_impl(other_attack_, shared_from_this(), sp.cfg, other_, *it, i, other_loc_, AFFECT_OTHER, sp.key);
 
 				add_name(weapon_abilities, active, sp, checking_name);
