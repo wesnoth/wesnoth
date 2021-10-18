@@ -28,7 +28,7 @@ lg::log_domain log_editor("editor");
 namespace editor {
 
 EXIT_STATUS start(const std::string& filename /* = "" */,
-	bool take_screenshot /* = false */, const std::string& screenshot_filename /* = "map_screenshot.bmp" */)
+	bool take_screenshot /* = false */, const std::string& screenshot_filename /* = "map_screenshot.png" */)
 {
 	EXIT_STATUS e = EXIT_ERROR;
 	try {
