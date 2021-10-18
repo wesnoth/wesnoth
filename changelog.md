@@ -16,6 +16,7 @@
    * Updated translations: British English, Czech, Italian, Japanese, Portuguese (Brazil), Spanish.
  ### Units
  ### User interface
+   * Don't display the locale API identifier on the Language button (issue #6205).
  ### WML Engine
  ### Miscellaneous and Bug Fixes
 

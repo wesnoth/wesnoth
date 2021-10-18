@@ -326,9 +326,12 @@ void title_screen::pre_show(window& win)
 			return lang.localename == boost_name;
 		});
 
-		// If somehow the locale doesn't match a known translation, use the
-		// locale identifier as a last resort
-		lang_button->set_label(lang_def != langs.end() ? lang_def->language.str() : locale.name());
+		// If the locale doesn't match a known translation, we might be using the System Default
+		// Language option (issue #6205 <https://github.com/wesnoth/wesnoth/issues/6205>) or
+		// something weirder is up. Use the WML-defined default label instead in that case.
+		if(lang_def != langs.end()) {
+			lang_button->set_label(lang_def->language.str());
+		}
 	}
 
 	//
