@@ -44,7 +44,7 @@ end
 function wesnoth.wml_actions.wc2_fix_colors(cfg)
 	local player_sides = wesnoth.sides.find(wml.get_child(cfg, "player_sides"))
 	local other_sides = wesnoth.sides.find { { "not", wml.get_child(cfg, "player_sides") } }
-	local available_colors = { "red", "blue", "green", "purple", "black", "brown", "orange", "white", "teal" }
+	local available_colors = { "red", "blue", "green", "purple", "black", "brown", "orange", "white", "teal", "gold" }
 	local taken_colors = {}
 
 	for i, side in ipairs(player_sides) do
