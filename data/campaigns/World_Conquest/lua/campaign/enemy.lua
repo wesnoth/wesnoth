@@ -187,6 +187,7 @@ function enemy.fake_recall(side_num, t, loc)
 	}
 	wc2_training.apply(u)
 	u:to_map(loc)
+	wesnoth.add_known_unit(t)
 	side.gold = side.gold - 20
 end
 
@@ -275,6 +276,7 @@ function wesnoth.wml_actions.wc2_enemy(cfg)
 		unit.name = wc2_random_names()
 	end
 	unit:to_map()
+	wesnoth.add_known_unit(unit.type)
 	wesnoth.wml_actions.set_recruit {
 		side = side_num,
 		recruit = wml.variables[("wc2_enemy_army.group[%d].recruit"):format(enemy_type_id)]
