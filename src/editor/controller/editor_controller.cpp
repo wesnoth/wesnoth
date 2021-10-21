@@ -189,7 +189,7 @@ EXIT_STATUS editor_controller::main_loop()
 void editor_controller::status_table() {
 }
 
-void editor_controller::do_screenshot(const std::string& screenshot_filename /* = "map_screenshot.bmp" */)
+void editor_controller::do_screenshot(const std::string& screenshot_filename /* = "map_screenshot.png" */)
 {
 	try {
 		surface screenshot = gui().screenshot(true);

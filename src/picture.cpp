@@ -1103,12 +1103,6 @@ save_result save_image(const surface& surf, const std::string& filename)
 		return err == 0 ? save_result::success : save_result::save_failed;
 	}
 
-	if(filesystem::ends_with(filename, ".bmp")) {
-		LOG_DP << "Writing a BMP image to " << filename << std::endl;
-		const int err = SDL_SaveBMP(surf, filename.c_str()) == 0;
-		return err == 0 ? save_result::success : save_result::save_failed;
-	}
-
 	return save_result::unsupported_format;
 }
 

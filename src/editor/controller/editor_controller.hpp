@@ -88,7 +88,7 @@ class editor_controller : public controller_base,
 		EXIT_STATUS main_loop();
 
 		/** Takes a screenshot **/
-		void do_screenshot(const std::string& screenshot_filename = "map_screenshot.bmp");
+		void do_screenshot(const std::string& screenshot_filename = "map_screenshot.png");
 
 		/** Process a hotkey quit command */
 		void hotkey_quit();
