@@ -41,6 +41,7 @@
    * AI: fixed custom synced commands not changing the game state
    * Messenger MAI: fixed bug of own units sometimes blocking the path to a waypoint for the messenger
    * Correct unit display adjustments on certain tiles when at zoom level other than 100% (issue #5974)
+   * Fix the engine exiting immediately due to a corrupt .mo file (issue #6194)
 
 ## Version 1.15.14
  ### Add-ons client
