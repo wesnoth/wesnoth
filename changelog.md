@@ -19,6 +19,7 @@
    * Don't display the locale API identifier on the Language button (issue #6205).
  ### WML Engine
  ### Miscellaneous and Bug Fixes
+   * Fix the engine exiting immediately due to a corrupt .mo file (issue #6194)
 
 ## Version 1.15.18
  ### Campaigns

@@ -293,6 +293,19 @@ namespace
 			is_dirty_ = true;
 		}
 
+		/* This is called three times: once during the constructor, before any .mo files' paths have
+		 * been added to the generator, once after adding the mainline .mo files, and once more
+		 * after adding all add-ons. Corrupt .mo files might make the called functions throw, and so
+		 * this might fail as soon as we've added message paths.
+		 *
+		 * Throwing exceptions from here is (in 1.15.18) going to end up in wesnoth.cpp's "Caught
+		 * general ...  exception" handler, so the effect of letting an exception escape this
+		 * function is an immediate exit. Given that, it doesn't seem useful to change the assert
+		 * to a throw, at least not within the 1.16 branch.
+		 *
+		 * Postcondition: current_locale_ is a valid boost-generated locale, supplying the bl::info
+		 * facet. If there are corrupt .mo files, the locale might have no translations loaded.
+		 */
 		void update_locale_internal()
 		{
 			try
@@ -313,6 +326,18 @@ namespace
 				assert(std::has_facet<bl::info>(current_locale_));
 				const bl::info& info = std::use_facet<bl::info>(current_locale_);
 				ERR_G << "Failed to update locale due to conversion error, locale is now: "
+				      << "name='" << info.name()
+				      << "' country='" << info.country()
+				      << "' language='" << info.language()
+				      << "' encoding='" << info.encoding()
+				      << "' variant='" << info.variant()
+				      << "'" << std::endl;
+			}
+			catch(const std::runtime_error&)
+			{
+				assert(std::has_facet<bl::info>(current_locale_));
+				const bl::info& info = std::use_facet<bl::info>(current_locale_);
+				ERR_G << "Failed to update locale due to runtime error, locale is now: "
 				      << "name='" << info.name()
 				      << "' country='" << info.country()
 				      << "' language='" << info.language()
