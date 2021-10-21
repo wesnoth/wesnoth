@@ -44,6 +44,109 @@
    * Fix the engine exiting immediately due to a corrupt .mo file (issue #6194)
    * Removed support for writing BMP screenshots (PR #6206).
 
+## Version 1.15.18+dev
+ ### Add-ons client
+ ### Add-ons server
+ ### Campaigns
+   * Sceptre of Fire
+     * S06: Fix some WML variable handling causing autodefeat in S06 or rune-equip bugs in a later scenario (issue #6146)
+   * Under the Burning Suns
+     * S05: Avoid village just taken by the player being re-assigned to the enemy (issue #6187)
+ ### Editor
+ ### Multiplayer
+ ### Lua API
+   * Fixed `wesnoth.audio.volume = N` always setting volume to 0.
+ ### Packaging
+ ### Terrain
+ ### Translations
+   * Updated translations: British English, Czech, Italian, Japanese, Portuguese (Brazil), Spanish.
+ ### Units
+ ### User interface
+   * Don't display the locale API identifier on the Language button (issue #6205).
+ ### WML Engine
+ ### Miscellaneous and Bug Fixes
+   * Fix the engine exiting immediately due to a corrupt .mo file (issue #6194)
+
+## Version 1.15.18
+ ### Campaigns
+   * Northern Rebirth
+     * Give Eryssa’s side a consistent team color (issue #5375)
+   * The Rise of Wesnoth
+     * Remove time-runs-out lose condition for final scenario (issue #6109)
+   * Under the Burning Suns
+     * Avoid a few possibilities where the Dust Devil could speak (issue #4892)
+     * Avoid dehydration status icon persisting into the next scenario (issue #5687)
+ ### Editor
+   * Avoid rare crash situation after editing scenarios (issue #5883)
+ ### Translations
+   * Updated translations: British English, Bulgarian, Czech, French, Italian, Portuguese (Brazil), Russian, Spanish.
+   * gettext plural forms now have caret prefixes stripped as well (PR #6094).
+ ### User interface
+   * Steam cloud file is no longer listed in the Load Game dialog.
+   * Redefine green text in dialogs and tool-tips so they are no longer ‘too dark’ with recent Pango versions (issue #4348)
+   * Gave the main menu's Language button a label again, now displaying the current language.
+   * Tweaked margins around the main menu's bottom row.
+   * Difficulty no longer displayed in the Load Game dialog when it is not relevant to a save file (issue #5321)
+ ### Miscellaneous and Bug Fixes
+   * Correct unit display adjustments on certain tiles when at zoom level other than 100% (issue #5974)
+
+## Version 1.15.17
+ ### Campaigns
+   * World Conquest is re-enabled.
+ ### Translations
+   * Updated translations: British English, Polish
+ ### Miscellaneous and Bug Fixes
+   * Messenger MAI: fixed bug of own units sometimes blocking the path to a waypoint for the messenger
+   * A bug that would corrupt WML sent to the multiplayer and add-ons server was fixed.
+
+## Version 1.15.16
+ ### Campaigns
+   * Liberty
+     * S06: Enforce failure condition for allied team (issue #6019)
+   * The South Guard
+     * S8b: Reduced difficulty
+   * Tutorial
+     * S01: Don't let the first Quintain chase the player to a village (PR #5968)
+     * S01: Synchronise the choice of character dialog, so that replays don't get OOS (issue #5926)
+     * S01: Fix some glitches on HDPI displays (PR #6005)
+   * Secrets of the Ancients
+     * Synchronise the walking corpse recruitment dialog, so that replays don't get OOS (issue #5334)
+   * Under the Burning Suns
+     * S09: Reveal the boss of the scenario at the end of part 1 (issue #5540)
+   * World Conquest
+     * Add campaign icons, campaign image and credits (PR #5958)
+     * Update to new mushroom terrain from the deprecated mushroom terrain (issue #5135, PR #5960)
+ ### Multiplayer
+   * If an add-on needs to be installed on all players' devices but doesn't specify a min version, assume it needs the latest (issue #5004)
+ ### Terrain
+   * Fix transition between snowy mountains and castles (issue #6016)
+ ### Translations
+   * Updated translations: British English, Chinese (Traditional), Czech, Finnish, French, Indonesian, Italian, Polish, Portuguese (Brazil), Russian, Turkish
+ ### Units
+   * Added and improved Naga animations (issue #5980, PR #6012)
+   * Added Troll defense animations (PR #5964)
+ ### User interface
+   * The names of the abilities used as specials appear in the attack prediction window with specials weapons
+   * In the Load Game dialog, list directories from previous versions in decending order
+   * Refined design of the Faction Select screen
+   * Made the campaign selection on bigger on HDPI screens (PR #6013)
+ ### Miscellaneous and Bug Fixes
+   * Added a timeout when connecting to the wesnothd server
+   * Improved logging of deprecation messages, fixing duplication and missing timestamps (issue #5942)
+   * Added `[era]` attributes to the schema
+   * Added to wmllint an automatic update of four terrain-graphics macros
+   * Removed wmllint's check for spaces in e-mail addresses
+   * Standardised the date line of copyright statements, and updated them to 2021
+
+## Version 1.15.15
+ ### Translations
+   * Updated translations: British English, Bulgarian, Chinese (Traditional), Czech, Italian, Portuguese (Brazil), Russian, Spanish, Turkish
+ ### User interface
+   * Added a prompt to allow migrating settings and redownloading add-ons used in a previous version of Wesnoth when starting a new versions for the first time.
+ ### Miscellaneous and Bug Fixes
+   * Fixed: keyboard input during the loading screen intermittently caused a crash (issue #4447)
+   * AI: fixed custom synced commands not changing the game state
+
 ## Version 1.15.14
  ### Add-ons client
    * Fixed: using the versions drop-down in small-screen mode returned to the title screen (issue #5810)
