@@ -3,7 +3,7 @@ local wc2_scenario = {}
 local on_event = wesnoth.require("on_event")
 
 function wc2_scenario.is_human_side(side_num)
-	return side_num == 1 or side_num == 2 or side_num == 3
+	return side_num <= wml.variables.wc2_player_count
 end
 
 function wc2_scenario.scenario_num()
