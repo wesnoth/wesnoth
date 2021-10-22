@@ -48,14 +48,27 @@ function wesnoth.wml_actions.wc2_fix_colors(cfg)
 	local taken_colors = {}
 
 	for i, side in ipairs(player_sides) do
-		if side.variables.wc2_color then
-			side.color = side.variables.wc2_color
+
+		-- Side 4 is the only side which can be played by either AI or players.
+		-- Like all player_sides, it is listed among them to handle the case
+		-- that a player chooses the same color as an AI side.
+		-- The case that a player chooses the same color as the
+		-- (potentially an AI) side 4 needs a workaround and is handled here:
+		if side.side == 4 and taken_colors[side.color] then
+			table.insert(other_sides, side)
 		else
-			side.variables.wc2_color = side.color
+
+			if side.variables.wc2_color then
+				side.color = side.variables.wc2_color
+			else
+				side.variables.wc2_color = side.color
+			end
+			taken_colors[side.color] = true
+
 		end
-		taken_colors[side.color] = true
 	end
 
+	-- Give the remaining colors to AI sides
 	local color_num = 1
 	for i, side in ipairs(other_sides) do
 		while taken_colors[available_colors[color_num]] == true do
