@@ -69,6 +69,10 @@ local function add_player_side(scenario, scenario_num, gold)
 		side.faction_lock = false
 		side.leader_lock = false
 	end
+	if side_num == wml.variables.wc2_defeated_side then
+		side.save_id = "wc2_leader4"
+		side.id = "wc2_leader4"
+	end
 	table.insert(scenario.side, side)
 end
 

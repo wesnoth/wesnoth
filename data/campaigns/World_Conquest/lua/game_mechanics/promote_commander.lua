@@ -30,6 +30,7 @@ on_event("die", function(cx)
 			-- For 4p, one player is allowed to be defeated, without all players losing the scenario.
 			wml.variables.wc2_defeated_side = u.side
 			wml.variables.wc2_player_count = wml.variables.wc2_player_count - 1
+			wesnoth.scenario.next = "WC_II_3p"
 			wesnoth.wml_actions.item {
 				x = u.x,
 				y = u.y,
@@ -47,3 +48,8 @@ on_event("die", function(cx)
 		end
 	end
 end)
+
+-- clear variable from previous scenario
+on_event("start", function()
+	wml.variables.wc2_defeated_side = nil
+end
