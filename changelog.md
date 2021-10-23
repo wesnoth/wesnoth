@@ -20,6 +20,8 @@
  ### WML Engine
  ### Miscellaneous and Bug Fixes
    * Fix the engine exiting immediately due to a corrupt .mo file (issue #6194)
+   * When showing [message] with [options] but no default, highlight the first one (issue #6038)
+   * Ensure that [modify_unit] has some expected side-effects of unstoring a unit (issues #4978 and #5133)
 
 ## Version 1.15.18
  ### Campaigns
