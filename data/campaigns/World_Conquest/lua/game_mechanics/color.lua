@@ -76,6 +76,9 @@ function wesnoth.wml_actions.wc2_fix_colors(cfg)
 		end
 		side.color = available_colors[color_num]
 		taken_colors[side.color] = true
+		if side.side == 4 then
+			side.variables.wc2_color = side.color
+		end
 	end
 end
 
