@@ -15,52 +15,13 @@ local function make_set(t)
 end
 
 local known_attributes = make_set {
-	"mode",
-	"x",
-	"y",
-	"ai_special",
-	"goto_x",
-	"goto_y",
-	"extra_recruit",
-	"side",
-	"name",
-	"role",
-	"facing",
-	"attacks_left",
-	"hitpoints",
-	"max_hitpoints",
-	"moves",
-	"max_moves",
-	"experience",
-	"max_experience",
-	"resting",
-	"canrecruit",
-	"type",
-	"variation",
-	"ellipse",
-	"halo",
-	"recall_cost",
-	"description",
-	"hidden",
-	"unrenamable",
-	"profile",
-	"zoc",
-	"usage",
-	"upkeep",
+	-- This is the list of attributes that can be handled by the fast path,
+	-- for the 1.16 release it's empty to avoid issues #4978 and #5133.
 }
 
 local known_tags = make_set {
-	"object",
-	"advancement",
-	"trait",
-	"effect",
-	"filter",
-	"status",
-	"set_variable",
-	-- todo: "set_variables",
-	"clear_variable",
-	"filter_recall",
-	"variables",
+	-- This is the list of tags that can be handled by the fast path,
+	-- for the 1.16 release it's empty to avoid issues #4978 and #5133.
 }
 
 local function is_simple(cfg)
