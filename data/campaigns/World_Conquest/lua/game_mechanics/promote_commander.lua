@@ -25,10 +25,14 @@ on_event("die", function(cx)
 			id = commander.id,
 			message = strings.promotion
 		}
-	elseif u.side <= wml.variables.wc2_player_count or 3 then
-		if wml.variables.wc2_player_count or 3 > 3 and not wml.variables.wc2_defeated_side then
-			-- For 4p, one player is allowed to be defeated, without all players losing the scenario.
+	elseif u.side <= (wml.variables.wc2_highest_player_side or wml.variables.wc2_player_count) then
+
+		-- For 4p, one player is allowed to be defeated, without all players losing the scenario.
+		if wml.variables.wc2_player_count > or 3 and not wml.variables.wc2_defeated_side then
 			wml.variables.wc2_defeated_side = u.side
+			-- Still need to know the original player count to detect when another player leader dies.
+			wml.variables.wc2_highest_player_side = wml.variables.wc2_player_count
+			-- Decrease player count for the next scenario.
 			wml.variables.wc2_player_count = wml.variables.wc2_player_count - 1
 			wesnoth.scenario.next = "WC_II_3p"
 			wesnoth.wml_actions.item {
@@ -49,7 +53,8 @@ on_event("die", function(cx)
 	end
 end)
 
--- clear variable from previous scenario
+-- clear variables from previous scenario
 on_event("start", function()
 	wml.variables.wc2_defeated_side = nil
-end
+	wml.variables.wc2_highest_player_side = nil
+end)
