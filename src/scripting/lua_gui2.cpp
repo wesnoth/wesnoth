@@ -77,7 +77,7 @@ int show_message_dialog(lua_State* L)
 	input.maximum_length = txt_cfg["max_length"].to_int(256);
 	input.text_input_was_specified = has_input;
 
-	gui2::dialogs::wml_message_options options;
+	gui2::dialogs::wml_message_options options{};
 	if(!lua_isnoneornil(L, 2)) {
 		luaL_checktype(L, 2, LUA_TTABLE);
 		std::size_t n = lua_rawlen(L, 2);
