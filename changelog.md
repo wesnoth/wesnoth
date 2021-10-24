@@ -1,23 +1,15 @@
-## Version 1.15.18+dev
- ### Add-ons client
- ### Add-ons server
+## Version 1.16.0
  ### Campaigns
    * Sceptre of Fire
      * S06: Fix some WML variable handling causing autodefeat in S06 or rune-equip bugs in a later scenario (issue #6146)
    * Under the Burning Suns
      * S05: Avoid village just taken by the player being re-assigned to the enemy (issue #6187)
- ### Editor
- ### Multiplayer
  ### Lua API
    * Fixed `wesnoth.audio.volume = N` always setting volume to 0.
- ### Packaging
- ### Terrain
  ### Translations
    * Updated translations: British English, Czech, Finnish, Italian, Japanese, Portuguese (Brazil), Spanish.
- ### Units
  ### User interface
    * Don't display the locale API identifier on the Language button (issue #6205).
- ### WML Engine
  ### Miscellaneous and Bug Fixes
    * Fix the engine exiting immediately due to a corrupt .mo file (issue #6194)
    * When showing [message] with [options] but no default, highlight the first one (issue #6038)
