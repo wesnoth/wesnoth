@@ -143,8 +143,7 @@ wesnoth のバージョンに一致する)
 例: \fBversions_accepted="*"\fP で、どのようなバージョン文字列も受けつける。
 .TP 
 \fBdeny_unregistered_login\fP
-Whether to prevent users who are not registered with the \fBuser_handler\fP
-being used from logging in. (default: false)
+\fBuser_handler\fP に登録されていないユーザーのログインを拒否する。（デフォルト：false）
 .
 .SS グローバルタグ:
 .
@@ -186,42 +185,39 @@ Y (年) で %d は数字。もし時間修飾子がない場合は分(m)が指�
 .RS
 .TP 
 \fBdb_host\fP
-The hostname of the database server
+データベースサーバーのホスト名
 .TP 
 \fBdb_name\fP
-The name of the database
+データベース名
 .TP 
 \fBdb_user\fP
-The name of the user under which to log into the database
+データベースにログインするユーザーの名前
 .TP 
 \fBdb_password\fP
-This user's password
+ユーザーのパスワード
 .TP 
 \fBdb_users_table\fP
-The name of the table in which your phpbb forums saves its user data. Most
-likely this will be <table\-prefix>_users (e.g. phpbb3_users).
+phpbbフォーラムがユーザーデータを保存するテーブル名。<table\-prefix>_users
+（例：phpbb3_users）である可能性が高い。
 .TP 
 \fBdb_extra_table\fP
-The name of the table in which wesnothd will save its own data about users.
+ユーザーに関するデータをwesnothdが保存するテーブル名。
 .TP 
 \fBdb_game_info_table\fP
-The name of the table in which wesnothd will save its own data about games.
+ゲームに関するデータをwesnothdが保存するテーブル名。
 .TP 
 \fBdb_game_player_info_table\fP
-The name of the table in which wesnothd will save its own data about the
-players in a game.
+ゲーム内プレイヤーに関するデータをwesnothdが保存するテーブル名。
 .TP 
 \fBdb_game_modification_info_table\fP
-The name of the table in which wesnothd will save its own data about the
-modifications used in a game.
+ゲームで使用されるMODに関するデータをwesnothdが保存するテーブル名。
 .TP 
 \fBdb_user_group_table\fP
-The name of the table in which your phpbb forums saves its user group
-data. Most likely this will be <table\-prefix>_user_group
-(e.g. phpbb3_user_group).
+ユーザーグループデータをphpbbフォーラムが保存するテーブル名。<table\-prefix>_user_group
+（例：phpbb3_user_group）である可能性が高い
 .TP 
 \fBmp_mod_group\fP
-The ID of the forum group to be considered as having moderation authority.
+モデレーション権限を持つフォーラムグループのID。
 .RE
 .
 .SH 終了ステータス

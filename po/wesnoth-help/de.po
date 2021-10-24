@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.14\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-08-21 23:31-0400\n"
+"POT-Creation-Date: 2021-10-23 20:57-0300\n"
 "PO-Revision-Date: 2021-10-18 21:04+0200\n"
 "Last-Translator: Whiskeyjack\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
@@ -24,7 +24,7 @@ msgstr ""
 
 #. [time]: id=underground
 #. [editor_times]: id=underground
-#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:495
+#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:496
 #: data/core/editor/time-of-day.cfg:41 data/core/macros/schedules.cfg:113
 msgid "Underground"
 msgstr "Unter Tage"
@@ -2123,6 +2123,7 @@ msgstr "Einführung"
 msgid "Gameplay"
 msgstr "Spielregeln"
 
+#. #-#-#-#-#  wesnoth-help.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [section]: id=traits_section
 #. [topic]: id=..traits_section
 #: data/core/help.cfg:29 data/core/help.cfg:531
@@ -3206,18 +3207,17 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"• Ein knapp errungener Sieg im vorhergehenden Szenario."
-"In Kampagnen wird davon ausgegangen, dass "
-"Ihr etwas <italic>text='Bonusgold'</italic> und einige aufgestiegene "
-"Einheiten auf eurer <italic>text='Einberufungsliste'</italic> habt. (Diese "
-"Konzepte werden in der Einführung erklärt.) Wenn Ihr ein Szenario gewinnt, "
-"aber dabei die meisten Eurer aufgestiegenen Einheiten und große Teile eures "
-"Goldes verliert, wird das folgende Szenario selbst für erfahrene Spieler "
-"schwer zu gewinnen sein. Findet Ihr euch in dieser Situation wieder, "
-"empfiehlt es sich, ein oder zwei Szenarios zurückzugehen und zu versuchen, "
-"diese entscheidender zu gewinnen. (Behaltet jedoch im Hinterkopf, dass "
-"<italic>text='einige'</italic> Verluste immer zu erwarten sind, insbesondere "
-"auf höheren Schwierigkeitsstufen.)"
+"• Ein knapp errungener Sieg im vorhergehenden Szenario.In Kampagnen wird "
+"davon ausgegangen, dass Ihr etwas <italic>text='Bonusgold'</italic> und "
+"einige aufgestiegene Einheiten auf eurer <italic>text='Einberufungsliste'</"
+"italic> habt. (Diese Konzepte werden in der Einführung erklärt.) Wenn Ihr "
+"ein Szenario gewinnt, aber dabei die meisten Eurer aufgestiegenen Einheiten "
+"und große Teile eures Goldes verliert, wird das folgende Szenario selbst für "
+"erfahrene Spieler schwer zu gewinnen sein. Findet Ihr euch in dieser "
+"Situation wieder, empfiehlt es sich, ein oder zwei Szenarios zurückzugehen "
+"und zu versuchen, diese entscheidender zu gewinnen. (Behaltet jedoch im "
+"Hinterkopf, dass <italic>text='einige'</italic> Verluste immer zu erwarten "
+"sind, insbesondere auf höheren Schwierigkeitsstufen.)"
 
 #. [topic]: id=whylost
 #: data/core/help.cfg:323
@@ -3659,14 +3659,12 @@ msgid ""
 "and Fog of War'</ref>.\n"
 "• Enemy units normally don’t have orbs, however these can be enabled in the "
 "advanced preference “Customize orb colors”."
-msgstr "• grün, wenn die Einheit in diesem Zug noch nicht bewegt wurde,"
-"• gelb, wenn sie bereits bewegt wurde, aber noch weiter gehen oder angreifen "
-"könnte"
-"• Rot, wenn kein Zug bzw. Angriffe mehr möglich sind oder die Runde beendet "
-"wurde."
-"• blau, wenn es eine verbündete Einheit ist, auf die Ihr keinen Einfluss habt."
+msgstr ""
+"• grün, wenn die Einheit in diesem Zug noch nicht bewegt wurde,• gelb, wenn "
+"sie bereits bewegt wurde, aber noch weiter gehen oder angreifen könnte• Rot, "
+"wenn kein Zug bzw. Angriffe mehr möglich sind oder die Runde beendet wurde.• "
+"blau, wenn es eine verbündete Einheit ist, auf die Ihr keinen Einfluss habt."
 "• Gegnerische Einheiten haben keine Status-Kugeln über ihrer Lebensanzeige."
-
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:407
