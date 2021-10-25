@@ -1387,6 +1387,8 @@ void server::cleanup_game(game* game_ptr)
 		LOG_SERVER << "Could not find game (" << game_ptr->id() << ", " << game_ptr->db_id() << ") to delete in games_and_users_list_.\n";
 	}
 
+	if(destructed) game_ptr->emergency_cleanup();
+
 	delete game_ptr;
 }
 

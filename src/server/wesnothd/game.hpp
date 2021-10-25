@@ -588,6 +588,12 @@ public:
 	 */
 	bool is_reload() const;
 
+	void emergency_cleanup()
+	{
+		players_.clear();
+		observers_.clear();
+	}
+
 private:
 	// forbidden operations
 	game(const game&) = delete;
