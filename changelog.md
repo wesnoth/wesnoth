@@ -2,6 +2,8 @@
  ### Add-ons client
  ### Add-ons server
  ### Campaigns
+   * Tutorial
+     * Use a portrait on the Campaigns menu.
  ### Editor
  ### Multiplayer
  ### Lua API
