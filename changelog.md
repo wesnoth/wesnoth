@@ -12,9 +12,10 @@
  ### Translations
  ### Units
  ### User interface
+   * Made the Add-ons Manager search box less unwieldy on very small resolutions.
  ### WML Engine
  ### Miscellaneous and Bug Fixes
- 
+
 ## Version 1.16.0
  ### Campaigns
    * Sceptre of Fire
