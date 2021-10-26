@@ -227,11 +227,17 @@ void server_base::handle_termination(const boost::system::error_code& error, int
 }
 
 void server_base::run() {
-	try {
-		io_service_.run();
-		LOG_SERVER << "Server has shut down because event loop is out of work\n";
-	} catch(const server_shutdown& e) {
-		LOG_SERVER << "Server has been shut down: " << e.what() << "\n";
+	for(;;) {
+		try {
+			io_service_.run();
+			LOG_SERVER << "Server has shut down because event loop is out of work\n";
+			break;
+		} catch(const server_shutdown& e) {
+			LOG_SERVER << "Server has been shut down: " << e.what() << "\n";
+			break;
+		} catch(const std::exception& e) {
+			ERR_SERVER << "Caught exception from handler: " << e.what() << "\n";
+		}
 	}
 }
 
