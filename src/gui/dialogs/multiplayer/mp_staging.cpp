@@ -426,11 +426,9 @@ void mp_staging::on_team_select(ng::side_engine_ptr side, menu_button& team_menu
 
 	// Last, remove the old team node if it's now empty
 	if(old_team_node->empty()) {
-		// Only sibling should be the decor line, and it should be last
-		auto decor = old_team_node->siblings().back();
-
+		// Decor node will be immediately after team node. Remove this first!
+		tree.remove_node(old_team_node->get_node_below());
 		tree.remove_node(old_team_node);
-		tree.remove_node(decor.get());
 
 		team_tree_map_[old_team] = nullptr;
 	}
