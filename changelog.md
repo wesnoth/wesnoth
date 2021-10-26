@@ -10,6 +10,7 @@
  ### Packaging
  ### Terrain
  ### Translations
+   * Updated translations: Italian.
  ### Units
  ### User interface
    * Made the Add-ons Manager search box less unwieldy on very small resolutions.
