@@ -224,15 +224,15 @@ class Forest:
             rest = [elem for elem in subtree if not elem.endswith("_main.cfg")]
             subtree = sorted(maincfgs) + sorted(rest)
             self.forest.append(subtree)
-        for i in self.forest:
+        for i in range(len(self.forest)):
             # Ignore version-control subdirectories and Emacs tempfiles
             for dirkind in vc_directories + l10n_directories:
-                i = [x for x in i if dirkind not in x]
-            i = [x for x in i if '.#' not in x]
-            i = [x for x in i if not os.path.isdir(x)]
+                self.forest[i] = [x for x in self.forest[i] if dirkind not in x]
+            self.forest[i] = [x for x in self.forest[i] if '.#' not in x]
+            self.forest[i] = [x for x in self.forest[i] if not os.path.isdir(x)]
             if exclude:
-                i = [x for x in i if not re.search(exclude, x)]
-            i = [x for x in i if not x.endswith("-bak")]
+                self.forest[i] = [x for x in self.forest[i] if not re.search(exclude, x)]
+            self.forest[i] = [x for x in self.forest[i] if not x.endswith("-bak")]
         # Compute cliques (will be used later for visibility checks)
         self.clique = {}
         counter = 0
