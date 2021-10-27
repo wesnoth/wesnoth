@@ -918,9 +918,9 @@ template<class SocketPtr> bool server::is_login_allowed(boost::asio::yield_conte
 	if(name_taken) {
 		if(registered) {
 			// If there is already a client using this username kick it
-			process_command("kick " + p->info().name() + " autokick by registered user", username);
+			process_command("kick " + username + " autokick by registered user", username);
 			// need to wait for it to process
-			while(player_connections_.get<name_t>().count(p->info().name()) > 0) {
+			while(player_connections_.get<name_t>().count(username) > 0) {
 				boost::asio::post(yield);
 			}
 		} else {
