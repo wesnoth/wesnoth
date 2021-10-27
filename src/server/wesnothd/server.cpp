@@ -1920,7 +1920,9 @@ void server::disconnect_player(player_iterator player)
 {
 	utils::visit([](auto&& socket) {
 		if constexpr (utils::decayed_is_same<tls_socket_ptr, decltype(socket)>) {
-			socket->async_shutdown([socket](const boost::system::error_code&) {});
+			socket->async_shutdown([socket](...) {});
+			const char buffer[] = "";
+			async_write(*socket, boost::asio::buffer(buffer), [socket](...) { socket->lowest_layer().close(); });
 		} else {
 			socket->lowest_layer().shutdown(boost::asio::ip::tcp::socket::shutdown_receive);
 		}
