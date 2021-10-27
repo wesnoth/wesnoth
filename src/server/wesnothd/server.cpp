@@ -753,7 +753,7 @@ void server::login_client(boost::asio::yield_context yield, SocketPtr socket)
 		if(const simple_wml::node* const login = login_response->child("login")) {
 			username = (*login)["username"].to_string();
 
-			if(is_login_allowed(socket, login, username, registered, is_moderator)) {
+			if(is_login_allowed(yield, socket, login, username, registered, is_moderator)) {
 				break;
 			} else continue;
 		}
@@ -812,7 +812,7 @@ void server::login_client(boost::asio::yield_context yield, SocketPtr socket)
 	}
 }
 
-template<class SocketPtr> bool server::is_login_allowed(SocketPtr socket, const simple_wml::node* const login, const std::string& username, bool& registered, bool& is_moderator)
+template<class SocketPtr> bool server::is_login_allowed(boost::asio::yield_context yield, SocketPtr socket, const simple_wml::node* const login, const std::string& username, bool& registered, bool& is_moderator)
 {
 	// Check if the username is valid (all alpha-numeric plus underscore and hyphen)
 	if(!utils::isvalid_username(username)) {
@@ -919,6 +919,10 @@ template<class SocketPtr> bool server::is_login_allowed(SocketPtr socket, const 
 		if(registered) {
 			// If there is already a client using this username kick it
 			process_command("kick " + p->info().name() + " autokick by registered user", username);
+			// need to wait for it to process
+			while(player_connections_.get<name_t>().count(p->info().name()) > 0) {
+				boost::asio::post(yield);
+			}
 		} else {
 			async_send_error(socket, "The nickname '" + username + "' is already taken.", MP_NAME_TAKEN_ERROR);
 			return false;
