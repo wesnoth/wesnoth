@@ -1470,7 +1470,7 @@ void server::handle_upload(const server::request& req)
 
 	addon.copy_attributes(upload,
 		"title", "name", "author", "description", "version", "icon",
-		"translate", "dependencies", "type", "tags", "email");
+		"translate", "dependencies", "core", "type", "tags", "email");
 
 	const std::string& pathstem = "data/" + name;
 	addon["filename"] = pathstem;
