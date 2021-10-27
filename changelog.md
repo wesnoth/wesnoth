@@ -1,6 +1,7 @@
 ## Version 1.16.0+dev
  ### Add-ons client
  ### Add-ons server
+   * Fixed `core=` attribute in _server.pbl being completely ignored (issue #5664).
  ### Campaigns
    * Tutorial
      * Use a portrait on the Campaigns menu.
