@@ -49,7 +49,7 @@ private:
 	void handle_new_client(tls_socket_ptr socket);
 
 	template<class SocketPtr> void login_client(boost::asio::yield_context yield, SocketPtr socket);
-	template<class SocketPtr> bool is_login_allowed(SocketPtr socket, const simple_wml::node* const login, const std::string& username, bool& registered, bool& is_moderator);
+	template<class SocketPtr> bool is_login_allowed(boost::asio::yield_context yield, SocketPtr socket, const simple_wml::node* const login, const std::string& username, bool& registered, bool& is_moderator);
 	template<class SocketPtr> bool authenticate(SocketPtr socket, const std::string& username, const std::string& password, bool name_taken, bool& registered);
 	template<class SocketPtr> void send_password_request(SocketPtr socket, const std::string& msg, const char* error_code = "", bool force_confirmation = false);
 	bool accepting_connections() const { return !graceful_restart; }
