@@ -235,6 +235,8 @@ void server_base::run() {
 		} catch(const server_shutdown& e) {
 			LOG_SERVER << "Server has been shut down: " << e.what() << "\n";
 			break;
+		} catch(const boost::system::system_error& e) {
+			ERR_SERVER << "Caught system error exception from handler: " << e.code().message() << "\n";
 		} catch(const std::exception& e) {
 			ERR_SERVER << "Caught exception from handler: " << e.what() << "\n";
 		}
