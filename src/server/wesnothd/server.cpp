@@ -1917,7 +1917,7 @@ void server::disconnect_player(player_iterator player)
 {
 	utils::visit([](auto&& socket) {
 		if constexpr (utils::decayed_is_same<tls_socket_ptr, decltype(socket)>) {
-			socket->shutdown();
+			socket->async_shutdown([socket](const boost::system::error_code&) {});
 		} else {
 			socket->lowest_layer().shutdown(boost::asio::ip::tcp::socket::shutdown_receive);
 		}
