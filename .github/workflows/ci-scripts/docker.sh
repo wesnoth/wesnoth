@@ -91,19 +91,6 @@ elif [ "$IMAGE" == "flatpak" ]; then
     cp -R .flatpak-builder/. "$CACHE_DIR"/
     chmod -R 777 "$CACHE_DIR"/
     exit $EXIT_VAL
-elif [ "$IMAGE" == "mingw" ]; then
-    scons wesnoth wesnothd build="$CFG" \
-        cxx_std=$CXX_STD strict=false \
-        nls=false enable_lto="$LTO" jobs=2 --debug=time \
-        arch=x86-64 prefix=/windows/mingw64 gtkdir=/windows/mingw64 host=x86_64-w64-mingw32
-    EXIT_VAL=$?
-    exit $EXIT_VAL
-elif [ "$IMAGE" == "steamrt" ]; then
-    scons ctool=$CC cxxtool=$CXX boostdir=/usr/local/include boostlibdir=/usr/local/lib extra_flags_config=-lrt \
-        cxx_std=$CXX_STD strict=true nls="$NLS" enable_lto="$LTO" jobs=2 --debug=time \
-        build="$CFG"
-    EXIT_VAL=$?
-    exit $EXIT_VAL
 else
     if [ "$TOOL" == "cmake" ]; then
         export CCACHE_MAXSIZE=3000M

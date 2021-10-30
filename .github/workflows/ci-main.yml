@@ -73,14 +73,6 @@ jobs:
           export CACHE_DIR=/home/wesnoth-CI/build
           ./.github/workflows/ci-scripts/ubuntu.sh master
 
-      - name: Upload
-        uses: actions/upload-artifact@v2
-        with:
-          name: Ubuntu-Clang-Debug
-          path: |
-            ~/build-cache/wesnoth
-            ~/build-cache/wesnothd
-
   ubuntu-2004-cmake-clang-release:
     runs-on: ubuntu-20.04
 
@@ -125,14 +117,6 @@ jobs:
           export CACHE_DIR=/home/wesnoth-CI/build
           ./.github/workflows/ci-scripts/ubuntu.sh
 
-      - name: Upload
-        uses: actions/upload-artifact@v2
-        with:
-          name: Ubuntu-GCC-Debug
-          path: |
-            ~/build-cache/wesnoth
-            ~/build-cache/wesnothd
-
   steam-runtime:
     runs-on: ubuntu-20.04
 
@@ -155,6 +139,13 @@ jobs:
           export CACHE_DIR=/home/wesnoth-CI/build
           ./.github/workflows/ci-scripts/ubuntu.sh
 
+      - name: Upload
+        uses: actions/upload-artifact@v2
+        with:
+          name: Steam-Linux
+          path: |
+            ~/steambuild-*.tar
+
   mingw:
     runs-on: ubuntu-20.04
 
@@ -176,6 +167,14 @@ jobs:
           export LTO=false
           export CACHE_DIR=/home/wesnoth-CI/build
           ./.github/workflows/ci-scripts/ubuntu.sh
+
+      - name: Upload
+        uses: actions/upload-artifact@v2
+        with:
+          name: Source-And-Windows-Installer
+          path: |
+            ~/wesnoth-*.tar.bz2
+            ~/wesnoth-*-win64.exe
 
   flatpak:
     runs-on: ubuntu-20.04
@@ -248,12 +247,6 @@ jobs:
           export CFG=Debug
           export CACHE_DIR=~/build-cache
           ./.github/workflows/ci-scripts/macos.sh
-      - name: Upload
-        uses: actions/upload-artifact@v2
-        with:
-          name: macOS-Intel-Debug
-          path: |
-            ~/work/wesnoth/wesnoth/projectfiles/Xcode/Wesnoth_Debug.dmg
 
   macos-arm-master-release:
     runs-on: macos-11.0
@@ -282,12 +275,6 @@ jobs:
           export CFG=Debug
           export CACHE_DIR=~/build-cache
           ./.github/workflows/ci-scripts/macos.sh
-      - name: Upload
-        uses: actions/upload-artifact@v2
-        with:
-          name: macOS-ARM-Debug
-          path: |
-            ~/work/wesnoth/wesnoth/projectfiles/Xcode/Wesnoth_Debug.dmg
 
 # in the case of needing to recompile the vcpkg-created Windows dependencies, increment the cache-name and key for both Release and Debug
 # this will create a brand new cache and recompile the vcpkg dependencies from scratch
@@ -335,16 +322,6 @@ jobs:
         run: |
           rmdir /s /q D:\a\wesnoth\vcpkg\buildtrees
           MSBuild.exe wesnoth.sln -p:Configuration=Debug
-
-      - name: Upload
-        uses: actions/upload-artifact@v2
-        with:
-          name: Windows-Debug
-          path: |
-            D:/a/wesnoth/wesnoth/Debug/wesnoth.exe
-            D:/a/wesnoth/wesnoth/Debug/wesnothd.exe
-            D:/a/wesnoth/wesnoth/Debug/wesnoth.pdb
-            D:/a/wesnoth/wesnoth/Debug/wesnothd.pdb
 
   windows-release:
     runs-on: windows-2019
