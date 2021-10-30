@@ -150,9 +150,9 @@ template<typename Verifier> auto verbose_verify(Verifier&& verifier)
 		char subject_name[256];
 		X509* cert = X509_STORE_CTX_get_current_cert(ctx.native_handle());
 		X509_NAME_oneline(X509_get_subject_name(cert), subject_name, 256);
-		bool verified;
+		bool verified = verifier(preverified, ctx);
 		DBG_NW << "Verifying TLS certificate: " << subject_name << ": " <<
-			((verified = verifier(preverified, ctx)) ? "verified" : "failed") << std::endl;
+			(verified ? "verified" : "failed") << std::endl;
 		return verified;
 	};
 }
