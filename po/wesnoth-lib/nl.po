@@ -9,15 +9,15 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2021-06-23 11:42-0400\n"
-"PO-Revision-Date: 2020-01-14 20:57+0100\n"
-"Last-Translator: Merijn de Vet <merijndevet@hotmail.com>\n"
+"PO-Revision-Date: 2021-10-27 20:01+0200\n"
+"Last-Translator: Merijn de Vet <tybonzer@live.nl>\n"
 "Language-Team: Dutch <merijndevet@hotmail.com>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.2.4\n"
+"X-Generator: Poedit 3.0\n"
 
 #. [ai]: id=ai_default_rca
 #: data/ai/ais/ai_default_rca.cfg:9
@@ -2691,10 +2691,8 @@ msgstr "Sorteer volledige veldtochtnaam op alfabet"
 
 #. [toggle_button]: id=sort_time
 #: data/gui/window/campaign_dialog.cfg:230
-#, fuzzy
-#| msgid "Time limit:"
 msgid "Timeline"
-msgstr "Tijdslimiet:"
+msgstr "Tijdlijn"
 
 #. [toggle_button]: id=sort_time
 #: data/gui/window/campaign_dialog.cfg:231
@@ -2711,34 +2709,32 @@ msgstr "Aanpassingen:"
 #. [label]
 #: data/gui/window/campaign_dialog.cfg:306
 msgid "Combat:"
-msgstr ""
+msgstr "Gevechten:"
 
 #. [option]
 #: data/gui/window/campaign_dialog.cfg:321
-#, fuzzy
-#| msgid "Default"
 msgid "Default RNG"
-msgstr "Standaard"
+msgstr "Standaard RNG"
 
 #. [option]
 #: data/gui/window/campaign_dialog.cfg:322
 msgid "Reloading alters future combat outcomes"
-msgstr ""
+msgstr "Opnieuw laden past toekomstige gevechtsuitkomsten aan"
 
 #. [option]
 #: data/gui/window/campaign_dialog.cfg:325
 msgid "Predictable RNG"
-msgstr ""
+msgstr "Voorspelbare RNG"
 
 #. [option]
 #: data/gui/window/campaign_dialog.cfg:326
 msgid "Combat outcomes remain constant when reloading"
-msgstr ""
+msgstr "Opnieuw laden geeft dezelfde gevechtsuitkomsten"
 
 #. [option]
 #: data/gui/window/campaign_dialog.cfg:329
 msgid "Biased RNG (experimental)"
-msgstr ""
+msgstr "Eenzijdige RNG (experimenteel)"
 
 #. [option]
 #: data/gui/window/campaign_dialog.cfg:330
@@ -2746,30 +2742,28 @@ msgid ""
 "Combat outcomes are more in line with displayed probabilities and unaffected "
 "by reloading"
 msgstr ""
+"De gevechtsuitkomsten komen beter overeen met de geschatte kansen en worden "
+"niet beïnvloed door opnieuw laden"
 
 #. [label]
 #: data/gui/window/campaign_dialog.cfg:345
-#, fuzzy
-#| msgid "Difficulty: "
 msgid "Difficulty:"
-msgstr "Moeilijkheidsgraad: "
+msgstr "Moeilijkheidsgraad:"
 
 #. [option]
 #: data/gui/window/campaign_dialog.cfg:359
 msgid "Easy"
-msgstr ""
+msgstr "Makkelijk"
 
 #. [option]
 #: data/gui/window/campaign_dialog.cfg:362
-#, fuzzy
-#| msgid "Normal Rug"
 msgid "Normal"
-msgstr "Normaal Tapijt"
+msgstr "Normaal"
 
 #. [option]
 #: data/gui/window/campaign_dialog.cfg:365
 msgid "Hard"
-msgstr ""
+msgstr "Moeilijk"
 
 #. [label]
 #: data/gui/window/campaign_dialog.cfg:422
@@ -2779,10 +2773,8 @@ msgstr "Speel een Veldtocht"
 #. [button]: id=ok
 #: data/gui/window/campaign_dialog.cfg:486
 #: data/gui/window/campaign_difficulty.cfg:221
-#, fuzzy
-#| msgid "Play"
 msgid "game^Play"
-msgstr "Spelen"
+msgstr "game^Spelen"
 
 #. [slider]: id=enemy_gold_factor
 #. [slider]: id=enemey_gold_factor
@@ -3940,7 +3932,7 @@ msgstr "Promoties"
 #: data/gui/window/preferences.cfg:213 data/gui/window/title_screen.cfg:256
 #: src/hotkey/hotkey_command.cpp:118
 msgid "Preferences"
-msgstr "Voorkeuren"
+msgstr "Instellingen"
 
 #. [button]: id=view_match_history
 #: data/gui/window/lobby_main.cfg:516
