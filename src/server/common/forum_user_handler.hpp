@@ -257,6 +257,12 @@ public:
 	 */
 	void get_ips_for_user(const std::string& username, std::ostringstream* out);
 
+	/**
+	 * @param user The player's username.
+	 * @return The player's email address from the phpbb forum database.
+	 */
+	std::string get_user_email(const std::string& user);
+
 private:
 	/** An instance of the class responsible for executing the queries and handling the database connection. */
 	dbconn conn_;

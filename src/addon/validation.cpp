@@ -392,6 +392,10 @@ std::string addon_check_status_desc(unsigned int code)
 			N_("Incorrect add-on passphrase.")
 		},
 		{
+			ADDON_CHECK_STATUS::USER_DOES_NOT_EXIST,
+			N_("Forum authentication was requested for a user that is not registered on the forums.")
+		},
+		{
 			ADDON_CHECK_STATUS::DENIED,
 			N_("Upload denied. Please contact the server administration for assistance.")
 		},
@@ -493,6 +497,10 @@ std::string addon_check_status_desc(unsigned int code)
 			ADDON_CHECK_STATUS::INVALID_UTF8_ATTRIBUTE,
 			N_("The add-on publish information contains an invalid UTF-8 sequence.")
 		},
+		{
+			ADDON_CHECK_STATUS::AUTH_TYPE_MISMATCH,
+			N_("The add-on's forum_auth attribute does not match what was previously uploaded.")
+		},
 
 		//
 		// Server errors
@@ -513,6 +521,10 @@ std::string addon_check_status_desc(unsigned int code)
 		{
 			ADDON_CHECK_STATUS::SERVER_DELTA_NO_VERSIONS,
 			N_("Empty add-on version list on the server.")
+		},
+		{
+			ADDON_CHECK_STATUS::SERVER_FORUM_AUTH_DISABLED,
+			N_("This server does not support using the forum_auth attribute in your pbl.")
 		}
 	};
 
