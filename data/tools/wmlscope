@@ -552,6 +552,6 @@ directories are given, all files under the current directory are checked.""")
                 xref.unresdump()
                 xref.duplicates(exportonly=True)
     except KeyboardInterrupt:
-        print("wmlscope: aborted.", file=sys.stderr)
+        print("Aborted by pressing ctrl-c", file=sys.stderr)
 
 # wmlscope ends here
