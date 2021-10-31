@@ -80,13 +80,9 @@ unit_race::unit_race(const config& cfg) :
 		help_taxonomy_(cfg["help_taxonomy"])
 
 {
-	if (id_.empty()) {
-		lg::log_to_chat() << "[race] '" << cfg["name"] << "' is missing an id field.\n";
-		ERR_WML << "[race] '" << cfg["name"] << "' is missing an id field.";
-	}
 	if (plural_name_.empty()) {
-		lg::log_to_chat() << "[race] '" << cfg["name"] << "' is missing a plural_name field.\n";
-		ERR_WML << "[race] '" << cfg["name"] << "' is missing a plural_name field.";
+		lg::log_to_chat() << "[race] id='" << id_ << "' is missing a plural_name field.\n";
+		ERR_WML << "[race] id='" << id_ << "' is missing a plural_name field.\n";
 		plural_name_ = (cfg["name"]);
 	}
 
@@ -98,6 +94,13 @@ unit_race::unit_race(const config& cfg) :
 	name_[FEMALE] = cfg["female_name"];
 	if(name_[FEMALE].empty()) {
 		name_[FEMALE] = (cfg["name"]);
+	}
+	if(std::any_of(name_.begin(), name_.end(), [](const auto& n) { return n.empty(); })) {
+		lg::log_to_chat()
+			<< "[race] id='" << id_
+			<< "' is missing a singular name field (either 'name' or both 'male_name' and 'female_name').\n";
+		ERR_WML << "[race] id'" << id_
+				<< "' is missing a singular name field (either 'name' or both 'male_name' and 'female_name').\n";
 	}
 
 	name_generator_factory generator_factory = name_generator_factory(cfg, {"male", "female"});
