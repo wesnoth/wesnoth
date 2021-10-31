@@ -14,7 +14,7 @@ jobs:
 
     name: Discord Notification
 
-    needs: [ubuntu-2004-scons-gcc-release-lto, ubuntu-2004-scons-clang-debug, ubuntu-2004-cmake-clang-release, ubuntu-2004-cmake-gcc-debug, steam-runtime, mingw, flatpak, translations, macos-intel-master-release, macos-intel-master-debug, windows-release, windows-debug]
+    needs: [ubuntu-2004-scons-gcc-release-lto, ubuntu-2004-scons-clang-debug, ubuntu-2004-cmake-clang-release, ubuntu-2004-cmake-gcc-debug, steam-runtime, mingw, flatpak, translations, macos-intel-master-release, macos-intel-master-debug, macos-arm-master-release, macos-arm-master-debug, windows-release, windows-debug]
     if: always()
 
     steps:
