@@ -225,7 +225,7 @@ class Forest:
             subtree = sorted(maincfgs) + sorted(rest)
             self.forest.append(subtree)
         for i in range(len(self.forest)):
-            # Ignore version-control subdirectories and Emacs tempfiles
+            # Ignore version-control subdirectories, Emacs tempfiles, and Apple Store files
             for dirkind in vc_directories + l10n_directories:
                 self.forest[i] = [x for x in self.forest[i] if dirkind not in x]
             self.forest[i] = [x for x in self.forest[i] if '.#' not in x]
@@ -233,6 +233,7 @@ class Forest:
             if exclude:
                 self.forest[i] = [x for x in self.forest[i] if not re.search(exclude, x)]
             self.forest[i] = [x for x in self.forest[i] if not x.endswith("-bak")]
+            self.forest[i] = [x for x in self.forest[i] if not x.endswith(".DS_Store")]
         # Compute cliques (will be used later for visibility checks)
         self.clique = {}
         counter = 0
