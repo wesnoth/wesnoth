@@ -1021,7 +1021,17 @@ bool game::process_turn(simple_wml::document& data, player_iterator user)
 
 				// figure out who gets the surrendered side
 				if(owner_ == user) {
-					playername = username(*sides_[(side_index + 1) % sides_.size()]);
+					auto new_side_index = (side_index + 1) % sides_.size();
+					auto new_owner = sides_[new_side_index];
+					while(!new_owner) {
+						new_side_index = (new_side_index + 1) % sides_.size();
+						if(new_side_index == side_index) {
+							ERR_GAME << "Ran out of sides to surrender to.\n";
+							return false;
+						}
+						new_owner = sides_[new_side_index];
+					}
+					playername = username(*new_owner);
 				} else {
 					playername = username(owner_);
 				}
