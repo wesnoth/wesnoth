@@ -14,6 +14,7 @@ map_extensions   = ("map", "mask")
 image_extensions = ("png", "jpg", "jpeg")
 sound_extensions = ("ogg", "wav")
 vc_directories = (".git", ".svn")
+misc_files_extensions = ("-bak", ".DS_Store", "Thumbs.db")
 l10n_directories = ("l10n",)
 resource_extensions = map_extensions + image_extensions + sound_extensions
 image_reference = r"[A-Za-z0-9{}.][A-Za-z0-9_/+{}.\-\[\]~\*,]*\.(png|jpe?g)(?=(~.*)?)"
@@ -225,15 +226,15 @@ class Forest:
             subtree = sorted(maincfgs) + sorted(rest)
             self.forest.append(subtree)
         for i in range(len(self.forest)):
-            # Ignore version-control subdirectories, Emacs tempfiles, and Apple Store files
+            # Ignore version-control subdirectories, Emacs tempfiles, and other files and extensions
             for dirkind in vc_directories + l10n_directories:
                 self.forest[i] = [x for x in self.forest[i] if dirkind not in x]
             self.forest[i] = [x for x in self.forest[i] if '.#' not in x]
             self.forest[i] = [x for x in self.forest[i] if not os.path.isdir(x)]
             if exclude:
                 self.forest[i] = [x for x in self.forest[i] if not re.search(exclude, x)]
-            self.forest[i] = [x for x in self.forest[i] if not x.endswith("-bak")]
-            self.forest[i] = [x for x in self.forest[i] if not x.endswith(".DS_Store")]
+            for each in misc_files_extensions:
+                self.forest[i] = [x for x in self.forest[i] if not x.endswith(each)]
         # Compute cliques (will be used later for visibility checks)
         self.clique = {}
         counter = 0
