@@ -955,11 +955,13 @@ static std::string format_addon_time(std::time_t time)
 	if(time) {
 		std::ostringstream ss;
 
-		const char* format = preferences::use_twelve_hour_clock_format()
-			? "%B %d %Y, %I:%M %p"
-			: "%B %d %Y, %H:%M";
+		const std::string format = preferences::use_twelve_hour_clock_format()
+			// TRANSLATORS: Month + day of month + year + 12-hour time, eg 'November 02 2021, 1:59 PM'. Format for your locale.
+			? _("%B %d %Y, %I:%M %p")
+			// TRANSLATORS: Month + day of month + year + 24-hour time, eg 'November 02 2021, 13:59'. Format for your locale.
+			: _("%B %d %Y, %H:%M");
 
-		ss << std::put_time(std::localtime(&time), format);
+		ss << translation::strftime(format, std::localtime(&time));
 
 		return ss.str();
 	}
