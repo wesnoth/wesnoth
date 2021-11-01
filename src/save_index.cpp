@@ -276,10 +276,8 @@ std::string save_info::format_time_local() const
 {
 	if(std::tm* tm_l = std::localtime(&modified())) {
 		const std::string format = preferences::use_twelve_hour_clock_format()
-			// TRANSLATORS: Day of week + month + day of month + 12-hour time + year, eg 'Tue Nov 02 1:59 PM 2021'. Format for your locale.
-			? _("%a %b %d %I:%M %p %Y")
-			// TRANSLATORS: Day of week + month + day of month + 24-hour time + year, eg 'Tue Nov 02 13:59 2021'. Format for your locale.
-			: _("%a %b %d %H:%M %Y");
+			? _("%a %b %d %Y, %I:%M %p")
+			: _("%a %b %d %Y, %H:%M");
 
 		return translation::strftime(format, tm_l);
 	}
