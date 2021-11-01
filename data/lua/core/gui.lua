@@ -35,10 +35,20 @@ function gui.get_user_choice(attr, options)
 		msg[k] = attr[k]
 	end
 	for k,v in ipairs(options) do
-		table.insert(msg, wml.tag.option { message = v,
-			wml.tag.command { wml.tag.lua {
-				code = string.format("gui.__user_choice_helper(%d)", k)
-			}}})
+		if type(v) == "table" or type(v) == "userdata" then
+			table.insert(msg, wml.tag.option { image = v.image,
+				label = v.label,
+				description = v.description,
+				default = v.default,
+				wml.tag.command { wml.tag.lua {
+					code = string.format("gui.__user_choice_helper(%d)", k)
+				}}})
+		elseif type(v) == "string" then
+			table.insert(msg, wml.tag.option { message = v,
+				wml.tag.command { wml.tag.lua {
+					code = string.format("gui.__user_choice_helper(%d)", k)
+				}}})
+		end
 	end
 	wesnoth.wml_actions.message(msg)
 	gui.__user_choice_helper = nil
