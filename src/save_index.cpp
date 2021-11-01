@@ -253,8 +253,8 @@ std::string save_info::format_time_local() const
 {
 	if(std::tm* tm_l = std::localtime(&modified())) {
 		const std::string format = preferences::use_twelve_hour_clock_format()
-			? _("%a %b %d %I:%M %p %Y")
-			: _("%a %b %d %H:%M %Y");
+			? _("%a %b %d %Y, %I:%M %p")
+			: _("%a %b %d %Y, %H:%M");
 
 		return translation::strftime(format, tm_l);
 	}
