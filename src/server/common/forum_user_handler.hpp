@@ -180,8 +180,9 @@ public:
 	 * @param id The id of the content.
 	 * @param source The source add-on for the content.
 	 * @param version The version of the source add-on.
+	 * @return The number of rows inserted which should always be 1.
 	 */
-	void db_insert_game_content_info(const std::string& uuid, int game_id, const std::string& type, const std::string& name, const std::string& id, const std::string& source, const std::string& version);
+	unsigned long long db_insert_game_content_info(const std::string& uuid, int game_id, const std::string& type, const std::string& name, const std::string& id, const std::string& source, const std::string& version);
 
 	/**
 	 * Sets the OOS flag in the database if wesnothd is told by a client it has detected an OOS error.

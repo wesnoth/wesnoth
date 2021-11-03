@@ -140,7 +140,7 @@ public:
 	virtual void db_insert_game_info(const std::string& uuid, int game_id, const std::string& version, const std::string& name, int reload, int observers, int is_public, int has_password) = 0;
 	virtual void db_update_game_end(const std::string& uuid, int game_id, const std::string& replay_location) = 0;
 	virtual void db_insert_game_player_info(const std::string& uuid, int game_id, const std::string& username, int side_number, int is_host, const std::string& faction, const std::string& version, const std::string& source, const std::string& current_user) = 0;
-	virtual void db_insert_game_content_info(const std::string& uuid, int game_id, const std::string& type, const std::string& name, const std::string& id, const std::string& source, const std::string& version) = 0;
+	virtual unsigned long long db_insert_game_content_info(const std::string& uuid, int game_id, const std::string& type, const std::string& name, const std::string& id, const std::string& source, const std::string& version) = 0;
 	virtual void db_set_oos_flag(const std::string& uuid, int game_id) = 0;
 	virtual void async_test_query(boost::asio::io_service& io_service, int limit) = 0;
 	virtual bool db_topic_id_exists(int topic_id) = 0;
