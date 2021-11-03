@@ -1676,9 +1676,19 @@ void server::handle_player_in_game(player_iterator p, simple_wml::document& data
 			const simple_wml::node& m = *g.level().root().child("multiplayer");
 			DBG_SERVER << simple_wml::node_to_string(m) << '\n';
 			// [addon] info handling
+			std::set<std::string> uniqueness_checker;
 			for(const auto& addon : m.children("addon")) {
 				for(const auto& content : addon->children("content")) {
-					user_handler_->db_insert_game_content_info(uuid_, g.db_id(), content->attr("type").to_string(), content->attr("name").to_string(), content->attr("id").to_string(), addon->attr("id").to_string(), addon->attr("version").to_string());
+					const std::string type = content->attr("type").to_string();
+					const std::string content_id = content->attr("id").to_string();
+					// the UUID is identical for the entirety of the server instance and the game ID is identical for all rows for this game
+					// therefore only need to be checking against the two values that would change with each row
+					if(uniqueness_checker.count(type+content_id) == 0) {
+						uniqueness_checker.insert(type+content_id);
+						user_handler_->db_insert_game_content_info(uuid_, g.db_id(), content->attr("type").to_string(), content->attr("name").to_string(), content->attr("id").to_string(), addon->attr("id").to_string(), addon->attr("version").to_string());
+					} else {
+						WRN_SERVER << "Found duplicate [addon] data for uuid '" << uuid_ <<"', game ID '" << g.db_id() << "', type '" << type << "', and content ID '" << content_id << "'\n";
+					}
 				}
 			}
 
