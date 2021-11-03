@@ -656,7 +656,7 @@ bool game_launcher::play_render_image_mode()
 	}
 
 	// A default output filename
-	std::string outfile = "wesnoth_image.bmp";
+	std::string outfile = "wesnoth_image.png";
 
 	// If a output path was given as an argument, use that instead
 	if(cmdline_opts_.render_image_dst) {

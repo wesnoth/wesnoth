@@ -1069,7 +1069,9 @@ template<class SocketPtr> void server::handle_player(boost::asio::yield_context 
 	assert(inserted);
 
 	BOOST_SCOPE_EXIT_ALL(this, &player) {
-		remove_player(player);
+		if(!destructed) {
+			remove_player(player);
+		}
 	};
 
 	async_send_doc_queued(socket, games_and_users_list_);
@@ -1368,7 +1370,7 @@ void server::cleanup_game(game* game_ptr)
 
 	// Send a diff of the gamelist with the game deleted to players in the lobby
 	simple_wml::document diff;
-	if(make_delete_diff(*gamelist, "gamelist", "game", game_ptr->description(), diff)) {
+	if(!destructed && make_delete_diff(*gamelist, "gamelist", "game", game_ptr->description(), diff)) {
 		send_to_lobby(diff);
 	}
 

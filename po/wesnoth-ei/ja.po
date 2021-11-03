@@ -1,16 +1,14 @@
 #
 # Translators:
-# RatArmy <broadbarredfirefish@gmail.com>, 2019
-# tamanegi, 2019
-# 堀 秀幸 <Hide.HORI@gmail.com>, 2020
+# RatArmy, 2021
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2021-06-23 15:42 UTC\n"
-"PO-Revision-Date: 2018-09-12 07:30+0000\n"
-"Last-Translator: 堀 秀幸 <Hide.HORI@gmail.com>, 2020\n"
+"PO-Revision-Date: 2021-06-26 08:31+0000\n"
+"Last-Translator: RatArmy, 2021\n"
 "Language-Team: Japanese (https://www.transifex.com/wesnoth-jp/teams/60513/"
 "ja/)\n"
 "Language: ja\n"
@@ -52,7 +50,7 @@ msgstr "剣士"
 #. [campaign]: id=Eastern_Invasion
 #: data/campaigns/Eastern_Invasion/_main.cfg:20
 msgid "Difficult"
-msgstr ""
+msgstr "困難"
 
 #. [campaign]: id=Eastern_Invasion
 #: data/campaigns/Eastern_Invasion/_main.cfg:20
@@ -73,10 +71,8 @@ msgstr ""
 
 #. [campaign]: id=Eastern_Invasion
 #: data/campaigns/Eastern_Invasion/_main.cfg:24
-#, fuzzy
-#| msgid "(Novice level, 16 scenarios.)"
 msgid "(Intermediate level, 16 scenarios.)"
-msgstr "（初級レベル、16 シナリオ）"
+msgstr "（中級レベル、16 シナリオ。）"
 
 #. [about]
 #: data/campaigns/Eastern_Invasion/_main.cfg:28
@@ -167,13 +163,6 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:40
-#, fuzzy
-#| msgid ""
-#| "In the days of the king Garard I, two strong-points had been built along "
-#| "the near bank of the Weldyn, south of Soradoc, to stop bandits and orcish "
-#| "raiders out of the Estmarks from entering Wesnoth. But in later years the "
-#| "River Guard posts had been abandoned, as colonists spread into the "
-#| "Estmarks and the orcs were driven in retreat north of the Great River."
 msgid ""
 "In the days of King Garard I, two strong-points had been built along the "
 "near bank of the Weldyn, south of Soradoc, to stop bandits and orcish "
@@ -599,10 +588,6 @@ msgstr "そこにいるのは誰だ？"
 
 #. [message]: speaker=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:328
-#, fuzzy
-#| msgid ""
-#| "We are soldiers of the king of Wesnoth. Will you help us fight these "
-#| "trolls?"
 msgid ""
 "We are soldiers of the King of Wesnoth. Will you help us fight these trolls?"
 msgstr "我々は Wesnoth 王の軍人だ。トロルと戦うのを助けてもらえないだろうか？"
@@ -1849,7 +1834,7 @@ msgstr ""
 #. "Wake" doesn't mean "raise undead" here. The reinforcements are sea creatures, they're alive but hidden underwater.
 #: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:135
 msgid "Time to wake my reinforcements!"
-msgstr ""
+msgstr "我が増援を呼び起こすときだ！"
 
 #. [message]: speaker=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:252
@@ -2256,10 +2241,8 @@ msgstr ""
 
 #. [label]
 #: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:164
-#, fuzzy
-#| msgid "Move Dacyn to the stronghold"
 msgid "The stronghold"
-msgstr "Dacynを要塞へ移動させる"
+msgstr "要塞"
 
 #. [message]: speaker=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:194
@@ -2563,10 +2546,8 @@ msgstr ""
 
 #. [objective]: condition=win
 #: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:1113
-#, fuzzy
-#| msgid "Move Gweddry to the tunnel exit"
 msgid "Move Gweddry to the western exit"
-msgstr "Gweddryをトンネルの出口に移動させる"
+msgstr "Gweddryを西の出口に移動させる"
 
 #. [objective]: condition=win
 #: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:1117
@@ -2642,10 +2623,8 @@ msgstr "Ran-Lar"
 
 #. [objective]: condition=win
 #: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:150
-#, fuzzy
-#| msgid "Destroy the bridge OR defeat all enemies"
 msgid "Destroy the bridge"
-msgstr "橋を破壊するか、*あるいは*、全ての敵を倒す"
+msgstr "橋を破壊する"
 
 #. [note]
 #: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:175
@@ -3893,15 +3872,10 @@ msgstr ""
 
 #. [attacks]: id=shock
 #: data/campaigns/Eastern_Invasion/utils/abilities.cfg:10
-#, fuzzy
-#| msgid ""
-#| " This unit’s melee attack can overwhelm the defenses of enemies, "
-#| "preventing them from retaliating as effectively."
 msgid ""
 "This unit’s melee attack can overwhelm the defenses of enemies, preventing "
 "them from retaliating as effectively."
-msgstr ""
-"このユニットの近接攻撃は、敵の反撃を効果的に妨げることで、防御を圧倒します。"
+msgstr "このユニットの近接攻撃は敵の防御を圧倒し、反撃を妨害します。"
 
 #: data/campaigns/Eastern_Invasion/utils/character-definitions.cfg:15
 msgid "Dacyn"
@@ -4053,12 +4027,3 @@ msgstr "このアイテムは私には適しません。他の人にあげてく
 #: data/campaigns/Eastern_Invasion/utils/macros.cfg:67
 msgid "Holy Amulet"
 msgstr "聖なるお守り"
-
-#~ msgid "Easy"
-#~ msgstr "易しい"
-
-#~ msgid "Creatures from the deep, I summon thee to destroy this foe!"
-#~ msgstr "深淵の生物よ、現れいでて敵を滅ぼせ！"
-
-#~ msgid "Gweddry reaches the western exit"
-#~ msgstr "Gweddryが西の出口に到着する"

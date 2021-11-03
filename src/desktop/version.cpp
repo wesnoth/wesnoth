@@ -97,7 +97,11 @@ std::string windows_release_id()
 	char buf[256]{""};
 	DWORD size = sizeof(buf);
 
-	const auto res = RegGetValueA(HKEY_LOCAL_MACHINE, "SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion", "ReleaseId", RRF_RT_REG_SZ, nullptr, buf, &size);
+	auto res = RegGetValueA(HKEY_LOCAL_MACHINE, "SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion", "DisplayVersion", RRF_RT_REG_SZ, nullptr, buf, &size);
+	if(res != ERROR_SUCCESS) {
+		res = RegGetValueA(HKEY_LOCAL_MACHINE, "SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion", "ReleaseId", RRF_RT_REG_SZ, nullptr, buf, &size);
+	}
+
 	return std::string{res == ERROR_SUCCESS ? buf : ""};
 }
 
@@ -362,7 +366,7 @@ std::string os_version()
 			break;
 		case 1000:
 			if(v.wProductType == VER_NT_WORKSTATION) {
-				version = "10";
+				version = v.dwBuildNumber < 22000 ? "10" : "11";
 				const auto& release_id = windows_release_id();
 				if(!release_id.empty()) {
 					version += ' ';

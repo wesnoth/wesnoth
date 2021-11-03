@@ -1,16 +1,14 @@
 #
 # Translators:
-# 家庭的の人 <kateitekino_hito@yahoo.co.jp>, 2018
-# tamanegi, 2019
-# RatArmy <broadbarredfirefish@gmail.com>, 2020
+# RatArmy, 2021
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2021-06-23 15:42 UTC\n"
-"PO-Revision-Date: 2018-07-11 10:25+0000\n"
-"Last-Translator: RatArmy <broadbarredfirefish@gmail.com>, 2020\n"
+"PO-Revision-Date: 2021-06-26 08:32+0000\n"
+"Last-Translator: RatArmy, 2021\n"
 "Language-Team: Japanese (https://www.transifex.com/wesnoth-jp/teams/60513/"
 "ja/)\n"
 "Language: ja\n"
@@ -102,58 +100,49 @@ msgstr ""
 #. [lua]: f
 #. In the end-of-match summary, a side which has no units left and therefore lost. In English the loss is shown by displaying it with the text struck through.
 #: data/multiplayer/eras.lua:53
-#, fuzzy
-#| msgid "<span strikethrough='true' foreground='#%02x%02x%02x'>Side %d</span>"
 msgid ""
 "<span strikethrough='true' foreground='$side_color'>Side $side_number</"
 "span>:  Has lost all units"
-msgstr "<span strikethrough='true' foreground='#%02x%02x%02x'>陣営 %d</span>"
+msgstr ""
+"<span strikethrough='true' foreground='$side_color'>陣営$side_number</span>："
+"すべてのユニットを失いました"
 
 #. [lua]: f
 #. In the end-of-match summary, any side that still has units left
 #: data/multiplayer/eras.lua:69
-#, fuzzy
-#| msgid ""
-#| "<span foreground='#%02x%02x%02x'>Side %d</span>:  Income score = %d  Unit "
-#| "score = %d  Gold = %d"
 msgid ""
 "<span foreground='$side_color'>Side $side_number</span>:  Income score = "
 "$income  Unit score = $units  Gold = $gold\n"
 "Grand total: <b>$total</b>"
 msgstr ""
-"<span foreground='#%02x%02x%02x'>陣営 %d</span>:  収入スコア = %d  ユニットス"
-"コア = %d  ゴールド = %d"
+"<span foreground='$side_color'>陣営$side_number</span>：収入スコア = "
+"$income  ユニットスコア = $units ゴールド = $gold\n"
+"総計：<b>$total</b>"
 
 #. [lua]: f
 #. In the end-of-match summary, there's a single side that's won.
 #: data/multiplayer/eras.lua:86
-#, fuzzy
-#| msgid "<span foreground='%s'>Side %d</span> has the advantage."
 msgid ""
 "<span foreground='$side_color'>Side $side_number</span> has the advantage."
-msgstr "<span foreground='%s'>陣営 %d</span>が有利です。"
+msgstr "<span foreground='$side_color'>陣営$side_number</span>が優勢です。"
 
 #. [lua]: f
 #. In the end-of-match summary, there's a two-way tie (this is only used for exactly two winning teams)
 #: data/multiplayer/eras.lua:91
-#, fuzzy
-#| msgid "Sides %s and %d are tied."
 msgid "Sides $side_number and $other_side_number are tied."
-msgstr "陣営%sと%dは引き分けた。"
+msgstr "陣営$side_number と $other_side_number は同点です。"
 
 #. [lua]: f
 #. In the end-of-match summary, three or more teams have all tied for the best score. $winners contains the result of formatting the conjunct list.
 #: data/multiplayer/eras.lua:96
-#, fuzzy
-#| msgid "Sides %s and %d are tied."
 msgid "Sides $winners are tied."
-msgstr "陣営%sと%dは引き分けた。"
+msgstr "陣営 $winners は同点です。"
 
 #. [lua]: f
 #. "Turns Over", meaning "turn limit reached" is the title of the end-of-match summary dialog
 #: data/multiplayer/eras.lua:100
 msgid "dialog^Turns Over"
-msgstr ""
+msgstr "ターンリミット"
 
 #. [multiplayer_side]: id=Drakes, type=random
 #: data/multiplayer/factions/drakes-aoh.cfg:4
@@ -1523,70 +1512,23 @@ msgid ""
 msgstr "かつて豊かな鉱山街であった面影もなく、今では略奪者と盗賊の避難所だ。"
 
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:4
-#, fuzzy
-#| msgid ""
-#| "Your aim is to survive the spawning waves of units and defeat the final "
-#| "archenemies.\n"
-#| "\n"
-#| "The spawning waves are randomly generated and will be different each time "
-#| "Dark Forecast is played.\n"
-#| "\n"
-#| "They appear along the north, south, and west map edges — though they are "
-#| "most likely to spawn on the west edge. The waves appear at somewhat "
-#| "regular intervals.\n"
-#| "\n"
-#| "The weather will also change randomly, affecting the layout of the map.\n"
-#| "\n"
-#| "\n"
-#| "<b>Dark Forecast was made by:</b>\n"
-#| "\n"
-#| "<span color='green'>jb:</span>\n"
-#| "• Map design, spawn groups, and scenario concept\n"
-#| "\n"
-#| "<span color='green'>Rhuvaen:</span>\n"
-#| "• WML implementation"
 msgid ""
 "Your aim is to survive spawning waves of units and defeat the final "
 "archenemies. Spawns are randomly generated and will be different each time "
 "Isle of Mists is played. The waves appear at somewhat regular intervals. The "
 "weather will also change randomly, affecting the layout of the map."
 msgstr ""
-"押し寄せる敵軍から生き延び、最後の強敵を倒すことがあなたの目標です。\n"
-"\n"
-"敵軍はランダムに生成され、暗黒の前兆を遊ぶたびに変化します。\n"
-"\n"
-"敵は北、南、西のマップ端から出現しますが、西から来ることが最も多いです。ま"
-"た、敵は規則的な間隔で現れます。\n"
-"\n"
-"天候がランダムに変化し、マップのレイアウトに影響を与えます。\n"
-"\n"
-"\n"
-"<b>暗黒の前兆の製作者:</b>\n"
-"\n"
-"<span color='green'>jb:</span>\n"
-"• マップデザイン、出現ユニットのパターン、シナリオのコンセプト\n"
-"\n"
-"<span color='green'>Rhuvaen:</span>\n"
-"• WMLの実装"
+"押し寄せる敵軍から生き延び、最後の強敵を倒しましょう。敵軍はランダムに生成さ"
+"れ、霧の島を遊ぶたびに変化します。敵はある程度規則的な間隔で出現します。天候"
+"もランダムに変化し、マップのレイアウトに影響を与えます。"
 
 #. [multiplayer]: id=multiplayer_2p_Isle_of_Mists
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:9
-#, fuzzy
-#| msgid "2p — Dark Forecast (Survival)"
 msgid "2p — Isle of Mists (Survival)"
-msgstr "2p — 暗黒の前兆（サバイバル）"
+msgstr "2p — 霧の島（サバイバル）"
 
 #. [multiplayer]: id=multiplayer_2p_Isle_of_Mists
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:10
-#, fuzzy
-#| msgid ""
-#| "Dark Forecast is a survival scenario for solitaire or two-player team-"
-#| "based play against randomly-spawned AI units. Victory is achieved by "
-#| "surviving and defeating all enemy waves. During the course of play, the "
-#| "terrain will change based on random weather effects.\n"
-#| "\n"
-#| "Note: You need to use the default map settings for the scenario to work "
-#| "right."
 msgid ""
 "Isle of Mists is a survival scenario which can be played alone or with "
 "another player against randomly spawned AI units, catered for experienced "
@@ -1595,42 +1537,34 @@ msgid ""
 "effects. Default map settings are required for the scenario to work "
 "properly. By Lord-Knightmare."
 msgstr ""
-"暗黒の前兆はランダムに発生するAIユニットと戦うサバイバルシナリオで、1人でも、"
-"2人でのチームプレイでも遊ぶことができる。すべての敵の波から生き残り、退けるこ"
-"とが勝利条件だ。ゲームプレイの過程で、ランダムの気候の効果により地形が変化し"
-"ていく。\n"
-"\n"
-"メモ: シナリオを正しく動作させるためには、マップの初期設定を使用する必要があ"
-"る。"
+"霧の島は1～2人のプレイヤーがランダムに出現するAIユニットと戦うサバイバルシナ"
+"リオで、難易度は熟練者向けである。勝利条件は押し寄せる敵をすべて倒し、生き延"
+"びることだ。ゲームの途中ではランダムな天候の影響により地形が変化する。シナリ"
+"オを正常に動作させるには、マップの初期設定を使用する必要がある。Lord-"
+"Knightmare作。"
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:25
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:38
-#, fuzzy
-#| msgid "teamname^Monsters"
 msgid "teamname^Invaders"
-msgstr "モンスター"
+msgstr "侵略者"
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:56
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:83
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:107
-#, fuzzy
-#| msgid "teamname^Center"
 msgid "teamname^Defenders"
-msgstr "中央軍"
+msgstr "防衛者"
 
 #. [label]
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:189
 msgid "Healing Keep"
-msgstr ""
+msgstr "回復の主塔"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:213
-#, fuzzy
-#| msgid "Dark Forecast — a random survival scenario"
 msgid "Isle of Mists — a random survival scenario"
-msgstr "暗黒の前兆 - ランダムのサバイバルシナリオ"
+msgstr "霧の島 — ランダムサバイバルシナリオ"
 
 #. [message]
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:220
@@ -1638,6 +1572,8 @@ msgid ""
 "You arrive near a mystic shrine, where the apparitions of ancient armies are "
 "forever trapped and doomed to eternally cleanse the isle of all interlopers."
 msgstr ""
+"あなたは神秘的な聖堂の近くに到着しました。この場所には古代の軍隊の幻影が永遠"
+"に囚われており、彼らは島から侵入者を排除することを使命としています。"
 
 #. [message]
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:224
@@ -1645,22 +1581,18 @@ msgid ""
 "Phantom armies approach on the horizon. If we defeat them all, they may be "
 "released from this timeless prison."
 msgstr ""
+"幻影の軍隊が地平線から迫ってきている。彼らをすべて打ち破ることで、永遠の牢獄"
+"から解放してやれるかもしれない。"
 
 #. [message]
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:228
 msgid "Let us prepare ourselves for the coming battle."
-msgstr ""
+msgstr "では我々も戦闘準備を開始しよう。"
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:247
-#, fuzzy
-#| msgid ""
-#| "Ugh! How can this be? Defeated by mere barbarians! My gods have forsaken "
-#| "me..."
 msgid "How can this be? My gods have forsaken me..."
-msgstr ""
-"うわ！これはどういうことだ？野蛮人どもに敗れるとは！神よ、私を見捨てたのです"
-"か……"
+msgstr "なぜこんなことに？神に見放されたというのか..."
 
 #. [message]: speaker=second_unit
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:261
@@ -1669,6 +1601,8 @@ msgid ""
 "separated from your body. You realize that you will soon be doomed to the "
 "same fate as the phantom guardians of the shrine."
 msgstr ""
+"冷たい死の抱擁が迫り、魂が肉体から離れるのを感じた。自らももうすぐ青銅を守る"
+"幻影と同じ運命を辿るであろうことを理解した。"
 
 #. [message]
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:283
@@ -1677,19 +1611,17 @@ msgid ""
 "You dimly realize that you will soon join the other ghosts as another "
 "faceless guardian of the ancient shrine."
 msgstr ""
+"大地から暗い霧が立ち昇り、感覚と意志を奪っていく。自らも他の幽霊と同じよう"
+"に、古代の聖堂の顔を持たぬ守護者と成り果てることをぼんやりと理解した。"
 
 #. [lua]: final_spawn
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.lua:313
-#, fuzzy
-#| msgid ""
-#| "The last and most powerful of these creatures are almost upon us. I feel "
-#| "that if we can finish them off in time, we shall be victorious."
 msgid ""
 "The last and most powerful of our enemies are upon us. If we can finish them "
 "off in time, we shall be victorious."
 msgstr ""
-"最後にして最強の生物たちが迫っている。時間内に奴らを倒せば、我々の勝利となる"
-"だろう。"
+"最後にして最強の敵が迫っている。時間内に奴らを倒せば、我々の勝利となるだろ"
+"う。"
 
 #. [lua]: final_spawn
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.lua:343
@@ -1699,11 +1631,13 @@ msgid ""
 "eternal guardianship. You have finally cleansed the ancient shrine... for "
 "now."
 msgstr ""
+"最後の敵を倒すと、島を包んでいた陰気な霧が晴れたようだ。幻影は消えていき、つ"
+"いに永遠の守護の使命から解き放たれた。ついに聖堂を浄化することができたのだ。"
 
 #. [lua]: weather_map
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.lua:517
 msgid "Inundation"
-msgstr ""
+msgstr "洪水"
 
 #. [multiplayer]: id=multiplayer_Ruined_Passage
 #: data/multiplayer/scenarios/2p_Ruined_Passage.cfg:7
@@ -2313,7 +2247,7 @@ msgstr "北東軍"
 #. [checkbox]: id=simple_background
 #: data/multiplayer/scenarios/4p_Isars_Cross.cfg:67
 msgid "Disable Background Image"
-msgstr ""
+msgstr "背景画像の無効化"
 
 #. [checkbox]: id=simple_background
 #. Tooltip for the Isar's Cross map, makes the map look as it did in Wesnoth 1.14 and earlier
@@ -2321,7 +2255,7 @@ msgstr ""
 msgid ""
 "Show a blank area outside the map, instead of the floating island with "
 "cliffs."
-msgstr ""
+msgstr "マップ外の表示を崖のある浮遊島ではなく空洞の領域にします。"
 
 #. [multiplayer]: id=multiplayer_King_of_the_Hill
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:7
@@ -2892,6 +2826,3 @@ msgid ""
 msgstr ""
 "Wesnoth のベンチマークです。以下のオプションを使用します。--no-delay --"
 "multiplayer --scenario=wesbench_shroud_walk --exit-at-end"
-
-#~ msgid "Grand total: <b>%d</b>"
-#~ msgstr "合計: <b>%d</b>"

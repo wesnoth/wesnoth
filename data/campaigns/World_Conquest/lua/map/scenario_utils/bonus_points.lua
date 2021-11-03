@@ -400,6 +400,8 @@ end
 function world_conquest_tek_bonus_points(theme)
 	local res = {}
 	local scenario_num = wml.variables.wc2_scenario or 1
+    -- wc2_player_count is not available for the first scenario, place bonus points for 3 players
+	local player_num =  wml.variables.wc2_player_count or 3
 	oceanic = get_oceanic()
 	f_wct_bonus_location_filter = wesnoth.map.filter(get_f_wct_bonus_location_filter(map), { oceanic = oceanic })
 	local possible_locs = map:find(f_wct_bonus_location_filter)
@@ -412,6 +414,6 @@ function world_conquest_tek_bonus_points(theme)
 		})
 		table.insert(res, loc)
 	end
-	random_placement(possible_locs, 3, 9 + scenario_num, place_item)
+	random_placement(possible_locs, player_num, 9 + scenario_num, place_item)
 	return res
 end

@@ -92,18 +92,25 @@ end
 
 function methods:get(...)
 	local loc = wesnoth.map.read_location(...)
-	return self.values[index(loc.x, loc.y)]
+	if loc ~= nil then
+		return self.values[index(loc.x, loc.y)]
+	end
+	return nil
 end
 
 function methods:insert(...)
 	local loc, n = wesnoth.map.read_location(...)
-	local v = select(n + 1, ...)
-	self.values[index(loc.x, loc.y)] = v or true
+	if loc ~= nil then
+		local v = select(n + 1, ...)
+		self.values[index(loc.x, loc.y)] = v or true
+	end
 end
 
 function methods:remove(...)
 	local loc = wesnoth.map.read_location(...)
-	self.values[index(loc.x, loc.y)] = nil
+	if loc ~= nil then
+		self.values[index(loc.x, loc.y)] = nil
+	end
 end
 
 function methods:clone()

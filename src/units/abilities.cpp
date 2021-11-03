@@ -832,6 +832,27 @@ std::vector<std::pair<t_string, t_string>> attack_type::special_tooltips(
 }
 
 /**
+ * static used in weapon_specials (bool only_active, bool is_backstab) and
+ * @return a string and a set_string for the weapon_specials function below.
+ * @param[in,out] weapon_abilities the string modified and returned
+ * @param[in] active the boolean for determine if @name can be added or not
+ * @param[in] sp reference to ability to check
+ * @param[in,out] checking_name the reference for checking if @name already added
+ */
+static void add_name(std::string& weapon_abilities, bool active, const config::any_child sp, std::set<std::string>& checking_name)
+{
+	if (active) {
+		const std::string& name = sp.cfg["name"].str();
+
+		if (!name.empty() && checking_name.count(name) == 0) {
+			checking_name.insert(name);
+			if (!weapon_abilities.empty()) weapon_abilities += ", ";
+			weapon_abilities += font::span_color(font::BUTTON_COLOR, name);
+		}
+	}
+}
+
+/**
  * Returns a comma-separated string of active names for the specials of *this.
  * Empty names are skipped.
  *
@@ -858,23 +879,15 @@ std::string attack_type::weapon_specials(bool only_active, bool is_backstab) con
 			if (only_active && !active) res += "</span>";
 		}
 	}
-
+	std::string weapon_abilities;
+	std::set<std::string> checking_name;
 	assert(display::get_singleton());
 	const unit_map& units = display::get_singleton()->get_units();
 	if(self_){
-		std::set<std::string> checking_name;
-		for (const config::any_child sp : (*self_).abilities().all_children_range()){
+		for (const config::any_child sp : self_->abilities().all_children_range()){
 			const bool active = check_self_abilities_impl(shared_from_this(), other_attack_, sp.cfg, self_, self_loc_, AFFECT_SELF, sp.key);
 
-			const std::string& name = active ? sp.cfg["name"].str() : "";
-
-			if (!name.empty() && checking_name.count(name) == 0) {
-				checking_name.insert(name);
-				if (!res.empty()){
-					res += ", ";
-				}
-				res += name;
-			}
+			add_name(weapon_abilities, active, sp, checking_name);
 		}
 		const auto adjacent = get_adjacent_tiles(self_loc_);
 		for(unsigned i = 0; i < adjacent.size(); ++i) {
@@ -883,20 +896,39 @@ std::string attack_type::weapon_specials(bool only_active, bool is_backstab) con
 				continue;
 			if(&*it == self_.get())
 				continue;
-			for (const config::any_child sp : (*it).abilities().all_children_range()){
+			for (const config::any_child sp : it->abilities().all_children_range()){
 				const bool active = check_adj_abilities_impl(shared_from_this(), other_attack_, sp.cfg, self_, *it, i, self_loc_, AFFECT_SELF, sp.key);
 
-				const std::string& name = active ? sp.cfg["name"].str() : "";
-
-				if (!name.empty() && checking_name.count(name) == 0) {
-					checking_name.insert(name);
-					if (!res.empty()){
-						res += ", ";
-					}
-					res += name;
-				}
+				add_name(weapon_abilities, active, sp, checking_name);
 			}
 		}
+	}
+
+	if(other_){
+		for (const config::any_child sp : other_->abilities().all_children_range()){
+			const bool active = check_self_abilities_impl(other_attack_, shared_from_this(), sp.cfg, other_, other_loc_, AFFECT_OTHER, sp.key);
+
+			add_name(weapon_abilities, active, sp, checking_name);
+		}
+		const auto adjacent = get_adjacent_tiles(other_loc_);
+		for(unsigned i = 0; i < adjacent.size(); ++i) {
+			const unit_map::const_iterator it = units.find(adjacent[i]);
+			if (it == units.end() || it->incapacitated())
+				continue;
+			if(&*it == other_.get())
+				continue;
+			for (const config::any_child sp : it->abilities().all_children_range()){
+				const bool active = check_adj_abilities_impl(other_attack_, shared_from_this(), sp.cfg, other_, *it, i, other_loc_, AFFECT_OTHER, sp.key);
+
+				add_name(weapon_abilities, active, sp, checking_name);
+			}
+		}
+	}
+	if(!weapon_abilities.empty() && !res.empty()) {
+		weapon_abilities = ", \n" + weapon_abilities;
+		res += weapon_abilities;
+	} else if (!weapon_abilities.empty()){
+		res = weapon_abilities;
 	}
 	return res;
 }

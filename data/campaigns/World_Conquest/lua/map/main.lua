@@ -75,7 +75,7 @@ function wc_ii_generate_scenario(nplayers, gen_args)
 		variables = {
 			wc2_scenario = scenario_num,
 			wc2_player_count = nplayers,
-			wc2_host_version = "0.8.2"
+			wc2_host_version = "0.8.4"
 		},
 		side = {},
 		id = gen_args.id,

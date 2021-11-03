@@ -1,16 +1,15 @@
 #
 # Translators:
-# tamanegi, 2019
-# RatArmy <broadbarredfirefish@gmail.com>, 2019
-# 堀 秀幸 <Hide.HORI@gmail.com>, 2020
+# RatArmy, 2021
+# h22, 2021
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2021-06-23 15:42 UTC\n"
-"PO-Revision-Date: 2018-05-06 10:23+0000\n"
-"Last-Translator: 堀 秀幸 <Hide.HORI@gmail.com>, 2020\n"
+"PO-Revision-Date: 2021-06-26 08:33+0000\n"
+"Last-Translator: h22, 2021\n"
 "Language-Team: Japanese (https://www.transifex.com/wesnoth-jp/teams/60513/"
 "ja/)\n"
 "Language: ja\n"
@@ -22,13 +21,13 @@ msgstr ""
 #. [campaign]: id=Tutorial
 #: data/campaigns/tutorial/_main.cfg:11
 msgid "Battle Training"
-msgstr ""
+msgstr "戦闘訓練"
 
 #. [difficulty]
 #. [campaign]: id=Tutorial
 #: data/campaigns/tutorial/_main.cfg:14 data/campaigns/tutorial/_main.cfg:30
 msgid "Tutorial"
-msgstr ""
+msgstr "チュートリアル"
 
 #. [campaign]: id=Tutorial
 #: data/campaigns/tutorial/_main.cfg:21
@@ -36,11 +35,13 @@ msgid ""
 "Learn the basics of Wesnoth gameplay with a tutorial. Recommended for first "
 "time players."
 msgstr ""
+"チュートリアルで Wesnoth の基本的なプレイ方法を学びましょう。初めてプレイする"
+"人に推奨されています。"
 
 #. [difficulty]
 #: data/campaigns/tutorial/_main.cfg:31
 msgid "Beginner"
-msgstr ""
+msgstr "初心者"
 
 #. [label]
 #: data/campaigns/tutorial/gui/character_selection.cfg:21
@@ -118,13 +119,9 @@ msgstr "あなたが殺される"
 
 #. [disallow_end_turn]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:137
-#, fuzzy
-#| msgid ""
-#| "You cannot end your turn until you have recruited troops and captured a "
-#| "village!"
 msgid ""
 "You cannot end your turn until you have completed the lesson on movement!"
-msgstr "ユニットを雇用し、村を確保するまでターンを終えることはできません！"
+msgstr "移動に関するレッスンを修了するまでターンを終えることはできません！"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:146
@@ -329,12 +326,8 @@ msgstr ""
 
 #. [disallow_end_turn]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:527
-#, fuzzy
-#| msgid ""
-#| "You cannot end your turn until you have recruited troops and captured a "
-#| "village!"
 msgid "You cannot end your turn until you have attacked the dummy!"
-msgstr "ユニットを雇用し、村を確保するまでターンを終えることはできません！"
+msgstr "人形を攻撃するまでターンを終えることはできません！"
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:541
@@ -449,13 +442,9 @@ msgstr "ターンを終了しましょう"
 
 #. [disallow_end_turn]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:631
-#, fuzzy
-#| msgid ""
-#| "You cannot end your turn until you have recruited troops and captured a "
-#| "village!"
 msgid ""
 "You cannot end your turn until you have completed the lesson on healing!"
-msgstr "ユニットを雇用し、村を確保するまでターンを終えることはできません！"
+msgstr "回復に関するレッスンを修了するまでターンを終えることはできません！"
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:642
@@ -511,13 +500,9 @@ msgstr ""
 
 #. [disallow_end_turn]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:698
-#, fuzzy
-#| msgid ""
-#| "You cannot end your turn until you have recruited troops and captured a "
-#| "village!"
 msgid ""
 "You cannot end your turn until you have completed the lesson on recruiting!"
-msgstr "ユニットを雇用し、村を確保するまでターンを終えることはできません！"
+msgstr "雇用に関するレッスンを修了するまでターンを終えることはできません！"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:707
@@ -618,13 +603,9 @@ msgstr ""
 
 #. [disallow_end_turn]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:830
-#, fuzzy
-#| msgid ""
-#| "You cannot end your turn until you have recruited troops and captured a "
-#| "village!"
 msgid ""
 "You cannot end your turn until you have completed the lesson on attacking!"
-msgstr "ユニットを雇用し、村を確保するまでターンを終えることはできません！"
+msgstr "攻撃に関するレッスンを修了するまでターンを終えることはできません！"
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:839
@@ -694,19 +675,13 @@ msgstr ""
 #. [message]: speaker=Delfador
 #. a strong elf, so +1 damage
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:918
-#, fuzzy
-#| msgid ""
-#| "Your elf used a sword (5×4; or 5 damage on each hit, with 4 attacks), "
-#| "which is a <i>melee</i> attack. The quintain defended with its melee "
-#| "attack (3×5; or 3 damage on each hit, with 5 attacks). The ranged attack "
-#| "(the bow) would have been safer."
 msgid ""
 "Your elf used a sword (6×4; or 6 damage on each hit, with 4 attacks), which "
 "is a <i>melee</i> attack. The quintain defended with its melee attack (3×5; "
 "or 3 damage on each hit, with 5 attacks). The ranged attack (the bow) would "
 "have been safer."
 msgstr ""
-"エルフの戦士は<i>近接</i>攻撃の剣（5x4：命中1回につき5ダメージの4回攻撃）で攻"
+"エルフの戦士は<i>近接</i>攻撃の剣（6x4：命中1回につき6ダメージの4回攻撃）で攻"
 "撃したな。クィンティンも近接攻撃（3x5：命中1回につき3ダメージの5回攻撃）で防"
 "御するから、遠隔攻撃（弓）の方が安全じゃったろう。"
 
@@ -716,6 +691,8 @@ msgid ""
 "Elvish Fighters normally do 5×4 damage with their swords, but this elf has "
 "the <i>strong</i> trait, which increases the damage output of melee attacks."
 msgstr ""
+"エルフの戦士は剣による攻撃では通常 5×4 ダメージの攻撃力を持ちますが、このエル"
+"フは<i>強力</i>の特性を持っており、近接攻撃で与えるダメージが増加します。"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:928
@@ -732,17 +709,12 @@ msgstr ""
 #. [message]: speaker=Delfador
 #. a dextrous elf, so +1 damage
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:949
-#, fuzzy
-#| msgid ""
-#| "Your elf used a bow, which is a <i>ranged</i> attack (3×3; or 3 damage on "
-#| "each hit, with 3 attacks). The quintain has no ranged attack, only a "
-#| "melee attack, so it could not defend itself."
 msgid ""
 "Your elf used a bow, which is a <i>ranged</i> attack (4×3; or 4 damage on "
 "each hit, with 3 attacks). The quintain has no ranged attack, only a melee "
 "attack, so it could not defend itself."
 msgstr ""
-"エルフの戦士は弓を使ったな。これは<i>遠隔</i>攻撃（3x3：命中1回につき3 ダメー"
+"エルフの戦士は弓を使ったな。これは<i>遠隔</i>攻撃（4x3：命中1回につき4ダメー"
 "ジの3回攻撃）じゃ。クィンティンは近接攻撃しか持たないので、反撃することができ"
 "なかったのじゃ。"
 
@@ -752,6 +724,8 @@ msgid ""
 "Elvish Fighters normally do 3×3 damage with their bows, but this elf has the "
 "<i>dextrous</i> trait, which increases the damage output of ranged attacks."
 msgstr ""
+"エルフの戦士は弓による攻撃では通常 3×3 ダメージの攻撃力を持ちますが、このエル"
+"フは<i>器用</i>の特性を持っており、遠隔攻撃で与えるダメージが増加します。"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:959
@@ -1960,7 +1934,7 @@ msgstr ""
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1021
 msgid "Speeding Up Animations"
-msgstr ""
+msgstr "アニメーションのスピードアップ"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1023
@@ -1969,6 +1943,9 @@ msgid ""
 "quicker. The <b>acceleration factor</b> can be set, and turned on by "
 "default, in the <b>Preferences</b> menu’s <b>General</b> tab."
 msgstr ""
+"<b>Shift</b> を押しっぱなしにすると移動と戦闘のアニメーションを高速化できま"
+"す。また、<b>高速化の倍率</b>や高速化の常時有効化は<b>設定</b>メニューの<b>一"
+"般</b>タブで設定できます。"
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1032
@@ -2361,14 +2338,11 @@ msgid ""
 msgstr "<b>u</b>キーを押せば多くの動作をアンドゥできます。覚えておきましょう。"
 
 #: data/campaigns/tutorial/utils/utils.cfg:126
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "<big>Click a mouse button or press the spacebar to continue...</big>"
 msgid ""
 "\n"
 "\n"
 "<big>Click a mouse button or press the spacebar to continue...</big>"
 msgstr ""
 "\n"
-"<big>スペースキーを押すか、画面をクリックして進みましょう…</big>"
+"\n"
+"<big>マウスをクリックするか、スペースキーを押して進みましょう…</big>"

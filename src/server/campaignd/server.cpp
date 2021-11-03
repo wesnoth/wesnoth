@@ -612,12 +612,18 @@ void server::handle_read_from_fifo(const boost::system::error_code& error, std::
 			}
 		}
 	} else if(ctl == "setattr") {
-		if(ctl.args_count() != 3) {
+		if(ctl.args_count() < 3) {
 			ERR_CS << "Incorrect number of arguments for 'setattr'\n";
 		} else {
 			const std::string& addon_id = ctl[1];
 			const std::string& key = ctl[2];
-			const std::string& value = ctl[3];
+			std::string value;
+			for (std::size_t i = 3; i <= ctl.args_count(); ++i) {
+				if(i > 3) {
+					value += ' ';
+				}
+				value += ctl[i];
+			}
 
 			config& addon = get_addon(addon_id);
 
@@ -1464,7 +1470,7 @@ void server::handle_upload(const server::request& req)
 
 	addon.copy_attributes(upload,
 		"title", "name", "author", "description", "version", "icon",
-		"translate", "dependencies", "type", "tags", "email");
+		"translate", "dependencies", "core", "type", "tags", "email");
 
 	const std::string& pathstem = "data/" + name;
 	addon["filename"] = pathstem;

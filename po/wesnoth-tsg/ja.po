@@ -1,16 +1,14 @@
 #
 # Translators:
-# tamanegi, 2019
-# 堀 秀幸 <Hide.HORI@gmail.com>, 2020
-# RatArmy <broadbarredfirefish@gmail.com>, 2020
+# RatArmy, 2021
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2021-06-23 15:42 UTC\n"
-"PO-Revision-Date: 2018-09-12 07:31+0000\n"
-"Last-Translator: RatArmy <broadbarredfirefish@gmail.com>, 2020\n"
+"PO-Revision-Date: 2021-06-26 08:33+0000\n"
+"Last-Translator: RatArmy, 2021\n"
 "Language-Team: Japanese (https://www.transifex.com/wesnoth-jp/teams/60513/"
 "ja/)\n"
 "Language: ja\n"
@@ -46,10 +44,8 @@ msgstr ""
 
 #. [campaign]: id=The_South_Guard
 #: data/campaigns/The_South_Guard/_main.cfg:22
-#, fuzzy
-#| msgid "(Rookie level, 9 scenarios.)"
 msgid "(Novice level, 8 scenarios.)"
-msgstr "（入門レベル、9 シナリオ）"
+msgstr "（初級レベル、8 シナリオ。）"
 
 #. [campaign]: id=The_South_Guard
 #: data/campaigns/The_South_Guard/_main.cfg:25
@@ -88,10 +84,8 @@ msgstr "キャンペーンデザイン"
 
 #. [about]
 #: data/campaigns/The_South_Guard/_main.cfg:38
-#, fuzzy
-#| msgid "Campaign Design"
 msgid "Latest Campaign Revision"
-msgstr "キャンペーンデザイン"
+msgstr "最新のキャンペーンリビジョン"
 
 #. [about]
 #: data/campaigns/The_South_Guard/_main.cfg:44
@@ -2389,10 +2383,6 @@ msgstr "落ち着け！俺なら道がわかる。アンデッドを倒したら
 #. [message]: speaker=narrator
 #. All of Urza Afalas’s units have been transferred to the player’s side. The troops who attacked or were recruited last turn can’t attack this turn; the others can. The “disengaged” orb is the one used for Under the Burning Sun’s disengage ability.
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:875
-#, fuzzy
-#| msgid ""
-#| "Urza Afalas’s troops are exhausted from battle and cannot attack this "
-#| "turn, but are still able to withdraw and reposition themselves."
 msgid ""
 "Many of Urza Afalas’s troops are exhausted from battle and cannot attack "
 "this turn, but are still able to withdraw and reposition themselves.\n"
@@ -2401,7 +2391,9 @@ msgid ""
 "orb."
 msgstr ""
 "Urza Afalas の部隊は戦闘で疲弊しているため、このターン中は攻撃することができ"
-"ませんが、退却して再配置することは可能です。"
+"ませんが、退却して再配置することは可能です。\n"
+"\n"
+"攻撃不可かつ移動可のユニットには<i>離脱</i>オーブが表示されます。"
 
 #. [message]: speaker=Urza Afalas
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:909
@@ -2695,8 +2687,6 @@ msgstr "Mal Maul"
 
 #. ['unit name']
 #: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:303
-#, fuzzy
-#| msgid "Mal Maul"
 msgid "female^Mal Maul"
 msgstr "Mal Maul"
 
@@ -5280,17 +5270,6 @@ msgstr ""
 #. [part]
 #. Epilogue B
 #: data/campaigns/The_South_Guard/utils/sg_story.cfg:188
-#, fuzzy
-#| msgid ""
-#| "After the battle, Deoran led an expedition to the southern border posts, "
-#| "where the forts had been smashed into crumbled ruins, and blood and "
-#| "broken weapons were scattered all about. He silently cursed the lich for "
-#| "the lack of bodies at the site of the battle, but deep down, he had known "
-#| "that that would be the fate of the men who had valiantly given their "
-#| "lives so that Westin might survive the undead onslaught. Still, he found "
-#| "small consolation in locating Sir Gerrick’s sword and shield and bearing "
-#| "them back with him to Westin. Those he placed atop Gerrick’s mound, where "
-#| "they became a symbol of sacrifice, and loyalty, and valor."
 msgid ""
 "After the battle, Deoran led an expedition to the southern border posts, "
 "where the forts had been smashed into crumbled ruins, and blood and broken "
@@ -5307,9 +5286,9 @@ msgstr ""
 "たことに気づき、心の中でリッチを罵りました。しかし、Deoran はもちろん、彼らも"
 "こうなることはわかっていました。こうなることを覚悟で彼らが勇敢に戦ったからこ"
 "そ、Westin はあのアンデッドの襲撃を耐え抜くことができたのです。それでも、"
-"Deoran は Gerrick 卿の剣と盾を見つけ、Westin に持ち帰ったことで少しだけ心の荷"
-"が軽くなったように感じました。その剣と盾は Gerrick の墓の最上部に置かれ、献"
-"身、忠義、勇気の象徴となりました。"
+"Deoran は Gerrick 卿のグレイブと盾を見つけ、Westin に持ち帰ったことで少しだけ"
+"心の荷が軽くなったように感じました。その剣と盾は Gerrick の墓の最上部に置か"
+"れ、献身、忠義、勇気の象徴となりました。"
 
 #. [part]
 #. Epilogue B
@@ -5344,188 +5323,3 @@ msgstr ""
 "Deoran も負傷者の見舞いやボロボロになった城壁や防衛設備の再建を指揮するなど、"
 "忙しい日々を過ごしています。そして、南部防衛隊も今一度村の見回りを再開し、"
 "ゆっくりながら、Kerlath 州と Westin は日常を取り戻しつつあります。"
-
-#~ msgid ""
-#~ "This campaign is designed as an introduction to Wesnoth. The ‘Civilian’ "
-#~ "difficulty level is aimed at first-time players."
-#~ msgstr ""
-#~ "このキャンペーンは Wesnoth の入門者向けにデザインされています。初めてプレ"
-#~ "イする人には「一般市民」の難易度がお勧めです。"
-
-#~ msgid "Tidings, Good and Ill"
-#~ msgstr "よい知らせと悪い知らせ"
-
-#~ msgid "Enemies"
-#~ msgstr "敵"
-
-#~ msgid "Ssesseth"
-#~ msgstr "Ssesseth"
-
-#~ msgid "Zasz"
-#~ msgstr "Zasz"
-
-#~ msgid "Zerix"
-#~ msgstr "Zerix"
-
-#~ msgid "Scorpion"
-#~ msgstr "サソリ"
-
-#~ msgid "Issorai"
-#~ msgstr "Issorai"
-
-#~ msgid "Zarr"
-#~ msgstr "Zarr"
-
-#~ msgid "Abdur"
-#~ msgstr "Abdur"
-
-#~ msgid "Queen Xeila"
-#~ msgstr "女王 Xeila"
-
-#~ msgid "Ssanur"
-#~ msgstr "Ssanur"
-
-#~ msgid "Lesssh"
-#~ msgstr "Lesssh"
-
-#~ msgid "Kallen"
-#~ msgstr "Kallen"
-
-#~ msgid "Eliomir"
-#~ msgstr "Eliomir"
-
-#~ msgid ""
-#~ "Sir Gerrick, you must return to Westin and warn your people of the danger "
-#~ "from the south. We will lead you through the forest and clear the foes "
-#~ "from your path. You may choose some of your veterans to accompany your "
-#~ "journey. Any troops you leave behind will still have time to join "
-#~ "Ethiliel and Deoran."
-#~ msgstr ""
-#~ "Gerrick 卿、あなたは Westin に戻り、南から来る危機を人々に知らしめねばなら"
-#~ "ない。我々が先行して邪魔者を一掃し、あなたが森を通り抜けられるようにしよ"
-#~ "う。加えて、ベテランを何人か連れて行っても良い。後に残した者については、ま"
-#~ "だ Ethiliel と Deoran に追いつくことができるだろう。"
-
-#~ msgid ""
-#~ "With many of the bandits and undead vanquished already, few foes should "
-#~ "remain before us. Let us hope this is a speedy journey, for the specter "
-#~ "of winter looms closer."
-#~ msgstr ""
-#~ "山賊とアンデッドは倒したというのに、この先にどんな敵がいるというのだ？何に"
-#~ "せよ、この旅がすぐに終わることを願いたい。冬の気配がぼんやりと現れ始めてい"
-#~ "るからな。"
-
-#~ msgid "Move Sir Gerrick to the north end of the woods"
-#~ msgstr "Gerrick 卿を森の北端まで移動させる"
-
-#~ msgid "Defeat Queen Xeila"
-#~ msgstr "女王 Xeila を倒す"
-
-#~ msgid "Recalled units will be unavailable to Deoran."
-#~ msgstr "このシナリオで召還されたユニットは、Deoran が召還できなくなります。"
-
-#~ msgid ""
-#~ "Hss... Here come the humans who have made a pact with the cursed mermen!"
-#~ msgstr "シュー…… 忌々しいマーフォークと協定を結んだ人間どもが来た！"
-
-#~ msgid "We have stumbled upon a den of naga!"
-#~ msgstr "ナーガの住処にあたってしまったか！"
-
-#~ msgid "Hss... Elves too! We will kill them all, my brood. Hss..."
-#~ msgstr "シュー…… エルフも一緒か！一族の者よ、奴らを皆殺しにする。シュー……"
-
-#~ msgid ""
-#~ "If we leave these naga here, they will ambush Deoran and Ethiliel! We "
-#~ "must destroy them!"
-#~ msgstr ""
-#~ "ナーガを放っておいたら、Deoran と Ethiliel が襲撃を受けるかもしれん！今こ"
-#~ "こで片付けておくぞ！"
-
-#~ msgid "Hss... elves! Are they friends or enemies? Hss..."
-#~ msgstr "シュー…… エルフどもがいる！こいつらは友か敵か？ シュー……"
-
-#~ msgid "We are weary travelers, seeking our homes. If you but let us pass..."
-#~ msgstr ""
-#~ "我々は家に帰る途中の旅人で、長旅で疲れているのだ。あなたが我々を通してくれ"
-#~ "さえすれば……"
-
-#~ msgid ""
-#~ "Hss... And humans! Humans drained our swamps and destroyed our homes! Now "
-#~ "they have found my winter nest and seek to destroy me. The Land-Walkers "
-#~ "must die! Hss..."
-#~ msgstr ""
-#~ "シュー…… それに人間だ！人間どもは我々の沼地を乾かし、破壊した！さらに今、"
-#~ "私の冬ごもりの巣を破壊しようとしている！殺すしかない！シュー……"
-
-#~ msgid ""
-#~ "She refuses to listen! If we leave these naga here, they will ambush "
-#~ "Deoran and Ethiliel! We must destroy them!"
-#~ msgstr ""
-#~ "これは取り付く島も無いな。ナーガをこのままにしておいたら、Deoran と "
-#~ "Ethiliel が襲撃を受けるかもしれん！今ここで片付けておくぞ！"
-
-#~ msgid ""
-#~ "There are a group of naga occupying this area. They don’t look very "
-#~ "friendly."
-#~ msgstr ""
-#~ "ここにはナーガの群れが住んでいるようだ。あまり友好的ではなさそうだな。"
-
-#~ msgid ""
-#~ "If they are hostile to us, they could endanger Deoran and Ethiliel as "
-#~ "well, but perhaps we can reason with their leader."
-#~ msgstr ""
-#~ "彼らが敵対的なら、Deoran や Ethiliel に危険がおよぶかもしれん。連中のリー"
-#~ "ダーとうまく交渉できれば良いのだが。"
-
-#~ msgid "Who will watch over my brood now? Hss..."
-#~ msgstr "私が死んだら卵の世話をする者は……？シュー……"
-
-#~ msgid "Oh! Me see elves. Elves tasty food?"
-#~ msgstr "おー！ 俺 エルフ 見える。エルフ うまい？"
-
-#~ msgid "Bad food! It hurt me. Me no like. Me pain..."
-#~ msgstr "ダメな食べ物！痛い。俺 きらい。俺 痛い……"
-
-#~ msgid ""
-#~ "Hail, travelers! I seek the dark sage who is rumored to dwell in these "
-#~ "lands. Surely you have come from him?"
-#~ msgstr ""
-#~ "やあ、旅人よ！私はこの地に闇の賢者が住んでいるという噂を聞きつけたやってき"
-#~ "たのだ。おまえたちは彼の元から来たんだろう？"
-
-#~ msgid ""
-#~ "Indeed! I just left my comrades, who were preparing to kill the vile "
-#~ "necromancer."
-#~ msgstr ""
-#~ "その通り！私の仲間がその卑劣な降霊術師を滅ぼすための準備をしているところ"
-#~ "だ！"
-
-#~ msgid ""
-#~ "Unworthy fools! How dare you attack the hallowed one?! You must be slain "
-#~ "for this sacrilege!"
-#~ msgstr ""
-#~ "身の程知らずめ！そのような素晴らしい者に無体を働くだと？！彼を冒涜した罪で"
-#~ "お前たちは死刑だ！"
-
-#~ msgid ""
-#~ "These naga are still in control of the road. We must clear the way for "
-#~ "Deoran and Ethiliel!"
-#~ msgstr ""
-#~ "ナーガがまだこの道を占拠してるぞ。Deoran と Ethiliel のために片付けてやら"
-#~ "なければな！"
-
-#~ msgid ""
-#~ "I must hasten back to Kerlath Province and seek the advice of the Council "
-#~ "of Westin. I pray that Deoran and Ethiliel find the strength to defeat "
-#~ "the undead on their own."
-#~ msgstr ""
-#~ "急いで Kerlath 州に戻り、Westin 評議会の助言を求めねば。しかし、叶うことな"
-#~ "らば、Deoran や Ethiliel 達が自力でアンデッドを滅ぼす方法を見つけて欲しい"
-#~ "と願う。"
-
-#~ msgid ""
-#~ "We will return to our council as well. There is much we have to tell "
-#~ "them... much indeed."
-#~ msgstr ""
-#~ "我々もこちらの評議会へ行く。話さないといけないことがたくさんある…… ありす"
-#~ "ぎる程に。"

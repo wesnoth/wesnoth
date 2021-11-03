@@ -9,14 +9,14 @@ msgstr ""
 "Project-Id-Version: wesnoth-editor\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2021-02-20 18:40-0300\n"
-"PO-Revision-Date: 2020-01-14 20:58+0100\n"
-"Last-Translator: Merijn de Vet <merijndevet@hotmail.com>\n"
+"PO-Revision-Date: 2021-10-28 17:23+0200\n"
+"Last-Translator: Merijn de Vet <tybonzer@live.nl>\n"
 "Language-Team: Dutch <merijndevet@hotmail.com>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.2.4\n"
+"X-Generator: Poedit 3.0\n"
 "X-Poedit-Basepath: /home/koan/wesnoth\n"
 
 #. [brush]: id=brush-1
@@ -123,7 +123,7 @@ msgstr "speciaal"
 #. Describes a scenario in the editor that has not set a time of day schedule
 #: data/core/editor/time-of-day.cfg:6
 msgid "time of day^None"
-msgstr "Geen"
+msgstr "time of day^Geen"
 
 #. [editor_times]: id=test
 #: data/core/editor/time-of-day.cfg:11
@@ -158,7 +158,7 @@ msgstr "Na de Herfst"
 #. [theme]: id=editor
 #: data/themes/editor.cfg:11
 msgid "theme^Editor"
-msgstr "Editor"
+msgstr "theme^Editor"
 
 #. [menu]: id=menu-editor-file, type=turbo
 #: data/themes/editor.cfg:61
@@ -261,7 +261,7 @@ msgstr "Fatale fout"
 
 #: src/editor/controller/editor_controller.cpp:209
 msgid "Do you really want to quit?"
-msgstr "Wilt u echt afsluiten?"
+msgstr "Wil je echt afsluiten?"
 
 #: src/editor/controller/editor_controller.cpp:211
 msgid ""
@@ -277,7 +277,7 @@ msgid ""
 "since the last save will be lost:"
 msgstr ""
 "Wilt u echt afsluiten? De volgende kaarten zijn gewijzigd en alle "
-"wijzigingen sinds de laatste save gaan verloren."
+"wijzigingen sinds de laatste save gaan verloren:"
 
 #: src/editor/controller/editor_controller.cpp:222
 msgid "No editor time-of-day found."
@@ -482,30 +482,30 @@ msgstr "Verwijder"
 
 #: src/editor/palette/terrain_palettes.cpp:231
 msgid "Left-click: "
-msgstr ""
+msgstr "Linker-muisknop: "
 
 #: src/editor/palette/terrain_palettes.cpp:232
 msgid "Right-click: "
-msgstr ""
+msgstr "Rechter-muisknop: "
 
 #. TRANSLATORS: Similar behavior applies to shift + right-click. This message specifies left-click
 #. because the logic of whether to show the "overlay only" or "base only" version depends on the
 #. terrain currently selected for the left button.
 #: src/editor/palette/terrain_palettes.cpp:237
 msgid "Shift + left-click: paint overlay layer only"
-msgstr ""
+msgstr "Shift + linker-muisknop: teken alleen de overlay-laag"
 
 #: src/editor/palette/terrain_palettes.cpp:239
 msgid "Shift + left-click: paint base layer only"
-msgstr ""
+msgstr "Shift + linker-muisknop: teken alleen de basis-laag"
 
 #: src/editor/palette/terrain_palettes.cpp:242
 msgid "Cmd + click: copy terrain"
-msgstr ""
+msgstr "Cmd + klik: kopieer terrein"
 
 #: src/editor/palette/terrain_palettes.cpp:244
 msgid "Ctrl + click: copy terrain"
-msgstr ""
+msgstr "Ctrl + klik: kopieer terrein"
 
 #: src/gui/dialogs/editor/custom_tod.cpp:92
 msgid "Clipboard support not found, contact your packager"
