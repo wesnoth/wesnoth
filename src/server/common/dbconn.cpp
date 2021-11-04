@@ -381,7 +381,7 @@ unsigned long long dbconn::insert_login(const std::string& username, const std::
 {
 	try
 	{
-		return modify_get_gid(connection_, "INSERT INTO `"+db_connection_history_table_+"`(USER_NAME, IP, VERSION) values(lower(?), ?, ?)",
+		return modify_get_id(connection_, "INSERT INTO `"+db_connection_history_table_+"`(USER_NAME, IP, VERSION) values(lower(?), ?, ?)",
 			username, ip, version);
 	}
 	catch(const mariadb::exception::base& e)
@@ -546,7 +546,7 @@ unsigned long long dbconn::modify(mariadb::connection_ref connection, const std:
 	}
 }
 template<typename... Args>
-unsigned long long dbconn::modify_get_gid(mariadb::connection_ref connection, const std::string& sql, Args&&... args)
+unsigned long long dbconn::modify_get_id(mariadb::connection_ref connection, const std::string& sql, Args&&... args)
 {
 	try
 	{

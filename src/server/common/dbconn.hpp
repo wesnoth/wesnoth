@@ -292,7 +292,7 @@ class dbconn
 		 * @return The value of an AUTO_INCREMENT column on the table being modified.
 		 */
 		template<typename... Args>
-		unsigned long long modify_get_gid(mariadb::connection_ref connection, const std::string& sql, Args&&... args);
+		unsigned long long modify_get_id(mariadb::connection_ref connection, const std::string& sql, Args&&... args);
 
 		/**
 		 * Begins recursively unpacking of the parameter pack in order to be able to call the correct parameterized setters on the query.
