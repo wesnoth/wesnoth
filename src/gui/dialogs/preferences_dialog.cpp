@@ -65,13 +65,6 @@ namespace gui2::dialogs
 {
 namespace
 {
-// Helper function to get the main grid in each row of the advanced section
-// listbox, which contains the value and setter widgets.
-grid* get_advanced_row_grid(listbox& list, const int selected_row)
-{
-	return dynamic_cast<grid*>(list.get_row_grid(selected_row)->find("pref_main_grid", false));
-}
-
 template<typename W>
 void disable_widget_on_toggle(window& window, widget& w, const std::string& id)
 {
@@ -89,7 +82,7 @@ int index_in_pager_range(const int first, const stacked_widget& pager)
 template<bool(*fptr)(bool)>
 void sound_toggle_on_change(window& window, const std::string& id_to_toggle, widget& w)
 {
-	(*fptr)(dynamic_cast<selectable_item&>(w).get_value_bool());
+	std::invoke(fptr, dynamic_cast<selectable_item&>(w).get_value_bool());
 
 	// Toggle the corresponding slider.
 	disable_widget_on_toggle<slider>(window, w, id_to_toggle);
@@ -99,7 +92,7 @@ void sound_toggle_on_change(window& window, const std::string& id_to_toggle, wid
 template<void(*fptr)(int)>
 void volume_setter_on_change(widget& w)
 {
-	(*fptr)(dynamic_cast<integer_selector&>(w).get_value());
+	std::invoke(fptr, dynamic_cast<integer_selector&>(w).get_value());
 }
 
 } // end anon namespace
@@ -576,13 +569,7 @@ void preferences_dialog::post_build(window& window)
 		const std::string& pref_name = option.field;
 
 		row_data["pref_name"]["label"] = option.name;
-		advanced.add_row(row_data);
-
-		const int this_row = advanced.get_item_count() - 1;
-
-		// Get the main grid from each row
-		grid* main_grid = get_advanced_row_grid(advanced, this_row);
-		assert(main_grid);
+		grid* main_grid = &advanced.add_row(row_data);
 
 		grid& details_grid = find_widget<grid>(main_grid, "prefs_setter_grid", false);
 		details_grid.set_visible(widget::visibility::invisible);
@@ -963,12 +950,12 @@ void preferences_dialog::on_advanced_prefs_list_select(listbox& list)
 	const bool has_description = !pref.description.empty();
 
 	if(has_description || (pref.type != avp::avd_type::SPECIAL && pref.type != avp::avd_type::TOGGLE)) {
-		find_widget<widget>(get_advanced_row_grid(list, selected_row), "prefs_setter_grid", false)
+		find_widget<widget>(list.get_row_grid(selected_row), "prefs_setter_grid", false)
 			.set_visible(widget::visibility::visible);
 	}
 
 	if(last_selected_item_ != selected_row) {
-		find_widget<widget>(get_advanced_row_grid(list, last_selected_item_), "prefs_setter_grid", false)
+		find_widget<widget>(list.get_row_grid(last_selected_item_), "prefs_setter_grid", false)
 			.set_visible(widget::visibility::invisible);
 
 		last_selected_item_ = selected_row;
