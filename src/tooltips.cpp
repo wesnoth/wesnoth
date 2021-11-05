@@ -132,7 +132,7 @@ void clear_tooltips(const SDL_Rect& rect)
 			if (i==current_tooltip) {
 				clear_tooltip();
 			}
-			tips.erase(i++);
+			i = tips.erase(i);
 			current_tooltip = tips.end();
 		} else {
 			++i;
@@ -175,13 +175,7 @@ void remove_tooltip(int id)
 
 int add_tooltip(const SDL_Rect& rect, const std::string& message, const std::string& action, bool use_markup, const surface& foreground)
 {
-	for(std::map<int, tooltip>::iterator it = tips.begin(); it != tips.end();) {
-		if(sdl::rects_overlap(it->second.rect,rect)) {
-			tips.erase(it++);
-		} else {
-			++it;
-		}
-	}
+	clear_tooltips(rect);
 
 	int id = tooltip_id++;
 
