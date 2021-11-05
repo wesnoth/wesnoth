@@ -46,11 +46,18 @@ namespace preferences {
 
 	void write_preferences();
 
-	void set(const std::string& key, const std::string &value);
-	void set(const std::string& key, char const *value);
-	void set(const std::string& key, bool value);
-	void set(const std::string& key, int value);
-	void set(const std::string& key, const config::attribute_value& value);
+	void _set_impl(const std::string& key, config::attribute_value& value);
+
+	template<typename T>
+	void set(const std::string& key, T value)
+	{
+		config::attribute_value nv{};
+		nv = value;
+		_set_impl(key, nv);
+	}
+
+	void add_setter_callback(const std::string& key, std::function<void(const config::attribute_value&)> func);
+
 	void clear(const std::string& key);
 	void set_child(const std::string& key, const config& val);
 	const config &get_child(const std::string &key);

@@ -53,6 +53,7 @@ bool no_preferences_save = false;
 bool fps = false;
 
 config prefs;
+std::map<std::string, std::function<void(const config::attribute_value&)>> callbacks {};
 }
 
 namespace preferences {
@@ -158,29 +159,19 @@ void write_preferences()
 #endif
 }
 
-void set(const std::string &key, bool value)
+void _set_impl(const std::string& key, config::attribute_value& value)
 {
-	prefs[key] = value;
+	auto& ref = prefs[key];
+	ref = value;
+
+	if(const auto iter = callbacks.find(key); iter != callbacks.end()) {
+		std::invoke(iter->second, ref);
+	}
 }
 
-void set(const std::string &key, int value)
+void add_setter_callback(const std::string& key, std::function<void(const config::attribute_value&)> func)
 {
-	prefs[key] = value;
-}
-
-void set(const std::string &key, char const *value)
-{
-	prefs[key] = value;
-}
-
-void set(const std::string &key, const std::string &value)
-{
-	prefs[key] = value;
-}
-
-void set(const std::string &key, const config::attribute_value &value)
-{
-	prefs[key] = value;
+	callbacks[key] = func;
 }
 
 void clear(const std::string& key)
