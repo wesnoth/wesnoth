@@ -398,6 +398,11 @@ pango_text& pango_text::set_maximum_height(int height, bool multiline)
 	if(height != maximum_height_) {
 		// assert(context_);
 
+		// The maximum height is handled in this class' calculate_size() method.
+		//
+		// Although we also pass it to PangoLayout if multiline is true, the documentation of pango_layout_set_height
+		// makes me wonder whether we should avoid that function completely. For example, "at least one line is included
+		// in each paragraph regardless" and "may be changed in future, file a bug if you rely on the current behavior".
 		pango_layout_set_height(layout_.get(), !multiline ? -1 : height * PANGO_SCALE);
 		maximum_height_ = height;
 		calculation_dirty_ = true;
@@ -416,6 +421,13 @@ pango_text& pango_text::set_ellipse_mode(const PangoEllipsizeMode ellipse_mode)
 		ellipse_mode_ = ellipse_mode;
 		calculation_dirty_ = true;
 		surface_dirty_ = true;
+	}
+
+	// According to the docs of pango_layout_set_height, the behavior is undefined if a height other than -1 is combined
+	// with PANGO_ELLIPSIZE_NONE. Wesnoth's code currently always calls set_ellipse_mode after set_maximum_height, so do
+	// the cleanup here. The code in calculate_size() will still apply the maximum height after Pango's calculations.
+	if(ellipse_mode_ == PANGO_ELLIPSIZE_NONE) {
+		pango_layout_set_height(layout_.get(), -1);
 	}
 
 	return *this;
@@ -569,12 +581,23 @@ PangoRectangle pango_text::calculate_size(PangoLayout& layout) const
 		<< " maximum_height " << maximum_height_
 		<< " result " << size
 		<< ".\n";
+
 	if(maximum_width != -1 && size.x + size.width > maximum_width) {
 		DBG_GUI_L << "pango_text::" << __func__
 			<< " text '" << gui2::debug_truncate(text_)
 			<< " ' width " << size.x + size.width
 			<< " greater as the wanted maximum of " << maximum_width
 			<< ".\n";
+	}
+
+	// The maximum height is handled here instead of using the library - see the comments in set_maximum_height()
+	if(maximum_height_ != -1 && size.y + size.height > maximum_height_) {
+		DBG_GUI_L << "pango_text::" << __func__
+			<< " text '" << gui2::debug_truncate(text_)
+			<< " ' height " << size.y + size.height
+			<< " greater as the wanted maximum of " << maximum_height_
+			<< ".\n";
+		size.height = maximum_height_ - std::max(0, size.y);
 	}
 
 	return size;
