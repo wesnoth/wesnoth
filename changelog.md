@@ -8,6 +8,7 @@
  ### Editor
  ### Multiplayer
  ### Lua API
+   * Fixed an error in `gui.get_user_choice()` (part of PR #6247).
  ### Packaging
  ### Terrain
  ### Translations
