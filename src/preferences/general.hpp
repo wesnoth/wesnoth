@@ -56,7 +56,25 @@ namespace preferences {
 		_set_impl(key, nv);
 	}
 
-	void add_setter_callback(const std::string& key, std::function<void(const config::attribute_value&)> func);
+	using setter_callback = std::function<void(const config::attribute_value&)>;
+
+	/** Registers a callback to be called when the given preference is @ref set. This will replace any existing callback. */
+	void set_callback(const std::string& key, setter_callback func);
+
+	/**
+	 * RAII helper to temporarily register a setter callback.
+	 * On being destroyed, the previous callback for the given key is restored.
+	 */
+	class temp_callback
+	{
+	public:
+		temp_callback(const std::string& key, setter_callback cb);
+		~temp_callback();
+
+	private:
+		setter_callback& old_f;
+		setter_callback new_f;
+	};
 
 	void clear(const std::string& key);
 	void set_child(const std::string& key, const config& val);

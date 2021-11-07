@@ -53,7 +53,7 @@ bool no_preferences_save = false;
 bool fps = false;
 
 config prefs;
-std::map<std::string, std::function<void(const config::attribute_value&)>> callbacks {};
+std::map<std::string, preferences::setter_callback> callbacks {};
 }
 
 namespace preferences {
@@ -165,11 +165,27 @@ void _set_impl(const std::string& key, config::attribute_value& value)
 	ref = value;
 
 	if(const auto iter = callbacks.find(key); iter != callbacks.end()) {
-		std::invoke(iter->second, ref);
+		if(auto& f = iter->second) {
+			std::invoke(f, ref);
+		} else {
+			std::cerr << "no callback" << std::endl;
+		}
 	}
 }
 
-void add_setter_callback(const std::string& key, std::function<void(const config::attribute_value&)> func)
+temp_callback::temp_callback(const std::string& key, setter_callback cb)
+	: old_f(callbacks[key])
+	, new_f(cb)
+{
+	old_f.swap(new_f);
+}
+
+temp_callback::~temp_callback()
+{
+	old_f.swap(new_f);
+};
+
+void set_callback(const std::string& key, setter_callback func)
 {
 	callbacks[key] = func;
 }
