@@ -1,23 +1,32 @@
 ## Version 1.16.0+dev
- ### Add-ons client
  ### Add-ons server
-   * Fixed `core=` attribute in _server.pbl being completely ignored (issue #5664).
+   * Fixed `core=` attribute in `_server.pbl` being completely ignored (issue #5664).
  ### Campaigns
    * Tutorial
      * Use a portrait on the Campaigns menu.
- ### Editor
+   * Sceptre of Fire
+     * S02p5: Added defeat condition if Alanin dies.
  ### Multiplayer
+   * Increased the limits of timer values (up to 10 minutes turn bonus, 50 minutes reservoir).
+   * Re-added HTML character escaping.
  ### Lua API
    * Fixed an error in `gui.get_user_choice()` (part of PR #6247).
+   * Fixed an error in handling `x,y` locations (issue #6231).
  ### Packaging
- ### Terrain
+   * Fixed missing dependency on boost-math in the vcpkg config.
+   * Made `get_dlls.py` install libraries for `wesnothd` too.
  ### Translations
    * Updated translations: Dutch, Italian, Portuguese (Brazil).
- ### Units
+   * Added po hints for time format strings.
  ### User interface
    * Made the Add-ons Manager search box less unwieldy on very small resolutions.
+   * Made listbox header toggle buttons taller.
  ### WML Engine
+   * Fixed `[item]x,y=` at scenario scope (issue #6231).
  ### Miscellaneous and Bug Fixes
+   * Fixed missing tooltips on the side-bar (hover over the unit type to see a description, etc) (issues #6007 and #6096).
+   * Fixed several issues in the multiplayer server about TLS connections, error-handling and disconnections.
+   * Added `.DS_Store` and `Thumbs.db` to wmltool's list of files to ignore.
 
 ## Version 1.16.0
  ### Campaigns
