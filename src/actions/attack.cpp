@@ -1585,8 +1585,9 @@ void attack_unit_and_advance(const map_location& attacker,
 int under_leadership(const unit &u, const map_location& loc, const_attack_ptr weapon, const_attack_ptr opp_weapon)
 {
 	unit_ability_list abil = u.get_abilities_weapons("leadership", loc, weapon, opp_weapon);
-	unit_abilities::effect leader_effect(abil, 0, false);
-	return leader_effect.get_composite_value();
+	int leader_up = std::max(0, abil.highest("value").first);
+	int leader_down = std::min(0, abil.lowest("value").first);
+	return leader_up + leader_down;
 }
 
 int combat_modifier(const unit_map& units,
