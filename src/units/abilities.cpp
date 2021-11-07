@@ -904,26 +904,6 @@ std::string attack_type::weapon_specials(bool only_active, bool is_backstab) con
 		}
 	}
 
-	if(other_){
-		for (const config::any_child &sp : other_->abilities().all_children_range()){
-			const bool active = check_self_abilities_impl(other_attack_, shared_from_this(), sp.cfg, other_, other_loc_, AFFECT_OTHER, sp.key);
-
-			add_name(weapon_abilities, active, sp, checking_name);
-		}
-		const auto adjacent = get_adjacent_tiles(other_loc_);
-		for(unsigned i = 0; i < adjacent.size(); ++i) {
-			const unit_map::const_iterator it = units.find(adjacent[i]);
-			if (it == units.end() || it->incapacitated())
-				continue;
-			if(&*it == other_.get())
-				continue;
-			for (const config::any_child &sp : it->abilities().all_children_range()){
-				const bool active = check_adj_abilities_impl(other_attack_, shared_from_this(), sp.cfg, other_, *it, i, other_loc_, AFFECT_OTHER, sp.key);
-
-				add_name(weapon_abilities, active, sp, checking_name);
-			}
-		}
-	}
 	if(!weapon_abilities.empty() && !res.empty()) {
 		weapon_abilities = ", \n" + weapon_abilities;
 		res += weapon_abilities;
