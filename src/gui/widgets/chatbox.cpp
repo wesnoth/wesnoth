@@ -32,6 +32,7 @@
 #include "font/pango/escape.hpp"
 #include "formatter.hpp"
 #include "formula/string_utils.hpp"
+#include "game_initialization/multiplayer.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
 #include "preferences/credentials.hpp"
