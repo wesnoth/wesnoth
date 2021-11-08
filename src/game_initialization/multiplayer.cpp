@@ -70,6 +70,7 @@ public:
 	// Declare this as a friend to allow direct access to enter_create_mode
 	friend void mp::start_local_game();
 	friend void mp::yeet_to_server(const config&);
+	friend lobby_info* mp::get_lobby_info();
 
 	mp_manager(const std::optional<std::string> host);
 
@@ -860,6 +861,11 @@ network_registrar::~network_registrar()
 	if(remove_handler) {
 		remove_handler();
 	}
+}
+
+lobby_info* get_lobby_info()
+{
+	return manager ? &manager->lobby_info : nullptr;
 }
 
 } // end namespace mp
