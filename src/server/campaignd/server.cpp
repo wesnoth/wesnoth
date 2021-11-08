@@ -1947,9 +1947,7 @@ int run_campaignd(int argc, char** argv)
 	//
 	// Run the server
 	//
-	campaignd::server(config_file, port).run();
-
-	return 0;
+	return campaignd::server(config_file, port).run();
 }
 
 int main(int argc, char** argv)
