@@ -843,11 +843,17 @@ static void add_name(std::string& weapon_abilities, bool active, const config::a
 {
 	if (active) {
 		const std::string& name = sp.cfg["name"].str();
+		bool good_or_bad_effect = sp.cfg["add"].to_int(0)!=0 || sp.cfg["sub"].to_int(0) != 0 || abs(sp.cfg["multiply"].to_int(1))!=1 || abs(sp.cfg["divide"].to_int(1))!=1;
 
 		if (!name.empty() && checking_name.count(name) == 0) {
 			checking_name.insert(name);
 			if (!weapon_abilities.empty()) weapon_abilities += ", ";
-			weapon_abilities += font::span_color(font::BUTTON_COLOR, name);
+			if(good_or_bad_effect){
+				bool good_effect = sp.cfg["add"].to_int(0)>0 || sp.cfg["sub"].to_int(0) < 0 || abs(sp.cfg["multiply"].to_int(1))>1 || abs(sp.cfg["divide"].to_int(1))<1;
+				weapon_abilities += good_effect ? font::span_color(font::GOOD_COLOR, name) : font::span_color(font::BAD_COLOR, name);
+			} else {
+				weapon_abilities += font::span_color(font::BUTTON_COLOR, name);
+			}
 		}
 	}
 }
