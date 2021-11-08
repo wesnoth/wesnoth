@@ -70,7 +70,7 @@ public:
 	// Declare this as a friend to allow direct access to enter_create_mode
 	friend void mp::start_local_game();
 	friend void mp::yeet_to_server(const config&);
-	friend lobby_info* mp::get_lobby_info();
+	friend mp::lobby_info* mp::get_lobby_info();
 
 	mp_manager(const std::optional<std::string> host);
 
