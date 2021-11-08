@@ -1722,7 +1722,12 @@ effect::effect(const unit_ability_list& list, int def, bool backstab, const_atta
 				return formula.evaluate(callable).as_int();
 			});
 
-			int value_cum = cfg["cumulative"].to_bool() ? std::max(def, value) : value;
+			int value_cum = 0;
+			if (value>=0){
+				value_cum = cfg["cumulative"].to_bool() ? std::max(def, value) : value;
+			} else if (value<0){
+				value_cum = cfg["cumulative"].to_bool() ? std::min(def, value) : value;
+			}
 			assert((set_effect_min.type != NOT_USED) == (set_effect_max.type != NOT_USED));
 			if(set_effect_min.type == NOT_USED) {
 				set_effect_min.set(SET, value_cum, ability.ability_cfg, ability.teacher_loc);
