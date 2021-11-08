@@ -53,7 +53,8 @@ typedef utils::variant<socket_ptr, tls_socket_ptr> any_socket_ptr;
 
 struct server_shutdown : public game::error
 {
-	server_shutdown(const std::string& msg) : game::error(msg) {}
+	boost::system::error_code ec;
+	server_shutdown(const std::string& msg, boost::system::error_code ec = {}) : game::error(msg), ec(ec) {}
 };
 
 /**
@@ -80,7 +81,7 @@ class server_base
 public:
 	server_base(unsigned short port, bool keep_alive);
 	virtual ~server_base() {}
-	void run();
+	int run();
 
 	/**
 	 * Send a WML document from within a coroutine

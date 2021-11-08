@@ -3093,7 +3093,5 @@ int main(int argc, char** argv)
 		}
 	}
 
-	wesnothd::server(port, keep_alive, config_file, min_threads, max_threads).run();
-
-	return 0;
+	return wesnothd::server(port, keep_alive, config_file, min_threads, max_threads).run();
 }

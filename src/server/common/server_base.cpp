@@ -97,14 +97,19 @@ void server_base::start_server()
 
 void server_base::serve(boost::asio::yield_context yield, boost::asio::ip::tcp::acceptor& acceptor, boost::asio::ip::tcp::endpoint endpoint)
 {
-	if(!acceptor.is_open()) {
-		acceptor.open(endpoint.protocol());
-		acceptor.set_option(boost::asio::ip::tcp::acceptor::reuse_address(true));
-		acceptor.set_option(boost::asio::ip::tcp::acceptor::keep_alive(keep_alive_));
-		if(endpoint.protocol() == boost::asio::ip::tcp::v6())
-			acceptor.set_option(boost::asio::ip::v6_only(true));
-		acceptor.bind(endpoint);
-		acceptor.listen();
+	try {
+		if(!acceptor.is_open()) {
+			acceptor.open(endpoint.protocol());
+			acceptor.set_option(boost::asio::ip::tcp::acceptor::reuse_address(true));
+			acceptor.set_option(boost::asio::ip::tcp::acceptor::keep_alive(keep_alive_));
+			if(endpoint.protocol() == boost::asio::ip::tcp::v6())
+				acceptor.set_option(boost::asio::ip::v6_only(true));
+			acceptor.bind(endpoint);
+			acceptor.listen();
+		}
+	} catch(const boost::system::system_error& e) {
+		ERR_SERVER << "Exception when trying to bind port: " << e.code().message() << "\n";
+		throw server_shutdown("Port binding failed", e.code());
 	}
 
 	socket_ptr socket = std::make_shared<socket_ptr::element_type>(io_service_);
@@ -113,7 +118,7 @@ void server_base::serve(boost::asio::yield_context yield, boost::asio::ip::tcp::
 	acceptor.async_accept(socket->lowest_layer(), yield[error]);
 	if(error) {
 		ERR_SERVER << "Accept failed: " << error.message() << "\n";
-		return;
+		throw server_shutdown("Accept failed", error);
 	}
 
 	if(accepting_connections()) {
@@ -226,15 +231,15 @@ void server_base::handle_termination(const boost::system::error_code& error, int
 	exit(128 + signal_number);
 }
 
-void server_base::run() {
+int server_base::run() {
 	for(;;) {
 		try {
 			io_service_.run();
 			LOG_SERVER << "Server has shut down because event loop is out of work\n";
-			break;
+			return 1;
 		} catch(const server_shutdown& e) {
 			LOG_SERVER << "Server has been shut down: " << e.what() << "\n";
-			break;
+			return e.ec.value();
 		} catch(const boost::system::system_error& e) {
 			ERR_SERVER << "Caught system error exception from handler: " << e.code().message() << "\n";
 		} catch(const std::exception& e) {
