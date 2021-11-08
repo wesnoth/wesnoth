@@ -33,10 +33,6 @@ struct user_info
 {
 	explicit user_info(const config& c);
 
-	void update_state(int selected_game_id);
-
-	void update_relation();
-
 	enum class user_relation {
 		ME,
 		FRIEND,
@@ -52,11 +48,12 @@ struct user_info
 
 	bool operator<(const user_info& b) const;
 
+	user_state get_state(int selected_game_id) const;
+	user_relation get_relation() const;
+
 	std::string name;
 	int forum_id;
 	int game_id;
-	user_relation relation;
-	user_state state;
 	bool registered;
 	bool observing;
 	bool moderator;

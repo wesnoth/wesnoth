@@ -58,22 +58,22 @@ struct update_pod
 	std::vector<std::map<std::string, string_map>> node_data;
 
 	/** The associated user data for each node, index-to-index. */
-	std::vector<mp::user_info*> user_data;
+	std::vector<const mp::user_info*> user_data;
 };
 } // namespace
 
-void lobby_player_list_helper::update(std::vector<mp::user_info>& user_info)
+void lobby_player_list_helper::update(const std::vector<mp::user_info>& user_info, int focused_game)
 {
 	const unsigned scrollbar_position = tree->get_vertical_scrollbar_item_position();
 	std::array<update_pod, std::tuple_size<decltype(player_lists)>::value> inputs{};
 
-	for(auto& user : user_info) {
+	for(const auto& user : user_info) {
 		std::string name = user.name;
 
 		std::stringstream icon_ss;
 		icon_ss << "lobby/status";
 
-		switch(user.state) {
+		switch(user.get_state(focused_game)) {
 		case mp::user_info::user_state::LOBBY:
 			icon_ss << "-lobby";
 			break;
@@ -85,12 +85,9 @@ void lobby_player_list_helper::update(std::vector<mp::user_info>& user_info)
 			name = font::span_color(font::GRAY_COLOR, name);
 			icon_ss << (user.observing ? "-obs" : "-playing");
 			break;
-		default:
-			ERR_LB << "Bad user state in lobby: " << user.name << ": " << static_cast<int>(user.state) << "\n";
-			continue;
 		}
 
-		switch(user.relation) {
+		switch(user.get_relation()) {
 		case mp::user_info::user_relation::ME:
 			icon_ss << "-s";
 			break;
@@ -103,8 +100,6 @@ void lobby_player_list_helper::update(std::vector<mp::user_info>& user_info)
 		case mp::user_info::user_relation::IGNORED:
 			icon_ss << "-i";
 			break;
-		default:
-			ERR_LB << "Bad user relation in lobby: " << static_cast<int>(user.relation) << "\n";
 		}
 
 		icon_ss << ".png";
@@ -121,7 +116,7 @@ void lobby_player_list_helper::update(std::vector<mp::user_info>& user_info)
 		tree_group_item["name"] = tree_group_field;
 
 		// Indices here must match the order of the lists in the player_lists array (see `init`)
-		switch(user.state) {
+		switch(user.get_state(focused_game)) {
 		case mp::user_info::user_state::SEL_GAME:
 			inputs[0].node_data.push_back(std::move(tree_group_item));
 			inputs[0].user_data.push_back(&user);
@@ -137,9 +132,6 @@ void lobby_player_list_helper::update(std::vector<mp::user_info>& user_info)
 			inputs[2].user_data.push_back(&user);
 
 			break;
-		default:
-			ERR_LB << "Bad user state in lobby: " << user.name << ": " << static_cast<int>(user.state) << "\n";
-			continue;
 		}
 	}
 

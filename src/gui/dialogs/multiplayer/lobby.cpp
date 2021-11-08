@@ -532,9 +532,8 @@ void mp_lobby::update_playerlist()
 
 	SCOPE_LB;
 	DBG_LB << "Playerlist update: " << lobby_info_.users().size() << "\n";
-	lobby_info_.update_user_statuses(selected_game_id_);
 
-	player_list_.update(lobby_info_.users());
+	player_list_.update(lobby_info_.users(), selected_game_id_);
 
 	player_list_dirty_ = false;
 	last_lobby_update_ = SDL_GetTicks();
@@ -650,7 +649,7 @@ void mp_lobby::pre_show(window& window)
 	//
 	if(auto* profile_panel = find_widget<panel>(&window, "profile", false, false)) {
 		auto your_info = std::find_if(lobby_info_.users().begin(), lobby_info_.users().end(),
-			[](const auto& u) { return u.relation == mp::user_info::user_relation::ME; });
+			[](const auto& u) { return u.get_relation() == mp::user_info::user_relation::ME; });
 
 		if(your_info != lobby_info_.users().end()) {
 			find_widget<label>(profile_panel, "username", false).set_label(your_info->name);
@@ -986,7 +985,7 @@ void mp_lobby::player_filter_callback()
 	// get_window()->invalidate_layout();
 }
 
-void mp_lobby::user_dialog_callback(mp::user_info* info)
+void mp_lobby::user_dialog_callback(const mp::user_info* info)
 {
 	delay_playerlist_update_ = true;
 	lobby_delay_gamelist_update_guard g(*this);

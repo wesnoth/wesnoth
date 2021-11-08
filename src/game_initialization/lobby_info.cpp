@@ -243,7 +243,7 @@ void lobby_info::process_userlist()
 			continue;
 		}
 
-		switch(ui.relation) {
+		switch(ui.get_relation()) {
 		case user_info::user_relation::FRIEND:
 			g->has_friends = true;
 			break;
@@ -336,13 +336,6 @@ void lobby_info::apply_game_filter()
 
 	for(unsigned i = 0; i < games_.size(); ++i) {
 		games_visibility_[i] = is_game_visible(*games_[i]);
-	}
-}
-
-void lobby_info::update_user_statuses(int game_id)
-{
-	for(auto& user : users_) {
-		user.update_state(game_id);
 	}
 }
 

@@ -33,7 +33,7 @@ class lobby_player_info : public modal_dialog
 {
 public:
 	lobby_player_info(events::chat_handler& chat,
-					   mp::user_info& info,
+					   const mp::user_info& info,
 					   const mp::lobby_info& li);
 
 	~lobby_player_info();
@@ -74,7 +74,7 @@ private:
 
 	events::chat_handler& chat_;
 
-	mp::user_info& info_;
+	const mp::user_info& info_;
 
 	text_box* reason_;
 

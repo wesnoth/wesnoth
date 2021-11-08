@@ -125,7 +125,7 @@ private:
 
 	void player_filter_callback();
 
-	void user_dialog_callback(mp::user_info* info);
+	void user_dialog_callback(const mp::user_info* info);
 
 	void skip_replay_changed_callback();
 

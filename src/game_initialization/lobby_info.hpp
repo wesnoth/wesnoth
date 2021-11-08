@@ -99,8 +99,6 @@ public:
 	/** Returns info on the user with the given name, or nullptr if they don't eixst. */
 	user_info* get_user(const std::string& name);
 
-	void update_user_statuses(int game_id);
-
 	const std::vector<game_info*>& games() const
 	{
 		return games_;

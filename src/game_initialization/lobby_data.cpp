@@ -55,45 +55,41 @@ user_info::user_info(const config& c)
 	: name(c["name"])
 	, forum_id(c["forum_id"].to_int())
 	, game_id(c["game_id"])
-	, relation(user_relation::ME)
-	, state(game_id == 0 ? user_state::LOBBY : user_state::GAME)
 	, registered(c["registered"].to_bool())
 	, observing(c["status"] == "observing")
 	, moderator(c["moderator"].to_bool(false))
 {
-	update_relation();
 }
 
-void user_info::update_state(int selected_game_id)
+user_info::user_state user_info::get_state(int selected_game_id) const
 {
-	if(game_id != 0) {
-		if(game_id == selected_game_id) {
-			state = user_state::SEL_GAME;
-		} else {
-			state = user_state::GAME;
-		}
+	if(game_id == 0) {
+		return user_state::LOBBY;
+	} else if(game_id == selected_game_id) {
+		return user_state::SEL_GAME;
 	} else {
-		state = user_state::LOBBY;
+		return user_state::GAME;
 	}
-	update_relation();
 }
 
-void user_info::update_relation()
+user_info::user_relation user_info::get_relation() const
 {
 	if(name == preferences::login()) {
-		relation = user_relation::ME;
+		return user_relation::ME;
 	} else if(preferences::is_ignored(name)) {
-		relation = user_relation::IGNORED;
+		return user_relation::IGNORED;
 	} else if(preferences::is_friend(name)) {
-		relation = user_relation::FRIEND;
+		return user_relation::FRIEND;
 	} else {
-		relation = user_relation::NEUTRAL;
+		return user_relation::NEUTRAL;
 	}
 }
 
 bool user_info::operator<(const user_info& b) const
 {
-	return relation < b.relation || (relation == b.relation && translation::icompare(name, b.name) < 0);
+	const auto ar = get_relation();
+	const auto br = b.get_relation();
+	return ar < br || (ar == br && translation::icompare(name, b.name) < 0);
 }
 
 namespace
