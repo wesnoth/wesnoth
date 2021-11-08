@@ -68,6 +68,7 @@ class mp_manager
 public:
 	// Declare this as a friend to allow direct access to enter_create_mode
 	friend void mp::start_local_game();
+	friend lobby_info* mp::get_lobby_info();
 
 	mp_manager(const std::optional<std::string> host);
 
@@ -826,6 +827,11 @@ std::string get_profile_link(int user_id)
 	}
 
 	return "";
+}
+
+lobby_info* get_lobby_info()
+{
+	return manager ? &manager->lobby_info : nullptr;
 }
 
 } // end namespace mp

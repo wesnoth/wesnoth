@@ -67,4 +67,6 @@ bool logged_in_as_moderator();
 /** Gets the forum profile link for the given user. */
 std::string get_profile_link(int user_id);
 
+/** Returns the lobby_info object for the given session. */
+class lobby_info* get_lobby_info();
 }

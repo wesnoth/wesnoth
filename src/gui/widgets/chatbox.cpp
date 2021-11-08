@@ -176,13 +176,16 @@ void chatbox::chat_input_keypress_callback(const SDL_Keycode key)
 	}
 
 	case SDLK_TAB: {
-		mp::room_info* ri = chat_info_.get_room(t.name);
+		auto* li = mp::get_lobby_info();
+		if(!li) {
+			break;
+		}
 
 		// TODO: very inefficient! Very! D:
 		std::vector<std::string> matches;
-		for(const std::string& ui : ri->members()) {
-			if(ui != preferences::login()) {
-				matches.push_back(ui);
+		for(const auto& ui : li->users()) {
+			if(ui.name != preferences::login()) {
+				matches.push_back(ui.name);
 			}
 		}
 
