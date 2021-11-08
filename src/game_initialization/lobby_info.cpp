@@ -291,29 +291,6 @@ const game_info* lobby_info::get_game_by_id(int id) const
 	return i == games_by_id_.end() ? nullptr : &i->second;
 }
 
-room_info* chat_info::get_room(const std::string& name)
-{
-	try {
-		return &rooms_.at(name);
-	} catch(const std::out_of_range&) {
-		return nullptr;
-	}
-}
-
-const room_info* chat_info::get_room(const std::string& name) const
-{
-	try {
-		return &rooms_.at(name);
-	} catch(const std::out_of_range&) {
-		return nullptr;
-	}
-}
-
-bool chat_info::has_room(const std::string& name) const
-{
-	return get_room(name) != nullptr;
-}
-
 user_info* lobby_info::get_user(const std::string& name)
 {
 	for(auto& user : users_) {
@@ -323,18 +300,6 @@ user_info* lobby_info::get_user(const std::string& name)
 	}
 
 	return nullptr;
-}
-
-void chat_info::open_room(const std::string& name)
-{
-	// TODO: use try_emplace with C++20
-	rooms_.emplace(name, room_info(name));
-}
-
-void chat_info::close_room(const std::string& name)
-{
-	DBG_LB << "lobby info: closing room " << name << std::endl;
-	rooms_.erase(name);
 }
 
 void lobby_info::make_games_vector()

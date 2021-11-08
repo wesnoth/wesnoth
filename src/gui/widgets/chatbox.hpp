@@ -134,8 +134,6 @@ private:
 
 	std::function<void(void)> active_window_changed_callback_;
 
-	mp::chat_info chat_info_;
-
 	std::map<std::string, chatroom_log>* log_;
 
 public:
@@ -206,12 +204,6 @@ public:
 	void switch_to_window(std::size_t id);
 
 	void active_window_changed();
-
-	/**
-	 * Get the room* corresponding to the currently active window, or nullptr
-	 * if a whisper window is active at the moment
-	 */
-	mp::room_info* active_window_room();
 
 	/**
 	 * Check if a room window for "room" is open, if open_new is true

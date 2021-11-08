@@ -51,63 +51,6 @@ static lg::log_domain log_lobby("lobby");
 
 namespace mp {
 
-chat_message::chat_message(const std::time_t& timestamp,
-						   const std::string& user,
-						   const std::string& message)
-	: timestamp(timestamp), user(user), message(message)
-{
-}
-
-chat_session::chat_session() : history_()
-{
-}
-
-void chat_session::add_message(const std::time_t& timestamp,
-						   const std::string& user,
-						   const std::string& message)
-{
-	history_.emplace_back(timestamp, user, message);
-}
-
-
-void chat_session::add_message(const std::string& user, const std::string& message)
-{
-	add_message(std::time(nullptr), user, message);
-}
-
-void chat_session::clear()
-{
-	history_.clear();
-}
-
-room_info::room_info(const std::string& name) : name_(name), members_(), log_()
-{
-}
-
-bool room_info::is_member(const std::string& user) const
-{
-	return members_.find(user) != members_.end();
-}
-
-void room_info::add_member(const std::string& user)
-{
-	members_.insert(user);
-}
-
-void room_info::remove_member(const std::string& user)
-{
-	members_.erase(user);
-}
-
-void room_info::process_room_members(const config& data)
-{
-	members_.clear();
-	for(const auto & m : data.child_range("member"))
-	{
-		members_.insert(m["name"]);
-	}
-}
-
 user_info::user_info(const config& c)
 	: name(c["name"])
 	, forum_id(c["forum_id"].to_int())

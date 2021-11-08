@@ -150,40 +150,6 @@ private:
 	boost::dynamic_bitset<> games_visibility_;
 };
 
-class chat_info
-{
-public:
-	/** Open a new chat room with the given name. */
-	void open_room(const std::string& name);
-
-	/** Close the chat room with the given name. */
-	void close_room(const std::string& name);
-
-	/** Returns whether a room with the given name has been opened. */
-	bool has_room(const std::string& name) const;
-
-	/** Returns info on room with the given name, or nullptr if it doesn't exist. */
-	room_info* get_room(const std::string& name);
-
-	/** Const overload of @ref get_room. */
-	const room_info* get_room(const std::string& name) const;
-
-	chat_session& get_whisper_log(const std::string& name)
-	{
-		return whispers_[name];
-	}
-
-	const std::map<std::string, room_info>& rooms() const
-	{
-		return rooms_;
-	}
-
-private:
-	std::map<std::string, room_info> rooms_;
-
-	std::map<std::string, chat_session> whispers_;
-};
-
 enum notify_mode {
 	NOTIFY_NONE,
 	NOTIFY_MESSAGE,
