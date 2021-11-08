@@ -1105,18 +1105,22 @@ template<class SocketPtr> void server::handle_player(boost::asio::yield_context 
 		// DBG_SERVER << client_address(socket) << "\tWML received:\n" << doc->output() << std::endl;
 		if(doc->child("refresh_lobby")) {
 			async_send_doc_queued(socket, games_and_users_list_);
+			continue;
 		}
 
 		if(simple_wml::node* whisper = doc->child("whisper")) {
 			handle_whisper(player, *whisper);
+			continue;
 		}
 
 		if(simple_wml::node* query = doc->child("query")) {
 			handle_query(player, *query);
+			continue;
 		}
 
 		if(simple_wml::node* nickserv = doc->child("nickserv")) {
 			handle_nickserv(player, *nickserv);
+			continue;
 		}
 
 		if(!player_is_in_game(player)) {
