@@ -3183,6 +3183,9 @@ int main(int argc, char** argv)
 
 	try {
 		wesnothd::server(port, keep_alive, config_file, min_threads, max_threads).run();
+	} catch(const boost::system::system_error& e) {
+		ERR_SERVER << "terminated by system error: " << e.code().message() << std::endl;
+		return e.code().value();
 	} catch(const std::exception& e) {
 		ERR_SERVER << "terminated by C++ exception: " << e.what() << std::endl;
 		return 1;
