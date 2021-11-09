@@ -117,11 +117,7 @@ private:
 
 	void game_filter_init();
 
-	void game_filter_change_callback();
-
 	void game_filter_keypress_callback(const SDL_Keycode key);
-
-	void gamelist_change_callback();
 
 	void player_filter_callback();
 

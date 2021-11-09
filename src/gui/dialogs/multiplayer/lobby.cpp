@@ -78,22 +78,22 @@ mp_lobby::mp_lobby(mp::lobby_info& info, wesnothd_connection& connection, int& j
 		  true,
 		  preferences::fi_friends_in_game,
 		  preferences::set_fi_friends_in_game,
-		  std::bind(&mp_lobby::game_filter_change_callback, this)))
+		  std::bind(&mp_lobby::update_gamelist_filter, this)))
 	, filter_ignored_(register_bool("filter_with_ignored",
 		  true,
 		  preferences::fi_blocked_in_game,
 		  preferences::set_fi_blocked_in_game,
-		  std::bind(&mp_lobby::game_filter_change_callback, this)))
+		  std::bind(&mp_lobby::update_gamelist_filter, this)))
 	, filter_slots_(register_bool("filter_vacant_slots",
 		  true,
 		  preferences::fi_vacant_slots,
 		  preferences::set_fi_vacant_slots,
-		  std::bind(&mp_lobby::game_filter_change_callback, this)))
+		  std::bind(&mp_lobby::update_gamelist_filter, this)))
 	, filter_invert_(register_bool("filter_invert",
 		  true,
 		  preferences::fi_invert,
 		  preferences::set_fi_invert,
-		  std::bind(&mp_lobby::game_filter_change_callback, this)))
+		  std::bind(&mp_lobby::update_gamelist_filter, this)))
 	, filter_text_(nullptr)
 	, selected_game_id_()
 	, player_list_(std::bind(&mp_lobby::user_dialog_callback, this, std::placeholders::_1))
@@ -567,7 +567,7 @@ void mp_lobby::pre_show(window& window)
 	gamelistbox_ = find_widget<listbox>(&window, "game_list", false, true);
 
 	connect_signal_notify_modified(*gamelistbox_,
-			std::bind(&mp_lobby::gamelist_change_callback, this));
+			std::bind(&mp_lobby::update_selected_game, this));
 
 	player_list_.init(window);
 
@@ -963,16 +963,6 @@ void mp_lobby::game_filter_keypress_callback(const SDL_Keycode key)
 	if(key == SDLK_RETURN || key == SDLK_KP_ENTER) {
 		update_gamelist_filter();
 	}
-}
-
-void mp_lobby::game_filter_change_callback()
-{
-	update_gamelist_filter();
-}
-
-void mp_lobby::gamelist_change_callback()
-{
-	update_selected_game();
 }
 
 void mp_lobby::player_filter_callback()
