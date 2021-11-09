@@ -48,8 +48,6 @@ public:
 	 */
 	bool process_gamelist_diff(const config& data);
 
-	bool process_gamelist_diff_impl(const config& data);
-
 	void sync_games_display_status();
 
 	/**
@@ -127,6 +125,8 @@ public:
 	void refresh_installed_addons_cache();
 
 private:
+	bool process_gamelist_diff_impl(const config& data);
+
 	void process_userlist();
 
 	std::vector<std::string> installed_addons_;
