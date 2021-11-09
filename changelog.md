@@ -1,3 +1,18 @@
+## Version 1.16.1+dev
+ ### Add-ons client
+ ### Add-ons server
+ ### Campaigns
+ ### Editor
+ ### Multiplayer
+ ### Lua API
+ ### Packaging
+ ### Terrain
+ ### Translations
+ ### Units
+ ### User interface
+ ### WML Engine
+ ### Miscellaneous and Bug Fixes
+
 ## Version 1.16.1
  ### Add-ons server
    * Fixed `core=` attribute in `_server.pbl` being completely ignored (issue #5664).
