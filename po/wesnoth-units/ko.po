@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1.1+dev\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-09-26 00:03 UTC\n"
+"POT-Creation-Date: 2021-11-09 00:45 UTC\n"
 "PO-Revision-Date: 2013-10-25 13:22+0900\n"
 "Last-Translator: mistzone <drier22@gmail.com>\n"
 "Language-Team: none\n"
@@ -343,6 +343,7 @@ msgid "saber"
 msgstr "기병도"
 
 #. [unit_type]: id=Walking Corpse, race=undead
+#. [unit_type]: id=Walking Corpse Shynal, race=undead
 #. [unit_type]: id=SotA Walking Corpse_Human
 #. [unit_type]: id=SotA Walking Corpse_Dwarf
 #. [unit_type]: id=SotA Walking Corpse_Goblin
@@ -354,7 +355,6 @@ msgstr "기병도"
 #. [unit_type]: id=SotA Walking Corpse_Wolf Rider
 #. [unit_type]: id=SotA Walking Corpse_Spider
 #. [unit_type]: id=SotA Walking Corpse_Rat
-#. [unit_type]: id=Walking Corpse Shynal, race=undead
 #: data/campaigns/Secrets_of_the_Ancients/units/Corpse_Shynal.cfg:4
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:110
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:125
@@ -405,8 +405,8 @@ msgstr ""
 #. [unit_type]: id=SotA Soulless_Troll
 #. [unit_type]: id=SotA Soulless_Wose
 #. [unit_type]: id=SotA Soulless_Wolf Rider
-#. [attack]: type=cold
 #. [attack]: type=fire
+#. [attack]: type=cold
 #: data/campaigns/Secrets_of_the_Ancients/units/Corpse_Shynal.cfg:35
 #: data/campaigns/Secrets_of_the_Ancients/units/Necro_Ancient_Lich.cfg:32
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:113
@@ -521,8 +521,8 @@ msgid "fangs"
 msgstr "송곳니"
 
 #. [attack]: type=blade
-#. [attack]: type=cold
 #. [attack]: type=pierce
+#. [attack]: type=cold
 #. [variation]
 #. [unit_type]: id=SotA Walking Corpse_Rat
 #. [unit_type]: id=SotA Soulless_Rat
@@ -5644,9 +5644,9 @@ msgstr ""
 msgid "Wolf"
 msgstr "늑대"
 
-#. [unit_type]: id=Great Wolf, race=wolf
 #. [unit_type]: id=Wolf, race=wolf
 #. [unit_type]: id=Direwolf, race=wolf
+#. [unit_type]: id=Great Wolf, race=wolf
 #: data/core/units/monsters/Wolf.cfg:34
 #: data/core/units/monsters/Wolf_Dire.cfg:19
 #: data/core/units/monsters/Wolf_Great.cfg:19

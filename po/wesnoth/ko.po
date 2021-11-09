@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1.1+dev\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-10-23 20:57-0300\n"
+"POT-Creation-Date: 2021-11-09 03:45+0300\n"
 "PO-Revision-Date: 2019-09-30 13:37+0900\n"
 "Last-Translator: mistzone <drier22@gmail.com>\n"
 "Language-Team: none\n"
@@ -897,8 +897,8 @@ msgstr "곡물 다발"
 msgid "Runic Hammer"
 msgstr "신비한 망치"
 
-#. [object]
 #. [item]: id=holly-water
+#. [object]
 #: data/core/editor/items.cfg:282 data/core/macros/items.cfg:283
 msgid "Holy Water"
 msgstr "성수"
@@ -941,8 +941,8 @@ msgstr "녹색 물약"
 msgid "Gray Potion"
 msgstr "회색 물약"
 
-#. [object]: id={ID}
 #. [item]: id=potion-poison
+#. [object]: id={ID}
 #: data/core/editor/items.cfg:336 data/core/macros/items.cfg:246
 msgid "Poison"
 msgstr "독"
@@ -1012,8 +1012,8 @@ msgstr "지팡이"
 msgid "Stone Tablet"
 msgstr "석판"
 
-#. [object]
 #. [item]: id=storm-trident
+#. [object]
 #: data/core/editor/items.cfg:420 data/core/macros/items.cfg:529
 msgid "Storm Trident"
 msgstr "폭풍의 삼지창"
@@ -5483,7 +5483,7 @@ msgid "Do you really wish to continue?"
 msgstr "정말로 이 게임을 지우시겠습니까?"
 
 #: src/addon/client.cpp:552 src/addon/manager_ui.cpp:173
-#: src/game_initialization/multiplayer.cpp:361
+#: src/game_initialization/multiplayer.cpp:362
 msgid "Confirm"
 msgstr "확인"
 
@@ -5781,55 +5781,55 @@ msgstr ""
 msgid "Unspecified validation failure."
 msgstr ""
 
-#: src/chat_command_handler.cpp:113
+#: src/chat_command_handler.cpp:76
 msgid "Added to ignore list: $nick"
 msgstr "무시할 목록에 추가: $nick"
 
-#: src/chat_command_handler.cpp:113
+#: src/chat_command_handler.cpp:76
 msgid "ignores list"
 msgstr "무시할 목록"
 
-#: src/chat_command_handler.cpp:117 src/chat_command_handler.cpp:136
+#: src/chat_command_handler.cpp:80 src/chat_command_handler.cpp:99
 msgid "Invalid username: $nick"
 msgstr "잘못된 사용자 이름: $nick"
 
-#: src/chat_command_handler.cpp:132
+#: src/chat_command_handler.cpp:95
 msgid "Added to friends list: $nick"
 msgstr "친구 목록에 추가: $nick"
 
-#: src/chat_command_handler.cpp:132
+#: src/chat_command_handler.cpp:95
 msgid "friends list"
 msgstr "친구 목록"
 
-#: src/chat_command_handler.cpp:148
+#: src/chat_command_handler.cpp:111
 msgid "Removed from list: $nick"
 msgstr "목록에서 제외: $nick"
 
-#: src/chat_command_handler.cpp:148
+#: src/chat_command_handler.cpp:111
 msgid "friends and ignores list"
 msgstr "친구 및 무시 목록"
 
-#: src/chat_command_handler.cpp:158
+#: src/chat_command_handler.cpp:121
 msgid "version"
 msgstr "버전"
 
-#: src/chat_command_handler.cpp:170
+#: src/chat_command_handler.cpp:133
 msgid "nick registration"
 msgstr "대화명 등록"
 
-#: src/chat_command_handler.cpp:170
+#: src/chat_command_handler.cpp:133
 msgid "requesting information for user $nick"
 msgstr "$nick 사용자 정보를 요구하기"
 
-#: src/chat_command_handler.hpp:52
+#: src/chat_command_handler.hpp:48
 msgid "(A) — admin command"
 msgstr "(A) — 관리자 명령"
 
-#: src/chat_command_handler.hpp:59 src/menu_events.cpp:1194
+#: src/chat_command_handler.hpp:55 src/menu_events.cpp:1194
 msgid "(admin only)"
 msgstr "(관지라 전용)"
 
-#: src/chat_command_handler.hpp:74
+#: src/chat_command_handler.hpp:70
 msgid ""
 "Send a query to the server. Without arguments the server should tell you the "
 "available commands."
@@ -5837,7 +5837,7 @@ msgstr ""
 "Send a query to the server. Without arguments the server should tell you the "
 "available commands."
 
-#: src/chat_command_handler.hpp:78
+#: src/chat_command_handler.hpp:74
 msgid ""
 "Ban and kick a player or observer. If he is not in the game but on the "
 "server he will only be banned."
@@ -5845,57 +5845,57 @@ msgstr ""
 "플레이어 또는 관전자를 밴&킥합니다.대상이 게임중에는 없고, 서버상에 있는 경우"
 "는 밴만 행해집니다."
 
-#: src/chat_command_handler.hpp:79 src/chat_command_handler.hpp:82
-#: src/chat_command_handler.hpp:84 src/chat_command_handler.hpp:86
-#: src/chat_command_handler.hpp:88 src/chat_command_handler.hpp:109
-#: src/chat_command_handler.hpp:111 src/chat_command_handler.hpp:113
-#: src/chat_command_handler.hpp:119
+#: src/chat_command_handler.hpp:75 src/chat_command_handler.hpp:78
+#: src/chat_command_handler.hpp:80 src/chat_command_handler.hpp:82
+#: src/chat_command_handler.hpp:84 src/chat_command_handler.hpp:105
+#: src/chat_command_handler.hpp:107 src/chat_command_handler.hpp:109
+#: src/chat_command_handler.hpp:115
 msgid "<nickname>"
 msgstr "<대화명>"
 
-#: src/chat_command_handler.hpp:81
+#: src/chat_command_handler.hpp:77
 msgid "Unban a user. He does not have to be in the game but on the server."
 msgstr ""
 "밴을 해제합니다.대상이 게임중에 있을 필요는 없고, 서버상에 있으면 사용 가능합"
 "니다."
 
-#: src/chat_command_handler.hpp:84
+#: src/chat_command_handler.hpp:80
 msgid "Kick a player or observer."
 msgstr "플레이어 또는 관전자를 킥합니다."
 
-#: src/chat_command_handler.hpp:86
+#: src/chat_command_handler.hpp:82
 msgid "Mute an observer. Without an argument displays the mute status."
 msgstr "관전자를 음소거합니다. 논의 없이 음소거 상황을 표시합니다."
 
-#: src/chat_command_handler.hpp:88
+#: src/chat_command_handler.hpp:84
 msgid "Unmute an observer. Without an argument unmutes everyone."
 msgstr "관전자의 뮤트를 해제합니다. 논의 없이 전원의 음소거를 해제합니다."
 
-#: src/chat_command_handler.hpp:90
+#: src/chat_command_handler.hpp:86
 msgid "Mute/Unmute all observers. (toggles)"
 msgstr "모든 관전자를 음소거/음소거 해제 합니다 (toggles)"
 
-#: src/chat_command_handler.hpp:92
+#: src/chat_command_handler.hpp:88
 msgid ""
 "Send some data to the server. Can be used to verify the network connection "
 "and notice disconnects."
 msgstr ""
 
-#: src/chat_command_handler.hpp:94
+#: src/chat_command_handler.hpp:90
 msgid ""
 "Report abuse, rule violations, etc. to the server moderators. Make sure to "
 "mention relevant nicknames, etc."
 msgstr "폭언이나 룰 위반등을 서버 조정자에게 보고합니다."
 
-#: src/chat_command_handler.hpp:98
+#: src/chat_command_handler.hpp:94
 msgid "<message>"
 msgstr "<message>"
 
-#: src/chat_command_handler.hpp:98
+#: src/chat_command_handler.hpp:94
 msgid "Send an emotion or personal action in chat."
 msgstr "채팅으로 감정이나 개인적인 행동을 보냅니다."
 
-#: src/chat_command_handler.hpp:101
+#: src/chat_command_handler.hpp:97
 #, fuzzy
 #| msgid ""
 #| "Sends a private message. You cannot send private messages to players in a "
@@ -5907,96 +5907,53 @@ msgstr ""
 "개인 메시지를 보냅니다.당신이 플레이·관전하고 있는 게임에 있는 플레이어에게"
 "는, 개인 메세지는 보낼 수 없습니다."
 
-#: src/chat_command_handler.hpp:103
+#: src/chat_command_handler.hpp:99
 msgid "<nickname> <message>"
 msgstr "<nickname> <message>"
 
-#: src/chat_command_handler.hpp:107
+#: src/chat_command_handler.hpp:103
 msgid "<level> <domain>"
 msgstr "<level> <domain>"
 
-#: src/chat_command_handler.hpp:107
+#: src/chat_command_handler.hpp:103
 msgid "Change the log level of a log domain."
 msgstr "기록 도메인의 기록 수준을 변경합니다."
 
-#: src/chat_command_handler.hpp:109
+#: src/chat_command_handler.hpp:105
 #, fuzzy
 #| msgid "Added to ignore list: $nick"
 msgid "Add a nickname to your ignores list."
 msgstr "무시 목록에 대화명을 추가합니다."
 
-#: src/chat_command_handler.hpp:111
+#: src/chat_command_handler.hpp:107
 #, fuzzy
 #| msgid "Added to friends list: $nick"
 msgid "Add a nickname to your friends list."
 msgstr "친구 목록에 대화명을 추가합니다."
 
-#: src/chat_command_handler.hpp:113
+#: src/chat_command_handler.hpp:109
 #, fuzzy
 #| msgid "Added to ignore list: $nick"
 msgid "Remove a nickname from your ignores or friends list."
 msgstr "대화명을, 무시 목록 또는 친구 목록에서 삭제합니다."
 
-#: src/chat_command_handler.hpp:115
+#: src/chat_command_handler.hpp:111
 msgid "<N>"
 msgstr ""
 
-#: src/chat_command_handler.hpp:115
+#: src/chat_command_handler.hpp:111
 msgid "Get a random number between 1 and N visible in the game setup lobby."
 msgstr ""
 
-#: src/chat_command_handler.hpp:117
+#: src/chat_command_handler.hpp:113
 #, fuzzy
 #| msgid "No era information found."
 msgid "Display version information."
 msgstr "버전 정보를 표시합니다."
 
-#: src/chat_command_handler.hpp:119
+#: src/chat_command_handler.hpp:115
 msgid "Request information about a nickname."
 msgstr "대화명에 대한 정보를 요구합니다."
-
-#: src/chat_command_handler.hpp:121 src/chat_command_handler.hpp:124
-#: src/chat_command_handler.hpp:126
-msgid "<room>"
-msgstr "<room>"
-
-#: src/chat_command_handler.hpp:121
-#, fuzzy
-#| msgid "Join Game"
-msgid "Join a room."
-msgstr "방에 참가합니다."
-
-#: src/chat_command_handler.hpp:124
-msgid "Part a room."
-msgstr "방에서 떠납니다."
-
-#: src/chat_command_handler.hpp:126
-msgid "List room members."
-msgstr "방의 멤버 일람을 표시합니다."
-
-#: src/chat_command_handler.hpp:128
-#, fuzzy
-#| msgid "No objectives available"
-msgid "List available rooms."
-msgstr "방 목록을 표시합니다."
-
-#: src/chat_command_handler.hpp:130
-msgid "<room> <msg>"
-msgstr "<room> <msg>"
-
-#: src/chat_command_handler.hpp:130
-#, fuzzy
-#| msgid "Chat message aging"
-msgid "Room message."
-msgstr "방 메시지."
-
-#: src/chat_command_handler.hpp:132
-msgid "<room> <type> [value]"
-msgstr "<room> <type> [value]"
-
-#: src/chat_command_handler.hpp:132
-msgid "Room query."
-msgstr "방에 문의하겠습니다."
 
 #: src/chat_events.cpp:60
 msgid "Unknown debug level: '$level'."
@@ -6014,11 +5971,11 @@ msgstr "불분명한 디버깅 도메인: '$domain'."
 msgid "Switched domain: '$domain' to level: '$level'."
 msgstr "Switched domain: '$domain' to level: '$level'."
 
-#: src/chat_events.cpp:154
+#: src/chat_events.cpp:148
 msgid "whisper to $receiver"
 msgstr "$receiver 에게 하는 귓속말"
 
-#: src/chat_events.cpp:161
+#: src/chat_events.cpp:155
 msgid "whisper: $sender"
 msgstr "$sender 의 귓속말"
 
@@ -6056,27 +6013,33 @@ msgstr "The Battle for Wesnoth"
 msgid "Invalid Color"
 msgstr "무효한 색"
 
-#: src/format_time_summary.cpp:47
+#. TRANSLATORS: 24-hour time, eg '13:59'
+#: src/format_time_summary.cpp:48
 msgid "%H:%M"
 msgstr "%H:%M"
 
-#: src/format_time_summary.cpp:50
+#. TRANSLATORS: 12-hour time, eg '1:59 PM'
+#: src/format_time_summary.cpp:52
 msgid "%I:%M %p"
 msgstr "%I:%M %p"
 
-#: src/format_time_summary.cpp:55
+#. TRANSLATORS: Day of week + 24-hour time, eg 'Sunday, 13:59'
+#: src/format_time_summary.cpp:58
 msgid "%A, %H:%M"
 msgstr "%A, %H:%M"
 
-#: src/format_time_summary.cpp:58
+#. TRANSLATORS: Day of week + 12-hour time, eg 'Sunday, 1:59 PM'
+#: src/format_time_summary.cpp:62
 msgid "%A, %I:%M %p"
 msgstr "%A, %I:%M %p"
 
-#: src/format_time_summary.cpp:62
+#. TRANSLATORS: Month + day of month, eg 'Nov 02'. Format for your locale.
+#: src/format_time_summary.cpp:67
 msgid "%b %d"
 msgstr "%b %d"
 
-#: src/format_time_summary.cpp:66
+#. TRANSLATORS: Month + day of month + year, eg 'Nov 02 2021'. Format for your locale.
+#: src/format_time_summary.cpp:72
 msgid "%b %d %Y"
 msgstr "%b %d %Y"
 
@@ -6404,11 +6367,11 @@ msgstr "적 지휘관(들)을 격파하라"
 msgid "Cannot find era '$era'"
 msgstr "$era 시대를 찾을 수 없습니다"
 
-#: src/game_initialization/multiplayer.cpp:236
+#: src/game_initialization/multiplayer.cpp:237
 msgid "Invalid address specified for multiplayer server"
 msgstr ""
 
-#: src/game_initialization/multiplayer.cpp:271
+#: src/game_initialization/multiplayer.cpp:272
 msgid ""
 "The server accepts versions '$required_version', but you are using version "
 "'$your_version'"
@@ -6416,11 +6379,11 @@ msgstr ""
 "서버에서는 버전\" $required_version\"을 요구하고 있습니다만,당신의 버전은 "
 "\"$your_version\"입니다."
 
-#: src/game_initialization/multiplayer.cpp:284
+#: src/game_initialization/multiplayer.cpp:285
 msgid "Server-side redirect loop"
 msgstr "Server-side redirect loop"
 
-#: src/game_initialization/multiplayer.cpp:334
+#: src/game_initialization/multiplayer.cpp:335
 msgid ""
 "The nickname ‘$nick’ is inactive. You cannot claim ownership of this "
 "nickname until you activate your account via email or ask an administrator "
@@ -6430,77 +6393,77 @@ msgstr ""
 "로 만들(또는 관리자에게 부탁한다) 때까지 이 대화명의 소유권을 주장할 수 없습"
 "니다."
 
-#: src/game_initialization/multiplayer.cpp:343
+#: src/game_initialization/multiplayer.cpp:344
 #, fuzzy
 msgid "Do you want to continue?"
 msgstr "계속하길 원하십니까?"
 
-#: src/game_initialization/multiplayer.cpp:345
+#: src/game_initialization/multiplayer.cpp:346
 #, fuzzy
 #| msgid "Morning"
 msgid "Warning"
 msgstr "경고"
 
-#: src/game_initialization/multiplayer.cpp:408
+#: src/game_initialization/multiplayer.cpp:409
 msgid ""
 "The remote server requested a password while using an insecure connection."
 msgstr ""
 
-#: src/game_initialization/multiplayer.cpp:410
+#: src/game_initialization/multiplayer.cpp:411
 msgid "You must login first."
 msgstr "먼저 로그인하세요."
 
-#: src/game_initialization/multiplayer.cpp:412
+#: src/game_initialization/multiplayer.cpp:413
 msgid "The nickname ‘$nick’ is already taken."
 msgstr "'$nick' 아이디로 접속한 사람이 이미 있습니다."
 
-#: src/game_initialization/multiplayer.cpp:414
+#: src/game_initialization/multiplayer.cpp:415
 msgid ""
 "The nickname ‘$nick’ contains invalid characters. Only alpha-numeric "
 "characters (one at minimum), underscores and hyphens are allowed."
 msgstr "대화명 ‘$nick’ 는 사용할 수 없는 문자를 포함하고 있습니다."
 
-#: src/game_initialization/multiplayer.cpp:418
+#: src/game_initialization/multiplayer.cpp:419
 msgid "The nickname ‘$nick’ is too long. Nicks must be 20 characters or less."
 msgstr "'$nick' 아이디는 너무 깁니다. 아이디는 20자 이하만 가능합니다."
 
-#: src/game_initialization/multiplayer.cpp:420
+#: src/game_initialization/multiplayer.cpp:421
 msgid "The nickname ‘$nick’ is reserved and cannot be used by players."
 msgstr ""
 "대화명 ‘$nick’ 는 예약이 끝난 상태입니다. 다른 플레이어는 사용할 수 없습니다."
 
-#: src/game_initialization/multiplayer.cpp:422
+#: src/game_initialization/multiplayer.cpp:423
 msgid "The nickname ‘$nick’ is not registered on this server."
 msgstr "대화명 ‘$nick’ 는 이 서버에 등록되어 있지 않습니다."
 
-#: src/game_initialization/multiplayer.cpp:423
+#: src/game_initialization/multiplayer.cpp:424
 msgid " This server disallows unregistered nicknames."
 msgstr " 이 서버는 미등록 아이디를 허용하지 않습니다."
 
-#: src/game_initialization/multiplayer.cpp:426
+#: src/game_initialization/multiplayer.cpp:427
 #, fuzzy
 #| msgid "The nickname ‘$nick’ is registered on this server."
 msgid "The nickname ‘$nick’ is banned on this server’s forums for $duration|."
 msgstr ""
 "이 서버의 포럼에서는 당신의 대화명 ‘$nick’ 이 $duration| 동안 밴 되어 있다."
 
-#: src/game_initialization/multiplayer.cpp:428
+#: src/game_initialization/multiplayer.cpp:429
 #, fuzzy
 #| msgid "The nickname ‘$nick’ is registered on this server."
 msgid "The nickname ‘$nick’ is banned on this server’s forums."
 msgstr "이 서버의 포럼에서는 당신의 대화명 ‘$nick’ 이 밴 되어 있다."
 
-#: src/game_initialization/multiplayer.cpp:432
+#: src/game_initialization/multiplayer.cpp:433
 #, fuzzy
 #| msgid "The nickname ‘$nick’ is registered on this server."
 msgid "Your IP address is banned on this server’s forums for $duration|."
 msgstr "이 서버의 포럼에서는 당신의 IP 주소가 $duration| 동안 금지되어 있다."
 
-#: src/game_initialization/multiplayer.cpp:434
+#: src/game_initialization/multiplayer.cpp:435
 msgid "Your IP address is banned on this server’s forums."
 msgstr "이 서버의 포럼에서는 당신의 IP 주소가 금지되어 있다."
 
-#: src/game_initialization/multiplayer.cpp:438
+#: src/game_initialization/multiplayer.cpp:439
 #, fuzzy
 #| msgid "The nickname ‘$nick’ is registered on this server."
 msgid ""
@@ -6509,19 +6472,19 @@ msgid ""
 msgstr ""
 "대화명 ‘$nick’ 의 메일 주소는 포럼상에서 $duration 동안 밴 되어 있습니다."
 
-#: src/game_initialization/multiplayer.cpp:440
+#: src/game_initialization/multiplayer.cpp:441
 #, fuzzy
 #| msgid "The nickname ‘$nick’ is registered on this server."
 msgid ""
 "The email address for the nickname ‘$nick’ is banned on this server’s forums."
 msgstr "대화명 ‘$nick’ 의 메일 주소는 포럼상에서 밴 되어 있습니다."
 
-#: src/game_initialization/multiplayer.cpp:443
-#: src/game_initialization/multiplayer.cpp:445
+#: src/game_initialization/multiplayer.cpp:444
+#: src/game_initialization/multiplayer.cpp:446
 msgid "The nickname ‘$nick’ is registered on this server."
 msgstr "'$nick' 아이디는 이 서버에 등록되어 있습니다."
 
-#: src/game_initialization/multiplayer.cpp:446
+#: src/game_initialization/multiplayer.cpp:447
 msgid ""
 "WARNING: There is already a client using this nickname, logging in will "
 "cause that client to be kicked!"
@@ -6529,15 +6492,15 @@ msgstr ""
 "경고: 이미 이 대화명을 사용하는 유저가 있다. 이 대화명으로 로그인하면 그 유저"
 "가 로그아웃 당할 것이다!"
 
-#: src/game_initialization/multiplayer.cpp:449
+#: src/game_initialization/multiplayer.cpp:450
 msgid "The password you provided was incorrect."
 msgstr "입력한 암호가 잘못되었다."
 
-#: src/game_initialization/multiplayer.cpp:451
+#: src/game_initialization/multiplayer.cpp:452
 msgid "You have made too many login attempts."
 msgstr "로그인 시도를 너무 많이 했습니다"
 
-#: src/game_initialization/multiplayer.cpp:453
+#: src/game_initialization/multiplayer.cpp:454
 msgid "Password hashing failed."
 msgstr ""
 
@@ -8278,20 +8241,22 @@ msgstr "당신의 차례가 자동으로 끝날 때까지 카운트다운 한다
 msgid "Turn Countdown"
 msgstr "턴 카운트다운"
 
-#: src/save_index.cpp:279
+#. TRANSLATORS: Day of week + month + day of month + 12-hour time + year, eg 'Tue Nov 02 1:59 PM 2021'. Format for your locale.
+#: src/save_index.cpp:280
 msgid "%a %b %d %I:%M %p %Y"
 msgstr "%Y년%m월%d일（%a） %I:%M %p"
 
-#: src/save_index.cpp:280
+#. TRANSLATORS: Day of week + month + day of month + 24-hour time + year, eg 'Tue Nov 02 13:59 2021'. Format for your locale.
+#: src/save_index.cpp:282
 msgid "%a %b %d %H:%M %Y"
 msgstr "%Y년%m월%d일（%a） %H:%M"
 
 #. TRANSLATORS: This string is used as part of a filename, as in, "HttT-The Elves Besieged replay.gz"
-#: src/save_index.cpp:300 src/savegame.cpp:588
+#: src/save_index.cpp:302 src/savegame.cpp:588
 msgid "replay"
 msgstr "리플레이 파일"
 
-#: src/save_index.cpp:384 src/savegame.cpp:71 src/savegame.cpp:624
+#: src/save_index.cpp:386 src/savegame.cpp:71 src/savegame.cpp:624
 #: src/savegame.cpp:626
 msgid "Auto-Save"
 msgstr "자동 저장"
@@ -8835,6 +8800,39 @@ msgstr "$player 의 계획을 숨기기."
 #: src/whiteboard/manager.cpp:1138
 msgid "Whiteboard Options"
 msgstr "행동 예정 옵션"
+
+#~ msgid "<room>"
+#~ msgstr "<room>"
+
+#, fuzzy
+#~| msgid "Join Game"
+#~ msgid "Join a room."
+#~ msgstr "방에 참가합니다."
+
+#~ msgid "Part a room."
+#~ msgstr "방에서 떠납니다."
+
+#~ msgid "List room members."
+#~ msgstr "방의 멤버 일람을 표시합니다."
+
+#, fuzzy
+#~| msgid "No objectives available"
+#~ msgid "List available rooms."
+#~ msgstr "방 목록을 표시합니다."
+
+#~ msgid "<room> <msg>"
+#~ msgstr "<room> <msg>"
+
+#, fuzzy
+#~| msgid "Chat message aging"
+#~ msgid "Room message."
+#~ msgstr "방 메시지."
+
+#~ msgid "<room> <type> [value]"
+#~ msgstr "<room> <type> [value]"
+
+#~ msgid "Room query."
+#~ msgstr "방에 문의하겠습니다."
 
 #~ msgid "drains 20%"
 #~ msgstr "흡수"

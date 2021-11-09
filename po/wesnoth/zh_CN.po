@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.14\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-10-23 20:57-0300\n"
+"POT-Creation-Date: 2021-11-09 03:45+0300\n"
 "PO-Revision-Date: 2020-08-10 20:09+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
@@ -868,8 +868,8 @@ msgstr "一捆麦子"
 msgid "Runic Hammer"
 msgstr "符文锤"
 
-#. [object]
 #. [item]: id=holly-water
+#. [object]
 #: data/core/editor/items.cfg:282 data/core/macros/items.cfg:283
 msgid "Holy Water"
 msgstr "圣水"
@@ -910,8 +910,8 @@ msgstr "绿色药剂"
 msgid "Gray Potion"
 msgstr "灰色药剂"
 
-#. [object]: id={ID}
 #. [item]: id=potion-poison
+#. [object]: id={ID}
 #: data/core/editor/items.cfg:336 data/core/macros/items.cfg:246
 msgid "Poison"
 msgstr "毒药"
@@ -981,8 +981,8 @@ msgstr "手杖"
 msgid "Stone Tablet"
 msgstr "石板"
 
-#. [object]
 #. [item]: id=storm-trident
+#. [object]
 #: data/core/editor/items.cfg:420 data/core/macros/items.cfg:529
 msgid "Storm Trident"
 msgstr "风暴三叉戟"
@@ -5674,7 +5674,7 @@ msgid "Do you really wish to continue?"
 msgstr "真的希望继续吗？"
 
 #: src/addon/client.cpp:552 src/addon/manager_ui.cpp:173
-#: src/game_initialization/multiplayer.cpp:361
+#: src/game_initialization/multiplayer.cpp:362
 msgid "Confirm"
 msgstr "确认"
 
@@ -5961,61 +5961,61 @@ msgstr ""
 msgid "Unspecified validation failure."
 msgstr ""
 
-#: src/chat_command_handler.cpp:113
+#: src/chat_command_handler.cpp:76
 msgid "Added to ignore list: $nick"
 msgstr "已加入忽略列表：$nick"
 
-#: src/chat_command_handler.cpp:113
+#: src/chat_command_handler.cpp:76
 msgid "ignores list"
 msgstr "忽略列表"
 
-#: src/chat_command_handler.cpp:117 src/chat_command_handler.cpp:136
+#: src/chat_command_handler.cpp:80 src/chat_command_handler.cpp:99
 msgid "Invalid username: $nick"
 msgstr "无效用户名：$nick"
 
-#: src/chat_command_handler.cpp:132
+#: src/chat_command_handler.cpp:95
 msgid "Added to friends list: $nick"
 msgstr "已加入好友列表：$nick"
 
-#: src/chat_command_handler.cpp:132
+#: src/chat_command_handler.cpp:95
 msgid "friends list"
 msgstr "好友列表"
 
-#: src/chat_command_handler.cpp:148
+#: src/chat_command_handler.cpp:111
 msgid "Removed from list: $nick"
 msgstr "已从列表中移除：$nick"
 
-#: src/chat_command_handler.cpp:148
+#: src/chat_command_handler.cpp:111
 msgid "friends and ignores list"
 msgstr "好友与忽略列表"
 
-#: src/chat_command_handler.cpp:158
+#: src/chat_command_handler.cpp:121
 msgid "version"
 msgstr "版本"
 
-#: src/chat_command_handler.cpp:170
+#: src/chat_command_handler.cpp:133
 msgid "nick registration"
 msgstr "昵称注册"
 
-#: src/chat_command_handler.cpp:170
+#: src/chat_command_handler.cpp:133
 msgid "requesting information for user $nick"
 msgstr "正在请求用户$nick|的信息"
 
-#: src/chat_command_handler.hpp:52
+#: src/chat_command_handler.hpp:48
 msgid "(A) — admin command"
 msgstr "(A) — 管理员命令"
 
-#: src/chat_command_handler.hpp:59 src/menu_events.cpp:1194
+#: src/chat_command_handler.hpp:55 src/menu_events.cpp:1194
 msgid "(admin only)"
 msgstr "（管理员专用）"
 
-#: src/chat_command_handler.hpp:74
+#: src/chat_command_handler.hpp:70
 msgid ""
 "Send a query to the server. Without arguments the server should tell you the "
 "available commands."
 msgstr "向服务器发起一次查询。无参数时，服务器将把可用的命令告知你。"
 
-#: src/chat_command_handler.hpp:78
+#: src/chat_command_handler.hpp:74
 msgid ""
 "Ban and kick a player or observer. If he is not in the game but on the "
 "server he will only be banned."
@@ -6023,56 +6023,56 @@ msgstr ""
 "将一位玩家或观察者封禁并踢出。如果他在服务器上而并不在当前游戏中，那么他只会"
 "被封禁。"
 
-#: src/chat_command_handler.hpp:79 src/chat_command_handler.hpp:82
-#: src/chat_command_handler.hpp:84 src/chat_command_handler.hpp:86
-#: src/chat_command_handler.hpp:88 src/chat_command_handler.hpp:109
-#: src/chat_command_handler.hpp:111 src/chat_command_handler.hpp:113
-#: src/chat_command_handler.hpp:119
+#: src/chat_command_handler.hpp:75 src/chat_command_handler.hpp:78
+#: src/chat_command_handler.hpp:80 src/chat_command_handler.hpp:82
+#: src/chat_command_handler.hpp:84 src/chat_command_handler.hpp:105
+#: src/chat_command_handler.hpp:107 src/chat_command_handler.hpp:109
+#: src/chat_command_handler.hpp:115
 msgid "<nickname>"
 msgstr "<昵称>"
 
-#: src/chat_command_handler.hpp:81
+#: src/chat_command_handler.hpp:77
 msgid "Unban a user. He does not have to be in the game but on the server."
 msgstr "将一位用户解封。他并不一定要在当前游戏中，但一定要在服务器上。"
 
-#: src/chat_command_handler.hpp:84
+#: src/chat_command_handler.hpp:80
 msgid "Kick a player or observer."
 msgstr "将一位玩家或观察者踢出。"
 
-#: src/chat_command_handler.hpp:86
+#: src/chat_command_handler.hpp:82
 msgid "Mute an observer. Without an argument displays the mute status."
 msgstr "将一位观察者禁言。无参数时，显示当前禁言状态。"
 
-#: src/chat_command_handler.hpp:88
+#: src/chat_command_handler.hpp:84
 msgid "Unmute an observer. Without an argument unmutes everyone."
 msgstr "将一位观察者解除禁言。无参数时，解除所有人的禁言。"
 
-#: src/chat_command_handler.hpp:90
+#: src/chat_command_handler.hpp:86
 msgid "Mute/Unmute all observers. (toggles)"
 msgstr "将所有观察者禁言/解除禁言。（禁言状态开关）"
 
-#: src/chat_command_handler.hpp:92
+#: src/chat_command_handler.hpp:88
 msgid ""
 "Send some data to the server. Can be used to verify the network connection "
 "and notice disconnects."
 msgstr ""
 
-#: src/chat_command_handler.hpp:94
+#: src/chat_command_handler.hpp:90
 msgid ""
 "Report abuse, rule violations, etc. to the server moderators. Make sure to "
 "mention relevant nicknames, etc."
 msgstr ""
 "将滥用情形及违反规则的情况等报告给服务器管理员。请确保提及相关的昵称等。"
 
-#: src/chat_command_handler.hpp:98
+#: src/chat_command_handler.hpp:94
 msgid "<message>"
 msgstr "<信息>"
 
-#: src/chat_command_handler.hpp:98
+#: src/chat_command_handler.hpp:94
 msgid "Send an emotion or personal action in chat."
 msgstr "在交谈中发送感情表达或个人动作信息。"
 
-#: src/chat_command_handler.hpp:101
+#: src/chat_command_handler.hpp:97
 #, fuzzy
 #| msgid ""
 #| "Sends a private message. You cannot send private messages to players in a "
@@ -6084,82 +6084,45 @@ msgstr ""
 "发送私密信息。如果你正在观察或参与一场进行中的游戏，那么你不能向该游戏中的玩"
 "家发送私密信息。"
 
-#: src/chat_command_handler.hpp:103
+#: src/chat_command_handler.hpp:99
 msgid "<nickname> <message>"
 msgstr "<昵称> <信息>"
 
-#: src/chat_command_handler.hpp:107
+#: src/chat_command_handler.hpp:103
 msgid "<level> <domain>"
 msgstr "<等级> <域>"
 
-#: src/chat_command_handler.hpp:107
+#: src/chat_command_handler.hpp:103
 msgid "Change the log level of a log domain."
 msgstr "更改日志域的日志等级。"
 
-#: src/chat_command_handler.hpp:109
+#: src/chat_command_handler.hpp:105
 msgid "Add a nickname to your ignores list."
 msgstr "将一个昵称加入你的忽略列表。"
 
-#: src/chat_command_handler.hpp:111
+#: src/chat_command_handler.hpp:107
 msgid "Add a nickname to your friends list."
 msgstr "将一个昵称加入你的好友列表。"
 
-#: src/chat_command_handler.hpp:113
+#: src/chat_command_handler.hpp:109
 msgid "Remove a nickname from your ignores or friends list."
 msgstr "将一个昵称从你的忽略或好友列表中移除。"
 
-#: src/chat_command_handler.hpp:115
+#: src/chat_command_handler.hpp:111
 msgid "<N>"
 msgstr ""
 
-#: src/chat_command_handler.hpp:115
+#: src/chat_command_handler.hpp:111
 msgid "Get a random number between 1 and N visible in the game setup lobby."
 msgstr ""
 
-#: src/chat_command_handler.hpp:117
+#: src/chat_command_handler.hpp:113
 msgid "Display version information."
 msgstr "显示版本信息。"
 
-#: src/chat_command_handler.hpp:119
+#: src/chat_command_handler.hpp:115
 msgid "Request information about a nickname."
 msgstr "请求一个昵称的有关信息。"
-
-#: src/chat_command_handler.hpp:121 src/chat_command_handler.hpp:124
-#: src/chat_command_handler.hpp:126
-msgid "<room>"
-msgstr "<房间>"
-
-#: src/chat_command_handler.hpp:121
-msgid "Join a room."
-msgstr "加入房间。"
-
-#: src/chat_command_handler.hpp:124
-msgid "Part a room."
-msgstr "离开房间。"
-
-#: src/chat_command_handler.hpp:126
-msgid "List room members."
-msgstr "列出房间成员。"
-
-#: src/chat_command_handler.hpp:128
-msgid "List available rooms."
-msgstr "列出可用的房间。"
-
-#: src/chat_command_handler.hpp:130
-msgid "<room> <msg>"
-msgstr "<房间> <信息>"
-
-#: src/chat_command_handler.hpp:130
-msgid "Room message."
-msgstr "房间内信息。"
-
-#: src/chat_command_handler.hpp:132
-msgid "<room> <type> [value]"
-msgstr "<房间> <类型> [值]"
-
-#: src/chat_command_handler.hpp:132
-msgid "Room query."
-msgstr "房间查询。"
 
 #: src/chat_events.cpp:60
 msgid "Unknown debug level: '$level'."
@@ -6177,11 +6140,11 @@ msgstr "未知调试域：“$domain|”。"
 msgid "Switched domain: '$domain' to level: '$level'."
 msgstr "将“$domain|”域切换到“$level|”级别。"
 
-#: src/chat_events.cpp:154
+#: src/chat_events.cpp:148
 msgid "whisper to $receiver"
 msgstr "对$receiver|说悄悄话"
 
-#: src/chat_events.cpp:161
+#: src/chat_events.cpp:155
 msgid "whisper: $sender"
 msgstr "悄悄话：$sender"
 
@@ -6217,27 +6180,33 @@ msgstr "韦诺之战"
 msgid "Invalid Color"
 msgstr "无效颜色"
 
-#: src/format_time_summary.cpp:47
+#. TRANSLATORS: 24-hour time, eg '13:59'
+#: src/format_time_summary.cpp:48
 msgid "%H:%M"
 msgstr "%H:%M"
 
-#: src/format_time_summary.cpp:50
+#. TRANSLATORS: 12-hour time, eg '1:59 PM'
+#: src/format_time_summary.cpp:52
 msgid "%I:%M %p"
 msgstr "%I:%M %p"
 
-#: src/format_time_summary.cpp:55
+#. TRANSLATORS: Day of week + 24-hour time, eg 'Sunday, 13:59'
+#: src/format_time_summary.cpp:58
 msgid "%A, %H:%M"
 msgstr "%A, %H:%M"
 
-#: src/format_time_summary.cpp:58
+#. TRANSLATORS: Day of week + 12-hour time, eg 'Sunday, 1:59 PM'
+#: src/format_time_summary.cpp:62
 msgid "%A, %I:%M %p"
 msgstr "%A, %H:%M %p"
 
-#: src/format_time_summary.cpp:62
+#. TRANSLATORS: Month + day of month, eg 'Nov 02'. Format for your locale.
+#: src/format_time_summary.cpp:67
 msgid "%b %d"
 msgstr "%b %d"
 
-#: src/format_time_summary.cpp:66
+#. TRANSLATORS: Month + day of month + year, eg 'Nov 02 2021'. Format for your locale.
+#: src/format_time_summary.cpp:72
 msgid "%b %d %Y"
 msgstr "%b %d %Y"
 
@@ -6536,21 +6505,21 @@ msgstr "击败敌方首领"
 msgid "Cannot find era '$era'"
 msgstr "无法找到$era|时代"
 
-#: src/game_initialization/multiplayer.cpp:236
+#: src/game_initialization/multiplayer.cpp:237
 msgid "Invalid address specified for multiplayer server"
 msgstr ""
 
-#: src/game_initialization/multiplayer.cpp:271
+#: src/game_initialization/multiplayer.cpp:272
 msgid ""
 "The server accepts versions '$required_version', but you are using version "
 "'$your_version'"
 msgstr "此服务器接受版本‘$required_version|’，而你使用的版本是‘$your_version|’"
 
-#: src/game_initialization/multiplayer.cpp:284
+#: src/game_initialization/multiplayer.cpp:285
 msgid "Server-side redirect loop"
 msgstr "服务器端重定向循环"
 
-#: src/game_initialization/multiplayer.cpp:334
+#: src/game_initialization/multiplayer.cpp:335
 msgid ""
 "The nickname ‘$nick’ is inactive. You cannot claim ownership of this "
 "nickname until you activate your account via email or ask an administrator "
@@ -6559,28 +6528,28 @@ msgstr ""
 "昵称‘$nick’未激活。除非你使用电子邮件或请管理员进行激活，否则你不能取得此昵称"
 "的所有权。"
 
-#: src/game_initialization/multiplayer.cpp:343
+#: src/game_initialization/multiplayer.cpp:344
 msgid "Do you want to continue?"
 msgstr "你要继续吗？"
 
-#: src/game_initialization/multiplayer.cpp:345
+#: src/game_initialization/multiplayer.cpp:346
 msgid "Warning"
 msgstr "警告"
 
-#: src/game_initialization/multiplayer.cpp:408
+#: src/game_initialization/multiplayer.cpp:409
 msgid ""
 "The remote server requested a password while using an insecure connection."
 msgstr ""
 
-#: src/game_initialization/multiplayer.cpp:410
+#: src/game_initialization/multiplayer.cpp:411
 msgid "You must login first."
 msgstr "你必须先登录。"
 
-#: src/game_initialization/multiplayer.cpp:412
+#: src/game_initialization/multiplayer.cpp:413
 msgid "The nickname ‘$nick’ is already taken."
 msgstr "昵称“$nick|”已被使用了。"
 
-#: src/game_initialization/multiplayer.cpp:414
+#: src/game_initialization/multiplayer.cpp:415
 msgid ""
 "The nickname ‘$nick’ contains invalid characters. Only alpha-numeric "
 "characters (one at minimum), underscores and hyphens are allowed."
@@ -6588,39 +6557,39 @@ msgstr ""
 "昵称“$nick|”包含无效字符。只允许使用字母或数字（至少要有一个字母或数字），下"
 "划线和连字符。"
 
-#: src/game_initialization/multiplayer.cpp:418
+#: src/game_initialization/multiplayer.cpp:419
 msgid "The nickname ‘$nick’ is too long. Nicks must be 20 characters or less."
 msgstr "昵称“$nick|”太长了。昵称长度不得超过20个字符。"
 
-#: src/game_initialization/multiplayer.cpp:420
+#: src/game_initialization/multiplayer.cpp:421
 msgid "The nickname ‘$nick’ is reserved and cannot be used by players."
 msgstr "昵称“$nick|”是被保留的，无法由玩家使用。"
 
-#: src/game_initialization/multiplayer.cpp:422
+#: src/game_initialization/multiplayer.cpp:423
 msgid "The nickname ‘$nick’ is not registered on this server."
 msgstr "昵称“$nick|”未在此服务器上注册。"
 
-#: src/game_initialization/multiplayer.cpp:423
+#: src/game_initialization/multiplayer.cpp:424
 msgid " This server disallows unregistered nicknames."
 msgstr " 此服务器不允许使用没有注册的昵称。"
 
-#: src/game_initialization/multiplayer.cpp:426
+#: src/game_initialization/multiplayer.cpp:427
 msgid "The nickname ‘$nick’ is banned on this server’s forums for $duration|."
 msgstr "昵称“$nick|”在此服务器的论坛上被封禁了，封禁时长为$duration|。"
 
-#: src/game_initialization/multiplayer.cpp:428
+#: src/game_initialization/multiplayer.cpp:429
 msgid "The nickname ‘$nick’ is banned on this server’s forums."
 msgstr "昵称“$nick|”在此服务器的论坛上被封禁了。"
 
-#: src/game_initialization/multiplayer.cpp:432
+#: src/game_initialization/multiplayer.cpp:433
 msgid "Your IP address is banned on this server’s forums for $duration|."
 msgstr "你的IP地址在此服务器的论坛上被封禁了，封禁时长为$duration|。"
 
-#: src/game_initialization/multiplayer.cpp:434
+#: src/game_initialization/multiplayer.cpp:435
 msgid "Your IP address is banned on this server’s forums."
 msgstr "你的IP地址在此服务器的论坛上被封禁了。"
 
-#: src/game_initialization/multiplayer.cpp:438
+#: src/game_initialization/multiplayer.cpp:439
 msgid ""
 "The email address for the nickname ‘$nick’ is banned on this server’s forums "
 "for $duration|."
@@ -6628,32 +6597,32 @@ msgstr ""
 "昵称“$nick|”对应的电子邮件地址在此服务器的论坛上被封禁了，封禁时长为"
 "$duration|。"
 
-#: src/game_initialization/multiplayer.cpp:440
+#: src/game_initialization/multiplayer.cpp:441
 msgid ""
 "The email address for the nickname ‘$nick’ is banned on this server’s forums."
 msgstr "昵称“$nick|”对应的电子邮件地址在此服务器的论坛上被封禁了。"
 
-#: src/game_initialization/multiplayer.cpp:443
-#: src/game_initialization/multiplayer.cpp:445
+#: src/game_initialization/multiplayer.cpp:444
+#: src/game_initialization/multiplayer.cpp:446
 msgid "The nickname ‘$nick’ is registered on this server."
 msgstr "昵称“$nick|”已在此服务器上注册过了。"
 
-#: src/game_initialization/multiplayer.cpp:446
+#: src/game_initialization/multiplayer.cpp:447
 msgid ""
 "WARNING: There is already a client using this nickname, logging in will "
 "cause that client to be kicked!"
 msgstr ""
 "<b>警告</b>：已经有客户端使用这个昵称登录。如果继续登录将踢走那个客户端！"
 
-#: src/game_initialization/multiplayer.cpp:449
+#: src/game_initialization/multiplayer.cpp:450
 msgid "The password you provided was incorrect."
 msgstr "你提供的密码是不正确的。"
 
-#: src/game_initialization/multiplayer.cpp:451
+#: src/game_initialization/multiplayer.cpp:452
 msgid "You have made too many login attempts."
 msgstr "你尝试登录的次数太多了。"
 
-#: src/game_initialization/multiplayer.cpp:453
+#: src/game_initialization/multiplayer.cpp:454
 msgid "Password hashing failed."
 msgstr ""
 
@@ -8266,20 +8235,22 @@ msgstr "直到你的回合自动结束的倒计时"
 msgid "Turn Countdown"
 msgstr "回合倒计时"
 
-#: src/save_index.cpp:279
+#. TRANSLATORS: Day of week + month + day of month + 12-hour time + year, eg 'Tue Nov 02 1:59 PM 2021'. Format for your locale.
+#: src/save_index.cpp:280
 msgid "%a %b %d %I:%M %p %Y"
 msgstr "%a %b %d %I:%M %p %Y"
 
-#: src/save_index.cpp:280
+#. TRANSLATORS: Day of week + month + day of month + 24-hour time + year, eg 'Tue Nov 02 13:59 2021'. Format for your locale.
+#: src/save_index.cpp:282
 msgid "%a %b %d %H:%M %Y"
 msgstr "%a %b %d %H:%M %Y"
 
 #. TRANSLATORS: This string is used as part of a filename, as in, "HttT-The Elves Besieged replay.gz"
-#: src/save_index.cpp:300 src/savegame.cpp:588
+#: src/save_index.cpp:302 src/savegame.cpp:588
 msgid "replay"
 msgstr "游戏录像"
 
-#: src/save_index.cpp:384 src/savegame.cpp:71 src/savegame.cpp:624
+#: src/save_index.cpp:386 src/savegame.cpp:71 src/savegame.cpp:624
 #: src/savegame.cpp:626
 msgid "Auto-Save"
 msgstr "自动存档"
@@ -8777,6 +8748,33 @@ msgstr "隐藏$player的计划"
 #: src/whiteboard/manager.cpp:1138
 msgid "Whiteboard Options"
 msgstr "白板选项"
+
+#~ msgid "<room>"
+#~ msgstr "<房间>"
+
+#~ msgid "Join a room."
+#~ msgstr "加入房间。"
+
+#~ msgid "Part a room."
+#~ msgstr "离开房间。"
+
+#~ msgid "List room members."
+#~ msgstr "列出房间成员。"
+
+#~ msgid "List available rooms."
+#~ msgstr "列出可用的房间。"
+
+#~ msgid "<room> <msg>"
+#~ msgstr "<房间> <信息>"
+
+#~ msgid "Room message."
+#~ msgstr "房间内信息。"
+
+#~ msgid "<room> <type> [value]"
+#~ msgstr "<房间> <类型> [值]"
+
+#~ msgid "Room query."
+#~ msgstr "房间查询。"
 
 #, fuzzy
 #~| msgid "female^neutral"

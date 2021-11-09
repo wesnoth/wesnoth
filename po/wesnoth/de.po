@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.14\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-10-23 20:57-0300\n"
+"POT-Creation-Date: 2021-11-09 03:45+0300\n"
 "PO-Revision-Date: 2021-10-13 00:28+0200\n"
 "Last-Translator: Aaron Winter <winter.aaron93@gmail.com>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
@@ -880,8 +880,8 @@ msgstr "Maiskolben"
 msgid "Runic Hammer"
 msgstr "Runenhammer"
 
-#. [object]
 #. [item]: id=holly-water
+#. [object]
 #: data/core/editor/items.cfg:282 data/core/macros/items.cfg:283
 msgid "Holy Water"
 msgstr "Weihwasser"
@@ -922,8 +922,8 @@ msgstr "Grüner Trank"
 msgid "Gray Potion"
 msgstr "Grauer Trank"
 
-#. [object]: id={ID}
 #. [item]: id=potion-poison
+#. [object]: id={ID}
 #: data/core/editor/items.cfg:336 data/core/macros/items.cfg:246
 msgid "Poison"
 msgstr "Gift"
@@ -993,8 +993,8 @@ msgstr "Stab"
 msgid "Stone Tablet"
 msgstr "Steintafel"
 
-#. [object]
 #. [item]: id=storm-trident
+#. [object]
 #: data/core/editor/items.cfg:420 data/core/macros/items.cfg:529
 msgid "Storm Trident"
 msgstr "Dreizack des Sturms"
@@ -5540,7 +5540,7 @@ msgid "Do you really wish to continue?"
 msgstr "Möchtet Ihr wirklich fortfahren?"
 
 #: src/addon/client.cpp:552 src/addon/manager_ui.cpp:173
-#: src/game_initialization/multiplayer.cpp:361
+#: src/game_initialization/multiplayer.cpp:362
 msgid "Confirm"
 msgstr "Bestätigen"
 
@@ -5837,55 +5837,55 @@ msgstr ""
 msgid "Unspecified validation failure."
 msgstr ""
 
-#: src/chat_command_handler.cpp:113
+#: src/chat_command_handler.cpp:76
 msgid "Added to ignore list: $nick"
 msgstr "Zur Ignorieren-Liste hinzugefügt: $nick"
 
-#: src/chat_command_handler.cpp:113
+#: src/chat_command_handler.cpp:76
 msgid "ignores list"
 msgstr "Ignorieren-Liste"
 
-#: src/chat_command_handler.cpp:117 src/chat_command_handler.cpp:136
+#: src/chat_command_handler.cpp:80 src/chat_command_handler.cpp:99
 msgid "Invalid username: $nick"
 msgstr "Ungültiger Benutzername: $nick"
 
-#: src/chat_command_handler.cpp:132
+#: src/chat_command_handler.cpp:95
 msgid "Added to friends list: $nick"
 msgstr "Zur Freunde-Liste hinzugefügt: $nick"
 
-#: src/chat_command_handler.cpp:132
+#: src/chat_command_handler.cpp:95
 msgid "friends list"
 msgstr "Freunde-Liste"
 
-#: src/chat_command_handler.cpp:148
+#: src/chat_command_handler.cpp:111
 msgid "Removed from list: $nick"
 msgstr "Von der Liste entfernt: $nick"
 
-#: src/chat_command_handler.cpp:148
+#: src/chat_command_handler.cpp:111
 msgid "friends and ignores list"
 msgstr "Freunde- und Ignorieren-Liste"
 
-#: src/chat_command_handler.cpp:158
+#: src/chat_command_handler.cpp:121
 msgid "version"
 msgstr "Version"
 
-#: src/chat_command_handler.cpp:170
+#: src/chat_command_handler.cpp:133
 msgid "nick registration"
 msgstr "Spieler-Registrierung"
 
-#: src/chat_command_handler.cpp:170
+#: src/chat_command_handler.cpp:133
 msgid "requesting information for user $nick"
 msgstr "Informationen über den Benutzer $nick werden angefordert"
 
-#: src/chat_command_handler.hpp:52
+#: src/chat_command_handler.hpp:48
 msgid "(A) — admin command"
 msgstr "(A) - Administrative Befehle"
 
-#: src/chat_command_handler.hpp:59 src/menu_events.cpp:1194
+#: src/chat_command_handler.hpp:55 src/menu_events.cpp:1194
 msgid "(admin only)"
 msgstr "(Nur administrativ)"
 
-#: src/chat_command_handler.hpp:74
+#: src/chat_command_handler.hpp:70
 msgid ""
 "Send a query to the server. Without arguments the server should tell you the "
 "available commands."
@@ -5893,7 +5893,7 @@ msgstr ""
 "Sendet eine Anfrage an den Server. Ohne Argumente aufgerufen, sollte der "
 "Server angeben, welche Kommandos verfügbar sind."
 
-#: src/chat_command_handler.hpp:78
+#: src/chat_command_handler.hpp:74
 msgid ""
 "Ban and kick a player or observer. If he is not in the game but on the "
 "server he will only be banned."
@@ -5901,48 +5901,48 @@ msgstr ""
 "Verbannt und entfernt einen Spieler oder Beobachter. Wenn er sich nicht in "
 "einem Spiel aufhält, wird er nur verbannt."
 
-#: src/chat_command_handler.hpp:79 src/chat_command_handler.hpp:82
-#: src/chat_command_handler.hpp:84 src/chat_command_handler.hpp:86
-#: src/chat_command_handler.hpp:88 src/chat_command_handler.hpp:109
-#: src/chat_command_handler.hpp:111 src/chat_command_handler.hpp:113
-#: src/chat_command_handler.hpp:119
+#: src/chat_command_handler.hpp:75 src/chat_command_handler.hpp:78
+#: src/chat_command_handler.hpp:80 src/chat_command_handler.hpp:82
+#: src/chat_command_handler.hpp:84 src/chat_command_handler.hpp:105
+#: src/chat_command_handler.hpp:107 src/chat_command_handler.hpp:109
+#: src/chat_command_handler.hpp:115
 msgid "<nickname>"
 msgstr "<Spieler>"
 
-#: src/chat_command_handler.hpp:81
+#: src/chat_command_handler.hpp:77
 msgid "Unban a user. He does not have to be in the game but on the server."
 msgstr ""
 "Hebt die Verbannung eines Spielers auf. Er muss nicht an einem Spiel "
 "teilnehmen, aber sich auf dem Server befinden."
 
-#: src/chat_command_handler.hpp:84
+#: src/chat_command_handler.hpp:80
 msgid "Kick a player or observer."
 msgstr "Entfernt einen Spieler oder Beobachter."
 
-#: src/chat_command_handler.hpp:86
+#: src/chat_command_handler.hpp:82
 msgid "Mute an observer. Without an argument displays the mute status."
 msgstr ""
 "Deaktiviert Textnachrichten eines Beobachters. Wird der Befehl ohne "
 "zusätzliches Argument verwendet, wird der aktuelle Status ausgegeben."
 
-#: src/chat_command_handler.hpp:88
+#: src/chat_command_handler.hpp:84
 msgid "Unmute an observer. Without an argument unmutes everyone."
 msgstr ""
 "Erteilt einem Beobachter Redefreiheit. Wird der Befehl ohne Argument "
 "verwendet, wird diese allen Beobachtern zuteil, denen derzeit die "
 "Redefreiheit entzogen ist."
 
-#: src/chat_command_handler.hpp:90
+#: src/chat_command_handler.hpp:86
 msgid "Mute/Unmute all observers. (toggles)"
 msgstr "Allen Beobachtern Redefreiheit entziehen/erteilen. (wechselt)"
 
-#: src/chat_command_handler.hpp:92
+#: src/chat_command_handler.hpp:88
 msgid ""
 "Send some data to the server. Can be used to verify the network connection "
 "and notice disconnects."
 msgstr ""
 
-#: src/chat_command_handler.hpp:94
+#: src/chat_command_handler.hpp:90
 msgid ""
 "Report abuse, rule violations, etc. to the server moderators. Make sure to "
 "mention relevant nicknames, etc."
@@ -5950,15 +5950,15 @@ msgstr ""
 "Missbrauch, Regelverstöße, usw. an Moderatoren melden. Stellt sicher, die "
 "benötigten Informationen wie Spielernamen, usw. anzugeben."
 
-#: src/chat_command_handler.hpp:98
+#: src/chat_command_handler.hpp:94
 msgid "<message>"
 msgstr "<Nachricht>"
 
-#: src/chat_command_handler.hpp:98
+#: src/chat_command_handler.hpp:94
 msgid "Send an emotion or personal action in chat."
 msgstr "Sendet eine Emotion oder eine persönliche Handlung im Gespräch."
 
-#: src/chat_command_handler.hpp:101
+#: src/chat_command_handler.hpp:97
 #, fuzzy
 #| msgid ""
 #| "Sends a private message. You cannot send private messages to players in a "
@@ -5971,85 +5971,48 @@ msgstr ""
 "einer laufenden Partie gesendet werden, bei der Ihr Mitspieler oder "
 "Beobachter seid."
 
-#: src/chat_command_handler.hpp:103
+#: src/chat_command_handler.hpp:99
 msgid "<nickname> <message>"
 msgstr "<Spieler> <Nachricht>"
 
-#: src/chat_command_handler.hpp:107
+#: src/chat_command_handler.hpp:103
 msgid "<level> <domain>"
 msgstr "<Stufe> <Domäne>"
 
-#: src/chat_command_handler.hpp:107
+#: src/chat_command_handler.hpp:103
 msgid "Change the log level of a log domain."
 msgstr "Schaltet die Log-Domäne auf eine andere Log-Stufe."
 
-#: src/chat_command_handler.hpp:109
+#: src/chat_command_handler.hpp:105
 msgid "Add a nickname to your ignores list."
 msgstr "Fügt einen Benutzer zu Eurer Ignorieren-Liste hinzu."
 
-#: src/chat_command_handler.hpp:111
+#: src/chat_command_handler.hpp:107
 msgid "Add a nickname to your friends list."
 msgstr "Fügt einen Benutzer zu Eurer Freunde-Liste hinzu."
 
-#: src/chat_command_handler.hpp:113
+#: src/chat_command_handler.hpp:109
 msgid "Remove a nickname from your ignores or friends list."
 msgstr "Entfernt einen Benutzer von Eurer Ignorieren-Liste."
 
-#: src/chat_command_handler.hpp:115
+#: src/chat_command_handler.hpp:111
 msgid "<N>"
 msgstr "<N>"
 
 # Der Server wird mit nicht übersetztbare "user rolled a die [1 - N] and got a X" antworten.
-#: src/chat_command_handler.hpp:115
+#: src/chat_command_handler.hpp:111
 msgid "Get a random number between 1 and N visible in the game setup lobby."
 msgstr ""
 "Werfen einen Spielwürfel mit Ziffern 1 bis N. In Spiellobby wird der "
 "Mitspieler das Ergebnis mitteilt."
 
-#: src/chat_command_handler.hpp:117
+#: src/chat_command_handler.hpp:113
 msgid "Display version information."
 msgstr "Zeigt Versionsinformationen an."
 
-#: src/chat_command_handler.hpp:119
+#: src/chat_command_handler.hpp:115
 msgid "Request information about a nickname."
 msgstr "Fordert Informationen über einen Benutzer an."
-
-#: src/chat_command_handler.hpp:121 src/chat_command_handler.hpp:124
-#: src/chat_command_handler.hpp:126
-msgid "<room>"
-msgstr "<Raum>"
-
-#: src/chat_command_handler.hpp:121
-msgid "Join a room."
-msgstr "Betretet einen Raum."
-
-#: src/chat_command_handler.hpp:124
-msgid "Part a room."
-msgstr "Verlasst einen Raum."
-
-#: src/chat_command_handler.hpp:126
-msgid "List room members."
-msgstr "Listet Besucher eines Raumes auf."
-
-#: src/chat_command_handler.hpp:128
-msgid "List available rooms."
-msgstr "Listet alle verfügbaren Räume auf."
-
-#: src/chat_command_handler.hpp:130
-msgid "<room> <msg>"
-msgstr "<Raum> <Nachricht>"
-
-#: src/chat_command_handler.hpp:130
-msgid "Room message."
-msgstr "Sendet eine Nachricht an einen Raum."
-
-#: src/chat_command_handler.hpp:132
-msgid "<room> <type> [value]"
-msgstr "<Raum> <Typ> [Wert]"
-
-#: src/chat_command_handler.hpp:132
-msgid "Room query."
-msgstr "Raumabfrage."
 
 #: src/chat_events.cpp:60
 msgid "Unknown debug level: '$level'."
@@ -6067,11 +6030,11 @@ msgstr "Unbekannte Debugdomäne: »$domain«."
 msgid "Switched domain: '$domain' to level: '$level'."
 msgstr "Domäne »$domain« zu Stufe »$level« gewechselt."
 
-#: src/chat_events.cpp:154
+#: src/chat_events.cpp:148
 msgid "whisper to $receiver"
 msgstr "Flüstere zu $receiver"
 
-#: src/chat_events.cpp:161
+#: src/chat_events.cpp:155
 msgid "whisper: $sender"
 msgstr "Flüstern: $sender"
 
@@ -6111,29 +6074,35 @@ msgstr "The Battle for Wesnoth"
 msgid "Invalid Color"
 msgstr "Ungültige Farbe"
 
-#: src/format_time_summary.cpp:47
+#. TRANSLATORS: 24-hour time, eg '13:59'
+#: src/format_time_summary.cpp:48
 msgid "%H:%M"
 msgstr "%H:%M"
 
-#: src/format_time_summary.cpp:50
+#. TRANSLATORS: 12-hour time, eg '1:59 PM'
+#: src/format_time_summary.cpp:52
 msgid "%I:%M %p"
 msgstr "%I:%M %p"
 
-#: src/format_time_summary.cpp:55
+#. TRANSLATORS: Day of week + 24-hour time, eg 'Sunday, 13:59'
+#: src/format_time_summary.cpp:58
 msgid "%A, %H:%M"
 msgstr "%A, %H:%M"
 
-#: src/format_time_summary.cpp:58
+#. TRANSLATORS: Day of week + 12-hour time, eg 'Sunday, 1:59 PM'
+#: src/format_time_summary.cpp:62
 msgid "%A, %I:%M %p"
 msgstr "%A, %I:%M %p"
 
-#: src/format_time_summary.cpp:62
+#. TRANSLATORS: Month + day of month, eg 'Nov 02'. Format for your locale.
+#: src/format_time_summary.cpp:67
 msgid "%b %d"
 msgstr "%d %b"
 
 # Schätze das ist so gewünscht und korrekt.
 # Beispiel Datum = 01 Okt 14
-#: src/format_time_summary.cpp:66
+#. TRANSLATORS: Month + day of month + year, eg 'Nov 02 2021'. Format for your locale.
+#: src/format_time_summary.cpp:72
 msgid "%b %d %Y"
 msgstr "%d %b %y"
 
@@ -6447,11 +6416,11 @@ msgstr "Besiegt alle gegnerischen Anführer"
 msgid "Cannot find era '$era'"
 msgstr "Die Epoche '$era' wurde nicht gefunden"
 
-#: src/game_initialization/multiplayer.cpp:236
+#: src/game_initialization/multiplayer.cpp:237
 msgid "Invalid address specified for multiplayer server"
 msgstr ""
 
-#: src/game_initialization/multiplayer.cpp:271
+#: src/game_initialization/multiplayer.cpp:272
 msgid ""
 "The server accepts versions '$required_version', but you are using version "
 "'$your_version'"
@@ -6459,11 +6428,11 @@ msgstr ""
 "Der Server akzeptiert Version »$required_version«, Ihr verwendet aber "
 "Version »$your_version«"
 
-#: src/game_initialization/multiplayer.cpp:284
+#: src/game_initialization/multiplayer.cpp:285
 msgid "Server-side redirect loop"
 msgstr "Serverseitige Umleitungsschleife"
 
-#: src/game_initialization/multiplayer.cpp:334
+#: src/game_initialization/multiplayer.cpp:335
 msgid ""
 "The nickname ‘$nick’ is inactive. You cannot claim ownership of this "
 "nickname until you activate your account via email or ask an administrator "
@@ -6473,28 +6442,28 @@ msgstr ""
 "könnt, müsst Ihr per E-Mail Euer Konto aktivieren oder einen Administrator "
 "bitten, dies für Euch zu tun."
 
-#: src/game_initialization/multiplayer.cpp:343
+#: src/game_initialization/multiplayer.cpp:344
 msgid "Do you want to continue?"
 msgstr "Möchtet Ihr fortfahren?"
 
-#: src/game_initialization/multiplayer.cpp:345
+#: src/game_initialization/multiplayer.cpp:346
 msgid "Warning"
 msgstr "Warnung"
 
-#: src/game_initialization/multiplayer.cpp:408
+#: src/game_initialization/multiplayer.cpp:409
 msgid ""
 "The remote server requested a password while using an insecure connection."
 msgstr ""
 
-#: src/game_initialization/multiplayer.cpp:410
+#: src/game_initialization/multiplayer.cpp:411
 msgid "You must login first."
 msgstr "Ihr müsst Euch zuerst anmelden."
 
-#: src/game_initialization/multiplayer.cpp:412
+#: src/game_initialization/multiplayer.cpp:413
 msgid "The nickname ‘$nick’ is already taken."
 msgstr "Der Benutzername »$nick« ist bereits vergeben."
 
-#: src/game_initialization/multiplayer.cpp:414
+#: src/game_initialization/multiplayer.cpp:415
 msgid ""
 "The nickname ‘$nick’ contains invalid characters. Only alpha-numeric "
 "characters (one at minimum), underscores and hyphens are allowed."
@@ -6502,46 +6471,46 @@ msgstr ""
 "Der Benutzername »$nick« enthält ungültige Zeichen. Nur alphanumerische "
 "Zeichen, Unter- und Bindestriche sind erlaubt."
 
-#: src/game_initialization/multiplayer.cpp:418
+#: src/game_initialization/multiplayer.cpp:419
 msgid "The nickname ‘$nick’ is too long. Nicks must be 20 characters or less."
 msgstr ""
 "Der Benutzername »$nick« ist zu lang. Benuternamen dürfen maximal 20 Zeichen "
 "lang sein."
 
-#: src/game_initialization/multiplayer.cpp:420
+#: src/game_initialization/multiplayer.cpp:421
 msgid "The nickname ‘$nick’ is reserved and cannot be used by players."
 msgstr ""
 "Der Benutzername »$nick« ist reserviert und kann von Spielern nicht "
 "verwendet werden."
 
-#: src/game_initialization/multiplayer.cpp:422
+#: src/game_initialization/multiplayer.cpp:423
 msgid "The nickname ‘$nick’ is not registered on this server."
 msgstr "Der Benutzername »$nick« ist auf diesem Server nicht registriert."
 
-#: src/game_initialization/multiplayer.cpp:423
+#: src/game_initialization/multiplayer.cpp:424
 msgid " This server disallows unregistered nicknames."
 msgstr " Der Server erlaubt keine unregistrierten Benutzernamen."
 
-#: src/game_initialization/multiplayer.cpp:426
+#: src/game_initialization/multiplayer.cpp:427
 msgid "The nickname ‘$nick’ is banned on this server’s forums for $duration|."
 msgstr ""
 "Der Benutzername »$nick« ist von den Foren dieses Servers verbannt für "
 "$duration|."
 
-#: src/game_initialization/multiplayer.cpp:428
+#: src/game_initialization/multiplayer.cpp:429
 msgid "The nickname ‘$nick’ is banned on this server’s forums."
 msgstr "Der Benutzername »$nick« ist von den Foren dieses Servers verbannt."
 
-#: src/game_initialization/multiplayer.cpp:432
+#: src/game_initialization/multiplayer.cpp:433
 msgid "Your IP address is banned on this server’s forums for $duration|."
 msgstr ""
 "Eure IP Adresse ist von den Foren dieses Servers verbannt für $duration|."
 
-#: src/game_initialization/multiplayer.cpp:434
+#: src/game_initialization/multiplayer.cpp:435
 msgid "Your IP address is banned on this server’s forums."
 msgstr "Eure IP Adresse ist von den Foren dieses Servers verbannt."
 
-#: src/game_initialization/multiplayer.cpp:438
+#: src/game_initialization/multiplayer.cpp:439
 msgid ""
 "The email address for the nickname ‘$nick’ is banned on this server’s forums "
 "for $duration|."
@@ -6549,19 +6518,19 @@ msgstr ""
 "Die E-Mail Adresse für den Benutzernamen »$nick« ist von den Foren dieses "
 "Servers verbannt für $duration|."
 
-#: src/game_initialization/multiplayer.cpp:440
+#: src/game_initialization/multiplayer.cpp:441
 msgid ""
 "The email address for the nickname ‘$nick’ is banned on this server’s forums."
 msgstr ""
 "Die E-Mail Adresse für den Benutzernamen »$nick« ist von den Foren dieses "
 "Servers verbannt."
 
-#: src/game_initialization/multiplayer.cpp:443
-#: src/game_initialization/multiplayer.cpp:445
+#: src/game_initialization/multiplayer.cpp:444
+#: src/game_initialization/multiplayer.cpp:446
 msgid "The nickname ‘$nick’ is registered on this server."
 msgstr "Der Benutzername »$nick« ist auf diesem Server registriert."
 
-#: src/game_initialization/multiplayer.cpp:446
+#: src/game_initialization/multiplayer.cpp:447
 msgid ""
 "WARNING: There is already a client using this nickname, logging in will "
 "cause that client to be kicked!"
@@ -6569,15 +6538,15 @@ msgstr ""
 "WARNUNG: Es gibt bereits einen Teilnehmer mit diesem Spielernamen. Wenn Ihr "
 "Euch damit anmeldet, wird dieser Benutzer vom Server geworfen!"
 
-#: src/game_initialization/multiplayer.cpp:449
+#: src/game_initialization/multiplayer.cpp:450
 msgid "The password you provided was incorrect."
 msgstr "Das eingegebene Passwort ist nicht korrekt."
 
-#: src/game_initialization/multiplayer.cpp:451
+#: src/game_initialization/multiplayer.cpp:452
 msgid "You have made too many login attempts."
 msgstr "Ihr habt zu viele Anmeldeversuche unternommen."
 
-#: src/game_initialization/multiplayer.cpp:453
+#: src/game_initialization/multiplayer.cpp:454
 msgid "Password hashing failed."
 msgstr ""
 
@@ -8313,20 +8282,22 @@ msgstr "Countdown, nach welchem Euer Zug automatisch endet."
 msgid "Turn Countdown"
 msgstr "Zug Countdown"
 
-#: src/save_index.cpp:279
+#. TRANSLATORS: Day of week + month + day of month + 12-hour time + year, eg 'Tue Nov 02 1:59 PM 2021'. Format for your locale.
+#: src/save_index.cpp:280
 msgid "%a %b %d %I:%M %p %Y"
 msgstr "%a %b %d %I:%M %p %Y"
 
-#: src/save_index.cpp:280
+#. TRANSLATORS: Day of week + month + day of month + 24-hour time + year, eg 'Tue Nov 02 13:59 2021'. Format for your locale.
+#: src/save_index.cpp:282
 msgid "%a %b %d %H:%M %Y"
 msgstr "%a %d %b %H:%M %Y"
 
 #. TRANSLATORS: This string is used as part of a filename, as in, "HttT-The Elves Besieged replay.gz"
-#: src/save_index.cpp:300 src/savegame.cpp:588
+#: src/save_index.cpp:302 src/savegame.cpp:588
 msgid "replay"
 msgstr "Aufzeichnung abspielen"
 
-#: src/save_index.cpp:384 src/savegame.cpp:71 src/savegame.cpp:624
+#: src/save_index.cpp:386 src/savegame.cpp:71 src/savegame.cpp:624
 #: src/savegame.cpp:626
 msgid "Auto-Save"
 msgstr "Autospeichern"
@@ -8841,6 +8812,33 @@ msgstr "Pläne für Spieler $player verbergen"
 #: src/whiteboard/manager.cpp:1138
 msgid "Whiteboard Options"
 msgstr "Planungsmodus Optionen"
+
+#~ msgid "<room>"
+#~ msgstr "<Raum>"
+
+#~ msgid "Join a room."
+#~ msgstr "Betretet einen Raum."
+
+#~ msgid "Part a room."
+#~ msgstr "Verlasst einen Raum."
+
+#~ msgid "List room members."
+#~ msgstr "Listet Besucher eines Raumes auf."
+
+#~ msgid "List available rooms."
+#~ msgstr "Listet alle verfügbaren Räume auf."
+
+#~ msgid "<room> <msg>"
+#~ msgstr "<Raum> <Nachricht>"
+
+#~ msgid "Room message."
+#~ msgstr "Sendet eine Nachricht an einen Raum."
+
+#~ msgid "<room> <type> [value]"
+#~ msgstr "<Raum> <Typ> [Wert]"
+
+#~ msgid "Room query."
+#~ msgstr "Raumabfrage."
 
 #, fuzzy
 #~| msgid "Overall"

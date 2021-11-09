@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-10-23 20:57-0300\n"
+"POT-Creation-Date: 2021-11-09 03:45+0300\n"
 "PO-Revision-Date: 2021-09-07 11:59+0300\n"
 "Last-Translator: Artem Khrapov <artemkhrapov2001@yandex.ru>\n"
 "Language-Team: https://wiki.wesnoth.org/RussianTranslation\n"
@@ -871,8 +871,8 @@ msgstr "Зерновой сноп"
 msgid "Runic Hammer"
 msgstr "Рунический молот"
 
-#. [object]
 #. [item]: id=holly-water
+#. [object]
 #: data/core/editor/items.cfg:282 data/core/macros/items.cfg:283
 msgid "Holy Water"
 msgstr "Святая вода"
@@ -913,8 +913,8 @@ msgstr "Зеленое зелье"
 msgid "Gray Potion"
 msgstr "Серое зелье"
 
-#. [object]: id={ID}
 #. [item]: id=potion-poison
+#. [object]: id={ID}
 #: data/core/editor/items.cfg:336 data/core/macros/items.cfg:246
 msgid "Poison"
 msgstr "Яд"
@@ -984,8 +984,8 @@ msgstr "Посох"
 msgid "Stone Tablet"
 msgstr "Каменная табличка"
 
-#. [object]
 #. [item]: id=storm-trident
+#. [object]
 #: data/core/editor/items.cfg:420 data/core/macros/items.cfg:529
 msgid "Storm Trident"
 msgstr "Штормовой трезубец"
@@ -5442,7 +5442,7 @@ msgid "Do you really wish to continue?"
 msgstr "Вы точно хотите продолжить?"
 
 #: src/addon/client.cpp:552 src/addon/manager_ui.cpp:173
-#: src/game_initialization/multiplayer.cpp:361
+#: src/game_initialization/multiplayer.cpp:362
 msgid "Confirm"
 msgstr "Подтвердить"
 
@@ -5733,55 +5733,55 @@ msgstr "На сервере нет ни одной версии аддона."
 msgid "Unspecified validation failure."
 msgstr "Неустановленная ошибка подтверждения."
 
-#: src/chat_command_handler.cpp:113
+#: src/chat_command_handler.cpp:76
 msgid "Added to ignore list: $nick"
 msgstr "Добавлен в игнор-лист: $nick"
 
-#: src/chat_command_handler.cpp:113
+#: src/chat_command_handler.cpp:76
 msgid "ignores list"
 msgstr "список игнора"
 
-#: src/chat_command_handler.cpp:117 src/chat_command_handler.cpp:136
+#: src/chat_command_handler.cpp:80 src/chat_command_handler.cpp:99
 msgid "Invalid username: $nick"
 msgstr "Неправильный ник: $nick"
 
-#: src/chat_command_handler.cpp:132
+#: src/chat_command_handler.cpp:95
 msgid "Added to friends list: $nick"
 msgstr "Добавлен в список друзей: $nick"
 
-#: src/chat_command_handler.cpp:132
+#: src/chat_command_handler.cpp:95
 msgid "friends list"
 msgstr "список друзей"
 
-#: src/chat_command_handler.cpp:148
+#: src/chat_command_handler.cpp:111
 msgid "Removed from list: $nick"
 msgstr "Удален из списка: $nick"
 
-#: src/chat_command_handler.cpp:148
+#: src/chat_command_handler.cpp:111
 msgid "friends and ignores list"
 msgstr "списки друзей и игнора"
 
-#: src/chat_command_handler.cpp:158
+#: src/chat_command_handler.cpp:121
 msgid "version"
 msgstr "версия"
 
-#: src/chat_command_handler.cpp:170
+#: src/chat_command_handler.cpp:133
 msgid "nick registration"
 msgstr "регистрирую ник"
 
-#: src/chat_command_handler.cpp:170
+#: src/chat_command_handler.cpp:133
 msgid "requesting information for user $nick"
 msgstr "запрашиваю информацию о пользователе $nick"
 
-#: src/chat_command_handler.hpp:52
+#: src/chat_command_handler.hpp:48
 msgid "(A) — admin command"
 msgstr "(A) — админская команда"
 
-#: src/chat_command_handler.hpp:59 src/menu_events.cpp:1194
+#: src/chat_command_handler.hpp:55 src/menu_events.cpp:1194
 msgid "(admin only)"
 msgstr "(только для админов)"
 
-#: src/chat_command_handler.hpp:74
+#: src/chat_command_handler.hpp:70
 msgid ""
 "Send a query to the server. Without arguments the server should tell you the "
 "available commands."
@@ -5789,7 +5789,7 @@ msgstr ""
 "Отослать запрос на сервер. Без параметров, сервер выдаст список доступных "
 "команд."
 
-#: src/chat_command_handler.hpp:78
+#: src/chat_command_handler.hpp:74
 msgid ""
 "Ban and kick a player or observer. If he is not in the game but on the "
 "server he will only be banned."
@@ -5797,39 +5797,39 @@ msgstr ""
 "Забанить и кикнуть игрока или зрителя. Если он не в игре, но на сервере, то "
 "Вы его только забаните."
 
-#: src/chat_command_handler.hpp:79 src/chat_command_handler.hpp:82
-#: src/chat_command_handler.hpp:84 src/chat_command_handler.hpp:86
-#: src/chat_command_handler.hpp:88 src/chat_command_handler.hpp:109
-#: src/chat_command_handler.hpp:111 src/chat_command_handler.hpp:113
-#: src/chat_command_handler.hpp:119
+#: src/chat_command_handler.hpp:75 src/chat_command_handler.hpp:78
+#: src/chat_command_handler.hpp:80 src/chat_command_handler.hpp:82
+#: src/chat_command_handler.hpp:84 src/chat_command_handler.hpp:105
+#: src/chat_command_handler.hpp:107 src/chat_command_handler.hpp:109
+#: src/chat_command_handler.hpp:115
 msgid "<nickname>"
 msgstr "<ник>"
 
-#: src/chat_command_handler.hpp:81
+#: src/chat_command_handler.hpp:77
 msgid "Unban a user. He does not have to be in the game but on the server."
 msgstr ""
 "Разбанить пользователя. Он не обязан быть в игре, но должен быть на сервере."
 
-#: src/chat_command_handler.hpp:84
+#: src/chat_command_handler.hpp:80
 msgid "Kick a player or observer."
 msgstr "Кикнуть игрока или зрителя."
 
-#: src/chat_command_handler.hpp:86
+#: src/chat_command_handler.hpp:82
 msgid "Mute an observer. Without an argument displays the mute status."
 msgstr ""
 "Отключить реплики наблюдателей. Без параметра — отключает всех наблюдателей."
 
-#: src/chat_command_handler.hpp:88
+#: src/chat_command_handler.hpp:84
 msgid "Unmute an observer. Without an argument unmutes everyone."
 msgstr ""
 "Разрешить наблюдателю говорить. Без параметра — разрешить говорить всем "
 "наблюдателям."
 
-#: src/chat_command_handler.hpp:90
+#: src/chat_command_handler.hpp:86
 msgid "Mute/Unmute all observers. (toggles)"
 msgstr "Запретить/разрешить всем зрителям говорить. (переключить)"
 
-#: src/chat_command_handler.hpp:92
+#: src/chat_command_handler.hpp:88
 msgid ""
 "Send some data to the server. Can be used to verify the network connection "
 "and notice disconnects."
@@ -5837,7 +5837,7 @@ msgstr ""
 "Отправить произвольное сообщение на сервер. Можно использовать, чтобы "
 "проверить доступность соединения."
 
-#: src/chat_command_handler.hpp:94
+#: src/chat_command_handler.hpp:90
 msgid ""
 "Report abuse, rule violations, etc. to the server moderators. Make sure to "
 "mention relevant nicknames, etc."
@@ -5845,15 +5845,15 @@ msgstr ""
 "Сообщить о некорректном поведении, нарушении правил и т.п. модераторам "
 "сервера. Пожалуйста, правильно называйте ники и т.п."
 
-#: src/chat_command_handler.hpp:98
+#: src/chat_command_handler.hpp:94
 msgid "<message>"
 msgstr "<сообщение>"
 
-#: src/chat_command_handler.hpp:98
+#: src/chat_command_handler.hpp:94
 msgid "Send an emotion or personal action in chat."
 msgstr "Отправить эмоцию или действие в чате."
 
-#: src/chat_command_handler.hpp:101
+#: src/chat_command_handler.hpp:97
 msgid ""
 "Send a private message. You cannot send private messages to players in a "
 "running game you observe or play in."
@@ -5861,84 +5861,47 @@ msgstr ""
 "Отправить приватное сообщение. Вы не можете отправлять сообщения игрокам в "
 "партии, в которую вы играете или за которой вы наблюдаете."
 
-#: src/chat_command_handler.hpp:103
+#: src/chat_command_handler.hpp:99
 msgid "<nickname> <message>"
 msgstr "<ник> <сообщение>"
 
-#: src/chat_command_handler.hpp:107
+#: src/chat_command_handler.hpp:103
 msgid "<level> <domain>"
 msgstr "<уровень> <домен>"
 
-#: src/chat_command_handler.hpp:107
+#: src/chat_command_handler.hpp:103
 msgid "Change the log level of a log domain."
 msgstr "Сменить уровень лога в домене лога."
 
-#: src/chat_command_handler.hpp:109
+#: src/chat_command_handler.hpp:105
 msgid "Add a nickname to your ignores list."
 msgstr "Добавить игрока в список игнора."
 
-#: src/chat_command_handler.hpp:111
+#: src/chat_command_handler.hpp:107
 msgid "Add a nickname to your friends list."
 msgstr "Добавить в друзья."
 
-#: src/chat_command_handler.hpp:113
+#: src/chat_command_handler.hpp:109
 msgid "Remove a nickname from your ignores or friends list."
 msgstr "Удалить игрока из списка игнора или списка друзей."
 
-#: src/chat_command_handler.hpp:115
+#: src/chat_command_handler.hpp:111
 msgid "<N>"
 msgstr "<N>"
 
-#: src/chat_command_handler.hpp:115
+#: src/chat_command_handler.hpp:111
 msgid "Get a random number between 1 and N visible in the game setup lobby."
 msgstr ""
 "Получить случайное число в диапазоне от 1 до N, видимое в лобби настроек "
 "игры."
 
-#: src/chat_command_handler.hpp:117
+#: src/chat_command_handler.hpp:113
 msgid "Display version information."
 msgstr "Показать версию."
 
-#: src/chat_command_handler.hpp:119
+#: src/chat_command_handler.hpp:115
 msgid "Request information about a nickname."
 msgstr "Запросить данные о нике."
-
-#: src/chat_command_handler.hpp:121 src/chat_command_handler.hpp:124
-#: src/chat_command_handler.hpp:126
-msgid "<room>"
-msgstr "<комната>"
-
-#: src/chat_command_handler.hpp:121
-msgid "Join a room."
-msgstr "Зайти в комнату."
-
-#: src/chat_command_handler.hpp:124
-msgid "Part a room."
-msgstr "Разделить комнату."
-
-#: src/chat_command_handler.hpp:126
-msgid "List room members."
-msgstr "Список игроков в комнате."
-
-#: src/chat_command_handler.hpp:128
-msgid "List available rooms."
-msgstr "Список доступных комнат."
-
-#: src/chat_command_handler.hpp:130
-msgid "<room> <msg>"
-msgstr "<комната> <сообщение>"
-
-#: src/chat_command_handler.hpp:130
-msgid "Room message."
-msgstr "Сообщение для комнаты."
-
-#: src/chat_command_handler.hpp:132
-msgid "<room> <type> [value]"
-msgstr "<комната> <тип> [значение]"
-
-#: src/chat_command_handler.hpp:132
-msgid "Room query."
-msgstr "Запрос к комнате."
 
 #: src/chat_events.cpp:60
 msgid "Unknown debug level: '$level'."
@@ -5956,11 +5919,11 @@ msgstr "Неизвестный домен отладки: '$domain'."
 msgid "Switched domain: '$domain' to level: '$level'."
 msgstr "Домен: '$domain' переключён на уровень: '$level'."
 
-#: src/chat_events.cpp:154
+#: src/chat_events.cpp:148
 msgid "whisper to $receiver"
 msgstr "прошептать $receiver"
 
-#: src/chat_events.cpp:161
+#: src/chat_events.cpp:155
 msgid "whisper: $sender"
 msgstr "шёпот: $sender"
 
@@ -5997,27 +5960,33 @@ msgstr "Битва за Веснот"
 msgid "Invalid Color"
 msgstr "Неверный цвет"
 
-#: src/format_time_summary.cpp:47
+#. TRANSLATORS: 24-hour time, eg '13:59'
+#: src/format_time_summary.cpp:48
 msgid "%H:%M"
 msgstr "%H:%M"
 
-#: src/format_time_summary.cpp:50
+#. TRANSLATORS: 12-hour time, eg '1:59 PM'
+#: src/format_time_summary.cpp:52
 msgid "%I:%M %p"
 msgstr "%I:%M %p"
 
-#: src/format_time_summary.cpp:55
+#. TRANSLATORS: Day of week + 24-hour time, eg 'Sunday, 13:59'
+#: src/format_time_summary.cpp:58
 msgid "%A, %H:%M"
 msgstr "%A, %H:%M"
 
-#: src/format_time_summary.cpp:58
+#. TRANSLATORS: Day of week + 12-hour time, eg 'Sunday, 1:59 PM'
+#: src/format_time_summary.cpp:62
 msgid "%A, %I:%M %p"
 msgstr "%A, %I:%M %p"
 
-#: src/format_time_summary.cpp:62
+#. TRANSLATORS: Month + day of month, eg 'Nov 02'. Format for your locale.
+#: src/format_time_summary.cpp:67
 msgid "%b %d"
 msgstr "%b %d"
 
-#: src/format_time_summary.cpp:66
+#. TRANSLATORS: Month + day of month + year, eg 'Nov 02 2021'. Format for your locale.
+#: src/format_time_summary.cpp:72
 msgid "%b %d %Y"
 msgstr "%b %d %Y"
 
@@ -6328,11 +6297,11 @@ msgstr "Убейте лидера(ов) противника"
 msgid "Cannot find era '$era'"
 msgstr "Эра «$era» не найдена"
 
-#: src/game_initialization/multiplayer.cpp:236
+#: src/game_initialization/multiplayer.cpp:237
 msgid "Invalid address specified for multiplayer server"
 msgstr "Указан неверный адрес сервера игры мультиплеера"
 
-#: src/game_initialization/multiplayer.cpp:271
+#: src/game_initialization/multiplayer.cpp:272
 msgid ""
 "The server accepts versions '$required_version', but you are using version "
 "'$your_version'"
@@ -6340,11 +6309,11 @@ msgstr ""
 "Сервер принимает версии '$required_version', тогда как Вы используете версию "
 "'$your_version'"
 
-#: src/game_initialization/multiplayer.cpp:284
+#: src/game_initialization/multiplayer.cpp:285
 msgid "Server-side redirect loop"
 msgstr "Редирект со стороны сервера"
 
-#: src/game_initialization/multiplayer.cpp:334
+#: src/game_initialization/multiplayer.cpp:335
 msgid ""
 "The nickname ‘$nick’ is inactive. You cannot claim ownership of this "
 "nickname until you activate your account via email or ask an administrator "
@@ -6354,28 +6323,28 @@ msgstr ""
 "активируете свой аккаунт по email или не попросите администратора "
 "активировать Вас."
 
-#: src/game_initialization/multiplayer.cpp:343
+#: src/game_initialization/multiplayer.cpp:344
 msgid "Do you want to continue?"
 msgstr "Вы хотите продолжить?"
 
-#: src/game_initialization/multiplayer.cpp:345
+#: src/game_initialization/multiplayer.cpp:346
 msgid "Warning"
 msgstr "Предупреждение"
 
-#: src/game_initialization/multiplayer.cpp:408
+#: src/game_initialization/multiplayer.cpp:409
 msgid ""
 "The remote server requested a password while using an insecure connection."
 msgstr "Удалённый сервер запросил пароль, используя незащищённое соединение."
 
-#: src/game_initialization/multiplayer.cpp:410
+#: src/game_initialization/multiplayer.cpp:411
 msgid "You must login first."
 msgstr "Сначала залогинтесь."
 
-#: src/game_initialization/multiplayer.cpp:412
+#: src/game_initialization/multiplayer.cpp:413
 msgid "The nickname ‘$nick’ is already taken."
 msgstr "Ник ‘$nick’ уже занят."
 
-#: src/game_initialization/multiplayer.cpp:414
+#: src/game_initialization/multiplayer.cpp:415
 msgid ""
 "The nickname ‘$nick’ contains invalid characters. Only alpha-numeric "
 "characters (one at minimum), underscores and hyphens are allowed."
@@ -6383,39 +6352,39 @@ msgstr ""
 "Ник ‘$nick’ содержит запрещённые символы. Разрешены только алфавитно-"
 "цифровые символы (минимум один), знаки подчёркивания и переноса."
 
-#: src/game_initialization/multiplayer.cpp:418
+#: src/game_initialization/multiplayer.cpp:419
 msgid "The nickname ‘$nick’ is too long. Nicks must be 20 characters or less."
 msgstr "Ник ‘$nick’ слишком длинен. Ники должны быть не длиннее 20 символов."
 
-#: src/game_initialization/multiplayer.cpp:420
+#: src/game_initialization/multiplayer.cpp:421
 msgid "The nickname ‘$nick’ is reserved and cannot be used by players."
 msgstr "Ник ‘$nick’ зарезервирован, его нельзя использовать."
 
-#: src/game_initialization/multiplayer.cpp:422
+#: src/game_initialization/multiplayer.cpp:423
 msgid "The nickname ‘$nick’ is not registered on this server."
 msgstr "Ник ‘$nick’ на этом сервере не зарегистрирован."
 
-#: src/game_initialization/multiplayer.cpp:423
+#: src/game_initialization/multiplayer.cpp:424
 msgid " This server disallows unregistered nicknames."
 msgstr " Этот сервер не разрешает использовать незарегистрированные ники."
 
-#: src/game_initialization/multiplayer.cpp:426
+#: src/game_initialization/multiplayer.cpp:427
 msgid "The nickname ‘$nick’ is banned on this server’s forums for $duration|."
 msgstr "Ник ‘$nick’ забанен на форумах этого сервера на $duration|."
 
-#: src/game_initialization/multiplayer.cpp:428
+#: src/game_initialization/multiplayer.cpp:429
 msgid "The nickname ‘$nick’ is banned on this server’s forums."
 msgstr "Ник ‘$nick’ забанен на форумах этого сервера."
 
-#: src/game_initialization/multiplayer.cpp:432
+#: src/game_initialization/multiplayer.cpp:433
 msgid "Your IP address is banned on this server’s forums for $duration|."
 msgstr "Ваш IP-адрес забанен на форумах этого сервера на $duration|."
 
-#: src/game_initialization/multiplayer.cpp:434
+#: src/game_initialization/multiplayer.cpp:435
 msgid "Your IP address is banned on this server’s forums."
 msgstr "Ваш IP-адрес забанен на форумах этого сервера."
 
-#: src/game_initialization/multiplayer.cpp:438
+#: src/game_initialization/multiplayer.cpp:439
 msgid ""
 "The email address for the nickname ‘$nick’ is banned on this server’s forums "
 "for $duration|."
@@ -6423,19 +6392,19 @@ msgstr ""
 "Адрес электронной почты для псевдонима ‘$nick’ забанен на форумах этого "
 "сервера на $duration|."
 
-#: src/game_initialization/multiplayer.cpp:440
+#: src/game_initialization/multiplayer.cpp:441
 msgid ""
 "The email address for the nickname ‘$nick’ is banned on this server’s forums."
 msgstr ""
 "Адрес электронной почты для псевдонима ‘$nick’ забанен на форумах этого "
 "сервера."
 
-#: src/game_initialization/multiplayer.cpp:443
-#: src/game_initialization/multiplayer.cpp:445
+#: src/game_initialization/multiplayer.cpp:444
+#: src/game_initialization/multiplayer.cpp:446
 msgid "The nickname ‘$nick’ is registered on this server."
 msgstr "Ник ‘$nick’ зарегистрирован на этом сервере."
 
-#: src/game_initialization/multiplayer.cpp:446
+#: src/game_initialization/multiplayer.cpp:447
 msgid ""
 "WARNING: There is already a client using this nickname, logging in will "
 "cause that client to be kicked!"
@@ -6443,15 +6412,15 @@ msgstr ""
 "ВНИМАНИЕ: Один из клиентов уже использует этот ник, если Вы залогинитесь под "
 "ним, его кикнут!"
 
-#: src/game_initialization/multiplayer.cpp:449
+#: src/game_initialization/multiplayer.cpp:450
 msgid "The password you provided was incorrect."
 msgstr "Вы ввели неправильный пароль."
 
-#: src/game_initialization/multiplayer.cpp:451
+#: src/game_initialization/multiplayer.cpp:452
 msgid "You have made too many login attempts."
 msgstr "Вы пытались войти слишком много раз."
 
-#: src/game_initialization/multiplayer.cpp:453
+#: src/game_initialization/multiplayer.cpp:454
 msgid "Password hashing failed."
 msgstr "Не удалось хешировать пароль."
 
@@ -8119,20 +8088,22 @@ msgstr "Обратный отсчет до момента пока ваш ход
 msgid "Turn Countdown"
 msgstr "Обратный отсчет"
 
-#: src/save_index.cpp:279
+#. TRANSLATORS: Day of week + month + day of month + 12-hour time + year, eg 'Tue Nov 02 1:59 PM 2021'. Format for your locale.
+#: src/save_index.cpp:280
 msgid "%a %b %d %I:%M %p %Y"
 msgstr "%a %b %d %I:%M %p %Y"
 
-#: src/save_index.cpp:280
+#. TRANSLATORS: Day of week + month + day of month + 24-hour time + year, eg 'Tue Nov 02 13:59 2021'. Format for your locale.
+#: src/save_index.cpp:282
 msgid "%a %b %d %H:%M %Y"
 msgstr "%a %b %d %H:%M %Y"
 
 #. TRANSLATORS: This string is used as part of a filename, as in, "HttT-The Elves Besieged replay.gz"
-#: src/save_index.cpp:300 src/savegame.cpp:588
+#: src/save_index.cpp:302 src/savegame.cpp:588
 msgid "replay"
 msgstr "повтор"
 
-#: src/save_index.cpp:384 src/savegame.cpp:71 src/savegame.cpp:624
+#: src/save_index.cpp:386 src/savegame.cpp:71 src/savegame.cpp:624
 #: src/savegame.cpp:626
 msgid "Auto-Save"
 msgstr "Автосохр"
@@ -8661,6 +8632,33 @@ msgstr "Скрыть план $player"
 #: src/whiteboard/manager.cpp:1138
 msgid "Whiteboard Options"
 msgstr "Настройки планировщика"
+
+#~ msgid "<room>"
+#~ msgstr "<комната>"
+
+#~ msgid "Join a room."
+#~ msgstr "Зайти в комнату."
+
+#~ msgid "Part a room."
+#~ msgstr "Разделить комнату."
+
+#~ msgid "List room members."
+#~ msgstr "Список игроков в комнате."
+
+#~ msgid "List available rooms."
+#~ msgstr "Список доступных комнат."
+
+#~ msgid "<room> <msg>"
+#~ msgstr "<комната> <сообщение>"
+
+#~ msgid "Room message."
+#~ msgstr "Сообщение для комнаты."
+
+#~ msgid "<room> <type> [value]"
+#~ msgstr "<комната> <тип> [значение]"
+
+#~ msgid "Room query."
+#~ msgstr "Запрос к комнате."
 
 #, fuzzy
 #~| msgid "Overall"

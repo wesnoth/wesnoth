@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ga\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-10-23 20:57-0300\n"
+"POT-Creation-Date: 2021-11-09 03:45+0300\n"
 "PO-Revision-Date: 2012-02-20 16:40-0800\n"
 "Last-Translator: Carson Callis aka Mountian_King <tree_rings@rocketmail."
 "com>\n"
@@ -887,8 +887,8 @@ msgstr ""
 msgid "Runic Hammer"
 msgstr ""
 
-#. [object]
 #. [item]: id=holly-water
+#. [object]
 #: data/core/editor/items.cfg:282 data/core/macros/items.cfg:283
 msgid "Holy Water"
 msgstr "Uisce Coisricthe"
@@ -931,8 +931,8 @@ msgstr "Suíomh neamhbhailí"
 msgid "Gray Potion"
 msgstr ""
 
-#. [object]: id={ID}
 #. [item]: id=potion-poison
+#. [object]: id={ID}
 #: data/core/editor/items.cfg:336 data/core/macros/items.cfg:246
 msgid "Poison"
 msgstr "Nimh"
@@ -1010,8 +1010,8 @@ msgstr ""
 msgid "Stone Tablet"
 msgstr ""
 
-#. [object]
 #. [item]: id=storm-trident
+#. [object]
 #: data/core/editor/items.cfg:420 data/core/macros/items.cfg:529
 msgid "Storm Trident"
 msgstr "Trírinn Stoirme"
@@ -5024,7 +5024,7 @@ msgid "Do you really wish to continue?"
 msgstr "An dteastaíonn uait lean ar aghaidh?"
 
 #: src/addon/client.cpp:552 src/addon/manager_ui.cpp:173
-#: src/game_initialization/multiplayer.cpp:361
+#: src/game_initialization/multiplayer.cpp:362
 msgid "Confirm"
 msgstr "Deimhnigh"
 
@@ -5320,198 +5320,160 @@ msgstr ""
 msgid "Unspecified validation failure."
 msgstr ""
 
-#: src/chat_command_handler.cpp:113
+#: src/chat_command_handler.cpp:76
 msgid "Added to ignore list: $nick"
 msgstr "Chuir tú $nick ar liosta díbeartach"
 
-#: src/chat_command_handler.cpp:113
+#: src/chat_command_handler.cpp:76
 msgid "ignores list"
 msgstr "liosta díbeartach"
 
-#: src/chat_command_handler.cpp:117 src/chat_command_handler.cpp:136
+#: src/chat_command_handler.cpp:80 src/chat_command_handler.cpp:99
 msgid "Invalid username: $nick"
 msgstr "Ainm úsáideora anaithnid: $nick"
 
-#: src/chat_command_handler.cpp:132
+#: src/chat_command_handler.cpp:95
 msgid "Added to friends list: $nick"
 msgstr "Chuir tú $nick ar liosta carad"
 
-#: src/chat_command_handler.cpp:132
+#: src/chat_command_handler.cpp:95
 msgid "friends list"
 msgstr "liosta carad"
 
-#: src/chat_command_handler.cpp:148
+#: src/chat_command_handler.cpp:111
 msgid "Removed from list: $nick"
 msgstr "Tá ainm bainte as liosta: $nick"
 
-#: src/chat_command_handler.cpp:148
+#: src/chat_command_handler.cpp:111
 msgid "friends and ignores list"
 msgstr "liosta carad agus díbeartach"
 
-#: src/chat_command_handler.cpp:158
+#: src/chat_command_handler.cpp:121
 msgid "version"
 msgstr "insint"
 
-#: src/chat_command_handler.cpp:170
+#: src/chat_command_handler.cpp:133
 msgid "nick registration"
 msgstr "clárúchán leasainm"
 
-#: src/chat_command_handler.cpp:170
+#: src/chat_command_handler.cpp:133
 msgid "requesting information for user $nick"
 msgstr ""
 
-#: src/chat_command_handler.hpp:52
+#: src/chat_command_handler.hpp:48
 msgid "(A) — admin command"
 msgstr "(A) - ordú riarthóra"
 
-#: src/chat_command_handler.hpp:59 src/menu_events.cpp:1194
+#: src/chat_command_handler.hpp:55 src/menu_events.cpp:1194
 msgid "(admin only)"
 msgstr "(riarthóir amháin)"
 
-#: src/chat_command_handler.hpp:74
+#: src/chat_command_handler.hpp:70
 msgid ""
 "Send a query to the server. Without arguments the server should tell you the "
 "available commands."
 msgstr ""
 
-#: src/chat_command_handler.hpp:78
+#: src/chat_command_handler.hpp:74
 msgid ""
 "Ban and kick a player or observer. If he is not in the game but on the "
 "server he will only be banned."
 msgstr ""
 
-#: src/chat_command_handler.hpp:79 src/chat_command_handler.hpp:82
-#: src/chat_command_handler.hpp:84 src/chat_command_handler.hpp:86
-#: src/chat_command_handler.hpp:88 src/chat_command_handler.hpp:109
-#: src/chat_command_handler.hpp:111 src/chat_command_handler.hpp:113
-#: src/chat_command_handler.hpp:119
+#: src/chat_command_handler.hpp:75 src/chat_command_handler.hpp:78
+#: src/chat_command_handler.hpp:80 src/chat_command_handler.hpp:82
+#: src/chat_command_handler.hpp:84 src/chat_command_handler.hpp:105
+#: src/chat_command_handler.hpp:107 src/chat_command_handler.hpp:109
+#: src/chat_command_handler.hpp:115
 msgid "<nickname>"
 msgstr "<leasainm>"
 
-#: src/chat_command_handler.hpp:81
+#: src/chat_command_handler.hpp:77
 msgid "Unban a user. He does not have to be in the game but on the server."
 msgstr ""
 
-#: src/chat_command_handler.hpp:84
+#: src/chat_command_handler.hpp:80
 msgid "Kick a player or observer."
 msgstr "Ciceáil imreoir nó breathnóir."
 
-#: src/chat_command_handler.hpp:86
+#: src/chat_command_handler.hpp:82
 msgid "Mute an observer. Without an argument displays the mute status."
 msgstr ""
 
-#: src/chat_command_handler.hpp:88
+#: src/chat_command_handler.hpp:84
 msgid "Unmute an observer. Without an argument unmutes everyone."
 msgstr ""
 
-#: src/chat_command_handler.hpp:90
+#: src/chat_command_handler.hpp:86
 msgid "Mute/Unmute all observers. (toggles)"
 msgstr ""
 
-#: src/chat_command_handler.hpp:92
+#: src/chat_command_handler.hpp:88
 msgid ""
 "Send some data to the server. Can be used to verify the network connection "
 "and notice disconnects."
 msgstr ""
 
-#: src/chat_command_handler.hpp:94
+#: src/chat_command_handler.hpp:90
 msgid ""
 "Report abuse, rule violations, etc. to the server moderators. Make sure to "
 "mention relevant nicknames, etc."
 msgstr ""
 
-#: src/chat_command_handler.hpp:98
+#: src/chat_command_handler.hpp:94
 msgid "<message>"
 msgstr "<teachtaireacht>"
 
-#: src/chat_command_handler.hpp:98
+#: src/chat_command_handler.hpp:94
 msgid "Send an emotion or personal action in chat."
 msgstr ""
 
-#: src/chat_command_handler.hpp:101
+#: src/chat_command_handler.hpp:97
 msgid ""
 "Send a private message. You cannot send private messages to players in a "
 "running game you observe or play in."
 msgstr ""
 
-#: src/chat_command_handler.hpp:103
+#: src/chat_command_handler.hpp:99
 msgid "<nickname> <message>"
 msgstr "<leasainm> <teachtaireacht>"
 
-#: src/chat_command_handler.hpp:107
+#: src/chat_command_handler.hpp:103
 msgid "<level> <domain>"
 msgstr "<leibhéal> <fearann>"
 
-#: src/chat_command_handler.hpp:107
+#: src/chat_command_handler.hpp:103
 #, fuzzy
 msgid "Change the log level of a log domain."
 msgstr "B<--log->I<level>B<=>I<domain1>B<,>I<domain2>B<,>I<...>"
 
-#: src/chat_command_handler.hpp:109
+#: src/chat_command_handler.hpp:105
 msgid "Add a nickname to your ignores list."
 msgstr "Cuir ainm ar do liosta díbeartach."
 
-#: src/chat_command_handler.hpp:111
+#: src/chat_command_handler.hpp:107
 msgid "Add a nickname to your friends list."
 msgstr "Cuir ainm ar do liosta carad."
 
-#: src/chat_command_handler.hpp:113
+#: src/chat_command_handler.hpp:109
 msgid "Remove a nickname from your ignores or friends list."
 msgstr "Bain ainm as do liosta carad nó díbeartach."
 
-#: src/chat_command_handler.hpp:115
+#: src/chat_command_handler.hpp:111
 msgid "<N>"
 msgstr ""
 
-#: src/chat_command_handler.hpp:115
+#: src/chat_command_handler.hpp:111
 msgid "Get a random number between 1 and N visible in the game setup lobby."
 msgstr ""
 
-#: src/chat_command_handler.hpp:117
+#: src/chat_command_handler.hpp:113
 msgid "Display version information."
 msgstr "Taispeáin eolas leagain."
 
-#: src/chat_command_handler.hpp:119
+#: src/chat_command_handler.hpp:115
 msgid "Request information about a nickname."
 msgstr ""
-
-#: src/chat_command_handler.hpp:121 src/chat_command_handler.hpp:124
-#: src/chat_command_handler.hpp:126
-msgid "<room>"
-msgstr "<seomra>"
-
-#: src/chat_command_handler.hpp:121
-msgid "Join a room."
-msgstr "Téigh isteach i seomra."
-
-#: src/chat_command_handler.hpp:124
-msgid "Part a room."
-msgstr "Scar seomra."
-
-#: src/chat_command_handler.hpp:126
-msgid "List room members."
-msgstr "Liostaigh comhaltaí den sheomra."
-
-#: src/chat_command_handler.hpp:128
-msgid "List available rooms."
-msgstr "Liostaigh seomraí ar fáil."
-
-#: src/chat_command_handler.hpp:130
-msgid "<room> <msg>"
-msgstr "<seomra> <teachtaireacht>"
-
-#: src/chat_command_handler.hpp:130
-msgid "Room message."
-msgstr "Teachtaireacht seomra."
-
-#: src/chat_command_handler.hpp:132
-#, fuzzy
-msgid "<room> <type> [value]"
-msgstr "<seomra> <sórt> [value]"
-
-#: src/chat_command_handler.hpp:132
-msgid "Room query."
-msgstr "Ceist seomra."
 
 #: src/chat_events.cpp:60
 msgid "Unknown debug level: '$level'."
@@ -5529,11 +5491,11 @@ msgstr "Fearann dífhabhtúcháin anaithnid: '$domain'."
 msgid "Switched domain: '$domain' to level: '$level'."
 msgstr ""
 
-#: src/chat_events.cpp:154
+#: src/chat_events.cpp:148
 msgid "whisper to $receiver"
 msgstr "cogar a thabhairt do $receiver"
 
-#: src/chat_events.cpp:161
+#: src/chat_events.cpp:155
 msgid "whisper: $sender"
 msgstr "cogar: $sender"
 
@@ -5570,27 +5532,33 @@ msgstr "An Cath ar son Wesnoth"
 msgid "Invalid Color"
 msgstr "Dath Neamhbhailí"
 
-#: src/format_time_summary.cpp:47
+#. TRANSLATORS: 24-hour time, eg '13:59'
+#: src/format_time_summary.cpp:48
 msgid "%H:%M"
 msgstr "%H:%M"
 
-#: src/format_time_summary.cpp:50
+#. TRANSLATORS: 12-hour time, eg '1:59 PM'
+#: src/format_time_summary.cpp:52
 msgid "%I:%M %p"
 msgstr "%I:%M %p"
 
-#: src/format_time_summary.cpp:55
+#. TRANSLATORS: Day of week + 24-hour time, eg 'Sunday, 13:59'
+#: src/format_time_summary.cpp:58
 msgid "%A, %H:%M"
 msgstr "%A, %H:%M"
 
-#: src/format_time_summary.cpp:58
+#. TRANSLATORS: Day of week + 12-hour time, eg 'Sunday, 1:59 PM'
+#: src/format_time_summary.cpp:62
 msgid "%A, %I:%M %p"
 msgstr "%A, %I:%M %p"
 
-#: src/format_time_summary.cpp:62
+#. TRANSLATORS: Month + day of month, eg 'Nov 02'. Format for your locale.
+#: src/format_time_summary.cpp:67
 msgid "%b %d"
 msgstr "%d %b"
 
-#: src/format_time_summary.cpp:66
+#. TRANSLATORS: Month + day of month + year, eg 'Nov 02 2021'. Format for your locale.
+#: src/format_time_summary.cpp:72
 #, fuzzy
 #| msgid "%b %d %y"
 msgid "%b %d %Y"
@@ -5923,117 +5891,117 @@ msgstr "Buaigh ar (an/na) ceannfo(i)rt naimhdeach(a)"
 msgid "Cannot find era '$era'"
 msgstr "Aois anaithnid: $era_id"
 
-#: src/game_initialization/multiplayer.cpp:236
+#: src/game_initialization/multiplayer.cpp:237
 msgid "Invalid address specified for multiplayer server"
 msgstr ""
 
-#: src/game_initialization/multiplayer.cpp:271
+#: src/game_initialization/multiplayer.cpp:272
 msgid ""
 "The server accepts versions '$required_version', but you are using version "
 "'$your_version'"
 msgstr ""
 
-#: src/game_initialization/multiplayer.cpp:284
+#: src/game_initialization/multiplayer.cpp:285
 msgid "Server-side redirect loop"
 msgstr ""
 
-#: src/game_initialization/multiplayer.cpp:334
+#: src/game_initialization/multiplayer.cpp:335
 msgid ""
 "The nickname ‘$nick’ is inactive. You cannot claim ownership of this "
 "nickname until you activate your account via email or ask an administrator "
 "to do it for you."
 msgstr ""
 
-#: src/game_initialization/multiplayer.cpp:343
+#: src/game_initialization/multiplayer.cpp:344
 msgid "Do you want to continue?"
 msgstr "An dteastaíonn uait lean ar aghaidh?"
 
-#: src/game_initialization/multiplayer.cpp:345
+#: src/game_initialization/multiplayer.cpp:346
 msgid "Warning"
 msgstr "Rabhadh"
 
-#: src/game_initialization/multiplayer.cpp:408
+#: src/game_initialization/multiplayer.cpp:409
 msgid ""
 "The remote server requested a password while using an insecure connection."
 msgstr ""
 
-#: src/game_initialization/multiplayer.cpp:410
+#: src/game_initialization/multiplayer.cpp:411
 msgid "You must login first."
 msgstr "Tá ort logáil isteach i dtosach."
 
-#: src/game_initialization/multiplayer.cpp:412
+#: src/game_initialization/multiplayer.cpp:413
 msgid "The nickname ‘$nick’ is already taken."
 msgstr ""
 
-#: src/game_initialization/multiplayer.cpp:414
+#: src/game_initialization/multiplayer.cpp:415
 msgid ""
 "The nickname ‘$nick’ contains invalid characters. Only alpha-numeric "
 "characters (one at minimum), underscores and hyphens are allowed."
 msgstr ""
 
-#: src/game_initialization/multiplayer.cpp:418
+#: src/game_initialization/multiplayer.cpp:419
 msgid "The nickname ‘$nick’ is too long. Nicks must be 20 characters or less."
 msgstr ""
 
-#: src/game_initialization/multiplayer.cpp:420
+#: src/game_initialization/multiplayer.cpp:421
 msgid "The nickname ‘$nick’ is reserved and cannot be used by players."
 msgstr ""
 
-#: src/game_initialization/multiplayer.cpp:422
+#: src/game_initialization/multiplayer.cpp:423
 msgid "The nickname ‘$nick’ is not registered on this server."
 msgstr ""
 
-#: src/game_initialization/multiplayer.cpp:423
+#: src/game_initialization/multiplayer.cpp:424
 msgid " This server disallows unregistered nicknames."
 msgstr ""
 
-#: src/game_initialization/multiplayer.cpp:426
+#: src/game_initialization/multiplayer.cpp:427
 msgid "The nickname ‘$nick’ is banned on this server’s forums for $duration|."
 msgstr ""
 
-#: src/game_initialization/multiplayer.cpp:428
+#: src/game_initialization/multiplayer.cpp:429
 msgid "The nickname ‘$nick’ is banned on this server’s forums."
 msgstr ""
 
-#: src/game_initialization/multiplayer.cpp:432
+#: src/game_initialization/multiplayer.cpp:433
 msgid "Your IP address is banned on this server’s forums for $duration|."
 msgstr ""
 
-#: src/game_initialization/multiplayer.cpp:434
+#: src/game_initialization/multiplayer.cpp:435
 msgid "Your IP address is banned on this server’s forums."
 msgstr ""
 
-#: src/game_initialization/multiplayer.cpp:438
+#: src/game_initialization/multiplayer.cpp:439
 msgid ""
 "The email address for the nickname ‘$nick’ is banned on this server’s forums "
 "for $duration|."
 msgstr ""
 
-#: src/game_initialization/multiplayer.cpp:440
+#: src/game_initialization/multiplayer.cpp:441
 msgid ""
 "The email address for the nickname ‘$nick’ is banned on this server’s forums."
 msgstr ""
 
-#: src/game_initialization/multiplayer.cpp:443
-#: src/game_initialization/multiplayer.cpp:445
+#: src/game_initialization/multiplayer.cpp:444
+#: src/game_initialization/multiplayer.cpp:446
 msgid "The nickname ‘$nick’ is registered on this server."
 msgstr ""
 
-#: src/game_initialization/multiplayer.cpp:446
+#: src/game_initialization/multiplayer.cpp:447
 msgid ""
 "WARNING: There is already a client using this nickname, logging in will "
 "cause that client to be kicked!"
 msgstr ""
 
-#: src/game_initialization/multiplayer.cpp:449
+#: src/game_initialization/multiplayer.cpp:450
 msgid "The password you provided was incorrect."
 msgstr ""
 
-#: src/game_initialization/multiplayer.cpp:451
+#: src/game_initialization/multiplayer.cpp:452
 msgid "You have made too many login attempts."
 msgstr ""
 
-#: src/game_initialization/multiplayer.cpp:453
+#: src/game_initialization/multiplayer.cpp:454
 msgid "Password hashing failed."
 msgstr ""
 
@@ -7717,20 +7685,22 @@ msgstr ""
 msgid "Turn Countdown"
 msgstr ""
 
-#: src/save_index.cpp:279
+#. TRANSLATORS: Day of week + month + day of month + 12-hour time + year, eg 'Tue Nov 02 1:59 PM 2021'. Format for your locale.
+#: src/save_index.cpp:280
 msgid "%a %b %d %I:%M %p %Y"
 msgstr "%a %d %b  %I:%M %p %Y"
 
-#: src/save_index.cpp:280
+#. TRANSLATORS: Day of week + month + day of month + 24-hour time + year, eg 'Tue Nov 02 13:59 2021'. Format for your locale.
+#: src/save_index.cpp:282
 msgid "%a %b %d %H:%M %Y"
 msgstr "%a %H:%M %d %b %Y"
 
 #. TRANSLATORS: This string is used as part of a filename, as in, "HttT-The Elves Besieged replay.gz"
-#: src/save_index.cpp:300 src/savegame.cpp:588
+#: src/save_index.cpp:302 src/savegame.cpp:588
 msgid "replay"
 msgstr "athfhéachaint"
 
-#: src/save_index.cpp:384 src/savegame.cpp:71 src/savegame.cpp:624
+#: src/save_index.cpp:386 src/savegame.cpp:71 src/savegame.cpp:624
 #: src/savegame.cpp:626
 msgid "Auto-Save"
 msgstr "Uathshábháil"
@@ -8313,6 +8283,34 @@ msgstr "Folaigh pleananna do $player"
 #: src/whiteboard/manager.cpp:1138
 msgid "Whiteboard Options"
 msgstr "Roghanna Cláir Bháin"
+
+#~ msgid "<room>"
+#~ msgstr "<seomra>"
+
+#~ msgid "Join a room."
+#~ msgstr "Téigh isteach i seomra."
+
+#~ msgid "Part a room."
+#~ msgstr "Scar seomra."
+
+#~ msgid "List room members."
+#~ msgstr "Liostaigh comhaltaí den sheomra."
+
+#~ msgid "List available rooms."
+#~ msgstr "Liostaigh seomraí ar fáil."
+
+#~ msgid "<room> <msg>"
+#~ msgstr "<seomra> <teachtaireacht>"
+
+#~ msgid "Room message."
+#~ msgstr "Teachtaireacht seomra."
+
+#, fuzzy
+#~ msgid "<room> <type> [value]"
+#~ msgstr "<seomra> <sórt> [value]"
+
+#~ msgid "Room query."
+#~ msgstr "Ceist seomra."
 
 #, fuzzy
 #~| msgid "Overall"

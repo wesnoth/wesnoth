@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.6.0+dev\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-10-23 20:57-0300\n"
+"POT-Creation-Date: 2021-11-09 03:45+0300\n"
 "PO-Revision-Date: 2020-09-03 18:13+0200\n"
 "Last-Translator: Miquel-Àngel Burgos i Fradeja <miquel.angel.burgos@gmail."
 "com>\n"
@@ -880,8 +880,8 @@ msgstr "Garba de gra"
 msgid "Runic Hammer"
 msgstr "Martell rúnic"
 
-#. [object]
 #. [item]: id=holly-water
+#. [object]
 #: data/core/editor/items.cfg:282 data/core/macros/items.cfg:283
 msgid "Holy Water"
 msgstr "Aigua sagrada"
@@ -922,8 +922,8 @@ msgstr "Poció verda"
 msgid "Gray Potion"
 msgstr "Poció grisa"
 
-#. [object]: id={ID}
 #. [item]: id=potion-poison
+#. [object]: id={ID}
 #: data/core/editor/items.cfg:336 data/core/macros/items.cfg:246
 msgid "Poison"
 msgstr "Verí"
@@ -993,8 +993,8 @@ msgstr "Bastó"
 msgid "Stone Tablet"
 msgstr "Tauleta de pedra"
 
-#. [object]
 #. [item]: id=storm-trident
+#. [object]
 #: data/core/editor/items.cfg:420 data/core/macros/items.cfg:529
 msgid "Storm Trident"
 msgstr "Trident de la tempesta"
@@ -5509,7 +5509,7 @@ msgid "Do you really wish to continue?"
 msgstr "Segur que voleu continuar?"
 
 #: src/addon/client.cpp:552 src/addon/manager_ui.cpp:173
-#: src/game_initialization/multiplayer.cpp:361
+#: src/game_initialization/multiplayer.cpp:362
 msgid "Confirm"
 msgstr "Confirma"
 
@@ -5807,55 +5807,55 @@ msgstr ""
 msgid "Unspecified validation failure."
 msgstr ""
 
-#: src/chat_command_handler.cpp:113
+#: src/chat_command_handler.cpp:76
 msgid "Added to ignore list: $nick"
 msgstr "Afegit a la llista d'ignorats: $nick"
 
-#: src/chat_command_handler.cpp:113
+#: src/chat_command_handler.cpp:76
 msgid "ignores list"
 msgstr "llista d'ignorats"
 
-#: src/chat_command_handler.cpp:117 src/chat_command_handler.cpp:136
+#: src/chat_command_handler.cpp:80 src/chat_command_handler.cpp:99
 msgid "Invalid username: $nick"
 msgstr "Nom d'usuari no vàlid: $nick"
 
-#: src/chat_command_handler.cpp:132
+#: src/chat_command_handler.cpp:95
 msgid "Added to friends list: $nick"
 msgstr "Afegit a la llista d'amics: $nick"
 
-#: src/chat_command_handler.cpp:132
+#: src/chat_command_handler.cpp:95
 msgid "friends list"
 msgstr "llista d'amics"
 
-#: src/chat_command_handler.cpp:148
+#: src/chat_command_handler.cpp:111
 msgid "Removed from list: $nick"
 msgstr "Eliminat de la llista: $nick"
 
-#: src/chat_command_handler.cpp:148
+#: src/chat_command_handler.cpp:111
 msgid "friends and ignores list"
 msgstr "llista d'amics i d'ignorats"
 
-#: src/chat_command_handler.cpp:158
+#: src/chat_command_handler.cpp:121
 msgid "version"
 msgstr "versió"
 
-#: src/chat_command_handler.cpp:170
+#: src/chat_command_handler.cpp:133
 msgid "nick registration"
 msgstr "registre de sobrenoms"
 
-#: src/chat_command_handler.cpp:170
+#: src/chat_command_handler.cpp:133
 msgid "requesting information for user $nick"
 msgstr "s'està sol·licitant informació de l'usuari $nick"
 
-#: src/chat_command_handler.hpp:52
+#: src/chat_command_handler.hpp:48
 msgid "(A) — admin command"
 msgstr "(A) — ordre d'administrador"
 
-#: src/chat_command_handler.hpp:59 src/menu_events.cpp:1194
+#: src/chat_command_handler.hpp:55 src/menu_events.cpp:1194
 msgid "(admin only)"
 msgstr "(només administrador)"
 
-#: src/chat_command_handler.hpp:74
+#: src/chat_command_handler.hpp:70
 msgid ""
 "Send a query to the server. Without arguments the server should tell you the "
 "available commands."
@@ -5863,7 +5863,7 @@ msgstr ""
 "Envia una sol·licitud al servidor. Sense arguments, el servidor hauria de "
 "dir-vos les ordres disponibles."
 
-#: src/chat_command_handler.hpp:78
+#: src/chat_command_handler.hpp:74
 msgid ""
 "Ban and kick a player or observer. If he is not in the game but on the "
 "server he will only be banned."
@@ -5871,46 +5871,46 @@ msgstr ""
 "Expulsa i veta un jugador o observador. Si no és a la partida sinó al "
 "servidor, només se'l vetarà."
 
-#: src/chat_command_handler.hpp:79 src/chat_command_handler.hpp:82
-#: src/chat_command_handler.hpp:84 src/chat_command_handler.hpp:86
-#: src/chat_command_handler.hpp:88 src/chat_command_handler.hpp:109
-#: src/chat_command_handler.hpp:111 src/chat_command_handler.hpp:113
-#: src/chat_command_handler.hpp:119
+#: src/chat_command_handler.hpp:75 src/chat_command_handler.hpp:78
+#: src/chat_command_handler.hpp:80 src/chat_command_handler.hpp:82
+#: src/chat_command_handler.hpp:84 src/chat_command_handler.hpp:105
+#: src/chat_command_handler.hpp:107 src/chat_command_handler.hpp:109
+#: src/chat_command_handler.hpp:115
 msgid "<nickname>"
 msgstr "<nickname>"
 
-#: src/chat_command_handler.hpp:81
+#: src/chat_command_handler.hpp:77
 msgid "Unban a user. He does not have to be in the game but on the server."
 msgstr ""
 "Aixeca el vet a un usuari. No cal que sigui a la partida, sinó al servidor."
 
-#: src/chat_command_handler.hpp:84
+#: src/chat_command_handler.hpp:80
 msgid "Kick a player or observer."
 msgstr "Expulsa un jugador o observador."
 
-#: src/chat_command_handler.hpp:86
+#: src/chat_command_handler.hpp:82
 msgid "Mute an observer. Without an argument displays the mute status."
 msgstr ""
 "Silencia un observador. Sense cap argument, mostra l'estatus del "
 "silenciament."
 
-#: src/chat_command_handler.hpp:88
+#: src/chat_command_handler.hpp:84
 msgid "Unmute an observer. Without an argument unmutes everyone."
 msgstr ""
 "Aixeca el silenciament a un observador. Sense cap argument, aixeca el "
 "silenciament a tothom."
 
-#: src/chat_command_handler.hpp:90
+#: src/chat_command_handler.hpp:86
 msgid "Mute/Unmute all observers. (toggles)"
 msgstr "Silencia/dessilencia tots els observadors (commuta)."
 
-#: src/chat_command_handler.hpp:92
+#: src/chat_command_handler.hpp:88
 msgid ""
 "Send some data to the server. Can be used to verify the network connection "
 "and notice disconnects."
 msgstr ""
 
-#: src/chat_command_handler.hpp:94
+#: src/chat_command_handler.hpp:90
 msgid ""
 "Report abuse, rule violations, etc. to the server moderators. Make sure to "
 "mention relevant nicknames, etc."
@@ -5918,15 +5918,15 @@ msgstr ""
 "Informa d'abusos, violacions de regles, etc. als moderadors del servidor. "
 "Assegureu-vos d'esmentar els sobrenoms pertinents, etc."
 
-#: src/chat_command_handler.hpp:98
+#: src/chat_command_handler.hpp:94
 msgid "<message>"
 msgstr "<message>"
 
-#: src/chat_command_handler.hpp:98
+#: src/chat_command_handler.hpp:94
 msgid "Send an emotion or personal action in chat."
 msgstr "Envia una emoció o acció personal al xat."
 
-#: src/chat_command_handler.hpp:101
+#: src/chat_command_handler.hpp:97
 #, fuzzy
 #| msgid ""
 #| "Sends a private message. You cannot send private messages to players in a "
@@ -5938,82 +5938,45 @@ msgstr ""
 "Envia un missatge privat. No podeu enviar missatges privats als jugadors en "
 "una partida en curs que observeu o en la qual jugueu."
 
-#: src/chat_command_handler.hpp:103
+#: src/chat_command_handler.hpp:99
 msgid "<nickname> <message>"
 msgstr "<nickname> <message>"
 
-#: src/chat_command_handler.hpp:107
+#: src/chat_command_handler.hpp:103
 msgid "<level> <domain>"
 msgstr "<level> <domain>"
 
-#: src/chat_command_handler.hpp:107
+#: src/chat_command_handler.hpp:103
 msgid "Change the log level of a log domain."
 msgstr "Canvia el nivell de detall del registre d'un domini."
 
-#: src/chat_command_handler.hpp:109
+#: src/chat_command_handler.hpp:105
 msgid "Add a nickname to your ignores list."
 msgstr "Afegeix un sobrenom a la llista d'ignorats."
 
-#: src/chat_command_handler.hpp:111
+#: src/chat_command_handler.hpp:107
 msgid "Add a nickname to your friends list."
 msgstr "Afegeix un sobrenom a la llista d'amics."
 
-#: src/chat_command_handler.hpp:113
+#: src/chat_command_handler.hpp:109
 msgid "Remove a nickname from your ignores or friends list."
 msgstr "Elimina un sobrenom de la vostra llista d'ignorats o d'amics."
 
-#: src/chat_command_handler.hpp:115
+#: src/chat_command_handler.hpp:111
 msgid "<N>"
 msgstr ""
 
-#: src/chat_command_handler.hpp:115
+#: src/chat_command_handler.hpp:111
 msgid "Get a random number between 1 and N visible in the game setup lobby."
 msgstr ""
 
-#: src/chat_command_handler.hpp:117
+#: src/chat_command_handler.hpp:113
 msgid "Display version information."
 msgstr "Mostra la informació de la versió."
 
-#: src/chat_command_handler.hpp:119
+#: src/chat_command_handler.hpp:115
 msgid "Request information about a nickname."
 msgstr "Sol·licita informació sobre un sobrenom."
-
-#: src/chat_command_handler.hpp:121 src/chat_command_handler.hpp:124
-#: src/chat_command_handler.hpp:126
-msgid "<room>"
-msgstr "<room>"
-
-#: src/chat_command_handler.hpp:121
-msgid "Join a room."
-msgstr "Us uneix a una sala."
-
-#: src/chat_command_handler.hpp:124
-msgid "Part a room."
-msgstr "Us treu d'una sala."
-
-#: src/chat_command_handler.hpp:126
-msgid "List room members."
-msgstr "Enumera els membres de la sala"
-
-#: src/chat_command_handler.hpp:128
-msgid "List available rooms."
-msgstr "Enumera les sales disponibles."
-
-#: src/chat_command_handler.hpp:130
-msgid "<room> <msg>"
-msgstr "<room> <msg>"
-
-#: src/chat_command_handler.hpp:130
-msgid "Room message."
-msgstr "Missatge de sala."
-
-#: src/chat_command_handler.hpp:132
-msgid "<room> <type> [value]"
-msgstr "<room> <type> [value]"
-
-#: src/chat_command_handler.hpp:132
-msgid "Room query."
-msgstr "Consulta de sala."
 
 #: src/chat_events.cpp:60
 msgid "Unknown debug level: '$level'."
@@ -6031,11 +5994,11 @@ msgstr "Domini de depuració desconegut: «$level»."
 msgid "Switched domain: '$domain' to level: '$level'."
 msgstr "S'ha canviat el domini «$domain» a nivell «$level»."
 
-#: src/chat_events.cpp:154
+#: src/chat_events.cpp:148
 msgid "whisper to $receiver"
 msgstr "xiuxiueig a $receiver"
 
-#: src/chat_events.cpp:161
+#: src/chat_events.cpp:155
 msgid "whisper: $sender"
 msgstr "xiuxiueig: $sender"
 
@@ -6071,27 +6034,33 @@ msgstr "La Batalla per Wesnoth"
 msgid "Invalid Color"
 msgstr "Color no vàlid"
 
-#: src/format_time_summary.cpp:47
+#. TRANSLATORS: 24-hour time, eg '13:59'
+#: src/format_time_summary.cpp:48
 msgid "%H:%M"
 msgstr "%H:%M"
 
-#: src/format_time_summary.cpp:50
+#. TRANSLATORS: 12-hour time, eg '1:59 PM'
+#: src/format_time_summary.cpp:52
 msgid "%I:%M %p"
 msgstr "%I:%M %p"
 
-#: src/format_time_summary.cpp:55
+#. TRANSLATORS: Day of week + 24-hour time, eg 'Sunday, 13:59'
+#: src/format_time_summary.cpp:58
 msgid "%A, %H:%M"
 msgstr "%A, %H:%M"
 
-#: src/format_time_summary.cpp:58
+#. TRANSLATORS: Day of week + 12-hour time, eg 'Sunday, 1:59 PM'
+#: src/format_time_summary.cpp:62
 msgid "%A, %I:%M %p"
 msgstr "%A, %I:%M %p"
 
-#: src/format_time_summary.cpp:62
+#. TRANSLATORS: Month + day of month, eg 'Nov 02'. Format for your locale.
+#: src/format_time_summary.cpp:67
 msgid "%b %d"
 msgstr "%b %d"
 
-#: src/format_time_summary.cpp:66
+#. TRANSLATORS: Month + day of month + year, eg 'Nov 02 2021'. Format for your locale.
+#: src/format_time_summary.cpp:72
 msgid "%b %d %Y"
 msgstr "%b %d %Y"
 
@@ -6399,11 +6368,11 @@ msgstr "Derrota els líders enemics"
 msgid "Cannot find era '$era'"
 msgstr "No s'ha pogut trobar l'era $era"
 
-#: src/game_initialization/multiplayer.cpp:236
+#: src/game_initialization/multiplayer.cpp:237
 msgid "Invalid address specified for multiplayer server"
 msgstr ""
 
-#: src/game_initialization/multiplayer.cpp:271
+#: src/game_initialization/multiplayer.cpp:272
 msgid ""
 "The server accepts versions '$required_version', but you are using version "
 "'$your_version'"
@@ -6411,11 +6380,11 @@ msgstr ""
 "El servidor accepta les versions «$version1», però esteu utilitzant la "
 "versió «$version2»"
 
-#: src/game_initialization/multiplayer.cpp:284
+#: src/game_initialization/multiplayer.cpp:285
 msgid "Server-side redirect loop"
 msgstr "Redirecció del servidor"
 
-#: src/game_initialization/multiplayer.cpp:334
+#: src/game_initialization/multiplayer.cpp:335
 msgid ""
 "The nickname ‘$nick’ is inactive. You cannot claim ownership of this "
 "nickname until you activate your account via email or ask an administrator "
@@ -6425,28 +6394,28 @@ msgstr ""
 "sobrenom fins que no activeu el vostre compte per email o demaneu a un "
 "administrador que ho faci."
 
-#: src/game_initialization/multiplayer.cpp:343
+#: src/game_initialization/multiplayer.cpp:344
 msgid "Do you want to continue?"
 msgstr "Voleu continuar?"
 
-#: src/game_initialization/multiplayer.cpp:345
+#: src/game_initialization/multiplayer.cpp:346
 msgid "Warning"
 msgstr "Avís"
 
-#: src/game_initialization/multiplayer.cpp:408
+#: src/game_initialization/multiplayer.cpp:409
 msgid ""
 "The remote server requested a password while using an insecure connection."
 msgstr ""
 
-#: src/game_initialization/multiplayer.cpp:410
+#: src/game_initialization/multiplayer.cpp:411
 msgid "You must login first."
 msgstr "Primer heu d'iniciar sessió."
 
-#: src/game_initialization/multiplayer.cpp:412
+#: src/game_initialization/multiplayer.cpp:413
 msgid "The nickname ‘$nick’ is already taken."
 msgstr "El sobrenom «$nick» ja està ocupat."
 
-#: src/game_initialization/multiplayer.cpp:414
+#: src/game_initialization/multiplayer.cpp:415
 msgid ""
 "The nickname ‘$nick’ contains invalid characters. Only alpha-numeric "
 "characters (one at minimum), underscores and hyphens are allowed."
@@ -6454,46 +6423,46 @@ msgstr ""
 "El sobrenom «$nick» conté caràcters no vàlids. Només es permeten caràcters "
 "alfanumèrics (almenys un), guions baixos i guions."
 
-#: src/game_initialization/multiplayer.cpp:418
+#: src/game_initialization/multiplayer.cpp:419
 msgid "The nickname ‘$nick’ is too long. Nicks must be 20 characters or less."
 msgstr ""
 "El sobrenom '$nick' és massa llarg. Els sobrenoms han de tenir 20 caràcters "
 "o menys."
 
-#: src/game_initialization/multiplayer.cpp:420
+#: src/game_initialization/multiplayer.cpp:421
 msgid "The nickname ‘$nick’ is reserved and cannot be used by players."
 msgstr ""
 "El sobrenom '$nick' està reservat i els jugadors no poden utilitzar-lo."
 
-#: src/game_initialization/multiplayer.cpp:422
+#: src/game_initialization/multiplayer.cpp:423
 msgid "The nickname ‘$nick’ is not registered on this server."
 msgstr "El sobrenom «$nick» no està registrat en aquest servidor."
 
-#: src/game_initialization/multiplayer.cpp:423
+#: src/game_initialization/multiplayer.cpp:424
 msgid " This server disallows unregistered nicknames."
 msgstr " Aquest servidor no permet sobrenoms no registrats."
 
-#: src/game_initialization/multiplayer.cpp:426
+#: src/game_initialization/multiplayer.cpp:427
 msgid "The nickname ‘$nick’ is banned on this server’s forums for $duration|."
 msgstr ""
 "El sobrenom «$nick» està vetat als fòrums d'aquest servidor durant "
 "$duration|."
 
-#: src/game_initialization/multiplayer.cpp:428
+#: src/game_initialization/multiplayer.cpp:429
 msgid "The nickname ‘$nick’ is banned on this server’s forums."
 msgstr "El sobrenom «$nick» està vetat als fòrums d'aquest servidor."
 
-#: src/game_initialization/multiplayer.cpp:432
+#: src/game_initialization/multiplayer.cpp:433
 msgid "Your IP address is banned on this server’s forums for $duration|."
 msgstr ""
 "S'ha expulsat la vostra adreça IP dels fòrums d'aquest servidor durant "
 "$duration|."
 
-#: src/game_initialization/multiplayer.cpp:434
+#: src/game_initialization/multiplayer.cpp:435
 msgid "Your IP address is banned on this server’s forums."
 msgstr "S'ha expulsat la vostra adreça IP dels fòrums d'aquest servidor."
 
-#: src/game_initialization/multiplayer.cpp:438
+#: src/game_initialization/multiplayer.cpp:439
 msgid ""
 "The email address for the nickname ‘$nick’ is banned on this server’s forums "
 "for $duration|."
@@ -6501,19 +6470,19 @@ msgstr ""
 "L'adreça de correu electrònic del sobrenom «$nick» està vetada als fòrums "
 "d'aquest servidor durant $duration|."
 
-#: src/game_initialization/multiplayer.cpp:440
+#: src/game_initialization/multiplayer.cpp:441
 msgid ""
 "The email address for the nickname ‘$nick’ is banned on this server’s forums."
 msgstr ""
 "L'adreça de correu electrònic del sobrenom «$nick» està vetada als fòrums "
 "d'aquest servidor."
 
-#: src/game_initialization/multiplayer.cpp:443
-#: src/game_initialization/multiplayer.cpp:445
+#: src/game_initialization/multiplayer.cpp:444
+#: src/game_initialization/multiplayer.cpp:446
 msgid "The nickname ‘$nick’ is registered on this server."
 msgstr "El sobrenom '$nick' està registrat en aquest servidor."
 
-#: src/game_initialization/multiplayer.cpp:446
+#: src/game_initialization/multiplayer.cpp:447
 msgid ""
 "WARNING: There is already a client using this nickname, logging in will "
 "cause that client to be kicked!"
@@ -6521,15 +6490,15 @@ msgstr ""
 "Avís: ja hi ha un client utilitzant aquest sobrenom. Si inicieu sessió, "
 "s'expulsarà el client."
 
-#: src/game_initialization/multiplayer.cpp:449
+#: src/game_initialization/multiplayer.cpp:450
 msgid "The password you provided was incorrect."
 msgstr "La contrasenya proporcionada és incorrecta."
 
-#: src/game_initialization/multiplayer.cpp:451
+#: src/game_initialization/multiplayer.cpp:452
 msgid "You have made too many login attempts."
 msgstr "Heu fet massa intents d'inici de sessió."
 
-#: src/game_initialization/multiplayer.cpp:453
+#: src/game_initialization/multiplayer.cpp:454
 msgid "Password hashing failed."
 msgstr ""
 
@@ -8192,20 +8161,22 @@ msgstr "Compte enrere fins que el torn s'acaba automàticament."
 msgid "Turn Countdown"
 msgstr "Comptador de torns"
 
-#: src/save_index.cpp:279
+#. TRANSLATORS: Day of week + month + day of month + 12-hour time + year, eg 'Tue Nov 02 1:59 PM 2021'. Format for your locale.
+#: src/save_index.cpp:280
 msgid "%a %b %d %I:%M %p %Y"
 msgstr "%a %b %d %I:%M %p %Y"
 
-#: src/save_index.cpp:280
+#. TRANSLATORS: Day of week + month + day of month + 24-hour time + year, eg 'Tue Nov 02 13:59 2021'. Format for your locale.
+#: src/save_index.cpp:282
 msgid "%a %b %d %H:%M %Y"
 msgstr "%a %b %d %H:%M %Y"
 
 #. TRANSLATORS: This string is used as part of a filename, as in, "HttT-The Elves Besieged replay.gz"
-#: src/save_index.cpp:300 src/savegame.cpp:588
+#: src/save_index.cpp:302 src/savegame.cpp:588
 msgid "replay"
 msgstr "repetició"
 
-#: src/save_index.cpp:384 src/savegame.cpp:71 src/savegame.cpp:624
+#: src/save_index.cpp:386 src/savegame.cpp:71 src/savegame.cpp:624
 #: src/savegame.cpp:626
 msgid "Auto-Save"
 msgstr "Partida desada automàticament"
@@ -8716,6 +8687,33 @@ msgstr "Amaga els plans de $player"
 #: src/whiteboard/manager.cpp:1138
 msgid "Whiteboard Options"
 msgstr "Opcions de la pissarra"
+
+#~ msgid "<room>"
+#~ msgstr "<room>"
+
+#~ msgid "Join a room."
+#~ msgstr "Us uneix a una sala."
+
+#~ msgid "Part a room."
+#~ msgstr "Us treu d'una sala."
+
+#~ msgid "List room members."
+#~ msgstr "Enumera els membres de la sala"
+
+#~ msgid "List available rooms."
+#~ msgstr "Enumera les sales disponibles."
+
+#~ msgid "<room> <msg>"
+#~ msgstr "<room> <msg>"
+
+#~ msgid "Room message."
+#~ msgstr "Missatge de sala."
+
+#~ msgid "<room> <type> [value]"
+#~ msgstr "<room> <type> [value]"
+
+#~ msgid "Room query."
+#~ msgstr "Consulta de sala."
 
 #, fuzzy
 #~| msgid "drains"

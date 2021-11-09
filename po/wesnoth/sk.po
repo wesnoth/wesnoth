@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.2\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-10-23 20:57-0300\n"
+"POT-Creation-Date: 2021-11-09 03:45+0300\n"
 "PO-Revision-Date: 2019-01-26 17:40+0100\n"
 "Last-Translator: aceman <acelists@atlas.sk>\n"
 "Language-Team: none\n"
@@ -873,8 +873,8 @@ msgstr "Obilný snop"
 msgid "Runic Hammer"
 msgstr "Kladivo s runami"
 
-#. [object]
 #. [item]: id=holly-water
+#. [object]
 #: data/core/editor/items.cfg:282 data/core/macros/items.cfg:283
 msgid "Holy Water"
 msgstr "Svätená voda"
@@ -915,8 +915,8 @@ msgstr "Zelený nápoj"
 msgid "Gray Potion"
 msgstr "Sivý nápoj"
 
-#. [object]: id={ID}
 #. [item]: id=potion-poison
+#. [object]: id={ID}
 #: data/core/editor/items.cfg:336 data/core/macros/items.cfg:246
 msgid "Poison"
 msgstr "Jed"
@@ -986,8 +986,8 @@ msgstr "Palica"
 msgid "Stone Tablet"
 msgstr "Kamenná doštička"
 
-#. [object]
 #. [item]: id=storm-trident
+#. [object]
 #: data/core/editor/items.cfg:420 data/core/macros/items.cfg:529
 msgid "Storm Trident"
 msgstr "Bleskový trojzubec"
@@ -5166,7 +5166,7 @@ msgid "Do you really wish to continue?"
 msgstr "Naozaj chceš pokračovať?"
 
 #: src/addon/client.cpp:552 src/addon/manager_ui.cpp:173
-#: src/game_initialization/multiplayer.cpp:361
+#: src/game_initialization/multiplayer.cpp:362
 msgid "Confirm"
 msgstr "Potvrdiť"
 
@@ -5466,55 +5466,55 @@ msgstr ""
 msgid "Unspecified validation failure."
 msgstr ""
 
-#: src/chat_command_handler.cpp:113
+#: src/chat_command_handler.cpp:76
 msgid "Added to ignore list: $nick"
 msgstr "Pridaný do zoznamu ignorovaných: $nick"
 
-#: src/chat_command_handler.cpp:113
+#: src/chat_command_handler.cpp:76
 msgid "ignores list"
 msgstr "zoznam ignorovaných"
 
-#: src/chat_command_handler.cpp:117 src/chat_command_handler.cpp:136
+#: src/chat_command_handler.cpp:80 src/chat_command_handler.cpp:99
 msgid "Invalid username: $nick"
 msgstr "Neplatné používateľské meno: $nick"
 
-#: src/chat_command_handler.cpp:132
+#: src/chat_command_handler.cpp:95
 msgid "Added to friends list: $nick"
 msgstr "Pridaný do zoznamu priateľov: $nick"
 
-#: src/chat_command_handler.cpp:132
+#: src/chat_command_handler.cpp:95
 msgid "friends list"
 msgstr "zoznam priateľov"
 
-#: src/chat_command_handler.cpp:148
+#: src/chat_command_handler.cpp:111
 msgid "Removed from list: $nick"
 msgstr "Vyradený zo zoznamu: $nick"
 
-#: src/chat_command_handler.cpp:148
+#: src/chat_command_handler.cpp:111
 msgid "friends and ignores list"
 msgstr "zoznam priateľov a ignorovaných"
 
-#: src/chat_command_handler.cpp:158
+#: src/chat_command_handler.cpp:121
 msgid "version"
 msgstr "verzia"
 
-#: src/chat_command_handler.cpp:170
+#: src/chat_command_handler.cpp:133
 msgid "nick registration"
 msgstr "registrovanie prezývky"
 
-#: src/chat_command_handler.cpp:170
+#: src/chat_command_handler.cpp:133
 msgid "requesting information for user $nick"
 msgstr "zisťujú sa informácie o používateľovi $nick"
 
-#: src/chat_command_handler.hpp:52
+#: src/chat_command_handler.hpp:48
 msgid "(A) — admin command"
 msgstr "(A) - administračný príkaz"
 
-#: src/chat_command_handler.hpp:59 src/menu_events.cpp:1194
+#: src/chat_command_handler.hpp:55 src/menu_events.cpp:1194
 msgid "(admin only)"
 msgstr "(len pre administrátora)"
 
-#: src/chat_command_handler.hpp:74
+#: src/chat_command_handler.hpp:70
 msgid ""
 "Send a query to the server. Without arguments the server should tell you the "
 "available commands."
@@ -5522,7 +5522,7 @@ msgstr ""
 "Poslať dopyt na server. Bez parametrov by mal server poslať zoznam "
 "dostupných príkazov."
 
-#: src/chat_command_handler.hpp:78
+#: src/chat_command_handler.hpp:74
 msgid ""
 "Ban and kick a player or observer. If he is not in the game but on the "
 "server he will only be banned."
@@ -5530,41 +5530,41 @@ msgstr ""
 "Zakázať a vykopnúť hráča alebo diváka. Ak nie je v hre, ale len na serveri, "
 "bude len zakázaný."
 
-#: src/chat_command_handler.hpp:79 src/chat_command_handler.hpp:82
-#: src/chat_command_handler.hpp:84 src/chat_command_handler.hpp:86
-#: src/chat_command_handler.hpp:88 src/chat_command_handler.hpp:109
-#: src/chat_command_handler.hpp:111 src/chat_command_handler.hpp:113
-#: src/chat_command_handler.hpp:119
+#: src/chat_command_handler.hpp:75 src/chat_command_handler.hpp:78
+#: src/chat_command_handler.hpp:80 src/chat_command_handler.hpp:82
+#: src/chat_command_handler.hpp:84 src/chat_command_handler.hpp:105
+#: src/chat_command_handler.hpp:107 src/chat_command_handler.hpp:109
+#: src/chat_command_handler.hpp:115
 msgid "<nickname>"
 msgstr "<prezývka>"
 
-#: src/chat_command_handler.hpp:81
+#: src/chat_command_handler.hpp:77
 msgid "Unban a user. He does not have to be in the game but on the server."
 msgstr "Odblokuj hráča. Nemusí byť v hre, ale na serveri."
 
-#: src/chat_command_handler.hpp:84
+#: src/chat_command_handler.hpp:80
 msgid "Kick a player or observer."
 msgstr "Vykopnúť hráča alebo diváka."
 
-#: src/chat_command_handler.hpp:86
+#: src/chat_command_handler.hpp:82
 msgid "Mute an observer. Without an argument displays the mute status."
 msgstr "Umlčať diváka. Bez parametrov zobrazí stav umlčania."
 
-#: src/chat_command_handler.hpp:88
+#: src/chat_command_handler.hpp:84
 msgid "Unmute an observer. Without an argument unmutes everyone."
 msgstr "Umožní hovoriť divákovi. Bez parametrov umožní všetkým."
 
-#: src/chat_command_handler.hpp:90
+#: src/chat_command_handler.hpp:86
 msgid "Mute/Unmute all observers. (toggles)"
 msgstr "Umlčať/umožniť hovoriť všetkým divákom. (prepína)"
 
-#: src/chat_command_handler.hpp:92
+#: src/chat_command_handler.hpp:88
 msgid ""
 "Send some data to the server. Can be used to verify the network connection "
 "and notice disconnects."
 msgstr ""
 
-#: src/chat_command_handler.hpp:94
+#: src/chat_command_handler.hpp:90
 msgid ""
 "Report abuse, rule violations, etc. to the server moderators. Make sure to "
 "mention relevant nicknames, etc."
@@ -5572,15 +5572,15 @@ msgstr ""
 "Nahláste porušovanie pravidiel moderátorom servera. Nezabudnite uviesť "
 "potrebné prezývky a pod."
 
-#: src/chat_command_handler.hpp:98
+#: src/chat_command_handler.hpp:94
 msgid "<message>"
 msgstr "<správa>"
 
-#: src/chat_command_handler.hpp:98
+#: src/chat_command_handler.hpp:94
 msgid "Send an emotion or personal action in chat."
 msgstr "Pošle v diskusii emóciu alebo osobnú akciu."
 
-#: src/chat_command_handler.hpp:101
+#: src/chat_command_handler.hpp:97
 #, fuzzy
 #| msgid ""
 #| "Sends a private message. You cannot send private messages to players in a "
@@ -5592,82 +5592,45 @@ msgstr ""
 "Posiela súkromné správy. Nemôžeš posielať súkromné správy hráčom v hre, "
 "ktorú pozoruješ alebo v nej hráš."
 
-#: src/chat_command_handler.hpp:103
+#: src/chat_command_handler.hpp:99
 msgid "<nickname> <message>"
 msgstr "<prezývka> <správa>"
 
-#: src/chat_command_handler.hpp:107
+#: src/chat_command_handler.hpp:103
 msgid "<level> <domain>"
 msgstr "<úroveň> <doména>"
 
-#: src/chat_command_handler.hpp:107
+#: src/chat_command_handler.hpp:103
 msgid "Change the log level of a log domain."
 msgstr "Prepne zapisovaciu doménu na inú úroveň závažnosti."
 
-#: src/chat_command_handler.hpp:109
+#: src/chat_command_handler.hpp:105
 msgid "Add a nickname to your ignores list."
 msgstr "Pridať hráča do tvojho zoznamu ignorovaných."
 
-#: src/chat_command_handler.hpp:111
+#: src/chat_command_handler.hpp:107
 msgid "Add a nickname to your friends list."
 msgstr "Pridať hráča do tvojho zoznamu priateľov."
 
-#: src/chat_command_handler.hpp:113
+#: src/chat_command_handler.hpp:109
 msgid "Remove a nickname from your ignores or friends list."
 msgstr "Odstrániť hráča z tvojho zoznamu ignorovaných alebo priateľov."
 
-#: src/chat_command_handler.hpp:115
+#: src/chat_command_handler.hpp:111
 msgid "<N>"
 msgstr ""
 
-#: src/chat_command_handler.hpp:115
+#: src/chat_command_handler.hpp:111
 msgid "Get a random number between 1 and N visible in the game setup lobby."
 msgstr ""
 
-#: src/chat_command_handler.hpp:117
+#: src/chat_command_handler.hpp:113
 msgid "Display version information."
 msgstr "Zobrazí informácie o verzii."
 
-#: src/chat_command_handler.hpp:119
+#: src/chat_command_handler.hpp:115
 msgid "Request information about a nickname."
 msgstr "Vyžiadať informácie o prezývke."
-
-#: src/chat_command_handler.hpp:121 src/chat_command_handler.hpp:124
-#: src/chat_command_handler.hpp:126
-msgid "<room>"
-msgstr "<miestnosť>"
-
-#: src/chat_command_handler.hpp:121
-msgid "Join a room."
-msgstr "Vstúpiť do miestnosti."
-
-#: src/chat_command_handler.hpp:124
-msgid "Part a room."
-msgstr "Opustiť miestnosť."
-
-#: src/chat_command_handler.hpp:126
-msgid "List room members."
-msgstr "Zoznam členov v miestnosti."
-
-#: src/chat_command_handler.hpp:128
-msgid "List available rooms."
-msgstr "Zobrazí dostupné miestnosti."
-
-#: src/chat_command_handler.hpp:130
-msgid "<room> <msg>"
-msgstr "<miestnosť> <správa>"
-
-#: src/chat_command_handler.hpp:130
-msgid "Room message."
-msgstr "Správa do miestnosti."
-
-#: src/chat_command_handler.hpp:132
-msgid "<room> <type> [value]"
-msgstr "<miestnosť> <typ> [hodnota]"
-
-#: src/chat_command_handler.hpp:132
-msgid "Room query."
-msgstr "Dotaz v miestnosti."
 
 #: src/chat_events.cpp:60
 msgid "Unknown debug level: '$level'."
@@ -5685,11 +5648,11 @@ msgstr "Neznáma ladiaca doména: '$domain'."
 msgid "Switched domain: '$domain' to level: '$level'."
 msgstr "Doména: '$domain' prepnutá na úroveň: '$level'."
 
-#: src/chat_events.cpp:154
+#: src/chat_events.cpp:148
 msgid "whisper to $receiver"
 msgstr "šepkanie k $receiver"
 
-#: src/chat_events.cpp:161
+#: src/chat_events.cpp:155
 msgid "whisper: $sender"
 msgstr "šepkanie: $sender"
 
@@ -5725,27 +5688,33 @@ msgstr "Bitka o Wesnoth"
 msgid "Invalid Color"
 msgstr "Neplatná farba"
 
-#: src/format_time_summary.cpp:47
+#. TRANSLATORS: 24-hour time, eg '13:59'
+#: src/format_time_summary.cpp:48
 msgid "%H:%M"
 msgstr "%H:%M"
 
-#: src/format_time_summary.cpp:50
+#. TRANSLATORS: 12-hour time, eg '1:59 PM'
+#: src/format_time_summary.cpp:52
 msgid "%I:%M %p"
 msgstr "%I:%M %p"
 
-#: src/format_time_summary.cpp:55
+#. TRANSLATORS: Day of week + 24-hour time, eg 'Sunday, 13:59'
+#: src/format_time_summary.cpp:58
 msgid "%A, %H:%M"
 msgstr "%A, %H:%M"
 
-#: src/format_time_summary.cpp:58
+#. TRANSLATORS: Day of week + 12-hour time, eg 'Sunday, 1:59 PM'
+#: src/format_time_summary.cpp:62
 msgid "%A, %I:%M %p"
 msgstr "%A, %I:%M %p"
 
-#: src/format_time_summary.cpp:62
+#. TRANSLATORS: Month + day of month, eg 'Nov 02'. Format for your locale.
+#: src/format_time_summary.cpp:67
 msgid "%b %d"
 msgstr "%d. %m"
 
-#: src/format_time_summary.cpp:66
+#. TRANSLATORS: Month + day of month + year, eg 'Nov 02 2021'. Format for your locale.
+#: src/format_time_summary.cpp:72
 msgid "%b %d %Y"
 msgstr "%b %d %Y"
 
@@ -6048,11 +6017,11 @@ msgstr "Porazíš ostatných veliteľov"
 msgid "Cannot find era '$era'"
 msgstr "Neviem nájsť éru $era"
 
-#: src/game_initialization/multiplayer.cpp:236
+#: src/game_initialization/multiplayer.cpp:237
 msgid "Invalid address specified for multiplayer server"
 msgstr ""
 
-#: src/game_initialization/multiplayer.cpp:271
+#: src/game_initialization/multiplayer.cpp:272
 msgid ""
 "The server accepts versions '$required_version', but you are using version "
 "'$your_version'"
@@ -6060,11 +6029,11 @@ msgstr ""
 "Server akceptuje verzie '$required_version', avšak používaš verziu "
 "'$your_version'"
 
-#: src/game_initialization/multiplayer.cpp:284
+#: src/game_initialization/multiplayer.cpp:285
 msgid "Server-side redirect loop"
 msgstr "Server presmerováva dokola"
 
-#: src/game_initialization/multiplayer.cpp:334
+#: src/game_initialization/multiplayer.cpp:335
 msgid ""
 "The nickname ‘$nick’ is inactive. You cannot claim ownership of this "
 "nickname until you activate your account via email or ask an administrator "
@@ -6073,28 +6042,28 @@ msgstr ""
 "Prezývka ‘$nick’ je neaktívna. Nemôžeš použiť túto prezývku pokiaľ si "
 "neaktivuješ konto emailom alebo nepožiadaš administrátora."
 
-#: src/game_initialization/multiplayer.cpp:343
+#: src/game_initialization/multiplayer.cpp:344
 msgid "Do you want to continue?"
 msgstr "Chceš pokračovať?"
 
-#: src/game_initialization/multiplayer.cpp:345
+#: src/game_initialization/multiplayer.cpp:346
 msgid "Warning"
 msgstr "Varovanie"
 
-#: src/game_initialization/multiplayer.cpp:408
+#: src/game_initialization/multiplayer.cpp:409
 msgid ""
 "The remote server requested a password while using an insecure connection."
 msgstr ""
 
-#: src/game_initialization/multiplayer.cpp:410
+#: src/game_initialization/multiplayer.cpp:411
 msgid "You must login first."
 msgstr "Musíš sa najprv prihlásiť."
 
-#: src/game_initialization/multiplayer.cpp:412
+#: src/game_initialization/multiplayer.cpp:413
 msgid "The nickname ‘$nick’ is already taken."
 msgstr "Prezývka ‘$nick’ je už používaná."
 
-#: src/game_initialization/multiplayer.cpp:414
+#: src/game_initialization/multiplayer.cpp:415
 msgid ""
 "The nickname ‘$nick’ contains invalid characters. Only alpha-numeric "
 "characters (one at minimum), underscores and hyphens are allowed."
@@ -6102,44 +6071,44 @@ msgstr ""
 "Prezývka ‘$nick’ obsahuje nepovolené znaky. Povolené sú len písmená, čísla "
 "(aspoň jedno písmeno alebo číslo), pomlčky a podtržníky."
 
-#: src/game_initialization/multiplayer.cpp:418
+#: src/game_initialization/multiplayer.cpp:419
 msgid "The nickname ‘$nick’ is too long. Nicks must be 20 characters or less."
 msgstr ""
 "Prezývka ‘$nick’ je príliš dlhá. Prezývky môžu mať maximálne 20 znakov."
 
-#: src/game_initialization/multiplayer.cpp:420
+#: src/game_initialization/multiplayer.cpp:421
 msgid "The nickname ‘$nick’ is reserved and cannot be used by players."
 msgstr "Prezývka ‘$nick’ je rezervovaná a nemôže byť použitá hráčmi."
 
-#: src/game_initialization/multiplayer.cpp:422
+#: src/game_initialization/multiplayer.cpp:423
 msgid "The nickname ‘$nick’ is not registered on this server."
 msgstr "Prezývka ‘$nick’ nie je na tomto serveri registrovaná."
 
-#: src/game_initialization/multiplayer.cpp:423
+#: src/game_initialization/multiplayer.cpp:424
 msgid " This server disallows unregistered nicknames."
 msgstr " Tento server nepovoľuje neregistrované prezývky."
 
-#: src/game_initialization/multiplayer.cpp:426
+#: src/game_initialization/multiplayer.cpp:427
 #, fuzzy
 #| msgid "The nickname ‘$nick’ is banned on this server’s forums."
 msgid "The nickname ‘$nick’ is banned on this server’s forums for $duration|."
 msgstr "Prezývka ‘$nick’ zakázaná na fóre na tomto serveri."
 
-#: src/game_initialization/multiplayer.cpp:428
+#: src/game_initialization/multiplayer.cpp:429
 msgid "The nickname ‘$nick’ is banned on this server’s forums."
 msgstr "Prezývka ‘$nick’ zakázaná na fóre na tomto serveri."
 
-#: src/game_initialization/multiplayer.cpp:432
+#: src/game_initialization/multiplayer.cpp:433
 #, fuzzy
 #| msgid "The nickname ‘$nick’ is banned on this server’s forums."
 msgid "Your IP address is banned on this server’s forums for $duration|."
 msgstr "Prezývka ‘$nick’ zakázaná na fóre na tomto serveri."
 
-#: src/game_initialization/multiplayer.cpp:434
+#: src/game_initialization/multiplayer.cpp:435
 msgid "Your IP address is banned on this server’s forums."
 msgstr ""
 
-#: src/game_initialization/multiplayer.cpp:438
+#: src/game_initialization/multiplayer.cpp:439
 #, fuzzy
 #| msgid ""
 #| "The email address for the nickname ‘$nick’ is banned on this server’s "
@@ -6150,18 +6119,18 @@ msgid ""
 msgstr ""
 "Emailová adresa pre prezývku ‘$nick’ zakázaná na fóre na tomto serveri."
 
-#: src/game_initialization/multiplayer.cpp:440
+#: src/game_initialization/multiplayer.cpp:441
 msgid ""
 "The email address for the nickname ‘$nick’ is banned on this server’s forums."
 msgstr ""
 "Emailová adresa pre prezývku ‘$nick’ zakázaná na fóre na tomto serveri."
 
-#: src/game_initialization/multiplayer.cpp:443
-#: src/game_initialization/multiplayer.cpp:445
+#: src/game_initialization/multiplayer.cpp:444
+#: src/game_initialization/multiplayer.cpp:446
 msgid "The nickname ‘$nick’ is registered on this server."
 msgstr "Prezývka ‘$nick’ je na tomto serveri registrovaná."
 
-#: src/game_initialization/multiplayer.cpp:446
+#: src/game_initialization/multiplayer.cpp:447
 msgid ""
 "WARNING: There is already a client using this nickname, logging in will "
 "cause that client to be kicked!"
@@ -6169,15 +6138,15 @@ msgstr ""
 "VAROVANIE: Túto prezývku už používa iný používateľ, prihlásenie spôsobí "
 "vykopnutie tohto používateľa!"
 
-#: src/game_initialization/multiplayer.cpp:449
+#: src/game_initialization/multiplayer.cpp:450
 msgid "The password you provided was incorrect."
 msgstr "Zadané heslo je nesprávne."
 
-#: src/game_initialization/multiplayer.cpp:451
+#: src/game_initialization/multiplayer.cpp:452
 msgid "You have made too many login attempts."
 msgstr "Máš príliš veľa pokusov o prihlásenie."
 
-#: src/game_initialization/multiplayer.cpp:453
+#: src/game_initialization/multiplayer.cpp:454
 msgid "Password hashing failed."
 msgstr ""
 
@@ -7852,20 +7821,22 @@ msgstr "Odpočítavanie kým tvoj ťah automaticky skončí."
 msgid "Turn Countdown"
 msgstr "Odpočítavanie kola"
 
-#: src/save_index.cpp:279
+#. TRANSLATORS: Day of week + month + day of month + 12-hour time + year, eg 'Tue Nov 02 1:59 PM 2021'. Format for your locale.
+#: src/save_index.cpp:280
 msgid "%a %b %d %I:%M %p %Y"
 msgstr "%a %b %d %I:%M %p %Y"
 
-#: src/save_index.cpp:280
+#. TRANSLATORS: Day of week + month + day of month + 24-hour time + year, eg 'Tue Nov 02 13:59 2021'. Format for your locale.
+#: src/save_index.cpp:282
 msgid "%a %b %d %H:%M %Y"
 msgstr "%a %b %d %H:%M %Y"
 
 #. TRANSLATORS: This string is used as part of a filename, as in, "HttT-The Elves Besieged replay.gz"
-#: src/save_index.cpp:300 src/savegame.cpp:588
+#: src/save_index.cpp:302 src/savegame.cpp:588
 msgid "replay"
 msgstr "záznam"
 
-#: src/save_index.cpp:384 src/savegame.cpp:71 src/savegame.cpp:624
+#: src/save_index.cpp:386 src/savegame.cpp:71 src/savegame.cpp:624
 #: src/savegame.cpp:626
 msgid "Auto-Save"
 msgstr "Automatické uloženie"
@@ -8377,6 +8348,33 @@ msgstr "Skryť plán pre $player"
 #: src/whiteboard/manager.cpp:1138
 msgid "Whiteboard Options"
 msgstr "Nastavenia tabule"
+
+#~ msgid "<room>"
+#~ msgstr "<miestnosť>"
+
+#~ msgid "Join a room."
+#~ msgstr "Vstúpiť do miestnosti."
+
+#~ msgid "Part a room."
+#~ msgstr "Opustiť miestnosť."
+
+#~ msgid "List room members."
+#~ msgstr "Zoznam členov v miestnosti."
+
+#~ msgid "List available rooms."
+#~ msgstr "Zobrazí dostupné miestnosti."
+
+#~ msgid "<room> <msg>"
+#~ msgstr "<miestnosť> <správa>"
+
+#~ msgid "Room message."
+#~ msgstr "Správa do miestnosti."
+
+#~ msgid "<room> <type> [value]"
+#~ msgstr "<miestnosť> <typ> [hodnota]"
+
+#~ msgid "Room query."
+#~ msgstr "Dotaz v miestnosti."
 
 #, fuzzy
 #~| msgid "drains"

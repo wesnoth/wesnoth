@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-10-23 20:57-0300\n"
+"POT-Creation-Date: 2021-11-09 03:45+0300\n"
 "PO-Revision-Date: 2021-08-21 11:18+0300\n"
 "Last-Translator: Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>\n"
 "Language-Team: Turkish\n"
@@ -864,8 +864,8 @@ msgstr "Buğday Demeti"
 msgid "Runic Hammer"
 msgstr "Rünik Çekiç"
 
-#. [object]
 #. [item]: id=holly-water
+#. [object]
 #: data/core/editor/items.cfg:282 data/core/macros/items.cfg:283
 msgid "Holy Water"
 msgstr "Okunmuş Su"
@@ -906,8 +906,8 @@ msgstr "Yeşil İksir"
 msgid "Gray Potion"
 msgstr "Gri İksir"
 
-#. [object]: id={ID}
 #. [item]: id=potion-poison
+#. [object]: id={ID}
 #: data/core/editor/items.cfg:336 data/core/macros/items.cfg:246
 msgid "Poison"
 msgstr "Zehir"
@@ -977,8 +977,8 @@ msgstr "Asa"
 msgid "Stone Tablet"
 msgstr "Taş Yazıt"
 
-#. [object]
 #. [item]: id=storm-trident
+#. [object]
 #: data/core/editor/items.cfg:420 data/core/macros/items.cfg:529
 msgid "Storm Trident"
 msgstr "Yıldırım Çatalı"
@@ -5396,7 +5396,7 @@ msgid "Do you really wish to continue?"
 msgstr "Gerçekten devam etmek istiyor musunuz?"
 
 #: src/addon/client.cpp:552 src/addon/manager_ui.cpp:173
-#: src/game_initialization/multiplayer.cpp:361
+#: src/game_initialization/multiplayer.cpp:362
 msgid "Confirm"
 msgstr "Onay"
 
@@ -5681,55 +5681,55 @@ msgstr "Sunucudaki eklenti listesi boş."
 msgid "Unspecified validation failure."
 msgstr "Belirtilmemiş doğrulama hatası. "
 
-#: src/chat_command_handler.cpp:113
+#: src/chat_command_handler.cpp:76
 msgid "Added to ignore list: $nick"
 msgstr "Gözardı listenize eklendi: $nick"
 
-#: src/chat_command_handler.cpp:113
+#: src/chat_command_handler.cpp:76
 msgid "ignores list"
 msgstr "gözardı listesi"
 
-#: src/chat_command_handler.cpp:117 src/chat_command_handler.cpp:136
+#: src/chat_command_handler.cpp:80 src/chat_command_handler.cpp:99
 msgid "Invalid username: $nick"
 msgstr "Geçersiz kullanıcı ismi: $nick"
 
-#: src/chat_command_handler.cpp:132
+#: src/chat_command_handler.cpp:95
 msgid "Added to friends list: $nick"
 msgstr "Arkadaş listenize eklendi: $nick"
 
-#: src/chat_command_handler.cpp:132
+#: src/chat_command_handler.cpp:95
 msgid "friends list"
 msgstr "arkadaş listesi"
 
-#: src/chat_command_handler.cpp:148
+#: src/chat_command_handler.cpp:111
 msgid "Removed from list: $nick"
 msgstr "Listenizden kaldırıldı: $nick"
 
-#: src/chat_command_handler.cpp:148
+#: src/chat_command_handler.cpp:111
 msgid "friends and ignores list"
 msgstr "arkadaşlar ve gözardı listesi"
 
-#: src/chat_command_handler.cpp:158
+#: src/chat_command_handler.cpp:121
 msgid "version"
 msgstr "sürüm"
 
-#: src/chat_command_handler.cpp:170
+#: src/chat_command_handler.cpp:133
 msgid "nick registration"
 msgstr "Kullanıcı ismi kaydı"
 
-#: src/chat_command_handler.cpp:170
+#: src/chat_command_handler.cpp:133
 msgid "requesting information for user $nick"
 msgstr "$nick kullanıcısı için bilgi isteniyor"
 
-#: src/chat_command_handler.hpp:52
+#: src/chat_command_handler.hpp:48
 msgid "(A) — admin command"
 msgstr "(A) — yönetici komutu"
 
-#: src/chat_command_handler.hpp:59 src/menu_events.cpp:1194
+#: src/chat_command_handler.hpp:55 src/menu_events.cpp:1194
 msgid "(admin only)"
 msgstr "(sadece yönetici)"
 
-#: src/chat_command_handler.hpp:74
+#: src/chat_command_handler.hpp:70
 msgid ""
 "Send a query to the server. Without arguments the server should tell you the "
 "available commands."
@@ -5737,7 +5737,7 @@ msgstr ""
 "Sunucuya bir sorgu gönderir. Bir argüman belirtilmezse sunucu "
 "kullanılabilecek komutları listeleyecektir."
 
-#: src/chat_command_handler.hpp:78
+#: src/chat_command_handler.hpp:74
 msgid ""
 "Ban and kick a player or observer. If he is not in the game but on the "
 "server he will only be banned."
@@ -5745,41 +5745,41 @@ msgstr ""
 "Bir oyuncuyu veya seyirciyi atar veya yasaklar. Kullanıcı bir oyuna dahil "
 "değilse sadece ismine yasak konur."
 
-#: src/chat_command_handler.hpp:79 src/chat_command_handler.hpp:82
-#: src/chat_command_handler.hpp:84 src/chat_command_handler.hpp:86
-#: src/chat_command_handler.hpp:88 src/chat_command_handler.hpp:109
-#: src/chat_command_handler.hpp:111 src/chat_command_handler.hpp:113
-#: src/chat_command_handler.hpp:119
+#: src/chat_command_handler.hpp:75 src/chat_command_handler.hpp:78
+#: src/chat_command_handler.hpp:80 src/chat_command_handler.hpp:82
+#: src/chat_command_handler.hpp:84 src/chat_command_handler.hpp:105
+#: src/chat_command_handler.hpp:107 src/chat_command_handler.hpp:109
+#: src/chat_command_handler.hpp:115
 msgid "<nickname>"
 msgstr "<takma ad>"
 
-#: src/chat_command_handler.hpp:81
+#: src/chat_command_handler.hpp:77
 msgid "Unban a user. He does not have to be in the game but on the server."
 msgstr ""
 "Bir kullanıcının engelini kaldırır. Oyunda olması gerekmez sunucuda olsun "
 "yeter."
 
-#: src/chat_command_handler.hpp:84
+#: src/chat_command_handler.hpp:80
 msgid "Kick a player or observer."
 msgstr "Bir oyuncuyu veya seyirciyi atar."
 
-#: src/chat_command_handler.hpp:86
+#: src/chat_command_handler.hpp:82
 msgid "Mute an observer. Without an argument displays the mute status."
 msgstr ""
 "Bir gözlemciyi susturur. Bir değiştirge belirtilmezse sessizlik durumunu "
 "gösterir."
 
-#: src/chat_command_handler.hpp:88
+#: src/chat_command_handler.hpp:84
 msgid "Unmute an observer. Without an argument unmutes everyone."
 msgstr ""
 "Bir gözlemcinin sesini açar. Bir değiştirge belirtilmezse herkesin sesini "
 "açar."
 
-#: src/chat_command_handler.hpp:90
+#: src/chat_command_handler.hpp:86
 msgid "Mute/Unmute all observers. (toggles)"
 msgstr "Tüm seyircileri sustur/ses aç."
 
-#: src/chat_command_handler.hpp:92
+#: src/chat_command_handler.hpp:88
 msgid ""
 "Send some data to the server. Can be used to verify the network connection "
 "and notice disconnects."
@@ -5787,7 +5787,7 @@ msgstr ""
 "Sunucuya bir miktar veri gönderir.  Ağ bağlantısını doğrulamak ve kopmaları "
 "bildirmek için kullanılabilir."
 
-#: src/chat_command_handler.hpp:94
+#: src/chat_command_handler.hpp:90
 msgid ""
 "Report abuse, rule violations, etc. to the server moderators. Make sure to "
 "mention relevant nicknames, etc."
@@ -5795,15 +5795,15 @@ msgstr ""
 "Taciz, kural ihlalleri vb. sunucu moderatörlerine ihbar edin. Alakalı takma "
 "isimler vb. den bahsetmeyi de unutmayın."
 
-#: src/chat_command_handler.hpp:98
+#: src/chat_command_handler.hpp:94
 msgid "<message>"
 msgstr "<İleti>"
 
-#: src/chat_command_handler.hpp:98
+#: src/chat_command_handler.hpp:94
 msgid "Send an emotion or personal action in chat."
 msgstr "Sohbette bir duygu veya kişisel eylem gönderir."
 
-#: src/chat_command_handler.hpp:101
+#: src/chat_command_handler.hpp:97
 msgid ""
 "Send a private message. You cannot send private messages to players in a "
 "running game you observe or play in."
@@ -5811,83 +5811,46 @@ msgstr ""
 "Özel ileti gönderir. İzlediğiniz veya oynadığınız devam eden bir oyundaki "
 "oyunculara özel ileti gönderemezsiniz."
 
-#: src/chat_command_handler.hpp:103
+#: src/chat_command_handler.hpp:99
 msgid "<nickname> <message>"
 msgstr "<Takma ad> <ileti>"
 
-#: src/chat_command_handler.hpp:107
+#: src/chat_command_handler.hpp:103
 msgid "<level> <domain>"
 msgstr "<seviye> <alan>"
 
-#: src/chat_command_handler.hpp:107
+#: src/chat_command_handler.hpp:103
 msgid "Change the log level of a log domain."
 msgstr "Bir günlük kayıt alanının günlük kayıt seviyesini değiştirir."
 
-#: src/chat_command_handler.hpp:109
+#: src/chat_command_handler.hpp:105
 msgid "Add a nickname to your ignores list."
 msgstr "Gözardı listenize bir kullanıcı adı ekler."
 
-#: src/chat_command_handler.hpp:111
+#: src/chat_command_handler.hpp:107
 msgid "Add a nickname to your friends list."
 msgstr "Arkadaş listenize kullanıcı adı ekler."
 
-#: src/chat_command_handler.hpp:113
+#: src/chat_command_handler.hpp:109
 msgid "Remove a nickname from your ignores or friends list."
 msgstr "Arkadaşlar veya gözardı listenizden kullanıcı adı siler."
 
-#: src/chat_command_handler.hpp:115
+#: src/chat_command_handler.hpp:111
 msgid "<N>"
 msgstr "<N>"
 
-#: src/chat_command_handler.hpp:115
+#: src/chat_command_handler.hpp:111
 msgid "Get a random number between 1 and N visible in the game setup lobby."
 msgstr ""
 "Oyun kurulum lobisinde görünen 1 ile N arasında rastgele bir sayı alınır. "
 
-#: src/chat_command_handler.hpp:117
+#: src/chat_command_handler.hpp:113
 msgid "Display version information."
 msgstr "Sürüm bilgilerini gösterir."
 
-#: src/chat_command_handler.hpp:119
+#: src/chat_command_handler.hpp:115
 msgid "Request information about a nickname."
 msgstr "Bir kullanıcı hakkında bilgi iste."
-
-#: src/chat_command_handler.hpp:121 src/chat_command_handler.hpp:124
-#: src/chat_command_handler.hpp:126
-msgid "<room>"
-msgstr "<oda>"
-
-#: src/chat_command_handler.hpp:121
-msgid "Join a room."
-msgstr "Odaya katıl."
-
-#: src/chat_command_handler.hpp:124
-msgid "Part a room."
-msgstr "Bir odayı ayır."
-
-#: src/chat_command_handler.hpp:126
-msgid "List room members."
-msgstr "Oda üyelerini listele."
-
-#: src/chat_command_handler.hpp:128
-msgid "List available rooms."
-msgstr " Müsait odaları listele."
-
-#: src/chat_command_handler.hpp:130
-msgid "<room> <msg>"
-msgstr "<oda> <ileti>"
-
-#: src/chat_command_handler.hpp:130
-msgid "Room message."
-msgstr "Oda iletisi."
-
-#: src/chat_command_handler.hpp:132
-msgid "<room> <type> [value]"
-msgstr "<oda> <tür> [değer]"
-
-#: src/chat_command_handler.hpp:132
-msgid "Room query."
-msgstr "Oda sorgusu"
 
 #: src/chat_events.cpp:60
 msgid "Unknown debug level: '$level'."
@@ -5905,11 +5868,11 @@ msgstr "Bilinmeye hata ayıklama alanı: ‘$domain’."
 msgid "Switched domain: '$domain' to level: '$level'."
 msgstr "Geçilen alan: ‘$domain’, geçilen seviye: ‘$level’."
 
-#: src/chat_events.cpp:154
+#: src/chat_events.cpp:148
 msgid "whisper to $receiver"
 msgstr "şuna fısılda: $receiver"
 
-#: src/chat_events.cpp:161
+#: src/chat_events.cpp:155
 msgid "whisper: $sender"
 msgstr "fısıldayan: $sender"
 
@@ -5946,27 +5909,33 @@ msgstr "Vesnot Savaşı"
 msgid "Invalid Color"
 msgstr "Geçersiz Renk"
 
-#: src/format_time_summary.cpp:47
+#. TRANSLATORS: 24-hour time, eg '13:59'
+#: src/format_time_summary.cpp:48
 msgid "%H:%M"
 msgstr "%H:%M"
 
-#: src/format_time_summary.cpp:50
+#. TRANSLATORS: 12-hour time, eg '1:59 PM'
+#: src/format_time_summary.cpp:52
 msgid "%I:%M %p"
 msgstr "%l: %M %p"
 
-#: src/format_time_summary.cpp:55
+#. TRANSLATORS: Day of week + 24-hour time, eg 'Sunday, 13:59'
+#: src/format_time_summary.cpp:58
 msgid "%A, %H:%M"
 msgstr "%A, %H:%M"
 
-#: src/format_time_summary.cpp:58
+#. TRANSLATORS: Day of week + 12-hour time, eg 'Sunday, 1:59 PM'
+#: src/format_time_summary.cpp:62
 msgid "%A, %I:%M %p"
 msgstr "%A, %l:%M %p"
 
-#: src/format_time_summary.cpp:62
+#. TRANSLATORS: Month + day of month, eg 'Nov 02'. Format for your locale.
+#: src/format_time_summary.cpp:67
 msgid "%b %d"
 msgstr "%d %b"
 
-#: src/format_time_summary.cpp:66
+#. TRANSLATORS: Month + day of month + year, eg 'Nov 02 2021'. Format for your locale.
+#: src/format_time_summary.cpp:72
 msgid "%b %d %Y"
 msgstr "%b %d %Y"
 
@@ -6272,21 +6241,21 @@ msgstr "Düşman lider(ler)ini öldür"
 msgid "Cannot find era '$era'"
 msgstr "$era çağı bulunamıyor"
 
-#: src/game_initialization/multiplayer.cpp:236
+#: src/game_initialization/multiplayer.cpp:237
 msgid "Invalid address specified for multiplayer server"
 msgstr "Çok oyunculu sunucusu için geçersiz adres belirtilmiş."
 
-#: src/game_initialization/multiplayer.cpp:271
+#: src/game_initialization/multiplayer.cpp:272
 msgid ""
 "The server accepts versions '$required_version', but you are using version "
 "'$your_version'"
 msgstr "Bu sunucu '$required_version' kabul ediyor ama sizinki '$your_version'"
 
-#: src/game_initialization/multiplayer.cpp:284
+#: src/game_initialization/multiplayer.cpp:285
 msgid "Server-side redirect loop"
 msgstr "Sunucu taraflı yönlendirme döngüsü"
 
-#: src/game_initialization/multiplayer.cpp:334
+#: src/game_initialization/multiplayer.cpp:335
 msgid ""
 "The nickname ‘$nick’ is inactive. You cannot claim ownership of this "
 "nickname until you activate your account via email or ask an administrator "
@@ -6295,28 +6264,28 @@ msgstr ""
 "'$nick' takma adı etkin değil. Hesabınızı e-posta ile etkinleştirmeden veya "
 "bir yöneticiden istemeden bu takma ada sahip olamazsınız."
 
-#: src/game_initialization/multiplayer.cpp:343
+#: src/game_initialization/multiplayer.cpp:344
 msgid "Do you want to continue?"
 msgstr "Devam etmek istiyor musunuz?"
 
-#: src/game_initialization/multiplayer.cpp:345
+#: src/game_initialization/multiplayer.cpp:346
 msgid "Warning"
 msgstr "Uyarı"
 
-#: src/game_initialization/multiplayer.cpp:408
+#: src/game_initialization/multiplayer.cpp:409
 msgid ""
 "The remote server requested a password while using an insecure connection."
 msgstr "Uzak sunucu güvensiz bağlantı üzerinden parola isteği yaptı."
 
-#: src/game_initialization/multiplayer.cpp:410
+#: src/game_initialization/multiplayer.cpp:411
 msgid "You must login first."
 msgstr "Önce oturum açmanız lazım."
 
-#: src/game_initialization/multiplayer.cpp:412
+#: src/game_initialization/multiplayer.cpp:413
 msgid "The nickname ‘$nick’ is already taken."
 msgstr "'$nick' kullanıcı adı alınmış."
 
-#: src/game_initialization/multiplayer.cpp:414
+#: src/game_initialization/multiplayer.cpp:415
 msgid ""
 "The nickname ‘$nick’ contains invalid characters. Only alpha-numeric "
 "characters (one at minimum), underscores and hyphens are allowed."
@@ -6324,39 +6293,39 @@ msgstr ""
 "'$nick' geçersiz karakter içeriyor. Sadece harfler, rakamlar, alt çizgi ve "
 "tire imine izin verilmektedir."
 
-#: src/game_initialization/multiplayer.cpp:418
+#: src/game_initialization/multiplayer.cpp:419
 msgid "The nickname ‘$nick’ is too long. Nicks must be 20 characters or less."
 msgstr "'$nick' çok uzun. Oyuncu isimleri 20 karakterden uzun olamaz."
 
-#: src/game_initialization/multiplayer.cpp:420
+#: src/game_initialization/multiplayer.cpp:421
 msgid "The nickname ‘$nick’ is reserved and cannot be used by players."
 msgstr "'$nick' yerleşik bir isim olup oyuncular tarafından kullanılamaz."
 
-#: src/game_initialization/multiplayer.cpp:422
+#: src/game_initialization/multiplayer.cpp:423
 msgid "The nickname ‘$nick’ is not registered on this server."
 msgstr "'$nick' bu sunucuda kayıtlı değil."
 
-#: src/game_initialization/multiplayer.cpp:423
+#: src/game_initialization/multiplayer.cpp:424
 msgid " This server disallows unregistered nicknames."
 msgstr " Kayıtlı olmayan oyuncu adlarına bu sunucuda izin verilmemektedir."
 
-#: src/game_initialization/multiplayer.cpp:426
+#: src/game_initialization/multiplayer.cpp:427
 msgid "The nickname ‘$nick’ is banned on this server’s forums for $duration|."
 msgstr "‘$nick’ bu sunucunun forumlarında $duration süreyle yasaklıdır."
 
-#: src/game_initialization/multiplayer.cpp:428
+#: src/game_initialization/multiplayer.cpp:429
 msgid "The nickname ‘$nick’ is banned on this server’s forums."
 msgstr "‘$nick’  bu sunucunun forumlarında yasaklıdır."
 
-#: src/game_initialization/multiplayer.cpp:432
+#: src/game_initialization/multiplayer.cpp:433
 msgid "Your IP address is banned on this server’s forums for $duration|."
 msgstr "IP adresiniz bu sunucunun forumlarında $duration süreyle yasaklıdır."
 
-#: src/game_initialization/multiplayer.cpp:434
+#: src/game_initialization/multiplayer.cpp:435
 msgid "Your IP address is banned on this server’s forums."
 msgstr " IP adresiniz bu sunucunun forumlarında yasaklıdır."
 
-#: src/game_initialization/multiplayer.cpp:438
+#: src/game_initialization/multiplayer.cpp:439
 msgid ""
 "The email address for the nickname ‘$nick’ is banned on this server’s forums "
 "for $duration|."
@@ -6364,17 +6333,17 @@ msgstr ""
 "‘$nick’ adının e-posta adresi bu sunucunun forumlarında $duration süreyle "
 "yasaklıdır."
 
-#: src/game_initialization/multiplayer.cpp:440
+#: src/game_initialization/multiplayer.cpp:441
 msgid ""
 "The email address for the nickname ‘$nick’ is banned on this server’s forums."
 msgstr "‘$nick’ adının e-posta adresi bu sunucunun forumlarında yasaklıdır."
 
-#: src/game_initialization/multiplayer.cpp:443
-#: src/game_initialization/multiplayer.cpp:445
+#: src/game_initialization/multiplayer.cpp:444
+#: src/game_initialization/multiplayer.cpp:446
 msgid "The nickname ‘$nick’ is registered on this server."
 msgstr "Bu sunucuda kayıtlı bir '$nick' zaten var."
 
-#: src/game_initialization/multiplayer.cpp:446
+#: src/game_initialization/multiplayer.cpp:447
 msgid ""
 "WARNING: There is already a client using this nickname, logging in will "
 "cause that client to be kicked!"
@@ -6382,15 +6351,15 @@ msgstr ""
 "UYARI: Bu adı kullanan bir oyuncu zaten var ve oturum açmanız bu oyuncunun "
 "sunucudan atılmasına sebep olacak!"
 
-#: src/game_initialization/multiplayer.cpp:449
+#: src/game_initialization/multiplayer.cpp:450
 msgid "The password you provided was incorrect."
 msgstr "Belirttiğiniz parola yanlıştı."
 
-#: src/game_initialization/multiplayer.cpp:451
+#: src/game_initialization/multiplayer.cpp:452
 msgid "You have made too many login attempts."
 msgstr "Çok fazla girme girişiminde bulundunuz."
 
-#: src/game_initialization/multiplayer.cpp:453
+#: src/game_initialization/multiplayer.cpp:454
 msgid "Password hashing failed."
 msgstr "Parola aşlama başarısız oldu."
 
@@ -8020,20 +7989,22 @@ msgstr "Elinizin kendiliğinden bitmesine geri sayım."
 msgid "Turn Countdown"
 msgstr "El geri sayımı"
 
-#: src/save_index.cpp:279
+#. TRANSLATORS: Day of week + month + day of month + 12-hour time + year, eg 'Tue Nov 02 1:59 PM 2021'. Format for your locale.
+#: src/save_index.cpp:280
 msgid "%a %b %d %I:%M %p %Y"
 msgstr "%a %b %d %l:%M %p %Y"
 
-#: src/save_index.cpp:280
+#. TRANSLATORS: Day of week + month + day of month + 24-hour time + year, eg 'Tue Nov 02 13:59 2021'. Format for your locale.
+#: src/save_index.cpp:282
 msgid "%a %b %d %H:%M %Y"
 msgstr "%d %b %y %a %H:%M"
 
 #. TRANSLATORS: This string is used as part of a filename, as in, "HttT-The Elves Besieged replay.gz"
-#: src/save_index.cpp:300 src/savegame.cpp:588
+#: src/save_index.cpp:302 src/savegame.cpp:588
 msgid "replay"
 msgstr "tekrar"
 
-#: src/save_index.cpp:384 src/savegame.cpp:71 src/savegame.cpp:624
+#: src/save_index.cpp:386 src/savegame.cpp:71 src/savegame.cpp:624
 #: src/savegame.cpp:626
 msgid "Auto-Save"
 msgstr "Otomatik Kayıt"
@@ -8553,6 +8524,33 @@ msgstr "Planları $player için gizle"
 #: src/whiteboard/manager.cpp:1138
 msgid "Whiteboard Options"
 msgstr "Beyaztahta Ayarları"
+
+#~ msgid "<room>"
+#~ msgstr "<oda>"
+
+#~ msgid "Join a room."
+#~ msgstr "Odaya katıl."
+
+#~ msgid "Part a room."
+#~ msgstr "Bir odayı ayır."
+
+#~ msgid "List room members."
+#~ msgstr "Oda üyelerini listele."
+
+#~ msgid "List available rooms."
+#~ msgstr " Müsait odaları listele."
+
+#~ msgid "<room> <msg>"
+#~ msgstr "<oda> <ileti>"
+
+#~ msgid "Room message."
+#~ msgstr "Oda iletisi."
+
+#~ msgid "<room> <type> [value]"
+#~ msgstr "<oda> <tür> [değer]"
+
+#~ msgid "Room query."
+#~ msgstr "Oda sorgusu"
 
 #, fuzzy
 #~| msgid "female^neutral"

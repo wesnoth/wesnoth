@@ -10,7 +10,7 @@ msgstr ""
 "#-#-#-#-#  wesnoth-lib.cpp.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-10-23 20:57-0300\n"
+"POT-Creation-Date: 2021-11-09 03:45+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,7 +22,7 @@ msgstr ""
 "#-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-10-23 23:58 UTC\n"
+"POT-Creation-Date: 2021-11-09 00:45 UTC\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -55,10 +55,10 @@ msgstr ""
 msgid "Multiplayer_AI^Dev AI: Default AI (RCA) with Alternate Recruiting"
 msgstr ""
 
+#. [terrain_type]: id=zfarmer-fence  # AI-animal-proof fences from first scenario
+#. [terrain_type]: id=farmer-fence  # AI-animal-proof fences from first scenario
 #. [terrain_type]: id=fence
 #. [terrain_type]: id=fence_iron
-#. [terrain_type]: id=farmer-fence  # AI-animal-proof fences from first scenario
-#. [terrain_type]: id=zfarmer-fence  # AI-animal-proof fences from first scenario
 #: data/campaigns/Secrets_of_the_Ancients/utils/terrain-compat.cfg:9
 #: data/campaigns/Secrets_of_the_Ancients/utils/terrain.cfg:5
 #: data/core/terrain.cfg:489 data/core/terrain.cfg:499
@@ -1976,13 +1976,13 @@ msgid ""
 msgstr ""
 
 #. [button]: id=reset_option_values
-#. [button]: id=orb_defaults
-#. [button]: id=btn_reset_hotkeys
 #. [button]: id=revert_to_defaults
+#. [button]: id=btn_reset_hotkeys
+#. [button]: id=orb_defaults
 #: data/gui/macros/custom_options_tree.cfg:250
 #: data/gui/window/mp_alerts_options.cfg:227
 #: data/gui/window/preferences/02_hotkeys.cfg:279
-#: data/gui/window/select_orb_colors.cfg:127
+#: data/gui/window/select_orb_colors.cfg:129
 msgid "Defaults"
 msgstr ""
 
@@ -1992,11 +1992,11 @@ msgid "Connected Players"
 msgstr ""
 
 #. [toggle_button]: id=sort_0
-#. [label]
 #. [toggle_button]: id=sort_name
-#. [toggle_button]: id=sort_1
 #. [label]: id=name
-#: data/gui/widget/addon_list.cfg:78 data/gui/window/campaign_dialog.cfg:216
+#. [label]
+#. [toggle_button]: id=sort_1
+#: data/gui/widget/addon_list.cfg:78 data/gui/window/campaign_dialog.cfg:214
 #: data/gui/window/game_load.cfg:157 data/gui/window/mp_connect.cfg:159
 #: data/gui/window/terrain_layers.cfg:45 data/gui/window/unit_list.cfg:93
 #: data/gui/window/unit_recall.cfg:47
@@ -2024,8 +2024,8 @@ msgid "Downloads"
 msgstr ""
 
 #. [toggle_button]: id=sort_4
-#. [toggle_button]: id=sort_0
 #. [toggle_button]: id=sort_1
+#. [toggle_button]: id=sort_0
 #: data/gui/widget/addon_list.cfg:151 data/gui/window/unit_create.cfg:147
 #: data/gui/window/unit_list.cfg:79 data/gui/window/unit_recall.cfg:33
 msgid "Type"
@@ -2124,7 +2124,7 @@ msgstr ""
 #: data/gui/window/mp_faction_select.cfg:370
 #: data/gui/window/mp_join_game_password_prompt.cfg:136
 #: data/gui/window/mp_login.cfg:243 data/gui/window/mp_method_selection.cfg:327
-#: data/gui/window/select_orb_colors.cfg:138
+#: data/gui/window/select_orb_colors.cfg:140
 #: data/gui/window/simple_item_selector.cfg:145
 #: data/gui/window/sp_options_configure.cfg:105
 #: data/gui/window/theme_list.cfg:142 data/gui/window/unit_advance.cfg:191
@@ -2139,7 +2139,7 @@ msgstr ""
 #: data/gui/window/addon_auth.cfg:133 data/gui/window/addon_connect.cfg:211
 #: data/gui/window/addon_license_prompt.cfg:114
 #: data/gui/window/addon_uninstall_list.cfg:174
-#: data/gui/window/campaign_dialog.cfg:497
+#: data/gui/window/campaign_dialog.cfg:493
 #: data/gui/window/campaign_difficulty.cfg:234
 #: data/gui/window/core_dialog.cfg:241 data/gui/window/custom_tod.cfg:444
 #: data/gui/window/depcheck_select_new.cfg:165
@@ -2164,7 +2164,7 @@ msgstr ""
 #: data/gui/window/mp_login.cfg:257 data/gui/window/mp_method_selection.cfg:341
 #: data/gui/window/mp_staging.cfg:433
 #: data/gui/window/network_transmission.cfg:108
-#: data/gui/window/select_orb_colors.cfg:149
+#: data/gui/window/select_orb_colors.cfg:151
 #: data/gui/window/simple_item_selector.cfg:158
 #: data/gui/window/sp_options_configure.cfg:117
 #: data/gui/window/surrender_quit.cfg:114 data/gui/window/theme_list.cfg:155
@@ -2174,8 +2174,8 @@ msgstr ""
 msgid "Cancel"
 msgstr ""
 
-#. [widget]: id=name
 #. [label]
+#. [widget]: id=name
 #: data/gui/window/addon_connect.cfg:40 data/gui/window/mp_connect.cfg:52
 #: data/gui/window/mp_method_selection.cfg:254
 msgid "Connect to Server"
@@ -2191,8 +2191,8 @@ msgstr ""
 msgid "Server:"
 msgstr ""
 
-#. [label]
 #. [button]: id=remove_addons
+#. [label]
 #: data/gui/window/addon_connect.cfg:144
 #: data/gui/window/addon_uninstall_list.cfg:51
 msgid "Remove Add-ons"
@@ -2256,7 +2256,7 @@ msgid "Delete add-on"
 msgstr ""
 
 #. [label]
-#: data/gui/window/addon_manager.cfg:385 data/gui/window/addon_manager.cfg:764
+#: data/gui/window/addon_manager.cfg:385 data/gui/window/addon_manager.cfg:761
 msgid "Type:"
 msgstr ""
 
@@ -2315,46 +2315,46 @@ msgid "translations^None"
 msgstr ""
 
 #. [label]
-#: data/gui/window/addon_manager.cfg:672 data/gui/window/addon_manager.cfg:791
+#: data/gui/window/addon_manager.cfg:672 data/gui/window/addon_manager.cfg:788
 msgid "Tags:"
 msgstr ""
 
 #. [text_box]: id=filter
-#: data/gui/window/addon_manager.cfg:725
+#: data/gui/window/addon_manager.cfg:714
 msgid "Filters on addon description, version, type or author"
 msgstr ""
 
 #. [label]
-#: data/gui/window/addon_manager.cfg:738
+#: data/gui/window/addon_manager.cfg:735
 msgid "State:"
 msgstr ""
 
 #. [label]
-#: data/gui/window/addon_manager.cfg:817
+#: data/gui/window/addon_manager.cfg:814
 msgid "Order:"
 msgstr ""
 
 #. [label]
-#: data/gui/window/addon_manager.cfg:903 data/gui/window/addon_manager.cfg:1085
+#: data/gui/window/addon_manager.cfg:903 data/gui/window/addon_manager.cfg:1095
 msgid "Add-ons Manager"
 msgstr ""
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=details_toggle
-#: data/gui/window/addon_manager.cfg:1003 src/gui/dialogs/addon/manager.cpp:509
+#: data/gui/window/addon_manager.cfg:1013 src/gui/dialogs/addon/manager.cpp:509
 #: src/gui/dialogs/addon/manager.cpp:744
 msgid "Add-on Details"
 msgstr ""
 
 #. [button]: id=update_all
-#: data/gui/window/addon_manager.cfg:1024
-#: data/gui/window/addon_manager.cfg:1195
+#: data/gui/window/addon_manager.cfg:1034
+#: data/gui/window/addon_manager.cfg:1213
 msgid "Update All"
 msgstr ""
 
 #. [button]: id=cancel
-#: data/gui/window/addon_manager.cfg:1038
-#: data/gui/window/addon_manager.cfg:1209
+#: data/gui/window/addon_manager.cfg:1048
+#: data/gui/window/addon_manager.cfg:1227
 msgid "Exit"
 msgstr ""
 
@@ -2426,98 +2426,98 @@ msgid "Defender"
 msgstr ""
 
 #. [toggle_button]: id=sort_name
-#: data/gui/window/campaign_dialog.cfg:217
+#: data/gui/window/campaign_dialog.cfg:215
 msgid "Sort by full campaign name in alphabetical order"
 msgstr ""
 
 #. [toggle_button]: id=sort_time
-#: data/gui/window/campaign_dialog.cfg:230
+#: data/gui/window/campaign_dialog.cfg:226
 msgid "Timeline"
 msgstr ""
 
 #. [toggle_button]: id=sort_time
-#: data/gui/window/campaign_dialog.cfg:231
+#: data/gui/window/campaign_dialog.cfg:227
 msgid "Sort in approximate chronological order of story events"
 msgstr ""
 
 #. [label]
 #. [label]: id=mods_header
-#: data/gui/window/campaign_dialog.cfg:281
+#: data/gui/window/campaign_dialog.cfg:277
 #: data/gui/window/mp_create_game.cfg:203
 msgid "Modifications:"
 msgstr ""
 
 #. [label]
-#: data/gui/window/campaign_dialog.cfg:306
+#: data/gui/window/campaign_dialog.cfg:302
 msgid "Combat:"
 msgstr ""
 
 #. [option]
-#: data/gui/window/campaign_dialog.cfg:321
+#: data/gui/window/campaign_dialog.cfg:317
 msgid "Default RNG"
 msgstr ""
 
 #. [option]
-#: data/gui/window/campaign_dialog.cfg:322
+#: data/gui/window/campaign_dialog.cfg:318
 msgid "Reloading alters future combat outcomes"
 msgstr ""
 
 #. [option]
-#: data/gui/window/campaign_dialog.cfg:325
+#: data/gui/window/campaign_dialog.cfg:321
 msgid "Predictable RNG"
 msgstr ""
 
 #. [option]
-#: data/gui/window/campaign_dialog.cfg:326
+#: data/gui/window/campaign_dialog.cfg:322
 msgid "Combat outcomes remain constant when reloading"
 msgstr ""
 
 #. [option]
-#: data/gui/window/campaign_dialog.cfg:329
+#: data/gui/window/campaign_dialog.cfg:325
 msgid "Biased RNG (experimental)"
 msgstr ""
 
 #. [option]
-#: data/gui/window/campaign_dialog.cfg:330
+#: data/gui/window/campaign_dialog.cfg:326
 msgid ""
 "Combat outcomes are more in line with displayed probabilities and unaffected "
 "by reloading"
 msgstr ""
 
 #. [label]
-#: data/gui/window/campaign_dialog.cfg:345
+#: data/gui/window/campaign_dialog.cfg:341
 msgid "Difficulty:"
 msgstr ""
 
 #. [option]
-#: data/gui/window/campaign_dialog.cfg:359
+#: data/gui/window/campaign_dialog.cfg:355
 msgid "Easy"
 msgstr ""
 
 #. [option]
-#: data/gui/window/campaign_dialog.cfg:362
+#: data/gui/window/campaign_dialog.cfg:358
 msgid "Normal"
 msgstr ""
 
 #. [option]
-#: data/gui/window/campaign_dialog.cfg:365
+#: data/gui/window/campaign_dialog.cfg:361
 msgid "Hard"
 msgstr ""
 
 #. [label]
-#: data/gui/window/campaign_dialog.cfg:422
+#: data/gui/window/campaign_dialog.cfg:418
 msgid "Play a Campaign"
 msgstr ""
 
 #. [button]: id=ok
-#: data/gui/window/campaign_dialog.cfg:486
+#: data/gui/window/campaign_dialog.cfg:482
 #: data/gui/window/campaign_difficulty.cfg:221
 msgid "game^Play"
 msgstr ""
 
-#. [slider]: id=enemy_gold_factor
-#. [slider]: id=enemey_gold_factor
 #. [label]: id=title
+#. [slider]: id=enemey_gold_factor
+#. [slider]: id=enemy_gold_factor
 #: data/gui/window/campaign_difficulty.cfg:53
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:263
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:309
@@ -2545,8 +2545,8 @@ msgstr ""
 msgid "Last"
 msgstr ""
 
-#. [button]: id=previous_tip
 #. [button]: id=previous_page
+#. [button]: id=previous_tip
 #: data/gui/window/chat_log.cfg:105 data/gui/window/title_screen.cfg:190
 msgid "Previous"
 msgstr ""
@@ -2556,8 +2556,8 @@ msgstr ""
 msgid "Previous page"
 msgstr ""
 
-#. [button]: id=next_tip
 #. [button]: id=next_page
+#. [button]: id=next_tip
 #: data/gui/window/chat_log.cfg:114 data/gui/window/title_screen.cfg:205
 msgid "Next"
 msgstr ""
@@ -2589,31 +2589,31 @@ msgstr ""
 msgid "Select"
 msgstr ""
 
-#. [button]: id=copy
 #. [button]: id=copy_
+#. [button]: id=copy
 #: data/gui/window/custom_tod.cfg:50 data/gui/window/game_cache_options.cfg:110
 #: data/gui/window/game_version.cfg:47
 #: data/gui/window/screenshot_notification.cfg:33
 msgid "filesystem^Copy"
 msgstr ""
 
-#. [button]: id=copy
 #. [button]: id=copy_
+#. [button]: id=copy
 #: data/gui/window/custom_tod.cfg:51 data/gui/window/game_cache_options.cfg:111
 #: data/gui/window/game_version.cfg:48
 #: data/gui/window/screenshot_notification.cfg:34
 msgid "Copy this path to clipboard"
 msgstr ""
 
-#. [button]: id=browse
 #. [button]: id=browse_
+#. [button]: id=browse
 #: data/gui/window/custom_tod.cfg:66 data/gui/window/game_cache_options.cfg:126
 #: data/gui/window/game_version.cfg:63
 msgid "filesystem^Browse"
 msgstr ""
 
-#. [button]: id=browse
 #. [button]: id=browse_
+#. [button]: id=browse
 #: data/gui/window/custom_tod.cfg:67 data/gui/window/game_cache_options.cfg:127
 #: data/gui/window/game_version.cfg:64
 msgid "Browse this location using a file manager"
@@ -2948,15 +2948,15 @@ msgstr ""
 msgid "New Map"
 msgstr ""
 
-#. [grid]
 #. [label]
+#. [grid]
 #: data/gui/window/editor_new_map.cfg:55
 #: data/gui/window/generator_settings.cfg:107
 msgid "Width:"
 msgstr ""
 
-#. [grid]
 #. [label]
+#. [grid]
 #: data/gui/window/editor_new_map.cfg:82
 #: data/gui/window/generator_settings.cfg:109
 msgid "Height:"
@@ -3028,16 +3028,16 @@ msgstr ""
 msgid "Removes the current bookmark"
 msgstr ""
 
-#. [button]: id=delete
 #. [button]: id=delete_file
+#. [button]: id=delete
 #. [button]: id=server_delete
 #: data/gui/window/file_dialog.cfg:339 data/gui/window/game_load.cfg:513
 #: data/gui/window/mp_connect.cfg:284
 msgid "Delete"
 msgstr ""
 
-#. [label]: id=title
 #. [button]: id=new_dir
+#. [label]: id=title
 #: data/gui/window/file_dialog.cfg:352 data/gui/window/folder_create.cfg:43
 msgid "New Folder"
 msgstr ""
@@ -3098,8 +3098,8 @@ msgid "Execution trace"
 msgstr ""
 
 #. [button]: id=cancel
-#. [grid]
 #. [button]: id=quit_without_surrender
+#. [grid]
 #: data/gui/window/formula_debugger.cfg:234
 #: data/gui/window/surrender_quit.cfg:99 data/gui/window/title_screen.cfg:258
 msgid "Quit"
@@ -3307,17 +3307,17 @@ msgid "Upkeep"
 msgstr ""
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
+#. [toggle_button]: id=sort_6
 #. [image]: id=income_icon
 #. [label]: id=side_income
-#. [toggle_button]: id=sort_6
 #: data/gui/window/game_stats.cfg:118 data/gui/window/mp_join_game.cfg:273
 #: data/gui/window/mp_join_game.cfg:286
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:432
 msgid "Income"
 msgstr ""
 
-#. [label]: id=side_title
 #. [toggle_button]: id=sort_1
+#. [label]: id=side_title
 #: data/gui/window/game_stats.cfg:297 data/gui/window/mp_change_control.cfg:22
 msgid "Side"
 msgstr ""
@@ -3484,8 +3484,8 @@ msgstr ""
 msgid "Copy this report to clipboard"
 msgstr ""
 
-#. [label]
 #. [button]: id=lua
+#. [label]
 #: data/gui/window/gamestate_inspector.cfg:348
 #: data/gui/window/lua_interpreter.cfg:38
 msgid "Lua Console"
@@ -3556,8 +3556,8 @@ msgstr ""
 msgid "Show or Hide Labels"
 msgstr ""
 
-#. [button]: id=language
 #. [label]
+#. [button]: id=language
 #: data/gui/window/language_selection.cfg:41
 #: data/gui/window/title_screen.cfg:486
 msgid "Language"
@@ -3593,8 +3593,8 @@ msgstr ""
 msgid "Only show games with vacant slots"
 msgstr ""
 
-#. [widget]: id=tab_label
 #. [toggle_button]: id=filter_with_friends
+#. [widget]: id=tab_label
 #: data/gui/window/lobby_main.cfg:348
 #: data/gui/window/preferences/05_multiplayer.cfg:415
 msgid "Friends"
@@ -3620,9 +3620,9 @@ msgstr ""
 msgid "Invert filter"
 msgstr ""
 
+#. [button]: id=create
 #. [label]
 #. [button]: id=ok
-#. [button]: id=create
 #: data/gui/window/lobby_main.cfg:399 data/gui/window/lobby_main.cfg:665
 #: data/gui/window/mp_create_game/default_resolution.cfg:45
 #: data/gui/window/mp_create_game/default_resolution.cfg:445
@@ -3643,17 +3643,17 @@ msgstr ""
 msgid "Observe"
 msgstr ""
 
-#. [widget]: id=tab_label
 #. [button]: id=server_info
+#. [widget]: id=tab_label
 #: data/gui/window/lobby_main.cfg:446 data/gui/window/lobby_main.cfg:688
 #: data/gui/window/server_info.cfg:168
 msgid "Announcements"
 msgstr ""
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [grid]
-#. [label]: id=title
 #. [button]: id=show_preferences
+#. [label]: id=title
+#. [grid]
 #: data/gui/window/lobby_main.cfg:458 data/gui/window/lobby_main.cfg:653
 #: data/gui/window/preferences.cfg:213 data/gui/window/title_screen.cfg:256
 #: src/hotkey/hotkey_command.cpp:119
@@ -3705,15 +3705,15 @@ msgstr ""
 msgid "Player Info — "
 msgstr ""
 
-#. [button]: id=add_friend
 #. [button]: id=add_to_friends
+#. [button]: id=add_friend
 #: data/gui/window/lobby_player_info.cfg:88
 #: data/gui/window/preferences/05_multiplayer.cfg:263
 msgid "Add Friend"
 msgstr ""
 
-#. [button]: id=add_ignored
 #. [button]: id=add_to_ignores
+#. [button]: id=add_ignored
 #: data/gui/window/lobby_player_info.cfg:99
 #: data/gui/window/preferences/05_multiplayer.cfg:276
 msgid "Block"
@@ -3860,8 +3860,8 @@ msgid ""
 "inactive or minimized) displaying desktop notifications."
 msgstr ""
 
-#. [widget]: id=label
 #. [label]
+#. [widget]: id=label
 #: data/gui/window/mp_alerts_options.cfg:147
 #: data/gui/window/preferences.cfg:347
 msgid "Sound"
@@ -4158,8 +4158,8 @@ msgid "Time for each attack, recruit, and capture"
 msgstr ""
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [widget]: id=tab_label
 #. [widget]: id=label
+#. [widget]: id=tab_label
 #: data/gui/window/mp_create_game.cfg:533 data/gui/window/preferences.cfg:292
 #: data/gui/window/preferences/05_multiplayer.cfg:402
 #: data/gui/window/server_info.cfg:181 src/hotkey/hotkey_command.cpp:39
@@ -4243,15 +4243,15 @@ msgstr ""
 msgid "Map size:"
 msgstr ""
 
-#. [row]
 #. [toggle_button]: id=male_toggle
+#. [row]
 #: data/gui/window/mp_faction_select.cfg:171
 #: data/gui/window/unit_create.cfg:225
 msgid "Male"
 msgstr ""
 
-#. [row]
 #. [toggle_button]: id=female_toggle
+#. [row]
 #: data/gui/window/mp_faction_select.cfg:173
 #: data/gui/window/unit_create.cfg:236
 msgid "Female"
@@ -4267,8 +4267,8 @@ msgstr ""
 msgid "Choose Your Faction"
 msgstr ""
 
-#. [widget]: id=name
 #. [label]
+#. [widget]: id=name
 #: data/gui/window/mp_host_game_prompt.cfg:40
 #: data/gui/window/mp_method_selection.cfg:273
 msgid "Host Networked Game"
@@ -4312,7 +4312,7 @@ msgstr ""
 #. [label]: id=status_label
 #: data/gui/window/mp_join_game.cfg:491 data/gui/window/mp_staging.cfg:614
 #: data/gui/window/mp_staging.cfg:806
-#: src/gui/dialogs/multiplayer/mp_staging.cpp:509
+#: src/gui/dialogs/multiplayer/mp_staging.cpp:507
 msgid "Waiting for players to join..."
 msgstr ""
 
@@ -4344,8 +4344,8 @@ msgstr ""
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#. [grid]
 #. [widget]: id=label
+#. [grid]
 #: data/gui/window/mp_method_selection.cfg:46
 #: data/gui/window/preferences.cfg:365 data/gui/window/title_screen.cfg:252
 #: src/gui/dialogs/game_load.cpp:395
@@ -4975,43 +4975,43 @@ msgid "Browse the screenshots folder using a file manager"
 msgstr ""
 
 #. [label]
-#: data/gui/window/select_orb_colors.cfg:104
+#: data/gui/window/select_orb_colors.cfg:106
 msgid "Choose Orb/Minimap Colors"
 msgstr ""
 
 #. [grid]
-#: data/gui/window/select_orb_colors.cfg:108
+#: data/gui/window/select_orb_colors.cfg:110
 msgid "Show unmoved orb"
 msgstr ""
 
 #. [grid]
-#: data/gui/window/select_orb_colors.cfg:109
+#: data/gui/window/select_orb_colors.cfg:111
 msgid "Show partial moved orb"
 msgstr ""
 
 #. [grid]
-#: data/gui/window/select_orb_colors.cfg:110
-msgid "Show disengaged orb"
-msgstr ""
-
-#. [grid]
-#: data/gui/window/select_orb_colors.cfg:110
-msgid "This uses the colors for partial and moved orbs."
-msgstr ""
-
-#. [grid]
-#: data/gui/window/select_orb_colors.cfg:111
+#: data/gui/window/select_orb_colors.cfg:112
 msgid "Show moved orb"
 msgstr ""
 
 #. [grid]
-#: data/gui/window/select_orb_colors.cfg:112
+#: data/gui/window/select_orb_colors.cfg:113
 msgid "Show ally orb"
 msgstr ""
 
 #. [grid]
-#: data/gui/window/select_orb_colors.cfg:113
+#: data/gui/window/select_orb_colors.cfg:114
 msgid "Show enemy orb"
+msgstr ""
+
+#. [grid]
+#: data/gui/window/select_orb_colors.cfg:115
+msgid "Show disengaged orb"
+msgstr ""
+
+#. [grid]
+#: data/gui/window/select_orb_colors.cfg:115
+msgid "This uses the colors for partial and moved orbs."
 msgstr ""
 
 #. [label]: id=asdf
@@ -5467,7 +5467,7 @@ msgstr ""
 msgid "language code for localized resources^en_US"
 msgstr ""
 
-#: src/font/text.cpp:772
+#: src/font/text.cpp:795
 msgid "The text contains invalid Pango markup: "
 msgstr ""
 
@@ -5600,7 +5600,7 @@ msgid "Linked '$id' group has multiple definitions."
 msgstr ""
 
 #: src/gui/core/window_builder.cpp:177 src/gui/widgets/addon_list.cpp:431
-#: src/gui/widgets/chatbox.cpp:816 src/gui/widgets/listbox.cpp:732
+#: src/gui/widgets/chatbox.cpp:691 src/gui/widgets/listbox.cpp:732
 #: src/gui/widgets/multi_page.cpp:179 src/gui/widgets/panel.cpp:129
 #: src/gui/widgets/scroll_label.cpp:183 src/gui/widgets/scrollbar_panel.cpp:74
 #: src/gui/widgets/size_lock.cpp:109 src/gui/widgets/stacked_widget.cpp:223
@@ -6275,7 +6275,7 @@ msgid "lua console"
 msgstr ""
 
 #: src/gui/dialogs/multiplayer/faction_select.cpp:140
-#: src/gui/dialogs/multiplayer/mp_staging.cpp:493
+#: src/gui/dialogs/multiplayer/mp_staging.cpp:491
 msgid "Random"
 msgstr ""
 
@@ -6494,7 +6494,7 @@ msgstr ""
 msgid "this game"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/mp_staging.cpp:510
+#: src/gui/dialogs/multiplayer/mp_staging.cpp:508
 msgid "Waiting for players to choose factions..."
 msgstr ""
 
@@ -6690,26 +6690,18 @@ msgstr ""
 msgid "Delete add-on from server"
 msgstr ""
 
-#: src/gui/widgets/chatbox.cpp:289
+#: src/gui/widgets/chatbox.cpp:293
 msgid "whisper to $receiver"
 msgstr ""
 
-#: src/gui/widgets/chatbox.cpp:389
+#: src/gui/widgets/chatbox.cpp:393
 msgid "Joined <i>$name</i>"
 msgstr ""
 
-#: src/gui/widgets/chatbox.cpp:395
+#: src/gui/widgets/chatbox.cpp:399
 msgid ""
 "Started private message with <i>$name</i>. If you do not want to receive "
 "messages from this player, type <i>/ignore $name</i>"
-msgstr ""
-
-#: src/gui/widgets/chatbox.cpp:634
-msgid "$player has entered the room"
-msgstr ""
-
-#: src/gui/widgets/chatbox.cpp:676
-msgid "$player has left the room"
 msgstr ""
 
 #: src/gui/widgets/helper.cpp:97

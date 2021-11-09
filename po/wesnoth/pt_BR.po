@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-10-23 20:57-0300\n"
+"POT-Creation-Date: 2021-11-09 03:45+0300\n"
 "PO-Revision-Date: 2021-11-04 11:19-0300\n"
 "Last-Translator: Andrei Machado <andreisp.machado@yahoo.com>\n"
 "Language-Team: Portuguese - Brasil\n"
@@ -1369,8 +1369,8 @@ msgstr "Martelo Rúnico"
 # File: data/core/macros/items.cfg, line: 270
 # File: data/core/macros/items.cfg, line: 270
 # File: data/core/macros/items.cfg, line: 270
-#. [object]
 #. [item]: id=holly-water
+#. [object]
 #: data/core/editor/items.cfg:282 data/core/macros/items.cfg:283
 msgid "Holy Water"
 msgstr "Água Benta"
@@ -1419,8 +1419,8 @@ msgstr "Poção Cinza"
 # File: data/core/macros/items.cfg, line: 242
 # File: data/core/macros/items.cfg, line: 242
 # File: data/core/macros/items.cfg, line: 242
-#. [object]: id={ID}
 #. [item]: id=potion-poison
+#. [object]: id={ID}
 #: data/core/editor/items.cfg:336 data/core/macros/items.cfg:246
 msgid "Poison"
 msgstr "Veneno"
@@ -1516,8 +1516,8 @@ msgstr "Tabuinha de Pedra"
 # File: data/core/macros/items.cfg, line: 514
 # File: data/core/macros/items.cfg, line: 514
 # File: data/core/macros/items.cfg, line: 514
-#. [object]
 #. [item]: id=storm-trident
+#. [object]
 #: data/core/editor/items.cfg:420 data/core/macros/items.cfg:529
 msgid "Storm Trident"
 msgstr "Tridente da Tempestade"
@@ -7662,7 +7662,7 @@ msgstr "Você realmente deseja continuar?"
 # File: src/addon/manager_ui.cpp, line: 970
 # File: src/multiplayer.cpp, line: 272
 #: src/addon/client.cpp:552 src/addon/manager_ui.cpp:173
-#: src/game_initialization/multiplayer.cpp:361
+#: src/game_initialization/multiplayer.cpp:362
 msgid "Confirm"
 msgstr "Confirmar"
 
@@ -8104,7 +8104,7 @@ msgstr ""
 # File: src/menu_events.cpp, line: 2297
 # File: src/menu_events.cpp, line: 2298
 # File: src/menu_events.cpp, line: 2298
-#: src/chat_command_handler.cpp:113
+#: src/chat_command_handler.cpp:76
 msgid "Added to ignore list: $nick"
 msgstr "Adicionados à lista de ignorados: $nick"
 
@@ -8118,7 +8118,7 @@ msgstr "Adicionados à lista de ignorados: $nick"
 # File: src/menu_events.cpp, line: 2291
 # File: src/menu_events.cpp, line: 2298
 # File: src/menu_events.cpp, line: 2346
-#: src/chat_command_handler.cpp:113
+#: src/chat_command_handler.cpp:76
 msgid "ignores list"
 msgstr "lista de ignorados"
 
@@ -8129,7 +8129,7 @@ msgstr "lista de ignorados"
 # File: src/menu_events.cpp, line: 2320
 # File: src/menu_events.cpp, line: 2301
 # File: src/menu_events.cpp, line: 2320
-#: src/chat_command_handler.cpp:117 src/chat_command_handler.cpp:136
+#: src/chat_command_handler.cpp:80 src/chat_command_handler.cpp:99
 msgid "Invalid username: $nick"
 msgstr "Nome de usuário inválido: $nick"
 
@@ -8137,7 +8137,7 @@ msgstr "Nome de usuário inválido: $nick"
 # File: src/menu_events.cpp, line: 2317
 # File: src/menu_events.cpp, line: 2317
 # File: src/menu_events.cpp, line: 2317
-#: src/chat_command_handler.cpp:132
+#: src/chat_command_handler.cpp:95
 msgid "Added to friends list: $nick"
 msgstr "Adicionados à lista de amigos: $nick"
 
@@ -8151,7 +8151,7 @@ msgstr "Adicionados à lista de amigos: $nick"
 # File: src/menu_events.cpp, line: 2310
 # File: src/menu_events.cpp, line: 2317
 # File: src/menu_events.cpp, line: 2342
-#: src/chat_command_handler.cpp:132
+#: src/chat_command_handler.cpp:95
 msgid "friends list"
 msgstr "lista de amigos"
 
@@ -8159,7 +8159,7 @@ msgstr "lista de amigos"
 # File: src/menu_events.cpp, line: 2333
 # File: src/menu_events.cpp, line: 2332
 # File: src/menu_events.cpp, line: 2332
-#: src/chat_command_handler.cpp:148
+#: src/chat_command_handler.cpp:111
 msgid "Removed from list: $nick"
 msgstr "Removido da lista: $nick"
 
@@ -8170,7 +8170,7 @@ msgstr "Removido da lista: $nick"
 # File: src/menu_events.cpp, line: 2350
 # File: src/menu_events.cpp, line: 2332
 # File: src/menu_events.cpp, line: 2350
-#: src/chat_command_handler.cpp:148
+#: src/chat_command_handler.cpp:111
 msgid "friends and ignores list"
 msgstr "lista de amigos e ignorados"
 
@@ -8178,7 +8178,7 @@ msgstr "lista de amigos e ignorados"
 # File: src/menu_events.cpp, line: 2356
 # File: src/menu_events.cpp, line: 2355
 # File: src/menu_events.cpp, line: 2355
-#: src/chat_command_handler.cpp:158
+#: src/chat_command_handler.cpp:121
 msgid "version"
 msgstr "versão"
 
@@ -8195,7 +8195,7 @@ msgstr "versão"
 # File: src/menu_events.cpp, line: 2389
 # File: src/menu_events.cpp, line: 2407
 # File: src/menu_events.cpp, line: 2421
-#: src/chat_command_handler.cpp:170
+#: src/chat_command_handler.cpp:133
 msgid "nick registration"
 msgstr "registro de apelido"
 
@@ -8203,7 +8203,7 @@ msgstr "registro de apelido"
 # File: src/menu_events.cpp, line: 2422
 # File: src/menu_events.cpp, line: 2421
 # File: src/menu_events.cpp, line: 2421
-#: src/chat_command_handler.cpp:170
+#: src/chat_command_handler.cpp:133
 msgid "requesting information for user $nick"
 msgstr "requisitando informação para o usuário $nick"
 
@@ -8211,7 +8211,7 @@ msgstr "requisitando informação para o usuário $nick"
 # File: src/menu_events.cpp, line: 1723
 # File: src/menu_events.cpp, line: 1723
 # File: src/menu_events.cpp, line: 1723
-#: src/chat_command_handler.hpp:52
+#: src/chat_command_handler.hpp:48
 msgid "(A) — admin command"
 msgstr "(A) — comando de administrador"
 
@@ -8222,7 +8222,7 @@ msgstr "(A) — comando de administrador"
 # File: src/menu_events.cpp, line: 1937
 # File: src/menu_events.cpp, line: 1730
 # File: src/menu_events.cpp, line: 1937
-#: src/chat_command_handler.hpp:59 src/menu_events.cpp:1194
+#: src/chat_command_handler.hpp:55 src/menu_events.cpp:1194
 msgid "(admin only)"
 msgstr "(só administradores)"
 
@@ -8230,7 +8230,7 @@ msgstr "(só administradores)"
 # File: src/menu_events.cpp, line: 1750
 # File: src/menu_events.cpp, line: 1750
 # File: src/menu_events.cpp, line: 1750
-#: src/chat_command_handler.hpp:74
+#: src/chat_command_handler.hpp:70
 msgid ""
 "Send a query to the server. Without arguments the server should tell you the "
 "available commands."
@@ -8242,7 +8242,7 @@ msgstr ""
 # File: src/menu_events.cpp, line: 1754
 # File: src/menu_events.cpp, line: 1754
 # File: src/menu_events.cpp, line: 1754
-#: src/chat_command_handler.hpp:78
+#: src/chat_command_handler.hpp:74
 msgid ""
 "Ban and kick a player or observer. If he is not in the game but on the "
 "server he will only be banned."
@@ -8278,11 +8278,11 @@ msgstr ""
 # File: src/menu_events.cpp, line: 1793
 # File: src/menu_events.cpp, line: 1795
 # File: src/menu_events.cpp, line: 1809
-#: src/chat_command_handler.hpp:79 src/chat_command_handler.hpp:82
-#: src/chat_command_handler.hpp:84 src/chat_command_handler.hpp:86
-#: src/chat_command_handler.hpp:88 src/chat_command_handler.hpp:109
-#: src/chat_command_handler.hpp:111 src/chat_command_handler.hpp:113
-#: src/chat_command_handler.hpp:119
+#: src/chat_command_handler.hpp:75 src/chat_command_handler.hpp:78
+#: src/chat_command_handler.hpp:80 src/chat_command_handler.hpp:82
+#: src/chat_command_handler.hpp:84 src/chat_command_handler.hpp:105
+#: src/chat_command_handler.hpp:107 src/chat_command_handler.hpp:109
+#: src/chat_command_handler.hpp:115
 msgid "<nickname>"
 msgstr "<apelido>"
 
@@ -8290,7 +8290,7 @@ msgstr "<apelido>"
 # File: src/menu_events.cpp, line: 1757
 # File: src/menu_events.cpp, line: 1757
 # File: src/menu_events.cpp, line: 1757
-#: src/chat_command_handler.hpp:81
+#: src/chat_command_handler.hpp:77
 msgid "Unban a user. He does not have to be in the game but on the server."
 msgstr ""
 "Desbanir um usuário. Ele não precisa estar em jogo, mas sim no servidor."
@@ -8299,7 +8299,7 @@ msgstr ""
 # File: src/menu_events.cpp, line: 1760
 # File: src/menu_events.cpp, line: 1760
 # File: src/menu_events.cpp, line: 1760
-#: src/chat_command_handler.hpp:84
+#: src/chat_command_handler.hpp:80
 msgid "Kick a player or observer."
 msgstr "Expulsar um jogador ou observador."
 
@@ -8307,7 +8307,7 @@ msgstr "Expulsar um jogador ou observador."
 # File: src/menu_events.cpp, line: 1762
 # File: src/menu_events.cpp, line: 1762
 # File: src/menu_events.cpp, line: 1762
-#: src/chat_command_handler.hpp:86
+#: src/chat_command_handler.hpp:82
 msgid "Mute an observer. Without an argument displays the mute status."
 msgstr "Muta um observador. Sem um argumento apresenta o estado de silenciado."
 
@@ -8315,7 +8315,7 @@ msgstr "Muta um observador. Sem um argumento apresenta o estado de silenciado."
 # File: src/menu_events.cpp, line: 1764
 # File: src/menu_events.cpp, line: 1764
 # File: src/menu_events.cpp, line: 1764
-#: src/chat_command_handler.hpp:88
+#: src/chat_command_handler.hpp:84
 msgid "Unmute an observer. Without an argument unmutes everyone."
 msgstr "Desmuta um observador. Sem argumento remove silencio de todos."
 
@@ -8323,11 +8323,11 @@ msgstr "Desmuta um observador. Sem argumento remove silencio de todos."
 # File: src/menu_events.cpp, line: 1766
 # File: src/menu_events.cpp, line: 1766
 # File: src/menu_events.cpp, line: 1766
-#: src/chat_command_handler.hpp:90
+#: src/chat_command_handler.hpp:86
 msgid "Mute/Unmute all observers. (toggles)"
 msgstr "Muta/Desmuta todos os observadores. (alternar)"
 
-#: src/chat_command_handler.hpp:92
+#: src/chat_command_handler.hpp:88
 msgid ""
 "Send some data to the server. Can be used to verify the network connection "
 "and notice disconnects."
@@ -8337,7 +8337,7 @@ msgstr ""
 # File: src/menu_events.cpp, line: 1776
 # File: src/menu_events.cpp, line: 1776
 # File: src/menu_events.cpp, line: 1776
-#: src/chat_command_handler.hpp:94
+#: src/chat_command_handler.hpp:90
 msgid ""
 "Report abuse, rule violations, etc. to the server moderators. Make sure to "
 "mention relevant nicknames, etc."
@@ -8349,7 +8349,7 @@ msgstr ""
 # File: src/menu_events.cpp, line: 1780
 # File: src/menu_events.cpp, line: 1780
 # File: src/menu_events.cpp, line: 1780
-#: src/chat_command_handler.hpp:98
+#: src/chat_command_handler.hpp:94
 msgid "<message>"
 msgstr "<mensagem>"
 
@@ -8357,7 +8357,7 @@ msgstr "<mensagem>"
 # File: src/menu_events.cpp, line: 1780
 # File: src/menu_events.cpp, line: 1780
 # File: src/menu_events.cpp, line: 1780
-#: src/chat_command_handler.hpp:98
+#: src/chat_command_handler.hpp:94
 msgid "Send an emotion or personal action in chat."
 msgstr "Envia uma ação cpessoal ou um emoticon no chat."
 
@@ -8365,7 +8365,7 @@ msgstr "Envia uma ação cpessoal ou um emoticon no chat."
 # File: src/menu_events.cpp, line: 1783
 # File: src/menu_events.cpp, line: 1783
 # File: src/menu_events.cpp, line: 1783
-#: src/chat_command_handler.hpp:101
+#: src/chat_command_handler.hpp:97
 msgid ""
 "Send a private message. You cannot send private messages to players in a "
 "running game you observe or play in."
@@ -8377,7 +8377,7 @@ msgstr ""
 # File: src/menu_events.cpp, line: 1785
 # File: src/menu_events.cpp, line: 1785
 # File: src/menu_events.cpp, line: 1785
-#: src/chat_command_handler.hpp:103
+#: src/chat_command_handler.hpp:99
 msgid "<nickname> <message>"
 msgstr "<apelido> <mensagem>"
 
@@ -8385,7 +8385,7 @@ msgstr "<apelido> <mensagem>"
 # File: src/menu_events.cpp, line: 1789
 # File: src/menu_events.cpp, line: 1789
 # File: src/menu_events.cpp, line: 1789
-#: src/chat_command_handler.hpp:107
+#: src/chat_command_handler.hpp:103
 msgid "<level> <domain>"
 msgstr "<nível> <domínio>"
 
@@ -8393,7 +8393,7 @@ msgstr "<nível> <domínio>"
 # File: src/menu_events.cpp, line: 1789
 # File: src/menu_events.cpp, line: 1789
 # File: src/menu_events.cpp, line: 1789
-#: src/chat_command_handler.hpp:107
+#: src/chat_command_handler.hpp:103
 msgid "Change the log level of a log domain."
 msgstr "Muda o nível de log de um domínio de log."
 
@@ -8401,7 +8401,7 @@ msgstr "Muda o nível de log de um domínio de log."
 # File: src/menu_events.cpp, line: 1791
 # File: src/menu_events.cpp, line: 1791
 # File: src/menu_events.cpp, line: 1791
-#: src/chat_command_handler.hpp:109
+#: src/chat_command_handler.hpp:105
 msgid "Add a nickname to your ignores list."
 msgstr "Adiciona um apelido à sua lista de ignorados."
 
@@ -8409,7 +8409,7 @@ msgstr "Adiciona um apelido à sua lista de ignorados."
 # File: src/menu_events.cpp, line: 1793
 # File: src/menu_events.cpp, line: 1793
 # File: src/menu_events.cpp, line: 1793
-#: src/chat_command_handler.hpp:111
+#: src/chat_command_handler.hpp:107
 msgid "Add a nickname to your friends list."
 msgstr "Adiciona um apelido à lista de amigos."
 
@@ -8417,15 +8417,15 @@ msgstr "Adiciona um apelido à lista de amigos."
 # File: src/menu_events.cpp, line: 1795
 # File: src/menu_events.cpp, line: 1795
 # File: src/menu_events.cpp, line: 1795
-#: src/chat_command_handler.hpp:113
+#: src/chat_command_handler.hpp:109
 msgid "Remove a nickname from your ignores or friends list."
 msgstr "Remove um apelido da sua lista de ignorados ou de amigos."
 
-#: src/chat_command_handler.hpp:115
+#: src/chat_command_handler.hpp:111
 msgid "<N>"
 msgstr "<N>"
 
-#: src/chat_command_handler.hpp:115
+#: src/chat_command_handler.hpp:111
 msgid "Get a random number between 1 and N visible in the game setup lobby."
 msgstr ""
 
@@ -8433,7 +8433,7 @@ msgstr ""
 # File: src/menu_events.cpp, line: 1800
 # File: src/menu_events.cpp, line: 1800
 # File: src/menu_events.cpp, line: 1800
-#: src/chat_command_handler.hpp:117
+#: src/chat_command_handler.hpp:113
 msgid "Display version information."
 msgstr "Mostrar informação da versão."
 
@@ -8441,88 +8441,9 @@ msgstr "Mostrar informação da versão."
 # File: src/menu_events.cpp, line: 1809
 # File: src/menu_events.cpp, line: 1809
 # File: src/menu_events.cpp, line: 1809
-#: src/chat_command_handler.hpp:119
+#: src/chat_command_handler.hpp:115
 msgid "Request information about a nickname."
 msgstr "Requisitar informação sobre um apelido."
-
-#
-# File: src/menu_events.cpp, line: 1813
-# File: src/menu_events.cpp, line: 1816
-# File: src/menu_events.cpp, line: 1818
-# File: src/menu_events.cpp, line: 1813
-# File: src/menu_events.cpp, line: 1816
-# File: src/menu_events.cpp, line: 1818
-# File: src/menu_events.cpp, line: 1813
-# File: src/menu_events.cpp, line: 1816
-# File: src/menu_events.cpp, line: 1818
-#: src/chat_command_handler.hpp:121 src/chat_command_handler.hpp:124
-#: src/chat_command_handler.hpp:126
-msgid "<room>"
-msgstr "<sala>"
-
-#
-# File: src/menu_events.cpp, line: 1813
-# File: src/menu_events.cpp, line: 1813
-# File: src/menu_events.cpp, line: 1813
-#: src/chat_command_handler.hpp:121
-msgid "Join a room."
-msgstr "Entrar numa sala."
-
-#
-# File: src/menu_events.cpp, line: 1816
-# File: src/menu_events.cpp, line: 1816
-# File: src/menu_events.cpp, line: 1816
-#: src/chat_command_handler.hpp:124
-msgid "Part a room."
-msgstr "Abandonar uma sala."
-
-#
-# File: src/menu_events.cpp, line: 1818
-# File: src/menu_events.cpp, line: 1818
-# File: src/menu_events.cpp, line: 1818
-#: src/chat_command_handler.hpp:126
-msgid "List room members."
-msgstr "Lista de Membros da Sala."
-
-#
-# File: src/menu_events.cpp, line: 1820
-# File: src/menu_events.cpp, line: 1820
-# File: src/menu_events.cpp, line: 1820
-#: src/chat_command_handler.hpp:128
-msgid "List available rooms."
-msgstr "Lista de salas disponíveis."
-
-#
-# File: src/menu_events.cpp, line: 1822
-# File: src/menu_events.cpp, line: 1822
-# File: src/menu_events.cpp, line: 1822
-#: src/chat_command_handler.hpp:130
-msgid "<room> <msg>"
-msgstr "<sala> <mensagem>"
-
-#
-# File: src/menu_events.cpp, line: 1822
-# File: src/menu_events.cpp, line: 1822
-# File: src/menu_events.cpp, line: 1822
-#: src/chat_command_handler.hpp:130
-msgid "Room message."
-msgstr "Mensagem para a sala."
-
-#
-# File: src/menu_events.cpp, line: 1824
-# File: src/menu_events.cpp, line: 1824
-# File: src/menu_events.cpp, line: 1824
-#: src/chat_command_handler.hpp:132
-msgid "<room> <type> [value]"
-msgstr "<sala> <tipo> [valor]"
-
-#
-# File: src/menu_events.cpp, line: 1824
-# File: src/menu_events.cpp, line: 1824
-# File: src/menu_events.cpp, line: 1824
-#: src/chat_command_handler.hpp:132
-msgid "Room query."
-msgstr "Comando de sala."
 
 #
 # File: src/menu_events.cpp, line: 2099
@@ -8563,7 +8484,7 @@ msgstr "Domínio alterado: '$domain' para nível: '$level'."
 # File: src/menu_events.cpp, line: 2188
 # File: src/menu_events.cpp, line: 2188
 # File: src/menu_events.cpp, line: 2188
-#: src/chat_events.cpp:154
+#: src/chat_events.cpp:148
 msgid "whisper to $receiver"
 msgstr "sussurar para $receiver"
 
@@ -8574,7 +8495,7 @@ msgstr "sussurar para $receiver"
 # File: src/multiplayer_ui.cpp, line: 550
 # File: src/menu_events.cpp, line: 2195
 # File: src/multiplayer_ui.cpp, line: 550
-#: src/chat_events.cpp:161
+#: src/chat_events.cpp:155
 msgid "whisper: $sender"
 msgstr "sussurro: $sender"
 
@@ -8635,7 +8556,8 @@ msgstr "Cor inválida"
 # File: src/dialogs.cpp, line: 902
 # File: src/reports.cpp, line: 1365
 # File: src/savegame.cpp, line: 343
-#: src/format_time_summary.cpp:47
+#. TRANSLATORS: 24-hour time, eg '13:59'
+#: src/format_time_summary.cpp:48
 msgid "%H:%M"
 msgstr "%H:%M"
 
@@ -8649,7 +8571,8 @@ msgstr "%H:%M"
 # File: src/dialogs.cpp, line: 905
 # File: src/reports.cpp, line: 1365
 # File: src/savegame.cpp, line: 346
-#: src/format_time_summary.cpp:50
+#. TRANSLATORS: 12-hour time, eg '1:59 PM'
+#: src/format_time_summary.cpp:52
 msgid "%I:%M %p"
 msgstr "%I:%M %p"
 
@@ -8660,7 +8583,8 @@ msgstr "%I:%M %p"
 # File: src/savegame.cpp, line: 351
 # File: src/dialogs.cpp, line: 910
 # File: src/savegame.cpp, line: 351
-#: src/format_time_summary.cpp:55
+#. TRANSLATORS: Day of week + 24-hour time, eg 'Sunday, 13:59'
+#: src/format_time_summary.cpp:58
 msgid "%A, %H:%M"
 msgstr "%A, %H:%M"
 
@@ -8671,7 +8595,8 @@ msgstr "%A, %H:%M"
 # File: src/savegame.cpp, line: 354
 # File: src/dialogs.cpp, line: 913
 # File: src/savegame.cpp, line: 354
-#: src/format_time_summary.cpp:58
+#. TRANSLATORS: Day of week + 12-hour time, eg 'Sunday, 1:59 PM'
+#: src/format_time_summary.cpp:62
 msgid "%A, %I:%M %p"
 msgstr "%A, %I:%M %p"
 
@@ -8682,7 +8607,8 @@ msgstr "%A, %I:%M %p"
 # File: src/savegame.cpp, line: 358
 # File: src/dialogs.cpp, line: 917
 # File: src/savegame.cpp, line: 358
-#: src/format_time_summary.cpp:62
+#. TRANSLATORS: Month + day of month, eg 'Nov 02'. Format for your locale.
+#: src/format_time_summary.cpp:67
 msgid "%b %d"
 msgstr "%b %d"
 
@@ -8699,7 +8625,8 @@ msgstr "%b %d"
 # File: src/dialogs.cpp, line: 921
 # File: src/savegame.cpp, line: 336
 # File: src/savegame.cpp, line: 362
-#: src/format_time_summary.cpp:66
+#. TRANSLATORS: Month + day of month + year, eg 'Nov 02 2021'. Format for your locale.
+#: src/format_time_summary.cpp:72
 msgid "%b %d %Y"
 msgstr "%b %d %Y"
 
@@ -9253,7 +9180,7 @@ msgstr "Derrote o(s) lídere(s) inimigo(s)"
 msgid "Cannot find era '$era'"
 msgstr "Não foi possível encontrar a $era"
 
-#: src/game_initialization/multiplayer.cpp:236
+#: src/game_initialization/multiplayer.cpp:237
 msgid "Invalid address specified for multiplayer server"
 msgstr "Endereço especificado inválido para o servidor multiplayer"
 
@@ -9261,7 +9188,7 @@ msgstr "Endereço especificado inválido para o servidor multiplayer"
 # File: src/multiplayer.cpp, line: 177
 # File: src/multiplayer.cpp, line: 177
 # File: src/multiplayer.cpp, line: 177
-#: src/game_initialization/multiplayer.cpp:271
+#: src/game_initialization/multiplayer.cpp:272
 msgid ""
 "The server accepts versions '$required_version', but you are using version "
 "'$your_version'"
@@ -9273,7 +9200,7 @@ msgstr ""
 # File: src/multiplayer.cpp, line: 188
 # File: src/multiplayer.cpp, line: 188
 # File: src/multiplayer.cpp, line: 188
-#: src/game_initialization/multiplayer.cpp:284
+#: src/game_initialization/multiplayer.cpp:285
 msgid "Server-side redirect loop"
 msgstr "Redirecionamento em loop do servidor"
 
@@ -9281,7 +9208,7 @@ msgstr "Redirecionamento em loop do servidor"
 # File: src/multiplayer.cpp, line: 247
 # File: src/multiplayer.cpp, line: 247
 # File: src/multiplayer.cpp, line: 247
-#: src/game_initialization/multiplayer.cpp:334
+#: src/game_initialization/multiplayer.cpp:335
 msgid ""
 "The nickname ‘$nick’ is inactive. You cannot claim ownership of this "
 "nickname until you activate your account via email or ask an administrator "
@@ -9295,7 +9222,7 @@ msgstr ""
 # File: src/multiplayer.cpp, line: 256
 # File: src/multiplayer.cpp, line: 256
 # File: src/multiplayer.cpp, line: 256
-#: src/game_initialization/multiplayer.cpp:343
+#: src/game_initialization/multiplayer.cpp:344
 msgid "Do you want to continue?"
 msgstr "Você deseja continuar?"
 
@@ -9303,11 +9230,11 @@ msgstr "Você deseja continuar?"
 # File: src/multiplayer.cpp, line: 258
 # File: src/multiplayer.cpp, line: 258
 # File: src/multiplayer.cpp, line: 258
-#: src/game_initialization/multiplayer.cpp:345
+#: src/game_initialization/multiplayer.cpp:346
 msgid "Warning"
 msgstr "Atenção"
 
-#: src/game_initialization/multiplayer.cpp:408
+#: src/game_initialization/multiplayer.cpp:409
 msgid ""
 "The remote server requested a password while using an insecure connection."
 msgstr ""
@@ -9316,7 +9243,7 @@ msgstr ""
 # File: src/multiplayer.cpp, line: 343
 # File: src/multiplayer.cpp, line: 343
 # File: src/multiplayer.cpp, line: 343
-#: src/game_initialization/multiplayer.cpp:410
+#: src/game_initialization/multiplayer.cpp:411
 msgid "You must login first."
 msgstr "Você precisa logar primeiro."
 
@@ -9324,7 +9251,7 @@ msgstr "Você precisa logar primeiro."
 # File: src/multiplayer.cpp, line: 345
 # File: src/multiplayer.cpp, line: 345
 # File: src/multiplayer.cpp, line: 345
-#: src/game_initialization/multiplayer.cpp:412
+#: src/game_initialization/multiplayer.cpp:413
 msgid "The nickname ‘$nick’ is already taken."
 msgstr "O apelido '$nick' já está sendo usado."
 
@@ -9332,7 +9259,7 @@ msgstr "O apelido '$nick' já está sendo usado."
 # File: src/multiplayer.cpp, line: 347
 # File: src/multiplayer.cpp, line: 347
 # File: src/multiplayer.cpp, line: 347
-#: src/game_initialization/multiplayer.cpp:414
+#: src/game_initialization/multiplayer.cpp:415
 msgid ""
 "The nickname ‘$nick’ contains invalid characters. Only alpha-numeric "
 "characters (one at minimum), underscores and hyphens are allowed."
@@ -9344,7 +9271,7 @@ msgstr ""
 # File: src/multiplayer.cpp, line: 351
 # File: src/multiplayer.cpp, line: 351
 # File: src/multiplayer.cpp, line: 351
-#: src/game_initialization/multiplayer.cpp:418
+#: src/game_initialization/multiplayer.cpp:419
 msgid "The nickname ‘$nick’ is too long. Nicks must be 20 characters or less."
 msgstr ""
 "O apelido '$nick' é muito grande. Apelidos precisam ter 20 caracteres ou "
@@ -9354,7 +9281,7 @@ msgstr ""
 # File: src/multiplayer.cpp, line: 354
 # File: src/multiplayer.cpp, line: 354
 # File: src/multiplayer.cpp, line: 354
-#: src/game_initialization/multiplayer.cpp:420
+#: src/game_initialization/multiplayer.cpp:421
 msgid "The nickname ‘$nick’ is reserved and cannot be used by players."
 msgstr "O apelido '$nick' está reservado e não pode ser usado por jogadores."
 
@@ -9362,7 +9289,7 @@ msgstr "O apelido '$nick' está reservado e não pode ser usado por jogadores."
 # File: src/multiplayer.cpp, line: 356
 # File: src/multiplayer.cpp, line: 356
 # File: src/multiplayer.cpp, line: 356
-#: src/game_initialization/multiplayer.cpp:422
+#: src/game_initialization/multiplayer.cpp:423
 msgid "The nickname ‘$nick’ is not registered on this server."
 msgstr "O apelido '$nick' não está registrado neste servidor."
 
@@ -9370,7 +9297,7 @@ msgstr "O apelido '$nick' não está registrado neste servidor."
 # File: src/multiplayer.cpp, line: 357
 # File: src/multiplayer.cpp, line: 357
 # File: src/multiplayer.cpp, line: 357
-#: src/game_initialization/multiplayer.cpp:423
+#: src/game_initialization/multiplayer.cpp:424
 msgid " This server disallows unregistered nicknames."
 msgstr " Este servidor não permite apelidos não registrados."
 
@@ -9381,7 +9308,7 @@ msgstr " Este servidor não permite apelidos não registrados."
 # File: src/multiplayer.cpp, line: 361
 # File: src/multiplayer.cpp, line: 359
 # File: src/multiplayer.cpp, line: 361
-#: src/game_initialization/multiplayer.cpp:426
+#: src/game_initialization/multiplayer.cpp:427
 msgid "The nickname ‘$nick’ is banned on this server’s forums for $duration|."
 msgstr ""
 "O apelido '$nick' está banido nos fóruns deste servidor por $duration|."
@@ -9393,16 +9320,16 @@ msgstr ""
 # File: src/multiplayer.cpp, line: 361
 # File: src/multiplayer.cpp, line: 359
 # File: src/multiplayer.cpp, line: 361
-#: src/game_initialization/multiplayer.cpp:428
+#: src/game_initialization/multiplayer.cpp:429
 msgid "The nickname ‘$nick’ is banned on this server’s forums."
 msgstr "O apelido '$nick' está banido nos fóruns deste servidor."
 
-#: src/game_initialization/multiplayer.cpp:432
+#: src/game_initialization/multiplayer.cpp:433
 msgid "Your IP address is banned on this server’s forums for $duration|."
 msgstr ""
 "O seu endereço de IP está banido nos fóruns deste servidor por $duration|."
 
-#: src/game_initialization/multiplayer.cpp:434
+#: src/game_initialization/multiplayer.cpp:435
 msgid "Your IP address is banned on this server’s forums."
 msgstr "O seu endereço de IP está banido nos fóruns deste servidor."
 
@@ -9413,7 +9340,7 @@ msgstr "O seu endereço de IP está banido nos fóruns deste servidor."
 # File: src/multiplayer.cpp, line: 361
 # File: src/multiplayer.cpp, line: 359
 # File: src/multiplayer.cpp, line: 361
-#: src/game_initialization/multiplayer.cpp:438
+#: src/game_initialization/multiplayer.cpp:439
 msgid ""
 "The email address for the nickname ‘$nick’ is banned on this server’s forums "
 "for $duration|."
@@ -9428,7 +9355,7 @@ msgstr ""
 # File: src/multiplayer.cpp, line: 361
 # File: src/multiplayer.cpp, line: 359
 # File: src/multiplayer.cpp, line: 361
-#: src/game_initialization/multiplayer.cpp:440
+#: src/game_initialization/multiplayer.cpp:441
 msgid ""
 "The email address for the nickname ‘$nick’ is banned on this server’s forums."
 msgstr ""
@@ -9442,8 +9369,8 @@ msgstr ""
 # File: src/multiplayer.cpp, line: 361
 # File: src/multiplayer.cpp, line: 359
 # File: src/multiplayer.cpp, line: 361
-#: src/game_initialization/multiplayer.cpp:443
-#: src/game_initialization/multiplayer.cpp:445
+#: src/game_initialization/multiplayer.cpp:444
+#: src/game_initialization/multiplayer.cpp:446
 msgid "The nickname ‘$nick’ is registered on this server."
 msgstr "O nick '$nick' está registrado neste servidor."
 
@@ -9451,7 +9378,7 @@ msgstr "O nick '$nick' está registrado neste servidor."
 # File: src/multiplayer.cpp, line: 362
 # File: src/multiplayer.cpp, line: 362
 # File: src/multiplayer.cpp, line: 362
-#: src/game_initialization/multiplayer.cpp:446
+#: src/game_initialization/multiplayer.cpp:447
 msgid ""
 "WARNING: There is already a client using this nickname, logging in will "
 "cause that client to be kicked!"
@@ -9463,7 +9390,7 @@ msgstr ""
 # File: src/multiplayer.cpp, line: 368
 # File: src/multiplayer.cpp, line: 368
 # File: src/multiplayer.cpp, line: 368
-#: src/game_initialization/multiplayer.cpp:449
+#: src/game_initialization/multiplayer.cpp:450
 msgid "The password you provided was incorrect."
 msgstr "Você forneceu uma incorreta."
 
@@ -9472,11 +9399,11 @@ msgstr "Você forneceu uma incorreta."
 # File: src/multiplayer.cpp, line: 370
 # File: src/multiplayer.cpp, line: 370
 # File: src/multiplayer.cpp, line: 370
-#: src/game_initialization/multiplayer.cpp:451
+#: src/game_initialization/multiplayer.cpp:452
 msgid "You have made too many login attempts."
 msgstr "Você fez muitas tentativas de login."
 
-#: src/game_initialization/multiplayer.cpp:453
+#: src/game_initialization/multiplayer.cpp:454
 msgid "Password hashing failed."
 msgstr ""
 
@@ -12417,7 +12344,8 @@ msgstr "Contagem Regressiva do Turno"
 # File: src/savegame.cpp, line: 306
 # File: src/dialogs.cpp, line: 809
 # File: src/savegame.cpp, line: 306
-#: src/save_index.cpp:279
+#. TRANSLATORS: Day of week + month + day of month + 12-hour time + year, eg 'Tue Nov 02 1:59 PM 2021'. Format for your locale.
+#: src/save_index.cpp:280
 msgid "%a %b %d %I:%M %p %Y"
 msgstr "%a %b %d %I:%M %p %Y"
 
@@ -12428,7 +12356,8 @@ msgstr "%a %b %d %I:%M %p %Y"
 # File: src/savegame.cpp, line: 306
 # File: src/dialogs.cpp, line: 809
 # File: src/savegame.cpp, line: 306
-#: src/save_index.cpp:280
+#. TRANSLATORS: Day of week + month + day of month + 24-hour time + year, eg 'Tue Nov 02 13:59 2021'. Format for your locale.
+#: src/save_index.cpp:282
 msgid "%a %b %d %H:%M %Y"
 msgstr "%a %b %d %H:%M %Y"
 
@@ -12437,7 +12366,7 @@ msgstr "%a %b %d %H:%M %Y"
 # File: src/savegame.cpp, line: 1063
 # File: src/savegame.cpp, line: 1063
 #. TRANSLATORS: This string is used as part of a filename, as in, "HttT-The Elves Besieged replay.gz"
-#: src/save_index.cpp:300 src/savegame.cpp:588
+#: src/save_index.cpp:302 src/savegame.cpp:588
 msgid "replay"
 msgstr "replay"
 
@@ -12457,7 +12386,7 @@ msgstr "replay"
 # File: src/savegame.cpp, line: 477
 # File: src/savegame.cpp, line: 1098
 # File: src/savegame.cpp, line: 1100
-#: src/save_index.cpp:384 src/savegame.cpp:71 src/savegame.cpp:624
+#: src/save_index.cpp:386 src/savegame.cpp:71 src/savegame.cpp:624
 #: src/savegame.cpp:626
 msgid "Auto-Save"
 msgstr "Salvamente automático"
@@ -13358,6 +13287,75 @@ msgstr "Esconder planos para $player"
 #: src/whiteboard/manager.cpp:1138
 msgid "Whiteboard Options"
 msgstr "Opções do Quadro-Branco"
+
+#
+# File: src/menu_events.cpp, line: 1813
+# File: src/menu_events.cpp, line: 1816
+# File: src/menu_events.cpp, line: 1818
+# File: src/menu_events.cpp, line: 1813
+# File: src/menu_events.cpp, line: 1816
+# File: src/menu_events.cpp, line: 1818
+# File: src/menu_events.cpp, line: 1813
+# File: src/menu_events.cpp, line: 1816
+# File: src/menu_events.cpp, line: 1818
+#~ msgid "<room>"
+#~ msgstr "<sala>"
+
+#
+# File: src/menu_events.cpp, line: 1813
+# File: src/menu_events.cpp, line: 1813
+# File: src/menu_events.cpp, line: 1813
+#~ msgid "Join a room."
+#~ msgstr "Entrar numa sala."
+
+#
+# File: src/menu_events.cpp, line: 1816
+# File: src/menu_events.cpp, line: 1816
+# File: src/menu_events.cpp, line: 1816
+#~ msgid "Part a room."
+#~ msgstr "Abandonar uma sala."
+
+#
+# File: src/menu_events.cpp, line: 1818
+# File: src/menu_events.cpp, line: 1818
+# File: src/menu_events.cpp, line: 1818
+#~ msgid "List room members."
+#~ msgstr "Lista de Membros da Sala."
+
+#
+# File: src/menu_events.cpp, line: 1820
+# File: src/menu_events.cpp, line: 1820
+# File: src/menu_events.cpp, line: 1820
+#~ msgid "List available rooms."
+#~ msgstr "Lista de salas disponíveis."
+
+#
+# File: src/menu_events.cpp, line: 1822
+# File: src/menu_events.cpp, line: 1822
+# File: src/menu_events.cpp, line: 1822
+#~ msgid "<room> <msg>"
+#~ msgstr "<sala> <mensagem>"
+
+#
+# File: src/menu_events.cpp, line: 1822
+# File: src/menu_events.cpp, line: 1822
+# File: src/menu_events.cpp, line: 1822
+#~ msgid "Room message."
+#~ msgstr "Mensagem para a sala."
+
+#
+# File: src/menu_events.cpp, line: 1824
+# File: src/menu_events.cpp, line: 1824
+# File: src/menu_events.cpp, line: 1824
+#~ msgid "<room> <type> [value]"
+#~ msgstr "<sala> <tipo> [valor]"
+
+#
+# File: src/menu_events.cpp, line: 1824
+# File: src/menu_events.cpp, line: 1824
+# File: src/menu_events.cpp, line: 1824
+#~ msgid "Room query."
+#~ msgstr "Comando de sala."
 
 #~ msgid "Life Vortex"
 #~ msgstr "Vórtice de Vida"
