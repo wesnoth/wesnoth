@@ -50,12 +50,6 @@ public:
 
 	void sync_games_display_status();
 
-	/**
-	 * Generates a new vector of game pointers from the ID/game map.
-	 * The games will be referenced in ascending order by ID.
-	 */
-	void make_games_vector();
-
 	/** Returns the raw game list config data. */
 	const config& gamelist() const
 	{
@@ -128,6 +122,12 @@ private:
 	bool process_gamelist_diff_impl(const config& data);
 
 	void process_userlist();
+
+	/**
+	 * Generates a new vector of game pointers from the ID/game map.
+	 * The games will be referenced in ascending order by ID.
+	 */
+	void make_games_vector();
 
 	std::vector<std::string> installed_addons_;
 

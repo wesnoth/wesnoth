@@ -231,7 +231,6 @@ void mp_lobby::update_gamelist()
 	SCOPE_LB;
 	gamelistbox_->clear();
 	gamelist_id_at_row_.clear();
-	lobby_info_.make_games_vector();
 
 	int select_row = -1;
 	for(unsigned i = 0; i < lobby_info_.games().size(); ++i) {
@@ -266,7 +265,6 @@ void mp_lobby::update_gamelist_diff()
 	if(delay_gamelist_update_) return;
 
 	SCOPE_LB;
-	lobby_info_.make_games_vector();
 	int select_row = -1;
 	unsigned list_i = 0;
 	int list_rows_deleted = 0;

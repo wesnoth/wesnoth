@@ -134,6 +134,9 @@ void lobby_info::process_gamelist(const config& data)
 	DBG_LB << dump_games_map(games_by_id_);
 	DBG_LB << dump_games_config(gamelist_.child("gamelist"));
 
+	// Sync order vector
+	make_games_vector();
+
 	process_userlist();
 }
 
@@ -220,6 +223,9 @@ bool lobby_info::process_gamelist_diff_impl(const config& data)
 	}
 
 	DBG_LB << "postclean " << dump_games_config(gamelist_.child("gamelist"));
+
+	// Sync order vector
+	make_games_vector();
 
 	process_userlist();
 	return true;
