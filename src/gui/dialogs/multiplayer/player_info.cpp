@@ -122,7 +122,7 @@ void lobby_player_info::pre_show(window& window)
 
 	update_relation();
 
-	if(mp::logged_in_as_moderator()) {
+	if(!mp::logged_in_as_moderator()) {
 		widget* aw = window.find("admin", false);
 		aw->set_visible(widget::visibility::invisible);
 	}
