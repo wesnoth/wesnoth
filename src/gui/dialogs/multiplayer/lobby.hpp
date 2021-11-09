@@ -119,8 +119,6 @@ private:
 
 	void game_filter_keypress_callback(const SDL_Keycode key);
 
-	void player_filter_callback();
-
 	void user_dialog_callback(const mp::user_info* info);
 
 	void skip_replay_changed_callback();

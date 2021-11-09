@@ -964,12 +964,6 @@ void mp_lobby::game_filter_keypress_callback(const SDL_Keycode key)
 	}
 }
 
-void mp_lobby::player_filter_callback()
-{
-	player_list_dirty_ = true;
-	// get_window()->invalidate_layout();
-}
-
 void mp_lobby::user_dialog_callback(const mp::user_info* info)
 {
 	delay_playerlist_update_ = true;
