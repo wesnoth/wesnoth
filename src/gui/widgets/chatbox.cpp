@@ -299,16 +299,16 @@ void chatbox::add_whisper_received(const std::string& sender, const std::string&
 		if(whisper_window_active(sender)) {
 			add_active_window_message(sender, message);
 
-			do_notify(mp::NOTIFY_WHISPER, sender, message);
+			do_notify(mp::notify_mode::whisper, sender, message);
 		} else {
 			add_whisper_window_whisper(sender, message);
 			increment_waiting_whispers(sender);
 
-			do_notify(mp::NOTIFY_WHISPER_OTHER_WINDOW, sender, message);
+			do_notify(mp::notify_mode::whisper_other_window, sender, message);
 		}
 	} else if(can_go_to_active) {
 		add_active_window_whisper(sender, message);
-		do_notify(mp::NOTIFY_WHISPER, sender, message);
+		do_notify(mp::notify_mode::whisper, sender, message);
 	} else {
 		LOG_LB << "Ignoring whisper from " << sender << "\n";
 	}
@@ -333,23 +333,23 @@ void chatbox::add_chat_room_message_received(const std::string& room,
 	const std::string& speaker,
 	const std::string& message)
 {
-	mp::notify_mode notify_mode = mp::NOTIFY_NONE;
+	mp::notify_mode notify_mode = mp::notify_mode::none;
 
 	if(room_window_active(room)) {
 		add_active_window_message(speaker, message);
-		notify_mode = mp::NOTIFY_MESSAGE;
+		notify_mode = mp::notify_mode::message;
 	} else {
 		add_room_window_message(room, speaker, message);
 		increment_waiting_messages(room);
-		notify_mode = mp::NOTIFY_MESSAGE_OTHER_WINDOW;
+		notify_mode = mp::notify_mode::message_other_window;
 	}
 
 	if(speaker == "server") {
-		notify_mode = mp::NOTIFY_SERVER_MESSAGE;
+		notify_mode = mp::notify_mode::server_message;
 	} else if (utils::word_match(message, preferences::login())) {
-		notify_mode = mp::NOTIFY_OWN_NICK;
+		notify_mode = mp::notify_mode::own_nick;
 	} else if (preferences::is_friend(speaker)) {
-		notify_mode = mp::NOTIFY_FRIEND_MESSAGE;
+		notify_mode = mp::notify_mode::friend_message;
 	}
 
 	do_notify(notify_mode, speaker, message);

@@ -62,27 +62,27 @@ void lobby_info::refresh_installed_addons_cache()
 void do_notify(notify_mode mode, const std::string& sender, const std::string& message)
 {
 	switch(mode) {
-	case NOTIFY_WHISPER:
-	case NOTIFY_WHISPER_OTHER_WINDOW:
-	case NOTIFY_OWN_NICK:
+	case notify_mode::whisper:
+	case notify_mode::whisper_other_window:
+	case notify_mode::own_nick:
 		mp_ui_alerts::private_message(true, sender, message);
 		break;
-	case NOTIFY_FRIEND_MESSAGE:
+	case notify_mode::friend_message:
 		mp_ui_alerts::friend_message(true, sender, message);
 		break;
-	case NOTIFY_SERVER_MESSAGE:
+	case notify_mode::server_message:
 		mp_ui_alerts::server_message(true, sender, message);
 		break;
-	case NOTIFY_LOBBY_QUIT:
+	case notify_mode::lobby_quit:
 		mp_ui_alerts::player_leaves(true);
 		break;
-	case NOTIFY_LOBBY_JOIN:
+	case notify_mode::lobby_join:
 		mp_ui_alerts::player_joins(true);
 		break;
-	case NOTIFY_MESSAGE:
+	case notify_mode::message:
 		mp_ui_alerts::public_message(true, sender, message);
 		break;
-	case NOTIFY_GAME_CREATED:
+	case notify_mode::game_created:
 		mp_ui_alerts::game_created(sender, message);
 		break;
 	default:

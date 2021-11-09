@@ -279,7 +279,7 @@ void mp_lobby::update_gamelist_diff()
 			// call void do_notify(notify_mode mode, const std::string& sender, const std::string& message)
 			// sender will be the game_info.scenario (std::string) and message will be game_info.name (std::string)
 			if (lobby_info_.is_game_visible(game)) {
-				do_notify(mp::NOTIFY_GAME_CREATED, game.scenario, game.name);
+				do_notify(mp::notify_mode::game_created, game.scenario, game.name);
 			}
 
 			LOG_LB << "Adding game to listbox " << game.id << "\n";
@@ -778,9 +778,9 @@ void mp_lobby::process_gamelist_diff(const config& data)
 	const int left = data.child_count("remove_child");
 	if(joined > 0 || left > 0) {
 		if(left > joined) {
-			do_notify(mp::NOTIFY_LOBBY_QUIT);
+			do_notify(mp::notify_mode::lobby_quit);
 		} else {
-			do_notify(mp::NOTIFY_LOBBY_JOIN);
+			do_notify(mp::notify_mode::lobby_join);
 		}
 	}
 }

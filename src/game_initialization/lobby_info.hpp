@@ -148,18 +148,18 @@ private:
 	boost::dynamic_bitset<> games_visibility_;
 };
 
-enum notify_mode {
-	NOTIFY_NONE,
-	NOTIFY_MESSAGE,
-	NOTIFY_MESSAGE_OTHER_WINDOW,
-	NOTIFY_SERVER_MESSAGE,
-	NOTIFY_OWN_NICK,
-	NOTIFY_FRIEND_MESSAGE,
-	NOTIFY_WHISPER,
-	NOTIFY_WHISPER_OTHER_WINDOW,
-	NOTIFY_LOBBY_JOIN,
-	NOTIFY_LOBBY_QUIT,
-	NOTIFY_GAME_CREATED
+enum class notify_mode {
+	none,
+	message,
+	message_other_window,
+	server_message,
+	own_nick,
+	friend_message,
+	whisper,
+	whisper_other_window,
+	lobby_join,
+	lobby_quit,
+	game_created
 };
 
 void do_notify(notify_mode mode, const std::string& sender = "", const std::string& message = "");
