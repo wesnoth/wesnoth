@@ -1,4 +1,4 @@
-## Version 1.16.0+dev
+## Version 1.16.1
  ### Add-ons server
    * Fixed `core=` attribute in `_server.pbl` being completely ignored (issue #5664).
  ### Campaigns
