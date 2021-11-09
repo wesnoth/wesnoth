@@ -46,7 +46,7 @@ public:
 	void update_gamelist();
 
 protected:
-	void update_gamelist_header();
+	void update_visible_games();
 
 	void update_gamelist_diff();
 

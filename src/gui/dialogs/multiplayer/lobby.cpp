@@ -255,8 +255,7 @@ void mp_lobby::update_gamelist()
 	gamelist_dirty_ = false;
 	last_lobby_update_ = SDL_GetTicks();
 	lobby_info_.sync_games_display_status();
-	update_gamelist_header();
-	gamelistbox_->set_row_shown(lobby_info_.games_visibility());
+	update_visible_games();
 }
 
 void mp_lobby::update_gamelist_diff()
@@ -361,11 +360,10 @@ void mp_lobby::update_gamelist_diff()
 	gamelist_dirty_ = false;
 	last_lobby_update_ = SDL_GetTicks();
 	lobby_info_.sync_games_display_status();
-	update_gamelist_header();
-	gamelistbox_->set_row_shown(lobby_info_.games_visibility());
+	update_visible_games();
 }
 
-void mp_lobby::update_gamelist_header()
+void mp_lobby::update_visible_games()
 {
 	const std::string games_string = VGETTEXT("Games: showing $num_shown out of $num_total", {
 		{"num_shown", std::to_string(lobby_info_.games_visibility().count())},
@@ -373,6 +371,8 @@ void mp_lobby::update_gamelist_header()
 	});
 
 	find_widget<label>(gamelistbox_, "map", false).set_label(games_string);
+
+	gamelistbox_->set_row_shown(lobby_info_.games_visibility());
 }
 
 std::map<std::string, string_map> mp_lobby::make_game_row_data(const mp::game_info& game)
@@ -517,9 +517,8 @@ void mp_lobby::update_gamelist_filter()
 	DBG_LB << "Games in lobby_info: " << lobby_info_.games().size()
 		   << ", games in listbox: " << gamelistbox_->get_item_count() << "\n";
 	assert(lobby_info_.games().size() == gamelistbox_->get_item_count());
-	gamelistbox_->set_row_shown(lobby_info_.games_visibility());
 
-	update_gamelist_header();
+	update_visible_games();
 }
 
 void mp_lobby::update_playerlist()
