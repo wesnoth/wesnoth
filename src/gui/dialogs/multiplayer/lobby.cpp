@@ -255,7 +255,6 @@ void mp_lobby::update_gamelist()
 	gamelist_dirty_ = false;
 	last_lobby_update_ = SDL_GetTicks();
 	lobby_info_.sync_games_display_status();
-	lobby_info_.apply_game_filter();
 	update_gamelist_header();
 	gamelistbox_->set_row_shown(lobby_info_.games_visibility());
 }
@@ -362,7 +361,6 @@ void mp_lobby::update_gamelist_diff()
 	gamelist_dirty_ = false;
 	last_lobby_update_ = SDL_GetTicks();
 	lobby_info_.sync_games_display_status();
-	lobby_info_.apply_game_filter();
 	update_gamelist_header();
 	gamelistbox_->set_row_shown(lobby_info_.games_visibility());
 }

@@ -321,6 +321,9 @@ void lobby_info::make_games_vector()
 	games_visibility_.resize(games_.size());
 	games_visibility_.reset();
 	games_visibility_.flip();
+
+	// Now properly set the visibility mask
+	apply_game_filter();
 }
 
 bool lobby_info::is_game_visible(const game_info& game)
