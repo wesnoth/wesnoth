@@ -137,7 +137,7 @@ class dbconn
 		/**
 		 * @see forum_user_handler::db_insert_game_content_info().
 		 */
-		void insert_game_content_info(const std::string& uuid, int game_id, const std::string& type, const std::string& name, const std::string& id, const std::string& source, const std::string& version);
+		unsigned long long insert_game_content_info(const std::string& uuid, int game_id, const std::string& type, const std::string& name, const std::string& id, const std::string& source, const std::string& version);
 
 		/**
 		 * @see forum_user_handler::db_set_oos_flag().
@@ -282,6 +282,17 @@ class dbconn
 		 */
 		template<typename... Args>
 		unsigned long long modify(mariadb::connection_ref connection, const std::string& sql, Args&&... args);
+
+		/**
+		 * Executes non-select statements (ie: insert, update, delete), but primarily intended for inserts that return a generated ID.
+		 *
+		 * @param connection The database connecion that will be used to execute the query.
+		 * @param sql The SQL text to be executed.
+		 * @param args The parameterized values to be inserted into the query.
+		 * @return The value of an AUTO_INCREMENT column on the table being modified.
+		 */
+		template<typename... Args>
+		unsigned long long modify_get_id(mariadb::connection_ref connection, const std::string& sql, Args&&... args);
 
 		/**
 		 * Begins recursively unpacking of the parameter pack in order to be able to call the correct parameterized setters on the query.

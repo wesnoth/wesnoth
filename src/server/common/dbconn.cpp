@@ -325,16 +325,17 @@ void dbconn::insert_game_player_info(const std::string& uuid, int game_id, const
 		log_sql_exception("Failed to insert game player info row for UUID `"+uuid+"` and game ID `"+std::to_string(game_id)+"`", e);
 	}
 }
-void dbconn::insert_game_content_info(const std::string& uuid, int game_id, const std::string& type, const std::string& name, const std::string& id, const std::string& source, const std::string& version)
+unsigned long long dbconn::insert_game_content_info(const std::string& uuid, int game_id, const std::string& type, const std::string& name, const std::string& id, const std::string& source, const std::string& version)
 {
 	try
 	{
-		modify(connection_, "INSERT INTO `"+db_game_content_info_table_+"`(INSTANCE_UUID, GAME_ID, TYPE, NAME, ID, SOURCE, VERSION) VALUES(?, ?, ?, ?, ?, ?, ?)",
+		return modify(connection_, "INSERT INTO `"+db_game_content_info_table_+"`(INSTANCE_UUID, GAME_ID, TYPE, NAME, ID, SOURCE, VERSION) VALUES(?, ?, ?, ?, ?, ?, ?)",
 			uuid, game_id, type, name, id, source, version);
 	}
 	catch(const mariadb::exception::base& e)
 	{
 		log_sql_exception("Failed to insert game content info row for UUID `"+uuid+"` and game ID `"+std::to_string(game_id)+"`", e);
+		return 0;
 	}
 }
 void dbconn::set_oos_flag(const std::string& uuid, int game_id)
@@ -380,7 +381,7 @@ unsigned long long dbconn::insert_login(const std::string& username, const std::
 {
 	try
 	{
-		return modify(connection_, "INSERT INTO `"+db_connection_history_table_+"`(USER_NAME, IP, VERSION) values(lower(?), ?, ?)",
+		return modify_get_id(connection_, "INSERT INTO `"+db_connection_history_table_+"`(USER_NAME, IP, VERSION) values(lower(?), ?, ?)",
 			username, ip, version);
 	}
 	catch(const mariadb::exception::base& e)
@@ -531,6 +532,21 @@ mariadb::result_set_ref dbconn::select(mariadb::connection_ref connection, const
 }
 template<typename... Args>
 unsigned long long dbconn::modify(mariadb::connection_ref connection, const std::string& sql, Args&&... args)
+{
+	try
+	{
+		mariadb::statement_ref stmt = query(connection, sql, args...);
+		unsigned long long count = stmt->execute();
+		return count;
+	}
+	catch(const mariadb::exception::base& e)
+	{
+		ERR_SQL << "SQL query failed for query: `"+sql+"`" << std::endl;
+		throw e;
+	}
+}
+template<typename... Args>
+unsigned long long dbconn::modify_get_id(mariadb::connection_ref connection, const std::string& sql, Args&&... args)
 {
 	try
 	{

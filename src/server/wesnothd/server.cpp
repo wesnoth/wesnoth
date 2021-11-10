@@ -1688,7 +1688,10 @@ void server::handle_player_in_game(player_iterator p, simple_wml::document& data
 			// [addon] info handling
 			for(const auto& addon : m.children("addon")) {
 				for(const auto& content : addon->children("content")) {
-					user_handler_->db_insert_game_content_info(uuid_, g.db_id(), content->attr("type").to_string(), content->attr("name").to_string(), content->attr("id").to_string(), addon->attr("id").to_string(), addon->attr("version").to_string());
+					unsigned long long rows_inserted = user_handler_->db_insert_game_content_info(uuid_, g.db_id(), content->attr("type").to_string(), content->attr("name").to_string(), content->attr("id").to_string(), addon->attr("id").to_string(), addon->attr("version").to_string());
+					if(rows_inserted == 0) {
+						WRN_SERVER << "Did not insert content row for [addon] data with uuid '" << uuid_ <<"', game ID '" << g.db_id() << "', type '" << content->attr("type").to_string() << "', and content ID '" << content->attr("id").to_string() << "'\n";
+					}
 				}
 			}
 
