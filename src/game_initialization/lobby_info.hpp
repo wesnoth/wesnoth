@@ -48,6 +48,12 @@ public:
 	 */
 	bool process_gamelist_diff(const config& data);
 
+	/**
+	 * Updates the game pointer list and returns a second stage cleanup function to be
+	 * called after any actions have been done using the pointer list.
+	 */
+	std::function<void()> begin_state_sync();
+
 	void sync_games_display_status();
 
 	/** Returns the raw game list config data. */

@@ -134,9 +134,6 @@ void lobby_info::process_gamelist(const config& data)
 	DBG_LB << dump_games_map(games_by_id_);
 	DBG_LB << dump_games_config(gamelist_.child("gamelist"));
 
-	// Sync order vector
-	make_games_vector();
-
 	process_userlist();
 }
 
@@ -224,9 +221,6 @@ bool lobby_info::process_gamelist_diff_impl(const config& data)
 
 	DBG_LB << "postclean " << dump_games_config(gamelist_.child("gamelist"));
 
-	// Sync order vector
-	make_games_vector();
-
 	process_userlist();
 	return true;
 }
@@ -262,6 +256,23 @@ void lobby_info::process_userlist()
 	}
 
 	std::stable_sort(users_.begin(), users_.end());
+}
+
+std::function<void()> lobby_info::begin_state_sync()
+{
+	// First, update the list of game pointers to reflect any changes made to games_by_id_.
+	// This guarantees anything that calls games() before post cleanup has valid pointers,
+	// since there will likely have been changes to games_by_id_ caused by network traffic.
+	make_games_vector();
+
+	return [this]() {
+		// Removes any games flagged for deletion from games_by_id_ and updates the pointer list.
+		sync_games_display_status();
+
+		// Now that both containers are again in sync, update the visibility mask. We want to do
+		// this last since the filer functions are expensive.
+		apply_game_filter();
+	};
 }
 
 void lobby_info::sync_games_display_status()
@@ -321,9 +332,6 @@ void lobby_info::make_games_vector()
 	games_visibility_.resize(games_.size());
 	games_visibility_.reset();
 	games_visibility_.flip();
-
-	// Now properly set the visibility mask
-	apply_game_filter();
 }
 
 bool lobby_info::is_game_visible(const game_info& game)

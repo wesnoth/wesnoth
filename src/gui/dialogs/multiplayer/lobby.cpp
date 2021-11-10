@@ -232,6 +232,8 @@ void mp_lobby::update_gamelist()
 	gamelistbox_->clear();
 	gamelist_id_at_row_.clear();
 
+	const auto finish_state_sync = lobby_info_.begin_state_sync();
+
 	int select_row = -1;
 	for(unsigned i = 0; i < lobby_info_.games().size(); ++i) {
 		const mp::game_info& game = *lobby_info_.games()[i];
@@ -254,7 +256,7 @@ void mp_lobby::update_gamelist()
 	update_selected_game();
 	gamelist_dirty_ = false;
 	last_lobby_update_ = SDL_GetTicks();
-	lobby_info_.sync_games_display_status();
+	finish_state_sync();
 	update_visible_games();
 }
 
@@ -266,6 +268,8 @@ void mp_lobby::update_gamelist_diff()
 	int select_row = -1;
 	unsigned list_i = 0;
 	int list_rows_deleted = 0;
+
+	const auto finish_state_sync = lobby_info_.begin_state_sync();
 
 	std::vector<int> next_gamelist_id_at_row;
 	for(unsigned i = 0; i < lobby_info_.games().size(); ++i) {
@@ -359,7 +363,7 @@ void mp_lobby::update_gamelist_diff()
 	update_selected_game();
 	gamelist_dirty_ = false;
 	last_lobby_update_ = SDL_GetTicks();
-	lobby_info_.sync_games_display_status();
+	finish_state_sync();
 	update_visible_games();
 }
 
