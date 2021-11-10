@@ -1696,7 +1696,7 @@ effect::effect(const unit_ability_list& list, int def, bool backstab, const_atta
 {
 
 	int value_set = def;
-	bool cumulative = false;
+	bool already_calculated = false;
 	std::map<std::string,individual_effect> values_add;
 	std::map<std::string,individual_effect> values_mul;
 	std::map<std::string,individual_effect> values_div;
@@ -1723,10 +1723,10 @@ effect::effect(const unit_ability_list& list, int def, bool backstab, const_atta
 				return formula.evaluate(callable).as_int();
 			});
 
-			if(leadership_cumulative && cfg["cumulative"].to_bool()){
+			if(leadership_cumulative && !already_calculated){
 				value_set = std::max(0, list.highest("value").first) + std::min(0, list.lowest("value").first);
-				cumulative = true;
-			} else {
+				already_calculated = true;
+			} else if(!leadership_cumulative){
 				int value_cum = cfg["cumulative"].to_bool() ? std::max(def, value) : value;
 				assert((set_effect_min.type != NOT_USED) == (set_effect_max.type != NOT_USED));
 				if(set_effect_min.type == NOT_USED) {
@@ -1792,7 +1792,8 @@ effect::effect(const unit_ability_list& list, int def, bool backstab, const_atta
 		}
 	}
 
-	if(!cumulative && set_effect_max.type != NOT_USED) {
+
+	if(!leadership_cumulative && set_effect_max.type != NOT_USED) {
 		value_set = std::max(set_effect_max.value, 0) + std::min(set_effect_min.value, 0);
 		if(set_effect_max.value > def) {
 			effect_list_.push_back(set_effect_max);
