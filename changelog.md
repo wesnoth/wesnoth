@@ -8,8 +8,10 @@
  ### Packaging
  ### Terrain
  ### Translations
+   * Implemented delayed translation option for gettext plurals (issue #6036, PR #6097).
  ### Units
  ### User interface
+   * Improved translatability of MP ban durations (issue #6036, PR #6097).
  ### WML Engine
  ### Miscellaneous and Bug Fixes
 
