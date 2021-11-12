@@ -1503,9 +1503,10 @@ void server::handle_upload(const server::request& req)
 
 	// Write general metadata attributes
 
-	addon.copy_attributes(upload,
+	addon.copy_or_remove_attributes(upload,
 		"title", "name", "author", "description", "version", "icon",
-		"translate", "dependencies", "core", "type", "tags", "email", "forum_auth");
+		"translate", "dependencies", "core", "type", "tags", "email", "forum_auth"
+	);
 
 	const std::string& pathstem = "data/" + name;
 	addon["filename"] = pathstem;
