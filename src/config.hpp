@@ -524,6 +524,12 @@ public:
 		}
 	}
 
+	/**
+	 * Copies attributes that exist in the source config.
+	 *
+	 * @param from Source config to copy attributes from.
+	 * @param keys Attribute names.
+	 */
 	template<typename... T>
 	void copy_attributes(const config& from, T... keys)
 	{
@@ -531,6 +537,27 @@ public:
 			auto* attr = from.get(key);
 			if(attr) {
 				(*this)[key] = *attr;
+			}
+		}
+	}
+
+	/**
+	 * Copies or deletes attributes to match the source config.
+	 *
+	 * Attributes that do not exist in the source are fully erased rather than
+	 * set to the unspecified/default attribute value.
+	 *
+	 * @param from Source config to copy attributes from.
+	 * @param keys Attribute names.
+	 */
+	template<typename... T>
+	void copy_or_remove_attributes(const config& from, T... keys)
+	{
+		for(const auto& key : {keys...}) {
+			if(from.has_attribute(key)) {
+				(*this)[key] = from[key];
+			} else {
+				remove_attribute(key);
 			}
 		}
 	}
