@@ -8,6 +8,7 @@
  ### Packaging
  ### Terrain
  ### Translations
+   * Updated translations: Japanese.
    * Implemented delayed translation option for gettext plurals (issue #6036, PR #6097).
  ### Units
  ### User interface
