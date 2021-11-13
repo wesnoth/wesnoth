@@ -15,6 +15,7 @@
    * Improved translatability of MP ban durations (issue #6036, PR #6097).
  ### WML Engine
  ### Miscellaneous and Bug Fixes
+   * Password storage was fixed to work with multiple accounts (PR #6290)
 
 ## Version 1.16.1
  ### Add-ons server
