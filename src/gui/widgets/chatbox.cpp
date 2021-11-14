@@ -582,6 +582,8 @@ void chatbox::process_message(const ::config& data, bool whisper /*= false*/)
 	if(whisper) {
 		add_whisper_received(sender, message);
 	} else {
+		if (!preferences::parse_should_show_lobby_join(sender, message)) return;
+		
 		std::string room = data["room"];
 
 		// Attempt to send to the currently active room first.
