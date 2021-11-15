@@ -23,7 +23,7 @@
 #include<string>
 #include<vector>
 
-namespace mp_ui_alerts {
+namespace mp::ui_alerts {
 
 	// Functions called when such an event occurs
 	void player_joins(bool is_lobby);

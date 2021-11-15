@@ -562,7 +562,7 @@ void mp_staging::network_handler()
 	update_status_label_and_buttons();
 
 	if(!was_able_to_start && connect_engine_.can_start_game()) {
-		mp_ui_alerts::ready_for_start();
+		mp::ui_alerts::ready_for_start();
 	}
 
 	state_changed_ = false;

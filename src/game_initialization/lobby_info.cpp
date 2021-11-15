@@ -65,25 +65,25 @@ void do_notify(notify_mode mode, const std::string& sender, const std::string& m
 	case notify_mode::whisper:
 	case notify_mode::whisper_other_window:
 	case notify_mode::own_nick:
-		mp_ui_alerts::private_message(true, sender, message);
+		mp::ui_alerts::private_message(true, sender, message);
 		break;
 	case notify_mode::friend_message:
-		mp_ui_alerts::friend_message(true, sender, message);
+		mp::ui_alerts::friend_message(true, sender, message);
 		break;
 	case notify_mode::server_message:
-		mp_ui_alerts::server_message(true, sender, message);
+		mp::ui_alerts::server_message(true, sender, message);
 		break;
 	case notify_mode::lobby_quit:
-		mp_ui_alerts::player_leaves(true);
+		mp::ui_alerts::player_leaves(true);
 		break;
 	case notify_mode::lobby_join:
-		mp_ui_alerts::player_joins(true);
+		mp::ui_alerts::player_joins(true);
 		break;
 	case notify_mode::message:
-		mp_ui_alerts::public_message(true, sender, message);
+		mp::ui_alerts::public_message(true, sender, message);
 		break;
 	case notify_mode::game_created:
-		mp_ui_alerts::game_created(sender, message);
+		mp::ui_alerts::game_created(sender, message);
 		break;
 	default:
 		break;

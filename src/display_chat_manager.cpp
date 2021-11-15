@@ -81,13 +81,13 @@ void display_chat_manager::add_chat_message(const std::time_t& time, const std::
 	if (bell) {
 		if ((type == events::chat_handler::MESSAGE_PRIVATE && (!is_observer || whisper))
 			|| utils::word_match(message, preferences::login())) {
-			mp_ui_alerts::private_message(false, sender, message);
+			mp::ui_alerts::private_message(false, sender, message);
 		} else if (preferences::is_friend(sender)) {
-			mp_ui_alerts::friend_message(false, sender, message);
+			mp::ui_alerts::friend_message(false, sender, message);
 		} else if (sender == "server") {
-			mp_ui_alerts::server_message(false, sender, message);
+			mp::ui_alerts::server_message(false, sender, message);
 		} else {
-			mp_ui_alerts::public_message(false, sender, message);
+			mp::ui_alerts::public_message(false, sender, message);
 		}
 	}
 

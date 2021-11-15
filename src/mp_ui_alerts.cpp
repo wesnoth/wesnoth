@@ -30,7 +30,7 @@
 #include <string>
 #include <vector>
 
-namespace mp_ui_alerts
+namespace mp::ui_alerts
 {
 namespace
 {
