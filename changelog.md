@@ -4,6 +4,7 @@
  ### Campaigns
  ### Editor
  ### Multiplayer
+   * Lobby joins are no longer displayed in chat even when that preference has been disabled (issue #6234)
  ### Lua API
  ### Packaging
  ### Terrain
