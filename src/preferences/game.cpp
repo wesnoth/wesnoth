@@ -330,39 +330,39 @@ bool parse_should_show_lobby_join(const std::string& sender, const std::string& 
 		}
 	}
 
-	int lj = lobby_joins();
-	if(lj == SHOW_NONE) {
+	lobby_joins lj = get_lobby_joins();
+	if(lj == lobby_joins::show_none) {
 		return false;
 	}
 
-	if(lj == SHOW_ALL) {
+	if(lj == lobby_joins::show_all) {
 		return true;
 	}
 
 	return is_friend(message.substr(0, pos));
 }
 
-int lobby_joins()
+lobby_joins get_lobby_joins()
 {
 	std::string pref = preferences::get("lobby_joins");
 	if(pref == "friends") {
-		return SHOW_FRIENDS;
+		return lobby_joins::show_friends;
 	} else if(pref == "all") {
-		return SHOW_ALL;
+		return lobby_joins::show_all;
 	} else if(pref == "none") {
-		return SHOW_NONE;
+		return lobby_joins::show_none;
 	} else {
-		return SHOW_FRIENDS;
+		return lobby_joins::show_friends;
 	}
 }
 
-void _set_lobby_joins(int show)
+void _set_lobby_joins(lobby_joins show)
 {
-	if(show == SHOW_FRIENDS) {
+	if(show == lobby_joins::show_friends) {
 		preferences::set("lobby_joins", "friends");
-	} else if(show == SHOW_ALL) {
+	} else if(show == lobby_joins::show_all) {
 		preferences::set("lobby_joins", "all");
-	} else if(show == SHOW_NONE) {
+	} else if(show == lobby_joins::show_none) {
 		preferences::set("lobby_joins", "none");
 	}
 }

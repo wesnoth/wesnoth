@@ -114,7 +114,7 @@ private:
 	void default_hotkey_callback();
 	void hotkey_filter_callback() const;
 
-	group<preferences::LOBBY_JOINS> lobby_joins_group;
+	group<preferences::lobby_joins> lobby_joins_group;
 
 	const preferences::advanced_pref_list& adv_preferences_;
 

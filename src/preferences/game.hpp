@@ -75,11 +75,11 @@ private:
 	std::string notes_;
 };
 
-bool parse_should_show_lobby_join(const std::string& sender, const std::string& message);
-int lobby_joins();
-void _set_lobby_joins(int show);
+enum class lobby_joins { show_none, show_friends, show_all };
 
-enum LOBBY_JOINS { SHOW_NONE, SHOW_FRIENDS, SHOW_ALL };
+bool parse_should_show_lobby_join(const std::string& sender, const std::string& message);
+lobby_joins get_lobby_joins();
+void _set_lobby_joins(lobby_joins show);
 
 void load_game_prefs();
 const std::map<std::string, acquaintance>& get_acquaintances();

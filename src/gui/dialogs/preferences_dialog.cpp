@@ -498,11 +498,11 @@ void preferences_dialog::post_build(window& window)
 		whisper_friends_only, set_whisper_friends_only);
 
 	/* LOBBY JOIN NOTIFICATIONS */
-	lobby_joins_group.add_member(find_widget<toggle_button>(&window, "lobby_joins_none", false, true), SHOW_NONE);
-	lobby_joins_group.add_member(find_widget<toggle_button>(&window, "lobby_joins_friends", false, true), SHOW_FRIENDS);
-	lobby_joins_group.add_member(find_widget<toggle_button>(&window, "lobby_joins_all", false, true), SHOW_ALL);
+	lobby_joins_group.add_member(find_widget<toggle_button>(&window, "lobby_joins_none", false, true), lobby_joins::show_none);
+	lobby_joins_group.add_member(find_widget<toggle_button>(&window, "lobby_joins_friends", false, true), lobby_joins::show_friends);
+	lobby_joins_group.add_member(find_widget<toggle_button>(&window, "lobby_joins_all", false, true), lobby_joins::show_all);
 
-	lobby_joins_group.set_member_states(static_cast<LOBBY_JOINS>(lobby_joins()));
+	lobby_joins_group.set_member_states(get_lobby_joins());
 
 	lobby_joins_group.set_callback_on_value_change([&](widget&) {
 		_set_lobby_joins(lobby_joins_group.get_active_member_value());
