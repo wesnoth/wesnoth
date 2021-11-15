@@ -179,13 +179,6 @@ const config& configuration::get_ai_config_for(const std::string &id)
 	return cfg_it->second.cfg;
 }
 
-
-configuration::description_map configuration::ai_configurations_ = configuration::description_map();
-configuration::description_map configuration::era_ai_configurations_ = configuration::description_map();
-configuration::description_map configuration::mod_ai_configurations_ = configuration::description_map();
-config configuration::default_config_ = config();
-std::string configuration::default_ai_algorithm_;
-
 bool configuration::get_side_config_from_file(const std::string& file, config& cfg ){
 	try {
 		filesystem::scoped_istream stream = preprocess_file(filesystem::get_wml_location(file));
