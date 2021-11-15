@@ -266,34 +266,28 @@ std::function<void()> lobby_info::begin_state_sync()
 	make_games_vector();
 
 	return [this]() {
-		// Removes any games flagged for deletion from games_by_id_ and updates the pointer list.
-		sync_games_display_status();
+		DBG_LB << "lobby_info, second state sync stage";
+		DBG_LB << "games_by_id_ size: " << games_by_id_.size();
+
+		auto i = games_by_id_.begin();
+
+		while(i != games_by_id_.end()) {
+			if(i->second.display_status == game_info::disp_status::DELETED) {
+				i = games_by_id_.erase(i);
+			} else {
+				i->second.display_status = game_info::disp_status::CLEAN;
+				++i;
+			}
+		}
+
+		DBG_LB << " -> " << games_by_id_.size() << std::endl;
+
+		make_games_vector();
 
 		// Now that both containers are again in sync, update the visibility mask. We want to do
 		// this last since the filer functions are expensive.
 		apply_game_filter();
 	};
-}
-
-void lobby_info::sync_games_display_status()
-{
-	DBG_LB << "lobby_info::sync_games_display_status";
-	DBG_LB << "games_by_id_ size: " << games_by_id_.size();
-
-	auto i = games_by_id_.begin();
-
-	while(i != games_by_id_.end()) {
-		if(i->second.display_status == game_info::disp_status::DELETED) {
-			i = games_by_id_.erase(i);
-		} else {
-			i->second.display_status = game_info::disp_status::CLEAN;
-			++i;
-		}
-	}
-
-	DBG_LB << " -> " << games_by_id_.size() << std::endl;
-
-	make_games_vector();
 }
 
 game_info* lobby_info::get_game_by_id(int id)

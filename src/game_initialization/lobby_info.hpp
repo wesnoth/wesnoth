@@ -54,8 +54,6 @@ public:
 	 */
 	std::function<void()> begin_state_sync();
 
-	void sync_games_display_status();
-
 	/** Returns the raw game list config data. */
 	const config& gamelist() const
 	{
