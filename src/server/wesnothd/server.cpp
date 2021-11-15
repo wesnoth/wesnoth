@@ -768,20 +768,20 @@ void server::login_client(boost::asio::yield_context yield, SocketPtr socket)
 	if(check_error(ec, socket)) return;
 
 	simple_wml::node& player_cfg = games_and_users_list_.root().add_child("user");
-	wesnothd::player new_player(
-		username,
-		player_cfg,
-		user_handler_ ? user_handler_->get_forum_id(username) : 0,
-		registered,
-		client_version,
-		client_source,
-		user_handler_ ? user_handler_->db_insert_login(username, client_address(socket), client_version) : 0,
-		default_max_messages_,
-		default_time_period_,
-		is_moderator
-	);
+
 	boost::asio::spawn(io_service_,
-		[this, socket, new_player](boost::asio::yield_context yield) { handle_player(yield, socket, new_player); }
+		[this, socket, new_player = wesnothd::player{
+			username,
+			player_cfg,
+			user_handler_ ? user_handler_->get_forum_id(username) : 0,
+			registered,
+			client_version,
+			client_source,
+			user_handler_ ? user_handler_->db_insert_login(username, client_address(socket), client_version) : 0,
+			default_max_messages_,
+			default_time_period_,
+			is_moderator
+		}](boost::asio::yield_context yield) { handle_player(yield, socket, new_player); }
 	);
 
 	LOG_SERVER << log_address(socket) << "\t" << username << "\thas logged on"
