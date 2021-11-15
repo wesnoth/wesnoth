@@ -95,7 +95,7 @@ private:
 	/** Callbacks */
 	void list_item_clicked();
 	void filter_text_changed(const std::string& text);
-	void gender_toggle_callback();
+	void gender_toggle_callback(const unit_race::GENDER val);
 	void variation_menu_callback();
 
 	void update_displayed_type() const;

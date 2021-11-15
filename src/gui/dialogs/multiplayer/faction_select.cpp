@@ -68,7 +68,7 @@ void faction_select::pre_show(window& window)
 	gender_toggle_.set_member_states("random");
 
 	gender_toggle_.set_callback_on_value_change(
-		std::bind(&faction_select::on_gender_select, this));
+		std::bind(&faction_select::on_gender_select, this, std::placeholders::_2));
 
 	//
 	// Set up leader menu button
@@ -198,9 +198,9 @@ void faction_select::profile_button_callback()
 	}
 }
 
-void faction_select::on_gender_select()
+void faction_select::on_gender_select(const std::string val)
 {
-	flg_manager_.set_current_gender(gender_toggle_.get_active_member_value());
+	flg_manager_.set_current_gender(val);
 
 	update_leader_image();
 }

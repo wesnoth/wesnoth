@@ -118,12 +118,19 @@ public:
 	/**
 	 * Sets a common callback function for all members.
 	 */
-	void set_callback_on_value_change(std::function<void(widget&)> func)
+	void set_callback_on_value_change(std::function<void(widget&, const T)> func)
 	{
 		// Ensure this callback is only called on the member being activated
-		const auto callback = [func](widget& widget)->void {
-			if(dynamic_cast<selectable_item&>(widget).get_value_bool()) {
-				func(widget);
+		const auto callback = [func, this](widget& widget) -> void {
+			if(auto& si = dynamic_cast<selectable_item&>(widget); si.get_value_bool()) {
+				for(auto& [v, w] : members_) {
+					if(&si == w) {
+						func(widget, v);
+						return;
+					}
+				}
+
+				throw std::runtime_error("Group value change callback invoked for non-member widget");
 			}
 		};
 

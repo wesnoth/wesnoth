@@ -504,8 +504,8 @@ void preferences_dialog::post_build(window& window)
 
 	lobby_joins_group.set_member_states(get_lobby_joins());
 
-	lobby_joins_group.set_callback_on_value_change([&](widget&) {
-		_set_lobby_joins(lobby_joins_group.get_active_member_value());
+	lobby_joins_group.set_callback_on_value_change([&](widget&, const lobby_joins val) {
+		_set_lobby_joins(val);
 	});
 
 	/* FRIENDS LIST */
