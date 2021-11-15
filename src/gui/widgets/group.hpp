@@ -19,8 +19,8 @@
 #include "gui/widgets/styled_widget.hpp"
 #include "gui/widgets/selectable_item.hpp"
 #include "gui/widgets/widget.hpp"
-#include <functional>
 
+#include <functional>
 #include <map>
 #include <vector>
 
@@ -45,7 +45,7 @@ public:
 		std::tie(std::ignore, success) = members_.emplace(value, w);
 
 		if(!success) {
-			ERR_GUI_G << "Group member with value " << value << "already exists." << std::endl;
+			ERR_GUI_G << "Group member with value already exists." << std::endl;
 			return;
 		}
 
