@@ -161,6 +161,7 @@ commandline_options::commandline_options(const std::vector<std::string>& args)
 	, diff_left()
 	, diff_right()
 	, version(false)
+	, simple_version(false)
 	, report(false)
 	, windowed(false)
 	, with_replay(false)
@@ -221,6 +222,7 @@ commandline_options::commandline_options(const std::vector<std::string>& args)
 		("username", po::value<std::string>(), "uses <username> when connecting to a server, ignoring other preferences.")
 		("validcache", "assumes that the cache is valid. (dangerous)")
 		("version,v", "prints the game's version number and exits.")
+		("simple-version", "prints the game's version number and nothing else.")
 		("with-replay", "replays the file loaded with the --load option.")
 #ifdef _WIN32
 		("wconsole", "attaches a console window on startup (Windows only). Implied by any option that prints something and exits.")
@@ -528,9 +530,14 @@ commandline_options::commandline_options(const std::vector<std::string>& args)
 		validate_schema = vm["validate-schema"].as<std::string>();
 	// If you add a new validate-* option, remember the any_validation_option() function
 	if (vm.count("use-schema"))
-		validate_with = vm["use-schema"].as<std::string>();;
+		validate_with = vm["use-schema"].as<std::string>();
 	if (vm.count("version"))
 		version = true;
+	if (vm.count("simple-version"))
+	{
+		simple_version = true;
+		nobanner = true;
+	}
 	if (vm.count("windowed"))
 		windowed = true;
 	if (vm.count("with-replay"))
