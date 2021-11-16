@@ -237,6 +237,8 @@ public:
 	std::string diff_left, diff_right;
 	/** True if --version was given on the command line. Prints version and exits. */
 	bool version;
+	/** True if --simple-version was given on the command line. Prints version and nothing else then exits. */
+	bool simple_version;
 	/** True if --report was given on the command line. Prints a bug report-style info dump and exits. */
 	bool report;
 	/** True if --windowed was given on the command line. Starts Wesnoth in windowed mode. */
