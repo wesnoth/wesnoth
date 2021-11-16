@@ -508,6 +508,12 @@ static int process_command_args(const commandline_options& cmdline_opts)
 		return 0;
 	}
 
+	if(cmdline_opts.simple_version) {
+		std::cout << game_config::wesnoth_version.str() << "\n";
+
+		return 0;
+	}
+
 	if(cmdline_opts.report) {
 		std::cout << "\n========= BUILD INFORMATION =========\n\n" << game_config::full_build_report();
 		return 0;
