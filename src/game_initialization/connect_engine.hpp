@@ -138,7 +138,6 @@ private:
 	std::vector<team_data_pod> team_data_;
 
 	std::set<std::string>& connected_users_rw();
-	void send_to_server(const config& cfg) const;
 };
 
 class side_engine

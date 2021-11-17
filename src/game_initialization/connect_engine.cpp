@@ -18,6 +18,7 @@
 #include "ai/configuration.hpp"
 #include "formula/string_utils.hpp"
 #include "game_initialization/mp_game_utils.hpp"
+#include "game_initialization/multiplayer.hpp"
 #include "game_initialization/playcampaign.hpp"
 #include "preferences/credentials.hpp"
 #include "preferences/game.hpp"
@@ -324,7 +325,7 @@ void connect_engine::update_and_send_diff(bool /*update_time_of_day*/)
 	if(!diff.empty()) {
 		config scenario_diff;
 		scenario_diff.add_child("scenario_diff", std::move(diff));
-		send_to_server(scenario_diff);
+		mp::send_to_server(scenario_diff);
 	}
 }
 
@@ -360,13 +361,6 @@ bool connect_engine::can_start_game() const
 	}
 
 	return false;
-}
-
-void connect_engine::send_to_server(const config& cfg) const
-{
-	if(mp_metadata_) {
-		mp_metadata_->connection.send_data(cfg);
-	}
 }
 
 std::multimap<std::string, config> side_engine::get_side_children()
@@ -460,7 +454,7 @@ void connect_engine::start_game()
 
 	// Make other clients not show the results of resolve_random().
 	config lock("stop_updates");
-	send_to_server(lock);
+	mp::send_to_server(lock);
 
 	update_and_send_diff(true);
 
@@ -469,7 +463,7 @@ void connect_engine::start_game()
 	// Build the gamestate object after updating the level.
 	mp::level_to_gamestate(level_, state_);
 
-	send_to_server(config("start_game"));
+	mp::send_to_server(config("start_game"));
 }
 
 void connect_engine::start_game_commandline(const commandline_options& cmdline_opts, const game_config_view& game_config)
@@ -570,14 +564,14 @@ void connect_engine::start_game_commandline(const commandline_options& cmdline_o
 
 	// Build the gamestate object after updating the level
 	mp::level_to_gamestate(level_, state_);
-	send_to_server(config("start_game"));
+	mp::send_to_server(config("start_game"));
 }
 
 void connect_engine::leave_game()
 {
 	DBG_MP << "leaving the game" << std::endl;
 
-	send_to_server(config("leave_game"));
+	mp::send_to_server(config("leave_game"));
 }
 
 std::pair<bool, bool> connect_engine::process_network_data(const config& data)
@@ -617,7 +611,7 @@ std::pair<bool, bool> connect_engine::process_network_data(const config& data)
 		if(name.empty()) {
 			config response;
 			response["failed"] = true;
-			send_to_server(response);
+			mp::send_to_server(response);
 
 			ERR_CF << "ERROR: No username provided with the side." << std::endl;
 
@@ -632,7 +626,7 @@ std::pair<bool, bool> connect_engine::process_network_data(const config& data)
 				response["failed"] = true;
 				response["message"] = "The nickname '" + name +
 					"' is already in use.";
-				send_to_server(response);
+				mp::send_to_server(response);
 
 				return result;
 			} else {
@@ -640,7 +634,7 @@ std::pair<bool, bool> connect_engine::process_network_data(const config& data)
 				update_side_controller_options();
 				config observer_quit;
 				observer_quit.add_child("observer_quit")["name"] = name;
-				send_to_server(observer_quit);
+				mp::send_to_server(observer_quit);
 			}
 		}
 
@@ -661,12 +655,12 @@ std::pair<bool, bool> connect_engine::process_network_data(const config& data)
 				if(side_taken >= side_engines_.size()) {
 					config response;
 					response["failed"] = true;
-					send_to_server(response);
+					mp::send_to_server(response);
 
 					config res;
 					config& kick = res.add_child("kick");
 					kick["username"] = data["name"];
-					send_to_server(res);
+					mp::send_to_server(res);
 
 					update_and_send_diff();
 
@@ -693,7 +687,7 @@ std::pair<bool, bool> connect_engine::process_network_data(const config& data)
 
 			config response;
 			response["failed"] = true;
-			send_to_server(response);
+			mp::send_to_server(response);
 		}
 	}
 
@@ -750,18 +744,18 @@ void connect_engine::send_level_data() const
 {
 	// Send initial information.
 	if(first_scenario_) {
-		send_to_server(config {
+		mp::send_to_server(config {
 			"create_game", config {
 				"name", params_.name,
 				"password", params_.password,
 				"ignored", preferences::get_ignored_delim(),
 			},
 		});
-		send_to_server(level_);
+		mp::send_to_server(level_);
 	} else {
 		config next_level;
 		next_level.add_child("store_next_scenario", level_);
-		send_to_server(next_level);
+		mp::send_to_server(next_level);
 	}
 }
 

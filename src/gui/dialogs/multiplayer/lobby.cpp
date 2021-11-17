@@ -852,7 +852,7 @@ void mp_lobby::enter_game(const mp::game_info& game, JOIN_MODE mode)
 		join_data["password"] = password;
 	}
 
-	network_connection_.send_data(response);
+	mp::send_to_server(response);
 	joined_game_id_ = game.id;
 
 	// We're all good. Close lobby and proceed to game!
@@ -889,7 +889,7 @@ void mp_lobby::enter_selected_game(JOIN_MODE mode)
 
 void mp_lobby::refresh_lobby()
 {
-	network_connection_.send_data(config("refresh_lobby"));
+	mp::send_to_server(config("refresh_lobby"));
 }
 
 void mp_lobby::show_help_callback()

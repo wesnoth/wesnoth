@@ -23,6 +23,7 @@
 #include "game_config.hpp"
 #include "game_config_manager.hpp"
 #include "game_initialization/mp_game_utils.hpp"
+#include "game_initialization/multiplayer.hpp"
 #include "gettext.hpp"
 #include "gui/auxiliary/find_widget.hpp"
 #include "gui/core/timer.hpp"
@@ -87,7 +88,7 @@ bool mp_join_game::fetch_game_config()
 {
 	// Ask for the next scenario data, if applicable
 	if(!first_scenario_) {
-		network_connection_.send_data(config("load_next_scenario"));
+		mp::send_to_server(config("load_next_scenario"));
 	}
 
 	bool has_scenario_and_controllers = false;
@@ -324,7 +325,7 @@ bool mp_join_game::show_flg_select(int side_num, bool first_time)
 		// TODO: the host cannot yet handle this and always uses the first side owned by that player.
 		change["side_num"] = side_num;
 
-		network_connection_.send_data(faction);
+		mp::send_to_server(faction);
 	}
 
 	return true;
@@ -573,9 +574,9 @@ void mp_join_game::post_show(window& window)
 
 		mp::ui_alerts::game_has_begun();
 	} else if(observe_game_) {
-		network_connection_.send_data(config("observer_quit", config { "name", preferences::login() }));
+		mp::send_to_server(config("observer_quit", config { "name", preferences::login() }));
 	} else {
-		network_connection_.send_data(config("leave_game"));
+		mp::send_to_server(config("leave_game"));
 	}
 }
 
