@@ -69,7 +69,7 @@ class mp_manager
 public:
 	// Declare this as a friend to allow direct access to enter_create_mode
 	friend void mp::start_local_game();
-	friend void mp::yeet_to_server(const config&);
+	friend void mp::send_to_server(const config&);
 	friend mp::lobby_info* mp::get_lobby_info();
 
 	mp_manager(const std::optional<std::string> host);
@@ -842,7 +842,7 @@ std::string get_profile_link(int user_id)
 	return "";
 }
 
-void yeet_to_server(const config& data)
+void send_to_server(const config& data)
 {
 	if(manager && manager->connection) {
 		manager->connection->send_data(data);

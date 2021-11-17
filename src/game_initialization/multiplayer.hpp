@@ -72,7 +72,7 @@ std::string get_profile_link(int user_id);
 class lobby_info* get_lobby_info();
 
 /** Attempts to send given data to server if a connection is open. */
-void yeet_to_server(const config& data);
+void send_to_server(const config& data);
 
 /** RAII helper class to register a network handler. */
 class network_registrar

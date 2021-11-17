@@ -456,7 +456,7 @@ void chatbox::close_window_button_callback(std::string room_name, bool& handled,
 
 void chatbox::send_to_server(const ::config& cfg)
 {
-	mp::yeet_to_server(cfg);
+	mp::send_to_server(cfg);
 }
 
 void chatbox::increment_waiting_whispers(const std::string& name)
