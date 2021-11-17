@@ -41,7 +41,7 @@ void load_tls_root_certs(boost::asio::ssl::context &ctx)
 	PCCERT_CONTEXT pContext = NULL;
 	while ((pContext = CertEnumCertificatesInStore(hStore, pContext)) != NULL) {
 		X509 *x509 = d2i_X509(NULL,
-			static_cast<const unsigned char **>(&pContext->pbCertEncoded),
+			const_cast<const unsigned char**>(&pContext->pbCertEncoded),
 			pContext->cbCertEncoded);
 		if(x509 != NULL) {
 			X509_STORE_add_cert(store, x509);
