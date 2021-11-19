@@ -80,15 +80,15 @@ if "pot-update" in COMMAND_LINE_TARGETS:
         if cfgs and sources:
             env.Command(new_pot, [source_pot, wml_pot],
                 [
-                    "msgcat --sort-by-file $SOURCES -o $TARGET",
+                    "msgcat --sort-by-file --add-location=file $SOURCES -o $TARGET",
                     Delete(wml_pot),
                     Delete(source_pot)
                 ]
             )
         elif cfgs:
-            env.Command(new_pot, wml_pot, ["msgcat --sort-by-file $SOURCES -o $TARGET", Delete(wml_pot)])
+            env.Command(new_pot, wml_pot, ["msgcat --sort-by-file --add-location=file $SOURCES -o $TARGET", Delete(wml_pot)])
         else:
-            env.Command(new_pot, source_pot, ["msgcat --sort-by-file $SOURCES -o $TARGET", Delete(source_pot)])
+            env.Command(new_pot, source_pot, ["msgcat --sort-by-file --add-location=file $SOURCES -o $TARGET", Delete(source_pot)])
         env.Command(pot, new_pot, Action(update_pot))
 
     env.Alias("pot-update", "../translations", "python3 utils/po_stat.py --update-cfg --textdomains=wesnoth,wesnoth-editor,wesnoth-help,wesnoth-lib,wesnoth-multiplayer,wesnoth-tutorial,wesnoth-units")

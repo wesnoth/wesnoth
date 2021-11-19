@@ -96,6 +96,7 @@ if(ENABLE_POT_UPDATE_TARGET)
 
 			COMMAND ${GETTEXT_MSGCAT_EXECUTABLE}
 				--sort-by-file
+				--add-location=file
 					 ${PROJECT_SOURCE_DIR}/po/${DOMAIN}/${DOMAIN}.cpp.pot
 					 ${PROJECT_SOURCE_DIR}/po/${DOMAIN}/${DOMAIN}.wml.pot
 				--output ${PROJECT_SOURCE_DIR}/po/${DOMAIN}/${DOMAIN}.pot
