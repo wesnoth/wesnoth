@@ -211,6 +211,7 @@ def main():
     # if args.recursive is True and args.filelist is None:
     else:
         startPath, filelist = pywmlx.autof.autoscan(startPath)
+    filelist.sort()
     for fileno, fx in enumerate(filelist):
         fname = os.path.join(startPath, os.path.normpath(fx))
         is_file = os.path.isfile(fname)
