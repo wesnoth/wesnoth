@@ -1,16 +1,17 @@
 /*
-   Copyright (C) 2003 by David White <dave@whitevine.net>
-   Copyright (C) 2005 - 2018 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2005 - 2021
+	by Guillaume Melquiond <guillaume.melquiond@gmail.com>
+	Copyright (C) 2003 by David White <dave@whitevine.net>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 /**
@@ -160,6 +161,17 @@ void preproc_define::write_argument(config_writer& writer, const std::string& ar
 	writer.close_child(key);
 }
 
+void preproc_define::write_argument(config_writer& writer, const std::string& arg, const std::string& default_value) const
+{
+	const std::string key = "argument";
+
+	writer.open_child(key);
+
+	writer.write_key_val("name", arg);
+	writer.write_key_val("default", default_value);
+	writer.close_child(key);
+}
+
 void preproc_define::write(config_writer& writer, const std::string& name) const
 {
 	const std::string key = "preproc_define";
@@ -171,8 +183,20 @@ void preproc_define::write(config_writer& writer, const std::string& name) const
 	writer.write_key_val("linenum", std::to_string(linenum));
 	writer.write_key_val("location", get_location(location));
 
+	if(is_deprecated()) {
+		writer.open_child("deprecated");
+		writer.write_key_val("level", int(*deprecation_level));
+		writer.write_key_val("version", deprecation_version.str());
+		writer.write_key_val("message", deprecation_message);
+		writer.close_child("deprecated");
+	}
+
 	for(const std::string& arg : arguments) {
 		write_argument(writer, arg);
+	}
+
+	for(const auto& [key, default_value] : optional_arguments) {
+		write_argument(writer, key, default_value);
 	}
 
 	writer.close_child(key);
@@ -180,7 +204,11 @@ void preproc_define::write(config_writer& writer, const std::string& name) const
 
 void preproc_define::read_argument(const config& cfg)
 {
-	arguments.push_back(cfg["name"]);
+	if(cfg.has_attribute("default")) {
+		optional_arguments.emplace(cfg["name"], cfg["default"]);
+	} else {
+		arguments.push_back(cfg["name"]);
+	}
 }
 
 void preproc_define::read(const config& cfg)
@@ -189,6 +217,12 @@ void preproc_define::read(const config& cfg)
 	textdomain = cfg["textdomain"].str();
 	linenum = cfg["linenum"];
 	location = cfg["location"].str();
+
+	if(auto deprecated = cfg.optional_child("deprecated")) {
+		deprecation_level = DEP_LEVEL(deprecated.value()["level"].to_int());
+		deprecation_version = deprecated.value()["version"].str();
+		deprecation_message = deprecated.value()["message"].str();
+	}
 
 	for(const config& arg : cfg.child_range("argument")) {
 		read_argument(arg);

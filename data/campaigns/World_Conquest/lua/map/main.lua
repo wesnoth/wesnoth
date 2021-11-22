@@ -1,5 +1,4 @@
 _ = wesnoth.textdomain 'wesnoth-wc'
-helper = wesnoth.require("helper")
 utils = wesnoth.require("wml-utils")
 functional = wesnoth.require("functional")
 wc2_convert = wesnoth.dofile("./../shared_utils/wml_converter.lua")
@@ -76,23 +75,15 @@ function wc_ii_generate_scenario(nplayers, gen_args)
 		variables = {
 			wc2_scenario = scenario_num,
 			wc2_player_count = nplayers,
-			wc2_host_version = "0.8.2"
+			wc2_host_version = "0.8.4"
 		},
 		side = {},
-		id = "WC_II_" .. nplayers .. "p",
-		next_scenario = "WC_II_" .. nplayers .. "p",
+		id = gen_args.id,
+		next_scenario = gen_args.id,
 		description = "WC_II_" .. nplayers .. "p_desc",
 		modify_placing = false,
-		-- does this work
 		turns = scenario_data.turns,
-		experience_modifier = 100,
-		victory_when_enemies_defeated = true,
-		carryover_percentage = 0,
-		carryover_report = false,
-		carryover_add = false,
-		force_lock_settings = true,
 	}
-	table.insert(prestart_event, wml.tag.wc2_choose_difficulty {} )
 
 	-- add [side]s to the [scenario]
 	local enemy_data = scenario_data.get_enemy_data(enemy_stength)

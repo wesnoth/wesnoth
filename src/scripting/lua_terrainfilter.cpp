@@ -1,5 +1,6 @@
 /*
-	Copyright (C) 2018 the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2018 - 2021
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
@@ -346,7 +347,8 @@ public:
 	bool matches(const gamemap_base&, map_location l) override
 	{
 		LOG_MATCHES(x);
-		return l.x >= 0 && l.x < int(filter_.size()) && filter_[l.x];
+		const auto value = l.wml_x();
+		return value >= 0 && value < int(filter_.size()) && filter_[value];
 	}
 	dynamic_bitset filter_;
 };
@@ -366,7 +368,8 @@ public:
 	bool matches(const gamemap_base&, map_location l) override
 	{
 		LOG_MATCHES(y);
-		return l.y >= 0 && l.y < int(filter_.size()) && filter_[l.y];
+		const auto value = l.wml_y();
+		return value >= 0 && value < int(filter_.size()) && filter_[value];
 	}
 
 	dynamic_bitset filter_;

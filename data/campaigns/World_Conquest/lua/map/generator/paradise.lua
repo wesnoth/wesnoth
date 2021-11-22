@@ -54,8 +54,8 @@ local function generate(length, villages, castle, iterations, size, players, isl
 	res.convert = {
 		-- DR_CONVERT MIN_HT MAX_HT MIN_TMP MAX_TMP FROM TO
 		dr_convert(70, 150, 10, 300, "Gg", "Ss"),
-		dr_convert(550, 680, 350, 370, "Gg", "Hh^Uf"),
-		dr_convert(550, 680, 620, 640, "Gg", "Hh^Uf"),
+		dr_convert(550, 680, 350, 370, "Gg", "Hh^Tf"),
+		dr_convert(550, 680, 620, 640, "Gg", "Hh^Tf"),
 
 		-- DR_TEMPERATURE FROM MIN MAX TO),
 		-- convert forest at different temperatures

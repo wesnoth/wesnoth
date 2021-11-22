@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2021-06-23 15:42 UTC\n"
-"PO-Revision-Date: 2021-02-23 21:15+0100\n"
+"PO-Revision-Date: 2021-10-28 21:54+0200\n"
 "Last-Translator: Merijn de Vet <tybonzer@live.nl>\n"
 "Language-Team: Dutch <merijndevet@hotmail.com>\n"
 "Language: nl\n"
@@ -15,20 +15,18 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-Basepath: /home/koan/wesnoth\n"
-"X-Generator: Poedit 2.4.2\n"
+"X-Generator: Poedit 3.0\n"
 
 #. [campaign]: id=Tutorial
 #: data/campaigns/tutorial/_main.cfg:11
 msgid "Battle Training"
-msgstr ""
+msgstr "Gevechtstraining"
 
 #. [difficulty]
 #. [campaign]: id=Tutorial
 #: data/campaigns/tutorial/_main.cfg:14 data/campaigns/tutorial/_main.cfg:30
-#, fuzzy
-#| msgid "Wesnoth Tutorial"
 msgid "Tutorial"
-msgstr "Cursus Wesnoth"
+msgstr "Oefening"
 
 #. [campaign]: id=Tutorial
 #: data/campaigns/tutorial/_main.cfg:21
@@ -36,16 +34,18 @@ msgid ""
 "Learn the basics of Wesnoth gameplay with a tutorial. Recommended for first "
 "time players."
 msgstr ""
+"Ontdek en leer hoe je Wesnoth speelt met deze training. Als je Wesnoth voor "
+"de eerste keer speelt, wordt deze training aangeraden."
 
 #. [difficulty]
 #: data/campaigns/tutorial/_main.cfg:31
 msgid "Beginner"
-msgstr ""
+msgstr "Beginner"
 
 #. [label]
 #: data/campaigns/tutorial/gui/character_selection.cfg:21
 msgid "Select Character"
-msgstr "Selecteer Karakter"
+msgstr "Selecteer Personage"
 
 #. [label]
 #: data/campaigns/tutorial/gui/character_selection.cfg:32
@@ -76,7 +76,7 @@ msgstr "Li’sar"
 #. or https://discord.gg/battleforwesnoth.
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:9
 msgid "Wesnoth Tutorial — Part I"
-msgstr "Wesnoth Uitleg - Deel 1"
+msgstr "Gevechtstraining - Deel 1"
 
 #. [side]: type=Fighter, id=student
 #. [side]
@@ -84,7 +84,7 @@ msgstr "Wesnoth Uitleg - Deel 1"
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:26
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:104
 msgid "team_name^Student"
-msgstr "Leerling"
+msgstr "team_name^Leerling"
 
 #. [unit]: id=Delfador, type=Elder Mage
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:75
@@ -101,10 +101,10 @@ msgid ""
 "• <small>Recruiting</small>"
 msgstr ""
 "Je zal de basisprincipes leren van:\n"
-"<small>Verplaatsen</small>\n"
-"<small>Aanvallen</small>\n"
-"<small>Genezen</small>\n"
-"<small>Rekruteren</small>"
+"• <small>Verplaatsen</small>\n"
+"• <small>Aanvallen</small>\n"
+"• <small>Genezen</small>\n"
+"• <small>Rekruteren</small>"
 
 #. [objective]: condition=win
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:125
@@ -118,15 +118,10 @@ msgstr "Zelf doodgaan"
 
 #. [disallow_end_turn]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:137
-#, fuzzy
-#| msgid ""
-#| "You cannot end your turn until you have recruited troops and captured a "
-#| "village!"
 msgid ""
 "You cannot end your turn until you have completed the lesson on movement!"
 msgstr ""
-"Je kunt je beurt niet beëindigen tot je eenheden hebt gerekruteerd en een "
-"dorp hebt veroverd!"
+"Je kunt je beurt pas beëindigen als je de les over verplaatsen hebt afgerond!"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:146
@@ -143,8 +138,8 @@ msgid ""
 "Part 1 will teach you the basics about movement, attacking, healing, and "
 "recruiting. Firstly, you’ll choose a hero (both heroes play the same)."
 msgstr ""
-"Dit is een tweedelige uitleg bedoeld voor mensen die nieuw zijn in het spel. "
-"Deel 1 leert je de basis over het verplaatsen, aanvallen, genezen en "
+"Dit is een tweedelige oefening bedoeld voor mensen die nieuw zijn in het "
+"spel. In deel 1 leer je de basis over het verplaatsen, aanvallen, genezen en "
 "rekruteren van eenheden. Om te beginnen kies je een held (beide helden "
 "spelen hetzelfde)."
 
@@ -189,7 +184,7 @@ msgstr "Klik op Li'sar"
 msgid "To undo your last move, press <b>u</b> or use the right-click menu."
 msgstr ""
 "Als je je laatste zet ongedaan wilt maken, druk je op <b>u</b> of gebruik je "
-"het snelmenu (rechtermuisknop)."
+"het snel-menu (rechtermuisknop)."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:360
@@ -207,14 +202,14 @@ msgid ""
 "simply click on Konrad and then your destination. (You can press <b>u</b> to "
 "undo a move if you move to the wrong place.)"
 msgstr ""
-"Wanneer u de muisaanwijzer over een eenheid beweegt of er een selecteert, in "
-"dit geval Konrad, worden de vakken waarnaar hij kan verplaatsen gemarkeerd. "
-"Alle eenheden hebben een bepaald aantal <i>verplaatsingspunten</i>, die "
-"bepalen hoeveel vakken de eenheid kan verplaatsen per beurt. Normaal "
+"Wanneer je de muisaanwijzer over een eenheid beweegt of er een selecteert, "
+"in dit geval Konrad, worden de vakken waarnaar hij kan verplaatsen "
+"gemarkeerd. Alle eenheden hebben een bepaald aantal <i>verplaatsingspunten</"
+"i>, die bepalen hoeveel vakken de eenheid kan verplaatsen per beurt. Meestal "
 "gebruikt het verplaatsen op vlak terrein één verplaatsingspunt. Om te "
-"verplaatsen, klik je eenvoudig op Konrad en vervolgens op de bestemming. (Je "
-"kan op <b>u</b> drukken om een verplaatsing ongedaan te maken als je naar de "
-"verkeerde plaats gaat.)"
+"verplaatsen, klik je op Konrad en vervolgens op de bestemming. (Je kan op "
+"<b>u</b> drukken om een verplaatsing ongedaan te maken als je naar de "
+"verkeerde plaats bent gegaan.)"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:370
@@ -229,7 +224,7 @@ msgstr ""
 "Wanneer u de muisaanwijzer over een eenheid beweegt of er een selecteert, in "
 "dit geval Li'sar, worden de vakken waarnaar zij kan verplaatsen gemarkeerd. "
 "Alle eenheden hebben een bepaald aantal <i>verplaatsingspunten</i>, die "
-"bepalen hoeveel vakken de eenheid kan verplaatsen per beurt. Normaal "
+"bepalen hoeveel vakken de eenheid kan verplaatsen per beurt. Meestal "
 "gebruikt het verplaatsen op vlak terrein een verplaatsingspunt. Om te "
 "verplaatsen, klik je op Li'sar en vervolgens op de bestemming. (Je kan op "
 "<b>u</b> drukken om een verplaatsing ongedaan te maken als je naar de "
@@ -253,7 +248,7 @@ msgstr "Goedemorgen Delfador! Kunnen we iets gaan aanvallen?"
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:401
 msgid "female^Good morning, Delfador! Is it time to attack things?"
-msgstr "Goedemorgen Delfador! Kunnen we iets gaan aanvallen?"
+msgstr "female^Goedemorgen Delfador! Kunnen we iets gaan aanvallen?"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:406
@@ -268,12 +263,12 @@ msgstr "Mag ik eindelijk tegen een ork vechten? Of een trol?"
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:412
 msgid "female^Have you found an orc for me to fight, huh? A troll?"
-msgstr "Mag ik eindelijk tegen een ork vechten? Of een trol?"
+msgstr "female^Mag ik eindelijk tegen een ork vechten? Of een trol?"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:417
 msgid "Quiet! I will summon an enemy for you..."
-msgstr "Stil! Ik zal een vijand voor je oproepen..."
+msgstr "Stilte! Ik zal een vijand voor je oproepen..."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:489
@@ -288,7 +283,7 @@ msgstr "Een stropop? Je wilt me tegen een pop laten vechten?"
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:495
 msgid "female^A quintain? You want me to fight a dummy?"
-msgstr "Een stropop? Je wilt me tegen een pop laten vechten?"
+msgstr "female^Een stropop? Je wilt me tegen een pop laten vechten?"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:501
@@ -296,8 +291,8 @@ msgid ""
 "Young man, you have $student_hp hitpoints and a sword. I’m fairly sure "
 "you’ll win."
 msgstr ""
-"Jongeman, je hebt $student_hp hitpoints en een zwaard. Ik ben er vrij zeker "
-"van dat je zult winnen."
+"Jongeman, je hebt $student_hp levenspunten en een zwaard. Ik ben er vrij "
+"zeker van dat je zult winnen."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:506
@@ -305,8 +300,8 @@ msgid ""
 "female^Young lady, you have $student_hp hitpoints and a sword. I’m fairly "
 "sure you’ll win."
 msgstr ""
-"Jongedame, je hebt $student_hp hitpoints en een zwaard. Ik ben er vrij zeker "
-"van dat je het wel zult winnen."
+"female^Jongedame, je hebt $student_hp levenspunten en een zwaard. Ik ben er "
+"vrij zeker van dat je het wel zult winnen."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:513
@@ -323,8 +318,8 @@ msgid ""
 msgstr ""
 "Om de stropop aan te vallen, selecteer je eerst de aanvaller (Konrad) en dan "
 "het doelwit (de stropop). Je krijgt dan een venster met de "
-"aanvalsbeschrijving te zien. Klik op <b>Aanvallen</b> wanneer je er klaar "
-"voor bent."
+"aanvalsbeschrijving te zien. Klik in de aanvalsbeschijving op <b>Aanvallen</"
+"b> wanneer je er klaar voor bent."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:522
@@ -335,19 +330,13 @@ msgid ""
 msgstr ""
 "Om de stropop aan te vallen, selecteer je eerst de aanvaller (Li'sar) en dan "
 "het doelwit (de stropop). Je krijgt dan een venster met de "
-"aanvalsbeschrijving te zien. Klik op <b>Aanvallen</b> wanneer je er klaar "
-"voor bent."
+"aanvalsbeschrijving te zien. Klik in de aanvalsbeschrijving op <b>Aanvallen</"
+"b> wanneer je er klaar voor bent."
 
 #. [disallow_end_turn]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:527
-#, fuzzy
-#| msgid ""
-#| "You cannot end your turn until you have recruited troops and captured a "
-#| "village!"
 msgid "You cannot end your turn until you have attacked the dummy!"
-msgstr ""
-"Je kunt je beurt niet beëindigen tot je eenheden hebt gerekruteerd en een "
-"dorp hebt veroverd!"
+msgstr "Je kunt je beurt pas beëindigen als je de pop hebt aangevallen!"
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:541
@@ -357,7 +346,7 @@ msgstr "Hé! Deze stropop vecht terug!"
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:546
 msgid "Hmm, perhaps we should have started with a doll."
-msgstr "Hmm, misschien hadden we met een kleinere pop moeten beginnen."
+msgstr "Hmm, misschien hadden we met een iets kleinere pop moeten beginnen."
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:551
@@ -367,7 +356,7 @@ msgstr "Moet ik me terugtrekken?"
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:552
 msgid "female^Should I retreat?"
-msgstr "Moet ik me terugtrekken?"
+msgstr "female^Moet ik me terugtrekken?"
 
 #. [message]: speaker=Galdrad
 #. [message]: speaker=Delfador
@@ -402,7 +391,7 @@ msgid ""
 msgstr ""
 "De kleine gouden kroon boven je leider (Li'sar) geeft aan dat zij een leider "
 "is. In de meeste scenario's verlies je als je leider wordt vermoord. Zorg "
-"ervoor dat ze veilig is!"
+"ervoor dat zij veilig is!"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:599
@@ -416,7 +405,7 @@ msgstr ""
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:604
 msgid "The <i>dummy</i> gets a turn?"
-msgstr "De <i>pop</i> krijgt een beurt?"
+msgstr "De <i>stropop</i> krijgt een beurt?"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:609
@@ -426,8 +415,8 @@ msgid ""
 "$($student_hp-15) hitpoints. Brace yourself!"
 msgstr ""
 "Ja. Het is een magische stropop! Als het je raakt doet het 3 schade, en het "
-"heeft 5 kansen. Als de stropop je elke keer raakt, zak je van $student_hp to "
-"$($student_hp-15) levenspunten (HP). Zet je schrap!"
+"heeft 5 kansen. Als de stropop je elke keer raakt, zak je van $student_hp "
+"naar $($student_hp-15) levenspunten (LP). Zet je schrap!"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:616
@@ -446,8 +435,8 @@ msgid ""
 "of the screen."
 msgstr ""
 "Elke beurt krijgt ieder team in een scenario de kans om een zet te doen. "
-"Zodra je alles hebt voltooid dat je deze beurt wilt doen, klik je op de knop "
-"<b>Einde Beurt</b> rechtsonder in het scherm. De andere teams, of ze nu "
+"Zodra je alles dat je deze beurt wilt doen hebt voltooid, klik je op de knop "
+"<b>Beëindig Beurt</b> rechtsonder in het scherm. De andere teams, of ze nu "
 "bestuurd worden door de computer of andere menselijke spelers, zullen dan "
 "hun zet doen. Sommige scenario's moeten in een bepaald aantal beurten worden "
 "voltooid. Je kunt zien welke beurt het is, en eventueel de beurtlimit die "
@@ -464,25 +453,20 @@ msgstr "Beëindig je beurt"
 
 #. [disallow_end_turn]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:631
-#, fuzzy
-#| msgid ""
-#| "You cannot end your turn until you have recruited troops and captured a "
-#| "village!"
 msgid ""
 "You cannot end your turn until you have completed the lesson on healing!"
 msgstr ""
-"Je kunt je beurt niet beëindigen tot je eenheden hebt gerekruteerd en een "
-"dorp hebt veroverd!"
+"Je kunt je beurt pas beëindigen als je de les over genezen hebt afgerond!"
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:642
 msgid "Ouch! I need to heal! Only $student_hp hitpoints left!"
-msgstr "Oef! Ik moet genezen! Slechts $student_hp HP over!"
+msgstr "Oef! Ik moet genezen! Slechts $student_hp levenspunten over!"
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:643
 msgid "female^Ouch! I need to heal! Only $student_hp hitpoints left!"
-msgstr "Oef! Ik moet genezen! Slechts $student_hp HP over!"
+msgstr "female^Oef! Ik moet genezen! Slechts $student_hp levenspunten over!"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:648
@@ -529,15 +513,10 @@ msgstr ""
 
 #. [disallow_end_turn]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:698
-#, fuzzy
-#| msgid ""
-#| "You cannot end your turn until you have recruited troops and captured a "
-#| "village!"
 msgid ""
 "You cannot end your turn until you have completed the lesson on recruiting!"
 msgstr ""
-"Je kunt je beurt niet beëindigen tot je eenheden hebt gerekruteerd en een "
-"dorp hebt veroverd!"
+"Je kunt de beurt pas beëindigen als je de les over rekruteren hebt afgerond!"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:707
@@ -548,9 +527,9 @@ msgid ""
 "hitpoints."
 msgstr ""
 "Omdat je je beurt begon op een dorp, ben je een beetje genezen! Dorpen "
-"genezen 8 levenspunten (HP) per beurt, of genoeg om volledig gezond te "
+"genezen 8 levenspunten (LP) per beurt, of genoeg om volledig gezond te "
 "worden, afhankelijk van wat het minst is. In jouw geval ben je "
-"$student_hp_heal_amount HP genezen."
+"$student_hp_heal_amount LP genezen."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:712
@@ -565,7 +544,7 @@ msgstr "Ik zal wat elfen rekruteren!"
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:718
 msgid "female^I’ll recruit some elves!"
-msgstr "Ik zal wat elfen rekruteren!"
+msgstr "female^Ik zal wat elfen rekruteren!"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:723
@@ -577,7 +556,7 @@ msgstr ""
 "Een uitstekend idee! Het is waarschijnlijk beter om de stropop deze beurt "
 "niet aan te vallen. In plaats daarvan zou je terug moeten keren naar de "
 "donjon waar je twee eenheden kunt rekruteren; je hebt er meer dan genoeg "
-"goud voor."
+"goudstukken voor."
 
 #. [label]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:728
@@ -644,22 +623,17 @@ msgstr ""
 
 #. [disallow_end_turn]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:830
-#, fuzzy
-#| msgid ""
-#| "You cannot end your turn until you have recruited troops and captured a "
-#| "village!"
 msgid ""
 "You cannot end your turn until you have completed the lesson on attacking!"
 msgstr ""
-"Je kunt je beurt niet beëindigen tot je eenheden hebt gerekruteerd en een "
-"dorp hebt veroverd!"
+"Je kunt je beurt pas beëindigen als je de les over aanvallen hebt afgerond!"
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:839
 msgid ""
 "Hey, the quintain just healed 2 hitpoints! I’d better attack it at once!"
 msgstr ""
-"Hé, de stropop is zomaar 2 levenspunten (HP) genezen! Ik kan maar beter "
+"Hé, de stropop is opeens 2 levenspunten (LP) genezen! Ik kan maar beter "
 "meteen aanvallen!"
 
 #. [message]: speaker=student
@@ -668,8 +642,8 @@ msgid ""
 "female^Hey, the quintain just healed 2 hitpoints! I’d better attack it at "
 "once!"
 msgstr ""
-"Hé, de stropop is zomaar 2 levenspunten (HP) genezen! Ik kan maar beter "
-"meteen aanvallen!"
+"female^Hé, de stropop is opeens 2 levenspunten (LP) genezen! Ik kan maar "
+"beter meteen aanvallen!"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:845
@@ -694,7 +668,8 @@ msgstr "Ik zal ze de aanval laten gebruiken die de meeste schade toebrengt!"
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:856
 msgid "female^I’ll tell them to use the one that does more damage!"
-msgstr "Ik zal ze de aanval laten gebruiken die de meeste schade toebrengt!"
+msgstr ""
+"female^Ik zal ze de aanval laten gebruiken die de meeste schade toebrengt!"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:861
@@ -726,23 +701,17 @@ msgstr ""
 #. [message]: speaker=Delfador
 #. a strong elf, so +1 damage
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:918
-#, fuzzy
-#| msgid ""
-#| "Your elf used a sword (5×4; or 5 damage on each hit, with 4 attacks), "
-#| "which is a <i>melee</i> attack. The quintain defended with its melee "
-#| "attack (3×5; or 3 damage on each hit, with 5 attacks). The ranged attack "
-#| "(the bow) would have been safer."
 msgid ""
 "Your elf used a sword (6×4; or 6 damage on each hit, with 4 attacks), which "
 "is a <i>melee</i> attack. The quintain defended with its melee attack (3×5; "
 "or 3 damage on each hit, with 5 attacks). The ranged attack (the bow) would "
 "have been safer."
 msgstr ""
-"Je elf heeft aangevallen met een zwaard (5x4, oftewel 5 schade wanneer je "
-"raakt, met 4 kansen), een wapen dat van <i>dichtbij</i> gebruikt wordt, en "
-"dus heeft de stropop kunnen verdedigen met zijn eigen wapen voor dichtbij-"
-"aanvallen (3x5; oftewel 3 schade wanneer hij raakt, met 5 kansen). De aanval "
-"op afstand (de pijl en boog) was veiliger geweest."
+"Je elf heeft aangevallen met een zwaard (6x4, oftewel 6 schade wanneer je "
+"raakt, met 4 kansen om te raken), een wapen dat van <i>dichtbij</i> gebruikt "
+"wordt, en dus heeft de stropop kunnen verdedigen met zijn eigen wapen voor "
+"dichtbij-aanvallen (3x5; oftewel 3 schade wanneer hij raakt, met 5 kansen om "
+"te raken). De aanval op afstand (de pijl en boog) was veiliger geweest."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:922
@@ -750,6 +719,9 @@ msgid ""
 "Elvish Fighters normally do 5×4 damage with their swords, but this elf has "
 "the <i>strong</i> trait, which increases the damage output of melee attacks."
 msgstr ""
+"Normaal doen Elfenkrijgers maar 5x4 schade met hun zwaarden, maar deze Elf "
+"heeft de <i>sterk</i> eigenschap, waarmee de schade van aanvallen van "
+"dichtbij wordt verhoogd."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:928
@@ -768,18 +740,13 @@ msgstr ""
 #. [message]: speaker=Delfador
 #. a dextrous elf, so +1 damage
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:949
-#, fuzzy
-#| msgid ""
-#| "Your elf used a bow, which is a <i>ranged</i> attack (3×3; or 3 damage on "
-#| "each hit, with 3 attacks). The quintain has no ranged attack, only a "
-#| "melee attack, so it could not defend itself."
 msgid ""
 "Your elf used a bow, which is a <i>ranged</i> attack (4×3; or 4 damage on "
 "each hit, with 3 attacks). The quintain has no ranged attack, only a melee "
 "attack, so it could not defend itself."
 msgstr ""
-"Je elf viel aan met de pijl en boog, een aanval op <i>afstand</i> (3x3; "
-"oftewel 3 schade wanneer je raakt, met 3 kansen). De stropop heeft geen "
+"Je elf viel aan met de pijl en boog, een aanval op <i>afstand</i> (4x3; "
+"oftewel 4 schade wanneer je raakt, met 3 kansen). De stropop heeft geen "
 "wapen waarmee hij kan aanvallen op afstand, alleen van dichtbij, daarom "
 "heeft hij zich niet kunnen verdedigen."
 
@@ -789,6 +756,9 @@ msgid ""
 "Elvish Fighters normally do 3×3 damage with their bows, but this elf has the "
 "<i>dextrous</i> trait, which increases the damage output of ranged attacks."
 msgstr ""
+"Normaal doen Elfenkrijgers maar 3x3 schade met hun zwaarden, maar deze Elf "
+"heeft de <i>behendig</i> eigenschap, waarmee de schade van aanvallen van "
+"afstand wordt verhoogd."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:959
@@ -815,7 +785,7 @@ msgstr "Misschien moet je nog een elf rekruteren?"
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1001
 msgid "Unit Descriptions"
-msgstr "Eenheidsbeschrijvingen"
+msgstr "Eenheid Beschrijvingen"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1003
@@ -839,7 +809,7 @@ msgid ""
 msgstr ""
 "Denk eraan gewonde eenheden terug te trekken in dorpen, en er wanneer nodig "
 "meer te rekruteren. Zorg goed voor eenheden met veel <i>ervaringspunten "
-"(XP)</i> zodat ze een hogere rang kunnen bereiken en krachtiger worden."
+"(EP)</i> zodat ze een hogere rang kunnen bereiken en krachtiger worden."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1025
@@ -874,7 +844,7 @@ msgid ""
 "choose which one you want. However, second level units cost twice as much to "
 "support as first level units."
 msgstr ""
-"Zodra een eenheid genoeg ervaringspunten (XP) heeft (de <i>ervaringsbalk</"
+"Zodra een eenheid genoeg ervaringspunten (EP) heeft (de <i>ervaringsbalk</"
 "i>, wanneer aanwezig, is <b>rechts</b> van de <i>levenspuntenbalk</i>), "
 "promoveert hij tot een hogere rang. Bij Elfenkrijgers krijg je de keuze uit "
 "twee promotie mogelijkheden, je kan zelf kiezen welke je wilt. Let er wel op "
@@ -913,7 +883,7 @@ msgstr "Agh! Deze training is te veel voor mij..."
 #. [message]: speaker=unit
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1075
 msgid "female^Agh! This training is too much for me..."
-msgstr "Agh! Deze training is te veel voor mij..."
+msgstr "female^Agh! Deze training is te veel voor mij..."
 
 #. [message]: speaker=second_unit
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1111
@@ -967,8 +937,8 @@ msgid ""
 "Well, I think I know the basics. Onwards! Maybe I can fight in a real battle "
 "next?"
 msgstr ""
-"Nou, ik denk dat ik genoeg basiskennis heb. Voorwaarts! Misschien zou ik in "
-"een echte strijd mee kunnen vechten?"
+"Nou, ik denk dat ik genoeg basiskennis heb. Laten we gaan! Misschien zou ik "
+"in een echte strijd mee kunnen vechten?"
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1215
@@ -976,8 +946,8 @@ msgid ""
 "female^Well, I think I know the basics. Onwards! Maybe I can fight in a real "
 "battle next?"
 msgstr ""
-"Nou, ik denk dat ik genoeg basiskennis heb. Voorwaarts! Misschien zou ik in "
-"een echte strijd mee kunnen vechten?"
+"female^Nou, ik denk dat ik genoeg basiskennis heb. Laten we gaan! Misschien "
+"zou ik in een echte strijd mee kunnen vechten?"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1231
@@ -1002,12 +972,12 @@ msgstr ""
 #. [scenario]: id=2_Tutorial
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:5
 msgid "Wesnoth Tutorial — Part II"
-msgstr "Wesnoth Uitleg - Deel 2"
+msgstr "Gevechtstraining - Deel 2"
 
 #. [side]: type=Orcish Warrior, id=Thrag
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:43
 msgid "team_name^Orcs"
-msgstr "Orks"
+msgstr "team_name^Orks"
 
 #. [side]: type=Orcish Warrior, id=Thrag
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:47
@@ -1027,7 +997,7 @@ msgstr "Ik hoop dat ik me straks kan terugtrekken!"
 #. [event]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:125
 msgid "One lucky attack by an Orcish Grunt, and I’m done for!"
-msgstr "Eén rake klap van een Orkgrommer en ik ben er geweest!"
+msgstr "Één rake klap van een Orkgrommer en ik ben er geweest!"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:126
@@ -1044,25 +1014,25 @@ msgstr ""
 #. [event]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:128
 msgid "female^I hope I have a chance to retreat after this!"
-msgstr "Ik hoop dat ik me straks kan terugtrekken!"
+msgstr "female^Ik hoop dat ik me straks kan terugtrekken!"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:129
 msgid "female^One lucky attack by an Orcish Grunt, and I’m done for!"
-msgstr "Eén rake klap van een Orkgrommer en ik ben er geweest!"
+msgstr "female^Eén rake klap van een Orkgrommer en ik ben er geweest!"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:130
 msgid "female^I could make use of some healing in a village."
-msgstr "Ik zou wel een dorp kunnen gebruiken om in te genezen."
+msgstr "female^Ik zou wel een dorp kunnen gebruiken om in te genezen."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:131
 msgid ""
 "female^I had better retreat, before I get caught out with such low health!"
 msgstr ""
-"Ik kan me maar beter terugtrekken, voordat ik gepakt wordt met zo weinig "
-"levenspunten!"
+"female^Ik kan me maar beter terugtrekken, voordat ik gepakt wordt met zo "
+"weinig levenspunten!"
 
 #. [objective]: condition=win
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:136
@@ -1120,8 +1090,8 @@ msgid ""
 "female^Ho, Galdrad! Has Delfador conjured something else to beat me with? A "
 "flock of scarecrows, perhaps?"
 msgstr ""
-"Hé, Galdrad! Heeft Delfador iets anders betoverd wat me kan slaan? Een zwerm "
-"vogelverschrikkers misschien?"
+"female^Hé, Galdrad! Heeft Delfador iets anders betoverd wat me kan slaan? "
+"Een zwerm vogelverschrikkers misschien?"
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:210
@@ -1132,7 +1102,7 @@ msgid ""
 "will advise you."
 msgstr ""
 "Dit is geen spel, Konrad! Orks zijn aan het bivakkeren aan de andere kant "
-"van de rivier. Dit is Elvenland, het zijn dwazen om hier heen te komen. Wij "
+"van de rivier. Dit is elfenland, het zijn dwazen om hier heen te komen. Wij "
 "Elfen zijn snel en moeilijk te raken in de bossen. Je moet hun leider "
 "verslaan, zodat ze ons nooit meer bedreigen. Ik zal je adviseren."
 
@@ -1145,7 +1115,7 @@ msgid ""
 "will advise you."
 msgstr ""
 "Dit is geen spel, Li'sar! Orks zijn aan het bivakkeren aan de andere kant "
-"van de rivier. Dit is Elvenland, het zijn dwazen om hier heen te komen. Wij "
+"van de rivier. Dit is elfenland, het zijn dwazen om hier heen te komen. Wij "
 "Elfen zijn snel en moeilijk te raken in de bossen. Je moet hun leider "
 "verslaan, zodat ze ons nooit meer bedreigen. Ik zal je adviseren."
 
@@ -1157,7 +1127,7 @@ msgstr "Wat moet ik doen?"
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:222
 msgid "female^What should I do?"
-msgstr "Wat moet ik doen?"
+msgstr "female^Wat moet ik doen?"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:225
@@ -1211,7 +1181,7 @@ msgstr "Laten we gaan! Aanvallen!"
 #. The "us" in "let's" refers to Galdrad and Li'sar.
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:237
 msgid "female^Let’s go! Attack!"
-msgstr "Laten we gaan! Aanvallen!"
+msgstr "female^Laten we gaan! Aanvallen!"
 
 #. [message]: speaker=Galdrad
 #. Addressing Konrad
@@ -1230,8 +1200,8 @@ msgid ""
 "female^Hang on! You need to gather your forces. Or do you intend to fight "
 "the orcs single-handedly?"
 msgstr ""
-"Wacht even! Je moet eerst wat strijders verzamelen. Of ben je van plan om de "
-"Orks in je eentje te verslaan?"
+"female^Wacht even! Je moet eerst wat strijders verzamelen. Of ben je van "
+"plan om de Orks in je eentje te verslaan?"
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:264
@@ -1302,9 +1272,9 @@ msgid ""
 "fighters, and a shaman."
 msgstr ""
 "Je hebt ook twee nieuwe soorten eenheden om te rekruteren in dit scenario: "
-"Elfenboogschutters en Elfensjamaans. Ik zal je meer over ze vertellen als je "
+"Elfenboogschutters en Elfensjamanen. Ik zal je meer over ze vertellen als je "
 "ze rekruteert. Persoonlijk raad ik een evenwichtige strijdkracht aan van "
-"twee boogschutters, twee krijgers, en een sjamaan."
+"twee boogschutters, twee krijgers, en één sjamaan."
 
 #. [event]
 #. [on_undo]
@@ -1351,19 +1321,19 @@ msgid ""
 "section of the help (default hotkey: <b>F1</b>)."
 msgstr ""
 "Een het begin van een beurt, zullen eenheden die aan een Sjamaan grenzen, 4 "
-"levenspunten genezen, dat is enkel de helft als een dorp aan genezing biedt. "
+"levenspunten genezen, dat is enkel de helft dat een dorp aan genezing biedt. "
 "De Sjamaan krijgt geen ervaring als ze geneest, enkel als ze vecht. Het is "
 "wel aan te raden de Sjamaan door middel van ervaring te laten promoveren — "
-"haar tweede niveau, Elvendruïde, heeft dezelfde geneeskrachten als een "
-"dorp.\n"
+"haar tweede niveau, Elvendruïde, heeft namelijk dezelfde geneeskrachten als "
+"een dorp.\n"
 "\n"
-"Een gedetailleerde uitleg van het genezen van eenheden is te vinden in het "
+"Een gedetailleerde uitleg over het genezen van eenheden is te vinden in het "
 "<i>Gameplay</i> gedeelte van het help-menu (standaard sneltoets: <b>F1</b>)."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:331
 msgid "Weapon Specials"
-msgstr "Wapenspecialiteiten"
+msgstr "Wapen Specialiteiten"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:333
@@ -1378,7 +1348,7 @@ msgid ""
 "A full list of abilities and weapons specials, along with traits, may be "
 "found in the help (default hotkey: <b>F1</b>)."
 msgstr ""
-"Wapenspecialiteiten zijn speciale aanpassingen die bepaalde aanvallen "
+"Wapen specialiteiten zijn speciale aanpassingen die bepaalde aanvallen "
 "krachtiger maken. In dit geval, heeft de Sjamaan de Vertraagt specialiteit "
 "bij haar verstrikking aanval. Wanneer deze aanval op een vijand wordt "
 "gebruikt halveert het de schade die ze voor één beurt maken. Andere "
@@ -1472,7 +1442,7 @@ msgid ""
 "units to take less damage overall when your enemy counterattacks."
 msgstr ""
 "In tegenstelling tot de Elfenkrijger, die sterke aanvallen van dichtbij "
-"heeft, heeft de Elfenboogschutter sterke aanvallen voor op afstand. Het is "
+"heeft, heeft de Elfenboogschutter sterke aanvallen vanaf een afstand. Het is "
 "verstandig om vijandelijke eenheden die sterk van dichtbij zijn aan te "
 "vallen met sterke aanvallen op afstand, en omgekeerd. Hierdoor lopen je "
 "eenheden minder schade in een gevecht met de vijand."
@@ -1595,7 +1565,7 @@ msgid ""
 "Now, young lady, it is time to discuss strategy. Your units are ready to "
 "attack, and the orcish leader has begun gathering his own troops."
 msgstr ""
-"En nu, jonge dame, is het tijd om over strategie te praten. Je eenheden zijn "
+"En nu, jongedame, is het tijd om over strategie te praten. Je eenheden zijn "
 "klaar om aan te vallen en de Orkleider is begonnen met het verzamelen van "
 "zijn troepen."
 
@@ -1605,7 +1575,7 @@ msgid ""
 "Galdrad, if I go by the ford, I could sneak up near his keep and dispatch "
 "him quickly."
 msgstr ""
-"Galdrad, als ik via het ondiepe water gaat, kan ik stiekem in de buurt van "
+"Galdrad, als ik via het ondiepe water ga, kan ik stiekem in de buurt van "
 "zijn donjon komen en hem snel verslaan."
 
 #. [message]: speaker=student
@@ -1614,8 +1584,8 @@ msgid ""
 "female^Galdrad, if I go by the ford, I could sneak up near his keep and "
 "dispatch him quickly."
 msgstr ""
-"Galdrad, als ik via het ondiepe water gaat, kan ik stiekem in de buurt van "
-"zijn donjon komen en hem snel verslaan."
+"female^Galdrad, als ik via het ondiepe water ga, kan ik stiekem in de buurt "
+"van zijn donjon komen en haar snel verslaan."
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:604
@@ -1660,8 +1630,8 @@ msgid ""
 "female^Alright. The bridge it is, then, but I’ll be careful about the "
 "crossing."
 msgstr ""
-"Goed dan. Het wordt de brug, maar ik zal de ondiepe oversteek in de gaten "
-"houden."
+"female^Goed dan. Het wordt de brug, maar ik zal de ondiepe oversteek in de "
+"gaten houden."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:618
@@ -1676,9 +1646,9 @@ msgstr ""
 "Die Orkgrommer blokkeert nog steeds de weg. Hij heeft geen aanvallen voor op "
 "afstand dus je boogschutters moeten in staat zijn hem aan te vallen zonder "
 "risico. Helaas kunnen jouw eenheden hem deze beurt niet bereiken, maar je "
-"moet ze niet laten wegkwijnen! Verplaats ze op zo'n manier dat ze de "
-"volgende beurt aan kunnen vallen. Er zijn ook nog meer dorpen aan deze kant "
-"van de rivier. Je zou ze veilig moeten stellen voor hun inkomen en genezing."
+"moet ze niet laten vervelen! Verplaats ze op zo'n manier dat ze de volgende "
+"beurt aan kunnen vallen. Er zijn ook nog meer dorpen aan deze kant van de "
+"rivier. Je zou ze veilig moeten stellen voor hun inkomen en genezing."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:622
@@ -1710,8 +1680,8 @@ msgid ""
 "female^I think I’ll stick around the keep for now, in order to recruit more "
 "units."
 msgstr ""
-"Ik denk dat ik voorlopig in de buurt van de donjon blijf om meer eenheden te "
-"kunnen rekruteren."
+"female^Ik denk dat ik voorlopig in de buurt van de donjon blijf om meer "
+"eenheden te kunnen rekruteren."
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:636
@@ -1724,7 +1694,7 @@ msgstr ""
 "Je leert snel, Konrad. Het is inderdaad een goed idee om je leider veilig en "
 "beschermd binnen het bereik van je donjon te houden aan het begin van het "
 "spel. De strijd kan makkelijk omslaan en je wil niet dat je afgesneden raakt "
-"van donjon en geen versterkingen kan rekruteren."
+"van je donjon en geen versterkingen kan rekruteren."
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:641
@@ -1737,7 +1707,7 @@ msgstr ""
 "Je leert snel, Li'sar. Het is inderdaad een goed idee om je leider veilig en "
 "beschermd binnen het bereik van je donjon te houden aan het begin van het "
 "spel. De strijd kan makkelijk omslaan en je wil niet dat je afgesneden raakt "
-"van donjon en geen versterkingen kan rekruteren."
+"van je donjon en geen versterkingen kan rekruteren."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:711
@@ -1774,7 +1744,7 @@ msgid ""
 msgstr ""
 "Je kunt het bereik van de vijand zien door met de muis over de vijand te "
 "bewegen. Je kunt ook in één oogopslag het bereik van alle vijanden zien door "
-"<b>Laat Bereik Vijanden Zien</b> in het <b>Acties</b>-menu te kiezen."
+"<b>Toon Bereik Vijanden</b> in het <b>Acties</b>-menu te kiezen."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:731
@@ -1790,7 +1760,7 @@ msgstr "Kunnen we niet gewoon om de orks heen bewegen?"
 #. "we" refers to Li'sar, Galdrad, and the mixed-gender troops
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:738
 msgid "female^Can’t we just move around the orcs?"
-msgstr "Kunnen we niet gewoon om de orks heen bewegen?"
+msgstr "female^Kunnen we niet gewoon om de orks heen bewegen?"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:751
@@ -1800,9 +1770,9 @@ msgid ""
 "without wading slowly through the water, you’ll have to kill the Grunt."
 msgstr ""
 "Nee, zodra je naast een vijandelijke eenheid komt te staan, sta je in zijn "
-"<b>Controlegebied</b> (Zone of Control = ZoC) en kun je die beurt niet "
-"verder bewegen. Om op het eiland te komen zonder langzaam door het water te "
-"moeten zou je de Orkgrommer moeten doden."
+"<b>Controlegebied</b> en kun je die beurt niet verder bewegen. Om op het "
+"eiland te komen zonder langzaam door het water te moeten zou je de "
+"Orkgrommer moeten doden."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:755
@@ -1845,7 +1815,7 @@ msgid ""
 "at the beginning of the next turn."
 msgstr ""
 "Als een van je Sjamanen net achter je staat, zal ze zorgen dat je 4 "
-"levenspunten (HP) geneest aan het begin van de volgende beurt."
+"levenspunten (LP) geneest aan het begin van de volgende beurt."
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:789
@@ -1855,7 +1825,7 @@ msgid ""
 "closer for next turn."
 msgstr ""
 "Ik hoop dat mijn eenheden de tegenaanval overleven als ik de Orkgrommer niet "
-"doodt deze beurt. Ik kan maar beter meer dorpen innemen en andere eenheden "
+"dood deze beurt. Ik kan maar beter meer dorpen innemen en andere eenheden "
 "dichterbij verplaatsen voor de volgende beurt."
 
 #. [message]: speaker=Galdrad
@@ -1865,7 +1835,7 @@ msgid ""
 "them each 4 hitpoints at the beginning of the next turn."
 msgstr ""
 "Als een van je Sjamanen net achter je gewonde eenheden staat, zal ze zorgen "
-"dat ze allemaal 4 levenspunten (HP) genezen aan het begin van de volgende "
+"dat ze allemaal 4 levenspunten (LP) genezen aan het begin van de volgende "
 "beurt."
 
 #. [message]: speaker=second_unit
@@ -1884,9 +1854,9 @@ msgid ""
 "female^One fewer orc to deal with, and our way across the bridge is clear! I "
 "also gained experience from striking the killing blow!"
 msgstr ""
-"Dat is een ork minder om ons zorgen over te maken, en onze route over de "
-"brug is open! Ik heb ook nog eens ervaring opgedaan door de genadeklap uit "
-"te delen!"
+"female^Dat is een ork minder om ons zorgen over te maken, en onze route over "
+"de brug is open! Ik heb ook nog eens ervaring opgedaan door de genadeklap "
+"uit te delen!"
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:852
@@ -1941,7 +1911,7 @@ msgid ""
 "I doubt the orc leader will let you use his! Careful!"
 msgstr ""
 "Je bent best ver van je donjon af. Misschien moet je nog wat eenheden "
-"rekruteren, en ik betwijfel dat de Orkleider zijn donjon ter beschikking "
+"rekruteren, en ik betwijfel of de Orkleider zijn donjon ter beschikking "
 "stelt! Pas op!"
 
 #. [event]
@@ -2009,7 +1979,7 @@ msgid ""
 "turn."
 msgstr ""
 "Vergeet niet om je gewonde eenheden te laten genezen in dorpen. Sjamanen "
-"kunnen enkel 4 levenspunten per beurt genezen, terwijl dorp dit met 8 "
+"kunnen enkel 4 levenspunten per beurt genezen, terwijl dorpen dit met 8 "
 "levenspunten per beurt kunnen.\n"
 "\n"
 "Verschillende vormen van genezing worden normaal gesproken niet "
@@ -2017,7 +1987,7 @@ msgstr ""
 "een dorp en naast een genezer, zal de eenheid maar van één keer genezen in "
 "die beurt.\n"
 "\n"
-"Het genezen door rust  is een uitzondering op deze regel — als een eenheid "
+"Het genezen door rust is een uitzondering op deze regel — als een eenheid "
 "zich niet verplaatst, zal het 2 levenspunten extra genezen naast eventuele "
 "genezing die de eenheid ontvangt door een dorp of een genezer. Dit kan "
 "leiden tot een genezing van 10 levenspunten per beurt."
@@ -2061,7 +2031,7 @@ msgstr ""
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1021
 msgid "Speeding Up Animations"
-msgstr ""
+msgstr "Versnellen van animaties"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1023
@@ -2070,11 +2040,15 @@ msgid ""
 "quicker. The <b>acceleration factor</b> can be set, and turned on by "
 "default, in the <b>Preferences</b> menu’s <b>General</b> tab."
 msgstr ""
+"Als je <b>shift</b> indrukt zullen de animaties zich sneller afspelen. De "
+"<b>acceleratiefactor</b> kan worden ingesteld, of automatisch aan worden "
+"gezet, in het <b>Voorkeuren</b> menu onder het <b>Algemeen</b> tabblad."
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1032
 msgid "Hurry up and defeat the orcs before they become entrenched!"
-msgstr "Schiet op en versla de orks voordat ze verankerd zijn!"
+msgstr ""
+"Schiet op en versla de orks voordat ze een stevige positie hebben gecreëerd!"
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1060
@@ -2084,12 +2058,12 @@ msgstr "Ik heb genoeg goudstukken om meer eenheden te rekruteren!"
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1061
 msgid "female^I have enough gold to recruit more units!"
-msgstr "Ik heb genoeg goudstukken om meer eenheden te rekruteren!"
+msgstr "female^Ik heb genoeg goudstukken om meer eenheden te rekruteren!"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1071
 msgid "Recruit the Right Units"
-msgstr "Juiste Eenheden Rekruteren"
+msgstr "Rekruteer de Juiste Eenheden"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1073
@@ -2116,8 +2090,8 @@ msgid ""
 "That unit is about one kill (8 experience points) away from gaining a level! "
 "Do not let it die!"
 msgstr ""
-"Deze eenheid hoeft nog maar één tegenstander doden (8 ervaringspunten, XP) "
-"om te promoveren naar de volgende rang! Laat hem niet doodgaan!"
+"Deze eenheid hoeft nog maar één tegenstander doden (8 ervaringspunten) om te "
+"promoveren naar de volgende rang! Laat hem niet doodgaan!"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1174
@@ -2157,15 +2131,15 @@ msgid ""
 "the best chances to gain experience."
 msgstr ""
 "Je hebt hun leider bijna gedood! De eenheid die de genadeslag uitdeelt "
-"verdient 16 ervaringspunten (XP), omdat de leider rang 2 heeft. In een "
-"veldtocht is het belangrijk om te bepalen welke eenheden je later op wilt "
-"roepen waardoor je deze eenheden vervolgens de beste kansen kan geven om "
-"ervaring op te doen."
+"verdient 16 ervaringspunten, omdat de leider rang 2 heeft. In een veldtocht "
+"is het belangrijk om te bepalen welke eenheden je later op wilt roepen "
+"waardoor je deze eenheden vervolgens de beste kansen kan geven om ervaring "
+"op te doen."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1218
 msgid "You have almost finished the tutorial"
-msgstr "Je bent bijna klaar met de uitleg"
+msgstr "Je hebt de training bijna voltooid"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1220
@@ -2237,7 +2211,7 @@ msgid ""
 "with many units at once during the day."
 msgstr ""
 "Pas op voor de Orkleider: hij kan 's nachts in een keer voor 36 levenspunten "
-"(HP) aan verwondingen toebrengen! Val met een groep eenheden overdag aan."
+"aan verwondingen toebrengen! Val overdag met een groep eenheden aan."
 
 #. [message]: speaker=unit
 #. The speaker is female
@@ -2250,11 +2224,11 @@ msgid ""
 "attack wielded by the Elvish Sorceress."
 msgstr ""
 "Het promoveren heeft me volledig genezen! Nu kan ik eenheden 8 levenspunten "
-"(HP) per beurt genezen, in plaats van slechts 4, en ik kan ze ook genezen "
-"van vergiftiging als ze niet snel een dorp kunnen bereiken. Daarnaast heb ik "
-"ook een nieuwe <i>magische</i> aanval geleerd, dit houdt in dat er altijd "
-"een kans van 70% is om te raken, daarentegen is de aanval minder krachtig "
-"dan de vergelijkbare aanval van de Elfentovenares."
+"per beurt genezen, in plaats van slechts 4, en ik kan ze ook genezen van "
+"vergiftiging als ze niet snel een dorp kunnen bereiken. Daarnaast heb ik ook "
+"een nieuwe <i>magische</i> aanval geleerd, dit houdt in dat er altijd een "
+"kans van 70% is om te raken, daarentegen is de aanval minder krachtig dan de "
+"vergelijkbare aanval van de Elfentovenares."
 
 #. [message]: speaker=unit
 #. The speaker is female
@@ -2292,8 +2266,8 @@ msgid ""
 "i> ability, and I deal 9 damage each for 4 attacks. Use me to dislodge hard-"
 "to-hit units."
 msgstr ""
-"Het promoveren heeft me volledig genezen! Wanneer ik aanval heb ik altijd "
-"een kans van 60% om iets met mijn handboog te raken dankzij mijn "
+"female^Het promoveren heeft me volledig genezen! Wanneer ik aanval heb ik "
+"altijd een kans van 60% om iets met mijn handboog te raken dankzij mijn "
 "<i>Precisieschutter</i> vaardigheid, en ik doe hiermee 9 schade met 4 kansen "
 "om te raken. Gebruik mij om eenheden te raken die moeilijk te raken zijn."
 
@@ -2306,7 +2280,7 @@ msgid ""
 msgstr ""
 "Het promoveren heeft me volledig genezen! Ik ben goed met een zwaard en "
 "boog, en ik heb een speciale vaardigheid: <i>Hinderlaag</i>. Ik kan in de "
-"bossen schuilen waar eenheden mij alleen kunnen zien als ze naast me staan."
+"bossen schuilen waar eenheden mij pas zien als ze naast me staan."
 
 #. [message]: speaker=unit
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1389
@@ -2315,8 +2289,8 @@ msgid ""
 "sword, and I have a special ability: <i>Ambush</i>. I can hide in forests "
 "where enemies can only see me if they are right next to me."
 msgstr ""
-"Het promoveren heeft me volledig genezen! Ik ben goed met een zwaard en "
-"boog, en ik heb een speciale vaardigheid: <i>Hinderlaag</i>. Ik kan in de "
+"female^Het promoveren heeft me volledig genezen! Ik ben goed met een zwaard "
+"en boog, en ik heb een speciale vaardigheid: <i>Hinderlaag</i>. Ik kan in de "
 "bossen schuilen waar eenheden mij alleen kunnen zien als ze naast me staan."
 
 #. [message]: speaker=unit
@@ -2367,10 +2341,10 @@ msgid ""
 "abilities, my fighting skills will allow me to beat the orcs by dealing more "
 "damage!"
 msgstr ""
-"Het promoveren heeft me volledig genezen! Ik ben beter geworden met mijn "
-"zwaard, waarmee ik nu 9 schade toe kan brengen met 4 kansen om te raken. "
-"Hoewel ik geen speciale vaardigheden heb, kan ik door mijn bekwaamheid in "
-"het gevecht de Orks verslaan door meer schade toe te brengen!"
+"female^Het promoveren heeft me volledig genezen! Ik ben beter geworden met "
+"mijn zwaard, waarmee ik nu 9 schade toe kan brengen met 4 kansen om te "
+"raken. Hoewel ik geen speciale vaardigheden heb, kan ik door mijn "
+"bekwaamheid in het gevecht de Orks verslaan door meer schade toe te brengen!"
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1439
@@ -2381,12 +2355,13 @@ msgstr ""
 #. [message]: speaker=unit
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1455
 msgid "That... was foolish. Next time I should be more careful."
-msgstr "Dat... was dom. De volgende keer zou ik voorzichtiger moeten zijn."
+msgstr "Dat... was dom. De volgende keer kan ik beter wat voorzichtiger zijn."
 
 #. [message]: speaker=unit
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1456
 msgid "female^That... was foolish. Next time I should be more careful."
-msgstr "Dat... was dom. De volgende keer zou ik voorzichtiger moeten zijn."
+msgstr ""
+"female^Dat... was dom. De volgende keer kan ik beter wat voorzichtiger zijn."
 
 #. [message]: speaker=unit
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1474
@@ -2401,9 +2376,9 @@ msgid ""
 "is the easiest and is the recommended first campaign."
 msgstr ""
 "Je hebt de orks verslagen! Nu wil je misschien een van de veldtochten "
-"geschikt voor beginners proberen, die bezitten ook strategietips. <i>Een "
-"Verhaal van Twee Broers</i> is het makkelijkst en wordt aanbevolen als "
-"eerste veldtocht."
+"proberen die geschikt zijn voor beginners, die bezitten ook strategietips. "
+"<i>Een Verhaal van Twee Broers</i> is het makkelijkst en wordt aanbevolen "
+"als eerste veldtocht."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1494
@@ -2411,8 +2386,8 @@ msgid ""
 "You can also refer to the in-game help browser if you ever need to refresh "
 "your memory on gameplay mechanics."
 msgstr ""
-"Je kan altijd gebruik maken van het help menu in het spel wanneer je ooit "
-"iets op wilt zoeken over een spelmechanisme."
+"Tijdens het spelen kan je altijd gebruik maken van het help menu wanneer je "
+"ooit iets op wilt zoeken over een spelmechanisme."
 
 #. [unit_type]: id=Fighter, race=human
 #: data/campaigns/tutorial/units/Fighter.cfg:4
@@ -2428,14 +2403,14 @@ msgid ""
 "attack from enemies. However, they have the potential to become great "
 "warriors one day."
 msgstr ""
-"Krijgers, jong en onbesuisd, vechten met een zwaard en zijn kwetsbaar voor "
+"Krijgers, jong en onbezonnen, vechten met een zwaard en zijn kwetsbaar voor "
 "aanvallen van vijanden. Maar met de nodige ervaring zullen ze uitgroeien tot "
 "grote krijgsheren."
 
 #. [unit_type]: id=Fighteress, race=human
 #: data/campaigns/tutorial/units/Fighteress.cfg:4
 msgid "female^Fighter"
-msgstr "Krijger"
+msgstr "female^Krijgster"
 
 #. [unit_type]: id=Quintain, race=mechanical
 #: data/campaigns/tutorial/units/Quintain.cfg:4
@@ -2464,13 +2439,13 @@ msgid ""
 "With more experience, Fighters have honed their skills with the sword and "
 "become powerful Warriors."
 msgstr ""
-"Met meer ervaring hebben Krijgers de vaardigheden met het zwaard "
-"aangescherpt om krachtige Strijders te worden."
+"Door ervaring op te doen kunnen Krijgers genoeg ervaring in de strijd "
+"opbouwen om krachtige Strijders te worden."
 
 #. [unit_type]: id=Warrioress, race=human
 #: data/campaigns/tutorial/units/Warrioress.cfg:4
 msgid "female^Warrior"
-msgstr "Strijdster"
+msgstr "female^Strijdster"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/utils/utils.cfg:63
@@ -2487,15 +2462,12 @@ msgstr ""
 "<b>u</b> te drukken wanneer je een fout maakt."
 
 #: data/campaigns/tutorial/utils/utils.cfg:126
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "<big>Click a mouse button or press the spacebar to continue...</big>"
 msgid ""
 "\n"
 "\n"
 "<big>Click a mouse button or press the spacebar to continue...</big>"
 msgstr ""
+"\n"
 "\n"
 "<big>Klik met de muis of druk op de spatiebalk om verder te gaan...</big>"
 

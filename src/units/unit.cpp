@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2003 - 2021
+	by David White <dave@whitevine.net>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 /**
@@ -19,6 +20,7 @@
 
 #include "units/unit.hpp"
 
+#include "ai/manager.hpp"
 #include "color.hpp"
 #include "deprecation.hpp"
 #include "display.hpp"
@@ -527,6 +529,35 @@ void unit::init(const config& cfg, bool use_traits, const vconfig* vcfg)
 
 	if(const config& ai = cfg.child("ai")) {
 		formula_man_->read(ai);
+		config ai_events;
+		for(config mai : ai.child_range("micro_ai")) {
+			mai.clear_children("filter");
+			mai.add_child("filter")["id"] = id();
+			mai["side"] = side();
+			mai["action"] = "add";
+			ai_events.add_child("micro_ai", mai);
+		}
+		for(config ca : ai.child_range("candidate_action")) {
+			ca.clear_children("filter_own");
+			ca.add_child("filter_own")["id"] = id();
+			// Sticky candidate actions not supported here (they cause a crash because the unit isn't on the map yet)
+			ca.remove_attribute("sticky");
+			std::string stage = "main_loop";
+			if(ca.has_attribute("stage")) {
+				stage = ca["stage"].str();
+				ca.remove_attribute("stage");
+			}
+			config mod{
+				"action", "add",
+				"side", side(),
+				"path", "stage[" + stage + "].candidate_action[]",
+				"candidate_action", ca,
+			};
+			ai_events.add_child("modify_ai", mod);
+		}
+		if(ai_events.all_children_count() > 0) {
+			ai::manager::get_singleton().append_active_ai_for_side(side(), ai_events);
+		}
 	}
 
 	// Don't use the unit_type's attacks if this config has its own defined
@@ -1828,7 +1859,7 @@ std::string unit::describe_builtin_effect(std::string apply_to, const config& ef
 		if(!increase_total.empty()) {
 			return VGETTEXT(
 				"<span color=\"$color\">$number_or_percent</span> HP",
-				{{"number_or_percent", utils::print_modifier(increase_total)}, {"color", increase_total[0] == '-' ? "red" : "green"}});
+				{{"number_or_percent", utils::print_modifier(increase_total)}, {"color", increase_total[0] == '-' ? "#f00" : "#0f0"}});
 		}
 	} else {
 		const std::string& increase = effect["increase"];
@@ -1840,31 +1871,31 @@ std::string unit::describe_builtin_effect(std::string apply_to, const config& ef
 				"<span color=\"$color\">$number_or_percent</span> move",
 				"<span color=\"$color\">$number_or_percent</span> moves",
 				std::stoi(increase),
-				{{"number_or_percent", utils::print_modifier(increase)}, {"color", increase[0] == '-' ? "red" : "green"}});
+				{{"number_or_percent", utils::print_modifier(increase)}, {"color", increase[0] == '-' ? "#f00" : "#0f0"}});
 		} else if(apply_to == "vision") {
 			return VGETTEXT(
 				"<span color=\"$color\">$number_or_percent</span> vision",
-				{{"number_or_percent", utils::print_modifier(increase)}, {"color", increase[0] == '-' ? "red" : "green"}});
+				{{"number_or_percent", utils::print_modifier(increase)}, {"color", increase[0] == '-' ? "#f00" : "#0f0"}});
 		} else if(apply_to == "jamming") {
 			return VGETTEXT(
 				"<span color=\"$color\">$number_or_percent</span> jamming",
-				{{"number_or_percent", utils::print_modifier(increase)}, {"color", increase[0] == '-' ? "red" : "green"}});
+				{{"number_or_percent", utils::print_modifier(increase)}, {"color", increase[0] == '-' ? "#f00" : "#0f0"}});
 		} else if(apply_to == "max_experience") {
 			// Unlike others, decreasing experience is a *GOOD* thing
 			return VGETTEXT(
 				"<span color=\"$color\">$number_or_percent</span> XP to advance",
-				{{"number_or_percent", utils::print_modifier(increase)}, {"color", increase[0] == '-' ? "green" : "red"}});
+				{{"number_or_percent", utils::print_modifier(increase)}, {"color", increase[0] == '-' ? "#0f0" : "#f00"}});
 		} else if(apply_to == "max_attacks") {
 			return VNGETTEXT(
 					"<span color=\"$color\">$number_or_percent</span> attack per turn",
 					"<span color=\"$color\">$number_or_percent</span> attacks per turn",
 					std::stoi(increase),
-					{{"number_or_percent", utils::print_modifier(increase)}, {"color", increase[0] == '-' ? "red" : "green"}});
+					{{"number_or_percent", utils::print_modifier(increase)}, {"color", increase[0] == '-' ? "#f00" : "#0f0"}});
 		} else if(apply_to == "recall_cost") {
 			// Unlike others, decreasing recall cost is a *GOOD* thing
 			return VGETTEXT(
 				"<span color=\"$color\">$number_or_percent</span> cost to recall",
-				{{"number_or_percent", utils::print_modifier(increase)}, {"color", increase[0] == '-' ? "green" : "red"}});
+				{{"number_or_percent", utils::print_modifier(increase)}, {"color", increase[0] == '-' ? "#0f0" : "#f00"}});
 		}
 	}
 	return "";
@@ -2703,6 +2734,9 @@ std::string get_checksum(const unit& u)
 			config& child_spec = child.add_child("specials", spec);
 
 			child_spec.recursive_clear_value("description");
+			child_spec.recursive_clear_value("description_inactive");
+			child_spec.recursive_clear_value("name");
+			child_spec.recursive_clear_value("name_inactive");
 		}
 	}
 

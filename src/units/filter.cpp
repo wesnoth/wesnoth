@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2014 - 2018 by Chris Beck <render787@gmail.com>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2014 - 2021
+	by Chris Beck <render787@gmail.com>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #include "units/filter.hpp"
@@ -41,6 +42,9 @@ static lg::log_domain log_config("config");
 #define ERR_CF LOG_STREAM(err, log_config)
 #define WRN_CF LOG_STREAM(warn, log_config)
 #define DBG_CF LOG_STREAM(debug, log_config)
+
+static lg::log_domain log_wml("wml");
+#define ERR_WML LOG_STREAM(err, log_wml)
 
 using namespace unit_filter_impl;
 
@@ -712,7 +716,8 @@ void unit_filter_compound::fill(vconfig cfg)
 					}
 					return true;
 				} catch(const wfl::formula_error& e) {
-					lg::wml_error() << "Formula error in unit filter: " << e.type << " at " << e.filename << ':' << e.line << ")\n";
+					lg::log_to_chat() << "Formula error in unit filter: " << e.type << " at " << e.filename << ':' << e.line << ")\n";
+					ERR_WML << "Formula error in unit filter: " << e.type << " at " << e.filename << ':' << e.line << ")";
 					// Formulae with syntax errors match nothing
 					return false;
 				}

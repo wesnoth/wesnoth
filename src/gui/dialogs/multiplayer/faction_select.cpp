@@ -1,35 +1,36 @@
 /*
-   Copyright (C) 2016 - 2018 by the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2016 - 2021
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
 #include "gui/dialogs/multiplayer/faction_select.hpp"
 
+#include "formatter.hpp"
 #include "game_config_manager.hpp"
+#include "gettext.hpp"
 #include "gui/auxiliary/find_widget.hpp"
 #include "gui/core/log.hpp"
-#include "gui/widgets/listbox.hpp"
-#include "gui/widgets/settings.hpp"
-#include "gui/widgets/image.hpp"
-#include "gui/widgets/label.hpp"
 #include "gui/widgets/button.hpp"
+#include "gui/widgets/drawing.hpp"
+#include "gui/widgets/label.hpp"
+#include "gui/widgets/listbox.hpp"
 #include "gui/widgets/menu_button.hpp"
+#include "gui/widgets/settings.hpp"
 #include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/window.hpp"
-#include "formatter.hpp"
-#include "gettext.hpp"
 #include "help/help.hpp"
-#include "preferences/game.hpp"	// for encountered_units
+#include "preferences/game.hpp" // for encountered_units
 #include "units/types.hpp"
 
 #include <functional>
@@ -67,7 +68,7 @@ void faction_select::pre_show(window& window)
 	gender_toggle_.set_member_states("random");
 
 	gender_toggle_.set_callback_on_value_change(
-		std::bind(&faction_select::on_gender_select, this));
+		std::bind(&faction_select::on_gender_select, this, std::placeholders::_2));
 
 	//
 	// Set up leader menu button
@@ -197,9 +198,9 @@ void faction_select::profile_button_callback()
 	}
 }
 
-void faction_select::on_gender_select()
+void faction_select::on_gender_select(const std::string val)
 {
-	flg_manager_.set_current_gender(gender_toggle_.get_active_member_value());
+	flg_manager_.set_current_gender(val);
 
 	update_leader_image();
 }
@@ -210,10 +211,10 @@ void faction_select::update_leader_image()
 
 	if(const unit_type* ut = unit_types.find(flg_manager_.current_leader())) {
 		const unit_type& utg = ut->get_gender_unit_type(flg_manager_.current_gender());
-		leader_image = formatter() << utg.image() << "~RC(" << utg.flag_rgb() << ">" << tc_color_ << ")" << "~SCALE_INTO_SHARP(144,144)";
+		leader_image = formatter() << utg.image() << "~RC(" << utg.flag_rgb() << ">" << tc_color_ << ")";
 	}
 
-	find_widget<image>(get_window(), "leader_image", false).set_label(leader_image);
+	find_widget<drawing>(get_window(), "leader_image", false).set_label(leader_image);
 }
 
 void faction_select::post_show(window& /*window*/)

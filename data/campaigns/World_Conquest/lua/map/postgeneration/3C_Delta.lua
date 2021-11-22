@@ -72,11 +72,11 @@ function wct_noise_delta()
 		f.terrain("Dd"),
 		fraction = 5,
 	}
-	set_terrain { "Ur,Uue^Uf,Uue^Dr,Uue",
-		f.terrain("U*,U*^Uf"),
+	set_terrain { "Ur,Uue^Tf,Uue^Dr,Uue",
+		f.terrain("U*,U*^Tf"),
 		fraction = 3,
 	}
-	set_terrain { "Gs,Gs,Gs,Gs,Hh,Hh,Hh,Gs^Ft,Gs^Ft,Gs^Ft,Gs^Uf",
+	set_terrain { "Gs,Gs,Gs,Gs,Hh,Hh,Hh,Gs^Ft,Gs^Ft,Gs^Ft,Gs^Tf",
 		f.terrain("Mm"),
 		fraction = 2,
 	}
@@ -84,7 +84,7 @@ function wct_noise_delta()
 		f.terrain("Hh"),
 		fraction = 2,
 	}
-	set_terrain { "Gs,Gs,Gs,Gs,Gs,Gg,Hh^Ft,Gs^Ft,Gs^Ft,Gs^Ft,Mm,Gs^Uf",
+	set_terrain { "Gs,Gs,Gs,Gs,Gs,Gg,Hh^Ft,Gs^Ft,Gs^Ft,Gs^Ft,Mm,Gs^Tf",
 		f.terrain("Hh"),
 		fraction = 5,
 	}
@@ -111,7 +111,7 @@ function world_conquest_tek_map_decoration_3c()
 			)
 		),
 	}
-	set_terrain { "Gs,Gg,Hh^Ft,Ss,Ss,Hh,Ss,Mm,Ss,Hh^Uf,Ww,Gg,Ss,Ww,Ss",
+	set_terrain { "Gs,Gg,Hh^Ft,Ss,Ss,Hh,Ss,Mm,Ss,Hh^Tf,Ww,Gg,Ss,Ww,Ss",
 		f.terrain("Wwf"),
 		fraction = 2,
 	}
@@ -119,11 +119,11 @@ function world_conquest_tek_map_decoration_3c()
 		f.terrain("Wwf"),
 		fraction = 9,
 	}
-	set_terrain { "Ss,Ss,Ss,Ds^Ftd,Ss,Mm,Ss,Ww,Ss,Hd,Ss,Gs^Uf,Ww,Gg,Ss",
+	set_terrain { "Ss,Ss,Ss,Ds^Ftd,Ss,Mm,Ss,Ww,Ss,Hd,Ss,Gs^Tf,Ww,Gg,Ss",
 		f.terrain("Wwf"),
 		fraction = 2,
 	}
-	set_terrain { "Ww,Hh^Uf",
+	set_terrain { "Ww,Hh^Tf",
 		f.terrain("Xuce"),
 		fraction = 8,
 	}
@@ -152,7 +152,7 @@ function world_conquest_tek_map_decoration_3c()
 			f.terrain("Dd,Ds,Xuce")
 		),
 	}
-	set_terrain { "Hh^Uf,Mm,Gg,Gs,Ss,Ds^Ftd,Hh,Hh^Ftp",
+	set_terrain { "Hh^Tf,Mm,Gg,Gs,Ss,Ds^Ftd,Hh,Hh^Ftp",
 		f.all(
 			f.terrain("Xuce"),
 			f.radius(3, f.terrain("K*^*"))
@@ -261,7 +261,7 @@ function world_conquest_tek_map_decoration_3c()
 	set_terrain { "Ds",
 		f.all(
 			f.adjacent(f.terrain("Wo")),
-			f.terrain("Hh^Uf,G*^Uf,Mm")
+			f.terrain("Hh^Tf,G*^Tf,Mm")
 		),
 	}
 	set_terrain { "Hh",
@@ -312,16 +312,16 @@ function world_conquest_tek_map_decoration_3c()
 			f.terrain("Dd")
 		),
 	}
-	set_terrain { "Ss^Uf",
+	set_terrain { "Ss^Tf",
 		f.all(
 			f.adjacent(f.terrain("Ss")),
-			f.terrain("Hh^Uf")
+			f.terrain("Hh^Tf")
 		),
 	}
-	set_terrain { "Sm^Uf",
+	set_terrain { "Sm^Tf",
 		f.all(
 			f.adjacent(f.terrain("D*^*,Hd*^*"), nil, 6),
-			f.terrain("Hh^Uf")
+			f.terrain("Hh^Tf")
 		),
 	}
 	set_terrain { "Uue,Uue,Uue,Uue,Ds,Ww,Uue^Dr,Sm",

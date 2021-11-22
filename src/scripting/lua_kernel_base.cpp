@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2014 - 2018 by Chris Beck <render787@gmail.com>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2014 - 2021
+	by Chris Beck <render787@gmail.com>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #include "scripting/lua_kernel_base.hpp"
@@ -22,6 +23,7 @@
 #include "seed_rng.hpp"
 #include "deprecation.hpp"
 #include "language.hpp"                 // for get_language
+#include "team.hpp" // for shroud_map
 
 #ifdef DEBUG_LUA
 #include "scripting/debug_lua.hpp"
@@ -99,7 +101,7 @@ static int impl_version_get(lua_State* L)
 		int n = lua_tointeger(L, 2) - 1;
 		auto& components = vers.components();
 		if(n >= 0 && size_t(n) < components.size()) {
-			lua_pushinteger(L, vers.components()[n - 1]);
+			lua_pushinteger(L, vers.components()[n]);
 		} else {
 			lua_pushnil(L);
 		}
@@ -152,7 +154,7 @@ static int intf_make_version(lua_State* L)
 	}
 	// If it's a string, parse it; otherwise build from components
 	// The components method only supports canonical versions
-	if(lua_isstring(L, 1)) {
+	if(lua_type(L, 1) == LUA_TSTRING) {
 		new(L) version_info(lua_check<std::string>(L, 1));
 	} else {
 		int major = luaL_checkinteger(L, 1), minor = luaL_optinteger(L, 2, 0), rev = luaL_optinteger(L, 3, 0);
@@ -432,6 +434,60 @@ static int intf_deprecated_message(lua_State* L) {
 }
 
 /**
+ * Converts a Lua array to a named tuple.
+ * Arg 1: A Lua array
+ * Arg 2: An array of strings
+ * Ret: A copy of arg 1 that's now a named tuple with the names in arg 2.
+ * The copy will only include the array portion of the input array.
+ * Any non-integer keys or non-consecutive keys will be gone.
+ * Note: This exists so that wml.tag can use it but is not really intended as a public API.
+ */
+static int intf_named_tuple(lua_State* L)
+{
+	if(!lua_istable(L, 1)) {
+		return luaW_type_error(L, 1, lua_typename(L, LUA_TTABLE));
+	}
+	auto names = lua_check<std::vector<std::string>>(L, 2);
+	lua_len(L, 1);
+	int len = luaL_checkinteger(L, -1);
+	luaW_push_namedtuple(L, names);
+	for(int i = 1; i <= std::max<int>(len, names.size()); i++) {
+		lua_geti(L, 1, i);
+		lua_seti(L, -2, i);
+	}
+	return 1;
+}
+
+static int intf_parse_shroud_bitmap(lua_State* L)
+{
+	shroud_map temp;
+	temp.set_enabled(true);
+	temp.read(luaL_checkstring(L, 1));
+	std::set<map_location> locs;
+	for(int x = 1; x <= temp.width(); x++) {
+		for(int y = 1; y <= temp.height(); y++) {
+			if(!temp.value(x, y)) {
+				locs.emplace(x, y, wml_loc());
+			}
+		}
+	}
+	luaW_push_locationset(L, locs);
+	return 1;
+}
+
+static int intf_make_shroud_bitmap(lua_State* L)
+{
+	shroud_map temp;
+	temp.set_enabled(true);
+	auto locs = luaW_check_locationset(L, 1);
+	for(const auto& loc : locs) {
+		temp.clear(loc.wml_x(), loc.wml_y());
+	}
+	lua_push(L, temp.write());
+	return 1;
+}
+
+/**
 * Returns the time stamp, exactly as [set_variable] time=stamp does.
 * - Ret 1: integer
 */
@@ -537,6 +593,7 @@ lua_kernel_base::lua_kernel_base()
 		{ "compile_formula",          &lua_formula_bridge::intf_compile_formula},
 		{ "eval_formula",             &lua_formula_bridge::intf_eval_formula},
 		{ "name_generator",           &intf_name_generator           },
+		{ "named_tuple",              &intf_named_tuple              },
 		{ "log",                      &intf_log                      },
 		{ "ms_since_init",            &intf_ms_since_init           },
 		{ "get_language",             &intf_get_language             },
@@ -604,6 +661,9 @@ lua_kernel_base::lua_kernel_base()
 		{ "distance_between",		&lua_map_location::intf_distance_between		},
 		{ "get_in_basis_N_NE",		&lua_map_location::intf_get_in_basis_N_NE		},
 		{ "get_relative_dir",		&lua_map_location::intf_get_relative_dir		},
+		// Shroud bitmaps
+		{"parse_bitmap", intf_parse_shroud_bitmap},
+		{"make_bitmap", intf_make_shroud_bitmap},
 		{ nullptr, nullptr }
 	};
 

@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2009 - 2018 by Tomasz Sniatowski <kailoran@gmail.com>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2009 - 2021
+	by Tomasz Sniatowski <kailoran@gmail.com>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #include "game_initialization/lobby_data.hpp"
@@ -50,106 +51,45 @@ static lg::log_domain log_lobby("lobby");
 
 namespace mp {
 
-chat_message::chat_message(const std::time_t& timestamp,
-						   const std::string& user,
-						   const std::string& message)
-	: timestamp(timestamp), user(user), message(message)
-{
-}
-
-chat_session::chat_session() : history_()
-{
-}
-
-void chat_session::add_message(const std::time_t& timestamp,
-						   const std::string& user,
-						   const std::string& message)
-{
-	history_.emplace_back(timestamp, user, message);
-}
-
-
-void chat_session::add_message(const std::string& user, const std::string& message)
-{
-	add_message(std::time(nullptr), user, message);
-}
-
-void chat_session::clear()
-{
-	history_.clear();
-}
-
-room_info::room_info(const std::string& name) : name_(name), members_(), log_()
-{
-}
-
-bool room_info::is_member(const std::string& user) const
-{
-	return members_.find(user) != members_.end();
-}
-
-void room_info::add_member(const std::string& user)
-{
-	members_.insert(user);
-}
-
-void room_info::remove_member(const std::string& user)
-{
-	members_.erase(user);
-}
-
-void room_info::process_room_members(const config& data)
-{
-	members_.clear();
-	for(const auto & m : data.child_range("member"))
-	{
-		members_.insert(m["name"]);
-	}
-}
-
 user_info::user_info(const config& c)
 	: name(c["name"])
 	, forum_id(c["forum_id"].to_int())
 	, game_id(c["game_id"])
-	, relation(user_relation::ME)
-	, state(game_id == 0 ? user_state::LOBBY : user_state::GAME)
 	, registered(c["registered"].to_bool())
 	, observing(c["status"] == "observing")
 	, moderator(c["moderator"].to_bool(false))
 {
-	update_relation();
 }
 
-void user_info::update_state(int selected_game_id)
+user_info::user_state user_info::get_state(int selected_game_id) const
 {
-	if(game_id != 0) {
-		if(game_id == selected_game_id) {
-			state = user_state::SEL_GAME;
-		} else {
-			state = user_state::GAME;
-		}
+	if(game_id == 0) {
+		return user_state::LOBBY;
+	} else if(game_id == selected_game_id) {
+		return user_state::SEL_GAME;
 	} else {
-		state = user_state::LOBBY;
+		return user_state::GAME;
 	}
-	update_relation();
 }
 
-void user_info::update_relation()
+user_info::user_relation user_info::get_relation() const
 {
 	if(name == preferences::login()) {
-		relation = user_relation::ME;
+		return user_relation::ME;
 	} else if(preferences::is_ignored(name)) {
-		relation = user_relation::IGNORED;
+		return user_relation::IGNORED;
 	} else if(preferences::is_friend(name)) {
-		relation = user_relation::FRIEND;
+		return user_relation::FRIEND;
 	} else {
-		relation = user_relation::NEUTRAL;
+		return user_relation::NEUTRAL;
 	}
 }
 
 bool user_info::operator<(const user_info& b) const
 {
-	return relation < b.relation || (relation == b.relation && translation::icompare(name, b.name) < 0);
+	const auto ar = get_relation();
+	const auto br = b.get_relation();
+	return ar < br || (ar == br && translation::icompare(name, b.name) < 0);
 }
 
 namespace

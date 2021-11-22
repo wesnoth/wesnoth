@@ -1,16 +1,17 @@
 /*
-Copyright (C) 2006 - 2018 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
-wesnoth playturn Copyright (C) 2003 by David White <dave@whitevine.net>
-Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2006 - 2021
+	by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
+	Copyright (C) 2003 by David White <dave@whitevine.net>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-This program is free software; you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation; either version 2 of the License, or
-(at your option) any later version.
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #pragma once
@@ -389,27 +390,11 @@ protected:
 		return aliases;
 	}
 private:
-	static command_map command_map_;
-	static command_alias_map command_alias_map_;
-	static bool help_on_unknown_;
-	static bool show_unavailable_;
-	static std::string cmd_prefix_;
+	static inline command_map command_map_ {};
+	static inline command_alias_map command_alias_map_ {};
+	static inline bool help_on_unknown_ = true;
+	static inline bool show_unavailable_ = false;
+	static inline std::string cmd_prefix_ {};
 };
-
-//static member definitions
-template <class Worker>
-typename map_command_handler<Worker>::command_map map_command_handler<Worker>::command_map_;
-
-template <class Worker>
-typename map_command_handler<Worker>::command_alias_map map_command_handler<Worker>::command_alias_map_;
-
-template <class Worker>
-bool map_command_handler<Worker>::help_on_unknown_ = true;
-
-template <class Worker>
-bool map_command_handler<Worker>::show_unavailable_ = false;
-
-template <class Worker>
-std::string map_command_handler<Worker>::cmd_prefix_;
 
 }

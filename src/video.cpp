@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2003 - 2021
+	by David White <dave@whitevine.net>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #include "video.hpp"
@@ -219,8 +220,14 @@ void CVideo::init_window()
 		window_flags |= SDL_WINDOW_MAXIMIZED;
 	}
 
+	uint32_t renderer_flags = SDL_RENDERER_SOFTWARE;
+	if(supports_vsync() && preferences::vsync()) {
+		LOG_DP << "VSYNC on\n";
+		renderer_flags |= SDL_RENDERER_PRESENTVSYNC;
+	}
+
 	// Initialize window
-	window.reset(new sdl::window("", x, y, w, h, window_flags, SDL_RENDERER_SOFTWARE));
+	window.reset(new sdl::window("", x, y, w, h, window_flags, renderer_flags));
 
 	std::cerr << "Setting mode to " << w << "x" << h << std::endl;
 
@@ -393,13 +400,8 @@ std::pair<float, float> CVideo::get_dpi() const
 		// this multiplication.
 		//
 		// For more info see issue: https://github.com/wesnoth/wesnoth/issues/5019
-		SDL_version sdl_version;
-		SDL_GetVersion(&sdl_version);
 
-		const version_info sdl_version_info(sdl_version.major, sdl_version.minor, sdl_version.patch);
-		const version_info version_to_compare(2, 0, 12);
-
-		if (sdl_version_info >= version_to_compare) {
+		if(sdl_get_version() >= version_info{2, 0, 12}) {
 			float scale_factor = desktop::apple::get_scale_factor(window->get_display_index());
 			hdpi /= scale_factor;
 			vdpi /= scale_factor;
@@ -492,6 +494,11 @@ point CVideo::current_resolution()
 bool CVideo::is_fullscreen() const
 {
 	return (window->get_flags() & SDL_WINDOW_FULLSCREEN_DESKTOP) != 0;
+}
+
+bool CVideo::supports_vsync() const
+{
+	return sdl_get_version() >= version_info{2, 0, 17};
 }
 
 int CVideo::set_help_string(const std::string& str)

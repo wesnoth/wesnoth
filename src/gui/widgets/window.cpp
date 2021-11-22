@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2007 - 2018 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2007 - 2021
+	by Mark de Wever <koraq@xs4all.nl>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 /**
@@ -559,7 +560,9 @@ int window::show(const bool restore, const unsigned auto_close_timeout)
 			}
 
 			// Add a delay so we don't keep spinning if there's no event.
-			SDL_Delay(10);
+			if(status_ != status::CLOSED) {
+				SDL_Delay(10);
+			}
 		}
 	}
 	catch(...)

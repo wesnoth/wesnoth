@@ -122,6 +122,11 @@ Determines whether the rooms file should be read and written to in compressed fo
 .B connections_allowed
 The number of allowed connections from the same IP. \fB0\fR means infinite. (default: \fB5\fR)
 .TP
+.B deny_unregistered_login
+Whether to prevent users who are not registered with the
+.B user_handler
+being used from logging in. (default: false)
+.TP
 .B disallow_names
 Names/nicks that are not accepted by the server. \fB*\fR and \fB?\fR from wildcard patterns are supported. See
 .BR glob (7)
@@ -160,22 +165,31 @@ Path to a file where the room info should be stored. This file is read on server
 .B save_replays
 Defines whether the server will automatically save replays of games. (default: \fBfalse\fR)
 .TP
+.B tls_enabled
+Enable use of TLS. If true, requires 3 following options to be set too.
+.TP
+.B tls_fullchain
+TLS full certificate chain in .pem format
+.TP
+.B tls_private_key
+private key for TLS in .pem format
+.TP
+.B tls_dh
+TLS DH parameters, as .pem file. Generate with \fBopenssl dhparam -out filename.pem 4096\fR
+.TP
 .B versions_accepted
 A comma separated list of version strings to be accepted by the server. \fB*\fR and \fB?\fR from wildcard patterns are supported.
 (defaults to the corresponding wesnoth version)
 .br
 Example: \fBversions_accepted="*"\fR accepts any version string.
-.TP
-.B deny_unregistered_login
-Whether to prevent users who are not registered with the
-.B user_handler
-being used from logging in. (default: false)
 .
 .SS "Global tags:"
 .
 .P
 .B [redirect]
-A tag to specify a server to redirect certain client versions to.
+A tag to specify a server to redirect certain client versions to. Is not used if
+.B versions_accepted
+is not set.
 .RS
 .TP
 .B host
@@ -213,13 +227,14 @@ Accepts the same keys as
 .RE
 .P
 .B [user_handler]
-Configures the user handler. Available keys vary depending on which user handler is set with the
-.B user_handler
-key. If no
+Configures the user handler. If no
 .B [user_handler]
 section is present in the configuration the server will run without any nick registration service. All additional tables that are needed for the
 .B forum_user_handler
-to function can be found in table_definitions.sql in the Wesnoth source repository.
+to function can be found in table_definitions.sql in the Wesnoth source repository. Requires mysql support enabled. For cmake this is
+.B ENABLE_MYSQL
+and for scons this is
+.B forum_user_handler.
 .RS
 .TP
 .B db_host

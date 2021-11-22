@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2010 - 2018 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2010 - 2021
+	by Mark de Wever <koraq@xs4all.nl>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
@@ -39,7 +40,7 @@ tree_view::tree_view(const implementation::builder_tree_view& builder)
 	, node_definitions_(builder.nodes)
 	, indentation_step_size_(0)
 	, need_layout_(false)
-	, root_node_(new tree_view_node("root", nullptr, *this, std::map<std::string, string_map>()))
+	, root_node_(new tree_view_node(root_node_id, nullptr, *this, {}))
 	, selected_item_(nullptr)
 {
 	connect_signal<event::LEFT_BUTTON_DOWN>(
@@ -330,7 +331,8 @@ tree_node::tree_node(const config& cfg)
 {
 	VALIDATE(!id.empty(), missing_mandatory_wml_key("node", "id"));
 
-	VALIDATE(id != "root", _("[node]id 'root' is reserved for the implementation."));
+	// TODO: interpolate this value into the error message
+	VALIDATE(id != tree_view::root_node_id, _("[node]id 'root' is reserved for the implementation."));
 
 	const config& node_definition = cfg.child("node_definition");
 

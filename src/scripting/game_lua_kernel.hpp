@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2009 - 2018 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2009 - 2021
+	by Guillaume Melquiond <guillaume.melquiond@gmail.com>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #pragma once
@@ -149,6 +150,7 @@ class game_lua_kernel : public lua_kernel_base
 	int intf_add_event(lua_State *L);
 	int intf_remove_event(lua_State *L);
 	int intf_color_adjust(lua_State *L);
+	int intf_get_color_adjust(lua_State *L);
 	int intf_delay(lua_State *L);
 	int intf_add_label(lua_State *L);
 	int intf_remove_label(lua_State *L);

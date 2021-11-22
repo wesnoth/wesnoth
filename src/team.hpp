@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2003 - 2021
+	by David White <dave@whitevine.net>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #pragma once
@@ -318,7 +319,7 @@ public:
 
 	const std::string& side_name() const { return info_.side_name.empty() ? info_.current_player : info_.side_name.str(); }
 	t_string side_name_tstr() const { return info_.side_name.empty() ? t_string(info_.current_player) : info_.side_name; }
-	void set_side_name(const t_string& new_name) {info_.side_name = new_name;}
+	void set_side_name(const t_string& new_name) {info_.side_name = new_name == info_.current_player ? "" : new_name;}
 	const std::string& faction() const { return info_.faction; }
 	const t_string& faction_name() const { return info_.faction_name; }
 	//Returns true if the hex is shrouded/fogged for this side, or

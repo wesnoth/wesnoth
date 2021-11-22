@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2003 - 2021
+	by David White <dave@whitevine.net>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #include "game_events/manager_impl.hpp"
@@ -30,6 +31,9 @@ static lg::log_domain log_engine("engine");
 
 static lg::log_domain log_event_handler("event_handler");
 #define DBG_EH LOG_STREAM(debug, log_event_handler)
+
+static lg::log_domain log_wml("wml");
+#define ERR_WML LOG_STREAM(err, log_wml)
 
 namespace game_events
 {
@@ -110,7 +114,8 @@ void event_handlers::add_event_handler(const config& cfg, bool is_menu_item)
 	}
 
 	if(name.empty() && id.empty()) {
-		lg::wml_error() << "[event] is missing name or id field\n";
+		lg::log_to_chat() << "[event] is missing name or id field\n";
+		ERR_WML << "[event] is missing name or id field";
 		return;
 	}
 

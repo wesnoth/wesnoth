@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2008 - 2018 by Thomas Baumhauer <thomas.baumhauer@NOSPAMgmail.com>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2008 - 2021
+	by Thomas Baumhauer <thomas.baumhauer@NOSPAMgmail.com>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #pragma once
@@ -179,8 +180,9 @@ public:
 	 * @param id The id of the content.
 	 * @param source The source add-on for the content.
 	 * @param version The version of the source add-on.
+	 * @return The number of rows inserted which should always be 1.
 	 */
-	void db_insert_game_content_info(const std::string& uuid, int game_id, const std::string& type, const std::string& name, const std::string& id, const std::string& source, const std::string& version);
+	unsigned long long db_insert_game_content_info(const std::string& uuid, int game_id, const std::string& type, const std::string& name, const std::string& id, const std::string& source, const std::string& version);
 
 	/**
 	 * Sets the OOS flag in the database if wesnothd is told by a client it has detected an OOS error.

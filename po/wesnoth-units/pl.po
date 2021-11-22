@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2021-06-23 15:42 UTC\n"
-"PO-Revision-Date: 2020-10-02 11:45+0200\n"
+"PO-Revision-Date: 2021-07-29 13:24+0200\n"
 "Last-Translator: Karol Nowak <grywacz@gmail.com>\n"
 "Language-Team: none\n"
 "Language: pl_PL\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
 "X-Poedit-Basepath: ../..\n"
-"X-Generator: Poedit 2.4.1\n"
+"X-Generator: Poedit 3.0\n"
 "X-Poedit-SearchPath-0: .\n"
 
 #. [attack]: type=impact
@@ -1119,6 +1119,8 @@ msgid ""
 "Compared to other drakes, Drake Arbiters have a higher resistance to "
 "‘pierce’ attacks."
 msgstr ""
+"W porównaniu z innymi smokami, smoczy strażnicy mają większą odporność na "
+"ataki ‘kłujące’."
 
 #. [attack]: type=blade
 #. [attack]: type=pierce
@@ -1355,13 +1357,6 @@ msgstr "Smok płomienny"
 
 #. [unit_type]: id=Drake Flare, race=drake
 #: data/core/units/drakes/Flare.cfg:17
-#, fuzzy
-#| msgid ""
-#| "Respected for the heat of their flame and revered for their charisma, "
-#| "Flares aspire to become great leaders of their people, both in war and "
-#| "peace. Though a small isolated tribe will sometimes accept a Flare as a "
-#| "leader, they are more often seen leading small war parties or mediating "
-#| "disputes with a subtle hand."
 msgid ""
 "Respected for the heat of their flame and revered for their charisma, Flares "
 "aspire to become great leaders of their people, both in war and in peace. "
@@ -1369,11 +1364,11 @@ msgid ""
 "they are more often seen leading small war parties or mediating disputes "
 "with a subtle hand."
 msgstr ""
-"Szanowane za żar wewnętrznego ognia i charyzmę smoki płomienne dążą do tego, "
-"by pewnego dnia zostać prawdziwymi przywódcami swojego ludu podczas wojny i "
-"pokoju. Choć zdarza się, że przewodzą niewielkim, odizolowanym plemionom, "
-"częściej bywają widywane na czele mniejszych wypraw wojennych lub podczas "
-"cierpliwego rozstrzygania sporów."
+"Szanowane za żar wewnętrznego ognia i charyzmę, smoki płomienne dążą do "
+"tego, by pewnego dnia zostać prawdziwymi przywódcami swojego ludu podczas "
+"wojny i pokoju. Choć zdarza się, że przewodzą niewielkim, odizolowanym "
+"plemieniem, częściej bywają widywane na czele mniejszych wypraw wojennych "
+"lub podczas cierpliwego rozstrzygania sporów."
 
 #. [unit_type]: id=Drake Glider, race=drake
 #: data/core/units/drakes/Glider.cfg:4
@@ -1468,14 +1463,6 @@ msgstr "Smok przestworzy"
 
 #. [unit_type]: id=Sky Drake, race=drake
 #: data/core/units/drakes/Sky.cfg:17
-#, fuzzy
-#| msgid ""
-#| "The lightweight ceramic armor that the Sky Drakes wear is a symbol of "
-#| "their rank, glazed silver to honor their connection to the air. As "
-#| "leaders of the hunt, they are often away from their homes for long "
-#| "periods of time. Each tries to bring as much game home as possible, "
-#| "competing to gain the respect of their tribe and, just possibly, time "
-#| "with one of the closely-guarded drake females."
 msgid ""
 "The lightweight ceramic armor that the Sky Drakes wear is a symbol of their "
 "rank, glazed silver to honor their connection to the air. As leaders of the "
@@ -1487,8 +1474,7 @@ msgstr ""
 "sprawą srebrnej powłoki, która podkreśla ich więź z powietrzem. Smoki te "
 "pełnią obowiązki łowczych i często długo przebywają poza domem. Każdy stara "
 "się przynieść z polowania jak najwięcej zwierzyny, współzawodnicząc z innymi "
-"o szacunek plemienia, a może nawet okazję do spotkania z jedną z bacznie "
-"strzeżonych smoczyc."
+"o szacunek plemienia."
 
 #. [unit_type]: id=Drake Thrasher, race=drake
 #: data/core/units/drakes/Thrasher.cfg:4
@@ -1543,6 +1529,8 @@ msgid ""
 "Compared to other drakes, Drake Wardens have a higher resistance to ‘pierce’ "
 "attacks."
 msgstr ""
+"W porównaniu z innymi smokami, smoczy gwardziści mają większą odporność na "
+"ataki ‘kłujące’."
 
 #. [unit_type]: id=Drake Warrior, race=drake
 #: data/core/units/drakes/Warrior.cfg:4
@@ -1568,10 +1556,8 @@ msgstr ""
 
 #. [unit_type]: id=Dune Alchemist, race=dunefolk
 #: data/core/units/dunefolk/Alchemist.cfg:8
-#, fuzzy
-#| msgid "Dune Blademaster"
 msgid "Dune Alchemist"
-msgstr "Wydmowy mistrz ostrza"
+msgstr "Wydmowy alchemik"
 
 #. [unit_type]: id=Dune Alchemist, race=dunefolk
 #: data/core/units/dunefolk/Alchemist.cfg:25
@@ -1586,11 +1572,22 @@ msgid ""
 "much so that almost every caravan will hire or train a few alchemists to "
 "maintain a reasonable level of threat at all times."
 msgstr ""
+"Dla ludów pustyni alchemia jest nie tyle filozofią czy nauką, lecz bardziej "
+"rozwinięciem botaniki, którą zajmowali się zielarze. Jednak, w "
+"przeciwieństwie do swoich pobratymców, wielu alchemików zamiast skupiać się "
+"na ziołach leczących, pracuje nad wykorzystaniem przeróżnych roślin i jadu "
+"występujących naturalnie stworzeń, by wynajdywać niezwykle zabójcze "
+"trucizny. Mimo swojej przydatności w osłabianiu mocnych przeciwników, "
+"rzemiosło to jest postrzegane przez pozostałych ludzi pustyni dość "
+"przezornie, jako potencjalne narzędzie szpiegów i skrytobójców. Jednocześnie "
+"sztuka ta zapewnia olbrzymią przewagę polityczną, przez co właściciel prawie "
+"każdej karawany ma u swojego boku kilku alchemików, by w każdym momencie "
+"stanowić dla wrogów odpowiedni poziom zagrożenia."
 
 #. [attack]: type=pierce
 #: data/core/units/dunefolk/Alchemist.cfg:44
 msgid "blowgun"
-msgstr ""
+msgstr "dmuchawka"
 
 #. [unit_type]: id=Dune Apothecary, race=dunefolk
 #: data/core/units/dunefolk/Apothecary.cfg:8
@@ -1612,6 +1609,17 @@ msgid ""
 "these men possess a special role in supporting the remedial arts of their "
 "kind."
 msgstr ""
+"Nawet w sytuacji braku konfliktów zbrojnych, infekcje i rany są chlebem "
+"powszednim życia w surowym, pustynnym środowisku. W szczególności, "
+"uzdrowiciele ludów pustyni potrzebują o wiele większej wiedzy na temat ziół "
+"i leków niż pozostałe rasy. Ich brak magii w połączeniu z niewielką ilością "
+"flory na pustyni skutkuje ogromnymi trudnościami w zakresie leczenia "
+"większości dolegliwości i chorób trapiących ludzi pustyni. Aptekarze z "
+"reguły mają większą wiedzę i więcej doświadczenia z podróży w porównaniu z "
+"mniej doświadczonymi braćmi, lecz ich główna siła tkwi w zdolnościach "
+"radzenia sobie z niełatwym zadaniem dbania o cenne rośliny lecznicze. Ludzie "
+"pustyni nie znają sposobu na leczenie się bez niezbędnych składników, przez "
+"co aptekarze ogrywają ważną rolę we wspieraniu ludu swoją leczniczą sztuką."
 
 #. [unit_type]: id=Dune Blademaster, race=dunefolk
 #: data/core/units/dunefolk/Blademaster.cfg:8
@@ -1640,6 +1648,25 @@ msgid ""
 "offensive swordsmanship and are capable of subverting even the strongest "
 "fortifications."
 msgstr ""
+"Pustynni fechmistrze są znani z pewnej ich zabawy, zwanej 'Wyzwaniem "
+"Laeqad'. W trakcie tej zabawy zadaniem uczestników jest przecinanie na pół "
+"lecące w ich stronę Laeqady (grube, długie na odległość kilku mieczy "
+"tyczki), które masowo są w nich miotane. Trudnością tej rozrywki jest częsta "
+"niesymetryczność miotanych tyczek, które o ile są w większości twarde, to "
+"jednak mają w sobie cienką linię, w której miejscu tyczka jest bardziej "
+"miękka i łatwiejsza do ścięcia, jeśli będzie się celować w środek. Nawet dla "
+"najbardziej zaprawionego w boju fechmistrza ścięcie Laeqad w całej jej "
+"długości stanowi nie lada wyczyn, mając na względzie niewiarygodną precyzję "
+"wymaganą do celowania ostrzem w miękką część tyczki. Mimo to dla prawdziwego "
+"mistrza miecza, przecięcie kilku Laequadów w dość szybkim odstępie czasu "
+"jest rzeczą normalną. Niektórzy z nich potrafią nawet przeciąć dwie lub trzy "
+"tyczki na raz, jednym celnym machnięciem ostrza.\n"
+"\n"
+"Ten rodzaj zabawy ma jednak bardziej praktyczne zastosowanie w prawdziwej "
+"walce. Nie ma znaczenia opancerzenie przeciwnika lub jego zdolności "
+"unikania, gdyż ochrona mało znaczy dla prawdziwego mistrza ostrzy. Ci "
+"wojownicy są bez wątpienia mistrzami ofensywnego fechtunku i są w stanie "
+"przebić się nawet przez najwytrzymalsze umocnienia."
 
 #. [attack]: type=blade
 #: data/core/units/dunefolk/Blademaster.cfg:29
@@ -1667,25 +1694,30 @@ msgid ""
 "applicability of such a substance to warfare and regularly employ fire "
 "spouting weapons to sow chaos among their enemies."
 msgstr ""
+"Najczęściej zapominanym zagrożeniem czyhającym na podróżujących przez "
+"pustynię jest mroźna temperatura, która nocami nawiedza piaski. Żeby temu "
+"przeciwdziałać, ludzie pustyni zazwyczaj wykorzystują bardzo łatwopalne soki "
+"drzewa Sanbaar, które płoną powoli i łagodnie w małych ilościach, dając "
+"umiarkowaną ilość ciepła i światła. Jednak w dużych ilościach, soki drzewa "
+"Sanbaar są jeszcze bardziej łatwopalne, a płomienie potrafią być bardzo "
+"gwałtowne. Ludzie pustyni szybko dostrzegli potencjał tej substancji do "
+"celów wojennych i często używają broni miotających płomienie, by siać chaos "
+"w szeregach wroga."
 
 #. [attack]: type=fire
 #: data/core/units/dunefolk/Burner.cfg:41
 msgid "tar bomb"
-msgstr ""
+msgstr "bomba smolista"
 
 #. [female]
 #: data/core/units/dunefolk/Burner.cfg:98
-#, fuzzy
-#| msgid "Dune Burner"
 msgid "female^Dune Burner"
-msgstr "Wydmowy spalacz"
+msgstr "Wydmowa spalaczka"
 
 #. [unit_type]: id=Dune Captain, race=dunefolk
 #: data/core/units/dunefolk/Captain.cfg:8
-#, fuzzy
-#| msgid "Dune Cataphract"
 msgid "Dune Captain"
-msgstr "Wydmowy katafrakt"
+msgstr "Wydmowy kapitan"
 
 #. [unit_type]: id=Dune Captain, race=dunefolk
 #: data/core/units/dunefolk/Captain.cfg:23
@@ -1699,6 +1731,14 @@ msgid ""
 "for most soldiers, but they still readily follow the expert tactical "
 "direction of their captains."
 msgstr ""
+"Pochodzący tradycyjnie z rodzin szlacheckich lub wojskowych, kapitanowie są "
+"sercem większości plutonów ludów pustyni. Częściej wybierani na podstawie "
+"pochodzenia niż zasług, oficerowie są względnie słabi we władaniu ostrzem, "
+"lecz nieźle wyszkoleni w dziedzinie taktyki. Ich zdolności polegają bardziej "
+"na kierowaniu wojsk na korzystne strategicznie pozycje niż na bezpośrednim "
+"podnoszeniu morale. Obecność takiego dowódcy rzadko inspiruje żołnierzy, "
+"lecz ci mimo to chętnie podążają za fachowymi wskazówkami taktycznymi swoich "
+"kapitanów."
 
 #. [unit_type]: id=Dune Cataphract, race=dunefolk
 #: data/core/units/dunefolk/Cataphract.cfg:8
@@ -1720,6 +1760,19 @@ msgid ""
 "these riders in the slightest, and the displaced air of a descending mace is "
 "the last sound they hear."
 msgstr ""
+"Katafrakci są wybitnym rodzajem jeźdźców, którzy ujeżdżają wierzchowce "
+"charakteryzujące się małą szybkością i wytrzymałością, ale za to posiadają "
+"ogromną siłę. Uzbrojeni w lancę i charakterystyczne buzdygany, wojownicy ci "
+"uderzają zwykle w drugim natarciu, tuż po pierwszym ataku. Kiedy siły "
+"przeciwnika są już osłabione i zajęte walką z szeregiem piechoty, na "
+"horyzoncie ukazuje się przerażający widok grupy katafraktów ustawiającej się "
+"w linii i podnoszącej lance w gotowości. Ludzie pustyni rozchodzą się "
+"tworząc lukę, przez którą ci potężni jeźdźcy szarżują na przeciwników, "
+"przebijając się prosto przez ich formacje i zadając im morderczy cios "
+"jednym, pojedynczym atakiem. Nieszczęśnicy, którym przyjdzie do głowy "
+"uciekać z pola bitwy szybko odkryją, że jeźdźców tych nie powstrzymają ani "
+"piaski, ani wzgórza. Wtedy jedyne i ostatnie co usłyszą, to świst "
+"opadającego na nich buzdyganu."
 
 #. [attack]: type=pierce
 #: data/core/units/dunefolk/Cataphract.cfg:64
@@ -1748,13 +1801,19 @@ msgid ""
 "longer act only as scouts for probing enemies, but are skilled enough to be "
 "effective flankers or potent shock attackers."
 msgstr ""
+"Powoli tocząca się karawana na środku pustyni jest głównym celem bandytów i "
+"rabusi. W celu własnej ochrony, ludzie pustyni zatrudniają specjalnych "
+"wojowników na potrzeby zwiadu i odpierania ewentualnych zagrożeń. Robiąc to "
+"ci wojownicy nie tylko chronią cenne karawany, ale również podkradają zasoby "
+"potencjalnych napastników dla siebie. Zatrudnieni do wojaczki, odkrywcy nie "
+"tylko służą za zwiadowców do wyszukiwania wrogów, ale również mają "
+"wystarczająco dużo umiejętności by być solidnymi jednostkami do flankowania "
+"lub ataku z zaskoczenia."
 
 #. [unit_type]: id=Dune Falconer, race=dunefolk
 #: data/core/units/dunefolk/Falconer.cfg:15
-#, fuzzy
-#| msgid "female^Necromancer"
 msgid "female^Dune Falconer"
-msgstr "Nekromantka"
+msgstr "Wydmowa sokolniczka"
 
 #. [unit_type]: id=Dune Falconer, race=dunefolk
 #: data/core/units/dunefolk/Falconer.cfg:38
@@ -1773,18 +1832,30 @@ msgid ""
 "the least, forcing them to abandon their efforts on offense in order to "
 "defend themselves properly."
 msgstr ""
+"Mimo ogromnego uznania pośród ludów pustyni, sztuka sokolnictwa jest dość "
+"rzadko spotykana ze względu na czas i umiejętności niezbędne do "
+"odpowiedniego wyszkolenia ptaków. Sokolnicy najczęściej używają swojego "
+"rzemiosła na potrzeby sportu lub polowania, głównie wysyłając sokoły na "
+"zwiad w poszukiwaniu zwierzyny i wody na otwartych wydmach. Ptaki te mogą "
+"być również użyte w konfliktach zbrojnych jeśli sokolnika uda się przekonać, "
+"by zaryzykował życie lub zdrowie swojego pupila na potrzeby walki.\n"
+"\n"
+"W trakcie bitwy sokół może pomagać swojemu panu atakując przeciwnika swoimi "
+"ostrymi pazurami albo wzlatując wysoko w niebo, latając w kółko i atakując "
+"przeciwnika w momencie, gdy ten będzie miał odwróconą uwagę. "
+"Przekierowywanie uwagi wojownika pomiędzy dwoma różnymi frontami może być "
+"lekko mówiąc rozpraszające i może zmusić go do zaprzestania ofensywy by móc "
+"się skutecznie obronić przed zagrożeniami."
 
 #. [attack]: type=blade
 #: data/core/units/dunefolk/Falconer.cfg:152
-#, fuzzy
-#| msgid "Falcon"
 msgid "falcon"
-msgstr "Jastrząb"
+msgstr "sokół"
 
 #. [unit_type]: id=Dune Firetrooper, race=dunefolk
 #: data/core/units/dunefolk/Firetrooper.cfg:8
 msgid "Dune Firetrooper"
-msgstr ""
+msgstr "Wydmowy miotacz ognia"
 
 #. [unit_type]: id=Dune Firetrooper, race=dunefolk
 #: data/core/units/dunefolk/Firetrooper.cfg:22
@@ -1798,24 +1869,31 @@ msgid ""
 "of choice. The resulting destruction is more than enough to justify the use "
 "of such a hazardous chemical."
 msgstr ""
+"Z rafinowania soków z drzewa Sanbaar można przy pomocy bardzo "
+"skomplikowanego procesu destylacji otrzymać niezwykle łatwopalną naftę, "
+"który płonie o wiele mocniej nawet od soków, z których został uzyskany. "
+"Oczywiście tego typu substancja jest niezwykle niebezpieczna z powodu jej "
+"niebywale łatwopalnej natury. Większość osób unika jej używania z samego "
+"wysokiego ryzyka poparzenia, lecz zdarza się spotkać kilka ciekawych "
+"osobników, którzy jako broń wybierają właśnie miotacze ognia napełniane "
+"czystą naftą. Zniszczenie, jakie jest wynikiem użycia tak niebezpiecznych "
+"substancji chemicznych, jest dla nich wystarczającym uzasadnieniem."
 
 #. [attack]: type=fire
 #: data/core/units/dunefolk/Firetrooper.cfg:95
 #: data/core/units/dunefolk/Scorcher.cfg:42
 msgid "flamethrower"
-msgstr ""
+msgstr "miotacz ognia"
 
 #. [female]
 #: data/core/units/dunefolk/Firetrooper.cfg:149
 msgid "female^Dune Firetrooper"
-msgstr ""
+msgstr "Wydmowa miotaczka ognia"
 
 #. [unit_type]: id=Dune Harrier, race=dunefolk
 #: data/core/units/dunefolk/Harrier.cfg:8
-#, fuzzy
-#| msgid "Dune Harrier"
 msgid "female^Dune Harrier"
-msgstr "Wydmowy sokół"
+msgstr "Wydmowy jastrząb"
 
 #. [unit_type]: id=Dune Harrier, race=dunefolk
 #: data/core/units/dunefolk/Harrier.cfg:25
@@ -1831,6 +1909,19 @@ msgid ""
 "thrust of spears is often enough to severely cripple the target, allowing "
 "the main Dunefolk force to close in and finish the job."
 msgstr ""
+"Mimo, że jastrzębie mogą równie skutecznie uprzykrzać życie ich wrogów jak "
+"wędrowcy, to ich epitet pochodzi od nazwy ptaków, które służą ludziom "
+"pustyni za posłańców pozwalających im utrzymywać kontakt z resztą wojsk.\n"
+"Spotykani najczęściej za linią wroga, jastrzębie najczęściej mierzą się z "
+"zadaniem zbierania cennych danych wywiadowczych na temat ruchu wojsk wroga, "
+"które same w sobie potrafią dać armii ludzi pustyni ogromną przewagę i "
+"możliwość skutecznego przemanewrowania jednostek nieprzyjaciela. Kiedy "
+"jednak nadarza się do tego sposobna okazja, ci zwinni wojownicy gromadzą się "
+"i podstępnie atakują swoich przeciwników od tyłu w najbardziej osłabione "
+"miejsca - linie zaopatrzenia lub flanki. Deszcz bol w połączeniu z "
+"przeszywającymi pchnięciami włóczni z reguły wystarcza do tego, by "
+"skutecznie okaleczyć cel i dać miejsce głównej armii ludzi pustyni na "
+"dokończenie dzieła."
 
 #. [unit_type]: id=Dune Herbalist, race=dunefolk
 #: data/core/units/dunefolk/Herbalist.cfg:8
@@ -1853,13 +1944,24 @@ msgid ""
 "of the various flora and fauna that supply their work. Hardened by their "
 "travels, many of these men are even able to heal themselves."
 msgstr ""
+"Odpowiedzialni za opiekę nad chorymi i rannymi ludźmi pustyni, zielarze mają "
+"zarówno umiejętności medyczne, pozwalające im leczyć przeróżne schorzenia, "
+"jak i umiejętności do znajdywania i zbierania leczniczych ziół. Ci robią to "
+"z różnych pobudek; część jako formę przygody, inni jako dobre źródło "
+"zarobku, a jeszcze inni jako powinność wobec swojej społeczności. Bez "
+"względu na pobudki, ci zielarze są niezastąpionymi członkami społeczności "
+"ludów pustyni i są szczególnie przydatni ze względu na ich zdolności "
+"szybkiego leczenia w trakcie bitew lub przepraw przez pustynię.\n"
+"\n"
+"Nawet pośród nomadycznych ludzi pustyni, zielarze dużo podróżują w "
+"poszukiwaniu różnorodnej flory i fauny, która pomoże im w ich rzemiośle. "
+"Większość z tych ludzi dzięki swojemu zahartowaniu w licznych wędrówkach, "
+"posiadła nawet umiejętności leczenia samych siebie."
 
 #. [unit_type]: id=Dune Horse Archer, race=dunefolk
 #: data/core/units/dunefolk/Horse_Archer.cfg:8
-#, fuzzy
-#| msgid "Dune Scorcher"
 msgid "Dune Horse Archer"
-msgstr "Wydmowy spopielacz"
+msgstr "Wydmowy łucznik konny"
 
 #. [unit_type]: id=Dune Horse Archer, race=dunefolk
 #: data/core/units/dunefolk/Horse_Archer.cfg:21
@@ -1872,13 +1974,18 @@ msgid ""
 "long-ranged arrows is of great use to maintain communication among the "
 "Dunefolk armies."
 msgstr ""
+"Mimo dość niskiej liczebności, część jeźdźców preferuje łucznictwo jako "
+"technikę walki. Szybcy i nieuchwytni, ci jeźdźcy są ekspertami w nękaniu "
+"mniej mobilnych przeciwników gradem strzał czy wyławianiu z daleka "
+"uciekających jednostek wroga. Mimo braku treningu w sztuce infiltracji i "
+"szpiegostwa, ich zdolności przekazywania wiadomości pomiędzy dużymi "
+"odległościami przy pomocy dalekosiężnych strzał są bardzo przydatne na "
+"potrzeby utrzymania komunikacji między armiami ludzi pustyni."
 
 #. [unit_type]: id=Dune Luminary, race=dunefolk
 #: data/core/units/dunefolk/Luminary.cfg:8
-#, fuzzy
-#| msgid "Dune Burner"
 msgid "Dune Luminary"
-msgstr "Wydmowy spalacz"
+msgstr "Wydmowy luminarz"
 
 #. [unit_type]: id=Dune Luminary, race=dunefolk
 #: data/core/units/dunefolk/Luminary.cfg:25
@@ -1897,6 +2004,20 @@ msgid ""
 "proven, but the fact remains that some Luminaries seem to hold much more "
 "influence than their abilities should afford."
 msgstr ""
+"Na pierwszy rzut oka trudno stwierdzić, co odróżnia luminarzy od innych "
+"uzdrowicieli ludzi pustyni. Z pewnością luminarzy mogą być nieznacznie "
+"bardziej pojętni, obyci w podróży lub uzdolnieni w walce w porównaniu ze "
+"zwykłymi zielarzami czy aptekarzami, lecz różnica jest zazwyczaj dość "
+"niewielka. Nie zmienia to jednak faktu, że \"Luminarz\" to formalny tytuł "
+"nadawany najbardziej zasłużonym uzdrowicielom ludzi pustyni, który są dzięki "
+"temu obdarzeni zarówno ogromnym szacunkiem, jak i również równie ogromną "
+"zazdrością.\n"
+"\n"
+"Krążą pogłoski, że część luminarzy należy do pewnej tajemnej organizacji. Ci "
+"tak zwani \"Dostojnicy\" gromadzą ogromną ilość wiedzy uważanej powszechnie "
+"za zakazaną, jak i doradzają z ukrycia wielu przywódcom ludzi pustyni. Nigdy "
+"nie zostało to oficjalnie udowodnione, lecz faktem jest, że część luminarzy "
+"zdaje się mieć więcej wpływów niż mogłyby na to wskazywać ich zdolności."
 
 #. [unit_type]: id=Dune Marauder, race=dunefolk
 #: data/core/units/dunefolk/Marauder.cfg:11
@@ -1918,6 +2039,20 @@ msgid ""
 "For this reason, they are sometimes hired by small armies or wealthier "
 "caravans as a deterrent to unwanted raids."
 msgstr ""
+"Są tacy, którzy uważają siebie za doskonale przystosowanych do życia jako "
+"grabieżcy i często mogą nawet formować własne klany składające się z osób, "
+"które myślą podobnie jak oni. Jeźdźcy ci przemierzają pustynię w "
+"poszukiwaniu nieostrożnych podróżników czy wartościowych karawan i zarabiają "
+"na życie plądrowaniem i kradzieżą. Ponieważ nie posiadają oni żadnych "
+"konkretnych specjalności, nie są ani najsilniejszymi wojownikami, ani "
+"najzwinniejszymi łucznikami, lecz mimo to nie powinno się lekceważyć ich "
+"zwrotności, która czyni maruderów jednymi z najgroźniejszych przeciwników na "
+"pustyni. Ich skoordynowane ataki potrafią wybić do nogi cały średniej "
+"wielkości obóz bez możliwości odpowiedzi ze strony obrońców, a w przypadku "
+"silniejszych przeciwników, na których brutalna siła nie wystarczy, potrafią "
+"wytrwać dzięki swoim partyzanckim taktykom. Z tego względu maruderzy są "
+"czasami wynajmowani przez mniejsze armie lub bogatsze karawany do "
+"odstraszania potencjalnych napastników."
 
 #. [attack]: type=fire
 #: data/core/units/dunefolk/Marauder.cfg:61
@@ -1928,10 +2063,8 @@ msgstr "pochodnia"
 
 #. [unit_type]: id=Dune Paragon, race=dunefolk
 #: data/core/units/dunefolk/Paragon.cfg:8
-#, fuzzy
-#| msgid "Dune Marauder"
 msgid "Dune Paragon"
-msgstr "Wydmowy maruder"
+msgstr "Wydmowy cnotliwiec"
 
 #. [unit_type]: id=Dune Paragon, race=dunefolk
 #: data/core/units/dunefolk/Paragon.cfg:22
@@ -1958,6 +2091,31 @@ msgid ""
 "acuity who may then be considered as candidates to lead the next generation "
 "of Dunefolk."
 msgstr ""
+"W wielu miastach-państwach należących do ludzi pustyni, procedura wyboru "
+"kolejnego pokolenia przywódców to długi proces, który trwa wiele lat. W "
+"każdym pokoleniu wybiera się kilku szczególnie uzdolnionych młodzieńców o "
+"szlacheckim pochodzeniu na specjalną kuratelę. Jedzenie, spanie i "
+"trenowanie; w ten sposób ci wojownicy uczą się żyć i oddychać jak prawdziwi "
+"fechmistrze. Dzięki temu treningowi, fechtunek staje się nie tylko "
+"rozwinięciem ich osobowości, lecz również głównym elementem ich tożsamości. "
+"Począwszy od wieku młodzieńczego, dziesięć lat intensywnego treningu toruje "
+"kandydatom drogę do ostatecznego testu: serii pojedynków na śmierć i życie "
+"toczonych pomiędzy kandydatami podzielonymi na pary. Po zakończeniu "
+"pojedynkowej zawieruchy, spośród wszystkich kandydatów przy życiu zostaje "
+"tylko ośmiu. Ci ludzie otrzymują wtedy tytuł Kal (lub Kalai, jeśli mowa o "
+"grupie).\n"
+"\n"
+"Kiedy wielcy przywódcy ludów pustyni muszą mieć opracowaną do perfekcji "
+"szermierkę, kasta rządząca musi wiedzieć o wiele więcej niż tylko jak machać "
+"mieczem. Wymagająca wiele wysiłku musztra jest zazwyczaj połączona z "
+"trwającą kilka lat tułaczką przez pustynie lub poświęceniem umysłu na rzecz "
+"nauk ścisłych. Trening ten ma na celu znalezienie własnej ścieżki do "
+"oświecenia. Bez względu na okoliczności, pod koniec drugiej części treningu "
+"pozostali Kalai muszą powrócić do swych domów i zademonstrować ich wiedzę "
+"przed starszymi z obecnej kasty rządzącej. Ci, którzy zostaną uznani godnymi "
+"otrzymują tytuł Cnotliwców - wojowników o doskonałej sile i wiedzy, którzy "
+"mogą już być uznawani za kandydatów do przewodnictwa kolejnym pokoleniom "
+"ludzi pustyni."
 
 #. [attack]: type=impact
 #: data/core/units/dunefolk/Paragon.cfg:42
@@ -1981,6 +2139,14 @@ msgid ""
 "Dunefolk, capable of outpacing nearly anything they might encounter in the "
 "sandy deserts."
 msgstr ""
+"Łupieżcy mimo, że są rzadko spotykani pośród zorganizowanych armii, są "
+"trzonem nomadycznych ludzi pustyni. To oni regularnie szykują zasadzki na "
+"wrogie karawany i obozy w trakcie nocy. W tym przypadku surowa moc niewiele "
+"znaczy. Największym priorytetem jest szybkość. Szybkie uderzenie i sianie "
+"jak największego chaosu w jak najkrótszym czasie pozwala łupieżcom wkraczać "
+"na teren wroga i go opuszczać w błyskawicznym tempie, bez obaw o kontratak. "
+"Łupieżcy to najszybsi ludzie pustyni, którzy są zdolni prześcignąć "
+"praktycznie wszystko, co można napotkać na pustyni."
 
 #. [unit_type]: id=Dune Rider, race=dunefolk
 #: data/core/units/dunefolk/Rider.cfg:8
@@ -2000,6 +2166,17 @@ msgid ""
 "is what allows these horsemen to be so effective and versatile out on the "
 "rolling dunes."
 msgstr ""
+"Ludzie pustyni to doskonali hodowcy koni, którzy wyhodowali wiele różnych "
+"gatunku wierzchowców do pełnienia różnych funkcji. Te, która są "
+"wykorzystywane do ciężkiej pracy są trenowane pod kątem siły, natomiast te "
+"przeznaczone na potrzeby podróży czy do karawan trenuje się pod kątem "
+"wytrzymałości. Na potrzeby wojenne najlepsze są zazwyczaj konie z obiema "
+"tymi cechami, lecz zdolność do łatwego i szybkiego przemierzania pustyni "
+"jest najważniejsza. Jeźdźcy ujeżdżający te konie pełnią głównie funkcję "
+"zwiadowców i posłańców, od czasu do czasu pomagając również sojusznikom "
+"atakując osłabione linie wroga. Kluczowa w tej sytuacji duża manewrowość "
+"sprawia, że jeźdźcy ci są tak efektywni i wszechstronni na wydmowych "
+"terenach."
 
 #. [unit_type]: id=Dune Rover, race=dunefolk
 #: data/core/units/dunefolk/Rover.cfg:8
@@ -2008,14 +2185,6 @@ msgstr "Wydmowy wędrowiec"
 
 #. [unit_type]: id=Dune Rover, race=dunefolk
 #: data/core/units/dunefolk/Rover.cfg:20
-#, fuzzy
-#| msgid ""
-#| "Jundi in many ways represent the ideal Khalifate unit; flexible, mobile, "
-#| "equally effective in defense and offense as well as in ranged or close "
-#| "combat. They are most comfortable operating in terrain and environments "
-#| "common to them; the deserts and hills of their southern lands. Moreover "
-#| "they fight best at dawn or dusk, corresponding to the time when desert "
-#| "temperatures are the most reasonable."
 msgid ""
 "Originating from the nomadic wanderers of the open deserts, rovers are the "
 "representation of the most well-balanced Dunefolk soldier: flexible, mobile, "
@@ -2026,12 +2195,16 @@ msgid ""
 "readily to warfare. Their unique trait of fighting best at dawn or dusk "
 "corresponds with the time when desert temperatures are the most habitable."
 msgstr ""
-"Jundi reprezentują idealną jednostkę Kalifatu w wielu aspektach; elastyczni, "
-"mobilni, równie efektywni w obronie, w ataku, jak i w walce wręcz lub na "
-"odległość. Są najlepiej oswojeni z walką w terenie i środowisku dla nich "
-"zwyczajnym —  na pustyniach i wzgórzach południowych ziem. Poza tym, walczą "
-"oni najlepiej o świcie lub o zmierzchu, gdy temperatura na pustyni jest "
-"umiarkowana."
+"Pochodząc od nomadycznych podróżników przemierzających pustynię, wędrowcy są "
+"idealnym przykładem najbardziej zbalansowanego żołnierza ludzi pustyni: "
+"wszechstronnego, mobilnego, równie skutecznego w obronie, jak i ofensywie, "
+"tak na daleki dystans, jak i w walce bezpośredniej. Są doświadczonymi "
+"łowcami i tropicielami oraz wytrwałymi mieszkańcami pustyni czy wzgórz, "
+"które służą im za dom. Pomimo braku formalnego treningu jako wojska, "
+"umiejętności wędrowców do przetrwania w pustyni doskonale sprawdzają się w "
+"wojaczce. Ich unikalna zdolność do najefektywniejszej walki w czasie "
+"zmierzchu lub świtu związana jest ściśle z temperaturami, które w tym czasie "
+"są najbardziej znośne."
 
 #. [unit_type]: id=Dune Scorcher, race=dunefolk
 #: data/core/units/dunefolk/Scorcher.cfg:9
@@ -2049,20 +2222,24 @@ msgid ""
 "in their work, these archers relish igniting great swaths of flame on the "
 "battlefield, though this sometimes also results in unintended friendly fire."
 msgstr ""
+"Przezwisko spopielaczy nie pochodzi od sianej przez nich destrukcji we "
+"wrogich formacjach, lecz od ich wyglądu pełnego poparzeń. W ramach ciągłych "
+"eksperymentów z ich bronią, większość spopielaczy po jakimś czasie "
+"przypadkowo przekracza pewne granice i zostaje poparzonych bardzo lotnym "
+"sokiem z drzewa Sanbaar, który napędza ich broń. Naznaczeni licznymi śladami "
+"poparzeń, uważanymi przez nich za powody do dumy, ci strzelcy odczuwają "
+"wielką rozkosz z możliwości rozgrzania atmosfery w trakcie bitew mimo, że "
+"czasami kończy się to również niezamierzonym zapłonem ich sojuszników."
 
 #. [female]
 #: data/core/units/dunefolk/Scorcher.cfg:95
-#, fuzzy
-#| msgid "Dune Scorcher"
 msgid "female^Dune Scorcher"
-msgstr "Wydmowy spopielacz"
+msgstr "Wydmowa spopielaczka"
 
 #. [unit_type]: id=Dune Skirmisher, race=dunefolk
 #: data/core/units/dunefolk/Skirmisher.cfg:8
-#, fuzzy
-#| msgid "Dune Skirmisher"
 msgid "female^Dune Skirmisher"
-msgstr "Wydmowy harcownik"
+msgstr "Wydmowa harcowniczka"
 
 #. [unit_type]: id=Dune Skirmisher, race=dunefolk
 #: data/core/units/dunefolk/Skirmisher.cfg:21
@@ -2077,13 +2254,21 @@ msgid ""
 "assassinating key units, or pincering an enemy formation into a "
 "disadvantageous position."
 msgstr ""
+"Urodzeni i wychowani na piaskach pustyni, harcownicy są przyzwyczajeni do "
+"nieznośnego, pustynnego gorąca czy nieprzyjaznego terenu. W porównaniu nawet "
+"z innymi ludźmi pustyni, ci nomadzi są nienaturalnie zwinni na niestabilnych "
+"wydmach, dzięki czemu są w stanie chronić swoje stada i polować nawet na "
+"najbardziej jałowych pustkowiach. Kiedy uczestniczą w bitwach, ta sama "
+"zwinność pozwala im zarówno prześlizgiwać się przez linie wroga, jak i "
+"unikać różnych skierowanych w nich ataków. Te umiejętności czynią z "
+"harcowników efektywnych sabotażystów, którzy są zdolni do odcinania dróg "
+"ucieczki czy linii zaopatrzenia, zabijaniu kluczowych jednostek czy "
+"spychaniu wrogich formacji na mało korzystne dla nich pozycje."
 
 #. [unit_type]: id=Dune Sky Hunter, race=dunefolk
 #: data/core/units/dunefolk/Sky_Hunter.cfg:14
-#, fuzzy
-#| msgid "Merman Hunter"
 msgid "female^Dune Sky Hunter"
-msgstr "Mermen łowca"
+msgstr "Wydmowa podniebna łowczyni"
 
 #. [unit_type]: id=Dune Sky Hunter, race=dunefolk
 #: data/core/units/dunefolk/Sky_Hunter.cfg:38
@@ -2099,11 +2284,22 @@ msgid ""
 "tools for combat, the eagles can live for up to a few decades and are often "
 "precious companions to their dunefolk partners."
 msgstr ""
+"Często mylone z młodymi rokami, pustynne orły to ogromne, majestatyczne "
+"ptaki łowne, które są bardzo agresywne i prawie niemożliwe do oswojenia. W "
+"dziczy orły żywią się większymi zdobyczami, takimi jak wilki, małe konie "
+"albo, jak to się zwykle mawia, niegrzeczne dzieci. Potęga tych stworzeń "
+"sprawia, że ogromne trudności sprawia samo zbliżenie się do nich, na co "
+"decyduje się zazwyczaj niewielka ilość najbardziej uzdolnionych sokolników. "
+"W sytuacji, w której udaje się treserowi ptaków oswoić zwierzę, relacje "
+"między ptakiem a łowcą bardziej przypominają stosunek dwóch równych sobie "
+"istot do siebie niż typową relację właściciel-zwierzę. Służąc nie tylko za "
+"narzędzie do walki, orły potrafią żyć nawet kilka dekad i często są bardzo "
+"wartościowymi towarzyszami dla wielu spośród ludzi pustyni."
 
 #. [attack]: type=blade
 #: data/core/units/dunefolk/Sky_Hunter.cfg:150
 msgid "eagle"
-msgstr ""
+msgstr "orzeł"
 
 #. [unit_type]: id=Dune Soldier, race=dunefolk
 #: data/core/units/dunefolk/Soldier.cfg:8
@@ -2122,6 +2318,15 @@ msgid ""
 "spaced pattern, allowing them to assault and overwhelm clustered enemy lines "
 "by engaging them in quasi-single combat."
 msgstr ""
+"Tak jak większość kast ludzi pustyni poza bezpośrednią wojaczką pełni "
+"również inne praktyczne funkcje, miasta i karawany zazwyczaj trenują grupy "
+"żołnierzy nastawione tylko na walkę. Poprzez intensywne ćwiczenia i "
+"ostrzenie swoich umiejętności szermierki, ci wojownicy uczą się radzić w "
+"trudnych walkach w zwarciu i pokonywać w ten sposób swoich przeciwników. "
+"Typowa formacja ludzi pustyni korzysta z tych zdolności umieszczając "
+"żołnierzy w konkretnych odstępach, które pozwalają im atakować i otaczać "
+"zbite linie wroga poprzez wciąganie ich w swego rodzaju pojedynki jeden na "
+"jednego."
 
 #. [unit_type]: id=Dune Spearguard, race=dunefolk
 #: data/core/units/dunefolk/Spearguard.cfg:8
@@ -2142,6 +2347,18 @@ msgid ""
 "combat than their sword-wielding brethren, they are highly skilled with "
 "spear and shield and more than capable of repelling most advances."
 msgstr ""
+"Technika nacierania i wyciągania przeciwników w trakcie bitwy wymaga różnych "
+"stopni ofensywy i defensywy. Spośród tych dwóch, ludzie pustyni bez "
+"wątpienia cenią ofensywę jako bardziej kluczową w boju i z reguły skupiają "
+"się na trenowaniu dobrych fechmistrzów. Mimo to w każdej grupie wojowników "
+"można natknąć się na gromadę żołnierzy, która będzie wolała zamienić miecz "
+"na tarczę, by pełnić ważną funkcję obrońców. Na potrzeby ochrony ważnych "
+"linii zaopatrzenia czy punktów obserwacyjnych strażnicy są zazwyczaj "
+"umieszczani nieco za główną linią i są używany jako jednostki wspierające "
+"lub odstraszające przed atakami z flanki. Mimo, że ci wojownicy widzą mniej "
+"bezpośredniej walki niż chwytający za miecz bracia, to jednak ich "
+"umiejętności władania włócznią i tarczą są wystarczająco biegłe by odeprzeć "
+"większość skierowanych w nich ataków."
 
 #. [unit_type]: id=Dune Spearmaster, race=dunefolk
 #: data/core/units/dunefolk/Spearmaster.cfg:8
@@ -2170,13 +2387,32 @@ msgid ""
 "distinction, it is still a modicum of recognition for those who were "
 "prepared to die as nameless martyrs to protect their brethren."
 msgstr ""
+"Pośród armii ludzi pustyni największym prestiżem cieszą się mistrzowie "
+"fechtunku, przewodzący każdemu atakowi. Mimo wielu zaszczytów za wierną "
+"służbę w trakcie bitew ci, którzy noszą włócznię i tarczę są w większości "
+"zapomniani. Zazwyczaj w walce przydzielane są im najmniej przyjemne, nie "
+"zapewniające chwały czy rozgłosu role. Kiedy atak ludzi pustyni zawodzi i "
+"konieczny jest odwrót, oddział strażników zazwyczaj zostawiany jest z tyłu "
+"by odeprzeć ewentualne kontrofensywy. Mimo zapewniania całkiem solidnej "
+"obrony, linia defensywna zostaje w końcu przełamana a większość obrońców "
+"ginie w bezwzględnych szczękach wojny. W sytuacji, kiedy jednemu z obrońców "
+"uda się przeżyć i wrócić do odbudowującej się armii, ten jest zazwyczaj "
+"karcony za nieutrzymanie pozycji i za to, że nie zginął z resztą jego "
+"bezimiennych braci w boju. Niemniej jednak takie przypadki kończą się "
+"zaledwie upomnieniem, a wojownik ten jest z powrotem przyjmowany do armii i "
+"ma szansę wykorzystać swoje ciężko zarobione doświadczenie w kolejnych "
+"bitwach.\n"
+"\n"
+"\"Mistrz włóczni\" to nieformalny tytuł nadawany przez strażników kompanom, "
+"którym uda się wrócić po często samobójczej defensywie, którą ludzie pustyni "
+"praktykują by osłaniać jednostki w odwrocie. Tytuł ten mimo mało pochwalnego "
+"lub wyróżniającego brzmienia jest wciąż drobną namiastką uznania dla tych, "
+"którzy gotowi byli zginąć jako bezimienni męczennicy by chronić swoich braci."
 
 #. [unit_type]: id=Dune Strider, race=dunefolk
 #: data/core/units/dunefolk/Strider.cfg:8
-#, fuzzy
-#| msgid "female^Fugitive"
 msgid "female^Dune Strider"
-msgstr "Uciekinierka"
+msgstr "Wydmowa wędrowniczka"
 
 #. [unit_type]: id=Dune Strider, race=dunefolk
 #: data/core/units/dunefolk/Strider.cfg:21
@@ -2193,11 +2429,24 @@ msgid ""
 "striders are fairly fragile in direct combat and are easily taken down if "
 "left exposed."
 msgstr ""
+"Siła uderzenia każdej armii ludzi pustyni hamowana jest przez jedną sporą "
+"wadę: zorganizowane jednostki ludzi pustyni są dość powolne. Z tego powodu "
+"wrogie jednostki często potrafią przegrupować się i wezwać posiłki, przez co "
+"drugie natarcie staje się o wiele trudniejsze. Żeby rozwiązać ten problem, "
+"wędrowcy zamieniają swoje prymitywne temblaki na ciężkie bole, które "
+"pozwalają im spowalniać wycofujących się przeciwników od boku i "
+"przeciwdziałać ich ucieczce. Identyczna taktyka może być stosowana w "
+"przeciwnym scenariuszu, kiedy to armia ludzi pustyni zarządzi odwrót; "
+"nacierająca wroga armia może zostać skrępowana, kupując w ten sposób czas "
+"dla rannych wojowników by się wycofać. Taktyka ta jest o tyle niebezpieczna, "
+"że pomimo nieuchwytności wędrowców, są oni mało wytrzymali w walce "
+"bezpośredniej i zostawieni sami sobie stanowią dla przeciwników łatwy cel do "
+"zabicia."
 
 #. [unit_type]: id=Dune Sunderer, race=dunefolk
 #: data/core/units/dunefolk/Sunderer.cfg:8
 msgid "Dune Sunderer"
-msgstr ""
+msgstr "Wydmowy rozbijacz"
 
 #. [unit_type]: id=Dune Sunderer, race=dunefolk
 #: data/core/units/dunefolk/Sunderer.cfg:21
@@ -2212,6 +2461,16 @@ msgid ""
 "enough skill at archery to weaken enemy forces or pick off fleeing "
 "stragglers."
 msgstr ""
+"Spośród wielu rodzajów wydmowych jeźdźców to właśnie oni najbardziej "
+"uwielbiają szaleńcze potyczki w samym środku bitwy. Uzbrojeni w krótkie "
+"buzdygany, rozbijacze są krzepkimi i solidnymi wojownikami, którzy mają "
+"zarówno dyspozycję jak i umiejętności by przetrwać niejedną bitwę. Chociaż "
+"nie jest to najbardziej kreatywny ani wyjątkowy rodzaj wojowników, jeździec "
+"ten nie jest bynajmniej bezsilny. Nawet niewielka drużyna rozbijaczy "
+"wystarczy by rozbić w drobny mak większość linii wroga przy pomocy niczego "
+"więcej jak tylko okrutnej siły. Jeśli sytuacja tego wymaga, ci jeźdźcy mają "
+"również umiejętności strzeleckie, które pozwalają im osłabiać jednostki "
+"przeciwnika lub dobijać uciekających maruderów."
 
 #. [unit_type]: id=Dune Swordsman, race=dunefolk
 #: data/core/units/dunefolk/Swordsman.cfg:8
@@ -2233,16 +2492,28 @@ msgid ""
 "accuracy, a contingent of of swordsmen is enough to crack even the sternest "
 "of defenses."
 msgstr ""
+"W trakcie bezpośredniego starcia z dużymi armiami, ludzie pustyni zazwyczaj "
+"natrafiają albo na gęsto upakowane 'ściany z tarcz', albo silnie "
+"ufortyfikowane pozycje wroga. Natarcie na tak dobrze zorganizowany front "
+"może być nie lada wyzwaniem - formacja przeciwnika może zostawić tylko małą "
+"lukę między tarczami i pancerzami przy jednoczesnej groźbie kontrataku "
+"włóczniami lub strzałami. Z tego powodu pustynni fechmistrze kładą mocny "
+"nacisk na siłę lub co jeszcze ważniejsze, na precyzję. Typowemu wojownikowi "
+"może nadarzyć się tylko jedna okazja do uderzenia na wroga, lecz "
+"doświadczony fechmistrz najpewniej postara się wykorzystać okazję i sprawić, "
+"by jego uderzenie najbardziej się opłaciło. Atakując z niebywałą wręcz "
+"dokładnością, kontyngent fechmistrzów w zupełności wystarczy by przebić się "
+"nawet przez najcięższą defensywę."
 
 #. [attack]: type=blade
 #: data/core/units/dunefolk/Swordsman.cfg:26
 msgid "forceful scimitar strike"
-msgstr ""
+msgstr "silne uderzenie bułatem"
 
 #. [attack]: type=blade
 #: data/core/units/dunefolk/Swordsman.cfg:35
 msgid "balanced scimitar slash"
-msgstr ""
+msgstr "zbalansowane cięcie bułatem"
 
 #. [unit_type]: id=Dune Warmaster, race=dunefolk
 #: data/core/units/dunefolk/Warmaster.cfg:8
@@ -2262,14 +2533,26 @@ msgid ""
 "rather than formal training. Said to be a veteran of a thousand battles, a "
 "warmaster is an expert leader that should never be underestimated."
 msgstr ""
+"W bezpośrednim porównaniu z innymi dowódcami ludzi pustyni, większość "
+"generałów wyższego stopnia skupia się najmocniej na pobudzaniu i "
+"utrzymywaniu wysokich morale ich jednostek. Wojmistrzów najczęściej można "
+"znaleźć w samym sercu bitwy, walczących i krwawiących tuż obok swoich "
+"podwładnych. Mimo, że ci dowódcy zwykle pozostawiają najdrobniejsze "
+"szczegóły strategiczne swoim niższym rangą kapitanom, sami są również "
+"wybitnymi taktykami. Wygrali mnóstwo bitew za sprawą stosowania manewrów "
+"uważanych za dość inwencyjne lub zaskakujące, które są owocem kreatywności "
+"wynikającej z praktycznego doświadczenia w walce zamiast formalnego i "
+"teoretycznego treningu. Powszechnie uznawany za weterana wielu bitew, "
+"wojmistrz jest doświadczonym przywódcą, którego nikt nigdy nie powinien "
+"lekceważyć."
 
 #. [unit_type]: id=Dune Wayfarer, race=dunefolk
 #: data/core/units/dunefolk/Wayfarer.cfg:8
-#, fuzzy
-#| msgid "Dune Warmaster"
 msgid "Dune Wayfarer"
-msgstr "Wydmowy Wojmistrz"
+msgstr "Wydmowy obieżyświat"
 
+# Pytanie czy "herd" odnosi się do stada zwierząt czy grupy ludzi?
+# Na potrzeby tłumaczenia uznałem, że zwierzęta (skoro mowa jest później o głodzie)
 #. [unit_type]: id=Dune Wayfarer, race=dunefolk
 #: data/core/units/dunefolk/Wayfarer.cfg:21
 msgid ""
@@ -2303,13 +2586,42 @@ msgid ""
 "the other Wayfarers again. My tale might not be that impressive to them, but "
 "at least it is an improvement over my previous encounter with the wyvern...”"
 msgstr ""
+"Fragment dziennika Balaha, Obserwatora Wydm:\n"
+"\n"
+"\"... To już szósty dzień. Szósty dzień pogoni przez pustynię bez ani jednej "
+"chwili snu lub odpoczynku... ale nie potrzebuję go. Krwawooka roka pożarła "
+"już zbyt wiele zwierząt z naszego stada. Muszę się jej pozbyć zanim "
+"członkowie karawany umrą z głodu. Ślady doprowadziły mnie aż tutaj i nie "
+"ważne jak daleko ta bestia będzie uciekać, będę podążał za nią.\n"
+"\n"
+"… niech to szlag! Ten stwór był zaledwie kilkaset kroków ode mnie, lecz "
+"słońce osłabiło moją celność! Wypuściłem kilka strzał w stronę tej paskudy, "
+"ale udało mi się ją zaledwie spowolnić. Mimo to zdaje mi się, że zaczyna ją "
+"dopadać zmęczenie. Jeśli dopisze mi szczęście dorwę ją zanim doleci do gór.\n"
+"\n"
+"… Dzień jedenasty. W momencie, w którym bestia wylądowała na wzgórzu "
+"próbowałem ją osaczyć, lecz poza nią znalazłem tam trzy inne roki. Nie "
+"spodziewałem się tego. Roki są okrutnymi stworzeniami, kiedy się do nich za "
+"bardzo zbliży. Już walka z jedną roką jest trudna, a co dopiero z czterema "
+"na raz! Na szczęście zabrałem ze sobą drugi topór. Bez niego zapewne byłbym "
+"poważnie ranny. Tymczasem czekam, aż moja noga zostanie odpowiednio "
+"opatrzona zanim wrócę, by zająć się pozostałymi dwoma stworami. Może wtedy "
+"znajdę trochę czasu, by coś zjeść i odpocząć.\n"
+"\n"
+"… sam jestem zaskoczony, że przeszedłem prawie połowę Północnych Wydm w "
+"trakcie tych dwudziestu jeden dni mojej ekspedycji. Taka trasa zajęłaby "
+"karawanie około trzech miesięcy, ale stawiam, że okoliczności mojej podróży "
+"są dla nich poniekąd łagodzące. Dobra wiadomość jest taka, że udało mi się "
+"po drodze zdobyć trochę solonego mięsa roki. Zawsze to jakaś przekąska dla "
+"dzieciaków. Dobrze będzie również znowu spotkać się z innymi obieżyświatami. "
+"Moja opowieść pewnie nie będzie brzmiała dla nich imponująco, ale "
+"przynajmniej poczyniłem jakieś postępy od czasów mojej poprzedniej przygody "
+"z wiwerną…\""
 
 #. [unit_type]: id=Dune Windbolt, race=dunefolk
 #: data/core/units/dunefolk/Windbolt.cfg:8
-#, fuzzy
-#| msgid "Dune Windrider"
 msgid "Dune Windbolt"
-msgstr "Wydmowy jeździec wiatru"
+msgstr "Wydmowy jeździec wichru"
 
 #. [unit_type]: id=Dune Windbolt, race=dunefolk
 #: data/core/units/dunefolk/Windbolt.cfg:22
@@ -2325,13 +2637,22 @@ msgid ""
 "able to otherwise. Having honed their craft to its apex, windbolts are the "
 "undisputed masters of ranged combat among the Dunefolk."
 msgstr ""
+"Łucznictwo konne stawia mnóstwo dodatkowych wyzwań, które mało kto potrafi "
+"przezwyciężyć. Słynnych jeźdźców wichru od pozostałych łuczników odróżnia "
+"nie tylko zdolność do przezwyciężania tych trudności, lecz również "
+"wykorzystywanie ich jako zalety. Wykorzystujący ogromną prędkość ich "
+"wierzchowców jeźdźcy wichru są o wiele lepszymi strzelcami na koniach niż "
+"bez nich. Dodatkowa prędkość wynikająca z jazdy konnej dodaje do ich i tak "
+"niezwykle potężnych strzałów dodatkowej mocy, a ich wijący się styl jazdy "
+"pozwala tym łucznikom zakrzywiać trajektorię lotu ich strzał. Dzięki temu te "
+"często trafiają w cele niemożliwe do trafienia w zwykłych warunkach. Po "
+"doszlifowaniu ich kunsztu do perfekcji, jeźdźcy wichru są niekwestionowanymi "
+"mistrzami walki dystansowej wśród ludzi pustyni."
 
 #. [unit_type]: id=Wyvern Rider, race=monster, description=
 #: data/core/units/dunefolk/Wyvern_Rider.cfg:4
-#, fuzzy
-#| msgid "Gryphon Rider"
 msgid "Wyvern Rider"
-msgstr "Jeździec gryfów"
+msgstr "Jeździec wiwern"
 
 #. [unit_type]: id=Dwarvish Arcanister, race=dwarf
 #: data/core/units/dwarves/Arcanister.cfg:4
@@ -2483,14 +2804,6 @@ msgstr "Krasnoludzki wartownik"
 
 #. [unit_type]: id=Dwarvish Sentinel, race=dwarf
 #: data/core/units/dwarves/Sentinel.cfg:19
-#, fuzzy
-#| msgid ""
-#| "Champions among their fellow troops, the dwarven sentinels form the "
-#| "bulwark of their battle lines. Leading a direct assault against a line "
-#| "that they fortify, is often out of the question; it tends toward being "
-#| "suicidal, rather than merely ineffectual. These dwarves are masters of "
-#| "the melee, and can hold a patch of earth with the single-minded tenacity "
-#| "of an oak."
 msgid ""
 "Champions among their fellow troops, the dwarven sentinels form the bulwark "
 "of their battle lines. Leading a direct assault against a line that they "
@@ -2501,9 +2814,10 @@ msgid ""
 msgstr ""
 "Wartownicy krasnoludów to elitarne jednostki, stanowiące opokę każdej linii "
 "obrony. Atak czołowy na bronione przez nich pozycje jest często wykluczony, "
-"gdyż nie tylko będzie bezskuteczny, ale na ogół wręcz samobójczy. Wartownicy "
-"są mistrzami walki wręcz i potrafią bronić piędzi ziemi z niewzruszonością "
-"zakorzenionego w niej dębu."
+"gdyż nie tylko będzie bezskuteczny, ale na ogół wręcz samobójczy. "
+"Zaopatrzeni w najmocniejszy z Knalgańskich pancerzy, wartownicy są mistrzami "
+"walki wręcz i potrafią bronić piędzi ziemi z niewzruszonością zakorzenionego "
+"w niej dębu."
 
 #. [unit_type]: id=Dwarvish Stalwart, race=dwarf
 #: data/core/units/dwarves/Stalwart.cfg:4
@@ -2560,6 +2874,15 @@ msgid ""
 "Elvish archers are still effective combatants, especially when fighting from "
 "the safety of their forests."
 msgstr ""
+"Tak samo jak pierwotnie zbieracze i myśliwi, większość elfów uczy się, jak "
+"być doskonałymi łucznikami już w młodym wieku. Poza czysto praktycznym "
+"zastosowaniem, łucznictwo jest również powszechną rozrywką i dyscypliną "
+"sportową, którą wiele elfów uprawia ku uciesze zarówno widzów, jak i "
+"uczestników. Zdolność ta może być z łatwością wykorzystana w razie "
+"potencjalnych wojen, w których wiele elfów wybiera łuk jako główną broń. "
+"Mimo braku wytrzymałości ich ludzkich lub orczych odpowiedników, elficcy "
+"łucznicy są wciąż bardzo skutecznymi bojownikami zwłaszcza, kiedy walczą o "
+"bezpieczeństwo ich lasów."
 
 #. [female]
 #: data/core/units/elves/Archer.cfg:80
@@ -2573,17 +2896,6 @@ msgstr "Elficki mściciel"
 
 #. [unit_type]: id=Elvish Avenger, race=elf
 #: data/core/units/elves/Avenger.cfg:20
-#, fuzzy
-#| msgid ""
-#| "The curious name of the elvish ‘Avengers’ comes from a tactic often "
-#| "employed by these master rangers. The enemy is allowed to break through a "
-#| "feint defense, and when the vulnerable troops behind the front line "
-#| "follow, these archers break cover and attack, cutting the supply lines "
-#| "and surrounding the enemy in one fell stroke.\n"
-#| "\n"
-#| "This has, at times, been interpreted as a form of vengeance for their "
-#| "brethren lost earlier in the battle. Although not so base in design, it "
-#| "is not at all inaccurate."
 msgid ""
 "The curious name of the Elvish ‘Avengers’ comes from a tactic often employed "
 "by these master rangers. The enemy is allowed to break through a feint "
@@ -2597,11 +2909,10 @@ msgstr ""
 "przez tych mistrzów łowiectwa. Pozwalają oni przeciwnikowi przedrzeć się "
 "przez delikatną obronę, a gdy słabsi żołnierze z drugiej linii ruszają "
 "śladem natarcia, wychodzą z ukrycia i atakują, niszcząc linie zaopatrzeniowe "
-"i otaczających przeciwników jednym potężnym atakiem.\n"
-"\n"
-"Niektórzy uważają tę taktykę za rodzaj zemsty za poległych we wcześniejszych "
-"bitwach pobratymców. Choć elfami nie kierują tak przyziemne pobudki, to "
-"jednak pogląd ten nie całkiem mija się z prawdą."
+"i otaczających przeciwników jednym potężnym atakiem. Niektórzy uważają tę "
+"taktykę za rodzaj zemsty za poległych we wcześniejszych bitwach pobratymców. "
+"Choć elfami nie kierują tak przyziemne pobudki, to jednak pogląd ten nie "
+"całkiem mija się z prawdą."
 
 #. [special_note]
 #: data/core/units/elves/Avenger.cfg:22
@@ -2609,6 +2920,8 @@ msgid ""
 "Elvish Avengers are well-traveled and adept at traversing harsh terrains "
 "like sand, water, and mountains."
 msgstr ""
+"Elficcy mściciele sporo podróżowali i są biegli w przekraczaniu trudnych "
+"terenów, takich jak piasek, woda czy góry."
 
 #. [female]
 #: data/core/units/elves/Avenger.cfg:96
@@ -2632,6 +2945,15 @@ msgid ""
 "often observed to lead through camaraderie and amicability, but still "
 "command great respect from their kin."
 msgstr ""
+"Elficcy kapitanowie zazwyczaj dowodzą patrolami i garnizonami, które pilnują "
+"ogromnych lasów będących terytorium elfów. W porównaniu z przywódcami innych "
+"ras są oni bieglejsi w prowadzeniu pomniejszych potyczek niż bitew na dużą "
+"skalę, jak również doskonale się znają na defensywnych manewrach. "
+"Kapitanowie z reguły przewodzą niewielkimi oddziałami, które przez dłuższy "
+"czas nie rozdzielają się, przez co mogą oni osobiście mentorować i zjednywać "
+"sobie swoich podwładnych. Często widzi się ich dowodzących poprzez przyjaźń "
+"i koleżeństwo, lecz mimo to wciąż są darzeni ogromnym szacunkiem przez swój "
+"lud."
 
 #. [unit_type]: id=Elvish Champion, race=elf
 #: data/core/units/elves/Champion.cfg:4
@@ -2652,6 +2974,16 @@ msgid ""
 "their whole lives refining their prowess with the blade, these elves are "
 "exceptionally dangerous and should never be underestimated."
 msgstr ""
+"Elfy to istoty z natury pokojowe, z których większość atakuje tylko w "
+"odwecie za pewne przewinienia. Istnieją mimo to również elfy, które szukają "
+"celowych lub przypadkowych bitew tylko dla własnej przyjemności. Poprzez "
+"wdawanie się w kolejne walki, ci wojownicy albo uczą się sztuki szermierki "
+"do poziomu zdecydowanie przekraczającego większość ich rówieśników lub giną "
+"na skutek szału wojennego. Ci, którzy są zdolni wytrwać nabierają tak dużo "
+"doświadczenia, że są w stanie zdominować całe pole bitwy, siekąc i rąbiąc "
+"swoich wrogów. Spędziwszy całe swoje życie na udoskonalaniu swojego "
+"fechtunku, elfy te są osobami bardzo niebezpiecznymi i nierozważnie jest je "
+"lekceważyć."
 
 #. [unit_type]: id=Elvish Druid, race=elf
 #: data/core/units/elves/Druid.cfg:4
@@ -2673,6 +3005,18 @@ msgid ""
 "the druids’ careful tending, the forest kindles their magics in turn, "
 "symbiotically enhancing the already potent powers that these elves possess."
 msgstr ""
+"Wiele elfów wybiera ścieżkę pogłębiania swoich więzi ze światem cielesnym, "
+"wzmacniając w ten sposób swoje już i tak nieźle rozwinięte zdolności do "
+"manipulowania naturalnymi energiami. Być może najbardziej widocznym efektem "
+"druidzkiej magii jest zdolność do wyczuwania ruchu pośród strzeżonych przez "
+"nich głębin lasów. Obcy wędrujący przez lasy elfów często opowiadali "
+"historie o wijących się pnączach, które poruszały się niemal tak szybko jak "
+"marszujący wojownicy, czy trzeszczący jazgot prastarych drzew, który "
+"potrafił jednej nocy zakłócić spoczynek w całym obozie. Las i ziemia stają "
+"się wtedy jak połączony, pojedynczy byt, który żyje i oddycha niczym ogromny "
+"organizm. Gdy ten kwitnie pod wpływem troskliwej opieki druidów, las rozpala "
+"w nich magię, która dodatkowo wzmacnia tą już wcześniej niewiarygodną moc, "
+"którą te elfy posiadają."
 
 #. [attack]: type=impact
 #: data/core/units/elves/Druid.cfg:35 data/core/units/elves/Lady.cfg:27
@@ -2699,6 +3043,16 @@ msgid ""
 "well-regarded by most of their kin and sometimes called upon for guidance "
 "especially in unusual or peculiar matters."
 msgstr ""
+"W kontekście elfickiej magii pojęcie czarowania jest trochę mylące, ponieważ "
+"prawie zawsze odnosi się do manipulacji istotą przedmiotu w celu wróżenia "
+"lub wglądu w określone sprawy. Ulubionym rodzajem magii zaklinaczek jest "
+"nasycanie ich naturalnego otoczenia astralnym oddechem, który ustępuje "
+"miejsca tajemnym gajom, które istnieją na granicy świata cielesnego i "
+"eterycznego. Te tajemnicze domeny są strzeżone przez ich równie "
+"enigmatycznych opiekunów, którzy w większości trzymają się z dala od "
+"wścibskich oczu. Choć są raczej powściągliwe i mało towarzyskie, elfy te są "
+"dobrze traktowane przez większość swoich braci i zdarza się, że są wzywani "
+"do objęcia przywództwa w nadzwyczajnych sytuacjach."
 
 #. [attack]: type=impact
 #: data/core/units/elves/Enchantress.cfg:36 data/core/units/elves/Shaman.cfg:42
@@ -2723,6 +3077,14 @@ msgid ""
 "react and counter. Most elves can learn the basics of swordplay relatively "
 "quickly and will readily pick up the blade when confronted with battle."
 msgstr ""
+"Sztuka dobrego władania mieczem jest wśród elfów głównie domeną łowców lub "
+"granicznych patroli, których nadrzędnym celem jest chronić lasów i "
+"okazjonalnie podejmować akcje w małych oddziałach na innych terytoriach. "
+"Elficcy wojownicy są znani z tego, że kładą duży nacisk na szybkie, zręczne "
+"uderzenia, które chociaż są zdecydowanie słabsze od ataków ludzkich czy "
+"orczych wojowników, to jednak zostawiają przeciwnikowi mniej czasu na "
+"reakcję i kontratak. Większość elfów potrafi opanować podstawy walki mieczem "
+"stosunkowo szybko i bez wahania użyć go w razie potencjalnej bitwy."
 
 #. [unit_type]: id=Elvish Hero, race=elf
 #: data/core/units/elves/Hero.cfg:4
@@ -2747,6 +3109,21 @@ msgid ""
 "service, such a status is not one often sought after by the majority of "
 "Elvenkind."
 msgstr ""
+"Najbardziej utalentowani elficcy wojownicy czasami są okrzyknięci "
+"określeniem \"Sárcan\", co można tłumaczyć mniej więcej jako \"ten, który "
+"dokonał poświęcenia w obronie\" albo \"ten, którego zmieniło doświadczenie"
+"\". Często w języku ludzi nazywani są elfickimi bohaterami. Tytuł ten jest "
+"wyznacznikiem swego rodzaju prestiżu, lecz nie został stworzony by czcić tę "
+"pozycję. Elficcy bohaterowie to wojownicy, które przetrwali niezliczoną "
+"liczbę wojen i przeżyli wielu ze swoich przyjaciół, którzy polegli w boju. "
+"Stanowiący często bardzo nieliczną grupę ocalałych z pola bitwy, ci "
+"doświadczeni w bojach żołnierze są wtajemniczeni w mnóstwo okropieństw wojen "
+"- orków i ludzi plądrujących i palących ich leśne domy, krasnoludy grabiące "
+"poległych z cennych artefaktów, nekromantów wskrzeszających ich własnych "
+"kamratów do walki przeciwko nim, jak również ich własny gatunek mordujący "
+"niewinnych bez cienia skrupułów czy okazywania łaski. Podczas gdy elfy zdają "
+"sobie sprawę z konieczności wojen i czczą \"Sárcanet\" jako bohaterów za ich "
+"służbę, mało który elf życzyłby sobie otrzymać taki status."
 
 #. [unit_type]: id=Elvish High Lord, race=elf
 #: data/core/units/elves/High_Lord.cfg:4
@@ -2773,6 +3150,23 @@ msgid ""
 "lords is invaluable for maintaining the prosperity of Elvish rule, whether "
 "or not they sit at the top of the chain of command."
 msgstr ""
+"Podczas gdy dwoistość elfickiej magii przejawia się najmocniej w "
+"podzielonych ścieżkach między światami cielesnymi a tajemnymi, identyczny "
+"podział jest widoczny w rangach elfickiej arystokracji. W sporej mierze "
+"dzięki użyciu ognia wróżek, większość władców jest silnie związana z "
+"czarodziejkami, łącząc się w ten sposób z aspektami intuicji i zniszczenia. "
+"Chociaż nie jest to to samo co mądrość, zwykle należy szanować intuicję pana "
+"i bać się jego gniewu. Staje się to coraz bardziej prawdziwe z wiekiem, "
+"ponieważ czas wyostrza umysł i zmysły elfa.\n"
+"\n"
+"Poglądy osób nieobeznanych w tradycjach elfów o istnieniu wyższej klasy "
+"„Wielkich Władców”, są zwykle błędem wynikającym z wielkiej dysproporcji "
+"umiejętności postrzegania oraz mocy, jaką posiadają te doświadczone elfy. W "
+"rzeczywistości hierarchia elfickich rządów różni się między enklawami i jest "
+"również w sporej mierze zależna od czasów wojny lub pokoju. Jedyne, co można "
+"powiedzieć na pewno, to to, że przenikliwość tych władców jest nieoceniona "
+"dla utrzymania dobrobytu elfickich rządów, niezależnie od tego, czy "
+"zasiadają oni na szczycie łańcucha dowodzenia, czy nie."
 
 #. [unit_type]: id=Elvish Lady, race=elf
 #: data/core/units/elves/Lady.cfg:4
@@ -2794,6 +3188,17 @@ msgid ""
 "peacekeepers, holding high authority during times of amity and taking a "
 "lesser role in times of war."
 msgstr ""
+"Zazwyczaj silnie związane z ziemskim aspektem magii elfów, szlachetne "
+"władczynie enklaw elfów kojarzą się z mądrością i ochroną. Jako te, którym "
+"powierzono podtrzymywanie wielu mocno czczonych elfich tradycji, odgrywają "
+"ważną rolę w ochronie błogiego spokoju i cudów natury w swoich słynnych "
+"leśnych sanktuariach. W przeciwieństwie do swoich męskich odpowiedników, z "
+"których wielu zyskuje władzę dzięki użyciu astralnej magii, większość "
+"władczyń rozprzestrzenia swoje wpływy poprzez porządki społeczne, którymi "
+"kierują, często kosztem ich osobistych umiejętności. Z tego powodu służą "
+"najczęściej jako dyplomatki i żołnierze sił pokojowych, będąc dużymi "
+"autorytetami w czasach konfliktów i odgrywając pomniejsze role w czasach "
+"wojny."
 
 #. [unit_type]: id=Elvish Lord, race=elf
 #: data/core/units/elves/Lord.cfg:4
@@ -2821,6 +3226,22 @@ msgid ""
 "an absolute one, and they are expected to lead more by diplomacy and wisdom "
 "rather than force."
 msgstr ""
+"Sukcesja pośród elfickiej arystokracji to złożony proces, który różni się "
+"nieco w różnych elfickich enklawach. Zazwyczaj przyszli przywódcy elfów mają "
+"za zadanie zarządzać trzema aspektami elfickiego społeczeństwa: wojownikami "
+"i łowcami, którzy bronią lasów, pokojowo nastawionymi cywilami, którzy "
+"całkowicie unikają walki, oraz zbiorową grupą uzdrowicieli i mistyków, "
+"którzy studiują sztukę wróżkowej magii. Umiejętność pogodzenia różnic między "
+"tymi frakcjami i skutecznego kierowania ludem wymaga znacznych osobistych "
+"zasług i dogłębnego poznania każdej grupy elfów. W tym celu władcy są "
+"zazwyczaj jedynymi elfami płci męskiej, którzy mogą uczyć się wróżkowej "
+"magii, tradycyjnie nauczanej wyłącznie przez kobiety-szamanki.\n"
+"\n"
+"Chociaż niektóre enklawy, takie jak północny gaj Lintanirów, utrzymują swoją "
+"szlachetność dzięki linii krwi, inne, takie jak potężne elfy Wesmere, "
+"wybierają nowych władców co każde nowe pokolenie. W obu przypadkach pozycja "
+"arystokracji rzadko jest absolutna i oczekuje się od nich, że będą kierować "
+"bardziej dyplomacją i mądrością niż siłą."
 
 #. [unit_type]: id=Elvish Marksman, race=elf
 #: data/core/units/elves/Marksman.cfg:4
@@ -2839,6 +3260,16 @@ msgid ""
 "training the body to keep up with the eyes is no easy feat, and realizing "
 "this prodigious skill does come with the cost of weakness in close quarters."
 msgstr ""
+"Elfy mają intymny związek ze światem wróżek, co naturalnie sprawia, że "
+"otrzymują one wyostrzone zmysły i niesamowicie bystry wzrok. Cechy te, w "
+"połączeniu z latami praktyki w trakcie polowań w głębokich lasach, "
+"przyczyniają się do tego, że elfy są prawdziwymi mistrzami łucznictwa. Elf "
+"wyćwiczony w strzelectwie jest w stanie trafić cel wielkości dziurki od "
+"klucza z odległości kilkudziesięciu kroków i może strzelać na tyle szybko i "
+"precyzyjnie, że jest w stanie z łatwością rozłupywać spadające gałęzie w "
+"locie. Oczywiście trenowanie ciała, aby to nadążyło za wzrokiem, nie jest "
+"łatwym wyczynem, a odkrycie w sobie tej niewiarygodnej umiejętności "
+"przypłacone jest kiepską umiejętnością walki w zwarciu."
 
 #. [attack]: type=pierce
 #: data/core/units/elves/Marksman.cfg:38
@@ -2872,6 +3303,17 @@ msgid ""
 "task for any invasion force, precisely because of the skillful maneuvering "
 "of the marshals who are entrusted with the protection of their people."
 msgstr ""
+"Elfy nie są często inicjatorami otwartej wojny, ale gdy nadejdzie czas na "
+"bitwę, nie odpuszczą walki. Dlatego wśród elfów znaleźć można wielu "
+"znających się na strategii marszałków. Wybrani spośród najbardziej "
+"utalentowanych przywódców elfickich patroli, ci dowódcy przechodzą "
+"intensywne szkolenie w różnych stylach wojskowych, w tym ludzi i orków. Są "
+"nieortodoksyjnymi, lecz błyskotliwymi strategami, którzy przodują w "
+"rozbijaniu dużych frontów na mniejsze potyczki, przekształcając zwykłe "
+"kampanie w rozproszoną wojnę partyzancką. Wdawanie się w walkę z elfami w "
+"ich własnych domach jest trudnym zadaniem dla każdej siły inwazyjnej, "
+"właśnie ze względu na umiejętne manewry marszałków, których zadaniem jest "
+"chronić ich lud."
 
 #. [unit_type]: id=Elvish Outrider, race=elf
 #: data/core/units/elves/Outrider.cfg:4
@@ -2911,6 +3353,37 @@ msgid ""
 "The truth of this tale, one can only surmise, but doubtless, Outriders the "
 "fastest do comprise."
 msgstr ""
+"Elf Beriand kiedyś był między nami\n"
+"Lecz w podróż się wybrał odległymi krainami\n"
+"Trzynaście dni jechał, odpoczynku nie znając\n"
+"Aż do nimfiej siedziby zawitał wołając\n"
+"\"Spójrz tam Naryo!\" Nadszedł okrzyk radości:\n"
+"\"Czy widzisz tą jabłoń pełną świeżych słodkości?\"\n"
+"W odpowiedzi rżenie, z zachwytu skoczyła\n"
+"I kniemu galopem wartko popędziła\n"
+"Nie minęła chwila a rzucony na wiatr\n"
+"Rozległ się głos niesiony przez wiatr\n"
+"\"Stój tam ty elfie! Ten gaj jest mój!\"\n"
+"\"Owoców nie skosztujesz ani ty ani koń twój!\"\n"
+"W odpowiedzi krzyknął: \"Proszę udziel nam wytchnienia!\"\n"
+"\"Nasza podróż długa! Znasz nasze zmęczenia!\"\n"
+"\"Zmęczenie jak widzę jest w twoim przypadku\"\n"
+"\"Pokonaj mnie w wyścigu, a dam ci trochę zdatku\"\n"
+"Na to jeździec się zgodził, w stronę drzewa więc poszli\n"
+"I po chwili z kopyta ruszyli\n"
+"Wycie, pośpiech i tumany pyłu\n"
+"Wiatr zostawił jeźdźca z tyłu\n"
+"Koń i jeździec, pędzący z nadzieją\n"
+"Dogonili wiatr który ledwo pisną\n"
+"W tą i nazad gnali, i łeb w łeb pędzili\n"
+"Aż na końcu czasu zwycięstwo zdobyli \n"
+"\"Dobra robota\"nimfa powiedziała\n"
+"\"Tobie i twej rodzinie mej łaski udzielę\" jak obiecała\n"
+"Po tym Beriand i Narya odeszli z tego gaju\n"
+"Niosąc na zawsze wytchnienie nimfy, strażniczki tego raju.\n"
+"\n"
+"Prawdziwość tej bajki jest domniemywana,\n"
+"Prawdą jest jednak forysia szybkość nieprzekłamana."
 
 #. [unit_type]: id=Elvish Ranger, race=elf
 #: data/core/units/elves/Ranger.cfg:3
@@ -2930,6 +3403,15 @@ msgid ""
 "their size and will often compel attacking armies to withdraw rather than "
 "risk a game of prolonged guerrilla warfare in the forests."
 msgstr ""
+"Jako cisi obserwatorzy lasów, elficcy łowcy są mistrzami w skradaniu się i "
+"zwiadzie. Wielu z nich to odkrywcy i samotnicy, którzy wolą wędrować wśród "
+"wysokich drzew chroniących naturalne piękno swoich domów i bronić ich przed "
+"najeźdźcami. Choć są nieźle wyszkoleni w posługiwaniu się mieczem i łukiem, "
+"ci łucznicy są mniej biegli w walce z innymi wojownikami na równych "
+"warunkach i wolą zamiast tego urządzać zasadzki na wrogów z lasu. "
+"Niespodziewany atak łowców może sparaliżować siły wielokrotnie od nich "
+"większe i przez to wrogie armie wolą zarządzić odwrót niż wdawać się w "
+"ryzykowne, partyzanckie potyczki w samym środku lasu."
 
 #. [special_note]
 #: data/core/units/elves/Ranger.cfg:21
@@ -2937,6 +3419,8 @@ msgid ""
 "Elvish Rangers are well-traveled and adept at traversing harsh terrains like "
 "sand, water, and mountains."
 msgstr ""
+"Elficcy łowcy dzięki swojemu doświadczeniu z wędrówek, są biegli w "
+"pokonywaniu trudnych terenów, takich jak piaski, woda czy góry."
 
 #. [female]
 #: data/core/units/elves/Ranger.cfg:95
@@ -2965,6 +3449,20 @@ msgid ""
 "these riders are the oft unsung heroes of war, left supporting their "
 "brethren from the back lines."
 msgstr ""
+"Przewaga taktyk partyzanckich w strategii elfów skutkuje dużym naciskiem na "
+"utrzymywanie wysoce mobilnych jednostek, zdolnych do walki w ciągle "
+"zmieniających się warunkach bitew. Ten styl prowadzenia wojny wymaga "
+"szybkiej komunikacji pomiędzy małymi grupami jednostek oraz umiejętności "
+"szybkiego przerzucania oddziałów pomiędzy różnymi strefami walki. "
+"Doświadczeni elficcy jeźdźcy zdają sobie z tego sprawę, przez co większość "
+"czasu poświęcają na doskonalenie umiejętności jeździeckich zamiast na "
+"trenowaniu indywidualnej walki. Prędkość, z jaką podróżują przez las, byłaby "
+"samobójcza dla każdej innej kawalerii, lecz oni są na tyle wytrwali, że są w "
+"stanie jechać nawet przez dwa lub trzy dni bez odpoczynku. Podczas gdy dane "
+"wywiadowcze oraz komunikacja, jaką zapewniają ci jeźdźcy, są bezcenne, brak "
+"sprawności bojowej i możliwości uczestniczenia w walkach na froncie oznacza, "
+"że ci jeźdźcy są często niedocenianymi bohaterami wojennymi, którzy dzielnie "
+"wspierają swoich braci na tyłach linii frontu."
 
 #. [unit_type]: id=Elvish Scout, race=elf
 #: data/core/units/elves/Scout.cfg:4
@@ -2985,6 +3483,17 @@ msgid ""
 "support units and are adept at quickly transferring information between "
 "patrols, whom they also reinforce when necessary."
 msgstr ""
+"Chociaż wierzchowce hodowane przez leśne elfy są znacznie szybsze i "
+"zwinniejsze niż zwykłe konie, są one nieco trudniejsze do opanowania. "
+"Trenowanie tych kapryśnych kucyków trwa latami, lecz kiedy już zostaną "
+"oswojone, należą do najbardziej oddanych wierzchowców. Te wyjątkowe konie "
+"pozwalają elfickim jeźdźcom wyprzedzić większość innych rodzajów kawalerii "
+"na otwartym terenie, a nawet przejechać przez gęstwiny lasów pełnym galopem. "
+"Chociaż ci jeźdźcy posiadają pewne umiejętności władania mieczami i łukami, "
+"ich największa skuteczność polega na zdolności zwiadu i wymanewrowywania sił "
+"wroga. Zwiadowcy elfów są najczęściej używani jako posłańcy lub jednostki "
+"wsparcia i są biegli w szybkim przekazywaniu informacji między patrolami, "
+"które w razie potrzeby mogą również liczyć na ich wsparcie bojowe."
 
 #. [unit_type]: id=Elvish Shaman, race=elf
 #: data/core/units/elves/Shaman.cfg:4
@@ -3003,6 +3512,14 @@ msgid ""
 "peaceful by nature, these shamans rarely engage in combat, instead using "
 "their magic to command the earth itself to hinder or pacify their enemies."
 msgstr ""
+"Przy odrobinie treningu wrodzona więź elfa ze światem przyrody może zostać "
+"przekuta w magię materialną, która wpływa na plan fizyczny. Szamanki tej "
+"dyscypliny najczęściej wykorzystują swoje umiejętności, aby opiekować się "
+"naturą, która łączy je z ich mocami i otacza ich domy niezwykle bujną leśną "
+"roślinnością. Ta sama magia nadaje się do niezwykłych i dobrze znanych "
+"zdolności w sztuce uzdrawiania. Szamanki, choć z natury niezwykle spokojne, "
+"rzadko angażują się w walkę, a zamiast tego używają swojej magii aby "
+"rozkazywać samej ziemi, żeby ta powstrzymała lub unieszkodliwiła ich wrogów."
 
 #. [unit_type]: id=Elvish Sharpshooter, race=elf
 #: data/core/units/elves/Sharpshooter.cfg:4
@@ -3022,6 +3539,17 @@ msgid ""
 "sharpshooters of the elves have honed their art to its highest form and are "
 "the undisputed masters of archery."
 msgstr ""
+"Choć nie jest to oficjalny tytuł, „strzelec wyborowy” jest epitetem nadanym "
+"najbardziej utalentowanym elfickim strzelcom. Ci doświadczeni łucznicy są "
+"zdolni do wyczynów, które nawet według elfich standardów graniczą z cudami — "
+"mają precyzję rozszczepiania nadlatujących strzał w powietrzu i mogą "
+"wystrzelić drugą strzałę tuż przed dosięgnięciem celu przez pierwszą "
+"strzałę, a wszystko to przy zachowaniu wystarczającej mocy, by móc z "
+"łatwością rozbić nawet najcięższy płytowy pancerz. Jedna salwa ich strzał "
+"wystarczy, aby powalić rycerza na koniu, a nawet ciężko opancerzona piechota "
+"przeżyje kilka dodatkowych strzałów. Strzelcy wyborowi elfów dopracowali "
+"swoją sztukę do najwyższej formy i są niekwestionowanymi mistrzami "
+"łucznictwa."
 
 #. [female]
 #: data/core/units/elves/Sharpshooter.cfg:81
@@ -3040,6 +3568,14 @@ msgid ""
 "for true faerie or ‘forest spirits’, these stewards of the forests epitomize "
 "their people’s mysterious connection with the natural order."
 msgstr ""
+"W miarę jak elfia dziewica coraz bardziej splata się z naturą, esencja ziemi "
+"zaczyna przekształcać jej ciało. Skrzydła motyla wyrastające na grzbiecie "
+"elfiej wróżki są bezpośrednią manifestacją jej połączenia ze światem wróżek, "
+"nadając jej charakterystyczną eteryczną aurę spokoju i strachu. Wróżki to "
+"mistrzowie przyziemności, które kierują się mocą, która choć mało rozumiana, "
+"jest niezwykle szanowana przez inne elfy tego rodzaju. Często mylone z "
+"prawdziwymi wróżkami lub „duchami lasu”, te strażniczki lasów uosabiają "
+"tajemniczą relację ich ludu z porządkiem wszechrzeczy."
 
 #. [attack]: type=impact
 #: data/core/units/elves/Shyde.cfg:29 data/core/units/elves/Sylph.cfg:28
@@ -3066,6 +3602,17 @@ msgid ""
 "nonetheless hold the arcane flame in high regard and are careful to utilize "
 "it with judicious caution."
 msgstr ""
+"Magia elfów najczęściej dzieli się na dwie ścieżki — manipulację naturalnym "
+"lub cielesnym światem oraz ingerencję w sferę tajemną. Ta ostatnia, jako moc "
+"trudna do kontrolowania i niezrozumiana nawet przez większość jej "
+"praktykujących, nie jest często poszukiwana przez elfy. Osoby władające tym "
+"rodzajem magii ponoszą duże ryzyko, badając niestabilną naturę swojej "
+"dyscypliny i szybko uczą się szanować niszczycielską moc swojego rzemiosła. "
+"Ta niszczycielska natura najczęściej objawia się jako wybuchy „płomienia "
+"wróżek”, co jest jedną z najłatwiejszych do opanowania umiejętnością "
+"elfickiej czarodziejki. Chociaż jest to raczej powierzchowne zastosowanie "
+"tej sztuki, elfy bardzo jednak cenią tajemny płomień i ostrożnie "
+"wykorzystują go z należytą ostrożnością."
 
 #. [unit_type]: id=Elvish Sylph, race=elf
 #: data/core/units/elves/Sylph.cfg:4
@@ -3091,6 +3638,22 @@ msgid ""
 "‘reflection pools’ and steer them is one of her greatest — and most feared — "
 "abilities."
 msgstr ""
+"Niezwykle potężne na niewyobrażalne sposoby, podobne do mędrców sylfidy są "
+"mistrzyniami w manipulowaniu przejściem między światem przyziemnym a "
+"tajemnym. Długie lata spędzone na wpatrywaniu się w eteryczne królestwo "
+"osłabiły zdolność tych elfów do oglądania świata fizycznego; w zamian "
+"otrzymują abstrakcyjny wzrok, dzięki któremu zyskują zdolność widzenia "
+"jednego lub więcej różnych aspektów esencji rzeczywistości. Niczym wiele "
+"odłamków rozbitego lustra, niezliczone pęknięcia materialnego świata "
+"odbijają światło tajemne poprzez wiele różnych faset. Staranna praktyka "
+"pozwala śledzić te pasma światła od szyby do szyby, obserwując, jak wynik "
+"fizycznej rzeczywistości ewoluuje z każdym wyborem dokonanym z wolnej woli. "
+"Podczas gdy bezpośrednie tkanie tkaniny łączącej jest zwykle niemożliwe do "
+"osiągnięcia, pośrednia manipulacja jest możliwa poprzez obróbkę w "
+"płaszczyźnie cielesnej, gdzie odbicie płaszczyzny tajemnej jest "
+"najsilniejsze. Zdolność sylfid do lokalizowania tych „sadzawek odbicia” i "
+"sterowania nimi jest jedną z ich największych – i najbardziej przerażających "
+"– umiejętności."
 
 #. [attack]: type=impact
 #: data/core/units/elves/Sylph.cfg:41
@@ -3169,6 +3732,17 @@ msgid ""
 "to goblins, recognize that picking a fight with the rider is also picking a "
 "fight with jaws that strike faster than a sword, and almost as hard."
 msgstr ""
+"Doświadczenie bitewne wzmacnia nie tylko waleczność wierzchowca i jego "
+"jeźdźca, lecz także wzmacnia więź między nimi. Podczas gdy ludzki rycerz "
+"może jeździć na różnych rumakach do bitwy, „rycerz goblinów” odnosi się do "
+"goblina i wilka jako jednej jednostki, zaciekle lojalnej wobec siebie "
+"nawzajem - czasami aż do przesady.\n"
+"\n"
+"Wśród orków jeźdźcy są traktowani jako klasa ponad gobliny, nawet jeśli są "
+"oddzielone od swojego wierzchowca. Orczy rębacze, uważając siebie za "
+"lepszych od goblinów, odkrywają, że wszczynanie walki z jeźdźcem jest "
+"również wszczynaniem walki z paszczą pełną zębów, które potrafią zaatakować "
+"szybciej niż najszybszy miecz i prawie równie mocno."
 
 #. [unit_type]: id=Goblin Pillager, race=wolf
 #: data/core/units/goblins/Pillager.cfg:4
@@ -3232,6 +3806,13 @@ msgid ""
 "fodder against an enemy of their larger siblings' choosing while equipped "
 "with only the crudest of spears."
 msgstr ""
+"Wśród każdej rasy można znaleźć rzadko spotykanych indywidualistów, którzy z "
+"powodu życiowego pecha rodzą się mniejsi i słabsi od pozostałych osobników "
+"ich gatunku. Dla orków jednak tego typu zjawisko jest niezwykle powszechne, "
+"ponieważ zwykle w każdym miocie rodzi się kilka mniejszych osobników. Istoty "
+"te, znane jako 'gobliny', są chorowitymi i krótkowiecznymi stworzeniami, "
+"które w swoim brutalnym żywocie służą zaledwie jako pasza dla wrogów ich "
+"większego rodzeństwa, walcząc zaledwie za pomocą najprymitywniejszych dzid."
 
 #. [unit_type]: id=Wolf Rider, race=wolf
 #: data/core/units/goblins/Wolf_Rider.cfg:4
@@ -3240,19 +3821,6 @@ msgstr "Jeździec wilków"
 
 #. [unit_type]: id=Wolf Rider, race=wolf
 #: data/core/units/goblins/Wolf_Rider.cfg:30
-#, fuzzy
-#| msgid ""
-#| "No one is quite sure how the practice of taming and riding wolves came "
-#| "into being, but the advantages of it for a goblin are obvious. Goblins "
-#| "are smaller and much weaker than their orcish kin, and are often tasked "
-#| "to the most dangerous and unwanted parts of a fight. Any who can manage "
-#| "to win themselves a mount have a much safer, and daresay, more amusing "
-#| "role in combat.\n"
-#| "\n"
-#| "Wolves, likely, could never support the weight of a man in plate, but a "
-#| "goblin in leather armor is a simple load to bear. Quite unlike horses, "
-#| "these mounts have a rather easy time traversing the mountains, though "
-#| "water and woods will still slow them down."
 msgid ""
 "No one is quite sure how the practice of taming and riding wolves came into "
 "being, but the advantages of it for a goblin are obvious. Goblins are much "
@@ -3272,10 +3840,11 @@ msgstr ""
 "w stanie znaleźć sobie wierzchowca, jest znacznie bezpieczniejszy i - można "
 "rzec - odgrywa bardziej widowiskową rolę w bitwie.\n"
 "\n"
-"Wilki raczej nie udźwignęłyby człowieka w zbroi płytowej, ale goblin odziany "
-"w skórzany pancerz jest wystarczająco lekki. W przeciwieństwie do koni, "
-"wierzchowce te nie mają problemów z poruszaniem się w górach, choć woda i "
-"lasy nadal je spowalniają."
+"Choć niewiele wilków jest w stanie stanąć z ciężarem prawdziwego orka na "
+"grzbiecie, goblin nie tylko nie jest dla wilków żadnym ciężarem, to jeszcze "
+"te są w stanie przenosić swojego pasażera całkiem szybko. W przeciwieństwie "
+"do koni, wierzchowce te nie mają problemów z poruszaniem się w górach, choć "
+"woda i lasy nadal je spowalniają."
 
 #. [unit_type]: id=Gryphon, race=gryphon
 #: data/core/units/gryphons/Gryphon.cfg:4
@@ -3410,24 +3979,6 @@ msgstr "Paladyn"
 
 #. [unit_type]: id=Paladin, race=human
 #: data/core/units/humans/Horse_Paladin.cfg:20
-#, fuzzy
-#| msgid ""
-#| "Knights of the highest virtue, Paladins have sworn their strength not to "
-#| "king and crown, but to ideals themselves; of chivalry, and the "
-#| "stewardship of everything that is good. They may serve in the armies of "
-#| "the world, but their first loyalties often lie with groups of their own "
-#| "making; secret, monastic orders that cross political and cultural "
-#| "boundaries. Rulers are sometimes wary of them, for the paladins’ loyalty "
-#| "is only as strong as the liege’s apparent virtue. This has led the more "
-#| "darkly ambitious to either attempt to defame and disperse these groups, "
-#| "or more rarely, to conjure elaborate deceptions to keep these otherwise "
-#| "staunchly loyal troops in service.\n"
-#| "    \n"
-#| "Full paladins are generally not quite as fearsome as the ‘Grand Knights’ "
-#| "that champion most armies, but they are first-class fighters nonetheless. "
-#| "Additionally, their wisdom and piety grants these warrior monks certain "
-#| "curious abilities; a paladin is very powerful in fighting magical or "
-#| "unnatural things, and most have some skill at medicine and healing."
 msgid ""
 "Knights of the highest virtue, Paladins have sworn their strength not to "
 "king and crown, but to ideals themselves; of chivalry, and the stewardship "
@@ -3447,7 +3998,7 @@ msgid ""
 "unnatural things, and most have some skill at medicine and healing."
 msgstr ""
 "Paladyni są rycerzami najwyższej cnoty, którzy poprzysięgli wierność nie "
-"królowi i koronie, lecz ideałom rycerskim i pieczy nad wszystkim, co dobre. "
+"królowi i koronie, lecz cnotom rycerskim i pieczy nad wszystkim, co dobre. "
 "Choć służą w wielu armiach różnych królestw, w pierwszej kolejności są "
 "najczęściej lojalni własnym bractwom - tajemnym zakonom klasztornym, które "
 "sięgają ponad granicami politycznymi i kulturowymi. Władcy są często wobec "
@@ -3514,20 +4065,14 @@ msgstr "Ułan"
 
 #. [unit_type]: id=Cavalier, race=human
 #: data/core/units/humans/Loyalist_Cavalier.cfg:20
-#, fuzzy
-#| msgid ""
-#| "Cavaliers are masters at the use of both sword and crossbow from "
-#| "horseback. Their combination of striking power and mobility is fearsome; "
-#| "and they have a reputation for dash and aggressiveness to match it. The "
-#| "daring deeds of Cavaliers are the subject of many a tale and song."
 msgid ""
 "Cavaliers are masters at the use of both sword and crossbow from horseback. "
 "Their combination of striking power and mobility is fearsome, and they have "
 "a reputation for dash and aggressiveness to match it. The daring deeds of "
 "Cavaliers are the subject of many a tale and song."
 msgstr ""
-"Ułani są mistrzami w posługiwaniu się mieczem i kuszą z końskiego grzbietu, "
-"a ich widok na polu bitwy powoduje, że w serca sojuszników wstępuje nowa "
+"Ułani są mistrzami w posługiwaniu się mieczem i kuszą siedząc na koniu, a "
+"ich widok na polu bitwy powoduje, że w serca sojuszników wstępuje nowa "
 "nadzieja. Wprawa, z jaką posługują się bronią strzelecką, pozwala im "
 "bezkarnie atakować wielu przeciwników, a ich legendarną odwagę sławią liczne "
 "pieśni i opowieści."
@@ -3745,6 +4290,8 @@ msgid ""
 "Compared to other loyalists, Halberdiers have a higher resistance to "
 "‘pierce’ attacks."
 msgstr ""
+"W porównaniu z innymi lojalistami, halabardziści mają większą odporność na "
+"ataki 'kłujące'."
 
 #. [unit_type]: id=Heavy Infantryman, race=human
 #: data/core/units/humans/Loyalist_Heavy_Infantryman.cfg:4
@@ -3836,6 +4383,12 @@ msgid ""
 "more than made up for by their superior knowledge and training in military "
 "strategy."
 msgstr ""
+"Porucznicy są jednymi z najbardziej szanowanych dowódców wśród ludzi i "
+"często ich rola sprowadza się do przewodzenia pomniejszymi najazdami lub "
+"zarządzania polem bitwy. Wyszkoleni zarówno w walce mieczem, jak i "
+"strzelaniu z kuszy, nie władają idealnie żadnym z nich i są nieco mniej "
+"odporni niż dowódcy wojskowi innych ras, lecz nadrabiają to doskonałą wiedzą "
+"i wyszkoleniem w zakresie strategii wojskowej."
 
 #. [unit_type]: id=Longbowman, race=human
 #: data/core/units/humans/Loyalist_Longbowman.cfg:4
@@ -3944,6 +4497,8 @@ msgid ""
 "Compared to other loyalists, Pikemen have a higher resistance to ‘pierce’ "
 "attacks."
 msgstr ""
+"W porównaniu z innymi lojalistami, pikinierzy mają większą odporność na "
+"ataki 'kłujące'."
 
 #. [attack]: type=pierce
 #: data/core/units/humans/Loyalist_Pikeman.cfg:34
@@ -3957,16 +4512,6 @@ msgstr "Królewski gwardzista"
 
 #. [unit_type]: id=Royal Guard, race=human
 #: data/core/units/humans/Loyalist_Royal_Guard.cfg:18
-#, fuzzy
-#| msgid ""
-#| "Royal Guards are picked from the best swordsmen in Wesnoth. Serving under "
-#| "any of the higher nobility, they function as bodyguards, and partly as a "
-#| "badge of office for their employers. A special force of Royal Guards is "
-#| "stationed at the capitol, guarding the palace grounds and the royal "
-#| "family. Because of their trusted relationship to their superiors, they, "
-#| "rather than mercenaries, are often deployed on missions of crucial "
-#| "import. Their reliability and mastery of close combat are their best "
-#| "assets, for which they are well-renowned."
 msgid ""
 "Royal Guards are picked from the best swordsmen in Wesnoth. Serving under "
 "any of the higher nobility, they function as bodyguards, and partly as a "
@@ -3978,12 +4523,12 @@ msgid ""
 "they are well-renowned."
 msgstr ""
 "Królewscy gwardziści są wybierani spośród najlepszych szermierzy w Wesnoth. "
-"Służą wysokiej szlachcie jako straż przyboczna oraz symbol znaczenia urzędu "
-"ich pracodawców. Specjalny oddział królewskich gwardzistów przebywa w "
-"stolicy, strzegąc pałacu i rodziny królewskiej. Często wysyłani są na misje "
-"wielkiej wagi, ponieważ zwierzchnicy darzą ich zaufaniem większym niż "
-"najemników. Słyną przede wszystkim ze swojej niezawodności i mistrzostwa w "
-"walce wręcz."
+"Służą wysokiej szlachcie jako straż przyboczna oraz chodzący symbol "
+"znaczenia urzędu ich pracodawców. Specjalny oddział królewskich gwardzistów "
+"przebywa w stolicy, strzegąc pałacu i rodziny królewskiej. Często wysyłani "
+"są na misje wielkiej wagi, ponieważ zwierzchnicy darzą ich zaufaniem "
+"większym niż najemników. Słyną przede wszystkim ze swojej niezawodności i "
+"mistrzostwa w walce wręcz."
 
 #. [special_note]
 #: data/core/units/humans/Loyalist_Royal_Guard.cfg:22
@@ -3991,11 +4536,15 @@ msgid ""
 "Compared to other loyalists, Royal Guards have a higher resistance to "
 "‘blade’ and ‘impact’ attacks."
 msgstr ""
+"W porównaniu z innymi lojalistami, królewscy gwardziści mają większą "
+"odporność na ataki 'sieczne' i 'obuchowe'."
 
 #. [special_note]
 #: data/core/units/humans/Loyalist_Royal_Guard.cfg:25
 msgid "Compared to other loyalists, Royal Guards have more movement points."
 msgstr ""
+"W porównaniu z innymi lojalistami, królewscy gwardziści mają więcej punktów "
+"ruchu."
 
 #. [unit_type]: id=Sergeant, race=human
 #: data/core/units/humans/Loyalist_Sergeant.cfg:4
@@ -4004,11 +4553,6 @@ msgstr "Sierżant"
 
 #. [unit_type]: id=Sergeant, race=human
 #: data/core/units/humans/Loyalist_Sergeant.cfg:18
-#, fuzzy
-#| msgid ""
-#| "The Sergeant is a low-ranking officer in the ranks of an army. Though "
-#| "academically trained, he will need some experience in the field before "
-#| "his leadership is sound and acknowledged."
 msgid ""
 "Sergeants are low-ranking officers of human armies. Though academically "
 "trained, they need some experience in the field before their leadership is "
@@ -4016,9 +4560,11 @@ msgid ""
 "combat means they can more effectively rouse civilians and peasants in "
 "trying situations."
 msgstr ""
-"Sierżant jest podoficerem w szeregach królewskiej armii. Choć przeszedł "
-"szkolenie teoretyczne, to będzie jeszcze potrzebował doświadczenia bojowego, "
-"by jego zdolności przywódcze zostały ugruntowane i docenione."
+"Sierżanci są podoficerami w szeregach królewskiej armii. Choć przeszli "
+"szkolenie teoretyczne, potrzebują oni doświadczenia bojowego, zanim ich "
+"zdolności przywódcze zostaną ugruntowane i docenione. Mimo to ich sumienność "
+"i podstawowa wiedza na temat walki oznacza, że w trudniejszych czasach mogą "
+"skuteczniej namawiać cywilów i chłopów do buntu."
 
 #. [unit_type]: id=Shock Trooper, race=human
 #: data/core/units/humans/Loyalist_Shock_Trooper.cfg:4
@@ -4096,6 +4642,8 @@ msgid ""
 "Compared to other loyalists, Swordsmen have a higher resistance to ‘blade’ "
 "and ‘impact’ attacks."
 msgstr ""
+"W porównaniu z innymi lojalistami, fechmistrzowie mają większą odporność na "
+"ataki 'sieczne' i 'obuchowe'."
 
 #. [unit_type]: id=Mage, race=human
 #: data/core/units/humans/Mage.cfg:4
@@ -4192,6 +4740,7 @@ msgid ""
 "Compared to other mages, Arch Mages have a higher resistance to ‘fire’ "
 "attacks."
 msgstr ""
+"W porównaniu z innymi magami, arcymagowie mają większą odporność na 'ogień'."
 
 #. [attack]: type=fire
 #: data/core/units/humans/Mage_Arch.cfg:47
@@ -4263,6 +4812,8 @@ msgid ""
 "Compared to other mages, Great Mages have a higher resistance to ‘fire’ "
 "attacks."
 msgstr ""
+"W porównaniu z innymi magami, wielcy magowie mają większą odporność na "
+"'ogień'."
 
 #. [female]
 #: data/core/units/humans/Mage_Great.cfg:90
@@ -4308,6 +4859,8 @@ msgid ""
 "Compared to other mages, Red Mages have a higher resistance to ‘fire’ "
 "attacks."
 msgstr ""
+"W porównaniu z innymi magami, czerwoni magowie mają większą odporność na "
+"'ogień'."
 
 #. [female]
 #: data/core/units/humans/Mage_Red.cfg:98
@@ -4405,6 +4958,8 @@ msgid ""
 "Compared to other mages, White Mages have a higher resistance to ‘arcane’ "
 "attacks."
 msgstr ""
+"W porównaniu z innymi magami, biali magowie mają większą odporność na ataki "
+"'astralne'."
 
 #. [female]
 #: data/core/units/humans/Mage_White.cfg:105
@@ -4440,6 +4995,8 @@ msgid ""
 "Compared to other mages, Mages of Light have a higher resistance to ‘arcane’ "
 "attacks."
 msgstr ""
+"W porównaniu z innymi magami, magowie światła mają większą odporność na "
+"ataki 'astralne'."
 
 #. [female]
 #: data/core/units/humans/Mage_of_Light.cfg:102
@@ -4950,19 +5507,6 @@ msgstr "Mermen oplątywacz"
 
 #. [unit_type]: id=Merman Entangler, race=merman
 #: data/core/units/merfolk/Entangler.cfg:19
-#, fuzzy
-#| msgid ""
-#| "Merfolk tend to use a combination of both nets and clubs in fishing; nets "
-#| "to collect the fish, and clubs to finish the kill. Both of these tools "
-#| "have seen adaptation for warfare, and are valuable enough that "
-#| "auxiliaries who specialize in using them are deliberately brought to "
-#| "battle.\n"
-#| "\n"
-#| "Mermen often find themselves in a standoff with land-based enemies; the "
-#| "merfolk are too strong in the water, and are too weak to make any offense "
-#| "on land. Nets are a key bit of leverage; without nets, mermen can’t give "
-#| "any effective chase over land, and are at a great disadvantage in hand-to-"
-#| "hand combat."
 msgid ""
 "Merfolk tend to use a combination of both nets and clubs in fishing; nets to "
 "collect the fish, and clubs to finish the kill. Both of these tools have "
@@ -4975,18 +5519,18 @@ msgid ""
 "effective chase over land, and are at a great disadvantage in hand-to-hand "
 "combat."
 msgstr ""
-"Ludzie morza najczęściej łowią ryby z wykorzystaniem sieci, w które "
-"zaganiają ryby, oraz pałek, którymi dobijają zdobycz. Oba narzędzia zostały "
-"przystosowane do celów bojowych i okazały się w tej roli na tyle cenne, że "
-"jednostki specjalizujące się w ich wykorzystaniu stanowią nieodłączną część "
-"oddziałów mermenów.\n"
+"Mermeni najczęściej łowią ryby z wykorzystaniem sieci, w które łapią ryby, "
+"oraz pałek, którymi dobijają zdobycz. Oba narzędzia zostały przystosowane do "
+"celów bojowych i okazały się w tej roli na tyle cenne, że jednostki "
+"specjalizujące się w ich wykorzystaniu stanowią nieodłączną część oddziałów "
+"mermenów.\n"
 "\n"
-"Jednostki lądowe i mermeni często trzymają dystans, unikając nawiązywania "
-"walki - w wodzie mermeni są zbyt silnym przeciwnikiem dla wojsk lądowych, "
-"lecz po wyjściu na ląd sami stają się za słabi, by przypuścić skuteczny "
-"atak. Sieci stanowią w tej sytuacji kluczowy atut, gdyż bez nich mermeni "
-"mają trudności z dogonieniem jednostek lądowych, a dodatkowo są narażeni na "
-"dotkliwe straty w walce wręcz."
+"Jednostki lądowe i mermeni często trzymają między sobą dystans, unikając "
+"nawiązywania walki - w wodzie mermeni są zbyt silnym przeciwnikiem dla wojsk "
+"lądowych, lecz po wyjściu na ląd sami stają się za słabi, by przypuścić "
+"skuteczny atak. Sieci stanowią w tej sytuacji kluczowy atut, gdyż bez nich "
+"mermeni mają trudności z dogonieniem jednostek lądowych, a dodatkowo są "
+"narażeni na dotkliwe straty w walce wręcz."
 
 #. [unit_type]: id=Merman Fighter, race=merman
 #: data/core/units/merfolk/Fighter.cfg:4
@@ -5016,13 +5560,6 @@ msgstr "Mermen hoplita"
 
 #. [unit_type]: id=Merman Hoplite, race=merman
 #: data/core/units/merfolk/Hoplite.cfg:20
-#, fuzzy
-#| msgid ""
-#| "With their towering shields, the Merman Hoplites form the elite guard of "
-#| "the watery realm. Their powerful armor and rigid discipline allow them to "
-#| "hold a steadfast line in the maelstrom of battle. In times of "
-#| "desperation, they can even do so on land, though not nearly as well as a "
-#| "creature with legs."
 msgid ""
 "With their heavy armor and shields, the Merman Hoplites form the elite guard "
 "of the watery realm. Their powerful style of defensive combat and rigid "
@@ -5030,11 +5567,11 @@ msgid ""
 "In times of desperation, they can even do so on land, though not nearly as "
 "well as a creature with legs."
 msgstr ""
-"Wyposażenie w potężne tarcze hoplici mermenów stanowią elitarną gwardię "
-"podwodnego królestwa. Mocny pancerz i żelazna dyscyplina pozwalają im "
-"niezłomnie trzymać linię pośród bitewnego zgiełku. Gdy zajdzie taka "
-"rozpaczliwa potrzeba, potrafią też walczyć na lądzie, choć nie dorównują "
-"wtedy istotom posiadającym nogi."
+"Wyposażeni w ciężkie zbroje i tarcze, hoplici mermenów stanowią elitarną "
+"gwardię podwodnego królestwa. Ich jedyny w swoim rodzaju styl obrony w "
+"połączeniu z żelazną dyscypliną pozwalają im niezłomnie trzymać linię pośród "
+"bitewnego zgiełku. W sytuacjach pełnych desperacji potrafią też walczyć na "
+"lądzie, choć nie dorównują wtedy istotom posiadającym nogi."
 
 #. [unit_type]: id=Merman Hunter, race=merman
 #: data/core/units/merfolk/Hunter.cfg:4
@@ -5043,22 +5580,16 @@ msgstr "Mermen łowca"
 
 #. [unit_type]: id=Merman Hunter, race=merman
 #: data/core/units/merfolk/Hunter.cfg:18
-#, fuzzy
-#| msgid ""
-#| "The skills employed by mermen in spear-fishing are easily translated into "
-#| "warfare, especially against those who are not at home in the water. In "
-#| "times of need, many mermen of that occupation will volunteer to swell the "
-#| "ranks of their military."
 msgid ""
 "The skills employed by merfolk in spear-fishing are easily translated into "
 "warfare, especially against those who are not at home in the water. In times "
 "of need, many merfolk of that occupation will volunteer to swell the ranks "
 "of their military."
 msgstr ""
-"Zdolności mermenów nabyte podczas łowienia ryb dzidami łatwo przekładają się "
-"na zastosowania wojskowe, zwłaszcza w walce z istotami, dla których woda nie "
-"jest domem. Gdy zajdzie potrzeba, wielu mermenów z tego zawodu zgłasza się "
-"na ochotnika, by zasilić szeregi armii."
+"Zdolności mermenów nabyte podczas łowienia ryb dzidami, łatwo przekładają "
+"się na zastosowania wojskowe, zwłaszcza w walce z istotami, dla których woda "
+"nie jest domem. Gdy zajdzie potrzeba, wielu mermenów pełniących tę profesję "
+"zgłasza się na ochotników, by zasilić szeregi armii."
 
 #. [unit_type]: id=Mermaid Initiate, race=merman
 #: data/core/units/merfolk/Initiate.cfg:4
@@ -5089,21 +5620,14 @@ msgstr "Mermen oszczepnik"
 
 #. [unit_type]: id=Merman Javelineer, race=merman
 #: data/core/units/merfolk/Javelineer.cfg:18
-#, fuzzy
-#| msgid ""
-#| "Those mermen who master the art of the javelin can become nearly as "
-#| "effective as an archer — though the heft of their weapons impedes their "
-#| "range, the impact of one is considerably greater. In the water, the "
-#| "mobility of the mermen more than makes up for this when facing foes who "
-#| "cannot swim."
 msgid ""
 "Those merfolk who master the art of the javelin can become nearly as "
 "effective as an archer — though the heft of their weapons impedes their "
 "range, the impact of one is considerably greater. In the water, the mobility "
 "of the merfolk more than makes up for this when facing foes who cannot swim."
 msgstr ""
-"Ci mermeni, którzy opanowali sztukę posługiwania się oszczepami, potrafią "
-"niemal dorównywać skutecznością łucznikom - chociaż ciężar oszczepów "
+"Mermeni, którzy opanowali sztukę posługiwania się oszczepami, potrafią "
+"niemal dorównywać skutecznością łucznikom. Chociaż ciężar oszczepów "
 "ogranicza ich zasięg, impet uderzenia jest o wiele większy. Zwinność "
 "mermenów w wodzie z nawiązką rekompensuje wady ich broni w walce z wrogami "
 "nieumiejącymi pływać."
@@ -5115,20 +5639,6 @@ msgstr "Mermen sieciarz"
 
 #. [unit_type]: id=Merman Netcaster, race=merman
 #: data/core/units/merfolk/Netcaster.cfg:18
-#, fuzzy
-#| msgid ""
-#| "Fishing, as practiced by mermen, is largely a matter of chasing schools "
-#| "of fish into waiting nets, where oar-like clubs are used to dispatch the "
-#| "prey. The improvisation of using these against soldiers proved very "
-#| "effective; most land-native creatures are already quite awkward when "
-#| "waist-deep in water, and getting caught in a net can render them nearly "
-#| "helpless.\n"
-#| "\n"
-#| "The effectiveness of this method led to the development of smaller, "
-#| "weighted nets, which could be cast through the air; these were useless "
-#| "for fishing, but were useful in both combat, and in hunting game that "
-#| "came too close to shore. Clubs were used in combat with little or no "
-#| "adaptation from fishing, since they were already quite deadly."
 msgid ""
 "Fishing, as practiced by merfolk, is largely a matter of chasing schools of "
 "fish into waiting nets, where oar-like clubs are used to dispatch the prey. "
@@ -5162,13 +5672,6 @@ msgstr "Kapłanka syren"
 
 #. [unit_type]: id=Mermaid Priestess, race=merman
 #: data/core/units/merfolk/Priestess.cfg:21
-#, fuzzy
-#| msgid ""
-#| "Among mermen, mysticism is generally left to the mermaids, who are more "
-#| "inclined to it. It is they who dedicate themselves to the ideal of "
-#| "bringing peace and life to the world, and to the arts which make that "
-#| "possible. Their piety also grants them certain powers, allowing them to "
-#| "guard their people against magical or unnatural things."
 msgid ""
 "Among merfolk, mysticism is generally left to the mermaids, who are more "
 "inclined to it. It is they who dedicate themselves to the ideal of bringing "
@@ -5178,7 +5681,7 @@ msgid ""
 msgstr ""
 "Komunikacja z Bogami jest wśród mermenów przede wszystkim domeną syren. To "
 "one poświęcają się ideałom takim jak szerzenie pokoju i życia na świecie, a "
-"także studiują sztukę walki z chorobami i kalectwem. Oddanie i pobożność "
+"także studiują sztukę, która pomaga im te ideały ziścić. Oddanie i pobożność "
 "dają im pewne moce duchowe, pozwalające chronić ich lud przed istotami "
 "magicznymi i nieumarłymi."
 
@@ -5222,14 +5725,6 @@ msgstr "Mermen włócznik"
 
 #. [unit_type]: id=Merman Spearman, race=merman
 #: data/core/units/merfolk/Spearman.cfg:17
-#, fuzzy
-#| msgid ""
-#| "Archery is little favored by the mermen, for whom use of javelins serves "
-#| "a similar function. Though thrown javelins are of little use under the "
-#| "water, they are extremely effective at the surface, where their weight "
-#| "allows them to plunge several feet below the water while retaining enough "
-#| "momentum to wreak damage. They are also useful in melee, even deep under "
-#| "the surface, which is something that certainly cannot be said of arrows."
 msgid ""
 "Archery is little favored by the merfolk, for whom use of javelins serves a "
 "similar function. Though thrown javelins are of little use under the water, "
@@ -5252,11 +5747,6 @@ msgstr "Mermen tryton"
 
 #. [unit_type]: id=Merman Triton, race=merman
 #: data/core/units/merfolk/Triton.cfg:19
-#, fuzzy
-#| msgid ""
-#| "Tritons are combat masters of the sea. Skilled in use of the trident, "
-#| "Tritons easily defeat any enemy foolish enough to wander into their "
-#| "preferred environment."
 msgid ""
 "Tritons are combat masters of the sea. Skilled in use of the trident, "
 "Tritons easily defeat any enemy foolish enough to wander into their "
@@ -5266,7 +5756,9 @@ msgid ""
 msgstr ""
 "Trytony to władcy mórz. Potrafią posługiwać się trójzębami i z łatwością "
 "pokonają każdego na tyle nieostrożnego, by zapuścić się w ich przyrodzone "
-"środowisko."
+"środowisko. Ich mistrzostwo w posługiwaniu się bronią zapewnia im "
+"elastyczność w jej użyciu, a trytony o najwyższej randzie używają swojego "
+"oręża bardziej jak halabardy niż zwykłe, prymitywne włócznie."
 
 #. [unit_type]: id=Merman Warrior, race=merman
 #: data/core/units/merfolk/Warrior.cfg:4
@@ -5275,13 +5767,6 @@ msgstr "Mermen żołnierz"
 
 #. [unit_type]: id=Merman Warrior, race=merman
 #: data/core/units/merfolk/Warrior.cfg:17
-#, fuzzy
-#| msgid ""
-#| "The Mermen Warriors form the core of the mermen armies. They wield their "
-#| "tridents with a skill and diligence impressive even compared to the "
-#| "soldiers of other races, but doubly so considering the difficulties of "
-#| "fighting underwater, as any who try to match them in their homes can "
-#| "attest."
 msgid ""
 "Mermen Warriors form the core of merfolk armies. They wield their tridents "
 "with a skill and diligence impressive even compared to the soldiers of other "
@@ -5295,10 +5780,8 @@ msgstr ""
 
 #. [unit_type]: id=Giant Ant, race=monster
 #: data/core/units/monsters/Ant.cfg:4
-#, fuzzy
-#| msgid "Giant Rat"
 msgid "Giant Ant"
-msgstr "Ogromny szczur"
+msgstr "Ogromna mrówka"
 
 #. [unit_type]: id=Giant Ant, race=monster
 #: data/core/units/monsters/Ant.cfg:19
@@ -5307,11 +5790,14 @@ msgid ""
 "earth to the tops of tall mountains. Though normally not hostile, they can "
 "bite at close range."
 msgstr ""
+"Ogromne mrówki są powszechnie spotykane w praktycznie każdym środowisku, od "
+"najgłębszych jaskiń aż po szczyty najwyższych gór. Mimo, że nie są z reguły "
+"wrogie, mogą gryźć na krótki dystans."
 
 #. [unit_type]: id=Cave Bear, race=monster
 #: data/core/units/monsters/Bear.cfg:4
 msgid "Cave Bear"
-msgstr ""
+msgstr "Niedźwiedź jaskiniowy"
 
 #. [unit_type]: id=Cave Bear, race=monster
 #: data/core/units/monsters/Bear.cfg:19
@@ -5321,11 +5807,16 @@ msgid ""
 "hearing, but poor eyesight. When a rival predator, or some other threat, "
 "gets too close, a bear will reliably attack."
 msgstr ""
+"Niedźwiedzie jaskiniowe to duże, potężne bestie z ostrymi pazurami i "
+"ogromnymi zębiskami. Dostosowane do przemierzania ciemnych jaskiń, mają "
+"mocno wyczulone zmysły zapachu i słuchu, lecz słaby wzrok. Gdy niedźwiedź "
+"poczuje się zagrożony bliską obecnością innego drapieżnika lub osoby, "
+"zaatakuje intruza pełną swoją siłą."
 
 #. [unit_type]: id=Woodland Boar, race=monster
 #: data/core/units/monsters/Boar.cfg:4
 msgid "Woodland Boar"
-msgstr ""
+msgstr "Borowy dzik"
 
 #. [unit_type]: id=Woodland Boar, race=monster
 #: data/core/units/monsters/Boar.cfg:35
@@ -5334,22 +5825,26 @@ msgid ""
 "A mature, tamed boar is a valuable asset to any farmer, but an angry wild "
 "boar is a challenge even to the best hunters."
 msgstr ""
+"W miarę jak dziki się starzeją, ich potężne zębiska stają się dłuższe i "
+"bardziej liczne. Dorosły i oswojony dzik jest wartościowym nabytkiem dla "
+"każdego rolnika, lecz rozwścieczony dziki dzik stanowi nawet dla najlepszych "
+"łowczych nie lada wyzwanie."
 
 #. [attack]: type=blade
 #: data/core/units/monsters/Boar.cfg:50
 #: data/core/units/monsters/Boar_Piglet.cfg:49
 msgid "Bite"
-msgstr ""
+msgstr "Ugryzienie"
 
 #. [attack]: type=pierce
 #: data/core/units/monsters/Boar.cfg:59
 msgid "Tusk"
-msgstr ""
+msgstr "Kieł"
 
 #. [unit_type]: id=Piglet, race=monster
 #: data/core/units/monsters/Boar_Piglet.cfg:4
 msgid "Piglet"
-msgstr ""
+msgstr "Prosiaczek"
 
 #. [unit_type]: id=Piglet, race=monster
 #: data/core/units/monsters/Boar_Piglet.cfg:34
@@ -5358,11 +5853,15 @@ msgid ""
 "little less of a challenge in combat. But seldom is a piglet found that does "
 "not have a protective adult boar watching over them."
 msgstr ""
+"Młode prosiaczki są stworzonkami ciekawskimi, lecz również dość "
+"nieprzyjaznymi, podobnie jak ich rodzice. W walce nie stanowią takiego "
+"wyzwania jak dorosłe osobniki, lecz rzadko można się natknąć na prosiaczka, "
+"niedaleko którego nie znajduje się pilnujący go dorosły dzik."
 
 #. [unit_type]: id=Swamp Lizard, race=monster
 #: data/core/units/monsters/Crocodile.cfg:9
 msgid "Swamp Lizard"
-msgstr ""
+msgstr "Bagienny jaszczur"
 
 #. [unit_type]: id=Swamp Lizard, race=monster
 #: data/core/units/monsters/Crocodile.cfg:74
@@ -5374,6 +5873,12 @@ msgid ""
 "adopted a ‘two legs bad’ outlook and do not hesitate to avenge their "
 "ancestors."
 msgstr ""
+"Bagna to bardzo żywe środowisko, lecz z reguły nie jest przyjazne dla ludzi "
+"czy orków. Bagienne jaszczury to jedno z najczęstszych zagrożeń, wraz z ich "
+"mocarnymi szczękami i twardą, opancerzoną skórą. Pomimo ich prymitywnego "
+"wyglądu, te jaszczury nie są istotami głupimi i po latach bycia zwierzyną "
+"łowną za sprawą ich drogocennej skóry, wypracowały one pogląd, że 'dwunożne "
+"= złe' i tym samym nie zawahają się pomścić swoich przodków."
 
 #. [special_note]
 #: data/core/units/monsters/Crocodile.cfg:76
@@ -5381,16 +5886,18 @@ msgid ""
 "This unit can move unseen through swamp water, keeping most of its body "
 "submerged."
 msgstr ""
+"Ta jednostka może się poruszać niezauważona przez bagno, będąc w większości "
+"zanurzona."
 
 #. [hides]: id=swamp_lurk
 #: data/core/units/monsters/Crocodile.cfg:86
 msgid "swamp lurk"
-msgstr ""
+msgstr "Bagienny czyhacz"
 
 #. [hides]: id=swamp_lurk
 #: data/core/units/monsters/Crocodile.cfg:87
 msgid "female^swamp lurk"
-msgstr ""
+msgstr "Bagienna czyhaczka"
 
 #. [hides]: id=swamp_lurk
 #: data/core/units/monsters/Crocodile.cfg:88
@@ -5401,22 +5908,20 @@ msgid ""
 "units next to it. Any enemy unit that first discovers this unit immediately "
 "loses all its remaining movement."
 msgstr ""
+"Jednostka może ukryć się w bagnie, pozostając niezauważoną przez wrogów.\n"
+"\n"
+"Jednostki nieprzyjaciela nie mogą zobaczyć ani zaatakować tej jednostki, gdy "
+"znajduje się ona w bagnie, chyba że znajdują się bezpośrednio obok niej. "
+"Jednostka wroga, która jako pierwsza zauważy taką jednostkę, natychmiast "
+"traci wszystkie pozostałe punkty ruchu."
 
 #. [unit_type]: id=Cuttle Fish, race=monster
 #: data/core/units/monsters/Cuttle_Fish.cfg:4
-#, fuzzy
-#| msgid "Cuttle Fish"
 msgid "Cuttlefish"
 msgstr "Kałamarnica"
 
 #. [unit_type]: id=Cuttle Fish, race=monster
 #: data/core/units/monsters/Cuttle_Fish.cfg:19
-#, fuzzy
-#| msgid ""
-#| "Cuttle Fish are gigantic creatures of the seas. They can grab their "
-#| "opponents with strong tentacles, or spit a poisonous black ink from a "
-#| "distance. The best way to survive an encounter with these monsters is to "
-#| "remain ashore."
 msgid ""
 "Cuttlefish are gigantic creatures of the seas. They can grab their opponents "
 "with strong tentacles, or spit a poisonous black ink from a distance. The "
@@ -5433,19 +5938,13 @@ msgstr "Starszy jastrząb"
 
 #. [unit_type]: id=Elder Falcon, race=falcon
 #: data/core/units/monsters/Elder_Falcon.cfg:18
-#, fuzzy
-#| msgid ""
-#| "Elder Falcons bear the telltale scars of veteran warriors from protecting "
-#| "their masters, their bodies proof of repeated dives into a swirling "
-#| "melee. Stronger and faster than their younger kin, they are rumored to "
-#| "hit with enough force to remove an enemy's head. "
 msgid ""
 "Elder Falcons bear the telltale scars of veteran warriors from protecting "
 "their masters, their bodies proof of repeated dives into a swirling melee. "
 "Stronger and faster than their younger kin, they are rumored to hit with "
 "enough force to remove an enemy’s head."
 msgstr ""
-"Starsze Jastrzębie z dumą noszą znamiona doświadczonych wojowników - blizny, "
+"Starsze sokoły z dumą noszą znamiona doświadczonych wojowników - blizny, "
 "uzyskane podczas wielu walk pośród wirujących ostrzy. Silniejsze i szybsze "
 "od swoich młodszych pobratymców, według przesłanek potrafią jednym "
 "uderzeniem skrócić przeciwnika o głowę."
@@ -5476,10 +5975,8 @@ msgstr ""
 
 #. [unit_type]: id=Fire Ant, race=monster
 #: data/core/units/monsters/Fire_Ant.cfg:11
-#, fuzzy
-#| msgid "Fire Dragon"
 msgid "Fire Ant"
-msgstr "Ognisty smok"
+msgstr "Ognista mrówka"
 
 #. [unit_type]: id=Fire Ant, race=monster
 #: data/core/units/monsters/Fire_Ant.cfg:46
@@ -5489,6 +5986,11 @@ msgid ""
 "as scavengers, a burrow of fire ants can become aggressive when provoked and "
 "have even been known to attack small groups of threatening troops."
 msgstr ""
+"Niewielkie, lecz śmiercionośne w dużej gromadzie, ogniste mrówki posiadają "
+"ostre kły i niezwykłą zdolność wytwarzania ognia. Chociaż te stworzenia "
+"zazwyczaj są padlinożercami, sprowokowane stają się niezwykle agresywne i "
+"potrafią całym gniazdem zaatakować nawet niewielkie grupy wojsk, które miały "
+"pecha zbliżyć się do ich siedziby."
 
 #. [attack]: type=fire
 #: data/core/units/monsters/Fire_Ant.cfg:73
@@ -5550,37 +6052,27 @@ msgstr "ogniste szpony"
 
 #. [unit_type]: id=Fire Wraith, race=monster
 #: data/core/units/monsters/Fire_Wraith.cfg:8
-#, fuzzy
-#| msgid "fire breath"
 msgid "Fire Wraith"
-msgstr "ognisty oddech"
+msgstr "Ogniste widmo"
 
 #. [unit_type]: id=Fire Wraith, race=monster
 #: data/core/units/monsters/Fire_Wraith.cfg:47
-#, fuzzy
-#| msgid ""
-#| "Fire Guardians are spirits of smoke and flame. No one is exactly sure "
-#| "where they come from, but they are occasionally summoned by powerful "
-#| "mages to do their bidding. When not being controlled they like to frolic "
-#| "in pools of lava and take great delight in burning anything they can "
-#| "reach."
 msgid ""
 "Fire Wraiths are spirits of smoke and flame. No one is exactly sure where "
 "they come from, but they are occasionally summoned by powerful mages to do "
 "their bidding. The odd armor they wear hints at a former life or creator, "
 "but whatever ancient civilization was involved has been lost to history."
 msgstr ""
-"Strażnicy ognia to magiczne istoty dymu i płomieni. Nikt nie wie dokładnie, "
-"skąd się biorą, ale najpotężniejsi magowie potrafią ich przyzywać na swoje "
-"usługi. Gdy nie są pod kontrolą maga, strażnicy ognia hasają w rozlewiskach "
-"lawy, znajdując upodobanie w popieleniu wszystkiego i każdego w zasięgu."
+"Ogniste widma to magiczne istoty dymu i płomieni. Nikt nie wie dokładnie, "
+"skąd się biorą, ale najpotężniejsi magowie potrafią je przyzywać na swoje "
+"usługi. Mimo, że ich dziwny pancerz może sugerować coś na temat ich dawnego "
+"życia lub twórcy to jednak skądkolwiek one nie pochodzą, ich cywilizacja "
+"najpewniej zginęła w odmętach historii."
 
 #. [unit_type]: id=Frost Stoat, race=monster
 #: data/core/units/monsters/Frost_Stoat.cfg:20
-#, fuzzy
-#| msgid "Giant Rat"
 msgid "Frost Stoat"
-msgstr "Ogromny szczur"
+msgstr "Lodowy gronostaj"
 
 #. [unit_type]: id=Frost Stoat, race=monster
 #: data/core/units/monsters/Frost_Stoat.cfg:35
@@ -5592,25 +6084,29 @@ msgid ""
 "animals, but are quite territorial and the young adults have been known to "
 "attack larger intruders, including humans and orcs."
 msgstr ""
+"Lodowe gronostaje to przebiegłe stworzenia występujące głównie w "
+"zamarzniętych częściach Północy, chociaż są zdolne przetrwać w każdych "
+"warunkach. Ich najbardziej charakterystyczną cechą są lodowate przednie "
+"pazury, które nie przypominają niczego, co można znaleźć u innych dzikich "
+"zwierząt. Stworzenia te na ogół zbierają odpadki lub polują na mniejsze "
+"zwierzęta, ale są dość terytorialne często zdarzało się, że młodsze dorosłe "
+"osobniki potrafiły zaatakować intruzów zdecydowanie większych od siebie, w "
+"tym ludzi i orków."
 
 #. [attack]: type=cold
 #: data/core/units/monsters/Frost_Stoat.cfg:103
-#, fuzzy
-#| msgid "fire claws"
 msgid "ice claw"
-msgstr "ogniste szpony"
+msgstr "lodowy szpon"
 
 #. [unit_type]: id=Giant Stoat
 #: data/core/units/monsters/Frost_Stoat.cfg:169
-#, fuzzy
-#| msgid "Giant Rat"
 msgid "Giant Stoat"
-msgstr "Ogromny szczur"
+msgstr "Ogromny gronostaj"
 
 #. [unit_type]: id=Giant Stoat
 #: data/core/units/monsters/Frost_Stoat.cfg:170
 msgid "Giant Stoats are obsolete, use Frost Stoat."
-msgstr ""
+msgstr "Gigantyczne gronostaje są przestarzałe, użyj lodowych gronostajów."
 
 #. [unit_type]: id=Giant Mudcrawler, race=monster
 #: data/core/units/monsters/Giant_Mudcrawler.cfg:4
@@ -5627,6 +6123,13 @@ msgid ""
 "also be seen roaming the wild from time to time, their earthy composition "
 "making them immune to wildlife that rely on poison to fight."
 msgstr ""
+"Bardziej odporne niż ich mniejsze odpowiedniki, błotne golemy są o wiele "
+"bardziej skuteczne w walce z o wiele lepiej uzbrojonymi żołnierzami nawet "
+"przy pomocy ich prymitywnych ramion, a do tego są bardziej mobilne. "
+"Stworzeni przez potężniejszych zaklinaczy poszukujących skutecznego sposobu "
+"na uprzykrzanie życia cywilom lub wojskowym, są też od czasu do czasu "
+"widoczni wędrujący po dzikich ostępach. Ich ziemista budowa czyni je "
+"odpornymi na jadowite zwierzęta."
 
 #. [attack]: type=impact
 #: data/core/units/monsters/Giant_Mudcrawler.cfg:41
@@ -5647,6 +6150,11 @@ msgid ""
 "on any footing. While notably aggressive at night, these creatures do not "
 "pose much of a threat to any serious fighter."
 msgstr ""
+"Te szkodniki są zdecydowanie większe od zwyczajnych szczurów żyjących w "
+"większości miast i potrafią z łatwością zranić nieuzbrojonego cywila, by w "
+"następnej chwili wywinąć się ewentualnym napastnikom. Choć są szczególnie "
+"agresywne w godzinach nocnych, stworzenia te nie stanowią wielkiego "
+"zagrożenia dla dobrze wyposażonych wojowników."
 
 #. [unit_type]: id=Giant Scorpion, race=monster
 #: data/core/units/monsters/Giant_Scorpion.cfg:4
@@ -5679,12 +6187,12 @@ msgstr "kleszcze"
 #. [variation]
 #: data/core/units/monsters/Giant_Scorpion.cfg:111
 msgid "scuttler"
-msgstr ""
+msgstr "czmychacz"
 
 #. [variation]
 #: data/core/units/monsters/Giant_Scorpion.cfg:112
 msgid "Sand Scuttler"
-msgstr ""
+msgstr "Piaskowy czmychacz"
 
 #. [variation]
 #: data/core/units/monsters/Giant_Scorpion.cfg:117
@@ -5693,6 +6201,9 @@ msgid ""
 "creature and elemental beast. Though usually timid, Sand Scuttlers sometimes "
 "attack unwary travelers, especially when startled."
 msgstr ""
+"Uznając piaszczyste wydmy za swój dom, te stworzenia są dziwnym połączeniem "
+"zwyczajnych stworzeń i żywiołaków. Choć są dość płochliwe, spłoszone "
+"piaskowe czmychacze potrafią czasami zaatakować nieostrożnych wędrowców."
 
 #. [unit_type]: id=Giant Scorpling, race=monster
 #: data/core/units/monsters/Giant_Scorpling.cfg:4
@@ -5714,6 +6225,18 @@ msgid ""
 "carapace is very resistant to normal blade strikes or piercing attacks, but "
 "can be broken with heavy blows."
 msgstr ""
+"Jednym z najsilniejszych znanych jadów jest jad potwornych, nadgranicznych "
+"skorpionów. Niezwykle ceniony zarówno przez skrytobójców, jak i aptekarzy, "
+"ten jad jest często postrzegany jako szybki sposób na zarobek, kuszący "
+"odważnych myśliwych do wyruszenia w głąb dziczy w jego poszukiwaniu. Jednak "
+"nawet jako młode osobniki, te skorpiony mogą powodować śmiertelne użądlenia "
+"i są szybsze niż większość ludzi. Co gorsza, mogą one żyć w dość dużych "
+"gniazdach, a rozgniewanie pozornie samotnego skorpiona może doprowadzić do "
+"tego, że cały ich rój wypełznie z ziemi, szybko zamieniając myśliwego w "
+"zwierzynę. Chroni je solidna skorupa, która z wiekiem twardnieje i staje się "
+"o wiele wytrzymalsza. Ten pancerz jest bardzo odporny na zwykłe ciosy "
+"ostrzem lub przeszywające ataki, lecz możliwe jest uszkodzenie go przy "
+"pomocy ciężkich uderzeń."
 
 #. [unit_type]: id=Giant Spider, race=monster
 #: data/core/units/monsters/Giant_Spider.cfg:4
@@ -5739,7 +6262,7 @@ msgstr "sieć"
 #. [unit_type]: id=Bay Horse, race=horse
 #: data/core/units/monsters/Horse.cfg:5
 msgid "Bay Horse"
-msgstr ""
+msgstr "Gniady koń"
 
 #. [unit_type]: id=Bay Horse, race=horse
 #: data/core/units/monsters/Horse.cfg:19
@@ -5749,6 +6272,11 @@ msgid ""
 "the wild plains and woodlands. Though an unencumbered horse will tend to "
 "flee if possible, they will fight back with a powerful kick when cornered."
 msgstr ""
+"Gniade konie są bardziej definiowane przez ich ubarwienie niż rozmiar czy "
+"temperament i można je znaleźć wszędzie, od pól bitew, aż po farmy, dzikie "
+"równiny czy lasy. Chociaż nieobciążony koń będzie w miarę swoich możliwości "
+"próbował uciec przy każdej nadarzającej się okazji, otoczony z każdej strony "
+"będzie walczył przy pomocy swoich potężnych kopnięć."
 
 #. [attack]: type=impact
 #: data/core/units/monsters/Horse.cfg:32 data/core/units/monsters/Horse.cfg:98
@@ -5762,10 +6290,8 @@ msgstr "kopnięcie"
 
 #. [unit_type]: id=White Horse
 #: data/core/units/monsters/Horse.cfg:74
-#, fuzzy
-#| msgid "White Mage"
 msgid "White Horse"
-msgstr "Biały mag"
+msgstr "Biały koń"
 
 #. [unit_type]: id=White Horse
 #: data/core/units/monsters/Horse.cfg:85
@@ -5775,13 +6301,17 @@ msgid ""
 "As if blessed by the faerie world, they have a grace and agility not found "
 "in their more common relatives."
 msgstr ""
+"Niektóre konie mają białe umaszczenie i zaledwie przez to są nazywane "
+"białymi końmi. Istnieje jednak specjalny gatunek koni, który żyje tylko i "
+"wyłącznie w najodleglejszych i najdzikszych lasach na świecie. Są to "
+"najprawdziwsze białe konie. Powiadają, że stworzenia te mają związek ze "
+"światem wróżek, przez co charakteryzują się niezwykłą gracją i zwinnością "
+"znacznie przewyższającą tą spotykaną u zwykłych koni."
 
 #. [unit_type]: id=Dark Horse
 #: data/core/units/monsters/Horse.cfg:140
-#, fuzzy
-#| msgid "Dark Sorcerer"
 msgid "Dark Horse"
-msgstr "Mroczny czarnoksiężnik"
+msgstr "Mroczny koń"
 
 #. [unit_type]: id=Dark Horse
 #: data/core/units/monsters/Horse.cfg:166
@@ -5790,26 +6320,28 @@ msgid ""
 "civilized races. They leave no signs of their passage, but they have been "
 "noticed scouting camps and outposts during the night."
 msgstr ""
+"Mroczne konie są dzikimi zwierzętami, które ku zdziwieniu każdego są bardzo "
+"ciekawskie cywilizowanych ras. Mimo, że zazwyczaj nie pozostawiają po sobie "
+"żadnych śladów, widziane są czasami obserwujące obozy i posterunki w trakcie "
+"nocy."
 
 #. [attack]: type=cold
 #: data/core/units/monsters/Horse.cfg:179
 #: data/core/units/monsters/Horse_Black.cfg:50
 msgid "whinny"
-msgstr ""
+msgstr "rżenie"
 
 #. [male]
 #. [female]
 #: data/core/units/monsters/Horse.cfg:214
 #: data/core/units/monsters/Horse.cfg:218
-#, fuzzy
-#| msgid "female^Dark Adept"
 msgid "female^Dark Horse"
-msgstr "Mroczna adeptka"
+msgstr "Mroczna klacz"
 
 #. [unit_type]: id=Black Horse, race=horse
 #: data/core/units/monsters/Horse_Black.cfg:5
 msgid "Black Horse"
-msgstr ""
+msgstr "Czarny koń"
 
 #. [unit_type]: id=Black Horse, race=horse
 #: data/core/units/monsters/Horse_Black.cfg:25
@@ -5818,25 +6350,24 @@ msgid ""
 "their eyes and the unnerving, unnatural sound of their calls suggest they "
 "are malevolent spirits."
 msgstr ""
+"Prawdziwa natura czarnych koni jest niemożliwa do odkrycia, lecz płomień w "
+"ich oczach oraz niepokojące i nienaturalne dźwięki, które wydają, sugerują, "
+"że są to złowrogie istoty."
 
 #. [male]
 #: data/core/units/monsters/Horse_Black.cfg:85
 msgid "Black Stallion"
-msgstr ""
+msgstr "Czarny ogier"
 
 #. [female]
 #: data/core/units/monsters/Horse_Black.cfg:90
-#, fuzzy
-#| msgid "female^Mage of Light"
 msgid "female^Black Nightmare"
-msgstr "Mag światła"
+msgstr "Czarna koszmarzyca"
 
 #. [unit_type]: id=Great Horse, race=horse
 #: data/core/units/monsters/Horse_Great.cfg:5
-#, fuzzy
-#| msgid "Great Mage"
 msgid "Great Horse"
-msgstr "Wielki mag"
+msgstr "Wielki koń"
 
 #. [unit_type]: id=Great Horse, race=horse
 #: data/core/units/monsters/Horse_Great.cfg:20
@@ -5846,11 +6377,15 @@ msgid ""
 "often feisty temperaments make them too difficult to tame, though many an "
 "arrogant prince or warlord has tried and failed."
 msgstr ""
+"Wielkie konie są wyraźnie większe od zwykłych, udomowionych koni, lecz mimo "
+"podobnego wyglądu, są dzikimi zwierzętami. Ich zawziętość i często trudny "
+"temperament sprawia, że niemożliwością jest je oswoić. Na własnej skórze "
+"przekonało się o tym wielu aroganckich książąt i wodzów."
 
 #. [unit_type]: id=Icemonax, race=monster
 #: data/core/units/monsters/Icemonax.cfg:4
 msgid "Icemonax"
-msgstr ""
+msgstr "Lodowy pancernik"
 
 #. [unit_type]: id=Icemonax, race=monster
 #: data/core/units/monsters/Icemonax.cfg:34
@@ -5861,11 +6396,17 @@ msgid ""
 "places they do not belong. Despite this, efforts to study and domesticate "
 "them have failed, as they die soon after capture."
 msgstr ""
+"Lodowy pancernik to dziwna bestia z mroźnej północy, najlepiej opisana jako "
+"duża, opancerzona, naziemna wiewiórka. Na ich pancerzu gromadzi się szron i "
+"śnieg, nawet w bardziej umiarkowanym klimacie. Większość pancerników jest "
+"bardzo ciekawskich i często są widziane w miejscach dla nich nietypowych. "
+"Mimo to próby ich zbadania i udomowienia nie powiodły się, ponieważ umierają "
+"wkrótce po schwytaniu."
 
 #. [unit_type]: id=Great Icemonax, race=monster
 #: data/core/units/monsters/Icemonax_Greater.cfg:4
 msgid "Great Icemonax"
-msgstr ""
+msgstr "Wielki lodowy pancernik"
 
 #. [unit_type]: id=Great Icemonax, race=monster
 #: data/core/units/monsters/Icemonax_Greater.cfg:35
@@ -5875,11 +6416,16 @@ msgid ""
 "climate is warm and dry. Some Icemonax grow to be quite large and powerful, "
 "guarding their smaller, younger kin."
 msgstr ""
+"Lodowy pancernik to dziwna bestia z mroźnej północy, najlepiej opisana jako "
+"duża, opancerzona, naziemna wiewiórka. Na ich pancerzu gromadzi się lód i "
+"śnieg, nawet w cieplejszym i bardziej suchym klimacie. Niektóre lodowe "
+"pancerniki dorastają do całkiem pokaźnych rozmiarów i wykorzystują swoją "
+"ogromną siłę do ochrony swoich mniejszych lub młodszych pobratymców."
 
 #. [unit_type]: id=Jinn, race=monster
 #: data/core/units/monsters/Jinn.cfg:8
 msgid "Jinn"
-msgstr ""
+msgstr "Dżin"
 
 #. [unit_type]: id=Jinn, race=monster
 #: data/core/units/monsters/Jinn.cfg:23
@@ -5891,18 +6437,21 @@ msgid ""
 "felt the Jinn were watching over them, driving off malign forces of the "
 "night."
 msgstr ""
+"Dżiny to tajemnicze duchy, najprawdopodobniej niepowiązane z duszami "
+"zmarłych. Często widać je z daleka, dryfujące przez pustynne wzgórza i "
+"wydmy, lecz źle znoszą obserwację z bliska. Większość napotkanych w historii "
+"dżinów miała wrogą naturę, lecz zdarzało się, że podróżni czuli na sobie "
+"opiekuńczą moc tych istot, która odpędzała złowrogie siły nocy."
 
 #. [attack]: type=impact
 #: data/core/units/monsters/Jinn.cfg:99
 msgid "desert windblast"
-msgstr ""
+msgstr "pustynny podmuch powietrza"
 
 #. [attack]: type=fire
 #: data/core/units/monsters/Jinn.cfg:108
-#, fuzzy
-#| msgid "lightning"
 msgid "desert lightning"
-msgstr "błyskawica"
+msgstr "pustynna błyskawica"
 
 #. [unit_type]: id=Mudcrawler, race=monster
 #: data/core/units/monsters/Mudcrawler.cfg:4
@@ -5918,11 +6467,16 @@ msgid ""
 "along with their resistance to a common citizen’s improvised blunt weaponry, "
 "makes them the tool of choice for ambitious but inexperienced summoners."
 msgstr ""
+"Wyczarowani jako proste istoty z ziemi i wody, błotniaki potrafią doskonale "
+"walczyć, plując kulami błota z zaskakującą siłą. Mimo że są powolne, kruche "
+"i podatne na ogień, szybkość i łatwość w ich tworzeniu w połączeniu z "
+"odpornością na większość improwizowanej broni sprawia, że ambitni lecz mało "
+"doświadczeni przywoływacze chętnie tworzą ich jako swoje narzędzia."
 
 #. [unit_type]: id=Roc, race=monster
 #: data/core/units/monsters/Roc.cfg:4
 msgid "Roc"
-msgstr ""
+msgstr "Roka"
 
 #. [unit_type]: id=Roc, race=monster
 #: data/core/units/monsters/Roc.cfg:19
@@ -5939,13 +6493,24 @@ msgid ""
 "aid to a traveler in need, usually in exchange for a small trinket or shiny "
 "bauble."
 msgstr ""
+"Z dala od ludzkich siedzib, w wielkich pustynnych górach można czasami "
+"natknąć się na ogromne ptaki drapieżne zwane rokami. Zazwyczaj widuje się je "
+"na łowach, przeczesujące pobliskie piaski w poszukiwaniu potencjalnego "
+"pożywienia. Pomimo sporych rozmiarów, roki są stworzeniami prowadzącymi "
+"życie samotników i niezwykle rzadko napotykają rozumne rasy. Ich nieuchwytna "
+"natura podniosła je do statusu niemal mitologicznego, zwłaszcza przez "
+"nomadów z pustyni.\n"
+"\n"
+"W przeciwieństwie do innych ptaków, takich jak sokoły czy jastrzębie, roki "
+"są praktycznie nie do oswojenia z powodu ich indywidualistycznego charakteru "
+"oraz inteligencji. Jedynie w sytuacjach niezwykle rzadkich roka może "
+"zaoferować pomoc podróżnikowi w potrzebie, zwykle w zamian za niewielkie "
+"świecidełko."
 
 #. [unit_type]: id=Rock Scorpion, race=monster
 #: data/core/units/monsters/Rock_Scorpion.cfg:4
-#, fuzzy
-#| msgid "Giant Scorpion"
 msgid "Rock Scorpion"
-msgstr "Gigantyczny skorpion"
+msgstr "Skalny skorpion"
 
 #. [unit_type]: id=Rock Scorpion, race=monster
 #: data/core/units/monsters/Rock_Scorpion.cfg:45
@@ -5956,18 +6521,22 @@ msgid ""
 "Unlike most scorpions, they do not deliver their poison with a piercing "
 "stinger, but instead spray their enemies with a noxious, volatile stream."
 msgstr ""
+"Skalne skorpiony pojawiały się często w opowieściach o rozbójnikach i "
+"pijakach, ale niewiele jest dowodów na to, że naprawdę istnieją. Opisywano "
+"je jako ukradkowe potwory ze skórą z litego kamienia i ostrymi, "
+"krystalicznymi pazurami. W przeciwieństwie do większości skorpionów nie "
+"zatruwają one przeszywając przeciwników żądłem, a zamiast tego spryskują "
+"nieszczęśników strumieniem lotnego, toksycznego jadu."
 
 #. [attack]: type=impact
 #: data/core/units/monsters/Rock_Scorpion.cfg:59
-#, fuzzy
-#| msgid "water spray"
 msgid "spray"
-msgstr "pryśnięcie wodą"
+msgstr "pryśnięcie"
 
 #. [unit_type]: id=Horned Scarab, race=monster
 #: data/core/units/monsters/Scarab.cfg:4
 msgid "Horned Scarab"
-msgstr ""
+msgstr "Rogaty skarabeusz"
 
 #. [special_note]
 #: data/core/units/monsters/Scarab.cfg:21
@@ -5975,6 +6544,8 @@ msgid ""
 "This unit can burrow under loose dirt, sand, or leaves, concealing itself if "
 "it does not change location."
 msgstr ""
+"Ta jednostka może się zakopać w ziemi, piasku lub liściach, ukrywając się w "
+"przypadku braku ruchu."
 
 #. [unit_type]: id=Horned Scarab, race=monster
 #: data/core/units/monsters/Scarab.cfg:25
@@ -5984,13 +6555,16 @@ msgid ""
 "of attack is the large, sharp horn growing from their head. Because of their "
 "large size, armor, and horn, they cannot fly."
 msgstr ""
+"Rogate skarabeusze to duże i wytrzymałe owady, które mogą urosnąć do całkiem "
+"pokaźnych rozmiarów, co czyni je poważnym zagrożeniem, jeśli zostaną "
+"sprowokowane. Atakują głównie przy pomocy dużego, ostrego rogu wyrastającego "
+"z ich głowy. Ze względu na masywne rozmiary, gruby pancerz i duży róg, "
+"skarabeusze nie potrafią latać."
 
 #. [attack]: type=pierce
 #: data/core/units/monsters/Scarab.cfg:53
-#, fuzzy
-#| msgid "thorns"
 msgid "horn"
-msgstr "ciernie"
+msgstr "róg"
 
 #. [unit_type]: id=Sea Serpent, race=monster
 #: data/core/units/monsters/Sea_Serpent.cfg:4
@@ -6008,13 +6582,18 @@ msgid ""
 "even to the elite merfolk warriors, and are the reason they seldom inhabit "
 "waters far from the shore."
 msgstr ""
+"Węże morskie wzbudzają strach i grozę pośród rybaków i żeglarzy, często "
+"występując w folklorze jako gniewne bóstwa morza. Zdolne do niszczenia "
+"całych statków bez najmniejszego wysiłku i posiadające pozornie nieskończoną "
+"siłę i witalność, te nieuchwytne lewiatany są destrukcyjne i bezlitosne dla "
+"każdego, kto spróbuje z nimi walczyć. Choć na ogół żyją na głębokich "
+"morzach, węże morskie imponują nawet elitarnym wojownikom nagów i są głównym "
+"powodem, dlaczego rzadko zamieszkują oni tereny oddalone od brzegu."
 
 #. [unit_type]: id=Great Seahorse, race=monster
 #: data/core/units/monsters/Seahorse.cfg:5
-#, fuzzy
-#| msgid "Great Mage"
 msgid "Great Seahorse"
-msgstr "Wielki mag"
+msgstr "Wielki koń morski"
 
 #. [unit_type]: id=Great Seahorse, race=monster
 #: data/core/units/monsters/Seahorse.cfg:29
@@ -6026,6 +6605,14 @@ msgid ""
 "force to stun a small animal, and has thick, bony plate armor, but like all "
 "seahorses, it is a slow swimmer and cannot move over land."
 msgstr ""
+"Konie morskie to różnorodne gatunki ryb, które mają głowę podobną do konia, "
+"lecz poza tym nie mają nic wspólnego z końmi. Większość koników morskich to "
+"małe, płochliwe stworzonka, które żywią się robakami i innymi małymi "
+"zdobyczami, lecz wielkie konie morskie są wystarczająco duże, aby zagrażać "
+"nieostrożnym podróżnikom. Ta duża odmiana potrafi pluć wodą z siłą "
+"wystarczającą do ogłuszenia małego zwierzęcia i ma gruby, kostny pancerz, "
+"ale jak wszystkie koniki morskie pływa wolno i nie może poruszać się po "
+"lądzie."
 
 #. [unit_type]: id=Skeletal Dragon, race=undead
 #: data/core/units/monsters/Skeletal_Dragon.cfg:4
@@ -6067,6 +6654,12 @@ msgid ""
 "being caught and dragged underwater to face whatever beast the tentacles are "
 "attached to."
 msgstr ""
+"Te macki są wyrostkami jakiegoś większego potwora, który czai się pod "
+"falami. Oczywiście nie są w stanie zapuszczać się w głąb lądu i nie są zbyt "
+"groźne w pojedynkę mimo ich zdolności do szybkiej regeneracji. Wielu "
+"śmiałków z oczywistych przyczyn stara się nie zbliżać do tych macek, "
+"obawiając się, że te złapią ich i wciągną pod wodę w pobliże potwora, który "
+"te macki posiada."
 
 #. [unit_type]: id=Water Serpent, race=monster
 #: data/core/units/monsters/Water_Serpent.cfg:5
@@ -6090,7 +6683,7 @@ msgstr ""
 #. [unit_type]: id=Wild Wyvern, race=monster
 #: data/core/units/monsters/Wild_Wyvern.cfg:8
 msgid "Wild Wyvern"
-msgstr ""
+msgstr "Dzika wiwerna"
 
 #. [unit_type]: id=Wild Wyvern, race=monster
 #: data/core/units/monsters/Wild_Wyvern.cfg:44
@@ -6106,6 +6699,17 @@ msgid ""
 "behavior may be an adaptation to the harsh desert environments they often "
 "inhabit."
 msgstr ""
+"Wiwerny to duże gady, które przypominają smoki, lecz w porównaniu z nimi nie "
+"są inteligentnymi i magicznymi stworzeniami. Jednak fakt, że są to tylko "
+"dzikie bestie, nie zmienia faktu, że podróżni, którzy się na nie natkną, "
+"powinni je lekceważyć, gdyż wiwerny, które są wygłodniałe lub czują się "
+"zagrożone, są bardzo zwinnymi i zaciekłymi przeciwnikami.\n"
+"\n"
+"Wiwerny to istoty społeczne, zwykle podróżujące w parach lub małych grupach. "
+"Ich wzorce polowania i dieta są trudne do określenia, ponieważ często "
+"współpracują z mniejszymi stworzeniami, które w teorii powinny być ich "
+"potencjalnymi ofiarami. To dziwne zachowanie może być wynikiem adaptacji do "
+"surowych pustynnych środowisk, które często zamieszkują."
 
 #. [unit_type]: id=Wolf, race=wolf
 #: data/core/units/monsters/Wolf.cfg:4
@@ -6162,7 +6766,7 @@ msgstr ""
 #. [unit_type]: id=Naga Dirkfang, race=naga
 #: data/core/units/nagas/Dirkfang.cfg:4
 msgid "Naga Dirkfang"
-msgstr ""
+msgstr "Naga sztyletozęby"
 
 #. [unit_type]: id=Naga Dirkfang, race=naga
 #: data/core/units/nagas/Dirkfang.cfg:18
@@ -6176,18 +6780,24 @@ msgid ""
 "by the northern Naga warriors, these fighters are nonetheless effective when "
 "it comes time to engage in warfare."
 msgstr ""
+"W przeciwieństwie do swoich północnych braci, którzy skupiają się na walce "
+"bezpośredniej, młodzi nagowie z wód południowych wolą osłabiać swoje ofiary "
+"z daleka, zanim się do nich zbliżą. Małe czakry, które rzucają, są na tyle "
+"poręczne, że można je nosić na nadgarstku lub pasku. Podczas gdy każdy "
+"morderczy cios pod wodą zwykle musi być wykonany z bliskiej odległości, "
+"mieszany styl walki często pozwala im przeżyć wystarczająco długo, aby mogli "
+"się uczyć i dostosowywać do sytuacji. Chociaż uważani za tchórzliwych przez "
+"nagów z północy, ci wojownicy są mimo wszystko niezwykle zdolni w walce."
 
 #. [attack]: type=blade
 #: data/core/units/nagas/Dirkfang.cfg:38
 msgid "chakri"
-msgstr ""
+msgstr "mały czakran"
 
 #. [female]
 #: data/core/units/nagas/Dirkfang.cfg:94
-#, fuzzy
-#| msgid "Nagini Fighter"
 msgid "Nagini Dirkfang"
-msgstr "Nagini wojowniczka"
+msgstr "Nagini sztyletozęba"
 
 #. [unit_type]: id=Naga Fighter, race=naga
 #: data/core/units/nagas/Fighter.cfg:4
@@ -6217,10 +6827,8 @@ msgstr "Nagini wojowniczka"
 
 #. [unit_type]: id=Naga Guard, race=naga
 #: data/core/units/nagas/Guard.cfg:4
-#, fuzzy
-#| msgid "Royal Guard"
 msgid "Naga Guard"
-msgstr "Królewski gwardzista"
+msgstr "Naga strażnik"
 
 #. [unit_type]: id=Naga Guard, race=naga
 #: data/core/units/nagas/Guard.cfg:22
@@ -6231,13 +6839,16 @@ msgid ""
 "mercenary activities. They are said to have a strong code of honor, though "
 "like all things naga, it is mostly a mystery to outsiders."
 msgstr ""
+"Nagi cenią zwinność i grację na polu bitwy, lecz ich wolniejsze i silniejsze "
+"jednostki odgrywają kluczową rolę w obronie ważnych pozycji. Strażnicy ci "
+"nie są często spotykani, ponieważ nie biorą udziału w najazdach ani "
+"działaniach najemników. Mówi się, że mają oni swój własny kodeks honorowy, "
+"chociaż jak to z nagami bywa, dla osób z zewnątrz jest to ogromna niewiadoma."
 
 #. [unit_type]: id=Naga High Guard, race=naga
 #: data/core/units/nagas/Guard_High.cfg:4
-#, fuzzy
-#| msgid "Naga Fighter"
 msgid "Naga High Guard"
-msgstr "Naga wojownik"
+msgstr "Naga gwardzista"
 
 #. [unit_type]: id=Naga High Guard, race=naga
 #: data/core/units/nagas/Guard_High.cfg:23
@@ -6249,21 +6860,23 @@ msgid ""
 "attacks, but the nagas can usually seek better terrain advantage in such "
 "situations."
 msgstr ""
+"Elitarni gwardziści nagów stanowią solidną barierę dla wszystkich najeźdźców "
+"siedzib nagów. Ich ciosy są potężne i, podobnie jak słabsi od nich "
+"tarczownicy, są trudni do usunięcia ze swoich posterunków ze względu na "
+"skuteczne użycie tarczy w ich technikach walki wręcz. Mimo zerowej "
+"skuteczności tej taktyki przeciwko atakom dystansowym, nagowie zazwyczaj "
+"wykorzystują tę sytuację by znaleźć odpowiedni teren dający im przewagę."
 
 #. [attack]: type=impact
 #: data/core/units/nagas/Guard_High.cfg:37
 #: data/core/units/nagas/Guard_Shield.cfg:35
-#, fuzzy
-#| msgid "shield bash"
 msgid "shield"
-msgstr "uderzenie tarczą"
+msgstr "tarcza"
 
 #. [unit_type]: id=Naga Shield Guard, race=naga
 #: data/core/units/nagas/Guard_Shield.cfg:4
-#, fuzzy
-#| msgid "Naga Warrior"
 msgid "Naga Shield Guard"
-msgstr "Naga żołnierz"
+msgstr "Naga tarczownik"
 
 #. [unit_type]: id=Naga Shield Guard, race=naga
 #: data/core/units/nagas/Guard_Shield.cfg:22
@@ -6273,6 +6886,11 @@ msgid ""
 "nothing against ranged attacks, but the nagas can usually seek better "
 "terrain advantage in such situations."
 msgstr ""
+"Doświadczeni tarczownicy nag są trudniejsi do usunięcia ze swoich "
+"posterunków ze względu na skuteczne użycie tarczy w ich technikach walki "
+"wręcz. Mimo zerowej skuteczności tej taktyki przeciwko atakom dystansowym, "
+"nagowie zazwyczaj wykorzystują tę sytuację by znaleźć odpowiedni teren "
+"dający im przewagę."
 
 #. [unit_type]: id=Naga Myrmidon, race=naga
 #: data/core/units/nagas/Myrmidon.cfg:4
@@ -6316,10 +6934,8 @@ msgstr ""
 
 #. [unit_type]: id=Naga Ophidian, race=naga
 #: data/core/units/nagas/Ophidian.cfg:4
-#, fuzzy
-#| msgid "Naga Myrmidon"
 msgid "Naga Ophidian"
-msgstr "Naga myrmidon"
+msgstr "Naga wężoczłek"
 
 #. [unit_type]: id=Naga Ophidian, race=naga
 #: data/core/units/nagas/Ophidian.cfg:18
@@ -6337,32 +6953,40 @@ msgid ""
 "encourage a healthy amount of competition among the surface factions, "
 "ensuring their services are valued by one tribe or another."
 msgstr ""
+"Doświadczeni wojownicy południowych nag często znajdują pracę jako "
+"najemnicy, zwykle zatrudniani przez sąsiadujących z nimi ludzi pustyni do "
+"kontrolowania kluczowych dróg wodnych w pobliżu wybrzeża. Ze względu na "
+"ciągłe konfrontacje z wrogimi jeźdźcami, wężoczłeki wycofały się z "
+"obrączkowanych ostrzy swojej młodości i do walki wybrali przeszywający "
+"jarid, rodzaj małego oszczepu, który nagowie uczynili bardziej "
+"śmiercionośnym, dodając ołów zebrany z zatopionych balastów statków. Choć "
+"ogólnie przyjaźnie nastawieni do swoich bogatych pracodawców, ta przyjazność "
+"nie powinna być mylona z lojalnością, ponieważ wężoczłeki znane są z tego, "
+"że łatwo przełączają się między rywalizującymi frakcjami-miastami na "
+"początku każdego sezonu żeglugowego, kiedy zapotrzebowanie na ochronę z "
+"poziomu wody jest największe. Jako grupa, ci nagowie zachęcają do zdrowej "
+"rywalizacji między frakcjami na powierzchni, zapewniając, że ich usługi są "
+"cenione przez jedno lub drugie plemię."
 
 #. [attack]: type=blade
 #: data/core/units/nagas/Ophidian.cfg:27 data/core/units/nagas/Sicarius.cfg:28
-#, fuzzy
-#| msgid "war blade"
 msgid "curved blade"
-msgstr "ostrze wojenne"
+msgstr "zakrzywione ostrze"
 
 #. [attack]: type=pierce
 #: data/core/units/nagas/Ophidian.cfg:36 data/core/units/nagas/Sicarius.cfg:40
 msgid "jarid"
-msgstr ""
+msgstr "dziryt"
 
 #. [female]
 #: data/core/units/nagas/Ophidian.cfg:87
-#, fuzzy
-#| msgid "Nagini Myrmidon"
 msgid "Nagini Ophidian"
-msgstr "Nagini myrmidonka"
+msgstr "Nagini wężoczłek"
 
 #. [unit_type]: id=Naga Ringcaster, race=naga
 #: data/core/units/nagas/Ringcaster.cfg:4
-#, fuzzy
-#| msgid "Naga Fighter"
 msgid "Naga Ringcaster"
-msgstr "Naga wojownik"
+msgstr "Naga pierścieniomiot"
 
 #. [unit_type]: id=Naga Ringcaster, race=naga
 #: data/core/units/nagas/Ringcaster.cfg:17
@@ -6372,27 +6996,27 @@ msgid ""
 "are useful for throwing, but the rejected blades make a good fist-load "
 "weapon, similar to a sharp-bladed tekko or knuckleduster."
 msgstr ""
+"Zaokrąglone ostrze o nazwie czakram jest charakterystyczną bronią "
+"południowych nag i ich słynnych pierścieniomiotów. Dobrze wyważone czakramy "
+"przydają się do rzucania, lecz wadliwe ostrza są również wykorzystane jako "
+"doskonała broń nakładana na pięści, podobna do ostrego tekko lub kastetu."
 
 #. [attack]: type=blade
 #: data/core/units/nagas/Ringcaster.cfg:33
 #: data/core/units/nagas/Ringcaster.cfg:42 data/core/units/nagas/Zephyr.cfg:50
 #: data/core/units/nagas/Zephyr.cfg:59
 msgid "chakram"
-msgstr ""
+msgstr "czakram"
 
 #. [female]
 #: data/core/units/nagas/Ringcaster.cfg:93
-#, fuzzy
-#| msgid "Nagini Fighter"
 msgid "Nagini Ringcaster"
-msgstr "Nagini wojowniczka"
+msgstr "Nagini pierścieniomiotaczka"
 
 #. [unit_type]: id=Naga Sicarius, race=naga
 #: data/core/units/nagas/Sicarius.cfg:4
-#, fuzzy
-#| msgid "Naga Warrior"
 msgid "Naga Sicarius"
-msgstr "Naga żołnierz"
+msgstr "Naga sykariusz"
 
 #. [unit_type]: id=Naga Sicarius, race=naga
 #: data/core/units/nagas/Sicarius.cfg:19
@@ -6411,13 +7035,26 @@ msgid ""
 "for they can anticipate many enemy strikes, and use their heavy, curved "
 "blade to deflect or distract at the critical moment."
 msgstr ""
+"Choć czasami wciąż służą jako najemnicy potencjalnych sprzymierzeńców ludzi "
+"pustyni, nagowie sykariusze częściej są strażnikami szlaków handlowych i "
+"złóż surowców w pobliżu dróg wodnych. Za odpowiednią opłatę lub barter, "
+"sykariusz zagwarantuje bezpieczną podróż lub swobodny dostęp do cennych "
+"zapasów na swoim terytorium. Podrap się w zły sposób, a sykariusz stanie się "
+"przerażającym wrogiem, nie ze względu na ich własną siłę w walce, lecz ze "
+"względu na licznych sojuszników, których może wezwać, aby wyeliminować "
+"wszelkie potencjalne niedogodności. Ci doświadczeni najemnicy, choć są "
+"równie doskonałymi wojownikami, wiedzą doskonale, że gdy nadejdzie "
+"odpowiedni czas, najlepszymi metodami zarabiania pieniędzy są te, które nie "
+"narażają ich na niebezpieczeństwo. W razie niebezpieczeństwa, często "
+"wykorzystują oni ich manipulacyjną wręcz przebiegłość, która pozwala im "
+"przewidzieć wiele ataków wroga. W krytycznym momencie, sykariusze używają "
+"również ich specjalnych ciężkich, zakrzywionych ostrzy w celu odwrócenia "
+"uwagi przeciwnika."
 
 #. [female]
 #: data/core/units/nagas/Sicarius.cfg:91
-#, fuzzy
-#| msgid "Nagini Warrior"
 msgid "Nagini Sicarius"
-msgstr "Nagini żołnierka"
+msgstr "Nagini sykariuszka"
 
 #. [unit_type]: id=Naga Warrior, race=naga
 #: data/core/units/nagas/Warrior.cfg:4
@@ -6465,10 +7102,8 @@ msgstr ""
 
 #. [unit_type]: id=Naga Zephyr, race=naga
 #: data/core/units/nagas/Zephyr.cfg:4
-#, fuzzy
-#| msgid "Naga Fighter"
 msgid "Naga Zephyr"
-msgstr "Naga wojownik"
+msgstr "Naga Zefir"
 
 #. [unit_type]: id=Naga Zephyr, race=naga
 #: data/core/units/nagas/Zephyr.cfg:18
@@ -6511,13 +7146,50 @@ msgid ""
 "thrown blade, this doesn't mean they are weak in melee combat, as the "
 "unbalanced chakram can be enhanced with spikes and smaller blades.\n"
 msgstr ""
+"Wśród nagów z południa krąży ciekawa opowieść o Duchu Powietrza o imieniu "
+"Zefra i jego eterycznym czakramie:\n"
+"\n"
+"W dalekiej przeszłości żył sobie pewien posiadacz czakramu, który posiadł "
+"legendarną umiejętność. Mówi się, że potrafił on ledwie muśnięciem ostrza "
+"przecinać w pół morza, powalić tysiące przeciwników nim ktokolwiek z nich "
+"zdoła się do niego zbliżyć czy odbić tysiąc strzał, nie będąc przeszytym "
+"przez ani jedną z nich. Znany był jako Xylrix, nawałnica, i był wojownikiem, "
+"którego arogancja równała się jego talentowi. Zawsze chętnie przechwalał się "
+"swym męstwem każdemu, kto go obserwował. Jednak pewnego dnia, w trakcie "
+"swoich popisów przed bandą młodych nagiń postanowił obrać za swój cel święte "
+"drzewo Allnai.\n"
+"\n"
+"\"Obserwujcie\" krzyknął i przeciął drzewo przez środek w pół.\n"
+"\n"
+"Wtedy wiatr zerwał się i otoczył go. Głos Ducha Powietrza odbiło się echem w "
+"jego uszach: \"Uważasz siebie za potężnego na tyle, by zgładzać me "
+"nieszczęsne potomstwo? Mimo twego talentu, żaden śmiertelnik nie powinien "
+"lekceważyć bogów, którzy im towarzyszą\".\n"
+"\n"
+"Odrzekł mu: \"Stan do walki, duchu. Nie znam strachu przed tobą. Żaden oręż, "
+"stal, woda ni wiatr nie przebije moich pierścieni\".\n"
+"\n"
+"Wiatr zerwał się, wirując coraz szybciej. Nawałnica wichury wirowała i "
+"wirowała w wirującym tańcu wściekłości. Poczuł, że unosi się nad ziemią, "
+"obracając w zawrotnym tempie, będąc już tylko na łasce lub niełasce gniewu "
+"Zefry. Z twarzą zwróconą ku górze w przerażeniu puścił swoje ostrza i nagle "
+"ujrzał coś w wirującej burzy - wirujący ruch pierścieniowych czakramów, "
+"wzorowanych na samym wietrze.\n"
+"\n"
+"Jak raptownie pojawiła się burza, tak samo szybko ta zniknęła, zostawiają "
+"Xylrixa z widokiem jego rozstrzaskanych broni. Gdy po kilku dniach wrócił do "
+"swego domu, ogłosił swoje nowe imię: Zefir, wojownik w służbie wiatru, który "
+"napędza jego ostrza.\n"
+"\n"
+"Podczas gdy stare opowieści nakłaniają dziedziców Zefira do skupiania się na "
+"rzucanych ostrzach, bynajmniej nie oznacza to, że są słabi w walce wręcz, "
+"ponieważ niezrównoważony czakram można wzmocnić kolcami i mniejszymi "
+"ostrzami.\n"
 
 #. [female]
 #: data/core/units/nagas/Zephyr.cfg:110
-#, fuzzy
-#| msgid "Nagini Fighter"
 msgid "Nagini Zephyr"
-msgstr "Nagini wojowniczka"
+msgstr "Nagini Zefir"
 
 #. [unit_type]: id=Ogre, race=ogre
 #: data/core/units/ogres/Ogre.cfg:4
@@ -6572,6 +7244,14 @@ msgid ""
 "brethren to finish off on the frontlines. While typically poorly equipped "
 "themselves, these orcs can nonetheless be quite effective in large numbers."
 msgstr ""
+"Chociaż łuki są czasami uważane przez orków za uzbrojenie godne największych "
+"tchórzy, pragmatyczna natura orkowej wojaczki dopuszcza częste użycie tego "
+"rodzaju broni, która nadaje się idealnie dla orków o mniejszym wzroście lub "
+"budowie. W walce orkowie łucznicy szczególnie upodobali sobie wykorzystanie "
+"płonących strzał w celu siania chaosu w liniach wroga oraz osłabiania co "
+"twardszych przeciwników by ci zostali dobici przez większych i silniejszych "
+"orków na linii frontu. Mimo ich kiepskiego wyposażenia, ci orkowie są "
+"całkiem pożyteczni, zwłaszcza w dużych ilościach."
 
 #. [unit_type]: id=Orcish Assassin, race=orc
 #: data/core/units/orcs/Assassin.cfg:4
@@ -6589,6 +7269,14 @@ msgid ""
 "same weapon is readily turned to espionage and assassination, a commonplace "
 "occurrence between feuding orcish clans or even within a single clan itself."
 msgstr ""
+"Podczas gdy wielu orków preferuje brutalną siłę jako swój modus operandi, "
+"wysoce praktyczny charakter ich działań wojennych promuje taktykę "
+"podrzynania gardeł, która zwykle jest niemile widziana przez inne frakcje. "
+"Trucizna jest jednym z filarów strategii orków, stosowanym swobodnie, by "
+"zmiękczyć twardszych przeciwników na polu bitwy oraz okaleczyć siły wroga "
+"bez konieczności podejmowania ryzykownych natarć. Ta sama broń jest łatwo "
+"wykorzystywana do szpiegostwa i zabójstw, co jest powszechnym zjawiskiem nie "
+"tylko między zwaśnionymi klanami orków, ale również w obrębie jednego klanu."
 
 #. [unit_type]: id=Orcish Crossbowman, race=orc
 #: data/core/units/orcs/Crossbowman.cfg:4
@@ -6605,6 +7293,13 @@ msgid ""
 "with more easily handled crossbows. Simplistic but potent, these weapons can "
 "still be deadly even when handled roughly by inexperienced warriors."
 msgstr ""
+"Pomimo tego, że orkowie skupiają się prawie tylko i wyłącznie na treningu "
+"bojowym, mało które plemię jest wyszkolone w oficjalnych sztukach walki. Z "
+"tego powodu łucznicy orków są bardzo kiepscy w posługiwaniu się długimi "
+"łukami skradzionymi ludzkim lub elfim łucznikom, a zamiast tego wolą uzbroić "
+"się w łatwiejsze w użyciu kusze. Ta prosta lecz potężna broń może być "
+"zabójcza, nawet gdy jest operowana przez niedoświadczonych i prymitywnych "
+"wojowników."
 
 #. [unit_type]: id=Orcish Grunt, race=orc
 #: data/core/units/orcs/Grunt.cfg:4
@@ -6613,14 +7308,6 @@ msgstr "Ork rębacz"
 
 #. [unit_type]: id=Orcish Grunt, race=orc
 #: data/core/units/orcs/Grunt.cfg:17
-#, fuzzy
-#| msgid ""
-#| "Orcish Grunts are the mainstay of the orcish forces, made up of the "
-#| "biggest and strongest orcs the clan can muster, given the most basic of "
-#| "equipment and thrown into the field. Even these basic recruits can be "
-#| "dangerous, as the larger orcs are naturally strong and can survive many "
-#| "injuries before falling. What makes an orcish horde most threatening, "
-#| "however, is the sheer numbers in which these fighters can be fielded."
 msgid ""
 "True orcs are well known for their raw strength and ferocity, as well as "
 "their propensity toward aggressive combat. These traits mean that even the "
@@ -6630,11 +7317,12 @@ msgid ""
 "overcome. What makes an orcish horde most threatening, however, is the sheer "
 "numbers in which these fighters can be fielded."
 msgstr ""
-"Siepacze stanową rdzeń sił orków, a do ich szeregów dostają się najwięksi i "
-"najsilniejsi orkowie z każdego klanu, którzy po otrzymaniu podstawowego "
-"wyposażenia wysyłani są do boju. Nawet najmniej doświadczeni rekruci "
-"potrafią być niebezpieczni ponieważ duzi orkowie wykazują się wrodzoną siłą "
-"i mogą odnieść wiele ran nim padną. To, co czyni hordę orków wyjątkowo "
+"Prawdziwi orkowie są znani z bezwzględnej siły oraz okrucieństwa, jak "
+"również ich pociągu do agresywnych walk. Cechy te oznaczają, że nawet "
+"najmniej doświadczeni i najgorzej zaopatrzeni rębacze stanowią nie lada "
+"wyzwanie na polu bitwy. Zanim zostanie pokonany, pojedynczy ork jest w "
+"stanie sam zadać mnóstwo mocnych i okrutnych ciosów przy jednoczesnym "
+"otrzymaniu ogromnej ilości obrażeń. To, co czyni hordę orków wyjątkowo "
 "niebezpieczną, to liczba takich wojowników trafiających do walki."
 
 #. [unit_type]: id=Orcish Leader, race=orc
@@ -6644,13 +7332,6 @@ msgstr "Przywódca orków"
 
 #. [unit_type]: id=Orcish Leader, race=orc
 #: data/core/units/orcs/Leader.cfg:18
-#, fuzzy
-#| msgid ""
-#| "Unusually cunning orcs tend to find themselves as the leaders of warrior "
-#| "bands. They carry a crossbow out of necessity, but are much more skilled "
-#| "with the sword. These orcs are powerful fighters, but they also have a "
-#| "certain rapport with their kin, especially goblins, and can inspire them "
-#| "to fight with uncharacteristic boldness."
 msgid ""
 "Unusually cunning orcs tend to find themselves as the leaders of warrior "
 "bands. Although not necessarily possessed of the same loyalty-inspiring "
@@ -6658,16 +7339,16 @@ msgid ""
 "certain rapport with their kin, especially goblins, and can inspire them to "
 "fight with uncharacteristic boldness."
 msgstr ""
-"Najprzebieglejsi z orków często stają na czele oddziałów wojowników. Dobrze "
-"władają mieczem, choć z konieczności noszą również kuszę. Są groźnymi "
-"wojownikami, ale cieszą się też naturalnym posłuchem wśród innych orków, a "
-"zwłaszcza goblinów, dzięki czemu pod ich dowództwem jednostki walczą z "
-"niezwykłą zaciętością."
+"Najprzebieglejsi z orków często stają na czele oddziałów wojowników. Mimo, "
+"że nie koniecznie posiadają tę samą inspirującą lojalność charyzmę, którą "
+"ludzie lub elfy tak wysoko cenią, ci orkowie często cieszą się naturalnym "
+"posłuchem wśród innych orków, a zwłaszcza goblinów, dzięki czemu pod ich "
+"dowództwem jednostki walczą z niezwykłą zaciętością."
 
 #. [unit_type]: id=Orcish Nightblade, race=orc
 #: data/core/units/orcs/Nightblade.cfg:4
 msgid "Orcish Nightblade"
-msgstr "Ork ostrze nocy"
+msgstr "Ork skrytobójca"
 
 #. [unit_type]: id=Orcish Nightblade, race=orc
 #: data/core/units/orcs/Nightblade.cfg:21
@@ -6682,6 +7363,15 @@ msgid ""
 "the cover of darkness. A contract with a nightblade is almost always a death "
 "sentence to the victim, making said expertise well worth its high price."
 msgstr ""
+"Najbardziej doświadczeni orkowi zabójcy zwykle działają jako najemnicy "
+"specjalizujący się w „rozwiązywaniu wewnętrznych konfliktów” i rzadko biorą "
+"udział w większych bitwach. Zaskakująco wykwalifikowani i zahartowani w "
+"walce orkowie rzadko deklarują wierność jakiemukolwiek plemieniu, zamiast "
+"tego oferują swoje usługi temu, kto zapłaci więcej. Po zawarciu umowy i "
+"uzyskaniu niezbędnych zapasów, zabójca szybko i bezszelestnie uderza w swój "
+"cel, eliminując go po cichu pod osłoną mroku. Kontrakt ze skrytobójcą prawie "
+"zawsze wiąże się z wyrokiem śmierci dla ofiary, co sprawia, że ta ekspertyza "
+"jest warta swojej wysokiej ceny."
 
 #. [attack]: type=blade
 #: data/core/units/orcs/Nightblade.cfg:25
@@ -6704,6 +7394,14 @@ msgid ""
 "inevitably the most shrewd and perceptive among his peers and has won the "
 "respect of his brethren through leadership rather than coercion."
 msgstr ""
+"Powszechnym błędnym przekonaniem na temat hierarchii klanów orków jest "
+"przekonanie, że orkowie cenią tylko brutalną siłę. Chociaż przywódca "
+"mniejszego oddziału orków może być wśród nich najsilniejszym wojownikiem, "
+"władca dużego plemienia ma trudne zadanie zdławienia wewnętrznych waśni i "
+"walk wewnętrznych - czegoś, czego nie da się opanować samą siłą. Taki ork "
+"jest niewątpliwie najsprytniejszy i najbardziej spostrzegawczy spośród "
+"swoich towarzyszy i zdobył szacunek swoich braci bardziej dzięki przywództwu "
+"niż stosowaniu przymusu."
 
 #. [unit_type]: id=Orcish Slayer, race=orc
 #: data/core/units/orcs/Slayer.cfg:4
@@ -6723,6 +7421,16 @@ msgid ""
 "precisely what gives rise to these ruthless soldiers, rightly dubbed "
 "‘Slayers’ by their enemies."
 msgstr ""
+"Doświadczeni orkowi skrytobójcy to zaskakująco zwinni żołnierze specjalni, "
+"którzy osiągają wielką zwinność rezygnując z ciężkiej zbroi, tak zresztą "
+"ulubionej przez ich towarzyszy. Ich ulubiona broń, trucizna, jest często "
+"krytykowana jako okrutne narzędzie, nieprzystosowane do ustalonych zwyczajów "
+"typowych działań wojennych. Większość orków jednak nie uznaje takich praw "
+"walki i stara się osiągnąć bezwzględne zwycięstwo wszelkimi możliwymi "
+"środkami. Porażka, bez względu na jej przyczynę, jest zwykle traktowana jako "
+"największa hańba. Brutalna natura wojny absolutnej, w którą angażują się "
+"orkowie, jest właśnie tym, co daje początek tym bezwzględnym żołnierzom, "
+"słusznie nazywanym przez wrogów „siepaczami”."
 
 #. [unit_type]: id=Orcish Slurbow, race=orc
 #: data/core/units/orcs/Slurbow.cfg:4
@@ -6731,18 +7439,6 @@ msgstr "Ork kuszoluf"
 
 #. [unit_type]: id=Orcish Slurbow, race=orc
 #: data/core/units/orcs/Slurbow.cfg:20
-#, fuzzy
-#| msgid ""
-#| "The basic design of a crossbow gives rise to the arbalest or ‘slurbow’; a "
-#| "much more intricate device, complete with a hand-turned cranequin to re-"
-#| "cock the weapon, and often with a multi-ply arc, of laminate wood or "
-#| "bone, driving the projectile. Such a device is much easier to work with, "
-#| "and much more powerful than simpler crossbows; it is also completely "
-#| "beyond orcish manufacture.\n"
-#| "\n"
-#| "Orcs prize any such weapons they can manage to plunder, and they "
-#| "invariably end up in the hands of their strongest and most cunning "
-#| "archers."
 msgid ""
 "The basic design of a crossbow gives rise to the arbalest or ‘slurbow’, a "
 "much more intricate device complete with a hand-turned cranequin to recock "
@@ -6768,7 +7464,7 @@ msgstr ""
 #. [unit_type]: id=Orcish Sovereign, race=orc
 #: data/core/units/orcs/Sovereign.cfg:4
 msgid "Orcish Sovereign"
-msgstr "Suweren orków"
+msgstr "Ork suweren "
 
 #. [unit_type]: id=Orcish Sovereign, race=orc
 #: data/core/units/orcs/Sovereign.cfg:19
@@ -6786,6 +7482,18 @@ msgid ""
 "rapidly dissolves back into individual clans once the strength of its "
 "leadership is extinguished."
 msgstr ""
+"Chociaż orkowie są z natury osobnikami plemiennymi, zdarzają się czasami "
+"sytuacje, gdy kilka klanów musi połączyć siły pod sztandarem jednego, "
+"potężnego suwerena. Ze względu na swoją pozycję, taki ork musi posiadać "
+"zarówno siłę, jak i przebiegłość, aby skutecznie poprowadzić wielką hordę "
+"wojowników do zwycięstwa. Musi też przy tym prawie zawsze mieć wrodzoną "
+"charyzmę - cechę niezwykle rzadką wśród orków. Droga do takiego statusu jest "
+"zróżnicowana; czasami potężne plemię może podbić pomniejszych i wcielić "
+"pokonanych wojowników w swoje szeregi, podczas gdy inne okoliczności "
+"wymagają interwencji rady szamanów, która nadaje danemu orkowi tymczasowy, "
+"lecz oficjalny tytuł suwerena. W obu przypadkach wódz służy za kluczową "
+"podporą hordy, która szybko rozpada się z powrotem na poszczególne klany, "
+"gdy siła jej przywództwa zostanie wygaszona."
 
 #. [unit_type]: id=Orcish Warlord, race=orc
 #: data/core/units/orcs/Warlord.cfg:4
@@ -6808,6 +7516,18 @@ msgid ""
 "for a warlord’s downfall when his skills wane with age and another powerful "
 "warrior arises to take his place."
 msgstr ""
+"Chociaż potęga nie jest wyznacznikiem dominacji w klanie orków, z pewnością "
+"jest warunkiem zdobycia szacunku i posłuszeństwa innych orków. Pogromca jest "
+"najczęściej najsilniejszym wojownikiem w swoim plemieniu oraz tym, który "
+"zdobywa i utrzymuje swoją pozycję, odnosząc raz za razem kolejne zwycięstwa "
+"nad aspirującymi rywalami. Jego siła w walce pozwala takiemu orkowi pełnić "
+"funkcję wodza plemienia, nadzorować codzienne sprawy jego klanu, a także "
+"zarządzać pomniejszymi wojownikami, gdy nadejdzie czas rozlewu krwi. Chociaż "
+"przebiegli i bardzo biegli w walce, większość pogromców zdobywa podziw tylko "
+"ze względu na ich umiejętności bojowych, lecz w sprawach niedotyczących "
+"wojny często brakuje im wiedzy i charyzmy. Braki te z czasem stają się "
+"przyczyną upadku pogromców, gdy ich umiejętności słabną z wiekiem i pojawia "
+"się inny potężny wojownik chcący zająć jego miejsce."
 
 #. [unit_type]: id=Orcish Warrior, race=orc
 #: data/core/units/orcs/Warrior.cfg:4
@@ -6825,13 +7545,19 @@ msgid ""
 "fighters, who lack the training and finesse to act on more complex "
 "strategies."
 msgstr ""
+"Sztuka walki orężem u orków niemal całkowicie opiera się na ofensywie i "
+"wykorzystuje ich naturalną wytrzymałość by utrzymać się przy życiu dłużej "
+"niż przeciwnik. Co bardziej doświadczony ork wojownik jest więc często "
+"widziany z dwoma ostrzami, przez co rezygnuje on z tarczy na rzecz "
+"możliwości sprawniejszej wymiany ciosy z wrogami w zwarciu. Choć jest to "
+"dość brutalna taktyka, nadal jest uważana za całkiem wydajną zwłaszcza, że "
+"ci wojownicy nie mają odpowiedniego treningu ani finezji by stosować "
+"bardziej rozbudowane taktyki."
 
 #. [unit_type]: id=Saurian Ambusher, race=lizard
 #: data/core/units/saurians/Ambusher.cfg:4
-#, fuzzy
-#| msgid "Saurian Ambusher"
 msgid "female^Saurian Ambusher"
-msgstr "Jaszczurzy łowca"
+msgstr "Jaszczurza łowczyni"
 
 #. [unit_type]: id=Saurian Ambusher, race=lizard
 #: data/core/units/saurians/Ambusher.cfg:18
@@ -6872,10 +7598,8 @@ msgstr ""
 
 #. [unit_type]: id=Saurian Flanker, race=lizard
 #: data/core/units/saurians/Flanker.cfg:4
-#, fuzzy
-#| msgid "Saurian Flanker"
 msgid "female^Saurian Flanker"
-msgstr "Jaszczurzy oskrzydlacz"
+msgstr "Jaszczurza oskrzydlaczka"
 
 #. [unit_type]: id=Saurian Flanker, race=lizard
 #: data/core/units/saurians/Flanker.cfg:19
@@ -6917,10 +7641,8 @@ msgstr ""
 
 #. [unit_type]: id=Saurian Skirmisher, race=lizard
 #: data/core/units/saurians/Skirmisher.cfg:4
-#, fuzzy
-#| msgid "Saurian Skirmisher"
 msgid "female^Saurian Skirmisher"
-msgstr "Jaszczurzy harcownik"
+msgstr "Jaszczurza harcowniczka"
 
 #. [unit_type]: id=Saurian Skirmisher, race=lizard
 #: data/core/units/saurians/Skirmisher.cfg:18
@@ -7160,16 +7882,6 @@ msgstr "Trupojad"
 
 #. [unit_type]: id=Necrophage, race=undead
 #: data/core/units/undead/Corpse_Necrophage.cfg:18
-#, fuzzy
-#| msgid ""
-#| "The necrophage, or ‘devourer of the dead’, is a monstrous, corpulent "
-#| "thing, which bears only a crude resemblance to a man. They appear to be "
-#| "quite rotten in spite of their ability to move; they are rife with "
-#| "disease and poisons of the blood, and have a stench to match. But the "
-#| "most revolting fact about these fratures, apparent only to those who can "
-#| "perceive the traces of foul magic on them, is that they were somehow made "
-#| "from living men — a process about which almost nothing is known, but "
-#| "which can be nothing but nightmarish."
 msgid ""
 "The necrophage, or ‘devourer of the dead’, is a monstrous, corpulent thing, "
 "which bears only a crude resemblance to a man. They appear to be quite "
@@ -7204,10 +7916,8 @@ msgstr "Krasnolud"
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:145
 #: data/core/units/undead/Corpse_Walking.cfg:144
-#, fuzzy
-#| msgid "wc_variation^Bat"
 msgid "wc_variation^Falcon"
-msgstr "Nietoperz"
+msgstr "Sokół"
 
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:179
@@ -7218,10 +7928,8 @@ msgstr "Goblin"
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:189
 #: data/core/units/undead/Corpse_Walking.cfg:211
-#, fuzzy
-#| msgid "wc_variation^Wose"
 msgid "wc_variation^Horse"
-msgstr "Drzewiec"
+msgstr "Koń"
 
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:198
@@ -7232,24 +7940,20 @@ msgstr "Jeździec"
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:207
 #: data/core/units/undead/Corpse_Walking.cfg:229
-#, fuzzy
-#| msgid "wc_variation^Bat"
 msgid "wc_variation^Beast-Rider"
-msgstr "Nietoperz"
+msgstr "Ujeżdżacz bestii"
 
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:216
 #: data/core/units/undead/Corpse_Walking.cfg:188
 msgid "wc_variation^Gryphon"
-msgstr "Gryfon"
+msgstr "Gryf"
 
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:239
 #: data/core/units/undead/Corpse_Walking.cfg:238
-#, fuzzy
-#| msgid "wc_variation^Bat"
 msgid "wc_variation^Rat"
-msgstr "Nietoperz"
+msgstr "Szczur"
 
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:256
@@ -7260,26 +7964,20 @@ msgstr "Saurian"
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:266
 #: data/core/units/undead/Corpse_Walking.cfg:265
-#, fuzzy
-#| msgid "wc_variation^Saurian"
 msgid "wc_variation^Scorpion"
-msgstr "Saurian"
+msgstr "Skorpion"
 
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:275
 #: data/core/units/undead/Corpse_Walking.cfg:274
-#, fuzzy
-#| msgid "wc_variation^Swimmer"
 msgid "wc_variation^Spider"
-msgstr "Pływak"
+msgstr "Pająk"
 
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:284
 #: data/core/units/undead/Corpse_Walking.cfg:283
-#, fuzzy
-#| msgid "wc_variation^Swimmer"
 msgid "wc_variation^Serpent"
-msgstr "Pływak"
+msgstr "Wąż"
 
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:303
@@ -7296,16 +7994,14 @@ msgstr "Troll"
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:330
 #: data/core/units/undead/Corpse_Walking.cfg:329
-#, fuzzy
-#| msgid "wc_variation^Bat"
 msgid "wc_variation^Boar"
-msgstr "Nietoperz"
+msgstr "Dzik"
 
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:338
 #: data/core/units/undead/Corpse_Walking.cfg:337
 msgid "tusk"
-msgstr ""
+msgstr "kieł"
 
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:343
@@ -7338,6 +8034,16 @@ msgid ""
 "that the rise of an Ancient Lich has not led to the shadows ruling the world "
 "for the rest of time."
 msgstr ""
+"Licz, który zyskuje wystarczającą władzę nad swoją nowo odkrytą "
+"nieśmiertelnością, staje się tym, który może napełniać dusze wrogów rozpaczą "
+"i siać zniszczenie na całym świecie. Niezmiennie dowodzący niemal "
+"nieograniczoną liczbą wskrzeszonych wojowników i nieumarłych potworów, licz "
+"tego rodzaju jest mistrzem czarnej magii, która może wywołać strach nawet u "
+"najbardziej doświadczonych magów ludzi lub elfów. Istnienie starożytnego "
+"licza wiąże się z niezwykle mrocznym i krwawym rozdziałem w historii świata, "
+"który kończy się tylko dzięki niestrudzonym wysiłkom najdzielniejszych "
+"bohaterów, którzy poprzysięgli raz na zawsze przegnać wieczny mrok z tego "
+"świata."
 
 #. [unit_type]: id=Dark Adept, race=human
 #: data/core/units/undead/Necro_Dark_Adept.cfg:4
@@ -7346,18 +8052,6 @@ msgstr "Mroczny adept"
 
 #. [unit_type]: id=Dark Adept, race=human
 #: data/core/units/undead/Necro_Dark_Adept.cfg:22
-#, fuzzy
-#| msgid ""
-#| "female^To attract any practitioners, the lure of black magic must be a "
-#| "great prize indeed, for anyone caught practicing the art in the civilized "
-#| "world is subject to a death sentence. And yet there are those who pursue "
-#| "this art, for the prize offered is nothing less than immortality. Hidden "
-#| "away in secret cults, or initiated into the dark orders of the "
-#| "underworld, the training which these fanatics must endure often drives "
-#| "them to exhaustion and enfeeblement.\n"
-#| "\n"
-#| "In such condition, their only weapon is the craft they have so committed "
-#| "themselves to learning."
 msgid ""
 "To attract any practitioners, the lure of black magic must be a great prize "
 "indeed, for anyone caught practicing the art in the civilized world is "
@@ -7372,14 +8066,14 @@ msgid ""
 msgstr ""
 "Ponieważ w cywilizowanym świecie każdego przyłapanego na praktykowaniu "
 "czarnej magii czeka śmierć, nowych praktykujących może przyciągnąć tylko "
-"wyjątkowo wspaniała nagroda. A jednak znajdują się i takie, którzy pragną "
-"zajmować się tą mroczną sztuką, gdyż czekającą na nie nagrodą jest nic "
-"innego jak tylko nieśmiertelność. Kryjące się w tajemnych kultach lub "
-"wprowadzone w szeregi mrocznych adeptów fanatyczki poddawane są szkoleniu, "
-"które często doprowadza je do krańcowego wyczerpania i wyniszczenia.\n"
+"wyjątkowo wspaniała nagroda. A jednak znajdują się i tacy, którzy pragną "
+"zajmować się tą mroczną sztuką, gdyż czekającą na nich nagrodą jest nic "
+"innego jak tylko nieśmiertelność. Kryjący się w tajemnych kultach lub "
+"wprowadzani w szeregi mrocznych adeptów fanatycy poddawani są szkoleniu, "
+"które często doprowadza ich do krańcowego wyczerpania i wyniszczenia.\n"
 "\n"
 "W takim stanie ich jedyną bronią jest sztuka, której nauce tak całkowicie "
-"się oddały."
+"się oddali."
 
 #. [female]
 #: data/core/units/undead/Necro_Dark_Adept.cfg:160
@@ -7477,18 +8171,6 @@ msgstr "Licz"
 
 #. [unit_type]: id=Lich, race=undead
 #: data/core/units/undead/Necro_Lich.cfg:22
-#, fuzzy
-#| msgid ""
-#| "A lich is the physical embodiment of black magic’s first goal: the quest "
-#| "to achieve immortality. Though a great deal is sacrificed in the rebirth, "
-#| "in becoming a lich one cheats death of that which truly gives it terror. "
-#| "For it is the mind that is retained, and the spirit which follows, though "
-#| "the body may wither away.\n"
-#| "\n"
-#| "It is not known, save perhaps by the inner circles of necromancy, whether "
-#| "life is prolonged indefinitely or simply extended. But the fact that this "
-#| "question can be raised at all, testifies to the magnitude of what their "
-#| "order has achieved."
 msgid ""
 "A lich is the physical embodiment of black magic’s first goal: the quest to "
 "achieve immortality. Though a great deal is sacrificed in the rebirth, in "
@@ -7563,14 +8245,6 @@ msgstr "Miotacz kości"
 
 #. [unit_type]: id=Bone Shooter, race=undead
 #: data/core/units/undead/Skele_Bone_Shooter.cfg:16
-#, fuzzy
-#| msgid ""
-#| "Of a dark sorcerer’s creations, some take more strongly to the false life "
-#| "given them. The potency of their un-life is given equipment to match; "
-#| "archers, in particular, are often outfitted with a truly vile arsenal. "
-#| "Their quivers are filled with shafts made not of wood, but of the bones "
-#| "of their victims. It follows that they are dubbed simply ‘Bone-Shooters’ "
-#| "by their unfortunate enemies."
 msgid ""
 "Of a dark sorcerer’s creations, some take more strongly to the false life "
 "given them. The potency of their unlife is given equipment to match; "
@@ -7835,16 +8509,6 @@ msgstr "Prastary drzewiec"
 
 #. [unit_type]: id=Ancient Wose, race=wose
 #: data/core/units/wose/Ancient.cfg:17
-#, fuzzy
-#| msgid ""
-#| "There is a curious story of a farmer who had a great oak in his lawn, a "
-#| "tree which had stood when his father first broke the soil on that land, "
-#| "and under which his family had many memories. It was thus a shock to him, "
-#| "one morning, when he awoke to find it somehow spirited away, with nothing "
-#| "but a bare patch of earth where it once stood.\n"
-#| "\n"
-#| "Such encounters are all that is known of what are presumably the most "
-#| "ancient of woses."
 msgid ""
 "There is a curious story of a farmer who had a great oak in his lawn, a tree "
 "which had stood when his father first broke the soil on that land, and under "
@@ -7938,21 +8602,19 @@ msgstr ""
 #. [unit_type]: id=Wose Sapling, race=wose
 #: data/core/units/wose/Wose_Sapling.cfg:4
 msgid "Wose Sapling"
-msgstr ""
+msgstr "Drzewiec sadzonka"
 
 #. [unit_type]: id=Wose Shaman, race=wose
 #: data/core/units/wose/Wose_Shaman.cfg:4
-#, fuzzy
-#| msgid "Troll Shaman"
 msgid "Wose Shaman"
-msgstr "Troll szaman"
+msgstr "Drzewiec szaman"
 
 #. [unit_type]: id=Wose Shaman, race=wose
 #: data/core/units/wose/Wose_Shaman.cfg:21
 msgid ""
 "These woses are able to command forest plants such as vines and creepers to "
 "hinder their enemies."
-msgstr ""
+msgstr "Te drzewce są w stanie rozkazywać leśnym pnączom oplatać przeciwników."
 
 #, fuzzy
 #~| msgid "faerie fire"

@@ -1,21 +1,24 @@
 /*
-   Copyright (C) 2013 - 2018 by Andrius Silinskas <silinskas.andrius@gmail.com>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2013 - 2021
+	by Andrius Silinskas <silinskas.andrius@gmail.com>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
+
 #include "game_initialization/connect_engine.hpp"
 
 #include "ai/configuration.hpp"
 #include "formula/string_utils.hpp"
 #include "game_initialization/mp_game_utils.hpp"
+#include "game_initialization/multiplayer.hpp"
 #include "game_initialization/playcampaign.hpp"
 #include "preferences/credentials.hpp"
 #include "preferences/game.hpp"
@@ -322,7 +325,7 @@ void connect_engine::update_and_send_diff(bool /*update_time_of_day*/)
 	if(!diff.empty()) {
 		config scenario_diff;
 		scenario_diff.add_child("scenario_diff", std::move(diff));
-		send_to_server(scenario_diff);
+		mp::send_to_server(scenario_diff);
 	}
 }
 
@@ -358,13 +361,6 @@ bool connect_engine::can_start_game() const
 	}
 
 	return false;
-}
-
-void connect_engine::send_to_server(const config& cfg) const
-{
-	if(mp_metadata_) {
-		mp_metadata_->connection.send_data(cfg);
-	}
 }
 
 std::multimap<std::string, config> side_engine::get_side_children()
@@ -458,7 +454,7 @@ void connect_engine::start_game()
 
 	// Make other clients not show the results of resolve_random().
 	config lock("stop_updates");
-	send_to_server(lock);
+	mp::send_to_server(lock);
 
 	update_and_send_diff(true);
 
@@ -467,14 +463,12 @@ void connect_engine::start_game()
 	// Build the gamestate object after updating the level.
 	mp::level_to_gamestate(level_, state_);
 
-	send_to_server(config("start_game"));
+	mp::send_to_server(config("start_game"));
 }
 
 void connect_engine::start_game_commandline(const commandline_options& cmdline_opts, const game_config_view& game_config)
 {
 	DBG_MP << "starting a new game in commandline mode" << std::endl;
-
-	typedef std::tuple<unsigned int, std::string> mp_option;
 
 	randomness::mt_rng rng;
 
@@ -484,16 +478,16 @@ void connect_engine::start_game_commandline(const commandline_options& cmdline_o
 
 		// Set the faction, if commandline option is given.
 		if(cmdline_opts.multiplayer_side) {
-			for(const mp_option option : *cmdline_opts.multiplayer_side) {
-
-				if(std::get<0>(option) == num) {
-					if(std::find_if(era_factions_.begin(), era_factions_.end(), [&option](const config* faction) { return (*faction)["id"] == std::get<1>(option); }) != era_factions_.end()) {
-						DBG_MP << "\tsetting side " << std::get<0>(option) << "\tfaction: " << std::get<1>(option) << std::endl;
-
-						side->set_faction_commandline(std::get<1>(option));
-					}
-					else {
-						ERR_MP << "failed to set side " << std::get<0>(option) << " to faction " << std::get<1>(option) << std::endl;
+			for(const auto& [side_num, faction_id] : *cmdline_opts.multiplayer_side) {
+				if(side_num == num) {
+					if(std::find_if(era_factions_.begin(), era_factions_.end(),
+						   [fid = faction_id](const config* faction) { return (*faction)["id"] == fid; })
+						!= era_factions_.end()
+					) {
+						DBG_MP << "\tsetting side " << side_num << "\tfaction: " << faction_id << std::endl;
+						side->set_faction_commandline(faction_id);
+					} else {
+						ERR_MP << "failed to set side " << side_num << " to faction " << faction_id << std::endl;
 					}
 				}
 			}
@@ -501,13 +495,10 @@ void connect_engine::start_game_commandline(const commandline_options& cmdline_o
 
 		// Set the controller, if commandline option is given.
 		if(cmdline_opts.multiplayer_controller) {
-			for(const mp_option option : *cmdline_opts.multiplayer_controller) {
-
-				if(std::get<0>(option) == num) {
-					DBG_MP << "\tsetting side " << std::get<0>(option) <<
-						"\tfaction: " << std::get<1>(option) << std::endl;
-
-					side->set_controller_commandline(std::get<1>(option));
+			for(const auto& [side_num, faction_id] : *cmdline_opts.multiplayer_controller) {
+				if(side_num == num) {
+					DBG_MP << "\tsetting side " << side_num << "\tfaction: " << faction_id << std::endl;
+					side->set_controller_commandline(faction_id);
 				}
 			}
 		}
@@ -516,14 +507,12 @@ void connect_engine::start_game_commandline(const commandline_options& cmdline_o
 		// then override if commandline option was given.
 		std::string ai_algorithm = game_config.child("ais")["default_ai_algorithm"].str();
 		side->set_ai_algorithm(ai_algorithm);
+
 		if(cmdline_opts.multiplayer_algorithm) {
-			for(const mp_option option : *cmdline_opts.multiplayer_algorithm) {
-
-				if(std::get<0>(option) == num) {
-					DBG_MP << "\tsetting side " << std::get<0>(option) <<
-						"\tfaction: " << std::get<1>(option) << std::endl;
-
-					side->set_ai_algorithm(std::get<1>(option));
+			for(const auto& [side_num, faction_id] : *cmdline_opts.multiplayer_algorithm) {
+				if(side_num == num) {
+					DBG_MP << "\tsetting side " << side_num << "\tfaction: " << faction_id << std::endl;
+					side->set_ai_algorithm(faction_id);
 				}
 			}
 		}
@@ -542,15 +531,12 @@ void connect_engine::start_game_commandline(const commandline_options& cmdline_o
 		scenario()["turns"] = *cmdline_opts.multiplayer_turns;
 	}
 
-	for(config &side : scenario().child_range("side")) {
+	for(config& side : scenario().child_range("side")) {
 		if(cmdline_opts.multiplayer_ai_config) {
-			for(const mp_option option : *cmdline_opts.multiplayer_ai_config) {
-
-				if(std::get<0>(option) == side["side"].to_unsigned()) {
-					DBG_MP << "\tsetting side " << side["side"] <<
-						"\tai_config: " << std::get<1>(option) << std::endl;
-
-					side["ai_config"] = std::get<1>(option);
+			for(const auto& [side_num, faction_id] : *cmdline_opts.multiplayer_ai_config) {
+				if(side_num == side["side"].to_unsigned()) {
+					DBG_MP << "\tsetting side " << side["side"] << "\tai_config: " << faction_id << std::endl;
+					side["ai_config"] = faction_id;
 				}
 			}
 		}
@@ -564,16 +550,11 @@ void connect_engine::start_game_commandline(const commandline_options& cmdline_o
 			side["income"] = 1;
 		}
 
-		typedef std::tuple<unsigned int, std::string, std::string> mp_parameter;
-
 		if(cmdline_opts.multiplayer_parm) {
-			for(const mp_parameter& parameter : *cmdline_opts.multiplayer_parm) {
-
-				if(std::get<0>(parameter) == side["side"].to_unsigned()) {
-					DBG_MP << "\tsetting side " << side["side"] << " " <<
-						std::get<1>(parameter) << ": " << std::get<2>(parameter) << std::endl;
-
-					side[std::get<1>(parameter)] = std::get<2>(parameter);
+			for(const auto& [side_num, pname, pvalue] : *cmdline_opts.multiplayer_parm) {
+				if(side_num == side["side"].to_unsigned()) {
+					DBG_MP << "\tsetting side " << side["side"] << " " << pname << ": " << pvalue << std::endl;
+					side[pname] = pvalue;
 				}
 			}
 		}
@@ -583,14 +564,14 @@ void connect_engine::start_game_commandline(const commandline_options& cmdline_o
 
 	// Build the gamestate object after updating the level
 	mp::level_to_gamestate(level_, state_);
-	send_to_server(config("start_game"));
+	mp::send_to_server(config("start_game"));
 }
 
 void connect_engine::leave_game()
 {
 	DBG_MP << "leaving the game" << std::endl;
 
-	send_to_server(config("leave_game"));
+	mp::send_to_server(config("leave_game"));
 }
 
 std::pair<bool, bool> connect_engine::process_network_data(const config& data)
@@ -630,7 +611,7 @@ std::pair<bool, bool> connect_engine::process_network_data(const config& data)
 		if(name.empty()) {
 			config response;
 			response["failed"] = true;
-			send_to_server(response);
+			mp::send_to_server(response);
 
 			ERR_CF << "ERROR: No username provided with the side." << std::endl;
 
@@ -645,7 +626,7 @@ std::pair<bool, bool> connect_engine::process_network_data(const config& data)
 				response["failed"] = true;
 				response["message"] = "The nickname '" + name +
 					"' is already in use.";
-				send_to_server(response);
+				mp::send_to_server(response);
 
 				return result;
 			} else {
@@ -653,7 +634,7 @@ std::pair<bool, bool> connect_engine::process_network_data(const config& data)
 				update_side_controller_options();
 				config observer_quit;
 				observer_quit.add_child("observer_quit")["name"] = name;
-				send_to_server(observer_quit);
+				mp::send_to_server(observer_quit);
 			}
 		}
 
@@ -674,12 +655,12 @@ std::pair<bool, bool> connect_engine::process_network_data(const config& data)
 				if(side_taken >= side_engines_.size()) {
 					config response;
 					response["failed"] = true;
-					send_to_server(response);
+					mp::send_to_server(response);
 
 					config res;
 					config& kick = res.add_child("kick");
 					kick["username"] = data["name"];
-					send_to_server(res);
+					mp::send_to_server(res);
 
 					update_and_send_diff();
 
@@ -706,7 +687,7 @@ std::pair<bool, bool> connect_engine::process_network_data(const config& data)
 
 			config response;
 			response["failed"] = true;
-			send_to_server(response);
+			mp::send_to_server(response);
 		}
 	}
 
@@ -763,18 +744,18 @@ void connect_engine::send_level_data() const
 {
 	// Send initial information.
 	if(first_scenario_) {
-		send_to_server(config {
+		mp::send_to_server(config {
 			"create_game", config {
 				"name", params_.name,
 				"password", params_.password,
 				"ignored", preferences::get_ignored_delim(),
 			},
 		});
-		send_to_server(level_);
+		mp::send_to_server(level_);
 	} else {
 		config next_level;
 		next_level.add_child("store_next_scenario", level_);
-		send_to_server(next_level);
+		mp::send_to_server(next_level);
 	}
 }
 

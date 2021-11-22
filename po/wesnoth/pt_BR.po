@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2021-06-23 11:42-0400\n"
-"PO-Revision-Date: 2021-06-27 16:05-0300\n"
+"PO-Revision-Date: 2021-11-06 16:17-0300\n"
 "Last-Translator: Andrei Machado <andreisp.machado@yahoo.com>\n"
 "Language-Team: Portuguese - Brasil\n"
 "Language: pt_BR\n"
@@ -58,7 +58,7 @@ msgstr "Bzip2"
 #. [option]: id=bzip2
 #: data/advanced_preferences.cfg:15
 msgid "save_compression_desc^Best compression, slower"
-msgstr "Melhor compressão, mais lento"
+msgstr "Melhor compressão, mais lenta"
 
 #. [option]: id=none
 #: data/advanced_preferences.cfg:19
@@ -5304,13 +5304,10 @@ msgstr "Derrota:"
 # File: data/lua/wml/objectives.lua, line: 1496
 #. [lua]: generate_objectives
 #: data/lua/wml/objectives.lua:57
-#, fuzzy
-#| msgid "(this turn left)"
-#| msgid_plural "(%d turns left)"
 msgid "(this turn left)"
 msgid_plural "($remaining_turns turns left)"
 msgstr[0] "(só mais este turno)"
-msgstr[1] "(%d turnos restantes)"
+msgstr[1] "($remaining_turns turnos restantes)"
 
 #
 # File: data/lua/wml/objectives.lua, line: 11990
@@ -5330,10 +5327,8 @@ msgstr "$percent|% do ouro transferido par ao próximo cenário."
 # File: src/unit.cpp, line: 2622
 #. [modification]: id=plan_unit_advance
 #: data/modifications.cfg:6
-#, fuzzy
-#| msgid "XP to advance"
 msgid "Plan Unit Advance"
-msgstr "XP para avançar"
+msgstr "Planejar Avanço da Unidade"
 
 #. [modification]: id=plan_unit_advance
 #: data/modifications.cfg:7
@@ -5374,21 +5369,19 @@ msgstr ""
 #. [lua]: pickadvance.show_dialog_unsynchronized
 #: data/modifications/pick_advance/dialog.lua:30
 #: data/modifications/pick_advance/main.lua:10
-#, fuzzy
-#| msgid "Advancements:"
 msgid "Plan Advancement"
-msgstr "Avanços:"
+msgstr "Planejar Avanços"
 
 #. [lua]: pickadvance.show_dialog_unsynchronized
 #: data/modifications/pick_advance/dialog.lua:67
 msgid ""
 "This advancement is currently the default for all units of the same type"
-msgstr ""
+msgstr "No momento este avanço é o padrão para todas as unidades do mesmo tipo"
 
 #. [lua]: pickadvance.show_dialog_unsynchronized
 #: data/modifications/pick_advance/dialog.lua:129
 msgid "Apply to all units of this type"
-msgstr ""
+msgstr "Aplicar para todas as unidades deste tipo"
 
 #
 # File: src/savegame.cpp, line: 965
@@ -5396,10 +5389,8 @@ msgstr ""
 # File: src/savegame.cpp, line: 965
 #. [lua]: pickadvance.show_dialog_unsynchronized
 #: data/modifications/pick_advance/dialog.lua:145
-#, fuzzy
-#| msgid "Saved"
 msgid "Save"
-msgstr "Salvo"
+msgstr "Salvar"
 
 #
 # File: data/scenario-test.cfg, line: 858
@@ -5437,10 +5428,8 @@ msgstr "Cancelar"
 # File: src/reports.cpp, line: 243
 #. [lua]: preshow
 #: data/modifications/pick_advance/dialog.lua:174
-#, fuzzy
-#| msgid "No advancement"
 msgid "No planned advancement"
-msgstr "Sem avanços"
+msgstr "Nenhum avanço planejado"
 
 #
 # File: src/savegame.cpp, line: 1063
@@ -5448,10 +5437,8 @@ msgstr "Sem avanços"
 # File: src/savegame.cpp, line: 1063
 #. [action]: id=button-playreplay, type=image
 #: data/themes/_initial.cfg:413
-#, fuzzy
-#| msgid "replay"
 msgid "replay^Play"
-msgstr "replay"
+msgstr "replay^Reproduzir"
 
 #
 # File: data/themes/macros.cfg, line: 67
@@ -5468,10 +5455,8 @@ msgstr "replay contínuo"
 # File: src/savegame.cpp, line: 1063
 #. [action]: id=button-stopreplay, type=image
 #: data/themes/_initial.cfg:428
-#, fuzzy
-#| msgid "replay"
 msgid "replay^Stop"
-msgstr "replay"
+msgstr "replay^Pausar"
 
 #. [action]: id=button-stopreplay, type=image
 #: data/themes/_initial.cfg:429
@@ -5930,7 +5915,7 @@ msgstr ""
 #. [tip]
 #: data/tips.cfg:17 data/tips.cfg:149
 msgid "<i>― Great Mage Delfador, 516YW</i>"
-msgstr "<i>― Grande Mago Delfador, 516YW</i>"
+msgstr "<i>― Grande Mago Delfador, 516 AW</i>"
 
 #
 # File: data/hardwired/tips.cfg, line: 8
@@ -6079,7 +6064,7 @@ msgstr ""
 #. [tip]
 #: data/tips.cfg:25
 msgid "<i>― King Konrad, 536YW</i>"
-msgstr "<i>― Rei Konrad, 536YW</i>"
+msgstr "<i>― Rei Konrad, 536 AW</i>"
 
 #
 # File: data/hardwired/tips.cfg, line: 16
@@ -6109,7 +6094,7 @@ msgstr ""
 #. [tip]
 #: data/tips.cfg:29 data/tips.cfg:141
 msgid "<i>― Memoirs of Gweddry, 627YW</i>"
-msgstr "<i>―  Memórias de Gweddry, 627YW</i>"
+msgstr "<i>―  Memórias de Gweddry, 627 AW</i>"
 
 #
 # File: data/hardwired/tips.cfg, line: 20
@@ -6176,7 +6161,7 @@ msgstr ""
 #. [tip]
 #: data/tips.cfg:41 data/tips.cfg:117 data/tips.cfg:218 data/tips.cfg:230
 msgid "<i>― High Lord Kalenz, 470YW</i>"
-msgstr "<i>― Alto Lorde Kalenz, 470YW</i>"
+msgstr "<i>― Alto Lorde Kalenz, 470 AW</i>"
 
 #
 # File: data/hardwired/tips.cfg, line: 32
@@ -6255,8 +6240,8 @@ msgstr ""
 msgid ""
 "<i>― Royal Compendium of Battle Terminology: Volume II (reprinted 221YW)</i>"
 msgstr ""
-"<i>― Compêndio Real de Terminlogia de Batalha: Volume II (reimpressão "
-"221YW)</i>"
+"<i>― Compêndio Real de Terminlogia de Batalha: Volume II (reimpressão 221 "
+"AW)</i>"
 
 #
 # File: data/hardwired/tips.cfg, line: 48
@@ -6288,7 +6273,8 @@ msgstr "Um bom plano pode falhar caso você ataque no período do dia errado."
 #: data/tips.cfg:61 data/tips.cfg:85 data/tips.cfg:137 data/tips.cfg:145
 #: data/tips.cfg:222
 msgid "<i>― Haldric II, 42YW, Handbook of Tactical Analysis: Volume I</i>"
-msgstr "<i>― Haldric II, 42YW, Manual de Bolso de Análise Tática: Volume I</i>"
+msgstr ""
+"<i>― Haldric II, 42 AW, Manual de Bolso de Análise Tática: Volume I</i>"
 
 #
 # out.2012
@@ -6434,7 +6420,7 @@ msgstr ""
 #: data/tips.cfg:89
 msgid "<i>― Haldric II, 43YW, Handbook of Tactical Analysis: Volume II</i>"
 msgstr ""
-"<i>― Haldric II, 43YW, Manual de Bolso de Análise Tática: Volume II</i>"
+"<i>― Haldric II, 43 AW, Manual de Bolso de Análise Tática: Volume II</i>"
 
 #
 # File: data/hardwired/tips.cfg, line: 80
@@ -6506,7 +6492,7 @@ msgstr ""
 #. [tip]
 #: data/tips.cfg:105 data/tips.cfg:185
 msgid "<i>― Sir Kaylan, 498YW</i>"
-msgstr "<i>― Sir Kaylan, 498YW</i>"
+msgstr "<i>― Sir Kaylan, 498 AW</i>"
 
 #
 # File: data/hardwired/tips.cfg, line: 96
@@ -6530,7 +6516,7 @@ msgstr ""
 #. [tip]
 #: data/tips.cfg:109
 msgid "<i>― Sir Kaylan, 502YW</i>"
-msgstr "<i>― Sir Kaylan, 502YW</i>"
+msgstr "<i>― Sir Kaylan, 502 AW</i>"
 
 #
 # File: data/hardwired/tips.cfg, line: 100
@@ -6608,7 +6594,7 @@ msgstr ""
 #. [tip]
 #: data/tips.cfg:129
 msgid "<i>― Meneldur, 123YW</i>"
-msgstr "<i>― Meneldur, 123YW</i>"
+msgstr "<i>― Meneldur, 123 AW</i>"
 
 #
 # File: data/hardwired/tips.cfg, line: 120
@@ -6710,7 +6696,7 @@ msgstr ""
 #. [tip]
 #: data/tips.cfg:153
 msgid "<i>― Kai Laudiss, 623YW</i>"
-msgstr "<i>― Kai Laudiss, 623YW</i>"
+msgstr "<i>― Kai Laudiss, 623 AW</i>"
 
 #
 # File: data/hardwired/tips.cfg, line: 140
@@ -6730,7 +6716,7 @@ msgstr ""
 #. [tip]
 #: data/tips.cfg:157
 msgid "<i>― Princess Li’sar, 515YW</i>"
-msgstr "<i>― Princesa Li’sar, 515YW</i>"
+msgstr "<i>― Princesa Li’sar, 515 AW</i>"
 
 #
 # File: data/hardwired/tips.cfg, line: 148
@@ -6781,7 +6767,7 @@ msgstr ""
 #. [tip]
 #: data/tips.cfg:169 data/tips.cfg:210
 msgid "<i>― The Scroll of Chantal, 516YW</i>"
-msgstr "<i>― O Pergaminho de Chantal, 516YW</i>"
+msgstr "<i>― O Pergaminho de Chantal, 516 AW</i>"
 
 #
 # File: data/hardwired/tips.cfg, line: 160
@@ -6813,7 +6799,7 @@ msgstr "Ataques <i>Arcano</i> são poderosos contra mortos-vivos."
 #. [tip]
 #: data/tips.cfg:177
 msgid "<i>― Great Sage Dacyn, 626YW</i>"
-msgstr "<i>―Grande Sábio Dacyn, 626YW</i>"
+msgstr "<i>―Grande Sábio Dacyn, 626 AW</i>"
 
 #
 # File: data/hardwired/tips.cfg, line: 168
@@ -6882,7 +6868,7 @@ msgstr ""
 #. [tip]
 #: data/tips.cfg:193
 msgid "<i>― Queen Li’sar, 528YW</i>"
-msgstr "<i>―Rainha Li'sar, 528YW</i>"
+msgstr "<i>―Rainha Li'sar, 528 AW</i>"
 
 #
 # File: data/hardwired/tips.cfg, line: 188
@@ -7119,7 +7105,7 @@ msgstr ""
 #. [tip]
 #: data/tips.cfg:246
 msgid "<i>― Queen Asheviere, 503YW</i>"
-msgstr "<i>― Rainha Asheviere, 503YW</i>"
+msgstr "<i>― Rainha Asheviere, 503 AW</i>"
 
 #. [tip]
 #: data/tips.cfg:249
@@ -7147,13 +7133,15 @@ msgstr ""
 #. [tip]
 #: data/tips.cfg:254
 msgid "<i>― Sir Gerrick of Westin, 607YW</i>"
-msgstr "<i>― Sir Gerrick de Westin, 607YW</i>"
+msgstr "<i>― Sir Gerrick de Westin, 607 AW</i>"
 
 #. [tip]
 #: data/tips.cfg:258
 msgid ""
 "Some types of terrain give unique bonuses, such as healing or illumination."
 msgstr ""
+"Alguns tipos de terrenos conferem bônus especiais, tais quais cura ou "
+"iluminação."
 
 #
 # File: data/hardwired/tips.cfg, line: 13
@@ -7162,10 +7150,8 @@ msgstr ""
 #. [tip]
 #. Translate the word "Flight" as a collective noun for drakes
 #: data/tips.cfg:260
-#, fuzzy
-#| msgid "<i>― Vank of Galun’s Flight, 6YW</i>"
 msgid "<i>― Galun, Flight Leader, 5YW</i>"
-msgstr "<i>― Vank do Voo de Galun, 6YW</i>"
+msgstr "<i>― Galun, líder do Voo 5 AW</i>"
 
 #. [tip]
 #: data/tips.cfg:263
@@ -7188,7 +7174,7 @@ msgstr ""
 #. [tip]
 #: data/tips.cfg:264
 msgid "<i>― Lord Tallin of Knalga, 538 YW</i>"
-msgstr "<i>― Lorde Tallin de Knalga, 538 YW</i>"
+msgstr "<i>― Lorde Tallin de Knalga, 538 AW</i>"
 
 #. [tip]
 #: data/tips.cfg:267
@@ -7494,10 +7480,8 @@ msgstr ""
 # File: src/addon/client.cpp, line: 91
 # File: src/addon/client.cpp, line: 91
 #: src/addon/client.cpp:214
-#, fuzzy
-#| msgid "Requesting distribution terms..."
 msgid "Requesting file index..."
-msgstr "Solicitando os termos de distribuição..."
+msgstr "Solicitando index de arquivo..."
 
 #
 # File: src/addon/client.cpp, line: 140
@@ -7932,6 +7916,8 @@ msgid "An error occurred while downloading the add-ons list from the server."
 msgstr "Ocorreu um erro ao baixar a lista de add-ons do servidor."
 
 #: src/addon/manager_ui.cpp:282
+#, fuzzy
+#| msgid "Could not find an add-on matching id $addon_id on the add-on server."
 msgid "Could not find an add-on matching id $addon_id on the add-on server."
 msgstr ""
 "Não foi possivel encontrar um add-on com o id $addon_id no servidor de add-"
@@ -7939,7 +7925,7 @@ msgstr ""
 
 #: src/addon/validation.cpp:387
 msgid "Success."
-msgstr "sucesso."
+msgstr "Sucesso."
 
 #: src/addon/validation.cpp:391
 msgid "Incorrect add-on passphrase."
@@ -7948,10 +7934,14 @@ msgstr ""
 #: src/addon/validation.cpp:395
 msgid "Upload denied. Please contact the server administration for assistance."
 msgstr ""
+"Upload negado. Por favor entre em contato com a administração do server para "
+"obter ajuda."
 
 #: src/addon/validation.cpp:399
 msgid "Attempted to upload an update pack for a non-existent add-on."
 msgstr ""
+"Tentou-se fazer o upload de um pacote de atualização para um add-on "
+"inexistente."
 
 #: src/addon/validation.cpp:408
 msgid "No add-on data was supplied by the client."
@@ -8017,35 +8007,31 @@ msgstr ""
 
 #: src/addon/validation.cpp:440
 msgid "The add-on name contains an invalid UTF-8 sequence."
-msgstr ""
+msgstr "O nome do add-on contêm uma sequência UTF-8 inválida."
 
 #
 # File: src/loadscreen.cpp, line: 228
 # File: src/loadscreen.cpp, line: 228
 # File: src/loadscreen.cpp, line: 228
 #: src/addon/validation.cpp:449
-#, fuzzy
-#| msgid "Loading title screen"
 msgid "No add-on title specified."
-msgstr "Carregando a tela inicial"
+msgstr "Nenhum título para o add-on especificado."
 
 #: src/addon/validation.cpp:453
 msgid "No add-on author/maintainer name specified."
-msgstr ""
+msgstr "Não foi especificado um autor/maintainer para o add-on."
 
 #: src/addon/validation.cpp:457
 msgid "No add-on version specified."
-msgstr ""
+msgstr "Não foi especificada a versão do add-on."
 
 #
 # File: src/unit_types.cpp, line: 762
 # File: src/unit_types.cpp, line: 762
 # File: src/unit_types.cpp, line: 762
 #: src/addon/validation.cpp:461
-#, fuzzy
-#| msgid "No description available."
 msgid "No add-on description specified."
-msgstr "Nenhuma descrição disponível."
+msgstr "Nenhuma descrição para o add-on especificada."
 
 #: src/addon/validation.cpp:465
 msgid "No add-on author/maintainer email specified."
@@ -8725,7 +8711,7 @@ msgstr "Gama de cor inválida: "
 #: src/game_config_manager.cpp:253 src/game_config_manager.cpp:263
 #: src/game_config_manager.cpp:275
 msgid "Error validating data core."
-msgstr "Erro ao validar a data do core."
+msgstr "Erro ao validar os dados do core."
 
 #: src/game_config_manager.cpp:254
 msgid "Found a core without id attribute."
@@ -8759,7 +8745,7 @@ msgstr "Arquivo não encontrado."
 
 #: src/game_config_manager.cpp:298 src/game_config_manager.cpp:310
 msgid "Error loading core data."
-msgstr "Erro ao carregar a data do core."
+msgstr "Erro ao carregar os dados do core."
 
 #: src/game_config_manager.cpp:300
 msgid "Error loading the core with named id."
@@ -8818,7 +8804,7 @@ msgstr ""
 
 #: src/game_config_manager.cpp:530
 msgid "Use [modify_unit_type]\n"
-msgstr ""
+msgstr "Usar [modify_unit_type]\n"
 
 #: src/game_config_manager.cpp:569
 msgid "instead, use the macro with the same name in the [campaign] tag"
@@ -9259,6 +9245,8 @@ msgstr "Derrote o(s) lídere(s) inimigo(s)"
 # File: src/multiplayer_connect.cpp, line: 1816
 # File: src/multiplayer_connect.cpp, line: 1816
 #: src/game_initialization/mp_game_utils.cpp:101
+#, fuzzy
+#| msgid "Cannot find era $era"
 msgid "Cannot find era $era"
 msgstr "Não foi possível encontrar a $era"
 
@@ -9868,7 +9856,7 @@ msgstr "Nenhum lado visível encontrado."
 
 #: src/gui/dialogs/multiplayer/match_history.cpp:30
 msgid "Match History — $player"
-msgstr ""
+msgstr "Histórico de Partidas — $player"
 
 #
 # File: src/gui/dialogs/lobby_player_info.cpp, line: 98
@@ -10709,7 +10697,7 @@ msgstr ""
 
 #: src/menu_events.cpp:1229
 msgid "Change terrain type of current hex"
-msgstr ""
+msgstr "Mudar o terreno do hexágono selecionado"
 
 #. TRANSLATORS: [both|base|overlay] are hardcoded literal arguments and shouldn't be translated.
 #: src/menu_events.cpp:1231
@@ -13305,7 +13293,7 @@ msgstr "$year BW"
 #. TRANSLATORS: "Year of Wesnoth"  - format for years after the founding of Wesnoth
 #: src/utils/irdya_datetime.cpp:62
 msgid "$year YW"
-msgstr "$year YW"
+msgstr "$year AW"
 
 #. TRANSLATORS: "Before the Fall" -  format for years prior to the fall of Wesnoth
 #: src/utils/irdya_datetime.cpp:65
@@ -13368,14 +13356,71 @@ msgstr "Esconder planos para $player"
 msgid "Whiteboard Options"
 msgstr "Opções do Quadro-Branco"
 
+#~ msgid "Life Vortex"
+#~ msgstr "Vórtice de Vida"
+
+#~ msgid ""
+#~ "Each successful strike in a battle involving this attack causes the "
+#~ "attacker to gain the health that his attack removed from the target.  "
+#~ "This has no effect against nonliving targets."
+#~ msgstr ""
+#~ "Cada golpe bem sucessido em batalhas envolvendo este ataque faz com que o "
+#~ "atacante ganhe a vida que seu ataque removeu do alvo.  Isto não tem "
+#~ "nenhum efeito contra alvos não vivos."
+
 #~ msgid "Entropy"
-#~ msgstr "entropia"
+#~ msgstr "Entropia"
+
+#~ msgid ""
+#~ "Each successful strike in a battle involving this attack causes the "
+#~ "attacker to lose 4 HP.  This has no effect against nonliving targets."
+#~ msgstr ""
+#~ "Cada golpe bem sucessido em batalhas envolvendo este ataque faz com que o "
+#~ "atacante perca 4 de HP.  Isto não tem nenhum efeito contra alvos não "
+#~ "vivos."
+
+#~ msgid "Empathic Weapon"
+#~ msgstr "Arma Empática"
+
+#~ msgid ""
+#~ "All damage dealt by this attack to a living target is dealt to the user "
+#~ "as well"
+#~ msgstr ""
+#~ "Todo o dano causado por este ataque contra um alvo vivo também é causado "
+#~ "no usuário"
+
+#~ msgid "Rejuvenating Weapon (10)"
+#~ msgstr "Arma rejuvenescedora (10)"
+
+#~ msgid "Each successful strike with this weapon heals the user for 10 HP"
+#~ msgstr "Cada golpe bem sucedido com esta arma cura 10 de HP do usuário"
 
 #~ msgid "drains 20%"
 #~ msgstr "dreno 20%"
 
+#~ msgid ""
+#~ "This unit drains health from living units, healing itself for 20% of the "
+#~ "amount of damage it deals (rounded down)."
+#~ msgstr ""
+#~ "Esta unidade drena a vida e unidades vivas, curando-se por 20% da "
+#~ "quantidade de dano que ela causa (arredndado para baixo)."
+
 #~ msgid "sacrifice 5"
 #~ msgstr "sacrifício 5"
+
+#~ msgid "Each successful attack costs this unit 5 HP."
+#~ msgstr "Cada ataque bem sucedido custa esta unidade 5 de HP."
+
+#~ msgid "life bomb"
+#~ msgstr "bomba de vida"
+
+#~ msgid "life copy 20"
+#~ msgstr "cópia de vida 20"
+
+#~ msgid "When this attack hits a living unit, the user is healed for 20 HP."
+#~ msgstr ""
+#~ "Quando este ataque acerta uma unidade viva, o usuário é curado por 20 de "
+#~ "HP."
 
 #
 # File: src/statistics_dialog.cpp, line: 284
@@ -13391,33 +13436,46 @@ msgstr "Opções do Quadro-Branco"
 #~ msgid "female^feral"
 #~ msgstr "selvagem"
 
+#~ msgid "Receive at most 40% defense in villages"
+#~ msgstr "Recebe no máximo 40% de defesa em aldeias"
+
 #
 # File: data/lua/wml-tags.lua, line: 11451
 # File: data/lua/wml-tags.lua, line: 1120
 # File: data/lua/wml-tags.lua, line: 1120
-#, fuzzy
-#~| msgid "unhealable"
 #~ msgid "Unhealable"
-#~ msgstr "incurável"
+#~ msgstr "Incurável"
 
 #
 # File: src/attack_prediction_display.cpp, line: 224
 # File: src/attack_prediction_display.cpp, line: 224
 # File: src/attack_prediction_display.cpp, line: 224
 #~ msgid "magical leadership"
-#~ msgstr "Liderança mágica"
+#~ msgstr "liderança mágica"
 
 #~ msgid "female^magical leadership"
 #~ msgstr "liderança mágica"
+
+#~ msgid ""
+#~ "This unit’s resistances are added to 20%, up to a maximum of 50%, when "
+#~ "defending to melle attacks. Vulnerabilities are not affected."
+#~ msgstr ""
+#~ "As resistências desta unidade são somadas a 20%, até um máximo de 50%, "
+#~ "quando ela defende contra ataques corpo a corpo. Vulnerabilidades não são "
+#~ "afetadas."
+
+#~ msgid "darkens"
+#~ msgstr "escurece"
 
 #
 # File: src/actions/heal.cpp, line: 256
 # File: src/actions/heal.cpp, line: 256
 # File: src/actions/heal.cpp, line: 256
-#, fuzzy
-#~| msgid "female^cured"
 #~ msgid "female^darkens"
-#~ msgstr "curada"
+#~ msgstr "escurece"
+
+#~ msgid "darkens and stuff"
+#~ msgstr "escurece e outras coisas"
 
 #~ msgid "Sacrifice"
 #~ msgstr "Sacrifício"
@@ -13426,19 +13484,29 @@ msgstr "Opções do Quadro-Branco"
 # File: src/reports.cpp, line: 320
 # File: src/reports.cpp, line: 320
 # File: src/reports.cpp, line: 320
-#, fuzzy
-#~| msgid "This unit has been petrified. It may not move or attack."
 #~ msgid "This unit sacrifices its own life in order to make more attacks."
-#~ msgstr "Esta unidade esta petrificada. Ela não pode se mover nem atacar."
+#~ msgstr ""
+#~ "Esta unidade sacrifica a sua própria vida para poder realizar mais "
+#~ "ataques."
+
+#~ msgid "Greater Sacrifice"
+#~ msgstr "Sacrifício Maior"
+
+#~ msgid "cantor"
+#~ msgstr "cantor"
 
 #
 # File: src/unit_types.cpp, line: 819
 # File: src/unit_types.cpp, line: 819
 # File: src/unit_types.cpp, line: 819
-#, fuzzy
-#~| msgid "female^chaotic"
 #~ msgid "female^cantor"
-#~ msgstr "caótica"
+#~ msgstr "cantora"
+
+#~ msgid ""
+#~ "This unit grants marksman to all ranged attacks of all adjacent allies."
+#~ msgstr ""
+#~ "Esta unidade concede atirador para todos os ataques à distância de todos "
+#~ "os aliados adjacentes."
 
 #
 # File: src/game_events.cpp, line: 190
@@ -13449,15 +13517,28 @@ msgstr "Opções do Quadro-Branco"
 #~ msgid "Jamming Orc"
 #~ msgstr "Interferencia:"
 
+#~ msgid ""
+#~ "This unit’s ability reduces vision, that’s why 13,13 is shrouded at the "
+#~ "start."
+#~ msgstr ""
+#~ "E habilidade desta unidade reduz a visão. É por isto que 13,13 está "
+#~ "encoberto no começo."
+
+#, fuzzy
+#~ msgid "Now my Vision value is 15 and I can see 16 hex fields wide."
+#~ msgstr "Agora o valor da minha Visão é 15 e eu consigo ver "
+
+#~ msgid "I used a magical attack."
+#~ msgstr "Eu usei um ataque mágico."
+
 #~ msgid "BUG: This message should never be displayed!"
 #~ msgstr "BUG: Esta mensagem jamais deveria aparecer!"
 
 #~ msgid "Hero or not?"
 #~ msgstr "Herói ou não?"
 
-#, fuzzy
 #~ msgid "Toggle the hero status."
-#~ msgstr "Alterna o "
+#~ msgstr "Alterna o status de herói."
 
 #~ msgid "I am no longer a hero!"
 #~ msgstr "Eu não sou mais um herói!"
@@ -13472,6 +13553,12 @@ msgstr "Opções do Quadro-Branco"
 #~ msgid "Vision Test"
 #~ msgstr "Teste de Visão"
 
+#~ msgid "Visibility Check of (8,15)"
+#~ msgstr "Verificação de Visibilidade de (8,15)"
+
+#~ msgid "Checking visibility of (8,15)..."
+#~ msgstr "Verificando a Visibilidade de (8,15)..."
+
 #
 # File: data/core/macros/ai_controller.cfg, line: 474
 # File: data/core/macros/ai_controller.cfg, line: 474
@@ -13485,28 +13572,22 @@ msgstr "Opções do Quadro-Branco"
 # File: src/reports.cpp, line: 307
 # File: src/reports.cpp, line: 307
 # File: src/reports.cpp, line: 307
-#, fuzzy
-#~| msgid "invisible: "
 #~ msgid "It is invisible!"
-#~ msgstr "invisível: "
+#~ msgstr "Está invisível!"
 
 #
 # File: src/menu_events.cpp, line: 2861
 # File: src/menu_events.cpp, line: 2860
 # File: src/menu_events.cpp, line: 2860
-#, fuzzy
-#~| msgid "Debug mode activated!"
 #~ msgid "Teleporters activated"
-#~ msgstr "Modo debug ativado!"
+#~ msgstr "Teletransportadores ativados"
 
 #
 # File: src/menu_events.cpp, line: 2869
 # File: src/menu_events.cpp, line: 2868
 # File: src/menu_events.cpp, line: 2868
-#, fuzzy
-#~| msgid "Debug mode deactivated!"
 #~ msgid "Teleporters deactivated"
-#~ msgstr "Modo debug desativado!"
+#~ msgstr "Teletransportadores desativados"
 
 #~ msgid "Rithrandil"
 #~ msgstr "Rithrandil"
@@ -13517,8 +13598,21 @@ msgstr "Opções do Quadro-Branco"
 #~ msgid "female^aura of death ("
 #~ msgstr "aura da morte ("
 
+#~ msgid "A successful hit against this unit costs the opponent 4 HP."
+#~ msgstr ""
+#~ "Um ataque bem sucedido contra esta unidade custa 4 de HP do oponente."
+
 #~ msgid "drains 100%"
 #~ msgstr "dreno 100%"
+
+#~ msgid "Friendly Explorer"
+#~ msgstr "Explorador Amigável"
+
+#~ msgid "Explore the map"
+#~ msgstr "Explore o mapa"
+
+#~ msgid "Hello there"
+#~ msgstr "Olá"
 
 #
 # File: src/menu_events.cpp, line: 3119
@@ -13527,19 +13621,21 @@ msgstr "Opções do Quadro-Branco"
 # File: src/menu_events.cpp, line: 3148
 # File: src/menu_events.cpp, line: 3118
 # File: src/menu_events.cpp, line: 3148
-#, fuzzy
-#~| msgid "Custom map."
 #~ msgid "Custom dialog"
-#~ msgstr "Mapa personalizado."
+#~ msgstr "Diálogo customizado"
 
 #
 # File: data/core/macros/ai_controller.cfg, line: 449
 # File: data/core/macros/ai_controller.cfg, line: 449
 # File: data/core/macros/ai_controller.cfg, line: 449
-#, fuzzy
-#~| msgid "Clear objective orders"
 #~ msgid "objectives test"
-#~ msgstr "Cancelar ordens de objetivo"
+#~ msgstr "teste de objetivos"
+
+#~ msgid "We should now be sharing maps with side 3!"
+#~ msgstr "Agora estamos compartilhando mapas com o lado 3!"
+
+#~ msgid "Rename our kind friends"
+#~ msgstr "Renomeie os nossos caros amigos"
 
 #
 # File: src/unit_types.cpp, line: 818
@@ -13547,6 +13643,9 @@ msgstr "Opções do Quadro-Branco"
 # File: src/unit_types.cpp, line: 818
 #~ msgid "Neutral"
 #~ msgstr "Neutro"
+
+#~ msgid "That’s right! We’re neutral!"
+#~ msgstr "Isso mesmo! Nós somos neutros!"
 
 #~ msgid "lightning"
 #~ msgstr "relâmpago"
@@ -13557,6 +13656,24 @@ msgstr "Opções do Quadro-Branco"
 #~ msgid "Lua"
 #~ msgstr "Lua"
 
+#~ msgid "Enter Lua code"
+#~ msgstr "Digite o código Lua"
+
+#~ msgid "Show movement range"
+#~ msgstr "Mostrar alcance de movimento"
+
+#~ msgid "Show attack range"
+#~ msgstr "Mostrar o alcance de ataque"
+
+#~ msgid "Show vision range"
+#~ msgstr "Mostrar o alcance de visão"
+
+#~ msgid "Reload and execute Lua code"
+#~ msgstr "Recaregar e executar o código Lua"
+
+#~ msgid "Oh hi"
+#~ msgstr "Oi"
+
 #
 # File: src/addon/manager_ui.cpp, line: 701
 # File: src/dialogs.cpp, line: 568
@@ -13570,10 +13687,8 @@ msgstr "Opções do Quadro-Branco"
 # File: src/dialogs.cpp, line: 568
 # File: src/dialogs.cpp, line: 979
 # File: src/menu_events.cpp, line: 998
-#, fuzzy
-#~| msgid "Filter: "
 #~ msgid "Filter Area"
-#~ msgstr "Filtro:"
+#~ msgstr "Filtra Área"
 
 #
 # File: src/leader_list.cpp, line: 166
@@ -13582,33 +13697,44 @@ msgstr "Opções do Quadro-Branco"
 # File: src/leader_list.cpp, line: 191
 # File: src/leader_list.cpp, line: 166
 # File: src/leader_list.cpp, line: 191
-#, fuzzy
-#~| msgid "Random"
 #~ msgid "randomness"
-#~ msgstr "Aleatório"
+#~ msgstr "aleatoriedade"
+
+#~ msgid "What am I supposed to be doing again?"
+#~ msgstr "O que que eu devia fazer mesmo?"
 
 #
 # File: src/multiplayer_connect.cpp, line: 1857
 # File: src/multiplayer_connect.cpp, line: 1857
 # File: src/multiplayer_connect.cpp, line: 1857
-#, fuzzy
-#~| msgid "Defeat enemy leader(s)"
 #~ msgid "Defeat the enemy leader (he’s at 29,16!)"
-#~ msgstr "Derrote o(s) lídere(s) inimigo(s)"
+#~ msgstr "Derrote o líderer inimigo (ele está em 29,16!)"
 
 #
 # File: src/multiplayer_connect.cpp, line: 1857
 # File: src/multiplayer_connect.cpp, line: 1857
 # File: src/multiplayer_connect.cpp, line: 1857
-#, fuzzy
-#~| msgid "Defeat enemy leader(s)"
 #~ msgid "Defeat the enemy leader (he’s at 28,18!)"
-#~ msgstr "Derrote o(s) lídere(s) inimigo(s)"
+#~ msgstr "Derrote o líderer inimigo (ele está em 28,18!)"
 
-#, fuzzy
-#~| msgid "Temple"
+#~ msgid "Defeat the enemy leader (I have no clue where he is)"
+#~ msgstr "Derrote o líder inimigo (não faço ideia de onde ele esteja)"
+
 #~ msgid "Temporal Clone"
-#~ msgstr "Templo"
+#~ msgstr "Clone Temporal"
+
+#~ msgid ""
+#~ "You can come if you wish, but the leader is only interested in speaking "
+#~ "to Baldras."
+#~ msgstr ""
+#~ "Você pode vir se quiser, mas o líder só tem interesse em falar com "
+#~ "Baldras."
+
+#~ msgid "Open the hell"
+#~ msgstr "Abrir o inferno"
+
+#~ msgid "dialog"
+#~ msgstr "diálogo"
 
 #
 # File: src/menu_events.cpp, line: 2015
@@ -13619,14 +13745,18 @@ msgstr "Opções do Quadro-Branco"
 #~ msgid "Gamestate Inspector"
 #~ msgstr "Inicia o inspetor do estado do jogo"
 
+#~ msgid "Hello world"
+#~ msgstr "Olá mundo"
+
 #
 # File: src/unit_types.cpp, line: 273
 # File: src/unit_types.cpp, line: 273
 # File: src/unit_types.cpp, line: 273
-#, fuzzy
-#~| msgid "% parry"
 #~ msgid "parrot"
-#~ msgstr "% defesa"
+#~ msgstr "papagaio"
+
+#~ msgid "Who’s the parrot"
+#~ msgstr "Quem é o papagaio"
 
 #
 # File: src/leader_scroll_dialog.cpp, line: 263
@@ -13644,10 +13774,23 @@ msgstr "Opções do Quadro-Branco"
 # File: data/advanced_preferences.cfg, line: 131
 # File: data/advanced_preferences.cfg, line: 131
 # File: data/advanced_preferences.cfg, line: 131
-#, fuzzy
-#~| msgid "Chat message"
 #~ msgid "Parrot message"
-#~ msgstr "Mensagem de chat"
+#~ msgstr "Mensagem do papagaio"
+
+#~ msgid "Why are you looking at me, I’m no parrot!!!"
+#~ msgstr "Por que você está me olhando assim? Eu não sou um papagaio!!!"
+
+#~ msgid "A short time passes..."
+#~ msgstr "O tempo passa..."
+
+#~ msgid "drink"
+#~ msgstr "bebida"
+
+#~ msgid "Pick your drink"
+#~ msgstr "Escolha a sua bebida"
+
+#~ msgid "Soda"
+#~ msgstr "Refrigerante"
 
 #
 # File: data/core/macros/items.cfg, line: 270
@@ -13655,6 +13798,9 @@ msgstr "Opções do Quadro-Branco"
 # File: data/core/macros/items.cfg, line: 270
 #~ msgid "Water"
 #~ msgstr "Água"
+
+#~ msgid "Water is nice"
+#~ msgstr "Água seria uma boa"
 
 #
 # File: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg, line: 311
@@ -13667,20 +13813,16 @@ msgstr "Opções do Quadro-Branco"
 # File: data/lua/wml-tags.lua, line: 1116
 # File: src/actions/attack.cpp, line: 800
 #~ msgid "poison"
-#~ msgstr "Veneno"
+#~ msgstr "veneno"
 
 #~ msgid "Manual"
 #~ msgstr "Manual"
 
-#, fuzzy
-#~| msgid "Northerners"
 #~ msgid "Northerners unleashed!"
-#~ msgstr "Nortistas"
+#~ msgstr "Nortistas liberados!"
 
-#, fuzzy
-#~| msgid "Lato Light"
 #~ msgid "Let’s fight"
-#~ msgstr "Lato Light"
+#~ msgstr "Vamos lutar"
 
 #~ msgid "Open, Sesame!"
 #~ msgstr "Abra-te Sésamo!"
@@ -13691,28 +13833,43 @@ msgstr "Opções do Quadro-Branco"
 #~ msgid "Math test"
 #~ msgstr "Teste de matemática"
 
+#~ msgid "Enter a number."
+#~ msgstr "Digite um número."
+
+#~ msgid "Add something"
+#~ msgstr "Adicione algo"
+
+#~ msgid "Amount to add"
+#~ msgstr "Valor para adicionar"
+
 #
 # File: src/dialogs.cpp, line: 850
 # File: src/dialogs.cpp, line: 850
 # File: src/dialogs.cpp, line: 850
-#, fuzzy
-#~| msgid "Multiplayer"
 #~ msgid "Multiply"
-#~ msgstr "Multijogador"
+#~ msgstr "Multiplica"
+
+#~ msgid "Amount to multiply"
+#~ msgstr "Valor para multiplicar"
+
+#~ msgid "Divide by something"
+#~ msgstr "Divida por algo"
+
+#~ msgid "Divisor"
+#~ msgstr "Divisor"
 
 #
 # File: src/multiplayer_connect.cpp, line: 1816
 # File: src/multiplayer_connect.cpp, line: 1816
 # File: src/multiplayer_connect.cpp, line: 1816
-#, fuzzy
-#~| msgid "Cannot find era $era"
 #~ msgid "Cannot divide by zero!"
-#~ msgstr "Não foi possível encontrar a $era"
+#~ msgstr "Não é possível dividir por zero!"
 
-#, fuzzy
-#~| msgid "Trash Pile"
+#~ msgid "Modulo"
+#~ msgstr "Módulo"
+
 #~ msgid "Crash test"
-#~ msgstr "Pilha de Lixo"
+#~ msgstr "Teste de crash"
 
 #
 # File: data/core/macros/items.cfg, line: 345
@@ -13722,6 +13879,9 @@ msgstr "Opções do Quadro-Branco"
 #~| msgid "Potion of Decay"
 #~ msgid "Potion of bleach"
 #~ msgstr "Poção da Decadência"
+
+#~ msgid "BOOM!"
+#~ msgstr "BOOM!"
 
 #
 # File: src/multiplayer.cpp, line: 258
@@ -13734,15 +13894,14 @@ msgstr "Opções do Quadro-Branco"
 # File: src/savegame.cpp, line: 739
 # File: src/savegame.cpp, line: 739
 # File: src/savegame.cpp, line: 739
-#, fuzzy
-#~| msgid "This is not a multiplayer save."
 #~ msgid "This is not a forest"
-#~ msgstr "Este não é um save de multiplayer."
+#~ msgstr "Isto não é uma floresta"
 
-#, fuzzy
-#~| msgid "Still Another Wanderer"
+#~ msgid "Flood"
+#~ msgstr "Inundação"
+
 #~ msgid "Still there"
-#~ msgstr "Mais Um Andarilho"
+#~ msgstr "Ainda lá"
 
 #
 # File: src/attack_prediction_display.cpp, line: 544
@@ -13759,15 +13918,11 @@ msgstr "Opções do Quadro-Branco"
 #~ msgid "Formula="
 #~ msgstr "Fórmula="
 
-#, fuzzy
-#~| msgid "Summoning Circle"
 #~ msgid "Summon Troll"
-#~ msgstr "Círculo de Invocação"
+#~ msgstr "Invocar Troll"
 
-#, fuzzy
-#~| msgid "Magic Circle"
 #~ msgid "Magic Troll"
-#~ msgstr "Círculo Mágico"
+#~ msgstr "Troll Mágico"
 
 #
 # File: src/dialogs.cpp, line: 119
@@ -13781,6 +13936,12 @@ msgstr "Opções do Quadro-Branco"
 #~ msgid "Dismiss Troll"
 #~ msgstr "Despedir Unidade"
 
+#~ msgid "Identify terrain"
+#~ msgstr "Identificar terreno"
+
+#~ msgid "Earn 100 XP!"
+#~ msgstr "Ganhe 100 de XP!"
+
 #~ msgid "100 XP"
 #~ msgstr "100 XP"
 
@@ -13788,10 +13949,8 @@ msgstr "Opções do Quadro-Branco"
 # File: data/core/macros/items.cfg, line: 544
 # File: data/core/macros/items.cfg, line: 544
 # File: data/core/macros/items.cfg, line: 544
-#, fuzzy
-#~| msgid "sceptre of fire"
 #~ msgid "ruby of fire"
-#~ msgstr "cetro de fogo"
+#~ msgstr "rubi de fogo"
 
 #
 # File: src/multiplayer_create.cpp, line: 99
@@ -13804,28 +13963,22 @@ msgstr "Opções do Quadro-Branco"
 # File: src/playmp_controller.cpp, line: 96
 # File: src/playmp_controller.cpp, line: 96
 # File: src/playmp_controller.cpp, line: 96
-#, fuzzy
-#~| msgid "Turn changed"
 #~ msgid "map change"
-#~ msgstr "Turno mudou"
+#~ msgstr "mudança de mapa"
 
 #
 # File: src/playmp_controller.cpp, line: 96
 # File: src/playmp_controller.cpp, line: 96
 # File: src/playmp_controller.cpp, line: 96
-#, fuzzy
-#~| msgid "Turn changed"
 #~ msgid "map change2"
-#~ msgstr "Turno mudou"
+#~ msgstr "mudança de mapa2"
 
 #
 # File: src/playmp_controller.cpp, line: 96
 # File: src/playmp_controller.cpp, line: 96
 # File: src/playmp_controller.cpp, line: 96
-#, fuzzy
-#~| msgid "Turn changed"
 #~ msgid "map change3"
-#~ msgstr "Turno mudou"
+#~ msgstr "mudança de mapa3"
 
 #
 # File: src/gui/dialogs/lobby/lobby_data.cpp, line: 309
@@ -13847,6 +14000,9 @@ msgstr "Opções do Quadro-Branco"
 #~| msgid "Shroud"
 #~ msgid "Shrouded label"
 #~ msgstr "Escuridão"
+
+#~ msgid "Start Dynamic Events!"
+#~ msgstr "Iniciar Eventos Dinâmicos!"
 
 #~ msgid "Urug-Telfar"
 #~ msgstr "Urug-Telfar"
@@ -13871,11 +14027,17 @@ msgstr "Opções do Quadro-Branco"
 #~ msgid "More blue!"
 #~ msgstr "Mais azul!"
 
+#~ msgid "Black and white!"
+#~ msgstr "Preto e Branco!"
+
 #~ msgid "Other team"
 #~ msgstr "Outro time"
 
 #~ msgid "Psychedellic!"
 #~ msgstr "Psicodélico!"
+
+#~ msgid "You just lost the attack you used."
+#~ msgstr "Você acabou de perder o ataque que usou."
 
 #
 # File: data/themes/default.cfg, line: 112
@@ -13914,6 +14076,9 @@ msgstr "Opções do Quadro-Branco"
 
 #~ msgid "menu 4"
 #~ msgstr "menu 4"
+
+#~ msgid "menu 4, only acessible via hotkeys"
+#~ msgstr "menu 4, só é acessível pelas teclas de atalho"
 
 #
 # File: data/scenario-test.cfg, line: 3670

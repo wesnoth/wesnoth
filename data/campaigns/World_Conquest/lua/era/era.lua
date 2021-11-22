@@ -357,8 +357,11 @@ wc2_utils.menu_item {
 		if not wc2_era.get_faction(wesnoth.interface.get_viewing_side()) then
 			return false
 		end
-		if wc2_artifacts.is_item_at(x, y) then
-			return false
+		-- check whether wc2_artifacts is loaded
+		if wml.variables.wc2_scenario then
+			if wc2_artifacts.is_item_at(x, y) then
+				return false
+			end
 		end
 		return true
 	end,

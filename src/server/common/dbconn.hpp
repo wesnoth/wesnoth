@@ -1,14 +1,15 @@
 /*
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2020 - 2021
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #pragma once
@@ -136,7 +137,7 @@ class dbconn
 		/**
 		 * @see forum_user_handler::db_insert_game_content_info().
 		 */
-		void insert_game_content_info(const std::string& uuid, int game_id, const std::string& type, const std::string& name, const std::string& id, const std::string& source, const std::string& version);
+		unsigned long long insert_game_content_info(const std::string& uuid, int game_id, const std::string& type, const std::string& name, const std::string& id, const std::string& source, const std::string& version);
 
 		/**
 		 * @see forum_user_handler::db_set_oos_flag().
@@ -281,6 +282,17 @@ class dbconn
 		 */
 		template<typename... Args>
 		unsigned long long modify(mariadb::connection_ref connection, const std::string& sql, Args&&... args);
+
+		/**
+		 * Executes non-select statements (ie: insert, update, delete), but primarily intended for inserts that return a generated ID.
+		 *
+		 * @param connection The database connecion that will be used to execute the query.
+		 * @param sql The SQL text to be executed.
+		 * @param args The parameterized values to be inserted into the query.
+		 * @return The value of an AUTO_INCREMENT column on the table being modified.
+		 */
+		template<typename... Args>
+		unsigned long long modify_get_id(mariadb::connection_ref connection, const std::string& sql, Args&&... args);
 
 		/**
 		 * Begins recursively unpacking of the parameter pack in order to be able to call the correct parameterized setters on the query.

@@ -1,65 +1,41 @@
 /*
-   Copyright (C) 2009 - 2018 by Tomasz Sniatowski <kailoran@gmail.com>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2009 - 2021
+	by Tomasz Sniatowski <kailoran@gmail.com>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #pragma once
 
-#include "gui/dialogs/modal_dialog.hpp"
-#include "gui/widgets/tree_view.hpp"
 #include "chat_events.hpp"
 #include "game_initialization/lobby_info.hpp"
-#include "gui/dialogs/multiplayer/plugin_executor.hpp"
 #include "game_initialization/multiplayer.hpp"
+#include "gui/dialogs/modal_dialog.hpp"
+#include "gui/dialogs/multiplayer/lobby_player_list_helper.hpp"
+#include "gui/dialogs/multiplayer/plugin_executor.hpp"
+#include "gui/widgets/tree_view.hpp"
 #include "quit_confirmation.hpp"
 
 class wesnothd_connection;
-class game_config_view;
 
 namespace gui2
 {
-
 class grid;
-class label;
 class listbox;
 class text_box;
 class window;
-class multi_page;
-class toggle_button;
 class chatbox;
 
 namespace dialogs
 {
-
-struct sub_player_list
-{
-	void init(window& w, const std::string& label, const bool unfolded = false);
-	void update_player_count_label();
-	tree_view_node* tree;
-	label* tree_label;
-	label* label_player_count;
-};
-
-struct player_list
-{
-	void init(window& w);
-
-	sub_player_list active_game;
-	sub_player_list lobby_players;
-	sub_player_list other_games;
-
-	tree_view* tree;
-};
-
 class mp_lobby : public modal_dialog, public quit_confirmation, private plugin_executor
 {
 public:
@@ -70,7 +46,7 @@ public:
 	void update_gamelist();
 
 protected:
-	void update_gamelist_header();
+	void update_visible_games();
 
 	void update_gamelist_diff();
 
@@ -90,8 +66,6 @@ public:
 		CREATE,
 		RELOAD_CONFIG
 	};
-
-protected:
 
 private:
 	void update_selected_game();
@@ -141,17 +115,11 @@ private:
 
 	void refresh_lobby();
 
-	void game_filter_reload();
-
-	void game_filter_change_callback();
+	void game_filter_init();
 
 	void game_filter_keypress_callback(const SDL_Keycode key);
 
-	void gamelist_change_callback();
-
-	void player_filter_callback();
-
-	void user_dialog_callback(mp::user_info* info);
+	void user_dialog_callback(const mp::user_info* info);
 
 	void skip_replay_changed_callback();
 
@@ -166,8 +134,6 @@ private:
 	virtual void pre_show(window& window) override;
 
 	virtual void post_show(window& window) override;
-
-	const game_config_view& game_config_;
 
 	listbox* gamelistbox_;
 
@@ -184,7 +150,7 @@ private:
 
 	int selected_game_id_;
 
-	player_list player_list_;
+	lobby_player_list_helper player_list_;
 
 	bool player_list_dirty_;
 
@@ -209,8 +175,8 @@ private:
 
 	friend struct lobby_delay_gamelist_update_guard;
 
-	static std::string server_information_;
-	static std::string announcements_;
+	static inline std::string server_information_ = "";
+	static inline std::string announcements_ = "";
 };
 
 } // namespace dialogs

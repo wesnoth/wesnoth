@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2003 - 2021
+	by David White <dave@whitevine.net>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 /**
@@ -42,6 +43,9 @@ static lg::log_domain log_config("config");
 static lg::log_domain log_unit("unit");
 #define DBG_UT LOG_STREAM(debug, log_unit)
 #define ERR_UT LOG_STREAM(err, log_unit)
+
+static lg::log_domain log_wml("wml");
+#define ERR_WML LOG_STREAM(err, log_wml)
 
 attack_type::attack_type(const config& cfg) :
 	self_loc_(),
@@ -222,7 +226,8 @@ static bool matches_simple_filter(const attack_type & attack, const config & fil
 				return false;
 			}
 		} catch(const wfl::formula_error& e) {
-			lg::wml_error() << "Formula error in weapon filter: " << e.type << " at " << e.filename << ':' << e.line << ")\n";
+			lg::log_to_chat() << "Formula error in weapon filter: " << e.type << " at " << e.filename << ':' << e.line << ")\n";
+			ERR_WML << "Formula error in weapon filter: " << e.type << " at " << e.filename << ':' << e.line << ")";
 			// Formulae with syntax errors match nothing
 			return false;
 		}
@@ -439,7 +444,7 @@ bool attack_type::describe_modification(const config& cfg,std::string* descripti
 				"<span color=\"$color\">$number_or_percent</span> damage",
 				"<span color=\"$color\">$number_or_percent</span> damage",
 				std::stoi(increase_damage),
-				{{"number_or_percent", utils::print_modifier(increase_damage)}, {"color", increase_damage[0] == '-' ? "red" : "green"}}));
+				{{"number_or_percent", utils::print_modifier(increase_damage)}, {"color", increase_damage[0] == '-' ? "#f00" : "#0f0"}}));
 		}
 
 		if(!set_damage.empty()) {
@@ -457,7 +462,7 @@ bool attack_type::describe_modification(const config& cfg,std::string* descripti
 				"<span color=\"$color\">$number_or_percent</span> strike",
 				"<span color=\"$color\">$number_or_percent</span> strikes",
 				std::stoi(increase_attacks),
-				{{"number_or_percent", utils::print_modifier(increase_attacks)}, {"color", increase_attacks[0] == '-' ? "red" : "green"}}));
+				{{"number_or_percent", utils::print_modifier(increase_attacks)}, {"color", increase_attacks[0] == '-' ? "#f00" : "#0f0"}}));
 		}
 
 		if(!set_attacks.empty()) {
@@ -480,7 +485,7 @@ bool attack_type::describe_modification(const config& cfg,std::string* descripti
 			desc.emplace_back(VGETTEXT(
 				// TRANSLATORS: Current value for WML code increase_accuracy, documented in https://wiki.wesnoth.org/EffectWML
 				"<span color=\"$color\">$number_or_percent|%</span> accuracy",
-				{{"number_or_percent", utils::print_modifier(increase_accuracy)}, {"color", increase_accuracy[0] == '-' ? "red" : "green"}}));
+				{{"number_or_percent", utils::print_modifier(increase_accuracy)}, {"color", increase_accuracy[0] == '-' ? "#f00" : "#0f0"}}));
 		}
 
 		if(!set_parry.empty()) {
@@ -494,7 +499,7 @@ bool attack_type::describe_modification(const config& cfg,std::string* descripti
 			desc.emplace_back(VGETTEXT(
 				// TRANSLATORS: Current value for WML code increase_parry, documented in https://wiki.wesnoth.org/EffectWML
 				"<span color=\"$color\">$number_or_percent</span> parry",
-				{{"number_or_percent", utils::print_modifier(increase_parry)}, {"color", increase_parry[0] == '-' ? "red" : "green"}}));
+				{{"number_or_percent", utils::print_modifier(increase_parry)}, {"color", increase_parry[0] == '-' ? "#f00" : "#0f0"}}));
 		}
 
 		if(!set_movement.empty()) {
@@ -512,7 +517,7 @@ bool attack_type::describe_modification(const config& cfg,std::string* descripti
 				"<span color=\"$color\">$number_or_percent</span> movement point",
 				"<span color=\"$color\">$number_or_percent</span> movement points",
 				std::stoi(increase_movement),
-				{{"number_or_percent", utils::print_modifier(increase_movement)}, {"color", increase_movement[0] == '-' ? "red" : "green"}}));
+				{{"number_or_percent", utils::print_modifier(increase_movement)}, {"color", increase_movement[0] == '-' ? "#f00" : "#0f0"}}));
 		}
 
 		*description = utils::format_conjunct_list("", desc);

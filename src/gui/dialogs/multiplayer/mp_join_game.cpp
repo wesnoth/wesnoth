@@ -1,14 +1,15 @@
 /*
-   Copyright (C) 2008 - 2018 by the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2008 - 2021
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
@@ -22,6 +23,7 @@
 #include "game_config.hpp"
 #include "game_config_manager.hpp"
 #include "game_initialization/mp_game_utils.hpp"
+#include "game_initialization/multiplayer.hpp"
 #include "gettext.hpp"
 #include "gui/auxiliary/find_widget.hpp"
 #include "gui/core/timer.hpp"
@@ -86,7 +88,7 @@ bool mp_join_game::fetch_game_config()
 {
 	// Ask for the next scenario data, if applicable
 	if(!first_scenario_) {
-		network_connection_.send_data(config("load_next_scenario"));
+		mp::send_to_server(config("load_next_scenario"));
 	}
 
 	bool has_scenario_and_controllers = false;
@@ -241,8 +243,6 @@ void mp_join_game::pre_show(window& window)
 	//
 	chatbox& chat = find_widget<chatbox>(&window, "chat", false);
 
-	chat.set_wesnothd_connection(network_connection_);
-
 	chat.room_window_open(N_("this game"), true, false);
 	chat.active_window_changed();
 	chat.load_log(default_chat_log, false);
@@ -325,7 +325,7 @@ bool mp_join_game::show_flg_select(int side_num, bool first_time)
 		// TODO: the host cannot yet handle this and always uses the first side owned by that player.
 		change["side_num"] = side_num;
 
-		network_connection_.send_data(faction);
+		mp::send_to_server(faction);
 	}
 
 	return true;
@@ -355,7 +355,7 @@ void mp_join_game::generate_side_list()
 			std::map<std::string, string_map> data;
 			string_map item;
 
-			item["label"] = (formatter() << _("Team:") << " " << t_string::from_serialized(side["user_team_name"])).str();
+			item["label"] = t_string::from_serialized(side["user_team_name"]);
 			data.emplace("tree_view_node_label", item);
 
 			tree_view_node& team_node = tree.add_node("team_header", data);
@@ -572,11 +572,11 @@ void mp_join_game::post_show(window& window)
 
 		mp::level_to_gamestate(level_, state_);
 
-		mp_ui_alerts::game_has_begun();
+		mp::ui_alerts::game_has_begun();
 	} else if(observe_game_) {
-		network_connection_.send_data(config("observer_quit", config { "name", preferences::login() }));
+		mp::send_to_server(config("observer_quit", config { "name", preferences::login() }));
 	} else {
-		network_connection_.send_data(config("leave_game"));
+		mp::send_to_server(config("leave_game"));
 	}
 }
 

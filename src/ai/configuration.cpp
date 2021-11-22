@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2009 - 2018 by Yurii Chernyi <terraninfo@terraninfo.net>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2009 - 2021
+	by Yurii Chernyi <terraninfo@terraninfo.net>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 
@@ -25,6 +26,7 @@
 #include "serialization/parser.hpp"
 #include "serialization/preprocessor.hpp"
 #include "game_config_view.hpp"
+#include "deprecation.hpp"
 #include <vector>
 #include <deque>
 #include <set>
@@ -36,6 +38,9 @@ static lg::log_domain log_ai_configuration("ai/config");
 #define LOG_AI_CONFIGURATION LOG_STREAM(info, log_ai_configuration)
 #define WRN_AI_CONFIGURATION LOG_STREAM(warn, log_ai_configuration)
 #define ERR_AI_CONFIGURATION LOG_STREAM(err, log_ai_configuration)
+
+static lg::log_domain log_wml("wml");
+#define ERR_WML LOG_STREAM(err, log_wml)
 
 void configuration::init(const game_config_view &game_config)
 {
@@ -174,13 +179,6 @@ const config& configuration::get_ai_config_for(const std::string &id)
 	return cfg_it->second.cfg;
 }
 
-
-configuration::description_map configuration::ai_configurations_ = configuration::description_map();
-configuration::description_map configuration::era_ai_configurations_ = configuration::description_map();
-configuration::description_map configuration::mod_ai_configurations_ = configuration::description_map();
-config configuration::default_config_ = config();
-std::string configuration::default_ai_algorithm_;
-
 bool configuration::get_side_config_from_file(const std::string& file, config& cfg ){
 	try {
 		filesystem::scoped_istream stream = preprocess_file(filesystem::get_wml_location(file));
@@ -270,7 +268,7 @@ bool configuration::parse_side_config(side_number side, const config& original_c
 }
 
 static const std::set<std::string> non_aspect_attributes {"turns", "time_of_day", "engine", "ai_algorithm", "id", "description", "hidden", "mp_rank"};
-static const std::set<std::string> just_copy_tags {"engine", "stage", "aspect", "goal", "modify_ai"};
+static const std::set<std::string> just_copy_tags {"engine", "stage", "aspect", "goal", "modify_ai", "micro_ai"};
 static const std::set<std::string> old_goal_tags {"target", "target_location", "protect_unit", "protect_location"};
 
 void configuration::expand_simplified_aspects(side_number side, config &cfg) {
@@ -286,13 +284,17 @@ void configuration::expand_simplified_aspects(side_number side, config &cfg) {
 		}
 		if (aiparam.has_attribute("engine")) {
 			engine = aiparam["engine"].str();
+			if(engine == "fai") {
+				deprecated_message("FormulaAI", DEP_LEVEL::FOR_REMOVAL, "1.17", "FormulaAI is slated to be removed. Use equivalent Lua AIs instead");
+			}
 		}
 		if (aiparam.has_attribute("ai_algorithm")) {
 			if (algorithm.empty()) {
 				algorithm = aiparam["ai_algorithm"].str();
 				base_config = get_ai_config_for(algorithm);
 			} else if(algorithm != aiparam["ai_algorithm"]) {
-				lg::wml_error() << "side " << side << " has two [ai] tags with contradictory ai_algorithm - the first one will take precedence.\n";
+				lg::log_to_chat() << "side " << side << " has two [ai] tags with contradictory ai_algorithm - the first one will take precedence.\n";
+				ERR_WML << "side " << side << " has two [ai] tags with contradictory ai_algorithm - the first one will take precedence.";
 			}
 		}
 		std::deque<std::pair<std::string, config>> facet_configs;
@@ -312,6 +314,12 @@ void configuration::expand_simplified_aspects(side_number side, config &cfg) {
 			if (just_copy_tags.count(child.key)) {
 				// These aren't simplified, so just copy over unchanged.
 				parsed_config.add_child(child.key, child.cfg);
+				if(
+				   (child.key != "modify_ai" && child.cfg["engine"] == "fai") ||
+				   (child.key == "modify_ai" && child.cfg.all_children_count() > 0 && child.cfg.all_children_range().front().cfg["engine"] == "fai")
+				) {
+					deprecated_message("FormulaAI", DEP_LEVEL::FOR_REMOVAL, "1.17", "FormulaAI is slated to be removed. Use equivalent Lua AIs instead");
+				}
 				continue;
 			} else if(old_goal_tags.count(child.key)) {
 				// A simplified goal, mainly kept around just for backwards compatibility.
@@ -327,6 +335,7 @@ void configuration::expand_simplified_aspects(side_number side, config &cfg) {
 					goal_config["value"] = criteria_config["value"];
 					criteria_config.remove_attribute("value");
 				}
+				goal_config.add_child("criteria", criteria_config);
 				parsed_config.add_child("goal", std::move(goal_config));
 				continue;
 			}
@@ -369,6 +378,7 @@ void configuration::expand_simplified_aspects(side_number side, config &cfg) {
 	// Support old recruitment aspect syntax
 	for(auto& child : parsed_config.child_range("aspect")) {
 		if(child["id"] == "recruitment") {
+			deprecated_message("AI recruitment aspect", DEP_LEVEL::INDEFINITE, "", "Use the recruitment_instructions aspect instead");
 			child["id"] = "recruitment_instructions";
 		}
 	}

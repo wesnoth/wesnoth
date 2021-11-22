@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2003 - 2021
+	by David White <dave@whitevine.net>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #include "tooltips.hpp"
@@ -131,7 +132,7 @@ void clear_tooltips(const SDL_Rect& rect)
 			if (i==current_tooltip) {
 				clear_tooltip();
 			}
-			tips.erase(i++);
+			i = tips.erase(i);
 			current_tooltip = tips.end();
 		} else {
 			++i;
@@ -174,13 +175,7 @@ void remove_tooltip(int id)
 
 int add_tooltip(const SDL_Rect& rect, const std::string& message, const std::string& action, bool use_markup, const surface& foreground)
 {
-	for(std::map<int, tooltip>::iterator it = tips.begin(); it != tips.end();) {
-		if(sdl::rects_overlap(it->second.rect,rect)) {
-			tips.erase(it++);
-		} else {
-			++it;
-		}
-	}
+	clear_tooltips(rect);
 
 	int id = tooltip_id++;
 

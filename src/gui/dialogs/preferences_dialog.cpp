@@ -1,16 +1,17 @@
 /*
-   Copyright (C) 2011, 2015 by Iris Morelle <shadowm2006@gmail.com>
-   Copyright (C) 2016 - 2018 by Charles Dang <exodia339gmail.com>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2016 - 2021
+	by Charles Dang <exodia339gmail.com>
+	Copyright (C) 2011, 2015 by Iris Morelle <shadowm2006@gmail.com>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
@@ -64,13 +65,6 @@ namespace gui2::dialogs
 {
 namespace
 {
-// Helper function to get the main grid in each row of the advanced section
-// listbox, which contains the value and setter widgets.
-grid* get_advanced_row_grid(listbox& list, const int selected_row)
-{
-	return dynamic_cast<grid*>(list.get_row_grid(selected_row)->find("pref_main_grid", false));
-}
-
 template<typename W>
 void disable_widget_on_toggle(window& window, widget& w, const std::string& id)
 {
@@ -88,7 +82,7 @@ int index_in_pager_range(const int first, const stacked_widget& pager)
 template<bool(*fptr)(bool)>
 void sound_toggle_on_change(window& window, const std::string& id_to_toggle, widget& w)
 {
-	(*fptr)(dynamic_cast<selectable_item&>(w).get_value_bool());
+	std::invoke(fptr, dynamic_cast<selectable_item&>(w).get_value_bool());
 
 	// Toggle the corresponding slider.
 	disable_widget_on_toggle<slider>(window, w, id_to_toggle);
@@ -98,7 +92,7 @@ void sound_toggle_on_change(window& window, const std::string& id_to_toggle, wid
 template<void(*fptr)(int)>
 void volume_setter_on_change(widget& w)
 {
-	(*fptr)(dynamic_cast<integer_selector&>(w).get_value());
+	std::invoke(fptr, dynamic_cast<integer_selector&>(w).get_value());
 }
 
 } // end anon namespace
@@ -453,6 +447,12 @@ void preferences_dialog::post_build(window& window)
 	register_bool("fps_limiter", true,
 		[]() { return draw_delay() != 0; }, [](bool v) { set_draw_delay(v ? -1 : 0); });
 
+	/* VSYNC */
+	register_bool("vsync", true, vsync, set_vsync);
+	if(!CVideo::get_singleton().supports_vsync()) {
+		find_widget<widget>(&window, "vsync", false).set_visible(gui2::widget::visibility::invisible);
+	}
+
 	/* SELECT THEME */
 	connect_signal_mouse_left_click(
 			find_widget<button>(&window, "choose_theme", false),
@@ -498,14 +498,14 @@ void preferences_dialog::post_build(window& window)
 		whisper_friends_only, set_whisper_friends_only);
 
 	/* LOBBY JOIN NOTIFICATIONS */
-	lobby_joins_group.add_member(find_widget<toggle_button>(&window, "lobby_joins_none", false, true), SHOW_NONE);
-	lobby_joins_group.add_member(find_widget<toggle_button>(&window, "lobby_joins_friends", false, true), SHOW_FRIENDS);
-	lobby_joins_group.add_member(find_widget<toggle_button>(&window, "lobby_joins_all", false, true), SHOW_ALL);
+	lobby_joins_group.add_member(find_widget<toggle_button>(&window, "lobby_joins_none", false, true), lobby_joins::show_none);
+	lobby_joins_group.add_member(find_widget<toggle_button>(&window, "lobby_joins_friends", false, true), lobby_joins::show_friends);
+	lobby_joins_group.add_member(find_widget<toggle_button>(&window, "lobby_joins_all", false, true), lobby_joins::show_all);
 
-	lobby_joins_group.set_member_states(static_cast<LOBBY_JOINS>(lobby_joins()));
+	lobby_joins_group.set_member_states(get_lobby_joins());
 
-	lobby_joins_group.set_callback_on_value_change([&](widget&) {
-		_set_lobby_joins(lobby_joins_group.get_active_member_value());
+	lobby_joins_group.set_callback_on_value_change([&](widget&, const lobby_joins val) {
+		_set_lobby_joins(val);
 	});
 
 	/* FRIENDS LIST */
@@ -569,13 +569,7 @@ void preferences_dialog::post_build(window& window)
 		const std::string& pref_name = option.field;
 
 		row_data["pref_name"]["label"] = option.name;
-		advanced.add_row(row_data);
-
-		const int this_row = advanced.get_item_count() - 1;
-
-		// Get the main grid from each row
-		grid* main_grid = get_advanced_row_grid(advanced, this_row);
-		assert(main_grid);
+		grid* main_grid = &advanced.add_row(row_data);
 
 		grid& details_grid = find_widget<grid>(main_grid, "prefs_setter_grid", false);
 		details_grid.set_visible(widget::visibility::invisible);
@@ -761,8 +755,8 @@ listbox& preferences_dialog::setup_hotkey_list()
 	t_string& row_is_g_markup = row_data["lbl_is_game"]["use_markup"];
 	t_string& row_is_e        = row_data["lbl_is_editor"]["label"];
 	t_string& row_is_e_markup = row_data["lbl_is_editor"]["use_markup"];
-	t_string& row_is_t        = row_data["lbl_is_titlescreen"]["label"];
-	t_string& row_is_t_markup = row_data["lbl_is_titlescreen"]["use_markup"];
+	t_string& row_is_m        = row_data["lbl_is_mainmenu"]["label"];
+	t_string& row_is_m_markup = row_data["lbl_is_mainmenu"]["use_markup"];
 
 	listbox& hotkey_list = find_widget<listbox>(get_window(), "list_hotkeys", false);
 
@@ -772,7 +766,7 @@ listbox& preferences_dialog::setup_hotkey_list()
 	// These translated initials should match those used in data/gui/window/preferences/02_hotkeys.cfg
 	std::string text_game_feature_on = "<span color='#0f0'>" + _("game_hotkeys^G") + "</span>";
 	std::string text_editor_feature_on = "<span color='#0f0'>" + _("editor_hotkeys^E") + "</span>";
-	std::string text_title_feature_on = "<span color='#0f0'>" + _("titlescreen_hotkeys^T") + "</span>";
+	std::string text_mainmenu_feature_on = "<span color='#0f0'>" + _("mainmenu_hotkeys^M") + "</span>";
 
 	for(const auto& hotkey_item : hotkey::get_hotkey_commands()) {
 		if(hotkey_item.hidden) {
@@ -793,8 +787,8 @@ listbox& preferences_dialog::setup_hotkey_list()
 		row_is_g_markup = "true";
 		row_is_e = hotkey_item.scope[hotkey::SCOPE_EDITOR]    ? text_editor_feature_on : "";
 		row_is_e_markup = "true";
-		row_is_t = hotkey_item.scope[hotkey::SCOPE_MAIN_MENU] ? text_title_feature_on : "";
-		row_is_t_markup = "true";
+		row_is_m = hotkey_item.scope[hotkey::SCOPE_MAIN_MENU] ? text_mainmenu_feature_on : "";
+		row_is_m_markup = "true";
 
 		hotkey_list.add_row(row_data);
 	}
@@ -956,12 +950,12 @@ void preferences_dialog::on_advanced_prefs_list_select(listbox& list)
 	const bool has_description = !pref.description.empty();
 
 	if(has_description || (pref.type != avp::avd_type::SPECIAL && pref.type != avp::avd_type::TOGGLE)) {
-		find_widget<widget>(get_advanced_row_grid(list, selected_row), "prefs_setter_grid", false)
+		find_widget<widget>(list.get_row_grid(selected_row), "prefs_setter_grid", false)
 			.set_visible(widget::visibility::visible);
 	}
 
 	if(last_selected_item_ != selected_row) {
-		find_widget<widget>(get_advanced_row_grid(list, last_selected_item_), "prefs_setter_grid", false)
+		find_widget<widget>(list.get_row_grid(last_selected_item_), "prefs_setter_grid", false)
 			.set_visible(widget::visibility::invisible);
 
 		last_selected_item_ = selected_row;

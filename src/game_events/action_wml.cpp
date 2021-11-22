@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2003 - 2021
+	by David White <dave@whitevine.net>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 /**
@@ -338,6 +339,7 @@ WML_HANDLER_FUNCTION(do_command,, cfg)
 			/*show*/ true,
 			/*error_handler*/ &on_replay_error
 		);
+		ai::manager::get_singleton().raise_gamestate_changed();
 	}
 }
 
@@ -612,7 +614,8 @@ WML_HANDLER_FUNCTION(replace_map,, cfg)
 		}
 	} catch(const incorrect_map_format_error&) {
 		const std::string log_map_name = cfg["map"].empty() ? cfg["map_file"] : std::string("from inline data");
-		lg::wml_error() << "replace_map: Unable to load map " << log_map_name << std::endl;
+		lg::log_to_chat() << "replace_map: Unable to load map " << log_map_name << '\n';
+		ERR_WML << "replace_map: Unable to load map " << log_map_name;
 		return;
 	} catch(const wml_exception& e) {
 		e.show();
@@ -622,7 +625,8 @@ WML_HANDLER_FUNCTION(replace_map,, cfg)
 	if (map.total_width() > game_map->total_width()
 	|| map.total_height() > game_map->total_height()) {
 		if (!cfg["expand"].to_bool()) {
-			lg::wml_error() << "replace_map: Map dimension(s) increase but expand is not set" << std::endl;
+			lg::log_to_chat() << "replace_map: Map dimension(s) increase but expand is not set\n";
+			ERR_WML << "replace_map: Map dimension(s) increase but expand is not set";
 			return;
 		}
 	}
@@ -630,7 +634,8 @@ WML_HANDLER_FUNCTION(replace_map,, cfg)
 	if (map.total_width() < game_map->total_width()
 	|| map.total_height() < game_map->total_height()) {
 		if (!cfg["shrink"].to_bool()) {
-			lg::wml_error() << "replace_map: Map dimension(s) decrease but shrink is not set" << std::endl;
+			lg::log_to_chat() << "replace_map: Map dimension(s) decrease but shrink is not set\n";
+			ERR_WML << "replace_map: Map dimension(s) decrease but shrink is not set";
 			return;
 		}
 	}
@@ -638,7 +643,8 @@ WML_HANDLER_FUNCTION(replace_map,, cfg)
 	std::optional<std::string> errmsg = resources::gameboard->replace_map(map);
 
 	if (errmsg) {
-		lg::wml_error() << *errmsg << std::endl;
+		lg::log_to_chat() << *errmsg << '\n';
+		ERR_WML << *errmsg;
 	}
 
 	display::get_singleton()->reload_map();

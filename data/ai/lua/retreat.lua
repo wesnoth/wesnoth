@@ -2,7 +2,6 @@
 Functions to support the retreat of injured units
 ]=]
 
-local H = wesnoth.require "helper"
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
 local BC = wesnoth.require "ai/lua/battle_calcs.lua"
 local LS = wesnoth.require "location_set"
@@ -121,7 +120,7 @@ function retreat_functions.get_healing_locations(possible_healers)
                 end
             end
             if heal_amount + cure > 0 then
-                for x, y in H.adjacent_tiles(u.x, u.y) do
+                for x, y in wesnoth.current.map:iter_adjacent(u) do
                     local old_values = healing_locs:get(x, y) or {0, 0}
                     local best_heal = math.max(old_values[0] or heal_amount)
                     local best_cure = math.max(old_values[1] or cure)

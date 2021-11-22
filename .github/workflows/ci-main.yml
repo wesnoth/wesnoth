@@ -14,7 +14,7 @@ jobs:
 
     name: Discord Notification
 
-    needs: [ubuntu-2004-scons-gcc-release-lto, ubuntu-2004-scons-clang-debug, ubuntu-2004-cmake-clang-release, ubuntu-2004-cmake-gcc-debug, steam-runtime, mingw, flatpak, translations, macos-intel-master-release, macos-intel-master-debug, windows-release, windows-debug]
+    needs: [ubuntu-2004-scons-gcc-release-lto, ubuntu-2004-cmake-clang-debug, steam-runtime, mingw, flatpak, translations, macos-intel-debug, macos-arm-release, windows-release, windows-debug]
     if: always()
 
     steps:
@@ -51,37 +51,7 @@ jobs:
           export CACHE_DIR=/home/wesnoth-CI/build
           ./.github/workflows/ci-scripts/ubuntu.sh
 
-  ubuntu-2004-scons-clang-debug:
-    runs-on: ubuntu-20.04
-
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          submodules: "recursive"
-
-      - name: Ubuntu 20.04
-        run: |
-          export BRANCH=master
-          export IMAGE=2004
-          export NLS=false
-          export TOOL=scons
-          export CC=clang
-          export CXX=clang++
-          export CXX_STD=17
-          export CFG=debug
-          export LTO=false
-          export CACHE_DIR=/home/wesnoth-CI/build
-          ./.github/workflows/ci-scripts/ubuntu.sh master
-
-      - name: Upload
-        uses: actions/upload-artifact@v2
-        with:
-          name: Ubuntu-Clang-Debug
-          path: |
-            ~/build-cache/wesnoth
-            ~/build-cache/wesnothd
-
-  ubuntu-2004-cmake-clang-release:
+  ubuntu-2004-cmake-clang-debug:
     runs-on: ubuntu-20.04
 
     steps:
@@ -98,40 +68,11 @@ jobs:
           export CC=clang
           export CXX=clang++
           export CXX_STD=17
-          export CFG=release
-          export LTO=false
-          export CACHE_DIR=/home/wesnoth-CI/build
-          ./.github/workflows/ci-scripts/ubuntu.sh
-
-  ubuntu-2004-cmake-gcc-debug:
-    runs-on: ubuntu-20.04
-
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          submodules: "recursive"
-
-      - name: Ubuntu 20.04
-        run: |
-          export BRANCH=master
-          export IMAGE=2004
-          export NLS=false
-          export TOOL=cmake
-          export CC=gcc
-          export CXX=g++
-          export CXX_STD=17
           export CFG=debug
           export LTO=false
           export CACHE_DIR=/home/wesnoth-CI/build
           ./.github/workflows/ci-scripts/ubuntu.sh
 
-      - name: Upload
-        uses: actions/upload-artifact@v2
-        with:
-          name: Ubuntu-GCC-Debug
-          path: |
-            ~/build-cache/wesnoth
-            ~/build-cache/wesnothd
 
   steam-runtime:
     runs-on: ubuntu-20.04
@@ -155,6 +96,13 @@ jobs:
           export CACHE_DIR=/home/wesnoth-CI/build
           ./.github/workflows/ci-scripts/ubuntu.sh
 
+      - name: Upload
+        uses: actions/upload-artifact@v2
+        with:
+          name: Steam-Linux
+          path: |
+            ~/steambuild-*.tar
+
   mingw:
     runs-on: ubuntu-20.04
 
@@ -176,6 +124,14 @@ jobs:
           export LTO=false
           export CACHE_DIR=/home/wesnoth-CI/build
           ./.github/workflows/ci-scripts/ubuntu.sh
+
+      - name: Upload
+        uses: actions/upload-artifact@v2
+        with:
+          name: Source-And-Windows-Installer
+          path: |
+            ~/wesnoth-*.tar.bz2
+            ~/wesnoth-*-win64.exe
 
   flatpak:
     runs-on: ubuntu-20.04
@@ -221,21 +177,7 @@ jobs:
           export CACHE_DIR=/home/wesnoth-CI/build
           ./.github/workflows/ci-scripts/ubuntu.sh
 
-  macos-intel-master-release:
-    runs-on: macos-10.15
-
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          submodules: "recursive"
-
-      - name: macOS Intel Release
-        run: |
-          export CFG=Release
-          export CACHE_DIR=~/build-cache
-          ./.github/workflows/ci-scripts/macos.sh
-
-  macos-intel-master-debug:
+  macos-intel-debug:
     runs-on: macos-10.15
 
     steps:
@@ -248,50 +190,20 @@ jobs:
           export CFG=Debug
           export CACHE_DIR=~/build-cache
           ./.github/workflows/ci-scripts/macos.sh
-      - name: Upload
-        uses: actions/upload-artifact@v2
+
+  macos-arm-release:
+    runs-on: macos-11.0
+
+    steps:
+      - uses: actions/checkout@v2
         with:
-          name: macOS-Intel-Debug
-          path: |
-            ~/work/wesnoth/wesnoth/projectfiles/Xcode/Wesnoth_Debug.dmg
+          submodules: "recursive"
 
-# enabling both intel and arm macOS jobs would tend to confuse the github actions CI
-# sometimes it would succeed, other times it would fail at random with extra entries for macOS jobs that didn't exist in this configuration file
-# try re-enabling at some point to see if this got fixed in the mean time
-
-#  macos-arm-master-release:
-#    runs-on: macos-11.0
-#
-#    steps:
-#      - uses: actions/checkout@v2
-#        with:
-#          submodules: "recursive"
-#
-#      - name: macOS ARM Release
-#        run: |
-#          export CFG=Release
-#          export CACHE_DIR=~/build-cache
-#          ./.github/workflows/ci-scripts/macos.sh
-
-#  macos-arm-master-debug:
-#    runs-on: macos-11.0
-#
-#    steps:
-#      - uses: actions/checkout@v2
-#        with:
-#          submodules: "recursive"
-#
-#      - name: macOS ARM Debug
-#        run: |
-#          export CFG=Debug
-#          export CACHE_DIR=~/build-cache
-#          ./.github/workflows/ci-scripts/macos.sh
-#      - name: Upload
-#        uses: actions/upload-artifact@v2
-#        with:
-#          name: macOS-ARM-Debug
-#          path: |
-#            ~/work/wesnoth/wesnoth/projectfiles/Xcode/Wesnoth_Debug.dmg
+      - name: macOS ARM Release
+        run: |
+          export CFG=Release
+          export CACHE_DIR=~/build-cache
+          ./.github/workflows/ci-scripts/macos.sh
 
 # in the case of needing to recompile the vcpkg-created Windows dependencies, increment the cache-name and key for both Release and Debug
 # this will create a brand new cache and recompile the vcpkg dependencies from scratch
@@ -304,13 +216,13 @@ jobs:
           submodules: "recursive"
 
       - name: Cache object files
-        id: windows-master-N007
+        id: windows-N009
         uses: actions/cache@v2
         with:
           path: |
             D:/a/wesnoth/vcpkg
             D:/a/wesnoth/wesnoth/vcpkg_installed
-          key: windows-master-N008
+          key: windows-N009
 
       - name: Add msbuild to PATH
         uses: microsoft/setup-msbuild@v1.0.2
@@ -319,6 +231,8 @@ jobs:
         shell: cmd
         run: |
           git clone --depth=1 https://github.com/microsoft/vcpkg.git D:/a/wesnoth/vcpkg
+          cd D:/a/wesnoth/vcpkg
+          git checkout cbc22a396c88d098247fe7f79f0913a952e1f77d
           D:/a/wesnoth/vcpkg/bootstrap-vcpkg.bat
 
       - name: Setup cmake
@@ -340,16 +254,6 @@ jobs:
           rmdir /s /q D:\a\wesnoth\vcpkg\buildtrees
           MSBuild.exe wesnoth.sln -p:Configuration=Debug
 
-      - name: Upload
-        uses: actions/upload-artifact@v2
-        with:
-          name: Windows-Debug
-          path: |
-            D:/a/wesnoth/wesnoth/Debug/wesnoth.exe
-            D:/a/wesnoth/wesnoth/Debug/wesnothd.exe
-            D:/a/wesnoth/wesnoth/Debug/wesnoth.pdb
-            D:/a/wesnoth/wesnoth/Debug/wesnothd.pdb
-
   windows-release:
     runs-on: windows-2019
 
@@ -359,13 +263,13 @@ jobs:
           submodules: "recursive"
 
       - name: Cache object files
-        id: windows-master-N008
+        id: windows-N009
         uses: actions/cache@v2
         with:
           path: |
             D:/a/wesnoth/vcpkg
             D:/a/wesnoth/wesnoth/vcpkg_installed
-          key: windows-master-N007
+          key: windows-N009
 
       - name: Add msbuild to PATH
         uses: microsoft/setup-msbuild@v1.0.2
@@ -374,6 +278,8 @@ jobs:
         shell: cmd
         run: |
           git clone --depth=1 https://github.com/microsoft/vcpkg.git D:/a/wesnoth/vcpkg
+          cd D:/a/wesnoth/vcpkg
+          git checkout cbc22a396c88d098247fe7f79f0913a952e1f77d
           D:/a/wesnoth/vcpkg/bootstrap-vcpkg.bat
 
       - name: Setup cmake

@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2021-06-23 11:42-0400\n"
-"PO-Revision-Date: 2021-06-09 21:20+0200\n"
+"PO-Revision-Date: 2021-10-31 14:13+0100\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
@@ -63,10 +63,9 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:22
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:61
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:91
-#, fuzzy
-#| msgid "This unit is capable of basic healing."
 msgid "This unit is capable of basic healing and slowing dehydration."
-msgstr "Tato jednotka dokáže poskytnout základní léčení."
+msgstr ""
+"Tato jednotka dokáže poskytnout základní léčení a zpomalit dehydrataci."
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:40
@@ -132,16 +131,12 @@ msgstr ""
 
 #. [heals]
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:97
-#, fuzzy
-#| msgid ""
-#| "This unit is capable of healing those around it, and curing them of "
-#| "poison."
 msgid ""
 "This unit is capable of healing those around it, slowing dehydration, and "
 "curing them of poison."
 msgstr ""
-"Tato jednotka je schopna jednak léčit, ale také uzdravovat okolní jednotky "
-"z otravy."
+"Tato jednotka je schopna ty okolo sebe jednak léčit, ale také u nich "
+"zpomalit dehydrataci a uzdravit je z otravy."
 
 #. [trait]: id=healthy
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:11
@@ -631,7 +626,7 @@ msgstr ""
 "a vlož jméno. Tato jména musí začínat písmenem a mohou obsahovat čísla "
 "a podtržítka.\n"
 "\n"
-"Do mapy může být přidáno více než devět týmů kliknutím na „Přidat” "
+"Do mapy může být přidáno více než devět týmů kliknutím na „Přidat“ "
 "a vložením čísla, například „10“. Uživatelské rozhraní to automaticky "
 "zobrazí jako „Hráč 10“.\n"
 "\n"
@@ -639,7 +634,7 @@ msgstr ""
 "<italic>text='location_id='</italic> standardního filtru oblastí. Též "
 "výchozí polohy hráčů lze získat použitím <italic>text='location_id=1'</"
 "italic>, <italic>text='location_id=2'</italic>, atd. – použij pouze číslo "
-"a nepřidávej před něj „Hráč ”.\n"
+"a nepřidávej před něj „Hráč “.\n"
 "\n"
 "<bold>text='Klávesové modifikátory'</bold>\n"
 "\n"
@@ -971,7 +966,7 @@ msgstr ""
 "stránku pro každý nástroj), možnosti nástrojů a <ref>dst='editor_palette' "
 "text='paletu'</ref>.\n"
 "\n"
-"Když bude mapa uložena pomocí „Uložit mapu jako” do výchozího adresáře, lze "
+"Když bude mapa uložena pomocí „Uložit mapu jako“ do výchozího adresáře, lze "
 "výslednou mapu najít pod typem hry „Vlastní mapy“ v dialogovém okně „Vytvoř "
 "hru“ pro hru více hráčů."
 
@@ -1024,11 +1019,11 @@ msgstr ""
 "Abys začal novou mapu v režimu scénáře, vyber „Nový scénář“ z menu "
 "„Soubor“.\n"
 "\n"
-"Pokud už upravuješ mapu v režimu terénu, použij „Uložit scénář jako” z menu "
+"Pokud už upravuješ mapu v režimu terénu, použij „Uložit scénář jako“ z menu "
 "„Soubor“. To přepne do režimu scénáře.\n"
 "\n"
 "Pro načtení mapy, která byla vytvořena v editoru scénáře, použij „Načíst "
-"mapu“ z menu „Soubor” a vyber soubor .cfg (nikoli soubor .map)."
+"mapu“ z menu „Soubor“ a vyber soubor .cfg (nikoli soubor .map)."
 
 #. [topic]: id=..editor_mode_scenario
 #: data/core/editor/help.cfg:285
@@ -1139,7 +1134,7 @@ msgstr ""
 "<header>text='Pro Wesnoth 1.14'</header>\n"
 "\n"
 "• _main.cfg:\n"
-"  ◦ použij “{./scenarios}” pro vložení adresáře „scenarios“\n"
+"  ◦ použij „{./scenarios}“ pro vložení adresáře „scenarios“\n"
 "• maps/map_from_01.cfg\n"
 "  ◦ toto je soubor vytvořený editorem scénáře\n"
 "• scenarios/01_Forest.cfg, místo úvodní značky [scenario] vlož tyto čtyři "
@@ -1699,28 +1694,28 @@ msgstr ""
 "    • Aldril: Město ležící v Zátoce perel.\n"
 "    • Přístav Temná Voda: Město ležící jižně od Zátoky perel.\n"
 "    • Carcyn: Leží mezi Šedým hvozdem a Vekou řekou.\n"
-"    • Dan Tonk: Největší město Wesnothu, ležící v centru země severozápadně "
+"    • Dan’Tonk: Největší město Wesnothu, ležící v centru země severozápadně "
 "od Weldynu.\n"
 "    • Soradok: Nejseverněji ležící pevnost Wesnothu, ovládající soutok řeky "
 "Weldyn a Velké řeky.\n"
 "    • Pevnost Tahn: Nejjižněji položená hraniční pevnost ovládající cestu "
 "z jihu na sever, která vede přes řeku Aethen.\n"
-"    • Tath: Důležité opevněné město severně od Dan Tonk, které pomáhá "
+"    • Tath: Důležité opevněné město severně od Dan’Tonku, které pomáhá "
 "kontrolovat divočinu na východ od Hnědých pahorků a severně od brodu "
 "u Abezu.\n"
 "\n"
 "<header>text='Významné krajinné prvky:'</header>\n"
-"    • Hora gryfonů: Domov legendárních gryfonů.\n"
+"    • Hora gryfů: Domov legendárních gryfů.\n"
 "    • brod u Abezu: Mělká část Velké řeky, obvykle kontrolovaná wesnothskou "
 "armádou.\n"
 "    • řeka Weldyn: Rameno Velké řeky, které se stáčí na jih.\n"
-"    • Velká centrální nížina: Oblast ohraničená Weldynem, městem Dan Tonk "
+"    • Velká centrální nížina: Oblast ohraničená Weldynem, městem Dan’Tonk "
 "a pevností Tahn. Tato plocha je obilnicí Wesnothu a žije tu také nejvíc jeho "
 "obyvatel.\n"
 "    • Dulatuské pahorky: Na této zvlněné ploše hraničící s Velkou centrální "
 "nížinou je soustředěna velká část zemědělství Wesnothu.\n"
-"    • Hnědé pahorky: Pustina obklopující Horu gryfonů. Není moc osídlená "
-"a tu a tam je i dost nebezpečná.\n"
+"    • Hnědé pahorky: Pustina obklopující Horu gryfů. Není moc osídlená a tu "
+"a tam je i dost nebezpečná.\n"
 "    • Nížina koní: Zvlněná nížina vyvstávající jižně od Velké řeky, "
 "ohraničená Glynovým lesem na západě a řekou Weldyn na východě. Jižní část "
 "splývá s Centrální nížinou. Domov mocných klanů. Jsou tu chováni nejlepší "
@@ -2079,7 +2074,7 @@ msgstr ""
 "strategická fantasy hra, mezi současnými strategickými hrami poněkud "
 "neobvyklá. Zatímco ostatní hry usilují o složitost, <italic>text='Bitva "
 "o Wesnoth'</italic> se snaží o jednoduchost jak pravidel, tak i hraní "
-"samého. To ji však nečiní snadnou — na těchto jednoduchých pravidlech je "
+"samého. To ji však nečiní snadnou – na těchto jednoduchých pravidlech je "
 "možné vystavět nespočet strategií, takže je lehké naučit se ji hrát, avšak "
 "obtížné si ji podrobit.\n"
 "\n"
@@ -2117,19 +2112,19 @@ msgid ""
 msgstr ""
 "Hra se odehrává na šestiúhelníkových herních polích, kde vaše jednotky "
 "bojují proti jednotkám, které ovládá počítač, kamarádům, se kterými se "
-"střídáte na jednom počítači (\"horké křeslo'), ostatním hráčům na síti nebo "
+"střídáte na jednom počítači (horké křeslo), ostatním hráčům na síti nebo "
 "hráčům kdekoliv na světě připojeným přes internet.\n"
 "\n"
 "Každá taková bitva se nazývá <italic>text='scénář'</italic>. Více scénářů je "
 "možné zřetězit do <italic>text='tažení'</italic>. Kromě tažení, která se "
-"dodávají s hrou podporuje Bitva o Wesnoth i obsah vytvořený hráči. Server s "
-"doplňky obsahuje stovky map, tažení, ér, frakcí a dalších zdrojů.\n"
+"dodávají s hrou, podporuje Bitva o Wesnoth i obsah vytvořený hráči. Server "
+"s doplňky obsahuje stovky map, tažení, ér, frakcí a dalších zdrojů.\n"
 "\n"
-"Hra z velké části staví na textovém jazyku Wesnoth Markup Language (WML), "
+"Hra z velké části staví na textovém jazyku Wesnoth Markup Language (WML), "
 "který umožňuje uživatelům vytvářet jejich vlastní nový obsah, plně vybavený "
-"Editor map a scénářů, které umožňují kompletní návrh vlastního bojiště.\n"
+"Editor map a scénářů, které umožňují kompletní návrh vlastního bojiště.\n"
 "\n"
-"Projekt <italic>text='Bitva o Wesnoth'</italic> započal v roce 2003 a od té "
+"Projekt <italic>text='Bitva o Wesnoth'</italic> započal v roce 2003 a od té "
 "doby se na něm podílelo nepřeberné množství dobrovolníků."
 
 #. [topic]: id=..units
@@ -2663,7 +2658,7 @@ msgstr ""
 "jednotky (např. <ref>dst='unit_Mage' text='mágové'</ref>) mohou mít čtyři. "
 "Jakmile jednotka dosáhne své maximální úrovně, může získat "
 "<italic>text='schopnost dalšího rozvoje'</italic> (<italic>text='After "
-"Maximum Level Advancement'</italic> — AMLA). AMLA bude měnit nějaké "
+"Maximum Level Advancement'</italic> – AMLA). AMLA bude měnit nějaké "
 "vlastnosti jednotky pokaždé, kdy jednotka dosáhne počtu zkušenostních bodů "
 "nutných pro získání další úrovně, ale jednotka zůstane na stejné úrovni. "
 "Obvykle AMLA ovlivní jednotku tak, že zvýší maximální počet životů o 3 a "
@@ -2697,7 +2692,7 @@ msgstr ""
 "Každá jednotka má jistý počet pohybových bodů, které jsou použity pro pohyb "
 "na nové políčko a závisí na terénu jednotlivých políček. Například pastviny "
 "téměř vždy stojí při vstupu 1 pohybový bod. Přesný počet bodů vyčerpaných "
-"při vstupu na políčko závisí na typu jednotky — elfské jednotky vyčerpají "
+"při vstupu na políčko závisí na typu jednotky – elfské jednotky vyčerpají "
 "při pohybu v lese 1 pohybový bod, většina lidí a obrů vyčerpá 2, zatímco "
 "jezdci 3 body. Kolik bodů jednotlivé jednotky požadují při vstupu na "
 "příslušný terén zjistíte, když kliknete pravým tlačítkem myši na jednotku, "
@@ -2751,8 +2746,8 @@ msgstr ""
 "\n"
 "\n"
 "Další věcí, kterou je třeba mít při pohybu na paměti, je "
-"<italic>text='oblast kontroly'</italic>. Každá jednotka — kromě jednotek na "
-"úrovni 0 — vytváří oblast kontroly na políčkách, které ji bezprostředně "
+"<italic>text='oblast kontroly'</italic>. Každá jednotka – kromě jednotek na "
+"úrovni 0 – vytváří oblast kontroly na políčkách, které ji bezprostředně "
 "obklopují a jakmile na ně vstoupí jakákoliv cizí jednotka, ihned ukončí svůj "
 "pohyb. Naučit se používat tyto oblasti pro svůj prospěch je důležitou částí "
 "Wesnothu, protože pouze <ref>dst='ability_skirmisherskirmisher' "
@@ -2814,7 +2809,7 @@ msgstr ""
 "na odstranění nemají vliv oblasti kontroly ani cizí jednotky.\n"
 "\n"
 "Běžně je možné vrátit pohyb jednotky, pokud pokud nedošlo k akci vyžadující "
-"náhodný výsledek — např. boj, verbování. Poznávání terénu skrytého zahalením "
+"náhodný výsledek – např. boj, verbování. Poznávání terénu skrytého zahalením "
 "tmou či mlhou také znemožňuje vracení hry. Můžete však zapnout volbu "
 "„<bold>text='Pozdrž překreslování mlhy'</bold>“ v menu „<bold>text='Akce'</"
 "bold>“. Tato volba způsobí, že pohyb jednotek neodstraňuje zahalení tmou a "
@@ -3171,7 +3166,7 @@ msgstr ""
 "nejsi ostřílený hráč, je daleko pravděpodobnější, že tvá porážka byla "
 "způsobena jednou z <italic>text='obvyklých'</italic> chyb uvedených výše "
 "a nesvědčí o chybě v tažení. Avšak pokud si stejně myslíš, že jsi objevil "
-"chybu, tak ji každopádně nahlaš!"
+"chybu, tak ji každopádně nahlas!"
 
 #. [topic]: id=whylost
 #: data/core/help.cfg:337
@@ -3377,10 +3372,10 @@ msgstr ""
 "\n"
 "\n"
 "Odolnost funguje velmi jednoduše: pokud má jednotka 40% odolnost vůči danému "
-"typu poškození, pak při tomto typu útoku utrpí o 40% menší poškození. Je "
+"typu poškození, pak při tomto typu útoku utrpí o 40 % menší poškození. Je "
 "také možné, aby byla jednotka zranitelná vůči určitým typům poškození. Pokud "
 "má jednotka −100% odolnost vůči některému poškození, pak v případě zásahu "
-"utrpí o 100% větší zranění."
+"utrpí o 100 % větší zranění."
 
 #. [topic]: id=damage_types_and_resistance
 #: data/core/help.cfg:370
@@ -3702,7 +3697,7 @@ msgid ""
 "Some role-playing scenarios take place indoors — these regions are similarly "
 "intermediate.\n"
 msgstr ""
-"Některé scénáře s RPG prvky se odehrávají uvnitř — tato místa jsou také "
+"Některé scénáře s RPG prvky se odehrávají uvnitř – tato místa jsou také "
 "neutrální.\n"
 
 #. [topic]: id=time_of_day
@@ -4267,7 +4262,7 @@ msgstr ""
 "\n"
 "\n"
 "Tažení pro jednoho hráče je sbírkou scénářů, která dohromady tvoří příběh. "
-"Dostupné jsou jednak samostatné scénáře — pokud jsou takto zamýšlené — tak "
+"Dostupné jsou jednak samostatné scénáře – pokud jsou takto zamýšlené – tak "
 "běžná tažení, která jsou dostupná z menu <italic>text='Tažení'</italic> na "
 "úvodní stránce."
 
@@ -4530,9 +4525,9 @@ msgid ""
 "'m' first to open the chat line).\n"
 "\n"
 msgstr ""
-"Tyto příkazy mohou být použity buď přes příkazovou řádku tím, že před ně "
-"dáte znak ':' (jak je předvedeno tady) nebo tak, že před ně napíšete znak "
-"'/' (kliněte na 'm' pro otevření chatovacího okénka).\n"
+"Tyto příkazy mohou být použity buď přes příkazovou řádku tím, že před ně dáš "
+"znak „:“ (jak je předvedeno tady), nebo přes chat tak, že před ně napíšeš "
+"znak „/“ (nejprve stiskni „m“ pro otevření chatovací řádky).\n"
 "\n"
 
 #. [topic]: id=general_commands
@@ -4556,7 +4551,7 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"Zapne ladící režim (nefunguje ve hře více hráčů) — viz "
+"Zapne ladící režim (nefunguje ve hře více hráčů) – viz "
 "<ref>dst='debug_commands' text='příkazy ladícího módu'</ref>.\n"
 "Ladící režim je vypnut ukončením hry nebo příkazem :nodebug.\n"
 "\n"
@@ -5335,18 +5330,16 @@ msgstr "Tento útok má vždy alespoň 60% šanci zásahu, je-li užit ofensivn�
 #. [chance_to_hit]: id=deflect
 #: data/core/macros/abilities.cfg:489
 msgid "deflect"
-msgstr ""
+msgstr "odražení"
 
 #. [chance_to_hit]: id=deflect
 #: data/core/macros/abilities.cfg:490
-#, fuzzy
-#| msgid ""
-#| "When used offensively, this attack always has at least a 60% chance to "
-#| "hit."
 msgid ""
 "When used defensively, this attack reduces the opponent's chance to hit by "
 "10%."
-msgstr "Tento útok má vždy alespoň 60% šanci zásahu, je-li užit ofensivně."
+msgstr ""
+"Pokud je tento útok použit defenzivně, snižuje o 10 % šanci protivníka na "
+"zásah."
 
 #. [chance_to_hit]: id=deflect
 #: data/core/macros/abilities.cfg:491
@@ -5354,6 +5347,7 @@ msgid ""
 "This unit’s defensive techniques reduce the chance of a successful enemy "
 "attack."
 msgstr ""
+"Obranné techniky této jednotky snižují šanci na úspěšný útok nepřítele."
 
 #. [chance_to_hit]: id=magical
 #: data/core/macros/abilities.cfg:505
@@ -5394,7 +5388,7 @@ msgstr ""
 #. [damage]: id=absorb
 #: data/core/macros/abilities.cfg:542
 msgid "absorb"
-msgstr ""
+msgstr "zmírnění"
 
 #. [damage]: id=absorb
 #: data/core/macros/abilities.cfg:543
@@ -5402,12 +5396,16 @@ msgid ""
 "This attack puts the unit in good defensive position, and it absorbs some of "
 "the damage dealt by an enemy strike."
 msgstr ""
+"Tento útok staví jednotku do dobrého obranného postavení a tlumí část "
+"poškození utrženého při úderu nepřítele."
 
 #. [damage]: id=absorb
 #: data/core/macros/abilities.cfg:544
 msgid ""
 "This unit can block enemy strikes, so that it takes reduced damage when hit."
 msgstr ""
+"Tato jednotka může blokovat údery nepřátel, takže při zásahu utrpí menší "
+"poškození."
 
 #. [drains]: id=drains
 #: data/core/macros/abilities.cfg:556
@@ -5444,7 +5442,7 @@ msgstr ""
 #. [advancement]: id=amla_default
 #: data/core/macros/amla.cfg:10
 msgid "Max HP bonus +3, Max XP +20%"
-msgstr "Max HP bonus +3, Max XP +20%"
+msgstr "Max HP bonus +3, Max XP +20 %"
 
 #. [time]: id=midday
 #. [time]: id=midday_hour
@@ -5461,102 +5459,102 @@ msgstr "Půlnoc"
 #. [time]: id=second_watch_hour1
 #: data/core/macros/schedules.cfg:218
 msgid "Second Watch — First Hour"
-msgstr "Druhá hlídka — první hodina"
+msgstr "Druhá hlídka – první hodina"
 
 #. [time]: id=second_watch_hour2
 #: data/core/macros/schedules.cfg:230
 msgid "Second Watch — Second Hour"
-msgstr "Druhá hlídka — druhá hodina"
+msgstr "Druhá hlídka – druhá hodina"
 
 #. [time]: id=second_watch_hour3
 #: data/core/macros/schedules.cfg:242
 msgid "Second Watch — Third Hour"
-msgstr "Druhá hlídka — třetí hodina"
+msgstr "Druhá hlídka – třetí hodina"
 
 #. [time]: id=second_watch_hour4
 #: data/core/macros/schedules.cfg:254
 msgid "Second Watch — Fourth Hour"
-msgstr "Druhá hlídka — čtvrtá hodina"
+msgstr "Druhá hlídka – čtvrtá hodina"
 
 #. [time]: id=second_watch_hour5
 #: data/core/macros/schedules.cfg:266
 msgid "Second Watch — Fifth Hour"
-msgstr "Druhá hlídka — pátá hodina"
+msgstr "Druhá hlídka – pátá hodina"
 
 #. [time]: id=second_watch_hour6
 #: data/core/macros/schedules.cfg:278
 msgid "Second Watch — Sixth Hour"
-msgstr "Druhá hlídka — šestá hodina"
+msgstr "Druhá hlídka – šestá hodina"
 
 #. [time]: id=morning_hour1
 #: data/core/macros/schedules.cfg:302
 msgid "Morning — First Hour"
-msgstr "Dopoledne — první hodina"
+msgstr "Dopoledne – první hodina"
 
 #. [time]: id=morning_hour2
 #: data/core/macros/schedules.cfg:314
 msgid "Morning — Second Hour"
-msgstr "Dopoledne — druhá hodina"
+msgstr "Dopoledne – druhá hodina"
 
 #. [time]: id=morning_hour3
 #: data/core/macros/schedules.cfg:326
 msgid "Morning — Third Hour"
-msgstr "Dopoledne — třetí hodina"
+msgstr "Dopoledne – třetí hodina"
 
 #. [time]: id=morning_hour4
 #: data/core/macros/schedules.cfg:335
 msgid "Morning — Fourth Hour"
-msgstr "Dopoledne — čtvrtá hodina"
+msgstr "Dopoledne – čtvrtá hodina"
 
 #. [time]: id=afternoon_hour1
 #: data/core/macros/schedules.cfg:353
 msgid "Afternoon — First Hour"
-msgstr "Odpoledne — první hodina"
+msgstr "Odpoledne – první hodina"
 
 #. [time]: id=afternoon_hour2
 #: data/core/macros/schedules.cfg:362
 msgid "Afternoon — Second Hour"
-msgstr "Odpoledne — druhá hodina"
+msgstr "Odpoledne – druhá hodina"
 
 #. [time]: id=afternoon_hour3
 #: data/core/macros/schedules.cfg:371
 msgid "Afternoon — Third Hour"
-msgstr "Odpoledne — třetí hodina"
+msgstr "Odpoledne – třetí hodina"
 
 #. [time]: id=afternoon_hour4
 #: data/core/macros/schedules.cfg:380
 msgid "Afternoon — Fourth Hour"
-msgstr "Odpoledne — čtvrtá hodina"
+msgstr "Odpoledne – čtvrtá hodina"
 
 #. [time]: id=afternoon_hour5
 #: data/core/macros/schedules.cfg:389
 msgid "Afternoon — Fifth Hour"
-msgstr "Odpoledne — pátá hodina"
+msgstr "Odpoledne – pátá hodina"
 
 #. [time]: id=afternoon_hour6
 #: data/core/macros/schedules.cfg:400
 msgid "Afternoon — Sixth Hour"
-msgstr "Odpoledne — šestá hodina"
+msgstr "Odpoledne – šestá hodina"
 
 #. [time]: id=first_watch_hour1
 #: data/core/macros/schedules.cfg:423
 msgid "First Watch — First Hour"
-msgstr "První hlídka — první hodina"
+msgstr "První hlídka – první hodina"
 
 #. [time]: id=first_watch_hour2
 #: data/core/macros/schedules.cfg:435
 msgid "First Watch — Second Hour"
-msgstr "První hlídka — druhá hodina"
+msgstr "První hlídka – druhá hodina"
 
 #. [time]: id=first_watch_hour3
 #: data/core/macros/schedules.cfg:447
 msgid "First Watch — Third Hour"
-msgstr "První hlídka — třetí hodina"
+msgstr "První hlídka – třetí hodina"
 
 #. [time]: id=first_watch_hour4
 #: data/core/macros/schedules.cfg:459
 msgid "First Watch — Fourth Hour"
-msgstr "První hlídka — čtvrtá hodina"
+msgstr "První hlídka – čtvrtá hodina"
 
 #. [time]: id=dawn1
 #: data/core/macros/schedules.cfg:514
@@ -6115,8 +6113,8 @@ msgid ""
 "<italic>text='Quick'</italic> units have 1 extra movement point, but 5% less "
 "hitpoints than usual."
 msgstr ""
-"<italic>text='Rychlé'</italic> jednotky mají navíc 1 pohybový bod, ale o 5% "
-"méně životů než je obvyklé."
+"<italic>text='Rychlé'</italic> jednotky mají navíc 1 pohybový bod, ale o 5 % "
+"méně životů, než je obvyklé."
 
 #. [trait]: id=intelligent
 #: data/core/macros/traits.cfg:190
@@ -6154,7 +6152,7 @@ msgstr ""
 #: data/core/macros/traits.cfg:192
 msgid "Intelligent units require 20% less experience than usual to advance."
 msgstr ""
-"Inteligentní jednotky potřebují ke svému povýšení o 20% méně zkušeností."
+"Inteligentní jednotky potřebují ke svému povýšení o 20 % méně zkušeností."
 
 #. [trait]: id=resilient
 #: data/core/macros/traits.cfg:206
@@ -6638,7 +6636,7 @@ msgid ""
 "augment certain aspects of their natures."
 msgstr ""
 "Trpaslíci jsou známi jako horníci, kováři, kupci a bojovníci. Jejich raná "
-"historie je záhadou - jsou třetí nejstarší rasa Velkého kontinentu, "
+"historie je záhadou – jsou třetí nejstarší rasa Velkého kontinentu, "
 "předcházejí je elfové a trollové. Legendy zmiňují, že kdysi dávno přišli "
 "trpaslíci na povrch z jeskyní. O tom, jak žili předtím, není nic známo, "
 "stejně jako důvody, proč opustili svůj předchozí způsob života. Ať tak či "
@@ -6653,8 +6651,8 @@ msgstr ""
 "Trpaslíci jsou poměrně podezřívaví, až nepřátelští k ostatním rasám, zvláště "
 "elfům. Možná kvůli jejich dlouhé izolaci. Jedinou výjimku představují lidé "
 "a příčiny lze hledat v situaci po příchodu Haldrika I., kdy se na Velkém "
-"kontinentě náhle objevili lidé a skřeti. Trpaslíci povolili některým lidem - "
-"zejména psancům a odpůrcům Koruny - usadit se v určitých oblastech Severních "
+"kontinentě náhle objevili lidé a skřeti. Trpaslíci povolili některým lidem – "
+"zejména psancům a odpůrcům Koruny – usadit se v určitých oblastech Severních "
 "zemí. Jejich motivace nebyla překvapivá. Osud těchto lidí jim připomněl "
 "pronásledování v jejich vlastní minulosti, a tak se nad nimi slitovali. "
 "Kromě toho, tento krok jim nemohl přinést žádné nevýhody. Lidé se usazovali "
@@ -6675,7 +6673,7 @@ msgstr ""
 "vojáci jej využívají k vystřelování malých střel nesmírnou rychlostí. "
 "Trpaslíci věří v souladu se svými intencemi spíše technice než magii. Malá "
 "skupinka, známá jako runoví kováři, však praktikuje magii založenou na "
-"runách - přesněji vyrývání těch správných run. Magie těchto run pak umocňuje "
+"runách – přesněji vyrývání těch správných run. Magie těchto run pak umocňuje "
 "některou vlastnost cílových objektů."
 
 #. [race]: id=elf
@@ -6903,17 +6901,17 @@ msgstr ""
 #. [race]: id=gryphon
 #: data/core/units.cfg:170
 msgid "race^Gryphon"
-msgstr "Gryfon"
+msgstr "Gryf"
 
 #. [race]: id=gryphon
 #: data/core/units.cfg:171
 msgid "race+female^Gryphon"
-msgstr "Gryfonice"
+msgstr "Gryfka"
 
 #. [race]: id=gryphon
 #: data/core/units.cfg:172
 msgid "race^Gryphons"
-msgstr "Gryfoni"
+msgstr "Gryfové"
 
 #. [race]: id=gryphon
 #: data/core/units.cfg:173
@@ -6927,12 +6925,12 @@ msgid ""
 "been a source of debate for centuries, but it remains as mysterious as their "
 "origins."
 msgstr ""
-"Gryfoni jsou mohutná, silná stvoření oplývající vlastnostmi, které zdědili "
+"Gryfové jsou mohutná, silná stvoření oplývající vlastnostmi, které zdědili "
 "jak od svých pozemských předků, tak od dravých ptáků. I když se je sem tam "
-"podaří zkrotit a osedlat, gryfoni jsou velmi teritoriální a agresivní, "
+"podaří zkrotit a osedlat, gryfové jsou velmi teritoriální a agresivní, "
 "obzvlášť, pokud jde o jejich hnízda.\n"
 "\n"
-"Jak dokážou gryfoni létat navzdory své velikosti a hmotnosti je už po "
+"Jak dokážou gryfové létat navzdory své velikosti a hmotnosti je už po "
 "staletí předmětem dohadů, ale ve skutečnosti je to stejná záhada, jako "
 "jejich původ."
 
@@ -7038,7 +7036,7 @@ msgstr ""
 "magii ovládat, a to mnohem různorodějším způsobem, než ostatní. Nemají "
 "žádnou speciální vlastnost, snad jen přizpůsobivost a podnikavost. I když "
 "často bojují se všemi ostatními rasami, s těmi méně agresivními (trpaslíky, "
-"elfy) také tvoří dočasné aliance. A naopak - ti méně skrupulózní bez výčitek "
+"elfy) také tvoří dočasné aliance. A naopak – ti méně skrupulózní bez výčitek "
 "svědomí najímají skřetí žoldáky. Nemají žádné přirozené nepřátele, stejně "
 "jako všechny ostatní rasy však nesnáší nemrtvé. Lidé jsou o něco nižší než "
 "elfové, ale pořád vyšší než trpaslíci. Jejich pokožka nabývá mnohých "
@@ -7329,7 +7327,7 @@ msgstr ""
 "stylu žití a neustálé obnově, neboť většina ještěráckých znalostí je "
 "předávána ústní tradicí a ještěrácké statky musí být mobilní.\n"
 "\n"
-"<header>text='Geografie'</header>\n"
+"<header>text='Zeměpis'</header>\n"
 "Ještěráci mohou žít v mnoha různých oblastech, ačkoli močály jsou zdaleka "
 "jejich nejběžnějším stanovištěm.\n"
 "\n"
@@ -7465,19 +7463,19 @@ msgid ""
 "themselves at odds with merfolk when their territories overlap, but overall "
 "nagas tend to favor swamps and rivers as much as open water."
 msgstr ""
-"Hadovité nagy jsou jednou z nejméně prozkoumaných rad Velkého kontinentu. "
-"Částečně je to kvůli jejich strachu z neznámého a částečně kvůli jejich "
-"odlišnému životnímu prostředí. Nagy jsou jednou z mála ras schopných rozumné "
-"mobility ve vodě, což jim umožňuje přístup do světa, který je v podstatě "
-"zapovězený všem obyvatelům souše a ještě více je tak odděluje od pozemských "
-"stvoření, kterým se vyhýbají. I tak, nejsou opravdovými mořskými stvořeními "
-"a jejich neschopnost dýchat pod vodou, takže mají strach z hlubokých "
+"Hadovité nágy jsou jednou z nejméně prozkoumaných ras Velkého kontinentu. "
+"Částečně je to kvůli jejich strachu z neznámého a dílem kvůli jejich "
+"odlišnému životnímu prostředí. Nágy jsou jednou z mála ras schopných rozumné "
+"mobility ve vodě, což jim umožňuje přístup do světa, který je v podstatě "
+"zapovězený všem obyvatelům souše a ještě více je tak odděluje od pozemských "
+"stvoření, kterým se vyhýbají. I tak, nejsou opravdovými mořskými stvořeními "
+"a jejich neschopnost dýchat pod vodou, takže mají strach z hlubokých "
 "propastí. Žijí tedy při pobřeží, což jim umožňuje utéct na pevninu před "
-"obyvateli hlubin a zároveň zůstat z dosahu těch, co mají nohy, křídla a "
-"kopyta. Ačkoliv nagy jsou trochu křehká stvoření, jsou obvykle rychlejší a "
-"mrštnější než jejich protivníci. Někdy mají rozepře s mořskými lidmi, když "
-"se jejich teritoria překrývají, ale většinou nagy dávají přednost bažinám a "
-"řekám než otevřeným vodním plochám."
+"obyvateli hlubin a zároveň zůstat z dosahu těch, co mají nohy, křídla "
+"a kopyta. Ačkoliv jsou nágy trochu křehká stvoření, bývají obvykle rychlejší "
+"a mrštnější než jejich protivníci. Někdy mají rozepře s mořskými lidmi, když "
+"se jejich teritoria překrývají, ale většinou nágy dávají přednost bažinám "
+"a řekám než otevřeným vodním plochám."
 
 #. [race]: id=ogre
 #: data/core/units.cfg:319
@@ -7623,15 +7621,15 @@ msgstr ""
 "podřezávání a další podobné postupy.\n"
 "\n"
 "Skřeti žijí převážně ve volné krajině, v kopcích či horách, a někdy také v "
-"jeskyních. Nepěstují žádné plodiny ani nechovají dobytek, vystačí si s lovem "
-"- jejich mocná tělesná stavba jim v tom značně pomáhá. Vzhledem k tomu, že "
-"se vyskytují ve velkých tlupách, dokáží rychle zbavit oblast veškeré zvěře "
-"větší než myši. Toto spolu s častými změnami pohlavárů způsobuje, že skřetí "
-"kmeny vedou polokočovný způsob života. Nikdy nesetrvávají v dané oblasti moc "
-"dlouho. Největší kmeny se mohou trvaleji usídlit na některých místech na "
-"několik let či dokonce desetiletí, přičemž jejich tábory mohou vyrůst až do "
-"podoby primitivních měst, která však mohou být rychle opuštěna, pokud se "
-"vyskytne důvod pro odchod hordy.\n"
+"jeskyních. Nepěstují žádné plodiny ani nechovají dobytek, vystačí si s "
+"lovem – jejich mocná tělesná stavba jim v tom značně pomáhá. Vzhledem k "
+"tomu, že se vyskytují ve velkých tlupách, dokáží rychle zbavit oblast "
+"veškeré zvěře větší než myši. Toto spolu s častými změnami pohlavárů "
+"způsobuje, že skřetí kmeny vedou polokočovný způsob života. Nikdy "
+"nesetrvávají v dané oblasti moc dlouho. Největší kmeny se mohou trvaleji "
+"usídlit na některých místech na několik let či dokonce desetiletí, přičemž "
+"jejich tábory mohou vyrůst až do podoby primitivních měst, která však mohou "
+"být rychle opuštěna, pokud se vyskytne důvod pro odchod hordy.\n"
 "\n"
 "Nejstarší známí skřeti se dožili asi 50 až 60 let, ale málokterý se dožije "
 "přirozené smrti dříve, než padne v konfliktu buď s nepřítelem, nebo jinými "
@@ -7639,9 +7637,10 @@ msgstr ""
 "soukmenovci do určité míry považují za neutrální a nestranné, a tak i "
 "důvěryhodné. Původ tohoto zvyku není znám. Je však ještě o to podivnější, že "
 "šamani doopravdy neplní ve skřetí společnosti žádnou důležitou roli, pouze "
-"radí, což je další záhadou - skřeti zásadně nepřijímají rady od nikoho. "
+"radí, což je další záhadou – skřeti zásadně nepřijímají rady od nikoho. "
 "Šamani představují v mnohých aspektech protiklad typického skřeta: nezřídka "
 "jsou fyzicky slabí, křehcí a nemají valné bojové zkušenosti ani uplatnění.\n"
+"\n"
 
 #. [race]: id=orc
 #: data/core/units.cfg:344

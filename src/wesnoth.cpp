@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2003 - 2021
+	by David White <dave@whitevine.net>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #include "addon/manager.hpp"
@@ -33,6 +34,7 @@
 #include "gui/dialogs/end_credits.hpp"
 #include "gui/dialogs/loading_screen.hpp"
 #include "gui/dialogs/message.hpp"      // for show_error_message
+#include "gui/dialogs/migrate_version_selection.hpp"
 #include "gui/dialogs/title_screen.hpp" // for title_screen, etc
 #include "gui/gui.hpp"                  // for init
 #include "picture.hpp"                    // for flush_cache, etc
@@ -506,6 +508,12 @@ static int process_command_args(const commandline_options& cmdline_opts)
 		return 0;
 	}
 
+	if(cmdline_opts.simple_version) {
+		std::cout << game_config::wesnoth_version.str() << "\n";
+
+		return 0;
+	}
+
 	if(cmdline_opts.report) {
 		std::cout << "\n========= BUILD INFORMATION =========\n\n" << game_config::full_build_report();
 		return 0;
@@ -778,6 +786,11 @@ static int do_gameloop(const std::vector<std::string>& args)
 	const gui2::event::manager gui_event_manager;
 
 	game_config_manager config_manager(cmdline_opts);
+
+	if(game_config::check_migration) {
+		game_config::check_migration = false;
+		gui2::dialogs::migrate_version_selection::execute();
+	}
 
 	gui2::dialogs::loading_screen::display([&res, &config_manager, &cmdline_opts]() {
 		gui2::dialogs::loading_screen::progress(loading_stage::load_config);

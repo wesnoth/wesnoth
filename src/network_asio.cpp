@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2011 - 2018 by Sergey Popov <loonycyborg@gmail.com>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2011 - 2021
+	by Sergey Popov <loonycyborg@gmail.com>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #define BOOST_ASIO_NO_DEPRECATED
@@ -143,6 +144,19 @@ void connection::handshake()
 		std::bind(&connection::handle_handshake, this, std::placeholders::_1));
 }
 
+template<typename Verifier> auto verbose_verify(Verifier&& verifier)
+{
+	return [verifier](bool preverified, boost::asio::ssl::verify_context& ctx) {
+		char subject_name[256];
+		X509* cert = X509_STORE_CTX_get_current_cert(ctx.native_handle());
+		X509_NAME_oneline(X509_get_subject_name(cert), subject_name, 256);
+		bool verified = verifier(preverified, ctx);
+		DBG_NW << "Verifying TLS certificate: " << subject_name << ": " <<
+			(verified ? "verified" : "failed") << std::endl;
+		return verified;
+	};
+}
+
 void connection::handle_handshake(const boost::system::error_code& ec)
 {
 	if(ec) {
@@ -176,9 +190,9 @@ void connection::handle_handshake(const boost::system::error_code& ec)
 			);
 
 #if BOOST_VERSION >= 107300
-			socket.set_verify_callback(boost::asio::ssl::host_name_verification(host_));
+			socket.set_verify_callback(verbose_verify(boost::asio::ssl::host_name_verification(host_)));
 #else
-			socket.set_verify_callback(boost::asio::ssl::rfc2818_verification(host_));
+			socket.set_verify_callback(verbose_verify(boost::asio::ssl::rfc2818_verification(host_)));
 #endif
 
 			socket.async_handshake(boost::asio::ssl::stream_base::client, [this](const boost::system::error_code& ec) {

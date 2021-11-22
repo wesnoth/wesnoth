@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2003 - 2021
+	by David White <dave@whitevine.net>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
@@ -73,6 +74,53 @@ namespace preferences
 manager::manager()
 	: base()
 {
+	load_game_prefs();
+}
+
+manager::~manager()
+{
+	config campaigns;
+	for(const auto& elem : completed_campaigns) {
+		config cmp;
+		cmp["name"] = elem.first;
+		cmp["difficulty_levels"] = utils::join(elem.second);
+		campaigns.add_child("campaign", cmp);
+	}
+
+	preferences::set_child("completed_campaigns", campaigns);
+
+	preferences::set("encountered_units", utils::join(encountered_units_set));
+	t_translation::ter_list terrain(encountered_terrains_set.begin(), encountered_terrains_set.end());
+	preferences::set("encountered_terrain_list", t_translation::write_list(terrain));
+
+	/* Structure of the history
+		[history]
+			[history_id]
+				[line]
+					message = foobar
+				[/line]
+	*/
+	config history;
+	for(const auto& history_id : history_map) {
+		config history_id_cfg; // [history_id]
+		for(const std::string& line : history_id.second) {
+			config cfg; // [line]
+
+			cfg["message"] = line;
+			history_id_cfg.add_child("line", std::move(cfg));
+		}
+
+		history.add_child(history_id.first, history_id_cfg);
+	}
+	preferences::set_child("history", history);
+
+	history_map.clear();
+	encountered_units_set.clear();
+	encountered_terrains_set.clear();
+}
+
+void load_game_prefs()
+{
 	set_music_volume(music_volume());
 	set_sound_volume(sound_volume());
 
@@ -127,48 +175,6 @@ manager::manager()
 			}
 		}
 	}
-}
-
-manager::~manager()
-{
-	config campaigns;
-	for(const auto& elem : completed_campaigns) {
-		config cmp;
-		cmp["name"] = elem.first;
-		cmp["difficulty_levels"] = utils::join(elem.second);
-		campaigns.add_child("campaign", cmp);
-	}
-
-	preferences::set_child("completed_campaigns", campaigns);
-
-	preferences::set("encountered_units", utils::join(encountered_units_set));
-	t_translation::ter_list terrain(encountered_terrains_set.begin(), encountered_terrains_set.end());
-	preferences::set("encountered_terrain_list", t_translation::write_list(terrain));
-
-	/* Structure of the history
-		[history]
-			[history_id]
-				[line]
-					message = foobar
-				[/line]
-	*/
-	config history;
-	for(const auto& history_id : history_map) {
-		config history_id_cfg; // [history_id]
-		for(const std::string& line : history_id.second) {
-			config cfg; // [line]
-
-			cfg["message"] = line;
-			history_id_cfg.add_child("line", std::move(cfg));
-		}
-
-		history.add_child(history_id.first, history_id_cfg);
-	}
-	preferences::set_child("history", history);
-
-	history_map.clear();
-	encountered_units_set.clear();
-	encountered_terrains_set.clear();
 }
 
 static void load_acquaintances()
@@ -324,39 +330,39 @@ bool parse_should_show_lobby_join(const std::string& sender, const std::string& 
 		}
 	}
 
-	int lj = lobby_joins();
-	if(lj == SHOW_NONE) {
+	lobby_joins lj = get_lobby_joins();
+	if(lj == lobby_joins::show_none) {
 		return false;
 	}
 
-	if(lj == SHOW_ALL) {
+	if(lj == lobby_joins::show_all) {
 		return true;
 	}
 
 	return is_friend(message.substr(0, pos));
 }
 
-int lobby_joins()
+lobby_joins get_lobby_joins()
 {
 	std::string pref = preferences::get("lobby_joins");
 	if(pref == "friends") {
-		return SHOW_FRIENDS;
+		return lobby_joins::show_friends;
 	} else if(pref == "all") {
-		return SHOW_ALL;
+		return lobby_joins::show_all;
 	} else if(pref == "none") {
-		return SHOW_NONE;
+		return lobby_joins::show_none;
 	} else {
-		return SHOW_FRIENDS;
+		return lobby_joins::show_friends;
 	}
 }
 
-void _set_lobby_joins(int show)
+void _set_lobby_joins(lobby_joins show)
 {
-	if(show == SHOW_FRIENDS) {
+	if(show == lobby_joins::show_friends) {
 		preferences::set("lobby_joins", "friends");
-	} else if(show == SHOW_ALL) {
+	} else if(show == lobby_joins::show_all) {
 		preferences::set("lobby_joins", "all");
-	} else if(show == SHOW_NONE) {
+	} else if(show == lobby_joins::show_none) {
 		preferences::set("lobby_joins", "none");
 	}
 }

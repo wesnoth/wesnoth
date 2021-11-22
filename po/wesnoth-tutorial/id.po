@@ -1,29 +1,30 @@
+# the7thNightmare <83212910+the7thNightmare@users.noreply.github.com>, 2021.
+# I. Musthafa <i.musthafa66@gmail.com>, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3.2+svn\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2021-06-23 15:42 UTC\n"
-"PO-Revision-Date: 2012-12-29 23:07+0700\n"
-"Last-Translator: Yuris <yuris_wicaksana@yahoo.com>\n"
-"Language-Team: none\n"
-"Language: \n"
+"PO-Revision-Date: 2021-08-12 18:29+0700\n"
+"Last-Translator: Neko Nekowazarashi <i.musthafa66@gmail.com>\n"
+"Language-Team: Indonesian <kde-i18n-doc@kde.org>\n"
+"Language: id_ID\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.5.4\n"
+"X-Generator: Lokalize 21.04.3\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. [campaign]: id=Tutorial
 #: data/campaigns/tutorial/_main.cfg:11
 msgid "Battle Training"
-msgstr ""
+msgstr "Pelatihan Pertarungan"
 
 #. [difficulty]
 #. [campaign]: id=Tutorial
 #: data/campaigns/tutorial/_main.cfg:14 data/campaigns/tutorial/_main.cfg:30
-#, fuzzy
-#| msgid "Wesnoth Tutorial"
 msgid "Tutorial"
-msgstr "Pelatihan Wesnoth"
+msgstr "Pelatihan"
 
 #. [campaign]: id=Tutorial
 #: data/campaigns/tutorial/_main.cfg:21
@@ -31,23 +32,23 @@ msgid ""
 "Learn the basics of Wesnoth gameplay with a tutorial. Recommended for first "
 "time players."
 msgstr ""
+"Pelajari dasar dari gaya permainan Wesnoth dengan tutorial. Direkomendasikan "
+"untuk pemain baru."
 
 #. [difficulty]
 #: data/campaigns/tutorial/_main.cfg:31
 msgid "Beginner"
-msgstr ""
+msgstr "Pemula"
 
 #. [label]
 #: data/campaigns/tutorial/gui/character_selection.cfg:21
 msgid "Select Character"
-msgstr ""
+msgstr "Pilik karakter"
 
 #. [label]
 #: data/campaigns/tutorial/gui/character_selection.cfg:32
-#, fuzzy
-#| msgid "Who would you like to play?"
 msgid "Who do you want to play?"
-msgstr "Siapakah yang ingin anda mainkan?"
+msgstr "Siapakah yang ingin Anda mainkan?"
 
 #. [side]: type=Fighter, id=student
 #. [button]
@@ -72,8 +73,6 @@ msgstr "Li’sar"
 #. If you have any questions, ask in the forums or, the #wesnoth-dev channel on irc.libera.chat,
 #. or https://discord.gg/battleforwesnoth.
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:9
-#, fuzzy
-#| msgid "Wesnoth Tutorial Part I"
 msgid "Wesnoth Tutorial — Part I"
 msgstr "Pelatihan Wesnoth Bagian I"
 
@@ -83,7 +82,7 @@ msgstr "Pelatihan Wesnoth Bagian I"
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:26
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:104
 msgid "team_name^Student"
-msgstr ""
+msgstr "Pelajar"
 
 #. [unit]: id=Delfador, type=Elder Mage
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:75
@@ -92,13 +91,6 @@ msgstr "Delfador"
 
 #. [objectives]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:119
-#, fuzzy
-#| msgid ""
-#| "You will learn the basics of:\n"
-#| "Movement\n"
-#| "Attacking\n"
-#| "Healing\n"
-#| "Recruiting"
 msgid ""
 "You will learn the basics of:\n"
 "• <small>Movement</small>\n"
@@ -106,11 +98,11 @@ msgid ""
 "• <small>Healing</small>\n"
 "• <small>Recruiting</small>"
 msgstr ""
-"anda akan mempelajari dasar-dasar dari:\n"
-"Bergerak\n"
-"Menyerang\n"
-"Menyembuhkan\n"
-"Merekrut"
+"Anda akan mempelajari dasar-dasar dari:\n"
+"•<small>Bergerak</small>\n"
+"•<small>Menyerang</small>\n"
+"•<small>Menyembuhkan</small>\n"
+"•<small>Merekrut</small>"
 
 #. [objective]: condition=win
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:125
@@ -120,13 +112,15 @@ msgstr "Kalahkan musuhmu"
 #. [objective]: condition=lose
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:129
 msgid "Get yourself killed"
-msgstr "Membiarkan dirimu dibunuh"
+msgstr "Membiarkan dirimu terbunuh"
 
 #. [disallow_end_turn]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:137
 msgid ""
 "You cannot end your turn until you have completed the lesson on movement!"
 msgstr ""
+"Anda tidak bisa menyelesaikan giliran Anda hingga Anda benar-benar telah "
+"menyelesaikan pelatihan dalam bergerak!"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:146
@@ -143,67 +137,59 @@ msgid ""
 "Part 1 will teach you the basics about movement, attacking, healing, and "
 "recruiting. Firstly, you’ll choose a hero (both heroes play the same)."
 msgstr ""
+"Ini adalah pelatihan dua bagian yang ditujukan untuk pemain yang baru ke "
+"permainan ini. Bagian 1 akan mengajari Anda dasar dari pergerakan, "
+"penyerangan, penyembuhan, dan perekrutan. Pertama-tama Anda harus memilih "
+"seorang pahlawan (permainan kedua pahlawan sama)."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:161
-#, fuzzy
-#| msgid ""
-#| "For this tutorial, you are playing Konrad.\n"
-#| "You are standing in the keep, and your mentor Delfador is on the east "
-#| "side of the river."
 msgid ""
 "For this tutorial, you are playing Konrad. You are standing on the keep, and "
 "your mentor Delfador is on the east side of the river. You can move the "
 "mouse over a unit to see a summary of its abilities and stats on the right "
 "of the screen."
 msgstr ""
-"Selama pelatihan ini, anda memainkan Konrad.\n"
-"Anda sedang berdiri di dalam benteng, dan penasehatmu Delfador berada di "
-"sebelah timur sungai."
+"Untuk pelatihan ini, Anda bermain sebagai Li'sar Anda berdiri di atas sebuah "
+"kastil, dan guru Anda, Delfador, ada di sisi timur dari sungai. Anda bisa "
+"menggerakkan tetikus ke sebuah unit untuk melihat ringkasan dari kemampuan "
+"dan statistik dari unit tersebut di sebelah kanan layar."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:169
-#, fuzzy
-#| msgid ""
-#| "For this tutorial, you are playing Li’sar.\n"
-#| "You are standing in the keep, and your mentor Delfador is on the east "
-#| "side of the river."
 msgid ""
 "For this tutorial, you are playing Li’sar. You are standing on the keep, and "
 "your mentor Delfador is on the east side of the river. You can move the "
 "mouse over a unit to see a summary of its abilities and stats on the right "
 "of the screen."
 msgstr ""
-"Selama pelatihan ini, anda memainkan Li’sar.\n"
-"Anda sedang berdiri didalam benteng, dan penasehatmu Delfador berada di "
-"sebelah timur sungai."
+"Untuk pelatihan ini, Anda bermain sebagai Li'sar Anda berdiri di atas sebuah "
+"kastil, dan guru Anda, Delfador, ada di sisi timur dari sungai. Anda bisa "
+"menggerakkan tetikus ke sebuah unit untuk melihat ringkasan dari kemampuan "
+"dan statistik dari unit tersebut di sebelah kanan layar."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:175
-#, fuzzy
-#| msgid "Left click on Konrad"
 msgid "Click on Konrad"
-msgstr "Klik kiri pada Konrad"
+msgstr "Klik pada Konrad"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:177
-#, fuzzy
-#| msgid "Left click on Li’sar"
 msgid "Click on Li’sar"
-msgstr "Klik kiri pada Li'sar"
+msgstr "Klik pada Li'sar"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:319
 msgid "To undo your last move, press <b>u</b> or use the right-click menu."
 msgstr ""
+"Untuk mengurungkan gerakan terakhir Anda, tekan <b>u</b> atau gunakan menu "
+"klik kanan."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:360
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:368
-#, fuzzy
-#| msgid "Advancement"
 msgid "Movement"
-msgstr "Kenaikan Pangkat"
+msgstr "Pergerakan"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:362
@@ -229,96 +215,76 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:381
-#, fuzzy
-#| msgid "Move Konrad to the keep"
 msgid "Move Konrad next to Delfador"
-msgstr "Pindahkan Konrad ke dalam Benteng"
+msgstr "Gerakkan Konrad ke samping Delfador"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:383
-#, fuzzy
-#| msgid "Move Li’sar to the keep"
 msgid "Move Li’sar next to Delfador"
-msgstr "Pindahkan  Li'sar ke dalam Benteng"
+msgstr "Gerakkan Li'sar ke samping Delfador"
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:400
 msgid "Good morning, Delfador! Is it time to attack things?"
-msgstr "Selamat Pagi, Delfador! Apakah sudah waktunya untuk menyerang?"
+msgstr "Selamat Pagi, Delfador! Apakah sudah waktunya untuk menyerang sesuatu?"
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:401
-#, fuzzy
-#| msgid "Good morning, Delfador! Is it time to attack things?"
 msgid "female^Good morning, Delfador! Is it time to attack things?"
-msgstr "Selamat Pagi, Delfador! Apakah sudah waktunya untuk menyerang?"
+msgstr "Selamat Pagi, Delfador! Apakah sudah waktunya untuk menyerang sesuatu?"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:406
 msgid "Um, well..."
-msgstr "Ok, baiklah..."
+msgstr "Um..."
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:411
 msgid "Have you found an orc for me to fight, huh? A troll?"
-msgstr ""
-"Apakah kamu telah menemukan orc untuk kulawan, huh? bagaimana dengan troll?"
+msgstr "Apakah kamu telah menemukan gergasi untuk kulawan, huh? Ataukah troll?"
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:412
-#, fuzzy
-#| msgid "Have you found an orc for me to fight, huh? A troll?"
 msgid "female^Have you found an orc for me to fight, huh? A troll?"
-msgstr ""
-"Apakah kamu telah menemukan orc untuk kulawan, huh? bagaimana dengan troll?"
+msgstr "Apakah kamu telah menemukan gergasi untuk kulawan, huh? Ataukah troll?"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:417
 msgid "Quiet! I will summon an enemy for you..."
-msgstr "Sabar! aku akan memunculkan sebuah lawan untuk mu..."
+msgstr "Diam! Aku akan memanggil seorang lawan untukmu..."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:489
 msgid "... this quintain!"
-msgstr "...ini adalah quintain!"
+msgstr "...boneka target!"
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:494
 msgid "A quintain? You want me to fight a dummy?"
-msgstr "Sebuah quintain? Anda ingin aku untuk melawan sebuah boneka kayu?"
+msgstr "Sebuah boneka target? Anda ingin saya untuk bertarung dengan boneka?"
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:495
-#, fuzzy
-#| msgid "A quintain? You want me to fight a dummy?"
 msgid "female^A quintain? You want me to fight a dummy?"
-msgstr "Sebuah quintain? Anda ingin aku untuk melawan sebuah boneka kayu?"
+msgstr "Sebuah boneka target? Anda ingin saya untuk bertarung dengan boneka?"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:501
-#, fuzzy
-#| msgid ""
-#| "female^Young lady, you have 32 hitpoints and a sword. I’m fairly sure "
-#| "you’ll win."
 msgid ""
 "Young man, you have $student_hp hitpoints and a sword. I’m fairly sure "
 "you’ll win."
 msgstr ""
-"Wanita muda, kau telah memiliki 32 hitpoint dan sebuah pedang. Aku cukup "
-"yakin kamu akan menang."
+"Wahai anak muda, kau punya $student_hp poin serang dan pedang. Aku yakin kau "
+"akan menang."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:506
-#, fuzzy
-#| msgid ""
-#| "female^Young lady, you have 32 hitpoints and a sword. I’m fairly sure "
-#| "you’ll win."
 msgid ""
 "female^Young lady, you have $student_hp hitpoints and a sword. I’m fairly "
 "sure you’ll win."
 msgstr ""
-"Wanita muda, kau telah memiliki 32 hitpoint dan sebuah pedang. Aku cukup "
-"yakin kamu akan menang."
+"Wahai nona muda, kau punya $student_hp poin serang dan pedang. Aku yakin kau "
+"akan menang."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:513
@@ -328,50 +294,42 @@ msgstr "Menyerang "
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:515
-#, fuzzy
-#| msgid ""
-#| "To attack the quintain, first select the attacker (Konrad) then the "
-#| "target (the quintain). You will see an attack description. When you click "
-#| "<b>OK</b>, Konrad will attack."
 msgid ""
 "To attack the quintain, first select the attacker (Konrad), then the target "
 "(the quintain). You will see an attack description. Click <b>Attack</b> when "
 "you’re ready."
 msgstr ""
-"Untuk menyerang quintain, pertama-tama pilih penyerangmu (Konrad) lalu "
-"tujukan kepada (quintain). Anda akan melihat deskripsi serangan. Ketika anda "
-"mengklik <b>OK</b>, Konrad akan menyerang."
+"Untuk menyerang boneka target, pertama-tama pilih penyerang Anda (Konrad) "
+"lalu tujukan kepada target (si boneka target). Anda akan melihat deskripsi "
+"serangan. Klik <b>Serang</b> ketika Anda sudah siap."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:522
-#, fuzzy
-#| msgid ""
-#| "To attack the quintain, first select the attacker (Li’sar) then the "
-#| "target (the quintain). You will see an attack description. When you click "
-#| "<b>OK</b>, Li’sar will attack."
 msgid ""
 "To attack the quintain, first select the attacker (Li’sar), then the target "
 "(the quintain). You will see an attack description. Click <b>Attack</b> when "
 "you’re ready."
 msgstr ""
-"Untuk menyerang quintain, pertama-tama pilih penyerangmu (Li’sar) lalu "
-"tujukan kepada (quintain). Anda akan melihat deskripsi serangan. Ketika anda "
-"mengklik <b>OK</b>, Li’sar akan menyerang."
+"Untuk menyerang boneka target, pertama-tama pilih penyerang Anda (Li'sar) "
+"lalu tujukan kepada target (si boneka target). Anda akan melihat deskripsi "
+"serangan. Klik <b>Serang</b> ketika Anda sudah siap."
 
 #. [disallow_end_turn]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:527
 msgid "You cannot end your turn until you have attacked the dummy!"
 msgstr ""
+"Anda tidak bisa menyelesaikan giliran Anda hingga Anda sudah menyerang sang "
+"boneka!"
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:541
 msgid "Hey! This quintain fights back!"
-msgstr "Hey! quintainnya menyerangku kembali!"
+msgstr "Hei! Boneka target ini menyerang balik!"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:546
 msgid "Hmm, perhaps we should have started with a doll."
-msgstr "Hmm, mungkin kita harus memulainya dengan sebuah boneka."
+msgstr "Hmm, mungkin kita seharusnya mulai dengan boneka biasa dulu."
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:551
@@ -380,8 +338,6 @@ msgstr "Haruskah aku mundur?"
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:552
-#, fuzzy
-#| msgid "Should I retreat?"
 msgid "female^Should I retreat?"
 msgstr "Haruskah aku mundur?"
 
@@ -405,6 +361,9 @@ msgid ""
 "leader. In most scenarios, you will lose if your leader is killed. Be sure "
 "to keep him safe!"
 msgstr ""
+"Mahkota emas kecil di atas pemimpin Anda (Konrad) mengisyaratkan bahwa dia "
+"pemimpin sampingan. Dalam banyak skenario, Anda akan kalah jika pemimpin "
+"terbunuh. Pastikan dia selamat!"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:572
@@ -413,6 +372,9 @@ msgid ""
 "leader. In most scenarios, you will lose if your leader is killed. Be sure "
 "to keep her safe!"
 msgstr ""
+"Mahkota emas kecil di atas pemimpin Anda (Li'sar) mengisyaratkan bahwa dia "
+"pemimpin sampingan. Dalam banyak skenario, Anda akan kalah jika pemimpin "
+"terbunuh. Pastikan dia selamat!"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:599
@@ -420,37 +382,30 @@ msgid ""
 "Unfortunately, you’ve used up your turn attacking the quintain. The quintain "
 "now gets to attack."
 msgstr ""
-"Sayang sekali, anda telah menggunakan giliranmu menyerang quintain itu. Kini "
-"quintain yang akan menyerang."
+"Sayang sekali, kau telah menggunakan giliranmu untuk menyerang boneka "
+"target. Sang boneka target sekarang yang menyerang."
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:604
 msgid "The <i>dummy</i> gets a turn?"
-msgstr "<i>boneka kayu</i> itu mendapatkan giliran?"
+msgstr "Si <i>boneka</i> itu mendapatkan giliran?"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:609
-#, fuzzy
-#| msgid ""
-#| "Yes. It’s a magical quintain.\n"
-#| "Now, this quintain gets 5 chances to hit you for 3 damage each. If it "
-#| "hits every time, you’ll drop from $student_hp to $future_hp hit points. "
-#| "Brace yourself!"
 msgid ""
 "Yes. It’s a magical quintain! If it hits you, it does 3 damage, and has 5 "
 "chances. If it hits every time, you’ll drop from $student_hp to "
 "$($student_hp-15) hitpoints. Brace yourself!"
 msgstr ""
-"Ya. tentu saja ini adalah quintain yang ajaib.\n"
-"Sekarang, quintain ini mendapatkan 5 kesempatan untuk menyerangmu yang "
-"masing-masing berdampak 3 kerusakan. Jika ia menyerangmu setiap kali, "
-"darahmu akan berkurang $student_hp sampai $future_hp hitpoint. Kuatkan "
-"dirimu!"
+"Ya. Ini adalah boneka target yang ajaib! Jika itu menyerangmu maka kau "
+"mendapatkan tiga lukboneka targetboneka targeta dan itu mendapatkan lima "
+"kesempatan. Jika kau kena setiap kali itu menyerang, darahmu menurun dari "
+"$student_hp ke $($student_hp-15) poin serang. "
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:616
 msgid "Turns"
-msgstr ""
+msgstr "Giliran"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:618
@@ -463,6 +418,13 @@ msgid ""
 "turn it is, and any applicable turn limit, next to the flag icon at the top "
 "of the screen."
 msgstr ""
+"Setiap giliran, setiap sisi di skenario mendapatkan kesempatan untuk "
+"melakukan langkah mereka. Ketika Anda sudah menyelesaikan semua yang Anda "
+"ingin lakukan di giliran ini, klik tombol <b>Selesaikan Giliran</b> di kanan "
+"bawah layar Anda. Sisi lain, entah dikontrol oleh AI atai pemain manusia "
+"lain, akan melakukan langkah mereka. Beberapa skenario harus diselesaikan "
+"dalam jangkauan beberapa gilirian. Anda bisa melihat giliran keberapa dan "
+"batas maksimum giliran di sebelah ikon bendera di bagian atas layar."
 
 #. [else]
 #. [event]
@@ -471,39 +433,36 @@ msgstr ""
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:796
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:509
 msgid "End your turn"
-msgstr "Akhiri Giliranmu"
+msgstr "Selesaikan giliranmu"
 
 #. [disallow_end_turn]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:631
 msgid ""
 "You cannot end your turn until you have completed the lesson on healing!"
 msgstr ""
+"Anda tidak bisa menyelesaikan giliran Anda hingga Anda benar-benar telah "
+"menyelesaikan pelatihan dalam penyembuhan!"
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:642
 msgid "Ouch! I need to heal! Only $student_hp hitpoints left!"
-msgstr "Aduh! Aku harus menyembuhkan! Hanya $student_hp hitpoint tersisa!"
+msgstr ""
+"Aduh! Aku butuh penyembuhan! Hanya $student_hp poin serang yang tersisa!"
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:643
-#, fuzzy
-#| msgid "Ouch! I need to heal! Only $student_hp hitpoints left!"
 msgid "female^Ouch! I need to heal! Only $student_hp hitpoints left!"
-msgstr "Aduh! Aku harus menyembuhkan! Hanya $student_hp hitpoint tersisa!"
+msgstr ""
+"Aduh! Aku butuh penyembuhan! Hanya $student_hp poin serang yang tersisa!"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:648
-#, fuzzy
-#| msgid ""
-#| "There is a village on the other side of the river. Visiting villages is a "
-#| "good idea, and ending your turn in one will heal you. To the village!"
 msgid ""
 "There are two villages within your reach. Visiting villages is a good idea, "
 "and ending your turn on one will heal you. To a village!"
 msgstr ""
-"Ada suatu desa di sebelah lain sungai itu. mengunjungi desa adalah suatu "
-"gagasan baik, dan jika giliranmu berakhir  di dalamnya hal itu akan "
-"menyembuhkanmu. pergilah ke desa!"
+"Ada dua desa dalam jangkauanmu. Mengunjungi desa merupakan ide yang bagus, "
+"menyelesaikan giliranmu disana akan menyembuhkanmu. Ke desa!"
 
 #. [label]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:653
@@ -512,50 +471,41 @@ msgstr "Desa"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:666
-#, fuzzy
-#| msgid "Move Konrad to capture a village"
 msgid "Move Konrad to a nearby village"
-msgstr "Pindahkan Konrad untuk mengambil sebuah desa"
+msgstr "Gerakkan Konrad ke desa tersebut"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:668
-#, fuzzy
-#| msgid "Move Li’sar to capture a village"
 msgid "Move Li’sar to a nearby village"
-msgstr "Pindahkan Li'sar untuk mengambil sebuah desa"
+msgstr "Gerakkan Li'sar ke desa tersebut"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:681
 msgid "Villages"
-msgstr "Desa-Desa"
+msgstr "Pedesaan"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:683
-#, fuzzy
-#| msgid ""
-#| "You have captured a village! It now flies your flag and has been added to "
-#| "your total village count. (The house icon at the top of the screen shows "
-#| "how many villages you currently control.) Villages provide the gold "
-#| "needed to recruit units. Each turn, you gain two gold plus one for every "
-#| "village you own."
 msgid ""
 "You have captured a village! It now flies your colors and has been added to "
 "your total village count (the house icon at the top of the screen shows how "
 "many villages you currently control). Villages provide the gold needed to "
 "recruit units. Each turn, you gain 2 gold, plus 1 for every village you own."
 msgstr ""
-"Kamu telah merebut sebuah desa! sekarang telah berkibar warna benderamu dan "
-"telah dihitung dalam jumlah desa yang kamu miliki. (icon bergambar rumah "
-"pada layar bagian atas menunjukkan seberapa banyak desa yang anda kendalikan "
+"Anda telah merebut sebuah desa! Sekarang telah berkibar benderamu dan telah "
+"dihitung dalam jumlah desa yang Anda miliki. (ikon bergambar rumah pada "
+"bagian atas layar menunjukkan seberapa banyak desa yang Anda kendalikan "
 "sekarang ini). Setiap desa menyediakan emas yang dibutuhkan untuk merekrut "
-"unit-unit. Pada setiap gilirannya, kamu akan memperoleh dua emas ditambah "
-"satu emas untuk tiap-tiap desa yang kamu miliki."
+"unit. Setiap giliran, Anda akan memperoleh dua emas ditambah satu emas untuk "
+"tiap desa yang Anda kendalikan."
 
 #. [disallow_end_turn]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:698
 msgid ""
 "You cannot end your turn until you have completed the lesson on recruiting!"
 msgstr ""
+"Anda tidak bisa menyelesaikan giliran Anda hingga Anda benar-benar telah "
+"menyelesaikan pelatihan dalam perekrutan!"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:707
@@ -565,43 +515,37 @@ msgid ""
 "whichever is less. In your case, you regained $student_hp_heal_amount "
 "hitpoints."
 msgstr ""
+"Karena kau memulai giliran di desa, kamu mendapatkan beberapa darah! "
+"Pedesaan menyembuhkan unit 8 poin serang per giliran atau yang cukup hingga "
+"darah mereka penuh, manapun yang lebih kecil. Dalam kasumu, kamu memperoleh "
+"$student_hp_heal_amount poin serang."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:712
-#, fuzzy
-#| msgid ""
-#| "You’re about to be healed by $hp_difference hitpoints, but it’s time to "
-#| "summon some help against that quintain."
 msgid "Now, it’s time to summon some help against that quintain."
 msgstr ""
-"Kamu mulai disembuhkan $hp_difference hitpoint, tetapi sudah waktunya untuk "
-"memanggil sedikit bantuan untuk melawan quintain itu."
+"Sekarang waktunya memanggil beberapa bantuan melawan boneka target itu."
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:717
 msgid "I’ll recruit some elves!"
-msgstr "Saya akan merekrut beberapa elf!"
+msgstr "Aku akan merekrut beberapa elf!"
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:718
-#, fuzzy
-#| msgid "I’ll recruit some elves!"
 msgid "female^I’ll recruit some elves!"
-msgstr "Saya akan merekrut beberapa elf!"
+msgstr "Aku akan merekrut beberapa elf!"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:723
-#, fuzzy
-#| msgid ""
-#| "A splendid idea. You can recruit two units if you return to the keep. You "
-#| "have plenty of gold for that."
 msgid ""
 "A splendid idea! It’s probably best not to attempt attacking the quintain "
 "this turn. Instead, you should return to the keep and recruit two units; you "
 "have plenty of gold for that."
 msgstr ""
-"Suatu gagasan baik sekali. Kamu dapat merekrut dua unit jika kamu kembali ke "
-"benteng. Tetapi itu bila kamu masih memiliki banyak emas."
+"Ide yang sangat hebat! Merupakan yang terbaik untuk tidak menyerang boneka "
+"target giliran ini. Sebaliknya, kau harus kembali ke benteng dan merekrut "
+"dua unit; kau memiliki banyak emas untuk itu."
 
 #. [label]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:728
@@ -611,12 +555,12 @@ msgstr "Benteng"
 #. [event]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:742
 msgid "Move Konrad to the keep"
-msgstr "Pindahkan Konrad ke dalam Benteng"
+msgstr "Gerakkan Konrad ke Benteng"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:744
 msgid "Move Li’sar to the keep"
-msgstr "Pindahkan  Li'sar ke dalam Benteng"
+msgstr "Gerakkan Li'sar ke Benteng"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:762
@@ -625,11 +569,6 @@ msgstr "Merekrut"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:764
-#, fuzzy
-#| msgid ""
-#| "Whenever you’re on a <i>keep</i>, you can <i>recruit</i> into the castle "
-#| "tiles around it by right-clicking and selecting <b>Recruit</b>. This time "
-#| "you will only be given one type of unit to choose: the Elvish Fighter."
 msgid ""
 "Whenever you’re on a <i>keep</i>, you can <i>recruit</i> units on the castle "
 "tiles around it by right-clicking and selecting <b>Recruit</b>. Note that "
@@ -637,22 +576,21 @@ msgid ""
 "to use them next turn. This scenario you have only one type of unit to "
 "choose from: the Elvish Fighter."
 msgstr ""
-"Kapan saja kamu berada di dalam sebuah <i>benteng</i>, kamu dapat "
-"<i>merekrut</i> di sekitar lantai benteng itu dengan melakukan klik kanan "
-"dan memilih <b>Rekrut</b>. Sementara ini kamu hanya diberi satu jenis unit "
-"untuk dipilih : Elf Petarung."
+"Kapan saja Anda berada di dalam sebuah <i>benteng</i>, Anda dapat "
+"<i>merekrut</i> unit di ubin kastil sekitarnya dengan mengklik kanandan "
+"memilih <b>Rekrut</b>. Harap diingat bahwa unit yang baru direkrut tidak "
+"bisa melakukan sesuatu pada giliran saat Anda merekrut mereka. Dalam "
+"skenario ini, Anda hanya punya satu unit untuk dipilih: Elf Petarung."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:767
-#, fuzzy
-#| msgid "Left click on an Elvish Fighter"
 msgid "Recruit two Elvish Fighters"
-msgstr "Klik kiri pada Elf Petarung"
+msgstr "Rekrut dua Elf Petarung"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:786
 msgid "Traits"
-msgstr ""
+msgstr "Ciri"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:788
@@ -663,128 +601,105 @@ msgid ""
 "each turn, and units with the <i>intelligent</i> trait require 20% less "
 "experience to level up."
 msgstr ""
+"Pastikan memeriksa <i>ciri</i> dari rekrutan baru Anda. Mereka terdaftar di "
+"bawah ras mereka di bilah samping. Ciri bisa memengaruhi bagaimana Anda "
+"menggunakan pasukan Anda. Contohnya, unit dengan ciri <i>cepat</i> bisa "
+"bergerak lebih banyak ubin setiap giliran dan unit dengan ciri <i>cerdas</i> "
+"memerlukan 20% lebih sedikit pengalaman untuk naik level."
 
 #. [disallow_end_turn]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:830
 msgid ""
 "You cannot end your turn until you have completed the lesson on attacking!"
 msgstr ""
+"Anda tidak bisa menyelesaikan giliran Anda hingga Anda benar-benar telah "
+"menyelesaikan pelatihan dalam menyerang!"
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:839
 msgid ""
 "Hey, the quintain just healed 2 hitpoints! I’d better attack it at once!"
 msgstr ""
-"Hey, quintainnya sembuh 2 hitpoint! lebih baik aku menyerangnya secara "
-"serentak!"
+"Hey, boneka targetnya sembuh 2 poin serang! Lebih baik aku menyerangnya "
+"secara serentak!"
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:840
-#, fuzzy
-#| msgid ""
-#| "Hey, the quintain just healed 2 hitpoints! I’d better attack it at once!"
 msgid ""
 "female^Hey, the quintain just healed 2 hitpoints! I’d better attack it at "
 "once!"
 msgstr ""
-"Hey, quintainnya sembuh 2 hitpoint! lebih baik aku menyerangnya secara "
-"serentak!"
+"Hey, boneka targetnya sembuh 2 poin serang! Lebih baik aku menyerangnya "
+"secara serentak!"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:845
 msgid "Yes, if a unit doesn’t do anything for a turn, it will slowly heal."
 msgstr ""
 "Ya, bila sebuah unit tidak melakukan apapun pada satu giliran, ia akan "
-"menjadi sembuh berangsur-angsur."
+"tersembukan sedikit-sedikit."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:850
-#, fuzzy
-#| msgid ""
-#| "But before you send your fighters against the quintain, you should know "
-#| "they have two kinds of attack..."
 msgid ""
 "Before you send your fighters against the quintain, you should know they "
 "have two kinds of attack..."
 msgstr ""
-"Tetapi sebelum anda mengirim pasukanmu melawan quintain, terlebih dahulu "
-"anda harus mengetahui bahwa ada dua jenis serangan..."
+"Sebelum kau mengirimkan petarungmu melawan boneka target, kau harus tahu "
+"bahwa itu punya dua macam serangan..."
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:855
-#, fuzzy
-#| msgid "I’ll tell them to use the one that does the most damage!"
 msgid "I’ll tell them to use the one that does more damage!"
 msgstr ""
-"Aku memberitahu mereka untuk menggunakan senjata yang menyebabkan kerusakan "
-"besar!"
+"Aku memberitahu mereka untuk menggunakan yang menyebabkan luka lebih besar!"
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:856
-#, fuzzy
-#| msgid "I’ll tell them to use the one that does the most damage!"
 msgid "female^I’ll tell them to use the one that does more damage!"
 msgstr ""
-"Aku memberitahu mereka untuk menggunakan senjata yang menyebabkan kerusakan "
-"besar!"
+"Aku memberitahu mereka untuk menggunakan yang menyebabkan luka lebih besar!"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:861
-#, fuzzy
-#| msgid ""
-#| "And which would that be? The sword (5–4) or the bow (3–3)? I suppose "
-#| "you’ll find out..."
 msgid ""
 "And which would that be? The sword (5×4; or 5 damage on each hit, with 4 "
 "attacks) or the bow (3×3; or 3 damage on each hit, with 3 attacks)? I "
 "suppose you’ll find out..."
 msgstr ""
-"Dan manakah yang lebih baik digunakan? Pedang (5-4) atau busur panah (3-3)? "
-"Aku harap kamu akan menemukan jawabanya..."
+"Dan yang manakah itu? Pedang (5×4; 5 luka per kena dengan 4 kali menyerang) "
+"atau busur (3×3: 3 luka per kena dengan 3 kali menyerang) ? Kau akan "
+"mengetahuinya..."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:864
-#, fuzzy
-#| msgid "Attack the orc with an Archer"
 msgid "Attack the quintain with your fighters"
-msgstr "Serang orc itu dengan Pemanah"
+msgstr "Serang boneka target dengan petarung Anda"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:875
-#, fuzzy
-#| msgid ""
-#| "You wouldn’t do anything stupid like charging that quintain yourself "
-#| "again, now would you?\n"
-#| "Use the fighters you recruited first; they’ll be a lot of help."
 msgid ""
 "You wouldn’t do anything stupid like charging that quintain yourself again, "
 "now would you? Use the fighters you recruited first; they’ll be a lot of "
 "help."
 msgstr ""
-"Kamu tidak akan lakukan perbuatan bodoh seperti menyerang quintain "
-"sendirian, kan?\n"
-"Gunakan petarung yang  dulu kamu rekrut untuk menyerangnya terlebih dahulu; "
-"mereka akan banyak membantu."
+"Kau tidak akan melakukan perbuatan bodoh seperti menyerang boneka target itu "
+"sendirian, kan? Gunakan petarung yang kau rekrut terlebih dahulu; mereka "
+"akan banyak membantu."
 
 #. [message]: speaker=Delfador
 #. a strong elf, so +1 damage
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:918
-#, fuzzy
-#| msgid ""
-#| "Your elf used a sword (5–4; or 5 damage, 4 attacks), which is a melee "
-#| "attack. The quintain defended with its melee attack (3–5). The ranged "
-#| "attack was safer.\n"
-#| "End your turn, then attack again."
 msgid ""
 "Your elf used a sword (6×4; or 6 damage on each hit, with 4 attacks), which "
 "is a <i>melee</i> attack. The quintain defended with its melee attack (3×5; "
 "or 3 damage on each hit, with 5 attacks). The ranged attack (the bow) would "
 "have been safer."
 msgstr ""
-"Elf mu menggunakan sebuah pedang ( 5-4; atau 5 kerusakan, 4 serangan), yang "
-"mana disebut serangan perkelahian. Quintain mempertahankan dengan  serangan "
-"perkelahiannya ( 3-5). namun serangan jarak jauh lebih aman bila digunakan.\n"
-"Akhiri giliranmu, lalu serang ia kembali."
+"Elf-mu menggunakan sebuah pedang (6×4; 6 luka setiap kena dengan 4 kali "
+"menyerang) yang dimana merupakan serangan <i>jarak dekat</i>. Boneka "
+"targetnya melindungi diri dengan serangan jarak dekatnya (3×5; 3 luka setiap "
+"kena dengan 5 kali menyerang). Serangan jarak jauh (busur) lebih aman."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:922
@@ -792,43 +707,35 @@ msgid ""
 "Elvish Fighters normally do 5×4 damage with their swords, but this elf has "
 "the <i>strong</i> trait, which increases the damage output of melee attacks."
 msgstr ""
+"Biasanya Elf Petarung akan menimbulkan 5×4 luka dengan pedang mereka, tapi "
+"elf ini punya ciri <i>kuat</i>, yang bisa menambahkan luka yang ditimbulkan "
+"oleh serangan jarak dekat."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:928
-#, fuzzy
-#| msgid ""
-#| "Your elf used a sword (5–4; or 5 damage, 4 attacks), which is a melee "
-#| "attack. The quintain defended with its melee attack (3–5). The ranged "
-#| "attack was safer.\n"
-#| "End your turn, then attack again."
 msgid ""
 "Your elf used a sword (5×4; or 5 damage on each hit, with 4 attacks), which "
 "is a <i>melee</i> attack. The quintain defended with its melee attack (3×5; "
 "or 3 damage on each hit, with 5 attacks). The ranged attack (the bow) would "
 "have been safer."
 msgstr ""
-"Elf mu menggunakan sebuah pedang ( 5-4; atau 5 kerusakan, 4 serangan), yang "
-"mana disebut serangan perkelahian. Quintain mempertahankan dengan  serangan "
-"perkelahiannya ( 3-5). namun serangan jarak jauh lebih aman bila digunakan.\n"
-"Akhiri giliranmu, lalu serang ia kembali."
+"Elf-mu menggunakan sebuah pedang (5×4; 5 luka setiap kena dengan 4 kali "
+"menyerang) yang dimana merupakan serangan <i>jarak dekat</i>. Boneka "
+"targetnya melindungi diri dengan serangan jarak dekatnya (3×5; 3 luka setiap "
+"kena dengan 5 kali menyerang). Serangan jarak jauh (busur) lebih aman."
 
 #. [message]: speaker=Delfador
 #. a dextrous elf, so +1 damage
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:949
-#, fuzzy
-#| msgid ""
-#| "Your elf used a bow, which is a <i>ranged</i> attack (3–3; or 3 damage, 3 "
-#| "attacks). The quintain has no ranged attack, only a melee attack, so it "
-#| "could not defend itself."
 msgid ""
 "Your elf used a bow, which is a <i>ranged</i> attack (4×3; or 4 damage on "
 "each hit, with 3 attacks). The quintain has no ranged attack, only a melee "
 "attack, so it could not defend itself."
 msgstr ""
-"Elf mu menggunakan sebuah busur panah, yang mana disebut serangan <i>jarak "
-"jauh</i> (3-3; atau 3 kerusakan, 3 serangan). Quintain tidak punya serangan "
-"jarak jauh, hanya memiliki serangan jarak dekat, maka ia tidak bisa membela "
-"dirinya."
+"Elf-mu menggunakan sebuah busur yang mana merupakan serangan <i>jarak jauh</"
+"i> (4×3; 4 luka setiap kena dengan 3 kali menyerang). Boneka targetnya tidak "
+"punya serangan jarak jauh, hanya serangan jarak dekat, jadi itu tidak bisa "
+"melindungi dirinya sendiri."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:953
@@ -836,33 +743,31 @@ msgid ""
 "Elvish Fighters normally do 3×3 damage with their bows, but this elf has the "
 "<i>dextrous</i> trait, which increases the damage output of ranged attacks."
 msgstr ""
+"Biasanya Elf Petarung akan menimbulkan 3×3 luka dengan busur mereka, tapi "
+"elf ini punya ciri <i>tangkas</i> yang bisa menambahkan luka yang "
+"ditimbulkan oleh serangan jarak jauh."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:959
-#, fuzzy
-#| msgid ""
-#| "Your elf used a bow, which is a <i>ranged</i> attack (3–3; or 3 damage, 3 "
-#| "attacks). The quintain has no ranged attack, only a melee attack, so it "
-#| "could not defend itself."
 msgid ""
 "Your elf used a bow, which is a <i>ranged</i> attack (3×3; or 3 damage on "
 "each hit, with 3 attacks). The quintain has no ranged attack, only a melee "
 "attack, so it could not defend itself."
 msgstr ""
-"Elf mu menggunakan sebuah busur panah, yang mana disebut serangan <i>jarak "
-"jauh</i> (3-3; atau 3 kerusakan, 3 serangan). Quintain tidak punya serangan "
-"jarak jauh, hanya memiliki serangan jarak dekat, maka ia tidak bisa membela "
-"dirinya."
+"Elf-mu menggunakan sebuah busur yang mana merupakan serangan <i>jarak jauh</"
+"i> (3×3; 3 luka setiap kena dengan 3 kali menyerang). Boneka targetnya tidak "
+"punya serangan jarak jauh, hanya serangan jarak dekat, jadi itu tidak bisa "
+"melindungi dirinya sendiri."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:976
 msgid "Keep attacking with both elves until the quintain is finished!"
-msgstr "tetaplah serang dengan elf yang kamu miliki sampai quintainya hancur!"
+msgstr "Tetaplah menyerang dengan elf hingga si boneka targetnya kalah!"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:991
 msgid "Maybe you should recruit another elf?"
-msgstr "Mungkin anda seharusnya merekrut lebih banyak elf?"
+msgstr "Mungkin kau seharusnya merekrut elf lagi?"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1001
@@ -874,8 +779,8 @@ msgstr "Deskripsi Unit"
 msgid ""
 "You can right click on a unit to see a detailed <b>Unit Description</b>."
 msgstr ""
-"Kamu dapat klik kanan pada sebuah unit untuk melihat <b>Deskripsi Unit</b> "
-"terperinci."
+"Anda dapat mengklik kanan pada sebuah unit untuk melihat <b>Deskripsi Unit</"
+"b> terperinci."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1013
@@ -889,15 +794,15 @@ msgid ""
 "needed. Take special care of units with the highest <i>experience points "
 "(XP)</i> so they can gain levels and become more powerful."
 msgstr ""
-" Ingatlah untuk selalu menarik mundur unit-unit yang terluka ke dalam desa "
-"dan merekrut lebih banyak unit jika diperlukan. Berikanlah perlakuan khusus "
-"untuk unit-unit dengan <i>poin pengalaman (XP)</i> tertinggi sehingga mereka "
+"Ingatlah untuk selalu menarik mundur unit-unit yang terluka ke desa dan "
+"merekrut lebih banyak unit jika diperlukan. Berikanlah perlakuan khusus "
+"kapada unit dengan <i>poin pengalaman (EXP)</i> tertinggi sehingga mereka "
 "dapat naik ke level berikutnya dan menjadi lebih kuat."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1025
 msgid "Support"
-msgstr "Sokongan"
+msgstr "Mendukung"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1027
@@ -905,29 +810,21 @@ msgid ""
 "Each village you control will <i>support</i> one unit for free. After that, "
 "each unit costs you one gold per turn."
 msgstr ""
-"Setiap desa yang kamu kuasai akan <i>menyokong</i> untuk memunculkan satu "
-"unit gratis. Setelah itu, persetiap unitnya akan mengurangi satu pemasukan "
-"emas pergilirannya."
+"Setiap desa yang Anda kuasai akan <i>mendukung</i> satu unit secara gratis. "
+"Setelah itu, setiap unit berharga satu emas per giliran."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1037
 msgid "You had really better finish off that quintain."
-msgstr ""
+msgstr "Kau benar-benar harus mengalahkan boneka target itu."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1047
 msgid "Advancement"
-msgstr "Kenaikan Pangkat"
+msgstr "Penaikan Pangkat"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1049
-#, fuzzy
-#| msgid ""
-#| "When a unit gains enough experience points (the <i>experience bar</i>, if "
-#| "present, is on the <b>right</b> of the <i>hitpoints bar</i>), it will go "
-#| "up a level. Elvish Fighters have two advancement options, and you will be "
-#| "able to choose which one you want. However, second level units cost twice "
-#| "as much to support as first level units."
 msgid ""
 "When a unit gains enough experience points (the <i>experience bar</i>, if "
 "present, is on the <b>right</b> of the <i>hitpoints bar</i>), it will gain a "
@@ -937,11 +834,10 @@ msgid ""
 msgstr ""
 "Ketika suatu unit mendapatkan poin pengalaman yang cukup (<i>batang pengukur "
 "pengalaman</i>, jika muncul, berada pada sisi <b>kanan</b> dari <i>batang "
-"pengukur hitpoint</i>), itu akan menaikan satu level. Elf Petarung mempunyai "
-"dua pilihan kenaikan pangkat, dan kamu akan mempunyai suatu kesempatan untuk "
-"memilih perubahan yang kamu inginkan. Bagaimanapun, biaya untuk memunculkan "
-"unit-unit level 2 akan naik menjadi dua kali lipat dibandingkan biaya untuk "
-"memuinculkan unit-unit itu ketika masih level 1."
+"pengukur poin serang</i>), ia akan naik level. Elf Petarung mempunyai dua "
+"pilihan kenaikan pangkat, dan Anda akan bisa memilih yang Anda inginkan. "
+"Bagaimanapun, biaya untuk mendukung unit level kedua dua kalinya biaya untuk "
+"level satu."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1059
@@ -950,15 +846,6 @@ msgstr "Pertahanan"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1062
-#, fuzzy
-#| msgid ""
-#| "Whenever one of your units is selected, you’ll see varying percentages as "
-#| "you move the mouse over the map. The higher the percentage, the more "
-#| "<i>defense</i> that unit has in that kind of terrain. For example, most "
-#| "units have good defenses in castles and villages but poor defenses in "
-#| "rivers. However, these quintains use a <i>magical</i> attack, which "
-#| "always has a 70% chance of hitting no matter what terrain its target "
-#| "occupies."
 msgid ""
 "Whenever one of your units is selected, you’ll see varying percentages as "
 "you move the mouse over the map. The higher the percentage, the more "
@@ -968,77 +855,57 @@ msgid ""
 "which always has a 70% chance of hitting no matter what terrain their "
 "targets occupy."
 msgstr ""
-"Sewaktu-waktu anda memilih suatu unit, kamu akan lihat perbedaan persentase "
-"saat anda menggerakan mouse pada medan yang berbeda. Persentase tertinggi, "
-"akan membuat <i>pertahanan</i> unit semakin baik pada jenis medan itu. "
-"Sebagai contoh, kebanyakan unit memiliki pertahanan baik bila berada di "
-"dalam benteng-benteng dan desa-desa tetapi buruk bila di sungai-sungai. "
-"Tetapi, quintain-quintain ini menggunakan serangan <i>sihir</i>, yang mana "
-"selalu mempunyai 70% kesempatan memukul tidak peduli di medan mana saja "
-"sasarannya berada."
+"Ketika salah satu unit Anda dipilih, Anda akan melihat persentase yang "
+"berbeda di seluruh peta. Lebih tinggi persentasenya, lebih banya "
+"<i>pertahanan</i> unit tersebut di medan tersebut. Contohnya, kebanyakan "
+"unit punya pertahanan yang bagus di kastil dan pedesaan, tapi pertahanan "
+"jelek di sungai. Beberapa unit, seperti boneka target tersebut, punya "
+"serangan <i>magis</i> yang selalu punya 70% kesempatan untuk kena tidak "
+"peduli di medan mana target mereka berada."
 
 #. [message]: speaker=unit
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1074
 msgid "Agh! This training is too much for me..."
-msgstr ""
+msgstr "Ugh! Pelatihan ini terlalu susah untukku..."
 
 #. [message]: speaker=unit
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1075
 msgid "female^Agh! This training is too much for me..."
-msgstr ""
+msgstr "Ugh! Pelatihan ini terlalu susah untukku..."
 
 #. [message]: speaker=second_unit
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1111
 msgid "The quintain is destroyed, and I have gained more experience!"
 msgstr ""
-"Quintain telah dihancurkan, dan saya telah memperoleh tambahan pengalaman!"
+"Boneka targetnya telah terkalahkan dan aku mendapatkan banyak pengalaman!"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1116
-#, fuzzy
-#| msgid ""
-#| "Yes, you gain experience through battle, especially by killing an "
-#| "opponent. Gain enough experience and you’ll become more powerful.\n"
-#| "Now, Konrad, I will leave you with more dummies to practice on! After "
-#| "that, we have real work to do..."
 msgid ""
 "Yes, you gain experience through battle, especially by killing an opponent. "
 "Gain enough experience and you’ll become more powerful."
 msgstr ""
-"Ya, kamu akan mendapatkan pengalaman melalui pertarungan, terutama dengan "
-"membunuh seorang musuh. Dapatkanlah cukup pengalaman dan kamu akan menjadi "
-"semakin kuat.\n"
-"Sekarang, Konrad, Aku akan meninggalkanmu dengan lebih banyak boneka untuk "
-"berlatih! Setelah itu, kita masih memiliki pekerjaan sesungguhnya untuk "
-"dilakukan..."
+"Ya, kau akan mendapatkan pengalaman selama petarungan, lebih khusus dengan "
+"membunuh lawanmu. Dapatkan pengalaman yang cukup dan kau akan menjadi lebih "
+"kuat."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1122
-#, fuzzy
-#| msgid ""
-#| " Now, Konrad, I will leave you with more dummies to practice on! After "
-#| "that, we have real work to do..."
 msgid ""
 "Now, Konrad, I will leave you with more dummies to practice on! After that, "
 "we have real work to do..."
 msgstr ""
-"Baiklah, Konrad, aku akan meninggalkanmu dengan lebih banyak lagi boneka "
-"agar kau berlatih! Setelah itu, kita masih memiliki pekerjaan serius untuk "
-"dikerjakan..."
+"Sekarang, Konrad, aku akan meninggalkanmu dengan lebih banyak boneka untuk "
+"kau latihan! Setelahnya, kita ada pekerjaan serius yang harus dilakukan..."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1127
-#, fuzzy
-#| msgid ""
-#| " Now, Li’sar, I will leave you with more dummies to practice on! After "
-#| "that, we have real work to do..."
 msgid ""
 "Now, Li’sar, I will leave you with more dummies to practice on! After that, "
 "we have real work to do..."
 msgstr ""
-"Baiklah,  Li'sar, aku akan meninggalkanmu dengan lebih banyak lagi boneka "
-"agar kau berlatih! Setelah itu, kita masih memiliki pekerjaan serius untuk "
-"dikerjakan..."
+"Sekarang, Li'sar, aku akan meninggalkanmu dengan lebih banyak boneka untuk "
+"kau latihan! Setelahnya, kita ada pekerjaan serius yang harus dilakukan..."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1203
@@ -1051,9 +918,9 @@ msgid ""
 "These dummies only attack if you are a single tile away. With care, you "
 "should be able to kill them one at a time."
 msgstr ""
-"Boneka-boneka ini hanya menyerang jika kamu berada satu lantai dekat "
-"dengannya. Dengan penuh kehati-hatian, kamu harus bisa membunuh mereka satu "
-"demi satu."
+"Boneka-boneka tersebut hanya menyerang jika Anda berada satu ubin dekat "
+"dengannya. Dengan penuh kehati-hatian, Anda harusnya bisa membunuh mereka "
+"satu demi satu."
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1214
@@ -1061,6 +928,8 @@ msgid ""
 "Well, I think I know the basics. Onwards! Maybe I can fight in a real battle "
 "next?"
 msgstr ""
+"Baiklah, sepertinya aku tahu dasarnnya. Seterusnya! Mungkin aku bisa "
+"bertarung di pertarungan yang sesungguhnya?"
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1215
@@ -1068,6 +937,8 @@ msgid ""
 "female^Well, I think I know the basics. Onwards! Maybe I can fight in a real "
 "battle next?"
 msgstr ""
+"Baiklah, sepertinya aku tahu dasarnnya. Seterusnya! Mungkin aku bisa "
+"bertarung di pertarungan yang sesungguhnya?"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1231

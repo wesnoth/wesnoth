@@ -1,4 +1,3 @@
-local H = wesnoth.require "helper"
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
 local FAU = wesnoth.require "ai/micro_ais/cas/ca_fast_attack_utils.lua"
 local LS = wesnoth.require "location_set"
@@ -111,7 +110,7 @@ function ca_fast_combat_leader:evaluation(cfg, data)
     -- not units) on the AI leader
     local leader_current_threat = 0
     if cfg and cfg.threatened_leader_fights then
-        for xa,ya in H.adjacent_tiles(leader.x, leader.y) do
+        for xa,ya in wesnoth.current.map:iter_adjacent(leader) do
             local enemy_power = enemy_power_map:get(xa, ya) or 0
             if (enemy_power > leader_current_threat) then
                 leader_current_threat = enemy_power
@@ -130,7 +129,7 @@ function ca_fast_combat_leader:evaluation(cfg, data)
                 -- First check if the threat against the leader at this hex
                 -- is acceptable
                 local acceptable_attack = true
-                for xa,ya in H.adjacent_tiles(attack.dst.x, attack.dst.y) do
+                for xa,ya in wesnoth.current.map:iter_adjacent(attack.dst) do
                     local enemy_power = enemy_power_map:get(xa, ya) or 0
                     local enemy_number = enemy_number_map:get(xa, ya) or 0
 

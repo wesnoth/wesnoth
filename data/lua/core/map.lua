@@ -65,6 +65,24 @@ if wesnoth.kernel_type() ~= "Application Lua Kernel" then
 			return code
 		end
 	end
+
+	function wesnoth.map.iter_adjacent(map, ...)
+		local where, n = wesnoth.map.read_location(...)
+		if n == 0 then error('wesnoth.map.iter_adjacent: missing location') end
+		local with_borders = select(n + 1, ...)
+		local adj = {wesnoth.map.get_adjacent_hexes(where)}
+		local i = 0
+		return function()
+			while i < #adj do
+				i = i + 1
+				local u, v = adj[i].x, adj[i].y
+				if map:on_board(u, v, with_borders) then
+					return u, v
+				end
+			end
+			return nil
+		end
+	end
 end
 
 if wesnoth.kernel_type() == "Game Lua Kernel" then
@@ -101,7 +119,7 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 			return self.x
 		elseif key == 2 then
 			return self.y
-		elseif #key > 0 and key[0] ~= '_' then
+		elseif type(key) ~= string or (#key > 0 and key[0] ~= '_') then
 			return hex_mt[key]
 		end
 	end
@@ -191,8 +209,8 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 	end
 
 	local find_locations = wesnoth.map.find
-	function wesnoth.map.find(cfg)
-		local hexes = find_locations(cfg)
+	function wesnoth.map.find(cfg, ref_unit)
+		local hexes = find_locations(cfg, ref_unit)
 		for i = 1, #hexes do
 			hexes[i] = wesnoth.map.get(hexes[i][1], hexes[i][2])
 		end
@@ -253,6 +271,42 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 end
 
 if wesnoth.kernel_type() == "Mapgen Lua Kernel" then
+	wesnoth.map.filter_tags = {
+		terrain = function(terrain)
+			return { "terrain", terrain }
+		end,
+		all =  function(...)
+			return { "all", ... }
+		end,
+		any =  function(...)
+			return { "any", ... }
+		end,
+		none =  function(...)
+			return { "none", ... }
+		end,
+		notall =  function(...)
+			return { "notall", ... }
+		end,
+		adjacent =  function(f, adj, count)
+			return { "adjacent",  f, adjacent = adj, count = count }
+		end,
+		find_in =  function(terrain)
+			return { "find_in", terrain }
+		end,
+		radius =  function(r, f, f_r)
+			return { "radius", r, f, filter_radius = f_r}
+		end,
+		x =  function(terrain)
+			return { "x", terrain }
+		end,
+		y =  function(terrain)
+			return { "y", terrain }
+		end,
+		is_loc = function(loc)
+			return f.all(f.x(loc[1]), f.y(loc[2]))
+		end
+	}
+
 	-- More map module stuff
 	wesnoth.create_filter = wesnoth.deprecate_api('wesnoth.create_filter', 'wesnoth.map.filter', 1, nil, wesnoth.map.filter)
 	wesnoth.create_map = wesnoth.deprecate_api('wesnoth.create_map', 'wesnoth.map.create', 1, nil, wesnoth.map.create)

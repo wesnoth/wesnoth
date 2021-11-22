@@ -117,7 +117,7 @@ function repaint(map_data)
 	}
 	set_terrain { "Xu",
 		f.all(
-			f.terrain("Uu,Uh,Uu^Uf,Uh^Uf"),
+			f.terrain("Uu,Uh,Uu^Tf,Uh^Tf"),
 			f.adjacent(f.terrain("G*^*,H*^*")),
 			f.adjacent(f.terrain("*^Xm"), nil, 0)
 		),
@@ -172,7 +172,7 @@ function repaint(map_data)
 			),
 			f.all(
 				f.terrain("Gll^V*"),
-				f.adjacent(f.terrain("Gll^Uf"))
+				f.adjacent(f.terrain("Gll^Tf"))
 			)
 		),
 		layer = "overlay",

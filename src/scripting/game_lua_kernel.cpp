@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2009 - 2018 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2009 - 2021
+	by Guillaume Melquiond <guillaume.melquiond@gmail.com>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 /**
@@ -135,6 +136,9 @@ static lg::log_domain log_scripting_lua("scripting/lua");
 #define LOG_LUA LOG_STREAM(info, log_scripting_lua)
 #define WRN_LUA LOG_STREAM(warn, log_scripting_lua)
 #define ERR_LUA LOG_STREAM(err, log_scripting_lua)
+
+static lg::log_domain log_wml("wml");
+#define ERR_WML LOG_STREAM(err, log_wml)
 
 std::vector<config> game_lua_kernel::preload_scripts;
 config game_lua_kernel::preload_config;
@@ -782,35 +786,6 @@ int game_lua_kernel::intf_override_shroud(lua_State *L)
 	return 0;
 }
 
-static int intf_parse_shroud_bitmap(lua_State* L)
-{
-	shroud_map temp;
-	temp.set_enabled(true);
-	temp.read(luaL_checkstring(L, 1));
-	std::set<map_location> locs;
-	for(int x = 1; x <= temp.width(); x++) {
-		for(int y = 1; y <= temp.height(); y++) {
-			if(!temp.value(x, y)) {
-				locs.emplace(x, y, wml_loc());
-			}
-		}
-	}
-	luaW_push_locationset(L, locs);
-	return 1;
-}
-
-static int intf_make_shroud_bitmap(lua_State* L)
-{
-	shroud_map temp;
-	temp.set_enabled(true);
-	auto locs = luaW_check_locationset(L, 1);
-	for(const auto& loc : locs) {
-		temp.clear(loc.wml_x(), loc.wml_y());
-	}
-	lua_push(L, temp.write());
-	return 1;
-}
-
 /**
  * Highlights the given location on the map.
  * - Arg 1: location.
@@ -1424,6 +1399,134 @@ static int impl_end_level_data_collect(lua_State* L)
 	return 0;
 }
 
+static int impl_mp_settings_get(lua_State* L)
+{
+	void* p = lua_touserdata(L, lua_upvalueindex(1));
+	const mp_game_settings& settings = static_cast<play_controller*>(p)->get_mp_settings();
+	if(lua_type(L, 2) == LUA_TNUMBER) {
+		// Simulates a WML table with one [options] child and a variable number of [addon] children
+		// TODO: Deprecate this -> mp_settings.options and mp_settings.addons
+		size_t i = luaL_checkinteger(L, 2);
+		if(i == 1) {
+			lua_createtable(L, 2, 0);
+			lua_pushstring(L, "options");
+			lua_seti(L, -2, 1);
+			luaW_pushconfig(L, settings.options);
+			lua_seti(L, -2, 2);
+			return 1;
+		} else if(i >= 2) {
+			i -= 2;
+			if(i < settings.addons.size()) {
+				auto iter = settings.addons.begin();
+				std::advance(iter, i);
+				config cfg;
+				iter->second.write(cfg);
+				cfg["id"] = iter->first;
+
+				lua_createtable(L, 2, 0);
+				lua_pushstring(L, "addon");
+				lua_seti(L, -2, 1);
+				luaW_pushconfig(L, cfg);
+				lua_seti(L, -2, 2);
+				return 1;
+			}
+		}
+	} else {
+		char const *m = luaL_checkstring(L, 2);
+		return_string_attrib("scenario", settings.name);
+		return_string_attrib("game_name", settings.name);
+		return_string_attrib("hash", settings.hash);
+		return_string_attrib("mp_era_name", settings.mp_era_name);
+		return_string_attrib("mp_scenario", settings.mp_scenario);
+		return_string_attrib("mp_scenario_name", settings.mp_scenario_name);
+		return_string_attrib("mp_campaign", settings.mp_campaign);
+		return_string_attrib("side_users", utils::join_map(settings.side_users));
+		return_int_attrib("experience_modifier", settings.xp_modifier);
+		return_bool_attrib("mp_countdown", settings.mp_countdown);
+		return_int_attrib("mp_countdown_init_time", settings.mp_countdown_init_time);
+		return_int_attrib("mp_countdown_turn_bonus", settings.mp_countdown_turn_bonus);
+		return_int_attrib("mp_countdown_reservoir_bonus", settings.mp_countdown_reservoir_time);
+		return_int_attrib("mp_countdown_action_bonus", settings.mp_countdown_action_bonus);
+		return_int_attrib("mp_num_turns", settings.num_turns);
+		return_int_attrib("mp_village_gold", settings.village_gold);
+		return_int_attrib("mp_village_support", settings.village_support);
+		return_bool_attrib("mp_fog", settings.fog_game);
+		return_bool_attrib("mp_shroud", settings.shroud_game);
+		return_bool_attrib("mp_use_map_settings", settings.use_map_settings);
+		return_bool_attrib("mp_random_start_time", settings.random_start_time);
+		return_bool_attrib("observer", settings.allow_observers);
+		return_bool_attrib("allow_observers", settings.allow_observers);
+		return_bool_attrib("private_replay", settings.private_replay);
+		return_bool_attrib("shuffle_sides", settings.shuffle_sides);
+		return_string_attrib("random_faction_mode", settings.random_faction_mode.to_string());
+		return_cfgref_attrib("options", settings.options);
+		if(strcmp(m, "savegame") == 0) {
+			auto savegame = settings.saved_game;
+			if(savegame == mp_game_settings::SAVED_GAME_MODE::NONE) {
+				lua_pushboolean(L, false);
+			} else {
+				lua_push(L, savegame.to_string());
+			}
+			return 1;
+		}
+		if(strcmp(m, "side_players") == 0) {
+			lua_push(L, settings.side_users);
+			return 1;
+		}
+		if(strcmp(m, "addons") == 0) {
+			for(const auto& [id, addon] : settings.addons) {
+				lua_createtable(L, 0, 4);
+				lua_push(L, id);
+				lua_setfield(L, -2, "id");
+				lua_push(L, addon.name);
+				lua_setfield(L, -2, "name");
+				lua_pushboolean(L, addon.required);
+				lua_setfield(L, -2, "required");
+				if(addon.min_version) {
+					luaW_getglobal(L, "wesnoth", "version");
+					lua_push(L, addon.min_version->str());
+					lua_call(L, 1, 1);
+					lua_setfield(L, -2, "min_version");
+				}
+				if(addon.version) {
+					luaW_getglobal(L, "wesnoth", "version");
+					lua_push(L, addon.version->str());
+					lua_call(L, 1, 1);
+					lua_setfield(L, -2, "version");
+				}
+				lua_createtable(L, addon.content.size(), 0);
+				for(const auto& content : addon.content) {
+					lua_createtable(L, 0, 3);
+					lua_push(L, content.id);
+					lua_setfield(L, -2, "id");
+					lua_push(L, content.name);
+					lua_setfield(L, -2, "name");
+					lua_push(L, content.type);
+					lua_setfield(L, -2, "type");
+					lua_seti(L, -2, lua_rawlen(L, -2) + 1);
+				}
+				lua_setfield(L, -2, "content");
+			}
+			return 1;
+		}
+		// Deprecated things that were moved out of mp_settings and into game_classification
+		const game_classification& game = static_cast<play_controller*>(p)->get_classification();
+		return_string_attrib_deprecated("mp_era", "wesnoth.scenario.mp_settings", INDEFINITE, "1.17", "Use wesnoth.scenario.era.id instead", game.era_id);
+		return_string_attrib_deprecated("active_mods", "wesnoth.scenario.mp_settings", INDEFINITE, "1.17", "Use wesnoth.scenario.modifications instead (returns an array of modification tables)", utils::join(game.active_mods));
+		// Expose the raw config; this is a way to ensure any new stuff can be accessed even if someone forgot to add it here.
+		return_cfgref_attrib("__cfg", settings.to_config());
+	}
+	return 0;
+}
+
+static int impl_mp_settings_len(lua_State* L)
+{
+	void* p = lua_touserdata(L, lua_upvalueindex(1));
+	const mp_game_settings& settings = static_cast<play_controller*>(p)->get_mp_settings();
+	lua_pushinteger(L, settings.addons.size() + 1);
+	return 1;
+}
+
 /**
  * Gets some scenario data (__index metamethod).
  * - Arg 1: userdata (ignored).
@@ -1439,6 +1542,7 @@ int game_lua_kernel::impl_scenario_get(lua_State *L)
 	return_int_attrib("turns", tod_man().number_of_turns());
 	return_string_attrib("next", gamedata().next_scenario());
 	return_string_attrib("id", gamedata().get_id());
+	return_tstring_attrib("name", play_controller_.get_scenario_name());
 	return_vector_string_attrib("defeat_music", gamedata().get_defeat_music());
 	return_vector_string_attrib("victory_music", gamedata().get_victory_music());
 	if(strcmp(m, "resources") == 0) {
@@ -1454,7 +1558,7 @@ int game_lua_kernel::impl_scenario_get(lua_State *L)
 	return_string_attrib("type", classification.campaign_type.to_string());
 	return_string_attrib("difficulty", classification.difficulty);
 	return_bool_attrib("show_credits", classification.end_credits);
-	return_string_attrib("end_text", classification.end_text);
+	return_tstring_attrib("end_text", classification.end_text);
 	return_int_attrib("end_text_duration", classification.end_text_duration);
 	if(!classification.campaign.empty()) {
 		return_cfgref_attrib("campaign", find_addon("campaign", classification.campaign));
@@ -1488,7 +1592,21 @@ int game_lua_kernel::impl_scenario_get(lua_State *L)
 	}
 
 	if(classification.is_multiplayer()) {
-		return_cfgref_attrib("mp_settings", play_controller_.get_mp_settings().to_config());
+		if(strcmp(m, "mp_settings") == 0) {
+			lua_newuserdatauv(L, 0, 0);
+			if(luaL_newmetatable(L, "mp settings")) {
+				lua_pushlightuserdata(L, &play_controller_);
+				lua_pushcclosure(L, impl_mp_settings_get, 1);
+				lua_setfield(L, -2, "__index");
+				lua_pushlightuserdata(L, &play_controller_);
+				lua_pushcclosure(L, impl_mp_settings_len, 1);
+				lua_setfield(L, -2, "__len");
+				lua_pushstring(L, "mp settings");
+				lua_setfield(L, -2, "__metatable");
+			}
+			lua_setmetatable(L, -2);
+			return 1;
+		}
 		return_cfgref_attrib("era", find_addon("era", classification.era_id));
 	}
 	return 0;
@@ -1513,7 +1631,7 @@ int game_lua_kernel::impl_scenario_set(lua_State *L)
 
 	game_classification& classification = play_controller_.get_classification();
 	modify_bool_attrib("show_credits", classification.end_credits = value);
-	modify_string_attrib("end_text", classification.end_text = value);
+	modify_tstring_attrib("end_text", classification.end_text = value);
 	modify_int_attrib("end_text_duration", classification.end_text_duration = value);
 	if(strcmp(m, "end_level_data") == 0) {
 		vconfig cfg(luaW_checkvconfig(L, 3));
@@ -1670,8 +1788,9 @@ int game_lua_kernel::intf_end_turn(lua_State* L)
 	//note that next_player_number = 1, next_player_number = nteams+1 both set the next team to be the first team
 	//but the later will make the turn counter change aswell fire turn end events accoringly etc.
 	if (!lua_isnoneornil(L, 1)) {
+		int max = 2 * teams().size();
 		int npn = luaL_checkinteger(L, 1);
-		if (npn <= 0 /*TODO: || npn > 2*nteams*/) {
+		if (npn <= 0 || npn > max) {
 			return luaL_argerror(L, 1, "side number out of range");
 		}
 		resources::controller->gamestate().next_player_number_ = npn;
@@ -1729,12 +1848,12 @@ int game_lua_kernel::intf_find_path(lua_State *L)
 	}
 
 	dst = luaW_checklocation(L, arg);
-	++arg;
 
 	if (!board().map().on_board(src))
 		return luaL_argerror(L, 1, "invalid location");
 	if (!board().map().on_board(dst))
-		return luaL_argerror(L, arg - 2, "invalid location");
+		return luaL_argerror(L, arg, "invalid location");
+	++arg;
 
 	const gamemap &map = board().map();
 	bool ignore_units = false, see_all = false, ignore_teleport = false;
@@ -1922,13 +2041,27 @@ int game_lua_kernel::intf_find_vision_range(lua_State *L)
 	actions::create_jamming_map(jamming_map, resources::gameboard->get_team(u->side()));
 	pathfind::vision_path res(*u, u->get_location(), jamming_map);
 
-	auto vision_set = res.edges;
-	for(auto d : res.destinations)
-	{
-		vision_set.insert(d.curr);
+	lua_createtable(L, res.destinations.size() + res.edges.size(), 0);
+	for(const auto& d : res.destinations) {
+		luaW_push_namedtuple(L, {"x", "y", "vision_left"});
+		lua_pushinteger(L, d.curr.wml_x());
+		lua_rawseti(L, -2, 1);
+		lua_pushinteger(L, d.curr.wml_y());
+		lua_rawseti(L, -2, 2);
+		lua_pushinteger(L, d.move_left);
+		lua_rawseti(L, -2, 3);
+		lua_rawseti(L, -2, lua_rawlen(L, -2) + 1);
 	}
-
-	luaW_push_locationset(L, vision_set);
+	for(const auto& e : res.edges) {
+		luaW_push_namedtuple(L, {"x", "y", "vision_left"});
+		lua_pushinteger(L, e.wml_x());
+		lua_rawseti(L, -2, 1);
+		lua_pushinteger(L, e.wml_y());
+		lua_rawseti(L, -2, 2);
+		lua_pushinteger(L, -1);
+		lua_rawseti(L, -2, 3);
+		lua_rawseti(L, -2, lua_rawlen(L, -2) + 1);
+	}
 	return 1;
 }
 
@@ -3400,6 +3533,18 @@ int game_lua_kernel::intf_color_adjust(lua_State *L)
 	return 0;
 }
 
+int game_lua_kernel::intf_get_color_adjust(lua_State *L)
+{
+	if(game_display_) {
+		auto color = game_display_->get_color_overlay();
+		lua_pushinteger(L, color.r);
+		lua_pushinteger(L, color.g);
+		lua_pushinteger(L, color.b);
+		return 3;
+	}
+	return 0;
+}
+
 /**
  * Delays engine for a while.
  * - Arg 1: integer.
@@ -3430,6 +3575,7 @@ int game_lua_kernel::intf_delay(lua_State *L)
 
 int game_lua_kernel::intf_add_label(lua_State *L)
 {
+	// TODO: Support color = {r = 0, g = 0, b = 0}
 	if (game_display_) {
 		vconfig cfg(luaW_checkvconfig(L, 1));
 
@@ -3994,7 +4140,8 @@ int game_lua_kernel::intf_log(lua_State *L)
 	const std::string& msg = lua_isstring(L, 2) ? luaL_checkstring(L, 2) : luaL_checkstring(L, 1);
 
 	if(logger == "wml" || logger == "WML") {
-		lg::wml_error() << msg << '\n';
+		lg::log_to_chat() << msg << '\n';
+		ERR_WML << msg;
 	} else {
 		bool in_chat = luaW_toboolean(L, -1);
 		game_state_.events_manager_->pump().put_wml_message(logger,msg,in_chat);
@@ -4279,9 +4426,6 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 		{"find", &dispatch<&game_lua_kernel::intf_get_locations>},
 		{"matches", &dispatch<&game_lua_kernel::intf_match_location>},
 		{"replace_if_failed", intf_replace_if_failed},
-		// Shroud bitmaps
-		{"parse_bitmap", intf_parse_shroud_bitmap},
-		{"make_bitmap", intf_make_shroud_bitmap},
 		{ nullptr, nullptr }
 	};
 	luaL_setfuncs(L, map_callbacks, 0);
@@ -4370,6 +4514,7 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 	static luaL_Reg const intf_callbacks[] {
 		{"add_hex_overlay", &dispatch<&game_lua_kernel::intf_add_tile_overlay>},
 		{"remove_hex_overlay", &dispatch<&game_lua_kernel::intf_remove_tile_overlay>},
+		{"get_color_adjust", &dispatch<&game_lua_kernel::intf_get_color_adjust>},
 		{"color_adjust", &dispatch<&game_lua_kernel::intf_color_adjust>},
 		{"delay", &dispatch<&game_lua_kernel::intf_delay>},
 		{"deselect_hex", &dispatch<&game_lua_kernel::intf_deselect_hex>},
@@ -4864,7 +5009,8 @@ bool game_lua_kernel::run_wml_conditional(const std::string& cmd, const vconfig&
 
 	// If an invalid coniditional tag is used, consider it a pass.
 	if(!luaW_getglobal(L, "wesnoth", "wml_conditionals", cmd)) {
-		lg::wml_error() << "unknown conditional wml: [" << cmd << "]\n";
+		lg::log_to_chat() << "unknown conditional wml: [" << cmd << "]\n";
+		ERR_WML << "unknown conditional wml: [" << cmd << "]";
 		return true;
 	}
 

@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2008 - 2018 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2008 - 2021
+	by Mark de Wever <koraq@xs4all.nl>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
@@ -37,6 +38,7 @@
 #include "gui/dialogs/preferences_dialog.hpp"
 #include "gui/dialogs/screenshot_notification.hpp"
 #include "gui/dialogs/simple_item_selector.hpp"
+#include "language.hpp"
 #include "log.hpp"
 #include "preferences/game.hpp"
 //#define DEBUG_TOOLTIP
@@ -57,6 +59,8 @@
 
 #include <algorithm>
 #include <functional>
+
+#include <boost/algorithm/string/erase.hpp>
 
 static lg::log_domain log_config("config");
 #define ERR_CF LOG_STREAM(err, log_config)
@@ -309,6 +313,31 @@ void title_screen::pre_show(window& win)
 			gui2::show_error_message(e.what());
 		}
 	});
+
+	if(auto* lang_button = find_widget<button>(&win, "language", false, false); lang_button) {
+		const auto& locale = translation::get_effective_locale_info();
+		// Just assume everything is UTF-8 (it should be as long as we're called Wesnoth)
+		// and strip the charset from the Boost locale identifier.
+		const auto& boost_name = boost::algorithm::erase_first_copy(locale.name(), ".UTF-8");
+		const auto& langs = get_languages(true);
+
+		auto lang_def = std::find_if(langs.begin(), langs.end(), [&](language_def const& lang) {
+			return lang.localename == boost_name;
+		});
+
+		if(lang_def != langs.end()) {
+			lang_button->set_label(lang_def->language.str());
+		} else if(boost_name == "c" || boost_name == "C") {
+			// HACK: sometimes System Default doesn't match anything on the list. If you fork
+			// Wesnoth and change the neutral language to something other than US English, you
+			// want to change this too.
+			lang_button->set_label("English (US)");
+		} else {
+			// If somehow the locale doesn't match a known translation, use the
+			// locale identifier as a last resort
+			lang_button->set_label(boost_name);
+		}
+	}
 
 	//
 	// Preferences

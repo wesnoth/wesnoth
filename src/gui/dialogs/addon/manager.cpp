@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2008 - 2018 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2008 - 2021
+	by Mark de Wever <koraq@xs4all.nl>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
@@ -954,11 +955,13 @@ static std::string format_addon_time(std::time_t time)
 	if(time) {
 		std::ostringstream ss;
 
-		const char* format = preferences::use_twelve_hour_clock_format()
-			? "%Y-%m-%d %I:%M %p"
-			: "%Y-%m-%d %H:%M";
+		const std::string format = preferences::use_twelve_hour_clock_format()
+			// TRANSLATORS: Month + day of month + year + 12-hour time, eg 'November 02 2021, 1:59 PM'. Format for your locale.
+			? _("%B %d %Y, %I:%M %p")
+			// TRANSLATORS: Month + day of month + year + 24-hour time, eg 'November 02 2021, 13:59'. Format for your locale.
+			: _("%B %d %Y, %H:%M");
 
-		ss << std::put_time(std::localtime(&time), format);
+		ss << translation::strftime(format, std::localtime(&time));
 
 		return ss.str();
 	}
@@ -995,10 +998,6 @@ void addon_manager::on_addon_select()
 	find_widget<styled_widget>(parent, "downloads", false).set_label(std::to_string(info->downloads));
 	find_widget<styled_widget>(parent, "created", false).set_label(format_addon_time(info->created));
 	find_widget<styled_widget>(parent, "updated", false).set_label(format_addon_time(info->updated));
-
-	// Although this is a user-visible string, use utils::join instead of format_conjunct_list
-	// because "x, y, z" is clearer than "x, y and z" in this context.
-	find_widget<styled_widget>(parent, "tags", false).set_label(utils::join(info->tags, ", "));
 
 	find_widget<styled_widget>(parent, "dependencies", false).set_label(!info->depends.empty()
 		? make_display_dependencies(info->id, addons_, tracking_info_)
@@ -1045,7 +1044,6 @@ void addon_manager::on_addon_select()
 		for(const auto& f : info->versions) {
 			version_filter_entries.emplace_back("label", f.str());
 		}
-		version_filter.set_active(true);
 	} else {
 		action_stack.select_layer(1);
 
@@ -1055,9 +1053,10 @@ void addon_manager::on_addon_select()
 
 		// Show only the version to be published
 		version_filter_entries.emplace_back("label", info->current_version.str());
-		version_filter.set_active(false);
 	}
+
 	version_filter.set_values(version_filter_entries);
+	version_filter.set_active(version_filter_entries.size() > 1);
 }
 
 void addon_manager::on_selected_version_change()

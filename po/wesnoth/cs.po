@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2021-06-23 11:42-0400\n"
-"PO-Revision-Date: 2021-06-09 20:37+0200\n"
+"PO-Revision-Date: 2021-09-20 20:26+0200\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
@@ -4517,7 +4517,7 @@ msgstr "I jinak skvělý plán selže, pokud zaútočíš v nevhodnou denní dob
 #: data/tips.cfg:61 data/tips.cfg:85 data/tips.cfg:137 data/tips.cfg:145
 #: data/tips.cfg:222
 msgid "<i>― Haldric II, 42YW, Handbook of Tactical Analysis: Volume I</i>"
-msgstr "<i>― Příručka taktické analýzy, kniha I - Haldrik II., 42 w. l.</i>"
+msgstr "<i>― Příručka taktické analýzy, kniha I – Haldrik II., 42 w. l.</i>"
 
 #. [tip]
 #: data/tips.cfg:64
@@ -4618,7 +4618,7 @@ msgstr ""
 #. [tip]
 #: data/tips.cfg:89
 msgid "<i>― Haldric II, 43YW, Handbook of Tactical Analysis: Volume II</i>"
-msgstr "<i>― Příručka taktické analýzy, kniha I - Haldrik II., 42 w. l.</i>"
+msgstr "<i>― Příručka taktické analýzy, kniha II – Haldrik II., 43 w. l.</i>"
 
 #. [tip]
 #: data/tips.cfg:92
@@ -5148,6 +5148,9 @@ msgid ""
 "quicker. The <i>acceleration factor</i> can be set, and turned on by "
 "default, in the <i>Preferences</i> menu’s <i>General</i> tab."
 msgstr ""
+"Podržení klávesy <b>shift</b> zrychlí animace pro pohyb a boj. <i>Faktor "
+"akcelerace</i> lze nastavit a zapnout jako výchozí v záložce <i>Obecné</i> "
+"menu <i>Nastavení</i>."
 
 #. [tip]
 #. Translate "Change difficulty" and "Load Game" as in wesnoth-lib textdomain
@@ -5276,7 +5279,7 @@ msgstr "(stiskni $hotkey k pokračování)"
 
 #: src/addon/client.cpp:76
 msgid "Connecting to $server_address|..."
-msgstr "Připojuji se k $server_adress|..."
+msgstr "Připojuji se k $server_address|..."
 
 #: src/addon/client.cpp:123
 msgid "Downloading list of add-ons..."
@@ -5828,8 +5831,8 @@ msgid ""
 "Report abuse, rule violations, etc. to the server moderators. Make sure to "
 "mention relevant nicknames, etc."
 msgstr ""
-"Porušení pravidel, nevhodné chování atd. hlašte moderátorům serveru. "
-"Nezapomeňte zmínit konkrétní přezdívky a role v konfliktu."
+"Porušení pravidel, nevhodné chování atd. nahlas moderátorům serveru. "
+"Nezapomeň zmínit konkrétní přezdívky a role v konfliktu."
 
 #: src/chat_command_handler.hpp:97
 msgid "<message>"
@@ -6102,11 +6105,11 @@ msgid "Please report this to the author or maintainer of this add-on."
 msgid_plural ""
 "Please report this to the respective authors or maintainers of these add-ons."
 msgstr[0] ""
-"Prosíme ohlašte tento problém autorům nebo správcům těchto rozšíření."
+"Prosíme ohlaste tento problém autorům nebo správcům těchto rozšíření."
 msgstr[1] ""
-"Prosíme ohlašte tyto problémy autorům nebo správcům těchto rozšíření."
+"Prosíme ohlaste tyto problémy autorům nebo správcům těchto rozšíření."
 msgstr[2] ""
-"Prosíme ohlašte tyto problémy autorům nebo správcům těchto rozšíření."
+"Prosíme ohlaste tyto problémy autorům nebo správcům těchto rozšíření."
 
 #: src/game_events/pump.cpp:476 src/game_launcher.cpp:924
 msgid "Error: "
@@ -6309,7 +6312,7 @@ msgstr "Znič nepřátelské(ho) vůdce"
 
 #: src/game_initialization/mp_game_utils.cpp:101
 msgid "Cannot find era $era"
-msgstr "Nemohu najít následující věk - $era"
+msgstr "Nelze najít éru $era"
 
 #: src/game_initialization/multiplayer.cpp:235
 msgid "Invalid address specified for multiplayer server"
@@ -6347,7 +6350,7 @@ msgstr "Varování"
 #: src/game_initialization/multiplayer.cpp:407
 msgid ""
 "The remote server requested a password while using an insecure connection."
-msgstr ""
+msgstr "Vzdálený server si vyžádal heslo, ale používá nezabezpečené spojení."
 
 #: src/game_initialization/multiplayer.cpp:409
 msgid "You must login first."
@@ -6435,7 +6438,7 @@ msgstr "Bylo provedeno příliš mnoho pokusů o přihášení."
 
 #: src/game_initialization/multiplayer.cpp:452
 msgid "Password hashing failed."
-msgstr ""
+msgstr "Hašování hesla se nepodařilo."
 
 #: src/game_initialization/playcampaign.cpp:75
 msgid "Scenario Report"
@@ -7005,7 +7008,7 @@ msgstr "Žádná jednotka nebyla naverbována."
 
 #: src/menu_events.cpp:309
 msgid "Internal error. Please report this as a bug! Details:\n"
-msgstr "Vnitřní chyba. Prosím nahlaš to jako chybu programu! Podrobnosti:\n"
+msgstr "Vnitřní chyba. Prosím nahlas to jako chybu programu! Podrobnosti:\n"
 
 #: src/menu_events.cpp:315
 msgid "You cannot recruit a $unit_type_name at this time."
@@ -7093,7 +7096,7 @@ msgstr "Najdi popisek nebo jednotku"
 
 #: src/menu_events.cpp:1184
 msgid "(D) — debug only, (N) — network only, (A) — admin only"
-msgstr "(D) - pouze ladění, (N) - pouze síť, (A) - pouze admin"
+msgstr "(D) – pouze ladění, (N) – pouze síť, (A) – pouze admin"
 
 #: src/menu_events.cpp:1191
 msgid "(debug command)"
@@ -7233,7 +7236,7 @@ msgid ""
 "Change turn limit, or turn the turn limit off if no number is specified or "
 "it’s −1."
 msgstr ""
-"Změní limit kol, nebo jej vypne, pokud je hodnota nastavena na -1 nebo "
+"Změní limit kol, nebo jej vypne, pokud je hodnota nastavena na −1 nebo "
 "neudána."
 
 #: src/menu_events.cpp:1266
@@ -7266,7 +7269,8 @@ msgstr "Nastaví příkaz připojený ke klávesové zkratce"
 
 #: src/menu_events.cpp:1277
 msgid "Invoke a dialog allowing changing control of MP sides."
-msgstr "Spustí dialog umožňující změnu kontroly stran ve hře."
+msgstr ""
+"Vyvolá dialogové okno umožňující změnu ovládání stran ve hře více hráčů."
 
 #: src/menu_events.cpp:1278
 msgid "Launch the gamestate inspector"
@@ -7411,11 +7415,11 @@ msgstr ""
 
 #: src/menu_events.cpp:1539
 msgid "Side '$side' controller is now fully controlled by: AI."
-msgstr "Strana '$side' je nyní plně ovládaná počítačem."
+msgstr "Strana „$side“ je nyní plně ovládaná počítačem."
 
 #: src/menu_events.cpp:1541
 msgid "Side '$side' is already fully AI controlled."
-msgstr "Strana '$side' už je plně ovládaná počítačem."
+msgstr "Strana „$side“ už je plně ovládaná počítačem."
 
 #: src/menu_events.cpp:1566
 msgid ""
@@ -7426,7 +7430,7 @@ msgstr ""
 
 #: src/menu_events.cpp:1608
 msgid "Can't idle invalid side: '$side'."
-msgstr "Strau „$side“ nelze označit jako nečinnou."
+msgstr "Stranu „$side“ nelze označit jako nečinnou."
 
 #: src/menu_events.cpp:1613
 msgid "Can't idle networked side: '$side'."
@@ -7442,7 +7446,7 @@ msgstr "Nelze změnit vlastníka neplatné strany „$side|“."
 
 #: src/menu_events.cpp:1689
 msgid "Can't change control of out-of-bounds side: '$side'."
-msgstr "Nelze změnit vlastníka strany „$side|“ - mimo rozsah platných stran."
+msgstr "Nelze změnit vlastníka strany „$side|“ – mimo rozsah platných stran."
 
 #: src/menu_events.cpp:1706
 msgid "Can't query control of invalid side: '$side'."
@@ -7450,7 +7454,7 @@ msgstr "Nelze se dotázat na vlastníka neplatné strany „$side“."
 
 #: src/menu_events.cpp:1713
 msgid "Can't query control of out-of-bounds side: '$side'."
-msgstr "Nelze změnit vlastníka strany „$side“ - mimo rozsah platných stran."
+msgstr "Nelze změnit vlastníka strany „$side“ – mimo rozsah platných stran."
 
 #: src/menu_events.cpp:1834
 msgid "Choose Scenario (Debug!)"
@@ -7608,7 +7612,7 @@ msgstr "Podrobnosti chyby:"
 
 #: src/play_controller.cpp:1258
 msgid "Warning: broken campaign branches"
-msgstr ""
+msgstr "Varování: rozbité větve tažení"
 
 #. TRANSLATORS: This is an error that will hopefully only be seen by UMC authors and by players who have already
 #. said "okay" to a "loading saves from an old version might not work" dialog.
@@ -7618,9 +7622,13 @@ msgid ""
 msgid_plural ""
 "Some of the possible next scenarios are missing, you might not be able to "
 "finish this campaign."
-msgstr[0] ""
+msgstr[0] "Následující scénář chybí, toto tažení nebudeš moci dokončit."
 msgstr[1] ""
+"Některé z dalších možných scénářů chybí, asi nebudeš moci dokončit toto "
+"tažení."
 msgstr[2] ""
+"Některé z dalších možných scénářů chybí, asi nebudeš moci dokončit toto "
+"tažení."
 
 #: src/play_controller.cpp:1271
 msgid ""
@@ -7630,12 +7638,18 @@ msgid_plural ""
 "Please report the following missing scenarios to the campaign’s author:\n"
 "$unknown_list|"
 msgstr[0] ""
+"Prosím nahlas autorovi tažení tento chybějící scénář:\n"
+"$unknown_list|"
 msgstr[1] ""
+"Prosím nahlas autorovi tažení tyto chybějící scénáře:\n"
+"$unknown_list|"
 msgstr[2] ""
+"Prosím nahlas autorovi tažení tyto chybějící scénáře:\n"
+"$unknown_list|"
 
 #: src/play_controller.cpp:1275
 msgid "Once this is fixed, you will need to restart this scenario."
-msgstr ""
+msgstr "Jakmile to bude opraveno, budeš muset tento scénář restartovat."
 
 #: src/play_controller.cpp:1455
 msgid "No objectives available"
@@ -7764,10 +7778,8 @@ msgid "Type: "
 msgstr "Typ: "
 
 #: src/reports.cpp:196
-#, fuzzy
-#| msgid "Specials: "
 msgid "Special Notes:"
-msgstr "Zvláštnosti: "
+msgstr "Zvláštní poznámky:"
 
 #: src/reports.cpp:219
 msgid "Race: "
@@ -8641,279 +8653,3 @@ msgstr "Skryj plány pro hráče $player"
 #: src/whiteboard/manager.cpp:1137
 msgid "Whiteboard Options"
 msgstr "Nastavení plánovacího módu"
-
-#, fuzzy
-#~| msgid "female^neutral"
-#~ msgid "female^feral"
-#~ msgstr "neutrální"
-
-#, fuzzy
-#~| msgid "unhealable"
-#~ msgid "Unhealable"
-#~ msgstr "neléčitelný"
-
-#~ msgid "magical leadership"
-#~ msgstr "magické velení"
-
-#~ msgid "female^magical leadership"
-#~ msgstr "magické velení"
-
-#~ msgid ""
-#~ "This unit can lead your own units that are next to it, making them fight "
-#~ "better with magicals weapons.\n"
-#~ "Adjacent own units of lower level will do more damage in battle. When a "
-#~ "unit adjacent to, of a lower level than, and on the same side as a unit "
-#~ "with Leadership engages in combat, its attacks do 25% more damage times "
-#~ "the difference in their levels."
-#~ msgstr ""
-#~ "Tato jednotka dokáže vést vlastní jednotky vedle sebe, takže bojují lépe "
-#~ "magickými útoky.\n"
-#~ "Vlastní jednotky nižší úrovně na sousedících polích způsobují v boji "
-#~ "větší poškození. Když se sousedící jednotka nižší úrovně nachází v boji "
-#~ "na stejné straně jako ta velící, pak její útoky způsobují o 25 % více "
-#~ "poškození krát rozdíl jejich úrovní."
-
-#~ msgid ""
-#~ "This unit’s resistances are added to 20%, up to a maximum of 50%, when "
-#~ "defending to melle attacks. Vulnerabilities are not affected."
-#~ msgstr ""
-#~ "Odolnost této jednotky je při obraně vůči útokům na blízko zvýšena o 20 "
-#~ "%, až na maximum 50 %. Vlastní zranitelnost se ale nemění."
-
-#, fuzzy
-#~| msgid "female^cured"
-#~ msgid "female^darkens"
-#~ msgstr "vyléčená"
-
-#, fuzzy
-#~| msgid "This unit has been petrified. It may not move or attack."
-#~ msgid "This unit sacrifices its own life in order to make more attacks."
-#~ msgstr ""
-#~ "Tato jednotka byla proměněna v kámen. Nemůže se ani hýbat, ani útočit."
-
-#~ msgid "cantor"
-#~ msgstr "kantor"
-
-#~ msgid "female^cantor"
-#~ msgstr "kantorka"
-
-#~ msgid ""
-#~ "This unit grants marksman to all ranged attacks of all adjacent allies."
-#~ msgstr ""
-#~ "Tato jednotka poskytuje všem útokům na dálku všech sousedících spojenců "
-#~ "výjimečnost odstřelovače."
-
-#, fuzzy
-#~| msgid "jamming:"
-#~ msgid "Jamming Orc"
-#~ msgstr "rušení:"
-
-#, fuzzy
-#~| msgid "Clear Labels"
-#~ msgid "Clear sailing!"
-#~ msgstr "Vymazat popisky"
-
-#, fuzzy
-#~| msgid "invisible: "
-#~ msgid "It is invisible!"
-#~ msgstr "neviditelný: "
-
-#, fuzzy
-#~| msgid "Debug mode activated!"
-#~ msgid "Teleporters activated"
-#~ msgstr "Ladící mód je aktivní!"
-
-#, fuzzy
-#~| msgid "Debug mode deactivated!"
-#~ msgid "Teleporters deactivated"
-#~ msgstr "Ladící mód byl ukončen!"
-
-#~ msgid "aura of death ("
-#~ msgstr "aura smrti ("
-
-#~ msgid "female^aura of death ("
-#~ msgstr "aura smrti ("
-
-#, fuzzy
-#~| msgid "Custom map."
-#~ msgid "Custom dialog"
-#~ msgstr "Vlastní mapa."
-
-#, fuzzy
-#~| msgid "Clear objective orders"
-#~ msgid "objectives test"
-#~ msgstr "Zrušit příkazy s cíli"
-
-#, fuzzy
-#~| msgid "neutral"
-#~ msgid "Neutral"
-#~ msgstr "neutrální"
-
-#, fuzzy
-#~| msgid "Defeat enemy leader(s)"
-#~ msgid "Defeat the enemy leader (he’s at 29,16!)"
-#~ msgstr "Znič nepřátelské(ho) vůdce"
-
-#, fuzzy
-#~| msgid "Defeat enemy leader(s)"
-#~ msgid "Defeat the enemy leader (he’s at 28,18!)"
-#~ msgstr "Znič nepřátelské(ho) vůdce"
-
-#, fuzzy
-#~| msgid "Temple"
-#~ msgid "Temporal Clone"
-#~ msgstr "Chrám"
-
-#, fuzzy
-#~| msgid "Launch the gamestate inspector"
-#~ msgid "Gamestate Inspector"
-#~ msgstr "Spustí prohlížeč stavu hry"
-
-#, fuzzy
-#~| msgid "Chat message"
-#~ msgid "Parrot message"
-#~ msgstr "Zpráva chatu"
-
-#, fuzzy
-#~| msgid "Holy Water"
-#~ msgid "Water"
-#~ msgstr "Svěcená voda"
-
-#, fuzzy
-#~| msgid "poisoned"
-#~ msgid "poison"
-#~ msgstr "otrávený"
-
-#, fuzzy
-#~| msgid "Northerners"
-#~ msgid "Northerners unleashed!"
-#~ msgstr "Northerners"
-
-#, fuzzy
-#~| msgid "Lato Light"
-#~ msgid "Let’s fight"
-#~ msgstr "Lato Light"
-
-#, fuzzy
-#~| msgid "Cannot find era $era"
-#~ msgid "Cannot divide by zero!"
-#~ msgstr "Nemohu najít následující věk - $era"
-
-#, fuzzy
-#~| msgid "Trash Pile"
-#~ msgid "Crash test"
-#~ msgstr "Hromada mezí"
-
-#, fuzzy
-#~| msgid "Potion of Decay"
-#~ msgid "Potion of bleach"
-#~ msgstr "Lektvar rozkladu"
-
-#, fuzzy
-#~| msgid "Warning"
-#~ msgid "Win"
-#~ msgstr "Varování"
-
-#, fuzzy
-#~| msgid "This is not a multiplayer save."
-#~ msgid "This is not a forest"
-#~ msgstr "Toto není uložená pozice ze hry více hráčů."
-
-#, fuzzy
-#~| msgid "Still Another Wanderer"
-#~ msgid "Still there"
-#~ msgstr "Still Another Wanderer"
-
-#, fuzzy
-#~| msgid "Summoning Circle"
-#~ msgid "Summon Troll"
-#~ msgstr "Kruh pro vyvolávání"
-
-#, fuzzy
-#~| msgid "Magic Circle"
-#~ msgid "Magic Troll"
-#~ msgstr "Magický kruh"
-
-#, fuzzy
-#~| msgid "sceptre of fire"
-#~ msgid "ruby of fire"
-#~ msgstr "ohnivé žezlo"
-
-# když se změní vlastník strany nebo tak něco
-#, fuzzy
-#~| msgid "Turn changed"
-#~ msgid "map change"
-#~ msgstr "Změna tahu"
-
-# když se změní vlastník strany nebo tak něco
-#, fuzzy
-#~| msgid "Turn changed"
-#~ msgid "map change2"
-#~ msgstr "Změna tahu"
-
-# když se změní vlastník strany nebo tak něco
-#, fuzzy
-#~| msgid "Turn changed"
-#~ msgid "map change3"
-#~ msgstr "Změna tahu"
-
-#, fuzzy
-#~| msgid "Shroud"
-#~ msgid "Shrouded label"
-#~ msgstr "Zahalení tmou"
-
-#, fuzzy
-#~| msgid "Bright green"
-#~ msgid "More green!"
-#~ msgstr "Světle zelená"
-
-#, fuzzy
-#~| msgid "Dark blue"
-#~ msgid "More blue!"
-#~ msgstr "Tmavě modrá"
-
-#, fuzzy
-#~| msgid "Menu"
-#~ msgid "Menu 1"
-#~ msgstr "Menu"
-
-#, fuzzy
-#~| msgid "Menu"
-#~ msgid "Menu 2"
-#~ msgstr "Menu"
-
-#~ msgid "very long"
-#~ msgstr "velmi dlouhý"
-
-#~ msgid "electrical"
-#~ msgstr "elektrický"
-
-#~ msgid "Group players in lobby"
-#~ msgstr "Seskupovat hráče v čekárně"
-
-#~ msgid ""
-#~ "Lato-Regular.ttf,DejaVuSans.ttf,Andagii.ttf,DroidSansJapanese.ttf,"
-#~ "DroidSansFallbackFull.ttf,Junicode-Regular.ttf"
-#~ msgstr ""
-#~ "Lato-Regular.ttf,DejaVuSans.ttf,Andagii.ttf,DroidSansJapanese.ttf,"
-#~ "DroidSansFallbackFull.ttf,Junicode-Regular.ttf"
-
-#~ msgid "Read the <b>Hotkeys</b> list in the <b>Preferences</b> menu."
-#~ msgstr ""
-#~ "Přečti si seznam klávesových zkratek – <b>Klávesy</b> v menu "
-#~ "<b>Nastavení</b>."
-
-#~ msgid ""
-#~ "Nearly every button and icon in the Wesnoth game has a tooltip. Hover the "
-#~ "mouse pointer over any button or icon to get a description or explanation "
-#~ "of what it does."
-#~ msgstr ""
-#~ "Ve Wesnothu má téměř každé tlačítko a obrázek, ba i termín, bublinkovou "
-#~ "nápovědu. Přesuň nad něj myš a dostaneš vyčerpávající popis."
-
-#~ msgid "Bad data received from server"
-#~ msgstr "Ze serveru byla přijata špatná data"
-
-#~ msgid ""
-#~ "Error in the login procedure (the server had no seed for your connection)."
-#~ msgstr "Chyba při přihlašování (server nemá seed pro vaše připojení)."

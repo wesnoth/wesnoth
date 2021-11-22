@@ -56,6 +56,12 @@ function locset_meta:__bxor(other)
 	return new
 end
 
+if wesnoth.current then
+	function locset_meta:__bnot(other)
+		return self:invert(wesnoth.current.map)
+	end
+end
+
 function locset_meta:__sub(other)
 	local new = self:clone()
 	new:diff(other)
@@ -86,18 +92,25 @@ end
 
 function methods:get(...)
 	local loc = wesnoth.map.read_location(...)
-	return self.values[index(loc.x, loc.y)]
+	if loc ~= nil then
+		return self.values[index(loc.x, loc.y)]
+	end
+	return nil
 end
 
 function methods:insert(...)
 	local loc, n = wesnoth.map.read_location(...)
-	local v = select(n + 1, ...)
-	self.values[index(loc.x, loc.y)] = v or true
+	if loc ~= nil then
+		local v = select(n + 1, ...)
+		self.values[index(loc.x, loc.y)] = v or true
+	end
 end
 
 function methods:remove(...)
 	local loc = wesnoth.map.read_location(...)
-	self.values[index(loc.x, loc.y)] = nil
+	if loc ~= nil then
+		self.values[index(loc.x, loc.y)] = nil
+	end
 end
 
 function methods:clone()
@@ -158,6 +171,28 @@ function methods:symm(s)
 			values[p] = v
 		end
 	end
+end
+
+function methods:invert(width, height, border_size)
+	if type(width) == 'number' and type(height) == 'number' then
+		border_size = border_size or 0
+	elseif type(width) == 'userdata' and getmetatable(width) == 'terrain map' then
+		local map = width
+		width = map.playable_width
+		height = map.playable_height
+		border_size = map.border_size
+	else
+		error('Invalid arguments to location_set:invert - expected a map or map dimensions', 2)
+	end
+	local new = location_set.create()
+	for x = 1 - border_size, width + border_size do
+		for y = 1 - border_size, height + border_size do
+			if not self:get(x, y) then
+				new:insert(x, y)
+			end
+		end
+	end
+	return new
 end
 
 function methods:filter(f)
@@ -249,8 +284,21 @@ function methods:of_triples(t)
     -- Create a location set from a table of 3-element tables
     -- Elements 1 and 2 are x,y coordinates, #3 is value to be inserted
     for k,v in pairs(t) do
-        self:insert(v[1], v[2], v[3])
+		if #v == 0 then
+			self:insert(v.x, v.y, v.value)
+		else
+			self:insert(v[1], v[2], v[3])
+		end
     end
+end
+
+function methods:of_map(t)
+	-- Create a location set from a table of location->element mappings
+	-- Keys can be of the form {x,y} or {x=x,y=y}, or a location-like object such as a unit
+	for k,v in pairs(t) do
+		local loc = wesnoth.read_location(k)
+		self:insert(loc.x, loc.y, v)
+	end
 end
 
 function methods:of_shroud_data(data)
@@ -259,13 +307,17 @@ end
 
 function methods:to_pairs()
 	local res = {}
-	self:iter(function(x, y) table.insert(res, { x, y }) end)
+	self:iter(function(x, y)
+		table.insert(res, wesnoth.named_tuple({ x, y }, {'x', 'y'}))
+	end)
 	return res
 end
 
 function methods:to_stable_pairs()
 	local res = {}
-	self:stable_iter(function(x, y) table.insert(res, { x, y }) end)
+	self:stable_iter(function(x, y)
+		table.insert(res, wesnoth.named_tuple({ x, y }, {'x', 'y'}))
+	end)
 	return res
 end
 
@@ -296,8 +348,18 @@ end
 
 function methods:to_triples()
     local res = {}
-    self:iter(function(x, y, v) table.insert(res, { x, y, v }) end)
+    self:iter(function(x, y, v)
+		table.insert(res, wesnoth.named_tuple({ x, y, v }, {"x", "y", "value"}))
+	end)
     return res
+end
+
+function methods:to_map()
+	local res = {}
+	self:iter(function(x, y, v)
+		res[wesnoth.named_tuple({x, y}, {"x", "y"})] = v
+	end)
+	return res
 end
 
 function methods:to_shroud_data()
@@ -341,6 +403,12 @@ function location_set.of_triples(t)
     local s = location_set.create()
     s:of_triples(t)
     return s
+end
+
+function location_set.of_map(t)
+	local s = location_set.create()
+	s:of_map(t)
+	return s
 end
 
 function location_set.of_shroud_data(data)

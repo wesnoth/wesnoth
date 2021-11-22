@@ -53,6 +53,18 @@
 # it has seen.  This will be useful mainly for symbols that have different
 # definitions enabled by an #ifdef.
 #
+# Due to a preprocessor limitation, inline macros cannot contain a documentation
+# string. If you need to document these macros in the HTML macro reference, you
+# can use the following directive:
+#
+#     # wmlscope: docstring FOOBAR
+#
+# The docstring for the FOOBAR macro will be collected until a non-comment line,
+# a #define or another # wmlscope: docstring are found. External docstrings
+# *must* be defined before the macro they're referring to; defining two or more
+# external docstrings keeps only the most recent one, but having both an
+# external and an internal docstring is allowed (in this case, the internal one
+# will be appended to the external one in the macro reference).
 #
 # This tool does catch one kind of implicit reference: if an attack name
 # is specified but no icon is given, the attack icon will default to
@@ -337,7 +349,9 @@ class CrossRefLister(CrossRef):
     def extracthelp(self, pref, fp):
         "Deliver all macro help comments in HTML form."
         # Bug: finds only the first definition of each macro in scope.
-        doclist = [x for x in self.xref.keys()]
+        # macros starting with INTERNAL: are only for internal use
+        # and aren't supposed to be reported in the macro reference
+        doclist = [x for x in self.xref.keys() if not x.startswith("INTERNAL:")]
         doclist.sort(key=lambda element: self.xref[element][0])
         outstr = ""
         filename = None
@@ -538,6 +552,6 @@ directories are given, all files under the current directory are checked.""")
                 xref.unresdump()
                 xref.duplicates(exportonly=True)
     except KeyboardInterrupt:
-        print("wmlscope: aborted.", file=sys.stderr)
+        print("Aborted by pressing ctrl-c", file=sys.stderr)
 
 # wmlscope ends here

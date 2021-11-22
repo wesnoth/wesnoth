@@ -1,4 +1,3 @@
-local H = wesnoth.require "helper"
 local AH = wesnoth.require("ai/lua/ai_helper.lua")
 local LS = wesnoth.require "location_set"
 
@@ -24,7 +23,7 @@ function ca_recruit_random:evaluation(cfg)
         local new_hexes = {}
 
         castle_map:iter(function(x, y)
-            for xa,ya in H.adjacent_tiles(x, y) do
+            for xa,ya in wesnoth.current.map:iter_adjacent(x, y) do
                 if (not castle_map:get(xa, ya)) and wesnoth.current.map:on_board(xa, ya) then
                     local is_castle = wesnoth.terrain_types[wesnoth.current.map[{xa, ya}]].castle
 

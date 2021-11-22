@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: Wesnoth_Lib-1.12\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2021-06-23 11:42-0400\n"
-"PO-Revision-Date: 2021-02-08 16:04+0100\n"
+"PO-Revision-Date: 2021-09-17 06:56+0200\n"
 "Last-Translator: Clémence\n"
 "Language-Team: French <wesnothfr@lists.tuxfamily.org>\n"
 "Language: fr\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 2.4.2\n"
+"X-Generator: Poedit 3.0\n"
 
 #. [ai]: id=ai_default_rca
 #: data/ai/ais/ai_default_rca.cfg:9
@@ -60,8 +60,6 @@ msgstr "Clôture"
 #. [row]
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:193
 #: data/gui/window/mp_faction_select.cfg:176
-#, fuzzy
-#| msgid "Random"
 msgid "gender^Random"
 msgstr "Aléatoire"
 
@@ -269,10 +267,8 @@ msgstr "Pavés envahis par la végétation"
 
 #. [terrain_type]: id=road_icy
 #: data/core/terrain.cfg:271
-#, fuzzy
-#| msgid "Clean Gray Cobbles"
 msgid "Icy Cobbles"
-msgstr "Pavés gris entretenus"
+msgstr "Pavés gelés"
 
 #. [terrain_type]: id=ice
 #: data/core/terrain.cfg:284
@@ -789,6 +785,11 @@ msgid ""
 "defense and movement costs are purely based on the unit’s stats for "
 "<italic>text='Fungus'</italic>."
 msgstr ""
+"Les contes des nains décrivent différents types de champignons — avec "
+"certains types, la difficulté de se mouvoir sur un sol spongieux n'a aucun "
+"lien avec le sol en dessous, même lorsque le sol est encore visible. Les "
+"coûts de déplacement et de défense sont uniquement basés sur les "
+"statistiques de l'unité pour le terrain <italic>text='Champignon'</italic>."
 
 #. [terrain_type]: id=fungus_beam_old
 #: data/core/terrain.cfg:1028
@@ -2326,7 +2327,7 @@ msgstr "Profil"
 #. [label]
 #: data/gui/window/addon_auth.cfg:41
 msgid "Authenticate"
-msgstr ""
+msgstr "Authentification"
 
 #. [label]
 #: data/gui/window/addon_auth.cfg:71 data/gui/window/mp_create_game.cfg:990
@@ -2433,10 +2434,8 @@ msgstr "Se connecter"
 
 #. [label]
 #: data/gui/window/addon_license_prompt.cfg:39
-#, fuzzy
-#| msgid "addons_order^Type ($order)"
 msgid "addons_server^Terms"
-msgstr "Type ($order)"
+msgstr "Conditions"
 
 #. [label]: id=message
 #: data/gui/window/addon_license_prompt.cfg:54
@@ -2444,6 +2443,8 @@ msgid ""
 "Before uploading content to this server, you must accept the following "
 "distribution terms by choosing “I Agree”."
 msgstr ""
+"Avant d'envoyer du contenu à ce serveur, vous devez accepter les conditions "
+"de distribution suivantes en choisissant « J’accepte »"
 
 #. [button]: id=ok
 #: data/gui/window/addon_license_prompt.cfg:103
@@ -2452,11 +2453,11 @@ msgstr "J'accepte"
 
 #: data/gui/window/addon_manager.cfg:9
 msgid "Traffic between the game and server is not secure"
-msgstr ""
+msgstr "Le trafic entre le jeu et le serveur n'est pas sécurisé"
 
 #: data/gui/window/addon_manager.cfg:13
 msgid "Traffic between the game and server is encrypted"
-msgstr ""
+msgstr "Le trafic entre le jeu et le serveur est chiffré"
 
 #. [label]: id=byline
 #: data/gui/window/addon_manager.cfg:154
@@ -2470,10 +2471,8 @@ msgstr "Version :"
 
 #. [menu_button]: id=version_filter
 #: data/gui/window/addon_manager.cfg:203
-#, fuzzy
-#| msgid "Delete add-on from server"
 msgid "Select the add-on version"
-msgstr "Supprimer l'extension du serveur"
+msgstr "Sélectionne la version de l'extension"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [scroll_label]: id=description
@@ -2549,14 +2548,12 @@ msgstr "Aucune"
 #. [label]
 #: data/gui/window/addon_manager.cfg:672 data/gui/window/addon_manager.cfg:791
 msgid "Tags:"
-msgstr ""
+msgstr "Étiquettes :"
 
 #. [text_box]: id=filter
 #: data/gui/window/addon_manager.cfg:725
-#, fuzzy
-#| msgid "Filters on addon description, version, type or author."
 msgid "Filters on addon description, version, type or author"
-msgstr "Filtre sur les descriptions, versions , types ou auteurs d'extensions."
+msgstr "Filtre sur les descriptions, versions , types ou auteurs d'extensions"
 
 #. [label]
 #: data/gui/window/addon_manager.cfg:738
@@ -2577,8 +2574,6 @@ msgstr "Gestionnaire d'extensions"
 #. [button]: id=details_toggle
 #: data/gui/window/addon_manager.cfg:1003 src/gui/dialogs/addon/manager.cpp:510
 #: src/gui/dialogs/addon/manager.cpp:745
-#, fuzzy
-#| msgid "Addon Details"
 msgid "Add-on Details"
 msgstr "Détails de l'extension"
 
@@ -2668,10 +2663,8 @@ msgstr "Trier par le nom complet de la campagne par ordre alphabétique"
 
 #. [toggle_button]: id=sort_time
 #: data/gui/window/campaign_dialog.cfg:230
-#, fuzzy
-#| msgid "Time limit:"
 msgid "Timeline"
-msgstr "Limite de temps :"
+msgstr "Chronologie"
 
 #. [toggle_button]: id=sort_time
 #: data/gui/window/campaign_dialog.cfg:231
@@ -2688,34 +2681,32 @@ msgstr "Modifications :"
 #. [label]
 #: data/gui/window/campaign_dialog.cfg:306
 msgid "Combat:"
-msgstr ""
+msgstr "Combat :"
 
 #. [option]
 #: data/gui/window/campaign_dialog.cfg:321
-#, fuzzy
-#| msgid "Default"
 msgid "Default RNG"
-msgstr "Défaut"
+msgstr "RNG par défaut"
 
 #. [option]
 #: data/gui/window/campaign_dialog.cfg:322
 msgid "Reloading alters future combat outcomes"
-msgstr ""
+msgstr "Le rechargement altère l'issue des prochains combats"
 
 #. [option]
 #: data/gui/window/campaign_dialog.cfg:325
 msgid "Predictable RNG"
-msgstr ""
+msgstr "RNG prévisible"
 
 #. [option]
 #: data/gui/window/campaign_dialog.cfg:326
 msgid "Combat outcomes remain constant when reloading"
-msgstr ""
+msgstr "L'issue des combats reste constante lors d'un rechargement"
 
 #. [option]
 #: data/gui/window/campaign_dialog.cfg:329
 msgid "Biased RNG (experimental)"
-msgstr ""
+msgstr "RNG biaisé (expérimental)"
 
 #. [option]
 #: data/gui/window/campaign_dialog.cfg:330
@@ -2723,6 +2714,8 @@ msgid ""
 "Combat outcomes are more in line with displayed probabilities and unaffected "
 "by reloading"
 msgstr ""
+"L'issue des combats est plus en phase avec les probabilités affichées et "
+"n'est pas affectée par un rechargement"
 
 #. [label]
 #: data/gui/window/campaign_dialog.cfg:345
@@ -3654,7 +3647,7 @@ msgstr "Cache :"
 #. [grid]
 #: data/gui/window/game_version.cfg:139
 msgid "Logs:"
-msgstr ""
+msgstr "Journaux :"
 
 #. [button]: id=open_stderr
 #: data/gui/window/game_version.cfg:164
@@ -3724,7 +3717,7 @@ msgstr "Copier ce rapport dans le presse-papier"
 #. [label]
 #: data/gui/window/gamestate_inspector.cfg:16
 msgid "inspector tree item^•"
-msgstr ""
+msgstr "•"
 
 #. [label]
 #: data/gui/window/gamestate_inspector.cfg:94
@@ -3919,7 +3912,7 @@ msgstr "Préférences"
 #. [button]: id=view_match_history
 #: data/gui/window/lobby_main.cfg:516
 msgid "Match History"
-msgstr ""
+msgstr "Historique des matchs"
 
 #. [button]: id=quit
 #: data/gui/window/lobby_main.cfg:533 data/gui/window/lobby_main.cfg:627
@@ -4237,10 +4230,8 @@ msgstr "Changer le contrôle"
 
 #. [label]
 #: data/gui/window/mp_connect.cfg:71
-#, fuzzy
-#| msgid "Log on to the official Wesnoth multiplayer server"
 msgid "Choose or enter the address of a multiplayer server."
-msgstr "Se connecter au serveur multijoueur officiel de Wesnoth"
+msgstr "Choisissez ou entrez l'adresse du serveur multijoueur."
 
 #. [label]
 #: data/gui/window/mp_connect.cfg:101
@@ -4254,7 +4245,6 @@ msgstr "Adresse"
 
 #. [button]: id=server_add
 #: data/gui/window/mp_connect.cfg:270
-#, fuzzy
 msgid "Add"
 msgstr "Ajouter"
 
@@ -4270,12 +4260,10 @@ msgstr "Match de faction aléatoire :"
 
 #. [label]
 #: data/gui/window/mp_create_game.cfg:156
-#, fuzzy
-#| msgid "Allow for mirror matchups when random factions are chosen."
 msgid "Allow for mirror matchups when random factions are chosen"
 msgstr ""
 "Autoriser les matchs miroirs lorsque des factions aléatoires sont "
-"sélectionnées."
+"sélectionnées"
 
 #. [toggle_button]: id=use_map_settings
 #: data/gui/window/mp_create_game.cfg:313
@@ -4484,15 +4472,11 @@ msgstr "Nom du jeu :"
 
 #. [text_box]: id=game_password
 #: data/gui/window/mp_create_game.cfg:1004
-#, fuzzy
-#| msgid ""
-#| "Set the password that people wanting to join your game as players must "
-#| "enter."
 msgid ""
 "Set the password that people wanting to join your game as players must enter"
 msgstr ""
 "Choisissez le mot de passe qui devra être entré par ceux qui rejoindront "
-"votre partie."
+"votre partie"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
@@ -4703,7 +4687,6 @@ msgstr "Je suis prêt"
 
 #. [text]
 #: data/gui/window/outro.cfg:49
-#, fuzzy
 msgid "Press ESC to skip"
 msgstr "Appuyez sur ESC pour sauter"
 
@@ -4880,10 +4863,8 @@ msgstr "Filtre : "
 
 #. [text_box]: id=filter
 #: data/gui/window/preferences/02_hotkeys.cfg:50
-#, fuzzy
-#| msgid "Filters on hotkey description."
 msgid "Filters on hotkey description"
-msgstr "Filtre sur la description des raccourcis clavier."
+msgstr "Filtre sur la description des raccourcis clavier"
 
 #. [toggle_button]: id=sort_0
 #: data/gui/window/preferences/02_hotkeys.cfg:94
@@ -5259,8 +5240,6 @@ msgstr "Enlever cet utilisateur de votre liste"
 
 #. [label]: id=no_friends_notice
 #: data/gui/window/preferences/05_multiplayer.cfg:311
-#, fuzzy
-#| msgid "You have not befriended or ignored any other players."
 msgid "You have not befriended or blocked any other players."
 msgstr "Vous n'avez aucun joueur en ami ou en ignoré."
 
@@ -5373,7 +5352,7 @@ msgstr ""
 #. [column]
 #: data/gui/window/statistics_dialog.cfg:576
 msgid "Hits"
-msgstr ""
+msgstr "attaques"
 
 #. [column]
 #: data/gui/window/statistics_dialog.cfg:579
@@ -5652,8 +5631,6 @@ msgstr "Rappeler l'unité"
 
 #. [text_box]: id=filter_box
 #: data/gui/window/unit_recall.cfg:311
-#, fuzzy
-#| msgid "Search for unit name, unit type name, unit level, or trait."
 msgid "Search for unit name, unit type name, unit level, or trait"
 msgstr ""
 "Recherche à partir du nom de l'unité, de son type, de son niveau ou de ses "
@@ -5718,8 +5695,6 @@ msgid "feature^Cocoa notifications back end"
 msgstr "Notifications via le back-end Cocoa"
 
 #: src/build_info.cpp:331 src/desktop/version.cpp:121
-#, fuzzy
-#| msgid "cpu_archictecture^<unknown>"
 msgid "cpu_architecture^<unknown>"
 msgstr "<inconnu>"
 
@@ -5765,6 +5740,8 @@ msgid ""
 "Use an absolute path, or a relative path that starts with a period and a "
 "backslash"
 msgstr ""
+"Utilise un chemin absolu ou relatif qui commence par un point et une barre "
+"oblique"
 
 #. TRANSLATORS: translate the part inside <...> only
 #: src/filesystem.cpp:703 src/filesystem.cpp:724
@@ -5776,6 +5753,8 @@ msgid ""
 "Use absolute paths. Relative paths are deprecated because they are "
 "interpreted relative to $HOME"
 msgstr ""
+"Utilisez des chemin absolus. Les chemins relatifs sont dépréciés car ils "
+"sont interprétés relativement à la variable $HOME"
 
 #. TRANSLATORS: This is the language code which will be used
 #. to store and fetch localized non-textual resources, such as images,
@@ -5905,11 +5884,11 @@ msgstr "Le texte a une taille de police de 0."
 
 #: src/gui/core/canvas.cpp:834
 msgid "Area to draw has negative size"
-msgstr ""
+msgstr "L'aire à dessiner a une taille négative"
 
 #: src/gui/core/canvas.cpp:836
 msgid "Area to draw is larger than widget size"
-msgstr ""
+msgstr "L'aire à dessiner est plus grande que le widget"
 
 #: src/gui/core/widget_definition.cpp:30
 msgid "No state or draw section defined."
@@ -6047,36 +6026,34 @@ msgstr "Date d'envoi initiale ($datelike_order)"
 
 #: src/gui/dialogs/addon/manager.cpp:222
 msgid "addon_tag^Cooperative"
-msgstr ""
+msgstr "Coopératif"
 
 #. TRANSLATORS: tooltip in the drop-down menu for filtering add-ons
 #: src/gui/dialogs/addon/manager.cpp:224
 msgid "addon_tag^All human players are on the same team, versus the AI"
-msgstr ""
+msgstr "Tous les joueurs humains dans la même équipe, contre l'IA"
 
 #: src/gui/dialogs/addon/manager.cpp:225
 msgid "addon_tag^Cosmetic"
-msgstr ""
+msgstr "Cosmétique"
 
 #. TRANSLATORS: tooltip in the drop-down menu for filtering add-ons
 #: src/gui/dialogs/addon/manager.cpp:227
 msgid "addon_tag^These make the game look different, without changing gameplay"
-msgstr ""
+msgstr "Modifie l'apparence du jeu sans changer les règles"
 
 #: src/gui/dialogs/addon/manager.cpp:228
-#, fuzzy
-#| msgid "Difficulty"
 msgid "addon_tag^Difficulty"
 msgstr "Difficulté"
 
 #. TRANSLATORS: tooltip in the drop-down menu for filtering add-ons
 #: src/gui/dialogs/addon/manager.cpp:230
 msgid "addon_tag^Can make campaigns easier or harder"
-msgstr ""
+msgstr "Peut rendre les campagnes plus faciles ou plus difficiles"
 
 #: src/gui/dialogs/addon/manager.cpp:231
 msgid "addon_tag^RNG"
-msgstr ""
+msgstr "RNG"
 
 #. TRANSLATORS: tooltip in the drop-down menu for filtering add-ons
 #: src/gui/dialogs/addon/manager.cpp:233
@@ -6084,24 +6061,25 @@ msgid ""
 "addon_tag^Modify the randomness in the combat mechanics, or remove it "
 "entirely"
 msgstr ""
+"Modifie l'aléatoire dans les mécanismes de combat, ou l'enlève complètement"
 
 #: src/gui/dialogs/addon/manager.cpp:234
 msgid "addon_tag^Survival"
-msgstr ""
+msgstr "Survie"
 
 #. TRANSLATORS: tooltip in the drop-down menu for filtering add-ons
 #: src/gui/dialogs/addon/manager.cpp:236
 msgid "addon_tag^Fight against waves of enemies"
-msgstr ""
+msgstr "Repousser des vagues d'ennemis"
 
 #: src/gui/dialogs/addon/manager.cpp:237
 msgid "addon_tag^Terraforming"
-msgstr ""
+msgstr "Terraformation"
 
 #. TRANSLATORS: tooltip in the drop-down menu for filtering add-ons
 #: src/gui/dialogs/addon/manager.cpp:239
 msgid "addon_tag^Players can change the terrain"
-msgstr ""
+msgstr "Les joueurs peuvent modifier le terrain"
 
 #: src/gui/dialogs/addon/manager.cpp:262 src/gui/widgets/addon_list.cpp:103
 msgid "addon_state^Not installed"
@@ -6436,16 +6414,12 @@ msgid "The game data cache could not be purged."
 msgstr "Le cache des données du jeu ne peut pas être purgé."
 
 #: src/gui/dialogs/game_load.cpp:74
-#, fuzzy
-#| msgid "Saved Games"
 msgid "No Saved Games"
-msgstr "Parties sauvegardées"
+msgstr "Aucune partie sauvegardée"
 
 #: src/gui/dialogs/game_load.cpp:74
-#, fuzzy
-#| msgid "There are no alternative video modes available"
 msgid "There are no saved games to load."
-msgstr "Il n'y a pas d'autre mode vidéo disponible"
+msgstr "Il n'y a pas pas de partie sauvegardée à charger."
 
 #: src/gui/dialogs/game_load.cpp:143
 msgid "game_version^Current Version"
@@ -6766,10 +6740,8 @@ msgid "Side $side"
 msgstr "Camp $side"
 
 #: src/gui/dialogs/multiplayer/mp_connect.cpp:185
-#, fuzzy
-#| msgid "Server:"
 msgid "Add Server"
-msgstr "Serveur :"
+msgstr "Ajouter un serveur"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:97
 msgid "Scenarios"
@@ -7093,10 +7065,6 @@ msgid "Joined <i>$name</i>"
 msgstr ""
 
 #: src/gui/widgets/chatbox.cpp:394
-#, fuzzy
-#| msgid ""
-#| "Whisper session with <i>“$name”</i> started. If you do not want to "
-#| "receive messages from this user, type <i>/ignore $name</i>"
 msgid ""
 "Started private message with <i>$name</i>. If you do not want to receive "
 "messages from this player, type <i>/ignore $name</i>"
@@ -7377,10 +7345,8 @@ msgid "End Unit Turn"
 msgstr "Finir le tour de l'unité"
 
 #: src/hotkey/hotkey_command.cpp:84
-#, fuzzy
-#| msgid "Scroll Left"
 msgid "Scroll to Leader"
-msgstr "Défiler vers la gauche"
+msgstr "Défiler vers le chef"
 
 #: src/hotkey/hotkey_command.cpp:85
 msgid "Undo"
@@ -7411,10 +7377,8 @@ msgid "Map Screenshot"
 msgstr "Capture d'écran de la carte"
 
 #: src/hotkey/hotkey_command.cpp:93
-#, fuzzy
-#| msgid "Accelerated speed"
 msgid "Toggle Accelerated Speed"
-msgstr "Turbo"
+msgstr "Activer le mode turbo"
 
 #: src/hotkey/hotkey_command.cpp:94
 msgid "Terrain Description"
@@ -7485,10 +7449,8 @@ msgid "Kill Unit (Debug!)"
 msgstr "Tuer l'unité (débug !)"
 
 #: src/hotkey/hotkey_command.cpp:119
-#, fuzzy
-#| msgid "Scenario Objectives"
 msgid "Objectives"
-msgstr "Objectifs du scénario"
+msgstr "Objectifs"
 
 #: src/hotkey/hotkey_command.cpp:122
 msgid "Pause Network Game"
@@ -7499,10 +7461,8 @@ msgid "Continue Network Game"
 msgstr "Reprendre le jeu en réseau"
 
 #: src/hotkey/hotkey_command.cpp:125
-#, fuzzy
-#| msgid "Quit to Main Menu"
 msgid "Quit to Menu"
-msgstr "Quitter pour l'écran d'accueil"
+msgstr "Quitter vers le menu"
 
 #: src/hotkey/hotkey_command.cpp:126
 msgid "Set Team Label"
@@ -8005,10 +7965,8 @@ msgid "Update Shroud Now"
 msgstr "Mettre à jour le voile"
 
 #: src/hotkey/hotkey_command.cpp:269
-#, fuzzy
-#| msgid "Continue Move"
 msgid "Continue Interrupted Move"
-msgstr "Continuer le déplacement"
+msgstr "Continuer le déplacement interrompu"
 
 #: src/hotkey/hotkey_command.cpp:270
 msgid "Find Label or Unit"
@@ -8031,10 +7989,8 @@ msgid "Hint: save-loading is unnecessary"
 msgstr ""
 
 #: src/hotkey/hotkey_command.cpp:276
-#, fuzzy
-#| msgid "Enter User Command"
 msgid "Enter Command"
-msgstr "Saisir une commande utilisateur"
+msgstr "Saisir une commande"
 
 #: src/hotkey/hotkey_command.cpp:277
 msgid "Custom Command"
@@ -8045,10 +8001,8 @@ msgid "Run Formula"
 msgstr "Évaluer une formule d'IA"
 
 #: src/hotkey/hotkey_command.cpp:279
-#, fuzzy
-#| msgid "Player Chat"
 msgid "Clear Chat"
-msgstr "Discussion entre joueurs"
+msgstr "Effacer la discussion"
 
 #: src/hotkey/hotkey_command.cpp:281
 msgid "Change Language"
@@ -8191,6 +8145,17 @@ msgid ""
 msgstr ""
 "La clef « $deprecated_key » a été remplacée par « $key ». « $deprecated_key "
 "» ne sera plus maintenue à partir de la version $removal_version."
+
+#~ msgid "Data Migration"
+#~ msgstr "Migration de données"
+
+#~ msgid ""
+#~ "Choose which version of Wesnoth to import your data from.\n"
+#~ "Some settings will not take effect until Wesnoth is restarted."
+#~ msgstr ""
+#~ "Choisissez la version de Wesnoth à partir de laquelle importer vos "
+#~ "données.\n"
+#~ "Certains réglages ne prendront pas effet avant un redémarrage de Wesnoth."
 
 #~ msgid "Multiplayer server login dialog"
 #~ msgstr "Fenêtre de connexion au serveur multijoueur"

@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2014 - 2018 by Chris Beck <render787@gmail.com>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2014 - 2021
+	by Chris Beck <render787@gmail.com>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 /**
@@ -52,6 +53,9 @@ static lg::log_domain log_scripting_lua("scripting/lua");
 #define LOG_LUA LOG_STREAM(info, log_scripting_lua)
 #define WRN_LUA LOG_STREAM(warn, log_scripting_lua)
 #define ERR_LUA LOG_STREAM(err, log_scripting_lua)
+
+static lg::log_domain log_wml("wml");
+#define ERR_WML LOG_STREAM(err, log_wml)
 
 namespace lua_common {
 
@@ -647,7 +651,7 @@ void luaW_filltable(lua_State *L, const config& cfg)
 	int k = 1;
 	for (const config::any_child ch : cfg.all_children_range())
 	{
-		lua_createtable(L, 2, 0);
+		luaW_push_namedtuple(L, {"tag", "contents"});
 		lua_pushstring(L, ch.key.c_str());
 		lua_rawseti(L, -2, 1);
 		lua_newtable(L);
@@ -1124,7 +1128,8 @@ bool luaW_pcall(lua_State *L, int nArgs, int nRets, bool allow_wml_error)
 			if (allow_wml_error && strncmp(m, "~wml:", 5) == 0) {
 				m += 5;
 				char const *e = strstr(m, "stack traceback");
-				lg::wml_error() << std::string(m, e ? e - m : strlen(m));
+				lg::log_to_chat() << std::string(m, e ? e - m : strlen(m)) << '\n';
+				ERR_WML << std::string(m, e ? e - m : strlen(m));
 			} else if (allow_wml_error && strncmp(m, "~lua:", 5) == 0) {
 				m += 5;
 				char const *e = nullptr, *em = m;

@@ -1,5 +1,7 @@
 --! #textdomain wesnoth
 
+wesnoth.deprecated_message('helper.lua', 3, '1.19', 'Everything in this module has been moved into the core modules')
+
 local helper = {}
 
 local wml_actions = wesnoth.wml_actions
@@ -44,6 +46,7 @@ end
 local fire_action_mt = {
 	__metatable = "WML actions",
 	__index = function(t, n)
+		wesnoth.deprecated_message('helper.set_wml_action_metatable', 3, '1.19', 'Use wml.fire instead - wml.fire.tag_name(arguments)')
 		return function(cfg) wml.fire(n, cfg) end
 	end
 }
@@ -112,5 +115,8 @@ helper.get_user_choice = wesnoth.deprecate_api('helper.get_user_choice', 'gui.ge
 helper.rand = wesnoth.deprecate_api('helper.rand', 'mathx.random_choice', 1, nil, mathx.random_choice)
 helper.round = wesnoth.deprecate_api('helper.round', 'mathx.round', 1, nil, mathx.round)
 helper.shuffle = wesnoth.deprecate_api('helper.shuffle', 'mathx.shuffle', 1, nil, mathx.shuffle)
+helper.all_teams = wesnoth.deprecate_api('helper.all_teams', 'wesnoth.sides.iter', 1, nil, helper.all_teams)
+helper.get_sides = wesnoth.deprecate_api('helper.get_sides', 'wesnoth.sides.iter', 1, nil, helper.get_sides)
+helper.adjacent_tiles = wesnoth.deprecate_api('helper.adjacent_tiles', 'wesnoth.map.iter_adjacent', 1, nil, helper.adjacent_tiles)
 
 return helper

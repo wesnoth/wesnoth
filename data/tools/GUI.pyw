@@ -28,7 +28,7 @@ from tkinter.ttk import *
 # we need to know in what series we are
 # so set it in a constant and change it for every new series
 # it must be a string
-WESNOTH_SERIES="1.15"
+WESNOTH_SERIES="1.17"
 
 # get the location where the script is placed
 # we'll check later if this is a Wesnoth directory

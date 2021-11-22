@@ -84,6 +84,19 @@ function wesnoth.deprecate_api(elem_name, replacement, level, version, elem, det
 	return elem
 end
 
+function wesnoth.type(value)
+	local t = type(value)
+	if t == 'userdata' or t == 'table' then
+		local m = getmetatable(value)
+		if type(m) == 'string' then
+			return m
+		elseif type(m.__name) == 'string' then
+			return m.__name
+		end
+	end
+	return t
+end
+
 local function compare_versions(a, op, b)
 	local V = wesnoth.version
 	if op == '==' then

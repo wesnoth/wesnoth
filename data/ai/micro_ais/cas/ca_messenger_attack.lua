@@ -1,4 +1,3 @@
-local H = wesnoth.require "helper"
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
 
 local messenger_next_waypoint = wesnoth.require "ai/micro_ais/cas/ca_messenger_f_next_waypoint.lua"
@@ -25,7 +24,7 @@ local function messenger_find_enemies_in_way(messenger, goal_x, goal_y, avoid_ma
     for i = 2,#path do
         local sub_path, sub_cost = AH.find_path_with_avoid(messenger, path[i][1], path[i][2], avoid_map, { ignore_enemies = true })
         if (sub_cost <= messenger.moves) then
-            for xa,ya in H.adjacent_tiles(path[i][1], path[i][2]) do
+            for xa,ya in wesnoth.current.map:iter_adjacent(path[i]) do
                 local enemy = wesnoth.units.get(xa, ya)
                 if AH.is_attackable_enemy(enemy) then return enemy end
             end

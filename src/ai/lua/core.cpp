@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2010 - 2018 by Yurii Chernyi <terraninfo@terraninfo.net>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2010 - 2021
+	by Yurii Chernyi <terraninfo@terraninfo.net>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 /**
@@ -949,6 +950,13 @@ static size_t generate_and_push_ai_state(lua_State* L, ai::engine_lua* engine)
 	lua_rawseti(L, -3, length_ai + 1); // [-1: AI state  -2: AIs registry]
 	lua_remove(L, -2); // [-1: AI state table]
 	return length_ai + 1;
+}
+
+void lua_ai_context::apply_micro_ai(const config &cfg)
+{
+	luaW_getglobal(L, "wesnoth", "wml_actions", "micro_ai");
+	luaW_pushconfig(L, cfg);
+	luaW_pcall(L, 1, 0);
 }
 
 lua_ai_context* lua_ai_context::create(lua_State *L, char const *code, ai::engine_lua *engine)

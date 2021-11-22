@@ -5,7 +5,7 @@
 # Isaac Clerencia <isaac@warp.es>, 2006.
 # Roberto Romero <sildurin@gmail.com>, 2007.
 # Sergi March <sergi.march@gmail.com>, 2008.
-# Ignacio Riquelme Morelle <shadowm2006@gmail.com>, 2008, 2009, 2010, 2011, 2012.
+# Iris Morelle <shadowm@wesnoth.org>, 2008, 2009, 2010, 2011, 2012.
 # T-FIGHTER <xaviernovellasinde@gmail.com>, 2012.
 # Aelonin <quianaaelonin@gmail.com>, 2011, 2012.
 # Pepe <donpepe1963@gmail.com>, 2014.
@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2021-06-23 11:42-0400\n"
-"PO-Revision-Date: 2021-06-25 13:19+0200\n"
+"PO-Revision-Date: 2021-09-24 14:01+0200\n"
 "Last-Translator: Pepe <donpepe1963@gmail.com>\n"
 "Language-Team: Spanish <kde-i18n-doc@kde.org>\n"
 "Language: es\n"
@@ -5847,59 +5847,59 @@ msgstr "caducado"
 
 #: src/formula/string_utils.cpp:300
 msgid "timespan^$num year"
-msgstr "año número"
+msgstr "$num año"
 
 #: src/formula/string_utils.cpp:300
 msgid "timespan^$num years"
-msgstr "número de años"
+msgstr "$num años"
 
 #: src/formula/string_utils.cpp:301
 msgid "timespan^$num month"
-msgstr "mes número"
+msgstr "$num mes"
 
 #: src/formula/string_utils.cpp:301
 msgid "timespan^$num months"
-msgstr "número de meses"
+msgstr "$num meses"
 
 #: src/formula/string_utils.cpp:302
 msgid "timespan^$num week"
-msgstr "semana número"
+msgstr "$num semana"
 
 #: src/formula/string_utils.cpp:302
 msgid "timespan^$num weeks"
-msgstr "número de semanas"
+msgstr "$num semanas"
 
 #: src/formula/string_utils.cpp:303
 msgid "timespan^$num day"
-msgstr "día número"
+msgstr "$num día"
 
 #: src/formula/string_utils.cpp:303
 msgid "timespan^$num days"
-msgstr "número de días"
+msgstr "$num días"
 
 #: src/formula/string_utils.cpp:304
 msgid "timespan^$num hour"
-msgstr "hora número"
+msgstr "$num hora"
 
 #: src/formula/string_utils.cpp:304
 msgid "timespan^$num hours"
-msgstr "número de horas"
+msgstr "$num horas"
 
 #: src/formula/string_utils.cpp:305
 msgid "timespan^$num minute"
-msgstr "minuto número"
+msgstr "$num minuto"
 
 #: src/formula/string_utils.cpp:305
 msgid "timespan^$num minutes"
-msgstr "número de minutos"
+msgstr "$num minutos"
 
 #: src/formula/string_utils.cpp:306
 msgid "timespan^$num second"
-msgstr "segundo número"
+msgstr "$num segundo"
 
 #: src/formula/string_utils.cpp:306
 msgid "timespan^$num seconds"
-msgstr "número de segundos"
+msgstr "$num segundos"
 
 #: src/gui/core/canvas.cpp:510
 msgid "Image doesn't fit on canvas."
@@ -5913,9 +5913,10 @@ msgstr "El tamaño de la fuente del texto es 0."
 msgid "Area to draw has negative size"
 msgstr "El área a dibujar tiene un tamaño negativo"
 
+# la verdad es que no me gusta la palabra widget
 #: src/gui/core/canvas.cpp:836
 msgid "Area to draw is larger than widget size"
-msgstr "El área a dibujar es mayor que el tamaño del del artículo"
+msgstr "El área a dibujar es mayor que el tamaño del widget"
 
 #: src/gui/core/widget_definition.cpp:30
 msgid "No state or draw section defined."
@@ -7107,7 +7108,7 @@ msgstr "$player ha salido de la estancia"
 
 #: src/gui/widgets/helper.cpp:96
 msgid "Mandatory widget '$id' hasn't been defined."
-msgstr "La utilidad obligatoria «$id» no ha sido definida."
+msgstr "El widget obligatorio «$id» no ha sido definido."
 
 #: src/gui/widgets/label.cpp:125
 msgid "Opening links is not supported, contact your packager"
@@ -7168,7 +7169,7 @@ msgstr "Tamaño inválido."
 
 #: src/gui/widgets/size_lock.cpp:121
 msgid "No widget defined."
-msgstr "No se ha definido una herramienta."
+msgstr "No se ha definido un widget."
 
 #: src/gui/widgets/slider.cpp:354
 msgid "The number of value_labels and values don't match."
@@ -7182,7 +7183,7 @@ msgstr "No se ha definido ninguna pila de capas."
 
 #: src/gui/widgets/styled_widget.cpp:607
 msgid "Found a widget with a helptip and without a tooltip."
-msgstr "Se encontró una utilidad con ayuda y sin descripción emergente."
+msgstr "Se encontró un widget con ayuda y sin descripción emergente."
 
 #: src/gui/widgets/tree_view.cpp:299
 msgid "No nodes defined for a tree view."
@@ -8171,6 +8172,16 @@ msgstr ""
 "El nombre del atributo «$deprecated_key|» ha cambiado a «$key|». "
 "«$deprecated_key|» dejará de tener mantenimiento en la versión "
 "$removal_version."
+
+#~ msgid "Data Migration"
+#~ msgstr "Migración de datos"
+
+#~ msgid ""
+#~ "Choose which version of Wesnoth to import your data from.\n"
+#~ "Some settings will not take effect until Wesnoth is restarted."
+#~ msgstr ""
+#~ "Elija cual es la versión de Wesnoth de la que quiere importar sus datos.\n"
+#~ "Algunas configuraciones no tendrán efecto hasta que se reinicie Wesnoth."
 
 #~ msgid "Add-on upload authentication dialog"
 #~ msgstr "Diálogo de acreditación para la subida de complemento"

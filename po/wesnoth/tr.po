@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2021-06-23 11:42-0400\n"
-"PO-Revision-Date: 2021-07-01 09:18+0300\n"
+"PO-Revision-Date: 2021-08-21 11:18+0300\n"
 "Last-Translator: Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>\n"
 "Language-Team: Turkish\n"
 "Language: tr\n"
@@ -1254,7 +1254,7 @@ msgstr "Müttefiğine komut ver"
 msgid ""
 "$ally_leader.name (side $ally_side|) is carrying out the following "
 "instructions:"
-msgstr " $ally_leader.name ($ally_side| tarafı) şu komutları yerine getirecek:"
+msgstr "$ally_leader.name ($ally_side tarafı) şu komutları yerine getirecek:"
 
 #. [overview_message_no_instructions]: speaker=narrator
 #: data/core/macros/ai_controller.cfg:142
@@ -1262,7 +1262,7 @@ msgid ""
 "$ally_leader.name (side $ally_side|) has not been given any instructions and "
 "is acting normally."
 msgstr ""
-" $ally_leader.name ($ally_side| tarafı) herhangi bir komut almadı ve normal "
+"$ally_leader.name ($ally_side tarafı) herhangi bir komut almadı ve normal "
 "davranıyor."
 
 #. [aggression]
@@ -1296,7 +1296,7 @@ msgid ""
 "focusing on defeating $ai_controller.side_$ally_side|_current_settings."
 "focus_on_enemy.side_description|."
 msgstr ""
-"Şunu yenmeye odaklan: $ai_controller.side_$ally_side|_current_settings."
+"şunu yenmeye odaklan: $ai_controller.side_$ally_side|_current_settings."
 "focus_on_enemy.side_description|."
 
 #. [then]
@@ -1306,13 +1306,13 @@ msgstr ""
 #: data/core/macros/ai_controller.cfg:388
 #: data/core/macros/ai_controller.cfg:394
 msgid "Side $temp_i"
-msgstr " $temp_i Tarafı"
+msgstr "$temp_i Tarafı"
 
 #. [else]
 #: data/core/macros/ai_controller.cfg:255
 #: data/core/macros/ai_controller.cfg:396
 msgid "side $temp_i"
-msgstr " $temp_i tarafı"
+msgstr "$temp_i tarafı"
 
 #. [command]
 #: data/core/macros/ai_controller.cfg:270
@@ -1339,7 +1339,7 @@ msgid ""
 "focusing on protecting $ai_controller.side_$ally_side|_current_settings."
 "protect.side_description|."
 msgstr ""
-"Korumaya odaklan: $ai_controller.side_$ally_side|_current_settings.protect."
+"korumaya odaklan: $ai_controller.side_$ally_side|_current_settings.protect."
 "side_description|."
 
 #. [option]
@@ -1360,7 +1360,7 @@ msgstr "Burayı savun"
 #. [command]
 #: data/core/macros/ai_controller.cfg:513
 msgid "focusing on defending the area around $x1|,$y1|."
-msgstr " $x1|,$y1| çevresindeki alanı savunmaya odaklan."
+msgstr "$x1|,$y1 çevresindeki alanı savunmaya odaklan."
 
 #. [print]
 #: data/core/macros/ai_controller.cfg:555
@@ -1438,7 +1438,7 @@ msgstr "Lideri buraya getir"
 
 #: data/core/macros/ai_controller.cfg:1118
 msgid "moving leader to $x1|,$y1|."
-msgstr "Lider $x1|,$y1| altıgenine gidiyor"
+msgstr "Lider $x1|,$y1 altıgenine gidiyor."
 
 #: data/core/macros/ai_controller.cfg:1119
 msgid "Clear special orders"
@@ -3222,8 +3222,8 @@ msgid ""
 "The computer player might not be able to play side $side_number properly in "
 "this scenario. Side $side_number is intended to be played by a human player."
 msgstr ""
-"Bilgisayar oyuncusu bu senaryoda $side_number. tarafı gerektiği gibi "
-"oynayamaz. Senaryo, $side_number. tarafı bir insan oyuncu oynayacak şekilde "
+"Bilgisayar oyuncusu bu senaryoda $side_number|. tarafı gerektiği gibi "
+"oynayamaz. Senaryo, $side_number|. tarafı bir insan oyuncu oynayacak şekilde "
 "tasarlanmıştır."
 
 #. [music]
@@ -3394,7 +3394,7 @@ msgstr "İntikamın Ağırlığı"
 #. [message]: speaker=narrator
 #: data/core/macros/utils.cfg:659
 msgid "You retrieve $amount_gold pieces of gold."
-msgstr "$amount_gold altın aldın"
+msgstr "$amount_gold altın aldın."
 
 #. [color_range]: id=red
 #. [color_range]: id=1
@@ -3661,7 +3661,8 @@ msgid ""
 msgstr ""
 "\n"
 "\t\tbridge_type=Köprüsü|Geçidi\n"
-"\t\tmain=$base {bridge_type}\n"
+"\t\tmain=$base {bridge_type}|$base {bridge_type}\n"
+"\n"
 "\t"
 
 #. [naming]
@@ -3675,7 +3676,8 @@ msgid ""
 msgstr ""
 "\n"
 "\t\troad_type=Anayolu|Geçişi|Şosesi|Yolu|Tariği|Patikası\n"
-"\t\tmain=$base{!} {road_type}\n"
+"\t\tmain=$base {road_type}|$base {road_type}\n"
+"\n"
 "\t"
 
 #. [naming]
@@ -3689,7 +3691,7 @@ msgid ""
 msgstr ""
 "\n"
 "\t\triver_type=Nehri|Akarsuyu|Irmağı|Irmağı|Çayı|Deresi|Kanalı\n"
-"\t\tmain=$base {river_type}\n"
+"\t\tmain=$base {river_type}|$base {river_type}\n"
 "\t"
 
 #. [naming]
@@ -3703,7 +3705,7 @@ msgid ""
 msgstr ""
 "\n"
 "\t\tforest_type=Ormanı|Ormanı|Koruluğu\n"
-"\t\tmain=$base {forest_type}\n"
+"\t\tmain=$base {forest_type}|$base {forest_type}|$base {forest_type}\n"
 "\t"
 
 #. [naming]
@@ -3717,7 +3719,7 @@ msgid ""
 msgstr ""
 "\n"
 "\t\tlake_type=Gölü|Gölü|Gölü|Koyu|Denizi\n"
-"\t\tmain=$base {lake_type}\n"
+"\t\tmain=$base {lake_type}|$base {lake_type}\n"
 "\t"
 
 #. [naming]
@@ -3729,7 +3731,7 @@ msgid ""
 "\t"
 msgstr ""
 "\n"
-"\t\tmain=$base{!} Tepesi|$base Tepe|$base Dağ|$base Dağı\n"
+"\t\tmain=$base Tepesi|$base Tepe|$base Dağ|$base Dağı\n"
 "\t"
 
 #. [naming]
@@ -3742,8 +3744,9 @@ msgid ""
 "\t"
 msgstr ""
 "\n"
-"\t\tsuffix=Bataklığı|Batağı|Turbalığı\n"
+"\t\tsuffix= Bataklığı| Batağı| Turbalığı\n"
 "\t\tmain=$base{!}{suffix}\n"
+"\n"
 "\t"
 
 #. [village_naming]
@@ -3756,7 +3759,7 @@ msgid ""
 "\t"
 msgstr ""
 "\n"
-"\t\tsuffix=buri|buri|ham|ton|vil\n"
+"\t\tsuffix=kent|şehir|evler|tepe|köy\n"
 "\t\tmain=$base{!}{suffix}\n"
 "\t"
 
@@ -3773,7 +3776,7 @@ msgstr ""
 "\n"
 "\t\tprefix=$base{!}|$lake{!}\n"
 "\t\tsuffix=limanı|iskelesi\n"
-"\t\tmain={prefix}{suffix}\n"
+"\t\tmain={prefix} {suffix}\n"
 "\t"
 
 #. [village_naming]
@@ -3790,7 +3793,7 @@ msgstr ""
 "\n"
 "\t\tprefix=$base{!}|$river{!}\n"
 "\t\triver=$river{!}|Nehir\n"
-"\t\tsuffix=ham|çatalı| Geçidi| {river}\n"
+"\t\tsuffix={river} tümseği|sığlığı|geçidi| \n"
 "\t\tmain={prefix}{suffix}\n"
 "\t"
 
@@ -3806,7 +3809,7 @@ msgid ""
 msgstr ""
 "\n"
 "\t\tprefix=$base{!}|$river{!}|$bridge{!}\n"
-"\t\tsuffix=köprü|köprü|ham|ton\n"
+"\t\tsuffix= köprüsü| köprüsü| tümseği| seti\n"
 "\t\tmain={prefix}{suffix}\n"
 "\t"
 
@@ -3820,7 +3823,7 @@ msgid ""
 "\t"
 msgstr ""
 "\n"
-"\t\tsuffix=ham|ton|yaylası\n"
+"\t\tsuffix= tümseği| seti| düzlüğü\n"
 "\t\tmain=$base{!}{suffix}\n"
 "\t"
 
@@ -3836,7 +3839,7 @@ msgid ""
 msgstr ""
 "\n"
 "\t\tprefix=$base{!}|$forest{!}\n"
-"\t\tsuffix=ham|ton|koru| Ormanı\n"
+"\t\tsuffix= tümseği| seti| korusu| Ormanı\n"
 "\t\tmain={prefix}{suffix}\n"
 "\t"
 
@@ -3850,7 +3853,7 @@ msgid ""
 "\t"
 msgstr ""
 "\n"
-"\t\tsuffix=ham|buri|ton|tepe|zirve\n"
+"\t\tsuffix=tepe|höyük|tepe|tepe|doruk\n"
 "\t\tmain=$base{!}{suffix}\n"
 "\t"
 
@@ -3866,7 +3869,7 @@ msgid ""
 msgstr ""
 "\n"
 "\t\tprefix=$base{!}|$mountain{!}\n"
-"\t\tsuffix=tepe|yar|dağ|ham\n"
+"\t\tsuffix=tepe|yar|dağ|tepe\n"
 "\t\tmain={prefix}{suffix}\n"
 "\t"
 
@@ -3880,7 +3883,7 @@ msgid ""
 "\t"
 msgstr ""
 "\n"
-"\t\tsuffix=ham|dağ|ton|dağ| Dağı|yar| Yarı\n"
+"\t\tsuffix=tepe|dağ| Tepesi|dağ| Dağı| yar| Yarı\n"
 "\t\tmain=$base{!}{suffix}\n"
 "\t"
 
@@ -3912,7 +3915,7 @@ msgid ""
 msgstr ""
 "\n"
 "\t\tprefix=$base{!}|$swamp{!}\n"
-"\t\tsuffix=buri|ham|ton\n"
+"\t\tsuffix=saray|han|hamam\n"
 "\t\tmain={prefix}{suffix}\n"
 "\t"
 
@@ -4052,7 +4055,7 @@ msgstr[1] "($remaining_turns el kaldı)"
 #. [lua]: generate_objectives
 #: data/lua/wml/objectives.lua:119
 msgid "$percent|% of gold carried over to the next scenario."
-msgstr "$percent|%  altın bir sonraki senaryoya geçecek"
+msgstr "Bir sonraki senaryoya %$percent altın aktarılacak."
 
 #. [modification]: id=plan_unit_advance
 #: data/modifications.cfg:6
@@ -5226,7 +5229,7 @@ msgstr[1] "$enemies düşman"
 
 #: src/actions/move.cpp:1128
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
-msgstr "Birimler göründü! ($friendphrase, $enemyphrase)"
+msgstr "Birimler göründü! ($friendphrase|, $enemyphrase|)"
 
 #: src/actions/move.cpp:1132
 msgid "Enemy unit sighted!"
@@ -5246,7 +5249,7 @@ msgstr "(devam etmek için $hotkey tuşuna basınız)"
 
 #: src/addon/client.cpp:76
 msgid "Connecting to $server_address|..."
-msgstr "Bağlanılıyor: $server_adress|..."
+msgstr "Bağlanılıyor: $server_address|..."
 
 #: src/addon/client.cpp:123
 msgid "Downloading list of add-ons..."
@@ -5375,8 +5378,8 @@ msgid ""
 "The add-on '$addon|' is already installed and contains additional "
 "information that will be permanently lost if you continue:"
 msgstr ""
-"'$addon|' eklentisi zaten yüklü ve devam ederseniz kalıcı olarak silinecek "
-"ek bilgi içeriyor:"
+"'$addon' eklentisi zaten yüklü ve devam ederseniz kalıcı olarak silinecek ek "
+"bilgi içeriyor:"
 
 #: src/addon/client.cpp:536
 msgid "Publishing information file (.pbl)"
@@ -5534,8 +5537,11 @@ msgid "An error occurred while downloading the add-ons list from the server."
 msgstr "Sunucudan eklentiler listesi indirilirken bir hata oluştu."
 
 #: src/addon/manager_ui.cpp:282
+#, fuzzy
+#| msgid ""
+#| "Could not find add-ons matching the ids $addon_ids on the add-on server."
 msgid "Could not find an add-on matching id $addon_id on the add-on server."
-msgstr "Eklenti sunucusunda $addon_id ile eşleşen bir eklenti bulunamadı."
+msgstr "Eklenti sunucusunda $addon_ids ile eşleşen eklentiler bulunamadı."
 
 #: src/addon/validation.cpp:387
 msgid "Success."
@@ -5697,7 +5703,7 @@ msgstr "arkadaş listesi"
 
 #: src/chat_command_handler.cpp:147
 msgid "Removed from list: $nick"
-msgstr "Listenizden kaldırıldı: $nick "
+msgstr "Listenizden kaldırıldı: $nick"
 
 #: src/chat_command_handler.cpp:147
 msgid "friends and ignores list"
@@ -6081,7 +6087,7 @@ msgstr "Bilgi: "
 
 #: src/game_initialization/configure_engine.cpp:64
 msgid "$login|’s game"
-msgstr "$login kullanıcısının oyunu"
+msgstr "$login için oyun"
 
 #: src/game_initialization/connect_engine.cpp:98
 msgid "Team"
@@ -6334,16 +6340,15 @@ msgstr " Kayıtlı olmayan oyuncu adlarına bu sunucuda izin verilmemektedir."
 
 #: src/game_initialization/multiplayer.cpp:425
 msgid "The nickname ‘$nick’ is banned on this server’s forums for $duration|."
-msgstr " ‘$nick’  bu sunucunun forumlarında  $duration| süreyle yasaklıdır."
+msgstr "‘$nick’ bu sunucunun forumlarında $duration süreyle yasaklıdır."
 
 #: src/game_initialization/multiplayer.cpp:427
 msgid "The nickname ‘$nick’ is banned on this server’s forums."
-msgstr " ‘$nick’  bu sunucunun forumlarında yasaklıdır."
+msgstr "‘$nick’  bu sunucunun forumlarında yasaklıdır."
 
 #: src/game_initialization/multiplayer.cpp:431
 msgid "Your IP address is banned on this server’s forums for $duration|."
-msgstr ""
-" IP adresiniz bu sunucunun forumlarında  $duration| süreyle yasaklıdır."
+msgstr "IP adresiniz bu sunucunun forumlarında $duration süreyle yasaklıdır."
 
 #: src/game_initialization/multiplayer.cpp:433
 msgid "Your IP address is banned on this server’s forums."
@@ -6354,13 +6359,13 @@ msgid ""
 "The email address for the nickname ‘$nick’ is banned on this server’s forums "
 "for $duration|."
 msgstr ""
-" ‘$nick’ adının e-posta adresi bu sunucunun forumlarında  $duration| süreyle "
+"‘$nick’ adının e-posta adresi bu sunucunun forumlarında $duration süreyle "
 "yasaklıdır."
 
 #: src/game_initialization/multiplayer.cpp:439
 msgid ""
 "The email address for the nickname ‘$nick’ is banned on this server’s forums."
-msgstr " ‘$nick’ adının e-posta adresi bu sunucunun forumlarında yasaklıdır."
+msgstr "‘$nick’ adının e-posta adresi bu sunucunun forumlarında yasaklıdır."
 
 #: src/game_initialization/multiplayer.cpp:442
 #: src/game_initialization/multiplayer.cpp:444
@@ -6865,7 +6870,7 @@ msgid ""
 "Available commands $flags_description:\n"
 "$list_of_commands"
 msgstr ""
-"Mümkün komutlar $flags_description:\n"
+"Mümkün komutlar $flags_description|:\n"
 "$list_of_commands"
 
 #: src/map_command_handler.hpp:314 src/map_command_handler.hpp:315
@@ -6925,8 +6930,10 @@ msgid "Error: there’s an unknown unit type on your recruit list: $unknown_ids"
 msgid_plural ""
 "Error: there are several unknown unit types on your recruit list: "
 "$unknown_ids"
-msgstr[0] "Hata: Birim çağırma listenizde bilinmeyen birim tür var."
-msgstr[1] "Hata: Birim çağırma listenizde bilinmeyen birim türleri var."
+msgstr[0] ""
+"Hata: Birim çağırma listenizde bilinmeyen birim tür var: $unknown_ids"
+msgstr[1] ""
+"Hata: Birim çağırma listenizde bilinmeyen birim türleri var: $unknown_ids"
 
 #: src/menu_events.cpp:274
 msgid "You have no units available to recruit."
@@ -7305,11 +7312,11 @@ msgstr "‘$search’ dizesini içeren etiket veya birim bulunamadı."
 
 #: src/menu_events.cpp:1480
 msgid "Can't droid invalid side: '$side'."
-msgstr "Geçersiz ‘$side’ tarafı droid başarısız."
+msgstr "Geçersiz taraf droid olamaz: '$side'."
 
 #: src/menu_events.cpp:1483
 msgid "Can't droid networked side: '$side'."
-msgstr "Ağdaki ‘$side’ tarafı için droid başarısız."
+msgstr "Ağ tarafı droid olamaz: '$side'."
 
 #: src/menu_events.cpp:1497 src/menu_events.cpp:1513 src/menu_events.cpp:1545
 msgid ""
@@ -7323,7 +7330,7 @@ msgstr "'$side' tarafının denetimi artık şunun elinde: YZ."
 
 #: src/menu_events.cpp:1509
 msgid "Side '$side' is already droided."
-msgstr "'$side' tarafı zaten droidlenmiş."
+msgstr "'$side' tarafı zaten droid."
 
 #: src/menu_events.cpp:1523 src/menu_events.cpp:1555
 msgid "Side '$side' controller is now controlled by: human."
@@ -7331,7 +7338,7 @@ msgstr "'$side' tarafının denetimi artık şunun elinde: insan."
 
 #: src/menu_events.cpp:1525
 msgid "Side '$side' is already not droided."
-msgstr "'$side' tarafı zaten droidlenmemiş."
+msgstr "'$side' tarafı henüz droid değil."
 
 #: src/menu_events.cpp:1529
 msgid ""
@@ -7495,7 +7502,7 @@ msgstr "Oyun başladı!"
 
 #: src/mp_ui_alerts.cpp:186
 msgid "$name has taken control"
-msgstr "$name denetimi eline aldı"
+msgstr "Denetimi $name aldı"
 
 #: src/mp_ui_alerts.cpp:186
 msgid "Turn changed"
@@ -7647,11 +7654,11 @@ msgstr "Sıra $name|’de"
 
 #: src/playturn.cpp:278
 msgid "Give control to their ally $player"
-msgstr "Denetimi müttefikleri $player'a verir"
+msgstr "Denetimi müttefikleri $player|'a ver"
 
 #: src/playturn.cpp:287
 msgid "Give control to observer $player"
-msgstr "Denetimi $player gözlemcisine verir"
+msgstr "Denetimi $player gözlemcisine ver"
 
 #: src/playturn.cpp:292
 msgid "Replace with AI"
@@ -7702,7 +7709,7 @@ msgstr "Irk: "
 
 #: src/reports.cpp:238
 msgid "Side: <b>$side_name</b> ($color_name)"
-msgstr "Taraf: <b>$side_name</b> ($color_name)"
+msgstr "Taraf: <b>$side_name</b> ($color_name|)"
 
 #: src/reports.cpp:316
 msgid "Trait: "
@@ -8186,11 +8193,11 @@ msgstr "[$tag1] için geçersiz kapama etiketi [/$tag2] bulundu"
 
 #: src/serialization/parser.cpp:272
 msgid "closed at $pos"
-msgstr "Şurada kapatıldı: $pos "
+msgstr "Şurada kapatıldı: $pos"
 
 #: src/serialization/parser.cpp:308 src/serialization/parser.cpp:324
 msgid "Empty variable name"
-msgstr "Boş değişken adı"
+msgstr "Değişken adı yok"
 
 #: src/serialization/parser.cpp:316
 msgid "Unexpected characters after variable name (expected , or =)"
@@ -8313,7 +8320,7 @@ msgstr "Kullanılan Hata Ayıklama Kipi Komutu"
 #: src/synced_commands.cpp:535
 msgid "A unit was created using debug mode during $player’s turn"
 msgstr ""
-"$player oyuncusunun elinde hata ayıklama kipi kullanılarak  bir birim "
+"$player oyuncusunun elinde hata ayıklama kipi kullanılarak bir birim "
 "oluşturuldu"
 
 #: src/synced_user_choice.cpp:330
@@ -8353,7 +8360,7 @@ msgstr "border_size 0.0 ila 0.5 arasında olmalıdır."
 
 #: src/theme.cpp:564 src/theme.cpp:569
 msgid "Hotkey(s): "
-msgstr "kısayol tuşları: "
+msgstr "Kkısayol tuşları: "
 
 #: src/time_of_day.cpp:45
 msgid "Stub Time of Day"
@@ -8401,35 +8408,35 @@ msgstr[1] "$number vuruş"
 #. TRANSLATORS: Current value for WML code set_accuracy, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:475
 msgid "$number| accuracy"
-msgstr "$number| isabetlilik"
+msgstr "$number isabetlilik"
 
 #. TRANSLATORS: Current value for WML code increase_accuracy, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:482
 msgid "<span color=\"$color\">$number_or_percent|%</span> accuracy"
-msgstr "<span color=\"$color\">$number_or_percent|%</span> isabetlilik"
+msgstr "<span color=\"$color\">%$number_or_percent</span> isabetlilik"
 
 #. TRANSLATORS: Current value for WML code set_parry, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:489
 msgid "$number parry"
-msgstr "$number| savuşturma"
+msgstr "$number savuşturma"
 
 #. TRANSLATORS: Current value for WML code increase_parry, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:496
 msgid "<span color=\"$color\">$number_or_percent</span> parry"
-msgstr "<span color=\"$color\">$number_or_percent</span> savuşturuldu"
+msgstr "<span color=\"$color\">$number_or_percent</span> savuşturma"
 
 #. TRANSLATORS: Current value for WML code set_movement_used, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:503
 msgid "$number movement point"
 msgid_plural "$number movement points"
-msgstr[0] "$number Hareket sayısı"
-msgstr[1] "$number Hareket sayısı"
+msgstr[0] "$number hareket"
+msgstr[1] "$number hareket"
 
 #. TRANSLATORS: Current value for WML code increase_movement_used, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:512
 msgid "<span color=\"$color\">$number_or_percent</span> movement point"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> movement points"
-msgstr[0] "<span color=\"$color\">$number_or_percent</span> hareket sayısı"
+msgstr[0] "<span color=\"$color\">$number_or_percent</span> hareket"
 msgstr[1] "<span color=\"$color\">$number_or_percent</span> hareket sayıları"
 
 #: src/units/helper.cpp:59
@@ -8484,7 +8491,7 @@ msgstr "<span color=\"$color\">$number_or_percent</span> sıkıştırma"
 
 #: src/units/unit.cpp:1855
 msgid "<span color=\"$color\">$number_or_percent</span> XP to advance"
-msgstr "<span color=\"$color\">$number_or_percent</span> ilerleme için TP"
+msgstr "Terfi için <span color=\"$color\">$number_or_percent</span> TP"
 
 #: src/units/unit.cpp:1859
 msgid "<span color=\"$color\">$number_or_percent</span> attack per turn"
@@ -8504,22 +8511,22 @@ msgstr "seviye başına $effect_description"
 #. TRANSLATORS: "Before Wesnoth"   - format for years prior to the founding of Wesnoth
 #: src/utils/irdya_datetime.cpp:59
 msgid "$year BW"
-msgstr "$year VÖ"
+msgstr "VÖ $year"
 
 #. TRANSLATORS: "Year of Wesnoth"  - format for years after the founding of Wesnoth
 #: src/utils/irdya_datetime.cpp:62
 msgid "$year YW"
-msgstr "$year VY"
+msgstr "$year"
 
 #. TRANSLATORS: "Before the Fall" -  format for years prior to the fall of Wesnoth
 #: src/utils/irdya_datetime.cpp:65
 msgid "$year BF"
-msgstr "$year DÖ"
+msgstr "ÇÖ $year"
 
 #. TRANSLATORS: "After the Fall"   - format for years after the fall of Wesnoth
 #: src/utils/irdya_datetime.cpp:68
 msgid "$year AF"
-msgstr "$year DS"
+msgstr "ÇS $year"
 
 #: src/wesnothd_connection.cpp:496
 msgid "Disconnected from server."

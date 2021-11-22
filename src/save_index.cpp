@@ -1,16 +1,16 @@
 /*
-   Copyright (C) 2003 - 2018 by Jörg Hinrichs, refactored from various
-   places formerly created by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2003 - 2021
+	by Jörg Hinrichs, David White <dave@whitevine.net>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #include "save_index.hpp"
@@ -213,23 +213,6 @@ std::shared_ptr<save_index_class> save_index_class::default_saves_dir()
 	return instance;
 }
 
-class filename_filter
-{
-public:
-	filename_filter(const std::string& filter)
-		: filter_(filter)
-	{
-	}
-
-	bool operator()(const std::string& filename) const
-	{
-		return filename.end() == std::search(filename.begin(), filename.end(), filter_.begin(), filter_.end());
-	}
-
-private:
-	std::string filter_;
-};
-
 /** Get a list of available saves. */
 std::vector<save_info> save_index_class::get_saves_list(const std::string* filter)
 {
@@ -238,10 +221,21 @@ std::vector<save_info> save_index_class::get_saves_list(const std::string* filte
 	std::vector<std::string> filenames;
 	filesystem::get_files_in_dir(dir(), &filenames);
 
-	if(filter) {
-		filenames.erase(
-			std::remove_if(filenames.begin(), filenames.end(), filename_filter(*filter)), filenames.end());
-	}
+	const auto should_remove = [filter](const std::string& filename) {
+		// Steam documentation indicates games can ignore their auto-generated 'steam_autocloud.vdf'.
+		// Reference: https://partner.steamgames.com/doc/features/cloud (under Steam Auto-Cloud section as of September 2021)
+		static const std::vector<std::string> to_ignore {"steam_autocloud.vdf"};
+
+		if(std::find(to_ignore.begin(), to_ignore.end(), filename) != to_ignore.end()) {
+			return true;
+		} else if(filter) {
+			return filename.end() == std::search(filename.begin(), filename.end(), filter->begin(), filter->end());
+		}
+
+		return false;
+	};
+
+	filenames.erase(std::remove_if(filenames.begin(), filenames.end(), should_remove), filenames.end());
 
 	std::vector<save_info> result;
 	std::transform(filenames.begin(), filenames.end(), std::back_inserter(result), creator);
@@ -259,8 +253,10 @@ std::string save_info::format_time_local() const
 {
 	if(std::tm* tm_l = std::localtime(&modified())) {
 		const std::string format = preferences::use_twelve_hour_clock_format()
-			? _("%a %b %d %I:%M %p %Y")
-			: _("%a %b %d %H:%M %Y");
+			// TRANSLATORS: Day of week + month + day of month + year + 12-hour time, eg 'Tue Nov 02 2021, 1:59 PM'. Format for your locale.
+			? _("%a %b %d %Y, %I:%M %p")
+			// TRANSLATORS: Day of week + month + day of month + year + 24-hour time, eg 'Tue Nov 02 2021, 13:59'. Format for your locale.
+			: _("%a %b %d %Y, %H:%M");
 
 		return translation::strftime(format, tm_l);
 	}

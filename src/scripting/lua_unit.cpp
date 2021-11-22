@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2009 - 2018 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2009 - 2021
+	by Guillaume Melquiond <guillaume.melquiond@gmail.com>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #include "scripting/lua_unit.hpp"
@@ -323,6 +324,8 @@ static int impl_unit_get(lua_State *L)
 	return_int_attrib("max_moves", u.total_movement());
 	return_int_attrib("max_attacks", u.max_attacks());
 	return_int_attrib("attacks_left", u.attacks_left());
+	return_int_attrib("vision", u.vision());
+	return_int_attrib("jamming", u.jamming());
 	return_tstring_attrib("name", u.name());
 	return_tstring_attrib("description", u.unit_description());
 	return_bool_attrib("canrecruit", u.can_recruit());

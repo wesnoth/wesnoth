@@ -5,10 +5,8 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 # Translators:
-# 家庭的の人 <kateitekino_hito@yahoo.co.jp>, 2018
-# tamanegi, 2019
-# 堀 秀幸 <Hide.HORI@gmail.com>, 2020
-# RatArmy <broadbarredfirefish@gmail.com>, 2021
+# h22, 2021
+# RatArmy, 2021
 #
 #, fuzzy
 msgid ""
@@ -16,8 +14,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2021-06-23 11:42-0400\n"
-"PO-Revision-Date: 2018-05-06 10:20+0000\n"
-"Last-Translator: RatArmy <broadbarredfirefish@gmail.com>, 2021\n"
+"PO-Revision-Date: 2021-06-26 08:31+0000\n"
+"Last-Translator: RatArmy, 2021\n"
 "Language-Team: Japanese (https://www.transifex.com/wesnoth-jp/teams/60513/"
 "ja/)\n"
 "Language: ja\n"
@@ -69,10 +67,8 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:22
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:61
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:91
-#, fuzzy
-#| msgid " This unit is capable of basic healing."
 msgid "This unit is capable of basic healing and slowing dehydration."
-msgstr " このユニットには簡易な回復能力があります。"
+msgstr "このユニットには基本的な回復能力と脱水症状を遅らせる能力があります。"
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:40
@@ -108,29 +104,16 @@ msgstr ""
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:70
-#, fuzzy
-#| msgid "heals +4"
 msgid "heals +12"
-msgstr "回復 +4"
+msgstr "回復 +12"
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:71
-#, fuzzy
-#| msgid "female^heals +4"
 msgid "female^heals +12"
-msgstr "回復 +4"
+msgstr "回復 +12"
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:72
-#, fuzzy
-#| msgid ""
-#| "This unit combines herbal remedies with magic to heal units more quickly "
-#| "than is normally possible on the battlefield.\n"
-#| "\n"
-#| "A unit cared for by this healer may heal up to 8 HP per turn, or stop "
-#| "poison from taking effect for that turn.\n"
-#| "A poisoned unit cannot be cured of its poison by a healer, and must seek "
-#| "the care of a village or a unit that can cure."
 msgid ""
 "This unit combines herbal remedies with magic to heal units more quickly "
 "than is normally possible on the battlefield.\n"
@@ -142,22 +125,19 @@ msgid ""
 msgstr ""
 "薬草と魔法を組み合わせることで、自軍・同盟軍のユニットを素早く回復します。\n"
 "\n"
-"回復対象のユニットを 1 ターンに 8HP 回復します。回復対象が毒状態の場合は、毒"
+"回復対象のユニットを 1 ターンに 12HP 回復します。回復対象が毒状態の場合は、毒"
 "のダメージを防止します。\n"
 "ただし、解毒を行うことはできません。解毒したければ、村か治療ユニットを使用し"
 "てください。"
 
 #. [heals]
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:97
-#, fuzzy
-#| msgid ""
-#| " This unit is capable of healing those around it, and curing them of "
-#| "poison."
 msgid ""
 "This unit is capable of healing those around it, slowing dehydration, and "
 "curing them of poison."
 msgstr ""
-" このユニットはその周りにいるユニットを回復し、毒を治療することができます。"
+"このユニットはその周りにいるユニットを回復する他、脱水症状を遅らせ、毒を治療"
+"することができます。"
 
 #. [trait]: id=healthy
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:11
@@ -179,11 +159,11 @@ msgstr "奇襲"
 
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:20
 msgid "Castle"
-msgstr ""
+msgstr "城"
 
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:23
 msgid "Cave"
-msgstr ""
+msgstr "洞窟"
 
 #. [damage]: id=charge
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:26
@@ -208,7 +188,7 @@ msgstr "治療"
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:35
 #: src/help/help_topic_generators.cpp:701
 msgid "Defense"
-msgstr ""
+msgstr "回避"
 
 #. [drains]: id=drains
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:38
@@ -242,22 +222,20 @@ msgid "+1 max HP"
 msgstr "最大 HP +1"
 
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:53
-#, fuzzy
-#| msgid "first strike"
 msgid "firststrike"
 msgstr "先制"
 
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:56
 msgid "Flat"
-msgstr ""
+msgstr "平地"
 
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:59
 msgid "Forest"
-msgstr ""
+msgstr "森"
 
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:62
 msgid "Frozen"
-msgstr ""
+msgstr "凍土"
 
 #. [trait]: id=healthy
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:74
@@ -267,7 +245,7 @@ msgstr "壮健"
 
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:77
 msgid "Hills"
-msgstr ""
+msgstr "丘"
 
 #. [illuminates]: id=illumination
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:80
@@ -295,7 +273,7 @@ msgstr "精密"
 
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:92
 msgid "Mushroom Grove"
-msgstr ""
+msgstr "キノコの森"
 
 #. [hides]: id=nightstalk
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:95
@@ -326,11 +304,11 @@ msgstr "再生"
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:107
 #: src/help/help_topic_generators.cpp:662
 msgid "Resistances"
-msgstr ""
+msgstr "耐性"
 
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:110
 msgid "Sand"
-msgstr ""
+msgstr "砂地"
 
 #. [skirmisher]: id=skirmisher
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:113
@@ -354,7 +332,7 @@ msgstr "装甲"
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:122
 #: src/help/help_topic_generators.cpp:581
 msgid "Strikes"
-msgstr ""
+msgstr "攻撃回数"
 
 #. [hides]: id=submerge
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:125
@@ -364,7 +342,7 @@ msgstr "潜水"
 
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:128
 msgid "Swamp"
-msgstr ""
+msgstr "沼地"
 
 #. [teleport]: id=teleport
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:131
@@ -380,7 +358,7 @@ msgstr "アンデッド"
 
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:140
 msgid "Village"
-msgstr ""
+msgstr "村"
 
 #. [section]: id=editor
 #: data/core/editor/help.cfg:5
@@ -857,40 +835,6 @@ msgstr "マップ・シナリオエディタ"
 
 #. [topic]: id=..editor
 #: data/core/editor/help.cfg:224
-#, fuzzy
-#| msgid ""
-#| "Wesnoth’s Map and Scenario Editor allows users to create and edit the "
-#| "maps on which every Wesnoth scenario takes place. It also provides a "
-#| "limited set of features for setting up a basic scenario.\n"
-#| "\n"
-#| "The editor can be launched from the <italic>text='Map Editor'</italic> "
-#| "option at the title screen.\n"
-#| "\n"
-#| "<header>text='Editing Modes'</header>\n"
-#| "\n"
-#| "The editor features two modes of operation: terrain mode and scenario "
-#| "mode.\n"
-#| "\n"
-#| "The <ref>dst='..editor_mode_terrain' text='Terrain Mode'</ref> is similar "
-#| "to a simple paint application, with tools to <ref>dst='editor_tool_paint' "
-#| "text='paint'</ref>, <ref>dst='editor_tool_fill' text='fill'</ref>, "
-#| "<ref>dst='editor_tool_select' text='select (and copy)'</ref>, and "
-#| "<ref>dst='editor_tool_paste' text='paste'</ref>. It also has the tool for "
-#| "setting the leaders’ <ref>dst='editor_tool_starting' text='starting "
-#| "locations'</ref>.\n"
-#| "\n"
-#| "The <ref>dst='..editor_mode_scenario' text='Scenario Mode'</ref>, in "
-#| "addition to the tools available in terrain mode, adds support for adding "
-#| "<ref>dst='editor_tool_label' text='labels'</ref>, "
-#| "<ref>dst='editor_tool_scenery' text='scenery items'</ref>, "
-#| "<ref>dst='editor_tool_unit' text='units'</ref> in addition to the leader, "
-#| "and assigning <ref>dst='editor_tool_village' text='village ownership'</"
-#| "ref> at the start of the scenario. There’s also a "
-#| "<ref>dst='editor_playlist' text='playlist manager'</ref> for the music.\n"
-#| "\n"
-#| "<bold>text='Warning: the Scenario Mode is buggy in 1.14.'</bold> "
-#| "Improving it is one of the main blockers for the 1.16 release, however in "
-#| "1.14 its quality is far below that of the game and the terrain mode."
 msgid ""
 "Wesnoth’s Map and Scenario Editor allows users to create and edit the maps "
 "on which every Wesnoth scenario takes place. It also provides a limited set "
@@ -945,11 +889,7 @@ msgstr ""
 "<ref>dst='editor_tool_unit' text='ユニット'</ref>の追加をサポートし、シナリオ"
 "開始時の<ref>dst='editor_tool_village' text='村の所有権'</ref>を割り当てるこ"
 "ともできます。. また、BGM用の<ref>dst='editor_playlist' text='プレイリストマ"
-"ネージャー'</ref> も利用できます.\n"
-"\n"
-"<bold>text='注意：1.14のシナリオモードには複数のバグが存在します。'</"
-"bold>1.14のシナリオモードのクオリティは Wesnoth そのものや地形モードより遥か"
-"に低く、シナリオモードの改善は1.16リリースのための課題となっています。"
+"ネージャー'</ref> も利用できます."
 
 #. [topic]: id=..editor
 #: data/core/editor/help.cfg:236
@@ -1482,18 +1422,18 @@ msgstr "事典"
 
 #. [topic]: id=..encyclopedia
 #: data/core/encyclopedia/_main.cfg:14
-#, fuzzy
-#| msgid "<ref>dst='..geography' text='Geography'</ref>"
 msgid ""
 "<ref>dst='..calendar' text='Calendar'</ref>\n"
 "<ref>dst='..geography' text='Geography'</ref>"
-msgstr "<ref>dst='..geography' text='地理'</ref>"
+msgstr ""
+"<ref>dst='..calendar' text='暦'</ref>\n"
+"<ref>dst='..geography' text='地理'</ref>"
 
 #. [section]: id=calendar
 #. [topic]: id=..calendar
 #: data/core/encyclopedia/calendar.cfg:5 data/core/encyclopedia/calendar.cfg:13
 msgid "Calendar"
-msgstr ""
+msgstr "暦"
 
 #. [topic]: id=..calendar
 #: data/core/encyclopedia/calendar.cfg:14
@@ -1515,6 +1455,22 @@ msgid ""
 "Blackfire\n"
 "\n"
 msgstr ""
+"Wesnoth の暦において、1 年は 12 ヶ月で構成されており、以下の順になっていま"
+"す：\n"
+"\n"
+"白炎（Whitefire）\n"
+"血月（Bleeding Moon）\n"
+"蒔種（Scatterseed）\n"
+"深根（Deeproot）\n"
+"占華（Scryer’s Bloom）\n"
+"茨女（Thorntress）\n"
+"頂星（Summit Star）\n"
+"起炎（Kindlefire）\n"
+"眠種（Stillseed）\n"
+"穫月（Reaper's Moon）\n"
+"氷華（Verglas Bloom）\n"
+"黒炎（Blackfire）\n"
+"\n"
 
 #. [section]: id=geography
 #. [topic]: id=..geography
@@ -1656,59 +1612,6 @@ msgstr "Wesnoth 王国（Kingdom of Wesnoth）"
 
 #. [topic]: id=kingdom_wesnoth
 #: data/core/encyclopedia/geography.cfg:77
-#, fuzzy
-#| msgid ""
-#| "The Kingdom of Wesnoth is located in the north-central portion of the "
-#| "<ref>dst='great_continent' text='Great Continent'</ref>. Most of the "
-#| "mainline campaigns revolve around it. It is bounded on the map by the "
-#| "<ref>dst='great_river' text='Great River'</ref> to the north, the shore "
-#| "of the <ref>dst='great_ocean' text='ocean'</ref> to the west, the "
-#| "Aethenwood to the <ref>dst='southwest_elven_lands' text='southwest'</"
-#| "ref>, and the Bitter Swamp to the southeast.\n"
-#| "\n"
-#| "Over the River Aethen, south of Fort Tahn, is a Wesnothian frontier "
-#| "region. It is bounded to the south (off-map) by dense woods of which the "
-#| "Aethenwood may be considered a northernmost extension.\n"
-#| "\n"
-#| "<header>text='Notable cities:'</header>\n"
-#| "    • Weldyn: The capital of Wesnoth.\n"
-#| "    • Aldril: City lying on the Bay of Pearls.\n"
-#| "    • Blackwater Port: City lying south of the Bay of Pearls.\n"
-#| "    • Carcyn: Located between the Grey Woods and the Great River.\n"
-#| "    • Dan’Tonk: Wesnoth’s largest city, located in the center of the "
-#| "country, just west and north of Weldyn.\n"
-#| "    • Soradoc: The northernmost border outpost of Wesnoth, controls the "
-#| "confluence of the Weldyn River and the Great River.\n"
-#| "    • Fort Tahn: The southernmost border outpost, controls the north/"
-#| "south road crossing the River Aethen.\n"
-#| "    • Tath: Important fort city north of Dan’Tonk, exerts control over "
-#| "the wilderness country around the east of the Brown Hills and north to "
-#| "the Ford of Abez.\n"
-#| "\n"
-#| "<header>text='Notable land features:'</header>\n"
-#| "    • Gryphon Mountain: Home of the fabled Gryphons.\n"
-#| "    • Ford of Abez: Shallow part of the Great River, it is usually "
-#| "controlled by Wesnothian forces.\n"
-#| "    • Weldyn River: It branches from the Great River and goes south.\n"
-#| "    • Great Central Plain: Area bounded by Weldyn, Dan’Tonk, and Fort "
-#| "Tahn, this plain is Wesnoth’s bread basket and home to most of its "
-#| "population.\n"
-#| "    • Dulatus Hills: These rolling hills bordering the Great Central "
-#| "Plain provide much of Wesnoth’s livestock and agriculture.\n"
-#| "    • Brown Hills: Wasteland surrounding Gryphon Mountain that is not "
-#| "well-populated and occasionally very dangerous.\n"
-#| "    • Horse Plains: Region of rolling plains just south of the Great "
-#| "River, bounded by Glyn’s Forest to the west and the River Weldyn to the "
-#| "east; the southern reach merges into the Central Plain. Home of the "
-#| "powerful Clans; the best horses in Wesnoth are bred here.\n"
-#| "    • Estmark Hills: Largish range rising south of the Great River and "
-#| "east of the Weldyn River. The northernmost portion, nearest the River "
-#| "Weldyn, has at various times been settled by Wesnothians, but the "
-#| "Kingdom’s control is tenuous at best and banditry is common.\n"
-#| "    • Glyn’s Forest: Sometimes known as the Royal Forest, named for one "
-#| "of Haldric II’s sons.\n"
-#| "    • Gray Woods: Large forest in the heart of the wilds of Wesnoth, "
-#| "located between Carcyn and Aldril and generally considered to be haunted."
 msgid ""
 "The Kingdom of Wesnoth is located in the north-central portion of the "
 "<ref>dst='great_continent' text='Great Continent'</ref>. Most of the "
@@ -1810,7 +1713,7 @@ msgstr ""
 "が、その地域への王国の支配は不安定で略奪が横行しています。\n"
 "    • Glyn の森（Glyn’s Forest）：Haldric II 世の息子の一人にちなんで名付けら"
 "れた、王家の森（Royal Forest）として知られる森です。\n"
-"    • 灰色森（Gray Woods）：Wesnoth の荒野の中心に位置する大きな森で、Carcyn "
+"    • 灰色森（Grey Woods）：Wesnoth の荒野の中心に位置する大きな森で、Carcyn "
 "と Aldril の間に位置し、幽霊が出ると噂されています。"
 
 #. [topic]: id=elensefar
@@ -2897,16 +2800,8 @@ msgstr ""
 
 #. [topic]: id=shroud_and_fog
 #: data/core/help.cfg:282
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<header>text='Multiplayer Eras and Factions'</header>"
 msgid "<header>text='Multiplayer and undo'</header>"
-msgstr ""
-"\n"
-"\n"
-"<header>text='MPの時代(MP Era)、党派(MP Faction)'</header>"
+msgstr "<header>text='マルチプレイヤーとアンドゥ'</header>"
 
 #. [topic]: id=shroud_and_fog
 #: data/core/help.cfg:284
@@ -2918,6 +2813,12 @@ msgid ""
 "move. Chat messages and map labels are sent immediately, however they don’t "
 "cause the undoable moves to be sent."
 msgstr ""
+"マルチプレイヤーゲームでは、ネットワークで送信された移動はアンドゥできませ"
+"ん。そのため、なるだけアンドゥ可能な状態を保つようにデータの送信に待機をかけ"
+"ています。チームメイトと作戦会議をする時には、他のプレイヤーは最後に戦闘また"
+"は霧払いを行ったタイミングの戦場を見ていることを考慮してください。チャットと"
+"マップラベルはすぐに送信されますが、それらを送ってもアンドゥできなくなるわけ"
+"ではありません。"
 
 #. [topic]: id=saveload
 #: data/core/help.cfg:291
@@ -2926,15 +2827,6 @@ msgstr "保存＆再開"
 
 #. [topic]: id=saveload
 #: data/core/help.cfg:292
-#, fuzzy
-#| msgid ""
-#| "Random numbers are part of Wesnoth, attacks can fail and units can die "
-#| "due to bad luck. This is an expected part of the game, and one of the "
-#| "aims of the game is that a sufficiently skilled player should be able to "
-#| "complete all of the mainline campaigns, on hard, without needing to save-"
-#| "load. Going back to a previous turn to try a different strategy is a part "
-#| "of learning the game, but we recommend against reloading merely to try "
-#| "the same strategy again while hoping for better luck."
 msgid ""
 "Random numbers are part of Wesnoth, attacks can fail and units can die due "
 "to bad luck — this is an expected part of the game. Going back to a previous "
@@ -2942,24 +2834,13 @@ msgid ""
 "recommend against reloading merely to try the same strategy again while "
 "hoping for better luck."
 msgstr ""
-"乱数は Wesnoth を形作る要素の 1 つであり、運が悪ければ攻撃は外れますしユニッ"
-"トは死にます。ゲームの設計は乱数を考慮した上で行われています。そのため、メイ"
-"ンライン（Wesnoth に標準で含まれている）キャンペーンは、たとえ高難易度であっ"
-"ても熟練したプレイヤーならば「保存＆再開」をせずともクリアできるはずです。前"
-"にターンに戻り別の戦略を練るならばゲームの習熟の役に立つでしょうが、幸運を願"
-"いつつ同じ戦略を繰り返すことはお勧めしません。"
+"乱数は Wesnoth を形作る重要な要素です。運が悪ければ攻撃は外れますし、ユニット"
+"が死ぬこともありますが、それはこのゲームでは予期しうることの１つです。前の"
+"ターンに戻り別の戦術を試みることはゲームの習熟につながりますが、幸運を願いつ"
+"つひたすらに同じ戦術を繰り返すことはお勧めしません。"
 
 #. [topic]: id=saveload
 #: data/core/help.cfg:294
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "One of the challenges of the game is to work out how to protect your "
-#| "heroes. Small risks quickly build up: if you have five important units, "
-#| "and they each have just a 1% chance of death each turn, you can "
-#| "<italic>text='expect'</italic> one of them to die about every 20 turns. "
-#| "So, you’ll rarely make it through a scenario without having it happen."
 msgid ""
 "One of the challenges of the game is to work out how to protect your heroes. "
 "Small risks quickly build up: if you have five important units, and they "
@@ -2967,12 +2848,12 @@ msgid ""
 "<italic>text='expect'</italic> one of them to die about every 20 turns. So, "
 "you’ll rarely make it through a scenario without having it happen."
 msgstr ""
-"\n"
-"\n"
-"ゲーム中での難所の一つは、自軍の英雄を失わないように守ることです。小さなリス"
-"クも積み重なれば厄介です。5 人重要なユニットを持ち、各ターンに 1% の確率で死"
-"の危険があるとすれば、20 ターンごとに 5 人のうち 1 人の死が予測されます。その"
-"ため、たとえ小さなリスクでもできる限り避けなければなりません。"
+"このゲームの課題の１つは、いかにしてヒーローユニットを守り抜くかということで"
+"す。小さなリスクでも、重なり合えばすぐに大きなリスクに増大します。仮に５つの"
+"重要なユニットを持っているとしましょう。各ターンに死ぬ確率がそれぞれ１％に過"
+"ぎなかったとしても、約２０ターン毎にその１つが死ぬ可能性があることを"
+"<italic>text='予想'</italic>することができます。そのため、重要なユニットを全"
+"く失わずにシナリオをやり通すことはかなり難しいことだと言えるでしょう。"
 
 #. [topic]: id=saveload
 #: data/core/help.cfg:297
@@ -2984,6 +2865,12 @@ msgid ""
 "them in future scenarios. Your battle plan should distribute the risks based "
 "on which troops you want to recall later."
 msgstr ""
+"リスクの増大はヒーロー以外のユニットについても同様です。ストーリーや会話は大"
+"抵、自軍のユニットに愛着を抱かせるように設定されていますが、それは単なるゲー"
+"ムに過ぎないということも心に留めておきましょう。これらのユニットを死なせたと"
+"しても、以降のシナリオで召還できなくなるということを除けば、ペナルティーはほ"
+"とんどありません。どのユニットを後々召還したいと望むかを基準にしてリスクの配"
+"分をするように戦闘計画を立てると良いでしょう。"
 
 #. [topic]: id=saveload
 #: data/core/help.cfg:299
@@ -2994,22 +2881,21 @@ msgid ""
 "assuming that the player will be able to train enough troops to cope with "
 "losing some level two or level three units."
 msgstr ""
+"難易度はプレイヤーがセーブとロードをしないことを前提にしてバランスが調整され"
+"ています。メインラインのキャンペーンにおいては、高難易度になるにつれて敵が多"
+"くなるのが一般的であり、そのためより多くの経験値を得ることが可能になります。"
+"結果として、レベル２やレベル３のユニットをいくつか失ったとしても、それに対処"
+"できるだけの十分なユニットを育成することが可能になるようにバランスが調整され"
+"ているということになります。"
 
 #. [topic]: id=saveload
 #: data/core/help.cfg:301
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "That said, it’s a game; the best way to play it is whichever way gives "
-#| "you the most enjoyment."
 msgid ""
 "That said, it’s a game; the best way to play it is whichever way gives you "
 "the most enjoyment."
 msgstr ""
-"\n"
-"\n"
-"これはゲームですので、あなたが最も楽しめる遊び方をすると良いでしょう。"
+"とは言え、これはゲームです。あなたが最も楽しめるプレイ方法であれば、それがど"
+"んなものであれ、最良のプレイ方法だと言えます。"
 
 #. [topic]: id=whylost
 #: data/core/help.cfg:308
@@ -3105,21 +2991,6 @@ msgstr ""
 
 #. [topic]: id=whylost
 #: data/core/help.cfg:321
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "• Barely scraping a victory in a previous scenario. At all but the "
-#| "easiest difficulties, campaigns assume that you will have some "
-#| "<italic>text='carryover gold'</italic> and some advanced units on your "
-#| "<italic>text='recall list.'</italic> (These concepts are explained in the "
-#| "tutorial.) If you win a scenario but lose most of your advanced units and "
-#| "much of your gold, the following scenario may be very difficult to beat, "
-#| "even for a more experienced player. If you find yourself in this "
-#| "situation, you may try to go back a scenario or two and win them more "
-#| "convincingly, or change to an easier difficulty. (However, remember that "
-#| "<italic>text='some'</italic> losses are expected, particularly at higher "
-#| "difficulties.)"
 msgid ""
 "\n"
 "\n"
@@ -3136,12 +3007,12 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"・それ以前のシナリオが辛勝だった。最も低い難易度のほとんどでは、キャンペーン"
-"中、<italic>text='ゴールドの引き継ぎ'</italic>を得られたり、高レベルのユニッ"
-"トが<italic>text='召還リスト'</italic>に登載されたりします。（これらの概念は"
-"チュートリアルで解説されています。）もしもあるシナリオで勝利しても、高レベル"
-"のユニットのほとんどを失ったり、ゴールドを使いすぎてしまった場合は、それに続"
-"くシナリオで勝利するのが難しくなるかもしれません。それは、経験を積んだプレイ"
+"・それ以前のシナリオが辛勝だった。キャンペーンでは一般的に、いくらかの"
+"<italic>text='引き継いだゴールド'</italic>と<italic>text='召還リスト'</"
+"italic>中の熟練したユニットが存在することを想定しています。（これらの概念は"
+"チュートリアルで解説されています。）もしもあるシナリオで勝利しても、熟練した"
+"ユニットのほとんどを失ったり、ゴールドを使いすぎてしまった場合は、それに続く"
+"シナリオで勝利するのが難しくなるかもしれません。それは、経験を積んだプレイ"
 "ヤーにとっても同様です。このような状況に陥ったことに気付いたら、１つか２つ前"
 "のシナリオに戻って余裕のある勝ち方をするか、より低い難易度に変更しましょう。"
 "（ただし、<italic>text='多少の'</italic>損耗は覚悟しなければならないことに留"
@@ -3519,7 +3390,7 @@ msgstr ""
 #. [topic]: id=orbs
 #: data/core/help.cfg:382
 msgid "Orbs and ellipses"
-msgstr ""
+msgstr "宝珠と楕円"
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:383
@@ -3527,6 +3398,8 @@ msgid ""
 "There are colored indicators above the energy bars of some units, consisting "
 "of a colored orb (and sometimes a <ref>dst='crowns' text='crown'</ref>)."
 msgstr ""
+"一部のユニットには、HPバーの上部に色のついた宝珠（と場合によっては"
+"<ref>dst='crowns' text='冠'</ref>）が表示されます。"
 
 #. [topic]: id=orbs
 #. The help page has a set of images above this paragraph, in the same order as the bullet points
@@ -3556,19 +3429,31 @@ msgid ""
 "• Enemy units normally don’t have orbs, however these can be enabled in the "
 "advanced preference “Customize orb colors”."
 msgstr ""
+"宝珠はユニットが移動または攻撃できるかどうかを示します。示す状態とその色は以"
+"下の通りです。\n"
+"• <bold>text='緑'</bold>：このターン攻撃および移動を行っていません。\n"
+"• <bold>text='黄'</bold>：移動（または攻撃）済みですが、まだ攻撃可能です。ま"
+"た、さらに移動可能な場合もあります。\n"
+"• <bold>text='赤'</bold>：このターンの移動および攻撃はできません。\n"
+"    • また、「ターン終了」コマンドの後にも赤となります。\n"
+"    • 複数ターンにまたがる移動の途中にも赤となります。\n"
+"• <bold>text='赤と黄'</bold>：移動（または攻撃）済みで、もう攻撃はできません"
+"が、移動はできます。\n"
+"    • この状況はキャンペーン独自のイベントや能力によって発生することがありま"
+"す。例えば、キャンペーン<italic>text='燃える太陽の下で'</italic>の"
+"<italic>text='離脱'</italic>能力です。\n"
+"• <bold>text='青'</bold>は同盟軍のユニットですが、同盟軍のターン中は例外で"
+"す。\n"
+"    • 同盟軍のターン中、同盟軍のユニットは緑、黄、赤、白で表示されます。ただ"
+"し、移動による色の変化は<ref>dst='shroud_and_fog' text='戦場の幕と霧'</ref>で"
+"説明する通り遅延する場合があります。\n"
+"• 敵ユニットは通常宝珠を持ちませんが、上級設定の「宝珠の色のカスタマイズ」で"
+"有効化することもできます。"
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:407
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<header>text='Cores'</header>"
 msgid "<header>text='Ellipses'</header>"
-msgstr ""
-"\n"
-"\n"
-"<header>text='コア'</header>"
+msgstr "<header>text='「楕円」'</header>"
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:410
@@ -3576,6 +3461,8 @@ msgid ""
 "A team-colored shape is drawn on the ground under each unit. This is called "
 "the “ellipse”, although some units’ ellipses are not elliptical."
 msgstr ""
+"所属する陣営の色で塗られた図形が各ユニットの下の地面に表示されます。一部のユ"
+"ニットは楕円形ではありませんが、これは「楕円（ellipse）」と呼ばれるものです。"
 
 #. [topic]: id=orbs
 #. The help page has a set of images above this paragraph, in the same order as the bullet points
@@ -3590,11 +3477,20 @@ msgid ""
 "• Some campaigns start with a level zero leader. Able to recruit but lacking "
 "a ZoC, these units have a broken outline version of the seven-pointed star."
 msgstr ""
+"・ほとんどのユニットは楕円形が表示されます。\n"
+"・雇用をすることができるユニットは星形が表示されます。\n"
+"・<ref> dst='crowns' text='ヒーロー'</ref>の場合は、小さな星形が表示され、こ"
+"れらのユニットは雇用ができません。\n"
+"・<ref>dst='movement' text='支配領域（ZOC）'</ref>を持たないユニットは、縁が"
+"破線で描かれます。\n"
+"・キャンペーンによっては、リーダーがレベル０で開始するものがあります。雇用は"
+"できますが、支配領域（ZOC）を持たないため、破線で縁取られた星形が表示されま"
+"す。"
 
 #. [topic]: id=crowns
 #: data/core/help.cfg:432
 msgid "Crowns and loyal markers"
-msgstr ""
+msgstr "冠と忠義マーカー"
 
 #. [topic]: id=crowns
 #: data/core/help.cfg:433
@@ -3603,6 +3499,8 @@ msgid ""
 "text='orb'</ref>, and a corresponding shape to their <ref>dst='orbs' "
 "text='ellipses'</ref>:"
 msgstr ""
+"一部のユニットは<ref>dst='orbs' text='宝珠'</ref>の上に重なる追加のマーカー"
+"と、それに対応する形の<ref>dst='orbs' text='「楕円」'</ref>を持ちます。"
 
 #. [topic]: id=crowns
 #. The help page has a set of images above this paragraph, in the same order as the first set of bullet points, showing what the "loyal icon" is and the difference between "silver" and "blueish-silver".
@@ -3628,6 +3526,23 @@ msgid ""
 "campaign, assuming it doesn’t end immediately.\n"
 "• These units will never occur as random recruits."
 msgstr ""
+"• リーダーは<bold>text='金の冠'</bold>。\n"
+"• ヒーローは<bold>text='青銀の冠'</bold>。\n"
+"• エクスペンダブルリーダーは<bold>text='銀の冠'</bold>。\n"
+"• <ref>dst='traits_loyal' text='忠義ユニット'</ref>は<bold>text='忠義アイコ"
+"ン'</bold>。\n"
+"\n"
+"これらの分類のうち、ゲームの基本ルールに関わるのはリーダーのみです。その他は"
+"キャンペーンで登場し、物語を構成するキャラクターに付与されます。それらの付与"
+"ルールはそのキャンペーンによって決められており、キャンペーンごとに異なるもの"
+"のおおよそ次の規則に従っています。\n"
+"\n"
+"• ヒーローの死は敗北となります。\n"
+"• エクスペンダブルリーダーは雇用を行うことができますが、彼らの死は敗北とはな"
+"りません。\n"
+"• 上記のユニットは全て忠義特性の利点を持っており、維持費がかかりません。\n"
+"• 上記のユニットを失うとキャンペーンで不利となっていきます。\n"
+"• 上記のユニットは雇用によって発生しません。"
 
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:466
@@ -3636,17 +3551,6 @@ msgstr "時刻"
 
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:467
-#, fuzzy
-#| msgid ""
-#| "The time of day affects the damage of certain units as follows:\n"
-#| "\n"
-#| "• <bold>text='Lawful'</bold> units get +25% damage in daytime, and −25% "
-#| "damage at night.\n"
-#| "• <bold>text='Chaotic'</bold> units get +25% damage at night, and −25% in "
-#| "daytime.\n"
-#| "• <bold>text='Neutral'</bold> units are unaffected by the time of day.\n"
-#| "• <bold>text='Liminal'</bold> units get −25% damage during both night and "
-#| "daytime."
 msgid ""
 "The time of day affects the damage of certain units as follows:\n"
 "\n"
@@ -3664,7 +3568,7 @@ msgstr ""
 "• <bold>text='混沌'</bold>ユニットの与ダメージは、日中は -25%、夜間は +25% と"
 "なります。\n"
 "• <bold>text='中立'</bold>ユニットは時刻の影響を受けません。\n"
-"• <bold>text='薄明'</bold>ユニットの与ダメージは日中・夜間ともに -25% となり"
+"• <bold>text='薄明'</bold>ユニットの与ダメージは夜明け・夕暮れに +25% となり"
 "ます。"
 
 #. [topic]: id=time_of_day
@@ -4609,6 +4513,14 @@ msgid ""
 "supplied.\n"
 "\n"
 msgstr ""
+"\n"
+"陣営のコントロールを人間かAIに切り替えます。2つ目のパラメータを「off」にする"
+"と人間のコントロールに切り替えます。「on」の場合はAIに切り替えた上でその移動"
+"を見ることができます。「full」もAIに切り替えますが、移動の視認性は他のプレイ"
+"ヤーのターンと同じ扱いになります。もし2つ目のパラメータが与えられなければ、"
+"「on」と「off」を交互に切り替えます。もしパラメータが1つも与えられなければ、"
+"現在有効な陣営を対象として切り替えを行います。\n"
+"\n"
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:691
@@ -4623,11 +4535,6 @@ msgstr ""
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:694
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "Toggle the display of the current frames per second.\n"
-#| "\n"
 msgid ""
 "\n"
 "Toggle the display of the current frames per second. Also writes these "
@@ -4635,7 +4542,8 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"現在のフレームレートの表示を切り換えます。\n"
+"現在のFPSを表示するかどうかを切り替えます。また、FPSの値はユーザーディレクト"
+"リ中のファイルに書き込まれます。\n"
 "\n"
 
 #. [topic]: id=general_commands
@@ -5026,43 +4934,30 @@ msgstr ""
 
 #. [regenerate]: id=regenerates
 #: data/core/macros/abilities.cfg:108
-#, fuzzy
-#| msgid "regenerates"
 msgid "regenerates +4"
-msgstr "再生"
+msgstr "再生 +4"
 
 #. [regenerate]: id=regenerates
 #: data/core/macros/abilities.cfg:109
-#, fuzzy
-#| msgid "female^regenerates"
 msgid "female^regenerates +4"
-msgstr "再生"
+msgstr "再生 +4"
 
 #. [regenerate]: id=regenerates
 #: data/core/macros/abilities.cfg:110
-#, fuzzy
-#| msgid ""
-#| "The unit will heal itself 8 HP per turn. If it is poisoned, it will "
-#| "remove the poison instead of healing."
 msgid ""
 "The unit will heal itself 4 HP per turn. If it is poisoned, it will remove "
 "the poison instead of healing."
 msgstr ""
-"このユニットはターンごとに自身の HP を 8 回復します。毒を受けているなら、回復"
-"する代わりに毒を取り除きます。"
+"このユニットはターンごとに自身の HP を 4 回復します。毒を受けている場合は、回"
+"復する代わりに毒を取り除きます。"
 
 #. [regenerate]: id=regenerates
 #: data/core/macros/abilities.cfg:111
-#, fuzzy
-#| msgid ""
-#| " This unit regenerates, which allows it to heal as though always "
-#| "stationed in a village."
 msgid ""
 "This unit heals itself each turn, though not as much as if stationed in a "
 "village."
 msgstr ""
-" このユニットは再生能力があり、これによって常に村にいるかのように回復すること"
-"ができます。"
+"このユニットは、村での回復には及びませんが、ターンごとに自身を回復します。"
 
 #. [resistance]: id=steadfast
 #. [resistance]: id=melee_steadfast
@@ -5082,43 +4977,31 @@ msgstr ""
 #. [chance_to_hit]: id=diversion
 #: data/core/macros/abilities.cfg:145
 msgid "diversion"
-msgstr ""
+msgstr "陽動"
 
 #. [chance_to_hit]: id=diversion
 #: data/core/macros/abilities.cfg:146
-#, fuzzy
-#| msgid "female^leadership"
 msgid "female^diversion"
-msgstr "統率"
+msgstr "陽動"
 
 #. [chance_to_hit]: id=diversion
 #: data/core/macros/abilities.cfg:147
-#, fuzzy
-#| msgid ""
-#| " If there is an enemy of the target on the opposite side of the target "
-#| "while attacking it, this unit may backstab, inflicting double damage by "
-#| "creeping around behind that enemy."
 msgid ""
 "If there is an enemy of the target on the opposite side of the target, this "
 "unit diverts the target’s attention and reduces its chance to hit by 20%."
 msgstr ""
-" 攻撃時に標的のユニットの反対側にそのユニットの敵がいれば、奇襲を食らわせ、倍"
-"のダメージを与えるでしょう。"
+"標的となるユニットの反対側にそのユニットの敵がいれば、このユニットは標的の注"
+"意をそらし、命中率を 20% 低下させます。"
 
 #. [chance_to_hit]: id=diversion
 #: data/core/macros/abilities.cfg:148
-#, fuzzy
-#| msgid ""
-#| " If there is an enemy of the target on the opposite side of the target "
-#| "while attacking it, this unit may backstab, inflicting double damage by "
-#| "creeping around behind that enemy."
 msgid ""
 "If there is an enemy of the target on the opposite side of the target while "
 "attacking it, this unit diverts the target's attention and reduces its "
 "chance to hit."
 msgstr ""
-" 攻撃時に標的のユニットの反対側にそのユニットの敵がいれば、奇襲を食らわせ、倍"
-"のダメージを与えるでしょう。"
+"攻撃時に標的となるユニットの反対側にそのユニットの敵がいれば、このユニットは"
+"標的の注意をそらし、命中率を低下させます。"
 
 #. [leadership]: id=leadership
 #: data/core/macros/abilities.cfg:200
@@ -5215,24 +5098,15 @@ msgstr ""
 #. [hides]: id=burrow
 #: data/core/macros/abilities.cfg:302
 msgid "burrow"
-msgstr ""
+msgstr "堀潜"
 
 #. [hides]: id=burrow
 #: data/core/macros/abilities.cfg:303
-#, fuzzy
-#| msgid "female^slow"
 msgid "female^burrow"
-msgstr "鈍重"
+msgstr "堀潜"
 
 #. [hides]: id=burrow
 #: data/core/macros/abilities.cfg:304
-#, fuzzy
-#| msgid ""
-#| "This unit can hide in forest, and remain undetected by its enemies.\n"
-#| "\n"
-#| "Enemy units cannot see this unit while it is in forest, except if they "
-#| "have units next to it. Any enemy unit that first discovers this unit "
-#| "immediately loses all its remaining movement."
 msgid ""
 "This unit can hide in forest or sand if it is resting (has not moved for a "
 "turn), and remain undetected by its enemies.\n"
@@ -5241,12 +5115,12 @@ msgid ""
 "except if they have units next to it. Any enemy unit that first discovers "
 "this unit immediately loses all its remaining movement."
 msgstr ""
-"このユニットは森に隠れることができます。そのため、森にいれば敵に見つかること"
-"はありません。\n"
+"このユニットは森や砂地で休息（１ターンの間、全く移動しない）をすると、身を隠"
+"すことができ、敵に見つけられなくなります。\n"
 "\n"
-"このユニットが森にいるときは、このユニットを見つけることはできません。ただ"
-"し、敵ユニットが隣接している場合を除きます。伏兵中のユニットに遭遇した敵ユ"
-"ニットは、残りの移動力を全て失います。"
+"敵のユニットはこのユニットが森や砂地で休息している間は、姿を見つけることがで"
+"きません。ただし、隣接している敵ユニットが存在している場合を除きます。このユ"
+"ニットを初めて発見したユニットは、例外なく直ちに残りの移動力を全て失います。"
 
 #. [hides]: id=nightstalk
 #: data/core/macros/abilities.cfg:325
@@ -5392,25 +5266,21 @@ msgstr "攻撃時に限り、この武器は命中率の最低値が60%になり
 #. [chance_to_hit]: id=deflect
 #: data/core/macros/abilities.cfg:489
 msgid "deflect"
-msgstr ""
+msgstr "受流"
 
 #. [chance_to_hit]: id=deflect
 #: data/core/macros/abilities.cfg:490
-#, fuzzy
-#| msgid ""
-#| "When used offensively, this attack always has at least a 60% chance to "
-#| "hit."
 msgid ""
 "When used defensively, this attack reduces the opponent's chance to hit by "
 "10%."
-msgstr "攻撃時に限り、この武器は命中率の最低値が60%になります。"
+msgstr "防御時に使用された場合、この攻撃は相手の命中率を 10% 低下させます。"
 
 #. [chance_to_hit]: id=deflect
 #: data/core/macros/abilities.cfg:491
 msgid ""
 "This unit’s defensive techniques reduce the chance of a successful enemy "
 "attack."
-msgstr ""
+msgstr "このユニットの防御技術により、敵の攻撃成功率が低下します。"
 
 #. [chance_to_hit]: id=magical
 #: data/core/macros/abilities.cfg:505
@@ -5448,7 +5318,7 @@ msgstr ""
 #. [damage]: id=absorb
 #: data/core/macros/abilities.cfg:542
 msgid "absorb"
-msgstr ""
+msgstr "緩衝"
 
 #. [damage]: id=absorb
 #: data/core/macros/abilities.cfg:543
@@ -5456,12 +5326,16 @@ msgid ""
 "This attack puts the unit in good defensive position, and it absorbs some of "
 "the damage dealt by an enemy strike."
 msgstr ""
+"この攻撃を用いることで防御に有利な体勢となり、敵の打撃によるダメージをある程"
+"度減少させます。"
 
 #. [damage]: id=absorb
 #: data/core/macros/abilities.cfg:544
 msgid ""
 "This unit can block enemy strikes, so that it takes reduced damage when hit."
 msgstr ""
+"このユニットは敵の打撃をブロックすることができ、攻撃を受けた際のダメージが軽"
+"減されます。"
 
 #. [drains]: id=drains
 #: data/core/macros/abilities.cfg:556
@@ -5686,134 +5560,87 @@ msgid "The Long Dark (4)"
 msgstr "長い夜(4)"
 
 #: data/core/macros/special-notes.cfg:12
-#, fuzzy
-#| msgid ""
-#| " Spirits have very unusual resistances to damage, and move quite slowly "
-#| "over open water."
 msgid ""
 "Spirits have very unusual resistances to damage, and move quite slowly over "
 "open water."
 msgstr ""
-" 霊魂はダメージに対して飛び抜けた耐性があり、水の上をきわめてゆっくりと移動し"
+"霊魂はダメージに対して飛び抜けた耐性があり、水の上をきわめてゆっくりと移動し"
 "ます。"
 
 #: data/core/macros/special-notes.cfg:15
-#, fuzzy
-#| msgid ""
-#| " This unit’s arcane attack deals tremendous damage to magical creatures, "
-#| "and even some to mundane creatures."
 msgid ""
 "This unit’s arcane attack deals tremendous damage to magical creatures, and "
 "even some to mundane creatures."
 msgstr ""
-" このユニットの秘術による攻撃は魔法で作られた者に著しいダメージを与えます。 "
-"またこの世の生物にさえもかなりのダメージを与えます。"
+"このユニットの秘術による攻撃は魔法で作られた者に著しいダメージを与えます。 ま"
+"た通常の生物にさえもある程度のダメージを与えます。"
 
 #: data/core/macros/special-notes.cfg:22
-#, fuzzy
-#| msgid " This unit is capable of basic healing."
 msgid "This unit is capable of basic healing."
 msgstr " このユニットには簡易な回復能力があります。"
 
 #: data/core/macros/special-notes.cfg:25
-#, fuzzy
-#| msgid " This unit is capable of rapid healing."
 msgid "This unit is capable of rapid healing."
-msgstr " このユニットには簡易な回復能力があります。"
+msgstr " このユニットには急速な回復能力があります。"
 
 #: data/core/macros/special-notes.cfg:28
-#, fuzzy
-#| msgid ""
-#| " This unit is capable of healing those around it, and curing them of "
-#| "poison."
 msgid ""
 "This unit is capable of healing those around it, and curing them of poison."
 msgstr ""
-" このユニットはその周りにいるユニットを回復し、毒を治療することができます。"
+"このユニットはその周りにいるユニットを回復し、毒を治療することができます。"
 
 #: data/core/macros/special-notes.cfg:31
-#, fuzzy
-#| msgid ""
-#| " This unit is capable of neutralizing the effects of poison in units "
-#| "around it."
 msgid ""
 "This unit is capable of neutralizing the effects of poison in units around "
 "it."
-msgstr " このユニットは周りにいるユニットの毒を中和する能力があります。"
+msgstr "このユニットは周りにいるユニットの毒を中和する能力があります。"
 
 #: data/core/macros/special-notes.cfg:34
-#, fuzzy
-#| msgid ""
-#| " This unit regenerates, which allows it to heal as though always "
-#| "stationed in a village."
 msgid ""
 "This unit regenerates, which allows it to heal as though always stationed in "
 "a village."
 msgstr ""
-" このユニットは再生能力があり、これによって常に村にいるかのように回復すること"
+"このユニットは再生能力があり、これによって常に村にいるかのように回復すること"
 "ができます。"
 
 #: data/core/macros/special-notes.cfg:37
-#, fuzzy
-#| msgid ""
-#| " The steadiness of this unit reduces damage from some attacks, but only "
-#| "while defending."
 msgid ""
 "The steadiness of this unit reduces damage from some attacks, but only while "
 "defending."
 msgstr ""
-" このユニットの堅実さのおかげで、ある種の攻撃によるダメージを減らすことができ"
+"このユニットの堅実さのおかげで、ある種の攻撃によるダメージを減らすことができ"
 "ます。しかし、防御時のみです。"
 
 #: data/core/macros/special-notes.cfg:40
-#, fuzzy
-#| msgid ""
-#| " The leadership of this unit enables adjacent units of the same side to "
-#| "deal more damage in combat, though this only applies to units of lower "
-#| "level."
 msgid ""
 "The leadership of this unit enables adjacent units of the same side to deal "
 "more damage in combat, though this only applies to units of lower level."
 msgstr ""
-" このユニットの統率力により、隣接する同一陣営のユニットは戦闘においてより大き"
-"なダメージを与えることができます。これはより下位レベルのユニットにのみ適用さ"
-"れます。"
+"このユニットの統率力により、隣接する同一陣営のユニットは戦闘においてより大き"
+"なダメージを与えることができます。ただし、これはより下位レベルのユニットにの"
+"み適用されます。"
 
 #: data/core/macros/special-notes.cfg:43
-#, fuzzy
-#| msgid ""
-#| " This unit’s skill at skirmishing allows it to ignore enemies’ zones of "
-#| "control and thus move unhindered around them."
 msgid ""
 "This unit’s skill at skirmishing allows it to ignore enemies’ zones of "
 "control and thus move unhindered around them."
 msgstr ""
-" このユニットの散兵能力により、敵の支配領域を無視することができます。そのた"
-"め、敵に囲まれても移動が妨害されることはありません。"
+"このユニットの散兵能力により、敵の支配領域（ZOC）を無視することができます。そ"
+"のため、敵に囲まれても移動が妨害されることはありません。"
 
 #: data/core/macros/special-notes.cfg:46
-#, fuzzy
-#| msgid " Illumination increases the lighting level in adjacent areas."
 msgid "Illumination increases the lighting level in adjacent areas."
-msgstr " 照明は隣接する領域を明るくします。"
+msgstr "照明は隣接する領域を明るくします。"
 
 #: data/core/macros/special-notes.cfg:49
-#, fuzzy
-#| msgid ""
-#| " This unit can use one move to teleport between any two empty villages "
-#| "controlled by its side."
 msgid ""
 "This unit can use one move to teleport between any two empty villages "
 "controlled by its side."
 msgstr ""
-" このユニットは 1 回の移動を使用して、その陣営に支配されている誰もいない 2 つ"
-"の村の間を瞬間移動することができます。"
+"このユニットは 1 回の移動を使用して、その陣営の支配下にある誰もいない 2 つの"
+"村の間を瞬間移動することができます。"
 
 #: data/core/macros/special-notes.cfg:52
-#, fuzzy
-#| msgid ""
-#| " In woodlands, this unit’s ambush skill renders it invisible to enemies "
-#| "unless it is immediately adjacent or has revealed itself by attacking."
 msgid ""
 "In woodlands, this unit’s ambush skill renders it invisible to enemies "
 "unless it is immediately adjacent or has revealed itself by attacking."
@@ -5822,19 +5649,12 @@ msgstr ""
 "るか、攻撃することによって自らあらわれた場合を除いて。"
 
 #: data/core/macros/special-notes.cfg:55
-#, fuzzy
-#| msgid ""
-#| " This unit is able to hide at night, leaving no trace of its presence."
 msgid "This unit is able to hide at night, leaving no trace of its presence."
 msgstr ""
 " このユニットは夜間に隠れることができ、ユニットが存在したという痕跡をまったく"
 "残しません。"
 
 #: data/core/macros/special-notes.cfg:58
-#, fuzzy
-#| msgid ""
-#| " This unit can hide in villages (with the exception of water villages), "
-#| "and remain undetected by its enemies, except by those standing next to it."
 msgid ""
 "This unit can hide in villages (with the exception of water villages), and "
 "remain undetected by its enemies, except by those standing next to it."
@@ -5843,44 +5663,26 @@ msgstr ""
 "ます。敵の隣にいる場合を除いて。"
 
 #: data/core/macros/special-notes.cfg:61
-#, fuzzy
-#| msgid ""
-#| " This unit can move unseen in deep water, requiring no air from the "
-#| "surface."
 msgid ""
 "This unit can move unseen in deep water, requiring no air from the surface."
 msgstr ""
-" このユニットは深海では目に触れることなく移動することができます。水面から空気"
+" このユニットは深水では目に触れることなく移動することができます。水面から空気"
 "を得る必要もありません。"
 
 #: data/core/macros/special-notes.cfg:64
-#, fuzzy
-#| msgid ""
-#| " This unit gains 1 hitpoint added to its maximum whenever it kills a "
-#| "living unit."
 msgid ""
 "This unit gains 1 hitpoint added to its maximum whenever it kills a living "
 "unit."
-msgstr " このユニットは生きているユニットを殺すことで最大HPが 1 増加します。"
+msgstr " このユニットは生物を殺すことで最大HPが 1 増加します。"
 
 #: data/core/macros/special-notes.cfg:67
-#, fuzzy
-#| msgid ""
-#| " Whenever its berserk attack is used, this unit continues to push the "
-#| "attack until either it or its enemy lies dead."
 msgid ""
 "Whenever its berserk attack is used, this unit continues to push the attack "
 "until either it or its enemy lies dead."
 msgstr ""
-" このユニットの狂戦攻撃が使われた場合、このユニットはそのユニット自身か敵が倒"
-"れるまで攻撃し続けます。"
+" このユニットの狂戦攻撃が使われた場合、自身か敵が倒れるまで攻撃し続けます。"
 
 #: data/core/macros/special-notes.cfg:70
-#, fuzzy
-#| msgid ""
-#| " If there is an enemy of the target on the opposite side of the target "
-#| "while attacking it, this unit may backstab, inflicting double damage by "
-#| "creeping around behind that enemy."
 msgid ""
 "If there is an enemy of the target on the opposite side of the target while "
 "attacking it, this unit may backstab, inflicting double damage by creeping "
@@ -5890,10 +5692,6 @@ msgstr ""
 "のダメージを与えるでしょう。"
 
 #: data/core/macros/special-notes.cfg:73
-#, fuzzy
-#| msgid ""
-#| " Foes who lose their life to the plague will rise again in unlife, unless "
-#| "they are standing on a village."
 msgid ""
 "Foes who lose their life to the plague will rise again in unlife, unless "
 "they are standing on a village."
@@ -5902,10 +5700,6 @@ msgstr ""
 "りは。"
 
 #: data/core/macros/special-notes.cfg:76
-#, fuzzy
-#| msgid ""
-#| " This unit is able to slow its enemies, halving their movement speed and "
-#| "attack damage until they end a turn."
 msgid ""
 "This unit is able to slow its enemies, halving their movement speed and "
 "attack damage until they end a turn."
@@ -5914,20 +5708,12 @@ msgstr ""
 "度と攻撃ダメージを半減させることができます。"
 
 #: data/core/macros/special-notes.cfg:79
-#, fuzzy
-#| msgid ""
-#| " The ability to turn the living to stone makes this unit extremely "
-#| "dangerous."
 msgid ""
 "The ability to turn the living to stone makes this unit extremely dangerous."
 msgstr ""
 " 生物を石に変えてしまう能力を持っているため、このユニットはきわめて危険です。"
 
 #: data/core/macros/special-notes.cfg:82
-#, fuzzy
-#| msgid ""
-#| " This unit’s marksmanship gives it a high chance of hitting targeted "
-#| "enemies, but only on the attack."
 msgid ""
 "This unit’s marksmanship gives it a high chance of hitting targeted enemies, "
 "but only on the attack."
@@ -5936,10 +5722,6 @@ msgstr ""
 "側の場合だけです。"
 
 #: data/core/macros/special-notes.cfg:85
-#, fuzzy
-#| msgid ""
-#| " This unit has magical attacks, which always have a high chance of "
-#| "hitting an opponent."
 msgid ""
 "This unit has magical attacks, which always have a high chance of hitting an "
 "opponent."
@@ -5947,44 +5729,26 @@ msgstr ""
 " このユニットは魔法攻撃を保有し、その攻撃は常に高い確率で敵に命中します。"
 
 #: data/core/macros/special-notes.cfg:88
-#, fuzzy
-#| msgid ""
-#| " The swarming attacks of this unit become less deadly whenever its "
-#| "members are wounded."
 msgid ""
 "The swarming attacks of this unit become less deadly whenever its members "
 "are wounded."
-msgstr ""
-" このユニットの群れによる攻撃はそのメンバーが傷つくと壊滅的に弱くなります。"
+msgstr " このユニットの群れによる攻撃はそのメンバーが傷つくと弱体化します。"
 
 #: data/core/macros/special-notes.cfg:91
-#, fuzzy
-#| msgid ""
-#| " Using a charging attack doubles both damage dealt and received; this "
-#| "does not affect defensive retaliation."
 msgid ""
 "Using a charging attack doubles both damage dealt and received; this does "
 "not affect defensive retaliation."
 msgstr ""
 " 突撃を使うことで、与えるダメージ、受けるダメージ共に倍となります。これは防御"
-"側での反撃には影響しません。"
+"時の反撃には影響しません。"
 
 #: data/core/macros/special-notes.cfg:94
-#, fuzzy
-#| msgid ""
-#| " During battle, this unit can drain life from victims to renew its own "
-#| "health."
 msgid ""
 "During battle, this unit can drain life from victims to renew its own health."
 msgstr ""
-" 戦闘中、このユニットは犠牲者から体力を奪い、自身の健康を回復することができま"
-"す。"
+" 戦闘中、このユニットは犠牲者から体力を奪い、自身を回復することができます。"
 
 #: data/core/macros/special-notes.cfg:97
-#, fuzzy
-#| msgid ""
-#| " The length of this unit’s weapon allows it to strike first in melee, "
-#| "even in defense."
 msgid ""
 "The length of this unit’s weapon allows it to strike first in melee, even in "
 "defense."
@@ -5993,10 +5757,6 @@ msgstr ""
 "撃します。"
 
 #: data/core/macros/special-notes.cfg:100
-#, fuzzy
-#| msgid ""
-#| " The victims of this unit’s poison will continually take damage until "
-#| "they can be cured in town or by a unit which cures."
 msgid ""
 "The victims of this unit’s poison will continually take damage until they "
 "can be cured in town or by a unit which cures."
@@ -6005,10 +5765,6 @@ msgstr ""
 "まで継続的にダメージを受けるでしょう。"
 
 #: data/core/macros/special-notes.cfg:103
-#, fuzzy
-#| msgid ""
-#| " This unit has a defense cap on certain terrain types — it cannot achieve "
-#| "a higher defense rating on mixed terrains with such terrain types."
 msgid ""
 "This unit has a defense cap on certain terrain types — it cannot achieve a "
 "higher defense rating on mixed terrains with such terrain types."
@@ -6892,21 +6648,73 @@ msgid ""
 "tradition, in both Wesmere and Lintanir, an enchantress from the order of "
 "elven mystics is also called upon to facilitate the transition of power."
 msgstr ""
+"人間族に比べると、エルフ族は若干背が高く、より機敏ですがあまりたくましくはあ"
+"りません。彼らはわずかに先の尖った耳を持ち、皮膚は青白く、通常は金髪です。エ"
+"ルフ族が非常に長い寿命を持つこと以外は人間族とエルフ族の違いはほとんどないと"
+"言ってもよいでしょう。ほとんどの場合、病気や事故、戦争などによって命が奪われ"
+"ることがなければ、少なくとも200年もの間生きます。エルフ族の中には高い魔法の才"
+"能を持った者がおり、さらに長く生きることが知られていますが、ほとんどのエルフ"
+"は250から300歳の間のどこかで、肉体的に弱くなっていき、その後すぐに（通常は1、"
+"2年以内に）死にます。\n"
+"\n"
+"ほとんどのエルフは人の手が加わっていない自然に対して強い愛情を共有しており、"
+"緑の無い開けた場所では快適に過ごせません。南西のAethenwood、北西のWesmere、南"
+"端がLintanirの森として知られる北部大森林といった、大陸の森にエルフは住んでい"
+"ます。\n"
+"\n"
+"トロルという例外の可能性を除けば、エルフ族は大陸の中で最古の種族です。彼らの"
+"居住地の多くは全く古びていませんが、間違いなく数千年の歴史があります。\n"
+"\n"
+"<header>text='魔法'</header>\n"
+"エルフは伝説的な種族である妖精とは基本的に異なる生物ですが、エルフの魔法はい"
+"くらか妖精との関連があり、エルフの尋常でなく鋭い感覚と長寿はその魔法を源とし"
+"ています。エルフの魔法は2種類に大別され、一方は現世や自然の世界を操作すること"
+"を重視し、もう一方は秘術界での占いを重視しています。両者の違いで一般的なのは"
+"肉体の変質方法で、物理魔法は対となる秘術よりも明白な効果が表出します。エルフ"
+"の自然魔法は戦闘には不向きですが、大地のエネルギーを育み守る潜在能力は、エル"
+"フの回復魔法や美貌、森の生命力の源なのです。\n"
+"\n"
+"神秘の道を歩む者たちは他のエルフから非常に尊敬されていますが、彼らの動機や能"
+"力は外部の者には明かされていないことが多いです。神秘に深く身を投じた者たちは"
+"より妖精に近い特性や、異常なほどの見識と長寿を持ちますが、冷たい鉄の存在に敏"
+"感になり、それらに身を焼かれるようになります。\n"
+"\n"
+"<header>text='文化'</header>\n"
+"エルフは多くの時間を自身の才能や技術を研鑽することに費やします。魔術に不向き"
+"な者は肉体的な才能を磨くことに専念し、たいていは狩りを目的とします。その結"
+"果、エルフは弓術に秀でており、その技は容易く効果的に戦争に応用できます。エル"
+"フは音楽家としても名高く、特に小さなアンサンブルを弦楽器で演奏するのを得意と"
+"します。例えば Aethenwood の Aeolian のハープは上質なイチイの木から作られてお"
+"り、柔らかく優しいトーンで有名です。\n"
+"\n"
+"<header>text='社会'</header>\n"
+"エルフの社会には大きく分けて3つ集団が存在します。1つ目は森を守護する責任を持"
+"つ軍隊のような派閥、2つ目は普段は職人や芸術家として過ごす平和的な市民、3つ目"
+"は妖精とエルフの繋がりを保つヒーラーや神秘者です。これらの異なる側面を統治す"
+"る役割を持つのが貴族で、彼らは民を厳格な掟で縛るよりも自身が社会秩序のために"
+"奉仕することを重視します。これらの貴族を選定するプロセスはそれぞれのエルフの"
+"秘密会議ごとに異なり、それら秘密会議は Wesmere の評議会、Ka’lian によって統治"
+"されています。Ka’lian のメンバーは選挙で選ばれ、Lintanir の貴族は通常は世襲制"
+"です。\n"
+"\n"
+"戦争の時代になると指揮系統はより柔軟さを増し、貴族はその権威を戦争に向いた元"
+"帥たちに譲ります。伝統的に、Wesmere と Lintanir の両方で、エルフの神秘者階級"
+"から一人の女魔術師が呼ばれ、彼女が権威の移譲を促します。"
 
 #. [race]: id=falcon
 #: data/core/units.cfg:137
 msgid "race^Falcon"
-msgstr "鷹"
+msgstr "隼"
 
 #. [race]: id=falcon
 #: data/core/units.cfg:138
 msgid "race+female^Falcon"
-msgstr "鷹"
+msgstr "隼"
 
 #. [race]: id=falcon
 #: data/core/units.cfg:139
 msgid "race^Falcons"
-msgstr "鷹"
+msgstr "隼"
 
 #. [race]: id=falcon
 #: data/core/units.cfg:140
@@ -6920,11 +6728,11 @@ msgid ""
 "well, with certain falconers training their birds to distinguish between "
 "friend and foe, making them a useful asset to aid in an army’s charge."
 msgstr ""
-"鷹は猛禽類の一種であり、並外れた速度で知られています。他の猛禽類と比べると、"
-"体重が軽く爪もそれほど強力ではありませんが、そのかわり嘴を使って獲物を殺しま"
-"す。鋭い目と人に慣れやすい性質によって鷹は人間に良く知られており、貴族のス"
-"ポーツや遊牧民の狩りに利用されます。また、戦場でも鷹は役割を持つことがありま"
-"す。友軍と敵を区別するように訓練され、軍隊を支援します。"
+"隼（Falcon）は猛禽類の一種であり、並外れた速度で知られています。他の猛禽類と"
+"比べると、体重が軽く爪もそれほど強力ではありませんが、そのかわり嘴を使って獲"
+"物を殺します。鋭い目と人に慣れやすい性質によって鷹は人間に良く知られており、"
+"貴族のスポーツや遊牧民の狩りに利用されます。また、戦場でも鷹は役割を持つこと"
+"があります。友軍と敵を区別するように訓練され、軍隊を支援します。"
 
 #. [race]: id=goblin
 #: data/core/units.cfg:150
@@ -7005,24 +6813,18 @@ msgstr ""
 
 #. [race]: id=horse
 #: data/core/units.cfg:183
-#, fuzzy
-#| msgid "race^Wose"
 msgid "race^Horse"
-msgstr "ウーズ"
+msgstr "馬"
 
 #. [race]: id=horse
 #: data/core/units.cfg:184
-#, fuzzy
-#| msgid "race+female^Ogre"
 msgid "race+female^Horse"
-msgstr "オーガ"
+msgstr "雌馬"
 
 #. [race]: id=horse
 #: data/core/units.cfg:185
-#, fuzzy
-#| msgid "race^Woses"
 msgid "race^Horses"
-msgstr "ウーズ"
+msgstr "馬"
 
 #. [race]: id=horse
 #: data/core/units.cfg:186
@@ -7037,6 +6839,14 @@ msgid ""
 "Winged horses, man-horse hybrids, and ghost horses have made their way into "
 "written history, though few can honestly claim to have seen such things."
 msgstr ""
+"家畜化された馬は、戦場で突撃兵を乗せる精強な馬から、頑丈な牽引馬や素早い普通"
+"の馬まで多様な形やサイズを持ちます。それらの馬は他の獣よりも脆くはあります"
+"が、敏捷性と知性によって、野生の馬たちとともに自然の中で生き延びることもでき"
+"ます。\n"
+"\n"
+"馬は多くの文明で重要な役割を担っており、馬に関する神秘や伝承が多数あるのは当"
+"然のことです。有翼馬、半人半馬、幽霊馬が文献には登場しますが、実在するかどう"
+"かは怪しいものです。"
 
 #. [race]: id=human
 #: data/core/units.cfg:203
@@ -7145,65 +6955,6 @@ msgstr "デューンフォーク"
 
 #. [race]: id=dunefolk
 #: data/core/units.cfg:225
-#, fuzzy
-#| msgid ""
-#| "An offshoot of a forgotten nomadic civilization, the Dunefolk humans lay "
-#| "claim to the river valleys and oases of the Sandy Wastes. How they came "
-#| "to inhabit this far corner of the Great Continent is unknown. Their "
-#| "legends tell of many long and perilous travels through far-flung lands, "
-#| "but the true origin of their people is a topic of endless and heated "
-#| "debate among even the most erudite of their scholars.\n"
-#| "\n"
-#| "Whatever their origin, the Dunefolk have thrived. Bustling cities stand "
-#| "proudly in the largest fertile regions. Skilled artisans, fine smiths, "
-#| "and wealthy merchants form the backbone of the urban economy. Each of "
-#| "these cities also enjoys a degree of independence less common in the more "
-#| "centralized nations to the north, many even maintaining their own "
-#| "standing armies. In times of need, however, each and all rally to a "
-#| "higher authority designated to protect the superior interest of the "
-#| "nation.\n"
-#| "\n"
-#| "Those who have not settled in these urban centers still adhere to the "
-#| "lifestyle of their ancestors, roaming the dunes and leading their herds "
-#| "from one watering hole to another. They are most active during the early "
-#| "hours of dawn and the onset of dusk, when the wastelands are neither too "
-#| "hot nor too cold. Their skill at moving through the sands is excellent "
-#| "even by Dunefolk standards. Although sometimes regarded with contempt by "
-#| "their city counterparts, they provide an invaluable service as mobile, "
-#| "light troops in war, or as escorts for trading caravans during times of "
-#| "peace.\n"
-#| "\n"
-#| "The Dunefolk’s inclination towards trade and exploration has allowed "
-#| "their cities to amass immense fortunes, a fact regarded both with "
-#| "admiration and envy by other races. Mutual interests have fostered "
-#| "cordial relations with neighboring Naga tribes, but more secretive races "
-#| "such as Drakes and Elves have always considered Dunefolk expeditions to "
-#| "be too intrusive, especially when they venture close to territorial "
-#| "boundaries. It is not uncommon for caravans to fall prey to troll "
-#| "ambushes in the mountains, something that has given rise to countless "
-#| "tales of unimaginable treasure amassed in hidden caves.\n"
-#| "\n"
-#| "As a result of living in hostile environments for centuries, the Dunefolk "
-#| "have developed rational methods of enquiry through which they continue to "
-#| "improve their understanding of the world. Their study of herbal medicine "
-#| "keeps their warriors and workers fresh and healthy. Their knowledge of "
-#| "alchemy allows them to tame fire and wield it as a deadly weapon in "
-#| "battle. At the same time, this analytical mindset has distanced them from "
-#| "magical arts; to the rational mind, magic is uncontrollable, "
-#| "unpredictable, and hence unreliable. For this reason, the Dunefolk "
-#| "especially loathe the perversions of necromancy and the dark arts, even "
-#| "more so than other races.\n"
-#| "\n"
-#| "The Dunefolk’s inquisitive and explorative nature does not preclude "
-#| "military strength. Not only do they field nimble light troops, "
-#| "cataphracts, and heavily armored infantry, but their keen knowledge of "
-#| "technology grants them a decisive advantage over their opponents. When "
-#| "facing the Dunefolk in battle, however, the most fearsome sight is "
-#| "certainly their deployment of ferocious and bizarre beasts. From the "
-#| "majestic Roc to the imposing Wyvern, their synergy with these creatures "
-#| "allows for great versatility in combat. The origins of this tradition "
-#| "likely lie in the heritage of the Dunefolk’s distant past in the exotic "
-#| "far corners of Irdya."
 msgid ""
 "An offshoot of a forgotten nomadic civilization, the Dunefolk lay claim to "
 "the river valleys and oases of the Sandy Wastes. How they came to inhabit "
@@ -7759,44 +7510,6 @@ msgstr "トロル"
 
 #. [race]: id=troll
 #: data/core/units.cfg:356
-#, fuzzy
-#| msgid ""
-#| "Trolls are ancient creatures, one of the oldest known races known to "
-#| "inhabit the Great Continent. They are large, slow, simple-minded, and "
-#| "live extremely long lives inside deep caves or atop high mountains. The "
-#| "most unique characteristic of trolls is an internal vitality that "
-#| "sustains and heals them from within. As a result they live very different "
-#| "lives from almost any known creature. Trolls have few real needs: they "
-#| "require little food or water, and thus they have little incentive to "
-#| "pursue much besides protection from those who are hostile towards them. "
-#| "This in turn means they rarely have to worry about anything and can spend "
-#| "much of their time sleeping or in contemplation. Trolls have a curious "
-#| "affinity with nature. They do not relate with living things like elves "
-#| "do, but instead with earth and stone. They are also somewhat curious of "
-#| "their surroundings and many younger whelps even enjoy traveling and "
-#| "seeing the world. As trolls grow older they tend to become increasingly "
-#| "passive, gradually losing interest in their environment and spending more "
-#| "of their time sleeping in a quiet, familiar corner of their home cave. "
-#| "This is until they finally pass away as their bodies themselves slowly "
-#| "turn into lifeless statues of stone.\n"
-#| "\n"
-#| "Trolls are seen by many as being little more than yet another race of "
-#| "savage monsters. This common misconception is in part perpetuated by "
-#| "orcish successes in persuading trolls to join their armies. Because they "
-#| "are rather simple and do not understand the ways of other races or "
-#| "sometimes cannot even tell them apart, it is usually easy for an orcish "
-#| "band to convince a group of trolls that by joining them they get to exact "
-#| "revenge on those that have before hunted them. These new recruits are "
-#| "then directed to attack whoever the orcs themselves are currently in "
-#| "conflict with, whether previously a foe of the trolls or not, "
-#| "accumulating even more enemies for the misled trolls. The most common "
-#| "enemy of trolls are dwarves, and the animosity between these two races is "
-#| "ancient.\n"
-#| "\n"
-#| "<header>text='Geography'</header>\n"
-#| "Trolls have inhabited the mountains of the Great Continent longer than "
-#| "the dwarves who migrated there. Trolls are a common sight on the mountain "
-#| "ranges north and east of Wesnoth, and wherever Orcish hordes travel."
 msgid ""
 "Trolls are ancient creatures, one of the oldest known races known to inhabit "
 "the Great Continent. They are large, slow, simple, and live extremely long "
@@ -7834,14 +7547,14 @@ msgid ""
 "north and east of Wesnoth, and wherever Orcish hordes travel."
 msgstr ""
 "トロル族は太古の種族であり、大陸に居住していたことが知られる種族の中では最古"
-"のものです。彼らは大きく、鈍重で、単純な精神と極めて長い寿命を持ち、深い洞窟"
-"の中か高い山々の頂上で過ごします。トロル族の最も特徴的な性質は、彼らを中から"
-"支え、そして癒す、内に秘めた生命力です。その結果、彼らは既知のあらゆる生物の"
-"大部分とは相当かけ離れた生活を過ごします。トロル族が本当に必要とするものは少"
-"しだけです。食料と水は少ししか必要とせず、従って、彼らに敵対するものから身を"
-"守るのに加えて、追跡するような気はわずかしか持ち合わせていません。翻ってこの"
-"ことは、彼らが何かを心配するようなことは滅多に無く、彼らの時間の多くを睡眠と"
-"黙想に費やすことを意味します。トロル族は自然との不思議な結び付きを持っていま"
+"のものです。彼らは大きく、鈍重で、単純で、極めて長い寿命を持ち、深い洞窟の中"
+"か高い山々の頂上で過ごします。トロル族の最も特徴的な性質は、彼らを中から支"
+"え、そして癒す、内に秘めた生命力です。その結果、彼らは既知のあらゆる生物の大"
+"部分とは相当かけ離れた生活を過ごします。トロル族が本当に必要とするものは少し"
+"だけです。食料と水は少ししか必要とせず、従って、彼らに敵対するものから身を守"
+"るのに加えて、追跡するような気はわずかしか持ち合わせていません。翻ってこのこ"
+"とは、彼らが何かを心配するようなことは滅多に無く、彼らの時間の多くを睡眠と黙"
+"想に費やすことを意味します。トロル族は自然との不思議な結び付きを持っていま"
 "す。彼らはエルフ族のするような命のあるものとの繋がりを持たず、代わりに大地や"
 "石と繋がっています。彼らはまた、彼らを取り囲む環境にいくらか好奇心があり、多"
 "くの幼い子供ですら旅をして世界を見ることを楽しみます。トロルは成長するにつれ"
@@ -7882,32 +7595,6 @@ msgstr "アンデッド"
 
 #. [race]: id=undead
 #: data/core/units.cfg:379
-#, fuzzy
-#| msgid ""
-#| "Undead are not really a single race of creatures, although often treated "
-#| "as such. Almost any dead creature can, by a sufficiently skilled "
-#| "necromancer, be reanimated and rise again in undeath. Undead are for the "
-#| "most part unnatural but mindless constructs, obeying whoever created them "
-#| "without question nor thought. A greater mystery of necromancy is in how "
-#| "constructs are sustained without continuous effort from the necromancer. "
-#| "An undead creature does not require the constant attention of the "
-#| "necromancer to command and sustain, but can work autonomously according "
-#| "to the commands of its master. Only rarely, perhaps once every few "
-#| "months, does the necromancer need to maintain his creation.\n"
-#| "\n"
-#| "Necromancy is almost solely limited to humans. Even the legends of "
-#| "magically apt races like elves and merfolk tell of very few of their kind "
-#| "who have ever delved in the dark arts. It is surmised that necromantic "
-#| "magic requires great adaptability and a flexible mind, extremes of which "
-#| "are most commonly found in humans. The ultimate goal of most necromancers "
-#| "is to turn the same art of preserving and imbuing life upon themselves, "
-#| "to alter themselves at whatever cost, to ultimately escape death by "
-#| "preserving their own mind and spirit.\n"
-#| "\n"
-#| "<header>text='Geography'</header>\n"
-#| "While undead lords arrived on the Great Continent in considerable numbers "
-#| "only in the wake of Haldric I, they were not completely unheard of by "
-#| "elves and dwarves before that."
 msgid ""
 "Undead are not really a single race of creatures, although often treated as "
 "such. Most ordinary creatures can, by a sufficiently skilled necromancer, be "
@@ -7943,13 +7630,18 @@ msgid ""
 "and dwarves before that."
 msgstr ""
 "アンデッドは本来1つの種族ではありませんが、しばしばそのように扱われます。ほと"
-"んど全ての生物の死体が、熟練したネクロマンサーの手により、動き出して不死とな"
-"ります。アンデッドは自然界には存在しない、意思の無い構造物であり、何の疑問も"
-"無く製作者に従います。降霊術の大きな謎の1つは、ネクロマンサーは手を加えてない"
-"のにも関わらず、その構造物が維持されることです。アンデッドはネクロマンサーの"
-"継続的な命令や支えを必要とせず、主の命にしたがって自動的に動き続けます。ごく"
-"稀に、数カ月に一度、ネクロマンサーは創造物のメンテナンスを必要とするようで"
-"す。\n"
+"んどの一般的な生物は、熟練したネクロマンサーの手により、その性格を変化させた"
+"構造物として再び動き出します。この物理的な復活の結果生み出されるのは主人に何"
+"の疑問もなく従う奴隷で、魂の名残はごく僅かに表出するのみです。降霊術の大きな"
+"謎の1つは、ネクロマンサーは手を加えてないのにも関わらず、その構造物が維持され"
+"ることです。闇の魔術に長けた魔術師は創造物へのメンテナンスを行っておらず、そ"
+"の代わりにそれらに多少の自立性を持たせるため命令を与えています。しかし、しば"
+"らくそれが行われていないと、一部のアンデッドは主人から離れるほどの意思を持つ"
+"ことがあります。そのため、弱いアンデッドであっても定期的なチェックが必要であ"
+"り、死の騎士や偉大な魂などの生前の意思を保つ特に強大なアンデッドでは必須とな"
+"ります。これらのケースでは、降霊術では主人と奴隷の間での闘争が生じます。意思"
+"はアンデッドの力の源であるため、ネクロマンサーは奴隷の制御と意思の割当のバラ"
+"ンス調整を必ず行わなければなりません。\n"
 "\n"
 "降霊術を行うのはほとんどが人間です。魔術の才のあるエルフやマーフォークの伝説"
 "にさえ、闇の魔術を探求した者についてはほとんど伝えられていません。それは、降"
@@ -8080,364 +7772,173 @@ msgstr "閉じる"
 
 #: src/help/help.cpp:215
 msgid "Help"
-msgstr ""
+msgstr "ヘルプ"
 
 #: src/help/help.cpp:269 src/help/help.cpp:273
-#, fuzzy
-#| msgid "Parse error when parsing help text: "
 msgid "Parse error when parsing help text:"
-msgstr "ヘルプ文書を解析中にエラー："
+msgstr "ヘルプテキストをパース中にエラーが発生しました："
 
 #: src/help/help_topic_generators.cpp:63
 msgid "Best of"
-msgstr ""
+msgstr "次のうち良い方："
 
 #: src/help/help_topic_generators.cpp:63
 msgid "Worst of"
-msgstr ""
+msgstr "次のうち悪い方："
 
 #: src/help/help_topic_generators.cpp:156
-#, fuzzy
-#| msgid "Terrains"
 msgid "Base Terrain: "
-msgstr "地形"
+msgstr "ベース地形："
 
 #: src/help/help_topic_generators.cpp:176
 msgid "Movement properties: "
-msgstr ""
+msgstr "移動特性："
 
 #: src/help/help_topic_generators.cpp:180
 msgid "Defense properties: "
-msgstr ""
+msgstr "回避特性："
 
 #: src/help/help_topic_generators.cpp:260
 msgid "Level"
-msgstr ""
+msgstr "レベル"
 
 #: src/help/help_topic_generators.cpp:321
-#, fuzzy
-#| msgid "Advancement"
 msgid "Advances from: "
-msgstr "レベルアップ"
+msgstr "レベルアップ元："
 
 #: src/help/help_topic_generators.cpp:323
-#, fuzzy
-#| msgid "Advancement"
 msgid "Advances to: "
-msgstr "レベルアップ"
+msgstr "レベルアップ先："
 
 #: src/help/help_topic_generators.cpp:352
 msgid "Base unit: "
-msgstr ""
+msgstr "ベースユニット："
 
 #: src/help/help_topic_generators.cpp:357
 msgid "Base units: "
-msgstr ""
+msgstr "ベースユニット："
 
 #: src/help/help_topic_generators.cpp:375
 msgid "Variations: "
-msgstr ""
+msgstr "バリエーション："
 
 #: src/help/help_topic_generators.cpp:399
-#, fuzzy
-#| msgid "race^Merman"
 msgid "race^Miscellaneous"
-msgstr "マーフォーク"
+msgstr "その他"
 
 #: src/help/help_topic_generators.cpp:401
 msgid "Race: "
-msgstr ""
+msgstr "種族："
 
 #: src/help/help_topic_generators.cpp:471
-#, fuzzy
-#| msgid "Abilities"
 msgid "Abilities: "
-msgstr "能力"
+msgstr "能力："
 
 #: src/help/help_topic_generators.cpp:497
 msgid "Ability Upgrades: "
-msgstr ""
+msgstr "能力のアップグレード："
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:527
 msgid "HP:"
-msgstr ""
+msgstr "HP："
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:531
 msgid "Moves:"
-msgstr ""
+msgstr "移動力："
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:536
 msgid "Vision:"
-msgstr ""
+msgstr "視界："
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:542
 msgid "Jamming:"
-msgstr ""
+msgstr "ジャミング："
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:547
 msgid "Cost:"
-msgstr ""
+msgstr "コスト: "
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:551
 msgid "Alignment:"
-msgstr ""
+msgstr "アラインメント："
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  It uses
 #. non-breaking spaces to prevent unpleasant line breaks (issue #3256).  In the
 #. translation use non-breaking spaces as appropriate for the target language.
 #: src/help/help_topic_generators.cpp:558
 msgid "Required XP:"
-msgstr ""
+msgstr "必要 XP："
 
 #: src/help/help_topic_generators.cpp:564
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "Special Notes:"
 msgid "Special Notes:"
-msgstr ""
-"\n"
-"\n"
-"特記事項:"
+msgstr "特記事項："
 
 #: src/help/help_topic_generators.cpp:573
 msgid "unit help^Attacks"
-msgstr ""
+msgstr "攻撃"
 
 #: src/help/help_topic_generators.cpp:580
 msgid "unit help^Name"
-msgstr ""
+msgstr "名前"
 
 #: src/help/help_topic_generators.cpp:582
 msgid "Range"
-msgstr ""
+msgstr "射程"
 
 #: src/help/help_topic_generators.cpp:583
 msgid "Type"
-msgstr ""
+msgstr "種類"
 
 #: src/help/help_topic_generators.cpp:584
-#, fuzzy
-#| msgid "Weapon Specials"
 msgid "Special"
-msgstr "特殊武器"
+msgstr "特殊"
 
 #: src/help/help_topic_generators.cpp:666
 msgid "Attack Type"
-msgstr ""
+msgstr "ダメージ型"
 
 #: src/help/help_topic_generators.cpp:667
 msgid "Resistance"
-msgstr ""
+msgstr "耐性"
 
 #: src/help/help_topic_generators.cpp:696
-#, fuzzy
-#| msgid "Terrain Editor"
 msgid "Terrain Modifiers"
-msgstr "地形エディタ"
+msgstr "地形効果"
 
 #: src/help/help_topic_generators.cpp:700
-#, fuzzy
-#| msgid "Terrains"
 msgid "Terrain"
 msgstr "地形"
 
 #: src/help/help_topic_generators.cpp:702
-#, fuzzy
-#| msgid "Movement"
 msgid "Movement Cost"
-msgstr "移動"
+msgstr "移動コスト"
 
 #: src/help/help_topic_generators.cpp:706
 msgid "Defense Cap"
-msgstr ""
+msgstr "上限回避率"
 
 #: src/help/help_topic_generators.cpp:711
 msgid "Vision Cost"
-msgstr ""
+msgstr "視界コスト"
 
 #: src/help/help_topic_generators.cpp:715
 msgid "Jamming Cost"
-msgstr ""
-
-#~ msgid ""
-#~ "\n"
-#~ "\n"
-#~ "The following points are under discussion on the forums. At least for the "
-#~ "1.15.x series before 1.16.0 please assume that the forum threads are more "
-#~ "authoritative than the text on this page."
-#~ msgstr ""
-#~ "\n"
-#~ "\n"
-#~ "以下はフォーラムで議論中です。少なくとも 1.16.0 の前の 1.15.x シリーズで"
-#~ "は、このページのテキストよりはフォーラムのスレッドの方が権威があるでしょ"
-#~ "う。"
-
-#~ msgid ""
-#~ "\n"
-#~ "\n"
-#~ "In the mainline campaigns, on hard:\n"
-#~ "• A sufficiently skilled player will have a good chance to win each "
-#~ "scenario on the first time that they see that scenario, without "
-#~ "foreknowledge of what will happen.\n"
-#~ "• This assumes that the player picks up all of the clues given in the "
-#~ "dialogue.\n"
-#~ "• There are more experience points available than on easy, and the player "
-#~ "will be able to train enough troops to cope with losing some L2 or L3 "
-#~ "units."
-#~ msgstr ""
-#~ "\n"
-#~ "\n"
-#~ "高難易度のメインラインキャンペーンでは：\n"
-#~ "・十分に熟練したプレイヤーならば、各シナリオを事前知識無しでクリアできるで"
-#~ "しょう。\n"
-#~ "・プレイヤーがダイアログ中ですべてのヒントを手にすることができることを想定"
-#~ "しています。\n"
-#~ "・経験値を低難易度よりも多く獲得できます。十分な量の兵を訓練することで、高"
-#~ "レベルユニットの損失に備えることができます。"
-
-#~ msgid "Orbs"
-#~ msgstr "宝珠"
-
-#~ msgid ""
-#~ "On top of the energy bar shown next to each unit of yours is an orb. For "
-#~ "units you control, this orb is:"
-#~ msgstr ""
-#~ "各ユニットの隣には HP バー（energy bar）が表示されています。そのユニットが"
-#~ "自軍もしくは同盟軍に属している場合、その HP バーの上には宝珠（orb）が表示"
-#~ "されます。宝珠には複数の色があり、それぞれの色はユニットの状態を表していま"
-#~ "す。"
-
-#~ msgid " green if it hasn’t moved this turn,"
-#~ msgstr "緑色の場合、このターンまだ移動を行っていません。"
-
-#~ msgid " yellow if it has moved, but could still move further or attack, or"
-#~ msgstr ""
-#~ "黄色の場合、すでに移動を行っていますが、移動力がまだ余っているか、攻撃を行"
-#~ "うことができます。"
-
-#~ msgid ""
-#~ " red if it can no longer move or attack, or the user ended the unit’s "
-#~ "turn."
-#~ msgstr "赤の場合、このターン中はもう移動・攻撃できません。"
-
-#~ msgid " blue if the unit is an ally you do not control."
-#~ msgstr "青色の場合は、同盟軍のユニットです。"
-
-#~ msgid " Enemy units have no orb on top of their energy bar."
-#~ msgstr "敵ユニットには宝珠は表示されません。"
-
-#~ msgid ""
-#~ "\n"
-#~ "Set or toggle player on side between human and AI player. The player/"
-#~ "client who controls that side needs to issue this command. If no second "
-#~ "parameter is supplied, toggle between human and AI. If it is ‘on’, set an "
-#~ "AI controller. If it is ‘off’ set a human controller. Defaults to the "
-#~ "currently active side if no parameter is supplied.\n"
-#~ "\n"
-#~ msgstr ""
-#~ "\n"
-#~ "陣営のプレイヤーを人間と AI のいずれかに設定、もしくは切り替えます。その陣"
-#~ "営を操作しているプレイヤー／クライアントがこのコマンドを実行する必要があり"
-#~ "ます。2 つめの引数が指定されなかった場合、人間と AI の間で切り替えられま"
-#~ "す。2 つめのパラメータが「 on 」なら、AI が操作するように設定されます。"
-#~ "「 off 」なら人間が操作するように設定されます。パラメータを何も指定しな"
-#~ "かった場合、現在プレイ中の陣営とみなされます。\n"
-#~ "\n"
-
-#~ msgid ""
-#~ "Compared to humans, elves are somewhat taller, more agile but less "
-#~ "sturdy. They have slightly pointy ears, pale skin and usually blond hair. "
-#~ "Few differences between humans and elves are more pronounced than the "
-#~ "Elves’ unusually long life — most, unless claimed by illness, accident or "
-#~ "war, live a full two and a half centuries. While some elves possessing a "
-#~ "high magical aptitude have been known to live an additional full century, "
-#~ "most elves begin to grow physically frail at some point between 250 and "
-#~ "300 years of age and pass away rapidly (generally within a year or two) "
-#~ "thereafter.\n"
-#~ "\n"
-#~ "Elves are naturally imbued with magic to a small degree. Though most are "
-#~ "unable to channel it directly, its latent presence gives them their keen "
-#~ "senses and long life. Many elves have magic-driven talents such as "
-#~ "marksmanship or stealth, allowing them to achieve tasks that most normal "
-#~ "beings would find astonishing. Those elves that learn to wield this power "
-#~ "in more general ways can become truly formidable in its use. Many choose "
-#~ "to use their gift to heal others.\n"
-#~ "\n"
-#~ "A few elves, venturing far down the paths of magic and mysticism, become "
-#~ "sensitive to the presence of cold iron and can even be burned by it. "
-#~ "Elvish legend hints that this was more common in the far past.\n"
-#~ "\n"
-#~ "Elves spend much of their time honing their talents and skills. Those not "
-#~ "adept at the magical arts typically devote their time honing their "
-#~ "physical skills. As a result, elves excel at archery, which is perhaps "
-#~ "their most important method of warfare. Most elvish troops carry a bow "
-#~ "and no other race can rival their archers in speed and accuracy. All "
-#~ "elves also share an intense affection for unspoiled nature. They often "
-#~ "feel uncomfortable in open, unvegetated spaces. They live primarily in "
-#~ "the forests of the Great Continent; the Aethenwood in the southwest, "
-#~ "Wesmere in the northwest, and the great northern woods of which the "
-#~ "Lintanir Forest is the southernmost edge.\n"
-#~ "\n"
-#~ "Elves are the eldest race of the continent, with the possible exception "
-#~ "of trolls. Many of their settlements cannot be reliably dated, "
-#~ "undoubtedly having existed for over a millennium."
-#~ msgstr ""
-#~ "人間族に比べると、エルフ族は若干背が高く、より機敏ですがあまりたくましくは"
-#~ "ありません。彼らはわずかに先の尖った耳を持ち、皮膚は青白く、通常は金髪で"
-#~ "す。エルフ族が非常に長い寿命を持つこと以外は人間族とエルフ族の違いはほとん"
-#~ "どないと言ってもよいでしょう。ほとんどの場合、病気や事故、戦争などによって"
-#~ "命が奪われることがなければ、2 世紀半もの間生きます。エルフ族の中には高い魔"
-#~ "法の才能を持った者がおり、さらに 1 世紀の間生きることが知られていますが、"
-#~ "ほとんどのエルフは 250 から 300 歳の間のどこかで、肉体的に弱くなっていき、"
-#~ "その後すぐに（通常は 1、2 年以内に）死にます。\n"
-#~ "\n"
-#~ "エルフ族は生まれつきわずかですが魔法を身につけています。ほとんどの者は直接"
-#~ "魔法を導くことができませんが、魔法が潜在的に備わっていることにより、彼らは"
-#~ "感覚が鋭く、寿命が長いのです。多くのエルフは射撃や隠密といった魔法を原動力"
-#~ "とする才能を持っていて、ほとんどの普通の生き物をにとっては驚くべきことを"
-#~ "やってのけます。この能力を巧みにより一般的に使うエルフたちは、この能力を使"
-#~ "うことにおいて本当に並外れたものになります。多くの者は彼らに与えられた能力"
-#~ "を他の者を回復させるために使用することを選びます。\n"
-#~ "\n"
-#~ "少数のエルフは、魔法と神秘の道を遠く深く冒険し、冷えた鉄の存在に鋭敏にな"
-#~ "り、燃え上がることもできます。遠い昔はそのようなことが一般的であったことが"
-#~ "エルフ族の伝承に暗示されています。\n"
-#~ "\n"
-#~ "エルフ族は彼らの能力や技能を磨くために多くの時間を費やします。魔法能力に熟"
-#~ "練していない者はたいてい肉体的な技能を磨くことに時間を費やします。その結"
-#~ "果、エルフ族は弓を使うことを得意としており、これは戦争においておそらく最も"
-#~ "重要な手段となります。ほとんどのエルフ族の軍隊は弓を所持しており、他の種族"
-#~ "たちは速度においても正確さにおいても彼らの射手に対抗することはできません。"
-#~ "また、すべてのエルフは荒らされていない自然に対する愛情を共有しています。彼"
-#~ "らはたいてい開けた植物に覆われていない場所に不安を感じます。このため彼ら"
-#~ "は、南西部の Aethenwood や北西部の Wesmere、あるいは南端に Lintanir の森が"
-#~ "ある北部の大森林といったような大陸の森に主に居住します。\n"
-#~ "\n"
-#~ "エルフ族は大陸の中で最年長の種族です。トロルという例外の可能性を除けば。彼"
-#~ "らの居住地の多くは全く古びていませんが、明らかに千年以上存在しています。"
-
-#~ msgid "This race does not have a description yet."
-#~ msgstr "この種族の説明はまだありません。"
-
-#~ msgid "The Battle for Wesnoth Help"
-#~ msgstr "The Battle for Wesnoth ヘルプ"
+msgstr "ジャミングコスト"

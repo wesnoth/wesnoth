@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2011 - 2018 by Lukasz Dobrogowski <lukasz.dobrogowski@gmail.com>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2011 - 2021
+	by Lukasz Dobrogowski <lukasz.dobrogowski@gmail.com>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any lfooater version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #include "commandline_options.hpp"
@@ -160,6 +161,7 @@ commandline_options::commandline_options(const std::vector<std::string>& args)
 	, diff_left()
 	, diff_right()
 	, version(false)
+	, simple_version(false)
 	, report(false)
 	, windowed(false)
 	, with_replay(false)
@@ -220,6 +222,7 @@ commandline_options::commandline_options(const std::vector<std::string>& args)
 		("username", po::value<std::string>(), "uses <username> when connecting to a server, ignoring other preferences.")
 		("validcache", "assumes that the cache is valid. (dangerous)")
 		("version,v", "prints the game's version number and exits.")
+		("simple-version", "prints the game's version number and nothing else.")
 		("with-replay", "replays the file loaded with the --load option.")
 #ifdef _WIN32
 		("wconsole", "attaches a console window on startup (Windows only). Implied by any option that prints something and exits.")
@@ -527,9 +530,14 @@ commandline_options::commandline_options(const std::vector<std::string>& args)
 		validate_schema = vm["validate-schema"].as<std::string>();
 	// If you add a new validate-* option, remember the any_validation_option() function
 	if (vm.count("use-schema"))
-		validate_with = vm["use-schema"].as<std::string>();;
+		validate_with = vm["use-schema"].as<std::string>();
 	if (vm.count("version"))
 		version = true;
+	if (vm.count("simple-version"))
+	{
+		simple_version = true;
+		nobanner = true;
+	}
 	if (vm.count("windowed"))
 		windowed = true;
 	if (vm.count("with-replay"))

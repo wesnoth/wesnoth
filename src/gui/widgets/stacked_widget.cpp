@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2009 - 2018 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2009 - 2021
+	by Mark de Wever <koraq@xs4all.nl>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
@@ -25,6 +26,9 @@
 #include "utils/const_clone.hpp"
 
 #include <functional>
+
+static lg::log_domain log_wml("wml");
+#define ERR_WML LOG_STREAM(err, log_wml)
 
 namespace gui2
 {
@@ -231,7 +235,8 @@ builder_stacked_widget::builder_stacked_widget(const config& real_cfg)
 {
 	const config& cfg = real_cfg.has_child("stack") ? real_cfg.child("stack") : real_cfg;
 	if(&cfg != &real_cfg) {
-		lg::wml_error() << "Stacked widgets no longer require a [stack] tag. Instead, place [layer] tags directly in the widget definition.\n";
+		lg::log_to_chat() << "Stacked widgets no longer require a [stack] tag. Instead, place [layer] tags directly in the widget definition.\n";
+		ERR_WML << "Stacked widgets no longer require a [stack] tag. Instead, place [layer] tags directly in the widget definition.";
 	}
 	VALIDATE(cfg.has_child("layer"), _("No stack layers defined."));
 	for(const auto & layer : cfg.child_range("layer"))

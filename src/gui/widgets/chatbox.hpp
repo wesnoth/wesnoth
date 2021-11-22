@@ -1,14 +1,15 @@
 /*
-   Copyright (C) 2016 - 2018 by the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2016 - 2021
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #pragma once
@@ -23,7 +24,6 @@
 #include <string>
 
 class config;
-class wesnothd_connection;
 
 namespace gui2
 {
@@ -84,11 +84,6 @@ public:
 		active_window_changed_callback_ = f;
 	}
 
-	void set_wesnothd_connection(wesnothd_connection& c)
-	{
-		wesnothd_connection_ = &c;
-	}
-
 	void load_log(std::map<std::string, chatroom_log>& log, bool show_lobby);
 
 protected:
@@ -138,10 +133,6 @@ private:
 	std::size_t active_window_;
 
 	std::function<void(void)> active_window_changed_callback_;
-
-	mp::chat_info chat_info_;
-
-	wesnothd_connection* wesnothd_connection_;
 
 	std::map<std::string, chatroom_log>* log_;
 
@@ -215,12 +206,6 @@ public:
 	void active_window_changed();
 
 	/**
-	 * Get the room* corresponding to the currently active window, or nullptr
-	 * if a whisper window is active at the moment
-	 */
-	mp::room_info* active_window_room();
-
-	/**
 	 * Check if a room window for "room" is open, if open_new is true
 	 * then it will be created if not found. If allow_close is false, the
 	 * 'close' button will be disabled.
@@ -242,12 +227,6 @@ public:
 	lobby_chat_window* find_or_create_window(const std::string& name, const bool whisper, const bool open_new, const bool allow_close, const std::string& initial_text);
 
 	void close_window_button_callback(std::string room_name, bool& handled, bool& halt);
-
-	void process_room_join(const ::config& data);
-
-	void process_room_part(const ::config& data);
-
-	void process_room_query_response(const ::config& data);
 
 	void process_message(const ::config& data, bool whisper = false);
 

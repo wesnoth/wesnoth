@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2014 - 2018 by Chris Beck <render787@gmail.com>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2014 - 2021
+	by Chris Beck <render787@gmail.com>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #include "scripting/mapgen_lua_kernel.hpp"
@@ -22,6 +23,8 @@
 #include "scripting/lua_pathfind_cost_calculator.hpp"
 #include "scripting/lua_terrainfilter.hpp"
 #include "scripting/lua_terrainmap.hpp"
+#include "deprecation.hpp"
+#include "game_version.hpp"
 
 #include <ostream>
 #include <string>
@@ -129,12 +132,17 @@ static int intf_default_generate_height_map(lua_State *L)
 
 	config cfg = luaW_checkconfig(L, 3);
 
+	if(!cfg.has_attribute("location_set")) {
+		deprecated_message("generate_height_map(..., {location_set=false})", DEP_LEVEL::PREEMPTIVE, "1.17", "The default value of this option will be changed to true in 1.17.");
+	}
+
 	int iterations = cfg["iterations"].to_int(1);
 	int hill_size = cfg["hill_size"].to_int(1);
 	int island_size = cfg["island_size"].to_int(width/2);
 	int center_x = cfg["center_x"].to_int(width/2);
 	int center_y = cfg["center_y"].to_int(height/2);
 	bool flip_layout = cfg["flip_format"].to_bool();
+	bool as_locset = cfg["location_set"].to_bool(false);
 	uint32_t seed = cfg["seed"].to_int(0);
 
 	if(!cfg.has_attribute("seed")) {
@@ -145,12 +153,18 @@ static int intf_default_generate_height_map(lua_State *L)
 	lua_createtable (L, width * height, 0);
 	assert(int(res.size()) == width);
 	assert((width == 0 || int(res[0].size()) == height));
+	std::hash<map_location> loc_hash;
 	for(int x = 0; x != width; ++x) {
 		for(int y = 0; y != height; ++y) {
 			int h = res[x][y];
-			int i = flip_layout ? (y + x * height) : (x + y * width);
 			lua_pushinteger (L, h);
-			lua_rawseti(L, -2, i);
+			if(as_locset) {
+				map_location loc(flip_layout ? y : x, flip_layout ? x : y, wml_loc());
+				lua_rawseti(L, -2, loc_hash(loc));
+			} else {
+				int i = flip_layout ? (y + x * height) : (x + y * width);
+				lua_rawseti(L, -2, i);
+			}
 		}
 	}
 	return 1;
@@ -300,10 +314,12 @@ void mapgen_lua_kernel::user_config(const char * prog, const config & generator)
 
 int mapgen_lua_kernel::intf_get_variable(lua_State *L)
 {
-
 	char const *m = luaL_checkstring(L, 1);
-	variable_access_const v(m, vars_ ? *vars_ : config());
-	return luaW_pushvariable(L, v) ? 1 : 0;
+	if(vars_) {
+		variable_access_const v(m, *vars_);
+		return luaW_pushvariable(L, v) ? 1 : 0;
+	}
+	return 0;
 }
 
 int mapgen_lua_kernel::intf_get_all_vars(lua_State *L) {

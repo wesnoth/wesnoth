@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2008 - 2018 by Jörg Hinrichs <joerg.hinrichs@alice-dsl.de>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2008 - 2021
+	by Jörg Hinrichs <joerg.hinrichs@alice-dsl.de>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
@@ -352,7 +353,6 @@ void game_load::filter_text_changed(const std::string& text)
 
 void game_load::evaluate_summary_string(std::stringstream& str, const config& cfg_summary)
 {
-	std::string difficulty_human_str = string_table[cfg_summary["difficulty"]];
 	if(cfg_summary["corrupt"].to_bool()) {
 		str << "\n<span color='#f00'>" << _("(Invalid)") << "</span>";
 		// \todo: this skips the catch() statement in display_savegame. Low priority, as the
@@ -363,26 +363,15 @@ void game_load::evaluate_summary_string(std::stringstream& str, const config& cf
 	}
 
 	const std::string& campaign_type = cfg_summary["campaign_type"];
+	const std::string campaign_id = cfg_summary["campaign"];
 
 	try {
 		switch(game_classification::CAMPAIGN_TYPE::string_to_enum(campaign_type).v) {
 			case game_classification::CAMPAIGN_TYPE::SCENARIO: {
-				const std::string campaign_id = cfg_summary["campaign"];
-
 				const config* campaign = nullptr;
 				if(!campaign_id.empty()) {
 					if(const config& c = cache_config_.find_child("campaign", "id", campaign_id)) {
 						campaign = &c;
-					}
-				}
-
-				if (campaign != nullptr) {
-					try {
-						const config &difficulty = campaign->find_child("difficulty", "define", cfg_summary["difficulty"]);
-						std::ostringstream ss;
-						ss << difficulty["label"] << " (" << difficulty["description"] << ")";
-						difficulty_human_str = ss.str();
-					} catch(const config::error&) {
 					}
 				}
 
@@ -426,8 +415,49 @@ void game_load::evaluate_summary_string(std::stringstream& str, const config& cf
 		str << _("Scenario start");
 	}
 
-	str << "\n" << _("Difficulty: ")
-		<< difficulty_human_str;
+	str << "\n" << _("Difficulty: ");
+	try {
+		switch (game_classification::CAMPAIGN_TYPE::string_to_enum(campaign_type).v) {
+		case game_classification::CAMPAIGN_TYPE::SCENARIO:
+		case game_classification::CAMPAIGN_TYPE::MULTIPLAYER: {
+			const config* campaign = nullptr;
+			if (!campaign_id.empty()) {
+				if (const config& c = cache_config_.find_child("campaign", "id", campaign_id)) {
+					campaign = &c;
+				}
+			}
+
+			// 'SCENARIO' or SP should only ever be campaigns
+			// 'MULTIPLAYER' may be a campaign with difficulty or single scenario without difficulty
+			// For the latter do not show the difficulty - even though it will be listed as
+			// NORMAL -> Medium in the save file it should not be considered valid (GitHub Issue #5321)
+			if (campaign != nullptr) {
+				try {
+					const config& difficulty = campaign->find_child("difficulty", "define", cfg_summary["difficulty"]);
+					std::ostringstream ss;
+					ss << difficulty["label"] << " (" << difficulty["description"] << ")";
+					str << ss.str();
+				}
+				catch (const config::error&) {
+					// fall back to standard difficulty string in case of exception
+					str << string_table[cfg_summary["difficulty"]];
+				}
+			}
+			else {
+				str << "—";
+			}
+
+			break;
+		}
+		case game_classification::CAMPAIGN_TYPE::TUTORIAL:
+		case game_classification::CAMPAIGN_TYPE::TEST:
+			str << "—";
+			break;
+		}
+	}
+	catch (const bad_enum_cast&) {
+		str << "—";
+	}
 
 	if(!cfg_summary["version"].empty()) {
 		str << "\n" << _("Version: ") << cfg_summary["version"];

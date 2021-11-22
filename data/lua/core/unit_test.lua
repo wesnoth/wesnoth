@@ -44,6 +44,29 @@ if rawget(_G, 'unit_test') ~= nil then
 		std_print(prefix .. ': ' .. message)
 	end
 
+	-- This is a way to ensure that all assertions contain a descriptive message
+	setmetatable(unit_test, {
+		__newindex = function(self, key, val)
+			if string.sub(key, 1, 6) == 'assert' then
+				local info = debug.getinfo(val, 'u')
+				local recursion_guard = false
+				local underlying_fcn = val
+				local fcn = function(...)
+					if not recursion_guard then
+						-- Last argument is the message
+						local message = select(info.nparams, ...)
+						recursion_guard = true
+						unit_test.assert_not_equal(message, nil, string.format('unit_test.%s missing a message', key))
+						recursion_guard = false
+					end
+					underlying_fcn(...)
+				end
+				val = fcn
+			end
+			rawset(self, key, val)
+		end
+	})
+
 	--! Fail the test with a message unless the condition is true
 	function unit_test.assert(condition, message)
 		if not condition then

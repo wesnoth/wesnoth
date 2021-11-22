@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2009 - 2018 by Yurii Chernyi <terraninfo@terraninfo.net>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2009 - 2021
+	by Yurii Chernyi <terraninfo@terraninfo.net>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 /**
@@ -376,8 +377,8 @@ bool move_result::test_route(const unit &un)
 		return false;
 	}
 
-	if (!to_.valid()) {
-		set_error(E_NO_ROUTE);
+	if (!to_.valid() || !resources::gameboard->map().on_board(to_)) {
+		set_error(E_OFF_MAP);
 		return false;
 	}
 
@@ -1091,6 +1092,7 @@ const std::string& actions::get_error_name(int error_code)
 		error_names_.emplace(move_result::E_AMBUSHED, "move_result::E_AMBUSHED");
 		error_names_.emplace(move_result::E_FAILED_TELEPORT, "move_result::E_FAILED_TELEPORT");
 		error_names_.emplace(move_result::E_NO_ROUTE, "move_result::E_NO_ROUTE");
+		error_names_.emplace(move_result::E_OFF_MAP, "move_result::E_OFF_MAP");
 
 		error_names_.emplace(recall_result::E_NOT_AVAILABLE_FOR_RECALLING, "recall_result::E_NOT_AVAILABLE_FOR_RECALLING");
 		error_names_.emplace(recall_result::E_NO_GOLD, "recall_result::E_NO_GOLD");

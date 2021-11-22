@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2006 - 2018 by Dominic Bolin <dominic.bolin@exong.net>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2006 - 2021
+	by Dominic Bolin <dominic.bolin@exong.net>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 /**
@@ -44,6 +45,9 @@
 
 static lg::log_domain log_engine("engine");
 #define ERR_NG LOG_STREAM(err, log_engine)
+
+static lg::log_domain log_wml("wml");
+#define ERR_WML LOG_STREAM(err, log_wml)
 
 namespace {
 	class temporary_facing
@@ -536,7 +540,8 @@ T get_single_ability_value(const config::attribute_value& v, T def, const unit_a
 				}
 				return formula_handler(wfl::formula(s, new wfl::gamestate_function_symbol_table), callable);
 			} catch(const wfl::formula_error& e) {
-				lg::wml_error() << "Formula error in ability or weapon special: " << e.type << " at " << e.filename << ':' << e.line << ")\n";
+				lg::log_to_chat() << "Formula error in ability or weapon special: " << e.type << " at " << e.filename << ':' << e.line << ")\n";
+				ERR_WML << "Formula error in ability or weapon special: " << e.type << " at " << e.filename << ':' << e.line << ")";
 				return def;
 			}
 	}));
@@ -827,6 +832,27 @@ std::vector<std::pair<t_string, t_string>> attack_type::special_tooltips(
 }
 
 /**
+ * static used in weapon_specials (bool only_active, bool is_backstab) and
+ * @return a string and a set_string for the weapon_specials function below.
+ * @param[in,out] weapon_abilities the string modified and returned
+ * @param[in] active the boolean for determine if @name can be added or not
+ * @param[in] sp reference to ability to check
+ * @param[in,out] checking_name the reference for checking if @name already added
+ */
+static void add_name(std::string& weapon_abilities, bool active, const config::any_child sp, std::set<std::string>& checking_name)
+{
+	if (active) {
+		const std::string& name = sp.cfg["name"].str();
+
+		if (!name.empty() && checking_name.count(name) == 0) {
+			checking_name.insert(name);
+			if (!weapon_abilities.empty()) weapon_abilities += ", ";
+			weapon_abilities += font::span_color(font::BUTTON_COLOR, name);
+		}
+	}
+}
+
+/**
  * Returns a comma-separated string of active names for the specials of *this.
  * Empty names are skipped.
  *
@@ -853,7 +879,57 @@ std::string attack_type::weapon_specials(bool only_active, bool is_backstab) con
 			if (only_active && !active) res += "</span>";
 		}
 	}
+	std::string weapon_abilities;
+	std::set<std::string> checking_name;
+	assert(display::get_singleton());
+	const unit_map& units = display::get_singleton()->get_units();
+	if(self_){
+		for (const config::any_child sp : self_->abilities().all_children_range()){
+			const bool active = check_self_abilities_impl(shared_from_this(), other_attack_, sp.cfg, self_, self_loc_, AFFECT_SELF, sp.key);
 
+			add_name(weapon_abilities, active, sp, checking_name);
+		}
+		const auto adjacent = get_adjacent_tiles(self_loc_);
+		for(unsigned i = 0; i < adjacent.size(); ++i) {
+			const unit_map::const_iterator it = units.find(adjacent[i]);
+			if (it == units.end() || it->incapacitated())
+				continue;
+			if(&*it == self_.get())
+				continue;
+			for (const config::any_child sp : it->abilities().all_children_range()){
+				const bool active = check_adj_abilities_impl(shared_from_this(), other_attack_, sp.cfg, self_, *it, i, self_loc_, AFFECT_SELF, sp.key);
+
+				add_name(weapon_abilities, active, sp, checking_name);
+			}
+		}
+	}
+
+	if(other_){
+		for (const config::any_child sp : other_->abilities().all_children_range()){
+			const bool active = check_self_abilities_impl(other_attack_, shared_from_this(), sp.cfg, other_, other_loc_, AFFECT_OTHER, sp.key);
+
+			add_name(weapon_abilities, active, sp, checking_name);
+		}
+		const auto adjacent = get_adjacent_tiles(other_loc_);
+		for(unsigned i = 0; i < adjacent.size(); ++i) {
+			const unit_map::const_iterator it = units.find(adjacent[i]);
+			if (it == units.end() || it->incapacitated())
+				continue;
+			if(&*it == other_.get())
+				continue;
+			for (const config::any_child sp : it->abilities().all_children_range()){
+				const bool active = check_adj_abilities_impl(other_attack_, shared_from_this(), sp.cfg, other_, *it, i, other_loc_, AFFECT_OTHER, sp.key);
+
+				add_name(weapon_abilities, active, sp, checking_name);
+			}
+		}
+	}
+	if(!weapon_abilities.empty() && !res.empty()) {
+		weapon_abilities = ", \n" + weapon_abilities;
+		res += weapon_abilities;
+	} else if (!weapon_abilities.empty()){
+		res = weapon_abilities;
+	}
 	return res;
 }
 

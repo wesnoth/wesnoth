@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2003 - 2021
+	by David White <dave@whitevine.net>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #include "game_launcher.hpp"
@@ -513,9 +514,6 @@ game_launcher::unit_test_result game_launcher::unit_test()
 		case unit_test_result::TEST_FAIL_PLAYING_REPLAY:
 			describe_result = "FAIL TEST (ERRORED REPLAY)";
 			break;
-		case unit_test_result::TEST_FAIL_BROKE_STRICT:
-			describe_result = "FAIL TEST (BROKE STRICT)";
-			break;
 		case unit_test_result::TEST_FAIL_WML_EXCEPTION:
 			describe_result = "FAIL TEST (WML EXCEPTION)";
 			break;
@@ -525,8 +523,20 @@ game_launcher::unit_test_result game_launcher::unit_test()
 		case unit_test_result::TEST_PASS_BY_VICTORY:
 			describe_result = "PASS TEST (VICTORY)";
 			break;
+		case unit_test_result::BROKE_STRICT_TEST_PASS:
+			describe_result = "BROKE STRICT (PASS)";
+			break;
+		case unit_test_result::BROKE_STRICT_TEST_FAIL:
+			describe_result = "BROKE STRICT (FAIL)";
+			break;
+		case unit_test_result::BROKE_STRICT_TEST_FAIL_BY_DEFEAT:
+			describe_result = "BROKE STRICT (DEFEAT)";
+			break;
+		case unit_test_result::BROKE_STRICT_TEST_PASS_BY_VICTORY:
+			describe_result = "BROKE STRICT (VICTORY)";
+			break;
 		default:
-			describe_result = "FAIL TEST";
+			describe_result = "FAIL TEST (UNKNOWN)";
 			break;
 		}
 
@@ -547,13 +557,12 @@ game_launcher::unit_test_result game_launcher::single_unit_test()
 	try {
 		campaign_controller ccontroller(state_, true);
 		game_res = ccontroller.play_game();
-		// TODO: How to handle the case where a unit test scenario ends without an explicit {SUCCEED} or {FAIL}?
-		// ex: check_victory_never_ai_fail results in victory by killing one side's leaders
 		if(game_res == LEVEL_RESULT::TEST_FAIL) {
-			return unit_test_result::TEST_FAIL;
-		}
-		if(lg::broke_strict()) {
-			return unit_test_result::TEST_FAIL_BROKE_STRICT;
+			if(lg::broke_strict()) {
+				return unit_test_result::BROKE_STRICT_TEST_FAIL;
+			} else {
+				return unit_test_result::TEST_FAIL;
+			}
 		}
 	} catch(const wml_exception& e) {
 		std::cerr << "Caught WML Exception:" << e.dev_message << std::endl;
@@ -578,9 +587,10 @@ game_launcher::unit_test_result game_launcher::single_unit_test()
 	}
 
 	try {
+		const bool was_strict_broken = lg::broke_strict();
 		campaign_controller ccontroller(state_, true);
 		ccontroller.play_replay();
-		if(lg::broke_strict()) {
+		if(!was_strict_broken && lg::broke_strict()) {
 			std::cerr << "Observed failure on replay" << std::endl;
 			return unit_test_result::TEST_FAIL_PLAYING_REPLAY;
 		}
@@ -595,12 +605,24 @@ game_launcher::unit_test_result game_launcher::single_unit_test()
 game_launcher::unit_test_result game_launcher::pass_victory_or_defeat(LEVEL_RESULT res)
 {
 	if(res == LEVEL_RESULT::DEFEAT) {
-		return unit_test_result::TEST_FAIL_BY_DEFEAT;
+		if(lg::broke_strict()) {
+			return unit_test_result::BROKE_STRICT_TEST_FAIL_BY_DEFEAT;
+		} else {
+			return unit_test_result::TEST_FAIL_BY_DEFEAT;
+		}
 	} else if(res == LEVEL_RESULT::VICTORY) {
-		return unit_test_result::TEST_PASS_BY_VICTORY;
+		if(lg::broke_strict()) {
+			return unit_test_result::BROKE_STRICT_TEST_PASS_BY_VICTORY;
+		} else {
+			return unit_test_result::TEST_PASS_BY_VICTORY;
+		}
 	}
 
-	return unit_test_result::TEST_PASS;
+	if(lg::broke_strict()) {
+		return unit_test_result::BROKE_STRICT_TEST_PASS;
+	} else {
+		return unit_test_result::TEST_PASS;
+	}
 }
 
 bool game_launcher::play_screenshot_mode()
@@ -634,7 +656,7 @@ bool game_launcher::play_render_image_mode()
 	}
 
 	// A default output filename
-	std::string outfile = "wesnoth_image.bmp";
+	std::string outfile = "wesnoth_image.png";
 
 	// If a output path was given as an argument, use that instead
 	if(cmdline_opts_.render_image_dst) {

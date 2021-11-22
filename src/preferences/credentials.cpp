@@ -1,14 +1,15 @@
 /*
-Copyright (C) 2017-2018 by the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2017 - 2021
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-This program is free software; you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation; either version 2 of the License, or
-(at your option) any later version.
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #include "credentials.hpp"
@@ -36,6 +37,7 @@ See the COPYING file for more details.
 #endif
 
 static lg::log_domain log_config("config");
+#define DBG_CFG LOG_STREAM(debug , log_config)
 #define ERR_CFG LOG_STREAM(err , log_config)
 
 class secure_buffer : public std::vector<unsigned char>
@@ -153,6 +155,7 @@ namespace preferences
 
 	std::string password(const std::string& server, const std::string& login)
 	{
+		DBG_CFG << "Retrieving password for server: '" << server << "', login: '" << login << "'\n";
 		auto login_clean = login;
 		boost::trim(login_clean);
 
@@ -176,6 +179,7 @@ namespace preferences
 
 	void set_password(const std::string& server, const std::string& login, const std::string& key)
 	{
+		DBG_CFG << "Setting password for server: '" << server << "', login: '" << login << "'\n";
 		auto login_clean = login;
 		boost::trim(login_clean);
 
@@ -229,21 +233,15 @@ namespace preferences
 			filesystem::delete_file(filesystem::get_credentials_file());
 			return;
 		}
-		secure_buffer credentials_data(1, CREDENTIAL_SEPARATOR);
-		std::size_t offset = 1;
+		secure_buffer credentials_data;
 		for(const auto& cred : credentials) {
-			credentials_data.resize(credentials_data.size() + cred.size(), CREDENTIAL_SEPARATOR);
-			std::copy(cred.username.begin(), cred.username.end(), credentials_data.begin() + offset);
-			offset += cred.username.size();
-			credentials_data[offset++] = '@';
-			std::copy(cred.server.begin(), cred.server.end(), credentials_data.begin() + offset);
-			offset += cred.server.size();
-			credentials_data[offset++] = '=';
+			credentials_data.push_back(CREDENTIAL_SEPARATOR);
+			credentials_data.insert(credentials_data.end(), cred.username.begin(), cred.username.end());
+			credentials_data.push_back('@');
+			credentials_data.insert(credentials_data.end(), cred.server.begin(), cred.server.end());
+			credentials_data.push_back('=');
 			secure_buffer key_escaped = escape(cred.key);
-			// Escaping may increase the length, so resize again if so
-			credentials_data.resize(credentials_data.size() + key_escaped.size() - cred.key.size());
-			std::copy(key_escaped.begin(), key_escaped.end(), credentials_data.begin() + offset);
-			offset += key_escaped.size() + 1;
+			credentials_data.insert(credentials_data.end(), key_escaped.begin(), key_escaped.end());
 		}
 		try {
 			filesystem::scoped_ostream credentials_file = filesystem::ostream_file(filesystem::get_credentials_file());

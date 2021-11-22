@@ -16,7 +16,6 @@ function wesnoth.wml_actions.wc2_show_wocopedia(cfg)
 	local show_help_factions = cfg.show_factions ~= false
 	local show_help_artifacts = cfg.show_artifacts ~= false
 	local show_help_settings = cfg.show_settings ~= false
-	local show_help_feedback = cfg.show_feedback ~= false
 	-- maps the treeview rows to pagenumber in the help page.
 	local index_map = {}
 
@@ -40,7 +39,6 @@ function wesnoth.wml_actions.wc2_show_wocopedia(cfg)
 			_ "<b>Army discipline</b>\n" ..
 			_ "At scenarios 1 to 3, for each training level players already own, trainers found have 2% to 4% chance to become advanced trainers (provide 2 levels). Becomes irrelevant from scenario 4 onwards because all trainers will always be advanced.\n\n" ..
 			""
-		local str_cat_feedback, str_des_feedback = help_page_text( _ "Feedback", _ "For feedback please either post in the World Conquest II thread in the official Wesnoth forum &lt;https://r.wesnoth.org/t39651&gt; or file an issue at GitHub &lt;https://github.com/gfgtdf/World_Conquest_II/issues&gt;.")
 		local str_cat_training, str_des_training = help_page_text( _ "Training", _ "Training improves newly recruited units, it has no effect on already recruited units. The following list shows all available training, the training you currently have is marked in green.")
 		local str_cat_items, str_des_items = help_page_text( _ "Items", _ "Items can be given to units to make them stronger. You can get items in three ways: 1) By choosing an item as your starting bonus; 2) By finding it on a map in a bonus point; 3) By dropping from enemies in later scenarios. Note, however, that not all units can pick up all items.")
 		local str_cat_era, str_des_era = help_page_text( _ "Factions" , _ "The World Conquest II era consists of factions that are built from pairs of mainline factions. One faction will have a healer available (Drakes, Rebels and Loyalists) and one will not (Orcs, Dwarves and Undead). The recruit list is also organized in pairs so that sometimes you will have to recruit a different unit before you can recruit the units that you want. The available heroes, deserters, and random leaders also depend on your factions; the items you can get do not depend on the faction you choose.")
@@ -218,13 +216,6 @@ function wesnoth.wml_actions.wc2_show_wocopedia(cfg)
 			function page.checkbox_show_pickup_confirmation.on_modified()
 				wc2_utils.global_vars.skip_pickup_dialog = not page.checkbox_show_pickup_confirmation.selected
 			end
-		end
-		if show_help_feedback then
-			local node, page = root_node:add_help_page {
-				title = str_cat_feedback,
-			}
-			page.label_content.marked_up_text = str_des_feedback
-
 		end
 
 		root_node:focus()

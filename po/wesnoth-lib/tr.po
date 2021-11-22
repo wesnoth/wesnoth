@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: wesnoth-lib\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2021-06-23 11:42-0400\n"
-"PO-Revision-Date: 2021-07-01 09:22+0300\n"
+"PO-Revision-Date: 2021-08-03 02:58+0300\n"
 "Last-Translator: Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>\n"
 "Language-Team: Turkish\n"
 "Language: tr\n"
@@ -2140,7 +2140,7 @@ msgstr ""
 #. [settings]
 #: data/gui/default.cfg:23
 msgid " (Press '$hotkey' for more information)"
-msgstr "(Daha fazla bilgi için '$hotkey' tuşuna basın)"
+msgstr " (Daha fazla bilgi için '$hotkey' tuşuna basın)"
 
 #: data/gui/macros/_initial.cfg:362
 msgid "Search"
@@ -6045,15 +6045,15 @@ msgstr "Kurulu ($local_version|), yükseltilebilir"
 
 #: src/gui/dialogs/addon/manager.cpp:280
 msgid "addon_state^Published ($local_version| installed), upgradable"
-msgstr "Yayımlanmış ($local_version| kurulu), yükseltilebilir"
+msgstr "Yayımlanmış ($local_version kurulu), yükseltilebilir"
 
 #: src/gui/dialogs/addon/manager.cpp:286
 msgid "addon_state^Installed ($local_version|), outdated on server"
-msgstr "Kurulu ($local_version|), sunucuda eski sürüm"
+msgstr "Kurulu ($local_version|), sunucudaki eski sürüm"
 
 #: src/gui/dialogs/addon/manager.cpp:287
 msgid "addon_state^Published ($local_version| installed), outdated on server"
-msgstr "Yayımlanmış ($local_version| kurulu), sunucuda eski sürüm"
+msgstr "Yayımlanmış ($local_version kurulu), sunucudaki eski sürüm"
 
 #: src/gui/dialogs/addon/manager.cpp:293 src/gui/widgets/addon_list.cpp:114
 msgid "addon_state^Installed, not ready to publish"
@@ -6156,12 +6156,12 @@ msgid ""
 "Deleting '$addon|' will permanently erase its download and upload counts on "
 "the add-ons server. Do you really wish to continue?"
 msgstr ""
-"'$addon|' eklentisini silmek eklenti sunucusundaki indirme ve yükleme "
+"'$addon' eklentisini silmek eklenti sunucusundaki indirme ve yükleme "
 "sayılarını kalıcı olarak siler, Devam etmek istediğinize emin misiniz?"
 
 #: src/gui/dialogs/addon/manager.cpp:930
 msgid "Do you want to uninstall '$addon|'?"
-msgstr "'$addon|' eklentisini silmek ister misiniz?"
+msgstr "'$addon' eklentisini silmek ister misiniz?"
 
 #: src/gui/dialogs/addon/manager.cpp:1024
 msgid "url^None"
@@ -6274,7 +6274,7 @@ msgid ""
 "Could not create a new folder at $path|. Make sure you have the appropriate "
 "permissions to write to this location."
 msgstr ""
-"$path| üzerinde yeni dizin oluşturulamadı. Bu konuma yazmak için gerekli "
+"$path üzerinde yeni dizin oluşturulamadı. Bu konuma yazmak için gerekli "
 "izinlerin olduğundan emin olun."
 
 #: src/gui/dialogs/file_dialog.cpp:724
@@ -6294,7 +6294,7 @@ msgid ""
 "Could not delete $path|. Make sure you have the appropriate permissions to "
 "write to this location."
 msgstr ""
-"$path| silinemedi. Bu konuma yazmak için gerekli izinlerin olduğundan emin "
+"$path silinemedi. Bu konuma yazmak için gerekli izinlerin olduğundan emin "
 "olun."
 
 #: src/gui/dialogs/folder_create.cpp:39
@@ -6583,7 +6583,7 @@ msgstr ""
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:429
 msgid "Games: showing $num_shown out of $num_total"
-msgstr "Oyunlar: $num_total üzerinden $num_shown gösteriliyor"
+msgstr "Oyunlar: $num_shown / $num_total gösteriliyor"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:449
 msgid "$game_name (Era: $era_name)"
@@ -6721,7 +6721,7 @@ msgstr "Bu oyun için hiç çağ mevcut değil."
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:723
 msgid "number of players^$min to $max"
-msgstr "$min ile $max"
+msgstr "$min - $max"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:820
 msgid "The selected game has no sides!"
@@ -6898,7 +6898,7 @@ msgstr "Alınan"
 
 #: src/gui/dialogs/statistics_dialog.cpp:455
 msgid "$count|× $name"
-msgstr "$count|× $name"
+msgstr "$count|×$name"
 
 #: src/gui/dialogs/title_screen.cpp:110 src/hotkey/hotkey_command.cpp:91
 msgid "Screenshot"
@@ -6979,7 +6979,7 @@ msgstr "Sunucudan eklentiyi sil"
 
 #: src/gui/widgets/chatbox.cpp:288
 msgid "whisper to $receiver"
-msgstr "$receiver fısılda"
+msgstr "Şuna fısılda: $receiver"
 
 #: src/gui/widgets/chatbox.cpp:388
 msgid "Joined <i>$name</i>"
@@ -6990,12 +6990,12 @@ msgid ""
 "Started private message with <i>$name</i>. If you do not want to receive "
 "messages from this player, type <i>/ignore $name</i>"
 msgstr ""
-"<i>\"$name\"</i> ile fısıldaşma başladı. Eğer bu kullanıcıdan ileti almak "
+"<i>$name\"</i> ile fısıldaşma başladı. Eğer bu kullanıcıdan ileti almak "
 "istemiyorsanız, <i>/ignore $name</i> yazın"
 
 #: src/gui/widgets/chatbox.cpp:633
 msgid "$player has entered the room"
-msgstr "$player odaya katıldı"
+msgstr "$player odaya geldi"
 
 #: src/gui/widgets/chatbox.cpp:675
 msgid "$player has left the room"
@@ -7044,7 +7044,7 @@ msgstr "Hepsi Seçili"
 msgid "multimenu^$excess other"
 msgid_plural "$excess others"
 msgstr[0] "$excess diğer"
-msgstr[1] "$excess diğerleri"
+msgstr[1] "$excess diğer"
 
 #: src/gui/widgets/multimenu_button.cpp:178
 #: src/gui/widgets/multimenu_button.cpp:234
@@ -7112,7 +7112,7 @@ msgstr "Saldırılar"
 #: src/gui/widgets/unit_preview_pane.cpp:446
 #: src/gui/widgets/unit_preview_pane.cpp:478
 msgid "Lvl $lvl"
-msgstr "Svy $lvl"
+msgstr "Sv $lvl"
 
 #: src/gui/widgets/unit_preview_pane.cpp:332
 #: src/gui/widgets/unit_preview_pane.cpp:345
@@ -8048,6 +8048,16 @@ msgid ""
 msgstr ""
 "'$deprecated_key' ismi '$key' diye yeniden adlandırıldı. '$deprecated_key' "
 "için destek $removal_version sürümünde kaldırılacaktır."
+
+#~ msgid "Data Migration"
+#~ msgstr "Veri Göçü"
+
+#~ msgid ""
+#~ "Choose which version of Wesnoth to import your data from.\n"
+#~ "Some settings will not take effect until Wesnoth is restarted."
+#~ msgstr ""
+#~ "Verinizin Wesnoth'un hangi sürümünden alınacağını seçin.\n"
+#~ "Bazı ayarlar Wesnoth yeniden başlatılana kadar geçerli olmaz."
 
 #~ msgid "Multiplayer server login dialog"
 #~ msgstr "Çok oyunculu sunucusu oturum açma penceresi"

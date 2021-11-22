@@ -1,16 +1,17 @@
 /*
-   Copyright (C) 2003 by David White <dave@whitevine.net>
-   Copyright (C) 2005 - 2018 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2003 - 2021
+	by Guillaume Melquiond <guillaume.melquiond@gmail.com>
+	Copyright (C) 2003 by David White <dave@whitevine.net>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 /**
@@ -37,6 +38,9 @@
 static lg::log_domain log_config("config");
 #define ERR_CF LOG_STREAM(err, log_config)
 #define DBG_CF LOG_STREAM(debug, log_config)
+
+static lg::log_domain log_wml("wml");
+#define ERR_WML LOG_STREAM(err, log_wml)
 
 namespace
 {
@@ -208,22 +212,6 @@ bool config::has_attribute(config_key_type key) const
 {
 	check_valid();
 	return values_.find(key) != values_.end();
-}
-
-bool config::has_old_attribute(config_key_type key, const std::string& old_key, const std::string& msg) const
-{
-	check_valid();
-	if(values_.find(key) != values_.end()) {
-		return true;
-	} else if(values_.find(old_key) != values_.end()) {
-		if(!msg.empty()) {
-			lg::wml_error() << msg;
-		}
-
-		return true;
-	}
-
-	return false;
 }
 
 void config::remove_attribute(config_key_type key)
@@ -495,6 +483,32 @@ config& config::child_or_add(config_key_type key)
 	}
 
 	return add_child(key);
+}
+
+utils::optional_reference<const config> config::get_deprecated_child(config_key_type old_key, const std::string& in_tag, DEP_LEVEL level, const std::string& message) const {
+	check_valid();
+
+	if(auto i = children_.find(old_key); i != children_.end() && !i->second.empty()) {
+		const std::string what = formatter() << "[" << in_tag << "][" << old_key << "]";
+		deprecated_message(what, level, "", message);
+		return *i->second.front();
+	}
+
+	return std::nullopt;
+}
+
+config::const_child_itors config::get_deprecated_child_range(config_key_type old_key, const std::string& in_tag, DEP_LEVEL level, const std::string& message) const {
+	check_valid();
+	static child_list dummy;
+	const child_list* p = &dummy;
+
+	if(auto i = children_.find(old_key); i != children_.end() && !i->second.empty()) {
+		const std::string what = formatter() << "[" << in_tag << "][" << old_key << "]";
+		deprecated_message(what, level, "", message);
+		p = &i->second;
+	}
+
+	return const_child_itors(const_child_iterator(p->begin()), const_child_iterator(p->end()));
 }
 
 config& config::add_child(config_key_type key)
@@ -783,10 +797,15 @@ config::attribute_value& config::operator[](config_key_type key)
 	return res->second;
 }
 
-const config::attribute_value& config::get_old_attribute(
-		config_key_type key, const std::string& old_key, const std::string& in_tag) const
+const config::attribute_value& config::get_old_attribute(config_key_type key, const std::string& old_key, const std::string& in_tag, const std::string& message) const
 {
 	check_valid();
+
+	if(has_attribute(old_key)) {
+		const std::string what = formatter() << "[" << in_tag << "]" << old_key << "=";
+		const std::string msg  = formatter() << "Use " << key << "= instead. " << message;
+		deprecated_message(what, DEP_LEVEL::INDEFINITE, "", msg);
+	}
 
 	attribute_map::const_iterator i = values_.find(key);
 	if(i != values_.end()) {
@@ -795,13 +814,19 @@ const config::attribute_value& config::get_old_attribute(
 
 	i = values_.find(old_key);
 	if(i != values_.end()) {
-		if(!in_tag.empty()) {
-			const std::string what = formatter() << "[" << in_tag << "]" << old_key << "=";
-			const std::string msg  = formatter() << "Use " << key << "= instead.";
-			deprecated_message(what, DEP_LEVEL::INDEFINITE, "", msg);
-			lg::wml_error() << msg;
-		}
+		return i->second;
+	}
 
+	static const attribute_value empty_attribute;
+	return empty_attribute;
+}
+
+const config::attribute_value& config::get_deprecated_attribute(config_key_type old_key, const std::string& in_tag, DEP_LEVEL level, const std::string& message) const {
+	check_valid();
+
+	if(auto i = values_.find(old_key); i != values_.end()) {
+		const std::string what = formatter() << "[" << in_tag << "]" << old_key << "=";
+		deprecated_message(what, level, "", message);
 		return i->second;
 	}
 

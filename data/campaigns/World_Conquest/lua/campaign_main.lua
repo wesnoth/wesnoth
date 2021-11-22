@@ -15,12 +15,10 @@ wesnoth.dofile("./campaign/autorecall.lua")
 wesnoth.dofile("./campaign/objectives.lua")
 wesnoth.dofile("./campaign/enemy_themed.lua")
 
-wc2_difficulty = wesnoth.require("./campaign/difficulty.lua")
-
 on_event("prestart", function(cx)
 	wesnoth.wml_actions.wc2_fix_colors {
 		wml.tag.player_sides {
-			side="1,2,3",
+			side="1,2,3,4",
 			wml.tag.has_unit {
 				canrecruit = true,
 			}

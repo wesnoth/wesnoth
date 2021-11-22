@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2003 - 2021
+	by David White <dave@whitevine.net>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #include "actions/attack.hpp"
@@ -598,7 +599,8 @@ static config unit_defense(reports::context & rc, const unit* u, const map_locat
 	}
 
 	tooltip << "<b>" << _("Defense: ") << span_color(color)  << def << '%' << naps << "</b>";
-	return text_report(str.str(), tooltip.str());
+	const std::string has_variations_prefix = (u->type().show_variations_in_help() ? ".." : "");
+	return text_report(str.str(), tooltip.str(), has_variations_prefix + "unit_" + u->type_id());
 }
 REPORT_GENERATOR(unit_defense,rc)
 {
@@ -1268,13 +1270,12 @@ static config time_of_day_at(reports::context & rc, const map_location& mouseove
 	std::string chaotic_color("white");
 	std::string liminal_color("white");
 
-	// Use same red/green colouring scheme as time_of_day_bonus_colored() in help/help_impl.cpp for consistency
 	if (b != 0) {
-		lawful_color  = (b > 0) ? "green" : "red";
-		chaotic_color = (b < 0) ? "green" : "red";
+		lawful_color  = (b > 0) ? "#0f0" : "#f00";
+		chaotic_color = (b < 0) ? "#0f0" : "#f00";
 	}
 	if (l != 0) {
-		liminal_color = (l > 0) ? "green" : "red";
+		liminal_color = (l > 0) ? "#0f0" : "#f00";
 	}
 	tooltip << _("Time of day:") << " <b>" << tod.name << "</b>\n"
 		<< _("Lawful units: ") << "<span foreground=\"" << lawful_color  << "\">"

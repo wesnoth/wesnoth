@@ -1,4 +1,3 @@
-local helper = wesnoth.require "helper"
 local utils = wesnoth.require "wml-utils"
 local wml_actions = wesnoth.wml_actions
 local T = wml.tag
@@ -548,7 +547,7 @@ end
 
 function wml_actions.store_side(cfg)
 	local writer = utils.vwriter.init(cfg, "side")
-	for t, side_number in helper.get_sides(cfg) do
+	for t, side_number in wesnoth.sides.iter(cfg) do
 		local container = t.__cfg
 		-- set values not properly handled by the __cfg
 		container.income = t.total_income
@@ -716,7 +715,7 @@ function wml_actions.scroll(cfg)
 end
 
 function wml_actions.color_adjust(cfg)
-	wesnoth.interface.color_adjust(cfg.red, cfg.green, cfg.blue)
+	wesnoth.interface.color_adjust(cfg.red or 0, cfg.green or 0, cfg.blue or 0)
 end
 
 function wml_actions.end_turn(cfg)
@@ -895,7 +894,7 @@ function wesnoth.wml_actions.zoom(cfg)
 end
 
 function wesnoth.wml_actions.story(cfg)
-	local title = cfg.title or wml.error "Missing title key in [story] ActionWML"
+	local title = cfg.title or wesnoth.scenario.name
 	gui.show_story(cfg, title)
 end
 

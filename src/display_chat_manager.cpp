@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2014 - 2018 by Chris Beck <render787@gmail.com>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2014 - 2021
+	by Chris Beck <render787@gmail.com>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #include "display_chat_manager.hpp"
@@ -80,13 +81,13 @@ void display_chat_manager::add_chat_message(const std::time_t& time, const std::
 	if (bell) {
 		if ((type == events::chat_handler::MESSAGE_PRIVATE && (!is_observer || whisper))
 			|| utils::word_match(message, preferences::login())) {
-			mp_ui_alerts::private_message(false, sender, message);
+			mp::ui_alerts::private_message(false, sender, message);
 		} else if (preferences::is_friend(sender)) {
-			mp_ui_alerts::friend_message(false, sender, message);
+			mp::ui_alerts::friend_message(false, sender, message);
 		} else if (sender == "server") {
-			mp_ui_alerts::server_message(false, sender, message);
+			mp::ui_alerts::server_message(false, sender, message);
 		} else {
-			mp_ui_alerts::public_message(false, sender, message);
+			mp::ui_alerts::public_message(false, sender, message);
 		}
 	}
 

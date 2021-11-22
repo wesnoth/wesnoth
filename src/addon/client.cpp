@@ -1,16 +1,17 @@
 /*
-   Copyright (C) 2003 - 2008 by David White <dave@whitevine.net>
-   Copyright (C) 2008 - 2020 by Iris Morelle <shadowm2006@gmail.com>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2008 - 2021
+	by Iris Morelle <shadowm2006@gmail.com>
+	Copyright (C) 2003 - 2008 by David White <dave@whitevine.net>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #include "addon/info.hpp"
@@ -426,6 +427,11 @@ addons_client::install_result addons_client::do_resolve_addon_dependencies(const
 
 	std::vector<std::string> missing_deps;
 	std::vector<std::string> broken_deps;
+	// if two add-ons both have the same dependency and are being downloaded in a batch (such as via the adhoc connection)
+	// then the version cache will not be updated after the first is downloaded
+	// which will result in it being treated as version 0.0.0, which is then interpreted as being "upgradeable"
+	// which then causes the user to be prompted to download the same dependency multiple times
+	version_info unknown_version(0, 0, 0);
 
 	for(const std::string& dep : deps) {
 		try {
@@ -434,7 +440,7 @@ addons_client::install_result addons_client::do_resolve_addon_dependencies(const
 			// ADDON_NONE means not installed.
 			if(info.state == ADDON_NONE) {
 				missing_deps.push_back(dep);
-			} else if(info.state == ADDON_INSTALLED_UPGRADABLE) {
+			} else if(info.state == ADDON_INSTALLED_UPGRADABLE && info.installed_version != unknown_version) {
 				// Tight now, we don't need to distinguish the lists of missing
 				// and outdated addons, so just add them to missing.
 				missing_deps.push_back(dep);

@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2010 - 2018 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2010 - 2021
+	by Mark de Wever <koraq@xs4all.nl>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
@@ -47,15 +48,13 @@ tree_view_node::tree_view_node(const std::string& id,
 	grid_.set_parent(this);
 	set_parent(&parent_tree_view);
 
-	if(id == "root") {
+	if(id == tree_view::root_node_id) {
 		unfolded_ = true;
 		return;
 	}
 
-	for(const auto& node_definition : get_tree_view().get_node_definitions()) {
-		if(node_definition.id != id) {
-			continue;
-		}
+	if(const auto opt = get_tree_view().get_node_definition(id)) {
+		const auto& node_definition = **opt;
 
 		node_definition.builder->build(&grid_);
 		init_grid(&grid_, data);
@@ -103,12 +102,9 @@ tree_view_node::tree_view_node(const std::string& id,
 				label_->set_value(true);
 			}
 		}
-
-		return;
+	} else {
+		FAIL_WITH_DEV_MESSAGE(_("Unknown builder id for tree view node."), id);
 	}
-
-	// Only reached if no matching node definition was found in the above loop
-	FAIL_WITH_DEV_MESSAGE(_("Unknown builder id for tree view node."), id);
 }
 
 tree_view_node::~tree_view_node()
@@ -186,21 +182,19 @@ tree_view_node& tree_view_node::add_child_impl(std::shared_ptr<tree_view_node>&&
 	return node;
 }
 
-std::map<std::string, std::shared_ptr<gui2::tree_view_node>> tree_view_node::replace_children(const std::string& id, const std::map<std::string, std::map<std::string /* widget id */, string_map>>& data)
+std::vector<std::shared_ptr<gui2::tree_view_node>> tree_view_node::replace_children(const std::string& id, const std::vector<std::map<std::string /* widget id */, string_map>>& data)
 {
-	std::map<std::string, std::shared_ptr<gui2::tree_view_node>> nodes;
+	std::vector<std::shared_ptr<gui2::tree_view_node>> nodes;
 	clear();
 
-	if(data.size() == 0)
-	{
+	if(data.size() == 0) {
 		return nodes;
 	}
 
 	int width_modification = 0;
 
-	for(const auto& d : data)
-	{
-		std::shared_ptr<gui2::tree_view_node> new_node = std::make_shared<tree_view_node>(id, this, get_tree_view(), d.second);
+	for(const auto& d : data) {
+		std::shared_ptr<gui2::tree_view_node> new_node = std::make_shared<tree_view_node>(id, this, get_tree_view(), d);
 		std::shared_ptr<gui2::tree_view_node> node = *children_.insert(children_.end(), std::move(new_node));
 
 		// NOTE: we currently don't support moving nodes between different trees, so this
@@ -210,7 +204,7 @@ std::map<std::string, std::shared_ptr<gui2::tree_view_node>> tree_view_node::rep
 		// Safety check. Might only fail if someone accidentally removed the parent_node_ setter in add_child().
 		assert(node->parent_node_ == this);
 
-		nodes[d.first] = node;
+		nodes.push_back(node);
 
 		if(is_folded()) {
 			continue;
