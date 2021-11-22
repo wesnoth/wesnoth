@@ -325,12 +325,13 @@ function methods:to_wml_var(name, mode)
 	mode = mode or "always_clear"
 	local is_explicit_index = name[-1] == "]"
 	local i = 0
-	if is_explicit_index then
-		-- explicit indexes behave always like "replace"
-	elseif mode == "append" then
-		i = wml.variables[name .. ".length"]
-	elseif mode ~= "replace" then
-		wml.variables[name] = nil
+	-- explicit indexes behave always like "replace"
+	if not is_explicit_index then
+		if mode == "append" then
+			i = wml.variables[name .. ".length"]
+		elseif mode ~= "replace" then
+			wml.variables[name] = nil
+		end
 	end
 	self:stable_iter(function(x, y, v)
 		if wml.valid(v) then

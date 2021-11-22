@@ -346,7 +346,7 @@ function wml_actions.unit_overlay(cfg)
 	local img = cfg.image or wml.error( "[unit_overlay] missing required image= attribute" )
 	for i,u in ipairs(wesnoth.units.find_on_map(cfg)) do
 		local has_already = false
-		for i, w in ipairs(u.overlays) do
+		for j, w in ipairs(u.overlays) do
 			if w == img then has_already = true end
 		end
 		if has_already == false then
@@ -366,7 +366,7 @@ function wml_actions.remove_unit_overlay(cfg)
 	local img = cfg.image or wml.error( "[remove_unit_overlay] missing required image= attribute" )
 	for i,u in ipairs(wesnoth.units.find_on_map(cfg)) do
 		local has_already = false
-		for i, w in ipairs(u.overlays) do
+		for j, w in ipairs(u.overlays) do
 			if w == img then has_already = true end
 		end
 		if has_already then

@@ -376,8 +376,8 @@ function ai_helper.robust_move_and_attack(ai, src, dst, target_loc, cfg)
                 end
 
                 -- Check whether dst hex is free now (an event could have done something funny)
-                local unit_in_way = wesnoth.units.get(dst_x, dst_y)
-                if unit_in_way then
+                local unit_in_way_temp = wesnoth.units.get(dst_x, dst_y)
+                if unit_in_way_temp then
                     return ai_helper.dummy_check_action(true, false, 'robust_move_and_attack::ANOTHER_UNIT_IN_WAY')
                 end
 
@@ -516,7 +516,8 @@ end
 function ai_helper.split(str, sep)
     -- Split string @str into a table using the delimiter @sep (default: ',')
 
-    local sep, fields = sep or ",", {}
+    sep = sep or ","
+    local fields = {}
     local pattern = string.format("([^%s]+)", sep)
     string.gsub(str, pattern, function(c) fields[#fields+1] = c end)
     return fields
@@ -1277,7 +1278,7 @@ function ai_helper.get_closest_enemy(loc, side, cfg)
         x, y = loc[1], loc[2]
     end
 
-    local closest_distance, closest_enemy = math.huge
+    local closest_distance, closest_enemy = math.huge, nil
     for _,enemy in ipairs(enemies) do
         local enemy_distance = M.distance_between(x, y, enemy)
         if (enemy_distance < closest_distance) then
@@ -1360,19 +1361,19 @@ function ai_helper.get_dst_src_units(units, cfg)
 
     local dstsrc = LS.create()
     for _,unit in ipairs(units) do
-        local tmp = unit.moves
+        local tmp_moves = unit.moves
         if max_moves then
             unit.moves = unit.max_moves
         end
         local reach = wesnoth.paths.find_reach(unit, cfg)
         if max_moves then
-            unit.moves = tmp
+            unit.moves = tmp_moves
         end
 
         for _,loc in ipairs(reach) do
-            local tmp = dstsrc:get(loc[1], loc[2]) or {}
-            table.insert(tmp, { x = unit.x, y = unit.y })
-            dstsrc:insert(loc[1], loc[2], tmp)
+            local tmp_dst = dstsrc:get(loc[1], loc[2]) or {}
+            table.insert(tmp_dst, { x = unit.x, y = unit.y })
+            dstsrc:insert(loc[1], loc[2], tmp_dst)
         end
     end
 
@@ -1538,13 +1539,13 @@ function ai_helper.next_hop(unit, x, y, cfg)
         unit:to_map(old_x, old_y)
         unit_in_way:to_map()
 
-        local terrain = wesnoth.current.map[next_hop_ideal]
-        local move_cost_endpoint = unit:movement_on(terrain)
+        local terrain1 = wesnoth.current.map[next_hop_ideal]
+        local move_cost_endpoint = unit:movement_on(terrain1)
         local inverse_reach_map = LS.create()
         for _,r in pairs(inverse_reach) do
             -- We want the moves left for moving into the opposite direction in which the reach map was calculated
-            local terrain = wesnoth.current.map[r]
-            local move_cost = unit:movement_on(terrain)
+            local terrain2 = wesnoth.current.map[r]
+            local move_cost = unit:movement_on(terrain2)
             local inverse_cost = r[3] + move_cost - move_cost_endpoint
             inverse_reach_map:insert(r[1], r[2], inverse_cost)
         end
@@ -1914,9 +1915,9 @@ function ai_helper.find_path_with_avoid(unit, x, y, avoid_map, options)
 
     local enemy_zoc_map = LS.create()
     if (not options.ignore_enemies) and (not unit:ability("skirmisher")) then
-        enemy_map:iter(function(x, y, level)
+        enemy_map:iter(function(xx, yy, level)
             if (level > 0) then
-                for xa,ya in wesnoth.current.map:iter_adjacent(x, y) do
+                for xa,ya in wesnoth.current.map:iter_adjacent(xx, yy) do
                     enemy_zoc_map:insert(xa, ya, level)
                 end
             end
@@ -1952,7 +1953,7 @@ function ai_helper.find_best_move(units, rating_function, cfg)
     -- If this is an individual unit, turn it into an array
     if units.hitpoints then units = { units } end
 
-    local max_rating, best_hex, best_unit = - math.huge
+    local max_rating, best_hex, best_unit = - math.huge, nil, nil
     for _,unit in ipairs(units) do
         -- Hexes each unit can reach
         local reach_map = ai_helper.get_reachable_unocc(unit, cfg)
@@ -2000,7 +2001,7 @@ function ai_helper.move_unit_out_of_way(ai, unit, cfg)
     local reach = wesnoth.paths.find_reach(unit, cfg)
     local reach_map = LS.create()
 
-    local max_rating, best_hex = - math.huge
+    local max_rating, best_hex = - math.huge, nil
     for _,loc in ipairs(reach) do
         local unit_in_way = wesnoth.units.get(loc[1], loc[2])
         if (not unit_in_way)       -- also excludes current hex

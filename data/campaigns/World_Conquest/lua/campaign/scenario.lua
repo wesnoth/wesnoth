@@ -52,7 +52,7 @@ function wesnoth.wml_actions.wc2_store_carryover(cfg)
 	for side_num, side in ipairs(human_sides) do
 		player_gold = player_gold + side.gold
 	end
-	local player_gold = math.max(player_gold / #human_sides, 0)
+	player_gold = math.max(player_gold / #human_sides, 0)
 	wml.variables.wc2_carryover = math.ceil( (nvillages*turns_left + player_gold) * 0.15)
 end
 

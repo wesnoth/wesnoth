@@ -127,6 +127,7 @@ if [ "$CFG" == "debug" ]; then
 fi
 
 execute "WML validation" ./utils/CI/schema_validation.sh
+execute "Luacheck linting" luacheck .
 execute "Whitespace and WML indentation check" checkindent
 execute "Doxygen check" ./utils/CI/doxygen-check.sh
 execute "WML tests" ./run_wml_tests -g -c -t 20

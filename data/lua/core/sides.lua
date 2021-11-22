@@ -38,9 +38,11 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 	function wesnoth.get_side_variable(side, var)
 		return wesnoth.sides[side].variables[var]
 	end
-	function wesnoth.get_starting_location(side)
-		local side = side
-		if type(side) == 'number' then side = wesnoth.sides[side] end
+	function wesnoth.get_starting_location(side_num)
+		local side = side_num
+		if type(side) == 'number' then
+			side = wesnoth.sides[side]
+		end
 		return side.starting_location
 	end
 

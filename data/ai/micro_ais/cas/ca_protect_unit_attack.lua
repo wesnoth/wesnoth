@@ -1,7 +1,7 @@
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
 local BC = wesnoth.require "ai/lua/battle_calcs.lua"
 
-local ca_protect_unit_attack, best_attack = {}
+local ca_protect_unit_attack, best_attack = {}, nil
 
 function ca_protect_unit_attack:evaluation(cfg)
     -- Find possible attacks for the units

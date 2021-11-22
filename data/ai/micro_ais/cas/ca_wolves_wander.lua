@@ -34,7 +34,7 @@ function ca_wolves_wander:execution(cfg)
     local avoid_units = AH.get_attackable_enemies({ type = cfg.avoid_type })
     local avoid_enemies_map = BC.get_attack_map(avoid_units).units
 
-    local max_rating, goal_hex = - math.huge
+    local max_rating, goal_hex = - math.huge, nil
     reach_map:iter( function (x, y, v)
         local rating = v + math.random(99)/100.
         if avoid_enemies_map:get(x, y) then rating = rating - 1000 end

@@ -256,8 +256,7 @@ function converter.wml_to_lon(cfg, name)
 	end
 
 	for k,v in pairs(cfg) do
-		if type(k) == "number" then
-		else --string
+		if type(k) ~= "number" then
 			local conv = attrs[k] and schema.__attributes[attrs[k]]
 			if conv then
 				res[k] = conv.to_lon(v)

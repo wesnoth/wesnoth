@@ -79,9 +79,7 @@ res.turns_over_advantage = function()
 		end
 	end
 
-	if #winning_sides == 0 then
-		-- every side either has no units or has a negative score
-	elseif #winning_sides == 1 then
+	if #winning_sides == 1 then
 		-- po: In the end-of-match summary, there's a single side that's won.
 		local comparison_text = _ "<span foreground='$side_color'>Side $side_number</span> has the advantage."
 		side_comparison = side_comparison .. "\n" .. comparison_text:vformat{side_number = winning_sides[1], side_color = winners_color}
@@ -90,12 +88,14 @@ res.turns_over_advantage = function()
 		-- Separated from the three-or-more text in case a language differentiates "two sides" vs "three sides".
 		local comparison_text = _ "Sides $side_number and $other_side_number are tied."
 		side_comparison = side_comparison .. "\n" .. comparison_text:vformat{side_number = winning_sides[1], other_side_number = winning_sides[2]}
-	else
+	elseif #winning_sides ~= 0 then
 		local winners = stringx.format_conjunct_list("", winning_sides)
 		-- po: In the end-of-match summary, three or more teams have all tied for the best score. $winners contains the result of formatting the conjunct list.
 		local comparison_text = _ "Sides $winners are tied."
 		side_comparison = side_comparison .. "\n" .. comparison_text:vformat{winners = winners}
 	end
+	-- if #winning_sides==0, then every side either has no units or has a negative score
+
 	-- po: "Turns Over", meaning "turn limit reached" is the title of the end-of-match summary dialog
 	local a, b = gui.show_popup(_ "dialog^Turns Over", side_comparison)
 end

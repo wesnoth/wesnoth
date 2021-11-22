@@ -487,7 +487,7 @@ return {
             for i, unit_type in ipairs(enemy_types) do
                 enemy_type_count = enemy_type_count + 1
                 local poison_vulnerable = false
-                for i, recruit_id in ipairs(wesnoth.sides[wesnoth.current.side].recruit) do
+                for j, recruit_id in ipairs(wesnoth.sides[wesnoth.current.side].recruit) do
                     local analysis = recruit_lib.analyze_enemy_unit(unit_type, recruit_id)
 
                     if not recruit_effectiveness[recruit_id] then
@@ -933,7 +933,7 @@ return {
                 -- If castle_switch CA makes the unit end up on a village, skip one village for the leader.
                 -- Also do so if the leader is not passive. Note that the castle_switch CA will also return zero
                 -- when the leader is passive, but not only in that case.
-                local ltv_score, skip_one_village = 0
+                local ltv_score, skip_one_village = 0, nil
                 if params.leader_takes_village then
                     ltv_score, skip_one_village = params.leader_takes_village(leader)
                 end
