@@ -53,7 +53,7 @@ function functional.choose(input, value)
 		value = function(v) return v[key] end
 	end
 
-    local max_value, best_input, best_key = -math.huge
+    local max_value, best_input, best_key = -math.huge, nil, nil
     for k,v in ipairs(input) do
 		local v2 = value(v)
         if v2 > max_value then
@@ -75,7 +75,7 @@ function functional.choose_map(input, value)
 		value = function(k, v) return v[key] end
 	end
 
-    local max_value, best_input, best_key = -math.huge
+    local max_value, best_input, best_key = -math.huge, nil, nil
     for k,v in pairs(input) do
 		local v2 = value(k, v)
         if v2 > max_value then

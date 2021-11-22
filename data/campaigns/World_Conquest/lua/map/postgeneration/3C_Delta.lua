@@ -43,13 +43,6 @@ function world_conquest_tek_map_constructor_delta()
 		local d_y = math.max(0, y - y_end, y_start - y)
 		return d_x + d_y < max_dist
 	end
-	for x = 0, map.width - 1 do
-		for y = 0, map.height - 1 do
-			if is_in_octaegon(x, y) then
-
-			end
-		end
-	end
 
 	local water_tiles = map:find(f.terrain("W*"))
 	for i, loc in ipairs(water_tiles) do

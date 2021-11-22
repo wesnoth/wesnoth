@@ -26,7 +26,7 @@ local function bottleneck_is_my_territory(map, enemy_map)
             dummy_unit.x, dummy_unit.y = x, y
 
             -- Find lowest movement cost to own front-line hexes
-            local min_cost, best_path = math.huge
+            local min_cost, best_path = math.huge, nil
             map:iter(function(xm, ym, v)
                 local path, cost = AH.find_path_with_shroud(dummy_unit, xm, ym, { ignore_units = true })
                 if (cost < min_cost) then
@@ -35,7 +35,7 @@ local function bottleneck_is_my_territory(map, enemy_map)
             end)
 
             -- And the same to the enemy front line
-            local min_cost_enemy, best_path_enemy = math.huge
+            local min_cost_enemy, best_path_enemy = math.huge, nil
             enemy_map:iter(function(xm, ym, v)
                 local path, cost = AH.find_path_with_shroud(dummy_unit, xm, ym, { ignore_units = true })
                 if (cost < min_cost_enemy) then
@@ -193,7 +193,7 @@ local function bottleneck_move_out_of_way(unit_in_way, data)
         occ_hexes:insert(unit.x, unit.y)
     end
 
-    local best_reach, best_hex = - math.huge
+    local best_reach, best_hex = - math.huge, nil
     for _,loc in ipairs(reach) do
         if BD_is_my_territory:get(loc[1], loc[2]) and (not occ_hexes:get(loc[1], loc[2])) then
             -- Criterion: MP left after the move has been done
@@ -327,12 +327,12 @@ function ca_bottleneck_move:evaluation(cfg, data)
                 if (not AH.is_visible_unit(wesnoth.current.side, unit_in_way)) then
                     unit_in_way = nil
                 end
-                local data = { x = xa, y = ya,
+                local defender_data = { x = xa, y = ya,
                     defender = enemy,
                     defender_level = enemy.level,
                     unit_in_way = unit_in_way
                 }
-                table.insert(attacks, data)
+                table.insert(attacks, defender_data)
             end
         end
     end
@@ -349,7 +349,7 @@ function ca_bottleneck_move:evaluation(cfg, data)
         allies_map:insert(ally.x, ally.y)
     end
 
-    local max_rating, best_unit, best_hex = 0
+    local max_rating, best_unit, best_hex = 0, nil, nil
     for _,unit in ipairs(units) do
         local is_healer = (unit.usage == "healer")
         local has_leadership = unit:matches { ability_type = "leadership" }
@@ -475,8 +475,8 @@ function ca_bottleneck_move:execution(cfg, data)
         end
     else
         -- Don't want full move, as this might be stepping out of the way
-        local cfg = { partial_move = true, weapon = BD_level_up_weapon }
-        AH.robust_move_and_attack(ai, BD_unit, BD_hex, BD_level_up_defender, cfg)
+        local move_attack_cfg = { partial_move = true, weapon = BD_level_up_weapon }
+        AH.robust_move_and_attack(ai, BD_unit, BD_hex, BD_level_up_defender, move_attack_cfg)
     end
 
     -- Now delete almost everything

@@ -34,7 +34,7 @@ function ca_lurkers:execution(cfg)
     reachable_attack_terrain:inter(reach)
 
     -- Need to restrict that to reachable and not occupied by an ally (except own position)
-    local reachable_attack_terrain = reachable_attack_terrain:filter(function(x, y, v)
+    reachable_attack_terrain = reachable_attack_terrain:filter(function(x, y, v)
         local occ_hex = AH.get_visible_units(wesnoth.current.side, {
             x = x, y = y,
             { "not", { x = lurker.x, y = lurker.y } }
@@ -70,7 +70,7 @@ function ca_lurkers:execution(cfg)
         reachable_wander_terrain:inter(reach)
 
         -- Need to restrict that to reachable and not occupied by an ally (except own position)
-        local reachable_wander_terrain = reachable_wander_terrain:filter(function(x, y, v)
+        reachable_wander_terrain = reachable_wander_terrain:filter(function(x, y, v)
             local occ_hex = AH.get_visible_units(wesnoth.current.side, {
                 x = x, y = y,
                 { "not", { x = lurker.x, y = lurker.y } }

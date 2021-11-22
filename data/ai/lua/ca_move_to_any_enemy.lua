@@ -35,8 +35,8 @@ function ca_move_to_any_enemy:evaluation(cfg, data, filter_own)
     -- Find first unit that can reach a hex adjacent to an enemy, and find closest enemy of those reachable.
     -- This does not need to find the absolutely best combination, close to that is good enough.
     for i,u in ipairs(units) do
-        local best_cost, best_path, best_enemy = AH.no_path
-        for i,e in ipairs(enemies) do
+        local best_cost, best_path, best_enemy = AH.no_path, nil, nil
+        for j,e in ipairs(enemies) do
             -- We only need to look at adjacent hexes. And we don't worry whether they
             -- are occupied by other enemies. If that is the case, no path will be found,
             -- but one of those enemies will later be found as potential target.

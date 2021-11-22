@@ -23,10 +23,12 @@ function retreat_functions.min_hp(unit)
     local retreat_factor = ai.aspects.retreat_factor
 
     -- Leaders are more valuable and should retreat earlier
-    if unit.canrecruit then retreat_factor = retreat_factor * 1.5 end
+    if unit.canrecruit then
+        retreat_factor = retreat_factor * 1.5
+    end
 
     -- Higher retreat willingness on bad terrain
-    local retreat_factor = retreat_factor * (100 - unit:defense_on(wesnoth.current.map[unit])) / 50
+    retreat_factor = retreat_factor * (100 - unit:defense_on(wesnoth.current.map[unit])) / 50
 
     local min_hp = retreat_factor * unit.max_hitpoints
 
@@ -62,9 +64,9 @@ function retreat_functions.retreat_injured_units(units, avoid_map)
                 local abilities = wml.get_child(u.__cfg, "abilities")
                 local regen_amount = 0
                 if abilities then
-                    for regen in wml.child_range(abilities, "regenerate") do
-                        if regen.value > regen_amount then
-                            regen_amount = regen.value
+                    for regenerates in wml.child_range(abilities, "regenerate") do
+                        if regenerates.value > regen_amount then
+                            regen_amount = regenerates.value
                         end
                     end
                 end
@@ -149,7 +151,7 @@ function retreat_functions.get_retreat_injured_units(healees, regen_amounts, avo
         ally_attack_map = BC.get_attack_map(allies)
     end
 
-    local max_rating, best_loc, best_unit = - math.huge
+    local max_rating, best_loc, best_unit = - math.huge, nil, nil
     for i,u in ipairs(healees) do
         local possible_locations = wesnoth.paths.find_reach(u)
         -- TODO: avoid ally's villages (may be preferable to lower rating so they will

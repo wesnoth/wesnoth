@@ -1,5 +1,5 @@
 local _ = wesnoth.textdomain 'wesnoth-wc'
-local dialog = wml.load "campaigns/World_Conquest/gui/help_dialog.cfg"
+local dialog_wml = wml.load "campaigns/World_Conquest/gui/help_dialog.cfg"
 
 local function make_caption(text)
 	return ("<big><b>%s</b></big>"):format(text)
@@ -71,17 +71,17 @@ function wesnoth.wml_actions.wc2_show_wocopedia(cfg)
 
 		-- add general training topic.
 		if show_help_training then
-			local node, page = root_node:add_help_page {
+			local node, root_page = root_node:add_help_page {
 				title = str_cat_training
 			}
-			page.label_content.marked_up_text = str_des_training
+			root_page.label_content.marked_up_text = str_des_training
 			-- add specific training pages
 			for i = 1, #wc2_training.get_list() do
 				local current_level = wc2_training.get_level(current_side, i)
 				local trainer = wc2_training.get_trainer(i)
 
 
-				local subnode, page = node:add_help_page {
+				local subnode, sub_page = node:add_help_page {
 					title = trainer.name,
 					page_type = "training",
 					node_type = "subcategory",
@@ -94,14 +94,14 @@ function wesnoth.wml_actions.wc2_show_wocopedia(cfg)
 						desc.message = "<span color='#00FF00'>" .. desc.message .. "</span>"
 					end
 
-					local page_element = page.treeview_details:add_item_of_type("training_details")
+					local page_element = sub_page.treeview_details:add_item_of_type("training_details")
 					page_element.training_caption.marked_up_text = desc.caption
 					page_element.training_description.marked_up_text = desc.message
 				end
 
 				set_description(1)
 				for j = 2, #trainer.grade - 1, 1 do
-					page.treeview_details:add_item_of_type("seperator")
+					sub_page.treeview_details:add_item_of_type("seperator")
 					set_description(j)
 				end
 			end
@@ -119,16 +119,16 @@ function wesnoth.wml_actions.wc2_show_wocopedia(cfg)
 			---- add general factions topic ----
 			local era_wml = wesnoth.scenario.era
 
-			local node, page = root_node:add_help_page {
+			local node, root_page = root_node:add_help_page {
 				title = str_cat_era
 			}
 
-			page.label_content.marked_up_text = str_des_era
+			root_page.label_content.marked_up_text = str_des_era
 
 			for i, faction_info in ipairs(wc2_era.factions_wml) do
 				local faction_wml = wml.get_child(era_wml, "multiplayer_side", faction_info.id)
 
-				local subnode, page = node:add_help_page {
+				local subnode, sub_page = node:add_help_page {
 					title = faction_info.name,
 					page_type = "faction",
 					node_type = "subcategory",
@@ -139,7 +139,7 @@ function wesnoth.wml_actions.wc2_show_wocopedia(cfg)
 					local ut1 = wesnoth.unit_types[p[1]] or error("invald unit type" .. tostring(p[1]))
 					local ut2 = wesnoth.unit_types[p[2]] or error("invald unit type" .. tostring(p[2]))
 
-					local page_element = page.treeview_recruits:add_item_of_type("recruit_pair")
+					local page_element = sub_page.treeview_recruits:add_item_of_type("recruit_pair")
 					page_element.label1.marked_up_text = ut1.name
 					page_element.image1.label = type_icon(ut1)
 					page_element.label2.marked_up_text = ut2.name
@@ -147,20 +147,20 @@ function wesnoth.wml_actions.wc2_show_wocopedia(cfg)
 
 				end
 
-				page.label_deserters.marked_up_text = wesnoth.format_conjunct_list("", wc2_era.expand_hero_names(faction_info.deserters))
-				page.label_commanders.marked_up_text = wesnoth.format_conjunct_list("", wc2_era.expand_hero_names(faction_info.commanders))
-				page.label_heroes.marked_up_text = wesnoth.format_conjunct_list("", wc2_era.expand_hero_names(faction_info.heroes, true))
+				sub_page.label_deserters.marked_up_text = wesnoth.format_conjunct_list("", wc2_era.expand_hero_names(faction_info.deserters))
+				sub_page.label_commanders.marked_up_text = wesnoth.format_conjunct_list("", wc2_era.expand_hero_names(faction_info.commanders))
+				sub_page.label_heroes.marked_up_text = wesnoth.format_conjunct_list("", wc2_era.expand_hero_names(faction_info.heroes, true))
 
 				if faction_wml then
 					local random_leaders = {}
-					for i,v in ipairs(stringx.split(faction_wml.random_leader or "")) do
+					for j,v in ipairs(stringx.split(faction_wml.random_leader or "")) do
 						table.insert(random_leaders, wesnoth.unit_types[v].name)
 					end
 					random_leaders = wesnoth.format_conjunct_list("", random_leaders)
 
-					page.label_random_leaders.marked_up_text = random_leaders
+					sub_page.label_random_leaders.marked_up_text = random_leaders
 				else
-					page.title_random_leaders.visible = false
+					sub_page.title_random_leaders.visible = false
 				end
 			end
 		end
@@ -228,8 +228,7 @@ function wesnoth.wml_actions.wc2_show_wocopedia(cfg)
 		end
 	end
 
-	local dialog_wml = wml.get_child(dialog, 'resolution')
-	gui.show_dialog(dialog_wml, preshow)
+	gui.show_dialog(wml.get_child(dialog_wml, 'resolution'), preshow)
 end
 
 wc2_utils.menu_item {

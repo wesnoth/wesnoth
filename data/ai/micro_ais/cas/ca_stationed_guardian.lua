@@ -38,14 +38,14 @@ function ca_stationed_guardian:execution(cfg)
     -- simultaneously for guardian to attack
     local station_loc = AH.get_named_loc_xy('station', cfg)
     local guard_loc = AH.get_named_loc_xy('guard', cfg) or station_loc
-    local min_dist, target = math.huge
+    local min_dist1, target = math.huge, nil
     for _,enemy in ipairs(enemies) do
         local dist_s = M.distance_between(station_loc[1], station_loc[2], enemy.x, enemy.y)
         local dist_g = M.distance_between(guard_loc[1], guard_loc[2], enemy.x, enemy.y)
 
         -- If valid target found, save the one with the shortest distance from (g_x, g_y)
-        if (dist_s <= cfg.distance) and (dist_g <= cfg.distance) and (dist_g < min_dist) then
-            target, min_dist = enemy, dist_g
+        if (dist_s <= cfg.distance) and (dist_g <= cfg.distance) and (dist_g < min_dist1) then
+            target, min_dist1 = enemy, dist_g
         end
     end
 
@@ -53,7 +53,7 @@ function ca_stationed_guardian:execution(cfg)
     if target then
         -- Find tiles adjacent to the target
         -- Save the one with the highest defense rating that guardian can reach
-        local best_defense, attack_loc = - math.huge
+        local best_defense, attack_loc = - math.huge, nil
         for xa,ya in wesnoth.current.map:iter_adjacent(target) do
             -- Only consider unoccupied hexes
             local unit_in_way = wesnoth.units.get(xa, ya)
@@ -78,7 +78,7 @@ function ca_stationed_guardian:execution(cfg)
 
             -- Go through all hexes the guardian can reach, find closest to target
             -- Cannot use next_hop here since target hex is occupied by enemy
-            local min_dist, nh = math.huge
+            local min_dist2, nh = math.huge, nil
             for _,hex in ipairs(reach) do
                 -- Only consider unoccupied hexes
                 local unit_in_way = wesnoth.units.get(hex[1], hex[2])
@@ -86,8 +86,8 @@ function ca_stationed_guardian:execution(cfg)
                     or (unit_in_way == guardian)
                 then
                     local dist = M.distance_between(hex[1], hex[2], target.x, target.y)
-                    if (dist < min_dist) then
-                        min_dist, nh = dist, { hex[1], hex[2] }
+                    if (dist < min_dist2) then
+                        min_dist2, nh = dist, { hex[1], hex[2] }
                     end
                 end
             end

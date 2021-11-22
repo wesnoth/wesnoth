@@ -19,15 +19,13 @@ local ice = {
 --replaces terrain fo the wct  custom terrain mod.
 local function wct_map_custom_ruin_village(loc)
 	local map = wesnoth.current.map
-	-- TODO: enable once https://github.com/wesnoth/wesnoth/issues/4894 is fixed.
-	if false then
-		if loc:matches{terrain = "*^Vh,*^Vha"} then
-			map[loc] = "^Vhr"
-		end
-		if loc:matches{terrain = "*^Vhc,*^Vhca"} then
-			map[loc] = "^Vhr"
-		end
-	end
+	-- TODO: uncomment once https://github.com/wesnoth/wesnoth/issues/4894 is fixed.
+	-- if loc:matches{terrain = "*^Vh,*^Vha"} then
+	-- 	map[loc] = "^Vhr"
+	-- end
+	-- if loc:matches{terrain = "*^Vhc,*^Vhca"} then
+	-- 	map[loc] = "^Vhr"
+	-- end
 end
 
 on_event("die", function(cx)
@@ -106,12 +104,10 @@ on_event("die", function(cx)
 		if loc:matches{terrain = "Ch^V*"} then
 			map[loc] = "Chr^"
 		end
-		--  TODO: enable once https://github.com/wesnoth/wesnoth/issues/4894 is fixed.
-		if false then
-			if loc:matches{terrain = "*^Fda"} then
-				map[loc] = "^Fdw"
-			end
-		end
+		--  TODO: uncomment once https://github.com/wesnoth/wesnoth/issues/4894 is fixed.
+		-- if loc:matches{terrain = "*^Fda"} then
+		-- 	map[loc] = "^Fdw"
+		-- end
 	else
 		if loc:matches{terrain = "*^Vhh,*^Vhha"} then
 			map[loc] = "^Vhhr"

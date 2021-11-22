@@ -241,7 +241,6 @@ function default_generate_map(data)
 		local island_radius = 40 + ((max_coastal - orig_island_size) * 40) // max_coastal;
 		cfg.island_size = (island_radius * w * 2) // 100;
 		cfg.island_off_center = math.min(w, h);
-	else
 	end
 	for i = 1, 20 do
 		local status, map = pcall(function()
