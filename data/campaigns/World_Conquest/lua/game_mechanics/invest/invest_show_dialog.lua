@@ -26,7 +26,7 @@ function wc2_show_invest_dialog_impl(args)
 		local details = dialog.details
 		local root_node = dialog.left_tree
 
-		function gui.widget.add_invest_category(parent_node, name)			
+		function gui.widget.add_invest_category(parent_node, name)
 			local node = parent_node:add_item_of_type("category")
 			node.category_name.label = name
 			node.unfolded = true
@@ -36,7 +36,7 @@ function wc2_show_invest_dialog_impl(args)
 		function gui.widget.add_invest_item(parent_node, args)
 			local node_type = args.desc and "item_desc" or "item"
 			local page_type = args.page_type or ""
-			
+
 			local node = parent_node:add_item_of_type(node_type)
 			local details_page = details:add_item_of_type(page_type)
 
@@ -51,7 +51,7 @@ function wc2_show_invest_dialog_impl(args)
 		end
 
 		local cati_current = 0
-		if show_artifacts then			
+		if show_artifacts then
 			local node = root_node:add_invest_category(_ "Artifacts")
 
 			for i,v in ipairs(available_artifacts) do
@@ -72,7 +72,7 @@ function wc2_show_invest_dialog_impl(args)
 
 		if show_heroes then
 			local node = root_node:add_invest_category(_ "Heroes")
-		
+
 			if available_commanders then
 				local desc = _ "Commanders will take your leader’s place when the leader dies, possible commanders:"
 				for j,v in ipairs(available_commanders) do

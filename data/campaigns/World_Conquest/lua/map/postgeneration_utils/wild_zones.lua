@@ -8,7 +8,7 @@ local function wild_volcano_for_lava_zone(terrain_to_change)
 		f.find_in("terrain_to_change"),
 		f.adjacent(f.find_in("terrain_to_change"), "se,s,sw", 3)
 	), { terrain_to_change = terrain_to_change })
-	
+
 	if #possible_volcano > 0 then
 		local loc = possible_volcano[mathx.random(#possible_volcano)]
 		set_terrain { "Md^Xm",
@@ -674,21 +674,21 @@ local function river_to_lava_postfix(terrain_to_change)
 		),
 		filter_extra = { terrain_to_change = terrain_to_change },
 	}
-	
+
 	wild_volcano_for_lava_zone(terrain_to_change)
 	local filter_adjacent_grassland = wesnoth.map.filter(f.all(
 		f.terrain("G*^*"),
 		f.adjacent(f.find_in("terrain_to_change"))
 	), { terrain_to_change = terrain_to_change })
-	
+
 	adjacent_grssland = map:find(filter_adjacent_grassland)
-	
+
 	set_terrain {
 		terrain = "Ur,Re,Re,Gd,Gd,Gd",
 		locs = 	adjacent_grssland,
 		layer = "base"
 	}
-	
+
 	set_terrain {
 		terrain = "*^Fdw",
 		filter = f.all(
@@ -707,7 +707,7 @@ local function river_to_lava_postfix(terrain_to_change)
 		filter_extra = { adjacent_grssland = adjacent_grssland },
 		layer = "overlay"
 	}
-	
+
 end
 
 local wild_replacement_chances_zone_8_1 = {

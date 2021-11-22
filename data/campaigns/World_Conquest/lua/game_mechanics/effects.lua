@@ -1,7 +1,7 @@
 local _ = wesnoth.textdomain 'wesnoth-wc'
 local T = wml.tag
 
-local terrain_map = { fungus = "Tt", cave = "Ut", sand = "Dt", 
+local terrain_map = { fungus = "Tt", cave = "Ut", sand = "Dt",
 	reef = "Wrt", hills = "Ht", swamp_water = "St", shallow_water = "Wst", castle = "Ct",
 	mountains = "Mt", deep_water = "Wdt", flat = "Gt", forest = "Ft", frozen = "At",
 	village = "Vt", impassable = "Xt", unwalkable = "Qt", rails = "Rt"
@@ -111,7 +111,7 @@ function wesnoth.effects.wc2_update_aura(u, cfg)
 	local darkens = wesnoth.units.matches(u, { ability = "darkness" } )
 	local forcefield = wesnoth.units.matches(u, { ability = "forcefield" } )
 	local halo = ""
-	if illuminates and darkens then 
+	if illuminates and darkens then
 		wesnoth.interface.add_chat_message("WC2", "Warning illuminates and darkens discovered on a unit")
 	end
 	if forcefield and illuminates then
@@ -125,7 +125,7 @@ function wesnoth.effects.wc2_update_aura(u, cfg)
 	elseif illuminates then
 		halo = "halo/illuminates-aura.png"
 	end
-	
+
 	wesnoth.units.add_modification(u, "object", {
 		T.effect {
 			apply_to = "halo",

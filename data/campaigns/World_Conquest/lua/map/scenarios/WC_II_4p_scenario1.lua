@@ -15,7 +15,7 @@ end
 return { generators = generators, get_enemy_data = get_enemy_data, turns = 23, player_gold = 100 }
 
 -- [[
--- wct_enemy, 7 Werte 
+-- wct_enemy, 7 Werte
 --  1-2 wct_enemy_group_recall
 --  3-5 wct_enemy_group_commander
 --   6  wct_enemy_group_leader
