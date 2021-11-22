@@ -72,7 +72,7 @@ local function generate(length, villages, castle, iterations, size, players, isl
 	}
 	res.convert = {
 		wct_fix_river_into_ocean("g", 29),
-		
+
 		dr_wild_temp("Xu", "Xuc", "Xue", "Xuce"),
 		dr_wild_temp("Ms^Xm", "Mm^Xm", "Md^Xm", "Md^Dr"),
 		dr_wild_temp("Ms", "Mm", "Md", "Mv"),
@@ -108,7 +108,7 @@ local function generate(length, villages, castle, iterations, size, players, isl
 			adjacent_liked="Wwg, Wwg",
 		},
 	}
-	res.castle = { 
+	res.castle = {
 		valid_terrain="Gll, Gs, Gg, Gd, Aa, Ss, Sm, Dd, Ms, Mm, Md, Mv, Ha, Hh, Hhd, Hd",
 		min_distance=13,
 	}

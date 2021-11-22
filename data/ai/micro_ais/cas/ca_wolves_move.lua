@@ -65,7 +65,7 @@ function ca_wolves_move:execution(cfg)
     table.sort(wolves, function(a, b)
         return M.distance_between(a.x, a.y, target.x, target.y) > M.distance_between(b.x, b.y, target.x, target.y)
     end)
-    
+
     -- First wolf moves toward target, but tries to stay away from map edges
     local wolf1 = AH.find_best_move(wolves[1], function(x, y)
         local dist_1t = M.distance_between(x, y, target.x, target.y)

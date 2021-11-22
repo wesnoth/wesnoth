@@ -90,7 +90,7 @@ return {
 			local debug = wesnoth.require("ai/lua/debug.lua")
 			debug.init(ai)
 		end
-		
+
 		-- Deprecated functions
 		ai.get_aggression = wesnoth.deprecate_api('ai.get_aggression', 'ai.aspects.aggression', 2, '1.15', ai.get_aggression)
 		ai.get_avoid = wesnoth.deprecate_api('ai.get_avoid', 'ai.aspects.avoid', 2, '1.15', ai.get_avoid)

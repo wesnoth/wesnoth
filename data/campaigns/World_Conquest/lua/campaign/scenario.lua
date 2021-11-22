@@ -56,7 +56,7 @@ function wesnoth.wml_actions.wc2_store_carryover(cfg)
 	wml.variables.wc2_carryover = math.ceil( (nvillages*turns_left + player_gold) * 0.15)
 end
 
--- carryover handling: we use a custom carryover machnics that 
+-- carryover handling: we use a custom carryover machnics that
 -- splits the carryover gold evenly to all players
 on_event("prestart", function(cx)
 	wesnoth.fire_event("wc2_start")
@@ -81,7 +81,7 @@ on_event("wc2_start", function(cx)
 			}
 		end
 	end
-	
+
 	local gold = (wml.variables.wc2_carryover or 0) + (wml.variables["wc2_difficulty.extra_gold"] or 0)
 	for i = 1, wml.variables.wc2_player_count do
 		wesnoth.sides[i].gold = wesnoth.sides[i].gold + gold
