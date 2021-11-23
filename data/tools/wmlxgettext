@@ -271,7 +271,7 @@ def sigint_handler(signal, frame):
     When ctrl-c is pressed, a one-line message is displayed and Python exits with Status 0, which refers to successful termination.
     This overrides Python's default behavior of displaying a traceback when ctrl-c is pressed.
     """
-    print ('Aborted by pressing ctrl-c')
+    print ("Interrupt Signal Detected. Program Aborted.")
     sys.exit(1)
 
 
