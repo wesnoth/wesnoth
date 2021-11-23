@@ -272,7 +272,7 @@ def sigint_handler(signal, frame):
     This overrides Python's default behavior of displaying a traceback when ctrl-c is pressed.
     """
     print ('Aborted by pressing ctrl-c')
-    sys.exit(0)
+    sys.exit(1)
 
 
 
