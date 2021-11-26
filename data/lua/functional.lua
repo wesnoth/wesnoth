@@ -106,15 +106,40 @@ local known_operators = {
 	['or'] = function(a, b) return a or b end,
 }
 
-function functional.reduce(input, operator, identity)
+-- If operator is a string, return the corresponding function. Otherwise, return
+-- operator.
+local function check_operator(operator)
 	if type(operator) == 'string' then
-		operator = known_operators[operator]
+		return known_operators[operator]
 	end
-	local result = identity or 0
-	for _, v in ipairs(input) do
-		result = operator(result, v)
+	return operator
+end
+
+-- Fold starting from the given index.
+local function fold_from_i(t, f, init, i)
+	local value <const> = t[i]
+	if value == nil then
+		return init
 	end
-	return result
+	return fold_from_i(t, f, f(init, value), i + 1)
+end
+
+-- Fold the elements of array t into a single value. operator is called as
+-- 'operator(accumulator, element)' for every element in t, where init is the
+-- initial accumulator. operator may be a function or a binary Lua operator as a
+-- string.
+function functional.fold(t, operator, init)
+	return fold_from_i(t, check_operator(operator), init, 1)
+end
+
+-- Like fold, but if t is not empty, ignore the identity argument. The first
+-- operator call will be on the first two elements.
+function functional.reduce(t, operator, identity)
+	local first <const> = t[1]
+	if first == nil then
+		return identity
+	end
+	return fold_from_i(t, check_operator(operator), first, 2)
 end
 
 function functional.take_while(input, condition)
