@@ -355,4 +355,7 @@ def convertor(linefilter, arglist, exclude):
 
 
 if __name__ == '__main__':
-    main()
+    try:
+        main()
+    except KeyboardInterrupt:
+        print("Interrupt Signal Detected. Program Aborted.")
