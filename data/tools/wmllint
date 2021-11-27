@@ -1282,7 +1282,7 @@ In your case, your system interprets your arguments as:
                                 else:
                                     with codecs.open(fn, "w", "utf8") as ofp:
                                         ofp.write(changed)
-                    #except maptransform_error, e:
+                    #except MaptransformError, e:
                     #    print("wmllint: " + repr(e), file=sys.stderr)
                     except:
                         print("wmllint: internal error on %s" % fn, file=sys.stderr)
@@ -3063,7 +3063,7 @@ def is_map(filename):
     return filename.endswith(".map") or filename.endswith(".mask")
 
 if 0: # Not used, as there are currently no defined map transforms
-    class maptransform_error(BaseException):
+    class MaptransformError(BaseException):
         "Error object to be thrown by maptransform."
         def __init__(self, infile, inline, type):
             self.infile = infile
@@ -3079,7 +3079,7 @@ if 0: # Not used, as there are currently no defined map transforms
         # The inmap argument will be a 2D string array containing the
         # entire map.  y will be the vertical coordinate of the map line.
         # You pass a list of these as the second argument of translator().
-        raise maptransform_error(filename, baseline+y+1,
+        raise MaptransformError(filename, baseline+y+1,
                              "unrecognized map element at line %d" % (y,))
 
 

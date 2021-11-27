@@ -147,7 +147,7 @@ def opener(str):
         return str.startswith(tuple(opener_prefixes))
 
 
-class bailout(Exception):
+class Bailout(Exception):
     def __init__(self, filename, lineno, msg):
         self.filename = filename
         self.lineno = lineno
@@ -196,7 +196,7 @@ def reindent(name, infp, outfp):
             continue
         # Detect things we can't handle
         if multitag.search(line):
-            raise bailout(name, countlines, "multiple tags on the line")
+            raise Bailout(name, countlines, "multiple tags on the line")
         # Strip each line, unless we're in something like a multiline string.
         if dostrip:
             transformed = line.strip() + "\n"
@@ -324,7 +324,7 @@ def convertor(linefilter, arglist, exclude):
                     try:
                         with codecs.open(filename,"r","utf8") as infp, codecs.open(filename + ".out", "w","utf8") as outfp:
                             linefilter(filename, infp, outfp)
-                    except bailout as e:
+                    except Bailout as e:
                         print('wmlindent: "%s", %d: %s' % (e.filename, e.lineno, e.msg), file=sys.stderr)
                         os.remove(filename + ".out")
                     except KeyboardInterrupt:
