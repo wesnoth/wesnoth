@@ -1034,6 +1034,18 @@ scenarios, etc.""")
 If no directories are specified, acts on the current
 directory.""")
 
+    global clean
+    global diffs
+    global dryrun
+    global missingside
+    global revert
+    global stringfreeze
+    global stripcr
+    global verbose
+    global dospellcheck
+    global inconsistency
+    global arguments
+
     namespace = parser.parse_args()
     clean = namespace.clean
     diffs = namespace.diffs
@@ -1050,6 +1062,7 @@ directory.""")
     if dryrun:
         verbose = max(1, verbose)
 
+    global post15
     post15 = False
 
     def hasdigit(str):
@@ -3541,7 +3554,7 @@ def allcfgfiles(directory):
 
 if __name__ == '__main__':
     try:
-    main()
+        main()
     except KeyboardInterrupt:
         print("Interrupt Signal Detected. Program Aborted.")
 
