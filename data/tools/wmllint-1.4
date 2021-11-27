@@ -1,90 +1,79 @@
 #!/usr/bin/env python3
+#
+# wmllint -- check WML for conformance to the most recent dialect
+#
+# By Eric S. Raymond April 2007.
+#
+# All conversion logic for lifting WML and maps from older versions of the
+# markup to newer ones should live here.  This includes resource path changes
+# and renames, also map format conversions.
+#
+# While the script is at it, it checks for various incorrect and dodgy WML
+# constructs, including:
+#   * unbalanced tags
+#   * strings that need a translation mark and should not have them
+#   * strings that have a translation mark and should not
+#   * translatable strings containing macro references
+#   * filter references by description= not matched by an actual unit
+#   * abilities or traits without matching special notes, or vice-versa
+#   * consistency between recruit= and recruitment_pattern= instances
+#   * double space after punctuation in translatable strings.
+#   * unknown races or movement types in units
+#
+# Takes any number of directories as arguments.  Each directory is converted.
+# If no directories are specified, acts on the current directory.
+#
+# The recommended procedure is this:
+# 1. Run it with --dryrun first to see what it will do.
+# 2. If the messages look good, run without --dryrun; the old content
+#    will be left in backup files with a -bak extension.
+# 3. Eyeball the changes with the --diff option.
+# 4. Use wmlscope, with a directory list including the Wesnoth mainline WML
+#    as first argument, to check that you have no unresolved references.
+# 5. Test the conversion.
+# 6. Use either --clean to remove the -bak files or --revert to
+#    undo the conversion.
+#
+# This script will barf on 1.2.x maps with custom terrains.  Also, if you
+# have a single subdirectory that mixes old-style and new-style
+# terrain coding it might get confused.
+#
+# Standalone terrain mask files *must* have a .mask extension on their name
+# or they'll have an incorrect usage=map generated into them.
+#
+# Note: You can shut wmllint up about custom terrains by having a comment
+# on the same line that includes the string "wmllint: ignore".
+#
+# You can also prevent description insertions with "wmllint: no-icon".
+#
+# You can force otherwise undeclared characters to be recognized with
+# a magic comment containing the string "wmllint: recognize".
+# The rest of the line is stripped and treated as the name of a character
+# who should be recognized in descriptions.  This will be useful,
+# for example, if your scenario follows a continue so there are
+# characters present who were not explicitly recalled.  It may
+# also be useful if you have wrapped unit-creation or recall markup in macros
+# and wmllint cannot recognize it.
+#
+# Similarly, it is possible to explicitly declare a unit's usage class
+# with a magic comment that looks like thisL
+#    wmllint: usage of <unit> is <class>
+# Note that <unit> must be a string wrapped in ASCII doublequotes.  This
+# declaration will be useful if you are declaring units with macros that
+# include a substitutable formal in the unit name; there are examples in UtBS.
+#
+# You can disable stack-based malformation checks with a comment
+# containing "wmllint: validate-off" and re-enable with "wmllint: validate-on".
+#
+# You can prevent file conversions with a comment containing
+# "wmllint: noconvert" on the same line as the filename.
+#
+# You can skip checks on unbalanced WML (e.g. in a macro definition) by
+# bracketing it with "wmllint: unbalanced-on" and "wmllint: unbalanced-off".
+# Note that this will also disable stack-based validation on the span
+# of lines they enclose.
 
-"""
-wmllint -- check WML for conformance to the most recent dialect
-
-By Eric S. Raymond April 2007.
-
-All conversion logic for lifting WML and maps from older versions of the
-markup to newer ones should live here.  This includes resource path changes
-and renames, also map format conversions.
-
-While the script is at it, it checks for various incorrect and dodgy WML
-constructs, including:
-  * unbalanced tags
-  * strings that need a translation mark and should not have them
-  * strings that have a translation mark and should not
-  * translatable strings containing macro references
-  * filter references by description= not matched by an actual unit
-  * abilities or traits without matching special notes, or vice-versa
-  * consistency between recruit= and recruitment_pattern= instances
-  * double space after punctuation in translatable strings.
-  * unknown races or movement types in units
-
-Takes any number of directories as arguments.  Each directory is converted.
-If no directories are specified, acts on the current directory.
-
-The recommended procedure is this:
-1. Run it with --dryrun first to see what it will do.
-2. If the messages look good, run without --dryrun; the old content
-   will be left in backup files with a -bak extension.
-3. Eyeball the changes with the --diff option.
-4. Use wmlscope, with a directory list including the Wesnoth mainline WML
-   as first argument, to check that you have no unresolved references.
-5. Test the conversion.
-6. Use either --clean to remove the -bak files or --revert to
-   undo the conversion.
-
-This script will barf on 1.2.x maps with custom terrains.  Also, if you
-have a single subdirectory that mixes old-style and new-style
-terrain coding it might get confused.
-
-Standalone terrain mask files *must* have a .mask extension on their name
-or they'll have an incorrect usage=map generated into them.
-
-Note: You can shut wmllint up about custom terrains by having a comment
-on the same line that includes the string "wmllint: ignore".
-
-You can also prevent description insertions with "wmllint: no-icon".
-
-You can force otherwise undeclared characters to be recognized with
-a magic comment containing the string "wmllint: recognize".
-The rest of the line is stripped and treated as the name of a character
-who should be recognized in descriptions.  This will be useful,
-for example, if your scenario follows a continue so there are
-characters present who were not explicitly recalled.  It may
-also be useful if you have wrapped unit-creation or recall markup in macros
-and wmllint cannot recognize it.
-
-Similarly, it is possible to explicitly declare a unit's usage class
-with a magic comment that looks like thisL
-   wmllint: usage of <unit> is <class>
-Note that <unit> must be a string wrapped in ASCII doublequotes.  This
-declaration will be useful if you are declaring units with macros that
-include a substitutable formal in the unit name; there are examples in UtBS.
-
-You can disable stack-based malformation checks with a comment
-containing "wmllint: validate-off" and re-enable with "wmllint: validate-on".
-
-You can prevent file conversions with a comment containing
-"wmllint: noconvert" on the same line as the filename.
-
-You can skip checks on unbalanced WML (e.g. in a macro definition) by
-bracketing it with "wmllint: unbalanced-on" and "wmllint: unbalanced-off".
-Note that this will also disable stack-based validation on the span
-of lines they enclose.
-"""
-
-import sys
-import os
-import re
-import getopt
-import string
-import copy
-import difflib
-import time
-import codecs
-
+import sys, os, re, getopt, string, copy, difflib, time, codecs
 from wesnoth.wmltools3 import *
 from wesnoth.wmliterator3 import *
 
@@ -396,277 +385,6 @@ conversion1 = {
 max_len = max(len(elem) for elem in conversion1.values())
 width = max_len+2
 
-
-def main():
-    global versions
-    try:
-        (options, arguments) = getopt.getopt(sys.argv[1:], "cdDfhno:rsv", [
-            "clean",
-            "diffs",
-            "dryrun",
-            "future",
-            "help",
-            "nolift",
-            "oldversion=",
-            "revert",
-            "stripcr",
-            "verbose",
-            ])
-    except getopt.GetoptError:
-        help()
-        sys.exit(1)
-    clean = False
-    diffs = False
-    dryrun = False
-    future = False
-    oldversion = 'older'
-    revert = False
-    stripcr = False
-    upconvert = True
-    verbose = 0
-    for (switch, val) in options:
-        if switch in ('-h', '--help'):
-            help()
-            sys.exit(0)
-        elif switch in ('-c', '--clean'):
-            clean = True
-        elif switch in ('-d', '--dryrun'):
-            dryrun = True
-            verbose = max(1, verbose)
-        elif switch in ('-D', '--diffs'):
-            diffs = True
-        elif switch in ('-f', '--future'):
-            future = True
-        elif switch in ('-n', '--nolift'):
-            upconvert = False
-        elif switch in ('-o', '--oldversion'):
-            oldversion = val
-        elif switch in ('-r', '--revert'):
-            revert = True
-        elif switch in ('-s', '--stripcr'):
-            stripcr = True
-        elif switch in ('-v', '--verbose'):
-            verbose += 1
-    if clean and revert:
-        print("wmllint: can't do clean and revert together.", file=sys.stderr)
-        sys.exit(1)
-
-    # Compute the series of version upgrades to perform, and describe it.
-    versions = sorted([key for key in filemoves.keys()])
-    # Relies on 'older' sorting before trunk
-    versions = [versions[-2]] + versions[:-2] + [versions[-1]] # Move 'older' to front
-    if oldversion in versions:
-        versions = versions[versions.index(oldversion):]
-    else:
-        print("wmllint: unrecognized version.", file=sys.stderr)
-        sys.exit(1)
-    if not dryrun and not clean and not revert and not diffs and len(versions) > 1:
-        explain = "Upgrades for:"
-        for i in range(len(versions)-1):
-            explain += " %s -> %s," % (versions[i],  versions[i+1])
-        print(explain[:-1] + ".")
-    fileconversions = [filemoves[x] for x in versions[:-1]]
-
-    def hasdigit(str_):
-        for c in str_:
-            if c in "0123456789":
-                return True
-        return False
-
-    def texttransform(filename, lineno, line, versions):
-        "Resource-name transformation on text lines."
-        if not upconvert:
-            return line
-        transformed = line
-        # First, do resource-file moves
-        if "wmllint: noconvert" not in line:
-            for step in fileconversions:
-                for (old, new) in step:
-                    transformed = old.sub(new, transformed)
-        # Handle terrain_liked=, terrain=, valid_terrain=, letter=
-        spaceless = transformed.replace(" ", "").replace("\t", "")
-        if spaceless and spaceless[0] != "#" and ("terrain_liked=" in spaceless or "terrain=" in spaceless or 'letter=' in spaceless) and "wmllint:ignore" not in spaceless:
-            (key, pre, value, post) = parse_attribute(transformed)
-            # We have to cope with the following cases...
-            # Old style:
-            #    terrain_liked=ghM
-            #    terrain_liked=BEITU
-            #    valid_terrain=gfh
-            #    terrain=AaBbDeLptUVvYZ
-            #    terrain=r
-            #    terrain={LETTERS}
-            #    terrain=""
-            #    terrain=s,c,w,k
-            # New style:
-            #    terrain=Mm
-            #    terrain=Gs^Fp
-            #    terrain=Hh, Gg^Vh, Mm
-            # The sticky part is that, while it never happens in the current
-            # corpus, terrain=Mm (capital letter followed by small) could be
-            # interpreted either way.
-            #
-            # There are some unambiguous tests:
-            oldstyle = (len(value) == 1 or len(value) > 6) and not ',' in value
-            newstyle = len(value) > 1 \
-                    and value[0].isupper() and value[1].islower() \
-                    and (',' in value \
-                            or len(value) == 2 \
-                            or (len(value) >= 3 and value[2] == "^"))
-            # See maptransform1() for explanation of this ugly hack.
-            oldstyle = oldstyle or lock_terrain_coding == "oldstyle"
-            newstyle = newstyle or lock_terrain_coding == "newstyle"
-            # Maybe we lose...
-            if not oldstyle and not newstyle:
-                print('"%s", line %d: leaving ambiguous terrain value %s alone.' %
-                    (filename, lineno, value))
-            else:
-                if oldstyle and not lock_terrain_coding == "newstyle":
-                    # 1.2.x to 1.3.2 conversions
-                    newterrains = ""
-                    inmacro = False
-                    for c in value:
-                        if not inmacro:
-                            if c == '{':
-                                inmacro = True
-                                newterrains += c
-                            elif c == ',':
-                                pass
-                            elif c.isspace():
-                                newterrains += c
-                            elif c in conversion1:
-                                newterrains += conversion1[c] + ","
-                            else:
-                                print("%s, line %d: custom terrain %s ignored." %
-                                    (filename, lineno+1, c))
-                        else: # inmacro == True
-                            if c == '}':
-                                inmacro = False
-                            newterrains += c
-                    if newterrains.endswith(","):
-                        newterrains = newterrains[:-1]
-                    transformed = pre + newterrains + post
-                if newstyle:
-                    if len(value) == 2:
-                        # 1.3.1 to 1.3.2 conversion
-                        for (old, new) in conversion2.items():
-                            transformed = old.sub(new, transformed)
-        # Check for things marked translated that aren't strings
-        if "_" in transformed and not "wmllint: ignore" in transformed:
-            m = re.search(r'[=(]\s*_\s+("?)', transformed)
-            if m and not m.group(1):
-                msg = '"%s", line %d: translatability mark before non-string' % \
-                    (filename, lineno)
-                print(msg, file=sys.stderr)
-        # Perform unconditional line changes
-        for (old, new) in linechanges:
-            transformed = transformed.replace(old, new)
-        # Report the changes
-        if verbose > 0 and transformed != line:
-            msg = "%s, line %d: %s -> %s" % \
-                (filename, lineno, line.strip(), transformed.strip())
-            print(msg)
-        return transformed
-
-    if upconvert and "1.3.1" in versions and "older" not in versions:
-        maptransforms = [maptransform2]
-    else:
-        maptransforms = [maptransform1, maptransform2]
-
-    # In certain situations, Windows' command prompt appends a double quote
-    # to the command line parameters. The first block takes care of this issue.
-    # Also, Windows does not expand wildcards. The second turns on globbing.
-    if arguments and sys.platform == 'win32':
-        wildcard = False
-        for i,arg in enumerate(arguments):
-            if arg.endswith('"'):
-                arguments[i] = arg[:-1]
-            if '*' in arg:
-                wildcard = True
-        if wildcard:
-            from glob import glob
-            for arg in arguments:
-                wildarg = glob(arg)
-                arguments.remove(arg)
-                for newarg in wildarg:
-                    arguments.append(newarg)
-
-    if not arguments:
-        arguments = ["."]
-
-    for dir_ in arguments:
-        ofp = None
-        if "older" in versions:
-            lock_terrain_coding = None
-        else:
-            lock_terrain_coding = "newstyle"
-        for fn in allcfgfiles(dir_):
-            if verbose >= 2:
-                print(fn + ":")
-            backup = fn + "-bak"
-            if clean or revert:
-                # Do housekeeping
-                if os.path.exists(backup):
-                    if clean:
-                        print("wmllint: removing %s" % backup)
-                        if not dryrun:
-                            os.remove(backup)
-                    elif revert:
-                        print("wmllint: reverting %s" % backup)
-                        if not dryrun:
-                            if sys.platform == 'win32':
-                                os.remove(fn)
-                            os.rename(backup, fn)
-            elif diffs:
-                # Display diffs
-                if os.path.exists(backup):
-                    fromdate = time.ctime(os.stat(backup).st_mtime)
-                    todate = time.ctime(os.stat(fn).st_mtime)
-                    with codecs.open(backup, 'U', "utf8") as fromlines, \
-                        codecs.open(fn, 'U', "utf8") as tolines:
-                        diff = difflib.unified_diff(fromlines.readlines(),
-                                                    tolines.readlines(),
-                                                    backup, fn, fromdate,
-                                                    todate, n=3)
-                    sys.stdout.writelines(diff)
-            else:
-                # Do file conversions
-                try:
-                    changed = translator(fn, maptransforms, texttransform, versions)
-                    if changed:
-                        print("wmllint: converting", fn)
-                        if not dryrun:
-                            if sys.platform == 'win32' and os.path.exists(backup):
-                                os.remove(backup)
-                            os.rename(fn, backup)
-                            with codecs.open(fn, "w", "utf8") as ofp:
-                                ofp.write(changed)
-                except MaptransformError as e:
-                    print("wmllint: " + e.message, file=sys.stderr)
-                except:
-                    print("wmllint: internal error on %s" % fn, file=sys.stderr)
-                    (exc_type, exc_value, exc_traceback) = sys.exc_info()
-                    raise exc_type(exc_value).with_traceback(exc_traceback)
-            # Time for map and main file renames
-            # FIXME: We should make some effort to rename mask files.
-            if not revert and not diffs:
-                if not fn.endswith(".map") and not fn.endswith(".mask") and is_map(fn):
-                    print('wmllint: renaming "%s" to "%s"' % (fn, fn + ".map"))
-                    if not dryrun:
-                        os.rename(fn, fn + ".map")
-                elif fn in is_main and os.path.isdir(fn.replace('.cfg', '')):
-                    main = fn.replace('.cfg', '/_main.cfg')
-                    if os.path.exists(main):
-                        print('wmllint: both "%s" and "%s" topfiles exist' % (fn, main))
-                    else:
-                        print('wmllint: renaming "%s" to "%s"' % (fn, main))
-                        if not dryrun:
-                            os.rename(fn, main)
-                            if os.path.exists(backup):
-                                os.rename(backup, main + '-bak')
-    # Constency-check everything we got from the file scans
-    consistency_check()
-
-
 def neighborhood(x, y, map_):
     "Returns list of original location+adjacent locations from a hex map"
     odd = (x) % 2
@@ -689,7 +407,6 @@ def neighborhood(x, y, map_):
         adj.append(map_[y+1][x+1])
     return adj
 
-
 def maptransform1(filename, baseline, inmap, y):
     "Transform a map line from 1.2.x to 1.3.x format."
     global lock_terrain_coding
@@ -708,7 +425,7 @@ def maptransform1(filename, baseline, inmap, y):
                 lock_terrain_coding = "oldstyle"
                 inmap[y][x] = format % conversion1[field]
             else:
-                raise MaptransformError(filename, baseline+y+1,
+                raise maptransform_error(filename, baseline+y+1,
                                          "unrecognized map element %s at (%s, %s)" % (repr(field), x, y))
 
 # Mostly 1.3.1 -> 1.3.2 terrain conversions.
@@ -755,7 +472,6 @@ linechanges = (
         ("canrecruit=0", "canrecruit=no"),
 )
 
-
 def maptransform2(filename, baseline, inmap, y):
     "Convert a map line between 1.3.x formats."
     for x in range(len(inmap[y])):
@@ -789,7 +505,6 @@ def maptransform2(filename, baseline, inmap, y):
             # There's only one kind of underground keep at present.
             inmap[y][x] = inmap[y][x].replace("Ku", "Kud")
 
-
 def validate_stack(stack, filename, lineno):
     "Check the stack for deprecated WML syntax."
     if verbose >= 3:
@@ -799,7 +514,6 @@ def validate_stack(stack, filename, lineno):
         ancestors = [elem[0] for elem in tagstack]
         #if tag == "sound" and "attack" in ancestors:
         #    print('"%s", line %d: deprecated [sound] within [attack] tag' % (filename, lineno+1))
-
 
 def validate_on_pop(tagstack, closer, filename, lineno):
     "Validate the stack at the time a new close tag is seen."
@@ -811,7 +525,6 @@ def validate_on_pop(tagstack, closer, filename, lineno):
     # to deserialize an empty unit.
     if closer == "side" and "type" not in attributes and ("no_leader" not in attributes or attributes["no_leader"] != "yes") and "multiplayer" not in ancestors:
         print('"%s", line %d: [side] without type attribute' % (filename, lineno))
-
 
 def within(tag):
     "Did the specified tag lead one of our enclosing contexts?"
@@ -856,7 +569,6 @@ notepairs = (
 trait_note = dict(notepairs)
 note_trait = {pair[1]: pair[0] for pair in notepairs}
 
-
 def string_strip(value):
     "String-strip the value"
     if value.startswith('"'):
@@ -868,7 +580,6 @@ def string_strip(value):
         if value.endswith("'"):
             value = value[:-1]
     return value
-
 
 def parse_attribute(str_):
     "Parse a WML key-value pair from a line."
@@ -904,7 +615,6 @@ unit_races = []
 
 # Will be used to move files to _main.cfg
 is_main = []
-
 
 def sanity_check(filename, lines):
     "Perform sanity and consistency checks on input lines."
@@ -1197,7 +907,6 @@ def sanity_check(filename, lines):
         modified = True
     return (lines, modified)
 
-
 def consistency_check():
     "Consistency-check state information picked up by sanity_check"
     utypes = []
@@ -1231,11 +940,9 @@ def consistency_check():
 
 leading_ws = re.compile(r"^\s*")
 
-
 def leader(s):
     "Return a copy of the leading whitespace in the argument."
     return leading_ws.match(s).group(0)
-
 
 def outdent(s):
     "Outdent line by one level."
@@ -1245,7 +952,6 @@ def outdent(s):
         return s[:-1] + baseindent
     else:
         return s
-
 
 def hack_syntax(filename, lines):
     # Syntax transformations go here.  This gets called once per WML file;
@@ -1405,8 +1111,7 @@ def hack_syntax(filename, lines):
     # Boucman's transformation of animation syntax.
     # Wrap this in try/except because some newer animation syntax chokes it.
     try:
-        class AnimFrame:
-            
+        class anim_frame:
             def __init__(self, attackline, attackname, lineno, female, variation):
                 self.attackstart = attackline
                 self.name = attackname
@@ -1415,10 +1120,8 @@ def hack_syntax(filename, lines):
                 self.variation = variation
                 self.animend = None
                 self.attackend = None
-
             def __repr__(self):
                 return repr(self.__dict__)
-
         in_attack = in_animation = in_female = in_variation = False
         animations = []
         attackname = None
@@ -1464,7 +1167,7 @@ def hack_syntax(filename, lines):
                     variation = variation_index
                 else:
                     variation = None
-                animations.append(AnimFrame(attackline, attackname, i, in_female, variation))
+                animations.append(anim_frame(attackline, attackname, i, in_female, variation))
                 in_animation = True
             elif "[/animation]" in line and in_attack:
                 in_animation = False
@@ -1939,9 +1642,7 @@ start_time=-150
     # More syntax transformations would go here.
     return (lines, modcount)
 
-
-############## Generic machinery starts here #############
-
+# Generic machinery starts here
 
 def is_map(filename):
     "Is this file a map in either old or new style?"
@@ -1969,13 +1670,12 @@ def is_map(filename):
         has_map_content = False
     return has_map_content
 
-class MaptransformError(Exception):
+class maptransform_error(Exception):
     "Error object to be thrown by maptransform."
     def __init__(self, infile, inline, type_):
         self.message = '"%s", line %d: %s' % (infile, inline, type_)
 
 tagstack = [] # For tracking tag nesting
-
 
 def outermap(func, inmap):
     "Apply a transformation based on neighborhood to the outermost ring."
@@ -1987,7 +1687,6 @@ def outermap(func, inmap):
     for i in range(1, len(inmap)-1):
         inmap[i][0] = func(inmap[i][0])
         inmap[i][len(inmap[0])-1] = func(inmap[i][len(inmap[0])-1])
-
 
 def translator(filename, mapxforms, textxform, versions):
     "Apply mapxform to map lines and textxform to non-map lines."
@@ -2274,13 +1973,11 @@ def translator(filename, mapxforms, textxform, versions):
 
 ignore = (".tgz", ".png", ".jpg", "-bak")
 
-
 def interesting(fn):
     "Is a file interesting for conversion purposes?"
     return fn.endswith(".cfg") or fn.endswith(".map") \
         or ("maps" in fn and fn[-4:] not in ignore) \
         or is_map(fn)
-
 
 def allcfgfiles(dir_):
     "Get the names of all interesting files under dir."
@@ -2300,7 +1997,6 @@ def allcfgfiles(dir_):
                     datafiles.append(os.path.join(root, name))
     datafiles.sort() # So diffs for same campaigns will cluster in reports
     return [os.path.normpath(elem) for elem in datafiles]
-
 
 def help():
         print("""\
@@ -2332,11 +2028,273 @@ Usage: wmllint [options] [dir]
     More about wmllint can be found in the introduction in the file itself, and
     at https://wiki.wesnoth.org/Maintenance_tools.""", file=sys.stderr)
 
-
 if __name__ == '__main__':
+    global versions
     try:
-        main()
-    except KeyboardInterrupt:
-        print("Interrupt Signal Detected. Program Aborted.")
+        (options, arguments) = getopt.getopt(sys.argv[1:], "cdDfhno:rsv", [
+            "clean",
+            "diffs",
+            "dryrun",
+            "future",
+            "help",
+            "nolift",
+            "oldversion=",
+            "revert",
+            "stripcr",
+            "verbose",
+            ])
+    except getopt.GetoptError:
+        help()
+        sys.exit(1)
+    clean = False
+    diffs = False
+    dryrun = False
+    future = False
+    oldversion = 'older'
+    revert = False
+    stripcr = False
+    upconvert = True
+    verbose = 0
+    for (switch, val) in options:
+        if switch in ('-h', '--help'):
+            help()
+            sys.exit(0)
+        elif switch in ('-c', '--clean'):
+            clean = True
+        elif switch in ('-d', '--dryrun'):
+            dryrun = True
+            verbose = max(1, verbose)
+        elif switch in ('-D', '--diffs'):
+            diffs = True
+        elif switch in ('-f', '--future'):
+            future = True
+        elif switch in ('-n', '--nolift'):
+            upconvert = False
+        elif switch in ('-o', '--oldversion'):
+            oldversion = val
+        elif switch in ('-r', '--revert'):
+            revert = True
+        elif switch in ('-s', '--stripcr'):
+            stripcr = True
+        elif switch in ('-v', '--verbose'):
+            verbose += 1
+    if clean and revert:
+        print("wmllint: can't do clean and revert together.", file=sys.stderr)
+        sys.exit(1)
+
+    # Compute the series of version upgrades to perform, and describe it.
+    versions = sorted([key for key in filemoves.keys()])
+    # Relies on 'older' sorting before trunk
+    versions = [versions[-2]] + versions[:-2] + [versions[-1]] # Move 'older' to front
+    if oldversion in versions:
+        versions = versions[versions.index(oldversion):]
+    else:
+        print("wmllint: unrecognized version.", file=sys.stderr)
+        sys.exit(1)
+    if not dryrun and not clean and not revert and not diffs and len(versions) > 1:
+        explain = "Upgrades for:"
+        for i in range(len(versions)-1):
+            explain += " %s -> %s," % (versions[i],  versions[i+1])
+        print(explain[:-1] + ".")
+    fileconversions = [filemoves[x] for x in versions[:-1]]
+
+    def hasdigit(str_):
+        for c in str_:
+            if c in "0123456789":
+                return True
+        return False
+
+    def texttransform(filename, lineno, line, versions):
+        "Resource-name transformation on text lines."
+        if not upconvert:
+            return line
+        transformed = line
+        # First, do resource-file moves
+        if "wmllint: noconvert" not in line:
+            for step in fileconversions:
+                for (old, new) in step:
+                    transformed = old.sub(new, transformed)
+        # Handle terrain_liked=, terrain=, valid_terrain=, letter=
+        spaceless = transformed.replace(" ", "").replace("\t", "")
+        if spaceless and spaceless[0] != "#" and ("terrain_liked=" in spaceless or "terrain=" in spaceless or 'letter=' in spaceless) and "wmllint:ignore" not in spaceless:
+            (key, pre, value, post) = parse_attribute(transformed)
+            # We have to cope with the following cases...
+            # Old style:
+            #    terrain_liked=ghM
+            #    terrain_liked=BEITU
+            #    valid_terrain=gfh
+            #    terrain=AaBbDeLptUVvYZ
+            #    terrain=r
+            #    terrain={LETTERS}
+            #    terrain=""
+            #    terrain=s,c,w,k
+            # New style:
+            #    terrain=Mm
+            #    terrain=Gs^Fp
+            #    terrain=Hh, Gg^Vh, Mm
+            # The sticky part is that, while it never happens in the current
+            # corpus, terrain=Mm (capital letter followed by small) could be
+            # interpreted either way.
+            #
+            # There are some unambiguous tests:
+            oldstyle = (len(value) == 1 or len(value) > 6) and not ',' in value
+            newstyle = len(value) > 1 \
+                       and value[0].isupper() and value[1].islower() \
+                       and (',' in value \
+                            or len(value) == 2 \
+                            or (len(value) >= 3 and value[2] == "^"))
+            # See maptransform1() for explanation of this ugly hack.
+            oldstyle = oldstyle or lock_terrain_coding == "oldstyle"
+            newstyle = newstyle or lock_terrain_coding == "newstyle"
+            # Maybe we lose...
+            if not oldstyle and not newstyle:
+                print('"%s", line %d: leaving ambiguous terrain value %s alone.' %
+                      (filename, lineno, value))
+            else:
+                if oldstyle and not lock_terrain_coding == "newstyle":
+                    # 1.2.x to 1.3.2 conversions
+                    newterrains = ""
+                    inmacro = False
+                    for c in value:
+                        if not inmacro:
+                            if c == '{':
+                                inmacro = True
+                                newterrains += c
+                            elif c == ',':
+                                pass
+                            elif c.isspace():
+                                newterrains += c
+                            elif c in conversion1:
+                                newterrains += conversion1[c] + ","
+                            else:
+                                print("%s, line %d: custom terrain %s ignored." %
+                                      (filename, lineno+1, c))
+                        else: # inmacro == True
+                            if c == '}':
+                                inmacro = False
+                            newterrains += c
+                    if newterrains.endswith(","):
+                        newterrains = newterrains[:-1]
+                    transformed = pre + newterrains + post
+                if newstyle:
+                    if len(value) == 2:
+                        # 1.3.1 to 1.3.2 conversion
+                        for (old, new) in conversion2.items():
+                            transformed = old.sub(new, transformed)
+        # Check for things marked translated that aren't strings
+        if "_" in transformed and not "wmllint: ignore" in transformed:
+            m = re.search(r'[=(]\s*_\s+("?)', transformed)
+            if m and not m.group(1):
+                msg = '"%s", line %d: translatability mark before non-string' % \
+                      (filename, lineno)
+                print(msg, file=sys.stderr)
+        # Perform unconditional line changes
+        for (old, new) in linechanges:
+            transformed = transformed.replace(old, new)
+        # Report the changes
+        if verbose > 0 and transformed != line:
+            msg = "%s, line %d: %s -> %s" % \
+                  (filename, lineno, line.strip(), transformed.strip())
+            print(msg)
+        return transformed
+
+    if upconvert and "1.3.1" in versions and "older" not in versions:
+        maptransforms = [maptransform2]
+    else:
+        maptransforms = [maptransform1, maptransform2]
+
+    # In certain situations, Windows' command prompt appends a double quote
+    # to the command line parameters. The first block takes care of this issue.
+    # Also, Windows does not expand wildcards. The second turns on globbing.
+    if arguments and sys.platform == 'win32':
+        wildcard = False
+        for i,arg in enumerate(arguments):
+            if arg.endswith('"'):
+                arguments[i] = arg[:-1]
+            if '*' in arg:
+                wildcard = True
+        if wildcard:
+            from glob import glob
+            for arg in arguments:
+                wildarg = glob(arg)
+                arguments.remove(arg)
+                for newarg in wildarg:
+                    arguments.append(newarg)
+
+    if not arguments:
+        arguments = ["."]
+
+    for dir_ in arguments:
+        ofp = None
+        if "older" in versions:
+            lock_terrain_coding = None
+        else:
+            lock_terrain_coding = "newstyle"
+        for fn in allcfgfiles(dir_):
+            if verbose >= 2:
+                print(fn + ":")
+            backup = fn + "-bak"
+            if clean or revert:
+                # Do housekeeping
+                if os.path.exists(backup):
+                    if clean:
+                        print("wmllint: removing %s" % backup)
+                        if not dryrun:
+                            os.remove(backup)
+                    elif revert:
+                        print("wmllint: reverting %s" % backup)
+                        if not dryrun:
+                            if sys.platform == 'win32':
+                                os.remove(fn)
+                            os.rename(backup, fn)
+            elif diffs:
+                # Display diffs
+                if os.path.exists(backup):
+                    fromdate = time.ctime(os.stat(backup).st_mtime)
+                    todate = time.ctime(os.stat(fn).st_mtime)
+                    with codecs.open(backup, 'U', "utf8") as fromlines, \
+                         codecs.open(fn, 'U', "utf8") as tolines:
+                        diff = difflib.unified_diff(fromlines.readlines(),
+                                                    tolines.readlines(),
+                                                    backup, fn, fromdate,
+                                                    todate, n=3)
+                    sys.stdout.writelines(diff)
+            else:
+                # Do file conversions
+                try:
+                    changed = translator(fn, maptransforms, texttransform, versions)
+                    if changed:
+                        print("wmllint: converting", fn)
+                        if not dryrun:
+                            if sys.platform == 'win32' and os.path.exists(backup):
+                                os.remove(backup)
+                            os.rename(fn, backup)
+                            with codecs.open(fn, "w", "utf8") as ofp:
+                                ofp.write(changed)
+                except maptransform_error as e:
+                    print("wmllint: " + e.message, file=sys.stderr)
+                except:
+                    print("wmllint: internal error on %s" % fn, file=sys.stderr)
+                    (exc_type, exc_value, exc_traceback) = sys.exc_info()
+                    raise exc_type(exc_value).with_traceback(exc_traceback)
+            # Time for map and main file renames
+            # FIXME: We should make some effort to rename mask files.
+            if not revert and not diffs:
+                if not fn.endswith(".map") and not fn.endswith(".mask") and is_map(fn):
+                    print('wmllint: renaming "%s" to "%s"' % (fn, fn + ".map"))
+                    if not dryrun:
+                        os.rename(fn, fn + ".map")
+                elif fn in is_main and os.path.isdir(fn.replace('.cfg', '')):
+                    main = fn.replace('.cfg', '/_main.cfg')
+                    if os.path.exists(main):
+                        print('wmllint: both "%s" and "%s" topfiles exist' % (fn, main))
+                    else:
+                        print('wmllint: renaming "%s" to "%s"' % (fn, main))
+                        if not dryrun:
+                            os.rename(fn, main)
+                            if os.path.exists(backup):
+                                os.rename(backup, main + '-bak')
+    # Constency-check everything we got from the file scans
+    consistency_check()
 
 # wmllint ends here
