@@ -156,6 +156,22 @@ def main():
 directories are given, all files under the current directory are checked.""")
     namespace = parser.parse_args()
 
+    global crossreference
+    global collisions
+    global definitions
+    global exclude
+    global from_restrict
+    global extracthelp
+    global listfiles
+    global refcount_restrict
+    global typelist
+    global unresolved
+    global warnlevel
+    global forceused
+    global unchecked
+    global progress
+    global arguments
+
     try:
         # Process options
         crossreference = namespace.crossreference
