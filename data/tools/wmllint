@@ -1645,7 +1645,7 @@ def pangoize(message, filename, line):
 
 class WmllintIterator(WmlIterator):
     "Fold an Emacs-compatible error reporter into WmlIterator."
-    def printError(self, *misc):
+    def print_error(self, *misc):
         """Emit an error locator compatible with Emacs compilation mode."""
         if not hasattr(self, 'lineno') or self.lineno == -1:
             print('"%s":' % self.fname, file=sys.stderr)
@@ -3446,7 +3446,7 @@ def inner_spellcheck(nav, value, spelldict):
             continue
         if re.match("s+h+", lowered):
             continue
-        nav.printError('possible misspelling "%s"' % token)
+        nav.print_error('possible misspelling "%s"' % token)
 
 
 def spellcheck(fn, d):
@@ -3478,7 +3478,7 @@ def spellcheck(fn, d):
                         d.add_to_session(word)
                         local_spellings.append(word)
                     else:
-                        nav.printError("spelling '%s' already declared" % word)
+                        nav.print_error("spelling '%s' already declared" % word)
 
     for nav in WmllintIterator(filename=fn):
         # Spell-check message and story parts
