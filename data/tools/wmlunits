@@ -698,4 +698,7 @@ def write_animation_statistics(wesnoth):
 
 
 if __name__ == '__main__':        
-    main()
+    try:
+        main()
+    except KeyboardInterrupt:
+        print("Interrupt Signal Detected. Program Aborted.")
