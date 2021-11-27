@@ -233,89 +233,92 @@ def mapsize(filename):
     return (x, y)
 
 if __name__ == '__main__':
-    flip_x = flip_y = False
-    verbose = 0
-    mapfile = None
-    translate = False
-    (options, arguments) = getopt.getopt(sys.argv[1:], "m:txyvh")
+    def main():
+        flip_x = flip_y = False
+        verbose = 0
+        mapfile = None
+        translate = False
+        (options, arguments) = getopt.getopt(sys.argv[1:], "m:txyvh")
 
-    for (switch, val) in options:
-        if switch in ('-h', '--help'):
-            sys.stderr.write(__doc__)
+        for (switch, val) in options:
+            if switch in ('-h', '--help'):
+                sys.stderr.write(__doc__)
+                sys.exit(0)
+            elif switch in ('-m'):
+                mapfile = val
+            elif switch in ('-t'):
+                translate = True
+            elif switch in ('-x'):
+                flip_x = True
+            elif switch in ('-y'):
+                print("Vertical flip is not yet supported.", file=sys.stderr)
+                sys.exit(0)
+            elif switch == '-v':
+                verbose += 1
+        if verbose:
+            print("Debugging output enabled.")
+
+        if mapfile:
+            (mx, my) = mapsize(mapfile)
+            print("%s is %d wide by %d high" % (mapfile, mx, my), file=sys.stderr)
+
+        if arguments and not flip_x and not translate:
+            print("No coordinate transform is specified.", file=sys.stderr)
             sys.exit(0)
-        elif switch in ('-m'):
-            mapfile = val
-        elif switch in ('-t'):
-            translate = True
-        elif switch in ('-x'):
-            flip_x = True
-        elif switch in ('-y'):
-            print("Vertical flip is not yet supported.", file=sys.stderr)
+
+        if flip_x and not mapfile:
+            print("X flip transformation needs to know the map size..", file=sys.stderr)
             sys.exit(0)
-        elif switch == '-v':
-            verbose += 1
-    if verbose:
-        print("Debugging output enabled.")
 
-    if mapfile:
-        (mx, my) = mapsize(mapfile)
-        print("%s is %d wide by %d high" % (mapfile, mx, my), file=sys.stderr)
+        if translate:
+            dx = int(arguments.pop(0))
+            dy = int(arguments.pop(0))
 
-    if arguments and not flip_x and not translate:
-        print("No coordinate transform is specified.", file=sys.stderr)
-        sys.exit(0)
-
-    if flip_x and not mapfile:
-        print("X flip transformation needs to know the map size..", file=sys.stderr)
-        sys.exit(0)
-
-    if translate:
-        dx = int(arguments.pop(0))
-        dy = int(arguments.pop(0))
-
-    # Are we doing file transformations?
-    if arguments:
-        relevant = relevant_macros()
-        # For each file named on the command line...
-        for filename in arguments:
-            if verbose:
-                print("Processing file", filename, file=sys.stderr)
-
-            (content, pairs) = transformables(filename, relevant, verbose > 1)
-
-            # Extract the existing coordinates as numbers
-            source = []
-            for ((xs, xe), (ys, ye)) in pairs:
-                x = int(content[xs:xe])
-                y = int(content[ys:ye])
-                source.append((x, y))
-
-            # Compute the target coordinate pairs
-            target = []
-            for (x, y) in source:
-
-                # Note: This is the *only* part of this code that is
-                # specific to a particular transform.  The rest of the
-                # code doesn't care how the target pairs are derived
-                # from the source ones.  We could do arbitrary matrix
-                # algebra here, but beware the effects of hex-grid
-                # transformation.
-                if flip_x:
-                    yn = y
-                    xn = mx - x - 1
-                if translate:
-                    yn = y + dy
-                    xn = x + dx
-
-                # This is generic again
-                target.append((xn, yn))
+        # Are we doing file transformations?
+        if arguments:
+            relevant = relevant_macros()
+            # For each file named on the command line...
+            for filename in arguments:
                 if verbose:
-                    print("(%d, %d) -> (%d, %d)" % (x, y, xn, yn))
+                    print("Processing file", filename, file=sys.stderr)
 
-            # Perform the actual transformation
-            for (((xs, xe), (ys, ye)), (xn, yn)) in zip(pairs, target):
-                content = content[:ys] + repr(yn) + content[ye:]
-                content = content[:xs] + repr(xn) + content[xe:]
+                (content, pairs) = transformables(filename, relevant, verbose > 1)
 
-            with open(filename, "w") as fp:
-                fp.write(content)
+                # Extract the existing coordinates as numbers
+                source = []
+                for ((xs, xe), (ys, ye)) in pairs:
+                    x = int(content[xs:xe])
+                    y = int(content[ys:ye])
+                    source.append((x, y))
+
+                # Compute the target coordinate pairs
+                target = []
+                for (x, y) in source:
+
+                    # Note: This is the *only* part of this code that is
+                    # specific to a particular transform.  The rest of the
+                    # code doesn't care how the target pairs are derived
+                    # from the source ones.  We could do arbitrary matrix
+                    # algebra here, but beware the effects of hex-grid
+                    # transformation.
+                    if flip_x:
+                        yn = y
+                        xn = mx - x - 1
+                    if translate:
+                        yn = y + dy
+                        xn = x + dx
+
+                    # This is generic again
+                    target.append((xn, yn))
+                    if verbose:
+                        print("(%d, %d) -> (%d, %d)" % (x, y, xn, yn))
+
+                # Perform the actual transformation
+                for (((xs, xe), (ys, ye)), (xn, yn)) in zip(pairs, target):
+                    content = content[:ys] + repr(yn) + content[ye:]
+                    content = content[:xs] + repr(xn) + content[xe:]
+
+                with open(filename, "w") as fp:
+                    fp.write(content)
+
+    main()

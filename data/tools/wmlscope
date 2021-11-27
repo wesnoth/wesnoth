@@ -421,137 +421,140 @@ class CrossRefLister(CrossRef):
         fp.write(outstr)
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser()
-    parser.add_argument("-c", "--crossreference", action="store_true",
-                        help="Report resolved macro references (implies -w 1)")
-    parser.add_argument("-C", "--collisions", action="store_true",
-                        help="Report duplicate resource files")
-    parser.add_argument("-d", "--definitions", action="store_true",
-                        help="Make definition list")
-    parser.add_argument("-e", "--exclude", action="append", default = [],
-                        help="Ignore files matching the specified regular expression")
-    parser.add_argument("-f", "--from", action="store", dest="from_", metavar="FROM", # from is a keyword
-                        help="Report only on things defined in files matching regexp")
-    parser.add_argument("-l", "--listfiles", action="store_true",
-                        help="List files that will be processed")
-    parser.add_argument("-r", "--refcount", action="store", type=int, # convert to int, defaults to None
-                        help="Report only on macros w/references in ddd files")
-    parser.add_argument("-t", "--typelist", action="store",
-                        help="List actual & formal argtypes for calls in fname")
-    parser.add_argument("-u", "--unresolved", action="store_true",
-                        help="Report unresolved macro references")
-    parser.add_argument("-w", "--warnlevel", action="store", type=int, default=0,
-                        help="Set to 1 to warn of duplicate macro definitions")
-    # this option was never listed before...
-    parser.add_argument("-p", "--progress", action="store_true",
-                        help="Show progress") # TODO: improve description
-    # no short options for these
-    parser.add_argument("--force-used", action="append", dest="forceused", default = [],
-                        help="Ignore refcount 0 on names matching regexp")
-    parser.add_argument("--extracthelp", action="store_true",
-                        help="Extract help from macro definition comments.")
-    parser.add_argument("--unchecked", action="store_true",
-                        help="Report all macros with untyped formals.")
-    parser.add_argument("directories", action="store", nargs="*",
-                        help="""Any number of directiories to check. If no
-directories are given, all files under the current directory are checked.""")
-    namespace = parser.parse_args()
+    def main():
+        parser = argparse.ArgumentParser()
+        parser.add_argument("-c", "--crossreference", action="store_true",
+                            help="Report resolved macro references (implies -w 1)")
+        parser.add_argument("-C", "--collisions", action="store_true",
+                            help="Report duplicate resource files")
+        parser.add_argument("-d", "--definitions", action="store_true",
+                            help="Make definition list")
+        parser.add_argument("-e", "--exclude", action="append", default = [],
+                            help="Ignore files matching the specified regular expression")
+        parser.add_argument("-f", "--from", action="store", dest="from_", metavar="FROM", # from is a keyword
+                            help="Report only on things defined in files matching regexp")
+        parser.add_argument("-l", "--listfiles", action="store_true",
+                            help="List files that will be processed")
+        parser.add_argument("-r", "--refcount", action="store", type=int, # convert to int, defaults to None
+                            help="Report only on macros w/references in ddd files")
+        parser.add_argument("-t", "--typelist", action="store",
+                            help="List actual & formal argtypes for calls in fname")
+        parser.add_argument("-u", "--unresolved", action="store_true",
+                            help="Report unresolved macro references")
+        parser.add_argument("-w", "--warnlevel", action="store", type=int, default=0,
+                            help="Set to 1 to warn of duplicate macro definitions")
+        # this option was never listed before...
+        parser.add_argument("-p", "--progress", action="store_true",
+                            help="Show progress") # TODO: improve description
+        # no short options for these
+        parser.add_argument("--force-used", action="append", dest="forceused", default = [],
+                            help="Ignore refcount 0 on names matching regexp")
+        parser.add_argument("--extracthelp", action="store_true",
+                            help="Extract help from macro definition comments.")
+        parser.add_argument("--unchecked", action="store_true",
+                            help="Report all macros with untyped formals.")
+        parser.add_argument("directories", action="store", nargs="*",
+                            help="""Any number of directiories to check. If no
+    directories are given, all files under the current directory are checked.""")
+        namespace = parser.parse_args()
 
-    try:
-        # Process options
-        crossreference = namespace.crossreference
-        collisions = namespace.collisions
-        definitions = namespace.definitions
-        exclude = namespace.exclude
-        from_restrict = namespace.from_
-        extracthelp = namespace.extracthelp
-        listfiles = namespace.listfiles
-        refcount_restrict = namespace.refcount
-        typelist = namespace.typelist
-        unresolved = namespace.unresolved
-        warnlevel = 1 if crossreference else namespace.warnlevel
-        forceused = namespace.forceused
-        unchecked = namespace.unchecked
-        progress = namespace.progress
-        arguments = namespace.directories # a remnant of getopt...
+        try:
+            # Process options
+            crossreference = namespace.crossreference
+            collisions = namespace.collisions
+            definitions = namespace.definitions
+            exclude = namespace.exclude
+            from_restrict = namespace.from_
+            extracthelp = namespace.extracthelp
+            listfiles = namespace.listfiles
+            refcount_restrict = namespace.refcount
+            typelist = namespace.typelist
+            unresolved = namespace.unresolved
+            warnlevel = 1 if crossreference else namespace.warnlevel
+            forceused = namespace.forceused
+            unchecked = namespace.unchecked
+            progress = namespace.progress
+            arguments = namespace.directories # a remnant of getopt...
 
-        # in certain situations, Windows' command prompt appends a double quote
-        # to the command line parameters. This block takes care of this issue.
-        for i,arg in enumerate(arguments):
-            if arg.endswith('"'):
-                arguments[i] = arg[:-1]
+            # in certain situations, Windows' command prompt appends a double quote
+            # to the command line parameters. This block takes care of this issue.
+            for i,arg in enumerate(arguments):
+                if arg.endswith('"'):
+                    arguments[i] = arg[:-1]
 
-        forceused = "|".join(forceused)
-        if len(arguments):
-            dirpath = []
-            for arg in arguments:
-                globarg = glob.glob(arg)
-                for globbed in globarg:
-                    dirpath.append(globbed)
-        else:
-            dirpath = ['.']
-        if not extracthelp:
-            print("# Wmlscope reporting on %s" % time.ctime())
-            print("# Invocation: %s" % " ".join(sys.argv))
-            print("# Working directory: %s" % os.getcwd())
-            starttime = time.time()
-        xref = CrossRefLister(dirpath, "|".join(exclude), warnlevel, progress)
-        if not extracthelp:
-            print("#Cross-reference time: %d seconds" % (time.time()-starttime))
-        if extracthelp:
-            xref.extracthelp(dirpath[0], sys.stdout)
-        elif unchecked:
-            xref.unchecked(sys.stdout)
-        elif listfiles:
-            for (namespace, filename) in xref.filelist.generator():
-                print(filename)
-        if collisions:
-            collisions = []
-            for (namespace, filename) in xref.filelist.generator():
-                with open(filename, "rb") as ifp: # this one may be an image or a sound, so don't assume UTF8 encoding
-                    m = hashlib.md5()
-                    while True:
-                        chunk = ifp.read(1024) # read 1 KiB each time to avoid using too much memory
-                        if not chunk:
-                            break
-                        m.update(chunk)
-                    collisions.append(m.hexdigest()) # hexdigest can be easily printed, unlike digest
-            hashes = {}
-            # hash in Py3 is a builtin function, hence the underscore after the variable name
-            for (filename, hash_) in zip(xref.filelist.flatten(), collisions):
-                if hash_ in hashes:
-                    hashes[hash_].append(filename)
-                else:
-                    hashes[hash_]=[filename]
-            for (hash_, files) in hashes.items(): # items in Py3 is equivalent to iteritems in Py2
-                if len(files) > 1:
-                    print("%%\nPossible duplicated files with MD5 hash", hash_)
-                    for fn in files:
-                        print("->", fn)
-            xref.duplicates(exportonly=False)
-        elif typelist:
-            xref.typelist(typelist)
-        elif crossreference or definitions or listfiles or unresolved:
-            def predicate(name, defloc):
-                if from_restrict and not re.search(from_restrict, defloc.filename):
-                    return False
-                if refcount_restrict!=None \
-                       and len(defloc.references) != refcount_restrict \
-                       or (refcount_restrict == 0 and forceused and re.search(forceused, name)):
-                    return False
-                return True
-            if crossreference:
-                if xref.noxref:
-                    print("wmlscope: can't make cross-reference, input included a definitions file.", file=sys.stderr)
-                else:
-                    xref.xrefdump(predicate)
-            if definitions:
-                xref.deflist(predicate)
-            if unresolved:
-                xref.incorrectlysized()
-                xref.unresdump()
-                xref.duplicates(exportonly=True)
-    except KeyboardInterrupt:
-        print("Aborted by pressing ctrl-c", file=sys.stderr)
+            forceused = "|".join(forceused)
+            if len(arguments):
+                dirpath = []
+                for arg in arguments:
+                    globarg = glob.glob(arg)
+                    for globbed in globarg:
+                        dirpath.append(globbed)
+            else:
+                dirpath = ['.']
+            if not extracthelp:
+                print("# Wmlscope reporting on %s" % time.ctime())
+                print("# Invocation: %s" % " ".join(sys.argv))
+                print("# Working directory: %s" % os.getcwd())
+                starttime = time.time()
+            xref = CrossRefLister(dirpath, "|".join(exclude), warnlevel, progress)
+            if not extracthelp:
+                print("#Cross-reference time: %d seconds" % (time.time()-starttime))
+            if extracthelp:
+                xref.extracthelp(dirpath[0], sys.stdout)
+            elif unchecked:
+                xref.unchecked(sys.stdout)
+            elif listfiles:
+                for (namespace, filename) in xref.filelist.generator():
+                    print(filename)
+            if collisions:
+                collisions = []
+                for (namespace, filename) in xref.filelist.generator():
+                    with open(filename, "rb") as ifp: # this one may be an image or a sound, so don't assume UTF8 encoding
+                        m = hashlib.md5()
+                        while True:
+                            chunk = ifp.read(1024) # read 1 KiB each time to avoid using too much memory
+                            if not chunk:
+                                break
+                            m.update(chunk)
+                        collisions.append(m.hexdigest()) # hexdigest can be easily printed, unlike digest
+                hashes = {}
+                # hash in Py3 is a builtin function, hence the underscore after the variable name
+                for (filename, hash_) in zip(xref.filelist.flatten(), collisions):
+                    if hash_ in hashes:
+                        hashes[hash_].append(filename)
+                    else:
+                        hashes[hash_]=[filename]
+                for (hash_, files) in hashes.items(): # items in Py3 is equivalent to iteritems in Py2
+                    if len(files) > 1:
+                        print("%%\nPossible duplicated files with MD5 hash", hash_)
+                        for fn in files:
+                            print("->", fn)
+                xref.duplicates(exportonly=False)
+            elif typelist:
+                xref.typelist(typelist)
+            elif crossreference or definitions or listfiles or unresolved:
+                def predicate(name, defloc):
+                    if from_restrict and not re.search(from_restrict, defloc.filename):
+                        return False
+                    if refcount_restrict!=None \
+                        and len(defloc.references) != refcount_restrict \
+                        or (refcount_restrict == 0 and forceused and re.search(forceused, name)):
+                        return False
+                    return True
+                if crossreference:
+                    if xref.noxref:
+                        print("wmlscope: can't make cross-reference, input included a definitions file.", file=sys.stderr)
+                    else:
+                        xref.xrefdump(predicate)
+                if definitions:
+                    xref.deflist(predicate)
+                if unresolved:
+                    xref.incorrectlysized()
+                    xref.unresdump()
+                    xref.duplicates(exportonly=True)
+        except KeyboardInterrupt:
+            print("Aborted by pressing ctrl-c", file=sys.stderr)
+
+    main()
 
 # wmlscope ends here

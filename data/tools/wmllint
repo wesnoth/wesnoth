@@ -3179,331 +3179,334 @@ def allcfgfiles(directory):
     return map(os.path.normpath, datafiles)
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser(
-        description = '''Convert Battle of Wesnoth WML from older versions to newer ones.
-Also validates WML to check for errors.''',
-        epilog = '''For more about wmllint, including how to prevent unwanted conversions and false
-positive warnings with magic comments, read the introduction in the wmllint
-file itself.
-See also: https://wiki.wesnoth.org/Maintenance_tools.''',
-        formatter_class = argparse.RawTextHelpFormatter
-    )
+    def main():
+        parser = argparse.ArgumentParser(
+            description = '''Convert Battle of Wesnoth WML from older versions to newer ones.
+    Also validates WML to check for errors.''',
+            epilog = '''For more about wmllint, including how to prevent unwanted conversions and false
+    positive warnings with magic comments, read the introduction in the wmllint
+    file itself.
+    See also: https://wiki.wesnoth.org/Maintenance_tools.''',
+            formatter_class = argparse.RawTextHelpFormatter
+        )
 
-    mode = parser.add_mutually_exclusive_group()
-    mode.add_argument("-c", "--clean", action="store_true",
-                      help="Clean up -bak files.")
-    mode.add_argument("-D", "--diffs", action="store_true",
-                      help="Display diffs between converted and unconverted files.")
-    mode.add_argument("-d", "--dryrun", action="store_true",
-                      help="List changes (-v) but don't perform them.")
-    mode.add_argument("-r", "--revert", action="store_true",
-                      help="Revert the conversion from the -bak files.")
-    parser.add_argument("-m", "--missing", action="store_true",
-                        help="""Don't warn about tags without side= keys now applying
-to all sides.""")
-    parser.add_argument("-s", "--stripcr", action="store_true",
-                        help="Convert DOS-style CR/LF to Unix-style LF.")
-    parser.add_argument("-v", "--verbose", action="count", default=0,
-                        help="""-v        lists changes.
--v -v     names each file before it's processed.
--v -v -v  shows verbose parse details.""")
-    parser.add_argument("-K", "--known", action="store_true",
-                        help="""Suppress check for unknown unit types, recruits, races,
-scenarios, etc.""")
-    parser.add_argument("-S", "--nospellcheck", action="store_false",
-                        help="Suppress spellchecking")
-    parser.add_argument("-Z", "--stringfreeze", action="store_true",
-                        help="Suppress repair attempts of newlines in messages")
-    # -f --future has been removed; there have been no experimental conversions since 1.4
-    # -p --progress has been removed; similar to existing -v -v
-    parser.add_argument("directories", action="store", nargs="*",
-                        help="""Any number of directories. Each directory is converted.
-If no directories are specified, acts on the current
-directory.""")
+        mode = parser.add_mutually_exclusive_group()
+        mode.add_argument("-c", "--clean", action="store_true",
+                        help="Clean up -bak files.")
+        mode.add_argument("-D", "--diffs", action="store_true",
+                        help="Display diffs between converted and unconverted files.")
+        mode.add_argument("-d", "--dryrun", action="store_true",
+                        help="List changes (-v) but don't perform them.")
+        mode.add_argument("-r", "--revert", action="store_true",
+                        help="Revert the conversion from the -bak files.")
+        parser.add_argument("-m", "--missing", action="store_true",
+                            help="""Don't warn about tags without side= keys now applying
+    to all sides.""")
+        parser.add_argument("-s", "--stripcr", action="store_true",
+                            help="Convert DOS-style CR/LF to Unix-style LF.")
+        parser.add_argument("-v", "--verbose", action="count", default=0,
+                            help="""-v        lists changes.
+    -v -v     names each file before it's processed.
+    -v -v -v  shows verbose parse details.""")
+        parser.add_argument("-K", "--known", action="store_true",
+                            help="""Suppress check for unknown unit types, recruits, races,
+    scenarios, etc.""")
+        parser.add_argument("-S", "--nospellcheck", action="store_false",
+                            help="Suppress spellchecking")
+        parser.add_argument("-Z", "--stringfreeze", action="store_true",
+                            help="Suppress repair attempts of newlines in messages")
+        # -f --future has been removed; there have been no experimental conversions since 1.4
+        # -p --progress has been removed; similar to existing -v -v
+        parser.add_argument("directories", action="store", nargs="*",
+                            help="""Any number of directories. Each directory is converted.
+    If no directories are specified, acts on the current
+    directory.""")
 
-    namespace = parser.parse_args()
-    clean = namespace.clean
-    diffs = namespace.diffs
-    dryrun = namespace.dryrun
-    missingside = namespace.missing
-    revert = namespace.revert
-    stringfreeze = namespace.stringfreeze
-    stripcr = namespace.stripcr
-    verbose = namespace.verbose
-    dospellcheck = namespace.nospellcheck # WARNING! We store the opposite of the value needed!
-    inconsistency = namespace.known
-    arguments = namespace.directories # a remnant of getopt...
+        namespace = parser.parse_args()
+        clean = namespace.clean
+        diffs = namespace.diffs
+        dryrun = namespace.dryrun
+        missingside = namespace.missing
+        revert = namespace.revert
+        stringfreeze = namespace.stringfreeze
+        stripcr = namespace.stripcr
+        verbose = namespace.verbose
+        dospellcheck = namespace.nospellcheck # WARNING! We store the opposite of the value needed!
+        inconsistency = namespace.known
+        arguments = namespace.directories # a remnant of getopt...
 
-    if dryrun:
-        verbose = max(1, verbose)
+        if dryrun:
+            verbose = max(1, verbose)
 
-    post15 = False
+        post15 = False
 
-    def hasdigit(str):
-        for c in str:
-            if c in "0123456789":
-                return True
-        return False
+        def hasdigit(str):
+            for c in str:
+                if c in "0123456789":
+                    return True
+            return False
 
-    def texttransform(filename, lineno, line):
-        "Resource-name transformation on text lines."
-        original = line
-        # Perform line changes
-        if "wmllint: noconvert" not in original:
-            for (old, new) in linechanges + mapchanges:
-                line = line.replace(old, new)
-            # Perform any base terrain string conversions needed in
-            # [terrain_type] aliasof=, mvt_alias=, and def_alias= attributes.
-            if under("terrain_type"):
-                match = re.search(r"\b(?:aliasof|mvt_alias|def_alias)\s*=(.*)$", line)
-                if match:
-                    aliases = match.group()
-                    for (old, new) in aliaschanges:
-                        old = r'\b' + old + r'\b'
-                        aliases = re.sub(old, new, aliases)
-                    line = line.replace(match.group(), aliases)
-        # Perform tag renaming for 1.5.  Note: this has to happen before
-        # the sanity check, which assumes [unit] has already been
-        # mapped to [unit_type].  Also, beware that this test will fail to
-        # convert any unit definitions not in conventionally-named
-        # directories -- this is necessary in order to avoid stepping
-        # on SingleUnitWML in macro files.  The post15 flag expresses whether
-        # we've seen a [unit_type] and can therefore assume the files have
-        # undergone 1.4 -> 1.5 conversion.
-        global post15
-        if "units" in filename and not post15:
-            if '[unit_type]' in line:
-                post15 = True
-            else:
-                line = line.replace("[unit]", "[unit_type]")
-                line = line.replace("[+unit]", "[+unit_type]")
-                line = line.replace("[/unit]", "[/unit_type]")
-        # Handle SingleUnitWML or Standard Unit Filter or SideWML
-        # Also, when macro calls have description= in them, the arg is
-        # a SUF being passed in.
-        if tagstack and ((under("unit") and "units" not in filename) or \
-               standard_unit_filter() or \
-               under("side") or \
-               re.search("{[A-Z]+.*description=.*}", line)):
-            if "id" not in tagstack[-1][1] and "_" not in line:
-                line = re.sub(r"\bdescription\s*=", "id=", line)
-            if "name" not in tagstack[-1][1]:
-                line = re.sub(r"user_description\s*=", "name=", line)
-            if "generate_name" not in tagstack[-1][1]:
-                line = re.sub(r"generate_description\s*=", "generate_name=", line)
-        # Now, inside objects...
-        if under("object") and "description" not in tagstack[-1][1]:
-            line = re.sub(r"user_description\s*=", "description=", line)
-        # Alas, WML variable references cannot be converted so
-        # automatically.
-        if ".description" in line:
-            print('"%s", line %d: .description may need hand fixup' % \
-                  (filename, lineno))
-        if ".user_description" in line:
-            print('"%s", line %d: .user_description may need hand fixup' % \
-                  (filename, lineno))
-        # In unit type definitions
-        if under("unit_type") or under("female") or under("unit"):
-            line = line.replace("unit_description=", "description=")
-            line = line.replace("advanceto=", "advances_to=")
-        # Inside themes
-        if within("theme"):
-            line = line.replace("[unit_description]", "[unit_name]")
-        # Report the changes
-        if verbose > 0 and line != original:
-            msg = "%s, line %d: %s -> %s" % \
-                  (filename, lineno, original.strip(), line.strip())
-            print(msg)
-        return line
-
-    try:
-        # If a backslash comes before a quote, it will be interpreted as an
-        # escape to a literal quote rather than a Windows directory delimiter,
-        # causing Windows to find "no such file or directory". This block deals
-        # with this issue, but it is impossible to handle all cases if multiple
-        # (intended) arguments are involved. We also activate globbing on
-        # Windows, if there is a wildcard.
-        if arguments and sys.platform == 'win32':
-            wildcard = False
-            ugly = False
-            newargs = []
-            for i, arg in enumerate(arguments):
-                if not wildcard and '*' in arg:
-                    wildcard = True
-                    from glob import glob
-                if '"' in arg:
-                    if len(arguments) - i > 1:
-                        ugly = True
-                        break
-                    test = arg.split('"', 1)
-                    if " " in test[1].lstrip():
-                        ugly = True
-                        break
-                    print('\n\nWARNING!! A backslash followed by a quote (\\") is \
-interpreted not as a directory separator and an argument delimiter, but as an escape \
-to a literal quote. Two quotes together ("") will also be interpreted as including a \
-literal quote. Your system sees the file/directory you are targeting as:\n\n%s\n\nAlthough \
-wmllint believes it can resolve this particular instance, please do not repeat this \
-in the future. (If you are using a final backslash at the end of your argument, it \
-is not necessary; also, frontslashes will also be recognized as directory separators.)\n\n'%arg, file=sys.stderr)
-                    arguments.remove(arg)
-                    arg = re.sub(r'([^ ])"([^ ])', r'\1\\\2', arg)
-                    for new in arg.rstrip('"').split('"'):
-                        arguments.insert(i, new.strip())
-                        i += 1
-                        print('wmllint: resolving address as: %s' % new.strip(), file=sys.stderr)
-            if ugly:
-                print("""
-    WARNING!! A backslash followed by a quote (\\"), or two quotes (""), is misinterpreted by your system to mean you want a literal quote character, not a path encloser:
-
-    %s
-
-    After exiting this message: hit the up arrow key, edit your command, and press Enter.
-""" % re.sub(r'"', '-->>"<<--', arg), file=sys.stderr)
-
-                moreugly = input('Press "H" if you need more help, or Enter to exit: ')
-                if moreugly.lower().startswith('h'):
-                    print(r"""
-        Explanation:
-
-Windows' use of the backslash as a directory separator is clashing with the use of the backslash as an escape. As an escape, the backslash tells your system that you want a normally special character to be its literal self (or sometimes, that you want a normally ordinary character to have a special meaning). Your system interprets '\"' as an escape for a literal quote character. Two quotes together are also interpreted as a literal quote.
-
-'"Campaign\"' is interpreted as 'Campaign"' instead of 'Campaign\'.
-'"My Folder\"Campaign' is interpreted as 'My Folder"Campaign' (not 'My Folder\Campaign').
-'"My Folder\Campaign\" "My Folder\Another_Campaign"' is interpreted as 'My Folder\Campaign" My' and 'Folder\Another_Campaign'.
-
-In your case, your system interprets your arguments as:
-
-    %s
-
-        Solutions:
-
-(1) If your problem is adjoining quotes, delete (or move) one of them
-(  "folder\Campaign"" -> "folder\Campaign"  )
-
-(2) If you are using a final backslash at the end of a directory address, it is not necessary
-(  "folder\Campaign\\" -> "folder\Campaign" -- but NOT "folder\Campaign\\"file.cfg -> "folder\Campaign"file.cfg  )
-
-(3) If you add a second backslash, your system will then escape the backslash instead of the quote
-(  "folder\Campaign\\" -> "folder\Campaign\\\\"  )
-
-(4) Frontslashes will also be recognized as directory separators
-(  "folder\Campaign\\" -> "folder/Campaign"  )
-
-(5) If there are no spaces in your address, it is not necessary to use quotes
-(  "folder\Campaign\\" -> folder\Campaign -- but NOT "My Folder\Campaign\\" -> My Folder\Campaign  )
-
-(6) You can move the affected quote
-(  M"y Folder\\"Campaign -> M"y Fold"er\Campaign -- but NOT Fil"es and Folders\My Folder\\"Campaign -> Fil"es and Folders\M"y Folder\Campaign  )
-
-        Reminder:
-
-(a) Hit the up arrow key. The up and down arrows move through your command history; one press of the up arrow will take you to your last command.
-(b) Edit your command. Use any of the solutions described above.
-(c) Press Enter""" % repr(arguments)[1:-1], file=sys.stderr)
-                sys.exit(2)
-            if wildcard:
-                for arg in arguments:
-                    for wild in glob(arg):
-                        newargs.append(wild)
-                if newargs:
-                    arguments = newargs
+        def texttransform(filename, lineno, line):
+            "Resource-name transformation on text lines."
+            original = line
+            # Perform line changes
+            if "wmllint: noconvert" not in original:
+                for (old, new) in linechanges + mapchanges:
+                    line = line.replace(old, new)
+                # Perform any base terrain string conversions needed in
+                # [terrain_type] aliasof=, mvt_alias=, and def_alias= attributes.
+                if under("terrain_type"):
+                    match = re.search(r"\b(?:aliasof|mvt_alias|def_alias)\s*=(.*)$", line)
+                    if match:
+                        aliases = match.group()
+                        for (old, new) in aliaschanges:
+                            old = r'\b' + old + r'\b'
+                            aliases = re.sub(old, new, aliases)
+                        line = line.replace(match.group(), aliases)
+            # Perform tag renaming for 1.5.  Note: this has to happen before
+            # the sanity check, which assumes [unit] has already been
+            # mapped to [unit_type].  Also, beware that this test will fail to
+            # convert any unit definitions not in conventionally-named
+            # directories -- this is necessary in order to avoid stepping
+            # on SingleUnitWML in macro files.  The post15 flag expresses whether
+            # we've seen a [unit_type] and can therefore assume the files have
+            # undergone 1.4 -> 1.5 conversion.
+            global post15
+            if "units" in filename and not post15:
+                if '[unit_type]' in line:
+                    post15 = True
                 else:
-                    print('wmllint: wildcard did not match any files or directories (%s)'%arguments, file=sys.stderr)
-                    sys.exit(1)
+                    line = line.replace("[unit]", "[unit_type]")
+                    line = line.replace("[+unit]", "[+unit_type]")
+                    line = line.replace("[/unit]", "[/unit_type]")
+            # Handle SingleUnitWML or Standard Unit Filter or SideWML
+            # Also, when macro calls have description= in them, the arg is
+            # a SUF being passed in.
+            if tagstack and ((under("unit") and "units" not in filename) or \
+                standard_unit_filter() or \
+                under("side") or \
+                re.search("{[A-Z]+.*description=.*}", line)):
+                if "id" not in tagstack[-1][1] and "_" not in line:
+                    line = re.sub(r"\bdescription\s*=", "id=", line)
+                if "name" not in tagstack[-1][1]:
+                    line = re.sub(r"user_description\s*=", "name=", line)
+                if "generate_name" not in tagstack[-1][1]:
+                    line = re.sub(r"generate_description\s*=", "generate_name=", line)
+            # Now, inside objects...
+            if under("object") and "description" not in tagstack[-1][1]:
+                line = re.sub(r"user_description\s*=", "description=", line)
+            # Alas, WML variable references cannot be converted so
+            # automatically.
+            if ".description" in line:
+                print('"%s", line %d: .description may need hand fixup' % \
+                    (filename, lineno))
+            if ".user_description" in line:
+                print('"%s", line %d: .user_description may need hand fixup' % \
+                    (filename, lineno))
+            # In unit type definitions
+            if under("unit_type") or under("female") or under("unit"):
+                line = line.replace("unit_description=", "description=")
+                line = line.replace("advanceto=", "advances_to=")
+            # Inside themes
+            if within("theme"):
+                line = line.replace("[unit_description]", "[unit_name]")
+            # Report the changes
+            if verbose > 0 and line != original:
+                msg = "%s, line %d: %s -> %s" % \
+                    (filename, lineno, original.strip(), line.strip())
+                print(msg)
+            return line
 
-        if not arguments:
-            arguments = ["."]
+        try:
+            # If a backslash comes before a quote, it will be interpreted as an
+            # escape to a literal quote rather than a Windows directory delimiter,
+            # causing Windows to find "no such file or directory". This block deals
+            # with this issue, but it is impossible to handle all cases if multiple
+            # (intended) arguments are involved. We also activate globbing on
+            # Windows, if there is a wildcard.
+            if arguments and sys.platform == 'win32':
+                wildcard = False
+                ugly = False
+                newargs = []
+                for i, arg in enumerate(arguments):
+                    if not wildcard and '*' in arg:
+                        wildcard = True
+                        from glob import glob
+                    if '"' in arg:
+                        if len(arguments) - i > 1:
+                            ugly = True
+                            break
+                        test = arg.split('"', 1)
+                        if " " in test[1].lstrip():
+                            ugly = True
+                            break
+                        print('\n\nWARNING!! A backslash followed by a quote (\\") is \
+    interpreted not as a directory separator and an argument delimiter, but as an escape \
+    to a literal quote. Two quotes together ("") will also be interpreted as including a \
+    literal quote. Your system sees the file/directory you are targeting as:\n\n%s\n\nAlthough \
+    wmllint believes it can resolve this particular instance, please do not repeat this \
+    in the future. (If you are using a final backslash at the end of your argument, it \
+    is not necessary; also, frontslashes will also be recognized as directory separators.)\n\n'%arg, file=sys.stderr)
+                        arguments.remove(arg)
+                        arg = re.sub(r'([^ ])"([^ ])', r'\1\\\2', arg)
+                        for new in arg.rstrip('"').split('"'):
+                            arguments.insert(i, new.strip())
+                            i += 1
+                            print('wmllint: resolving address as: %s' % new.strip(), file=sys.stderr)
+                if ugly:
+                    print("""
+        WARNING!! A backslash followed by a quote (\\"), or two quotes (""), is misinterpreted by your system to mean you want a literal quote character, not a path encloser:
 
-        failed_any_dirs = False
+        %s
 
-        for directory in arguments:
-            if not os.path.exists(directory):
-                failed_any_dirs = True
-                print("wmllint: skipping non-existent path %s" % directory)
-                continue
-            for fn in allcfgfiles(directory):
-                if verbose >= 2:
-                    print(fn + ":")
-                backup = fn + "-bak"
-                if clean or revert:
-                    # Do housekeeping
-                    if os.path.exists(backup):
-                        if clean:
-                            print("wmllint: removing %s" % backup)
-                            if not dryrun:
-                                os.remove(backup)
-                        elif revert:
-                            print("wmllint: reverting %s" % backup)
-                            if not dryrun:
-                                if sys.platform == 'win32':
-                                    os.remove(fn)
-                                os.rename(backup, fn)
-                elif diffs:
-                    # Display diffs
-                    if os.path.exists(backup):
-                        fromdate = time.ctime(os.stat(backup).st_mtime)
-                        todate = time.ctime(os.stat(fn).st_mtime)
-                        with codecs.open(backup, "r", "utf8") as fromlines, \
-                             codecs.open(fn, "r", "utf8") as tolines:
-                            diff = difflib.unified_diff(fromlines.readlines(),
-                                                        tolines.readlines(),
-                                                        backup, fn, fromdate, todate, n=3)
-                        sys.stdout.writelines(diff)
-                else:
-                    if "~" in fn:
-                        print("wmllint: ignoring %s, the campaign server won't accept it." % fn)
-                        continue
-                    # Do file conversions
-                    try:
-                        changed = translator(fn, [maptransform], texttransform)
-                        if changed:
-                            print("wmllint: converting", fn)
-                            if not dryrun:
-                                if sys.platform == 'win32' and os.path.exists(backup):
+        After exiting this message: hit the up arrow key, edit your command, and press Enter.
+    """ % re.sub(r'"', '-->>"<<--', arg), file=sys.stderr)
+
+                    moreugly = input('Press "H" if you need more help, or Enter to exit: ')
+                    if moreugly.lower().startswith('h'):
+                        print(r"""
+            Explanation:
+
+    Windows' use of the backslash as a directory separator is clashing with the use of the backslash as an escape. As an escape, the backslash tells your system that you want a normally special character to be its literal self (or sometimes, that you want a normally ordinary character to have a special meaning). Your system interprets '\"' as an escape for a literal quote character. Two quotes together are also interpreted as a literal quote.
+
+    '"Campaign\"' is interpreted as 'Campaign"' instead of 'Campaign\'.
+    '"My Folder\"Campaign' is interpreted as 'My Folder"Campaign' (not 'My Folder\Campaign').
+    '"My Folder\Campaign\" "My Folder\Another_Campaign"' is interpreted as 'My Folder\Campaign" My' and 'Folder\Another_Campaign'.
+
+    In your case, your system interprets your arguments as:
+
+        %s
+
+            Solutions:
+
+    (1) If your problem is adjoining quotes, delete (or move) one of them
+    (  "folder\Campaign"" -> "folder\Campaign"  )
+
+    (2) If you are using a final backslash at the end of a directory address, it is not necessary
+    (  "folder\Campaign\\" -> "folder\Campaign" -- but NOT "folder\Campaign\\"file.cfg -> "folder\Campaign"file.cfg  )
+
+    (3) If you add a second backslash, your system will then escape the backslash instead of the quote
+    (  "folder\Campaign\\" -> "folder\Campaign\\\\"  )
+
+    (4) Frontslashes will also be recognized as directory separators
+    (  "folder\Campaign\\" -> "folder/Campaign"  )
+
+    (5) If there are no spaces in your address, it is not necessary to use quotes
+    (  "folder\Campaign\\" -> folder\Campaign -- but NOT "My Folder\Campaign\\" -> My Folder\Campaign  )
+
+    (6) You can move the affected quote
+    (  M"y Folder\\"Campaign -> M"y Fold"er\Campaign -- but NOT Fil"es and Folders\My Folder\\"Campaign -> Fil"es and Folders\M"y Folder\Campaign  )
+
+            Reminder:
+
+    (a) Hit the up arrow key. The up and down arrows move through your command history; one press of the up arrow will take you to your last command.
+    (b) Edit your command. Use any of the solutions described above.
+    (c) Press Enter""" % repr(arguments)[1:-1], file=sys.stderr)
+                    sys.exit(2)
+                if wildcard:
+                    for arg in arguments:
+                        for wild in glob(arg):
+                            newargs.append(wild)
+                    if newargs:
+                        arguments = newargs
+                    else:
+                        print('wmllint: wildcard did not match any files or directories (%s)'%arguments, file=sys.stderr)
+                        sys.exit(1)
+
+            if not arguments:
+                arguments = ["."]
+
+            failed_any_dirs = False
+
+            for directory in arguments:
+                if not os.path.exists(directory):
+                    failed_any_dirs = True
+                    print("wmllint: skipping non-existent path %s" % directory)
+                    continue
+                for fn in allcfgfiles(directory):
+                    if verbose >= 2:
+                        print(fn + ":")
+                    backup = fn + "-bak"
+                    if clean or revert:
+                        # Do housekeeping
+                        if os.path.exists(backup):
+                            if clean:
+                                print("wmllint: removing %s" % backup)
+                                if not dryrun:
                                     os.remove(backup)
-                                os.rename(fn, backup)
-                                if fn.endswith(".gz"):
-                                    with gzip.open(fn, "w") as ofp:
-                                        ofp.write(changed)
-                                else:
-                                    with codecs.open(fn, "w", "utf8") as ofp:
-                                        ofp.write(changed)
-                    #except maptransform_error, e:
-                    #    print("wmllint: " + repr(e), file=sys.stderr)
-                    except:
-                        print("wmllint: internal error on %s" % fn, file=sys.stderr)
-                        (exc_type, exc_value, exc_traceback) = sys.exc_info()
-                        raise exc_type(exc_value).with_traceback(exc_traceback)
-        if not clean and not diffs and not revert:
-            # Consistency-check everything we got from the file scans
-            if not inconsistency:
-                consistency_check()
-            # Attempt a spell-check
-            if dospellcheck:
-                try:
-                    import enchant
-                    d = enchant.Dict("en_US")
-                    checker = d.provider.desc
-                    if checker.endswith(" Provider"):
-                        checker = checker[:-9]
-                    print("# Spell-checking with", checker)
-                    for word in declared_spellings["GLOBAL"]:
-                        d.add_to_session(word.lower())
-                    for directory in arguments:
-                        if not os.path.exists(directory):
-                            failed_any_dirs = True
-                            print("wmllint: skipping non-existent path %s" % directory)
+                            elif revert:
+                                print("wmllint: reverting %s" % backup)
+                                if not dryrun:
+                                    if sys.platform == 'win32':
+                                        os.remove(fn)
+                                    os.rename(backup, fn)
+                    elif diffs:
+                        # Display diffs
+                        if os.path.exists(backup):
+                            fromdate = time.ctime(os.stat(backup).st_mtime)
+                            todate = time.ctime(os.stat(fn).st_mtime)
+                            with codecs.open(backup, "r", "utf8") as fromlines, \
+                                codecs.open(fn, "r", "utf8") as tolines:
+                                diff = difflib.unified_diff(fromlines.readlines(),
+                                                            tolines.readlines(),
+                                                            backup, fn, fromdate, todate, n=3)
+                            sys.stdout.writelines(diff)
+                    else:
+                        if "~" in fn:
+                            print("wmllint: ignoring %s, the campaign server won't accept it." % fn)
                             continue
-                        for fn in allcfgfiles(directory):
-                            if verbose >= 2:
-                                print(fn + ":")
-                            spellcheck(fn, d)
-                except ImportError:
-                    print("wmllint: spell check unavailable, install python-enchant to enable", file=sys.stderr)
-        if failed_any_dirs:
-            sys.exit(1)
-    except KeyboardInterrupt:
-        print("Aborted by pressing ctrl-c")
+                        # Do file conversions
+                        try:
+                            changed = translator(fn, [maptransform], texttransform)
+                            if changed:
+                                print("wmllint: converting", fn)
+                                if not dryrun:
+                                    if sys.platform == 'win32' and os.path.exists(backup):
+                                        os.remove(backup)
+                                    os.rename(fn, backup)
+                                    if fn.endswith(".gz"):
+                                        with gzip.open(fn, "w") as ofp:
+                                            ofp.write(changed)
+                                    else:
+                                        with codecs.open(fn, "w", "utf8") as ofp:
+                                            ofp.write(changed)
+                        #except maptransform_error, e:
+                        #    print("wmllint: " + repr(e), file=sys.stderr)
+                        except:
+                            print("wmllint: internal error on %s" % fn, file=sys.stderr)
+                            (exc_type, exc_value, exc_traceback) = sys.exc_info()
+                            raise exc_type(exc_value).with_traceback(exc_traceback)
+            if not clean and not diffs and not revert:
+                # Consistency-check everything we got from the file scans
+                if not inconsistency:
+                    consistency_check()
+                # Attempt a spell-check
+                if dospellcheck:
+                    try:
+                        import enchant
+                        d = enchant.Dict("en_US")
+                        checker = d.provider.desc
+                        if checker.endswith(" Provider"):
+                            checker = checker[:-9]
+                        print("# Spell-checking with", checker)
+                        for word in declared_spellings["GLOBAL"]:
+                            d.add_to_session(word.lower())
+                        for directory in arguments:
+                            if not os.path.exists(directory):
+                                failed_any_dirs = True
+                                print("wmllint: skipping non-existent path %s" % directory)
+                                continue
+                            for fn in allcfgfiles(directory):
+                                if verbose >= 2:
+                                    print(fn + ":")
+                                spellcheck(fn, d)
+                    except ImportError:
+                        print("wmllint: spell check unavailable, install python-enchant to enable", file=sys.stderr)
+            if failed_any_dirs:
+                sys.exit(1)
+        except KeyboardInterrupt:
+            print("Aborted by pressing ctrl-c")
+
+    main()
 
 # wmllint ends here
