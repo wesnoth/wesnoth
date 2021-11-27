@@ -96,6 +96,12 @@ changing them.""")
 Call with no arguments to filter WML on stdin to
 reindented WML on stdout.""")
 
+    global verbose
+    global quiet
+    global dryrun
+    global exclude
+    global arguments
+
     namespace = parser.parse_args()
     verbose = namespace.verbose
     quiet = namespace.quiet
