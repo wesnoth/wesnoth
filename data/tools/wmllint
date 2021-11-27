@@ -1317,7 +1317,7 @@ In your case, your system interprets your arguments as:
         if failed_any_dirs:
             sys.exit(1)
     except KeyboardInterrupt:
-        print("Aborted by pressing ctrl-c")
+        print("Interrupt Signal Detected. Program Aborted.")
 
 
 # helper function to reduce code duplication and allow easy checking of amendment tags ([+tag] syntax)
