@@ -1,77 +1,79 @@
 #!/usr/bin/env python3
-#
-# wmllint -- check WML for conformance to the most recent dialect
-#
-# By Eric S. Raymond April 2007.
-#
-# All conversion logic for lifting WML and maps from older versions of the
-# markup to newer ones should live here.  This includes resource path changes
-# and renames, also map format conversions.
-#
-# While the script is at it, it checks for various incorrect and dodgy WML
-# constructs, including:
-#   * unbalanced tags
-#   * strings that need a translation mark and should not have them
-#   * strings that have a translation mark and should not
-#   * translatable strings containing macro references
-#   * filter references by description= not matched by an actual unit
-#   * abilities or traits without matching special notes, or vice-versa
-#   * consistency between recruit= and recruitment_pattern= instances
-#   * double space after punctuation in translatable strings.
-#   * unknown races or movement types in units
-#
-# Takes any number of directories as arguments.  Each directory is converted.
-# If no directories are specified, acts on the current directory.
-#
-# The recommended procedure is this:
-# 1. Run it with --dryrun first to see what it will do.
-# 2. If the messages look good, run without --dryrun; the old content
-#    will be left in backup files with a -bak extension.
-# 3. Eyeball the changes with the --diff option.
-# 4. Use wmlscope, with a directory list including the Wesnoth mainline WML
-#    as first argument, to check that you have no unresolved references.
-# 5. Test the conversion.
-# 6. Use either --clean to remove the -bak files or --revert to
-#    undo the conversion.
-#
-# This script will barf on 1.2.x maps with custom terrains.  Also, if you
-# have a single subdirectory that mixes old-style and new-style
-# terrain coding it might get confused.
-#
-# Standalone terrain mask files *must* have a .mask extension on their name
-# or they'll have an incorrect usage=map generated into them.
-#
-# Note: You can shut wmllint up about custom terrains by having a comment
-# on the same line that includes the string "wmllint: ignore".
-#
-# You can also prevent description insertions with "wmllint: no-icon".
-#
-# You can force otherwise undeclared characters to be recognized with
-# a magic comment containing the string "wmllint: recognize".
-# The rest of the line is stripped and treated as the name of a character
-# who should be recognized in descriptions.  This will be useful,
-# for example, if your scenario follows a continue so there are
-# characters present who were not explicitly recalled.  It may
-# also be useful if you have wrapped unit-creation or recall markup in macros
-# and wmllint cannot recognize it.
-#
-# Similarly, it is possible to explicitly declare a unit's usage class
-# with a magic comment that looks like thisL
-#    wmllint: usage of <unit> is <class>
-# Note that <unit> must be a string wrapped in ASCII doublequotes.  This
-# declaration will be useful if you are declaring units with macros that
-# include a substitutable formal in the unit name; there are examples in UtBS.
-#
-# You can disable stack-based malformation checks with a comment
-# containing "wmllint: validate-off" and re-enable with "wmllint: validate-on".
-#
-# You can prevent file conversions with a comment containing
-# "wmllint: noconvert" on the same line as the filename.
-#
-# You can skip checks on unbalanced WML (e.g. in a macro definition) by
-# bracketing it with "wmllint: unbalanced-on" and "wmllint: unbalanced-off".
-# Note that this will also disable stack-based validation on the span
-# of lines they enclose.
+
+"""
+wmllint -- check WML for conformance to the most recent dialect
+
+By Eric S. Raymond April 2007.
+
+All conversion logic for lifting WML and maps from older versions of the
+markup to newer ones should live here.  This includes resource path changes
+and renames, also map format conversions.
+
+While the script is at it, it checks for various incorrect and dodgy WML
+constructs, including:
+  * unbalanced tags
+  * strings that need a translation mark and should not have them
+  * strings that have a translation mark and should not
+  * translatable strings containing macro references
+  * filter references by description= not matched by an actual unit
+  * abilities or traits without matching special notes, or vice-versa
+  * consistency between recruit= and recruitment_pattern= instances
+  * double space after punctuation in translatable strings.
+  * unknown races or movement types in units
+
+Takes any number of directories as arguments.  Each directory is converted.
+If no directories are specified, acts on the current directory.
+
+The recommended procedure is this:
+1. Run it with --dryrun first to see what it will do.
+2. If the messages look good, run without --dryrun; the old content
+   will be left in backup files with a -bak extension.
+3. Eyeball the changes with the --diff option.
+4. Use wmlscope, with a directory list including the Wesnoth mainline WML
+   as first argument, to check that you have no unresolved references.
+5. Test the conversion.
+6. Use either --clean to remove the -bak files or --revert to
+   undo the conversion.
+
+This script will barf on 1.2.x maps with custom terrains.  Also, if you
+have a single subdirectory that mixes old-style and new-style
+terrain coding it might get confused.
+
+Standalone terrain mask files *must* have a .mask extension on their name
+or they'll have an incorrect usage=map generated into them.
+
+Note: You can shut wmllint up about custom terrains by having a comment
+on the same line that includes the string "wmllint: ignore".
+
+You can also prevent description insertions with "wmllint: no-icon".
+
+You can force otherwise undeclared characters to be recognized with
+a magic comment containing the string "wmllint: recognize".
+The rest of the line is stripped and treated as the name of a character
+who should be recognized in descriptions.  This will be useful,
+for example, if your scenario follows a continue so there are
+characters present who were not explicitly recalled.  It may
+also be useful if you have wrapped unit-creation or recall markup in macros
+and wmllint cannot recognize it.
+
+Similarly, it is possible to explicitly declare a unit's usage class
+with a magic comment that looks like thisL
+   wmllint: usage of <unit> is <class>
+Note that <unit> must be a string wrapped in ASCII doublequotes.  This
+declaration will be useful if you are declaring units with macros that
+include a substitutable formal in the unit name; there are examples in UtBS.
+
+You can disable stack-based malformation checks with a comment
+containing "wmllint: validate-off" and re-enable with "wmllint: validate-on".
+
+You can prevent file conversions with a comment containing
+"wmllint: noconvert" on the same line as the filename.
+
+You can skip checks on unbalanced WML (e.g. in a macro definition) by
+bracketing it with "wmllint: unbalanced-on" and "wmllint: unbalanced-off".
+Note that this will also disable stack-based validation on the span
+of lines they enclose.
+"""
 
 import sys
 import os

@@ -1,109 +1,111 @@
 #!/usr/bin/env python3
 # encoding: utf-8
-#
-# wmlscope -- generate reports on WML macro and resource usage
-#
-# By Eric S. Raymond, April 2007.
-#
-# This tool cross-references macro definitions with macro calls, and
-# resource (sound or image) files with uses of the resources in WML.
-# and generates various useful reports from such cross-references.
-# It also checks actual macro arguments against types implied by the formals
-#
-# (Most of the work is done by a cross-referencer class that is also
-# used in other tools.)
-#
-# It takes a list of directories as arguments; if none is given, it
-# behaves as though the current directory had been specified as a
-# single argument.  Each directory is treated as a separate domain for
-# macro and resource visibility purposes.
-#
-# There are two kinds of namespace, exporting and non-exporting.
-# Exporting namespaces make all their resources and macro names
-# globally visible.  You can make a namespace exporting by embedding
-# a comment like this in it:
-#
-#     # wmlscope: export=yes
-#
-# Wesnoth core data is an exporting namespace.  Campaigns are non-exporting;
-# they should contain the declaration
-#
-#     # wmlscope: export=no
-#
-# somewhere.  wmlscope will complain when it sees a namespace with no export
-# property, then treat it as non-exporting.
-#
-# You can tell wmlscope to ignore stretches of config files
-# with the following magic comments:
-#
-#     # wmlscope: start ignoring
-#     # wmlscope: stop ignoring
-#
-# Similarly, you can tell wmlscope to ignore multiple or duplicate macro
-# definitions in a range of lines with the following magic comments:
-#
-#     # wmlscope: start conditionals
-#     # wmlscope: stop conditionals
-#
-# The following magic comment:
-#
-#     # prune FOOBAR
-#
-# will cause wmlscope to forget about all but one of the definitions of FOOBAR
-# it has seen.  This will be useful mainly for symbols that have different
-# definitions enabled by an #ifdef.
-#
-# Due to a preprocessor limitation, inline macros cannot contain a documentation
-# string. If you need to document these macros in the HTML macro reference, you
-# can use the following directive:
-#
-#     # wmlscope: docstring FOOBAR
-#
-# The docstring for the FOOBAR macro will be collected until a non-comment line,
-# a #define or another # wmlscope: docstring are found. External docstrings
-# *must* be defined before the macro they're referring to; defining two or more
-# external docstrings keeps only the most recent one, but having both an
-# external and an internal docstring is allowed (in this case, the internal one
-# will be appended to the external one in the macro reference).
-#
-# This tool does catch one kind of implicit reference: if an attack name
-# is specified but no icon is given, the attack icon will default to
-# a name generated from the attack name.  This behavior can be suppressed
-# by adding a magic comment containing the string "no-icon" to the name= line.
-#
-# The checking done by this tool has a couple of flaws:
-#
-# (1) It doesn't actually evaluate file inclusions.  Instead, any
-# macro definition satisfies any macro call made under the same
-# directory.  Exception: when an #undef is detected, the macro is
-# tagged local and not visible outside the span of lines where it's
-# defined.
-#
-# (2) It doesn't read [binary_path] tags, as this would require
-# implementing a WML parser.  Instead, it assumes that a resource-file
-# reference can be satisfied by any matching image file from anywhere
-# in the same directory it came from.  The resources under the *first*
-# directory argument (only) are visible everywhere.
-#
-# (3) A reference with embedded {}s in a macro will have the macro's
-# formal args substituted in at WML evaluation time.  Instead, this
-# tool treats each {} as a .* wildcard and considers the reference to
-# match *every* resource filename that matches that pattern.  Under
-# appropriate circumstances this might report a resource filename
-# statically matching the pattern as having been referenced even
-# though none of the actual macro calls would actually generate it.
-#
-# Problems (1) and (2) imply that this tool might conceivably report
-# that a reference has been satisfied when under actual
-# WML-interpreter rules it has not.
-#
-# The reporting format is compatible with GNU Emacs compile mode.
-#
-# For debugging purposes, an in-line comment of the form
-#
-#     # wmlscope: warnlevel NNN
-#
-# sets the warning level.
+
+"""
+wmlscope -- generate reports on WML macro and resource usage
+
+By Eric S. Raymond, April 2007.
+
+This tool cross-references macro definitions with macro calls, and
+resource (sound or image) files with uses of the resources in WML.
+and generates various useful reports from such cross-references.
+It also checks actual macro arguments against types implied by the formals
+
+(Most of the work is done by a cross-referencer class that is also
+used in other tools.)
+
+It takes a list of directories as arguments; if none is given, it
+behaves as though the current directory had been specified as a
+single argument.  Each directory is treated as a separate domain for
+macro and resource visibility purposes.
+
+There are two kinds of namespace, exporting and non-exporting.
+Exporting namespaces make all their resources and macro names
+globally visible.  You can make a namespace exporting by embedding
+a comment like this in it:
+
+    # wmlscope: export=yes
+
+Wesnoth core data is an exporting namespace.  Campaigns are non-exporting;
+they should contain the declaration
+
+    # wmlscope: export=no
+
+somewhere.  wmlscope will complain when it sees a namespace with no export
+property, then treat it as non-exporting.
+
+You can tell wmlscope to ignore stretches of config files
+with the following magic comments:
+
+    # wmlscope: start ignoring
+    # wmlscope: stop ignoring
+
+Similarly, you can tell wmlscope to ignore multiple or duplicate macro
+definitions in a range of lines with the following magic comments:
+
+    # wmlscope: start conditionals
+    # wmlscope: stop conditionals
+
+The following magic comment:
+
+    # prune FOOBAR
+
+will cause wmlscope to forget about all but one of the definitions of FOOBAR
+it has seen.  This will be useful mainly for symbols that have different
+definitions enabled by an #ifdef.
+
+Due to a preprocessor limitation, inline macros cannot contain a documentation
+string. If you need to document these macros in the HTML macro reference, you
+can use the following directive:
+
+    # wmlscope: docstring FOOBAR
+
+The docstring for the FOOBAR macro will be collected until a non-comment line,
+a #define or another # wmlscope: docstring are found. External docstrings
+*must* be defined before the macro they're referring to; defining two or more
+external docstrings keeps only the most recent one, but having both an
+external and an internal docstring is allowed (in this case, the internal one
+will be appended to the external one in the macro reference).
+
+This tool does catch one kind of implicit reference: if an attack name
+is specified but no icon is given, the attack icon will default to
+a name generated from the attack name.  This behavior can be suppressed
+by adding a magic comment containing the string "no-icon" to the name= line.
+
+The checking done by this tool has a couple of flaws:
+
+(1) It doesn't actually evaluate file inclusions.  Instead, any
+macro definition satisfies any macro call made under the same
+directory.  Exception: when an #undef is detected, the macro is
+tagged local and not visible outside the span of lines where it's
+defined.
+
+(2) It doesn't read [binary_path] tags, as this would require
+implementing a WML parser.  Instead, it assumes that a resource-file
+reference can be satisfied by any matching image file from anywhere
+in the same directory it came from.  The resources under the *first*
+directory argument (only) are visible everywhere.
+
+(3) A reference with embedded {}s in a macro will have the macro's
+formal args substituted in at WML evaluation time.  Instead, this
+tool treats each {} as a .* wildcard and considers the reference to
+match *every* resource filename that matches that pattern.  Under
+appropriate circumstances this might report a resource filename
+statically matching the pattern as having been referenced even
+though none of the actual macro calls would actually generate it.
+
+Problems (1) and (2) imply that this tool might conceivably report
+that a reference has been satisfied when under actual
+WML-interpreter rules it has not.
+
+The reporting format is compatible with GNU Emacs compile mode.
+
+For debugging purposes, an in-line comment of the form
+
+    # wmlscope: warnlevel NNN
+
+sets the warning level.
+"""
 
 import sys
 import os
