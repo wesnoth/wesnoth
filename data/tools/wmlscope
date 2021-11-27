@@ -285,8 +285,10 @@ def interpret(lines, css):
     outstr = outstr.replace("\n\n</pre>", "\n</pre>")
     return outstr
 
+
 class CrossRefLister(CrossRef):
     "Cross-reference generator with reporting functions"
+    
     def xrefdump(self, pred=None):
         "Report resolved macro references."
         for name in sorted(self.xref.keys()):
@@ -565,6 +567,7 @@ class CrossRefLister(CrossRef):
         linkheaderstr += "</ul></div>\n"
         fp.write(linkheaderstr)
         fp.write(outstr)
+
 
 if __name__ == "__main__":
     main()

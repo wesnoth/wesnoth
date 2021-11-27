@@ -136,6 +136,7 @@ def main():
 
 class ParseArgs:
     "Mine macro argument locations out of a .cfg file."
+
     def __init__(self, fp, verbose=False):
         self.fp = fp
         self.verbose = verbose
@@ -144,6 +145,7 @@ class ParseArgs:
         self.pushback = None
         self.lead = ""
         self.parse_until([''])
+
     def getchar(self):
         if self.pushback:
             c = self.pushback
@@ -151,10 +153,12 @@ class ParseArgs:
             return c
         else:
             return self.fp.read(1)
+
     def ungetchar(self, c):
         if verbose:
             print("pushing back", c)
         self.pushback = c
+
     def parse_until(self, enders):
         "Parse until we reach specified terminator."
         if self.verbose:
@@ -171,6 +175,7 @@ class ParseArgs:
                 return c
             elif c == '{':
                 self.parse_call()
+
     def parse_call(self):
         "We see a start of call."
         if self.verbose:
@@ -214,6 +219,7 @@ class ParseArgs:
         if self.verbose:
             print(self.lead + "parse_call() ends")
             self.lead = self.lead[:-1]
+
     def parse_actual(self):
         "Parse an actual argument."
         # Skip leading whitespace
@@ -256,6 +262,7 @@ class ParseArgs:
             self.lead = self.lead[:-1]
         return True
 
+
 def relevant_macros():
     "Compute indices of (X, Y) pairs in formals of all mainline macros."
     # Cross-reference all files.
@@ -279,6 +286,7 @@ def relevant_macros():
             if have_x is not None and have_y is not None:
                 relevant[name] = (have_x, have_y)
     return relevant
+
 
 def transformables(filename, relevant, verbose):
     "Return a list of transformable (X,Y) regions in the specified file."
@@ -317,6 +325,7 @@ def transformables(filename, relevant, verbose):
     # Return the file content as a string and the transformable extents in it.
     return (content, pairs)
 
+
 def mapsize(filename):
     "Return the size of a specified mapfile."
     x = y = 0
@@ -328,6 +337,7 @@ def mapsize(filename):
                 assert(x == 0 or x == nx)
                 x = nx
     return (x, y)
+
 
 if __name__ == '__main__':
     main()

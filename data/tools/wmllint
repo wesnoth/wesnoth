@@ -1320,13 +1320,12 @@ In your case, your system interprets your arguments as:
         print("Aborted by pressing ctrl-c")
 
 
-# helper function to reduce code duplication and allow easy checking
-# of amendment tags ([+tag] syntax)
-
+# helper function to reduce code duplication and allow easy checking of amendment tags ([+tag] syntax)
 def has_opening_tag(line, tag):
     """Check whether a line contains an opening tag or the corresponding
 amendment tag, internally using string concatenation. Returns a boolean."""
     return (("[" + tag + "]") in line) or (("[+" + tag + "]") in line)
+
 
 def validate_on_pop(tagstack, closer, filename, lineno):
     "Validate the stack at the time a new close tag is seen."
@@ -1394,6 +1393,7 @@ def validate_on_pop(tagstack, closer, filename, lineno):
         print('"%s", line %d: [variation] is missing required variation_id attribute' % \
               (filename, lineno))
 
+
 def within(tag):
     "Did the specified tag lead one of our enclosing contexts?"
     if type(tag) == type(()): # Can take a list.
@@ -1404,6 +1404,7 @@ def within(tag):
             return False
     else:
         return tag in [x[0] for x in tagstack]
+
 
 def under(tag):
     "Did the specified tag lead the latest context?"
@@ -1417,6 +1418,7 @@ def under(tag):
         return tag == tagstack[-1][0]
     else:
         return False
+
 
 def standard_unit_filter():
     "Are we within the syntactic context of a standard unit filter?"
@@ -1475,6 +1477,7 @@ races = []
 unit_races = []
 nextrefs = []
 scenario_to_filename = {}
+
 
 # Attributes that should have translation marks
 def is_translatable(key):
@@ -1583,6 +1586,7 @@ pango_conversions = (("~", "<b>", "</b>"),
                      ("`", "<span size='small'>", "</span>"),
                      )
 
+
 def pangostrip(message):
     "Strip Pango markup out of a string."
     # This is all known Pango convenience tags
@@ -1593,6 +1597,7 @@ def pangostrip(message):
     # And Pango specials;
     message = re.sub("&[a-z]+;", "", message)
     return message
+
 
 def pangoize(message, filename, line):
     "Pango conversion of old-style Wesnoth markup."
@@ -1637,6 +1642,7 @@ def pangoize(message, filename, line):
                 print('"%s", line %d: < or > in pango string requires manual fix.' % (filename, line))
     return message
 
+
 class WmllintIterator(WmlIterator):
     "Fold an Emacs-compatible error reporter into WmlIterator."
     def printError(self, *misc):
@@ -1648,6 +1654,7 @@ class WmllintIterator(WmlIterator):
         for item in misc:
             print(item, end=" ", file=sys.stderr)
         print("", file=sys.stderr) #terminate line
+
 
 def local_sanity_check(filename, nav, key, prefix, value, comment):
     "Sanity checks that don't require file context or globals."
@@ -1726,6 +1733,7 @@ def local_sanity_check(filename, nav, key, prefix, value, comment):
         if key == 'id':
             scenario_to_filename[value] = filename
 
+
 def global_sanity_check_events(filename, lines):
     """Part of global_sanity_check which finds each [event] tag.
 
@@ -1745,6 +1753,7 @@ def global_sanity_check_events(filename, lines):
         # the closing tag.
         if "[event]" in nav.text:
             sanity_check_speaks_in_death_event(nav.copy(), deathcheck)
+
 
 def sanity_check_speaks_in_death_event(opening_tag, deathcheck):
     """Detect units that speak in their death events
@@ -1809,6 +1818,7 @@ def sanity_check_speaks_in_death_event(opening_tag, deathcheck):
                         if deathcheck and ((value == filter_subject) or (value == "unit")):
                             print('"%s", line %d: %s speaks in his/her "die" event rather than "last breath"' \
                                   % (nav.fname, nav.lineno+1, value))
+
 
 def global_sanity_check(filename, lines):
     "Perform sanity and consistency checks on input files."
@@ -2637,6 +2647,7 @@ to be called on their own".format(filename, num))
             lines = [lines[w-1].lstrip()] + lines[:w-1] + lines[w:]
     return lines
 
+
 def condition_match(p, q):
     "Do two condition-states match?"
     # The empty condition state is represented by None
@@ -2654,6 +2665,7 @@ def condition_match(p, q):
         sq = sp[1:]
         nq == True
     return (sp != sq) and (np != nq)
+
 
 def consistency_check():
     "Consistency-check state information picked up by sanity_check"
@@ -2744,13 +2756,14 @@ def consistency_check():
     for store in storedids.keys():
         print('wmllint: stored unit "%s" not unstored or cleared from "%s"' % (storedids[store], store))
 
-# Syntax transformations
+
+######## Syntax transformations #############
 
 leading_ws = re.compile(r"^\s*")
-
 def leader(s):
     "Return a copy of the leading whitespace in the argument."
     return leading_ws.match(s).group(0)
+
 
 def hack_syntax(filename, lines):
     # Syntax transformations go here.  This gets called once per WML file;
@@ -3025,6 +3038,7 @@ def hack_syntax(filename, lines):
     # More syntax transformations would go here.
     return lines
 
+
 def maptransform(filename, baseline, inmap, y):
     # Transform lines in maps
     for i in range(len(inmap[y])):
@@ -3040,7 +3054,9 @@ must be converted manually".format(filename, baseline + y + 1))
         elif "Xol" in inmap[y][i]:
             inmap[y][i] = inmap[y][i].replace("Xol", "Xos^Efs")
 
-# Generic machinery starts here
+
+######### Generic machinery starts here #########
+
 
 def is_map(filename):
     "Is this file a map?"
@@ -3066,8 +3082,8 @@ if 0: # Not used, as there are currently no defined map transforms
         raise maptransform_error(filename, baseline+y+1,
                              "unrecognized map element at line %d" % (y,))
 
-tagstack = [] # For tracking tag nesting
 
+tagstack = [] # For tracking tag nesting
 def outermap(func, inmap):
     "Apply a transformation based on neighborhood to the outermost ring."
     # Top and bottom rows
@@ -3319,6 +3335,7 @@ def translator(filename, mapxforms, textxform):
     else:
         return None
 
+
 def inner_spellcheck(nav, value, spelldict):
     "Spell-check an attribute value or string."
     # Strip off translation marks
@@ -3494,10 +3511,12 @@ def spellcheck(fn, d):
 
 vctypes = (".svn", ".git", ".hg")
 
+
 def interesting(fn):
     "Is a file interesting for conversion purposes?"
     return (fn.endswith(".cfg") and not fn.endswith("_info.cfg")) \
            or is_map(fn) or issave(fn)
+
 
 def allcfgfiles(directory):
     "Get the names of all interesting files under directory."
@@ -3518,6 +3537,7 @@ def allcfgfiles(directory):
                     datafiles.append(os.path.join(root, name))
     datafiles.sort() # So diffs for same campaigns will cluster in reports
     return map(os.path.normpath, datafiles)
+
 
 if __name__ == '__main__':
     main()

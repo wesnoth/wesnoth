@@ -120,6 +120,7 @@ def is_directive(str):
     if "#endarg" in str: return True
     return str.startswith(("#ifdef", "#ifndef", "#ifhave", "#ifnhave", "#ifver", "#ifnver", "#else", "#endif", "#define", "#enddef", "#undef", "#arg", "#endarg", "#deprecated"))
 
+
 def closer(str):
     "Are we looking at a closing tag?"
     if str.startswith("#"):
@@ -128,6 +129,7 @@ def closer(str):
         return True
     else:
         return str.startswith(tuple(closer_prefixes))
+
 
 def opener(str):
     "Are we looking at an opening tag?"
@@ -144,11 +146,13 @@ def opener(str):
     else:
         return str.startswith(tuple(opener_prefixes))
 
+
 class bailout(Exception):
     def __init__(self, filename, lineno, msg):
         self.filename = filename
         self.lineno = lineno
         self.msg = msg
+
 
 def reindent(name, infp, outfp):
     "Reindent WML."
@@ -277,6 +281,7 @@ def reindent(name, infp, outfp):
     if indent != "" and seen_wml:
         print('wmlindent: "%s". line %d: end of file with indent nonzero.' % (name, countlines), file=sys.stderr)
 
+
 def allwmlfiles(directory):
     "Get names of all WML files under dir, or dir itself if not a directory."
     datafiles = []
@@ -300,6 +305,7 @@ def allwmlfiles(directory):
         print("wmlindent: path %s is neither a file or a directory and will be skipped" % directory, file=sys.stderr)
 
     return datafiles
+
 
 def convertor(linefilter, arglist, exclude):
     "Apply a filter to command-line arguments."
@@ -346,6 +352,7 @@ def convertor(linefilter, arglist, exclude):
             if not found_valid_path:
                 print("wmlindent: no WML file found, exiting", file=sys.stderr)
                 sys.exit(1)
+
 
 if __name__ == '__main__':
     main()

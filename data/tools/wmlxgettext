@@ -41,7 +41,6 @@ from datetime import datetime
 import pywmlx
 
 
-
 def main():
     args = commandline(sys.argv[1:])
     pywmlx.ansi_setEnabled(args.text_col)
@@ -142,7 +141,6 @@ def main():
         outfile.close()
     if args.debugmode:
         fdebug.close()
-
 
 
 def commandline(args):
@@ -262,7 +260,6 @@ def commandline(args):
     )
 
     return parser.parse_args(args)
-
 
 
 if __name__ == "__main__":
