@@ -61,7 +61,13 @@ if there's an indent open at end of file or if a closer occurs with
 indent already zero; these two conditions strongly suggest unbalanced WML.
 """
 
-import sys, os, argparse, filecmp, re, codecs
+import sys
+import os
+import argparse
+import filecmp
+import re
+import codecs
+
 from wesnoth import wmltools3 as wmltools
 
 closer_prefixes = ["{NEXT "]

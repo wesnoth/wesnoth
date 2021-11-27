@@ -190,10 +190,20 @@
 # code.
 #
 
-import sys, os, re, argparse, string, copy, difflib, time, gzip, codecs
+import sys
+import os
+import re
+import argparse
+import string
+import copy
+import difflib
+import time
+import gzip
+import codecs
+from collections import defaultdict
+
 from wesnoth.wmltools3 import *
 from wesnoth.wmliterator3 import *
-from collections import defaultdict
 
 # Changes meant to be done on maps and .cfg lines.
 mapchanges = (

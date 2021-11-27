@@ -34,7 +34,13 @@ options to pacify the argument parser.
 More transformations would be easy to write.
 """
 
-import sys, os, time, getopt, io, re
+import sys
+import os
+import time
+import getopt
+import io
+import re
+
 from wesnoth.wmltools3 import *
 
 
