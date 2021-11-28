@@ -160,6 +160,15 @@ private:
 	const team& viewing_team() const;
 	team &current_team();
 
+	// Some common code from mouse_motion and touch_motion.
+	/**
+	 * Highlight the hexes that a unit can move to.
+	 *
+	 * Based on the currently selected hex, selected unit and what's being moused-over,
+	 * conditionally draw any planned moves for the unit passed as an argument.
+	 */
+	void show_reach_for_unit(const unit_ptr& un);
+
 	game_display* gui_;
 	play_controller & pc_;
 
