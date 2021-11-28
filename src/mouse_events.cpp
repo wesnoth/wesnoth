@@ -158,6 +158,9 @@ void mouse_handler::touch_motion(int x, int y, const bool browse, bool update, m
 
 	// now copy-pasting mouse_handler::mouse_motion()
 
+	// Note for anyone reconciling this code with the version in mouse_handler::mouse_motion:
+	// commit 27a40a82aeea removed the game_board& board from mouse_motion, but didn't update
+	// the corresponding code here in touch_motion.
 	game_board & board = pc_.gamestate().board_;
 
 	if(new_hex == map_location::null_location())
@@ -335,14 +338,21 @@ void mouse_handler::touch_motion(int x, int y, const bool browse, bool update, m
 		else
 			un.reset();
 	} //end planned unit map scope
+}
 
+void mouse_handler::show_reach_for_unit(const unit_ptr& un)
+{
 	if( (!selected_hex_.valid()) && un && current_paths_.destinations.empty() &&
 		 !gui().fogged(un->get_location()))
 	{
-		if (un->side() == side_num_) {
-			//unit is on our team, show path if the unit has one
+		// If the unit has a path set and is either ours or allied then show the path.
+		//
+		// Exception: allied AI sides' moves are still hidden, on the assumption that
+		// campaign authors won't want to leak goto_x,goto_y tricks to the player.
+		if(!viewing_team().is_enemy(un->side()) && !pc_.get_teams()[un->side() - 1].is_ai()) {
+			//unit is on our team or an allied team, show path if the unit has one
 			const map_location go_to = un->get_goto();
-			if(board.map().on_board(go_to)) {
+			if(pc_.get_map().on_board(go_to)) {
 				pathfind::marked_route route;
 				{ // start planned unit map scope
 					wb::future_map_if_active raii;
@@ -369,7 +379,6 @@ void mouse_handler::touch_motion(int x, int y, const bool browse, bool update, m
 		unselected_paths_ = true;
 		gui().highlight_reach(current_paths_);
 	}
-
 }
 
 void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update, map_location new_hex)
@@ -563,43 +572,14 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update, m
 		}
 	} /*end planned unit map scope*/
 
-	if(!selected_hex_.valid() && un && current_paths_.destinations.empty() && !gui().fogged(un->get_location())) {
-		/*
-		 * Only process unit if toggler not preventing normal unit
-		 * processing. This can happen e.g. if, after activating 'show
-		 * [best possible] enemy movements' through the UI menu, the
-		 * mouse cursor lands on a hex with unit in it.
-		 */
-		if(!preventing_units_highlight_) {
-			if(un->side() == side_num_) {
-				// unit is on our team, show path if the unit has one
-				const map_location go_to = un->get_goto();
-				if(pc_.get_map().on_board(go_to)) {
-					pathfind::marked_route route;
-					{ // start planned unit map scope
-						wb::future_map_if_active raii;
-						route = get_route(un.get(), go_to, current_team());
-					} // end planned unit map scope
-					gui().set_route(&route);
-				}
-				over_route_ = true;
-
-				wb::future_map_if_active raii;
-				current_paths_ = pathfind::paths(*un, false, true, viewing_team(), path_turns_);
-			} else {
-				// unit under cursor is not on our team
-				// Note: planned unit map must be activated after this is done,
-				// since the future state includes changes to units' movement.
-				unit_movement_resetter move_reset(*un);
-
-				wb::future_map_if_active raii;
-				current_paths_ = pathfind::paths(*un, false, true, viewing_team(), path_turns_);
-			}
-
-			unselected_paths_ = true;
-			gui().highlight_reach(current_paths_);
-
-		}
+	/*
+	 * Only highlight unit's reach if toggler not preventing normal unit
+	 * processing. This can happen e.g. if, after activating 'show
+	 * [best possible] enemy movements' through the UI menu, the
+	 * mouse cursor lands on a hex with unit in it.
+	 */
+	if(!preventing_units_highlight_) {
+		show_reach_for_unit(un);
 	}
 
 	if(!un && preventing_units_highlight_) {
