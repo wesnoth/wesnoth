@@ -126,40 +126,28 @@ local known_operators = {
 	['or'] = function(a, b) return a or b end,
 }
 
--- If operator is a string, return the corresponding function. Otherwise, return
--- operator.
-local function check_operator(operator)
-	if type(operator) == 'string' then
-		return known_operators[operator]
-	end
-	return operator
-end
+-- Reduce the elements of array t into a single value. operator is called as
+-- 'operator(accumulator, element)' for every element in t. If a 3rd argument is
+-- provided, which may be nil, it will be used as the accumulator when calling
+-- operator on the first element. If there is no 3rd argument, the first
+-- operator call will be on the first two elements. If there is no 3rd argument
+-- and the array is empty, return nil. operator may be a function or a binary
+-- Lua operator as a string.
+function functional.reduce(t, operator, ...)
+	local f <const> = known_operators[operator] or operator
 
--- Fold starting from the given index.
-local function fold_from_i(t, f, init, i)
-	local value <const> = t[i]
-	if value == nil then
-		return init
+	local function loop(init, i)
+		local value <const> = t[i]
+		if value == nil then
+			return init
+		end
+		return loop(f(init, value), i + 1)
 	end
-	return fold_from_i(t, f, f(init, value), i + 1)
-end
 
--- Fold the elements of array t into a single value. operator is called as
--- 'operator(accumulator, element)' for every element in t, where init is the
--- initial accumulator. operator may be a function or a binary Lua operator as a
--- string.
-function functional.fold(t, operator, init)
-	return fold_from_i(t, check_operator(operator), init, 1)
-end
-
--- Like fold, but if t is not empty, ignore the identity argument. The first
--- operator call will be on the first two elements.
-function functional.reduce(t, operator, identity)
-	local first <const> = t[1]
-	if first == nil then
-		return identity
+	if select('#', ...) == 0 then
+		return loop(t[1], 2)
 	end
-	return fold_from_i(t, check_operator(operator), first, 2)
+	return loop(select(1, ...), 1)
 end
 
 function functional.take_while(input, condition)
