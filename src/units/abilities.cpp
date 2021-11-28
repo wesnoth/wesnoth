@@ -889,7 +889,7 @@ std::string attack_type::weapon_specials(bool only_active, bool is_backstab) con
 	const unit_map& units = display::get_singleton()->get_units();
 	if(self_){
 		for (const config::any_child sp : self_->abilities().all_children_range()){
-			const bool active = check_self_abilities(sp.cfg, sp.key);
+			const bool active = check_self_abilities_impl(shared_from_this(), other_attack_, sp.cfg, self_, self_loc_, AFFECT_SELF, sp.key);
 			add_name(weapon_abilities, active, sp, checking_name, false);
 		}
 		const auto adjacent = get_adjacent_tiles(self_loc_);
@@ -900,7 +900,7 @@ std::string attack_type::weapon_specials(bool only_active, bool is_backstab) con
 			if(&*it == self_.get())
 				continue;
 			for (const config::any_child sp : it->abilities().all_children_range()){
-				const bool active = check_adj_abilities(sp.cfg, sp.key, i, *it);
+				const bool active = check_adj_abilities_impl(shared_from_this(), other_attack_, sp.cfg, self_, *it, i, self_loc_, AFFECT_SELF, sp.key);
 				add_name(weapon_abilities, active, sp, checking_name, true);
 			}
 		}
