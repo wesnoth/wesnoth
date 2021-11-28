@@ -126,13 +126,13 @@ local known_operators = {
 	['or'] = function(a, b) return a or b end,
 }
 
--- Reduce the elements of array t into a single value. operator is called as
--- 'operator(accumulator, element)' for every element in t. If a 3rd argument is
--- provided, which may be nil, it will be used as the accumulator when calling
--- operator on the first element. If there is no 3rd argument, the first
--- operator call will be on the first two elements. If there is no 3rd argument
--- and the array is empty, return nil. operator may be a function or a binary
--- Lua operator as a string.
+--- Reduce the elements of array t into a single value. operator is called as
+--- 'operator(accumulator, element)' for every element in t. If a 3rd argument
+--- is provided, which may be nil, it will be used as the accumulator when
+--- calling operator on the first element. If there is no 3rd argument, the
+--- first operator call will be on the first two elements. If there is no 3rd
+--- argument and the array is empty, return nil. operator may be a function or a
+--- binary Lua operator as a string.
 function functional.reduce(t, operator, ...)
 	local f <const> = known_operators[operator] or operator
 
