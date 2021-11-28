@@ -138,6 +138,10 @@ if [ $TYPE = wesnothd ]; then
 	esac
 fi
 
+if [ "$TYPE" = "campaignd" ] && [ "$VERSION" != "1.14" ]; then
+	BUILD_OPTIONS="forum_user_handler=1"
+fi
+
 mkdir -p "$DEST"/var/run
 
 echo "            Version: $VERSION"
@@ -166,7 +170,6 @@ scons \
 		install-$TYPE \
 		prefix="$DEST" \
 		program_suffix="-$VERSION" \
-		use_network_ana=false \
 		profile=0 \
 		fribidi=0 \
 		python=0 \
