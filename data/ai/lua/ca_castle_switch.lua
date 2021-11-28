@@ -84,15 +84,15 @@ function ca_castle_switch:evaluation(cfg, data, filter_own, recruiting_leader)
         }, true)
     end
 
-    local leader
+    local non_passive_leader
     for _,l in pairs(leaders) do
         if (not AH.is_passive_leader(ai.aspects.passive_leader, l.id)) then
-            leader = l
+            non_passive_leader = l
             break
         end
     end
 
-    if not leader then
+    if not non_passive_leader then
         -- CA is irrelevant if no leader or the leader may have moved from another CA
         data.CS_leader, data.CS_leader_target = nil, nil
         if AH.print_eval() then AH.done_eval_messages(start_time, ca_name) end
@@ -124,7 +124,7 @@ function ca_castle_switch:evaluation(cfg, data, filter_own, recruiting_leader)
     -- Look for the best keep
     local overall_best_score = 0
     for _,leader in ipairs(leaders) do
-        local best_score, best_loc, best_turns, best_path = 0, {}, 3
+        local best_score, best_loc, best_turns, best_path = 0, {}, 3, nil
         local keeps = AH.get_locations_no_borders {
             terrain = 'K*,K*^*,*^K*', -- Keeps
             { "not", { {"filter", {}} }}, -- That have no unit
@@ -250,7 +250,7 @@ function ca_castle_switch:execution(cfg, data, filter_own)
     if AH.show_messages() then wesnoth.wml_actions.message { speaker = data.leader.id, message = 'Switching castles' } end
 
     AH.robust_move_and_attack(ai, data.CS_leader, data.CS_leader_target, nil, { partial_move = true })
-    data.CS_leader, data.CS_leader_target = nil
+    data.CS_leader, data.CS_leader_target = nil, nil
 end
 
 return ca_castle_switch

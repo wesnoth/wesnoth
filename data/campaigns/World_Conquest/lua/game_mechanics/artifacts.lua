@@ -96,8 +96,8 @@ function artifacts.give_item(unit, index, visualize)
 	if make_holder_loyal then
 		table.insert(object, wml.tag.effect { apply_to= "loyal" })
 	end
-		
-		
+
+
 	-- IDEA: i _could_ replace the follwing with a 'apply_to=wc2_artifact' effect that
 	--       basicially applies all effects in the [artifact]s definition. The obvious
 	--       advantage would be a smaller savefile size. Also this woudl change how savefiles
@@ -125,7 +125,7 @@ on_event("wc2_drop_pickup", function(ec)
 		return
 	end
 
-	if not unit then 
+	if not unit then
 		return
 	end
 
@@ -134,7 +134,7 @@ on_event("wc2_drop_pickup", function(ec)
 	if not wml.variables["wc2_config_experimental_pickup"] and not is_human  then
 		return
 	end
-	
+
 
 	local index = item.variables.wc2_atrifact_id
 	local filter = artifacts.get_artifact(index).filter
@@ -153,7 +153,7 @@ on_event("wc2_drop_pickup", function(ec)
 			return
 		end
 	end
-	
+
 
 	wc2_dropping.item_taken = true
 	artifacts.give_item(unit, index, true)
@@ -162,7 +162,7 @@ end)
 
 -- returns a list of artifact ids, suitable for  the give type ('enemy' for example).
 function artifacts.fresh_artifacts_list(for_type)
-	local res = {} 
+	local res = {}
 	for i,v in ipairs(artifacts.get_artifact_list()) do
 		if not for_type or not stringx.map_split(v.not_available or "")[for_type] then
 			table.insert(res, i)
@@ -194,7 +194,7 @@ on_event("die", function(event_context)
 end)
 
 -- returns true if there is an item in the map at the given position,
--- used to determine whether to show the artifact info menu at that position. 
+-- used to determine whether to show the artifact info menu at that position.
 function artifacts.is_item_at(x,y)
 	for i,item in ipairs(wesnoth.interface.get_items(x,y)) do
 		if item.variables.wc2_atrifact_id then
@@ -204,7 +204,7 @@ function artifacts.is_item_at(x,y)
 	return false
 end
 
--- shows an information [message] about the item laying at position 
+-- shows an information [message] about the item laying at position
 -- @a cfg.x, cfg.y
 function wesnoth.wml_actions.wc2_show_item_info(cfg)
 	local x = cfg.x

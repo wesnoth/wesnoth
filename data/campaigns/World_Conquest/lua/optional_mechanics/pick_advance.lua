@@ -1,4 +1,4 @@
--- The addons own 'pick your advances' mod. 
+-- The addons own 'pick your advances' mod.
 -- Works independed from the reset of the wc2 code (but needs wc2_utils.lua)
 local on_event = wesnoth.require("on_event")
 local wc2_utils = wesnoth.require("./../game_mechanics/utils.lua")

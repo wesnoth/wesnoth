@@ -24,7 +24,7 @@ local function iter_possible_targets(moves, attacker)
     moves = LS.of_pairs(moves)
     -- The criteria are: a) unit is reachable b) unit's health is low
     local targets = wesnoth.units.find({
-        
+
     })
     return coroutine.wrap(function()
         local checked = LS.create()
@@ -38,7 +38,7 @@ local function iter_possible_targets(moves, attacker)
                     end
                 end
             end
-        end) 
+        end)
     end)
 end
 

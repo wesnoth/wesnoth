@@ -169,7 +169,7 @@ function wc2_era.read_era_tag(era_wml)
 			add_known_faction(faction)
 		end
 	end
-	-- No need to read [hero_types] since wc2_utils.get_wc2_data also reads from [era] 
+	-- No need to read [hero_types] since wc2_utils.get_wc2_data also reads from [era]
 end
 
 function wc2_era.init_era_default()
@@ -178,7 +178,7 @@ function wc2_era.init_era_default()
 end
 
 function wc2_era.init_data()
-	
+
 	for i,v in ipairs(wml.get_child(wc2_utils.get_wc2_data("hero_types"), "hero_types")) do
 		add_known_hero_group(v[1], v[2])
 	end

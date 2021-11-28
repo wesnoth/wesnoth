@@ -1,5 +1,5 @@
 -- the Dialog we show in the generate map tool in wesnoths own map editor.
--- in case that someone wants to create a map based on a random wcii map in his campaign. 
+-- in case that someone wants to create a map based on a random wcii map in his campaign.
 local T = wml.tag
 local _ = wesnoth.textdomain 'wesnoth-wc'
 
@@ -38,7 +38,7 @@ function wc2_debug_settings()
 		local sl_scenario = window.sl_scenario
 		local sl_map = window.sl_map
 		local sl_players = window.sl_players
-		
+
 		local function on_set_map()
 
 			globals.settings.scenario_num = sl_scenario.value
@@ -47,7 +47,7 @@ function wc2_debug_settings()
 			local generators = get_defaults(sl_players.value, globals.settings.scenario_num)
 			local map_data = generators[sl_map.value]
 			if map_data then
-	
+
 				window.sl_length.value = map_data.length
 				window.sl_villages.value = map_data.villages
 				window.sl_castle.value = map_data.castle

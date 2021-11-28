@@ -48,7 +48,7 @@ function ca_wolves_move:execution(cfg)
     local avoid_enemies_map = BC.get_attack_map(avoid_units).units
 
     -- Find prey that is closest to the wolves
-    local min_dist, target = math.huge
+    local min_dist, target = math.huge, nil
     for _,prey_unit in ipairs(prey) do
         if (not avoid_map:get(prey_unit.x, prey_unit.y)) then
             local dist = 0
@@ -65,7 +65,7 @@ function ca_wolves_move:execution(cfg)
     table.sort(wolves, function(a, b)
         return M.distance_between(a.x, a.y, target.x, target.y) > M.distance_between(b.x, b.y, target.x, target.y)
     end)
-    
+
     -- First wolf moves toward target, but tries to stay away from map edges
     local wolf1 = AH.find_best_move(wolves[1], function(x, y)
         local dist_1t = M.distance_between(x, y, target.x, target.y)
@@ -82,9 +82,9 @@ function ca_wolves_move:execution(cfg)
        return rating
     end, { avoid_map = avoid_map })
 
-    local move_result = AH.movefull_stopunit(ai, wolves[1], wolf1 or { wolf1.x, wolf1.y })
+    local move_result1 = AH.movefull_stopunit(ai, wolves[1], wolf1 or { wolf1.x, wolf1.y })
     -- If the wolf was ambushed, return and reconsider; also if an event removed a wolf
-    if (AH.is_incomplete_move(move_result)) then return end
+    if (AH.is_incomplete_move(move_result1)) then return end
     for _,check_wolf in ipairs(wolves) do
         if (not check_wolf) or (not check_wolf.valid) then return end
     end
@@ -111,9 +111,9 @@ function ca_wolves_move:execution(cfg)
             return rating
         end, { avoid_map = avoid_map })
 
-        local move_result = AH.movefull_stopunit(ai, wolves[i], move or { wolves[i].x, wolves[i].y })
+        local move_result2 = AH.movefull_stopunit(ai, wolves[i], move or { wolves[i].x, wolves[i].y })
         -- If the wolf was ambushed, return and reconsider; also if an event removed a wolf
-        if (AH.is_incomplete_move(move_result)) then return end
+        if (AH.is_incomplete_move(move_result2)) then return end
         for _,check_wolf in ipairs(wolves) do
             if (not check_wolf) or (not check_wolf.valid) then return end
         end

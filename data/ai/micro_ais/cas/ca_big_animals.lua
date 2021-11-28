@@ -55,7 +55,7 @@ function ca_big_animals:execution(cfg)
     end)
 
     -- Now find the one of these hexes that is closest to the goal
-    local max_rating, best_hex = - math.huge
+    local max_rating, best_hex = - math.huge, nil
     reach_map:iter( function(x, y, v)
         local rating = -wesnoth.map.distance_between(x, y, goal.goal_x, goal.goal_y)
 
@@ -92,7 +92,7 @@ function ca_big_animals:execution(cfg)
     end
 
     -- Finally, if the unit ended up next to enemies, attack the weakest of those
-    local min_hp, target = math.huge
+    local min_hp, target = math.huge, nil
     for xa,ya in wesnoth.current.map:iter_adjacent(unit) do
         local enemy = wesnoth.units.get(xa, ya)
         if AH.is_attackable_enemy(enemy) then

@@ -30,13 +30,13 @@ schema.time_area =  {
 schema.scenario =  {
 	tags = {
 		music = {
-			type = "list", 
+			type = "list",
 		},
 		label = {
-			type = "list", 
+			type = "list",
 		},
 		load_resource = {
-			type = "list", 
+			type = "list",
 		},
 		event = {
 			type = "list",
@@ -66,14 +66,14 @@ schema.scenario =  {
 schema.side =  {
 	tags = {
 		village = {
-			type = "list", 
+			type = "list",
 		},
 		unit = {
 			type = "list",
 			id = "unit",
 		},
 		leader = {
-			type = "list", 
+			type = "list",
 			id = "unit",
 		},
 		variables = {
@@ -90,16 +90,16 @@ schema.time =  {
 schema.mg_main =  {
 	tags = {
 		height = {
-			type = "list", 
+			type = "list",
 		},
 		convert = {
 			type = "list",
 		},
 		road_cost = {
-			type = "list", 
+			type = "list",
 		},
 		village = {
-			type = "list", 
+			type = "list",
 		},
 		castle = {
 			type = "single",
@@ -137,7 +137,7 @@ schema.wct_enemy_group =  {
 			id = "wct_enemy_group_commander",
 		},
 		leader = {
-			type = "list", 
+			type = "list",
 			id = "wct_enemy_group_leader",
 		},
 	},
@@ -150,7 +150,7 @@ schema.wct_enemy_group =  {
 schema.wct_enemy =  {
 	tags = {
 		group = {
-			type = "list", 
+			type = "list",
 			id = "wct_enemy_group",
 		},
 	},
@@ -162,7 +162,7 @@ schema.wct_enemy =  {
 schema.wct_artifact =  {
 	tags = {
 		animate_unit = {
-			type = "list", 
+			type = "list",
 		},
 		effect = {
 			type = "list",
@@ -188,7 +188,7 @@ schema.wct_artifact_list =  {
 }
 
 
--- i cannot do this because the code in training.lua does 
+-- i cannot do this because the code in training.lua does
 -- variable subsutution on [chance] which only works on configs.
 -- schema.wct_trainer_chance =  {
 -- }
@@ -225,7 +225,7 @@ schema.wct_trainer_list =  {
 }
 
 schema.__attributes = {}
-schema.__attributes.comma_list = 
+schema.__attributes.comma_list =
 {
 	to_lon = function(attr)
 		return split_to_array(attr)
@@ -241,7 +241,7 @@ function converter.wml_to_lon(cfg, name)
 	end
 	local attrs = tag_info.attributes or {}
 	local tags = tag_info.tags or {}
-	
+
 	local res = {}
 	for name2, info2 in pairs(tags) do
 		if info2.type == "single" then
@@ -254,12 +254,11 @@ function converter.wml_to_lon(cfg, name)
 			end
 		end
 	end
-	
+
 	for k,v in pairs(cfg) do
-		if type(k) == "number" then
-		else --string
+		if type(k) ~= "number" then
 			local conv = attrs[k] and schema.__attributes[attrs[k]]
-			if conv then 
+			if conv then
 				res[k] = conv.to_lon(v)
 			else
 				res[k] = v
@@ -276,7 +275,7 @@ function converter.lon_to_wml(t, name)
 	end
 	local attrs = tag_info.attributes or {}
 	local tags = tag_info.tags or {}
-	
+
 	local res = {}
 	for name2, info2 in pairs(tags) do
 		if info2.type == "single" then
@@ -290,11 +289,11 @@ function converter.lon_to_wml(t, name)
 			end
 		end
 	end
-	
+
 	for k,v in pairs(t) do
 		if not tags[k] then
 			local conv = attrs[k] and schema.__attributes[attrs[k]]
-			if conv then 
+			if conv then
 				res[k] = conv.to_wml(v)
 			else
 				res[k] = v

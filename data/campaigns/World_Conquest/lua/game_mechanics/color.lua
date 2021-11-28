@@ -17,7 +17,7 @@ function color.help_text(str)
 	return color.color_text("#ff95ff", str)
 end
 
--- note: the default argument for the first parameter is the 
+-- note: the default argument for the first parameter is the
 --       currently active side, not the currently viewing side
 function color.tc_text(team_num, text)
 	if text == nil then

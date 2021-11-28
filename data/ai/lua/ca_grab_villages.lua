@@ -55,7 +55,7 @@ function ca_grab_villages:evaluation(cfg, data, filter_own)
     local enemy_attack_map = BC.get_attack_map(enemies).units
 
     -- Now we go through the villages and units
-    local max_rating, best_village, best_unit = - math.huge
+    local max_rating, best_village, best_unit = - math.huge, nil, nil
     local village_ratings = {}
     for j,v in ipairs(villages) do
         -- First collect all information that only depends on the village
