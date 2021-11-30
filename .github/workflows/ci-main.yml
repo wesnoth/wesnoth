@@ -73,7 +73,6 @@ jobs:
           export CACHE_DIR=/home/wesnoth-CI/build
           ./.github/workflows/ci-scripts/ubuntu.sh
 
-
   steam-runtime:
     runs-on: ubuntu-20.04
 
@@ -216,13 +215,13 @@ jobs:
           submodules: "recursive"
 
       - name: Cache object files
-        id: windows-N009
+        id: windows-N010
         uses: actions/cache@v2
         with:
           path: |
             D:/a/wesnoth/vcpkg
             D:/a/wesnoth/wesnoth/vcpkg_installed
-          key: windows-N009
+          key: windows-N010
 
       - name: Add msbuild to PATH
         uses: microsoft/setup-msbuild@v1.0.2
@@ -243,7 +242,7 @@ jobs:
       - name: Use cmake
         run: |
           cmake --version
-          cmake -DCMAKE_BUILD_TYPE=Debug -DENABLE_GAME=true -DENABLE_SERVER=true -DENABLE_CAMPAIGN_SERVER=true -DENABLE_TESTS=true -DENABLE_MYSQL=false -DENABLE_NLS=false -DVCPKG_TARGET_TRIPLET=x64-windows -DCMAKE_TOOLCHAIN_FILE=D:/a/wesnoth/vcpkg/scripts/buildsystems/vcpkg.cmake -DCMAKE_GENERATOR_PLATFORM=x64 -G "Visual Studio 16 2019" .
+          cmake -DCMAKE_BUILD_TYPE=Debug -DENABLE_GAME=true -DENABLE_SERVER=true -DENABLE_CAMPAIGN_SERVER=true -DENABLE_TESTS=true -DENABLE_MYSQL=false -DENABLE_NLS=false -DVCPKG_TARGET_TRIPLET=x64-windows -DCMAKE_TOOLCHAIN_FILE=D:/a/wesnoth/vcpkg/scripts/buildsystems/vcpkg.cmake -DCMAKE_GENERATOR_PLATFORM=x64 -G "Visual Studio 16 2019" -T ClangCL .
 
 # delete buildtrees directory to free up space after cmake invokes vcpkg to build the dependencies
 # otherwise the job was failing when trying to write a .obj file
@@ -263,13 +262,13 @@ jobs:
           submodules: "recursive"
 
       - name: Cache object files
-        id: windows-N009
+        id: windows-N010
         uses: actions/cache@v2
         with:
           path: |
             D:/a/wesnoth/vcpkg
             D:/a/wesnoth/wesnoth/vcpkg_installed
-          key: windows-N009
+          key: windows-N010
 
       - name: Add msbuild to PATH
         uses: microsoft/setup-msbuild@v1.0.2
@@ -289,7 +288,7 @@ jobs:
 
       - name: Use cmake
         run: |
-          cmake -DCMAKE_BUILD_TYPE=Release -DENABLE_GAME=true -DENABLE_SERVER=true -DENABLE_CAMPAIGN_SERVER=true -DENABLE_TESTS=true -DENABLE_MYSQL=false -DENABLE_NLS=false -DVCPKG_TARGET_TRIPLET=x64-windows -DCMAKE_TOOLCHAIN_FILE=D:/a/wesnoth/vcpkg/scripts/buildsystems/vcpkg.cmake -DCMAKE_GENERATOR_PLATFORM=x64 -G "Visual Studio 16 2019" .
+          cmake -DCMAKE_BUILD_TYPE=Release -DENABLE_GAME=true -DENABLE_SERVER=true -DENABLE_CAMPAIGN_SERVER=true -DENABLE_TESTS=true -DENABLE_MYSQL=false -DENABLE_NLS=false -DVCPKG_TARGET_TRIPLET=x64-windows -DCMAKE_TOOLCHAIN_FILE=D:/a/wesnoth/vcpkg/scripts/buildsystems/vcpkg.cmake -DCMAKE_GENERATOR_PLATFORM=x64 -G "Visual Studio 16 2019" -T ClangCL .
 
 # delete buildtrees directory to free up space after cmake invokes vcpkg to build the dependencies
 # otherwise the job was failing when trying to write a .obj file

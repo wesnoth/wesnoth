@@ -153,7 +153,7 @@ endif()
 if(ENABLE_GAME)
 	if(WIN32)
 		add_executable(wesnoth WIN32 wesnoth.cpp ../packaging/windows/wesnoth.rc)
-		target_link_options(wesnoth PRIVATE /WX /WHOLEARCHIVE:wesnoth-widgets)
+		target_link_options(wesnoth PRIVATE /WX /LIBPATH:\"D:\\a\\wesnoth\\wesnoth\\src\\${CMAKE_BUILD_TYPE}\" /WHOLEARCHIVE:wesnoth-widgets.lib)
 	elseif(APPLE)
 		add_executable(wesnoth wesnoth.cpp macosx/SDLMain.mm)
 	else()
@@ -196,7 +196,7 @@ if(ENABLE_TESTS)
 	add_executable(boost_unit_tests ${boost_tests_sources})
 
 	if(WIN32)
-		target_link_options(boost_unit_tests PRIVATE /WX /WHOLEARCHIVE:wesnoth-widgets)
+		target_link_options(boost_unit_tests PRIVATE /LIBPATH:\"D:\\a\\wesnoth\\wesnoth\\src\\${CMAKE_BUILD_TYPE}\" /WHOLEARCHIVE:wesnoth-widgets.lib)
 	endif()
 
 	target_link_libraries(boost_unit_tests

@@ -381,7 +381,7 @@ std::string os_version()
 			}
 	}
 
-	if(v.szCSDVersion && *v.szCSDVersion) {
+	if(*v.szCSDVersion) {
 		version += " ";
 		version += unicode_cast<std::string>(std::wstring(v.szCSDVersion));
 	}
