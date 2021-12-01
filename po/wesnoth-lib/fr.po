@@ -12,15 +12,15 @@ msgstr ""
 "Project-Id-Version: Wesnoth_Lib-1.12\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2021-06-23 11:42-0400\n"
-"PO-Revision-Date: 2021-09-17 06:56+0200\n"
-"Last-Translator: Clémence\n"
+"PO-Revision-Date: 2021-12-01 18:37+0100\n"
+"Last-Translator: \n"
 "Language-Team: French <wesnothfr@lists.tuxfamily.org>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 3.0\n"
+"X-Generator: Poedit 1.5.7\n"
 
 #. [ai]: id=ai_default_rca
 #: data/ai/ais/ai_default_rca.cfg:9
@@ -2307,7 +2307,8 @@ msgstr "Messages en attente"
 #: data/gui/window/lobby_player_info.cfg:292
 #: data/gui/window/lua_interpreter.cfg:130 data/gui/window/message.cfg:135
 #: data/gui/window/mp_alerts_options.cfg:242
-#: data/gui/window/mp_match_history.cfg:111 data/gui/window/preferences.cfg:430
+#: data/gui/window/mp_match_history.cfg:111
+#: data/gui/window/preferences.cfg:430
 #: data/gui/window/screenshot_notification.cfg:214
 #: data/gui/window/server_info.cfg:253
 #: data/gui/window/statistics_dialog.cfg:623
@@ -2319,7 +2320,8 @@ msgstr "Fermer"
 #. [button]: id=view_profile
 #: data/gui/widget/unit_preview_pane.cfg:113
 #: data/gui/widget/unit_preview_pane.cfg:345
-#: data/gui/widget/unit_preview_pane.cfg:405 data/gui/window/lobby_main.cfg:505
+#: data/gui/widget/unit_preview_pane.cfg:405
+#: data/gui/window/lobby_main.cfg:505
 #: data/gui/window/mp_faction_select.cfg:140
 msgid "Profile"
 msgstr "Profil"
@@ -2344,13 +2346,15 @@ msgstr "Mot de passe :"
 #: data/gui/window/edit_label.cfg:139 data/gui/window/edit_text.cfg:116
 #: data/gui/window/editor_edit_label.cfg:301
 #: data/gui/window/editor_edit_scenario.cfg:287
-#: data/gui/window/editor_edit_side.cfg:442 data/gui/window/file_dialog.cfg:437
-#: data/gui/window/folder_create.cfg:119 data/gui/window/label_settings.cfg:137
+#: data/gui/window/editor_edit_side.cfg:442
+#: data/gui/window/file_dialog.cfg:437 data/gui/window/folder_create.cfg:119
+#: data/gui/window/label_settings.cfg:137
 #: data/gui/window/language_selection.cfg:148 data/gui/window/logging.cfg:259
 #: data/gui/window/mp_change_control.cfg:203
 #: data/gui/window/mp_faction_select.cfg:388
 #: data/gui/window/mp_join_game_password_prompt.cfg:136
-#: data/gui/window/mp_login.cfg:243 data/gui/window/mp_method_selection.cfg:327
+#: data/gui/window/mp_login.cfg:243
+#: data/gui/window/mp_method_selection.cfg:327
 #: data/gui/window/select_orb_colors.cfg:138
 #: data/gui/window/simple_item_selector.cfg:145
 #: data/gui/window/sp_options_configure.cfg:105
@@ -2388,7 +2392,8 @@ msgstr "OK"
 #: data/gui/window/mp_create_game/tiny_resolution.cfg:335
 #: data/gui/window/mp_faction_select.cfg:400
 #: data/gui/window/mp_join_game_password_prompt.cfg:149
-#: data/gui/window/mp_login.cfg:257 data/gui/window/mp_method_selection.cfg:341
+#: data/gui/window/mp_login.cfg:257
+#: data/gui/window/mp_method_selection.cfg:341
 #: data/gui/window/mp_staging.cfg:433
 #: data/gui/window/network_transmission.cfg:108
 #: data/gui/window/select_orb_colors.cfg:149
@@ -2530,7 +2535,8 @@ msgstr "Dépendances :"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=dependencies
-#: data/gui/window/addon_manager.cfg:620 src/gui/dialogs/addon/manager.cpp:1007
+#: data/gui/window/addon_manager.cfg:620
+#: src/gui/dialogs/addon/manager.cpp:1007
 msgid "addon_dependencies^None"
 msgstr "Aucune"
 
@@ -2541,7 +2547,8 @@ msgstr "Traductions :"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=translations
-#: data/gui/window/addon_manager.cfg:654 src/gui/dialogs/addon/manager.cpp:1021
+#: data/gui/window/addon_manager.cfg:654
+#: src/gui/dialogs/addon/manager.cpp:1021
 msgid "translations^None"
 msgstr "Aucune"
 
@@ -2566,14 +2573,15 @@ msgid "Order:"
 msgstr "Ordre :"
 
 #. [label]
-#: data/gui/window/addon_manager.cfg:903 data/gui/window/addon_manager.cfg:1085
+#: data/gui/window/addon_manager.cfg:903
+#: data/gui/window/addon_manager.cfg:1085
 msgid "Add-ons Manager"
 msgstr "Gestionnaire d'extensions"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=details_toggle
-#: data/gui/window/addon_manager.cfg:1003 src/gui/dialogs/addon/manager.cpp:510
-#: src/gui/dialogs/addon/manager.cpp:745
+#: data/gui/window/addon_manager.cfg:1003
+#: src/gui/dialogs/addon/manager.cpp:510 src/gui/dialogs/addon/manager.cpp:745
 msgid "Add-on Details"
 msgstr "Détails de l'extension"
 
@@ -2801,7 +2809,8 @@ msgid "Next page"
 msgstr "Page suivante"
 
 #. [button]: id=copy
-#: data/gui/window/chat_log.cfg:187 data/gui/window/gamestate_inspector.cfg:335
+#: data/gui/window/chat_log.cfg:187
+#: data/gui/window/gamestate_inspector.cfg:335
 #: data/gui/window/lua_interpreter.cfg:105 data/gui/window/wml_error.cfg:124
 msgid "clipboard^Copy"
 msgstr "Copier"
@@ -2818,7 +2827,8 @@ msgstr "Charger le noyau"
 
 #. [button]: id=copy
 #. [button]: id=copy_
-#: data/gui/window/custom_tod.cfg:50 data/gui/window/game_cache_options.cfg:110
+#: data/gui/window/custom_tod.cfg:50
+#: data/gui/window/game_cache_options.cfg:110
 #: data/gui/window/game_version.cfg:47
 #: data/gui/window/screenshot_notification.cfg:33
 msgid "filesystem^Copy"
@@ -2826,7 +2836,8 @@ msgstr "Copier"
 
 #. [button]: id=copy
 #. [button]: id=copy_
-#: data/gui/window/custom_tod.cfg:51 data/gui/window/game_cache_options.cfg:111
+#: data/gui/window/custom_tod.cfg:51
+#: data/gui/window/game_cache_options.cfg:111
 #: data/gui/window/game_version.cfg:48
 #: data/gui/window/screenshot_notification.cfg:34
 msgid "Copy this path to clipboard"
@@ -2834,14 +2845,16 @@ msgstr "Copier le chemin dans le presse-papier"
 
 #. [button]: id=browse
 #. [button]: id=browse_
-#: data/gui/window/custom_tod.cfg:66 data/gui/window/game_cache_options.cfg:126
+#: data/gui/window/custom_tod.cfg:66
+#: data/gui/window/game_cache_options.cfg:126
 #: data/gui/window/game_version.cfg:63
 msgid "filesystem^Browse"
 msgstr "Parcourir"
 
 #. [button]: id=browse
 #. [button]: id=browse_
-#: data/gui/window/custom_tod.cfg:67 data/gui/window/game_cache_options.cfg:127
+#: data/gui/window/custom_tod.cfg:67
+#: data/gui/window/game_cache_options.cfg:127
 #: data/gui/window/game_version.cfg:64
 msgid "Browse this location using a file manager"
 msgstr "Ouvrir ce chemin dans un navigateur de fichiers"
@@ -3143,7 +3156,8 @@ msgstr "Aucune"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/window/editor_generate_map.cfg:43 src/hotkey/hotkey_command.cpp:239
+#: data/gui/window/editor_generate_map.cfg:43
+#: src/hotkey/hotkey_command.cpp:239
 msgid "Generate Map"
 msgstr "Générer une carte"
 
@@ -8103,11 +8117,13 @@ msgstr ""
 "Un terrain représenté par une chaîne de plus de 4 caractères a été trouvé, "
 "il s'agit de :"
 
-#: src/units/abilities.cpp:922
-#: src/units/abilities.cpp:937
-msgid ""
-"Opponent:\n"
-msgstr "Adversaire :\n"
+#: src/units/abilities.cpp:905
+msgid "Teacher:"
+msgstr "Professeur :"
+
+#: src/units/abilities.cpp:925
+msgid "Opponent:"
+msgstr "Adversaire :"
 
 #: src/wml_exception.cpp:62
 msgid ""
